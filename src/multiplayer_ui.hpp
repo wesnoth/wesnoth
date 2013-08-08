@@ -280,6 +280,17 @@ std::vector<const config*> init_available_factions(
 std::vector<const config*> init_choosable_factions(
 	std::vector<const config*> available_factions, const config& side,
 	const bool map_settings);
+
+std::vector<std::string> init_choosable_leaders(const config& side,
+	const config* faction, const std::vector<const config*> available_factions,
+	const bool map_settings, const bool saved_game);
+
+std::vector<std::string> init_choosable_genders(const config& side,
+	const std::string& leader, const bool map_settings, const bool saved_game);
+
+void append_leaders_from_faction(const config* faction,
+	std::vector<std::string>& leaders);
+
 }
 
 #endif

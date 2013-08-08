@@ -912,4 +912,127 @@ std::vector<const config*> init_choosable_factions(
 	return choosable_factions;
 }
 
+std::vector<std::string> init_choosable_leaders(const config& side,
+	const config* faction, const std::vector<const config*> available_factions,
+	const bool map_settings, const bool saved_game)
+{
+	std::vector<std::string> choosable_leaders;
+
+	if (saved_game) {
+		// TODO: find a proper way to determine
+		// a leader from a savegame.
+		std::string leader;
+		BOOST_FOREACH(const config& side_unit, side.child_range("unit")) {
+			if (side_unit["canrecruit"].to_bool()) {
+				leader = side_unit["type"].str();
+				break;
+			}
+		}
+		if (!leader.empty()) {
+			const unit_type *unit = unit_types.find(leader);
+			if (unit) {
+				choosable_leaders.push_back(leader);
+			}
+		}
+	} else {
+		if (map_settings &&	side.has_attribute("type")) {
+			// Leader was explicitly assigned.
+			const unit_type *unit = unit_types.find(side["type"]);
+			if (unit) {
+				choosable_leaders.push_back(side["type"]);
+			}
+		} else if ((*faction)["id"] == "Custom") {
+			// Allow user to choose a leader from any faction.
+			choosable_leaders.push_back("random");
+
+			BOOST_FOREACH(const config* f, available_factions) {
+				if ((*f)["id"] != "Random") {
+					append_leaders_from_faction(f, choosable_leaders);
+				}
+			}
+		} else if ((*faction)["id"] != "Random") {
+			// Faction leader list consists of "random" + "leader=".
+			choosable_leaders.push_back("random");
+
+			append_leaders_from_faction(faction, choosable_leaders);
+		}
+	}
+
+	// If none of the possible leaders could be determined,
+	// use "null" as an indicator for empty leaders list.
+	if (choosable_leaders.empty()) {
+		choosable_leaders.push_back("null");
+	}
+
+	return choosable_leaders;
+}
+
+std::vector<std::string> init_choosable_genders(const config& side,
+	const std::string& leader, const bool map_settings, const bool saved_game)
+{
+	std::vector<std::string> choosable_genders;
+
+	if (saved_game) {
+		std::string gender;
+		BOOST_FOREACH(const config& side_unit, side.child_range("unit")) {
+			if (leader == side_unit["type"] &&
+				side_unit["canrecruit"].to_bool()) {
+
+				gender = side_unit["gender"].str();
+				break;
+			}
+		}
+		if (!gender.empty()) {
+			choosable_genders.push_back(gender);
+		}
+	} else {
+		const unit_type* unit = unit_types.find(leader);
+		if (unit) {
+			if (map_settings &&	side.has_attribute("type") &&
+				side.has_attribute("gender")) {
+
+				// Gender was explicitly assigned.
+				const unit_type *unit = unit_types.find(leader);
+				if (unit) {
+					BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+						if (side["gender"] == gender) {
+							choosable_genders.push_back(side["gender"]);
+						}
+					}
+				}
+			} else {
+				if (unit->genders().size() > 1) {
+					choosable_genders.push_back("random");
+				}
+
+				BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+					if (gender == unit_race::FEMALE) {
+						choosable_genders.push_back(unit_race::s_female);
+					} else {
+						choosable_genders.push_back(unit_race::s_male);
+					}
+				}
+			}
+		}
+	}
+
+	// If none of the possible genders could be determined,
+	// use "null" as an indicator for empty genders list.
+	if (choosable_genders.empty()) {
+		choosable_genders.push_back("null");
+	}
+
+	return choosable_genders;
+}
+
+void append_leaders_from_faction(const config* faction,
+	std::vector<std::string>& leaders)
+{
+	const std::vector<std::string>& leaders_to_append =
+		utils::split((*faction)["leader"]);
+	leaders.insert(leaders.end(), leaders_to_append.begin(),
+		leaders_to_append.end());
+}
+
+
 }// namespace mp

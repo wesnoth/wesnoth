@@ -203,7 +203,6 @@ private:
 
 	void update_choosable_leaders();
 	void update_choosable_genders();
-	void append_leaders_from_faction(const config* faction);
 
 	config cfg_;
 	connect_engine& parent_;

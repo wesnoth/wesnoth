@@ -1243,119 +1243,16 @@ void side_engine::set_ai_algorithm_commandline(
 void side_engine::update_choosable_leaders()
 {
 	choosable_leaders_.clear();
-
-	if (parent_.params_.saved_game) {
-		// Leader should be determined from savegame data.
-		// TODO: find a proper way to determine
-		// a leader from a savegame.
-		std::string leader;
-		BOOST_FOREACH(const config& side_unit, cfg_.child_range("unit")) {
-			if (side_unit["canrecruit"].to_bool()) {
-				leader = side_unit["type"].str();
-				break;
-			}
-		}
-		if (!leader.empty()) {
-			const unit_type *unit = unit_types.find(leader);
-			if (unit) {
-				choosable_leaders_.push_back(leader);
-			}
-		}
-	} else {
-		if (parent_.params_.use_map_settings &&
-			cfg_.has_attribute("type")) {
-
-			// Leader was explicitly assigned.
-			const unit_type *unit = unit_types.find(cfg_["type"]);
-			if (unit) {
-				choosable_leaders_.push_back(cfg_["type"]);
-			}
-		} else if ((*current_faction_)["id"] == "Custom") {
-			// Allow user to choose a leader from any faction.
-			choosable_leaders_.push_back("random");
-
-			BOOST_FOREACH(const config* faction, available_factions_) {
-				if ((*faction)["id"] != "Random") {
-					append_leaders_from_faction(faction);
-				}
-			}
-		} else if ((*current_faction_)["id"] != "Random") {
-			// Faction leader list consists of "random" + "leader=".
-			choosable_leaders_.push_back("random");
-
-			append_leaders_from_faction(current_faction_);
-		}
-	}
-
-	// If none of the possible leaders could be determined,
-	// use "null" as an indicator for empty leaders list.
-	if (choosable_leaders_.empty()) {
-		choosable_leaders_.push_back("null");
-	}
+	choosable_leaders_ = init_choosable_leaders(cfg_, current_faction_,
+		available_factions_, parent_.params_.use_map_settings,
+		parent_.params_.saved_game);
 }
 
 void side_engine::update_choosable_genders()
 {
 	choosable_genders_.clear();
-
-	if (parent_.params_.saved_game) {
-		std::string gender;
-		BOOST_FOREACH(const config& side_unit, cfg_.child_range("unit")) {
-			if (current_leader_ == side_unit["type"] &&
-				side_unit["canrecruit"].to_bool()) {
-
-				gender = side_unit["gender"].str();
-				break;
-			}
-		}
-		if (!gender.empty()) {
-			choosable_genders_.push_back(gender);
-		}
-	} else {
-		const unit_type* unit = unit_types.find(current_leader_);
-		if (unit) {
-			if (parent_.params_.use_map_settings &&
-				cfg_.has_attribute("type") &&
-				cfg_.has_attribute("gender")) {
-
-				// Gender was explicitly assigned.
-				const unit_type *unit = unit_types.find(current_leader_);
-				if (unit) {
-					BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
-						if (cfg_["gender"] == gender) {
-							choosable_genders_.push_back(cfg_["gender"]);
-						}
-					}
-				}
-			} else {
-				if (unit->genders().size() > 1) {
-					choosable_genders_.push_back("random");
-				}
-
-				BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
-					if (gender == unit_race::FEMALE) {
-						choosable_genders_.push_back(unit_race::s_female);
-					} else {
-						choosable_genders_.push_back(unit_race::s_male);
-					}
-				}
-			}
-		}
-	}
-
-	// If none of the possible genders could be determined,
-	// use "null" as an indicator for empty genders list.
-	if (choosable_genders_.empty()) {
-		choosable_genders_.push_back("null");
-	}
-}
-
-void side_engine::append_leaders_from_faction(const config* faction)
-{
-	const std::vector<std::string>& leaders =
-		utils::split((*faction)["leader"]);
-	choosable_leaders_.insert(choosable_leaders_.end(), leaders.begin(),
-		leaders.end());
+	choosable_genders_ = init_choosable_genders(cfg_, current_leader_,
+		parent_.params_.use_map_settings, parent_.params_.saved_game);
 }
 
 } // end namespace mp
