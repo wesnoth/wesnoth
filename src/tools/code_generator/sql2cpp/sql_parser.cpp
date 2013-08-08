@@ -64,7 +64,8 @@ public:
 	// Tokens with no attributes.
 	lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
-		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add, kw_unsigned;
+		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add, kw_unsigned, kw_foreign_key,
+		kw_references;
   
 	lex::token_def<lex::omit> comma, semi_colon, paren_open, paren_close;
   lex::token_def<lex::omit>	ws, comment, cstyle_comment;
@@ -93,9 +94,11 @@ public:
 		kw_table = "(?i:table)";
 		kw_constraint = "(?i:constraint)";
 		kw_primary_key = "(?i:primary +key)";
+		kw_foreign_key = "(?i:foreign +key)";
 		kw_alter = "(?i:alter)";
 		kw_add = "(?i:add)";
 		kw_unsigned = "(?i:unsigned)";
+		kw_references = "(?i:references)";
 
 		// Values.
 		signed_digit = "[-+]?[0-9]+";
@@ -122,7 +125,7 @@ public:
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
 									kw_create | kw_table | kw_constraint | kw_primary_key | kw_alter |
-									kw_add | kw_unsigned;
+									kw_add | kw_unsigned | kw_foreign_key | kw_references;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
 		this->self += ws 		[ lex::_pass = lex::pass_flags::pass_ignore ] 
@@ -201,6 +204,8 @@ public:
 	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> primary_key_constraint_attribute;
+	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> foreign_key_constraint_attribute;
+	typedef attribute<sql::constraint::key_references> reference_definition_attribute;
 
 	template<class T>
 	void make_column_type(typename column_type_attribute::s_type& res) const
@@ -248,6 +253,14 @@ public:
 	{
 		res = boost::make_shared<sql::constraint::primary_key>(name, keys);
 	}
+
+	void make_fk_constraint(typename foreign_key_constraint_attribute::s_type& res, 
+							const typename foreign_key_constraint_attribute::i_type& name, 
+							const std::vector<std::string>& keys,
+							const sql::constraint::key_references& refs)
+	{
+		res = boost::make_shared<sql::constraint::foreign_key>(name, keys, refs);
+	}
 };
 
 // Grammar definition, define a little part of the SQL language.
@@ -268,6 +281,10 @@ struct sql_grammar
 			|		 alter_statement
 			;
 
+		create_statement
+			%=   tok.kw_create >> create_table
+			;
+
 		alter_statement
 			%=	 tok.kw_alter >> alter_table
 			;
@@ -280,10 +297,6 @@ struct sql_grammar
 			%=	 tok.kw_add >> constraint_definition
 			;
 
-		create_statement
-			%=   tok.kw_create >> create_table
-			;
-
 		create_table
 			%=	tok.kw_table >> tok.identifier >> tok.paren_open >> create_table_columns >> -(tok.comma >> table_constraints) >> tok.paren_close
 			;
@@ -293,12 +306,24 @@ struct sql_grammar
 			;
 
 		constraint_definition
-			= tok.kw_constraint >> tok.identifier [qi::_a = qi::_1] >> primary_key_constraint(qi::_a) [qi::_val = qi::_1]
+			= tok.kw_constraint >> tok.identifier [qi::_a = qi::_1] >> 
+			(	primary_key_constraint(qi::_a) 
+			|	foreign_key_constraint(qi::_a)
+			) [qi::_val = qi::_1]
 			;
 
 		primary_key_constraint
 			= tok.kw_primary_key >> tok.paren_open >> (tok.identifier % tok.comma) [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
 			>> tok.paren_close
+			;
+
+		foreign_key_constraint
+			=	(tok.kw_foreign_key >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close >> reference_definition)
+				[phx::bind(&semantic_actions::make_fk_constraint, &sa_, qi::_val, qi::_r1, qi::_1, qi::_2)]
+			;
+
+		reference_definition
+			%=	tok.kw_references >> tok.identifier >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close
 			;
 
 		create_table_columns
@@ -348,6 +373,7 @@ struct sql_grammar
 		table_constraints.name("table constraints");
 		constraint_definition.name("constraint definition");
 		primary_key_constraint.name("primary key constraint");
+		foreign_key_constraint.name("foreign key constraint");
 
 		BOOST_SPIRIT_DEBUG_NODE(program);
 		BOOST_SPIRIT_DEBUG_NODE(statement);
@@ -361,6 +387,7 @@ struct sql_grammar
 		BOOST_SPIRIT_DEBUG_NODE(table_constraints);
 		BOOST_SPIRIT_DEBUG_NODE(constraint_definition);
 		BOOST_SPIRIT_DEBUG_NODE(primary_key_constraint);
+		BOOST_SPIRIT_DEBUG_NODE(foreign_key_constraint);
 
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
@@ -401,7 +428,9 @@ private:
 	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
 	typename rule_loc<typename semantic_actions::constraint_definition_attribute::type, qi::locals<std::string> >::type constraint_definition;
 	typename rule<typename semantic_actions::primary_key_constraint_attribute::type>::type primary_key_constraint;
-	typename rule_loc<typename semantic_actions::numeric_type_attribute::type, qi::locals<bool> >::type numeric_type;
+	typename rule<typename semantic_actions::numeric_type_attribute::type>::type numeric_type;
+	typename rule<typename semantic_actions::foreign_key_constraint_attribute::type>::type foreign_key_constraint;
+	typename rule<typename semantic_actions::reference_definition_attribute::type>::type reference_definition;
 
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
 	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;

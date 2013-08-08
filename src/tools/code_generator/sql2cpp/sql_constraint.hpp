@@ -16,6 +16,7 @@
 #define SQL_CONSTRAINT_HPP
 
 #include <boost/shared_ptr.hpp>
+#include <boost/fusion/include/adapt_struct.hpp>
 #include <string>
 
 namespace sql{
@@ -56,9 +57,30 @@ struct primary_key : base_constraint_crtp<primary_key>
 	std::vector<std::string> keys;
 };
 
+struct key_references
+{
+	std::string ref_table;
+	std::vector<std::string> refs;
+};
+
+struct foreign_key : base_constraint_crtp<foreign_key>
+{
+	typedef base_constraint_crtp<foreign_key> base;
+
+	foreign_key(const std::string& name, const std::vector<std::string>& keys, const key_references& refs)
+	: base(name)
+	, keys(keys)
+	, refs(refs)
+	{}
+
+	std::vector<std::string> keys;
+	key_references refs;
+};
+
 struct constraint_visitor
 {
 	virtual void visit(const primary_key&) = 0;
+	virtual void visit(const foreign_key&) = 0;
 };
 
 template <class constraint_type>
@@ -68,5 +90,11 @@ void base_constraint_crtp<constraint_type>::accept(const boost::shared_ptr<const
 }
 
 }} // namespace sql::constraint
+
+BOOST_FUSION_ADAPT_STRUCT(
+	sql::constraint::key_references,
+	(std::string, ref_table)
+	(std::vector<std::string>, refs)
+);
 
 #endif // SQL_CONSTRAINT_HPP
