@@ -27,7 +27,7 @@ for filename in sys.argv[1:]:
 basecolors = map(lambda (n, rgb): rgb, colortables[0][1])
 basecolors.sort()
 subtracted = []
-for i in range(1, len(colortables)):
+for i in xrange(1, len(colortables)):
     exiguous = []
     for (n, rgb) in colortables[i][1]:
         if rgb not in basecolors:

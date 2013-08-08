@@ -123,7 +123,7 @@ class MainFrame(wx.Frame):
             cmd+=" -r"
         if stripcr:
             cmd+=" -s"
-        for i in range(verbose):
+        for i in xrange(verbose):
             cmd+=" -v"
         for path in arguments:
             cmd+=" "+path

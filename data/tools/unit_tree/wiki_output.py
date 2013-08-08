@@ -153,14 +153,14 @@ def main():
 
         # Create grid.
         grid = []
-        for j in range(n + 1):
+        for j in xrange(n + 1):
             grid.append([None] * 6)
         for unit in units:
             grid[unit.y][unit.level] = unit
         
         # Output it.
-        for y in range(n + 1):
-            for x in range(6):
+        for y in xrange(n + 1):
+            for x in xrange(6):
                 unit = grid[y][x]
                 if unit:
                     w("|'''" + unit.name + "'''<br />" + unit.orig_name)

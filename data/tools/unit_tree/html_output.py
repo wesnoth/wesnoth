@@ -243,9 +243,9 @@ class HTMLOutput:
         rows_count = breadth + len(thelist)
         # Create empty grid.
         rows = []
-        for j in range(rows_count):
+        for j in xrange(rows_count):
             column = []
-            for i in range(6):
+            for i in xrange(6):
                 column.append((1, 1, None))
             rows.append(column)
 
@@ -265,7 +265,7 @@ class HTMLOutput:
                 if level < 0: level = 0
                 if level > 5: level = 5
                 rows[x][level] = (1, node.breadth, node)
-                for i in range(1, node.breadth):
+                for i in xrange(1, node.breadth):
                     rows[x + i][level] = (0, 0, node)
                 grid_place(node.children, x)
                 x += node.breadth
@@ -277,7 +277,7 @@ class HTMLOutput:
             node.name = grouper.group_name(group)
 
             rows[x][0] = (6, 1, node)
-            for i in range(1, 6):
+            for i in xrange(1, 6):
                 rows[x][i] = (0, 0, None)
             nodes = groups[group]
             x += 1
@@ -309,7 +309,7 @@ class HTMLOutput:
         def abbrev(name):
             abbrev = name[0]
             word_seperators = [" ", "_", "+", "(", ")"]
-            for i in range(1, len(name)):
+            for i in xrange(1, len(name)):
                 if name[i] in ["+", "(", ")"] or name[i - 1] in word_seperators and name[i] not in word_seperators:
                     abbrev += name[i]
             return abbrev
@@ -375,7 +375,7 @@ class HTMLOutput:
             add_menu("races_menu", x)
 
             for row in self.unitgrid:
-                for column in range(6):
+                for column in xrange(6):
                     hspan, vspan, un = row[column]
                     if not un: continue
                     if isinstance(un, helpers.GroupNode):
@@ -550,7 +550,7 @@ class HTMLOutput:
         rows = self.unitgrid
         write("<table class=\"units\">\n")
         write("<colgroup>")
-        for i in range(6):
+        for i in xrange(6):
             write("<col class=\"col%d\" />" % i)
         write("</colgroup>")
 
@@ -558,9 +558,9 @@ class HTMLOutput:
             "../../../images/misc/leader-crown.png", no_tc=True)
         crownimage = os.path.join(pics_location, pic)
         ms = None
-        for row in range(len(rows)):
+        for row in xrange(len(rows)):
             write("<tr>\n")
-            for column in range(6):
+            for column in xrange(6):
                 hspan, vspan, un = rows[row][column]
                 if vspan:
                     attributes = ""
@@ -938,7 +938,7 @@ class HTMLOutput:
         write('</div>')
         write('<div class="unit-column-right">')
 
-        for si in range(2):
+        for si in xrange(2):
             if si and not female: break
             if si:
                 sportrait = fportrait
@@ -1122,7 +1122,7 @@ def html_postprocess_file(filename, isocode, batchlist):
             else:
                 cids[1].append(c)
 
-    for i in range(2):
+    for i in xrange(2):
         
         campaigns = cids[i]
         campaigns.sort(key = lambda x: "A" if x[1] == "mainline" else "B" + x[2])
@@ -1150,7 +1150,7 @@ def html_postprocess_file(filename, isocode, batchlist):
                 eids[1].append(e)
             
             
-    for i in range(2):
+    for i in xrange(2):
         eras = eids[i]
         eras.sort(key = lambda x: x[2])
 
