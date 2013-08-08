@@ -196,10 +196,13 @@ public:
 	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
 	typedef attribute<sql_table> create_table_attribute;
 	typedef attribute<sql_table> create_statement_attribute;
-	typedef attribute<sql_table> alter_statement_attribute;
-	typedef attribute<sql_table> alter_table_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > alter_table_add_attribute;
-	typedef attribute<sql_table> statement_attribute;
+
+	// Alter statement.
+	typedef attribute<void, std::vector<sql_table>&> alter_statement_attribute;
+	typedef attribute<void, std::vector<sql_table>&> alter_table_attribute;
+	typedef attribute<void, sql_table&> alter_table_add_attribute;
+	
+	typedef attribute<void, std::vector<sql_table>&> statement_attribute;
 	typedef attribute<std::vector<sql_table> > program_attribute;
 	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
@@ -249,7 +252,7 @@ public:
 
 	void make_pk_constraint(typename primary_key_constraint_attribute::s_type& res, 
 							const typename primary_key_constraint_attribute::i_type& name, 
-							const std::vector<std::string>& keys)
+							const std::vector<std::string>& keys) const
 	{
 		res = boost::make_shared<sql::constraint::primary_key>(name, keys);
 	}
@@ -257,9 +260,54 @@ public:
 	void make_fk_constraint(typename foreign_key_constraint_attribute::s_type& res, 
 							const typename foreign_key_constraint_attribute::i_type& name, 
 							const std::vector<std::string>& keys,
-							const sql::constraint::key_references& refs)
+							const sql::constraint::key_references& refs) const
 	{
 		res = boost::make_shared<sql::constraint::foreign_key>(name, keys, refs);
+	}
+
+	/**
+	@param success is set to false to make the parser fails.
+	*/
+	void get_table_by_name(std::vector<sql_table>::iterator &res, 
+		std::vector<sql_table>& tables, 
+		const std::string& name,
+		bool &success) const
+	{
+		res = tables.begin();
+		while(res != tables.end() && !(res->table_identifier == name))
+		{
+			++res;
+		}
+		if(res == tables.end())
+		{
+			std::cerr << "Try to alter the table " << name << " without having previously defined it." << std::endl;
+			success = false;
+		}
+		else
+		{
+			success = true;
+		}
+	}
+
+	/**
+	@post We replace the constraint if it already exists in the table constraints, otherwise we add it.
+	*/
+	void alter_table_add_constraint(sql_table& table, 
+		typename constraint_definition_attribute::s_type& constraint_to_add)
+	{
+		bool to_add = true;
+		for(std::size_t i = 0; i < table.constraints.size() && to_add; ++i)
+		{
+			if(table.constraints[i]->name == constraint_to_add->name)
+			{
+				to_add = false;
+				table.constraints[i] = constraint_to_add;
+			}
+		}
+		if(to_add)
+		{
+			table.constraints.push_back(constraint_to_add);
+		}
 	}
 };
 
@@ -273,12 +321,12 @@ struct sql_grammar
 		: sql_grammar::base_type(program, "program")
 	{
 		program 
-			%=  (statement % tok.semi_colon) >> *tok.semi_colon
+			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon
 			;
 
 		statement 
-			%=   create_statement
-			|		 alter_statement
+			=   create_statement 	[phx::push_back(qi::_r1, qi::_1)]
+			|		alter_statement(qi::_r1)
 			;
 
 		create_statement
@@ -286,19 +334,22 @@ struct sql_grammar
 			;
 
 		alter_statement
-			%=	 tok.kw_alter >> alter_table
+			=	 tok.kw_alter >> alter_table(qi::_r1)
 			;
 
 		alter_table
-			=	 tok.kw_table >> tok.identifier [phx::at_c<0>(qi::_val) = qi::_1] >> (alter_table_add % tok.comma) [phx::at_c<2>(qi::_val) = qi::_1]
+			=	 tok.kw_table
+			>> tok.identifier [phx::bind(&semantic_actions::get_table_by_name, &sa_, qi::_a, qi::_r1, qi::_1, bs::_pass)]
+			>> (alter_table_add(*qi::_a) % tok.comma)
 			;
 
 		alter_table_add
-			%=	 tok.kw_add >> constraint_definition
+			=	 tok.kw_add >> constraint_definition
 			;
 
 		create_table
-			%=	tok.kw_table >> tok.identifier >> tok.paren_open >> create_table_columns >> -(tok.comma >> table_constraints) >> tok.paren_close
+			=	tok.kw_table >> tok.identifier[phx::at_c<0>(qi::_val) = qi::_1] >> tok.paren_open >> create_table_columns [phx::at_c<1>(qi::_val) = qi::_1] 
+				>> -(tok.comma >> table_constraints) [phx::at_c<2>(qi::_val) = qi::_1] >> tok.paren_close
 			;
 
 		table_constraints
@@ -422,7 +473,7 @@ private:
 	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
 	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
 	typename rule<typename semantic_actions::alter_statement_attribute::type>::type alter_statement;
-	typename rule<typename semantic_actions::alter_table_attribute::type>::type alter_table;
+	typename rule_loc<typename semantic_actions::alter_table_attribute::type, qi::locals<std::vector<sql_table>::iterator> >::type alter_table;
 	typename rule<typename semantic_actions::alter_table_add_attribute::type>::type alter_table_add;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
 	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
