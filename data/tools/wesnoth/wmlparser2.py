@@ -711,6 +711,6 @@ code = <<
         print '<?xml version="1.0" encoding="UTF-8" ?>'
         print '<root>'
         xmlify(p.root, True, 1)
-        print '</root>';
+        print '</root>'
     else:
         print(p.root.debug())
