@@ -127,7 +127,7 @@ for filename in args:
                 result.append("#generated from: " + line.strip())
             result.append("#Please do not modify")
 
-            for i in range(2**len(optional_params) - 2, -1, -1):
+            for i in xrange(2**len(optional_params) - 2, -1, -1):
                 enabled_map = dict([(param, i & (1<<index) != 0) for index, param in enumerate(optional_params)])
 
                 suffix = ""

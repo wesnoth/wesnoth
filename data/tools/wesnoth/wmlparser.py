@@ -491,7 +491,7 @@ class Parser:
         if name in self.macros:
             macro = self.macros[name]
             text = macro.text
-            for i in range(len(macro.params)):
+            for i, j in enumerate(macro.params):
                 if 1 + i >= len(params):
                     raise Error(self, "Not enough parameters for macro %s. " % name +
                         "%d given but %d needed %s." % (len(params) - 1,
@@ -505,10 +505,10 @@ class Parser:
                     rep = self.gettext(self.textdomain, rep[q + 1:qe])
                     rep = '"' + rep + '"'
                 if self.verbose:
-                    #s = "Replacing {%s} with %s\n" % (macro.params[i], rep)
+                    #s = "Replacing {%s} with %s\n" % (j, rep)
                     ##sys.stderr.write(s.encode("utf8"))
                     pass
-                text = text.replace("{%s}" % macro.params[i], rep)
+                text = text.replace("{%s}" % j, rep)
 
             if text:
                 self.push_text(name, text, initial_textdomain = macro.textdomain)
@@ -644,7 +644,7 @@ class Parser:
         values += [value]
 
         data = []
-        for i in range(len(variables)):
+        for i in xrange(len(variables)):
             try:
                 key = wmldata.DataText(variables[i], values[i], translatable)
                 key.set_meta(filename, line)
