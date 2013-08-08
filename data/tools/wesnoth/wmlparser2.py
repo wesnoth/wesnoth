@@ -14,14 +14,14 @@ tempdirs_to_clean = []
 @atexit.register
 def cleaner():
     for temp_dir in tempdirs_to_clean:
-        shutil.rmtree(temp_dir, ignore_errors = True)
+        shutil.rmtree(temp_dir, ignore_errors=True)
 
 class WMLError(Exception):
     """
     Catch this exception to retrieve the first error message from
     the parser.
     """
-    def __init__(self, parser = None, message = None):
+    def __init__(self, parser=None, message=None):
         if parser:
             self.line = parser.parser_line
             self.wml_line = parser.last_wml_line
@@ -67,7 +67,7 @@ class AttributeNode:
         return self.name + "=" + " .. ".join(
             [v.debug() for v in self.value])
 
-    def get_text(self, translation = None):
+    def get_text(self, translation=None):
         r = u""
         for s in self.value:
             ustr = s.data.decode("utf8", "ignore")
@@ -123,10 +123,10 @@ class TagNode:
 
         unit.get_all()
         will return 4 nodes for all 4 sub-elements.
-        
+
         unit.get_all(att = "")
         Will return the two attribute nodes.
-        
+
         unit.get_all(tag = "")
         Will return the two tag nodes.
 
@@ -149,7 +149,7 @@ class TagNode:
                 r.append(sub)
         return r
 
-    def get_text_val(self, name, default = None, translation = None, val = -1):
+    def get_text_val(self, name, default=None, translation=None, val=-1):
         """
         Returns the value of the specified attribute. If the attribute
         is given multiple times, the value number val is returned (default
@@ -162,7 +162,7 @@ class TagNode:
         it to gettext.translation if you have the binary message
         catalogues loaded.
         """
-        x = self.get_all(att = name)
+        x = self.get_all(att=name)
         if not x: return default
         return x[val].get_text(translation)
 
@@ -171,7 +171,7 @@ class TagNode:
 
         if isinstance(node, TagNode):
             if node.name not in self.speedy_tags:
-                self.speedy_tags[node.name] =[]
+                self.speedy_tags[node.name] = []
             self.speedy_tags[node.name].append(node)
 
 class RootNode(TagNode):
@@ -210,15 +210,15 @@ class Parser:
         self.last_wml_line = "?"
         self.parser_line = 0
 
-    def parse_file(self, path, defines = ""):
+    def parse_file(self, path, defines=""):
         self.path = path
         if not self.no_preprocess:
             self.preprocess(defines)
         self.parse()
 
-    def parse_text(self, text, defines = ""):
-        temp = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
-            suffix = ".cfg")
+    def parse_text(self, text, defines=""):
+        temp = tempfile.NamedTemporaryFile(prefix="wmlparser_",
+            suffix=".cfg")
         temp.write(text)
         temp.flush()
         self.path = temp.name
@@ -252,7 +252,7 @@ class Parser:
         if self.verbose:
             print(" ".join(commandline))
         p = subprocess.Popen(commandline,
-            stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = p.communicate()
         if self.verbose:
             print(out + err)
@@ -453,7 +453,7 @@ class Parser:
         if self.keep_temp_dir is None and self.temp_dir:
             if self.verbose:
                 print("removing " + self.temp_dir)
-            shutil.rmtree(self.temp_dir, ignore_errors = True)
+            shutil.rmtree(self.temp_dir, ignore_errors=True)
 
     def handle_command(self, com):
         if com.startswith("line "):
@@ -461,12 +461,12 @@ class Parser:
         elif com.startswith("textdomain "):
             self.textdomain = com[11:]
         else:
-            raise WMLError(self, "Unknown parser command: " + com);
+            raise WMLError(self, "Unknown parser command: " + com)
 
     def get_all(self, **kw):
         return self.root.get_all(**kw)
 
-    def get_text_val(self, name, default = None, translation = None):
+    def get_text_val(self, name, default=None, translation=None):
         return self.root.get_text_val(name, default, translation)
 
 
@@ -535,24 +535,24 @@ def xmlify(tree, verbose=False, depth=0):
             '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>'
             else:
                 print sdepth + '<' + child.name + '>' + \
-            escape(child.get_text())  + '</' + child.name + '>'
+            escape(child.get_text()) + '</' + child.name + '>'
 
 if __name__ == "__main__":
     # Hack to make us not crash when we encounter characters that aren't ASCII
     sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
     opt = optparse.OptionParser()
-    opt.add_option("-a", "--data-dir", help = "directly passed on to wesnoth.exe")
-    opt.add_option("-c", "--config-dir", help = "directly passed on to wesnoth.exe")
-    opt.add_option("-i", "--input", help = "a WML file to parse")
-    opt.add_option("-k", "--keep-temp", help = "specify directory where to keep temp files")
-    opt.add_option("-t", "--text", help = "WML text to parse")
-    opt.add_option("-w", "--wesnoth", help = "path to wesnoth.exe")
-    opt.add_option("-d", "--defines", help = "comma separated list of WML defines")
-    opt.add_option("-T", "--test", action = "store_true")
-    opt.add_option("-j", "--to-json", action = "store_true")
-    opt.add_option("-n", "--no-preprocess", action = "store_true")
-    opt.add_option("-v", "--verbose", action = "store_true")
-    opt.add_option("-x", "--to-xml", action = "store_true")
+    opt.add_option("-a", "--data-dir", help="directly passed on to wesnoth.exe")
+    opt.add_option("-c", "--config-dir", help="directly passed on to wesnoth.exe")
+    opt.add_option("-i", "--input", help="a WML file to parse")
+    opt.add_option("-k", "--keep-temp", help="specify directory where to keep temp files")
+    opt.add_option("-t", "--text", help="WML text to parse")
+    opt.add_option("-w", "--wesnoth", help="path to wesnoth.exe")
+    opt.add_option("-d", "--defines", help="comma separated list of WML defines")
+    opt.add_option("-T", "--test", action="store_true")
+    opt.add_option("-j", "--to-json", action="store_true")
+    opt.add_option("-n", "--no-preprocess", action="store_true")
+    opt.add_option("-v", "--verbose", action="store_true")
+    opt.add_option("-x", "--to-xml", action="store_true")
     options, args = opt.parse_args()
 
     if not options.input and not options.text and not options.test:
