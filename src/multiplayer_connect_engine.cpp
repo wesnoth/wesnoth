@@ -63,12 +63,14 @@ const std::string attributes_to_trim[] = {
 
 namespace mp {
 
-connect_engine::connect_engine(game_display& disp, controller mp_controller,
-	const mp_game_settings& params) :
+connect_engine::connect_engine(game_display& disp,
+	const mp_game_settings& params, const bool local_players_only,
+	const bool first_scenario) :
 	level_(),
 	state_(),
 	params_(params),
-	mp_controller_(mp_controller),
+	local_players_only_(local_players_only),
+	first_scenario_(first_scenario),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
@@ -605,8 +607,8 @@ int connect_engine::process_network_error(network::error& error)
 		if (user->connection == error.socket) {
 			int side_index = find_player_side_index_by_id(user->name);
 			if (side_index != -1) {
-				side_engines_[side_index]->reset(mp_controller_);
-
+				side_engines_[side_index]->
+					reset((local_players_only_) ? CNTR_LOCAL : CNTR_NETWORK);
 				res = side_index + 1;
 			} else {
 				res = 0;
@@ -633,7 +635,14 @@ int connect_engine::process_network_error(network::error& error)
 void connect_engine::process_network_connection(const network::connection sock)
 {
 	network::send_data(config("join_game"), 0);
-	network::send_data(level_, sock);
+	// If we are connected, send data to the connected host.
+	if (first_scenario_) {
+		network::send_data(level_, sock);
+	} else {
+		config next_level;
+		next_level.add_child("store_next_scenario", level_);
+		network::send_data(next_level, sock);
+	}
 }
 
 connected_user_list::iterator
@@ -701,7 +710,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		cfg_["controller"] = "ai";
 	}
 	if (allow_player_ && !parent_.params_.saved_game) {
-		mp_controller_ = parent_.mp_controller_;
+		mp_controller_ = (parent_.local_players_only_) ? CNTR_LOCAL :
+			CNTR_NETWORK;
 	} else {
 		size_t i = CNTR_NETWORK;
 		if (!allow_player_) {
@@ -932,7 +942,7 @@ bool side_engine::ready_for_start() const
 	// The host and the AI are always ready.
 	if ((mp_controller_ == mp::CNTR_COMPUTER) ||
 		(mp_controller_ == mp::CNTR_EMPTY) ||
-		(mp_controller_== mp::CNTR_LOCAL)) {
+		(mp_controller_ == mp::CNTR_LOCAL)) {
 
 		return true;
 	}

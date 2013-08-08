@@ -31,8 +31,7 @@ class test_mp_connect : public mp::connect {
 public:
 	test_mp_connect(game_display& disp, const config& game_config,
 		mp::chat& c, config& gamelist, const mp_game_settings& params) :
-		mp::connect(disp, game_config, c, gamelist, params, mp::CNTR_LOCAL,
-			true)
+		mp::connect(disp, game_config, c, gamelist, params, true, true)
 		{}
 
 	mp::connect_engine& engine() { return mp::connect::engine(); }
@@ -41,9 +40,8 @@ public:
 
 class test_mp_connect_engine : public mp::connect_engine {
 public:
-	test_mp_connect_engine(game_display& disp, mp::controller mp_controller,
-		const mp_game_settings& params) :
-		mp::connect_engine(disp, mp_controller, params)
+	test_mp_connect_engine(game_display& disp, const mp_game_settings& params) :
+		mp::connect_engine(disp, params, true, true)
 		{}
 
 	std::vector<mp::side_engine_ptr>& side_engines()
@@ -101,7 +99,7 @@ struct mp_connect_fixture {
 static test_mp_connect_engine* create_test_mp_connect_engine()
 {
 	test_mp_connect_engine* mp_connect_engine =
-		new test_mp_connect_engine(*disp, mp::CNTR_LOCAL, params);
+		new test_mp_connect_engine(*disp, params);
 
 	// There must be at least one team.
 	mp_connect_engine->team_names().push_back("1");

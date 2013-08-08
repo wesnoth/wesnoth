@@ -175,13 +175,14 @@ handler_vector wait::leader_preview_pane::handler_members() {
 
 
 wait::wait(game_display& disp, const config& cfg,
-		mp::chat& c, config& gamelist) :
+		mp::chat& c, config& gamelist, const bool first_scenario) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(disp.video(), _("Cancel")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
 	level_(),
 	state_(),
+	first_scenario_(first_scenario),
 	stop_updates_(false)
 {
 	game_menu_.set_numeric_keypress_selection(false);
@@ -199,18 +200,12 @@ void wait::join_game(bool observe)
 	//if we have got valid side data
 	//the first condition is to make sure that we don't have another
 	//WML message with a side-tag in it
-	while (!level_.has_attribute("version") || !level_.child("side")) {
-		network::connection data_res = dialogs::network_receive_dialog(disp(),
-				_("Getting game data..."), level_);
-		if (!data_res) {
-			set_result(QUIT);
-			return;
-		}
-		check_response(data_res, level_);
-		if(level_.child("leave_game")) {
-			set_result(QUIT);
-			return;
-		}
+	if (!download_level_data()) {
+		set_result(QUIT);
+		return;
+	} else if (!first_scenario_) {
+		config cfg = level_.child("next_scenario");
+		level_ = cfg;
 	}
 
 	// Add the map name to the title.
@@ -424,8 +419,12 @@ void wait::process_network_data(const config& data, const network::connection so
 		/** @todo We should catch config::error and then leave the game. */
 		level_.apply_diff(c);
 		generate_menu();
-	} else if(data.child("side")) {
-		level_ = data;
+	} else if(data.child("side") || data.child("next_scenario")) {
+		if (first_scenario_) {
+			level_ = data;
+		} else {
+			level_ = data.child("next_scenario");
+		}
 		LOG_NW << "got some sides. Current number of sides = "
 			<< level_.child_count("side") << ','
 			<< data.child_count("side") << '\n';
@@ -549,6 +548,38 @@ void wait::generate_menu()
 	// "gamelist" user data
 	if (!gamelist().child("user")) {
 		set_user_list(playerlist, true);
+	}
+}
+
+bool wait::download_level_data()
+{
+	if (!first_scenario_) {
+		// Ask for the next scenario data.
+		network::send_data(config("load_next_scenario"), 0);
+	}
+
+	while (!has_level_data()) {
+		network::connection data_res = dialogs::network_receive_dialog(
+			disp(), _("Getting game data..."), level_);
+
+		if (!data_res) {
+			return false;
+		}
+		check_response(data_res, level_);
+		if (level_.child("leave_game")) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+bool wait::has_level_data()
+{
+	if (first_scenario_) {
+		return level_.has_attribute("version") && level_.child("side");
+	} else {
+		return level_.child("next_scenario");
 	}
 }
 

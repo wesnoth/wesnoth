@@ -45,8 +45,8 @@ typedef boost::tuple<bool, bool, bool, std::vector<int> > network_res_tuple;
 class connect_engine
 {
 public:
-	connect_engine(game_display& disp, controller mp_controller,
-		const mp_game_settings& params);
+	connect_engine(game_display& disp, const mp_game_settings& params,
+		const bool local_players_only, const bool first_scenario);
 	~connect_engine();
 
 	config* current_config();
@@ -87,8 +87,8 @@ public:
 
 	const config& level() const { return level_; }
 	const game_state& state() const { return state_; }
+	bool local_players_only() const { return local_players_only_; }
 	connected_user_list& users() { return users_; }
-	controller mp_controller() const { return mp_controller_; }
 	std::vector<std::string>& team_names() { return team_names_; }
 	std::vector<std::string>& user_team_names() { return user_team_names_; }
 
@@ -109,7 +109,9 @@ private:
 	game_state state_;
 
 	const mp_game_settings& params_;
-	controller mp_controller_;
+
+	const bool local_players_only_;
+	const bool first_scenario_;
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;

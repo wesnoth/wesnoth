@@ -165,7 +165,7 @@ void connect::side::process_event()
 
 		const int cntr_last =
 			(engine_->save_id().empty() ? CNTR_LAST-1 :	CNTR_LAST) -
-			(parent_->local_only_ ? 1 : 0);
+			(parent_->engine_.local_players_only() ? 1 : 0);
 		if (combo_controller_->selected() == cntr_last) {
 			update_controller_ui();
 		} else if (combo_controller_->selected() < cntr_last) {
@@ -173,7 +173,7 @@ void connect::side::process_event()
 			// is not allowed for combo_controller_.
 			engine_->
 				set_mp_controller(mp::controller(combo_controller_->selected() +
-					(parent_->local_only_ ? 1 : 0)));
+					(parent_->engine_.local_players_only() ? 1 : 0)));
 			engine_->set_player_id("");
 			engine_->set_ready_for_start(false);
 			changed_ = true;
@@ -442,7 +442,7 @@ void connect::side::update_controller_ui()
 {
 	if (engine_->player_id().empty()) {
 		combo_controller_->set_selected(
-			engine_->mp_controller() - (parent_->local_only_ ? 1 : 0));
+			engine_->mp_controller() - (parent_->engine_.local_players_only() ? 1 : 0));
 	} else {
 		connected_user_list::iterator player =
 			parent_->engine_.find_player_by_id(engine_->player_id());
@@ -452,9 +452,9 @@ void connect::side::update_controller_ui()
 			combo_controller_->set_selected(
 				CNTR_LAST + no_reserve + 1 +
 				(player - parent_->engine_.users().begin()) -
-				(parent_->local_only_ ? 1 : 0));
+				(parent_->engine_.local_players_only() ? 1 : 0));
 		} else {
-			assert(parent_->local_only_ != true);
+			assert(parent_->engine_.local_players_only() != true);
 			combo_controller_->set_selected(CNTR_NETWORK);
 		}
 	}
@@ -479,16 +479,15 @@ std::string connect::side::get_RC_suffix(
 
 connect::connect(game_display& disp, const config& game_config,
 	chat& c, config& gamelist, const mp_game_settings& params,
-	mp::controller default_controller, bool local_players_only) :
+	bool local_players_only, bool first_scenario) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
-	local_only_(local_players_only),
 	params_(params),
 	player_types_(),
 	player_teams_(),
 	player_colors_(),
 	ai_algorithms_(),
 	sides_(),
-	engine_(disp, default_controller, params),
+	engine_(disp, params, local_players_only, first_scenario),
 	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
@@ -529,14 +528,16 @@ connect::connect(game_display& disp, const config& game_config,
 			_("The scenario is invalid because it has no sides."));
 	}
 
-	// Send Initial information
-	config response;
-	config& create_game = response.add_child("create_game");
-	create_game["name"] = params.name;
-	if (params.password.empty() == false) {
-		response["password"] = params.password;
+	if (first_scenario) {
+		// Send Initial information
+		config response;
+		config& create_game = response.add_child("create_game");
+		create_game["name"] = params.name;
+		if (params.password.empty() == false) {
+			response["password"] = params.password;
+		}
+		network::send_data(response, 0);
 	}
-	network::send_data(response, 0);
 
 	update_user_combos();
 
@@ -550,7 +551,13 @@ connect::connect(game_display& disp, const config& game_config,
 	update_playerlist_state(true);
 
 	// If we are connected, send data to the connected host.
-	network::send_data(engine_.level(), 0);
+	if (first_scenario) {
+		network::send_data(engine_.level(), 0);
+	} else {
+		config next_level;
+		next_level.add_child("store_next_scenario", engine_.level());
+		network::send_data(next_level, 0);
+	}
 }
 
 connect::~connect()
@@ -744,7 +751,7 @@ bool connect::accept_connections()
 void connect::lists_init()
 {
 	// Options.
-	if (!local_only_) {
+	if (!engine_.local_players_only()) {
 		player_types_.push_back(_("Network Player"));
 	}
 	player_types_.push_back(_("Local Player"));

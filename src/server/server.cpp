@@ -2521,7 +2521,6 @@ void server::process_data_game(const network::connection sock,
 		// Send the update of the game description to the lobby.
 		update_game_in_lobby(g);
 
-		g->start_game(pl);
 		return;
 	// If a player advances to the next scenario of a mp campaign. (deprecated)
 	///@deprecated r22619 a player advances to the next scenario of a mp campaign (notify_next_scenario)

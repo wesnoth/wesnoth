@@ -34,10 +34,8 @@ const size_t max_login_size = 20;
  *
  * @param disp        The global display
  * @param game_config The global, top-level WML configuration for the game
- * @param default_controller The default controller type
  */
-void start_local_game(game_display& disp, const config& game_config,
-		mp::controller default_controller);
+void start_local_game(game_display& disp, const config& game_config);
 
 /** Starts a multiplayer game in single-user mode.
  *
@@ -45,7 +43,7 @@ void start_local_game(game_display& disp, const config& game_config,
  * cmdline_opts The commandline options
  */
 void start_local_game_commandline(game_display& disp, const config& game_config,
-		mp::controller default_controller, const commandline_options& cmdline_opts);
+	const commandline_options& cmdline_opts);
 
 /** Starts a multiplayer game in client mode.
  *
@@ -57,7 +55,9 @@ void start_client(game_display& disp, const config& game_config,
 		const std::string& host);
 
 game_state goto_mp_connect(game_display& disp, const config& game_config,
-	const mp_game_settings& params);
+	const mp_game_settings& params, bool network_game);
+
+game_state goto_mp_wait(game_display& disp, const config& game_config);
 
 }
 #endif

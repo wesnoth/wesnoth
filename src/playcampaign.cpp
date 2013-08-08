@@ -352,7 +352,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay,
-	bool local_mp_game)
+	bool network_game)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -577,29 +577,47 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				return res;
 			}
 
-			// Ask for the next scenario data.
-			network::send_data(config("load_next_scenario"), 0);
-			config cfg;
-			std::string msg = _("Downloading next scenario...");
-			do {
-				cfg.clear();
-				network::connection data_res = dialogs::network_receive_dialog(disp,
-						msg, cfg);
-				if(!data_res) {
-					gamestate.snapshot = config();
-					return QUIT;
-				}
-			} while (!cfg.child("next_scenario"));
+			if (game_config::campaign_screens) {
+				config old_carryover_sides_start =
+					gamestate.carryover_sides_start;
+				gamestate.mp_settings().scenario_data = *scenario;
 
-			if (const config &c = cfg.child("next_scenario")) {
-				starting_pos = c;
+				// Opens mp::connect dialog to get a new gamestate.
+				// Old carryover data is preserved.
+				gamestate = mp::goto_mp_wait(disp, game_config);
+				gamestate.carryover_sides_start.merge_with(
+					old_carryover_sides_start);
+
+				starting_pos.merge_with(gamestate.replay_start());
 				scenario = &starting_pos;
 				gamestate = game_state(starting_pos);
 				//retain carryover_sides_start, as the config from the server doesn't contain it
 				gamestate.carryover_sides_start = sides.to_config();
 			} else {
-				gamestate.snapshot = config();
-				return QUIT;
+				// Ask for the next scenario data.
+				network::send_data(config("load_next_scenario"), 0);
+				config cfg;
+				std::string msg = _("Downloading next scenario...");
+				do {
+					cfg.clear();
+					network::connection data_res = dialogs::network_receive_dialog(disp,
+							msg, cfg);
+					if(!data_res) {
+						gamestate.snapshot = config();
+						return QUIT;
+					}
+				} while (!cfg.child("next_scenario"));
+
+				if (const config &c = cfg.child("next_scenario")) {
+					starting_pos = c;
+					scenario = &starting_pos;
+					gamestate = game_state(starting_pos);
+					//retain carryover_sides_start, as the config from the server doesn't contain it
+					gamestate.carryover_sides_start = sides.to_config();
+				} else {
+					gamestate.snapshot = config();
+					return QUIT;
+				}
 			}
 		} else {
 			scenario = &game_config.find_child(type, "id", gamestate.carryover_sides_start["next_scenario"]);
@@ -612,14 +630,15 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			if(io_type == IO_SERVER && scenario != NULL) {
-				if (local_mp_game && game_config::debug) {
+				if (game_config::campaign_screens) {
 					config old_carryover_sides_start =
 						gamestate.carryover_sides_start;
 					gamestate.mp_settings().scenario_data = *scenario;
 
 					// Opens mp::connect dialog to get a new gamestate.
 					// Old carryover data is preserved.
-					gamestate = mp::goto_mp_connect(disp, game_config, gamestate.mp_settings());
+					gamestate = mp::goto_mp_connect(disp, game_config,
+						gamestate.mp_settings(), network_game);
 					gamestate.carryover_sides_start.merge_with(
 						old_carryover_sides_start);
 
@@ -672,6 +691,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// Send next scenario data.
 				network::send_data(mp::next_level_config(*scenario, gamestate),
 					0);
+				network::send_data(config("start_game"), 0);
 			}
 		}
 

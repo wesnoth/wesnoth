@@ -129,6 +129,9 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
 		}
 	}
+	if (cmdline_opts_.campaign_screens)	{
+		game_config::campaign_screens = true;
+	}
 	if (cmdline_opts_.clock)
 		gui2::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {
@@ -845,13 +848,8 @@ bool game_controller::play_multiplayer()
 		cursor::set(cursor::NORMAL);
 
 		if(res == 3) {
-			config game_data;
-
-			const mp::controller cntr = mp::CNTR_LOCAL;
-
 			mp::start_local_game(disp(),
-			    resources::config_manager->game_config(), cntr);
-
+			    resources::config_manager->game_config());
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
 			if(res == 0) {
@@ -917,11 +915,8 @@ bool game_controller::play_multiplayer_commandline()
 	events::discard_input(); // prevent the "keylogger" effect
 	cursor::set(cursor::NORMAL);
 
-	config game_data;
-	const mp::controller cntr = mp::CNTR_LOCAL;
-
 	mp::start_local_game_commandline(disp(),
-	    resources::config_manager->game_config(), cntr, cmdline_opts_);
+	    resources::config_manager->game_config(), cmdline_opts_);
 
 	return false;
 }

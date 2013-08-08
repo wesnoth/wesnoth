@@ -100,7 +100,7 @@ public:
 
 	connect(game_display& disp, const config& game_config, chat& c,
 			config& gamelist, const mp_game_settings& params,
-			mp::controller default_controller, bool local_players_only = false);
+			bool local_players_only, bool first_scenario);
 	~connect();
 
 	// Returns the game state, which contains all information about the current
@@ -133,8 +133,6 @@ private:
 	// game label, to reflect the actual state.
 	void update_playerlist_state(bool silent = true);
 	void update_user_combos();
-
-	bool local_only_;
 
 	const mp_game_settings params_;
 
