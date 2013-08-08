@@ -20,5 +20,4 @@ namespace type{
 varchar::varchar(std::size_t length)
 : length(length)
 {}
-
 }} // namespace sql::type

@@ -64,7 +64,7 @@ public:
 	// Tokens with no attributes.
 	lex::token_def<lex::omit> type_smallint, type_int, type_varchar, type_text, type_date;
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
-		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add;
+		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add, kw_unsigned;
   
 	lex::token_def<lex::omit> comma, semi_colon, paren_open, paren_close;
   lex::token_def<lex::omit>	ws, comment, cstyle_comment;
@@ -95,6 +95,7 @@ public:
 		kw_primary_key = "(?i:primary +key)";
 		kw_alter = "(?i:alter)";
 		kw_add = "(?i:add)";
+		kw_unsigned = "(?i:unsigned)";
 
 		// Values.
 		signed_digit = "[-+]?[0-9]+";
@@ -121,7 +122,7 @@ public:
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
 									kw_create | kw_table | kw_constraint | kw_primary_key | kw_alter |
-									kw_add;
+									kw_add | kw_unsigned;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
 
 		this->self += ws 		[ lex::_pass = lex::pass_flags::pass_ignore ] 
@@ -185,6 +186,7 @@ class semantic_actions
 {
 public:
 	typedef attribute<boost::shared_ptr<sql::type::base_type> > column_type_attribute;
+	typedef attribute<boost::shared_ptr<sql::type::numeric_type> > numeric_type_attribute;
 	typedef attribute<std::string> default_value_attribute;
 	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
 	typedef attribute<sql_column> column_attribute;
@@ -209,6 +211,18 @@ public:
 	void make_varchar_type(typename column_type_attribute::s_type& res, std::size_t length) const
 	{
 		res = boost::make_shared<sql::type::varchar>(length);
+	}
+
+	template<class T>
+	void make_numeric_type(typename numeric_type_attribute::s_type& res) const
+	{
+		res = boost::make_shared<T>();
+		res->is_unsigned = false;
+	}
+
+	void make_unsigned_numeric(typename numeric_type_attribute::s_type& res) const
+	{
+		res->is_unsigned = true;
 	}
 
 	template <class T>
@@ -307,12 +321,19 @@ struct sql_grammar
 			;
 
 		column_type
-			=   tok.type_smallint		[phx::bind(&semantic_actions::make_column_type<sql::type::smallint>, &sa_, qi::_val)]
-			|   tok.type_int 				[phx::bind(&semantic_actions::make_column_type<sql::type::integer>, &sa_, qi::_val)]
-			|   (tok.type_varchar > tok.paren_open > tok.unsigned_digit > tok.paren_close) 
+			=   numeric_type	[qi::_val = qi::_1]
+			|		(tok.type_varchar > tok.paren_open > tok.unsigned_digit > tok.paren_close) 
 															[phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
 			|   tok.type_text 			[phx::bind(&semantic_actions::make_column_type<sql::type::text>, &sa_, qi::_val)]
 			|   tok.type_date			  [phx::bind(&semantic_actions::make_column_type<sql::type::date>, &sa_, qi::_val)]
+			;
+
+		numeric_type
+			=
+			(		tok.type_smallint		[phx::bind(&semantic_actions::make_numeric_type<sql::type::smallint>, &sa_, qi::_val)]
+			| 	tok.type_int 				[phx::bind(&semantic_actions::make_numeric_type<sql::type::integer>, &sa_, qi::_val)]
+			) 
+				>> -tok.kw_unsigned		[phx::bind(&semantic_actions::make_unsigned_numeric, &sa_, qi::_val)]
 			;
 
 		program.name("program");
@@ -380,6 +401,7 @@ private:
 	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
 	typename rule_loc<typename semantic_actions::constraint_definition_attribute::type, qi::locals<std::string> >::type constraint_definition;
 	typename rule<typename semantic_actions::primary_key_constraint_attribute::type>::type primary_key_constraint;
+	typename rule_loc<typename semantic_actions::numeric_type_attribute::type, qi::locals<bool> >::type numeric_type;
 
 	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
 	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;

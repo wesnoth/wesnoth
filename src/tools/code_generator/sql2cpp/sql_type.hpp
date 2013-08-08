@@ -24,19 +24,31 @@ struct type_visitor;
 
 struct base_type
 {
+	base_type(){}
 	virtual void accept(const boost::shared_ptr<type_visitor>& visitor) const = 0;
 };
 
-template <class sql_type>
-struct base_type_crtp : base_type
+
+/* inherit_from help to choose another intermediate type than base_type to inherit from.
+That can help to have a type erasure also use to aggregate data (just like numeric_type
+that represents a rule in the parser).
+*/
+template <class sql_type, class inherit_from = base_type>
+struct base_type_crtp : inherit_from
 {
 	virtual void accept(const boost::shared_ptr<type_visitor>& visitor) const;
 };
 
-struct smallint : base_type_crtp<smallint>
+struct numeric_type : base_type
+{
+	bool is_unsigned;
+	virtual void accept(const boost::shared_ptr<type_visitor>& visitor) const = 0;
+};
+
+struct smallint : base_type_crtp<smallint, numeric_type>
 {};
 
-struct integer : base_type_crtp<integer>
+struct integer : base_type_crtp<integer, numeric_type>
 {};
 
 struct text : base_type_crtp<text>
@@ -61,8 +73,8 @@ struct type_visitor
 	virtual void visit(const varchar&) = 0;
 };
 
-template <class sql_type>
-void base_type_crtp<sql_type>::accept(const boost::shared_ptr<type_visitor>& visitor) const
+template <class sql_type, class inherit_from>
+void base_type_crtp<sql_type, inherit_from>::accept(const boost::shared_ptr<type_visitor>& visitor) const
 {
 	visitor->visit(*static_cast<const sql_type*>(this));
 }
