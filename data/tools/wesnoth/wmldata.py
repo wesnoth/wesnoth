@@ -596,7 +596,7 @@ class DataSub(Data):
         if q[0] == q[1] == q[2]:
             self.set_text_val(name, value)
         else:
-            for d in range(3):
+            for d in xrange(3):
                 ifdef = self.get_or_create_ifdef(["EASY", "NORMAL", "HARD"][d])
                 ifdef.set_text_val(name, q[d])
 

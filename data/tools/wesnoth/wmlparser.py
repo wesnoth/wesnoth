@@ -19,7 +19,7 @@ class Error(Exception):
 
     def __init__(self, parser, text):
         self.text = "%s:%d: %s" % (parser.filename, parser.line, text)
-        for i in range(len(parser.texts)):
+        for i in xrange(len(parser.texts)):
             parent = parser.texts[-1 - i]
             self.text += "\n " + " " * i + "from %s:%d" % (parent.filename, parent.line)
 
