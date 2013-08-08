@@ -360,7 +360,7 @@ class DataSub(Data):
 
     def compare(self, other):
         if len(self.data) != len(other.data): return False
-        for i in range(self.data):
+        for i in xrange(self.data):
             if not self.data[i].compare(other.data[i]): return False
         return True
 
@@ -583,7 +583,7 @@ class DataSub(Data):
         value = str(value)
         # read existing values
         q = []
-        for d in range(3):
+        for d in xrange(3):
             q += [self.get_quantity(name, d, value)]
         q[difficulty] = value
 

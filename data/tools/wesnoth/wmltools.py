@@ -577,7 +577,7 @@ class CrossRef:
                             instring = False
                             args = []
                             arg = ""
-                            for i in range(match.start(0), len(line)):
+                            for i in xrange(match.start(0), len(line)):
                                 if instring:
                                     if line[i] == '"':
                                         instring = False
