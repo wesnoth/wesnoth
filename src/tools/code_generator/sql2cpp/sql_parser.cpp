@@ -412,18 +412,25 @@ private:
 
 struct sql2cpp_type_visitor : sql::type::type_visitor
 {
+private:
+	std::string add_unsigned_qualifier(const sql::type::numeric_type& num_type)
+	{
+		return (num_type.is_unsigned) ? "u":"";
+	}
+public:
+
 	sql2cpp_type_visitor(std::string& res)
 	: res_(res)
 	{}
 
-	virtual void visit(const sql::type::smallint&)
+	virtual void visit(const sql::type::smallint& s)
 	{
-		res_ = "short";
+		res_ = "boost::" + add_unsigned_qualifier(s) + "int16_t";
 	}
 
-	virtual void visit(const sql::type::integer&)
+	virtual void visit(const sql::type::integer& i)
 	{
-		res_ = "int";
+		res_ = "boost::" + add_unsigned_qualifier(i) + "int32_t";
 	}
 
 	virtual void visit(const sql::type::text&)
@@ -452,10 +459,14 @@ struct sql2cpp_header_type_visitor : sql::type::type_visitor
 	{}
 
 	virtual void visit(const sql::type::smallint&)
-	{}
+	{
+		res_ = "#include <boost/cstdint.hpp>";
+	}
 
 	virtual void visit(const sql::type::integer&)
-	{}
+	{
+		res_ = "#include <boost/cstdint.hpp>";
+	}
 
 	virtual void visit(const sql::type::text&)
 	{
