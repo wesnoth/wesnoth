@@ -140,11 +140,11 @@ class TagNode:
             ok = True
             for k, v in kw.items():
                 if k == "tag":
-                    if not isinstance(sub, TagNode): ok = False
-                    elif v != "" and sub.name != v: ok = False
+                   if not isinstance(sub, TagNode): ok = False
+                   elif v != "" and sub.name != v: ok = False
                 elif k == "att":
-                    if not isinstance(sub, AttributeNode): ok = False
-                    elif v != "" and sub.name != v: ok = False
+                   if not isinstance(sub, AttributeNode): ok = False
+                   elif v != "" and sub.name != v: ok = False
             if ok:
                 r.append(sub)
         return r
