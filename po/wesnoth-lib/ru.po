@@ -1,6 +1,6 @@
 # translation of ru.po to
 # Russian translations for Battle for Wesnoth package.
-# Copyright (C) 2004-2013 Wesnoth development team
+# Copyright (C) 2004 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Translators:
 # Alexandr Menovchicov (VaM) - orders@kypi.ru
@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-06-24 15:23+0200\n"
-"PO-Revision-Date: 2013-08-01 14:05+0400\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
+"PO-Revision-Date: 2012-04-06 15:19+0400\n"
 "Last-Translator: Fedor Khod'kov <fkhodkov@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
@@ -24,7 +24,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Emacs 24.2.50.1, po-mode 2.2+0.4\n"
+"X-Generator: Emacs 24.0.94.1, po-mode 2.2+0.4\n"
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
@@ -3461,7 +3461,7 @@ msgstr "Удалить аддоны"
 #: src/gui/dialogs/network_transmission.cpp:54
 #: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1200
 msgid "unit_byte^B"
-msgstr "Б"
+msgstr "B"
 
 #: src/gui/dialogs/game_load.cpp:269
 msgid "#(Invalid)"
@@ -3697,9 +3697,9 @@ msgstr ""
 
 #: src/hotkey_preferences_display.cpp:658
 #, fuzzy
-#| msgid "Clear Hotkey"
+#| msgid "Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "Сбросить горячую клавишу"
+msgstr "Горячие клавиши"
 
 #: src/hotkeys.cpp:62
 #, fuzzy
@@ -4047,8 +4047,10 @@ msgid "Scroll Palette Right"
 msgstr ""
 
 #: src/hotkeys.cpp:166
+#, fuzzy
+#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr ""
+msgstr "Сменить карту"
 
 #: src/hotkeys.cpp:168
 msgid "Next Tool"
@@ -4647,12 +4649,6 @@ msgstr ""
 "Клавиша '$deprecated_key' переименована в '$key'. Она будет удалена в версии "
 "$removal_version."
 
-#~ msgid "Update Add-ons"
-#~ msgstr "Обновить аддоны"
-
-#~ msgid "Create New Map"
-#~ msgstr "Создать новую карту"
-
 #~ msgid "Editor Settings"
 #~ msgstr "Настройки редактора"
 
@@ -4668,14 +4664,16 @@ msgstr ""
 #~ msgid "Allow multiple maps to be open simultaneously"
 #~ msgstr "Разрешить открыть сразу несколько карт"
 
-#~ msgid "Don’t ask me again!"
-#~ msgstr "И больше меня не спрашивай!"
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Добавить игрока в список друзей"
 
-#~ msgid "x"
-#~ msgstr "x"
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Добавить игрока в список игнорируемых"
 
-#~ msgid "OOS error"
-#~ msgstr "Ошибка OOS"
+#, fuzzy
+#~| msgid "Auto-update Terrain Transitions"
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Автоматически обновлять переходы тайлов"
 
 #~ msgid "Types"
 #~ msgstr "Типы"
@@ -4685,6 +4683,43 @@ msgstr ""
 
 #~ msgid "Variable"
 #~ msgstr "Переменная"
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Использовать новый интерфейс холла"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Использовать новый интерфейс холла"
+
+#, fuzzy
+#~| msgid "Default"
+#~ msgid "Reset Defaults"
+#~ msgstr "По умолчанию"
+
+#~ msgid "Change Hotkey"
+#~ msgstr "Изменить"
+
+#, fuzzy
+#~| msgid "Select All"
+#~ msgid "Reset All"
+#~ msgstr "Выбрать всё"
+
+#~ msgid "This hotkey is already in use."
+#~ msgstr "Эта горячая клавиша уже занята."
+
+#~ msgid "Update Add-ons"
+#~ msgstr "Обновить аддоны"
+
+#~ msgid "Create New Map"
+#~ msgstr "Создать новую карту"
+
+#~ msgid "Don’t ask me again!"
+#~ msgstr "И больше меня не спрашивай!"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "OOS error"
+#~ msgstr "Ошибка OOS"
 
 #~ msgid "Create game"
 #~ msgstr "Создать игру"
@@ -4703,15 +4738,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Автоматически удалять автосохранения побед (одиночная игра и мультиплеер) "
 #~ "и поражений (только мультиплеер)"
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "Добавить игрока в список друзей"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Добавить игрока в список игнорируемых"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "Изменить"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "Эта горячая клавиша уже занята."

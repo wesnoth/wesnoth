@@ -37,7 +37,7 @@
 #include "formula_string_utils.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
-#include "generators/map_create.hpp"
+#include "map_create.hpp"
 #include "settings.hpp"
 
 #include <boost/bind.hpp>

@@ -3,14 +3,14 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-06-24 15:23+0200\n"
-"PO-Revision-Date: 2013-02-21 18:08-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
+"POT-Creation-Date: 2013-06-23 10:20+0200\n"
+"PO-Revision-Date: 2012-11-21 23:33+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,14 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water_tropical
 #: data/core/terrain.cfg:18 data/core/terrain.cfg:29 data/core/terrain.cfg:39
 msgid "Deep Water"
-msgstr "Uisge domhain"
+msgstr "gUisge domhain"
 
 #. [terrain_type]: id=deep_water_gray
 #: data/core/terrain.cfg:19
@@ -2035,7 +2035,7 @@ msgstr ""
 #: data/gui/default/window/game_save_message.cfg:42
 #: data/gui/default/window/game_save_oos.cfg:42 src/hotkeys.cpp:90
 msgid "Save Game"
-msgstr "Sàbhail an geama"
+msgstr "Sàbhail geama"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:145
@@ -2578,7 +2578,7 @@ msgstr ""
 "leas facal-faire a chur ann ach ma tha thu airson far-ainm clàraichte a "
 "chleachdadh.\n"
 "\n"
-"Gheibh thu am bòrd-brath aig Strì Bheasnaid air http://forums.wesnoth.org/"
+"Gheibh thu am bòrd-brath aig Blàr mu Bheasnad air http://forums.wesnoth.org/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:146
@@ -2626,7 +2626,7 @@ msgstr "Tagh"
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
 msgid "Show Battle for Wesnoth help"
-msgstr "Seall a' chobhair aig Strì Bheasnaid"
+msgstr "Seall cobhair Blàr mu Bheasnad"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:196
@@ -3823,7 +3823,7 @@ msgstr "Sàbhail ath-chluiche"
 
 #: src/hotkeys.cpp:92 src/hotkeys.cpp:154
 msgid "Save Map"
-msgstr "Sàbhail am mapa"
+msgstr "Sàbhail mapa"
 
 #: src/hotkeys.cpp:94
 msgid "Recruit"
@@ -4024,7 +4024,7 @@ msgstr "Luchdaich mapa"
 
 #: src/hotkeys.cpp:155
 msgid "Save Map As"
-msgstr "Sàbhail am mapa mar"
+msgstr "Sàbhail mapa mar"
 
 #: src/hotkeys.cpp:156
 msgid "Save All Maps"
@@ -4069,8 +4069,10 @@ msgid "Scroll Palette Right"
 msgstr ""
 
 #: src/hotkeys.cpp:166
+#, fuzzy
+#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr ""
+msgstr "Suids mapa"
 
 #: src/hotkeys.cpp:168
 msgid "Next Tool"
@@ -4604,10 +4606,10 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Cha b' urrainn dhuinn am modh bhideo atharrachadh. Faodaidh stiùiriche nan "
-"uinneag a bhith suidhichte air 16 biodan sa phiogsail ach an ruith an geama "
-"sa mhodh uinneige. Feumaidh an t-inneal-taisbeanaidh agad taic a chur ri "
-"1024x768x16 gus an geama a ruith làn-sgrìn."
+"Cha do ghabh am modh bhideo atharrachadh. Faodaidh stiùiriche nan uinneag a "
+"bhith suidhichte air 16 biodan sa phiogsail ach an ruith an geama sa mhodh "
+"uinneige. Feumaidh an t-inneal-taisbeanaidh agad taic a chur ri 1024x768x16 "
+"gus an geama a ruith làn-sgrìn."
 
 #: src/preferences_display.cpp:322
 msgid "There are no alternative video modes available"
@@ -4678,12 +4680,6 @@ msgstr ""
 "taic airson ‘$deprecated_key’ a thoirt air falbh leis an tionndadh "
 "$removal_version."
 
-#~ msgid "Update Add-ons"
-#~ msgstr "Ùraich tuilleadain"
-
-#~ msgid "Create New Map"
-#~ msgstr "Cruthaich mapa ùr"
-
 #~ msgid "Editor Settings"
 #~ msgstr "Roghainnean an deasaiche"
 
@@ -4699,14 +4695,16 @@ msgstr ""
 #~ msgid "Allow multiple maps to be open simultaneously"
 #~ msgstr "Ceadaich gun tèid iomadh mapa fhosgladh air an aon àm"
 
-#~ msgid "Don’t ask me again!"
-#~ msgstr "Na faighnich dhìom a-rithist!"
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Cuir ainm a’ chleachdaiche seo air liosta nan caraidean agad"
 
-#~ msgid "x"
-#~ msgstr "x"
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Cuir ainm a’ chleachdaiche seo ris an liosta neo-shuime agad"
 
-#~ msgid "OOS error"
-#~ msgstr "Mearachd OOS"
+#, fuzzy
+#~| msgid "Auto-update Terrain Transitions"
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
 
 #~ msgid "Types"
 #~ msgstr "Seòrsaichean"
@@ -4717,14 +4715,37 @@ msgstr ""
 #~ msgid "Variable"
 #~ msgstr "Caochladair"
 
+#~ msgid "Use new lobby interface"
+#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
+
+#, fuzzy
+#~| msgid "Default"
+#~ msgid "Reset Defaults"
+#~ msgstr "Bunaiteach"
+
+#~ msgid "Update Add-ons"
+#~ msgstr "Ùraich tuilleadain"
+
+#~ msgid "Create New Map"
+#~ msgstr "Cruthaich mapa ùr"
+
+#~ msgid "Don’t ask me again!"
+#~ msgstr "Na faighnich dhìom a-rithist!"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "OOS error"
+#~ msgstr "Mearachd OOS"
+
 #~ msgid "Create game"
 #~ msgstr "Cruthaich geama"
 
 #~ msgid "Save replay on SP/MP victory or MP defeat"
 #~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
 
 #~ msgid "Save Replay on SP/MP Victory or MP Defeat"
 #~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
@@ -4732,15 +4753,6 @@ msgstr ""
 #~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 #~ msgstr ""
 #~ "Sguab às dha fhèin-shàbhalaidhean le buaidh AonChl/IomChl no ruaig IomChl"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "Cuir ainm a’ chleachdaiche seo air liosta nan caraidean agad"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Cuir ainm a’ chleachdaiche seo ris an liosta neo-shuime agad"
 
 #~ msgid "Change Hotkey"
 #~ msgstr "Atharraich hotkey"

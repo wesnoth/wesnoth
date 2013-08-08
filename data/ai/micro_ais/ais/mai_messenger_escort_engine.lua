@@ -9,29 +9,6 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
-        function engine:next_waypoint(messenger, cfg)
-            -- Variable to store which waypoint to go to next (persistent)
-            if (not self.data.next_waypoint) then self.data.next_waypoint = 1 end
-
-            local waypoint_x = AH.split(cfg.waypoint_x, ",")
-            local waypoint_y = AH.split(cfg.waypoint_y, ",")
-            for i,w in ipairs(waypoint_x) do
-                waypoint_x[i] = tonumber(waypoint_x[i])
-                waypoint_y[i] = tonumber(waypoint_y[i])
-            end
-
-            -- If we're within 3 hexes of the next waypoint, we go on to the one after that
-            -- except if that one's the last one already
-            local dist_wp = H.distance_between(messenger.x, messenger.y,
-                waypoint_x[self.data.next_waypoint], waypoint_y[self.data.next_waypoint]
-            )
-            if (dist_wp <= 3) and (self.data.next_waypoint < #waypoint_x) then
-                self.data.next_waypoint = self.data.next_waypoint + 1
-            end
-
-            return waypoint_x[self.data.next_waypoint], waypoint_y[self.data.next_waypoint]
-        end
-
         function engine:mai_messenger_find_enemies_in_way(unit, goal_x, goal_y)
             -- Returns the first unit on or next to the path of the messenger
             -- unit: proxy table for the messenger unit
@@ -159,10 +136,30 @@ return {
             local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
             if (not messenger) then return 0 end
 
-            local x, y = self:next_waypoint(messenger, cfg)
+            -- Set up the waypoints
+            cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
+            cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
+            local waypoints = {}
+            for i = 1,#cfg.waypoint_x do
+                waypoints[i] = { tonumber(cfg.waypoint_x[i]), tonumber(cfg.waypoint_y[i]) }
+            end
+
+            -- Variable to store which waypoint to go to next (persistent)
+            if (not self.data.next_waypoint) then self.data.next_waypoint = 1 end
+
+            -- If we're within 3 hexes of the next waypoint, we go on to the one after that
+            -- except if that one's the last one already
+            local dist_wp = H.distance_between(messenger.x, messenger.y,
+                waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2]
+            )
+            if (dist_wp <= 3) and (self.data.next_waypoint < #waypoints) then
+                self.data.next_waypoint = self.data.next_waypoint + 1
+            end
 
             -- See if there's an enemy in the way that should be attacked
-            local attack = self:mai_messenger_find_clearing_attack(messenger, x, y)
+            local attack = self:mai_messenger_find_clearing_attack(messenger,
+                waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2]
+            )
 
             if attack then
                 self.data.best_attack = attack
@@ -198,7 +195,28 @@ return {
         function engine:mai_messenger_move_exec(cfg)
             local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
 
-            local x, y = self:next_waypoint(messenger, cfg)
+            -- Set up the waypoints
+            cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
+            cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
+            local waypoints = {}
+            for i = 1,#cfg.waypoint_x do
+                waypoints[i] = { tonumber(cfg.waypoint_x[i]), tonumber(cfg.waypoint_y[i]) }
+            end
+
+            -- Variable to store which waypoint to go to next (persistent)
+            if (not self.data.next_waypoint) then self.data.next_waypoint = 1 end
+
+            -- If we're within 3 hexes of the next waypoint, we go on to the one after that
+            -- except if that one's the last one already
+            local dist_wp = H.distance_between(messenger.x, messenger.y,
+                waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2]
+            )
+            if (dist_wp <= 3) and (self.data.next_waypoint < #waypoints) then
+                self.data.next_waypoint = self.data.next_waypoint + 1
+            end
+
+            -- In case a unit other than the messenger itself is on the waypoint hex:
+            local x, y = waypoints[self.data.next_waypoint][1], waypoints[self.data.next_waypoint][2]
             if (messenger.x ~= x) or (messenger.y ~= y) then
                 x, y = wesnoth.find_vacant_tile( x, y, messenger)
             end

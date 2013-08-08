@@ -219,11 +219,6 @@ public:
 	bool matches_id(const std::string& unit_id) const;
 	/* cfg: standard unit filter */
 	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
-	/// Determine if *this matches @a filter at its current location.
-	/// (Only use for units currently on the map; otherwise use the overload
-	/// that takes a location, possibly with a null location.)
-	bool matches_filter(const vconfig& filter, bool use_flat_tod=false) const
-	{ return matches_filter(filter, get_location(), use_flat_tod); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	void write(config& cfg) const;

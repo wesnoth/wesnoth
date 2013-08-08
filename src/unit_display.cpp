@@ -778,7 +778,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 	vconfig filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u) {
-			if ( u->matches_filter(filter) )
+			if (game_events::unit_matches_filter(*u, filter))
 				break;
 		}
 	}

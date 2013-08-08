@@ -835,20 +835,13 @@ set(wesnoth-main_SRC
 set(libwesnoth-game_STAT_SRC
 	arrow.cpp
 	builder.cpp
+	cavegen.cpp
 	clipboard.cpp
 	construct_dialog.cpp
 	cursor.cpp
 	display.cpp
 	events.cpp
 	font.cpp
-  	generators/cavegen.cpp
-    generators/map_create.cpp
-    generators/mapgen.cpp
-    generators/mapgen_dialog.cpp
-    generators/yamg/ya_mapgen.cpp
-    generators/yamg/yamg_hex.cpp
-    generators/yamg/yamg_hexheap.cpp
-    generators/yamg/yamg_params.cpp
 	hotkeys.cpp
 	image.cpp
 	image_modifications.cpp
@@ -858,7 +851,10 @@ set(libwesnoth-game_STAT_SRC
 	language.cpp
 	loadscreen.cpp
 	lobby_preferences.cpp
+	map_create.cpp
 	map_label.cpp
+	mapgen.cpp
+	mapgen_dialog.cpp
 	marked-up_text.cpp
 	minimap.cpp
 	pathfind/astarsearch.cpp

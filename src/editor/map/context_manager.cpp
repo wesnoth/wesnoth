@@ -19,7 +19,7 @@
 #include "filechooser.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
-#include "generators/map_create.hpp"
+#include "map_create.hpp"
 #include "map_context.hpp"
 
 #include "editor/action/action.hpp"
@@ -472,16 +472,15 @@ void context_manager::save_map_as_dialog()
 
 void context_manager::init_map_generators(const config& game_config)
 {
-	BOOST_FOREACH(const config &i, game_config.child_range("multiplayer")) {
-
-		if (!i["map_generation"].empty()) {
-
+	BOOST_FOREACH(const config &i, game_config.child_range("multiplayer"))
+	{
+		if (i["map_generation"] == "default") {
 			const config &generator_cfg = i.child("generator");
 			if (!generator_cfg) {
 				ERR_ED << "Scenario \"" << i["name"] << "\" with id " << i["id"]
-                       << " has map_generation= but no [generator] tag";
+					<< " has map_generation=default but no [generator] tag";
 			} else {
-				map_generator* m = create_map_generator(i["map_generation"], generator_cfg);
+				map_generator* m = create_map_generator("", generator_cfg);
 				map_generators_.push_back(m);
 			}
 		}

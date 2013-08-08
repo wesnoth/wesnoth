@@ -257,7 +257,7 @@ def convertor(linefilter, arglist, exclude):
                         linefilter(filename, infp, outfp)
                         infp.close()
                         outfp.close()
-                    except bailout as e:
+                    except bailout, e:
                         sys.stderr.write('wmlindent: "%s", %d: %s\n' % (e.filename, e.lineno, e.msg))
                         os.remove(filename + ".out")
                     except KeyboardInterrupt:

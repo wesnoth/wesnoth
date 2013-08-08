@@ -182,7 +182,7 @@ class Addon(object):
         self._execute(["git", "commit", "-F", tmpname], check_error=True)
         os.remove(tmpname)
         out, err, ret = self._execute(["git", "push", "-u", "--porcelain", "origin", "master"], check_error=False)
-        statusline = [x for x in out.splitlines() if "refs/heads/master" in x]
+        statusline = filter(lambda x: "refs/heads/master" in x, out.splitlines())
         if not statusline:
             raise AddonError(self.name, "No statusline produced by git push")
         else:
@@ -196,11 +196,11 @@ class Addon(object):
                 pass
             elif status == "=":
                 # Up to date?
-                logging.warn("Commit to add-on {0} with message '{1}' has not made any changes".format(self.name, message))
+                logging.warn("Commit to add-on {0} with message {1} has not made any changes".format(self.name, message))
             elif status == "!":
-                raise AddonError(self.name, "Commit with message '{0}' failed for reason {1}".format(message, summary))
+                raise AddonError(self.name, "Commit with message {0} failed for reason {1}".format(message, summary))
             else:
-                raise AddonError(self.name, "Commit with message '{0}' has done something unexpected: {1}".format(message, statusline[0]))
+                raise AddonError(self.name, "Commit with message {0} has done something unexpected: {1}".format(message, statusline[0]))
 
     def get_dir(self):
         """Return the directory this add-on's checkout is in.
@@ -258,15 +258,15 @@ class Addon(object):
                 else:
                     shutil.copy2(srcname, dstname)
                 # XXX What about devices, sockets etc.?
-            except (IOError, os.error) as why:
+            except (IOError, os.error), why:
                 errors.append((srcname, dstname, str(why)))
             # catch the Error from the recursive copytree so that we can
             # continue with other files
-            except Error as err:
+            except Error, err:
                 errors.extend(err.args[0])
         try:
             shutil.copystat(src, dst)
-        except OSError as why:
+        except OSError, why:
             if shutil.WindowsError is not None and isinstance(why, shutil.WindowsError):
                 # Copying file access times may fail on Windows
                 pass
@@ -332,7 +332,7 @@ class GitHub(object):
         if not os.path.isdir(self._absolute_path(name)):
             logging.debug("Add-on {0} not found locally, checking github.".format(name))
             github_list = self._github_repos_list(readonly=readonly)
-            matches = [x for x in github_list if x[0] == name]
+            matches = filter(lambda x: x[0] == name, github_list)
             if matches:
                 repo = matches[0]
                 self._clone(repo[0], repo[1])

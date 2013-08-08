@@ -21,7 +21,7 @@
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
-#include "generators/mapgen.hpp"
+#include "mapgen.hpp"
 
 #include <boost/bind.hpp>
 

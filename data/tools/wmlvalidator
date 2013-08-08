@@ -84,80 +84,78 @@ class Validator:
                 self.validate(element, depth+1)
 
 if __name__ == '__main__':
-    import argparse, subprocess, os, codecs, sys
+    import optparse, subprocess, os, codecs, sys
 
     # Ugly hack to force the output of UTF-8.
     # This prevents us from crashing when we're being verbose
     #  and encounter a non-ascii character.
     sys.stdout = codecs.getwriter('utf-8')(sys.stdout)
 
-    ap = argparse.ArgumentParser("Usage: %(prog)s [options]")
-    ap.add_argument("-p", "--path",
+    op = optparse.OptionParser()
+    op.set_usage("Usage: %prog [options] [filename]")
+    op.add_option("-p", "--path",
         help = "Specify Wesnoth's data dir",
         dest = "path")
-    ap.add_argument("-u", "--userpath",
+    op.add_option("-u", "--userpath",
         help = "Specify user data dir",
         dest = "userpath")
-    ap.add_argument("-s", "--schema",
+    op.add_option("-s", "--schema",
         help = "Specify WML schema",
         dest = "schema")
-    ap.add_argument("-v", "--verbose",
+    op.add_option("-v", "--verbose",
         action = "count",
         dest = "verbose",
         help = "Increase verbosity, 4 is the maximum.")
-    ap.add_argument("-D", "--define",
+    op.add_option("-D", "--define",
         action = "append",
         dest = "defines",
         default = [],
         help = "Define (empty) preprocessor macros, for campaign/multiplayer inclusion.")
-    ap.add_argument("filename",
-        nargs = "*",
-        help = "Files to validate")
-    args = ap.parse_args()
+    (options, args) = op.parse_args()
 
-    if not args.path:
+    if not options.path:
         try:
             p = subprocess.Popen(["wesnoth", "--path"], stdout = subprocess.PIPE)
             path = p.stdout.read().strip()
-            args.path = os.path.join(path, "data")
-            sys.stderr.write("No Wesnoth path given.\nAutomatically found '%s'\n" % (args.path, ) )
+            options.path = os.path.join(path, "data")
+            sys.stderr.write("No Wesnoth path given.\nAutomatically found '%s'\n" % (options.path, ) )
         except OSError:
-            args.path = '.'
-            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (args.path, ) )
+            options.path = '.'
+            sys.stderr.write("Could not determine Wesnoth path.\nAssuming '%s'\n" % (options.path, ) )
 
-    if len(args.filename) < 1:
-        args.filename.append(os.path.join(args.path, '_main.cfg'))
+    if len(args) < 1:
+        args.append(os.path.join(options.path, '_main.cfg'))
 
-    if args.verbose > 1:
-        print "Args: %s\n"% (args, )
+    if options.verbose > 1:
+        print "Options: %s\nArgs: %s\n"% (options, args)
 
-    if not args.schema:
-        args.schema = os.path.join(args.path, 'schema.cfg')
+    if not options.schema:
+        options.schema = os.path.join(options.path, 'schema.cfg')
 
     # Parse the schema
-    parser = wmlparser.Parser(args.path)
+    parser = wmlparser.Parser(options.path)
 
-    if args.verbose > 3:
+    if options.verbose > 3:
         parser.verbose = True
-    parser.parse_file(args.schema)
+    parser.parse_file(options.schema)
 
     schema = wmldata.DataSub("schema")
     parser.parse_top(schema)
 
     # Construct the validator
-    validator = Validator(schema, args.verbose)
+    validator = Validator(schema, options.verbose)
 
     # Parse the WML
-    parser = wmlparser.Parser(args.path, args.userpath)
+    parser = wmlparser.Parser(options.path, options.userpath)
 
-    if args.verbose > 3:
+    if options.verbose > 3:
         parser.verbose = True
 
-    if args.userpath:
+    if options.userpath:
         parser.parse_text("{~add-ons}")
-    for file in args.filename:
+    for file in args:
         parser.parse_file(file)
-    for macro in args.defines:
+    for macro in options.defines:
         parser.parse_text("#define %s \n#enddef" % (macro, ) )
 
     data = wmldata.DataSub("root")

@@ -256,10 +256,6 @@ namespace {
  *                           (No effect if teleporter and current_team are both NULL.)
  * @param[in]  jamming_map   The relevant "jamming" of the costs being used
  *                           (currently only used with vision costs).
- * @param[out] full_cost_map If not NULL, build a cost_map instead of destinations.
- *                           Destinations is ignored.
- *                           full_cost_map is a vector of pairs. The first entry is the
- *                           cost itself, the second how many units already visited this hex
  */
 static void find_routes(
 		const map_location & origin, const movetype::terrain_costs & costs,
@@ -267,8 +263,7 @@ static void find_routes(
 		paths::dest_vect & destinations, std::set<map_location> * edges,
 		const unit * teleporter, const team * current_team,
 		const unit * skirmisher, const team * viewing_team,
-		const std::map<map_location, int> * jamming_map=NULL,
-		std::vector<std::pair<int, int> > * full_cost_map=NULL)
+		const std::map<map_location, int> * jamming_map=NULL)
 {
 	const gamemap& map = *resources::game_map;
 
@@ -297,18 +292,6 @@ static void find_routes(
 	nodes.resize(map.w() * map.h());
 	findroute_comp node_comp(nodes);
 	findroute_indexer index(map.w(), map.h());
-
-	// Check if full_cost_map has the correct size.
-	// If not, ignore it. If yes, initialize the start position.
-	if ( full_cost_map ) {
-		if ( full_cost_map->size() != static_cast<unsigned>(map.w() * map.h()) )
-			full_cost_map = NULL;
-		else {
-			if ( (*full_cost_map)[index(origin)].second == 0 )
-				(*full_cost_map)[index(origin)].first = 0;
-			(*full_cost_map)[index(origin)].second += 1;
-		}
-	}
 
 	// Used to optimize the final collection of routes.
 	int xmin = origin.x, xmax = origin.x, ymin = origin.y, ymax = origin.y;
@@ -403,15 +386,6 @@ static void find_routes(
 				}
 			}
 
-			// Update full_cost_map
-			if ( full_cost_map ) {
-				if ( (*full_cost_map)[next_index].second == 0 )
-					(*full_cost_map)[next_index].first = 0;
-				int summed_cost = (turns_left - next.turns_left + 1) * max_moves - next.moves_left;
-				(*full_cost_map)[next_index].first += summed_cost;
-				(*full_cost_map)[next_index].second += 1;
-			}
-
 			// Mark next as being collected.
 			next.search_num = search_counter;
 
@@ -431,12 +405,6 @@ static void find_routes(
 				ymax = next_hex.y;
 		}//for (i)
 	}//while (hexes_to_process)
-
-	// Currently the only caller who uses full_cost_map doesn't need the
-	// destinations. We can skip this part.
-	if ( full_cost_map ) {
-		return;
-	}
 
 	// Build the routes for every map_location that we reached.
 	// The ordering must be compatible with map_location::operator<.
@@ -831,130 +799,5 @@ double dummy_path_calculator::cost(const map_location&, const double) const
 	return 1.0;
 }
 
-/**
- * Constructs a cost-map. For a unit each hex is mapped to the cost the
- * unit will need to reach this hex. Considers movement-loss caused by
- * turn changes.
- * Can also used with multiple units to accumulate their costs efficiently.
- * Will also count how many units could reach a hex for easy normalization.
- * @param u the unit
- * @param force_ignore_zoc Set to true to completely ignore zones of control.
- * @param allow_teleport   Set to true to consider teleportation abilities.
- * @param viewing_team     Usually the current team, except for "show enemy moves", etc.
- * @param see_all          Set to true to remove unit visibility from consideration.
- * @param ignore_units     Set to true if units should never obstruct paths (implies ignoring ZoC as well).
- */
-full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
-		bool allow_teleport, const team &viewing_team,
-		bool see_all, bool ignore_units)
-	:force_ignore_zoc_(force_ignore_zoc), allow_teleport_(allow_teleport),
-	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
-{
-	const gamemap& map = *resources::game_map;
-	cost_map = std::vector<std::pair<int, int> >(map.w() * map.h(), std::make_pair(-1, 0));
-	add_unit(u);
-}
 
-/**
- * Same as other constructor but without unit. Use this when working
- * with add_unit().
- */
-full_cost_map::full_cost_map(bool force_ignore_zoc,
-		bool allow_teleport, const team &viewing_team,
-		bool see_all, bool ignore_units)
-	:force_ignore_zoc_(force_ignore_zoc), allow_teleport_(allow_teleport),
-	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
-{
-	const gamemap& map = *resources::game_map;
-	cost_map = std::vector<std::pair<int, int> >(map.w() * map.h(), std::make_pair(-1, 0));
-}
-
-/**
- * Adds a units cost map to cost_map (increments the elements in cost_map)
- * @param u a real existing unit on the map
- */
-void full_cost_map::add_unit(const unit& u)
-{
-	std::vector<team> const &teams = *resources::teams;
-	if (u.side() < 1 || u.side() > int(teams.size())) {
-		return;
-	}
-
-	// We don't need the destinations, but find_routes() wants to have this parameter
-	paths::dest_vect dummy = paths::dest_vect();
-
-		find_routes(u.get_location(), u.movement_type().get_movement(),
-		            u.get_state(unit::STATE_SLOWED), u.total_movement(),
-		            u.total_movement(), 99, dummy, NULL,
-		            allow_teleport_ ? &u : NULL,
-		            ignore_units_ ? NULL : &teams[u.side()-1],
-		            force_ignore_zoc_ ? NULL : &u,
-		            see_all_ ? NULL : &viewing_team_,
-		            NULL, &cost_map);
-}
-
-/**
- * Adds a units cost map to cost_map (increments the elements in cost_map)
- * This function can be used to generate a cost_map with a non existing unit.
- * @param origin the location on the map from where the calculations shall start
- * @param ut the unit type we are interested in
- * @param side the side of the unit. Important for zocs.
- */
-void full_cost_map::add_unit(const map_location& origin, const unit_type* const ut, int side)
-{
-	if (!ut) {
-		return;
-	}
-	unit u(*ut, side, false);
-	u.set_location(origin);
-	add_unit(u);
-}
-
-/**
- * Accessor for the cost/reach-amount pairs.
- * Read comment in pathfind.hpp to cost_map.
- * @param x
- * @param y
- * @return the entry of the cost_map at (x, y)
- *         or (-1, 0) if value is not set or (x, y) is invalid.
- */
-std::pair<int, int> full_cost_map::get_pair_at(int x, int y) const
-{
-	const gamemap& map = *resources::game_map;
-	assert(cost_map.size() == static_cast<unsigned>(map.w() * map.h()));
-
-	if (x < 0 || x >= map.w() || y < 0 || y >= map.h()) {
-		return std::make_pair(-1, 0);  // invalid
-	}
-
-	return cost_map[x + (y * map.w())];
-}
-
-/**
- * Accessor for the costs.
- * @param x
- * @param y
- * @return the value of the cost_map at (x, y)
- *         or -1 if value is not set or (x, y) is invalid.
- */
-int full_cost_map::get_cost_at(int x, int y) const
-{
-	return get_pair_at(x, y).first;
-}
-
-/**
- * Accessor for the costs.
- * @param x
- * @param y
- * @return The average cost of all added units for this hex
- *         or -1 if no unit can reach the hex.
- */
-double full_cost_map::get_average_cost_at(int x, int y) const
-{
-	if (get_pair_at(x, y).second == 0) {
-		return -1;
-	} else {
-		return static_cast<double>(get_pair_at(x, y).first) / get_pair_at(x, y).second;
-	}
-}
 }//namespace pathfind

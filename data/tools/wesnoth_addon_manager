@@ -16,7 +16,7 @@ import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
 
 if __name__ == "__main__":
-    import argparse
+    import optparse
 
     try:
         import psyco
@@ -25,83 +25,83 @@ if __name__ == "__main__":
     except ImportError:
         pass
 
-    argumentparser = argparse.ArgumentParser()
-    argumentparser.add_argument("-a", "--address", help="specify server address",
+    optionparser = optparse.OptionParser()
+    optionparser.add_option("-a", "--address", help="specify server address",
         default="add-ons.wesnoth.org")
-    argumentparser.add_argument("--html",
+    optionparser.add_option("--html",
         help="Output a HTML overview into the given directory.",)
-    argumentparser.add_argument("-p", "--port",
+    optionparser.add_option("-p", "--port",
         help="specify server port or BfW version (%s)" % " or ".join(
         map(lambda x: x[1], CampaignClient.portmap)),
         default=CampaignClient.portmap[0][0])
-    argumentparser.add_argument("-l", "--list", help="list available add-ons",
+    optionparser.add_option("-l", "--list", help="list available add-ons",
         action="store_true",)
-    argumentparser.add_argument("-w", "--wml",
+    optionparser.add_option("-w", "--wml",
         help="when listing add-ons, list the raw wml",
         action="store_true",)
-    argumentparser.add_argument("-C", "--color",
+    optionparser.add_option("-C", "--color",
         help="use colored WML output",
         action="store_true",)
-    argumentparser.add_argument("-c", "--campaigns-dir",
+    optionparser.add_option("-c", "--campaigns-dir",
         help="directory where add-ons are stored",
         default=".")
-    argumentparser.add_argument("-P", "--password",
+    optionparser.add_option("-P", "--password",
         help="password to use")
-    argumentparser.add_argument("-d", "--download",
+    optionparser.add_option("-d", "--download",
         help="download the named add-on; " +
         "name may be a Python regexp matched against all add-on names " +
         "(specify the path where to put it with -c, " +
         "current directory will be used by default)")
-    argumentparser.add_argument("-T", "--type",
+    optionparser.add_option("-T", "--type",
         help="Type of addons to download, e.g. 'era' or 'campaign'.")
-    argumentparser.add_argument("-t", "--tar",
+    optionparser.add_option("-t", "--tar",
         help="When used together with --download, create tarballs of any " +
         "downloaded addons and put into the specified directory.")
-    argumentparser.add_argument("--pbl", help="override standard PBL location")
-    argumentparser.add_argument("-u", "--upload",
+    optionparser.add_option("--pbl", help="override standard PBL location")
+    optionparser.add_option("-u", "--upload",
         help="Upload an add-on. " +
         "UPLOAD should be either the name of an add-on subdirectory," +
         "(in which case the client looks for _server.pbl beneath it) " +
         "or a path to the .pbl file (in which case the name of the " +
         "add-on subdirectory is the name of the path with .pbl removed)")
-    argumentparser.add_argument("-s", "--status",
+    optionparser.add_option("-s", "--status",
         help="Display the status of addons installed in the given " +
         "directory.")
-    argumentparser.add_argument("-f", "--update",
+    optionparser.add_option("-f", "--update",
         help="Update all installed add-ons in the given directory. " +
         "This works by comparing the _info.cfg file in each addon directory " +
         "with the version on the server.")
-    argumentparser.add_argument("-V", "--verbose",
+    optionparser.add_option("-V", "--verbose",
         help="be even more verbose for everything",
         action="store_true",)
-    argumentparser.add_argument("-r", "--remove",
+    optionparser.add_option("-r", "--remove",
         help="remove the named add-on from the server, " +
         "set the password -P")
-    argumentparser.add_argument("-R", "--raw-download",
+    optionparser.add_option("-R", "--raw-download",
         action="store_true",
         help="download as a binary WML packet")
-    argumentparser.add_argument("--url", help="When used with --html, " +
+    optionparser.add_option("--url", help="When used with --html, " +
         "a download link will be added for each campaign, with the given " +
         "base URL.")
-    argumentparser.add_argument("-U", "--unpack",
+    optionparser.add_option("-U", "--unpack",
         help="unpack the file UNPACK as a binary WML packet " +
         "(specify the add-on path with -c)")
-    argumentparser.add_argument("--change-passphrase", nargs=3,
+    optionparser.add_option("--change-passphrase", nargs=3,
         metavar="ADD-ON OLD NEW",
         help="Change the passphrase for ADD-ON from OLD to NEW")
-    args = argumentparser.parse_args()
+    options, args = optionparser.parse_args()
 
-    port = args.port
-    if not args.port.isdigit():
+    port = options.port
+    if not options.port.isdigit():
         for (portnum, version) in CampaignClient.portmap:
-            if args.port == version:
+            if options.port == version:
                 port = portnum
                 break
         else:
-            sys.stderr.write("Unknown BfW version %s\n" % args.port)
+            sys.stderr.write("Unknown BfW version %s\n" % options.port)
             sys.exit(1)
 
-    address = args.address
+    address = options.address
     if not ":" in address:
         address += ":" + str(port)
 
@@ -115,7 +115,7 @@ if __name__ == "__main__":
                 print "%s: %d/%d" % (name, cs.counter, cs.length)
                 pcounter = cs.counter
 
-        if args.raw_download:
+        if options.raw_download:
             file(name, "w").write(mythread.data)
         else:
             decoded = cs.decode(mythread.data)
@@ -128,7 +128,7 @@ if __name__ == "__main__":
             except OSError: pass
 
             print "Unpacking %s..." % name
-            cs.unpackdir(decoded, cdir, verbose=args.verbose)
+            cs.unpackdir(decoded, cdir, verbose=options.verbose)
 
 
             info = os.path.join(dirname, "_info.cfg")
@@ -147,19 +147,19 @@ dependencies="%s"
             for message in decoded.find_all("message", "error"):
                 print message.get_text_val("message")
 
-            if args.tar:
-                try: os.mkdir(args.tar)
+            if options.tar:
+                try: os.mkdir(options.tar)
                 except OSError: pass
-                tarname = args.tar + "/" + name + ".tar.bz2"
+                tarname = options.tar + "/" + name + ".tar.bz2"
                 if os.path.isfile(oldcfg_path):
                     oldcfg = name + ".cfg"
-                    if args.verbose:
+                    if options.verbose:
                         sys.stderr.write("Creating tarball with command: tar " +
                             "cjf %(tarname)s -C %(cdir)s %(name)s %(oldcfg)s\n" %
                             locals())
                     Popen(["tar", "cjf", tarname, "-C", cdir, name, oldcfg])
                 else:
-                    if args.verbose:
+                    if options.verbose:
                         sys.stderr.write("Creating tarball with command: tar " +
                             "cjf %(tarname)s -C %(cdir)s %(name)s\n" % locals())
                     Popen(["tar", "cjf", tarname, "-C", cdir, name])
@@ -182,15 +182,15 @@ dependencies="%s"
 
     campaign_list = None
 
-    if args.list:
+    if options.list:
         cs = CampaignClient(address)
         campaign_list = data = cs.list_campaigns()
         if data:
             campaigns = data.get_or_create_sub("campaigns")
-            if args.wml:
+            if options.wml:
                 for campaign in campaigns.get_all("campaign"):
                     campaign.debug(show_contents=True,
-                        use_color=args.color)
+                        use_color=options.color)
             else:
                 column_sizes = [10, 5, 10, 7, 8, 8, 10, 5, 10, 13]
                 columns = [["type", "name", "title", "author",
@@ -221,7 +221,7 @@ dependencies="%s"
         else:
             sys.stderr.write("Could not connect.\n")
 
-    elif args.download:
+    elif options.download:
         cs = CampaignClient(address)
         fetchlist = []
         campaign_list = data = cs.list_campaigns()
@@ -233,70 +233,70 @@ dependencies="%s"
                 version = campaign.get_text_val("version", "")
                 uploads = campaign.get_text_val("uploads", "")
                 dependencies = campaign.get_text_val("dependencies", "")
-                if re.escape(args.download).replace("\\_", "_") == args.download:
-                    if name == args.download:
+                if re.escape(options.download).replace("\\_", "_") == options.download:
+                    if name == options.download:
                         fetchlist.append((name, version, uploads, dependencies))
-                elif not args.type or args.type == type:
-                    if re.search(args.download, name):
+                elif not options.type or options.type == type:
+                    if re.search(options.download, name):
                         fetchlist.append((name, version, uploads, dependencies))
 
         for name, version, uploads, dependencies in fetchlist:
-            info = os.path.join(args.campaigns_dir, name, "_info.cfg")
+            info = os.path.join(options.campaigns_dir, name, "_info.cfg")
             local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
                 # The uploads > local_uploads likely means a server reset
                 if version != local_version or uploads > local_uploads:
-                    get(name, version, uploads, dependencies, args.campaigns_dir)
+                    get(name, version, uploads, dependencies, options.campaigns_dir)
                 else:
                     print "Not downloading", name, \
                         "as the version already is", local_version, \
                         "(The add-on got re-uploaded.)"
             else:
-                if args.verbose:
+                if options.verbose:
                     print "Not downloading", name, \
                         "because it is already up-to-date."
 
-    elif args.unpack:
+    elif options.unpack:
         cs = CampaignClient(address)
-        data = file(args.unpack).read()
+        data = file(options.unpack).read()
         decoded = cs.decode(data)
-        print "Unpacking %s..." % args.unpack
-        cs.unpackdir(decoded, args.campaigns_dir,  verbose=True)
-    elif args.remove:
+        print "Unpacking %s..." % options.unpack
+        cs.unpackdir(decoded, options.campaigns_dir,  verbose=True)
+    elif options.remove:
         cs = CampaignClient(address)
-        data = cs.delete_campaign(args.remove, args.password)
+        data = cs.delete_campaign(options.remove, options.password)
         for message in data.find_all("message", "error"):
             print message.get_text_val("message")
 
-    elif args.change_passphrase:
+    elif options.change_passphrase:
         cs = CampaignClient(address)
-        data = cs.change_passphrase(*args.change_passphrase)
+        data = cs.change_passphrase(*options.change_passphrase)
         for message in data.find_all("message", "error"):
             print message.get_text_val("message")
 
-    elif args.upload:
+    elif options.upload:
         cs = CampaignClient(address)
-        if os.path.isdir(args.upload):
+        if os.path.isdir(options.upload):
             # else basename returns an empty string
-            args.upload = args.upload.rstrip("/")
+            options.upload = options.upload.rstrip("/")
 
             # New style with _server.pbl
-            pblfile = os.path.join(args.upload, "_server.pbl")
-            name = os.path.basename(args.upload)
-            wmldir = args.upload
+            pblfile = os.path.join(options.upload, "_server.pbl")
+            name = os.path.basename(options.upload)
+            wmldir = options.upload
             cfgfile = None # _main.cfg will be uploaded with the rest
-            ignfile = os.path.join(args.upload, "_server.ign")
+            ignfile = os.path.join(options.upload, "_server.ign")
         else:
             # Old style with external .pbl file
-            pblfile = args.upload
-            name = os.path.basename(args.upload)
+            pblfile = options.upload
+            name = os.path.basename(options.upload)
             name = os.path.splitext(name)[0]
-            wmldir = os.path.join(os.path.dirname(args.upload), name)
-            cfgfile = args.upload.replace(".pbl", ".cfg")
-            ignfile = args.upload.replace(".pbl", ".ign")
+            wmldir = os.path.join(os.path.dirname(options.upload), name)
+            cfgfile = options.upload.replace(".pbl", ".cfg")
+            ignfile = options.upload.replace(".pbl", ".ign")
 
-        if args.pbl:
-            pblfile = args.pbl
+        if options.pbl:
+            pblfile = options.pbl
 
         pbl = wmldata.read_file(pblfile, "PBL")
         if os.path.exists(ignfile):
@@ -344,11 +344,11 @@ dependencies="%s"
         for message in mythread.data.find_all("message", "error"):
             print message.get_text_val("message")
 
-    elif args.update or args.status:
-        if args.status:
-            cdir = args.status
+    elif options.update or options.status:
+        if options.status:
+            cdir = options.status
         else:
-            cdir = args.update
+            cdir = options.update
         dirs = glob.glob(os.path.join(cdir, "*"))
         dirs = [x for x in dirs if os.path.isdir(x)]
         cs = CampaignClient(address)
@@ -381,34 +381,34 @@ dependencies="%s"
                             " (The add-on got re-uploaded.)\n") %
                             (lrev, srev))
                         if srev > lrev: # server reset?
-                            if args.update:
+                            if options.update:
                                 get(dirname, sversion, srev, sdeps, cdir)
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
                             "revision " + lrev + " but revision " + srev +
                             " is available.\n")
-                        if args.update: get(dirname, sversion, srev, sdeps, cdir)
+                        if options.update: get(dirname, sversion, srev, sdeps, cdir)
                 else:
                     sys.stdout.write(" ? " + dirname +
                         " - is installed but has no " +
                         "version info.\n")
-                    if args.update: get(dirname, sversion, srev, sdeps, cdir)
+                    if options.update: get(dirname, sversion, srev, sdeps, cdir)
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
-    elif args.html:
+    elif options.html:
         pass
     else:
-        argumentparser.print_help()
+        optionparser.print_help()
 
-    if args.html:
+    if options.html:
         if not campaign_list:
             cs = CampaignClient(address)
             campaign_list = cs.list_campaigns()
             del cs
         if campaign_list:
             import addon_manager.html
-            addon_manager.html.output(args.html, args.url,
+            addon_manager.html.output(options.html, options.url,
                 campaign_list)
         else:
             sys.stderr.write("Could not retrieve campaign list " +

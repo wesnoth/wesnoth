@@ -6,7 +6,7 @@ This parser uses the --preprocess option of wesnoth so a working
 wesnoth executable must be available at runtime.
 """
 
-import os, glob, sys, re, subprocess, argparse, tempfile, shutil
+import os, glob, sys, re, subprocess, optparse, tempfile, shutil
 import atexit
 
 tempdirs_to_clean = []
@@ -540,34 +540,34 @@ def xmlify(tree, verbose=False, depth=0):
 if __name__ == "__main__":
     # Hack to make us not crash when we encounter characters that aren't ASCII
     sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
-    arg = argparse.ArgumentParser()
-    arg.add_argument("-a", "--data-dir", help = "directly passed on to wesnoth.exe")
-    arg.add_argument("-c", "--config-dir", help = "directly passed on to wesnoth.exe")
-    arg.add_argument("-i", "--input", help = "a WML file to parse")
-    arg.add_argument("-k", "--keep-temp", help = "specify directory where to keep temp files")
-    arg.add_argument("-t", "--text", help = "WML text to parse")
-    arg.add_argument("-w", "--wesnoth", help = "path to wesnoth.exe")
-    arg.add_argument("-d", "--defines", help = "comma separated list of WML defines")
-    arg.add_argument("-T", "--test", action = "store_true")
-    arg.add_argument("-j", "--to-json", action = "store_true")
-    arg.add_argument("-n", "--no-preprocess", action = "store_true")
-    arg.add_argument("-v", "--verbose", action = "store_true")
-    arg.add_argument("-x", "--to-xml", action = "store_true")
-    args = arg.parse_args()
+    opt = optparse.OptionParser()
+    opt.add_option("-a", "--data-dir", help = "directly passed on to wesnoth.exe")
+    opt.add_option("-c", "--config-dir", help = "directly passed on to wesnoth.exe")
+    opt.add_option("-i", "--input", help = "a WML file to parse")
+    opt.add_option("-k", "--keep-temp", help = "specify directory where to keep temp files")
+    opt.add_option("-t", "--text", help = "WML text to parse")
+    opt.add_option("-w", "--wesnoth", help = "path to wesnoth.exe")
+    opt.add_option("-d", "--defines", help = "comma separated list of WML defines")
+    opt.add_option("-T", "--test", action = "store_true")
+    opt.add_option("-j", "--to-json", action = "store_true")
+    opt.add_option("-n", "--no-preprocess", action = "store_true")
+    opt.add_option("-v", "--verbose", action = "store_true")
+    opt.add_option("-x", "--to-xml", action = "store_true")
+    options, args = opt.parse_args()
 
-    if not args.input and not args.text and not args.test:
+    if not options.input and not options.text and not options.test:
         sys.stderr.write("No input given. Use -h for help.\n")
         sys.exit(1)
 
-    if not args.no_preprocess and (not args.wesnoth or not
-        os.path.exists(args.wesnoth)):
+    if not options.no_preprocess and (not options.wesnoth or not
+        os.path.exists(options.wesnoth)):
         sys.stderr.write("Wesnoth executable not found.\n")
         sys.exit(1)
 
-    if args.test:
+    if options.test:
         print("Running tests")
-        p = Parser(args.wesnoth, args.config_dir,
-            args.data_dir, args.no_preprocess)
+        p = Parser(options.wesnoth, options.config_dir,
+            options.data_dir, options.no_preprocess)
 
         only = None
         def test2(input, expected, note, function):
@@ -699,17 +699,17 @@ code = <<
 
         sys.exit(0)
 
-    p = Parser(args.wesnoth, args.config_dir, args.data_dir,
-        args.no_preprocess)
-    if args.keep_temp:
-        p.keep_temp_dir = args.keep_temp
-    if args.verbose: p.verbose = True
-    if args.input: p.parse_file(args.input, args.defines)
-    elif args.text: p.parse_text(args.text, args.defines)
-    if args.to_json:
+    p = Parser(options.wesnoth, options.config_dir, options.data_dir,
+        options.no_preprocess)
+    if options.keep_temp:
+        p.keep_temp_dir = options.keep_temp
+    if options.verbose: p.verbose = True
+    if options.input: p.parse_file(options.input, options.defines)
+    elif options.text: p.parse_text(options.text, options.defines)
+    if options.to_json:
         jsonify(p.root, True)
         print
-    elif args.to_xml:
+    elif options.to_xml:
         print '<?xml version="1.0" encoding="UTF-8" ?>'
         print '<root>'
         xmlify(p.root, True, 1)
