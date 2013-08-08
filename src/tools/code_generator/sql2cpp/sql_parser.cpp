@@ -66,6 +66,7 @@ public:
 	lex::token_def<lex::omit> kw_not_null, kw_auto_increment, kw_unique, kw_default, kw_create,
 		kw_table, kw_constraint, kw_primary_key, kw_alter, kw_add;
   
+	lex::token_def<lex::omit> comma, semi_colon, paren_open, paren_close;
   lex::token_def<lex::omit>	ws, comment, cstyle_comment;
 
 	// Attributed tokens. (If you add a new type, don't forget to add it to the lex::lexertl::token definition too).
@@ -103,18 +104,25 @@ public:
 		// Identifier.
 		identifier = "[a-zA-Z][a-zA-Z0-9_]*";
 
+		// Separator.
+		comma = ',';
+		semi_colon = ';';
+		paren_open = '(';
+		paren_close = ')';
+
+		// White spaces/comments.
+		ws = "[ \\t\\n]+";
+		comment = "--[^\\n]*\\n";  // Single line comments with --
+		cstyle_comment = "\\/\\*[^*]*\\*+([^/*][^*]*\\*+)*\\/"; // C-style comments
+
 		// The token must be added in priority order.
-		this->self += lex::token_def<>('(') | ')' | ',' | ';';
+		this->self += comma | semi_colon | paren_open | paren_close;
 		this->self += type_smallint | type_int | type_varchar | type_text |
 									type_date;
 		this->self += kw_not_null | kw_auto_increment | kw_unique | kw_default |
 									kw_create | kw_table | kw_constraint | kw_primary_key | kw_alter |
 									kw_add;
 		this->self += identifier | unsigned_digit | signed_digit | quoted_string;
-
-		ws = "[ \\t\\n]+";
-		comment = "--[^\\n]*\\n";  // Single line comments with --
-		cstyle_comment = "\\/\\*[^*]*\\*+([^/*][^*]*\\*+)*\\/"; // C-style comments
 
 		this->self += ws 		[ lex::_pass = lex::pass_flags::pass_ignore ] 
 				| comment 			[ lex::_pass = lex::pass_flags::pass_ignore ]
@@ -238,7 +246,7 @@ struct sql_grammar
 		: sql_grammar::base_type(program, "program")
 	{
 		program 
-			%=  (statement % ';') >> *qi::lit(';')
+			%=  (statement % tok.semi_colon) >> *tok.semi_colon
 			;
 
 		statement 
@@ -251,7 +259,7 @@ struct sql_grammar
 			;
 
 		alter_table
-			=	 tok.kw_table >> tok.identifier [phx::at_c<0>(qi::_val) = qi::_1] >> (alter_table_add % ',') [phx::at_c<2>(qi::_val) = qi::_1]
+			=	 tok.kw_table >> tok.identifier [phx::at_c<0>(qi::_val) = qi::_1] >> (alter_table_add % tok.comma) [phx::at_c<2>(qi::_val) = qi::_1]
 			;
 
 		alter_table_add
@@ -263,11 +271,11 @@ struct sql_grammar
 			;
 
 		create_table
-			%=	tok.kw_table >> tok.identifier >> '(' >> create_table_columns >> -(',' >> table_constraints) >> ')'
+			%=	tok.kw_table >> tok.identifier >> tok.paren_open >> create_table_columns >> -(tok.comma >> table_constraints) >> tok.paren_close
 			;
 
 		table_constraints
-			%= 	constraint_definition % ','
+			%= 	constraint_definition % tok.comma
 			;
 
 		constraint_definition
@@ -275,12 +283,12 @@ struct sql_grammar
 			;
 
 		primary_key_constraint
-			= tok.kw_primary_key >> '(' >> (tok.identifier % ',') [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
-			>> ')'
+			= tok.kw_primary_key >> tok.paren_open >> (tok.identifier % tok.comma) [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
+			>> tok.paren_close
 			;
 
 		create_table_columns
-			%=   column_definition % ','     // comma separated list of column_definition.
+			%=   column_definition % tok.comma
 			;
 
 		column_definition
@@ -301,7 +309,8 @@ struct sql_grammar
 		column_type
 			=   tok.type_smallint		[phx::bind(&semantic_actions::make_column_type<sql::type::smallint>, &sa_, qi::_val)]
 			|   tok.type_int 				[phx::bind(&semantic_actions::make_column_type<sql::type::integer>, &sa_, qi::_val)]
-			|   (tok.type_varchar > '(' > tok.unsigned_digit > ')') [phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
+			|   (tok.type_varchar > tok.paren_open > tok.unsigned_digit > tok.paren_close) 
+															[phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
 			|   tok.type_text 			[phx::bind(&semantic_actions::make_column_type<sql::type::text>, &sa_, qi::_val)]
 			|   tok.type_date			  [phx::bind(&semantic_actions::make_column_type<sql::type::date>, &sa_, qi::_val)]
 			;
