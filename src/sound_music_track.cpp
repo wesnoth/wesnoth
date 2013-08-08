@@ -44,7 +44,7 @@ music_track::music_track() :
 music_track::music_track(const config& node) :
 	id_(node["name"]),
 	file_path_(),
-	title_(),
+	title_(node["title"]),
 	ms_before_(node["ms_before"]),
 	ms_after_(node["ms_after"]),
 	once_(node["play_once"].to_bool()),
@@ -81,39 +81,44 @@ void music_track::resolve()
 		return;
 	}
 
+
 #if !defined(_WIN32) && !defined(__APPLE__)
-	FILE* f;
-	f = fopen(file_path_.c_str(), "r");
-	if (f == NULL) {
-		LOG_AUDIO << "Error opening file '" << file_path_ << "' for track identification\n";
-		return;
-	}
-
-	OggVorbis_File vf;
-	if(ov_open(f, &vf, NULL, 0) < 0) {
-		LOG_AUDIO << "track does not appear to be an Ogg file '" << id_ << "', cannot be identified\n";
-		ov_clear(&vf);
-		return;
-	}
-
-	vorbis_comment* comments = ov_comment(&vf, -1);
-	char** user_comments = comments->user_comments;
-
-	bool found = false;
-	for (int i=0; i< comments->comments; i++) {
-		const std::string comment_string(user_comments[i]);
-		const std::vector<std::string> sowas = utils::split(comment_string, '=');
-
-		if (sowas[0] == "TITLE" || sowas[0] == "title") {
-			title_ = sowas[1];
-			found = true;
+	if (title_.empty()) {
+		FILE* f;
+		f = fopen(file_path_.c_str(), "r");
+		if (f == NULL) {
+			LOG_AUDIO << "Error opening file '" << file_path_
+					<< "' for track identification\n";
+			return;
 		}
-	}
-	if (!found) {
-		LOG_AUDIO << "No title for music track '" << id_ << "'\n";
-	}
+
+		OggVorbis_File vf;
+		if(ov_open(f, &vf, NULL, 0) < 0) {
+			LOG_AUDIO << "track does not appear to be an Ogg file '"
+					<< id_ << "', cannot be identified\n";
+			ov_clear(&vf);
+			return;
+		}
+
+		vorbis_comment* comments = ov_comment(&vf, -1);
+		char** user_comments = comments->user_comments;
+
+		bool found = false;
+		for (int i=0; i< comments->comments; i++) {
+			const std::string comment_string(user_comments[i]);
+			const std::vector<std::string> comment_list = utils::split(comment_string, '=');
+
+			if (comment_list[0] == "TITLE" || comment_list[0] == "title") {
+				title_ = comment_list[1];
+				found = true;
+			}
+		}
+		if (!found) {
+			LOG_AUDIO << "No title for music track '" << id_ << "'\n";
+		}
 
 	ov_clear(&vf);
+	}
 #endif
 
 	LOG_AUDIO << "resolved music track '" << id_ << "' into '" << file_path_ << "'\n";

@@ -3,13 +3,13 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-06-23 10:20+0200\n"
-"PO-Revision-Date: 2012-11-21 23:31-0000\n"
+"POT-Creation-Date: 2013-06-24 15:23+0200\n"
+"PO-Revision-Date: 2013-02-18 17:15-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -206,9 +206,9 @@ msgid ""
 "Click to paste, zoom out for more accuracy when pasting large areas. Use the "
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
-"Dèan briogadh airson cur ann, sùm a-mach airson barrachd pongalachd nuair a "
-"chuireas tu roinnean farsaing ann. Cleachd an clàr-taice deasachaidh gus am "
-"bòrd-chliopaichean cruth-atharrachadh (cuairtich, sgàthan)."
+"Briog airson cur ann, sùm a-mach airson barrachd pongalachd nuair a chuireas "
+"tu roinnean farsaing ann. Cleachd an clàr-taice deasachaidh gus am bòrd-"
+"chliopaichean cruth-atharrachadh (cuairtich, sgàthan)."
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:63
@@ -463,11 +463,11 @@ msgstr "Faidhle mapa falamh"
 
 #: src/editor/map/map_context.cpp:350
 msgid "Could not save into scenario"
-msgstr "Cha do ghabh sàbhaladh dhan chnàmh-sgeul"
+msgstr "Cha b' urrainn dhuinn sàbhaladh dhan chnàmh-sgeul"
 
 #: src/editor/map/map_context.cpp:357
 msgid "Could not save the map: $msg"
-msgstr "Cha do ghabh am mapa sàbhaladh: $msg"
+msgstr "Cha b' urrainn dhuinn am mapa sàbhaladh: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:58
 #: src/editor/palette/editor_palettes.cpp:105
@@ -502,9 +502,6 @@ msgstr "Gin"
 msgid "Player $player_number"
 msgstr "Cluicheadair $player_number"
 
-#~ msgid "Custom setting"
-#~ msgstr "Roghainn gnàthaichte"
-
 #~ msgid "Edit"
 #~ msgstr "Deasaich"
 
@@ -531,3 +528,6 @@ msgstr "Cluicheadair $player_number"
 
 #~ msgid "Auto-update Terrain Transitions: No"
 #~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre: dheth"
+
+#~ msgid "Custom setting"
+#~ msgstr "Roghainn gnàthaichte"

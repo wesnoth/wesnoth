@@ -19,7 +19,7 @@
 #include "editor/editor_preferences.hpp"
 #include "editor/map/map_fragment.hpp"
 
-#include "mapgen.hpp"
+#include "generators/mapgen.hpp"
 
 #include "hotkeys.hpp"
 

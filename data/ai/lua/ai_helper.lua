@@ -65,6 +65,9 @@ function ai_helper.put_labels(map, cfg)
     -- cfg: table with optional parameters:
     --   - show_coords: (boolean) use hex coordinates as labels instead of value
     --   - factor=1: (number) if value is a number, multiply by this factor
+    --   - keys: (array) if the value to be displayed is a subelement of the LS data,
+    --     use these keys to access it.  For example, if we want to display data[3]
+    --     set keys = { 3 }, if it's data.arg[3], set keys = { 'arg', 3 }
 
     cfg = cfg or {}
     local factor = cfg.factor or 1
@@ -76,6 +79,9 @@ function ai_helper.put_labels(map, cfg)
         if cfg.show_coords then
             out = x .. ',' .. y
         else
+            if cfg.keys then
+                for i,k in ipairs(cfg.keys) do data = data[k] end
+            end
             out = tonumber(data) or 'nan'
         end
         if (type(out) == 'number') then out = out * factor end
