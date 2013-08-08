@@ -18,7 +18,7 @@
 #define CAVEGEN_HPP_INCLUDED
 
 #include "config.hpp"
-#include "mapgen.hpp"
+#include "generators/mapgen.hpp"
 #include "terrain_translation.hpp"
 
 #include <set>

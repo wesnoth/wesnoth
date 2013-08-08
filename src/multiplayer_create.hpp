@@ -23,7 +23,7 @@
 #include "multiplayer_ui.hpp"
 #include "widgets/slider.hpp"
 #include "widgets/combo.hpp"
-#include "mapgen.hpp"
+#include "generators/mapgen.hpp"
 #include "tooltips.hpp"
 
 namespace mp {

@@ -222,13 +222,6 @@ public:
 			attack_indicator_src_.get_relative_dir(attack_indicator_dst_));
 	}
 
-
-	/**
-	 * Check the overlay_map for proper team-specific overlays to be
-	 * displayed/hidden
-	 */
-	void parse_team_overlays();
-
 	// Functions used in the editor:
 
 	//void draw_terrain_palette(int x, int y, terrain_type::TERRAIN selected);

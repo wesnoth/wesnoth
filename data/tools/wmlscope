@@ -180,10 +180,10 @@ class CrossRefLister(CrossRef):
         if mismatched:
             print "# Mismatched references:"
             for (n, m) in mismatched:
-                print "%s: macro %s(%s) has mismatches:" % (m, n, ", ".join(map(lambda x: "%s=%s" % (x, formaltype(x)), m.args)))
+                print "%s: macro %s(%s) has mismatches:" % (m, n, ", ".join(["{}={}".format(x, formaltype(x)) for x in m.args]))
                 for (file, refs) in m.references.items():
                     for (ln, args) in refs:
-                        print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), m.args, args)))
+                        print '"%s", line %d: %s(%s) with signature (%s)' % (file, ln, n, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(m.args, args)]))
 
     def undersized(self):
         "Report undersized images that cannot be safely overlaid on a hex."
@@ -205,7 +205,7 @@ class CrossRefLister(CrossRef):
         duplicate_latch = False
         for (key, value) in self.unit_ids.items():
             if len(value) > 1:
-                if exportonly and not filter(lambda x: self.exports(x.namespace), value):
+                if exportonly and not [x for x in value if self.exports(x.namespace)]:
                     continue
                 if not duplicate_latch:
                     print "# Duplicate IDs"
@@ -225,9 +225,9 @@ class CrossRefLister(CrossRef):
                     if filename.endswith(branch):
                         if name not in already_seen:
                             already_seen.append(name)
-                            print "%s: macro %s(%s):" % (defn, name, ", ".join(map(lambda x: "%s=%s" % (x, formaltype(x)), defn.args)))
+                            print "%s: macro %s(%s):" % (defn, name, ", ".join(["{}={}".format(x, formaltype(x)) for x in defn.args]))
                         for (ln, args) in refs:
-                            print '"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(map(lambda f, a: "%s=%s" % (f, actualtype(a)), defn.args, args)))
+                            print '"%s", line %d: %s(%s) with signature (%s)' % (filename, ln, name, ", ".join(args), ", ".join(["{}={}".format(f, actualtype(a)) for f,a in zip(defn.args, args)]))
     def deflist(self, pred=None):
         "List all resource definitions."
         sorted = self.xref.keys()
@@ -235,7 +235,7 @@ class CrossRefLister(CrossRef):
         for name in sorted:
             for defn in self.xref[name]:
                 if not pred or pred(name, defn):
-                    print "macro", name, " ".join(map(lambda x: "%s=%s" % (x, formaltype(x)), defn.args))
+                    print "macro", name, " ".join(["{}={}".format(x, formaltype(x)) for x in defn.args])
         sorted = self.fileref.keys()
         sorted.sort()
         for name in sorted:
@@ -279,7 +279,7 @@ class CrossRefLister(CrossRef):
         "Deliver all macro help comments in HTML form."
         # Bug: finds only the first definition of each macro in scope.
         doclist = self.xref.keys()
-        doclist = filter(lambda x: self.xref[x][0].docstring.count("\n") > 1, doclist)
+        doclist = [x for x in doclist if self.xref[x][0].docstring.count("\n") > 1]
         doclist.sort(lambda x, y: cmp(self.xref[x][0], self.xref[y][0]))
         outstr = ""
         filename = None
@@ -461,7 +461,7 @@ Usage: macroscope [options] dirpath
             hashcounts = {}
             for (n, h) in collisions:
                 hashcounts[h] = hashcounts.get(h, 0) + 1
-            collisions = filter(lambda (n, h): hashcounts[h] > 1, collisions)
+            collisions = [(n,h) for (n,h) in collisions if hashcounts[h] > 1]
             collisions.sort(lambda (n1, h1), (n2, h2): cmp(h1, h2))
             lasthash = None
             for (n, h) in collisions:

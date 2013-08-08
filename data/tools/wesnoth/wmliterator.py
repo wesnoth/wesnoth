@@ -361,7 +361,7 @@ Important Attributes:
 
     def ancestors(self):
         """Return a list of tags enclosing this location, outermost first."""
-        return tuple(map(lambda x: x.element, self.scopes))
+        return tuple([x.element for x in self.scopes])
 
     def hasNext(self):
         """Some loops may wish to check this method instead of calling next()
