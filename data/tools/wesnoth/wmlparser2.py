@@ -29,11 +29,11 @@ class WMLError(Exception):
             self.preprocessed = parser.preprocessed
 
     def __str__(self):
-        r = "WMLError:\n"
-        r += "    " + str(self.line) + " " + self.preprocessed + "\n"
-        r += "    " + self.wml_line + "\n"
-        r += "    " + self.message + "\n"
-        return r
+        return """WMLError:
+    %s %s
+    %s
+    %s
+""" % (str(self.line), self.preprocessed, self.wml_line, self.message)
 
 class StringNode:
     """
@@ -47,8 +47,7 @@ class StringNode:
 
     def debug(self):
         if self.textdomain:
-            return "_<" + self.textdomain + ">" +\
-                repr(self.data)
+            return "_<%s>%s" % (self.textdomain, repr(self.data))
         else:
             return repr(self.data)
 
@@ -93,12 +92,11 @@ class TagNode:
         self.speedy_tags = {}
 
     def debug(self):
-        s = ""
-        s += "[" + self.name + "]\n"
+        s = "[%s]\n" % self.name
         for sub in self.data:
             for subline in sub.debug().splitlines():
-                s += "    " + subline + "\n"
-        s += "[/" + self.name + "]\n"
+                s += "    %s\n" % subline
+        s += "[/%s]\n" % self.name
         return s
 
     def get_all(self, **kw):
