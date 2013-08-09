@@ -11,7 +11,7 @@
 
 	See the COPYING file for more details.
 */
-#define BOOST_SPIRIT_QI_DEBUG
+//#define BOOST_SPIRIT_QI_DEBUG
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/lex_lexertl.hpp>
@@ -571,8 +571,10 @@ struct cpp_semantic_actions
 {
 	typedef attribute<std::pair<sql_column, std::set<std::string> > > include_attribute;
 
-	cpp_semantic_actions(const std::string& wesnoth_path)
+	cpp_semantic_actions(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: license_header_(file2string(wesnoth_path + get_license_header_file())) 
+	, generated_(generated)
+	, output_dir_(output_dir)
 	{}
 
 	void type2string(std::string& res, typename semantic_actions::column_type_attribute::s_type const& type)
@@ -605,26 +607,40 @@ struct cpp_semantic_actions
 		}
 	}
 
+	void open_sink(const std::string& class_name)
+	{
+		generated_.close();
+		std::string filepath = output_dir_ + boost::to_lower_copy(class_name) + ".hpp";
+		generated_.open(filepath.c_str());
+		if(!generated_.is_open())
+		{
+			throw std::runtime_error("Could not open the file " + filepath); 
+		}
+	}
+
 private:
 	std::string license_header_;
+	std::ofstream& generated_;
+	std::string output_dir_;
 };
 
 template <typename OutputIterator>
 struct cpp_grammar 
 : karma::grammar<OutputIterator, typename semantic_actions::program_attribute::type>
 {
-	cpp_grammar(const std::string& wesnoth_path)
+	cpp_grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: cpp_grammar::base_type(program)
-	, cpp_sa_(wesnoth_path)
+	, cpp_sa_(wesnoth_path, generated, output_dir)
 	{
 		using karma::eol;
 
 		program 
-			= create_file % eol
+			= +create_file
 			;
 
 		create_file 
-			= header [karma::_1 = karma::_val] 
+			= karma::eps [phx::bind(&cpp_semantic_actions::open_sink, &cpp_sa_, phx::at_c<0>(karma::_val))]
+			<< header [karma::_1 = karma::_val] 
 			<< create_class [karma::_1 = karma::_val] 
 			<< footer
 			;
@@ -729,17 +745,17 @@ private:
 };
 
 template <typename OutputIterator>
-bool generate_cpp(OutputIterator& sink, typename semantic_actions::program_attribute::s_type const& sql_ast)
+bool generate_cpp(OutputIterator& sink, typename semantic_actions::program_attribute::s_type const& sql_ast, std::ofstream& generated, const std::string& output_dir)
 {
-	cpp_grammar<OutputIterator> cpp_grammar("../");
+	cpp_grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
 	return karma::generate(sink, cpp_grammar, sql_ast);
 }
 
 int main(int argc, char* argv[])
 {
-	if(argc != 2)
+	if(argc != 3)
 	{
-		std::cerr << "usage: " << argv[0] << " schema_filename\n";
+		std::cerr << "usage: " << argv[0] << " schema_filename output_directory\n";
 		return 1;
 	}
 
@@ -802,12 +818,15 @@ int main(int argc, char* argv[])
 		std::cout << "Parsing succeeded\n";
 		std::cout << "-------------------------\n";
 
-		std::string generated;
-		std::back_insert_iterator<std::string> sink(generated);
-		if(generate_cpp(sink, sql_ast))
+		//std::string generated;
+		//std::back_insert_iterator<std::string> sink(generated);
+
+		std::ofstream generated("dummy.txt");
+		std::ostream_iterator<char> sink(generated);
+
+		if(generate_cpp(sink, sql_ast, generated, argv[2]))
 		{
 			std::cout << "Generation succeeded\n";
-			std::cout << generated << std::endl;
 		}
 		else
 		{
