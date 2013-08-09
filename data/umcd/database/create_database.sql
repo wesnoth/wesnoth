@@ -12,7 +12,7 @@ USE umcd;
 -- 
 -- ---
 
-CREATE TABLE Addon (
+CREATE TABLE addon (
   id int unsigned NOT NULL AUTO_INCREMENT,
   type smallint unsigned NOT NULL,
   email varchar(254) NOT NULL, -- see RFC Erratum: http://www.rfc-editor.org/errata_search.php?rfc=3696&eid=1690
@@ -26,7 +26,7 @@ CREATE TABLE Addon (
 -- 
 -- ---
     
-CREATE TABLE AddonType (
+CREATE TABLE addon_type (
   value smallint unsigned NOT NULL AUTO_INCREMENT,
   name varchar(50) NOT NULL UNIQUE,
   CONSTRAINT pk_AddonType PRIMARY KEY (value)
@@ -37,7 +37,7 @@ CREATE TABLE AddonType (
 -- 
 -- ---
 
-CREATE TABLE Author (
+CREATE TABLE author (
   id int unsigned NOT NULL AUTO_INCREMENT,
   name varchar(100) NOT NULL UNIQUE,
   CONSTRAINT pk_Author PRIMARY KEY (id)
@@ -48,7 +48,7 @@ CREATE TABLE Author (
 -- 
 -- ---
 
-CREATE TABLE AddonMaintainers (
+CREATE TABLE addon_maintainers (
   addon int unsigned NOT NULL AUTO_INCREMENT,
   author int unsigned NOT NULL,
   CONSTRAINT pk_AddonMaintainers PRIMARY KEY (addon, author)
@@ -59,7 +59,7 @@ CREATE TABLE AddonMaintainers (
 -- 
 -- ---
 
-CREATE TABLE AddonVersion (
+CREATE TABLE addon_version (
   id int unsigned NOT NULL AUTO_INCREMENT,
   name varchar(256) NOT NULL,
   description text NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE AddonVersion (
 -- 
 -- ---
     
-CREATE TABLE Historic (
+CREATE TABLE historic (
   main_addon int unsigned NOT NULL AUTO_INCREMENT,
   addon_version varchar(50) NOT NULL,
   CONSTRAINT pk_Historic PRIMARY KEY (main_addon, addon_version)
@@ -89,7 +89,7 @@ CREATE TABLE Historic (
 -- 
 -- ---
     
-CREATE TABLE Dependencies (
+CREATE TABLE dependencies (
   addon_version int unsigned NOT NULL AUTO_INCREMENT,
   dependency int unsigned NOT NULL,
   version_mask varchar(110) NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE Dependencies (
 -- 
 -- ---
     
-CREATE TABLE Language (
+CREATE TABLE language (
   value smallint unsigned NOT NULL AUTO_INCREMENT,
   name varchar(50) NOT NULL UNIQUE,
   CONSTRAINT pk_Language PRIMARY KEY (value)
@@ -112,7 +112,7 @@ CREATE TABLE Language (
 -- 
 -- ---
     
-CREATE TABLE Translation (
+CREATE TABLE translation (
   id int unsigned NOT NULL AUTO_INCREMENT,
   language smallint unsigned NOT NULL,
   translated_addon int unsigned NOT NULL,
@@ -126,20 +126,20 @@ CREATE TABLE Translation (
 
 -- Foreign keys
 
-ALTER TABLE Addon ADD CONSTRAINT fk_AddonAddonType FOREIGN KEY (type) REFERENCES AddonType(value);
-ALTER TABLE Addon ADD CONSTRAINT fk_AddonLanguage FOREIGN KEY (native_language) REFERENCES Language (value);
+ALTER TABLE addon ADD CONSTRAINT fk_AddonAddonType FOREIGN KEY (type) REFERENCES addon_type(value);
+ALTER TABLE addon ADD CONSTRAINT fk_AddonLanguage FOREIGN KEY (native_language) REFERENCES language (value);
 
-ALTER TABLE AddonMaintainers ADD CONSTRAINT fk_AddonMaintainersAddon FOREIGN KEY (addon) REFERENCES Addon(id);
-ALTER TABLE AddonMaintainers ADD CONSTRAINT fk_AddonMaintainersAuthor FOREIGN KEY (author) REFERENCES Author(id);
+ALTER TABLE addon_maintainers ADD CONSTRAINT fk_AddonMaintainersAddon FOREIGN KEY (addon) REFERENCES addon(id);
+ALTER TABLE addon_maintainers ADD CONSTRAINT fk_AddonMaintainersAuthor FOREIGN KEY (author) REFERENCES author(id);
 
-ALTER TABLE Historic ADD CONSTRAINT fk_HistoricAddon FOREIGN KEY (main_addon) REFERENCES Addon(id);
-ALTER TABLE Historic ADD CONSTRAINT fk_HistoricAddonVersion FOREIGN KEY (addon_version) REFERENCES AddonVersion(id);
+ALTER TABLE historic ADD CONSTRAINT fk_HistoricAddon FOREIGN KEY (main_addon) REFERENCES addon(id);
+ALTER TABLE historic ADD CONSTRAINT fk_HistoricAddonVersion FOREIGN KEY (addon_version) REFERENCES addon_version(id);
 
-ALTER TABLE Dependencies ADD CONSTRAINT fk_DependenciesAddon FOREIGN KEY (dependency) REFERENCES Addon(id);
-ALTER TABLE Dependencies ADD CONSTRAINT fk_DependenciesAddonVersion FOREIGN KEY (addon_version) REFERENCES AddonVersion(id);
+ALTER TABLE dependencies ADD CONSTRAINT fk_DependenciesAddon FOREIGN KEY (dependency) REFERENCES addon(id);
+ALTER TABLE dependencies ADD CONSTRAINT fk_DependenciesAddonVersion FOREIGN KEY (addon_version) REFERENCES addon_version(id);
 
-ALTER TABLE Translation ADD CONSTRAINT fk_TranslationLanguage FOREIGN KEY (language) REFERENCES Language(value);
-ALTER TABLE Translation ADD CONSTRAINT fk_TranslationAddonVersion FOREIGN KEY (translated_addon) REFERENCES AddonVersion (id);
+ALTER TABLE translation ADD CONSTRAINT fk_TranslationLanguage FOREIGN KEY (language) REFERENCES language(value);
+ALTER TABLE translation ADD CONSTRAINT fk_TranslationAddonVersion FOREIGN KEY (translated_addon) REFERENCES addon_version (id);
 
 -- ---
 -- Test Data
