@@ -1019,7 +1019,8 @@ void side_engine::resolve_random()
 			faction_excepts.clear();
 		}
 
-		// Builds the list of sides eligible for choice (nonrandom factions).
+		// Builds the list of factions eligible for choice
+		// (non-random factions).
 		std::vector<int> nonrandom_sides;
 		int num = -1;
 		BOOST_FOREACH(const config* i, available_factions_) {
@@ -1049,7 +1050,7 @@ void side_engine::resolve_random()
 
 		const int faction_index =
 			nonrandom_sides[rand() % nonrandom_sides.size()];
-		current_faction_ = available_factions_[faction_index];
+		set_current_faction(available_factions_[faction_index]);
 	}
 
 	LOG_MP << "FACTION" << (index_ + 1) << ": " << (*current_faction_)["name"]
@@ -1060,49 +1061,41 @@ void side_engine::resolve_random()
 	if (current_leader_ == "random") {
 		// Choose a random leader type, and force gender to be random.
 		current_gender_ = "random";
-		std::vector<std::string> types =
-			utils::split((*current_faction_)["random_leader"]);
-		if (!types.empty()) {
-			const int lchoice = rand() % types.size();
-			current_leader_ = types[lchoice];
-		} else {
-			// If 'random_leader' doesn't exist, we use 'leader'.
-			types = utils::split((*current_faction_)["leader"]);
-			if (!types.empty()) {
-				const int lchoice = rand() % types.size();
-				current_leader_ = types[lchoice];
-			} else {
-				utils::string_map i18n_symbols;
-				i18n_symbols["faction"] = (*current_faction_)["name"];
-				throw config::error(vgettext(
-					"Unable to find a leader type for faction $faction",
-					i18n_symbols));
+
+		std::vector<std::string> nonrandom_leaders;
+		BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
+			if (leader != "random") {
+				nonrandom_leaders.push_back(leader);
 			}
 		}
+
+		if (nonrandom_leaders.empty()) {
+			utils::string_map i18n_symbols;
+			i18n_symbols["faction"] = (*current_faction_)["name"];
+			throw config::error(vgettext(
+				"Unable to find a leader type for faction $faction",
+				i18n_symbols));
+		} else {
+			const int lchoice = rand() % nonrandom_leaders.size();
+			set_current_leader(nonrandom_leaders[lchoice]);
+		}
+
 		solved_random_leader = true;
 	}
 
 	// Resolve random genders "very much" like standard unit code.
 	if (current_gender_ == "random" || solved_random_leader) {
-		const unit_type *ut =
-			unit_types.find(current_leader_);
-
-		if (ut) {
-			const std::vector<unit_race::GENDER> glist = ut->genders();
-			const int gchoice = rand() % glist.size();
-
-			// Pick up a gender, using the random 'gchoice' index.
-			unit_race::GENDER sgender = glist[gchoice];
-			switch (sgender) {
-				case unit_race::FEMALE:
-					current_gender_ = unit_race::s_female;
-					break;
-				case unit_race::MALE:
-					current_gender_ = unit_race::s_male;
-					break;
-				default:
-					current_gender_ = "null";
+		const unit_type *ut = unit_types.find(current_leader_);
+		if (ut && !choosable_genders_.empty()) {
+			std::vector<std::string> nonrandom_genders;
+			BOOST_FOREACH(const std::string& gender, choosable_genders_) {
+				if (gender != "random") {
+					nonrandom_genders.push_back(gender);
+				}
 			}
+
+			const int gchoice = rand() % nonrandom_genders.size();
+			set_current_gender(nonrandom_genders[gchoice]);
 		} else {
 			ERR_CF << "cannot obtain genders for invalid leader '" <<
 				current_leader_ << "'.\n";

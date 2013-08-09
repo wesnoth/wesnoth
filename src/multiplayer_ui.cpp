@@ -935,11 +935,14 @@ std::vector<std::string> init_choosable_leaders(const config& side,
 			}
 		}
 	} else {
-		if (map_settings &&	!side["type"].empty() && side["type"] != "null") {
+		const std::string& default_leader = side["type"];
+		if (map_settings &&	!default_leader.empty() &&
+			default_leader != "null" && default_leader != "random") {
+
 			// Leader was explicitly assigned.
-			const unit_type *unit = unit_types.find(side["type"]);
+			const unit_type *unit = unit_types.find(default_leader);
 			if (unit) {
-				choosable_leaders.push_back(side["type"]);
+				choosable_leaders.push_back(default_leader);
 			}
 		} else if ((*faction)["id"] == "Custom") {
 			// Allow user to choose a leader from any faction.
@@ -988,15 +991,17 @@ std::vector<std::string> init_choosable_genders(const config& side,
 	} else {
 		const unit_type* unit = unit_types.find(leader);
 		if (unit) {
-			if (map_settings &&	side.has_attribute("type") &&
-				side.has_attribute("gender")) {
+			const std::string& default_gender = side["gender"];
+			if (map_settings && (default_gender == unit_race::s_female ||
+				default_gender == unit_race::s_male)) {
 
 				// Gender was explicitly assigned.
 				const unit_type *unit = unit_types.find(leader);
 				if (unit) {
 					BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
-						if (side["gender"] == gender) {
-							choosable_genders.push_back(side["gender"]);
+						if (default_gender == gender_string(gender)) {
+							choosable_genders.push_back(default_gender);
+							break;
 						}
 					}
 				}
@@ -1124,8 +1129,12 @@ int current_gender_index(const std::string& current_gender,
 void append_leaders_from_faction(const config* faction,
 	std::vector<std::string>& leaders)
 {
-	const std::vector<std::string>& leaders_to_append =
-		utils::split((*faction)["leader"]);
+	std::vector<std::string> leaders_to_append =
+		utils::split((*faction)["random_leader"]);
+	if (leaders_to_append.empty()) {
+		leaders_to_append = utils::split((*faction)["leader"]);
+	}
+
 	leaders.insert(leaders.end(), leaders_to_append.begin(),
 		leaders_to_append.end());
 }

@@ -25,8 +25,6 @@
 #include "widgets/scrollpane.hpp"
 #include "widgets/slider.hpp"
 
-const std::string random_enemy_picture("units/random-dice.png");
-
 namespace ai {
 	struct description;
 }
