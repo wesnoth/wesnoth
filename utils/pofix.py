@@ -2642,6 +2642,7 @@ stringfixes = {
 ("This is--", "This is—"),
 ("This entire journey has been based on a lie--", "This entire journey has been based on a lie—"),
 ("the last few generations--if anything the land had grown even more", "the last few generations—if anything the land had grown even more"),
+("But if if this battle", "But if this battle"),
 
 # Fix screw up
 # conversion added in 1.9.0-svn
