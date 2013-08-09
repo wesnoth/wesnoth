@@ -46,7 +46,6 @@ static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
 namespace {
-
 	/** The maximum number of messages in the chat history. */
 	const size_t max_messages = 256;
 
@@ -834,7 +833,8 @@ const gui::label& ui::title() const
 	return title_;
 }
 
-int find_suitable_faction(faction_list const &fl, const config &cfg)
+int find_suitable_faction(const std::vector<const config*> &fl,
+	const config &cfg)
 {
 	std::vector<std::string> find;
 	std::string search_field;
@@ -935,7 +935,7 @@ std::vector<std::string> init_choosable_leaders(const config& side,
 			}
 		}
 	} else {
-		if (map_settings &&	side.has_attribute("type")) {
+		if (map_settings &&	!side["type"].empty() && side["type"] != "null") {
 			// Leader was explicitly assigned.
 			const unit_type *unit = unit_types.find(side["type"]);
 			if (unit) {
@@ -1025,6 +1025,102 @@ std::vector<std::string> init_choosable_genders(const config& side,
 	return choosable_genders;
 }
 
+void reset_leader_combo(gui::combo* combo_leader,
+	const std::vector<std::string>& choosable_leaders,
+	const std::string& current_leader, const int color, const bool saved_game)
+{
+	std::vector<std::string> leaders;
+	BOOST_FOREACH(const std::string& leader, choosable_leaders) {
+		const unit_type* unit = unit_types.find(leader);
+		if (unit) {
+			leaders.push_back(IMAGE_PREFIX + unit->image() +
+				get_RC_suffix(unit->flag_rgb(), color) +
+				COLUMN_SEPARATOR + unit->type_name());
+		} else if (leader == "random") {
+			leaders.push_back(IMAGE_PREFIX + random_enemy_picture +
+				COLUMN_SEPARATOR + _("Random"));
+		} else if (leader == "null") {
+			leaders.push_back(utils::unicode_em_dash);
+		} else {
+			leaders.push_back("?");
+		}
+	}
+
+	combo_leader->enable(leaders.size() > 1 && !saved_game);
+
+	combo_leader->set_items(leaders);
+	combo_leader->set_selected(current_leader_index(current_leader,
+		choosable_leaders));
+}
+
+void reset_gender_combo(gui::combo* combo_gender,
+	const std::vector<std::string>& choosable_genders,
+	const std::string& current_leader, const std::string& current_gender,
+	const int color, const bool saved_game)
+{
+	const unit_type* unit = unit_types.find(current_leader);
+
+	std::vector<std::string> genders;
+	BOOST_FOREACH(const std::string& gender, choosable_genders) {
+		if (gender == unit_race::s_female || gender == unit_race::s_male) {
+			if (unit) {
+				const unit_type& gender_unit =
+					unit->get_gender_unit_type(gender);
+
+				std::string gender_name = (gender == unit_race::s_female) ?
+					_("Female ♀") : _("Male ♂");
+				genders.push_back(IMAGE_PREFIX + gender_unit.image() +
+					get_RC_suffix(gender_unit.flag_rgb(), color) +
+					COLUMN_SEPARATOR + gender_name);
+			}
+		} else if (gender == "random") {
+			genders.push_back(IMAGE_PREFIX + random_enemy_picture +
+				COLUMN_SEPARATOR + _("Random"));
+		} else if (gender == "null") {
+			genders.push_back(utils::unicode_em_dash);
+		} else {
+			genders.push_back("?");
+		}
+	}
+
+	combo_gender->enable(genders.size() > 1 && !saved_game);
+
+	combo_gender->set_items(genders);
+	combo_gender->set_selected(current_gender_index(current_gender,
+		choosable_genders));
+}
+
+
+int current_leader_index(const std::string& current_leader,
+	const std::vector<std::string>& choosable_leaders)
+{
+	int index = 0;
+	BOOST_FOREACH(const std::string& leader, choosable_leaders) {
+		if (current_leader == leader) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
+int current_gender_index(const std::string& current_gender,
+	const std::vector<std::string>& choosable_genders)
+{
+	int index = 0;
+	BOOST_FOREACH(const std::string& gender, choosable_genders) {
+		if (current_gender == gender) {
+			return index;
+		}
+
+		index++;
+	}
+
+	return 0;
+}
+
 void append_leaders_from_faction(const config* faction,
 	std::vector<std::string>& leaders)
 {
@@ -1034,5 +1130,18 @@ void append_leaders_from_faction(const config* faction,
 		leaders_to_append.end());
 }
 
+
+#ifdef LOW_MEM
+std::string get_RC_suffix(const std::string&, const int)
+{
+	return "";
+}
+#else
+std::string get_RC_suffix(const std::string& unit_color, const int color)
+{
+	return "~RC(" + unit_color + ">" + lexical_cast<std::string>(color + 1) +
+		")";
+}
+#endif
 
 }// namespace mp

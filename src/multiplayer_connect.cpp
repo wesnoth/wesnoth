@@ -382,60 +382,16 @@ void connect::side::update_faction_combo()
 
 void connect::side::update_leader_combo()
 {
-	std::vector<std::string> leaders;
-	BOOST_FOREACH(const std::string& leader, engine_->choosable_leaders()) {
-		const unit_type* unit = unit_types.find(leader);
-		if (unit) {
-			leaders.push_back(IMAGE_PREFIX + unit->image() +
-				get_RC_suffix(unit->flag_rgb()) + COLUMN_SEPARATOR +
-				unit->type_name());
-		} else if (leader == "random") {
-			leaders.push_back(IMAGE_PREFIX + random_enemy_picture +
-				COLUMN_SEPARATOR + _("Random"));
-		} else if (leader == "null") {
-			leaders.push_back(utils::unicode_em_dash);
-		} else {
-			leaders.push_back("?");
-		}
-	}
-
-	combo_leader_.enable(leaders.size() > 1 && !parent_->params_.saved_game);
-
-	combo_leader_.set_items(leaders);
-	combo_leader_.set_selected(engine_->current_leader_index());
+	reset_leader_combo(&combo_leader_, engine_->choosable_leaders(),
+		engine_->current_leader(), engine_->color(),
+		parent_->params_.saved_game);
 }
 
 void connect::side::update_gender_combo()
 {
-	const unit_type* unit = unit_types.find(engine_->current_leader());
-
-	std::vector<std::string> genders;
-	BOOST_FOREACH(const std::string& gender, engine_->choosable_genders()) {
-		if (gender == unit_race::s_female || gender == unit_race::s_male) {
-			if (unit) {
-				const unit_type& gender_unit =
-					unit->get_gender_unit_type(gender);
-
-				std::string gender_name = (gender == unit_race::s_female) ?
-					_("Female ♀") : _("Male ♂");
-				genders.push_back(IMAGE_PREFIX + gender_unit.image() +
-					get_RC_suffix(gender_unit.flag_rgb()) + COLUMN_SEPARATOR +
-					gender_name);
-			}
-		} else if (gender == "random") {
-			genders.push_back(IMAGE_PREFIX + random_enemy_picture +
-				COLUMN_SEPARATOR + _("Random"));
-		} else if (gender == "null") {
-			genders.push_back(utils::unicode_em_dash);
-		} else {
-			genders.push_back("?");
-		}
-	}
-
-	combo_gender_.enable(genders.size() > 1 && !parent_->params_.saved_game);
-
-	combo_gender_.set_items(genders);
-	combo_gender_.set_selected(engine_->current_gender_index());
+	reset_gender_combo(&combo_gender_, engine_->choosable_genders(),
+		engine_->current_leader(), engine_->current_gender(),
+		engine_->color(), parent_->params_.saved_game);
 }
 
 void connect::side::update_controller_ui()
@@ -461,21 +417,6 @@ void connect::side::update_controller_ui()
 
 	hide_ai_algorithm_combo(parent_->hidden());
 }
-
-#ifdef LOW_MEM
-std::string connect::side::get_RC_suffix(
-	const std::string& /*unit_color*/) const {
-
-	return "";
-}
-#else
-std::string connect::side::get_RC_suffix(
-	const std::string& unit_color) const {
-
-	return "~RC(" + unit_color + ">" +
-		lexical_cast<std::string>(engine_->color() + 1) + ")";
-}
-#endif
 
 connect::connect(game_display& disp, const config& game_config,
 	chat& c, config& gamelist, const mp_game_settings& params,

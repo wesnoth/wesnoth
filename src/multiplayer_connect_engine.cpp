@@ -1182,34 +1182,6 @@ int side_engine::current_faction_index() const
 	return 0;
 }
 
-int side_engine::current_leader_index() const
-{
-	int index = 0;
-	BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
-		if (current_leader_ == leader) {
-			return index;
-		}
-
-		index++;
-	}
-
-	return 0;
-}
-
-int side_engine::current_gender_index() const
-{
-	int index = 0;
-	BOOST_FOREACH(const std::string& gender, choosable_genders_) {
-		if (current_gender_ == gender) {
-			return index;
-		}
-
-		index++;
-	}
-
-	return 0;
-}
-
 void side_engine::set_faction_commandline(const std::string& faction_name)
 {
 	BOOST_FOREACH(const config* faction, choosable_factions_) {

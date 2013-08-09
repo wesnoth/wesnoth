@@ -154,8 +154,6 @@ public:
 	void set_current_gender(const std::string& current_gender);
 
 	int current_faction_index() const;
-	int current_leader_index() const;
-	int current_gender_index() const;
 
 	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
@@ -173,6 +171,7 @@ public:
 		{ return choosable_genders_; }
 	const config& cfg() const { return cfg_; }
 	const std::string& current_leader() const { return current_leader_; }
+	const std::string& current_gender() const { return current_gender_; }
 	controller mp_controller() const { return mp_controller_; }
 	void set_mp_controller(controller mp_controller)
 		{ mp_controller_ = mp_controller; }

@@ -19,7 +19,6 @@
 #include "game_preferences.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "game_display.hpp"
-#include "leader_list.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "multiplayer_wait.hpp"
@@ -42,28 +41,68 @@ const int leader_pane_border = 10;
 namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
-		const std::vector<const config *> &side_list, int color) :
+	const std::vector<const config*>& available_factions,
+	const std::vector<const config*>& choosable_factions, int color,
+	const bool map_settings, const bool saved_game,
+	const config& side_cfg) :
 	gui::preview_pane(disp.video()),
-	side_list_(side_list),
 	color_(color),
 	leader_combo_(disp, std::vector<std::string>()),
 	gender_combo_(disp, std::vector<std::string>()),
-	leaders_(&leader_combo_, &gender_combo_),
-	selection_(0)
+	selection_(0),
+	available_factions_(available_factions),
+	choosable_factions_(choosable_factions),
+	choosable_leaders_(),
+	choosable_genders_(),
+	current_faction_(choosable_factions[0]),
+	current_leader_("null"),
+	current_gender_("null"),
+	map_settings_(map_settings),
+	saved_game_(saved_game),
+	side_cfg_(side_cfg)
 {
-	leaders_.set_side_list(side_list);
-	leaders_.set_color(color_);
+	init_leaders_and_genders();
+
 	set_location(leader_pane_position);
 }
 
 void wait::leader_preview_pane::process_event()
 {
+	if (leader_combo_.changed()) {
+		current_leader_ = choosable_leaders_[leader_combo_.selected()];
 
-	if (leader_combo_.changed() || gender_combo_.changed()) {
-		leaders_.set_leader_combo(&leader_combo_);
-		leaders_.update_gender_list(leaders_.get_leader());
+		choosable_genders_ = init_choosable_genders(side_cfg_, current_leader_,
+			map_settings_, saved_game_);
+
+		current_gender_ = choosable_genders_[0];
+
+		reset_gender_combo(&gender_combo_, choosable_genders_,
+			current_leader_, current_gender_, color_, saved_game_);
+
 		set_dirty();
 	}
+
+	if (gender_combo_.changed()) {
+		current_gender_ = choosable_genders_[gender_combo_.selected()];
+
+		set_dirty();
+	}
+}
+
+void wait::leader_preview_pane::init_leaders_and_genders()
+{
+	choosable_leaders_ = init_choosable_leaders(side_cfg_, current_faction_,
+		available_factions_, map_settings_, saved_game_);
+	choosable_genders_ = init_choosable_genders(side_cfg_, current_leader_,
+		map_settings_, saved_game_);
+
+	current_leader_ = choosable_leaders_[0];
+	current_gender_ = choosable_genders_[0];
+
+	reset_leader_combo(&leader_combo_, choosable_leaders_,
+		current_leader_, color_, saved_game_);
+	reset_gender_combo(&gender_combo_, choosable_genders_,
+		current_leader_, current_gender_, color_, saved_game_);
 }
 
 void wait::leader_preview_pane::draw_contents()
@@ -79,8 +118,8 @@ void wait::leader_preview_pane::draw_contents()
 			, loc.h - leader_pane_border * 2);
 	const clip_rect_setter clipper(screen, &area);
 
-	if(selection_ < side_list_.size()) {
-		const config& side = *side_list_[selection_];
+	if(selection_ < choosable_factions_.size()) {
+		const config& side = *choosable_factions_[selection_];
 		std::string faction = side["faction"];
 
 		const std::string recruits = side["recruit"];
@@ -92,17 +131,15 @@ void wait::leader_preview_pane::draw_contents()
 			if(p != std::string::npos && p < faction.size())
 				faction = faction.substr(p+1);
 		}
-		std::string leader = leaders_.get_leader();
-		std::string gender = leaders_.get_gender();
 
 		std::string image;
 
-		const unit_type *ut = unit_types.find(leader);
+		const unit_type *ut = unit_types.find(current_leader_);
 
 		if (ut) {
-			const unit_type &utg = ut->get_gender_unit_type(gender);
+			const unit_type &utg = ut->get_gender_unit_type(current_gender_);
 
-			image = utg.image() + leaders_.get_RC_suffix(utg.flag_rgb());
+			image = utg.image() + get_RC_suffix(utg.flag_rgb(), color_);
 		}
 
 		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
@@ -151,19 +188,24 @@ bool wait::leader_preview_pane::left_side() const
 void wait::leader_preview_pane::set_selection(int selection)
 {
 	selection_ = selection;
-	leaders_.update_leader_list(selection_);
-	leaders_.update_gender_list(leaders_.get_leader());
-	set_dirty();
+
+	if ((size_t)selection < choosable_factions_.size()) {
+		current_faction_ = choosable_factions_[selection];
+
+		init_leaders_and_genders();
+
+		set_dirty();
+	}
 }
 
 std::string wait::leader_preview_pane::get_selected_leader()
 {
-	return leaders_.get_leader();
+	return current_leader_;
 }
 
 std::string wait::leader_preview_pane::get_selected_gender()
 {
-	return leaders_.get_gender();
+	return current_gender_;
 }
 
 handler_vector wait::leader_preview_pane::handler_members() {
@@ -269,20 +311,23 @@ void wait::join_game(bool observe)
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
 
-			std::vector<const config *> leader_sides;
+			std::vector<const config*> choosable_factions;
 			BOOST_FOREACH(const config &side, possible_sides) {
-				leader_sides.push_back(&side);
+				choosable_factions.push_back(&side);
 			}
 
-			const bool use_map_settings =
+			const bool map_settings =
 				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
+			const bool saved_game =
+				level_.child("multiplayer")["savegame"].to_bool();
 
-			leader_sides = init_choosable_factions(
-				init_available_factions(leader_sides, *side_choice),
-				*side_choice, use_map_settings);
+			std::vector<const config*> available_factions =
+				init_available_factions(choosable_factions, *side_choice);
+			choosable_factions = init_choosable_factions(available_factions,
+				*side_choice, map_settings);
 
 			std::vector<std::string> choices;
-			BOOST_FOREACH(const config *s, leader_sides)
+			BOOST_FOREACH(const config *s, choosable_factions)
 			{
 				const config &side = *s;
 				const std::string &name = side["name"];
@@ -301,7 +346,9 @@ void wait::join_game(bool observe)
 			}
 
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(), leader_sides, color);
+			leader_preview_pane leader_selector(disp(), available_factions,
+				choosable_factions, color, map_settings, saved_game,
+				*side_choice);
 			preview_panes.push_back(&leader_selector);
 
 			const int faction_choice = gui::show_dialog(disp(), NULL,
@@ -318,7 +365,7 @@ void wait::join_game(bool observe)
 			config faction;
 			config& change = faction.add_child("change_faction");
 			change["name"] = preferences::login();
-			change["faction"] = (*leader_sides[faction_choice])["id"];
+			change["faction"] = (*choosable_factions[faction_choice])["id"];
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
 			network::send_data(faction, 0);
@@ -485,7 +532,7 @@ void wait::generate_menu()
 			leader_image = utg.image() + std::string("~RC(") + utg.flag_rgb() + ">" + RCcolor + ")";
 #endif
 		} else {
-			leader_image = leader_list_manager::random_enemy_picture;
+			leader_image = random_enemy_picture;
 		}
 		if (!leader_image.empty()) {
 			// Dumps the "image" part of the faction name, if any,

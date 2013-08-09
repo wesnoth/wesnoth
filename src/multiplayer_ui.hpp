@@ -18,6 +18,7 @@
 #include "hotkeys.hpp"
 #include "network.hpp"
 #include "preferences_display.hpp"
+#include "widgets/combo.hpp"
 #include "widgets/label.hpp"
 #include "widgets/menu.hpp"
 #include "widgets/textbox.hpp"
@@ -32,6 +33,8 @@ class game_state;
 namespace mp {
 
 enum controller { CNTR_NETWORK = 0, CNTR_LOCAL, CNTR_COMPUTER, CNTR_EMPTY, CNTR_RESERVED, CNTR_LAST };
+
+const std::string random_enemy_picture("units/random-dice.png");
 
 void check_response(network::connection res, const config& data);
 
@@ -270,26 +273,47 @@ private:
 	};
 };
 
-typedef std::vector<const config *> faction_list;
-/** Picks the first faction with the greater amount of data matching the criteria. */
-int find_suitable_faction(faction_list const &fl, const config &side);
+/**
+ * Picks the first faction with the greater amount of data
+ * matching the criteria.
+ */
+int find_suitable_faction(const std::vector<const config*> &fl,
+	const config &side);
 
+/**
+ * Returns the lists for factions, leaders and genders.
+ */
 std::vector<const config*> init_available_factions(
 	std::vector<const config*> era_sides, const config& side);
-
 std::vector<const config*> init_choosable_factions(
 	std::vector<const config*> available_factions, const config& side,
 	const bool map_settings);
-
 std::vector<std::string> init_choosable_leaders(const config& side,
 	const config* faction, const std::vector<const config*> available_factions,
 	const bool map_settings, const bool saved_game);
-
 std::vector<std::string> init_choosable_genders(const config& side,
 	const std::string& leader, const bool map_settings, const bool saved_game);
 
+/**
+ * Updates combos for leaders and genders.
+ */
+void reset_leader_combo(gui::combo* combo_leader,
+	const std::vector<std::string>& choosable_leaders,
+	const std::string& current_leader, const int color, const bool saved_game);
+void reset_gender_combo(gui::combo* combo_gender,
+	const std::vector<std::string>& choosable_genders,
+	const std::string& current_leader, const std::string& current_gender,
+	const int color, const bool saved_game);
+
+int current_leader_index(const std::string& current_leader,
+	const std::vector<std::string>& choosable_leaders);
+int current_gender_index(const std::string& current_gender,
+	const std::vector<std::string>& choosable_genders);
+
 void append_leaders_from_faction(const config* faction,
 	std::vector<std::string>& leaders);
+
+std::string get_RC_suffix(const std::string& unit_color, const int color);
 
 }
 

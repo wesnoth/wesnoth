@@ -67,7 +67,6 @@ public:
 		void update_leader_combo();
 		void update_gender_combo();
 		void update_controller_ui();
-		std::string get_RC_suffix(const std::string& unit_color) const;
 
 		// The mp::connect widget owning this mp::connect::side.
 		connect* parent_;

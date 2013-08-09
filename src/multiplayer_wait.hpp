@@ -17,7 +17,6 @@
 
 #include "widgets/combo.hpp"
 
-#include "leader_list.hpp"
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 #include "show_dialog.hpp"
@@ -46,7 +45,10 @@ private:
 	{
 	public:
 		leader_preview_pane(game_display& disp,
-			const std::vector<const config *> &side_list, int color);
+			const std::vector<const config*>& available_factions,
+			const std::vector<const config*>& choosable_factions, int color,
+			const bool map_settings, const bool saved_game,
+			const config& side_cfg);
 
 		bool show_above() const;
 		bool left_side() const;
@@ -59,12 +61,28 @@ private:
 		virtual void draw_contents();
 		virtual void process_event();
 
-		std::vector<const config *> side_list_;
+		void init_leaders_and_genders();
+
 		const int color_;
-		gui::combo leader_combo_; // Must appear before the leader_list_manager
-		gui::combo gender_combo_; // Must appear before the leader_list_manager
-		leader_list_manager leaders_;
+		gui::combo leader_combo_;
+		gui::combo gender_combo_;
 		size_t  selection_;
+
+		// All factions which could be played by a side (including Random).
+		const std::vector<const config*>& available_factions_;
+
+		const std::vector<const config*>& choosable_factions_;
+		std::vector<std::string> choosable_leaders_;
+		std::vector<std::string> choosable_genders_;
+
+		const config* current_faction_;
+		std::string current_leader_;
+		std::string current_gender_;
+
+		const bool map_settings_;
+		const bool saved_game_;
+
+		const config& side_cfg_;
 	};
 
 	void generate_menu();

@@ -758,7 +758,6 @@ set(wesnoth-main_SRC
 	help.cpp
 	hotkey_preferences_display.cpp
 	intro.cpp
-	leader_list.cpp
 	leader_scroll_dialog.cpp
 	map.cpp
 	map_location.cpp
