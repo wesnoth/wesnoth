@@ -423,7 +423,7 @@ void set_wrap_login(bool wrap)
 std::string login()
 {
 	const std::string res = preferences::get("login");
-	if(res.empty()) {
+	if(res.empty() || res == EMPTY_WRAPPED_STRING) {
 		char* const login = getenv("USER");
 		if(login != NULL) {
 			return login;
