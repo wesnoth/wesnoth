@@ -26,31 +26,10 @@ const config& request_umc_upload_action::get_info(const config& metadata)
 	return metadata.child("request_umc_upload").child("umc_configuration").child("info");
 }
 
-bool request_umc_upload_action::umc_exists(const config& metadata)
-{
-	return get_info(metadata).has_attribute("id");
-}
-
-void request_umc_upload_action::update_umc()
-{
-}
-
-void request_umc_upload_action::create_umc()
-{
-}
-
 void request_umc_upload_action::execute(boost::shared_ptr<umcd_protocol> p)
 {
 	protocol_ = p;
-	config& metadata = protocol_->get_metadata();
-	if(umc_exists(metadata))
-	{
-		update_umc();
-	}
-	else
-	{
-		create_umc();
-	}
+	//config& metadata = protocol_->get_metadata();
 }
 
 boost::shared_ptr<request_umc_upload_action::base> request_umc_upload_action::clone() const

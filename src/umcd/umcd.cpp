@@ -28,6 +28,7 @@
 #include "umcd/protocol/wml/umcd_protocol.hpp"
 #include "umcd/umcd_logger.hpp"
 #include "umcd/daemon.hpp"
+#include "umcd/otl/otl.hpp"
 
 void init_game_path(const server_options& opt, const config& cfg)
 {
@@ -73,6 +74,20 @@ int main(int argc, char *argv[])
 			boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
 
 			UMCD_LOG(info) << "Configuration requested:\n" << cfg;
+
+			otl_connect::otl_initialize();
+			otl_connect db;
+			try
+			{
+				db.rlogon("UID=root;PWD=acrazydatabase;DSN=dbumcd");
+			}
+			catch(otl_exception& e)
+			{
+				std::cerr<<e.msg<<std::endl; // print out error message
+				std::cerr<<e.stm_text<<std::endl; // print out SQL that caused the error
+				std::cerr<<e.sqlstate<<std::endl; // print out SQLSTATE message
+				std::cerr<<e.var_info<<std::endl; // print out the variable that caused the error
+			}
 
 			server_info serverinfo(cfg);
 			typedef boost::function<boost::shared_ptr<umcd_protocol> (umcd_protocol::io_service_type&)> umcd_protocol_factory;

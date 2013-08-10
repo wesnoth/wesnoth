@@ -1059,6 +1059,7 @@ target_link_libraries(umcd
 	${Boost_SYSTEM_LIBRARY}
 	${Boost_DATE_TIME_LIBRARY}
 	${LIBINTL_LIBRARIES}
+	${UnixODBC_LIBRARY}
 )
 	
 set_target_properties(umcd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}umcd${BINARY_SUFFIX})

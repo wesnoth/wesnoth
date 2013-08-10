@@ -27,9 +27,7 @@ public:
 
 	request_umc_upload_action(const config& server_config);
 	const config& get_info(const config& metadata);
-	bool umc_exists(const config& metadata);
-	void update_umc();
-	void create_umc();
+
 	virtual void execute(boost::shared_ptr<umcd_protocol> p);
 	virtual boost::shared_ptr<base> clone() const;
 
