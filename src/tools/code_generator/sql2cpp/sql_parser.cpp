@@ -14,6 +14,7 @@
 //#define BOOST_SPIRIT_QI_DEBUG
 
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
+#include "tools/code_generator/sql2cpp/sql/semantic_actions.hpp"
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix.hpp>
 #include <boost/spirit/include/karma.hpp>
@@ -56,182 +57,7 @@ std::string get_license_header_file()
 	return "data/umcd/license_header.txt";
 }
 
-struct sql_column
-{
-	std::string column_identifier;
-	boost::shared_ptr<sql::type::base_type> sql_type;
-	std::vector<boost::shared_ptr<sql::base_type_constraint> > constraints;
-};
-
-BOOST_FUSION_ADAPT_STRUCT(
-	sql_column,
-	(std::string, column_identifier)
-	(boost::shared_ptr<sql::type::base_type>, sql_type)
-	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
-);
-
-struct sql_table
-{
-	std::string table_identifier;
-	std::vector<sql_column> columns;
-	std::vector<boost::shared_ptr<sql::constraint::base_constraint> > constraints;
-};
-
-BOOST_FUSION_ADAPT_STRUCT(
-	sql_table,
-	(std::string, table_identifier)
-	(std::vector<sql_column>, columns)
-	(std::vector<boost::shared_ptr<sql::constraint::base_constraint> >, constraints)
-);
-
-template <class synthesized, class inherited = void>
-struct attribute
-{
-	typedef synthesized s_type;
-	typedef inherited i_type;
-	typedef s_type type(i_type);
-};
-
-template <class synthesized>
-struct attribute <synthesized, void>
-{
-	typedef synthesized s_type;
-	typedef s_type type();
-};
-
-template <class inherited>
-struct attribute <void, inherited>
-{
-	typedef inherited i_type;
-	typedef void type(i_type);
-};
-
-class semantic_actions
-{
-public:
-	typedef attribute<boost::shared_ptr<sql::type::base_type> > column_type_attribute;
-	typedef attribute<boost::shared_ptr<sql::type::numeric_type> > numeric_type_attribute;
-	typedef attribute<std::string> default_value_attribute;
-	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
-	typedef attribute<sql_column> column_attribute;
-	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
-	typedef attribute<sql_table> create_table_attribute;
-	typedef attribute<sql_table> create_statement_attribute;
-
-	// Alter statement.
-	typedef attribute<void, std::vector<sql_table>&> alter_statement_attribute;
-	typedef attribute<void, std::vector<sql_table>&> alter_table_attribute;
-	typedef attribute<void, sql_table&> alter_table_add_attribute;
-	
-	typedef attribute<void, std::vector<sql_table>&> statement_attribute;
-	typedef attribute<std::vector<sql_table> > program_attribute;
-	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> primary_key_constraint_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> foreign_key_constraint_attribute;
-	typedef attribute<sql::constraint::key_references> reference_definition_attribute;
-
-	template<class T>
-	void make_column_type(typename column_type_attribute::s_type& res) const
-	{
-		res = boost::make_shared<T>();
-	}
-
-	void make_varchar_type(typename column_type_attribute::s_type& res, std::size_t length) const
-	{
-		res = boost::make_shared<sql::type::varchar>(length);
-	}
-
-	template<class T>
-	void make_numeric_type(typename numeric_type_attribute::s_type& res) const
-	{
-		res = boost::make_shared<T>();
-		res->is_unsigned = false;
-	}
-
-	void make_unsigned_numeric(typename numeric_type_attribute::s_type& res) const
-	{
-		res->is_unsigned = true;
-	}
-
-	template <class T>
-	void make_type_constraint(typename type_constraint_attribute::s_type& res) const
-	{
-		res = boost::make_shared<T>();
-	}
-
-	void make_default_value_constraint(typename type_constraint_attribute::s_type& res, const std::string& default_value) const
-	{
-		res = boost::make_shared<sql::default_value>(default_value);
-	}
-
-	template <class T>
-	void make_constraint(typename constraint_definition_attribute::s_type& res, const std::string& name) const
-	{
-		res = boost::make_shared<T>(boost::ref(name));
-	}
-
-	void make_pk_constraint(typename primary_key_constraint_attribute::s_type& res, 
-							const typename primary_key_constraint_attribute::i_type& name, 
-							const std::vector<std::string>& keys) const
-	{
-		res = boost::make_shared<sql::constraint::primary_key>(name, keys);
-	}
-
-	void make_fk_constraint(typename foreign_key_constraint_attribute::s_type& res, 
-							const typename foreign_key_constraint_attribute::i_type& name, 
-							const std::vector<std::string>& keys,
-							const sql::constraint::key_references& refs) const
-	{
-		res = boost::make_shared<sql::constraint::foreign_key>(name, keys, refs);
-	}
-
-	/**
-	@param success is set to false to make the parser fails.
-	*/
-	void get_table_by_name(std::vector<sql_table>::iterator &res, 
-		std::vector<sql_table>& tables, 
-		const std::string& name,
-		bool &success) const
-	{
-		res = tables.begin();
-		while(res != tables.end() && !(res->table_identifier == name))
-		{
-			++res;
-		}
-		if(res == tables.end())
-		{
-			std::cerr << "Try to alter the table " << name << " without having previously defined it." << std::endl;
-			success = false;
-		}
-		else
-		{
-			success = true;
-		}
-	}
-
-	/**
-	@post We replace the constraint if it already exists in the table constraints, otherwise we add it.
-	*/
-	void alter_table_add_constraint(sql_table& table, 
-		typename constraint_definition_attribute::s_type& constraint_to_add)
-	{
-		bool to_add = true;
-		for(std::size_t i = 0; i < table.constraints.size() && to_add; ++i)
-		{
-			if(table.constraints[i]->name == constraint_to_add->name)
-			{
-				to_add = false;
-				table.constraints[i] = constraint_to_add;
-			}
-		}
-		if(to_add)
-		{
-			table.constraints.push_back(constraint_to_add);
-		}
-	}
-};
-
+namespace sql{
 // Grammar definition, define a little part of the SQL language.
 template <typename Iterator>
 struct sql_grammar 
@@ -410,6 +236,7 @@ private:
 	typename rule<typename semantic_actions::default_value_attribute::type>::type default_value;
 	typename rule<typename semantic_actions::column_type_attribute::type>::type column_type;
 };
+} // namespace sql
 
 struct sql2cpp_type_visitor : sql::type::type_visitor
 {
@@ -498,7 +325,7 @@ struct cpp_semantic_actions
 	, output_dir_(output_dir)
 	{}
 
-	void type2string(std::string& res, typename semantic_actions::column_type_attribute::s_type const& type)
+	void type2string(std::string& res, typename sql::semantic_actions::column_type_attribute::s_type const& type)
 	{
 		boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_type_visitor>(boost::ref(res));
 		type->accept(visitor);
@@ -514,7 +341,7 @@ struct cpp_semantic_actions
 		res = "UMCD_POD_" + boost::to_upper_copy(class_name) + "_HPP";
 	}
 
-	void includes(std::string& res, typename semantic_actions::create_table_columns_attribute::s_type const& class_members, std::set<std::string>& included)
+	void includes(std::string& res, typename sql::semantic_actions::create_table_columns_attribute::s_type const& class_members, std::set<std::string>& included)
 	{
 		for(std::size_t i = 0; i < class_members.size(); ++i)
 		{
@@ -547,7 +374,7 @@ private:
 
 template <typename OutputIterator>
 struct cpp_grammar 
-: karma::grammar<OutputIterator, typename semantic_actions::program_attribute::type>
+: karma::grammar<OutputIterator, typename sql::semantic_actions::program_attribute::type>
 {
 	cpp_grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: cpp_grammar::base_type(program)
@@ -649,24 +476,24 @@ private:
 	};
 	typedef karma::rule<OutputIterator> simple_rule;
 
-	typename rule<typename semantic_actions::program_attribute::type>::type program;
-	typename rule<typename semantic_actions::create_table_attribute::type>::type create_file;
-	typename rule<typename semantic_actions::create_table_attribute::type>::type create_class;
-	typename rule<typename semantic_actions::create_table_attribute::type>::type header;
+	typename rule<typename sql::semantic_actions::program_attribute::type>::type program;
+	typename rule<typename sql::semantic_actions::create_table_attribute::type>::type create_file;
+	typename rule<typename sql::semantic_actions::create_table_attribute::type>::type create_class;
+	typename rule<typename sql::semantic_actions::create_table_attribute::type>::type header;
 	karma::rule<OutputIterator, karma::locals<std::string>, std::string()> define_header;
-	karma::rule<OutputIterator, karma::locals<std::set<std::string> >, typename semantic_actions::create_table_columns_attribute::type> includes;
+	karma::rule<OutputIterator, karma::locals<std::set<std::string> >, typename sql::semantic_actions::create_table_columns_attribute::type> includes;
 	simple_rule footer;
 	simple_rule define_footer;
 	simple_rule license_header;
 	simple_rule namespace_open, namespace_close;
 	simple_rule do_not_modify;
-	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_members;
-	typename rule<typename semantic_actions::column_attribute::type>::type create_member;
-	typename rule<typename semantic_actions::column_type_attribute::type>::type create_member_type;
+	typename rule<typename sql::semantic_actions::create_table_columns_attribute::type>::type create_members;
+	typename rule<typename sql::semantic_actions::column_attribute::type>::type create_member;
+	typename rule<typename sql::semantic_actions::column_type_attribute::type>::type create_member_type;
 };
 
 template <typename OutputIterator>
-bool generate_cpp(OutputIterator& sink, typename semantic_actions::program_attribute::s_type const& sql_ast, std::ofstream& generated, const std::string& output_dir)
+bool generate_cpp(OutputIterator& sink, typename sql::semantic_actions::program_attribute::s_type const& sql_ast, std::ofstream& generated, const std::string& output_dir)
 {
 	cpp_grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
 	return karma::generate(sink, cpp_grammar, sql_ast);
@@ -693,7 +520,7 @@ int main(int argc, char* argv[])
 	typedef sql_tokens::iterator_type iterator_type;
 
 	// this is the type of the grammar to parse
-	typedef sql_grammar<iterator_type> sql_grammar;
+	typedef sql::sql_grammar<iterator_type> sql_grammar;
 
 	// now we use the types defined above to create the lexer and grammar
 	// object instances needed to invoke the parsing process
@@ -713,7 +540,7 @@ int main(int argc, char* argv[])
 	// Note how we use the lexer defined above as the skip parser. It must
 	// be explicitly wrapped inside a state directive, switching the lexer 
 	// state for the duration of skipping whitespace.
-	typename semantic_actions::program_attribute::s_type sql_ast;
+	typename sql::semantic_actions::program_attribute::s_type sql_ast;
 	bool r = qi::parse(iter, end, sql, sql_ast);
 
 	if (r && iter == end)
