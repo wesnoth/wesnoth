@@ -16,10 +16,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth dev-trunk\n"
+"Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-06-24 15:23+0200\n"
-"PO-Revision-Date: 2013-02-23 12:27+0900\n"
+"PO-Revision-Date: 2013-01-11 21:14+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: ja\n"
@@ -554,7 +554,6 @@ msgstr "ロシア語翻訳"
 #. [about]
 #: data/core/about.cfg:2685
 #, fuzzy
-#| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "ガリシア語翻訳"
 
@@ -697,10 +696,8 @@ msgstr ""
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:93
-#, fuzzy
-#| msgid "Password: "
 msgid "Sword"
-msgstr "パスワード: "
+msgstr ""
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:99
@@ -714,10 +711,8 @@ msgstr ""
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:112
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenery"
-msgstr "シナリオ終了"
+msgstr ""
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:117
@@ -6582,8 +6577,6 @@ msgid "None"
 msgstr "なし"
 
 #: src/reports.cpp:1078 src/reports.cpp:1132
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "秩序ユニット: "
 
@@ -7007,231 +7000,6 @@ msgstr "$player と交代する"
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
 
-#, fuzzy
-#~| msgid "Multiplayer_AI^Default AI"
-#~ msgid "Multiplayer_AI^Default AI (RCA)"
-#~ msgstr "デフォルト AI"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^Default AI"
-#~ msgid "Multiplayer_AI^Experimental AI"
-#~ msgstr "デフォルト AI"
-
-#, fuzzy
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
-#~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "敵ユニット発見！$enemies"
-
-#, fuzzy
-#~| msgid "race^Orcs"
-#~ msgid "Orcs"
-#~ msgstr "オーク族"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Konrad here"
-#~ msgstr "リーダーをここに移動"
-
-#, fuzzy
-#~| msgid "race^Humans"
-#~ msgid "Humans"
-#~ msgstr "人間族"
-
-#, fuzzy
-#~| msgid "race^Wolves"
-#~ msgid "Wolves"
-#~ msgstr "狼"
-
-#, fuzzy
-#~| msgid "help"
-#~ msgid "Whelps"
-#~ msgstr "ヘルプ"
-
-#~ msgid "End scenario"
-#~ msgstr "シナリオ終了"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Take the pass"
-#~ msgstr "マップを保存する"
-
-#, fuzzy
-#~| msgid "Defeat"
-#~ msgid "Defeat Rowck"
-#~ msgstr "敗北"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader"
-#~ msgid "Death of the bat leader"
-#~ msgstr "敵のリーダーを倒す"
-
-#, fuzzy
-#~| msgid "race^Saurians"
-#~ msgid "Saurians"
-#~ msgstr "トカゲ族"
-
-#, fuzzy
-#~| msgid "General commands"
-#~ msgid "General Minry"
-#~ msgstr "一般的なコマンド"
-
-#, fuzzy
-#~| msgid "race^Gryphon"
-#~ msgid "Place Side 1 Footpad"
-#~ msgstr "グリフォン"
-
-#, fuzzy
-#~| msgid "race^Gryphons"
-#~ msgid "Gryphons"
-#~ msgstr "グリフォン"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 1"
-#~ msgstr "進む >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "coward r=5"
-#~ msgstr "進む >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 2"
-#~ msgstr "進む >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 3"
-#~ msgstr "進む >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 4"
-#~ msgstr "進む >"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "Guarded Location"
-#~ msgstr "無効な場所"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 1"
-#~ msgstr "党派"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 2"
-#~ msgstr "党派"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward"
-#~ msgstr "進む >"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat all enemy units"
-#~ msgstr "敵のリーダー（達）を倒す"
-
-#, fuzzy
-#~| msgid "teleport"
-#~ msgid "Healer Support"
-#~ msgstr "瞬間移動"
-
-#, fuzzy
-#~| msgid "Notes:"
-#~ msgid "Notes"
-#~ msgstr "メモ:"
-
-#, fuzzy
-#~| msgid "Clear all orders"
-#~ msgid "Defeat all lurkers"
-#~ msgstr "すべての命令を消去"
-
-#, fuzzy
-#~| msgid "Message:"
-#~ msgid "Messenger"
-#~ msgstr "メッセージ:"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "AI moves Messenger here"
-#~ msgstr "リーダーをここに移動"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader"
-#~ msgid "Defeat the messenger"
-#~ msgstr "敵のリーダーを倒す"
-
-#, fuzzy
-#~ msgid "Langzhar"
-#~ msgstr "範囲"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Rossauba here"
-#~ msgstr "リーダーをここに移動"
-
-#, fuzzy
-#~| msgid "Take it"
-#~ msgid "I made it"
-#~ msgstr "手に取る"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Recruiting"
-#~ msgstr "雇用する"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "群れ"
-
-#, fuzzy
-#~| msgid "race^Bats"
-#~ msgid "Bats"
-#~ msgstr "コウモリ"
-
-#, fuzzy
-#~| msgid "race^Gryphon"
-#~ msgid "Place Side 1 Gryphon"
-#~ msgstr "グリフォン"
-
-#, fuzzy
-#~| msgid "race^Wolves"
-#~ msgid "More Wolves"
-#~ msgstr "狼"
-
-#, fuzzy
-#~| msgid "Test scenario"
-#~ msgid "Select another ai"
-#~ msgstr "テスト用シナリオ"
-
-#, fuzzy
-#~| msgid "Select an add-on to update:"
-#~ msgid "Select another test"
-#~ msgstr "更新するアドオンを選択してください:"
-
-#, fuzzy
-#~| msgid "Wesnoth Developers"
-#~ msgid "AI Developer"
-#~ msgstr "Wesnoth の開発陣"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "AI Location:"
-#~ msgstr "無効な場所"
-
-#, fuzzy
-#~| msgid "firststrike"
-#~ msgid "first"
-#~ msgstr "先制"
-
-#~ msgid "Unknown unit type '$type|' while generating traits"
-#~ msgstr "特性の生成中に不明なユニットタイプ「 $type| 」"
-
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "RCA AI"
 
@@ -7390,109 +7158,6 @@ msgstr "行動予定オプション"
 #~ "Yasar,Yasin,Yasir,Yazan,Yazid,Yunus,Yushua,Yusri,Yusuf,Zafar,Zafir,Zahid,"
 #~ "Zahir,Zayd,Zaim,Zayn,Zarif,Zakarriya,Zaki,Zakwan,Ziyad,Zubayr,Zuhayr"
 
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "invisible"
-#~ msgstr "姿が見えない: "
-
-#, fuzzy
-#~| msgid "female^slowed"
-#~ msgid "female^invisible"
-#~ msgstr "遅くなった"
-
-#, fuzzy
-#~| msgid "Fire a game event."
-#~ msgid "I triggered a moveto event."
-#~ msgstr "ゲームイベントを起こす。"
-
-#, fuzzy
-#~| msgid "drains"
-#~ msgid "drains 20%"
-#~ msgstr "生命吸収"
-
-#, fuzzy
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
-#~ msgid ""
-#~ "Drain 20%:\n"
-#~ "This unit drains health from living units, healing itself for 20% of the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "生命吸収:\n"
-#~ "このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ"
-#~ "自分の HP を回復させます。"
-
-#, fuzzy
-#~| msgid "Version: "
-#~ msgid "Vision Test"
-#~ msgstr "バージョン: "
-
-#, fuzzy
-#~| msgid "invisible: "
-#~ msgid "It is invisible!"
-#~ msgstr "姿が見えない: "
-
-#, fuzzy
-#~| msgid "drains"
-#~ msgid "drains 100%"
-#~ msgstr "生命吸収"
-
-#, fuzzy
-#~| msgid ""
-#~| "Drain:\n"
-#~| "This unit drains health from living units, healing itself for half the "
-#~| "amount of damage it deals (rounded down)."
-#~ msgid ""
-#~ "Drain 100%:\n"
-#~ "This unit drains health from living units, healing itself for 100% of the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "生命吸収:\n"
-#~ "このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ"
-#~ "自分の HP を回復させます。"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose a Map to Open"
-#~ msgstr "武器の選択:"
-
-#, fuzzy
-#~| msgid "Choose the game to load"
-#~ msgid "Choose a Mask to Apply"
-#~ msgstr "ロードするゲームを選択して下さい"
-
-#, fuzzy
-#~| msgid "Choose weapon:"
-#~ msgid "Choose Target Map"
-#~ msgstr "武器の選択:"
-
-#, fuzzy
-#~| msgid "The map already exists. Do you want to overwrite it?"
-#~ msgid "The file already exists. Do you want to overwrite it?"
-#~ msgstr "マップは既に存在します。上書きしますか？"
-
-#, fuzzy
-#~| msgid "No era information found."
-#~ msgid "No random map generators found."
-#~ msgstr "時代情報が見つかりません。"
-
-#, fuzzy
-#~| msgid "Installation failed"
-#~ msgid "Map creation failed."
-#~ msgstr "インストールに失敗しました。"
-
-#, fuzzy
-#~| msgid "The map is invalid."
-#~ msgid "This map is already open."
-#~ msgstr "このマップは無効です。"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "(New Side)"
-#~ msgstr "次のサイド"
-
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "サーバーがエラーを返しました: \"$error|\""
 
@@ -7537,6 +7202,9 @@ msgstr "行動予定オプション"
 #~ msgid "Update add-ons"
 #~ msgstr "アドオンの更新"
 
+#~ msgid "Select an add-on to update:"
+#~ msgstr "更新するアドオンを選択してください:"
+
 #~ msgid "Installation of some dependency failed"
 #~ msgstr "これが依存しているいくつかのインストールに失敗しました。"
 
@@ -7571,6 +7239,9 @@ msgstr "行動予定オプション"
 #~ msgid "Choose the add-on to download."
 #~ msgstr "ダウンロードするアドオンを選択して下さい。"
 
+#~ msgid "Choose the game to load"
+#~ msgstr "ロードするゲームを選択して下さい"
+
 #~ msgid "Do you really want to start the server?"
 #~ msgstr "本当にサーバーを開始しますか？"
 
@@ -7586,6 +7257,9 @@ msgstr "行動予定オプション"
 
 #~ msgid "A map without a header is not supported"
 #~ msgstr "ヘッダのないマップはサポートされていません。"
+
+#~ msgid "Unknown unit type '$type|' while generating traits"
+#~ msgstr "特性の生成中に不明なユニットタイプ「 $type| 」"
 
 #~ msgid "TestCamp"
 #~ msgstr "テスト用キャンペーン"
@@ -7622,6 +7296,9 @@ msgstr "行動予定オプション"
 
 #~ msgid "Multiplayer define"
 #~ msgstr "マルチプレイヤー関係大枠製作"
+
+#~ msgid "Defeat enemy leader"
+#~ msgstr "敵のリーダーを倒す"
 
 #~ msgid "Download"
 #~ msgstr "ダウンロード"
@@ -7691,6 +7368,9 @@ msgstr "行動予定オプション"
 #~ msgid "Send a message to the server admins currently online"
 #~ msgstr "現在オンラインのサーバー管理者にメッセージを送信"
 
+#~ msgid "Take it"
+#~ msgstr "手に取る"
+
 #~ msgid "Leave it"
 #~ msgstr "立ち去る"
 
@@ -7737,6 +7417,9 @@ msgstr "行動予定オプション"
 #~ "魔法:\n"
 #~ "この攻撃は攻撃されるユニットが持っているどんな防御能力も関係なく常に命中率"
 #~ "が 70% となります。"
+
+#~ msgid "firststrike"
+#~ msgstr "先制"
 
 #~ msgid ""
 #~ "First Strike:\n"
@@ -7799,6 +7482,9 @@ msgstr "行動予定オプション"
 #~ msgstr "コウモリ"
 
 #~ msgid "race+female^Bat"
+#~ msgstr "コウモリ"
+
+#~ msgid "race^Bats"
 #~ msgstr "コウモリ"
 
 #~ msgid "race^Drake"
@@ -8124,13 +7810,22 @@ msgstr "行動予定オプション"
 #~ msgid "race^Goblins"
 #~ msgstr "ゴブリン"
 
+#~ msgid "race^Gryphon"
+#~ msgstr "グリフォン"
+
 #~ msgid "race+female^Gryphon"
+#~ msgstr "グリフォン"
+
+#~ msgid "race^Gryphons"
 #~ msgstr "グリフォン"
 
 #~ msgid "race^Human"
 #~ msgstr "人間族"
 
 #~ msgid "race+female^Human"
+#~ msgstr "人間族"
+
+#~ msgid "race^Humans"
 #~ msgstr "人間族"
 
 #~ msgid ""
@@ -8213,6 +7908,9 @@ msgstr "行動予定オプション"
 #~ msgid "race+female^Saurian"
 #~ msgstr "トカゲ族"
 
+#~ msgid "race^Saurians"
+#~ msgstr "トカゲ族"
+
 #~ msgid "race^Mechanical"
 #~ msgstr "機械"
 
@@ -8256,6 +7954,9 @@ msgstr "行動予定オプション"
 #~ msgstr "オーク族"
 
 #~ msgid "race+female^Orc"
+#~ msgstr "オーク族"
+
+#~ msgid "race^Orcs"
 #~ msgstr "オーク族"
 
 #~ msgid ""
@@ -8508,6 +8209,9 @@ msgstr "行動予定オプション"
 #~ msgid "race^Wolf"
 #~ msgstr "狼"
 
+#~ msgid "race^Wolves"
+#~ msgstr "狼"
+
 #~ msgid "race^Wose"
 #~ msgstr "ウーズ"
 
@@ -8533,6 +8237,10 @@ msgstr "行動予定オプション"
 #, fuzzy
 #~ msgid "Intendant"
 #~ msgstr "知的"
+
+#, fuzzy
+#~ msgid "Swarm"
+#~ msgstr "群れ"
 
 #, fuzzy
 #~ msgid "Swarming"
@@ -10271,6 +9979,9 @@ msgstr "行動予定オプション"
 #~ "であっても、このような空気の薄い高地のギザギザの山頂を超えることはできず、"
 #~ "最も荒々しいトロルですら分厚い石の壁を打ち抜くことができません。"
 
+#~ msgid "General commands"
+#~ msgstr "一般的なコマンド"
+
 #~ msgid ""
 #~ "\n"
 #~ "Clear chat messages.\n"
@@ -10667,6 +10378,9 @@ msgstr "行動予定オプション"
 #~ "すべての隣接ユニットは、夜には夕方であるかのように、夕方には昼であるかのよ"
 #~ "うに戦うことになります。"
 
+#~ msgid "teleport"
+#~ msgstr "瞬間移動"
+
 #~ msgid "female^teleport"
 #~ msgstr "瞬間移動"
 
@@ -10884,6 +10598,18 @@ msgstr "行動予定オプション"
 #~ "突撃:\n"
 #~ "攻撃時に使用された場合、この攻撃は標的への与えるダメージが倍となります。標"
 #~ "的からの反撃によって受けるダメージも倍となります。"
+
+#~ msgid "drains"
+#~ msgstr "生命吸収"
+
+#~ msgid ""
+#~ "Drain:\n"
+#~ "This unit drains health from living units, healing itself for half the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "生命吸収:\n"
+#~ "このユニットは生者から生命力を奪って、与えたダメージの半分（切り下げ）だけ"
+#~ "自分の HP を回復させます。"
 
 #~ msgid "poison"
 #~ msgstr "毒"
@@ -11275,6 +11001,9 @@ msgstr "行動予定オプション"
 #~ msgid "<header>text='Units of this race'</header>"
 #~ msgstr "<header>text='この種族のユニット'</header>"
 
+#~ msgid "Forward >"
+#~ msgstr "進む >"
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "不明なトピックへの参照: "
 
@@ -11438,6 +11167,9 @@ msgstr "行動予定オプション"
 #~ "のユニットの隣にいる場合を除いて。このユニットを初めて見つけた敵ユニットは"
 #~ "それ以上移動することはできません。"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "デフォルト AI"
+
 #~ msgid "Which enemy side to focus on?"
 #~ msgstr "どの敵陣営に集中しますか？"
 
@@ -11588,6 +11320,9 @@ msgstr "行動予定オプション"
 #~ "に貯めておくサーバーに送信します。これはいくつかの要素を有効にし、私達が "
 #~ "Wesnoth を改善できるようにします。このことについてもっと知るかこれを無効に"
 #~ "するには、右下の隅にある封筒をクリックします。"
+
+#~ msgid "Wesnoth Developers"
+#~ msgstr "Wesnoth の開発陣"
 
 #~ msgid "Upload statistics"
 #~ msgstr "統計情報をアップロードします"
@@ -11748,6 +11483,9 @@ msgstr "行動予定オプション"
 #~ msgid "The replay could not be saved"
 #~ msgstr "リプレイは保存できませんでした"
 
+#~ msgid "End scenario"
+#~ msgstr "シナリオ終了"
+
 #~ msgid "The file you have tried to load is corrupt. Continue playing?"
 #~ msgstr "読み込もうとしたファイルは壊れています。プレイを続けますか？"
 
@@ -11851,6 +11589,10 @@ msgstr "行動予定オプション"
 #, fuzzy
 #~ msgid "Local Game"
 #~ msgstr "ロード"
+
+#, fuzzy
+#~ msgid "Language"
+#~ msgstr "範囲"
 
 #, fuzzy
 #~ msgid "Choose your preferred language:"

@@ -135,17 +135,10 @@ namespace game_events
 		const config::const_child_itors &cfgs,
 		const std::string& type = std::string());
 
-	bool unit_matches_filter(const unit &, const vconfig& filter);
-
 	/** Used for [wml_message]. */
 	void handle_wml_log_message(const config& cfg);
 	/** Used for [deprecated_message]. */
 	void handle_deprecated_message(const config& cfg);
-
-	/** Gets a vector of sides from side= attribute in a given config node.
-     * Promotes consistent behavior.
-	*/
-	std::vector<int> get_sides_vector(const vconfig& cfg);
 
 	/**
 	 * Function to fire an event.

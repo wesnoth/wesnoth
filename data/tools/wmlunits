@@ -10,7 +10,7 @@ Run without arguments to see usage.
 try: import psyco; psyco.full()
 except ImportError: pass
   
-import sys, os, glob, shutil, urllib2, optparse, traceback
+import sys, os, glob, shutil, urllib2, argparse, traceback
 import subprocess, yaml
 import multiprocessing, Queue
 
@@ -424,39 +424,39 @@ if __name__ == '__main__':
     global options
     global image_collector
 
-    op = optparse.OptionParser()
-    op.add_option("-C", "--config-dir",
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-C", "--config-dir",
         help="Specify the user configuration dir (wesnoth --config-path).")
-    op.add_option("-D", "--data-dir",
+    ap.add_argument("-D", "--data-dir",
         help="Specify the wesnoth data dir (wesnoth --path).")
-    op.add_option("-l", "--language", default="all",
+    ap.add_argument("-l", "--language", default="all",
         help="Specify a language to use. Else output is produced for all languages.")
-    op.add_option("-o", "--output",
+    ap.add_argument("-o", "--output",
         help="Specify the output directory.")
-    op.add_option("-n", "--nocopy", action="store_true",
+    ap.add_argument("-n", "--nocopy", action="store_true",
         help="No copying of files. By default all images are copied to the output dir.")
-    op.add_option("-w", "--wesnoth",
+    ap.add_argument("-w", "--wesnoth",
         help="Specify the wesnoth executable to use. Whatever data " +
         "and config paths that executable is configured for will be " +
         "used to find game files and addons.")
-    op.add_option("-t", "--transdir",
+    ap.add_argument("-t", "--transdir",
         help="Specify the directory with gettext message catalogues. " +
         "Defaults to ./translations.", default="translations")
-    op.add_option("-r", "--reparse", action="store_true",
+    ap.add_argument("-r", "--reparse", action="store_true",
         help="Reparse everything.")
-    op.add_option("-a", "--addons",
+    ap.add_argument("-a", "--addons",
         help="Specify path to a folder with all addons. This should be " +
         "outside the user config folder.")
-    op.add_option("-L", "--list",
+    ap.add_argument("-L", "--list",
         help = "List available eras and campaigns.")
-    op.add_option("-B", "--batch",
+    ap.add_argument("-B", "--batch",
         help = "Batch process the given list.")
-    op.add_option("-A", "--addons-only", action = "store_true",
+    ap.add_argument("-A", "--addons-only", action = "store_true",
         help = "Do only process addons (for debugging).")
-    op.add_option("-v", "--verbose", action = "store_true")
-    op.add_option("-W", "--wiki", action = "store_true",
+    ap.add_argument("-v", "--verbose", action = "store_true")
+    ap.add_argument("-W", "--wiki", action = "store_true",
         help = "write wikified units list to stdout")
-    options, args = op.parse_args()
+    options = ap.parse_args()
     
     html_output.options = options
     helpers.options = options

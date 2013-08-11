@@ -14,12 +14,17 @@ Version 1.11.5+dev:
      * ca_score is now an optional parameter for almost all MAIs
      * Bug fixes for Patrol, Messenger, Multipack Wolves and all Guardian MAIs
      * [goal] tags in [ai] blocks with turns= or time_of_day= will now work.
+ * Campaigns:
+   * The South Guard:
+     * Fixed double "lich found" event in Choice in the Fog
  * Language and i18n:
-   * Updated translations:
+   * Updated translations: Japanese, Russian, Scottish Gaelic
  * Lua API:
    * Added: function wesnoth.find_cost_map().
  * Units:
    * Added description for the Wose race.
+ * User interface:
+   * Unit ellipses are now automatically updated if a unit gains or loses its ZoC
  * Miscellaneous and bug fixes
    * Creating a unit via debug mode now clears fog/shroud around the unit.
    * [move_unit_fake] now accepts an optional force_scroll= attribute (def. to

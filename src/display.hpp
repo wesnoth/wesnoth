@@ -102,7 +102,7 @@ public:
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
 	 * multiple units (one real, multiple temporary) can end up stacked, such as with the whiteboard.
 	 * @param loc The location of the unit requesting exclusivity.
-	 * @param unit The unit requesting exlusivity.
+	 * @param unit The unit requesting exclusivity.
 	 * @return false if there's already an exclusive draw request for this location.
 	 */
 	bool add_exclusive_draw(const map_location& loc, unit& unit);
@@ -117,6 +117,11 @@ public:
 			const map_location& loc, size_t height, double filled,
 			const SDL_Color& col, fixed_t alpha);
 
+	/**
+	 * Check the overlay_map for proper team-specific overlays to be
+	 * displayed/hidden
+	 */
+	void parse_team_overlays();
 
 	/**
 	 * Functions to add and remove overlays from locations.
