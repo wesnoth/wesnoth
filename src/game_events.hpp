@@ -36,6 +36,7 @@ class unit;
 
 namespace game_events
 {
+	class event_handler;
 
 /**
  * Changes a terrain location.
@@ -55,6 +56,19 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 		/// and must remain valid for the life of the object.
 		manager(const config& scenario_cfg);
 		~manager();
+
+		// Allow iterating over the active handlers.
+		typedef std::vector<event_handler> t_active;
+		typedef t_active::iterator iterator;
+		static iterator begin();
+		static iterator end();
+
+		/// Starts buffering event handler creation.
+		static void start_buffering();
+		/// Ends buffering event handler creation.
+		static void stop_buffering();
+		/// Commits the event handlers that were buffered.
+		static void commit_buffer();
 
 		/// Returns true when a manager exists, so events can be processed.
 		static bool running() { return running_; }

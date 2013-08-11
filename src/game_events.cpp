@@ -616,7 +616,7 @@ map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = 
 }
 
 	class t_event_handlers {
-		typedef std::vector<event_handler> t_active;
+		typedef manager::t_active t_active;
 	public:
 		typedef t_active::iterator iterator;
 		typedef t_active::const_iterator const_iterator;
@@ -3624,6 +3624,36 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		used_items.clear();
 	}
 
+	/** Returns an iterator to the first event handler. */
+	manager::iterator manager::begin()
+	{
+		return event_handlers.begin();
+	}
+
+	/** Returns an iterator to one past the last event handler. */
+	manager::iterator manager::end()
+	{
+		return event_handlers.end();
+	}
+
+	/** Starts buffering event handler creation. */
+	void manager::start_buffering()
+	{
+		event_handlers.start_buffering();
+	}
+
+	/** Ends buffering event handler creation. */
+	void manager::stop_buffering()
+	{
+		event_handlers.stop_buffering();
+	}
+
+	/** Commits the event handlers that were buffered. */
+	void manager::commit_buffer()
+	{
+		event_handlers.commit_buffer();
+	}
+
 	/** Clears all events tha have been raised (and not pumped). */
 	void clear_events()
 	{
@@ -3674,7 +3704,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 	{
 		DBG_EH << "committing new event handlers, number of pump_instances: " <<
 			pump_manager::count() << "\n";
-		event_handlers.commit_buffer();
+		manager::commit_buffer();
 		commit_wmi_commands();
 		// Dialogs can only be shown if the display is not locked
 		if (!resources::screen->video().update_locked()) {
@@ -3713,7 +3743,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 		bool result = false;
 		while(events_queue.empty() == false) {
 			if(pump_manager::count() <= 1)
-				event_handlers.start_buffering();
+				manager::start_buffering();
 			queued_event ev = events_queue.front();
 			events_queue.pop_front();	// pop now for exception safety
 			const std::string& event_name = ev.name;
@@ -3727,7 +3757,10 @@ bool process_event(event_handler& handler, const queued_event& ev)
 
 			bool init_event_vars = true;
 
-			BOOST_FOREACH(event_handler& handler, event_handlers) {
+			manager::iterator end_handler = manager::end();
+			manager::iterator cur_handler = manager::begin();
+			for ( ; cur_handler != end_handler; ++cur_handler ) {
+				event_handler & handler = *cur_handler;
 				if(!handler.matches_name(event_name))
 					continue;
 				// Set the variables for the event
@@ -3748,7 +3781,7 @@ bool process_event(event_handler& handler, const queued_event& ev)
 			}
 
 			if(pump_manager::count() <= 1)
-				event_handlers.stop_buffering();
+				manager::stop_buffering();
 			// Only commit new handlers when finished iterating over event_handlers.
 			commit();
 		}
