@@ -6,14 +6,14 @@
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007, 2008, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2012-05-22 08:40+0200\n"
-"Last-Translator: Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail."
+"PO-Revision-Date: 2013-08-11 13:25+0200\n"
+"Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -26,7 +26,7 @@ msgstr ""
 "com>\n"
 "com>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:40
 msgid ""
@@ -34,8 +34,7 @@ msgid ""
 "<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
-"<big>Preme co botón esquerdo do rato ou preme a barra espaciadora para "
-"continuar…</big>"
+"<big>Preme o botón principal ou a barra espaciadora para continuar…</big>"
 
 #. [tutorial]: id=tutorial
 #. Hello, translators! The tutorial is meant to be a bit funny at the start,
@@ -135,7 +134,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:410
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:532
 msgid "Left click on Konrad"
-msgstr "Preme co botón esquerdo do rato sobre Conrad."
+msgstr "Preme co botón secundario sobre Conrad."
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -144,7 +143,7 @@ msgstr "Preme co botón esquerdo do rato sobre Conrad."
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:411
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:533
 msgid "Left click on Li’sar"
-msgstr "Preme co botón esquerdo do rato sobre Li’sar."
+msgstr "Preme co botón secundario sobre Li’sar."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:244
@@ -184,7 +183,7 @@ msgstr "Leva a Li’sar canda Delfador premendo o hexágono onde pon <b>Aquí</b
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:271
 msgid "Left click on tile labeled <b>Here</b>"
-msgstr "Preme co botón esquerdo do rato o hexágono que di <b>Aquí</b>."
+msgstr "Preme co botón principal o hexágono que di <b>Aquí</b>."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:296
@@ -266,8 +265,8 @@ msgid ""
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Konrad will attack."
 msgstr ""
-"Para atacar ao estafermo, primeiro selecciona o atacante (Conrad), logo o "
-"obxectivo (o estafermo). Verás unha descrición do ataque. Cando premas en "
+"Para atacar o estafermo, primeiro selecciona o atacante (Conrad) e logo o "
+"obxectivo (o estafermo). Verás unha descrición do ataque. Cando premas "
 "<b>Aceptar</b>, Conrad atacará."
 
 #. [message]: speaker=narrator
@@ -277,8 +276,8 @@ msgid ""
 "(the quintain). You will see an attack description. When you click <b>OK</"
 "b>, Li’sar will attack."
 msgstr ""
-"Para atacar ao estafermo, primeiro selecciona o atacante (Li’sar), logo o "
-"obxectivo (o estafermo). Verás unha descrición do ataque. Cando premas en "
+"Para atacar o estafermo, primeiro selecciona o atacante (Li’sar) e logo o "
+"obxectivo (o estafermo). Verás unha descrición do ataque. Cando premas "
 "<b>Aceptar</b>, Li’sar atacará."
 
 #. [event]
@@ -336,7 +335,7 @@ msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
 msgstr ""
-"Por desgraza esgotaches a quenda atacando ao estafermo. Agora tócalle atacar "
+"Por desgraza esgotaches a quenda atacando o estafermo. Agora tócalle atacar "
 "a el."
 
 #. [message]: id=Delfador
@@ -345,7 +344,7 @@ msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
 msgstr ""
-"Por desgraza esgotaches a quenda atacando ao estafermo. Agora tócalle atacar "
+"Por desgraza esgotaches a quenda atacando o estafermo. Agora tócalle atacar "
 "a el."
 
 #. [message]: id=student
@@ -517,7 +516,7 @@ msgid ""
 "you will only be given one type of unit to choose: the Elvish Fighter."
 msgstr ""
 "Cando esteas nunha <i>torre</i> poderás <i>recrutar</i> nos hexágonos de "
-"castelo que teñas arredor preméndoos co botón dereito do rato e escollendo a "
+"castelo que teñas arredor preméndoos co botón secundario e escollendo a "
 "opción de <b>Recrutar</b>. Desta vez só vas poder escoller un tipo de "
 "unidade: o elfo loitador."
 
@@ -525,7 +524,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
 msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr ""
-"Preme co botón dereito do rato nun hexágono de castelo e escolle "
+"Preme co botón secundario sobre un hexágono de castelo e escolle "
 "<b>Recrutar</b>."
 
 #. [message]: speaker=narrator
@@ -543,7 +542,7 @@ msgid ""
 "After this dialog, you can move the mouse over a unit to see a summary of "
 "its abilities on the right of the screen."
 msgstr ""
-"A unidades non poden actuar na mesma quenda en que se incorporan, así que "
+"As unidades non poden actuar na mesma quenda en que se incorporan, así que "
 "non poderás controlalas ata a seguinte rolda.\n"
 "Despois deste diálogo podes deixar o punteiro sobre calquera das unidades "
 "para ver un resumo das súas habilidades no panel dereito da pantalla."
@@ -553,7 +552,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:737
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr ""
-"Preme co botón dereito do rato no outro hexágono de castelo e recruta outra "
+"Preme co botón secundario sobre o outro hexágono de castelo e recruta outra "
 "unidade."
 
 #. [message]: id=student
@@ -605,7 +604,7 @@ msgstr "E cal é? A espada (5–4) ou o arco (3–3)? Supoño que o descubrirás
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:793
 msgid "Left click on an Elvish Fighter"
-msgstr "Preme co botón esquerdo do rato nun dos elfos loitadores."
+msgstr "Preme co botón principal sobre un dos elfos loitadores."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:794
@@ -625,7 +624,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:824
 msgid "Left click on the quintain to attack it."
-msgstr "Preme co botón esquerdo do rato no estafermo para atacalo."
+msgstr "Preme co botón principal sobre o estafermo para atacalo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:861
@@ -703,7 +702,7 @@ msgstr "Descricións das unidades"
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
-"Podes premer co botón dereito do rato nas unidades para ver unha "
+"Podes premer co botón secundario sobre calquera unidade para ver unha "
 "<b>Descrición da unidade</b> detallada."
 
 #. [message]: speaker=narrator
@@ -882,7 +881,7 @@ msgid ""
 "less experience to advance a level."
 msgstr ""
 ", o teu novo recruta, ten dous trazos: <i>forte</i> e <i>intelixente</i>. "
-"“Forte” significa que inflixe máis dano, e “intelixente” que require menos "
+"«Forte» significa que inflixe máis dano, e «intelixente» que require menos "
 "experiencia para avanzar de nivel."
 
 #. [then]
@@ -892,8 +891,8 @@ msgid ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
 "move one tile further each turn, and ‘resilient’ means it has more hitpoints."
 msgstr ""
-" ten dous trazos: <i>rápido</i> e <i>resistente</i>. “Rápido” significa que "
-"se pode moverse un hexágono máis cada quenda, e “resistente” que ten máis "
+" ten dous trazos: <i>rápido</i> e <i>resistente</i>. «Rápido» significa que "
+"se pode moverse un hexágono máis cada quenda, e «resistente» que ten máis "
 "puntos de vida."
 
 #. [then]
@@ -1158,7 +1157,7 @@ msgstr "Reincorpora a $recall_name1"
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
 msgstr ""
-"Preme co botón dereito do rato o hexágono ao nordeste da túa posición e "
+"Preme co botón secundario o hexágono ao nordeste da túa posición e "
 "<i>reincorpora</i> a $recall_name1|."
 
 #. [then]
@@ -1194,7 +1193,7 @@ msgstr "Elfo loitador"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:621
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
-"Preme co botón dereito do rato o hexágono que hai ao nordeste da túa "
+"Preme co botón secundario o hexágono que hai ao nordeste da túa "
 "posición e recruta un elfo loitador."
 
 #. [then]
@@ -1326,7 +1325,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:872
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
-"Preme co botón dereito do rato o hexágono ao leste da túa posición e "
+"Preme co botón secundario o hexágono ao leste da túa posición e "
 "reincorpora a $recall_name2|."
 
 #. [then]
@@ -1339,7 +1338,7 @@ msgstr "Reincorpora a $recall_name2"
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:920
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr ""
-"Preme co botón dereito do rato o hexágono ao leste da túa posición e recruta "
+"Preme co botón secundario o hexágono ao leste da túa posición e recruta "
 "un elfo loitador."
 
 #. [then]
