@@ -40,6 +40,7 @@ public:
 public:
 	explicit basic_server(const config& cfg, protocol_factory_type protocol_factory);
 	void run();
+	boost::asio::io_service& get_io_service();
 
 private:
 	void start_accept();
@@ -141,6 +142,12 @@ void basic_server<Protocol, ProtocolFactory>::handle_stop()
 {
 	server_on_ = false;
 	io_service_.stop();
+}
+
+template <class Protocol, class ProtocolFactory>
+boost::asio::io_service& basic_server<Protocol, ProtocolFactory>::get_io_service()
+{
+	return io_service_;
 }
 
 #endif // SERVER_BASIC_SERVER_HPP

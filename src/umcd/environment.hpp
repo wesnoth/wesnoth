@@ -12,8 +12,8 @@
 	See the COPYING file for more details.
 */
 
-#ifndef UMCD_SERVER_INFO_HPP
-#define UMCD_SERVER_INFO_HPP
+#ifndef UMCD_environment_HPP
+#define UMCD_environment_HPP
 
 #include <boost/noncopyable.hpp>
 #include <string>
@@ -23,7 +23,7 @@
 #include "umcd/server/generic_factory.hpp"
 #include "umcd/actions/basic_umcd_action.hpp"
 
-class server_info : private boost::noncopyable
+class environment : private boost::noncopyable
 {
 	typedef generic_factory<request_info> action_factory_type;
 	typedef schema_validation::schema_validator validator_type;
@@ -32,7 +32,7 @@ class server_info : private boost::noncopyable
 	void register_request_info(const std::string& request_name);
 
 public:
-	server_info(const config& server_config);
+	environment(const config& server_config);
 
 	boost::shared_ptr<request_info> get_request_info(const std::string& request_name) const;
 
@@ -42,7 +42,7 @@ private:
 };
 
 template <class Action>
-void server_info::register_request_info(const std::string& request_name)
+void environment::register_request_info(const std::string& request_name)
 {
 	 action_factory_.register_product(
 			request_name, 
@@ -50,4 +50,4 @@ void server_info::register_request_info(const std::string& request_name)
 	 );
 }
 
-#endif // UMCD_SERVER_INFO_HPP
+#endif // UMCD_environment_HPP

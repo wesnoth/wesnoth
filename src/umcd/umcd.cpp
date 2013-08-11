@@ -46,7 +46,7 @@ void init_game_path(const server_options& opt, const config& cfg)
 
 void load_config_data(const config& cfg)
 {
-	umcd_logger::get().load_config(cfg.child("logging"));
+	asio_logger::get().load_config(cfg.child("logging"));
 	umcd_protocol::load_config(cfg.child("protocol"));
 }
 
@@ -71,7 +71,6 @@ int main(int argc, char *argv[])
 					UMCD_LOG(warning) << "The server has been launched in frontend mode.";
 				}
 			}
-			boost::thread logger_thread(boost::bind(&umcd_logger::run, boost::ref(umcd_logger::get())));
 
 			UMCD_LOG(info) << "Configuration requested:\n" << cfg;
 
@@ -89,12 +88,16 @@ int main(int argc, char *argv[])
 				std::cerr<<e.var_info<<std::endl; // print out the variable that caused the error
 			}
 
-			server_info serverinfo(cfg);
+			environment serverinfo(cfg);
 			typedef boost::function<boost::shared_ptr<umcd_protocol> (umcd_protocol::io_service_type&)> umcd_protocol_factory;
 			server_mt<umcd_protocol, umcd_protocol_factory> addon_server(
 				cfg.child("server_core"),
 				boost::bind(&make_umcd_protocol, _1, boost::cref(serverinfo))
 			);
+
+			// Start logger.
+			asio_logger::get_asio_log().run(addon_server.get_io_service(), boost::posix_time::milliseconds(500));
+
 			addon_server.run();
 		}
 	}
@@ -106,6 +109,6 @@ int main(int argc, char *argv[])
 	{
 		UMCD_LOG(fatal) << e.what();
 	}
-	umcd_logger::get().run_once();
+	RUN_ONCE_LOGGER();
 	return 0;
 }

@@ -25,8 +25,8 @@ const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
 
 #define FUNCTION_TRACER() UMCD_LOG_IP_FUNCTION_TRACER(socket_)
 
-umcd_protocol::umcd_protocol(io_service_type& io_service, const server_info& serverinfo)
-: server_info_(serverinfo)
+umcd_protocol::umcd_protocol(io_service_type& io_service, const environment& serverinfo)
+: environment_(serverinfo)
 , socket_(io_service)
 {
 }
@@ -135,7 +135,7 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
 			// Retrieve request name.
 			std::string request_name = peek_request_name(request_stream);
 			UMCD_LOG_IP(info, socket_) << " -- request: " << request_name;
-			info_ptr request_info = server_info_.get_request_info(request_name);
+			info_ptr request_info = environment_.get_request_info(request_name);
 			UMCD_LOG_IP(info, socket_) << " -- request:\n" << request_body_;
 
 			request_ = wml_request();
@@ -166,7 +166,7 @@ void umcd_protocol::handle_request()
 	);
 }
 
-boost::shared_ptr<umcd_protocol> make_umcd_protocol(umcd_protocol::io_service_type& io_service, const server_info& serverinfo)
+boost::shared_ptr<umcd_protocol> make_umcd_protocol(umcd_protocol::io_service_type& io_service, const environment& serverinfo)
 {
 	return boost::make_shared<umcd_protocol>(boost::ref(io_service), boost::cref(serverinfo));
 }

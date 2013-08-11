@@ -17,10 +17,11 @@
 
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 	 
 #include "wml_exception.hpp"
 
-#include "umcd/server_info.hpp"
+#include "umcd/environment.hpp"
 #include "umcd/wml_request.hpp"
 #include "umcd/umcd_logger.hpp"
 #include "umcd/wml_reply.hpp"
@@ -46,7 +47,7 @@ public:
 	static void load_config(const config& protocol_cfg);
 
 	// This constructor is only called once in main, so the factory will be created once as well.
-	umcd_protocol(io_service_type& io_service, const server_info& serverinfo);
+	umcd_protocol(io_service_type& io_service, const environment& serverinfo);
 
 	void handle_request();
 	// Precondition: handle_request has been called and connection has been initialized.
@@ -71,7 +72,7 @@ private:
 	void dispatch_request(const boost::system::error_code& error, std::size_t bytes_transferred);
 
 private:
-	const server_info& server_info_;
+	const environment& environment_;
 	socket_type socket_;
 	boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size_;
 	std::string request_body_;
@@ -79,6 +80,6 @@ private:
 	wml_request request_;
 };
 
-boost::shared_ptr<umcd_protocol> make_umcd_protocol(umcd_protocol::io_service_type& io_service, const server_info& serverinfo);
+boost::shared_ptr<umcd_protocol> make_umcd_protocol(umcd_protocol::io_service_type& io_service, const environment& serverinfo);
 
 #endif // UMCD_PROTOCOL_HPP

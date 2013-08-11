@@ -29,13 +29,14 @@
 #include "umcd/boost/thread/workaround.hpp"
 #include "umcd/boost/thread/lock_guard.hpp"
 #include <boost/thread/mutex.hpp>
-#include <boost/thread/thread.hpp>
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/algorithm/string.hpp>
+#include <boost/asio.hpp>
+#include <boost/bind.hpp>
 
 enum severity_level {
 	trace,
@@ -136,16 +137,6 @@ class umcd_logger : boost::noncopyable
 	typedef std::vector<log_line> cache_type;
 	typedef boost::shared_ptr<cache_type> cache_ptr;
 
-	umcd_logger()
-	: current_sev_lvl_(trace)
-	, cache_(boost::make_shared<cache_type>())
-	{
-		default_logging_output();
-		// Init map "textual representation of the severity level" to "severity level enum".
-		for(int sev=0; sev < nb_severity_level; ++sev)
-			level_str2enum_[severity_level_name[sev]] = static_cast<severity_level>(sev);
-	}
-
 	void default_logging_output()
 	{
 		int sev;
@@ -203,10 +194,14 @@ class umcd_logger : boost::noncopyable
 	}
 
 public:
-	static umcd_logger& get()
+	umcd_logger()
+	: current_sev_lvl_(trace)
+	, cache_(boost::make_shared<cache_type>())
 	{
-		static umcd_logger logger;
-		return logger;
+		default_logging_output();
+		// Init map "textual representation of the severity level" to "severity level enum".
+		for(int sev=0; sev < nb_severity_level; ++sev)
+			level_str2enum_[severity_level_name[sev]] = static_cast<severity_level>(sev);
 	}
 
 	void add_line(const log_line_cache& line)
@@ -231,17 +226,6 @@ public:
 				<< boost::posix_time::to_simple_string(line.time) << ": "
 				<< line.data
 				<< "\n";
-		}
-	}
-
-	void run()
-	{
-		while(true)
-		{
-			run_once();
-			// NOTE: Replace this function by boost::this_thread::sleep_for when more recent Boost version will be supported.
-			//       (Or better: the C++11 version)
-			//boost::this_thread::sleep(boost::posix_time::milliseconds(100));
 		}
 	}
 
@@ -286,11 +270,63 @@ private:
 	std::map<std::string, severity_level> level_str2enum_;
 };
 
+class asio_logger
+{
+	asio_logger()
+	: running_(false)
+	{}
+
+	/**
+	@param local_timer is necessary if the sequence [run, stop, run] occurs too fast.
+	*/
+	void run_impl(boost::shared_ptr<boost::asio::deadline_timer> local_timer, const boost::system::error_code& error)
+	{
+		get().run_once();
+		if(running_ && !error)
+		{
+			timer->async_wait(boost::bind(&asio_logger::run_impl, this,
+				local_timer, boost::asio::placeholders::error));
+		}
+	}
+public:
+
+	static asio_logger& get_asio_log()
+	{
+		static asio_logger lg;
+		return lg;
+	}
+
+	static umcd_logger& get()
+	{
+		return get_asio_log().logger_;
+	}
+
+	void run(boost::asio::io_service& io_service_, boost::posix_time::time_duration timing)
+	{
+		running_ = true;
+		timer = boost::make_shared<boost::asio::deadline_timer>(boost::ref(io_service_), timing);
+		timer->async_wait(boost::bind(&asio_logger::run_impl, this,
+				timer, boost::asio::placeholders::error));
+	}
+
+	void stop()
+	{
+		running_ = false;
+		timer->cancel();
+	}
+
+private:
+	umcd_logger logger_;
+	bool running_;
+	boost::shared_ptr<boost::asio::deadline_timer> timer;
+};
+
 #define CURRENT_FUNCTION_STRING "in " << BOOST_CURRENT_FUNCTION
 
-#define UMCD_LOG(severity) (umcd_logger::get().get_logger(severity))
-#define UMCD_LOG_IP(severity, socket) ((umcd_logger::get().get_logger(severity)) << socket.remote_endpoint())
+#define UMCD_LOG(severity) (asio_logger::get().get_logger(severity))
+#define UMCD_LOG_IP(severity, socket) ((asio_logger::get().get_logger(severity)) << socket.remote_endpoint())
 #define UMCD_LOG_IP_FUNCTION_TRACER(socket) (UMCD_LOG_IP(trace, socket) << CURRENT_FUNCTION_STRING)
 #define UMCD_LOG_FUNCTION_TRACER() (UMCD_LOG(trace) << CURRENT_FUNCTION_STRING)
+#define RUN_ONCE_LOGGER() (asio_logger::get().run_once());
 
 #endif // UMCD_LOGGER_HPP
