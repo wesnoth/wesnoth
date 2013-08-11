@@ -3,9 +3,9 @@
 -- Database creation.
 -- ---
 
-DROP DATABASE IF EXISTS umcd;
-CREATE DATABASE IF NOT EXISTS umcd;
-USE umcd;
+-- DROP DATABASE IF EXISTS umcd;
+-- CREATE DATABASE IF NOT EXISTS umcd;
+-- USE umcd;
 
 -- ---
 -- Table 'Addon'
