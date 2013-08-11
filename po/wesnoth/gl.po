@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-06-24 15:23+0200\n"
-"PO-Revision-Date: 2013-07-28 10:22+0200\n"
+"PO-Revision-Date: 2013-08-10 23:38+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -58,12 +58,12 @@ msgstr "Manter a iluminación das covas constante."
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:46
 msgid "Show titlescreen animation"
-msgstr "Amosar a animación do título ao iniciar o xogo."
+msgstr "Mostrar a animación do título ao iniciar o xogo."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:53
 msgid "Show combat"
-msgstr "Amosar os combates."
+msgstr "Mostrar os combates."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:60
@@ -215,27 +215,27 @@ msgstr "Mando: límite do control do desprazamento."
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:237
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr "Mando para o movemento vertical do cursor."
+msgstr "Mando para o movemento vertical do punteiro."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:247
 msgid "Joystick: number of the cursor X-axis"
-msgstr "Mando: control para o movemento vertical do cursor."
+msgstr "Mando: control para o movemento vertical do punteiro."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:257
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr "Mando para o movemento horizontal do cursor."
+msgstr "Mando para o movemento horizontal do punteiro."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:267
 msgid "Joystick: number of the cursor Y-axis"
-msgstr "Mando: control para o movemento horizontal do cursor."
+msgstr "Mando: control para o movemento horizontal do punteiro."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:277
 msgid "Joystick: deadzone of the cursor stick"
-msgstr "Mando: límite do control do cursor."
+msgstr "Mando: límite do control do punteiro."
 
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:287
@@ -746,7 +746,7 @@ msgid ""
 "clicking on a unit that belongs to it."
 msgstr ""
 "Neste escenario podes darlle instrucións aos bandos aliados premendo nunha "
-"das súas unidades co botón dereito do rato."
+"das súas unidades co botón secundario."
 
 #. [literal]
 #. [overview_message_has_instructions]: speaker=narrator
@@ -858,7 +858,7 @@ msgstr "Defende unha zona…"
 #. [print]
 #: data/core/macros/ai_controller.cfg:371
 msgid "Right-click to select a location to defend"
-msgstr "Preme co botón dereito do rato para escoller unha zona que defender."
+msgstr "Preme co botón secundario para escoller unha zona que defender."
 
 #. [set_menu_item]: id=ai_controller_defend_location_picker
 #: data/core/macros/ai_controller.cfg:378
@@ -936,7 +936,7 @@ msgstr "Levar o líder a…"
 #: data/core/macros/ai_controller.cfg:980
 msgid "Right-click to select a location to move leader to"
 msgstr ""
-"Preme co botón dereito do rato para seleccionar un lugar onde levar o líder."
+"Preme co botón secundario para seleccionar un lugar onde levar o líder."
 
 #: data/core/macros/ai_controller.cfg:981
 msgid "Move leader here"
@@ -2155,12 +2155,12 @@ msgstr "Rail"
 #: data/core/team-colors.cfg:204
 #| msgid "unhealable"
 msgid "Unwalkable"
-msgstr "Intransitable"
+msgstr "Intransitábel"
 
 #. [color_range]: id=impassable
 #: data/core/team-colors.cfg:210
 msgid "Impassable"
-msgstr "Infranqueable"
+msgstr "Infranqueábel"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
@@ -2582,7 +2582,7 @@ msgid ""
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"No menú de <b>Accións</b> podes escoller <b>Amosar os movementos do inimigo</"
+"No menú de <b>Accións</b> podes escoller <b>Mostrar os movementos do inimigo</"
 "b> para resaltar todos os hexágonos aos que pode moverse o teu adversario "
 "(partindo do suposto de que as túas unidades permanezan onde están). Usa "
 "isto para asegurarte de que o inimigo non poida chegar ás túas unidades "
@@ -2652,7 +2652,7 @@ msgid ""
 "earlier."
 msgstr ""
 "Podes acceder ás ordes de <b>Recrutar</b> e <b>Reincorporar</b> premendo co "
-"botón dereito do rato nun hexágono de castelo. Iso permitirache elixir en "
+"botón secundario nun hexágono de castelo. Iso permitirache elixir en "
 "que hexágono sitúas a nova unidade. Pór as unidades con siso ás veces pode "
 "permitirche chegar a unha vila unha rolda antes."
 
@@ -2782,7 +2782,7 @@ msgstr ""
 "Hai seis tipos de ataque: <i>perforación</i>, <i>folla</i>, <i>impacto</i>, "
 "<i>lume</i>, <i>frío</i> e <i>arcano</i>. As diferentes unidades teñen "
 "diferentes vulnerabilidades contra os diferentes tipos de ataques. Preme co "
-"botón dereito do rato nunha unidade e escolle <b>Descrición da unidade</b> "
+"botón secundario nunha unidade e escolle <b>Descrición da unidade</b> "
 "para ver a que ataques é resistente, e cales lle afectarán máis."
 
 #. [tip]
@@ -2795,7 +2795,7 @@ msgid ""
 msgstr ""
 "O terreo en que están as unidades é o factor máis importante á hora de "
 "determinar a probabilidade de que un opoñente lle atine ou non ao atacalas. "
-"A taxa defensiva da unidade seleccionada no terreo seleccionado amósase na "
+"A taxa defensiva da unidade seleccionada no terreo seleccionado móstrase na "
 "esquina superior dereita da pantalla."
 
 #. [tip]
@@ -3209,7 +3209,7 @@ msgid ""
 msgstr ""
 "En moitos escenarios de campañas podes darlles ordes sinxelas aos aliados "
 "(da intelixencia artificial) mediante o menú que aparece ao premer neles co "
-"botón dereito do rato."
+"botón secundario."
 
 #. [tip]
 #: data/hardwired/tips.cfg:204
@@ -3744,7 +3744,7 @@ msgid ""
 "cannot be installed."
 msgstr ""
 "A ruta ao complemento «<i>$addon_title</i>» contén caracteres incorrectos, "
-"así que non se pode instalar."
+"así que non é posíbel instalalo."
 
 #: src/addon/client.cpp:303 src/addon/manager_ui.cpp:682
 msgid "Add-ons Manager"
@@ -3919,9 +3919,9 @@ msgid ""
 msgid_plural ""
 "The following dependencies could not be installed. Do you still wish to "
 "continue?"
-msgstr[0] "Non se puido instalar a seguinte dependencia. Queres continuar?"
+msgstr[0] "Non foi posíbel instalar a seguinte dependencia. Queres continuar?"
 msgstr[1] ""
-"Non se puideron instalar as seguintes dependencias. Queres continuar?"
+"Non foi posíbel instalar as seguintes dependencias. Queres continuar?"
 
 #: src/addon/manager_ui.cpp:256
 msgid "Dependencies Installation Failed"
@@ -4062,9 +4062,9 @@ msgid "The following add-on could not be downloaded or installed successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or installed successfully:"
 msgstr[0] ""
-"Non se puido descargar ou instalar correctamente o seguinte complemento:"
+"Non foi posíbel descargar ou instalar correctamente o seguinte complemento:"
 msgstr[1] ""
-"Non se puideron descargar ou instalar correctamente os seguintes "
+"Non foi posíbel descargar ou instalar correctamente os seguintes "
 "complementos:"
 
 #: src/addon/manager_ui.cpp:884 src/addon/manager_ui.cpp:894
@@ -4118,8 +4118,8 @@ msgstr[1] ""
 #: src/addon/manager_ui.cpp:1001
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Non se puido eliminar correctamente o seguinte complemento:"
-msgstr[1] "Non se puideron eliminar correctamente os seguintes complementos:"
+msgstr[0] "Non foi posíbel eliminar correctamente o seguinte complemento:"
+msgstr[1] "Non foi posíbel eliminar correctamente os seguintes complementos:"
 
 #: src/addon/manager_ui.cpp:1008
 msgid "Add-on Deleted"
@@ -4368,7 +4368,7 @@ msgstr "Cambiar a dificultade da campaña antes de cargala."
 
 #: src/dialogs.cpp:1008
 msgid "Show replay"
-msgstr "Amosar a repetición."
+msgstr "Mostrar a repetición."
 
 #: src/dialogs.cpp:1010
 msgid "Play the embedded replay from the saved game if applicable"
@@ -4425,8 +4425,8 @@ msgstr "» (agora pecharase o xogo)."
 #: src/game_config_manager.cpp:245
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "O seguinte complemento ten erros e non se puido cargar:"
-msgstr[1] "Os seguintes complementos teñen erros e non se puideron cargar:"
+msgstr[0] "O seguinte complemento ten erros e non foi posíbel cargalo:"
+msgstr[1] "Os seguintes complementos teñen erros e non foi posíbel cargalos:"
 
 #: src/game_config_manager.cpp:252
 msgid "ERROR DETAILS:"
@@ -4464,7 +4464,7 @@ msgstr "Houbo un erro ao iniciar o servidor: "
 #: src/game_controller.cpp:867 src/playcampaign.cpp:202
 #: src/playcampaign.cpp:490
 msgid "The game could not be loaded: "
-msgstr "Non se puido cargar a partida: "
+msgstr "Non foi posíbel cargar a partida: "
 
 #: src/game_controller.cpp:869 src/playcampaign.cpp:204
 #: src/playcampaign.cpp:493
@@ -4474,7 +4474,7 @@ msgstr "Houbo un erro mentres se xogaba a partida: "
 #: src/game_controller.cpp:887 src/playcampaign.cpp:206
 #: src/playcampaign.cpp:496
 msgid "The game map could not be loaded: "
-msgstr "Non se puido cargar o mapa da partida: "
+msgstr "Non foi posíbel cargar o mapa da partida: "
 
 #: src/game_events.cpp:187
 msgid "Error: "
@@ -4801,7 +4801,7 @@ msgstr "Gardouse o mapa."
 
 #: src/menu_events.cpp:438
 msgid "Could not save the map: $msg"
-msgstr "Non se puido gardar o mapa: $msg"
+msgstr "Non foi posíbel gardar o mapa: $msg"
 
 #: src/menu_events.cpp:510
 msgid "Message:"
@@ -4998,7 +4998,7 @@ msgstr "Botar a un xogador ou observador."
 #: src/menu_events.cpp:1779
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr ""
-"Silenciar a un observador. Se non se lle fornecen argumentos amosa o estado "
+"Silenciar a un observador. Se non se lle fornecen argumentos mostra o estado "
 "de silencio."
 
 #: src/menu_events.cpp:1781
@@ -5062,11 +5062,11 @@ msgstr "Elimina un alcume da lista de amigos ou de ignorados."
 
 #: src/menu_events.cpp:1814
 msgid "Show your ignores and friends list."
-msgstr "Amosar a túa lista de ignorados e de amigos."
+msgstr "Mostrar a túa lista de ignorados e de amigos."
 
 #: src/menu_events.cpp:1817
 msgid "Display version information."
-msgstr "Amosar información da versión."
+msgstr "Mostrar información da versión."
 
 #: src/menu_events.cpp:1819
 msgid "<password> <email (optional)>"
@@ -5186,7 +5186,7 @@ msgstr "Capas de depuración do terreo baixo o punteiro."
 
 #: src/menu_events.cpp:1992
 msgid "Show fps."
-msgstr "Amosar os fotogramas por segundo."
+msgstr "Mostrar os fotogramas por segundo."
 
 #: src/menu_events.cpp:1994
 msgid "Save game."
@@ -5263,7 +5263,7 @@ msgstr "Executar unha instrución en Lua."
 
 #: src/menu_events.cpp:2023
 msgid "Grant higher privileges to Lua scripts."
-msgstr "Darlle máis privilexios aos guións en Lua."
+msgstr "Darlle máis privilexios aos scripts en Lua."
 
 #: src/menu_events.cpp:2025
 msgid "Set the command used by the custom command hotkey"
@@ -5289,7 +5289,7 @@ msgstr "<nome>[=<orde>]"
 
 #: src/menu_events.cpp:2036
 msgid "Set or show alias to a command"
-msgstr "Definir ou amosar os alias dunha orde."
+msgstr "Definir ou mostrar os alias dunha orde."
 
 #: src/menu_events.cpp:2038
 msgid "<var>=<value>"
@@ -5305,7 +5305,7 @@ msgstr "<variábel>"
 
 #: src/menu_events.cpp:2040
 msgid "Show a scenario variable."
-msgstr "Amosar unha variábel do escenario."
+msgstr "Mostrar unha variábel do escenario."
 
 #: src/menu_events.cpp:2042
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -5450,7 +5450,7 @@ msgstr "solicitando información do usuario $nick|."
 #: src/menu_events.cpp:2553
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr ""
-"non se puido atopar ningunha etiqueta nin unidade que conteña o texto "
+"non foi posíbel atopar ningunha etiqueta nin unidade que conteña o texto "
 "«$search|»."
 
 # droid???
@@ -5469,12 +5469,12 @@ msgstr ""
 
 #: src/menu_events.cpp:2635
 msgid "Can't change control of invalid side: '$side'."
-msgstr "non se puido cambiar o control do bando «$side» (non é válido)."
+msgstr "non foi posíbel cambiar o control do bando «$side» (non é válido)."
 
 #: src/menu_events.cpp:2641
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
-"non se puido cambiar o control do bando «$side» (está fóra dos límites)."
+"non foi posíbel cambiar o control do bando «$side» (está fóra dos límites)."
 
 #: src/menu_events.cpp:2755
 msgid "Layers"
@@ -5498,7 +5498,7 @@ msgstr "Desactivouse o modo de depuración!"
 
 #: src/menu_events.cpp:2894
 msgid "Unsafe Lua scripts."
-msgstr "Guións en Lua inseguros."
+msgstr "Scripts en Lua inseguros."
 
 #: src/menu_events.cpp:2895
 msgid ""
@@ -5523,8 +5523,8 @@ msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
 msgstr ""
-"O aliñamento «$alignment|» é incorrecto, ten que ser “lawful” (legal), "
-"“neutral”, “chaotic” (caótico) ou “liminal” (crepuscular)."
+"O aliñamento «$alignment|» é incorrecto, ten que ser «lawful» (legal), "
+"«neutral», «chaotic» (caótico) ou «liminal» (crepuscular)."
 
 #: src/menu_events.cpp:3048
 msgid "Do you wish to clear all of your discovered units from help?"
@@ -5577,7 +5577,7 @@ msgstr "Non se puideron determinar as dependencias."
 #: src/mp_depcheck.cpp:484
 msgid "Scenario can't be activated. Some dependencies are missing: "
 msgstr ""
-"Non se pode activar o escenario, faltan algunhas das súas dependencias: "
+"Non é posíbel activar o escenario, faltan algunhas das súas dependencias: "
 
 #: src/mp_depcheck.cpp:540 src/mp_depcheck.cpp:663
 msgid "No compatible eras found."
@@ -5585,7 +5585,7 @@ msgstr "Non se atoparon eras compatíbeis."
 
 #: src/mp_depcheck.cpp:556
 msgid "Era can't be activated. Some dependencies are missing: "
-msgstr "Non se pode activar a era, faltan algunhas das súas dependencias: "
+msgstr "Non é posíbel activar a era, faltan algunhas das súas dependencias: "
 
 #: src/mp_depcheck.cpp:609 src/mp_depcheck.cpp:700
 msgid "No compatible scenarios found."
@@ -5834,7 +5834,7 @@ msgstr "Baleiro"
 
 #: src/multiplayer_connect.cpp:1780
 msgid "Cannot find era $era"
-msgstr "Non se puido atopar a era $era|."
+msgstr "Non foi posíbel atopar a era $era|."
 
 #: src/multiplayer_connect.cpp:1821
 msgid "Defeat enemy leader(s)"
@@ -6141,7 +6141,7 @@ msgid ""
 "Enable the games filter. If unchecked all games are shown, regardless of any "
 "filter."
 msgstr ""
-"Activar o filtro de partidas. Se non está marcado amósanse todas as "
+"Activar o filtro de partidas. Se non está marcado móstranse todas as "
 "partidas, ignorando calquera filtro."
 
 #: src/multiplayer_lobby.cpp:805
@@ -6149,24 +6149,24 @@ msgid ""
 "Show all games that do *not* match your filter. Useful for hiding games you "
 "are not interested in."
 msgstr ""
-"Amosar todas as partidas que NON se axusten ao filtro. Resulta útil para "
+"Mostrar todas as partidas que non se axusten ao filtro. Resulta útil para "
 "agochar partidas que non interesen."
 
 #: src/multiplayer_lobby.cpp:809
 msgid "Only show games that have at least one vacant slot"
-msgstr "Só amosar as partidas ás que lles queda polo menos un posto vacante."
+msgstr "Só mostrar as partidas ás que lles queda polo menos un posto vacante."
 
 #: src/multiplayer_lobby.cpp:813
 msgid ""
 "Only show games that are played or observed by at least one of your friends"
 msgstr ""
-"Só amosar as partidas nas que hai polo menos un amigo xogando ou de "
+"Só mostrar as partidas nas que hai polo menos un amigo xogando ou de "
 "observador."
 
 #: src/multiplayer_lobby.cpp:819
 msgid "Only show games whose title or description contain the entered text"
 msgstr ""
-"Só amosar as partidas cuxo título ou descrición conteñen o texto introducido."
+"Só mostrar as partidas cuxo título ou descrición conteñen o texto introducido."
 
 #: src/multiplayer_lobby.cpp:933
 msgid "Joining this game requires a password."
@@ -6233,11 +6233,11 @@ msgstr "O cliente desconectouse."
 
 #: src/network.cpp:403 src/network.cpp:411
 msgid "Could not connect to host."
-msgstr "Non se puido conectar ao servidor."
+msgstr "Non foi posíbel conectar ao servidor."
 
 #: src/network.cpp:576
 msgid "Could not add socket to socket set"
-msgstr "Non se puido engadir o socket ao grupo de sockets."
+msgstr "Non foi posíbel engadir o socket ao grupo de sockets."
 
 #: src/network.cpp:588
 msgid "Could not send initial handshake"
@@ -6247,7 +6247,7 @@ msgstr "No se puido enviar o saúdo inicial."
 #: src/network_manager_ana.cpp:649 src/network_manager_ana.cpp:666
 #: src/network_manager_ana.cpp:688
 msgid "Could not connect to host"
-msgstr "Non se puido establecer a conexión."
+msgstr "Non foi posíbel establecer a conexión."
 
 #: src/pathfind/pathfind.cpp:681
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -6351,7 +6351,7 @@ msgid ""
 "\n"
 "Do you want to save an error log of your game?"
 msgstr ""
-"O xogo non está sincronizado, e non se pode continuar. Entre as posíbeis "
+"O xogo non está sincronizado, e non é posíbel continuar. Entre as posíbeis "
 "causas está que ti ou outro xogador modificásedes a vosa configuración. Isto "
 "pode significar que un dos xogadores estaba intentando facer trampas. Tamén "
 "podería deberse a un erro no xogo, pero é menos probábel.\n"
@@ -6442,7 +6442,7 @@ msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr ""
-"Houbo unha interrupción da rede e a partida non se pode continuar. Queres "
+"Houbo unha interrupción da rede e a partida non é posíbel continuar. Queres "
 "gardala?"
 
 #: src/playsingle_controller.cpp:716
@@ -6539,7 +6539,7 @@ msgid ""
 msgstr ""
 "esta unidade está envelenada. Perderá oito puntos de vida cada rolda ata que "
 "poida atopar unha cura para o veleno nunha vila ou a mans dun compañeiro ou "
-"aliado coa habilidade de “curar”.\n"
+"aliado coa habilidade de curar.\n"
 "\n"
 "O veleno de por si non pode matar ás unidades. Non pode reducir a vida por "
 "debaixo de un punto."
@@ -6733,7 +6733,7 @@ msgstr "Esta non é unha partida para varios xogadores."
 
 #: src/savegame.cpp:809
 msgid "The game could not be saved: "
-msgstr "Non se puido gardar a partida: "
+msgstr "Non foi posíbel gardar a partida: "
 
 #: src/savegame.cpp:891
 msgid "Save already exists. Do you want to overwrite it?"
@@ -6760,7 +6760,7 @@ msgstr "Gardouse a partida."
 
 #: src/savegame.cpp:1002 src/savegame.cpp:1023
 msgid "Could not write to file"
-msgstr "Non se puido escribir no ficheiro."
+msgstr "Non foi posíbel escribir no ficheiro."
 
 #: src/savegame.cpp:1057
 msgid "Save Replay"
@@ -6773,7 +6773,8 @@ msgstr "Repetición"
 
 #: src/savegame.cpp:1084
 msgid "Could not auto save the game. Please save the game manually."
-msgstr "Non se puido gardar automaticamente a partida. Garda a partida a man."
+msgstr ""
+"Non foi posíbel gardar automaticamente a partida. Garda a partida manualmente."
 
 #: src/savegame.cpp:1133
 msgid "Save Game"
@@ -7083,7 +7084,7 @@ msgstr "neutral"
 
 #: src/whiteboard/manager.cpp:1094
 msgid "SHOW ALL allies’ plans"
-msgstr "Amosar os plans dos aliados"
+msgstr "Mostrar os plans dos aliados"
 
 #: src/whiteboard/manager.cpp:1095
 msgid "HIDE ALL allies’ plans"
@@ -7091,7 +7092,7 @@ msgstr "Agochar os plans dos aliados"
 
 #: src/whiteboard/manager.cpp:1109
 msgid "Show plans for $player"
-msgstr "Amosar os plans de $player"
+msgstr "Mostrar os plans de $player"
 
 #: src/whiteboard/manager.cpp:1111
 msgid "Hide plans for $player"
