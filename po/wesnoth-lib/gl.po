@@ -15,9 +15,9 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-06-23 10:20+0200\n"
-"PO-Revision-Date: 2013-07-28 10:26+0200\n"
+"PO-Revision-Date: 2013-08-10 23:40+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
-"Language-Team: Galician <proxecto@trasno.org>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1463,7 +1463,7 @@ msgstr "Opcións do filtro"
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr "Amosaranse os complementos que coincidan co seguinte criterio."
+msgstr "Mostraranse os complementos que coincidan co seguinte criterio."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:205
@@ -1930,7 +1930,7 @@ msgstr "Está seguro de que quere eliminar a partida?"
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
 msgid "Do not show again"
-msgstr "Non volver amosar."
+msgstr "Non volver mostrar."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1986,7 +1986,7 @@ msgstr "Cambiar a dificultade da campaña antes de cargala."
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
 msgid "Show replay"
-msgstr "Amosar a repetición"
+msgstr "Mostrar a repetición"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
@@ -2606,22 +2606,22 @@ msgstr "Seleccionar"
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
 msgid "Show Battle for Wesnoth help"
-msgstr "Amosar a axuda do xogo"
+msgstr "Mostrar a axuda do xogo"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:196
 msgid "Show previous tip of the day"
-msgstr "Amosar o consello anterior."
+msgstr "Mostrar o consello anterior."
 
 #. [button]: id=next_tip
 #: data/gui/default/window/title_screen.cfg:211
 msgid "Show next tip of the day"
-msgstr "Amosar o seguinte consello."
+msgstr "Mostrar o seguinte consello."
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:256
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr "Aprender o xogar e familiarizarse co xogo."
+msgstr "Aprender a xogar e familiarizarse co xogo."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2751,11 +2751,11 @@ msgstr "Eliminar o ficheiro"
 
 #: src/filechooser.cpp:195
 msgid "Deletion of the file failed."
-msgstr "Non se puido eliminar o ficheiro."
+msgstr "Non foi posíbel eliminar o ficheiro."
 
 #: src/filechooser.cpp:211
 msgid "Creation of the directory failed."
-msgstr "Non se puido crear o directorio."
+msgstr "Non foi posíbel crear o directorio."
 
 #: src/game_preferences.cpp:353
 msgid "No server has been defined."
@@ -2793,7 +2793,7 @@ msgstr "Interromper o movemento ao avistar un aliado."
 
 #: src/game_preferences_display.cpp:175
 msgid "Show grid"
-msgstr "Amosar a grade."
+msgstr "Mostrar a grade."
 
 #: src/game_preferences_display.cpp:176
 msgid "Save replays at the end of scenarios"
@@ -2850,7 +2850,7 @@ msgstr "Engadir como ignorado"
 
 #: src/game_preferences_display.cpp:190
 msgid "Show floating labels"
-msgstr "Amosar etiquetas flotantes."
+msgstr "Mostrar etiquetas flotantes."
 
 # Configuración → Xeral.
 #: src/game_preferences_display.cpp:191
@@ -2872,7 +2872,7 @@ msgstr "Activar a campá."
 
 #: src/game_preferences_display.cpp:195
 msgid "Show team colors"
-msgstr "Amosar as cores dos equipos."
+msgstr "Mostrar as cores dos equipos."
 
 #: src/game_preferences_display.cpp:196
 msgid "Show color cursors"
@@ -2880,7 +2880,7 @@ msgstr "Empregar punteiros de cores."
 
 #: src/game_preferences_display.cpp:197
 msgid "Show haloing effects"
-msgstr "Amosar os efectos de halo."
+msgstr "Mostrar os efectos de halo."
 
 #: src/game_preferences_display.cpp:198
 msgid "Change Resolution"
@@ -2929,17 +2929,17 @@ msgstr "Aplicar"
 
 #: src/game_preferences_display.cpp:212
 msgid "Show unit idle animations"
-msgstr "Amosar as animacións das unidades que non estean facendo nada."
+msgstr "Mostrar as animacións das unidades que non estean facendo nada."
 
 #: src/game_preferences_display.cpp:213
 msgid "Show unit standing animations"
-msgstr "Amosar as animacións das unidades quedas."
+msgstr "Mostrar as animacións das unidades quedas."
 
 # Accesible dende:
 # «Configuración → Visualización».
 #: src/game_preferences_display.cpp:214
 msgid "Animate map"
-msgstr "Amosar as animacións do mapa."
+msgstr "Mostrar as animacións do mapa."
 
 #: src/game_preferences_display.cpp:216 src/game_preferences_display.cpp:217
 #: src/game_preferences_display.cpp:218 src/game_preferences_display.cpp:219
@@ -2985,7 +2985,7 @@ msgstr "Activar ou desactivar os sons dos menús e botóns."
 
 #: src/game_preferences_display.cpp:271
 msgid "Change the sound volume for button clicks, etc."
-msgstr "Cambiar o volume do son de premer nos botóns, etc."
+msgstr "Cambiar o volume do son de premer os botóns, etc."
 
 #: src/game_preferences_display.cpp:273
 msgid "Change the sample rate"
@@ -3010,7 +3010,7 @@ msgstr "Cambiar a velocidade do desprazamento polo mapa."
 # Configuración → Varios xogadores.
 #: src/game_preferences_display.cpp:305 src/game_preferences_display.cpp:307
 msgid "Set the amount of chat lines shown"
-msgstr "Definir o número de liñas de conversa a amosar."
+msgstr "Definir o número de liñas de conversa para mostrar."
 
 #: src/game_preferences_display.cpp:310
 msgid "Add a timestamp to chat messages"
@@ -3032,7 +3032,7 @@ msgstr "Velocidade de movemento e loita das unidades."
 #: src/game_preferences_display.cpp:338
 msgid "Play short random animations for idle units"
 msgstr ""
-"Amosar pequenas animacións ao chou nas unidades que non estean a facer nada."
+"Mostrar pequenas animacións ao chou nas unidades que non estean a facer nada."
 
 #: src/game_preferences_display.cpp:341
 msgid "Continuously animate standing units in the battlefield"
@@ -3040,7 +3040,7 @@ msgstr "Animar continuamente as unidades quedas do campo de batalla."
 
 #: src/game_preferences_display.cpp:344
 msgid "Display animated terrain graphics"
-msgstr "Amosar imaxes animadas para o terreo."
+msgstr "Mostrar imaxes animadas para o terreo."
 
 #: src/game_preferences_display.cpp:350
 msgid "Set the frequency of unit idle animations"
@@ -3086,7 +3086,7 @@ msgstr "Organizar por grupos a lista de xogadores na sala de espera."
 
 #: src/game_preferences_display.cpp:376
 msgid "Show icons in front of the player names in the lobby"
-msgstr "Amosar iconas diante dos nomes dos xogadores na sala de espera."
+msgstr "Mostrar iconas diante dos nomes dos xogadores na sala de espera."
 
 #: src/game_preferences_display.cpp:379
 msgid "Uncheck to delete the saved password (on exit)"
@@ -3146,7 +3146,7 @@ msgstr "Escribe aquí o nome dun usuario."
 #: src/game_preferences_display.cpp:400
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
-"Amosar sobre as unidades a cantidade de dano que sufran cando lles atinen."
+"Mostrar sobre as unidades a cantidade de dano que sufran cando lles atinen."
 
 #: src/game_preferences_display.cpp:402
 msgid "Change the resolution the game runs at"
@@ -3158,7 +3158,7 @@ msgstr "Cambiar o tema visual a empregar."
 
 #: src/game_preferences_display.cpp:406
 msgid "Display a dialog at the beginning of your turn"
-msgstr "Amosar un diálogo ao comezo de cada quenda propia."
+msgstr "Mostrar un diálogo ao comezo de cada quenda propia."
 
 #: src/game_preferences_display.cpp:409
 msgid "Activates Planning Mode on game start"
@@ -3179,7 +3179,7 @@ msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr ""
-"Amosar un círculo ao pé de cada unidade da cor do bando ao que pertence."
+"Mostrar un círculo ao pé de cada unidade da cor do bando ao que pertence."
 
 #: src/game_preferences_display.cpp:421
 msgid "Use colored mouse cursors (may be slower)"
@@ -3322,13 +3322,13 @@ msgstr "Non se definiu ningunha grade."
 
 #: src/gui/auxiliary/window_builder.cpp:99
 msgid "Linked '$id' group has multiple definitions."
-msgstr "O grupo ligado “$id|” ten múltiples definicións."
+msgstr "O grupo ligado «$id|» ten múltiples definicións."
 
 #: src/gui/auxiliary/window_builder.cpp:420
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
-"O grupo ligado “$id|” precisa unha clave “fixed_width” («ancho fixo») ou "
-"“fixed_height” («altura fixa»)."
+"O grupo ligado «$id|» precisa unha clave «fixed_width» (anchura fixa) ou "
+"«fixed_height» (altura fixa)."
 
 #: src/gui/auxiliary/window_builder.cpp:533
 msgid "A row must have a column."
@@ -3351,8 +3351,7 @@ msgstr "Non se definiu ningunha lista."
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:50
 #: src/gui/auxiliary/window_builder/listbox.cpp:64
 msgid "A 'list_definition' should contain one row."
-msgstr ""
-"Toda “list_definition” («definición de lista») debería conter unha fila."
+msgstr "Toda «list_definition» (definición de lista) debería conter unha fila."
 
 #: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:66
 #: src/gui/auxiliary/window_builder/listbox.cpp:83
@@ -3360,8 +3359,8 @@ msgstr ""
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"“list_data” («datos da lista») debe ter o mesmo número de columnas que "
-"“list_definition” («definición da lista»)."
+"«list_data» (datos da lista) debe ter o mesmo número de columnas que "
+"«list_definition» (definición da lista)."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:38
 msgid "No page defined."
@@ -3374,8 +3373,8 @@ msgstr "Necesítase polo menos un elemento en paralelo."
 #: src/gui/auxiliary/window_builder/slider.cpp:65
 msgid "The number of value_labels and values don't match."
 msgstr ""
-"Os números de “value_labels” («valores do elemento») e “values” («valores») "
-"non coinciden."
+"Os números de «value_labels» (etiquetas de valores) e «values» (valores) non "
+"coinciden."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
 msgid "No stack defined."
@@ -3387,7 +3386,7 @@ msgstr "Non se definiu ningún nodo para unha vista de árbore."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:85
 msgid "[node]id 'root' is reserved for the implementation."
-msgstr "O [node]id («identificador do nodo») “root” está reservado."
+msgstr "O [node]id (identificador do nodo) «root» está reservado."
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:89
 msgid "No node defined."
@@ -3604,13 +3603,13 @@ msgstr "Versión"
 
 #: src/gui/widgets/helper.cpp:116
 msgid "Mandatory widget '$id' hasn't been defined."
-msgstr "Non se definiu o trebello obrigatorio “$id|”."
+msgstr "Non se definiu o trebello obrigatorio «$id|»."
 
 #: src/gui/widgets/settings.cpp:435
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
-"A definición do trebello “$definition|” non contén a definición de “$id|”."
+"A definición do trebello «$definition|» non contén a definición de «$id|»."
 
 #: src/gui/widgets/settings.cpp:502
 msgid "No default gui defined."
@@ -3627,12 +3626,14 @@ msgstr ""
 
 #: src/gui/widgets/window.cpp:1035
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "Para premer «Rexeitar» fai falla un botón “click_dismiss“ ou “ok”."
+msgstr ""
+"Para premer «Rexeitar» fai falla un botón «click_dismiss» (premer rexeitar) "
+"ou «ok» (aceptar)."
 
 #: src/gui/widgets/window.cpp:1060 src/gui/widgets/window.cpp:1100
 #: src/tests/gui/test_gui2.cpp:430
 msgid "Failed to show a dialog, which doesn't fit on the screen."
-msgstr "Non se puido amosar un dos diálogos, non collía na pantalla."
+msgstr "Non foi posíbel mostrar un dos diálogos, non collía na pantalla."
 
 #: src/hotkey_preferences_display.cpp:147
 msgid "Hotkeys Reset"
@@ -3716,17 +3717,17 @@ msgstr "Desprazar a vista verticalmente"
 
 #: src/hotkeys.cpp:69
 msgid "Left Mouse Click"
-msgstr "Botón esquerdo do rato"
+msgstr "Botón principal"
 
 #: src/hotkeys.cpp:70
 msgid "Right Mouse Click"
-msgstr "Botón dereito do rato"
+msgstr "Botón secundario"
 
 # Accesible dende:
 # «Configuración → Visualización».
 #: src/hotkeys.cpp:71
 msgid "Animate Map"
-msgstr "Amosar as animacións do mapa."
+msgstr "Mostrar as animacións do mapa."
 
 #: src/hotkeys.cpp:72
 msgid "Next Unit"
@@ -3892,7 +3893,7 @@ msgstr "Quitar as etiquetas"
 
 #: src/hotkeys.cpp:118
 msgid "Show Enemy Moves"
-msgstr "Amosar os movementos do inimigo"
+msgstr "Mostrar os movementos do inimigo"
 
 #: src/hotkeys.cpp:119
 msgid "Best Possible Enemy Moves"
@@ -4057,7 +4058,7 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Use os botóns esquerdo ou dereito do rato para pintar o terreo en primeiro "
+"Usa os botóns principal e secundario para pintar o terreo en primeiro "
 "ou segundo plano. Mantén premida a tecla «Maiús» para pintar só a capa base. "
 "Premendo «Ctrl» e un dos botóns podes copiar o terreo que estea baixo o "
 "punteiro."
@@ -4085,8 +4086,8 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"O botón principal amosa a selección do usuario, mentres que o secundarioa "
-"quita. As teclas numéricas van á posición inicial, premer «Alt» xunto cun "
+"O botón principal mostra a selección do usuario, mentres que o secundario "
+"a quita. As teclas numéricas van á posición inicial, premer «Alt» xunto cun "
 "número establece a respectiva posición inicial baixo o punteiro, «Supr» "
 "bórraa."
 
@@ -4327,11 +4328,11 @@ msgstr "Actualizar a caché das imaxes"
 
 #: src/hotkeys.cpp:226
 msgid "Draw Hex Coordinates"
-msgstr "Amosar as coordenadas dos hexágonos"
+msgstr "Mostrar as coordenadas dos hexágonos"
 
 #: src/hotkeys.cpp:227
 msgid "Draw Terrain Codes"
-msgstr "Amosar os códigos dos terreos"
+msgstr "Mostrar os códigos dos terreos"
 
 #: src/hotkeys.cpp:229
 msgid "Define (Time) Area"
@@ -4419,11 +4420,11 @@ msgstr "Iniciar o editor de mapas"
 
 #: src/hotkeys.cpp:252
 msgid "Show Credits"
-msgstr "Amosar a lista dos autores"
+msgstr "Mostrar a lista dos autores"
 
 #: src/hotkeys.cpp:253
 msgid "Show Helptip"
-msgstr "Amosar a axuda"
+msgstr "Mostrar a axuda"
 
 #: src/hotkeys.cpp:256
 msgid "Unrecognized Command"
@@ -4546,7 +4547,7 @@ msgstr "Camiños entre os castelos"
 
 #: src/mapgen_dialog.cpp:256
 msgid "Show labels"
-msgstr "Amosar as etiquetas"
+msgstr "Mostrar as etiquetas"
 
 #: src/mapgen_dialog.cpp:314
 msgid "/1000 tiles"
@@ -4574,7 +4575,7 @@ msgid ""
 "bits per pixel to run the game in windowed mode. Your display must support "
 "1024x768x16 to run the game full screen."
 msgstr ""
-"Non se puido cambiar o modo de vídeo. O seu xestor de xanelas debe estar "
+"Non foi posíbel cambiar o modo de vídeo. O seu xestor de xanelas debe estar "
 "configurado para 16 bits por píxel para empregar o xogo nunha xanela. A "
 "pantalla debe ser compatíbel cunha resolución de 1024×768×16 para empregar o "
 "xogo a pantalla completa."
@@ -4620,12 +4621,12 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"Non se definiu a clave obrigatoria “$key|” na sección “[$section|]” onde "
-"“$primary_key| = $primary_value”."
+"Non se definiu a clave obrigatoria «$key|» na sección «[$section|]» onde "
+"«$primary_key| = $primary_value»."
 
 #: src/wml_exception.cpp:99
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
-msgstr "Non se definiu a clave obrigatoria “$key|” na sección “[$section|]”."
+msgstr "Non se definiu a clave obrigatoria «$key|» na sección «[$section|]»."
 
 #: src/wml_exception.cpp:115
 msgid ""
