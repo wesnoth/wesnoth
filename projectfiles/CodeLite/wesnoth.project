@@ -3390,6 +3390,18 @@
       <File Name="../../src/ai/configuration.hpp"/>
       <File Name="../../src/ai/testing.cpp"/>
     </VirtualDirectory>
+    <VirtualDirectory Name="game_events">
+      <File Name="../../src/game_events/action_wml.cpp" />
+      <File Name="../../src/game_events/action_wml.hpp" />
+      <File Name="../../src/game_events/conditional_wml.cpp" />
+      <File Name="../../src/game_events/conditional_wml.hpp" />
+      <File Name="../../src/game_events/entity_location.cpp" />
+      <File Name="../../src/game_events/entity_location.hpp" />
+      <File Name="../../src/game_events/handlers.cpp" />
+      <File Name="../../src/game_events/handlers.hpp" />
+      <File Name="../../src/game_events/pump.cpp" />
+      <File Name="../../src/game_events/pump.hpp" />
+    </VirtualDirectory>
     <VirtualDirectory Name="gui">
       <VirtualDirectory Name="lib">
         <VirtualDirectory Name="types">
@@ -4227,7 +4239,6 @@
     <File Name="../../src/playsingle_controller.hpp"/>
     <File Name="../../src/color_range.cpp"/>
     <File Name="../../src/log.cpp"/>
-    <File Name="../../src/game_events.hpp"/>
     <File Name="../../src/joystick.hpp"/>
     <File Name="../../src/font.cpp"/>
     <File Name="../../src/marked-up_text.cpp"/>
@@ -4380,7 +4391,6 @@
     <File Name="../../src/color_range.hpp"/>
     <File Name="../../src/config_cache.cpp"/>
     <File Name="../../src/wml_separators.hpp"/>
-    <File Name="../../src/game_events.cpp"/>
     <File Name="../../src/network.cpp"/>
     <File Name="../../src/playmp_controller.cpp"/>
     <File Name="../../src/Makefile"/>

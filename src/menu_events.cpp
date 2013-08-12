@@ -31,7 +31,7 @@
 #include "formatter.hpp"
 #include "filechooser.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events.hpp"
+#include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/chat_log.hpp"

@@ -24,6 +24,7 @@
 
 #include "actions/create.hpp"
 #include "filesystem.hpp"
+#include "game_events/handlers.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "game_preferences.hpp"
@@ -43,7 +44,6 @@
 #include "whiteboard/side_actions.hpp"
 #include "sound.hpp"
 #include "soundsource.hpp"
-#include "game_events.hpp"
 #include "map_label.hpp"
 
 #include <boost/bind.hpp>

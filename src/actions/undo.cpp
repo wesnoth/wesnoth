@@ -23,7 +23,6 @@
 #include "move.hpp"
 
 #include "../game_display.hpp"
-#include "../game_events.hpp"
 #include "../log.hpp"
 #include "../play_controller.hpp"
 #include "../replay.hpp"

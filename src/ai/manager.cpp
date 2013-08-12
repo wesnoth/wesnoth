@@ -24,7 +24,7 @@
 #include "manager.hpp"
 #include "formula/ai.hpp"
 #include "registry.hpp"
-#include "../game_events.hpp"
+#include "../game_events/pump.hpp"
 #include "../log.hpp"
 #include "../serialization/string_utils.hpp"
 #include "composite/component.hpp"

@@ -28,7 +28,7 @@
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events.hpp"
+#include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"

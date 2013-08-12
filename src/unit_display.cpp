@@ -18,7 +18,6 @@
 #include "unit_display.hpp"
 
 #include "game_preferences.hpp"
-#include "game_events.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
 #include "resources.hpp"

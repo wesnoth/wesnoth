@@ -15,8 +15,9 @@
 #ifndef SCRIPTING_LUA_HPP
 #define SCRIPTING_LUA_HPP
 
-#include "game_events.hpp"
+#include "game_events/handlers.hpp"
 
+class  unit;
 struct lua_State;
 
 namespace ai {
@@ -24,6 +25,10 @@ class lua_ai_action_handler;
 class lua_ai_context;
 class engine_lua;
 } // of namespace ai
+
+namespace game_events {
+	struct queued_event;
+}
 
 void extract_preload_scripts(config const &);
 

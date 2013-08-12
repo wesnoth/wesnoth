@@ -1,0 +1,584 @@
+/*
+   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+
+   This program is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY.
+
+   See the COPYING file for more details.
+*/
+
+/**
+ * @file
+ * Handles the current state of WML-events. This includes raising and firing,
+ * as well as tracking the context for event firing.
+ */
+
+#include "../global.hpp"
+#include "pump.hpp"
+#include "conditional_wml.hpp"
+
+#include "../game_config.hpp"
+#include "../game_display.hpp"
+#include "../gamestatus.hpp"
+#include "../gettext.hpp"
+#include "../log.hpp"
+#include "../play_controller.hpp"
+#include "../resources.hpp"
+#include "../scripting/lua.hpp"
+#include "../side_filter.hpp"
+#include "../unit.hpp"
+#include "../unit_map.hpp"
+#include "../whiteboard/manager.hpp"
+#include "../variable.hpp"
+
+#include <boost/foreach.hpp>
+#include <iomanip>
+#include <iostream>
+
+
+static lg::log_domain log_engine("engine");
+#define DBG_NG LOG_STREAM(debug, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
+
+static lg::log_domain log_wml("wml");
+#define DBG_WML LOG_STREAM(debug, log_wml)
+#define LOG_WML LOG_STREAM(info, log_wml)
+#define WRN_WML LOG_STREAM(warn, log_wml)
+#define ERR_WML LOG_STREAM(err, log_wml)
+
+static lg::log_domain log_event_handler("event_handler");
+#define DBG_EH LOG_STREAM(debug, log_event_handler)
+
+// std::getline might be broken in Visual Studio so show a warning
+#ifdef _MSC_VER
+#if _MSC_VER < 1300
+#ifndef GETLINE_PATCHED
+#pragma message("warning: the std::getline implementation in your compiler might be broken.")
+#pragma message(" http://support.microsoft.com/default.aspx?scid=kb;EN-US;q240015")
+#endif
+#endif
+#endif
+
+
+// This file is in the game_events namespace.
+namespace game_events {
+
+namespace { // Types
+	/**
+	 * State when processing a flight of events or commands.
+	 */
+	struct event_context
+	{
+		bool mutated;
+		bool skip_messages;
+		event_context(bool s): mutated(true), skip_messages(s) {}
+	};
+	event_context default_context(false);
+	event_context *current_context = &default_context;
+
+	/**
+	 * Context state with automatic lifetime handling.
+	 */
+	struct scoped_context
+	{
+		event_context *old_context;
+		event_context new_context;
+
+		scoped_context()
+			: old_context(current_context)
+			, new_context(old_context != &default_context && old_context->skip_messages)
+		{
+			current_context = &new_context;
+		}
+
+		~scoped_context()
+		{
+			old_context->mutated |= new_context.mutated;
+			current_context = old_context;
+		}
+	};
+
+	class pump_manager {
+	public:
+		pump_manager() :
+			x1_(resources::gamedata->get_variable("x1")),
+			x2_(resources::gamedata->get_variable("x2")),
+			y1_(resources::gamedata->get_variable("y1")),
+			y2_(resources::gamedata->get_variable("y2"))
+		{
+			++instance_count;
+		}
+		~pump_manager() {
+			resources::gamedata->get_variable("x1") = x1_;
+			resources::gamedata->get_variable("x2") = x2_;
+			resources::gamedata->get_variable("y1") = y1_;
+			resources::gamedata->get_variable("y2") = y2_;
+			--instance_count;
+		}
+		static unsigned count() {
+			return instance_count;
+		}
+	private:
+		static unsigned instance_count;
+		int x1_, x2_, y1_, y2_;
+	};
+	unsigned pump_manager::instance_count=0;
+} // end anonymous namespace (types)
+
+namespace { // Variables
+	std::deque<queued_event> events_queue;
+
+	bool does_screen_need_rebuild = false;
+	/// The value returned by wml_tracking();
+	size_t internal_wml_tracking = 0;
+
+	std::stringstream wml_messages_stream;
+} // end anonymous namespace (variables)
+
+namespace { // Support functions
+
+	inline bool events_init()
+	{
+		return resources::screen != 0;
+	}
+
+	/**
+	 * Returns true iff the given event passes all its filters.
+	 */
+	bool filter_event(const event_handler& handler, const queued_event& ev)
+	{
+		const unit_map *units = resources::units;
+		unit_map::const_iterator unit1 = units->find(ev.loc1);
+		unit_map::const_iterator unit2 = units->find(ev.loc2);
+		vconfig filters(handler.get_config());
+
+		BOOST_FOREACH(const vconfig &condition, filters.get_children("filter_condition"))
+		{
+			if (!conditional_passed(condition)) {
+				return false;
+			}
+		}
+
+		BOOST_FOREACH(const vconfig &f, filters.get_children("filter_side"))
+		{
+			side_filter ssf(f);
+			if ( !ssf.match(resources::controller->current_side()) )
+				return false;
+		}
+
+		BOOST_FOREACH(const vconfig &f, filters.get_children("filter"))
+		{
+			if ( !ev.loc1.matches_unit_filter(unit1, f) ) {
+				return false;
+			}
+		}
+
+		vconfig::child_list special_filters = filters.get_children("filter_attack");
+		bool special_matches = special_filters.empty();
+		if ( !special_matches  &&  unit1 != units->end() )
+		{
+			const bool matches_unit = ev.loc1.matches_unit(unit1);
+			const config & attack = ev.data.child("first");
+			BOOST_FOREACH(const vconfig &f, special_filters)
+			{
+				if ( f.empty() )
+					special_matches = true;
+				else if ( !matches_unit )
+					return false;
+
+				special_matches = special_matches ||
+					              matches_special_filter(attack, f);
+			}
+		}
+		if(!special_matches) {
+			return false;
+		}
+
+		BOOST_FOREACH(const vconfig &f, filters.get_children("filter_second"))
+		{
+			if ( !ev.loc2.matches_unit_filter(unit2, f) ) {
+				return false;
+			}
+		}
+
+		special_filters = filters.get_children("filter_second_attack");
+		special_matches = special_filters.empty();
+		if ( !special_matches  &&  unit2 != units->end() )
+		{
+			const bool matches_unit = ev.loc2.matches_unit(unit2);
+			const config & attack = ev.data.child("second");
+			BOOST_FOREACH(const vconfig &f, special_filters)
+			{
+				if ( f.empty() )
+					special_matches = true;
+				else if ( !matches_unit )
+					return false;
+
+				special_matches = special_matches ||
+					              matches_special_filter(attack, f);
+			}
+		}
+		if(!special_matches) {
+			return false;
+		}
+
+		// All filters passed.
+		return true;
+	}
+
+	bool process_event(event_handler& handler, const queued_event& ev)
+	{
+		if(handler.disabled())
+			return false;
+
+		unit_map *units = resources::units;
+		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
+		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
+		scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
+		scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
+
+		if ( !filter_event(handler, ev) )
+			return false;
+
+		// The event hasn't been filtered out, so execute the handler.
+		++internal_wml_tracking;
+		scoped_context evc;
+		handler.handle_event(ev);
+
+		if(ev.name == "select") {
+			resources::gamedata->last_selected = ev.loc1;
+		}
+
+		if ( screen_needs_rebuild() ) {
+			screen_needs_rebuild(false);
+			game_display *screen = resources::screen;
+			screen->recalculate_minimap();
+			screen->invalidate_all();
+			screen->rebuild_all();
+		}
+
+		return context_mutated();
+	}
+
+	/**
+	 * Helper function for show_wml_errors(), which gathers
+	 * the messages from a stringstream.
+	 */
+	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
+	{
+		while(true) {
+			std::string msg;
+			std::getline(source, msg);
+
+			if(source.eof()) {
+				break;
+			}
+
+			if(msg == "") {
+				continue;
+			}
+
+			if(msg_map.find(msg) == msg_map.end()) {
+				msg_map[msg] = 1;
+			} else {
+				msg_map[msg]++;
+			}
+		}
+		// Make sure the eof flag is cleared otherwise no new messages are shown
+		source.clear();
+	}
+
+	/**
+	 * Shows a summary of the errors encountered in WML so far,
+	 * to avoid a lot of the same messages to be shown.
+	 * Identical messages are shown once, with (between braces)
+	 * the number of times that message was encountered.
+	 * The order in which the messages are shown does not need
+	 * to be the order in which these messages are encountered.
+	 * Messages are always written to std::cerr.
+	 */
+	void show_wml_errors()
+	{
+		// Get all unique messages in messages,
+		// with the number of encounters for these messages
+		std::map<std::string, int> messages;
+		fill_wml_messages_map(messages, lg::wml_error);
+
+		// Show the messages collected
+		const std::string caption = "Invalid WML found";
+		for(std::map<std::string, int>::const_iterator itor = messages.begin();
+				itor != messages.end(); ++itor) {
+
+			std::stringstream msg;
+			msg << itor->first;
+			if(itor->second > 1) {
+				msg << " (" << itor->second << ")";
+			}
+
+			resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+					events::chat_handler::MESSAGE_PUBLIC, false);
+			std::cerr << caption << ": " << msg.str() << '\n';
+		}
+	}
+
+	void show_wml_messages()
+	{
+		// Get all unique messages in messages,
+		// with the number of encounters for these messages
+		std::map<std::string, int> messages;
+		fill_wml_messages_map(messages, wml_messages_stream);
+
+		// Show the messages collected
+		const std::string caption = "WML";
+		for(std::map<std::string, int>::const_iterator itor = messages.begin();
+				itor != messages.end(); ++itor) {
+
+			std::stringstream msg;
+			msg << itor->first;
+			if(itor->second > 1) {
+				msg << " (" << itor->second << ")";
+			}
+
+			resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+					events::chat_handler::MESSAGE_PUBLIC, false);
+		}
+	}
+
+} // end anonymous namespace (support functions)
+
+
+/** Returns whether or not we believe WML might have changed something. */
+bool context_mutated()
+{
+	return current_context->mutated;
+}
+
+/** Sets whether or not we believe WML might have changed something. */
+void context_mutated(bool mutated)
+{
+	current_context->mutated = mutated;
+}
+
+/** Returns whether or not the screen (map visuals) needs to be rebuilt. */
+bool screen_needs_rebuild()
+{
+	return does_screen_need_rebuild;
+}
+
+/** Sets whether or not the screen (map visuals) needs to be rebuilt. */
+void screen_needs_rebuild(bool rebuild)
+{
+	does_screen_need_rebuild = rebuild;
+}
+
+/** Returns whether or not we are skipping messages. */
+bool skip_messages()
+{
+	return current_context->skip_messages;
+}
+
+/** Sets whether or not we are skipping messages. */
+void skip_messages(bool skip)
+{
+	current_context->skip_messages = skip;
+}
+
+
+/**
+ * Helper function which determines whether a wml_message text can
+ * really be pushed into the wml_messages_stream, and does it.
+ */
+void put_wml_message(const std::string& logger, const std::string& message)
+{
+	if (logger == "err" || logger == "error") {
+		ERR_WML << message << "\n";
+		wml_messages_stream << _("Error: ") << message << "\n";
+	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
+		WRN_WML << message << "\n";
+		wml_messages_stream << _("Warning: ") << message << "\n";
+	} else if ((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(log_wml)) {
+		DBG_WML << message << "\n";
+		wml_messages_stream << _("Debug: ") << message << "\n";
+	} else if (!lg::info.dont_log(log_wml)) {
+		LOG_WML << message << "\n";
+		wml_messages_stream << _("Info: ") << message << "\n";
+	}
+}
+
+
+void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
+{
+	resources::lua_kernel->run_wml_action("command", cfg, event_info);
+}
+
+void handle_event_command(const std::string &cmd,
+                          const queued_event &event_info, const vconfig &cfg)
+{
+	log_scope2(log_engine, "handle_event_command");
+	LOG_NG << "handling command '" << cmd << "' from "
+		<< (cfg.is_volatile()?"volatile ":"") << "cfg 0x"
+		<< std::hex << std::setiosflags(std::ios::uppercase)
+		<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
+
+	if (!resources::lua_kernel->run_wml_action(cmd, cfg, event_info))
+	{
+		ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
+	}
+
+	DBG_NG << "done handling command...\n";
+}
+
+
+bool fire(const std::string& event,
+          const entity_location& loc1,
+          const entity_location& loc2,
+          const config& data)
+{
+	assert(manager::running());
+	raise(event,loc1,loc2,data);
+	return pump();
+}
+
+void raise(const std::string& event,
+           const entity_location& loc1,
+           const entity_location& loc2,
+           const config& data)
+{
+	assert(manager::running());
+	if(!events_init())
+		return;
+
+	DBG_EH << "raising event: " << event << "\n";
+
+	events_queue.push_back(queued_event(event, loc1, loc2, data));
+}
+
+bool pump()
+{
+	//ensure the whiteboard doesn't attempt to build its future unit map
+	//for the duration of this method
+	wb::real_map real_unit_map;
+
+	assert(manager::running());
+	if(!events_init())
+		return false;
+
+	pump_manager pump_instance;
+	if(pump_manager::count() >= game_config::max_loop) {
+		ERR_NG << "game_events::pump() waiting to process new events because "
+			<< "recursion level would exceed maximum " << game_config::max_loop << '\n';
+		return false;
+	}
+
+	if(!lg::debug.dont_log("event_handler")) {
+		std::stringstream ss;
+		BOOST_FOREACH(const queued_event& ev, events_queue) {
+			ss << "name=" << ev.name << "; ";
+		}
+		DBG_EH << "processing queued events: " << ss.str() << "\n";
+	}
+
+	const size_t old_wml_track = internal_wml_tracking;
+
+	bool result = false;
+	while(events_queue.empty() == false) {
+		if(pump_manager::count() <= 1)
+			manager::start_buffering();
+		queued_event ev = events_queue.front();
+		events_queue.pop_front();	// pop now for exception safety
+		const std::string& event_name = ev.name;
+
+		// Clear the unit cache, since the best clearing time is hard to figure out
+		// due to status changes by WML. Every event will flush the cache.
+		unit::clear_status_caches();
+
+		if ( resources::lua_kernel->run_event(ev) )
+			++internal_wml_tracking;
+
+		bool init_event_vars = true;
+
+		manager::iterator end_handler = manager::end();
+		manager::iterator cur_handler = manager::begin();
+		for ( ; cur_handler != end_handler; ++cur_handler ) {
+			event_handler & handler = *cur_handler;
+			if(!handler.matches_name(event_name))
+				continue;
+			// Set the variables for the event
+			if (init_event_vars) {
+				resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
+				resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
+				resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
+				resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+				init_event_vars = false;
+			}
+
+			DBG_EH << "processing event " << event_name << " with id="<<
+				handler.get_config()["id"] << "\n";
+			if(process_event(handler, ev))
+			{
+				result = true;
+			}
+		}
+
+		if(pump_manager::count() <= 1)
+			manager::stop_buffering();
+		// Only commit new handlers when finished iterating over event_handlers.
+		commit();
+	}
+
+	if ( old_wml_track != internal_wml_tracking )
+		// Notify the whiteboard of any event.
+		// This is used to track when moves, recruits, etc. happen.
+		resources::whiteboard->on_gamestate_change();
+
+	return result;
+}
+
+/** Clears all events tha have been raised (and not pumped). */
+void clear_events()
+{
+	events_queue.clear();
+}
+
+void commit()
+{
+	DBG_EH << "committing new event handlers, number of pump_instances: " <<
+	          pump_manager::count() << "\n";
+	manager::commit_buffer();
+	commit_wmi_commands();
+	// Dialogs can only be shown if the display is not locked
+	if (!resources::screen->video().update_locked()) {
+		show_wml_errors();
+		show_wml_messages();
+	}
+}
+
+
+/**
+ * This function can be used to detect when no WML/Lua has been executed.
+ *
+ * If two calls to this function return the same value, then one can
+ * assume that the usual game mechanics have been followed, and code does
+ * not have to account for all the things WML/Lua can do. If the return
+ * values are different, then something unusual might have happened between
+ * those calls.
+ *
+ * This is not intended as a precise metric. Rather, it is motivated by
+ * how large the number of fired WML events is, compared to the (typical)
+ * number of WML event handlers. It is intended for code that can benefit
+ * from caching some aspect of the game state and that cannot rely on
+ * [allow_undo] not being used when that state changes.
+ */
+size_t wml_tracking()
+{
+	return internal_wml_tracking;
+}
+
+} // end namespace game_events
+

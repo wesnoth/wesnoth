@@ -20,8 +20,9 @@
 #include "team.hpp"
 
 #include "ai/manager.hpp"
-#include "game_events.hpp"
+#include "game_events/pump.hpp"
 #include "gamestatus.hpp"
+#include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
 #include "whiteboard/side_actions.hpp"

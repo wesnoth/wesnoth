@@ -14,7 +14,7 @@
 
 #include "sound.hpp"
 #include "soundsource.hpp"
-#include "game_events.hpp"
+#include "game_events/handlers.hpp"
 
 namespace savegame {
 

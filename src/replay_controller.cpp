@@ -17,7 +17,7 @@
 
 #include "actions/vision.hpp"
 #include "game_end_exceptions.hpp"
-#include "game_events.hpp"
+#include "game_events/handlers.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_label.hpp"

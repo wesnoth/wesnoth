@@ -690,7 +690,11 @@ set(wesnoth-main_SRC
 	game_controller.cpp
 	game_display.cpp
 	game_errors.cpp
-	game_events.cpp
+	game_events/action_wml.cpp
+	game_events/conditional_wml.cpp
+	game_events/entity_location.cpp
+	game_events/handlers.cpp
+	game_events/pump.cpp
 	game_instance.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp

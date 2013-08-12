@@ -24,7 +24,6 @@
 #include "storyscreen/controller.hpp"
 
 #include "display.hpp"
-#include "game_events.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
 #include "language.hpp"

@@ -27,7 +27,8 @@
 #include "variable.hpp"
 
 #include "display.hpp"
-#include "game_events.hpp"
+#include "game_events/action_wml.hpp"
+#include "game_events/conditional_wml.hpp"
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "intro.hpp"
