@@ -16,6 +16,7 @@
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
 #include "tools/code_generator/sql2cpp/sql/parser.hpp"
 #include "tools/code_generator/sql2cpp/cpp/generator.hpp"
+#include "tools/code_generator/sql2cpp/utility.hpp"
 
 #include <iostream>
 
