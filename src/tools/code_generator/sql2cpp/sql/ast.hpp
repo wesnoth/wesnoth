@@ -40,7 +40,7 @@ namespace ast{
 struct column;
 struct table;
 
-typedef std::vector<table> program;
+typedef std::vector<table> schema;
 typedef std::vector<column> column_list;
 typedef boost::shared_ptr<constraint::base_constraint> constraint_ptr;
 typedef boost::shared_ptr<sql::base_type_constraint> type_constraint_ptr;

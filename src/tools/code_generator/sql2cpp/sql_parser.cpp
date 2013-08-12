@@ -50,13 +50,13 @@ namespace sql{
 // Grammar definition, define a little part of the SQL language.
 template <typename Iterator>
 struct sql_grammar 
-	: qi::grammar<Iterator, sql::ast::program()>
+	: qi::grammar<Iterator, sql::ast::schema()>
 {
 	template <typename TokenDef>
 	sql_grammar(TokenDef const& tok)
-		: sql_grammar::base_type(program, "program")
+		: sql_grammar::base_type(schema, "schema")
 	{
-		program 
+		schema
 			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon
 			;
 
@@ -148,7 +148,7 @@ struct sql_grammar
 				>> -tok.kw_unsigned		[phx::bind(&semantic_actions::make_unsigned_numeric, &sa_, qi::_val)]
 			;
 
-		program.name("program");
+		schema.name("schema");
 		statement.name("statement");
 		create_statement.name("create statement");
 		create_table.name("create table");
@@ -162,7 +162,7 @@ struct sql_grammar
 		primary_key_constraint.name("primary key constraint");
 		foreign_key_constraint.name("foreign key constraint");
 
-		BOOST_SPIRIT_DEBUG_NODE(program);
+		BOOST_SPIRIT_DEBUG_NODE(schema);
 		BOOST_SPIRIT_DEBUG_NODE(statement);
 		BOOST_SPIRIT_DEBUG_NODE(create_statement);
 		BOOST_SPIRIT_DEBUG_NODE(create_table);
@@ -179,7 +179,7 @@ struct sql_grammar
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
 		(
-			program,
+			schema,
 			std::cout
 				<< phx::val("Error! Expecting ")
 				<< bs::_4                               // what failed?
@@ -197,8 +197,8 @@ private:
 #define RULE_LOC(attribute, locals_, name) RULE_IMPL(attribute, qi::locals< locals_ >, name)
 #define RULE(attribute, name) RULE_IMPL(attribute, qi::unused_type, name)
 
-	RULE(ast::program(), program);
-	RULE(void(ast::program&), statement);
+	RULE(ast::schema(), schema);
+	RULE(void(ast::schema&), statement);
 
 	// Create rules.
 	RULE(ast::table(), create_statement);
@@ -220,8 +220,8 @@ private:
 	RULE(ast::numeric_type_ptr(), numeric_type);
 
 	// Alter rules.
-	RULE(void(ast::program&), alter_statement);
-	RULE_LOC(void(ast::program&), ast::program::iterator, alter_table);
+	RULE(void(ast::schema&), alter_statement);
+	RULE_LOC(void(ast::schema&), ast::schema::iterator, alter_table);
 	RULE(void(ast::table&), alter_table_add);
 
 #undef RULE
@@ -366,15 +366,15 @@ private:
 
 template <typename OutputIterator>
 struct cpp_grammar 
-: karma::grammar<OutputIterator, sql::ast::program()>
+: karma::grammar<OutputIterator, sql::ast::schema()>
 {
 	cpp_grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
-	: cpp_grammar::base_type(program)
+	: cpp_grammar::base_type(schema)
 	, cpp_sa_(wesnoth_path, generated, output_dir)
 	{
 		using karma::eol;
 
-		program 
+		schema 
 			= +create_file
 			;
 
@@ -466,7 +466,7 @@ private:
 #define RULE(attribute, name) RULE_IMPL(attribute, karma::unused_type, name)
 #define RULE0(name) RULE_IMPL(karma::unused_type, karma::unused_type, name)
 
-	RULE(sql::ast::program(), program);
+	RULE(sql::ast::schema(), schema);
 	RULE(sql::ast::table(), create_file);
 	RULE(sql::ast::table(), create_class);
 	RULE(sql::ast::table(), header);
@@ -490,7 +490,7 @@ private:
 };
 
 template <typename OutputIterator>
-bool generate_cpp(OutputIterator& sink, sql::ast::program const& sql_ast, std::ofstream& generated, const std::string& output_dir)
+bool generate_cpp(OutputIterator& sink, sql::ast::schema const& sql_ast, std::ofstream& generated, const std::string& output_dir)
 {
 	cpp_grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
 	return karma::generate(sink, cpp_grammar, sql_ast);
@@ -537,7 +537,7 @@ int main(int argc, char* argv[])
 	// Note how we use the lexer defined above as the skip parser. It must
 	// be explicitly wrapped inside a state directive, switching the lexer 
 	// state for the duration of skipping whitespace.
-	sql::ast::program sql_ast;
+	sql::ast::schema sql_ast;
 	bool r = qi::parse(iter, end, sql, sql_ast);
 
 	if (r && iter == end)
