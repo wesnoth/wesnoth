@@ -61,79 +61,79 @@ struct sql_grammar
 	{
 		RULE_DEF(schema,
 			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon
-			;)
+			);
 
 		RULE_DEF(statement,
 			=   create_statement 	[phx::push_back(qi::_r1, qi::_1)]
 			|		alter_statement(qi::_r1)
-			;)
+			);
 
 		RULE_DEF(create_statement,
 			%=   tok.kw_create >> create_table
-			;)
+			);
 
 		RULE_DEF(alter_statement,
 			=	 tok.kw_alter >> alter_table(qi::_r1)
-			;)
+			);
 
 		RULE_NDEF(alter_table,
 			=	 tok.kw_table
 			>> tok.identifier [phx::bind(&semantic_actions::get_table_by_name, &sa_, qi::_a, qi::_r1, qi::_1, bs::_pass)]
 			>> (alter_table_add(*qi::_a) % tok.comma)
-			;)
+			);
 
 		RULE_DEF(alter_table_add,
 			=	 tok.kw_add >> constraint_definition
-			;)
+			);
 
 		RULE_DEF(create_table,
 			=	tok.kw_table >> tok.identifier[phx::at_c<0>(qi::_val) = qi::_1] >> tok.paren_open >> create_table_columns [phx::at_c<1>(qi::_val) = qi::_1] 
 				>> -(tok.comma >> table_constraints) [phx::at_c<2>(qi::_val) = qi::_1] >> tok.paren_close
-			;)
+			);
 
 		RULE_DEF(table_constraints,
 			%= 	constraint_definition % tok.comma
-			;)
+			);
 
 		RULE_DEF(constraint_definition,
 			= tok.kw_constraint >> tok.identifier [qi::_a = qi::_1] >> 
 			(	primary_key_constraint(qi::_a) 
 			|	foreign_key_constraint(qi::_a)
 			) [qi::_val = qi::_1]
-			;)
+			);
 
 		RULE_DEF(primary_key_constraint,
 			= tok.kw_primary_key >> tok.paren_open >> (tok.identifier % tok.comma) [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
 			>> tok.paren_close
-			;)
+			);
 
 		RULE_DEF(foreign_key_constraint,
 			=	(tok.kw_foreign_key >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close >> reference_definition)
 				[phx::bind(&semantic_actions::make_fk_constraint, &sa_, qi::_val, qi::_r1, qi::_1, qi::_2)]
-			;)
+			);
 
 		RULE_DEF(reference_definition,
 			%=	tok.kw_references >> tok.identifier >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close
-			;)
+			);
 
 		RULE_DEF(create_table_columns,
 			%=   column_definition % tok.comma
-			;)
+			);
 
 		RULE_DEF(column_definition,
 			%=   tok.identifier >> column_type >> *type_constraint
-			;)
+			);
 
 		RULE_DEF(type_constraint,
 			=   tok.kw_not_null		[phx::bind(&semantic_actions::make_type_constraint<sql::not_null>, &sa_, qi::_val)]
 			|   tok.kw_auto_increment	[phx::bind(&semantic_actions::make_type_constraint<sql::auto_increment>, &sa_, qi::_val)]
 			|   tok.kw_unique  		[phx::bind(&semantic_actions::make_type_constraint<sql::unique>, &sa_, qi::_val)]
 			|   default_value 		[phx::bind(&semantic_actions::make_default_value_constraint, &sa_, qi::_val, qi::_1)]
-			;)
+			);
 
 		RULE_DEF(default_value,
 			%=   tok.kw_default > tok.quoted_string
-			;)
+			);
 
 		RULE_DEF(column_type,
 			=   numeric_type	[qi::_val = qi::_1]
@@ -141,7 +141,7 @@ struct sql_grammar
 															[phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
 			|   tok.type_text 			[phx::bind(&semantic_actions::make_column_type<sql::type::text>, &sa_, qi::_val)]
 			|   tok.type_date			  [phx::bind(&semantic_actions::make_column_type<sql::type::date>, &sa_, qi::_val)]
-			;)
+			);
 
 		RULE_DEF(numeric_type,
 			=
@@ -149,7 +149,7 @@ struct sql_grammar
 			| 	tok.type_int 				[phx::bind(&semantic_actions::make_numeric_type<sql::type::integer>, &sa_, qi::_val)]
 			) 
 				>> -tok.kw_unsigned		[phx::bind(&semantic_actions::make_unsigned_numeric, &sa_, qi::_val)]
-			;)
+			);
 
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
@@ -343,88 +343,88 @@ struct cpp_grammar
 	{
 		using karma::eol;
 
-		schema 
+		RULE_DEF(schema,
 			= +create_file
-			;
+			);
 
-		create_file 
+		RULE_DEF(create_file,
 			= karma::eps [phx::bind(&cpp_semantic_actions::open_sink, &cpp_sa_, phx::at_c<0>(karma::_val))]
 			<< header [karma::_1 = karma::_val] 
 			<< create_class [karma::_1 = karma::_val] 
 			<< footer
-			;
+			);
 
-		header 
+		RULE_DEF(header,
 			= license_header << eol
 			<< do_not_modify << eol
 			<< define_header
 			<< includes << eol
 			<< namespace_open << eol
-			;
+			);
 
-		namespace_open
+		RULE_DEF(namespace_open,
 			= "namespace pod{\n"
-			;
+			);
 
-		namespace_close
+		RULE_DEF(namespace_close,
 			= "} // namespace pod\n"
-			;
+			);
 
-		do_not_modify
+		RULE_DEF(do_not_modify,
 			=  "// WARNING: This file has been auto-generated with the tool sql2cpp. We keep in sync the SQL schema and the POD classes."
 			<< eol
 			<< "//          Please do not modify this file by hand. Modify the SQL schema and rebuild the project.\n"
-			;
+			);
 
-		includes
+		RULE_NDEF(includes,
 			= karma::string [phx::bind(&cpp_semantic_actions::includes, &cpp_sa_, karma::_1, karma::_val, karma::_a)]
-			;
+			);
 
-		footer
+		RULE_DEF(footer,
 			= namespace_close
 			<< define_footer
-			;
+			);
 
-		define_footer
+		RULE_DEF(define_footer,
 			= "#endif\n"
-			;
+			);
 
-		define_header
+		RULE_DEF(define_header,
 			= karma::eps [phx::bind(&cpp_semantic_actions::define_name, &cpp_sa_, karma::_a, karma::_val)]
 			<< "#ifndef "
 			<< karma::string [karma::_1 = karma::_a]
 			<< "\n#define "
 			<< karma::string [karma::_1 = karma::_a]
 			<< "\n\n"
-			;
+			);
 
-		license_header 
+		RULE_DEF(license_header,
 			= "/*\n" 
 			<< karma::string [phx::bind(&cpp_semantic_actions::license_header, &cpp_sa_, karma::_1)]
 			<< "\n*/\n"
-			;
+			);
 
-		create_class 
+		RULE_DEF(create_class,
 			= "struct " 
 			<< karma::string [karma::_1 = phx::at_c<0>(karma::_val)]
 			<< "\n{\n"
 			<< create_members [karma::_1 = phx::at_c<1>(karma::_val)]
 			<< "};\n\n"
-			;
+			);
 
-		create_members 
+		RULE_DEF(create_members,
 			= *('\t' << create_member << ";\n")
-			;
+			);
 
-		create_member 
+		RULE_DEF(create_member,
 			= create_member_type [karma::_1 = phx::at_c<1>(karma::_val)] 
 			<< ' ' 
 			<< karma::string [karma::_1 = phx::at_c<0>(karma::_val)]
-			;
+			);
 
-		create_member_type 
+		RULE_DEF(create_member_type,
 			= karma::string [phx::bind(&cpp_semantic_actions::type2string, &cpp_sa_, karma::_1, karma::_val)]
-			;
+			);
 	}
 
 private:

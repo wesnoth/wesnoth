@@ -56,7 +56,7 @@ namespace detail{ // Useless, but inform that everything in should not be used o
 
 /** Define a rule without the debugging facilities provided by Boost.Spirit.
 */
-#define RULE_NDEF(rule_name, def) rule_name def\
+#define RULE_NDEF(rule_name, def) rule_name def;\
 		rule_name.name(#rule_name);
 
 /** Enclose your rule inside RULE_DEF and they will be automatically
