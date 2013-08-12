@@ -15,9 +15,7 @@
 #ifndef SQL_SEMANTIC_ACTIONS_HPP
 #define SQL_SEMANTIC_ACTIONS_HPP
 
-#include <boost/spirit/include/phoenix.hpp>
-
-#include <boost/fusion/include/adapt_struct.hpp>
+#include "tools/code_generator/sql2cpp/sql/ast.hpp"
 
 #include <boost/fusion/include/std_pair.hpp> 
 
@@ -36,35 +34,6 @@
 #include <string>
 #include <set>
 #include <utility>
-
-
-struct sql_column
-{
-	std::string column_identifier;
-	boost::shared_ptr<sql::type::base_type> sql_type;
-	std::vector<boost::shared_ptr<sql::base_type_constraint> > constraints;
-};
-
-BOOST_FUSION_ADAPT_STRUCT(
-	sql_column,
-	(std::string, column_identifier)
-	(boost::shared_ptr<sql::type::base_type>, sql_type)
-	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
-);
-
-struct sql_table
-{
-	std::string table_identifier;
-	std::vector<sql_column> columns;
-	std::vector<boost::shared_ptr<sql::constraint::base_constraint> > constraints;
-};
-
-BOOST_FUSION_ADAPT_STRUCT(
-	sql_table,
-	(std::string, table_identifier)
-	(std::vector<sql_column>, columns)
-	(std::vector<boost::shared_ptr<sql::constraint::base_constraint> >, constraints)
-);
 
 template <class synthesized, class inherited = void>
 struct attribute
@@ -98,18 +67,18 @@ public:
 	typedef attribute<boost::shared_ptr<sql::type::numeric_type> > numeric_type_attribute;
 	typedef attribute<std::string> default_value_attribute;
 	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
-	typedef attribute<sql_column> column_attribute;
-	typedef attribute<std::vector<sql_column> > create_table_columns_attribute;
-	typedef attribute<sql_table> create_table_attribute;
-	typedef attribute<sql_table> create_statement_attribute;
+	typedef attribute<ast::sql_column> column_attribute;
+	typedef attribute<std::vector<ast::sql_column> > create_table_columns_attribute;
+	typedef attribute<ast::sql_table> create_table_attribute;
+	typedef attribute<ast::sql_table> create_statement_attribute;
 
 	// Alter statement.
-	typedef attribute<void, std::vector<sql_table>&> alter_statement_attribute;
-	typedef attribute<void, std::vector<sql_table>&> alter_table_attribute;
-	typedef attribute<void, sql_table&> alter_table_add_attribute;
+	typedef attribute<void, std::vector<ast::sql_table>&> alter_statement_attribute;
+	typedef attribute<void, std::vector<ast::sql_table>&> alter_table_attribute;
+	typedef attribute<void, ast::sql_table&> alter_table_add_attribute;
 	
-	typedef attribute<void, std::vector<sql_table>&> statement_attribute;
-	typedef attribute<std::vector<sql_table> > program_attribute;
+	typedef attribute<void, std::vector<ast::sql_table>&> statement_attribute;
+	typedef attribute<std::vector<ast::sql_table> > program_attribute;
 	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> primary_key_constraint_attribute;
@@ -174,8 +143,8 @@ public:
 	/**
 	@param success is set to false to make the parser fails.
 	*/
-	void get_table_by_name(std::vector<sql_table>::iterator &res, 
-		std::vector<sql_table>& tables, 
+	void get_table_by_name(std::vector<ast::sql_table>::iterator &res, 
+		std::vector<ast::sql_table>& tables, 
 		const std::string& name,
 		bool &success) const
 	{
@@ -198,7 +167,7 @@ public:
 	/**
 	@post We replace the constraint if it already exists in the table constraints, otherwise we add it.
 	*/
-	void alter_table_add_constraint(sql_table& table, 
+	void alter_table_add_constraint(ast::sql_table& table, 
 		const boost::shared_ptr<sql::constraint::base_constraint>& constraint_to_add)
 	{
 		bool to_add = true;
