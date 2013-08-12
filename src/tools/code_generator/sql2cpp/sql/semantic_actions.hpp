@@ -59,24 +59,24 @@ public:
 	}
 
 	template <class T>
-	void make_constraint(boost::shared_ptr<sql::constraint::base_constraint>& res, const std::string& name) const
+	void make_constraint(boost::shared_ptr<sql::base_constraint>& res, const std::string& name) const
 	{
 		res = boost::make_shared<T>(boost::ref(name));
 	}
 
-	void make_pk_constraint(boost::shared_ptr<sql::constraint::base_constraint>& res, 
+	void make_pk_constraint(boost::shared_ptr<sql::base_constraint>& res, 
 							const std::string& name, 
 							const std::vector<std::string>& keys) const
 	{
-		res = boost::make_shared<sql::constraint::primary_key>(name, keys);
+		res = boost::make_shared<sql::primary_key>(name, keys);
 	}
 
-	void make_fk_constraint(boost::shared_ptr<sql::constraint::base_constraint>& res, 
+	void make_fk_constraint(boost::shared_ptr<sql::base_constraint>& res, 
 							const std::string& name, 
 							const std::vector<std::string>& keys,
 							const sql::ast::key_references& refs) const
 	{
-		res = boost::make_shared<sql::constraint::foreign_key>(name, keys, refs);
+		res = boost::make_shared<sql::foreign_key>(name, keys, refs);
 	}
 
 	/**
@@ -107,7 +107,7 @@ public:
 	@post We replace the constraint if it already exists in the table constraints, otherwise we add it.
 	*/
 	void alter_table_add_constraint(ast::table& table, 
-		const boost::shared_ptr<sql::constraint::base_constraint>& constraint_to_add)
+		const boost::shared_ptr<sql::base_constraint>& constraint_to_add)
 	{
 		bool to_add = true;
 		for(std::size_t i = 0; i < table.constraints.size() && to_add; ++i)

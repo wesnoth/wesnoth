@@ -42,8 +42,8 @@ struct table;
 
 typedef std::vector<table> schema;
 typedef std::vector<column> column_list;
-typedef boost::shared_ptr<constraint::base_constraint> constraint_ptr;
-typedef boost::shared_ptr<sql::base_type_constraint> type_constraint_ptr;
+typedef boost::shared_ptr<base_constraint> constraint_ptr;
+typedef boost::shared_ptr<base_type_constraint> type_constraint_ptr;
 typedef boost::shared_ptr<type::base_type> column_type_ptr;
 typedef boost::shared_ptr<type::numeric_type> numeric_type_ptr;
 

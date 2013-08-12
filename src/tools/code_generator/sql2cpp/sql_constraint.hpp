@@ -20,7 +20,6 @@
 #include <vector>
 
 namespace sql{
-namespace constraint{
 
 struct constraint_visitor;
 
@@ -83,6 +82,6 @@ void base_constraint_crtp<constraint_type>::accept(const boost::shared_ptr<const
 	visitor->visit(*static_cast<const constraint_type*>(this));
 }
 
-}} // namespace sql::constraint
+} // namespace sql
 
 #endif // SQL_CONSTRAINT_HPP

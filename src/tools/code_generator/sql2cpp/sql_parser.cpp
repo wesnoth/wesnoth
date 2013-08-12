@@ -11,7 +11,7 @@
 
 	See the COPYING file for more details.
 */
-#define BOOST_SPIRIT_QI_DEBUG
+//#define BOOST_SPIRIT_QI_DEBUG
 
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
 #include "tools/code_generator/sql2cpp/sql/parser.hpp"
