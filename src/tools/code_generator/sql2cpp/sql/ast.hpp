@@ -15,8 +15,8 @@
 #ifndef SQL_AST_HPP
 #define SQL_AST_HPP
 
-#include "tools/code_generator/sql2cpp/sql_type.hpp"
-#include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
+#include "tools/code_generator/sql2cpp/sql/type.hpp"
+#include "tools/code_generator/sql2cpp/sql/type_constraint.hpp"
 
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <boost/shared_ptr.hpp>
@@ -32,7 +32,7 @@ namespace ast{
 	};
 }} // namespace sql::ast
 
-#include "tools/code_generator/sql2cpp/sql_constraint.hpp"
+#include "tools/code_generator/sql2cpp/sql/constraint.hpp"
 
 namespace sql{
 namespace ast{
