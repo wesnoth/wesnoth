@@ -20,16 +20,6 @@
 
 #include <iostream>
 
-namespace karma = boost::spirit::karma;
-namespace qi = boost::spirit::qi;
-
-template <typename OutputIterator>
-bool generate_cpp(OutputIterator& sink, sql::ast::schema const& sql_ast, std::ofstream& generated, const std::string& output_dir)
-{
-	cpp::grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
-	return karma::generate(sink, cpp_grammar, sql_ast);
-}
-
 int main(int argc, char* argv[])
 {
 	if(argc != 3)
@@ -72,7 +62,7 @@ int main(int argc, char* argv[])
 	// be explicitly wrapped inside a state directive, switching the lexer 
 	// state for the duration of skipping whitespace.
 	sql::ast::schema sql_ast;
-	bool r = qi::parse(iter, end, sql, sql_ast);
+	bool r = boost::spirit::qi::parse(iter, end, sql, sql_ast);
 
 	if (r && iter == end)
 	{
@@ -80,13 +70,10 @@ int main(int argc, char* argv[])
 		std::cout << "Parsing succeeded\n";
 		std::cout << "-------------------------\n";
 
-		//std::string generated;
-		//std::back_insert_iterator<std::string> sink(generated);
-
 		std::ofstream generated("dummy.txt");
 		std::ostream_iterator<char> sink(generated);
 
-		if(generate_cpp(sink, sql_ast, generated, argv[2]))
+		if(cpp::generate(sink, sql_ast, generated, argv[2]))
 		{
 			std::cout << "Generation succeeded\n";
 		}

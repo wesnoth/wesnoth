@@ -39,13 +39,13 @@ struct grammar
 		using karma::eol;
 
 		RULE_DEF(schema,
-			= +create_file
+			= +file
 			);
 
-		RULE_DEF(create_file,
+		RULE_DEF(file,
 			= karma::eps [phx::bind(&semantic_actions::open_sink, &sa_, phx::at_c<0>(karma::_val))]
 			<< header [karma::_1 = karma::_val] 
-			<< create_class [karma::_1 = karma::_val] 
+			<< structure [karma::_1 = karma::_val] 
 			<< footer
 			);
 
@@ -99,25 +99,25 @@ struct grammar
 			<< "\n*/\n"
 			);
 
-		RULE_DEF(create_class,
+		RULE_DEF(structure,
 			= "struct " 
 			<< karma::string [karma::_1 = phx::at_c<0>(karma::_val)]
 			<< "\n{\n"
-			<< create_members [karma::_1 = phx::at_c<1>(karma::_val)]
+			<< members [karma::_1 = phx::at_c<1>(karma::_val)]
 			<< "};\n\n"
 			);
 
-		RULE_DEF(create_members,
-			= *('\t' << create_member << ";\n")
+		RULE_DEF(members,
+			= *('\t' << member << ";\n")
 			);
 
-		RULE_DEF(create_member,
-			= create_member_type [karma::_1 = phx::at_c<1>(karma::_val)] 
+		RULE_DEF(member,
+			= member_type [karma::_1 = phx::at_c<1>(karma::_val)] 
 			<< ' ' 
 			<< karma::string [karma::_1 = phx::at_c<0>(karma::_val)]
 			);
 
-		RULE_DEF(create_member_type,
+		RULE_DEF(member_type,
 			= karma::string [phx::bind(&semantic_actions::type2string, &sa_, karma::_1, karma::_val)]
 			);
 	}
@@ -126,8 +126,8 @@ private:
 	semantic_actions sa_;
 
 	KA_RULE(sql::ast::schema(), schema);
-	KA_RULE(sql::ast::table(), create_file);
-	KA_RULE(sql::ast::table(), create_class);
+	KA_RULE(sql::ast::table(), file);
+	KA_RULE(sql::ast::table(), structure);
 	KA_RULE(sql::ast::table(), header);
 	KA_RULE_LOC(std::string(), std::string, define_header);
 	KA_RULE_LOC(sql::ast::column_list(), std::set<std::string>, includes);
@@ -139,10 +139,17 @@ private:
 	KA_RULE0(namespace_close);
 	KA_RULE0(do_not_modify);
 
-	KA_RULE(sql::ast::column_list(), create_members);
-	KA_RULE(sql::ast::column(), create_member);
-	KA_RULE(sql::ast::column_type_ptr(), create_member_type);
+	KA_RULE(sql::ast::column_list(), members);
+	KA_RULE(sql::ast::column(), member);
+	KA_RULE(sql::ast::column_type_ptr(), member_type);
 };
+
+template <typename OutputIterator>
+bool generate(OutputIterator& sink, sql::ast::schema const& sql_ast, std::ofstream& generated, const std::string& output_dir)
+{
+	grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
+	return karma::generate(sink, cpp_grammar, sql_ast);
+}
 
 } // namespace cpp
 #endif // CPP_GENERATOR_HPP
