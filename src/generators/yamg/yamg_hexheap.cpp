@@ -106,7 +106,7 @@ int yamg_hexheap::test_hex() {
     Clear all members flag and reset the heap itself
 */
 void yamg_hexheap::clear_heap() {
-    for(int i = 0; i > last_; i++)
+    for(int i = 0; i < last_; i++)
         table_[i]->done = false;
     last_ = 0;
 }
