@@ -11,7 +11,7 @@
 
 	See the COPYING file for more details.
 */
-//#define BOOST_SPIRIT_QI_DEBUG
+#define BOOST_SPIRIT_QI_DEBUG
 
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
 #include "tools/code_generator/sql2cpp/sql/semantic_actions.hpp"
@@ -56,126 +56,113 @@ struct sql_grammar
 	sql_grammar(TokenDef const& tok)
 		: sql_grammar::base_type(schema, "schema")
 	{
-		schema
-			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon
-			;
 
-		statement 
+#define RULE_NDEF(rule_name, def) rule_name def\
+		rule_name.name(#rule_name);
+
+/** Enclose your rule inside RULE_DEF and they will be automatically
+* named and add to the debugging facility.
+*
+* WARNING: Compilation error will occur if you enclose rule that have attribute
+* or local variables that have not a streaming operator defined.
+* Enclose them inside RULE_NDEF so they will not be added to the debug engine.
+*/
+#define RULE_DEF(rule_name, def) RULE_NDEF(rule_name, def) \
+		BOOST_SPIRIT_DEBUG_NODE(rule_name);
+
+		RULE_DEF(schema,
+			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon
+			;)
+
+		RULE_DEF(statement,
 			=   create_statement 	[phx::push_back(qi::_r1, qi::_1)]
 			|		alter_statement(qi::_r1)
-			;
+			;)
 
-		create_statement
+		RULE_DEF(create_statement,
 			%=   tok.kw_create >> create_table
-			;
+			;)
 
-		alter_statement
+		RULE_DEF(alter_statement,
 			=	 tok.kw_alter >> alter_table(qi::_r1)
-			;
+			;)
 
-		alter_table
+		RULE_NDEF(alter_table,
 			=	 tok.kw_table
 			>> tok.identifier [phx::bind(&semantic_actions::get_table_by_name, &sa_, qi::_a, qi::_r1, qi::_1, bs::_pass)]
 			>> (alter_table_add(*qi::_a) % tok.comma)
-			;
+			;)
 
-		alter_table_add
+		RULE_DEF(alter_table_add,
 			=	 tok.kw_add >> constraint_definition
-			;
+			;)
 
-		create_table
+		RULE_DEF(create_table,
 			=	tok.kw_table >> tok.identifier[phx::at_c<0>(qi::_val) = qi::_1] >> tok.paren_open >> create_table_columns [phx::at_c<1>(qi::_val) = qi::_1] 
 				>> -(tok.comma >> table_constraints) [phx::at_c<2>(qi::_val) = qi::_1] >> tok.paren_close
-			;
+			;)
 
-		table_constraints
+		RULE_DEF(table_constraints,
 			%= 	constraint_definition % tok.comma
-			;
+			;)
 
-		constraint_definition
+		RULE_DEF(constraint_definition,
 			= tok.kw_constraint >> tok.identifier [qi::_a = qi::_1] >> 
 			(	primary_key_constraint(qi::_a) 
 			|	foreign_key_constraint(qi::_a)
 			) [qi::_val = qi::_1]
-			;
+			;)
 
-		primary_key_constraint
+		RULE_DEF(primary_key_constraint,
 			= tok.kw_primary_key >> tok.paren_open >> (tok.identifier % tok.comma) [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
 			>> tok.paren_close
-			;
+			;)
 
-		foreign_key_constraint
+		RULE_DEF(foreign_key_constraint,
 			=	(tok.kw_foreign_key >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close >> reference_definition)
 				[phx::bind(&semantic_actions::make_fk_constraint, &sa_, qi::_val, qi::_r1, qi::_1, qi::_2)]
-			;
+			;)
 
-		reference_definition
+		RULE_DEF(reference_definition,
 			%=	tok.kw_references >> tok.identifier >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close
-			;
+			;)
 
-		create_table_columns
+		RULE_DEF(create_table_columns,
 			%=   column_definition % tok.comma
-			;
+			;)
 
-		column_definition
+		RULE_DEF(column_definition,
 			%=   tok.identifier >> column_type >> *type_constraint
-			;
+			;)
 
-		type_constraint
+		RULE_DEF(type_constraint,
 			=   tok.kw_not_null		[phx::bind(&semantic_actions::make_type_constraint<sql::not_null>, &sa_, qi::_val)]
 			|   tok.kw_auto_increment	[phx::bind(&semantic_actions::make_type_constraint<sql::auto_increment>, &sa_, qi::_val)]
 			|   tok.kw_unique  		[phx::bind(&semantic_actions::make_type_constraint<sql::unique>, &sa_, qi::_val)]
 			|   default_value 		[phx::bind(&semantic_actions::make_default_value_constraint, &sa_, qi::_val, qi::_1)]
-			;
+			;)
 
-		default_value
+		RULE_DEF(default_value,
 			%=   tok.kw_default > tok.quoted_string
-			;
+			;)
 
-		column_type
+		RULE_DEF(column_type,
 			=   numeric_type	[qi::_val = qi::_1]
 			|		(tok.type_varchar > tok.paren_open > tok.unsigned_digit > tok.paren_close) 
 															[phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
 			|   tok.type_text 			[phx::bind(&semantic_actions::make_column_type<sql::type::text>, &sa_, qi::_val)]
 			|   tok.type_date			  [phx::bind(&semantic_actions::make_column_type<sql::type::date>, &sa_, qi::_val)]
-			;
+			;)
 
-		numeric_type
+		RULE_DEF(numeric_type,
 			=
 			(		tok.type_smallint		[phx::bind(&semantic_actions::make_numeric_type<sql::type::smallint>, &sa_, qi::_val)]
 			| 	tok.type_int 				[phx::bind(&semantic_actions::make_numeric_type<sql::type::integer>, &sa_, qi::_val)]
 			) 
 				>> -tok.kw_unsigned		[phx::bind(&semantic_actions::make_unsigned_numeric, &sa_, qi::_val)]
-			;
+			;)
 
-		schema.name("schema");
-		statement.name("statement");
-		create_statement.name("create statement");
-		create_table.name("create table");
-		create_table_columns.name("create table columns");
-		column_definition.name("column definition");
-		column_type.name("column type");
-		default_value.name("default value");
-		type_constraint.name("type constraint");
-		table_constraints.name("table constraints");
-		constraint_definition.name("constraint definition");
-		primary_key_constraint.name("primary key constraint");
-		foreign_key_constraint.name("foreign key constraint");
-
-		BOOST_SPIRIT_DEBUG_NODE(schema);
-		BOOST_SPIRIT_DEBUG_NODE(statement);
-		BOOST_SPIRIT_DEBUG_NODE(create_statement);
-		BOOST_SPIRIT_DEBUG_NODE(create_table);
-		BOOST_SPIRIT_DEBUG_NODE(create_table_columns);
-		BOOST_SPIRIT_DEBUG_NODE(column_definition);
-		BOOST_SPIRIT_DEBUG_NODE(column_type);
-		BOOST_SPIRIT_DEBUG_NODE(default_value);
-		BOOST_SPIRIT_DEBUG_NODE(type_constraint);
-		BOOST_SPIRIT_DEBUG_NODE(table_constraints);
-		BOOST_SPIRIT_DEBUG_NODE(constraint_definition);
-		BOOST_SPIRIT_DEBUG_NODE(primary_key_constraint);
-		BOOST_SPIRIT_DEBUG_NODE(foreign_key_constraint);
-
+#undef RULE_DEF
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
 		(
