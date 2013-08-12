@@ -63,28 +63,6 @@ namespace sql{
 class semantic_actions
 {
 public:
-	typedef attribute<boost::shared_ptr<sql::type::base_type> > column_type_attribute;
-	typedef attribute<boost::shared_ptr<sql::type::numeric_type> > numeric_type_attribute;
-	typedef attribute<std::string> default_value_attribute;
-	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
-	typedef attribute<ast::column> column_attribute;
-	typedef attribute<std::vector<ast::column> > create_table_columns_attribute;
-	typedef attribute<ast::table> create_table_attribute;
-	typedef attribute<ast::table> create_statement_attribute;
-
-	// Alter statement.
-	typedef attribute<void, std::vector<ast::table>&> alter_statement_attribute;
-	typedef attribute<void, std::vector<ast::table>&> alter_table_attribute;
-	typedef attribute<void, ast::table&> alter_table_add_attribute;
-	
-	typedef attribute<void, std::vector<ast::table>&> statement_attribute;
-	typedef attribute<std::vector<ast::table> > program_attribute;
-	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> primary_key_constraint_attribute;
-	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> foreign_key_constraint_attribute;
-	typedef attribute<sql::constraint::key_references> reference_definition_attribute;
-
 	template<class T>
 	void make_column_type(boost::shared_ptr<sql::type::base_type>& res) const
 	{
@@ -135,7 +113,7 @@ public:
 	void make_fk_constraint(boost::shared_ptr<sql::constraint::base_constraint>& res, 
 							const std::string& name, 
 							const std::vector<std::string>& keys,
-							const sql::constraint::key_references& refs) const
+							const sql::ast::key_references& refs) const
 	{
 		res = boost::make_shared<sql::constraint::foreign_key>(name, keys, refs);
 	}

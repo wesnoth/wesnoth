@@ -25,24 +25,36 @@
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
 #include "tools/code_generator/sql2cpp/sql_constraint.hpp"
 
-
 #include <vector>
 
 namespace sql{
 namespace ast{
 
-struct column
-{
-	std::string column_identifier;
-	boost::shared_ptr<sql::type::base_type> sql_type;
-	std::vector<boost::shared_ptr<sql::base_type_constraint> > constraints;
-};
+struct column;
+struct table;
+
+typedef std::vector<table> program;
+typedef std::vector<column> column_list;
+typedef boost::shared_ptr<constraint::base_constraint> constraint_ptr;
+typedef boost::shared_ptr<sql::base_type_constraint> type_constraint_ptr;
+typedef boost::shared_ptr<type::base_type> column_type_ptr;
+typedef boost::shared_ptr<type::numeric_type> numeric_type_ptr;
+
+typedef std::vector<constraint_ptr> constraint_list;
+typedef std::vector<type_constraint_ptr> type_constraint_list;
 
 struct table
 {
 	std::string table_identifier;
-	std::vector<column> columns;
-	std::vector<boost::shared_ptr<sql::constraint::base_constraint> > constraints;
+	column_list columns;
+	constraint_list constraints;
+};
+
+struct column
+{
+	std::string column_identifier;
+	column_type_ptr sql_type;
+	type_constraint_list constraints;
 };
 
 }} // namespace sql::ast
@@ -51,15 +63,21 @@ struct table
 BOOST_FUSION_ADAPT_STRUCT(
 	sql::ast::column,
 	(std::string, column_identifier)
-	(boost::shared_ptr<sql::type::base_type>, sql_type)
-	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
+	(sql::ast::column_type_ptr, sql_type)
+	(sql::ast::type_constraint_list, constraints)
 );
 
 BOOST_FUSION_ADAPT_STRUCT(
 	sql::ast::table,
 	(std::string, table_identifier)
-	(std::vector<sql::ast::column>, columns)
-	(std::vector<boost::shared_ptr<sql::constraint::base_constraint> >, constraints)
+	(sql::ast::column_list, columns)
+	(sql::ast::constraint_list, constraints)
+);
+
+BOOST_FUSION_ADAPT_STRUCT(
+	sql::ast::key_references,
+	(std::string, ref_table)
+	(std::vector<std::string>, refs)
 );
 
 #endif // SQL_AST_HPP

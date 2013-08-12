@@ -26,9 +26,7 @@
 #include <boost/make_shared.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "tools/code_generator/sql2cpp/sql_type.hpp"
-#include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
-#include "tools/code_generator/sql2cpp/sql_constraint.hpp"
+#include "tools/code_generator/sql2cpp/sql/ast.hpp"
 
 #include <iostream>
 #include <fstream>
@@ -61,7 +59,7 @@ namespace sql{
 // Grammar definition, define a little part of the SQL language.
 template <typename Iterator>
 struct sql_grammar 
-	: qi::grammar<Iterator, typename semantic_actions::program_attribute::type>
+	: qi::grammar<Iterator, sql::ast::program()>
 {
 	template <typename TokenDef>
 	sql_grammar(TokenDef const& tok)
@@ -202,39 +200,42 @@ struct sql_grammar
 	}
 
 private:
-	template <class Attribute>
-	struct rule
-	{
-		typedef qi::rule<Iterator, Attribute> type;
-	};
-	template <class Attribute, class Locals>
-	struct rule_loc
-	{
-		typedef qi::rule<Iterator, Attribute, Locals> type;
-	};
-	typedef qi::rule<Iterator> simple_rule;
-
 	semantic_actions sa_;
 
-	typename rule<typename semantic_actions::program_attribute::type>::type program;
-	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
-	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
-	typename rule<typename semantic_actions::alter_statement_attribute::type>::type alter_statement;
-	typename rule_loc<typename semantic_actions::alter_table_attribute::type, qi::locals<std::vector<sql::ast::table>::iterator> >::type alter_table;
-	typename rule<typename semantic_actions::alter_table_add_attribute::type>::type alter_table_add;
-	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
-	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
-	typename rule_loc<typename semantic_actions::constraint_definition_attribute::type, qi::locals<std::string> >::type constraint_definition;
-	typename rule<typename semantic_actions::primary_key_constraint_attribute::type>::type primary_key_constraint;
-	typename rule<typename semantic_actions::numeric_type_attribute::type>::type numeric_type;
-	typename rule<typename semantic_actions::foreign_key_constraint_attribute::type>::type foreign_key_constraint;
-	typename rule<typename semantic_actions::reference_definition_attribute::type>::type reference_definition;
+#define RULE_IMPL(attribute, locals, name) qi::rule< Iterator, attribute, locals > name
+#define RULE_LOC(attribute, locals_, name) RULE_IMPL(attribute, qi::locals< locals_ >, name)
+#define RULE(attribute, name) RULE_IMPL(attribute, qi::unused_type, name)
 
-	typename rule<typename semantic_actions::create_table_columns_attribute::type>::type create_table_columns;
-	typename rule<typename semantic_actions::column_attribute::type>::type column_definition;
-	typename rule<typename semantic_actions::type_constraint_attribute::type>::type type_constraint;
-	typename rule<typename semantic_actions::default_value_attribute::type>::type default_value;
-	typename rule<typename semantic_actions::column_type_attribute::type>::type column_type;
+	RULE(ast::program(), program);
+	RULE(void(ast::program&), statement);
+
+	// Create rules.
+	RULE(ast::table(), create_statement);
+	RULE(ast::table(), create_table);
+	RULE(ast::column_list(), create_table_columns);
+	RULE(ast::column(), column_definition);
+	RULE(ast::constraint_list(), table_constraints);
+
+	// Constraint rules.
+	RULE_LOC(ast::constraint_ptr(), std::string, constraint_definition);
+	RULE(ast::constraint_ptr(std::string), primary_key_constraint);
+	RULE(ast::constraint_ptr(std::string), foreign_key_constraint);
+	RULE(ast::key_references(), reference_definition);
+
+	// Type rules.
+	RULE(ast::column_type_ptr(), column_type);
+	RULE(ast::type_constraint_ptr(), type_constraint);
+	RULE(std::string(), default_value);
+	RULE(ast::numeric_type_ptr(), numeric_type);
+
+	// Alter rules.
+	RULE(void(ast::program&), alter_statement);
+	RULE_LOC(void(ast::program&), ast::program::iterator, alter_table);
+	RULE(void(ast::table&), alter_table_add);
+
+#undef RULE
+#undef RULE_LOC
+#undef RULE_IMPL
 };
 } // namespace sql
 
@@ -325,7 +326,7 @@ struct cpp_semantic_actions
 	, output_dir_(output_dir)
 	{}
 
-	void type2string(std::string& res, typename sql::semantic_actions::column_type_attribute::s_type const& type)
+	void type2string(std::string& res, sql::ast::column_type_ptr const& type)
 	{
 		boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_type_visitor>(boost::ref(res));
 		type->accept(visitor);
@@ -341,7 +342,7 @@ struct cpp_semantic_actions
 		res = "UMCD_POD_" + boost::to_upper_copy(class_name) + "_HPP";
 	}
 
-	void includes(std::string& res, typename sql::semantic_actions::create_table_columns_attribute::s_type const& class_members, std::set<std::string>& included)
+	void includes(std::string& res, sql::ast::column_list const& class_members, std::set<std::string>& included)
 	{
 		for(std::size_t i = 0; i < class_members.size(); ++i)
 		{
@@ -374,7 +375,7 @@ private:
 
 template <typename OutputIterator>
 struct cpp_grammar 
-: karma::grammar<OutputIterator, typename sql::semantic_actions::program_attribute::type>
+: karma::grammar<OutputIterator, sql::ast::program()>
 {
 	cpp_grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: cpp_grammar::base_type(program)
@@ -469,31 +470,36 @@ struct cpp_grammar
 private:
 	cpp_semantic_actions cpp_sa_;
 
-	template <class Attribute>
-	struct rule
-	{
-		typedef karma::rule<OutputIterator, Attribute> type;
-	};
-	typedef karma::rule<OutputIterator> simple_rule;
+#define RULE_IMPL(attribute, locals, name) karma::rule< OutputIterator, attribute, locals > name
+#define RULE_LOC(attribute, locals_, name) RULE_IMPL(attribute, karma::locals< locals_ >, name)
+#define RULE(attribute, name) RULE_IMPL(attribute, karma::unused_type, name)
+#define RULE0(name) RULE_IMPL(karma::unused_type, karma::unused_type, name)
 
-	typename rule<typename sql::semantic_actions::program_attribute::type>::type program;
-	typename rule<typename sql::semantic_actions::create_table_attribute::type>::type create_file;
-	typename rule<typename sql::semantic_actions::create_table_attribute::type>::type create_class;
-	typename rule<typename sql::semantic_actions::create_table_attribute::type>::type header;
-	karma::rule<OutputIterator, karma::locals<std::string>, std::string()> define_header;
-	karma::rule<OutputIterator, karma::locals<std::set<std::string> >, typename sql::semantic_actions::create_table_columns_attribute::type> includes;
-	simple_rule footer;
-	simple_rule define_footer;
-	simple_rule license_header;
-	simple_rule namespace_open, namespace_close;
-	simple_rule do_not_modify;
-	typename rule<typename sql::semantic_actions::create_table_columns_attribute::type>::type create_members;
-	typename rule<typename sql::semantic_actions::column_attribute::type>::type create_member;
-	typename rule<typename sql::semantic_actions::column_type_attribute::type>::type create_member_type;
+	RULE(sql::ast::program(), program);
+	RULE(sql::ast::table(), create_file);
+	RULE(sql::ast::table(), create_class);
+	RULE(sql::ast::table(), header);
+	RULE_LOC(std::string(), std::string, define_header);
+	RULE_LOC(sql::ast::column_list(), std::set<std::string>, includes);
+
+	RULE0(footer);
+	RULE0(define_footer);
+	RULE0(license_header);
+	RULE0(namespace_open);
+	RULE0(namespace_close);
+	RULE0(do_not_modify);
+
+	RULE(sql::ast::column_list(), create_members);
+	RULE(sql::ast::column(), create_member);
+	RULE(sql::ast::column_type_ptr(), create_member_type);
+
+#undef RULE
+#undef RULE_LOC
+#undef RULE_IMPL
 };
 
 template <typename OutputIterator>
-bool generate_cpp(OutputIterator& sink, typename sql::semantic_actions::program_attribute::s_type const& sql_ast, std::ofstream& generated, const std::string& output_dir)
+bool generate_cpp(OutputIterator& sink, sql::ast::program const& sql_ast, std::ofstream& generated, const std::string& output_dir)
 {
 	cpp_grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
 	return karma::generate(sink, cpp_grammar, sql_ast);
@@ -540,7 +546,7 @@ int main(int argc, char* argv[])
 	// Note how we use the lexer defined above as the skip parser. It must
 	// be explicitly wrapped inside a state directive, switching the lexer 
 	// state for the duration of skipping whitespace.
-	typename sql::semantic_actions::program_attribute::s_type sql_ast;
+	sql::ast::program sql_ast;
 	bool r = qi::parse(iter, end, sql, sql_ast);
 
 	if (r && iter == end)

@@ -1014,6 +1014,7 @@ if(ENABLE_UMCD)
 set(sql2cpp_SRC
 	tools/code_generator/sql2cpp/sql_parser.cpp
 	tools/code_generator/sql2cpp/sql_type.cpp
+	tools/code_generator/sql2cpp/sql_constraint.cpp
 )
 
 add_executable(sql2cpp ${sql2cpp_SRC})
