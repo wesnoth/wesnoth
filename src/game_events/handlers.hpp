@@ -60,12 +60,12 @@ namespace game_events
 			config cfg_;
 	};
 
-	// The game event manager loads the scenario configuration object,
-	// and ensures that events are handled according to the
-	// scenario configuration for its lifetime.
-	//
-	// Thus, a manager object should be created when a scenario is played,
-	// and destroyed at the end of the scenario.
+	/// The game event manager loads the scenario configuration object,
+	/// and ensures that events are handled according to the
+	/// scenario configuration for its lifetime.
+	///
+	/// Thus, a manager object should be created when a scenario is played,
+	/// and destroyed at the end of the scenario.
 	struct manager {
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
