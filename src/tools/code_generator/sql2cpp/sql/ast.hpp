@@ -15,16 +15,12 @@
 #ifndef SQL_AST_HPP
 #define SQL_AST_HPP
 
-#include <boost/spirit/include/phoenix.hpp>
-#include <boost/fusion/include/adapt_struct.hpp>
-#include <boost/fusion/include/std_pair.hpp> 
-
-#include <boost/shared_ptr.hpp>
-
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
 #include "tools/code_generator/sql2cpp/sql_constraint.hpp"
 
+#include <boost/fusion/include/adapt_struct.hpp>
+#include <boost/shared_ptr.hpp>
 #include <vector>
 
 namespace sql{

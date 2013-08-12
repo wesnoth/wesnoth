@@ -16,7 +16,6 @@
 #define SQL_CONSTRAINT_HPP
 
 #include <boost/shared_ptr.hpp>
-#include <boost/fusion/include/adapt_struct.hpp>
 #include <string>
 #include <vector>
 

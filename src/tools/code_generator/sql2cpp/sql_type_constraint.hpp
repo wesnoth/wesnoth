@@ -15,6 +15,8 @@
 #ifndef SQL_TYPE_CONSTRAINT_HPP
 #define SQL_TYPE_CONSTRAINT_HPP
 
+#include <string>
+
 namespace sql{
 
 struct base_type_constraint{};

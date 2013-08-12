@@ -15,24 +15,15 @@
 
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
 #include "tools/code_generator/sql2cpp/sql/semantic_actions.hpp"
+#include "tools/code_generator/sql2cpp/sql/ast.hpp"
+
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix.hpp>
 #include <boost/spirit/include/karma.hpp>
-#include <boost/fusion/include/adapt_struct.hpp>
-#include <boost/fusion/include/std_pair.hpp> 
-
-#include <boost/algorithm/string.hpp>
-#include <boost/shared_ptr.hpp>
-#include <boost/make_shared.hpp>
-#include <boost/lexical_cast.hpp>
-
-#include "tools/code_generator/sql2cpp/sql/ast.hpp"
 
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <set>
-#include <utility>
 
 namespace bs = boost::spirit;
 namespace lex = boost::spirit::lex;
@@ -316,10 +307,10 @@ private:
 	std::string& res_;
 };
 
+#include <boost/algorithm/string.hpp>
+
 struct cpp_semantic_actions
 {
-	typedef attribute<std::pair<sql::ast::column, std::set<std::string> > > include_attribute;
-
 	cpp_semantic_actions(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: license_header_(file2string(wesnoth_path + get_license_header_file())) 
 	, generated_(generated)

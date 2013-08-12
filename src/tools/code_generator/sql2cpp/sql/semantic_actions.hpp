@@ -17,46 +17,7 @@
 
 #include "tools/code_generator/sql2cpp/sql/ast.hpp"
 
-#include <boost/fusion/include/std_pair.hpp> 
-
-#include <boost/algorithm/string.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/make_shared.hpp>
-#include <boost/lexical_cast.hpp>
-
-#include "tools/code_generator/sql2cpp/sql_type.hpp"
-#include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
-#include "tools/code_generator/sql2cpp/sql_constraint.hpp"
-
-
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <set>
-#include <utility>
-
-template <class synthesized, class inherited = void>
-struct attribute
-{
-	typedef synthesized s_type;
-	typedef inherited i_type;
-	typedef s_type type(i_type);
-};
-
-template <class synthesized>
-struct attribute <synthesized, void>
-{
-	typedef synthesized s_type;
-	typedef s_type type();
-};
-
-template <class inherited>
-struct attribute <void, inherited>
-{
-	typedef inherited i_type;
-	typedef void type(i_type);
-};
-
 
 namespace sql{
 
