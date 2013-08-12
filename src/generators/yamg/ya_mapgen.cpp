@@ -22,6 +22,10 @@
 #include <cstdio>
 #include <cstring>
 
+#ifdef YAMG_STANDALONE
+#include <stdlib.h>
+#endif
+
 //========================== Static parameters =========================
 /*
  Here are the various terrain tables used to define base terrains. Each one is supposed to contain M_NUMLEVEL 'layers' exactly
@@ -237,15 +241,6 @@ const char *bridges[3];
 
 //===================================== Constructors & Destructors ===================================
 
-ya_mapgen::ya_mapgen(const config& /*cfg*/) :
-        siz_(0), summits_(NULL), castles_(NULL), snow_limit_(0), riv_(0) {
-	status_ = YAMG_EMPTY;
-	parms_ = NULL;
-	map_ = NULL;
-	heap_ = NULL;
-	endpoints_ = NULL;
-}
-
 ya_mapgen::ya_mapgen() :
         siz_(0), summits_(NULL), castles_(NULL), snow_limit_(0), riv_(0) {
 	status_ = YAMG_EMPTY;
@@ -277,8 +272,18 @@ const char gen_nom[] = "YetAnotherMapGenerator";
 const char def_nom[] = "tempered";
 const char pol_nom[] = "polar";
 const char medi_nom[] = "mediterranean";
-const char trop_nom[] = "tropical";
+const char equ_nom[] = "equatorial";
 const char desert_nom[] = "desert";
+const char cust_nom[] = "custom";
+
+ya_mapgen::ya_mapgen(const config& /*cfg*/) :
+        siz_(0), summits_(NULL), castles_(NULL), snow_limit_(0), riv_(0) {
+	status_ = YAMG_EMPTY;
+	parms_ = NULL;
+	map_ = NULL;
+	heap_ = NULL;
+	endpoints_ = NULL;
+}
 
 /**
  *** allow_user_config
@@ -310,13 +315,15 @@ std::string ya_mapgen::config_name() const {
 	else
 		switch (parms_->type) {
 		case 'p':
-            return def_nom;
+            return pol_nom;
 		case 'm':
-            return def_nom;
+            return medi_nom;
 		case 'd':
-            return def_nom;
+            return desert_nom;
 		case 'e':
-            return def_nom;
+            return equ_nom;
+        case 'c':
+            return cust_nom;
 		case 't':
 		default:
             return def_nom;
@@ -371,6 +378,7 @@ void ya_mapgen::reset_map() {
 	}
 	if (map_ != NULL)
         free_map();
+	endpoints_ = NULL;
 	status_ = YAMG_EMPTY;
 }
 
@@ -451,14 +459,6 @@ int ya_mapgen::create_map() {
 	}
     create_altitudes(0, dim, 0, dim, M_VARIATION);
 
-	//TODO
-	/* DEBUG **
-	 This allow to verify altitudes: no alt member should be 0
-	 for(unsigned int i=0; i < siz;i++) {
-	 for(unsigned int j=0; j < siz;j++)
-	 if(map[i][j] == 0) dim = 0;
-	 }
-	 */
 	// some altitudes calculations giving back the full range of them
     unsigned int range = normalize_map();
 
@@ -492,9 +492,8 @@ int ya_mapgen::create_map() {
     make_houses();
 
 	//-------- creates roads
-//TODO enabling the roads leads to a segfault when generating twice.
-//    if(parms_->roads)
-//       makeRoads();
+    if(parms_->roads)
+       make_roads();
 
 	//------- finish map
 	delete heap_;
@@ -772,12 +771,7 @@ int ya_mapgen::normalize_map() {
 	for (i = 0; i < M_NUMLEVEL; i++) {
 		j = (range * parms_->thickness[i]) / fact + j;
 		table_[i] = j;
-	}/*
-	 j = 0; range = maxA - minA;
-	 for(i = 0; i < M_NUMLEVEL; i++) {
-	 j = (range * parms->thickness[i])/100 + j;
-	 table[i] = j;
-	 }*/
+	}
 	return (range);
 }
 
@@ -1378,13 +1372,12 @@ void ya_mapgen::make_castles() {
 void ya_mapgen::store_neighbors(yamg_hex *it, unsigned int layMin,
 		unsigned int layMax) {
     neighbors p;
-	unsigned int x, y, m, k, z;
+	unsigned int x, y, m, z;
 
 	p.center = it;
 	x = it->x - 1;
 	y = it->y - 1;
 	m = x % 2;
-	k = y - m;
     z = parms_->height;
 
 	if (y < 3) {
@@ -1401,26 +1394,26 @@ void ya_mapgen::store_neighbors(yamg_hex *it, unsigned int layMin,
 	if (x < 3) {
 		p.nw = p.sw = NULL;
 	} else {
-//        if(k < 0)
-//            p.nw =NULL;
-//        else
-		p.nw = map_[y - m][x - 1];
-		if (k >= z)
-			p.sw = NULL;
-		else
-			p.sw = map_[y - m + 1][x - 1];
+        if(y < m)
+            p.nw =NULL;
+        else
+        p.nw = map_[y - m][x - 1];
+        if (y >= (z + m))
+            p.sw = NULL;
+        else
+            p.sw = map_[y - m + 1][x - 1];
 	}
     if (x >= parms_->width - 2) {
 		p.ne = p.se = NULL;
 	} else {
-//        if(k < 0)
-//            p.ne = NULL;
-//        else
-		p.ne = map_[y - m][x + 1];
-		if (k >= z)
-			p.se = NULL;
-		else
-			p.se = map_[y - m + 1][x + 1];
+        if(y < m)
+            p.ne = NULL;
+        else
+            p.ne = map_[y - m][x + 1];
+        if ( y >= (z + m) )
+            p.se = NULL;
+        else
+            p.se = map_[y - m + 1][x + 1];
 	}
 
 	if ((p.no != NULL) && (p.no->lock < YAMG_LIGHTLOCK)
@@ -1877,13 +1870,11 @@ void ya_mapgen::make_roads() {
  */
 yamg_hex *ya_mapgen::sel_neigh(yamg_hex *h) {
 	yamg_hex *it, *l, *res = NULL;
-	unsigned int x, y, m; //,k,z;
+	unsigned int x, y, m;
 
 	x = h->x - 1;
 	y = h->y - 1;
 	m = x % 2;
-//    k = y - m;
-//    z = parms->haut;
 
 	if (y > 2) {
 		it = map_[y - 1][x];
@@ -1899,19 +1890,17 @@ yamg_hex *ya_mapgen::sel_neigh(yamg_hex *h) {
 	}
 
 	if ((x > 2) && (y > 1)) {
-//        if((k >= 0)) {
-		it = map_[y - m][x - 1];
-		if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
-			it->next = res;
-			res = it;
-		}
-		it = map_[y - m][x + 1];
-		if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
-			it->next = res;
-			res = it;
-		}
-//        }
-		it = map_[y - m + 1][x - 1];
+        it = map_[y - m][x - 1];
+        if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
+            it->next = res;
+            res = it;
+        }
+        it = map_[y - m][x + 1];
+        if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
+            it->next = res;
+            res = it;
+        }
+ 		it = map_[y - m + 1][x - 1];
 		if ((it->road == NULL) && (it->lock < YAMG_HARDLOCK)) {
 			it->next = res;
 			res = it;
@@ -2006,19 +1995,105 @@ void ya_mapgen::get_neighbors(yamg_hex *h, neighbors *p) {
 }
 
 /**
- This utility returns a random number 0 to limit
- The compile flag allows to use either the system RNG or the embedded one
- */
+    This utility returns a random number 0 to limit
+    The compile flag allows to use either the system RNG or the embedded one
+*/
 int m_rand(int limit) {
-	if (limit == 0)
-		return 0;
-	unsigned int n = rand();
-	return n % limit;
+    if(limit == 0)
+        return 0;
+#ifndef INTERN_RAND
+    unsigned int n = rand();
+#else
+    unsigned int n = genrand();
+#endif
+   return (int)(n % limit);
 }
 
 /**
- Initialize the RNG
- */
+    Initialize the RNG
+*/
 void init_rand(unsigned int seed) {
-	srand(seed);
+#ifndef INTERN_RAND
+        srand(seed);
+#else
+        init_genrand(seed);
+#endif
 }
+
+/**
+    The embedded RNG
+*/
+#ifdef INTERN_RAND
+/*
+    This is an adapted Mersenne Twister pseudorandom number generator
+    based on code by:
+    Makoto Matsumoto and Takuji Nishimura,
+
+    See full version at:
+    http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
+*/
+
+/* Period parameters */
+#define N 624
+#define M 397
+#define MATRIX_A 0x9908b0dfUL   /* constant vector a */
+#define UPPER_MASK 0x80000000UL /* most significant w-r bits */
+#define LOWER_MASK 0x7fffffffUL /* least significant r bits */
+
+static unsigned long mt[N]; /* the array for the state vector  */
+static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */
+
+/* initializes mt[N] with a seed */
+void init_genrand(unsigned long s)
+{
+    mt[0]= s & 0xffffffffUL;
+    for (mti=1; mti<N; mti++) {
+        mt[mti] =
+	    (1812433253UL * (mt[mti-1] ^ (mt[mti-1] >> 30)) + mti);
+        /* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */
+        /* In the previous versions, MSBs of the seed affect   */
+        /* only MSBs of the array mt[].                        */
+        /* 2002/01/09 modified by Makoto Matsumoto             */
+        mt[mti] &= 0xffffffffUL;
+        /* for >32 bit machines */
+    }
+}
+
+/* generates a random number on [0,0xffffffff]-interval */
+unsigned long genrand(void)
+{
+    unsigned long y;
+    static unsigned long mag01[2]={0x0UL, MATRIX_A};
+    /* mag01[x] = x * MATRIX_A  for x=0,1 */
+
+    if (mti >= N) { /* generate N words at one time */
+        int kk;
+
+        if (mti == N+1)   /* if init_genrand() has not been called, */
+            init_genrand(5489UL); /* a default initial seed is used */
+
+        for (kk=0;kk<N-M;kk++) {
+            y = (mt[kk]&UPPER_MASK)|(mt[kk+1]&LOWER_MASK);
+            mt[kk] = mt[kk+M] ^ (y >> 1) ^ mag01[y & 0x1UL];
+        }
+        for (;kk<N-1;kk++) {
+            y = (mt[kk]&UPPER_MASK)|(mt[kk+1]&LOWER_MASK);
+            mt[kk] = mt[kk+(M-N)] ^ (y >> 1) ^ mag01[y & 0x1UL];
+        }
+        y = (mt[N-1]&UPPER_MASK)|(mt[0]&LOWER_MASK);
+        mt[N-1] = mt[M-1] ^ (y >> 1) ^ mag01[y & 0x1UL];
+
+        mti = 0;
+    }
+
+    y = mt[mti++];
+
+    /* Tempering */
+    y ^= (y >> 11);
+    y ^= (y << 7) & 0x9d2c5680UL;
+    y ^= (y << 15) & 0xefc60000UL;
+    y ^= (y >> 18);
+
+    return y;
+}
+#endif

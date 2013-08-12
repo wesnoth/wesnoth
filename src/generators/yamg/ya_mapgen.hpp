@@ -35,9 +35,9 @@
 #include "yamg_params.hpp"
 #include "yamg_hex.hpp"
 #include "yamg_hexheap.hpp"
-#include "config.hpp"
 
 #ifndef YAMG_STANDALONE
+#include "config.hpp"
 #include "generators/mapgen.hpp"
 #endif
 
@@ -68,24 +68,28 @@ struct burg {
 
 #ifdef YAMG_STANDALONE
 class ya_mapgen
+{
+public:
+
 #else
+
 class ya_mapgen: public map_generator
-#endif
 {
 public:
 	ya_mapgen(const config& cfg);
+#endif
 	ya_mapgen();
 	virtual ~ya_mapgen();
 
 	//----------- Inherited methods from map_generator -----------------
 
-//#ifndef YAMG_STANDALONE
+#ifndef YAMG_STANDALONE
 	bool allow_user_config() const;
 	void user_config(display& disp);
 	std::string name() const; // {return "yamg";};
 	std::string config_name() const; // {return "generator";};
 	std::string create_map(const std::vector<std::string>& args);
-//#endif
+#endif
 
 //----------------- Methods -------------
 
@@ -140,5 +144,10 @@ private:
 
 int m_rand(int limit);                 ///< returns a random number 0 < n < limit
 void init_rand(unsigned int seed);    ///< init random number generator
+
+#ifdef INTERN_RAND
+void init_genrand(unsigned long s); ///< embedded RNG initialization
+unsigned long genrand(void);        ///< RNG production
+#endif
 
 #endif // YA_MAPGEN_HPP
