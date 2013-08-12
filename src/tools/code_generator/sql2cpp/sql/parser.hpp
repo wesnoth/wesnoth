@@ -29,14 +29,14 @@ namespace phx = boost::phoenix;
 
 // Grammar definition, define a little part of the SQL language.
 template <typename Iterator>
-struct sql_grammar 
+struct grammar 
 	: qi::grammar<Iterator, sql::ast::schema()>
 {
 	typedef Iterator iterator_type;
 
 	template <typename TokenDef>
-	sql_grammar(TokenDef const& tok)
-		: sql_grammar::base_type(schema, "schema")
+	grammar(TokenDef const& tok)
+		: grammar::base_type(schema, "schema")
 	{
 		RULE_DEF(schema,
 			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon

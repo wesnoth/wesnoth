@@ -50,7 +50,7 @@ int main(int argc, char* argv[])
 	typedef sql_tokens::iterator_type iterator_type;
 
 	// this is the type of the grammar to parse
-	typedef sql::sql_grammar<iterator_type> sql_grammar;
+	typedef sql::grammar<iterator_type> sql_grammar;
 
 	// now we use the types defined above to create the lexer and grammar
 	// object instances needed to invoke the parsing process
