@@ -16,6 +16,7 @@
 #define CPP_TYPE_VISITORS_HPP
 
 #include "tools/code_generator/sql2cpp/sql/type.hpp"
+#include <boost/lexical_cast.hpp>
 
 namespace cpp{
 

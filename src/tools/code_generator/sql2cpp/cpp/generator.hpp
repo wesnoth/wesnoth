@@ -19,6 +19,7 @@
 #include "tools/code_generator/sql2cpp/cpp/semantic_actions.hpp"
 
 #include <boost/spirit/include/karma.hpp>
+#include <boost/spirit/include/phoenix.hpp>
 
 namespace cpp{
 

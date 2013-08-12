@@ -18,6 +18,7 @@
 #include "tools/code_generator/sql2cpp/sql/ast.hpp"
 
 #include <boost/make_shared.hpp>
+#include <boost/ref.hpp>
 
 namespace sql{
 

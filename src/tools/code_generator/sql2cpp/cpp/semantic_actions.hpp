@@ -23,6 +23,7 @@
 
 #include <fstream>
 #include <string>
+#include <set>
 
 static std::string get_license_header_file()
 {
