@@ -17,11 +17,22 @@
 
 #include "tools/code_generator/sql2cpp/sql_type.hpp"
 #include "tools/code_generator/sql2cpp/sql_type_constraint.hpp"
-#include "tools/code_generator/sql2cpp/sql_constraint.hpp"
 
 #include <boost/fusion/include/adapt_struct.hpp>
 #include <boost/shared_ptr.hpp>
 #include <vector>
+
+// This struct is needed by the sql_constraint file (more specifically by the foreign_key class).
+namespace sql{
+namespace ast{
+	struct key_references
+	{
+		std::string ref_table;
+		std::vector<std::string> refs;
+	};
+}} // namespace sql::ast
+
+#include "tools/code_generator/sql2cpp/sql_constraint.hpp"
 
 namespace sql{
 namespace ast{

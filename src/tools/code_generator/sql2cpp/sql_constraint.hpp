@@ -20,14 +20,6 @@
 #include <vector>
 
 namespace sql{
-namespace ast{
-	struct key_references
-	{
-		std::string ref_table;
-		std::vector<std::string> refs;
-	};
-} // namespace ast
-
 namespace constraint{
 
 struct constraint_visitor;
@@ -69,7 +61,11 @@ struct foreign_key : base_constraint_crtp<foreign_key>
 {
 	typedef base_constraint_crtp<foreign_key> base;
 
-	foreign_key(const std::string& name, const std::vector<std::string>& keys, const sql::ast::key_references& refs);
+	foreign_key(const std::string& name, const std::vector<std::string>& keys, const ast::key_references& refs)
+	: base(name)
+	, keys(keys)
+	, refs(refs)
+	{}
 
 	std::vector<std::string> keys;
 	ast::key_references refs;
