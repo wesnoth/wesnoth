@@ -69,13 +69,14 @@ connect_engine::connect_engine(game_display& disp,
 	level_(),
 	state_(),
 	params_(params),
-	local_players_only_(local_players_only),
+	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	first_scenario_(first_scenario),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
 	user_team_names_(),
-	users_()
+	connected_users_(),
+	default_controller_options_()
 {
 	level_ = initial_level_config(disp, params, state_);
 	if (level_.empty()) {
@@ -88,8 +89,16 @@ connect_engine::connect_engine(game_display& disp,
 		era_factions_.push_back(&era);
 	}
 
-	// Adds the current user as default user.
-	users_.push_back(connected_user(preferences::login(), CNTR_LOCAL, 0));
+	if (!local_players_only) {
+		default_controller_options_.push_back(
+			std::make_pair(CNTR_NETWORK, _("Network Player")));
+	}
+	default_controller_options_.push_back(
+		std::make_pair(CNTR_LOCAL, _("Local Player")));
+	default_controller_options_.push_back(
+		std::make_pair(CNTR_COMPUTER, _("Computer Player")));
+	default_controller_options_.push_back(
+		std::make_pair(CNTR_EMPTY, _("Empty")));
 }
 
 connect_engine::~connect_engine()
@@ -123,30 +132,66 @@ void connect_engine::add_side_engine(side_engine_ptr engine)
 	side_engines_.push_back(engine);
 }
 
-void connect_engine::assign_side_for_host()
+void connect_engine::init_after_side_engines_assigned()
 {
-	// Take the first available side or available side with id == login.
-	int side_choice = -1;
-	int counter = 0;
-	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->allow_player()) {
-			if (side_choice == -1) {
-				side_choice = counter;
-			}
-			if (side->current_player() == preferences::login()) {
-				side_engines_[counter]->set_player_from_users_list(
-					preferences::login());
-				side_choice = gamemap::MAX_PLAYERS;
-			}
-		}
+	// Add host to the connected users list.
+	config user_data;
+	user_data["name"] = preferences::login();
+	import_user(HOST, user_data, 0);
+}
 
-		counter++;
+void connect_engine::import_user(USER_TYPE user_type, const config& data,
+	int sock, int side_taken)
+{
+	const std::string& username = data["name"];
+	assert(!username.empty());
+
+	// Check if user with such name isn't already connected.
+	bool already_connected = false;
+	BOOST_FOREACH(const connected_user& user, connected_users_) {
+		if (user.name == username) {
+			already_connected = true;
+		}
+	}
+	// Finally, add user to the connected user list.
+	if (!already_connected) {
+		connected_users_.push_back(connected_user(username, sock));
+		update_side_controller_options();
 	}
 
-	if (side_choice != -1 && side_choice != gamemap::MAX_PLAYERS) {
-		if (side_engines_[side_choice]->player_id() == "") {
-			side_engines_[side_choice]->set_player_from_users_list(
-				preferences::login());
+	if (user_type == OBSERVER) {
+		return;
+	}
+
+	bool side_assigned = false;
+	if (side_taken >= 0) {
+		side_engines_[side_taken]->place_user(data);
+		side_assigned = true;
+	}
+
+	// Check if user has a side(s) reserved for him.
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		if (side->current_player() == username) {
+			side->place_user(data);
+
+			side_assigned = true;
+		}
+	}
+
+	if (side_taken < 0) {
+		// If no sides were assigned for a user,
+		// take a first available side.
+		if (!side_assigned) {
+			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+				if (side->available_for_user(username) ||
+					side->controller() == CNTR_LOCAL) {
+
+					side->place_user(data);
+
+					side_assigned = true;
+					break;
+				}
+			}
 		}
 	}
 }
@@ -154,7 +199,7 @@ void connect_engine::assign_side_for_host()
 bool connect_engine::sides_available() const
 {
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->available()) {
+		if (side->available_for_user()) {
 			return true;
 		}
 	}
@@ -196,9 +241,9 @@ bool connect_engine::can_start_game() const
 	// First check if all sides are ready to start the game.
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		if (!side->ready_for_start()) {
+			const int side_num = side->index() + 1;
 			DBG_MP << "not all sides are ready, side " <<
-				side->new_config().get("side")->str() << " not ready" <<
-				std::endl;
+				side_num << " not ready\n";
 
 			return false;
 		}
@@ -213,10 +258,8 @@ bool connect_engine::can_start_game() const
 	 * [1] http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=568029
 	 */
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->mp_controller() != CNTR_EMPTY) {
-			if (side->allow_player()) {
-				return true;
-			}
+		if (side->controller() != CNTR_EMPTY && side->allow_player()) {
+			return true;
 		}
 	}
 
@@ -319,7 +362,7 @@ void connect_engine::start_game_commandline(
 
 		// Set AI algorithm to RCA AI for all sides,
 		// then override if commandline option was given.
-		side->set_ai_algorithm_commandline("ai_default_rca");
+		side->set_ai_algorithm("ai_default_rca");
 		if (cmdline_opts.multiplayer_algorithm) {
 			BOOST_FOREACH(const mp_option& option,
 				*cmdline_opts.multiplayer_algorithm) {
@@ -328,7 +371,7 @@ void connect_engine::start_game_commandline(
 					DBG_MP << "\tsetting side " << option.get<0>() <<
 						"\tfaction: " << option.get<1>() << std::endl;
 
-					side->set_ai_algorithm_commandline(option.get<1>());
+					side->set_ai_algorithm(option.get<1>());
 				}
 			}
 		}
@@ -394,38 +437,35 @@ void connect_engine::start_game_commandline(
 	network::send_data(config("start_game"), 0);
 }
 
-network_res_tuple connect_engine::process_network_data(const config& data,
+std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 	const network::connection sock)
 {
-	network_res_tuple result;
-	result.get<0>() = false;
-	result.get<1>() = false;
-	result.get<2>() = true;
+	std::pair<bool, bool> result(std::make_pair(false, true));
 
 	if (data.child("leave_game")) {
-		result.get<0>() = true;
+		result.first = true;
 		return result;
 	}
 
 	// A side has been dropped.
 	if (!data["side_drop"].empty()) {
 		unsigned side_drop = data["side_drop"].to_int() - 1;
-		result.get<3>().push_back(side_drop);
 
 		if (side_drop < side_engines_.size()) {
 			side_engine_ptr side_to_drop = side_engines_[side_drop];
 
-			connected_user_list::iterator player =
-				find_player_by_id(side_to_drop->player_id());
-			if (player != users_.end()) {
-				users_.erase(player);
+			// Remove user, whose side was dropped.
+			const int user_index =
+				find_user_index_by_id(side_to_drop->player_id());
+			if (user_index != -1) {
+				connected_users_.erase(connected_users_.begin() + user_index);
+				update_side_controller_options();
 			}
 
-			side_to_drop->reset(side_to_drop->mp_controller());
+			side_to_drop->reset();
 
 			update_and_send_diff();
 
-			result.get<1>() = true;
 			return result;
 		}
 	}
@@ -446,11 +486,11 @@ network_res_tuple connect_engine::process_network_data(const config& data,
 			return result;
 		}
 
-		connected_user_list::iterator player = find_player_by_id(name);
-		if (player != users().end()) {
+		const int user_index = find_user_index_by_id(name);
+		if (user_index != -1) {
 			 // TODO: Seems like a needless limitation
 			 // to only allow one side per player.
-			if (find_player_side_index_by_id(name) != -1) {
+			if (find_user_side_index_by_id(name) != -1) {
 				config response;
 				response["failed"] = true;
 				response["message"] = "The nickname '" + name +
@@ -459,23 +499,22 @@ network_res_tuple connect_engine::process_network_data(const config& data,
 
 				return result;
 			} else {
-				users_.erase(player);
+				connected_users_.erase(connected_users_.begin() + user_index);
+				update_side_controller_options();
 				config observer_quit;
 				observer_quit.add_child("observer_quit")["name"] = name;
 				network::send_data(observer_quit, 0);
-
-				result.get<1>() = true;
 			}
 		}
 
 		// Assigns this user to a side.
 		if (side_taken < side_engines_.size()) {
-			if (!side_engines_[side_taken]->available(name)) {
+			if (!side_engines_[side_taken]->available_for_user(name)) {
 				// This side is already taken.
 				// Try to reassing the player to a different position.
 				side_taken = 0;
 				BOOST_FOREACH(side_engine_ptr s, side_engines_) {
-					if (s->available()) {
+					if (s->available_for_user()) {
 						break;
 					}
 
@@ -492,8 +531,6 @@ network_res_tuple connect_engine::process_network_data(const config& data,
 					kick["username"] = data["name"];
 					network::send_data(res, 0);
 
-					result.get<1>() = true;
-
 					update_and_send_diff();
 
 					ERR_CF << "ERROR: Couldn't assign a side to '" <<
@@ -505,29 +542,11 @@ network_res_tuple connect_engine::process_network_data(const config& data,
 
 			LOG_CF << "client has taken a valid position\n";
 
-			// Adds the name to the list.
-			users_.push_back(connected_user(name, CNTR_NETWORK, sock));
-
-			result.get<3>().push_back(side_taken);
-			side_engines_[side_taken]->import_network_user(data);
-
-			// Check if more sides are reserved for this player.
-			int side_index = 0;
-			BOOST_FOREACH(side_engine_ptr& s, side_engines_) {
-				if (s->available(data["name"]) &&
-					s->current_player() == data["name"]) {
-
-					result.get<3>().push_back(side_index);
-					s->import_network_user(data);
-				}
-
-				side_index++;
-			}
-
-			result.get<1>() = true;
-			result.get<2>() = false;
+			import_user(PLAYER, data, sock, side_taken);
 
 			update_and_send_diff();
+
+			result.second = false;
 
 			LOG_NW << "sent player data\n";
 		} else {
@@ -539,46 +558,30 @@ network_res_tuple connect_engine::process_network_data(const config& data,
 		}
 	}
 
-	if (const config &change_faction = data.child("change_faction")) {
-		int side_taken = find_player_side_index_by_id(change_faction["name"]);
-		if (side_taken != -1) {
-			result.get<3>().push_back(side_taken);
-			side_engines_[side_taken]->import_network_user(change_faction);
-			side_engines_[side_taken]->set_ready_for_start(true);
 
-			result.get<1>() = true;
+	if (const config& change_faction = data.child("change_faction")) {
+		int side_taken = find_user_side_index_by_id(change_faction["name"]);
+		if (side_taken != -1) {
+			import_user(PLAYER, change_faction, sock, side_taken);
 
 			update_and_send_diff();
 		}
 	}
 
-	if (const config &c = data.child("observer")) {
-		const t_string &observer_name = c["name"];
-		if (!observer_name.empty()) {
-			connected_user_list::iterator player =
-				find_player_by_id(observer_name);
-			if (player == users_.end()) {
-				users_.push_back(connected_user(observer_name, CNTR_NETWORK,
-					sock));
-
-				result.get<1>() = true;
-
-				update_and_send_diff();
-			}
-		}
+	if (const config& observer = data.child("observer")) {
+		import_user(OBSERVER, observer, sock);
+		update_and_send_diff();
 	}
 
-	if (const config &c = data.child("observer_quit")) {
-		const t_string &observer_name = c["name"];
+	if (const config& observer = data.child("observer_quit")) {
+		const t_string& observer_name = observer["name"];
 		if (!observer_name.empty()) {
-			connected_user_list::iterator player =
-				find_player_by_id(observer_name);
-			if (player != users_.end() &&
-				find_player_side_index_by_id(observer_name) == -1) {
+			const int user_index = find_user_index_by_id(observer_name);
+			if (user_index != -1 &&
+				find_user_side_index_by_id(observer_name) == -1) {
 
-				users_.erase(player);
-
-				result.get<1>() = true;
+				connected_users_.erase(connected_users_.begin() + user_index);
+				update_side_controller_options();
 
 				update_and_send_diff();
 			}
@@ -588,7 +591,7 @@ network_res_tuple connect_engine::process_network_data(const config& data,
 	return result;
 }
 
-int connect_engine::process_network_error(network::error& error)
+bool connect_engine::process_network_error(network::error& error)
 {
 	// If the problem isn't related to any specific connection,
 	// it's a general error and we should just re-throw the error.
@@ -599,25 +602,26 @@ int connect_engine::process_network_error(network::error& error)
 		throw network::error(error.message);
 	}
 
-	int res = -1;
+	bool res = false;
 
 	// A socket has disconnected. Remove it, and resets its side.
-	connected_user_list::iterator user;
-	for(user = users_.begin(); user != users_.end(); ++user) {
-		if (user->connection == error.socket) {
-			int side_index = find_player_side_index_by_id(user->name);
+	int user_index = 0;
+	BOOST_FOREACH(connected_user& user, connected_users_) {
+		if (user.connection == error.socket) {
+			int side_index = find_user_side_index_by_id(user.name);
 			if (side_index != -1) {
-				side_engines_[side_index]->
-					reset((local_players_only_) ? CNTR_LOCAL : CNTR_NETWORK);
-				res = side_index + 1;
-			} else {
-				res = 0;
+				side_engines_[side_index]->reset();
 			}
 
-			users_.erase(user);
+			res = true;
+
+			connected_users_.erase(connected_users_.begin() + user_index);
+			update_side_controller_options();
 
 			break;
 		}
+
+		user_index++;
 	}
 
 	// Now disconnect the socket.
@@ -625,7 +629,7 @@ int connect_engine::process_network_error(network::error& error)
 
 	// If there have been changes to the positions taken,
 	// then notify other players.
-	if (res != -1) {
+	if (res) {
 		update_and_send_diff();
 	}
 
@@ -645,20 +649,25 @@ void connect_engine::process_network_connection(const network::connection sock)
 	}
 }
 
-connected_user_list::iterator
-	connect_engine::find_player_by_id(const std::string& id)
+int connect_engine::find_user_index_by_id(const std::string& id)
 {
-	connected_user_list::iterator itor;
-	for (itor = users_.begin(); itor != users_.end(); ++itor) {
-		if (itor->name == id) {
+	size_t i = 0;
+	BOOST_FOREACH(const connected_user& user, connected_users_) {
+		if (user.name == id) {
 			break;
 		}
+
+		i++;
 	}
 
-	return itor;
+	if (i >= connected_users_.size()) {
+		return -1;
+	}
+
+	return i;
 }
 
-int connect_engine::find_player_side_index_by_id(const std::string& id) const
+int connect_engine::find_user_side_index_by_id(const std::string& id) const
 {
 	size_t i = 0;
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
@@ -676,33 +685,43 @@ int connect_engine::find_player_side_index_by_id(const std::string& id) const
 	return i;
 }
 
+void connect_engine::update_side_controller_options()
+{
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		side->update_controller_options();
+	}
+}
+
 side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	const int index) :
 	cfg_(cfg),
 	parent_(parent_engine),
-	mp_controller_(CNTR_NETWORK),
+	controller_(CNTR_NETWORK),
+	current_controller_index_(0),
 	available_factions_(),
 	choosable_factions_(),
 	choosable_leaders_(),
 	choosable_genders_(),
+	controller_options_(),
 	current_faction_(NULL),
 	current_leader_("null"),
 	current_gender_("null"),
-	ready_for_start_(false),
 	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
 		false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
+	leader_id_(cfg["id"]),
+	save_id_(cfg["save_id"]),
+	current_player_(cfg["current_player"]),
 	index_(index),
 	team_(0),
 	color_(index),
 	gold_(cfg["gold"].to_int(100)),
 	income_(cfg["income"]),
-	id_(cfg["id"]),
 	player_id_(cfg["player_id"]),
-	save_id_(cfg["save_id"]),
-	current_player_(cfg["current_player"]),
 	ai_algorithm_()
 {
+	update_controller_options();
+
 	// Tweak the controllers.
 	if (cfg["controller"] == "human_ai" ||
 		cfg["controller"] == "network_ai") {
@@ -710,16 +729,17 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		cfg_["controller"] = "ai";
 	}
 	if (allow_player_ && !parent_.params_.saved_game) {
-		mp_controller_ = (parent_.local_players_only_) ? CNTR_LOCAL :
-			CNTR_NETWORK;
+		set_controller(parent_.default_controller_);
+	} else if (!current_player_.empty()) {
+		set_controller(CNTR_RESERVED);
 	} else {
 		size_t i = CNTR_NETWORK;
 		if (!allow_player_) {
 			if (cfg["controller"] == "null") {
-				mp_controller_ = CNTR_EMPTY;
+				set_controller(CNTR_EMPTY);
 			} else {
 				cfg_["controller"] = controller_names[CNTR_COMPUTER];
-				mp_controller_ = CNTR_COMPUTER;
+				set_controller(CNTR_COMPUTER);
 			}
 		} else {
 			if (cfg["controller"] == "network" ||
@@ -730,7 +750,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 			for (; i != CNTR_LAST; ++i) {
 				if (cfg["controller"] == controller_names[i]) {
-					mp_controller_ = static_cast<mp::controller>(i);
+					set_controller(static_cast<mp::controller>(i));
 					break;
 				}
 			}
@@ -801,13 +821,13 @@ config side_engine::new_config() const
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
-	res["controller"] = controller_names[mp_controller_];
+	res["controller"] = controller_names[controller_];
 	res["current_player"] = player_id_.empty() ? current_player_ : player_id_;
-	res["id"] = id_;
+	res["id"] = leader_id_;
 
 	if (player_id_.empty()) {
 		std::string description;
-		switch(mp_controller_) {
+		switch(controller_) {
 		case CNTR_NETWORK:
 			description = N_("(Vacant slot)");
 
@@ -921,7 +941,7 @@ config side_engine::new_config() const
 			trimmed.remove_attribute(attribute);
 		}
 
-		if (mp_controller_ != CNTR_COMPUTER) {
+		if (controller_ != CNTR_COMPUTER) {
 			// Only override names for computer controlled players.
 			trimmed.remove_attribute("user_description");
 		}
@@ -934,66 +954,83 @@ config side_engine::new_config() const
 
 bool side_engine::ready_for_start() const
 {
-	// Sides without players are always ready.
 	if (!allow_player_) {
+		// Sides without players are always ready.
 		return true;
 	}
 
-	// The host and the AI are always ready.
-	if ((mp_controller_ == mp::CNTR_COMPUTER) ||
-		(mp_controller_ == mp::CNTR_EMPTY) ||
-		(mp_controller_ == mp::CNTR_LOCAL)) {
+	if ((controller_ == mp::CNTR_COMPUTER) ||
+		(controller_ == mp::CNTR_EMPTY) ||
+		(controller_ == mp::CNTR_LOCAL)) {
 
 		return true;
 	}
 
-	return ready_for_start_;
-}
-
-bool side_engine::available(const std::string& name) const
-{
-	if (name.empty()) {
-		return allow_player_ && ((mp_controller_ == CNTR_NETWORK &&
-			player_id_.empty()) || mp_controller_ == CNTR_RESERVED);
+	if (controller_ == CNTR_NETWORK && !player_id_.empty()) {
+		// Side is assigned to a network player.
+		return true;
 	}
 
-	return allow_player_ &&
-		((mp_controller_ == CNTR_NETWORK && player_id_.empty()) ||
-		(mp_controller_ == CNTR_RESERVED && current_player_ == name));
+	return false;
 }
 
-void side_engine::set_player_from_users_list(const std::string& player_id)
+bool side_engine::available_for_user(const std::string& name) const
 {
-	connected_user_list::iterator i = parent_.find_player_by_id(player_id);
-	if (i != parent_.users_.end()) {
-		player_id_ = player_id;
-		mp_controller_ = i->controller;
+	if (!allow_player_) {
+		// Computer sides are never available for players.
+		return false;
 	}
+
+	if (controller_ == CNTR_NETWORK && player_id_.empty()) {
+		// Side is free and waiting for user.
+		return true;
+	}
+	if (controller_ == CNTR_RESERVED && name.empty()) {
+		// Side is still available to someone.
+		return true;
+	}
+	if (controller_ == CNTR_RESERVED && current_player_ == name) {
+		// Side is available only for the player with specific name.
+		return true;
+	}
+
+	return false;
 }
 
 void side_engine::swap_sides_on_drop_target(const int drop_target) {
 	const std::string target_id =
 		parent_.side_engines_[drop_target]->player_id_;
 	const mp::controller target_controller =
-		parent_.side_engines_[drop_target]->mp_controller_;
+		parent_.side_engines_[drop_target]->controller_;
 	const std::string target_ai =
 		parent_.side_engines_[drop_target]->ai_algorithm_;
 
 	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
 	if (player_id_.empty()) {
-		parent_.side_engines_[drop_target]->mp_controller_ = mp_controller_;
+		parent_.side_engines_[drop_target]->set_controller(controller_);
 	} else {
-		parent_.side_engines_[drop_target]->
-			set_player_from_users_list(player_id_);
+		const int user_index = parent_.find_user_index_by_id(player_id_);
+		if (user_index != -1) {
+			const connected_user& user = parent_.connected_users_[user_index];
+			parent_.side_engines_[drop_target]->player_id_ = user.name;
+			parent_.side_engines_[drop_target]->set_controller(
+				parent_.default_controller_);
+		}
 	}
 
 	ai_algorithm_ = target_ai;
 	if (target_id.empty())
 	{
-		mp_controller_ = target_controller;
+		set_controller(target_controller);
 		player_id_ = "";
 	} else {
-		set_player_from_users_list(target_id);
+		const int user_index = parent_.find_user_index_by_id(target_id);
+		if (user_index != -1) {
+			const connected_user& user = parent_.connected_users_[user_index];
+			parent_.side_engines_[drop_target]->player_id_ = user.name;
+			parent_.side_engines_[drop_target]->set_controller(
+				parent_.default_controller_);
+		}
 	}
 }
 
@@ -1104,16 +1141,10 @@ void side_engine::resolve_random()
 	}
 }
 
-void side_engine::reset(mp::controller controller)
+void side_engine::reset()
 {
 	player_id_.clear();
-	mp_controller_ = controller;
-
-	if (mp_controller_ == mp::CNTR_NETWORK ||
-		mp_controller_ == mp::CNTR_RESERVED) {
-
-		ready_for_start_ = false;
-	}
+	set_controller(parent_.default_controller_);
 
 	if (!parent_.params_.saved_game) {
 		set_current_faction(choosable_factions_[0]);
@@ -1122,22 +1153,58 @@ void side_engine::reset(mp::controller controller)
 	}
 }
 
-void side_engine::import_network_user(const config& data)
+void side_engine::place_user(const config& data)
 {
-	if (mp_controller_ == CNTR_RESERVED || parent_.params_.saved_game) {
-		ready_for_start_ = true;
-	}
-
 	player_id_ = data["name"].str();
-	mp_controller_ = CNTR_NETWORK;
+	set_controller(parent_.default_controller_);
 
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
-		if ((*faction)["id"] == data["faction"]) {
-			set_current_faction(faction);
+	if (data.has_attribute("faction")) {
+		// Network user's data carry information about chosen
+		// faction, leader and genders.
+		BOOST_FOREACH(const config* faction, choosable_factions_) {
+			if ((*faction)["id"] == data["faction"]) {
+				set_current_faction(faction);
+			}
 		}
+		set_current_leader(data["leader"]);
+		set_current_gender(data["gender"]);
 	}
-	set_current_leader(data["leader"]);
-	set_current_gender(data["gender"]);
+}
+
+void side_engine::update_controller_options()
+{
+	controller_options_ = parent_.default_controller_options_;
+	if (!save_id_.empty()) {
+		controller_options_.push_back(
+			std::make_pair(CNTR_RESERVED, _("Reserved")));
+	}
+
+	controller_options_.push_back(std::make_pair(CNTR_LAST, _("--give--")));
+
+	BOOST_FOREACH(const connected_user& user, parent_.connected_users_) {
+		controller_options_.push_back(std::make_pair(
+			parent_.default_controller_, user.name));
+	}
+}
+
+bool side_engine::controller_changed(const int selection)
+{
+	const mp::controller selected_cntr = controller_options_[selection].first;
+	if (selected_cntr == CNTR_LAST) {
+		return false;
+	}
+
+	// Check if user was selected. If so assign a side to him/her.
+	// If not, make sure that no user is assigned to this side.
+	if (selected_cntr == parent_.default_controller_ && selection != 0) {
+		player_id_ = controller_options_[selection].second;
+	} else {
+		player_id_.clear();
+	}
+
+	set_controller(selected_cntr);
+
+	return true;
 }
 
 void side_engine::set_current_faction(const config* current_faction)
@@ -1187,22 +1254,16 @@ void side_engine::set_faction_commandline(const std::string& faction_name)
 
 void side_engine::set_controller_commandline(const std::string& controller_name)
 {
-	mp_controller_ = CNTR_LOCAL;
+	set_controller(CNTR_LOCAL);
 
 	if (controller_name == "ai") {
-		mp_controller_ = CNTR_COMPUTER;
+		set_controller(CNTR_COMPUTER);
 	}
 	if (controller_name == "null") {
-		mp_controller_ = CNTR_EMPTY;
+		set_controller(CNTR_EMPTY);
 	}
 
-	player_id_ = "";
-}
-
-void side_engine::set_ai_algorithm_commandline(
-	const std::string& algorithm_name)
-{
-	ai_algorithm_ = algorithm_name;
+	player_id_.clear();
 }
 
 void side_engine::update_choosable_leaders()
@@ -1218,6 +1279,29 @@ void side_engine::update_choosable_genders()
 	choosable_genders_.clear();
 	choosable_genders_ = init_choosable_genders(cfg_, current_leader_,
 		parent_.params_.use_map_settings, parent_.params_.saved_game);
+}
+
+void side_engine::set_controller(mp::controller controller)
+{
+	controller_ = controller;
+
+	// Update current controller index.
+	int i = 0;
+	BOOST_FOREACH(const controller_option& option, controller_options_) {
+		if (option.first == controller) {
+			current_controller_index_ = i;
+
+			if (player_id_.empty() || player_id_ == option.second) {
+				// Stop searching if no user is assigned to a side
+				// or the selected user is found.
+				break;
+			}
+		}
+
+		i++;
+	}
+
+	assert(current_controller_index_ < controller_options_.size());
 }
 
 } // end namespace mp

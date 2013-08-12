@@ -19,28 +19,31 @@
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 
-#include <boost/tuple/tuple.hpp>
-
 namespace mp {
+
+enum controller {
+	CNTR_NETWORK = 0,
+	CNTR_LOCAL,
+	CNTR_COMPUTER,
+	CNTR_EMPTY,
+	CNTR_RESERVED,
+	CNTR_LAST
+};
 
 class side_engine;
 
 struct connected_user
 {
-	connected_user(const std::string& name, mp::controller controller,
-		network::connection connection) :
+	connected_user(const std::string& name, network::connection connection) :
 		name(name),
-		controller(controller),
 		connection(connection)
 	{};
 	std::string name;
-	mp::controller controller;
 	network::connection connection;
 };
 
 typedef boost::shared_ptr<side_engine> side_engine_ptr;
-typedef std::vector<connected_user> connected_user_list;
-typedef boost::tuple<bool, bool, bool, std::vector<int> > network_res_tuple;
+typedef std::pair<mp::controller, std::string> controller_option;
 
 class connect_engine
 {
@@ -49,10 +52,17 @@ public:
 		const bool local_players_only, const bool first_scenario);
 	~connect_engine();
 
+	enum USER_TYPE { HOST, PLAYER, OBSERVER };
+
 	config* current_config();
 
 	void add_side_engine(side_engine_ptr engine);
-	void assign_side_for_host();
+	// Should be called after all calls to 'add_side_engine()'
+	// have been made, so that everything could be initialized.
+	void init_after_side_engines_assigned();
+
+	void import_user(USER_TYPE user_type, const config& data, int sock,
+		int side_taken = -1);
 
 	// Returns true if there are still sides available for this game.
 	bool sides_available() const;
@@ -66,29 +76,26 @@ public:
 	void start_game();
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
-	// Acts according to the given data and returns tuple
-	// holding information on what has changed.
-	// 0th - quit?
-	// 1st - update UI?
-	// 2nd - silent UI update?
-	// 3rd - side UIs to update.
-	network_res_tuple process_network_data(const config& data,
+	// Return pair first element specifies whether to leave the game
+	// and second element whether to silently update UI.
+	std::pair<bool, bool> process_network_data(const config& data,
 		const network::connection sock);
-	// Returns -1 if UI should not be updated at all,
-	// 0 if UI should be updated or (side index + 1)
-	// if some side's UI should be updated as well.
-	int process_network_error(network::error& error);
+	// Returns true, if UI should be updated.
+	bool process_network_error(network::error& error);
 	void process_network_connection(const network::connection sock);
 
-	connected_user_list::iterator find_player_by_id(const std::string& id);
+	int find_user_index_by_id(const std::string& id);
+	// Returns the side which is taken by a given user,
+	// or -1 if none was found.
+	int find_user_side_index_by_id(const std::string& id) const;
 
 
 	/* Setters & Getters */
 
 	const config& level() const { return level_; }
 	const game_state& state() const { return state_; }
-	bool local_players_only() const { return local_players_only_; }
-	connected_user_list& users() { return users_; }
+	const std::vector<connected_user>& connected_users() const
+		{ return connected_users_; }
 	std::vector<std::string>& team_names() { return team_names_; }
 	std::vector<std::string>& user_team_names() { return user_team_names_; }
 
@@ -99,25 +106,24 @@ private:
 	connect_engine(const connect_engine&);
 	void operator=(const connect_engine&);
 
-	friend side_engine;
+	void update_side_controller_options();
 
-	// Returns the side which is taken by a given player,
-	// or -1 if none was found.
-	int find_player_side_index_by_id(const std::string& id) const;
+	friend side_engine;
 
 	config level_;
 	game_state state_;
 
 	const mp_game_settings& params_;
 
-	const bool local_players_only_;
+	const mp::controller default_controller_;
 	const bool first_scenario_;
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
 	std::vector<std::string> team_names_;
 	std::vector<std::string> user_team_names_;
-	connected_user_list users_;
+	std::vector<connected_user> connected_users_;
+	std::vector<controller_option> default_controller_options_;
 };
 
 class side_engine
@@ -135,19 +141,20 @@ public:
 	bool ready_for_start() const;
 	// Returns true if this side is waiting for a network player and
 	// players are allowed.
-	bool available(const std::string& name = "") const;
-
-	void set_player_from_users_list(const std::string& player_id);
+	bool available_for_user(const std::string& name = "") const;
 
 	void swap_sides_on_drop_target(const int drop_target);
 
 	void resolve_random();
 
 	// Resets this side to its default state.
-	void reset(mp::controller controller);
+	void reset();
 
-	// Imports data from the network into this side.
-	void import_network_user(const config& data);
+	// Place user into this side.
+	void place_user(const config& data);
+
+	void update_controller_options();
+	bool controller_changed(const int selection);
 
 	void set_current_faction(const config* current_faction);
 	void set_current_leader(const std::string& current_leader);
@@ -158,8 +165,6 @@ public:
 	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
 	void set_controller_commandline(const std::string& controller_name);
-	void set_ai_algorithm_commandline(const std::string& algorithm_name);
-
 
 	/* Setters & Getters */
 
@@ -169,12 +174,14 @@ public:
 		{ return choosable_leaders_; }
 	const std::vector<std::string>& choosable_genders()
 		{ return choosable_genders_; }
+	const std::vector<controller_option>& controller_options()
+		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }
 	const std::string& current_leader() const { return current_leader_; }
 	const std::string& current_gender() const { return current_gender_; }
-	controller mp_controller() const { return mp_controller_; }
-	void set_mp_controller(controller mp_controller)
-		{ mp_controller_ = mp_controller; }
+	mp::controller controller() const { return controller_; }
+	unsigned current_controller_index() const
+		{ return current_controller_index_; }
 	int index() const { return index_; }
 	void set_index(int index) { index_ = index; }
 	int team() const { return team_; }
@@ -186,14 +193,11 @@ public:
 	int income() const { return income_; }
 	void set_income(int income) { income_ = income; }
 	const std::string& player_id() const { return player_id_; }
-	void set_player_id(const std::string& player_id) { player_id_ = player_id; }
 	const std::string& save_id() const { return save_id_; }
 	const std::string& current_player() const { return current_player_; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
-	void set_ready_for_start(const bool ready_for_start)
-		{ ready_for_start_ = ready_for_start; }
 	bool allow_player() const { return allow_player_; }
 
 private:
@@ -203,10 +207,13 @@ private:
 	void update_choosable_leaders();
 	void update_choosable_genders();
 
+	void set_controller(mp::controller controller);
+
 	config cfg_;
 	connect_engine& parent_;
 
-	controller mp_controller_;
+	mp::controller controller_;
+	unsigned current_controller_index_;
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
@@ -215,24 +222,24 @@ private:
 	std::vector<std::string> choosable_leaders_;
 	std::vector<std::string> choosable_genders_;
 
+	std::vector<controller_option> controller_options_;
+
 	const config* current_faction_;
 	std::string current_leader_;
 	std::string current_gender_;
 
-	bool ready_for_start_;
-	bool allow_player_;
-	bool allow_changes_;
+	const bool allow_player_;
+	const bool allow_changes_;
+	const std::string leader_id_;
+	const std::string save_id_;
+	const std::string current_player_;
 
-	// Configurable variables.
 	int index_;
 	int team_;
 	int color_;
 	int gold_;
 	int income_;
-	std::string id_;
 	std::string player_id_;
-	std::string save_id_;
-	std::string current_player_;
 	std::string ai_algorithm_;
 };
 

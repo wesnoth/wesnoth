@@ -35,6 +35,17 @@ static lg::log_domain log_mp_connect("mp/connect");
 
 namespace mp {
 
+std::vector<std::string> controller_options_names(
+	const std::vector<controller_option>& controller_options)
+{
+	std::vector<std::string> names;
+	BOOST_FOREACH(const controller_option& option, controller_options) {
+		names.push_back(option.second);
+	}
+
+	return names;
+}
+
 connect::side::side(connect& parent, side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
@@ -50,8 +61,8 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOR),
 	label_income_(parent.video(), _("Normal"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
-	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_,
-		parent.combo_control_group_)),
+	combo_controller_(new gui::combo_drag(parent.disp(),
+		std::vector<std::string>(), parent.combo_control_group_)),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), std::vector<std::string>()),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
@@ -85,7 +96,8 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	label_gold_.hide(parent_->params_.saved_game);
 	label_income_.hide(parent_->params_.saved_game);
 
-	init_ai_algorithm_combo();
+	update_controller_combo_list();
+	update_ai_algorithm_combo();
 
 	if (parent_->params_.use_map_settings) {
 		// Gold, income, team, and color are only suggestions.
@@ -155,47 +167,19 @@ void connect::side::process_event()
 		changed_ = true;
 		parent_->sides_[drop_target].changed_ = true;
 
-		init_ai_algorithm_combo();
-		parent_->sides_[drop_target].init_ai_algorithm_combo();
+		update_ai_algorithm_combo();
+		parent_->sides_[drop_target].update_ai_algorithm_combo();
 
 		update_ui();
 		parent_->sides_[drop_target].update_ui();
-	} else if (combo_controller_->changed() &&
-		combo_controller_->selected() >= 0) {
-
-		const int cntr_last =
-			(engine_->save_id().empty() ? CNTR_LAST-1 :	CNTR_LAST) -
-			(parent_->engine_.local_players_only() ? 1 : 0);
-		if (combo_controller_->selected() == cntr_last) {
-			update_controller_ui();
-		} else if (combo_controller_->selected() < cntr_last) {
-			// Correct entry number if CNTR_NETWORK
-			// is not allowed for combo_controller_.
-			engine_->
-				set_mp_controller(mp::controller(combo_controller_->selected() +
-					(parent_->engine_.local_players_only() ? 1 : 0)));
-			engine_->set_player_id("");
-			engine_->set_ready_for_start(false);
-			changed_ = true;
-		} else {
-			// Give user a second side.
-			size_t user = combo_controller_->selected() - cntr_last - 1;
-
-			const std::string new_id = parent_->engine_.users()[user].name;
-			if (new_id != engine_->player_id()) {
-				engine_->set_player_id(new_id);
-				engine_->set_mp_controller(
-					parent_->engine_.users()[user].controller);
-				engine_->set_ready_for_start(true);
-				changed_ = true;
-			}
-		}
-		hide_ai_algorithm_combo(parent_->hidden());
+	} else if (combo_controller_->changed()) {
+		changed_ = engine_->controller_changed(combo_controller_->selected());
+		update_controller_combo();
 	}
-
 	if (combo_controller_->hidden()) {
 		combo_controller_->hide(false);
 	}
+
 	if (parent_->params_.saved_game) {
 		return;
 	}
@@ -240,7 +224,6 @@ void connect::side::process_event()
 		changed_ = true;
 	}
 	if (slider_income_.value() != engine_->income()) {
-
 		engine_->set_income(slider_income_.value());
 		std::stringstream buf;
 		if (engine_->income() < 0) {
@@ -265,11 +248,13 @@ bool connect::side::changed()
 	return false;
 }
 
-void connect::side::update_user_list(
-	const std::vector<std::string>& name_list) {
+void connect::side::update_controller_combo_list()
+{
+	engine_->update_controller_options();
+	combo_controller_->set_items(controller_options_names(
+		engine_->controller_options()));
 
-	combo_controller_->set_items(name_list);
-	update_controller_ui();
+	update_controller_combo();
 }
 
 void connect::side::update_ui()
@@ -278,7 +263,7 @@ void connect::side::update_ui()
 	update_leader_combo();
 	update_gender_combo();
 
-	update_controller_ui();
+	update_controller_combo();
 
 	combo_team_.set_selected(engine_->team());
 	combo_color_.set_selected(engine_->color());
@@ -296,13 +281,13 @@ void connect::side::update_ui()
 	label_income_.set_text(buf.str());
 }
 
-void connect::side::hide_ai_algorithm_combo(bool invisible)
+void connect::side::hide_ai_algorithm_combo(bool force)
 {
-	if (!invisible) {
-		if (engine_->mp_controller() == CNTR_COMPUTER) {
+	if (!force) {
+		if (engine_->controller() == CNTR_COMPUTER) {
 			// Computer selected, show AI combo.
-			label_original_controller_.hide(true);
 			combo_ai_algorithm_.hide(false);
+			label_original_controller_.hide(true);
 		} else {
 			// Computer de-selected, hide AI combo.
 			combo_ai_algorithm_.hide(true);
@@ -333,28 +318,26 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
 }
 
-void connect::side::init_ai_algorithm_combo()
+void connect::side::update_ai_algorithm_combo()
 {
-	assert(parent_->ai_algorithms_.empty() == false);
+	assert(!parent_->ai_algorithms_.empty());
 
 	int sel = 0;
-	std::vector<ai::description*> &ais_list = parent_->ai_algorithms_;
-	std::vector<std::string> ais;
 	int i = 0;
-	BOOST_FOREACH(const ai::description *desc,  ais_list){
+	std::vector<std::string> ais;
+	BOOST_FOREACH(const ai::description* desc,  parent_->ai_algorithms_){
 		ais.push_back(desc->text);
-		if (desc->id == engine_->ai_algorithm()){
+		if (desc->id == engine_->ai_algorithm()) {
 			sel = i;
 		}
 		i++;
 	}
 	combo_ai_algorithm_.set_items(ais);
 	combo_ai_algorithm_.set_selected(sel);
-	if (!ais_list.empty()) {
-		// Ensures that the visually selected AI
-		// is the one that will be loaded.
-		engine_->set_ai_algorithm(ais_list[sel]->id);
-	}
+
+	// Ensures that the visually selected AI
+	// is the one that will be loaded.
+	engine_->set_ai_algorithm(parent_->ai_algorithms_[sel]->id);
 }
 
 void connect::side::update_faction_combo()
@@ -394,26 +377,9 @@ void connect::side::update_gender_combo()
 		engine_->color(), parent_->params_.saved_game);
 }
 
-void connect::side::update_controller_ui()
+void connect::side::update_controller_combo()
 {
-	if (engine_->player_id().empty()) {
-		combo_controller_->set_selected(
-			engine_->mp_controller() - (parent_->engine_.local_players_only() ? 1 : 0));
-	} else {
-		connected_user_list::iterator player =
-			parent_->engine_.find_player_by_id(engine_->player_id());
-
-		if (player != parent_->engine_.users().end()) {
-			const int no_reserve = engine_->save_id().empty() ? - 1 : 0;
-			combo_controller_->set_selected(
-				CNTR_LAST + no_reserve + 1 +
-				(player - parent_->engine_.users().begin()) -
-				(parent_->engine_.local_players_only() ? 1 : 0));
-		} else {
-			assert(parent_->engine_.local_players_only() != true);
-			combo_controller_->set_selected(CNTR_NETWORK);
-		}
-	}
+	combo_controller_->set_selected(engine_->current_controller_index());
 
 	hide_ai_algorithm_combo(parent_->hidden());
 }
@@ -423,7 +389,6 @@ connect::connect(game_display& disp, const config& game_config,
 	bool local_players_only, bool first_scenario) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	params_(params),
-	player_types_(),
 	player_teams_(),
 	player_colors_(),
 	ai_algorithms_(),
@@ -468,6 +433,7 @@ connect::connect(game_display& disp, const config& game_config,
 		throw config::error(
 			_("The scenario is invalid because it has no sides."));
 	}
+	update_side_controller_combos();
 
 	if (first_scenario) {
 		// Send Initial information
@@ -479,10 +445,6 @@ connect::connect(game_display& disp, const config& game_config,
 		}
 		network::send_data(response, 0);
 	}
-
-	update_user_combos();
-
-	engine_.assign_side_for_host();
 
 	append_to_title(" — " + engine_.level()["name"].t_str());
 	gold_title_label_.hide(params_.saved_game);
@@ -532,7 +494,7 @@ void connect::process_event()
 					engine_.users().push_back(connected_user(d.textbox_text(),
 						CNTR_LOCAL, 0));
 					update_playerlist_state();
-					update_user_combos();
+					update_side_controller_combos();
 				}
 			}
 		} while (already_exists);
@@ -648,32 +610,28 @@ void connect::process_network_data(const config& data,
 	const network::connection sock)
 {
 	ui::process_network_data(data, sock);
-	network_res_tuple result = engine_.process_network_data(data, sock);
+	std::pair<bool, bool> result = engine_.process_network_data(data, sock);
 
-	if (result.get<0>()) {
+	if (result.first) {
 		set_result(QUIT);
-	} else {
-		if (result.get<1>()) {
-			update_user_combos();
-			update_playerlist_state(result.get<2>());
-		}
+	}
 
-		BOOST_FOREACH(int side_index, result.get<3>()) {
-			sides_[side_index].update_ui();
-		}
+	update_side_controller_combos();
+	update_playerlist_state(result.second);
+	BOOST_FOREACH(side& s, sides_) {
+		s.update_ui();
 	}
 }
 
 void connect::process_network_error(network::error& error)
 {
-	int res = engine_.process_network_error(error);
+	bool res = engine_.process_network_error(error);
 
-	if (res > 0) {
-		sides_[res - 1].update_ui();
-	}
-
-	if (res != 1) {
-		update_user_combos();
+	if (res) {
+		BOOST_FOREACH(side& s, sides_) {
+			s.update_ui();
+		}
+		update_side_controller_combos();
 		update_playerlist_state();
 	}
 }
@@ -691,14 +649,6 @@ bool connect::accept_connections()
 
 void connect::lists_init()
 {
-	// Options.
-	if (!engine_.local_players_only()) {
-		player_types_.push_back(_("Network Player"));
-	}
-	player_types_.push_back(_("Local Player"));
-	player_types_.push_back(_("Computer Player"));
-	player_types_.push_back(_("Empty"));
-
 	// AI algorithms.
 	const config &era = engine_.level().child("era");
 	ai::configuration::add_era_ai_from_config(era);
@@ -795,6 +745,7 @@ void connect::lists_init()
 		
 		index++;
 	}
+	engine_.init_after_side_engines_assigned();
 
 	// Add side widgets to scroll pane.
 	int side_pos_y_offset = 0;
@@ -825,7 +776,7 @@ void connect::update_playerlist_state(bool silent)
 	} else {
 		// Updates the player list
 		std::vector<std::string> playerlist;
-		BOOST_FOREACH(const connected_user& user, engine_.users()) {
+		BOOST_FOREACH(const connected_user& user, engine_.connected_users()) {
 			playerlist.push_back(user.name);
 		}
 		set_user_list(playerlist, silent);
@@ -833,22 +784,10 @@ void connect::update_playerlist_state(bool silent)
 	}
 }
 
-void connect::update_user_combos()
+void connect::update_side_controller_combos()
 {
 	BOOST_FOREACH(side& s, sides_) {
-		typedef std::vector<std::string> name_list;
-
-		name_list list = player_types_;
-		if (!s.engine()->save_id().empty()) {
-			list.push_back(_("Reserved"));
-		}
-		list.push_back(_("--give--"));
-
-		BOOST_FOREACH(const connected_user& user, engine_.users()) {
-			list.push_back(user.name);
-		}
-
-		s.update_user_list(list);
+		s.update_controller_combo_list();
 	}
 }
 

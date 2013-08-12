@@ -31,6 +31,10 @@ namespace ai {
 
 namespace mp {
 
+// Helper function to retrieve controller names.
+std::vector<std::string> controller_options_names(
+	const std::vector<controller_option>& controller_options);
+
 class connect : public mp::ui
 {
 public:
@@ -46,11 +50,10 @@ public:
 		// Returns true if this side changed since last call to this method.
 		bool changed();
 
-		// Adds an user to the user list combo.
-		void update_user_list(const std::vector<std::string>& name_list);
+		void update_controller_combo_list();
 
 		void update_ui();
-		void hide_ai_algorithm_combo(bool invisible);
+		void hide_ai_algorithm_combo(bool force);
 
 		void add_widgets_to_scrollpane(gui::scrollpane& pane, int pos);
 
@@ -58,13 +61,12 @@ public:
 		const side_engine_ptr engine() const { return engine_; }
 
 	private:
-		void init_ai_algorithm_combo();
-
 		// Update UI methods and their helper(s).
+		void update_ai_algorithm_combo();
 		void update_faction_combo();
 		void update_leader_combo();
 		void update_gender_combo();
-		void update_controller_ui();
+		void update_controller_combo();
 
 		// The mp::connect widget owning this mp::connect::side.
 		connect* parent_;
@@ -129,12 +131,11 @@ private:
 	// Updates the state of the player list, the launch button and of the start
 	// game label, to reflect the actual state.
 	void update_playerlist_state(bool silent = true);
-	void update_user_combos();
+	void update_side_controller_combos();
 
 	const mp_game_settings params_;
 
 	// Lists used for combos.
-	std::vector<std::string> player_types_;
 	std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
