@@ -18,7 +18,12 @@
 #include "tools/code_generator/sql2cpp/preprocessor_rule_helper.hpp"
 #include "tools/code_generator/sql2cpp/cpp/semantic_actions.hpp"
 
+#include <boost/spirit/include/karma.hpp>
+
 namespace cpp{
+
+namespace karma = boost::spirit::karma;
+namespace phx = boost::phoenix;
 
 template <typename OutputIterator>
 struct grammar 

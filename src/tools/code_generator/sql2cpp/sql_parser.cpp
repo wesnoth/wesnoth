@@ -15,112 +15,12 @@
 
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
 #include "tools/code_generator/sql2cpp/sql/parser.hpp"
-
-#include <boost/spirit/include/karma.hpp>
+#include "tools/code_generator/sql2cpp/cpp/generator.hpp"
 
 #include <iostream>
-#include <fstream>
-#include <string>
 
-namespace bs = boost::spirit;
-namespace lex = boost::spirit::lex;
-namespace qi = boost::spirit::qi;
 namespace karma = boost::spirit::karma;
-namespace phx = boost::phoenix;
-
-// Why not using read_file from filesystem.cpp?
-// Because it adds too many dependencies for a single function...
-std::string file2string(const std::string& filename)
-{
-	std::ifstream s(filename.c_str(), std::ios_base::binary);
-	std::stringstream ss;
-	ss << s.rdbuf();
-	return ss.str();
-}
-
-std::string get_license_header_file()
-{
-	return "data/umcd/license_header.txt";
-}
-
-struct sql2cpp_type_visitor : sql::type::type_visitor
-{
-private:
-	std::string add_unsigned_qualifier(const sql::type::numeric_type& num_type)
-	{
-		return (num_type.is_unsigned) ? "u":"";
-	}
-public:
-
-	sql2cpp_type_visitor(std::string& res)
-	: res_(res)
-	{}
-
-	virtual void visit(const sql::type::smallint& s)
-	{
-		res_ = "boost::" + add_unsigned_qualifier(s) + "int16_t";
-	}
-
-	virtual void visit(const sql::type::integer& i)
-	{
-		res_ = "boost::" + add_unsigned_qualifier(i) + "int32_t";
-	}
-
-	virtual void visit(const sql::type::text&)
-	{
-		res_ = "std::string";
-	}
-
-	virtual void visit(const sql::type::date&)
-	{
-		res_ = "boost::posix_time::ptime";
-	}
-
-	virtual void visit(const sql::type::varchar& v)
-	{
-		res_ = "boost::array<char, " + boost::lexical_cast<std::string>(v.length) + ">";
-	}
-
-private:
-	std::string& res_;
-};
-
-struct sql2cpp_header_type_visitor : sql::type::type_visitor
-{
-	sql2cpp_header_type_visitor(std::string& res)
-	: res_(res)
-	{}
-
-	virtual void visit(const sql::type::smallint&)
-	{
-		res_ = "#include <boost/cstdint.hpp>";
-	}
-
-	virtual void visit(const sql::type::integer&)
-	{
-		res_ = "#include <boost/cstdint.hpp>";
-	}
-
-	virtual void visit(const sql::type::text&)
-	{
-		res_ = "#include <string>";
-	}
-
-	virtual void visit(const sql::type::date&)
-	{
-		res_ = "#include <boost/date_time/posix_time/posix_time.hpp>";
-	}
-
-	virtual void visit(const sql::type::varchar&)
-	{
-		res_ = "#include <boost/array.hpp>";
-	}
-
-private:
-	std::string& res_;
-};
-
-#include "tools/code_generator/sql2cpp/cpp/generator.hpp"
+namespace qi = boost::spirit::qi;
 
 template <typename OutputIterator>
 bool generate_cpp(OutputIterator& sink, sql::ast::schema const& sql_ast, std::ofstream& generated, const std::string& output_dir)

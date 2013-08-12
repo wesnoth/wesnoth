@@ -16,9 +16,28 @@
 #define CPP_SEMANTIC_ACTIONS_HPP
 
 #include "tools/code_generator/sql2cpp/sql/ast.hpp"
+#include "tools/code_generator/sql2cpp/cpp/type_visitors.hpp"
 
 #include <boost/make_shared.hpp>
 #include <boost/algorithm/string.hpp>
+
+#include <fstream>
+#include <string>
+
+static std::string get_license_header_file()
+{
+	return "data/umcd/license_header.txt";
+}
+
+// Why not using read_file from filesystem.cpp?
+// Because it adds too many dependencies for a single function...
+std::string file2string(const std::string& filename)
+{
+	std::ifstream s(filename.c_str(), std::ios_base::binary);
+	std::stringstream ss;
+	ss << s.rdbuf();
+	return ss.str();
+}
 
 namespace cpp{
 
