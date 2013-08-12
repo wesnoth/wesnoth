@@ -2446,7 +2446,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 
 }
 
-/// Unit serialization to variables
+/// Unit serialization from variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
 	const config &var = resources::gamedata->get_variable_cfg(cfg["variable"]);
