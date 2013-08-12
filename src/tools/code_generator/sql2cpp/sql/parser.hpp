@@ -81,18 +81,21 @@ struct grammar
 			) [qi::_val = qi::_1]
 			);
 
+		RULE_DEF(identifier_list,
+			%= tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close
+			);
+
 		RULE_DEF(primary_key_constraint,
-			= tok.kw_primary_key >> tok.paren_open >> (tok.identifier % tok.comma) [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
-			>> tok.paren_close
+			= tok.kw_primary_key >> identifier_list [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
 			);
 
 		RULE_DEF(foreign_key_constraint,
-			=	(tok.kw_foreign_key >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close >> reference_definition)
+			=	(tok.kw_foreign_key >> identifier_list >> reference_definition)
 				[phx::bind(&semantic_actions::make_fk_constraint, &sa_, qi::_val, qi::_r1, qi::_1, qi::_2)]
 			);
 
 		RULE_DEF(reference_definition,
-			%=	tok.kw_references >> tok.identifier >> tok.paren_open >> (tok.identifier % tok.comma) >> tok.paren_close
+			%=	tok.kw_references >> tok.identifier >> identifier_list
 			);
 
 		RULE_DEF(create_table_columns,
@@ -149,6 +152,9 @@ private:
 
 	QI_RULE(ast::schema(), schema);
 	QI_RULE(void(ast::schema&), statement);
+
+	// Generic rules.
+	QI_RULE(ast::id_list(), identifier_list);
 
 	// Create rules.
 	QI_RULE(ast::table(), create_statement);

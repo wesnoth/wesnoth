@@ -49,6 +49,7 @@ typedef boost::shared_ptr<type::numeric_type> numeric_type_ptr;
 
 typedef std::vector<constraint_ptr> constraint_list;
 typedef std::vector<type_constraint_ptr> type_constraint_list;
+typedef std::vector<std::string> id_list;
 
 struct table
 {
