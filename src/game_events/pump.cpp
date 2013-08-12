@@ -267,7 +267,7 @@ namespace { // Support functions
 	}
 
 	/**
-	 * Helper function for show_wml_errors(), which gathers
+	 * Helper function for show_wml_messages(), which gathers
 	 * the messages from a stringstream.
 	 */
 	void fill_wml_messages_map(std::map<std::string, int>& msg_map, std::stringstream& source)
@@ -295,9 +295,42 @@ namespace { // Support functions
 	}
 
 	/**
+	 * Shows a summary of messages/errors generated so far by WML.
+	 * Identical messages are shown once, with (between parentheses)
+	 * the number of times that message was encountered.
+	 * The order in which the messages are shown does not need
+	 * to be the order in which these messages are encountered.
+	 * Messages are also written to std::cerr if to_cerr is true.
+	 */
+	void show_wml_messages(std::stringstream& source, const std::string & caption,
+	                       bool to_cerr)
+	{
+		// Get all unique messages in messages,
+		// with the number of encounters for these messages
+		std::map<std::string, int> messages;
+		fill_wml_messages_map(messages, source);
+
+		// Show the messages collected
+		for(std::map<std::string, int>::const_iterator itor = messages.begin();
+		    itor != messages.end(); ++itor )
+		{
+			std::stringstream msg;
+			msg << itor->first;
+			if(itor->second > 1) {
+				msg << " (" << itor->second << ")";
+			}
+
+			resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
+					events::chat_handler::MESSAGE_PUBLIC, false);
+			if ( to_cerr )
+				std::cerr << caption << ": " << msg.str() << '\n';
+		}
+	}
+
+	/**
 	 * Shows a summary of the errors encountered in WML so far,
 	 * to avoid a lot of the same messages to be shown.
-	 * Identical messages are shown once, with (between braces)
+	 * Identical messages are shown once, with (between parentheses)
 	 * the number of times that message was encountered.
 	 * The order in which the messages are shown does not need
 	 * to be the order in which these messages are encountered.
@@ -305,49 +338,23 @@ namespace { // Support functions
 	 */
 	void show_wml_errors()
 	{
-		// Get all unique messages in messages,
-		// with the number of encounters for these messages
-		std::map<std::string, int> messages;
-		fill_wml_messages_map(messages, lg::wml_error);
+		static const std::string caption("Invalid WML found");
 
-		// Show the messages collected
-		const std::string caption = "Invalid WML found";
-		for(std::map<std::string, int>::const_iterator itor = messages.begin();
-				itor != messages.end(); ++itor) {
-
-			std::stringstream msg;
-			msg << itor->first;
-			if(itor->second > 1) {
-				msg << " (" << itor->second << ")";
-			}
-
-			resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
-					events::chat_handler::MESSAGE_PUBLIC, false);
-			std::cerr << caption << ": " << msg.str() << '\n';
-		}
+		show_wml_messages(lg::wml_error, caption, true);
 	}
 
+	/**
+	 * Shows a summary of the messages generated so far by WML.
+	 * Identical messages are shown once, with (between parentheses)
+	 * the number of times that message was encountered.
+	 * The order in which the messages are shown does not need
+	 * to be the order in which these messages are encountered.
+	 */
 	void show_wml_messages()
 	{
-		// Get all unique messages in messages,
-		// with the number of encounters for these messages
-		std::map<std::string, int> messages;
-		fill_wml_messages_map(messages, wml_messages_stream);
+		static const std::string caption("WML");
 
-		// Show the messages collected
-		const std::string caption = "WML";
-		for(std::map<std::string, int>::const_iterator itor = messages.begin();
-				itor != messages.end(); ++itor) {
-
-			std::stringstream msg;
-			msg << itor->first;
-			if(itor->second > 1) {
-				msg << " (" << itor->second << ")";
-			}
-
-			resources::screen->add_chat_message(time(NULL), caption, 0, msg.str(),
-					events::chat_handler::MESSAGE_PUBLIC, false);
-		}
+		show_wml_messages(wml_messages_stream, caption, false);
 	}
 
 } // end anonymous namespace (support functions)
