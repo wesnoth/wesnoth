@@ -61,7 +61,9 @@ struct varchar : base_type_crtp<varchar>
 {
 	std::size_t length;
 
-	varchar(std::size_t length);
+	varchar(std::size_t length)
+	: length(length)
+	{}
 };
 
 struct type_visitor
