@@ -391,6 +391,10 @@ void create_engine::prepare_for_saved_game()
 
 	parameters_.saved_game = true;
 	parameters_.scenario_data.clear();
+
+	utils::string_map i18n_symbols;
+	i18n_symbols["login"] = preferences::login();
+	parameters_.name = vgettext("$login|’s game", i18n_symbols);
 }
 
 std::vector<std::string> create_engine::levels_menu_item_names() const
