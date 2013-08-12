@@ -31,17 +31,17 @@
 namespace sql{
 namespace ast{
 
-struct sql_column
+struct column
 {
 	std::string column_identifier;
 	boost::shared_ptr<sql::type::base_type> sql_type;
 	std::vector<boost::shared_ptr<sql::base_type_constraint> > constraints;
 };
 
-struct sql_table
+struct table
 {
 	std::string table_identifier;
-	std::vector<sql_column> columns;
+	std::vector<column> columns;
 	std::vector<boost::shared_ptr<sql::constraint::base_constraint> > constraints;
 };
 
@@ -49,16 +49,16 @@ struct sql_table
 
 // Fusion AST adaptation.
 BOOST_FUSION_ADAPT_STRUCT(
-	sql::ast::sql_column,
+	sql::ast::column,
 	(std::string, column_identifier)
 	(boost::shared_ptr<sql::type::base_type>, sql_type)
 	(std::vector<boost::shared_ptr<sql::base_type_constraint> >, constraints)
 );
 
 BOOST_FUSION_ADAPT_STRUCT(
-	sql::ast::sql_table,
+	sql::ast::table,
 	(std::string, table_identifier)
-	(std::vector<sql::ast::sql_column>, columns)
+	(std::vector<sql::ast::column>, columns)
 	(std::vector<boost::shared_ptr<sql::constraint::base_constraint> >, constraints)
 );
 

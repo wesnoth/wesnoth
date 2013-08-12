@@ -67,18 +67,18 @@ public:
 	typedef attribute<boost::shared_ptr<sql::type::numeric_type> > numeric_type_attribute;
 	typedef attribute<std::string> default_value_attribute;
 	typedef attribute<boost::shared_ptr<sql::base_type_constraint> > type_constraint_attribute;
-	typedef attribute<ast::sql_column> column_attribute;
-	typedef attribute<std::vector<ast::sql_column> > create_table_columns_attribute;
-	typedef attribute<ast::sql_table> create_table_attribute;
-	typedef attribute<ast::sql_table> create_statement_attribute;
+	typedef attribute<ast::column> column_attribute;
+	typedef attribute<std::vector<ast::column> > create_table_columns_attribute;
+	typedef attribute<ast::table> create_table_attribute;
+	typedef attribute<ast::table> create_statement_attribute;
 
 	// Alter statement.
-	typedef attribute<void, std::vector<ast::sql_table>&> alter_statement_attribute;
-	typedef attribute<void, std::vector<ast::sql_table>&> alter_table_attribute;
-	typedef attribute<void, ast::sql_table&> alter_table_add_attribute;
+	typedef attribute<void, std::vector<ast::table>&> alter_statement_attribute;
+	typedef attribute<void, std::vector<ast::table>&> alter_table_attribute;
+	typedef attribute<void, ast::table&> alter_table_add_attribute;
 	
-	typedef attribute<void, std::vector<ast::sql_table>&> statement_attribute;
-	typedef attribute<std::vector<ast::sql_table> > program_attribute;
+	typedef attribute<void, std::vector<ast::table>&> statement_attribute;
+	typedef attribute<std::vector<ast::table> > program_attribute;
 	typedef attribute<std::vector<boost::shared_ptr<sql::constraint::base_constraint> > > table_constraints_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint> > constraint_definition_attribute;
 	typedef attribute<boost::shared_ptr<sql::constraint::base_constraint>, std::string> primary_key_constraint_attribute;
@@ -143,8 +143,8 @@ public:
 	/**
 	@param success is set to false to make the parser fails.
 	*/
-	void get_table_by_name(std::vector<ast::sql_table>::iterator &res, 
-		std::vector<ast::sql_table>& tables, 
+	void get_table_by_name(std::vector<ast::table>::iterator &res, 
+		std::vector<ast::table>& tables, 
 		const std::string& name,
 		bool &success) const
 	{
@@ -167,7 +167,7 @@ public:
 	/**
 	@post We replace the constraint if it already exists in the table constraints, otherwise we add it.
 	*/
-	void alter_table_add_constraint(ast::sql_table& table, 
+	void alter_table_add_constraint(ast::table& table, 
 		const boost::shared_ptr<sql::constraint::base_constraint>& constraint_to_add)
 	{
 		bool to_add = true;

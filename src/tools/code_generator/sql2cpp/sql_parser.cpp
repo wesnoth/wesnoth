@@ -220,7 +220,7 @@ private:
 	typename rule<typename semantic_actions::statement_attribute::type>::type statement;
 	typename rule<typename semantic_actions::create_statement_attribute::type>::type create_statement;
 	typename rule<typename semantic_actions::alter_statement_attribute::type>::type alter_statement;
-	typename rule_loc<typename semantic_actions::alter_table_attribute::type, qi::locals<std::vector<sql::ast::sql_table>::iterator> >::type alter_table;
+	typename rule_loc<typename semantic_actions::alter_table_attribute::type, qi::locals<std::vector<sql::ast::table>::iterator> >::type alter_table;
 	typename rule<typename semantic_actions::alter_table_add_attribute::type>::type alter_table_add;
 	typename rule<typename semantic_actions::create_table_attribute::type>::type create_table;
 	typename rule<typename semantic_actions::table_constraints_attribute::type>::type table_constraints;
@@ -317,7 +317,7 @@ private:
 
 struct cpp_semantic_actions
 {
-	typedef attribute<std::pair<sql::ast::sql_column, std::set<std::string> > > include_attribute;
+	typedef attribute<std::pair<sql::ast::column, std::set<std::string> > > include_attribute;
 
 	cpp_semantic_actions(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: license_header_(file2string(wesnoth_path + get_license_header_file())) 
