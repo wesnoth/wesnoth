@@ -16,6 +16,7 @@
 #include "tools/code_generator/sql2cpp/sql/lexer.hpp"
 #include "tools/code_generator/sql2cpp/sql/semantic_actions.hpp"
 #include "tools/code_generator/sql2cpp/sql/ast.hpp"
+#include "tools/code_generator/sql2cpp/preprocessor_rule_helper.hpp"
 
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix.hpp>
@@ -52,24 +53,12 @@ template <typename Iterator>
 struct sql_grammar 
 	: qi::grammar<Iterator, sql::ast::schema()>
 {
+	typedef Iterator iterator_type;
+
 	template <typename TokenDef>
 	sql_grammar(TokenDef const& tok)
 		: sql_grammar::base_type(schema, "schema")
 	{
-
-#define RULE_NDEF(rule_name, def) rule_name def\
-		rule_name.name(#rule_name);
-
-/** Enclose your rule inside RULE_DEF and they will be automatically
-* named and add to the debugging facility.
-*
-* WARNING: Compilation error will occur if you enclose rule that have attribute
-* or local variables that have not a streaming operator defined.
-* Enclose them inside RULE_NDEF so they will not be added to the debug engine.
-*/
-#define RULE_DEF(rule_name, def) RULE_NDEF(rule_name, def) \
-		BOOST_SPIRIT_DEBUG_NODE(rule_name);
-
 		RULE_DEF(schema,
 			%=  (statement(qi::_val) % tok.semi_colon) >> *tok.semi_colon
 			;)
@@ -162,7 +151,6 @@ struct sql_grammar
 				>> -tok.kw_unsigned		[phx::bind(&semantic_actions::make_unsigned_numeric, &sa_, qi::_val)]
 			;)
 
-#undef RULE_DEF
 		using namespace qi::labels;
 		qi::on_error<qi::fail>
 		(
@@ -180,40 +168,32 @@ struct sql_grammar
 private:
 	semantic_actions sa_;
 
-#define RULE_IMPL(attribute, locals, name) qi::rule< Iterator, attribute, locals > name
-#define RULE_LOC(attribute, locals_, name) RULE_IMPL(attribute, qi::locals< locals_ >, name)
-#define RULE(attribute, name) RULE_IMPL(attribute, qi::unused_type, name)
-
-	RULE(ast::schema(), schema);
-	RULE(void(ast::schema&), statement);
+	QI_RULE(ast::schema(), schema);
+	QI_RULE(void(ast::schema&), statement);
 
 	// Create rules.
-	RULE(ast::table(), create_statement);
-	RULE(ast::table(), create_table);
-	RULE(ast::column_list(), create_table_columns);
-	RULE(ast::column(), column_definition);
-	RULE(ast::constraint_list(), table_constraints);
+	QI_RULE(ast::table(), create_statement);
+	QI_RULE(ast::table(), create_table);
+	QI_RULE(ast::column_list(), create_table_columns);
+	QI_RULE(ast::column(), column_definition);
+	QI_RULE(ast::constraint_list(), table_constraints);
 
 	// Constraint rules.
-	RULE_LOC(ast::constraint_ptr(), std::string, constraint_definition);
-	RULE(ast::constraint_ptr(std::string), primary_key_constraint);
-	RULE(ast::constraint_ptr(std::string), foreign_key_constraint);
-	RULE(ast::key_references(), reference_definition);
+	QI_RULE_LOC(ast::constraint_ptr(), std::string, constraint_definition);
+	QI_RULE(ast::constraint_ptr(std::string), primary_key_constraint);
+	QI_RULE(ast::constraint_ptr(std::string), foreign_key_constraint);
+	QI_RULE(ast::key_references(), reference_definition);
 
 	// Type rules.
-	RULE(ast::column_type_ptr(), column_type);
-	RULE(ast::type_constraint_ptr(), type_constraint);
-	RULE(std::string(), default_value);
-	RULE(ast::numeric_type_ptr(), numeric_type);
+	QI_RULE(ast::column_type_ptr(), column_type);
+	QI_RULE(ast::type_constraint_ptr(), type_constraint);
+	QI_RULE(std::string(), default_value);
+	QI_RULE(ast::numeric_type_ptr(), numeric_type);
 
 	// Alter rules.
-	RULE(void(ast::schema&), alter_statement);
-	RULE_LOC(void(ast::schema&), ast::schema::iterator, alter_table);
-	RULE(void(ast::table&), alter_table_add);
-
-#undef RULE
-#undef RULE_LOC
-#undef RULE_IMPL
+	QI_RULE(void(ast::schema&), alter_statement);
+	QI_RULE_LOC(void(ast::schema&), ast::schema::iterator, alter_table);
+	QI_RULE(void(ast::table&), alter_table_add);
 };
 } // namespace sql
 
@@ -355,6 +335,8 @@ template <typename OutputIterator>
 struct cpp_grammar 
 : karma::grammar<OutputIterator, sql::ast::schema()>
 {
+	typedef OutputIterator iterator_type;
+
 	cpp_grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: cpp_grammar::base_type(schema)
 	, cpp_sa_(wesnoth_path, generated, output_dir)
@@ -448,32 +430,23 @@ struct cpp_grammar
 private:
 	cpp_semantic_actions cpp_sa_;
 
-#define RULE_IMPL(attribute, locals, name) karma::rule< OutputIterator, attribute, locals > name
-#define RULE_LOC(attribute, locals_, name) RULE_IMPL(attribute, karma::locals< locals_ >, name)
-#define RULE(attribute, name) RULE_IMPL(attribute, karma::unused_type, name)
-#define RULE0(name) RULE_IMPL(karma::unused_type, karma::unused_type, name)
+	KA_RULE(sql::ast::schema(), schema);
+	KA_RULE(sql::ast::table(), create_file);
+	KA_RULE(sql::ast::table(), create_class);
+	KA_RULE(sql::ast::table(), header);
+	KA_RULE_LOC(std::string(), std::string, define_header);
+	KA_RULE_LOC(sql::ast::column_list(), std::set<std::string>, includes);
 
-	RULE(sql::ast::schema(), schema);
-	RULE(sql::ast::table(), create_file);
-	RULE(sql::ast::table(), create_class);
-	RULE(sql::ast::table(), header);
-	RULE_LOC(std::string(), std::string, define_header);
-	RULE_LOC(sql::ast::column_list(), std::set<std::string>, includes);
+	KA_RULE0(footer);
+	KA_RULE0(define_footer);
+	KA_RULE0(license_header);
+	KA_RULE0(namespace_open);
+	KA_RULE0(namespace_close);
+	KA_RULE0(do_not_modify);
 
-	RULE0(footer);
-	RULE0(define_footer);
-	RULE0(license_header);
-	RULE0(namespace_open);
-	RULE0(namespace_close);
-	RULE0(do_not_modify);
-
-	RULE(sql::ast::column_list(), create_members);
-	RULE(sql::ast::column(), create_member);
-	RULE(sql::ast::column_type_ptr(), create_member_type);
-
-#undef RULE
-#undef RULE_LOC
-#undef RULE_IMPL
+	KA_RULE(sql::ast::column_list(), create_members);
+	KA_RULE(sql::ast::column(), create_member);
+	KA_RULE(sql::ast::column_type_ptr(), create_member_type);
 };
 
 template <typename OutputIterator>
