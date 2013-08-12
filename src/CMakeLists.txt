@@ -1012,7 +1012,7 @@ if(ENABLE_UMCD)
 # SQL to cpp class generator.
 
 set(sql2cpp_SRC
-	tools/code_generator/sql2cpp/sql_parser.cpp
+	tools/code_generator/sql2cpp/sql2cpp.cpp
 )
 
 add_executable(sql2cpp ${sql2cpp_SRC})

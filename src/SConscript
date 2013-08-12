@@ -569,7 +569,7 @@ libumcd = env.Library("umcd", libumcd_sources, OBJPREFIX = "umcd_")
 env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd, libschema], have_umcd_prereqs)
 
 sqlparser_sources = Split("""
-    tools/code_generator/sql2cpp/sql_parser.cpp
+    tools/code_generator/sql2cpp/sql2cpp.cpp
     """)
 
 env.WesnothProgram("sql2cpp", sqlparser_sources, True)
