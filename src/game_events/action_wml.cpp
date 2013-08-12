@@ -74,6 +74,7 @@ static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 
 static lg::log_domain log_wml("wml");
+#define LOG_WML LOG_STREAM(info, log_wml)
 #define ERR_WML LOG_STREAM(err, log_wml)
 
 static lg::log_domain log_config("config");
@@ -1594,9 +1595,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			}
 		}
 	}
-	/// @todo I don't know about that error throwing. Sometimes a unit is just not available;
-	/// the designer needs to check with [have_unit] or fetch the recall event.
-	ERR_NG << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
+	LOG_WML << "A [recall] tag with the following content failed:\n" << cfg.get_config().debug();
 }
 
 WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
