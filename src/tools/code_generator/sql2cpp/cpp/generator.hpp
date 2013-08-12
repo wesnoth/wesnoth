@@ -16,7 +16,7 @@
 #define CPP_GENERATOR_HPP
 
 #include "tools/code_generator/sql2cpp/preprocessor_rule_helper.hpp"
-#include "tools/code_generator/sql2cpp/sql/ast.hpp"
+#include "tools/code_generator/sql2cpp/cpp/semantic_actions.hpp"
 
 namespace cpp{
 
@@ -28,7 +28,7 @@ struct grammar
 
 	grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
 	: grammar::base_type(schema)
-	, cpp_sa_(wesnoth_path, generated, output_dir)
+	, sa_(wesnoth_path, generated, output_dir)
 	{
 		using karma::eol;
 
@@ -37,7 +37,7 @@ struct grammar
 			);
 
 		RULE_DEF(create_file,
-			= karma::eps [phx::bind(&cpp_semantic_actions::open_sink, &cpp_sa_, phx::at_c<0>(karma::_val))]
+			= karma::eps [phx::bind(&semantic_actions::open_sink, &sa_, phx::at_c<0>(karma::_val))]
 			<< header [karma::_1 = karma::_val] 
 			<< create_class [karma::_1 = karma::_val] 
 			<< footer
@@ -66,7 +66,7 @@ struct grammar
 			);
 
 		RULE_NDEF(includes,
-			= karma::string [phx::bind(&cpp_semantic_actions::includes, &cpp_sa_, karma::_1, karma::_val, karma::_a)]
+			= karma::string [phx::bind(&semantic_actions::includes, &sa_, karma::_1, karma::_val, karma::_a)]
 			);
 
 		RULE_DEF(footer,
@@ -79,7 +79,7 @@ struct grammar
 			);
 
 		RULE_DEF(define_header,
-			= karma::eps [phx::bind(&cpp_semantic_actions::define_name, &cpp_sa_, karma::_a, karma::_val)]
+			= karma::eps [phx::bind(&semantic_actions::define_name, &sa_, karma::_a, karma::_val)]
 			<< "#ifndef "
 			<< karma::string [karma::_1 = karma::_a]
 			<< "\n#define "
@@ -89,7 +89,7 @@ struct grammar
 
 		RULE_DEF(license_header,
 			= "/*\n" 
-			<< karma::string [phx::bind(&cpp_semantic_actions::license_header, &cpp_sa_, karma::_1)]
+			<< karma::string [phx::bind(&semantic_actions::license_header, &sa_, karma::_1)]
 			<< "\n*/\n"
 			);
 
@@ -112,12 +112,12 @@ struct grammar
 			);
 
 		RULE_DEF(create_member_type,
-			= karma::string [phx::bind(&cpp_semantic_actions::type2string, &cpp_sa_, karma::_1, karma::_val)]
+			= karma::string [phx::bind(&semantic_actions::type2string, &sa_, karma::_1, karma::_val)]
 			);
 	}
 
 private:
-	cpp_semantic_actions cpp_sa_;
+	semantic_actions sa_;
 
 	KA_RULE(sql::ast::schema(), schema);
 	KA_RULE(sql::ast::table(), create_file);
