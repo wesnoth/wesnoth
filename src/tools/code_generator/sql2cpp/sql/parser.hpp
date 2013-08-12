@@ -86,12 +86,15 @@ struct grammar
 			);
 
 		RULE_DEF(primary_key_constraint,
-			= tok.kw_primary_key >> identifier_list [phx::bind(&semantic_actions::make_pk_constraint, &sa_, qi::_val, qi::_r1, qi::_1)]
+			= tok.kw_primary_key >> identifier_list 
+				[phx::bind(&semantic_actions::make_ptr<primary_key, base_constraint, std::string, ast::id_list>,
+			  &sa_, qi::_val, qi::_r1, qi::_1)]
 			);
 
 		RULE_DEF(foreign_key_constraint,
 			=	(tok.kw_foreign_key >> identifier_list >> reference_definition)
-				[phx::bind(&semantic_actions::make_fk_constraint, &sa_, qi::_val, qi::_r1, qi::_1, qi::_2)]
+				[phx::bind(&semantic_actions::make_ptr<foreign_key, base_constraint, std::string, ast::id_list, ast::key_references>, 
+					&sa_, qi::_val, qi::_r1, qi::_1, qi::_2)]
 			);
 
 		RULE_DEF(reference_definition,
@@ -107,28 +110,29 @@ struct grammar
 			);
 
 		RULE_DEF(type_constraint,
-			=   tok.kw_not_null		[phx::bind(&semantic_actions::make_type_constraint<sql::not_null>, &sa_, qi::_val)]
-			|   tok.kw_auto_increment	[phx::bind(&semantic_actions::make_type_constraint<sql::auto_increment>, &sa_, qi::_val)]
-			|   tok.kw_unique  		[phx::bind(&semantic_actions::make_type_constraint<sql::unique>, &sa_, qi::_val)]
-			|   default_value 		[phx::bind(&semantic_actions::make_default_value_constraint, &sa_, qi::_val, qi::_1)]
+			=   tok.kw_not_null					[phx::bind(&semantic_actions::make_ptr<not_null, base_type_constraint>, &sa_, qi::_val)]
+			|   tok.kw_auto_increment		[phx::bind(&semantic_actions::make_ptr<auto_increment, base_type_constraint>, &sa_, qi::_val)]
+			|   tok.kw_unique  					[phx::bind(&semantic_actions::make_ptr<unique, base_type_constraint>, &sa_, qi::_val)]
+			|   default_value_constraint[phx::bind(&semantic_actions::make_ptr<default_value, base_type_constraint, std::string>, 
+															&sa_, qi::_val, qi::_1)]
 			);
 
-		RULE_DEF(default_value,
+		RULE_DEF(default_value_constraint,
 			%=   tok.kw_default > tok.quoted_string
 			);
 
 		RULE_DEF(column_type,
 			=   numeric_type	[qi::_val = qi::_1]
 			|		(tok.type_varchar > tok.paren_open > tok.unsigned_digit > tok.paren_close) 
-															[phx::bind(&semantic_actions::make_varchar_type, &sa_, qi::_val, qi::_1)]
-			|   tok.type_text 			[phx::bind(&semantic_actions::make_column_type<sql::type::text>, &sa_, qi::_val)]
-			|   tok.type_date			  [phx::bind(&semantic_actions::make_column_type<sql::type::date>, &sa_, qi::_val)]
+															[phx::bind(&semantic_actions::make_ptr<type::varchar, type::base_type, std::size_t>, &sa_, qi::_val, qi::_1)]
+			|   tok.type_text 			[phx::bind(&semantic_actions::make_ptr<type::text, type::base_type>, &sa_, qi::_val)]
+			|   tok.type_date			  [phx::bind(&semantic_actions::make_ptr<type::date, type::base_type>, &sa_, qi::_val)]
 			);
 
 		RULE_DEF(numeric_type,
 			=
-			(		tok.type_smallint		[phx::bind(&semantic_actions::make_numeric_type<sql::type::smallint>, &sa_, qi::_val)]
-			| 	tok.type_int 				[phx::bind(&semantic_actions::make_numeric_type<sql::type::integer>, &sa_, qi::_val)]
+			(		tok.type_smallint		[phx::bind(&semantic_actions::make_ptr<type::smallint, type::numeric_type>, &sa_, qi::_val)]
+			| 	tok.type_int 				[phx::bind(&semantic_actions::make_ptr<type::integer, type::numeric_type>, &sa_, qi::_val)]
 			) 
 				>> -tok.kw_unsigned		[phx::bind(&semantic_actions::make_unsigned_numeric, &sa_, qi::_val)]
 			);
@@ -172,7 +176,7 @@ private:
 	// Type rules.
 	QI_RULE(ast::column_type_ptr(), column_type);
 	QI_RULE(ast::type_constraint_ptr(), type_constraint);
-	QI_RULE(std::string(), default_value);
+	QI_RULE(std::string(), default_value_constraint);
 	QI_RULE(ast::numeric_type_ptr(), numeric_type);
 
 	// Alter rules.

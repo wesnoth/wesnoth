@@ -28,7 +28,6 @@ struct base_type
 	virtual void accept(const boost::shared_ptr<type_visitor>& visitor) const = 0;
 };
 
-
 /* inherit_from help to choose another intermediate type than base_type to inherit from.
 That can help to have a type erasure also use to aggregate data (just like numeric_type
 that represents a rule in the parser).
@@ -42,6 +41,11 @@ struct base_type_crtp : inherit_from
 struct numeric_type : base_type
 {
 	bool is_unsigned;
+	
+	numeric_type()
+	: is_unsigned(false)
+	{}
+
 	virtual void accept(const boost::shared_ptr<type_visitor>& visitor) const = 0;
 };
 

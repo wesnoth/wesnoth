@@ -56,7 +56,7 @@ namespace detail{ // Useless, but inform that everything in should not be used o
 
 /** Define a rule without the debugging facilities provided by Boost.Spirit.
 */
-#define RULE_NDEF(rule_name, def) rule_name def;\
+#define RULE_NDEF(rule_name, ...) rule_name __VA_ARGS__ ;\
 		rule_name.name(#rule_name);
 
 /** Enclose your rule inside RULE_DEF and they will be automatically
@@ -66,7 +66,7 @@ namespace detail{ // Useless, but inform that everything in should not be used o
 * or local variables that have not a streaming operator defined.
 * Enclose them inside RULE_NDEF so they will not be added to the debug engine.
 */
-#define RULE_DEF(rule_name, def) RULE_NDEF(rule_name, def) \
+#define RULE_DEF(rule_name, ...) RULE_NDEF(rule_name, __VA_ARGS__ ) \
 		BOOST_SPIRIT_DEBUG_NODE(rule_name);
 
 #endif // SPIRIT_PREPROCESSOR_RULE_HELPER_HPP

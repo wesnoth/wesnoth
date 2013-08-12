@@ -25,59 +25,33 @@ namespace sql{
 class semantic_actions
 {
 public:
-	template<class T>
-	void make_column_type(boost::shared_ptr<sql::type::base_type>& res) const
+	template <class T, class U>
+	void make_ptr(boost::shared_ptr<U>& res) const
 	{
 		res = boost::make_shared<T>();
 	}
-
-	void make_varchar_type(boost::shared_ptr<sql::type::base_type>& res, std::size_t length) const
+	
+	template <class T, class U, class A>
+	void make_ptr(boost::shared_ptr<U>& res, A const& arg) const
 	{
-		res = boost::make_shared<sql::type::varchar>(length);
+		res = boost::make_shared<T>(arg);
+	}
+	
+	template <class T, class U, class A1, class A2>
+	void make_ptr(boost::shared_ptr<U>& res, A1 const& arg1, A2 const& arg2) const
+	{
+		res = boost::make_shared<T>(arg1, arg2);
 	}
 
-	template<class T>
-	void make_numeric_type(boost::shared_ptr<sql::type::numeric_type>& res) const
+	template <class T, class U, class A1, class A2, class A3>
+	void make_ptr(boost::shared_ptr<U>& res, A1 const& arg1, A2 const& arg2, A3 const& arg3) const
 	{
-		res = boost::make_shared<T>();
-		res->is_unsigned = false;
+		res = boost::make_shared<T>(arg1, arg2, arg3);
 	}
-   
-	void make_unsigned_numeric(boost::shared_ptr<sql::type::numeric_type>& res) const
+
+	void make_unsigned_numeric(boost::shared_ptr<type::numeric_type>& res) const
 	{
 		res->is_unsigned = true;
-	}
-
-	template <class T>
-	void make_type_constraint(boost::shared_ptr<sql::base_type_constraint>& res) const
-	{
-		res = boost::make_shared<T>();
-	}
-
-	void make_default_value_constraint(boost::shared_ptr<sql::base_type_constraint>& res, const std::string& default_value) const
-	{
-		res = boost::make_shared<sql::default_value>(default_value);
-	}
-
-	template <class T>
-	void make_constraint(boost::shared_ptr<sql::base_constraint>& res, const std::string& name) const
-	{
-		res = boost::make_shared<T>(boost::ref(name));
-	}
-
-	void make_pk_constraint(boost::shared_ptr<sql::base_constraint>& res, 
-							const std::string& name, 
-							const std::vector<std::string>& keys) const
-	{
-		res = boost::make_shared<sql::primary_key>(name, keys);
-	}
-
-	void make_fk_constraint(boost::shared_ptr<sql::base_constraint>& res, 
-							const std::string& name, 
-							const std::vector<std::string>& keys,
-							const sql::ast::key_references& refs) const
-	{
-		res = boost::make_shared<sql::foreign_key>(name, keys, refs);
 	}
 
 	/**
@@ -108,7 +82,7 @@ public:
 	@post We replace the constraint if it already exists in the table constraints, otherwise we add it.
 	*/
 	void alter_table_add_constraint(ast::table& table, 
-		const boost::shared_ptr<sql::base_constraint>& constraint_to_add)
+		const boost::shared_ptr<sql::base_constraint>& constraint_to_add) const
 	{
 		bool to_add = true;
 		for(std::size_t i = 0; i < table.constraints.size() && to_add; ++i)
