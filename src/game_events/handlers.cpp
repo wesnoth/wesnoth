@@ -48,7 +48,6 @@ static lg::log_domain log_event_handler("event_handler");
 namespace game_events {
 
 namespace { // Types
-	typedef std::map<std::string, wml_handler_function> static_wml_action_map;
 	typedef std::pair< std::string, config* > wmi_command_change;
 
 	class t_event_handlers {
@@ -215,7 +214,6 @@ namespace { // Types
 namespace { // Variables
 	t_event_handlers event_handlers;
 	/** Map of the default action handlers known of the engine. */
-	static_wml_action_map static_wml_actions;
 	std::set<std::string> unit_wml_ids;
 	std::set<std::string> used_items;
 	std::vector< wmi_command_change > wmi_command_changes;
@@ -294,12 +292,6 @@ void item_used(const std::string & id, bool used)
 		used_items.erase(id);
 }
 
-/** Registers a standard action handler. */
-void register_action(const std::string & tag, wml_handler_function handler)
-{
-	static_wml_actions[tag] = handler;
-}
-
 /** Removes a pending menu item command change. */
 void remove_wmi_change(const std::string & id)
 {
@@ -338,8 +330,10 @@ manager::manager(const config& cfg)
 	resources::lua_kernel = new LuaKernel(cfg);
 	running_ = true;
 
-	BOOST_FOREACH(static_wml_action_map::value_type &action, static_wml_actions) {
-		resources::lua_kernel->set_wml_action(action.first, action.second);
+	wml_action::map::const_iterator action_end = wml_action::end();
+	wml_action::map::const_iterator action_cur = wml_action::begin();
+	for ( ; action_cur != action_end; ++action_cur ) {
+		resources::lua_kernel->set_wml_action(action_cur->first, action_cur->second);
 	}
 
 	const std::string used = cfg["used_items"];

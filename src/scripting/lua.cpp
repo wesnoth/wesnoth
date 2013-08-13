@@ -40,7 +40,6 @@
 #include "attack_prediction.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
-#include "game_events/action_wml.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
@@ -4454,7 +4453,7 @@ LuaKernel::~LuaKernel()
  */
 static int cfun_wml_action(lua_State *L)
 {
-	game_events::action_handler h = reinterpret_cast<game_events::action_handler>
+	game_events::wml_action::handler h = reinterpret_cast<game_events::wml_action::handler>
 		(lua_touserdata(L, lua_upvalueindex(1)));
 
 	vconfig vcfg = luaW_checkvconfig(L, 1);
@@ -4465,7 +4464,7 @@ static int cfun_wml_action(lua_State *L)
 /**
  * Registers a function for use as an action handler.
  */
-void LuaKernel::set_wml_action(std::string const &cmd, game_events::action_handler h)
+void LuaKernel::set_wml_action(std::string const &cmd, game_events::wml_action::handler h)
 {
 	lua_State *L = mState;
 

@@ -21,6 +21,7 @@
 #include "../global.hpp"
 #include "pump.hpp"
 #include "conditional_wml.hpp"
+#include "handlers.hpp"
 
 #include "../game_config.hpp"
 #include "../game_display.hpp"

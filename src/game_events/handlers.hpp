@@ -27,17 +27,11 @@
 #include "../config.hpp"
 #include "../variable.hpp"
 
-class vconfig;
-
 
 namespace game_events
 {
 	struct queued_event;
 
-
-	typedef void (*wml_handler_function)(const queued_event &event_info,
-	                                     const vconfig &cfg);
-	typedef void (*action_handler)(const queued_event &, const vconfig &);
 
 	class event_handler
 	{
@@ -104,8 +98,6 @@ namespace game_events
 	bool item_used(const std::string & id);
 	/// Records if an item has been used.
 	void item_used(const std::string & id, bool used);
-	/// Registers a standard action handler.
-	void register_action(const std::string & tag, wml_handler_function handler);
 	/// Removes an event handler.
 	void remove_event_handler(const std::string & id);
 	/// Removes a pending menu item command change.

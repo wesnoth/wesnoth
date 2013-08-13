@@ -15,7 +15,7 @@
 #ifndef SCRIPTING_LUA_HPP
 #define SCRIPTING_LUA_HPP
 
-#include "game_events/handlers.hpp"
+#include "game_events/action_wml.hpp"
 
 class  unit;
 struct lua_State;
@@ -44,7 +44,7 @@ public:
 	void save_game(config &);
 	void load_game();
 	bool run_event(game_events::queued_event const &);
-	void set_wml_action(std::string const &, game_events::action_handler);
+	void set_wml_action(std::string const &, game_events::wml_action::handler);
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);

@@ -29,6 +29,7 @@
 
 class  config;
 struct map_location;
+class  vconfig;
 
 namespace t_translation {
 	struct t_terrain;
@@ -37,8 +38,31 @@ namespace t_translation {
 
 namespace game_events
 {
+	struct queued_event;
+
+
 	// Most of the functionality in the source file is accessed via callbacks,
-	// registered with register_action().
+	// accessed by iterating over wml_action.
+
+	class wml_action {
+	public:
+		typedef void (*handler)(const queued_event &, const vconfig &);
+		typedef std::map<std::string, handler> map;
+
+		/// Using this constructor for a static object outside action_wml.cpp
+		/// will likely lead to a static initialization fiasco.
+		wml_action(const std::string & tag, handler function);
+
+		/// The first registered action.
+		static map::const_iterator begin()  { return registry_.begin(); }
+		/// One past the last registered action.
+		static map::const_iterator end()    { return registry_.end(); }
+
+	private:
+		/// Tracks the known action handlers.
+		static map registry_;
+	};
+
 
 	/**
 	 * Changes a terrain location.

@@ -85,6 +85,11 @@ static lg::log_domain log_config("config");
 namespace game_events
 {
 
+// This must be defined before any WML actions are.
+// (So keep it at the rop of this file?)
+wml_action::map wml_action::registry_;
+
+
 namespace { // advance declarations
 	std::string get_caption(const vconfig& cfg, unit_map::iterator speaker);
 	std::string get_image(const vconfig& cfg, unit_map::iterator speaker);
@@ -593,6 +598,18 @@ void handle_wml_log_message(const config& cfg)
 
 
 /**
+ * Using this constructor for a static object outside action_wml.cpp
+ * will likely lead to a static initialization fiasco.
+ * @param[in]  tag       The WML tag for this action.
+ * @param[in]  function  The callback for this action.
+ */
+wml_action::wml_action(const std::string & tag, handler function)
+{
+	registry_[tag] = function;
+}
+
+
+/**
  * WML_HANDLER_FUNCTION macro handles auto registration for wml handlers
  *
  * @param pname wml tag name
@@ -612,11 +629,8 @@ void handle_wml_log_message(const config& cfg)
  *
  * Generated code looks like this:
  * \code
- * void wml_action_foo(...);
- * struct wml_func_register_foo {
- *   wml_func_register_foo() {
- *     register_action("foo", &wml_func_foo);
- *   } wml_func_register_foo;
+ * void wml_func_foo(...);
+ * static wml_action wml_action_foo("foo", &wml_func_foo);
  * void wml_func_foo(...)
  * {
  *    // code for foo
@@ -625,12 +639,7 @@ void handle_wml_log_message(const config& cfg)
  */
 #define WML_HANDLER_FUNCTION(pname, pei, pcfg) \
 	static void wml_func_##pname(const queued_event &pei, const vconfig &pcfg); \
-	struct wml_func_register_##pname \
-	{ \
-		wml_func_register_##pname() \
-		{ register_action(#pname, &wml_func_##pname); } \
-	}; \
-	static wml_func_register_##pname wml_func_register_##pname##_aux;  \
+	static wml_action wml_action_##pname(#pname, &wml_func_##pname);  \
 	static void wml_func_##pname(const queued_event& pei, const vconfig& pcfg)
 
 
