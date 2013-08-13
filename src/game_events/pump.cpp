@@ -70,40 +70,6 @@ static lg::log_domain log_event_handler("event_handler");
 namespace game_events {
 
 namespace { // Types
-	/**
-	 * State when processing a flight of events or commands.
-	 */
-	struct event_context
-	{
-		bool mutated;
-		bool skip_messages;
-		event_context(bool s): mutated(true), skip_messages(s) {}
-	};
-	event_context default_context(false);
-	event_context *current_context = &default_context;
-
-	/**
-	 * Context state with automatic lifetime handling.
-	 */
-	struct scoped_context
-	{
-		event_context *old_context;
-		event_context new_context;
-
-		scoped_context()
-			: old_context(current_context)
-			, new_context(old_context != &default_context && old_context->skip_messages)
-		{
-			current_context = &new_context;
-		}
-
-		~scoped_context()
-		{
-			old_context->mutated |= new_context.mutated;
-			current_context = old_context;
-		}
-	};
-
 	class pump_manager {
 	public:
 		pump_manager() :
@@ -134,7 +100,6 @@ namespace { // Types
 namespace { // Variables
 	std::deque<queued_event> events_queue;
 
-	bool does_screen_need_rebuild = false;
 	/// The value returned by wml_tracking();
 	size_t internal_wml_tracking = 0;
 
@@ -248,22 +213,22 @@ namespace { // Support functions
 
 		// The event hasn't been filtered out, so execute the handler.
 		++internal_wml_tracking;
-		scoped_context evc;
+		context::scoped evc;
 		handler.handle_event(ev);
 
 		if(ev.name == "select") {
 			resources::gamedata->last_selected = ev.loc1;
 		}
 
-		if ( screen_needs_rebuild() ) {
-			screen_needs_rebuild(false);
+		if ( context::screen_needs_rebuild() ) {
+			context::screen_needs_rebuild(false);
 			game_display *screen = resources::screen;
 			screen->recalculate_minimap();
 			screen->invalidate_all();
 			screen->rebuild_all();
 		}
 
-		return context_mutated();
+		return context::mutated();
 	}
 
 	/**
@@ -360,40 +325,24 @@ namespace { // Support functions
 } // end anonymous namespace (support functions)
 
 
-/** Returns whether or not we believe WML might have changed something. */
-bool context_mutated()
+// Static members of context.
+context::event_context context::default_context_(false);
+context::event_context *context::current_context_ = &default_context_;
+bool context::rebuild_screen_ = false;
+
+
+context::scoped::scoped() :
+	old_context_(context::current_context_),
+	new_context_(old_context_ != &context::default_context_  &&
+	             old_context_->skip_messages)
 {
-	return current_context->mutated;
+	context::current_context_ = &new_context_;
 }
 
-/** Sets whether or not we believe WML might have changed something. */
-void context_mutated(bool mutated)
+context::scoped::~scoped()
 {
-	current_context->mutated = mutated;
-}
-
-/** Returns whether or not the screen (map visuals) needs to be rebuilt. */
-bool screen_needs_rebuild()
-{
-	return does_screen_need_rebuild;
-}
-
-/** Sets whether or not the screen (map visuals) needs to be rebuilt. */
-void screen_needs_rebuild(bool rebuild)
-{
-	does_screen_need_rebuild = rebuild;
-}
-
-/** Returns whether or not we are skipping messages. */
-bool skip_messages()
-{
-	return current_context->skip_messages;
-}
-
-/** Sets whether or not we are skipping messages. */
-void skip_messages(bool skip)
-{
-	current_context->skip_messages = skip;
+	old_context_->mutated |= new_context_.mutated;
+	context::current_context_ = old_context_;
 }
 
 

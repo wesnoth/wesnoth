@@ -48,19 +48,52 @@ namespace game_events
 		config data;
 	};
 
+	/// The general environment within which events are processed.
+	class context {
+		/// State when processing a particular flight of events or commands.
+		struct event_context {
+			bool mutated;
+			bool skip_messages;
 
-	/// Returns whether or not we believe WML might have changed something.
-	bool context_mutated();
-	/// Sets whether or not we believe WML might have changed something.
-	void context_mutated(bool mutated);
-	/// Returns whether or not the screen (map visuals) needs to be rebuilt.
-	bool screen_needs_rebuild();
-	/// Sets whether or not the screen (map visuals) needs to be rebuilt.
-	void screen_needs_rebuild(bool rebuild);
-	/// Returns whether or not we are skipping messages.
-	bool skip_messages();
-	/// Sets whether or not we are skipping messages.
-	void skip_messages(bool skip);
+			event_context(bool s) : mutated(true), skip_messages(s) {}
+		};
+
+	public:
+		/// Context state with automatic lifetime handling.
+		class scoped {
+		public:
+			scoped();
+			~scoped();
+
+		private:
+			context::event_context *old_context_;
+			context::event_context new_context_;
+		};
+		friend class scoped;
+
+	public:
+		// No constructor needed since this is a static-only class for now.
+
+		/// Returns whether or not we believe WML might have changed something.
+		static bool mutated()	{ return current_context_->mutated; }
+		/// Sets whether or not we believe WML might have changed something.
+		static void mutated(bool mutated)	{ current_context_->mutated = mutated; }
+		/// Returns whether or not the screen (map visuals) needs to be rebuilt.
+		static bool screen_needs_rebuild()	{ return rebuild_screen_; }
+		/// Sets whether or not the screen (map visuals) needs to be rebuilt.
+		static void screen_needs_rebuild(bool rebuild)	{ rebuild_screen_ = rebuild; }
+		/// Returns whether or not we are skipping messages.
+		static bool skip_messages()	{ return current_context_->skip_messages; }
+		/// Sets whether or not we are skipping messages.
+		static void skip_messages(bool skip)	{ current_context_->skip_messages = skip; }
+
+	private:
+		static event_context * current_context_;
+		static bool rebuild_screen_;
+		/// A default value used to avoid NULL pointers.
+		static event_context default_context_;
+	};
+
 
 	/// Helper function which determines whether a wml_message text can
 	/// really be pushed into the wml_messages_stream, and does it.

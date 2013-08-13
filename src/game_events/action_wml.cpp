@@ -175,7 +175,7 @@ namespace { // Types
 			resources::screen->draw(true,true);
 
 			if (dlg_result == gui2::twindow::CANCEL) {
-				skip_messages(true);
+				context::skip_messages(true);
 			}
 
 			config cfg;
@@ -569,7 +569,7 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	}
 
 	game_map->set_terrain(loc, new_t);
-	screen_needs_rebuild(true);
+	context::screen_needs_rebuild(true);
 
 	BOOST_FOREACH(const t_translation::t_terrain &ut, game_map->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
@@ -642,7 +642,7 @@ WML_HANDLER_FUNCTION(allow_end_turn, /*event_info*/, /*cfg*/)
 /// Allow undo sets the flag saying whether the event has mutated the game to false.
 WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 {
-	context_mutated(false);
+	context::mutated(false);
 }
 
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
@@ -1014,7 +1014,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	play_controller *controller = resources::controller;
 	if(!has_input && (
 			 controller->is_skipping_replay() ||
-			 skip_messages()
+			 context::skip_messages()
 			 ))
 	{
 		return;
@@ -1617,8 +1617,8 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 		}
 		screen.recalculate_minimap();
 	}
-	if ( screen_needs_rebuild() ) {
-		screen_needs_rebuild(false);
+	if ( context::screen_needs_rebuild() ) {
+		context::screen_needs_rebuild(false);
 		screen.recalculate_minimap();
 		screen.rebuild_all();
 	}
@@ -1712,7 +1712,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 
 	*game_map = map;
 	resources::screen->reload_map();
-	screen_needs_rebuild(true);
+	context::screen_needs_rebuild(true);
 	ai::manager::raise_map_changed();
 }
 
@@ -2344,7 +2344,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	}
 	bool border = cfg["border"].to_bool();
 	resources::game_map->overlay(mask_map, cfg.get_parsed_config(), loc.x, loc.y, border);
-	screen_needs_rebuild(true);
+	context::screen_needs_rebuild(true);
 }
 
 /// Adding/removing new time_areas dynamically with Standard Location Filters.
