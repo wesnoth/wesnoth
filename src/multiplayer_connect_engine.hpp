@@ -32,16 +32,6 @@ enum controller {
 
 class side_engine;
 
-struct connected_user
-{
-	connected_user(const std::string& name, network::connection connection) :
-		name(name),
-		connection(connection)
-	{};
-	std::string name;
-	network::connection connection;
-};
-
 typedef boost::shared_ptr<side_engine> side_engine_ptr;
 typedef std::pair<mp::controller, std::string> controller_option;
 
@@ -61,7 +51,7 @@ public:
 	// have been made, so that everything could be initialized.
 	void init_after_side_engines_assigned();
 
-	void import_user(USER_TYPE user_type, const config& data, int sock,
+	void import_user(USER_TYPE user_type, const config& data,
 		int side_taken = -1);
 
 	// Returns true if there are still sides available for this game.
@@ -80,11 +70,9 @@ public:
 	// and second element whether to silently update UI.
 	std::pair<bool, bool> process_network_data(const config& data,
 		const network::connection sock);
-	// Returns true, if UI should be updated.
-	bool process_network_error(network::error& error);
+	void process_network_error(network::error& error);
 	void process_network_connection(const network::connection sock);
 
-	int find_user_index_by_id(const std::string& id);
 	// Returns the side which is taken by a given user,
 	// or -1 if none was found.
 	int find_user_side_index_by_id(const std::string& id) const;
@@ -94,7 +82,7 @@ public:
 
 	const config& level() const { return level_; }
 	const game_state& state() const { return state_; }
-	const std::vector<connected_user>& connected_users() const
+	const std::set<std::string>& connected_users() const
 		{ return connected_users_; }
 	std::vector<std::string>& team_names() { return team_names_; }
 	std::vector<std::string>& user_team_names() { return user_team_names_; }
@@ -122,7 +110,7 @@ private:
 	std::vector<const config*> era_factions_;
 	std::vector<std::string> team_names_;
 	std::vector<std::string> user_team_names_;
-	std::vector<connected_user> connected_users_;
+	std::set<std::string> connected_users_;
 	std::vector<controller_option> default_controller_options_;
 };
 
@@ -151,6 +139,7 @@ public:
 	void reset();
 
 	// Place user into this side.
+	void place_user(const std::string& name);
 	void place_user(const config& data);
 
 	void update_controller_options();

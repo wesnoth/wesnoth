@@ -141,23 +141,13 @@ void connect_engine::init_after_side_engines_assigned()
 }
 
 void connect_engine::import_user(USER_TYPE user_type, const config& data,
-	int sock, int side_taken)
+	int side_taken)
 {
 	const std::string& username = data["name"];
 	assert(!username.empty());
 
-	// Check if user with such name isn't already connected.
-	bool already_connected = false;
-	BOOST_FOREACH(const connected_user& user, connected_users_) {
-		if (user.name == username) {
-			already_connected = true;
-		}
-	}
-	// Finally, add user to the connected user list.
-	if (!already_connected) {
-		connected_users_.push_back(connected_user(username, sock));
-		update_side_controller_options();
-	}
+	connected_users_.insert(username);
+	update_side_controller_options();
 
 	if (user_type == OBSERVER) {
 		return;
@@ -455,12 +445,8 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 			side_engine_ptr side_to_drop = side_engines_[side_drop];
 
 			// Remove user, whose side was dropped.
-			const int user_index =
-				find_user_index_by_id(side_to_drop->player_id());
-			if (user_index != -1) {
-				connected_users_.erase(connected_users_.begin() + user_index);
-				update_side_controller_options();
-			}
+			connected_users_.erase(side_to_drop->player_id());
+			update_side_controller_options();
 
 			side_to_drop->reset();
 
@@ -486,8 +472,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 			return result;
 		}
 
-		const int user_index = find_user_index_by_id(name);
-		if (user_index != -1) {
+		if (connected_users_.find(name) != connected_users_.end()) {
 			 // TODO: Seems like a needless limitation
 			 // to only allow one side per player.
 			if (find_user_side_index_by_id(name) != -1) {
@@ -499,7 +484,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 				return result;
 			} else {
-				connected_users_.erase(connected_users_.begin() + user_index);
+				connected_users_.erase(name);
 				update_side_controller_options();
 				config observer_quit;
 				observer_quit.add_child("observer_quit")["name"] = name;
@@ -542,7 +527,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			LOG_CF << "client has taken a valid position\n";
 
-			import_user(PLAYER, data, sock, side_taken);
+			import_user(PLAYER, data, side_taken);
 
 			update_and_send_diff();
 
@@ -562,27 +547,26 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 	if (const config& change_faction = data.child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
 		if (side_taken != -1) {
-			import_user(PLAYER, change_faction, sock, side_taken);
+			import_user(PLAYER, change_faction, side_taken);
 
 			update_and_send_diff();
 		}
 	}
 
 	if (const config& observer = data.child("observer")) {
-		import_user(OBSERVER, observer, sock);
+		import_user(OBSERVER, observer);
 		update_and_send_diff();
 	}
 
 	if (const config& observer = data.child("observer_quit")) {
 		const t_string& observer_name = observer["name"];
 		if (!observer_name.empty()) {
-			const int user_index = find_user_index_by_id(observer_name);
-			if (user_index != -1 &&
-				find_user_side_index_by_id(observer_name) == -1) {
+			if ((connected_users_.find(observer_name) !=
+				connected_users_.end()) &&
+				(find_user_side_index_by_id(observer_name) != -1)) {
 
-				connected_users_.erase(connected_users_.begin() + user_index);
+				connected_users_.erase(observer_name);
 				update_side_controller_options();
-
 				update_and_send_diff();
 			}
 		}
@@ -591,49 +575,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 	return result;
 }
 
-bool connect_engine::process_network_error(network::error& error)
+void connect_engine::process_network_error(network::error& error)
 {
-	// If the problem isn't related to any specific connection,
-	// it's a general error and we should just re-throw the error.
-	// Likewise if we are not a server, we cannot afford any connection
-	// to go down, so also re-throw the error.
-	if (!error.socket || !network::is_server()) {
-		error.disconnect();
-		throw network::error(error.message);
-	}
-
-	bool res = false;
-
-	// A socket has disconnected. Remove it, and resets its side.
-	int user_index = 0;
-	BOOST_FOREACH(connected_user& user, connected_users_) {
-		if (user.connection == error.socket) {
-			int side_index = find_user_side_index_by_id(user.name);
-			if (side_index != -1) {
-				side_engines_[side_index]->reset();
-			}
-
-			res = true;
-
-			connected_users_.erase(connected_users_.begin() + user_index);
-			update_side_controller_options();
-
-			break;
-		}
-
-		user_index++;
-	}
-
-	// Now disconnect the socket.
+	// The problem isn't related to any specific connection and
+	// it's a general error. So we should just re-throw the error.
 	error.disconnect();
-
-	// If there have been changes to the positions taken,
-	// then notify other players.
-	if (res) {
-		update_and_send_diff();
-	}
-
-	return res;
+	throw network::error(error.message);
 }
 
 void connect_engine::process_network_connection(const network::connection sock)
@@ -647,24 +594,6 @@ void connect_engine::process_network_connection(const network::connection sock)
 		next_level.add_child("store_next_scenario", level_);
 		network::send_data(next_level, sock);
 	}
-}
-
-int connect_engine::find_user_index_by_id(const std::string& id)
-{
-	size_t i = 0;
-	BOOST_FOREACH(const connected_user& user, connected_users_) {
-		if (user.name == id) {
-			break;
-		}
-
-		i++;
-	}
-
-	if (i >= connected_users_.size()) {
-		return -1;
-	}
-
-	return i;
 }
 
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
@@ -1009,12 +938,10 @@ void side_engine::swap_sides_on_drop_target(const int drop_target) {
 	if (player_id_.empty()) {
 		parent_.side_engines_[drop_target]->set_controller(controller_);
 	} else {
-		const int user_index = parent_.find_user_index_by_id(player_id_);
-		if (user_index != -1) {
-			const connected_user& user = parent_.connected_users_[user_index];
-			parent_.side_engines_[drop_target]->player_id_ = user.name;
-			parent_.side_engines_[drop_target]->set_controller(
-				parent_.default_controller_);
+		if (parent_.connected_users_.find(player_id_) !=
+			parent_.connected_users_.end()) {
+
+			parent_.side_engines_[drop_target]->place_user(player_id_);
 		}
 	}
 
@@ -1022,14 +949,12 @@ void side_engine::swap_sides_on_drop_target(const int drop_target) {
 	if (target_id.empty())
 	{
 		set_controller(target_controller);
-		player_id_ = "";
+		player_id_.clear();
 	} else {
-		const int user_index = parent_.find_user_index_by_id(target_id);
-		if (user_index != -1) {
-			const connected_user& user = parent_.connected_users_[user_index];
-			parent_.side_engines_[drop_target]->player_id_ = user.name;
-			parent_.side_engines_[drop_target]->set_controller(
-				parent_.default_controller_);
+		if (parent_.connected_users_.find(target_id) !=
+			parent_.connected_users_.end()) {
+
+			parent_.side_engines_[drop_target]->place_user(target_id);
 		}
 	}
 }
@@ -1153,6 +1078,14 @@ void side_engine::reset()
 	}
 }
 
+void side_engine::place_user(const std::string& name)
+{
+	config data;
+	data["name"] = name;
+
+	place_user(data);
+}
+
 void side_engine::place_user(const config& data)
 {
 	player_id_ = data["name"].str();
@@ -1181,9 +1114,9 @@ void side_engine::update_controller_options()
 
 	controller_options_.push_back(std::make_pair(CNTR_LAST, _("--give--")));
 
-	BOOST_FOREACH(const connected_user& user, parent_.connected_users_) {
+	BOOST_FOREACH(const std::string& user, parent_.connected_users_) {
 		controller_options_.push_back(std::make_pair(
-			parent_.default_controller_, user.name));
+			parent_.default_controller_, user));
 	}
 }
 

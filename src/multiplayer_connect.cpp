@@ -485,14 +485,15 @@ void connect::process_event()
 			d.set_textbox(_("Name: "));
 			d.show();
 			if (d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty()) {
-				for(connected_user_list::iterator it = engine_.users().begin();
-					it != engine_.users().end(); ++it) {
+				BOOST_FOREACH(const std::string& user,
+					engine_.connected_users()) {
 
-					if ((*it).name == d.textbox_text() ) already_exists = true;
+					if (user == d.textbox_text()) {
+						already_exists = true;
+					}
 				}
 				if (!already_exists) {
-					engine_.users().push_back(connected_user(d.textbox_text(),
-						CNTR_LOCAL, 0));
+					engine_.connected_users().push_back(d.textbox_text());
 					update_playerlist_state();
 					update_side_controller_combos();
 				}
@@ -625,15 +626,7 @@ void connect::process_network_data(const config& data,
 
 void connect::process_network_error(network::error& error)
 {
-	bool res = engine_.process_network_error(error);
-
-	if (res) {
-		BOOST_FOREACH(side& s, sides_) {
-			s.update_ui();
-		}
-		update_side_controller_combos();
-		update_playerlist_state();
-	}
+	engine_.process_network_error(error);
 }
 
 void connect::process_network_connection(const network::connection sock)
@@ -776,8 +769,8 @@ void connect::update_playerlist_state(bool silent)
 	} else {
 		// Updates the player list
 		std::vector<std::string> playerlist;
-		BOOST_FOREACH(const connected_user& user, engine_.connected_users()) {
-			playerlist.push_back(user.name);
+		BOOST_FOREACH(const std::string& user, engine_.connected_users()) {
+			playerlist.push_back(user);
 		}
 		set_user_list(playerlist, silent);
 		set_user_menu_items(playerlist);
