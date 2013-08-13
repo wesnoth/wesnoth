@@ -42,8 +42,6 @@ public:
 		const bool local_players_only, const bool first_scenario);
 	~connect_engine();
 
-	enum USER_TYPE { HOST, PLAYER, OBSERVER };
-
 	config* current_config();
 
 	void add_side_engine(side_engine_ptr engine);
@@ -51,7 +49,9 @@ public:
 	// have been made, so that everything could be initialized.
 	void init_after_side_engines_assigned();
 
-	void import_user(USER_TYPE user_type, const config& data,
+	void import_user(const std::string& name, const bool observer,
+		int side_taken = -1);
+	void import_user(const config& data, const bool observer,
 		int side_taken = -1);
 
 	// Returns true if there are still sides available for this game.

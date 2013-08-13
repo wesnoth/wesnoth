@@ -135,12 +135,18 @@ void connect_engine::add_side_engine(side_engine_ptr engine)
 void connect_engine::init_after_side_engines_assigned()
 {
 	// Add host to the connected users list.
-	config user_data;
-	user_data["name"] = preferences::login();
-	import_user(HOST, user_data, 0);
+	import_user(preferences::login(), false);
 }
 
-void connect_engine::import_user(USER_TYPE user_type, const config& data,
+void connect_engine::import_user(const std::string& name, const bool observer,
+	int side_taken)
+{
+	config user_data;
+	user_data["name"] = name;
+	import_user(user_data, observer, side_taken);
+}
+
+void connect_engine::import_user(const config& data, const bool observer,
 	int side_taken)
 {
 	const std::string& username = data["name"];
@@ -149,7 +155,7 @@ void connect_engine::import_user(USER_TYPE user_type, const config& data,
 	connected_users_.insert(username);
 	update_side_controller_options();
 
-	if (user_type == OBSERVER) {
+	if (observer) {
 		return;
 	}
 
@@ -527,7 +533,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			LOG_CF << "client has taken a valid position\n";
 
-			import_user(PLAYER, data, side_taken);
+			import_user(data, false, side_taken);
 
 			update_and_send_diff();
 
@@ -547,14 +553,14 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 	if (const config& change_faction = data.child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
 		if (side_taken != -1) {
-			import_user(PLAYER, change_faction, side_taken);
+			import_user(change_faction, false, side_taken);
 
 			update_and_send_diff();
 		}
 	}
 
 	if (const config& observer = data.child("observer")) {
-		import_user(OBSERVER, observer);
+		import_user(observer, true);
 		update_and_send_diff();
 	}
 
@@ -659,7 +665,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 	if (allow_player_ && !parent_.params_.saved_game) {
 		set_controller(parent_.default_controller_);
-	} else if (!current_player_.empty()) {
+	} else if (!current_player_.empty() && !allow_player_) {
 		set_controller(CNTR_RESERVED);
 	} else {
 		size_t i = CNTR_NETWORK;
