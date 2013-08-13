@@ -182,7 +182,6 @@ public:
 	int income() const { return income_; }
 	void set_income(int income) { income_ = income; }
 	const std::string& player_id() const { return player_id_; }
-	const std::string& save_id() const { return save_id_; }
 	const std::string& current_player() const { return current_player_; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
@@ -220,7 +219,6 @@ private:
 	const bool allow_player_;
 	const bool allow_changes_;
 	const std::string leader_id_;
-	const std::string save_id_;
 	const std::string current_player_;
 
 	int index_;

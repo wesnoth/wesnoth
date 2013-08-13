@@ -645,7 +645,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	leader_id_(cfg["id"]),
-	save_id_(cfg["save_id"]),
 	current_player_(cfg["current_player"]),
 	index_(index),
 	team_(0),
@@ -658,33 +657,35 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	update_controller_options();
 
 	// Tweak the controllers.
-	if (cfg["controller"] == "human_ai" ||
-		cfg["controller"] == "network_ai") {
+	if (cfg_["controller"] == "human_ai" ||
+		cfg_["controller"] == "network_ai") {
 
 		cfg_["controller"] = "ai";
 	}
-	if (allow_player_ && !parent_.params_.saved_game) {
-		set_controller(parent_.default_controller_);
-	} else if (!current_player_.empty() && !allow_player_) {
+	if (!current_player_.empty() && cfg_["controller"] != "ai") {
+		// Reserve a side for "current_player", unless the side
+		// is played by an AI.
 		set_controller(CNTR_RESERVED);
+	} else if (allow_player_ && !parent_.params_.saved_game) {
+		set_controller(parent_.default_controller_);
 	} else {
 		size_t i = CNTR_NETWORK;
 		if (!allow_player_) {
-			if (cfg["controller"] == "null") {
+			if (cfg_["controller"] == "null") {
 				set_controller(CNTR_EMPTY);
 			} else {
-				cfg_["controller"] = controller_names[CNTR_COMPUTER];
+				cfg_["controller"] = "ai";
 				set_controller(CNTR_COMPUTER);
 			}
 		} else {
-			if (cfg["controller"] == "network" ||
-				cfg["controller"] == "human") {
+			if (cfg_["controller"] == "network" ||
+				cfg_["controller"] == "human") {
 
 				cfg_["controller"] = "reserved";
 			}
 
 			for (; i != CNTR_LAST; ++i) {
-				if (cfg["controller"] == controller_names[i]) {
+				if (cfg_["controller"] == controller_names[i]) {
 					set_controller(static_cast<mp::controller>(i));
 					break;
 				}
@@ -1113,7 +1114,7 @@ void side_engine::place_user(const config& data)
 void side_engine::update_controller_options()
 {
 	controller_options_ = parent_.default_controller_options_;
-	if (!save_id_.empty()) {
+	if (!current_player_.empty()) {
 		controller_options_.push_back(
 			std::make_pair(CNTR_RESERVED, _("Reserved")));
 	}
