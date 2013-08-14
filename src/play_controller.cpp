@@ -1437,6 +1437,7 @@ void play_controller::toggle_accelerated_speed()
 	{
 		std::string hk = hotkey::get_names(hotkey::HOTKEY_ACCELERATED);
 		utils::string_map symbols;
+		symbols["hk"] = hk;
 		gui_->announce(_("Accelerated speed enabled!"), font::NORMAL_COLOR);
 		gui_->announce("\n" + vgettext("(press $hk to disable)", symbols), font::NORMAL_COLOR);
 	}
