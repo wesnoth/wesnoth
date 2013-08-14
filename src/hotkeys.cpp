@@ -1150,6 +1150,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		case HOTKEY_RIGHT_MOUSE_CLICK:
 			right_mouse_click();
 			break;
+		case HOTKEY_ACCELERATED:
+			toggle_accelerated_speed();
+			break;
 		default:
 			return false;
 	}
@@ -1209,9 +1212,6 @@ void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* ex
 			break;
 		case HOTKEY_MOUSE_SCROLL:
 			preferences::enable_mouse_scroll(!preferences::mouse_scroll_enabled());
-			break;
-		case HOTKEY_ACCELERATED:
-			preferences::set_turbo(!preferences::turbo());
 			break;
 		case HOTKEY_MUTE:
 			{
