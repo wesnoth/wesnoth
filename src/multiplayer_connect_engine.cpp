@@ -969,26 +969,18 @@ void side_engine::swap_sides_on_drop_target(const int drop_target) {
 
 	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
 	if (player_id_.empty()) {
+		parent_.side_engines_[drop_target]->player_id_.clear();
 		parent_.side_engines_[drop_target]->set_controller(controller_);
 	} else {
-		if (parent_.connected_users_.find(player_id_) !=
-			parent_.connected_users_.end()) {
-
-			parent_.side_engines_[drop_target]->place_user(player_id_);
-		}
+		parent_.side_engines_[drop_target]->place_user(player_id_);
 	}
 
 	ai_algorithm_ = target_ai;
-	if (target_id.empty())
-	{
-		set_controller(target_controller);
+	if (target_id.empty()) {
 		player_id_.clear();
+		set_controller(target_controller);
 	} else {
-		if (parent_.connected_users_.find(target_id) !=
-			parent_.connected_users_.end()) {
-
-			parent_.side_engines_[drop_target]->place_user(target_id);
-		}
+		place_user(target_id);
 	}
 }
 
@@ -1151,6 +1143,28 @@ void side_engine::update_controller_options()
 		controller_options_.push_back(std::make_pair(
 			parent_.default_controller_, user));
 	}
+
+	update_current_controller_index();
+}
+
+void side_engine::update_current_controller_index()
+{
+	int i = 0;
+	BOOST_FOREACH(const controller_option& option, controller_options_) {
+		if (option.first == controller_) {
+			current_controller_index_ = i;
+
+			if (player_id_.empty() || player_id_ == option.second) {
+				// Stop searching if no user is assigned to a side
+				// or the selected user is found.
+				break;
+			}
+		}
+
+		i++;
+	}
+
+	assert(current_controller_index_ < controller_options_.size());
 }
 
 bool side_engine::controller_changed(const int selection)
@@ -1177,23 +1191,7 @@ void side_engine::set_controller(mp::controller controller)
 {
 	controller_ = controller;
 
-	// Update current controller index.
-	int i = 0;
-	BOOST_FOREACH(const controller_option& option, controller_options_) {
-		if (option.first == controller) {
-			current_controller_index_ = i;
-
-			if (player_id_.empty() || player_id_ == option.second) {
-				// Stop searching if no user is assigned to a side
-				// or the selected user is found.
-				break;
-			}
-		}
-
-		i++;
-	}
-
-	assert(current_controller_index_ < controller_options_.size());
+	update_current_controller_index();
 }
 
 void side_engine::set_current_faction(const config* current_faction)

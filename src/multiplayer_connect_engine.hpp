@@ -143,6 +143,7 @@ public:
 	void place_user(const config& data);
 
 	void update_controller_options();
+	void update_current_controller_index();
 	bool controller_changed(const int selection);
 	void set_controller(mp::controller controller);
 

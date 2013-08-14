@@ -250,7 +250,6 @@ bool connect::side::changed()
 
 void connect::side::update_controller_combo_list()
 {
-	engine_->update_controller_options();
 	combo_controller_->set_items(controller_options_names(
 		engine_->controller_options()));
 
