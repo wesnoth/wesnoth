@@ -48,10 +48,8 @@ int main(int argc, char* argv[])
 
 	if (r && iter == end)
 	{
-		std::cout << "-------------------------\n";
 		std::cout << "Parsing succeeded\n";
-		std::cout << "-------------------------\n";
-
+	
 		std::ofstream generated("dummy.txt");
 		std::ostream_iterator<char> sink(generated);
 

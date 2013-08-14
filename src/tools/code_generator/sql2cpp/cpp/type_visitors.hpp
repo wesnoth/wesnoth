@@ -19,13 +19,13 @@
 
 namespace cpp{
 
-struct sql2cpp_type_visitor : sql::type::type_visitor
+struct type2string_visitor : sql::type::type_visitor
 {
 private:
 	std::string add_unsigned_qualifier(const sql::type::numeric_type& num_type);
 public:
 
-	sql2cpp_type_visitor(std::string& res);
+	type2string_visitor(std::string& res);
 	virtual void visit(const sql::type::smallint& s);
 	virtual void visit(const sql::type::integer& i);
 	virtual void visit(const sql::type::text&);
@@ -36,9 +36,9 @@ private:
 	std::string& res_;
 };
 
-struct sql2cpp_header_type_visitor : sql::type::type_visitor
+struct type2header_visitor : sql::type::type_visitor
 {
-	sql2cpp_header_type_visitor(std::string& res);
+	type2header_visitor(std::string& res);
 
 	virtual void visit(const sql::type::smallint&);
 	virtual void visit(const sql::type::integer&);

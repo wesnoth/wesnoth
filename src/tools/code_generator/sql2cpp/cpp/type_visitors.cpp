@@ -18,69 +18,69 @@
 
 namespace cpp{
 
-// Class sql2cpp_type_visitor.
+// Class type2string_visitor.
 
-std::string sql2cpp_type_visitor::add_unsigned_qualifier(const sql::type::numeric_type& num_type)
+std::string type2string_visitor::add_unsigned_qualifier(const sql::type::numeric_type& num_type)
 {
 	return (num_type.is_unsigned) ? "u":"";
 }
 
-sql2cpp_type_visitor::sql2cpp_type_visitor(std::string& res)
+type2string_visitor::type2string_visitor(std::string& res)
 : res_(res)
 {}
 
-void sql2cpp_type_visitor::visit(const sql::type::smallint& s)
+void type2string_visitor::visit(const sql::type::smallint& s)
 {
 	res_ = "boost::" + add_unsigned_qualifier(s) + "int16_t";
 }
 
-void sql2cpp_type_visitor::visit(const sql::type::integer& i)
+void type2string_visitor::visit(const sql::type::integer& i)
 {
 	res_ = "boost::" + add_unsigned_qualifier(i) + "int32_t";
 }
 
-void sql2cpp_type_visitor::visit(const sql::type::text&)
+void type2string_visitor::visit(const sql::type::text&)
 {
 	res_ = "std::string";
 }
 
-void sql2cpp_type_visitor::visit(const sql::type::date&)
+void type2string_visitor::visit(const sql::type::date&)
 {
 	res_ = "boost::posix_time::ptime";
 }
 
-void sql2cpp_type_visitor::visit(const sql::type::varchar& v)
+void type2string_visitor::visit(const sql::type::varchar& v)
 {
 	res_ = "boost::array<char, " + boost::lexical_cast<std::string>(v.length) + ">";
 }
 
-// Class sql2cpp_header_type_visitor.
+// Class type2header_visitor.
 
-sql2cpp_header_type_visitor::sql2cpp_header_type_visitor(std::string& res)
+type2header_visitor::type2header_visitor(std::string& res)
 : res_(res)
 {}
 
-void sql2cpp_header_type_visitor::visit(const sql::type::smallint&)
+void type2header_visitor::visit(const sql::type::smallint&)
 {
 	res_ = "#include <boost/cstdint.hpp>";
 }
 
-void sql2cpp_header_type_visitor::visit(const sql::type::integer&)
+void type2header_visitor::visit(const sql::type::integer&)
 {
 	res_ = "#include <boost/cstdint.hpp>";
 }
 
-void sql2cpp_header_type_visitor::visit(const sql::type::text&)
+void type2header_visitor::visit(const sql::type::text&)
 {
 	res_ = "#include <string>";
 }
 
-void sql2cpp_header_type_visitor::visit(const sql::type::date&)
+void type2header_visitor::visit(const sql::type::date&)
 {
 	res_ = "#include <boost/date_time/posix_time/posix_time.hpp>";
 }
 
-void sql2cpp_header_type_visitor::visit(const sql::type::varchar&)
+void type2header_visitor::visit(const sql::type::varchar&)
 {
 	res_ = "#include <boost/array.hpp>";
 }

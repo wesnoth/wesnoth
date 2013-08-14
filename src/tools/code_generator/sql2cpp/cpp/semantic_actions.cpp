@@ -36,7 +36,7 @@ semantic_actions::semantic_actions(const std::string& wesnoth_path, std::ofstrea
 
 void semantic_actions::type2string(std::string& res, sql::ast::column_type_ptr const& type)
 {
-	boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_type_visitor>(boost::ref(res));
+	boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<type2string_visitor>(boost::ref(res));
 	type->accept(visitor);
 }
 
@@ -55,7 +55,7 @@ void semantic_actions::includes(std::string& res, sql::ast::column_list const& c
 	for(std::size_t i = 0; i < class_members.size(); ++i)
 	{
 		std::string preproc_include;
-		boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<sql2cpp_header_type_visitor>(boost::ref(preproc_include));
+		boost::shared_ptr<sql::type::type_visitor> visitor = boost::make_shared<type2header_visitor>(boost::ref(preproc_include));
 		class_members[i].sql_type->accept(visitor);
 		if(included.insert(preproc_include).second && !preproc_include.empty())
 		{
