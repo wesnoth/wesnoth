@@ -1185,6 +1185,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	const config& parsed = cfg.get_parsed_config();
 	const config::const_child_itors &ai = parsed.child_range("ai");
 	std::string switch_ai = cfg["switch_ai"];
+	std::string scroll_to_leader = cfg["scroll_to_leader"];
 
 	std::vector<int> sides = get_sides_vector(cfg);
 	size_t team_index;
@@ -1295,6 +1296,12 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		config::attribute_value setc = cfg["suppress_end_turn_confirmation"];
 		if ( !setc.empty() ) {
 			teams[team_index].set_no_turn_confirmation(setc.to_bool());
+		}
+		
+		// Change leader scrolling options
+		config::attribute_value stl = cfg["scroll_to_leader"];
+		if ( !stl.empty()) {
+			teams[team_index].set_scroll_to_leader(stl.to_bool(true));
 		}
 	}
 
