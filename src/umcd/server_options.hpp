@@ -62,6 +62,8 @@ public:
 	void validate(const config& cfg) const;
 
 private:
+	std::string add_trailing_slash(const std::string& dir);
+
 	std::string header_;
 	std::string version_;
 	boost::program_options::options_description options_desc_;

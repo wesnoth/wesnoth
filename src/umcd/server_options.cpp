@@ -91,9 +91,15 @@ boost::optional<std::string> server_options::wesnoth_dir(const config& cfg) cons
 	boost::optional<std::string> wesdir;
 	if(cfg.has_child("server_core") && cfg.child("server_core").has_attribute("wesnoth_dir"))
 	{
-		wesdir = cfg.child("server_core")["wesnoth_dir"];
+		wesdir = add_trailing_slash(cfg.child("server_core")["wesnoth_dir"]);
 	}
 	return wesdir;
+}
+
+std::string add_trailing_slash(const std::string& dir)
+{
+	if(dir.size() > 0 && dir.last() != '/')
+		return dir + '/';
 }
 
 void server_options::validate(const config& cfg) const
