@@ -1016,6 +1016,7 @@ set(sql2cpp_SRC
 	tools/code_generator/sql2cpp/utility.cpp
 	tools/code_generator/sql2cpp/cpp/semantic_actions.cpp
 	tools/code_generator/sql2cpp/cpp/type_visitors.cpp
+	tools/code_generator/sql2cpp/cpp/generator.cpp
 	tools/code_generator/sql2cpp/sql/semantic_actions.cpp
 	tools/code_generator/sql2cpp/sql/parser.cpp
 	tools/code_generator/sql2cpp/sql/lexer.cpp
