@@ -15,5 +15,5 @@
 #include "tools/code_generator/sql2cpp/sql/parser.tcc"
 
 namespace sql{
-template grammar<sql::token_iterator_type>::grammar<sql::tokens_type>(sql::tokens_type const&);
+template grammar<sql::token_iterator_type>::grammar(sql::tokens_type const&);
 }
