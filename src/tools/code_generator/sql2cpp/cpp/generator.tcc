@@ -86,7 +86,7 @@ grammar<OutputIterator>::grammar(semantic_actions& sa)
 
 	RULE_DEF(license_header,
 		= "/*\n" 
-		<< karma::string [phx::bind(&semantic_actions::license_header, &sa_, karma::_1)]
+		<< karma::string [phx::bind(&semantic_actions::header, &sa_, karma::_1)]
 		<< "\n*/\n"
 		);
 

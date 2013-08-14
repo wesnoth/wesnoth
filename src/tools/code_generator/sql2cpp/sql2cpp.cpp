@@ -26,43 +26,53 @@ int main(int argc, char* argv[])
 	sql2cpp_options options(argc, argv);
 	if(!options.is_info())
 	{
-		// now we use the types defined above to create the lexer and grammar
-		// object instances needed to invoke the parsing process
-		sql::tokens_type tokens;                         // Our lexer
-		sql::grammar_type sql(tokens);                  // Our parser
-
-		std::string str(file2string(options.schema_file())) ;
-
-		// At this point we generate the iterator pair used to expose the
-		// tokenized input stream.
-		std::string::iterator it = str.begin();
-		sql::token_iterator_type iter = tokens.begin(it, str.end());
-		sql::token_iterator_type end = tokens.end();
-
-		// Parsing is done based on the the token stream, not the character 
-		// stream read from the input.
-		sql::ast::schema sql_ast;
-		bool r = boost::spirit::qi::parse(iter, end, sql, sql_ast);
-
-		if (r && iter == end)
+		try
 		{
-			std::cout << "Parsing succeeded\n";
-		
-			std::ofstream generated("dummy.txt");
-			std::ostream_iterator<char> sink(generated);
+			// now we use the types defined above to create the lexer and grammar
+			// object instances needed to invoke the parsing process
+			sql::tokens_type tokens;                         // Our lexer
+			sql::grammar_type sql(tokens);                  // Our parser
 
-			if(cpp::generate(sink, sql_ast, generated, options.output_directory()))
+			std::string str(file2string(options.schema_file())) ;
+
+			// At this point we generate the iterator pair used to expose the
+			// tokenized input stream.
+			std::string::iterator it = str.begin();
+			sql::token_iterator_type iter = tokens.begin(it, str.end());
+			sql::token_iterator_type end = tokens.end();
+
+			// Parsing is done based on the the token stream, not the character 
+			// stream read from the input.
+			sql::ast::schema sql_ast;
+			bool r = boost::spirit::qi::parse(iter, end, sql, sql_ast);
+
+			if (r && iter == end)
 			{
-				std::cout << "Generation succeeded\n";
+				std::cout << "Parsing succeeded\n";
+			
+				std::ofstream generated("dummy.txt");
+				std::ostream_iterator<char> sink(generated);
+
+				cpp::semantic_actions sa(file2string(options.header_file()), generated, options.output_directory());
+				cpp::grammar<std::ostream_iterator<char> > cpp_grammar(sa);
+
+				if(boost::spirit::karma::generate(sink, cpp_grammar, sql_ast))
+				{
+					std::cout << "Generation succeeded\n";
+				}
+				else
+				{
+					std::cout << "Generation failed\n";
+				}
 			}
 			else
 			{
-				std::cout << "Generation failed\n";
+				std::cout << "Parsing failed\n";
 			}
 		}
-		else
+		catch(const std::exception& e)
 		{
-			std::cout << "Parsing failed\n";
+			std::cerr << e.what() << std::endl;
 		}
 	}
 	return 0;

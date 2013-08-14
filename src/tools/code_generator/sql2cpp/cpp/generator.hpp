@@ -56,13 +56,5 @@ private:
 	KA_RULE(sql::ast::column_type_ptr(), member_type);
 };
 
-template <typename OutputIterator>
-bool generate(OutputIterator& sink, sql::ast::schema const& sql_ast, std::ofstream& generated, const std::string& output_dir)
-{
-	semantic_actions sa("../", generated, output_dir);
-	grammar<OutputIterator> cpp_grammar(sa);
-	return karma::generate(sink, cpp_grammar, sql_ast);
-}
-
 } // namespace cpp
 #endif // CPP_GENERATOR_HPP

@@ -21,15 +21,10 @@
 #include <boost/make_shared.hpp>
 #include <boost/algorithm/string.hpp>
 
-static std::string get_license_header_file()
-{
-	return "data/umcd/license_header.txt";
-}
-
 namespace cpp{
 
-semantic_actions::semantic_actions(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
-: license_header_(file2string(wesnoth_path + get_license_header_file())) 
+semantic_actions::semantic_actions(const std::string& header, std::ofstream& generated, const std::string& output_dir)
+: header_(header) 
 , generated_(generated)
 , output_dir_(output_dir)
 {}
@@ -40,9 +35,9 @@ void semantic_actions::type2string(std::string& res, sql::ast::column_type_ptr c
 	type->accept(visitor);
 }
 
-void semantic_actions::license_header(std::string& res)
+void semantic_actions::header(std::string& res)
 {
-	res = license_header_;
+	res = header_;
 }
 
 void semantic_actions::define_name(std::string& res, const std::string& class_name)

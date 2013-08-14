@@ -26,16 +26,16 @@ namespace cpp{
 class semantic_actions
 {
 public:
-	semantic_actions(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir);
+	semantic_actions(const std::string& header, std::ofstream& generated, const std::string& output_dir);
 
 	void type2string(std::string& res, sql::ast::column_type_ptr const& type);
-	void license_header(std::string& res);
+	void header(std::string& res);
 	void define_name(std::string& res, const std::string& class_name);
 	void includes(std::string& res, sql::ast::column_list const& class_members, std::set<std::string>& included);
 	void open_sink(const std::string& class_name);
 
 private:
-	std::string license_header_;
+	std::string header_;
 	std::ofstream& generated_;
 	std::string output_dir_;
 };

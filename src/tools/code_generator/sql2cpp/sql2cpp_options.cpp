@@ -79,15 +79,21 @@ bool sql2cpp_options::is_info() const
 
 std::string sql2cpp_options::output_directory() const
 {
+	if(output_dir_.empty())
+		throw po::validation_error(po::validation_error::at_least_one_value_required, "output_dir");
 	return add_trailing_slash(output_dir_);
 }
 
 std::string sql2cpp_options::schema_file() const
 {
+	if(schema_file_.empty())
+		throw po::validation_error(po::validation_error::at_least_one_value_required, "schema_file");
 	return schema_file_;
 }
 
 std::string sql2cpp_options::header_file() const
 {
+	if(header_file_.empty())
+		throw po::validation_error(po::validation_error::at_least_one_value_required, "header_file");
 	return header_file_;
 }
