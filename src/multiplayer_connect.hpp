@@ -51,6 +51,7 @@ public:
 		bool changed();
 
 		void update_controller_combo_list();
+		void update_original_controller_label();
 
 		void update_ui();
 		void hide_ai_algorithm_combo(bool force);

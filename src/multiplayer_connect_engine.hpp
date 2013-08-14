@@ -144,12 +144,15 @@ public:
 
 	void update_controller_options();
 	bool controller_changed(const int selection);
+	void set_controller(mp::controller controller);
 
 	void set_current_faction(const config* current_faction);
 	void set_current_leader(const std::string& current_leader);
 	void set_current_gender(const std::string& current_gender);
 
 	int current_faction_index() const;
+
+	std::string save_id() const { return cfg_["save_id"]; }
 
 	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
@@ -183,6 +186,8 @@ public:
 	void set_income(int income) { income_ = income; }
 	const std::string& player_id() const { return player_id_; }
 	const std::string& current_player() const { return current_player_; }
+	void set_current_player(const std::string& current_player)
+		{ current_player_ = current_player; }
 	const std::string& ai_algorithm() const { return ai_algorithm_; }
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
@@ -194,8 +199,6 @@ private:
 
 	void update_choosable_leaders();
 	void update_choosable_genders();
-
-	void set_controller(mp::controller controller);
 
 	config cfg_;
 	connect_engine& parent_;
@@ -219,13 +222,13 @@ private:
 	const bool allow_player_;
 	const bool allow_changes_;
 	const std::string leader_id_;
-	const std::string current_player_;
 
 	int index_;
 	int team_;
 	int color_;
 	int gold_;
 	int income_;
+	std::string current_player_;
 	std::string player_id_;
 	std::string ai_algorithm_;
 };

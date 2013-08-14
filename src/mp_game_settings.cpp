@@ -29,6 +29,7 @@ mp_game_settings::mp_game_settings() :
 	mp_era(),
 	mp_scenario(),
 	active_mods(),
+	side_users(),
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
@@ -60,6 +61,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	mp_era(),
 	mp_scenario(),
 	active_mods(),
+	side_users(),
 	num_turns(0),
 	village_gold(0),
 	village_support(1),
@@ -92,6 +94,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, mp_era(settings.mp_era)
 	, mp_scenario(settings.mp_scenario)
 	, active_mods(settings.active_mods)
+	, side_users(settings.side_users)
 	, num_turns(settings.num_turns)
 	, village_gold(settings.village_gold)
 	, village_support(settings.village_support)
@@ -126,6 +129,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	mp_era = cfg["mp_era"].str();
 	mp_scenario = cfg["mp_scenario"].str();
 	active_mods = utils::split(cfg["active_mods"], ',');
+	side_users = utils::map_split(cfg["side_users"]);
 	xp_modifier = cfg["experience_modifier"];
 	use_map_settings = cfg["mp_use_map_settings"].to_bool();
 	random_start_time = cfg["mp_random_start_time"].to_bool();
@@ -153,6 +157,7 @@ void mp_game_settings::reset()
 	mp_era = "";
 	mp_scenario = "";
 	active_mods.clear();
+	side_users.clear();
 	num_turns = 0;
 	village_gold = 0;
 	village_support = 1;
@@ -177,6 +182,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_era"] = mp_era;
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["active_mods"] = utils::join(active_mods, ",");
+	cfg["side_users"] = utils::join_map(side_users);
 	cfg["experience_modifier"] = xp_modifier;
 	cfg["mp_countdown"] = mp_countdown;
 	cfg["mp_countdown_init_time"] = mp_countdown_init_time;

@@ -134,6 +134,21 @@ void connect_engine::add_side_engine(side_engine_ptr engine)
 
 void connect_engine::init_after_side_engines_assigned()
 {
+	if (!first_scenario_) {
+		// Load reserved players information into the sides.
+		std::map<std::string, std::string> side_users =
+			utils::map_split(level_.child("multiplayer")["side_users"]);
+		BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+			const std::string& save_id = side->save_id();
+			if (side_users.find(save_id) != side_users.end()) {
+				side->set_current_player(side_users[save_id]);
+
+				side->update_controller_options();
+				side->set_controller(CNTR_RESERVED);
+			}
+		}
+	}
+
 	// Add host to the connected users list.
 	import_user(preferences::login(), false);
 }
@@ -212,6 +227,17 @@ void connect_engine::update_level()
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		level_.add_child("side", side->new_config());
 	}
+
+	// Add information about reserved sides to the level config.
+	std::map<std::string, std::string> side_users;
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		const std::string& save_id = side->save_id();
+		const std::string& player_id = side->player_id();
+		if (!save_id.empty() && !player_id.empty()) {
+			side_users[save_id] = player_id;
+		}
+	}
+	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
 void connect_engine::update_and_send_diff(bool update_time_of_day)
@@ -552,7 +578,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 	if (const config& change_faction = data.child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
-		if (side_taken != -1) {
+		if (side_taken != -1 || !first_scenario_) {
 			import_user(change_faction, false, side_taken);
 
 			update_and_send_diff();
@@ -645,12 +671,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	leader_id_(cfg["id"]),
-	current_player_(cfg["current_player"]),
 	index_(index),
 	team_(0),
 	color_(index),
 	gold_(cfg["gold"].to_int(100)),
 	income_(cfg["income"]),
+	current_player_(cfg["current_player"]),
 	player_id_(cfg["player_id"]),
 	ai_algorithm_()
 {
@@ -1147,6 +1173,29 @@ bool side_engine::controller_changed(const int selection)
 	return true;
 }
 
+void side_engine::set_controller(mp::controller controller)
+{
+	controller_ = controller;
+
+	// Update current controller index.
+	int i = 0;
+	BOOST_FOREACH(const controller_option& option, controller_options_) {
+		if (option.first == controller) {
+			current_controller_index_ = i;
+
+			if (player_id_.empty() || player_id_ == option.second) {
+				// Stop searching if no user is assigned to a side
+				// or the selected user is found.
+				break;
+			}
+		}
+
+		i++;
+	}
+
+	assert(current_controller_index_ < controller_options_.size());
+}
+
 void side_engine::set_current_faction(const config* current_faction)
 {
 	current_faction_ = current_faction;
@@ -1219,29 +1268,6 @@ void side_engine::update_choosable_genders()
 	choosable_genders_.clear();
 	choosable_genders_ = init_choosable_genders(cfg_, current_leader_,
 		parent_.params_.use_map_settings, parent_.params_.saved_game);
-}
-
-void side_engine::set_controller(mp::controller controller)
-{
-	controller_ = controller;
-
-	// Update current controller index.
-	int i = 0;
-	BOOST_FOREACH(const controller_option& option, controller_options_) {
-		if (option.first == controller) {
-			current_controller_index_ = i;
-
-			if (player_id_.empty() || player_id_ == option.second) {
-				// Stop searching if no user is assigned to a side
-				// or the selected user is found.
-				break;
-			}
-		}
-
-		i++;
-	}
-
-	assert(current_controller_index_ < controller_options_.size());
 }
 
 } // end namespace mp

@@ -39,6 +39,7 @@ struct mp_game_settings : public savegame::savegame_config
 	std::string mp_era;
 	std::string mp_scenario;
 	std::vector<std::string> active_mods;
+	std::map<std::string, std::string> side_users;
 
 	int num_turns;
 	int village_gold;

@@ -257,6 +257,11 @@ void connect::side::update_controller_combo_list()
 	update_controller_combo();
 }
 
+void connect::side::update_original_controller_label()
+{
+	label_original_controller_.set_text(engine_->current_player());
+}
+
 void connect::side::update_ui()
 {
 	update_faction_combo();
@@ -287,11 +292,14 @@ void connect::side::hide_ai_algorithm_combo(bool force)
 		if (engine_->controller() == CNTR_COMPUTER) {
 			// Computer selected, show AI combo.
 			combo_ai_algorithm_.hide(false);
+
 			label_original_controller_.hide(true);
 		} else {
 			// Computer de-selected, hide AI combo.
 			combo_ai_algorithm_.hide(true);
+
 			label_original_controller_.hide(false);
+			label_original_controller_.set_text(engine_->current_player());
 		}
 	} else {
 		combo_ai_algorithm_.hide(true);
@@ -746,6 +754,10 @@ void connect::lists_init()
 		if (!s.engine()->allow_player()) {
 			continue;
 		}
+
+		// Update original controller label in case it changed
+		// after adding the side_engine to the connect_engine.
+		s.update_original_controller_label();
 
 		s.add_widgets_to_scrollpane(scroll_pane_, side_pos_y_offset);
 		side_pos_y_offset += 60;
