@@ -1013,6 +1013,7 @@ if(ENABLE_UMCD)
 
 set(sql2cpp_SRC
 	tools/code_generator/sql2cpp/sql2cpp.cpp
+	tools/code_generator/sql2cpp/sql2cpp_options.cpp
 	tools/code_generator/sql2cpp/utility.cpp
 	tools/code_generator/sql2cpp/cpp/semantic_actions.cpp
 	tools/code_generator/sql2cpp/cpp/type_visitors.cpp
@@ -1023,6 +1024,10 @@ set(sql2cpp_SRC
 )
 
 add_executable(sql2cpp ${sql2cpp_SRC})
+
+target_link_libraries(sql2cpp
+	${Boost_PROGRAM_OPTIONS_LIBRARY}
+)
 
 # UMCD core.
 

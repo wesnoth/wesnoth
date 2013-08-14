@@ -570,6 +570,7 @@ env.WesnothProgram("umcd", umcd_sources + [libwesnoth_core, libwesnothd, libumcd
 
 sqlparser_sources = Split("""
     tools/code_generator/sql2cpp/sql2cpp.cpp
+    tools/code_generator/sql2cpp/sql2cpp_options.cpp
     tools/code_generator/sql2cpp/utility.cpp
     tools/code_generator/sql2cpp/cpp/semantic_actions.cpp
     tools/code_generator/sql2cpp/cpp/type_visitors.cpp
@@ -579,7 +580,7 @@ sqlparser_sources = Split("""
     tools/code_generator/sql2cpp/sql/lexer.cpp
     """)
 
-env.WesnothProgram("sql2cpp", sqlparser_sources, True)
+env.WesnothProgram("sql2cpp", sqlparser_sources, have_sql2cpp_prereqs)
 
 wesnothd_sources = Split("""
     server/ban.cpp

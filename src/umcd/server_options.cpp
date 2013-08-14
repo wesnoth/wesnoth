@@ -96,10 +96,11 @@ boost::optional<std::string> server_options::wesnoth_dir(const config& cfg) cons
 	return wesdir;
 }
 
-std::string add_trailing_slash(const std::string& dir)
+std::string server_options::add_trailing_slash(const std::string& dir) const
 {
-	if(dir.size() > 0 && dir.last() != '/')
+	if(dir.size() > 0 && *dir.rbegin() != '/')
 		return dir + '/';
+	return dir;
 }
 
 void server_options::validate(const config& cfg) const
