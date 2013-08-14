@@ -28,39 +28,21 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	// iterator type used to expose the underlying input stream
-	typedef std::string::iterator base_iterator_type;
-
-	// We use the default lexer engine.
-	typedef sql::lexer<base_iterator_type>::type lexer_type;
-
-	// This is the token definition type (derived from the given lexer type).
-	typedef sql::tokens<lexer_type> sql_tokens;
-
-	// this is the iterator type exposed by the lexer 
-	typedef sql_tokens::iterator_type iterator_type;
-
-	// this is the type of the grammar to parse
-	typedef sql::grammar<iterator_type> sql_grammar;
-
 	// now we use the types defined above to create the lexer and grammar
 	// object instances needed to invoke the parsing process
-	sql_tokens tokens;                         // Our lexer
-	sql_grammar sql(tokens);                  // Our parser
+	sql::tokens_type tokens;                         // Our lexer
+	sql::grammar_type sql(tokens);                  // Our parser
 
-	std::string str(file2string(argv[1]));
+	std::string str(file2string(argv[1])) ;
 
 	// At this point we generate the iterator pair used to expose the
 	// tokenized input stream.
-	base_iterator_type it = str.begin();
-	iterator_type iter = tokens.begin(it, str.end());
-	iterator_type end = tokens.end();
+	std::string::iterator it = str.begin();
+	sql::token_iterator_type iter = tokens.begin(it, str.end());
+	sql::token_iterator_type end = tokens.end();
 
 	// Parsing is done based on the the token stream, not the character 
 	// stream read from the input.
-	// Note how we use the lexer defined above as the skip parser. It must
-	// be explicitly wrapped inside a state directive, switching the lexer 
-	// state for the duration of skipping whitespace.
 	sql::ast::schema sql_ast;
 	bool r = boost::spirit::qi::parse(iter, end, sql, sql_ast);
 

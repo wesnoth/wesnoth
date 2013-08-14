@@ -12,13 +12,16 @@
 	See the COPYING file for more details.
 */
 
-#ifndef SQL2CPP_UTILITY_HPP
-#define SQL2CPP_UTILITY_HPP
-
-#include <string>
+#include "tools/code_generator/sql2cpp/utility.hpp"
+#include <fstream>
+#include <sstream>
 
 // Why not using read_file from filesystem.cpp?
 // Because it adds too many dependencies for a single function...
-std::string file2string(const std::string& filename);
-
-#endif // SQL2CPP_UTILITY_HPP
+std::string file2string(const std::string& filename)
+{
+	std::ifstream s(filename.c_str(), std::ios_base::binary);
+	std::stringstream ss;
+	ss << s.rdbuf();
+	return ss.str();
+}

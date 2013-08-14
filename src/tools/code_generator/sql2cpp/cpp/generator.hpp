@@ -32,9 +32,9 @@ struct grammar
 {
 	typedef OutputIterator iterator_type;
 
-	grammar(const std::string& wesnoth_path, std::ofstream& generated, const std::string& output_dir)
+	grammar(semantic_actions& sa)
 	: grammar::base_type(schema)
-	, sa_(wesnoth_path, generated, output_dir)
+	, sa_(sa)
 	{
 		using karma::eol;
 
@@ -123,7 +123,7 @@ struct grammar
 	}
 
 private:
-	semantic_actions sa_;
+	semantic_actions &sa_;
 
 	KA_RULE(sql::ast::schema(), schema);
 	KA_RULE(sql::ast::table(), file);
@@ -147,7 +147,8 @@ private:
 template <typename OutputIterator>
 bool generate(OutputIterator& sink, sql::ast::schema const& sql_ast, std::ofstream& generated, const std::string& output_dir)
 {
-	grammar<OutputIterator> cpp_grammar("../", generated, output_dir);
+	semantic_actions sa("../", generated, output_dir);
+	grammar<OutputIterator> cpp_grammar(sa);
 	return karma::generate(sink, cpp_grammar, sql_ast);
 }
 

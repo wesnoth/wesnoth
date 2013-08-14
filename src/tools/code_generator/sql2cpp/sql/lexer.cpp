@@ -12,13 +12,8 @@
 	See the COPYING file for more details.
 */
 
-#ifndef SQL2CPP_UTILITY_HPP
-#define SQL2CPP_UTILITY_HPP
+#include "tools/code_generator/sql2cpp/sql/lexer.tcc"
 
-#include <string>
-
-// Why not using read_file from filesystem.cpp?
-// Because it adds too many dependencies for a single function...
-std::string file2string(const std::string& filename);
-
-#endif // SQL2CPP_UTILITY_HPP
+namespace sql{
+template tokens<detail::lexer_type>::tokens();
+}

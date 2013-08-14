@@ -16,47 +16,21 @@
 #define CPP_TYPE_VISITORS_HPP
 
 #include "tools/code_generator/sql2cpp/sql/type.hpp"
-#include <boost/lexical_cast.hpp>
 
 namespace cpp{
 
 struct sql2cpp_type_visitor : sql::type::type_visitor
 {
 private:
-	std::string add_unsigned_qualifier(const sql::type::numeric_type& num_type)
-	{
-		return (num_type.is_unsigned) ? "u":"";
-	}
+	std::string add_unsigned_qualifier(const sql::type::numeric_type& num_type);
 public:
 
-	sql2cpp_type_visitor(std::string& res)
-	: res_(res)
-	{}
-
-	virtual void visit(const sql::type::smallint& s)
-	{
-		res_ = "boost::" + add_unsigned_qualifier(s) + "int16_t";
-	}
-
-	virtual void visit(const sql::type::integer& i)
-	{
-		res_ = "boost::" + add_unsigned_qualifier(i) + "int32_t";
-	}
-
-	virtual void visit(const sql::type::text&)
-	{
-		res_ = "std::string";
-	}
-
-	virtual void visit(const sql::type::date&)
-	{
-		res_ = "boost::posix_time::ptime";
-	}
-
-	virtual void visit(const sql::type::varchar& v)
-	{
-		res_ = "boost::array<char, " + boost::lexical_cast<std::string>(v.length) + ">";
-	}
+	sql2cpp_type_visitor(std::string& res);
+	virtual void visit(const sql::type::smallint& s);
+	virtual void visit(const sql::type::integer& i);
+	virtual void visit(const sql::type::text&);
+	virtual void visit(const sql::type::date&);
+	virtual void visit(const sql::type::varchar& v);
 
 private:
 	std::string& res_;
@@ -64,34 +38,13 @@ private:
 
 struct sql2cpp_header_type_visitor : sql::type::type_visitor
 {
-	sql2cpp_header_type_visitor(std::string& res)
-	: res_(res)
-	{}
+	sql2cpp_header_type_visitor(std::string& res);
 
-	virtual void visit(const sql::type::smallint&)
-	{
-		res_ = "#include <boost/cstdint.hpp>";
-	}
-
-	virtual void visit(const sql::type::integer&)
-	{
-		res_ = "#include <boost/cstdint.hpp>";
-	}
-
-	virtual void visit(const sql::type::text&)
-	{
-		res_ = "#include <string>";
-	}
-
-	virtual void visit(const sql::type::date&)
-	{
-		res_ = "#include <boost/date_time/posix_time/posix_time.hpp>";
-	}
-
-	virtual void visit(const sql::type::varchar&)
-	{
-		res_ = "#include <boost/array.hpp>";
-	}
+	virtual void visit(const sql::type::smallint&);
+	virtual void visit(const sql::type::integer&);
+	virtual void visit(const sql::type::text&);
+	virtual void visit(const sql::type::date&);
+	virtual void visit(const sql::type::varchar&);
 
 private:
 	std::string& res_;
