@@ -102,6 +102,7 @@ public:
 	virtual void toggle_ellipses();
 	virtual void toggle_grid();
 	virtual void search();
+	virtual void toggle_accelerated_speed();
 
 	virtual void maybe_do_init_side(const unsigned int team_index, bool is_replay = false);
 	virtual void do_init_side(const unsigned int team_index, bool is_replay = false);

@@ -1429,3 +1429,20 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 	gui_->draw(true,true);
 }
 
+void play_controller::toggle_accelerated_speed()
+{
+	preferences::set_turbo(!preferences::turbo());
+	
+	if (preferences::turbo())
+	{
+		std::string hk = hotkey::get_names(hotkey::HOTKEY_ACCELERATED);
+		utils::string_map symbols;
+		symbols["hk"] = hk;
+		gui_->announce(_("Accelerated speed enabled!"), font::NORMAL_COLOR);
+		gui_->announce("\n" + vgettext("(press $hk to disable)", symbols), font::NORMAL_COLOR);
+	}
+	else
+	{
+		gui_->announce(_("Accelerated speed disabled!"), font::NORMAL_COLOR);
+	}
+}

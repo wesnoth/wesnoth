@@ -392,6 +392,7 @@ public:
 	virtual void whiteboard_suppose_dead() {}
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
+	virtual void toggle_accelerated_speed() {}
 
 	// Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
