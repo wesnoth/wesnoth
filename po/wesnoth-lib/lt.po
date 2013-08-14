@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -1369,7 +1370,7 @@ msgstr "Dydis:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:243
 msgid "Downloads:"
-msgstr ""
+msgstr "Atsiuntimai:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:274
@@ -1394,17 +1395,17 @@ msgstr "Nėra"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:34
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "Kampanijos"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:35
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "DŽ eros"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:38
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "Scenarijai"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:39
@@ -1414,32 +1415,32 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:42
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "DŽ kampanijos"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:43
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "Resursai"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:46
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "DŽ scenarijai"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:48
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "Kiti"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:51
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "DŽ žemėlapių rinkiniai"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:52
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "Nežinomas"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:55
@@ -1592,7 +1593,7 @@ msgstr "Pavadinimas:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
@@ -1642,7 +1643,7 @@ msgstr "Mėlyna:"
 #. [label]: id=tod_number
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. [button]: id=new
 #: data/gui/default/window/custom_tod.cfg:359
@@ -1652,7 +1653,6 @@ msgstr ""
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
 #, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
 msgstr "Trinti"
 
@@ -2453,12 +2453,12 @@ msgstr "Slaptažodis:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirmation requested"
-msgstr ""
+msgstr "Paprašytas patvirtinimas"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "Ar norite pritaikyti pakeitimus?"
 
 #. [label]
 #. [label]: id=message
@@ -2473,7 +2473,7 @@ msgstr "Naudotojo sąsajos garsai"
 #: data/gui/default/window/mp_host_game_prompt.cfg:40
 #: data/gui/default/window/mp_method_selection.cfg:166
 msgid "Host Networked Game"
-msgstr ""
+msgstr "Sukurti tinklo žaitimą"
 
 #. [label]
 #: data/gui/default/window/mp_host_game_prompt.cfg:58
@@ -2764,7 +2764,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:177
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "Trinti automatinius išsaugojimus scenarijaus pabaigoje"
 
 #: src/game_preferences_display.cpp:178
 msgid "Do not show lobby joins"
@@ -3764,10 +3764,8 @@ msgid "Change Side (Debug!)"
 msgstr "Keisti pusę (Derinimas!)"
 
 #: src/hotkeys.cpp:106
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Sukurti dalinį (Derinimas!)"
+msgstr "Užmušti karį (Derinimas!)"
 
 #: src/hotkeys.cpp:108
 msgid "Scenario Objectives"
@@ -4061,20 +4059,19 @@ msgstr ""
 
 #: src/hotkeys.cpp:181
 msgid "Can be renamed"
-msgstr ""
+msgstr "Gali būti pervadintas"
 
 #: src/hotkeys.cpp:181
 msgid "Toggle the unit being renameable."
 msgstr ""
 
 #: src/hotkeys.cpp:183
-#, fuzzy
 msgid "Change Unit ID"
-msgstr "Pakeisti valdymą"
+msgstr "Keisti kario ID"
 
 #: src/hotkeys.cpp:184
 msgid "Loyal"
-msgstr ""
+msgstr "Ištikimas"
 
 #: src/hotkeys.cpp:186
 msgid "Toggle Minimap color coding"
@@ -4329,15 +4326,15 @@ msgstr ""
 
 #: src/hotkeys.cpp:389 src/hotkeys.cpp:392
 msgid "Button"
-msgstr ""
+msgstr "Mygtukas"
 
 #: src/hotkeys.cpp:389
 msgid "Mouse"
-msgstr ""
+msgstr "Pelė"
 
 #: src/hotkeys.cpp:392 src/hotkeys.cpp:428
 msgid "Joystick"
-msgstr ""
+msgstr "Vairalazdė"
 
 #: src/hotkeys.cpp:398
 msgid "Centered"
@@ -4348,9 +4345,8 @@ msgid "Up"
 msgstr ""
 
 #: src/hotkeys.cpp:404
-#, fuzzy
 msgid "Right"
-msgstr "Aukštis:"
+msgstr ""
 
 #: src/hotkeys.cpp:407
 msgid "Down"
@@ -4533,9 +4529,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#~ msgid "Editor Settings"
-#~ msgstr "Redaktoriaus nustatymai"
-
-#~ msgid "Automatically update map view"
-#~ msgstr "Automatiškai atnaujinti žemėlapio vaizdą"

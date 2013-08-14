@@ -120,47 +120,47 @@ msgstr "specialios"
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:5
 msgid "Test"
-msgstr ""
+msgstr "Testas"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:16
 msgid "Default"
-msgstr ""
+msgstr "Numatytas"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:22
 msgid "Summer"
-msgstr ""
+msgstr "Vasara"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:28
 msgid "Winter"
-msgstr ""
+msgstr "Žiema"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:34
 msgid "Underground"
-msgstr ""
+msgstr "Po žeme"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:40
 msgid "Deep Underground"
-msgstr ""
+msgstr "Giliai po žeme"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:46
 msgid "Indoors"
-msgstr ""
+msgstr "Patalpoje"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:52
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24 valandų para"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:59
 msgid "After the Fall"
-msgstr ""
+msgstr "Po Kritimo"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
@@ -216,7 +216,7 @@ msgstr "Žemėlapis"
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:98
 msgid "Transition Update"
-msgstr ""
+msgstr "Perėjimų atnaujinimas"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:105
@@ -226,12 +226,12 @@ msgstr "Langas"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:115
 msgid "Areas"
-msgstr ""
+msgstr "Vietovės"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:125
 msgid "Side"
-msgstr ""
+msgstr "Pusė"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:144
@@ -241,52 +241,52 @@ msgstr "kaimai"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:161
 msgid "units"
-msgstr ""
+msgstr "kariai"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:500
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Paros laiko meniu"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:510
 msgid "Playlist"
-msgstr ""
+msgstr "Grojaraštis"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:516
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Priskirti paros laiką"
 
 #. [label]: id=terrain-icon
 #: data/themes/editor.cfg:610
 msgid "terrain"
-msgstr ""
+msgstr "vietovė"
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/editor.cfg:689
 msgid "Not implemented yet."
-msgstr ""
+msgstr "Dar nesuprogramuota."
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "ID: "
-msgstr ""
+msgstr "ID: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "Vardas: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
-msgstr ""
+msgstr "Tipas: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Level: "
-msgstr ""
+msgstr "Lygis: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Cost: "
-msgstr ""
+msgstr "Kaina: "
 
 #: src/editor/editor_controller.cpp:173
 msgid "Fatal error"
@@ -322,19 +322,19 @@ msgstr "Nerastas dienos-laiko redaktorius."
 
 #: src/editor/editor_controller.cpp:949
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Keisti dalinio ID"
 
 #: src/editor/editor_controller.cpp:950
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/editor_controller.cpp:966
 msgid "Rename Unit"
-msgstr ""
+msgstr "Pervadinti karį"
 
 #: src/editor/editor_controller.cpp:967
 msgid "Name:"
-msgstr ""
+msgstr "Vardas:"
 
 #: src/editor/map/context_manager.cpp:119
 #: src/editor/map/context_manager.cpp:202
@@ -346,14 +346,12 @@ msgid "Choose a Map to Open"
 msgstr "Pasirinkite atveriamą žemėlapį"
 
 #: src/editor/map/context_manager.cpp:234
-#, fuzzy
 msgid "(New Area)"
-msgstr "(Naujas žemėlapis)"
+msgstr "(Naujas vietovė)"
 
 #: src/editor/map/context_manager.cpp:257
-#, fuzzy
 msgid "(New Side)"
-msgstr "(Naujas žemėlapis)"
+msgstr "(Nauja pusė)"
 
 #: src/editor/map/context_manager.cpp:303
 msgid "Choose a Mask to Apply"
@@ -481,7 +479,7 @@ msgstr "Fonas: "
 
 #: src/gui/dialogs/editor/custom_tod.cpp:123
 msgid "Choose file"
-msgstr ""
+msgstr "Pasirinkite failą"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
@@ -490,6 +488,3 @@ msgstr "Joks"
 #: src/gui/dialogs/editor_set_starting_position.cpp:98
 msgid "Player $player_number"
 msgstr "Žaidėjas $player_number"
-
-#~ msgid "Custom setting"
-#~ msgstr "Savas nustatymas"
