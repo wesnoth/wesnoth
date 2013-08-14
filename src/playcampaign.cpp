@@ -584,7 +584,12 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 				// Opens mp::connect dialog to get a new gamestate.
 				// Old carryover data is preserved.
-				gamestate = mp::goto_mp_wait(disp, game_config);
+				mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
+					game_config);
+				if (wait_res == mp::ui::QUIT) {
+					return QUIT;
+				}
+
 				gamestate.carryover_sides_start.merge_with(
 					old_carryover_sides_start);
 
@@ -637,8 +642,13 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 					// Opens mp::connect dialog to get a new gamestate.
 					// Old carryover data is preserved.
-					gamestate = mp::goto_mp_connect(disp, game_config,
-						gamestate.mp_settings(), network_game);
+					mp::ui::result connect_res = mp::goto_mp_connect(gamestate,
+						disp, game_config, gamestate.mp_settings(),
+						network_game);
+					if (connect_res == mp::ui::QUIT) {
+						return QUIT;
+					}
+
 					gamestate.carryover_sides_start.merge_with(
 						old_carryover_sides_start);
 

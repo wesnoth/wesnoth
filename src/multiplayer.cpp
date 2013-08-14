@@ -901,11 +901,11 @@ void start_client(game_display& disp, const config& game_config,
 	}
 }
 
-game_state goto_mp_connect(game_display& disp, const config& game_config,
-	const mp_game_settings& params, bool network_game)
+mp::ui::result goto_mp_connect(game_state& state, game_display& disp,
+	const config& game_config, const mp_game_settings& params,
+	bool network_game)
 {
 	mp::ui::result res;
-	game_state state;
 
 	mp::chat chat;
 	config gamelist;
@@ -922,21 +922,13 @@ game_state goto_mp_connect(game_display& disp, const config& game_config,
 		}
 	}
 
-	switch (res) {
-	case mp::ui::PLAY:
-	case mp::ui::CREATE:
-	case mp::ui::QUIT:
-	default:
-		break;
-	}
-
-	return state;
+	return res;
 }
 
-game_state goto_mp_wait(game_display& disp, const config& game_config)
+mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
+	const config& game_config)
 {
 	mp::ui::result res;
-	game_state state;
 
 	mp::chat chat;
 	config gamelist;
@@ -954,15 +946,7 @@ game_state goto_mp_wait(game_display& disp, const config& game_config)
 		}
 	}
 
-	switch (res) {
-	case mp::ui::PLAY:
-	case mp::ui::CREATE:
-	case mp::ui::QUIT:
-	default:
-		break;
-	}
-
-	return state;
+	return res;
 }
 
 } // end namespace mp

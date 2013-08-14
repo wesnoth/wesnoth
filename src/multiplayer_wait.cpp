@@ -219,7 +219,7 @@ handler_vector wait::leader_preview_pane::handler_members() {
 wait::wait(game_display& disp, const config& cfg,
 		mp::chat& c, config& gamelist, const bool first_scenario) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
-	cancel_button_(disp.video(), _("Cancel")),
+	cancel_button_(disp.video(), first_scenario ? _("Cancel") : _("Quit")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
 	level_(),

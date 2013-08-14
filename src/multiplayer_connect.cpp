@@ -416,7 +416,7 @@ connect::connect(game_display& disp, const config& game_config,
 		font::LOBBY_COLOR),
 	scroll_pane_(video()),
 	launch_(video(), _("I’m Ready")),
-	cancel_(video(), _("Cancel")),
+	cancel_(video(), first_scenario ? _("Cancel") : _("Quit")),
 	//add_local_player_(video(), _("Add named local player")),
 	combo_control_group_(new gui::drop_group_manager())
 {

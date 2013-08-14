@@ -54,10 +54,20 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 void start_client(game_display& disp, const config& game_config,
 		const std::string& host);
 
-game_state goto_mp_connect(game_display& disp, const config& game_config,
-	const mp_game_settings& params, bool network_game);
+/**
+ * Opens mp::connect screen and sets game state according to the
+ * changes made.
+ */
+mp::ui::result goto_mp_connect(game_state& state, game_display& disp,
+	const config& game_config, const mp_game_settings& params,
+	bool network_game);
 
-game_state goto_mp_wait(game_display& disp, const config& game_config);
+/**
+ * Opens mp::wait screen and sets game state according to the
+ * changes made.
+ */
+mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
+	const config& game_config);
 
 }
 #endif
