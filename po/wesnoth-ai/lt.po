@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [ai]: id=ai_default_rca
 #: data/ai/ais/ai_default_rca.cfg:5
@@ -209,7 +210,7 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:226
 msgid "Move Konrad here"
-msgstr ""
+msgstr "Čia nuveskite Konradą"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:242
@@ -231,7 +232,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:275
 msgid "Prince... you must keep fighting! Nooooooo!"
-msgstr ""
+msgstr "Prince... privalai toliau kovoti! Neeeeeee!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:279
@@ -246,7 +247,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:297
 msgid "Don’t die, Delfador! Please, you have to stay alive!"
-msgstr ""
+msgstr "Nemirk, Delfadorai!  Prašau, privalai likti gyvas!"
 
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:301
@@ -362,7 +363,7 @@ msgstr "Vorai"
 #. [side]
 #: data/ai/micro_ais/scenarios/animals.cfg:106
 msgid "Yetis"
-msgstr ""
+msgstr "Ječiai"
 
 #. [event]
 #. [side]
@@ -574,7 +575,7 @@ msgstr "Didelio blogo orko mirtis"
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:125
 msgid "Only one orc remains"
-msgstr ""
+msgstr "Lieka tik vienas orkas"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/bottleneck-defense.cfg:150
@@ -592,7 +593,7 @@ msgstr "Drakonas"
 #. [side]
 #: data/ai/micro_ais/scenarios/dragon.cfg:20
 msgid "team_name^Rowck"
-msgstr ""
+msgstr "Raukas"
 
 #. [side]: type=Dread Bat, id=Dreadful Bat
 #: data/ai/micro_ais/scenarios/dragon.cfg:33
@@ -602,12 +603,12 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:51
 msgid "Rowck's Home"
-msgstr ""
+msgstr "Rauko namas"
 
 #. [unit]: id=Rowck, type=Fire Dragon
 #: data/ai/micro_ais/scenarios/dragon.cfg:55
 msgid "Rowck"
-msgstr ""
+msgstr "Raukas"
 
 #. [event]: (id=Dreadful Bat) profile profile}
 #: data/ai/micro_ais/scenarios/dragon.cfg:84
@@ -645,7 +646,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:101
 msgid "Defeat Rowck"
-msgstr ""
+msgstr "Nugalėkite Rauką"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/dragon.cfg:105
@@ -655,7 +656,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/dragon.cfg:109
 msgid "Death of the bat leader"
-msgstr ""
+msgstr "Šikšnosparnių vado mirtis"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/dragon.cfg:142
@@ -667,12 +668,12 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/goto.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:83
 msgid "Goto"
-msgstr ""
+msgstr "Goto"
 
 #. [side]: id=Vaddan, type=Outlaw
 #: data/ai/micro_ais/scenarios/goto.cfg:24
 msgid "Vaddan"
-msgstr ""
+msgstr "Vadanas"
 
 #. [side]: type=Poacher, id=leader3
 #: data/ai/micro_ais/scenarios/goto.cfg:59
@@ -682,7 +683,7 @@ msgstr ""
 #. [side]: type=Saurian Flanker, id=leader4
 #: data/ai/micro_ais/scenarios/goto.cfg:77
 msgid "Saurians"
-msgstr ""
+msgstr "Ropliai"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:132
@@ -697,17 +698,17 @@ msgstr ""
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:182
 msgid "Lieutenant Gadoc"
-msgstr ""
+msgstr "Leitenantas Gadokas"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:183
 msgid "Lieutenant Senvan"
-msgstr ""
+msgstr "Leitenantas Senvanas"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:184
 msgid "Sergeant Aethubry"
-msgstr ""
+msgstr "Seržantas Ėtubris"
 
 #. [set_menu_item]: id=m01_new_footpad
 #: data/ai/micro_ais/scenarios/goto.cfg:325
@@ -753,7 +754,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/goto.cfg:411
 msgid "Death of Vaddan"
-msgstr ""
+msgstr "Vadano mirtis"
 
 #. [message]: speaker=messenger1
 #: data/ai/micro_ais/scenarios/goto.cfg:426
@@ -805,7 +806,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:508
 msgid "I told you so!"
-msgstr ""
+msgstr "Sakiau tau!"
 
 #. [message]: speaker=leader5
 #: data/ai/micro_ais/scenarios/goto.cfg:518
@@ -908,7 +909,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:30
 #: data/ai/micro_ais/scenarios/swarm.cfg:18
 msgid "Kraa"
-msgstr ""
+msgstr "Kraa"
 
 #. [side]: id=Kraa, type=Gryphon
 #: data/ai/micro_ais/scenarios/guardians.cfg:36
@@ -1083,7 +1084,7 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:412
 msgid "Guarded Location"
-msgstr ""
+msgstr "Saugoma vietovė"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/guardians.cfg:413
@@ -1259,7 +1260,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/guardians.cfg:534
 #: data/ai/micro_ais/scenarios/patrols.cfg:211
 msgid "Defeat all enemy units"
-msgstr ""
+msgstr "Nugalėkite visus priešo karius"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/guardians.cfg:538
@@ -1269,7 +1270,7 @@ msgstr ""
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/guardians.cfg:542
 msgid "Death of Kraa"
-msgstr ""
+msgstr "Kraa mirtis"
 
 #. [note]
 #: data/ai/micro_ais/scenarios/guardians.cfg:546
@@ -1291,12 +1292,12 @@ msgstr ""
 #. [side]: id=Rebels1, type=Elvish Ranger
 #: data/ai/micro_ais/scenarios/healer_support.cfg:21
 msgid "Rebels 1"
-msgstr ""
+msgstr "Sukilėliai 1"
 
 #. [side]: id=Rebels2, type=Elvish Marksman
 #: data/ai/micro_ais/scenarios/healer_support.cfg:37
 msgid "Rebels 2"
-msgstr ""
+msgstr "Sukilėliai 2"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/healer_support.cfg:83
@@ -1587,17 +1588,17 @@ msgstr "Banditai"
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:40
 msgid "team_name^Konrad"
-msgstr ""
+msgstr "Konradas"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/patrols.cfg:56
 msgid "team_name^Urudin"
-msgstr ""
+msgstr "Urudinas"
 
 #. [unit]: type=Orcish Slayer, id=Urudin
 #: data/ai/micro_ais/scenarios/patrols.cfg:116
 msgid "Urudin"
-msgstr ""
+msgstr "Urudinas"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/patrols.cfg:159
@@ -1866,7 +1867,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/recruiting.cfg:5
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:77
 msgid "Recruiting"
-msgstr ""
+msgstr "Samdymas"
 
 #. [event]: id=Koorzhar profile profile}
 #: data/ai/micro_ais/scenarios/recruiting.cfg:79
@@ -1929,7 +1930,7 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:65
 msgid "HttT: The Elves Besieged"
-msgstr ""
+msgstr "SĮ: Elfai apsiausti"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:68
@@ -1939,7 +1940,7 @@ msgstr ""
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:80
 msgid "Healers"
-msgstr ""
+msgstr "Gydytojai"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:90
@@ -2088,7 +2089,7 @@ msgstr ""
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:225
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:234
 msgid "Wolves Micro AI demo"
-msgstr ""
+msgstr "Vilkų Mikro DI demonstracija"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario-micro_ai.cfg:234
@@ -2233,7 +2234,7 @@ msgstr "Visų grifų mirtis"
 #. [side]
 #: data/ai/micro_ais/scenarios/wolves.cfg:40
 msgid "team_name^Wolves"
-msgstr ""
+msgstr "Vilkai"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/wolves.cfg:55
@@ -2394,14 +2395,14 @@ msgstr ""
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:103
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:31
 msgid "AI Developer"
-msgstr ""
+msgstr "DI programuotojas"
 
 #. [side]: id=leader1, type=Lich
 #. [side]: type=Nightgaunt
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:108
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:36
 msgid "team_name^AI Developer"
-msgstr ""
+msgstr "DI programuotojas"
 
 #. [side]: id=chall-ai, type=White Mage
 #: data/ai/scenarios/scenario-AI_Arena_small.cfg:119
@@ -2532,19 +2533,19 @@ msgstr ""
 #: data/ai/scenarios/scenario-lua-ai.cfg:160
 #: data/ai/scenarios/scenario-no_engine.cfg:160
 msgid "Bilbo"
-msgstr ""
+msgstr "Bilbas"
 
 #. [unit]: type=Walking Corpse
 #: data/ai/scenarios/scenario-lua-ai.cfg:165
 #: data/ai/scenarios/scenario-no_engine.cfg:165
 msgid "Sirené"
-msgstr ""
+msgstr "Sirenė"
 
 #. [unit]: type=Wolf Rider
 #: data/ai/scenarios/scenario-lua-ai.cfg:171
 #: data/ai/scenarios/scenario-no_engine.cfg:171
 msgid "Rark"
-msgstr ""
+msgstr "Rarkas"
 
 #. [test]: id=lua_ai_no_engine
 #: data/ai/scenarios/scenario-no_engine.cfg:5
@@ -2564,7 +2565,7 @@ msgstr ""
 #. [side]: type=Orcish Slayer
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:46
 msgid "AI under test"
-msgstr ""
+msgstr "Testuojamas DI"
 
 #. [ai]: id=healer_support
 #: data/core/macros/ai_micro_ais.cfg:28
