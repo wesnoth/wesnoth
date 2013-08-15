@@ -1317,6 +1317,13 @@ def global_sanity_check(filename, lines):
                         whopairs.update({mac: fields[1].strip()})
             except IndexError:
                 pass
+        if 'wmllint: unwho ' in lines[i]:
+            unmac = lines[i].split("wmllint: unwho ", 1)[1].strip()
+            try:
+                del whopairs[string_strip(unmac)]
+            except KeyError:
+                print >>sys.stderr, '%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
+                                     % (filename, i+1, unmac, str(whopairs.keys())[1:-1])
         if lines[i].lstrip().startswith('{'):
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
