@@ -18,6 +18,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
+#include <boost/cstdint.hpp>
 	 
 #include "wml_exception.hpp"
 
@@ -35,7 +36,6 @@ class umcd_protocol :
 {
 public:
 	static std::size_t REQUEST_HEADER_MAX_SIZE;
-	static const std::size_t REQUEST_HEADER_SIZE_FIELD_LENGTH = 10;
 	typedef boost::asio::ip::tcp::socket socket_type;
 	typedef boost::asio::io_service io_service_type;
 
@@ -74,7 +74,7 @@ private:
 private:
 	const environment& environment_;
 	socket_type socket_;
-	boost::array<char, REQUEST_HEADER_SIZE_FIELD_LENGTH> raw_request_size_;
+	boost::uint32_t payload_size_;
 	std::string request_body_;
 	wml_reply reply_;
 	wml_request request_;

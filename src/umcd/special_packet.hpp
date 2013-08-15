@@ -22,7 +22,7 @@
 config make_error_packet(const std::string& message);
 config make_warning_packet(const std::string& message);
 
-wml_reply make_error_reply(const std::string& message, std::size_t header_length);
-wml_reply make_warning_reply(const std::string& message, std::size_t header_length);
+wml_reply make_error_reply(const std::string& message);
+wml_reply make_warning_reply(const std::string& message);
 
 #endif // UMCD_ERROR_PACKET_HPP

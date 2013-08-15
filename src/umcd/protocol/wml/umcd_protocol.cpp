@@ -21,7 +21,6 @@
 #include "umcd/umcd_error.hpp"
 
 std::size_t umcd_protocol::REQUEST_HEADER_MAX_SIZE = 8192;
-const std::size_t umcd_protocol::REQUEST_HEADER_SIZE_FIELD_LENGTH;
 
 #define FUNCTION_TRACER() UMCD_LOG_IP_FUNCTION_TRACER(socket_)
 
@@ -75,7 +74,7 @@ void umcd_protocol::async_send_reply()
 
 void umcd_protocol::async_send_error(const boost::system::error_condition& error)
 {
-	reply_ = make_error_reply(error.message(), REQUEST_HEADER_SIZE_FIELD_LENGTH);
+	reply_ = make_error_reply(error.message());
 	async_send_reply();
 }
 
@@ -99,17 +98,15 @@ void umcd_protocol::read_request_body(const boost::system::error_code& error, st
 	{
 		try
 		{
-			// NOTE: We encapsulate the boost::array into a string because it old lexical_cast does not support boost::array. Change this when it'll be supported.
-			std::string request_size_s = std::string(raw_request_size_.data(), raw_request_size_.size());
-			std::size_t request_size = boost::lexical_cast<std::size_t>(request_size_s);
-			UMCD_LOG_IP(debug, socket_) << " -- Request of size: " << request_size;
-			if(request_size > REQUEST_HEADER_MAX_SIZE)
+			payload_size_ = ntohl(payload_size_);
+			UMCD_LOG_IP(debug, socket_) << " -- Request of size: " << payload_size_;
+			if(payload_size_ > REQUEST_HEADER_MAX_SIZE)
 			{
 				async_send_error(make_error_condition(request_header_too_large));
 			}
 			else
 			{
-				request_body_.resize(request_size);
+				request_body_.resize(payload_size_);
 				boost::asio::async_read(socket_, boost::asio::buffer(&request_body_[0], request_body_.size())
 					, boost::bind(&umcd_protocol::dispatch_request, shared_from_this()
 					, boost::asio::placeholders::error
@@ -158,8 +155,8 @@ void umcd_protocol::dispatch_request(const boost::system::error_code& err, std::
 
 void umcd_protocol::handle_request()
 {
-	FUNCTION_TRACER(); // Because we trace with the IP, client_connection must be initialized first.
-	boost::asio::async_read(socket_, boost::asio::buffer(raw_request_size_)
+	FUNCTION_TRACER();
+	boost::asio::async_read(socket_, boost::asio::buffer(reinterpret_cast<char*>(&payload_size_), sizeof(payload_size_))
 		, boost::bind(&umcd_protocol::read_request_body, shared_from_this()
 			, boost::asio::placeholders::error
 			, boost::asio::placeholders::bytes_transferred)

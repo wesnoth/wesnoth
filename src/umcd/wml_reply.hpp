@@ -17,6 +17,7 @@
 
 #include <ostream>
 #include <boost/asio.hpp>
+#include <boost/cstdint.hpp>
 
 #include "config.hpp"
 
@@ -24,14 +25,12 @@ class wml_reply
 {
 public:
 	wml_reply();
-	wml_reply(const config& metadata, std::size_t header_length);
+	wml_reply(const config& metadata);
 	std::vector<boost::asio::const_buffer> to_buffers() const;
 
 private:
 	std::string metadata_;
-	std::string size_header_;
+	boost::uint32_t payload_size_;
 };
-
-std::string make_size_header(size_t num_bytes, std::size_t header_length);
 
 #endif // UMCD_WML_REPLY_HPP

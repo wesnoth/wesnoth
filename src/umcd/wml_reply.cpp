@@ -16,26 +16,16 @@
 
 wml_reply::wml_reply(){}
 
-wml_reply::wml_reply(const config& metadata, std::size_t header_length)
+wml_reply::wml_reply(const config& metadata)
 : metadata_(metadata.to_string())
-, size_header_(make_size_header(this->metadata_.size(), header_length))
+, payload_size_(htonl(this->metadata_.size()))
 {
 }
 
 std::vector<boost::asio::const_buffer> wml_reply::to_buffers() const
 {
 	std::vector<boost::asio::const_buffer> buffers;
-	buffers.push_back(boost::asio::buffer(size_header_));
+	buffers.push_back(boost::asio::buffer(reinterpret_cast<const char*>(&payload_size_), sizeof(payload_size_)));
 	buffers.push_back(boost::asio::buffer(metadata_));
 	return buffers;
-}
-
-std::string make_size_header(std::size_t num_bytes, std::size_t header_length)
-{
-	std::string value = boost::lexical_cast<std::string>(num_bytes);
-	int missing_zero = header_length - value.size();
-	std::string res;
-	for(int i=0; i < missing_zero; ++i)
-		res.push_back('0');
-	return res + value;
 }
