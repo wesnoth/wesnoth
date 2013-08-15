@@ -386,8 +386,7 @@ The keys have the following meaning:
 
 \subsection{Size packet header}
 
-Each packet (packet sent from the client to the server) begin with a fixed length field of 10 bytes. It contains the size of the metadata (not the binary data). The size is textual (not binary).
-
+Each packet (packet sent from the client to the server) begin with an integer of 4 bytes, the endianess is handle via the pair htonl and ntohl. It contains the size of the metadata (not the binary data).
 \subsection{Special packets}
 \label{wire:specialpackets}
 
