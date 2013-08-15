@@ -649,6 +649,9 @@ notepairs = [
     ("{WEAPON_SPECIAL_STUN}", "{SPECIAL_NOTES_STUN}"),
     ]
 
+# This dictionary will pair macros with the characters they recall or create,
+# but must be populated by the magic comment, "#wmllint: who ... is ...".
+whopairs = {}
 
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
@@ -1303,6 +1306,17 @@ def global_sanity_check(filename, lines):
             markcheck = False
         if "wmllint: markcheck on" in lines[i]:
             markcheck = True
+        if 'wmllint: who ' in lines[i]:
+            try:
+                fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
+                if len(fields) == 2:
+                    mac = string_strip(fields[0].strip())
+                    if whopairs.has_key(mac):
+                        whopairs[mac] = whopairs[mac] + ", " + fields[1].strip()
+                    else:
+                        whopairs.update({mac: fields[1].strip()})
+            except IndexError:
+                pass
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
