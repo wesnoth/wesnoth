@@ -31,6 +31,7 @@ Version 1.11.5+dev:
    * If [recall] cannot find a unit to recall, the message is logged at the
      "info" severity level in the "wml" domain (instead of the "error" level in
      the "engine" domain). This means the message will be suppressed by default.
+   * Allowed [modify_side] to modify the scroll_to_leader key
  * Miscellaneous and bug fixes
    * Creating a unit via debug mode now clears fog/shroud around the unit.
    * [move_unit_fake] now accepts an optional force_scroll= attribute (def. to
