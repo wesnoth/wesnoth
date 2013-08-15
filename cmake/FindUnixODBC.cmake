@@ -1,7 +1,7 @@
 # Copyright (c) 2008, OpenCog.org (http://opencog.org)
 #
 # Redistribution and use is allowed according to the terms of the BSD license.
-# For details see the accompanying COPYING-CMAKE-SCRIPTS file.
+# For details see the accompanying FindUnixODBC.LICENSE file.
 
 # - Try to find the UnixODBC library; Once done this will define
 #
