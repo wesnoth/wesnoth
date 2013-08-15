@@ -164,7 +164,7 @@ public:
 		{ info_.current_player = player; }
 
 	bool get_scroll_to_leader() const {return info_.scroll_to_leader;}
-	void set_scroll_to_leader(bool value) { info_.scroll_to_leader=value; }
+	void set_scroll_to_leader(bool value) { info_.scroll_to_leader = value; }
 
 	const std::set<std::string>& recruits() const
 		{ return info_.can_recruit; }
