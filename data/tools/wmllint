@@ -69,6 +69,27 @@
 # also be useful if you have wrapped unit-creation or recall markup in macros
 # and wmllint cannot recognize it.
 #
+# For macros used in multiple scenarios to field characters, you can tell
+# wmllint to recognize them with another magic comment:
+#     wmllint: who <macro> is <character(s)>
+# <Macro> should be a text string sufficient to distinguish the macro from
+# any other; <character(s)> would be the ids of the recalled (or created)
+# characters, comma-separated if there were more than one.  (Enclosing <macro>
+# in quotes is possible, if a space is needed at the end; for example, if a
+# campaign had a "{GARARD_I $x $y}" macro and also a "GARARD_II" macro,
+# "who '{GARARD_I '" would distinguish I from II.)
+#
+# If more characters attach to a macro in later scenarios, they can be appended
+# with additional "who" magic comments (though this requires scenarios to
+# be numbered or otherwise sorted to work properly, as wmllint traverses files
+# in alphabetical order).  If there is a character that drops out, preceding that
+# person's entry with a double-minus will cause that character to be removed,
+# e.g., "-- Garak".
+#
+# If a macro is not used in any subsequent scenarios, you can tell wmllint to
+# stop checking for it with "wmllint: unwho <macro>", where <macro> should be
+# the string you originally used for "wmllint: who".
+#
 # Similarly, it is possible to explicitly declare a unit's usage class
 # with a magic comment that looks like this:
 #    wmllint: usage of <unit> is <class>
