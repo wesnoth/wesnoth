@@ -243,6 +243,12 @@ void chat::update_textbox(gui::textbox& textbox)
 	last_update_ = message_history_.size();
 }
 
+void chat::clear_history()
+{
+	message_history_.clear();
+	last_update_ = 0;
+}
+
 std::string chat::format_message(const msg& message)
 {
 	std::string msg_text = message.message;

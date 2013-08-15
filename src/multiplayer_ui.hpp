@@ -52,6 +52,8 @@ public:
 	void init_textbox(gui::textbox& textbox);
 	void update_textbox(gui::textbox& textbox);
 
+	void clear_history();
+
 private:
 	struct msg {
 		msg(const time_t& time, const std::string& user, const std::string& message)
