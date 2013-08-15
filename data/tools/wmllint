@@ -1317,6 +1317,19 @@ def global_sanity_check(filename, lines):
                         whopairs.update({mac: fields[1].strip()})
             except IndexError:
                 pass
+        if lines[i].lstrip().startswith('{'):
+            # Recognize macro pairings from "wmllint: who" magic
+            # comments.
+            for mac in whopairs.keys():
+                if mac in lines[i]:
+                    for who in whopairs[mac].split(","):
+                        if who.strip().startswith("--"):
+                            try:
+                                present.remove(who.replace('--', '', 1).strip())
+                            except:
+                                ValueError
+                        else:
+                            present.append(who.strip())
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
