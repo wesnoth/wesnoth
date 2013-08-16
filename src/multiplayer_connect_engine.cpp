@@ -166,6 +166,16 @@ connect_engine::connect_engine(game_display& disp,
 		std::make_pair(CNTR_COMPUTER, _("Computer Player")));
 	default_controller_options_.push_back(
 		std::make_pair(CNTR_EMPTY, _("Empty")));
+
+	// Create side engines.
+	int index = 0;
+	BOOST_FOREACH(const config &s, sides) {
+		side_engine_ptr new_side_engine(new side_engine(s, *this, index));
+		side_engines_.push_back(new_side_engine);
+
+		index++;
+	}
+	init_after_side_engines_assigned();
 }
 
 connect_engine::~connect_engine()
@@ -192,11 +202,6 @@ config* connect_engine::current_config() {
 	}
 
 	return cfg_level;
-}
-
-void connect_engine::add_side_engine(side_engine_ptr engine)
-{
-	side_engines_.push_back(engine);
 }
 
 void connect_engine::init_after_side_engines_assigned()

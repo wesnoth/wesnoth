@@ -44,9 +44,6 @@ public:
 
 	config* current_config();
 
-	void add_side_engine(side_engine_ptr engine);
-	// Should be called after all calls to 'add_side_engine()'
-	// have been made, so that everything could be initialized.
 	void init_after_side_engines_assigned();
 
 	void import_user(const std::string& name, const bool observer,
@@ -86,8 +83,6 @@ public:
 		{ return connected_users_; }
 	const std::vector<std::string>& user_team_names()
 		{ return user_team_names_; }
-
-protected:
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 
 private:

@@ -67,7 +67,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	combo_faction_(parent.disp(), std::vector<std::string>()),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_gender_(parent.disp(), std::vector<std::string>()),
-	//combo_team_(parent.disp(), parent.player_teams_),
 	combo_team_(parent.disp(), engine_->player_teams()),
 	combo_color_(parent.disp(), parent.player_colors_),
 	slider_gold_(parent.video()),
@@ -257,11 +256,6 @@ void connect::side::update_controller_combo_list()
 	update_controller_combo();
 }
 
-void connect::side::update_original_controller_label()
-{
-	label_original_controller_.set_text(engine_->current_player());
-}
-
 void connect::side::update_ui()
 {
 	update_faction_combo();
@@ -397,7 +391,6 @@ connect::connect(game_display& disp, const config& game_config,
 	bool local_players_only, bool first_scenario) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	params_(params),
-	//player_teams_(),
 	player_colors_(),
 	ai_algorithms_(),
 	sides_(),
@@ -657,25 +650,14 @@ void connect::lists_init()
 		engine_.level().child_range("modification"));
 	ai_algorithms_ = ai::configuration::get_available_ais();
 
-	// Factions.
-	config::child_itors sides = engine_.current_config()->child_range("side");
-
 	// Colors.
 	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
 		player_colors_.push_back(get_color_string(i));
 	}
 
-	// Populates "sides_" from the level configuration
-	int index = 0;
-	BOOST_FOREACH(const config &s, sides) {
-		side_engine_ptr new_side_engine(new side_engine(s, engine_, index));
-		engine_.add_side_engine(new_side_engine);
-
-		sides_.push_back(side(*this, new_side_engine));
-		
-		index++;
+	BOOST_FOREACH(side_engine_ptr s, engine_.side_engines()) {
+		sides_.push_back(side(*this, s));
 	}
-	engine_.init_after_side_engines_assigned();
 
 	// Add side widgets to scroll pane.
 	int side_pos_y_offset = 0;
@@ -683,10 +665,6 @@ void connect::lists_init()
 		if (!s.engine()->allow_player()) {
 			continue;
 		}
-
-		// Update original controller label in case it changed
-		// after adding the side_engine to the connect_engine.
-		s.update_original_controller_label();
 
 		s.add_widgets_to_scrollpane(scroll_pane_, side_pos_y_offset);
 		side_pos_y_offset += 60;
