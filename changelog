@@ -27,6 +27,8 @@ Version 1.10.6+dev:
    * Prevent unchecked memory access in cut_surface()
    * Fixed bug #20853 ("WML child missing yet untested for" when loading some
      replays).
+   * Backported several bugfixes for wmllint (Windows-unfriendliness on the
+     command line, unusual crashers, underscores stripped from keys).
 
 Version 1.10.6:
  * Campaigns:
