@@ -854,7 +854,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if parent in ("[allow_recruit]", "[disallow_recruit]") and key == "recruit":
         print errlead + "recruit= should be type="
     # Accumulate data to check for missing next scenarios
-    if parent == '[scenario] or parent == None':
+    if parent == '[scenario]' or parent == None:
         if key == "next_scenario" and value != "null":
             nextrefs.append((filename, nav.lineno, value))
         if key == 'id':
