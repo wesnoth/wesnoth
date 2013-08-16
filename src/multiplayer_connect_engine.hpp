@@ -84,8 +84,8 @@ public:
 	const game_state& state() const { return state_; }
 	const std::set<std::string>& connected_users() const
 		{ return connected_users_; }
-	std::vector<std::string>& team_names() { return team_names_; }
-	std::vector<std::string>& user_team_names() { return user_team_names_; }
+	const std::vector<std::string>& user_team_names()
+		{ return user_team_names_; }
 
 protected:
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
@@ -110,6 +110,7 @@ private:
 	std::vector<const config*> era_factions_;
 	std::vector<std::string> team_names_;
 	std::vector<std::string> user_team_names_;
+	std::vector<std::string> player_teams_;
 	std::set<std::string> connected_users_;
 	std::vector<controller_option> default_controller_options_;
 };
@@ -193,6 +194,8 @@ public:
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
 	bool allow_player() const { return allow_player_; }
+	const std::vector<std::string>& player_teams() const
+		{ return parent_.player_teams_; }
 
 private:
 	side_engine(const side_engine& engine);

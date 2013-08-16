@@ -137,7 +137,7 @@ private:
 	const mp_game_settings params_;
 
 	// Lists used for combos.
-	std::vector<std::string> player_teams_;
+	//std::vector<std::string> player_teams_;
 	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
 

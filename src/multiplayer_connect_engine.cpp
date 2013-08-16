@@ -75,20 +75,87 @@ connect_engine::connect_engine(game_display& disp,
 	era_factions_(),
 	team_names_(),
 	user_team_names_(),
+	player_teams_(),
 	connected_users_(),
 	default_controller_options_()
 {
+	// Initial level config from the mp_game_settings.
 	level_ = initial_level_config(disp, params, state_);
 	if (level_.empty()) {
 		return;
 	}
 
+	// Original level sides.
+	config::child_itors sides = current_config()->child_range("side");
+
+	// Set the team name lists and modify the original level sides,
+	// if necessary.
+	std::vector<std::string> original_team_names;
+	std::string team_prefix(std::string(_("Team")) + " ");
+	int side_count = 1;
+	BOOST_FOREACH(config& side, sides) {
+		const std::string side_str = lexical_cast<std::string>(side_count);
+		config::attribute_value& team_name = side["team_name"];
+		config::attribute_value& user_team_name =
+			side["user_team_name"];
+
+		// Revert to default values if appropriate.
+		if (team_name.empty()) {
+			team_name = side_str;
+		}
+		if (params_.use_map_settings && user_team_name.empty()) {
+			user_team_name = team_name;
+		}
+
+		bool add_team = true;
+		if (params_.use_map_settings) {
+			// Only add a team if it is not found.
+			bool found = std::find(team_names_.begin(), team_names_.end(),
+				team_name.str()) != team_names_.end();
+
+			if (found) {
+				add_team = false;
+			}
+		} else {
+			// Always add a new team for every side, but leave
+			// the specified team assigned to a side if there is one.
+			std::vector<std::string>::const_iterator name_itor =
+				std::find(original_team_names.begin(),
+					original_team_names.end(), team_name.str());
+			if (name_itor == original_team_names.end()) {
+				original_team_names.push_back(team_name);
+
+				team_name =
+					lexical_cast<std::string>(original_team_names.size());
+			} else {
+				team_name = lexical_cast<std::string>(
+					name_itor - original_team_names.begin() + 1);
+			}
+
+			user_team_name = team_prefix + side_str;
+		}
+
+		if (add_team) {
+			team_names_.push_back(params_.use_map_settings ? team_name :
+				side_str);
+			user_team_names_.push_back(user_team_name.t_str().to_serialized());
+
+			if (side["allow_player"].to_bool(true)) {
+				player_teams_.push_back(user_team_name.str());
+			}
+		}
+
+		++side_count;
+	}
+
+	// Selected era's factions.
 	BOOST_FOREACH(const config& era,
 		level_.child("era").child_range("multiplayer_side")) {
 
 		era_factions_.push_back(&era);
 	}
 
+	// Default options for combo controllers.
 	if (!local_players_only) {
 		default_controller_options_.push_back(
 			std::make_pair(CNTR_NETWORK, _("Network Player")));

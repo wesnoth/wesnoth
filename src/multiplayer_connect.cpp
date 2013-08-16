@@ -67,7 +67,8 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	combo_faction_(parent.disp(), std::vector<std::string>()),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_gender_(parent.disp(), std::vector<std::string>()),
-	combo_team_(parent.disp(), parent.player_teams_),
+	//combo_team_(parent.disp(), parent.player_teams_),
+	combo_team_(parent.disp(), engine_->player_teams()),
 	combo_color_(parent.disp(), parent.player_colors_),
 	slider_gold_(parent.video()),
 	slider_income_(parent.video())
@@ -396,7 +397,7 @@ connect::connect(game_display& disp, const config& game_config,
 	bool local_players_only, bool first_scenario) :
 	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
 	params_(params),
-	player_teams_(),
+	//player_teams_(),
 	player_colors_(),
 	ai_algorithms_(),
 	sides_(),
@@ -658,77 +659,6 @@ void connect::lists_init()
 
 	// Factions.
 	config::child_itors sides = engine_.current_config()->child_range("side");
-
-	// Teams.
-	if (params_.use_map_settings) {
-		int side_count = 1;
-		BOOST_FOREACH(config &side, sides) {
-			config::attribute_value &team_name = side["team_name"];
-			config::attribute_value &user_team_name = side["user_team_name"];
-
-			if (team_name.empty()) {
-				team_name = side_count;
-			}
-
-			if (user_team_name.empty()) {
-				user_team_name = team_name;
-			}
-
-			bool found = false;
-			BOOST_FOREACH(const std::string& name, engine_.team_names()) {
-				if (name == team_name) {
-					found = true;
-					break;
-				}
-			}
-
-			if (!found) {
-				engine_.team_names().push_back(team_name);
-				engine_.user_team_names().push_back(
-					user_team_name.t_str().to_serialized());
-				if (side["allow_player"].to_bool(true)) {
-					player_teams_.push_back(user_team_name.str());
-				}
-			}
-			++side_count;
-		}
-	} else {
-		std::vector<std::string> map_team_names;
-		int side_count = 1;
-		BOOST_FOREACH(config &side, sides) {
-			const std::string side_num = lexical_cast<std::string>(side_count);
-			config::attribute_value &team_name = side["team_name"];
-
-			if (team_name.empty()) {
-				team_name = side_num;
-			}
-
-			unsigned team_index = 0;
-			BOOST_FOREACH(const std::string& name, map_team_names) {
-				if (name == team_name) {
-					break;
-				}
-
-				team_index++;
-			}
-
-			if (team_index >= map_team_names.size()) {
-				map_team_names.push_back(team_name);
-				team_name = lexical_cast<std::string>(map_team_names.size());
-			} else {
-				team_name = lexical_cast<std::string>(team_index + 1);
-			}
-
-			const std::string team_prefix(std::string(_("Team")) + " ");
-
-			engine_.team_names().push_back(side_num);
-			engine_.user_team_names().push_back(team_prefix + side_num);
-			if (side["allow_player"].to_bool(true)) {
-				player_teams_.push_back(team_prefix + side_num);
-			}
-			++side_count;
-		}
-	}
 
 	// Colors.
 	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
