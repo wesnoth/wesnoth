@@ -1994,14 +1994,20 @@ def allcfgfiles(dir):
 def help():
         sys.stderr.write("""\
 Usage: wmllint [options] [dir]
-    Convert Battle of Wesnoth WML from older versions to newer ones.
+    Included because wmllint has dropped support for pre-1.4 Wesnoth WML.
+    Use it to convert 1.0 and 1.2 material to "1.4", then use regular wmllint
+    to port it to a modern Battle of Wesnoth version.  Can also be used to
+    validate 1.4 add-ons against remnants of archaic WML.
+
     Takes any number of directories as arguments.  Each directory is converted.
     If no directories are specified, acts on the current directory.
     Options may be any of these:
     -h, --help                 Emit this help message and quit.
     -d, --dryrun               List changes but don't perform them.
-    -n, --nolift               Don't perform version-lifting
+    -n, --nolift               Don't perform version-lifting.
     -o, --oldversion           Specify version to begin with.
+                               Note: wmllint-1.4 already defaults to "older",
+                               which covers everything before 1.3.1.
     -v, --verbose              -v        lists changes.
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
@@ -2009,7 +2015,11 @@ Usage: wmllint [options] [dir]
     -D, --diff                 Display diffs between converted and unconverted files.
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
+                               Note: does not work on Windows, due to Python
+                               defaulting to universal newlines support there.
     --future                   Enable experimental WML conversions.
+    More about wmllint can be found in the introduction in the file itself, and
+    at http://wiki.wesnoth.org/Maintenance_tools.
 """)
 
 if __name__ == '__main__':
