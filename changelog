@@ -17,6 +17,8 @@ Version 1.11.5+dev:
  * Campaigns:
    * An Orcish Incursion:
      * New world map.
+   * Legend of Wesmere:
+     * convert to "wmllint: who" magic comments
    * The South Guard:
      * Fixed double "lich found" event in Choice in the Fog
  * Language and i18n:
@@ -40,6 +42,10 @@ Version 1.11.5+dev:
    * [move_unit] accepts an optional force_scroll= attribute like
      [move_unit_fake] above, defaults to using the [move_unit_fake] default.
    * Added: Feature in pathfind.xpp to build a cost map.
+   * wmllint: turn on globbing on Windows, create "who" and "unwho" magic
+     comments, bugfixes
+   * wmllint-1.4: add an enhanced and bugfixed version of wmllint 1.4 for
+     porting old add-ons
 
 Version 1.11.5:
  * Add-ons client:
