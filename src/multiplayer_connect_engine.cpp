@@ -295,17 +295,6 @@ void connect_engine::update_level()
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		level_.add_child("side", side->new_config());
 	}
-
-	// Add information about reserved sides to the level config.
-	std::map<std::string, std::string> side_users;
-	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		const std::string& save_id = side->save_id();
-		const std::string& player_id = side->player_id();
-		if (!save_id.empty() && !player_id.empty()) {
-			side_users[save_id] = player_id;
-		}
-	}
-	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
 void connect_engine::update_and_send_diff(bool update_time_of_day)
@@ -404,6 +393,8 @@ void connect_engine::start_game()
 	config lock("stop_updates");
 	network::send_data(lock, 0);
 	update_and_send_diff(true);
+
+	save_reserved_sides_information();
 
 	// Build the gamestate object after updating the level.
 	level_to_gamestate(level_, state_);
@@ -521,6 +512,8 @@ void connect_engine::start_game_commandline(
 			}
 		}
     }
+
+	save_reserved_sides_information();
 
 	// Build the gamestate object after updating the level
 	level_to_gamestate(level_, state_);
@@ -712,6 +705,21 @@ int connect_engine::find_user_side_index_by_id(const std::string& id) const
 	}
 
 	return i;
+}
+
+void connect_engine::save_reserved_sides_information()
+{
+	// Add information about reserved sides to the level config.
+	// N.B. This information is needed only for a host player.
+	std::map<std::string, std::string> side_users;
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		const std::string& save_id = side->save_id();
+		const std::string& player_id = side->player_id();
+		if (!save_id.empty() && !player_id.empty()) {
+			side_users[save_id] = player_id;
+		}
+	}
+	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
 }
 
 void connect_engine::update_side_controller_options()

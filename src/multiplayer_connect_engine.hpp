@@ -87,6 +87,8 @@ private:
 	connect_engine(const connect_engine&);
 	void operator=(const connect_engine&);
 
+	void save_reserved_sides_information();
+
 	void update_side_controller_options();
 
 	friend side_engine;
