@@ -26,7 +26,7 @@ const char* umcd_error_category::name() const
 
 std::string umcd_error_category::message(int ev) const
 {
-	if(ev < 0 || ev >= (int)error_messages.size())
+	if(ev < 0 || ev >= static_cast<int>(error_messages.size()))
 		return std::string("Unknown error");
 	return error_messages[ev];
 }
