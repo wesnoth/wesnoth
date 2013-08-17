@@ -2216,7 +2216,7 @@ Usage: wmllint [options] [dir]
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
     -f, --future               Enable experimental WML conversions.
     -S, --nospellcheck         Suppress spellchecking
-    -Z, --stringfreeze         Suppress warnings about newlines in messages
+    -Z, --stringfreeze         Suppress repair attempts of newlines in messages
 """)
 
 if __name__ == '__main__':
@@ -2232,6 +2232,7 @@ if __name__ == '__main__':
             "stripcr",
             "verbose",
             "nospellcheck",
+            "stringfreeze",
             ])
     except getopt.GetoptError:
         help()
