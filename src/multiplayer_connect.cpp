@@ -96,9 +96,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	label_gold_.hide(parent_->params_.saved_game);
 	label_income_.hide(parent_->params_.saved_game);
 
-	update_controller_combo_list();
-	update_ai_algorithm_combo();
-
 	if (parent_->params_.use_map_settings) {
 		// Gold, income, team, and color are only suggestions.
 		// (Unless explicitly locked).
@@ -167,14 +164,11 @@ void connect::side::process_event()
 		changed_ = true;
 		parent_->sides_[drop_target].changed_ = true;
 
-		update_ai_algorithm_combo();
-		parent_->sides_[drop_target].update_ai_algorithm_combo();
-
 		update_ui();
 		parent_->sides_[drop_target].update_ui();
 	} else if (combo_controller_->changed()) {
 		changed_ = engine_->controller_changed(combo_controller_->selected());
-		update_controller_combo();
+		update_controller_ui();
 	}
 	if (combo_controller_->hidden()) {
 		combo_controller_->hide(false);
@@ -248,21 +242,13 @@ bool connect::side::changed()
 	return false;
 }
 
-void connect::side::update_controller_combo_list()
-{
-	combo_controller_->set_items(controller_options_names(
-		engine_->controller_options()));
-
-	update_controller_combo();
-}
-
 void connect::side::update_ui()
 {
 	update_faction_combo();
 	update_leader_combo();
 	update_gender_combo();
 
-	update_controller_combo();
+	update_controller_ui();
 
 	combo_team_.set_selected(engine_->team());
 	combo_color_.set_selected(engine_->color());
@@ -278,26 +264,6 @@ void connect::side::update_ui()
 		buf << _("Normal");
 	}
 	label_income_.set_text(buf.str());
-}
-
-void connect::side::hide_ai_algorithm_combo(bool force)
-{
-	if (!force) {
-		if (engine_->controller() == CNTR_COMPUTER) {
-			// Computer selected, show AI combo.
-			combo_ai_algorithm_.hide(false);
-
-			label_original_controller_.hide(true);
-		} else {
-			// Computer de-selected, hide AI combo.
-			combo_ai_algorithm_.hide(true);
-
-			label_original_controller_.hide(false);
-			label_original_controller_.set_text(engine_->current_player());
-		}
-	} else {
-		combo_ai_algorithm_.hide(true);
-	}
 }
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
@@ -318,28 +284,6 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&label_gold_, 475, 35 + pos);
 	pane.add_widget(&slider_income_, 475 + slider_gold_.width(), 5 + pos);
 	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
-}
-
-void connect::side::update_ai_algorithm_combo()
-{
-	assert(!parent_->ai_algorithms_.empty());
-
-	int sel = 0;
-	int i = 0;
-	std::vector<std::string> ais;
-	BOOST_FOREACH(const ai::description* desc,  parent_->ai_algorithms_){
-		ais.push_back(desc->text);
-		if (desc->id == engine_->ai_algorithm()) {
-			sel = i;
-		}
-		i++;
-	}
-	combo_ai_algorithm_.set_items(ais);
-	combo_ai_algorithm_.set_selected(sel);
-
-	// Ensures that the visually selected AI
-	// is the one that will be loaded.
-	engine_->set_ai_algorithm(parent_->ai_algorithms_[sel]->id);
 }
 
 void connect::side::update_faction_combo()
@@ -379,11 +323,49 @@ void connect::side::update_gender_combo()
 		engine_->color(), parent_->params_.saved_game);
 }
 
-void connect::side::update_controller_combo()
+void connect::side::update_controller_ui()
 {
+	// Update controllers combo.
+	combo_controller_->set_items(controller_options_names(
+		engine_->controller_options()));
 	combo_controller_->set_selected(engine_->current_controller_index());
 
-	hide_ai_algorithm_combo(parent_->hidden());
+	// Update AI algorithm combo.
+	assert(!parent_->ai_algorithms_.empty());
+	int sel = 0;
+	int i = 0;
+	std::vector<std::string> ais;
+	BOOST_FOREACH(const ai::description* desc,  parent_->ai_algorithms_){
+		ais.push_back(desc->text);
+		if (desc->id == engine_->ai_algorithm()) {
+			sel = i;
+		}
+		i++;
+	}
+	combo_ai_algorithm_.set_items(ais);
+	combo_ai_algorithm_.set_selected(sel);
+	// Ensures that the visually selected AI
+	// is the one that will be loaded.
+	engine_->set_ai_algorithm(parent_->ai_algorithms_[sel]->id);
+
+	// Adjust the visibility of AI algorithm combo
+	// and original controller label.
+	if (!parent_->hidden()) {
+		if (engine_->controller() == CNTR_COMPUTER) {
+			// Computer selected, show AI combo.
+			combo_ai_algorithm_.hide(false);
+
+			label_original_controller_.hide(true);
+		} else {
+			// Computer de-selected, hide AI combo.
+			combo_ai_algorithm_.hide(true);
+
+			label_original_controller_.hide(false);
+			label_original_controller_.set_text(engine_->current_player());
+		}
+	} else {
+		combo_ai_algorithm_.hide(true);
+	}
 }
 
 connect::connect(game_display& disp, const config& game_config,
@@ -429,12 +411,37 @@ connect::connect(game_display& disp, const config& game_config,
 		throw config::error(_("The scenario is invalid because it has no id."));
 	}
 
-	lists_init();
+	// AI algorithms.
+	const config &era = engine_.level().child("era");
+	ai::configuration::add_era_ai_from_config(era);
+	ai::configuration::add_mod_ai_from_config(
+		engine_.level().child_range("modification"));
+	ai_algorithms_ = ai::configuration::get_available_ais();
+
+	// Colors.
+	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
+		player_colors_.push_back(get_color_string(i));
+	}
+
+	// Sides.
+	BOOST_FOREACH(side_engine_ptr s, engine_.side_engines()) {
+		sides_.push_back(side(*this, s));
+	}
 	if (sides_.empty()) {
 		throw config::error(
 			_("The scenario is invalid because it has no sides."));
 	}
-	update_side_controller_combos();
+
+	// Add side widgets to scroll pane.
+	int side_pos_y_offset = 0;
+	BOOST_FOREACH(side& s, sides_) {
+		if (!s.engine()->allow_player()) {
+			continue;
+		}
+
+		s.add_widgets_to_scrollpane(scroll_pane_, side_pos_y_offset);
+		side_pos_y_offset += 60;
+	}
 
 	if (first_scenario) {
 		// Send Initial information
@@ -496,7 +503,9 @@ void connect::process_event()
 				if (!already_exists) {
 					engine_.connected_users().push_back(d.textbox_text());
 					update_playerlist_state();
-					update_side_controller_combos();
+					BOOST_FOREACH(side& s, sides_) {
+						s.update_ui();
+					}
 				}
 			}
 		} while (already_exists);
@@ -543,10 +552,6 @@ void connect::hide_children(bool hide)
 
 	waiting_label_.hide(hide);
 	scroll_pane_.hide(hide); // Scroll pane contents are automatically hidden.
-
-	BOOST_FOREACH(side& s, sides_) {
-		s.hide_ai_algorithm_combo(hide);
-	}
 
 	faction_title_label_.hide(hide);
 	team_title_label_.hide(hide);
@@ -618,11 +623,11 @@ void connect::process_network_data(const config& data,
 		set_result(QUIT);
 	}
 
-	update_side_controller_combos();
-	update_playerlist_state(result.second);
 	BOOST_FOREACH(side& s, sides_) {
 		s.update_ui();
 	}
+
+	update_playerlist_state(result.second);
 }
 
 void connect::process_network_error(network::error& error)
@@ -639,36 +644,6 @@ void connect::process_network_connection(const network::connection sock)
 bool connect::accept_connections()
 {
 	return engine_.sides_available();
-}
-
-void connect::lists_init()
-{
-	// AI algorithms.
-	const config &era = engine_.level().child("era");
-	ai::configuration::add_era_ai_from_config(era);
-	ai::configuration::add_mod_ai_from_config(
-		engine_.level().child_range("modification"));
-	ai_algorithms_ = ai::configuration::get_available_ais();
-
-	// Colors.
-	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
-		player_colors_.push_back(get_color_string(i));
-	}
-
-	BOOST_FOREACH(side_engine_ptr s, engine_.side_engines()) {
-		sides_.push_back(side(*this, s));
-	}
-
-	// Add side widgets to scroll pane.
-	int side_pos_y_offset = 0;
-	BOOST_FOREACH(side& s, sides_) {
-		if (!s.engine()->allow_player()) {
-			continue;
-		}
-
-		s.add_widgets_to_scrollpane(scroll_pane_, side_pos_y_offset);
-		side_pos_y_offset += 60;
-	}
 }
 
 void connect::update_playerlist_state(bool silent)
@@ -693,13 +668,6 @@ void connect::update_playerlist_state(bool silent)
 		}
 		set_user_list(playerlist, silent);
 		set_user_menu_items(playerlist);
-	}
-}
-
-void connect::update_side_controller_combos()
-{
-	BOOST_FOREACH(side& s, sides_) {
-		s.update_controller_combo_list();
 	}
 }
 

@@ -44,8 +44,6 @@ public:
 
 	config* current_config();
 
-	void init_after_side_engines_assigned();
-
 	void import_user(const std::string& name, const bool observer,
 		int side_taken = -1);
 	void import_user(const config& data, const bool observer,
@@ -149,14 +147,13 @@ public:
 
 	int current_faction_index() const;
 
-	std::string save_id() const { return cfg_["save_id"]; }
-
 	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
 	void set_controller_commandline(const std::string& controller_name);
 
 	/* Setters & Getters */
 
+	std::string save_id() const { return cfg_["save_id"]; }
 	const std::vector<const config*>& choosable_factions()
 		{ return choosable_factions_; }
 	const std::vector<std::string>& choosable_leaders()

@@ -50,10 +50,7 @@ public:
 		// Returns true if this side changed since last call to this method.
 		bool changed();
 
-		void update_controller_combo_list();
-
 		void update_ui();
-		void hide_ai_algorithm_combo(bool force);
 
 		void add_widgets_to_scrollpane(gui::scrollpane& pane, int pos);
 
@@ -62,11 +59,10 @@ public:
 
 	private:
 		// Update UI methods and their helper(s).
-		void update_ai_algorithm_combo();
 		void update_faction_combo();
 		void update_leader_combo();
 		void update_gender_combo();
-		void update_controller_combo();
+		void update_controller_ui();
 
 		// The mp::connect widget owning this mp::connect::side.
 		connect* parent_;
@@ -124,14 +120,10 @@ protected:
 	virtual void process_network_connection(const network::connection sock);
 	virtual bool accept_connections();
 
-	connect_engine& engine() { return engine_; }
 private:
-	void lists_init();
-
 	// Updates the state of the player list, the launch button and of the start
 	// game label, to reflect the actual state.
 	void update_playerlist_state(bool silent = true);
-	void update_side_controller_combos();
 
 	const mp_game_settings params_;
 

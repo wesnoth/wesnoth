@@ -175,7 +175,24 @@ connect_engine::connect_engine(game_display& disp,
 
 		index++;
 	}
-	init_after_side_engines_assigned();
+
+	// Load reserved players information into the sides.
+	if (!first_scenario_) {
+		std::map<std::string, std::string> side_users =
+			utils::map_split(level_.child("multiplayer")["side_users"]);
+		BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+			const std::string& save_id = side->save_id();
+			if (side_users.find(save_id) != side_users.end()) {
+				side->set_current_player(side_users[save_id]);
+
+				side->update_controller_options();
+				side->set_controller(CNTR_RESERVED);
+			}
+		}
+	}
+
+	// Add host to the connected users list.
+	import_user(preferences::login(), false);
 }
 
 connect_engine::~connect_engine()
@@ -202,27 +219,6 @@ config* connect_engine::current_config() {
 	}
 
 	return cfg_level;
-}
-
-void connect_engine::init_after_side_engines_assigned()
-{
-	if (!first_scenario_) {
-		// Load reserved players information into the sides.
-		std::map<std::string, std::string> side_users =
-			utils::map_split(level_.child("multiplayer")["side_users"]);
-		BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-			const std::string& save_id = side->save_id();
-			if (side_users.find(save_id) != side_users.end()) {
-				side->set_current_player(side_users[save_id]);
-
-				side->update_controller_options();
-				side->set_controller(CNTR_RESERVED);
-			}
-		}
-	}
-
-	// Add host to the connected users list.
-	import_user(preferences::login(), false);
 }
 
 void connect_engine::import_user(const std::string& name, const bool observer,
