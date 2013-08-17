@@ -73,33 +73,33 @@ namespace game_events {
 namespace { // Types
 	class pump_manager {
 	public:
-		pump_manager() :
-			x1_(resources::gamedata->get_variable("x1")),
-			x2_(resources::gamedata->get_variable("x2")),
-			y1_(resources::gamedata->get_variable("y1")),
-			y2_(resources::gamedata->get_variable("y2"))
-		{
-			++instance_count;
-		}
-		~pump_manager() {
-			resources::gamedata->get_variable("x1") = x1_;
-			resources::gamedata->get_variable("x2") = x2_;
-			resources::gamedata->get_variable("y1") = y1_;
-			resources::gamedata->get_variable("y2") = y2_;
-			--instance_count;
-		}
+		pump_manager();
+		~pump_manager();
+
+		/// Allows iteration through the queued events.
+		queued_event & next() { return queue_[pumped_count_++]; }
+		/// Indicates the iteration is over.
+		bool done() const { return pumped_count_ >= queue_.size(); }
+
 		static unsigned count() {
 			return instance_count;
 		}
+
 	private:
 		static unsigned instance_count;
 		int x1_, x2_, y1_, y2_;
+		/// Tracks the events to process.
+		/// This isolates these events from any events that might be generated
+		/// during the processing.
+		std::vector<queued_event> queue_;
+		/// Tracks how many events have been processed.
+		size_t pumped_count_;
 	};
 	unsigned pump_manager::instance_count=0;
 } // end anonymous namespace (types)
 
 namespace { // Variables
-	std::deque<queued_event> events_queue;
+	std::vector<queued_event> events_queue;
 
 	/// The value returned by wml_tracking();
 	size_t internal_wml_tracking = 0;
@@ -108,6 +108,42 @@ namespace { // Variables
 } // end anonymous namespace (variables)
 
 namespace { // Support functions
+
+	pump_manager::pump_manager() :
+		x1_(resources::gamedata->get_variable("x1")),
+		x2_(resources::gamedata->get_variable("x2")),
+		y1_(resources::gamedata->get_variable("y1")),
+		y2_(resources::gamedata->get_variable("y2")),
+		queue_(), // Filled later with a swap().
+		pumped_count_(0)
+	{
+		queue_.swap(events_queue);
+		++instance_count;
+	}
+
+	pump_manager::~pump_manager() {
+		--instance_count;
+
+		// Not sure what the correct thing to do is here. In princple,
+		// discarding all events (i.e. clearing events_queue) seems like
+		// the right thing to do in the face of an exeption. However, the
+		// previous functionality preserved the queue, so for now we will
+		// restore it.
+		if ( !done() ) {
+			// The remainig events get inserted at the beginning of events_queue.
+			std::vector<queued_event> temp;
+			events_queue.swap(temp);
+			events_queue.insert(events_queue.end(), queue_.begin() + pumped_count_, queue_.end());
+			events_queue.insert(events_queue.end(), temp.begin(), temp.end());
+		}
+
+		// Restore the old values of the game variables.
+		resources::gamedata->get_variable("y2") = y2_;
+		resources::gamedata->get_variable("y1") = y1_;
+		resources::gamedata->get_variable("x2") = x2_;
+		resources::gamedata->get_variable("x1") = x1_;
+	}
+
 
 	inline bool events_init()
 	{
@@ -418,21 +454,19 @@ void raise(const std::string& event,
 
 bool pump()
 {
-	//ensure the whiteboard doesn't attempt to build its future unit map
-	//for the duration of this method
-	wb::real_map real_unit_map;
-
+	// Quick aborts:
 	assert(manager::running());
 	if(!events_init())
 		return false;
-
-	pump_manager pump_instance;
-	if(pump_manager::count() >= game_config::max_loop) {
-		ERR_NG << "game_events::pump() waiting to process new events because "
-			<< "recursion level would exceed maximum " << game_config::max_loop << '\n';
+	if ( events_queue.empty() ) {
+		DBG_EH << "Processing queued events, but none found.\n";
 		return false;
 	}
-
+	if(pump_manager::count() >= game_config::max_loop) {
+		ERR_NG << "game_events::pump() waiting to process new events because "
+		       << "recursion level would exceed maximum: " << game_config::max_loop << '\n';
+		return false;
+	}
 	if(!lg::debug.dont_log("event_handler")) {
 		std::stringstream ss;
 		BOOST_FOREACH(const queued_event& ev, events_queue) {
@@ -442,13 +476,21 @@ bool pump()
 	}
 
 	const size_t old_wml_track = internal_wml_tracking;
-
 	bool result = false;
-	while(events_queue.empty() == false) {
+	// Ensure the whiteboard doesn't attempt to build its future unit map
+	// while events are being processed.
+	wb::real_map real_unit_map;
+
+	{ // Scope limitation for pump_manager
+	pump_manager pump_instance;
+	
+	// Loop through the events we need to process.
+	while ( !pump_instance.done() )
+	{
 		if(pump_manager::count() <= 1)
 			manager::start_buffering();
-		queued_event ev = events_queue.front();
-		events_queue.pop_front();	// pop now for exception safety
+
+		queued_event & ev = pump_instance.next();
 		const std::string& event_name = ev.name;
 
 		// Clear the unit cache, since the best clearing time is hard to figure out
@@ -488,11 +530,22 @@ bool pump()
 		// Only commit new handlers when finished iterating over event_handlers.
 		commit();
 	}
+	} // Scope limitation for pump_manager
 
 	if ( old_wml_track != internal_wml_tracking )
 		// Notify the whiteboard of any event.
 		// This is used to track when moves, recruits, etc. happen.
 		resources::whiteboard->on_gamestate_change();
+
+	// The previous version of this would iterate through all events, including
+	// those raised, but not pumped, while this function is executing. This
+	// should not actually occur, but to preserve this behavior, initiate a
+	// recursion.
+	// (I think I'll remove this bit shortly, but at least this will allow
+	// that to be done in a separate source code commit.)
+	if ( !events_queue.empty() )
+		if ( pump() )
+			result = true;
 
 	return result;
 }
