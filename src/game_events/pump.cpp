@@ -111,7 +111,7 @@ namespace { // Support functions
 
 	inline bool events_init()
 	{
-		return resources::screen != 0;
+		return resources::screen != NULL;
 	}
 
 	/**
