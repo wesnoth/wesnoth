@@ -121,6 +121,9 @@ protected:
 	virtual bool accept_connections();
 
 private:
+	connect(const connect&);
+	void operator=(const connect&);
+
 	// Updates the state of the player list, the launch button and of the start
 	// game label, to reflect the actual state.
 	void update_playerlist_state(bool silent = true);

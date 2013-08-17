@@ -193,7 +193,7 @@ public:
 
 private:
 	side_engine(const side_engine& engine);
-	void operator=(const connect_engine&);
+	void operator=(const side_engine&);
 
 	void update_choosable_leaders();
 	void update_choosable_genders();
