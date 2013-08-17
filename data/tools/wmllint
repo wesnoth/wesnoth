@@ -2339,13 +2339,15 @@ Usage: wmllint [options] [dir]
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
     -f, --future               Enable experimental WML conversions.
+    -K, --known                Suppress check for unknown unit types, recruits,
+                               races, scenarios, etc.
     -S, --nospellcheck         Suppress spellchecking
     -Z, --stringfreeze         Suppress repair attempts of newlines in messages
 """)
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnprsvSZ", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnprsvKSZ", [
             "clean",
             "diffs",
             "dryrun",
@@ -2355,6 +2357,7 @@ if __name__ == '__main__':
             "revert",
             "stripcr",
             "verbose",
+            "known",
             "nospellcheck",
             "stringfreeze",
             ])
@@ -2371,6 +2374,7 @@ if __name__ == '__main__':
     verbose = 0
     dospellcheck = True
     progress = False
+    inconsistency = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -2396,6 +2400,8 @@ if __name__ == '__main__':
             verbose += 1
         elif switch in ('-S', '--nospellcheck'):
             dospellcheck = False
+        elif switch in ('-K', '--known'):
+            inconsistency = True
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
@@ -2621,7 +2627,8 @@ In your case, your system interprets your arguments as:
                         raise exc_type, exc_value, exc_traceback
         if not clean and not diffs and not revert:
             # Consistency-check everything we got from the file scans
-            consistency_check()
+            if not inconsistency:
+                consistency_check()
             # Attempt a spell-check
             if dospellcheck:
                 try:
