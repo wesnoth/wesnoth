@@ -14,6 +14,8 @@
 
 #include "tools/code_generator/sql2cpp/sql2cpp_options.hpp"
 
+#include <iostream>
+
 namespace
 {
 	namespace po = boost::program_options;

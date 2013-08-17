@@ -14,6 +14,7 @@
 
 #include "tools/code_generator/sql2cpp/sql/semantic_actions.hpp"
 
+#include <iostream>
 #include <vector>
 
 namespace sql{
