@@ -2326,6 +2326,7 @@ def help():
         sys.stderr.write("""\
 Usage: wmllint [options] [dir]
     Convert Battle of Wesnoth WML from older versions to newer ones.
+    Also validates WML to check for errors.
     Takes any number of directories as arguments.  Each directory is converted.
     If no directories are specified, acts on the current directory.
     Options may be any of these:
@@ -2335,14 +2336,19 @@ Usage: wmllint [options] [dir]
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
     -c, --clean                Clean up -bak files.
-    -D, --diff                 Display diffs between converted and unconverted files.
+    -D, --diff                 Display diffs between converted and unconverted
+                               files.
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
+    -p, --progress             Names each file before processing (like -v -v).
     -f, --future               Enable experimental WML conversions.
     -K, --known                Suppress check for unknown unit types, recruits,
                                races, scenarios, etc.
     -S, --nospellcheck         Suppress spellchecking
     -Z, --stringfreeze         Suppress repair attempts of newlines in messages
+For more about wmllint, including how to prevent unwanted conversions and false
+positive warnings with magic comments, read the introduction in the wmllint
+file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.
 """)
 
 if __name__ == '__main__':
@@ -2363,6 +2369,7 @@ if __name__ == '__main__':
             ])
     except getopt.GetoptError:
         help()
+        sys.stderr.write('\nAn option you have entered is invalid.  Review options and try again.')
         sys.exit(1)
     clean = False
     diffs = False
