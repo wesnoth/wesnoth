@@ -2006,7 +2006,7 @@ int m_rand(int limit) {
 #else
 	unsigned int n = genrand();
 #endif
-   return (int)(n % limit);
+   return n % limit;
 }
 
 /**
