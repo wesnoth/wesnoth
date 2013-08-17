@@ -28,6 +28,8 @@ public:
 	typedef generic_action<ReturnType, Args, Args2> this_type;
 	typedef ReturnType return_type;
 
+	virtual ~generic_action() {}
+
 	virtual return_type execute(Args, Args2) = 0;
 	virtual boost::shared_ptr<this_type> clone() const = 0;
 };
@@ -39,6 +41,8 @@ class generic_action<ReturnType, Args, detail::no_action_argument>
 public:
 	typedef generic_action<ReturnType, Args> this_type;
 	typedef ReturnType return_type;
+
+	virtual ~generic_action() {}
 
 	virtual return_type execute(Args) = 0;
 	virtual boost::shared_ptr<this_type> clone() const = 0;

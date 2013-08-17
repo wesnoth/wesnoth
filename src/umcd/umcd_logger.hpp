@@ -94,6 +94,9 @@ struct log_line
 class log_stream
 {
 public:
+
+	virtual ~log_stream() {}
+
 	virtual boost::shared_ptr<std::ostream> stream() = 0;
 };
 

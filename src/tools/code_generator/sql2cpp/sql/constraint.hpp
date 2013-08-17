@@ -29,6 +29,8 @@ struct base_constraint
 	: name(name)
 	{}
 
+	virtual ~base_constraint() {}
+
 	virtual void accept(const boost::shared_ptr<constraint_visitor>& visitor) const = 0;
 
 	std::string name;
@@ -72,6 +74,8 @@ struct foreign_key : base_constraint_crtp<foreign_key>
 
 struct constraint_visitor
 {
+	virtual ~constraint_visitor() {}
+
 	virtual void visit(const primary_key&) = 0;
 	virtual void visit(const foreign_key&) = 0;
 };

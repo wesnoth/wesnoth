@@ -25,6 +25,7 @@ struct type_visitor;
 struct base_type
 {
 	base_type(){}
+	virtual ~base_type(){}
 	virtual void accept(const boost::shared_ptr<type_visitor>& visitor) const = 0;
 };
 
@@ -72,6 +73,7 @@ struct varchar : base_type_crtp<varchar>
 
 struct type_visitor
 {
+	virtual ~type_visitor() {}
 	virtual void visit(const smallint&) = 0;
 	virtual void visit(const integer&) = 0;
 	virtual void visit(const text&) = 0;
