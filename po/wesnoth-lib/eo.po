@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-06-23 10:20+0200\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -341,7 +341,7 @@ msgstr "Granda Arbo"
 #: data/core/terrain.cfg:580 data/core/terrain.cfg:592
 #: data/core/terrain.cfg:604 data/core/terrain.cfg:616
 #: data/core/terrain.cfg:628 data/core/terrain.cfg:640
-#: data/core/terrain.cfg:652 data/core/terrain.cfg:2311
+#: data/core/terrain.cfg:652 data/core/terrain.cfg:2310
 msgid "Forest"
 msgstr "Arbaro"
 
@@ -783,8 +783,8 @@ msgstr "Netrapaseblaj Montoj"
 #. [terrain_type]: id=off_map
 #. [terrain_type]: id=off_map2
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1230 data/core/terrain.cfg:2262
-#: data/core/terrain.cfg:2272
+#: data/core/terrain.cfg:1230 data/core/terrain.cfg:2261
+#: data/core/terrain.cfg:2271
 msgid "Void"
 msgstr "Vaka"
 
@@ -832,7 +832,7 @@ msgstr "Vaka"
 #: data/core/terrain.cfg:1539 data/core/terrain.cfg:1552
 #: data/core/terrain.cfg:1565 data/core/terrain.cfg:1578
 #: data/core/terrain.cfg:1593 data/core/terrain.cfg:1606
-#: data/core/terrain.cfg:1621 data/core/terrain.cfg:2325
+#: data/core/terrain.cfg:1621 data/core/terrain.cfg:2324
 msgid "Village"
 msgstr "Vilaĝo"
 
@@ -1296,8 +1296,8 @@ msgstr "Ponto"
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
-#: data/core/terrain.cfg:2195 data/core/terrain.cfg:2205
-#: data/core/terrain.cfg:2215
+#: data/core/terrain.cfg:2194 data/core/terrain.cfg:2204
+#: data/core/terrain.cfg:2214
 #, fuzzy
 msgid "Stone Chasm Bridge"
 msgstr "Ponto"
@@ -1305,56 +1305,56 @@ msgstr "Ponto"
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
-#: data/core/terrain.cfg:2227 data/core/terrain.cfg:2237
-#: data/core/terrain.cfg:2247
+#: data/core/terrain.cfg:2226 data/core/terrain.cfg:2236
+#: data/core/terrain.cfg:2246
 #, fuzzy
 msgid "Plank Bridge"
 msgstr "Ponto"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:2263
+#: data/core/terrain.cfg:2262
 msgid "Off Map"
 msgstr ""
 
 #. [terrain_type]: id=off_map2
-#: data/core/terrain.cfg:2273
+#: data/core/terrain.cfg:2272
 msgid "Experimental Fake Map Edge"
 msgstr ""
 
 #. [terrain_type]: id=shroud
 #. [toggle_button]: id=shroud
-#: data/core/terrain.cfg:2282 data/gui/default/window/mp_create_game.cfg:479
+#: data/core/terrain.cfg:2281 data/gui/default/window/mp_create_game.cfg:479
 msgid "Shroud"
 msgstr "Vualo"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:2291
+#: data/core/terrain.cfg:2290
 msgid "Fog"
 msgstr "Nebulo"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:2304
+#: data/core/terrain.cfg:2303
 msgid "Flat"
 msgstr ""
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:2318
+#: data/core/terrain.cfg:2317
 msgid "Frozen"
 msgstr ""
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:2332
+#: data/core/terrain.cfg:2331
 #, fuzzy
 msgid "Impassable"
 msgstr "Netrapaseblaj Montoj"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2339
+#: data/core/terrain.cfg:2338
 msgid "Unwalkable"
 msgstr ""
 
 #. [terrain_type]: id=rails
-#: data/core/terrain.cfg:2346
+#: data/core/terrain.cfg:2345
 msgid "Rails"
 msgstr ""
 
@@ -1370,7 +1370,7 @@ msgstr ""
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
 #: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:135
-#: src/mapgen_dialog.cpp:110
+#: src/generators/mapgen_dialog.cpp:110
 msgid "Close"
 msgstr "Fermi"
 
@@ -1501,11 +1501,21 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:306
+msgid "Dependencies:"
+msgstr ""
+
+#. [scroll_label]: id=dependencies
+#: data/gui/default/window/addon_description.cfg:320
+msgid "addon_dependencies^None"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:338
 msgid "Translations:"
 msgstr ""
 
 #. [scroll_label]: id=translations
-#: data/gui/default/window/addon_description.cfg:320
+#: data/gui/default/window/addon_description.cfg:352
 msgid "translations^None"
 msgstr ""
 
@@ -1905,13 +1915,15 @@ msgstr "Nova mapo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:54 src/mapgen_dialog.cpp:121
+#: data/gui/default/window/editor_new_map.cfg:54
+#: src/generators/mapgen_dialog.cpp:121
 msgid "Width:"
 msgstr "Larĝeco:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:81 src/mapgen_dialog.cpp:122
+#: data/gui/default/window/editor_new_map.cfg:81
+#: src/generators/mapgen_dialog.cpp:122
 msgid "Height:"
 msgstr "Alteco:"
 
@@ -3422,6 +3434,62 @@ msgstr "Temoj ne ekzistas. Provu shanĝi "
 msgid "Find $filename server binary to host networked games"
 msgstr ""
 
+#: src/generators/mapgen_dialog.cpp:113
+msgid "Map Generator"
+msgstr "Generatoro de mapoj"
+
+#: src/generators/mapgen_dialog.cpp:120
+msgid "Players:"
+msgstr "Ludantoj:"
+
+#: src/generators/mapgen_dialog.cpp:123
+msgid "Number of hills:"
+msgstr "Nombro de Montetoj:"
+
+#: src/generators/mapgen_dialog.cpp:124
+msgid "Max hill size:"
+msgstr "Maksimuma Grandeco de Monteto:"
+
+#: src/generators/mapgen_dialog.cpp:125
+msgid "Villages:"
+msgstr "Vilaĝoj"
+
+#: src/generators/mapgen_dialog.cpp:126
+msgid "Castle size:"
+msgstr "Kastela Grandeco:"
+
+#: src/generators/mapgen_dialog.cpp:127
+msgid "Landform:"
+msgstr "Landformo:"
+
+#: src/generators/mapgen_dialog.cpp:249
+#, fuzzy
+#| msgid "Roads Between Castles"
+msgid "Roads between castles"
+msgstr "Vojoj inter Kasteloj"
+
+#: src/generators/mapgen_dialog.cpp:256
+#, fuzzy
+#| msgid "Show floating labels"
+msgid "Show labels"
+msgstr "Montri glitmarkojn"
+
+#: src/generators/mapgen_dialog.cpp:314
+msgid "/1000 tiles"
+msgstr "/1000 ĉeloj"
+
+#: src/generators/mapgen_dialog.cpp:323
+msgid "Coastal"
+msgstr "Bordregiono"
+
+#: src/generators/mapgen_dialog.cpp:323
+msgid "Inland"
+msgstr "Interno"
+
+#: src/generators/mapgen_dialog.cpp:323
+msgid "Island"
+msgstr "Insulo"
+
 #: src/gui/auxiliary/canvas.cpp:611
 msgid "Line doesn't fit on canvas."
 msgstr ""
@@ -3537,55 +3605,55 @@ msgstr ""
 msgid "No node defined."
 msgstr "Neniu servilo estis difinita."
 
-#: src/gui/dialogs/addon/description.cpp:47
+#: src/gui/dialogs/addon/description.cpp:75
 msgid "addon_state^Not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:49
+#: src/gui/dialogs/addon/description.cpp:77
 msgid "addon_state^Published, not installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:55
+#: src/gui/dialogs/addon/description.cpp:82
 msgid "addon_state^Installed"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:57
+#: src/gui/dialogs/addon/description.cpp:84
 msgid "addon_state^Published"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:64
+#: src/gui/dialogs/addon/description.cpp:89
 msgid "addon_state^Installed, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:68
+#: src/gui/dialogs/addon/description.cpp:93
 msgid "addon_state^Published, not tracking local version"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:76
+#: src/gui/dialogs/addon/description.cpp:99
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:77
+#: src/gui/dialogs/addon/description.cpp:100
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:86
+#: src/gui/dialogs/addon/description.cpp:107
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:87
+#: src/gui/dialogs/addon/description.cpp:108
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:95
+#: src/gui/dialogs/addon/description.cpp:114
 msgid "addon_state^Installed, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:97
+#: src/gui/dialogs/addon/description.cpp:116
 msgid "addon_state^Published, broken"
 msgstr ""
 
-#: src/gui/dialogs/addon/description.cpp:103
+#: src/gui/dialogs/addon/description.cpp:120
 msgid "addon_state^Unknown"
 msgstr ""
 
@@ -3608,7 +3676,7 @@ msgstr "Ĝisdatigi trapasojn"
 
 #: src/gui/dialogs/addon_list.cpp:256
 #: src/gui/dialogs/network_transmission.cpp:54
-#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1200
+#: src/gui/dialogs/network_transmission.cpp:56 src/hotkeys.cpp:1203
 msgid "unit_byte^B"
 msgstr ""
 
@@ -3921,7 +3989,7 @@ msgstr "Defaŭlta zomo"
 msgid "Toggle Full Screen"
 msgstr "Tuta ekrano"
 
-#: src/hotkeys.cpp:83 src/hotkeys.cpp:1194
+#: src/hotkeys.cpp:83 src/hotkeys.cpp:1197
 msgid "Screenshot"
 msgstr "Ekrankopio"
 
@@ -4680,12 +4748,12 @@ msgstr "Eltondi"
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:1194
+#: src/hotkeys.cpp:1197
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:1201 src/hotkeys.cpp:1203
+#: src/hotkeys.cpp:1204 src/hotkeys.cpp:1206
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekrankopio"
@@ -4703,62 +4771,6 @@ msgstr "Ekrankopio"
 #: src/image.cpp:421
 msgid "language code for localized resources^en_US"
 msgstr ""
-
-#: src/mapgen_dialog.cpp:113
-msgid "Map Generator"
-msgstr "Generatoro de mapoj"
-
-#: src/mapgen_dialog.cpp:120
-msgid "Players:"
-msgstr "Ludantoj:"
-
-#: src/mapgen_dialog.cpp:123
-msgid "Number of hills:"
-msgstr "Nombro de Montetoj:"
-
-#: src/mapgen_dialog.cpp:124
-msgid "Max hill size:"
-msgstr "Maksimuma Grandeco de Monteto:"
-
-#: src/mapgen_dialog.cpp:125
-msgid "Villages:"
-msgstr "Vilaĝoj"
-
-#: src/mapgen_dialog.cpp:126
-msgid "Castle size:"
-msgstr "Kastela Grandeco:"
-
-#: src/mapgen_dialog.cpp:127
-msgid "Landform:"
-msgstr "Landformo:"
-
-#: src/mapgen_dialog.cpp:249
-#, fuzzy
-#| msgid "Roads Between Castles"
-msgid "Roads between castles"
-msgstr "Vojoj inter Kasteloj"
-
-#: src/mapgen_dialog.cpp:256
-#, fuzzy
-#| msgid "Show floating labels"
-msgid "Show labels"
-msgstr "Montri glitmarkojn"
-
-#: src/mapgen_dialog.cpp:314
-msgid "/1000 tiles"
-msgstr "/1000 ĉeloj"
-
-#: src/mapgen_dialog.cpp:323
-msgid "Coastal"
-msgstr "Bordregiono"
-
-#: src/mapgen_dialog.cpp:323
-msgid "Inland"
-msgstr "Interno"
-
-#: src/mapgen_dialog.cpp:323
-msgid "Island"
-msgstr "Insulo"
 
 #: src/marked-up_text.cpp:443
 msgid "The maximum text width is less than 1."

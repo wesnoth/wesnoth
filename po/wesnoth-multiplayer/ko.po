@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
 "PO-Revision-Date: 2012-04-25 19:11+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1779,11 +1779,14 @@ msgstr ""
 #. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:11
 msgid "Random map"
 msgstr "무작위 맵"
 
 #. [multiplayer]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -1842,6 +1845,13 @@ msgstr ""
 "봄과 겨울 사이의 경계점에 맞춰진 무작위 맵으로, 주로 눈 덮인 지형으로 구성됩"
 "니다. 참고: 무작위 맵들은 보통 밸런스가 맞지 않으나 시간이 충분하다면 좋은 맵"
 "을 얻을때까지 계속 재생성할 수 있습니다."
+
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
+#, fuzzy
+#| msgid "Random map"
+msgid "Random map by YAMG"
+msgstr "무작위 맵"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

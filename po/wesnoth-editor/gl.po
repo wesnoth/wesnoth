@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-06-23 10:20+0200\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
 "PO-Revision-Date: 2013-08-10 23:40+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -178,8 +178,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Use os botóns principal e secundario para pintar o terreo en primeiro "
-"ou segundo plano. Mantén premida a tecla «Maiús» para pintar só a capa base. "
+"Use os botóns principal e secundario para pintar o terreo en primeiro ou "
+"segundo plano. Mantén premida a tecla «Maiús» para pintar só a capa base. "
 "Premendo «Ctrl» e un dos botóns podes copiar o terreo que estea baixo o "
 "punteiro."
 
@@ -200,8 +200,8 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"O botón principal mostra a selección do usuario, mentres que o secundario "
-"a quita. As teclas numéricas van á posición inicial, premer «Alt» xunto cun "
+"O botón principal mostra a selección do usuario, mentres que o secundario a "
+"quita. As teclas numéricas van á posición inicial, premer «Alt» xunto cun "
 "número establece a respectiva posición inicial baixo o punteiro, «Supr» "
 "bórraa."
 
@@ -227,7 +227,6 @@ msgstr "Mapa"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:98
-#| msgid "Transition update"
 msgid "Transition Update"
 msgstr "Actualización da transición"
 
@@ -257,27 +256,27 @@ msgid "units"
 msgstr "unidades"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:500
+#: data/themes/editor.cfg:499
 msgid "Time Schedule Menu"
 msgstr "Menú do horario"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:510
+#: data/themes/editor.cfg:509
 msgid "Playlist"
 msgstr "Lista de reprodución"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:516
+#: data/themes/editor.cfg:515
 msgid "Assign Time Schedule"
 msgstr "Asignar un horario"
 
 #. [label]: id=terrain-icon
-#: data/themes/editor.cfg:610
+#: data/themes/editor.cfg:609
 msgid "terrain"
 msgstr "terreo"
 
 #. [action]: id=flip_map_button_editor, type=checkbox
-#: data/themes/editor.cfg:689
+#: data/themes/editor.cfg:688
 msgid "Not implemented yet."
 msgstr "Aínda non está listo."
 
@@ -379,7 +378,7 @@ msgid "Choose Target Map"
 msgstr "Escolle o mapa de destino"
 
 #: src/editor/map/context_manager.cpp:338
-#: src/editor/map/context_manager.cpp:700
+#: src/editor/map/context_manager.cpp:701
 msgid "Error loading map"
 msgstr "Houbo un erro ao cargar o mapa"
 
@@ -391,45 +390,45 @@ msgstr "Gardar o mapa como"
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O ficheiro xa existe. Queres substituílo?"
 
-#: src/editor/map/context_manager.cpp:494
+#: src/editor/map/context_manager.cpp:495
 msgid "No random map generators found."
 msgstr "Non se atoparon xeradores de mapas ao chou."
 
-#: src/editor/map/context_manager.cpp:507
-#: src/editor/map/context_manager.cpp:511
+#: src/editor/map/context_manager.cpp:508
+#: src/editor/map/context_manager.cpp:512
 msgid "Map creation failed."
 msgstr "Non foi posíbel crear o mapa."
 
-#: src/editor/map/context_manager.cpp:523
+#: src/editor/map/context_manager.cpp:524
 msgid "Unsaved Changes"
 msgstr "Cambios sen gardar"
 
-#: src/editor/map/context_manager.cpp:524
+#: src/editor/map/context_manager.cpp:525
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Queres desbotar todos os cambios que fixeches no mapa desde a última vez que "
 "o gardaches?"
 
-#: src/editor/map/context_manager.cpp:615
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:616
+#: src/editor/map/context_manager.cpp:657
 msgid "This map is already open."
 msgstr "O mapa xa está aberto."
 
-#: src/editor/map/context_manager.cpp:636
+#: src/editor/map/context_manager.cpp:637
 msgid "Map saved."
 msgstr "Gardouse o mapa."
 
-#: src/editor/map/context_manager.cpp:679
+#: src/editor/map/context_manager.cpp:680
 msgid "Loaded embedded map data"
 msgstr "Cargáronse os datos integrados no mapa"
 
-#: src/editor/map/context_manager.cpp:680
-#: src/editor/map/context_manager.cpp:694
+#: src/editor/map/context_manager.cpp:681
+#: src/editor/map/context_manager.cpp:695
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde o escenario"
 
-#: src/editor/map/context_manager.cpp:690
+#: src/editor/map/context_manager.cpp:691
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -491,7 +490,6 @@ msgid "BG: "
 msgstr "2P: "
 
 #: src/gui/dialogs/editor/custom_tod.cpp:123
-#| msgid "Choose player"
 msgid "Choose file"
 msgstr "Escoller un ficheiro"
 

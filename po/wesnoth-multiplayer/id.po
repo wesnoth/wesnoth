@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
 "PO-Revision-Date: 2012-01-27 22:42+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2085,11 +2085,14 @@ msgstr ""
 #. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:11
 msgid "Random map"
 msgstr "Peta Acak"
 
 #. [multiplayer]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2152,6 +2155,13 @@ msgstr ""
 "terutama dengan medan bersalju. Catatan: peta acak sering tidak seimbang, "
 "tapi jika Anda punya waktu, Anda dapat memperbaharui petanya sampai Anda "
 "mendapatkan yang baik."
+
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
+#, fuzzy
+#| msgid "Random map"
+msgid "Random map by YAMG"
+msgstr "Peta Acak"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
