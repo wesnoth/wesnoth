@@ -126,7 +126,7 @@ namespace { // Support functions
 
 		// Not sure what the correct thing to do is here. In princple,
 		// discarding all events (i.e. clearing events_queue) seems like
-		// the right thing to do in the face of an exeption. However, the
+		// the right thing to do in the face of an exception. However, the
 		// previous functionality preserved the queue, so for now we will
 		// restore it.
 		if ( !done() ) {
@@ -481,7 +481,6 @@ bool pump()
 	// while events are being processed.
 	wb::real_map real_unit_map;
 
-	{ // Scope limitation for pump_manager
 	pump_manager pump_instance;
 	
 	// Loop through the events we need to process.
@@ -530,22 +529,11 @@ bool pump()
 		// Only commit new handlers when finished iterating over event_handlers.
 		commit();
 	}
-	} // Scope limitation for pump_manager
 
 	if ( old_wml_track != internal_wml_tracking )
 		// Notify the whiteboard of any event.
 		// This is used to track when moves, recruits, etc. happen.
 		resources::whiteboard->on_gamestate_change();
-
-	// The previous version of this would iterate through all events, including
-	// those raised, but not pumped, while this function is executing. This
-	// should not actually occur, but to preserve this behavior, initiate a
-	// recursion.
-	// (I think I'll remove this bit shortly, but at least this will allow
-	// that to be done in a separate source code commit.)
-	if ( !events_queue.empty() )
-		if ( pump() )
-			result = true;
 
 	return result;
 }
