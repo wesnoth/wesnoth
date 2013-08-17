@@ -66,7 +66,11 @@ namespace detail{ // Useless, but inform that everything in should not be used o
 * or local variables that have not a streaming operator defined.
 * Enclose them inside RULE_NDEF so they will not be added to the debug engine.
 */
+#ifdef BOOST_SPIRIT_DEBUG_NODE
 #define RULE_DEF(rule_name, ...) RULE_NDEF(rule_name, __VA_ARGS__ ) \
 		BOOST_SPIRIT_DEBUG_NODE(rule_name);
+#else
+#define RULE_DEF(rule_name, ...) RULE_NDEF(rule_name, __VA_ARGS__ ) 
+#endif
 
 #endif // SPIRIT_PREPROCESSOR_RULE_HELPER_HPP
