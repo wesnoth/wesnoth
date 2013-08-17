@@ -30,7 +30,7 @@
 #include "umcd/daemon.hpp"
 #include "umcd/otl/otl.hpp"
 
-void init_game_path(const server_options& opt, const config& cfg)
+static void init_game_path(const server_options& opt, const config& cfg)
 {
 	boost::optional<std::string> wesdir = opt.wesnoth_dir(cfg);
 	if(wesdir)
@@ -44,7 +44,7 @@ void init_game_path(const server_options& opt, const config& cfg)
 	}
 }
 
-void load_config_data(const config& cfg)
+static void load_config_data(const config& cfg)
 {
 	asio_logger::get().load_config(cfg.child("logging"));
 	umcd_protocol::load_config(cfg.child("protocol"));
