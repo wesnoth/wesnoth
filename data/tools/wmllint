@@ -9,9 +9,8 @@
 # markup to newer ones should live here.  This includes resource path changes
 # and renames, also map format conversions.
 #
-# Note: Lift logic for pre-1.4 versions has been removed; if you need
-# it, check out a copy of wmllint from the 1.4 stable branch and use
-# that to lift before running this one.  I did this for a policy
+# Note: Lift logic for pre-1.4 versions has been removed; if you need it,
+# use wmllint-1.4 to lift before running this one.  I did this for a policy
 # reason; I wanted to kill off the --oldversion switch.  It will *not*
 # be restored; in future, changes to WML syntax *must* be forward
 # compatible in such a way that tags from old versions can be
