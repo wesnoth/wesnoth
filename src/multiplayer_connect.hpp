@@ -93,9 +93,9 @@ public:
 
 	typedef std::vector<side> side_list;
 
-	connect(game_display& disp, const config& game_config, chat& c,
-			config& gamelist, const mp_game_settings& params,
-			bool local_players_only, bool first_scenario);
+	connect(game_display& disp, const std::string& game_name,
+		const config& game_config, chat& c, config& gamelist,
+		connect_engine& engine);
 	~connect();
 
 	// Returns the game state, which contains all information about the current
@@ -128,14 +128,14 @@ private:
 	// game label, to reflect the actual state.
 	void update_playerlist_state(bool silent = true);
 
-	const mp_game_settings params_;
+	const mp_game_settings& params() { return engine_.params(); }
 
 	// Lists used for combos.
 	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
 
 	side_list sides_;
-	connect_engine engine_;
+	connect_engine& engine_;
 
 	gui::label waiting_label_;
 	gui::label type_title_label_;

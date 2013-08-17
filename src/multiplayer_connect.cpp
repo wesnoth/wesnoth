@@ -86,17 +86,17 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	slider_income_.set_value(engine_->cfg()["income"]);
 	slider_income_.set_measurements(50, 16);
 
-	combo_faction_.enable(!parent_->params_.saved_game);
-	combo_leader_.enable(!parent_->params_.saved_game);
-	combo_gender_.enable(!parent_->params_.saved_game);
-	combo_team_.enable(!parent_->params_.saved_game);
-	combo_color_.enable(!parent_->params_.saved_game);
-	slider_gold_.hide(parent_->params_.saved_game);
-	slider_income_.hide(parent_->params_.saved_game);
-	label_gold_.hide(parent_->params_.saved_game);
-	label_income_.hide(parent_->params_.saved_game);
+	combo_faction_.enable(!parent_->params().saved_game);
+	combo_leader_.enable(!parent_->params().saved_game);
+	combo_gender_.enable(!parent_->params().saved_game);
+	combo_team_.enable(!parent_->params().saved_game);
+	combo_color_.enable(!parent_->params().saved_game);
+	slider_gold_.hide(parent_->params().saved_game);
+	slider_income_.hide(parent_->params().saved_game);
+	label_gold_.hide(parent_->params().saved_game);
+	label_income_.hide(parent_->params().saved_game);
 
-	if (parent_->params_.use_map_settings) {
+	if (parent_->params().use_map_settings) {
 		// Gold, income, team, and color are only suggestions.
 		// (Unless explicitly locked).
 		slider_gold_.enable(!gold_lock_);
@@ -107,7 +107,7 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 		combo_color_.enable(!color_lock_);
 	}
 
-	if (parent_->params_.use_map_settings || parent_->params_.saved_game) {
+	if (parent_->params().use_map_settings || parent_->params().saved_game) {
 		// Explicitly assign a faction, if possible.
 		int faction_index = 0;
 		if (engine_->choosable_factions().size() > 1) {
@@ -174,7 +174,7 @@ void connect::side::process_event()
 		combo_controller_->hide(false);
 	}
 
-	if (parent_->params_.saved_game) {
+	if (parent_->params().saved_game) {
 		return;
 	}
 
@@ -313,14 +313,14 @@ void connect::side::update_leader_combo()
 {
 	reset_leader_combo(&combo_leader_, engine_->choosable_leaders(),
 		engine_->current_leader(), engine_->color(),
-		parent_->params_.saved_game);
+		parent_->params().saved_game);
 }
 
 void connect::side::update_gender_combo()
 {
 	reset_gender_combo(&combo_gender_, engine_->choosable_genders(),
 		engine_->current_leader(), engine_->current_gender(),
-		engine_->color(), parent_->params_.saved_game);
+		engine_->color(), parent_->params().saved_game);
 }
 
 void connect::side::update_controller_ui()
@@ -368,15 +368,14 @@ void connect::side::update_controller_ui()
 	}
 }
 
-connect::connect(game_display& disp, const config& game_config,
-	chat& c, config& gamelist, const mp_game_settings& params,
-	bool local_players_only, bool first_scenario) :
-	mp::ui(disp, _("Game Lobby: ") + params.name, game_config, c, gamelist),
-	params_(params),
+connect::connect(game_display& disp, const std::string& game_name,
+	const config& game_config, chat& c, config& gamelist,
+	connect_engine& engine) :
+	mp::ui(disp, _("Game Lobby: ") + game_name, game_config, c, gamelist),
 	player_colors_(),
 	ai_algorithms_(),
 	sides_(),
-	engine_(disp, params, local_players_only, first_scenario),
+	engine_(engine),
 	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
@@ -392,7 +391,7 @@ connect::connect(game_display& disp, const config& game_config,
 		font::LOBBY_COLOR),
 	scroll_pane_(video()),
 	launch_(video(), _("I’m Ready")),
-	cancel_(video(), first_scenario ? _("Cancel") : _("Quit")),
+	cancel_(video(), engine_.first_scenario() ? _("Cancel") : _("Quit")),
 	//add_local_player_(video(), _("Add named local player")),
 	combo_control_group_(new gui::drop_group_manager())
 {
@@ -443,26 +442,26 @@ connect::connect(game_display& disp, const config& game_config,
 		side_pos_y_offset += 60;
 	}
 
-	if (first_scenario) {
+	if (engine_.first_scenario()) {
 		// Send Initial information
 		config response;
 		config& create_game = response.add_child("create_game");
-		create_game["name"] = params.name;
-		if (params.password.empty() == false) {
-			response["password"] = params.password;
+		create_game["name"] = params().name;
+		if (params().password.empty() == false) {
+			response["password"] = params().password;
 		}
 		network::send_data(response, 0);
 	}
 
 	append_to_title(" — " + engine_.level()["name"].t_str());
-	gold_title_label_.hide(params_.saved_game);
-	income_title_label_.hide(params_.saved_game);
+	gold_title_label_.hide(params().saved_game);
+	income_title_label_.hide(params().saved_game);
 
 	engine_.update_level();
 	update_playerlist_state(true);
 
 	// If we are connected, send data to the connected host.
-	if (first_scenario) {
+	if (engine_.first_scenario()) {
 		network::send_data(engine_.level(), 0);
 	} else {
 		config next_level;
@@ -557,7 +556,7 @@ void connect::hide_children(bool hide)
 	team_title_label_.hide(hide);
 	color_title_label_.hide(hide);
 
-	if (!params_.saved_game) {
+	if (!params().saved_game) {
 		gold_title_label_.hide(hide);
 		income_title_label_.hide(hide);
 	}

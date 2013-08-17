@@ -14,9 +14,10 @@
 #ifndef MULTIPLAYER_HPP_INCLUDED
 #define MULTIPLAYER_HPP_INCLUDED
 
-#include "mp_game_settings.hpp"
-#include "multiplayer_ui.hpp"
 #include "commandline_options.hpp"
+#include "mp_game_settings.hpp"
+#include "multiplayer_connect_engine.hpp"
+#include "multiplayer_ui.hpp"
 
 class config;
 class game_display;
@@ -59,8 +60,8 @@ void start_client(game_display& disp, const config& game_config,
  * changes made.
  */
 mp::ui::result goto_mp_connect(game_state& state, game_display& disp,
-	const config& game_config, const mp_game_settings& params,
-	bool network_game);
+	connect_engine& engine, const config& game_config,
+	const std::string& game_name);
 
 /**
  * Opens mp::wait screen and sets game state according to the

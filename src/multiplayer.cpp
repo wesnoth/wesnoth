@@ -491,8 +491,10 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, gamechat, gamelist, params,
-			local_players_only, true);
+		mp::connect_engine_ptr connect_engine(
+			new mp::connect_engine(disp, params, local_players_only, true));
+		mp::connect ui(disp, params.name, game_config, gamechat, gamelist,
+			*connect_engine);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();
@@ -861,8 +863,10 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect ui(disp, game_config, gamechat, gamelist, parameters, true,
-			true);
+		mp::connect_engine_ptr connect_engine(
+			new mp::connect_engine(disp, parameters, true, true));
+		mp::connect ui(disp, parameters.name, game_config, gamechat, gamelist,
+			*connect_engine);
 
 		// Update the parameters to reflect game start conditions
 		ui.start_game_commandline(cmdline_opts);
@@ -903,14 +907,14 @@ void start_client(game_display& disp, const config& game_config,
 }
 
 mp::ui::result goto_mp_connect(game_state& state, game_display& disp,
-	const config& game_config, const mp_game_settings& params,
-	bool network_game)
+	connect_engine& engine, const config& game_config,
+	const std::string& game_name)
 {
 	mp::ui::result res;
 
 	{
-		mp::connect ui(disp, game_config, gamechat, gamelist, params,
-			!network_game, false);
+		mp::connect ui(disp, game_name, game_config, gamechat, gamelist,
+			engine);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();

@@ -33,6 +33,7 @@
 #include "map_exception.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer.hpp"
+#include "multiplayer_connect_engine.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
 #include "resources.hpp"
@@ -638,13 +639,17 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if (game_config::campaign_screens) {
 					config old_carryover_sides_start =
 						gamestate.carryover_sides_start;
-					gamestate.mp_settings().scenario_data = *scenario;
+					mp_game_settings& params = gamestate.mp_settings();
+					params.scenario_data = *scenario;
+
+					mp::connect_engine_ptr
+						connect_engine(new mp::connect_engine(disp, params,
+							!network_game, false));
 
 					// Opens mp::connect dialog to get a new gamestate.
 					// Old carryover data is preserved.
 					mp::ui::result connect_res = mp::goto_mp_connect(gamestate,
-						disp, game_config, gamestate.mp_settings(),
-						network_game);
+						disp, *connect_engine, game_config, params.name);
 					if (connect_res == mp::ui::QUIT) {
 						return QUIT;
 					}

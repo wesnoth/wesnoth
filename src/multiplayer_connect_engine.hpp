@@ -19,6 +19,8 @@
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 
+#include <boost/scoped_ptr.hpp>
+
 namespace mp {
 
 enum controller {
@@ -30,8 +32,10 @@ enum controller {
 	CNTR_LAST
 };
 
+class connect_engine;
 class side_engine;
 
+typedef boost::scoped_ptr<connect_engine> connect_engine_ptr;
 typedef boost::shared_ptr<side_engine> side_engine_ptr;
 typedef std::pair<mp::controller, std::string> controller_option;
 
@@ -82,6 +86,8 @@ public:
 	const std::vector<std::string>& user_team_names()
 		{ return user_team_names_; }
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
+	const mp_game_settings& params() const { return params_; }
+	bool first_scenario() const { return first_scenario_; }
 
 private:
 	connect_engine(const connect_engine&);
