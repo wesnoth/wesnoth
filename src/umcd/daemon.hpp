@@ -26,7 +26,7 @@
 	@post The father has exited. Only the child returns.
 	@return Return an error message if a problem occured.
 */
-boost::optional<std::string> launch_daemon()
+inline boost::optional<std::string> launch_daemon()
 {
 #ifdef _WIN32
 	return std::string("Running as a daemon is not supported on this plateform (Windows)\n");
