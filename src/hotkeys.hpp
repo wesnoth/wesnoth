@@ -408,7 +408,7 @@ public:
 
 	/**
 	 * Adjusts the state of those theme menu buttons which trigger hotkey events.
-	 * \param command The command whose linked buttons are adjusted */
+	 */
 	void set_button_state(display& disp);
 
 	virtual bool can_execute_command(HOTKEY_COMMAND command, int index=-1) const = 0;
