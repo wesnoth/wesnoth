@@ -110,7 +110,7 @@ std::string color2hexa(const SDL_Color &color);
 
 /**
  * Creates pango markup of a color.
- * Don't forget to close it with a </span>
+ * Don't forget to close it with a @c \</span\>.
  */
 std::string span_color(const SDL_Color &color);
 
