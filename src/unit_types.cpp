@@ -162,7 +162,7 @@ bool attack_type::matches_filter(const config& filter) const
  * of the modification(s) applied (currently only changes to the number of
  * strikes, damage, accuracy, and parry are included in this description).
  *
- * @returns whether or not @this matched the @cfg as a filter.
+ * @returns whether or not @c this matched the @a cfg as a filter.
  */
 bool attack_type::apply_modification(const config& cfg,std::string* description)
 {
@@ -300,7 +300,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
  * of the modification(s) that would be applied to the number of strikes
  * and damage.
  *
- * @returns whether or not @this matched the @cfg as a filter.
+ * @returns whether or not @c this matched the @a cfg as a filter.
  */
 bool attack_type::describe_modification(const config& cfg,std::string* description)
 {
