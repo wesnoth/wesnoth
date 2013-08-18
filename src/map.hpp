@@ -104,12 +104,12 @@ public:
 
 
 	/**
-	 * Loads a map, from the [map] wml config in @level.
+	 * Loads a map, from the [map] wml config in @a level.
 	 *
 	 * Data should be a series of lines, with each character representing one
 	 * hex on the map.  Starting locations are represented by numbers
 	 *
-	 * @param cfg the game confg.
+	 * @param cfg the game config.
 	 * @param level the scenario config to load from.
 	 */
 	gamemap(const config &cfg, const config &level); //throw(incorrect_map_format_error)
