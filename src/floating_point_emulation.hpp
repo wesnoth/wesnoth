@@ -34,7 +34,7 @@
  *
  * FLOATING_POINT_EMULATION_USE_SCALED_INT
  * When this macro is defined the @ref tfloat is defined as the 32-bit scaled
- * integer. If not the @tfloat is defined as a @c double, whether or not the
+ * integer. If not the @ref tfloat is defined as a @c double, whether or not the
  * value is shifted depends on @c FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK.
  *
  * FLOATING_POINT_EMULATION_ENABLE_RANGE_CHECK
