@@ -660,7 +660,7 @@ void unit::generate_name(rand_rng::simple_rng* rng)
  * Note that random numbers used in config files don't work in multiplayer,
  * so that leaders should be barred from all random traits until that
  * is fixed. Later the restrictions will be based on play balance.
- * @musthaveonly is true when you don't want to generate random traits or
+ * @a musthaveonly is true when you don't want to generate random traits or
  * you don't want to give any optional traits to a unit.
  */
 void unit::generate_traits(bool musthaveonly)
