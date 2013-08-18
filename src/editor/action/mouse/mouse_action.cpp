@@ -360,7 +360,7 @@ editor_action* mouse_action_fill::click_left(editor_display& disp, int x, int y)
 		terrain_palette_.select_fg_item(disp.map().get_terrain(hex));
 		return NULL;
 	} else {
-		///@TODO only take the base terrain into account when searching for contiguous terrain when painting base only
+		/** @todo only take the base terrain into account when searching for contiguous terrain when painting base only */
 		//or use a different key modifier for that
 		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_fg_item(),
 				has_shift_modifier());
@@ -375,7 +375,7 @@ editor_action* mouse_action_fill::click_right(editor_display& disp, int x, int y
 		terrain_palette_.select_bg_item(disp.map().get_terrain(hex));
 		return NULL;
 	} else {
-		///@TODO only take the base terrain into account when searching for contiguous terrain when painting base only
+		/** @todo only take the base terrain into account when searching for contiguous terrain when painting base only */
 		//or use a different key modifier for that
 		editor_action_fill* a = new editor_action_fill(hex, terrain_palette_.selected_bg_item(),
 				has_shift_modifier());
