@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2013-08-17 00:17+0200\n"
+"PO-Revision-Date: 2013-08-18 12:01+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -863,10 +863,9 @@ msgstr "Animais"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/goto.cfg:147
-#, fuzzy
 #| msgid "team_name^Wolves"
 msgid "team_name^Ghosts"
-msgstr "Lobos"
+msgstr "Fantasmas"
 
 #. [event]: id=guard1}, id=guard2}, (id,name=fort_commander,Aethubry)}
 #: data/ai/micro_ais/scenarios/goto.cfg:196
@@ -996,12 +995,12 @@ msgstr ""
 #. [event]: id=ghost1}
 #: data/ai/micro_ais/scenarios/goto.cfg:482
 msgid "Aaiiieeeeeee !!!"
-msgstr ""
+msgstr "Aaiiieeeeeee!"
 
 #. [event]: id=ghost1}
 #: data/ai/micro_ais/scenarios/goto.cfg:483
 msgid "O no, a ghost!"
-msgstr ""
+msgstr "Oh, non, un fantasma!"
 
 #. [event]: id=ghost1}
 #: data/ai/micro_ais/scenarios/goto.cfg:484
@@ -1013,6 +1012,12 @@ msgid ""
 "which they seem to get along just fine for some reason.  So as long as we "
 "don't corner them, they'll leave us alone."
 msgstr ""
+"Non te preocupes, eses fantasmas son moi tímidos. Ninguén sabe por que, pero "
+"sempre aparecen no norte nesta época do ano e diríxense ao sur. Ademais, por "
+"raro que pareza nun fantasma, parecen asustados de todo o mundo e evitan o "
+"resto das unidades a toda costa; salvo polos morcegos e os saurios, non sei "
+"por que pero parece que se levan ben con eles. Así que mentres non os poñamos "
+"entre a espada e a parede, deixarannos en paz."
 
 #. [message]: speaker=messenger2
 #: data/ai/micro_ais/scenarios/goto.cfg:540
@@ -1643,30 +1648,27 @@ msgstr ""
 #. [test]: id=hang_out
 #: data/ai/micro_ais/scenarios/hang_out.cfg:5
 msgid "Hang Out"
-msgstr ""
+msgstr "Matar o tempo"
 
 #. [side]: id=Bad Outlaw, type=Outlaw
 #: data/ai/micro_ais/scenarios/hang_out.cfg:23
-#, fuzzy
 #| msgid "team_name^Konrad"
 msgid "team_name^Bad Outlaw"
-msgstr "Conrad"
+msgstr "Proscrito malo"
 
 #. [side]: id=Good Bandit, type=Bandit
 #: data/ai/micro_ais/scenarios/hang_out.cfg:53
-#, fuzzy
 #| msgid "team_name^Konrad"
 msgid "team_name^Good Bandit"
-msgstr "Conrad"
+msgstr "Bandido bo"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:75
 msgid "Outlaw moves here"
-msgstr ""
+msgstr "O proscrito móvese aquí"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:130
-#, fuzzy
 #| msgid ""
 #| "If you have not changed anything, Side 1 uses the Random Recruiting AI, "
 #| "with swordsmen and peasants having been given higher probability than the "
@@ -1694,16 +1696,16 @@ msgid ""
 "the <span color='#00A000'>Micro AI wiki page</span> at http://wiki.wesnoth."
 "org/Micro_AIs for more information."
 msgstr ""
-"Se non cambiaches nada, o bando 1 usa a intelixencia artificial de "
-"recrutamento aleatorio, cunha probabilidade superior de recrutar espadachíns "
-"e campesiños. Non se trata dun bo patrón de recrutamento, esa non é a "
-"intención, simplemente se trata dunha demostración de como se pode empregar "
-"a intelixencia artificial.\n"
+"Ese proscrito vai ir correndo á torre do sueste. Só vai recrutar unidades "
+"durante tres roldas, despois comezará a moverse, e el e os seus bandoleiros "
+"son moito máis rápidos ca nós. Apurémonos ou non o daremos collido.\n"
 "\n"
-"O bando 2 emprega o sistema de recrutamento predeterminado do xogo.\n"
-"\n"
-"Téñase en conta tamén que hai varias intelixencias artificiais de "
-"recrutamento programadas como micro intelixencias artificiais, que poden "
+"Nota: O usuario usa unha combinación de dúas micro intelixencias artificiais, "
+"a micro intelixencia artificial de matar o tempo que fai que as unidades do "
+"bando 2 queden arredor da torre durante dúas roldas (pero saen do castelo "
+"para permitir recrutar máis unidades) e a micro intelixencia artificial de "
+"escolta dun mensaxeiro que toma o control pasadas esas dúas roldas. As micro "
+"intelixencias artificiais poden "
 "engadirse e adaptarse facilmente ás necesidades dun escenario empregando WML "
 "e a etiqueta «[micro_ai]». Bótalle unha ollada á <span "
 "color='#00A000'>documentación das micro intelixencias artificiais</span> en "
@@ -1715,39 +1717,38 @@ msgstr ""
 msgid ""
 "Get into the outlaw's way before he can make it to the south-eastern keep"
 msgstr ""
+"Ponte no camiño do proscrito antes de que dea chegado á torre do sueste."
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/hang_out.cfg:138
-#, fuzzy
 #| msgid "Death of Big Bad Orc"
 msgid "Death of Bad Outlaw"
-msgstr "Morte do orco grande e malo."
+msgstr "Morte do proscrito malo."
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/hang_out.cfg:142
-#, fuzzy
 #| msgid "Death of Vaddan"
 msgid "Death of Good Bandit"
-msgstr "Morte de Vadan."
+msgstr "Morte do bandido bo."
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/hang_out.cfg:146
-#, fuzzy
 #| msgid "Rossauba makes it to the signpost"
 msgid "Bad Outlaw makes it to the signpost"
-msgstr "Que Rosauba chegue ao sinal."
+msgstr "Que o proscrito malo chegue ao sinal."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:158
-msgid "We got him!  Now whatever it is we are fighting for is safe."
-msgstr ""
+msgid "We got him! Now whatever it is we are fighting for is safe."
+msgstr "Collémolo! Agora o que sexa polo que estamos loitando está a salvo."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/hang_out.cfg:182
 msgid ""
-"I made it!  Now we can keep fighting for whatever it is that we are fighting "
+"I made it! Now we can keep fighting for whatever it is that we are fighting "
 "for."
 msgstr ""
+"Conseguino! Agora podemos seguir loitando polo que sexa que estamos a loitar."
 
 #. [test]: id=healer_support
 #: data/ai/micro_ais/scenarios/healer_support.cfg:5
@@ -2186,7 +2187,6 @@ msgstr "Úrudin retírase aquí."
 
 #. [event]: id=Konrad profile profile}
 #: data/ai/micro_ais/scenarios/patrols.cfg:220
-#, fuzzy
 #| msgid ""
 #| "Hello!  I'm a Konrad impostor. We are going to demonstrate the Patrol AI "
 #| "to you in this scenario.\n"
@@ -2219,7 +2219,7 @@ msgstr ""
 "deles sempre na mesma dirección, e o outro cambiando de dirección ao rematar "
 "cada volta.\n"
 "\n"
-"Todo isto está programado usando a mesma etiqueta «[micro_ai]»."
+"Todo isto está programado usando a etiqueta «[micro_ai]» de patrulla."
 
 #. [event]: id=Konrad profile profile}
 #: data/ai/micro_ais/scenarios/patrols.cfg:227
@@ -2230,6 +2230,13 @@ msgid ""
 "same side.  For more details on different types of guardian AIs, there is a "
 "separate test scenario specializing on those."
 msgstr ""
+"Pola outra banda, eu son un garda dunha zona que patrulla, por así dicilo, a "
+"parte sur do mapa. Esta intelixencia artificial está programada mediante a "
+"etiqueta [micro_ai] de garda. Úsase neste escenario principalmente para "
+"demostrar como configurar diferentes micro intelixencias artificiais para o "
+"mesmo bando. Para máis información sobre os distintos tipos de intelixencias "
+"artificiais de gardas que existen, hai outro escenario de probas que se "
+"especializa nelas."
 
 #. [event]: id=Konrad profile profile}
 #: data/ai/micro_ais/scenarios/patrols.cfg:228
@@ -2248,7 +2255,6 @@ msgstr ""
 
 #. [event]: id=Konrad profile profile}
 #: data/ai/micro_ais/scenarios/patrols.cfg:233
-#, fuzzy
 #| msgid ""
 #| "You, as the player, are in charge of Gertburt's bandits in this scenario. "
 #| "You can either simply watch the patrols move around, or you can move "
@@ -2622,7 +2628,7 @@ msgstr "Sandadores"
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:86
 msgid "Hang Out and Messenger"
-msgstr ""
+msgstr "Matar o tempo e mensaxeiro"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:93
@@ -2893,17 +2899,15 @@ msgstr ""
 
 #. [set_menu_item]: id=m14_hangout
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:303
-#, fuzzy
 #| msgid "Patrol Micro AI demo"
 msgid "Hang Out Micro AI demo"
-msgstr "Demostración da micro IA de patrulla"
+msgstr "Demostración da micro IA de matar o tempo"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:312
-#, fuzzy
 #| msgid "Messenger Escort Micro AI demo"
 msgid "Combined Hang Out and Messenger Escort Micro AI demo"
-msgstr "Demostración da micro IA de escolta dun mensaxeiro"
+msgstr "Demostración das micro IA de matar o tempo e escolta dun mensaxeiro"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:312
@@ -2914,6 +2918,14 @@ msgid ""
 "also shows how to combine two Micro AIs on the same side by having the "
 "Messenger Escort Micro AI take over at that point."
 msgstr ""
+"Este escenario é unha demostración da micro intelixencia artificial de matar "
+"o tempo, que mantén unidades ao redor dun lugar previamente definido ata que "
+"se cumpre unha condición previamente definida. Unha vez se cumpre a "
+"condición, as unidades son libres de seguir outro comportamento de "
+"intelixencia artificial. O escenario mostra tamén como combinar dúas micro "
+"intelixencias artificiais no mesmo bando, pois unha vez se cumpre a "
+"condición, a micro intelixencia artificial de escolta dun mensaxeiro toma o "
+"relevo.s"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
@@ -3468,10 +3480,9 @@ msgstr "Micro IA de viaxe"
 
 #. [ai]: id=hang_out
 #: data/core/macros/ai_micro_ais.cfg:228
-#, fuzzy
 #| msgid "Healer Support Micro AI"
 msgid "Hang Out Micro AI"
-msgstr "Micro IA de apoio de sandadores"
+msgstr "Micro IA de matar o tempo"
 
 #~ msgid "End scenario"
 #~ msgstr "Rematar escenario"
