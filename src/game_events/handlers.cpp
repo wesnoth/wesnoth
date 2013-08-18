@@ -501,25 +501,8 @@ void write_events(config& cfg)
 		cfg.add_child("event", eh.get_config());
 	}
 
-	std::stringstream used;
-	std::set<std::string>::const_iterator u;
-	for(u = used_items.begin(); u != used_items.end(); ++u) {
-		if(u != used_items.begin())
-			used << ",";
-
-		used << *u;
-	}
-
-	cfg["used_items"] = used.str();
-	std::stringstream ids;
-	for(u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
-		if(u != unit_wml_ids.begin())
-			ids << ",";
-
-		ids << *u;
-	}
-
-	cfg["unit_wml_ids"] = ids.str();
+	cfg["used_items"] = utils::join(used_items);
+	cfg["unit_wml_ids"] = utils::join(unit_wml_ids);
 
 	if (resources::soundsources)
 		resources::soundsources->write_sourcespecs(cfg);
