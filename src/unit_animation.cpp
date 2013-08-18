@@ -602,8 +602,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			anim["hits"] = true;
 			animations.push_back(unit_animation(anim));
 			animations.back().base_score_--;
+			image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 			animations.back().add_frame(225,frame_builder()
-					.image(animations.back().get_last_frame().end_parameters().image.get_filename())
+					.image(image_loc.get_filename()+image_loc.get_modifications())
 					.duration(225)
 					.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
 		}
@@ -615,9 +616,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 				config tmp = anim;
 				tmp["hits"] = hit_type;
 				animations.push_back(unit_animation(tmp));
+				image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 				if(hit_type == "yes" || hit_type == "hit" || hit_type=="kill") {
 					animations.back().add_frame(225,frame_builder()
-							.image(animations.back().get_last_frame().end_parameters().image.get_filename())
+							.image(image_loc.get_filename()+image_loc.get_modifications())
 							.duration(225)
 							.blend("0.0,0.5:75,0.0:75,0.5:75,0.0",game_display::rgb(255,0,0)));
 				}
@@ -657,7 +659,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 		image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
 		
-		animations.back().add_frame(600,frame_builder().image(image_loc.get_filename()).duration(600).highlight("1~0:600"));
+		animations.back().add_frame(600,frame_builder()
+									.image(image_loc.get_filename()+image_loc.get_modifications())
+									.duration(600)
+									.highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particule();
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
