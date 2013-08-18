@@ -433,7 +433,6 @@ bool fire(const std::string& event,
           const entity_location& loc2,
           const config& data)
 {
-	assert(manager::running());
 	raise(event,loc1,loc2,data);
 	return pump();
 }
@@ -443,7 +442,6 @@ void raise(const std::string& event,
            const entity_location& loc2,
            const config& data)
 {
-	assert(manager::running());
 	if(!events_init())
 		return;
 
@@ -455,9 +453,9 @@ void raise(const std::string& event,
 bool pump()
 {
 	// Quick aborts:
-	assert(manager::running());
 	if(!events_init())
 		return false;
+	assert(resources::lua_kernel != NULL);
 	if ( events_queue.empty() ) {
 		DBG_EH << "Processing queued events, but none found.\n";
 		return false;

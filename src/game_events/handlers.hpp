@@ -60,6 +60,10 @@ namespace game_events
 	///
 	/// Thus, a manager object should be created when a scenario is played,
 	/// and destroyed at the end of the scenario.
+	/// If a second manager object is created before destroying the previous
+	/// one, the game will crash with an assertion failure.
+	///
+	/// This struct is responsible for setting and clearing resources::lua_kernel.
 	struct manager {
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
@@ -79,13 +83,8 @@ namespace game_events
 		/// Commits the event handlers that were buffered.
 		static void commit_buffer();
 
-		/// Returns true when a manager exists, so events can be processed.
-		static bool running() { return running_; }
-
 	private:
 		variable::manager variable_manager;
-
-		static bool running_;
 	};
 
 	/// Create an event handler.
