@@ -26,7 +26,7 @@
  * Compile with -O3 -DBENCHMARK for speed testing, and with -DCHECK for
  * testing correctness (redirect the output to a file, then compile
  * utils/wesnoth-attack-sim.c and run that with the arguments
- * --check <file name>).
+ * --check \<file name\>).
  * For either option, use -DHUMAN_READABLE if you want to see the results
  * from each combat displayed in a prettier format (but no longer suitable
  * for wesnoth-attack-sim.c).
