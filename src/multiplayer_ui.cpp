@@ -27,16 +27,10 @@
 #include "multiplayer.hpp"
 #include "multiplayer_ui.hpp"
 #include "sound.hpp"
-#include "replay.hpp"
-#include "unit_id.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
-
-static lg::log_domain log_engine("engine");
-#define LOG_NG LOG_STREAM(info, log_engine)
-#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -86,111 +80,6 @@ void check_response(network::connection res, const config& data)
 	if (const config &err = data.child("error")) {
 		throw network::error(err["message"]);
 	}
-}
-
-void level_to_gamestate(config& level, game_state& state)
-{
-	//any replay data is only temporary and should be removed from
-	//the level data in case we want to save the game later
-	const config &replay_data = level.child("replay");
-	config replay_data_store;
-	if (replay_data) {
-		replay_data_store = replay_data;
-		LOG_NW << "setting replay\n";
-		state.replay_data = replay_data;
-		recorder = replay(replay_data_store);
-		if(!recorder.empty()) {
-			recorder.set_skip(false);
-			recorder.set_to_end();
-		}
-	}
-
-	carryover_info sides = carryover_info(state.carryover_sides_start);
-
-	n_unit::id_manager::instance().set_save_id(level["next_underlying_unit_id"]);
-	//set random
-	const config::attribute_value &seed = level["random_seed"];
-	if(!seed.empty()) {
-		const unsigned calls = level["random_calls"].to_unsigned();
-		sides.rng().seed_random(seed.to_int(42), calls);
-	} else {
-		ERR_NG << "No random seed found, random "
-			"events will probably be out of sync.\n";
-	}
-
-	//adds the starting pos to the level
-	if (!level.child("replay_start")) {
-		level.add_child("replay_start", level);
-		level.child("replay_start").remove_child("multiplayer", 0);
-	}
-	//this is important, if it does not happen, the starting position is missing and
-	//will be drawn from the snapshot instead (which is not what we want since we have
-	//all needed information here already)
-	state.replay_start() = level.child("replay_start");
-
-	level["campaign_type"] = "multiplayer";
-	state.classification().campaign_type = "multiplayer";
-	state.classification().completion = level["completion"].str();
-	state.classification().version = level["version"].str();
-
-	if (const config &vars = level.child("variables")) {
-		sides.set_variables(vars);
-	}
-	sides.get_wml_menu_items().set_menu_items(level);
-	state.mp_settings().set_from_config(level);
-
-	//Check whether it is a save-game by looking for snapshot data
-	const config &snapshot = level.child("snapshot");
-	const bool saved_game = snapshot && snapshot.child("side");
-
-	//It might be a MP campaign start-of-scenario save
-	//In this case, it's not entirely a new game, but not a save, either
-	//Check whether it is no savegame and the starting_pos contains [player] information
-	bool start_of_scenario = !saved_game && state.replay_start().child("player");
-
-	//If we start a fresh game, there won't be any snapshot information. If however this
-	//is a savegame, we got a valid snapshot here.
-	if (saved_game) {
-		state.snapshot = snapshot;
-		if (const config &v = snapshot.child("variables")) {
-			sides.set_variables(v);
-		}
-		sides.get_wml_menu_items().set_menu_items(snapshot);
-	}
-
-	//In any type of reload(normal save or start-of-scenario) the players could have
-	//changed and need to be replaced
-	if(saved_game || start_of_scenario){
-		config::child_itors saved_sides = saved_game ?
-			state.snapshot.child_range("side") :
-			state.replay_start().child_range("side");
-		config::const_child_itors level_sides = level.child_range("side");
-
-		BOOST_FOREACH(config &side, saved_sides)
-		{
-			BOOST_FOREACH(const config &lside, level_sides)
-			{
-				if (side["side"] == lside["side"] &&
-						(side["current_player"] != lside["current_player"] ||
-						 side["controller"] != lside["controller"]))
-				{
-					side["current_player"] = lside["current_player"];
-					side["id"] = lside["id"];
-					side["save_id"] = lside["save_id"];
-					side["controller"] = lside["controller"];
-					break;
-				}
-			}
-		}
-	}
-	if(sides.get_variables().empty()) {
-		LOG_NG << "No variables were found for the game_state." << std::endl;
-	} else {
-		LOG_NG << "Variables found and loaded into game_state:" << std::endl;
-		LOG_NG << sides.get_variables();
-	}
-
-	state.carryover_sides_start = sides.to_config();
 }
 
 std::string get_color_string(int id)

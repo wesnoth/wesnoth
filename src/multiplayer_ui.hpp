@@ -36,8 +36,6 @@ const std::string random_enemy_picture("units/random-dice.png");
 
 void check_response(network::connection res, const config& data);
 
-void level_to_gamestate(config& level, game_state& state);
-
 std::string get_color_string(int id);
 
 /** this class memorizes a chat session. */

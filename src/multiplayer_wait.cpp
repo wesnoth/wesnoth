@@ -21,6 +21,7 @@
 #include "game_display.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
+#include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
 #include "statistics.hpp"
 #include "wml_exception.hpp"
