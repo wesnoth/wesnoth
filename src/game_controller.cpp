@@ -849,7 +849,7 @@ bool game_controller::play_multiplayer()
 
 		if(res == 3) {
 			mp::start_local_game(disp(),
-			    resources::config_manager->game_config());
+			    resources::config_manager->game_config(), state_);
 		} else if((res >= 0 && res <= 2) || res == 4) {
 			std::string host;
 			if(res == 0) {
@@ -861,7 +861,7 @@ bool game_controller::play_multiplayer()
 				multiplayer_server_ = "";
 			}
 			mp::start_client(disp(), resources::config_manager->game_config(),
-			    host);
+				state_, host);
 		}
 
 	} catch(game::mp_server_error& e) {
@@ -916,7 +916,7 @@ bool game_controller::play_multiplayer_commandline()
 	cursor::set(cursor::NORMAL);
 
 	mp::start_local_game_commandline(disp(),
-	    resources::config_manager->game_config(), cmdline_opts_);
+	    resources::config_manager->game_config(), state_, cmdline_opts_);
 
 	return false;
 }

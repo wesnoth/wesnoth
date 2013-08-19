@@ -150,7 +150,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(game_display& disp);
+	create_engine(game_display& disp, game_state& state);
 	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };
@@ -235,6 +235,7 @@ private:
 	std::vector<extras_metadata_ptr> eras_;
 	std::vector<extras_metadata_ptr> mods_;
 
+	game_state& state_;
 	mp_game_settings parameters_;
 
 	depcheck::manager dependency_manager_;

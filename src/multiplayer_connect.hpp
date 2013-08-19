@@ -98,10 +98,6 @@ public:
 		connect_engine& engine);
 	~connect();
 
-	// Returns the game state, which contains all information about the current
-	// scenario.
-	const game_state& state() const { return engine_.state(); }
-
 	// Updates the current game state, resolves random factions, and sends a
 	// "start game" message to the network.
 	void start_game() { engine_.start_game(); }

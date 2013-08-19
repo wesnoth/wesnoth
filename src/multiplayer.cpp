@@ -427,12 +427,11 @@ static server_type open_connection(game_display& disp, const std::string& origin
 // of those screen functions.
 
 static void enter_wait_mode(game_display& disp, const config& game_config,
-	bool observe)
+	game_state& state, bool observe)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
 	mp::ui::result res;
-	game_state state;
 	network_game_manager m;
 
 	gamelist.clear();
@@ -440,7 +439,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 	n_unit::id_manager::instance().clear(); //< reset the unit underlying_id counter back to zero
 
 	{
-		mp::wait ui(disp, game_config, gamechat, gamelist);
+		mp::wait ui(disp, game_config, state, gamechat, gamelist);
 
 		ui.join_game(observe);
 
@@ -453,10 +452,6 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 			//if (preferences::skip_mp_replay()){
 				//FIXME implement true skip replay
 				//state = ui.request_snapshot();
-				//state = ui.get_state();
-			//}
-			//else{
-				state = ui.get_state();
 			//}
 		}
 	}
@@ -475,15 +470,15 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 }
 
 static void enter_create_mode(game_display& disp, const config& game_config,
-	bool local_players_only = false);
+	game_state& state, bool local_players_only = false);
 
 static bool enter_connect_mode(game_display& disp, const config& game_config,
-	const mp_game_settings& params, bool local_players_only = false)
+	game_state& state, const mp_game_settings& params,
+	bool local_players_only = false)
 {
 	DBG_MP << "entering connect mode" << std::endl;
 
 	mp::ui::result res;
-	game_state state;
 	const network::manager net_manager(1,1);
 	network_game_manager m;
 
@@ -491,8 +486,8 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect_engine_ptr connect_engine(
-			new mp::connect_engine(disp, params, local_players_only, true));
+		mp::connect_engine_ptr connect_engine(new mp::connect_engine(disp,
+			state, params, local_players_only, true));
 		mp::connect ui(disp, params.name, game_config, gamechat, gamelist,
 			*connect_engine);
 		run_lobby_loop(disp, ui);
@@ -503,7 +498,6 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 		// so it must be called before get_level()
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			state = ui.state();
 		}
 	}
 
@@ -515,7 +509,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 
 		break;
 	case mp::ui::CREATE:
-		enter_create_mode(disp, game_config, local_players_only);
+		enter_create_mode(disp, game_config, state, local_players_only);
 		break;
 	case mp::ui::QUIT:
 	default:
@@ -527,10 +521,11 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	const mp_game_settings& params, bool local_players_only = false);
+	game_state& state, const mp_game_settings& params,
+	bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config,
-	bool local_players_only)
+	game_state& state, bool local_players_only)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -554,7 +549,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 			mp_game_settings new_params;
 
 			{
-				mp::create ui(disp, game_config, gamechat, gamelist,
+				mp::create ui(disp, game_config, state, gamechat, gamelist,
 					local_players_only);
 				run_lobby_loop(disp, ui);
 				res = ui.get_result();
@@ -564,11 +559,11 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 			switch (res) {
 			case mp::ui::CREATE:
 				configure_canceled = !enter_configure_mode(disp, game_config,
-					new_params, local_players_only);
+					state, new_params, local_players_only);
 				break;
 			case mp::ui::LOAD_GAME:
 				connect_canceled = !enter_connect_mode(disp, game_config,
-					new_params, local_players_only);
+					state, new_params, local_players_only);
 				break;
 			case mp::ui::QUIT:
 			default:
@@ -581,7 +576,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	const mp_game_settings& params, bool local_players_only)
+	game_state& state, const mp_game_settings& params, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;
 
@@ -604,7 +599,7 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		switch (res) {
 		case mp::ui::CREATE:
 			connect_canceled = !enter_connect_mode(disp, game_config,
-				new_params, local_players_only);
+				state, new_params, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:
@@ -638,7 +633,8 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 	gui2::settings::screen_height = rect.h;
 }
 
-static void enter_lobby_mode(game_display& disp, const config& game_config)
+static void enter_lobby_mode(game_display& disp, const config& game_config,
+	game_state& state)
 {
 	DBG_MP << "entering lobby mode" << std::endl;
 
@@ -695,7 +691,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config)
 		switch (res) {
 		case mp::ui::JOIN:
 			try {
-				enter_wait_mode(disp, game_config, false);
+				enter_wait_mode(disp, game_config, state, false);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui2::show_error_message(disp.video(), error.message);
@@ -706,7 +702,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config)
 			break;
 		case mp::ui::OBSERVE:
 			try {
-				enter_wait_mode(disp, game_config, true);
+				enter_wait_mode(disp, game_config, state, true);
 			} catch(config::error& error) {
 				if(!error.message.empty()) {
 					gui2::show_error_message(disp.video(), error.message);
@@ -718,7 +714,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config)
 			break;
 		case mp::ui::CREATE:
 			try {
-				enter_create_mode(disp, game_config, false);
+				enter_create_mode(disp, game_config, state, false);
 			} catch(config::error& error) {
 				if (!error.message.empty())
 					gui2::show_error_message(disp.video(), error.message);
@@ -743,7 +739,8 @@ static void enter_lobby_mode(game_display& disp, const config& game_config)
 
 namespace mp {
 
-void start_local_game(game_display& disp, const config& game_config)
+void start_local_game(game_display& disp, const config& game_config,
+	game_state& state)
 {
 	DBG_MP << "starting local game" << std::endl;
 	const rand_rng::set_random_generator generator_setter(&recorder);
@@ -751,11 +748,11 @@ void start_local_game(game_display& disp, const config& game_config)
 	gamelist.clear();
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
-	enter_create_mode(disp, game_config, true);
+	enter_create_mode(disp, game_config, state, true);
 }
 
 void start_local_game_commandline(game_display& disp, const config& game_config,
-	const commandline_options& cmdline_opts)
+	game_state& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 
@@ -859,18 +856,16 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 
 	DBG_MP << "entering connect mode" << std::endl;
 
-	game_state state;
 	statistics::fresh_stats();
 
 	{
-		mp::connect_engine_ptr connect_engine(
-			new mp::connect_engine(disp, parameters, true, true));
+		mp::connect_engine_ptr connect_engine(new mp::connect_engine(disp,
+			state, parameters, true, true));
 		mp::connect ui(disp, parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 
 		// Update the parameters to reflect game start conditions
 		ui.start_game_commandline(cmdline_opts);
-		state = ui.state();
 	}
 
 	std::string label = "";
@@ -882,7 +877,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 }
 
 void start_client(game_display& disp, const config& game_config,
-		const std::string& host)
+	game_state& state, const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
 	const rand_rng::set_random_generator generator_setter(&recorder);
@@ -894,21 +889,20 @@ void start_client(game_display& disp, const config& game_config,
 
 	switch(type) {
 	case WESNOTHD_SERVER:
-		enter_lobby_mode(disp, game_config);
+		enter_lobby_mode(disp, game_config, state);
 		break;
 	case SIMPLE_SERVER:
 		playmp_controller::set_replay_last_turn(0);
 		preferences::set_message_private(false);
-		enter_wait_mode(disp, game_config, false);
+		enter_wait_mode(disp, game_config, state, false);
 		break;
 	case ABORT_SERVER:
 		break;
 	}
 }
 
-mp::ui::result goto_mp_connect(game_state& state, game_display& disp,
-	connect_engine& engine, const config& game_config,
-	const std::string& game_name)
+mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
+	const config& game_config, const std::string& game_name)
 {
 	mp::ui::result res;
 
@@ -920,7 +914,6 @@ mp::ui::result goto_mp_connect(game_state& state, game_display& disp,
 		res = ui.get_result();
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			state = ui.state();
 		}
 	}
 
@@ -933,7 +926,7 @@ mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
 	mp::ui::result res;
 
 	{
-		mp::wait ui(disp, game_config, gamechat, gamelist, false);
+		mp::wait ui(disp, game_config, state, gamechat, gamelist, false);
 
 		ui.join_game(false);
 		run_lobby_loop(disp, ui);
@@ -941,7 +934,6 @@ mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
 		res = ui.get_result();
 		if (res == mp::ui::PLAY) {
 			ui.start_game();
-			state = ui.get_state();
 		}
 	}
 

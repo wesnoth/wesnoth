@@ -42,8 +42,9 @@ typedef std::pair<mp::controller, std::string> controller_option;
 class connect_engine
 {
 public:
-	connect_engine(game_display& disp, const mp_game_settings& params,
-		const bool local_players_only, const bool first_scenario);
+	connect_engine(game_display& disp, game_state& state,
+		const mp_game_settings& params, const bool local_players_only,
+		const bool first_scenario);
 	~connect_engine();
 
 	config* current_config();
@@ -80,7 +81,6 @@ public:
 	/* Setters & Getters */
 
 	const config& level() const { return level_; }
-	const game_state& state() const { return state_; }
 	const std::set<std::string>& connected_users() const
 		{ return connected_users_; }
 	const std::vector<std::string>& user_team_names()
@@ -100,7 +100,7 @@ private:
 	friend side_engine;
 
 	config level_;
-	game_state state_;
+	game_state& state_;
 
 	const mp_game_settings& params_;
 

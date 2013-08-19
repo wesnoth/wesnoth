@@ -63,11 +63,11 @@ const std::string attributes_to_trim[] = {
 
 namespace mp {
 
-connect_engine::connect_engine(game_display& disp,
+connect_engine::connect_engine(game_display& disp, game_state& state,
 	const mp_game_settings& params, const bool local_players_only,
 	const bool first_scenario) :
 	level_(),
-	state_(),
+	state_(state),
 	params_(params),
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	first_scenario_(first_scenario),

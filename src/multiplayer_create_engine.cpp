@@ -284,7 +284,7 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-create_engine::create_engine(game_display& disp) :
+create_engine::create_engine(game_display& disp, game_state& state) :
 	current_level_type_(),
 	current_level_index_(0),
 	current_era_index_(0),
@@ -297,6 +297,7 @@ create_engine::create_engine(game_display& disp) :
 	user_map_names_(),
 	eras_(),
 	mods_(),
+	state_(state),
 	parameters_(),
 	dependency_manager_(resources::config_manager->game_config(), disp.video()),
 	generator_(NULL)
@@ -304,10 +305,10 @@ create_engine::create_engine(game_display& disp) :
 	DBG_MP << "restoring game config\n";
 
 	// Restore game config for multiplayer.
-	game_state state = game_state();
-	state.classification().campaign_type = "multiplayer";
+	state_ = game_state();
+	state_.classification().campaign_type = "multiplayer";
 	resources::config_manager->
-		load_game_config_for_game(state.classification());
+		load_game_config_for_game(state_.classification());
 
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
 		NULL, FILE_NAME_ONLY);
@@ -365,20 +366,17 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
 	DBG_MP << "preparing data for campaign by reloading game config\n";
 
-	game_state state = game_state();
-	state.classification().campaign_type = "multiplayer";
-
 	if (difficulty != "") {
-		state.classification().difficulty = difficulty;
+		state_.classification().difficulty = difficulty;
 	}
 
-	state.classification().campaign_define =
+	state_.classification().campaign_define =
 		current_level().data()["define"].str();
-	state.classification().campaign_xtra_defines =
+	state_.classification().campaign_xtra_defines =
 		utils::split(current_level().data()["extra_defines"]);
 
 	resources::config_manager->
-		load_game_config_for_game(state.classification());
+		load_game_config_for_game(state_.classification());
 
 	current_level().set_data(
 		resources::config_manager->game_config().find_child("multiplayer",

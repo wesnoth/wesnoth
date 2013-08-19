@@ -217,17 +217,19 @@ handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(game_display& disp, const config& cfg,
-		mp::chat& c, config& gamelist, const bool first_scenario) :
+wait::wait(game_display& disp, const config& cfg, game_state& state,
+	mp::chat& c, config& gamelist, const bool first_scenario) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(disp.video(), first_scenario ? _("Cancel") : _("Quit")),
 	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
 	level_(),
-	state_(),
+	state_(state),
 	first_scenario_(first_scenario),
 	stop_updates_(false)
 {
+	state_ = game_state();
+
 	game_menu_.set_numeric_keypress_selection(false);
 	gamelist_updated();
 }
@@ -375,11 +377,6 @@ void wait::join_game(bool observe)
 	}
 
 	generate_menu();
-}
-
-const game_state& wait::get_state()
-{
-	return state_;
 }
 
 void wait::start_game()

@@ -643,13 +643,13 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					params.scenario_data = *scenario;
 
 					mp::connect_engine_ptr
-						connect_engine(new mp::connect_engine(disp, params,
-							!network_game, false));
+						connect_engine(new mp::connect_engine(disp, gamestate,
+							params, !network_game, false));
 
 					// Opens mp::connect dialog to get a new gamestate.
 					// Old carryover data is preserved.
-					mp::ui::result connect_res = mp::goto_mp_connect(gamestate,
-						disp, *connect_engine, game_config, params.name);
+					mp::ui::result connect_res = mp::goto_mp_connect(disp,
+						*connect_engine, game_config, params.name);
 					if (connect_res == mp::ui::QUIT) {
 						return QUIT;
 					}

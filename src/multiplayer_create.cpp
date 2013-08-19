@@ -56,9 +56,9 @@ const SDL_Rect null_rect = {0, 0, 0, 0};
 
 namespace mp {
 
-create::create(game_display& disp, const config &cfg, chat& c, config& gamelist, bool local_players_only) :
+create::create(game_display& disp, const config& cfg, game_state& state,
+	chat& c, config& gamelist, bool local_players_only) :
 	ui(disp, _("Create Game"), cfg, c, gamelist),
-
 	local_players_only_(local_players_only),
 	tooltip_manager_(disp.video()),
 	era_selection_(-1),
@@ -89,7 +89,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist,
 	image_rect_(null_rect),
 	available_level_types_(),
 	available_mods_(),
-	engine_(disp)
+	engine_(disp, state)
 {
 	filter_num_players_slider_.set_min(0);
 	filter_num_players_slider_.set_max(9);

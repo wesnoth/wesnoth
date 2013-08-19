@@ -26,13 +26,11 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(game_display& disp, const config& cfg, chat& c, config& gamelist,
-		const bool first_scenario = true);
+	wait(game_display& disp, const config& cfg, game_state& state, chat& c,
+		config& gamelist, const bool first_scenario = true);
 	virtual void process_event();
 
 	void join_game(bool observe);
-
-	const game_state& get_state();
 
 	void start_game();
 
@@ -97,7 +95,7 @@ private:
 	// int team_;
 
 	config level_;
-	game_state state_;
+	game_state& state_;
 
 	const bool first_scenario_;
 	bool stop_updates_;
