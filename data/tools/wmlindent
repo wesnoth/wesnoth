@@ -203,7 +203,7 @@ def reindent(name, infp, outfp):
         # Compute the dostrip state likewise.
         # We look for unbalanced string quotes.
         if dostrip:
-            eligible = transformed.split("#")[0]
+            eligible = re.split("\s#", transformed)[0]
         else:
             eligible = transformed
         if dostrip and "<<" in eligible and not ">>" in eligible.split("<<", 1)[1]:
