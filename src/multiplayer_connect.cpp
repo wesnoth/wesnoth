@@ -107,23 +107,6 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 		combo_color_.enable(!color_lock_);
 	}
 
-	if (parent_->params().use_map_settings || parent_->params().saved_game) {
-		// Explicitly assign a faction, if possible.
-		int faction_index = 0;
-		if (engine_->choosable_factions().size() > 1) {
-			faction_index = find_suitable_faction(engine_->choosable_factions(),
-				engine_->cfg());
-			if (faction_index < 0) {
-				faction_index = 0;
-			}
-		} else {
-			combo_faction_.enable(false);
-		}
-
-		engine_->set_current_faction(
-			engine_->choosable_factions()[faction_index]);
-	}
-
 	update_ui();
 }
 
@@ -304,6 +287,8 @@ void connect::side::update_faction_combo()
 			factions.push_back(name);
 		}
 	}
+
+	combo_faction_.enable(factions.size() > 1 && !parent_->params().saved_game);
 
 	combo_faction_.set_items(factions);
 	combo_faction_.set_selected(engine_->current_faction_index());

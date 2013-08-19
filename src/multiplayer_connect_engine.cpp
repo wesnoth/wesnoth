@@ -826,18 +826,26 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	available_factions_ = init_available_factions(parent_.era_factions_, cfg_);
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
 		parent_.params_.use_map_settings);
-
 	assert(!choosable_factions_.empty());
-	current_faction_ = choosable_factions_[0];
+
+	int faction_index = 0;
+	if (parent_.params_.use_map_settings || parent_.params_.saved_game) {
+		// Explicitly assign a faction, if possible.
+		if (choosable_factions_.size() > 1) {
+			faction_index = find_suitable_faction(choosable_factions_, cfg_);
+			if (faction_index < 0) {
+				faction_index = 0;
+			}
+		}
+	}
 
 	// Initialize ai algorithm.
 	if (const config& ai = cfg.child("ai")) {
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	}
 
-	// Initialize leader and gender lists.
-	update_choosable_leaders();
-	update_choosable_genders();
+	// Initializes leader and gender lists.
+	set_current_faction(choosable_factions_[faction_index]);
 }
 
 side_engine::~side_engine()
