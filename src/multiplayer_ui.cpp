@@ -772,12 +772,15 @@ int find_suitable_faction(const std::vector<const config*> &fl,
 }
 
 std::vector<const config*> init_available_factions(
-	std::vector<const config*> era_sides, const config& side)
+	std::vector<const config*> era_sides, const config& side,
+	const bool map_settings)
 {
 	std::vector<const config*> available_factions;
 
 	BOOST_FOREACH(const config* faction, era_sides) {
-		if ((*faction)["id"] == "Custom" && side["faction"] != "Custom") {
+		if ((*faction)["id"] == "Custom" &&
+			(side["recruit"].empty() || !map_settings)) {
+
 			continue;
 		}
 

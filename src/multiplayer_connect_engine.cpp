@@ -49,6 +49,7 @@ const std::string controller_names[] = {
 
 const std::string attributes_to_trim[] = {
 	"side",
+	"recruit",
 	"controller",
 	"id",
 	"team_name",
@@ -795,10 +796,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		}
 	}
 
-	if (!cfg["recruit"].empty() && parent_.params_.use_map_settings) {
-		// Set faction lock for custom recruit list.
-		cfg_["faction"] = "Custom";
-	} else if (parent_.params_.saved_game) {
+	if (parent_.params_.saved_game) {
 		// Set faction lock on previous faction.
 		cfg_["faction_from_recruit"] = true;
 	}
@@ -823,7 +821,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 
 	// Initialize faction lists.
-	available_factions_ = init_available_factions(parent_.era_factions_, cfg_);
+	available_factions_ = init_available_factions(parent_.era_factions_, cfg_,
+		parent_.params_.use_map_settings);
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
 		parent_.params_.use_map_settings);
 	assert(!choosable_factions_.empty());

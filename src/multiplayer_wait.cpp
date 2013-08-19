@@ -325,7 +325,8 @@ void wait::join_game(bool observe)
 				level_.child("multiplayer")["savegame"].to_bool();
 
 			std::vector<const config*> available_factions =
-				init_available_factions(choosable_factions, *side_choice);
+				init_available_factions(choosable_factions, *side_choice,
+				map_settings);
 			choosable_factions = init_choosable_factions(available_factions,
 				*side_choice, map_settings);
 
