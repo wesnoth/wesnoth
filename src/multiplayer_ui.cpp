@@ -833,14 +833,26 @@ std::vector<std::string> init_choosable_leaders(const config& side,
 			}
 		}
 	} else {
-		const std::string& default_leader = side["type"];
-		if (map_settings &&	!default_leader.empty() &&
-			default_leader != "null" && default_leader != "random") {
+		const std::string& leader_id = side["id"];
+		std::string leader_type = side["type"];
+
+		if (!leader_id.empty()) {
+			// Check if leader was carried over and now is in
+			// [unit] tag.
+			const config& leader_unit = side.find_child("unit", "id",
+				leader_id);
+			if (leader_unit) {
+				leader_type = leader_unit["type"].str();
+			}
+		}
+
+		if (map_settings &&	!leader_type.empty() &&
+			leader_type != "null" && leader_type != "random") {
 
 			// Leader was explicitly assigned.
-			const unit_type *unit = unit_types.find(default_leader);
+			const unit_type *unit = unit_types.find(leader_type);
 			if (unit) {
-				choosable_leaders.push_back(default_leader);
+				choosable_leaders.push_back(leader_type);
 			}
 		} else if ((*faction)["id"] == "Custom") {
 			// Allow user to choose a leader from any faction.
