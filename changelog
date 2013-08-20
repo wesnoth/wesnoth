@@ -1,7 +1,10 @@
 Version 1.11.6+dev:
  * Language and i18n:
    * Updated translations: Lithuanian
- * Miscellaneous and bug fixes
+ * Miscellaneous and bug fixes:
+   * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
+     macros to account for ToD color shifts greater than -31, guaranteeing complete
+     darkness.
    * Unit WML frames with image modifications now shown correctly for hits/death.
 
 Version 1.11.6:
