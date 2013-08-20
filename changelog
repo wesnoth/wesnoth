@@ -3,6 +3,8 @@ Version 1.11.6+dev:
    * Updated translations: Lithuanian
  * Lua API:
    * Added scroll_to_leader field to wesnoth.sides table elements.
+ * WML engine:
+   * [store_side] now stores the scroll_to_leader attribute from sides.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing complete
