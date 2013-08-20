@@ -50,13 +50,13 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
 	gold_lock_(engine_->cfg()["gold_lock"].to_bool(
-		parent.side_configurations_lock_)),
+		engine_->side_configurations_lock())),
 	income_lock_(engine_->cfg()["income_lock"].to_bool(
-		parent.side_configurations_lock_)),
+		engine_->side_configurations_lock())),
 	team_lock_(engine_->cfg()["team_lock"].to_bool(
-		parent.side_configurations_lock_)),
+		engine_->side_configurations_lock())),
 	color_lock_(engine_->cfg()["color_lock"].to_bool(
-		parent.side_configurations_lock_)),
+		engine_->side_configurations_lock())),
 	changed_(false),
 	label_player_number_(parent.video(), str_cast(engine_->index() + 1),
 		font::SIZE_LARGE, font::LOBBY_COLOR),
@@ -90,11 +90,11 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	slider_income_.set_value(engine_->cfg()["income"]);
 	slider_income_.set_measurements(50, 16);
 
-	combo_faction_.enable(!parent_->params().saved_game);
-	combo_leader_.enable(!parent_->params().saved_game);
-	combo_gender_.enable(!parent_->params().saved_game);
-	combo_team_.enable(!parent_->params().saved_game);
-	combo_color_.enable(!parent_->params().saved_game);
+	combo_faction_.enable(!engine_->side_configurations_lock());
+	combo_leader_.enable(!engine_->side_configurations_lock());
+	combo_gender_.enable(!engine_->side_configurations_lock());
+	combo_team_.enable(!engine_->side_configurations_lock());
+	combo_color_.enable(!engine_->side_configurations_lock());
 	slider_gold_.hide(parent_->params().saved_game);
 	slider_income_.hide(parent_->params().saved_game);
 	label_gold_.hide(parent_->params().saved_game);
@@ -292,7 +292,8 @@ void connect::side::update_faction_combo()
 		}
 	}
 
-	combo_faction_.enable(factions.size() > 1 && !parent_->params().saved_game);
+	combo_faction_.enable(factions.size() > 1 &&
+		!engine_->side_configurations_lock());
 
 	combo_faction_.set_items(factions);
 	combo_faction_.set_selected(engine_->current_faction_index());
@@ -365,9 +366,6 @@ connect::connect(game_display& disp, const std::string& game_name,
 	ai_algorithms_(),
 	sides_(),
 	engine_(engine),
-	side_configurations_lock_(
-		engine_.level()["side_configurations_lock"].to_bool(
-			!engine_.first_scenario())),
 	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),

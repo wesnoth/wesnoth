@@ -106,6 +106,7 @@ private:
 
 	const mp::controller default_controller_;
 	const bool first_scenario_;
+	bool side_configurations_lock_;
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
@@ -196,6 +197,8 @@ public:
 	bool allow_player() const { return allow_player_; }
 	const std::vector<std::string>& player_teams() const
 		{ return parent_.player_teams_; }
+	bool side_configurations_lock() const
+		{ return parent_.side_configurations_lock_; }
 
 private:
 	side_engine(const side_engine& engine);

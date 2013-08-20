@@ -72,6 +72,7 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	params_(params),
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	first_scenario_(first_scenario),
+	side_configurations_lock_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
@@ -85,6 +86,9 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	if (level_.empty()) {
 		return;
 	}
+
+	side_configurations_lock_ = params.saved_game ? true :
+		level()["side_configurations_lock"].to_bool(!first_scenario);
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -823,6 +827,13 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	// Initialize faction lists.
 	available_factions_ = init_available_factions(parent_.era_factions_, cfg_,
 		parent_.params_.use_map_settings);
+	if (!cfg_.has_attribute("faction") &&
+		parent_.side_configurations_lock_) {
+
+		// By default side should be locked to a first available faction
+		// if side configurations lock is on.
+		cfg_["faction"] = (*available_factions_[0])["id"];
+	}
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
 		parent_.params_.use_map_settings);
 	assert(!choosable_factions_.empty());
