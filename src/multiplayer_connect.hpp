@@ -133,6 +133,8 @@ private:
 	side_list sides_;
 	connect_engine& engine_;
 
+	bool side_configurations_lock_;
+
 	gui::label waiting_label_;
 	gui::label type_title_label_;
 	gui::label faction_title_label_;

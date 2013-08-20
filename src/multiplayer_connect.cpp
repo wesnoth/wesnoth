@@ -49,10 +49,14 @@ std::vector<std::string> controller_options_names(
 connect::side::side(connect& parent, side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
-	gold_lock_(engine_->cfg()["gold_lock"].to_bool()),
-	income_lock_(engine_->cfg()["income_lock"].to_bool()),
-	team_lock_(engine_->cfg()["team_lock"].to_bool()),
-	color_lock_(engine_->cfg()["color_lock"].to_bool()),
+	gold_lock_(engine_->cfg()["gold_lock"].to_bool(
+		parent.side_configurations_lock_)),
+	income_lock_(engine_->cfg()["income_lock"].to_bool(
+		parent.side_configurations_lock_)),
+	team_lock_(engine_->cfg()["team_lock"].to_bool(
+		parent.side_configurations_lock_)),
+	color_lock_(engine_->cfg()["color_lock"].to_bool(
+		parent.side_configurations_lock_)),
 	changed_(false),
 	label_player_number_(parent.video(), str_cast(engine_->index() + 1),
 		font::SIZE_LARGE, font::LOBBY_COLOR),
@@ -361,6 +365,9 @@ connect::connect(game_display& disp, const std::string& game_name,
 	ai_algorithms_(),
 	sides_(),
 	engine_(engine),
+	side_configurations_lock_(
+		engine_.level()["side_configurations_lock"].to_bool(
+			!engine_.first_scenario())),
 	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
