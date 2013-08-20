@@ -646,7 +646,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if (game_config::campaign_screens) {
 					mp_game_settings& params = gamestate.mp_settings();
 					params.scenario_data = *scenario;
-					params.saved_game = false;
 
 					team_init(params.scenario_data, gamestate);
 

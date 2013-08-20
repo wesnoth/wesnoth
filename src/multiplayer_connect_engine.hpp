@@ -102,7 +102,7 @@ private:
 	config level_;
 	game_state& state_;
 
-	const mp_game_settings& params_;
+	mp_game_settings params_;
 
 	const mp::controller default_controller_;
 	const bool first_scenario_;
