@@ -1,6 +1,8 @@
 Version 1.11.6+dev:
  * Language and i18n:
    * Updated translations: Lithuanian
+ * Lua API:
+   * Added scroll_to_leader field to wesnoth.sides table elements.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing complete

@@ -1616,6 +1616,7 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("fog", t.uses_fog());
 	return_bool_attrib("shroud", t.uses_shroud());
 	return_bool_attrib("hidden", t.hidden());
+	return_bool_attrib("scroll_to_leader", t.get_scroll_to_leader());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("name", t.name());
