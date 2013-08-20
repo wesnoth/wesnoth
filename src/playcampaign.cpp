@@ -294,13 +294,17 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
-		io_type_t& io_type, end_level_data &end_level)
+		io_type_t& io_type, end_level_data &end_level, bool first_scenario)
 {
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
-	team_init(init_level, state_of_game);
+	if (!game_config::campaign_screens || first_scenario ||
+		io_type == IO_CLIENT) {
+
+		team_init(init_level, state_of_game);
+	}
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
@@ -360,6 +364,8 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		type = "scenario";
 
 	config const* scenario = NULL;
+
+	bool first_scenario = true;
 
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
@@ -499,7 +505,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level);
+				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level, first_scenario);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
@@ -520,6 +526,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			return QUIT;
 		}
 
+		first_scenario = false;
 
 		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
@@ -637,10 +644,10 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 			if(io_type == IO_SERVER && scenario != NULL) {
 				if (game_config::campaign_screens) {
-					config old_carryover_sides_start =
-						gamestate.carryover_sides_start;
 					mp_game_settings& params = gamestate.mp_settings();
 					params.scenario_data = *scenario;
+
+					team_init(params.scenario_data, gamestate);
 
 					mp::connect_engine_ptr
 						connect_engine(new mp::connect_engine(disp, gamestate,
@@ -653,9 +660,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					if (connect_res == mp::ui::QUIT) {
 						return QUIT;
 					}
-
-					gamestate.carryover_sides_start.merge_with(
-						old_carryover_sides_start);
 
 					starting_pos.merge_with(gamestate.replay_start());
 					scenario = &starting_pos;
