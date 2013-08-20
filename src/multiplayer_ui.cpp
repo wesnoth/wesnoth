@@ -778,13 +778,15 @@ std::vector<const config*> init_available_factions(
 	std::vector<const config*> available_factions;
 
 	BOOST_FOREACH(const config* faction, era_sides) {
-		if ((*faction)["id"] == "Custom" &&
-			((side["recruit"].empty() && side["previous_recruits"].empty()) ||
-			!map_settings)) {
+		const bool has_no_recruits =
+			side["recruit"].empty() && side["previous_recruits"].empty();
+		if ((*faction)["id"] == "Custom" && side["faction"] != "Custom" &&
+			(has_no_recruits || !map_settings)) {
 
 			// "Custom" faction should not be available if both "recruit"
 			// and "previous_recruits" lists are empty or
-			// if map settings are not in use.
+			// if map settings are not in use. However, it should be
+			// available if it was explicitly stated so.
 			continue;
 		}
 
