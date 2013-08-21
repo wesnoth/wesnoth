@@ -29,19 +29,18 @@
 
 class test_mp_connect : public mp::connect {
 public:
-	test_mp_connect(game_display& disp, const config& game_config,
-		mp::chat& c, config& gamelist, const mp_game_settings& params) :
-		mp::connect(disp, game_config, c, gamelist, params, true, true)
+	test_mp_connect(game_display& disp, const std::string& game_name,
+		const config& game_config, mp::chat& c, config& gamelist,
+		mp::connect_engine& engine) :
+		mp::connect(disp, game_name, game_config, c, gamelist, engine)
 		{}
-
-	mp::connect_engine& engine() { return mp::connect::engine(); }
-
 };
 
 class test_mp_connect_engine : public mp::connect_engine {
 public:
-	test_mp_connect_engine(game_display& disp, const mp_game_settings& params) :
-		mp::connect_engine(disp, params, true, true)
+	test_mp_connect_engine(game_display& disp, game_state& gamestate,
+		const mp_game_settings& params) :
+		mp::connect_engine(disp, gamestate, params, true, true)
 		{}
 
 	std::vector<mp::side_engine_ptr>& side_engines()
@@ -53,6 +52,7 @@ public:
 
 static boost::scoped_ptr<game_display> disp;
 static mp_game_settings params;
+static game_state state;
 
 
 /* Global fixture */
@@ -70,7 +70,7 @@ struct mp_connect_fixture {
 		config_manager = new game_config_manager(cmdline_opts, *disp, false);
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
-		game_state state;
+		//game_state state;
 		state.classification().campaign_type = "multiplayer";
 		config_manager->load_game_config_for_game(state.classification());
 
@@ -99,25 +99,7 @@ struct mp_connect_fixture {
 static test_mp_connect_engine* create_test_mp_connect_engine()
 {
 	test_mp_connect_engine* mp_connect_engine =
-		new test_mp_connect_engine(*disp, params);
-
-	// There must be at least one team.
-	mp_connect_engine->team_names().push_back("1");
-	mp_connect_engine->user_team_names().push_back("Team: 1");
-
-	// Sides need to be explicitly created and assigned for engine.
-	config::child_itors sides = mp_connect_engine->
-		current_config()->child_range("side");
-	int index = 0;
-	BOOST_FOREACH(const config &s, sides) {
-		mp::side_engine_ptr new_side_engine(new mp::side_engine(s,
-			*mp_connect_engine, index));
-		mp_connect_engine->add_side_engine(new_side_engine);
-
-		index++;
-	}
-
-	mp_connect_engine->assign_side_for_host();
+		new test_mp_connect_engine(*disp, state, params);
 
 	return mp_connect_engine;
 }
@@ -138,18 +120,6 @@ std::string side_current_faction_id(mp::side_engine_ptr side_engine)
 		current_faction_index()])["id"];
 }
 
-const std::string& side_current_leader(mp::side_engine_ptr side_engine)
-{
-	return side_engine->choosable_leaders()[side_engine->
-		current_leader_index()];
-}
-
-const std::string& side_current_gender(mp::side_engine_ptr side_engine)
-{
-	return side_engine->choosable_genders()[side_engine->
-		current_gender_index()];
-}
-
 
 /* Tests */
 
@@ -165,7 +135,7 @@ BOOST_AUTO_TEST_CASE( side_engine )
 		connect_engine.get()));
 
 	BOOST_CHECK( side_engine->ready_for_start() );
-	BOOST_CHECK( !side_engine->available() );
+	BOOST_CHECK( !side_engine->available_for_user() );
 
 	// Faction before and after resolved random.
 	BOOST_CHECK_EQUAL( side_current_faction_id(side_engine), "Random" );
@@ -178,16 +148,16 @@ BOOST_AUTO_TEST_CASE( side_engine )
 	data["faction"] = "Rebels";
 	data["leader"] = "White Mage";
 	data["gender"] = "female";
-	side_engine->import_network_user(data);
+	side_engine->place_user(data);
 	BOOST_CHECK_EQUAL( side_current_faction_id(side_engine), "Rebels" );
-	BOOST_CHECK_EQUAL( side_current_leader(side_engine), "White Mage" );
-	BOOST_CHECK_EQUAL( side_current_gender(side_engine), "female" );
+	BOOST_CHECK_EQUAL( side_engine->current_leader(), "White Mage" );
+	BOOST_CHECK_EQUAL( side_engine->current_gender(), "female" );
 
 	// Set faction to Random.
 	side_engine->set_current_faction(side_engine->choosable_factions()[0]);
 	BOOST_CHECK_EQUAL( side_current_faction_id(side_engine), "Random" );
-	BOOST_CHECK_EQUAL( side_current_leader(side_engine), "null" );
-	BOOST_CHECK_EQUAL( side_current_gender(side_engine), "null" );
+	BOOST_CHECK_EQUAL( side_engine->current_leader(), "null" );
+	BOOST_CHECK_EQUAL( side_engine->current_gender(), "null" );
 
 	// Side config.
 	config side_config = side_engine->new_config();
