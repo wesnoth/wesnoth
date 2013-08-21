@@ -90,8 +90,13 @@ bool have_addon_pbl_info(const std::string& addon_name)
 
 void get_addon_pbl_info(const std::string& addon_name, config& cfg)
 {
-	scoped_istream stream = istream_file(get_pbl_file_path(addon_name));
-	read(cfg, *stream);
+	const std::string& pbl_path = get_pbl_file_path(addon_name);
+	try {
+		scoped_istream stream = istream_file(pbl_path);
+		read(cfg, *stream);
+	} catch(const config::error& e) {
+		throw invalid_pbl_exception(pbl_path, e.message);
+	}
 }
 
 void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
