@@ -38,7 +38,7 @@ namespace game_events
 	class event_handler
 	{
 		public:
-			event_handler(const config &cfg, bool is_menu_item = false);
+			explicit event_handler(const config &cfg, bool is_menu_item = false);
 
 			bool matches_name(const std::string& name) const;
 
@@ -69,7 +69,7 @@ namespace game_events
 	struct manager : boost::noncopyable {
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
-		manager(const config& scenario_cfg);
+		explicit manager(const config& scenario_cfg);
 		~manager();
 
 		// Allow iterating over the active handlers.

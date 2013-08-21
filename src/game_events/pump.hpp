@@ -55,7 +55,7 @@ namespace game_events
 			bool mutated;
 			bool skip_messages;
 
-			event_context(bool s) : mutated(true), skip_messages(s) {}
+			explicit event_context(bool s) : mutated(true), skip_messages(s) {}
 		};
 
 	public:
