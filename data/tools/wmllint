@@ -930,6 +930,12 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     # Bad [recruit] attribute
     if parent in ("[allow_recruit]", "[disallow_recruit]") and key == "recruit":
         print errlead + "recruit= should be type="
+    # Check [binary_path] and [textdomain] paths
+    if parent == '[textdomain]' and key == 'path' and not '/translations' in value:
+        print errlead + 'no reference to "/translations" directory in textdomain path'
+    if parent == '[binary_path]' and key == 'path':
+        if '/external' in value or '/public' in value:
+            print errlead + '"/external" or "/public" image directories should no longer be used'
     # Accumulate data to check for missing next scenarios
     if parent == '[campaign]':
         if key == "first_scenario" and value != "null":
