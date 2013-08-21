@@ -81,10 +81,6 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	connected_users_(),
 	default_controller_options_()
 {
-	if (!first_scenario) {
-		params_.saved_game = false;
-	}
-
 	// Initial level config from the mp_game_settings.
 	level_ = initial_level_config(disp, params_, state_);
 	if (level_.empty()) {

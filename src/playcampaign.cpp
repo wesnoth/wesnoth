@@ -302,7 +302,6 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	config init_level = *level;
 	if (!game_config::campaign_screens || first_scenario ||
 		io_type == IO_CLIENT) {
-
 		team_init(init_level, state_of_game);
 	}
 
@@ -586,22 +585,14 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			if (game_config::campaign_screens) {
-				config old_carryover_sides_start =
-					gamestate.carryover_sides_start;
-				gamestate.mp_settings().scenario_data = *scenario;
-
 				// Opens mp::connect dialog to get a new gamestate.
-				// Old carryover data is preserved.
 				mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
 					game_config);
 				if (wait_res == mp::ui::QUIT) {
 					return QUIT;
 				}
 
-				gamestate.carryover_sides_start.merge_with(
-					old_carryover_sides_start);
-
-				starting_pos.merge_with(gamestate.replay_start());
+				starting_pos = gamestate.replay_start();
 				scenario = &starting_pos;
 				gamestate = game_state(starting_pos);
 				//retain carryover_sides_start, as the config from the server doesn't contain it
@@ -646,6 +637,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if (game_config::campaign_screens) {
 					mp_game_settings& params = gamestate.mp_settings();
 					params.scenario_data = *scenario;
+					params.saved_game = false;
 
 					team_init(params.scenario_data, gamestate);
 
@@ -654,14 +646,13 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 							params, !network_game, false));
 
 					// Opens mp::connect dialog to get a new gamestate.
-					// Old carryover data is preserved.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, params.name);
 					if (connect_res == mp::ui::QUIT) {
 						return QUIT;
 					}
 
-					starting_pos.merge_with(gamestate.replay_start());
+					starting_pos = gamestate.replay_start();
 					scenario = &starting_pos;
 				}
 
