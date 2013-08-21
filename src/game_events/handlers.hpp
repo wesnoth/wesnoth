@@ -27,6 +27,8 @@
 #include "../config.hpp"
 #include "../variable.hpp"
 
+#include <boost/noncopyable.hpp>
+
 
 namespace game_events
 {
@@ -64,7 +66,7 @@ namespace game_events
 	/// one, the game will crash with an assertion failure.
 	///
 	/// This struct is responsible for setting and clearing resources::lua_kernel.
-	struct manager {
+	struct manager : boost::noncopyable {
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
 		manager(const config& scenario_cfg);
