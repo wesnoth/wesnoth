@@ -831,11 +831,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	// Initialize faction lists.
 	available_factions_ = init_available_factions(parent_.era_factions_, cfg_,
 		parent_.params_.use_map_settings);
-	if (!cfg_.has_attribute("faction") &&
+	if ((!cfg_.has_attribute("faction") || !parent_.first_scenario_) &&
 		parent_.side_configurations_lock_) {
 
 		// By default side should be locked to a first available faction
-		// if side configurations lock is on.
+		// if side configurations lock is on and if side has no
+		// predefined faction or it's not a first scenario.
 		cfg_["faction"] = (*available_factions_[0])["id"];
 	}
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
