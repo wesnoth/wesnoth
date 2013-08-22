@@ -292,8 +292,7 @@ void connect::side::update_faction_combo()
 		}
 	}
 
-	combo_faction_.enable(factions.size() > 1 &&
-		!engine_->side_configurations_lock());
+	combo_faction_.enable(factions.size() > 1 && !parent_->params().saved_game);
 
 	combo_faction_.set_items(factions);
 	combo_faction_.set_selected(engine_->current_faction_index());
