@@ -303,6 +303,16 @@ void carryover_info::add_side(const config& cfg) {
 	carryover_sides_.push_back(carryover(cfg));
 }
 
+void carryover_info::remove_side(const std::string& id) {
+	for (std::vector<carryover>::iterator it = carryover_sides_.begin();
+		it != carryover_sides_.end(); ++it) {
+
+		if (it->get_save_id() == id) {
+			carryover_sides_.erase(it);
+			break;
+		}
+	}
+}
 
 const end_level_data& carryover_info::get_end_level() const{
 	return end_level_;

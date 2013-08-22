@@ -138,6 +138,7 @@ public:
 	std::vector<carryover>& get_all_sides();
 	void add_side(const config& cfg);
 	void add_side(const team& t, const int gold, const bool add);
+	void remove_side(const std::string& id);
 	void set_end_level(const end_level_data& end_level) { end_level_ = end_level; }
 
 	void transfer_from(const team& t, int carryover_gold);

@@ -107,6 +107,7 @@ class team : public savegame::savegame_config
 
 		int side;
 		bool persistent;
+		bool lost;
 	};
 
 	static const int default_team_gold_;
@@ -256,6 +257,8 @@ public:
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
 	bool persistent() const {return info_.persistent;}
+	void set_lost(bool value=true) { info_.lost = value; }
+	bool lost() const { return info_.lost; }
 	bool no_turn_confirmation() const { return info_.no_turn_confirmation; }
 	void set_no_turn_confirmation(bool value) { info_.no_turn_confirmation = value; }
 

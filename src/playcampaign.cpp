@@ -141,6 +141,9 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 		{
 			if (!t.persistent()){
 				continue;
+			} else if (t.lost()) {
+				sides.remove_side(t.save_id());
+				continue;
 			}
 			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
 			sides.transfer_from(t, carryover_gold);

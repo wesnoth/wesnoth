@@ -50,7 +50,7 @@ const int team::default_team_gold_ = 100;
 const char * const team::attributes[] = {
 	"ai_config", "color", "controller", "current_player", "flag",
 	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
-	"no_leader", "objectives", "objectives_changed", "persistent",
+	"no_leader", "objectives", "objectives_changed", "persistent", "lost",
 	"recall_cost", "recruit", "save_id", "scroll_to_leader",
 	"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
 	"suppress_end_turn_confirmation",
@@ -104,7 +104,8 @@ team::team_info::team_info() :
 	no_turn_confirmation(false),
 	color(),
 	side(0),
-	persistent(false)
+	persistent(false),
+	lost(false)
 {
 }
 
@@ -276,6 +277,7 @@ void team::team_info::write(config& cfg) const
 	cfg["color"] = color;
 
 	cfg["persistent"] = persistent;
+	cfg["lost"] = lost;
 
 	cfg.add_child("ai",ai::manager::to_config(side));
 }

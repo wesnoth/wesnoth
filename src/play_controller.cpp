@@ -124,6 +124,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
+	remove_from_carryover_on_leaders_loss_(true),
 	end_level_data_(),
 	victory_music_(),
 	defeat_music_()
@@ -1356,7 +1357,8 @@ void play_controller::check_victory()
 		}
 	}
 
-	// Clear villages for teams that have no leader
+	// Clear villages for teams that have no leader and
+	// mark side as lost if it should be removed from carryover.
 	for (std::vector<team>::iterator tm_beg = teams_.begin(), tm = tm_beg,
 	     tm_end = teams_.end(); tm != tm_end; ++tm)
 	{
@@ -1365,6 +1367,10 @@ void play_controller::check_victory()
 			// invalidate_all() is overkill and expensive but this code is
 			// run rarely so do it the expensive way.
 			gui_->invalidate_all();
+
+			if (!tm->no_leader() && remove_from_carryover_on_leaders_loss_) {
+				tm->set_lost();
+			}
 		}
 	}
 
