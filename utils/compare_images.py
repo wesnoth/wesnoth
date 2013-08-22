@@ -22,7 +22,7 @@ from sys import argv
 
 try:
     import Image as PIL
-except ImportError, e:
+except ImportError as e:
     print "Unable to import PIL (Python Imaging Library)"
     raise e
 

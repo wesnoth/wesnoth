@@ -149,7 +149,7 @@ def maps(cfg):
 	mp = 1
 	while 1:
 		try:
-			yield cfg.get('default','map'+`mp`);
+			yield cfg.get('default','map'+repr(mp));
 			mp= mp+1
 		except:
 			return
