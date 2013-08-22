@@ -150,14 +150,13 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
 
-	use_map_settings_.set_check(preferences::use_map_settings());
-	use_map_settings_.set_help_string(_("Use scenario specific settings"));
-	const bool side_configurations_lock =
-		parameters_.scenario_data["side_configurations_lock"].to_bool();
-	if (side_configurations_lock) {
+	if (parameters_.scenario_data["side_configurations_lock"].to_bool()) {
 		use_map_settings_.enable(false);
 		use_map_settings_.set_check(true);
+	} else {
+		use_map_settings_.set_check(preferences::use_map_settings());
 	}
+	use_map_settings_.set_help_string(_("Use scenario specific settings"));
 
 	random_start_time_.set_check(preferences::random_start_time());
 	random_start_time_.set_help_string(_("Randomize time of day in begin"));

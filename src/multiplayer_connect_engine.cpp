@@ -87,8 +87,14 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 		return;
 	}
 
-	side_configurations_lock_ = params_.saved_game ? true :
-		level()["side_configurations_lock"].to_bool(!first_scenario);
+	if (params_.saved_game) {
+		side_configurations_lock_ = true;
+	} else if (!params_.use_map_settings) {
+		side_configurations_lock_ = false;
+	} else {
+		side_configurations_lock_ =
+			level()["side_configurations_lock"].to_bool(!first_scenario);
+	}
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
