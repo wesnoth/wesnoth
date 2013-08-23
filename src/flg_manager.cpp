@@ -21,9 +21,7 @@
 
 #include <boost/foreach.hpp>
 
-namespace {
-
-const std::string random_enemy_picture("units/random-dice.png");
+namespace mp  {
 
 #ifdef LOW_MEM
 std::string get_RC_suffix(const std::string&, const int)
@@ -38,9 +36,6 @@ std::string get_RC_suffix(const std::string& unit_color, const int color)
 }
 #endif
 
-}
-
-namespace mp {
 
 flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	const config& side, const bool map_settings, const bool saved_game,

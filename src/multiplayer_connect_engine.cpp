@@ -841,8 +841,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	if (parent_.params_.use_map_settings || parent_.params_.saved_game) {
 		// Explicitly assign a faction, if possible.
 		if (flg_.choosable_factions().size() > 1) {
-			faction_index = find_suitable_faction(flg_.choosable_factions(),
-				cfg_);
+			faction_index = flg_.find_suitable_faction();
 			if (faction_index >= 0) {
 				flg_.set_current_faction(faction_index);
 			}

@@ -23,6 +23,10 @@ class config;
 
 namespace mp {
 
+const std::string random_enemy_picture("units/random-dice.png");
+
+std::string get_RC_suffix(const std::string& unit_color, const int color);
+
 class flg_manager
 {
 public:
@@ -51,6 +55,10 @@ public:
 
 	void resolve_random();
 
+	// Picks the first faction with the greater amount of data
+	// matching the criteria.
+	int find_suitable_faction() const;
+
 	const std::vector<const config*> available_factions() const
 		{ return available_factions_; }
 	const std::vector<const config*> choosable_factions() const
@@ -77,10 +85,6 @@ private:
 	void init_choosable_factions();
 	void update_choosable_leaders();
 	void update_choosable_genders();
-
-	// Picks the first faction with the greater amount of data
-	// matching the criteria.
-	int find_suitable_faction() const;
 
 	// Append leaders from a given faction
 	// to a choosable factions.
