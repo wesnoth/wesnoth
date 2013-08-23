@@ -679,6 +679,7 @@ set(wesnoth-main_SRC
 	editor/toolkit/editor_toolkit.cpp
 	editor/map/context_manager.cpp
 	filechooser.cpp
+	flg_manager.cpp
 	floating_textbox.cpp
 	formula.cpp
 	formula_debugger.cpp
