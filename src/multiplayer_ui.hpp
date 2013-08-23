@@ -283,15 +283,16 @@ int find_suitable_faction(const std::vector<const config*> &fl,
  */
 std::vector<const config*> init_available_factions(
 	std::vector<const config*> era_sides, const config& side,
-	const bool map_settings);
+	const bool map_settings, const bool first_scenario);
 std::vector<const config*> init_choosable_factions(
 	std::vector<const config*> available_factions, const config& side,
-	const bool map_settings);
+	const bool map_settings, const bool first_scenario);
 std::vector<std::string> init_choosable_leaders(const config& side,
 	const config* faction, const std::vector<const config*> available_factions,
-	const bool map_settings, const bool saved_game);
+	const bool map_settings, const bool saved_game, const bool first_scenario);
 std::vector<std::string> init_choosable_genders(const config& side,
-	const std::string& leader, const bool map_settings, const bool saved_game);
+	const std::string& leader, const bool map_settings, const bool saved_game,
+	const bool first_scenario);
 
 /**
  * Updates combos for leaders and genders.

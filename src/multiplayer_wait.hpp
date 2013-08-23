@@ -44,8 +44,11 @@ private:
 	public:
 		leader_preview_pane(game_display& disp,
 			const std::vector<const config*>& available_factions,
-			const std::vector<const config*>& choosable_factions, int color,
-			const bool map_settings, const bool saved_game,
+			const std::vector<const config*>& choosable_factions,
+			int color,
+			const bool map_settings,
+			const bool saved_game,
+			const bool first_scenario,
 			const config& side_cfg);
 
 		bool show_above() const;
@@ -79,6 +82,7 @@ private:
 
 		const bool map_settings_;
 		const bool saved_game_;
+		const bool first_scenario_;
 
 		const config& side_cfg_;
 	};

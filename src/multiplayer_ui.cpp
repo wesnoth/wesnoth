@@ -773,7 +773,7 @@ int find_suitable_faction(const std::vector<const config*> &fl,
 
 std::vector<const config*> init_available_factions(
 	std::vector<const config*> era_sides, const config& side,
-	const bool map_settings)
+	const bool map_settings, const bool first_scenario)
 {
 	std::vector<const config*> available_factions;
 
@@ -781,7 +781,7 @@ std::vector<const config*> init_available_factions(
 		const bool has_no_recruits =
 			side["recruit"].empty() && side["previous_recruits"].empty();
 		if ((*faction)["id"] == "Custom" && side["faction"] != "Custom" &&
-			(has_no_recruits || !map_settings)) {
+			(has_no_recruits || (!map_settings && first_scenario))) {
 
 			// "Custom" faction should not be available if both "recruit"
 			// and "previous_recruits" lists are empty or
@@ -798,11 +798,11 @@ std::vector<const config*> init_available_factions(
 
 std::vector<const config*> init_choosable_factions(
 	std::vector<const config*> available_factions, const config& side,
-	const bool map_settings)
+	const bool map_settings, const bool first_scenario)
 {
 	std::vector<const config*> choosable_factions(available_factions);
 
-	if (!side["faction"].empty() && map_settings) {
+	if (!side["faction"].empty() && (map_settings || !first_scenario)) {
 		int faction_index = find_suitable_faction(choosable_factions, side);
 		if (faction_index >= 0) {
 			const config* faction = choosable_factions[faction_index];
@@ -818,7 +818,7 @@ std::vector<const config*> init_choosable_factions(
 
 std::vector<std::string> init_choosable_leaders(const config& side,
 	const config* faction, const std::vector<const config*> available_factions,
-	const bool map_settings, const bool saved_game)
+	const bool map_settings, const bool saved_game, const bool first_scenario)
 {
 	std::vector<std::string> choosable_leaders;
 
@@ -852,7 +852,7 @@ std::vector<std::string> init_choosable_leaders(const config& side,
 			}
 		}
 
-		if (map_settings &&	!leader_type.empty() &&
+		if ((map_settings || !first_scenario) && !leader_type.empty() &&
 			leader_type != "null" && leader_type != "random") {
 
 			// Leader was explicitly assigned.
@@ -887,7 +887,8 @@ std::vector<std::string> init_choosable_leaders(const config& side,
 }
 
 std::vector<std::string> init_choosable_genders(const config& side,
-	const std::string& leader, const bool map_settings, const bool saved_game)
+	const std::string& leader, const bool map_settings, const bool saved_game,
+	const bool first_scenario)
 {
 	std::vector<std::string> choosable_genders;
 
@@ -908,7 +909,8 @@ std::vector<std::string> init_choosable_genders(const config& side,
 		const unit_type* unit = unit_types.find(leader);
 		if (unit) {
 			const std::string& default_gender = side["gender"];
-			if (map_settings && (default_gender == unit_race::s_female ||
+			if ((map_settings || !first_scenario) &&
+				(default_gender == unit_race::s_female ||
 				default_gender == unit_race::s_male)) {
 
 				// Gender was explicitly assigned.

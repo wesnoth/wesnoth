@@ -832,21 +832,22 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 	// Initialize faction lists.
 	available_factions_ = init_available_factions(parent_.era_factions_, cfg_,
-		parent_.params_.use_map_settings);
+		parent_.params_.use_map_settings, parent_.first_scenario_);
 
 	const bool has_any_recruits =
 		!cfg["recruit"].empty() || !cfg["previous_recruits"].empty();
 	if ((!cfg_.has_attribute("faction") || !parent_.first_scenario_) &&
-		has_any_recruits && parent_.side_configurations_lock_) {
+		has_any_recruits &&
+		(parent_.side_configurations_lock_ || !parent_.first_scenario_)) {
 
-		// By default side should be locked to a first available faction
-		// if side configurations lock is on and if side has no
-		// predefined faction or it's not a first scenario.
-		cfg_["faction"] = (*available_factions_[0])["id"];
+		// By default side should be locked to a Custom faction
+		// if it has some recruits and should not be able to
+		// choose other faction.
+		cfg_["faction"] = "Custom";
 	}
 
 	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
-		parent_.params_.use_map_settings);
+		parent_.params_.use_map_settings, parent_.first_scenario_);
 	assert(!choosable_factions_.empty());
 
 	int faction_index = 0;
@@ -1363,14 +1364,15 @@ void side_engine::update_choosable_leaders()
 	choosable_leaders_.clear();
 	choosable_leaders_ = init_choosable_leaders(cfg_, current_faction_,
 		available_factions_, parent_.params_.use_map_settings,
-		parent_.params_.saved_game);
+		parent_.params_.saved_game, parent_.first_scenario_);
 }
 
 void side_engine::update_choosable_genders()
 {
 	choosable_genders_.clear();
 	choosable_genders_ = init_choosable_genders(cfg_, current_leader_,
-		parent_.params_.use_map_settings, parent_.params_.saved_game);
+		parent_.params_.use_map_settings, parent_.params_.saved_game,
+		parent_.first_scenario_);
 }
 
 } // end namespace mp

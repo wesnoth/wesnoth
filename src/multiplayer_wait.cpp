@@ -43,8 +43,11 @@ namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 	const std::vector<const config*>& available_factions,
-	const std::vector<const config*>& choosable_factions, int color,
-	const bool map_settings, const bool saved_game,
+	const std::vector<const config*>& choosable_factions,
+	int color,
+	const bool map_settings,
+	const bool saved_game,
+	const bool first_scenario,
 	const config& side_cfg) :
 	gui::preview_pane(disp.video()),
 	color_(color),
@@ -60,6 +63,7 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 	current_gender_("null"),
 	map_settings_(map_settings),
 	saved_game_(saved_game),
+	first_scenario_(first_scenario),
 	side_cfg_(side_cfg)
 {
 	init_leaders_and_genders();
@@ -73,7 +77,7 @@ void wait::leader_preview_pane::process_event()
 		current_leader_ = choosable_leaders_[leader_combo_.selected()];
 
 		choosable_genders_ = init_choosable_genders(side_cfg_, current_leader_,
-			map_settings_, saved_game_);
+			map_settings_, saved_game_, first_scenario_);
 
 		current_gender_ = choosable_genders_[0];
 
@@ -93,9 +97,9 @@ void wait::leader_preview_pane::process_event()
 void wait::leader_preview_pane::init_leaders_and_genders()
 {
 	choosable_leaders_ = init_choosable_leaders(side_cfg_, current_faction_,
-		available_factions_, map_settings_, saved_game_);
+		available_factions_, map_settings_, saved_game_, first_scenario_);
 	choosable_genders_ = init_choosable_genders(side_cfg_, current_leader_,
-		map_settings_, saved_game_);
+		map_settings_, saved_game_, first_scenario_);
 
 	current_leader_ = choosable_leaders_[0];
 	current_gender_ = choosable_genders_[0];
@@ -326,9 +330,9 @@ void wait::join_game(bool observe)
 
 			std::vector<const config*> available_factions =
 				init_available_factions(choosable_factions, *side_choice,
-				map_settings);
+				map_settings, first_scenario_);
 			choosable_factions = init_choosable_factions(available_factions,
-				*side_choice, map_settings);
+				*side_choice, map_settings, first_scenario_);
 
 			std::vector<std::string> choices;
 			BOOST_FOREACH(const config *s, choosable_factions)
@@ -352,7 +356,7 @@ void wait::join_game(bool observe)
 			std::vector<gui::preview_pane* > preview_panes;
 			leader_preview_pane leader_selector(disp(), available_factions,
 				choosable_factions, color, map_settings, saved_game,
-				*side_choice);
+				first_scenario_, *side_choice);
 			preview_panes.push_back(&leader_selector);
 
 			const int faction_choice = gui::show_dialog(disp(), NULL,
