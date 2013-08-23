@@ -60,8 +60,6 @@ public:
 	private:
 		// Update UI methods and their helper(s).
 		void update_faction_combo();
-		void update_leader_combo();
-		void update_gender_combo();
 		void update_controller_ui();
 
 		// The mp::connect widget owning this mp::connect::side.

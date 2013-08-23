@@ -746,14 +746,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	parent_(parent_engine),
 	controller_(CNTR_NETWORK),
 	current_controller_index_(0),
-	available_factions_(),
-	choosable_factions_(),
-	choosable_leaders_(),
-	choosable_genders_(),
 	controller_options_(),
-	current_faction_(NULL),
-	current_leader_("null"),
-	current_gender_("null"),
 	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
 		false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
@@ -765,7 +758,9 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	income_(cfg["income"]),
 	current_player_(cfg["current_player"]),
 	player_id_(cfg["player_id"]),
-	ai_algorithm_()
+	ai_algorithm_(),
+	flg_(parent_.era_factions_, cfg_, parent_.params_.use_map_settings,
+		parent_.params_.saved_game, parent_.first_scenario_, color_)
 {
 	update_controller_options();
 
@@ -830,10 +825,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		color_ = game_config::color_info(cfg["color"]).index() - 1;
 	}
 
-	// Initialize faction lists.
-	available_factions_ = init_available_factions(parent_.era_factions_, cfg_,
-		parent_.params_.use_map_settings, parent_.first_scenario_);
-
 	const bool has_any_recruits =
 		!cfg["recruit"].empty() || !cfg["previous_recruits"].empty();
 	if ((!cfg_.has_attribute("faction") || !parent_.first_scenario_) &&
@@ -846,17 +837,14 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		cfg_["faction"] = "Custom";
 	}
 
-	choosable_factions_ = init_choosable_factions(available_factions_, cfg_,
-		parent_.params_.use_map_settings, parent_.first_scenario_);
-	assert(!choosable_factions_.empty());
-
 	int faction_index = 0;
 	if (parent_.params_.use_map_settings || parent_.params_.saved_game) {
 		// Explicitly assign a faction, if possible.
-		if (choosable_factions_.size() > 1) {
-			faction_index = find_suitable_faction(choosable_factions_, cfg_);
-			if (faction_index < 0) {
-				faction_index = 0;
+		if (flg_.choosable_factions().size() > 1) {
+			faction_index = find_suitable_faction(flg_.choosable_factions(),
+				cfg_);
+			if (faction_index >= 0) {
+				flg_.set_current_faction(faction_index);
 			}
 		}
 	}
@@ -865,9 +853,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	if (const config& ai = cfg.child("ai")) {
 		ai_algorithm_ = ai["ai_algorithm"].str();
 	}
-
-	// Initializes leader and gender lists.
-	set_current_faction(choosable_factions_[faction_index]);
 }
 
 side_engine::~side_engine()
@@ -882,7 +867,7 @@ config side_engine::new_config() const
 	// then import their new values in the config.
 	if (!parent_.params_.saved_game) {
 		// Merge the faction data to res.
-		res.append(*current_faction_);
+		res.append(flg_.current_faction());
 		res["faction_name"] = res["name"];
 	}
 
@@ -967,9 +952,8 @@ config side_engine::new_config() const
 	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
 
 	if (!parent_.params_.saved_game) {
-		res["type"] = (current_leader_ != "null") ? current_leader_ : "random";
-		res["gender"] = (current_gender_ != "null") ? current_gender_ :
-			"random";
+		res["type"] = flg_.current_leader();
+		res["gender"] = flg_.current_gender();
 
 		res["team_name"] = parent_.team_names_[team_];
 		res["user_team_name"] = parent_.user_team_names_[team_];
@@ -1096,105 +1080,11 @@ void side_engine::resolve_random()
 		return;
 	}
 
-	if ((*current_faction_)["random_faction"].to_bool()) {
-		// Choose a random faction, and force leader to be random.
-		current_leader_ = "random";
+	flg_.resolve_random();
 
-		std::vector<std::string> faction_choices, faction_excepts;
-
-		faction_choices = utils::split((*current_faction_)["choices"]);
-		if (faction_choices.size() == 1 && faction_choices.front() == "") {
-			faction_choices.clear();
-		}
-
-		faction_excepts = utils::split((*current_faction_)["except"]);
-		if (faction_excepts.size() == 1 && faction_excepts.front() == "") {
-			faction_excepts.clear();
-		}
-
-		// Builds the list of factions eligible for choice
-		// (non-random factions).
-		std::vector<int> nonrandom_sides;
-		int num = -1;
-		BOOST_FOREACH(const config* i, available_factions_) {
-			++num;
-			if (!(*i)["random_faction"].to_bool()) {
-				const std::string& faction_id = (*i)["id"];
-
-				if (!faction_choices.empty() &&
-					std::find(faction_choices.begin(), faction_choices.end(),
-						faction_id) == faction_choices.end()) {
-					continue;
-				}
-
-				if (!faction_excepts.empty() &&
-					std::find(faction_excepts.begin(), faction_excepts.end(),
-						faction_id) != faction_excepts.end()) {
-					continue;
-				}
-
-				nonrandom_sides.push_back(num);
-			}
-		}
-
-		if (nonrandom_sides.empty()) {
-			throw config::error(_("Only random sides in the current era."));
-		}
-
-		const int faction_index =
-			nonrandom_sides[rand() % nonrandom_sides.size()];
-		set_current_faction(available_factions_[faction_index]);
-	}
-
-	LOG_MP << "FACTION" << (index_ + 1) << ": " << (*current_faction_)["name"]
-		<< std::endl;
-
-	bool solved_random_leader = false;
-
-	if (current_leader_ == "random") {
-		// Choose a random leader type, and force gender to be random.
-		current_gender_ = "random";
-
-		std::vector<std::string> nonrandom_leaders;
-		BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
-			if (leader != "random") {
-				nonrandom_leaders.push_back(leader);
-			}
-		}
-
-		if (nonrandom_leaders.empty()) {
-			utils::string_map i18n_symbols;
-			i18n_symbols["faction"] = (*current_faction_)["name"];
-			throw config::error(vgettext(
-				"Unable to find a leader type for faction $faction",
-				i18n_symbols));
-		} else {
-			const int lchoice = rand() % nonrandom_leaders.size();
-			set_current_leader(nonrandom_leaders[lchoice]);
-		}
-
-		solved_random_leader = true;
-	}
-
-	// Resolve random genders "very much" like standard unit code.
-	if (current_gender_ == "random" || solved_random_leader) {
-		const unit_type *ut = unit_types.find(current_leader_);
-		if (ut && !choosable_genders_.empty()) {
-			std::vector<std::string> nonrandom_genders;
-			BOOST_FOREACH(const std::string& gender, choosable_genders_) {
-				if (gender != "random") {
-					nonrandom_genders.push_back(gender);
-				}
-			}
-
-			const int gchoice = rand() % nonrandom_genders.size();
-			set_current_gender(nonrandom_genders[gchoice]);
-		} else {
-			ERR_CF << "cannot obtain genders for invalid leader '" <<
-				current_leader_ << "'.\n";
-			current_gender_ = "null";
-		}
-	}
+	LOG_MP << "side " << (index_ + 1) << ": faction=" <<
+		(flg_.current_faction())["name"] << ", leader=" <<
+		flg_.current_leader() << ", gender=" << flg_.current_gender() << "\n";
 }
 
 void side_engine::reset()
@@ -1203,9 +1093,7 @@ void side_engine::reset()
 	set_controller(parent_.default_controller_);
 
 	if (!parent_.params_.saved_game) {
-		set_current_faction(choosable_factions_[0]);
-		set_current_leader(choosable_leaders_[0]);
-		set_current_gender(choosable_genders_[0]);
+		flg_.set_current_faction((unsigned) 0);
 	}
 }
 
@@ -1222,16 +1110,12 @@ void side_engine::place_user(const config& data)
 	player_id_ = data["name"].str();
 	set_controller(parent_.default_controller_);
 
-	if (data.has_attribute("faction")) {
+	if (data["change_faction"].to_bool()) {
 		// Network user's data carry information about chosen
 		// faction, leader and genders.
-		BOOST_FOREACH(const config* faction, choosable_factions_) {
-			if ((*faction)["id"] == data["faction"]) {
-				set_current_faction(faction);
-			}
-		}
-		set_current_leader(data["leader"]);
-		set_current_gender(data["gender"]);
+		flg_.set_current_faction(data["faction"].str());
+		flg_.set_current_leader(data["leader"].str());
+		flg_.set_current_gender(data["gender"].str());
 	}
 }
 
@@ -1300,49 +1184,9 @@ void side_engine::set_controller(mp::controller controller)
 	update_current_controller_index();
 }
 
-void side_engine::set_current_faction(const config* current_faction)
-{
-	current_faction_ = current_faction;
-
-	update_choosable_leaders();
-	set_current_leader(choosable_leaders_[0]);
-}
-
-void side_engine::set_current_leader(const std::string& current_leader)
-{
-	current_leader_ = current_leader;
-
-	update_choosable_genders();
-	set_current_gender(choosable_genders_[0]);
-}
-
-void side_engine::set_current_gender(const std::string& current_gender)
-{
-	current_gender_ = current_gender;
-}
-
-int side_engine::current_faction_index() const
-{
-	int index = 0;
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
-		if ((*faction)["id"] == (*current_faction_)["id"]) {
-			return index;
-		}
-
-		index++;
-	}
-
-	return 0;
-}
-
 void side_engine::set_faction_commandline(const std::string& faction_name)
 {
-	BOOST_FOREACH(const config* faction, choosable_factions_) {
-		if ((*faction)["name"] == faction_name) {
-			current_faction_ = faction;
-			break;
-		}
-	}
+	flg_.set_current_faction(faction_name);
 }
 
 void side_engine::set_controller_commandline(const std::string& controller_name)
@@ -1357,22 +1201,6 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 	}
 
 	player_id_.clear();
-}
-
-void side_engine::update_choosable_leaders()
-{
-	choosable_leaders_.clear();
-	choosable_leaders_ = init_choosable_leaders(cfg_, current_faction_,
-		available_factions_, parent_.params_.use_map_settings,
-		parent_.params_.saved_game, parent_.first_scenario_);
-}
-
-void side_engine::update_choosable_genders()
-{
-	choosable_genders_.clear();
-	choosable_genders_ = init_choosable_genders(cfg_, current_leader_,
-		parent_.params_.use_map_settings, parent_.params_.saved_game,
-		parent_.first_scenario_);
 }
 
 } // end namespace mp

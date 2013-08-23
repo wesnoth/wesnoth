@@ -32,23 +32,42 @@ public:
 	~flg_manager();
 
 	void set_current_faction(const unsigned index);
-	void set_current_faction(const config* faction);
+	void set_current_faction(const std::string& id);
+	void set_current_faction(const config* faction)
+		{ set_current_faction(faction_index(faction)); }
+
 	void set_current_leader(const unsigned index);
+	void set_current_leader(const std::string& leader)
+		{ set_current_leader(leader_index(leader)); }
+
 	void set_current_gender(const unsigned index);
+	void set_current_gender(const std::string& gender)
+		{ set_current_gender(gender_index(gender)); }
 
 	// Update the status of combo: items, selection and whether
 	// it should be enabled or not.
 	void reset_leader_combo(gui::combo& combo_leader);
 	void reset_gender_combo(gui::combo& combo_gender);
 
+	void resolve_random();
+
 	const std::vector<const config*> available_factions() const
 		{ return available_factions_; }
 	const std::vector<const config*> choosable_factions() const
 		{ return choosable_factions_; }
+	const std::vector<std::string>& choosable_leaders() const
+		{ return choosable_leaders_; }
+	const std::vector<std::string>& choosable_genders() const
+		{ return choosable_genders_; }
+	const config& current_faction() const
+		{ return *current_faction_; }
 	const std::string& current_leader() const
 		{ return current_leader_; }
 	const std::string& current_gender() const
 		{ return current_gender_; }
+
+	int current_faction_index() const
+		{ return faction_index(current_faction_); }
 
 private:
 	flg_manager(const flg_manager&);
@@ -67,8 +86,14 @@ private:
 	// to a choosable factions.
 	void append_leaders_from_faction(const config* faction);
 
-	int current_leader_index() const;
-	int current_gender_index() const;
+	int faction_index(const config* faction) const;
+	int leader_index(const std::string& leader) const;
+	int gender_index(const std::string& gender) const;
+
+	int current_leader_index() const
+		{ return leader_index(current_leader_); }
+	int current_gender_index() const
+		{ return gender_index(current_gender_); }
 
 	const std::vector<const config*>& era_factions_;
 
@@ -80,7 +105,9 @@ private:
 
 	const int color_;
 
+	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
+
 	std::vector<const config*> choosable_factions_;
 	std::vector<std::string> choosable_leaders_;
 	std::vector<std::string> choosable_genders_;

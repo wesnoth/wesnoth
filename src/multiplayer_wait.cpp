@@ -87,10 +87,9 @@ void wait::leader_preview_pane::draw_contents()
 		loc.h - leader_pane_border * 2);
 	const clip_rect_setter clipper(screen, &area);
 
-	const config& side = *flg_.choosable_factions()[selection_];
-	std::string faction = side["faction"];
+	std::string faction = flg_.current_faction()["faction"];
 
-	const std::string recruits = side["recruit"];
+	const std::string recruits = flg_.current_faction()["recruit"];
 	const std::vector<std::string> recruit_list = utils::split(recruits);
 	std::ostringstream recruit_string;
 
@@ -256,8 +255,6 @@ void wait::join_game(bool observe)
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
-		std::string leader_choice, gender_choice;
-
 		if(allow_changes) {
 			events::event_context context;
 
@@ -320,16 +317,14 @@ void wait::join_game(bool observe)
 				set_result(QUIT);
 				return;
 			}
-			leader_choice = flg.current_leader();
-			gender_choice = flg.current_gender();
 
 			config faction;
 			config& change = faction.add_child("change_faction");
+			change["change_faction"] = true;
 			change["name"] = preferences::login();
-			change["faction"] =
-				(*flg.choosable_factions()[faction_choice])["id"];
-			change["leader"] = leader_choice;
-			change["gender"] = gender_choice;
+			change["faction"] = flg.current_faction()["id"];
+			change["leader"] = flg.current_leader();
+			change["gender"] = flg.current_gender();
 			network::send_data(faction, 0);
 		}
 

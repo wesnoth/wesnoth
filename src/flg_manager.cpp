@@ -55,9 +55,9 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	choosable_factions_(),
 	choosable_leaders_(),
 	choosable_genders_(),
-	current_faction_(),
-	current_leader_(),
-	current_gender_()
+	current_faction_(NULL),
+	current_leader_("null"),
+	current_gender_("null")
 {
 	init_available_factions();
 	init_choosable_factions();
@@ -72,15 +72,24 @@ flg_manager::~flg_manager()
 void flg_manager::set_current_faction(const unsigned index)
 {
 	assert(index < choosable_factions_.size());
-	set_current_faction(choosable_factions_[index]);
-}
-
-void flg_manager::set_current_faction(const config* faction)
-{
-	current_faction_ = faction;
+	current_faction_ = choosable_factions_[index];
 
 	update_choosable_leaders();
 	set_current_leader(0);
+}
+
+void flg_manager::set_current_faction(const std::string& id)
+{
+	unsigned index = 0;
+	BOOST_FOREACH(const config* faction, choosable_factions_) {
+		if ((*faction)["id"] == id) {
+			break;
+		}
+
+		index++;
+	}
+
+	set_current_faction(index);
 }
 
 void flg_manager::set_current_leader(const unsigned index)
@@ -156,6 +165,106 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender)
 	combo_gender.set_selected(current_gender_index());
 }
 
+void flg_manager::resolve_random() {
+	bool solved_random_faction = false;
+	if ((*current_faction_)["random_faction"].to_bool()) {
+		std::vector<std::string> faction_choices, faction_excepts;
+
+		faction_choices = utils::split((*current_faction_)["choices"]);
+		if (faction_choices.size() == 1 && faction_choices.front() == "") {
+			faction_choices.clear();
+		}
+
+		faction_excepts = utils::split((*current_faction_)["except"]);
+		if (faction_excepts.size() == 1 && faction_excepts.front() == "") {
+			faction_excepts.clear();
+		}
+
+		// Builds the list of factions eligible for choice
+		// (non-random factions).
+		std::vector<int> nonrandom_sides;
+		int num = -1;
+		BOOST_FOREACH(const config* i, available_factions_) {
+			++num;
+			if (!(*i)["random_faction"].to_bool()) {
+				const std::string& faction_id = (*i)["id"];
+
+				if (!faction_choices.empty() &&
+					std::find(faction_choices.begin(), faction_choices.end(),
+						faction_id) == faction_choices.end()) {
+					continue;
+				}
+
+				if (!faction_excepts.empty() &&
+					std::find(faction_excepts.begin(), faction_excepts.end(),
+						faction_id) != faction_excepts.end()) {
+					continue;
+				}
+
+				nonrandom_sides.push_back(num);
+			}
+		}
+
+		if (nonrandom_sides.empty()) {
+			throw config::error(_("Only random sides in the current era."));
+		}
+
+		const int faction_index =
+			nonrandom_sides[rand() % nonrandom_sides.size()];
+		current_faction_ = available_factions_[faction_index];
+
+		update_choosable_leaders();
+		set_current_leader(0);
+
+		solved_random_faction = true;
+	}
+
+	bool solved_random_leader = false;
+	if (current_leader_ == "random" || solved_random_faction) {
+		std::vector<std::string> nonrandom_leaders;
+		BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
+			if (leader != "random") {
+				nonrandom_leaders.push_back(leader);
+			}
+		}
+
+		if (nonrandom_leaders.empty()) {
+			utils::string_map i18n_symbols;
+			i18n_symbols["faction"] = (*current_faction_)["name"];
+			throw config::error(vgettext(
+				"Unable to find a leader type for faction $faction",
+				i18n_symbols));
+		} else {
+			const int lchoice = rand() % nonrandom_leaders.size();
+			set_current_leader(nonrandom_leaders[lchoice]);
+		}
+
+		solved_random_leader = true;
+	}
+
+	// Resolve random genders "very much" like standard unit code.
+	if (current_gender_ == "random" || solved_random_leader) {
+		const unit_type *ut = unit_types.find(current_leader_);
+		if (ut && !choosable_genders_.empty()) {
+			std::vector<std::string> nonrandom_genders;
+			BOOST_FOREACH(const std::string& gender, choosable_genders_) {
+				if (gender != "random") {
+					nonrandom_genders.push_back(gender);
+				}
+			}
+
+			const int gchoice = rand() % nonrandom_genders.size();
+			set_current_gender(nonrandom_genders[gchoice]);
+		} else {
+			utils::string_map i18n_symbols;
+			i18n_symbols["leader"] = current_leader_;
+			throw config::error(vgettext(
+				"Cannot obtain genders for invalid leader $leader",
+				i18n_symbols));
+		}
+	}
+}
+
 void flg_manager::init_available_factions()
 {
 	BOOST_FOREACH(const config* faction, era_factions_) {
@@ -173,6 +282,8 @@ void flg_manager::init_available_factions()
 
 		available_factions_.push_back(faction);
 	}
+
+	assert(!available_factions_.empty());
 }
 
 void flg_manager::init_choosable_factions()
@@ -368,19 +479,28 @@ void flg_manager::append_leaders_from_faction(const config* faction)
 		leaders_to_append.end());
 }
 
-int flg_manager::current_leader_index() const
+int flg_manager::faction_index(const config* faction) const
+{
+	std::vector<const config*>::const_iterator it = std::find(
+		choosable_factions_.begin(), choosable_factions_.end(), faction);
+
+	assert(it != choosable_factions_.end());
+	return std::distance(choosable_factions_.begin(), it);
+}
+
+int flg_manager::leader_index(const std::string& leader) const
 {
 	std::vector<std::string>::const_iterator it = std::find(
-		choosable_leaders_.begin(), choosable_leaders_.end(), current_leader_);
+		choosable_leaders_.begin(), choosable_leaders_.end(), leader);
 
 	assert(it != choosable_leaders_.end());
 	return std::distance(choosable_leaders_.begin(), it);
 }
 
-int flg_manager::current_gender_index() const
+int flg_manager::gender_index(const std::string& gender) const
 {
 	std::vector<std::string>::const_iterator it = std::find(
-		choosable_genders_.begin(), choosable_genders_.end(), current_gender_);
+		choosable_genders_.begin(), choosable_genders_.end(), gender);
 
 	assert(it != choosable_genders_.end());
 	return std::distance(choosable_genders_.begin(), it);

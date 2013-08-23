@@ -16,6 +16,7 @@
 
 #include "commandline_options.hpp"
 #include "config.hpp"
+#include "flg_manager.hpp"
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
 
@@ -150,12 +151,6 @@ public:
 	bool controller_changed(const int selection);
 	void set_controller(mp::controller controller);
 
-	void set_current_faction(const config* current_faction);
-	void set_current_leader(const std::string& current_leader);
-	void set_current_gender(const std::string& current_gender);
-
-	int current_faction_index() const;
-
 	// Game set up from command line helpers.
 	void set_faction_commandline(const std::string& faction_name);
 	void set_controller_commandline(const std::string& controller_name);
@@ -163,17 +158,9 @@ public:
 	/* Setters & Getters */
 
 	std::string save_id() const { return cfg_["save_id"]; }
-	const std::vector<const config*>& choosable_factions()
-		{ return choosable_factions_; }
-	const std::vector<std::string>& choosable_leaders()
-		{ return choosable_leaders_; }
-	const std::vector<std::string>& choosable_genders()
-		{ return choosable_genders_; }
 	const std::vector<controller_option>& controller_options()
 		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }
-	const std::string& current_leader() const { return current_leader_; }
-	const std::string& current_gender() const { return current_gender_; }
 	mp::controller controller() const { return controller_; }
 	unsigned current_controller_index() const
 		{ return current_controller_index_; }
@@ -199,32 +186,18 @@ public:
 		{ return parent_.player_teams_; }
 	bool side_configurations_lock() const
 		{ return parent_.side_configurations_lock_; }
+	flg_manager& flg() { return flg_; }
 
 private:
 	side_engine(const side_engine& engine);
 	void operator=(const side_engine&);
-
-	void update_choosable_leaders();
-	void update_choosable_genders();
 
 	config cfg_;
 	connect_engine& parent_;
 
 	mp::controller controller_;
 	unsigned current_controller_index_;
-
-	// All factions which could be played by a side (including Random).
-	std::vector<const config*> available_factions_;
-
-	std::vector<const config*> choosable_factions_;
-	std::vector<std::string> choosable_leaders_;
-	std::vector<std::string> choosable_genders_;
-
 	std::vector<controller_option> controller_options_;
-
-	const config* current_faction_;
-	std::string current_leader_;
-	std::string current_gender_;
 
 	const bool allow_player_;
 	const bool allow_changes_;
@@ -238,6 +211,8 @@ private:
 	std::string current_player_;
 	std::string player_id_;
 	std::string ai_algorithm_;
+
+	flg_manager flg_;
 };
 
 } // end namespace mp

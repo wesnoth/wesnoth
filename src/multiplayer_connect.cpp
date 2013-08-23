@@ -168,15 +168,14 @@ void connect::side::process_event()
 	if (combo_color_.changed() && combo_color_.selected() >= 0) {
 		engine_->set_color(combo_color_.selected());
 		update_faction_combo();
-		update_leader_combo();
-		update_gender_combo();
+		engine_->flg().reset_leader_combo(combo_leader_);
+		engine_->flg().reset_gender_combo(combo_gender_);
 		changed_ = true;
 	}
 	if (combo_faction_.changed() && combo_faction_.selected() >= 0) {
-		engine_->set_current_faction(engine_->
-			choosable_factions()[combo_faction_.selected()]);
-		update_leader_combo();
-		update_gender_combo();
+		engine_->flg().set_current_faction(combo_faction_.selected());
+		engine_->flg().reset_leader_combo(combo_leader_);
+		engine_->flg().reset_gender_combo(combo_gender_);
 		changed_ = true;
 	}
 	if (combo_ai_algorithm_.changed() && combo_ai_algorithm_.selected() >= 0) {
@@ -185,14 +184,12 @@ void connect::side::process_event()
 		changed_ = true;
 	}
 	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
-		engine_->set_current_leader(engine_->
-			choosable_leaders()[combo_leader_.selected()]);
-		update_gender_combo();
+		engine_->flg().set_current_leader(combo_leader_.selected());
+		engine_->flg().reset_gender_combo(combo_gender_);
 		changed_ = true;
 	}
 	if (combo_gender_.changed() && combo_gender_.selected() >= 0) {
-		engine_->set_current_gender(engine_->
-			choosable_genders()[combo_gender_.selected()]);
+		engine_->flg().set_current_gender(combo_gender_.selected());
 		changed_ = true;
 	}
 	if (combo_team_.changed() && combo_team_.selected() >= 0) {
@@ -232,8 +229,8 @@ bool connect::side::changed()
 void connect::side::update_ui()
 {
 	update_faction_combo();
-	update_leader_combo();
-	update_gender_combo();
+	engine_->flg().reset_leader_combo(combo_leader_);
+	engine_->flg().reset_gender_combo(combo_gender_);
 
 	update_controller_ui();
 
@@ -276,7 +273,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 void connect::side::update_faction_combo()
 {
 	std::vector<std::string> factions;
-	BOOST_FOREACH(const config* faction, engine_->choosable_factions()) {
+	BOOST_FOREACH(const config* faction, engine_->flg().choosable_factions()) {
 		const std::string& name = (*faction)["name"];
 		const std::string& icon = (*faction)["image"];
 		if (!icon.empty()) {
@@ -295,21 +292,7 @@ void connect::side::update_faction_combo()
 	combo_faction_.enable(factions.size() > 1 && !parent_->params().saved_game);
 
 	combo_faction_.set_items(factions);
-	combo_faction_.set_selected(engine_->current_faction_index());
-}
-
-void connect::side::update_leader_combo()
-{
-	reset_leader_combo(&combo_leader_, engine_->choosable_leaders(),
-		engine_->current_leader(), engine_->color(),
-		parent_->params().saved_game);
-}
-
-void connect::side::update_gender_combo()
-{
-	reset_gender_combo(&combo_gender_, engine_->choosable_genders(),
-		engine_->current_leader(), engine_->current_gender(),
-		engine_->color(), parent_->params().saved_game);
+	combo_faction_.set_selected(engine_->flg().current_faction_index());
 }
 
 void connect::side::update_controller_ui()
