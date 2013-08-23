@@ -35,79 +35,44 @@ static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 
 namespace {
+
 const SDL_Rect leader_pane_position = {-260,-370,260,370};
 const int leader_pane_border = 10;
+
 }
 
 namespace mp {
 
 wait::leader_preview_pane::leader_preview_pane(game_display& disp,
-	const std::vector<const config*>& available_factions,
-	const std::vector<const config*>& choosable_factions,
-	int color,
-	const bool map_settings,
-	const bool saved_game,
-	const bool first_scenario,
-	const config& side_cfg) :
+	flg_manager& flg, const int color) :
 	gui::preview_pane(disp.video()),
+	flg_(flg),
 	color_(color),
-	leader_combo_(disp, std::vector<std::string>()),
-	gender_combo_(disp, std::vector<std::string>()),
-	selection_(0),
-	available_factions_(available_factions),
-	choosable_factions_(choosable_factions),
-	choosable_leaders_(),
-	choosable_genders_(),
-	current_faction_(choosable_factions[0]),
-	current_leader_("null"),
-	current_gender_("null"),
-	map_settings_(map_settings),
-	saved_game_(saved_game),
-	first_scenario_(first_scenario),
-	side_cfg_(side_cfg)
+	combo_leader_(disp, std::vector<std::string>()),
+	combo_gender_(disp, std::vector<std::string>()),
+	selection_(0)
 {
-	init_leaders_and_genders();
+	flg_.reset_leader_combo(combo_leader_);
+	flg_.reset_gender_combo(combo_gender_);
 
 	set_location(leader_pane_position);
 }
 
 void wait::leader_preview_pane::process_event()
 {
-	if (leader_combo_.changed()) {
-		current_leader_ = choosable_leaders_[leader_combo_.selected()];
+	if (combo_leader_.changed()) {
+		flg_.set_current_leader(combo_leader_.selected());
 
-		choosable_genders_ = init_choosable_genders(side_cfg_, current_leader_,
-			map_settings_, saved_game_, first_scenario_);
-
-		current_gender_ = choosable_genders_[0];
-
-		reset_gender_combo(&gender_combo_, choosable_genders_,
-			current_leader_, current_gender_, color_, saved_game_);
+		flg_.reset_gender_combo(combo_gender_);
 
 		set_dirty();
 	}
 
-	if (gender_combo_.changed()) {
-		current_gender_ = choosable_genders_[gender_combo_.selected()];
+	if (combo_gender_.changed()) {
+		flg_.set_current_gender(combo_gender_.selected());
 
 		set_dirty();
 	}
-}
-
-void wait::leader_preview_pane::init_leaders_and_genders()
-{
-	choosable_leaders_ = init_choosable_leaders(side_cfg_, current_faction_,
-		available_factions_, map_settings_, saved_game_, first_scenario_);
-	choosable_genders_ = init_choosable_genders(side_cfg_, current_leader_,
-		map_settings_, saved_game_, first_scenario_);
-
-	current_leader_ = choosable_leaders_[0];
-	current_gender_ = choosable_genders_[0];
-
-	reset_leader_combo(&leader_combo_, choosable_leaders_,
-		current_leader_, color_, saved_game_);
-	reset_gender_combo(&gender_combo_, choosable_genders_,
-		current_leader_, current_gender_, color_, saved_game_);
 }
 
 void wait::leader_preview_pane::draw_contents()
@@ -117,67 +82,71 @@ void wait::leader_preview_pane::draw_contents()
 	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = create_rect(loc.x + leader_pane_border
-			, loc.y + leader_pane_border
-			, loc.w - leader_pane_border * 2
-			, loc.h - leader_pane_border * 2);
+	const SDL_Rect area = create_rect(loc.x + leader_pane_border,
+		loc.y + leader_pane_border,loc.w - leader_pane_border * 2,
+		loc.h - leader_pane_border * 2);
 	const clip_rect_setter clipper(screen, &area);
 
-	if(selection_ < choosable_factions_.size()) {
-		const config& side = *choosable_factions_[selection_];
-		std::string faction = side["faction"];
+	const config& side = *flg_.choosable_factions()[selection_];
+	std::string faction = side["faction"];
 
-		const std::string recruits = side["recruit"];
-		const std::vector<std::string> recruit_list = utils::split(recruits);
-		std::ostringstream recruit_string;
+	const std::string recruits = side["recruit"];
+	const std::vector<std::string> recruit_list = utils::split(recruits);
+	std::ostringstream recruit_string;
 
-		if(!faction.empty() && faction[0] == font::IMAGE) {
-			std::string::size_type p = faction.find_first_of(COLUMN_SEPARATOR);
-			if(p != std::string::npos && p < faction.size())
-				faction = faction.substr(p+1);
-		}
-
-		std::string image;
-
-		const unit_type *ut = unit_types.find(current_leader_);
-
-		if (ut) {
-			const unit_type &utg = ut->get_gender_unit_type(current_gender_);
-
-			image = utg.image() + get_RC_suffix(utg.flag_rgb(), color_);
-		}
-
-		for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
-				itor != recruit_list.end(); ++itor) {
-			const unit_type *rt = unit_types.find(*itor);
-			if (!rt) continue;
-
-			if(itor != recruit_list.begin())
-				recruit_string << ", ";
-			recruit_string << rt->type_name();
-		}
-
-		SDL_Rect image_rect = {area.x,area.y,0,0};
-
-		surface unit_image(image::get_image(image));
-
-		if(!unit_image.null()) {
-			image_rect.w = unit_image->w;
-			image_rect.h = unit_image->h;
-			sdl_blit(unit_image,NULL,screen,&image_rect);
-		}
-
-		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOR,faction,area.x + 110, area.y + 60);
-		const SDL_Rect leader_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOR,
-				_("Leader: "),area.x, area.y + 110);
-		const SDL_Rect gender_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOR,
-				_("Gender: "),area.x, leader_rect.y + 30 + (leader_rect.h - leader_combo_.height()) / 2);
-		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOR,
-				_("Recruits: ") + recruit_string.str(),area.x, area.y + 132 + 30 + (leader_rect.h - leader_combo_.height()) / 2,
-				area.w);
-		leader_combo_.set_location(leader_rect.x + leader_rect.w + 16, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
-		gender_combo_.set_location(leader_rect.x + leader_rect.w + 16, gender_rect.y + (gender_rect.h - gender_combo_.height()) / 2);
+	if (!faction.empty() && faction[0] == font::IMAGE) {
+		std::string::size_type p = faction.find_first_of(COLUMN_SEPARATOR);
+		if (p != std::string::npos && p < faction.size())
+			faction = faction.substr(p+1);
 	}
+
+	std::string image;
+
+	const unit_type *ut = unit_types.find(flg_.current_leader());
+
+	if (ut) {
+		const unit_type &utg = ut->get_gender_unit_type(flg_.current_gender());
+
+		image = utg.image() + get_RC_suffix(utg.flag_rgb(), color_);
+	}
+
+	for(std::vector<std::string>::const_iterator itor = recruit_list.begin();
+		itor != recruit_list.end(); ++itor) {
+
+		const unit_type *rt = unit_types.find(*itor);
+		if (!rt) continue;
+
+		if (itor != recruit_list.begin())
+			recruit_string << ", ";
+		recruit_string << rt->type_name();
+	}
+
+	SDL_Rect image_rect = {area.x,area.y,0,0};
+
+	surface unit_image(image::get_image(image));
+
+	if (!unit_image.null()) {
+		image_rect.w = unit_image->w;
+		image_rect.h = unit_image->h;
+		sdl_blit(unit_image, NULL, screen, &image_rect);
+	}
+
+	font::draw_text(&video(), area, font::SIZE_PLUS, font::NORMAL_COLOR,
+		faction, area.x + 110, area.y + 60);
+	const SDL_Rect leader_rect = font::draw_text(&video(), area,
+		font::SIZE_SMALL, font::NORMAL_COLOR, _("Leader: "), area.x,
+		area.y + 110);
+	const SDL_Rect gender_rect = font::draw_text(&video(), area,
+		font::SIZE_SMALL, font::NORMAL_COLOR, _("Gender: "), area.x,
+		leader_rect.y + 30 + (leader_rect.h - combo_leader_.height()) / 2);
+	font::draw_wrapped_text(&video(), area, font::SIZE_SMALL,
+		font::NORMAL_COLOR, _("Recruits: ") + recruit_string.str(), area.x,
+		area.y + 132 + 30 + (leader_rect.h - combo_leader_.height()) / 2,
+		area.w);
+	combo_leader_.set_location(leader_rect.x + leader_rect.w + 16,
+		leader_rect.y + (leader_rect.h - combo_leader_.height()) / 2);
+	combo_gender_.set_location(leader_rect.x + leader_rect.w + 16,
+		gender_rect.y + (gender_rect.h - combo_gender_.height()) / 2);
 }
 
 bool wait::leader_preview_pane::show_above() const
@@ -194,29 +163,18 @@ void wait::leader_preview_pane::set_selection(int selection)
 {
 	selection_ = selection;
 
-	if ((size_t)selection < choosable_factions_.size()) {
-		current_faction_ = choosable_factions_[selection];
+	flg_.set_current_faction(selection);
 
-		init_leaders_and_genders();
+	flg_.reset_leader_combo(combo_leader_);
+	flg_.reset_gender_combo(combo_gender_);
 
-		set_dirty();
-	}
-}
-
-std::string wait::leader_preview_pane::get_selected_leader()
-{
-	return current_leader_;
-}
-
-std::string wait::leader_preview_pane::get_selected_gender()
-{
-	return current_gender_;
+	set_dirty();
 }
 
 handler_vector wait::leader_preview_pane::handler_members() {
 	handler_vector h;
-	h.push_back(&leader_combo_);
-	h.push_back(&gender_combo_);
+	h.push_back(&combo_leader_);
+	h.push_back(&combo_gender_);
 	return h;
 }
 
@@ -318,9 +276,9 @@ void wait::join_game(bool observe)
 			if (!color_str.empty())
 				color = game_config::color_info(color_str).index() - 1;
 
-			std::vector<const config*> choosable_factions;
+			std::vector<const config*> era_factions;
 			BOOST_FOREACH(const config &side, possible_sides) {
-				choosable_factions.push_back(&side);
+				era_factions.push_back(&side);
 			}
 
 			const bool map_settings =
@@ -328,14 +286,11 @@ void wait::join_game(bool observe)
 			const bool saved_game =
 				level_.child("multiplayer")["savegame"].to_bool();
 
-			std::vector<const config*> available_factions =
-				init_available_factions(choosable_factions, *side_choice,
-				map_settings, first_scenario_);
-			choosable_factions = init_choosable_factions(available_factions,
-				*side_choice, map_settings, first_scenario_);
+			flg_manager flg(era_factions, *side_choice, map_settings,
+				saved_game, first_scenario_, color);
 
 			std::vector<std::string> choices;
-			BOOST_FOREACH(const config *s, choosable_factions)
+			BOOST_FOREACH(const config *s, flg.choosable_factions())
 			{
 				const config &side = *s;
 				const std::string &name = side["name"];
@@ -354,9 +309,7 @@ void wait::join_game(bool observe)
 			}
 
 			std::vector<gui::preview_pane* > preview_panes;
-			leader_preview_pane leader_selector(disp(), available_factions,
-				choosable_factions, color, map_settings, saved_game,
-				first_scenario_, *side_choice);
+			leader_preview_pane leader_selector(disp(), flg, color);
 			preview_panes.push_back(&leader_selector);
 
 			const int faction_choice = gui::show_dialog(disp(), NULL,
@@ -367,13 +320,14 @@ void wait::join_game(bool observe)
 				set_result(QUIT);
 				return;
 			}
-			leader_choice = leader_selector.get_selected_leader();
-			gender_choice = leader_selector.get_selected_gender();
+			leader_choice = flg.current_leader();
+			gender_choice = flg.current_gender();
 
 			config faction;
 			config& change = faction.add_child("change_faction");
 			change["name"] = preferences::login();
-			change["faction"] = (*choosable_factions[faction_choice])["id"];
+			change["faction"] =
+				(*flg.choosable_factions()[faction_choice])["id"];
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
 			network::send_data(faction, 0);
