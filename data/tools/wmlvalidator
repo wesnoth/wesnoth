@@ -17,7 +17,7 @@ def print_indent(string, depth, char=' '):
 
 class Validator:
     """
-    The class that takes a wmlgrammer object to validate wml trees with
+    The class that takes a wmlgrammar object to validate wml trees with
     """
     def __init__(self, schema, verbosity=0):
         self.schema = wmlgrammar.Grammar(schema)

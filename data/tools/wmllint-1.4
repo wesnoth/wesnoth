@@ -46,7 +46,7 @@
 #
 # You can also prevent description insertions with "wmllint: no-icon".
 #
-# You can force otherwise undeclared characters to be recogized with
+# You can force otherwise undeclared characters to be recognized with
 # a magic comment containing the string "wmllint: recognize".
 # The rest of the line is stripped and treated as the name of a character
 # who should be recognized in descriptions.  This will be useful,
@@ -307,7 +307,7 @@ filemoves = {
     "trunk" : (),
 }
 
-# Turn all the filemove string substition pairs into nearly equivalent
+# Turn all the filemove string substitution pairs into nearly equivalent
 # regexp-substitution pairs, forbidding the match from being preceded
 # by a dash.  This prevents, e.g., "miss.ogg" false-matching on "big-miss.ogg".
 for (key, value) in filemoves.items():
@@ -602,7 +602,7 @@ def parse_attribute(str):
     # value, trailing whitespace and comment.
     return (leader.strip(), leader+"=", string_strip(value), comment)
 
-# This needs to match the list of usagge types in ai_python.cpp
+# This needs to match the list of usage types in ai_python.cpp
 usage_types = ("scout", "fighter", "mixed fighter", "archer", "healer")
 
 # These are accumulated by sanity_check() and examined by sanity_postcheck() 
@@ -621,7 +621,7 @@ def sanity_check(filename, lines):
     modified = False
     unit_id = ""
     # Sanity-check abilities and traits against notes macros.
-    # Note: This check is disabled on units deived via [base_unit].
+    # Note: This check is disabled on units derived via [base_unit].
     # Also, build dictionaries of unit movement types and races
     in_unit = False
     in_attack_filter = False
@@ -731,7 +731,7 @@ def sanity_check(filename, lines):
             except TypeError:
                 pass
     # Sanity-check recruit and recruitment_pattern.
-    # This code has a limitation; if there arre multiple instances of
+    # This code has a limitation; if there are multiple instances of
     # recruit and recruitment_pattern (as can happen if these lists
     # vary by EASY/NORMAL/HARD level) this code will only record the
     # last of each for later consistency checking.
