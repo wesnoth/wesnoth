@@ -49,6 +49,7 @@ terrain_filter::terrain_filter():
 	flat_()
 {
 	assert(false);
+    build_config_cache();
 }
 #pragma warning(pop)
 #endif
@@ -62,6 +63,7 @@ terrain_filter::terrain_filter(const vconfig& cfg, const unit_map& units,
 	max_loop_(max_loop),
 	flat_(flat_tod)
 {
+    build_config_cache();
 }
 
 terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& original) :
@@ -71,6 +73,7 @@ terrain_filter::terrain_filter(const vconfig& cfg, const terrain_filter& origina
 	max_loop_(original.max_loop_),
 	flat_(original.flat_)
 {
+    build_config_cache();
 }
 
 terrain_filter::terrain_filter(const terrain_filter& other) :
@@ -82,6 +85,7 @@ terrain_filter::terrain_filter(const terrain_filter& other) :
 	max_loop_(other.max_loop_),
 	flat_(other.flat_)
 {
+    build_config_cache();
 }
 
 terrain_filter& terrain_filter::operator=(const terrain_filter& other)
@@ -104,7 +108,7 @@ namespace {
 
 bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
 {
-	if(cfg_.has_attribute("terrain")) {
+	if(has_attribute_terrain) {
 		if(cache_.parsed_terrain == NULL) {
 			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
 		}
@@ -143,7 +147,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//Allow filtering on unit
-	if(cfg_.has_child("filter")) {
+	if(has_child_filter) {
 		const vconfig& unit_filter = cfg_.child("filter");
 		const unit_map::const_iterator u = units_.find(loc);
 		if (u == units_.end() || !u->matches_filter(unit_filter, loc, flat_))
@@ -151,7 +155,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	// Allow filtering on visibility to a side
-	if (cfg_.has_child("filter_vision")) {
+	if (has_child_filter_vision) {
 		const vconfig::child_list& vis_filt = cfg_.get_children("filter_vision");
 		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
 		for (i = vis_filt.begin(); i != i_end; ++i) {
@@ -172,7 +176,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	}
 
 	//Allow filtering on adjacent locations
-	if(cfg_.has_child("filter_adjacent_location")) {
+	if(has_child_adjacent_location) {
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		const vconfig::child_list& adj_cfgs = cfg_.get_children("filter_adjacent_location");
@@ -227,47 +231,49 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		}
 	}
 
-	const t_string& t_tod_type = cfg_["time_of_day"];
-	const t_string& t_tod_id = cfg_["time_of_day_id"];
-	const std::string& tod_type = t_tod_type;
-	const std::string& tod_id = t_tod_id;
-	static config const dummy_cfg;
-	time_of_day tod(dummy_cfg);
+    const t_string& t_tod_type = cfg_["time_of_day"];
+    const t_string& t_tod_id = cfg_["time_of_day_id"];
+    const std::string& tod_type = t_tod_type;
+    const std::string& tod_id = t_tod_id;
+    // only generate a tod from dummy_cfg if we will use it; creating them is expensive
 	if(!tod_type.empty() || !tod_id.empty()) {
+        static config const dummy_cfg;
+        time_of_day tod(dummy_cfg);
+
 		if(flat_) {
 			tod = resources::tod_manager->get_time_of_day(loc);
 		} else {
 			tod = resources::tod_manager->get_illuminated_time_of_day(loc);
 		}
-	}
-	if(!tod_type.empty()) {
-		const std::vector<std::string>& vals = utils::split(tod_type);
-		if(tod.lawful_bonus<0) {
-			if(std::find(vals.begin(),vals.end(),std::string("chaotic")) == vals.end()) {
-				return false;
-			}
-		} else if(tod.lawful_bonus>0) {
-			if(std::find(vals.begin(),vals.end(),std::string("lawful")) == vals.end()) {
-				return false;
-			}
-		} else if(std::find(vals.begin(),vals.end(),std::string("neutral")) == vals.end()) {
-			return false;
-		}
-	}
+        if(!tod_type.empty()) {
+            const std::vector<std::string>& vals = utils::split(tod_type);
+            if(tod.lawful_bonus<0) {
+                if(std::find(vals.begin(),vals.end(),std::string("chaotic")) == vals.end()) {
+                    return false;
+                }
+            } else if(tod.lawful_bonus>0) {
+                if(std::find(vals.begin(),vals.end(),std::string("lawful")) == vals.end()) {
+                    return false;
+                }
+            } else if(std::find(vals.begin(),vals.end(),std::string("neutral")) == vals.end()) {
+                return false;
+            }
+        }
 
-	if(!tod_id.empty()) {
-		if(tod_id != tod.id) {
-			if(std::find(tod_id.begin(),tod_id.end(),',') != tod_id.end() &&
-				std::search(tod_id.begin(),tod_id.end(),
-				tod.id.begin(),tod.id.end()) != tod_id.end()) {
-				const std::vector<std::string>& vals = utils::split(tod_id);
-				if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
-					return false;
-				}
-			} else {
-				return false;
-			}
-		}
+        if(!tod_id.empty()) {
+            if(tod_id != tod.id) {
+                if(std::find(tod_id.begin(),tod_id.end(),',') != tod_id.end() &&
+                    std::search(tod_id.begin(),tod_id.end(),
+                    tod.id.begin(),tod.id.end()) != tod_id.end()) {
+                    const std::vector<std::string>& vals = utils::split(tod_id);
+                    if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
+                        return false;
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
 	}
 
 	//allow filtering on owner (for villages)
@@ -532,6 +538,14 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 config terrain_filter::to_config() const
 {
 	return cfg_.get_config();
+}
+
+void terrain_filter::build_config_cache() {
+    has_attribute_terrain = cfg_.has_attribute("terrain");
+    has_child_filter = cfg_.has_child("filter");
+    has_child_filter_vision = cfg_.has_child("filter_vision");
+    has_child_ilter_radius = cfg_.has_child("radius");
+    has_child_adjacent_location = cfg_.has_child("adjacent_location");
 }
 
 terrain_filter::terrain_filter_cache::~terrain_filter_cache() {
