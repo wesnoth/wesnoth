@@ -90,7 +90,7 @@ namespace game_events
 	};
 
 	/// Create an event handler.
-	void add_event_handler(const config & event);
+	void add_event_handler(const config & handler, bool is_menu_item=false);
 	/// Add a pending menu item command change.
 	void add_wmi_change(const std::string & id, const config & new_command);
 	/// Handles all the different types of actions that can be triggered by an event.

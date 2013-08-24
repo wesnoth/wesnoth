@@ -75,7 +75,7 @@ namespace { // Types
 		{}
 
 		/// Adds an event handler.
-		void add_event_handler(event_handler const & new_handler);
+		void add_event_handler(const config & cfg, bool is_menu_item=false);
 		/// Removes an event handler, identified by its ID.
 		void remove_event_handler(std::string const & id);
 		/// Starts buffering.
@@ -123,16 +123,15 @@ namespace { // Types
 	 * ID already exists.  This method respects this class's buffering
 	 * functionality.
 	 */
-	void t_event_handlers::add_event_handler(event_handler const & new_handler)
+	void t_event_handlers::add_event_handler(const config & cfg, bool is_menu_item)
 	{
 		if(buffering_) {
-			DBG_EH << "buffering event handler for name=" << new_handler.get_config()["name"] <<
-			" with id " << new_handler.get_config()["id"] << "\n";
-			insert_buffer_.push_back(new_handler);
+			DBG_EH << "buffering event handler for name=" << cfg["name"] <<
+			" with id " << cfg["id"] << "\n";
+			insert_buffer_.push_back(event_handler(cfg, is_menu_item));
 			log_handlers();
 		}
 		else {
-			const config & cfg = new_handler.get_config();
 			std::string id = cfg["id"];
 			if(!id.empty()) {
 				BOOST_FOREACH( event_handler const & eh, active_ ) {
@@ -146,7 +145,7 @@ namespace { // Types
 			}
 			DBG_EH << "inserting event handler for name=" << cfg["name"] <<
 				" with id=" << id << "\n";
-			active_.push_back(new_handler);
+			active_.push_back(event_handler(cfg, is_menu_item));
 			log_handlers();
 		}
 	}
@@ -213,7 +212,7 @@ namespace { // Types
 
 		// Commit any spawned events-within-events
 		BOOST_FOREACH( event_handler const & i, insert_buffer_ ){
-			add_event_handler(i); }
+			add_event_handler(i.get_config(), i.is_menu_item()); }
 		insert_buffer_.clear();
 
 		log_handlers();
@@ -239,9 +238,9 @@ namespace { // Variables
 
 
 /** Create an event handler. */
-void add_event_handler(const config & handler)
+void add_event_handler(const config & handler, bool is_menu_item)
 {
-	event_handlers.add_event_handler(event_handler(handler));
+	event_handlers.add_event_handler(handler, is_menu_item);
 }
 
 /** Add a pending menu item command change. */
@@ -280,7 +279,7 @@ void commit_wmi_commands()
 			}
 		} else if(!is_empty_command) {
 			LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
-			event_handlers.add_event_handler(event_handler(mref->command, true));
+			add_event_handler(mref->command, true);
 		}
 
 		delete wcc.second;
@@ -364,7 +363,7 @@ manager::manager(const config& cfg)
 	typedef std::pair<std::string, wml_menu_item *> item;
 	BOOST_FOREACH(const item &itor, resources::gamedata->get_wml_menu_items().get_menu_items()) {
 		if (!itor.second->command.empty()) {
-			event_handlers.add_event_handler(event_handler(itor.second->command, true));
+			add_event_handler(itor.second->command, true);
 		}
 		++wmi_count;
 	}
