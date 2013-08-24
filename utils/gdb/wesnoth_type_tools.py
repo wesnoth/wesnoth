@@ -18,7 +18,7 @@ def strip_all_type(val):
     return type
 
 def dereference_if_possible(val):
-    """ Derefence val if possible"""
+    """ Dereference val if possible"""
 
     # Get the type.
     type = val.type.unqualified()

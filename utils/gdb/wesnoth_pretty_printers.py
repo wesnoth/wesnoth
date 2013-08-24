@@ -12,7 +12,7 @@ from wesnoth_type_tools import strip_all_type, dereference_if_possible
 
 
 class RecursionManager(object):
-    """Keeps track of the levels of recrusion and whether expansion should happen or not """
+    """Keeps track of the levels of recursion and whether expansion should happen or not """
     default = 2
     curr = 0
 
