@@ -919,6 +919,15 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 	} catch(const io_exception& e) {
 		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"\n";
 		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
+	} catch(const invalid_pbl_exception& e) {
+		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << "\n";
+
+		utils::string_map symbols;
+		symbols["path"] = e.path;
+		symbols["msg"] = e.message;
+
+		gui2::show_error_message(disp.video(),
+			vgettext("A local file with add-on publishing information could not be read.\n\nFile: $path\nError message: $msg", symbols));
 	} catch(twml_exception& e) {
 		e.show(disp);
 	} catch(const addons_client::user_exit&) {

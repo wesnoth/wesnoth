@@ -192,7 +192,7 @@ class Addon(object):
                 # Fast forward
                 pass
             elif status == "*":
-                # Freshly inited repository
+                # Freshly initiated repository
                 pass
             elif status == "=":
                 # Up to date?

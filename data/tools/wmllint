@@ -9,9 +9,8 @@
 # markup to newer ones should live here.  This includes resource path changes
 # and renames, also map format conversions.
 #
-# Note: Lift logic for pre-1.4 versions has been removed; if you need
-# it, check out a copy of wmllint from the 1.4 stable branch and use
-# that to lift before running this one.  I did this for a policy
+# Note: Lift logic for pre-1.4 versions has been removed; if you need it,
+# use wmllint-1.4 to lift before running this one.  I did this for a policy
 # reason; I wanted to kill off the --oldversion switch.  It will *not*
 # be restored; in future, changes to WML syntax *must* be forward
 # compatible in such a way that tags from old versions can be
@@ -68,6 +67,30 @@
 # characters present who were not explicitly recalled.  It may
 # also be useful if you have wrapped unit-creation or recall markup in macros
 # and wmllint cannot recognize it.
+#
+# For macros used in multiple scenarios to field characters, you can tell
+# wmllint to recognize them with another magic comment:
+#     wmllint: who <macro> is <character(s)>
+# <Macro> should be a text string sufficient to distinguish the macro from
+# any other; <character(s)> would be the ids of the recalled (or created)
+# characters, comma-separated if there were more than one.  (Enclosing <macro>
+# in quotes is possible, if a space is needed at the end; for example, if a
+# campaign had a "{GARARD_I $x $y}" macro and also a "GARARD_II" macro,
+# "who '{GARARD_I '" would distinguish I from II.)
+#
+# If more characters attach to a macro in later scenarios, they can be appended
+# with additional "who" magic comments (though this requires scenarios to
+# be numbered or otherwise sorted to work properly, as wmllint traverses files
+# in alphabetical order).  If there is a character that drops out, preceding that
+# person's entry with a double-minus will cause that character to be removed,
+# e.g., "-- Garak".
+#
+# At the end of the campaign, *make sure* you use:
+#     wmllint: unwho ALL
+# This will clear the list of "who" magic comments and tell wmllint to stop
+# checking for them in later files and directories.  If a specific macro is
+# not used in subsequent scenarios, put "unwho <macro>" in its last scenario,
+# where <macro> should be the string you originally used for "wmllint: who".
 #
 # Similarly, it is possible to explicitly declare a unit's usage class
 # with a magic comment that looks like this:
@@ -649,6 +672,9 @@ notepairs = [
     ("{WEAPON_SPECIAL_STUN}", "{SPECIAL_NOTES_STUN}"),
     ]
 
+# This dictionary will pair macros with the characters they recall or create,
+# but must be populated by the magic comment, "#wmllint: who ... is ...".
+whopairs = {}
 
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
@@ -904,8 +930,17 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     # Bad [recruit] attribute
     if parent in ("[allow_recruit]", "[disallow_recruit]") and key == "recruit":
         print errlead + "recruit= should be type="
+    # Check [binary_path] and [textdomain] paths
+    if parent == '[textdomain]' and key == 'path' and not '/translations' in value:
+        print errlead + 'no reference to "/translations" directory in textdomain path'
+    if parent == '[binary_path]' and key == 'path':
+        if '/external' in value or '/public' in value:
+            print errlead + '"/external" or "/public" image directories should no longer be used'
     # Accumulate data to check for missing next scenarios
-    if parent == '[scenario] or parent == None':
+    if parent == '[campaign]':
+        if key == "first_scenario" and value != "null":
+            nextrefs.append((filename, nav.lineno, value))
+    if parent == '[scenario]' or parent == None:
         if key == "next_scenario" and value != "null":
             nextrefs.append((filename, nav.lineno, value))
         if key == 'id':
@@ -1303,6 +1338,40 @@ def global_sanity_check(filename, lines):
             markcheck = False
         if "wmllint: markcheck on" in lines[i]:
             markcheck = True
+        if 'wmllint: who ' in lines[i]:
+            try:
+                fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
+                if len(fields) == 2:
+                    mac = string_strip(fields[0].strip())
+                    if whopairs.has_key(mac):
+                        whopairs[mac] = whopairs[mac] + ", " + fields[1].strip()
+                    else:
+                        whopairs.update({mac: fields[1].strip()})
+            except IndexError:
+                pass
+        elif 'wmllint: unwho ' in lines[i]:
+            unmac = lines[i].split("wmllint: unwho ", 1)[1].strip()
+            if string_strip(unmac).upper() == 'ALL':
+                whopairs.clear()
+            else:
+                try:
+                    del whopairs[string_strip(unmac)]
+                except KeyError:
+                    print >>sys.stderr, '%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
+                                         % (filename, i+1, unmac, str(whopairs.keys())[1:-1])
+        if lines[i].lstrip().startswith('{'):
+            # Recognize macro pairings from "wmllint: who" magic
+            # comments.
+            for mac in whopairs.keys():
+                if mac in lines[i]:
+                    for who in whopairs[mac].split(","):
+                        if who.strip().startswith("--"):
+                            try:
+                                present.remove(who.replace('--', '', 1).strip())
+                            except:
+                                ValueError
+                        else:
+                            present.append(who.strip())
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
@@ -2266,6 +2335,7 @@ def help():
         sys.stderr.write("""\
 Usage: wmllint [options] [dir]
     Convert Battle of Wesnoth WML from older versions to newer ones.
+    Also validates WML to check for errors.
     Takes any number of directories as arguments.  Each directory is converted.
     If no directories are specified, acts on the current directory.
     Options may be any of these:
@@ -2275,17 +2345,24 @@ Usage: wmllint [options] [dir]
                                -v -v     names each file before it's processed.
                                -v -v -v  shows verbose parse details.
     -c, --clean                Clean up -bak files.
-    -D, --diff                 Display diffs between converted and unconverted files.
+    -D, --diff                 Display diffs between converted and unconverted
+                               files.
     -r, --revert               Revert the conversion from the -bak files.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
+    -p, --progress             Names each file before processing (like -v -v).
     -f, --future               Enable experimental WML conversions.
+    -K, --known                Suppress check for unknown unit types, recruits,
+                               races, scenarios, etc.
     -S, --nospellcheck         Suppress spellchecking
-    -Z, --stringfreeze         Suppress warnings about newlines in messages
+    -Z, --stringfreeze         Suppress repair attempts of newlines in messages
+For more about wmllint, including how to prevent unwanted conversions and false
+positive warnings with magic comments, read the introduction in the wmllint
+file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.
 """)
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnprsvSZ", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnprsvKSZ", [
             "clean",
             "diffs",
             "dryrun",
@@ -2295,10 +2372,13 @@ if __name__ == '__main__':
             "revert",
             "stripcr",
             "verbose",
+            "known",
             "nospellcheck",
+            "stringfreeze",
             ])
     except getopt.GetoptError:
         help()
+        sys.stderr.write('\nAn option you have entered is invalid.  Review options and try again.')
         sys.exit(1)
     clean = False
     diffs = False
@@ -2310,6 +2390,7 @@ if __name__ == '__main__':
     verbose = 0
     dospellcheck = True
     progress = False
+    inconsistency = False
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -2335,6 +2416,8 @@ if __name__ == '__main__':
             verbose += 1
         elif switch in ('-S', '--nospellcheck'):
             dospellcheck = False
+        elif switch in ('-K', '--known'):
+            inconsistency = True
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
@@ -2560,7 +2643,8 @@ In your case, your system interprets your arguments as:
                         raise exc_type, exc_value, exc_traceback
         if not clean and not diffs and not revert:
             # Consistency-check everything we got from the file scans
-            consistency_check()
+            if not inconsistency:
+                consistency_check()
             # Attempt a spell-check
             if dospellcheck:
                 try:

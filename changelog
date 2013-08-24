@@ -1,4 +1,20 @@
-Version 1.11.5+dev:
+Version 1.11.6+dev:
+ * Add-ons client:
+   * Report errors caused by faulty local .pbl files properly instead of presenting
+     them as network errors.
+ * Language and i18n:
+   * Updated translations: German, Lithuanian
+ * Lua API:
+   * Added scroll_to_leader field (read/write) to wesnoth.sides table elements.
+ * WML engine:
+   * [store_side] now stores the scroll_to_leader attribute from sides.
+ * Miscellaneous and bug fixes:
+   * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
+     macros to account for ToD color shifts greater than -31, guaranteeing complete
+     darkness.
+   * Unit WML frames with image modifications now shown correctly for hits/death.
+
+Version 1.11.6:
  * Add-ons client:
    * The Description popup displays the selected add-on's dependencies now,
      using color-keyed statuses.
@@ -17,10 +33,14 @@ Version 1.11.5+dev:
  * Campaigns:
    * An Orcish Incursion:
      * New world map.
+   * Descent Into Darkness:
+     * New world map.
+   * Legend of Wesmere:
+     * convert to "wmllint: who" magic comments
    * The South Guard:
      * Fixed double "lich found" event in Choice in the Fog
  * Language and i18n:
-   * Updated translations: Galician, Japanese, Russian, Scottish Gaelic
+   * Updated translations: Galician, Japanese, Lithuanian, Russian, Scottish Gaelic
  * Lua API:
    * Added: function wesnoth.find_cost_map().
  * Units:
@@ -31,6 +51,7 @@ Version 1.11.5+dev:
    * If [recall] cannot find a unit to recall, the message is logged at the
      "info" severity level in the "wml" domain (instead of the "error" level in
      the "engine" domain). This means the message will be suppressed by default.
+   * Allowed [modify_side] to modify the scroll_to_leader key
  * Miscellaneous and bug fixes
    * Creating a unit via debug mode now clears fog/shroud around the unit.
    * [move_unit_fake] now accepts an optional force_scroll= attribute (def. to
@@ -39,6 +60,10 @@ Version 1.11.5+dev:
    * [move_unit] accepts an optional force_scroll= attribute like
      [move_unit_fake] above, defaults to using the [move_unit_fake] default.
    * Added: Feature in pathfind.xpp to build a cost map.
+   * wmllint: turn on globbing on Windows, create "who" and "unwho" magic
+     comments, bugfixes
+   * wmllint-1.4: add an enhanced and bugfixed version of wmllint 1.4 for
+     porting old add-ons
 
 Version 1.11.5:
  * Add-ons client:

@@ -36,7 +36,8 @@ namespace font {
  * Escapes the markup characters in a text.
  *
  * The markups escaped are the ones used in the pango markup. The special
- * characters are @code <>'"&@endcode. They escaping is the same as for HTML.
+ * characters are: @verbatim <>'"& @endverbatim
+ * The escaping is the same as for HTML.
  *
  * @param text                    The text to escape.
  *

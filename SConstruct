@@ -82,7 +82,6 @@ opts.AddVariables(
     ('version_suffix', 'suffix that will be added to default values of prefsdir, program_suffix and datadirname', ""),
     BoolVariable('raw_sockets', 'Set to use raw receiving sockets in the multiplayer network layer rather than the SDL_net facilities', False),
     BoolVariable('forum_user_handler', 'Enable forum user handler in wesnothd', False),
-    BoolVariable('use_network_ana', 'Use the new network api', False),
     ('server_gid', 'group id of the user who runs wesnothd', ""),
     ('server_uid', 'user id of the user who runs wesnothd', ""),
     BoolVariable('strict', 'Set to strict compilation', False),
@@ -284,18 +283,15 @@ if env["prereqs"]:
     conf.CheckLib("m")
     conf.CheckFunc("round")
 
-    def CheckANA(conf, do_check):
-        if not do_check:
-            return True
+    def CheckAsio(conf):
         if env["PLATFORM"] == 'win32':
             conf.env.Append(LIBS = ["libws2_32"])
-        return conf.CheckBoost("system") and \
-            conf.CheckBoost("thread")
-
-    def CheckAsio(conf):
-        return conf.CheckLib("pthread") and \
-        conf.CheckBoost("system") and \
-        conf.CheckBoost("asio", header_only = True)
+            have_libpthread = True
+        else:
+            have_libpthread = conf.CheckLib("pthread")
+        return have_libpthread and \
+            conf.CheckBoost("system") and \
+            conf.CheckBoost("asio", header_only = True)
 
     if env['host'] in ['x86_64-nacl', 'i686-nacl']:
         # libppapi_cpp has a reverse dependency on the following function
@@ -326,8 +322,7 @@ if env["prereqs"]:
         conf.CheckBoostIostreamsBZip2() and \
         conf.CheckBoost("smart_ptr", header_only = True) and \
         conf.CheckSDL(require_version = '1.2.7') and \
-        conf.CheckSDL('SDL_net') and \
-        CheckANA(conf, env["use_network_ana"]) or Warning("Base prerequisites are not met.")
+        conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
 
     env = conf.Finish()
     client_env = env.Clone()

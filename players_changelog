@@ -2,7 +2,16 @@ This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
 
-Version 1.11.5+dev:
+Version 1.11.6+dev:
+ * Add-ons client:
+   * Report errors caused by faulty local .pbl files properly instead of presenting
+     them as network errors.
+
+ * Language and i18n:
+   * Updated translations: German, Lithuanian.
+
+
+Version 1.11.6:
  * Add-ons client:
    * The Description popup displays the selected add-on's dependencies now,
      using color-keyed statuses.
@@ -10,17 +19,19 @@ Version 1.11.5+dev:
  * Campaigns:
    * An Orcish Incursion:
      * New world map.
+   * Descent Into Darkness:
+     * New world map.
    * The South Guard:
-     * Fixed double "lich found" event in Choice in the Fog
+     * Fixed double "lich found" event in Choice in the Fog.
 
  * Language and i18n:
-   * Updated translations: Galician, Japanese, Russian, Scottish Gaelic.
+   * Updated translations: Galician, Japanese, Lithuanian, Russian, Scottish Gaelic.
 
  * Units:
    * Added description for the Wose race.
 
  * User interface:
-   * Unit ellipses are now automatically updated if a unit gains or loses its ZoC
+   * Unit ellipses are now automatically updated if a unit gains or loses its ZoC.
 
 
 Version 1.11.5:

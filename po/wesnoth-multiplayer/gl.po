@@ -14,8 +14,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
-"PO-Revision-Date: 2013-08-11 22:18+0200\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
+"PO-Revision-Date: 2013-08-18 12:25+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -503,20 +503,20 @@ msgstr ""
 "Oxsrrsk foi un poderoso oráculo saurio que, nunha incursión contra o clan "
 "rival Xraxss, adquiriu —dos arquivos do defunto oráculo Hesx-Rzzak— un "
 "fascinante manuscrito. Levaba por título «Neis o da mirada de granito», e "
-"falaba dunha criatura coñecida coma “Chak'kso Ney’yks”, un nome que na "
-"antiga lingua sauria significaba «O fillo maior de Chak'kso». Criase que "
+"falaba dunha criatura coñecida coma «Chak'kso Ney’yks», un nome que na "
+"antiga lingua sauria significaba «O fillo maior de Chak'kso». Críase que "
 "Chak'kso fora un poderoso semideus das profundidades, descrito coma «un gran "
 "demo da terra» nas historias dos elfos. Segundo estas historias, Chak'kso "
 "intentara unha vez transformar toda a vida do planeta en pedra, tal era o "
 "odio que sentía polas criaturas corpóreas. Ao final foi derrotado e atado "
 "mediante unha poderosa maxia, pero nos séculos posteriores ao seu desterro —"
-"a un lugar das profundidades—, un novo tipo de criatura comezou a aparecer "
+"a un lugar das profundidades— un novo tipo de criatura comezou a aparecer "
 "nas historias, unha criatura coa capacidade de converter calquera ser "
-"corpóreo en pedra. Houbo un período no que estes basiliscos —como se "
-"comezaron a coñecer— causaron estragos no mundo dos vivos, convertendo a "
+"corpóreo en pedra. Houbo un período no que estes «basiliscos» —como se "
+"comezaron a coñecer— causaron estragos no mundo dos vivos, convertendo "
 "milleiros de criaturas en pedra. Un a un, e non sen dificultade, os "
 "basiliscos foron derrotados. Todos menos un: o basilisco coñecido coma «O "
-"Ney'yks» —«O fillo maior», na lingua moderna—. Convencido de que podería "
+"Ney'yks», ou «O fillo maior» na lingua moderna. Convencido de que podería "
 "atopar a esta criatura e poñela ao seu servizo, Oxsrrsk partiu na súa busca…"
 
 # Adaptación, non tradución.
@@ -619,8 +619,8 @@ msgstr ""
 "Durante anos e anos habitou as profundidades destas augas, alimentándose dos "
 "moitos peixes, ras e sirénidos que entraban nos seus dominios. Era a súa "
 "lagoa, de ninguén máis, e o seu tamaño non era un obstáculo. Pero un día "
-"chegou o basilisco, e mirou á serpe aos ollos. E a serpe non morreu, pero xa "
-"non volveu vivir. Así foi como chegou o novo señor da lagoa."
+"chegou o basilisco, e cruzou a mirada coa serpe. E a serpe non morreu, pero "
+"xa non volveu vivir. Así foi como chegou o novo señor da lagoa."
 
 #. [unit]
 #: data/multiplayer/scenarios/2p_Caves_of_the_Basilisk.cfg:159
@@ -964,8 +964,8 @@ msgstr ""
 "Os embates de atacantes xéranse ao chou e serán diferentes cada vez que se "
 "xogue o escenario.\n"
 "\n"
-"Aparecen desde os extremos norte, sur e oeste do mapa —pensa que é máis "
-"probábel que aparezan desde o extremo oeste—. Os embates de atacantes "
+"Aparecen desde os extremos norte, sur e oeste do mapa; pensa que é máis "
+"probábel que aparezan desde o extremo oeste. Os embates de atacantes "
 "aparecerán a intervalos máis ou menos regulares.\n"
 "\n"
 "O clima tamén cambiará ao chou, afectando ao terreo.\n"
@@ -1051,12 +1051,12 @@ msgid ""
 "creators."
 msgstr ""
 "Estas peculiares covas foron outrora coñecidas coma «A cámara dos demos», "
-"que foi a cidadela subterránea dos demos «carúns». Os carúns eran unha "
-"clase de demos malvados e astutos que se alimentaban de persoas, e que "
-"aterraron ás xentes das terras orientais durante case catro séculos, antes "
-"de desaparecer completamente de Irïdia. Desde entón, moitas foron as "
-"faccións que competiron polo dominio da guarida dos demos, coa esperanza de "
-"descubrir a estraña e misteriosa maxia dos seus creadores."
+"que foi a cidadela subterránea dos demos «carúns». Os carúns eran unha clase "
+"de demos malvados e astutos que se alimentaban de persoas, e que aterraron "
+"ás xentes das terras orientais durante case catro séculos, antes de "
+"desaparecer completamente de Irïdia. Desde entón, moitas foron as faccións "
+"que competiron polo dominio da guarida dos demos, coa esperanza de descubrir "
+"a estraña e misteriosa maxia dos seus creadores."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -2109,11 +2109,14 @@ msgstr ""
 #. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:11
 msgid "Random map"
 msgstr "Mapa ao chou"
 
 #. [multiplayer]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2175,6 +2178,12 @@ msgstr ""
 "Un mapa aleatorio situado entre a primavera e o inverno, principalmente con "
 "terreos nevados. Nótese que os mapas ao chou a miúdo están desequilibrados, "
 "pero se hai tempo, pode volverse xerar ata obter un aceptábel ou bo."
+
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
+#| msgid "Random map"
+msgid "Random map by YAMG"
+msgstr "Mapa ao chou de YAMG"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

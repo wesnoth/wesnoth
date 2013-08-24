@@ -192,13 +192,13 @@ overwrite()
     if delete:
         print "# Image deletions:"
         for (name, defloc) in srcrefs.fileref.items():
-                for namespace in map(directory_namespace, srclist):
-                    if namespace_member(name, namespace) and cref.refcount(name) == 0:
-                        if revert:
-                            print vcundelete(name)
-                        else:
-                            print vcdelete(name)
-                        break
+            for namespace in map(directory_namespace, srclist):
+                if namespace_member(name, namespace) and cref.refcount(name) == 0:
+                    if revert:
+                        print vcundelete(name)
+                    else:
+                        print vcdelete(name)
+                    break
         print ""
         print "# .cfg deletions"
         for filename in srclist:

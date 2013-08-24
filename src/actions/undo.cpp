@@ -222,7 +222,7 @@ undo_list::update_shroud_action::~update_shroud_action()
  * Creates an undo_action based on a config.
  * @param  tag  is the tag of this config, which is used for error reporting.
  *              It should be enclosed in square brackets.
- * @return a pointer that must be deleted, or NULL if the @cfg could not be parsed.
+ * @return a pointer that must be deleted, or NULL if the @a cfg could not be parsed.
  */
 undo_list::undo_action *
 undo_list::undo_action::create(const config & cfg, const std::string & tag)

@@ -1296,6 +1296,12 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		if ( !setc.empty() ) {
 			teams[team_index].set_no_turn_confirmation(setc.to_bool());
 		}
+		
+		// Change leader scrolling options
+		config::attribute_value stl = cfg["scroll_to_leader"];
+		if ( !stl.empty()) {
+			teams[team_index].set_scroll_to_leader(stl.to_bool(true));
+		}
 	}
 
 	// Flag an update of the screen, if needed.

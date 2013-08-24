@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2013 wesnothd "Daemon de rede para partidas con varios xogadores de A batalla polo Noroeste"
+.TH WESNOTHD 6 2013 wesnothd "Servizo de rede para partidas con varios xogadores de A batalla polo Noroeste"
 .
 .SH NOME
 .
-wesnothd — Daemon de rede para partidas con varios xogadores de A batalla
+wesnothd — Servizo de rede para partidas con varios xogadores de A batalla
 polo \fBNoroeste\fP.
 .
 .SH SINOPSE
@@ -47,7 +47,7 @@ a sintaxe máis adiante na sección de \fBCONFIGURACIÓN DO SERVIDOR\fP. Pódese
 recargar a configuración enviando SIGHUP ao proceso do servidor.
 .TP 
 \fB\-d, \-\-daemon\fP
-Executa wesnothd coma un daemon.
+Executa wesnothd coma un servizo.
 .TP 
 \fB\-h, \-\-help\fP
 Indica as funcións das opcións de liña de ordes.
@@ -96,7 +96,7 @@ Activa o rexistro da depuración.
 \fBallow_remote_shutdown\fP
 Se se lle dá o valor \fBno\fP («non», valor predeterminado), as solicitudes de
 apagado e reinicio ignoraranse salvo que procedan do fifo.  Co valor \fByes\fP
-(«si») permitirase o apagado remoto por medio dunha “/query” realizada por
+(«si») permitirase o apagado remoto por medio dunha «/query» realizada por
 un administrador.
 .TP 
 \fBban_save_file\fP
@@ -120,7 +120,7 @@ valores predeterminados son:
 .TP 
 \fBfifo_path\fP
 A ruta ao fifo polo que se poden enviar ordes ao servidor —equivalente ao
-“/query …” desde o xogo—. Se non se especifica outra cousa, toma a ruta
+«/query …» desde o xogo—. Se non se especifica outra cousa, toma a ruta
 indicada como valor predeterminado durante a compilación (en principio
 \fB/var/run/socket/wesnothd/socket\fP).
 .TP 

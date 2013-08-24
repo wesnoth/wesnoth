@@ -37,7 +37,7 @@ import sys, gdb
 def help():
     print __doc__
 
-#Force a reload, which is handy if you are interactively editting
+#Force a reload, which is handy if you are interactively editing
 if 'register_wesnoth_pretty_printers' in sys.modules:
     reload(register_wesnoth_pretty_printers)
 else:

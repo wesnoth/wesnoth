@@ -73,7 +73,7 @@ if __name__ == "__main__":
     current_block = ""
 
     re_record_start = '^\s*'
-    # There must be whitespace between the field seperator (&).
+    # There must be whitespace between the field separator (&).
     # However if there is an empty field eg '...foo & & bar...'
     # The first field separator eats the whitespace before the second
     # which would \s+ cause to fail.
@@ -566,7 +566,7 @@ if __name__ == "__main__":
     ##### ##### ##### MACRO PROCESSING ##### ##### #####
 
     def instanciate_macro(macro):
-        """Replaces a macro text by the marco value."""
+        """Replaces a macro text by the macro value."""
 
         global macro_map
 

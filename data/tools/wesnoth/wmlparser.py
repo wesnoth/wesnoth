@@ -377,7 +377,7 @@ class Parser:
         # file.
         elif macro[0] == ".":
             dirpath = self.current_path + macro[1:]
-        # Otherwise, try to interprete the macro as a filename in the data dir.
+        # Otherwise, try to interpret the macro as a filename in the data dir.
         elif self.data_dir != None:
             dirpath = self.data_dir + "/" + macro
         else:

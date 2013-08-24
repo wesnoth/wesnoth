@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
 "PO-Revision-Date: 2009-02-23 22:19+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -1867,11 +1867,14 @@ msgstr ""
 #. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:11
 msgid "Random map"
 msgstr "Rastgele harita"
 
 #. [multiplayer]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -1933,6 +1936,13 @@ msgstr ""
 "Bahar ile kışın karşılaştığı zamanda, çoğunlukla karlı bölgeli bir rastgele "
 "harita. Bilginize: Rastgele haritalar genellikle dengeli değillerdir, eğer "
 "zamanınız varsa, tekrar tekrar deneyerek güzel bir tane yakalayabilirsiniz."
+
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
+#, fuzzy
+#| msgid "Random map"
+msgid "Random map by YAMG"
+msgstr "Rastgele harita"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

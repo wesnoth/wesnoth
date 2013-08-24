@@ -60,13 +60,10 @@ def parse_attribute(line):
     leader = line[:where]
     after = line[where+1:]
     after = after.lstrip()
-    if "#" in after:
-        where = after.find("#")
-        where -= 1
-        while after[where] in (" ", "\t"):
-            where -= 1
-        value = after[:where+1]
-        comment = after[where+1:]
+    if re.search("\s#", after):
+        where = len(re.split("\s+#", after)[0])
+        value = after[:where]
+        comment = after[where:]
     else:
         value = after.rstrip()
         comment = ""
@@ -718,7 +715,7 @@ class CrossRef:
 #
 # String translations from po files.  The advantage of this code is that it
 # does not require the gettext binary message catalogs to have been compiled.
-# The disavantage is that it eats lots of core!
+# The disavantadge is that it eats lots of core!
 #
 
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-03-09 08:51+0100\n"
+"POT-Creation-Date: 2013-08-17 11:31+0200\n"
 "PO-Revision-Date: 2009-10-09 19:50-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -2049,11 +2049,14 @@ msgstr ""
 #. [scenario]: id=multiplayer_Random_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:6
 #: data/multiplayer/scenarios/Random_Scenario.cfg:11
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:11
 msgid "Random map"
 msgstr "𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐"
 
 #. [multiplayer]: id=multiplayer_Random_Map
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_Scenario.cfg:7
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:7
 msgid ""
 "Randomly generated map. Note: random maps are often unbalanced, but if you "
 "have time, you can regenerate them until you get a good one."
@@ -2112,6 +2115,13 @@ msgstr ""
 "𐑩 𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐 𐑕𐑧𐑑 𐑦𐑯 𐑞 𐑚𐑮𐑱𐑒 𐑚𐑦𐑑𐑢𐑰𐑯 𐑕𐑐𐑮𐑦𐑙 𐑯 𐑢𐑦𐑯𐑑𐑼, 𐑥𐑱𐑯𐑤𐑦 𐑢𐑦𐑞 𐑕𐑯𐑴𐑰 𐑑𐑻𐑱𐑯𐑟. 𐑯𐑴𐑑: "
 "𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐𐑕 𐑸 𐑪𐑓𐑩𐑯 𐑩𐑯𐑚𐑨𐑤𐑩𐑯𐑕𐑑, 𐑚𐑳𐑑 𐑦𐑓 𐑿 𐑣𐑨𐑝 𐑑𐑲𐑥, 𐑿 𐑒𐑨𐑯 𐑮𐑰𐑡𐑧𐑯𐑻𐑱𐑑 𐑞𐑧𐑥 𐑳𐑯𐑑𐑦𐑤 𐑿 "
 "𐑜𐑧𐑑 𐑩 𐑜𐑫𐑛 𐑢𐑳𐑯."
+
+#. [multiplayer]: id=multiplayer_Random_YAMG_Map
+#: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
+#, fuzzy
+#| msgid "Random map"
+msgid "Random map by YAMG"
+msgstr "𐑮𐑨𐑯𐑛𐑩𐑥 𐑥𐑨𐑐"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

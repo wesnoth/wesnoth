@@ -33,8 +33,8 @@
     #define NIN_BALLOONUSERCLICK (WM_USER + 5)
 #endif
 // ShellAPI.h should be included after Windows.h only!
-#include <Windows.h>
-#include <ShellAPI.h>
+#include <windows.h>
+#include <shellapi.h>
 
 class windows_tray_notification {
 public:

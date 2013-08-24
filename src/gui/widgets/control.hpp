@@ -173,7 +173,7 @@ private:
 	 * loaded. The member definition_ contains the name of the definition and
 	 * function load the proper configuration.
 	 *
-	 * @depreciated @ref definition_load_configuration() is the replacement.
+	 * @deprecated @ref definition_load_configuration() is the replacement.
 	 */
 	void load_config();
 

@@ -34,7 +34,7 @@ def parse_terrain(data):
     editor_group=water
     [/terrain_type]
 
-    Ouput is a text in wiki format.
+    Output is a text in wiki format.
     """
 
     # Remove all comments.
@@ -57,7 +57,7 @@ def parse_terrain(data):
         # directly. (They're only there to make aliasing work.)
         if i[0].startswith(" "):
             continue
-        # Create a dictionnary of key and values
+        # Create a dictionary of key and values
         content = dict([v.strip().split("=") for v in i])
         # Hidden things shouldn't be displayed
         if 'hidden' in content:

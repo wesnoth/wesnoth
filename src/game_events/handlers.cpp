@@ -314,12 +314,9 @@ void remove_event_handler(const std::string & id)
 }
 
 
-bool manager::running_ = false;
-
 manager::manager(const config& cfg)
 	: variable_manager()
 {
-	assert(!running_);
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);
 	}
@@ -327,8 +324,10 @@ manager::manager(const config& cfg)
 		unit_wml_ids.insert(id);
 	}
 
+	// Guard against a memory leak (now) / memory corruption (when this is deleted).
+	// This is why creating multiple manager objects is prohibited.
+	assert(resources::lua_kernel == NULL);
 	resources::lua_kernel = new LuaKernel(cfg);
-	running_ = true;
 
 	wml_action::map::const_iterator action_end = wml_action::end();
 	wml_action::map::const_iterator action_cur = wml_action::begin();
@@ -357,8 +356,6 @@ manager::manager(const config& cfg)
 }
 
 manager::~manager() {
-	assert(running_);
-	running_ = false;
 	clear_events();
 	event_handlers.clear();
 	reports::reset_generators();
@@ -497,7 +494,6 @@ void add_events(const config::const_child_itors &cfgs, const std::string& type)
 
 void write_events(config& cfg)
 {
-	assert(manager::running());
 	BOOST_FOREACH(const event_handler &eh, event_handlers) {
 		if ( eh.disabled() || eh.is_menu_item() ) {
 			continue;
@@ -505,29 +501,13 @@ void write_events(config& cfg)
 		cfg.add_child("event", eh.get_config());
 	}
 
-	std::stringstream used;
-	std::set<std::string>::const_iterator u;
-	for(u = used_items.begin(); u != used_items.end(); ++u) {
-		if(u != used_items.begin())
-			used << ",";
-
-		used << *u;
-	}
-
-	cfg["used_items"] = used.str();
-	std::stringstream ids;
-	for(u = unit_wml_ids.begin(); u != unit_wml_ids.end(); ++u) {
-		if(u != unit_wml_ids.begin())
-			ids << ",";
-
-		ids << *u;
-	}
-
-	cfg["unit_wml_ids"] = ids.str();
+	cfg["used_items"] = utils::join(used_items);
+	cfg["unit_wml_ids"] = utils::join(unit_wml_ids);
 
 	if (resources::soundsources)
 		resources::soundsources->write_sourcespecs(cfg);
 
+	assert(resources::lua_kernel != NULL);
 	resources::lua_kernel->save_game(cfg);
 }
 

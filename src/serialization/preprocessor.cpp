@@ -439,7 +439,7 @@ class preprocessor_data: preprocessor
 	};
 
 	/**
-	 * Manages the lifetime of the @ref std::istream pointer we own.
+	 * Manages the lifetime of the @c std::istream pointer we own.
 	 *
 	 * Since @ref in_ uses the stream as well this object must be created
 	 * before @ref in_ and destroyed after @ref in_ is destroyed.
