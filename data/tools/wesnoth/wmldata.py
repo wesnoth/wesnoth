@@ -267,7 +267,7 @@ class DataSub(Data):
         bytes = ""
         for r in result:
             if r != None:
-                # For networking, we need actual bytesteam here, not unicode.
+                # For networking, we need actual bytestream here, not unicode.
                 if type(r) is unicode: r = r.encode("utf8")
                 bytes += str(r)
 

@@ -122,7 +122,7 @@ if __name__ == "__main__":
         init_script = os.path.join(build_system.get_dir(), "init-build-sys.sh")
 
         # Grab master build system's version
-        # Uglyness
+        # Ugliness
         out, err, res = build_system._execute(["git", "show", "--pretty=oneline", "--summary"])
         build_system_version = out.split()[0]
         if len(build_system_version) != 40:
@@ -136,7 +136,7 @@ if __name__ == "__main__":
                 logging.info("Build system for add-on {0} is up-to-date".format(addon_name))
                 return True
 
-        # Uglyness
+        # Ugliness
         out, err, res = addon_obj._execute([init_script, "--{0}".format(git_version), addon_name, "."], check_error=False)
         if len(err):
             logging.warn("init-build-sys.sh in add-on {0}:\n{1}".format(addon_name, err))
@@ -170,7 +170,7 @@ if __name__ == "__main__":
         if not os.path.exists(os.path.join(addon_obj.get_dir(), "Makefile")):
             logging.warn("Cannot pot-update: build system does not exist for add-on {0}.".format(addon_name))
             return False
-        # Uglyness, again
+        # Ugliness, again
         out, err, res = addon_obj._execute(["make"])
         if len(err):
             logging.warn("pot-update in addon {0}:\n{1}".format(addon_name, err))
@@ -225,7 +225,7 @@ if __name__ == "__main__":
         server              The url of the addon server eg
                             add-ons.wesnoth.org:15005.
         translatable_only   If True only returns translatable addons.
-        returns             A dictonary with the addon as key and the translatable
+        returns             A dictionary with the addon as key and the translatable
                             status as value.
         """
 
@@ -371,7 +371,7 @@ if __name__ == "__main__":
         help = "Server to connect to [localhost]")
 
     argumentparser.add_argument("-p", "--port",
-        help = "Port on the server to connect to. If omitted will try to selet a port based on --branch. ['']")
+        help = "Port on the server to connect to. If omitted will try to select a port based on --branch. ['']")
 
     argumentparser.add_argument("-t", "--temp-dir", help = "Directory to store the "
         + "tempory data, if omitted a tempdir is created and destroyed after "

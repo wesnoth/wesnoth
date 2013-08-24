@@ -96,12 +96,12 @@ class WmlIterator(object):
     empty and the filename is specified, lines will be read from the file.
 
     Note: if changes are made to lines while iterating, this may produce
-    unexpected results. In such case, seek() to the linenumber of a
+    unexpected results. In such case, seek() to the line number of a
     scope behind where changes were made.
 Important Attributes:
     lines - this is an internal list of all the physical lines
     scopes - this is an internal list of all open scopes (as iterators)
-             note: when retreiving an iterator from this list, always
+             note: when retrieving an iterator from this list, always
              use a copy to perform seek() or next(), and not the original
     element - the wml tag, key, or macro name for this logical line
               (in complex cases, this may be a tuple of elements...
