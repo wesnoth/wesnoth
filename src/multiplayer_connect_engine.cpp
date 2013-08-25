@@ -261,7 +261,7 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	// Check if user has a side(s) reserved for him.
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-		if (side->current_player() == username) {
+		if (side->current_player() == username && side->player_id().empty()) {
 			side->place_user(data);
 
 			side_assigned = true;
@@ -770,35 +770,17 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 		cfg_["controller"] = "ai";
 	}
-	if (!current_player_.empty() && cfg_["controller"] != "ai") {
+	if (cfg_["controller"] == "null") {
+		set_controller(CNTR_EMPTY);
+	} else if (!current_player_.empty() && cfg_["controller"] != "ai") {
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
 	} else if (allow_player_ && !parent_.params_.saved_game) {
 		set_controller(parent_.default_controller_);
 	} else {
-		size_t i = CNTR_NETWORK;
-		if (!allow_player_) {
-			if (cfg_["controller"] == "null") {
-				set_controller(CNTR_EMPTY);
-			} else {
-				cfg_["controller"] = "ai";
-				set_controller(CNTR_COMPUTER);
-			}
-		} else {
-			if (cfg_["controller"] == "network" ||
-				cfg_["controller"] == "human") {
-
-				cfg_["controller"] = "reserved";
-			}
-
-			for (; i != CNTR_LAST; ++i) {
-				if (cfg_["controller"] == controller_names[i]) {
-					set_controller(static_cast<mp::controller>(i));
-					break;
-				}
-			}
-		}
+		// AI is the default.
+		set_controller(CNTR_COMPUTER);
 	}
 
 	if (parent_.params_.saved_game) {
