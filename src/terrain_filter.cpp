@@ -232,9 +232,8 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	const std::string& tod_type = t_tod_type;
 	const std::string& tod_id = t_tod_id;
 	if(!tod_type.empty() || !tod_id.empty()) {
-		// creating a time_of_day from a config is expensive, only do it if we will use it
-		static config const dummy_cfg;
-		time_of_day tod(dummy_cfg);
+		// creating a time_of_day is expensive, only do it if we will use it
+		time_of_day tod;
 
 		if(flat_) {
 			tod = resources::tod_manager->get_time_of_day(loc);
