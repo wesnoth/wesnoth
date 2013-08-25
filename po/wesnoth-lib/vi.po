@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2013-03-30 07:23+0700\n"
-"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"POT-Creation-Date: 2013-08-17 15:16+0200\n"
+"PO-Revision-Date: 2013-08-22 14:24+0800\n"
+"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [terrain_type]: id=deep_water
@@ -1371,12 +1371,12 @@ msgstr "Không có mô tả."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:306
 msgid "Dependencies:"
-msgstr ""
+msgstr "Thành phần phụ thuộc:"
 
 #. [scroll_label]: id=dependencies
 #: data/gui/default/window/addon_description.cfg:320
 msgid "addon_dependencies^None"
-msgstr ""
+msgstr "Không có"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:338
@@ -1573,7 +1573,7 @@ msgstr "Kế tiếp"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
 msgid "Custom Time of Day Schedule"
-msgstr ""
+msgstr "Thời gian biểu thời điểm trong ngày tùy chỉnh"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:67
@@ -1587,37 +1587,37 @@ msgstr "Tên:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
-msgstr ""
+msgstr "Định danh:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
-msgstr ""
+msgstr "Siêu dữ liệu:"
 
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "Ảnh"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
 msgid "Mask"
-msgstr ""
+msgstr "Mặt nạ"
 
 #. [button]: id=sound_button
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
-msgstr ""
+msgstr "Âm thanh"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
 msgid "long size text"
-msgstr ""
+msgstr "văn bản dài"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:201
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "Thưởng chính thống:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:228
@@ -1637,19 +1637,17 @@ msgstr "Xanh lam:"
 #. [label]: id=tod_number
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. [button]: id=new
 #: data/gui/default/window/custom_tod.cfg:359
 msgid "New ToD"
-msgstr ""
+msgstr "TĐTN mới"
 
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
-#, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
-msgstr "Xóa"
+msgstr "Xóa TĐTN"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -3075,12 +3073,16 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Thêm tên người dùng này vào danh sách bạn bè của bạn (thêm ghi chú tùy chọn, "
+"ví dụ 'tên_người_chơi ghi chú về bạn bè')"
 
 #: src/game_preferences_display.cpp:393
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Thêm tên người dùng này vào danh sách từ chối của bạn (thêm lý do tùy chọn, "
+"ví dụ 'tên_người_chơi lý do bị từ chối')"
 
 #: src/game_preferences_display.cpp:394
 msgid "Remove this username from your list"
@@ -3771,10 +3773,8 @@ msgid "Rename Unit"
 msgstr "Đổi tên đơn vị"
 
 #: src/hotkeys.cpp:88
-#, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "Xóa tập tin"
+msgstr "Xóa đơn vị"
 
 #: src/hotkeys.cpp:91
 msgid "Save Replay"
@@ -3829,10 +3829,8 @@ msgid "Change Side (Debug!)"
 msgstr "Thay đổi phe (Gỡ lỗi!)"
 
 #: src/hotkeys.cpp:106
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Tạo đơn vị (Gỡ lỗi!)"
+msgstr "Giết đơn vị (Gỡ lỗi!)"
 
 #: src/hotkeys.cpp:108
 msgid "Scenario Objectives"
@@ -3962,14 +3960,12 @@ msgid "Switch Map"
 msgstr "Chuyển đổi bản đồ"
 
 #: src/hotkeys.cpp:148
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Area"
-msgstr "Chuyển đổi bản đồ"
+msgstr "Chuyển đổi khu vực"
 
 #: src/hotkeys.cpp:150
 msgid "Custom Time of Day Creator"
-msgstr ""
+msgstr "Trình tạo thời điểm trong ngày tùy chỉnh"
 
 #: src/hotkeys.cpp:151
 msgid "Partial Undo"
@@ -4004,10 +4000,8 @@ msgid "Switch Side"
 msgstr "Chuyển đổi phe"
 
 #: src/hotkeys.cpp:161
-#, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Tráo địa hình cận cảnh/hậu cảnh"
+msgstr "Tráo mục bảng màu cận cảnh/hậu cảnh"
 
 #: src/hotkeys.cpp:162
 msgid "Change Palette Group"
@@ -4022,10 +4016,8 @@ msgid "Scroll Palette Right"
 msgstr "Cuộn bảng màu sang phải"
 
 #: src/hotkeys.cpp:166
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr "Chuyển đổi bản đồ"
+msgstr "Chuyển đổi thời điểm trong ngày"
 
 #: src/hotkeys.cpp:168
 msgid "Next Tool"
@@ -4040,6 +4032,8 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Sử dụng nút chuột trái/phải để vẽ địa hình tiền/hậu cảnh. Giữ Shift để chỉ "
+"vẽ lớp cơ sở. Ctrl+nhấn để lấy mẫu địa hình dưới con trỏ."
 
 #: src/hotkeys.cpp:171
 msgid "Fill Tool"
@@ -4050,6 +4044,8 @@ msgid ""
 "Left mouse button selects or deselects, right brings up a context menu. Hold "
 "Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"Nút chuột trái chọn hoặc bỏ chọn, nút chuột phải mở trình đơn ngữ cảnh. Giữ "
+"Shift để lựa chọn dạng đũa thần các ô có cùng kiểu địa hình."
 
 #: src/hotkeys.cpp:172
 msgid "Selection Tool"
@@ -4061,6 +4057,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Nút chuột trái hiển thị lựa chọn của người chơi, nút chuột phải xóa lựa "
+"chọn. Các phím số cuộn đến vị trí ban đầu, alt+số thiết lập vị trí ban đầu "
+"tương ứng dưới con trỏ, delete xóa."
 
 #: src/hotkeys.cpp:173
 msgid "Starting Positions Tool"
@@ -4072,81 +4071,83 @@ msgstr "Công cụ Nhãn"
 
 #: src/hotkeys.cpp:174
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "Nút chuột trái thiết lập hoặc kéo một nhãn, nút chuột phải xóa nhãn."
 
 #: src/hotkeys.cpp:175
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"Nút chuột trái thiết lập một đơn vị mới hoặc di chuyển một đơn vị thông qua "
+"kéo thả, nút chuột phải mở trình đơn ngữ cảnh. Cần một phe đã xác định."
 
 #: src/hotkeys.cpp:175
 msgid "Unit Tool"
 msgstr "Công cụ Đơn vị"
 
 #: src/hotkeys.cpp:176
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Công cụ kế tiếp"
+msgstr "Công cụ Đồ vật"
 
 #: src/hotkeys.cpp:176
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"Nút chuột trái thiết lập một đồ vật mới hoặc di chuyển một đồ vật thông qua "
+"kéo thả, nút chuột phải xóa đồ vật. Chưa được cài đặt."
 
 #: src/hotkeys.cpp:177
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Nút chuột trái thiết lập hoặc kéo một nguồn âm thanh, nút chuột phải xóa "
+"nguồn âm thanh. Chưa được cài đặt."
 
 #: src/hotkeys.cpp:177
 msgid "Soundsource Tool"
-msgstr ""
+msgstr "Công cụ Nguồn âm thanh"
 
 #: src/hotkeys.cpp:178
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"Nút chuột trái thiết lập quyền sở hữu làng cho phe hiện thời, nút chuột phải "
+"xóa quyền sở hữu. Cần một phe đã xác định."
 
 #: src/hotkeys.cpp:178
 msgid "Village Tool"
 msgstr "Công cụ Làng"
 
 #: src/hotkeys.cpp:180
-#, fuzzy
-#| msgid "Recruit"
 msgid "Canrecruit"
-msgstr "Tuyển quân"
+msgstr "Có thể tuyển quân"
 
 #: src/hotkeys.cpp:180
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Bật tắt khả năng tuyển một đơn vị."
 
 #: src/hotkeys.cpp:181
 msgid "Can be renamed"
-msgstr ""
+msgstr "Có thể đổi tên"
 
 #: src/hotkeys.cpp:181
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Bật tắt khả năng đổi tên đơn vị."
 
 #: src/hotkeys.cpp:183
-#, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "Thay đổi quyền điều khiển"
+msgstr "Thay đổi định danh đơn vị"
 
 #: src/hotkeys.cpp:184
 msgid "Loyal"
-msgstr ""
+msgstr "Trung thành"
 
 #: src/hotkeys.cpp:186
 msgid "Toggle Minimap color coding"
-msgstr ""
+msgstr "Bật tắt mã màu bản đồ thu nhỏ"
 
 #: src/hotkeys.cpp:188
 msgid "Next Brush"
@@ -4158,23 +4159,23 @@ msgstr "Chổi vẽ mặc định"
 
 #: src/hotkeys.cpp:190
 msgid "Single Tile"
-msgstr ""
+msgstr "Ô duy nhất"
 
 #: src/hotkeys.cpp:191
 msgid "Radius One"
-msgstr ""
+msgstr "Bán kính một"
 
 #: src/hotkeys.cpp:192
 msgid "Radius Two"
-msgstr ""
+msgstr "Bán kính hai"
 
 #: src/hotkeys.cpp:193
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Chổi vẽ TB-ĐN"
 
 #: src/hotkeys.cpp:194
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Chổi vẽ TN-ĐB"
 
 #: src/hotkeys.cpp:195
 msgid "Cut"
@@ -4187,7 +4188,7 @@ msgstr "Chép"
 #: src/hotkeys.cpp:197
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr ""
+msgstr "Nút chuột trái dán từ bảng chọn, nút chuột phải mở trình đơn ngữ cảnh."
 
 #: src/hotkeys.cpp:197
 msgid "Paste"
@@ -4270,10 +4271,8 @@ msgid "Update Terrain Transitions"
 msgstr "Cập nhật chuyển tiếp địa hình"
 
 #: src/hotkeys.cpp:219
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
-msgstr "Cập nhật chuyển tiếp địa hình"
+msgstr "Bật tắt cập nhật chuyển tiếp địa hình"
 
 #: src/hotkeys.cpp:220
 msgid "Auto-update Terrain Transitions"
@@ -4301,7 +4300,7 @@ msgstr "Vẽ mã địa hình"
 
 #: src/hotkeys.cpp:229
 msgid "Define (Time) Area"
-msgstr ""
+msgstr "Định nghĩa vùng (thời gian)"
 
 #: src/hotkeys.cpp:231
 msgid "Delay Shroud Updates"
@@ -4393,7 +4392,7 @@ msgstr "Hiện phần trợ giúp"
 
 #: src/hotkeys.cpp:256
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Lệnh không xác định"
 
 #: src/hotkeys.cpp:389 src/hotkeys.cpp:392
 msgid "Button"
