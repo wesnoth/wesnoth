@@ -3,15 +3,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:34+0200\n"
-"PO-Revision-Date: 2013-08-22 14:43+0800\n"
-"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
-"Language-Team: Vietnamese <>\n"
+"POT-Creation-Date: 2013-07-28 18:25+0200\n"
+"PO-Revision-Date: 2013-03-06 20:18+0800\n"
+"Last-Translator: Phạm Thành Nam\n"
+"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [brush]
@@ -136,8 +136,8 @@ msgid ""
 "position under cursor, delete clears."
 msgstr ""
 "Nút chuột trái hiển thị vùng chọn của người chơi, nút chuột phải xóa vùng "
-"chọn. Các phím số cuộn đến vị trí ban đầu, alt+số thiết lập vị trí ban đầu "
-"tương ứng dưới con trỏ, delete xóa."
+"chọn. Các phím số cuộn đến vị trí vị trí ban đầu, alt+số thiết lập vị trí "
+"ban đầu tương ứng dưới con trỏ, delete xóa."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -175,7 +175,7 @@ msgstr "làng"
 
 #: src/editor/editor_controller.cpp:132
 msgid "Quit Editor"
-msgstr ""
+msgstr "Thoát trình hiệu chỉnh"
 
 #: src/editor/editor_controller.cpp:286
 msgid "Fatal error"
@@ -286,31 +286,31 @@ msgstr ""
 
 #: src/editor/editor_controller.cpp:1128
 msgid "Undo"
-msgstr ""
+msgstr "Đảo ngược"
 
 #: src/editor/editor_controller.cpp:1130
 msgid "Can’t Undo"
-msgstr ""
+msgstr "Không thể đảo ngược"
 
 #: src/editor/editor_controller.cpp:1134
 msgid "Redo"
-msgstr ""
+msgstr "Làm lại"
 
 #: src/editor/editor_controller.cpp:1136
 msgid "Can’t Redo"
-msgstr ""
+msgstr "Không thể làm lại"
 
 #: src/editor/editor_controller.cpp:1141
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Có"
 
 #: src/editor/editor_controller.cpp:1144
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Một phần"
 
 #: src/editor/editor_controller.cpp:1148
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
 
 #: src/editor/editor_map.cpp:150
 msgid "Player"
@@ -372,106 +372,47 @@ msgstr "Người chơi $player_number"
 msgid "Custom setting"
 msgstr "Thiết lập tùy chỉnh"
 
+#~| msgid "Hex Line NW-SE"
 #~ msgid "Hex Line SE-NW"
 #~ msgstr "Đường lục giác ĐN-TB"
 
 #~ msgid "fall"
 #~ msgstr "mùa thu"
 
-#~ msgid "Test"
-#~ msgstr "Kiểm tra"
-
-#~ msgid "Default"
-#~ msgstr "Mặc định"
-
-#~ msgid "Summer"
-#~ msgstr "Mùa hè"
-
-#~ msgid "Winter"
-#~ msgstr "Mùa đông"
-
-#~ msgid "Underground"
-#~ msgstr "Dưới lòng đất"
-
-#~ msgid "Deep Underground"
-#~ msgstr "Sâu dưới lòng đất"
-
-#~ msgid "Indoors"
-#~ msgstr "Trong nhà"
-
-#~ msgid "24 Hour Schedule"
-#~ msgstr "Thời gian biểu 24 giờ"
-
-#~ msgid "After the Fall"
-#~ msgstr "Sau mùa thu"
-
-#~ msgid "Transition Update"
-#~ msgstr "Cập nhật chuyển tiếp"
-
-#~ msgid "Areas"
-#~ msgstr "Khu vực"
-
-#~ msgid "Side"
-#~ msgstr "Phe"
-
-#~ msgid "units"
-#~ msgstr "đơn vị"
-
-#~ msgid "Time Schedule Menu"
-#~ msgstr "Trình đơn thời gian biểu"
-
-#~ msgid "Playlist"
-#~ msgstr "Danh sách phát"
-
-#~ msgid "Assign Time Schedule"
-#~ msgstr "Gán thời gian biểu"
-
-#~ msgid "terrain"
-#~ msgstr "địa hình"
-
-#~ msgid "Not implemented yet."
-#~ msgstr "Chưa được cài đặt."
-
-#~ msgid "ID: "
-#~ msgstr "Định danh: "
-
-#~ msgid "Name: "
-#~ msgstr "Tên: "
-
-#~ msgid "Type: "
-#~ msgstr "Kiểu: "
-
-#~ msgid "Level: "
-#~ msgstr "Cấp độ: "
-
-#~ msgid "Cost: "
-#~ msgstr "Chi phí: "
-
-#~ msgid "Change Unit ID"
-#~ msgstr "Thay đổi định danh đơn vị"
-
-#~ msgid "ID:"
-#~ msgstr "Định danh:"
-
-#~ msgid "Rename Unit"
-#~ msgstr "Đổi tên đơn vị"
-
-#~ msgid "Name:"
-#~ msgstr "Tên:"
-
-#~| msgid "(New Map)"
-#~ msgid "(New Area)"
-#~ msgstr "(Khu vực mới)"
-
-#~| msgid "(New Map)"
-#~ msgid "(New Side)"
-#~ msgstr "(Phe mới)"
+#~ msgid "Group"
+#~ msgstr "Nhóm"
 
 #~ msgid "(Unknown Group)"
 #~ msgstr "(Nhóm không xác định)"
 
-#~ msgid "Choose file"
-#~ msgstr "Chọn tập tin"
+#, fuzzy
+#~| msgid "Action not implemented"
+#~ msgid "Flip Map - Not implemented yet."
+#~ msgstr "Hành động không được thực hiện"
 
-#~ msgid "Group"
-#~ msgstr "Nhóm"
+#, fuzzy
+#~| msgid "Empty map file"
+#~ msgid "Empty file"
+#~ msgstr "Tập tin bản đồ rỗng"
+
+#~ msgid "Choose player"
+#~ msgstr "Chọn người chơi"
+
+#~ msgid ""
+#~ "Which player should start here? You can use alt and a number key to set "
+#~ "the starting position for a player, and del to clear the starting "
+#~ "position under the cursor. Pressing a number key by itself will scroll to "
+#~ "that player’s starting position."
+#~ msgstr ""
+#~ "Người chơi nào sẽ bắt đầu ở đây? Bạn có thể sử dụng alt và một phím số để "
+#~ "thiết lập vị trí ban đầu cho một người chơi, và del để xóa vị trí ban đầu "
+#~ "dưới con trỏ. Ấn một phím số sẽ cuộn đến vị trí ban đầu của người chơi đó."
+
+#~ msgid "FG"
+#~ msgstr "TC"
+
+#~ msgid "BG"
+#~ msgstr "HC"
+
+#~ msgid "Error creating action object"
+#~ msgstr "Lỗi khi tạo đối tượng hành động"
