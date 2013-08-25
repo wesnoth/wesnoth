@@ -50,13 +50,13 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
 	gold_lock_(engine_->cfg()["gold_lock"].to_bool(
-		engine_->side_configurations_lock())),
+		parent_->params().use_map_settings)),
 	income_lock_(engine_->cfg()["income_lock"].to_bool(
-		engine_->side_configurations_lock())),
+		parent_->params().use_map_settings)),
 	team_lock_(engine_->cfg()["team_lock"].to_bool(
-		engine_->side_configurations_lock())),
+		parent_->params().use_map_settings)),
 	color_lock_(engine_->cfg()["color_lock"].to_bool(
-		engine_->side_configurations_lock())),
+		parent_->params().use_map_settings)),
 	changed_(false),
 	label_player_number_(parent.video(), str_cast(engine_->index() + 1),
 		font::SIZE_LARGE, font::LOBBY_COLOR),
@@ -90,11 +90,11 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	slider_income_.set_value(engine_->cfg()["income"]);
 	slider_income_.set_measurements(50, 16);
 
-	combo_faction_.enable(!engine_->side_configurations_lock());
-	combo_leader_.enable(!engine_->side_configurations_lock());
-	combo_gender_.enable(!engine_->side_configurations_lock());
-	combo_team_.enable(!engine_->side_configurations_lock());
-	combo_color_.enable(!engine_->side_configurations_lock());
+	combo_faction_.enable(!parent_->params().saved_game);
+	combo_leader_.enable(!parent_->params().saved_game);
+	combo_gender_.enable(!parent_->params().saved_game);
+	combo_team_.enable(!parent_->params().saved_game);
+	combo_color_.enable(!parent_->params().saved_game);
 	slider_gold_.hide(parent_->params().saved_game);
 	slider_income_.hide(parent_->params().saved_game);
 	label_gold_.hide(parent_->params().saved_game);

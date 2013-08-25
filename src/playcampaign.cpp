@@ -641,6 +641,8 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					mp_game_settings& params = gamestate.mp_settings();
 					params.scenario_data = *scenario;
 					params.saved_game = false;
+					params.use_map_settings =
+						(*scenario)["force_use_map_settings"].to_bool(true);
 
 					team_init(params.scenario_data, gamestate);
 

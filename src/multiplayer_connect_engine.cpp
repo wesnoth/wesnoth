@@ -72,7 +72,6 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	params_(params),
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	first_scenario_(first_scenario),
-	side_configurations_lock_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
@@ -85,15 +84,6 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	level_ = initial_level_config(disp, params_, state_);
 	if (level_.empty()) {
 		return;
-	}
-
-	if (params_.saved_game) {
-		side_configurations_lock_ = true;
-	} else if (!params_.use_map_settings) {
-		side_configurations_lock_ = false;
-	} else {
-		side_configurations_lock_ =
-			level()["side_configurations_lock"].to_bool(!first_scenario);
 	}
 
 	// Original level sides.
@@ -811,7 +801,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		!cfg["recruit"].empty() || !cfg["previous_recruits"].empty();
 	if ((!cfg_.has_attribute("faction") || !parent_.first_scenario_) &&
 		has_any_recruits &&
-		(parent_.side_configurations_lock_ || !parent_.first_scenario_)) {
+		(parent_.params_.use_map_settings || !parent_.first_scenario_)) {
 
 		// By default side should be locked to a Custom faction
 		// if it has some recruits and should not be able to

@@ -150,7 +150,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
 
-	if (parameters_.scenario_data["side_configurations_lock"].to_bool()) {
+	if (parameters_.scenario_data["force_use_map_settings"].to_bool()) {
 		use_map_settings_.enable(false);
 		use_map_settings_.set_check(true);
 	} else {
