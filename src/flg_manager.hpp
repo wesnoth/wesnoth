@@ -90,6 +90,8 @@ private:
 	// to a choosable factions.
 	void append_leaders_from_faction(const config* faction);
 
+	std::string leader_type() const;
+
 	int faction_index(const config* faction) const;
 	int leader_index(const std::string& leader) const;
 	int gender_index(const std::string& gender) const;
