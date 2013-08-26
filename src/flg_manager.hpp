@@ -32,7 +32,7 @@ class flg_manager
 public:
 	flg_manager(const std::vector<const config*>& era_factions,
 		const config& side, const bool map_settings, const bool saved_game,
-		const bool first_scenario, const int color);
+		const int color);
 	~flg_manager();
 
 	void set_current_faction(const unsigned index);
@@ -50,17 +50,15 @@ public:
 
 	// Update the status of combo: items, selection and whether
 	// it should be enabled or not.
-	void reset_leader_combo(gui::combo& combo_leader);
-	void reset_gender_combo(gui::combo& combo_gender);
+	void reset_leader_combo(gui::combo& combo_leader) const;
+	void reset_gender_combo(gui::combo& combo_gender) const;
 
 	void resolve_random();
 
 	// Picks the first faction with the greater amount of data
 	// matching the criteria.
-	int find_suitable_faction() const;
+	int find_suitable_faction(const std::string& faction_id = "") const;
 
-	const std::vector<const config*> available_factions() const
-		{ return available_factions_; }
 	const std::vector<const config*> choosable_factions() const
 		{ return choosable_factions_; }
 	const std::vector<std::string>& choosable_leaders() const
@@ -81,8 +79,10 @@ private:
 	flg_manager(const flg_manager&);
 	void operator=(const flg_manager&);
 
-	void init_available_factions();
-	void init_choosable_factions();
+	void update_available_factions();
+	void update_available_leaders();
+	void update_available_genders();
+	void update_choosable_factions();
 	void update_choosable_leaders();
 	void update_choosable_genders();
 
@@ -105,12 +105,14 @@ private:
 
 	const bool map_settings_;
 	const bool saved_game_;
-	const bool first_scenario_;
+	const bool has_no_recruits_;
 
 	const int color_;
 
 	// All factions which could be played by a side (including Random).
 	std::vector<const config*> available_factions_;
+	std::vector<std::string> available_leaders_;
+	std::vector<std::string> available_genders_;
 
 	std::vector<const config*> choosable_factions_;
 	std::vector<std::string> choosable_leaders_;

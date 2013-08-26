@@ -284,7 +284,7 @@ void wait::join_game(bool observe)
 				level_.child("multiplayer")["savegame"].to_bool();
 
 			flg_manager flg(era_factions, *side_choice, map_settings,
-				saved_game, first_scenario_, color);
+				saved_game, color);
 
 			std::vector<std::string> choices;
 			BOOST_FOREACH(const config *s, flg.choosable_factions())

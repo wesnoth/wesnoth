@@ -39,14 +39,17 @@ std::string get_RC_suffix(const std::string& unit_color, const int color)
 
 flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	const config& side, const bool map_settings, const bool saved_game,
-	const bool first_scenario, const int color) :
+	const int color) :
 	era_factions_(era_factions),
 	side_(side),
 	map_settings_(map_settings),
 	saved_game_(saved_game),
-	first_scenario_(first_scenario),
+	has_no_recruits_(side_["recruit"].empty() &&
+		side_["previous_recruits"].empty()),
 	color_(color),
 	available_factions_(),
+	available_leaders_(),
+	available_genders_(),
 	choosable_factions_(),
 	choosable_leaders_(),
 	choosable_genders_(),
@@ -54,8 +57,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	current_leader_("null"),
 	current_gender_("null")
 {
-	init_available_factions();
-	init_choosable_factions();
+	update_available_factions();
 
 	set_current_faction((unsigned) 0);
 }
@@ -69,7 +71,7 @@ void flg_manager::set_current_faction(const unsigned index)
 	assert(index < choosable_factions_.size());
 	current_faction_ = choosable_factions_[index];
 
-	update_choosable_leaders();
+	update_available_leaders();
 	set_current_leader(0);
 }
 
@@ -92,7 +94,7 @@ void flg_manager::set_current_leader(const unsigned index)
 	assert(index < choosable_leaders_.size());
 	current_leader_ = choosable_leaders_[index];
 
-	update_choosable_genders();
+	update_available_genders();
 	set_current_gender(0);
 }
 
@@ -102,7 +104,7 @@ void flg_manager::set_current_gender(const unsigned index)
 	current_gender_ = choosable_genders_[index];
 }
 
-void flg_manager::reset_leader_combo(gui::combo& combo_leader)
+void flg_manager::reset_leader_combo(gui::combo& combo_leader) const
 {
 	std::vector<std::string> leaders;
 	BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
@@ -127,7 +129,7 @@ void flg_manager::reset_leader_combo(gui::combo& combo_leader)
 	combo_leader.set_selected(current_leader_index());
 }
 
-void flg_manager::reset_gender_combo(gui::combo& combo_gender)
+void flg_manager::reset_gender_combo(gui::combo& combo_gender) const
 {
 	const unit_type* unit = unit_types.find(current_leader_);
 
@@ -208,8 +210,7 @@ void flg_manager::resolve_random() {
 			nonrandom_sides[rand() % nonrandom_sides.size()];
 		current_faction_ = available_factions_[faction_index];
 
-		update_choosable_leaders();
-		set_current_leader(0);
+		update_available_leaders();
 
 		solved_random_faction = true;
 	}
@@ -217,7 +218,7 @@ void flg_manager::resolve_random() {
 	bool solved_random_leader = false;
 	if (current_leader_ == "random" || solved_random_faction) {
 		std::vector<std::string> nonrandom_leaders;
-		BOOST_FOREACH(const std::string& leader, choosable_leaders_) {
+		BOOST_FOREACH(const std::string& leader, available_leaders_) {
 			if (leader != "random") {
 				nonrandom_leaders.push_back(leader);
 			}
@@ -231,7 +232,9 @@ void flg_manager::resolve_random() {
 				i18n_symbols));
 		} else {
 			const int lchoice = rand() % nonrandom_leaders.size();
-			set_current_leader(nonrandom_leaders[lchoice]);
+			current_leader_ = nonrandom_leaders[lchoice];
+
+			update_available_genders();
 		}
 
 		solved_random_leader = true;
@@ -240,16 +243,16 @@ void flg_manager::resolve_random() {
 	// Resolve random genders "very much" like standard unit code.
 	if (current_gender_ == "random" || solved_random_leader) {
 		const unit_type *ut = unit_types.find(current_leader_);
-		if (ut && !choosable_genders_.empty()) {
+		if (ut) {
 			std::vector<std::string> nonrandom_genders;
-			BOOST_FOREACH(const std::string& gender, choosable_genders_) {
+			BOOST_FOREACH(const std::string& gender, available_genders_) {
 				if (gender != "random") {
 					nonrandom_genders.push_back(gender);
 				}
 			}
 
 			const int gchoice = rand() % nonrandom_genders.size();
-			set_current_gender(nonrandom_genders[gchoice]);
+			current_gender_ = nonrandom_genders[gchoice];
 		} else {
 			utils::string_map i18n_symbols;
 			i18n_symbols["leader"] = current_leader_;
@@ -260,18 +263,15 @@ void flg_manager::resolve_random() {
 	}
 }
 
-void flg_manager::init_available_factions()
+void flg_manager::update_available_factions()
 {
 	BOOST_FOREACH(const config* faction, era_factions_) {
-		const bool has_no_recruits =
-			side_["recruit"].empty() && side_["previous_recruits"].empty();
 		if ((*faction)["id"] == "Custom" && side_["faction"] != "Custom" &&
-			(has_no_recruits || (!map_settings_ && first_scenario_))) {
+			has_no_recruits_) {
 
 			// "Custom" faction should not be available if both "recruit"
-			// and "previous_recruits" lists are empty or
-			// if map settings are not in use. However, it should be
-			// available if it was explicitly stated so.
+			// and "previous_recruits" lists are empty. However, it should
+			// be available if it was explicitly stated so.
 			continue;
 		}
 
@@ -279,25 +279,13 @@ void flg_manager::init_available_factions()
 	}
 
 	assert(!available_factions_.empty());
+
+	update_choosable_factions();
 }
 
-void flg_manager::init_choosable_factions()
+void flg_manager::update_available_leaders()
 {
-	choosable_factions_ = available_factions_;
-
-	if (!side_["faction"].empty() && (map_settings_ || !first_scenario_)) {
-		int faction_index = find_suitable_faction();
-		if (faction_index >= 0) {
-			const config* faction = choosable_factions_[faction_index];
-			choosable_factions_.clear();
-			choosable_factions_.push_back(faction);
-		}
-	}
-}
-
-void flg_manager::update_choosable_leaders()
-{
-	choosable_leaders_.clear();
+	available_leaders_.clear();
 
 	if (saved_game_) {
 		// TODO: find a proper way to determine
@@ -312,13 +300,13 @@ void flg_manager::update_choosable_leaders()
 		if (!leader.empty()) {
 			const unit_type *unit = unit_types.find(leader);
 			if (unit) {
-				choosable_leaders_.push_back(leader);
+				available_leaders_.push_back(leader);
 			}
 		}
 	} else {
+		// Add a default leader if there is one.
 		const std::string& leader_id = side_["id"];
 		std::string leader_type = side_["type"];
-
 		if (!leader_id.empty()) {
 			// Check if leader was carried over and now is in
 			// [unit] tag.
@@ -328,42 +316,42 @@ void flg_manager::update_choosable_leaders()
 				leader_type = leader_unit["type"].str();
 			}
 		}
-
-		if ((map_settings_ || !first_scenario_) && !leader_type.empty() &&
-			leader_type != "null" && leader_type != "random") {
-
+		if (!leader_type.empty()) {
 			// Leader was explicitly assigned.
 			const unit_type *unit = unit_types.find(leader_type);
 			if (unit) {
-				choosable_leaders_.push_back(leader_type);
+				available_leaders_.push_back(leader_type);
 			}
-		} else if ((*current_faction_)["id"] == "Custom") {
-			// Allow user to choose a leader from any faction.
-			choosable_leaders_.push_back("random");
+		}
 
-			BOOST_FOREACH(const config* f, available_factions_) {
-				if ((*f)["id"] != "Random") {
-					append_leaders_from_faction(f);
+		if ((*current_faction_)["id"] != "Random") {
+			available_leaders_.push_back("random");
+
+			if ((*current_faction_)["id"] == "Custom") {
+				// Allow user to choose a leader from any faction.
+				BOOST_FOREACH(const config* f, available_factions_) {
+					if ((*f)["id"] != "Random") {
+						append_leaders_from_faction(f);
+					}
 				}
+			} else {
+				append_leaders_from_faction(current_faction_);
 			}
-		} else if ((*current_faction_)["id"] != "Random") {
-			// Faction leader list consists of "random" + "leader=".
-			choosable_leaders_.push_back("random");
-
-			append_leaders_from_faction(current_faction_);
 		}
 	}
 
 	// If none of the possible leaders could be determined,
 	// use "null" as an indicator for empty leaders list.
-	if (choosable_leaders_.empty()) {
-		choosable_leaders_.push_back("null");
+	if (available_leaders_.empty()) {
+		available_leaders_.push_back("null");
 	}
+
+	update_choosable_leaders();
 }
 
-void flg_manager::update_choosable_genders()
+void flg_manager::update_available_genders()
 {
-	choosable_genders_.clear();
+	available_genders_.clear();
 
 	if (saved_game_) {
 		std::string gender;
@@ -376,37 +364,20 @@ void flg_manager::update_choosable_genders()
 			}
 		}
 		if (!gender.empty()) {
-			choosable_genders_.push_back(gender);
+			available_genders_.push_back(gender);
 		}
 	} else {
 		const unit_type* unit = unit_types.find(current_leader_);
 		if (unit) {
-			const std::string& default_gender = side_["gender"];
-			if ((map_settings_ || !first_scenario_) &&
-				(default_gender == unit_race::s_female ||
-				default_gender == unit_race::s_male)) {
+			if (unit->genders().size() > 1) {
+				available_genders_.push_back("random");
+			}
 
-				// Gender was explicitly assigned.
-				const unit_type *unit = unit_types.find(current_leader_);
-				if (unit) {
-					BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
-						if (default_gender == gender_string(gender)) {
-							choosable_genders_.push_back(default_gender);
-							break;
-						}
-					}
-				}
-			} else {
-				if (unit->genders().size() > 1) {
-					choosable_genders_.push_back("random");
-				}
-
-				BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
-					if (gender == unit_race::FEMALE) {
-						choosable_genders_.push_back(unit_race::s_female);
-					} else {
-						choosable_genders_.push_back(unit_race::s_male);
-					}
+			BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+				if (gender == unit_race::FEMALE) {
+					available_genders_.push_back(unit_race::s_female);
+				} else {
+					available_genders_.push_back(unit_race::s_male);
 				}
 			}
 		}
@@ -414,16 +385,70 @@ void flg_manager::update_choosable_genders()
 
 	// If none of the possible genders could be determined,
 	// use "null" as an indicator for empty genders list.
-	if (choosable_genders_.empty()) {
-		choosable_genders_.push_back("null");
+	if (available_genders_.empty()) {
+		available_genders_.push_back("null");
+	}
+
+	update_choosable_genders();
+}
+
+void flg_manager::update_choosable_factions()
+{
+	choosable_factions_ = available_factions_;
+
+	if ((!side_["faction"].empty() || !has_no_recruits_) && map_settings_) {
+		std::string faction_id;
+		if (!has_no_recruits_) {
+			faction_id = "Custom";
+		}
+		const int faction_index = find_suitable_faction(faction_id);
+		if (faction_index >= 0) {
+			const config* faction = choosable_factions_[faction_index];
+			choosable_factions_.clear();
+			choosable_factions_.push_back(faction);
+		}
 	}
 }
 
-int flg_manager::find_suitable_faction() const
+void flg_manager::update_choosable_leaders()
+{
+	choosable_leaders_ = available_leaders_;
+
+	const std::string& leader_type = side_["type"];
+	if (!leader_type.empty() && map_settings_) {
+		if (std::find(available_leaders_.begin(), available_leaders_.end(),
+			leader_type) != available_leaders_.end()) {
+
+			choosable_leaders_.clear();
+			choosable_leaders_.push_back(leader_type);
+		}
+	}
+}
+
+void flg_manager::update_choosable_genders()
+{
+	choosable_genders_ = available_genders_;
+
+	const std::string& gender = side_["gender"];
+	if (!gender.empty() && map_settings_) {
+		if (std::find(available_genders_.begin(), available_genders_.end(),
+			gender) != available_genders_.end()) {
+
+			choosable_genders_.clear();
+			choosable_genders_.push_back(gender);
+		}
+	}
+}
+
+int flg_manager::find_suitable_faction(const std::string& faction_id) const
 {
 	std::vector<std::string> find;
 	std::string search_field;
-	if (const config::attribute_value *f = side_.get("faction")) {
+
+	if (!faction_id.empty()) {
+		find.push_back(faction_id);
+		search_field = "id";
+	} else if (const config::attribute_value *f = side_.get("faction")) {
 		// Choose based on faction.
 		find.push_back(f->str());
 		search_field = "id";
@@ -470,7 +495,7 @@ void flg_manager::append_leaders_from_faction(const config* faction)
 		leaders_to_append = utils::split((*faction)["leader"]);
 	}
 
-	choosable_leaders_.insert(choosable_leaders_.end(), leaders_to_append.begin(),
+	available_leaders_.insert(available_leaders_.end(), leaders_to_append.begin(),
 		leaders_to_append.end());
 }
 

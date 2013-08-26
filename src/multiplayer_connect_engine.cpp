@@ -750,7 +750,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	player_id_(cfg["player_id"]),
 	ai_algorithm_(),
 	flg_(parent_.era_factions_, cfg_, parent_.params_.use_map_settings,
-		parent_.params_.saved_game, parent_.first_scenario_, color_)
+		parent_.params_.saved_game, color_)
 {
 	update_controller_options();
 
@@ -773,11 +773,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 		set_controller(CNTR_COMPUTER);
 	}
 
-	if (parent_.params_.saved_game) {
-		// Set faction lock on previous faction.
-		cfg_["faction_from_recruit"] = true;
-	}
-
 	// Initialize team and color.
 	unsigned team_name_index = 0;
 	BOOST_FOREACH(const std::string& name, parent_.team_names_) {
@@ -795,29 +790,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 	if (!cfg["color"].empty()) {
 		color_ = game_config::color_info(cfg["color"]).index() - 1;
-	}
-
-	const bool has_any_recruits =
-		!cfg["recruit"].empty() || !cfg["previous_recruits"].empty();
-	if ((!cfg_.has_attribute("faction") || !parent_.first_scenario_) &&
-		has_any_recruits &&
-		(parent_.params_.use_map_settings || !parent_.first_scenario_)) {
-
-		// By default side should be locked to a Custom faction
-		// if it has some recruits and should not be able to
-		// choose other faction.
-		cfg_["faction"] = "Custom";
-	}
-
-	int faction_index = 0;
-	if (parent_.params_.use_map_settings || parent_.params_.saved_game) {
-		// Explicitly assign a faction, if possible.
-		if (flg_.choosable_factions().size() > 1) {
-			faction_index = flg_.find_suitable_faction();
-			if (faction_index >= 0) {
-				flg_.set_current_faction(faction_index);
-			}
-		}
 	}
 
 	// Initialize ai algorithm.

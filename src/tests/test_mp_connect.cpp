@@ -198,7 +198,7 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side.clear();
 	side["type"] = "ThisUnitDoesNotExist";
 	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
-	BOOST_CHECK( side_engine->flg().choosable_factions().size() > 1 );
+	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
 
 	// No leader, Custom faction.
