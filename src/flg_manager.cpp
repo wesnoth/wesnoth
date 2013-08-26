@@ -337,6 +337,20 @@ void flg_manager::update_available_leaders()
 			} else {
 				append_leaders_from_faction(current_faction_);
 			}
+
+			// Remove duplicate leaders.
+			std::set<std::string> seen;
+			std::vector<std::string>::iterator walker, modifier;
+			for(walker = available_leaders_.begin(),
+				modifier = available_leaders_.begin();
+				walker != available_leaders_.end(); ++walker) {
+
+				if (seen.insert(*walker).second) {
+					*modifier++ = *walker;
+				}
+			}
+
+			available_leaders_.erase(modifier, available_leaders_.end());
 		}
 	}
 

@@ -281,7 +281,63 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 
 BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 {
-	// TODO
+	// Set up side_engine and its dependencies.
+	params->use_map_settings = false;
+	params->saved_game = false;
+	boost::scoped_ptr<test_mp_connect_engine>
+		connect_engine(create_test_mp_connect_engine());
+	mp::side_engine_ptr side_engine;
+	config side;
+
+	// Recruit list with no faction.
+	side.clear();
+	side["recruit"] = "Elvish Archer";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
+
+	// Custom faction, no recruits.
+	side.clear();
+	side["faction"] = "Custom";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
+	BOOST_CHECK_EQUAL( side_engine->new_config()["recruit"].empty(), true );
+
+	// Carried over recruits.
+	side.clear();
+	side["previous_recruits"] = "Elvish Archer";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	BOOST_CHECK( side_engine->flg().choosable_factions().size() >  1 );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_faction()["id"], "Custom" );
+	BOOST_CHECK_EQUAL( side_engine->new_config()["previous_recruits"],
+		"Elvish Archer" );
+
+	// Explicit leader for faction with multiple leaders.
+	side.clear();
+	side["type"] = "Goblin Impaler";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine->flg().set_current_faction("Rebels");
+	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
+
+	// Duplicate leaders.
+	side.clear();
+	side["faction"] = "Custom";
+	side["type"] = "Swordsman";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	BOOST_CHECK( side_engine->flg().choosable_leaders().size() > 1 );
+	const std::vector<std::string>& leaders =
+		side_engine->flg().choosable_leaders();
+	BOOST_CHECK_EQUAL( std::count(leaders.begin(), leaders.end(), "Swordsman"),
+		1 );
+
+	// Explicit gender for unit with both genders available.
+	side.clear();
+	side["gender"] = "female";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine->flg().set_current_faction("Rebels");
+	side_engine->flg().set_current_leader("Elvish Ranger");
+	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
 }
 
 BOOST_AUTO_TEST_CASE( flg_saved_game )
