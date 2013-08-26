@@ -16,7 +16,7 @@
 #define SAVEGAME_CONFIG_HPP_INCLUDED
 
 /* interface for building a config from savegame related objects */
-//FIXME: move to gamestate.hpp once dependencies between team and game_state are sorted
+/// @todo: FIXME: move to gamestate.hpp once dependencies between team and game_state are sorted
 class config;
 
 namespace savegame {
