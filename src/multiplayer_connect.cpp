@@ -382,11 +382,6 @@ connect::connect(game_display& disp, const std::string& game_name,
 		throw config::error(_("The scenario is invalid because it has no id."));
 	}
 
-	// AI algorithms.
-	const config &era = engine_.level().child("era");
-	ai::configuration::add_era_ai_from_config(era);
-	ai::configuration::add_mod_ai_from_config(
-		engine_.level().child_range("modification"));
 	ai_algorithms_ = ai::configuration::get_available_ais();
 
 	// Colors.
@@ -414,32 +409,11 @@ connect::connect(game_display& disp, const std::string& game_name,
 		side_pos_y_offset += 60;
 	}
 
-	if (engine_.first_scenario()) {
-		// Send Initial information
-		config response;
-		config& create_game = response.add_child("create_game");
-		create_game["name"] = params().name;
-		if (params().password.empty() == false) {
-			response["password"] = params().password;
-		}
-		network::send_data(response, 0);
-	}
-
 	append_to_title(" — " + engine_.level()["name"].t_str());
 	gold_title_label_.hide(params().saved_game);
 	income_title_label_.hide(params().saved_game);
 
-	engine_.update_level();
 	update_playerlist_state(true);
-
-	// If we are connected, send data to the connected host.
-	if (engine_.first_scenario()) {
-		network::send_data(engine_.level(), 0);
-	} else {
-		config next_level;
-		next_level.add_child("store_next_scenario", engine_.level());
-		network::send_data(next_level, 0);
-	}
 }
 
 connect::~connect()

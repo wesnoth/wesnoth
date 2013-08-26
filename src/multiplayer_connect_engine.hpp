@@ -94,6 +94,8 @@ private:
 	connect_engine(const connect_engine&);
 	void operator=(const connect_engine&);
 
+	void send_level_data(const network::connection sock) const;
+
 	void save_reserved_sides_information();
 
 	void update_side_controller_options();

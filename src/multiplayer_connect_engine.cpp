@@ -89,6 +89,11 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
 
+	// AI algorithms.
+	ai::configuration::add_era_ai_from_config(level_.child("era"));
+	ai::configuration::add_mod_ai_from_config(
+		level_.child_range("modification"));
+
 	// Set the team name lists and modify the original level sides,
 	// if necessary.
 	std::vector<std::string> original_team_names;
@@ -194,6 +199,22 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 
 	// Add host to the connected users list.
 	import_user(preferences::login(), false);
+
+	if (first_scenario_) {
+		// Send initial information.
+		config response;
+		config& create_game = response.add_child("create_game");
+		create_game["name"] = params_.name;
+		if (params_.password.empty() == false) {
+			response["password"] = params_.password;
+		}
+		network::send_data(response, 0);
+	}
+
+	update_level();
+
+	// If we are connected, send data to the connected host.
+	send_level_data(0);
 }
 
 connect_engine::~connect_engine()
@@ -680,14 +701,9 @@ void connect_engine::process_network_error(network::error& error)
 void connect_engine::process_network_connection(const network::connection sock)
 {
 	network::send_data(config("join_game"), 0);
+
 	// If we are connected, send data to the connected host.
-	if (first_scenario_) {
-		network::send_data(level_, sock);
-	} else {
-		config next_level;
-		next_level.add_child("store_next_scenario", level_);
-		network::send_data(next_level, sock);
-	}
+	send_level_data(sock);
 }
 
 int connect_engine::find_user_side_index_by_id(const std::string& id) const
@@ -706,6 +722,17 @@ int connect_engine::find_user_side_index_by_id(const std::string& id) const
 	}
 
 	return i;
+}
+
+void connect_engine::send_level_data(const network::connection sock) const
+{
+	if (first_scenario_) {
+		network::send_data(level_, sock);
+	} else {
+		config next_level;
+		next_level.add_child("store_next_scenario", level_);
+		network::send_data(next_level, sock);
+	}
 }
 
 void connect_engine::save_reserved_sides_information()
