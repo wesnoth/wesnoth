@@ -145,7 +145,6 @@
 		B52EE8D7121359A600CFBDAB /* persist_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BB121359A600CFBDAB /* persist_manager.cpp */; };
 		B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BD121359A600CFBDAB /* persist_var.cpp */; };
 		B52EE8D9121359A600CFBDAB /* save_blocker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BF121359A600CFBDAB /* save_blocker.cpp */; };
-		B52EE8DA121359A600CFBDAB /* savegame_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C1121359A600CFBDAB /* savegame_config.cpp */; };
 		B52EE8DB121359A600CFBDAB /* savegame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C2121359A600CFBDAB /* savegame.cpp */; };
 		B52EE8DC121359A600CFBDAB /* sound_music_track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */; };
 		B52EE8DD121359A600CFBDAB /* unit_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C7121359A600CFBDAB /* unit_helper.cpp */; };
@@ -161,7 +160,6 @@
 		B52EE8EB121359A600CFBDAB /* persist_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BB121359A600CFBDAB /* persist_manager.cpp */; };
 		B52EE8EC121359A600CFBDAB /* persist_var.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BD121359A600CFBDAB /* persist_var.cpp */; };
 		B52EE8ED121359A600CFBDAB /* save_blocker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8BF121359A600CFBDAB /* save_blocker.cpp */; };
-		B52EE8EE121359A600CFBDAB /* savegame_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C1121359A600CFBDAB /* savegame_config.cpp */; };
 		B52EE8EF121359A600CFBDAB /* savegame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C2121359A600CFBDAB /* savegame.cpp */; };
 		B52EE8F0121359A600CFBDAB /* sound_music_track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */; };
 		B52EE8F1121359A600CFBDAB /* unit_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C7121359A600CFBDAB /* unit_helper.cpp */; };
@@ -1246,7 +1244,6 @@
 		B52EE8BE121359A600CFBDAB /* persist_var.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = persist_var.hpp; sourceTree = "<group>"; };
 		B52EE8BF121359A600CFBDAB /* save_blocker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = save_blocker.cpp; sourceTree = "<group>"; };
 		B52EE8C0121359A600CFBDAB /* save_blocker.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = save_blocker.hpp; sourceTree = "<group>"; };
-		B52EE8C1121359A600CFBDAB /* savegame_config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = savegame_config.cpp; sourceTree = "<group>"; };
 		B52EE8C2121359A600CFBDAB /* savegame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = savegame.cpp; sourceTree = "<group>"; };
 		B52EE8C3121359A600CFBDAB /* savegame.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = savegame.hpp; sourceTree = "<group>"; };
 		B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sound_music_track.cpp; sourceTree = "<group>"; };
@@ -2319,7 +2316,6 @@
 				4944F4061354FB410027E614 /* portrait.cpp */,
 				B52EE8BF121359A600CFBDAB /* save_blocker.cpp */,
 				B52EE8C0121359A600CFBDAB /* save_blocker.hpp */,
-				B52EE8C1121359A600CFBDAB /* savegame_config.cpp */,
 				B52EE8C2121359A600CFBDAB /* savegame.cpp */,
 				B52EE8C3121359A600CFBDAB /* savegame.hpp */,
 				B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */,
@@ -4189,7 +4185,6 @@
 				B52EE8D7121359A600CFBDAB /* persist_manager.cpp in Sources */,
 				B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */,
 				B52EE8D9121359A600CFBDAB /* save_blocker.cpp in Sources */,
-				B52EE8DA121359A600CFBDAB /* savegame_config.cpp in Sources */,
 				B52EE8DB121359A600CFBDAB /* savegame.cpp in Sources */,
 				B52EE8DC121359A600CFBDAB /* sound_music_track.cpp in Sources */,
 				B52EE8DD121359A600CFBDAB /* unit_helper.cpp in Sources */,
@@ -4683,7 +4678,6 @@
 				B52EE8EB121359A600CFBDAB /* persist_manager.cpp in Sources */,
 				B52EE8EC121359A600CFBDAB /* persist_var.cpp in Sources */,
 				B52EE8ED121359A600CFBDAB /* save_blocker.cpp in Sources */,
-				B52EE8EE121359A600CFBDAB /* savegame_config.cpp in Sources */,
 				B52EE8EF121359A600CFBDAB /* savegame.cpp in Sources */,
 				B52EE8F0121359A600CFBDAB /* sound_music_track.cpp in Sources */,
 				B52EE8F1121359A600CFBDAB /* unit_helper.cpp in Sources */,

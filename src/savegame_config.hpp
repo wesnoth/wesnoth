@@ -28,9 +28,5 @@ public:
 	virtual config to_config() const = 0;
 };
 
-void write_music_play_list(config& snapshot);
-
-void write_events(config& cfg);
-
 }
 #endif
