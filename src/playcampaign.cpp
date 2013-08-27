@@ -52,29 +52,6 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-namespace {
-
-struct player_controller
-{
-	player_controller() :
-		controller(),
-		description()
-		{}
-
-	player_controller(const std::string& controller, const std::string& description) :
-		controller(controller),
-		description(description)
-		{}
-
-	std::string controller;
-	std::string description;
-};
-
-typedef std::map<std::string, player_controller> controller_map;
-
-} // end anon namespace
-
-
 static void team_init(config& level, game_state& gamestate){
 	//if we are at the start of a new scenario, initialize carryover_sides
 	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
@@ -422,18 +399,14 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 	gamestate.carryover_sides_start = sides.to_config();
 
-	controller_map controllers;
+	std::map<std::string, std::string> controllers;
 
 	if(io_type == IO_SERVER) {
 		BOOST_FOREACH(config &side, const_cast<config *>(scenario)->child_range("side"))
 		{
-			if (side["current_player"] == preferences::login()) {
-				side["controller"] = "human";
-			}
 			std::string id = side["save_id"];
 			if(id.empty())
 				continue;
-			controllers[id] = player_controller(side["controller"], side["id"]);
 		}
 	}
 
@@ -450,8 +423,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if (side["current_player"] == preferences::login()) {
 					side["controller"] = "human";
 				} else if (side["controller"] != "null") {
-					/// @todo Fix logic to use network_ai controller
-					// if it is networked ai
 					side["controller"] = "network";
 				}
 			}
@@ -669,16 +640,16 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 						id = side["id"].str();
 					}
 					if(!id.empty()) {
-						/* Update side info to match current_player info
-						 * to allow it taking the side in next scenario
-						 * and to be set in the players list on side server
-						 */
-						controller_map::const_iterator ctr = controllers.find(id);
+						// Update side info to match current_player info
+						// to allow it taking the side in next scenario
+						// and to be set in the players list on side server.
+						std::map<std::string, std::string>::const_iterator ctr =
+							controllers.find(id);
 						if(ctr != controllers.end()) {
 							if (const config& c = gamestate.snapshot.find_child("side", "save_id", id)) {
 								side["current_player"] = c["current_player"];
 							}
-							side["controller"] = ctr->second.controller;
+							side["controller"] = ctr->second;
 						}
 					}
 					if (side["controller"].empty())

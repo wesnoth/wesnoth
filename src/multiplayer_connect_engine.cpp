@@ -844,8 +844,9 @@ config side_engine::new_config() const
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
-	res["controller"] = controller_names[controller_];
 	res["current_player"] = player_id_.empty() ? current_player_ : player_id_;
+	res["controller"] = (res["current_player"] == preferences::login()) ?
+		"human" : controller_names[controller_];
 	res["id"] = leader_id_;
 
 	if (player_id_.empty()) {
