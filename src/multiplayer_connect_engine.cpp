@@ -183,19 +183,7 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	}
 
 	// Load reserved players information into the sides.
-	if (!first_scenario_) {
-		std::map<std::string, std::string> side_users =
-			utils::map_split(level_.child("multiplayer")["side_users"]);
-		BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-			const std::string& save_id = side->save_id();
-			if (side_users.find(save_id) != side_users.end()) {
-				side->set_current_player(side_users[save_id]);
-
-				side->update_controller_options();
-				side->set_controller(CNTR_RESERVED);
-			}
-		}
-	}
+	load_previous_sides_users(RESERVE_USERS);
 
 	// Add host to the connected users list.
 	import_user(preferences::login(), false);
@@ -286,7 +274,6 @@ void connect_engine::import_user(const config& data, const bool observer,
 			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 				if (side->available_for_user(username) ||
 					side->controller() == CNTR_LOCAL) {
-
 					side->place_user(data);
 
 					side_assigned = true;
@@ -367,7 +354,7 @@ bool connect_engine::can_start_game() const
 	return false;
 }
 
-void connect_engine::start_game()
+void connect_engine::start_game(LOAD_USERS load_users)
 {
 	DBG_MP << "starting a new game" << std::endl;
 
@@ -414,6 +401,9 @@ void connect_engine::start_game()
 	// Make other clients not show the results of resolve_random().
 	config lock("stop_updates");
 	network::send_data(lock, 0);
+
+	load_previous_sides_users(load_users);
+
 	update_and_send_diff(true);
 
 	save_reserved_sides_information();
@@ -748,6 +738,29 @@ void connect_engine::save_reserved_sides_information()
 		}
 	}
 	level_.child("multiplayer")["side_users"] = utils::join_map(side_users);
+}
+
+void connect_engine::load_previous_sides_users(LOAD_USERS load_users)
+{
+	if (load_users == NO_LOAD || first_scenario_) {
+		return;
+	}
+
+	std::map<std::string, std::string> side_users =
+		utils::map_split(level_.child("multiplayer")["side_users"]);
+	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+		const std::string& save_id = side->save_id();
+		if (side_users.find(save_id) != side_users.end()) {
+			side->set_current_player(side_users[save_id]);
+
+			if (load_users == RESERVE_USERS) {
+				side->update_controller_options();
+				side->set_controller(CNTR_RESERVED);
+			} else if (load_users == FORCE_IMPORT_USERS) {
+				import_user(side_users[save_id], false);
+			}
+		}
+	}
 }
 
 void connect_engine::update_side_controller_options()

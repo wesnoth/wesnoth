@@ -48,6 +48,8 @@ public:
 		const bool first_scenario);
 	~connect_engine();
 
+	enum LOAD_USERS { NO_LOAD, RESERVE_USERS, FORCE_IMPORT_USERS };
+
 	config* current_config();
 
 	void import_user(const std::string& name, const bool observer,
@@ -64,7 +66,7 @@ public:
 	void update_and_send_diff(bool update_time_of_day = false);
 
 	bool can_start_game() const;
-	void start_game();
+	void start_game(LOAD_USERS load_users = NO_LOAD);
 	void start_game_commandline(const commandline_options& cmdline_opts);
 
 	// Return pair first element specifies whether to leave the game
@@ -97,6 +99,7 @@ private:
 	void send_level_data(const network::connection sock) const;
 
 	void save_reserved_sides_information();
+	void load_previous_sides_users(LOAD_USERS load_users);
 
 	void update_side_controller_options();
 

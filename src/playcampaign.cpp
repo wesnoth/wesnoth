@@ -399,17 +399,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 	gamestate.carryover_sides_start = sides.to_config();
 
-	std::map<std::string, std::string> controllers;
-
-	if(io_type == IO_SERVER) {
-		BOOST_FOREACH(config &side, const_cast<config *>(scenario)->child_range("side"))
-		{
-			std::string id = side["save_id"];
-			if(id.empty())
-				continue;
-		}
-	}
-
 	while(scenario != NULL) {
 		// If we are a multiplayer client, tweak the controllers
 		if(io_type == IO_CLIENT) {
@@ -608,56 +597,40 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			if(io_type == IO_SERVER && scenario != NULL) {
+				mp_game_settings& params = gamestate.mp_settings();
+				params.scenario_data = *scenario;
+				params.saved_game = false;
+				params.use_map_settings =
+					(*scenario)["force_use_map_settings"].to_bool(true);
+
+				team_init(params.scenario_data, gamestate);
+
+				mp::connect_engine_ptr
+					connect_engine(new mp::connect_engine(disp, gamestate,
+						params, !network_game, false));
+
 				if (game_config::campaign_screens) {
-					mp_game_settings& params = gamestate.mp_settings();
-					params.scenario_data = *scenario;
-					params.saved_game = false;
-					params.use_map_settings =
-						(*scenario)["force_use_map_settings"].to_bool(true);
-
-					team_init(params.scenario_data, gamestate);
-
-					mp::connect_engine_ptr
-						connect_engine(new mp::connect_engine(disp, gamestate,
-							params, !network_game, false));
-
 					// Opens mp::connect dialog to get a new gamestate.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, params.name);
 					if (connect_res == mp::ui::QUIT) {
 						return QUIT;
 					}
-
-					starting_pos = gamestate.replay_start();
-					scenario = &starting_pos;
+				} else {
+					// Start the next scenario immediately.
+					connect_engine->
+						start_game(mp::connect_engine::FORCE_IMPORT_USERS);
 				}
 
-				// Tweaks sides to adapt controllers and descriptions.
-				BOOST_FOREACH(config &side, starting_pos.child_range("side"))
-				{
-					std::string id = side["save_id"];
-					if(id.empty()) {
-						id = side["id"].str();
-					}
-					if(!id.empty()) {
-						// Update side info to match current_player info
-						// to allow it taking the side in next scenario
-						// and to be set in the players list on side server.
-						std::map<std::string, std::string>::const_iterator ctr =
-							controllers.find(id);
-						if(ctr != controllers.end()) {
-							if (const config& c = gamestate.snapshot.find_child("side", "save_id", id)) {
-								side["current_player"] = c["current_player"];
-							}
-							side["controller"] = ctr->second;
-						}
-					}
-					if (side["controller"].empty())
-						side["controller"] = "ai";
-				}
+				starting_pos = gamestate.replay_start();
+				scenario = &starting_pos;
 
+				// TODO: move this code to mp::connect_engine
+				// in order to send generated data to the network
+				// before starting the game.
+				//
 				// If the entire scenario should be randomly generated
-				if((*scenario)["scenario_generation"] != "") {
+				/*if((*scenario)["scenario_generation"] != "") {
 					generate_scenario(scenario);
 				}
 
@@ -669,15 +642,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// If the map should be randomly generated
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
 					generate_map(scenario);
-				}
-
-				// Move the player information into the hosts gamestate.
-				write_players(gamestate, starting_pos, true, true);
-
-				// Send next scenario data.
-				network::send_data(mp::next_level_config(*scenario, gamestate),
-					0);
-				network::send_data(config("start_game"), 0);
+				}*/
 			}
 		}
 
