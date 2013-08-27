@@ -1,19 +1,22 @@
-# Vietnamese translation for Wesnoth
+# Vietnamese translations for Battle for Wesnoth package
+# Copyright (C) 2009 Wesnoth Development Team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
 # Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2013-03-12 21:39+0800\n"
-"Last-Translator: Phạm Thành Nam\n"
-"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2013-08-17 11:34+0200\n"
+"PO-Revision-Date: 2013-08-25 18:48+0700\n"
+"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:4
@@ -158,13 +161,15 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:164
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Phòng gặp gỡ nhiều người chơi thử nghiệm"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:165
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
+"Thay thế phòng gặp gỡ nhiều người chơi cổ điển bằng một giao diện thử nghiệm "
+"mới hơn"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:173
@@ -3467,14 +3472,12 @@ msgid "addon_type^(unknown)"
 msgstr "(không xác định)"
 
 #: src/addon/manager.cpp:482
-#, fuzzy
-#| msgid "Requesting distribution terms..."
 msgid "Requesting terms"
-msgstr "Đang lấy điều khoản phân phối..."
+msgstr "Đang lấy điều khoản"
 
 #: src/addon/manager.cpp:487
 msgid "The server responded with an error: \"$error|\""
-msgstr "Máy chủ đã trả lời với thông báo lỗi: \"$error|\""
+msgstr "Máy chủ đã trả lời bằng lỗi: \"$error|\""
 
 #: src/addon/manager.cpp:496
 msgid "Terms"
@@ -3485,10 +3488,8 @@ msgid "Sending add-on"
 msgstr "Đang gửi phần bổ sung"
 
 #: src/addon/manager.cpp:535 src/addon/manager.cpp:560
-#, fuzzy
-#| msgid "The server responded with an error:"
 msgid "The server responded with an error: \""
-msgstr "Máy chủ đã trả lời bằng lỗi:"
+msgstr "Máy chủ đã trả lời bằng lỗi: \""
 
 #: src/addon/manager.cpp:538 src/addon/manager.cpp:563
 #: src/multiplayer_wait.cpp:409
@@ -3500,25 +3501,19 @@ msgid "Requesting the addon to be deleted"
 msgstr "Đang yêu cầu xóa phần bổ sung"
 
 #: src/addon/manager.cpp:581
-#, fuzzy
-#| msgid "Downloading add-on <i>$addon_title</i>..."
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Đang tải về phần bổ sung <i>$addon_title</i>..."
+msgstr "Đang tải về phần bổ sung: $addon_title|..."
 
 #: src/addon/manager.cpp:587 src/addon/manager.cpp:1136
 msgid "Downloading..."
 msgstr "Đang tải về..."
 
 #: src/addon/manager.cpp:599
-#, fuzzy
-#| msgid ""
-#| "The add-on <i>$addon_title</i> has an invalid file or directory name and "
-#| "cannot be installed."
 msgid ""
 "The add-on has an invalid file or directory name and cannot be installed."
 msgstr ""
-"Phần bổ sung <i>$addon_title</i> có tên tập tin hoặc tên thư mục không hợp "
-"lệ và không thể cài đặt được."
+"Phần bổ sung có tên tập tin hoặc tên thư mục không hợp lệ và không thể cài "
+"đặt được."
 
 #: src/addon/manager.cpp:648
 msgid "The add-on '$addon_title|' has been successfully installed."
@@ -3554,27 +3549,18 @@ msgid "Type"
 msgstr "Kiểu"
 
 #: src/addon/manager.cpp:799
-#, fuzzy
-#| msgid "Install Dependencies"
 msgid "Install dependencies"
 msgstr "Cài đặt thành phần phụ thuộc"
 
 #: src/addon/manager.cpp:800
-#, fuzzy
-#| msgid ""
-#| "The selected add-on has the following dependency, which is not currently "
-#| "installed. Do you wish to install it before continuing?"
-#| msgid_plural ""
-#| "The selected add-on has the following dependencies, which are not "
-#| "currently installed. Do you wish to install them before continuing?"
 msgid ""
 "The selected add-on has the following dependency. Do you want to install it?"
 msgid_plural ""
 "The selected add-on has the following dependencies. Do you want to install "
 "them?"
 msgstr[0] ""
-"Phần bổ sung được chọn có thành phần phụ thuộc sau đây, hiện chưa được cài "
-"đặt. Bạn có muốn cài đặt chúng trước khi tiếp tục không?"
+"Phần bổ sung được chọn có thành phần phụ thuộc sau đây. Bạn có muốn cài đặt "
+"chúng không?"
 
 #: src/addon/manager.cpp:829
 msgid "Installation of a dependency failed"
@@ -3589,21 +3575,14 @@ msgstr ""
 "Hãy thử cập nhật các phần bổ sung đã cài. "
 
 #: src/addon/manager.cpp:845
-#, fuzzy
-#| msgid "Installation Failed"
 msgid "Installation failed"
 msgstr "Cài đặt thất bại"
 
 #: src/addon/manager.cpp:847 src/addon/manager.cpp:1075
-#, fuzzy
-#| msgid ""
-#| "The following add-on could not be downloaded or installed successfully:"
-#| msgid_plural ""
-#| "The following add-ons could not be downloaded or installed successfully:"
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Không thể tải về hoặc cài đặt thành công phần bổ sung sau đây:"
+msgstr[0] "Không thể tải về hoặc cập nhật thành công phần bổ sung sau đây:"
 
 #: src/addon/manager.cpp:908
 msgid "Outdated add-ons"
@@ -3629,14 +3608,10 @@ msgid "Could not find any updated add-ons on this server."
 msgstr "Không thể tìm thấy phần bổ sung nào đã cập nhật trên máy chủ này."
 
 #: src/addon/manager.cpp:935
-#, fuzzy
-#| msgid "New Version"
 msgid "New version"
 msgstr "Phiên bản mới"
 
 #: src/addon/manager.cpp:935
-#, fuzzy
-#| msgid "Old Version"
 msgid "Old version"
 msgstr "Phiên bản cũ"
 
@@ -3649,8 +3624,6 @@ msgid "Select an add-on to update:"
 msgstr "Chọn phần bổ sung cần cập nhật:"
 
 #: src/addon/manager.cpp:1002
-#, fuzzy
-#| msgid "Update All"
 msgid "Update all"
 msgstr "Cập nhật toàn bộ"
 
@@ -3669,8 +3642,6 @@ msgstr ""
 "thiếu. Hãy thử cập nhật các phần bổ sung đã cài. "
 
 #: src/addon/manager.cpp:1073
-#, fuzzy
-#| msgid "Update Failed"
 msgid "Update failed"
 msgstr "Cập nhật thất bại"
 
@@ -3706,33 +3677,24 @@ msgid "Connecting..."
 msgstr "Đang kết nối..."
 
 #: src/addon/manager.cpp:1129
-#, fuzzy
-#| msgid "Downloading list of add-ons..."
 msgid "Requesting list of add-ons"
-msgstr "Đang tải về danh sách phần bổ sung..."
+msgstr "Đang lấy danh sách phần bổ sung"
 
 #: src/addon/manager.cpp:1148
-#, fuzzy
-#| msgid ""
-#| "An error occurred while downloading the add-ons list from the server."
 msgid "An error occurred while communicating with the server."
-msgstr "Có lỗi xảy ra khi tải về danh sách phần bổ sung từ máy chủ."
+msgstr "Có lỗi xảy ra khi giao tiếp với máy chủ."
 
 #: src/addon/manager.cpp:1165
 msgid "Downloads"
 msgstr "Lượt tải về"
 
 #: src/addon/manager.cpp:1260
-#, fuzzy
-#| msgid "Publish: $addon_title"
 msgid "Publish add-on: "
-msgstr "Phát hành: $addon_title"
+msgstr "Phát hành phần bổ sung: "
 
 #: src/addon/manager.cpp:1266
-#, fuzzy
-#| msgid "Get add-ons"
 msgid "Delete add-on: "
-msgstr "Tải phần bổ sung"
+msgstr "Xóa phần bổ sung: "
 
 #: src/addon/manager.cpp:1272
 msgid "There are no add-ons available for download from this server."
@@ -3966,10 +3928,8 @@ msgid "Load Game"
 msgstr "Tải trò chơi"
 
 #: src/dialogs.cpp:627
-#, fuzzy
-#| msgid "Choose the add-on to download."
 msgid "Choose the game to load"
-msgstr "Chọn phần bổ sung cần tải về."
+msgstr "Chọn trò chơi cần tải"
 
 #: src/dialogs.cpp:641
 msgid "Show replay"
@@ -4303,26 +4263,20 @@ msgid "Do you really want to dismiss him?"
 msgstr "Bạn có thực sự muốn giải tán đơn vị này không?"
 
 #: src/menu_events.cpp:100
-#, fuzzy
-#| msgid "This unit is loyal and requires no upkeep. "
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "Đơn vị này là đơn vị trung thành và không cần phí bảo trì. "
+msgstr "Thưa ngài, đơn vị này là đơn vị trung thành và không cần phí bảo trì! "
 
 #: src/menu_events.cpp:101 src/menu_events.cpp:104 src/menu_events.cpp:108
 msgid "Do you really want to dismiss her?"
 msgstr "Bạn có thực sự muốn giải tán đơn vị này không?"
 
 #: src/menu_events.cpp:103
-#, fuzzy
-#| msgid "This unit is an experienced one, having advanced levels. "
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Đơn vị này là một đơn vị có kinh nghiệm với cấp độ cao. "
+msgstr "Thưa ngài, đơn vị này là một đơn vị có kinh nghiệm với cấp độ cao! "
 
 #: src/menu_events.cpp:107
-#, fuzzy
-#| msgid "This unit is close to advancing a level. "
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "Đơn vị này sắp sửa nâng cấp. "
+msgstr "Thưa ngài, đơn vị này sắp sửa nâng cấp! "
 
 #: src/menu_events.cpp:205
 msgid "Statistics"
@@ -5233,15 +5187,11 @@ msgid "Reading from Server..."
 msgstr "Đang đọc từ máy chủ..."
 
 #: src/multiplayer.cpp:170
-#, fuzzy
-#| msgid ""
-#| "The server accepts versions '$version1' while you are using version "
-#| "'$version2'"
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"Máy chủ chấp nhận phiên bản '$version1' trong khi bạn đang sử dụng phiên bản "
+"Máy chủ yêu cầu phiên bản '$version1' trong khi bạn đang sử dụng phiên bản "
 "'$version2'"
 
 #: src/multiplayer.cpp:181
@@ -5844,8 +5794,6 @@ msgid "Auto-Save"
 msgstr "Lưu tự động"
 
 #: src/play_controller.cpp:1116
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to turn "
 msgstr "Trở lại lượt "
 
@@ -6244,26 +6192,15 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Cảnh báo: Tập tin bạn thử tải bị hỏng. Vẫn đang tải.\n"
 
 #: src/savegame.cpp:524
-#, fuzzy
-#| msgid ""
-#| "This save is from an old, unsupported version ($version_number|) and "
-#| "cannot be loaded."
 msgid "This save is from a version too old to be loaded."
-msgstr ""
-"Bản lưu này là từ một phiên bản cũ, không được hỗ trợ ($version_number|) và "
-"không thể tải được."
+msgstr "Bản lưu này là từ một phiên bản quá cũ."
 
 #: src/savegame.cpp:530
-#, fuzzy
-#| msgid ""
-#| "This save is from a different version of the game ($version_number|). Do "
-#| "you wish to try to load it?"
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
-"Bản lưu này là từ một phiên bản khác của trò chơi ($version_number|). Bạn có "
-"muốn tải nó không?"
+"Bản lưu này là từ một phiên bản khác của trò chơi. Bạn có muốn tải nó không?"
 
 #: src/savegame.cpp:578
 msgid "This is not a multiplayer save"
@@ -6282,12 +6219,8 @@ msgid "Overwrite?"
 msgstr "Ghi đè?"
 
 #: src/savegame.cpp:740
-#, fuzzy
-#| msgid ""
-#| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr ""
-"Tên bản lưu không nên kết thúc bằng '.gz' hoặc '.bz2'. Xin xóa phần mở rộng."
+msgstr "Tên bản lưu không nên kết thúc bằng '.gz'. Xin chọn một tên khác."
 
 #: src/savegame.cpp:806
 msgid "Saved"
@@ -6322,10 +6255,8 @@ msgid "Unexpected characters at line start"
 msgstr "Ký tự không mong muốn ở đầu dòng"
 
 #: src/serialization/parser.cpp:145
-#, fuzzy
-#| msgid "Missing closing tag for tag [$tag] at $pos"
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr "Thiếu thẻ đóng cho thẻ [$tag] ở $pos"
+msgstr "Thiếu thẻ đóng cho thẻ $tag ở $pos"
 
 #: src/serialization/parser.cpp:158
 msgid "Unterminated [element] tag"
@@ -6352,10 +6283,8 @@ msgid "Unexpected closing tag"
 msgstr "Thẻ đóng không mong muốn"
 
 #: src/serialization/parser.cpp:208
-#, fuzzy
-#| msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "Tìm thấy thẻ đóng không hợp lệ [/$tag2] cho thẻ [$tag1] (mở ở $pos)"
+msgstr "Tìm thấy thẻ đóng không hợp lệ $tag2 cho thẻ $tag1 (mở ở $pos)"
 
 #: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
 msgid "Empty variable name"

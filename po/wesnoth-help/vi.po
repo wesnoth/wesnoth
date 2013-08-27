@@ -1,19 +1,22 @@
-# Vietnamese translation for Wesnoth
+# Vietnamese translations for Battle for Wesnoth package
+# Copyright (C) 2009 Wesnoth Development Team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
 # Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2013-03-10 08:25+0800\n"
-"Last-Translator: Phạm Thành Nam\n"
-"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2013-08-17 11:34+0200\n"
+"PO-Revision-Date: 2013-08-25 19:16+0700\n"
+"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:523
@@ -88,15 +91,6 @@ msgstr "hồi máu +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
 #: data/core/macros/abilities.cfg:16
-#, fuzzy
-#| msgid ""
-#| "Allows the unit to heal adjacent allied units at the beginning of our "
-#| "turn.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 4 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Heals +4:\n"
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
@@ -106,6 +100,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Hồi máu +4:\n"
 "Cho phép đơn vị hồi máu cho các đơn vị đồng minh đứng bên cạnh ở đầu lượt.\n"
 "\n"
 "Một đơn vị được điều trị viên này chăm sóc có thể phục hồi lên tới 4 máu mỗi "
@@ -129,15 +124,6 @@ msgstr "hồi máu +8"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
-#, fuzzy
-#| msgid ""
-#| "This unit combines herbal remedies with magic to heal units more quickly "
-#| "than is normally possible on the battlefield.\n"
-#| "\n"
-#| "A unit cared for by this healer may heal up to 8 HP per turn, or stop "
-#| "poison from taking effect for that turn.\n"
-#| "A poisoned unit cannot be cured of its poison by a healer, and must seek "
-#| "the care of a village or a unit that can cure."
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -148,6 +134,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
+"Hồi máu +8:\n"
 "Đơn vị này kết hợp các phương thuốc thảo mộc với phép thuật để điều trị cho "
 "các đơn vị trên chiến trường nhanh hơn bình thường.\n"
 "\n"
@@ -1173,14 +1160,6 @@ msgstr "Lệnh"
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:93
-#, fuzzy
-#| msgid ""
-#| "Certain units have abilities that either directly affect other units or "
-#| "have an impact on how the unit interacts with other units. These "
-#| "abilities will be listed under this section as you encounter them. Each "
-#| "page will provide a description of what the ability does and which "
-#| "(currently discovered) units have it.\n"
-#| "\n"
 msgid ""
 "Certain units have abilities that either directly affect other units, or "
 "have an impact on how the unit interacts with other units. These abilities "
@@ -1189,9 +1168,7 @@ msgid ""
 msgstr ""
 "Một số đơn vị có khả năng hoặc tác động trực tiếp đến các đơn vị khác, hoặc "
 "tác động đến cách mà đơn vị đó tương tác với các đơn vị khác. Các khả năng "
-"sẽ được liệt kê dưới đề mục này khi bạn bắt gặp chúng. Mỗi trang sẽ cung cấp "
-"một mô tả về khả năng làm gì và những đơn vị nào (hiện đã được khám phá) có "
-"khả năng đó.\n"
+"sẽ được liệt kê dưới đề mục này khi bạn bắt gặp chúng.\n"
 "\n"
 
 #. [topic]: id=..weapon_specials
@@ -3839,15 +3816,12 @@ msgstr "giải độc"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
-#, fuzzy
-#| msgid ""
-#| "A curer can cure a unit of poison, although that unit will receive no "
-#| "additional healing on the turn it is cured of the poison."
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
+"Giải độc:\n"
 "Một người giải độc có thể cứu chữa một đơn vị khỏi độc tố, mặc dù đơn vị đó "
 "sẽ không nhận được thêm lượng máu phục hồi ở lượt nó được giải độc."
 
@@ -3863,15 +3837,12 @@ msgstr "tái tạo"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
-#, fuzzy
-#| msgid ""
-#| "The unit will heal itself 8 HP per turn. If it is poisoned, it will "
-#| "remove the poison instead of healing."
 msgid ""
 "Regenerates:\n"
 "The unit will heal itself 8 HP per turn. If it is poisoned, it will remove "
 "the poison instead of healing."
 msgstr ""
+"Tái tạo:\n"
 "Đơn vị sẽ tự phục hồi 8 máu mỗi lượt. Nếu nó bị nhiễm độc, nó sẽ loại bỏ "
 "chất độc thay vì phục hồi."
 
@@ -3887,15 +3858,12 @@ msgstr "chịu đòn"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:101
-#, fuzzy
-#| msgid ""
-#| "This unit’s resistances are doubled, up to a maximum of 50%, when "
-#| "defending. Vulnerabilities are not affected."
 msgid ""
 "Steadfast:\n"
 "This unit’s resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
+"Chịu đòn:\n"
 "Sức kháng cự của đơn vị này tăng gấp đôi, lên tới tối đa 50%, khi phòng thủ. "
 "Sức kháng cự âm không bị ảnh hưởng."
 
@@ -3917,15 +3885,6 @@ msgstr "lãnh đạo"
 #: data/core/macros/abilities.cfg:119 data/core/macros/abilities.cfg:142
 #: data/core/macros/abilities.cfg:177 data/core/macros/abilities.cfg:224
 #: data/core/macros/abilities.cfg:283
-#, fuzzy
-#| msgid ""
-#| "This unit can lead our own units that are next to it, making them fight "
-#| "better.\n"
-#| "\n"
-#| "Adjacent own units of lower level will do more damage in battle. When a "
-#| "unit adjacent to, of a lower level than, and on the same side as a unit "
-#| "with Leadership engages in combat, its attacks do 25% more damage times "
-#| "the difference in their levels."
 msgid ""
 "Leadership:\n"
 "This unit can lead our own units that are next to it, making them fight "
@@ -3936,6 +3895,7 @@ msgid ""
 "Leadership engages in combat, its attacks do 25% more damage times the "
 "difference in their levels."
 msgstr ""
+"Lãnh đạo:\n"
 "Đơn vị này có thể lãnh đạo các đơn vị cùng phe đứng cạnh nó, làm cho chúng "
 "chiến đấu tốt hơn.\n"
 "\n"
@@ -3956,15 +3916,12 @@ msgstr "đột nhập"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:350
-#, fuzzy
-#| msgid ""
-#| "This unit is skilled in moving past enemies quickly, and ignores all "
-#| "enemy Zones of Control."
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
+"Đột nhập:\n"
 "Đơn vị này rất giỏi trong việc di chuyển nhanh chóng qua kẻ thù, và bỏ qua "
 "toàn bộ vùng kiểm soát của kẻ thù."
 
@@ -3980,13 +3937,6 @@ msgstr "chiếu sáng"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:368
-#, fuzzy
-#| msgid ""
-#| "This unit illuminates the surrounding area, making lawful units fight "
-#| "better, and chaotic units fight worse.\n"
-#| "\n"
-#| "Any units adjacent to this unit will fight as if it were dusk when it is "
-#| "night, and as if it were day when it is dusk."
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -3995,6 +3945,7 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
+"Chiếu sáng:\n"
 "Đơn vị này chiếu sáng vùng xung quanh, làm cho các đơn vị chính thống chiến "
 "đấu tốt hơn, và các đơn vị hỗn độn chiến đấu kém hơn.\n"
 "\n"
@@ -4013,15 +3964,12 @@ msgstr "dịch chuyển tức thời"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:381
-#, fuzzy
-#| msgid ""
-#| "This unit may teleport between any two empty villages owned by its side "
-#| "using one of its moves."
 msgid ""
 "Teleport:\n"
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
+"Dịch chuyển tức thời:\n"
 "Đơn vị này có thể dịch chuyển tức thời giữa hai ngôi làng trống bất kỳ mà "
 "phe nó sở hữu, sử dụng một điểm di chuyển."
 
@@ -4037,13 +3985,6 @@ msgstr "mai phục"
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:424 data/core/macros/abilities.cfg:428
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in forest, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in forest, except if they "
-#| "have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "Ambush:\n"
 "This unit can hide in forest, and remain undetected by its enemies.\n"
@@ -4052,6 +3993,7 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
+"Mai phục:\n"
 "Đơn vị này có thể ẩn nấp trong rừng, và không bị kẻ thù phát hiện.\n"
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong rừng, trừ "
@@ -4066,13 +4008,6 @@ msgstr "săn đêm"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:448 data/core/macros/abilities.cfg:454
-#, fuzzy
-#| msgid ""
-#| "The unit becomes invisible during night.\n"
-#| "\n"
-#| "Enemy units cannot see this unit at night, except if they have units next "
-#| "to it. Any enemy unit that first discovers this unit immediately loses "
-#| "all its remaining movement."
 msgid ""
 "Nightstalk:\n"
 "The unit becomes invisible during night.\n"
@@ -4081,6 +4016,7 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Săn đêm:\n"
 "Đơn vị này trở nên vô hình trong đêm.\n"
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này vào ban đêm, trừ khi chúng "
@@ -4104,15 +4040,6 @@ msgstr "ẩn nấp"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:474 data/core/macros/abilities.cfg:480
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in villages (with the exception of water villages), "
-#| "and remain undetected by its enemies, except by those standing next to "
-#| "it.\n"
-#| "\n"
-#| "Enemy units can not see this unit while it is in a village, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "Concealment:\n"
 "This unit can hide in villages (with the exception of water villages), and "
@@ -4122,6 +4049,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Ẩn nấp:\n"
 "Đơn vị này có thể ẩn nấp trong làng (trừ những ngôi làng dưới nước), và "
 "không bị kẻ thù phát hiện, trừ khi kẻ thù có đơn vị đứng cạnh nó.\n"
 "\n"
@@ -4141,13 +4069,6 @@ msgstr "lặn"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:500 data/core/macros/abilities.cfg:506
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in deep water, and remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in deep water, except if "
-#| "they have units next to it. Any enemy unit that first discovers this unit "
-#| "immediately loses all its remaining movement."
 msgid ""
 "Submerge:\n"
 "This unit can hide in deep water, and remain undetected by its enemies.\n"
@@ -4156,6 +4077,7 @@ msgid ""
 "have units next to it. Any enemy unit that first discovers this unit "
 "immediately loses all its remaining movement."
 msgstr ""
+"Lặn:\n"
 "Đơn vị này có thể ẩn nấp trong nước sâu, và không bị kẻ thù phát hiện.\n"
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong nước sâu, "
@@ -4194,17 +4116,13 @@ msgstr "đánh lén"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:596
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack deals double damage if there is an "
-#| "enemy of the target on the opposite side of the target, and that unit is "
-#| "not incapacitated (turned to stone or otherwise paralyzed)."
 msgid ""
 "Backstab:\n"
 "When used offensively, this attack deals double damage if there is an enemy "
 "of the target on the opposite side of the target, and that unit is not "
 "incapacitated (turned to stone or otherwise paralyzed)."
 msgstr ""
+"Đánh lén:\n"
 "Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi nếu có "
 "một kẻ thù của đối phương ở phía đối diện của đối phương, và đơn vị đó không "
 "bị mất khả năng (hóa đá hay bị tê liệt)."
@@ -4217,34 +4135,26 @@ msgstr "bệnh dịch"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:610
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "unit identical to and on the same side as the unit with the Plague "
-#| "attack. This doesn’t work on Undead or units in villages."
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a unit "
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
+"Bệnh dịch:\n"
 "Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
 "thế bằng một đơn vị giống hệt và ở cùng phe với đơn vị có đòn tấn công bệnh "
 "dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:622
-#, fuzzy
-#| msgid ""
-#| "When a unit is killed by a Plague attack, that unit is replaced with a "
-#| "Walking Corpse on the same side as the unit with the Plague attack. This "
-#| "doesn’t work on Undead or units in villages."
 msgid ""
 "Plague:\n"
 "When a unit is killed by a Plague attack, that unit is replaced with a "
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn’t work on Undead or units in villages."
 msgstr ""
+"Bệnh dịch:\n"
 "Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
 "thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
 "dịch. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
@@ -4256,12 +4166,6 @@ msgstr "chậm"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:634
-#, fuzzy
-#| msgid ""
-#| "This attack slows the target until it ends a turn. Slow halves the damage "
-#| "caused by attacks and the movement cost for a slowed unit is doubled. A "
-#| "unit that is slowed will feature a snail icon in its sidebar information "
-#| "when it is selected."
 msgid ""
 "Slow:\n"
 "This attack slows the target until it ends a turn. Slow halves the damage "
@@ -4269,6 +4173,7 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
+"Chậm:\n"
 "Đòn tấn công này làm chậm đối phương đến khi nó kết thúc lượt. Đòn tấn công "
 "chậm làm giảm một nửa lượng thiệt hại gây ra bởi đòn của đối phương và chi "
 "phí di chuyển của đơn vị bị chậm tăng gấp đôi. Một đơn vị bị chậm sẽ có biểu "
@@ -4281,15 +4186,12 @@ msgstr "hóa đá"
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:645
-#, fuzzy
-#| msgid ""
-#| "This attack petrifies the target, turning it to stone. Units that have "
-#| "been petrified may not move or attack."
 msgid ""
 "Petrify:\n"
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
+"Hóa đá:\n"
 "Đòn tấn công này hóa đá đối phương, biến nó thành đá. Các đơn vị đã bị hóa "
 "đá không thể di chuyển hay tấn công."
 
@@ -4300,14 +4202,11 @@ msgstr "thiện xạ"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:656
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack always has at least a 60% chance to "
-#| "hit."
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"Thiện xạ:\n"
 "Khi được sử dụng để tấn công, đòn này luôn có cơ hội đánh trúng ít nhất cũng "
 "là 60%."
 
@@ -4318,12 +4217,6 @@ msgstr "liên hoàn"
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:683
-#, fuzzy
-#| msgid ""
-#| "The number of strikes of this attack decreases when the unit is wounded. "
-#| "The number of strikes is proportional to the percentage of its of maximum "
-#| "HP the unit has. For example a unit with 3/4 of its maximum HP will get "
-#| "3/4 of the number of strikes."
 msgid ""
 "Swarm:\n"
 "The number of strikes of this attack decreases when the unit is wounded. The "
@@ -4331,6 +4224,7 @@ msgid ""
 "unit has. For example a unit with 3/4 of its maximum HP will get 3/4 of the "
 "number of strikes."
 msgstr ""
+"Liên hoàn:\n"
 "Số lần đánh của đòn tấn công này giảm khi đơn vị bị thương. Số lần đánh tỷ "
 "lệ với phần trăm lượng máu trên lượng tối đa đơn vị có. Ví dụ một đơn vị có "
 "lượng máu bằng 3/4 lượng máu tối đa sẽ có số lần đánh bằng 3/4 số lần đánh "
@@ -4343,16 +4237,12 @@ msgstr "xung kích"
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:694
-#, fuzzy
-#| msgid ""
-#| "When used offensively, this attack deals double damage to the target. It "
-#| "also causes this unit to take double damage from the target’s "
-#| "counterattack."
 msgid ""
 "Charge:\n"
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
+"Xung kích:\n"
 "Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
 "đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
 "đôi từ đòn phản công của đối phương."
@@ -4364,15 +4254,12 @@ msgstr "bòn rút"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:708
-#, fuzzy
-#| msgid ""
-#| "This unit drains health from living units, healing itself for half the "
-#| "amount of damage it deals (rounded down)."
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"Bòn rút:\n"
 "Đơn vị này bòn rút sức khỏe từ các đơn vị có sự sống, phục hồi máu cho bản "
 "thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
@@ -4383,17 +4270,13 @@ msgstr "độc"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:730
-#, fuzzy
-#| msgid ""
-#| "This attack poisons living targets. Poisoned units lose 8 HP every turn "
-#| "until they are cured or are reduced to 1 HP. Poison can not, of itself, "
-#| "kill a unit."
 msgid ""
 "Poison:\n"
 "This attack poisons living targets. Poisoned units lose 8 HP every turn "
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
+"Độc:\n"
 "Đòn tấn công này làm nhiễm độc những đối thủ có sự sống. Các đơn vị bị nhiễm "
 "độc mất 8 máu mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống còn 1 "
 "máu. Bản thân chất độc không thể giết một đơn vị."

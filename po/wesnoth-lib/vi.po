@@ -1,18 +1,21 @@
-# Vietnamese translation for Wesnoth
+# Vietnamese translations for Battle for Wesnoth package
+# Copyright (C) 2009 Wesnoth Development Team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+#
 # Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2009, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2013-03-12 21:41+0800\n"
-"Last-Translator: Phạm Thành Nam\n"
-"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2013-08-17 11:34+0200\n"
+"PO-Revision-Date: 2013-08-25 18:56+0700\n"
+"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [terrain_type]: id=deep_water_gray
@@ -1280,8 +1283,6 @@ msgstr "Xóa"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
-#, fuzzy
-#| msgid "Play a Campaign"
 msgid "Play a campaign"
 msgstr "Chơi một chiến dịch"
 
@@ -1496,10 +1497,8 @@ msgstr "Chiều cao cũ:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:153
-#, fuzzy
-#| msgid "Expand/shrink direction:"
 msgid "Expand / shrink direction"
-msgstr "Mở rộng / thu hẹp hướng:"
+msgstr "Mở rộng / thu hẹp hướng"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:248
@@ -2481,8 +2480,6 @@ msgid "Save replay on SP/MP victory or MP defeat"
 msgstr "Lưu bản phát lại khi chiến thắng 1NC/NNC hoặc thua cuộc NNC"
 
 #: src/game_preferences_display.cpp:178
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr "Xóa bản lưu tự động khi chiến thắng 1NC/NNC hoặc thua cuộc NNC"
 
@@ -2728,14 +2725,10 @@ msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Nhìn thấy đơn vị đồng minh làm gián đoạn di chuyển của đơn vị của bạn"
 
 #: src/game_preferences_display.cpp:367
-#, fuzzy
-#| msgid "Save replay on SP/MP victory or MP defeat"
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Lưu bản phát lại khi chiến thắng 1NC/NNC hoặc thua cuộc NNC"
 
 #: src/game_preferences_display.cpp:370
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Xóa bản lưu tự động khi chiến thắng 1NC/NNC hoặc thua cuộc NNC"
 
@@ -2748,16 +2741,12 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "Sắp xếp danh sách người chơi trong phòng gặp gỡ theo từng nhóm"
 
 #: src/game_preferences_display.cpp:378
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby"
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Hiện biểu tượng trước tên người chơi trong phòng gặp gỡ"
+msgstr "Hiện biểu tượng trước tên người chơi trong phòng gặp gỡ."
 
 #: src/game_preferences_display.cpp:381
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)"
 msgid "Uncheck to delete the saved password (on exit)."
-msgstr "Bỏ đánh dấu để xóa mật khẩu đã lưu (khi thoát)"
+msgstr "Bỏ đánh dấu để xóa mật khẩu đã lưu (khi thoát)."
 
 #: src/game_preferences_display.cpp:385
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -2772,12 +2761,10 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Hiện tin nhắn về tất cả các người chơi tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:391
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games"
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Tìm và thiết lập đường dẫn đến máy chủ NNC để làm chủ trò chơi trên mạng cục "
-"bộ"
+"bộ."
 
 #: src/game_preferences_display.cpp:392
 msgid "View and edit your friends and ignores list"
@@ -3465,10 +3452,8 @@ msgid "Selection Tool"
 msgstr "Công cụ Lựa chọn"
 
 #: src/hotkeys.cpp:148
-#, fuzzy
-#| msgid "Starting Positions Tool"
 msgid "Set Starting Positions Tool"
-msgstr "Công cụ Vị trí ban đầu"
+msgstr "Công cụ Thiết lập vị trí ban đầu"
 
 #: src/hotkeys.cpp:149
 msgid "Next Brush"
@@ -3780,8 +3765,6 @@ msgstr "Xóa phím tắt"
 
 #: src/preferences_display.cpp:395 src/preferences_display.cpp:403
 #: src/preferences_display.cpp:415
-#, fuzzy
-#| msgid "This Hotkey is already in use."
 msgid "This hotkey is already in use."
 msgstr "Phím tắt này đã được sử dụng."
 

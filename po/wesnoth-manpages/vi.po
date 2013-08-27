@@ -2,20 +2,21 @@
 # Copyright (C) 2009 Wesnoth Development Team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
-# Automatically generated, 2009, 2013.
+# Phạm Thành Nam <phamthanhnam.ptn@gmail.com>, 2013.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-03-09 08:32+0100\n"
-"PO-Revision-Date: 2013-03-08 10:50+0800\n"
-"Last-Translator: Phạm Thành Nam\n"
-"Language-Team: Vietnamese <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2013-08-25 19:35+0700\n"
+"Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
+"Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 # type: TH
 #. type: TH
@@ -28,7 +29,7 @@ msgstr "WESNOTH"
 #: ../../doc/man/wesnoth.6:16 ../../doc/man/wesnothd.6:16
 #, no-wrap
 msgid "2013"
-msgstr ""
+msgstr "2013"
 
 # type: TH
 #. type: TH
@@ -154,10 +155,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
+#, no-wrap
 msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
-msgstr "B<--campaign-difficulty [E<lt>độ_khóE<gt>]>"
+msgstr "B<--campaign-difficulty E<lt>độ_khóE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -504,23 +504,12 @@ msgstr "in tên của thư mục dữ liệu trò chơi và thoát."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
-#| msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<-p, --preprocess E<lt>tập_tin_nguồn/thư_mụcE<gt> E<lt>thư_mục_đíchE<gt>>"
+msgstr "B<--preprocess, -p[=E<lt>định_nghĩa_1E<gt>,E<lt>định_nghĩa_2E<gt>,...] E<lt>tập_tin/thư_mụcE<gt> E<lt>thư_mục_đíchE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:173
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. For each file(s) a plain .cfg file "
-#| "and a processed .cfg file will be written in specified target directory. "
-#| "If a folder is specified, it will be preprocessed recursively based on "
-#| "the known preprocessor rules. The common macroses from the \"data/core/"
-#| "macros\" directory will be preprocessed before the specified resources.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> For details "
-#| "regarding the preprocessor visit: http://wiki.wesnoth.org/"
-#| "PreprocessorRef#Command-line_preprocessor"
 msgid ""
 "preprocesses a specified file/folder. The file(s) will be written in "
 "specified target directory: a plain cfg file and a processed cfg file. If a "
@@ -533,14 +522,16 @@ msgid ""
 "campaigns/tutorial ~/result> or B<-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/"
 "data/campaign/camp ~/result>"
 msgstr ""
-"tiền xử lý một tập tin/thư mục được chỉ định. Với mỗi tập tin, một tập tin ."
-"cfg thường và một tập tin .cfg được xử lý sẽ được ghi trong thư mục đích "
-"được chỉ định. Nếu một thư mục được chỉ định, nó sẽ được tiền xử lý đệ quy "
-"dựa trên các quy tắc tiền xử lý đã biết. Các macro chung từ thư mục \"data/"
-"core/macros\" sẽ được tiền xử lý trước các tài nguyên được chỉ định. Ví dụ: "
-"B<-p ~/wesnoth/data/campaigns/tutorial ~/result.> Để biết chi tiết liên quan "
-"đến tiền xử lý, truy cập: http://wiki.wesnoth.org/PreprocessorRef#Command-"
-"line_preprocessor"
+"tiền xử lý một tập tin/thư mục được chỉ định. (Các) tập tin sẽ được ghi vào "
+"thư mục đích được chỉ định: một tập tin cfg thường và một tập tin cfg được "
+"xử lý. Nếu một thư mục được chỉ định, nó sẽ được tiền xử lý đệ quy dựa trên "
+"các quy tắc tiền xử lý đã biết. Các macro chung từ data/core/macros sẽ được "
+"tiền xử lý trước các tài nguyên được chỉ định. B<định_nghĩa_1,"
+"định_nghĩa_2,...> - các định nghĩa bổ sung sẽ được thêm trước khi xử lý các "
+"tập tin. Nếu bạn muốn thêm chúng, bạn phải thêm ký tự '=' đằng trước. Nếu "
+"'SKIP_CORE' ở trong danh sách định nghĩa, data/core sẽ không được tiền xử "
+"lý. Ví dụ: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> hoặc B<-"
+"p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
@@ -933,11 +924,9 @@ msgstr "BẢN QUYỀN"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291 ../../doc/man/wesnothd.6:280
-#, fuzzy
-#| msgid ""
-#| "Copyright \\(co 2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
-msgstr "Bản quyền \\(2003-2011 David White E<lt>davidnwhite@verizon.netE<gt>"
+msgstr ""
+"Bản quyền \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 
 # type: Plain text
 #. type: Plain text
