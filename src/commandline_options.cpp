@@ -68,7 +68,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	load(),
 	logdomains(),
 	multiplayer(false),
-	campaign_screens(false),
 	multiplayer_ai_config(),
 	multiplayer_algorithm(),
 	multiplayer_controller(),
@@ -189,7 +188,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	po::options_description multiplayer_opts("Multiplayer options");
 	multiplayer_opts.add_options()
 		("multiplayer,m", "Starts a multiplayer game. There are additional options that can be used as explained below:")
-		("campaign-screens", "Shows multiplayer screens in between campaign's scenarios for additional game configuration. Experimental function.")
 		("ai-config", po::value<std::vector<std::string> >()->composing(), "selects a configuration file to load for this side. <arg> should have format side:value")
 		("algorithm", po::value<std::vector<std::string> >()->composing(), "selects a non-standard algorithm to be used by the AI controller for this side. <arg> should have format side:value")
 		("controller", po::value<std::vector<std::string> >()->composing(), "selects the controller for this side. <arg> should have format side:value")
@@ -311,8 +309,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("multiplayer"))
 		multiplayer = true;
-	if (vm.count("campaign-screens"))
-		campaign_screens = true;
 	if (vm.count("new-storyscreens"))
 		new_storyscreens = true;
 	if (vm.count("new-widgets"))

@@ -129,9 +129,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 			std::cerr << "selected scenario id: [" << jump_to_campaign_.scenario_id_ << "]\n";
 		}
 	}
-	if (cmdline_opts_.campaign_screens)	{
-		game_config::campaign_screens = true;
-	}
 	if (cmdline_opts_.clock)
 		gui2::show_debug_clock_button = true;
 	if (cmdline_opts_.debug) {

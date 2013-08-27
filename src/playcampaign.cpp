@@ -280,8 +280,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
-	if (!game_config::campaign_screens || first_scenario ||
+	if (!init_level["allow_new_game"].to_bool(true) || first_scenario ||
 		io_type == IO_CLIENT) {
+
 		team_init(init_level, state_of_game);
 	}
 
@@ -547,7 +548,11 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				return res;
 			}
 
-			if (game_config::campaign_screens) {
+			config const* next_scenario = &game_config.find_child(type, "id",
+				gamestate.carryover_sides_start["next_scenario"]);
+			if (next_scenario != NULL &&
+				(*next_scenario)["allow_new_game"].to_bool(true)) {
+
 				// Opens mp::connect dialog to get a new gamestate.
 				mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
 					game_config);
@@ -609,8 +614,9 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					connect_engine(new mp::connect_engine(disp, gamestate,
 						params, !network_game, false));
 
-				if (game_config::campaign_screens) {
-					// Opens mp::connect dialog to get a new gamestate.
+				if ((*scenario)["allow_new_game"].to_bool(true)) {
+					// Opens mp::connect dialog to allow users to
+					// make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, params.name);
 					if (connect_res == mp::ui::QUIT) {

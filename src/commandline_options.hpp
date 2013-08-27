@@ -83,8 +83,6 @@ public:
 	boost::optional<std::string> logdomains;
 	/// True if --multiplayer was given on the command line. Goes directly into multiplayer mode.
 	bool multiplayer;
-	/// True if --campaign-screens was given on the command line. Additional game options in between campaign's scenarios.
-	bool campaign_screens;
 	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string> > > multiplayer_ai_config;
 	/// Non-empty if --algorithm was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer.
