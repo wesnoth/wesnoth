@@ -274,17 +274,13 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
-		io_type_t& io_type, end_level_data &end_level, bool first_scenario)
+		io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
-	if (!init_level["allow_new_game"].to_bool(true) || first_scenario ||
-		io_type == IO_CLIENT) {
-
-		team_init(init_level, state_of_game);
-	}
+	team_init(init_level, state_of_game);
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
 		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
@@ -344,8 +340,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		type = "scenario";
 
 	config const* scenario = NULL;
-
-	bool first_scenario = true;
 
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
@@ -468,7 +462,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level, first_scenario);
+				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
@@ -488,8 +482,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			e.show(disp);
 			return QUIT;
 		}
-
-		first_scenario = false;
 
 		// Save-management options fire on game end.
 		// This means: (a) we have a victory, or
@@ -542,16 +534,30 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		sides.rng().rotate_random();
 		gamestate.carryover_sides_start = sides.to_config();
 
+		if (io_type != IO_NONE) {
+			// Retrieve next scenario data.
+			scenario = &game_config.find_child(type, "id",
+				gamestate.carryover_sides_start["next_scenario"]);
+			if (!*scenario) {
+				scenario = NULL;
+			} else {
+				starting_pos = *scenario;
+				scenario = &starting_pos;
+
+				// Apply carryover before passing a scenario data to the
+				// mp::connect_engine.
+				team_init(starting_pos, gamestate);
+			}
+		}
+
 		if(io_type == IO_CLIENT) {
 			if (gamestate.carryover_sides_start["next_scenario"].empty()) {
 				gamestate.snapshot = config();
 				return res;
 			}
 
-			config const* next_scenario = &game_config.find_child(type, "id",
-				gamestate.carryover_sides_start["next_scenario"]);
-			if (next_scenario != NULL &&
-				(*next_scenario)["allow_new_game"].to_bool(true)) {
+			if (scenario != NULL &&
+				(*scenario)["allow_new_game"].to_bool(true)) {
 
 				// Opens mp::connect dialog to get a new gamestate.
 				mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
@@ -591,65 +597,52 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					return QUIT;
 				}
 			}
-		} else {
-			scenario = &game_config.find_child(type, "id", gamestate.carryover_sides_start["next_scenario"]);
-			if (!*scenario)
-				scenario = NULL;
-			else
-			{
-				starting_pos = *scenario;
-				scenario = &starting_pos;
+		} else if (io_type == IO_SERVER && scenario != NULL) {
+			mp_game_settings& params = gamestate.mp_settings();
+			params.scenario_data = *scenario;
+			params.saved_game = false;
+			params.use_map_settings =
+				(*scenario)["force_use_map_settings"].to_bool(true);
+
+			mp::connect_engine_ptr
+				connect_engine(new mp::connect_engine(disp, gamestate,
+					params, !network_game, false));
+
+			if ((*scenario)["allow_new_game"].to_bool(true)) {
+				// Opens mp::connect dialog to allow users to
+				// make an adjustments for scenario.
+				mp::ui::result connect_res = mp::goto_mp_connect(disp,
+					*connect_engine, game_config, params.name);
+				if (connect_res == mp::ui::QUIT) {
+					return QUIT;
+				}
+			} else {
+				// Start the next scenario immediately.
+				connect_engine->
+					start_game(mp::connect_engine::FORCE_IMPORT_USERS);
 			}
 
-			if(io_type == IO_SERVER && scenario != NULL) {
-				mp_game_settings& params = gamestate.mp_settings();
-				params.scenario_data = *scenario;
-				params.saved_game = false;
-				params.use_map_settings =
-					(*scenario)["force_use_map_settings"].to_bool(true);
+			starting_pos = gamestate.replay_start();
+			scenario = &starting_pos;
 
-				team_init(params.scenario_data, gamestate);
-
-				mp::connect_engine_ptr
-					connect_engine(new mp::connect_engine(disp, gamestate,
-						params, !network_game, false));
-
-				if ((*scenario)["allow_new_game"].to_bool(true)) {
-					// Opens mp::connect dialog to allow users to
-					// make an adjustments for scenario.
-					mp::ui::result connect_res = mp::goto_mp_connect(disp,
-						*connect_engine, game_config, params.name);
-					if (connect_res == mp::ui::QUIT) {
-						return QUIT;
-					}
-				} else {
-					// Start the next scenario immediately.
-					connect_engine->
-						start_game(mp::connect_engine::FORCE_IMPORT_USERS);
-				}
-
-				starting_pos = gamestate.replay_start();
-				scenario = &starting_pos;
-
-				// TODO: move this code to mp::connect_engine
-				// in order to send generated data to the network
-				// before starting the game.
-				//
-				// If the entire scenario should be randomly generated
-				/*if((*scenario)["scenario_generation"] != "") {
-					generate_scenario(scenario);
-				}
-
-				std::string map_data = (*scenario)["map_data"];
-				if(map_data.empty() && (*scenario)["map"] != "") {
-					map_data = read_map((*scenario)["map"]);
-				}
-
-				// If the map should be randomly generated
-				if(map_data.empty() && (*scenario)["map_generation"] != "") {
-					generate_map(scenario);
-				}*/
+			// TODO: move this code to mp::connect_engine
+			// in order to send generated data to the network
+			// before starting the game.
+			//
+			// If the entire scenario should be randomly generated
+			/*if((*scenario)["scenario_generation"] != "") {
+				generate_scenario(scenario);
 			}
+
+			std::string map_data = (*scenario)["map_data"];
+			if(map_data.empty() && (*scenario)["map"] != "") {
+				map_data = read_map((*scenario)["map"]);
+			}
+
+			// If the map should be randomly generated
+			if(map_data.empty() && (*scenario)["map_generation"] != "") {
+				generate_map(scenario);
+			}*/
 		}
 
 		if(scenario != NULL) {
