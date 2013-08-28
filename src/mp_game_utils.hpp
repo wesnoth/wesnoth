@@ -26,8 +26,6 @@ namespace mp {
 config initial_level_config(game_display& disp, const mp_game_settings& params,
 	game_state& state);
 
-config next_level_config(const config& level, game_state& state);
-
 void level_to_gamestate(config& level, game_state& state);
 
 void check_response(network::connection res, const config& data);
