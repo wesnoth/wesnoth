@@ -11,13 +11,13 @@
 
    See the COPYING file for more details.
 */
-
-#include "global.hpp"
+#include "multiplayer.hpp"
 
 #include "dialogs.hpp"
-#include "gettext.hpp"
+#include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
-#include "log.hpp"
+#include "generators/map_create.hpp"
+#include "gettext.hpp"
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/mp_connect.hpp"
@@ -26,20 +26,20 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "hash.hpp"
-#include "multiplayer.hpp"
+#include "log.hpp"
+#include "generators/map_create.hpp"
+#include "mp_game_utils.hpp"
 #include "multiplayer_configure.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_create.hpp"
 #include "multiplayer_error_codes.hpp"
 #include "multiplayer_wait.hpp"
 #include "multiplayer_lobby.hpp"
-#include "playmp_controller.hpp"
 #include "playcampaign.hpp"
-#include "formula_string_utils.hpp"
+#include "playmp_controller.hpp"
+#include "settings.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
-#include "generators/map_create.hpp"
-#include "settings.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>

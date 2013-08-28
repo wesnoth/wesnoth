@@ -206,12 +206,11 @@ void wait::join_game(bool observe)
 	//if we have got valid side data
 	//the first condition is to make sure that we don't have another
 	//WML message with a side-tag in it
-	if (!download_level_data()) {
+	const bool download_res = download_level_data(disp(), level_,
+		first_scenario_);
+	if (!download_res) {
 		set_result(QUIT);
 		return;
-	} else if (!first_scenario_) {
-		config cfg = level_.child("next_scenario");
-		level_ = cfg;
 	}
 
 	// Add the map name to the title.
@@ -419,11 +418,7 @@ void wait::process_network_data(const config& data, const network::connection so
 		level_.apply_diff(c);
 		generate_menu();
 	} else if(data.child("side") || data.child("next_scenario")) {
-		if (first_scenario_) {
-			level_ = data;
-		} else {
-			level_ = data.child("next_scenario");
-		}
+		level_ = first_scenario_ ? data : data.child("next_scenario");
 		LOG_NW << "got some sides. Current number of sides = "
 			<< level_.child_count("side") << ','
 			<< data.child_count("side") << '\n';
@@ -547,38 +542,6 @@ void wait::generate_menu()
 	// "gamelist" user data
 	if (!gamelist().child("user")) {
 		set_user_list(playerlist, true);
-	}
-}
-
-bool wait::download_level_data()
-{
-	if (!first_scenario_) {
-		// Ask for the next scenario data.
-		network::send_data(config("load_next_scenario"), 0);
-	}
-
-	while (!has_level_data()) {
-		network::connection data_res = dialogs::network_receive_dialog(
-			disp(), _("Getting game data..."), level_);
-
-		if (!data_res) {
-			return false;
-		}
-		check_response(data_res, level_);
-		if (level_.child("leave_game")) {
-			return false;
-		}
-	}
-
-	return true;
-}
-
-bool wait::has_level_data()
-{
-	if (first_scenario_) {
-		return level_.has_attribute("version") && level_.child("side");
-	} else {
-		return level_.child("next_scenario");
 	}
 }
 

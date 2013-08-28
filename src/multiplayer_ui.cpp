@@ -71,17 +71,6 @@ namespace {
 
 namespace mp {
 
-void check_response(network::connection res, const config& data)
-{
-	if(!res) {
-		throw network::error(_("Connection timed out"));
-	}
-
-	if (const config &err = data.child("error")) {
-		throw network::error(err["message"]);
-	}
-}
-
 std::string get_color_string(int id)
 {
 	std::string prefix = team::get_side_highlight(id);

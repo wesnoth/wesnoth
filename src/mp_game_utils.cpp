@@ -14,6 +14,7 @@
 #include "mp_game_utils.hpp"
 
 #include "config.hpp"
+#include "dialogs.hpp"
 #include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
 #include "game_config_manager.hpp"
@@ -38,6 +39,19 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
+
+namespace {
+
+bool has_level_data(const config& level, bool first_scenario)
+{
+	if (first_scenario) {
+		return level.has_attribute("version") && level.child("side");
+	} else {
+		return level.child("next_scenario");
+	}
+}
+
+}
 
 namespace mp {
 
@@ -294,6 +308,47 @@ void level_to_gamestate(config& level, game_state& state)
 	}
 
 	state.carryover_sides_start = sides.to_config();
+}
+
+void check_response(network::connection res, const config& data)
+{
+	if (!res) {
+		throw network::error(_("Connection timed out"));
+	}
+
+	if (const config& err = data.child("error")) {
+		throw network::error(err["message"]);
+	}
+}
+
+
+bool download_level_data(game_display& disp, config& level,
+	bool first_scenario)
+{
+	if (!first_scenario) {
+		// Ask for the next scenario data.
+		network::send_data(config("load_next_scenario"), 0);
+	}
+
+	while (!has_level_data(level, first_scenario)) {
+		network::connection data_res = dialogs::network_receive_dialog(
+			disp, _("Getting game data..."), level);
+
+		if (!data_res) {
+			return false;
+		}
+		check_response(data_res, level);
+		if (level.child("leave_game")) {
+			return false;
+		}
+	}
+
+	if (!first_scenario) {
+		config cfg = level.child("next_scenario");
+		level = cfg;
+	}
+
+	return true;
 }
 
 } // end namespace mp

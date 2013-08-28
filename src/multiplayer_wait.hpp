@@ -68,9 +68,6 @@ private:
 
 	void generate_menu();
 
-	bool download_level_data();
-	bool has_level_data();
-
 	gui::button cancel_button_;
 	gui::label start_label_;
 	gui::menu game_menu_;

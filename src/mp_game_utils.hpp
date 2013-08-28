@@ -16,6 +16,7 @@
 
 #include "game_display.hpp"
 #include "mp_game_settings.hpp"
+#include "network.hpp"
 
 class config;
 class game_state;
@@ -28,6 +29,11 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 config next_level_config(const config& level, game_state& state);
 
 void level_to_gamestate(config& level, game_state& state);
+
+void check_response(network::connection res, const config& data);
+
+bool download_level_data(game_display& disp, config& level,
+	bool first_scenario);
 
 } // end namespace mp
 

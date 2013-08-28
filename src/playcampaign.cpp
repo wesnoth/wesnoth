@@ -550,53 +550,32 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 		}
 
-		if(io_type == IO_CLIENT) {
-			if (gamestate.carryover_sides_start["next_scenario"].empty()) {
-				gamestate.snapshot = config();
-				return res;
-			}
-
-			if (scenario != NULL &&
-				(*scenario)["allow_new_game"].to_bool(true)) {
-
+		if (io_type == IO_CLIENT && scenario != NULL) {
+			if ((*scenario)["allow_new_game"].to_bool(true)) {
 				// Opens mp::connect dialog to get a new gamestate.
 				mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
 					game_config);
 				if (wait_res == mp::ui::QUIT) {
+					gamestate.snapshot = config();
 					return QUIT;
 				}
 
 				starting_pos = gamestate.replay_start();
-				scenario = &starting_pos;
-				gamestate = game_state(starting_pos);
-				//retain carryover_sides_start, as the config from the server doesn't contain it
-				gamestate.carryover_sides_start = sides.to_config();
 			} else {
-				// Ask for the next scenario data.
-				network::send_data(config("load_next_scenario"), 0);
-				config cfg;
-				std::string msg = _("Downloading next scenario...");
-				do {
-					cfg.clear();
-					network::connection data_res = dialogs::network_receive_dialog(disp,
-							msg, cfg);
-					if(!data_res) {
-						gamestate.snapshot = config();
-						return QUIT;
-					}
-				} while (!cfg.child("next_scenario"));
-
-				if (const config &c = cfg.child("next_scenario")) {
-					starting_pos = c;
-					scenario = &starting_pos;
-					gamestate = game_state(starting_pos);
-					//retain carryover_sides_start, as the config from the server doesn't contain it
-					gamestate.carryover_sides_start = sides.to_config();
-				} else {
+				const bool download_res = mp::download_level_data(disp,
+					starting_pos, false);
+				if (!download_res) {
 					gamestate.snapshot = config();
 					return QUIT;
 				}
 			}
+
+			scenario = &starting_pos;
+
+			gamestate = game_state(starting_pos);
+			// Retain carryover_sides_start, as the config from the server
+			// doesn't contain it.
+			gamestate.carryover_sides_start = sides.to_config();
 		} else if (io_type == IO_SERVER && scenario != NULL) {
 			mp_game_settings& params = gamestate.mp_settings();
 			params.scenario_data = *scenario;
