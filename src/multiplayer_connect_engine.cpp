@@ -50,6 +50,8 @@ const std::string controller_names[] = {
 const std::string attributes_to_trim[] = {
 	"side",
 	"recruit",
+	"extra_recruit",
+	"previous_recruits",
 	"controller",
 	"id",
 	"team_name",

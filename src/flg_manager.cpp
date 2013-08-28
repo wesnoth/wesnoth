@@ -45,7 +45,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	map_settings_(map_settings),
 	saved_game_(saved_game),
 	has_no_recruits_(side_["recruit"].empty() &&
-		side_["previous_recruits"].empty()),
+		side_["previous_recruits"].empty() && side_["extra_recruit"].empty()),
 	color_(color),
 	available_factions_(),
 	available_leaders_(),
