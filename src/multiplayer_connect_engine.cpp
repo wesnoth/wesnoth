@@ -256,7 +256,7 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 	bool side_assigned = false;
 	if (side_taken >= 0) {
-		side_engines_[side_taken]->place_user(data);
+		side_engines_[side_taken]->place_user(data, true);
 		side_assigned = true;
 	}
 
@@ -280,6 +280,20 @@ void connect_engine::import_user(const config& data, const bool observer,
 
 					side_assigned = true;
 					break;
+				}
+			}
+		}
+	}
+
+	// Check if user has taken any sides, which should get control
+	// over any other sides.
+	BOOST_FOREACH(side_engine_ptr user_side, side_engines_) {
+		if (user_side->player_id() == username) {
+			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
+				if (side->current_player() == user_side->cfg()["side"] &&
+					side->player_id().empty()) {
+
+					side->place_user(data);
 				}
 			}
 		}
@@ -794,6 +808,12 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	flg_(parent_.era_factions_, cfg_, parent_.params_.use_map_settings,
 		parent_.params_.saved_game, color_)
 {
+	// Check if this side should give its control to some other side.
+	const int side_cntr = cfg_["controller"].to_int(-1);
+	if (side_cntr != -1) {
+		current_player_ = lexical_cast<std::string>(side_cntr);
+	}
+
 	update_controller_options();
 
 	// Tweak the controllers.
@@ -1091,12 +1111,12 @@ void side_engine::place_user(const std::string& name)
 	place_user(data);
 }
 
-void side_engine::place_user(const config& data)
+void side_engine::place_user(const config& data, bool contains_selection)
 {
 	player_id_ = data["name"].str();
 	set_controller(parent_.default_controller_);
 
-	if (data["change_faction"].to_bool()) {
+	if (data["change_faction"].to_bool() && contains_selection) {
 		// Network user's data carry information about chosen
 		// faction, leader and genders.
 		flg_.set_current_faction(data["faction"].str());

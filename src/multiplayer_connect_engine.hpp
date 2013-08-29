@@ -148,7 +148,7 @@ public:
 
 	// Place user into this side.
 	void place_user(const std::string& name);
-	void place_user(const config& data);
+	void place_user(const config& data, bool contains_selection = false);
 
 	void update_controller_options();
 	void update_current_controller_index();
