@@ -241,6 +241,8 @@ return {
             end
 
             -- We also test whether an attack without retaliation or with little damage is possible
+            if (not H.get_child(messenger.__cfg, 'attack')) then return end
+
             local targets = wesnoth.get_units {
                 { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
                 { "filter_adjacent", { id = cfg.id } }
