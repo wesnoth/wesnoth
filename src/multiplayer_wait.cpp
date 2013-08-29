@@ -211,6 +211,9 @@ void wait::join_game(bool observe)
 	if (!download_res) {
 		set_result(QUIT);
 		return;
+	} else if (!level_["allow_new_game"].to_bool(true)) {
+		set_result(PLAY);
+		return;
 	}
 
 	// Add the map name to the title.
