@@ -98,7 +98,15 @@ return {
             local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.attacks_left > 0',
                 { "not", { id = unit.id } }
             }
+
+            -- Eliminate units without attacks
+            for i = #my_units,1,-1 do
+                if (not H.get_child(my_units[i].__cfg, 'attack')) then
+                    table.remove(my_units, i)
+                end
+            end
             --print('#my_units', #my_units)
+
             if (not my_units[1]) then return end
 
             local my_attacks = AH.get_attacks(my_units, { simulate_combat = true })
