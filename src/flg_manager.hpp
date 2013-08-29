@@ -72,6 +72,9 @@ public:
 	const std::string& current_gender() const
 		{ return current_gender_; }
 
+	const config* default_leader_cfg() const
+		{ return default_leader_cfg_; }
+
 	int current_faction_index() const
 		{ return faction_index(current_faction_); }
 
@@ -89,8 +92,6 @@ private:
 	// Append leaders from a given faction
 	// to a choosable factions.
 	void append_leaders_from_faction(const config* faction);
-
-	std::string leader_type() const;
 
 	int faction_index(const config* faction) const;
 	int leader_index(const std::string& leader) const;
@@ -123,6 +124,9 @@ private:
 	const config* current_faction_;
 	std::string current_leader_;
 	std::string current_gender_;
+
+	std::string default_leader_type_;
+	const config* default_leader_cfg_;
 };
 
 } // end namespace mp

@@ -203,7 +203,6 @@ private:
 
 	const bool allow_player_;
 	const bool allow_changes_;
-	const std::string leader_id_;
 
 	int index_;
 	int team_;

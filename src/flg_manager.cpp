@@ -55,8 +55,37 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	choosable_genders_(),
 	current_faction_(NULL),
 	current_leader_("null"),
-	current_gender_("null")
+	current_gender_("null"),
+	default_leader_type_(side_["type"]),
+	default_leader_cfg_(NULL)
 {
+	const std::string& leader_id = side_["id"];
+	if (!leader_id.empty()) {
+		// Check if leader was carried over and now is in [unit] tag.
+		default_leader_cfg_ = &side_.find_child("unit", "id", leader_id);
+		if (*default_leader_cfg_) {
+			default_leader_type_ = (*default_leader_cfg_)["type"].str();
+		} else {
+			default_leader_cfg_ = NULL;
+		}
+	} else if (default_leader_type_.empty()) {
+		// Find a unit which can recruit.
+		BOOST_FOREACH(const config& side_unit, side_.child_range("unit")) {
+			if (side_unit["canrecruit"].to_bool()) {
+				default_leader_type_ = side_unit["type"].str();
+				default_leader_cfg_ = &side_unit;
+				break;
+			}
+		}
+	}
+	if (!default_leader_type_.empty()) {
+		const unit_type* unit = unit_types.find(default_leader_type_);
+		if (unit == NULL) {
+			default_leader_type_.clear();
+			default_leader_cfg_ = NULL;
+		}
+	}
+
 	update_available_factions();
 
 	set_current_faction((unsigned) 0);
@@ -288,9 +317,8 @@ void flg_manager::update_available_leaders()
 	available_leaders_.clear();
 
 	// Add a default leader if there is one.
-	const std::string& leader= leader_type();
-	if (!leader.empty()) {
-		available_leaders_.push_back(leader);
+	if (!default_leader_type_.empty()) {
+		available_leaders_.push_back(default_leader_type_);
 	}
 
 	if (!saved_game_) {
@@ -398,13 +426,12 @@ void flg_manager::update_choosable_leaders()
 {
 	choosable_leaders_ = available_leaders_;
 
-	const std::string& leader = leader_type();
-	if (!leader.empty() && map_settings_) {
+	if (!default_leader_type_.empty() && map_settings_) {
 		if (std::find(available_leaders_.begin(), available_leaders_.end(),
-			leader) != available_leaders_.end()) {
+			default_leader_type_) != available_leaders_.end()) {
 
 			choosable_leaders_.clear();
-			choosable_leaders_.push_back(leader);
+			choosable_leaders_.push_back(default_leader_type_);
 		}
 	}
 }
@@ -481,36 +508,6 @@ void flg_manager::append_leaders_from_faction(const config* faction)
 
 	available_leaders_.insert(available_leaders_.end(), leaders_to_append.begin(),
 		leaders_to_append.end());
-}
-
-std::string flg_manager::leader_type() const
-{
-	const std::string& leader_id = side_["id"];
-	std::string leader_type = side_["type"];
-	if (!leader_id.empty()) {
-		// Check if leader was carried over and now is in [unit] tag.
-		const config& leader_unit = side_.find_child("unit", "id", leader_id);
-		if (leader_unit) {
-			leader_type = leader_unit["type"].str();
-		}
-	} else if (leader_type.empty()) {
-		// Find a unit which can recruit.
-		BOOST_FOREACH(const config& side_unit, side_.child_range("unit")) {
-			if (side_unit["canrecruit"].to_bool()) {
-				leader_type = side_unit["type"].str();
-				break;
-			}
-		}
-	}
-
-	if (!leader_type.empty()) {
-		const unit_type *unit = unit_types.find(leader_type);
-		if (unit) {
-			return leader_type;
-		}
-	}
-
-	return "";
 }
 
 int flg_manager::faction_index(const config* faction) const

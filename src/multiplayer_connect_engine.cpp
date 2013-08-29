@@ -53,7 +53,6 @@ const std::string attributes_to_trim[] = {
 	"extra_recruit",
 	"previous_recruits",
 	"controller",
-	"id",
 	"team_name",
 	"user_team_name",
 	"color",
@@ -796,7 +795,6 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
 		false : cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
-	leader_id_(cfg["id"]),
 	index_(index),
 	team_(0),
 	color_(index),
@@ -872,7 +870,9 @@ config side_engine::new_config() const
 	// then import their new values in the config.
 	if (!parent_.params_.saved_game) {
 		// Merge the faction data to res.
-		res.append(flg_.current_faction());
+		config faction = flg_.current_faction();
+		faction.remove_attribute("id");
+		res.append(faction);
 		res["faction_name"] = res["name"];
 	}
 
@@ -882,7 +882,6 @@ config side_engine::new_config() const
 	res["current_player"] = player_id_.empty() ? current_player_ : player_id_;
 	res["controller"] = (res["current_player"] == preferences::login()) ?
 		"human" : controller_names[controller_];
-	res["id"] = leader_id_;
 
 	if (player_id_.empty()) {
 		std::string description;
@@ -958,8 +957,29 @@ config side_engine::new_config() const
 	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
 
 	if (!parent_.params_.saved_game) {
-		res["type"] = flg_.current_leader();
-		res["gender"] = flg_.current_gender();
+		// Find a config where a default leader is and set a new type
+		// and gender values for it.
+		config* leader = &res;
+		if (flg_.default_leader_cfg() != NULL) {
+			BOOST_FOREACH(config& side_unit, res.child_range("unit")) {
+				if (*flg_.default_leader_cfg() == side_unit) {
+					leader = &side_unit;
+					if (flg_.current_leader() != (*leader)["type"]) {
+						// If a new leader type was selected from carryover,
+						// make sure that we reset the leader.
+						std::string leader_id = (*leader)["id"];
+						leader->clear();
+						if (!leader_id.empty()) {
+							(*leader)["id"] = leader_id;
+						}
+					}
+
+					break;
+				}
+			}
+		}
+		(*leader)["type"] = flg_.current_leader();
+		(*leader)["gender"] = flg_.current_gender();
 
 		res["team_name"] = parent_.team_names_[team_];
 		res["user_team_name"] = parent_.user_team_names_[team_];
