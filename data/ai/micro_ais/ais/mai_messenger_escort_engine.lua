@@ -284,17 +284,22 @@ return {
                 end
             end
 
-            local target = wesnoth.get_units {
-                x = cfg.waypoint_x[#cfg.waypoint_x],
-                y = cfg.waypoint_y[#cfg.waypoint_y],
-                { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
-                { "filter_adjacent", { id = cfg.id } }
-            }[1]
-
             if max_rating > -9e99 then
                 ai.attack(messenger, best_tar, best_weapon)
-            elseif target then
-                ai.attack(messenger, target)
+            else
+                -- Otherwise, always attack enemy on last waypoint
+                local waypoint_x = AH.split(cfg.waypoint_x, ",")
+                local waypoint_y = AH.split(cfg.waypoint_y, ",")
+                local target = wesnoth.get_units {
+                    x = tonumber(waypoint_x[#waypoint_x]),
+                    y = tonumber(waypoint_y[#waypoint_y]),
+                    { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
+                    { "filter_adjacent", { id = cfg.id } }
+                }[1]
+
+                if target then
+                    ai.attack(messenger, target)
+                end
             end
 
             -- Finally, make sure unit is really done after this
