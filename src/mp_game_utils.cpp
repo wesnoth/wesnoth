@@ -20,6 +20,7 @@
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "mp_options.hpp"
 #include "replay.hpp"
 #include "savegame.hpp"
 #include "tod_manager.hpp"
@@ -81,10 +82,8 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 		level.add_child("multiplayer", params.to_config());
 
 		// Convert options to events
-		//FIXME
-		//level.add_child_at("event", mp::options::to_event(
-		//	params.options.find_child("multiplayer", "id",
-		//		params.mp_scenario)), 0);
+		level.add_child_at("event", options::to_event(params.options.find_child(
+			"multiplayer", "id", params.mp_scenario)), 0);
 
 		level["next_underlying_unit_id"] = 0;
 		n_unit::id_manager::instance().clear();
@@ -126,31 +125,27 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 	}
 	else
 	{
-		/*config& cfg =*/
-		level.add_child("era", era_cfg);
+		config& cfg = level.add_child("era", era_cfg);
 
 		const config& custom_side = resources::config_manager->
 			game_config().find_child("multiplayer_side", "id", "Custom");
 		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
 
 		// Convert options to event
-		//FIXME
-		//cfg.add_child_at("event", mp::options::to_event(
-		//	params.options.find_child("era", "id", era)), 0);
+		cfg.add_child_at("event", options::to_event(
+			params.options.find_child("era", "id", era)), 0);
 	}
 
 	// Add modifications
 	const std::vector<std::string>& mods = params.active_mods;
 	for (unsigned i = 0; i < mods.size(); i++) {
-		/*config& cfg = */
-		level.add_child("modification",
+		config& cfg = level.add_child("modification",
 			resources::config_manager->
 				game_config().find_child("modification", "id", mods[i]));
 
 		// Convert options to event
-		//FIXME
-		//cfg.add_child_at("event", mp::options::to_event(
-		//	params.options.find_child("modification", "id", mods[i])), 0);
+		cfg.add_child_at("event", options::to_event(
+			params.options.find_child("modification", "id", mods[i])), 0);
 	}
 
 	// This will force connecting clients to be using the same version number as us.

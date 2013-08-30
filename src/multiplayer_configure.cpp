@@ -95,7 +95,8 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	entry_points_(),
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
-	parameters_(params)
+	parameters_(params),
+	options_manager_(cfg, disp.video(), preferences::options())
 {
 	// Build the list of scenarios to play
 
@@ -205,6 +206,10 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 		show_entry_points_ = true;
 	}
 
+	options_manager_.set_era(parameters_.mp_era);
+	options_manager_.set_scenario(parameters_.mp_scenario);
+	options_manager_.set_modifications(parameters_.active_mods);
+
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	name_entry_.set_text(vgettext("$login|’s game", i18n_symbols));
@@ -286,6 +291,8 @@ const mp_game_settings& configure::get_parameters()
 	parameters_.share_view = vision_combo_.selected() == 0;
 	parameters_.share_maps = vision_combo_.selected() == 1;
 
+	parameters_.options = options_manager_.get_values();
+
 	return parameters_;
 }
 
@@ -314,6 +321,10 @@ void configure::process_event()
 		gui2::tmp_create_game_set_password::execute(
 				  parameters_.password
 				, disp_.video());
+	}
+
+	if(options_.pressed()) {
+		options_manager_.show_dialog();
 	}
 
 	if (entry_points_combo_.changed()) {
@@ -576,6 +587,9 @@ void configure::layout_children(const SDL_Rect& rect)
 	countdown_action_bonus_slider_.set_width(slider_width);
 	countdown_action_bonus_slider_.set_location(xpos, ypos);
 	ypos += countdown_action_bonus_slider_.height() + border_size;
+
+	options_.set_location(xpos, ypos);
+	ypos += options_.height() + border_size;
 
 	if (show_entry_points_) {
 		ypos += border_size;

@@ -23,6 +23,7 @@
 #include "widgets/combo.hpp"
 #include "generators/mapgen.hpp"
 #include "tooltips.hpp"
+#include "mp_options.hpp"
 
 namespace mp {
 
@@ -92,6 +93,8 @@ private:
 
 	bool force_use_map_settings_check_;
 	mp_game_settings parameters_;
+
+	options::manager options_manager_;
 };
 
 } // end namespace mp

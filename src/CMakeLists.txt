@@ -769,6 +769,7 @@ set(wesnoth-main_SRC
 	mp_depcheck.cpp
 	mp_game_settings.cpp
 	mp_game_utils.cpp
+	mp_options.cpp
 	multiplayer.cpp
 	multiplayer_configure.cpp
 	multiplayer_connect.cpp
