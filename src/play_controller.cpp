@@ -799,9 +799,27 @@ bool play_controller::enemies_visible() const
 
 	return false;
 }
-
-bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
+//used in play_controller::execute_command
+void play_controller::fire_wml_menu_item_event(wml_menu_item* menu_item)
 {
+	const events::command_disabler disable_commands;
+	if(gamedata_.last_selected.valid() && menu_item->needs_select) 
+	{
+		recorder.add_event("select", gamedata_.last_selected);
+	}
+	map_location const& menu_hex = mouse_handler_.get_last_hex();
+	recorder.add_event(menu_item->name, menu_hex);
+	if(game_events::fire(menu_item->name, menu_hex)) 
+	{
+		// The event has mutated the gamestate
+		undo_stack_->clear();
+	}
+}
+
+
+bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int index)
+{
+	hotkey::HOTKEY_COMMAND command = cmd.id;
 	if(index >= 0) {
 		unsigned i = static_cast<unsigned>(index);
 		if(i < savenames_.size() && !savenames_[i].empty()) {
@@ -809,24 +827,49 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
-			const events::command_disabler disable_commands;
-
-			if(gamedata_.last_selected.valid() && wml_commands_[i]->needs_select) {
-				recorder.add_event("select", gamedata_.last_selected);
-			}
-			map_location const& menu_hex = mouse_handler_.get_last_hex();
-			recorder.add_event(wml_commands_[i]->name, menu_hex);
-			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
-				// The event has mutated the gamestate
-				undo_stack_->clear();
-			}
+			fire_wml_menu_item_event(wml_commands_[i]);
 			return true;
 		}
 	}
-	return command_executor::execute_command(command, index);
+	int prefixlen = wml_menu_hotkey_prefix.length();
+	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
+	{
+		std::string name = cmd.command.substr(prefixlen);
+		typedef std::map<std::string, wml_menu_item*> map_type;
+		map_type& gs_wmi = gamedata_.get_wml_menu_items().get_menu_items();
+		map_type::iterator iter = gs_wmi.find(name);
+		if(iter != gs_wmi.end())
+		{
+			//i think this is not needed, but i havent tested without yet.
+			if(name == iter->second->event_id)
+			{
+				//copied from expand_wml_commands
+				const map_location& hex = mouse_handler_.get_last_hex();
+				gamedata_.get_variable("x1") = hex.x + 1;
+				gamedata_.get_variable("y1") = hex.y + 1;
+				scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
+
+				config& show_if = iter->second->show_if;
+				config filter_location = iter->second->filter_location;
+
+				if (iter->second->ignore_filter_on_hotkey || ((show_if.empty()
+					|| game_events::conditional_passed(vconfig(show_if)))
+				&& (filter_location.empty()
+					|| terrain_filter(vconfig(filter_location), units_)(hex))))
+				{
+					if((!iter->second->needs_select
+						|| gamedata_.last_selected.valid()))
+					{
+						fire_wml_menu_item_event(iter->second);
+					}
+				}
+			}
+		}
+	}
+	return command_executor::execute_command(cmd, index);
 }
 
-bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
 	if(index >= 0) {
 		unsigned i = static_cast<unsigned>(index);
@@ -835,7 +878,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 			return true;
 		}
 	}
-	switch(command) {
+	switch(cmd.id) {
 
 	// Commands we can always do:
 	case hotkey::HOTKEY_LEADER:
@@ -1165,7 +1208,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 		savenames_.push_back("");
 	}
 }
-
+///replaces "wml" in @items with all active wml menu items for the current field
 void play_controller::expand_wml_commands(std::vector<std::string>& items)
 {
 	wml_commands_.clear();
@@ -1212,14 +1255,14 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	std::vector<std::string> items = items_arg;
-	hotkey::HOTKEY_COMMAND command;
+	hotkey::hotkey_command* cmd;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
 			// Autosave visibility is similar to LOAD_GAME hotkey
-			command = hotkey::HOTKEY_LOAD_GAME;
+			cmd = &hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_LOAD_GAME);
 		} else {
-			command = hotkey::get_id(*i);
+			cmd = &hotkey::get_hotkey_command(*i);
 		}
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
@@ -1230,8 +1273,8 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 				continue;
 			}
 		// Remove commands that can't be executed or don't belong in this type of menu
-		} else if(!can_execute_command(command)
-		|| (context_menu && !in_context_menu(command))) {
+		} else if(!can_execute_command(*cmd)
+			|| (context_menu && !in_context_menu(cmd->id))) {
 			i = items.erase(i);
 			continue;
 		}
@@ -1418,6 +1461,10 @@ void play_controller::process_oos(const std::string& msg) const
 	savegame::oos_savegame save(to_config());
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
+
+//this should be at the end of the file but it caused merging probmes there.
+const std::string play_controller::wml_menu_hotkey_prefix = "wml_menu:";
+
 
 void play_controller::update_gui_to_player(const int team_index, const bool observe)
 {

@@ -504,9 +504,10 @@ void replay_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-bool replay_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
-	bool result = play_controller::can_execute_command(command,index);
+	hotkey::HOTKEY_COMMAND command = cmd.id;
+	bool result = play_controller::can_execute_command(cmd,index);
 
 	switch(command) {
 
