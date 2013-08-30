@@ -130,6 +130,12 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	size_t combo_new_selection = 0;
 	size_t level_new_selection = 0;
 
+	// TODO: this is needed to get the levels menu stretched to its max
+	// width, otherwise there might be problems with gui widgets alignment.
+	// Ideally, there could be a gui::menu::set_min_width() method,
+	// so this would no longer be necessary.
+	init_level_type_changed(0);
+
 	// Set level selection according to the preferences, if possible.
 	size_t type_index = 0;
 	BOOST_FOREACH(level::TYPE type, available_level_types_) {
@@ -521,7 +527,7 @@ void create::layout_children(const SDL_Rect& rect)
 	// guess we'd prefer having the buttons less neatly aligned to having a
 	// potentially giant image.
 	const int image_width = ca.h < 500 ? 111 : 222;
-	const int menu_width = (ca.w - 3*column_border_size - image_width)/3;
+	const int menu_width = (ca.w - 3 * column_border_size - image_width) / 3;
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
 	//const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
