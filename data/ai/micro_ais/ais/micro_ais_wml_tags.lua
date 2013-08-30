@@ -69,17 +69,22 @@ local function add_CAs(side, CA_parms, CA_cfg)
     end
 end
 
-local function delete_CAs(side, CA_parms)
+local function delete_CAs(side, CA_parms, unit_id)
     -- Delete the candidate actions defined in 'CA_parms' from the AI of 'side'
     -- CA_parms is an array of tables, one for each CA to be removed
     -- We can simply pass the one used for add_CAs(), although only the
     -- CA_parms.ca_id field is needed
+    -- For sticky CAs, unit_id is also needed
 
     for i,parms in ipairs(CA_parms) do
+        local ca_id = parms.ca_id
+        -- If it's a sticky behavior CA, we also add the unit id to ca_id
+        if parms.sticky then ca_id = ca_id .. "_" .. unit_id end
+
         W.modify_ai {
             side = side,
             action = "try_delete",
-            path = "stage[main_loop].candidate_action[" .. parms.ca_id .. "]"
+            path = "stage[main_loop].candidate_action[" .. ca_id .. "]"
         }
     end
 end
@@ -484,9 +489,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
         end
     end
 
-    -- If action=delete, we do that and are done
+    -- If action=delete, we do that and are done, but we do need to pass
+    -- cfg.id for sticky CAs (existence of which has been checked above)
     if (cfg.action == 'delete') then
-        delete_CAs(cfg.side, CA_parms)
+        delete_CAs(cfg.side, CA_parms, cfg.id)
         return
     end
 
@@ -513,7 +519,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     -- Finally, set up the candidate actions themselves
     if (cfg.action == 'add') then add_CAs(cfg.side, CA_parms, CA_cfg) end
     if (cfg.action == 'change') then
-        delete_CAs(cfg.side, CA_parms)
+        delete_CAs(cfg.side, CA_parms, cfg.id)
         add_CAs(cfg.side, CA_parms, CA_cfg)
     end
 end
