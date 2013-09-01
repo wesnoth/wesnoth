@@ -361,8 +361,9 @@ manager::manager(const config& cfg)
 	int wmi_count = 0;
 	typedef std::pair<std::string, wml_menu_item *> item;
 	BOOST_FOREACH(const item &itor, resources::gamedata->get_wml_menu_items().get_menu_items()) {
-		if (!itor.second->command.empty()) {
-			add_event_handler(itor.second->command, true);
+		const config & wmi_command = itor.second->command;
+		if ( !wmi_command.empty() ) {
+			add_event_handler(wmi_command, true);
 		}
 		++wmi_count;
 	}
