@@ -76,7 +76,7 @@ try:
         pool = Pool(cpu_count())
         return pool.map(*args, **kw)
 except ImportError:
-    print "Failed to import 'multiprocessing' module. Multiple cpu cores won't be utilized"
+    print ("Failed to import 'multiprocessing' module. Multiple cpu cores won't be utilized")
     parallel_map = map
 
 def process_file(path):
@@ -91,7 +91,7 @@ def process_file(path):
         for (old, new) in fixes:
             if old is new:
                 #complain loudly
-                print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
+                print ("pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new))
                 sys.exit(1)
             #this check is problematic and the last clause is added to prevent false
             #positives in case that new is a substring of old, though this can also
@@ -99,14 +99,14 @@ def process_file(path):
             #old with new lead to duplicate msgids? (including old ones marked with #~)"
             #which is not easily done in the current design...
             elif new in decommented and old in decommented and not new in old:
-                print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
+                print ("pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old))
             else:
                 for (i, line) in enumerate(lines):
                     if line and line[0] != '#':
                         lines[i] = lines[i].replace(old, new)
     after = '\n'.join(lines)
     if after != before:
-        print "pofix: %s modified" % path
+        print ("pofix: %s modified" % path)
         # Save a backup
         os.rename(path, path + "-bak")
         # Write out transformed version
@@ -130,9 +130,9 @@ if __name__ == '__main__':
         statinfo = os.stat(path)
         if statinfo.st_mtime > timecheck:
             newer += 1
-	files.append(path)
+    files.append(path)
     modified = sum(parallel_map(process_file, files))
-    print "pofix: %d files processed, %d files modified, %d files newer" \
-          % (pocount, modified, newer)
+    print ("pofix: %d files processed, %d files modified, %d files newer" \
+          % (pocount, modified, newer))
     if pocount > 1 and newer == pocount:
-        print "pofix: script may be obsolete"
+        print ("pofix: script may be obsolete")
