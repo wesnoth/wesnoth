@@ -81,7 +81,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		needs_select(false),
 		show_if(),
 		filter_location(),
-		command()
+		command_()
 
 {
 	std::stringstream temp;
@@ -96,7 +96,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		needs_select = (*cfg)["needs_select"].to_bool();
 		if (const config &c = cfg->child("show_if")) show_if = c;
 		if (const config &c = cfg->child("filter_location")) filter_location = c;
-		if (const config &c = cfg->child("command")) command = c;
+		if (const config &c = cfg->child("command")) command_ = c;
 	}
 }
 
@@ -142,8 +142,8 @@ void wmi_container::to_config(config& cfg){
 			new_cfg.add_child("show_if", j->second->show_if);
 		if(!j->second->filter_location.empty())
 			new_cfg.add_child("filter_location", j->second->filter_location);
-		if(!j->second->command.empty())
-			new_cfg.add_child("command", j->second->command);
+		if(!j->second->command().empty())
+			new_cfg.add_child("command", j->second->command());
 		cfg.add_child("menu_item", new_cfg);
 	}
 }

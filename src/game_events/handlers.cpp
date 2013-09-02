@@ -268,7 +268,7 @@ void commit_wmi_commands()
 		(*wcc.second)["name"] = mref->name;
 		(*wcc.second)["first_time_only"] = false;
 
-		if ( !mref->command.empty() ) {
+		if ( !mref->command().empty() ) {
 			BOOST_FOREACH(event_handler& hand, event_handlers) {
 				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
 					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
@@ -280,7 +280,7 @@ void commit_wmi_commands()
 			add_event_handler(*wcc.second, true);
 		}
 
-		mref->command = *wcc.second;
+		mref->set_command(*wcc.second);
 		delete wcc.second;
 		wmi_command_changes.erase(wmi_command_changes.begin());
 	}
@@ -361,7 +361,7 @@ manager::manager(const config& cfg)
 	int wmi_count = 0;
 	typedef std::pair<std::string, wml_menu_item *> item;
 	BOOST_FOREACH(const item &itor, resources::gamedata->get_wml_menu_items().get_menu_items()) {
-		const config & wmi_command = itor.second->command;
+		const config & wmi_command = itor.second->command();
 		if ( !wmi_command.empty() ) {
 			add_event_handler(wmi_command, true);
 		}

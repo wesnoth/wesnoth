@@ -60,7 +60,17 @@ struct wml_menu_item
 	bool needs_select;
 	config show_if;
 	config filter_location;
-	config command;
+
+	/// The WML actions specified within this item.
+	const config & command() const { return command_; }
+
+	/// Change the actions associated with this item.
+	/// (Internal bookkeeping only; the caller must still update the event handlers.)
+	void set_command(const config & cfg) { command_ = cfg; }
+
+private:
+	/// Actions to take when this item is chosen.
+	config command_;
 };
 
 class wmi_container{
