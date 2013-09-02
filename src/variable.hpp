@@ -42,6 +42,12 @@ private:
 	friend class std::pair;
 #endif
 
+#ifndef HAVE_CXX11
+	struct safe_bool_impl { void nonnull() {} };
+	/// Used as the return type of the conversion operator for boolean contexts.
+	typedef void (safe_bool_impl::*safe_bool)();
+#endif
+
 	vconfig();
 	vconfig(const config* cfg, const config* cache_key);
 public:
@@ -53,6 +59,13 @@ public:
 	static vconfig unconstructed_vconfig(); // Must not be dereferenced
 
 	vconfig& operator=(const vconfig& cfg);
+#ifdef HAVE_CXX11
+	/// A vconfig evaluates to true iff it can be dereferenced.
+	explicit operator bool() const	{ return !null(); }
+#else
+	/// A vconfig evaluates to true iff it can be dereferenced.
+	operator safe_bool() const	{ return !null() ? &safe_bool_impl::nonnull : NULL; }
+#endif
 
 	bool null() const { return cfg_ == NULL; }
 	bool is_volatile() const { return cache_key_ != NULL; }
