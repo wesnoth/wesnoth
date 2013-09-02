@@ -211,6 +211,7 @@ return {
                 x, y = wesnoth.find_vacant_tile( x, y, messenger)
             end
             local next_hop = AH.next_hop(messenger, x, y)
+            if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
             -- Compare this to the "ideal path"
             local path, cost = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
@@ -235,11 +236,11 @@ return {
             wesnoth.put_unit(opt_hop[1], opt_hop[2], messenger)
             local tmp, cost2 = wesnoth.find_path(messenger, x, y, {ignore_units = 'yes'})
             wesnoth.put_unit(x1, y1, messenger)
-           --print(cost1, cost2)
+            --print(cost1, cost2)
 
             -- If cost2 is significantly less, that means that the other path might overall be faster
             -- even though it is currently blocked
-            if (cost2 + 4 < cost1) then next_hop = opt_hop end
+            if (cost2 + messenger.max_moves/2 < cost1) then next_hop = opt_hop end
             --print(next_hop[1], next_hop[2])
 
             if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
