@@ -4034,7 +4034,7 @@ if __name__ == '__main__':
         statinfo = os.stat(path)
         if statinfo.st_mtime > timecheck:
             newer += 1
-    files.append(path)
+        files.append(path)
     modified = sum(parallel_map(process_file, files))
     print ("pofix: %d files processed, %d files modified, %d files newer" \
           % (pocount, modified, newer))
