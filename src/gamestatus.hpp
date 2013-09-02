@@ -69,6 +69,8 @@ struct wml_menu_item
 	/// Change the actions associated with this item.
 	/// (Internal bookkeeping only; the caller must still update the event handlers.)
 	void set_command(const config & cfg) { command_ = cfg; }
+	/// Updates *this based on @a vcfg.
+	void update(const vconfig & vcfg);
 
 private:
 	/// Actions to take when this item is chosen.

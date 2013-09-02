@@ -126,6 +126,33 @@ bool wml_menu_item::can_show(const map_location & hex) const
 	return true;
 }
 
+/**
+ * Updates *this based on @a vcfg.
+ */
+void wml_menu_item::update(const vconfig & vcfg)
+{
+	if ( vcfg.has_attribute("image") )
+		image = vcfg["image"].str();
+
+	if ( vcfg.has_attribute("description") )
+		description = vcfg["description"].t_str();
+
+	if ( vcfg.has_attribute("needs_select") )
+		needs_select = vcfg["needs_select"].to_bool();
+
+	if ( vcfg.has_child("show_if") )
+		show_if = vcfg.child("show_if").get_config();
+
+	if ( vcfg.has_child("filter_location") )
+		filter_location = vcfg.child("filter_location").get_config();
+
+	if ( vcfg.has_child("command") ) {
+		const vconfig & cmd = vcfg.child("command");
+		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
+		game_events::add_wmi_change(event_id, delayed ? cmd.get_config() : cmd.get_parsed_config());
+	}
+}
+
 
 wmi_container::wmi_container()
 	: wml_menu_items_()

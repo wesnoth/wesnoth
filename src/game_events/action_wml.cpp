@@ -1859,26 +1859,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	if(mref == NULL) {
 		mref = new wml_menu_item(id);
 	}
-	if(cfg.has_attribute("image")) {
-		mref->image = cfg["image"].str();
-	}
-	if(cfg.has_attribute("description")) {
-		mref->description = cfg["description"];
-	}
-	if(cfg.has_attribute("needs_select")) {
-		mref->needs_select = cfg["needs_select"].to_bool();
-	}
-	if(cfg.has_child("show_if")) {
-		mref->show_if = cfg.child("show_if").get_config();
-	}
-	if(cfg.has_child("filter_location")) {
-		mref->filter_location = cfg.child("filter_location").get_config();
-	}
-	if(cfg.has_child("command")) {
-		const vconfig& cmd = cfg.child("command");
-		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
-		add_wmi_change(id, delayed ? cmd.get_config() : cmd.get_parsed_config());
-	}
+	mref->update(cfg);
 }
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
