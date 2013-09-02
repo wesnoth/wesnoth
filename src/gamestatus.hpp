@@ -24,7 +24,9 @@
 #include "random.hpp"
 #include "simple_rng.hpp"
 #include "tstring.hpp"
-#include "boost/shared_ptr.hpp"
+#include "variable.hpp"
+
+#include <boost/shared_ptr.hpp>
 
 class config_writer;
 class game_display;
@@ -58,8 +60,6 @@ struct wml_menu_item
 	std::string image;
 	t_string description;
 	bool needs_select;
-	config show_if;
-	config filter_location;
 
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
@@ -75,6 +75,12 @@ struct wml_menu_item
 	void update(const vconfig & vcfg);
 
 private:
+	/// A condition that must hold in order for this menu item to be visible.
+	/// (An empty condition always holds.)
+	vconfig show_if_;        	// When used, we need a vconfig instead of a config.
+	/// A location filter to be applied to the hex where the menu is invoked.
+	/// (An empty filter always passes.)
+	vconfig filter_location_;	// When used, we need a vconfig instead of a config.
 	/// Actions to take when this item is chosen.
 	config command_;
 };

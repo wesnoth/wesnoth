@@ -22,7 +22,6 @@
 #include "gamestatus.hpp"
 
 #include "actions/create.hpp"
-#include "config.hpp"
 #include "filesystem.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"
@@ -37,7 +36,6 @@
 #include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
-#include "variable.hpp"
 #include "wesconfig.h"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
@@ -81,8 +79,8 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image(),
 		description(),
 		needs_select(false),
-		show_if(),
-		filter_location(),
+		show_if_(vconfig::empty_vconfig()),
+		filter_location_(vconfig::empty_vconfig()),
 		command_()
 
 {
@@ -96,8 +94,8 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
 		needs_select = (*cfg)["needs_select"].to_bool();
-		if (const config &c = cfg->child("show_if")) show_if = c;
-		if (const config &c = cfg->child("filter_location")) filter_location = c;
+		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
+		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
 		if (const config &c = cfg->child("command")) command_ = c;
 	}
 }
@@ -110,12 +108,12 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 bool wml_menu_item::can_show(const map_location & hex) const
 {
 	// Failing the [show_if] tag means no show.
-	if ( !show_if.empty() && !game_events::conditional_passed(vconfig(show_if)) )
+	if ( !show_if_.empty() && !game_events::conditional_passed(show_if_) )
 		return false;
 
 	// Failing the [fiter_location] tag means no show.
-	if ( !filter_location.empty() &&
-	     !terrain_filter(vconfig(filter_location), *resources::units)(hex) )
+	if ( !filter_location_.empty() &&
+	     !terrain_filter(filter_location_, *resources::units)(hex) )
 		return false;
 
 	// Failing to have a required selection means no show.
@@ -135,11 +133,11 @@ void wml_menu_item::to_config(config & cfg) const
 	cfg["image"] = image;
 	cfg["description"] = description;
 	cfg["needs_select"] = needs_select;
-	if ( !show_if.empty() )
-		cfg.add_child("show_if", show_if);
-	if ( !filter_location.empty() )
-		cfg.add_child("filter_location", filter_location);
-	if ( !command().empty() )
+	if ( !show_if_.empty() )
+		cfg.add_child("show_if", show_if_.get_config());
+	if ( !filter_location_.empty() )
+		cfg.add_child("filter_location", filter_location_.get_config());
+	if ( !command_.empty() )
 		cfg.add_child("command", command_);
 }
 
@@ -158,10 +156,10 @@ void wml_menu_item::update(const vconfig & vcfg)
 		needs_select = vcfg["needs_select"].to_bool();
 
 	if ( vcfg.has_child("show_if") )
-		show_if = vcfg.child("show_if").get_config();
+		show_if_ = vcfg.child("show_if");
 
 	if ( vcfg.has_child("filter_location") )
-		filter_location = vcfg.child("filter_location").get_config();
+		filter_location_ = vcfg.child("filter_location");
 
 	if ( vcfg.has_child("command") ) {
 		const vconfig & cmd = vcfg.child("command");
