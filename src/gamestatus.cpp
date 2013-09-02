@@ -18,21 +18,23 @@
  */
 
 #include "global.hpp"
-#include "config.hpp"
 
 #include "gamestatus.hpp"
 
 #include "actions/create.hpp"
+#include "config.hpp"
 #include "filesystem.hpp"
+#include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
-#include "game_preferences.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "statistics.hpp"
 #include "team.hpp"
+#include "terrain_filter.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
 #include "variable.hpp"
@@ -99,6 +101,31 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		if (const config &c = cfg->child("command")) command_ = c;
 	}
 }
+
+/**
+ * Returns whether or not *this is applicable given the context.
+ * Assumes game variables x1, y1, and unit have been set.
+ * @param[in]  hex  The hex where the menu will appear.
+ */
+bool wml_menu_item::can_show(const map_location & hex) const
+{
+	// Failing the [show_if] tag means no show.
+	if ( !show_if.empty() && !game_events::conditional_passed(vconfig(show_if)) )
+		return false;
+
+	// Failing the [fiter_location] tag means no show.
+	if ( !filter_location.empty() &&
+	     !terrain_filter(vconfig(filter_location), *resources::units)(hex) )
+		return false;
+
+	// Failing to have a required selection means no show.
+	if ( needs_select && !resources::gamedata->last_selected.valid() )
+		return false;
+
+	// Passed all tests.
+	return true;
+}
+
 
 wmi_container::wmi_container()
 	: wml_menu_items_()

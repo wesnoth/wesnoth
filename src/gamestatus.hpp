@@ -64,6 +64,8 @@ struct wml_menu_item
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
 
+	/// Returns whether or not *this is applicable given the context.
+	bool can_show(const map_location & hex) const;
 	/// Change the actions associated with this item.
 	/// (Internal bookkeeping only; the caller must still update the event handlers.)
 	void set_command(const config & cfg) { command_ = cfg; }

@@ -24,7 +24,6 @@
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
 #include "dialogs.hpp"
-#include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"
 #include "game_events/pump.hpp"
 #include "gettext.hpp"
@@ -36,7 +35,6 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
-#include "terrain_filter.hpp"
 #include "save_blocker.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
@@ -1188,14 +1186,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			std::map<std::string, wml_menu_item*>::iterator itor;
 			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
 				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
-				config& show_if = itor->second->show_if;
-				config filter_location = itor->second->filter_location;
-				if ((show_if.empty()
-					|| game_events::conditional_passed(vconfig(show_if)))
-				&& (filter_location.empty()
-					|| terrain_filter(vconfig(filter_location), units_)(hex))
-				&& (!itor->second->needs_select
-					|| gamedata_.last_selected.valid()))
+				if ( itor->second->can_show(hex) )
 				{
 					wml_commands_.push_back(itor->second);
 					std::string newitem = itor->second->description;
