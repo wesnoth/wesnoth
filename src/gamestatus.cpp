@@ -127,6 +127,23 @@ bool wml_menu_item::can_show(const map_location & hex) const
 }
 
 /**
+ * Writes *this to the provided config.
+ */
+void wml_menu_item::to_config(config & cfg) const
+{
+	cfg["id"] = event_id;
+	cfg["image"] = image;
+	cfg["description"] = description;
+	cfg["needs_select"] = needs_select;
+	if ( !show_if.empty() )
+		cfg.add_child("show_if", show_if);
+	if ( !filter_location.empty() )
+		cfg.add_child("filter_location", filter_location);
+	if ( !command().empty() )
+		cfg.add_child("command", command_);
+}
+
+/**
  * Updates *this based on @a vcfg.
  */
 void wml_menu_item::update(const vconfig & vcfg)
@@ -187,18 +204,7 @@ void wmi_container::clear_wmi()
 void wmi_container::to_config(config& cfg){
 	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items_.begin();
 		j!=wml_menu_items_.end(); ++j) {
-		config new_cfg;
-		new_cfg["id"]=j->first;
-		new_cfg["image"]=j->second->image;
-		new_cfg["description"]=j->second->description;
-		new_cfg["needs_select"] = j->second->needs_select;
-		if(!j->second->show_if.empty())
-			new_cfg.add_child("show_if", j->second->show_if);
-		if(!j->second->filter_location.empty())
-			new_cfg.add_child("filter_location", j->second->filter_location);
-		if(!j->second->command().empty())
-			new_cfg.add_child("command", j->second->command());
-		cfg.add_child("menu_item", new_cfg);
+		j->second->to_config(cfg.add_child("menu_item"));
 	}
 }
 
