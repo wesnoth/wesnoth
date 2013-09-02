@@ -2,6 +2,12 @@ Version 1.11.6+dev:
  * Add-ons client:
    * Report errors caused by faulty local .pbl files properly instead of
      presenting them as network errors.
+ * AI:
+   * Micro AIs:
+     * New Simple Attack Micro AI
+     * Messenger MAI now works with units (both messenger and escort) without
+       weapons and when path to next waypoint is entirely blocked
+     * Fixed bug that prevented removal of sticky MAIs
  * Language and i18n:
    * Updated translations: German, Greek, Lithuanian, Portuguese, Vietnamese
  * Lua API:
