@@ -63,7 +63,6 @@ namespace
 	// map to remember config hashes that have already been calculated
 	std::map<config const *, std::string const *> config_hashes;
 
-	config empty_config;
 
 	struct compare_str_ptr {
 		bool operator()(const std::string* s1, const std::string* s2) const
@@ -183,8 +182,16 @@ vconfig::vconfig(const config* cfg, const config * cache_key) :
 	}
 }
 
+/**
+ * Constructor from a config.
+ * @param[in] is_volatile  Controls whether or not the vconfig makes a copy of @a cfg.
+ *                         If @a cfg might be destroyed before this vconfig is, then
+ *                         is_volatile must be set to true.
+ *                         If @a cfg will be valid for the life of this vconfig, then
+ *                         setting is_volatile to false saves some overhead.
+ */
 vconfig::vconfig(const config &cfg, bool is_volatile) :
-	cfg_(&cfg), cache_key_(&cfg)
+	cfg_(&cfg), cache_key_(is_volatile ? &cfg : NULL)
 {
 	if(is_volatile) {
 		increment_config_usage(cache_key_);
@@ -192,8 +199,6 @@ vconfig::vconfig(const config &cfg, bool is_volatile) :
 			//location of volatile cfg has moved
 			cfg_ = cache_key_;
 		}
-	} else {
-		cache_key_ = NULL;
 	}
 }
 
@@ -210,12 +215,13 @@ vconfig::~vconfig()
 
 vconfig vconfig::empty_vconfig()
 {
-    return vconfig(config(), true);
+	static const config empty_config;
+	return vconfig(empty_config, false);
 }
 
 vconfig vconfig::unconstructed_vconfig()
 {
-    return vconfig();
+	return vconfig();
 }
 
 vconfig& vconfig::operator=(const vconfig& cfg)
@@ -292,7 +298,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 				variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 				if(!vinfo.is_valid) {
 					//push back an empty tag
-					res.push_back(vconfig(empty_config));
+					res.push_back(empty_vconfig());
 				} else if(vinfo.explicit_index) {
 					config * cp = &(vinfo.as_container());
 					res.push_back(vconfig(cp, cp));
@@ -300,7 +306,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 					variable_info::array_range range = vinfo.as_array();
 					if(range.first == range.second) {
 						//push back an empty tag
-						res.push_back(vconfig(empty_config));
+						res.push_back(empty_vconfig());
 					}
 					while(range.first != range.second) {
 						config *cp = &*range.first++;
@@ -313,6 +319,11 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	return res;
 }
 
+/**
+ * Returns a child of *this whose key is @a key.
+ * If no such child exists, returns an unconstructed vconfig (use null() to test
+ * for this).
+ */
 vconfig vconfig::child(const std::string& key) const
 {
 	if (const config &natural = cfg_->child(key)) {
@@ -324,7 +335,7 @@ vconfig vconfig::child(const std::string& key) const
 		if(insert_cfg["name"] == key) {
 			variable_info vinfo(insert_cfg["variable"], false, variable_info::TYPE_CONTAINER);
 			if(!vinfo.is_valid) {
-				return vconfig(empty_config);
+				return empty_vconfig();
 			}
 			config * cp = &(vinfo.as_container());
 			return vconfig(cp, cp);
@@ -333,6 +344,9 @@ vconfig vconfig::child(const std::string& key) const
 	return unconstructed_vconfig();
 }
 
+/**
+ * Returns whether or not *this has a child whose key is @a key.
+ */
 bool vconfig::has_child(const std::string& key) const
 {
 	if (cfg_->child(key)) {
@@ -430,7 +444,7 @@ vconfig vconfig::all_children_iterator::get_child() const
 		config * cp;
 		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
 		if(!vinfo.is_valid) {
-			return vconfig(empty_config);
+			return empty_vconfig();
 		} else if(inner_index_ == 0) {
 			cp = &(vinfo.as_container());
 			return vconfig(cp, cp);
