@@ -59,10 +59,11 @@ struct wml_menu_item
 	const std::string event_id;
 	std::string image;
 	t_string description;
-	bool needs_select;
 
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
+	/// If true, then the preceeding "select" event needs to be stored in the replay.
+	bool needs_select() const { return needs_select_; }
 
 	/// Returns whether or not *this is applicable given the context.
 	bool can_show(const map_location & hex) const;
@@ -75,6 +76,8 @@ struct wml_menu_item
 	void update(const vconfig & vcfg);
 
 private:
+	/// Whether or not this event says it makes use of the last selected unit.
+	bool needs_select_;
 	/// A condition that must hold in order for this menu item to be visible.
 	/// (An empty condition always holds.)
 	vconfig show_if_;        	// When used, we need a vconfig instead of a config.

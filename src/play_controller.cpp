@@ -812,7 +812,7 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
 			const events::command_disabler disable_commands;
 
-			if(gamedata_.last_selected.valid() && wml_commands_[i]->needs_select) {
+			if(gamedata_.last_selected.valid() && wml_commands_[i]->needs_select()) {
 				recorder.add_event("select", gamedata_.last_selected);
 			}
 			map_location const& menu_hex = mouse_handler_.get_last_hex();

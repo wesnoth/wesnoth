@@ -78,7 +78,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		event_id(id),
 		image(),
 		description(),
-		needs_select(false),
+		needs_select_(false),
 		show_if_(vconfig::empty_vconfig()),
 		filter_location_(vconfig::empty_vconfig()),
 		command_()
@@ -93,7 +93,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	if(cfg != NULL) {
 		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
-		needs_select = (*cfg)["needs_select"].to_bool();
+		needs_select_ = (*cfg)["needs_select"].to_bool();
 		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
 		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
 		if (const config &c = cfg->child("command")) command_ = c;
@@ -117,7 +117,7 @@ bool wml_menu_item::can_show(const map_location & hex) const
 		return false;
 
 	// Failing to have a required selection means no show.
-	if ( needs_select && !resources::gamedata->last_selected.valid() )
+	if ( needs_select_ && !resources::gamedata->last_selected.valid() )
 		return false;
 
 	// Passed all tests.
@@ -132,7 +132,7 @@ void wml_menu_item::to_config(config & cfg) const
 	cfg["id"] = event_id;
 	cfg["image"] = image;
 	cfg["description"] = description;
-	cfg["needs_select"] = needs_select;
+	cfg["needs_select"] = needs_select_;
 	if ( !show_if_.empty() )
 		cfg.add_child("show_if", show_if_.get_config());
 	if ( !filter_location_.empty() )
@@ -153,7 +153,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 		description = vcfg["description"].t_str();
 
 	if ( vcfg.has_attribute("needs_select") )
-		needs_select = vcfg["needs_select"].to_bool();
+		needs_select_ = vcfg["needs_select"].to_bool();
 
 	if ( const vconfig child = vcfg.child("show_if") )
 		show_if_ = child;
