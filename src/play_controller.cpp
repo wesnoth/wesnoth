@@ -816,8 +816,9 @@ bool play_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
 				recorder.add_event("select", gamedata_.last_selected);
 			}
 			map_location const& menu_hex = mouse_handler_.get_last_hex();
-			recorder.add_event(wml_commands_[i]->name, menu_hex);
-			if(game_events::fire(wml_commands_[i]->name, menu_hex)) {
+			std::string const & event_name = wml_commands_[i]->event_name();
+			recorder.add_event(event_name, menu_hex);
+			if(game_events::fire(event_name, menu_hex)) {
 				// The event has mutated the gamestate
 				undo_stack_->clear();
 			}

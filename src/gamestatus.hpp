@@ -55,12 +55,13 @@ extern const std::string DEFAULT_DIFFICULTY;
 struct wml_menu_item
 {
 	wml_menu_item(const std::string& id, const config* cfg=NULL);
-	std::string name;
 
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
 	/// The text to display in the menu for this item.
 	const t_string & description() const { return description_; }
+	/// The name of the event to fire when this item is chosen.
+	const std::string & event_name() const { return event_name_; }
 	/// The image associated with this menu item.
 	const std::string & image() const;
 	/// If true, then the preceeding "select" event needs to be stored in the replay.
@@ -79,6 +80,8 @@ struct wml_menu_item
 private:
 	/// The id of this menu item.
 	const std::string item_id_;
+	/// The name of this item's event(s); based on the item's id.
+	std::string event_name_;
 	/// The image to display in the menu next to this item's description.
 	std::string image_;
 	/// The text to display in the menu for this item.

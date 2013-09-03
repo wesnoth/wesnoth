@@ -258,23 +258,24 @@ void commit_wmi_commands()
 		const bool is_empty_command = wcc.second->empty();
 
 		wml_menu_item*& mref = resources::gamedata->get_wml_menu_items().get_item(wcc.first);
+		const std::string & event_name = mref->event_name();
 
 		config::attribute_value & event_id = (*wcc.second)["id"];
 		if ( event_id.empty() && !wcc.first.empty() ) {
 			event_id = wcc.first;
 		}
-		(*wcc.second)["name"] = mref->name;
+		(*wcc.second)["name"] = event_name;
 		(*wcc.second)["first_time_only"] = false;
 
 		if ( !mref->command().empty() ) {
 			BOOST_FOREACH(event_handler& hand, event_handlers) {
-				if(hand.is_menu_item() && hand.matches_name(mref->name)) {
-					LOG_NG << "changing command for " << mref->name << " to:\n" << *wcc.second;
+				if ( hand.is_menu_item() && hand.matches_name(event_name) ) {
+					LOG_NG << "changing command for " << event_name << " to:\n" << *wcc.second;
 					hand = event_handler(*wcc.second, true);
 				}
 			}
 		} else if(!is_empty_command) {
-			LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
+			LOG_NG << "setting command for " << event_name << " to:\n" << *wcc.second;
 			add_event_handler(*wcc.second, true);
 		}
 

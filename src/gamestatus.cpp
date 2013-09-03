@@ -75,8 +75,8 @@ const std::string DEFAULT_DIFFICULTY("NORMAL");
 
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
-		name(),
 		item_id_(id),
+		event_name_(),
 		image_(),
 		description_(),
 		needs_select_(false),
@@ -90,7 +90,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	if(!id.empty()) {
 		temp << ' ' << id;
 	}
-	name = temp.str();
+	event_name_ = temp.str();
 	if(cfg != NULL) {
 		image_ = (*cfg)["image"].str();
 		description_ = (*cfg)["description"];
