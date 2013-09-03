@@ -76,7 +76,7 @@ const std::string DEFAULT_DIFFICULTY("NORMAL");
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
-		event_id(id),
+		item_id_(id),
 		image_(),
 		description_(),
 		needs_select_(false),
@@ -140,7 +140,7 @@ bool wml_menu_item::can_show(const map_location & hex) const
  */
 void wml_menu_item::to_config(config & cfg) const
 {
-	cfg["id"] = event_id;
+	cfg["id"] = item_id_;
 	cfg["image"] = image_;
 	cfg["description"] = description_;
 	cfg["needs_select"] = needs_select_;
@@ -174,7 +174,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
-		game_events::add_wmi_change(event_id, delayed ? cmd.get_config() : cmd.get_parsed_config());
+		game_events::add_wmi_change(item_id_, delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
 }
 

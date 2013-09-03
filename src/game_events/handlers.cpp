@@ -259,11 +259,9 @@ void commit_wmi_commands()
 
 		wml_menu_item*& mref = resources::gamedata->get_wml_menu_items().get_item(wcc.first);
 
-		config::attribute_value event_id = (*wcc.second)["id"];
-		if(event_id.empty()) {
-			event_id = mref->event_id;
-			if(!event_id.empty())
-				(*wcc.second)["id"] = event_id;
+		config::attribute_value & event_id = (*wcc.second)["id"];
+		if ( event_id.empty() && !wcc.first.empty() ) {
+			event_id = wcc.first;
 		}
 		(*wcc.second)["name"] = mref->name;
 		(*wcc.second)["first_time_only"] = false;

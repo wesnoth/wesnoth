@@ -56,7 +56,6 @@ struct wml_menu_item
 {
 	wml_menu_item(const std::string& id, const config* cfg=NULL);
 	std::string name;
-	const std::string event_id;
 
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
@@ -78,6 +77,8 @@ struct wml_menu_item
 	void update(const vconfig & vcfg);
 
 private:
+	/// The id of this menu item.
+	const std::string item_id_;
 	/// The image to display in the menu next to this item's description.
 	std::string image_;
 	/// The text to display in the menu for this item.
