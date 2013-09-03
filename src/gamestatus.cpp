@@ -23,6 +23,7 @@
 
 #include "actions/create.hpp"
 #include "filesystem.hpp"
+#include "game_config.hpp"
 #include "game_events/conditional_wml.hpp"
 #include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
@@ -76,7 +77,7 @@ const std::string DEFAULT_DIFFICULTY("NORMAL");
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
 		event_id(id),
-		image(),
+		image_(),
 		description_(),
 		needs_select_(false),
 		show_if_(vconfig::empty_vconfig()),
@@ -91,13 +92,23 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	}
 	name = temp.str();
 	if(cfg != NULL) {
-		image = (*cfg)["image"].str();
+		image_ = (*cfg)["image"].str();
 		description_ = (*cfg)["description"];
 		needs_select_ = (*cfg)["needs_select"].to_bool();
 		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
 		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
 		if (const config &c = cfg->child("command")) command_ = c;
 	}
+}
+
+/**
+ * The image associated with this menu item.
+ * The returned string will not be empty; a default will be supplied if needed.
+ */
+const std::string & wml_menu_item::image() const
+{
+	// Default the image?
+	return image_.empty() ? game_config::images::wml_menu : image_;
 }
 
 /**
@@ -130,7 +141,7 @@ bool wml_menu_item::can_show(const map_location & hex) const
 void wml_menu_item::to_config(config & cfg) const
 {
 	cfg["id"] = event_id;
-	cfg["image"] = image;
+	cfg["image"] = image_;
 	cfg["description"] = description_;
 	cfg["needs_select"] = needs_select_;
 	if ( !show_if_.empty() )
@@ -147,7 +158,7 @@ void wml_menu_item::to_config(config & cfg) const
 void wml_menu_item::update(const vconfig & vcfg)
 {
 	if ( vcfg.has_attribute("image") )
-		image = vcfg["image"].str();
+		image_ = vcfg["image"].str();
 
 	if ( vcfg.has_attribute("description") )
 		description_ = vcfg["description"].t_str();
