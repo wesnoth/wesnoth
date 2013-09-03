@@ -1186,14 +1186,12 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			std::map<std::string, wml_menu_item*>::iterator itor;
 			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
 				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
-				if ( itor->second->can_show(hex) )
+				wml_menu_item * item_ptr = itor->second;
+				if ( item_ptr->can_show(hex) )
 				{
-					wml_commands_.push_back(itor->second);
-					std::string newitem = itor->second->description;
-
+					wml_commands_.push_back(item_ptr);
 					// Prevent accidental hotkey binding by appending a space
-					newitem.push_back(' ');
-					newitems.push_back(newitem);
+					newitems.push_back(item_ptr->description().str() + ' ');
 				}
 			}
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());

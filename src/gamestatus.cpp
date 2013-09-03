@@ -77,7 +77,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		name(),
 		event_id(id),
 		image(),
-		description(),
+		description_(),
 		needs_select_(false),
 		show_if_(vconfig::empty_vconfig()),
 		filter_location_(vconfig::empty_vconfig()),
@@ -92,7 +92,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 	name = temp.str();
 	if(cfg != NULL) {
 		image = (*cfg)["image"].str();
-		description = (*cfg)["description"];
+		description_ = (*cfg)["description"];
 		needs_select_ = (*cfg)["needs_select"].to_bool();
 		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
 		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
@@ -131,7 +131,7 @@ void wml_menu_item::to_config(config & cfg) const
 {
 	cfg["id"] = event_id;
 	cfg["image"] = image;
-	cfg["description"] = description;
+	cfg["description"] = description_;
 	cfg["needs_select"] = needs_select_;
 	if ( !show_if_.empty() )
 		cfg.add_child("show_if", show_if_.get_config());
@@ -150,7 +150,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 		image = vcfg["image"].str();
 
 	if ( vcfg.has_attribute("description") )
-		description = vcfg["description"].t_str();
+		description_ = vcfg["description"].t_str();
 
 	if ( vcfg.has_attribute("needs_select") )
 		needs_select_ = vcfg["needs_select"].to_bool();
