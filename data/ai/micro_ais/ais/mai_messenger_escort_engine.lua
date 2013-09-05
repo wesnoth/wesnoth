@@ -98,7 +98,15 @@ return {
             local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.attacks_left > 0',
                 { "not", { id = unit.id } }
             }
+
+            -- Eliminate units without attacks
+            for i = #my_units,1,-1 do
+                if (not H.get_child(my_units[i].__cfg, 'attack')) then
+                    table.remove(my_units, i)
+                end
+            end
             --print('#my_units', #my_units)
+
             if (not my_units[1]) then return end
 
             local my_attacks = AH.get_attacks(my_units, { simulate_combat = true })
@@ -203,6 +211,7 @@ return {
                 x, y = wesnoth.find_vacant_tile( x, y, messenger)
             end
             local next_hop = AH.next_hop(messenger, x, y)
+            if (not next_hop) then next_hop = { messenger.x, messenger.y } end
 
             -- Compare this to the "ideal path"
             local path, cost = wesnoth.find_path(messenger, x, y, { ignore_units = 'yes' })
@@ -227,11 +236,11 @@ return {
             wesnoth.put_unit(opt_hop[1], opt_hop[2], messenger)
             local tmp, cost2 = wesnoth.find_path(messenger, x, y, {ignore_units = 'yes'})
             wesnoth.put_unit(x1, y1, messenger)
-           --print(cost1, cost2)
+            --print(cost1, cost2)
 
             -- If cost2 is significantly less, that means that the other path might overall be faster
             -- even though it is currently blocked
-            if (cost2 + 4 < cost1) then next_hop = opt_hop end
+            if (cost2 + messenger.max_moves/2 < cost1) then next_hop = opt_hop end
             --print(next_hop[1], next_hop[2])
 
             if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
@@ -241,6 +250,8 @@ return {
             end
 
             -- We also test whether an attack without retaliation or with little damage is possible
+            if (not H.get_child(messenger.__cfg, 'attack')) then return end
+
             local targets = wesnoth.get_units {
                 { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
                 { "filter_adjacent", { id = cfg.id } }
@@ -274,17 +285,22 @@ return {
                 end
             end
 
-            local target = wesnoth.get_units {
-                x = cfg.waypoint_x[#cfg.waypoint_x],
-                y = cfg.waypoint_y[#cfg.waypoint_y],
-                { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
-                { "filter_adjacent", { id = cfg.id } }
-            }[1]
-
             if max_rating > -9e99 then
                 ai.attack(messenger, best_tar, best_weapon)
-            elseif target then
-                ai.attack(messenger, target)
+            else
+                -- Otherwise, always attack enemy on last waypoint
+                local waypoint_x = AH.split(cfg.waypoint_x, ",")
+                local waypoint_y = AH.split(cfg.waypoint_y, ",")
+                local target = wesnoth.get_units {
+                    x = tonumber(waypoint_x[#waypoint_x]),
+                    y = tonumber(waypoint_y[#waypoint_y]),
+                    { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
+                    { "filter_adjacent", { id = cfg.id } }
+                }[1]
+
+                if target then
+                    ai.attack(messenger, target)
+                end
             end
 
             -- Finally, make sure unit is really done after this

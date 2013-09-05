@@ -240,8 +240,6 @@ class acquaintance;
 
 	std::vector<std::string>* get_history(const std::string& id);
 
-	std::string client_type();
-
 	void set_theme(const std::string& theme);
 	std::string theme();
 

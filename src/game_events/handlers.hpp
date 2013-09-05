@@ -27,6 +27,8 @@
 #include "../config.hpp"
 #include "../variable.hpp"
 
+#include <boost/noncopyable.hpp>
+
 
 namespace game_events
 {
@@ -36,7 +38,7 @@ namespace game_events
 	class event_handler
 	{
 		public:
-			event_handler(const config &cfg, bool is_menu_item = false);
+			explicit event_handler(const config &cfg, bool is_menu_item = false);
 
 			bool matches_name(const std::string& name) const;
 
@@ -64,10 +66,10 @@ namespace game_events
 	/// one, the game will crash with an assertion failure.
 	///
 	/// This struct is responsible for setting and clearing resources::lua_kernel.
-	struct manager {
+	struct manager : boost::noncopyable {
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
-		manager(const config& scenario_cfg);
+		explicit manager(const config& scenario_cfg);
 		~manager();
 
 		// Allow iterating over the active handlers.
@@ -88,7 +90,7 @@ namespace game_events
 	};
 
 	/// Create an event handler.
-	void add_event_handler(const config & event);
+	void add_event_handler(const config & handler, bool is_menu_item=false);
 	/// Add a pending menu item command change.
 	void add_wmi_change(const std::string & id, const config & new_command);
 	/// Handles all the different types of actions that can be triggered by an event.

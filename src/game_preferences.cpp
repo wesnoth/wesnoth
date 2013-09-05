@@ -841,11 +841,6 @@ void set_autosavemax(int value)
 	preferences::set("auto_save_max", value);
 }
 
-std::string client_type()
-{
-	return preferences::get("client_type") == "ai" ? "ai" : "human";
-}
-
 std::string theme()
 {
 	if(non_interactive()) {

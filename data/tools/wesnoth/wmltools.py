@@ -715,7 +715,7 @@ class CrossRef:
 #
 # String translations from po files.  The advantage of this code is that it
 # does not require the gettext binary message catalogs to have been compiled.
-# The disavantadge is that it eats lots of core!
+# The disadvantage is that it eats lots of core!
 #
 
 

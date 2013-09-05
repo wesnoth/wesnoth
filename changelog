@@ -1,18 +1,30 @@
 Version 1.11.6+dev:
  * Add-ons client:
-   * Report errors caused by faulty local .pbl files properly instead of presenting
-     them as network errors.
+   * Report errors caused by faulty local .pbl files properly instead of
+     presenting them as network errors.
+ * AI:
+   * Micro AIs:
+     * New Simple Attack Micro AI
+     * Messenger MAI now works with units (both messenger and escort) without
+       weapons and when path to next waypoint is entirely blocked
+     * Fixed bug that prevented removal of sticky MAIs
+ * Graphics
+   * Full animations for the Dwarven Thunderer line.
  * Language and i18n:
-   * Updated translations: German, Lithuanian
+   * Updated translations: German, Greek, Lithuanian, Portuguese, Vietnamese
  * Lua API:
-   * Added scroll_to_leader field (read/write) to wesnoth.sides table elements.
+   * Added scroll_to_leader field (read/write) to wesnoth.sides table
+    elements.
  * WML engine:
    * [store_side] now stores the scroll_to_leader attribute from sides.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
-     macros to account for ToD color shifts greater than -31, guaranteeing complete
-     darkness.
-   * Unit WML frames with image modifications now shown correctly for hits/death.
+     macros to account for ToD color shifts greater than -31, guaranteeing
+     complete darkness.
+   * Unit WML frames with image modifications now shown correctly for
+     hits/death.
+   * Fixed compare_images.py (called by wesnoth-optipng) and pofix.py to
+     function with python-3.2
 
 Version 1.11.6:
  * Add-ons client:

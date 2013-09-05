@@ -1017,15 +1017,15 @@ end
 
 ---------- Attack related helper functions --------------
 
-function ai_helper.get_attacks_unit(unit, cfg)
-    -- Get all attacks a unit can do
+function ai_helper.get_attacks(units, cfg)
+    -- Get all attacks the units stored in 'units' can do
     -- This includes a variety of configurable options, passed in the 'cfg' table
     -- cfg: table with config parameters
     --  moves: "current" (default for units on current side) or "max" (always used for units on other sides)
     --  include_occupied (false): if set, also include hexes occupied by own-side units that can move away
     --  simulate_combat (false): if set, also simulate the combat and return result (this is slow; only set if needed)
 
-    -- Returns {} if no attacks can be done, otherwise table with fields
+    -- Returns {} if no attacks can be done, otherwise table with fields:
     --   dst: { x = x, y = y } of attack position
     --   src: { x = x, y = y } of attacking unit (don't use id, could be ambiguous)
     --   target: { x = x, y = y } of defending unit
@@ -1034,138 +1034,126 @@ function ai_helper.get_attacks_unit(unit, cfg)
 
     cfg = cfg or {}
 
+    local attacks = {}
+    if (not units[1]) then return attacks end
+
+    local side = units[1].side  -- all units need to be on same side
+
     -- 'moves' can be either "current" or "max"
     -- For unit on current side: use "current" by default, or override by cfg.moves
     local moves = cfg.moves or "current"
     -- For unit on any other side, only moves="max" makes sense
-    if (unit.side ~= wesnoth.current.side) then moves = "max" end
+    if (side ~= wesnoth.current.side) then moves = "max" end
 
-    -- Need to find reachable hexes that are
-    -- 1. next to a (non-petrified) enemy unit
-    -- 2. not occupied by a unit of a different side (incl. allies)
-    W.store_reachable_locations {
-        { "filter", { x = unit.x, y = unit.y } },
-        { "filter_location", {
-            { "filter_adjacent_location", {
-                { "filter", {
-                    { "filter_side",
-                        { { "enemy_of", { side = unit.side } } }
-                    },
-                    { "not", {
-                        { "filter_wml", {
-                            { "status", { petrified = "yes" } }  -- This is important!
-                        } }
-                    } }
-                } }
-            } },
-            { "not", {
-                { "filter", { { "not", { side = unit.side } } } }
-            } }
-        } },
-        moves = moves,
-        variable = "tmp_locs"
-    }
-
-    local attack_loc = H.get_variable_array("tmp_locs")
-    W.clear_variable { name = "tmp_locs" }
-    --print("reachable attack locs:", unit.id, #attack_loc)
-
-    -- Variable to store attacks
-    local attacks = {}
-    -- Current position of unit
-    local x1, y1 = unit.x, unit.y
-
-    -- Go through all attack locations
-    for i,p in pairs(attack_loc) do
-
-        -- At this point, units on the side of 'unit' can still be at the attack hex.
-        -- By default, exclude those hexes, but if 'include_occupied' is set
-        -- units that can move away are fine
-
-        -- Flag whether a potential unit_in_way can move away
-        -- We also set this to true if there is no unit in the way
-        local can_move_away = true
-
-        local unit_in_way = wesnoth.get_unit(p.x, p.y)
-        -- If unit_in_way is the unit itself, that doesn't count
-        if unit_in_way and (unit_in_way.x == unit.x) and (unit_in_way.y == unit.y) then unit_in_way = nil end
-
-        -- If there's a unit_in_way, and it is not the unit itself, check whether it can move away
-        if unit_in_way then
-            if (not cfg.include_occupied) then
-                can_move_away = false
-            else
-                local move_away = ai_helper.get_reachable_unocc(unit_in_way, { moves = moves })
-                if (move_away:size() <= 1) then can_move_away = false end
-                --print('Can move away:', unit_in_way.id, can_move_away)
-            end
-        end
-        -- Now can_move_away = true if there's no unit, or if it can move away
-
-        if can_move_away then
-            -- Put 'unit' at this position
-            -- Remove any unit that might be there first, except if this is the unit itself
-            if unit_in_way then wesnoth.extract_unit(unit_in_way) end
-
-            wesnoth.put_unit(p.x, p.y, unit)
-            --print(i,' attack pos:',p.x,p.y)
-
-            -- As there might be several attackable units from a position, need to find all those
-            local targets = wesnoth.get_units {
-                { "filter_side",
-                    { { "enemy_of", { side = unit.side } } }
-                },
-                { "not", {
-                    { "filter_wml", {
-                        { "status", { petrified = "yes" } }  -- This is important!
-                    } }
-                } },
-                { "filter_location",
-                    { { "filter_adjacent_location", { x = p.x, y = p.y } } }
-                }
-            }
-            --print('  number targets: ',#targets)
-
-            local attack_hex_occupied = false
-            if unit_in_way then attack_hex_occupied = true end
-
-            for j,t in pairs(targets) do
-                local att_stats, def_stats = nil, nil
-                if cfg.simulate_combat then
-                    att_stats, def_stats = wesnoth.simulate_combat(unit, t)
-                end
-
-                table.insert(attacks, {
-                    dst = { x = p.x, y = p.y },
-                    src = { x = x1, y = y1 },
-                    target = { x = t.x, y = t.y },
-                    att_stats = att_stats,
-                    def_stats = def_stats,
-                    attack_hex_occupied = attack_hex_occupied
-                } )
-            end
-
-            -- Put unit(s) back
-            wesnoth.put_unit(x1, y1, unit)
-            if unit_in_way then wesnoth.put_unit(p.x, p.y, unit_in_way) end
+    local old_moves = {}
+    if (moves == "max") then
+        for i,u in ipairs(units) do
+            old_moves[i] = u.moves
+            u.moves = u.max_moves
         end
     end
 
-    return attacks
-end
+    -- Note: the remainder is optimized for speed, so we only get_units once,
+    -- do not use WML filters, etc.
+    local all_units = wesnoth.get_units {}
 
-function ai_helper.get_attacks(units, cfg)
-    -- Wrapper function for ai_helper.get_attacks_unit
-    -- Returns the same sort of table (and cfg has the same structure), but for the attacks of several units
+    local enemy_map, my_unit_map, other_unit_map = LS.create(), LS.create(), LS.create()
+    for i,u in ipairs(all_units) do
+        -- The value of all the location sets is the index of the
+        -- unit in the all_units array
+        if wesnoth.is_enemy(u.side, side) and (not u.status.petrified) then
+            enemy_map:insert(u.x, u.y, i)
+        end
 
-    local attacks = {}
-    for k,u in pairs(units) do
-        local attacks_unit = ai_helper.get_attacks_unit(u, cfg)
+        if (u.side == side) then
+            my_unit_map:insert(u.x, u.y, i)
+        else
+            other_unit_map:insert(u.x, u.y, i)
+        end
+    end
 
-        if attacks_unit[1] then
-            for i,a in ipairs(attacks_unit) do
-                table.insert(attacks, a)
+    local attack_hex_map = LS.create()
+    enemy_map:iter(function(e_x, e_y, i)
+        for x, y in H.adjacent_tiles(e_x, e_y) do
+            -- If there's no unit of another side on this hex, include it
+            -- as possible attack location (this includes hexes occupied
+            -- by own units at this time)
+            if (not other_unit_map:get(x, y)) then
+                local target_table = attack_hex_map:get(x, y) or {}
+                table.insert(target_table, { x = e_x, y = e_y, i = i })
+                attack_hex_map:insert(x, y, target_table)
             end
+        end
+    end)
+
+    -- So that we at most need to do find_reach() once per unit
+    -- It is needed for all units in 'units' and for testing whether
+    -- units can move out of the way
+    local reaches = LS.create()
+
+    for i_u,u in ipairs(units) do
+        local reach
+        if reaches:get(u.x, u.y) then
+            reach = reaches:get(u.x, u.y)
+        else
+            reach = wesnoth.find_reach(u)
+            reaches:insert(u.x, u.y, reach)
+        end
+
+        for i_r,r in ipairs(reach) do
+            if attack_hex_map:get(r[1], r[2]) then
+                local add_target = true
+                local attack_hex_occupied = false
+
+                -- If another unit of same side is on this hex:
+                if my_unit_map:get(r[1], r[2]) and ((r[1] ~= u.x) or (r[2] ~= u.y)) then
+                    attack_hex_occupied = true
+
+                    if (not cfg.include_occupied) then
+                        add_target = false
+                    else  -- test whether it can move out of the way
+                        local unit_in_way = all_units[my_unit_map:get(r[1], r[2])]
+                        local uiw_reach
+                        if reaches:get(unit_in_way.x, unit_in_way.y) then
+                            uiw_reach = reaches:get(unit_in_way.x, unit_in_way.y)
+                        else
+                            uiw_reach = wesnoth.find_reach(unit_in_way)
+                            reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
+                        end
+
+                        -- Units that cannot move away have only one hex in uiw_reach
+                        if (#uiw_reach <= 1) then add_target = false end
+                    end
+                end
+
+                if add_target then
+                    for i_t,target in ipairs(attack_hex_map:get(r[1], r[2])) do
+                        local att_stats, def_stats
+                        if cfg.simulate_combat then
+                            local unit_dst = wesnoth.copy_unit(u)
+                            unit_dst.x, unit_dst.y = r[1], r[2]
+
+                            local enemy = all_units[target.i]
+                            att_stats, def_stats = wesnoth.simulate_combat(unit_dst, enemy)
+                        end
+
+                        table.insert(attacks, {
+                            src = { x = u.x, y = u.y },
+                            dst = { x = r[1], y = r[2] },
+                            target = { x = target.x, y = target.y },
+                            att_stats = att_stats,
+                            def_stats = def_stats,
+                            attack_hex_occupied = attack_hex_occupied
+                        })
+                    end
+                end
+            end
+        end
+    end
+
+    if (moves == "max") then
+        for i,u in ipairs(units) do
+            u.moves = old_moves[i]
         end
     end
 

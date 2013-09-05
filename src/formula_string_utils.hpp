@@ -23,6 +23,19 @@ class variable_set;
 namespace utils {
 
 /**
+ * Determines if a string might contain variables to interpolate.
+ * This can allow one to skip future interpolations (plural -- if there is only
+ * one interpolation, the savings are not worth this check). In this spirit,
+ * precision is sacrificed in the name of efficiency; the check is quick and
+ * allows false positives, but there are no false negatives. (A false negative
+ * would lead to incorrect behavior, whereas a false positive leads to merely
+ * inefficient behavior.) In practice, false positives should be uncommon enough
+ * to not worry about.
+ */
+inline bool might_contain_variables(const std::string &str)
+{ return str.find('$') != std::string::npos; }
+
+/**
  * Function which will interpolate variables, starting with '$' in the string
  * 'str' with the equivalent symbols in the given symbol table. If 'symbols'
  * is NULL, then game event variables will be used instead.

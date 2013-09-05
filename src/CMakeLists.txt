@@ -792,7 +792,6 @@ set(wesnoth-main_SRC
 	resources.cpp
 	save_blocker.cpp
 	savegame.cpp
-	savegame_config.cpp
 	scripting/debug_lua.cpp
 	scripting/lua.cpp
 	settings.cpp

@@ -231,41 +231,43 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 	const t_string& t_tod_id = cfg_["time_of_day_id"];
 	const std::string& tod_type = t_tod_type;
 	const std::string& tod_id = t_tod_id;
-	static config const dummy_cfg;
-	time_of_day tod(dummy_cfg);
 	if(!tod_type.empty() || !tod_id.empty()) {
+		// creating a time_of_day is expensive, only do it if we will use it
+		time_of_day tod;
+
 		if(flat_) {
 			tod = resources::tod_manager->get_time_of_day(loc);
 		} else {
 			tod = resources::tod_manager->get_illuminated_time_of_day(loc);
 		}
-	}
-	if(!tod_type.empty()) {
-		const std::vector<std::string>& vals = utils::split(tod_type);
-		if(tod.lawful_bonus<0) {
-			if(std::find(vals.begin(),vals.end(),std::string("chaotic")) == vals.end()) {
-				return false;
-			}
-		} else if(tod.lawful_bonus>0) {
-			if(std::find(vals.begin(),vals.end(),std::string("lawful")) == vals.end()) {
-				return false;
-			}
-		} else if(std::find(vals.begin(),vals.end(),std::string("neutral")) == vals.end()) {
-			return false;
-		}
-	}
 
-	if(!tod_id.empty()) {
-		if(tod_id != tod.id) {
-			if(std::find(tod_id.begin(),tod_id.end(),',') != tod_id.end() &&
-				std::search(tod_id.begin(),tod_id.end(),
-				tod.id.begin(),tod.id.end()) != tod_id.end()) {
-				const std::vector<std::string>& vals = utils::split(tod_id);
-				if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
+		if(!tod_type.empty()) {
+			const std::vector<std::string>& vals = utils::split(tod_type);
+			if(tod.lawful_bonus<0) {
+				if(std::find(vals.begin(),vals.end(),std::string("chaotic")) == vals.end()) {
 					return false;
 				}
-			} else {
+			} else if(tod.lawful_bonus>0) {
+				if(std::find(vals.begin(),vals.end(),std::string("lawful")) == vals.end()) {
+					return false;
+				}
+			} else if(std::find(vals.begin(),vals.end(),std::string("neutral")) == vals.end()) {
 				return false;
+			}
+		}
+
+		if(!tod_id.empty()) {
+			if(tod_id != tod.id) {
+				if(std::find(tod_id.begin(),tod_id.end(),',') != tod_id.end() &&
+					std::search(tod_id.begin(),tod_id.end(),
+					tod.id.begin(),tod.id.end()) != tod_id.end()) {
+					const std::vector<std::string>& vals = utils::split(tod_id);
+					if(std::find(vals.begin(),vals.end(),tod.id) == vals.end()) {
+						return false;
+					}
+				} else {
+					return false;
+				}
 			}
 		}
 	}
