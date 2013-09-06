@@ -681,6 +681,10 @@ notepairs = [
 # but must be populated by the magic comment, "#wmllint: who ... is ...".
 whopairs = {}
 
+# This list of the standard recruitable usage types can be appended with the
+# magic comment, "#wmllint: usagetype[s]".
+usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
+
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
 derived_units = []
@@ -1586,10 +1590,13 @@ def consistency_check():
                             rshow = ''
                             if rdifficulty is not None:
                                 rshow = 'At ' + rdifficulty + ', '
+                            ushow = ''
+                            if utype not in usage_types:
+                                ushow = ', a non-standard usage class'
                             pshow = ''
                             if pdifficulty is not None:
                                 pshow = ' ' + pdifficulty
-                            print '"%s", line %d: %s%s (%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, pshow, ", ".join(recruit_pattern))
+                            print '"%s", line %d: %s%s (%s%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, ushow, pshow, ", ".join(recruit_pattern))
             # We have a list of all the usage types recruited at this difficulty
             # in utypes.  Use it to check the matching pattern, if any. Suppress
             # this check if the recruit line is a macroexpansion.
@@ -1601,7 +1608,10 @@ def consistency_check():
                                 rshow = '.'
                                 if rdifficulty is not None:
                                     rshow = ' at difficulty ' + rdifficulty + '.'
-                                print '"%s", line %d: no %s units recruitable%s' % (filename, pl, utype, rshow)
+                                ushow = ''
+                                if utype not in usage_types:
+                                    ushow = ' (a non-standard usage class)'
+                                print '"%s", line %d: no %s%s units recruitable%s' % (filename, pl, utype, ushow, rshow)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
