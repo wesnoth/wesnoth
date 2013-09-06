@@ -604,9 +604,8 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		case mp::ui::QUIT:
 		default:
 			//update lobby content
-			return false;
 			network::send_data(config("refresh_lobby"), 0);
-			break;
+			return false;
 		}
 	} while(connect_canceled);
 
