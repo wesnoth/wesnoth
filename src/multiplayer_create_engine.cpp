@@ -621,7 +621,7 @@ void create_engine::init_all_levels()
 					e.message;
 
 				ERR_CF << "map could not be loaded: " << e.message << '\n';
-			} catch (twml_exception& e) {
+			} catch (twml_exception&) {
 				add_map = false;
 				dep_index_offset++;
 			}
