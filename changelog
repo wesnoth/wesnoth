@@ -8,6 +8,11 @@ Version 1.11.6+dev:
      * Messenger MAI now works with units (both messenger and escort) without
        weapons and when path to next waypoint is entirely blocked
      * Fixed bug that prevented removal of sticky MAIs
+ * Engine:
+   * CampaignWML support for MP including difficulties, extra defines etc.
+   * Use the same codepath to initialize every MP campaign's scenario, thus
+     allowing to display a functional MP "Connect/Wait" screen before next
+     scenario.
  * Graphics
    * Full animations for the Dwarven Thunderer line.
  * Language and i18n:
@@ -17,6 +22,15 @@ Version 1.11.6+dev:
     elements.
  * WML engine:
    * [store_side] now stores the scroll_to_leader attribute from sides.
+   * Added new CampaignWML attributes "type", "min_players" and "max_players".
+   * Added new ScenariowML attributes "new_game_title",
+     "remove_from_carryover_on_leaders_loss" and "force_use_map_settings".
+   * Allow numerical values for SideWML "controller" attribute.
+ * User Interface:
+   * MP "Create" screen has been revamped by moving scenario configuration
+     widgets to a new MP "Configure" screen, introducing a description box,
+     adding a combo selection for different types of game and adjusting it to
+     work well with MP campaigns.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
@@ -25,6 +39,10 @@ Version 1.11.6+dev:
      hits/death.
    * Fixed compare_images.py (called by wesnoth-optipng) and pofix.py to
      function with python-3.2
+   * Refactored and splitted the MP "Create" and "Connect" screens code into
+     gui and engine.
+   * Lock factions, leaders and genders selection in MP "Connect" if "Use map
+     settings" are on and if default values were provided.
 
 Version 1.11.6:
  * Add-ons client:
