@@ -103,7 +103,7 @@ private:
 
 	void update_side_controller_options();
 
-	friend side_engine;
+	friend class side_engine;
 
 	config level_;
 	game_state& state_;
