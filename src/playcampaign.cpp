@@ -548,14 +548,18 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			// Retain carryover_sides_start, as the config from the server
 			// doesn't contain it.
 			gamestate.carryover_sides_start = sides.to_config();
-		} else if (io_type == IO_SERVER) {
+		} else {
 			// Retrieve next scenario data.
 			scenario = &game_config.find_child(type, "id",
 				gamestate.carryover_sides_start["next_scenario"]);
-			if (*scenario) {
+			if (!*scenario) {
+				scenario = NULL;
+			} else {
 				starting_pos = *scenario;
 				scenario = &starting_pos;
+			}
 
+			if (io_type == IO_SERVER && scenario != NULL) {
 				// Apply carryover before passing a scenario data to the
 				// mp::connect_engine.
 				team_init(starting_pos, gamestate);
@@ -605,8 +609,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
 					generate_map(scenario);
 				}*/
-			} else {
-				scenario = NULL;
 			}
 		}
 
