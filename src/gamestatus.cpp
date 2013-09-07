@@ -76,21 +76,14 @@ const std::string DEFAULT_DIFFICULTY("NORMAL");
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		item_id_(id),
-		event_name_(),
+		event_name_("menu item" + (id.empty() ? "" : ' ' + id)),
 		image_(),
 		description_(),
 		needs_select_(false),
 		show_if_(vconfig::empty_vconfig()),
 		filter_location_(vconfig::empty_vconfig()),
 		command_()
-
 {
-	std::stringstream temp;
-	temp << "menu item";
-	if(!id.empty()) {
-		temp << ' ' << id;
-	}
-	event_name_ = temp.str();
 	if(cfg != NULL) {
 		image_ = (*cfg)["image"].str();
 		description_ = (*cfg)["description"];

@@ -81,7 +81,7 @@ private:
 	/// The id of this menu item.
 	const std::string item_id_;
 	/// The name of this item's event(s); based on the item's id.
-	std::string event_name_;
+	const std::string event_name_;
 	/// The image to display in the menu next to this item's description.
 	std::string image_;
 	/// The text to display in the menu for this item.
