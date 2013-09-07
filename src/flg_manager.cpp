@@ -316,39 +316,41 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	// Add a default leader if there is one.
-	if (!default_leader_type_.empty()) {
-		available_leaders_.push_back(default_leader_type_);
-	}
+	if (!side_["no_leader"].to_bool() || !map_settings_) {
+		// Add a default leader if there is one.
+		if (!default_leader_type_.empty()) {
+			available_leaders_.push_back(default_leader_type_);
+		}
 
-	if (!saved_game_) {
-		if ((*current_faction_)["id"] != "Random") {
-			available_leaders_.push_back("random");
+		if (!saved_game_) {
+			if ((*current_faction_)["id"] != "Random") {
+				available_leaders_.push_back("random");
 
-			if ((*current_faction_)["id"] == "Custom") {
-				// Allow user to choose a leader from any faction.
-				BOOST_FOREACH(const config* f, available_factions_) {
-					if ((*f)["id"] != "Random") {
-						append_leaders_from_faction(f);
+				if ((*current_faction_)["id"] == "Custom") {
+					// Allow user to choose a leader from any faction.
+					BOOST_FOREACH(const config* f, available_factions_) {
+						if ((*f)["id"] != "Random") {
+							append_leaders_from_faction(f);
+						}
+					}
+				} else {
+					append_leaders_from_faction(current_faction_);
+				}
+
+				// Remove duplicate leaders.
+				std::set<std::string> seen;
+				std::vector<std::string>::iterator walker, modifier;
+				for(walker = available_leaders_.begin(),
+					modifier = available_leaders_.begin();
+					walker != available_leaders_.end(); ++walker) {
+
+					if (seen.insert(*walker).second) {
+						*modifier++ = *walker;
 					}
 				}
-			} else {
-				append_leaders_from_faction(current_faction_);
+
+				available_leaders_.erase(modifier, available_leaders_.end());
 			}
-
-			// Remove duplicate leaders.
-			std::set<std::string> seen;
-			std::vector<std::string>::iterator walker, modifier;
-			for(walker = available_leaders_.begin(),
-				modifier = available_leaders_.begin();
-				walker != available_leaders_.end(); ++walker) {
-
-				if (seen.insert(*walker).second) {
-					*modifier++ = *walker;
-				}
-			}
-
-			available_leaders_.erase(modifier, available_leaders_.end());
 		}
 	}
 
