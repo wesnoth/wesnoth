@@ -189,7 +189,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 		game_config().child_range("multiplayer")) {
 
 		if (!scenario["campaign_id"].empty() &&
-			scenario["allow_new_game"].to_bool(true)) {
+			(scenario["allow_new_game"].to_bool(true) || game_config::debug)) {
 
 			const std::string& title = (!scenario["new_game_title"].empty()) ?
 				scenario["new_game_title"] : scenario["name"];

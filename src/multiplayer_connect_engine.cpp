@@ -341,6 +341,10 @@ void connect_engine::update_and_send_diff(bool update_time_of_day)
 
 bool connect_engine::can_start_game() const
 {
+	if (side_engines_.size() == 0) {
+		return true;
+	}
+
 	// First check if all sides are ready to start the game.
 	BOOST_FOREACH(side_engine_ptr side, side_engines_) {
 		if (!side->ready_for_start()) {

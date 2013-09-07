@@ -393,7 +393,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 	BOOST_FOREACH(side_engine_ptr s, engine_.side_engines()) {
 		sides_.push_back(side(*this, s));
 	}
-	if (sides_.empty()) {
+	if (sides_.empty() && !game_config::debug) {
 		throw config::error(
 			_("The scenario is invalid because it has no sides."));
 	}
@@ -401,7 +401,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 	// Add side widgets to scroll pane.
 	int side_pos_y_offset = 0;
 	BOOST_FOREACH(side& s, sides_) {
-		if (!s.engine()->allow_player()) {
+		if (!s.engine()->allow_player() && !game_config::debug) {
 			continue;
 		}
 
