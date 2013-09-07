@@ -11,8 +11,8 @@ Version 1.11.6+dev:
  * Engine:
    * CampaignWML support for MP including difficulties, extra defines etc.
    * Use the same codepath to initialize every MP campaign's scenario, thus
-     allowing to display a functional MP "Connect/Wait" screen before next
-     scenario.
+     allowing the display of a functional MP "Connect/Wait" screen before the
+     next scenario.
  * Graphics
    * Full animations for the Dwarven Thunderer line.
  * Language and i18n:
@@ -29,20 +29,20 @@ Version 1.11.6+dev:
  * User Interface:
    * MP "Create" screen has been revamped by moving scenario configuration
      widgets to a new MP "Configure" screen, introducing a description box,
-     adding a combo selection for different types of game and adjusting it to
+     adding a combo selection for different types of game, and adjusting it to
      work well with MP campaigns.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
      complete darkness.
-   * Unit WML frames with image modifications now shown correctly for
+   * Unit WML frames with image modifications are now shown correctly for
      hits/death.
    * Fixed compare_images.py (called by wesnoth-optipng) and pofix.py to
-     function with python-3.2
-   * Refactored and splitted the MP "Create" and "Connect" screens code into
-     gui and engine.
-   * Lock factions, leaders and genders selection in MP "Connect" if "Use map
-     settings" are on and if default values were provided.
+     function with python-3.2.
+   * Refactored and split the MP "Create" and "Connect" screens' code into
+     gui and engine parts.
+   * Lock faction, leader, and gender selections in MP "Connect" if "Use map
+     settings" is on and default values were provided.
 
 Version 1.11.6:
  * Add-ons client:
