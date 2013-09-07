@@ -2289,6 +2289,12 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	if(cfg.has_child("filter_location")) {
 		mref->filter_location = cfg.child("filter_location").get_config();
 	}
+	if(cfg.has_child("default_hotkey")) {
+		mref->default_hotkey = cfg.child("default_hotkey").get_config();
+	}
+	mref->use_hotkey = !cfg["no_hotkey"].to_bool(false);
+	//this can also be used to make a hotkey without menu_item by giving an always false filter
+	mref->ignore_filter_on_hotkey = cfg["ignore_filter_on_hotkey"].to_bool(false);
 	if(cfg.has_child("command")) {
 		const vconfig& cmd = cfg.child("command");
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
@@ -3181,6 +3187,9 @@ static void commit_wmi_commands() {
 		} else if(!is_empty_command) {
 			LOG_NG << "setting command for " << mref->name << " to:\n" << *wcc.second;
 			event_handlers.add_event_handler(game_events::event_handler(mref->command, true));
+			if(mref->use_hotkey) {
+				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wcc.first, mref->description, mref->default_hotkey);
+			}
 		}
 
 		delete wcc.second;
@@ -3458,6 +3467,9 @@ namespace game_events {
 		BOOST_FOREACH(const item &itor, resources::gamedata->get_wml_menu_items().get_menu_items()) {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
+				if(itor.second->use_hotkey) {
+					hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + itor.first, itor.second->description, itor.second->default_hotkey);
+				}
 			}
 			++wmi_count;
 		}
@@ -3507,6 +3519,7 @@ namespace game_events {
 		manager_running = false;
 		events_queue.clear();
 		event_handlers.clear();
+		hotkey::delete_all_wml_hotkeys();
 		reports::reset_generators();
 		delete resources::lua_kernel;
 		resources::lua_kernel = NULL;

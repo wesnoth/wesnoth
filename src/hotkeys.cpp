@@ -68,10 +68,7 @@ const input_controll input_list_[] = {
 		{ hotkey::INPUT_SCROLL_VERTICAL,   "scroll-vertical",   N_("Scroll Viewport Vertically"), false, hotkey::SCOPE_GENERAL }
 };
 
-//msvc cannot collapse this otherwise
-#pragma region hotkey_list_
 // this contains all static hotkeys
-
 hotkey_command_temp hotkey_list_[] = {
 
 	{ hotkey::HOTKEY_CANCEL, N_("cancel"), N_("Cancel"), false, hotkey::SCOPE_GENERAL, "" },
@@ -265,7 +262,6 @@ hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_NULL, "null", N_("Unrecognized Command"), true, hotkey::SCOPE_GENERAL, "" }
 };
 
-#pragma endregion 
 
 const boost::ptr_vector<hotkey_command>& get_hotkey_commands()
 {
@@ -564,14 +560,6 @@ manager::manager()
 
 void manager::init()
 {
-	//size_t i;
-	//for (i = 0; hotkey_list_[i].id != hotkey::HOTKEY_NULL; ++i) {
-	//	command_map_[hotkey_list_[i].command] = i;
-	//}
-	//TODO find a clever way to extend the loop and remove the next line.
-	//command_map_[hotkey_list_[i].command] = i;
-	
-
 	//the size value is just random set.
 	boost::ptr_vector<hotkey_command> known_hotkeys_temp(200);
 	known_hotkeys = known_hotkeys_temp;
@@ -588,18 +576,6 @@ void manager::init()
 void manager::wipe()
 {
 	delete_all_wml_hotkeys();
-	/* not needed anymore
-	while(!known_hotkeys.empty())
-	{
-		if(known_hotkeys.begin()->id == HOTKEY_WML)
-		{
-			ERR_G << "a wml menu hotkey wasn't correct deleted";
-		}
-		//these are pointers to hotkey_list_. The destructor of known_hotkeys would try to delete them.
-		//hotkey_command* ptr = 
-		known_hotkeys.release(known_hotkeys.begin()).release();
-	}
-	*/
 	hotkeys_.clear();
 	command_map_.clear();
 }
@@ -667,11 +643,8 @@ void save_hotkeys(config& cfg)
 	}
 }
 
-const std::string get_description(const std::string& command) {
-	//std::string tmp(command);
-	//if (command_map_.find(tmp) == command_map_.end()) {
-	//	tmp = "null";
-	//}
+const std::string get_description(const std::string& command) 
+{
 	return get_hotkey_command(command).description;
 }
 
@@ -794,7 +767,7 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 		}
 	}
 }
-/// returns hotkey_commands the hotkey command with the given identifier.
+
 hotkey_command& get_hotkey_command(const std::string& command)
 {
 	if (command_map_.find(command) == command_map_.end()) 
