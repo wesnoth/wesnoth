@@ -16,6 +16,7 @@
 
 #include "events.hpp"
 #include "tstring.hpp"
+#include <boost/ptr_container/ptr_vector.hpp>
 
 class config;
 class display;
@@ -141,6 +142,8 @@ enum HOTKEY_COMMAND {
 	TITLE_SCREEN__CREDITS,
 	GLOBAL__HELPTIP,
 
+	HOTKEY_WML, 
+
 	HOTKEY_NULL
 };
 
@@ -158,23 +161,58 @@ struct input_controll {
 	hotkey::scope scope;
 };
 
-/// Stores all static information related to hotkey functions.
+
+
+/// Stores all information related to functions that can be bound to hotkeys.
+/// this is currently a semi struct: it haves a constructor, but only const-public members. 
 struct hotkey_command {
+public:
+	/// the compiler want me to make a default constructor
+	/// since most member are const, calling the default contructor is normaly no use.
+	hotkey_command();
+	hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hotkey::scope scope, const t_string& tooltip);
+	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identyfy the object is called "command"
+	/// there is some unconsitency with that names in this file.
 	/// This binds the command to a function. Does not need to be unique.
-	hotkey::HOTKEY_COMMAND id;
+	const hotkey::HOTKEY_COMMAND id;
 	/// The command is unique.
-	const char* command;
-	/// note: The description is untranslated.
-	const char* description;
+	const std::string command;
+	// since the wml_menu hotkey_command s can have different textdomains we need t_string now.
+	const t_string description;
 	/// If hidden then don't show the command in the hotkey preferences.
-	bool hidden;
+	const bool hidden;
 	/// The visibility scope of the command.
+	const hotkey::scope scope;
+
+	const t_string tooltip;
+	
+	/// checks weather this is the null hotkey_command
+	bool null() const;
+	/// returns the command that is treated as null
+	static hotkey_command& null_command();
+	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command, 
+	/// to be able to call it with HOTKEY_COMMAND, this function was created
+	static hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
+};
+/// Do not use this ouside hotkeys.cpp.
+/// hotkey_command uses t_string wich might cause bugs when used at progamm startup, so use this for the hotkey_list_ (and only there).
+struct hotkey_command_temp {
+	hotkey::HOTKEY_COMMAND id;
+	
+	const char* command;
+	/// description, tooltip are untranslated
+	const char* description;
+	
+	bool hidden;
+	
 	hotkey::scope scope;
-	///
+	
 	const char* tooltip;
 };
 
-const hotkey_command* get_hotkey_commands();
+/// returns a container that contains all currently active hotkey_commands.
+/// everything that wants a hotkey, must be in this container.
+const boost::ptr_vector<hotkey_command>& get_hotkey_commands();
 
 class hotkey_item {
 public:
@@ -218,8 +256,16 @@ public:
 	std::string get_name() const;
 
 	void clear();
-
+	
 	bool null() const { return command_  == "null"; };
+	
+	/// retruns weather there is a associated hotkey_command.
+	// if the none of the hotkey_commands fits this hotkey_item then get_hotkey_command will return the hotkey_command::null_command().
+	bool active() const;
+
+	/// ckecks weather that hotkey "makes sense" meaning weather one of character, keycode, joystick, mouse, button, hat, value is set.
+	/// i dont know what the axis_.. values are so i ignore them.
+	bool valid() const;
 
 	void save(config& cfg);
 
@@ -244,6 +290,8 @@ public:
 	bool get_alt() const { return alt_; }
 
 	HOTKEY_COMMAND get_id() const;
+
+	hotkey_command& get_hotkey_command() const;
 
 	void set_jbutton(int button, int joystick, bool shift, bool ctrl, bool cmd, bool alt);
 	void set_jhat(int joystick, int hat, int value, bool shift, bool ctrl, bool cmd, bool alt);
@@ -274,7 +322,8 @@ protected:
 	int axis_mouse;
 
 };
-
+/// this class is initialized once at gamestart
+/// put all initialisation and wipe code in the methods here.
 class manager {
 public:
 	manager();
@@ -295,13 +344,36 @@ void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();
 void save_hotkeys(config& cfg);
 
-//TODO they do the same?
+/// returns get_hotkey_command(command).id
 HOTKEY_COMMAND get_id(const std::string& command);
-HOTKEY_COMMAND get_hotkey_command(const std::string& command);
+
+/// returns the hotkey_command with the given name
+hotkey_command& get_hotkey_command(const std::string& command);
+
 const std::string get_description(const std::string& command);
 const std::string get_tooltip(const std::string& command);
 
+
+
+/// adds a new wml hotkey to the list, but only if there is no hotkey woth that id yet on the list.
+/// the object that is created here will be deleted in "delete_all_wml_hotkeys()"
+void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey);
+
+/// deletes all wml hotkeys, should be called after a game has ended
+void delete_all_wml_hotkeys();
+/// returns the hotkey_command that is treated as null.
+hotkey_command& get_hotkey_null();
+
+/// 
+bool has_hotkey_command(const std::string& id);
+/// inicated weather there is at least one hotkey_item with the given command
+bool has_hotkey_item(const std::string& command);
+
+/// hotkey::HOTKEY_COMMAND isn't doesnt identify a hotkey_command, consider passing a string
 std::string get_names(hotkey::HOTKEY_COMMAND id);
+
+/// returns all hotkey_item s that point to this, command in the form "A,Strg+M,F4"
+/// used in the preferences menu
 std::string get_names(std::string id);
 void add_hotkey(const hotkey_item& item);
 void clear_hotkeys(const std::string& command);
@@ -394,6 +466,8 @@ public:
 	virtual void right_mouse_click() {}
 	virtual void toggle_accelerated_speed() {}
 
+
+	// execute_command's parameter is changed to "hotkey_command& command" and this not maybe that is too inconsitent.
 	// Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
 	// Does the action control a toggle switch? If so, return the state of the action (on or off).
@@ -411,8 +485,8 @@ public:
 	 */
 	void set_button_state(display& disp);
 
-	virtual bool can_execute_command(HOTKEY_COMMAND command, int index=-1) const = 0;
-	virtual bool execute_command(HOTKEY_COMMAND command, int index=-1);
+	virtual bool can_execute_command(const hotkey_command& command, int index=-1) const = 0;
+	virtual bool execute_command(const hotkey_command& command, int index=-1);
 };
 
 /* Functions to be called every time a event is intercepted.
@@ -426,7 +500,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
 
 //TODO
-void execute_command(display& disp, HOTKEY_COMMAND command, command_executor* executor, int index=-1);
+void execute_command(display& disp, hotkey_command& command, command_executor* executor, int index=-1);
 
 // Object which will ensure that basic keyboard events like escape
 // are handled properly for the duration of its lifetime.

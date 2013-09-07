@@ -340,9 +340,10 @@ private:
 		}
 	}
 
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int /*index*/) const
+	bool can_execute_command(const hotkey::hotkey_command& cmd, int /*index*/) const
 	{
-		return (topic_.empty() == false && cmd == hotkey::HOTKEY_HELP) || cmd == hotkey::HOTKEY_SCREENSHOT;
+		hotkey::HOTKEY_COMMAND command = cmd.id;
+		return (topic_.empty() == false && command == hotkey::HOTKEY_HELP) || command == hotkey::HOTKEY_SCREENSHOT;
 	}
 
 	display& disp_;

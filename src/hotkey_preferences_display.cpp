@@ -38,6 +38,7 @@
 
 #include <boost/assign/list_of.hpp>
 #include <boost/foreach.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
 
 namespace preferences {
 
@@ -269,22 +270,26 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	set_measurements(preferences::width, preferences::height);
 
 	// Populate the command vectors, this needs to happen only once.
-	const hotkey::hotkey_command* list = hotkey::get_hotkey_commands();
-	for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
+	const boost::ptr_vector<hotkey::hotkey_command>& list = hotkey::get_hotkey_commands();
+	
+	//for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
+	BOOST_FOREACH(const hotkey::hotkey_command& command, list)
+	{
+		if (command.hidden) 
+		{
+			continue; 
+		}
 
-		if (list[i].hidden) {
-			continue; }
-
-		switch (list[i].scope) {
+		switch (command.scope) {
 
 		case hotkey::SCOPE_GAME:
-			game_commands_.push_back(list[i].command);
+			game_commands_.push_back(command.command);
 			break;
 		case hotkey::SCOPE_EDITOR:
-			editor_commands_.push_back(list[i].command);
+			editor_commands_.push_back(command.command);
 			break;
 		case hotkey::SCOPE_GENERAL:
-			general_commands_.push_back(list[i].command);
+			general_commands_.push_back(command.command);
 			break;
 		case hotkey::SCOPE_COUNT:
 			break;
@@ -351,7 +356,7 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		if (truncated_description.size() >= (truncate_at + 2) ) {
 			utils::ellipsis_truncate(truncated_description, truncate_at);
 		}
-		const std::string& name = hotkey::get_names(hotkey::get_id(command));
+		const std::string& name = hotkey::get_names(command);
 
 		menu_items.push_back(
 				(formatter() << truncated_description << HELP_STRING_SEPARATOR
@@ -641,7 +646,7 @@ Control, Alt or Meta modifiers to avoid problems."));
 			break;
 		}
 
-		if (oldhk && !oldhk->null()) {
+		if (oldhk && oldhk->active()) {
 			if (oldhk->get_command() != id) {
 
 				utils::string_map symbols;

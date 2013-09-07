@@ -107,13 +107,13 @@ class editor_controller : public controller_base,
 		void save_map() {context_manager_->save_map();};
 
 		/** command_executor override */
-		bool can_execute_command(hotkey::HOTKEY_COMMAND, int index = -1) const;
+		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const;
 
 		/** command_executor override */
 		hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 
 		/** command_executor override */
-		bool execute_command(hotkey::HOTKEY_COMMAND command, int index = -1);
+		bool execute_command(const hotkey::hotkey_command& command, int index = -1);
 
 		/** controller_base override */
 		void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
