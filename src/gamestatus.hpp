@@ -52,8 +52,9 @@ typedef boost::shared_ptr<team_builder> team_builder_ptr;
 extern const std::string DEFAULT_DIFFICULTY;
 
 
-struct wml_menu_item
+class wml_menu_item
 {
+public:
 	wml_menu_item(const std::string& id, const config* cfg=NULL);
 
 	/// The WML actions specified within this item.

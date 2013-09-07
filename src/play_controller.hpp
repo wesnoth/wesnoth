@@ -32,7 +32,7 @@ class game_display;
 class game_state;
 class game_data;
 class team;
-struct wml_menu_item;
+class wml_menu_item;
 
 namespace actions {
 	class undo_list;
