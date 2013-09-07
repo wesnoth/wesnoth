@@ -176,19 +176,31 @@ wmi_container::wmi_container()
 	: wml_menu_items_()
 {}
 
-wmi_container::wmi_container(std::map<std::string, wml_menu_item*> wml_menu_items)
-	: wml_menu_items_(wml_menu_items)
-{}
-
 wmi_container::wmi_container(const wmi_container& container)
 	: wml_menu_items_()
 {
-	std::map<std::string, wml_menu_item*>::const_iterator itor;
-	for (itor = container.wml_menu_items_.begin(); itor != container.wml_menu_items_.end(); ++itor) {
-		wml_menu_items_[itor->first] = new wml_menu_item(*(itor->second));
-	}
+	copy(container.wml_menu_items_);
 }
 
+
+/**
+ * Performs a deep copy, replacing our current contents.
+ * Used by assignment and the copy constructor.
+ */
+void wmi_container::copy(const std::map<std::string, wml_menu_item *> & source)
+{
+	// Safety measure.
+	if ( &source == &wml_menu_items_ )
+		return;
+
+	// Free up the old memeory.
+	clear_wmi();
+
+	std::map<std::string, wml_menu_item*>::const_iterator itor;
+	for ( itor = source.begin(); itor != source.end(); ++itor )
+		// Deep copy.
+		wml_menu_items_[itor->first] = new wml_menu_item(*(itor->second));
+}
 
 void wmi_container::clear_wmi()
 {

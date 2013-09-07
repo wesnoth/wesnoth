@@ -102,8 +102,11 @@ private:
 class wmi_container{
 public:
 	wmi_container();
-	explicit wmi_container(std::map<std::string, wml_menu_item*> wml_menu_items);
 	explicit wmi_container(const wmi_container& container);
+
+	/// Assignment operator to support deep copies.
+	wmi_container & operator=(const wmi_container & that)
+	{ copy(that.wml_menu_items_); return *this; }
 
 	std::map<std::string, wml_menu_item*>& get_menu_items() { return wml_menu_items_; };
 	void clear_wmi();
@@ -112,6 +115,10 @@ public:
 
 	wml_menu_item*& get_item(const std::string& id) { return wml_menu_items_[id]; };
 private:
+	/// Performs a deep copy, replacing our current contents.
+	void copy(const std::map<std::string, wml_menu_item *> & source);
+
+private: // data
 	std::map<std::string, wml_menu_item*> wml_menu_items_;
 };
 
