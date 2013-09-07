@@ -183,11 +183,9 @@ wmi_container::wmi_container(std::map<std::string, wml_menu_item*> wml_menu_item
 wmi_container::wmi_container(const wmi_container& container)
 	: wml_menu_items_()
 {
-	clear_wmi();
 	std::map<std::string, wml_menu_item*>::const_iterator itor;
 	for (itor = container.wml_menu_items_.begin(); itor != container.wml_menu_items_.end(); ++itor) {
-		wml_menu_item*& mref = wml_menu_items_[itor->first];
-		mref = new wml_menu_item(*(itor->second));
+		wml_menu_items_[itor->first] = new wml_menu_item(*(itor->second));
 	}
 }
 
