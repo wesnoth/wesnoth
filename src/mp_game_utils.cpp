@@ -46,9 +46,9 @@ namespace {
 bool has_level_data(const config& level, bool first_scenario)
 {
 	if (first_scenario) {
-		return level.has_attribute("version") && level.child("side");
+		return level.has_attribute("version") && level.has_child("side");
 	} else {
-		return level.child("next_scenario");
+		return level.has_child("next_scenario");
 	}
 }
 
