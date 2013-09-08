@@ -103,6 +103,7 @@ class wmi_container{
 public:
 	wmi_container();
 	explicit wmi_container(const wmi_container& container);
+	~wmi_container() { clear_wmi(); }
 
 	/// Assignment operator to support deep copies.
 	wmi_container & operator=(const wmi_container & that)
@@ -176,7 +177,7 @@ public:
 	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover_info(const config& cfg);
-	~carryover_info(){};
+
 	carryover* get_side(std::string save_id);
 	std::vector<carryover>& get_all_sides();
 	void add_side(const config& cfg);
@@ -219,8 +220,6 @@ public:
 	game_data();
 	game_data(const config& level);
 	game_data(const game_data& data);
-
-	~game_data();
 
 	std::vector<scoped_wml_variable*> scoped_variables;
 
