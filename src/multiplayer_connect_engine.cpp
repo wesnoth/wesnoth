@@ -289,8 +289,9 @@ void connect_engine::import_user(const config& data, const bool observer,
 	BOOST_FOREACH(side_engine_ptr user_side, side_engines_) {
 		if (user_side->player_id() == username) {
 			BOOST_FOREACH(side_engine_ptr side, side_engines_) {
-				if (side->current_player() == user_side->cfg()["side"] &&
-					side->player_id().empty()) {
+				if (!side->current_player().empty() &&
+					side->player_id().empty() &&
+					side->current_player() == user_side->cfg()["side"]) {
 
 					side->place_user(data);
 				}
