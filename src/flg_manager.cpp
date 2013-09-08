@@ -442,13 +442,22 @@ void flg_manager::update_choosable_genders()
 {
 	choosable_genders_ = available_genders_;
 
-	const std::string& gender = side_["gender"];
-	if (!gender.empty() && map_settings_) {
+	if (map_settings_) {
+		std::string default_gender = side_["gender"];
+		if (default_gender.empty()) {
+			const unit_type* unit = unit_types.find(current_leader_);
+			if (unit) {
+				default_gender = gender_string(unit->genders().front());
+			} else {
+				return;
+			}
+		}
+
 		if (std::find(available_genders_.begin(), available_genders_.end(),
-			gender) != available_genders_.end()) {
+			default_gender) != available_genders_.end()) {
 
 			choosable_genders_.clear();
-			choosable_genders_.push_back(gender);
+			choosable_genders_.push_back(default_gender);
 		}
 	}
 }
