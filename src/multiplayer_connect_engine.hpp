@@ -161,7 +161,8 @@ public:
 
 	/* Setters & Getters */
 
-	std::string save_id() const { return cfg_["save_id"]; }
+	std::string save_id() const
+		{ return (!cfg_["save_id"].empty()) ? cfg_["save_id"] : cfg_["id"]; }
 	const std::vector<controller_option>& controller_options()
 		{ return controller_options_; }
 	const config& cfg() const { return cfg_; }
