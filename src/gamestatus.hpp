@@ -55,7 +55,7 @@ extern const std::string DEFAULT_DIFFICULTY;
 class wml_menu_item
 {
 public:
-	wml_menu_item(const std::string& id, const config* cfg=NULL);
+	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
 
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
@@ -102,7 +102,7 @@ private:
 class wmi_container{
 public:
 	wmi_container();
-	explicit wmi_container(const wmi_container& container);
+	wmi_container(const wmi_container& container);
 	~wmi_container() { clear_wmi(); }
 
 	/// Assignment operator to support deep copies.
@@ -218,7 +218,7 @@ private:
 class game_data  : public variable_set  {
 public:
 	game_data();
-	game_data(const config& level);
+	explicit game_data(const config& level);
 	game_data(const game_data& data);
 
 	std::vector<scoped_wml_variable*> scoped_variables;
@@ -297,7 +297,7 @@ class game_classification : public savegame::savegame_config
 {
 public:
 	game_classification();
-	game_classification(const config& cfg);
+	explicit game_classification(const config& cfg);
 	game_classification(const game_classification& gc);
 
 	config to_config() const;
@@ -326,7 +326,7 @@ class game_state
 public:
 	game_state();
 	game_state(const game_state& state);
-	game_state(const config& cfg, bool show_replay = false);
+	explicit game_state(const config& cfg, bool show_replay = false);
 
 	~game_state(){};
 	game_state& operator=(const game_state& state);
