@@ -34,7 +34,7 @@ msgstr "IA sperimentale"
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/akihara_recruitment.cfg:6 data/ai/dev/testing_recruiting.cfg:5
 msgid "Experimental Recruitment AI"
-msgstr ""
+msgstr "IA sperimentale di reclutamento"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:4
@@ -44,14 +44,14 @@ msgstr ""
 #. [ai]: id=default_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:5
 msgid "Default AI with poisoning formula"
-msgstr ""
+msgstr "AI di default con formula di avvelenamento"
 
 #. [ai]: id=ai_idle
 #. [side]: id=leader3, type=Mage of Light
 #: data/ai/dev/idle_ai.cfg:4
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
-msgstr ""
+msgstr "AI inattivo"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6107
@@ -59,6 +59,8 @@ msgid ""
 "Enemy unit weight: The (negative) weight given to each enemy unit that can "
 "reach a potential target location. Default: 100"
 msgstr ""
+"Peso dell'unità nemica: Il peso (negativo) dato a ciascuna unità nemica"
+"che può raggiungere una locazione di bersaglio potenziale. Default: 100"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6108
@@ -66,6 +68,8 @@ msgid ""
 "My unit weight: The (positive) weight given to each of the AI's units that "
 "can reach a potential target location. Default: 1"
 msgstr ""
+"Peso della mia unità: Il peso (positivo) dato a ciascun delle unità"
+"AI che possono raggiungere una locazione di bersaglio potenziale. Default: 1"
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6109
@@ -75,6 +79,9 @@ msgid ""
 "Default: 3 -- thus, by default, being a step closer to the goal is as "
 "important as being in reach of 3 of AI's units."
 msgstr ""
+"Peso della distanza obiettivo: Il peso (negativo) per ciascun passo che l'unità"
+"deve percorrere dalla sua locazione obiettivo. \n"
+"Default: 3 -- perciò di default, essere un passo più vicino all'obiettivo é imporante come poter raggiungere 3 delle unità AI."
 
 #. [lua]: init
 #: data/ai/micro_ais/ais/mai_protect_unit_engine.lua:6110
