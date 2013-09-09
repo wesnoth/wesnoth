@@ -81,7 +81,11 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		needs_select(false),
 		show_if(),
 		filter_location(),
-		command()
+		command(),
+		default_hotkey(),
+		use_hotkey(true),
+		use_wml_menu(true),
+		ignore_filter_on_hotkey(false)
 
 {
 	std::stringstream temp;
@@ -94,8 +98,26 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
 		needs_select = (*cfg)["needs_select"].to_bool();
-		use_hotkey = (*cfg)["use_hotkey"].to_bool(true);
 		ignore_filter_on_hotkey = (*cfg)["ignore_filter_on_hotkey"].to_bool();
+		use_hotkey = (*cfg)["use_hotkey"].to_bool(true);
+		
+		const std::string& use_hotkey_string = (*cfg)["use_hotkey"];
+		if(use_hotkey_string == "no" || use_hotkey_string == "false" )
+		{
+			use_hotkey = false;
+			use_wml_menu = true;
+		}
+		else if(use_hotkey_string == "only")
+		{	
+			use_hotkey = true;
+			use_wml_menu = false;
+		}
+		else 
+		{
+			use_hotkey = true;
+			use_wml_menu = true;
+		}
+
 		if (const config &c = cfg->child("show_if")) show_if = c;
 		if (const config &c = cfg->child("filter_location")) filter_location = c;
 		if (const config &c = cfg->child("command")) command = c;
@@ -143,6 +165,19 @@ void wmi_container::to_config(config& cfg){
 		new_cfg["needs_select"] = j->second->needs_select;
 		new_cfg["use_hotkey"] = j->second->use_hotkey;
 		new_cfg["ignore_filter_on_hotkey"] = j->second->ignore_filter_on_hotkey;
+		
+		if(j->second->use_hotkey && j->second->use_wml_menu)
+			new_cfg["use_hotkey"] = true;
+		if(j->second->use_hotkey && !j->second->use_wml_menu)
+			new_cfg["use_hotkey"] = "only";
+		if(!j->second->use_hotkey && j->second->use_wml_menu)
+			new_cfg["use_hotkey"] = false;
+		if(!j->second->use_hotkey && !j->second->use_wml_menu)
+		{
+			ERR_NG << "strange wml_menu_item that neigher uses wml_menu nor hotkeys appeared";
+			new_cfg["use_hotkey"] = false;
+		}
+
 		if(!j->second->show_if.empty())
 			new_cfg.add_child("show_if", j->second->show_if);
 		if(!j->second->filter_location.empty())
@@ -150,7 +185,7 @@ void wmi_container::to_config(config& cfg){
 		if(!j->second->command.empty())
 			new_cfg.add_child("command", j->second->command);
 		if(!j->second->default_hotkey.empty())
-			new_cfg.add_child("default_hotkey", j->second->command);
+			new_cfg.add_child("default_hotkey", j->second->default_hotkey);
 		cfg.add_child("menu_item", new_cfg);
 	}
 }

@@ -2292,9 +2292,27 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	if(cfg.has_child("default_hotkey")) {
 		mref->default_hotkey = cfg.child("default_hotkey").get_config();
 	}
-	mref->use_hotkey = !cfg["no_hotkey"].to_bool(false);
-	//this can also be used to make a hotkey without menu_item by giving an always false filter
-	mref->ignore_filter_on_hotkey = cfg["ignore_filter_on_hotkey"].to_bool(false);
+	if(cfg.has_attribute("use_hotkey")) {
+		const std::string& use_hotkey_string = cfg["use_hotkey"];
+		if(use_hotkey_string == "no" || use_hotkey_string == "false" )
+		{
+			mref->use_hotkey = false;
+			mref->use_wml_menu = true;
+		}
+		else if(use_hotkey_string == "only")
+		{	
+			mref->use_hotkey = true;
+			mref->use_wml_menu = false;
+		}
+		else 
+		{
+			mref->use_hotkey = true;
+			mref->use_wml_menu = true;
+		}
+	}
+	if(cfg.has_attribute("ignore_filter_on_hotkey")) {
+		mref->ignore_filter_on_hotkey = cfg["ignore_filter_on_hotkey"].to_bool(false);
+	}
 	if(cfg.has_child("command")) {
 		const vconfig& cmd = cfg.child("command");
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
@@ -3468,6 +3486,11 @@ namespace game_events {
 			if (!itor.second->command.empty()) {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
 				if(itor.second->use_hotkey) {
+					// applying default hotkeys here curenty doesnt work because the hotkeys are reset 
+					// by play_controler::init_managers() -> display_manager::display_manager, wich is called after this.
+					// the result it, that default wml hotkeys will be ignored if wml hotkeys are settet to default in the preferences menu.
+					// (they are still reaplied if set_menu_item is called again, for example by starting a new campaign.)
+					// since it isn't that important i'll just leave it for now.
 					hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + itor.first, itor.second->description, itor.second->default_hotkey);
 				}
 			}

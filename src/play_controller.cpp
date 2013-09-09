@@ -1228,9 +1228,11 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			std::map<std::string, wml_menu_item*>::iterator itor;
 			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
 				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
+				bool use_wml_menu = itor->second->use_wml_menu;
 				config& show_if = itor->second->show_if;
 				config filter_location = itor->second->filter_location;
-				if ((show_if.empty()
+				if (use_wml_menu
+				&&	(show_if.empty()
 					|| game_events::conditional_passed(vconfig(show_if)))
 				&& (filter_location.empty()
 					|| terrain_filter(vconfig(filter_location), units_)(hex))

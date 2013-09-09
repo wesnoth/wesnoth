@@ -63,6 +63,7 @@ struct wml_menu_item
 	config command;
 	config default_hotkey;
 	bool use_hotkey;
+	bool use_wml_menu;
 	bool ignore_filter_on_hotkey;
 };
 
