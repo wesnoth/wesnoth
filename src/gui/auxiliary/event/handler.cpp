@@ -372,14 +372,7 @@ void thandler::handle_event(const SDL_Event& event)
 			video_resize(tpoint(event.resize.w, event.resize.h));
 			break;
 
-#if defined(_X11) && !defined(__APPLE__)
-		case SDL_SYSWMEVENT: {
-			DBG_GUI_E << "Event: System event.\n";
-			//clipboard support for X11
-			handle_system_event(event);
-			break;
-		}
-#elif defined _WIN32
+#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
 			/* DO NOTHING */
 			break;
