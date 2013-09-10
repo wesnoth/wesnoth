@@ -729,6 +729,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
+	gui/dialogs/game_paths.cpp
 	gui/dialogs/game_save.cpp
 	gui/dialogs/gamestate_inspector.cpp
 	gui/dialogs/language_selection.cpp
