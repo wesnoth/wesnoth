@@ -37,7 +37,7 @@ public:
 
 	void set_current_faction(const unsigned index);
 	void set_current_faction(const std::string& id);
-	void set_current_faction(const config* faction)
+	void set_current_faction(const config& faction)
 		{ set_current_faction(faction_index(faction)); }
 
 	void set_current_leader(const unsigned index);
@@ -75,8 +75,7 @@ public:
 	const config* default_leader_cfg() const
 		{ return default_leader_cfg_; }
 
-	int current_faction_index() const
-		{ return faction_index(current_faction_); }
+	int current_faction_index() const;
 
 private:
 	flg_manager(const flg_manager&);
@@ -93,7 +92,7 @@ private:
 	// to a choosable factions.
 	void append_leaders_from_faction(const config* faction);
 
-	int faction_index(const config* faction) const;
+	int faction_index(const config& faction) const;
 	int leader_index(const std::string& leader) const;
 	int gender_index(const std::string& gender) const;
 

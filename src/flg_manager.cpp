@@ -509,6 +509,13 @@ int flg_manager::find_suitable_faction(const std::string& faction_id) const
 	return res;
 }
 
+int flg_manager::current_faction_index() const
+{
+	assert(current_faction_);
+
+	return faction_index(*current_faction_);
+}
+
 void flg_manager::append_leaders_from_faction(const config* faction)
 {
 	std::vector<std::string> leaders_to_append =
@@ -521,10 +528,10 @@ void flg_manager::append_leaders_from_faction(const config* faction)
 		leaders_to_append.end());
 }
 
-int flg_manager::faction_index(const config* faction) const
+int flg_manager::faction_index(const config& faction) const
 {
 	std::vector<const config*>::const_iterator it = std::find(
-		choosable_factions_.begin(), choosable_factions_.end(), faction);
+		choosable_factions_.begin(), choosable_factions_.end(), &faction);
 
 	assert(it != choosable_factions_.end());
 	return std::distance(choosable_factions_.begin(), it);
