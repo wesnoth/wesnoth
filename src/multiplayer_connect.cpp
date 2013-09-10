@@ -153,7 +153,9 @@ void connect::side::process_event()
 
 		update_ui();
 		parent_->sides_[drop_target].update_ui();
-	} else if (combo_controller_->changed()) {
+	} else if (combo_controller_->changed() &&
+		combo_controller_->selected() >= 0) {
+
 		changed_ = engine_->controller_changed(combo_controller_->selected());
 		update_controller_ui();
 	}

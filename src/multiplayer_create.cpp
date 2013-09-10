@@ -373,7 +373,10 @@ void create::process_event()
 
 void create::init_level_type_changed(size_t index)
 {
-	const int selected = level_type_combo_.selected();
+	int selected = level_type_combo_.selected();
+	if (selected < 0) {
+		selected = 0;
+	}
 
 	engine_.set_current_level_type(available_level_types_[selected]);
 	engine_.set_current_level(index);
