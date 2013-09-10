@@ -31,7 +31,7 @@ class create : public mp::ui
 {
 public:
 	create(game_display& disp, const config& game_config, game_state& state,
-		chat& c, config& gamelist, bool local_players_only);
+		chat& c, config& gamelist);
 	~create();
 
 	const mp_game_settings& get_parameters();
@@ -49,8 +49,6 @@ private:
 	void draw_level_image();
 
 	std::string select_campaign_difficulty();
-
-	bool local_players_only_;
 
 	tooltips::manager tooltip_manager_;
 	int era_selection_;

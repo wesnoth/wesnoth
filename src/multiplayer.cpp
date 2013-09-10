@@ -549,8 +549,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 			mp_game_settings new_params;
 
 			{
-				mp::create ui(disp, game_config, state, gamechat, gamelist,
-					local_players_only);
+				mp::create ui(disp, game_config, state, gamechat, gamelist);
 				run_lobby_loop(disp, ui);
 				res = ui.get_result();
 				new_params = ui.get_parameters();
