@@ -88,7 +88,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 
 	update_available_factions();
 
-	set_current_faction((unsigned) 0);
+	set_current_faction(0);
 }
 
 flg_manager::~flg_manager()

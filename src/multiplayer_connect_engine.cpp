@@ -1112,7 +1112,7 @@ void side_engine::reset()
 	set_controller(parent_.default_controller_);
 
 	if (!parent_.params_.saved_game) {
-		flg_.set_current_faction((unsigned) 0);
+		flg_.set_current_faction(0);
 	}
 }
 
