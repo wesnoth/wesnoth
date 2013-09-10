@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2012-12-30 18:12+0700\n"
-"Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
+"POT-Creation-Date: 2013-08-17 15:16+0200\n"
+"PO-Revision-Date: 2013-09-09 11:47+0700\n"
+"Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -170,13 +170,15 @@ msgstr "Mengompres Simpanan "
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:171
 msgid "Experimental multiplayer lobby"
-msgstr ""
+msgstr "Percobaan pintu masuk multi pemain"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:172
 msgid ""
 "Replace the classic multiplayer lobby with a newer, experimental interface"
 msgstr ""
+"Ganti pintu masuk multi pemain klasik dengan yang lebih baru, antarmuka "
+"percobaan"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:180
@@ -704,10 +706,8 @@ msgstr ""
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:111
-#, fuzzy
-#| msgid "End Scenario"
 msgid "Scenery"
-msgstr "Akhir Skenario"
+msgstr ""
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:116
@@ -6660,8 +6660,6 @@ msgid "None"
 msgstr "Tidak ada"
 
 #: src/reports.cpp:1078 src/reports.cpp:1132
-#, fuzzy
-#| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unit baik:"
 
@@ -7090,229 +7088,6 @@ msgstr "Sembunyikan rencana untuk $player"
 msgid "Whiteboard Options"
 msgstr "Pilihan Papan Tulis Putih"
 
-#~ msgid "KB"
-#~ msgstr "KB"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^Default AI"
-#~ msgid "Multiplayer_AI^Default AI (RCA)"
-#~ msgstr "Multi Pemain (Default AI)"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^Default AI"
-#~ msgid "Multiplayer_AI^Experimental AI"
-#~ msgstr "Multi Pemain (Default AI)"
-
-#, fuzzy
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
-#~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "Unit musuh terlihat! $enemies unit-unit musuh terlihat!"
-
-#, fuzzy
-#~| msgid "race^Orcs"
-#~ msgid "Orcs"
-#~ msgstr "Bangsa Ork"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Konrad here"
-#~ msgstr "Memindahkan pimpinan kemari"
-
-#, fuzzy
-#~| msgid "race^Humans"
-#~ msgid "Humans"
-#~ msgstr "Bangsa Manusia"
-
-#, fuzzy
-#~| msgid "race^Wolves"
-#~ msgid "Wolves"
-#~ msgstr "Bangsa Serigala"
-
-#, fuzzy
-#~| msgid "help"
-#~ msgid "Whelps"
-#~ msgstr "Bantuan"
-
-#~ msgid "End scenario"
-#~ msgstr "Akhir skenario"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Take the pass"
-#~ msgstr "Simpan Peta Sebagai"
-
-#, fuzzy
-#~| msgid "Defeat"
-#~ msgid "Defeat Rowck"
-#~ msgstr "Kekalahan"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader"
-#~ msgid "Death of the bat leader"
-#~ msgstr "Kalahkan pemimpin musuh"
-
-#, fuzzy
-#~| msgid "race^Saurians"
-#~ msgid "Saurians"
-#~ msgstr "Bangsa Kadal"
-
-#, fuzzy
-#~| msgid "General commands"
-#~ msgid "General Minry"
-#~ msgstr "Perintah Umum"
-
-#, fuzzy
-#~| msgid "race^Gryphon"
-#~ msgid "Place Side 1 Footpad"
-#~ msgstr "Grifon"
-
-#, fuzzy
-#~| msgid "race^Gryphons"
-#~ msgid "Gryphons"
-#~ msgstr "Bangsa Grifon"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 1"
-#~ msgstr "Terus >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "coward r=5"
-#~ msgstr "Terus >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 2"
-#~ msgstr "Terus >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 3"
-#~ msgstr "Terus >"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward 4"
-#~ msgstr "Terus >"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "Guarded Location"
-#~ msgstr "lokasi Tidak Berlaku"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 1"
-#~ msgstr "Faction"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 2"
-#~ msgstr "Faction"
-
-#, fuzzy
-#~| msgid "Forward >"
-#~ msgid "Coward"
-#~ msgstr "Terus >"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat all enemy units"
-#~ msgstr ""
-#~ "Kemenangan:\n"
-#~ "Kalahkan pemimpin musuh"
-
-#, fuzzy
-#~| msgid "teleport"
-#~ msgid "Healer Support"
-#~ msgstr "teleportasi"
-
-#, fuzzy
-#~| msgid "Notes:"
-#~ msgid "Notes"
-#~ msgstr "Catatan:"
-
-#, fuzzy
-#~| msgid "Clear all orders"
-#~ msgid "Defeat all lurkers"
-#~ msgstr "Singkirkan semua perintah"
-
-#, fuzzy
-#~| msgid "Message:"
-#~ msgid "Messenger"
-#~ msgstr "Pesan:"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "AI moves Messenger here"
-#~ msgstr "Memindahkan pimpinan kemari"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader"
-#~ msgid "Defeat the messenger"
-#~ msgstr "Kalahkan pemimpin musuh"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Rossauba here"
-#~ msgstr "Memindahkan pimpinan kemari"
-
-#, fuzzy
-#~| msgid "Take it"
-#~ msgid "I made it"
-#~ msgstr "Ambil itu"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Recruiting"
-#~ msgstr "Rekrut"
-
-#, fuzzy
-#~ msgid "Swarm"
-#~ msgstr "merubung"
-
-#, fuzzy
-#~| msgid "race^Bats"
-#~ msgid "Bats"
-#~ msgstr "Kelelawar-kelelawar"
-
-#, fuzzy
-#~| msgid "race^Gryphon"
-#~ msgid "Place Side 1 Gryphon"
-#~ msgstr "Grifon"
-
-#, fuzzy
-#~| msgid "race^Wolves"
-#~ msgid "More Wolves"
-#~ msgstr "Bangsa Serigala"
-
-#, fuzzy
-#~| msgid "Selected user: "
-#~ msgid "Select another ai"
-#~ msgstr "Pemain dipilih:"
-
-#, fuzzy
-#~| msgid "Select an add-on to update:"
-#~ msgid "Select another test"
-#~ msgstr "Pilih tambahan untuk diupdate:"
-
-#, fuzzy
-#~| msgid "Wesnoth Developers"
-#~ msgid "AI Developer"
-#~ msgstr "Pembangun Wesnoth"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "AI Location:"
-#~ msgstr "lokasi Tidak Berlaku"
-
-#, fuzzy
-#~| msgid "firststrike"
-#~ msgid "first"
-#~ msgstr "serangan pertama"
-
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "Multipemain_AI (RCA AI)"
 
@@ -7517,6 +7292,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "Update add-ons"
 #~ msgstr "Update add-on"
 
+#~ msgid "Select an add-on to update:"
+#~ msgstr "Pilih tambahan untuk diupdate:"
+
 #~ msgid "Installation of some dependency failed"
 #~ msgstr "Instalasi dari beberapa kepercayaan gagal"
 
@@ -7554,6 +7332,9 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "Choose the game to load"
 #~ msgstr "Pilih permainan untuk diload"
+
+#~ msgid "KB"
+#~ msgstr "KB"
 
 #~ msgid "Do you really want to start the server?"
 #~ msgstr "Apakah anda benar-benar hendak memulai server?"
@@ -7641,6 +7422,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "Multiplayer define"
 #~ msgstr "Menetapkan Multi Pemain"
 
+#~ msgid "Defeat enemy leader"
+#~ msgstr "Kalahkan pemimpin musuh"
+
 #~ msgid "Download"
 #~ msgstr "Download"
 
@@ -7715,6 +7499,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "Send a message to the server admins currently online"
 #~ msgstr "KIrim pesan kepada pengurus server yang sedang online"
 
+#~ msgid "Take it"
+#~ msgstr "Ambil itu"
+
 #~ msgid "Leave it"
 #~ msgstr "Tinggalkan itu"
 
@@ -7761,6 +7548,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "Gaib:\n"
 #~ "Serangan ini selalu memiliki 70% kemungkinan mengenai tanpa peduli "
 #~ "kemampuan bertahan unit yang diserang."
+
+#~ msgid "firststrike"
+#~ msgstr "serangan pertama"
 
 #~ msgid ""
 #~ "First Strike:\n"
@@ -7826,6 +7616,9 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "race+female^Bat"
 #~ msgstr "Kelelawar"
+
+#~ msgid "race^Bats"
+#~ msgstr "Kelelawar-kelelawar"
 
 #~ msgid "race^Drake"
 #~ msgstr "Drake"
@@ -8149,14 +7942,23 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "race^Goblins"
 #~ msgstr "Bangsa Goblin"
 
+#~ msgid "race^Gryphon"
+#~ msgstr "Grifon"
+
 #~ msgid "race+female^Gryphon"
 #~ msgstr "Grifon"
+
+#~ msgid "race^Gryphons"
+#~ msgstr "Bangsa Grifon"
 
 #~ msgid "race^Human"
 #~ msgstr "Manusia"
 
 #~ msgid "race+female^Human"
 #~ msgstr "Manusia"
+
+#~ msgid "race^Humans"
+#~ msgstr "Bangsa Manusia"
 
 #~ msgid ""
 #~ "The race of men is an extremely diverse one. Although they originally "
@@ -8247,6 +8049,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "race+female^Saurian"
 #~ msgstr "Kadal"
 
+#~ msgid "race^Saurians"
+#~ msgstr "Bangsa Kadal"
+
 #~ msgid "race^Mechanical"
 #~ msgstr "Mesin"
 
@@ -8291,6 +8096,9 @@ msgstr "Pilihan Papan Tulis Putih"
 
 #~ msgid "race+female^Orc"
 #~ msgstr "Ork"
+
+#~ msgid "race^Orcs"
+#~ msgstr "Bangsa Ork"
 
 #~ msgid ""
 #~ "In appearance, orcs are half men and half beasts. They are taller, "
@@ -8565,6 +8373,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "race^Wolf"
 #~ msgstr "Serigala"
 
+#~ msgid "race^Wolves"
+#~ msgstr "Bangsa Serigala"
+
 #~ msgid "race^Wose"
 #~ msgstr "Pohon"
 
@@ -8590,6 +8401,10 @@ msgstr "Pilihan Papan Tulis Putih"
 #, fuzzy
 #~ msgid "Intendant"
 #~ msgstr "Pandai"
+
+#, fuzzy
+#~ msgid "Swarm"
+#~ msgstr "merubung"
 
 #, fuzzy
 #~ msgid "Swarming"
@@ -10435,6 +10250,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "ini, dan bahkan troll yang paling ganas tidak bisa mendobrak dinding batu "
 #~ "tebal."
 
+#~ msgid "General commands"
+#~ msgstr "Perintah Umum"
+
 #~ msgid ""
 #~ "\n"
 #~ "Clear chat messages.\n"
@@ -10830,6 +10648,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "\n"
 #~ "Unit apapun di sebelah unit ini akan bertarung seperti ketika sore pada "
 #~ "malam hari, dan seperti ketika siang pada sore hari."
+
+#~ msgid "teleport"
+#~ msgstr "teleportasi"
 
 #~ msgid "female^teleport"
 #~ msgstr "teleportasi"
@@ -11469,6 +11290,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgid "<header>text='Units of this race'</header>"
 #~ msgstr "<header>text='Unit-unit ras ini'</header>"
 
+#~ msgid "Forward >"
+#~ msgstr "Terus >"
+
 #~ msgid "Reference to unknown topic: "
 #~ msgstr "Referensi ke topic yang tidak diketahui:"
 
@@ -11634,6 +11458,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "jika mereka memiliki unit di sebelahnya. Unit musuh manapun yang pertama-"
 #~ "tama menemukan unit ini langsung kehilangan semua sisa pergerakannya."
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Multi Pemain (Default AI)"
+
 #~ msgid "Which enemy side to focus on?"
 #~ msgstr "Sisi musuh mana yang harus ditangani?"
 
@@ -11788,6 +11615,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "Wesnoth. Untuk informasi terinci tentang ini atau mematikannya, klik "
 #~ "amplop di sudut bawah kanan."
 
+#~ msgid "Wesnoth Developers"
+#~ msgstr "Pembangun Wesnoth"
+
 #~ msgid "Upload statistics"
 #~ msgstr "Upload statistik"
 
@@ -11827,6 +11657,9 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ "Leader position not empty - duplicate side definition for side '$side|' "
 #~ "found."
 #~ msgstr "Definisi sisi duplikat untuk sisi '$side|' ditemukan"
+
+#~ msgid "End scenario"
+#~ msgstr "Akhir skenario"
 
 #~ msgid "Movement cost is 0, probably a terrain with movement cost of 0."
 #~ msgstr "Harga gerakan 0, barangkali sebuah daerah dengan harga gerakan 0."
