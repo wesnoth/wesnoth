@@ -329,7 +329,10 @@ void configure::process_event()
 
 	if (entry_points_combo_.changed()) {
 		const config& scenario = *entry_points_[entry_points_combo_.selected()];
+
+		parameters_.hash = scenario.hash();
 		parameters_.scenario_data = scenario;
+		parameters_.mp_scenario = parameters_.scenario_data["id"].str();
 
 		force_use_map_settings_check_ = true;
 	}
