@@ -223,6 +223,15 @@ void game::start_game(const player_map::const_iterator starter) {
 	send_observerjoins();
 }
 
+void game::update_game()
+{
+	started_ = false;
+	description_->set_attr("turn", "");
+
+	update_side_data();
+	describe_slots();
+}
+
 bool game::send_taken_side(simple_wml::document& cfg, const simple_wml::node::child_list::const_iterator side) const
 {
 	const size_t side_num = (**side)["side"].to_int();

@@ -2540,6 +2540,10 @@ void server::process_data_game(const network::connection sock,
 		//update the game having changed in the lobby
 		update_game_in_lobby(g);
 		return;
+	} else if (data.child("update_game")) {
+		g->update_game();
+		update_game_in_lobby(g);
+		return;
 	} else if (data.child("leave_game")) {
 		// May be better to just let remove_player() figure out when a game ends.
 		if ((g->is_player(sock) && g->nplayers() == 1)

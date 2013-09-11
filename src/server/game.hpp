@@ -109,6 +109,8 @@ public:
 
 	void start_game(const player_map::const_iterator starter);
 
+	void update_game();
+
 	/** A user (player only?) asks for the next scenario to advance to. */
 	void load_next_scenario(const player_map::const_iterator user) const;
 

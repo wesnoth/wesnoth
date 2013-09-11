@@ -189,16 +189,18 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	// Add host to the connected users list.
 	import_user(preferences::login(), false);
 
+	// Send initial information.
+	config response;
 	if (first_scenario_) {
-		// Send initial information.
-		config response;
 		config& create_game = response.add_child("create_game");
 		create_game["name"] = params_.name;
 		if (params_.password.empty() == false) {
 			response["password"] = params_.password;
 		}
-		network::send_data(response, 0);
+	} else {
+		response.add_child("update_game");
 	}
+	network::send_data(response, 0);
 
 	update_level();
 
