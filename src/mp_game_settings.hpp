@@ -38,6 +38,8 @@ struct mp_game_settings : public savegame::savegame_config
 	std::string hash;
 	std::string mp_era;
 	std::string mp_scenario;
+	std::string mp_scenario_name;
+	std::string mp_campaign;
 	std::vector<std::string> active_mods;
 	std::map<std::string, std::string> side_users;
 

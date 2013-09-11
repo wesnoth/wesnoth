@@ -332,7 +332,8 @@ void configure::process_event()
 
 		parameters_.hash = scenario.hash();
 		parameters_.scenario_data = scenario;
-		parameters_.mp_scenario = parameters_.scenario_data["id"].str();
+		parameters_.mp_scenario = scenario["id"].str();
+		parameters_.mp_scenario_name = scenario["name"].str();
 
 		force_use_map_settings_check_ = true;
 	}

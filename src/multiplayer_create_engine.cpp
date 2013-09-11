@@ -360,6 +360,7 @@ void create_engine::prepare_for_new_level()
 	parameters_.scenario_data = current_level().data();
 	parameters_.hash = parameters_.scenario_data.hash();
 	parameters_.mp_scenario = parameters_.scenario_data["id"].str();
+	parameters_.mp_scenario_name = parameters_.scenario_data["name"].str();
 }
 
 void create_engine::prepare_for_campaign(const std::string& difficulty)
@@ -381,6 +382,8 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	current_level().set_data(
 		resources::config_manager->game_config().find_child("multiplayer",
 		"id", current_level().data()["first_scenario"]));
+
+	parameters_.mp_campaign = current_level().id();
 }
 
 void create_engine::prepare_for_saved_game()

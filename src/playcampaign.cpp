@@ -571,8 +571,9 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				team_init(starting_pos, gamestate);
 
 				params.scenario_data = *scenario;
-				params.mp_scenario = params.scenario_data["id"].str();
-				params.num_turns = params.scenario_data["turns"].to_int(-1);
+				params.mp_scenario = (*scenario)["id"].str();
+				params.mp_scenario_name = (*scenario)["name"].str();
+				params.num_turns = (*scenario)["turns"].to_int(-1);
 				params.saved_game = false;
 				params.use_map_settings =
 					(*scenario)["force_use_map_settings"].to_bool(true);

@@ -501,43 +501,65 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			games_.back().map_info += " — ??×??";
 		}
 		games_.back().map_info += " ";
-		if (!game["mp_scenario"].empty())
-		{
-			// check if it's a multiplayer scenario
-			const config *level_cfg = &game_config.find_child("multiplayer", "id", game["mp_scenario"]);
-			if (!*level_cfg) {
-				// check if it's a user map
-				level_cfg = &game_config.find_child("generic_multiplayer", "id", game["mp_scenario"]);
-			}
-			if (*level_cfg) {
-				games_.back().map_info += (*level_cfg)["name"].str();
-				// reloaded games do not match the original scenario hash,
-				// so it makes no sense to test them, they always would appear
-				// as remote scenarios
-				if (map_hashes_ && !games_.back().reloaded) {
-					std::string hash = game["hash"];
-					bool hash_found = false;
-					BOOST_FOREACH(const config::attribute &i, map_hashes_.attribute_range()) {
-						if (i.first == game["mp_scenario"] && i.second == hash) {
-							hash_found = true;
-							break;
+		if (game["mp_campaign"].empty()) {
+			if (!game["mp_scenario"].empty()) {
+				// Check if it's a multiplayer scenario.
+				const config* level_cfg = &game_config.find_child("multiplayer",
+					"id", game["mp_scenario"]);
+				if (!*level_cfg) {
+					// Check if it's a user map.
+					level_cfg = &game_config.find_child("generic_multiplayer",
+						"id", game["mp_scenario"]);
+				}
+				if (*level_cfg) {
+					games_.back().map_info += (*level_cfg)["name"].str();
+					// Reloaded games do not match the original scenario hash,
+					// so it makes no sense to test them,
+					// they always would appear as remote scenarios.
+					if (map_hashes_ && !games_.back().reloaded) {
+						std::string hash = game["hash"];
+						bool hash_found = false;
+						BOOST_FOREACH(const config::attribute& i,
+							map_hashes_.attribute_range()) {
+
+							if (i.first == game["mp_scenario"] &&
+								i.second == hash) {
+
+								hash_found = true;
+								break;
+							}
+						}
+						if (!hash_found) {
+							games_.back().map_info += " — ";
+							games_.back().map_info += _("Remote scenario");
+							verified = false;
 						}
 					}
-					if(!hash_found) {
-						games_.back().map_info += " — ";
-						games_.back().map_info += _("Remote scenario");
-						verified = false;
-					}
+				} else {
+					utils::string_map symbols;
+					symbols["scenario_id"] = game["mp_scenario"];
+					games_.back().map_info +=
+						vgettext("Unknown scenario: $scenario_id", symbols);
+					verified = false;
 				}
 			} else {
-				utils::string_map symbols;
-				symbols["scenario_id"] = game["mp_scenario"];
-				games_.back().map_info += vgettext("Unknown scenario: $scenario_id", symbols);
+				games_.back().map_info += _("Unknown scenario");
 				verified = false;
 			}
 		} else {
-			games_.back().map_info += _("Unknown scenario");
-			verified = false;
+			games_.back().map_info += game["mp_scenario_name"].str();
+
+			const config* level_cfg = &game_config.find_child("campaign", "id",
+				game["mp_campaign"]);
+			if (*level_cfg) {
+				games_.back().map_info += " (" + (*level_cfg)["name"].str() + ")";
+			} else {
+				utils::string_map symbols;
+				symbols["campaign_id"] = game["mp_campaign"];
+				games_.back().map_info +=
+					vgettext("Unknown scenario: $campaign_id", symbols);
+				verified = false;
+			}
 		}
 
 		games_.back().mod_info += "Modifications: ";
