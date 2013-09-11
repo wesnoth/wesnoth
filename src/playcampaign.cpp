@@ -560,12 +560,19 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			if (io_type == IO_SERVER && scenario != NULL) {
+				mp_game_settings& params = gamestate.mp_settings();
+
+				// A hash have to be generated using an unmodified
+				// scenario data.
+				params.hash = scenario->hash();
+
 				// Apply carryover before passing a scenario data to the
 				// mp::connect_engine.
 				team_init(starting_pos, gamestate);
 
-				mp_game_settings& params = gamestate.mp_settings();
 				params.scenario_data = *scenario;
+				params.mp_scenario = params.scenario_data["id"].str();
+				params.num_turns = params.scenario_data["turns"].to_int(-1);
 				params.saved_game = false;
 				params.use_map_settings =
 					(*scenario)["force_use_map_settings"].to_bool(true);
