@@ -2508,11 +2508,8 @@ void server::process_data_game(const network::connection sock,
 		// If there is no shroud, then tell players in the lobby
 		// what the map looks like.
 		const simple_wml::node& s = g->level().root();
-		if (s["mp_shroud"].to_bool()) {
-			desc.set_attr_dup("map_data", s["map_data"]);
-		} else {
-			desc.set_attr("map_data", "");
-		}
+		desc.set_attr_dup("map_data", s["mp_shroud"].to_bool() ? "" :
+			s["map_data"]);
 		if (const simple_wml::node* e = data.child("era")) {
 			if (!e->attr("require_era").to_bool(true)) {
 				desc.set_attr("require_era", "no");
