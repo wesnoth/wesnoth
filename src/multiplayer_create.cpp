@@ -378,9 +378,12 @@ void create::init_level_type_changed(size_t index)
 	}
 
 	engine_.set_current_level_type(available_level_types_[selected]);
-	engine_.set_current_level(index);
+	const std::vector<std::string>& menu_item_names =
+		engine_.levels_menu_item_names();
 
-	levels_menu_.set_items(engine_.levels_menu_item_names());
+	engine_.set_current_level((index < menu_item_names.size()) ? index : 0);
+
+	levels_menu_.set_items(menu_item_names);
 	levels_menu_.move_selection(index);
 
 	level_selection_ = -1;
