@@ -163,8 +163,9 @@ void playmp_controller::play_human_turn(){
 	show_turn_dialog();
 	execute_gotos();
 
-	if ((!linger_) || (is_host_))
-		gui_->enable_menu("endturn", true);
+	if (!linger_ || is_host_) {
+		end_turn_enable(true);
+	}
 	while(!end_turn_) {
 
 		try {
@@ -292,7 +293,6 @@ void playmp_controller::linger()
 	reset_countdown();
 
 	set_end_scenario_button();
-	set_button_state(*gui_);
 
 	if ( get_end_level_data_const().transient.reveal_map ) {
 		// Change the view of all players and observers
@@ -420,7 +420,7 @@ void playmp_controller::finish_side_turn(){
 void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
-	gui_->enable_menu("endturn", false);
+	end_turn_enable(false);
 	turn_info turn_data(player_number_, replay_sender_);
 	turn_data.host_transfer().attach_handler(this);
 
@@ -512,8 +512,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	else if (name == "host_transfer"){
 		is_host_ = true;
 		if (linger_){
-			gui::button* btn_end = gui_->find_action_button("button-endturn");
-			btn_end->enable(true);
+			end_turn_enable(true);
 			gui_->invalidate_theme();
 		}
 	}

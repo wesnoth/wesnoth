@@ -697,8 +697,6 @@ void playsingle_controller::before_human_turn(bool save)
 	browse_ = false;
 	linger_ = false;
 
-	set_button_state(*gui_);
-
 	ai::manager::raise_turn_started();
 
 	if(save && level_result_ == NONE) {
@@ -729,7 +727,7 @@ void playsingle_controller::play_human_turn() {
 	show_turn_dialog();
 	execute_gotos();
 
-	gui_->enable_menu("endturn", true);
+	end_turn_enable(true);
 	while(!end_turn_) {
 		play_slice();
 		check_end_level();
@@ -778,8 +776,7 @@ void playsingle_controller::linger()
 	try {
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.
-		gui_->enable_menu("endturn", true);
-		set_button_state(*gui_);
+		end_turn_enable(true);
 		end_turn_ = false;
 		while(!end_turn_) {
 			// Reset the team number to make sure we're the right team.
@@ -818,6 +815,12 @@ void playsingle_controller::end_turn_record_unlock()
 	turn_over_ = false;
 }
 
+void playsingle_controller::end_turn_enable(bool enable)
+{
+	gui_->enable_menu("endturn", enable);
+	set_button_state(*gui_);
+}
+
 hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	switch(command) {
@@ -843,7 +846,7 @@ void playsingle_controller::after_human_turn()
 
 void playsingle_controller::play_ai_turn(){
 	LOG_NG << "is ai...\n";
-	gui_->enable_menu("endturn", false);
+	end_turn_enable(false);
 	browse_ = true;
 	gui_->recalculate_minimap();
 
