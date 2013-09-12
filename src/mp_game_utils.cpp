@@ -41,19 +41,6 @@ static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
 #define ERR_NW LOG_STREAM(err, log_network)
 
-namespace {
-
-bool has_level_data(const config& level, bool first_scenario)
-{
-	if (first_scenario) {
-		return level.has_attribute("version") && level.has_child("side");
-	} else {
-		return level.has_child("next_scenario");
-	}
-}
-
-}
-
 namespace mp {
 
 config initial_level_config(game_display& disp, const mp_game_settings& params,
@@ -279,36 +266,6 @@ void check_response(network::connection res, const config& data)
 	if (const config& err = data.child("error")) {
 		throw network::error(err["message"]);
 	}
-}
-
-
-bool download_level_data(game_display& disp, config& level,
-	bool first_scenario)
-{
-	if (!first_scenario) {
-		// Ask for the next scenario data.
-		network::send_data(config("load_next_scenario"), 0);
-	}
-
-	while (!has_level_data(level, first_scenario)) {
-		network::connection data_res = dialogs::network_receive_dialog(
-			disp, _("Getting game data..."), level);
-
-		if (!data_res) {
-			return false;
-		}
-		check_response(data_res, level);
-		if (level.child("leave_game")) {
-			return false;
-		}
-	}
-
-	if (!first_scenario) {
-		config cfg = level.child("next_scenario");
-		level = cfg;
-	}
-
-	return true;
 }
 
 } // end namespace mp

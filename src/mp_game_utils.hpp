@@ -30,9 +30,6 @@ void level_to_gamestate(config& level, game_state& state);
 
 void check_response(network::connection res, const config& data);
 
-bool download_level_data(game_display& disp, config& level,
-	bool first_scenario);
-
 } // end namespace mp
 
 #endif

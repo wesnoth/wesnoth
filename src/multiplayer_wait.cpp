@@ -203,11 +203,7 @@ void wait::process_event()
 
 void wait::join_game(bool observe)
 {
-	//if we have got valid side data
-	//the first condition is to make sure that we don't have another
-	//WML message with a side-tag in it
-	const bool download_res = download_level_data(disp(), level_,
-		first_scenario_);
+	const bool download_res = download_level_data();
 	if (!download_res) {
 		set_result(QUIT);
 		return;
@@ -546,6 +542,43 @@ void wait::generate_menu()
 	if (!gamelist().child("user")) {
 		set_user_list(playerlist, true);
 	}
+}
+
+bool wait::has_level_data() const
+{
+	if (first_scenario_) {
+		return level_.has_attribute("version") && level_.has_child("side");
+	} else {
+		return level_.has_child("next_scenario");
+	}
+}
+
+bool wait::download_level_data()
+{
+	if (!first_scenario_) {
+		// Ask for the next scenario data.
+		network::send_data(config("load_next_scenario"), 0);
+	}
+
+	while (!has_level_data()) {
+		network::connection data_res = dialogs::network_receive_dialog(
+			disp(), _("Getting game data..."), level_);
+
+		if (!data_res) {
+			return false;
+		}
+		check_response(data_res, level_);
+		if (level_.child("leave_game")) {
+			return false;
+		}
+	}
+
+	if (!first_scenario_) {
+		config cfg = level_.child("next_scenario");
+		level_ = cfg;
+	}
+
+	return true;
 }
 
 } // namespace mp

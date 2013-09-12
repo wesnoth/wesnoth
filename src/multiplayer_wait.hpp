@@ -67,6 +67,8 @@ private:
 	};
 
 	void generate_menu();
+	bool has_level_data() const;
+	bool download_level_data();
 
 	gui::button cancel_button_;
 	gui::label start_label_;
