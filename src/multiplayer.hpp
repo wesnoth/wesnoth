@@ -68,7 +68,7 @@ mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
  * changes made.
  */
 mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
-	const config& game_config);
+	const config& game_config, bool observe);
 
 }
 #endif

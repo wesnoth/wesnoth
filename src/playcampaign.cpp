@@ -537,7 +537,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		if (io_type == IO_CLIENT) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
-				game_config);
+				game_config, res == OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
 				gamestate.snapshot = config();
 				return QUIT;

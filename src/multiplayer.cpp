@@ -919,14 +919,14 @@ mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
 }
 
 mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
-	const config& game_config)
+	const config& game_config, bool observe)
 {
 	mp::ui::result res;
 
 	{
 		mp::wait ui(disp, game_config, state, gamechat, gamelist, false);
 
-		ui.join_game(false);
+		ui.join_game(observe);
 		run_lobby_loop(disp, ui);
 
 		res = ui.get_result();
