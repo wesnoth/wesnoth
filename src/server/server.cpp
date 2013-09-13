@@ -2515,15 +2515,16 @@ void server::process_data_game(const network::connection sock,
 				desc.set_attr("require_era", "no");
 			}
 		}
+
+		// Tell everyone that the next scenario data is available.
+		static simple_wml::document notify_next_scenario(
+			"[notify_next_scenario]\n[/notify_next_scenario]\n",
+			simple_wml::INIT_COMPRESSED);
+		g->send_data(notify_next_scenario, sock);
+
 		// Send the update of the game description to the lobby.
 		update_game_in_lobby(g);
 
-		return;
-	// If a player advances to the next scenario of a mp campaign. (deprecated)
-	///@deprecated r22619 a player advances to the next scenario of a mp campaign (notify_next_scenario)
-	} else if(data.child("notify_next_scenario")) {
-		//g->send_data(g->construct_server_message(pl->second.name()
-		//		+ " advanced to the next scenario."), sock);
 		return;
 	// A mp client sends a request for the next scenario of a mp campaign.
 	} else if (data.child("load_next_scenario")) {
