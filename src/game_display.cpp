@@ -20,7 +20,7 @@
 #include "global.hpp"
 
 #include "game_display.hpp"
-
+#include "gettext.hpp"
 #include "wesconfig.h"
 
 #ifdef HAVE_LIBDBUS
@@ -1005,11 +1005,11 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	std::string notification_title;
 	std::string notification_message;
 
-	if (owner == "Turn changed") {
+	if (owner == _("Turn changed")) {
 		notification_title = owner;
 		notification_message = message;
 	} else {
-		notification_title = "Chat message";
+		notification_title = _("Chat message");
 		notification_message = owner + ": " + message;
 	}
 

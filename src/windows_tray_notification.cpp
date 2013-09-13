@@ -16,6 +16,7 @@
 
 #include <SDL_syswm.h>
 
+#include "gettext.hpp"
 #include "serialization/string_utils.hpp"
 
 NOTIFYICONDATA* windows_tray_notification::nid = NULL;
@@ -103,6 +104,8 @@ bool windows_tray_notification::create_tray_icon()
 		return false;
 	}
 
+	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"));
+
 	// filling notification structure
 	nid = new NOTIFYICONDATA;
 	memset(nid, 0, sizeof(&nid));
@@ -117,7 +120,7 @@ bool windows_tray_notification::create_tray_icon()
 #if _WIN32_WINNT >= 0x600
 	nid->hBalloonIcon = icon;
 #endif
-	lstrcpy(nid->szTip, L"The Battle For Wesnoth");
+	lstrcpy(nid->szTip, wtip.data());
 
 	// creating icon notification
 	return Shell_NotifyIcon(NIM_ADD, nid) != FALSE;
