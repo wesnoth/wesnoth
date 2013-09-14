@@ -159,11 +159,15 @@ void wml_menu_item::update(const vconfig & vcfg)
 	if ( vcfg.has_attribute("needs_select") )
 		needs_select_ = vcfg["needs_select"].to_bool();
 
-	if ( const vconfig & child = vcfg.child("show_if") )
+	if ( const vconfig & child = vcfg.child("show_if") ) {
 		show_if_ = child;
+		show_if_.make_volatile();
+	}
 
-	if ( const vconfig & child = vcfg.child("filter_location") )
+	if ( const vconfig & child = vcfg.child("filter_location") ) {
 		filter_location_ = child;
+		filter_location_.make_volatile();
+	}
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);

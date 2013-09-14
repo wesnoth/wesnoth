@@ -27,6 +27,9 @@ class unit_map;
  * A variable-expanding proxy for the config class. This class roughly behaves
  * as a constant config object, but automatically expands variables.
  *
+ * When dealing with a vconfig, keep in mind its lifetime. By default, vconfigs
+ * do not maintain a copy their data; if you need a vconfig to stick around,
+ * either construct it with is_volatile=true or call make_volatile().
  */
 class vconfig
 {
@@ -69,6 +72,7 @@ public:
 
 	bool null() const { return cfg_ == NULL; }
 	bool is_volatile() const { return cache_key_ != NULL; }
+	void make_volatile();
 	const config& get_config() const { return *cfg_; }
 	const config get_parsed_config() const;
 

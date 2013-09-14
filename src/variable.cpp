@@ -188,7 +188,11 @@ vconfig::vconfig(const config* cfg, const config * cache_key) :
  *                         If @a cfg might be destroyed before this vconfig is, then
  *                         is_volatile must be set to true.
  *                         If @a cfg will be valid for the life of this vconfig, then
- *                         setting is_volatile to false saves some overhead.
+ *                         leaving is_volatile as false saves some overhead.
+ */
+/*
+ * Having the default for is_volatile be false is not a safe move, but it is
+ * appropriate for most of the times this constructor is used.
  */
 vconfig::vconfig(const config &cfg, bool is_volatile) :
 	cfg_(&cfg), cache_key_(is_volatile ? &cfg : NULL)
@@ -232,6 +236,24 @@ vconfig& vconfig::operator=(const vconfig& cfg)
 	increment_config_usage(cache_key_);
 	decrement_config_usage(prev_key);
 	return *this;
+}
+
+/**
+ * Ensures that *this manages its own memory, making it safe for *this to
+ * outlive the config it was ultimately constructed from.
+ * This does not work on a null() vconfig.
+ */
+void vconfig::make_volatile()
+{
+	// Nothing to do if we already manage our own memory.
+	if ( is_volatile() )
+		return;
+
+	// Make a copy of our config, record our use of the copy, and cause cfg_
+	// to point to the copy.
+	increment_config_usage(cfg_);
+	// For a newly volatile vconfig, both cache_key_ and cfg_ point to the copy.
+	cache_key_ = cfg_;
 }
 
 const config vconfig::get_parsed_config() const
