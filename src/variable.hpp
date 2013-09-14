@@ -74,7 +74,7 @@ public:
 	bool is_volatile() const { return cache_key_ != NULL; }
 	void make_volatile();
 	const config& get_config() const { return *cfg_; }
-	const config get_parsed_config() const;
+	config get_parsed_config() const;
 
 	typedef std::vector<vconfig> child_list;
 	child_list get_children(const std::string& key) const;

@@ -256,7 +256,7 @@ void vconfig::make_volatile()
 	cache_key_ = cfg_;
 }
 
-const config vconfig::get_parsed_config() const
+config vconfig::get_parsed_config() const
 {
 	config res;
 
