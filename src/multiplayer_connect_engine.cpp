@@ -1049,11 +1049,6 @@ bool side_engine::ready_for_start() const
 
 bool side_engine::available_for_user(const std::string& name) const
 {
-	if (!allow_player_) {
-		// Computer sides are never available for players.
-		return false;
-	}
-
 	if (controller_ == CNTR_NETWORK && player_id_.empty()) {
 		// Side is free and waiting for user.
 		return true;
