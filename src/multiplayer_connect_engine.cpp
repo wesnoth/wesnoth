@@ -801,8 +801,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	controller_(CNTR_NETWORK),
 	current_controller_index_(0),
 	controller_options_(),
-	allow_player_(cfg["controller"] == "ai" && cfg["allow_player"].empty() ?
-		false : cfg["allow_player"].to_bool(true)),
+	allow_player_(cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	index_(index),
 	team_(0),
@@ -831,7 +830,9 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	}
 	if (cfg_["controller"] == "null") {
 		set_controller(CNTR_EMPTY);
-	} else if (!current_player_.empty() && cfg_["controller"] != "ai") {
+	} else if (cfg_["controller"] == "ai") {
+		set_controller(CNTR_COMPUTER);
+	} else if (!current_player_.empty()) {
 		// Reserve a side for "current_player", unless the side
 		// is played by an AI.
 		set_controller(CNTR_RESERVED);
