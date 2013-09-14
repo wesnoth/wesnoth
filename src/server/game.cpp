@@ -508,8 +508,8 @@ bool game::describe_slots() {
 	for(simple_wml::node::child_list::const_iterator it = side_list.begin(); it != side_list.end(); ++it, ++i) {
 		if (((**it)["allow_player"].to_bool(true) == false) || (**it)["controller"] == "null") {
 			num_sides--;
-		} else {
-			if (sides_[i] == 0) ++available_slots;
+		} else if (sides_[i] == 0 && side_controllers_[i] != "reserved") {
+			++available_slots;
 		}
 	}
 	char buf[50];
