@@ -810,7 +810,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 {
 	unit_map* units = resources::units;
 
-	const vconfig healers_filter = cfg.child("filter_second");
+	const vconfig & healers_filter = cfg.child("filter_second");
 	std::vector<unit*> healers;
 	if (!healers_filter.null()) {
 		BOOST_FOREACH(unit& u, *units) {
@@ -826,7 +826,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	const bool restore_statuses = cfg["restore_statuses"].to_bool(true);
 	const bool animate = cfg["animate"].to_bool(false);
 
-	const vconfig healed_filter = cfg.child("filter");
+	const vconfig & healed_filter = cfg.child("filter");
 	bool only_unit_at_loc1 = healed_filter.null();
 	bool heal_amount_to_set = true;
 	for(unit_map::unit_iterator u  = units->begin(); u != units->end(); ++u) {
@@ -1420,7 +1420,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(object, event_info, cfg)
 {
-	const vconfig filter = cfg.child("filter");
+	const vconfig & filter = cfg.child("filter");
 
 	std::string id = cfg["id"];
 
@@ -1547,7 +1547,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 	temp_config["x"] = "recall";
 	temp_config["y"] = "recall";
 	vconfig unit_filter(temp_config);
-	const vconfig leader_filter = cfg.child("secondary_unit");
+	const vconfig & leader_filter = cfg.child("secondary_unit");
 
 	for(int index = 0; index < int(resources::teams->size()); ++index) {
 		LOG_NG << "for side " << index + 1 << "...\n";
@@ -2254,7 +2254,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	unit_map::iterator u = resources::units->find(event_info.loc1);
 
 	// Search for a valid unit filter, and if we have one, look for the matching unit
-	const vconfig filter = cfg.child("filter");
+	const vconfig & filter = cfg.child("filter");
 	if(!filter.null()) {
 		for (u = resources::units->begin(); u != resources::units->end(); ++u){
 			if ( u->matches_filter(filter) )
