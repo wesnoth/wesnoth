@@ -53,6 +53,7 @@ const std::string attributes_to_trim[] = {
 	"extra_recruit",
 	"previous_recruits",
 	"controller",
+	"current_player",
 	"team_name",
 	"user_team_name",
 	"color",
@@ -887,7 +888,10 @@ config side_engine::new_config() const
 	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
-	res["current_player"] = player_id_.empty() ? current_player_ : player_id_;
+	// Side's current player is the player which is currently taken that side
+	// or the one which is reserved to it.
+	res["current_player"] = !player_id_.empty() ? player_id_ :
+		(controller_ == CNTR_RESERVED ? current_player_ : "");
 	res["controller"] = (res["current_player"] == preferences::login()) ?
 		"human" : controller_names[controller_];
 
