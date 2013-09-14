@@ -2070,7 +2070,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const vconfig::child_list join_elements = cfg.get_children("join");
 	if(!join_elements.empty())
 	{
-		const vconfig join_element=join_elements.front();
+		const vconfig & join_element = join_elements.front();
 
 		std::string array_name=join_element["variable"];
 		std::string separator=join_element["separator"];
@@ -2159,7 +2159,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 			data.add_child(dest.key, i->get_config());
 		}
 	} else if(!split_elements.empty()) {
-		const vconfig split_element=split_elements.front();
+		const vconfig & split_element = split_elements.front();
 
 		std::string split_string=split_element["list"];
 		std::string separator_string=split_element["separator"];
