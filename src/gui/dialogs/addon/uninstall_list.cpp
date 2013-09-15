@@ -14,7 +14,6 @@
 
 #include "gui/dialogs/addon/uninstall_list.hpp"
 
-#include "addon/info.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -60,17 +59,19 @@ void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
 	window.keyboard_capture(&list);
 
-	this->names_.clear();
 	this->selections_.clear();
 
-	FOREACH(const AUTO& id, ids_) {
-		this->names_.push_back(make_addon_title(id));
+	FOREACH(const AUTO& entry, titles_map_) {
+		const std::string& id = entry.first;
+		const std::string& title = entry.second;
+
+		this->ids_.push_back(id);
 		this->selections_[id] = false;
 
 		std::map<std::string, string_map> data;
 		string_map column;
 
-		column["label"] = this->names_.back();
+		column["label"] = title;
 		data.insert(std::make_pair("name", column));
 		list.add_row(data);
 	}
@@ -81,7 +82,7 @@ void taddon_uninstall_list::post_show(twindow& window)
 	const tlistbox& list = find_widget<tlistbox>(&window, "addons_list", false);
 	const unsigned rows = list.get_item_count();
 
-	assert(rows == this->ids_.size() && rows == this->names_.size());
+	assert(rows == this->ids_.size() && rows == this->titles_map_.size());
 
 	if(!rows || get_retval() != twindow::OK) {
 		return;

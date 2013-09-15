@@ -951,12 +951,37 @@ bool uninstall_local_addons(display& disp)
 		return false;
 	}
 
+	std::map<std::string, std::string> addon_titles_map;
+
+	BOOST_FOREACH(const std::string& id, addons) {
+		std::string title;
+
+		// _info.cfg may have the add-on's title starting with 1.11.7,
+		// if the add-on was downloading using the revised _info.cfg writer.
+		config cfg;
+		get_addon_install_info(id, cfg);
+
+		const config& info_cfg = cfg.child("info");
+
+		if(info_cfg) {
+			title = info_cfg["title"].str();
+		}
+
+		if(title.empty()) {
+			// Transform the id into a title as a last resort.
+			title = make_addon_title(id);
+		}
+
+		addon_titles_map[id] = title;
+	}
+
 	int res;
 
-	std::vector<std::string> remove_ids, remove_names;
+	std::vector<std::string> remove_ids;
+	std::set<std::string> remove_names;
 
 	do {
-		gui2::taddon_uninstall_list dlg(addons);
+		gui2::taddon_uninstall_list dlg(addon_titles_map);
 		dlg.show(disp.video());
 
 		remove_ids = dlg.selected_addons();
@@ -967,7 +992,7 @@ bool uninstall_local_addons(display& disp)
 		remove_names.clear();
 
 		BOOST_FOREACH(const std::string& id, remove_ids) {
-			remove_names.push_back(make_addon_title(id));
+			remove_names.insert(addon_titles_map[id]);
 		}
 
 		const std::string confirm_message = _n(
@@ -984,7 +1009,7 @@ bool uninstall_local_addons(display& disp)
 	std::vector<std::string> failed_names, skipped_names, succeeded_names;
 
 	BOOST_FOREACH(const std::string& id, remove_ids) {
-		const std::string& name = make_addon_title(id);
+		const std::string& name = addon_titles_map[id];
 
 		if(have_addon_pbl_info(id) || have_addon_in_vcs_tree(id)) {
 			skipped_names.push_back(name);

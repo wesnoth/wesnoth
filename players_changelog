@@ -4,6 +4,10 @@ changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
 
 Version 1.11.6+dev:
  * Add-ons client:
+   * Add-ons downloaded with clients from this version onwards are shown
+     in the Remove Add-ons with their original titles from the add-ons
+     server now, instead of artificially generating titles by replacing
+     underscores from file names.
    * Report errors caused by faulty local .pbl files properly instead of
      presenting them as network errors.
 

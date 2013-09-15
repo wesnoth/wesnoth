@@ -28,16 +28,17 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param addon_ids               The information about the addon to show.
+	 * @param addon_names_map Internal id <-> user-visible title mappings for
+	 *                        the add-ons to display.
 	 */
-	explicit taddon_uninstall_list(const std::vector<std::string>& addon_ids)
-		: ids_(addon_ids), names_(), selections_() {}
+	explicit taddon_uninstall_list(const std::map<std::string, std::string>& addon_titles_map)
+		: titles_map_(addon_titles_map), ids_(), selections_() {}
 
 	std::vector<std::string> selected_addons() const;
 
 private:
+	std::map<std::string, std::string> titles_map_;
 	std::vector<std::string> ids_;
-	std::vector<std::string> names_;
 	std::map<std::string, bool> selections_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
