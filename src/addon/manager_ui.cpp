@@ -1006,17 +1006,17 @@ bool uninstall_local_addons(display& disp)
 				, gui2::tmessage::yes_no_buttons);
 	} while (res != gui2::twindow::OK);
 
-	std::vector<std::string> failed_names, skipped_names, succeeded_names;
+	std::set<std::string> failed_names, skipped_names, succeeded_names;
 
 	BOOST_FOREACH(const std::string& id, remove_ids) {
 		const std::string& name = addon_titles_map[id];
 
 		if(have_addon_pbl_info(id) || have_addon_in_vcs_tree(id)) {
-			skipped_names.push_back(name);
+			skipped_names.insert(name);
 		} else if(remove_local_addon(id)) {
-			succeeded_names.push_back(name);
+			succeeded_names.insert(name);
 		} else {
-			failed_names.push_back(name);
+			failed_names.insert(name);
 		}
 	}
 
