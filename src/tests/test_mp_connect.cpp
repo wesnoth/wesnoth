@@ -89,7 +89,7 @@ struct mp_connect_fixture {
 	{
 	}
 	CVideo video;
-	char* dummy_argv[];
+	char** dummy_argv;
 	commandline_options cmdline_opts;
 	boost::scoped_ptr<game_config_manager> config_manager;
 };
@@ -233,6 +233,12 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Elvish Ranger" );
 
+	// Random leader.
+	side.clear();
+	side["type"] = "random";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
+
 	// Leader with both genders.
 	side.clear();
 	side["type"] = "Elvish Archer";
@@ -277,6 +283,53 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
 	BOOST_CHECK_EQUAL( side_engine->flg().choosable_genders().size(), 1 );
 	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "random" );
+
+	// No leader.
+	side.clear();
+	side["no_leader"] = true;
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	BOOST_CHECK_EQUAL( side_engine->flg().choosable_leaders().size(), 1 );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "null" );
+
+	// Resolve random faction.
+	side.clear();
+	side["faction"] = "Random";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine->resolve_random();
+	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
+	BOOST_CHECK( side_engine->flg().current_leader() != "random" &&
+		side_engine->flg().current_leader() != "null");
+	BOOST_CHECK( side_engine->flg().current_gender() != "random" &&
+		side_engine->flg().current_gender() != "null");
+
+	// Resolve random faction with default leader.
+	side.clear();
+	side["faction"] = "Random";
+	side["type"] = "Troll";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine->resolve_random();
+	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "Troll" );
+	BOOST_CHECK( side_engine->flg().current_gender() != "random" &&
+		side_engine->flg().current_gender() != "null" );
+
+	// Resolve random faction with default leader and gender.
+	side.clear();
+	side["faction"] = "Random";
+	side["type"] = "White Mage";
+	side["gender"] = "male";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine->resolve_random();
+	BOOST_CHECK( side_engine->flg().current_faction()["id"] != "Random" );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_leader(), "White Mage" );
+	BOOST_CHECK_EQUAL( side_engine->flg().current_gender(), "male" );
+
+	// Resolve random leader.
+	side.clear();
+	side["type"] = "random";
+	side_engine.reset(create_mp_side_engine(side, connect_engine.get()));
+	side_engine->resolve_random();
+	BOOST_CHECK( side_engine->flg().current_leader() != "random" );
 }
 
 BOOST_AUTO_TEST_CASE( flg_no_map_settings )
