@@ -78,7 +78,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 			}
 		}
 	}
-	if (!default_leader_type_.empty()) {
+	if (!default_leader_type_.empty() && default_leader_type_ != "random") {
 		const unit_type* unit = unit_types.find(default_leader_type_);
 		if (unit == NULL) {
 			default_leader_type_.clear();
@@ -192,7 +192,6 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender) const
 }
 
 void flg_manager::resolve_random() {
-	bool solved_random_faction = false;
 	if ((*current_faction_)["random_faction"].to_bool()) {
 		std::vector<std::string> faction_choices, faction_excepts;
 
@@ -240,12 +239,10 @@ void flg_manager::resolve_random() {
 		current_faction_ = available_factions_[faction_index];
 
 		update_available_leaders();
-
-		solved_random_faction = true;
+		set_current_leader(0);
 	}
 
-	bool solved_random_leader = false;
-	if (current_leader_ == "random" || solved_random_faction) {
+	if (current_leader_ == "random") {
 		std::vector<std::string> nonrandom_leaders;
 		BOOST_FOREACH(const std::string& leader, available_leaders_) {
 			if (leader != "random") {
@@ -264,13 +261,12 @@ void flg_manager::resolve_random() {
 			current_leader_ = nonrandom_leaders[lchoice];
 
 			update_available_genders();
+			set_current_gender(0);
 		}
-
-		solved_random_leader = true;
 	}
 
 	// Resolve random genders "very much" like standard unit code.
-	if (current_gender_ == "random" || solved_random_leader) {
+	if (current_gender_ == "random") {
 		const unit_type *ut = unit_types.find(current_leader_);
 		if (ut) {
 			std::vector<std::string> nonrandom_genders;
