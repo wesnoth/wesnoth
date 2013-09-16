@@ -38,24 +38,27 @@ namespace {
 	{
 		std::string colorname = "";
 
+		// NOTE: these Pango color names must match the colors used
+		// in describe_addon_status() for GUI1.
+
 		switch(state.state) {
 		case ADDON_NONE:
 			return str;
 		case ADDON_INSTALLED:
 		case ADDON_NOT_TRACKED:
-			colorname = "green";
+			colorname = "#00ff00"; // GOOD_COLOR
 			break;
 		case ADDON_INSTALLED_UPGRADABLE:
-			colorname = "yellow";
+			colorname = "#ffff00"; // YELLOW_COLOR/color_upgradable
 			break;
 		case ADDON_INSTALLED_OUTDATED:
-			colorname = "orange";
+			colorname = "#ff7f00"; // <255,127,0>/color_outdated
 			break;
 		case ADDON_INSTALLED_BROKEN:
-			colorname = "red";
+			colorname = "#ff0000"; // BAD_COLOR
 			break;
 		default:
-			colorname = "gray";
+			colorname = "#777777"; // GRAY_COLOR
 			break;
 		}
 
