@@ -62,8 +62,6 @@ private:
 
 		gui::combo combo_leader_;
 		gui::combo combo_gender_;
-
-		size_t selection_;
 	};
 
 	void generate_menu();

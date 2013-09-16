@@ -49,8 +49,7 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 	flg_(flg),
 	color_(color),
 	combo_leader_(disp, std::vector<std::string>()),
-	combo_gender_(disp, std::vector<std::string>()),
-	selection_(0)
+	combo_gender_(disp, std::vector<std::string>())
 {
 	flg_.reset_leader_combo(combo_leader_);
 	flg_.reset_gender_combo(combo_gender_);
@@ -60,7 +59,7 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 
 void wait::leader_preview_pane::process_event()
 {
-	if (combo_leader_.changed()) {
+	if (combo_leader_.changed() && combo_leader_.selected() >= 0) {
 		flg_.set_current_leader(combo_leader_.selected());
 
 		flg_.reset_gender_combo(combo_gender_);
@@ -68,7 +67,7 @@ void wait::leader_preview_pane::process_event()
 		set_dirty();
 	}
 
-	if (combo_gender_.changed()) {
+	if (combo_gender_.changed() && combo_gender_.selected() >= 0) {
 		flg_.set_current_gender(combo_gender_.selected());
 
 		set_dirty();
@@ -160,14 +159,14 @@ bool wait::leader_preview_pane::left_side() const
 
 void wait::leader_preview_pane::set_selection(int selection)
 {
-	selection_ = selection;
+	if (selection >= 0) {
+		flg_.set_current_faction(selection);
 
-	flg_.set_current_faction(selection);
+		flg_.reset_leader_combo(combo_leader_);
+		flg_.reset_gender_combo(combo_gender_);
 
-	flg_.reset_leader_combo(combo_leader_);
-	flg_.reset_gender_combo(combo_gender_);
-
-	set_dirty();
+		set_dirty();
+	}
 }
 
 handler_vector wait::leader_preview_pane::handler_members() {
