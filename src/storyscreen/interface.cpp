@@ -34,9 +34,6 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-// TODO: remove when completed
-#include "stub.hpp"
-
 void show_story(display &disp, const std::string &scenario_name,
 	const config::const_child_itors &story)
 {
@@ -69,16 +66,4 @@ void show_story(display &disp, const std::string &scenario_name,
 		}
 	}
 	return;
-}
-
-void show_endscreen(display& /*disp*/, const t_string& /*text*/, unsigned int /*duration*/)
-{
-	STUB();
-	LOG_NG << "show_endscreen() invoked...\n";
-
-	config story_cfg;
-
-	// FIXME: stub!
-
-	LOG_NG << "show_endscreen() completed...\n";
 }
