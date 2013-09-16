@@ -1626,6 +1626,121 @@ surface blend_surface(
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
+surface rotate_any_surface(const surface& surf, float angle, int zoom, int offset)
+{
+	if (offset <= 0) offset = 1; //otherwise the for loops for scaling the image won't work.
+
+	surface src = scale_surface(surf, surf->w * zoom, surf->h * zoom, false);
+
+	//convert angle to radians
+	float radians = (angle * 2 * M_PI) / 360;
+
+	//calculate cosine and sine
+	float cosine = static_cast<float>(cos(radians));
+	float sine   = static_cast<float>(sin(radians));
+
+	//calculate the size of the new image
+	float point_1x = (-src->h * sine);
+	float point_1y = ( src->h * cosine);
+	float point_2x = ( src->w * cosine-src->h * sine);
+	float point_2y = ( src->h * cosine+src->w * sine);
+	float point_3x = ( src->w * cosine);
+	float point_3y = ( src->w * sine);
+
+	float min_x = std::min(0.0F, std::min(point_1x, std::min(point_2x, point_3x)));
+	float min_y = std::min(0.0F, std::min(point_1y, std::min(point_2y, point_3y)));
+	float max_x = (angle >  90 && angle < 180) ? 0 : std::max(point_1x, std::max(point_2x, point_3x));
+	float max_y = (angle > 180 && angle < 270) ? 0 : std::max(point_1y, std::max(point_2y, point_3y));
+
+	//calculate the destination image width & height
+	int dest_width  = static_cast<int>(ceil(abs(max_x) - min_x));
+	int dest_height = static_cast<int>(ceil(abs(max_y) - min_y));
+
+	surface dest(create_neutral_surface(dest_width / zoom, dest_height / zoom));
+	if(dest == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+
+	{
+		surface_lock dst_lock(dest);
+		const_surface_lock src_lock(src);
+		float scale = 1.f / zoom;
+		for (int x = 0; x < dest_width; x += offset)
+			for (int y = 0; y < dest_height; y += offset) {
+				//calculate the new pixel we want to copy
+				const float source_x = ((x+min_x)*cosine + (y+min_y)*sine);
+				const float source_y = ((y+min_y)*cosine - (x+min_x)*sine);
+
+				//if the pixel exist on the src surface
+				if (source_x >= 0 && source_x < src->w && source_y >= 0 && source_y < src->h)
+					//get it from the src surface and place it on the dest surface
+					put_pixel( dest, dst_lock, x*scale , y*scale, //multiply with scale
+							get_pixel( src, src_lock, source_x, source_y ) );
+			}
+	}
+
+	//return the rotated destination surface
+	return create_optimized_surface(dest);
+}
+
+void put_pixel(surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel)
+{
+	int bpp = surf->format->BytesPerPixel;
+
+	/* p is the address to the pixel we want to set */
+	Uint8* p = reinterpret_cast<Uint8*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
+	switch (bpp) {
+	case 1:
+		*p = pixel;
+		break;
+	case 2:
+		*reinterpret_cast<Uint16*>(p) = pixel;
+		break;
+	case 3:
+		if (SDL_BYTEORDER == SDL_BIG_ENDIAN) {
+			p[0] = (pixel >> 16) & 0xff;
+			p[1] = (pixel >> 8) & 0xff;
+			p[2] = pixel & 0xff;
+		} else {
+			p[0] = pixel & 0xff;
+			p[1] = (pixel >> 8) & 0xff;
+			p[2] = (pixel >> 16) & 0xff;
+		}
+		break;
+	case 4:
+		*reinterpret_cast<Uint32*>(p) = pixel;
+		break;
+	default:
+		break;
+	}
+}
+
+Uint32 get_pixel(const surface& surf, const_surface_lock& surf_lock, int x, int y)
+{
+	int bpp = surf->format->BytesPerPixel;
+
+	//const_surface_lock lock(surf);
+	/* p is the address to the pixel we want to retrieve */
+	const Uint8* p = reinterpret_cast<const Uint8*>(surf_lock.pixels()) + y * surf->pitch + x * bpp;
+	switch (bpp) {
+	case 1:
+		return *p;
+	case 2:
+		return *reinterpret_cast<const Uint16*>(p);
+	case 3:
+		if (SDL_BYTEORDER == SDL_BIG_ENDIAN)
+			return p[0] << 16 | p[1] << 8 | p[2];
+		else
+			return p[0] | p[1] << 8 | p[2] << 16;
+		break;
+	case 4:
+		return *reinterpret_cast<const Uint32*>(p);
+	default:
+		return 0;
+	}
+	return 0;
+}
 
 // Rotates a surface 180 degrees.
 surface rotate_180_surface(const surface &surf, bool optimize)

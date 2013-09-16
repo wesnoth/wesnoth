@@ -188,8 +188,8 @@ public:
 	 *                Positive values are clockwise; negative are counter-clockwise.
 	 *                Only multiples of 90 are supported.
 	 */
-	rotate_modification(int degrees = 90)
-		: degrees_(degrees)
+	rotate_modification(int degrees = 90, int zoom = 16, int offset = 8)
+		: degrees_(degrees), zoom_(zoom), offset_(offset)
 	{}
 	virtual surface operator()(const surface& src) const;
 
@@ -197,6 +197,8 @@ public:
 
 private:
 	int degrees_;
+	int zoom_;
+	int offset_;
 };
 
 /**

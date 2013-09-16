@@ -189,6 +189,7 @@ surface rotate_modification::operator()(const surface& src) const
 		case 180: return rotate_180_surface(src);
 		case 270: return rotate_90_surface(src, false);
 		case 360: return src;
+		default: return rotate_any_surface(src, normalized, zoom_, offset_);
 	}
 
 	// Other values are not supported. Ignore them.
@@ -640,7 +641,14 @@ REGISTER_MOD_PARSER(FL, args)
 // Rotations
 REGISTER_MOD_PARSER(ROTATE, args)
 {
-	return new rotate_modification(lexical_cast_default<int>(args, 90));
+	std::vector<std::string> const& slice_params = utils::split(args, ',', utils::STRIP_SPACES);
+	const size_t s = slice_params.size();
+
+	int angle  = (s > 0) ? lexical_cast_default<int>(slice_params[0]) : 90;
+	int zoom   = (s > 1) ? lexical_cast_default<int>(slice_params[1]) : 16;
+	int offset = (s > 2) ? lexical_cast_default<int>(slice_params[2]) :  8;
+
+	return new rotate_modification(angle, zoom, offset);
 }
 
 // Grayscale

@@ -335,6 +335,19 @@ surface blend_surface(
 		, const bool optimize = true);
 
 /**
+ * Rotates a surface by any degrees.
+ *
+ * @param surf                    The surface to rotate.
+ * @param angle                   The angle of rotation.
+ * @param zoom                    Which zoom level to use for calculating the result.
+ * @param offset                  Pixel offset when scanning the zoomed source.
+ * @param optimize                Should the return surface be RLE optimized.
+ *
+ * @return                        The rotated surface.
+ */
+surface rotate_any_surface(const surface& surf, float angle, int zoom, int offset);
+
+/**
  * Rotates a surface 180 degrees.
  *
  * @param surf                    The surface to rotate.
@@ -423,6 +436,9 @@ private:
 	const surface& surface_;
 	bool locked_;
 };
+
+void put_pixel(surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel);
+Uint32 get_pixel(const surface& surf, const_surface_lock& surf_lock, int x, int y);
 
 struct surface_restorer
 {
