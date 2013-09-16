@@ -44,7 +44,8 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	side_(side),
 	map_settings_(map_settings),
 	saved_game_(saved_game),
-	has_no_recruits_(side_["recruit"].empty() &&
+	has_no_recruits_((side_.has_attribute("default_recruit") ?
+		side_["default_recruit"].empty() : side_["recruit"].empty()) &&
 		side_["previous_recruits"].empty() && side_["extra_recruit"].empty()),
 	color_(color),
 	available_factions_(),
@@ -294,9 +295,9 @@ void flg_manager::update_available_factions()
 		if ((*faction)["id"] == "Custom" && side_["faction"] != "Custom" &&
 			has_no_recruits_) {
 
-			// "Custom" faction should not be available if both "recruit"
-			// and "previous_recruits" lists are empty. However, it should
-			// be available if it was explicitly stated so.
+			// "Custom" faction should not be available if both
+			// "default_recruit" and "previous_recruits" lists are empty.
+			// However, it should be available if it was explicitly stated so.
 			continue;
 		}
 
@@ -472,8 +473,8 @@ int flg_manager::find_suitable_faction(const std::string& faction_id) const
 		search_field = "id";
 	} else if (side_["faction_from_recruit"].to_bool()) {
 		// Choose based on recruit.
-		find = utils::split(side_["recruit"]);
-		search_field = "recruit";
+		find = utils::split(side_["default_recruit"]);
+		search_field = "default_recruit";
 	} else if (const config::attribute_value *l = side_.get("leader")) {
 		// Choose based on leader.
 		find.push_back(*l);

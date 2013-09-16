@@ -876,6 +876,10 @@ config side_engine::new_config() const
 {
 	config res = cfg_;
 
+	// Save default "recruit" so that correct faction lists would be
+	// initialized by flg_manager when the new side config is sent over network.
+	res["default_recruit"] = cfg_["recruit"];
+
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
 	if (!parent_.params_.saved_game) {
