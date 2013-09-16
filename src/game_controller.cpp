@@ -171,11 +171,6 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		no_sound = true;
 		preferences::disable_preferences_save();
 	}
-	if (cmdline_opts_.new_storyscreens)
-		// This is a hidden option to help testing
-		// the work-in-progress new storyscreen code.
-		// Don't document.
-		set_new_storyscreen(true);
 	if (cmdline_opts_.new_widgets)
 		gui2::new_widgets = true;
 	if (cmdline_opts_.nodelay)

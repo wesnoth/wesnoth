@@ -32,8 +32,6 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-static bool use_shadowm_storyscreen = false;
-
 void the_end(display &disp, std::string text, unsigned int duration)
 {
 	//
@@ -85,10 +83,4 @@ void the_end(display &disp, std::string text, unsigned int duration)
 		disp.delay(10);
 		--count;
 	}
-}
-
-void set_new_storyscreen(bool enabled)
-{
-	use_shadowm_storyscreen = enabled;
-	LOG_NG << "enabled experimental story/endscreen code\n";
 }

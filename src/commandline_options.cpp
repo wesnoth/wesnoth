@@ -85,7 +85,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	nogui(false),
 	nomusic(false),
 	nosound(false),
-	new_storyscreens(false),
 	new_widgets(false),
 	path(false),
 	preprocess(false),
@@ -219,9 +218,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("proxy-password", po::value<std::string>(), "specifies password to log in to the proxy.")
 		;
 
-	hidden_.add_options()
-		("new-storyscreens", "")
-		;
+	//hidden_.add_options()
+	//	("example-hidden-option", "")
+	//	;
 	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
 
 	all_.add(visible_).add(hidden_);
@@ -309,8 +308,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("multiplayer"))
 		multiplayer = true;
-	if (vm.count("new-storyscreens"))
-		new_storyscreens = true;
 	if (vm.count("new-widgets"))
 		new_widgets = true;
 	if (vm.count("nocache"))
