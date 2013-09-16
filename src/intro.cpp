@@ -34,7 +34,7 @@ static lg::log_domain log_engine("engine");
 
 static bool use_shadowm_storyscreen = false;
 
-static void the_end_old(display &disp, std::string text, unsigned int duration)
+void the_end(display &disp, std::string text, unsigned int duration)
 {
 	//
 	// Some sane defaults.
@@ -92,14 +92,3 @@ void set_new_storyscreen(bool enabled)
 	use_shadowm_storyscreen = enabled;
 	LOG_NG << "enabled experimental story/endscreen code\n";
 }
-
-void the_end(display &disp, std::string text, unsigned int duration)
-{
-	if(use_shadowm_storyscreen) {
-		show_endscreen(disp, t_string(text) /* dumb! */, duration);
-	}
-	else {
-		the_end_old(disp,text,duration);
-	}
-}
-
