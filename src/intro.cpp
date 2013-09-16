@@ -24,13 +24,8 @@
 
 #include "display.hpp"
 #include "gettext.hpp"
-#include "log.hpp"
 #include "marked-up_text.hpp"
 #include "storyscreen/interface.hpp"
-
-static lg::log_domain log_engine("engine");
-#define ERR_NG LOG_STREAM(err, log_engine)
-#define LOG_NG LOG_STREAM(info, log_engine)
 
 void the_end(display &disp, std::string text, unsigned int duration)
 {
