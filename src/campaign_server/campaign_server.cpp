@@ -609,6 +609,7 @@ namespace {
 
 							if(campaign == NULL) {
 								campaign = &campaigns().add_child("campaign");
+								(*campaign)["original_timestamp"] = lexical_cast<std::string>(upload_ts);
 							}
 
 							(*campaign)["title"] = upload["title"];
@@ -646,6 +647,7 @@ namespace {
 							data["description"] = (*campaign)["description"];
 							data["version"] = (*campaign)["version"];
 							data["timestamp"] = (*campaign)["timestamp"];
+							data["original_timestamp"] = (*campaign)["original_timestamp"];
 							data["icon"] = (*campaign)["icon"];
 							data["type"] = (*campaign)["type"];
 							(*campaign).clear_children("translation");
