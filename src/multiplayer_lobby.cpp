@@ -547,17 +547,18 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				verified = false;
 			}
 		} else {
-			games_.back().map_info += game["mp_scenario_name"].str();
-
 			const config* level_cfg = &game_config.find_child("campaign", "id",
 				game["mp_campaign"]);
 			if (*level_cfg) {
-				games_.back().map_info += " (" + (*level_cfg)["name"].str() + ")";
+				games_.back().map_info += game["mp_scenario_name"].str();
+				games_.back().map_info += " (";
+				games_.back().map_info += (*level_cfg)["name"].str();
+				games_.back().map_info += ")";
 			} else {
 				utils::string_map symbols;
 				symbols["campaign_id"] = game["mp_campaign"];
 				games_.back().map_info +=
-					vgettext("Unknown scenario: $campaign_id", symbols);
+					vgettext("Unknown campaign: $campaign_id", symbols);
 				verified = false;
 			}
 		}
