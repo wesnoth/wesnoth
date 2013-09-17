@@ -189,6 +189,8 @@ void read_addons_list(const config& cfg, addons_list& dest)
 {
 	dest.clear();
 
+	unsigned order = 0;
+
 	/** @todo FIXME: get rid of this legacy "campaign"/"campaigns" silliness */
 	const config::const_child_itors &addon_cfgs = cfg.child_range("campaign");
 	BOOST_FOREACH(const config& addon_cfg, addon_cfgs) {
@@ -198,6 +200,7 @@ void read_addons_list(const config& cfg, addons_list& dest)
 			continue;
 		}
 		dest[id].read(addon_cfg);
+		dest[id].order = order++;
 	}
 }
 

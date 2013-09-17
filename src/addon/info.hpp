@@ -50,12 +50,17 @@ struct addon_info
 
 	time_t updated;
 
+	// Artificial upload order index used to preserve add-ons upload order
+	// until we have actual first-upload timestamps implemented. This index
+	// is not serialized anywhere.
+	unsigned order;
+
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
-		, updated()
+		, updated(), order()
 	{}
 
 	explicit addon_info(const config& cfg)
@@ -63,7 +68,7 @@ struct addon_info
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
-		, updated()
+		, updated(), order()
 	{
 		this->read(cfg);
 	}
@@ -83,6 +88,7 @@ struct addon_info
 			this->locales = o.locales;
 			this->depends = o.depends;
 			this->updated = o.updated;
+			this->order = o.order;
 		}
 		return *this;
 	}
