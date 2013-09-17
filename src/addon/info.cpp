@@ -80,6 +80,8 @@ void addon_info::read(const config& cfg)
 	}
 
 	this->depends = utils::split(cfg["dependencies"].str());
+
+	this->updated = cfg["timestamp"].to_time_t();
 }
 
 void addon_info::write(config& cfg) const
@@ -100,6 +102,8 @@ void addon_info::write(config& cfg) const
 	}
 
 	cfg["dependencies"] = utils::join(this->depends);
+
+	cfg["timestamp"] = this->updated;
 }
 
 void addon_info::write_minimal(config& cfg) const

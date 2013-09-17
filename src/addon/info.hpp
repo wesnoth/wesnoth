@@ -48,11 +48,14 @@ struct addon_info
 	std::vector<std::string> depends;
 	// std::vector<addon_dependency> conflicts, recommends, replaces;
 
+	time_t updated;
+
 	addon_info()
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
+		, updated()
 	{}
 
 	explicit addon_info(const config& cfg)
@@ -60,6 +63,7 @@ struct addon_info
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
+		, updated()
 	{
 		this->read(cfg);
 	}
@@ -78,6 +82,7 @@ struct addon_info
 			this->type = o.type;
 			this->locales = o.locales;
 			this->depends = o.depends;
+			this->updated = o.updated;
 		}
 		return *this;
 	}
