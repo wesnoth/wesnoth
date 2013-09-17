@@ -16,6 +16,7 @@
 
 #include "dialogs.hpp"
 #include "gettext.hpp"
+#include "game_config_manager.hpp"
 #include "game_preferences.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "game_display.hpp"
@@ -188,10 +189,19 @@ wait::wait(game_display& disp, const config& cfg, game_state& state,
 	first_scenario_(first_scenario),
 	stop_updates_(false)
 {
-	state_ = game_state();
-
 	game_menu_.set_numeric_keypress_selection(false);
 	gamelist_updated();
+}
+
+wait::~wait()
+{
+	if (get_result() == QUIT) {
+		state_ = game_state();
+		state_.classification().campaign_type = "multiplayer";
+
+		resources::config_manager->
+			load_game_config_for_game(state_.classification());
+	}
 }
 
 void wait::process_event()
@@ -209,6 +219,27 @@ void wait::join_game(bool observe)
 	} else if (!level_["allow_new_game"].to_bool(true)) {
 		set_result(PLAY);
 		return;
+	}
+
+	if (first_scenario_) {
+		state_ = game_state();
+		state_.classification().campaign_type = "multiplayer";
+
+		const config* campaign = &resources::config_manager->
+			game_config().find_child("campaign", "id",
+				level_.child("multiplayer")["mp_campaign"]);
+		if (*campaign) {
+			state_.classification().difficulty =
+				level_.child("multiplayer")["difficulty_define"].str();
+			state_.classification().campaign_define =
+				(*campaign)["define"].str();
+			state_.classification().campaign_xtra_defines =
+				utils::split((*campaign)["extra_defines"]);
+		}
+
+		// Make sure that we have the same config as host, if possible.
+		resources::config_manager->
+			load_game_config_for_game(state_.classification());
 	}
 
 	// Add the map name to the title.

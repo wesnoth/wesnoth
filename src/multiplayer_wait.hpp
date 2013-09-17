@@ -28,6 +28,7 @@ class wait : public ui
 public:
 	wait(game_display& disp, const config& cfg, game_state& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
+	~wait();
 	virtual void process_event();
 
 	void join_game(bool observe);

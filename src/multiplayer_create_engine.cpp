@@ -369,6 +369,7 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 
 	if (difficulty != "") {
 		state_.classification().difficulty = difficulty;
+		parameters_.difficulty_define = difficulty;
 	}
 
 	state_.classification().campaign_define =

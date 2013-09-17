@@ -30,6 +30,7 @@ mp_game_settings::mp_game_settings() :
 	mp_scenario(),
 	mp_scenario_name(),
 	mp_campaign(),
+	difficulty_define(),
 	active_mods(),
 	side_users(),
 	num_turns(0),
@@ -64,6 +65,7 @@ mp_game_settings::mp_game_settings(const config& cfg) :
 	mp_scenario(),
 	mp_scenario_name(),
 	mp_campaign(),
+	difficulty_define(),
 	active_mods(),
 	side_users(),
 	num_turns(0),
@@ -99,6 +101,7 @@ mp_game_settings::mp_game_settings(const mp_game_settings& settings)
 	, mp_scenario(settings.mp_scenario)
 	, mp_scenario_name(settings.mp_scenario_name)
 	, mp_campaign(settings.mp_campaign)
+	, difficulty_define(settings.difficulty_define)
 	, active_mods(settings.active_mods)
 	, side_users(settings.side_users)
 	, num_turns(settings.num_turns)
@@ -136,6 +139,7 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	mp_scenario = cfg["mp_scenario"].str();
 	mp_scenario_name = cfg["scenario_name"].str();
 	mp_campaign = cfg["mp_campaign"].str();
+	difficulty_define = cfg["difficulty_define"].str();
 	active_mods = utils::split(cfg["active_mods"], ',');
 	side_users = utils::map_split(cfg["side_users"]);
 	xp_modifier = cfg["experience_modifier"];
@@ -166,6 +170,7 @@ void mp_game_settings::reset()
 	mp_scenario = "";
 	mp_scenario_name = "";
 	mp_campaign = "";
+	difficulty_define = "";
 	active_mods.clear();
 	side_users.clear();
 	num_turns = 0;
@@ -193,6 +198,7 @@ config mp_game_settings::to_config() const
 	cfg["mp_scenario"] = mp_scenario;
 	cfg["mp_scenario_name"] = mp_scenario_name;
 	cfg["mp_campaign"] = mp_campaign;
+	cfg["difficulty_define"] = difficulty_define;
 	cfg["active_mods"] = utils::join(active_mods, ",");
 	cfg["side_users"] = utils::join_map(side_users);
 	cfg["experience_modifier"] = xp_modifier;
