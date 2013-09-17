@@ -84,4 +84,21 @@ enum ADDON_STATUS_FILTER {
 	FILTER_COUNT
 };
 
+/**
+ * Add-on fallback/default sorting criteria for the user interface.
+ */
+enum ADDON_SORT {
+	SORT_NAMES,			/**< Sort by add-on name. */
+	SORT_UPDATED,		/**< Sort by last upload time. */
+	SORT_CREATED		/**< Sort by creation time. */
+};
+
+/**
+ * Add-on fallback/default sorting direction.
+ */
+enum ADDON_SORT_DIRECTION {
+	DIRECTION_ASCENDING,		/**< Ascending sort. */
+	DIRECTION_DESCENDING		/**< Descending sort. */
+};
+
 #endif
