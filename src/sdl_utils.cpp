@@ -1735,8 +1735,6 @@ Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x
 		break;
 	case 4:
 		return *reinterpret_cast<const Uint32*>(src);
-	default:
-		return 0;
 	}
 	return 0;
 }
