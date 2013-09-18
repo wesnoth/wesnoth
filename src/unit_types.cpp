@@ -1033,6 +1033,10 @@ std::vector<std::string> unit_type::variations() const
 	return retval;
 }
 
+bool unit_type::has_variation(const std::string& variation_id) const
+{
+	return variations_.find(variation_id) != variations_.end();
+}
 
 /**
  * Generates (and returns) a trimmed config suitable for use with units.

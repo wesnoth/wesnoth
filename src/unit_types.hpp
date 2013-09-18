@@ -246,6 +246,12 @@ public:
 	/// to the HELP_INDEX status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	std::vector<std::string> variations() const;
+	
+	/**
+	 * @param variation_id		The id of the variation we search for.
+	 * @return					Iff one of the type's variations' (or the sibling's if the unit_type is a variation itself) id matches @variation_id.
+	 */
+	bool has_variation(const std::string& variation_id) const;
 
 	/// Returns the ID of this type's race without the need to build the type.
 	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
