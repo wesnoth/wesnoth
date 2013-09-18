@@ -189,11 +189,9 @@ surface rotate_modification::operator()(const surface& src) const
 		case 180: return rotate_180_surface(src);
 		case 270: return rotate_90_surface(src, false);
 		case 360: return src;
-		default:  return rotate_any_surface(src, normalized, zoom_, offset_);
 	}
 
-	// Other values are not supported. Ignore them.
-	return src;
+	return rotate_any_surface(src, normalized, zoom_, offset_);
 }
 
 surface gs_modification::operator()(const surface& src) const
@@ -662,9 +660,6 @@ REGISTER_MOD_PARSER(ROTATE, args)
 					lexical_cast_default<int>(slice_params[0]),
 					lexical_cast_default<int>(slice_params[1]),
 					lexical_cast_default<int>(slice_params[2]));
-			break;
-		default:
-			return NULL;
 			break;
 	}
 	return NULL;
