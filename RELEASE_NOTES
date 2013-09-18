@@ -14,7 +14,16 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Another Change"]
+[section="Add-ons Manager improvements"]
+In this release, new sorting options have been added to the Add-ons Manager dialog to improve its usefulness. The new options allow to change the neutral sorting criterion between [i]By name[/i] (which continues to be the default), [i]By last updated[/i], and [i]By first upload[/i] (former default in all versions prior to 1.11.0); additionally, it is possible to switch between ascending and descending order. Due to UI framework limitations, these options only take effect when no column has been marked for sorting in the add-ons list.
+[/section]
+
+[section="Other miscellaneous add-on management improvements"]
+The Remove Add-ons dialog now displays add-ons with their real names from the add-ons server as opposed to their file/directory names with underscores removed. This is only effective for add-ons downloaded with this and future versions.
+
+Syntax errors in .pbl files are now reported properly in the user interface instead of being misclassified as network errors.
+
+Finally, some color key disparities between the Add-ons Manager view and the Description box (which were unintentionally using different shades of orange and green) have been fixed.
 [/section]
 
 [section="Another Change"]
