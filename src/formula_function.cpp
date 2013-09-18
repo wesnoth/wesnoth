@@ -22,6 +22,8 @@
 #include "log.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/math/constants/constants.hpp>
+using namespace boost::math::constants;
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 #include "vld.h"
@@ -36,8 +38,6 @@ static lg::log_domain log_scripting_formula("scripting/formula");
 #define ERR_SF LOG_STREAM(err, log_scripting_formula)
 
 namespace game_logic {
-
-static const double pi = 4. * atan(1.);
 
 std::string function_expression::str() const
 {
@@ -473,7 +473,7 @@ private:
 				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
 
 		return variant(
-				  static_cast<int>(1000. * sin(angle * pi / 180.))
+				  static_cast<int>(1000. * sin(angle * pi<double>() / 180.))
 				, variant::DECIMAL_VARIANT);
 	}
 };
@@ -493,7 +493,7 @@ private:
 				args()[0]->evaluate(variables,fdb).as_decimal() / 1000.;
 
 		return variant(
-				  static_cast<int>(1000. * cos(angle * pi / 180.))
+				  static_cast<int>(1000. * cos(angle * pi<double>() / 180.))
 				, variant::DECIMAL_VARIANT);
 	}
 };
@@ -571,7 +571,7 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const int value = args()[0]->evaluate(variables,fdb).as_int()%1000;
-		const double angle = 2.0 * pi * (static_cast<double>(value) / 1000.0);
+		const double angle = 2.0 * pi<double>() * (static_cast<double>(value) / 1000.0);
 		return variant(static_cast<int>(sin(angle)*1000.0));
 	}
 };

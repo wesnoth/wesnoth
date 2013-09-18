@@ -30,6 +30,8 @@
 #include <cstring>
 #include <iostream>
 
+#include <boost/math/constants/constants.hpp>
+
 surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
 {
 	if (SDL_MUSTLOCK(surface_))
@@ -1636,8 +1638,8 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 	int src_w, src_h, dst_w, dst_h;
 	float min_x, max_x, min_y, max_y, sine, cosine;
 	{
-		// convert angle to radiant (angle * 2 * M_PI) / 360
-		const float radians = angle * M_PI / 180;
+		// convert angle to radiant (angle * 2 * PI) / 360
+		const float radians = angle * boost::math::constants::pi<float>() / 180;
 		cosine = static_cast<float>(cos(radians));
 		sine   = static_cast<float>(sin(radians));
 		// calculate the size of the dst image
