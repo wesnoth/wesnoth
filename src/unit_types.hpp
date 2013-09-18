@@ -190,6 +190,7 @@ public:
 	int jamming() const {return jamming_; }
 	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }
+	const std::string& default_variation() const { return default_variation_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
 	const std::string& icon() const { return icon_; }
@@ -297,6 +298,7 @@ private:
 
 	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
+	std::string default_variation_;
 
 	const unit_race* race_;	/// Never NULL, but may point to the null race.
 
