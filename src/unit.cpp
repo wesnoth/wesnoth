@@ -1357,7 +1357,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	// The variation_type could be a comma separated list of types
-	config::attribute_value cfg_variation_type = cfg["variation_type"];
+	config::attribute_value cfg_variation_type = cfg["variation"];
 	if (!cfg_variation_type.blank())
 	{
 		const std::string type_ids = cfg_variation_type.str();
@@ -1377,6 +1377,32 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			}
 		} else {
 			return false;
+		}
+	}
+
+	// The has_variation_type could be a comma separated list of types
+	config::attribute_value cfg_has_variation_type = cfg["has_variation"];
+	if (!cfg_has_variation_type.blank())
+	{
+		const std::string& var_ids  = cfg_has_variation_type.str();
+		const std::string& this_var = variation_;
+
+		if ( var_ids == this_var ) {
+			// pass
+		} else {
+
+			bool match = false;
+			const std::vector<std::string>& variation_types = utils::split(var_ids);
+			// If this unit is a variation itself then search in the base unit's variations.
+			const unit_type* const type = this_var.empty() ? type_ : unit_types.find(type_->base_id());
+
+			BOOST_FOREACH(const std::string& variation_id, variation_types) {
+				if (type->has_variation(variation_id)) {
+					match = true;
+					break;
+				}
+			}
+			if (!match) return false;
 		}
 	}
 
