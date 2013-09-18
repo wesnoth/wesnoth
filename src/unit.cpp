@@ -1336,7 +1336,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	config::attribute_value cfg_type = cfg["type"];
 	if (!cfg_type.blank())
 	{
-		std::string type_ids = cfg_type.str();
+		const std::string type_ids = cfg_type.str();
 		const std::string& this_type = type_id();
 
 		// We only do the full CSV search if we find a comma in there,
@@ -1346,6 +1346,30 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			// pass
 		} else if ( type_ids.find(',') != std::string::npos  &&
 		            type_ids.find(this_type) != std::string::npos ) {
+			const std::vector<std::string>& vals = utils::split(type_ids);
+
+			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	// The variation_type could be a comma separated list of types
+	config::attribute_value cfg_variation_type = cfg["variation_type"];
+	if (!cfg_variation_type.blank())
+	{
+		const std::string type_ids = cfg_variation_type.str();
+		const std::string& this_type = variation_;
+
+		// We only do the full CSV search if we find a comma in there,
+		// and if the subsequence is found within the main sequence.
+		// This is because doing the full CSV split is expensive.
+		if ( type_ids == this_type ) {
+			// pass
+		} else if ( type_ids.find(',') != std::string::npos  &&
+    				type_ids.find(this_type) != std::string::npos ) {
 			const std::vector<std::string>& vals = utils::split(type_ids);
 
 			if(std::find(vals.begin(),vals.end(),this_type) == vals.end()) {
