@@ -337,6 +337,9 @@ surface blend_surface(
 /**
  * Rotates a surface by any degrees.
  *
+ * @pre @zoom >= @offset          Otherwise @return will have empty pixels.
+ * @pre @offset > 0               Otherwise the procedure will not return.
+ *
  * @param surf                    The surface to rotate.
  * @param angle                   The angle of rotation.
  * @param zoom                    Which zoom level to use for calculating the result.
@@ -345,7 +348,8 @@ surface blend_surface(
  *
  * @return                        The rotated surface.
  */
-surface rotate_any_surface(const surface& surf, float angle, int zoom, int offset);
+surface rotate_any_surface(const surface& surf, float angle,
+		int zoom, int offset, bool optimize=true);
 
 /**
  * Rotates a surface 180 degrees.
@@ -437,8 +441,17 @@ private:
 	bool locked_;
 };
 
-void put_pixel(surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel);
-Uint32 get_pixel(const surface& surf, const_surface_lock& surf_lock, int x, int y);
+/**
+ * Helper methods for setting/getting a single pixel in an image.
+ * Lifted from http://sdl.beuc.net/sdl.wiki/Pixel_Access
+ *
+ * @param surf           The image to get or receive the pixel from.
+ * @param surf_lock      The locked surface to make sure the pointers are valid.
+ * @x                    The position in the row of the pixel.
+ * @y                    The row of the pixel.
+ */
+void put_pixel(const surface& surf, surface_lock& surf_lock, int x, int y, Uint32 pixel);
+Uint32 get_pixel(const surface& surf, const const_surface_lock& surf_lock, int x, int y);
 
 struct surface_restorer
 {
