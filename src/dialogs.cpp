@@ -1429,10 +1429,10 @@ void show_unit_description(const unit &u)
 
 void show_unit_description(const unit_type &t)
 {
-	const std::string &var = t.get_cfg()["variation_name"];
+	const std::string& var_id = t.get_cfg()["variation_id"];
 	bool hide_help = t.hide_help();
 	bool use_variation = false;
-	if (!var.empty()) {
+	if (!var_id.empty()) {
 		const unit_type *parent = unit_types.find(t.id());
 		if (hide_help) {
 			hide_help = parent->hide_help();
@@ -1442,7 +1442,7 @@ void show_unit_description(const unit_type &t)
 	}
 
 	if (use_variation)
-		help::show_variation_help(*display::get_singleton(), t.id(), var, hide_help);
+		help::show_variation_help(*display::get_singleton(), t.id(), var_id, hide_help);
 	else
 		help::show_unit_help(*display::get_singleton(), t.id(), hide_help);
 }
