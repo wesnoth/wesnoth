@@ -17,7 +17,8 @@ Version 1.11.6+dev:
      presenting them as network errors.
 
  * Engine:
-   * CampaignWML support for multiplayer.
+   * CampaignWML support for multiplayer. Game will reload a config during
+     the creation of multiplayer game and possibly, after a player joins a game.
    * Sides in a multiplayer campaign can be configured after each scenario.
 
  * Graphics:
@@ -27,9 +28,14 @@ Version 1.11.6+dev:
    * Updated translations: British English, German, Greek, Indonesian,
      Lithuanian, Portuguese, Vietnamese.
 
+ * Multiplayer:
+   * Legend of Wesmere campaign is available to play in multiplayer.
+
  * User Interface:
    * Revamped multiplayer "Create" screen and separated part of it to a new
      "Configure" screen.
+   * MP lobby shows the campaign's name along the scenario's name
+     (CampaignWML only).
 
 
 Version 1.11.6:

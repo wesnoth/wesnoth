@@ -17,11 +17,21 @@ Version 1.11.6+dev:
      * Messenger MAI now works with units (both messenger and escort) without
        weapons and when path to next waypoint is entirely blocked
      * Fixed bug that prevented removal of sticky MAIs
+ * Campaigns:
+   * Legend of Wesmere:
+     * Removed now redundant MP code.
+     * Added new CampaignWML attributes: "type", "min_players", "max_players".
+     * Added new ScenarioWML attributes: "new_game_title",
+       "force_use_map_settings".
+     * Adjusted "controller" and side recruits for MP.
  * Engine:
    * CampaignWML support for MP including difficulties, extra defines etc.
    * Use the same codepath to initialize every MP campaign's scenario, thus
      allowing the display of a functional MP "Connect/Wait" screen before the
      next scenario.
+   * Reload game config for non-host players in order to match the host's
+     config, if possible. Reloads will only happen for MP campaigns using
+     CampaignWML syntax.
  * Graphics
    * Full animations for the Dwarven Thunderer line.
  * Language and i18n:
@@ -31,10 +41,16 @@ Version 1.11.6+dev:
  * Lua API:
    * Added scroll_to_leader field (read/write) to wesnoth.sides table
     elements.
+ * Multiplayer:
+   * Fixed clearing map data when there is no shroud and level is sent
+     with "store_next_scenario".
+   * Update game's side data, slots and state in server during next scenario
+     initialization.
+   * Fixed reserved sides being counted as available in server.
  * WML engine:
    * [store_side] now stores the scroll_to_leader attribute from sides.
-   * Added new CampaignWML attributes "type", "min_players" and "max_players".
-   * Added new ScenariowML attributes "new_game_title",
+   * Added new CampaignWML attributes: "type", "min_players" and "max_players".
+   * Added new ScenariowML attributes: "new_game_title",
      "remove_from_carryover_on_leaders_loss" and "force_use_map_settings".
    * Allow numerical values for SideWML "controller" attribute.
  * User interface:
@@ -42,6 +58,10 @@ Version 1.11.6+dev:
      widgets to a new MP "Configure" screen, introducing a description box,
      adding a combo selection for different types of game, and adjusting it to
      work well with MP campaigns.
+   * MP "Configure" and "Connect" screens have been adjusted to allow to see
+     all scenarios and sides in the debug mode.
+   * MP "Lobby" game item has been updated to display information about
+     campaigns correctly.
    * Possible fix for clipboard integration issues with GUI2 widgets on X11.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
