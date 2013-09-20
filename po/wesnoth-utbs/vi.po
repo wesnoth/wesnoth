@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-08-17 11:34+0200\n"
-"PO-Revision-Date: 2013-08-24 00:43+0700\n"
+"PO-Revision-Date: 2013-09-15 14:00+0700\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 1.4\n"
 
 #. [campaign]: id=Under_the_Burning_Suns
 #. [editor_group]: id=utbs
@@ -1274,15 +1274,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:321
-#, fuzzy
-#| msgid ""
-#| "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
-#| "beginning of each your turns, every unit in a sand, road, rubble or sand "
-#| "dune hex will suffer from thirst. Each turn of thirst reduces a unit’s "
-#| "attack damage and causes $dehydration_loss hitpoints of damage. Healers "
-#| "can prevent dehydration from becoming worse, but cannot heal it. Only by "
-#| "refreshing at an oasis (any water hex) at the start of your turn will "
-#| "your units regain full attack strength."
 msgid ""
 "During the daytime (Dawn, Morning, Midday, Afternoon, and Dusk) at the "
 "beginning of each your turns, every unit in a sand, road, rubble or sand "
@@ -1295,9 +1286,10 @@ msgstr ""
 "đầu mỗi lượt của bạn, mọi đơn vị trên các ô lục giác cát, đường, gạch vụn "
 "hoặc đụn cát sẽ bị khát. Mỗi lần bị khát làm giảm sức tấn công của đơn vị và "
 "làm mất $dehydration_loss máu. Các điều trị viên có thể ngăn chặn không cho "
-"hiện tượng mất nước trở nên tệ hơn, nhưng không thể giải mất nước. Chỉ bằng "
-"cách phục hồi ở một ốc đảo (bất kỳ ô lục giác nước nào) ở đầu lượt của bạn "
-"mới giúp cho đơn vị giành lại sức mạnh tấn công đầy đủ."
+"hiện tượng mất nước trở nên tệ hơn, nhưng không thể giải mất nước. Chỉ khi "
+"được một điều trị viên chăm sóc hoặc phục hồi ở một ốc đảo (bất kỳ ô lục "
+"giác nước nông nào) ở đầu lượt của bạn mới giúp cho đơn vị giành lại sức "
+"mạnh tấn công đầy đủ."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:327
@@ -1337,9 +1329,6 @@ msgstr "Cái gì? Tôi không nhìn thấy gì cả."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:447
-#, fuzzy
-#| msgid ""
-#| "See those shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgid "See that shining speckles ahead? Scorpions. Large. Whole nest of them."
 msgstr ""
 "Mọi người có thấy những vết sáng lốm đốm đằng trước kia không? Bọ cạp. Rất "
@@ -1816,8 +1805,6 @@ msgstr ""
 
 #. [object]: id=PureWater
 #: data/campaigns/Under_the_Burning_Suns/scenarios/02_Across_the_Harsh_Sands.cfg:1701
-#, fuzzy
-#| msgid "Holy Water"
 msgid "Pure Water"
 msgstr "Nước thánh"
 
@@ -2383,16 +2370,12 @@ msgstr ""
 
 #. [message]: speaker=Grak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1056
-#, fuzzy
-#| msgid ""
-#| "So you destroyed Zur... Come mortal, let’s cross our blades... It’s time "
-#| "for you to take his place..."
 msgid ""
 "So you destroyed Zur... Come, mortal, let us cross our blades... It’s time "
 "for you to take his place..."
 msgstr ""
-"Vậy là ngươi đã tiêu diệt Zur... Đến đi, hãy giao chiến với ta... Đã đến lúc "
-"để ngươi thay thế hắn..."
+"Vậy là ngươi đã tiêu diệt Zur... Đến đi, kẻ phàm trần, hãy giao chiến với "
+"ta... Đã đến lúc để ngươi thay thế hắn..."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1140
@@ -2551,10 +2534,6 @@ msgstr "Garak?"
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1440
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1602
-#, fuzzy
-#| msgid ""
-#| "Hahaha! Your puny friend is no more. With his body I shall crush you all. "
-#| "Arise again my minions and feast in the slaughter!"
 msgid ""
 "Hahaha! Your puny friend is no more. With his body I shall crush you all. "
 "Arise again, my minions and feast on the slaughter!"
@@ -2646,16 +2625,12 @@ msgstr ""
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1587
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1686
-#, fuzzy
-#| msgid "Eloh protect us, what has he done?"
 msgid "Eloh protect us, what has she done?"
-msgstr "Eloh bảo vệ chúng ta, ông ấy đã làm gì?"
+msgstr "Eloh bảo vệ chúng ta, hắn đã làm gì?"
 
 #. [message]: speaker=Possessed Garak
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1715
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:1999
-#, fuzzy
-#| msgid "No, fool! Stop!"
 msgid "No fool! Stop!"
 msgstr "Không, đồ ngu! Dừng lại!"
 
@@ -3185,8 +3160,6 @@ msgstr "Ug’lok"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/04_Descending_into_Darkness.cfg:215
-#, fuzzy
-#| msgid "Kaleh must reach the exit tunnel at the north edge of the map"
 msgid "Kaleh Must Reach the Exit Tunnel at the North Edge of the Map"
 msgstr "Kaleh phải đến được đường hầm ở rìa phía bắc bản đồ"
 
@@ -3752,17 +3725,15 @@ msgstr "Cuộc chiến dưới mặt đất"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:97
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1763
 msgid "Trolls"
-msgstr ""
+msgstr "Quỷ núi"
 
 #. [side]
 #. [modify_side]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:165
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:234
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1697
-#, fuzzy
-#| msgid "Dwarven Belt"
 msgid "Dwarves"
-msgstr "Thắt lưng của người lùn"
+msgstr "Người lùn"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:384
@@ -4428,10 +4399,8 @@ msgstr "Ờ..."
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1622
-#, fuzzy
-#| msgid "What in Uria’s name is that?"
 msgid "What in Moradin’s name are they?"
-msgstr "Nhân danh Uria, cái gì thế?"
+msgstr "Nhân danh Moradin, chúng là cái gì thế?"
 
 #. [message]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:1628
@@ -4690,11 +4659,6 @@ msgstr "Lại là phép thuật đáng nguyền rủa của bọn quỷ núi. L�
 
 #. [message]: speaker=Dwarf Leader
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2540
-#, fuzzy
-#| msgid ""
-#| "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, "
-#| "I’ll need your men to cover for us. Do your best, boy, and may your "
-#| "ancestors watch over you."
 msgid ""
 "I need to go back and rally more reinforcements. We’re hurtin’, Kaleh, I’ll "
 "need your men to cover for us. Do you best, boy, and may Moradin watch over "
@@ -4702,7 +4666,7 @@ msgid ""
 msgstr ""
 "Tôi cần quay lại và tập hợp thêm quân tiếp viện. Chúng tôi đang gặp nguy, "
 "Kaleh, tôi cần người của cậu che chở cho chúng tôi. Hãy cố gắng hết sức, "
-"chàng trai, cầu mong tổ tiên của cậu dõi theo cậu."
+"chàng trai, cầu mong Moradin dõi theo cậu."
 
 #. [else]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:2560
@@ -4876,7 +4840,7 @@ msgstr ""
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3331
 msgid "Ow!"
-msgstr ""
+msgstr "Ối!"
 
 #. [message]: speaker=Cloaked Figure
 #: data/campaigns/Under_the_Burning_Suns/scenarios/05_A_Subterranean_Struggle.cfg:3338
@@ -5083,11 +5047,6 @@ msgstr "Nổ nè!"
 
 #. [message]: speaker=Grimnir
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:685
-#, fuzzy
-#| msgid ""
-#| "My work here is done. I must report back to my King. I have many more "
-#| "things to do before the day is done, but I will return once you finish "
-#| "your mission. Fight well!"
 msgid ""
 "My work here is done. I must report back to my King. I have many more things "
 "to do before the day is done, but I will once you finish your mission. Fight "
@@ -5214,16 +5173,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1304
-#, fuzzy
-#| msgid ""
-#| "Any unit that ends its turn on a lava hex, except the Desert Shyde and "
-#| "Star who can fly over the lava, will take 25 damage at the beginning of "
-#| "the next turn. This lava damage can kill units. Desert Shydes and Stars "
-#| "will just take $heat_damage damage per turn when flying over lava, though "
-#| "they too can die if they spend too much time over lava. Also because of "
-#| "the heat in the cavern, all units on cave floor hexes will take "
-#| "$heat_damage damage at the start of each turn. This heat damage can "
-#| "reduce a unit to 1 hit point, but it can’t kill it."
 msgid ""
 "Any unit that ends its turn on a lava hex, except the Desert Shyde and Star "
 "who can fly over the lava, will take 25 damage at the beginning of the next "
@@ -5237,10 +5186,10 @@ msgstr ""
 "Bất kỳ đơn vị nào kết thúc lượt trên một ô lục giác dung nham, trừ tiên nữ "
 "và ngôi sao sa mạc có thể bay trên dung nham, sẽ chịu 25 điểm thiệt hại ở "
 "đầu lượt kế tiếp. Thiệt hại do dung nham này có thể giết các đơn vị. Tiên nữ "
-"và ngôi sao sa mạc chỉ chịu $heat_damage điểm thiệt hại mỗi lượt khi bay qua "
+"và ngôi sao sa mạc chỉ chịu $temp_damage điểm thiệt hại mỗi lượt khi bay qua "
 "dung nham, dù vậy, họ cũng có thể chết nếu mất quá nhiều thời gian trên dung "
 "nham. Cũng vì nhiệt trong hang động, tất cả các đơn vị trên ô lục giác nền "
-"hang sẽ chịu $heat_damage điểm thiệt hại ở đầu mỗi lượt. Thiệt hại do nhiệt "
+"hang sẽ chịu $temp_damage điểm thiệt hại ở đầu mỗi lượt. Thiệt hại do nhiệt "
 "này có thể giảm máu một đơn vị xuống 1, nhưng không thể giết nó."
 
 #. [message]: speaker=$explorer.id
@@ -5256,12 +5205,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:1350
-#, fuzzy
-#| msgid ""
-#| "At the start of each turn, any unit currently in this pool will heal 10 "
-#| "hitpoints and will not be affected by the heat in the cavern. Of course, "
-#| "if the unit leaves this pool, it will suffer the standard $heat_damage "
-#| "damage each turn from the heat."
 msgid ""
 "At the start of each turn, any unit currently in this pool will heal 10 "
 "hitpoints and will not be affected by the heat in the cavern. Of course, if "
@@ -5270,7 +5213,7 @@ msgid ""
 msgstr ""
 "Ở đầu mỗi lượt, bất kỳ đơn vị nào đang ở trong vũng nước này đều phục hồi 10 "
 "máu và sẽ không bị tác động bởi nhiệt trong hang động. Tất nhiên, nếu đơn vị "
-"rời khỏi vũng nước, nó sẽ chịu $heat_damage điểm thiệt hại chuẩn mỗi lượt do "
+"rời khỏi vũng nước, nó sẽ chịu $temp_damage điểm thiệt hại chuẩn mỗi lượt do "
 "nhiệt."
 
 #. [message]: role=Troll High Shaman
@@ -5577,19 +5520,14 @@ msgstr ""
 
 #. [message]: speaker=Dwarf Ghost
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2320
-#, fuzzy
-#| msgid ""
-#| "Thank you. You have done for me what all my dwarven kin never could. I "
-#| "will no longer block your way. I leave now for the halls of my "
-#| "ancestors..."
 msgid ""
 "Thank you. You have done for me what all my dwarven kin never could. I will "
 "no longer block your way. May Moradin bless you and watch over you. I leave "
 "now for the halls of my ancestors..."
 msgstr ""
 "Cảm ơn. Các bạn đã làm cho tôi điều mà đồng loại người lùn của tôi chẳng bao "
-"giờ có thể. Tôi sẽ không chặn đường các bạn nữa. Giờ tôi đi gặp tổ tiên của "
-"tôi..."
+"giờ có thể. Tôi sẽ không chặn đường các bạn nữa. Cầu mong Moradin phù hộ và "
+"dõi theo các bạn. Giờ tôi đi gặp tổ tiên của tôi..."
 
 #. [event]: id=cryptguard}
 #. [event]
@@ -5968,16 +5906,12 @@ msgstr "Chúng cũng đang đến lối này! Kích nổ!"
 #. [message]: speaker=Dwarf Scout
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1021
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1111
-#, fuzzy
-#| msgid ""
-#| "What?! Nothing happened! Who rigged the darn charges anyway? I’m going to "
-#| "have to hold them off by myself."
 msgid ""
 "What?! Nothing happened! Who in Moradin’s name rigged the darn charges "
 "anyway? I’m going to have to hold them off by myself."
 msgstr ""
-"Cái gì?! Chẳng có gì xảy ra! Ai đã gian lận đống chất nổ chết tiệt thế? Giờ "
-"ta phải tự mình cầm chân chúng."
+"Cái gì?! Chẳng có gì xảy ra! Nhân danh Moradin, ai đã gian lận đống chất nổ "
+"chết tiệt thế? Giờ ta phải tự mình cầm chân chúng."
 
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06b_In_the_Domain_of_Dwarves.cfg:1137
@@ -7114,7 +7048,7 @@ msgstr "Tín đồ giáo phái"
 #. [event]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:423
 msgid "Test"
-msgstr ""
+msgstr "Kiểm tra"
 
 #. [objective]: condition=win
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:698
@@ -7306,10 +7240,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1270
-#, fuzzy
-#| msgid ""
-#| "I don’t see any spiders, but the water is rising to the southeast as "
-#| "well. The river must have led to more tunnels than we first thought."
 msgid ""
 "I don’t see any spiders, but the water is rising to the southeast as well. "
 "The river must have lead to more tunnels than we first thought."
@@ -7591,10 +7521,6 @@ msgstr "Tốt, đó sẽ là lối vào đường hầm bí mật. Giờ hãy ma
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:1881
-#, fuzzy
-#| msgid ""
-#| "Well, this is the end of the tunnel. Which means the other secret door "
-#| "should be right here."
 msgid ""
 "Okay, this is the end of the tunnel. Which means the other secret door "
 "should be right here."
@@ -7711,12 +7637,10 @@ msgstr ""
 #. [object]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2254
 msgid "The user feels much better."
-msgstr ""
+msgstr "Người sử dụng cảm thấy tốt hơn nhiều."
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2286
-#, fuzzy
-#| msgid "The rune is gone. I guess the magic only had limited uses."
 msgid "The rune is gone. I guess the magic only had limited uses"
 msgstr ""
 "Dấu khắc chữ cổ đã biến mất. Tôi đoán phép thuật có số lần sử dụng hữu hạn."
@@ -7745,7 +7669,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2350
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2351
 msgid "Bloated Corpse"
-msgstr ""
+msgstr "Xác chết trương"
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:2393
@@ -8627,10 +8551,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3829
-#, fuzzy
-#| msgid "You can go Nym, just be careful."
 msgid "Okay Nym, just be careful."
-msgstr "Cô có thể đi, Nym, chỉ cần cẩn thận."
+msgstr "Được thôi, Nym, chỉ cần cẩn thận."
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:3834
@@ -8933,11 +8855,13 @@ msgid ""
 "Kromph is outside, but everything looks strange. What does mistress want "
 "Kromph to do?"
 msgstr ""
+"Kromph đã ở bên ngoài, nhưng mọi thứ trông thật kỳ lạ. Cô chủ muốn Kromph "
+"làm gì?"
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4241
 msgid "Just stay where you are, I’ll come up there myself"
-msgstr ""
+msgstr "Cứ ở yên đó, đích thân ta sẽ đến!"
 
 #. [message]: race=elf
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4270
@@ -9035,10 +8959,8 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4459
-#, fuzzy
-#| msgid "$unit.name|, be quiet, I’ll explain it all later."
 msgid "$speaker.name|, be quiet, I’ll explain it all later."
-msgstr "$unit.name|, yên nào, tôi sẽ giải thích mọi thứ sau."
+msgstr "$speaker.name|, yên nào, tôi sẽ giải thích mọi thứ sau."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4476
@@ -9225,12 +9147,6 @@ msgstr ""
 
 #. [message]: speaker=Sergeant Durstrag
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4623
-#, fuzzy
-#| msgid ""
-#| "A dwarf! This just gets better and better. We haven’t seen one of your "
-#| "kind up here for many years, but we have long memories. I remember how "
-#| "your ‘traders’ used to come up and cheat us out of our valuables. You’ll "
-#| "find we’re not so easy to fool this time."
 msgid ""
 "A dwarf! This just gets better and better. We haven’t seen one of your kind "
 "up here for many years, but we have a long memories. I remember how your "
@@ -9239,8 +9155,8 @@ msgid ""
 msgstr ""
 "Một người lùn! Bọn ta chưa từng nhìn thấy nòi giống các ngươi ở đây đã nhiều "
 "năm, nhưng bọn ta nhớ rõ. Ta nhớ cách bọn ‘lái buôn’ các ngươi thường đến và "
-"lừa gạt lấy những thứ quý giá của bọn ta. Ngươi sẽ thấy lần này bọn ta sẽ "
-"không dễ mắc lừa thế nữa đâu."
+"lừa gạt lấy những thứ quý giá của bọn ta. Ngươi sẽ thấy lần này bọn ta không "
+"dễ mắc lừa thế nữa đâu."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:4630
@@ -9915,8 +9831,6 @@ msgstr "Vài giờ sau..."
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:5977
-#, fuzzy
-#| msgid "In Eloh’s name, Nym, you look terrible. Are you well?"
 msgid "In Eloh’s name, Nym, you look terrible. Are you okay?"
 msgstr "Nhân danh Eloh, Nym, cô có vẻ hoảng sợ. Cô ổn chứ?"
 
@@ -9943,8 +9857,6 @@ msgstr "Cứ bình tĩnh, cậu ấy là một người bạn. Chỉ cần để
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/08_Out_of_the_Frying_Pan.cfg:6034
-#, fuzzy
-#| msgid "You’re really beat up, Nym. Are you sure you’re fine?"
 msgid "You’re really beat up, Nym. Are you sure you’re okay?"
 msgstr "Cô thực sự tơi tả đấy, Nym. Cô chắc chắn mình ổn chứ?"
 
@@ -10382,11 +10294,6 @@ msgstr ""
 
 #. [message]: speaker=Nym
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:602
-#, fuzzy
-#| msgid ""
-#| "It’s fine, you’re not used to being on dry ground, and you’ve been "
-#| "through a lot. Even if the humans know we’re coming, we can still take "
-#| "them. Just be careful and stay in the back until we reach the water again."
 msgid ""
 "It’s okay, you’re not used to being on dry ground, and you’ve been through a "
 "lot. Even if the humans know we’re coming, we can still take them. Just be "
@@ -11212,11 +11119,6 @@ msgstr ""
 
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:1917
-#, fuzzy
-#| msgid ""
-#| "If I were a landwalker, I might think the view from this sandbar to be "
-#| "amazing. But I am a creature of the sea and I see views like this every "
-#| "day."
 msgid ""
 "If I was a landwalker, I might think the view from this sandbar to be "
 "amazing. But I am a creature of the sea and I see views like this every day."
@@ -11297,11 +11199,6 @@ msgstr ""
 
 #. [message]: speaker=Zhul
 #: data/campaigns/Under_the_Burning_Suns/scenarios/09_Blood_is_Thicker_Than_Water.cfg:2092
-#, fuzzy
-#| msgid ""
-#| "Esanoo said there were five merfolk captured. We only found four. Where "
-#| "did they hide the last one? What horrible acts have these humans "
-#| "committed?"
 msgid ""
 "Esanoo said there were five merfolk captured. We only found four. Where did "
 "they hide the last one? What horrible fate has befallen her?"
@@ -12247,20 +12144,6 @@ msgstr "Đúng, chúng tôi biết về thời đại này."
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:285
-#, fuzzy
-#| msgid ""
-#| "This will go much faster if you don’t interrupt me. Now, as I was saying "
-#| "the Empire of Wesnoth was very learned in the magical arts and had vast "
-#| "repositories of knowledge. Back then there was only one sun in the sky, "
-#| "the sun you call Sela. But the king decreed that he would raise a second "
-#| "sun into the heavens, to lengthen their days and shorten the darkness. "
-#| "All the mages, sorcerers and wise men came together and cast a mountain "
-#| "into the sky and made it glow as bright as the sun. They sent this second "
-#| "sun, who you call Naia, hurtling through the sky so that there were only "
-#| "a few hours of dark each night. Though some had called the attempt "
-#| "foolish, it was a resounding success and stood as a tribute to the power "
-#| "and might of the humans. The golden age glowed brighter than ever and the "
-#| "many believed that they had dispelled evil and darkness forever."
 msgid ""
 "This will go much faster if you don’t interrupt me. Now, as I was saying the "
 "Empire of Wesnoth was very learned in the magical arts and had vast "
@@ -12437,13 +12320,6 @@ msgstr ""
 
 #. [message]: speaker=Melusand
 #: data/campaigns/Under_the_Burning_Suns/scenarios/10_Speaking_with_the_Fishes.cfg:320
-#, fuzzy
-#| msgid ""
-#| "The island was declared cursed, and we stayed as far away from it as we "
-#| "could. Some said we should flee the islands, but the waters were great "
-#| "for hunting, and the cursed naga who often raided our settlements did not "
-#| "trouble us here. So we remained and told ourselves that if we kept our "
-#| "distance everything would be fine."
 msgid ""
 "The island was declared cursed, and we stayed as far away from it as we "
 "could. Some said we should flee the islands, but the waters were great for "
@@ -13699,16 +13575,12 @@ msgstr "Đánh bại các chỉ huy của kẻ thù, tìm cả hai chìa khóa"
 #. [message]: speaker=unit
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1132
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1160
-#, fuzzy
-#| msgid ""
-#| "We’ve reached what looks like the citadel, but it is surrounded by a huge "
-#| "perfectly smooth obsidian wall. I can’t find any way to get in."
 msgid ""
 "We’ve reached what looks like the citadel, but it is surrounded by a huge "
 "perfectly smooth obsidian wall. I can’t find any entrances or exits."
 msgstr ""
 "Chúng ta đã đến gần nơi có vẻ là thành trì đen, nhưng bao quanh là một bức "
-"tường đá khổng lồ trơn láng. Tôi không thể tìm được cách nào để vào."
+"tường đá khổng lồ trơn láng. Tôi không thể tìm được lối vào hay lối ra nào."
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1137
@@ -13913,13 +13785,6 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/11_Battle_for_Zocthanol_Isle.cfg:1620
-#, fuzzy
-#| msgid ""
-#| "I must go and end this. But first I want to thank you all for your faith "
-#| "in me throughout this long journey. If I do not prevail then please flee "
-#| "this place with the merfolk and find somewhere where you can have peace "
-#| "and safety. My last wish is that no matter what happens you all live long "
-#| "and fruitful lives. Don’t let our sacrifices be forgotten..."
 msgid ""
 "I must go and end this. But first I want to thank you all for your faith in "
 "me throughout this long journey. If I do not prevail than please flee this "
@@ -15976,15 +15841,12 @@ msgstr "nuôi dưỡng"
 
 #. [resistance]: id=sustenance
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:258
-#, fuzzy
-#| msgid ""
-#| "This unit’s resistances are increased by 20% in daylight, on defense and "
-#| "attack. Vulnerabilities are not affected."
 msgid ""
 "Sustenance:\n"
 "This unit’s resistances are increased by 20% in daylight, on defense and "
 "attack. Vulnerabilities are not affected."
 msgstr ""
+"Nuôi dưỡng:\n"
 "Sức kháng cự của đơn vị này tăng thêm 20% dưới ánh mặt trời, khi phòng thủ "
 "và tấn công. Sức kháng cự âm không bị ảnh hưởng."
 
@@ -16005,15 +15867,12 @@ msgstr "gây choáng"
 #. [dummy]: id=stun
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:305
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:308
-#, fuzzy
-#| msgid ""
-#| "This attack puts enormous pressure on the enemy, disrupting his ZOC if a "
-#| "hit is landed. Not active on defense."
 msgid ""
 "Stun:\n"
 "This attack puts enormous pressure on the enemy, disrupting his ZOC if a hit "
 "is landed. Not active on defense."
 msgstr ""
+"Gây choáng:\n"
 "Đòn tấn công này gây áp lực lớn lên kẻ thù, phá vỡ vùng kiểm soát của nó nếu "
 "đánh trúng. Không kích hoạt khi phòng thủ."
 
@@ -16030,15 +15889,6 @@ msgstr "ngụy trang"
 #. [hides]: id=camouflage
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:331
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Kaleh.cfg:335
-#, fuzzy
-#| msgid ""
-#| "This unit can hide in desert dunes, desert mountains and craters, and "
-#| "remain undetected by its enemies.\n"
-#| "\n"
-#| "Enemy units cannot see this unit while it is in desert dunes, desert "
-#| "mountains, oasis and craters, except if they have units next to it. Any "
-#| "enemy unit that first discovers this unit immediately loses all its "
-#| "remaining movement."
 msgid ""
 "Camouflage:\n"
 "This unit can hide in desert dunes, desert mountains and craters, and remain "
@@ -16049,6 +15899,7 @@ msgid ""
 "enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
+"Ngụy trang:\n"
 "Đơn vị này có thể ẩn nấp trong các đụn cát, núi và hố trên sa mạc, và không "
 "bị kẻ thù phát hiện.\n"
 "\n"
@@ -16202,15 +16053,10 @@ msgstr ""
 #. [unit_type]: id=Confused Ant
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Confused_Ant.cfg:8
 msgid "Confused Ant"
-msgstr ""
+msgstr "Kiến mất phương hướng"
 
 #. [unit_type]: id=Confused Ant
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Confused_Ant.cfg:10
-#, fuzzy
-#| msgid ""
-#| "Giant Ants are common in almost any environment, from caverns deep under "
-#| "the earth to the tops of tall mountains. Though normally not hostile, "
-#| "they can bite at close range."
 msgid ""
 "Giant Ants are common in almost any environment, from caverns deep under the "
 "earth to the tops of tall mountains. Though normally not hostile, they can "
@@ -16219,7 +16065,8 @@ msgid ""
 msgstr ""
 "Kiến khổng lồ có nhiều ở gần như bất kỳ môi trường nào, từ các hang sâu dưới "
 "lòng đất đến các đỉnh núi cao. Dù thường là không thù địch, chúng có thể cắn "
-"ở phạm vi gần."
+"ở phạm vi gần. Khi không có một con kiến chúa dẫn dắt, chúng trở nên mất "
+"phương hướng."
 
 #. [unit_type]: id=Crab Man, race=monster
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Crab_Man.cfg:4
@@ -16287,12 +16134,12 @@ msgstr "cuốn bụi"
 
 #. [regenerate]
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:76
-#, fuzzy
-#| msgid "The unit will heal itself 6 HP per turn on sand or dirt terrain."
 msgid ""
 "Dust Recuperation:\n"
 "The unit will heal itself 6 HP per turn on sand or dirt terrain."
-msgstr "Đơn vị này sẽ hồi 6 máu mỗi lượt trên địa hình cát hoặc đất."
+msgstr ""
+"Cuốn bụi:\n"
+"Đơn vị này sẽ hồi 6 máu mỗi lượt trên địa hình cát hoặc đất."
 
 #. [advancement]: id=Dust1
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Dust_Devil.cfg:82
@@ -17786,7 +17633,7 @@ msgstr "Tàu của con người"
 #. [terrain_type]: id=campfire
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:38
 msgid "Campfire"
-msgstr ""
+msgstr "Lửa trại"
 
 #. [terrain_type]: id=phantom_castle
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:48
@@ -17801,12 +17648,12 @@ msgstr "Pháo đài ma"
 #. [terrain_type]: id=summoning_circle_inner
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:72
 msgid "Inner Summoning Circle"
-msgstr ""
+msgstr "Vòng tròn phép thuật bên trong"
 
 #. [terrain_type]: id=summoning_circle_outer
 #: data/campaigns/Under_the_Burning_Suns/utils/terrain.cfg:84
 msgid "Outer Summoning Circle"
-msgstr ""
+msgstr "Vòng tròn phép thuật bên ngoài"
 
 #. [time]: id=dawn1
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:20
@@ -17882,100 +17729,3 @@ msgstr "Đêm dài (3)"
 #: data/campaigns/Under_the_Burning_Suns/utils/time.cfg:164
 msgid "The Long Dark (4)"
 msgstr "Đêm dài (4)"
-
-#~ msgid ""
-#~ "stunned: This unit is stunned. It cannot enforce its Zone of Control."
-#~ msgstr "bị choáng: Đơn vị này bị choáng. Nó không thể giữ vùng kiểm soát."
-
-#~ msgid "Should I take the holy water?"
-#~ msgstr "Tôi có nên lấy nước thánh không?"
-
-#~ msgid "No, I think someone else should take it."
-#~ msgstr "Không, tôi nghĩ ai đó khác nên lấy nó."
-
-#~ msgid "Objectives:"
-#~ msgstr "Mục tiêu:"
-
-#~ msgid "team_name^Trolls"
-#~ msgstr "Quỷ núi"
-
-#~ msgid "team_name^Dwarves"
-#~ msgstr "Người lùn"
-
-#~ msgid "What by the names of my forefathers are they?"
-#~ msgstr "Nhân danh ông cha ta, chúng là cái gì thế?"
-
-#~ msgid ""
-#~ "Zurg must have collapsed the tunnel. Perhaps he didn’t want to give the "
-#~ "dwarves an easy access route if they defeated us. So much for an escape "
-#~ "route, I guess we’ll just have to be sure not to fail."
-#~ msgstr ""
-#~ "Zurg chắc hẳn đã phá sập đường hầm. Có lẽ ông ấy không muốn cho bọn người "
-#~ "lùn một đường xâm nhập dễ dàng nếu chúng đánh bại chúng ta. Quá nhiều cho "
-#~ "một lối thoát, tôi đoán chúng ta chỉ phải đảm bảo chắc chắn không thất "
-#~ "bại."
-
-#~ msgid "No, it’s an elf!"
-#~ msgstr "Không, đó là một thần tiên!"
-
-#~ msgid "What...?! Right... First task, boys, kill the intruder!"
-#~ msgstr ""
-#~ "Cái gì...?! Đúng rồi... Nhiệm vụ đầu tiên, các chàng trai, giết kẻ xâm "
-#~ "lược!"
-
-#~ msgid ""
-#~ "female_speaker^Indeed you have done well, far better than I could have "
-#~ "hoped. We shall talk more later, but for now we have to free the rest of "
-#~ "our brethren."
-#~ msgstr ""
-#~ "Quả thực các bạn đã làm tốt lắm, tốt hơn nhiều những gì tôi có thể hy "
-#~ "vọng. Chúng ta sẽ nói chuyện sau, còn bây giờ chúng ta phải giải cứu "
-#~ "những người anh em của chúng tôi."
-
-#~ msgid ""
-#~ "female_addressed^Greetings. Esanoo told us that you were looking for us, "
-#~ "and he bravely led us here. Though he has fallen in combat, we have come "
-#~ "to rescue the rest of your kind."
-#~ msgstr ""
-#~ "Xin chào. Esanoo đã nói với chúng tôi rằng các bạn đang tìm kiếm chúng "
-#~ "tôi, và anh ấy đã dũng cảm dẫn chúng tôi đến đây. Dù anh ấy đã tử trận, "
-#~ "nhưng chúng tôi đến để giải cứu những người còn lại trong số các bạn."
-
-#~ msgid ""
-#~ "female_speaker^Yes, I recognize your face, young elf. We will remember "
-#~ "Esanoo’s sacrifice. But for now we must rescue the rest of my brethren "
-#~ "before they too are slain by the foul humans."
-#~ msgstr ""
-#~ "Đúng, tôi nhận ra khuôn mặt anh, thần tiên trẻ. Chúng ta sẽ nhớ đến sự hy "
-#~ "sinh của Esanoo. Nhưng ngay bây giờ chúng ta phải giải cứu những người "
-#~ "anh em của tôi, trước khi họ bị bọn con người bẩn thỉu giết hại."
-
-#~ msgid "How could she recognize your face? We’ve never seen her before."
-#~ msgstr ""
-#~ "Cô ta có thể nhận ra khuôn mặt của anh bằng cách nào? Chúng ta còn chưa "
-#~ "bao giờ nhìn thấy cô ấy trước đây."
-
-#~ msgid ""
-#~ "One of the elves we were searching for helped me get away before I was "
-#~ "caught. I can’t believe the humans imprisoned you in such a horrible "
-#~ "place. To be stuck in the darkness with those undead. We will make them "
-#~ "pay for what they have done!"
-#~ msgstr ""
-#~ "Một trong số các thần tiên chúng ta đang tìm kiếm đã giúp tôi trốn thoát, "
-#~ "khỏi bị bắt. Tôi không thể tin bọn con người lại giam cầm cô ở một nơi "
-#~ "kinh khủng như thế. Bị kẹt trong bóng tối với lũ ma quái đó. Chúng ta sẽ "
-#~ "bắt chúng phải trả giá vì những gì chúng đã làm!"
-
-#~ msgid ""
-#~ "dehydrated: This unit is dehydrated. It will lose 4 HP and have its "
-#~ "damage reduced by 1 each turn during the day unless prevented by healers "
-#~ "or cured by water at an oasis.\n"
-#~ "\n"
-#~ "Units cannot be killed or deal no damage as a result of dehydration."
-#~ msgstr ""
-#~ "bị mất nước: Đơn vị này bị mất nước. Nó sẽ mất 4 máu và sức tấn công bị "
-#~ "giảm đi 1 mỗi lượt vào ban ngày trừ khi được ngăn ngừa bởi điều trị viên "
-#~ "hoặc được cứu chữa bằng nước ở một ốc đảo.\n"
-#~ "\n"
-#~ "Các đơn vị không thể bị giết hoặc không gây lượng thiệt hại nào do mất "
-#~ "nước."
