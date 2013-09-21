@@ -46,9 +46,6 @@ namespace
 	 * a class of variable.hpp, and not the game_state.
 	 */
 	#define repos (resources::state_of_game)
-
-	// keeps track of insert_tag variables used by get_parsed_config
-	std::set<std::string> vconfig_recursion;
 }
 
 
@@ -122,6 +119,9 @@ void vconfig::make_safe()
 
 config vconfig::get_parsed_config() const
 {
+	// Keeps track of insert_tag variables.
+	static std::set<std::string> vconfig_recursion;
+
 	config res;
 
 	BOOST_FOREACH(const config::attribute &i, cfg_->attribute_range()) {
