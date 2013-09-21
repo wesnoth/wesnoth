@@ -161,12 +161,12 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( const vconfig & child = vcfg.child("show_if") ) {
 		show_if_ = child;
-		show_if_.make_volatile();
+		show_if_.make_safe();
 	}
 
 	if ( const vconfig & child = vcfg.child("filter_location") ) {
 		filter_location_ = child;
-		filter_location_.make_volatile();
+		filter_location_.make_safe();
 	}
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {

@@ -18,6 +18,8 @@
 
 #include "config.hpp"
 
+#include <boost/shared_ptr.hpp>
+
 #include <utility>
 
 class game_state;
@@ -29,7 +31,8 @@ class unit_map;
  *
  * When dealing with a vconfig, keep in mind its lifetime. By default, vconfigs
  * do not maintain a copy their data; if you need a vconfig to stick around,
- * either construct it with is_volatile=true or call make_volatile().
+ * either construct it with manage_memory=true or call make_safe(). This will
+ * cause the vconfig to make a copy of the underlying config object.
  */
 class vconfig
 {
@@ -52,16 +55,18 @@ private:
 #endif
 
 	vconfig();
-	vconfig(const config* cfg, const config* cache_key);
+	vconfig(const config & cfg, const boost::shared_ptr<config> & cache);
 public:
-	vconfig(const vconfig& v);
-	explicit vconfig(const config &cfg, bool is_volatile=false);
+	/// Constructor from a config.
+	/// Equivalent to vconfig(cfg, false).
+	/// Do not use if the vconfig will persist after @a cfg is destroyed!
+	explicit vconfig(const config &cfg) : cache_(), cfg_(&cfg) {}
+	vconfig(const config &cfg, bool manage_memory);
 	~vconfig();
 
 	static vconfig empty_vconfig(); // Valid to dereference. Contains nothing
 	static vconfig unconstructed_vconfig(); // Must not be dereferenced
 
-	vconfig& operator=(const vconfig& cfg);
 #ifdef HAVE_CXX11
 	/// A vconfig evaluates to true iff it can be dereferenced.
 	explicit operator bool() const	{ return !null(); }
@@ -71,8 +76,7 @@ public:
 #endif
 
 	bool null() const { return cfg_ == NULL; }
-	bool is_volatile() const { return cache_key_ != NULL; }
-	void make_volatile();
+	void make_safe();
 	const config& get_config() const { return *cfg_; }
 	config get_parsed_config() const;
 
@@ -88,7 +92,7 @@ public:
 	 *
 	 * Note: The following construction is unsafe:
 	 * const std::string& temp = vcfg["foo"];
-	 * This bind temp to a member of a temporary t_string. The lifetime of the
+	 * This binds temp to a member of a temporary t_string. The lifetime of the
 	 * temporary is not extended by this reference binding and the temporary's
 	 * lifetime ends which causes UB. Instead use:
 	 * const std::string temp = vcfg["foo"];
@@ -109,7 +113,8 @@ public:
 		typedef const pointer_proxy pointer;
 		typedef const value_type reference;
 		typedef config::all_children_iterator Itor;
-		explicit all_children_iterator(const Itor &i, const config *cache_key = NULL);
+		explicit all_children_iterator(const Itor &i);
+		all_children_iterator(const Itor &i, const boost::shared_ptr<config> & cache);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
@@ -128,7 +133,7 @@ public:
 	private:
 		Itor i_;
 		int inner_index_;
-		const config* cache_key_;
+		boost::shared_ptr<config> cache_;
 	};
 
 	struct recursion_error : public config::error {
@@ -140,8 +145,14 @@ public:
 	all_children_iterator ordered_end() const;
 
 private:
+	/// Returns true if *this has made a copy of its config.
+	bool memory_managed() const { return cache_; }
+
+	/// Keeps a copy of our config alive when we manage our own memory.
+	/// If this is not null, then cfg_ points to *cache_ or a child of *cache_.
+	boost::shared_ptr<config> cache_;
+	/// Used to access our config (original or copy, as appropriate).
 	const config* cfg_;
-	const config* cache_key_;
 };
 
 struct vconfig::all_children_iterator::pointer_proxy

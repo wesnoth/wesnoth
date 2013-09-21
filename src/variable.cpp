@@ -49,172 +49,41 @@ namespace
 
 	// keeps track of insert_tag variables used by get_parsed_config
 	std::set<std::string> vconfig_recursion;
-
-	/**
-	 * config_cache is a map to track temp storage of inserted tags on the heap.
-	 * If an event is spawned from a variable or any ActionWML from a volatile
-	 * source is to be executed safely then its memory should be managed by vconfig
-	 */
-	std::map<config const *, int> config_cache;
-
-	// map by hash for equivalent inserted tags already in the cache
-	std::map<std::string const *, config const *> hash_to_cache;
-
-	// map to remember config hashes that have already been calculated
-	std::map<config const *, std::string const *> config_hashes;
-
-
-	struct compare_str_ptr {
-		bool operator()(const std::string* s1, const std::string* s2) const
-		{
-			return (*s1) < (*s2);
-		}
-	};
-
-	class hash_memory_manager {
-	public:
-		hash_memory_manager() :
-			mem_()
-		{
-		}
-
-		const std::string *find(const std::string& str) const {
-			std::set<std::string const*, compare_str_ptr>::const_iterator itor = mem_.lower_bound(&str);
-			if(itor == mem_.end() || **itor != str) {
-				return NULL;
-			}
-			return *itor;
-		}
-		void insert(const std::string *newhash) {
-			mem_.insert(newhash);
-		}
-		void clear() {
-			hash_to_cache.clear();
-			config_hashes.clear();
-			std::set<std::string const*, compare_str_ptr>::iterator mem_it,
-				mem_end = mem_.end();
-			for(mem_it = mem_.begin(); mem_it != mem_end; ++mem_it) {
-				delete *mem_it;
-			}
-			mem_.clear();
-		}
-		~hash_memory_manager() {
-			clear();
-		}
-	private:
-		std::set<std::string const*, compare_str_ptr> mem_;
-	};
-	hash_memory_manager hash_memory;
 }
 
-static const std::string* get_hash_of(const config* cp) {
-	//first see if the memory of a constant config hash exists
-	std::map<config const *, std::string const *>::iterator ch_it = config_hashes.find(cp);
-	if(ch_it != config_hashes.end()) {
-		return ch_it->second;
-	}
-	//next see if an equivalent hash string has been memorized
-	const std::string & temp_hash = cp->hash();
-	std::string const* find_hash = hash_memory.find(temp_hash);
-	if(find_hash != NULL) {
-		return find_hash;
-	}
-	//finally, we just allocate a new hash string to memory
-	std::string* new_hash = new std::string(temp_hash);
-	hash_memory.insert(new_hash);
-	//do not insert into config_hashes (may be a variable config)
-	return new_hash;
-}
-
-static void increment_config_usage(const config*& key) {
-	if(key == NULL) return;
-	std::map<config const *, int>::iterator this_usage =  config_cache.find(key);
-	if(this_usage != config_cache.end()) {
-		++this_usage->second;
-		return;
-	}
-	const std::string *hash = get_hash_of(key);
-	const config *& cfg_store = hash_to_cache[hash];
-	if(cfg_store == NULL || (key != cfg_store && *key != *cfg_store)) {
-		// this is a new volatile config: allocate some memory & update key
-		key = new config(*key);
-		// remember this cache to prevent an equivalent one from being created
-		cfg_store = key;
-		// since the config is now constant, we can safely memorize the hash
-		config_hashes[key] = hash;
-	} else {
-		// swap the key with an equivalent or equal one in the cache
-		key = cfg_store;
-	}
-	++(config_cache[key]);
-}
-
-static void decrement_config_usage(const config* key) {
-	if(key == NULL) return;
-	std::map<config const *, int>::iterator this_usage = config_cache.find(key);
-	assert(this_usage != config_cache.end());
-	if(--(this_usage->second) == 0) {
-		config_cache.erase(this_usage);
-		if(config_cache.empty()) {
-			hash_memory.clear();
-		} else {
-			if(!hash_to_cache.empty()) {
-				hash_to_cache.erase(get_hash_of(key));
-			}
-			config_hashes.erase(key);
-		}
-		delete key;
-	}
-}
 
 vconfig::vconfig() :
-	cfg_(NULL), cache_key_(NULL)
+	cache_(), cfg_(NULL)
 {
 }
 
-vconfig::vconfig(const config* cfg, const config * cache_key) :
-	cfg_(cfg), cache_key_(cache_key)
+vconfig::vconfig(const config & cfg, const boost::shared_ptr<config> & cache) :
+	cache_(cache), cfg_(&cfg)
 {
-	increment_config_usage(cache_key_);
-	if(cache_key_ != cache_key) {
-		//location of volatile cfg has moved
-		cfg_ = cache_key_;
-	}
 }
 
 /**
- * Constructor from a config.
- * @param[in] is_volatile  Controls whether or not the vconfig makes a copy of @a cfg.
- *                         If @a cfg might be destroyed before this vconfig is, then
- *                         is_volatile must be set to true.
- *                         If @a cfg will be valid for the life of this vconfig, then
- *                         leaving is_volatile as false saves some overhead.
+ * Constructor from a config, with an option to manage memory.
+ * @param[in] cfg           The "WML source" of the vconfig being constructed.
+ * @param[in] manage_memory If true, a copy of @a cfg will be made, allowing the
+ *                          vconfig to safely persist after @a cfg is destroyed.
+ *                          If false, no copy is made, so @a cfg must be
+ *                          guaranteed to persist as long as the vconfig will.
+ *                          If in doubt, set to true; it is less efficient, but safe.
+ * See also make_safe().
  */
-/*
- * Having the default for is_volatile be false is not a safe move, but it is
- * appropriate for most of the times this constructor is used.
- */
-vconfig::vconfig(const config &cfg, bool is_volatile) :
-	cfg_(&cfg), cache_key_(is_volatile ? &cfg : NULL)
+vconfig::vconfig(const config &cfg, bool manage_memory) :
+	cache_(manage_memory ? new config(cfg) : NULL),
+	cfg_(manage_memory ? cache_.get() : &cfg)
 {
-	if(is_volatile) {
-		increment_config_usage(cache_key_);
-		if (cache_key_ != &cfg) {
-			//location of volatile cfg has moved
-			cfg_ = cache_key_;
-		}
-	}
 }
 
-vconfig::vconfig(const vconfig& v) :
-	cfg_(v.cfg_), cache_key_(v.cache_key_)
-{
-	increment_config_usage(cache_key_);
-}
-
+/**
+ * Default destructor, but defined here for possibly faster compiles
+ * (templates sometimes can be rough on the compiler).
+ */
 vconfig::~vconfig()
 {
-	decrement_config_usage(cache_key_);
 }
 
 vconfig vconfig::empty_vconfig()
@@ -223,37 +92,32 @@ vconfig vconfig::empty_vconfig()
 	return vconfig(empty_config, false);
 }
 
+/**
+ * This is just a wrapper for the default constructor; it exists for historical
+ * reasons and to make it clear that default construction cannot be dereferenced
+ * (in contrast to an empty vconfig).
+ */
 vconfig vconfig::unconstructed_vconfig()
 {
 	return vconfig();
 }
 
-vconfig& vconfig::operator=(const vconfig& cfg)
-{
-	const config* prev_key = cache_key_;
-	cfg_ = cfg.cfg_;
-	cache_key_ = cfg.cache_key_;
-	increment_config_usage(cache_key_);
-	decrement_config_usage(prev_key);
-	return *this;
-}
-
 /**
  * Ensures that *this manages its own memory, making it safe for *this to
  * outlive the config it was ultimately constructed from.
+ * It is perfectly safe to call this for a vconfig that already manages its memory.
  * This does not work on a null() vconfig.
  */
-void vconfig::make_volatile()
+void vconfig::make_safe()
 {
 	// Nothing to do if we already manage our own memory.
-	if ( is_volatile() )
+	if ( memory_managed() )
 		return;
 
-	// Make a copy of our config, record our use of the copy, and cause cfg_
-	// to point to the copy.
-	increment_config_usage(cfg_);
-	// For a newly volatile vconfig, both cache_key_ and cfg_ point to the copy.
-	cache_key_ = cfg_;
+	// Make a copy of our config.
+	cache_.reset(new config(*cfg_));
+	// Use our copy instead of the original.
+	cfg_ = cache_.get();
 }
 
 config vconfig::get_parsed_config() const
@@ -313,7 +177,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 	BOOST_FOREACH(const config::any_child &child, cfg_->all_children_range())
 	{
 		if (child.key == key) {
-			res.push_back(vconfig(&child.cfg, cache_key_));
+			res.push_back(vconfig(child.cfg, cache_));
 		} else if (child.key == "insert_tag") {
 			vconfig insert_cfg(child.cfg);
 			if(insert_cfg["name"] == key) {
@@ -322,8 +186,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 					//push back an empty tag
 					res.push_back(empty_vconfig());
 				} else if(vinfo.explicit_index) {
-					config * cp = &(vinfo.as_container());
-					res.push_back(vconfig(cp, cp));
+					res.push_back(vconfig(vinfo.as_container(), true));
 				} else {
 					variable_info::array_range range = vinfo.as_array();
 					if(range.first == range.second) {
@@ -331,8 +194,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 						res.push_back(empty_vconfig());
 					}
 					while(range.first != range.second) {
-						config *cp = &*range.first++;
-						res.push_back(vconfig(cp, cp));
+						res.push_back(vconfig(*range.first++, true));
 					}
 				}
 			}
@@ -349,7 +211,7 @@ vconfig::child_list vconfig::get_children(const std::string& key) const
 vconfig vconfig::child(const std::string& key) const
 {
 	if (const config &natural = cfg_->child(key)) {
-		return vconfig(&natural, cache_key_);
+		return vconfig(natural, cache_);
 	}
 	BOOST_FOREACH(const config &ins, cfg_->child_range("insert_tag"))
 	{
@@ -359,8 +221,7 @@ vconfig vconfig::child(const std::string& key) const
 			if(!vinfo.is_valid) {
 				return empty_vconfig();
 			}
-			config * cp = &(vinfo.as_container());
-			return vconfig(cp, cp);
+			return vconfig(vinfo.as_container(), true);
 		}
 	}
 	return unconstructed_vconfig();
@@ -388,6 +249,7 @@ namespace {
 	struct vconfig_expand_visitor : boost::static_visitor<void>
 	{
 		config::attribute_value &result;
+
 		vconfig_expand_visitor(config::attribute_value &r): result(r) {}
 		template<typename T> void operator()(T const &) const {}
 		void operator()(const std::string &s) const
@@ -409,8 +271,13 @@ config::attribute_value vconfig::expand(const std::string &key) const
 	return val;
 }
 
-vconfig::all_children_iterator::all_children_iterator(const Itor &i, const config *cache_key)
-: i_(i), inner_index_(0), cache_key_(cache_key)
+vconfig::all_children_iterator::all_children_iterator(const Itor &i) :
+	i_(i), inner_index_(0), cache_()
+{
+}
+
+vconfig::all_children_iterator::all_children_iterator(const Itor &i, const boost::shared_ptr<config> & cache) :
+	i_(i), inner_index_(0), cache_(cache)
 {
 }
 
@@ -463,20 +330,17 @@ vconfig vconfig::all_children_iterator::get_child() const
 {
 	if (inner_index_ >= 0 && i_->key == "insert_tag")
 	{
-		config * cp;
 		variable_info vinfo(vconfig(i_->cfg)["variable"], false, variable_info::TYPE_CONTAINER);
 		if(!vinfo.is_valid) {
 			return empty_vconfig();
 		} else if(inner_index_ == 0) {
-			cp = &(vinfo.as_container());
-			return vconfig(cp, cp);
+			return vconfig(vinfo.as_container(), true);
 		}
 		variable_info::array_range r = vinfo.as_array();
 		std::advance(r.first, inner_index_);
-		cp = &*r.first;
-		return vconfig(cp, cp);
+		return vconfig(*r.first, true);
 	}
-	return vconfig(&i_->cfg, cache_key_);
+	return vconfig(i_->cfg, cache_);
 }
 
 bool vconfig::all_children_iterator::operator==(const all_children_iterator &i) const
@@ -486,19 +350,18 @@ bool vconfig::all_children_iterator::operator==(const all_children_iterator &i) 
 
 vconfig::all_children_iterator vconfig::ordered_begin() const
 {
-	return all_children_iterator(cfg_->ordered_begin(), cache_key_);
+	return all_children_iterator(cfg_->ordered_begin(), cache_);
 }
 
 vconfig::all_children_iterator vconfig::ordered_end() const
 {
-	return all_children_iterator(cfg_->ordered_end(), cache_key_);
+	return all_children_iterator(cfg_->ordered_end(), cache_);
 }
 
 namespace variable
 {
 	manager::~manager()
 	{
-		hash_memory.clear();
 	}
 }
 

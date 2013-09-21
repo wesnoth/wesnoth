@@ -414,8 +414,7 @@ void handle_event_command(const std::string &cmd,
                           const queued_event &event_info, const vconfig &cfg)
 {
 	log_scope2(log_engine, "handle_event_command");
-	LOG_NG << "handling command '" << cmd << "' from "
-		<< (cfg.is_volatile()?"volatile ":"") << "cfg 0x"
+	LOG_NG << "handling command '" << cmd << "' from cfg 0x"
 		<< std::hex << std::setiosflags(std::ios::uppercase)
 		<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
