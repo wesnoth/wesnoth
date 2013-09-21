@@ -102,10 +102,8 @@ private:
 
 /// A container of wml_menu_item.
 class wmi_container{
-public:
 	/// The underlying storage type.
 	typedef std::map<std::string, wml_menu_item*> map_t;
-private:
 	/// The key for interaction with our iterators.
 	struct key {
 		/// Instructions for converting a map_t iterator to a wml_menu_item.
@@ -135,7 +133,6 @@ public:
 	wmi_container & operator=(const wmi_container & that)
 	{ copy(that.wml_menu_items_); return *this; }
 
-	map_t & get_menu_items() { return wml_menu_items_; };
 	void clear_wmi();
 	/// Returns true if *this contains no data.
 	bool empty() const { return wml_menu_items_.empty(); }
