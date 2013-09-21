@@ -358,13 +358,6 @@ vconfig::all_children_iterator vconfig::ordered_end() const
 	return all_children_iterator(cfg_->ordered_end(), cache_);
 }
 
-namespace variable
-{
-	manager::~manager()
-	{
-	}
-}
-
 scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 	previous_val_(),
 	var_name_(var_name),

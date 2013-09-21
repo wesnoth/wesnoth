@@ -22,7 +22,6 @@
 
 #include <utility>
 
-class game_state;
 class unit_map;
 
 /**
@@ -160,21 +159,6 @@ struct vconfig::all_children_iterator::pointer_proxy
 	value_type p;
 	const value_type *operator->() const { return &p; }
 };
-
-namespace variable
-{
-
-/**
- * Used to clear the cache for variables.
- */
-class manager
-{
-public:
-	~manager();
-};
-
-}
-
 
 
 class scoped_wml_variable

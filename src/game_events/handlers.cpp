@@ -330,7 +330,6 @@ void remove_event_handler(const std::string & id)
 
 
 manager::manager(const config& cfg)
-	: variable_manager()
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
 		add_event_handler(ev);

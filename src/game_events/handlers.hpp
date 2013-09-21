@@ -25,7 +25,6 @@
 #define GAME_EVENTS_HANDLERS_H_INCLUDED
 
 #include "../config.hpp"
-#include "../variable.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -84,9 +83,6 @@ namespace game_events
 		static void stop_buffering();
 		/// Commits the event handlers that were buffered.
 		static void commit_buffer();
-
-	private:
-		variable::manager variable_manager;
 	};
 
 	/// Create an event handler.
