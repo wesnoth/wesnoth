@@ -191,7 +191,7 @@ wmi_container::wmi_container(const wmi_container& container)
  * Performs a deep copy, replacing our current contents.
  * Used by assignment and the copy constructor.
  */
-void wmi_container::copy(const std::map<std::string, wml_menu_item *> & source)
+void wmi_container::copy(const map_t & source)
 {
 	// Safety measure.
 	if ( &source == &wml_menu_items_ )
@@ -200,30 +200,31 @@ void wmi_container::copy(const std::map<std::string, wml_menu_item *> & source)
 	// Free up the old memory.
 	clear_wmi();
 
-	std::map<std::string, wml_menu_item*>::const_iterator itor;
-	for ( itor = source.begin(); itor != source.end(); ++itor )
+	const map_t::const_iterator source_end = source.end();
+	for ( map_t::const_iterator itor = source.begin(); itor != source_end; ++itor )
 		// Deep copy.
 		wml_menu_items_[itor->first] = new wml_menu_item(*(itor->second));
 }
 
 void wmi_container::clear_wmi()
 {
-	for (std::map<std::string, wml_menu_item *>::iterator i = wml_menu_items_.begin(),
-	     i_end = wml_menu_items_.end(); i != i_end; ++i)
-	{
+	const map_t::iterator i_end = wml_menu_items_.end();
+	for ( map_t::iterator i = wml_menu_items_.begin(); i != i_end; ++i ) {
+		// Release the wml_menu_item.
 		delete i->second;
 	}
+
 	wml_menu_items_.clear();
 }
 
 void wmi_container::to_config(config& cfg){
-	for(std::map<std::string, wml_menu_item *>::const_iterator j=wml_menu_items_.begin();
-		j!=wml_menu_items_.end(); ++j) {
+	const map_t::const_iterator wmi_end = wml_menu_items_.end();
+	for ( map_t::const_iterator j = wml_menu_items_.begin(); j != wmi_end; ++j )
 		j->second->to_config(cfg.add_child("menu_item"));
-	}
 }
 
-void wmi_container::set_menu_items(const config& cfg){
+void wmi_container::set_menu_items(const config& cfg)
+{
 	clear_wmi();
 	BOOST_FOREACH(const config &item, cfg.child_range("menu_item"))
 	{

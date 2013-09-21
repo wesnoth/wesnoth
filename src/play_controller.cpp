@@ -1174,7 +1174,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "wml") {
 			items.erase(items.begin() + i);
-			std::map<std::string, wml_menu_item*>& gs_wmi = gamedata_.get_wml_menu_items().get_menu_items();
+			wmi_container::map_t & gs_wmi = gamedata_.get_wml_menu_items().get_menu_items();
 			if(gs_wmi.empty())
 				break;
 			std::vector<std::string> newitems;
@@ -1184,9 +1184,10 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			gamedata_.get_variable("y1") = hex.y + 1;
 			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
-			std::map<std::string, wml_menu_item*>::iterator itor;
+			wmi_container::map_t::iterator itor;
 			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
-				&& newitems.size() < MAX_WML_COMMANDS; ++itor) {
+				&& newitems.size() < MAX_WML_COMMANDS; ++itor)
+			{
 				wml_menu_item * item_ptr = itor->second;
 				if ( item_ptr->can_show(hex) )
 				{

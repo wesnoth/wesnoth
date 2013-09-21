@@ -99,8 +99,12 @@ private:
 	config command_;
 };
 
+/// A container of wml_menu_item.
 class wmi_container{
 public:
+	/// The underlying storage type.
+	typedef std::map<std::string, wml_menu_item*> map_t;
+
 	wmi_container();
 	wmi_container(const wmi_container& container);
 	~wmi_container() { clear_wmi(); }
@@ -109,18 +113,19 @@ public:
 	wmi_container & operator=(const wmi_container & that)
 	{ copy(that.wml_menu_items_); return *this; }
 
-	std::map<std::string, wml_menu_item*>& get_menu_items() { return wml_menu_items_; };
+	map_t & get_menu_items() { return wml_menu_items_; };
 	void clear_wmi();
 	void to_config(config& cfg);
 	void set_menu_items(const config& cfg);
 
 	wml_menu_item*& get_item(const std::string& id) { return wml_menu_items_[id]; };
+
 private:
 	/// Performs a deep copy, replacing our current contents.
-	void copy(const std::map<std::string, wml_menu_item *> & source);
+	void copy(const map_t & source);
 
 private: // data
-	std::map<std::string, wml_menu_item*> wml_menu_items_;
+	map_t wml_menu_items_;
 };
 
 class carryover{
