@@ -421,7 +421,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	num_traits_(0),
 	gender_types_(),
 	variations_(),
-	default_variation_(cfg_["variation"].t_str()),
+	default_variation_(cfg_["variation"]),
+	variation_name_(cfg_["variation_name"].t_str()),
 	race_(&unit_race::null_race),
 	alpha_(ftofxp(1.0)),
 	abilities_(),
@@ -637,13 +638,14 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	}
 	BOOST_FOREACH(const config &var_cfg, cfg_.child_range("variation"))
 	{
-		const std::string var_name = var_cfg["variation_name"];
+		const std::string& var_id = var_cfg["variation_id"].empty() ?
+				var_cfg["variation_name"] : var_cfg["variation_id"];
 
 		unit_type *ut = new unit_type(var_cfg, id_);
-		ut->debug_id_ = debug_id_ + " [" + var_name + "]";
+		ut->debug_id_ = debug_id_ + " [" + var_id + "]";
 		ut->base_id_ = base_id_;  // In case this is not id_.
 		ut->build_help_index(mv_types, races, traits);
-		variations_.insert(std::make_pair(var_name, ut));
+		variations_.insert(std::make_pair(var_id, ut));
 	}
 
 	hide_help_= cfg_["hide_help"].to_bool();
@@ -750,9 +752,9 @@ const unit_type& unit_type::get_gender_unit_type(unit_race::GENDER gender) const
 	return *this;
 }
 
-const unit_type& unit_type::get_variation(const std::string& name) const
+const unit_type& unit_type::get_variation(const std::string& id) const
 {
-	const variations_map::const_iterator i = variations_.find(name);
+	const variations_map::const_iterator i = variations_.find(id);
 	if(i != variations_.end()) {
 		return *i->second;
 	} else {
@@ -1053,7 +1055,7 @@ const config & unit_type::build_unit_cfg() const
 	static char const *unit_type_attrs[] = { "attacks", "die_sound",
 		"experience", "flies", "hide_help", "hitpoints", "id",
 		"ignore_race_traits", "inherit", "movement", "movement_type",
-		"name", "num_traits", "variation_name" };
+		"name", "num_traits", "variation_id", "variation_name" };
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}
@@ -1180,6 +1182,8 @@ namespace { // Helpers for set_config()
 		std::vector<std::string> base_ids;
 		BOOST_FOREACH (config & base, ut_cfg.child_range("base_unit") )
 			base_ids.push_back(base["id"]);
+
+		ut_cfg["base_ids"] = utils::join(base_ids);
 
 		// Clear the base units (otherwise they could interfere with the merge).
 		// This has the side-effect of breaking cycles, hence base_tree is

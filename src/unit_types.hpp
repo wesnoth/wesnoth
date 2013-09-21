@@ -163,7 +163,7 @@ public:
 
 	const unit_type& get_gender_unit_type(std::string gender) const;
 	const unit_type& get_gender_unit_type(unit_race::GENDER gender) const;
-	const unit_type& get_variation(const std::string& name) const;
+	const unit_type& get_variation(const std::string& id) const;
 	/** Info on the type of unit that the unit reanimates as. */
 	const std::string& undead_variation() const { return undead_variation_; }
 
@@ -191,6 +191,7 @@ public:
 	int max_attacks() const { return max_attacks_; }
 	int cost() const { return cost_; }
 	const std::string& default_variation() const { return default_variation_; }
+	const std::string& variation_name() const { return variation_name_; }
 	const std::string& usage() const { return usage_; }
 	const std::string& image() const { return image_; }
 	const std::string& icon() const { return icon_; }
@@ -313,6 +314,7 @@ private:
 	typedef std::map<std::string,unit_type*> variations_map;
 	variations_map variations_;
 	std::string default_variation_;
+	std::string variation_name_;
 
 	const unit_race* race_;	/// Never NULL, but may point to the null race.
 
