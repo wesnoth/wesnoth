@@ -1228,6 +1228,7 @@ def global_sanity_check(filename, lines):
     in_cfg = False
     in_goal = False
     in_set_menu_item = False
+    in_clear_menu_item = False
     in_facet = False
     in_sound_source = False
     in_remove_sound_source = False
@@ -1298,6 +1299,10 @@ def global_sanity_check(filename, lines):
             in_set_menu_item = True
         elif "[/set_menu_item]" in lines[i]:
             in_set_menu_item = False
+        elif "[clear_menu_item]" in lines[i]:
+            in_clear_menu_item = True
+        elif "[/clear_menu_item]" in lines[i]:
+            in_clear_menu_item = False
         elif "[facet]" in lines[i]:
             in_facet = True
         elif "[/facet]" in lines[i]:
@@ -1442,7 +1447,8 @@ def global_sanity_check(filename, lines):
                             # removal of leading whitespace of items in comma-separated lists
                             # is usually supported in the mainline wesnoth lua scripts
                             # not sure about trailing one
-                            if ids[j].lstrip() not in present:
+                            # also, do not complain about ids if they're referred to a menu item being cleared
+                            if ids[j].lstrip() not in present and not in_clear_menu_item:
                                 print '"%s", line %d: unknown \'%s\' referred to by id' \
                                     % (filename, i+1, ids[j])
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
