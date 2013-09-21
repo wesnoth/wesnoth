@@ -1174,7 +1174,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "wml") {
 			items.erase(items.begin() + i);
-			wmi_container::map_t & gs_wmi = gamedata_.get_wml_menu_items().get_menu_items();
+			wmi_container & gs_wmi = gamedata_.get_wml_menu_items();
 			if(gs_wmi.empty())
 				break;
 			std::vector<std::string> newitems;
@@ -1184,16 +1184,16 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			gamedata_.get_variable("y1") = hex.y + 1;
 			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
-			wmi_container::map_t::iterator itor;
-			for (itor = gs_wmi.begin(); itor != gs_wmi.end()
-				&& newitems.size() < MAX_WML_COMMANDS; ++itor)
+			for ( wmi_container::iterator itor = gs_wmi.begin();
+			      itor != gs_wmi.end()  &&  newitems.size() < MAX_WML_COMMANDS;
+			      ++itor)
 			{
-				wml_menu_item * item_ptr = itor->second;
-				if ( item_ptr->can_show(hex) )
+				wml_menu_item & item = *itor;
+				if ( item.can_show(hex) )
 				{
-					wml_commands_.push_back(item_ptr);
+					wml_commands_.push_back(&item);
 					// Prevent accidental hotkey binding by appending a space
-					newitems.push_back(item_ptr->description().str() + ' ');
+					newitems.push_back(item.description().str() + ' ');
 				}
 			}
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());

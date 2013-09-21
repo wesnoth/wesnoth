@@ -217,10 +217,12 @@ void wmi_container::clear_wmi()
 	wml_menu_items_.clear();
 }
 
-void wmi_container::to_config(config& cfg){
-	const map_t::const_iterator wmi_end = wml_menu_items_.end();
-	for ( map_t::const_iterator j = wml_menu_items_.begin(); j != wmi_end; ++j )
-		j->second->to_config(cfg.add_child("menu_item"));
+void wmi_container::to_config(config& cfg)
+{
+	// Loop through our items.
+	for ( const_iterator j = begin(), wmi_end = end(); j != wmi_end; ++j )
+		// Add this item as a child of cfg.
+		j->to_config(cfg.add_child("menu_item"));
 }
 
 void wmi_container::set_menu_items(const config& cfg)
