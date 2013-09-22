@@ -220,7 +220,7 @@ void wmi_container::clear_wmi()
 /** Erases the item pointed to by @a pos. */
 void wmi_container::erase(const iterator & pos)
 {
-	const map_t::iterator & iter = util::iter_get<key>::base(pos);
+	const map_t::iterator & iter = pos.get(key());
 
 	// Release the wml_menu_item.
 	delete iter->second;

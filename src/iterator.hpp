@@ -23,99 +23,8 @@
 
 namespace util {
 
-// Forward declarations.
-template <typename Value, class Container, class Deref, class Key> class iterator_extend;
-template <typename Value, class Container, class Deref, class Key> class const_iterator_extend;
-
-
-/// A work-around for the inability to declare a template parameter as a friend.
-/// (Instead this struct is declared a friend, which effectively makes anyone
-/// who has access to the template parameter a friend of iterator_extend.)
-template<class Key>
-struct iter_get {
-	/// Returns the underlying iterator.
-	template <typename Value, class Container, class Deref>
-	static const typename Container::iterator & base(
-		const iterator_extend<Value,Container,Deref,Key> & iter)
-	{ return iter.base(); }
-
-	/// Returns the underlying iterator.
-	template <typename Value, class Container, class Deref>
-	static const typename Container::const_iterator & base(
-		const const_iterator_extend<Value,Container,Deref,Key> & iter)
-	{ return iter.base(); }
-};
-
-
-/// This is a base class for extenders of iterators; it preserves most of an
-/// underlying iterator, but allows dereference to be overridden.
-/// Since the other operations are passed directly to the underlying iterator,
-/// there is very little overhead.
-///
-/// To complete the iterator, derive a child class and override dereference.
-/// Also suggested are a default constructor and a constructor from Iter.
-/// A conversion from iterator to const_iterator might also be desired.
-///
-/// Value  = Intended value_type.
-/// Iter   = Iterator type being adapted.
-template <typename Value, class Iter>
-class iterator_extend_base {
-public:
-	typedef Value   value_type;
-	typedef Value * pointer;
-	typedef Value & reference;
-
-	typedef typename Iter::difference_type   difference_type;
-	typedef typename Iter::iterator_category iterator_category;
-
-	/// Default constructor
-	iterator_extend_base() : iter_() {}
-	/// Initialized constructor
-	explicit iterator_extend_base(const Iter & iter) : iter_(iter) {}
-	/// Virtual destructor (to support inheritance).
-	virtual ~iterator_extend_base() {}
-
-
-	// Overridable dereference:
-	virtual reference operator*() const = 0;
-
-
-	// Comparison:
-	bool operator==(const iterator_extend_base & that) const { return iter_ == that.iter_; }
-	bool operator!=(const iterator_extend_base & that) const { return iter_ != that.iter_; }
-	// For random-access iterators:
-	bool operator<(const iterator_extend_base & that)  const { return iter_ < that.iter_; }
-	bool operator>(const iterator_extend_base & that)  const { return iter_ > that.iter_; }
-	bool operator<=(const iterator_extend_base & that) const { return iter_ <= that.iter_; }
-	bool operator>=(const iterator_extend_base & that) const { return iter_ >= that.iter_; }
-
-	// Dereference:
-	/// Member-dereference, defined in terms of the overridable operator*.
-	pointer operator->() const { return &*(*this); }
-
-	// Increment/decrement:
-	iterator_extend_base & operator++() { ++iter_; return *this; }
-	iterator_extend_base & operator--() { --iter_; return *this; }
-	iterator_extend_base operator++(int) { return iterator_extend_base(iter_++); }
-	iterator_extend_base operator--(int) { return iterator_extend_base(iter_--); }
-
-	// Arithmetic (for random-access iterators):
-	iterator_extend_base & operator+=(difference_type n) { iter_ += n; return *this; }
-	iterator_extend_base & operator-=(difference_type n) { iter_ -= n; return *this; }
-	iterator_extend_base operator+(difference_type n) const { return iterator_extend_base(iter_ + n); }
-	iterator_extend_base operator-(difference_type n) const { return iterator_extend_base(iter_ - n); }
-	difference_type operator-(const iterator_extend_base & that) const { return iter_ - that.iter_; }
-	reference operator[](difference_type n) const { return *(*this + n); }
-
-protected:
-	// Protected access means only select classes can read the underlying iterator.
-	const Iter & base() const { return iter_; }
-
-private:
-	/// The underlying base iterator.
-	Iter iter_;
-};
-
+// Forward declaration.
+template<typename Value, class Container, class Deref, class Key> class const_iterator_extend;
 
 /// This is an iterator class that extends an existing iterator by overriding
 /// dereference. Access to the underlying iterator is controlled, promoting
@@ -128,40 +37,68 @@ private:
 /// Value     = Intended value_type (result of dereferencing).
 /// Container = The container whose iterator is being extended.
 /// Deref     = A class whose member
-///                 static const T& eval(const Container::const_iterator &)
+///                 static const Value& eval(const Container::const_iterator &)
 ///             can be used for dereferencing. (The const's might seem odd, but
 ///             they allow the same class to be used for const_iterator_extend.)
-///             A const_cast will be used to convert the return value to T&.
+///             A const_cast will be used to convert the return value to Value&.
 /// Key       = A class that unlocks the underlying iterator. (This way the
 ///             underlying iterator is not exposed to everyone.) If Key is
 ///             accessible, then the underlying iterator can be obtained via
-///             	iter_get<Key>::base(const iterator_extend &)
-///             (Ideally, this parameter would instead be a class to be made a
-///             friend, but the original C++ standard explicitly forbids
-///             declaring template parameters as friends, so a proxy is needed.)
+///             get(const Key &).
 template <typename Value, class Container, class Deref, class Key>
-class iterator_extend :
-	public iterator_extend_base<Value, typename Container::iterator>
+class iterator_extend
 {
 public:
 	// Handy shortcut.
 	typedef typename Container::iterator  base_iter_type;
 
+	// Types required of an iterator:
+	typedef Value        value_type;
+	typedef value_type * pointer;
+	typedef value_type & reference;
+	typedef typename base_iter_type::difference_type   difference_type;
+	typedef typename base_iter_type::iterator_category iterator_category;
+
 	/// Default constructor
-	iterator_extend() : iterator_extend_base<Value, base_iter_type>() {}
+	iterator_extend() : iter_() {}
 	/// Initialized constructor
-	explicit iterator_extend(const base_iter_type & iter) :
-		iterator_extend_base<Value, base_iter_type>(iter)
-	{}
+	explicit iterator_extend(const base_iter_type & iter) : iter_(iter) {}
+
+
+	// Comparison:
+	bool operator==(const iterator_extend & that) const { return iter_ == that.iter_; }
+	bool operator!=(const iterator_extend & that) const { return iter_ != that.iter_; }
+	// For random-access iterators:
+	bool operator<(const iterator_extend & that)  const { return iter_ < that.iter_; }
+	bool operator>(const iterator_extend & that)  const { return iter_ > that.iter_; }
+	bool operator<=(const iterator_extend & that) const { return iter_ <= that.iter_; }
+	bool operator>=(const iterator_extend & that) const { return iter_ >= that.iter_; }
 
 	// Dereference:
-	virtual Value & operator*() const
-	{ return const_cast<Value &>(Deref::eval(this->base())); }
+	reference operator*() const { return const_cast<Value &>(Deref::eval(iter_)); }
+	pointer  operator->() const { return &*(*this); }
 
-	// Allow access to the underlying iterator.
-	friend class iter_get<Key>;
-	// Friendship is needed for the definition of conversion to const_iterator.
-	friend class const_iterator_extend<Value, Container, Deref, Key>;
+	// Increment/decrement:
+	iterator_extend & operator++() { ++iter_; return *this; }
+	iterator_extend & operator--() { --iter_; return *this; }
+	iterator_extend operator++(int) { return iterator_extend(iter_++); }
+	iterator_extend operator--(int) { return iterator_extend(iter_--); }
+	// Arithmetic (for random-access iterators):
+	iterator_extend & operator+=(difference_type n) { iter_ += n; return *this; }
+	iterator_extend & operator-=(difference_type n) { iter_ -= n; return *this; }
+	iterator_extend operator+(difference_type n) const { return iterator_extend(iter_ + n); }
+	iterator_extend operator-(difference_type n) const { return iterator_extend(iter_ - n); }
+	difference_type operator-(const iterator_extend & that) const { return iter_ - that.iter_; }
+	difference_type operator-(const const_iterator_extend<Value, Container, Deref, Key> & that) const
+	{ return -(that - const_iterator_extend<Value, Container, Deref, Key>(*this)); }
+	reference operator[](difference_type n) const { return *(*this + n); }
+
+	// Allow access to the underlying iterator to those with the key.
+	const base_iter_type & get(const Key &) const { return iter_; }
+
+private:
+	/// The underlying base iterator.
+	base_iter_type iter_;
 };
 
 
@@ -176,42 +113,68 @@ public:
 /// Value     = Intended value_type, minus "const".
 /// Container = The container whose const_iterator is being extended.
 /// Deref     = A class whose member
-///                 static const T& eval(const Container::const_iterator &)
+///                 static const Value& eval(const Container::const_iterator &)
 ///             can be used for dereferencing. (This same class can be used
 ///             for iterator_extend.)
 /// Key       = A class that unlocks the underlying const_iterator. (This way
 ///             the underlying const_iterator is not exposed to everyone.) If
 ///             Key is accessible, then the underlying const_iterator can be
-///             obtained via
-///             	iter_get<Key>::base(const const_iterator_extend &)
-///             (Ideally, this parameter would instead be a class to be made a
-///             friend, but the original C++ standard explicitly forbids
-///             declaring template parameters as friends, so a proxy is needed.)
+///             obtained via get(const Key &).
 template <typename Value, class Container, class Deref, class Key>
-class const_iterator_extend :
-	public iterator_extend_base<const Value, typename Container::const_iterator>
+class const_iterator_extend
 {
 public:
 	// Handy shortcut.
 	typedef typename Container::const_iterator  base_iter_type;
 
+	// Types required of an iterator:
+	typedef const Value  value_type;
+	typedef value_type * pointer;
+	typedef value_type & reference;
+	typedef typename base_iter_type::difference_type   difference_type;
+	typedef typename base_iter_type::iterator_category iterator_category;
+
 	/// Default constructor
-	const_iterator_extend() : iterator_extend_base<const Value, base_iter_type>() {}
+	const_iterator_extend() : iter_() {}
 	/// Initialized constructor
-	explicit const_iterator_extend(const base_iter_type & iter) :
-		iterator_extend_base<const Value, base_iter_type>(iter)
-	{}
+	explicit const_iterator_extend(const base_iter_type & iter) : iter_(iter) {}
 	/// Conversion from iterator_extend (same parameters).
 	const_iterator_extend(const iterator_extend<Value, Container, Deref, Key> & iter) :
-		iterator_extend_base<const Value, base_iter_type>(iter.base())
+		iter_(iter.get(Key()))
 	{}
 
-	// Dereference:
-	virtual const Value & operator*() const
-	{ return  Deref::eval(this->base()); }
+	// Comparison:
+	bool operator==(const const_iterator_extend & that) const { return iter_ == that.iter_; }
+	bool operator!=(const const_iterator_extend & that) const { return iter_ != that.iter_; }
+	// For random-access iterators:
+	bool operator<(const const_iterator_extend & that)  const { return iter_ < that.iter_; }
+	bool operator>(const const_iterator_extend & that)  const { return iter_ > that.iter_; }
+	bool operator<=(const const_iterator_extend & that) const { return iter_ <= that.iter_; }
+	bool operator>=(const const_iterator_extend & that) const { return iter_ >= that.iter_; }
 
-	// Allow access to the underlying iterator.
-	friend class iter_get<Key>;
+	// Dereference:
+	reference operator*() const { return Deref::eval(iter_); }
+	pointer  operator->() const { return &*(*this); }
+
+	// Increment/decrement:
+	const_iterator_extend & operator++() { ++iter_; return *this; }
+	const_iterator_extend & operator--() { --iter_; return *this; }
+	const_iterator_extend operator++(int) { return const_iterator_extend(iter_++); }
+	const_iterator_extend operator--(int) { return const_iterator_extend(iter_--); }
+	// Arithmetic (for random-access iterators):
+	const_iterator_extend & operator+=(difference_type n) { iter_ += n; return *this; }
+	const_iterator_extend & operator-=(difference_type n) { iter_ -= n; return *this; }
+	const_iterator_extend operator+(difference_type n) const { return const_iterator_extend(iter_ + n); }
+	const_iterator_extend operator-(difference_type n) const { return const_iterator_extend(iter_ - n); }
+	difference_type operator-(const const_iterator_extend & that) const { return iter_ - that.iter_; }
+	reference operator[](difference_type n) const { return *(*this + n); }
+
+	// Allow access to the underlying iterator to those with the key.
+	const base_iter_type & get(const Key &) const { return iter_; }
+
+private:
+	/// The underlying base iterator.
+	base_iter_type iter_;
 };
 
 }// namespace util
@@ -264,7 +227,7 @@ public:
 	{
 		// Free all the memory we allocated.
 		for ( iterator it = begin(); it != end(); ++it )
-			delete *util::iter_get<key>::base(it); // Accessing the underlying iterator.
+			delete *it.get(key()); // Accessing the underlying iterator.
 	}
 };
 
