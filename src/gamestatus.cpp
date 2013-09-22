@@ -243,6 +243,24 @@ wmi_container::size_type wmi_container::erase(const std::string & key)
 	return 1; // Erased one item.
 }
 
+/**
+ * Returns an item with the given id.
+ * If one does not already exist, one will be created.
+ */
+wml_menu_item & wmi_container::get_item(const std::string& id)
+{
+	// Try to insert a dummy value. This combines looking for an existing
+	// entry with insertion.
+	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, NULL)).first;
+
+	// If we ended up with a dummy value, create an entry for it.
+	if ( add_it->second == NULL )
+		add_it->second = new wml_menu_item(id);
+
+	// Return the item.
+	return *add_it->second;
+}
+
 void wmi_container::to_config(config& cfg)
 {
 	// Loop through our items.

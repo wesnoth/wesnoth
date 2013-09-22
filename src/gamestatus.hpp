@@ -145,7 +145,8 @@ public:
 
 	iterator find(const std::string & id)             { return iterator(wml_menu_items_.find(id)); }
 	const_iterator find(const std::string & id) const { return const_iterator(wml_menu_items_.find(id)); }
-	wml_menu_item*& get_item(const std::string& id) { return wml_menu_items_[id]; };
+	/// Returns an item with the given id.
+	wml_menu_item & get_item(const std::string& id);
 
 	// Iteration support:
 	iterator begin()  { return iterator(wml_menu_items_.begin()); }

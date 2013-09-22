@@ -1852,11 +1852,8 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	   [/set_menu_item]
 	   */
 	std::string id = cfg["id"];
-	wml_menu_item*& mref = resources::gamedata->get_wml_menu_items().get_item(id);
-	if(mref == NULL) {
-		mref = new wml_menu_item(id);
-	}
-	mref->update(cfg);
+	wml_menu_item & item = resources::gamedata->get_wml_menu_items().get_item(id);
+	item.update(cfg);
 }
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
