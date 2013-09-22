@@ -264,7 +264,7 @@ private:
 	std::vector<std::string> savenames_;
 
 	void expand_wml_commands(std::vector<std::string>& items);
-	std::vector<wml_menu_item *> wml_commands_;
+	std::vector<const wml_menu_item *> wml_commands_;
 	static const size_t MAX_WML_COMMANDS = 7;
 
 	bool victory_when_enemies_defeated_;
