@@ -120,7 +120,7 @@ bool windows_tray_notification::create_tray_icon()
 #if _WIN32_WINNT >= 0x600
 	nid->hBalloonIcon = icon;
 #endif
-	lstrcpy(nid->szTip, wtip.data());
+	lstrcpy(nid->szTip, wtip.c_str());
 
 	// creating icon notification
 	return Shell_NotifyIcon(NIM_ADD, nid) != FALSE;
@@ -132,8 +132,8 @@ bool windows_tray_notification::set_tray_message(const std::string& title, const
 	message_reset = (nid->uFlags & NIF_INFO) != 0;
 
 	nid->uFlags |= NIF_INFO;
-	lstrcpy(nid->szInfoTitle, string_to_wstring(title).data());
-	lstrcpy(nid->szInfo, string_to_wstring(message).data());
+	lstrcpy(nid->szInfoTitle, string_to_wstring(title).c_str());
+	lstrcpy(nid->szInfo, string_to_wstring(message).c_str());
 
 	// setting notification
 	return Shell_NotifyIcon(NIM_MODIFY, nid) != FALSE;

@@ -66,6 +66,8 @@ Version 1.11.6+dev:
    * MP "Lobby" game item has been updated to display information about
      campaigns correctly.
    * Possible fix for clipboard integration issues with GUI2 widgets on X11.
+   * Fixed potential misbehavior (including invalid memory access) from the
+     tray notifications code on Windows.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
