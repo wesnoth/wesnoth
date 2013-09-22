@@ -935,6 +935,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 			// but for that we need to make sure any pending network operations are canceled
 			// whenever addons_client throws user_exit even before it gets destroyed
 			addons_client client(disp, remote_address);
+			client.connect();
 
 			addons_list addons;
 

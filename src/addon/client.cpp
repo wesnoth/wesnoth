@@ -53,7 +53,10 @@ addons_client::addons_client(display& disp, const std::string& address)
 	host_ = address_components[0];
 	port_ = address_components.size() == 2 ?
 		address_components[1] : str_cast(default_campaignd_port);
+}
 
+void addons_client::connect()
+{
 	LOG_ADDONS << "connecting to server " << host_ << " on port " << port_ << '\n';
 
 	utils::string_map i18n_symbols;

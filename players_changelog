@@ -15,6 +15,9 @@ Version 1.11.6+dev:
      the user.
    * Report errors caused by faulty local .pbl files properly instead of
      presenting them as network errors.
+   * Fixed regression from 1.11.0 resulting in memory leaks and/or
+     crash-to-desktop situations when failing to connect to an add-ons
+     server.
 
  * Engine:
    * CampaignWML support for multiplayer. Game will reload a config during

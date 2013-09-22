@@ -46,6 +46,11 @@ public:
 
 	~addons_client();
 
+	/**
+	 * Try to establish a connection to the add-ons server.
+	 */
+	void connect();
+
 	/** Returns the last error message sent by the server, or an empty string. */
 	const std::string& get_last_server_error() const { return last_error_; }
 
