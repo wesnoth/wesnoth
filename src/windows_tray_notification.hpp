@@ -71,7 +71,7 @@ private:
 	static void destroy_tray_icon();
 	static bool set_tray_message(const std::string& title, const std::string& message);
 	static void adjust_length(std::string& title, std::string& message);
-	static HWND get_window_hanlde();
+	static HWND get_window_handle();
 	static void switch_to_wesnoth_window();
 	static std::wstring string_to_wstring(const std::string& string);
 

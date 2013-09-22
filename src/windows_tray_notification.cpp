@@ -99,7 +99,7 @@ bool windows_tray_notification::create_tray_icon()
 		return false;
 	}
 
-	const HWND window = get_window_hanlde();
+	const HWND window = get_window_handle();
 	if (window == NULL) {
 		return false;
 	}
@@ -152,7 +152,7 @@ void windows_tray_notification::adjust_length(std::string& title, std::string& m
 	}
 }
 
-HWND windows_tray_notification::get_window_hanlde()
+HWND windows_tray_notification::get_window_handle()
 {
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version);
@@ -165,7 +165,7 @@ HWND windows_tray_notification::get_window_hanlde()
 
 void windows_tray_notification::switch_to_wesnoth_window()
 {
-	const HWND window = get_window_hanlde();
+	const HWND window = get_window_handle();
 	if (window == NULL) {
 		return;
 	}
