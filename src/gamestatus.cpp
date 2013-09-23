@@ -28,7 +28,9 @@
 #include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "hotkeys.hpp"
 #include "log.hpp"
+#include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -307,6 +309,41 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
 
 	// Return the item.
 	return *add_it->second;
+}
+
+/**
+ * Initializes the implicit event handlers for inlined [command]s.
+ */
+void wmi_container::init_handlers() const
+{
+	int wmi_count = 0;
+
+	// Loop through each menu item.
+	BOOST_FOREACH( const wml_menu_item & wmi, *this ) {
+		// If this menu item has a [command], add a handler for it.
+		const config & wmi_command = wmi.command();
+		if ( !wmi_command.empty() ) {
+			game_events::add_event_handler(wmi_command, true);
+			if ( wmi.use_hotkey() ) {
+				// Applying default hotkeys here currently does not work because
+				// the hotkeys are reset by play_controler::init_managers() ->
+				// display_manager::display_manager, which is called after this.
+				// The result is that default wml hotkeys will be ignored if wml
+				// hotkeys are set to default in the preferences menu. (They are
+				// still reapplied if set_menu_item is called again, for example
+				// by starting a new campaign.) Since it isn't that important
+				// I'll just leave it for now.
+				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wmi.id(), wmi.description(), wmi.default_hotkey());
+			}
+		}
+		// Count the menu items (for the diagnostic message).
+		++wmi_count;
+	}
+
+	// Diagnostic:
+	if ( wmi_count > 0 ) {
+		LOG_NG << wmi_count << " WML menu items found, loaded." << std::endl;
+	}
 }
 
 void wmi_container::to_config(config& cfg)

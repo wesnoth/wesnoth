@@ -154,6 +154,9 @@ public:
 	void erase(const iterator & pos);
 	/// Erases the item with id @a key.
 	size_type erase(const std::string & key);
+
+	/// Initializes the implicit event handlers for inlined [command]s.
+	void init_handlers() const;
 	void to_config(config& cfg);
 	void set_menu_items(const config& cfg);
 
