@@ -269,7 +269,10 @@ static register_aspect_factory< composite_aspect<bool> >
 	passive_leader_shares_keep__composite_aspect_factory("passive_leader_shares_keep*composite_aspect");
 
 static register_aspect_factory< composite_aspect<ministage> >
-        recruitment__composite_aspect_factory("recruitment*composite_aspect");
+	recruitment__composite_aspect_factory("recruitment*composite_aspect");
+
+static register_aspect_factory< composite_aspect<double> >
+	recruitment_diversity__composite_aspect_factory("recruitment_diversity*composite_aspect");
 
 static register_aspect_factory< composite_aspect<bool> >
 	recruitment_ignore_bad_combat__composite_aspect_factory("recruitment_ignore_bad_combat*composite_aspect");
@@ -277,8 +280,20 @@ static register_aspect_factory< composite_aspect<bool> >
 static register_aspect_factory< composite_aspect<bool> >
 	recruitment_ignore_bad_movement__composite_aspect_factory("recruitment_ignore_bad_movement*composite_aspect");
 
+static register_aspect_factory< composite_aspect<config> >
+	recruitment_instructions__composite_aspect_factory("recruitment_instructions*composite_aspect");
+
+static register_aspect_factory< composite_aspect< std::vector<std::string> > >
+	recruitment_more__composite_aspect_factory("recruitment_more*composite_aspect");
+
 static register_aspect_factory< composite_aspect< std::vector<std::string> > >
 	recruitment_pattern__composite_aspect_factory("recruitment_pattern*composite_aspect");
+
+static register_aspect_factory< composite_aspect<int> >
+	recruitment_randomness__composite_aspect_factory("recruitment_randomness*composite_aspect");
+
+static register_aspect_factory< composite_aspect<config> >
+	recruitment_save_gold__composite_aspect_factory("recruitment_save_gold*composite_aspect");
 
 static register_aspect_factory< composite_aspect<double> >
 	scout_village_targeting__composite_aspect_factory("scout_village_targeting*composite_aspect");
@@ -340,7 +355,10 @@ static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory("passive_leader_shares_keep*standard_aspect");
 
 static register_aspect_factory< standard_aspect<ministage> >
-        recruitment__standard_aspect_factory("recruitment*standard_aspect");
+	recruitment__standard_aspect_factory("recruitment*standard_aspect");
+
+static register_aspect_factory< standard_aspect<double> >
+	recruitment_diversity__standard_aspect_factory("recruitment_diversity*standard_aspect");
 
 static register_aspect_factory< standard_aspect<bool> >
 	recruitment_ignore_bad_combat__standard_aspect_factory("recruitment_ignore_bad_combat*standard_aspect");
@@ -348,8 +366,20 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<bool> >
 	recruitment_ignore_bad_movement__standard_aspect_factory("recruitment_ignore_bad_movement*standard_aspect");
 
+static register_aspect_factory< standard_aspect<config> >
+	recruitment_instructions__standard_aspect_factory("recruitment_instructions*standard_aspect");
+
+static register_aspect_factory< standard_aspect< std::vector<std::string> > >
+	recruitment_more__standard_aspect_factory("recruitment_more*standard_aspect");
+
 static register_aspect_factory< standard_aspect< std::vector<std::string> > >
 	recruitment_pattern__standard_aspect_factory("recruitment_pattern*standard_aspect");
+
+static register_aspect_factory< standard_aspect<int> >
+	recruitment_randomness__standard_aspect_factory("recruitment_randomness*standard_aspect");
+
+static register_aspect_factory< standard_aspect<config> >
+	recruitment_save_gold__standard_aspect_factory("recruitment_save_gold*standard_aspect");
 
 static register_aspect_factory< standard_aspect<double> >
 	scout_village_targeting__standard_aspect_factory("scout_village_targeting*standard_aspect");
@@ -415,7 +445,10 @@ static register_aspect_factory< standard_aspect<bool> >
 	passive_leader_shares_keep__standard_aspect_factory2("passive_leader_shares_keep*");
 
 static register_aspect_factory< standard_aspect<ministage> >
-        recruitment__standard_aspect_factory2("recruitment*");
+	recruitment__standard_aspect_factory2("recruitment*");
+
+static register_aspect_factory< standard_aspect<double> >
+	recruitment_diversity__standard_aspect_factory2("recruitment_diversity*");
 
 static register_aspect_factory< standard_aspect<bool> >
 	recruitment_ignore_bad_combat__standard_aspect_factory2("recruitment_ignore_bad_combat*");
@@ -423,8 +456,20 @@ static register_aspect_factory< standard_aspect<bool> >
 static register_aspect_factory< standard_aspect<bool> >
 	recruitment_ignore_bad_movement__standard_aspect_factory2("recruitment_ignore_bad_movement*");
 
+static register_aspect_factory< standard_aspect<config> >
+	recruitment_instructions__standard_aspect_factory2("recruitment_instructions*");
+
+static register_aspect_factory< standard_aspect< std::vector<std::string> > >
+	recruitment_more__standard_aspect_factory2("recruitment_more*");
+
 static register_aspect_factory< standard_aspect< std::vector<std::string> > >
 	recruitment_pattern__standard_aspect_factory2("recruitment_pattern*");
+
+static register_aspect_factory< standard_aspect<int> >
+	recruitment_randomness__standard_aspect_factory2("recruitment_randomness*");
+
+static register_aspect_factory< standard_aspect<config> >
+	recruitment_save_gold__standard_aspect_factory2("recruitment_save_gold*");
 
 static register_aspect_factory< standard_aspect<double> >
 	scout_village_targeting__standard_aspect_factory2("scout_village_targeting*");

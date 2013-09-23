@@ -76,9 +76,14 @@ void configuration::init(const config &game_config)
 	well_known_aspects.push_back(well_known_aspect("passive_leader"));
 	well_known_aspects.push_back(well_known_aspect("passive_leader_shares_keep"));
 	well_known_aspects.push_back(well_known_aspect("recruitment"));
+	well_known_aspects.push_back(well_known_aspect("recruitment_diversity"));
 	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_combat"));
 	well_known_aspects.push_back(well_known_aspect("recruitment_ignore_bad_movement"));
+	well_known_aspects.push_back(well_known_aspect("recruitment_instructions"));
+	well_known_aspects.push_back(well_known_aspect("recruitment_more"));
 	well_known_aspects.push_back(well_known_aspect("recruitment_pattern"));
+	well_known_aspects.push_back(well_known_aspect("recruitment_randomness"));
+	well_known_aspects.push_back(well_known_aspect("recruitment_save_gold"));
 	well_known_aspects.push_back(well_known_aspect("scout_village_targeting"));
 	well_known_aspects.push_back(well_known_aspect("simple_targeting"));
 	well_known_aspects.push_back(well_known_aspect("support_villages"));

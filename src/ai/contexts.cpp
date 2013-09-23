@@ -183,9 +183,14 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		passive_leader_shares_keep_(),
 		possible_moves_(),
 		recruitment_(),
+		recruitment_diversity_(),
 		recruitment_ignore_bad_combat_(),
 		recruitment_ignore_bad_movement_(),
+		recruitment_instructions_(),
+		recruitment_more_(),
 		recruitment_pattern_(),
+		recruitment_randomness_(),
+		recruitment_save_gold_(),
 		recursion_counter_(context.get_recursion_count()),
 		scout_village_targeting_(),
 		simple_targeting_(),
@@ -213,9 +218,14 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("passive_leader",passive_leader_);
 		add_known_aspect("passive_leader_shares_keep",passive_leader_shares_keep_);
 		add_known_aspect("recruitment",recruitment_);
+		add_known_aspect("recruitment_diversity",recruitment_diversity_);
 		add_known_aspect("recruitment_ignore_bad_combat",recruitment_ignore_bad_combat_);
 		add_known_aspect("recruitment_ignore_bad_movement",recruitment_ignore_bad_movement_);
+		add_known_aspect("recruitment_instructions",recruitment_instructions_);
+		add_known_aspect("recruitment_more",recruitment_more_);
 		add_known_aspect("recruitment_pattern",recruitment_pattern_);
+		add_known_aspect("recruitment_randomness",recruitment_randomness_);
+		add_known_aspect("recruitment_save_gold",recruitment_save_gold_);
 		add_known_aspect("scout_village_targeting",scout_village_targeting_);
 		add_known_aspect("simple_targeting",simple_targeting_);
 		add_known_aspect("support_villages",support_villages_);
@@ -777,6 +787,15 @@ stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const
 }
 
 
+double readonly_context_impl::get_recruitment_diversity() const
+{
+	if (recruitment_diversity_) {
+		return recruitment_diversity_->get();
+	}
+	return 0.;
+}
+
+
 bool readonly_context_impl::get_recruitment_ignore_bad_combat() const
 {
 	if (recruitment_ignore_bad_combat_) {
@@ -795,12 +814,48 @@ bool readonly_context_impl::get_recruitment_ignore_bad_movement() const
 }
 
 
+const config readonly_context_impl::get_recruitment_instructions() const
+{
+	if (recruitment_instructions_) {
+		return recruitment_instructions_->get();
+	}
+	return config();
+}
+
+
+const std::vector<std::string> readonly_context_impl::get_recruitment_more() const
+{
+	if (recruitment_more_) {
+		return recruitment_more_->get();
+	}
+	return std::vector<std::string>();
+}
+
+
 const std::vector<std::string> readonly_context_impl::get_recruitment_pattern() const
 {
 	if (recruitment_pattern_) {
 		return recruitment_pattern_->get();
 	}
 	return std::vector<std::string>();
+}
+
+
+int readonly_context_impl::get_recruitment_randomness() const
+{
+	if (recruitment_randomness_) {
+		return recruitment_randomness_->get();
+	}
+	return 0;
+}
+
+
+const config readonly_context_impl::get_recruitment_save_gold() const
+{
+	if (recruitment_save_gold_) {
+		return recruitment_save_gold_->get();
+	}
+	return config();
 }
 
 

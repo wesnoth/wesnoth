@@ -303,13 +303,28 @@ public:
 	virtual stage_ptr get_recruitment(ai_context &context) const = 0;
 
 
+	virtual double get_recruitment_diversity() const = 0;
+
+
 	virtual bool get_recruitment_ignore_bad_combat() const = 0;
 
 
 	virtual bool get_recruitment_ignore_bad_movement() const = 0;
 
 
+	virtual const config get_recruitment_instructions() const = 0;
+
+
+	virtual const std::vector<std::string> get_recruitment_more() const = 0;
+
+
 	virtual const std::vector<std::string> get_recruitment_pattern() const = 0;
+
+
+	virtual int get_recruitment_randomness() const = 0;
+
+
+	virtual const config get_recruitment_save_gold() const = 0;
 
 
 	virtual double get_scout_village_targeting() const = 0;
@@ -807,6 +822,12 @@ public:
 	}
 
 
+	virtual double get_recruitment_diversity() const
+	{
+		return target_->get_recruitment_diversity();
+	}
+
+
 	virtual bool get_recruitment_ignore_bad_combat() const
 	{
 		return target_->get_recruitment_ignore_bad_combat();
@@ -819,9 +840,33 @@ public:
 	}
 
 
+	virtual const config get_recruitment_instructions() const
+	{
+		return target_->get_recruitment_instructions();
+	}
+
+
+	virtual const std::vector<std::string> get_recruitment_more() const
+	{
+		return target_->get_recruitment_more();
+	}
+
+
 	virtual const std::vector<std::string> get_recruitment_pattern() const
 	{
 		return target_->get_recruitment_pattern();
+	}
+
+
+	virtual int get_recruitment_randomness() const
+	{
+		return target_->get_recruitment_randomness();
+	}
+
+
+	virtual const config get_recruitment_save_gold() const
+	{
+		return target_->get_recruitment_save_gold();
 	}
 
 
@@ -1362,13 +1407,28 @@ public:
 	virtual stage_ptr get_recruitment(ai_context &context) const;
 
 
+	virtual double get_recruitment_diversity() const;
+
+
 	virtual bool get_recruitment_ignore_bad_combat() const;
 
 
 	virtual bool get_recruitment_ignore_bad_movement() const;
 
 
+	virtual const config get_recruitment_instructions() const;
+
+
+	virtual const std::vector<std::string> get_recruitment_more() const;
+
+
 	virtual const std::vector<std::string> get_recruitment_pattern() const;
+
+
+	virtual int get_recruitment_randomness() const;
+
+
+	virtual const config get_recruitment_save_gold() const;
 
 
 	virtual double get_scout_village_targeting() const;
@@ -1493,9 +1553,14 @@ private:
 	aspect_type<bool>::typesafe_ptr passive_leader_shares_keep_;
 	mutable moves_map possible_moves_;
 	aspect_type< ministage >::typesafe_ptr recruitment_;
+	aspect_type< double >::typesafe_ptr recruitment_diversity_;
 	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_combat_;
 	aspect_type< bool >::typesafe_ptr recruitment_ignore_bad_movement_;
+	aspect_type< config >::typesafe_ptr recruitment_instructions_;
+	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_more_;
 	aspect_type< std::vector<std::string> >::typesafe_ptr recruitment_pattern_;
+	aspect_type< int >::typesafe_ptr recruitment_randomness_;
+	aspect_type< config >::typesafe_ptr recruitment_save_gold_;
 	recursion_counter recursion_counter_;
 	aspect_type< double >::typesafe_ptr scout_village_targeting_;
 	aspect_type< bool >::typesafe_ptr simple_targeting_;
