@@ -44,6 +44,8 @@
 #include "../whiteboard/manager.hpp"
 #include "../wml_exception.hpp"
 
+#include <boost/foreach.hpp>
+
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -183,6 +185,119 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	}
 }
 
+battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
+	   const attack_type* att_weapon, bool attacking,
+	   const unit_type* opp_type,
+	   const attack_type* opp_weapon,
+	   unsigned int opp_terrain_defense,
+	   int lawful_bonus) :
+	weapon(att_weapon),
+	attack_num(-2),  // This is and stays invalid. Always use weapon, when using this constructor.
+	is_attacker(attacking),
+	is_poisoned(false),
+	is_slowed(false),
+	slows(false),
+	drains(false),
+	petrifies(false),
+	plagues(false),
+	poisons(false),
+	backstab_pos(false),
+	swarm(false),
+	firststrike(false),
+	experience(0),
+	max_experience(0),
+	level(0),
+	rounds(1),
+	hp(0),
+	max_hp(0),
+	chance_to_hit(0),
+	damage(0),
+	slow_damage(0),
+	drain_percent(0),
+	drain_constant(0),
+	num_blows(0),
+	swarm_min(0),
+	swarm_max(0),
+	plague_type()
+{
+	if (!u_type || !opp_type) {
+		return;
+	}
+
+	// Get the current state of the unit.
+	if (u_type->hitpoints() < 0) {
+		hp = 0;
+	} else {
+		hp = u_type->hitpoints();
+	}
+	max_experience = u_type->experience_needed();
+	level = (u_type->level());
+	max_hp = (u_type->hitpoints());
+
+	// Get the weapon characteristics, if any.
+	if (weapon) {
+		weapon->set_specials_context(map_location::null_location, attacking);
+		if (opp_weapon) {
+			opp_weapon->set_specials_context(map_location::null_location, !attacking);
+		}
+		slows = weapon->get_special_bool("slow");
+		drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
+		petrifies = weapon->get_special_bool("petrifies");
+		poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
+		rounds = weapon->get_specials("berserk").highest("value", 1).first;
+		firststrike = weapon->get_special_bool("firststrike");
+
+		unit_ability_list plague_specials = weapon->get_specials("plague");
+		plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
+			strcmp(opp_type->undead_variation().c_str(), "null");
+
+		if (plagues) {
+			plague_type = (*plague_specials.front().first)["type"].str();
+			if (plague_type.empty()) {
+				plague_type = u_type->base_id();
+			}
+		}
+
+		signed int cth = 100 - opp_terrain_defense + weapon->accuracy() -
+				(opp_weapon ? opp_weapon->parry() : 0);
+		cth = std::min(100, cth);
+		cth = std::max(0, cth);
+		chance_to_hit = cth;
+
+		unit_ability_list cth_specials = weapon->get_specials("chance_to_hit");
+		unit_abilities::effect cth_effects(cth_specials, chance_to_hit, backstab_pos);
+		chance_to_hit = cth_effects.get_composite_value();
+
+		int base_damage = weapon->modified_damage(backstab_pos);
+		int damage_multiplier = 100;
+		damage_multiplier += generic_combat_modifier(lawful_bonus, u_type->alignment(),
+				u_type->musthave_status("fearless"));
+		damage_multiplier *= opp_type->resistance_against(weapon->type(), !attacking);
+
+		damage = round_damage(base_damage, damage_multiplier, 10000);
+		slow_damage = round_damage(base_damage, damage_multiplier, 20000);
+
+		if (drains) {
+			unit_ability_list drain_specials = weapon->get_specials("drains");
+
+			// Compute the drain percent (with 50% as the base for backward compatibility)
+			unit_abilities::effect drain_percent_effects(drain_specials, 50, backstab_pos);
+			drain_percent = drain_percent_effects.get_composite_value();
+		}
+
+		// Add heal_on_hit (the drain constant)
+		unit_ability_list heal_on_hit_specials = weapon->get_specials("heal_on_hit");
+		unit_abilities::effect heal_on_hit_effects(heal_on_hit_specials, 0, backstab_pos);
+		drain_constant += heal_on_hit_effects.get_composite_value();
+
+		drains = drain_constant || drain_percent;
+
+		// Compute the number of blows and handle swarm.
+		weapon->modified_attacks(backstab_pos, swarm_min, swarm_max);
+		swarm = swarm_min != swarm_max;
+		num_blows = calc_blows(hp);
+	}
+}
 
 		/* battle_context */
 
@@ -1303,20 +1418,25 @@ int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless)
 {
 	const tod_manager & tod_m = *resources::tod_manager;
+	int lawful_bonus = tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
+	return generic_combat_modifier(lawful_bonus, alignment, is_fearless);
+}
 
+int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
+                            bool is_fearless) {
 	int bonus;
 	switch(alignment) {
 		case unit_type::LAWFUL:
-			bonus = tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
+			bonus = lawful_bonus;
 			break;
 		case unit_type::NEUTRAL:
 			bonus = 0;
 			break;
 		case unit_type::CHAOTIC:
-			bonus = -tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
+			bonus = -lawful_bonus;
 			break;
 		case unit_type::LIMINAL:
-			bonus = -abs(tod_m.get_illuminated_time_of_day(loc).lawful_bonus);
+			bonus = -abs(lawful_bonus);
 			break;
 		default:
 			bonus = 0;

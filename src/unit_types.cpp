@@ -26,6 +26,8 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "portrait.hpp"
+#include "unit.hpp"
+#include "unit_abilities.hpp"
 #include "unit_animation.hpp"
 
 #include <boost/foreach.hpp>
@@ -1071,7 +1073,51 @@ const config & unit_type::build_unit_cfg() const
 	return unit_cfg_;
 }
 
+int unit_type::resistance_against(const std::string& damage_name, bool attacker) const
+{
+	int resistance = movement_type_.resistance_against(damage_name);
+	unit_ability_list resistance_abilities;
+	if (const config &abilities = cfg_.child("abilities")) {
+		BOOST_FOREACH(const config& cfg, abilities.child_range("resistance")) {
+			if (!cfg["affect_self"].to_bool(true)) {
+				continue;
+			}
+			if (!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
+				continue;
+			}
+			resistance_abilities.push_back(unit_ability(&cfg, map_location::null_location));
+		}
+	}
+	if (!resistance_abilities.empty()) {
+		unit_abilities::effect resist_effect(resistance_abilities, 100 - resistance, false);
+		resistance = 100 - std::min<int>(resist_effect.get_composite_value(),
+				resistance_abilities.highest("max_value").first);
+	}
+	return resistance;
+}
 
+bool unit_type::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
+{
+	if(!(cfg["active_on"]=="" || (attacker && cfg["active_on"]=="offense") || (!attacker && cfg["active_on"]=="defense"))) {
+		return false;
+	}
+	const std::string& apply_to = cfg["apply_to"];
+	if(!apply_to.empty()) {
+		if(damage_name != apply_to) {
+			if ( apply_to.find(',') != std::string::npos  &&
+			     apply_to.find(damage_name) != std::string::npos ) {
+				const std::vector<std::string>& vals = utils::split(apply_to);
+				if(std::find(vals.begin(),vals.end(),damage_name) == vals.end()) {
+					return false;
+				}
+			} else {
+				return false;
+			}
+		}
+	}
+	if (!unit_abilities::filter_base_matches(cfg, res)) return false;
+	return true;
+}
 /* ** unit_type_data ** */
 
 

@@ -266,9 +266,17 @@ public:
 	/// Returns a trimmed config suitable for use with units.
 	const config & get_cfg_for_units() const
 	{ return built_unit_cfg_ ? unit_cfg_ : build_unit_cfg(); }
+
+	/// Gets resistance while considering custom WML abilities.
+	/// Attention: Filters in resistance-abilities will be ignored.
+	int resistance_against(const std::string& damage_name, bool attacker) const;
+
 private:
 	/// Generates (and returns) a trimmed config suitable for use with units.
 	const config & build_unit_cfg() const;
+
+	/// Identical to unit::resistance_filter_matches.
+	bool resistance_filter_matches(const config& cfg,bool attacker,const std::string& damage_name, int res) const;
 
 private:
 	void operator=(const unit_type& o);

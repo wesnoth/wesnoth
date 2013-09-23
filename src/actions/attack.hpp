@@ -84,6 +84,14 @@ struct battle_context_unit_stats
 		   const unit &opp, const map_location& opp_loc,
 		   const attack_type *opp_weapon,
 		   const unit_map& units);
+
+	/** Used by AI for combat analysis */
+	battle_context_unit_stats(const unit_type* u_type,
+		   const attack_type* att_weapon, bool attacking,
+		   const unit_type* opp_type, const attack_type* opp_weapon,
+		   unsigned int opp_terrain_defense,
+		   int lawful_bonus = 0);
+
 	~battle_context_unit_stats()
 	{}
 
@@ -157,11 +165,11 @@ public:
 
 	/** Given this harm_weight, is this attack better than that? */
 	bool better_attack(class battle_context &that, double harm_weight);
+	static bool better_combat(const combatant &us_a, const combatant &them_a,
+						   const combatant &us_b, const combatant &them_b,
+						   double harm_weight);
 
 private:
-	bool better_combat(const combatant &us_a, const combatant &them_a,
-					   const combatant &us_b, const combatant &them_b,
-					   double harm_weight);
 
 	int choose_attacker_weapon(const unit &attacker, const unit &defender,
 	                           const unit_map& units,
@@ -223,6 +231,12 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
 int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless);
 
+/**
+ * Returns the amount that a unit's damage should be multiplied by
+ * due to a given lawful_bonus.
+ */
+int generic_combat_modifier(int lawful_bonus, unit_type::ALIGNMENT alignment,
+                            bool is_fearless);
 /**
  * Function to check if an attack will satisfy the requirements for backstab.
  * Input:
