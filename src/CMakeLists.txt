@@ -633,6 +633,7 @@ set(wesnoth-main_SRC
 	ai/lua/lua_object.cpp
 	ai/lua/unit_advancements_aspect.cpp
 	ai/manager.cpp
+	ai/recruitment/recruitment.cpp
 	ai/registry.cpp
 	ai/testing.cpp
 	ai/testing/aspect_attacks.cpp
