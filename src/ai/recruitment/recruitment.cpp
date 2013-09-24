@@ -198,7 +198,7 @@ double recruitment::evaluate() {
 }
 
 void recruitment::execute() {
-	LOG_AI_RECRUITMENT << "\n\n\n------------FLIX RECRUITMENT BEGIN ------------\n\n";
+	LOG_AI_RECRUITMENT << "\n\n\n------------AI RECRUITMENT BEGIN---------------\n\n";
 	LOG_AI_RECRUITMENT << "TURN: " << resources::tod_manager->turn() <<
 			" SIDE: " << current_team().side() << "\n";
 
@@ -338,14 +338,16 @@ void recruitment::execute() {
 	config* job = NULL;
 	do {  // Recruitment loop
 		recruit_situation_change_observer_.reset_gamestate_changed();
+
+		// Check if we may want to save gold by not recruiting.
 		update_state();
-
-		// Retrieve from aspect.
-		bool save_gold_active = get_recruitment_save_gold()["active"].to_bool(true);
-
+		int save_gold_turn = get_recruitment_save_gold()["active"].to_int(2);  // From aspect.
+		int current_turn = resources::tod_manager->turn();
+		bool save_gold_active = save_gold_turn > 0 && save_gold_turn <= current_turn;
 		if (state_ == SAVE_GOLD && save_gold_active) {
 			break;
 		}
+
 		job = get_most_important_job();
 		if (!job) {
 			LOG_AI_RECRUITMENT << "All recruitment jobs (recruitment_instructions) done.\n";
@@ -391,7 +393,7 @@ void recruitment::execute() {
 			}
 
 			// Update the current job.
-			if (!job->operator[]("total").to_bool()) {
+			if (!job->operator[]("total").to_bool(false)) {
 				job->operator[]("number") = job->operator[]("number").to_int(99999) - 1;
 			}
 
@@ -1467,8 +1469,8 @@ double recruitment::get_estimated_village_gain() const {
  */
 double recruitment::get_unit_ratio() const {
 	const unit_map& units = *resources::units;
-		double own_total_value;
-		double enemy_total_value;
+		double own_total_value = 0.;
+		double enemy_total_value = 0.;
 		BOOST_FOREACH(const unit& unit, units) {
 			if (unit.incapacitated() || unit.total_movement() <= 0) {
 				continue;
@@ -1480,6 +1482,9 @@ double recruitment::get_unit_ratio() const {
 				own_total_value += value;
 			}
 		}
+	if (enemy_total_value == 0) {
+		return 999.; //  Should never happen
+	}
 	return own_total_value / enemy_total_value;
 }
 
