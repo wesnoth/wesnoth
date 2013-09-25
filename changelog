@@ -20,6 +20,10 @@ Version 1.11.6+dev:
      * Messenger MAI now works with units (both messenger and escort) without
        weapons and when path to next waypoint is entirely blocked
      * Fixed bug that prevented removal of sticky MAIs
+   * Recruitment CA:
+     * New Recruitment CA located in src/ai/recruitment is now default CA
+     * Created new AI cfg "Strong AI (RCA)" with stronger recruitment
+     * Created new AI cfg "Old Recruitment CA" in ai/dev/ to use the old CA
  * Campaigns:
    * Legend of Wesmere:
      * Removed now redundant MP code.
