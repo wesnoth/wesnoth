@@ -727,7 +727,7 @@ void recruitment::show_important_hexes() const {
 	resources::screen->labels().clear_all();
 	BOOST_FOREACH(const map_location& loc, important_hexes_) {
 		// Little hack: use map_location north from loc and make 2 linebreaks to center the dot
-		resources::screen->labels().set_label(loc.get_direction(map_location::NORTH), "\n\n\u2B24");
+		resources::screen->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
 	}
 }
 
@@ -891,11 +891,11 @@ double recruitment::compare_unit_types(const std::string& a, const std::string& 
 	// There are rare cases where a unit deals 0 damage (eg. Elvish Lady).
 	// Then we just set the value to something reasonable.
 	if (damage_to_a <= 0 && damage_to_b <= 0) {
-		retval = 1.;
+		retval = 0.;
 	} else if (damage_to_a <= 0) {
 		retval = 2.;
 	} else if (damage_to_b <= 0) {
-		retval = 0.5;
+		retval = -2.;
 	} else {
 		// Normal case
 		double value_of_a = damage_to_b / (b_max_hp * a_cost);
@@ -971,18 +971,11 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 		BOOST_FOREACH(const unit_hp_vector::value_type& entry, enemy_units) {
 			const std::string& enemy_unit = entry.first;
 			int enemy_unit_hp = entry.second;
-
-			std::string best_response;
-			double best_response_score = -99999.;
 			BOOST_FOREACH(const std::string& recruit, leader.recruits) {
 				double score = compare_unit_types(recruit, enemy_unit);
 				score *= enemy_unit_hp;
 				score = pow(score, COMBAT_SCORE_POWER);
 				temp_scores[recruit] += score;
-				if (score > best_response_score) {
-					best_response_score = score;
-					best_response = recruit;
-				}
 			}
 		}
 
