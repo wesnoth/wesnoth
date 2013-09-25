@@ -31,6 +31,8 @@ Version 1.11.6+dev:
      * Added new ScenarioWML attributes: "new_game_title",
        "force_use_map_settings".
      * Adjusted "controller" and side recruits for MP.
+     * Now uses default recruitment instead of experimental FAI-recruitment
+       in 02_Hostile_Mountains.
  * Engine:
    * CampaignWML support for MP including difficulties, extra defines etc.
    * Use the same codepath to initialize every MP campaign's scenario, thus
