@@ -26,10 +26,18 @@ Syntax errors in .pbl files are now reported properly in the user interface inst
 Finally, some color key disparities between the Add-ons Manager view and the Description box (which were unintentionally using different shades of orange and green) have been fixed.
 [/section]
 
-[section="Another Change"]
+[section="Better support for multiplayer campaigns"]
+A support for CampaignWML has been added for multiplayer, thus allowing to use the same campaign in both multiplayer and singleplayer. As a result of this, difficulty levels and other features of singleplayer campaigns are supported in multiplayer as well. User interface has been improved to act better upon these changes and now it supports different types of level selection and difficulties dialog for campaigns.
+
+It is now possible (if campaign author intends) to go to the lobby in-between campaign's scenarios and easily modify sides using a user interface.
+
+In addition, there have been numerous improvements for underlying set up of multiplayer scenario, which should enhance the general stability and give way for further improvements of multiplayer campaigns.
+
+Finally, Legend of Wesmere campaign has been made available to play in multiplayer as a result of these changes.
 [/section]
 
-[section="Another Change"]
+[section="Multiplayer server incompatibility"]
+Due to changes to server protocol, multiplayer campaigns might not work correctly for older client versions when connecting to a server in this release.
 [/section]
 
 ==========
