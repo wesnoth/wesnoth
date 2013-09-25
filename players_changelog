@@ -19,6 +19,12 @@ Version 1.11.6+dev:
      crash-to-desktop situations when failing to connect to an add-ons
      server.
 
+ * AI:
+   * The AI uses now a new recruitment engine. Some scenarios may be
+     not balanced yet.
+   * It is possible to choose a stronger AI in multiplayer games
+     ('Strong AI (RCA)'). For now it affects the recruitment CA only.
+
  * Engine:
    * CampaignWML support for multiplayer. Game will reload a config during
      the creation of multiplayer game and possibly, after a player joins a game.
