@@ -830,21 +830,6 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 	}
 
-	if (bc_vector.empty())
-	{
-		dialogs::units_list_preview_pane attacker_preview(&*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(&*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
-		std::vector<gui::preview_pane*> preview_panes;
-		preview_panes.push_back(&attacker_preview);
-		preview_panes.push_back(&defender_preview);
-
-		gui::show_dialog(gui(), NULL, _("Attack Enemy"),
-			_("No usable weapon"), gui::CANCEL_ONLY, NULL,
-			&preview_panes, "", NULL, -1, NULL, -1, -1, NULL, NULL);
-		return -1;
-	}
-
-
 	std::vector<std::string> items;
 	const config tmp_config;
 	const attack_type no_weapon(tmp_config);
@@ -857,6 +842,11 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 		attw.set_specials_context(attacker_loc, defender_loc, true,  def.weapon);
 		defw.set_specials_context(defender_loc, attacker_loc, false, att.weapon);
+
+		// Don't show iff the weapon has at least one active "disable" special.
+		// TODO also skip disabled weapons in the gui2 dialog.
+		if (attw.get_special_bool("disable"))
+			continue;
 
 		// if missing, add dummy special, to be sure to have
 		// big enough minimum width (weapon's name can be very short)
@@ -904,6 +894,18 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			 << COLUMN_SEPARATOR << IMAGE_PREFIX << defw.icon();
 
 		items.push_back(atts.str());
+	}
+	if (items.empty()) {
+		dialogs::units_list_preview_pane attacker_preview(&*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(&*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&attacker_preview);
+		preview_panes.push_back(&defender_preview);
+
+		gui::show_dialog(gui(), NULL, _("Attack Enemy"),
+				_("No usable weapon"), gui::CANCEL_ONLY, NULL,
+				&preview_panes, "", NULL, -1, NULL, -1, -1, NULL, NULL);
+		return -1;
 	}
 
 	attack_prediction_displayer ap_displayer(bc_vector, attacker_loc, defender_loc);
