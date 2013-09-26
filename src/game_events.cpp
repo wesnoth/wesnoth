@@ -3487,9 +3487,9 @@ namespace game_events {
 				event_handlers.add_event_handler(game_events::event_handler(itor.second->command, true));
 				if(itor.second->use_hotkey) {
 					// applying default hotkeys here curenty doesnt work because the hotkeys are reset 
-					// by play_controler::init_managers() -> display_manager::display_manager, wich is called after this.
-					// the result it, that default wml hotkeys will be ignored if wml hotkeys are settet to default in the preferences menu.
-					// (they are still reaplied if set_menu_item is called again, for example by starting a new campaign.)
+					// by play_controler::init_managers() -> display_manager::display_manager, which is called after this.
+					// the result is that default wml hotkeys will be ignored if wml hotkeys are set to default in the preferences menu.
+					// (they are still reapplied if set_menu_item is called again, for example by starting a new campaign.)
 					// since it isn't that important i'll just leave it for now.
 					hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + itor.first, itor.second->description, itor.second->default_hotkey);
 				}
