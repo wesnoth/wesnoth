@@ -74,6 +74,8 @@ Version 1.11.6+dev:
    * Possible fix for clipboard integration issues with GUI2 widgets on X11.
    * Fixed potential misbehavior (including invalid memory access) from the
      tray notifications code on Windows.
+   * New Game Paths dialog displaying filesystem locations used by the game
+     to read or write data, accessed from Preferences -> General.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
