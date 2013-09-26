@@ -33,11 +33,12 @@ class tmessage : public tdialog
 	friend struct tmessage_implementation;
 public:
 	tmessage(const std::string& title, const std::string& message,
-			const bool auto_close)
+			const bool auto_close, const bool message_use_markup)
 		: title_(title)
 		, image_()
 		, message_(message)
 		, auto_close_(auto_close)
+		, message_use_markup_(message_use_markup)
 		, buttons_(count)
 	{}
 
@@ -111,6 +112,9 @@ private:
 	 */
 	bool auto_close_;
 
+	/** Whether to enable formatting markup for the dialog message. */
+	bool message_use_markup_;
+
 	struct tbutton_status
 	{
 		tbutton_status();
@@ -144,7 +148,7 @@ private:
  */
 void show_message(CVideo& video, const std::string& title,
 	const std::string& message, const std::string& button_caption = "",
-	const bool auto_close = true);
+	const bool auto_close = true, const bool message_use_markup = false);
 
 /**
  * Shows a message to the user.

@@ -86,6 +86,7 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 	tcontrol& label = find_widget<tcontrol>(&window, "label", false);
 	label.set_label(message_);
+	label.set_use_markup(message_use_markup_);
 
 	// The label might not always be a scroll_label but the capturing
 	// shouldn't hurt.
@@ -139,20 +140,19 @@ tmessage::tbutton_status::tbutton_status()
 
 void show_message(CVideo& video, const std::string& title,
 	const std::string& message, const std::string& button_caption,
-	const bool auto_close)
+	const bool auto_close, const bool message_use_markup)
 {
-	tmessage dlg(title, message, auto_close);
+	tmessage dlg(title, message, auto_close, message_use_markup);
 	dlg.set_button_caption(tmessage::ok, button_caption);
 	dlg.show(video);
 }
 
 int show_message(CVideo& video, const std::string& title,
 	const std::string& message, const tmessage::tbutton_style button_style,
-	bool /*message_use_markup*/,
+	bool message_use_markup,
 	bool /*message_title_mode*/)
 {
-	/** @todo implement the markup mode. */
-	tmessage dlg(title, message, button_style == tmessage::auto_close);
+	tmessage dlg(title, message, button_style == tmessage::auto_close, message_use_markup);
 
 	switch(button_style) {
 		case tmessage::auto_close :

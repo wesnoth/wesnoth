@@ -424,7 +424,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 	video().make_test_fake(10, 10);
 
 	try {
-		gui2::tmessage dlg("title", "message", true);
+		gui2::tmessage dlg("title", "message", true, false);
 		dlg.show(video(), 1);
 	} catch(twml_exception& e) {
 		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
@@ -596,7 +596,7 @@ struct twrapper<gui2::tmessage>
 {
 	static gui2::tmessage* create()
 	{
-		return new gui2::tmessage("Title", "Message", false);
+		return new gui2::tmessage("Title", "Message", false, false);
 	}
 };
 
