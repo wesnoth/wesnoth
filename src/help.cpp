@@ -529,6 +529,7 @@ static std::vector<std::string> make_unit_links_list(
 
 static void generate_races_sections(const config *help_cfg, section &sec, int level);
 static std::vector<topic> generate_unit_topics(const bool, const std::string& race);
+static void generate_unit_sections(const config *help_cfg, section &sec, int level, const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
 /// Return the type of description that should be shown for a unit of
 /// the given kind. This method is intended to filter out information
@@ -1042,6 +1043,11 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 {
 	if (generator == "races") {
 		generate_races_sections(help_cfg, sec, level);
+	} else {
+		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
+		if (parts[0] == "units" && parts.size()>1) {
+			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
+		}
 	}
 }
 
@@ -1802,6 +1808,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 		}
 		section_cfg["title"] = title;
 
+		section_cfg["sections_generator"] = "units:" + *it;
 		section_cfg["generator"] = "units:" + *it;
 
 		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
@@ -1809,6 +1816,36 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 	}
 }
 
+void generate_unit_sections(const config* /*help_cfg*/, section& sec, int level, const bool /*sort_generated*/, const std::string& race)
+{
+	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types()) {
+		const unit_type &type = i.second;
+
+		if (type.race_id() != race)
+			continue;
+
+		section base_unit;
+		BOOST_FOREACH(const std::string &variation_id, type.variations()) {
+			// TODO: Do we apply encountered stuff to variations?
+			const unit_type &var_type = type.get_variation(variation_id);
+			const std::string topic_name = var_type.type_name() + "\n" + var_type.variation_name();
+			const std::string var_ref = hidden_symbol(var_type.hide_help()) + variation_prefix + var_type.id() + "_" + variation_id;
+
+			topic var_topic(topic_name, var_ref, "");
+			var_topic.text = new unit_topic_generator(var_type, variation_id);
+			base_unit.topics.push_back(var_topic);
+		}
+
+		const std::string type_name = type.type_name();
+		const std::string ref_id = hidden_symbol(type.hide_help()) + unit_prefix +  type.id();
+
+		base_unit.id = ref_id;
+		base_unit.title = type_name;
+		base_unit.level = level +1;
+
+		sec.add_section(base_unit);
+	}
+}
 
 std::vector<topic> generate_unit_topics(const bool sort_generated, const std::string& race)
 {
