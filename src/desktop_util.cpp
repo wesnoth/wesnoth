@@ -85,7 +85,7 @@ bool open_in_file_manager(const std::string& path)
 	wide_string wpath = utils::string_to_wstring(path);
 	wpath.push_back(wchar_t(0)); // Make wpath NULL-terminated
 
-	const int res = reinterpret_cast<int>(ShellExecute(NULL, L"open", wpath.data(), NULL, NULL, SW_SHOW));
+	const int res = reinterpret_cast<int>(ShellExecute(NULL, L"open", &wpath.front(), NULL, NULL, SW_SHOW));
 	if(res <= 32) {
 		ERR_DE << "open_in_file_manager(): ShellExecute() failed (" << res << ")\n";
 		return false;
