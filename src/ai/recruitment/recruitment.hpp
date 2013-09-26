@@ -175,7 +175,7 @@ private:
 	void update_state();
 
 // Other
-	void do_diversity_and_randomness_balancing(std::vector<data>* leader_data) const;
+	void do_randomness(std::vector<data>* leader_data) const;
 	void do_similarity_penalty(std::vector<data>* leader_data) const;
 	int get_cheapest_unit_cost_for_leader(const unit_map::const_iterator& leader);
 	void handle_recruitment_more(std::vector<data>* leader_data) const;

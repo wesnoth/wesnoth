@@ -96,13 +96,6 @@ const static int MAP_VILLAGE_SURROUNDING = 1;
 // stronger favored compared to just *good* units.
 const static double COMBAT_SCORE_POWER = 1.;
 
-// Determines a kind of *lower threshold* for combat scores.
-// A smaller value means that combat analysis will give more 0 scores.
-// 0 means that only the best unit gets a 100 score and all other a 0 score.
-// 1 means that all units which are worse than average will get a 0 score.
-// Formula: zero_threshold = max_score - (COMBAT_SCORE_THRESHOLD * (max_score - average_score));
-const static double COMBAT_SCORE_THRESHOLD = 1.5;
-
 // A cache is used to store the simulation results.
 // This value determines how much the average defenses of the important hexes can differ
 // until the simulation will run again.
@@ -320,7 +313,7 @@ void recruitment::execute() {
 	}
 
 	do_similarity_penalty(&leader_data);
-	do_diversity_and_randomness_balancing(&leader_data);
+	do_randomness(&leader_data);
 	handle_recruitment_more(&leader_data);
 
 	LOG_AI_RECRUITMENT << "Scores after extra treatments:\n";
@@ -997,9 +990,12 @@ void recruitment::do_combat_analysis(std::vector<data>* leader_data) {
 		// What we do now is a linear transformation.
 		// We want to map the scores in temp_scores to something between 0 and 100.
 		// The max score shall always be 100.
-		// The min score depends on parameters.
+		// The min score depends on the aspect "recruitment_diversity".
 		double new_100 = max;
-		double score_threshold = (COMBAT_SCORE_THRESHOLD > 0) ? COMBAT_SCORE_THRESHOLD : 0.000001;
+		double score_threshold = get_recruitment_diversity();
+		if (score_threshold <= 0) {
+			score_threshold = 0.0001;
+		}
 		double new_0 = max - (score_threshold * (max - average));
 		if (new_100 == new_0) {
 			// This can happen if max == average. (E.g. only one possible recruit)
@@ -1521,17 +1517,16 @@ void recruitment::update_state() {
 }
 
 /**
- * Will add a offset (DIVERSITY_WEIGHT * 50) to all scores so
- * overall recruitment will be more diverse.
+ * Will add a random value between 0 and "recruitment_randomness"
+ * to all recruits
  */
-void recruitment::do_diversity_and_randomness_balancing(std::vector<data>* leader_data) const {
+void recruitment::do_randomness(std::vector<data>* leader_data) const {
 	if (!leader_data) {
 		return;
 	}
 	BOOST_FOREACH(data& data, *leader_data) {
 		BOOST_FOREACH(score_map::value_type& entry, data.scores) {
 			double& score = entry.second;
-			score += get_recruitment_diversity() * 25;
 			score += (static_cast<double>(rand()) / RAND_MAX) * get_recruitment_randomness();
 		}
 	}
