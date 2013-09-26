@@ -41,6 +41,7 @@ Version 1.11.6+dev:
    * Reload game config for non-host players in order to match the host's
      config, if possible. Reloads will only happen for MP campaigns using
      CampaignWML syntax.
+   * Imagepath function "~RS": Support for rotating by any degree.
  * Graphics
    * Full animations for the Dwarven Thunderer line.
  * Language and i18n:
@@ -57,12 +58,21 @@ Version 1.11.6+dev:
      initialization.
    * Fixed reserved sides being counted as available in server.
  * WML engine:
+   * New [disable] weapon special.
+   * New variation_id attribute with the function of former variation_name. 
+   * variation_name is now the translatable name of the unit variant.
+   * The "variation=" attribute works now in [unit_type] and serves 
+     as the default variant. 
    * [store_side] now stores the scroll_to_leader attribute from sides.
    * Added new CampaignWML attributes: "type", "min_players" and "max_players".
    * Added new ScenariowML attributes: "new_game_title",
      "remove_from_carryover_on_leaders_loss" and "force_use_map_settings".
    * Allow numerical values for SideWML "controller" attribute.
  * User interface:
+   * Help Browser:
+     * Units with variants are shown as sections with their childs as topics.
+     * Links to the siblings in unit variants.
+     * Links to the base unit of none variants. 
    * MP "Create" screen has been revamped by moving scenario configuration
      widgets to a new MP "Configure" screen, introducing a description box,
      adding a combo selection for different types of game, and adjusting it to
