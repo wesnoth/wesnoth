@@ -65,7 +65,7 @@ namespace {
 
 // When a enemy is in this radius around a leader, this leader is tagged as 'in danger'.
 // If gold is available, this leader will recruit as much units as possible.
-const static int LEADER_IN_DANGER_RADIUS = 3;
+const static int LEADER_IN_DANGER_RADIUS = 5;
 
 // This is used for a income estimation. We'll calculate the estimated income of this much
 // future turns and decide if we'd gain gold if we start to recruit no units anymore.
@@ -726,7 +726,7 @@ void recruitment::show_important_hexes() const {
 	}
 	resources::screen->labels().clear_all();
 	BOOST_FOREACH(const map_location& loc, important_hexes_) {
-		// Little hack: use map_location north from loc and make 2 linebreaks to center the dot
+		// Little hack: use map_location north from loc and make 2 linebreaks to center the "X".
 		resources::screen->labels().set_label(loc.get_direction(map_location::NORTH), "\n\nX");
 	}
 }
@@ -1462,21 +1462,25 @@ double recruitment::get_estimated_village_gain() const {
  */
 double recruitment::get_unit_ratio() const {
 	const unit_map& units = *resources::units;
-		double own_total_value = 0.;
-		double enemy_total_value = 0.;
-		BOOST_FOREACH(const unit& unit, units) {
-			if (unit.incapacitated() || unit.total_movement() <= 0) {
-				continue;
-			}
-			double value = unit.cost() * unit.hitpoints() / unit.max_hitpoints();
-			if (current_team().is_enemy(unit.side())) {
-				enemy_total_value += value;
-			} else {
-				own_total_value += value;
-			}
+	double own_total_value = 0.;
+	double enemy_total_value = 0.;
+	BOOST_FOREACH(const unit& unit, units) {
+		if (unit.incapacitated() || unit.total_movement() <= 0 || unit.can_recruit()) {
+			continue;
 		}
-	if (enemy_total_value == 0) {
-		return 999.; //  Should never happen
+		double value = unit.cost() * unit.hitpoints() / unit.max_hitpoints();
+		if (current_team().is_enemy(unit.side())) {
+			enemy_total_value += value;
+		} else {
+			own_total_value += value;
+		}
+	}
+	// If only the leader is left, the values could be 0.
+	// Catch those cases and return something reasonable.
+	if (own_total_value == 0. && enemy_total_value == 0.) {
+		return 0.;
+	} else if (enemy_total_value == 0.) {
+		return 2.;
 	}
 	return own_total_value / enemy_total_value;
 }
