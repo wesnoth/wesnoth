@@ -146,6 +146,15 @@
 #
 # will declare an ability macro and a special-notes macro to be tied
 # together for reference-checking purposes.
+#
+# In 1.11.5 and 1.11.6 respectively, the special ellipses for leaders and units
+# without a ZoC are automatically handled by the C++ engine. wmllint warns if such
+# ellipses are found in your WML and asks to remove them; at the same time it
+# notifies of custom ellipses that may need to be updated (updating means that
+# -nozoc, -leader and -leader-nozoc variations of your ellipse need to be added).
+# You can disable this sanity check for the current line with the comment
+# "# wmllint: no ellipsecheck".
+#
 
 import sys, os, re, getopt, string, copy, difflib, time, gzip
 from wesnoth.wmltools import *
@@ -549,9 +558,6 @@ linechanges = (
         # Changed before 1.11.5 to incorporate 1.9.0 portraits
         ("portraits/orcs/warlord2.png","portraits/orcs/transparent/grunt-5.png"),
         ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-6.png"),
-        # Changed before 1.11.6 to handle automatically assigned nozoc and leader ellipses
-        ("ellipse=misc/ellipse-nozoc",""),
-        ("ellipse=misc/ellipse-leader",""),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
@@ -1191,6 +1197,54 @@ def global_sanity_check(filename, lines):
                     pass	# Ignore ill-formed integer literals
         except TypeError:
             pass
+    # Sanity check ellipses
+    # Starting from 1.11.5, units with canrecruit=yes gain automatically a leader ellipse
+    # Starting from 1.11.6, units without a ZoC gain automatically a nozoc ellipse
+    # Check if ellipse= was used and warn if so
+    # Do not warn if misc/ellipse-hero was used, since it isn't automatically assigned by C++
+    # and it's assigned/removed with IS_HERO/MAKE_HERO/UNMAKE_HERO
+    # magic comment wmllint: no ellipsecheck deactivates this check for the current line
+    in_effect = False
+    in_unit = False
+    in_side = False
+    in_unit_type = False
+    for i in xrange(len(lines)):
+        if "[effect]" in lines[i]:
+            in_effect = True
+        elif "[/effect]" in lines[i]:
+            in_effect = False
+        elif "[unit]" in lines[i]:
+            in_unit = True
+        elif "[/unit]" in lines[i]:
+            in_unit = False
+        elif "[side]" in lines[i]:
+            in_side = True
+        elif "[/side]" in lines[i]:
+            in_side = False
+        elif "[unit_type]" in lines[i]:
+            in_unit_type = True
+        elif "[/unit_type]" in lines[i]:
+            in_unit_type = False
+        # ellipsecheck magic comment allows to deactivate the ellipse sanity check
+        if "wmllint: no ellipsecheck" not in lines[i]:
+            if in_effect:
+                try:
+                    (key, prefix, value, comment) = parse_attribute(lines[i])
+                    if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
+                        print '"%s", line %d: [effect] apply_to=ellipse needs to be removed' % (filename, i+1)
+                    elif key == "ellipse" and value not in ("misc/ellipse","misc/ellipse-hero"):
+                        print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
+                except TypeError: # this is needed to handle tags, that parse_attribute cannot split
+                    pass
+            elif in_unit or in_side or in_unit_type:
+                try:
+                    (key, prefix, value, comment) = parse_attribute(lines[i])
+                    if key == "ellipse" and value in ("misc/ellipse-nozoc","misc/ellipse-leader"):
+                        print '"%s", line %d: %s=%s needs to be removed' % (filename, i+1, key, value)
+                    elif key == "ellipse" and value not in ("misc/ellipse","misc/ellipse-hero"):
+                        print '"%s", line %d: custom ellipse %s may need to be updated' % (filename, i+1, value)
+                except TypeError: # this is needed to handle tags, that parse_attribute cannot split
+                    pass
     # Interpret various magic comments
     for i in xrange(len(lines)):
         # Interpret magic comments for setting the usage pattern of units.
