@@ -62,6 +62,7 @@ struct battle_context_unit_stats
 		                         */
 	bool swarm;				/**< Attack has swarm special. */
 	bool firststrike;		/**< Attack has firststrike special. */
+	bool disable;           /**< Attack has disabled special. */
 	unsigned int experience, max_experience;
 	unsigned int level;
 

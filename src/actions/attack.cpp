@@ -74,6 +74,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 	backstab_pos(false),
 	swarm(false),
 	firststrike(false),
+	disable(false),
 	experience(u.experience()),
 	max_experience(u.max_experience()),
 	level(u.level()),
@@ -118,6 +119,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
+		disable = weapon->get_special_bool("disable");
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
@@ -554,19 +556,22 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 	// simple rating = number of blows * damage per blows (resistance taken in account) * cth * weight
 	// Eligible attacks for defense should have a simple rating greater or equal to this weight.
 
-	double max_weight = 0.0;
 	int min_rating = 0;
+	{
+		double max_weight = 0.0;
 
-	for (i = 0; i < choices.size(); ++i) {
-		const attack_type &def = defender.attacks()[choices[i]];
-		if (def.defense_weight() >= max_weight) {
-			max_weight = def.defense_weight();
-			const battle_context_unit_stats def_stats(defender, defender_loc,
-					choices[i], false, attacker, attacker_loc, &att, units);
-			int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
-					def_stats.chance_to_hit * def.defense_weight());
-			if (def.defense_weight() > max_weight || rating < min_rating ) {
-				min_rating = rating;
+		for (i = 0; i < choices.size(); ++i) {
+			const attack_type &def = defender.attacks()[choices[i]];
+			if (def.defense_weight() >= max_weight) {
+				const battle_context_unit_stats def_stats(defender, defender_loc,
+						choices[i], false, attacker, attacker_loc, &att, units);
+				if (def_stats.disable) continue;
+				max_weight = def.defense_weight();
+				int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
+						def_stats.chance_to_hit * def.defense_weight());
+				if (def.defense_weight() > max_weight || rating < min_rating ) {
+					min_rating = rating;
+				}
 			}
 		}
 	}
@@ -578,6 +583,7 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 				true, defender, defender_loc, &def, units);
 		battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
 				attacker, attacker_loc, &att, units);
+		if (def_stats->disable) continue;
 
 		combatant *att_comb = new combatant(*att_stats);
 		combatant *def_comb = new combatant(*def_stats, prev_def);
@@ -605,7 +611,7 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 		}
 	}
 
-	return defender_stats_->attack_num;
+	return defender_stats_ ? defender_stats_->attack_num : -1;
 }
 
 
