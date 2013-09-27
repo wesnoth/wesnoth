@@ -64,7 +64,6 @@ struct wml_menu_item
 	config default_hotkey;
 	bool use_hotkey;
 	bool use_wml_menu;
-	bool ignore_filter_on_hotkey;
 };
 
 class wmi_container{
