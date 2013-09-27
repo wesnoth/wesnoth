@@ -852,10 +852,10 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 				config& show_if = iter->second->show_if;
 				config filter_location = iter->second->filter_location;
 
-				if (iter->second->ignore_filter_on_hotkey || ((show_if.empty()
+				if ((show_if.empty()
 					|| game_events::conditional_passed(vconfig(show_if)))
 				&& (filter_location.empty()
-					|| terrain_filter(vconfig(filter_location), units_)(hex))))
+					|| terrain_filter(vconfig(filter_location), units_)(hex)))
 				{
 					if((!iter->second->needs_select
 						|| gamedata_.last_selected.valid()))
