@@ -84,8 +84,7 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		command(),
 		default_hotkey(),
 		use_hotkey(true),
-		use_wml_menu(true),
-		ignore_filter_on_hotkey(false)
+		use_wml_menu(true)
 
 {
 	std::stringstream temp;
@@ -98,7 +97,6 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
 		needs_select = (*cfg)["needs_select"].to_bool();
-		ignore_filter_on_hotkey = (*cfg)["ignore_filter_on_hotkey"].to_bool();
 		use_hotkey = (*cfg)["use_hotkey"].to_bool(true);
 		
 		const std::string& use_hotkey_string = (*cfg)["use_hotkey"];
@@ -164,7 +162,6 @@ void wmi_container::to_config(config& cfg){
 		new_cfg["description"]=j->second->description;
 		new_cfg["needs_select"] = j->second->needs_select;
 		new_cfg["use_hotkey"] = j->second->use_hotkey;
-		new_cfg["ignore_filter_on_hotkey"] = j->second->ignore_filter_on_hotkey;
 		
 		if(j->second->use_hotkey && j->second->use_wml_menu)
 			new_cfg["use_hotkey"] = true;
