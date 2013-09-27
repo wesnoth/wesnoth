@@ -2310,9 +2310,6 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 			mref->use_wml_menu = true;
 		}
 	}
-	if(cfg.has_attribute("ignore_filter_on_hotkey")) {
-		mref->ignore_filter_on_hotkey = cfg["ignore_filter_on_hotkey"].to_bool(false);
-	}
 	if(cfg.has_child("command")) {
 		const vconfig& cmd = cfg.child("command");
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
