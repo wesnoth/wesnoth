@@ -212,12 +212,14 @@ namespace { // Private helpers for move_unit()
 		/// interrupt movement (even if movement ended for a different reason).
 		bool interrupted(bool include_end_of_move_events=true) const
 		{
-			return ambushed_ || blocked_ || sighted_ || teleport_failed_ ||
+			return ambushed_ || blocked() || sighted_ || teleport_failed_ ||
 			       (include_end_of_move_events ? event_mutated_ : event_mutated_mid_move_ ) ||
 			       !move_it_.valid();
 		}
 
 	private: // functions
+		/// Returns whether or not movement was blocked by a non-ambushing enemy.
+		bool blocked() const { return blocked_loc_ != map_location::null_location; }
 		/// Checks the expected route for hidden units.
 		void cache_hidden_units(const route_iterator & start,
 		                        const route_iterator & stop);
@@ -237,10 +239,12 @@ namespace { // Private helpers for move_unit()
 		bool pump_sighted(const route_iterator & from);
 		/// If ambush_string_ is empty, set it to the "alert" for the given unit.
 		void read_ambush_string(const unit_map::const_iterator & ambush_it);
+		/// Reveals the unit at the indicated location.
+		void reveal_ambusher(const map_location & hex) const;
 
 		/// Returns whether or not undoing this move should be blocked.
 		bool undo_blocked() const
-		{ return ambushed_ || blocked_ || event_mutated_ || fog_changed_ ||
+		{ return ambushed_ || blocked() || event_mutated_ || fog_changed_ ||
 		         teleport_failed_; }
 
 		// The remaining private functions are suggested to be inlined because
@@ -260,9 +264,9 @@ namespace { // Private helpers for move_unit()
 		inline void handle_fog(const map_location & hex, bool ally_interrupts,
 		                       bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
-		/// Reveals the units stored in to_reveal_.
+		/// Reveals the units stored in ambushers_ (and blocked_loc_).
 		inline void reveal_ambushers() const;
-		/// Makes sure the units in to_reveal_ still exist.
+		/// Makes sure the units in ambushers_ still exist.
 		inline void validate_ambushers();
 
 	private: // data
@@ -304,8 +308,8 @@ namespace { // Private helpers for move_unit()
 		// Data accumulated while making the move.
 		map_location zoc_stop_;
 		map_location ambush_stop_; // Could be inaccurate if ambushed_ is false.
+		map_location blocked_loc_; // Location of a blocking, enemy, non-ambusher unit.
 		bool ambushed_;
-		bool blocked_; // Blocked by an enemy (non-ambusher) unit
 		bool event_mutated_;
 		bool event_mutated_mid_move_; // Cache of event_mutated_ from just before the end-of-move handling.
 		bool fog_changed_;
@@ -316,8 +320,8 @@ namespace { // Private helpers for move_unit()
 		size_t enemy_count_;
 		size_t friend_count_;
 		std::string ambush_string_;
+		std::vector<map_location> ambushers_;
 		std::deque<int> moves_left_;	// The front value is what the moving unit's remaining moves should be set to after the next step through the route.
-		std::vector<map_location> to_reveal_;
 
 		shroud_clearer clearer_;
 	};
@@ -358,8 +362,8 @@ namespace { // Private helpers for move_unit()
 		// The remaining fields are set to some sort of "zero state".
 		zoc_stop_(map_location::null_location),
 		ambush_stop_(map_location::null_location),
+		blocked_loc_(map_location::null_location),
 		ambushed_(false),
-		blocked_(false),
 		event_mutated_(false),
 		event_mutated_mid_move_(false),
 		fog_changed_(false),
@@ -370,8 +374,8 @@ namespace { // Private helpers for move_unit()
 		enemy_count_(0),
 		friend_count_(0),
 		ambush_string_(),
+		ambushers_(),
 		moves_left_(),
-		to_reveal_(),
 		clearer_()
 	{
 		if ( !is_ai_move() )
@@ -418,7 +422,7 @@ namespace { // Private helpers for move_unit()
 				// Ambushed!
 				ambushed_ = true;
 				ambush_stop_ = hex;
-				to_reveal_.push_back(adjacent[i]);
+				ambushers_.push_back(adjacent[i]);
 
 				// Get a feedback message (first one available).
 				if ( ambush_string_.empty() )
@@ -451,8 +455,7 @@ namespace { // Private helpers for move_unit()
 
 		if ( current_team_->is_enemy(blocking_unit->side()) ) {
 			// Trying to go through an enemy.
-			blocked_ = true;
-			to_reveal_.push_back(hex);
+			blocked_loc_ = hex;
 			return true;
 		}
 
@@ -556,32 +559,28 @@ namespace { // Private helpers for move_unit()
 
 
 	/**
-	 * Reveals the units stored in to_reveal_.
+	 * Reveals the units stored in ambushers_ (and blocked_loc_).
 	 * Only call this if appropriate; this function does not itself check
-	 * ambushed_ or blocked_.
+	 * ambushed_ or blocked().
 	 */
 	inline void unit_mover::reveal_ambushers() const
 	{
-		// Some convenient aliases:
-		game_display &disp = *resources::screen;
-		unit_map &units = *resources::units;
+		// Reveal the blocking unit.
+		if ( blocked() )
+			reveal_ambusher(blocked_loc_);
 
-		BOOST_FOREACH(const map_location & reveal, to_reveal_) {
-			unit_map::iterator ambusher = units.find(reveal);
-			if ( ambusher != units.end() ) {
-				ambusher->set_state(unit::STATE_UNCOVERED, true);  // (Needed in case we backtracked.)
-				if ( spectator_ )
-					spectator_->set_ambusher(ambusher);
-			}
-			disp.invalidate(reveal);
+		// Reveal ambushers.
+		BOOST_FOREACH(const map_location & reveal, ambushers_) {
+			reveal_ambusher(reveal);
 		}
 
-		disp.draw();
+		// Update the display.
+		resources::screen->draw();
 	}
 
 
 	/**
-	 * Makes sure the units in to_reveal_ still exist.
+	 * Makes sure the units in ambushers_ still exist.
 	 * Also updates ambush_string_ based on those that do still exist.
 	 */
 	inline void unit_mover::validate_ambushers()
@@ -592,11 +591,11 @@ namespace { // Private helpers for move_unit()
 
 		// Loop through the previously-detected ambushers.
 		size_t i = 0;
-		while ( i != to_reveal_.size() ) {
-			const unit_map::const_iterator ambush_it = units.find(to_reveal_[i]);
+		while ( i != ambushers_.size() ) {
+			const unit_map::const_iterator ambush_it = units.find(ambushers_[i]);
 			if ( ambush_it == units.end() )
 				// Ambusher is gone.
-				to_reveal_.erase(to_reveal_.begin() + i);
+				ambushers_.erase(ambushers_.begin() + i);
 			else {
 				// Update ambush_string_ and proceed to the next ambusher.
 				read_ambush_string(ambush_it);
@@ -623,19 +622,19 @@ namespace { // Private helpers for move_unit()
 	{
 		// Clear the old cache.
 		obstructed_ = full_end_;
-		blocked_ = false;
+		blocked_loc_ = map_location::null_location;
 		teleport_failed_ = false;
 		// The ambush cache needs special treatment since we cannot re-detect
 		// an ambush if we are already at the ambushed location.
 		ambushed_ =  ambushed_  &&  ambush_stop_ == *start;
 		if ( ambushed_ ) {
 			validate_ambushers();
-			ambushed_ = !to_reveal_.empty();
+			ambushed_ = !ambushers_.empty();
 		}
 		if ( !ambushed_ ) {
 			ambush_stop_ = map_location::null_location;
 			ambush_string_.clear();
-			to_reveal_.clear();
+			ambushers_.clear();
 		}
 
 		// Update the shroud clearer.
@@ -843,6 +842,28 @@ namespace { // Private helpers for move_unit()
 	}
 
 
+	/**
+	 * Reveals the unit at the indicated location.
+	 */
+	void unit_mover::reveal_ambusher(const map_location & hex) const
+	{
+		// Convenient alias:
+		unit_map &units = *resources::units;
+
+		// Find the unit at the indicated location.
+		unit_map::iterator ambusher = units.find(hex);
+		if ( ambusher != units.end() ) {
+			// This unit is now known.
+			ambusher->set_state(unit::STATE_UNCOVERED, true);  // (Needed in case we backtracked.)
+			if ( spectator_ )
+				spectator_->set_ambusher(ambusher);
+		}
+
+		// Make sure this hex is drawn correctly.
+		resources::screen->invalidate(hex);
+	}
+
+
 	// Public interface:
 
 	/**
@@ -954,7 +975,8 @@ namespace { // Private helpers for move_unit()
 		// Some flags were set to indicate why we might stop.
 		// Update those to reflect whether or not we got to them.
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
-		blocked_  = blocked_  && obstructed_stop;
+		if ( !obstructed_stop )
+			blocked_loc_ = map_location::null_location;
 		teleport_failed_ = teleport_failed_ && obstructed_stop;
 		// event_mutated_ does not get unset, regardless of other reasons
 		// for stopping, but we do save its current value.
@@ -978,7 +1000,7 @@ namespace { // Private helpers for move_unit()
 		int action_time_bonus = 0;
 
 		// Reveal ambushers?
-		if ( ambushed_ || blocked_ )
+		if ( ambushed_ || blocked() )
 			reveal_ambushers();
 		else if ( teleport_failed_ && spectator_ )
 			spectator_->set_failed_teleport(resources::units->find(*obstructed_));
@@ -1056,7 +1078,7 @@ namespace { // Private helpers for move_unit()
 		if ( ambushed_ ) {
 			// Suppress the message for observers if the ambusher(s) cannot be seen.
 			bool show_message = playing_team_is_viewing;
-			BOOST_FOREACH(const map_location &ambush, to_reveal_) {
+			BOOST_FOREACH(const map_location &ambush, ambushers_) {
 				if ( !disp.fogged(ambush) )
 					show_message = true;
 			}
