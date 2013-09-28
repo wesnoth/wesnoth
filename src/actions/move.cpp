@@ -237,10 +237,10 @@ namespace { // Private helpers for move_unit()
 		bool post_wml() { return post_wml(full_end_); }
 		/// Fires the sighted events that were raised earlier.
 		bool pump_sighted(const route_iterator & from);
-		/// If ambush_string_ is empty, set it to the "alert" for the given unit.
-		void read_ambush_string(const unit_map::const_iterator & ambush_it);
+		/// Returns the ambush alert (if any) for the given unit.
+		static std::string read_ambush_string(const unit & ambusher);
 		/// Reveals the unit at the indicated location.
-		void reveal_ambusher(const map_location & hex) const;
+		void reveal_ambusher(const map_location & hex, bool update_alert=true);
 
 		/// Returns whether or not undoing this move should be blocked.
 		bool undo_blocked() const
@@ -265,7 +265,7 @@ namespace { // Private helpers for move_unit()
 		                       bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
 		/// Reveals the units stored in ambushers_ (and blocked_loc_).
-		inline void reveal_ambushers() const;
+		inline void reveal_ambushers();
 		/// Makes sure the units in ambushers_ still exist.
 		inline void validate_ambushers();
 
@@ -278,6 +278,7 @@ namespace { // Private helpers for move_unit()
 		const bool is_replay_;
 		const map_location & replay_dest_;
 		const bool skip_sighting_;
+		const bool playing_team_is_viewing_;
 		// Needed to interface with unit_display::unit_mover.
 		const std::vector<map_location> & route_;
 
@@ -310,6 +311,7 @@ namespace { // Private helpers for move_unit()
 		map_location ambush_stop_; // Could be inaccurate if ambushed_ is false.
 		map_location blocked_loc_; // Location of a blocking, enemy, non-ambusher unit.
 		bool ambushed_;
+		bool show_ambush_alert_;
 		bool event_mutated_;
 		bool event_mutated_mid_move_; // Cache of event_mutated_ from just before the end-of-move handling.
 		bool fog_changed_;
@@ -339,6 +341,9 @@ namespace { // Private helpers for move_unit()
 		is_replay_(replay_dest != NULL),
 		replay_dest_(is_replay_ ? *replay_dest : route.back()),
 		skip_sighting_(is_replay_ || skip_sightings),
+		playing_team_is_viewing_(resources::screen->playing_team() ==
+		                         resources::screen->viewing_team()
+		                         ||  resources::screen->show_everything()),
 		route_(route),
 		begin_(route.begin()),
 		full_end_(route.end()),
@@ -364,6 +369,7 @@ namespace { // Private helpers for move_unit()
 		ambush_stop_(map_location::null_location),
 		blocked_loc_(map_location::null_location),
 		ambushed_(false),
+		show_ambush_alert_(false),
 		event_mutated_(false),
 		event_mutated_mid_move_(false),
 		fog_changed_(false),
@@ -423,10 +429,6 @@ namespace { // Private helpers for move_unit()
 				ambushed_ = true;
 				ambush_stop_ = hex;
 				ambushers_.push_back(adjacent[i]);
-
-				// Get a feedback message (first one available).
-				if ( ambush_string_.empty() )
-					read_ambush_string(neighbor_it);
 			}
 		}
 	}
@@ -560,19 +562,24 @@ namespace { // Private helpers for move_unit()
 
 	/**
 	 * Reveals the units stored in ambushers_ (and blocked_loc_).
+	 * Also sets ambush_string_.
 	 * Only call this if appropriate; this function does not itself check
 	 * ambushed_ or blocked().
 	 */
-	inline void unit_mover::reveal_ambushers() const
+	inline void unit_mover::reveal_ambushers()
 	{
 		// Reveal the blocking unit.
 		if ( blocked() )
-			reveal_ambusher(blocked_loc_);
+			reveal_ambusher(blocked_loc_, false);
 
 		// Reveal ambushers.
 		BOOST_FOREACH(const map_location & reveal, ambushers_) {
-			reveal_ambusher(reveal);
+			reveal_ambusher(reveal, true);
 		}
+
+		// Default "Ambushed!" message?
+		if ( ambush_string_.empty() )
+			ambush_string_ = _("Ambushed!");
 
 		// Update the display.
 		resources::screen->draw();
@@ -581,13 +588,10 @@ namespace { // Private helpers for move_unit()
 
 	/**
 	 * Makes sure the units in ambushers_ still exist.
-	 * Also updates ambush_string_ based on those that do still exist.
 	 */
 	inline void unit_mover::validate_ambushers()
 	{
 		const unit_map &units = *resources::units;
-
-		ambush_string_.clear();
 
 		// Loop through the previously-detected ambushers.
 		size_t i = 0;
@@ -597,8 +601,7 @@ namespace { // Private helpers for move_unit()
 				// Ambusher is gone.
 				ambushers_.erase(ambushers_.begin() + i);
 			else {
-				// Update ambush_string_ and proceed to the next ambusher.
-				read_ambush_string(ambush_it);
+				// Proceed to the next ambusher.
 				++i;
 			}
 		}
@@ -633,7 +636,6 @@ namespace { // Private helpers for move_unit()
 		}
 		if ( !ambushed_ ) {
 			ambush_stop_ = map_location::null_location;
-			ambush_string_.clear();
 			ambushers_.clear();
 		}
 
@@ -826,29 +828,31 @@ namespace { // Private helpers for move_unit()
 
 
 	/**
-	 * If ambush_string_ is empty, set it to the "alert" for the given unit.
+	 * Returns the ambush alert (if any) for the given unit.
 	 */
-	void unit_mover::read_ambush_string(const unit_map::const_iterator & ambush_it)
+	std::string unit_mover::read_ambush_string(const unit & ambusher)
 	{
-		if ( !ambush_string_.empty() )
-			return;
-
-		BOOST_FOREACH (const unit_ability &hide, ambush_it->get_abilities("hides"))
+		BOOST_FOREACH( const unit_ability &hide, ambusher.get_abilities("hides") )
 		{
-			ambush_string_ = (*hide.first)["alert"].str();
-			if ( !ambush_string_.empty() )
-				return;
+			const std::string & ambush_string = (*hide.first)["alert"].str();
+			if ( !ambush_string.empty() )
+				return ambush_string;
 		}
+
+		// No string found.
+		return std::string();
 	}
 
 
 	/**
 	 * Reveals the unit at the indicated location.
+	 * Can also update the current ambushed alert.
 	 */
-	void unit_mover::reveal_ambusher(const map_location & hex) const
+	void unit_mover::reveal_ambusher(const map_location & hex, bool update_alert)
 	{
 		// Convenient alias:
 		unit_map &units = *resources::units;
+		game_display &disp = *resources::screen;
 
 		// Find the unit at the indicated location.
 		unit_map::iterator ambusher = units.find(hex);
@@ -857,10 +861,21 @@ namespace { // Private helpers for move_unit()
 			ambusher->set_state(unit::STATE_UNCOVERED, true);  // (Needed in case we backtracked.)
 			if ( spectator_ )
 				spectator_->set_ambusher(ambusher);
+
+			// Override the default ambushed messge?
+			if ( update_alert ) {
+				// Observers don't get extra information.
+				if ( playing_team_is_viewing_ || !disp.fogged(hex) ) {
+					show_ambush_alert_ = true;
+					// We only support one custom ambush message; use the first one.
+					if ( ambush_string_.empty() )
+						ambush_string_ = read_ambush_string(*ambusher);
+				}
+			}
 		}
 
 		// Make sure this hex is drawn correctly.
-		resources::screen->invalidate(hex);
+		disp.invalidate(hex);
 	}
 
 
@@ -981,10 +996,6 @@ namespace { // Private helpers for move_unit()
 		// event_mutated_ does not get unset, regardless of other reasons
 		// for stopping, but we do save its current value.
 		event_mutated_mid_move_ = event_mutated_;
-
-		// Need the default ambush message?
-		if ( ambushed_  &&  ambush_string_.empty() )
-			ambush_string_ = _("Ambushed!");
 	}
 
 
@@ -1067,30 +1078,20 @@ namespace { // Private helpers for move_unit()
 		game_display &disp = *resources::screen;
 
 		bool redraw = false;
-		bool playing_team_is_viewing = disp.playing_team() == disp.viewing_team()
-		                               ||  disp.show_everything();
 
 		// Multiple messages may be displayed simultaneously
 		// this variable is used to keep them from overlapping
 		std::string message_prefix = "";
 
 		// Ambush feedback?
-		if ( ambushed_ ) {
-			// Suppress the message for observers if the ambusher(s) cannot be seen.
-			bool show_message = playing_team_is_viewing;
-			BOOST_FOREACH(const map_location &ambush, ambushers_) {
-				if ( !disp.fogged(ambush) )
-					show_message = true;
-			}
-			if ( show_message ) {
-				disp.announce(message_prefix + ambush_string_, font::BAD_COLOR);
-				message_prefix += " \n";
-				redraw = true;
-			}
+		if ( ambushed_  &&  show_ambush_alert_ ) {
+			disp.announce(message_prefix + ambush_string_, font::BAD_COLOR);
+			message_prefix += " \n";
+			redraw = true;
 		}
 
 		// Failed teleport feedback?
-		if ( playing_team_is_viewing  &&  teleport_failed_ ) {
+		if ( playing_team_is_viewing_  &&  teleport_failed_ ) {
 			std::string teleport_string = _("Failed teleport! Exit not empty");
 			disp.announce(message_prefix + teleport_string, font::BAD_COLOR);
 			message_prefix += " \n";
@@ -1098,7 +1099,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Sighted units feedback?
-		if ( playing_team_is_viewing  &&  (enemy_count_ != 0 || friend_count_ != 0) ) {
+		if ( playing_team_is_viewing_  &&  (enemy_count_ != 0 || friend_count_ != 0) ) {
 			// Create the message to display (depends on whether friends,
 			// enemies, or both were sighted, and on how many of each).
 			utils::string_map symbols;
@@ -1128,7 +1129,7 @@ namespace { // Private helpers for move_unit()
 		}
 
 		// Suggest "continue move"?
-		if ( playing_team_is_viewing && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
+		if ( playing_team_is_viewing_ && sighted_stop_ && !resources::whiteboard->is_executing_actions() ) {
 			// See if the "Continue Move" action has an associated hotkey
 			std::string name = hotkey::get_names(hotkey::HOTKEY_CONTINUE_MOVE);
 			if ( !name.empty() ) {
