@@ -596,8 +596,7 @@ namespace { // Private helpers for move_unit()
 		// Loop through the previously-detected ambushers.
 		size_t i = 0;
 		while ( i != ambushers_.size() ) {
-			const unit_map::const_iterator ambush_it = units.find(ambushers_[i]);
-			if ( ambush_it == units.end() )
+			if ( units.count(ambushers_[i]) == 0 )
 				// Ambusher is gone.
 				ambushers_.erase(ambushers_.begin() + i);
 			else {
