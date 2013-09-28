@@ -2293,21 +2293,16 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		mref->default_hotkey = cfg.child("default_hotkey").get_config();
 	}
 	if(cfg.has_attribute("use_hotkey")) {
-		const std::string& use_hotkey_string = cfg["use_hotkey"];
-		if(use_hotkey_string == "no" || use_hotkey_string == "false" )
+		const config::attribute_value & use_hotkey_attribute_value = (*cfg)["use_hotkey"]; 
+		if(use_hotkey_attribute_value.str() == "only")
 		{
 			mref->use_hotkey = false;
 			mref->use_wml_menu = true;
 		}
-		else if(use_hotkey_string == "only")
-		{	
-			mref->use_hotkey = true;
-			mref->use_wml_menu = false;
-		}
 		else 
-		{
-			mref->use_hotkey = true;
-			mref->use_wml_menu = true;
+		{	
+			mref->use_hotkey = use_hotkey_attribute_value.to_bool(true);
+			mref->use_wml_menu = false;
 		}
 	}
 	if(cfg.has_child("command")) {
