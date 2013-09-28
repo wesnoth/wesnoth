@@ -1147,6 +1147,10 @@ bool unit::get_state(const std::string &state) const
 void unit::set_state(state_t state, bool value)
 {
 	known_boolean_states_[state] = value;
+
+	// Invalidate a cache?
+	if ( state == STATE_UNCOVERED )
+		clear_visibility_cache();
 }
 
 bool unit::get_state(state_t state) const
