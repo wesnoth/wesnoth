@@ -97,22 +97,16 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image = (*cfg)["image"].str();
 		description = (*cfg)["description"];
 		needs_select = (*cfg)["needs_select"].to_bool();
-		use_hotkey = (*cfg)["use_hotkey"].to_bool(true);
-		
-		const std::string& use_hotkey_string = (*cfg)["use_hotkey"];
-		if(use_hotkey_string == "no" || use_hotkey_string == "false" )
+		// use_hotkey is already a name of a member of this class.
+		const config::attribute_value & use_hotkey_attribute_value = (*cfg)["use_hotkey"];
+		if(use_hotkey_attribute_value.str() == "only" )
 		{
-			use_hotkey = false;
-			use_wml_menu = true;
-		}
-		else if(use_hotkey_string == "only")
-		{	
 			use_hotkey = true;
 			use_wml_menu = false;
 		}
-		else 
-		{
-			use_hotkey = true;
+		else
+		{	
+			use_hotkey = use_hotkey_attribute_value.to_bool(true);
 			use_wml_menu = true;
 		}
 
@@ -161,7 +155,6 @@ void wmi_container::to_config(config& cfg){
 		new_cfg["image"]=j->second->image;
 		new_cfg["description"]=j->second->description;
 		new_cfg["needs_select"] = j->second->needs_select;
-		new_cfg["use_hotkey"] = j->second->use_hotkey;
 		
 		if(j->second->use_hotkey && j->second->use_wml_menu)
 			new_cfg["use_hotkey"] = true;
@@ -171,7 +164,7 @@ void wmi_container::to_config(config& cfg){
 			new_cfg["use_hotkey"] = false;
 		if(!j->second->use_hotkey && !j->second->use_wml_menu)
 		{
-			ERR_NG << "strange wml_menu_item that neigher uses wml_menu nor hotkeys appeared";
+			ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and use_hotkey set to false is not supposed to be possible.";
 			new_cfg["use_hotkey"] = false;
 		}
 
