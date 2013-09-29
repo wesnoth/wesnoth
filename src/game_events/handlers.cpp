@@ -373,11 +373,7 @@ manager::manager(const config& cfg)
 				// (they are still reapplied if set_menu_item is called again, for example by starting a new campaign.)
 				// since it isn't that important i'll just leave it for now.
 
-				//FIXME: this is a hack to get at the item ID
-				config tmp;
-				wmi.to_config(tmp);
-				const std::string &wmi_id = tmp["id"];
-				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wmi_id, wmi.description(), wmi.default_hotkey);
+				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wmi.id(), wmi.description(), wmi.default_hotkey);
 			}
 		}
 		++wmi_count;

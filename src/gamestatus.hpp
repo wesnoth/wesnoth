@@ -58,6 +58,8 @@ class wml_menu_item
 public:
 	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
 
+	/// The identification of this item.
+	const std::string & id() const { return item_id_; }
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
 	/// The text to display in the menu for this item.
