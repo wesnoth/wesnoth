@@ -563,6 +563,7 @@ namespace { // Private helpers for move_unit()
 	/**
 	 * Reveals the units stored in ambushers_ (and blocked_loc_).
 	 * Also sets ambush_string_.
+	 * May fire "sighted" events.
 	 * Only call this if appropriate; this function does not itself check
 	 * ambushed_ or blocked().
 	 */
@@ -846,6 +847,7 @@ namespace { // Private helpers for move_unit()
 	/**
 	 * Reveals the unit at the indicated location.
 	 * Can also update the current ambushed alert.
+	 * May fire "sighted" events.
 	 */
 	void unit_mover::reveal_ambusher(const map_location & hex, bool update_alert)
 	{
@@ -856,8 +858,13 @@ namespace { // Private helpers for move_unit()
 		// Find the unit at the indicated location.
 		unit_map::iterator ambusher = units.find(hex);
 		if ( ambusher != units.end() ) {
-			// This unit is now known.
-			ambusher->set_state(unit::STATE_UNCOVERED, true);  // (Needed in case we backtracked.)
+			// Prepare for sighted events.
+			std::vector<int> sight_cache(get_sides_not_seeing(*ambusher));
+			// Make sure the unit is visible (during sighted events, and in case
+			// we had to backtrack).
+			ambusher->set_state(unit::STATE_UNCOVERED, true);
+
+			// Record this in the move spectator.
 			if ( spectator_ )
 				spectator_->set_ambusher(ambusher);
 
@@ -871,10 +878,13 @@ namespace { // Private helpers for move_unit()
 						ambush_string_ = read_ambush_string(*ambusher);
 				}
 			}
-		}
 
-		// Make sure this hex is drawn correctly.
-		disp.invalidate(hex);
+			// Make sure this hex is drawn correctly.
+			disp.invalidate(hex);
+			// Fire sighted events.
+			event_mutated_ |= actor_sighted(*ambusher, &sight_cache);
+			post_wml();
+		}
 	}
 
 
