@@ -207,13 +207,13 @@ void wml_menu_item::update(const vconfig & vcfg)
 		const config::attribute_value & use_hotkey_attribute_value = vcfg["use_hotkey"];
 		if(use_hotkey_attribute_value.str() == "only")
 		{
-			use_hotkey_ = false;
-			use_wml_menu_ = true;
+			use_hotkey_ = true;
+			use_wml_menu_ = false;
 		}
 		else
 		{
 			use_hotkey_ = use_hotkey_attribute_value.to_bool(true);
-			use_wml_menu_ = false;
+			use_wml_menu_ = true;
 		}
 	}
 
