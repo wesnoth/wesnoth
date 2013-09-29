@@ -145,7 +145,7 @@ public:
 
 private:
 	/// Returns true if *this has made a copy of its config.
-	bool memory_managed() const { return cache_; }
+	bool memory_managed() const { return static_cast<bool>(cache_); }
 
 	/// Keeps a copy of our config alive when we manage our own memory.
 	/// If this is not null, then cfg_ points to *cache_ or a child of *cache_.
