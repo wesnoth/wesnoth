@@ -1225,7 +1225,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			      ++itor)
 			{
 				const wml_menu_item & item = *itor;
-				if ( item.use_wml_menu && item.can_show(hex) )
+				if ( item.use_wml_menu() && item.can_show(hex) )
 				{
 					wml_commands_.push_back(&item);
 					// Prevent accidental hotkey binding by appending a space
