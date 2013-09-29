@@ -843,7 +843,7 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 		if(iter != gs_wmi.end())
 		{
 			//i think this is not needed, but i havent tested without yet.
-			if(name == iter->event_name())
+			if(name == iter->id())
 			{
 				//copied from expand_wml_commands
 				const map_location& hex = mouse_handler_.get_last_hex();
