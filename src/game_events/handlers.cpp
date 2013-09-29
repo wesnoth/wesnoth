@@ -24,7 +24,9 @@
 
 #include "../formula_string_utils.hpp"
 #include "../gamestatus.hpp"
+#include "../hotkeys.hpp"
 #include "../log.hpp"
+#include "../play_controller.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
 #include "../scripting/lua.hpp"
@@ -277,6 +279,9 @@ void commit_wmi_commands()
 		} else if(!is_empty_command) {
 			LOG_NG << "setting command for " << event_name << " to:\n" << *wcc.second;
 			add_event_handler(*wcc.second, true);
+			if(item.use_hotkey) {
+				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wcc.first, item.description(), item.default_hotkey);
+			}
 		}
 
 		item.set_command(*wcc.second);
@@ -361,6 +366,19 @@ manager::manager(const config& cfg)
 		const config & wmi_command = wmi.command();
 		if ( !wmi_command.empty() ) {
 			add_event_handler(wmi_command, true);
+			if(wmi.use_hotkey) {
+				// applying default hotkeys here curenty doesnt work because the hotkeys are reset 
+				// by play_controler::init_managers() -> display_manager::display_manager, which is called after this.
+				// the result is that default wml hotkeys will be ignored if wml hotkeys are set to default in the preferences menu.
+				// (they are still reapplied if set_menu_item is called again, for example by starting a new campaign.)
+				// since it isn't that important i'll just leave it for now.
+
+				//FIXME: this is a hack to get at the item ID
+				config tmp;
+				wmi.to_config(tmp);
+				const std::string &wmi_id = tmp["id"];
+				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wmi_id, wmi.description(), wmi.default_hotkey);
+			}
 		}
 		++wmi_count;
 	}
@@ -372,6 +390,7 @@ manager::manager(const config& cfg)
 manager::~manager() {
 	clear_events();
 	event_handlers.clear();
+	hotkey::delete_all_wml_hotkeys();
 	reports::reset_generators();
 	delete resources::lua_kernel;
 	resources::lua_kernel = NULL;

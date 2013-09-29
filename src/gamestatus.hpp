@@ -79,6 +79,10 @@ public:
 	/// Updates *this based on @a vcfg.
 	void update(const vconfig & vcfg);
 
+    //TODO: fix these
+	config default_hotkey;
+	bool use_hotkey;
+	bool use_wml_menu;
 private:
 	/// The id of this menu item.
 	const std::string item_id_;

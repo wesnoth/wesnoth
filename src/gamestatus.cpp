@@ -75,6 +75,9 @@ const std::string DEFAULT_DIFFICULTY("NORMAL");
 
 
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
+		default_hotkey(),
+		use_hotkey(true),
+		use_wml_menu(true),
 		item_id_(id),
 		event_name_("menu item" + (id.empty() ? "" : ' ' + id)),
 		image_(),
@@ -88,9 +91,22 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		image_ = (*cfg)["image"].str();
 		description_ = (*cfg)["description"];
 		needs_select_ = (*cfg)["needs_select"].to_bool();
+		// use_hotkey is already a name of a member of this class.
+		const config::attribute_value & use_hotkey_attribute_value = (*cfg)["use_hotkey"];
+		if(use_hotkey_attribute_value.str() == "only" )
+		{
+			use_hotkey = true;
+			use_wml_menu = false;
+		}
+		else
+		{	
+			use_hotkey = use_hotkey_attribute_value.to_bool(true);
+			use_wml_menu = true;
+		}
 		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
 		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
 		if (const config &c = cfg->child("command")) command_ = c;
+		if (const config &c = cfg->child("default_hotkey")) default_hotkey = c;
 	}
 }
 
@@ -137,12 +153,26 @@ void wml_menu_item::to_config(config & cfg) const
 	cfg["image"] = image_;
 	cfg["description"] = description_;
 	cfg["needs_select"] = needs_select_;
+
+	if ( use_hotkey && use_wml_menu )
+		cfg["use_hotkey"] = true;
+	if ( use_hotkey && !use_wml_menu )
+		cfg["use_hotkey"] = "only";
+	if ( !use_hotkey && use_wml_menu )
+		cfg["use_hotkey"] = false;
+	if ( !use_hotkey && !use_wml_menu )
+	{
+		ERR_NG << "Bad data: wml_menu_item with both use_wml_menu and use_hotkey set to false is not supposed to be possible.";
+		cfg["use_hotkey"] = false;
+	}
 	if ( !show_if_.empty() )
 		cfg.add_child("show_if", show_if_.get_config());
 	if ( !filter_location_.empty() )
 		cfg.add_child("filter_location", filter_location_.get_config());
 	if ( !command_.empty() )
 		cfg.add_child("command", command_);
+	if ( !default_hotkey.empty() )
+		cfg.add_child("default_hotkey", default_hotkey);
 }
 
 /**
@@ -167,6 +197,24 @@ void wml_menu_item::update(const vconfig & vcfg)
 	if ( const vconfig & child = vcfg.child("filter_location") ) {
 		filter_location_ = child;
 		filter_location_.make_safe();
+	}
+
+	if ( const vconfig & child = vcfg.child("default_hotkey") ) {
+		default_hotkey = child.get_parsed_config();
+	}
+
+	if ( vcfg.has_attribute("use_hotkey") ) {
+		const config::attribute_value & use_hotkey_attribute_value = vcfg["use_hotkey"];
+		if(use_hotkey_attribute_value.str() == "only")
+		{
+			use_hotkey = false;
+			use_wml_menu = true;
+		}
+		else
+		{
+			use_hotkey = use_hotkey_attribute_value.to_bool(true);
+			use_wml_menu = false;
+		}
 	}
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {

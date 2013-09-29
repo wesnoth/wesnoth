@@ -34,7 +34,7 @@ public:
 	virtual void recruit();
 	virtual void repeat_recruit();
 	virtual void recall();
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
+	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
 	virtual void toggle_shroud_updates();
 	virtual void update_shroud_now();
 	virtual void end_turn();

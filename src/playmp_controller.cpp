@@ -521,8 +521,9 @@ void playmp_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
+	hotkey::HOTKEY_COMMAND command = cmd.id;
 	bool res = true;
 	switch (command){
 		case hotkey::HOTKEY_SPEAK:
@@ -541,7 +542,7 @@ bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			}
 			break;
 	    default:
-			return playsingle_controller::can_execute_command(command, index);
+			return playsingle_controller::can_execute_command(cmd, index);
 	}
 	return res;
 }
