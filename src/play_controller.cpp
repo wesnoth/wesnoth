@@ -837,7 +837,6 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
 		std::string name = cmd.command.substr(prefixlen);
-		typedef std::map<std::string, wml_menu_item*> map_type;
 		wmi_container& gs_wmi = gamedata_.get_wml_menu_items();
 		wmi_container::iterator iter = gs_wmi.find(name);
 		if(iter != gs_wmi.end())
