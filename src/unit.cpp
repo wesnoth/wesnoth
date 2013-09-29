@@ -1147,10 +1147,6 @@ bool unit::get_state(const std::string &state) const
 void unit::set_state(state_t state, bool value)
 {
 	known_boolean_states_[state] = value;
-
-	// Invalidate a cache?
-	if ( state == STATE_UNCOVERED )
-		clear_visibility_cache();
 }
 
 bool unit::get_state(state_t state) const
@@ -2792,6 +2788,11 @@ void unit::apply_modifications()
 
 bool unit::invisible(const map_location& loc, bool see_all) const
 {
+	// This is a quick condition to check, and it does not depend on the
+	// location (so might as well bypass the location-based cache).
+	if ( get_state(STATE_UNCOVERED) )
+		return false;
+
 	// Fetch from cache
 	/**
 	 * @todo FIXME: We use the cache only when using the default see_all=true
@@ -2806,7 +2807,7 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 
 	// Test hidden status
 	static const std::string hides("hides");
-	bool is_inv = !get_state(STATE_UNCOVERED) && get_ability_bool(hides,loc);
+	bool is_inv = get_ability_bool(hides,loc);
 	if(is_inv){
 		const std::vector<team>& teams = *resources::teams;
 		BOOST_FOREACH(const unit &u, *resources::units)

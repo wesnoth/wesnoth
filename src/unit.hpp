@@ -511,7 +511,10 @@ private:
 
 	config modifications_;
 
-	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
+	/**
+	 * Hold the visibility status cache for a unit, when not uncovered.
+	 * This is mutable since it is a cache.
+	 */
 	mutable std::map<map_location, bool> invisibility_cache_;
 
 	/**
