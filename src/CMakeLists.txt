@@ -322,6 +322,7 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 		PROPERTIES
 			COMPILE_FLAGS "-Wno-old-style-cast")
 	set_source_files_properties(
+		desktop_util.cpp
 		text.cpp
 		PROPERTIES
 			COMPILE_FLAGS "-Wno-old-style-cast -Wno-useless-cast")
