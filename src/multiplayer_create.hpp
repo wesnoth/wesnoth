@@ -48,6 +48,8 @@ private:
 
 	void draw_level_image();
 
+	void set_description(const std::string& description);
+
 	std::string select_campaign_difficulty();
 
 	tooltips::manager tooltip_manager_;
