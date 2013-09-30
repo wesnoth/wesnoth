@@ -167,7 +167,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 		search_counter += 2;
 
 	static std::vector<node> nodes;
-	nodes.resize(width * height);  // this create uninitalized nodes
+	nodes.resize(width * height);  // this create uninitialized nodes
 
 	indexer index(width);
 	comp node_comp(nodes);
