@@ -66,6 +66,8 @@ struct symbol_table
 //displayed on screen.
 extern symbol_table string_table;
 
+bool& time_locale_correct();
+
 //function which, given the main configuration object, will return
 //a list of the translations of the game available.
 std::vector<language_def> get_languages();

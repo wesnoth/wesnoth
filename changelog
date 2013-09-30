@@ -53,6 +53,10 @@ Version 1.11.6+dev:
    * Updated translations: British English, German, Greek, Indonesian,
      Lithuanian, Portuguese, Vietnamese
    * Improved internationalization of notifications on Windows and OS X.
+   * Introduced translations for months and weekdays, which are used when user
+     does not have locale installed.
+   * Show am/pm designations, if required, even when locale doesn't support
+     them.
  * Lua API:
    * Added scroll_to_leader field (read/write) to wesnoth.sides table
     elements.

@@ -40,6 +40,7 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "strftime.hpp"
 #include "thread.hpp"
 #include "unit_helper.hpp"
 #include "unit_types.hpp"
@@ -815,7 +816,7 @@ void save_preview_pane::draw_contents()
 	const savegame::save_info& save = (*info_)[index_];
 	tm* tm_l = localtime(&save.modified());
 	if (tm_l) {
-		const size_t res = strftime(time_buf,sizeof(time_buf),
+		const size_t res = util::strftime(time_buf,sizeof(time_buf),
 			(preferences::use_twelve_hour_clock_format() ? _("%a %b %d %I:%M %p %Y") : _("%a %b %d %H:%M %Y")),
 			tm_l);
 		if(res == 0) {
@@ -932,7 +933,7 @@ std::string format_time_summary(time_t t)
 	}
 
 	char buf[40];
-	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
+	const size_t res = util::strftime(buf,sizeof(buf),format_string,&save_time);
 	if(res == 0) {
 		buf[0] = 0;
 	}

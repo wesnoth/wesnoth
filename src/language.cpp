@@ -65,6 +65,12 @@ bool language_def::operator== (const language_def& a) const
 
 symbol_table string_table;
 
+bool& time_locale_correct()
+{
+	static bool result = true;
+	return result;
+}
+
 const t_string& symbol_table::operator[](const std::string& key) const
 {
 	const utils::string_map::const_iterator i = strings_.find(key);
@@ -184,6 +190,11 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	}
 
 	WRN_G << "setlocale() failed for '" << slocale << "'.\n";
+
+	if (category == LC_TIME) {
+		time_locale_correct() = false;
+	}
+
 #ifndef _WIN32
 #ifndef __AMIGAOS4__
 		if(category == LC_MESSAGES) {
@@ -208,6 +219,8 @@ void set_language(const language_def& locale)
 	std::transform(locale.localename.begin(),locale.localename.end(),locale_lc.begin(),tolower);
 
 	current_language = locale;
+	time_locale_correct() = true;
+
 	wesnoth_setlocale(LC_COLLATE, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_TIME, locale.localename, &locale.alternates);
 	wesnoth_setlocale(LC_MESSAGES, locale.localename, &locale.alternates);

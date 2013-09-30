@@ -811,6 +811,7 @@ set(wesnoth-main_SRC
 	storyscreen/interface.cpp
 	storyscreen/part.cpp
 	storyscreen/render.cpp
+	strftime.cpp
 	team.cpp
 	terrain_filter.cpp
 	tod_manager.cpp

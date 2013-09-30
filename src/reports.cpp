@@ -28,6 +28,7 @@
 #include "play_controller.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
+#include "strftime.hpp"
 #include "team.hpp"
 #include "text.hpp"
 #include "tod_manager.hpp"
@@ -1459,7 +1460,7 @@ REPORT_GENERATOR(report_clock)
 	struct tm *lt = std::localtime(&t);
 	if (!lt) return report();
 	char temp[15];
-	size_t s = std::strftime(temp, 15,
+	size_t s = util::strftime(temp, 15,
 		(preferences::use_twelve_hour_clock_format() ? _("%I:%M %p") : _("%H:%M")),
 		lt);
 	return s ? text_report(temp) : report();
