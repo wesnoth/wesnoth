@@ -923,10 +923,15 @@ void playsingle_controller::check_time_over(){
 	}
 }
 
-bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
+	hotkey::HOTKEY_COMMAND command = cmd.id;
 	bool res = true;
 	switch (command){
+
+		case hotkey::HOTKEY_WML:
+			//code mixed from play_controller::show_menu and code here
+			return (gui_->viewing_team() == gui_->playing_team()) && !events::commands_disabled && teams_[gui_->viewing_team()].is_human() && !linger_ && !browse_;
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
 			return !browse_ && !linger_ && !events::commands_disabled;
@@ -991,7 +996,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return false;
 		}
 
-		default: return play_controller::can_execute_command(command, index);
+		default: return play_controller::can_execute_command(cmd, index);
 	}
 	return res;
 }

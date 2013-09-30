@@ -157,6 +157,7 @@ public:
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
 	std::map< std::string, std::vector<unit_animation> > animation_cache;
+	static const std::string wml_menu_hotkey_prefix;
 protected:
 	void slice_before_scroll();
 
@@ -169,8 +170,8 @@ protected:
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND, int index) const;
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	/** Check if a command can be executed. */
-	virtual bool can_execute_command(hotkey::HOTKEY_COMMAND command, int index=-1) const;
-	virtual bool execute_command(hotkey::HOTKEY_COMMAND command, int index=-1);
+	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
+	virtual bool execute_command(const hotkey::hotkey_command& command, int index=-1);
 	void show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp);
 
 	/**
@@ -262,6 +263,7 @@ private:
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<std::string>& items);
 	std::vector<std::string> savenames_;
+	void fire_wml_menu_item_event(const wml_menu_item &menu_item);
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const wml_menu_item *> wml_commands_;
@@ -272,6 +274,7 @@ private:
 	end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
+
 };
 
 

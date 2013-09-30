@@ -233,10 +233,10 @@ void editor_controller::custom_tods_dialog()
 	context_manager_->refresh_all();
 }
 
-bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int index) const
+bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const
 {
 	using namespace hotkey; //reduce hotkey:: clutter
-	switch (command) {
+	switch (cmd.id) {
 		case HOTKEY_NULL:
 			if (index >= 0) {
 				unsigned i = static_cast<unsigned>(index);
@@ -511,10 +511,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	}
 }
 
-bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int index)
+bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int index)
 {
 	const int zoom_amount = 4;
-
+	hotkey::HOTKEY_COMMAND command = cmd.id;
 	SCOPE_ED;
 	using namespace hotkey;
 	switch (command) {
@@ -833,7 +833,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			gui().invalidate_all();
 			return true;
 		default:
-			return controller_base::execute_command(command, index);
+			return controller_base::execute_command(cmd, index);
 	}
 }
 
@@ -855,11 +855,11 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	while(i != items_arg.end())
 	{
 
-		hotkey::HOTKEY_COMMAND command = hotkey::get_id(*i);
+		hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
 
 		if ( ( can_execute_command(command) 
-			&& (!context_menu || in_context_menu(command)) )
-			|| command == hotkey::HOTKEY_NULL) {
+			&& (!context_menu || in_context_menu(command.id)) )
+			|| command.id == hotkey::HOTKEY_NULL) {
 			items.push_back(*i);
 		}
 		++i;

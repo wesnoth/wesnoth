@@ -58,7 +58,7 @@ public:
 	void leave();
 private:
 	void show_help();
-	bool can_execute_command(hotkey::HOTKEY_COMMAND cmd, int/*index*/ =-1) const;
+	bool can_execute_command(const hotkey::hotkey_command& command, int/*index*/ =-1) const;
 
 	display &disp_;
 	const std::string topic_;

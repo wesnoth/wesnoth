@@ -58,6 +58,8 @@ class wml_menu_item
 public:
 	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
 
+	/// The identification of this item.
+	const std::string & id() const { return item_id_; }
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
 	/// The text to display in the menu for this item.
@@ -68,6 +70,12 @@ public:
 	const std::string & image() const;
 	/// If true, then the preceeding "select" event needs to be stored in the replay.
 	bool needs_select() const { return needs_select_; }
+	/// Config object containing the default hotkey.
+	const config & default_hotkey() const { return default_hotkey_; }
+	/// If true, allow using a hotkey to trigger this item.
+	bool use_hotkey() const { return use_hotkey_; }
+	/// If true, allow using the menu to trigger this item.
+	bool use_wml_menu() const { return use_wml_menu_; }
 
 	/// Returns whether or not *this is applicable given the context.
 	bool can_show(const map_location & hex) const;
@@ -98,6 +106,12 @@ private:
 	vconfig filter_location_;	// When used, we need a vconfig instead of a config.
 	/// Actions to take when this item is chosen.
 	config command_;
+	/// Config object containing the default hotkey.
+	config default_hotkey_;
+	/// If true, allow using a hotkey to trigger this item.
+	bool use_hotkey_;
+	/// If true, allow using the menu to trigger this item.
+	bool use_wml_menu_;
 };
 
 /// A container of wml_menu_item.
