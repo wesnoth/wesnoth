@@ -123,6 +123,7 @@ namespace {
 			std::map<std::string, std::string> hooks_;
 			input_stream* input_;
 			int compress_level_;
+			bool read_only_;
 			const network::server_manager server_manager_;
 
 	};
@@ -186,6 +187,7 @@ namespace {
 		hooks_(),
 		input_(0),
 		compress_level_(0), // Will be properly set by load_config()
+		read_only_(false),
 		server_manager_(load_config())
 	{
 #ifndef _MSC_VER
@@ -294,6 +296,13 @@ namespace {
 
  		if (!cfg_["control_socket"].empty())
  			input_ = new input_stream(cfg_["control_socket"]);
+
+		read_only_ = cfg_["read_only"].to_bool(false);
+
+		if(read_only_) {
+			LOG_CS << "READ-ONLY MODE ACTIVE\n";
+		}
+
 		network::connection sock = 0;
 		for(int increment = 0; ; ++increment) {
 			try {
@@ -391,6 +400,14 @@ namespace {
 					}
 					else if (data.child("request_terms"))
 					{
+						// This usually means the client wants to upload content, so tell it
+						// to give up when we're in read-only mode.
+						if(read_only_) {
+							LOG_CS << "in read-only mode, request for upload terms denied\n";
+							network::send_data(construct_error("The server is currently in read-only mode, add-on uploads are disabled."), sock);
+							continue;
+						}
+
 						LOG_CS << "sending terms " << network::ip_address(sock) << "\n";
 						network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), sock);
 						LOG_CS << " Done\n";
@@ -413,7 +430,10 @@ namespace {
 						// TODO: remove for next add-ons server instance.
 						bool illegal_name_upload = false;
 
-						if (!data) {
+						if (read_only_) {
+							LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
+							network::send_data(construct_error("Add-on rejected: The server is currently in read-only mode."), sock);
+						} else if (!data) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock);
 						} else if ((illegal_name_upload = !addon_name_legal(upload["name"])) && campaign == NULL) {
@@ -566,6 +586,12 @@ namespace {
 					}
 					else if (const config &erase = data.child("delete"))
 					{
+						if(read_only_) {
+							LOG_CS << "in read-only mode, request to delete '" << erase["name"] << "' from " << network::ip_address(sock) << " denied\n";
+							network::send_data(construct_error("Cannot delete add-on: The server is currently in read-only mode."), sock);
+							continue;
+						}
+
 						LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << network::ip_address(sock) << "\n";
 						const config &campaign = campaigns().find_child("campaign", "name", erase["name"]);
 						if (!campaign) {
@@ -602,6 +628,12 @@ namespace {
 					}
 					else if (const config &cpass = data.child("change_passphrase"))
 					{
+						if(read_only_) {
+							LOG_CS << "in read-only mode, request to change passphrase denied\n";
+							network::send_data(construct_error("Cannot change passphrase: The server is currently in read-only mode."), sock);
+							continue;
+						}
+
 						config &campaign = campaigns().find_child("campaign", "name", cpass["name"]);
 						if (!campaign) {
 							network::send_data(construct_error("No add-on with that name exists."), sock);
