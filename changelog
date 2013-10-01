@@ -14,6 +14,9 @@ Version 1.11.6+dev:
    * Fixed regression from 1.11.0 resulting in memory leaks and/or
      crash-to-desktop situations when failing to connect to an add-ons
      server.
+ * Add-ons server:
+   * Implemented read-only mode option (read_only boolean attribute in
+     server config WML, defaults to "no").
  * AI:
    * Micro AIs:
      * New Simple Attack Micro AI
