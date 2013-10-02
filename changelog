@@ -105,6 +105,9 @@ Version 1.11.6+dev:
      gui and engine parts.
    * Lock faction, leader, and gender selections in MP "Connect" if "Use map
      settings" is on and default values were provided.
+   * Fixed runtime error due to mismatched function call conventions in
+     set_preferences_dir() when built with MSVC++ 2010 and a relative path
+	 to My Documents was passed with --config-dir in the command line.
 
 Version 1.11.6:
  * Add-ons client:
