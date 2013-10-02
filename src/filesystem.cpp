@@ -540,9 +540,10 @@ void set_preferences_dir(std::string path)
 		//allow absolute path override
 		game_config::preferences_dir = path;
 	} else {
-		WINAPI BOOL (*SHGetSpecialFolderPath)(HWND, LPTSTR, int, BOOL);
+		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPTSTR, int, BOOL);
+		SHGSFPAddress SHGetSpecialFolderPath;
 		HMODULE module = LoadLibrary("shell32");
-		SHGetSpecialFolderPath = (WINAPI BOOL (*)(HWND, LPTSTR, int, BOOL))GetProcAddress(module, "SHGetSpecialFolderPathA");
+		SHGetSpecialFolderPath = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
 		if(SHGetSpecialFolderPath) {
 			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
 			char my_documents_path[MAX_PATH];
