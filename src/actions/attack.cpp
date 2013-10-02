@@ -119,7 +119,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
-		disable = weapon->get_special_bool("disable");
+		const int distance = distance_between(u_loc, opp_loc);
+		const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
+		disable = weapon->get_special_bool("disable") || out_of_range;
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
@@ -490,6 +492,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			}
 			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
 				true, defender, defender_loc, def, units);
+			if (attacker_stats_->disable) continue;
 			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
 				attacker, attacker_loc, &att, units);
 			attacker_combatant_ = new combatant(*attacker_stats_);
