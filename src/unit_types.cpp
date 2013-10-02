@@ -57,6 +57,8 @@ attack_type::attack_type(const config& cfg) :
 	type_(cfg["type"]),
 	icon_(cfg["icon"]),
 	range_(cfg["range"]),
+	min_range_(cfg["min_range"].to_int(1)),
+	max_range_(cfg["max_range"].to_int(1)),
 	damage_(cfg["damage"]),
 	num_attacks_(cfg["number"]),
 	attack_weight_(cfg["attack_weight"].to_double(1.0)),
