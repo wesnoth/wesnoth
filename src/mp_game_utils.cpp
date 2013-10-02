@@ -66,6 +66,7 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 	} else {
 		level.merge_with(params.scenario_data);
 		level["turns"] = params.num_turns;
+		level["difficulty"] = params.difficulty_define;
 		level.add_child("multiplayer", params.to_config());
 
 		// Convert options to events
