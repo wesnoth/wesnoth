@@ -30,6 +30,10 @@ Syntax errors in .pbl files are now reported properly in the user interface inst
 Finally, some color key disparities between the Add-ons Manager view and the Description box (which were unintentionally using different shades of orange and green) have been fixed.
 [/section]
 
+[section="Game Paths dialog"]
+A new informational dialog has been added to the General section in Preferences to display the various resource and configuration paths used by the game. From there, the user can copy individual paths to clipboard or launch the file browser on them (currently only tested with Windows, Linux, and Mac OS X).
+[/section]
+
 [section="Better support for multiplayer campaigns"]
 A support for CampaignWML has been added for multiplayer, thus allowing to use the same campaign in both multiplayer and singleplayer. As a result of this, difficulty levels and other features of singleplayer campaigns are supported in multiplayer as well. User interface has been improved to act better upon these changes and now it supports different types of level selection and difficulties dialog for campaigns.
 
