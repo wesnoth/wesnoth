@@ -14,6 +14,10 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
+[section="AI configuration fixes"]
+AI configuration with the [wiki=AiWML#The_.5Bai.5D_Tag:_Defining_Aspects]time_of_day aspect[/wiki] has been fixed in this release to compare with the current ToD's id instead of its user-visible name (e.g. "morning" vs. "Morning") from the [wiki=TimeWML][time] tag[/wiki]. Since the previous behavior was incorrect and mainline campaigns used ToD ids with it, this effectively fixes AI configuration for all of them. Authors of user-made campaigns and scenarios who were making use of this feature are strongly advised to playtest their scenarios with this version again to check for potential side-effects on gameplay balance.
+[/section]
+
 [section="Add-ons Manager improvements"]
 In this release, new sorting options have been added to the Add-ons Manager dialog to improve its usefulness. The new options allow to change the neutral sorting criterion between [i]By name[/i] (which continues to be the default), [i]By last updated[/i], and [i]By first upload[/i] (former default in all versions prior to 1.11.0); additionally, it is possible to switch between ascending and descending order. Due to UI framework limitations, these options only take effect when no column has been marked for sorting in the add-ons list.
 [/section]
