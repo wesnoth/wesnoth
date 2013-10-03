@@ -27,6 +27,9 @@ Version 1.11.6+dev:
      * New Recruitment CA located in src/ai/recruitment is now default CA
      * Created new AI cfg "Strong AI (RCA)" with stronger recruitment
      * Created new AI cfg "Old Recruitment CA" in ai/dev/ to use the old CA
+   * Fixed time_of_day aspect so it matches time-of-day ids, not names
+     (e.g. "Morning" vs "morning"), so most use cases of ToD-dependent AI
+     configuration work again (suspected version 1.7.4 regression).
  * Campaigns:
    * Legend of Wesmere:
      * Removed now redundant MP code.

@@ -1302,7 +1302,7 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 {
 		if(time_of_day.empty() == false) {
 			const std::vector<std::string>& times = utils::split(time_of_day);
-			if(std::count(times.begin(),times.end(),resources::tod_manager->get_time_of_day().name) == 0) {
+			if(std::count(times.begin(),times.end(),resources::tod_manager->get_time_of_day().id) == 0) {
 				return false;
 			}
 		}
