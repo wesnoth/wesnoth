@@ -289,7 +289,9 @@ void recruitment::execute() {
 	 */
 
 	update_important_hexes();
-	if (game_config::debug) {
+	// Show "x" on important hexes if debug mode is activated AND
+	// the log domain "ai/recruitment" is used.
+	if (game_config::debug && !lg::info.dont_log(log_ai_recruitment)) {
 		show_important_hexes();
 	}
 
