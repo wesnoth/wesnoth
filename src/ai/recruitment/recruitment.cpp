@@ -63,10 +63,6 @@ namespace {
  * CONSTANTS
  */
 
-// When a enemy is in this radius around a leader, this leader is tagged as 'in danger'.
-// If gold is available, this leader will recruit as much units as possible.
-const static int LEADER_IN_DANGER_RADIUS = 5;
-
 // This is used for a income estimation. We'll calculate the estimated income of this much
 // future turns and decide if we'd gain gold if we start to recruit no units anymore.
 const static int SAVE_GOLD_FORECAST_TURNS = 5;
@@ -262,8 +258,9 @@ void recruitment::execute() {
 			global_recruits.insert(recall.type_id());
 		}
 
-		// Check if leader is in danger.
-		data.in_danger = is_enemy_in_radius(leader->get_location(), LEADER_IN_DANGER_RADIUS);
+		// Check if leader is in danger. (If a enemies unit can attack the leader)
+		data.in_danger = power_projection(leader->get_location(), get_enemy_dstsrc()) > 0;
+
 		// If yes, set ratio_score very high, so this leader will get priority while recruiting.
 		if (data.in_danger) {
 			data.ratio_score = 50;
