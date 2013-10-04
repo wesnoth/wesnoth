@@ -1033,7 +1033,7 @@ formula::formula(const std::string& str, function_symbol_table* symbols) :
 
 			tokens.push_back( get_token(i1,i2) );
 
-			TOKEN_TYPE current_type = tokens.back().type;
+			formula_tokenizer::TOKEN_TYPE current_type = tokens.back().type;
 
 			if(current_type == TOKEN_WHITESPACE)  {
 				tokens.pop_back();

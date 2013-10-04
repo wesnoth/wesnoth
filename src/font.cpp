@@ -360,7 +360,7 @@ void manager::init() const
 		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
-				AddFontResource(file.c_str());
+				AddFontResourceA(file.c_str());
 	}
 #endif
 }
@@ -377,7 +377,7 @@ void manager::deinit() const
 		get_files_in_dir(path, &files, NULL, ENTIRE_FILE_PATH);
 		BOOST_FOREACH(const std::string& file, files)
 			if(file.substr(file.length() - 4) == ".ttf" || file.substr(file.length() - 4) == ".ttc")
-				RemoveFontResource(file.c_str());
+				RemoveFontResourceA(file.c_str());
 	}
 #endif
 }
