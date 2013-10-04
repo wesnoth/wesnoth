@@ -926,14 +926,16 @@ namespace { // Helpers for create_unit()
 		create_dlg.show(gui.video());
 
 		if(create_dlg.no_choice()) {
-			return type_and_gender(NULL, unit_race::NUM_GENDERS);
+			// the static cast fixes http://connect.microsoft.com/VisualStudio/feedback/details/520043/
+			// c++11's nullptr would be a better solution as soon as we support it.
+			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
 		}
 
 		const std::string& ut_id = create_dlg.choice();
 		const unit_type *utp = unit_types.find(ut_id);
 		if (!utp) {
 			ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.\n";
-			return type_and_gender(NULL, unit_race::NUM_GENDERS);
+			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
 		}
 		const unit_type &ut = *utp;
 
@@ -1025,7 +1027,7 @@ namespace { // Helpers for create_unit()
 			                                       unit_choices[choice]->genders().front());
 		}
 		else
-			return type_and_gender(NULL, unit_race::NUM_GENDERS);
+			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
 	}
 
 	/**
