@@ -123,12 +123,13 @@ public:
 
 	/// Records the status of the lazy building of unit types.
 	/// These are in order of increasing levels of being built.
-	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEX, WITHOUT_ANIMATIONS, FULL};
+	/// HELP_INDEX is already defined in a windows header under some conditions.
+	enum BUILD_STATUS {NOT_BUILT, CREATED, VARIATIONS, HELP_INDEXED , WITHOUT_ANIMATIONS, FULL};
 private: // These will be called by build().
 	/// Load data into an empty unit_type (build to FULL).
 	void build_full(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
-	/// Partially load data into an empty unit_type (build to HELP_INDEX).
+	/// Partially load data into an empty unit_type (build to HELP_INDEXED).
 	void build_help_index(const movement_type_map &movement_types,
 		const race_map &races, const config::const_child_itors &traits);
 	/// Load the most needed data into an empty unit_type (build to CREATE).
@@ -244,7 +245,7 @@ public:
 	bool has_random_traits() const;
 
 	/// The returned vector will not be empty, provided this has been built
-	/// to the HELP_INDEX status.
+	/// to the HELP_INDEXED status.
 	const std::vector<unit_race::GENDER>& genders() const { return genders_; }
 	std::vector<std::string> variations() const;
 	
@@ -257,7 +258,7 @@ public:
 	/// Returns the ID of this type's race without the need to build the type.
 	std::string race_id() const { return cfg_["race"]; } //race_->id(); }
 	/// Never returns NULL, but may point to the null race.
-	/// Requires building to the HELP_INDEX status to get the correct race.
+	/// Requires building to the HELP_INDEXED status to get the correct race.
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
 
