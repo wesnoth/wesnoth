@@ -1358,7 +1358,7 @@ public:
 
 				BOOST_FOREACH(const std::string &adv, adv_units)
 				{
-					const unit_type *type = unit_types.find(adv, unit_type::HELP_INDEX);
+					const unit_type *type = unit_types.find(adv, unit_type::HELP_INDEXED);
 					if (!type || type->hide_help()) continue;
 
 					if (first) {
@@ -1387,7 +1387,7 @@ public:
 		}
 
 		const unit_type* parent = variation_.empty() ? &type_ :
-				unit_types.find(type_.id(), unit_type::HELP_INDEX);
+				unit_types.find(type_.id(), unit_type::HELP_INDEXED);
 		if (!variation_.empty()) {
 			ss << _("Base unit: ") << "<ref>dst='" << ".." << unit_prefix + type_.id()
 					<< "' text='" << escape(parent->type_name()) << "'</ref>\n";
@@ -1398,7 +1398,7 @@ public:
 					ss << _("Base units: ");
 					first = false;
 				}
-				const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEX);
+				const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEXED);
 				const std::string section_prefix = base_type->variations().empty() ? "" : "..";
 				ss << "<ref>dst='" << section_prefix << unit_prefix + base_id
 						<< "' text='" << escape(base_type->type_name()) << "'</ref>\n";
@@ -1744,7 +1744,7 @@ std::string make_unit_link(const std::string& type_id)
 {
 	std::string link;
 
-	const unit_type *type = unit_types.find(type_id, unit_type::HELP_INDEX);
+	const unit_type *type = unit_types.find(type_id, unit_type::HELP_INDEXED);
 	if (!type) {
 		std::cerr << "Unknown unit type : " << type_id << "\n";
 		// don't return an hyperlink (no page)
@@ -3297,7 +3297,7 @@ void show_help(display &disp, const section &toplevel_sec,
 
     // Find all unit_types that have not been constructed yet and fill in the information
     // needed to create the help topics
-	unit_types.build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEXED);
 
 	if (preferences::encountered_units().size() != size_t(last_num_encountered_units) ||
 	    preferences::encountered_terrains().size() != size_t(last_num_encountered_terrains) ||

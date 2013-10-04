@@ -971,7 +971,7 @@ namespace { // Helpers for create_unit()
 			std::stringstream row;
 
 			// Make sure the unit type was built for the data we need.
-			unit_types.build_unit_type(i.second, unit_type::HELP_INDEX);
+			unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
 
 			row << i.second.race()->plural_name() << COLUMN_SEPARATOR;
 			row << i.second.type_name() << COLUMN_SEPARATOR;

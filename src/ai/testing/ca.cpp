@@ -318,7 +318,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 	LOG_AI_TESTING_AI_DEFAULT << "recruiting '" << usage << "'\n";
 
 	//make sure id, usage and cost are known for the coming evaluation of unit types
-	unit_types.build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEXED);
 
 	std::vector<std::string> options;
 	bool found = false;
