@@ -392,23 +392,45 @@ void read_compressed(config &cfg, std::istream &file, abstract_validator * valid
 	filter.push(decompressor());
 	filter.push(file);
 
+
+#if (_MSC_VER >= 1500)
+	// this seems to fix an msvc issue that causes crashes on a regular basis
+	// this causes especialy gzip_error (or the coresponding bz2 error, maybe other erros too?) to be thrown here. 
+	// gzip_error will be thown in case of a invalid zip file
+	// save_index_class::data expects that and config_cache::read_cache is also capable of catching.
+	// 
+	// i(gfgtdf) still dont know how other compilers handle it. 
+	// especialy weather the catch for gzip_error in save_index_class::data is ever reached and  when the exeption is thown.
+	// and what happens when the code tries to read a corupt cache gz file.
+	// note that  parser(cfg, filter,validator)(); -> tokenizer::tokenizer can throw exeptions too (meaning this functions did already throw these exeptions before this patch).
+	// also note that this doesn't fix the source of the currupted gz files wich is, that filtering_stream cannot create empty compressend gz files properly, see https://svn.boost.org/trac/boost/ticket/5237
+	// filter.peek() might throw an exeption now.
+	filter.exceptions(filter.exceptions() | std::ios_base::badbit);
+#endif
 	/*
 	 * It sometimes seems the file is not empty but still no real data.
 	 * Filter that case here. It might be previous test is no longer required
 	 * but simply keep it.
 	 */
+	// at least on msvc filter.peek() != EOF does not imply filter.good() (without the line above)
 	if(filter.peek() == EOF) {
 		return;
+	}
+	
+	if(!filter.good()) {
+		LOG_CF << " filter.peek() != EOF but !filter.good(), this indicates a malformed gz stream.";
 	}
 
 	parser(cfg, filter,validator)();
 }
 
+/// might throw a std::ios_base::failure especially a gzip_error
 void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 {
 	read_compressed<boost::iostreams::gzip_decompressor>(cfg, file, validator);
 }
 
+/// might throw a std::ios_base::failure especially bzip2_error 
 void read_bz2(config &cfg, std::istream &file, abstract_validator * validator)
 {
 	read_compressed<boost::iostreams::bzip2_decompressor>(cfg, file, validator);
