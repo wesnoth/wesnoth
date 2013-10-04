@@ -1493,9 +1493,7 @@ void recruitment::update_state() {
 	}
 	// Retrieve from aspect.
 	int spend_all_gold = get_recruitment_save_gold()["spend_all_gold"].to_int(-1);
-
-	int threshold = (spend_all_gold < 0) ? current_team().start_gold() + 1 : spend_all_gold;
-	if (current_team().gold() >= threshold) {
+	if (spend_all_gold > 0 && current_team().gold() >= spend_all_gold) {
 		state_ = SPEND_ALL_GOLD;
 		LOG_AI_RECRUITMENT << "Changed state_ to SPEND_ALL_GOLD. \n";
 		return;
