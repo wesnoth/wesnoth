@@ -1458,6 +1458,7 @@ double recruitment::get_estimated_village_gain() const {
 double recruitment::get_unit_ratio() const {
 	const unit_map& units = *resources::units;
 	double own_total_value = 0.;
+	double team_total_value = 0.;
 	double enemy_total_value = 0.;
 	BOOST_FOREACH(const unit& unit, units) {
 		if (unit.incapacitated() || unit.total_movement() <= 0 || unit.can_recruit()) {
@@ -1467,17 +1468,33 @@ double recruitment::get_unit_ratio() const {
 		if (current_team().is_enemy(unit.side())) {
 			enemy_total_value += value;
 		} else {
-			own_total_value += value;
+			team_total_value += value;
+			if (unit.side() == current_team().side()) {
+				own_total_value += value;
+			}
+		}
+	}
+	int allies_count = 0;
+	BOOST_FOREACH(const team& team, *resources::teams) {
+		if (!current_team().is_enemy(team.side())) {
+			++allies_count;
 		}
 	}
 	// If only the leader is left, the values could be 0.
 	// Catch those cases and return something reasonable.
-	if (own_total_value == 0. && enemy_total_value == 0.) {
-		return 0.;
+	if ((own_total_value == 0. || team_total_value == 0) && enemy_total_value == 0.) {
+		return 0.;  // do recruit
 	} else if (enemy_total_value == 0.) {
-		return 2.;
+		return 999.;  // save money
 	}
-	return own_total_value / enemy_total_value;
+
+	// We calculate two ratios: One for the team and one for just our self.
+	// Then we return the minimum.
+	// This prevents cases where side1 will recruit until the save_gold begin threshold
+	// is reached, and side2 won't recruit anything. (assuming side1 and side2 are allied)
+	double own_ratio = (own_total_value / enemy_total_value) * allies_count;
+	double team_ratio = team_total_value / enemy_total_value;
+	return std::min<double>(own_ratio, team_ratio);
 }
 
 /**
