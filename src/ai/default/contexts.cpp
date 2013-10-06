@@ -59,10 +59,6 @@ void default_ai_context_proxy::init_default_ai_context_proxy(default_ai_context 
 	target_= &target.get_default_ai_context();
 }
 
-
-const int max_positions = 10000;
-
-
 default_ai_context_impl::~default_ai_context_impl()
 {
 }
