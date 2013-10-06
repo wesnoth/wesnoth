@@ -29,6 +29,7 @@
 
 #include <boost/foreach.hpp>
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
 
 static lg::log_domain log_cache("cache");
 #define ERR_CACHE LOG_STREAM(err, log_cache)
@@ -217,6 +218,9 @@ namespace game_config {
 						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<<"\n";
 					} catch(io_exception&) {
 						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files\n";
+					} catch (boost::iostreams::gzip_error& e) {
+						//read_file -> ... -> read_gz can throw this exeption.
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << "\n";
 					}
 				}
 

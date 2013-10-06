@@ -538,13 +538,13 @@ void unit_type::build_full(const movement_type_map &mv_types,
 }
 
 /**
- * Partially load data into an empty unit_type (build to HELP_INDEX).
+ * Partially load data into an empty unit_type (build to HELP_INDEXED).
  */
 void unit_type::build_help_index(const movement_type_map &mv_types,
 	const race_map &races, const config::const_child_itors &traits)
 {
 	// Don't build twice.
-	if ( HELP_INDEX <= build_status_ )
+	if ( HELP_INDEXED <= build_status_ )
 		return;
 	// Make sure we are built to the preceding build level.
 	build_created(mv_types, races, traits);
@@ -650,7 +650,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 
 	hide_help_= cfg_["hide_help"].to_bool();
 
-	build_status_ = HELP_INDEX;
+	build_status_ = HELP_INDEXED;
 }
 
 /**
@@ -713,8 +713,8 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 		build_created(movement_types, races, traits);
 		return;
 
-	case VARIATIONS: // Implemented as part of HELP_INDEX
-	case HELP_INDEX:
+	case VARIATIONS: // Implemented as part of HELP_INDEXED
+	case HELP_INDEXED:
 		// Build the data needed to feed the help index.
 		build_help_index(movement_types, races, traits);
 		return;
@@ -953,7 +953,7 @@ std::set<std::string> unit_type::advancement_tree() const
 const std::vector<std::string> unit_type::advances_from() const
 {
 	// currently not needed (only help call us and already did it)
-	unit_types.build_all(unit_type::HELP_INDEX);
+	unit_types.build_all(unit_type::HELP_INDEXED);
 
 	std::vector<std::string> adv_from;
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &ut, unit_types.types())

@@ -63,10 +63,6 @@ namespace {
  * CONSTANTS
  */
 
-// When a enemy is in this radius around a leader, this leader is tagged as 'in danger'.
-// If gold is available, this leader will recruit as much units as possible.
-const static int LEADER_IN_DANGER_RADIUS = 5;
-
 // This is used for a income estimation. We'll calculate the estimated income of this much
 // future turns and decide if we'd gain gold if we start to recruit no units anymore.
 const static int SAVE_GOLD_FORECAST_TURNS = 5;
@@ -262,8 +258,9 @@ void recruitment::execute() {
 			global_recruits.insert(recall.type_id());
 		}
 
-		// Check if leader is in danger.
-		data.in_danger = is_enemy_in_radius(leader->get_location(), LEADER_IN_DANGER_RADIUS);
+		// Check if leader is in danger. (If a enemies unit can attack the leader)
+		data.in_danger = power_projection(leader->get_location(), get_enemy_dstsrc()) > 0;
+
 		// If yes, set ratio_score very high, so this leader will get priority while recruiting.
 		if (data.in_danger) {
 			data.ratio_score = 50;
@@ -289,7 +286,9 @@ void recruitment::execute() {
 	 */
 
 	update_important_hexes();
-	if (game_config::debug) {
+	// Show "x" on important hexes if debug mode is activated AND
+	// the log domain "ai/recruitment" is used.
+	if (game_config::debug && !lg::info.dont_log(log_ai_recruitment)) {
 		show_important_hexes();
 	}
 
@@ -1491,9 +1490,7 @@ void recruitment::update_state() {
 	}
 	// Retrieve from aspect.
 	int spend_all_gold = get_recruitment_save_gold()["spend_all_gold"].to_int(-1);
-
-	int threshold = (spend_all_gold < 0) ? current_team().start_gold() + 1 : spend_all_gold;
-	if (current_team().gold() >= threshold) {
+	if (spend_all_gold > 0 && current_team().gold() >= spend_all_gold) {
 		state_ = SPEND_ALL_GOLD;
 		LOG_AI_RECRUITMENT << "Changed state_ to SPEND_ALL_GOLD. \n";
 		return;

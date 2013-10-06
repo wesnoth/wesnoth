@@ -301,7 +301,10 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
 {
 	// Try to insert a dummy value. This combines looking for an existing
 	// entry with insertion.
-	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, NULL)).first;
+	
+	// the static cast fixes http://connect.microsoft.com/VisualStudio/feedback/details/520043/
+	// c++11's nullptr would be a better solution as soon as we support it.
+	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, static_cast<wml_menu_item *>(NULL))).first;
 
 	// If we ended up with a dummy value, create an entry for it.
 	if ( add_it->second == NULL )
