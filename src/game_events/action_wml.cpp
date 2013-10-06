@@ -230,9 +230,6 @@ namespace { // Types
 } // end anonymous namespace (types)
 
 namespace { // Variables
-	const gui::msecs prevent_misclick_duration = 10;
-	const gui::msecs average_frame_time = 30;
-
 	int floating_label = 0;
 } // end anonymous namespace (variables)
 
