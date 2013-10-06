@@ -1053,7 +1053,6 @@ void game_display::begin_game()
 namespace {
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
-	const int chat_message_y = 10;
 	const SDL_Color chat_message_color = {255,255,255,255};
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
