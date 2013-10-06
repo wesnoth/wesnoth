@@ -1422,7 +1422,7 @@ double recruitment::get_estimated_income(int turns) const {
 		double income = (own_villages + village_gain * i) * game_config::village_income;
 		double upkeep = side_upkeep(get_side()) + unit_gain * i -
 				(own_villages + village_gain * i) * game_config::village_support;
-		double resulting_income = game_config::base_income + income - std::max(0., upkeep);
+		double resulting_income = team.base_income() + income - std::max(0., upkeep);
 		total_income += resulting_income;
 	}
 	return total_income;
@@ -1513,13 +1513,16 @@ void recruitment::update_state() {
 		return;
 	}
 	double ratio = get_unit_ratio();
-	double income_estimation = get_estimated_income(SAVE_GOLD_FORECAST_TURNS);
+	double income_estimation = 1.;
+	if (!get_recruitment_save_gold()["save_on_negative_income"].to_bool(false)) {
+		income_estimation = get_estimated_income(SAVE_GOLD_FORECAST_TURNS);
+	}
 	LOG_AI_RECRUITMENT << "Ratio is " << ratio << "\n";
 	LOG_AI_RECRUITMENT << "Estimated income is " << income_estimation << "\n";
 
 	// Retrieve from aspect.
-	double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.0);
-	double save_gold_end = get_recruitment_save_gold()["end"].to_double(0.7);
+	double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.5);
+	double save_gold_end = get_recruitment_save_gold()["end"].to_double(1.1);
 
 	if (state_ == NORMAL && ratio > save_gold_begin && income_estimation > 0) {
 		state_ = SAVE_GOLD;
