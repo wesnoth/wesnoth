@@ -62,11 +62,6 @@ boost::ptr_vector<hotkey::hotkey_command> known_hotkeys;
 
 
 namespace hotkey {
-//what is this for??
-const input_controll input_list_[] = {
-		{ hotkey::INPUT_SCROLL_HORIZONTAL, "scroll-horizontal", N_("Scroll Viewport Horizontally"), false, hotkey::SCOPE_GENERAL },
-		{ hotkey::INPUT_SCROLL_VERTICAL,   "scroll-vertical",   N_("Scroll Viewport Vertically"), false, hotkey::SCOPE_GENERAL }
-};
 
 // this contains all static hotkeys
 hotkey_command_temp hotkey_list_[] = {
