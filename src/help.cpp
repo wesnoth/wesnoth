@@ -609,7 +609,6 @@ namespace {
 	config dummy_cfg;
 	std::vector<std::string> empty_string_vector;
 	const int max_section_level = 15;
-	const int menu_font_size = font::SIZE_NORMAL;
 	const int title_size = font::SIZE_LARGE;
 	const int title2_size = font::SIZE_15;
 	const int box_width = 2;
