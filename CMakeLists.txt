@@ -302,6 +302,13 @@ if(NOT CMAKE_COMPILER_IS_GNUCXX)
 	)
 endif(NOT CMAKE_COMPILER_IS_GNUCXX)
 
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wdeprecated-register"
+	HAS_COMPILER_FLAG_WDEPRECATED_REGISTER
+	"-Wno-deprecated-register"
+)
+
 
 ### Set pedantic compiler flags.
 

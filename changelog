@@ -117,6 +117,7 @@ Version 1.11.6+dev:
    * Fixed runtime error due to mismatched function call conventions in
      set_preferences_dir() when built with MSVC++ 2010 and a relative path
      to My Documents was passed with --config-dir in the command line.
+   * Changed: Added -Wno-deprecated-register to strict compilation.
 
 Version 1.11.6:
  * Add-ons client:
