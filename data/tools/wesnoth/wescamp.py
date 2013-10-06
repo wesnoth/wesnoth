@@ -464,7 +464,7 @@ if __name__ == "__main__":
     target = None
     tmp = tempdir()
     if(args.temp_dir != None):
-        if(args.upload_all != None):
+        if(args.upload_all):
             logging.error("TEMP-DIR not allowed for UPLOAD-ALL.")
             sys.exit(2)
 
@@ -542,7 +542,7 @@ if __name__ == "__main__":
             sys.exit(e[0])
 
     # Upload all addons from wescamp.
-    elif(args.upload_all != None):
+    elif(args.upload_all):
         assert_campaignd(campaignd_configured)
         assert_wescamp(wescamp_configured)
         if(wescamp == None):
@@ -577,7 +577,7 @@ if __name__ == "__main__":
         if(error):
             sys.exit(1)
 
-    elif(args.checkout != None or args.checkout_readonly != None):
+    elif(args.checkout or args.checkout_readonly):
         assert_wescamp(wescamp_configured)
 
         if(wescamp == None):
@@ -585,7 +585,7 @@ if __name__ == "__main__":
             sys.exit(2)
 
         try:
-            checkout(wescamp, auth=git_auth, readonly=(args.checkout_readonly != None))
+            checkout(wescamp, auth=git_auth, readonly=(args.checkout_readonly))
         except libgithub.AddonError as e:
             print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
             sys.exit(1)
