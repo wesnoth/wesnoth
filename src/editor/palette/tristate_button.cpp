@@ -34,9 +34,7 @@ static lg::log_domain log_display("display");
 namespace gui {
 
 const int font_size = font::SIZE_SMALL;
-const int horizontal_padding = font::SIZE_SMALL;
 const int checkbox_horizontal_padding = font::SIZE_SMALL / 2;
-const int vertical_padding = font::SIZE_SMALL / 2;
 
 tristate_button::tristate_button(CVideo& video,
 		editor::common_palette* palette,
