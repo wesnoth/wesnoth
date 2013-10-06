@@ -195,9 +195,9 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("exit-at-end", "exit Wesnoth at the end of the scenario.")
 		("ignore-map-settings", "do not use map settings.")
 		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
+		("multiplayer-repeat",  po::value<unsigned int>(), "repeats a multiplayer game after it is finished <arg> times.")
 		("nogui", "runs the game without the GUI.")
 		("parm", po::value<std::vector<std::string> >()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
-		("repeat",  po::value<unsigned int>(), "repeats a multiplayer game after it is finished <arg> times.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
 		("side", po::value<std::vector<std::string> >()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
 		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
@@ -310,6 +310,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("multiplayer"))
 		multiplayer = true;
+	if (vm.count("multiplayer-repeat"))
+		multiplayer_repeat = vm["multiplayer-repeat"].as<unsigned int>();
 	if (vm.count("new-widgets"))
 		new_widgets = true;
 	if (vm.count("nocache"))
@@ -348,8 +350,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		proxy_port = vm["proxy-port"].as<std::string>();
 	if (vm.count("proxy-user"))
 		proxy_user = vm["proxy-user"].as<std::string>();
-	if (vm.count("repeat"))
-		multiplayer_repeat = vm["repeat"].as<unsigned int>();
 	if (vm.count("resolution"))
 		parse_resolution_(vm["resolution"].as<std::string>());
 	if (vm.count("rng-seed"))
