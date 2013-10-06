@@ -42,10 +42,6 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_configure("mp/configure");
 #define DBG_MP LOG_STREAM(debug, log_mp_configure)
 
-namespace {
-const SDL_Rect null_rect = {0, 0, 0, 0};
-}
-
 namespace mp {
 
 configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only) :
