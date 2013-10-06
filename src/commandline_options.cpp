@@ -76,6 +76,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	multiplayer_ignore_map_settings(),
 	multiplayer_label(),
 	multiplayer_parm(),
+	multiplayer_repeat(),
 	multiplayer_scenario(),
 	multiplayer_side(),
 	multiplayer_turns(),
@@ -196,6 +197,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("label", po::value<std::string>(), "sets the label for AIs.") //TODO is the description precise? this option was undocumented before.
 		("nogui", "runs the game without the GUI.")
 		("parm", po::value<std::vector<std::string> >()->composing(), "sets additional parameters for this side. <arg> should have format side:name:value.")
+		("repeat",  po::value<unsigned int>(), "repeats a multiplayer game after it is finished <arg> times.")
 		("scenario", po::value<std::string>(), "selects a multiplayer scenario. The default scenario is \"multiplayer_The_Freelands\".")
 		("side", po::value<std::vector<std::string> >()->composing(), "selects a faction of the current era for this side by id. <arg> should have format side:value.")
 		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
@@ -346,6 +348,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		proxy_port = vm["proxy-port"].as<std::string>();
 	if (vm.count("proxy-user"))
 		proxy_user = vm["proxy-user"].as<std::string>();
+	if (vm.count("repeat"))
+		multiplayer_repeat = vm["repeat"].as<unsigned int>();
 	if (vm.count("resolution"))
 		parse_resolution_(vm["resolution"].as<std::string>());
 	if (vm.count("rng-seed"))

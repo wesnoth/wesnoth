@@ -870,7 +870,11 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	if (cmdline_opts.multiplayer_label) label = *cmdline_opts.multiplayer_label;
 	recorder.add_log_data("ai_log","ai_label",label);
 
-	play_game(disp, state, game_config, IO_SERVER, false, false);
+	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
+	for(unsigned int i = 0; i < repeat; i++){
+		game_state state_copy(state);
+		play_game(disp, state_copy, game_config, IO_SERVER, false, false);
+	}
 	recorder.clear();
 }
 

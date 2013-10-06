@@ -99,6 +99,8 @@ public:
 	boost::optional<std::string> multiplayer_label;
 	/// Non-empty if --parm was given on the command line. Vector of pairs (side number, parm name, parm value). Dependent on --multiplayer.
 	boost::optional<std::vector<boost::tuple<unsigned int, std::string, std::string> > > multiplayer_parm;
+	/// Repeats specified by --repeat option. Repeats a multiplayer game after it is finished. Dependent on --multiplayer.
+	boost::optional<unsigned int> multiplayer_repeat;
 	/// Non-empty if --scenario was given on the command line. Dependent on --multiplayer.
 	boost::optional<std::string> multiplayer_scenario;
 	/// Non-empty if --side was given on the command line. Vector of pairs (side number, faction id). Dependent on --multiplayer.

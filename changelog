@@ -118,6 +118,9 @@ Version 1.11.6+dev:
      set_preferences_dir() when built with MSVC++ 2010 and a relative path
      to My Documents was passed with --config-dir in the command line.
    * Changed: Added -Wno-deprecated-register to strict compilation.
+   * Added command line option "--repeat <arg>". A game started with
+     --multiplayer will be repeated <arg> times. This is useful for
+     batch testing.
 
 Version 1.11.6:
  * Add-ons client:
