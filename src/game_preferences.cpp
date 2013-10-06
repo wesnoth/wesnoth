@@ -44,7 +44,6 @@ std::set<std::string> encountered_units_set;
 std::set<t_translation::t_terrain> encountered_terrains_set;
 
 std::map<std::string, std::vector<std::string> > history_map;
-const unsigned max_history_saved = 50;
 
 std::map<std::string, preferences::acquaintance> acquaintances;
 
