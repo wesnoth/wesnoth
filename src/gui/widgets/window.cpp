@@ -82,7 +82,6 @@ namespace {
 	const unsigned LAYOUT = tdebug_layout_graph::LAYOUT;
 #else
 	// values are irrelavant when DEBUG_WINDOW_LAYOUT_GRAPHS is not defined.
-	const unsigned MANUAL = 0;
 	const unsigned SHOW = 0;
 	const unsigned LAYOUT = 0;
 #endif
