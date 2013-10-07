@@ -89,7 +89,7 @@ double goto_phase::evaluate()
 		route = pathfind::a_star_search(ui->get_location(), ui->get_goto(), 10000.0, &calc, map_.w(), map_.h(), &allowed_teleports);
 
 		if (!route.steps.empty()){
-			move_ = check_move_action(ui->get_location(), route.steps.back());
+			move_ = check_move_action(ui->get_location(), route.steps.back(), true, true);
 		} else {
 			// there is no direct path (yet)
 			// go to the nearest hex instead.

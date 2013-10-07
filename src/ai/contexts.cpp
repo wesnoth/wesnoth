@@ -103,13 +103,13 @@ attack_result_ptr readonly_context_impl::check_attack_action(const map_location&
 }
 
 
-move_result_ptr readwrite_context_impl::execute_move_action(const map_location& from, const map_location& to, bool remove_movement){
-	return actions::execute_move_action(get_side(),true,from,to,remove_movement);
+move_result_ptr readwrite_context_impl::execute_move_action(const map_location& from, const map_location& to, bool remove_movement, bool unreach_is_ok){
+	return actions::execute_move_action(get_side(),true,from,to,remove_movement,unreach_is_ok);
 }
 
 
-move_result_ptr readonly_context_impl::check_move_action(const map_location& from, const map_location& to, bool remove_movement){
-	return actions::execute_move_action(get_side(),false,from,to,remove_movement);
+move_result_ptr readonly_context_impl::check_move_action(const map_location& from, const map_location& to, bool remove_movement, bool unreach_is_ok){
+	return actions::execute_move_action(get_side(),false,from,to,remove_movement,unreach_is_ok);
 }
 
 
