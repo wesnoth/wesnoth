@@ -366,7 +366,6 @@ connect::connect(game_display& disp, const std::string& game_name,
 	scroll_pane_(video()),
 	launch_(video(), _("I’m Ready")),
 	cancel_(video(), engine_.first_scenario() ? _("Cancel") : _("Quit")),
-	//add_local_player_(video(), _("Add named local player")),
 	combo_control_group_(new gui::drop_group_manager())
 {
 	DBG_MP << "setting up connect dialog" << std::endl;
@@ -425,38 +424,6 @@ connect::~connect()
 void connect::process_event()
 {
 	bool changed = false;
-
-	// TODO: fix this feature or remove the code.
-	// If the Add Local Player button is pressed, display corresponding
-	// dialog box. Dialog box is shown again if an already existing
-	// player name is entered. If the name is valid, add a new user with
-	// that name to the list of connected users, and refresh the UI.
-	/*if (add_local_player_.pressed()) {
-		bool already_exists = false;
-		do {
-			already_exists = false;
-			gui::dialog d(disp(), _("Enter a name for the new player"), "",
-				gui::OK_CANCEL);
-			d.set_textbox(_("Name: "));
-			d.show();
-			if (d.result() != gui::CLOSE_DIALOG && !d.textbox_text().empty()) {
-				BOOST_FOREACH(const std::string& user,
-					engine_.connected_users()) {
-
-					if (user == d.textbox_text()) {
-						already_exists = true;
-					}
-				}
-				if (!already_exists) {
-					engine_.connected_users().push_back(d.textbox_text());
-					update_playerlist_state();
-					BOOST_FOREACH(side& s, sides_) {
-						s.update_ui();
-					}
-				}
-			}
-		} while (already_exists);
-	}*/
 
 	BOOST_FOREACH(side& s, sides_) {
 		s.process_event();
@@ -543,12 +510,8 @@ void connect::layout_children(const SDL_Rect& rect)
 	gold_title_label_.set_location((left + 493), top + 35);
 	income_title_label_.set_location((left + 560), top + 35);
 
-	/*add_local_player_.set_help_string(("Feature currently disabled."));
-	add_local_player_.set_active(false);
-	add_local_player_.hide(true);
-	add_local_player_.set_location(left, bottom - add_local_player_.height());*/
-	waiting_label_.set_location(left + gui::ButtonHPadding /*+
-		add_local_player_.width()*/, bottom - left_button->height() + 4);
+	waiting_label_.set_location(left + gui::ButtonHPadding,
+		bottom - left_button->height() + 4);
 
 	SDL_Rect scroll_pane_rect;
 	scroll_pane_rect.x = ca.x;
