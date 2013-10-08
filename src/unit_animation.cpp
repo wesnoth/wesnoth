@@ -959,8 +959,9 @@ bool unit_animation::invalidate(frame_parameters& value)
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
 	const unit_frame& current_frame= get_current_frame();
-	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
+	const int relative_frame_time = get_animation_time() -get_begin_time(); //relative to first frame of all relevant animation blocks
+	const frame_parameters default_val = parameters_.parameters(relative_frame_time);
+	if(get_current_frame_begin_time() != last_frame_begin_time_ && relative_frame_time >=0) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
 		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value);
 	} else {
