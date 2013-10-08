@@ -146,13 +146,13 @@ void connect::side::process_event()
 {
 	int drop_target;
 	if ((drop_target = combo_controller_->get_drop_target()) > -1) {
-		engine_->swap_sides_on_drop_target(drop_target);
+		if (engine_->swap_sides_on_drop_target(drop_target)) {
+			changed_ = true;
+			parent_->sides_[drop_target].changed_ = true;
 
-		changed_ = true;
-		parent_->sides_[drop_target].changed_ = true;
-
-		update_ui();
-		parent_->sides_[drop_target].update_ui();
+			update_ui();
+			parent_->sides_[drop_target].update_ui();
+		}
 	} else if (combo_controller_->changed() &&
 		combo_controller_->selected() >= 0) {
 
@@ -303,6 +303,7 @@ void connect::side::update_controller_ui()
 	combo_controller_->set_items(controller_options_names(
 		engine_->controller_options()));
 	combo_controller_->set_selected(engine_->current_controller_index());
+	combo_controller_->enable(engine_->controller_options().size() > 1);
 
 	// Update AI algorithm combo.
 	assert(!parent_->ai_algorithms_.empty());

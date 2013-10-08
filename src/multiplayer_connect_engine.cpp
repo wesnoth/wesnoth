@@ -73,14 +73,15 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	state_(state),
 	params_(params),
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
+	local_players_only_(local_players_only),
 	first_scenario_(first_scenario),
+	lock_side_controllers_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
 	user_team_names_(),
 	player_teams_(),
-	connected_users_(),
-	default_controller_options_()
+	connected_users_()
 {
 	// Initial level config from the mp_game_settings.
 	level_ = initial_level_config(disp, params_, state_);
@@ -163,17 +164,8 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 		era_factions_.push_back(&era);
 	}
 
-	// Default options for combo controllers.
-	if (!local_players_only) {
-		default_controller_options_.push_back(
-			std::make_pair(CNTR_NETWORK, _("Network Player")));
-	}
-	default_controller_options_.push_back(
-		std::make_pair(CNTR_LOCAL, _("Local Player")));
-	default_controller_options_.push_back(
-		std::make_pair(CNTR_COMPUTER, _("Computer Player")));
-	default_controller_options_.push_back(
-		std::make_pair(CNTR_EMPTY, _("Empty")));
+	lock_side_controllers_ =
+		level_["lock_side_controllers"].to_bool(params_.use_map_settings);
 
 	// Create side engines.
 	int index = 0;
@@ -1074,13 +1066,31 @@ bool side_engine::available_for_user(const std::string& name) const
 	return false;
 }
 
-void side_engine::swap_sides_on_drop_target(const int drop_target) {
+bool side_engine::swap_sides_on_drop_target(const int drop_target) {
 	const std::string target_id =
 		parent_.side_engines_[drop_target]->player_id_;
 	const mp::controller target_controller =
 		parent_.side_engines_[drop_target]->controller_;
 	const std::string target_ai =
 		parent_.side_engines_[drop_target]->ai_algorithm_;
+
+	if (parent_.lock_side_controllers_) {
+		switch (target_controller) {
+		case CNTR_NETWORK:
+		case CNTR_LOCAL:
+		case CNTR_RESERVED:
+			if (controller_ != CNTR_NETWORK && controller_ != CNTR_LOCAL &&
+				controller_ != CNTR_RESERVED) {
+				return false;
+			}
+			break;
+		default:
+			if (controller_ != target_controller) {
+				return false;
+			}
+			break;
+		}
+	}
 
 	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
 	if (player_id_.empty()) {
@@ -1097,6 +1107,8 @@ void side_engine::swap_sides_on_drop_target(const int drop_target) {
 	} else {
 		place_user(target_id);
 	}
+
+	return true;
 }
 
 void side_engine::resolve_random()
@@ -1146,17 +1158,24 @@ void side_engine::place_user(const config& data, bool contains_selection)
 
 void side_engine::update_controller_options()
 {
-	controller_options_ = parent_.default_controller_options_;
+	controller_options_.clear();
+
+	// Default options.
+	if (!parent_.local_players_only_) {
+		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
+	}
+	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
+	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
+	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
+
 	if (!current_player_.empty()) {
-		controller_options_.push_back(
-			std::make_pair(CNTR_RESERVED, _("Reserved")));
+		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
 	}
 
-	controller_options_.push_back(std::make_pair(CNTR_LAST, _("--give--")));
-
+	// Connected users.
+	add_controller_option(CNTR_LAST, _("--give--"), "human");
 	BOOST_FOREACH(const std::string& user, parent_.connected_users_) {
-		controller_options_.push_back(std::make_pair(
-			parent_.default_controller_, user));
+		add_controller_option(parent_.default_controller_, user, "human");
 	}
 
 	update_current_controller_index();
@@ -1226,6 +1245,18 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 	}
 
 	player_id_.clear();
+}
+
+void side_engine::add_controller_option(mp::controller controller,
+		const std::string& name, const std::string& controller_value)
+{
+	if (parent_.lock_side_controllers_ &&
+		cfg_["controller"] != controller_value) {
+
+		return;
+	}
+
+	controller_options_.push_back(std::make_pair(controller, name));
 }
 
 } // end namespace mp

@@ -72,6 +72,12 @@ Version 1.11.6+dev:
    * Update game's side data, slots and state in server during next scenario
      initialization.
    * Fixed reserved sides being counted as available in server.
+   * Added possibility to lock side controllers in MP Connect screen. The lock
+     provides a way to be sure that sides will be played with a controller
+     which was assigned in WML. I.e. if "controller" was set to "ai", it won't
+     be possible to select any other controller for a side. However, if
+     "controller" was set to "human", it will still be possible to assign any
+     player, local, network or reserved (if applicable) controller.
  * WML engine:
    * New [disable] weapon special.
    * New variation_id attribute with the function of former variation_name. 

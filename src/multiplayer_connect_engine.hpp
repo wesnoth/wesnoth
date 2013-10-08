@@ -111,7 +111,10 @@ private:
 	const mp_game_settings& params_;
 
 	const mp::controller default_controller_;
+	const bool local_players_only_;
 	const bool first_scenario_;
+
+	bool lock_side_controllers_;
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
@@ -119,7 +122,6 @@ private:
 	std::vector<std::string> user_team_names_;
 	std::vector<std::string> player_teams_;
 	std::set<std::string> connected_users_;
-	std::vector<controller_option> default_controller_options_;
 };
 
 class side_engine
@@ -139,7 +141,7 @@ public:
 	// players are allowed.
 	bool available_for_user(const std::string& name = "") const;
 
-	void swap_sides_on_drop_target(const int drop_target);
+	bool swap_sides_on_drop_target(const int drop_target);
 
 	void resolve_random();
 
@@ -194,6 +196,9 @@ public:
 private:
 	side_engine(const side_engine& engine);
 	void operator=(const side_engine&);
+
+	void add_controller_option(mp::controller controller,
+		const std::string& name, const std::string& controller_value);
 
 	config cfg_;
 	connect_engine& parent_;
