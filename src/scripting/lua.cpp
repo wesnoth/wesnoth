@@ -2312,6 +2312,7 @@ static int intf_find_reach(lua_State *L)
  * - Args 1,2: source location. (Or Arg 1: unit. Or Arg 1: table containing a filter)
  * - Arg 3: optional array of tables with 4 elements (coordinates + side + unit type string)
  * - Arg 4: optional table (optional fields: ignore_units, ignore_teleport, viewing_side, debug).
+ * - Arg 5: optional table: standart location filter.
  * - Ret 1: array of triples (coordinates + array of tuples(summed cost + reach counter)).
  */
 static int intf_find_cost_map(lua_State *L)
@@ -2395,7 +2396,7 @@ static int intf_find_cost_map(lua_State *L)
 
 	std::vector<team> &teams = *resources::teams;
 	int viewing_side = 0;
-	bool ignore_units = true, see_all = true, ignore_teleport = false, debug = false;
+	bool ignore_units = true, see_all = true, ignore_teleport = false, debug = false, use_max_moves = false;
 
 	if (lua_istable(L, arg))  // 4. arg - options
 	{
@@ -2433,9 +2434,29 @@ static int intf_find_cost_map(lua_State *L)
 		{
 			debug = lua_toboolean(L, -1);
 		}
-
 		lua_pop(L, 1);
+
+		lua_pushstring(L, "use_max_moves");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+		{
+			use_max_moves = lua_toboolean(L, -1);
+		}
+		lua_pop(L, 1);
+		++arg;
 	}
+
+	// 5. arg - location filter
+	filter = vconfig::unconstructed_vconfig();
+	std::set<map_location> location_set;
+	luaW_tovconfig(L, arg, filter);
+	if (filter.null())
+	{
+		filter = vconfig(config(), true);
+	}
+	const terrain_filter t_filter(filter, *resources::units);
+	t_filter.get_locations(location_set, true);
+	++arg;
 
 	// build cost_map
 	team &viewing_team = teams[(viewing_side ? viewing_side : 1) - 1];
@@ -2444,7 +2465,7 @@ static int intf_find_cost_map(lua_State *L)
 
 	BOOST_FOREACH(const unit* const u, real_units)
 	{
-		cost_map.add_unit(*u);
+		cost_map.add_unit(*u, use_max_moves);
 	}
 	BOOST_FOREACH(const unit_type_vector::value_type& fu, fake_units)
 	{
@@ -2452,47 +2473,40 @@ static int intf_find_cost_map(lua_State *L)
 		cost_map.add_unit(fu.get<0>(), ut, fu.get<1>());
 	}
 
-	const gamemap* map = resources::game_map;
-
 	if (debug)
 	{
 		resources::screen->labels().clear_all();
-		for (int x = 0; x < map->w(); ++x)
+		BOOST_FOREACH(const map_location& loc, location_set)
 		{
-			for (int y = 0; y < map->h(); ++y)
-			{
-				std::stringstream s;
-				s << cost_map.get_pair_at(x, y).first;
-				s << " / ";
-				s << cost_map.get_pair_at(x, y).second;
-				resources::screen->labels().set_label(map_location(x, y), s.str());
-			}
+			std::stringstream s;
+			s << cost_map.get_pair_at(loc.x, loc.y).first;
+			s << " / ";
+			s << cost_map.get_pair_at(loc.x, loc.y).second;
+			resources::screen->labels().set_label(loc, s.str());
 		}
 	}
 
 	// create return value
-	lua_createtable(L, map->w() * map->h(), 0);
-	for (int x = 0; x < map->w(); ++x)
+	lua_createtable(L, location_set.size(), 0);
+	int counter = 1;
+	BOOST_FOREACH(const map_location& loc, location_set)
 	{
-		for (int y = 0; y < map->h(); ++y)
-		{
-			lua_createtable(L, 4, 0);
+		lua_createtable(L, 4, 0);
 
-			lua_pushinteger(L, x + 1);
-			lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.x + 1);
+		lua_rawseti(L, -2, 1);
 
-			lua_pushinteger(L, y + 1);
-			lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, loc.y + 1);
+		lua_rawseti(L, -2, 2);
 
-			lua_createtable(L, 2, 0);
-			lua_pushinteger(L, cost_map.get_pair_at(x, y).first);
-			lua_rawseti(L, -2, 1);
-			lua_pushinteger(L, cost_map.get_pair_at(x, y).second);
-			lua_rawseti(L, -2, 2);
+		lua_pushinteger(L, cost_map.get_pair_at(loc.x, loc.y).first);
+		lua_rawseti(L, -2, 3);
 
-			lua_rawseti(L, -2, 3);
-			lua_rawseti(L, -2, x * map->h() + y + 1);
-		}
+		lua_pushinteger(L, cost_map.get_pair_at(loc.x, loc.y).second);
+		lua_rawseti(L, -2, 4);
+
+		lua_rawseti(L, -2, counter);
+		++counter;
 	}
 	return 1;
 }

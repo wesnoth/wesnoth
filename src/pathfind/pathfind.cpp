@@ -873,7 +873,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
  * Adds a units cost map to cost_map (increments the elements in cost_map)
  * @param u a real existing unit on the map
  */
-void full_cost_map::add_unit(const unit& u)
+void full_cost_map::add_unit(const unit& u, bool use_max_moves)
 {
 	std::vector<team> const &teams = *resources::teams;
 	if (u.side() < 1 || u.side() > int(teams.size())) {
@@ -884,7 +884,8 @@ void full_cost_map::add_unit(const unit& u)
 	paths::dest_vect dummy = paths::dest_vect();
 
 		find_routes(u.get_location(), u.movement_type().get_movement(),
-		            u.get_state(unit::STATE_SLOWED), u.total_movement(),
+		            u.get_state(unit::STATE_SLOWED),
+		            (use_max_moves) ? u.total_movement() : u.movement_left(),
 		            u.total_movement(), 99, dummy, NULL,
 		            allow_teleport_ ? &u : NULL,
 		            ignore_units_ ? NULL : &teams[u.side()-1],

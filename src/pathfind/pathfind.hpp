@@ -276,7 +276,7 @@ struct full_cost_map
 			bool allow_teleport, const team &viewing_team,
 			bool see_all=true, bool ignore_units=true);
 
-	void add_unit(const unit& u);
+	void add_unit(const unit& u, bool use_max_moves=true);
 	void add_unit(const map_location& origin, const unit_type* const unit_type, int side);
 	int get_cost_at(int x, int y) const;
 	std::pair<int, int> get_pair_at(int x, int y) const;
