@@ -2312,7 +2312,7 @@ static int intf_find_reach(lua_State *L)
  * - Args 1,2: source location. (Or Arg 1: unit. Or Arg 1: table containing a filter)
  * - Arg 3: optional array of tables with 4 elements (coordinates + side + unit type string)
  * - Arg 4: optional table (optional fields: ignore_units, ignore_teleport, viewing_side, debug).
- * - Arg 5: optional table: standart location filter.
+ * - Arg 5: optional table: standard location filter.
  * - Ret 1: array of triples (coordinates + array of tuples(summed cost + reach counter)).
  */
 static int intf_find_cost_map(lua_State *L)
