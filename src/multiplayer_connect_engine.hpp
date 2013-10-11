@@ -114,8 +114,6 @@ private:
 	const bool local_players_only_;
 	const bool first_scenario_;
 
-	bool lock_side_controllers_;
-
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
 	std::vector<std::string> team_names_;
@@ -209,6 +207,7 @@ private:
 
 	const bool allow_player_;
 	const bool allow_changes_;
+	const bool controller_lock_;
 
 	int index_;
 	int team_;

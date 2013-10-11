@@ -75,7 +75,6 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	local_players_only_(local_players_only),
 	first_scenario_(first_scenario),
-	lock_side_controllers_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
@@ -163,9 +162,6 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 
 		era_factions_.push_back(&era);
 	}
-
-	lock_side_controllers_ =
-		level_["lock_side_controllers"].to_bool(params_.use_map_settings);
 
 	// Create side engines.
 	int index = 0;
@@ -795,6 +791,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	controller_options_(),
 	allow_player_(cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
+	controller_lock_(cfg["controller_lock"].to_bool(
+		parent_.params_.use_map_settings)),
 	index_(index),
 	team_(0),
 	color_(index),
@@ -1074,22 +1072,12 @@ bool side_engine::swap_sides_on_drop_target(const int drop_target) {
 	const std::string target_ai =
 		parent_.side_engines_[drop_target]->ai_algorithm_;
 
-	if (parent_.lock_side_controllers_) {
-		switch (target_controller) {
-		case CNTR_NETWORK:
-		case CNTR_LOCAL:
-		case CNTR_RESERVED:
-			if (controller_ != CNTR_NETWORK && controller_ != CNTR_LOCAL &&
-				controller_ != CNTR_RESERVED) {
-				return false;
-			}
-			break;
-		default:
-			if (controller_ != target_controller) {
-				return false;
-			}
-			break;
-		}
+	if ((controller_lock_ ||
+		parent_.side_engines_[drop_target]->controller_lock_) &&
+		(controller_options_ !=
+		parent_.side_engines_[drop_target]->controller_options_)) {
+
+		return false;
 	}
 
 	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
@@ -1250,7 +1238,7 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 void side_engine::add_controller_option(mp::controller controller,
 		const std::string& name, const std::string& controller_value)
 {
-	if (parent_.lock_side_controllers_ &&
+	if (controller_lock_ && !cfg_["controller"].empty() &&
 		cfg_["controller"] != controller_value) {
 
 		return;
