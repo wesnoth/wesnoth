@@ -554,7 +554,7 @@ void frame_parsed_parameters::override( int duration
 }
 
 
-void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool first_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -624,8 +624,14 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
+	
 	halo::remove(*halo_id);
 	*halo_id = halo::NO_HALO;
+	
+	if (!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
+		return;
+	}
+	
 	if(!current_data.halo.empty()) {
 		halo::ORIENTATION orientation;
 		switch(direction)

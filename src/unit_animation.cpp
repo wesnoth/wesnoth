@@ -959,13 +959,24 @@ bool unit_animation::invalidate(frame_parameters& value)
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
 	const unit_frame& current_frame= get_current_frame();
-	const int relative_frame_time = get_animation_time() -get_begin_time(); //relative to first frame of all relevant animation blocks
-	const frame_parameters default_val = parameters_.parameters(relative_frame_time);
-	if(get_current_frame_begin_time() != last_frame_begin_time_ && relative_frame_time >=0) {
+	const int animation_time = get_animation_time();
+	const frame_parameters default_val = parameters_.parameters(animation_time -get_begin_time());
+	
+	// everything is relative to the first frame in an attack/defense/etc. block.
+	// so we need to check if this particular frame is due to be shown at this time
+	bool in_scope_of_frame = (animation_time >= get_current_frame_begin_time() ? true: false);
+	if (animation_time > get_current_frame_end_time()) in_scope_of_frame = false;
+	
+	// sometimes even if the frame is not due to be shown, a frame image still must be shown.
+	// i.e. in a defense animation that is shorter than an attack animation.
+	// the halos should not persist though and use the 'in_scope_of_frame' variable.
+	
+	// for sound frames we want the first time variable set only after the frame has started.
+	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
 	}
 }
 void unit_animation::particule::clear_halo()

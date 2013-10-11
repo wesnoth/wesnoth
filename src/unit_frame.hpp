@@ -202,7 +202,7 @@ class unit_frame {
 	public:
 		// Constructors
 		unit_frame(const frame_builder& builder=frame_builder()):builder_(builder){};
-		void redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
+		void redraw(const int frame_time,bool first_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
 		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters()) const;
 		const frame_parameters parameters(int current_time) const {return builder_.parameters(current_time);};
 		const frame_parameters end_parameters() const {return builder_.parameters(duration());};

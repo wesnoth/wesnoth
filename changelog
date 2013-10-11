@@ -130,6 +130,8 @@ Version 1.11.6+dev:
      This is useful for batch testing.
    * Animation WML: Fix sound start time in additional frames without
      requiring a duration 1 frame workaround.
+   * Animation WML: Fix halo in additional frame persisting without blank
+     hex workaround at start and end if a shorter frame.
    * Fixed crash on delete of last save
 
 Version 1.11.6:
