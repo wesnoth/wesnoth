@@ -1064,28 +1064,26 @@ bool side_engine::available_for_user(const std::string& name) const
 	return false;
 }
 
-bool side_engine::swap_sides_on_drop_target(const int drop_target) {
-	const std::string target_id =
-		parent_.side_engines_[drop_target]->player_id_;
-	const mp::controller target_controller =
-		parent_.side_engines_[drop_target]->controller_;
-	const std::string target_ai =
-		parent_.side_engines_[drop_target]->ai_algorithm_;
+bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
+	assert(drop_target < parent_.side_engines_.size());
+	side_engine& target = *parent_.side_engines_[drop_target];
 
-	if ((controller_lock_ ||
-		parent_.side_engines_[drop_target]->controller_lock_) &&
-		(controller_options_ !=
-		parent_.side_engines_[drop_target]->controller_options_)) {
+	const std::string target_id = target.player_id_;
+	const mp::controller target_controller = target.controller_;
+	const std::string target_ai = target.ai_algorithm_;
+
+	if ((controller_lock_ || target.controller_lock_) &&
+		(controller_options_ != target.controller_options_)) {
 
 		return false;
 	}
 
-	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
+	target.ai_algorithm_ = ai_algorithm_;
 	if (player_id_.empty()) {
-		parent_.side_engines_[drop_target]->player_id_.clear();
-		parent_.side_engines_[drop_target]->set_controller(controller_);
+		target.player_id_.clear();
+		target.set_controller(controller_);
 	} else {
-		parent_.side_engines_[drop_target]->place_user(player_id_);
+		target.place_user(player_id_);
 	}
 
 	ai_algorithm_ = target_ai;

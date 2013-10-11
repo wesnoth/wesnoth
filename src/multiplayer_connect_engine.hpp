@@ -139,7 +139,7 @@ public:
 	// players are allowed.
 	bool available_for_user(const std::string& name = "") const;
 
-	bool swap_sides_on_drop_target(const int drop_target);
+	bool swap_sides_on_drop_target(const unsigned drop_target);
 
 	void resolve_random();
 
