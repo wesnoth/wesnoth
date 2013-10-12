@@ -554,7 +554,7 @@ void frame_parsed_parameters::override( int duration
 }
 
 
-void unit_frame::redraw(const int frame_time,bool first_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -570,7 +570,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,bool in_scope_of_fr
 		// if (tmp_offset) std::cout << (int)(tmp_offset*100) << ",";
 
 	int d2 = display::get_singleton()->hex_size() / 2;
-	if(first_time ) {
+	if(on_start_time ) {
 		// stuff that should be done only once per frame
 		if(!current_data.sound.empty()  ) {
 			sound::play_sound(current_data.sound);
