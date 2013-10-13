@@ -577,6 +577,8 @@ void write_compressed(std::ostream &out, config const &cfg)
 	filter.push(out);
 
 	write(filter, cfg);
+	// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
+	filter << "\n";
 }
 
 void write_gz(std::ostream &out, config const &cfg)
