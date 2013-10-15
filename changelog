@@ -34,6 +34,10 @@ Version 1.11.6+dev:
      (multiple leader support for recruitment).
    * Refactored the AI-Test-Suite completely (/utils/ai_test/).
  * Campaigns:
+   * Descent Into Darkness:
+     * Converted animation WML to the new syntax
+   * Heir To The Throne:
+     * Converted animation WML to the new syntax
    * Legend of Wesmere:
      * Removed now redundant MP code.
      * Added new CampaignWML attributes: "type", "min_players", "max_players".
@@ -136,6 +140,7 @@ Version 1.11.6+dev:
      hex workaround at start and end if a shorter frame.
    * New MISSILE_FRAME_FIREBALL_XY macro, used in red mage line
    * Fixed crash on delete of last save
+   * The MISSILE_FRAME_MUZZLE_FLARE_MISS macro now requires an X and Y argument
 
 Version 1.11.6:
  * Add-ons client:
