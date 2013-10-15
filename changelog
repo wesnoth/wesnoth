@@ -70,6 +70,8 @@ Version 1.11.6+dev:
    * Imagepath function "~ROTATE": Support for rotating by any degree.
  * Graphics
    * Full animations for the Dwarven Thunderer line.
+   * New standing animation for the Dwarvish Berserker.
+   * New north-facing standing and attack animations for the Loyalist Spearman.
  * Language and i18n:
    * Updated translations: British English, German, Greek, Indonesian,
      Lithuanian, Portuguese, Vietnamese
@@ -149,10 +151,10 @@ Version 1.11.6+dev:
      requiring a duration 1 frame workaround.
    * Animation WML: Fix halo in additional frame persisting without blank
      hex workaround at start and end if a shorter frame.
-   * New MISSILE_FRAME_FIREBALL_XY macro, used in red mage line
-   * Fixed crash on delete of last save
-   * The MISSILE_FRAME_MUZZLE_FLARE_MISS macro now requires an X and Y argument
-   * Added placehoder attack animations to the Fire Dragon
+   * New MISSILE_FRAME_FIREBALL_XY macro, used in red mage line.
+   * Fixed crash on delete of last save.
+   * The MISSILE_FRAME_MUZZLE_FLARE_MISS macro now requires an X and Y argument.
+   * Added placehoder attack animations to the Fire Dragon.
 
 Version 1.11.6:
  * Add-ons client:
