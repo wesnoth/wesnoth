@@ -441,7 +441,7 @@ void flg_manager::update_choosable_genders()
 
 	if (map_settings_) {
 		std::string default_gender = side_["gender"];
-		if (default_gender.empty()) {
+		if (default_gender.empty() && !default_leader_type_.empty()) {
 			const unit_type* unit = unit_types.find(current_leader_);
 			if (unit) {
 				default_gender = gender_string(unit->genders().front());
