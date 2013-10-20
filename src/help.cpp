@@ -1522,7 +1522,11 @@ public:
 				attack_ss << attack_it->damage() << utils::unicode_en_dash << attack_it->num_attacks() << " " << attack_it->accuracy_parry_description();
 				push_tab_pair(row, attack_ss.str());
 				attack_ss.str(clear_stringstream);
-				push_tab_pair(row, string_table["range_" + (*attack_it).range()]);
+				attack_ss << string_table["range_" + (*attack_it).range()];
+				if ((*attack_it).min_range() > 1 || (*attack_it).max_range() > 1)
+					attack_ss << " " << (*attack_it).min_range() << "-" << (*attack_it).max_range();
+				push_tab_pair(row, attack_ss.str());
+				attack_ss.str(clear_stringstream);
 				// Show this attack's special, if it has any. Cross
 				// reference it to the section describing the
 				// special.
