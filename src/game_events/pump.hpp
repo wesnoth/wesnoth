@@ -100,6 +100,11 @@ namespace game_events
 	void put_wml_message(const std::string& logger, const std::string& message);
 
 	/**
+	 * Directly runs the lua command(s) @a lua_code
+	 */
+	void run_lua_commands(char const *lua_code);
+
+	/**
 	 * Runs the action handler associated to the command sequence @a cfg.
 	 */
 	void handle_event_commands(const queued_event &event_info, const vconfig &cfg);
