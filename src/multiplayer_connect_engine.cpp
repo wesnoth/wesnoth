@@ -365,6 +365,39 @@ bool connect_engine::can_start_game() const
 	return false;
 }
 
+std::vector<std::string> side_engine::get_children_to_swap()
+{
+	std::vector<std::string> children;
+
+	children.push_back("village");
+	children.push_back("unit");
+	children.push_back("ai");
+
+	return children;
+}
+
+std::map<std::string, config> side_engine::get_side_children()
+{
+	std::map<std::string, config> children;
+
+	BOOST_FOREACH(const std::string& children_to_swap, get_children_to_swap())
+		BOOST_FOREACH(const config& child, cfg_.child_range(children_to_swap))
+			children.insert(std::pair<std::string, config>(children_to_swap, child));
+
+	return children;
+}
+
+void side_engine::set_side_children(std::map<std::string, config> children)
+{
+	BOOST_FOREACH(const std::string& children_to_remove, get_children_to_swap())
+				  cfg_.clear_children(children_to_remove);
+
+	std::pair<std::string, config> child_map;
+
+	BOOST_FOREACH(child_map, children)
+				  cfg_.add_child(child_map.first, child_map.second);
+}
+
 void connect_engine::start_game(LOAD_USERS load_users)
 {
 	DBG_MP << "starting a new game" << std::endl;
@@ -394,6 +427,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			int j_side = playable_sides[get_random() % i];
 			int i_side = playable_sides[i - 1];
 
+			// First we swap fields that are unique to the player
 			int tmp_index = side_engines_[j_side]->index();
 			side_engines_[j_side]->set_index(side_engines_[i_side]->index());
 			side_engines_[i_side]->set_index(tmp_index);
@@ -402,7 +436,12 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			side_engines_[j_side]->set_team(side_engines_[i_side]->team());
 			side_engines_[i_side]->set_team(tmp_team);
 
-			// This is needed otherwise fog bugs will appear.
+			std::map<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
+			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
+			side_engines_[i_side]->set_side_children(tmp_side_children);
+
+			// Then we swap everything, so the order is changed and such.
+			// This also prevents problems with fog.
 			side_engine_ptr tmp_side = side_engines_[j_side];
 			side_engines_[j_side] = side_engines_[i_side];
 			side_engines_[i_side] = tmp_side;
