@@ -147,6 +147,14 @@ function wesnoth.wml_actions.micro_ai(cfg)
         cfg.animal_type = nil
     end
 
+    -- Add translation for old-syntax guardian MAIs to new syntax plus deprecation message
+    if (cfg.ai_type == 'guardian_unit') and (cfg.guardian_type) then
+        wesnoth.message("The syntax 'ai_type=guardian_unit guardian_type=" .. cfg.guardian_type .. "' is deprecated.  Use 'ai_type=" .. cfg.guardian_type .. "' instead.")
+
+        cfg.ai_type = cfg.guardian_type
+        cfg.guardian_type = nil
+    end
+
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then H.wml_error("[micro_ai] is missing required side= key") end
