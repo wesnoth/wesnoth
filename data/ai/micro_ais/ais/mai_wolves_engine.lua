@@ -3,7 +3,6 @@ return {
         local engine = existing_engine or {}
 
         local H = wesnoth.require "lua/helper.lua"
-        local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "lua/location_set.lua"
