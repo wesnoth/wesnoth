@@ -137,6 +137,15 @@ end
 
 function wesnoth.wml_actions.micro_ai(cfg)
     -- Set up the [micro_ai] tag functionality for each Micro AI
+    cfg = cfg.__parsed
+
+    -- Add translation for old-syntax animal MAIs to new syntax plus deprecation message
+    if (cfg.ai_type == 'animals') and (cfg.animal_type) then
+        wesnoth.message("The syntax 'ai_type=animals animal_type=" .. cfg.animal_type .. "' is deprecated.  Use 'ai_type=" .. cfg.animal_type .. "' instead.")
+
+        cfg.ai_type = cfg.animal_type
+        cfg.animal_type = nil
+    end
 
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
@@ -149,7 +158,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     -- Set up the configuration tables for the different Micro AIs
     local required_keys, optional_keys, CA_parms = {}, {}, {}
-    cfg = cfg.__parsed
 
     --------- Healer Support Micro AI - side-wide AI ------------------------------------
     if (cfg.ai_type == 'healer_support') then
