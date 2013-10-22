@@ -14,7 +14,7 @@ return {
         -- it "detects" an enemy in filter_location_enemy (if specified) or in the filter_location (otherwise).
         -- It then attacks this enemy until it goes out of the "attack zone"
 
-        function engine:mai_guardian_zone_eval(cfg)
+        function engine:mai_zone_guardian_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
@@ -23,7 +23,7 @@ return {
         end
 
         --Check if an enemy is detected in filter_location_enemy (or filter_location) and attack it or start the "move" randomly function
-        function engine:mai_guardian_zone_exec(cfg)
+        function engine:mai_zone_guardian_exec(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
             local reach = wesnoth.find_reach(unit)
             local zone_enemy = cfg.filter_location_enemy or cfg.filter_location

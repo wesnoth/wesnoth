@@ -6,7 +6,7 @@ return {
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-        function engine:mai_guardian_coward_eval(cfg)
+        function engine:mai_coward_eval(cfg)
             local unit = wesnoth.get_units{ id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
@@ -15,7 +15,7 @@ return {
         end
 
         -- cfg parameters: id, distance, seek_x, seek_y, avoid_x, avoid_y
-        function engine:mai_guardian_coward_exec(cfg)
+        function engine:mai_coward_exec(cfg)
             --print("Coward exec " .. cfg.id)
             local unit = wesnoth.get_units{ id = cfg.id }[1]
             local reach = wesnoth.find_reach(unit)

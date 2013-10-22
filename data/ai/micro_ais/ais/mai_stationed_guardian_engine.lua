@@ -6,7 +6,7 @@ return {
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-        function engine:mai_guardian_stationed_eval(cfg)
+        function engine:mai_stationed_guardian_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
@@ -15,7 +15,7 @@ return {
         end
 
         -- cfg parameters: id, distance, s_x, s_y, g_x, g_y
-        function engine:mai_guardian_stationed_exec(cfg)
+        function engine:mai_stationed_guardian_exec(cfg)
             -- (s_x,s_y): coordinates where unit is stationed; tries to move here if there is nobody to attack
             -- (g_x,g_y): location that the unit guards
 

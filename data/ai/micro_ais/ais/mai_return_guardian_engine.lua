@@ -5,7 +5,7 @@ return {
 
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-        function engine:mai_guardian_return_eval(cfg)
+        function engine:mai_return_guardian_eval(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
 
             -- Check if unit exists as sticky BCAs are not always removed successfully
@@ -19,7 +19,7 @@ return {
             return 0
         end
 
-        function engine:mai_guardian_return_exec(cfg)
+        function engine:mai_return_guardian_exec(cfg)
             local unit = wesnoth.get_units { id = cfg.id }[1]
             --print("Exec guardian move",unit.id)
 
