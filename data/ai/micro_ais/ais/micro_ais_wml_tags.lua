@@ -318,15 +318,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'big_animals') then
         required_keys = { "filter"}
         optional_keys = { "avoid_unit", "filter_location", "filter_location_wander" }
-        CA_parms = { { ca_id = "mai_animals_big", score = cfg.ca_score or 300000 } }
+        CA_parms = { { ca_id = "mai_big_animals", score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'wolves') then
         required_keys = { "filter", "filter_second" }
         optional_keys = { "avoid_type" }
         local score = cfg.ca_score or 90000
         CA_parms = {
-            { ca_id = "mai_animals_wolves", score = score },
-            { ca_id = "mai_animals_wolves_wander", score = score - 1 }
+            { ca_id = "mai_wolves_move", score = score },
+            { ca_id = "mai_wolves_wander", score = score - 1 }
         }
 
        local wolves_aspects = {
@@ -355,12 +355,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "attention_distance", "attack_distance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_animals_herding_attack_close_enemy", score = score },
-            { ca_id = "mai_animals_sheep_runs_enemy", score = score - 1 },
-            { ca_id = "mai_animals_sheep_runs_dog", score = score - 2 },
-            { ca_id = "mai_animals_herd_sheep", score = score - 3 },
-            { ca_id = "mai_animals_sheep_move", score = score - 4 },
-            { ca_id = "mai_animals_dog_move", score = score - 5 }
+            { ca_id = "mai_herding_attack_close_enemy", score = score },
+            { ca_id = "mai_herding_sheep_runs_enemy", score = score - 1 },
+            { ca_id = "mai_herding_sheep_runs_dog", score = score - 2 },
+            { ca_id = "mai_herding_herd_sheep", score = score - 3 },
+            { ca_id = "mai_herding_sheep_move", score = score - 4 },
+            { ca_id = "mai_herding_dog_move", score = score - 5 }
         }
 
     elseif (cfg.ai_type == 'forest_animals') then
@@ -369,26 +369,26 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_animals_new_rabbit", score = score },
-            { ca_id = "mai_animals_tusker_attack", score = score - 1 },
-            { ca_id = "mai_animals_forest_move", score = score - 2 },
-            { ca_id = "mai_animals_tusklet", score = score - 3 }
+            { ca_id = "mai_forest_animals_new_rabbit", score = score },
+            { ca_id = "mai_forest_animals_tusker_attack", score = score - 1 },
+            { ca_id = "mai_forest_animals_forest_move", score = score - 2 },
+            { ca_id = "mai_forest_animals_tusklet", score = score - 3 }
         }
 
     elseif (cfg.ai_type == 'swarm') then
         optional_keys = { "scatter_distance", "vision_distance", "enemy_distance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_animals_scatter_swarm", score = score },
-            { ca_id = "mai_animals_move_swarm", score = score - 1 }
+            { ca_id = "mai_swarm_scatter", score = score },
+            { ca_id = "mai_swarm_move", score = score - 1 }
         }
 
     elseif (cfg.ai_type == 'wolves_multipacks') then
         optional_keys = { "type", "pack_size", "show_pack_number" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_animals_wolves_multipacks_attack", score = score },
-            { ca_id = "mai_animals_wolves_multipacks_wander", score = score - 1 }
+            { ca_id = "mai_wolves_multipacks_attack", score = score },
+            { ca_id = "mai_wolves_multipacks_wander", score = score - 1 }
         }
 
     elseif (cfg.ai_type == 'hunter_unit') then
@@ -399,7 +399,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (not cfg.id) then
             H.wml_error("[micro_ai] tag (hunter_unit) is missing required parameter: id")
         end
-        CA_parms = { { ca_id = "mai_animals_hunter_unit", score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = "mai_hunter_unit", score = cfg.ca_score or 300000, sticky = true } }
 
     --------- Patrol Micro AI - BCA AI ------------------------------------
     elseif (cfg.ai_type == 'patrol_unit') then

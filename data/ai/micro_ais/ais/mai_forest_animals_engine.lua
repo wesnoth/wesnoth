@@ -9,7 +9,7 @@ return {
 
         -- While all these CAs have been generalized to be usable with different types of
         -- units, we keep their original names in order to indicate their kind of behavior
-        function engine:mai_animals_new_rabbit_eval(cfg)
+        function engine:mai_forest_animals_new_rabbit_eval(cfg)
             -- Put new rabbits out the if there are fewer than cfg.rabbit_number
             -- but only if cfg.rabbit_type is set, otherwise do nothing
             -- If this gets executed, we'll let the CA black-list itself
@@ -18,7 +18,7 @@ return {
             return cfg.ca_score
         end
 
-        function engine:mai_animals_new_rabbit_exec(cfg)
+        function engine:mai_forest_animals_new_rabbit_exec(cfg)
             local number = cfg.rabbit_number or 6
             local rabbit_enemy_distance = cfg.rabbit_enemy_distance or 3
 
@@ -73,7 +73,7 @@ return {
             end
         end
 
-        function engine:mai_animals_tusker_attack_eval(cfg)
+        function engine:mai_forest_animals_tusker_attack_eval(cfg)
             -- Check whether there is an enemy next to a tusklet and attack it ("protective parents" AI)
 
             -- Both cfg.tusker_type and cfg.tusklet_type need to be set for this to kick in
@@ -90,7 +90,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_tusker_attack_exec(cfg)
+        function engine:mai_forest_animals_tusker_attack_exec(cfg)
             local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type, formula = '$this_unit.moves > 0' }
             local adj_enemies = wesnoth.get_units {
                 { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
@@ -135,7 +135,7 @@ return {
             end
         end
 
-        function engine:mai_animals_forest_move_eval(cfg)
+        function engine:mai_forest_animals_forest_move_eval(cfg)
             local deer_type = cfg.deer_type or "no_unit_of_this_type"
             local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
             local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
@@ -153,7 +153,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_forest_move_exec(cfg)
+        function engine:mai_forest_animals_forest_move_exec(cfg)
             local deer_type = cfg.deer_type or "no_unit_of_this_type"
             local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
             local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
@@ -296,7 +296,7 @@ return {
             end
         end
 
-        function engine:mai_animals_tusklet_eval(cfg)
+        function engine:mai_forest_animals_tusklet_eval(cfg)
             -- Tusklets will simply move toward the closest tusker, without regard for anything else
             -- Except if no tuskers are left, in which case the previous CA takes over and does a random move
 
@@ -310,7 +310,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_tusklet_exec(cfg)
+        function engine:mai_forest_animals_tusklet_exec(cfg)
             local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusklet_type, formula = '$this_unit.moves > 0' }
             local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type }
             --print('#tusklets, #tuskers', #tusklets, #tuskers)

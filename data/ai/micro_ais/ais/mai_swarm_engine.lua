@@ -5,7 +5,7 @@ return {
         local H = wesnoth.require "lua/helper.lua"
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-        function engine:mai_animals_scatter_swarm_eval(cfg)
+        function engine:mai_swarm_scatter_eval(cfg)
             local scatter_distance = cfg.scatter_distance or 3
 
             -- Any enemy within "scatter_distance" hexes of a unit will cause swarm to scatter
@@ -26,7 +26,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_scatter_swarm_exec(cfg)
+        function engine:mai_swarm_scatter_exec(cfg)
             local scatter_distance = cfg.scatter_distance or 3
             local vision_distance = cfg.vision_distance or 12
 
@@ -67,7 +67,7 @@ return {
             end
         end
 
-        function engine:mai_animals_move_swarm_eval(cfg)
+        function engine:mai_swarm_move_eval(cfg)
             local units = wesnoth.get_units { side = wesnoth.current.side }
             for i,u in ipairs(units) do
                 if (u.moves > 0) then return cfg.ca_score end
@@ -76,7 +76,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_move_swarm_exec(cfg)
+        function engine:mai_swarm_move_exec(cfg)
             local enemy_distance = cfg.enemy_distance or 5
             local vision_distance = cfg.vision_distance or 12
 

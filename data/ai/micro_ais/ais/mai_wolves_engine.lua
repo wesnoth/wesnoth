@@ -7,7 +7,7 @@ return {
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
-        function engine:mai_animals_wolves_eval(cfg)
+        function engine:mai_wolves_move_eval(cfg)
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }
@@ -20,7 +20,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_wolves_exec(cfg)
+        function engine:mai_wolves_move_exec(cfg)
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }
@@ -103,7 +103,7 @@ return {
             end
         end
 
-        function engine:mai_animals_wolves_wander_eval(cfg)
+        function engine:mai_wolves_wander_eval(cfg)
             -- When there's no prey left, the wolves wander and regroup
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
@@ -113,7 +113,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_wolves_wander_exec(cfg)
+        function engine:mai_wolves_wander_exec(cfg)
             local wolves = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0', { "and", cfg.filter }
             }

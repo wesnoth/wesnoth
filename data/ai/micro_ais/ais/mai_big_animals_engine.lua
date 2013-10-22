@@ -6,7 +6,7 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
-        function engine:mai_animals_big_eval(cfg)
+        function engine:mai_big_animals_eval(cfg)
             local units = wesnoth.get_units {
                 side = wesnoth.current.side,
                 { "and" , cfg.filter },
@@ -17,7 +17,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_big_exec(cfg)
+        function engine:mai_big_animals_exec(cfg)
             -- Big animals just move toward goal that gets set occasionally
             -- Avoid the other big animals (bears, yetis, spiders) and the dogs, otherwise attack whatever is in their range
             -- The only difference in behavior is the area in which the units move

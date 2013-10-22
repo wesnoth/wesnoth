@@ -6,7 +6,7 @@ return {
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-        function engine:mai_animals_attack_weakest_adj_enemy(unit)
+        function engine:mai_hunter_unit_attack_weakest_adj_enemy(unit)
             -- Attack the enemy with the fewest hitpoints adjacent to 'unit', if there is one
             -- Returns status of the attack:
             --   'attacked': if a unit was attacked
@@ -40,7 +40,7 @@ return {
             return 'no_attack'
         end
 
-        function engine:mai_animals_hunter_unit_eval(cfg)
+        function engine:mai_hunter_unit_eval(cfg)
             local unit = wesnoth.get_units { side = wesnoth.current.side, id = cfg.id,
                 formula = '$this_unit.moves > 0'
             }[1]
@@ -50,7 +50,7 @@ return {
         end
 
         -- cfg parameters: id, hunting_ground, home_x, home_y, rest_turns, show_messages
-        function engine:mai_animals_hunter_unit_exec(cfg)
+        function engine:mai_hunter_unit_exec(cfg)
             -- Unit with the given ID goes on a hunt, doing a random wander in area given by
             -- hunting_ground, then retreats to
             -- position given by 'home_x,home_y' for 'rest_turns' turns, or until fully healed
@@ -113,7 +113,7 @@ return {
                 end
 
                 -- Finally, if the unit ended up next to enemies, attack the weakest of those
-                local attack_status = self:mai_animals_attack_weakest_adj_enemy(unit)
+                local attack_status = self:mai_hunter_unit_attack_weakest_adj_enemy(unit)
 
                 -- If the enemy was killed, hunter returns home
                 if unit.valid and (attack_status == 'killed') then
@@ -151,7 +151,7 @@ return {
                 end
 
                 -- We also attack the weakest adjacent enemy, if still possible
-                self:mai_animals_attack_weakest_adj_enemy(unit)
+                self:mai_hunter_unit_attack_weakest_adj_enemy(unit)
 
                 -- If the unit got home, start the resting counter
                 if unit.valid and (unit.x == cfg.home_x) and (unit.y == cfg.home_y) then
@@ -172,7 +172,7 @@ return {
                 ai.stopunit_moves(unit)
 
                 -- However, we do also attack the weakest adjacent enemy, if still possible
-                self:mai_animals_attack_weakest_adj_enemy(unit)
+                self:mai_hunter_unit_attack_weakest_adj_enemy(unit)
 
                 -- If this is the last turn of resting, we also remove the status and turn variable
                 if unit.valid and (unit.hitpoints >= unit.max_hitpoints) and (unit.variables.resting_until <= wesnoth.current.turn) then

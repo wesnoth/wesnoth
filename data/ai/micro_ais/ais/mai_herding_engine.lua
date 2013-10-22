@@ -8,7 +8,7 @@ return {
 
         ----- Beginning of Herding Animals AI -----
         -- We'll keep a lot of things denoted as sheep/dogs, because herder/herded is too similar
-        function engine:mai_animals_herding_area(cfg)
+        function engine:mai_herding_area(cfg)
             -- Find the area that the sheep can occupy
             -- First, find all contiguous hexes around center hex that are inside herding_perimeter
             local herding_area = LS.of_pairs(wesnoth.get_locations {
@@ -27,7 +27,7 @@ return {
             return herding_area
         end
 
-        function engine:mai_animals_herding_attack_close_enemy_eval(cfg)
+        function engine:mai_herding_attack_close_enemy_eval(cfg)
             -- Any enemy within attention_distance (default = 8) hexes of a sheep will get the dogs' attention
             -- with enemies within attack_distance (default: 4) being attacked
             local enemies = wesnoth.get_units {
@@ -46,7 +46,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_herding_attack_close_enemy_exec(cfg)
+        function engine:mai_herding_attack_close_enemy_exec(cfg)
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
                 formula = '$this_unit.moves > 0' }
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second} }
@@ -149,7 +149,7 @@ return {
             AH.movefull_stopunit(ai, best_dog, best_hex)
         end
 
-        function engine:mai_animals_sheep_runs_enemy_eval(cfg)
+        function engine:mai_herding_sheep_runs_enemy_eval(cfg)
             -- Sheep runs from any enemy within attention_distance hexes (after the dogs have moved in)
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
@@ -166,7 +166,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_sheep_runs_enemy_exec(cfg)
+        function engine:mai_herding_sheep_runs_enemy_exec(cfg)
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
                 { "filter_location",
@@ -197,7 +197,7 @@ return {
             AH.movefull_stopunit(ai, sheep, best_hex)
         end
 
-        function engine:mai_animals_sheep_runs_dog_eval(cfg)
+        function engine:mai_herding_sheep_runs_dog_eval(cfg)
             -- Any sheep with moves left next to a dog runs aways
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
@@ -208,7 +208,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_sheep_runs_dog_exec(cfg)
+        function engine:mai_herding_sheep_runs_dog_exec(cfg)
             -- simply get the first sheep
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 formula = '$this_unit.moves > 0',
@@ -232,7 +232,7 @@ return {
             AH.movefull_stopunit(ai, sheep, best_hex)
         end
 
-        function engine:mai_animals_herd_sheep_eval(cfg)
+        function engine:mai_herding_herd_sheep_eval(cfg)
             -- If dogs have moves left, and there is a sheep with moves left outside the
             -- herding area, chase it back
             -- We'll do a bunch of nested if's, to speed things up
@@ -242,7 +242,7 @@ return {
                     { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
                 }
                 if sheep[1] then
-                    local herding_area = self:mai_animals_herding_area(cfg)
+                    local herding_area = self:mai_herding_area(cfg)
                     for i,s in ipairs(sheep) do
                         -- If a sheep is found outside the herding area, we want to chase it back
                         if (not herding_area:get(s.x, s.y)) then return cfg.ca_score end
@@ -254,12 +254,12 @@ return {
             return 0
         end
 
-        function engine:mai_animals_herd_sheep_exec(cfg)
+        function engine:mai_herding_herd_sheep_exec(cfg)
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter}, formula = '$this_unit.moves > 0' }
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
                 { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
             }
-            local herding_area = self:mai_animals_herding_area(cfg)
+            local herding_area = self:mai_herding_area(cfg)
             local sheep_to_herd = {}
             for i,s in ipairs(sheep) do
                 -- If a sheep is found outside the herding area, we want to chase it back
@@ -317,14 +317,14 @@ return {
             end
         end
 
-        function engine:mai_animals_sheep_move_eval(cfg)
+        function engine:mai_herding_sheep_move_eval(cfg)
            -- If nothing else is to be done, the sheep do a random move
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second}, formula = '$this_unit.moves > 0' }
             if sheep[1] then return cfg.ca_score end
             return 0
         end
 
-        function engine:mai_animals_sheep_move_exec(cfg)
+        function engine:mai_herding_sheep_move_exec(cfg)
             -- We simply move the first sheep first
             local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second}, formula = '$this_unit.moves > 0' }[1]
 
@@ -349,7 +349,7 @@ return {
 
             -- If this move remains within herding area or dogs have no moves left, or sheep doesn't move
             -- make it a full move, otherwise partial move
-            local herding_area = self:mai_animals_herding_area(cfg)
+            local herding_area = self:mai_herding_area(cfg)
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter}, formula = '$this_unit.moves > 0' }
             if herding_area:get(x, y) or (not dogs[1]) or ((x == sheep.x) and (y == sheep.y)) then
                 AH.movefull_stopunit(ai, sheep, x, y)
@@ -358,7 +358,7 @@ return {
             end
         end
 
-        function engine:mai_animals_dog_move_eval(cfg)
+        function engine:mai_herding_dog_move_eval(cfg)
             -- As a final step, any dog not adjacent to a sheep moves within herding_perimeter
             local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
                 formula = '$this_unit.moves > 0',
@@ -368,7 +368,7 @@ return {
             return 0
         end
 
-        function engine:mai_animals_dog_move_exec(cfg)
+        function engine:mai_herding_dog_move_exec(cfg)
             -- We simply move the first dog first
             local dog = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
                 formula = '$this_unit.moves > 0',

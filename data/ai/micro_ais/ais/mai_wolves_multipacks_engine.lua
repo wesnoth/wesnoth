@@ -7,14 +7,14 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
-        function engine:mai_animals_color_label(x, y, text)
+        function engine:mai_wolves_multipacks_color_label(x, y, text)
             -- For displaying the wolf pack number in color underneath each wolf
             -- only using gray for the time being
             text = "<span color='#c0c0c0'>" .. text .. "</span>"
             W.label{ x = x, y = y, text = text }
         end
 
-        function engine:mai_animals_assign_packs(cfg)
+        function engine:mai_wolves_multipacks_assign_packs(cfg)
             local unit_type = cfg.type or "Wolf"
             local pack_size = cfg.pack_size or 3
 
@@ -134,7 +134,7 @@ return {
             if cfg.show_pack_number then
                 for k,p in pairs(packs) do
                     for i,loc in ipairs(p) do
-                        self:mai_animals_color_label(loc.x, loc.y, k)
+                        self:mai_wolves_multipacks_color_label(loc.x, loc.y, k)
                     end
                 end
             end
@@ -142,7 +142,7 @@ return {
             return packs
         end
 
-        function engine:mai_animals_wolves_multipacks_attack_eval(cfg)
+        function engine:mai_wolves_multipacks_attack_eval(cfg)
             local unit_type = cfg.type or "Wolf"
 
             -- If wolves have attacks left, call this CA
@@ -154,9 +154,9 @@ return {
             return 0
         end
 
-        function engine:mai_animals_wolves_multipacks_attack_exec(cfg)
+        function engine:mai_wolves_multipacks_attack_exec(cfg)
             -- First get all the packs
-            local packs = self:mai_animals_assign_packs(cfg)
+            local packs = self:mai_wolves_multipacks_assign_packs(cfg)
 
             -- Attacks are dealt with on a pack by pack basis
             -- and I want all wolves in a pack to move first, before going on to the next pack
@@ -268,7 +268,7 @@ return {
                         end
                         AH.movefull_stopunit(ai, attacker, best_attack.dst.x, best_attack.dst.y)
                         if cfg.show_pack_number then
-                            self:mai_animals_color_label(attacker.x, attacker.y, pack_number)
+                            self:mai_wolves_multipacks_color_label(attacker.x, attacker.y, pack_number)
                         end
 
                         local a_x, a_y, d_x, d_y = attacker.x, attacker.y, defender.x, defender.y
@@ -319,7 +319,7 @@ return {
                             end
                             AH.movefull_stopunit(ai, w, best_hex)
                             if cfg.show_pack_number then
-                                self:mai_animals_color_label(w.x, w.y, pack_number)
+                                self:mai_wolves_multipacks_color_label(w.x, w.y, pack_number)
                             end
                         end
                     end
@@ -329,7 +329,7 @@ return {
 
         end
 
-        function engine:mai_animals_wolves_multipacks_wander_eval(cfg)
+        function engine:mai_wolves_multipacks_wander_eval(cfg)
             local unit_type = cfg.type or "Wolf"
 
             -- When there's nothing to attack, the wolves wander and regroup into their packs
@@ -339,9 +339,9 @@ return {
             return 0
         end
 
-        function engine:mai_animals_wolves_multipacks_wander_exec(cfg)
+        function engine:mai_wolves_multipacks_wander_exec(cfg)
             -- First get all the packs
-            local packs = self:mai_animals_assign_packs(cfg)
+            local packs = self:mai_wolves_multipacks_assign_packs(cfg)
 
             for k,pack in pairs(packs) do
                 -- If any of the wolves has a goal set, this is used for the entire pack
@@ -456,7 +456,7 @@ return {
                     end
                     AH.movefull_stopunit(ai, w, best_hex)
                     if cfg.show_pack_number then
-                        self:mai_animals_color_label(w.x, w.y, k)
+                        self:mai_wolves_multipacks_color_label(w.x, w.y, k)
                     end
                 end
             end
