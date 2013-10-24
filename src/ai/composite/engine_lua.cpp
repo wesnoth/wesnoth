@@ -156,8 +156,8 @@ private:
 
 	void generate_code(std::string& eval, std::string& exec) {
 		std::string code = "wesnoth.require(\"" + location_ + "\")";
-		eval = "return " + code + ":evaluation((...):get_ai(), (...), {" + eval_parms_ + "})";
-		exec = code + ":execution((...):get_ai(), (...), {" + exec_parms_ + "})";
+		eval = "return " + code + ":evaluation((...):get_ai(), {" + eval_parms_ + "}, (...))";
+		exec = code + ":execution((...):get_ai(), {" + exec_parms_ + "}, (...))";
 	}
 };
 
