@@ -128,7 +128,7 @@ private:
 class lua_candidate_action_wrapper_external : public lua_candidate_action_wrapper_base {
 public:
 	lua_candidate_action_wrapper_external(rca_context& context, const config& cfg, lua_ai_context &lua_ai_ctx)
-		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"])
+		: lua_candidate_action_wrapper_base(context,cfg), location_(cfg["location"]), eval_parms_(cfg["eval_parms"]), exec_parms_(cfg["exec_parms"])
 	{
 		std::string eval_code;
 		std::string exec_code;
@@ -144,16 +144,20 @@ public:
 	{
 		config cfg = lua_candidate_action_wrapper_base::to_config();
 		cfg["location"] = location_;
+		cfg["eval_parms"] = eval_parms_;
+		cfg["exec_parms"] = exec_parms_;
 		return cfg;
 	}
 
 private:
 	std::string location_;
+	std::string eval_parms_;
+	std::string exec_parms_;
 
 	void generate_code(std::string& eval, std::string& exec) {
 		std::string code = "wesnoth.require(\"" + location_ + "\")";
-		eval = "return " + code + ":evaluation((...):get_ai(), (...))";
-		exec = code + ":execution((...):get_ai(), (...))";
+		eval = "return " + code + ":evaluation((...):get_ai(), (...), {" + eval_parms_ + "})";
+		exec = code + ":execution((...):get_ai(), (...), {" + exec_parms_ + "})";
 	}
 };
 
