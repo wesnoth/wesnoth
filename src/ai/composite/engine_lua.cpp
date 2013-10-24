@@ -152,8 +152,8 @@ private:
 
 	void generate_code(std::string& eval, std::string& exec) {
 		std::string code = "wesnoth.require(\"" + location_ + "\")";
-		eval = "return " + code + ":eval((...):get_ai())";
-		exec = code + ":exec((...):get_ai())";
+		eval = "return " + code + ":evaluation((...):get_ai(), (...))";
+		exec = code + ":execution((...):get_ai(), (...))";
 	}
 };
 
@@ -252,7 +252,7 @@ std::string engine_lua::get_engine_code(const config &cfg) const
 		return cfg["code"].str();
 	}
 	// If there is no engine defined we create a dummy engine
-	std::string code = "local ai = ... local m_ai = wesnoth.require(\"ai/lua/dummy_engine_lua.lua\") return m_ai.get_ai(ai)";
+	std::string code = "local ai = ... return wesnoth.require(\"ai/lua/dummy_engine_lua.lua\").get_ai(ai)";
 	return code;
 }
 
