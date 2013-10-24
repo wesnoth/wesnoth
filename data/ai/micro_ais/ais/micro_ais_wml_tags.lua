@@ -491,7 +491,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             "avoid_enemies", "filter", "ignore_units", "ignore_enemy_at_goal",
             "release_all_units_at_goal", "release_unit_at_goal", "unique_goals", "use_straight_line"
         }
-        CA_parms = { { ca_id = 'mai_goto', score = cfg.ca_score or 300000 } }
+        CA_parms = { { ca_id = 'mai_goto', location = 'ai/micro_ais/cas/ca_goto.lua', score = cfg.ca_score or 300000 } }
 
     --------- Hang Out Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'hang_out') then
