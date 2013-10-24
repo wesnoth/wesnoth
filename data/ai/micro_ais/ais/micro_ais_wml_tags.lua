@@ -206,9 +206,9 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "enemy_death_chance", "messenger_death_chance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = 'mai_messenger_attack', score = score },
-            { ca_id = 'mai_messenger_move', score = score - 1 },
-            { ca_id = 'mai_messenger_other_move', score = score - 2 }
+            { ca_id = 'mai_messenger_attack', location = 'ai/micro_ais/cas/ca_messenger_attack.lua', score = score },
+            { ca_id = 'mai_messenger_move', location = 'ai/micro_ais/cas/ca_messenger_move.lua', score = score - 1 },
+            { ca_id = 'mai_messenger_escort_move', location = 'ai/micro_ais/cas/ca_messenger_escort_move.lua', score = score - 2 }
         }
 
     --------- Lurkers Micro AI - side-wide AI ------------------------------------
