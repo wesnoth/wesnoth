@@ -155,6 +155,13 @@ function wesnoth.wml_actions.micro_ai(cfg)
         cfg.ai_type = 'hunter'
     end
 
+    -- Add translation for old-syntax patrol_unit MAI to new syntax plus deprecation message
+    if (cfg.ai_type == 'patrol_unit') then
+        wesnoth.message("'ai_type=patrol_unit' is deprecated.  Use 'ai_type=patrol' instead.")
+
+        cfg.ai_type = 'patrol'
+    end
+
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then H.wml_error("[micro_ai] is missing required side= key") end
@@ -399,7 +406,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = { { ca_id = "mai_hunter", score = cfg.ca_score or 300000 } }
 
     --------- Patrol Micro AI ------------------------------------
-    elseif (cfg.ai_type == 'patrol_unit') then
+    elseif (cfg.ai_type == 'patrol') then
         required_keys = { "id", "waypoint_x", "waypoint_y" }
         optional_keys = { "attack", "one_time_only", "out_and_back" }
         CA_parms = { { ca_id = "mai_patrol", location = 'ai/micro_ais/cas/ca_patrol.lua', score = cfg.ca_score or 300000 } }
