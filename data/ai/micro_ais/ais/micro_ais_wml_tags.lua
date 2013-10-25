@@ -403,7 +403,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'hunter') then
         required_keys = { "id", "home_x", "home_y" }
         optional_keys = { "filter_location", "rest_turns", "show_messages" }
-        CA_parms = { { ca_id = "mai_hunter", score = cfg.ca_score or 300000 } }
+        CA_parms = { { ca_id = "mai_hunter", location = 'ai/micro_ais/cas/ca_hunter.lua', score = cfg.ca_score or 300000 } }
 
     --------- Patrol Micro AI ------------------------------------
     elseif (cfg.ai_type == 'patrol') then
