@@ -496,7 +496,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     --------- Hang Out Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'hang_out') then
         optional_keys = { "filter", "filter_location", "avoid", "mobilize_condition", "mobilize_on_gold_less_than" }
-        CA_parms = { { ca_id = 'mai_hang_out', score = cfg.ca_score or 170000 } }
+        CA_parms = { { ca_id = 'mai_hang_out', location = 'ai/micro_ais/cas/ca_hang_out.lua', score = cfg.ca_score or 170000 } }
 
     --------- Simple Attack Micro AI - side-wide AI ---------------------------
     elseif (cfg.ai_type == 'simple_attack') then
