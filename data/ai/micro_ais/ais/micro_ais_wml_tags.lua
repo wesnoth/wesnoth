@@ -431,7 +431,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (not cfg.id) then
             H.wml_error("[micro_ai] tag (patrol_unit) is missing required parameter: id")
         end
-        CA_parms = { { ca_id = "mai_patrol", score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = "mai_patrol", location = 'ai/micro_ais/cas/ca_patrol.lua', score = cfg.ca_score or 300000 } }
 
     --------- Recruiting Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'recruiting') then
@@ -496,12 +496,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
     --------- Hang Out Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'hang_out') then
         optional_keys = { "filter", "filter_location", "avoid", "mobilize_condition", "mobilize_on_gold_less_than" }
-        CA_parms = { { ca_id = 'mai_hang_out', score = cfg.ca_score or 170000 } }
+        CA_parms = { { ca_id = 'mai_hang_out', location = 'ai/micro_ais/cas/ca_hang_out.lua', score = cfg.ca_score or 170000 } }
 
     --------- Simple Attack Micro AI - side-wide AI ---------------------------
     elseif (cfg.ai_type == 'simple_attack') then
         optional_keys = { "filter", "filter_second" }
-        CA_parms = { { ca_id = 'mai_simple_attack', score = cfg.ca_score or 110000 } }
+        CA_parms = { { ca_id = 'mai_simple_attack', location = 'ai/micro_ais/cas/ca_simple_attack.lua', score = cfg.ca_score or 110000 } }
 
     -- If we got here, none of the valid ai_types was specified
     else
