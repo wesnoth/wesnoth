@@ -148,6 +148,13 @@ function wesnoth.wml_actions.micro_ai(cfg)
         cfg.guardian_type = nil
     end
 
+    -- Add translation for old-syntax hunter_unit MAI to new syntax plus deprecation message
+    if (cfg.ai_type == 'hunter_unit') then
+        wesnoth.message("'ai_type=hunter_unit' is deprecated.  Use 'ai_type=hunter' instead.")
+
+        cfg.ai_type = 'hunter'
+    end
+
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then H.wml_error("[micro_ai] is missing required side= key") end
