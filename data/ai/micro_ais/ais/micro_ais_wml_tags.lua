@@ -10,8 +10,6 @@ local function add_CAs(side, CA_parms, CA_cfg)
     -- Required keys for CA_parms:
     --  - ca_id: is used for CA id/name and the eval/exec function names
     --  - score: the evaluation score
-    -- Optional keys:
-    --  - sticky: (boolean) whether this is a sticky BCA or not
 
     for i,parms in ipairs(CA_parms) do
         -- Make sure the id/name of each CA are unique.
@@ -19,9 +17,6 @@ local function add_CAs(side, CA_parms, CA_cfg)
         -- If not, we use the passed id in parms.ca_id
         -- If yes, we add a number to the end of parms.ca_id until we find an id that does not exist yet
         local ca_id, id_found = parms.ca_id, true
-
-        -- If it's a sticky behavior CA, we also add the unit id to ca_id
-        if parms.sticky then ca_id = ca_id .. "_" .. CA_cfg.id end
 
         local n = 1
         while id_found do -- This is really just a precaution
@@ -61,13 +56,6 @@ local function add_CAs(side, CA_parms, CA_cfg)
             CA.execution = "(...):" .. (parms.eval_id or parms.ca_id) .. "_exec(" .. AH.serialize(CA_cfg) .. ")"
         end
 
-        if parms.sticky then
-            local unit = wesnoth.get_units { id = CA_cfg.id }[1]
-            CA.sticky = "yes"
-            CA.unit_x = unit.x
-            CA.unit_y = unit.y
-        end
-
         W.modify_ai {
             side = side,
             action = "add",
@@ -77,17 +65,14 @@ local function add_CAs(side, CA_parms, CA_cfg)
     end
 end
 
-local function delete_CAs(side, CA_parms, unit_id)
+local function delete_CAs(side, CA_parms)
     -- Delete the candidate actions defined in 'CA_parms' from the AI of 'side'
     -- CA_parms is an array of tables, one for each CA to be removed
     -- We can simply pass the one used for add_CAs(), although only the
     -- CA_parms.ca_id field is needed
-    -- For sticky CAs, unit_id is also needed
 
     for i,parms in ipairs(CA_parms) do
         local ca_id = parms.ca_id
-        -- If it's a sticky behavior CA, we also add the unit id to ca_id
-        if parms.sticky then ca_id = ca_id .. "_" .. unit_id end
 
         W.modify_ai {
             side = side,
@@ -175,7 +160,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     -- Set up the configuration tables for the different Micro AIs
     local required_keys, optional_keys, CA_parms = {}, {}, {}
 
-    --------- Healer Support Micro AI - side-wide AI ------------------------------------
+    --------- Healer Support Micro AI ------------------------------------
     if (cfg.ai_type == 'healer_support') then
         optional_keys = { "aggression", "injured_units_only", "max_threats", "filter", "filter_second" }
         -- Scores for this AI need to be hard-coded, it does not work otherwise
@@ -190,7 +175,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             table.insert(CA_parms, { ca_id = 'mai_healer_may_attack', score = 99990 })
         end
 
-    --------- Bottleneck Defense Micro AI - side-wide AI ------------------------------------
+    --------- Bottleneck Defense Micro AI -----------------------------------
     elseif (cfg.ai_type == 'bottleneck_defense') then
         required_keys = { "x", "y", "enemy_x", "enemy_y" }
         optional_keys = { "healer_x", "healer_y", "leadership_x", "leadership_y", "active_side_leader" }
@@ -200,7 +185,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             { ca_id = 'mai_bottleneck_attack', score = score - 1 }
         }
 
-    --------- Messenger Escort Micro AI - side-wide AI ------------------------------------
+    --------- Messenger Escort Micro AI ------------------------------------
     elseif (cfg.ai_type == 'messenger_escort') then
         required_keys = { "id", "waypoint_x", "waypoint_y" }
         optional_keys = { "enemy_death_chance", "messenger_death_chance" }
@@ -211,13 +196,13 @@ function wesnoth.wml_actions.micro_ai(cfg)
             { ca_id = 'mai_messenger_escort_move', location = 'ai/micro_ais/cas/ca_messenger_escort_move.lua', score = score - 2 }
         }
 
-    --------- Lurkers Micro AI - side-wide AI ------------------------------------
+    --------- Lurkers Micro AI ------------------------------------
     elseif (cfg.ai_type == 'lurkers') then
         required_keys = { "filter", "filter_location" }
         optional_keys = { "stationary", "filter_location_wander" }
         CA_parms = { { ca_id = 'mai_lurkers', location = 'ai/micro_ais/cas/ca_lurkers.lua', score = cfg.ca_score or 300000 } }
 
-    --------- Protect Unit Micro AI - side-wide AI ------------------------------------
+    --------- Protect Unit Micro AI ------------------------------------
     elseif (cfg.ai_type == 'protect_unit') then
         required_keys = { "id", "goal_x", "goal_y" }
         -- Scores for this AI need to be hard-coded, it does not work otherwise
@@ -301,29 +286,17 @@ function wesnoth.wml_actions.micro_ai(cfg)
             add_aspects(cfg.side, aspect_parms)
         end
 
-    --------- Micro AI Guardian - BCA AIs -----------------------------------
+    --------- Micro AI Guardian -----------------------------------
     elseif (cfg.ai_type == 'stationed_guardian') then
-        -- id= key is required also for CA deletion; needs to be checked separately
-        if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (stationed_guardian) is missing required parameter: id")
-        end
         required_keys = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
         CA_parms = { { ca_id = 'mai_stationed_guardian', location = 'ai/micro_ais/cas/ca_stationed_guardian.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'zone_guardian') then
-        -- id= key is required also for CA deletion; needs to be checked separately
-        if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (zone_guardian) is missing required parameter: id")
-        end
         required_keys = { "id", "filter_location" }
         optional_keys = { "filter_location_enemy", "station_x", "station_y" }
         CA_parms = { { ca_id = 'mai_zone_guardian', location = 'ai/micro_ais/cas/ca_zone_guardian.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'return_guardian') then
-        -- id= key is required also for CA deletion; needs to be checked separately
-        if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (return_guardian) is missing required parameter: id")
-        end
         required_keys = { "id", "return_x", "return_y" }
         CA_parms = { { ca_id = 'mai_return_guardian', location = 'ai/micro_ais/cas/ca_return_guardian.lua', score = cfg.ca_score or 100010 } }
 
@@ -336,7 +309,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
         CA_parms = { { ca_id = 'mai_coward', location = 'ai/micro_ais/cas/ca_coward.lua', score = cfg.ca_score or 300000 } }
 
-    --------- Micro AI Animals  - side-wide and BCA AIs ------------------------------------
+    --------- Micro AI Animals  ------------------------------------
     elseif (cfg.ai_type == 'big_animals') then
         required_keys = { "filter"}
         optional_keys = { "avoid_unit", "filter_location", "filter_location_wander" }
@@ -416,24 +389,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'hunter') then
         required_keys = { "id", "home_x", "home_y" }
         optional_keys = { "filter_location", "rest_turns", "show_messages" }
-
-        -- id= key is required also for CA deletion
-        if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (hunter) is missing required parameter: id")
-        end
         CA_parms = { { ca_id = "mai_hunter", score = cfg.ca_score or 300000 } }
 
-    --------- Patrol Micro AI - BCA AI ------------------------------------
+    --------- Patrol Micro AI ------------------------------------
     elseif (cfg.ai_type == 'patrol_unit') then
         required_keys = { "id", "waypoint_x", "waypoint_y" }
         optional_keys = { "attack", "one_time_only", "out_and_back" }
-        -- id= key is required also for CA deletion
-        if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (patrol_unit) is missing required parameter: id")
-        end
         CA_parms = { { ca_id = "mai_patrol", location = 'ai/micro_ais/cas/ca_patrol.lua', score = cfg.ca_score or 300000 } }
 
-    --------- Recruiting Micro AI - side-wide AI ------------------------------------
+    --------- Recruiting Micro AI ------------------------------------
     elseif (cfg.ai_type == 'recruiting') then
         if (cfg.recruiting_type == 'rushers') then
             optional_keys = { "randomness" }
@@ -484,7 +448,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             }
         end
 
-    --------- Goto Micro AI - side-wide AI ------------------------------------
+    --------- Goto Micro AI ------------------------------------
     elseif (cfg.ai_type == 'goto') then
         required_keys = { "filter_location" }
         optional_keys = {
@@ -493,12 +457,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
         CA_parms = { { ca_id = 'mai_goto', location = 'ai/micro_ais/cas/ca_goto.lua', score = cfg.ca_score or 300000 } }
 
-    --------- Hang Out Micro AI - side-wide AI ------------------------------------
+    --------- Hang Out Micro AI ------------------------------------
     elseif (cfg.ai_type == 'hang_out') then
         optional_keys = { "filter", "filter_location", "avoid", "mobilize_condition", "mobilize_on_gold_less_than" }
         CA_parms = { { ca_id = 'mai_hang_out', location = 'ai/micro_ais/cas/ca_hang_out.lua', score = cfg.ca_score or 170000 } }
 
-    --------- Simple Attack Micro AI - side-wide AI ---------------------------
+    --------- Simple Attack Micro AI ---------------------------
     elseif (cfg.ai_type == 'simple_attack') then
         optional_keys = { "filter", "filter_second" }
         CA_parms = { { ca_id = 'mai_simple_attack', location = 'ai/micro_ais/cas/ca_simple_attack.lua', score = cfg.ca_score or 110000 } }
@@ -520,9 +484,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
     end
 
     -- If action=delete, we do that and are done, but we do need to pass
-    -- cfg.id for sticky CAs (existence of which has been checked above)
     if (cfg.action == 'delete') then
-        delete_CAs(cfg.side, CA_parms, cfg.id)
+        delete_CAs(cfg.side, CA_parms)
         return
     end
 
