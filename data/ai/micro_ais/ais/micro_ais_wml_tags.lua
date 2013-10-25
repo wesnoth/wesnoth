@@ -413,15 +413,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
             { ca_id = "mai_wolves_multipacks_wander", score = score - 1 }
         }
 
-    elseif (cfg.ai_type == 'hunter_unit') then
+    elseif (cfg.ai_type == 'hunter') then
         required_keys = { "id", "home_x", "home_y" }
         optional_keys = { "filter_location", "rest_turns", "show_messages" }
 
         -- id= key is required also for CA deletion
         if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (hunter_unit) is missing required parameter: id")
+            H.wml_error("[micro_ai] tag (hunter) is missing required parameter: id")
         end
-        CA_parms = { { ca_id = "mai_hunter_unit", score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = "mai_hunter", score = cfg.ca_score or 300000 } }
 
     --------- Patrol Micro AI - BCA AI ------------------------------------
     elseif (cfg.ai_type == 'patrol_unit') then
