@@ -431,7 +431,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (not cfg.id) then
             H.wml_error("[micro_ai] tag (patrol_unit) is missing required parameter: id")
         end
-        CA_parms = { { ca_id = "mai_patrol", score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = "mai_patrol", score = cfg.ca_score or 300000 } }
 
     --------- Recruiting Micro AI - side-wide AI ------------------------------------
     elseif (cfg.ai_type == 'recruiting') then
