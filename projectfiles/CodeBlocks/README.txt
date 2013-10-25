@@ -5,13 +5,13 @@ Compiling Wesnoth on Windows using CodeBlocks
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
-    wesnoth_root/ in this file.
+    <wesnoth_root> in this file.
 
 2.  Install CodeBlocks from <http://www.codeblocks.org/>.
     MinGW is not needed.
 
 3.  Install tdm-gcc-4.5.2 from <http://sourceforge.net/projects/tdm-gcc/files/TDM-GCC Installer/Previous/1.1006.0/>.
-    Note that the project files in wesnoth_root/projectfiles/CodeBlocks/ may
+    Note that the project files in <wesnoth_root>/projectfiles/CodeBlocks/ may
     contain a setting to compile with OpenMP support, so you should make sure
     that this option is enabled while installing the compiler (mark the
     checkbox for this when choosing components to install).
@@ -27,12 +27,12 @@ Compiling Wesnoth on Windows using CodeBlocks
     change.
 
     Unpack the file to any path of your choice, which will be referred to as
-    sdk_root/ for the remainder of this file.
+    <sdk_root> for the remainder of this file.
 
     The exact names of the folders containing the required files may vary; take
     note of them for the next steps.
 
-5.  In CodeBlocks, open wesnoth_root/projectfiles/CodeBlocks/wesnoth.workspace.
+5.  In CodeBlocks, open <wesnoth_root>/projectfiles/CodeBlocks/wesnoth.workspace.
 
 6.  Go to the Settings -> Compiler option in the menu, and choose the
     Global compiler settings -> Toolchain executables tab in the settings
@@ -46,15 +46,15 @@ Compiling Wesnoth on Windows using CodeBlocks
     * Linker for static libs: ar.exe
 
 7.  Change to the Search directories -> Compiler tab and choose Add; enter the
-    path to sdk_root/include_tdm_gcc/.
+    path to <sdk_root>/include_tdm_gcc/.
 
 8.  Change to the Search directories -> Linker tab and choose Add; enter the
-    path to sdk_root/lib_tdm_gcc/.
+    path to <sdk_root>/lib_tdm_gcc/.
 
     Close the settings dialog.
 
 9.  Choose the Build -> Build workspace option in the CodeBlocks menu. Once
-    finished, wesnoth.exe and wesnothd.exe should appear in wesnoth_root/.
+    finished, wesnoth.exe and wesnothd.exe should appear in <wesnoth_root>.
 
-10. To be able to run your build, copy all *.dll files from the sdk_root/dll/
-    folder to wesnoth_root/ where the *.exe files are.
+10. To be able to run your build, copy all *.dll files from the <sdk_root>/dll/
+    folder to <wesnoth_root> where the *.exe files are.
