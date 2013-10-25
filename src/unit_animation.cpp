@@ -449,7 +449,6 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("death");
 		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"1~0:600");
 		animations.back().sub_anims_["_death_sound"] = particule();
-		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
 		animations.push_back(*itor);
@@ -468,14 +467,12 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("healed");
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
 		animations.back().sub_anims_["_healed_sound"] = particule();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("poisoned");
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
 		animations.back().sub_anims_["_poison_sound"] = particule();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 
 	}
@@ -555,7 +552,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["value"] = anim["healing"];
 		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_healed_sound"] = particule();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
 
@@ -567,7 +563,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["value"] = anim["damage"];
 		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_poison_sound"] = particule();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
 
@@ -665,7 +660,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 									.highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particule();
-			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 		}
 	}
