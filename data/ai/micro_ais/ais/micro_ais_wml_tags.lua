@@ -308,7 +308,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             H.wml_error("[micro_ai] tag (stationed_guardian) is missing required parameter: id")
         end
         required_keys = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
-        CA_parms = { { ca_id = 'mai_stationed_guardian', score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = 'mai_stationed_guardian', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'zone_guardian') then
         -- id= key is required also for CA deletion; needs to be checked separately
@@ -317,7 +317,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         end
         required_keys = { "id", "filter_location" }
         optional_keys = { "filter_location_enemy", "station_x", "station_y" }
-        CA_parms = { { ca_id = 'mai_zone_guardian', score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = 'mai_zone_guardian', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'return_guardian') then
         -- id= key is required also for CA deletion; needs to be checked separately
@@ -325,7 +325,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             H.wml_error("[micro_ai] tag (return_guardian) is missing required parameter: id")
         end
         required_keys = { "id", "return_x", "return_y" }
-        CA_parms = { { ca_id = 'mai_return_guardian', score = cfg.ca_score or 100010, sticky = true } }
+        CA_parms = { { ca_id = 'mai_return_guardian', score = cfg.ca_score or 100010 } }
 
     elseif (cfg.ai_type == 'coward') then
         -- id= key is required also for CA deletion; needs to be checked separately
@@ -334,7 +334,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         end
         required_keys = { "id", "distance" }
         optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
-        CA_parms = { { ca_id = 'mai_coward', score = cfg.ca_score or 300000, sticky = true } }
+        CA_parms = { { ca_id = 'mai_coward', score = cfg.ca_score or 300000 } }
 
     --------- Micro AI Animals  - side-wide and BCA AIs ------------------------------------
     elseif (cfg.ai_type == 'big_animals') then
