@@ -38,11 +38,11 @@ std::string get_RC_suffix(const std::string& unit_color, const int color)
 
 
 flg_manager::flg_manager(const std::vector<const config*>& era_factions,
-	const config& side, const bool map_settings, const bool saved_game,
+	const config& side, const bool lock_settings, const bool saved_game,
 	const int color) :
 	era_factions_(era_factions),
 	side_(side),
-	map_settings_(map_settings),
+	lock_settings_(lock_settings),
 	saved_game_(saved_game),
 	has_no_recruits_((side_.has_attribute("default_recruit") ?
 		side_["default_recruit"].empty() : side_["recruit"].empty()) &&
@@ -313,7 +313,7 @@ void flg_manager::update_available_leaders()
 {
 	available_leaders_.clear();
 
-	if (!side_["no_leader"].to_bool() || !map_settings_) {
+	if (!side_["no_leader"].to_bool() || !lock_settings_) {
 		// Add a default leader if there is one.
 		if (!default_leader_type_.empty()) {
 			available_leaders_.push_back(default_leader_type_);
@@ -407,7 +407,7 @@ void flg_manager::update_choosable_factions()
 {
 	choosable_factions_ = available_factions_;
 
-	if ((!side_["faction"].empty() || !has_no_recruits_) && map_settings_) {
+	if ((!side_["faction"].empty() || !has_no_recruits_) && lock_settings_) {
 		std::string faction_id;
 		if (!has_no_recruits_) {
 			faction_id = "Custom";
@@ -425,7 +425,7 @@ void flg_manager::update_choosable_leaders()
 {
 	choosable_leaders_ = available_leaders_;
 
-	if (!default_leader_type_.empty() && map_settings_) {
+	if (!default_leader_type_.empty() && lock_settings_) {
 		if (std::find(available_leaders_.begin(), available_leaders_.end(),
 			default_leader_type_) != available_leaders_.end()) {
 
@@ -439,7 +439,7 @@ void flg_manager::update_choosable_genders()
 {
 	choosable_genders_ = available_genders_;
 
-	if (map_settings_) {
+	if (lock_settings_) {
 		std::string default_gender = side_["gender"];
 		if (default_gender.empty() && !default_leader_type_.empty()) {
 			const unit_type* unit = unit_types.find(current_leader_);

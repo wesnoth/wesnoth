@@ -576,7 +576,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				params.num_turns = (*scenario)["turns"].to_int(-1);
 				params.saved_game = false;
 				params.use_map_settings =
-					(*scenario)["force_use_map_settings"].to_bool(true);
+					(*scenario)["force_lock_settings"].to_bool();
 
 				mp::connect_engine_ptr
 					connect_engine(new mp::connect_engine(disp, gamestate,

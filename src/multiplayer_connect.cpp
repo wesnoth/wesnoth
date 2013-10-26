@@ -50,13 +50,13 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 	parent_(&parent),
 	engine_(engine),
 	gold_lock_(engine_->cfg()["gold_lock"].to_bool(
-		parent_->params().use_map_settings)),
+		parent_->force_lock_settings())),
 	income_lock_(engine_->cfg()["income_lock"].to_bool(
-		parent_->params().use_map_settings)),
+		parent_->force_lock_settings())),
 	team_lock_(engine_->cfg()["team_lock"].to_bool(
-		parent_->params().use_map_settings)),
+		parent_->force_lock_settings())),
 	color_lock_(engine_->cfg()["color_lock"].to_bool(
-		parent_->params().use_map_settings)),
+		parent_->force_lock_settings())),
 	changed_(false),
 	label_player_number_(parent.video(), str_cast(engine_->index() + 1),
 		font::SIZE_LARGE, font::LOBBY_COLOR),

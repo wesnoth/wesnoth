@@ -91,6 +91,7 @@ public:
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
+	bool force_lock_settings() const { return force_lock_settings_; }
 
 private:
 	connect_engine(const connect_engine&);
@@ -113,6 +114,8 @@ private:
 	const mp::controller default_controller_;
 	const bool local_players_only_;
 	const bool first_scenario_;
+
+	bool force_lock_settings_;
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;

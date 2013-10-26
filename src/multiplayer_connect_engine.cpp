@@ -75,6 +75,7 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
 	local_players_only_(local_players_only),
 	first_scenario_(first_scenario),
+	force_lock_settings_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
@@ -87,6 +88,8 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	if (level_.empty()) {
 		return;
 	}
+
+	force_lock_settings_ = level_["force_lock_settings"].to_bool();
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -831,7 +834,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	allow_player_(cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
 	controller_lock_(cfg["controller_lock"].to_bool(
-		parent_.params_.use_map_settings)),
+		parent_.force_lock_settings_)),
 	index_(index),
 	team_(0),
 	color_(index),
@@ -840,7 +843,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_player_(cfg["current_player"]),
 	player_id_(cfg["player_id"]),
 	ai_algorithm_(),
-	flg_(parent_.era_factions_, cfg_, parent_.params_.use_map_settings,
+	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
 		parent_.params_.saved_game, color_)
 {
 	// Check if this side should give its control to some other side.
