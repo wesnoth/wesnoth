@@ -221,9 +221,9 @@ function wesnoth.wml_actions.micro_ai(cfg)
         required_keys = { "id", "goal_x", "goal_y" }
         -- Scores for this AI need to be hard-coded, it does not work otherwise
         CA_parms = {
-            { ca_id = 'mai_protect_unit_finish',  score = 300000 },
-            { ca_id = 'mai_protect_unit_attack', score = 95000 },
-            { ca_id = 'mai_protect_unit_move', score = 94999 }
+            { ca_id = 'mai_protect_unit_finish', location = 'ai/micro_ais/cas/ca_protect_unit_finish.lua',  score = 300000 },
+            { ca_id = 'mai_protect_unit_attack', location = 'ai/micro_ais/cas/ca_protect_unit_attack.lua', score = 95000 },
+            { ca_id = 'mai_protect_unit_move', location = 'ai/micro_ais/cas/ca_protect_unit_move.lua', score = 94999 }
         }
 
         -- [unit] tags need to be dealt with separately
