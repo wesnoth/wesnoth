@@ -179,14 +179,14 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "aggression", "injured_units_only", "max_threats", "filter", "filter_second" }
         -- Scores for this AI need to be hard-coded, it does not work otherwise
         CA_parms = {
-            { ca_id = 'mai_healer_initialize', score = 999990 },
-            { ca_id = 'mai_healer_move', score = 105000 },
+            { ca_id = 'mai_healer_initialize', location = 'ai/micro_ais/cas/ca_healer_initialize.lua', score = 999990 },
+            { ca_id = 'mai_healer_move', location = 'ai/micro_ais/cas/ca_healer_move.lua', score = 105000 },
         }
 
         -- The healers_can_attack CA is only added to the table if aggression ~= 0
         -- But: make sure we always try removal
         if (cfg.action == 'delete') or (tonumber(cfg.aggression) ~= 0) then
-            table.insert(CA_parms, { ca_id = 'mai_healer_may_attack', score = 99990 })
+            table.insert(CA_parms, { ca_id = 'mai_healer_may_attack', location = 'ai/micro_ais/cas/ca_healer_may_attack.lua', score = 99990 })
         end
 
     --------- Bottleneck Defense Micro AI -----------------------------------
