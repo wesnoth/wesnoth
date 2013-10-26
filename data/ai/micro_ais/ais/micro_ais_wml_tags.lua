@@ -327,15 +327,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
     elseif (cfg.ai_type == 'big_animals') then
         required_keys = { "filter"}
         optional_keys = { "avoid_unit", "filter_location", "filter_location_wander" }
-        CA_parms = { { ca_id = "mai_big_animals", score = cfg.ca_score or 300000 } }
+        CA_parms = { { ca_id = "mai_big_animals", location = 'ai/micro_ais/cas/ca_big_animals.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'wolves') then
         required_keys = { "filter", "filter_second" }
         optional_keys = { "avoid_type" }
         local score = cfg.ca_score or 90000
         CA_parms = {
-            { ca_id = "mai_wolves_move", score = score },
-            { ca_id = "mai_wolves_wander", score = score - 1 }
+            { ca_id = "mai_wolves_move", location = 'ai/micro_ais/cas/ca_wolves_move.lua', score = score },
+            { ca_id = "mai_wolves_wander", location = 'ai/micro_ais/cas/ca_wolves_wander.lua', score = score - 1 }
         }
 
        local wolves_aspects = {
@@ -364,12 +364,12 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "attention_distance", "attack_distance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_herding_attack_close_enemy", score = score },
-            { ca_id = "mai_herding_sheep_runs_enemy", score = score - 1 },
-            { ca_id = "mai_herding_sheep_runs_dog", score = score - 2 },
-            { ca_id = "mai_herding_herd_sheep", score = score - 3 },
-            { ca_id = "mai_herding_sheep_move", score = score - 4 },
-            { ca_id = "mai_herding_dog_move", score = score - 5 }
+            { ca_id = "mai_herding_attack_close_enemy", location = 'ai/micro_ais/cas/ca_herding_attack_close_enemy.lua', score = score },
+            { ca_id = "mai_herding_sheep_runs_enemy", location = 'ai/micro_ais/cas/ca_herding_sheep_runs_enemy.lua', score = score - 1 },
+            { ca_id = "mai_herding_sheep_runs_dog", location = 'ai/micro_ais/cas/ca_herding_sheep_runs_dog.lua', score = score - 2 },
+            { ca_id = "mai_herding_herd_sheep", location = 'ai/micro_ais/cas/ca_herding_herd_sheep.lua', score = score - 3 },
+            { ca_id = "mai_herding_sheep_move", location = 'ai/micro_ais/cas/ca_herding_sheep_move.lua', score = score - 4 },
+            { ca_id = "mai_herding_dog_move", location = 'ai/micro_ais/cas/ca_herding_dog_move.lua', score = score - 5 }
         }
 
     elseif (cfg.ai_type == 'forest_animals') then
@@ -378,10 +378,10 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_forest_animals_new_rabbit", score = score },
-            { ca_id = "mai_forest_animals_tusker_attack", score = score - 1 },
-            { ca_id = "mai_forest_animals_forest_move", score = score - 2 },
-            { ca_id = "mai_forest_animals_tusklet", score = score - 3 }
+            { ca_id = "mai_forest_animals_new_rabbit", location = 'ai/micro_ais/cas/ca_forest_animals_new_rabbit.lua', score = score },
+            { ca_id = "mai_forest_animals_tusker_attack", location = 'ai/micro_ais/cas/ca_forest_animals_tusker_attack.lua', score = score - 1 },
+            { ca_id = "mai_forest_animals_move", location = 'ai/micro_ais/cas/ca_forest_animals_move.lua', score = score - 2 },
+            { ca_id = "mai_forest_animals_tusklet_move", location = 'ai/micro_ais/cas/ca_forest_animals_tusklet_move.lua', score = score - 3 }
         }
 
     elseif (cfg.ai_type == 'swarm') then
@@ -396,8 +396,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "type", "pack_size", "show_pack_number" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_wolves_multipacks_attack", score = score },
-            { ca_id = "mai_wolves_multipacks_wander", score = score - 1 }
+            { ca_id = "mai_wolves_multipacks_attack", location = 'ai/micro_ais/cas/ca_wolves_multipacks_attack.lua', score = score },
+            { ca_id = "mai_wolves_multipacks_wander", location = 'ai/micro_ais/cas/ca_wolves_multipacks_wander.lua', score = score - 1 }
         }
 
     elseif (cfg.ai_type == 'hunter') then

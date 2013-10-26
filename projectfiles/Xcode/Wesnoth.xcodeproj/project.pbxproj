@@ -4900,6 +4900,7 @@
 				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4907,6 +4908,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
+				SDKROOT = macosx;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -4936,7 +4938,7 @@
 					"\"$(SRCROOT)/lib\"",
 				);
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = "";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4966,7 +4968,7 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = "";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
