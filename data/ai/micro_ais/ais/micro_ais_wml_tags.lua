@@ -388,8 +388,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "scatter_distance", "vision_distance", "enemy_distance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = "mai_swarm_scatter", score = score },
-            { ca_id = "mai_swarm_move", score = score - 1 }
+            { ca_id = "mai_swarm_scatter", location = 'ai/micro_ais/cas/ca_swarm_scatter.lua', score = score },
+            { ca_id = "mai_swarm_move", location = 'ai/micro_ais/cas/ca_swarm_move.lua', score = score - 1 }
         }
 
     elseif (cfg.ai_type == 'wolves_multipacks') then
