@@ -195,8 +195,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         optional_keys = { "healer_x", "healer_y", "leadership_x", "leadership_y", "active_side_leader" }
         local score = cfg.ca_score or 300000
         CA_parms = {
-            { ca_id = 'mai_bottleneck_move', score = score },
-            { ca_id = 'mai_bottleneck_attack', score = score - 1 }
+            { ca_id = 'mai_bottleneck_move', location = 'ai/micro_ais/cas/ca_bottleneck_move.lua', score = score },
+            { ca_id = 'mai_bottleneck_attack', location = 'ai/micro_ais/cas/ca_bottleneck_attack.lua', score = score - 1 }
         }
 
     --------- Messenger Escort Micro AI ------------------------------------
