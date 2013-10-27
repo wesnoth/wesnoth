@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2011-11-22 18:38+0900\n"
+"POT-Creation-Date: 2013-08-17 11:34+0200\n"
+"PO-Revision-Date: 2013-10-25 16:23+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -1282,6 +1282,8 @@ msgstr "삭제하기"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:56
+#, fuzzy
+#| msgid "Play a campaign"
 msgid "Play a campaign"
 msgstr "캠페인을 시작합니다"
 
@@ -1466,8 +1468,10 @@ msgstr "높이:"
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:108
 #: data/gui/default/window/editor_new_map.cfg:109
+#, fuzzy
+#| msgid "Generate New Map"
 msgid "Create New Map"
-msgstr ""
+msgstr "새로운 맵 생성"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1521,8 +1525,10 @@ msgstr "어떤 플레이어가 여기서 시작합니까?"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:35 src/hotkeys.cpp:132
+#, fuzzy
+#| msgid "Hotkey Settings"
 msgid "Editor Settings"
-msgstr ""
+msgstr "단축키 설정"
 
 #. [label]
 #: data/gui/default/window/editor_settings.cfg:53
@@ -2172,8 +2178,10 @@ msgstr "무작위 시작 시간대"
 
 #. [button]: id=ok
 #: data/gui/default/window/mp_create_game.cfg:543
+#, fuzzy
+#| msgid "Create Game"
 msgid "Create game"
-msgstr ""
+msgstr "방 만들기"
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -2484,6 +2492,8 @@ msgid "Save replay on SP/MP victory or MP defeat"
 msgstr "싱글/멀티플레이 승리시나 멀티플레이 패배시 리플레이 저장"
 
 #: src/game_preferences_display.cpp:178
+#, fuzzy
+#| msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgstr "싱글/멀티플레이 승리시나 멀티플레이 패배시 자동저장파일 삭제"
 
@@ -2509,7 +2519,7 @@ msgstr "로비 목록에 아이콘 쓰기"
 
 #: src/game_preferences_display.cpp:184
 msgid "Save password to preferences (plain text)"
-msgstr ""
+msgstr "설정 파일에 암호 저장 (암호화 안됨)"
 
 #: src/game_preferences_display.cpp:185
 msgid "Set Path to wesnothd"
@@ -3466,6 +3476,8 @@ msgid "Selection Tool"
 msgstr "선택 도구"
 
 #: src/hotkeys.cpp:148
+#, fuzzy
+#| msgid "Set Starting Positions Tool"
 msgid "Set Starting Positions Tool"
 msgstr "시작 지점 설정 도구"
 
@@ -3849,11 +3861,274 @@ msgid ""
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
 
+#, fuzzy
+#~| msgid "Campaign"
+#~ msgid "Campfire"
+#~ msgstr "캠페인"
+
+#, fuzzy
+#~| msgid "Pine Forest"
+#~ msgid "Rainforest"
+#~ msgstr "소나무 숲"
+
+#, fuzzy
+#~| msgid "Pine Forest"
+#~ msgid "Palm Forest"
+#~ msgstr "소나무 숲"
+
+#, fuzzy
+#~| msgid "Pine Forest"
+#~ msgid "Dense Palm Forest"
+#~ msgstr "소나무 숲"
+
+#~ msgid "Savanna"
+#~ msgstr "열대 초원"
+
+#, fuzzy
+#~| msgid "Tropical Forest"
+#~ msgid "Tropical Forested Hills"
+#~ msgstr "열대 숲"
+
+#, fuzzy
+#~| msgid "Forested Hills"
+#~ msgid "Palm Forested Hills"
+#~ msgstr "숲 언덕"
+
+#, fuzzy
+#~| msgid "Forested Hills"
+#~ msgid "Dense Palm Forested Hills"
+#~ msgstr "숲 언덕"
+
+#, fuzzy
+#~| msgid "Forested Hills"
+#~ msgid "Savanna Forested Hills"
+#~ msgstr "숲 언덕"
+
+#, fuzzy
+#~| msgid "Unwalkable"
+#~ msgid "Unwalkable Overlay"
+#~ msgstr "도보불능"
+
+#, fuzzy
+#~| msgid "Rotting Bridge"
+#~ msgid "Hanging Bridge"
+#~ msgstr "썩은 다리"
+
+#, fuzzy
+#~| msgid "Bridge"
+#~ msgid "Plank Bridge"
+#~ msgstr "다리"
+
+#, fuzzy
+#~| msgid "Status Table"
+#~ msgid "Status:"
+#~ msgstr "상태 창"
+
+#, fuzzy
+#~| msgid "Multiplayer Options"
+#~ msgid "Filter Options"
+#~ msgstr "멀티플레이 설정"
+
+#, fuzzy
+#~| msgid "Translations:"
+#~ msgid "Installation status:"
+#~ msgstr "가능 번역:"
+
+#, fuzzy
+#~| msgid "Add-ons"
+#~ msgid "Add-on types:"
+#~ msgstr "추가 기능"
+
+#, fuzzy
+#~| msgid "Toggle Ellipses"
+#~ msgid "Toggle All"
+#~ msgstr "토글 키 무시"
+
+#, fuzzy
+#~| msgid "Delete Save"
+#~ msgid "Delete ToD"
+#~ msgstr "세이브 파일 삭제"
+
+#, fuzzy
+#~| msgid "Impassable"
+#~ msgid "Immutable"
+#~ msgstr "통과불능"
+
+#, fuzzy
+#~| msgid "Create Game"
+#~ msgid "Create"
+#~ msgstr "방 만들기"
+
+#, fuzzy
+#~| msgid "Resize Map"
+#~ msgid "Resize"
+#~ msgstr "맵 크기"
+
+#, fuzzy
+#~| msgid "Do not show lobby joins"
+#~ msgid "Do not show again"
+#~ msgstr "로비 입장 메세지 보이지 않기"
+
+#, fuzzy
+#~| msgid "Difficulty"
+#~ msgid "Change difficulty"
+#~ msgstr "난이도"
+
+#, fuzzy
+#~| msgid "Choose Resolution"
+#~ msgid "Choose Modifications"
+#~ msgstr "해상도를 선택하십시오"
+
+#, fuzzy
+#~| msgid "User interface sounds"
+#~ msgid "User interaction required"
+#~ msgstr "유저 인터페이스 사운드"
+
+#~ msgid "Save replays at the end of scenarios"
+#~ msgstr "시나리오를 마치면 리플레이 저장"
+
+#~ msgid "Delete auto-saves at the end of scenarios"
+#~ msgstr "시나리오를 마치면 자동 저장 삭제"
+
+#, fuzzy
+#~| msgid "Delete auto-saves on SP/MP victory or MP defeat"
+#~ msgid ""
+#~ "Deletes previous auto-saves on victory in all modes and defeat in "
+#~ "multiplayer"
+#~ msgstr "싱글/멀티플레이 승리시나 멀티플레이 패배시 자동저장파일 삭제"
+
+#, fuzzy
+#~| msgid "Show floating labels"
+#~ msgid "Show labels"
+#~ msgstr "띄워진 딱지 보이기"
+
+#, fuzzy
+#~| msgid "Uninstall Add-ons"
+#~ msgid "addons_view^All Add-ons"
+#~ msgstr "추가 기능 삭제"
+
+#, fuzzy
+#~| msgid "Hotkeys"
+#~ msgid "Hotkeys Reset"
+#~ msgstr "단축키"
+
+#, fuzzy
+#~| msgid "Save Replay"
+#~ msgid "Defaults"
+#~ msgstr "리플레이 저장"
+
+#, fuzzy
+#~| msgid "Prefs section^General"
+#~ msgid "Prefs section^Game"
+#~ msgstr "일반"
+
+#, fuzzy
+#~| msgid "Prefs section^Sound"
+#~ msgid "Prefs section^Editor"
+#~ msgstr "소리"
+
+#, fuzzy
+#~| msgid "Hotkeys"
+#~ msgid "Add Hotkey"
+#~ msgstr "단축키"
+
+#, fuzzy
+#~| msgid "Save Hotkeys"
+#~ msgid "Reassign Hotkey"
+#~ msgstr "단축키 저장"
+
+#, fuzzy
+#~| msgid "Delete File"
+#~ msgid "Delete Unit"
+#~ msgstr "파일 삭제"
+
+#~| msgid "Create Unit (Debug!)"
+#~ msgid "Kill Unit (Debug!)"
+#~ msgstr "유닛 죽이기 (디버그!)"
+
+#, fuzzy
+#~| msgid "Start Editor"
+#~ msgid "Quit Editor"
+#~ msgstr "맵 에디터 열기"
+
+#, fuzzy
+#~| msgid "Next Side"
+#~ msgid "Switch Area"
+#~ msgstr "다음 진영"
+
+#, fuzzy
+#~| msgid "Next Side"
+#~ msgid "Add New Side"
+#~ msgstr "다음 진영"
+
+#, fuzzy
+#~| msgid "Next Side"
+#~ msgid "Switch Side"
+#~ msgstr "다음 진영"
+
+#, fuzzy
+#~| msgid "Next Side"
+#~ msgid "Switch Time of Day"
+#~ msgstr "다음 진영"
+
+#, fuzzy
+#~| msgid "Fill Tool"
+#~ msgid "Label Tool"
+#~ msgstr "채우기 도구"
+
+#, fuzzy
+#~| msgid "Paint Tool"
+#~ msgid "Unit Tool"
+#~ msgstr "칠하기 도구"
+
+#, fuzzy
+#~| msgid "Paint Tool"
+#~ msgid "Item Tool"
+#~ msgstr "칠하기 도구"
+
+#, fuzzy
+#~| msgid "Village gold"
+#~ msgid "Village Tool"
+#~ msgstr "마을당 수입"
+
+#, fuzzy
+#~| msgid "Recruit"
+#~ msgid "Canrecruit"
+#~ msgstr "소집"
+
+#, fuzzy
+#~ msgid "Can be renamed"
+#~ msgstr "언어 설정"
+
+#, fuzzy
+#~| msgid "Change Hotkey"
+#~ msgid "Change Unit ID"
+#~ msgstr "단축키 바꾸기"
+
+#, fuzzy
+#~| msgid "Height:"
+#~ msgid "Right"
+#~ msgstr "높이:"
+
+#, fuzzy
+#~| msgid "Unknown era"
+#~ msgid "Unknown"
+#~ msgstr "알수없는 시대"
+
+#, fuzzy
+#~| msgid "Hut"
+#~ msgid "Hat"
+#~ msgstr "오두막"
+
 #~ msgid "Use new lobby interface"
 #~ msgstr "새 로비 인터페이스 쓰기"
 
 #~ msgid "Use New Lobby Interface"
 #~ msgstr "새로운 로비 인터페이스 쓰기"
+
+#~| msgid "Select All"
+#~ msgid "Reset All"
+#~ msgstr "모두 선택"
 
 #~ msgid "Execute Planned Action"
 #~ msgstr "계획된 행동 실행"
@@ -3913,9 +4188,6 @@ msgstr ""
 #~ msgid "Snow Forest"
 #~ msgstr "눈밭 숲"
 
-#~ msgid "Savanna"
-#~ msgstr "열대 초원"
-
 #~ msgid "Mushroom Grove Lit"
 #~ msgstr "빛나는 버섯 수풀"
 
@@ -3938,15 +4210,8 @@ msgstr ""
 #~ msgid "Gamma:"
 #~ msgstr "밝기:"
 
-#, fuzzy
-#~ msgid "Change username"
-#~ msgstr "언어 설정"
-
 #~ msgid "Your modifications to the map will be lost. Continue?"
 #~ msgstr "당신의 수정된 맵을 잃을 것입니다. 계속 하시겠습니까?"
-
-#~ msgid "Generate New Map"
-#~ msgstr "새로운 맵 생성"
 
 #~ msgid "Random Generator Settings"
 #~ msgstr "랜덤 생성기 설정"
@@ -3971,9 +4236,6 @@ msgstr ""
 
 #~ msgid "Draw Terrain"
 #~ msgstr "지형 그리기"
-
-#~ msgid "Save Hotkeys"
-#~ msgstr "단축키 저장"
 
 #, fuzzy
 #~ msgid "Advanced Mode"

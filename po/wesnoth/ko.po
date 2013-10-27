@@ -6,10 +6,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
+"Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2011-12-01 14:25+0900\n"
+"POT-Creation-Date: 2013-08-17 11:34+0200\n"
+"PO-Revision-Date: 2013-10-25 16:21+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -579,10 +579,8 @@ msgstr "터키어 번역 담당"
 
 #. [about]
 #: data/core/about.cfg:2824
-#, fuzzy
-#| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
-msgstr "루마니아어 번역 담당"
+msgstr "우크라이나어 번역 담당"
 
 #. [about]
 #: data/core/about.cfg:2837
@@ -828,44 +826,44 @@ msgstr ""
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:23
 msgid "You have come across a wishing well. What would you like to wish for?"
-msgstr ""
+msgstr "소원의 우물입니다. 무엇을 빌어볼까요?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:26
 msgid "A swift victory"
-msgstr ""
+msgstr "신속한 승리"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:34
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
-msgstr ""
+msgstr "이 금화로 이 전투가 빠르고 안전한 승리로 끝나길 빌겠어."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:40
 msgid "Lots of gold"
-msgstr ""
+msgstr "많은 돈"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:48
 msgid "I wish this single gold coin be returned ten-fold to me."
-msgstr ""
+msgstr "이 금화 하나가 나에게 열배로 돌아오기를 빌겠어."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:54
 msgid "Peace throughout Wesnoth."
-msgstr ""
+msgstr "Wesnoth의 평화"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr ""
+msgstr "내가 바라는 것은 오직 이 땅의 평화 뿐이야."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
 msgid "Don’t make a wish."
-msgstr ""
+msgstr "소원을 빌지 않는다."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:206
@@ -2021,7 +2019,7 @@ msgstr "보너스 목표:"
 #. [note]: description=<b>
 #: data/core/macros/objective-utils.cfg:74
 msgid "This is the last scenario."
-msgstr ""
+msgstr "이번 시나리오가 마지막입니다."
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:62
@@ -2178,7 +2176,7 @@ msgstr "$name|’s 다리,$name|’s 도하점"
 #. [language]
 #: data/english.cfg:24
 msgid "$name|’s Highway,$name|’s Pass,Path of $name"
-msgstr ""
+msgstr "$name| 가도,$name| 통로,$name|의 길"
 
 #. [language]
 #: data/english.cfg:25
@@ -2198,7 +2196,7 @@ msgstr "$name 호수"
 #. [language]
 #: data/english.cfg:28
 msgid "$name|’s Peak,Mount $name"
-msgstr ""
+msgstr "$name| 봉,$name| 산"
 
 #. [language]
 #: data/english.cfg:29
@@ -3204,6 +3202,8 @@ msgid "You don’t have a leader to recall with."
 msgstr "재소집을 수행할 지휘관이 없습니다."
 
 #: src/actions.cpp:506
+#, fuzzy
+#| msgid "None of your leaders is able to recall that unit."
 msgid "None of your leaders is able to recall that unit."
 msgstr "해당 유닛을 재소집할 수 있는 지휘관이 없습니다."
 
@@ -3328,8 +3328,10 @@ msgid "Terms"
 msgstr ""
 
 #: src/addon/manager.cpp:530
+#, fuzzy
+#| msgid "Uninstall add-ons"
 msgid "Sending add-on"
-msgstr ""
+msgstr "추가 기능 삭제"
 
 #: src/addon/manager.cpp:535 src/addon/manager.cpp:560
 msgid "The server responded with an error: \""
@@ -3345,6 +3347,8 @@ msgid "Requesting the addon to be deleted"
 msgstr ""
 
 #: src/addon/manager.cpp:581
+#, fuzzy
+#| msgid "Downloading add-on: $addon_title|..."
 msgid "Downloading add-on: $addon_title|..."
 msgstr "추가 기능 다운중: $addon_title|..."
 
@@ -3404,8 +3408,9 @@ msgid_plural ""
 msgstr[0] ""
 
 #: src/addon/manager.cpp:829
+#, fuzzy
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "부속 기능"
 
 #: src/addon/manager.cpp:831
 msgid ""
@@ -3418,14 +3423,18 @@ msgid "Installation failed"
 msgstr ""
 
 #: src/addon/manager.cpp:847 src/addon/manager.cpp:1075
+#, fuzzy
+#| msgid "Add-on could not be deleted properly:"
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] ""
+msgstr[0] "추가 기능이 제대로 삭제되지 않았습니다:"
 
 #: src/addon/manager.cpp:908
+#, fuzzy
+#| msgid "Get add-ons"
 msgid "Outdated add-ons"
-msgstr ""
+msgstr "추가 기능 받기"
 
 #: src/addon/manager.cpp:910
 msgid ""
@@ -3445,20 +3454,28 @@ msgid "Could not find any updated add-ons on this server."
 msgstr "이 서버에서 업데이트된 추가 기능을 찾을 수 없습니다."
 
 #: src/addon/manager.cpp:935
+#, fuzzy
+#| msgid "New Version"
 msgid "New version"
-msgstr ""
+msgstr "새 버전"
 
 #: src/addon/manager.cpp:935
+#, fuzzy
+#| msgid "Old Version"
 msgid "Old version"
-msgstr ""
+msgstr "옛 버전"
 
 #: src/addon/manager.cpp:987
+#, fuzzy
+#| msgid "Get add-ons"
 msgid "Update add-ons"
-msgstr ""
+msgstr "추가 기능 받기"
 
 #: src/addon/manager.cpp:988
+#, fuzzy
+#| msgid "No add-ons to update"
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "업데이트 할 추가 기능 없음"
 
 #: src/addon/manager.cpp:1002
 msgid "Update all"
@@ -3466,8 +3483,9 @@ msgstr ""
 
 #: src/addon/manager.cpp:1040 src/addon/manager.cpp:1057
 #: src/addon/manager.cpp:1347
+#, fuzzy
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "부속 기능"
 
 #: src/addon/manager.cpp:1042 src/addon/manager.cpp:1059
 #: src/addon/manager.cpp:1349
@@ -3485,8 +3503,10 @@ msgid "Update succeeded"
 msgstr ""
 
 #: src/addon/manager.cpp:1084
+#, fuzzy
+#| msgid "Add-on Updated"
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "추가 기능 갱신 완료"
 
 #: src/addon/manager.cpp:1085
 msgid "All add-ons updated successfully."
@@ -3509,6 +3529,8 @@ msgid "Connecting..."
 msgstr "연결하는 중..."
 
 #: src/addon/manager.cpp:1129
+#, fuzzy
+#| msgid "Requesting list of add-ons"
 msgid "Requesting list of add-ons"
 msgstr "추가 기능 목록 받는중"
 
@@ -3525,8 +3547,10 @@ msgid "Publish add-on: "
 msgstr ""
 
 #: src/addon/manager.cpp:1266
+#, fuzzy
+#| msgid "Get add-ons"
 msgid "Delete add-on: "
-msgstr ""
+msgstr "추가 기능 받기"
 
 #: src/addon/manager.cpp:1272
 msgid "There are no add-ons available for download from this server."
@@ -3761,8 +3785,10 @@ msgid "Load Game"
 msgstr "게임 불러오기"
 
 #: src/dialogs.cpp:627
+#, fuzzy
+#| msgid "Choose the add-on to download."
 msgid "Choose the game to load"
-msgstr "불러올 게임을 고르십시오"
+msgstr "다운 받을 추가 기능을 선택하세요."
 
 #: src/dialogs.cpp:641
 msgid "Show replay"
@@ -3770,7 +3796,7 @@ msgstr "로드시 리플레이만 본다"
 
 #: src/dialogs.cpp:647
 msgid "Cancel orders"
-msgstr "명령 재확인"
+msgstr "명령 취소"
 
 #: src/dialogs.cpp:656
 msgid "Delete Save"
@@ -4095,20 +4121,26 @@ msgid "Do you really want to dismiss him?"
 msgstr "정말 그를 버리시겠습니까?"
 
 #: src/menu_events.cpp:100
+#, fuzzy
+#| msgid "This unit is loyal and requires no upkeep. "
 msgid "My lord, this unit is loyal and requires no upkeep! "
-msgstr "대장님, 이 유닛은 심복이라서 유지비가 필요없습니다!"
+msgstr "이 유닛은 심복이라서 유지비가 필요없습니다."
 
 #: src/menu_events.cpp:101 src/menu_events.cpp:104 src/menu_events.cpp:108
 msgid "Do you really want to dismiss her?"
 msgstr "정말 그녀를 버리시겠습니까?"
 
 #: src/menu_events.cpp:103
+#, fuzzy
+#| msgid "This unit is an experienced one, having advanced levels. "
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "대장님, 이 유닛은 고레벨의 숙련병입니다!"
+msgstr "이 유닛은 고레벨의 숙련병입니다."
 
 #: src/menu_events.cpp:107
+#, fuzzy
+#| msgid "This unit is close to advancing a level. "
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "대장님, 이 유닛은 승급하기 일보직전입니다!"
+msgstr "이 유닛은 승급하기 일보직전입니다."
 
 #: src/menu_events.cpp:205
 msgid "Statistics"
@@ -5245,10 +5277,8 @@ msgid "Random start time"
 msgstr "무작위 시작 시간대"
 
 #: src/multiplayer_create.cpp:90
-#, fuzzy
-#| msgid "Fog Of War"
 msgid "Fog of war"
-msgstr "안개 활성화"
+msgstr "전장의 안개"
 
 #: src/multiplayer_create.cpp:92
 msgid "Observers"
@@ -5571,9 +5601,8 @@ msgstr ""
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "서버 주소"
+msgstr "서버에 연결할 수 없습니다"
 
 #: src/pathfind/pathfind.cpp:456
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -5593,8 +5622,10 @@ msgid "Auto-Save"
 msgstr "자동 저장"
 
 #: src/play_controller.cpp:1116
+#, fuzzy
+#| msgid "Back to Turn "
 msgid "Back to turn "
-msgstr "되돌리기 - 턴"
+msgstr "되돌리기 - 턴 "
 
 #: src/play_controller.cpp:1365
 msgid ""
@@ -5977,10 +6008,16 @@ msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "경고: 로드하려는 파일이 손상되어 있습니다. 로드는 계속합니다.\n"
 
 #: src/savegame.cpp:524
+#, fuzzy
+#| msgid "This save is from a version too old to be loaded."
 msgid "This save is from a version too old to be loaded."
 msgstr "이 세이브 파일의 버전이 너무 오래되어 불러올 수 없습니다."
 
 #: src/savegame.cpp:530
+#, fuzzy
+#| msgid ""
+#| "This save is from a different version of the game. Do you want to try to "
+#| "load it?"
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -6003,8 +6040,11 @@ msgid "Overwrite?"
 msgstr "덮어씌우시겠습니까?"
 
 #: src/savegame.cpp:740
+#, fuzzy
+#| msgid ""
+#| "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgid "Save names should not end on '.gz'. Please choose a different name."
-msgstr "파일명이 '.gz'로 끝나면 안됩니다. 다른 이름을 쓰세요."
+msgstr "파일명이 '.gz'나 '.bz2'로 끝나면 안됩니다. 확장자를 지워주세요."
 
 #: src/savegame.cpp:806
 msgid "Saved"
@@ -6291,9 +6331,8 @@ msgid "lawful"
 msgstr "주행성"
 
 #: src/unit_types.cpp:976
-#, fuzzy
 msgid "liminal"
-msgstr "심복"
+msgstr ""
 
 #: src/unit_types.cpp:976
 msgid "neutral"
@@ -6308,9 +6347,8 @@ msgid "female^lawful"
 msgstr "주행성"
 
 #: src/unit_types.cpp:977
-#, fuzzy
 msgid "female^liminal"
-msgstr "심복"
+msgstr ""
 
 #: src/unit_types.cpp:977
 msgid "female^neutral"
@@ -6340,37 +6378,495 @@ msgstr "$player 로 교체"
 msgid "Whiteboard Options"
 msgstr ""
 
+#~| msgid "Compressed saves"
+#~ msgid "Compress savegames using bzip2"
+#~ msgstr "bzip2를 써서 세이브 파일을 압축함"
+
 #, fuzzy
+#~ msgid "Bones"
+#~ msgstr "돌"
+
+#, fuzzy
+#~| msgid "bow"
+#~ msgid "Bow"
+#~ msgstr "보우"
+
+#, fuzzy
+#~| msgid "charge"
+#~ msgid "Archery Target"
+#~ msgstr "돌격"
+
+#, fuzzy
+#~| msgid "Password: "
+#~ msgid "Sword"
+#~ msgstr "암호:"
+
+#, fuzzy
+#~| msgid "End Scenario"
+#~ msgid "Scenery"
+#~ msgstr "시나리오 마치기"
+
+#~ msgid "Lighthouse"
+#~ msgstr "등대"
+
+#~| msgid "Shallow Water"
+#~ msgid "Shallow water"
+#~ msgstr "얕은 물"
+
+#~| msgid "Deep Water"
+#~ msgid "Deep water"
+#~ msgstr "깊은 물"
+
+#, fuzzy
+#~ msgid "Swamp water"
+#~ msgstr "늪"
+
+#~ msgid "Flat"
+#~ msgstr "평지"
+
+#~ msgid "Hills"
+#~ msgstr "언덕"
+
+#~ msgid "Mountains"
+#~ msgstr "산"
+
+#~ msgid "Forest"
+#~ msgstr "숲"
+
+#~ msgid "Sand"
+#~ msgstr "모래 지대"
+
+#~ msgid "Cave"
+#~ msgstr "동굴"
+
+#~ msgid "Castle"
+#~ msgstr "성채"
+
+#~ msgid "Impassable"
+#~ msgstr "통과불능"
+
+#, fuzzy
+#~| msgid "None of your leaders is able to recall that unit."
+#~ msgid "None of your leaders are able to recruit that unit."
+#~ msgstr "해당 유닛을 재소집할 수 있는 지휘관이 없습니다."
+
+#~| msgid "cures"
+#~ msgid "cured"
+#~ msgstr "해독됨"
+
+#~| msgid "female^cures"
+#~ msgid "female^cured"
+#~ msgstr "해독됨"
+
+#, fuzzy
+#~| msgid "Connecting to Server..."
+#~ msgid "Connecting to $server_address|..."
+#~ msgstr "서버에 연결하는중..."
+
+#, fuzzy
+#~| msgid "Downloading add-on: $addon_title|..."
+#~ msgid "Sending add-on <i>$addon_title</i>..."
+#~ msgstr "추가 기능 다운중: $addon_title|..."
+
+#, fuzzy
+#~| msgid "Downloading add-on: $addon_title|..."
+#~ msgid "Removing add-on <i>$addon_title</i> from the server..."
+#~ msgstr "추가 기능 다운중: $addon_title|..."
+
+#, fuzzy
+#~| msgid "Add-on Installed"
+#~ msgid "Add-ons Manager"
+#~ msgstr "추가 기능 설치 완료"
+
+#, fuzzy
+#~| msgid "addon_type^MP faction"
+#~ msgid "addon_type^MP modification"
+#~ msgstr "멀티플레이용 당파"
+
+#, fuzzy
+#~| msgid "Add-on Installed"
+#~ msgid "addon_state^Not installed"
+#~ msgstr "추가 기능 설치 완료"
+
+#, fuzzy
+#~| msgid "Add-on Installed"
+#~ msgid "addon_state^Installed"
+#~ msgstr "추가 기능 설치 완료"
+
+#, fuzzy
+#~| msgid "addon_type^(unknown)"
+#~ msgid "addon_state^Unknown"
+#~ msgstr "(알수없음)"
+
+#, fuzzy
+#~ msgid "Broken Dependencies"
+#~ msgstr "부속 기능"
+
+#, fuzzy
+#~ msgid "Do you really wish to continue?"
+#~ msgstr "정말로 이 게임을 지우시겠습니까?"
+
+#, fuzzy
+#~| msgid "The add-on '$addon_title|' has been successfully installed."
+#~ msgid "The add-on '$addon_title|' has been successfully updated."
+#~ msgstr "추가 기능 '$addon_title|' 이 무사히 설치되었습니다."
+
+#~| msgid "Add-on Installed"
+#~ msgid "Add-ons Installed"
+#~ msgstr "추가 기능 설치 완료"
+
+#~| msgid "Add-on Deleted"
+#~| msgid_plural "Add-ons Deleted"
+#~ msgid "Add-ons Updated"
+#~ msgstr "추가 기능 갱신 완료"
+
+#~| msgid "Difficulty"
+#~ msgid "Change difficulty"
+#~ msgstr "난이도 변경"
+
+#~ msgid "Change campaign difficulty before loading"
+#~ msgstr "불러오기 전에 캠페인 난이도를 변경한다"
+
+#~ msgid "Play the embedded replay from the saved game if applicable"
+#~ msgstr "세이브 파일에 포함된 리플레이를 재생한다(있는 경우)"
+
+#~ msgid "Cancel any pending unit movements in the saved game"
+#~ msgstr "저장된 게임에서 미완료 움직임을 전부 되돌린다"
+
+#, fuzzy
+#~| msgid ""
+#~| "scenario settings^Gold Per\n"
+#~| "Village"
+#~ msgid ""
+#~ "scenario settings^Support Per\n"
+#~ "Village"
+#~ msgstr ""
+#~ "마을 당\n"
+#~ "수입"
+
+#~ msgid "Name:"
+#~ msgstr "이름:"
+
+#, fuzzy
+#~ msgid "Failed to resolve dependencies"
+#~ msgstr "부속 기능"
+
+#, fuzzy
+#~| msgid "No era information found."
+#~ msgid "No compatible eras found."
+#~ msgstr "시대 정보를 찾을 수 없습니다."
+
+#, fuzzy
+#~| msgid "No era information found."
+#~ msgid "No compatible scenarios found."
+#~ msgstr "시대 정보를 찾을 수 없습니다."
+
+#, fuzzy
+#~ msgid "Defaults"
+#~ msgstr "기본"
+
+#, fuzzy
+#~| msgid "Settings..."
+#~ msgid "Options..."
+#~ msgstr "설정..."
+
+#, fuzzy
+#~| msgid "The maximum number of turns the game can last"
+#~ msgid "The number of unit levels each village can support"
+#~ msgstr "게임이 지속되는 최대 턴수"
+
+#, fuzzy
+#~| msgid "Village gold: "
+#~ msgid "Village support: "
+#~ msgstr "마을당 금: "
+
+#~| msgid "Back to turn "
+#~ msgid "Back to Start"
+#~ msgstr "처음으로 돌아감"
+
+#, fuzzy
+#~| msgid "(press $hotkey to keep moving)"
+#~ msgid "(press $hk to disable)"
+#~ msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
+
+#, fuzzy
+#~| msgid "(press $hotkey to keep moving)"
+#~ msgid "(press $hotkey to deactivate)"
+#~ msgstr "(계속 이동하려면 $hotkey 키를 누르세요)"
+
+#, fuzzy
+#~| msgid "Version: "
+#~ msgid "vision: "
+#~ msgstr "저장 파일 버전:"
+
+#, fuzzy
+#~| msgid "Movement Cost"
+#~ msgid "Movement Costs:"
+#~ msgstr "소모 이동력"
+
+#, fuzzy
+#~| msgid "Weapon special: "
+#~ msgid "With specials: "
+#~ msgstr "무기 능력: "
+
+#, fuzzy
+#~| msgid "Turn bonus: "
+#~ msgid "Max swarm bonus: "
+#~ msgstr "턴당 시간 보너스: "
+
+#, fuzzy
+#~| msgid "Special"
+#~ msgid "Specials: "
+#~ msgstr "특수능력"
+
+#, fuzzy
+#~ msgid "Select Scenario"
+#~ msgstr "시나리오 시작"
+
+#~ msgid "Campaign"
+#~ msgstr "캠페인"
+
+#, fuzzy
+#~| msgid "End Scenario"
+#~ msgid "Scenario"
+#~ msgstr "시나리오 마치기"
+
+#, fuzzy
+#~| msgid "Time of Day"
+#~ msgid "Stub Time of Day"
+#~ msgstr "시간대"
+
+#~| msgid "Multiplayer_AI^Default AI"
+#~ msgid "Multiplayer_AI^Default AI (RCA)"
+#~ msgstr "기본 AI"
+
+#~| msgid "Multiplayer_AI^Default AI"
+#~ msgid "Multiplayer_AI^Experimental AI"
+#~ msgstr "기본 AI"
+
+#~| msgid "Enemy unit sighted!"
+#~| msgid_plural "$enemies enemy units sighted!"
+#~ msgid "Enemy unit weight  (default: 100)"
+#~ msgstr "적 유닛 발견!"
+
+#~| msgid "race^Orcs"
+#~ msgid "Orcs"
+#~ msgstr "오크족"
+
+#~| msgid "race^Humans"
+#~ msgid "Humans"
+#~ msgstr "인간족"
+
+#~| msgid "race^Wolves"
+#~ msgid "Wolves"
+#~ msgstr "늑대과"
+
+#~| msgid "End Scenario"
+#~ msgid "End scenario"
+#~ msgstr "시나리오 마치기"
+
+#~| msgid "Save the Map As"
+#~ msgid "Take the pass"
+#~ msgstr "다른 이름으로 맵 저장"
+
+#~| msgid "Defeat"
+#~ msgid "Defeat Rowck"
+#~ msgstr "패배"
+
+#~| msgid "Defeat enemy leader"
+#~ msgid "Death of the bat leader"
+#~ msgstr "적 지휘관 격파"
+
+#~| msgid "race^Saurians"
+#~ msgid "Saurians"
+#~ msgstr "사우리언족"
+
+#~| msgid "race^Gryphon"
+#~ msgid "Place Side 1 Footpad"
+#~ msgstr "그리폰"
+
+#~| msgid "race^Gryphons"
+#~ msgid "Gryphons"
+#~ msgstr "그리폰족"
+
+#~| msgid "Forward >"
+#~ msgid "Coward 1"
+#~ msgstr "앞으로 >"
+
+#~| msgid "Forward >"
+#~ msgid "coward r=5"
+#~ msgstr "앞으로 >"
+
+#~| msgid "Forward >"
+#~ msgid "Coward 2"
+#~ msgstr "앞으로 >"
+
+#~| msgid "Forward >"
+#~ msgid "Coward 3"
+#~ msgstr "앞으로 >"
+
+#~| msgid "Forward >"
+#~ msgid "Coward 4"
+#~ msgstr "앞으로 >"
+
+#~| msgid "Faction"
+#~ msgid "Station 1"
+#~ msgstr "당파"
+
+#~| msgid "Faction"
+#~ msgid "Station 2"
+#~ msgstr "당파"
+
+#~| msgid "Forward >"
+#~ msgid "Coward"
+#~ msgstr "앞으로 >"
+
+#~| msgid "Defeat enemy leader(s)"
+#~ msgid "Defeat all enemy units"
+#~ msgstr "적 지휘관(들)을 격파하라"
+
+#~| msgid "teleport"
+#~ msgid "Healer Support"
+#~ msgstr "전이"
+
+#~| msgid "Clear all orders"
+#~ msgid "Defeat all lurkers"
+#~ msgstr "모든 지령 소거"
+
+#~| msgid "Message:"
+#~ msgid "Messenger"
+#~ msgstr "대화:"
+
+#~| msgid "Defeat enemy leader"
+#~ msgid "Defeat the messenger"
+#~ msgstr "적 지휘관 격파"
+
+#~| msgid "Language"
+#~ msgid "Langzhar"
+#~ msgstr "언어"
+
+#~| msgid "Recruit"
+#~ msgid "Recruiting"
+#~ msgstr "소집"
+
+#~| msgid "race^Bats"
+#~ msgid "Bats"
+#~ msgstr "박쥐과"
+
+#~| msgid "race^Gryphon"
+#~ msgid "Place Side 1 Gryphon"
+#~ msgstr "그리폰"
+
+#~| msgid "race^Wolves"
+#~ msgid "More Wolves"
+#~ msgstr "늑대과"
+
+#, fuzzy
+#~ msgid "Select another ai"
+#~ msgstr "시나리오 시작"
+
+#, fuzzy
+#~ msgid "AI Developer"
+#~ msgstr "- 중심개발자"
+
+#~| msgid "Actions"
+#~ msgid "AI Location:"
+#~ msgstr "행동 메뉴"
+
+#~| msgid "firststrike"
+#~ msgid "first"
+#~ msgstr "선공"
+
+#~| msgid "invisible: "
+#~ msgid "invisible"
+#~ msgstr "투명:"
+
+#~| msgid "female^slowed"
+#~ msgid "female^invisible"
+#~ msgstr "둔화"
+
+#~| msgid "drains"
+#~ msgid "drains 20%"
+#~ msgstr "흡수"
+
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
+#~ msgid ""
+#~ "Drain 20%:\n"
+#~ "This unit drains health from living units, healing itself for 20% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "흡수:\n"
+#~ "이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유"
+#~ "합니다.(소수점 이하 내림)"
+
+#~| msgid "Version: "
+#~ msgid "Vision Test"
+#~ msgstr "저장 파일 버전:"
+
+#~| msgid "invisible: "
+#~ msgid "It is invisible!"
+#~ msgstr "투명:"
+
+#~| msgid "drains"
+#~ msgid "drains 100%"
+#~ msgstr "흡수"
+
+#~| msgid ""
+#~| "Drain:\n"
+#~| "This unit drains health from living units, healing itself for half the "
+#~| "amount of damage it deals (rounded down)."
+#~ msgid ""
+#~ "Drain 100%:\n"
+#~ "This unit drains health from living units, healing itself for 100% of the "
+#~ "amount of damage it deals (rounded down)."
+#~ msgstr ""
+#~ "흡수:\n"
+#~ "이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유"
+#~ "합니다.(소수점 이하 내림)"
+
+#~| msgid "Choose weapon:"
+#~ msgid "Choose a Map to Open"
+#~ msgstr "무기 선택:"
+
+#~| msgid "Choose the game to load"
+#~ msgid "Choose a Mask to Apply"
+#~ msgstr "불러올 게임을 고르십시오"
+
+#~| msgid "Choose weapon:"
+#~ msgid "Choose Target Map"
+#~ msgstr "무기 선택:"
+
+#~| msgid "The map already exists. Do you want to overwrite it?"
+#~ msgid "The file already exists. Do you want to overwrite it?"
+#~ msgstr "해당 이름의 맵이 이미 있습니다. 덮어씌우시겠습니까?"
+
 #~| msgid "Easy"
 #~ msgid "(Easy)"
 #~ msgstr "쉬움"
 
-#, fuzzy
 #~| msgid "Hard"
 #~ msgid "(Hard)"
 #~ msgstr "어려움"
 
-#, fuzzy
 #~| msgid "Players: "
 #~ msgid "Players"
 #~ msgstr "플레이어 수:"
 
-#, fuzzy
 #~| msgid "Enemy village"
 #~ msgid "Enemies"
 #~ msgstr "적 소속 마을"
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Easy"
 #~ msgstr "난이도:"
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Normal"
 #~ msgstr "난이도:"
 
-#, fuzzy
 #~| msgid "Difficulty: "
 #~ msgid "Difficulty: Hard"
 #~ msgstr "난이도:"
@@ -6383,9 +6879,6 @@ msgstr ""
 
 #~ msgid "Multiplayer define"
 #~ msgstr "멀티플레이 정리 담당"
-
-#~ msgid "Defeat enemy leader"
-#~ msgstr "적 지휘관 격파"
 
 #~ msgid "Download"
 #~ msgstr "내려받기"
@@ -6403,9 +6896,6 @@ msgstr ""
 
 #~ msgid "Choose the add-on to remove."
 #~ msgstr "삭제할 추가 기능을 선택하세요."
-
-#~ msgid "Uninstall add-ons"
-#~ msgstr "추가 기능 삭제"
 
 #~ msgid "Remove"
 #~ msgstr "지우기"
@@ -6437,9 +6927,6 @@ msgstr ""
 #~ msgid "Don’t ask me again!"
 #~ msgstr "다시 묻지 않음"
 
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "기본 AI"
-
 #~ msgid "berserk"
 #~ msgstr "광전사"
 
@@ -6464,9 +6951,6 @@ msgstr ""
 #~ "마법:\n"
 #~ "이 공격은 공격받는 유닛의 방어능력과는 무관하게 언제나 70%의 명중률을 갖습"
 #~ "니다."
-
-#~ msgid "firststrike"
-#~ msgstr "선공"
 
 #~ msgid ""
 #~ "First Strike:\n"
@@ -7174,9 +7658,6 @@ msgstr ""
 #~ "일단 타격이 가해지면 그 피해량이 1 밑으로 내려갈 수는 없습니다. 그것은 방"
 #~ "어자가 100%의 내성을 갖고 있더라도 마찬가지입니다."
 
-#~ msgid "Time of Day"
-#~ msgstr "시간대"
-
 #~ msgid ""
 #~ "The time of day affects the damage of certain units as follows:\n"
 #~ " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -7699,41 +8180,14 @@ msgstr ""
 #~ "Units with trait Weak get a -1 increment in hitpoints and melee damage."
 #~ msgstr "약한 특성을 가진 유닛은 체력과 근접 데미지가 각각 1 적습니다."
 
-#~ msgid "Flat"
-#~ msgstr "평지"
-
 #~ msgid "Road"
 #~ msgstr "길"
-
-#~ msgid "Forest"
-#~ msgstr "숲"
-
-#~ msgid "Hills"
-#~ msgstr "언덕"
-
-#~ msgid "Mountains"
-#~ msgstr "산"
 
 #~ msgid "Swamp"
 #~ msgstr "늪"
 
-#~ msgid "Shallow Water"
-#~ msgstr "얕은 물"
-
-#~ msgid "Deep Water"
-#~ msgstr "깊은 물"
-
-#~ msgid "Castle"
-#~ msgstr "성채"
-
-#~ msgid "Sand"
-#~ msgstr "모래 지대"
-
 #~ msgid "Desert"
 #~ msgstr "사막"
-
-#~ msgid "Cave"
-#~ msgstr "동굴"
 
 #~ msgid "Rockbound Cave"
 #~ msgstr "암석 동굴"
@@ -7749,15 +8203,6 @@ msgstr ""
 
 #~ msgid "Coastal Reef"
 #~ msgstr "산호초 지대"
-
-#~ msgid "Impassable"
-#~ msgstr "통과불능"
-
-#~ msgid "cures"
-#~ msgstr "해독"
-
-#~ msgid "female^cures"
-#~ msgstr "해독"
 
 #~ msgid ""
 #~ "Cures:\n"
@@ -7855,9 +8300,6 @@ msgstr ""
 #~ "\n"
 #~ "이 유닛 옆에 있는 모든 유닛은 밤일때 새벽/저녁인 것처럼, 새벽/저녁일때 낮"
 #~ "인 것 같은 효과를 받습니다."
-
-#~ msgid "teleport"
-#~ msgstr "전이"
 
 #~ msgid "female^teleport"
 #~ msgstr "전이"
@@ -8047,9 +8489,6 @@ msgstr ""
 #~ "저격:\n"
 #~ "방어가 아닌 공격에 이 무기를 사용하면 항상 60% 이상의 명중률을 갖습니다."
 
-#~ msgid "charge"
-#~ msgstr "돌격"
-
 #~ msgid ""
 #~ "Charge:\n"
 #~ "When used offensively, this attack deals double damage to the target. It "
@@ -8059,18 +8498,6 @@ msgstr ""
 #~ "돌격:\n"
 #~ "방어가 아닌 공격에 이 무기를 사용하면 이 공격은 목표물에 두 배의 데미지를 "
 #~ "줍니다. 하지만 목표물이 반격할때 받는 데미지도 두 배가 됩니다."
-
-#~ msgid "drains"
-#~ msgstr "흡수"
-
-#~ msgid ""
-#~ "Drain:\n"
-#~ "This unit drains health from living units, healing itself for half the "
-#~ "amount of damage it deals (rounded down)."
-#~ msgstr ""
-#~ "흡수:\n"
-#~ "이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유"
-#~ "합니다.(소수점 이하 내림)"
 
 #~ msgid "poison"
 #~ msgstr "중독"
@@ -8175,9 +8602,6 @@ msgstr ""
 #~ msgid "race+female^Bat"
 #~ msgstr "박쥐"
 
-#~ msgid "race^Bats"
-#~ msgstr "박쥐과"
-
 #~ msgid "race^Drake"
 #~ msgstr "반룡"
 
@@ -8214,14 +8638,8 @@ msgstr ""
 #~ msgid "race^Goblins"
 #~ msgstr "고블린족"
 
-#~ msgid "race^Gryphon"
-#~ msgstr "그리폰"
-
 #~ msgid "race+female^Gryphon"
 #~ msgstr "그리폰"
-
-#~ msgid "race^Gryphons"
-#~ msgstr "그리폰족"
 
 #~ msgid "race^Human"
 #~ msgstr "인간"
@@ -8229,17 +8647,11 @@ msgstr ""
 #~ msgid "race+female^Human"
 #~ msgstr "인간"
 
-#~ msgid "race^Humans"
-#~ msgstr "인간족"
-
 #~ msgid "race^Saurian"
 #~ msgstr "사우리언"
 
 #~ msgid "race+female^Saurian"
 #~ msgstr "사우리언"
-
-#~ msgid "race^Saurians"
-#~ msgstr "사우리언족"
 
 #~ msgid "race^Mechanical"
 #~ msgstr "기계"
@@ -8286,9 +8698,6 @@ msgstr ""
 #~ msgid "race+female^Orc"
 #~ msgstr "오크"
 
-#~ msgid "race^Orcs"
-#~ msgstr "오크족"
-
 #~ msgid "race^Troll"
 #~ msgstr "트롤"
 
@@ -8309,9 +8718,6 @@ msgstr ""
 
 #~ msgid "race^Wolf"
 #~ msgstr "늑대"
-
-#~ msgid "race^Wolves"
-#~ msgstr "늑대과"
 
 #~ msgid "race^Wose"
 #~ msgstr "엔트"
@@ -8334,9 +8740,6 @@ msgstr ""
 #~ msgstr ""
 #~ "$addon_title|을 설치하실 것입니까? (이것을 플레이하려면 모든 부속 기능을 "
 #~ "설치해야 할것입니다.)"
-
-#~ msgid "Difficulty"
-#~ msgstr "난이도"
 
 #~ msgid "Select difficulty level:"
 #~ msgstr "난이도 선택:"
@@ -8397,9 +8800,6 @@ msgstr ""
 #~ msgid "Range"
 #~ msgstr "공격범위"
 
-#~ msgid "Special"
-#~ msgstr "특수능력"
-
 #~ msgid "Resistances"
 #~ msgstr "저항력"
 
@@ -8412,14 +8812,8 @@ msgstr ""
 #~ msgid "Terrain Modifiers"
 #~ msgstr "지형 수정"
 
-#~ msgid "Movement Cost"
-#~ msgstr "소모 이동력"
-
 #~ msgid "<header>text='Units of this race'</header>"
 #~ msgstr "<header>text='이 종족 소속 유닛'</header>"
-
-#~ msgid "Forward >"
-#~ msgstr "앞으로 >"
 
 #~ msgid "The Battle for Wesnoth Help"
 #~ msgstr "Battle for Wesnoth 도움말"
@@ -8532,15 +8926,8 @@ msgstr ""
 #~ msgstr "캠페인"
 
 #, fuzzy
-#~ msgid "Default AI"
-#~ msgstr "기본"
-
-#, fuzzy
 #~ msgid "Quit Game"
 #~ msgstr "게임을 나갑니다"
-
-#~ msgid "Name:"
-#~ msgstr "이름:"
 
 #, fuzzy
 #~ msgid "Landar"
@@ -8549,10 +8936,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Thursagan"
 #~ msgstr "턴"
-
-#, fuzzy
-#~ msgid "stones"
-#~ msgstr "돌"
 
 #, fuzzy
 #~ msgid "female^stone"
@@ -8635,9 +9018,6 @@ msgstr ""
 #~ msgid "Host a game using dedicated server 'wesnothd'"
 #~ msgstr "서버 없이 방 만들기"
 
-#~ msgid "Language"
-#~ msgstr "언어"
-
 #~ msgid "Choose your preferred language:"
 #~ msgstr "원하는 언어를 고르십시오:"
 
@@ -8712,9 +9092,6 @@ msgstr ""
 #~ msgid "TitleScreen button^More"
 #~ msgstr "게임 로드"
 
-#~ msgid "Campaign"
-#~ msgstr "캠페인"
-
 #~ msgid "Choose the campaign you want to play:"
 #~ msgstr "플레이 할 캠페인을 고르십시오:"
 
@@ -8744,10 +9121,6 @@ msgstr ""
 #~ msgstr "철퇴"
 
 #, fuzzy
-#~ msgid "Music Development"
-#~ msgstr "- 중심개발자"
-
-#, fuzzy
 #~ msgid "game settings^Fog"
 #~ msgstr "유즈맵 세팅"
 
@@ -8769,16 +9142,9 @@ msgstr ""
 #~ msgid "Outlaw Ranger"
 #~ msgstr "아웃러"
 
-#~ msgid "bow"
-#~ msgstr "보우"
-
 #, fuzzy
 #~ msgid "Elven Castle"
 #~ msgstr "성"
-
-#, fuzzy
-#~ msgid "Swamp keep"
-#~ msgstr "늪"
 
 #, fuzzy
 #~ msgid "Crater"
