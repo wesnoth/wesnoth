@@ -64,8 +64,9 @@ namespace game_events
 	/// If a second manager object is created before destroying the previous
 	/// one, the game will crash with an assertion failure.
 	///
-	/// This struct is responsible for setting and clearing resources::lua_kernel.
-	struct manager : boost::noncopyable {
+	/// This class is responsible for setting and clearing resources::lua_kernel.
+	class manager : boost::noncopyable {
+	public:
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
 		explicit manager(const config& scenario_cfg);

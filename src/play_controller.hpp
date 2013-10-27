@@ -38,7 +38,7 @@ namespace actions {
 }
 
 namespace game_events {
-	struct manager;
+	class  manager;
 	class  wml_menu_item;
 } // namespace game_events
 
