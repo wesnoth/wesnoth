@@ -82,6 +82,7 @@ void wmi_container::clear_wmi()
 /** Erases the item pointed to by @a pos. */
 void wmi_container::erase(const iterator & pos)
 {
+	// Convert iterator to map_t::iterator.
 	const map_t::iterator & iter = pos.get(key());
 
 	// Release the wml_menu_item.
@@ -131,7 +132,7 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
  */
 void wmi_container::init_handlers() const
 {
-	int wmi_count = 0;
+	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
 	BOOST_FOREACH( const wml_menu_item & wmi, *this ) {
