@@ -25,8 +25,10 @@
 #define GAME_EVENTS_HANDLERS_H_INCLUDED
 
 #include "../config.hpp"
+#include "../iterator.hpp"
 
 #include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
 
 
 namespace game_events
@@ -54,6 +56,12 @@ namespace game_events
 			bool is_menu_item_;
 			config cfg_;
 	};
+	/// Shared pointer to handler objects.
+	typedef boost::shared_ptr<event_handler> handler_ptr;
+	/// Storage of event handlers.
+	/// These vectors will contain no NULL pointers.
+	typedef std::vector<handler_ptr> handler_vec;
+
 
 	/// The game event manager loads the scenario configuration object,
 	/// and ensures that events are handled according to the
@@ -66,6 +74,13 @@ namespace game_events
 	///
 	/// This class is responsible for setting and clearing resources::lua_kernel.
 	class manager : boost::noncopyable {
+		/// The key for interaction with our iterators.
+		struct key {
+			/// Instructions for converting a handler_vec iterator to an event_handler.
+			static const event_handler & eval(const handler_vec::const_iterator & iter)
+			{ return **iter; }
+		};
+
 	public:
 		/// Note that references will be maintained,
 		/// and must remain valid for the life of the object.
@@ -73,8 +88,7 @@ namespace game_events
 		~manager();
 
 		// Allow iterating over the active handlers.
-		typedef std::vector<event_handler> t_active;
-		typedef t_active::iterator iterator;
+		typedef util::iterator_extend<event_handler, handler_vec, key, key> iterator;
 		static iterator begin();
 		static iterator end();
 

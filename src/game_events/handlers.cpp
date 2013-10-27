@@ -54,20 +54,19 @@ namespace { // Types
 	typedef std::pair< std::string, config* > wmi_command_change;
 
 	class t_event_handlers {
-		typedef manager::t_active t_active;
 	public:
-		typedef t_active::iterator iterator;
-		typedef t_active::const_iterator const_iterator;
+		typedef handler_vec::iterator iterator;
+		typedef handler_vec::const_iterator const_iterator;
 
 	private:
-		t_active active_; ///Active event handlers
-		t_active insert_buffer_; ///Event handlers added while pumping events
+		handler_vec active_; ///Active event handlers
+		handler_vec insert_buffer_; ///Event handlers added while pumping events
 		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
 		bool buffering_;
 
 
 		void log_handler(std::stringstream& ss,
-		                 const std::vector<event_handler>& handlers,
+		                 const handler_vec& handlers,
 		                 const std::string& msg);
 		void log_handlers();
 
@@ -96,11 +95,11 @@ namespace { // Types
 	};//t_event_handlers
 
 	void t_event_handlers::log_handler(std::stringstream& ss,
-	                 const std::vector<event_handler>& handlers,
+	                 const handler_vec & handlers,
 	                 const std::string& msg)
 	{
-		BOOST_FOREACH(const event_handler& h, handlers){
-			const config& cfg = h.get_config();
+		BOOST_FOREACH(const handler_ptr & h, handlers){
+			const config& cfg = h->get_config();
 			ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
 		}
 		DBG_EH << msg << " handlers are now " << ss.str() << "\n";
@@ -131,14 +130,14 @@ namespace { // Types
 		if(buffering_) {
 			DBG_EH << "buffering event handler for name=" << cfg["name"] <<
 			" with id " << cfg["id"] << "\n";
-			insert_buffer_.push_back(event_handler(cfg, is_menu_item));
+			insert_buffer_.push_back(handler_ptr(new event_handler(cfg, is_menu_item)));
 			log_handlers();
 		}
 		else {
 			std::string id = cfg["id"];
 			if(!id.empty()) {
-				BOOST_FOREACH( event_handler const & eh, active_ ) {
-					config const & temp_config(eh.get_config());
+				BOOST_FOREACH( handler_ptr const & eh, active_ ) {
+					config const & temp_config(eh->get_config());
 					if(id == temp_config["id"]) {
 						DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
 							" with id " << id << "\n";
@@ -148,7 +147,7 @@ namespace { // Types
 			}
 			DBG_EH << "inserting event handler for name=" << cfg["name"] <<
 				" with id=" << id << "\n";
-			active_.push_back(event_handler(cfg, is_menu_item));
+			active_.push_back(handler_ptr(new event_handler(cfg, is_menu_item)));
 			log_handlers();
 		}
 	}
@@ -166,11 +165,11 @@ namespace { // Types
 
 		if(buffering_) { remove_buffer_.insert(id); }
 
-		t_active &temp = buffering_ ? insert_buffer_ : active_;
+		handler_vec &temp = buffering_ ? insert_buffer_ : active_;
 
-		t_active::iterator i = temp.begin();
+		handler_vec::iterator i = temp.begin();
 		while(i < temp.end()) {
-			config const & temp_config = (*i).get_config();
+			config const & temp_config = (*i)->get_config();
 			std::string event_id = temp_config["id"];
 			if(event_id != "" && event_id == id) {
 				i = temp.erase(i); }
@@ -214,8 +213,8 @@ namespace { // Types
 		remove_buffer_.clear();
 
 		// Commit any spawned events-within-events
-		BOOST_FOREACH( event_handler const & i, insert_buffer_ ){
-			add_event_handler(i.get_config(), i.is_menu_item()); }
+		BOOST_FOREACH( handler_ptr const & i, insert_buffer_ ){
+			add_event_handler(i->get_config(), i->is_menu_item()); }
 		insert_buffer_.clear();
 
 		log_handlers();
@@ -271,10 +270,10 @@ void commit_wmi_commands()
 		(*wcc.second)["first_time_only"] = false;
 
 		if ( !item.command().empty() ) {
-			BOOST_FOREACH(event_handler& hand, event_handlers) {
-				if ( hand.is_menu_item() && hand.matches_name(event_name) ) {
+			BOOST_FOREACH(handler_ptr& hand, event_handlers) {
+				if ( hand->is_menu_item() && hand->matches_name(event_name) ) {
 					LOG_NG << "changing command for " << event_name << " to:\n" << *wcc.second;
-					hand = event_handler(*wcc.second, true);
+					*hand = event_handler(*wcc.second, true);
 				}
 			}
 		} else if(!is_empty_command) {
@@ -381,13 +380,13 @@ manager::~manager() {
 /** Returns an iterator to the first event handler. */
 manager::iterator manager::begin()
 {
-	return event_handlers.begin();
+	return iterator(event_handlers.begin());
 }
 
 /** Returns an iterator to one past the last event handler. */
 manager::iterator manager::end()
 {
-	return event_handlers.end();
+	return iterator(event_handlers.end());
 }
 
 /** Starts buffering event handler creation. */
@@ -507,11 +506,11 @@ void add_events(const config::const_child_itors &cfgs, const std::string& type)
 
 void write_events(config& cfg)
 {
-	BOOST_FOREACH(const event_handler &eh, event_handlers) {
-		if ( eh.disabled() || eh.is_menu_item() ) {
+	BOOST_FOREACH(const handler_ptr &eh, event_handlers) {
+		if ( eh->disabled() || eh->is_menu_item() ) {
 			continue;
 		}
-		cfg.add_child("event", eh.get_config());
+		cfg.add_child("event", eh->get_config());
 	}
 
 	cfg["used_items"] = utils::join(used_items);
