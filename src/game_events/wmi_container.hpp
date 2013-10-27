@@ -25,6 +25,10 @@
 #include <map>
 
 class config;
+
+
+namespace game_events
+{
 class wml_menu_item;
 
 
@@ -92,6 +96,8 @@ private:
 private: // data
 	map_t wml_menu_items_;
 };
+
+} // end namespace game_events
 
 #endif // GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
 

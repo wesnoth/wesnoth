@@ -27,6 +27,9 @@
 struct map_location;
 
 
+namespace game_events
+{
+
 class wml_menu_item
 {
 public:
@@ -87,6 +90,8 @@ private:
 	/// If true, allow using the menu to trigger this item.
 	bool use_wml_menu_;
 };
+
+} // end namespace game_events
 
 #endif // GAME_EVENTS_MENU_ITEM_HPP_INCLUDED
 

@@ -123,7 +123,7 @@ public:
 	void set_variables(const config& vars) { variables_ = vars; }
 	const config& get_variables() const { return variables_; }
 
-	wmi_container& get_wml_menu_items() { return wml_menu_items_; }
+	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
@@ -139,7 +139,7 @@ private:
 	end_level_data end_level_;
 	config variables_;
 	rand_rng::simple_rng rng_;
-	wmi_container wml_menu_items_;
+	game_events::wmi_container wml_menu_items_;
 	std::string difficulty_; 	/**< The difficulty level the game is being played on. */
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 };
@@ -165,7 +165,7 @@ public:
 	void clear_variable(const std::string& varname);
 	void clear_variable_cfg(const std::string& varname); // Clears only the config children
 
-	wmi_container& get_wml_menu_items() { return wml_menu_items_; }
+	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
@@ -208,7 +208,7 @@ public:
 	game_data* operator=(const game_data* info);
 
 private:
-	wmi_container wml_menu_items_;
+	game_events::wmi_container wml_menu_items_;
 	rand_rng::simple_rng rng_;
 	config variables_;
 	mutable config temporaries_; // lengths of arrays, etc.

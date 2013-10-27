@@ -34,6 +34,10 @@ static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
 
+// This file is in the game_events namespace.
+namespace game_events
+{
+
 wmi_container::wmi_container()
 	: wml_menu_items_()
 {}
@@ -134,7 +138,7 @@ void wmi_container::init_handlers() const
 		// If this menu item has a [command], add a handler for it.
 		const config & wmi_command = wmi.command();
 		if ( !wmi_command.empty() ) {
-			game_events::add_event_handler(wmi_command, true);
+			add_event_handler(wmi_command, true);
 			if ( wmi.use_hotkey() ) {
 				// Applying default hotkeys here currently does not work because
 				// the hotkeys are reset by play_controler::init_managers() ->
@@ -182,4 +186,5 @@ void wmi_container::set_menu_items(const config& cfg)
 	}
 }
 
+} // end namespace game_events
 

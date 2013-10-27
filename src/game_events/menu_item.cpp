@@ -32,6 +32,10 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 
+// This file is in the game_events namespace.
+namespace game_events
+{
+
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		item_id_(id),
 		event_name_("menu item" + (id.empty() ? "" : ' ' + id)),
@@ -86,7 +90,7 @@ const std::string & wml_menu_item::image() const
 bool wml_menu_item::can_show(const map_location & hex) const
 {
 	// Failing the [show_if] tag means no show.
-	if ( !show_if_.empty() && !game_events::conditional_passed(show_if_) )
+	if ( !show_if_.empty() && !conditional_passed(show_if_) )
 		return false;
 
 	// Failing the [fiter_location] tag means no show.
@@ -177,7 +181,9 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
-		game_events::add_wmi_change(item_id_, delayed ? cmd.get_config() : cmd.get_parsed_config());
+		add_wmi_change(item_id_, delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
 }
+
+} // end namespace game_events
 
