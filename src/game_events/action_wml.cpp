@@ -18,10 +18,11 @@
  * excluding conditional action WML.
  */
 
-#include "global.hpp"
+#include "../global.hpp"
 #include "action_wml.hpp"
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
+#include "menu_item.hpp"
 #include "pump.hpp"
 
 #include "../actions/create.hpp"

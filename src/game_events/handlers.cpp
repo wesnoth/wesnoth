@@ -18,8 +18,9 @@
  * (Typically, handlers are defined by [event] tags.)
  */
 
-#include "global.hpp"
+#include "../global.hpp"
 #include "handlers.hpp"
+#include "menu_item.hpp"
 #include "pump.hpp"
 
 #include "../formula_string_utils.hpp"

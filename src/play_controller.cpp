@@ -19,13 +19,17 @@
  */
 
 #include "play_controller.hpp"
+
 #include "actions/create.hpp"
 #include "actions/heal.hpp"
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
 #include "dialogs.hpp"
+#include "formula_string_utils.hpp"
 #include "game_events/handlers.hpp"
+#include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "loadscreen.hpp"
@@ -40,9 +44,7 @@
 #include "replay.hpp"
 #include "soundsource.hpp"
 #include "tooltips.hpp"
-#include "game_preferences.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "whiteboard/manager.hpp"

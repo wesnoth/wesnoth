@@ -19,13 +19,11 @@
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
-#include "iterator.hpp"
+#include "game_events/wmi_container.hpp"
 #include "map_location.hpp"
 #include "mp_game_settings.hpp"
 #include "random.hpp"
 #include "simple_rng.hpp"
-#include "tstring.hpp"
-#include "variable.hpp"
 
 #include <boost/shared_ptr.hpp>
 
@@ -33,6 +31,7 @@ class config_writer;
 class game_display;
 class gamemap;
 class scoped_wml_variable;
+class t_string;
 class team;
 class unit_map;
 
@@ -52,132 +51,6 @@ typedef boost::shared_ptr<team_builder> team_builder_ptr;
 /// The default difficulty setting for campaigns.
 extern const std::string DEFAULT_DIFFICULTY;
 
-
-class wml_menu_item
-{
-public:
-	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
-
-	/// The identification of this item.
-	const std::string & id() const { return item_id_; }
-	/// The WML actions specified within this item.
-	const config & command() const { return command_; }
-	/// The text to display in the menu for this item.
-	const t_string & description() const { return description_; }
-	/// The name of the event to fire when this item is chosen.
-	const std::string & event_name() const { return event_name_; }
-	/// The image associated with this menu item.
-	const std::string & image() const;
-	/// If true, then the preceeding "select" event needs to be stored in the replay.
-	bool needs_select() const { return needs_select_; }
-	/// Config object containing the default hotkey.
-	const config & default_hotkey() const { return default_hotkey_; }
-	/// If true, allow using a hotkey to trigger this item.
-	bool use_hotkey() const { return use_hotkey_; }
-	/// If true, allow using the menu to trigger this item.
-	bool use_wml_menu() const { return use_wml_menu_; }
-
-	/// Returns whether or not *this is applicable given the context.
-	bool can_show(const map_location & hex) const;
-	/// Change the actions associated with this item.
-	/// (Internal bookkeeping only; the caller must still update the event handlers.)
-	void set_command(const config & cfg) { command_ = cfg; }
-	/// Writes *this to the provided config.
-	void to_config(config & cfg) const;
-	/// Updates *this based on @a vcfg.
-	void update(const vconfig & vcfg);
-
-private:
-	/// The id of this menu item.
-	const std::string item_id_;
-	/// The name of this item's event(s); based on the item's id.
-	const std::string event_name_;
-	/// The image to display in the menu next to this item's description.
-	std::string image_;
-	/// The text to display in the menu for this item.
-	t_string description_;
-	/// Whether or not this event says it makes use of the last selected unit.
-	bool needs_select_;
-	/// A condition that must hold in order for this menu item to be visible.
-	/// (An empty condition always holds.)
-	vconfig show_if_;        	// When used, we need a vconfig instead of a config.
-	/// A location filter to be applied to the hex where the menu is invoked.
-	/// (An empty filter always passes.)
-	vconfig filter_location_;	// When used, we need a vconfig instead of a config.
-	/// Actions to take when this item is chosen.
-	config command_;
-	/// Config object containing the default hotkey.
-	config default_hotkey_;
-	/// If true, allow using a hotkey to trigger this item.
-	bool use_hotkey_;
-	/// If true, allow using the menu to trigger this item.
-	bool use_wml_menu_;
-};
-
-/// A container of wml_menu_item.
-class wmi_container{
-	/// The underlying storage type.
-	typedef std::map<std::string, wml_menu_item*> map_t;
-	/// The key for interaction with our iterators.
-	struct key {
-		/// Instructions for converting a map_t iterator to a wml_menu_item.
-		static const wml_menu_item & eval(const map_t::const_iterator & iter)
-		{ return *iter->second; }
-	};
-
-public:
-	// Typedefs required of a container:
-	typedef wml_menu_item          value_type;
-	typedef wml_menu_item *        pointer;
-	typedef wml_menu_item &        reference;
-	typedef const wml_menu_item &  const_reference;
-	typedef map_t::difference_type difference_type;
-	typedef map_t::size_type       size_type;
-
-	typedef util::iterator_extend      <value_type, map_t, key, key> iterator;
-	typedef util::const_iterator_extend<value_type, map_t, key, key> const_iterator;
-
-
-public:
-	wmi_container();
-	wmi_container(const wmi_container& container);
-	~wmi_container() { clear_wmi(); }
-
-	/// Assignment operator to support deep copies.
-	wmi_container & operator=(const wmi_container & that)
-	{ copy(that.wml_menu_items_); return *this; }
-
-	void clear_wmi();
-	/// Returns true if *this contains no data.
-	bool empty() const { return wml_menu_items_.empty(); }
-	/// Erases the item pointed to by @a pos.
-	void erase(const iterator & pos);
-	/// Erases the item with id @a key.
-	size_type erase(const std::string & key);
-
-	/// Initializes the implicit event handlers for inlined [command]s.
-	void init_handlers() const;
-	void to_config(config& cfg);
-	void set_menu_items(const config& cfg);
-
-	iterator find(const std::string & id)             { return iterator(wml_menu_items_.find(id)); }
-	const_iterator find(const std::string & id) const { return const_iterator(wml_menu_items_.find(id)); }
-	/// Returns an item with the given id.
-	wml_menu_item & get_item(const std::string& id);
-
-	// Iteration support:
-	iterator begin()  { return iterator(wml_menu_items_.begin()); }
-	iterator end()    { return iterator(wml_menu_items_.end()); }
-	const_iterator begin() const { return const_iterator(wml_menu_items_.begin()); }
-	const_iterator end()   const { return const_iterator(wml_menu_items_.end()); }
-
-private:
-	/// Performs a deep copy, replacing our current contents.
-	void copy(const map_t & source);
-
-private: // data
-	map_t wml_menu_items_;
-};
 
 class carryover{
 public:
