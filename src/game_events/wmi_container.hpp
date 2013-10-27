@@ -78,7 +78,9 @@ public:
 	void to_config(config& cfg);
 	void set_menu_items(const config& cfg);
 
+	/// Returns an iterator to a menu item with the given @a id, if one exists.
 	iterator find(const std::string & id)             { return iterator(wml_menu_items_.find(id)); }
+	/// Returns an iterator to a menu item with the given @a id, if one exists.
 	const_iterator find(const std::string & id) const { return const_iterator(wml_menu_items_.find(id)); }
 	/// Returns an item with the given id.
 	wml_menu_item & get_item(const std::string& id);
