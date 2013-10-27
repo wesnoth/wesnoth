@@ -320,10 +320,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = { { ca_id = 'mai_return_guardian', location = 'ai/micro_ais/cas/ca_return_guardian.lua', score = cfg.ca_score or 100010 } }
 
     elseif (cfg.ai_type == 'coward') then
-        -- id= key is required also for CA deletion; needs to be checked separately
-        if (not cfg.id) then
-            H.wml_error("[micro_ai] tag (coward) is missing required parameter: id")
-        end
         required_keys = { "id", "distance" }
         optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
         CA_parms = { { ca_id = 'mai_coward', location = 'ai/micro_ais/cas/ca_coward.lua', score = cfg.ca_score or 300000 } }
@@ -501,7 +497,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         end
     end
 
-    -- If action=delete, we do that and are done, but we do need to pass
+    -- If action=delete, we do that and are done
     if (cfg.action == 'delete') then
         delete_CAs(cfg.side, CA_parms)
         return
