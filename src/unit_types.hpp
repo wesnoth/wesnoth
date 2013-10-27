@@ -186,6 +186,8 @@ public:
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
 	int hitpoints() const { return hitpoints_; }
+	double hp_bar_scaling() const { return hp_bar_scaling_; }
+	double xp_bar_scaling() const { return xp_bar_scaling_; }
 	int level() const { return level_; }
 	int movement() const { return movement_; }
 	int vision() const { return vision_ < 0 ? movement() : vision_; }
@@ -296,6 +298,7 @@ private:
 	t_string type_name_;
 	t_string description_;
 	int hitpoints_;
+	double hp_bar_scaling_, xp_bar_scaling_;
 	int level_;
 	int movement_;
 	int vision_;

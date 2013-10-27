@@ -359,6 +359,8 @@ unit_type::unit_type(const unit_type& o) :
 	type_name_(o.type_name_),
 	description_(o.description_),
 	hitpoints_(o.hitpoints_),
+	hp_bar_scaling_(o.hp_bar_scaling_),
+	xp_bar_scaling_(o.xp_bar_scaling_),
 	level_(o.level_),
 	movement_(o.movement_),
 	vision_(o.vision_),
@@ -413,6 +415,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	type_name_(cfg_["name"].t_str()),
 	description_(),
 	hitpoints_(0),
+	hp_bar_scaling_(0.0),
+	xp_bar_scaling_(0.0),
 	level_(0),
 	movement_(0),
 	vision_(-1),
@@ -534,6 +538,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	BOOST_FOREACH(const config &portrait, cfg_.child_range("portrait")) {
 		portraits_.push_back(tportrait(portrait));
 	}
+
+	hp_bar_scaling_ = cfg_["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
+	xp_bar_scaling_ = cfg_["xp_bar_scaling"].to_double(game_config::xp_bar_scaling);
 
 	// Propagate the build to the variations.
 	BOOST_FOREACH(variations_map::value_type & variation, variations_) {
