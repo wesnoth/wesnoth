@@ -46,15 +46,10 @@ local function add_CAs(side, CA_parms, CA_cfg)
             max_score = parms.score
         }
 
-        if parms.location then  -- if using external CAs
-            CA.location = parms.location
-            local cfg = string.sub(AH.serialize(CA_cfg), 2, -2) -- need to strip surrounding {}
-            CA.eval_parms = cfg
-            CA.exec_parms = cfg
-        else  -- if using "regular" CAs
-            CA.evaluation = "return (...):" .. (parms.eval_id or parms.ca_id) .. "_eval(" .. AH.serialize(CA_cfg) .. ")"
-            CA.execution = "(...):" .. (parms.eval_id or parms.ca_id) .. "_exec(" .. AH.serialize(CA_cfg) .. ")"
-        end
+        CA.location = parms.location
+        local cfg = string.sub(AH.serialize(CA_cfg), 2, -2) -- need to strip surrounding {}
+        CA.eval_parms = cfg
+        CA.exec_parms = cfg
 
         W.modify_ai {
             side = side,
