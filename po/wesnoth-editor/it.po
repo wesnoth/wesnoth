@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2012-10-14 09:24+0100\n"
+"POT-Creation-Date: 2013-08-17 15:16+0200\n"
+"PO-Revision-Date: 2013-09-26 16:46+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Poedit 1.5.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [brush]: id=brush-1
@@ -124,12 +124,12 @@ msgstr "speciale"
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:5
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:16
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:22
@@ -144,12 +144,12 @@ msgstr ""
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:34
 msgid "Underground"
-msgstr ""
+msgstr "Sotterraneo"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:40
 msgid "Deep Underground"
-msgstr ""
+msgstr "Sotterraneo profondo"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:46
@@ -159,12 +159,12 @@ msgstr ""
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:52
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "Ciclo di 24 ore"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:59
 msgid "After the Fall"
-msgstr ""
+msgstr "Dopo la Caduta"
 
 #. [editor_tool_hint]: id=editor-tool-fill
 #. [editor_tool_hint]: id=editor-tool-paint
@@ -220,8 +220,10 @@ msgstr "Mappa"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:98
+#, fuzzy
+#| msgid "Transition update"
 msgid "Transition Update"
-msgstr ""
+msgstr "Aggiornamento transizioni"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:105
@@ -231,7 +233,7 @@ msgstr "Finestra"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:115
 msgid "Areas"
-msgstr ""
+msgstr "Aree"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:125
@@ -246,46 +248,44 @@ msgstr "villaggi"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:161
 msgid "units"
-msgstr ""
+msgstr "unità"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:499
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Menù andamento temporale"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:509
 msgid "Playlist"
-msgstr ""
+msgstr "Colonna sonora"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:515
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Scegli un andamento temporale"
 
 #. [label]: id=terrain-icon
 #: data/themes/editor.cfg:609
 msgid "terrain"
-msgstr ""
+msgstr "terreno"
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/editor.cfg:688
-#, fuzzy
-#| msgid "Flip Map - Not implemented yet."
 msgid "Not implemented yet."
-msgstr "Ribalta la mappa - Azione non ancora implementata."
+msgstr "Azione non ancora implementata."
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "ID: "
-msgstr ""
+msgstr "ID: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "Nome: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
-msgstr ""
+msgstr "Tipo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Level: "
@@ -329,19 +329,19 @@ msgstr "Non ho trovato un editor per il tempo del giorno."
 
 #: src/editor/editor_controller.cpp:949
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Cambia ID dell’unità"
 
 #: src/editor/editor_controller.cpp:950
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/editor_controller.cpp:966
 msgid "Rename Unit"
-msgstr ""
+msgstr "Rinomina unità"
 
 #: src/editor/editor_controller.cpp:967
 msgid "Name:"
-msgstr ""
+msgstr "Nome:"
 
 #: src/editor/map/context_manager.cpp:119
 #: src/editor/map/context_manager.cpp:202
@@ -353,16 +353,12 @@ msgid "Choose a Map to Open"
 msgstr "Scegli una mappa da aprire"
 
 #: src/editor/map/context_manager.cpp:234
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Area)"
-msgstr "(Nuova mappa)"
+msgstr "(Nuova area)"
 
 #: src/editor/map/context_manager.cpp:257
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Nuova mappa)"
+msgstr "(Nuova fazione)"
 
 #: src/editor/map/context_manager.cpp:303
 msgid "Choose a Mask to Apply"

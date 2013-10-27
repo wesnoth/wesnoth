@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2011-09-28 15:16+0900\n"
+"POT-Creation-Date: 2013-08-17 15:16+0200\n"
+"PO-Revision-Date: 2013-10-25 12:44+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -295,31 +295,21 @@ msgstr "왕관 표시"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
-#, fuzzy
-#| msgid ""
-#| "Note: The tiny metal crown above Delfador means you will lose the game if "
-#| "he is killed. You will also lose the game if your leader (Konrad) is "
-#| "killed."
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
-"참고: Delfador 위에 있는 작은 금속 관은 그가 죽는다면 당신이 게임오버됨을 의"
-"미합니다. 또한 당신의 지도자 (Konrad)가 죽어도 패배합니다."
+"Delfador 위에 있는 작은 왕관은 그가 죽는다면 당신이 게임오버됨을 의미합니다. "
+"또한 당신의 지도자 (Konrad)가 죽어도 패배합니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Note: The tiny metal crown above Delfador means you will lose the game if "
-#| "he is killed. You will also lose the game if your leader (Li’sar) is "
-#| "killed."
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
-"참고: Delfador 위에 있는 작은 금속 관은 그가 죽는다면 당신이 게임오버됨을 의"
-"미합니다. 또한 당신의 지도자 (Li'sar)가 죽어도 패배합니다."
+"Delfador 위에 있는 작은 왕관은 그가 죽는다면 당신이 게임오버됨을 의미합니다. "
+"또한 당신의 지도자 (Li'sar)가 죽어도 패배합니다."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
@@ -794,7 +784,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
 msgid "End Scenario"
-msgstr ""
+msgstr "시나리오 마치기"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
@@ -802,6 +792,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"연습을 계속하겠습니까? 간이 메뉴에서 <b>시나리오 마치기</b>를 누르면 언제든"
+"지 이 시나리오를 끝낼 수 있습니다."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
@@ -1378,25 +1370,17 @@ msgstr "오크를 궁사로 공격"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "어떤 유닛이든 그 능력을 살펴보고 싶을 땐-적 포함-마우스 커서를 위에 올리면, "
 "화면 오른쪽에서 유닛에 대한 요약을 볼 수 있습니다"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:983
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>간략한 유닛 정보</big>"
+msgstr "간략한 유닛 정보"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
@@ -1438,25 +1422,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>장거리 이동</big>"
+msgstr "장거리 이동"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1020
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "당신은 유닛을 선택하고 목적지를 선택해서 그 유닛이 여러 턴동안 이동하게 할 "
 "수 있습니다. 유닛이 해당 칸에 도착하기까지 몇 턴이 걸릴지가 숫자로 표시됩니"
 "다."
@@ -1569,11 +1544,6 @@ msgstr ""
 #. [else]
 #. The unit with unit type $unit.language_name is female.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
-#, fuzzy
-#| msgid ""
-#| "No other units can reach that orc. I hope my $unit.language_name survives "
-#| "its counter-attack! I’d better grab more villages and move everyone "
-#| "closer for next turn."
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
 "survives its counter-attack! I’d better grab more villages and move everyone "
@@ -1644,32 +1614,23 @@ msgid ""
 "day."
 msgstr ""
 "조심해! 지금은 야간이야. 오크들은 <i>야행성</i>이라 밤에는 공격력이 25% 강해"
-"지고 낮에는 25% 약해져. 이건 꽤 큰 차이야. 너는 <i>주행성</i>이라 낮에 더 강"
-"하지. 네 엘프 전사들은 <i>시간대 중성</i>이라 밤낮의 영향을 받지 않아."
+"지고 낮에는 25% 약해져. 이 차이는 생각보다 커. 너는 <i>주행성</i>이라 낮에 "
+"더 강하지. 네 엘프 전사들은 <i>시간대 중성</i>이라 밤낮의 영향을 받지 않아."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "이 대화가 끝나면, 커서를 오른쪽 미니맵 아래의 지형 이미지에 두고 시간대에 대"
 "한 설명을 읽어보십시오."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1242
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>시간대에 대해</big>"
+msgstr "시간대에 대해"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
@@ -1697,21 +1658,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>미사용 유닛 찾기</big>"
+msgstr "미사용 유닛 찾기"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1719,7 +1670,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "<b>n</b> 키를 누르면 자동으로 다음 유닛이 선택되므로 매 턴마다 이것을 통해 모"
 "든 유닛이 사용되었는지 파악할 수 있습니다. <b>스페이스 바</b>는 유닛의 조작"
 "이 끝났음을 표시하여 <b>n</b> 키의 대상에서 벗어나게 합니다. <b>n</b> 키를 눌"
@@ -1727,47 +1677,30 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
-"본 시나리오에서는 오크 지도자를 물리쳐야만 승리할 수 있습니다. (시나리오마다"
-"의 승리조건은 <b>메인 메뉴</b>에 있는 <b>시나리오 목표</b>에서 주어집니다)."
+"이번 시나리오에서는 오크 지도자를 물리쳐야만 승리할 수 있습니다. (시나리오마"
+"다의 승리조건은 <b>메인 메뉴</b>에 있는 <b>시나리오 목표</b>에서 주어집니다)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1268
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>승리 조건</big>"
+msgstr "승리 조건"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>적합한 부대 소집</big>"
+msgstr "적합한 부대 소집"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1273
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "상황에 따라 적합한 부대를 소집해야 함을 기억하십시오. 궁사들은 졸개, 늑대 기"
 "병과 그들의 대장에게 특히 효과적입니다."
 
@@ -1816,7 +1749,7 @@ msgid ""
 "carefully!"
 msgstr ""
 "이제 저들의 대장을 거의 다 잡았어! 그는 레벨 2이기 때문에 그를 처치하는 유닛"
-"은 16 포인트의 경험치를 쌓을거야. 병력 선별에 주의하도록!"
+"은 16 포인트의 경험치를 쌓을거야. 병력 선정에 주의하도록!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1429
@@ -1824,8 +1757,8 @@ msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points. He would have advanced to second level soon."
 msgstr ""
-"$deadguy.experience 의 경험치를 갖고 있던 $deadguy.name|의 죽음이 참 안타깝구"
-"나. 그는 곧 레벨 2로 승급할 수 있었는데."
+"$deadguy.experience 의 경험치를 갖고 있던 $deadguy.name|가 죽을 줄이야! 그는 "
+"곧 레벨 2로 승급할 수 있었는데."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1432
@@ -1833,8 +1766,8 @@ msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points. She would have advanced to second level soon."
 msgstr ""
-"$deadguy.experience 의 경험치를 갖고 있던 $deadguy.name|의 죽음이 참 안타깝구"
-"나. 그녀는 곧 레벨 2로 승급할 수 있었는데."
+"$deadguy.experience 의 경험치를 갖고 있던 $deadguy.name|가 죽을 줄이야! 그녀"
+"는 곧 레벨 2로 승급할 수 있었는데."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1449
@@ -1864,25 +1797,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>적의 움직임 파악하기</big>"
+msgstr "적의 움직임 파악하기"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "당신은 적에게 커서를 옮겨서 그들이 어디까지 이동할 수 있는지 볼 수 있습니다. "
 "또한 <b>행동</b> 메뉴의 <b>모든 적의 이동을 본다</b> 명령을 선택하면 모든 적"
 "의 이동 가능 영역을 볼 수 있습니다."
@@ -1961,7 +1885,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1730
 msgid "You took too long! We’ll never be rid of these orcs!"
-msgstr "너무 오래 걸렸어! 우린 저 오크들을 좇아내지 못할거야!"
+msgstr "이제 시간이 없어! 오크들을 몰아내긴 틀렸어!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1753
@@ -2015,8 +1939,8 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
-"인간형 과녁은 검술과 승마술을 연습하는데 사용된다. 이것으로부터 공격받는다는"
-"건 대단히 이례적인 일이다."
+"인간형 과녁은 검술과 승마술을 연습하는데 사용된다. 누군가 이것의 공격을 받는"
+"다는 건 거의 있을 수 없는 일이다."
 
 #. [attack]: type=impact
 #: data/campaigns/tutorial/units/Quintain.cfg:24
