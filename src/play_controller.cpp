@@ -813,8 +813,7 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
-			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(),
-			                             gamedata_.last_selected);
+			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
 			return true;
 		}
 	}
@@ -837,8 +836,7 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 
 				if (iter->can_show(hex))
 				{
-					iter->fire_event(mouse_handler_.get_last_hex(),
-					                 gamedata_.last_selected);
+					iter->fire_event(mouse_handler_.get_last_hex());
 				}
 			}
 		}

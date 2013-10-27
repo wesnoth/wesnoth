@@ -119,9 +119,10 @@ bool wml_menu_item::can_show(const map_location & hex) const
  * @param[in] event_hex    The location of the event (where the menu was opened).
  * @param[in] last_select  The location of the most recent "select" event.
  */
-void wml_menu_item::fire_event(const map_location & event_hex,
-                               const map_location & last_select) const
+void wml_menu_item::fire_event(const map_location & event_hex) const
 {
+	const map_location & last_select = resources::gamedata->last_selected;
+
 	// No new player-issued commands allowed while this is firing.
 	const events::command_disabler disable_commands;
 
