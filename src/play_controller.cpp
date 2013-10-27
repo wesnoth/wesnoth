@@ -837,12 +837,8 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 
 				if (iter->can_show(hex))
 				{
-					if((!iter->needs_select()
-						|| gamedata_.last_selected.valid()))
-					{
-						iter->fire_event(mouse_handler_.get_last_hex(),
-						                 gamedata_.last_selected);
-					}
+					iter->fire_event(mouse_handler_.get_last_hex(),
+					                 gamedata_.last_selected);
 				}
 			}
 		}
