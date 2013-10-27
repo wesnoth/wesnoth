@@ -508,6 +508,7 @@ private:
 	bool refreshing_; // avoid infinite recursion
 	bool hidden_;
 	bool draw_bars_;
+	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;
 
