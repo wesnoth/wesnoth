@@ -47,8 +47,7 @@ Version 1.11.6+dev:
    * Legend of Wesmere:
      * Removed now redundant MP code.
      * Added new CampaignWML attributes: "type", "min_players", "max_players".
-     * Added new ScenarioWML attributes: "new_game_title",
-       "force_use_map_settings".
+     * Added new ScenarioWML attributes: "new_game_title", "force_lock_settings".
      * Adjusted "controller" and side recruits for MP.
      * Now uses default recruitment instead of experimental FAI-recruitment
        in 02_Hostile_Mountains.
@@ -104,8 +103,8 @@ Version 1.11.6+dev:
      other controller for a side. However, if "controller" was set to "human",
      it will still be possible to assign any player, local, network or
      reserved (if applicable) controller.
-   * All multiplayer locks in SideWML (e.g. "team_lock"), now uses "Use map
-     settings" as their default value.
+   * All multiplayer locks in SideWML (e.g. "team_lock"), now uses
+     "force_lock_settings" as their default value.
  * WML engine:
    * New [disable] weapon special.
    * New variation_id attribute with the function of former variation_name. 
@@ -115,7 +114,7 @@ Version 1.11.6+dev:
    * [store_side] now stores the scroll_to_leader attribute from sides.
    * Added new CampaignWML attributes: "type", "min_players" and "max_players".
    * Added new ScenariowML attributes: "new_game_title",
-     "remove_from_carryover_on_leaders_loss" and "force_use_map_settings".
+     "remove_from_carryover_on_leaders_loss" and "force_lock_settings".
    * Allow numerical values for SideWML "controller" attribute.
    * Allow WML menu items to use hotkeys alongside/instead of the menu.
    * Really added sighted events for ambushing units.
@@ -151,8 +150,8 @@ Version 1.11.6+dev:
      function with python-3.2.
    * Refactored and split the MP "Create" and "Connect" screens' code into
      gui and engine parts.
-   * Lock faction, leader, and gender selections in MP "Connect" if "Use map
-     settings" is on and default values were provided.
+   * Lock faction, leader, and gender selections in MP "Connect" if default
+     values are provided and "force_lock_settings" is set to "yes".
    * Fixed runtime error due to mismatched function call conventions in
      set_preferences_dir() when built with MSVC++ 2010 and a relative path
      to My Documents was passed with --config-dir in the command line.
