@@ -433,7 +433,19 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			
 			if (i_side == j_side) continue; //nothing to swap
 
-			// First we swap fields that are unique to the player
+			// First we swap everything about a side with another
+			side_engine_ptr tmp_side = side_engines_[j_side];
+			side_engines_[j_side] = side_engines_[i_side];
+			side_engines_[i_side] = tmp_side;
+
+			// Some 'child' variables such as village ownership and
+			// initial side units need to be swapped over as well
+			std::multimap<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
+			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
+			side_engines_[i_side]->set_side_children(tmp_side_children);
+
+			// Then we rever the swap for fields that are unique to
+			// player control and the team they selected
 			int tmp_index = side_engines_[j_side]->index();
 			side_engines_[j_side]->set_index(side_engines_[i_side]->index());
 			side_engines_[i_side]->set_index(tmp_index);
@@ -441,16 +453,6 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			int tmp_team = side_engines_[j_side]->team();
 			side_engines_[j_side]->set_team(side_engines_[i_side]->team());
 			side_engines_[i_side]->set_team(tmp_team);
-
-			std::multimap<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
-			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
-			side_engines_[i_side]->set_side_children(tmp_side_children);
-
-			// Then we swap everything, so the order is changed and such.
-			// This also prevents problems with fog.
-			side_engine_ptr tmp_side = side_engines_[j_side];
-			side_engines_[j_side] = side_engines_[i_side];
-			side_engines_[i_side] = tmp_side;
 		}
 	}
 
