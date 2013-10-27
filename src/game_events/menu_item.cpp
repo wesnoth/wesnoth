@@ -26,8 +26,10 @@
 #include "../actions/undo.hpp"
 #include "../game_config.hpp"
 #include "../gamestatus.hpp"
+#include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
+#include "../play_controller.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
 #include "../terrain_filter.hpp"
@@ -135,6 +137,32 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
 	if ( fire(event_name_, event_hex) )
 		// The event has mutated the gamestate
 		resources::undo_stack->clear();
+}
+
+/**
+ * Initializes the implicit event handler for an inlined [command].
+ */
+void wml_menu_item::init_handler() const
+{
+	// If this menu item has a [command], add a handler for it.
+	if ( !command_.empty() )
+	{
+		add_event_handler(command_, true);
+
+		// Hotkey support
+		if ( use_hotkey_ ) {
+			// Applying default hotkeys here currently does not work because
+			// the hotkeys are reset by play_controler::init_managers() ->
+			// display_manager::display_manager, which is called after this.
+			// The result is that default wml hotkeys will be ignored if wml
+			// hotkeys are set to default in the preferences menu. (They are
+			// still reapplied if set_menu_item is called again, for example
+			// by starting a new campaign.) Since it isn't that important
+			// I'll just leave it for now.
+			hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + item_id_,
+			                       description_, default_hotkey_);
+		}
+	}
 }
 
 /**

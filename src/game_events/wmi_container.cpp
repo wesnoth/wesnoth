@@ -19,13 +19,10 @@
 
 #include "../global.hpp"
 #include "wmi_container.hpp"
-#include "handlers.hpp"
 #include "menu_item.hpp"
 
 #include "../config.hpp"
-#include "../hotkeys.hpp"
 #include "../log.hpp"
-#include "../play_controller.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -137,21 +134,7 @@ void wmi_container::init_handlers() const
 	// Loop through each menu item.
 	BOOST_FOREACH( const wml_menu_item & wmi, *this ) {
 		// If this menu item has a [command], add a handler for it.
-		const config & wmi_command = wmi.command();
-		if ( !wmi_command.empty() ) {
-			add_event_handler(wmi_command, true);
-			if ( wmi.use_hotkey() ) {
-				// Applying default hotkeys here currently does not work because
-				// the hotkeys are reset by play_controler::init_managers() ->
-				// display_manager::display_manager, which is called after this.
-				// The result is that default wml hotkeys will be ignored if wml
-				// hotkeys are set to default in the preferences menu. (They are
-				// still reapplied if set_menu_item is called again, for example
-				// by starting a new campaign.) Since it isn't that important
-				// I'll just leave it for now.
-				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wmi.id(), wmi.description(), wmi.default_hotkey());
-			}
-		}
+		wmi.init_handler();
 		// Count the menu items (for the diagnostic message).
 		++wmi_count;
 	}

@@ -35,8 +35,6 @@ class wml_menu_item
 public:
 	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
 
-	/// The identification of this item.
-	const std::string & id() const { return item_id_; }
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }
 	/// The text to display in the menu for this item.
@@ -56,6 +54,8 @@ public:
 	bool can_show(const map_location & hex) const;
 	/// Causes the event associated with this item to fire.
 	void fire_event(const map_location & event_hex) const;
+	/// Initializes the implicit event handler for an inlined [command].
+	void init_handler() const;
 	/// Change the actions associated with this item.
 	/// (Internal bookkeeping only; the caller must still update the event handlers.)
 	void set_command(const config & cfg) { command_ = cfg; }
