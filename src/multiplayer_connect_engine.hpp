@@ -177,8 +177,8 @@ public:
 	int team() const { return team_; }
 	void set_team(int team) { team_ = team; }
 	std::vector<std::string> get_children_to_swap();
-	std::map<std::string, config> get_side_children();
-	void set_side_children(std::map<std::string, config> children); 
+	std::multimap<std::string, config> get_side_children();
+	void set_side_children(std::multimap<std::string, config> children); 
 	int color() const { return color_; }
 	void set_color(int color) { color_ = color; }
 	int gold() const { return gold_; }

@@ -379,9 +379,9 @@ std::vector<std::string> side_engine::get_children_to_swap()
 	return children;
 }
 
-std::map<std::string, config> side_engine::get_side_children()
+std::multimap<std::string, config> side_engine::get_side_children()
 {
-	std::map<std::string, config> children;
+	std::multimap<std::string, config> children;
 
 	BOOST_FOREACH(const std::string& children_to_swap, get_children_to_swap())
 		BOOST_FOREACH(const config& child, cfg_.child_range(children_to_swap))
@@ -390,7 +390,7 @@ std::map<std::string, config> side_engine::get_side_children()
 	return children;
 }
 
-void side_engine::set_side_children(std::map<std::string, config> children)
+void side_engine::set_side_children(std::multimap<std::string, config> children)
 {
 	BOOST_FOREACH(const std::string& children_to_remove, get_children_to_swap())
 				  cfg_.clear_children(children_to_remove);
@@ -400,6 +400,7 @@ void side_engine::set_side_children(std::map<std::string, config> children)
 	BOOST_FOREACH(child_map, children)
 				  cfg_.add_child(child_map.first, child_map.second);
 }
+
 
 void connect_engine::start_game(LOAD_USERS load_users)
 {
@@ -429,6 +430,8 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		{
 			int j_side = playable_sides[get_random() % i];
 			int i_side = playable_sides[i - 1];
+			
+			if (i_side == j_side) continue; //nothing to swap
 
 			// First we swap fields that are unique to the player
 			int tmp_index = side_engines_[j_side]->index();
@@ -439,7 +442,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			side_engines_[j_side]->set_team(side_engines_[i_side]->team());
 			side_engines_[i_side]->set_team(tmp_team);
 
-			std::map<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
+			std::multimap<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
 			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
 			side_engines_[i_side]->set_side_children(tmp_side_children);
 
