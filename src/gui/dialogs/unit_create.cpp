@@ -109,6 +109,9 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 	FOREACH(const AUTO& i, unit_types.types())
 	{
+		if (i.second.do_not_list())
+			continue;
+
 		// Make sure this unit type is built with the data we need.
 		unit_types.build_unit_type(i.second, unit_type::HELP_INDEXED);
 
