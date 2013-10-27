@@ -162,6 +162,16 @@ function wesnoth.wml_actions.micro_ai(cfg)
         cfg.ai_type = 'patrol'
     end
 
+    -- Add translation for old-syntax recruiting MAI to new syntax plus deprecation message
+    if (cfg.ai_type == 'recruiting') and (cfg.recruiting_type) then
+        local new_type = 'recruit_random'
+        if (cfg.recruiting_type == 'rushers') then new_type = 'recruit_rushers' end
+        wesnoth.message("The syntax 'ai_type=recruiting recruiting_type=" .. cfg.recruiting_type .. "' is deprecated.  Use 'ai_type=" .. new_type .. "' instead.")
+
+        cfg.ai_type = new_type
+        cfg.recruiting_type = nil
+    end
+
     -- Check that the required common keys are all present and set correctly
     if (not cfg.ai_type) then H.wml_error("[micro_ai] is missing required ai_type= key") end
     if (not cfg.side) then H.wml_error("[micro_ai] is missing required side= key") end
@@ -412,14 +422,14 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = { { ca_id = "mai_patrol", location = 'ai/micro_ais/cas/ca_patrol.lua', score = cfg.ca_score or 300000 } }
 
     --------- Recruiting Micro AI ------------------------------------
-    elseif (cfg.ai_type == 'recruiting') then
-        if (cfg.recruiting_type == 'rushers') then
+    elseif (cfg.ai_type == 'recruit_rushers') or (cfg.ai_type == 'recruit_random')then
+        if (cfg.ai_type == 'recruit_rushers') then
             optional_keys = { "randomness" }
             CA_parms = { { ca_id = "mai_rusher_recruit", location = 'ai/micro_ais/cas/ca_recruit_rushers.lua', score = cfg.ca_score or 180000 } }
             wesnoth.message('The recruit_rushers Micro AI is currently diabled while we reorganize some things.  Please check back later.')
             return
 
-        elseif (cfg.recruiting_type == 'random') then
+        else
             optional_keys = { "skip_low_gold_recruiting", "type", "prob" }
             CA_parms = { { ca_id = "mai_random_recruit", location = 'ai/micro_ais/cas/ca_recruit_random.lua', score = cfg.ca_score or 180000 } }
 
@@ -435,9 +445,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
                 table.insert(cfg.type, p.type)
                 table.insert(cfg.prob, p.probability)
             end
-
-        else
-            H.wml_error("[micro_ai] tag (recruiting) recruiting_type= key is missing or has unknown value")
         end
 
         -- Also need to delete/add the default recruitment CA
