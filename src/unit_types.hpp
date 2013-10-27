@@ -266,6 +266,7 @@ public:
 	/// Requires building to the HELP_INDEXED status to get the correct race.
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
+	bool do_not_list() const { return do_not_list_; }
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
@@ -330,7 +331,7 @@ private:
 	std::vector<t_string> abilities_, adv_abilities_;
 	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;
 
-	bool zoc_, hide_help_;
+	bool zoc_, hide_help_, do_not_list_;
 
 	std::vector<std::string> advances_to_;
 	int experience_needed_;
