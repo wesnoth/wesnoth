@@ -444,7 +444,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
 			side_engines_[i_side]->set_side_children(tmp_side_children);
 
-			// Then we rever the swap for fields that are unique to
+			// Then we revert the swap for fields that are unique to
 			// player control and the team they selected
 			int tmp_index = side_engines_[j_side]->index();
 			side_engines_[j_side]->set_index(side_engines_[i_side]->index());
