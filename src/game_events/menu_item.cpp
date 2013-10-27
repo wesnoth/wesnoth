@@ -21,10 +21,14 @@
 #include "menu_item.hpp"
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
+#include "pump.hpp"
 
+#include "../actions/undo.hpp"
 #include "../game_config.hpp"
 #include "../gamestatus.hpp"
 #include "../log.hpp"
+#include "../mouse_handler_base.hpp"
+#include "../replay.hpp"
 #include "../resources.hpp"
 #include "../terrain_filter.hpp"
 
@@ -104,6 +108,32 @@ bool wml_menu_item::can_show(const map_location & hex) const
 
 	// Passed all tests.
 	return true;
+}
+
+/**
+ * Causes the event associated with this item to fire.
+ * Also records the event.
+ * This includes recording the previous select event, if applicable.
+ * The undo stack will be cleared if the event mutated the gamestate.
+ *
+ * @param[in] event_hex    The location of the event (where the menu was opened).
+ * @param[in] last_select  The location of the most recent "select" event.
+ */
+void wml_menu_item::fire_event(const map_location & event_hex,
+                               const map_location & last_select) const
+{
+	// No new player-issued commands allowed while this is firing.
+	const events::command_disabler disable_commands;
+
+	// Should we record the preceding select event?
+	if ( needs_select_  &&  last_select.valid() )
+		recorder.add_event("select", last_select);
+
+	// Record and fire this item's event.
+	recorder.add_event(event_name_, event_hex);
+	if ( fire(event_name_, event_hex) )
+		// The event has mutated the gamestate
+		resources::undo_stack->clear();
 }
 
 /**

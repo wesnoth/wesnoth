@@ -56,6 +56,9 @@ public:
 
 	/// Returns whether or not *this is applicable given the context.
 	bool can_show(const map_location & hex) const;
+	/// Causes the event associated with this item to fire.
+	void fire_event(const map_location & event_hex,
+	                const map_location & last_select) const;
 	/// Change the actions associated with this item.
 	/// (Internal bookkeeping only; the caller must still update the event handlers.)
 	void set_command(const config & cfg) { command_ = cfg; }

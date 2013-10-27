@@ -802,24 +802,6 @@ bool play_controller::enemies_visible() const
 
 	return false;
 }
-//used in play_controller::execute_command
-void play_controller::fire_wml_menu_item_event(const game_events::wml_menu_item &menu_item)
-{
-	const events::command_disabler disable_commands;
-	if(gamedata_.last_selected.valid() && menu_item.needs_select()) 
-	{
-		recorder.add_event("select", gamedata_.last_selected);
-	}
-	map_location const& menu_hex = mouse_handler_.get_last_hex();
-	std::string const & event_name = menu_item.event_name();
-	recorder.add_event(event_name, menu_hex);
-	if(game_events::fire(event_name, menu_hex)) 
-	{
-		// The event has mutated the gamestate
-		undo_stack_->clear();
-	}
-}
-
 
 bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int index)
 {
@@ -831,7 +813,8 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
-			fire_wml_menu_item_event(*wml_commands_[i]);
+			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex(),
+			                             gamedata_.last_selected);
 			return true;
 		}
 	}
@@ -857,7 +840,8 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 					if((!iter->needs_select()
 						|| gamedata_.last_selected.valid()))
 					{
-						fire_wml_menu_item_event(*iter);
+						iter->fire_event(mouse_handler_.get_last_hex(),
+						                 gamedata_.last_selected);
 					}
 				}
 			}
