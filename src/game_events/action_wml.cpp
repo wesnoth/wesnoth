@@ -1815,9 +1815,13 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
-	game_display &screen = *resources::screen;
-	screen.scroll(cfg["x"], cfg["y"], true);
-	screen.draw(true,true);
+	const std::vector<int> side_list = get_sides_vector(cfg);
+	if ((cfg["side"].empty() && !cfg.has_child("filter_side")) ||
+	    std::find(side_list.begin(), side_list.end(), resources::controller->current_side()) != side_list.end()) {
+		game_display &screen = *resources::screen;
+		screen.scroll(cfg["x"], cfg["y"], true);
+		screen.draw(true,true);
+	}
 }
 
 /// Experimental data persistence
