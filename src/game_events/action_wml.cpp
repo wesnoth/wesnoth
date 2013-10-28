@@ -1816,8 +1816,14 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	const std::vector<int> side_list = get_sides_vector(cfg);
-	if ((cfg["side"].empty() && !cfg.has_child("filter_side")) ||
-	    std::find(side_list.begin(), side_list.end(), resources::controller->current_side()) != side_list.end()) {
+	bool side_match = false;
+	BOOST_FOREACH(int side, side_list) {
+		if((*resources::teams)[side-1].is_human()) {
+			side_match = true;
+			break;
+		}
+	}
+	if ((cfg["side"].empty() && !cfg.has_child("filter_side")) || side_match) {
 		game_display &screen = *resources::screen;
 		screen.scroll(cfg["x"], cfg["y"], true);
 		screen.draw(true,true);
