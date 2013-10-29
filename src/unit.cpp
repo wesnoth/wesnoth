@@ -503,6 +503,11 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
+	
+	//debug unit animations for units as they appear in game
+	/*for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
+		std::cout << (*i).debug();
+	}*/
 }
 
 void unit::clear_status_caches()

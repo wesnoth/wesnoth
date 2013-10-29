@@ -948,6 +948,128 @@ bool unit_animation::invalidate(frame_parameters& value)
 	}
 }
 
+std::string unit_animation::debug() const
+{
+	std::ostringstream outstream;
+	outstream << *this;
+	return outstream.str();
+}
+
+std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
+{
+	std::cout << "[";
+	int i=0;
+	BOOST_FOREACH(std::string event, u_animation.event_) {
+		if (i>0) std::cout << ','; i++;
+		std::cout << event;
+	}
+	std::cout << "]\n";
+	
+	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
+
+	if (u_animation.hits_.size() > 0) {
+		std::cout << "\thits=";
+		i=0;
+		BOOST_FOREACH(const unit_animation::hit_type hit_type, u_animation.hits_) {
+			if (i>0) std::cout << ','; i++;
+			switch (hit_type) {
+				case (unit_animation::HIT)     : std::cout << "hit"; break;
+				case (unit_animation::MISS)    : std::cout << "miss"; break;
+				case (unit_animation::KILL)    : std::cout << "kill"; break;
+				case (unit_animation::INVALID) : std::cout << "invalid"; break;
+			}
+		}
+		std::cout << '\n';
+	}
+	if (u_animation.directions_.size() > 0) {
+		std::cout << "\tdirections=";
+		i=0;
+		BOOST_FOREACH(const map_location::DIRECTION direction, u_animation.directions_) {
+			if (i>0) std::cout << ','; i++;
+			switch (direction) {
+				case (map_location::NORTH)     : std::cout << "n"; break;
+				case (map_location::NORTH_EAST): std::cout << "ne"; break;
+				case (map_location::SOUTH_EAST): std::cout << "se"; break;
+				case (map_location::SOUTH)     : std::cout << "s"; break;
+				case (map_location::SOUTH_WEST): std::cout << "sw"; break;
+				case (map_location::NORTH_WEST): std::cout << "nw"; break;
+				default: break;
+			}
+		}
+		std::cout << '\n';
+	}
+	if (u_animation.terrain_types_.size() > 0) {
+		i=0;
+		std::cout << "\tterrain=";
+		BOOST_FOREACH(const t_translation::t_terrain terrain, u_animation.terrain_types_) {
+			if (i>0) std::cout << ','; i++;
+			std::cout << terrain;
+		}
+		std::cout << '\n';
+	}
+	if (u_animation.frequency_>0) std::cout << "frequency=" << u_animation.frequency_ << '\n';
+
+	if (u_animation.unit_filter_.size() > 0) {
+		std::cout << "[filter]\n";
+		BOOST_FOREACH(const config cfg, u_animation.unit_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter]\n";
+	}
+	if (u_animation.secondary_unit_filter_.size() > 0) {
+		std::cout << "[filter_second]\n";
+		BOOST_FOREACH(const config cfg, u_animation.secondary_unit_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter_second]\n";
+	}
+	if (u_animation.primary_attack_filter_.size() > 0) {
+		std::cout << "[filter_attack]\n";
+		BOOST_FOREACH(const config cfg, u_animation.primary_attack_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter_attack]\n";
+	}
+	if (u_animation.secondary_attack_filter_.size() > 0) {
+		std::cout << "[filter_second_attack]\n";
+		BOOST_FOREACH(const config cfg, u_animation.secondary_attack_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter_second_attack]\n";
+	}
+
+	for (size_t i=0; i<u_animation.unit_anim_.get_frames_count(); i++) {
+		std::cout << "\t[frame]\n";
+		BOOST_FOREACH(const std::string frame_string, u_animation.unit_anim_.get_frame(i).debug_strings()) {
+			std::cout << "\t\t" << frame_string <<"\n";
+		}
+		std::cout << "\t[/frame]\n";
+	}
+	
+	std::pair<std::string, unit_animation::particule> p;
+	BOOST_FOREACH (p, u_animation.sub_anims_) {
+		for (size_t i=0; i<p.second.get_frames_count(); i++) {
+			std::string sub_frame_name = p.first; 
+			size_t pos = sub_frame_name.find("_frame");
+			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
+			std::cout << "\t" << sub_frame_name << "_start_time=" << u_animation.get_begin_time() << '\n';
+			std::cout << "\t[" << p.first << "]\n";
+			BOOST_FOREACH(const std::string frame_string, p.second.get_frame(i).debug_strings()) {
+				std::cout << "\t\t" << frame_string << '\n';
+			}
+			std::cout << "\t[/" << p.first << "]\n";
+		}
+	}
+
+	std::cout << "[/";
+	i=0;
+	BOOST_FOREACH(std::string event, u_animation.event_) {
+		if (i>0) std::cout << ','; i++;
+		std::cout << event;
+	}
+	std::cout << "]\n";
+	return outstream;
+}
 
 
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
@@ -1002,6 +1124,8 @@ void unit_animation::particule::start_animation(int start_time)
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;
 }
+
+
 
 void unit_animator::add_animation(unit* animated_unit
 		, const std::string& event
