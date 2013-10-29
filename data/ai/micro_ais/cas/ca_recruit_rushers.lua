@@ -1,5 +1,4 @@
 local AH = wesnoth.require("ai/lua/ai_helper.lua")
-local DBG = wesnoth.require "~/add-ons/AI-demos/lua/debug.lua"
 
 local ca_recruit_rushers = {}
 
