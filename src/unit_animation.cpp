@@ -1052,7 +1052,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 			std::string sub_frame_name = p.first; 
 			size_t pos = sub_frame_name.find("_frame");
 			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
-			std::cout << "\t" << sub_frame_name << "_start_time=" << u_animation.get_begin_time() << '\n';
+			std::cout << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
 			std::cout << "\t[" << p.first << "]\n";
 			BOOST_FOREACH(const std::string frame_string, p.second.get_frame(i).debug_strings()) {
 				std::cout << "\t\t" << frame_string << '\n';
