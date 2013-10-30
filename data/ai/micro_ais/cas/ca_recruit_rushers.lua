@@ -7,7 +7,7 @@ local internal_params = {}
 -- The following external engine creates the CA functions recruit_rushers_eval and recruit_rushers_exec
 -- It also exposes find_best_recruit and find_best_recruit_hex for use by other recruit engines
 
--- TODO: this does not currently work, as 'ai' is not defined in this context
+-- 'ai' is nil here (not defined), so we pass it directly in the execution function below
 wesnoth.require("ai/lua/generic_recruit_engine.lua").init(ai, internal_recruit_cas, internal_params)
 
 function ca_recruit_rushers:evaluation(ai, cfg)
@@ -16,8 +16,7 @@ function ca_recruit_rushers:evaluation(ai, cfg)
 end
 
 function ca_recruit_rushers:execution(ai)
-    print('recruiting')
-	return internal_recruit_cas:recruit_rushers_exec()
+	return internal_recruit_cas:recruit_rushers_exec(ai)
 end
 
 return ca_recruit_rushers

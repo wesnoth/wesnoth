@@ -417,8 +417,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.ai_type == 'recruit_rushers') then
             optional_keys = { "randomness" }
             CA_parms = { { ca_id = "mai_rusher_recruit", location = 'ai/micro_ais/cas/ca_recruit_rushers.lua', score = cfg.ca_score or 180000 } }
-            wesnoth.message('The recruit_rushers Micro AI is currently diabled while we reorganize some things.  Please check back later.')
-            return
 
         else
             optional_keys = { "skip_low_gold_recruiting", "type", "prob" }
