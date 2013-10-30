@@ -123,11 +123,6 @@ end
 
 ----- General functionality and maths helper functions ------
 
-function ai_helper.got_1_11()
-   if not wesnoth.compare_versions then return false end
-   return wesnoth.compare_versions(wesnoth.game_config.version, ">=", "1.11.0")
-end
-
 function ai_helper.filter(input, condition)
     -- equivalent of filter() function in Formula AI
 
@@ -389,7 +384,6 @@ function ai_helper.get_passable_locations(location_filter, unit)
 
     -- If 'unit' is provided, exclude terrain that's impassable for the unit
     -- table.delete() can be slow for large arrays -> build a new table
-
     if unit then
         local locs = {}
         for i,l in ipairs(all_locs) do
