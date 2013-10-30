@@ -9,7 +9,7 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local BC = wesnoth.require "ai/lua/battle_calcs.lua"
         local LS = wesnoth.require "lua/location_set.lua"
-        local HS = wesnoth.require("ai/micro_ais/ais/mai_healer_support_engine.lua").init(ai)
+        local HS = wesnoth.require("ai/micro_ais/cas/ca_healer_move.lua")
         local R = wesnoth.require "ai/lua/retreat.lua"
 
         ------ Stats at beginning of turn -----------
@@ -470,16 +470,16 @@ return {
 
         ------- Place Healers CA --------------
 
-        generic_rush.mai_healer_move_eval = HS.mai_healer_move_eval
-
         function generic_rush:place_healers_eval()
-            if generic_rush:mai_healer_move_eval() > 0 then
+            if HS:evaluation(ai, nil, self) > 0 then
                 return 95000
             end
             return 0
         end
 
-        generic_rush.place_healers_exec = HS.mai_healer_move_exec
+        function generic_rush:place_healers_exec()
+            HS:execution(ai, nil, self)
+        end
 
         ------- Retreat CA --------------
 
