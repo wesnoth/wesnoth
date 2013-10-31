@@ -1322,10 +1322,15 @@ function battle_calcs.best_defense_map(units, cfg)
     -- For each hex, the value is the maximum of any of the units that can reach that hex
     -- cfg: table with config parameters
     --  max_moves: if set use max_moves for units (this setting is always used for units on other sides)
+    --  ignore_these_units: table of enemy units whose ZoC is to be ignored for route finding
 
     cfg = cfg or {}
 
     local defense_map = LS.create()
+
+    if cfg.ignore_these_units then
+        for i,u in ipairs(cfg.ignore_these_units) do wesnoth.extract_unit(u) end
+    end
 
     for i,u in ipairs(units) do
         -- Set max_moves according to the cfg value
@@ -1344,6 +1349,10 @@ function battle_calcs.best_defense_map(units, cfg)
                 defense_map:insert(r[1], r[2], defense)
             end
         end
+    end
+
+    if cfg.ignore_these_units then
+        for i,u in ipairs(cfg.ignore_these_units) do wesnoth.put_unit(u.x, u.y, u) end
     end
 
     return defense_map
