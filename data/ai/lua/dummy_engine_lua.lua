@@ -7,7 +7,7 @@ return {
         local my_ai = {}
 
         local ai_stdlib = wesnoth.require('ai/lua/stdlib.lua')
-        ai_stdlib.init(ai, true)
+        ai_stdlib.init(ai)
 
         -- Make the ai table available to the eval/exec functions
         function my_ai:get_ai()
