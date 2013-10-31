@@ -99,6 +99,8 @@ namespace { // Types
 	                 const std::string& msg)
 	{
 		BOOST_FOREACH(const handler_ptr & h, handlers){
+			if ( h->disabled() )
+				continue;
 			const config& cfg = h->get_config();
 			ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
 		}
@@ -137,6 +139,8 @@ namespace { // Types
 			std::string id = cfg["id"];
 			if(!id.empty()) {
 				BOOST_FOREACH( handler_ptr const & eh, active_ ) {
+					if ( eh->disabled() )
+						continue;
 					config const & temp_config(eh->get_config());
 					if(id == temp_config["id"]) {
 						DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
