@@ -1498,7 +1498,6 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
             end
         end
     end
-    --DBG.dbms(blocked_hexes)
 
     -- For sides other than the current, we always use max_moves,
     -- for the current side we always use current moves
@@ -1565,7 +1564,6 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
         end
 
     end
-    --DBG.dbms(attacks)
 
     -- Reset moves for all units
     for i,u in ipairs(units) do
@@ -1586,7 +1584,6 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
             a.rating = battle_calcs.attack_rating(units[a.unit_i], enemy, { x, y })
         end
         table.sort(attacks, function(a,b) return a.rating > b.rating end)
-        --DBG.dbms(attacks)
     end
 
     -- To simplify and speed things up in the following, the field values
@@ -1598,7 +1595,6 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
         n_reach = n_reach + 1
         reachable_hexes[k] = n_reach
     end
-    --DBG.dbms(reachable_hexes)
 
     -- If cfg.max_time is set, record the start time
     -- For convenience, we store this in cfg
@@ -1614,7 +1610,6 @@ function battle_calcs.get_attack_combos_subset(units, enemy, cfg)
     local combos_str, current_combo, hexes_used  = {}, {}, {}
 
     add_attack(attacks, reachable_hexes, n_reach, attack_combos, combos_str, current_combo, hexes_used, cfg)
-    --DBG.dbms(attack_combos)
 
     -- Minor cleanup
     cfg.start_time = nil
