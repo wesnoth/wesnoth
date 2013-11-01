@@ -199,7 +199,7 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
         end
     end
 
-    return best_unit, best_loc
+    return best_unit, best_loc, enemy_attack_map.units:get(best_loc[1], best_loc[2]) or 0
 end
 
 return retreat_functions
