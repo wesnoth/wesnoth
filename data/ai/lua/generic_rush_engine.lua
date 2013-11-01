@@ -310,6 +310,8 @@ return {
                     if wesnoth.is_enemy(owner, wesnoth.current.side) then village_rating = village_rating + 20000 end
                 end
 
+                local enemy_distance_from_village = AH.get_closest_enemy(v)
+
                 -- Now we go on to the unit-dependent rating
                 local best_unit_rating = 0
                 local reachable = false
@@ -334,6 +336,10 @@ return {
                                 local rating = 0
                                 -- Finally, since these can be reached by the enemy, want the strongest unit to go first
                                 rating = rating + u.hitpoints / 100.
+
+                                -- Prefer not backtracking and moving more distant units to capture villages
+                                local enemy_distance_from_unit = AH.get_closest_enemy({u.x, u.y})
+                                rating = rating - (enemy_distance_from_village + enemy_distance_from_unit)/5
 
                                 if (rating > best_unit_rating) then
                                     best_unit_rating, best_unit = rating, u
