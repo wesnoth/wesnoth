@@ -102,7 +102,9 @@ return {
                 return 0
             end
 
-            if self.data.leader_target then
+            local cheapest_unit_cost = AH.get_cheapest_recruit_cost()
+
+            if self.data.leader_target and wesnoth.sides[wesnoth.current.side].gold >= cheapest_unit_cost then
                 -- make sure move is still valid
                 local next_hop = AH.next_hop(leader, self.data.leader_target[1], self.data.leader_target[2])
                 if next_hop and next_hop[1] == self.data.leader_target[1]
@@ -190,9 +192,8 @@ return {
                 if next_hop and ((next_hop[1] ~= leader.x) or (next_hop[2] ~= leader.y)) then
                     -- See if there is a nearby village that can be captured without delaying progress
                     local close_villages = wesnoth.get_villages( {
-                        { "and", { x = next_hop[1], y = next_hop[2], radius = 3 }},
+                        { "and", { x = next_hop[1], y = next_hop[2], radius = leader.max_moves }},
                         owner_side = 0 })
-                    local cheapest_unit_cost = AH.get_cheapest_recruit_cost()
                     for i,loc in ipairs(close_villages) do
                         local path_village, cost_village = wesnoth.find_path(leader, loc[1], loc[2])
                         if cost_village <= leader.moves then
