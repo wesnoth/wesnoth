@@ -18,21 +18,35 @@ Version 1.11.6+dev:
    * Implemented read-only mode option (read_only boolean attribute in
      server config WML, defaults to "no").
  * AI:
-   * Micro AIs:
-     * New Simple Attack Micro AI
-     * Messenger MAI now works with units (both messenger and escort) without
-       weapons and when path to next waypoint is entirely blocked
-     * Fixed bug that prevented removal of sticky MAIs
    * Recruitment CA:
      * New Recruitment CA located in src/ai/recruitment is now default CA
      * Created new AI cfg "Strong AI (RCA)" with stronger recruitment
      * Created new AI cfg "Old Recruitment CA" in ai/dev/ to use the old CA
+   * External CAs are now fully usable
+     * The persistent data variable works and is accessible across CAs
+     * Parameters can be passed to eval/exec functions
+   * Micro AIs:
+     * New Simple Attack Micro AI
+     * All MAIs changed to using external CAs.  This means that no engine
+       definitions are needed any more and that MAIs can be combined at will
+     * Got rid of animal_type=, guardian_type=and recruiting_type= keys.  The
+       individual Animal, Guardian and Recruiting MAIs are now separate AIs
+       that are selected with the ai_type=key
+     * Patrol, Guardian and Hunter MAIs are now side-wide CAs (not BCAs)
+     * Messenger MAI now works with units (both messenger and escort) without
+       weapons and when path to next waypoint is entirely blocked
+   * Experimental AI:
+     * Added new CAs Retreat, Move to Enemy and Village Hunting
+     * Algorithm improvements for several CAs
    * Fixed time_of_day aspect so it matches time-of-day ids, not names
      (e.g. "Morning" vs "morning"), so most use cases of ToD-dependent AI
      configuration work again (suspected version 1.7.4 regression).
    * Move_Leader_To_Keep CA will now move all leaders back to a keep
-     (multiple leader support for recruitment).
-   * Refactored the AI-Test-Suite completely (/utils/ai_test/).
+     (multiple leader support for recruitment)
+   * Refactored the AI-Test-Suite completely (/utils/ai_test/)
+   * Changed AI descriptions in ai/dev/ displayed in MP computer player menu
+   * New macro AI_CONTROLLER_ALLOW_UNIT_CONTROL
+   * Remove macro RCA_STAGE
  * Campaigns:
    * Dead Water:
      * Converted animation WML to the new syntax
@@ -107,10 +121,10 @@ Version 1.11.6+dev:
      "force_lock_settings" as their default value.
  * WML engine:
    * New [disable] weapon special.
-   * New variation_id attribute with the function of former variation_name. 
+   * New variation_id attribute with the function of former variation_name.
    * variation_name is now the translatable name of the unit variant.
-   * The "variation=" attribute works now in [unit_type] and serves 
-     as the default variant. 
+   * The "variation=" attribute works now in [unit_type] and serves
+     as the default variant.
    * [store_side] now stores the scroll_to_leader attribute from sides.
    * Added new CampaignWML attributes: "type", "min_players" and "max_players".
    * Added new ScenariowML attributes: "new_game_title",
@@ -125,7 +139,7 @@ Version 1.11.6+dev:
    * Help Browser:
      * Units with variants are shown as sections with their childs as topics.
      * Links to the siblings in unit variants.
-     * Links to the base unit of none variants. 
+     * Links to the base unit of none variants.
    * MP "Create" screen has been revamped by moving scenario configuration
      widgets to a new MP "Configure" screen, introducing a description box,
      adding a combo selection for different types of game, and adjusting it to
@@ -171,6 +185,7 @@ Version 1.11.6+dev:
    * New MISSILE_FRAME_CHILL_WAVE and MISSILE_FRAME_SHADOW_WAVE macros, used in the dark adept line.
    * New knife sound for thunderer line.
    * Fix bug #20936 with shuffle sides and incorrect initial side villages.
+   * Fix bug #20564: crash of replays of games started from start-of-scenario save
 
 Version 1.11.6:
  * Add-ons client:
@@ -233,7 +248,7 @@ Version 1.11.5:
      are exempt from this change.
  * AI:
    * New macro EXPERIMENTAL_AI for using Experimental AI in both SP scenarios and MP maps
-   * Recruiting in Micro and Experimental AIs: allow more terrain codes for castles/keeps 
+   * Recruiting in Micro and Experimental AIs: allow more terrain codes for castles/keeps
    * Improved/Added: Command 'lua wesnoth.debug_ai([side]).ai' will now give access to the
      ai-table of [side].
    * Improved AI behavior when using goto_x / goto_y in WML
