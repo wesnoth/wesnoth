@@ -59,7 +59,6 @@ namespace game_events
 	/// Shared pointer to handler objects.
 	typedef boost::shared_ptr<event_handler> handler_ptr;
 	/// Storage of event handlers.
-	/// These vectors will contain no NULL pointers.
 	typedef std::vector<handler_ptr> handler_vec;
 
 

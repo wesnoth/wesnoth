@@ -59,7 +59,7 @@ namespace { // Types
 		typedef handler_vec::const_iterator const_iterator;
 
 	private:
-		handler_vec active_; ///Active event handlers
+		handler_vec active_; ///Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
 		handler_vec insert_buffer_; ///Event handlers added while pumping events
 		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
 		bool buffering_;
@@ -163,24 +163,23 @@ namespace { // Types
 	 */
 	void t_event_handlers::remove_event_handler(std::string const & id)
 	{
-		if(id == "") { return; }
+		if ( id.empty() )
+			return;
 
 		DBG_EH << "removing event handler with id " << id << "\n";
 
+		// If buffering, remember this ID for later.
 		if(buffering_) { remove_buffer_.insert(id); }
 
+		// Loop through the applicable handler_vec.
 		handler_vec &temp = buffering_ ? insert_buffer_ : active_;
-
-		handler_vec::iterator i = temp.begin();
-		while(i < temp.end()) {
+		for ( handler_vec::iterator i = temp.begin(); i != temp.end(); ++i ) {
 			if ( !*i )
 				continue;
-			config const & temp_config = (*i)->get_config();
-			std::string event_id = temp_config["id"];
-			if(event_id != "" && event_id == id) {
-				i = temp.erase(i); }
-			else {
-				++i; }
+			// Try to match the id
+			std::string event_id = (*i)->get_config()["id"];
+			if ( event_id == id )
+				i->reset();
 		}
 		log_handlers();
 	}
