@@ -1,6 +1,6 @@
 return {
     init = function(ai)
-        local AH = wesnoth.require "~/add-ons/AI-demos/lua/ai_helper.lua"
+        local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
         local move_to_any_target = {}
 
