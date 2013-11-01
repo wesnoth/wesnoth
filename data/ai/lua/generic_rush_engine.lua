@@ -12,6 +12,14 @@ return {
         local HS = wesnoth.require("ai/micro_ais/cas/ca_healer_move.lua")
         local R = wesnoth.require "ai/lua/retreat.lua"
 
+        local function print_time(...)
+            if generic_rush.data.turn_start_time then
+                AH.print_ts_delta(generic_rush.data.turn_start_time, ...)
+            else
+                AH.print_ts(...)
+            end
+        end
+
         ------ Stats at beginning of turn -----------
 
         -- This will be blacklisted after first execution each turn
@@ -22,7 +30,8 @@ return {
 
         function generic_rush:stats_exec()
             local tod = wesnoth.get_time_of_day()
-            print(' Beginning of Turn ' .. wesnoth.current.turn .. ' (' .. tod.name ..') stats (CPU time ' .. os.clock() .. ')')
+            AH.print_ts(' Beginning of Turn ' .. wesnoth.current.turn .. ' (' .. tod.name ..') stats')
+            generic_rush.data.turn_start_time = wesnoth.get_time_stamp() / 1000.
 
             for i,s in ipairs(wesnoth.sides) do
                 local total_hp = 0
@@ -57,8 +66,8 @@ return {
         -------- Castle Switch CA --------------
 
         function generic_rush:castle_switch_eval()
-            local start_time, ca_name = os.clock(), 'castle_switch'
-            if AH.print_eval() then print('     - Evaluating castle_switch CA:', os.clock()) end
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'castle_switch'
+            if AH.print_eval() then print_time('     - Evaluating castle_switch CA:') end
 
             if ai.get_passive_leader() then
                 -- Turn off this CA if the leader is passive
@@ -227,7 +236,7 @@ return {
         function generic_rush:castle_switch_exec()
             local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
-            if AH.print_exec() then print('   ' .. os.clock() .. ' Executing castle_switch CA') end
+            if AH.print_exec() then print_time('   Executing castle_switch CA') end
             if AH.show_messages() then W.message { speaker = leader.id, message = 'Switching castles' } end
 
             ai.move(leader, self.data.leader_target[1], self.data.leader_target[2])
@@ -237,8 +246,8 @@ return {
         ------- Grab Villages CA --------------
 
         function generic_rush:grab_villages_eval()
-            local start_time, ca_name = os.clock(), 'grab_villages'
-            if AH.print_eval() then print('     - Evaluating grab_villages CA:', os.clock()) end
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'grab_villages'
+            if AH.print_eval() then print_time('     - Evaluating grab_villages CA:') end
 
             -- Check if there are units with moves left
             local units = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'no',
@@ -357,7 +366,7 @@ return {
         end
 
         function generic_rush:grab_villages_exec()
-            if AH.print_exec() then print('   ' .. os.clock() .. ' Executing grab_villages CA') end
+            if AH.print_exec() then print_time('   Executing grab_villages CA') end
             if AH.show_messages() then W.message { speaker = self.data.unit.id, message = 'Grab villages' } end
 
             AH.movefull_stopunit(ai, self.data.unit, self.data.village)
@@ -367,8 +376,8 @@ return {
         ------- Spread Poison CA --------------
 
         function generic_rush:spread_poison_eval()
-            local start_time, ca_name = os.clock(), 'spread_poison'
-            if AH.print_eval() then print('     - Evaluating spread_poison CA:', os.clock()) end
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'spread_poison'
+            if AH.print_eval() then print_time('     - Evaluating spread_poison CA:') end
 
             -- If a unit with a poisoned weapon can make an attack, we'll do that preferentially
             -- (with some exceptions)
@@ -452,7 +461,7 @@ return {
         function generic_rush:spread_poison_exec()
             local attacker = wesnoth.get_unit(self.data.attack.src.x, self.data.attack.src.y)
 
-            if AH.print_exec() then print('   ' .. os.clock() .. ' Executing spread_poison CA') end
+            if AH.print_exec() then print_time('   Executing spread_poison CA') end
             if AH.show_messages() then W.message { speaker = attacker.id, message = 'Poison attack' } end
 
             local defender = wesnoth.get_unit(self.data.attack.target.x, self.data.attack.target.y)
