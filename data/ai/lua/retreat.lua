@@ -44,20 +44,30 @@ function retreat_functions.retreat_injured_units(units)
         end
     end
 
-    -- First we retreat non-regenerating units to healing terrain
+    -- First we retreat non-regenerating units to healing terrain, if they can get to a safe location
+    local unit_nr, loc_nr, threat_nr
     if non_regen[1] then
-        local unit, loc = retreat_functions.get_retreat_injured_units(non_regen, true)
-        if unit then
-            return unit, loc
+        unit_nr, loc_nr, threat_nr = retreat_functions.get_retreat_injured_units(non_regen, false)
+        if unit_nr and (threat_nr == 0) then
+            return unit_nr, loc_nr, threat_nr
         end
     end
 
-    -- Then we retreat regenerating units to terrain with high defense
+    -- Then we retreat regenerating units to terrain with high defense, if they can get to a safe location
+    local unit_r, loc_r, threat_r
     if regen[1] then
-        local unit, loc = retreat_functions.get_retreat_injured_units(regen, false)
-        if unit then
-            return unit, loc
+        unit_r, loc_r, threat_r = retreat_functions.get_retreat_injured_units(regen, true)
+        if unit_r and (threat_r == 0) then
+            return unit_r, loc_r, threat_r
         end
+    end
+
+    -- The we retreat those that cannot get to a safe location (non-regenerating units first again)
+    if unit_nr then
+        return unit_nr, loc_nr, threat_nr
+    end
+    if unit_r then
+        return unit_r, loc_r, threat_r
     end
 end
 
