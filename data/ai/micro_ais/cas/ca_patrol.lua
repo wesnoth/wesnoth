@@ -4,15 +4,34 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local ca_patrol = {}
 
 function ca_patrol:evaluation(ai, cfg)
-	local patrol = wesnoth.get_units({ id = cfg.id })[1]
+	local patrol
+	if cfg.filter then
+	    patrol = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    patrol = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
 
 	-- Check if unit exists as sticky BCAs are not always removed successfully
-	if patrol and (patrol.moves > 0) then return cfg.ca_score end
+	if patrol then return cfg.ca_score end
 	return 0
 end
 
 function ca_patrol:execution(ai, cfg, self)
-	local patrol = wesnoth.get_units( { id = cfg.id } )[1]
+	local patrol
+	if cfg.filter then
+	    patrol = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    patrol = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
+
 	cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
 	cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
 

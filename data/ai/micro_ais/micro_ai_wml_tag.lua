@@ -408,8 +408,11 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Patrol Micro AI ------------------------------------
     elseif (cfg.ai_type == 'patrol') then
-        required_keys = { "id", "waypoint_x", "waypoint_y" }
-        optional_keys = { "attack", "one_time_only", "out_and_back" }
+        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+            H.wml_error("Patrol [micro_ai] tag requires either id= key or [filter] tag")
+        end
+        required_keys = { "waypoint_x", "waypoint_y" }
+        optional_keys = { "id", "filter", "attack", "one_time_only", "out_and_back" }
         CA_parms = { { ca_id = "mai_patrol", location = 'ai/micro_ais/cas/ca_patrol.lua', score = cfg.ca_score or 300000 } }
 
     --------- Recruiting Micro AI ------------------------------------
