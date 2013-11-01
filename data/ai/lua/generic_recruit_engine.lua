@@ -114,7 +114,9 @@ return {
                 for attack in H.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
                     local defense = defender_defense
                     local poison = false
-                    local damage_multiplier,damage_add,damage_value = 1, 0
+                    local damage_multiplier = 1
+                    local damage_bonus = 0
+                    local weapon_damage = attack.damage
 
                     for special in H.child_range(attack, 'specials') do
                         local mod
@@ -144,31 +146,39 @@ return {
                             end
                         end
 
-                        -- Handle backstab, charge
+                        -- Handle most damage specials (assumes all are cumulative)
                         mod = H.get_child(special, 'damage')
                         if mod and mod.active_on ~= "defense" then
-                            if mod.value then
-                                if mod.cumulative then
-                                    if mod.value > attack.damage then
-                                        damage_value = mod.value
-                                    end
-                                else
-                                    damage_value = mod.value
-                                end
-                            elseif mod.add then
-                                damage_add = mod.add
-                            elseif mod.sub then
-                                damage_add = - mod.sub
-                            elseif mod.multiply then
-                                damage_multiplier = mod.multiply
-                            elseif mod.divide then
-                                damage_multiplier = 1. / mod.divide
+                            local special_multiplier = 1
+                            local special_bonus = 0
+
+                            if mod.multiply then
+                                special_multiplier = special_multiplier*mod.multiply
                             end
+                            if mod.divide then
+                                special_multiplier = special_multiplier/mod.divide
+                            end
+                            if mod.add then
+                                special_bonus = special_bonus+mod.add
+                            end
+                            if mod.subtract then
+                                special_bonus = special_bonus-mod.subtract
+                            end
+
                             if mod.backstab then
                                 -- Assume backstab happens on only 1/2 of attacks
                                 -- TODO: find out what actual probability of getting to backstab is
-                                damage_multiplier = damage_multiplier * 0.5 + 0.5
-                                damage_add = damage_add * 0.5
+                                damage_multiplier = damage_multiplier*(special_multiplier*0.5 + 0.5)
+                                damage_bonus = damage_bonus+(special_bonus*0.5)
+                                if mod.value ~= nil then
+                                    weapon_damage = (weapon_damage+mod.value)/2
+                                end
+                            else
+                                damage_multiplier = damage_multiplier*special_multiplier
+                                damage_bonus = damage_bonus+special_bonus
+                                if mod.value ~= nil then
+                                    weapon_damage = mod.value
+                                end
                             end
                         end
                     end
@@ -196,8 +206,7 @@ return {
                             resistance = 50
                         end
                     end
-                    local base_damage = (attack.damage * damage_multiplier + damage_add) * resistance
-                    if damage_value then base_damage = damage_value * resistance end
+                    local base_damage = (weapon_damage+damage_bonus)*resistance*damage_multiplier
                     if (resistance > 100) then
                         base_damage = base_damage-1
                     end
