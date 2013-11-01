@@ -505,6 +505,8 @@ bool create_engine::toggle_current_mod()
 	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
 	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active);
 
+	parameters_.active_mods = dependency_manager_.get_modifications();
+
 	return !is_active;
 }
 

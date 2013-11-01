@@ -79,7 +79,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
 	load_game_(disp.video(), _("Load game...")),
-	choose_mods_(disp.video(), _("Modifications...")),
+	select_mod_(disp.video(), _("Activate")),
 	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -87,7 +87,6 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
-	available_mods_(),
 	engine_(disp, state)
 {
 	filter_num_players_slider_.set_min(0);
@@ -168,11 +167,13 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 		preferences::era());
 	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
-	BOOST_FOREACH(const config& mod, cfg.child_range("modification")) {
-		available_mods_.add_child("modification", mod);
+	std::vector<std::string> mods = engine_.extras_menu_item_names(create_engine::MOD);
+	synchronize_selections();
+	BOOST_FOREACH(const std::string& mod, engine_.active_mods()) {
+		int index = engine_.find_extra_by_id(create_engine::MOD, mod);
+		mods[index] = "@" + mods[index];
 	}
-
-	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
+	mods_menu_.set_items(mods);
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -248,20 +249,17 @@ void create::process_event()
 		return;
 	}
 
-	if(choose_mods_.pressed()) {
-		if (available_mods_.empty()) {
-			gui2::show_transient_message(disp_.video(), "",
-			_(	"There are no modifications currently installed." \
-				" To download modifications, connect to the add-ons server" \
-				" by choosing the 'Add-ons' option on the main screen."		));
+	if (select_mod_.pressed()) {
+		int index = mods_menu_.selection();
+		engine_.set_current_mod_index(index);
+		if (engine_.toggle_current_mod()) {
+			mods_menu_.change_item(index, 0, "@" + mods_menu_.get_item(index).fields[0]);	
 		} else {
-			gui2::tmp_create_game_choose_mods
-						dialog(available_mods_, engine_.active_mods());
-
-			dialog.show(disp_.video());
-
-			synchronize_selections();
+			std::string item = mods_menu_.get_item(index).fields[0];
+			mods_menu_.change_item(index, 0, item.substr(1, item.size()-1));
 		}
+
+		synchronize_selections();
 	}
 
 	bool era_changed = era_selection_ != eras_menu_.selection();
@@ -497,7 +495,7 @@ void create::hide_children(bool hide)
 
 	load_game_.hide(hide);
 
-	choose_mods_.hide(hide);
+	select_mod_.hide(hide);
 
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
@@ -539,8 +537,8 @@ void create::layout_children(const SDL_Rect& rect)
 	const int menu_width = (ca.w - 3 * column_border_size - image_width) / 3;
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
-	//const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
-	//	2 * border_size - cancel_game_.height());
+	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
+		2 * border_size - cancel_game_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -634,16 +632,13 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += eras_menu_height;
 
 	//TODO: use when mods_menu_ would be functional.
-	/*mod_label_.set_location(xpos, ypos);
+	mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
 	mods_menu_.set_max_width(menu_width);
 	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
-	// Menu dimensions are only updated when items are set. So do this now.
-	int modsel_save = mods_menu_.selection();
-	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
-	mods_menu_.move_selection(modsel_save);*/
-	choose_mods_.set_location(xpos, ypos);
+	ypos += mods_menu_.height() + border_size;
+	select_mod_.set_location(xpos, ypos);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
