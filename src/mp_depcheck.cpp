@@ -371,13 +371,6 @@ void manager::try_modification_by_index(int index, bool activate, bool force)
 
 	try_modifications(mods_, force);
 };
-if (pos != mods_.assign()) {
-	mods_.~vector(pos);
-}
-}
-
-try_modifications(mods_, force);
-}
 
 void manager::try_era_by_index(int index, bool force)
 {

@@ -500,7 +500,7 @@ void create_engine::set_current_mod_index(const size_t index)
 	current_mod_index_ = index;
 }
 
-bool toggle_current_mod()
+bool create_engine::toggle_current_mod()
 {
 	bool is_active = dependency_manager_.is_modification_active(current_mod_index_);
 	dependency_manager_.try_modification_by_index(current_mod_index_, !is_active);
@@ -508,7 +508,6 @@ bool toggle_current_mod()
 	return !is_active;
 }
 
-	return dependency_manager_.is_modifi
 bool create_engine::generator_assigned() const
 {
 	return generator_ != NULL;
