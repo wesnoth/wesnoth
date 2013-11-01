@@ -9,35 +9,35 @@ local LS = wesnoth.require "lua/location_set.lua"
 
 local retreat_functions = {}
 
+function retreat_functions.min_hp(unit)
+    -- The minimum hp to retreat is a function of level and terrain defense
+    -- We want to stay longer on good terrain and leave early on very bad terrain
+    local hp_per_level = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))/15
+    local level = wesnoth.unit_types[unit.type].level
+
+    -- Leaders are considered to be higher level because of their value
+    if unit.canrecruit then level = level+2 end
+
+    local min_hp = hp_per_level*(level+2)
+
+    -- Account for poison damage on next turn
+    if unit.status.poisoned then min_hp = min_hp + 8 end
+
+    -- Make sure that units are actually injured
+    if min_hp > unit.max_hitpoints - 4 then
+        min_hp = unit.max_hitpoints - 4
+    end
+
+    return min_hp
+end
+
 -- Given a set of units, return one from the set that should retreat and the location to retreat to
 -- Return nil if no unit needs to retreat
 function retreat_functions.retreat_injured_units(units)
-    local min_hp = function(unit)
-        -- The minimum hp to retreat is a function of level and terrain defense
-        -- We want to stay longer on good terrain and leave early on very bad terrain
-        local hp_per_level = wesnoth.unit_defense(unit, wesnoth.get_terrain(unit.x, unit.y))/15
-        local level = wesnoth.unit_types[unit.type].level
-
-        -- Leaders are considered to be higher level because of their value
-        if unit.canrecruit then level = level+2 end
-
-        local min_hp = hp_per_level*(level+2)
-
-        -- Account for poison damage on next turn
-        if unit.status.poisoned then min_hp = min_hp + 8 end
-
-        -- Make sure that units are actually injured
-        if min_hp > unit.max_hitpoints - 4 then
-            min_hp = unit.max_hitpoints - 4
-        end
-
-        return min_hp
-    end
-
     -- Split units into those that regenerate and those that do not
     local regen, non_regen = {}, {}
     for i,u in ipairs(units) do
-        if u.hitpoints < min_hp(u) then
+        if u.hitpoints < retreat_functions.min_hp(u) then
             if wesnoth.unit_ability(u, 'regenerate') then
                 table.insert(regen, u)
             else
