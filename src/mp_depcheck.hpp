@@ -122,6 +122,15 @@ public:
 	const std::vector<std::string>& get_modifications() const { return mods_; }
 
 	/**
+	 * Tells whether a certain mod is activated.
+	 *
+	 * @param index the index of the mod
+	 *
+	 * @return true if activated, false is not
+	 */
+	bool is_modification_active(int index) const;
+
+	/**
 	 * Returns the selected era
 	 *
 	 * @return the index of the era

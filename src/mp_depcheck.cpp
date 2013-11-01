@@ -419,6 +419,13 @@ int manager::get_scenario_index() const
 	return -1;
 }
 
+bool manager::is_modification_active(int index) const
+{
+	std::string id = depinfo_.child("modification", index)["id"];
+	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
+}
+	
+
 
 bool manager::enable_mods_dialog(const std::vector<std::string>& mods,
 								 const std::string& requester)
