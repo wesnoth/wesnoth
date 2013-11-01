@@ -192,6 +192,7 @@ public:
 
 	void set_current_era_index(const size_t index);
 	void set_current_mod_index(const size_t index);
+	void activate_current_mod(bool activate);
 
 	bool generator_assigned() const;
 	void generator_user_config(display& disp);

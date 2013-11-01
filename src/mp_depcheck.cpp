@@ -355,6 +355,30 @@ void manager::try_modifications(const std::vector<std::string>& ids, bool force)
 	}
 }
 
+void manager::try_modification_by_index(int index, bool activate, bool force)
+{
+	std::string id = depinfo_.child("modification", index)["id"];
+	if (activate) {
+		if (std::find(mods_.begin(), mods_.end(), id) == mods_.end()) {
+			mods_.push_back(id);
+		}
+	} else {
+		std::vector<std::string>::iterator pos = std::find(mods_.begin(), mods_.end(), id);
+		if (pos != mods_.end()) {
+			mods_.erase(pos);
+		}
+	}
+
+	try_modifications(mods_, force);
+};
+if (pos != mods_.assign()) {
+	mods_.~vector(pos);
+}
+}
+
+try_modifications(mods_, force);
+}
+
 void manager::try_era_by_index(int index, bool force)
 {
 	try_era(depinfo_.child("era", index)["id"], force);

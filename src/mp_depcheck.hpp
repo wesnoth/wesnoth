@@ -76,6 +76,15 @@ public:
 						   bool force = false	);
 
 	/**
+	 * Tries to enable/disable a specific modification
+	 *
+	 * @param index     the index of the modification
+	 * @param activate  activate or deactivate
+	 * @param force     whether to skip dependency check
+	 */
+	void try_modification_by_index(int index, bool activate, bool force = false);
+
+	/**
 	 * Tries to set the selected era
 	 *
 	 * @param index 	the index of the era
