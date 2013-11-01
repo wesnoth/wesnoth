@@ -27,6 +27,14 @@ return {
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
 
+        local function print_time(...)
+            if turn_start_time then
+                AH.print_ts_delta(turn_start_time, ...)
+            else
+                AH.print_ts(...)
+            end
+        end
+
         local recruit_data = {}
 
         local no_village_cost = function(recruit_id)
@@ -419,8 +427,8 @@ return {
         end
 
         function ai_cas:recruit_rushers_eval()
-            local start_time, ca_name = os.clock(), 'recruit_rushers'
-            if AH.print_eval() then print('     - Evaluating recruit_rushers CA:', os.clock()) end
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'recruit_rushers'
+            if AH.print_eval() then print_time('     - Evaluating recruit_rushers CA:') end
 
             local score = do_recruit_eval(recruit_data)
             if score == 0 then
@@ -435,7 +443,6 @@ return {
         function ai_cas:recruit_rushers_exec(ai_local)
             if ai_local then ai = ai_local end
 
-            if AH.print_exec() then print('   ' .. os.clock() .. ' Executing recruit_rushers CA') end
             if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
 
             local enemy_counts = recruit_data.recruit.enemy_counts
@@ -628,7 +635,7 @@ return {
                 end
             end
 
-            if AH.print_exec() then
+            if AH.print_eval() then
                 if village[1] then
                     print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2] .. " -> " .. village[1] .. "," .. village[2])
                 else
@@ -776,7 +783,7 @@ return {
 
                 local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus
 
-                if AH.print_exec() then
+                if AH.print_eval() then
                     print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
                 end
                 if score > best_score and wesnoth.unit_types[recruit_id].cost <= gold_limit then
