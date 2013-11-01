@@ -393,32 +393,30 @@ void read_compressed(config &cfg, std::istream &file, abstract_validator * valid
 	filter.push(file);
 
 
-#if (_MSC_VER >= 1500)
-	// this seems to fix an msvc issue that causes crashes on a regular basis
-	// this causes especialy gzip_error (or the coresponding bz2 error, maybe other erros too?) to be thrown here. 
-	// gzip_error will be thown in case of a invalid zip file
-	// save_index_class::data expects that and config_cache::read_cache is also capable of catching.
-	// 
-	// i(gfgtdf) still dont know how other compilers handle it. 
-	// especialy weather the catch for gzip_error in save_index_class::data is ever reached and  when the exeption is thown.
-	// and what happens when the code tries to read a corupt cache gz file.
-	// note that  parser(cfg, filter,validator)(); -> tokenizer::tokenizer can throw exeptions too (meaning this functions did already throw these exeptions before this patch).
-	// also note that this doesn't fix the source of the currupted gz files wich is, that filtering_stream cannot create empty compressend gz files properly, see https://svn.boost.org/trac/boost/ticket/5237
-	// filter.peek() might throw an exeption now.
+
+	// This causes especially gzip_error (and the corresponding bz2 error), std::ios_base::failure to be thrown here.
+	// save_index_class::data expects that and config_cache::read_cache and other functions are also capable of catching.
+	// Note that parser(cuff, filter,validator)(); -> tokenizer::tokenizer can throw exeptions too (meaning this functions did already throw these exceptions before this patch).
+	// We try to fix https://svn.boost.org/trac/boost/ticket/5237 by not creating empty gz files.
 	filter.exceptions(filter.exceptions() | std::ios_base::badbit);
-#endif
+
 	/*
 	 * It sometimes seems the file is not empty but still no real data.
 	 * Filter that case here. It might be previous test is no longer required
 	 * but simply keep it.
 	 */
-	// at least on msvc filter.peek() != EOF does not imply filter.good() (without the line above)
+
+	// on msvc filter.peek() != EOF does not imply filter.good().
+	// we never create empty compressed gzip files because boosts gzip fails at doing that.
+	// but empty compressed bz2 files are possible.
 	if(filter.peek() == EOF) {
+		LOG_CF << "Empty compressed file or error at reading a compressed file."; 
 		return;
 	}
 	
+
 	if(!filter.good()) {
-		LOG_CF << " filter.peek() != EOF but !filter.good(), this indicates a malformed gz stream.";
+		LOG_CF << " filter.peek() != EOF but !filter.good(), this indicates a malformed gz stream, and can make wesnoth crash.";
 	}
 
 	parser(cfg, filter,validator)();
@@ -577,6 +575,8 @@ void write_compressed(std::ostream &out, config const &cfg)
 	filter.push(out);
 
 	write(filter, cfg);
+	// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
+	filter << "\n";
 }
 
 void write_gz(std::ostream &out, config const &cfg)
