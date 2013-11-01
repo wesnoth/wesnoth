@@ -99,7 +99,7 @@ namespace { // Types
 	                 const std::string& msg)
 	{
 		BOOST_FOREACH(const handler_ptr & h, handlers){
-			if ( h->disabled() )
+			if ( !h || h->disabled() )
 				continue;
 			const config& cfg = h->get_config();
 			ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
@@ -139,7 +139,7 @@ namespace { // Types
 			std::string id = cfg["id"];
 			if(!id.empty()) {
 				BOOST_FOREACH( handler_ptr const & eh, active_ ) {
-					if ( eh->disabled() )
+					if ( !eh || eh->disabled() )
 						continue;
 					config const & temp_config(eh->get_config());
 					if(id == temp_config["id"]) {
@@ -173,6 +173,8 @@ namespace { // Types
 
 		handler_vec::iterator i = temp.begin();
 		while(i < temp.end()) {
+			if ( !*i )
+				continue;
 			config const & temp_config = (*i)->get_config();
 			std::string event_id = temp_config["id"];
 			if(event_id != "" && event_id == id) {
@@ -218,6 +220,8 @@ namespace { // Types
 
 		// Commit any spawned events-within-events
 		BOOST_FOREACH( handler_ptr const & i, insert_buffer_ ){
+			if ( !i )
+				continue;
 			add_event_handler(i->get_config(), i->is_menu_item()); }
 		insert_buffer_.clear();
 
@@ -275,6 +279,8 @@ void commit_wmi_commands()
 
 		if ( !item.command().empty() ) {
 			BOOST_FOREACH(handler_ptr& hand, event_handlers) {
+				if ( !hand )
+					continue;
 				if ( hand->is_menu_item() && hand->matches_name(event_name) ) {
 					LOG_NG << "changing command for " << event_name << " to:\n" << *wcc.second;
 					*hand = event_handler(*wcc.second, true);
@@ -412,6 +418,10 @@ void manager::commit_buffer()
 }
 
 
+/** Dummy value for when we encounter null pointers. */
+const event_handler manager::key::null_handler = event_handler(config());
+
+
 event_handler::event_handler(const config &cfg, bool imi) :
 	first_time_only_(cfg["first_time_only"].to_bool(true)),
 	disabled_(false), is_menu_item_(imi), cfg_(cfg)
@@ -511,7 +521,7 @@ void add_events(const config::const_child_itors &cfgs, const std::string& type)
 void write_events(config& cfg)
 {
 	BOOST_FOREACH(const handler_ptr &eh, event_handlers) {
-		if ( eh->disabled() || eh->is_menu_item() ) {
+		if ( !eh || eh->disabled() || eh->is_menu_item() ) {
 			continue;
 		}
 		cfg.add_child("event", eh->get_config());

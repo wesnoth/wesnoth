@@ -78,7 +78,10 @@ namespace game_events
 		struct key {
 			/// Instructions for converting a handler_vec iterator to an event_handler.
 			static const event_handler & eval(const handler_vec::const_iterator & iter)
-			{ return **iter; }
+			{ return *iter ? **iter : null_handler; }
+		private:
+			/// Dummy value for when we encounter null pointers.
+			static const event_handler null_handler;
 		};
 
 	public:
