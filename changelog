@@ -32,7 +32,8 @@ Version 1.11.6+dev:
      * Got rid of animal_type=, guardian_type=and recruiting_type= keys.  The
        individual Animal, Guardian and Recruiting MAIs are now separate AIs
        that are selected with the ai_type=key
-     * Patrol, Guardian and Hunter MAIs are now side-wide CAs (not BCAs)
+     * Patrol, Guardian and Hunter MAIs are now side-wide CAs (not BCAs) and
+       support either the id= key or [filter] tag for unit selection
      * Messenger MAI now works with units (both messenger and escort) without
        weapons and when path to next waypoint is entirely blocked
    * Experimental AI:
