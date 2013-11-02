@@ -41,9 +41,11 @@ namespace game_events
 		public:
 			explicit event_handler(const config &cfg, bool is_menu_item = false);
 
+			/// Allows the event_handlers object to record the index of *this.
+			void set_index(size_t index) { index_ = index; }
+
 			bool matches_name(const std::string& name) const;
 
-			bool disabled() const { return disabled_; }
 			bool is_menu_item() const { return is_menu_item_; }
 
 			void handle_event(const queued_event& event_info);
@@ -52,8 +54,8 @@ namespace game_events
 
 		private:
 			bool first_time_only_;
-			bool disabled_;
 			bool is_menu_item_;
+			size_t index_;
 			config cfg_;
 	};
 	/// Shared pointer to handler objects.

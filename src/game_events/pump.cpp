@@ -236,9 +236,6 @@ namespace { // Support functions
 
 	bool process_event(event_handler& handler, const queued_event& ev)
 	{
-		if(handler.disabled())
-			return false;
-
 		unit_map *units = resources::units;
 		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
 		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);

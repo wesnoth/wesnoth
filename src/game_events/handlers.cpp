@@ -71,6 +71,7 @@ namespace { // Types
 		void log_handlers();
 
 	public:
+		typedef handler_vec::size_type size_type;
 
 		t_event_handlers()
 			: active_(), insert_buffer_(), remove_buffer_(), buffering_(false)
@@ -92,6 +93,11 @@ namespace { // Types
 
 		iterator end() { return active_.end(); }
 		const_iterator end() const { return active_.end(); }
+
+		/// The number of active event handlers.
+		size_type size() const { return active_.size(); }
+		/// Access to active event handlers by index.
+		handler_ptr & operator[](size_type index) { return active_[index]; }
 	};//t_event_handlers
 
 	void t_event_handlers::log_handler(std::stringstream& ss,
@@ -99,7 +105,7 @@ namespace { // Types
 	                 const std::string& msg)
 	{
 		BOOST_FOREACH(const handler_ptr & h, handlers){
-			if ( !h || h->disabled() )
+			if ( !h )
 				continue;
 			const config& cfg = h->get_config();
 			ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
@@ -139,7 +145,7 @@ namespace { // Types
 			std::string id = cfg["id"];
 			if(!id.empty()) {
 				BOOST_FOREACH( handler_ptr const & eh, active_ ) {
-					if ( !eh || eh->disabled() )
+					if ( !eh )
 						continue;
 					config const & temp_config(eh->get_config());
 					if(id == temp_config["id"]) {
@@ -151,7 +157,9 @@ namespace { // Types
 			}
 			DBG_EH << "inserting event handler for name=" << cfg["name"] <<
 				" with id=" << id << "\n";
-			active_.push_back(handler_ptr(new event_handler(cfg, is_menu_item)));
+			handler_ptr new_handler(new event_handler(cfg, is_menu_item));
+			new_handler->set_index(active_.size());
+			active_.push_back(new_handler);
 			log_handlers();
 		}
 	}
@@ -423,14 +431,27 @@ const event_handler manager::key::null_handler = event_handler(config());
 
 event_handler::event_handler(const config &cfg, bool imi) :
 	first_time_only_(cfg["first_time_only"].to_bool(true)),
-	disabled_(false), is_menu_item_(imi), cfg_(cfg)
+	is_menu_item_(imi), index_(-1), cfg_(cfg)
 {}
 
+/**
+ * Handles the queued event, according to our WML instructions.
+ * WARNING: *this may be destroyed at the end of this call, unless
+ *          the caller maintains a handler_ptr to this.
+ */
 void event_handler::handle_event(const queued_event& event_info)
 {
+	handler_ptr preservative;
+
 	if (first_time_only_)
 	{
-		disabled_ = true;
+		// We should only be handling events if we've been added to the
+		// active handlers.
+		assert ( index_ < event_handlers.size() );
+		// Prevent self-destructing mid-function.
+		preservative = event_handlers[index_];
+		// Disable this handler.
+		event_handlers[index_].reset();
 	}
 
 	if (is_menu_item_) {
@@ -520,7 +541,7 @@ void add_events(const config::const_child_itors &cfgs, const std::string& type)
 void write_events(config& cfg)
 {
 	BOOST_FOREACH(const handler_ptr &eh, event_handlers) {
-		if ( !eh || eh->disabled() || eh->is_menu_item() ) {
+		if ( !eh || eh->is_menu_item() ) {
 			continue;
 		}
 		cfg.add_child("event", eh->get_config());
