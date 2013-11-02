@@ -3,7 +3,16 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local ca_return_guardian = {}
 
 function ca_return_guardian:evaluation(ai, cfg)
-	local unit = wesnoth.get_units { id = cfg.id }[1]
+	local unit
+	if cfg.filter then
+	    unit = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
 
 	-- Check if unit exists as sticky BCAs are not always removed successfully
 	if unit then
@@ -17,7 +26,16 @@ function ca_return_guardian:evaluation(ai, cfg)
 end
 
 function ca_return_guardian:execution(ai, cfg)
-	local unit = wesnoth.get_units { id = cfg.id }[1]
+	local unit
+	if cfg.filter then
+	    unit = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
 	--print("Exec guardian move",unit.id)
 
 	-- In case the return hex is occupied:

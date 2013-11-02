@@ -307,21 +307,35 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Micro AI Guardian -----------------------------------
     elseif (cfg.ai_type == 'stationed_guardian') then
-        required_keys = { "id", "distance", "station_x", "station_y", "guard_x", "guard_y" }
+        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+            H.wml_error("Stationed Guardian [micro_ai] tag requires either id= key or [filter] tag")
+        end
+        required_keys = { "distance", "station_x", "station_y", "guard_x", "guard_y" }
+        optional_keys = { "id", "filter" }
         CA_parms = { { ca_id = 'mai_stationed_guardian', location = 'ai/micro_ais/cas/ca_stationed_guardian.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'zone_guardian') then
-        required_keys = { "id", "filter_location" }
-        optional_keys = { "filter_location_enemy", "station_x", "station_y" }
+        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+            H.wml_error("Zone Guardian [micro_ai] tag requires either id= key or [filter] tag")
+        end
+        required_keys = { "filter_location" }
+        optional_keys = { "id", "filter", "filter_location_enemy", "station_x", "station_y" }
         CA_parms = { { ca_id = 'mai_zone_guardian', location = 'ai/micro_ais/cas/ca_zone_guardian.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'return_guardian') then
-        required_keys = { "id", "return_x", "return_y" }
+        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+            H.wml_error("Return Guardian [micro_ai] tag requires either id= key or [filter] tag")
+        end
+        required_keys = { "return_x", "return_y" }
+        optional_keys = { "id", "filter" }
         CA_parms = { { ca_id = 'mai_return_guardian', location = 'ai/micro_ais/cas/ca_return_guardian.lua', score = cfg.ca_score or 100010 } }
 
     elseif (cfg.ai_type == 'coward') then
-        required_keys = { "id", "distance" }
-        optional_keys = { "seek_x", "seek_y","avoid_x","avoid_y" }
+        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+            H.wml_error("Coward [micro_ai] tag requires either id= key or [filter] tag")
+        end
+        required_keys = { "distance" }
+        optional_keys = { "id", "filter", "seek_x", "seek_y","avoid_x","avoid_y" }
         CA_parms = { { ca_id = 'mai_coward', location = 'ai/micro_ais/cas/ca_coward.lua', score = cfg.ca_score or 300000 } }
 
     --------- Micro AI Animals  ------------------------------------

@@ -4,17 +4,36 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local ca_coward = {}
 
 function ca_coward:evaluation(ai, cfg)
-	local unit = wesnoth.get_units{ id = cfg.id }[1]
+	local unit
+	if cfg.filter then
+	    unit = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
 
 	-- Check if unit exists as sticky BCAs are not always removed successfully
-	if unit and (unit.moves > 0) then return cfg.ca_score end
+	if unit then return cfg.ca_score end
 	return 0
 end
 
 -- cfg parameters: id, distance, seek_x, seek_y, avoid_x, avoid_y
 function ca_coward:execution(ai, cfg)
 	--print("Coward exec " .. cfg.id)
-	local unit = wesnoth.get_units{ id = cfg.id }[1]
+	local unit
+	if cfg.filter then
+	    unit = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
+
 	local reach = wesnoth.find_reach(unit)
 	-- enemy units within reach
 	local enemies = wesnoth.get_units {
