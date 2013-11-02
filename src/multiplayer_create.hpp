@@ -50,6 +50,8 @@ private:
 
 	void set_description(const std::string& description);
 
+	void update_mod_menu_images();
+
 	std::string select_campaign_difficulty();
 
 	tooltips::manager tooltip_manager_;

@@ -168,10 +168,10 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
 	std::vector<std::string> mods = engine_.extras_menu_item_names(create_engine::MOD);
-	synchronize_selections();
-	BOOST_FOREACH(const std::string& mod, engine_.active_mods()) {
-		int index = engine_.find_extra_by_id(create_engine::MOD, mod);
-		mods[index] = "@" + mods[index];
+	BOOST_FOREACH(std::string& mod, mods) {
+		std::stringstream newval;
+		newval << IMAGE_PREFIX << "buttons/checkbox.png" << COLUMN_SEPARATOR << mod;
+		mod = newval.str();
 	}
 	mods_menu_.set_items(mods);
 	mods_menu_.move_selection(0);
@@ -251,20 +251,17 @@ void create::process_event()
 		return;
 	}
 
+	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();
 	if (select_mod_.pressed()) {
 		int index = mods_menu_.selection();
 		engine_.set_current_mod_index(index);
-		if (engine_.toggle_current_mod()) {
-			mods_menu_.change_item(index, 0, "@" + mods_menu_.get_item(index).fields[0]);	
-		} else {
-			std::string item = mods_menu_.get_item(index).fields[0];
-			mods_menu_.change_item(index, 0, item.substr(1, item.size()-1));
-		}
+		engine_.toggle_current_mod();
 
+		update_mod_button_label = true;
 		synchronize_selections();
 	}
 
-	if (mod_selection_ != mods_menu_.selection()) {
+	if (update_mod_button_label) {
 		mod_selection_ = mods_menu_.selection();
 		if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
 			select_mod_.set_label(_("Deactivate"));
@@ -423,6 +420,7 @@ void create::synchronize_selections()
 	}
 
 	engine_.init_active_mods();
+	update_mod_menu_images();
 }
 
 void create::draw_level_image()
@@ -446,7 +444,20 @@ void create::draw_level_image()
 void create::set_description(const std::string& description)
 {
 	description_.set_text(description.empty() ? "No description available." :
-		description);
+												description);
+}
+
+void create::update_mod_menu_images()
+{
+	for (size_t i = 0; i<mods_menu_.number_of_items(); i++) {
+		std::stringstream val;
+		if (engine_.dependency_manager().is_modification_active(i)) {
+			val << IMAGE_PREFIX << "buttons/checkbox-pressed.png";
+		} else {
+			val << IMAGE_PREFIX << "buttons/checkbox.png";
+		}
+		mods_menu_.change_item(i, 0, val.str());
+	}
 }
 
 std::string create::select_campaign_difficulty()
