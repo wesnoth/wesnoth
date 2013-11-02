@@ -174,6 +174,8 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 		mods[index] = "@" + mods[index];
 	}
 	mods_menu_.set_items(mods);
+	mods_menu_.move_selection(0);
+	mod_selection_ = 0;
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -260,6 +262,15 @@ void create::process_event()
 		}
 
 		synchronize_selections();
+	}
+
+	if (mod_selection_ != mods_menu_.selection()) {
+		mod_selection_ = mods_menu_.selection();
+		if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
+			select_mod_.set_label(_("Deactivate"));
+		} else {
+			select_mod_.set_label(_("Activate"));
+		}
 	}
 
 	bool era_changed = era_selection_ != eras_menu_.selection();
