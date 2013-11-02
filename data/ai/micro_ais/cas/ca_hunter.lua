@@ -39,9 +39,16 @@ local function hunter_attack_weakest_adj_enemy(ai, unit)
 end
 
 function ca_hunter:evaluation(ai, cfg)
-	local unit = wesnoth.get_units { side = wesnoth.current.side, id = cfg.id,
-		formula = '$this_unit.moves > 0'
-	}[1]
+	local unit
+	if cfg.filter then
+	    unit = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
 
 	if unit then return cfg.ca_score end
 	return 0
@@ -53,9 +60,16 @@ function ca_hunter:execution(ai, cfg)
 	-- hunting_ground, then retreats to
 	-- position given by 'home_x,home_y' for 'rest_turns' turns, or until fully healed
 
-	local unit = wesnoth.get_units { side = wesnoth.current.side, id = cfg.id,
-		formula = '$this_unit.moves > 0'
-	}[1]
+	local unit
+	if cfg.filter then
+	    unit = wesnoth.get_units({
+	        side = wesnoth.current.side,
+	        { "and", cfg.filter },
+	        formula = '$this_unit.moves > 0' }
+	    )[1]
+	else
+	    unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
+	end
 	--print('Hunter: ', unit.id)
 
 	-- If hunting_status is not set for the unit -> default behavior -> hunting
