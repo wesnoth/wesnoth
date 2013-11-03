@@ -493,26 +493,27 @@ bool pump()
 		if ( resources::lua_kernel->run_event(ev) )
 			++internal_wml_tracking;
 
-		// The event variables only get initialized once, but no need to do that
-		// unless we actually have something to loop over.
-		bool init_event_vars = true;
+		// Initialize an iteration over event handlers matching this event.
+		manager::iteration cur_handler(event_name);
 
-		for ( manager::iteration cur_handler(event_name); cur_handler.valid(); ++cur_handler ) {
+		// If there are any matching event handlers, initialize variables.
+		if ( cur_handler.valid() ) {
+			resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
+			resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
+			resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
+			resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+		}
+
+		// For each event handler matching this event's name.
+		for ( ; cur_handler.valid(); ++cur_handler ) {
 			event_handler & handler = *cur_handler;
-
-			// Set the variables for the event
-			if (init_event_vars) {
-				resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
-				resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
-				resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
-				resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
-				init_event_vars = false;
-			}
 
 			DBG_EH << "processing event " << event_name << " with id="<<
 				handler.get_config()["id"] << "\n";
+			// Let this handler process our event.
 			if(process_event(handler, ev))
 			{
+				// Game state changed.
 				result = true;
 			}
 		}
