@@ -212,7 +212,7 @@ void wmi_container::init_handlers() const
 	}
 }
 
-void wmi_container::to_config(config& cfg)
+void wmi_container::to_config(config& cfg) const
 {
 	// Loop through our items.
 	for ( const_iterator j = begin(), wmi_end = end(); j != wmi_end; ++j )

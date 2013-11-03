@@ -82,7 +82,7 @@ public:
 	               std::vector<std::string> & descriptions) const;
 	/// Initializes the implicit event handlers for inlined [command]s.
 	void init_handlers() const;
-	void to_config(config& cfg);
+	void to_config(config& cfg) const;
 	/// Updates or creates (as appropriate) the menu item with the given @a id.
 	void set_item(const std::string& id, const vconfig& menu_item);
 	/// Sets the current menu items to the "menu_item" children of @a cfg.
