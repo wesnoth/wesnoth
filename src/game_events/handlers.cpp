@@ -62,9 +62,6 @@ namespace { // Types
 		handler_vec active_; ///Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
 
 
-		void log_handler(std::stringstream& ss,
-		                 const handler_vec& handlers,
-		                 const std::string& msg);
 		void log_handlers();
 
 	public:
@@ -92,26 +89,19 @@ namespace { // Types
 		handler_ptr & operator[](size_type index) { return active_[index]; }
 	};//t_event_handlers
 
-	void t_event_handlers::log_handler(std::stringstream& ss,
-	                 const handler_vec & handlers,
-	                 const std::string& msg)
-	{
-		BOOST_FOREACH(const handler_ptr & h, handlers){
-			if ( !h )
-				continue;
-			const config& cfg = h->get_config();
-			ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
-		}
-		DBG_EH << msg << " handlers are now " << ss.str() << "\n";
-		ss.str(std::string());
-	}
-
 	void t_event_handlers::log_handlers()
 	{
 		if(lg::debug.dont_log("event_handler")) return;
 
 		std::stringstream ss;
-		log_handler(ss, active_, "active");
+
+		BOOST_FOREACH( const handler_ptr & h, active_ ) {
+			if ( !h )
+				continue;
+			const config& cfg = h->get_config();
+			ss << "name=" << cfg["name"] << ", with id=" << cfg["id"] << "; ";
+		}
+		DBG_EH << "active handlers are now " << ss.str() << "\n";
 	}
 
 	/**
@@ -153,7 +143,7 @@ namespace { // Types
 
 		DBG_EH << "removing event handler with id " << id << "\n";
 
-		// Loop through the applicable handler_vec.
+		// Loop through the active handler_vec.
 		for ( handler_vec::iterator i = active_.begin(); i != active_.end(); ++i ) {
 			if ( !*i )
 				continue;
