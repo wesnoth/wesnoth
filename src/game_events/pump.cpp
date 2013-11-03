@@ -493,14 +493,13 @@ bool pump()
 		if ( resources::lua_kernel->run_event(ev) )
 			++internal_wml_tracking;
 
+		// The event variables only get initialized once, but no need to do that
+		// unless we actually have something to loop over.
 		bool init_event_vars = true;
 
-		manager::iterator end_handler = manager::end();
-		manager::iterator cur_handler = manager::begin();
-		for ( ; cur_handler != end_handler; ++cur_handler ) {
+		for ( manager::iteration cur_handler(event_name); cur_handler.valid(); ++cur_handler ) {
 			event_handler & handler = *cur_handler;
-			if(!handler.matches_name(event_name))
-				continue;
+
 			// Set the variables for the event
 			if (init_event_vars) {
 				resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;

@@ -285,10 +285,8 @@ void commit_wmi_commands()
 		(*wcc.second)["first_time_only"] = false;
 
 		if ( !item.command().empty() ) {
-			BOOST_FOREACH(handler_ptr& hand, event_handlers) {
-				if ( !hand )
-					continue;
-				if ( hand->is_menu_item() && hand->matches_name(event_name) ) {
+			for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
+				if ( hand->is_menu_item() ) {
 					LOG_NG << "changing command for " << event_name << " to:\n" << *wcc.second;
 					*hand = event_handler(*wcc.second, true);
 				}
@@ -351,6 +349,8 @@ void remove_event_handler(const std::string & id)
 }
 
 
+/* ** manager ** */
+
 manager::manager(const config& cfg)
 {
 	BOOST_FOREACH(const config &ev, cfg.child_range("event")) {
@@ -394,18 +394,6 @@ manager::~manager() {
 	used_items.clear();
 }
 
-/** Returns an iterator to the first event handler. */
-manager::iterator manager::begin()
-{
-	return iterator(event_handlers.begin());
-}
-
-/** Returns an iterator to one past the last event handler. */
-manager::iterator manager::end()
-{
-	return iterator(event_handlers.end());
-}
-
 /** Starts buffering event handler creation. */
 void manager::start_buffering()
 {
@@ -425,9 +413,63 @@ void manager::commit_buffer()
 }
 
 
-/** Dummy value for when we encounter null pointers. */
-const event_handler manager::key::null_handler = event_handler(config());
+/* ** manager::iteration ** */
 
+/**
+ * Event-specific constructor.
+ * This iteration will go through all event handlers matching the given name
+ * (including those defined via menu items).
+ * An empty @a event_name will automatically match nothing.
+ */
+manager::iteration::iteration(const std::string & event_name) :
+	event_name_(event_name),
+	end_(event_handlers.size()),
+	index_(event_name.empty() ? end_ : 0),
+	data_()
+{
+	// Look for the first handler that matches the provided name.
+	while ( is_name_mismatch() )
+		++index_;
+
+	// Set the pointer?
+	if ( index_ < end_ )
+		data_ = event_handlers[index_];
+}
+
+
+/**
+ * Increment
+ */
+manager::iteration & manager::iteration::operator++()
+{
+	// Look for the next handler that matches our stored name.
+	do
+		++index_;
+	while ( is_name_mismatch() );
+
+	// Set the pointer.
+	if ( index_ < end_ )
+		data_ = event_handlers[index_];
+	else
+		data_.reset();
+
+	// Done.
+	return *this;
+}
+
+
+/**
+ * Tests index_ for being skippable when looking for an event name.
+ */
+bool manager::iteration::is_name_mismatch() const
+{
+	return index_ < end_  &&
+		       (!event_handlers[index_]  ||
+		        !event_handlers[index_]->matches_name(event_name_));
+}
+
+
+/* ** event_handler ** */
 
 event_handler::event_handler(const config &cfg, bool imi) :
 	first_time_only_(cfg["first_time_only"].to_bool(true)),

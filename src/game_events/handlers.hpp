@@ -25,7 +25,6 @@
 #define GAME_EVENTS_HANDLERS_H_INCLUDED
 
 #include "../config.hpp"
-#include "../iterator.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
@@ -75,14 +74,48 @@ namespace game_events
 	///
 	/// This class is responsible for setting and clearing resources::lua_kernel.
 	class manager : boost::noncopyable {
-		/// The key for interaction with our iterators.
-		struct key {
-			/// Instructions for converting a handler_vec iterator to an event_handler.
-			static const event_handler & eval(const handler_vec::const_iterator & iter)
-			{ return *iter ? **iter : null_handler; }
-		private:
-			/// Dummy value for when we encounter null pointers.
-			static const event_handler null_handler;
+	public:
+		/// This class is similar to an input iterator through event handlers,
+		/// except each instance knows its own end (determined when constructed).
+		/// Each instance remains valid and dereferencable until it is past-the-
+		/// end, regardless of what is done to the underlying structure (even if
+		/// what it points to has been removed from the structure). Thus, basic
+		/// looping is along the lines of "for ( iteration X; X.valid(); ++X )".
+		///  
+		/// For simplicity, this class is neither assignable nor equality
+		/// comparable nor default constructable, and there is no postincrement.
+		/// Typedefs are also skipped.
+		class iteration
+		{
+		public:
+			/// Event-specific constructor.
+			explicit iteration(const std::string & event_name);
+
+
+			// Increment:
+			iteration & operator++();
+
+			// Dereference:
+			event_handler & operator*()  const { return *data_; }
+			const handler_ptr & operator->() const { return  data_; }
+			/// Test for being dereferenceable.
+			bool valid() const { return bool(data_); }
+
+		private: // functions
+			/// Tests index_ for being skippable in this iteration.
+			bool is_name_mismatch() const;
+
+		private: // data
+			/// The event name for this iteration.
+			const std::string event_name_;
+			/// The end of this iteration. We intentionally exclude handlers
+			/// added after *this is constructed.
+			const handler_vec::size_type end_;
+
+			/// The current index.
+			handler_vec::size_type index_;
+			/// The current element.
+			handler_ptr data_;
 		};
 
 	public:
@@ -90,11 +123,6 @@ namespace game_events
 		/// and must remain valid for the life of the object.
 		explicit manager(const config& scenario_cfg);
 		~manager();
-
-		// Allow iterating over the active handlers.
-		typedef util::iterator_extend<event_handler, handler_vec, key, key> iterator;
-		static iterator begin();
-		static iterator end();
 
 		/// Starts buffering event handler creation.
 		static void start_buffering();
