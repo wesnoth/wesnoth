@@ -821,21 +821,10 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
 		std::string name = cmd.command.substr(prefixlen);
-		game_events::wmi_container& gs_wmi = gamedata_.get_wml_menu_items();
-		game_events::wmi_container::iterator iter = gs_wmi.find(name);
-		if(iter != gs_wmi.end())
-		{
-			//copied from expand_wml_commands
-			const map_location& hex = mouse_handler_.get_last_hex();
-			gamedata_.get_variable("x1") = hex.x + 1;
-			gamedata_.get_variable("y1") = hex.y + 1;
-			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
+		const map_location& hex = mouse_handler_.get_last_hex();
 
-			if (iter->can_show(hex))
-			{
-				iter->fire_event(mouse_handler_.get_last_hex());
-			}
-		}
+		gamedata_.get_wml_menu_items().fire_item(name, hex);
+		/// @todo Shouldn't the function return at this point?
 	}
 	return command_executor::execute_command(cmd, index);
 }
@@ -1185,32 +1174,18 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 	wml_commands_.clear();
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "wml") {
-			items.erase(items.begin() + i);
-			const game_events::wmi_container & gs_wmi = gamedata_.get_wml_menu_items();
-			if(gs_wmi.empty())
-				break;
 			std::vector<std::string> newitems;
 
-			const map_location& hex = mouse_handler_.get_last_hex();
-			gamedata_.get_variable("x1") = hex.x + 1;
-			gamedata_.get_variable("y1") = hex.y + 1;
-			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
-
-			for ( game_events::wmi_container::const_iterator itor = gs_wmi.begin();
-			      itor != gs_wmi.end()  &&  newitems.size() < MAX_WML_COMMANDS;
-			      ++itor)
-			{
-				const game_events::wml_menu_item & item = *itor;
-				if ( item.use_wml_menu() && item.can_show(hex) )
-				{
-					wml_commands_.push_back(&item);
-					// Prevent accidental hotkey binding by appending a space
-					newitems.push_back(item.description().str() + ' ');
-				}
-			}
+			// Replace this placeholder entry with available menu items.
+			items.erase(items.begin() + i);
+			gamedata_.get_wml_menu_items().get_items(mouse_handler_.get_last_hex(),
+			                                         wml_commands_, newitems);
 			items.insert(items.begin()+i, newitems.begin(), newitems.end());
+			// End the "for" loop.
 			break;
 		}
+		// Pad the commands with NULL (keeps the indices of items and
+		// wml_commands_ synced).
 		wml_commands_.push_back(NULL);
 	}
 }

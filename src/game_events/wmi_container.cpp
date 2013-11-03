@@ -23,13 +23,18 @@
 #include "menu_item.hpp"
 
 #include "../config.hpp"
+#include "../gamestatus.hpp"
 #include "../log.hpp"
+#include "../map_location.hpp"
+#include "../resources.hpp"
 
 #include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define WRN_NG LOG_STREAM(warn, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+
+static const size_t MAX_WML_COMMANDS = 7;
 
 
 // This file is in the game_events namespace.
@@ -102,6 +107,31 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 }
 
 /**
+ * Fires the menu item with the given @a id.
+ * @returns true if a matching item was found (even if it could not be fired).
+ * NOTE: The return value could be altered if it is decided that
+ * play_controller::execute_command() needs something different.
+ */
+bool wmi_container::fire_item(const std::string & id, const map_location & hex) const
+{
+	// Does this item exist?
+	const_iterator iter = find(id);
+	if ( iter == end() )
+		return false;
+
+	// Prepare for can show().
+	resources::gamedata->get_variable("x1") = hex.x + 1;
+	resources::gamedata->get_variable("y1") = hex.y + 1;
+	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
+
+	// Can this item be shown?
+	if ( iter->can_show(hex) )
+		iter->fire_event(hex);
+
+	return true;
+}
+
+/**
  * Returns an item with the given id.
  * If one does not already exist, one will be created.
  */
@@ -120,6 +150,45 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
 
 	// Return the item.
 	return *add_it->second;
+}
+
+/**
+ * Returns the menu items that can be shown for the given location.
+ * The number of items returned is limited by MAX_WML_COMMANDS.
+ * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
+ * @param[out] descriptions Menu item descriptions will be pushed onto @descriptions (in the same order as @a items).
+ */
+void wmi_container::get_items(const map_location& hex,
+                              std::vector<const wml_menu_item *> & items,
+                              std::vector<std::string> & descriptions) const
+{
+	size_t item_count = 0;
+
+	if ( empty() )
+		// Nothing to do (skip setting game variables).
+		return;
+
+	// Prepare for can show().
+	resources::gamedata->get_variable("x1") = hex.x + 1;
+	resources::gamedata->get_variable("y1") = hex.y + 1;
+	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
+
+	// Check each menu item.
+	BOOST_FOREACH( const wml_menu_item & item, *this )
+	{
+		// Can this item be shown?
+		if ( item.use_wml_menu() && item.can_show(hex) )
+		{
+			// Include this item.
+			items.push_back(&item);
+			// Prevent accidental hotkey binding by appending a space
+			descriptions.push_back(item.description().str() + ' ');
+
+			// Limit how many items can be returned.
+			if ( ++item_count >= MAX_WML_COMMANDS )
+				return;
+		}
+	}
 }
 
 /**

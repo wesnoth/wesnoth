@@ -267,7 +267,6 @@ private:
 
 	void expand_wml_commands(std::vector<std::string>& items);
 	std::vector<const game_events::wml_menu_item *> wml_commands_;
-	static const size_t MAX_WML_COMMANDS = 7;
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_leaders_loss_;

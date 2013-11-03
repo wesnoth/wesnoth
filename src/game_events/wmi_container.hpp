@@ -23,8 +23,10 @@
 #include "iterator.hpp"
 
 #include <map>
+#include <vector>
 
 class config;
+struct map_location;
 class vconfig;
 
 
@@ -72,6 +74,12 @@ public:
 	/// Erases the item with the provided @a id.
 	size_type erase(const std::string & id);
 
+	/// Fires the menu item with the given @a id.
+	bool fire_item(const std::string & id, const map_location & hex) const;
+	/// Returns the menu items that can be shown for the given location.
+	void get_items(const map_location& hex,
+	               std::vector<const wml_menu_item *> & items,
+	               std::vector<std::string> & descriptions) const;
 	/// Initializes the implicit event handlers for inlined [command]s.
 	void init_handlers() const;
 	void to_config(config& cfg);
