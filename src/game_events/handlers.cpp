@@ -60,9 +60,6 @@ namespace { // Types
 
 	private:
 		handler_vec active_; ///Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
-		handler_vec insert_buffer_; ///Event handlers added while pumping events
-		std::set<std::string> remove_buffer_; ///Event handlers removed while pumping events
-		bool buffering_;
 
 
 		void log_handler(std::stringstream& ss,
@@ -74,18 +71,13 @@ namespace { // Types
 		typedef handler_vec::size_type size_type;
 
 		t_event_handlers()
-			: active_(), insert_buffer_(), remove_buffer_(), buffering_(false)
+			: active_()
 		{}
 
 		/// Adds an event handler.
 		void add_event_handler(const config & cfg, bool is_menu_item=false);
 		/// Removes an event handler, identified by its ID.
 		void remove_event_handler(std::string const & id);
-		/// Starts buffering.
-		void start_buffering();
-		void stop_buffering();
-		/// Commits all buffered events.
-		void commit_buffer();
 		void clear();
 
 		iterator begin() { return active_.begin(); }
@@ -120,54 +112,39 @@ namespace { // Types
 
 		std::stringstream ss;
 		log_handler(ss, active_, "active");
-		log_handler(ss, insert_buffer_, "insert buffered");
-		BOOST_FOREACH(const std::string& h, remove_buffer_){
-			ss << "id=" << h << "; ";
-		}
-		DBG_EH << "remove buffered handlers are now " << ss.str() << "\n";
 	}
 
 	/**
 	 * Adds an event handler.
 	 * An event with a nonempty ID will not be added if an event with that
-	 * ID already exists.  This method respects this class's buffering
-	 * functionality.
+	 * ID already exists.
 	 */
 	void t_event_handlers::add_event_handler(const config & cfg, bool is_menu_item)
 	{
-		if(buffering_) {
-			DBG_EH << "buffering event handler for name=" << cfg["name"] <<
-			" with id " << cfg["id"] << "\n";
-			insert_buffer_.push_back(handler_ptr(new event_handler(cfg, is_menu_item)));
-			log_handlers();
-		}
-		else {
-			std::string id = cfg["id"];
-			if(!id.empty()) {
-				BOOST_FOREACH( handler_ptr const & eh, active_ ) {
-					if ( !eh )
-						continue;
-					config const & temp_config(eh->get_config());
-					if(id == temp_config["id"]) {
-						DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
-							" with id " << id << "\n";
-						return;
-					}
+		std::string id = cfg["id"];
+		if(!id.empty()) {
+			BOOST_FOREACH( handler_ptr const & eh, active_ ) {
+				if ( !eh )
+					continue;
+				config const & temp_config(eh->get_config());
+				if(id == temp_config["id"]) {
+					DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
+						" with id " << id << "\n";
+					return;
 				}
 			}
-			DBG_EH << "inserting event handler for name=" << cfg["name"] <<
-				" with id=" << id << "\n";
-			handler_ptr new_handler(new event_handler(cfg, is_menu_item));
-			new_handler->set_index(active_.size());
-			active_.push_back(new_handler);
-			log_handlers();
 		}
+		DBG_EH << "inserting event handler for name=" << cfg["name"] <<
+			" with id=" << id << "\n";
+		handler_ptr new_handler(new event_handler(cfg, is_menu_item));
+		new_handler->set_index(active_.size());
+		active_.push_back(new_handler);
+		log_handlers();
 	}
 
 	/**
 	 * Removes an event handler, identified by its ID.
-	 * Events with empty IDs cannot be removed.  This method respects this
-	 * class's buffering functionality.
+	 * Events with empty IDs cannot be removed.
 	 */
 	void t_event_handlers::remove_event_handler(std::string const & id)
 	{
@@ -176,12 +153,8 @@ namespace { // Types
 
 		DBG_EH << "removing event handler with id " << id << "\n";
 
-		// If buffering, remember this ID for later.
-		if(buffering_) { remove_buffer_.insert(id); }
-
 		// Loop through the applicable handler_vec.
-		handler_vec &temp = buffering_ ? insert_buffer_ : active_;
-		for ( handler_vec::iterator i = temp.begin(); i != temp.end(); ++i ) {
+		for ( handler_vec::iterator i = active_.begin(); i != active_.end(); ++i ) {
 			if ( !*i )
 				continue;
 			// Try to match the id
@@ -192,55 +165,9 @@ namespace { // Types
 		log_handlers();
 	}
 
-	/**
-	 * Starts buffering.
-	 * While buffering, any calls to add_event_handler() and
-	 * remove_event_handler() will not take effect until commit_buffer()
-	 * is called.  This function is idempotent - starting a buffer
-	 * when already buffering will not start a second buffer.
-	 */
-	void t_event_handlers::start_buffering()
-	{
-		buffering_ = true;
-		DBG_EH << "starting buffering...\n";
-	}
-
-	void t_event_handlers::stop_buffering()
-	{
-		DBG_EH << "stopping buffering...\n";
-		buffering_ = false;
-	}
-
-	/**
-	 * Commits all buffered events.
-	 */
-	void t_event_handlers::commit_buffer()
-	{
-		DBG_EH << "committing buffered event handlers, buffering: " << buffering_ << "\n";
-		if(buffering_)
-			return;
-
-		// Commit any event removals
-		BOOST_FOREACH( std::string const & i, remove_buffer_ ){
-			remove_event_handler(i); }
-		remove_buffer_.clear();
-
-		// Commit any spawned events-within-events
-		BOOST_FOREACH( handler_ptr const & i, insert_buffer_ ){
-			if ( !i )
-				continue;
-			add_event_handler(i->get_config(), i->is_menu_item()); }
-		insert_buffer_.clear();
-
-		log_handlers();
-	}
-
 	void t_event_handlers::clear()
 	{
 		active_.clear();
-		insert_buffer_.clear();
-		remove_buffer_.clear();
-		buffering_ = false;
 	}
 
 }// end anonymous namespace (types)
@@ -392,24 +319,6 @@ manager::~manager() {
 	resources::lua_kernel = NULL;
 	unit_wml_ids.clear();
 	used_items.clear();
-}
-
-/** Starts buffering event handler creation. */
-void manager::start_buffering()
-{
-	event_handlers.start_buffering();
-}
-
-/** Ends buffering event handler creation. */
-void manager::stop_buffering()
-{
-	event_handlers.stop_buffering();
-}
-
-/** Commits the event handlers that were buffered. */
-void manager::commit_buffer()
-{
-	event_handlers.commit_buffer();
 }
 
 

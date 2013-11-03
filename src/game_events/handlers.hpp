@@ -123,13 +123,6 @@ namespace game_events
 		/// and must remain valid for the life of the object.
 		explicit manager(const config& scenario_cfg);
 		~manager();
-
-		/// Starts buffering event handler creation.
-		static void start_buffering();
-		/// Ends buffering event handler creation.
-		static void stop_buffering();
-		/// Commits the event handlers that were buffered.
-		static void commit_buffer();
 	};
 
 	/// Create an event handler.

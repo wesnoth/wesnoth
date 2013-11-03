@@ -480,9 +480,6 @@ bool pump()
 	// Loop through the events we need to process.
 	while ( !pump_instance.done() )
 	{
-		if(pump_manager::count() <= 1)
-			manager::start_buffering();
-
 		queued_event & ev = pump_instance.next();
 		const std::string& event_name = ev.name;
 
@@ -518,8 +515,6 @@ bool pump()
 			}
 		}
 
-		if(pump_manager::count() <= 1)
-			manager::stop_buffering();
 		// Only commit new handlers when finished iterating over event_handlers.
 		commit();
 	}
@@ -540,9 +535,8 @@ void clear_events()
 
 void commit()
 {
-	DBG_EH << "committing new event handlers, number of pump_instances: " <<
+	DBG_EH << "committing new WML menu item commands; number of pump_instances: " <<
 	          pump_manager::count() << "\n";
-	manager::commit_buffer();
 	commit_wmi_commands();
 	// Dialogs can only be shown if the display is not locked
 	if (!resources::screen->video().update_locked()) {
