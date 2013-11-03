@@ -151,6 +151,18 @@ void wmi_container::to_config(config& cfg)
 		j->to_config(cfg.add_child("menu_item"));
 }
 
+/**
+ * Updates or creates (as appropriate) the menu item with the given @a id.
+ */
+void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
+{
+	// Get the item and update it.
+	get_item(id).update(menu_item);
+}
+
+/**
+ * Sets the current menu items to the "menu_item" children of @a cfg.
+ */
 void wmi_container::set_menu_items(const config& cfg)
 {
 	clear_wmi();

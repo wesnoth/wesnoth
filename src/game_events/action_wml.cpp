@@ -22,7 +22,6 @@
 #include "action_wml.hpp"
 #include "conditional_wml.hpp"
 #include "handlers.hpp"
-#include "menu_item.hpp"
 #include "pump.hpp"
 
 #include "../actions/create.hpp"
@@ -1851,8 +1850,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	   [/set_menu_item]
 	   */
 	std::string id = cfg["id"];
-	wml_menu_item & item = resources::gamedata->get_wml_menu_items().get_item(id);
-	item.update(cfg);
+	resources::gamedata->get_wml_menu_items().set_item(id, cfg);
 }
 
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
