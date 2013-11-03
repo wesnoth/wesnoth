@@ -675,17 +675,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 			continue;
 		}
 
-		wmi_container & menu_items = resources::gamedata->get_wml_menu_items();
-		wmi_container::iterator find_it = menu_items.find(id);
-		if ( find_it == menu_items.end() ) {
-			WRN_NG << "trying to remove non-existent menu item '" << id << "', ignoring\n";
-			continue;
-		}
-
-		remove_wmi_change(id);
-		remove_event_handler(id);
-
-		menu_items.erase(find_it);
+		resources::gamedata->get_wml_menu_items().erase(id);
 	}
 }
 

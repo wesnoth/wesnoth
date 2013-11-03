@@ -19,6 +19,7 @@
 
 #include "../global.hpp"
 #include "wmi_container.hpp"
+#include "handlers.hpp"
 #include "menu_item.hpp"
 
 #include "../config.hpp"
@@ -76,30 +77,27 @@ void wmi_container::clear_wmi()
 	wml_menu_items_.clear();
 }
 
-/** Erases the item pointed to by @a pos. */
-void wmi_container::erase(const iterator & pos)
+/** Erases the item with id @a key. */
+wmi_container::size_type wmi_container::erase(const std::string & id)
 {
-	// Convert iterator to map_t::iterator.
-	const map_t::iterator & iter = pos.get(key());
+	// Locate the item to erase.
+	const map_t::iterator iter = wml_menu_items_.find(id);
+
+	if ( iter == wml_menu_items_.end() ) {
+		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring.\n";
+		// No such item.
+		return 0;
+	}
+
+	// Clean up our bookkeeping.
+	remove_wmi_change(id);
+	remove_event_handler(id);
 
 	// Release the wml_menu_item.
 	delete iter->second;
 	// Remove the now-defunct pointer from the map.
 	wml_menu_items_.erase(iter);
-}
 
-/** Erases the item with id @a key. */
-wmi_container::size_type wmi_container::erase(const std::string & key)
-{
-	// Locate the item to erase.
-	iterator pos = find(key);
-
-	if ( pos == end() )
-		// No such item.
-		return 0;
-
-	// Pass the buck.
-	erase(pos);
 	return 1; // Erased one item.
 }
 

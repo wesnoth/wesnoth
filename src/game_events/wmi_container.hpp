@@ -68,10 +68,8 @@ public:
 	void clear_wmi();
 	/// Returns true if *this contains no data.
 	bool empty() const { return wml_menu_items_.empty(); }
-	/// Erases the item pointed to by @a pos.
-	void erase(const iterator & pos);
-	/// Erases the item with id @a key.
-	size_type erase(const std::string & key);
+	/// Erases the item with the provided @a id.
+	size_type erase(const std::string & id);
 
 	/// Initializes the implicit event handlers for inlined [command]s.
 	void init_handlers() const;
