@@ -24,8 +24,10 @@
 
 #include "../config.hpp"
 #include "../gamestatus.hpp"
+#include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
+#include "../play_controller.hpp"
 #include "../resources.hpp"
 
 #include <boost/foreach.hpp>
@@ -104,6 +106,47 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 	wml_menu_items_.erase(iter);
 
 	return 1; // Erased one item.
+}
+
+/**
+ * Commits a single WML menu item command change.
+ * Returns true if hotkeys have changed (so they need to be saved).
+ */
+bool wmi_container::commit_change(const std::string & id, config & command)
+{
+	const bool is_empty_command = command.empty();
+	bool hotkeys_changed = false;
+
+	wml_menu_item & item = get_item(id);
+	const std::string & event_name = item.event_name();
+
+	config::attribute_value & event_id = command["id"];
+	if ( event_id.empty() && !id.empty() ) {
+		event_id = id;
+	}
+	command["name"] = event_name;
+	command["first_time_only"] = false;
+
+	if ( !item.command().empty() ) {
+		for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
+			if ( hand->is_menu_item() ) {
+				LOG_NG << "changing command for " << event_name << " to:\n" << command;
+				*hand = event_handler(command, true);
+			}
+		}
+	} else if(!is_empty_command) {
+		LOG_NG << "setting command for " << event_name << " to:\n" << command;
+		add_event_handler(command, true);
+		if(item.use_hotkey()) {
+			const config & default_hotkey = item.default_hotkey();
+			hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + id, item.description(), default_hotkey);
+			if ( !default_hotkey.empty() )
+				hotkeys_changed = true;
+		}
+	}
+
+	item.set_command(command);
+	return hotkeys_changed;
 }
 
 /**

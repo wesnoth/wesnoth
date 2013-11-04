@@ -27,7 +27,6 @@
 #include "../gamestatus.hpp"
 #include "../hotkeys.hpp"
 #include "../log.hpp"
-#include "../play_controller.hpp"
 #include "../preferences.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
@@ -191,37 +190,10 @@ void commit_wmi_commands()
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
 		wmi_command_change wcc = wmi_command_changes.front();
-		const bool is_empty_command = wcc.second->empty();
 
-		wml_menu_item & item = resources::gamedata->get_wml_menu_items().get_item(wcc.first);
-		const std::string & event_name = item.event_name();
+		if ( resources::gamedata->get_wml_menu_items().commit_change(wcc.first, *wcc.second) )
+			hotkeys_changed = true;
 
-		config::attribute_value & event_id = (*wcc.second)["id"];
-		if ( event_id.empty() && !wcc.first.empty() ) {
-			event_id = wcc.first;
-		}
-		(*wcc.second)["name"] = event_name;
-		(*wcc.second)["first_time_only"] = false;
-
-		if ( !item.command().empty() ) {
-			for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
-				if ( hand->is_menu_item() ) {
-					LOG_NG << "changing command for " << event_name << " to:\n" << *wcc.second;
-					*hand = event_handler(*wcc.second, true);
-				}
-			}
-		} else if(!is_empty_command) {
-			LOG_NG << "setting command for " << event_name << " to:\n" << *wcc.second;
-			add_event_handler(*wcc.second, true);
-			if(item.use_hotkey()) {
-				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wcc.first, item.description(), item.default_hotkey());
-				if(!item.default_hotkey().empty()) {
-					hotkeys_changed = true;
-				}
-			}
-		}
-
-		item.set_command(*wcc.second);
 		delete wcc.second;
 		wmi_command_changes.erase(wmi_command_changes.begin());
 	}

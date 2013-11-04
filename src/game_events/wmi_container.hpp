@@ -74,6 +74,8 @@ public:
 	/// Erases the item with the provided @a id.
 	size_type erase(const std::string & id);
 
+	/// Commits a single WML menu item command change.
+	bool commit_change(const std::string & id, config & command);
 	/// Fires the menu item with the given @a id.
 	bool fire_item(const std::string & id, const map_location & hex) const;
 	/// Returns the menu items that can be shown for the given location.
@@ -88,6 +90,7 @@ public:
 	/// Sets the current menu items to the "menu_item" children of @a cfg.
 	void set_menu_items(const config& cfg);
 
+private:
 	/// Returns an iterator to a menu item with the given @a id, if one exists.
 	iterator find(const std::string & id)             { return iterator(wml_menu_items_.find(id)); }
 	/// Returns an iterator to a menu item with the given @a id, if one exists.
@@ -95,6 +98,7 @@ public:
 	/// Returns an item with the given id.
 	wml_menu_item & get_item(const std::string& id);
 
+public:
 	// Iteration support:
 	iterator begin()  { return iterator(wml_menu_items_.begin()); }
 	iterator end()    { return iterator(wml_menu_items_.end()); }
