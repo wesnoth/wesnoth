@@ -175,7 +175,9 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	}
 	mods_menu_.set_items(mods);
 	mods_menu_.move_selection(0);
-	mod_selection_ = 0;
+	// don't set 0 explicitly, because move_selection(0) may fail if there's
+	// no modifications at all
+	mod_selection_ = mods_menu_.selection();
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
