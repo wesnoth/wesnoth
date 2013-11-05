@@ -179,6 +179,10 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	// no modifications at all
 	mod_selection_ = mods_menu_.selection();
 
+	if (mod_selection_ == -1) {
+		mod_label_.set_text(_("Modifications: none found"));
+	}
+
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 
