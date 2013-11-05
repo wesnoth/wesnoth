@@ -1372,7 +1372,8 @@ public:
 					std::string lang_unit = type->type_name();
 					std::string ref_id;
 					if (description_type(*type) == FULL_DESCRIPTION) {
-						ref_id = unit_prefix + type->id();
+						const std::string section_prefix = type->variations().empty() ? "" : "..";
+						ref_id = section_prefix + unit_prefix + type->id();
 					} else {
 						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
