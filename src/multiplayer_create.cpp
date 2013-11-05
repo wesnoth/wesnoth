@@ -175,7 +175,13 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	}
 	mods_menu_.set_items(mods);
 	mods_menu_.move_selection(0);
-	mod_selection_ = 0;
+	// don't set 0 explicitly, because move_selection(0) may fail if there's
+	// no modifications at all
+	mod_selection_ = mods_menu_.selection();
+
+	if (mod_selection_ == -1) {
+		mod_label_.set_text(_("Modifications: none found"));
+	}
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -660,7 +666,9 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
 	ypos += mods_menu_.height() + border_size;
-	select_mod_.set_location(xpos, ypos);
+	if (mods_menu_.number_of_items() > 0) {
+		select_mod_.set_location(xpos, ypos);
+	}
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
