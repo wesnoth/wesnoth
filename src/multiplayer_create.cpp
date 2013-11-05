@@ -662,7 +662,9 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
 	ypos += mods_menu_.height() + border_size;
-	select_mod_.set_location(xpos, ypos);
+	if (mods_menu_.number_of_items() > 0) {
+		select_mod_.set_location(xpos, ypos);
+	}
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
