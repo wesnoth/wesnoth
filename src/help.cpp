@@ -1132,7 +1132,7 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 					std::string ref_id = unit_prefix + type.id();
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
-					std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
+					std::string link = make_link(type_name, ref_id);
 					special_units[specials[i].first].insert(link);
 				}
 			}
@@ -1198,7 +1198,7 @@ std::vector<topic> generate_ability_topics(const bool sort_generated)
 						std::string ref_id = unit_prefix +  type.id();
 						//we put the translated name at the beginning of the hyperlink,
 						//so the automatic alphabetic sorting of std::set can use it
-						std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
+						std::string link = make_link(type_name, ref_id);
 						ability_units[abil_name].insert(link);
 					}
 				}
@@ -1377,7 +1377,7 @@ public:
 						ref_id = unknown_unit_topic;
 						lang_unit += " (?)";
 					}
-					ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_unit) << "'</ref>";
+					ss << make_link(lang_unit, ref_id);
 				}
 				if (!first) ss << "\n";
 
@@ -1388,8 +1388,7 @@ public:
 		const unit_type* parent = variation_.empty() ? &type_ :
 				unit_types.find(type_.id(), unit_type::HELP_INDEXED);
 		if (!variation_.empty()) {
-			ss << _("Base unit: ") << "<ref>dst='" << ".." << unit_prefix + type_.id()
-					<< "' text='" << escape(parent->type_name()) << "'</ref>\n";
+			ss << _("Base unit: ") << make_link(parent->type_name(), ".." + unit_prefix + type_.id()) << "\n";
 		} else {
 			bool first = true;
 			BOOST_FOREACH(const std::string& base_id, utils::split(type_.get_cfg()["base_ids"])) {
@@ -1399,8 +1398,7 @@ public:
 				}
 				const unit_type* base_type = unit_types.find(base_id, unit_type::HELP_INDEXED);
 				const std::string section_prefix = base_type->variations().empty() ? "" : "..";
-				ss << "<ref>dst='" << section_prefix << unit_prefix + base_id
-						<< "' text='" << escape(base_type->type_name()) << "'</ref>\n";
+				ss << make_link(base_type->type_name(), section_prefix + unit_prefix + base_id) << "\n";
 			}
 		}
 
@@ -1424,7 +1422,7 @@ public:
 				var_name += " (?)";
 			}
 
-			ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(var_name) << "'</ref>";
+			ss << make_link(var_name, ref_id);
 		}
 		ss << "\n"; //added even if empty, to avoid shifting
 
@@ -1436,7 +1434,7 @@ public:
 			race_name = _ ("race^Miscellaneous");
 		}
 		ss << _("Race: ");
-		ss << "<ref>dst='" << escape("..race_"+race_id) << "' text='" << escape(race_name) << "'</ref>";
+		ss << make_link(race_name, "..race_" + race_id);
 		ss << "\n";
 
 		// Print the abilities the units has, cross-reference them
@@ -1448,8 +1446,7 @@ public:
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = "ability_" + ability_it->base_str();
 				std::string lang_ability = gettext(ability_it->c_str());
-				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
-				   << "'</ref>";
+				ss << make_link(lang_ability, ref_id);
 				if (ability_it + 1 != ability_end)
 					ss << ", ";
 			}
@@ -1465,8 +1462,7 @@ public:
 				 ability_it != ability_end; ++ability_it) {
 				const std::string ref_id = "ability_" + ability_it->base_str();
 				std::string lang_ability = gettext(ability_it->c_str());
-				ss << "<ref>dst='" << escape(ref_id) << "' text='" << escape(lang_ability)
-				   << "'</ref>";
+				ss << make_link(lang_ability, ref_id);
 				if (ability_it + 1 != ability_end)
 					ss << ", ";
 			}
@@ -1483,9 +1479,7 @@ public:
 			ss << _("Jamming: ") << type_.jamming() << jump(30);
 		ss << _("Cost: ") << type_.cost() << jump(30)
 		   << _("Alignment: ")
-		   << "<ref>dst='time_of_day' text='"
-		   << type_.alignment_description(type_.alignment(), type_.genders().front())
-		   << "'</ref>"
+		   << make_link(type_.alignment_description(type_.alignment(), type_.genders().front()), "time_of_day")
 		   << jump(30);
 		if (type_.can_advance())
 			ss << _("Required XP: ") << type_.experience_needed();
@@ -1540,8 +1534,7 @@ public:
 						const std::string ref_id = std::string("weaponspecial_")
 							+ specials[i].first.base_str();
 						lang_special = (specials[i].first);
-						attack_ss << "<ref>dst='" << escape(ref_id)
-								  << "' text='" << escape(lang_special) << "'</ref>";
+						attack_ss << make_link(lang_special, ref_id);
 						if ( i+1 != specials_size )
 							attack_ss << ", "; //comma placed before next special
 					}
@@ -1623,14 +1616,10 @@ public:
 					const int moves = movement_type.movement_cost(terrain);
 					const int views = movement_type.vision_cost(terrain);
 					const int jams  = movement_type.jamming_cost(terrain);
-					std::stringstream str;
-					str << "<ref>text='" << escape(name) << "' dst='"
-							<< escape(std::string("terrain_") + id) << "'</ref>";
-					row.push_back(std::make_pair(str.str(),
+					row.push_back(std::make_pair(make_link(name, "terrain_" + id),
 							font::line_width(name, normal_font_size)));
 
 					//defense  -  range: +10 % .. +70 %
-					str.str(clear_stringstream);
 					const int defense =
 							100 - movement_type.defense_modifier(terrain);
 					std::string color;
@@ -1643,6 +1632,7 @@ public:
 					else
 						color = "green";
 
+					std::stringstream str;
 					str << "<format>color=" << color << " text='"<< defense << "%'</format>";
 					std::string markup = str.str();
 					str.str(clear_stringstream);
@@ -1878,7 +1868,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		if (!type.hide_help()) {
 			// we also record an hyperlink of this unit
 			// in the list used for the race topic
-			std::string link =  "<ref>text='" + escape(type_name) + "' dst='" + escape(ref_id) + "'</ref>";
+			std::string link = make_link(type_name, ref_id);
 			race_units.insert(link);
 		}
 	}
@@ -1898,7 +1888,7 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 		    std::string text = additional_topic["text"];
 		    //topic additional_topic(title, id, text);
 		    topics.push_back(topic(title,id,text));
-		    std::string link =  "<ref>text='" + escape(title) + "' dst='" + escape(id) + "'</ref>";
+			std::string link = make_link(title, id);
 			race_topics.insert(link);
 		  }
 	} else {
@@ -1976,8 +1966,8 @@ std::string generate_contents_links(const std::string& section_name, config cons
 
 		std::vector<link>::iterator l;
 		for (l = topics_links.begin(); l != topics_links.end(); ++l) {
-			std::string link =  "<ref>text='" + escape(l->first) + "' dst='" + escape(l->second) + "'</ref>";
-			res << link <<"\n";
+			std::string link = make_link(l->first, l->second);
+			res << link << "\n";
 		}
 
 		return res.str();
@@ -1990,16 +1980,16 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		section_list::const_iterator s;
 		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
 			if (is_visible_id((*s)->id)) {
-				std::string link =  "<ref>text='" + escape((*s)->title) + "' dst='.." + escape((*s)->id) + "'</ref>";
-				res << link <<"\n";
+				std::string link = make_link((*s)->title, (*s)->id);
+				res << link << "\n";
 			}
 		}
 
 		std::vector<topic>::const_iterator t;
 		for (t = topics.begin(); t != topics.end(); ++t) {
 			if (is_visible_id(t->id)) {
-				std::string link =  "<ref>text='" + escape(t->title) + "' dst='" + escape(t->id) + "'</ref>";
-				res << link <<"\n";
+				std::string link = make_link(t->title, t->id);
+				res << link << "\n";
 			}
 		}
 
