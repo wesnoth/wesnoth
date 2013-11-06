@@ -327,12 +327,6 @@ void create::process_event()
 
 		set_description(engine_.current_level().description());
 
-		tooltips::clear_tooltips(image_rect_);
-		if (!engine_.current_level().description().empty()) {
-			tooltips::add_tooltip(image_rect_,
-				engine_.current_level().description(), "", false);
-		}
-
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
 		case level::USER_MAP:
