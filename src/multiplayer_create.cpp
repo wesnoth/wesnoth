@@ -436,7 +436,7 @@ void create::draw_level_image()
 
 void create::set_description(const std::string& description)
 {
-	description_.set_text(description.empty() ? "No description available." :
+	description_.set_text(description.empty() ? _("No description available.") :
 												description);
 }
 
