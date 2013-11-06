@@ -269,6 +269,8 @@ void create::process_event()
 
 	if (update_mod_button_label) {
 		mod_selection_ = mods_menu_.selection();
+		engine_.set_current_mod_index(mod_selection_);
+		set_description(engine_.current_extra(create_engine::MOD).description);
 		if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
 			select_mod_.set_label(_("Deactivate"));
 		} else {
@@ -362,15 +364,6 @@ void create::process_event()
 		launch_game_.enable(engine_.current_level().can_launch_game());
 		generator_settings_.enable(engine_.generator_assigned());
 		regenerate_map_.enable(engine_.generator_assigned());
-	}
-
-	bool mod_selection_changed = mod_selection_ != mods_menu_.selection();
-	mod_selection_ = mods_menu_.selection();
-
-	if (mod_selection_changed) {
-		engine_.set_current_mod_index(mod_selection_);
-
-		set_description(engine_.current_extra(create_engine::MOD).description);
 	}
 }
 
