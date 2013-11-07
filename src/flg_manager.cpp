@@ -244,10 +244,13 @@ void flg_manager::resolve_random() {
 	}
 
 	if (current_leader_ == "random") {
-		std::vector<std::string> nonrandom_leaders;
-		BOOST_FOREACH(const std::string& leader, available_leaders_) {
-			if (leader != "random") {
-				nonrandom_leaders.push_back(leader);
+		std::vector<std::string> nonrandom_leaders =
+			utils::split((*current_faction_)["random_leader"]);
+		if (nonrandom_leaders.empty()) {
+			BOOST_FOREACH(const std::string& leader, available_leaders_) {
+				if (leader != "random") {
+					nonrandom_leaders.push_back(leader);
+				}
 			}
 		}
 
@@ -516,10 +519,7 @@ int flg_manager::current_faction_index() const
 void flg_manager::append_leaders_from_faction(const config* faction)
 {
 	std::vector<std::string> leaders_to_append =
-		utils::split((*faction)["random_leader"]);
-	if (leaders_to_append.empty()) {
-		leaders_to_append = utils::split((*faction)["leader"]);
-	}
+		utils::split((*faction)["leader"]);
 
 	available_leaders_.insert(available_leaders_.end(), leaders_to_append.begin(),
 		leaders_to_append.end());
