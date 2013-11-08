@@ -28,6 +28,7 @@
 #include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../play_controller.hpp"
+#include "../preferences.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
 #include "../scripting/lua.hpp"
@@ -186,6 +187,7 @@ void add_wmi_change(const std::string & id, const config & new_command)
 /** Handles all the different types of actions that can be triggered by an event. */
 void commit_wmi_commands()
 {
+	bool hotkeys_changed = false;
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
 		wmi_command_change wcc = wmi_command_changes.front();
@@ -213,12 +215,19 @@ void commit_wmi_commands()
 			add_event_handler(*wcc.second, true);
 			if(item.use_hotkey()) {
 				hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + wcc.first, item.description(), item.default_hotkey());
+				if(!item.default_hotkey().empty()) {
+					hotkeys_changed = true;
+				}
 			}
 		}
 
 		item.set_command(*wcc.second);
 		delete wcc.second;
 		wmi_command_changes.erase(wmi_command_changes.begin());
+	}
+	if(hotkeys_changed)
+	{
+		preferences::save_hotkeys();
 	}
 }
 
