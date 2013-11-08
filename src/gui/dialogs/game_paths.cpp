@@ -30,9 +30,6 @@
 
 #include <boost/bind.hpp>
 
-namespace {
-}
-
 namespace gui2 {
 
 /*WIKI

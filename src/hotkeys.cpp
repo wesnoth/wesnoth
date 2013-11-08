@@ -1318,7 +1318,7 @@ void execute_command(display& disp, hotkey_command& command, command_executor* e
 				break;
 			}
 			map_screenshot = true;
-			/// @todo intentional fall through?
+			// intentional fall-through
 		case HOTKEY_SCREENSHOT: {
 			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
 			std::string filename = get_screenshot_dir() + "/" + name + "_";
@@ -1327,9 +1327,9 @@ void execute_command(display& disp, hotkey_command& command, command_executor* e
 			if (size > 0) {
 				std::stringstream res;
 				res << filename << " ( " << utils::si_string(size, true, _("unit_byte^B")) << " )";
-				gui2::show_message(disp.video(), _("Screenshot done"), res.str());
+				gui2::show_message(disp.video(), _("Screenshot Done"), res.str());
 			} else {
-				gui2::show_message(disp.video(), _("Screenshot done"), "");
+				gui2::show_message(disp.video(), _("Screenshot Done"), "");
 			}
 			break;
 		}
