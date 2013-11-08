@@ -35,19 +35,12 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-/**
- * Displays a message in the chat window.
- */
 void chat_message(std::string const &caption, std::string const &msg)
 {
 	resources::screen->add_chat_message(time(NULL), caption, 0, msg,
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
 
-
-/**
- * Pushes a vconfig on the top of the stack.
- */
 void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 {
 	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
@@ -58,9 +51,6 @@ void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 	lua_setmetatable(L, -2);
 }
 
-/**
- * Pushes a t_string on the top of the stack.
- */
 void luaW_pushtstring(lua_State *L, t_string const &v)
 {
 	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
@@ -95,20 +85,11 @@ namespace {
 	};
 }//unnamed namespace for luaW_pushscalar_visitor
 
-/**
- * Converts a string into a Lua object pushed at the top of the stack.
- */
 void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
 {
 	v.apply_visitor(luaW_pushscalar_visitor(L));
 }
 
-
-
-
-/**
- * Returns true if the metatable of the object is the one found in the registry.
- */
 bool luaW_hasmetatable(lua_State *L
 		, int index
 		, luatype key)
@@ -122,9 +103,6 @@ bool luaW_hasmetatable(lua_State *L
 	return ok;
 }
 
-/**
- * Converts a scalar to a translatable string.
- */
 bool luaW_totstring(lua_State *L, int index, t_string &str)
 {
 	switch (lua_type(L, index)) {
@@ -147,9 +125,6 @@ bool luaW_totstring(lua_State *L, int index, t_string &str)
 	return true;
 }
 
-/**
- * Converts a scalar to a translatable string.
- */
 t_string luaW_checktstring(lua_State *L, int index)
 {
 	t_string result;
@@ -158,11 +133,6 @@ t_string luaW_checktstring(lua_State *L, int index)
 	return result;
 }
 
-/**
- * Converts a config object to a Lua table.
- * The destination table should be at the top of the stack on entry. It is
- * still at the top on exit.
- */
 void luaW_filltable(lua_State *L, config const &cfg)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
@@ -186,9 +156,6 @@ void luaW_filltable(lua_State *L, config const &cfg)
 	}
 }
 
-/**
- * Converts a config object to a Lua table pushed at the top of the stack.
- */
 void luaW_pushconfig(lua_State *L, config const &cfg)
 {
 	lua_newtable(L);
@@ -201,13 +168,6 @@ void luaW_pushconfig(lua_State *L, config const &cfg)
 #define return_misformed() \
   do { lua_settop(L, initial_top); return false; } while (0)
 
-/**
- * Converts an optional table or vconfig to a config object.
- * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
- * @return false if some attributes had not the proper type.
- * @note If the table has holes in the integer keys or floating-point keys,
- *       some keys will be ignored and the error will go undetected.
- */
 bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
@@ -296,9 +256,6 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 #undef return_misformed
 
 
-/**
- * Converts an optional table or vconfig to a config object.
- */
 config luaW_checkconfig(lua_State *L, int index)
 {
 	config result;
@@ -307,10 +264,6 @@ config luaW_checkconfig(lua_State *L, int index)
 	return result;
 }
 
-/**
- * Gets an optional vconfig from either a table or a userdata.
- * @return false in case of failure.
- */
 bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 {
 	switch (lua_type(L, index))
@@ -337,11 +290,6 @@ bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 	return true;
 }
 
-/**
- * Gets an optional vconfig from either a table or a userdata.
- * @param allow_missing true if missing values are allowed; the function
- *        then returns an unconstructed vconfig.
- */
 vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing)
 {
 	vconfig result = vconfig::unconstructed_vconfig();
@@ -354,11 +302,6 @@ vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing)
 #pragma warning (push)
 #pragma warning (disable: 4706)
 #endif
-/**
- * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
- * @param nRets LUA_MULTRET for unbounded return values.
- * @return true if the call was successful and @a nRets return values are available.
- */
 bool luaW_pcall(lua_State *L
 		, int nArgs, int nRets, bool allow_wml_error)
 {
@@ -414,11 +357,6 @@ bool luaW_pcall(lua_State *L
 }
 
 
-/**
- * Pushes the value found by following the variadic names (char *), if the
- * value is not nil.
- * @return true if an element was pushed.
- */
 #ifdef __GNUC__
 __attribute__((sentinel))
 #endif
@@ -464,9 +402,6 @@ unit *lua_unit::get()
 	return &*ui;
 }
 
-/**
- * Converts a Lua value to a unit pointer.
- */
 unit *luaW_tounit(lua_State *L, int index, bool only_on_map)
 {
 	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
@@ -475,9 +410,6 @@ unit *luaW_tounit(lua_State *L, int index, bool only_on_map)
 	return lu->get();
 }
 
-/**
- * Converts a Lua value to a unit pointer.
- */
 unit *luaW_checkunit(lua_State *L, int index, bool only_on_map)
 {
 	unit *u = luaW_tounit(L, index, only_on_map);

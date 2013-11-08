@@ -24,7 +24,6 @@ class t_string;
 class vconfig;
 class unit;
 
-//TODO: decide weather to put the documentation here or in the cpp file.
 
 /**
  * Converts a Lua value to a unit pointer.
