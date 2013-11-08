@@ -78,8 +78,9 @@ struct animation_branch
 	config merge() const
 	{
 		config result = attributes;
-		BOOST_FOREACH(const config::all_children_iterator &i, children)
+		BOOST_FOREACH(const config::all_children_iterator &i, children) {
 			result.add_child(i->key, i->cfg);
+		}
 		return result;
 	}
 };
@@ -99,28 +100,58 @@ struct animation_cursor
 	animation_cursor(const config &cfg, animation_cursor *p):
 		itors(cfg.all_children_range()), branches(p->branches), parent(p)
 	{
-		BOOST_FOREACH(animation_branch &ab, branches)
-			ab.attributes.merge_attributes(cfg);
+		bool condition_value_set = false;
+		for (std::list<animation_branch>::iterator bi = branches.begin();
+			 bi != branches.end(); ++bi)
+		{
+			std::string s1 = (*bi).attributes["hits"];
+			if (s1.length() > 0) {
+				condition_value_set = true;
+			}
+		}
+		
+		for (std::list<animation_branch>::iterator bi = branches.begin();
+			 bi != branches.end(); /* nothing */)
+		{
+			std::string s1 = (*bi).attributes["hits"];
+			std::string s2 = cfg["hits"];
+			if (condition_value_set && s1 != s2) {
+				branches.erase(bi++);
+			}
+			else {
+				//temporary debug code
+				/*std::cout << s1 << ", " << s2 << "\n";
+				std::cout << "merging -- " << cfg;
+				std::cout << "with --" << (*bi).attributes << "\n";*/
+				(*bi).attributes.merge_attributes(cfg);
+				bi++;
+			}
+		}
 	}
 };
 
 static void prepare_single_animation(const config &anim_cfg, animation_branches &expanded_anims)
 {
+	/* The anim_cursor holds the current parsing through the config and the
+	   branches hold the data that will be interpreted as the actual animation.
+	   The branches store the config attributes for each block and the 
+	   children of those branches make up all the 'frame', 'missile_frame', etc.
+	   individually (so 2 instances of 'frame' would be stored as 2 children) */
 	std::list<animation_cursor> anim_cursors;
 	anim_cursors.push_back(animation_cursor(anim_cfg));
 	while (!anim_cursors.empty())
 	{
 		animation_cursor &ac = anim_cursors.back();
+		
+		// Reached end of sub-tag config block
 		if (ac.itors.first == ac.itors.second) {
 			if (!ac.parent) break;
 			// Merge all the current branches into the parent.
-			ac.parent->branches.splice(ac.parent->branches.end(),
-				ac.branches, ac.branches.begin(), ac.branches.end());
+			ac.parent->branches.splice(ac.parent->branches.end(), ac.branches);
 			anim_cursors.pop_back();
 			continue;
 		}
-		if (ac.itors.first->key != "if")
-		{
+		if (ac.itors.first->key != "if") {
 			// Append current config object to all the branches in scope.
 			BOOST_FOREACH(animation_branch &ab, ac.branches) {
 				ab.children.push_back(ac.itors.first);
@@ -130,9 +161,8 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 		}
 		int count = 0;
 		do {
-			/* Copies the current branches to each cursor created
-			   for the conditional clauses. Merge the attributes
-			   of the clause into them. */
+			/* Copies the current branches to each cursor created for the
+			   conditional clauses. Merge attributes of the clause into them. */
 			anim_cursors.push_back(animation_cursor(ac.itors.first->cfg, &ac));
 			++ac.itors.first;
 			++count;
@@ -140,9 +170,19 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 		if (count > 1) {
 			/* There are some "else" clauses, discard the branches
 			   from the current cursor. */
-			ac.branches.clear();
+			//ac.branches.clear();
 		}
 	}
+
+	//debug
+	/*BOOST_FOREACH(animation_branch &ab, anim_cursors.back().branches) {
+		std::cout << "--branch--\n" << ab.attributes;
+		
+		BOOST_FOREACH(config::all_children_iterator &ci, ab.children) {
+			std::cout << "--branchcfg--\n" << ci->cfg;
+		}
+		std::cout << "\n";
+	}/* */
 
 	// Create the config object describing each branch.
 	assert(anim_cursors.size() == 1);
