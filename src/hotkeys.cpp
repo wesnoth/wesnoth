@@ -1318,7 +1318,7 @@ void execute_command(display& disp, hotkey_command& command, command_executor* e
 				break;
 			}
 			map_screenshot = true;
-			/// @todo intentional fall through?
+			// intentional fall-through
 		case HOTKEY_SCREENSHOT: {
 			std::string name = map_screenshot ? _("Map-Screenshot") : _("Screenshot");
 			std::string filename = get_screenshot_dir() + "/" + name + "_";
