@@ -575,11 +575,8 @@ void write_compressed(std::ostream &out, config const &cfg)
 	boost::iostreams::filtering_stream<boost::iostreams::output> filter;
 	filter.push(compressor());
 	filter.push(out);
-	if(!cfg.empty())
-		write(filter, cfg);
-	else
-		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
-		filter << "\n";
+
+	write(filter, cfg);
 }
 
 void write_gz(std::ostream &out, config const &cfg)

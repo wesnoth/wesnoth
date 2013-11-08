@@ -72,11 +72,6 @@ config_writer::config_writer(
 
 config_writer::~config_writer()
 {
-	if(compress_ == GZIP)
-	{
-		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
-		out_ << "\n";
-	}
 }
 
 void config_writer::write(const config &cfg)
