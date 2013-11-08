@@ -805,6 +805,7 @@ set(wesnoth-main_SRC
 	scripting/debug_lua.cpp
 	scripting/lua.cpp
 	scripting/lua_api.cpp
+	scripting/lua_types.cpp
 	settings.cpp
 	sha1.cpp
 	side_filter.cpp
