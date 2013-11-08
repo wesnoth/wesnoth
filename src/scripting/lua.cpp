@@ -31,7 +31,6 @@
 
 #include "scripting/lua.hpp"
 #include "scripting/lua_api.hpp"
-#include "scripting/lua_helper.hpp"
 #include "scripting/lua_types.hpp"
 
 
