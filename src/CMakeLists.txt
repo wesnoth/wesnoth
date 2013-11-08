@@ -804,6 +804,7 @@ set(wesnoth-main_SRC
 	savegame.cpp
 	scripting/debug_lua.cpp
 	scripting/lua.cpp
+	scripting/lua_api.cpp
 	settings.cpp
 	sha1.cpp
 	side_filter.cpp
