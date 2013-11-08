@@ -1237,6 +1237,7 @@ void config::merge_with(const config& c)
 {
 	check_valid(c);
 
+	std::vector<child_pos> to_remove;
 	std::map<std::string, unsigned> visitations;
 
 	// Merge attributes first
@@ -1250,7 +1251,12 @@ void config::merge_with(const config& c)
 		if (j != c.children.end()) {
 			unsigned &visits = visitations[tag];
 			if(visits < j->second.size()) {
-				(i->pos->second[i->index])->merge_with(*j->second[visits++]);
+
+				if ((*j->second[visits])["__remove"].to_bool()) {
+					visits++;
+					to_remove.push_back(*i);
+				} else
+					(i->pos->second[i->index])->merge_with(*j->second[visits++]);
 			}
 		}
 	}
@@ -1263,6 +1269,15 @@ void config::merge_with(const config& c)
 			add_child(tag, *j->second[visits++]);
 		}
 	}
+
+	// Remove those marked so
+	std::map<std::string, unsigned> removals;
+	BOOST_FOREACH(const child_pos& pos, to_remove) {
+		const std::string& tag = pos.pos->first;
+		unsigned &removes = removals[tag];
+		remove_child(tag, pos.index - removes++);
+	}
+
 }
 
 /**

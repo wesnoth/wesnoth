@@ -1422,7 +1422,7 @@ double recruitment::get_estimated_income(int turns) const {
 		double income = (own_villages + village_gain * i) * game_config::village_income;
 		double upkeep = side_upkeep(get_side()) + unit_gain * i -
 				(own_villages + village_gain * i) * game_config::village_support;
-		double resulting_income = game_config::base_income + income - std::max(0., upkeep);
+		double resulting_income = team.base_income() + income - std::max(0., upkeep);
 		total_income += resulting_income;
 	}
 	return total_income;
@@ -1458,6 +1458,7 @@ double recruitment::get_estimated_village_gain() const {
 double recruitment::get_unit_ratio() const {
 	const unit_map& units = *resources::units;
 	double own_total_value = 0.;
+	double team_total_value = 0.;
 	double enemy_total_value = 0.;
 	BOOST_FOREACH(const unit& unit, units) {
 		if (unit.incapacitated() || unit.total_movement() <= 0 || unit.can_recruit()) {
@@ -1467,17 +1468,33 @@ double recruitment::get_unit_ratio() const {
 		if (current_team().is_enemy(unit.side())) {
 			enemy_total_value += value;
 		} else {
-			own_total_value += value;
+			team_total_value += value;
+			if (unit.side() == current_team().side()) {
+				own_total_value += value;
+			}
+		}
+	}
+	int allies_count = 0;
+	BOOST_FOREACH(const team& team, *resources::teams) {
+		if (!current_team().is_enemy(team.side())) {
+			++allies_count;
 		}
 	}
 	// If only the leader is left, the values could be 0.
 	// Catch those cases and return something reasonable.
-	if (own_total_value == 0. && enemy_total_value == 0.) {
-		return 0.;
+	if ((own_total_value == 0. || team_total_value == 0) && enemy_total_value == 0.) {
+		return 0.;  // do recruit
 	} else if (enemy_total_value == 0.) {
-		return 2.;
+		return 999.;  // save money
 	}
-	return own_total_value / enemy_total_value;
+
+	// We calculate two ratios: One for the team and one for just our self.
+	// Then we return the minimum.
+	// This prevents cases where side1 will recruit until the save_gold begin threshold
+	// is reached, and side2 won't recruit anything. (assuming side1 and side2 are allied)
+	double own_ratio = (own_total_value / enemy_total_value) * allies_count;
+	double team_ratio = team_total_value / enemy_total_value;
+	return std::min<double>(own_ratio, team_ratio);
 }
 
 /**
@@ -1496,13 +1513,16 @@ void recruitment::update_state() {
 		return;
 	}
 	double ratio = get_unit_ratio();
-	double income_estimation = get_estimated_income(SAVE_GOLD_FORECAST_TURNS);
+	double income_estimation = 1.;
+	if (!get_recruitment_save_gold()["save_on_negative_income"].to_bool(false)) {
+		income_estimation = get_estimated_income(SAVE_GOLD_FORECAST_TURNS);
+	}
 	LOG_AI_RECRUITMENT << "Ratio is " << ratio << "\n";
 	LOG_AI_RECRUITMENT << "Estimated income is " << income_estimation << "\n";
 
 	// Retrieve from aspect.
-	double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.0);
-	double save_gold_end = get_recruitment_save_gold()["end"].to_double(0.7);
+	double save_gold_begin = get_recruitment_save_gold()["begin"].to_double(1.5);
+	double save_gold_end = get_recruitment_save_gold()["end"].to_double(1.1);
 
 	if (state_ == NORMAL && ratio > save_gold_begin && income_estimation > 0) {
 		state_ = SAVE_GOLD;

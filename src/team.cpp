@@ -60,7 +60,7 @@ const char * const team::attributes[] = {
 	"countdown_time", "disallow_observers", "faction",
 	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
 	"leader", "random_leader", "team_lock", "terrain_liked",
-	"user_description",
+	"user_description", "default_recruit", "controller_lock",
 	// Terminate the list with NULL.
 	NULL };
 

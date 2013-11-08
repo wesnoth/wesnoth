@@ -171,6 +171,7 @@ class frame_parsed_parameters {
 		int duration() const{ return duration_;};
 		bool does_not_change() const;
 		bool need_update() const;
+		std::vector<std::string> debug_strings() const; //contents of frame in strings
 	private:
 		int duration_;
 		progressive_image image_;
@@ -202,7 +203,7 @@ class unit_frame {
 	public:
 		// Constructors
 		unit_frame(const frame_builder& builder=frame_builder()):builder_(builder){};
-		void redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
+		void redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const;
 		const frame_parameters merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val=frame_parameters()) const;
 		const frame_parameters parameters(int current_time) const {return builder_.parameters(current_time);};
 		const frame_parameters end_parameters() const {return builder_.parameters(duration());};
@@ -211,6 +212,7 @@ class unit_frame {
 		bool does_not_change() const{ return builder_.does_not_change();};
 		bool need_update() const{ return builder_.need_update();};
 		std::set<map_location> get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const;
+		std::vector<std::string> debug_strings() const { return builder_.debug_strings();}; //contents of frame in strings
 	private:
 		frame_parsed_parameters builder_;
 

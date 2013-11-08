@@ -785,7 +785,8 @@ namespace { // Helpers for menu_handler::end_turn()
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
-				if ( actions::unit_can_move(*un) && !resources::whiteboard->unit_has_actions(&*un) )
+				if ( actions::unit_can_move(*un) && !un->user_end_turn()
+						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
 		}
@@ -799,8 +800,8 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  &&
-				     !resources::whiteboard->unit_has_actions(&*un) )
+				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
+						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
 		}
@@ -839,7 +840,7 @@ bool menu_handler::end_turn(int side_num)
 	}
 	// Ask for confirmation if units still have all movement left.
 	else if ( preferences::green_confirm() && unmoved_units(side_num, units_) ) {
-		const int res = gui2::show_message((*gui_).video(), "", _("Some units have movement left. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
+		const int res = gui2::show_message((*gui_).video(), "", _("Some units have not moved. Do you really want to end your turn?"), gui2::tmessage::yes_no_buttons);
 		if(res == gui2::twindow::CANCEL) {
 			return false;
 		}
@@ -1126,6 +1127,7 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 		game_events::fire("die", loc, loc);
 		resources::units->erase(i);
 		actions::recalculate_fog(dying_side);
+		resources::controller->check_victory();
 	}
 }
 

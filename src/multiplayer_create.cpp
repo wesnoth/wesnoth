@@ -73,13 +73,13 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
-	level_type_label_(disp.video(), "Select a game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
+	level_type_label_(disp.video(), "Game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
 	launch_game_(disp.video(), _("OK")),
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
-	load_game_(disp.video(), _("Load game...")),
-	choose_mods_(disp.video(), _("Modifications...")),
+	load_game_(disp.video(), _("Load Game...")),
+	select_mod_(disp.video(), _("Activate")),
 	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
@@ -87,7 +87,6 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
-	available_mods_(),
 	engine_(disp, state)
 {
 	filter_num_players_slider_.set_min(0);
@@ -168,11 +167,21 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 		preferences::era());
 	eras_menu_.move_selection((era_new_selection != -1) ? era_new_selection : 0);
 
-	BOOST_FOREACH(const config& mod, cfg.child_range("modification")) {
-		available_mods_.add_child("modification", mod);
+	std::vector<std::string> mods = engine_.extras_menu_item_names(create_engine::MOD);
+	BOOST_FOREACH(std::string& mod, mods) {
+		std::stringstream newval;
+		newval << IMAGE_PREFIX << "buttons/checkbox.png" << COLUMN_SEPARATOR << mod;
+		mod = newval.str();
 	}
+	mods_menu_.set_items(mods);
+	mods_menu_.move_selection(0);
+	// don't set 0 explicitly, because move_selection(0) may fail if there's
+	// no modifications at all
+	mod_selection_ = mods_menu_.selection();
 
-	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
+	if (mod_selection_ == -1) {
+		mod_label_.set_text(_("Modifications: none found"));
+	}
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -248,19 +257,24 @@ void create::process_event()
 		return;
 	}
 
-	if(choose_mods_.pressed()) {
-		if (available_mods_.empty()) {
-			gui2::show_transient_message(disp_.video(), "",
-			_(	"There are no modifications currently installed." \
-				" To download modifications, connect to the add-ons server" \
-				" by choosing the 'Add-ons' option on the main screen."		));
+	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();
+	if (select_mod_.pressed()) {
+		int index = mods_menu_.selection();
+		engine_.set_current_mod_index(index);
+		engine_.toggle_current_mod();
+
+		update_mod_button_label = true;
+		synchronize_selections();
+	}
+
+	if (update_mod_button_label) {
+		mod_selection_ = mods_menu_.selection();
+		engine_.set_current_mod_index(mod_selection_);
+		set_description(engine_.current_extra(create_engine::MOD).description);
+		if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
+			select_mod_.set_label(_("Deactivate"));
 		} else {
-			gui2::tmp_create_game_choose_mods
-						dialog(available_mods_, engine_.active_mods());
-
-			dialog.show(disp_.video());
-
-			synchronize_selections();
+			select_mod_.set_label(_("Activate"));
 		}
 	}
 
@@ -315,12 +329,6 @@ void create::process_event()
 
 		set_description(engine_.current_level().description());
 
-		tooltips::clear_tooltips(image_rect_);
-		if (!engine_.current_level().description().empty()) {
-			tooltips::add_tooltip(image_rect_,
-				engine_.current_level().description(), "", false);
-		}
-
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
 		case level::USER_MAP:
@@ -356,15 +364,6 @@ void create::process_event()
 		launch_game_.enable(engine_.current_level().can_launch_game());
 		generator_settings_.enable(engine_.generator_assigned());
 		regenerate_map_.enable(engine_.generator_assigned());
-	}
-
-	bool mod_selection_changed = mod_selection_ != mods_menu_.selection();
-	mod_selection_ = mods_menu_.selection();
-
-	if (mod_selection_changed) {
-		engine_.set_current_mod_index(mod_selection_);
-
-		set_description(engine_.current_extra(create_engine::MOD).description);
 	}
 }
 
@@ -414,6 +413,7 @@ void create::synchronize_selections()
 	}
 
 	engine_.init_active_mods();
+	update_mod_menu_images();
 }
 
 void create::draw_level_image()
@@ -436,8 +436,21 @@ void create::draw_level_image()
 
 void create::set_description(const std::string& description)
 {
-	description_.set_text(description.empty() ? "No description available." :
-		description);
+	description_.set_text(description.empty() ? _("No description available.") :
+												description);
+}
+
+void create::update_mod_menu_images()
+{
+	for (size_t i = 0; i<mods_menu_.number_of_items(); i++) {
+		std::stringstream val;
+		if (engine_.dependency_manager().is_modification_active(i)) {
+			val << IMAGE_PREFIX << "buttons/checkbox-pressed.png";
+		} else {
+			val << IMAGE_PREFIX << "buttons/checkbox.png";
+		}
+		mods_menu_.change_item(i, 0, val.str());
+	}
 }
 
 std::string create::select_campaign_difficulty()
@@ -497,7 +510,7 @@ void create::hide_children(bool hide)
 
 	load_game_.hide(hide);
 
-	choose_mods_.hide(hide);
+	select_mod_.hide(hide);
 
 	regenerate_map_.hide(hide);
 	generator_settings_.hide(hide);
@@ -539,8 +552,8 @@ void create::layout_children(const SDL_Rect& rect)
 	const int menu_width = (ca.w - 3 * column_border_size - image_width) / 3;
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
-	//const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
-	//	2 * border_size - cancel_game_.height());
+	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
+		2 * border_size - cancel_game_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -634,16 +647,15 @@ void create::layout_children(const SDL_Rect& rect)
 	ypos += eras_menu_height;
 
 	//TODO: use when mods_menu_ would be functional.
-	/*mod_label_.set_location(xpos, ypos);
+	mod_label_.set_location(xpos, ypos);
 	ypos += mod_label_.height() + border_size;
 	mods_menu_.set_max_width(menu_width);
 	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
-	// Menu dimensions are only updated when items are set. So do this now.
-	int modsel_save = mods_menu_.selection();
-	mods_menu_.set_items(engine_.extras_menu_item_names(create_engine::MOD));
-	mods_menu_.move_selection(modsel_save);*/
-	choose_mods_.set_location(xpos, ypos);
+	ypos += mods_menu_.height() + border_size;
+	if (mods_menu_.number_of_items() > 0) {
+		select_mod_.set_location(xpos, ypos);
+	}
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

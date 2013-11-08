@@ -32,14 +32,14 @@ class game_display;
 class game_state;
 class game_data;
 class team;
-class wml_menu_item;
 
 namespace actions {
 	class undo_list;
 }
 
 namespace game_events {
-	struct manager;
+	class  manager;
+	class  wml_menu_item;
 } // namespace game_events
 
 namespace halo {
@@ -262,11 +262,11 @@ private:
 	void init(CVideo &video);
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<std::string>& items);
+
 	std::vector<std::string> savenames_;
-	void fire_wml_menu_item_event(const wml_menu_item &menu_item);
 
 	void expand_wml_commands(std::vector<std::string>& items);
-	std::vector<const wml_menu_item *> wml_commands_;
+	std::vector<const game_events::wml_menu_item *> wml_commands_;
 	static const size_t MAX_WML_COMMANDS = 7;
 
 	bool victory_when_enemies_defeated_;

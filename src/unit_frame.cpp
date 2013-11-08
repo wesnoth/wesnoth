@@ -408,7 +408,6 @@ frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 	return *this;
 }
 
-
 frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, int duration) :
 	duration_(duration ? duration :builder.duration_),
 	image_(builder.image_,duration),
@@ -552,9 +551,44 @@ void frame_parsed_parameters::override( int duration
 		duration_ = duration;
 	}
 }
+std::vector<std::string> frame_parsed_parameters::debug_strings() const {
+	std::vector<std::string> v;
+	if (duration_>0) v.push_back("duration="+utils::half_signed_value(duration_));
+	if (!image_.get_original().empty()) v.push_back("image="+image_.get_original());
+	if (!image_diagonal_.get_original().empty()) v.push_back("image_diagonal="+image_diagonal_.get_original());
+	if (!image_mod_.empty()) v.push_back("image_mod="+image_mod_);
+	if (!halo_.get_original().empty()) v.push_back("halo="+halo_.get_original());
+	if (!halo_x_.get_original().empty()) v.push_back("halo_x="+halo_x_.get_original());
+	if (!halo_y_.get_original().empty()) v.push_back("halo_y="+halo_y_.get_original());
+	if (!halo_mod_.empty()) v.push_back("halo_mod="+halo_mod_);
+	if (!sound_.empty()) v.push_back("sound="+sound_);
+	if (!text_.empty()) {
+		v.push_back("text="+text_);
+		v.push_back("text_color="+str_cast<Uint32>(text_color_));
+	}
+	if (!blend_ratio_.get_original().empty()) {
+		v.push_back("blend_ratio="+blend_ratio_.get_original());
+		v.push_back("blend_with="+str_cast<Uint32>(blend_with_));
+	}
+	if (!highlight_ratio_.get_original().empty()) v.push_back("highlight_ratio="+highlight_ratio_.get_original());
+	if (!offset_.get_original().empty()) v.push_back("offset="+offset_.get_original());
+	if (!submerge_.get_original().empty()) v.push_back("submerge="+submerge_.get_original());
+	if (!x_.get_original().empty()) v.push_back("x="+x_.get_original());
+	if (!y_.get_original().empty()) v.push_back("y="+y_.get_original());
+	if (!directional_x_.get_original().empty()) v.push_back("directional_x="+directional_x_.get_original());
+	if (!directional_y_.get_original().empty()) v.push_back("directional_y="+directional_y_.get_original());
+	if (auto_vflip_ == t_true) v.push_back("auto_vflip=true");
+	if (auto_vflip_ == t_false) v.push_back("auto_vflip=false");
+	if (auto_hflip_ == t_true) v.push_back("auto_hflip=true");
+	if (auto_hflip_ == t_false) v.push_back("auto_hflip=false");
+	if (primary_frame_ == t_true) v.push_back("primary_frame=true");
+	if (primary_frame_ == t_false) v.push_back("primary_frame=false");
+	if (!drawing_layer_.get_original().empty()) v.push_back("drawing_layer="+drawing_layer_.get_original());
+	return v;
+}
 
 
-void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
+void unit_frame::redraw(const int frame_time,bool on_start_time,bool in_scope_of_frame,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -570,7 +604,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		// if (tmp_offset) std::cout << (int)(tmp_offset*100) << ",";
 
 	int d2 = display::get_singleton()->hex_size() / 2;
-	if(first_time ) {
+	if(on_start_time ) {
 		// stuff that should be done only once per frame
 		if(!current_data.sound.empty()  ) {
 			sound::play_sound(current_data.sound);
@@ -624,8 +658,14 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
 			       	current_data.blend_ratio,current_data.submerge,!facing_north);
 	}
+	
 	halo::remove(*halo_id);
 	*halo_id = halo::NO_HALO;
+	
+	if (!in_scope_of_frame) { //check after frame as first/last frame image used in defense/attack anims
+		return;
+	}
+	
 	if(!current_data.halo.empty()) {
 		halo::ORIENTATION orientation;
 		switch(direction)

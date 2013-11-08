@@ -698,7 +698,9 @@ set(wesnoth-main_SRC
 	game_events/conditional_wml.cpp
 	game_events/entity_location.cpp
 	game_events/handlers.cpp
+	game_events/menu_item.cpp
 	game_events/pump.cpp
+	game_events/wmi_container.cpp
 	game_instance.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp
@@ -854,13 +856,13 @@ set(libwesnoth-game_STAT_SRC
 	events.cpp
 	font.cpp
   	generators/cavegen.cpp
-    generators/map_create.cpp
-    generators/mapgen.cpp
-    generators/mapgen_dialog.cpp
-    generators/yamg/ya_mapgen.cpp
-    generators/yamg/yamg_hex.cpp
-    generators/yamg/yamg_hexheap.cpp
-    generators/yamg/yamg_params.cpp
+	generators/map_create.cpp
+	generators/mapgen.cpp
+	generators/mapgen_dialog.cpp
+	generators/yamg/ya_mapgen.cpp
+	generators/yamg/yamg_hex.cpp
+	generators/yamg/yamg_hexheap.cpp
+	generators/yamg/yamg_params.cpp
 	hotkeys.cpp
 	image.cpp
 	image_modifications.cpp

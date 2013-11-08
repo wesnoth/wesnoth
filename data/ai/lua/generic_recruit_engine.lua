@@ -1,6 +1,7 @@
 return {
     -- init parameters:
     -- ai: a reference to the ai engine so recruit has access to ai functions
+    --   It is also possible to pass an ai table directly to the execution function, which will then override the value passed here
     -- ai_cas: an object reference to store the CAs and associated data
     --   the CA will use the function names ai_cas:recruit_rushers_eval/exec, so should be referenced by the object name used by the calling AI
     --   ai_cas also has the functions find_best_recruit, find_best_recruit_hex and analyze_enemy_unit added to it
@@ -25,6 +26,14 @@ return {
         local W = H.set_wml_action_metatable {}
         local AH = wesnoth.require "ai/lua/ai_helper.lua"
         local LS = wesnoth.require "lua/location_set.lua"
+
+        local function print_time(...)
+            if turn_start_time then
+                AH.print_ts_delta(turn_start_time, ...)
+            else
+                AH.print_ts(...)
+            end
+        end
 
         local recruit_data = {}
 
@@ -113,7 +122,9 @@ return {
                 for attack in H.child_range(wesnoth.unit_types[attacker.type].__cfg, "attack") do
                     local defense = defender_defense
                     local poison = false
-                    local damage_multiplier,damage_add,damage_value = 1, 0
+                    local damage_multiplier = 1
+                    local damage_bonus = 0
+                    local weapon_damage = attack.damage
 
                     for special in H.child_range(attack, 'specials') do
                         local mod
@@ -143,31 +154,39 @@ return {
                             end
                         end
 
-                        -- Handle backstab, charge
+                        -- Handle most damage specials (assumes all are cumulative)
                         mod = H.get_child(special, 'damage')
                         if mod and mod.active_on ~= "defense" then
-                            if mod.value then
-                                if mod.cumulative then
-                                    if mod.value > attack.damage then
-                                        damage_value = mod.value
-                                    end
-                                else
-                                    damage_value = mod.value
-                                end
-                            elseif mod.add then
-                                damage_add = mod.add
-                            elseif mod.sub then
-                                damage_add = - mod.sub
-                            elseif mod.multiply then
-                                damage_multiplier = mod.multiply
-                            elseif mod.divide then
-                                damage_multiplier = 1. / mod.divide
+                            local special_multiplier = 1
+                            local special_bonus = 0
+
+                            if mod.multiply then
+                                special_multiplier = special_multiplier*mod.multiply
                             end
+                            if mod.divide then
+                                special_multiplier = special_multiplier/mod.divide
+                            end
+                            if mod.add then
+                                special_bonus = special_bonus+mod.add
+                            end
+                            if mod.subtract then
+                                special_bonus = special_bonus-mod.subtract
+                            end
+
                             if mod.backstab then
                                 -- Assume backstab happens on only 1/2 of attacks
                                 -- TODO: find out what actual probability of getting to backstab is
-                                damage_multiplier = damage_multiplier * 0.5 + 0.5
-                                damage_add = damage_add * 0.5
+                                damage_multiplier = damage_multiplier*(special_multiplier*0.5 + 0.5)
+                                damage_bonus = damage_bonus+(special_bonus*0.5)
+                                if mod.value ~= nil then
+                                    weapon_damage = (weapon_damage+mod.value)/2
+                                end
+                            else
+                                damage_multiplier = damage_multiplier*special_multiplier
+                                damage_bonus = damage_bonus+special_bonus
+                                if mod.value ~= nil then
+                                    weapon_damage = mod.value
+                                end
                             end
                         end
                     end
@@ -195,8 +214,7 @@ return {
                             resistance = 50
                         end
                     end
-                    local base_damage = (attack.damage * damage_multiplier + damage_add) * resistance
-                    if damage_value then base_damage = damage_value * resistance end
+                    local base_damage = (weapon_damage+damage_bonus)*resistance*damage_multiplier
                     if (resistance > 100) then
                         base_damage = base_damage-1
                     end
@@ -409,8 +427,8 @@ return {
         end
 
         function ai_cas:recruit_rushers_eval()
-            local start_time, ca_name = os.clock(), 'recruit_rushers'
-            if AH.print_eval() then print('     - Evaluating recruit_rushers CA:', os.clock()) end
+            local start_time, ca_name = wesnoth.get_time_stamp() / 1000., 'recruit_rushers'
+            if AH.print_eval() then print_time('     - Evaluating recruit_rushers CA:') end
 
             local score = do_recruit_eval(recruit_data)
             if score == 0 then
@@ -418,12 +436,13 @@ return {
                 recruit_data.recruit = nil
             end
 
-            --AH.done_eval_messages(start_time, ca_name)
+            if AH.print_eval() then AH.done_eval_messages(start_time, ca_name) end
             return score
         end
 
-        function ai_cas:recruit_rushers_exec()
-            if AH.print_exec() then print('   ' .. os.clock() .. ' Executing recruit_rushers CA') end
+        function ai_cas:recruit_rushers_exec(ai_local)
+            if ai_local then ai = ai_local end
+
             if AH.show_messages() then W.message { speaker = 'narrator', message = 'Recruiting' } end
 
             local enemy_counts = recruit_data.recruit.enemy_counts
@@ -541,6 +560,21 @@ return {
 
             if wesnoth.unit_types[recruit_type].cost <= wesnoth.sides[wesnoth.current.side].gold then
                 ai.recruit(recruit_type, recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
+
+                -- If the recruited unit cannot reach the target hex, return it to the pool of targets
+                if recruit_data.recruit.target_hex ~= nil and recruit_data.recruit.target_hex[1] ~= nil then
+                    local unit = wesnoth.get_unit(recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
+                    local path, cost = wesnoth.find_path(unit, recruit_data.recruit.target_hex[1], recruit_data.recruit.target_hex[2], {viewing_side=0, max_cost=unit.max_moves+1})
+                    if cost > unit.max_moves then
+                        -- The last village added to the list should be the one we tried to aim for, check anyway
+                        local last = #recruit_data.castle.assigned_villages_x
+                        if (recruit_data.castle.assigned_villages_x[last] == recruit_data.recruit.target_hex[1]) and (recruit_data.castle.assigned_villages_y[last] == recruit_data.recruit.target_hex[2]) then
+                            table.remove(recruit_data.castle.assigned_villages_x)
+                            table.remove(recruit_data.castle.assigned_villages_y)
+                        end
+                    end
+                end
+
                 return true
             else
                 return false
@@ -601,7 +635,7 @@ return {
                 end
             end
 
-            if AH.print_exec() then
+            if AH.print_eval() then
                 if village[1] then
                     print("Recruit at: " .. best_hex[1] .. "," .. best_hex[2] .. " -> " .. village[1] .. "," .. village[2])
                 else
@@ -749,7 +783,7 @@ return {
 
                 local score = offense_score*offense_weight + defense_score*defense_weight + move_score*move_weight + bonus
 
-                if AH.print_exec() then
+                if AH.print_eval() then
                     print(recruit_id .. " score: " .. offense_score*offense_weight .. " + " .. defense_score*defense_weight .. " + " .. move_score*move_weight  .. " + " .. bonus  .. " = " .. score)
                 end
                 if score > best_score and wesnoth.unit_types[recruit_id].cost <= gold_limit then
@@ -814,7 +848,7 @@ return {
                 if not params.leader_takes_village or params.leader_takes_village() then
                     -- skip one village for the leader
                     for i,v in ipairs(villages) do
-                        local path, cost = wesnoth.find_path(leader, v[1], v[2])
+                        local path, cost = wesnoth.find_path(leader, v[1], v[2], {max_cost = leader.max_moves+1})
                         if cost <= leader.max_moves then
                             table.insert(data.castle.assigned_villages_x, v[1])
                             table.insert(data.castle.assigned_villages_y, v[2])

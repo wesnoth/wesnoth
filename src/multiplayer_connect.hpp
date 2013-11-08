@@ -123,6 +123,7 @@ private:
 	void update_playerlist_state(bool silent = true);
 
 	const mp_game_settings& params() { return engine_.params(); }
+	bool force_lock_settings() const { return engine_.force_lock_settings(); }
 
 	// Lists used for combos.
 	std::vector<std::string> player_colors_;
@@ -141,7 +142,6 @@ private:
 	gui::scrollpane scroll_pane_;
 	gui::button launch_;
 	gui::button cancel_;
-	//gui::button add_local_player_;
 	gui::drop_group_manager_ptr combo_control_group_;
 };
 

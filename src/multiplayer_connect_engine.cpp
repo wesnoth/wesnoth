@@ -73,20 +73,23 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 	state_(state),
 	params_(params),
 	default_controller_(local_players_only ? CNTR_LOCAL: CNTR_NETWORK),
+	local_players_only_(local_players_only),
 	first_scenario_(first_scenario),
+	force_lock_settings_(),
 	side_engines_(),
 	era_factions_(),
 	team_names_(),
 	user_team_names_(),
 	player_teams_(),
-	connected_users_(),
-	default_controller_options_()
+	connected_users_()
 {
 	// Initial level config from the mp_game_settings.
 	level_ = initial_level_config(disp, params_, state_);
 	if (level_.empty()) {
 		return;
 	}
+
+	force_lock_settings_ = level_["force_lock_settings"].to_bool();
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
@@ -162,18 +165,6 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 
 		era_factions_.push_back(&era);
 	}
-
-	// Default options for combo controllers.
-	if (!local_players_only) {
-		default_controller_options_.push_back(
-			std::make_pair(CNTR_NETWORK, _("Network Player")));
-	}
-	default_controller_options_.push_back(
-		std::make_pair(CNTR_LOCAL, _("Local Player")));
-	default_controller_options_.push_back(
-		std::make_pair(CNTR_COMPUTER, _("Computer Player")));
-	default_controller_options_.push_back(
-		std::make_pair(CNTR_EMPTY, _("Empty")));
 
 	// Create side engines.
 	int index = 0;
@@ -377,6 +368,40 @@ bool connect_engine::can_start_game() const
 	return false;
 }
 
+std::vector<std::string> side_engine::get_children_to_swap()
+{
+	std::vector<std::string> children;
+
+	children.push_back("village");
+	children.push_back("unit");
+	children.push_back("ai");
+
+	return children;
+}
+
+std::multimap<std::string, config> side_engine::get_side_children()
+{
+	std::multimap<std::string, config> children;
+
+	BOOST_FOREACH(const std::string& children_to_swap, get_children_to_swap())
+		BOOST_FOREACH(const config& child, cfg_.child_range(children_to_swap))
+			children.insert(std::pair<std::string, config>(children_to_swap, child));
+
+	return children;
+}
+
+void side_engine::set_side_children(std::multimap<std::string, config> children)
+{
+	BOOST_FOREACH(const std::string& children_to_remove, get_children_to_swap())
+				  cfg_.clear_children(children_to_remove);
+
+	std::pair<std::string, config> child_map;
+
+	BOOST_FOREACH(child_map, children)
+				  cfg_.add_child(child_map.first, child_map.second);
+}
+
+
 void connect_engine::start_game(LOAD_USERS load_users)
 {
 	DBG_MP << "starting a new game" << std::endl;
@@ -405,7 +430,22 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		{
 			int j_side = playable_sides[get_random() % i];
 			int i_side = playable_sides[i - 1];
+			
+			if (i_side == j_side) continue; //nothing to swap
 
+			// First we swap everything about a side with another
+			side_engine_ptr tmp_side = side_engines_[j_side];
+			side_engines_[j_side] = side_engines_[i_side];
+			side_engines_[i_side] = tmp_side;
+
+			// Some 'child' variables such as village ownership and
+			// initial side units need to be swapped over as well
+			std::multimap<std::string, config> tmp_side_children = side_engines_[j_side]->get_side_children();
+			side_engines_[j_side]->set_side_children(side_engines_[i_side]->get_side_children());
+			side_engines_[i_side]->set_side_children(tmp_side_children);
+
+			// Then we revert the swap for fields that are unique to
+			// player control and the team they selected
 			int tmp_index = side_engines_[j_side]->index();
 			side_engines_[j_side]->set_index(side_engines_[i_side]->index());
 			side_engines_[i_side]->set_index(tmp_index);
@@ -413,11 +453,6 @@ void connect_engine::start_game(LOAD_USERS load_users)
 			int tmp_team = side_engines_[j_side]->team();
 			side_engines_[j_side]->set_team(side_engines_[i_side]->team());
 			side_engines_[i_side]->set_team(tmp_team);
-
-			// This is needed otherwise fog bugs will appear.
-			side_engine_ptr tmp_side = side_engines_[j_side];
-			side_engines_[j_side] = side_engines_[i_side];
-			side_engines_[i_side] = tmp_side;
 		}
 	}
 
@@ -803,6 +838,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	controller_options_(),
 	allow_player_(cfg["allow_player"].to_bool(true)),
 	allow_changes_(cfg["allow_changes"].to_bool(true)),
+	controller_lock_(cfg["controller_lock"].to_bool(
+		parent_.force_lock_settings_)),
 	index_(index),
 	team_(0),
 	color_(index),
@@ -811,7 +848,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_player_(cfg["current_player"]),
 	player_id_(cfg["player_id"]),
 	ai_algorithm_(),
-	flg_(parent_.era_factions_, cfg_, parent_.params_.use_map_settings,
+	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
 		parent_.params_.saved_game, color_)
 {
 	// Check if this side should give its control to some other side.
@@ -1074,20 +1111,26 @@ bool side_engine::available_for_user(const std::string& name) const
 	return false;
 }
 
-void side_engine::swap_sides_on_drop_target(const int drop_target) {
-	const std::string target_id =
-		parent_.side_engines_[drop_target]->player_id_;
-	const mp::controller target_controller =
-		parent_.side_engines_[drop_target]->controller_;
-	const std::string target_ai =
-		parent_.side_engines_[drop_target]->ai_algorithm_;
+bool side_engine::swap_sides_on_drop_target(const unsigned drop_target) {
+	assert(drop_target < parent_.side_engines_.size());
+	side_engine& target = *parent_.side_engines_[drop_target];
 
-	parent_.side_engines_[drop_target]->ai_algorithm_ = ai_algorithm_;
+	const std::string target_id = target.player_id_;
+	const mp::controller target_controller = target.controller_;
+	const std::string target_ai = target.ai_algorithm_;
+
+	if ((controller_lock_ || target.controller_lock_) &&
+		(controller_options_ != target.controller_options_)) {
+
+		return false;
+	}
+
+	target.ai_algorithm_ = ai_algorithm_;
 	if (player_id_.empty()) {
-		parent_.side_engines_[drop_target]->player_id_.clear();
-		parent_.side_engines_[drop_target]->set_controller(controller_);
+		target.player_id_.clear();
+		target.set_controller(controller_);
 	} else {
-		parent_.side_engines_[drop_target]->place_user(player_id_);
+		target.place_user(player_id_);
 	}
 
 	ai_algorithm_ = target_ai;
@@ -1097,6 +1140,8 @@ void side_engine::swap_sides_on_drop_target(const int drop_target) {
 	} else {
 		place_user(target_id);
 	}
+
+	return true;
 }
 
 void side_engine::resolve_random()
@@ -1146,17 +1191,24 @@ void side_engine::place_user(const config& data, bool contains_selection)
 
 void side_engine::update_controller_options()
 {
-	controller_options_ = parent_.default_controller_options_;
+	controller_options_.clear();
+
+	// Default options.
+	if (!parent_.local_players_only_) {
+		add_controller_option(CNTR_NETWORK, _("Network Player"), "human");
+	}
+	add_controller_option(CNTR_LOCAL, _("Local Player"), "human");
+	add_controller_option(CNTR_COMPUTER, _("Computer Player"), "ai");
+	add_controller_option(CNTR_EMPTY, _("Empty"), "null");
+
 	if (!current_player_.empty()) {
-		controller_options_.push_back(
-			std::make_pair(CNTR_RESERVED, _("Reserved")));
+		add_controller_option(CNTR_RESERVED, _("Reserved"), "human");
 	}
 
-	controller_options_.push_back(std::make_pair(CNTR_LAST, _("--give--")));
-
+	// Connected users.
+	add_controller_option(CNTR_LAST, _("--give--"), "human");
 	BOOST_FOREACH(const std::string& user, parent_.connected_users_) {
-		controller_options_.push_back(std::make_pair(
-			parent_.default_controller_, user));
+		add_controller_option(parent_.default_controller_, user, "human");
 	}
 
 	update_current_controller_index();
@@ -1226,6 +1278,18 @@ void side_engine::set_controller_commandline(const std::string& controller_name)
 	}
 
 	player_id_.clear();
+}
+
+void side_engine::add_controller_option(mp::controller controller,
+		const std::string& name, const std::string& controller_value)
+{
+	if (controller_lock_ && !cfg_["controller"].empty() &&
+		cfg_["controller"] != controller_value) {
+
+		return;
+	}
+
+	controller_options_.push_back(std::make_pair(controller, name));
 }
 
 } // end namespace mp

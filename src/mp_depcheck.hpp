@@ -76,6 +76,15 @@ public:
 						   bool force = false	);
 
 	/**
+	 * Tries to enable/disable a specific modification
+	 *
+	 * @param index     the index of the modification
+	 * @param activate  activate or deactivate
+	 * @param force     whether to skip dependency check
+	 */
+	void try_modification_by_index(int index, bool activate, bool force = false);
+
+	/**
 	 * Tries to set the selected era
 	 *
 	 * @param index 	the index of the era
@@ -111,6 +120,15 @@ public:
 	 * @return the ids of the modifications
 	 */
 	const std::vector<std::string>& get_modifications() const { return mods_; }
+
+	/**
+	 * Tells whether a certain mod is activated.
+	 *
+	 * @param index the index of the mod
+	 *
+	 * @return true if activated, false is not
+	 */
+	bool is_modification_active(int index) const;
 
 	/**
 	 * Returns the selected era

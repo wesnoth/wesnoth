@@ -449,7 +449,6 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("death");
 		animations.back().unit_anim_.override(0,600,particule::NO_CYCLE,"1~0:600");
 		animations.back().sub_anims_["_death_sound"] = particule();
-		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 
 		animations.push_back(*itor);
@@ -468,14 +467,12 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("healed");
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
 		animations.back().sub_anims_["_healed_sound"] = particule();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("poisoned");
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(0,255,0));
 		animations.back().sub_anims_["_poison_sound"] = particule();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 
 	}
@@ -555,7 +552,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["value"] = anim["healing"];
 		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_healed_sound"] = particule();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
 
@@ -567,7 +563,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		anim["value"] = anim["damage"];
 		animations.push_back(unit_animation(anim));
 		animations.back().sub_anims_["_poison_sound"] = particule();
-		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder());
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
 
@@ -665,7 +660,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 									.highlight("1~0:600"));
 		if(!cfg["die_sound"].empty()) {
 			animations.back().sub_anims_["_death_sound"] = particule();
-			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder());
 			animations.back().sub_anims_["_death_sound"].add_frame(1,frame_builder().sound(cfg["die_sound"]),true);
 		}
 	}
@@ -954,17 +948,151 @@ bool unit_animation::invalidate(frame_parameters& value)
 	}
 }
 
+std::string unit_animation::debug() const
+{
+	std::ostringstream outstream;
+	outstream << *this;
+	return outstream.str();
+}
+
+std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation)
+{
+	std::cout << "[";
+	int i=0;
+	BOOST_FOREACH(std::string event, u_animation.event_) {
+		if (i>0) std::cout << ','; i++;
+		std::cout << event;
+	}
+	std::cout << "]\n";
+	
+	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
+
+	if (u_animation.hits_.size() > 0) {
+		std::cout << "\thits=";
+		i=0;
+		BOOST_FOREACH(const unit_animation::hit_type hit_type, u_animation.hits_) {
+			if (i>0) std::cout << ','; i++;
+			switch (hit_type) {
+				case (unit_animation::HIT)     : std::cout << "hit"; break;
+				case (unit_animation::MISS)    : std::cout << "miss"; break;
+				case (unit_animation::KILL)    : std::cout << "kill"; break;
+				case (unit_animation::INVALID) : std::cout << "invalid"; break;
+			}
+		}
+		std::cout << '\n';
+	}
+	if (u_animation.directions_.size() > 0) {
+		std::cout << "\tdirections=";
+		i=0;
+		BOOST_FOREACH(const map_location::DIRECTION direction, u_animation.directions_) {
+			if (i>0) std::cout << ','; i++;
+			switch (direction) {
+				case (map_location::NORTH)     : std::cout << "n"; break;
+				case (map_location::NORTH_EAST): std::cout << "ne"; break;
+				case (map_location::SOUTH_EAST): std::cout << "se"; break;
+				case (map_location::SOUTH)     : std::cout << "s"; break;
+				case (map_location::SOUTH_WEST): std::cout << "sw"; break;
+				case (map_location::NORTH_WEST): std::cout << "nw"; break;
+				default: break;
+			}
+		}
+		std::cout << '\n';
+	}
+	if (u_animation.terrain_types_.size() > 0) {
+		i=0;
+		std::cout << "\tterrain=";
+		BOOST_FOREACH(const t_translation::t_terrain terrain, u_animation.terrain_types_) {
+			if (i>0) std::cout << ','; i++;
+			std::cout << terrain;
+		}
+		std::cout << '\n';
+	}
+	if (u_animation.frequency_>0) std::cout << "frequency=" << u_animation.frequency_ << '\n';
+
+	if (u_animation.unit_filter_.size() > 0) {
+		std::cout << "[filter]\n";
+		BOOST_FOREACH(const config cfg, u_animation.unit_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter]\n";
+	}
+	if (u_animation.secondary_unit_filter_.size() > 0) {
+		std::cout << "[filter_second]\n";
+		BOOST_FOREACH(const config cfg, u_animation.secondary_unit_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter_second]\n";
+	}
+	if (u_animation.primary_attack_filter_.size() > 0) {
+		std::cout << "[filter_attack]\n";
+		BOOST_FOREACH(const config cfg, u_animation.primary_attack_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter_attack]\n";
+	}
+	if (u_animation.secondary_attack_filter_.size() > 0) {
+		std::cout << "[filter_second_attack]\n";
+		BOOST_FOREACH(const config cfg, u_animation.secondary_attack_filter_) {
+			std::cout << cfg.debug();
+		}
+		std::cout << "[/filter_second_attack]\n";
+	}
+
+	for (size_t i=0; i<u_animation.unit_anim_.get_frames_count(); i++) {
+		std::cout << "\t[frame]\n";
+		BOOST_FOREACH(const std::string frame_string, u_animation.unit_anim_.get_frame(i).debug_strings()) {
+			std::cout << "\t\t" << frame_string <<"\n";
+		}
+		std::cout << "\t[/frame]\n";
+	}
+	
+	std::pair<std::string, unit_animation::particule> p;
+	BOOST_FOREACH (p, u_animation.sub_anims_) {
+		for (size_t i=0; i<p.second.get_frames_count(); i++) {
+			std::string sub_frame_name = p.first; 
+			size_t pos = sub_frame_name.find("_frame");
+			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
+			std::cout << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
+			std::cout << "\t[" << p.first << "]\n";
+			BOOST_FOREACH(const std::string frame_string, p.second.get_frame(i).debug_strings()) {
+				std::cout << "\t\t" << frame_string << '\n';
+			}
+			std::cout << "\t[/" << p.first << "]\n";
+		}
+	}
+
+	std::cout << "[/";
+	i=0;
+	BOOST_FOREACH(std::string event, u_animation.event_) {
+		if (i>0) std::cout << ','; i++;
+		std::cout << event;
+	}
+	std::cout << "]\n";
+	return outstream;
+}
 
 
 void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
 	const unit_frame& current_frame= get_current_frame();
-	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
+	const int animation_time = get_animation_time();
+	const frame_parameters default_val = parameters_.parameters(animation_time -get_begin_time());
+	
+	// everything is relative to the first frame in an attack/defense/etc. block.
+	// so we need to check if this particular frame is due to be shown at this time
+	bool in_scope_of_frame = (animation_time >= get_current_frame_begin_time() ? true: false);
+	if (animation_time > get_current_frame_end_time()) in_scope_of_frame = false;
+	
+	// sometimes even if the frame is not due to be shown, a frame image still must be shown.
+	// i.e. in a defense animation that is shorter than an attack animation.
+	// the halos should not persist though and use the 'in_scope_of_frame' variable.
+	
+	// for sound frames we want the first time variable set only after the frame has started.
+	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),true,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value);
+		current_frame.redraw(get_current_frame_time(),false,in_scope_of_frame,src,dst,&halo_id_,default_val,value);
 	}
 }
 void unit_animation::particule::clear_halo()
@@ -996,6 +1124,8 @@ void unit_animation::particule::start_animation(int start_time)
 	animated<unit_frame>::start_animation(start_time,cycles_);
 	last_frame_begin_time_ = get_begin_time() -1;
 }
+
+
 
 void unit_animator::add_animation(unit* animated_unit
 		, const std::string& event

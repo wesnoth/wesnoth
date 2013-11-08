@@ -19,13 +19,17 @@
  */
 
 #include "play_controller.hpp"
+
 #include "actions/create.hpp"
 #include "actions/heal.hpp"
 #include "actions/undo.hpp"
 #include "actions/vision.hpp"
 #include "dialogs.hpp"
+#include "formula_string_utils.hpp"
 #include "game_events/handlers.hpp"
+#include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "loadscreen.hpp"
@@ -40,9 +44,7 @@
 #include "replay.hpp"
 #include "soundsource.hpp"
 #include "tooltips.hpp"
-#include "game_preferences.hpp"
 #include "wml_exception.hpp"
-#include "formula_string_utils.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "whiteboard/manager.hpp"
@@ -800,24 +802,6 @@ bool play_controller::enemies_visible() const
 
 	return false;
 }
-//used in play_controller::execute_command
-void play_controller::fire_wml_menu_item_event(const wml_menu_item &menu_item)
-{
-	const events::command_disabler disable_commands;
-	if(gamedata_.last_selected.valid() && menu_item.needs_select()) 
-	{
-		recorder.add_event("select", gamedata_.last_selected);
-	}
-	map_location const& menu_hex = mouse_handler_.get_last_hex();
-	std::string const & event_name = menu_item.event_name();
-	recorder.add_event(event_name, menu_hex);
-	if(game_events::fire(event_name, menu_hex)) 
-	{
-		// The event has mutated the gamestate
-		undo_stack_->clear();
-	}
-}
-
 
 bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int index)
 {
@@ -829,7 +813,7 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
 		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
-			fire_wml_menu_item_event(*wml_commands_[i]);
+			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
 			return true;
 		}
 	}
@@ -837,27 +821,19 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 	if(command == hotkey::HOTKEY_WML && cmd.command.compare(0, prefixlen, wml_menu_hotkey_prefix) == 0)
 	{
 		std::string name = cmd.command.substr(prefixlen);
-		wmi_container& gs_wmi = gamedata_.get_wml_menu_items();
-		wmi_container::iterator iter = gs_wmi.find(name);
+		game_events::wmi_container& gs_wmi = gamedata_.get_wml_menu_items();
+		game_events::wmi_container::iterator iter = gs_wmi.find(name);
 		if(iter != gs_wmi.end())
 		{
-			//i think this is not needed, but i havent tested without yet.
-			if(name == iter->id())
-			{
-				//copied from expand_wml_commands
-				const map_location& hex = mouse_handler_.get_last_hex();
-				gamedata_.get_variable("x1") = hex.x + 1;
-				gamedata_.get_variable("y1") = hex.y + 1;
-				scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
+			//copied from expand_wml_commands
+			const map_location& hex = mouse_handler_.get_last_hex();
+			gamedata_.get_variable("x1") = hex.x + 1;
+			gamedata_.get_variable("y1") = hex.y + 1;
+			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
-				if (iter->can_show(hex))
-				{
-					if((!iter->needs_select()
-						|| gamedata_.last_selected.valid()))
-					{
-						fire_wml_menu_item_event(*iter);
-					}
-				}
+			if (iter->can_show(hex))
+			{
+				iter->fire_event(mouse_handler_.get_last_hex());
 			}
 		}
 	}
@@ -1210,7 +1186,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "wml") {
 			items.erase(items.begin() + i);
-			const wmi_container & gs_wmi = gamedata_.get_wml_menu_items();
+			const game_events::wmi_container & gs_wmi = gamedata_.get_wml_menu_items();
 			if(gs_wmi.empty())
 				break;
 			std::vector<std::string> newitems;
@@ -1220,11 +1196,11 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			gamedata_.get_variable("y1") = hex.y + 1;
 			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
-			for ( wmi_container::const_iterator itor = gs_wmi.begin();
+			for ( game_events::wmi_container::const_iterator itor = gs_wmi.begin();
 			      itor != gs_wmi.end()  &&  newitems.size() < MAX_WML_COMMANDS;
 			      ++itor)
 			{
-				const wml_menu_item & item = *itor;
+				const game_events::wml_menu_item & item = *itor;
 				if ( item.use_wml_menu() && item.can_show(hex) )
 				{
 					wml_commands_.push_back(&item);
@@ -1319,7 +1295,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	if(index >= 0 && index < static_cast<int>(wml_commands_.size())) {
-		const wml_menu_item* const wmi = wml_commands_[index];
+		const game_events::wml_menu_item* const wmi = wml_commands_[index];
 		if(wmi != NULL) {
 			return wmi->image();
 		}

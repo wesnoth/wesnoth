@@ -381,6 +381,16 @@ void menu::set_inner_location(SDL_Rect const &rect)
 	bg_register(rect);
 }
 
+const menu::item& menu::get_item(int index) const
+{
+	return items_[index];
+}
+
+const menu::item& menu::get_selected_item() const
+{
+	return items_[selection()];
+}
+
 void menu::change_item(int pos1, int pos2,const std::string& str)
 {
 	if(pos1 < 0 || pos1 >= int(item_pos_.size()) ||
@@ -660,8 +670,8 @@ void menu::handle_event(const SDL_Event& event)
 			x = event.button.x;
 			y = event.button.y;
 		} else {
-			x = reinterpret_cast<long>(event.user.data1);
-			y = reinterpret_cast<long>(event.user.data2);
+			x = reinterpret_cast<size_t>(event.user.data1);
+			y = reinterpret_cast<size_t>(event.user.data2);
 		}
 
 		const int item = hit(x,y);

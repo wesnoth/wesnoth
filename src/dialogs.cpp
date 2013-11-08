@@ -709,7 +709,7 @@ private:
 
 void save_preview_pane::decide_on_difficulty_option()
 {
-	if (difficulty_option_ == NULL) {
+	if (difficulty_option_ == NULL || size_t(index_) >= info_->size()) {
 		return;
 	}
 

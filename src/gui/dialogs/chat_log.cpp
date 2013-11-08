@@ -25,6 +25,7 @@
 #include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "gui/widgets/slider.hpp"
 #include "utils/foreach.tpp"
@@ -72,6 +73,7 @@ public:
 		, page_number()
 		, previous_page()
 		, next_page()
+		, filter()
 	{
 		LOG_CHAT_LOG << "entering tchat_log::model...\n";
 		LOG_CHAT_LOG << "finished tchat_log::model...\n";
@@ -85,6 +87,7 @@ public:
 	tslider *page_number;
 	tbutton *previous_page;
 	tbutton *next_page;
+	ttext_box *filter;
 
 	void clear_chat_msg_list()
 	{
@@ -99,6 +102,7 @@ public:
 
 	void populate_chat_message_list(int first, int last)
 	{
+		const std::string& lcfilter = utils::lowercase(filter->get_value());
 		std::stringstream str;
 		LOG_CHAT_LOG << "entering tchat_log::model::add_row_to_chat_message_list\n";
 		if (first<last) {
@@ -106,6 +110,18 @@ public:
 					, make_pair(
 						  chat_log_history.begin() + first
 						, chat_log_history.begin() + last)) {
+
+				const std::string& timestamp = preferences::get_chat_timestamp(t.time());
+
+				if(lcfilter.empty() == false)
+				{
+					const std::string& lcsample =
+						utils::lowercase(timestamp) + utils::lowercase(t.nick()) + utils::lowercase(t.text());
+
+					if(lcsample.find(lcfilter) == std::string::npos) {
+						continue;
+					}
+				}
 
 				std::string prefix("/me");
 				bool me = false;
@@ -119,8 +135,7 @@ public:
 				if (me) {
 					str << nick_prefix
 							<< "&lt;"
-							<< font::escape_text(
-								preferences::get_chat_timestamp(t.time()))
+							<< font::escape_text(timestamp)
 							<< font::escape_text(t.nick())
 							<< font::escape_text(t.text().substr(3))
 							<<"&gt;"
@@ -129,8 +144,7 @@ public:
 				} else {
 					str << nick_prefix
 							<< "&lt;"
-							<< font::escape_text(
-								  preferences::get_chat_timestamp(t.time()))
+							<< font::escape_text(timestamp)
 							<< font::escape_text(t.nick())
 							<< "&gt;"
 							<< nick_suffix
@@ -177,6 +191,13 @@ public:
 		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
 		update_view_from_model();
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::previous_page" << std::endl;
+	}
+
+	void filter()
+	{
+		LOG_CHAT_LOG << "Entering tchat_log::controller::filter" << std::endl;
+		update_view_from_model();
+		LOG_CHAT_LOG << "Exiting tchat_log::controller::filter" << std::endl;
 	}
 
 	void handle_page_number_changed()
@@ -261,6 +282,12 @@ public:
 		window.invalidate_layout();//workaround for assertion failure
 	}
 
+	void filter(twindow &window)
+	{
+		controller_.filter();
+		window.invalidate_layout();//workaround for assertion failure
+	}
+
 	void bind(twindow &window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
@@ -273,6 +300,10 @@ public:
 
 		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
 		model_.next_page->connect_click_handler(boost::bind(&view::next_page, this, boost::ref(window)));
+
+		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
+		model_.filter->set_text_changed_callback(boost::bind(&view::filter, this, boost::ref(window)));
+		window.keyboard_capture(model_.filter);
 
 		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
 	}

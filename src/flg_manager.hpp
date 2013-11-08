@@ -31,7 +31,7 @@ class flg_manager
 {
 public:
 	flg_manager(const std::vector<const config*>& era_factions,
-		const config& side, const bool map_settings, const bool saved_game,
+		const config& side, const bool lock_settings, const bool saved_game,
 		const int color);
 	~flg_manager();
 
@@ -105,7 +105,7 @@ private:
 
 	const config& side_;
 
-	const bool map_settings_;
+	const bool lock_settings_;
 	const bool saved_game_;
 	const bool has_no_recruits_;
 

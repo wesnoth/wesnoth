@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2011-11-22 18:38+0900\n"
+"POT-Creation-Date: 2013-08-17 15:16+0200\n"
+"PO-Revision-Date: 2013-10-25 16:23+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -2815,11 +2815,11 @@ msgstr "격자 표시"
 
 #: src/game_preferences_display.cpp:176
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "시나리오를 마치면 리플레이 저장"
 
 #: src/game_preferences_display.cpp:177
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "시나리오를 마치면 자동 저장 삭제"
 
 #: src/game_preferences_display.cpp:178
 msgid "Do not show lobby joins"
@@ -2843,7 +2843,7 @@ msgstr "로비 목록에 아이콘 쓰기"
 
 #: src/game_preferences_display.cpp:183
 msgid "Save password to preferences (plain text)"
-msgstr ""
+msgstr "설정 파일에 암호 저장 (암호화 안됨)"
 
 #: src/game_preferences_display.cpp:184
 msgid "Set Path to wesnothd"
@@ -3883,10 +3883,8 @@ msgid "Change Side (Debug!)"
 msgstr "진영 변경 (디버그!)"
 
 #: src/hotkeys.cpp:106
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "유닛 창조 (디버그!)"
+msgstr "유닛 죽이기 (디버그!)"
 
 #: src/hotkeys.cpp:108
 msgid "Scenario Objectives"
@@ -4646,7 +4644,6 @@ msgstr ""
 #~ msgid "Change Hotkey"
 #~ msgstr "단축키 바꾸기"
 
-#, fuzzy
 #~| msgid "Select All"
 #~ msgid "Reset All"
 #~ msgstr "모두 선택"

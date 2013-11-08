@@ -70,7 +70,7 @@ public:
 	bool mouse_motion_default(int x, int y, bool update);
 
 	/**
-	 * Called when a mouse motion event takes place. Derived classes mustprovide an
+	 * Called when a mouse motion event takes place. Derived classes must provide an
 	 * implementation, possibly using mouse_motion_default().
 	 */
 	virtual void mouse_motion(int x, int y, const bool browse, bool update=false, map_location new_loc = map_location::null_location) = 0;
@@ -81,7 +81,7 @@ public:
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
 
 	/**
-	 * Derived classes can overrid this to disable mousewheel scrolling under
+	 * Derived classes can override this to disable mousewheel scrolling under
 	 * some circumstances, e.g. when the mouse wheel controls something else,
 	 * but the event is also received by this class
 	 */

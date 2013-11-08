@@ -355,6 +355,23 @@ void manager::try_modifications(const std::vector<std::string>& ids, bool force)
 	}
 }
 
+void manager::try_modification_by_index(int index, bool activate, bool force)
+{
+	std::string id = depinfo_.child("modification", index)["id"];
+	if (activate) {
+		if (std::find(mods_.begin(), mods_.end(), id) == mods_.end()) {
+			mods_.push_back(id);
+		}
+	} else {
+		std::vector<std::string>::iterator pos = std::find(mods_.begin(), mods_.end(), id);
+		if (pos != mods_.end()) {
+			mods_.erase(pos);
+		}
+	}
+
+	try_modifications(mods_, force);
+};
+
 void manager::try_era_by_index(int index, bool force)
 {
 	try_era(depinfo_.child("era", index)["id"], force);
@@ -394,6 +411,13 @@ int manager::get_scenario_index() const
 
 	return -1;
 }
+
+bool manager::is_modification_active(int index) const
+{
+	std::string id = depinfo_.child("modification", index)["id"];
+	return std::find(mods_.begin(), mods_.end(), id) != mods_.end();
+}
+	
 
 
 bool manager::enable_mods_dialog(const std::vector<std::string>& mods,

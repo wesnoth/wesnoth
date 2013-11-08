@@ -183,7 +183,7 @@ public:
 	virtual void diagnostic(const std::string& msg) = 0;
 	virtual void log_message(const std::string& msg) = 0;
 	virtual attack_result_ptr check_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
-	virtual move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) = 0;
 	virtual recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 	virtual stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
@@ -432,7 +432,7 @@ public:
 	virtual attack_result_ptr execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon) = 0;
 
 
-	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true) = 0;
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false) = 0;
 
 
 	virtual recall_result_ptr execute_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
@@ -556,9 +556,9 @@ public:
 		return target_->check_attack_action(attacker_loc, defender_loc, attacker_weapon);
 	}
 
-	virtual move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true)
+	virtual move_result_ptr check_move_action(const map_location &from, const map_location &to, bool remove_movement=true, bool unreach_is_ok=false)
 	{
-		return target_->check_move_action(from, to, remove_movement);
+		return target_->check_move_action(from, to, remove_movement, unreach_is_ok);
 	}
 
 
@@ -1049,9 +1049,9 @@ public:
 	}
 
 
-	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true)
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false)
 	{
-		return target_->execute_move_action(from, to, remove_movement);
+		return target_->execute_move_action(from, to, remove_movement, unreach_is_ok);
 	}
 
 
@@ -1213,7 +1213,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+	move_result_ptr check_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false);
 
 
 
@@ -1608,7 +1608,7 @@ public:
 	 * @retval possible result: move is interrupted
 	 * @retval possible result: move is impossible
 	 */
-	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true);
+	virtual move_result_ptr execute_move_action(const map_location& from, const map_location& to, bool remove_movement=true, bool unreach_is_ok=false);
 
 
 	/**

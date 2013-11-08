@@ -43,6 +43,8 @@ public:
 	const std::string& type() const { return type_; }
 	const std::string& icon() const { return icon_; }
 	const std::string& range() const { return range_; }
+	int min_range() const { return min_range_; }
+	int max_range() const { return max_range_; }
 	std::string accuracy_parry_description() const;
 	int accuracy() const { return accuracy_; }
 	int parry() const { return parry_; }
@@ -97,6 +99,7 @@ private:
 	std::string type_;
 	std::string icon_;
 	std::string range_;
+	int min_range_, max_range_;
 	int damage_;
 	int num_attacks_;
 	double attack_weight_;

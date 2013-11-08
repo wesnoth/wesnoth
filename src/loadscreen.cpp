@@ -127,7 +127,9 @@ void loadscreen::draw_screen(const std::string &text)
 			pby_offset_ = (pbh + area.h)/2;
 			sdl_blit(logo_surface_, 0, gdis, &area);
 		} else {
-			ERR_DP << "loadscreen: Logo image is too big." << std::endl;
+			if (!screen_.faked()) {  // Avoid error if --nogui is used.
+				ERR_DP << "loadscreen: Logo image is too big." << std::endl;
+			}
 		}
 		logo_drawn_ = true;
 		update_rect(area.x, area.y, area.w, area.h);

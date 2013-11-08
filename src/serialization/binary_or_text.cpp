@@ -72,6 +72,12 @@ config_writer::config_writer(
 
 config_writer::~config_writer()
 {
+	//we only need this for gzip but we also do it for bz2 for unification.
+	if(compress_ == GZIP || compress_ == BZIP2)
+	{
+		// prevent empty gz files because of https://svn.boost.org/trac/boost/ticket/5237
+		out_ << "\n";
+	}
 }
 
 void config_writer::write(const config &cfg)

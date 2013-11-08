@@ -352,7 +352,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	idle_anim_slider_.set_value(idle_anim_rate());
 	idle_anim_slider_.set_help_string(_("Set the frequency of unit idle animations"));
 
-	autosavemax_slider_.set_min(1); //at least one autosave is stored
+	autosavemax_slider_.set_min(0);
 	autosavemax_slider_.set_max(preferences::INFINITE_AUTO_SAVES);
 	autosavemax_slider_.set_value(autosavemax());
 	autosavemax_slider_.set_help_string(_("Set maximum number of automatic saves to be retained"));

@@ -119,7 +119,11 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		backstab_pos = is_attacker && backstab_check(u_loc, opp_loc, units, *resources::teams);
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
-		disable = weapon->get_special_bool("disable");
+		{
+			const int distance = distance_between(u_loc, opp_loc);
+			const bool out_of_range = distance > weapon->max_range() || distance < weapon->min_range();
+			disable = weapon->get_special_bool("disable") || out_of_range;
+		}
 
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
@@ -206,6 +210,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 	backstab_pos(false),
 	swarm(false),
 	firststrike(false),
+	disable(false),
 	experience(0),
 	max_experience(0),
 	level(0),
@@ -248,6 +253,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 		poisons = !opp_type->musthave_status("unpoisonable") && weapon->get_special_bool("poison");
 		rounds = weapon->get_specials("berserk").highest("value", 1).first;
 		firststrike = weapon->get_special_bool("firststrike");
+		disable = weapon->get_special_bool("disable");
 
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !opp_type->musthave_status("unplagueable") && !plague_specials.empty() &&
@@ -471,7 +477,9 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
 			attacker_loc, defender_loc, prev_def);
-		return choices[0];
+		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[0],
+						true, defender, defender_loc, &defender.attacks()[*defender_weapon], units);
+		return attacker_stats_->disable ? -1 : choices[0];
 	}
 
 	// Multiple options: simulate them, save best.
@@ -490,6 +498,7 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			}
 			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
 				true, defender, defender_loc, def, units);
+			if (attacker_stats_->disable) continue;
 			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
 				attacker, attacker_loc, &att, units);
 			attacker_combatant_ = new combatant(*attacker_stats_);
@@ -548,8 +557,11 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 	}
 	if (choices.empty())
 		return -1;
-	if (choices.size() == 1)
-		return choices[0];
+	if (choices.size() == 1) {
+		const battle_context_unit_stats def_stats(defender, defender_loc,
+				choices[0], false, attacker, attacker_loc, &att, units);
+		return (def_stats.disable) ? -1 : choices[0];
+	}
 
 	// Multiple options:
 	// First pass : get the best weight and the minimum simple rating for this weight.
@@ -583,8 +595,11 @@ int battle_context::choose_defender_weapon(const unit &attacker,
 				true, defender, defender_loc, &def, units);
 		battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
 				attacker, attacker_loc, &att, units);
-		if (def_stats->disable) continue;
-
+		if (def_stats->disable) {
+			delete att_stats;
+			delete def_stats;
+			continue;
+		}
 		combatant *att_comb = new combatant(*att_stats);
 		combatant *def_comb = new combatant(*def_stats, prev_def);
 		att_comb->fight(*def_comb);

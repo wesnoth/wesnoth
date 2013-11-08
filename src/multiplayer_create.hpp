@@ -50,6 +50,8 @@ private:
 
 	void set_description(const std::string& description);
 
+	void update_mod_menu_images();
+
 	std::string select_campaign_difficulty();
 
 	tooltips::manager tooltip_manager_;
@@ -75,8 +77,7 @@ private:
 	gui::button regenerate_map_;
 	gui::button generator_settings_;
 	gui::button load_game_;
-	//TODO: remove when mods_menu_ would be functional.
-	gui::button choose_mods_;
+	gui::button select_mod_;
 
 	gui::combo level_type_combo_;
 
@@ -89,9 +90,6 @@ private:
 	SDL_Rect image_rect_;
 
 	std::vector<level::TYPE> available_level_types_;
-
-	//TODO: remove when mods_menu_ would be functional.
-	config available_mods_;
 
 	create_engine engine_;
 };

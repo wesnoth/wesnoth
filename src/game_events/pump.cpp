@@ -236,9 +236,6 @@ namespace { // Support functions
 
 	bool process_event(event_handler& handler, const queued_event& ev)
 	{
-		if(handler.disabled())
-			return false;
-
 		unit_map *units = resources::units;
 		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
 		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
@@ -483,9 +480,6 @@ bool pump()
 	// Loop through the events we need to process.
 	while ( !pump_instance.done() )
 	{
-		if(pump_manager::count() <= 1)
-			manager::start_buffering();
-
 		queued_event & ev = pump_instance.next();
 		const std::string& event_name = ev.name;
 
@@ -496,33 +490,31 @@ bool pump()
 		if ( resources::lua_kernel->run_event(ev) )
 			++internal_wml_tracking;
 
-		bool init_event_vars = true;
+		// Initialize an iteration over event handlers matching this event.
+		manager::iteration cur_handler(event_name);
 
-		manager::iterator end_handler = manager::end();
-		manager::iterator cur_handler = manager::begin();
-		for ( ; cur_handler != end_handler; ++cur_handler ) {
+		// If there are any matching event handlers, initialize variables.
+		if ( cur_handler.valid() ) {
+			resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
+			resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
+			resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
+			resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
+		}
+
+		// For each event handler matching this event's name.
+		for ( ; cur_handler.valid(); ++cur_handler ) {
 			event_handler & handler = *cur_handler;
-			if(!handler.matches_name(event_name))
-				continue;
-			// Set the variables for the event
-			if (init_event_vars) {
-				resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
-				resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
-				resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
-				resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
-				init_event_vars = false;
-			}
 
 			DBG_EH << "processing event " << event_name << " with id="<<
 				handler.get_config()["id"] << "\n";
+			// Let this handler process our event.
 			if(process_event(handler, ev))
 			{
+				// Game state changed.
 				result = true;
 			}
 		}
 
-		if(pump_manager::count() <= 1)
-			manager::stop_buffering();
 		// Only commit new handlers when finished iterating over event_handlers.
 		commit();
 	}
@@ -543,9 +535,8 @@ void clear_events()
 
 void commit()
 {
-	DBG_EH << "committing new event handlers, number of pump_instances: " <<
+	DBG_EH << "committing new WML menu item commands; number of pump_instances: " <<
 	          pump_manager::count() << "\n";
-	manager::commit_buffer();
 	commit_wmi_commands();
 	// Dialogs can only be shown if the display is not locked
 	if (!resources::screen->video().update_locked()) {

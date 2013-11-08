@@ -5,12 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009, 2010.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
-"PO-Revision-Date: 2013-04-23 22:10+0100\n"
+"POT-Creation-Date: 2013-08-17 15:16+0200\n"
+"PO-Revision-Date: 2013-09-27 19:41+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -1580,7 +1581,7 @@ msgstr "Successiva"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
 msgid "Custom Time of Day Schedule"
-msgstr ""
+msgstr "Personalizza Andamento Temporale Giornaliero"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:67
@@ -1594,27 +1595,27 @@ msgstr "Nome:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
-msgstr ""
+msgstr "Metadata:"
 
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "Immagine"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
 msgid "Mask"
-msgstr ""
+msgstr "Maschera"
 
 #. [button]: id=sound_button
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
-msgstr ""
+msgstr "Suono"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
@@ -1624,7 +1625,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:201
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "Bonus Legali"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:228
@@ -1644,19 +1645,17 @@ msgstr "Blu:"
 #. [label]: id=tod_number
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. [button]: id=new
 #: data/gui/default/window/custom_tod.cfg:359
 msgid "New ToD"
-msgstr ""
+msgstr "Nuovo ATG"
 
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
-#, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
-msgstr "Elimina"
+msgstr "Elimina ATG"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -3795,10 +3794,8 @@ msgid "Rename Unit"
 msgstr "Rinomina l’unità"
 
 #: src/hotkeys.cpp:88
-#, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "Elimina file"
+msgstr "Elimina unità"
 
 #: src/hotkeys.cpp:91
 msgid "Save Replay"
@@ -3993,7 +3990,7 @@ msgstr "Cambia mappa"
 
 #: src/hotkeys.cpp:150
 msgid "Custom Time of Day Creator"
-msgstr ""
+msgstr "Andamento temporale personalizzato"
 
 #: src/hotkeys.cpp:151
 msgid "Partial Undo"
@@ -4074,6 +4071,9 @@ msgid ""
 "Left mouse button selects or deselects, right brings up a context menu. Hold "
 "Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"Il bottone sinisto del mouse seleziona o deseleziona, il destro attiva un "
+"menù contestuale. Tieni premuto il tasto Maiuscole per selezionare auto-"
+"magicamente tutte le tessere dello stesso tipo di terreno"
 
 #: src/hotkeys.cpp:172
 msgid "Selection Tool"
@@ -4097,6 +4097,8 @@ msgstr "Strumento per le etichette"
 #: src/hotkeys.cpp:174
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
+"Il bottone sinistro del mouse assegna o sposta un’etichetta, il destro "
+"annulla"
 
 #: src/hotkeys.cpp:175
 msgid ""
@@ -4106,7 +4108,7 @@ msgstr ""
 
 #: src/hotkeys.cpp:175
 msgid "Unit Tool"
-msgstr "Strumento le unità"
+msgstr "Strumento per le unità"
 
 #: src/hotkeys.cpp:176
 #, fuzzy
@@ -4141,10 +4143,8 @@ msgid "Village Tool"
 msgstr "Strumento per i villaggi"
 
 #: src/hotkeys.cpp:180
-#, fuzzy
-#| msgid "Recruit"
 msgid "Canrecruit"
-msgstr "Recluta"
+msgstr "Può reclutare"
 
 #: src/hotkeys.cpp:180
 msgid "Toggle the recruit attribute of a unit."
@@ -4161,14 +4161,12 @@ msgid "Toggle the unit being renameable."
 msgstr ""
 
 #: src/hotkeys.cpp:183
-#, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "Cambia il controllo"
+msgstr "Cambia ID dell’unità"
 
 #: src/hotkeys.cpp:184
 msgid "Loyal"
-msgstr ""
+msgstr "Leale"
 
 #: src/hotkeys.cpp:186
 msgid "Toggle Minimap color coding"
@@ -4188,11 +4186,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:191
 msgid "Radius One"
-msgstr ""
+msgstr "Raggio uno"
 
 #: src/hotkeys.cpp:192
 msgid "Radius Two"
-msgstr ""
+msgstr "Raggio due"
 
 #: src/hotkeys.cpp:193
 msgid "Brush NW-SE"
@@ -4214,6 +4212,8 @@ msgstr "Copia"
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"Il bottone sinistro del mouse incolla dagli appunti, il destro fa apparire "
+"un menù contestuale"
 
 #: src/hotkeys.cpp:197
 msgid "Paste"
@@ -4233,7 +4233,7 @@ msgstr "Seleziona l’inverso"
 
 #: src/hotkeys.cpp:201
 msgid "Select None"
-msgstr "Seleziona niente"
+msgstr "Annulla selezione"
 
 #: src/hotkeys.cpp:202
 msgid "Rotate Clipboard Clockwise"
@@ -4419,7 +4419,7 @@ msgstr "Mostra i suggerimenti"
 
 #: src/hotkeys.cpp:256
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Comando non riconosciuto"
 
 #: src/hotkeys.cpp:389 src/hotkeys.cpp:392
 msgid "Button"

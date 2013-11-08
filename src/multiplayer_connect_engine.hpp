@@ -91,6 +91,7 @@ public:
 	std::vector<side_engine_ptr>& side_engines() { return side_engines_; }
 	const mp_game_settings& params() const { return params_; }
 	bool first_scenario() const { return first_scenario_; }
+	bool force_lock_settings() const { return force_lock_settings_; }
 
 private:
 	connect_engine(const connect_engine&);
@@ -111,7 +112,10 @@ private:
 	const mp_game_settings& params_;
 
 	const mp::controller default_controller_;
+	const bool local_players_only_;
 	const bool first_scenario_;
+
+	bool force_lock_settings_;
 
 	std::vector<side_engine_ptr> side_engines_;
 	std::vector<const config*> era_factions_;
@@ -119,7 +123,6 @@ private:
 	std::vector<std::string> user_team_names_;
 	std::vector<std::string> player_teams_;
 	std::set<std::string> connected_users_;
-	std::vector<controller_option> default_controller_options_;
 };
 
 class side_engine
@@ -139,7 +142,7 @@ public:
 	// players are allowed.
 	bool available_for_user(const std::string& name = "") const;
 
-	void swap_sides_on_drop_target(const int drop_target);
+	bool swap_sides_on_drop_target(const unsigned drop_target);
 
 	void resolve_random();
 
@@ -173,6 +176,9 @@ public:
 	void set_index(int index) { index_ = index; }
 	int team() const { return team_; }
 	void set_team(int team) { team_ = team; }
+	std::vector<std::string> get_children_to_swap();
+	std::multimap<std::string, config> get_side_children();
+	void set_side_children(std::multimap<std::string, config> children); 
 	int color() const { return color_; }
 	void set_color(int color) { color_ = color; }
 	int gold() const { return gold_; }
@@ -195,6 +201,9 @@ private:
 	side_engine(const side_engine& engine);
 	void operator=(const side_engine&);
 
+	void add_controller_option(mp::controller controller,
+		const std::string& name, const std::string& controller_value);
+
 	config cfg_;
 	connect_engine& parent_;
 
@@ -204,6 +213,7 @@ private:
 
 	const bool allow_player_;
 	const bool allow_changes_;
+	const bool controller_lock_;
 
 	int index_;
 	int team_;

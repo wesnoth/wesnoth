@@ -154,6 +154,28 @@ namespace {
 
 
 	/**
+	 * Updates the current healing and harming amounts based on a new value.
+	 * This is a helper function for heal_amount().
+	 * @returns true if an amount was updated.
+	 */
+	inline bool update_healing(int & healing, int & harming, int value)
+	{
+		// If the new value magnifies the healing, update and return true.
+		if ( value > healing ) {
+			healing = value;
+			return true;
+		}
+
+		// If the new value magnifies the harming, update and return true.
+		if ( value < harming ) {
+			harming = value;
+			return true;
+		}
+
+		// Keeping the same values as before.
+		return false;
+	}
+	/**
 	 * Calculate how much @patient heals this turn.
 	 * If healed by units, those units are added to @a healers.
 	 */
@@ -162,17 +184,19 @@ namespace {
 		unit_map &units = *resources::units;
 
 		int healing = 0;
+		int harming = 0;
 
 
 		if ( patient.side() == side )
 		{
 			// Village healing?
-			healing = resources::game_map->gives_healing(patient.get_location());
+			update_healing(healing, harming,
+			               resources::game_map->gives_healing(patient.get_location()));
 
 			// Regeneration?
 			unit_ability_list regen_list = patient.get_abilities("regenerate");
 			unit_abilities::effect regen_effect(regen_list, 0, false);
-			healing = std::max(healing, regen_effect.get_composite_value());
+			update_healing(healing, harming, regen_effect.get_composite_value());
 		}
 
 		// Check healing from other units.
@@ -191,10 +215,8 @@ namespace {
 
 		// Now we can get the aggregate healing amount.
 		unit_abilities::effect heal_effect(heal_list, 0, false);
-		int unit_heal = heal_effect.get_composite_value();
-		if ( unit_heal > healing )
+		if ( update_healing(healing, harming, heal_effect.get_composite_value()) )
 		{
-			healing = unit_heal;
 			// Collect the healers involved.
 			BOOST_FOREACH (const unit_abilities::individual_effect & heal, heal_effect)
 				healers.push_back(&*units.find(heal.loc));
@@ -204,7 +226,7 @@ namespace {
 			}
 		}
 
-		return healing;
+		return healing + harming;
 	}
 
 
