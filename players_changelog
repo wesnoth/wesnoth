@@ -25,6 +25,11 @@ Version 1.11.6+dev:
    * It is possible to choose a stronger AI in multiplayer games
      ('Strong AI (RCA)'). For now it affects the recruitment CA only.
 
+ * Campaigns:
+   * Liberty:
+     * Gave the Death Squire the submerge ability.
+     * Increased the Death Squire's blade resistance from 10% to 40%, pierce resistance from 30% to 60% and lowered its impact resistance from -10% to -20%.
+
  * Engine:
    * CampaignWML support for multiplayer. Game will reload a config during
      the creation of multiplayer game and possibly, after a player joins a game.
@@ -43,11 +48,13 @@ Version 1.11.6+dev:
  * Multiplayer:
    * Legend of Wesmere campaign is available to play in multiplayer.
 
- * Units:
-   * Gave the Death Knight proper skeletal resistances, as well as submerge.
-   * Lowered the Death Knight's HP by 3.
-   * Changed the Chocobone's movement cost, making it more like a mounted unit.
-   * Gave the Chocobone +2 melee damage and +10% blade resistance.
+ * Unit changes and balancing:
+   * Gave the Death Knight the submerge ability.
+   * Increased the Death Knight's blade resistance from 10% to 40%, pierce resistance from 30% to 60% and lowered its impact resistance from -10% to -20%.
+   * Lowered the Death Knight's HP from 66 to 63.
+   * Lowered the Chocobone's hills defense from 50% to 40%, mountain defense from 60% to 50%, fungus defense from 60% to 40%, forest defense from 50% to 30%, and village defense from 60% to 40%.
+   * Increased the Chocobone's melee damage from 9-2 to 11-2.
+   * Increased the Chocobone's blade resistance from 10% to 20%.
 
  * User Interface:
    * Revamped multiplayer "Create" screen and separated part of it to a new
