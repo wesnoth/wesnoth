@@ -31,6 +31,8 @@
 
 #include "scripting/lua.hpp"
 #include "scripting/lua_api.hpp"
+#include "scripting/lua_types.hpp"
+
 
 #include "actions/attack.hpp"
 #include "ai/manager.hpp"
@@ -130,457 +132,6 @@ namespace {
 		("_from_lua", map_location(), map_location(), config());
 }//unnamed namespace for queued_event_context
 
-/* Dummy pointer for getting unique keys for Lua's registry. */
-static char const dlgclbkKey = 0;
-static char const executeKey = 0;
-static char const getsideKey = 0;
-static char const gettextKey = 0;
-static char const gettypeKey = 0;
-static char const getraceKey = 0;
-static char const getunitKey = 0;
-static char const tstringKey = 0;
-static char const unitvarKey = 0;
-static char const ustatusKey = 0;
-static char const vconfigKey = 0;
-
-/**
- * Displays a message in the chat window.
- */
-static void chat_message(std::string const &caption, std::string const &msg)
-{
-	resources::screen->add_chat_message(time(NULL), caption, 0, msg,
-		events::chat_handler::MESSAGE_PUBLIC, false);
-}
-
-/**
- * Pushes a vconfig on the top of the stack.
- */
-static void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
-{
-	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
-	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&vconfigKey)));
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
-}
-
-/**
- * Pushes a t_string on the top of the stack.
- */
-static void luaW_pushtstring(lua_State *L, t_string const &v)
-{
-	new(lua_newuserdata(L, sizeof(t_string))) t_string(v);
-	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&tstringKey)));
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
-}
-
-namespace {
-	struct luaW_pushscalar_visitor : boost::static_visitor<>
-	{
-		lua_State *L;
-		luaW_pushscalar_visitor(lua_State *l): L(l) {}
-
-		void operator()(boost::blank const &) const
-		{ lua_pushnil(L); }
-		void operator()(bool b) const
-		{ lua_pushboolean(L, b); }
-		void operator()(int i) const
-		{ lua_pushinteger(L, i); }
-		void operator()(unsigned long long ull) const
-		{ lua_pushnumber(L, ull); }
-		void operator()(double d) const
-		{ lua_pushnumber(L, d); }
-		void operator()(std::string const &s) const
-		{ lua_pushstring(L, s.c_str()); }
-		void operator()(t_string const &s) const
-		{ luaW_pushtstring(L, s); }
-	};
-}//unnamed namespace for luaW_pushscalar_visitor
-
-/**
- * Converts a string into a Lua object pushed at the top of the stack.
- */
-static void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
-{
-	v.apply_visitor(luaW_pushscalar_visitor(L));
-}
-
-/**
- * Returns true if the metatable of the object is the one found in the registry.
- */
-static bool luaW_hasmetatable(lua_State *L
-		, int index
-		, char const &key)
-{
-	if (!lua_getmetatable(L, index))
-		return false;
-	lua_pushlightuserdata(L, static_cast<void *>(const_cast<char *>(&key)));
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	bool ok = lua_rawequal(L, -1, -2);
-	lua_pop(L, 2);
-	return ok;
-}
-
-/**
- * Converts a scalar to a translatable string.
- */
-static bool luaW_totstring(lua_State *L, int index, t_string &str)
-{
-	switch (lua_type(L, index)) {
-		case LUA_TBOOLEAN:
-			str = lua_toboolean(L, index) ? "yes" : "no";
-			break;
-		case LUA_TNUMBER:
-		case LUA_TSTRING:
-			str = lua_tostring(L, index);
-			break;
-		case LUA_TUSERDATA:
-		{
-			if (!luaW_hasmetatable(L, index, tstringKey)) return false;
-			str = *static_cast<t_string *>(lua_touserdata(L, index));
-			break;
-		}
-		default:
-			return false;
-	}
-	return true;
-}
-
-/**
- * Converts a scalar to a translatable string.
- */
-static t_string luaW_checktstring(lua_State *L, int index)
-{
-	t_string result;
-	if (!luaW_totstring(L, index, result))
-		luaL_typerror(L, index, "translatable string");
-	return result;
-}
-
-/**
- * Converts a config object to a Lua table.
- * The destination table should be at the top of the stack on entry. It is
- * still at the top on exit.
- */
-static void luaW_filltable(lua_State *L, config const &cfg)
-{
-	if (!lua_checkstack(L, LUA_MINSTACK))
-		return;
-
-	int k = 1;
-	BOOST_FOREACH(const config::any_child &ch, cfg.all_children_range())
-	{
-		lua_createtable(L, 2, 0);
-		lua_pushstring(L, ch.key.c_str());
-		lua_rawseti(L, -2, 1);
-		lua_newtable(L);
-		luaW_filltable(L, ch.cfg);
-		lua_rawseti(L, -2, 2);
-		lua_rawseti(L, -2, k++);
-	}
-	BOOST_FOREACH(const config::attribute &attr, cfg.attribute_range())
-	{
-		luaW_pushscalar(L, attr.second);
-		lua_setfield(L, -2, attr.first.c_str());
-	}
-}
-
-/**
- * Converts a config object to a Lua table pushed at the top of the stack.
- */
-void luaW_pushconfig(lua_State *L, config const &cfg)
-{
-	lua_newtable(L);
-	luaW_filltable(L, cfg);
-}
-
-#define return_misformed() \
-  do { lua_settop(L, initial_top); return false; } while (0)
-
-/**
- * Converts an optional table or vconfig to a config object.
- * @param tstring_meta absolute stack position of t_string's metatable, or 0 if none.
- * @return false if some attributes had not the proper type.
- * @note If the table has holes in the integer keys or floating-point keys,
- *       some keys will be ignored and the error will go undetected.
- */
-bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
-{
-	if (!lua_checkstack(L, LUA_MINSTACK))
-		return false;
-
-	// Get the absolute index of the table.
-	int initial_top = lua_gettop(L);
-	if (-initial_top <= index && index <= -1)
-		index = initial_top + index + 1;
-
-	switch (lua_type(L, index))
-	{
-		case LUA_TTABLE:
-			break;
-		case LUA_TUSERDATA:
-		{
-			if (!luaW_hasmetatable(L, index, vconfigKey))
-				return false;
-			cfg = static_cast<vconfig *>(lua_touserdata(L, index))->get_parsed_config();
-			return true;
-		}
-		case LUA_TNONE:
-		case LUA_TNIL:
-			return true;
-		default:
-			return false;
-	}
-
-	// Get t_string's metatable, so that it can be used later to detect t_string object.
-	if (!tstring_meta) {
-		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&tstringKey)));
-
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		tstring_meta = initial_top + 1;
-	}
-
-	// First convert the children (integer indices).
-	for (int i = 1, i_end = lua_rawlen(L, index); i <= i_end; ++i)
-	{
-		lua_rawgeti(L, index, i);
-		if (!lua_istable(L, -1)) return_misformed();
-		lua_rawgeti(L, -1, 1);
-		char const *m = lua_tostring(L, -1);
-		if (!m) return_misformed();
-		lua_rawgeti(L, -2, 2);
-		if (!luaW_toconfig(L, -1, cfg.add_child(m), tstring_meta))
-			return_misformed();
-		lua_pop(L, 3);
-	}
-
-	// Then convert the attributes (string indices).
-	for (lua_pushnil(L); lua_next(L, index); lua_pop(L, 1))
-	{
-		if (lua_isnumber(L, -2)) continue;
-		if (!lua_isstring(L, -2)) return_misformed();
-		config::attribute_value &v = cfg[lua_tostring(L, -2)];
-		switch (lua_type(L, -1)) {
-			case LUA_TBOOLEAN:
-				v = bool(lua_toboolean(L, -1));
-				break;
-			case LUA_TNUMBER:
-				v = lua_tonumber(L, -1);
-				break;
-			case LUA_TSTRING:
-				v = lua_tostring(L, -1);
-				break;
-			case LUA_TUSERDATA:
-			{
-				if (!lua_getmetatable(L, -1)) return_misformed();
-				bool tstr = lua_rawequal(L, -1, tstring_meta) != 0;
-				lua_pop(L, 1);
-				if (!tstr) return_misformed();
-				v = *static_cast<t_string *>(lua_touserdata(L, -1));
-				break;
-			}
-			default:
-				return_misformed();
-		}
-	}
-
-	lua_settop(L, initial_top);
-	return true;
-}
-
-#undef return_misformed
-
-/**
- * Converts an optional table or vconfig to a config object.
- */
-static config luaW_checkconfig(lua_State *L, int index)
-{
-	config result;
-	if (!luaW_toconfig(L, index, result))
-		luaL_typerror(L, index, "WML table");
-	return result;
-}
-
-/**
- * Gets an optional vconfig from either a table or a userdata.
- * @return false in case of failure.
- */
-bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
-{
-	switch (lua_type(L, index))
-	{
-		case LUA_TTABLE:
-		{
-			config cfg;
-			bool ok = luaW_toconfig(L, index, cfg);
-			if (!ok) return false;
-			vcfg = vconfig(cfg, true);
-			break;
-		}
-		case LUA_TUSERDATA:
-			if (!luaW_hasmetatable(L, index, vconfigKey))
-				return false;
-			vcfg = *static_cast<vconfig *>(lua_touserdata(L, index));
-			break;
-		case LUA_TNONE:
-		case LUA_TNIL:
-			break;
-		default:
-			return false;
-	}
-	return true;
-}
-
-/**
- * Gets an optional vconfig from either a table or a userdata.
- * @param allow_missing true if missing values are allowed; the function
- *        then returns an unconstructed vconfig.
- */
-static vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = false)
-{
-	vconfig result = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, index, result) || (!allow_missing && result.null()))
-		luaL_typerror(L, index, "WML table");
-	return result;
-}
-
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable: 4706)
-#endif
-/**
- * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
- * @param nRets LUA_MULTRET for unbounded return values.
- * @return true if the call was successful and @a nRets return values are available.
- */
-bool luaW_pcall(lua_State *L
-		, int nArgs, int nRets, bool allow_wml_error)
-{
-	// Load the error handler before the function and its arguments.
-	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&executeKey)));
-
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_insert(L, -2 - nArgs);
-
-	int error_handler_index = lua_gettop(L) - nArgs - 1;
-
-	// Call the function.
-	int res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
-	tlua_jailbreak_exception::rethrow();
-
-	if (res)
-	{
-		/*
-		 * When an exception is thrown which doesn't derive from
-		 * std::exception m will be NULL pointer.
-		 */
-		char const *m = lua_tostring(L, -1);
-		if(m) {
-			if (allow_wml_error && strncmp(m, "~wml:", 5) == 0) {
-				m += 5;
-				char const *e = strstr(m, "stack traceback");
-				lg::wml_error << std::string(m, e ? e - m : strlen(m));
-			} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
-				m += 5;
-				char const *e = NULL, *em = m;
-				while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
-					e = em;
-				chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
-			} else {
-				ERR_LUA << m << '\n';
-				chat_message("Lua error", m);
-			}
-		} else {
-			chat_message("Lua caught unknown exception", "");
-		}
-		lua_pop(L, 2);
-		return false;
-	}
-
-	// Remove the error handler.
-	lua_remove(L, error_handler_index);
-
-	return true;
-}
-
-/**
- * Pushes the value found by following the variadic names (char *), if the
- * value is not nil.
- * @return true if an element was pushed.
- */
-#ifdef __GNUC__
-__attribute__((sentinel))
-#endif
-static bool luaW_getglobal(lua_State *L, ...)
-{
-	lua_pushglobaltable(L);
-	va_list ap;
-	va_start(ap, L);
-	while (const char *s = va_arg(ap, const char *))
-	{
-		if (!lua_istable(L, -1)) goto discard;
-		lua_pushstring(L, s);
-		lua_rawget(L, -2);
-		lua_remove(L, -2);
-	}
-	va_end(ap);
-
-	if (lua_isnil(L, -1)) {
-		discard:
-		lua_pop(L, 1);
-		return false;
-	}
-	return true;
-}
-
-lua_unit::~lua_unit()
-{
-	delete ptr;
-}
-
-unit *lua_unit::get()
-{
-	if (ptr) return ptr;
-	if (side) {
-		BOOST_FOREACH(unit &u, (*resources::teams)[side - 1].recall_list()) {
-			if (u.underlying_id() == uid) return &u;
-		}
-		return NULL;
-	}
-	unit_map::unit_iterator ui = resources::units->find(uid);
-	if (!ui.valid()) return NULL;
-	return &*ui;
-}
-
-/**
- * Converts a Lua value to a unit pointer.
- */
-unit *luaW_tounit(lua_State *L, int index, bool only_on_map)
-{
-	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
-	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
-	if (only_on_map && !lu->on_map()) return NULL;
-	return lu->get();
-}
-
-/**
- * Converts a Lua value to a unit pointer.
- */
-static unit *luaW_checkunit(lua_State *L, int index, bool only_on_map = false)
-{
-	unit *u = luaW_tounit(L, index, only_on_map);
-	if (!u) luaL_typerror(L, index, "unit");
-	return u;
-}
 
 /**
  * Creates a t_string object (__call metamethod).
@@ -609,7 +160,7 @@ static int intf_textdomain(lua_State *L)
 	void *p = lua_newuserdata(L, l + 1);
 	memcpy(p, m, l + 1);
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&gettextKey)));
+			, gettextKey);
 
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
@@ -651,7 +202,7 @@ static int impl_tstring_concat(lua_State *L)
 	t_string *t = new(lua_newuserdata(L, sizeof(t_string))) t_string;
 
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&tstringKey)));
+			, tstringKey);
 
 	lua_rawget(L, LUA_REGISTRYINDEX);
 
@@ -705,7 +256,7 @@ static int impl_vconfig_get(lua_State *L)
 		lua_rawseti(L, -2, 1);
 		new(lua_newuserdata(L, sizeof(vconfig))) vconfig(i.get_child());
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&vconfigKey)));
+				, vconfigKey);
 
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_setmetatable(L, -2);
@@ -1023,7 +574,7 @@ static int impl_unit_get(lua_State *L)
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&ustatusKey)));
+				, ustatusKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_setmetatable(L, -2);
 		return 1;
@@ -1033,7 +584,7 @@ static int impl_unit_get(lua_State *L)
 		lua_pushvalue(L, 1);
 		lua_rawseti(L, -2, 1);
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&unitvarKey)));
+				, unitvarKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_setmetatable(L, -2);
 		return 1;
@@ -1209,7 +760,7 @@ static int intf_get_unit(lua_State *L)
 
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
@@ -1230,7 +781,7 @@ static int intf_get_displayed_unit(lua_State *L)
 
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
@@ -1250,7 +801,7 @@ static int intf_get_units(lua_State *L)
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
 	lua_settop(L, 0);
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1;
@@ -1317,7 +868,7 @@ static int intf_get_recall_units(lua_State *L)
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
 	lua_settop(L, 0);
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	int i = 1, s = 1;
@@ -2726,7 +2277,7 @@ static int intf_create_unit(lua_State *L)
 	unit *u = new unit(cfg, true, resources::state_of_game);
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
@@ -2742,7 +2293,7 @@ static int intf_copy_unit(lua_State *L)
 	unit const *u = luaW_checkunit(L, 1);
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(new unit(*u));
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 	return 1;
@@ -3112,7 +2663,7 @@ namespace {
 		: L(l), prev(current), window(w), callbacks()
 	{
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+				, dlgclbkKey);
 		lua_createtable(L, 1, 0);
 		lua_pushvalue(L, -2);
 		lua_rawget(L, LUA_REGISTRYINDEX);
@@ -3126,7 +2677,7 @@ namespace {
 		delete window;
 		current = prev;
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+				, dlgclbkKey);
 		lua_pushvalue(L, -1);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, 1);
@@ -3340,7 +2891,7 @@ namespace { // helpers of intf_set_dialog_callback()
 		}
 		lua_State *L = scoped_dialog::current->L;
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+				, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_rawgeti(L, -1, cb);
 		lua_remove(L, -2);
@@ -3372,7 +2923,7 @@ static int intf_set_dialog_callback(lua_State *L)
 	if (i != m.end())
 	{
 		lua_pushlightuserdata(L
-				, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+				, dlgclbkKey);
 		lua_rawget(L, LUA_REGISTRYINDEX);
 		lua_pushnil(L);
 		lua_rawseti(L, -2, i->second);
@@ -3409,7 +2960,7 @@ static int intf_set_dialog_callback(lua_State *L)
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&dlgclbkKey)));
+			, dlgclbkKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	int n = lua_rawlen(L, -1) + 1;
 	m[w] = n;
@@ -3585,7 +3136,7 @@ static int intf_get_sides(lua_State* L)
 
 	lua_settop(L, 0);
 	lua_pushlightuserdata(L
-			, static_cast<void*>(const_cast<char *>(&getsideKey)));
+			, getsideKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_createtable(L, sides.size(), 0);
 	unsigned index = 1;
@@ -4066,7 +3617,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the getside metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getsideKey)));
+			, getsideKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_side_get);
 	lua_setfield(L, -2, "__index");
@@ -4078,7 +3629,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the gettext metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&gettextKey)));
+			, gettextKey);
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, impl_gettext);
 	lua_setfield(L, -2, "__call");
@@ -4088,7 +3639,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the gettype metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&gettypeKey)));
+			, gettypeKey);
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, impl_unit_type_get);
 	lua_setfield(L, -2, "__index");
@@ -4098,7 +3649,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	//Create the getrace metatable
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getraceKey)));
+			, getraceKey);
 	lua_createtable(L, 0, 2);
 	lua_pushcfunction(L, impl_race_get);
 	lua_setfield(L, -2, "__index");
@@ -4108,7 +3659,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the getunit metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_createtable(L, 0, 5);
 	lua_pushcfunction(L, impl_unit_collect);
 	lua_setfield(L, -2, "__gc");
@@ -4124,7 +3675,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the tstring metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&tstringKey)));
+			, tstringKey);
 	lua_createtable(L, 0, 4);
 	lua_pushcfunction(L, impl_tstring_concat);
 	lua_setfield(L, -2, "__concat");
@@ -4138,7 +3689,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the unit status metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&ustatusKey)));
+			, ustatusKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_status_get);
 	lua_setfield(L, -2, "__index");
@@ -4150,7 +3701,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the unit variables metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&unitvarKey)));
+			, unitvarKey);
 	lua_createtable(L, 0, 3);
 	lua_pushcfunction(L, impl_unit_variables_get);
 	lua_setfield(L, -2, "__index");
@@ -4162,7 +3713,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Create the vconfig metatable.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&vconfigKey)));
+			, vconfigKey);
 	lua_createtable(L, 0, 4);
 	lua_pushcfunction(L, impl_vconfig_collect);
 	lua_setfield(L, -2, "__gc");
@@ -4241,7 +3792,7 @@ LuaKernel::LuaKernel(const config &cfg)
 
 	// Store the error handler.
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&executeKey)));
+			, executeKey);
 	lua_getglobal(L, "debug");
 	lua_getfield(L, -1, "traceback");
 	lua_remove(L, -2);
@@ -4286,7 +3837,7 @@ void LuaKernel::initialize()
 	lua_getglobal(L, "wesnoth");
 	std::vector<team> &teams = *resources::teams;
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getsideKey)));
+			, getsideKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_createtable(L, teams.size(), 0);
 	for (unsigned i = 0; i != teams.size(); ++i)
@@ -4304,7 +3855,7 @@ void LuaKernel::initialize()
 	// Create the unit_types table.
 	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&gettypeKey)));
+			, gettypeKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
@@ -4322,7 +3873,7 @@ void LuaKernel::initialize()
 	//Create the races table.
 	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getraceKey)));
+			, getraceKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	const race_map& races = unit_types.races();
 	lua_createtable(L, 0, races.size());
@@ -4533,7 +4084,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	// Pass the unit as argument.
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L
-			, static_cast<void *>(const_cast<char *>(&getunitKey)));
+			, getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
 
