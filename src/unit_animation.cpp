@@ -106,18 +106,24 @@ struct animation_cursor
 		// Also, the attributes are merged here between branches.
 		bool condition_value_hits_set = false;
 		bool condition_value_direction_set = false;
+		bool condition_value_terrain_set = false;
 		std::string s_cfg_hits = cfg["hits"];
 		std::string s_cfg_direction = cfg["direction"];
+		std::string s_cfg_terrain = cfg["terrain_types"];
 		for (std::list<animation_branch>::iterator bi = branches.begin();
 			 bi != branches.end(); ++bi)
 		{
 			std::string s_branch_hits = (*bi).attributes["hits"];
 			std::string s_branch_direction = (*bi).attributes["direction"];
+			std::string s_branch_terrain = (*bi).attributes["terrain_types"];
 			if (s_branch_hits != "" && s_branch_hits == s_cfg_hits) {
 				condition_value_hits_set = true;
 			}
 			if (s_branch_direction != "" && s_branch_direction == s_cfg_direction) {
 				condition_value_direction_set = true;
+			}
+			if (s_branch_terrain != "" && s_branch_terrain == s_cfg_terrain) {
+				condition_value_terrain_set = true;
 			}
 		}
 		// Merge all frames that have new matches and prune any impossible
@@ -127,11 +133,14 @@ struct animation_cursor
 		{
 			std::string s_branch_hits = (*bi).attributes["hits"];
 			std::string s_branch_direction = (*bi).attributes["direction"];
+			std::string s_branch_terrain = (*bi).attributes["terrain_types"];
 			bool hits_match = (condition_value_hits_set && s_branch_hits != s_cfg_hits);
 			bool direction_match = (condition_value_direction_set && s_branch_direction != s_cfg_direction);
-			if ( (hits_match && !condition_value_direction_set) ||
-			     (direction_match && !condition_value_hits_set) ||
-			     (hits_match && direction_match) )
+			bool terrain_match = (condition_value_terrain_set && s_branch_terrain != s_cfg_terrain);
+			if ( (!condition_value_hits_set || hits_match) &&
+			     (!condition_value_direction_set || direction_match) && 
+			     (!condition_value_terrain_set || terrain_match) && 
+			     (hits_match || direction_match || terrain_match) )
 			{
 				branches.erase(bi++);
 			}
@@ -147,11 +156,14 @@ struct animation_cursor
 		{
 			std::string s_branch_hits = (*bi).attributes["hits"];
 			std::string s_branch_direction = (*bi).attributes["direction"];
+			std::string s_branch_terrain = (*bi).attributes["terrain_types"];
 			bool hits_match = (condition_value_hits_set && s_branch_hits == s_cfg_hits);
 			bool direction_match = (condition_value_direction_set && s_branch_direction == s_cfg_direction);
-			if ( (hits_match && !condition_value_direction_set) ||
-			     (direction_match && !condition_value_hits_set) ||
-			     (hits_match && direction_match) )
+			bool terrain_match = (condition_value_terrain_set && s_branch_terrain == s_cfg_terrain);
+			if ( (!condition_value_hits_set || hits_match) &&
+			     (!condition_value_direction_set || direction_match) && 
+			     (!condition_value_terrain_set || terrain_match) && 
+			     (hits_match || direction_match || terrain_match) )
 			{
 				branches.erase(bi++);
 			}
