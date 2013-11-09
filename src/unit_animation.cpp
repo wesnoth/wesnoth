@@ -100,32 +100,62 @@ struct animation_cursor
 	animation_cursor(const config &cfg, animation_cursor *p):
 		itors(cfg.all_children_range()), branches(p->branches), parent(p)
 	{
-		bool condition_value_set = false;
+		// If similar 'if' condition in parent branches, we need to
+		// cull the branches where there are partial matches.
+		// Hence the need to check if the condition has come up before.
+		// Also, the attributes are merged here between branches.
+		bool condition_value_hits_set = false;
+		bool condition_value_direction_set = false;
+		std::string s_cfg_hits = cfg["hits"];
+		std::string s_cfg_direction = cfg["direction"];
 		for (std::list<animation_branch>::iterator bi = branches.begin();
 			 bi != branches.end(); ++bi)
 		{
-			std::string s1 = (*bi).attributes["hits"];
-			if (s1.length() > 0) {
-				condition_value_set = true;
+			std::string s_branch_hits = (*bi).attributes["hits"];
+			std::string s_branch_direction = (*bi).attributes["direction"];
+			if (s_branch_hits != "" && s_branch_hits == s_cfg_hits) {
+				condition_value_hits_set = true;
+			}
+			if (s_branch_direction != "" && s_branch_direction == s_cfg_direction) {
+				condition_value_direction_set = true;
 			}
 		}
-		
+		// Merge all frames that have new matches and prune any impossible
+		// matches, e.g. hits='yes' and hits='no'
 		for (std::list<animation_branch>::iterator bi = branches.begin();
 			 bi != branches.end(); /* nothing */)
 		{
-			std::string s1 = (*bi).attributes["hits"];
-			std::string s2 = cfg["hits"];
-			if (condition_value_set && s1 != s2) {
+			std::string s_branch_hits = (*bi).attributes["hits"];
+			std::string s_branch_direction = (*bi).attributes["direction"];
+			bool hits_match = (condition_value_hits_set && s_branch_hits != s_cfg_hits);
+			bool direction_match = (condition_value_direction_set && s_branch_direction != s_cfg_direction);
+			if ( (hits_match && !condition_value_direction_set) ||
+			     (direction_match && !condition_value_hits_set) ||
+			     (hits_match && direction_match) )
+			{
 				branches.erase(bi++);
 			}
 			else {
-				//temporary debug code
-				/*std::cout << s1 << ", " << s2 << "\n";
-				std::cout << "merging -- " << cfg;
-				std::cout << "with --" << (*bi).attributes << "\n";*/
 				(*bi).attributes.merge_attributes(cfg);
 				bi++;
 			}
+		}
+		// Then we prune all parent branches with similar matches as they
+		// now will not have the full frame list
+		for (std::list<animation_branch>::iterator bi = parent->branches.begin();
+			 bi != parent->branches.end(); /* nothing */)
+		{
+			std::string s_branch_hits = (*bi).attributes["hits"];
+			std::string s_branch_direction = (*bi).attributes["direction"];
+			bool hits_match = (condition_value_hits_set && s_branch_hits == s_cfg_hits);
+			bool direction_match = (condition_value_direction_set && s_branch_direction == s_cfg_direction);
+			if ( (hits_match && !condition_value_direction_set) ||
+			     (direction_match && !condition_value_hits_set) ||
+			     (hits_match && direction_match) )
+			{
+				branches.erase(bi++);
+			}
+			else bi++;
 		}
 	}
 };
@@ -168,21 +198,19 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 			++count;
 		} while (ac.itors.first != ac.itors.second && ac.itors.first->key == "else");
 		if (count > 1) {
-			/* There are some "else" clauses, discard the branches
-			   from the current cursor. */
-			//ac.branches.clear();
+			// When else statements present, clear all branches before 'if'
+			ac.branches.clear();
 		}
 	}
 
 	//debug
 	/*BOOST_FOREACH(animation_branch &ab, anim_cursors.back().branches) {
 		std::cout << "--branch--\n" << ab.attributes;
-		
 		BOOST_FOREACH(config::all_children_iterator &ci, ab.children) {
 			std::cout << "--branchcfg--\n" << ci->cfg;
 		}
 		std::cout << "\n";
-	}/* */
+	}*/
 
 	// Create the config object describing each branch.
 	assert(anim_cursors.size() == 1);
