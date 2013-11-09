@@ -353,7 +353,7 @@ bool manager::iteration::is_name_mismatch() const
 
 event_handler::event_handler(const config &cfg, bool imi) :
 	first_time_only_(cfg["first_time_only"].to_bool(true)),
-	is_menu_item_(imi), index_(-1), cfg_(cfg)
+	is_menu_item_(imi), index_(static_cast<size_t>(-1)), cfg_(cfg)
 {}
 
 /**
