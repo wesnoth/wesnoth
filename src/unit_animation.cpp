@@ -182,7 +182,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 			std::cout << "--branchcfg--\n" << ci->cfg;
 		}
 		std::cout << "\n";
-	}/* */
+	}*/
 
 	// Create the config object describing each branch.
 	assert(anim_cursors.size() == 1);
