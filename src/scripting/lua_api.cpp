@@ -92,7 +92,7 @@ void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
 
 bool luaW_hasmetatable(lua_State *L
 		, int index
-		, luatype key)
+		, luatypekey key)
 {
 	if (!lua_getmetatable(L, index))
 		return false;
