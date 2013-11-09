@@ -124,25 +124,6 @@ Version 1.11.6+dev:
      reserved (if applicable) controller.
    * All multiplayer locks in SideWML (e.g. "team_lock"), now uses
      "force_lock_settings" as their default value.
- * WML engine:
-   * New [disable] weapon special.
-   * New variation_id attribute with the function of former variation_name.
-   * variation_name is now the translatable name of the unit variant.
-   * The "variation=" attribute works now in [unit_type] and serves
-     as the default variant.
-   * [store_side] now stores the scroll_to_leader attribute from sides.
-   * Added new CampaignWML attributes: "type", "min_players" and "max_players".
-   * Added new ScenariowML attributes: "new_game_title",
-     "remove_from_carryover_on_leaders_loss" and "force_lock_settings".
-   * Allow numerical values for SideWML "controller" attribute.
-   * Allow WML menu items to use hotkeys alongside/instead of the menu.
-   * Really added sighted events for ambushing units.
-   * [scroll] now takes an optional side filter.
-   * Some support for negative healing. This is not guaranteed to work correctly
-     in all cases, but it does restore the basic functionality that was
-     (probably accidentally) in 1.10.
-   * Overhaul of the game events engine. Fixes some obscure bugs, like #21031,
-     and grants feature request #18713.
  * Unit changes and balancing:
    * Gave the Death Knight the submerge ability.
    * Increased the Death Knight's blade resistance from 10% to 40%,
@@ -174,6 +155,25 @@ Version 1.11.6+dev:
      tray notifications code on Windows.
    * New Game Paths dialog displaying filesystem locations used by the game
      to read or write data, accessed from Preferences -> General.
+ * WML engine:
+   * New [disable] weapon special.
+   * New variation_id attribute with the function of former variation_name.
+   * variation_name is now the translatable name of the unit variant.
+   * The "variation=" attribute works now in [unit_type] and serves
+     as the default variant.
+   * [store_side] now stores the scroll_to_leader attribute from sides.
+   * Added new CampaignWML attributes: "type", "min_players" and "max_players".
+   * Added new ScenariowML attributes: "new_game_title",
+     "remove_from_carryover_on_leaders_loss" and "force_lock_settings".
+   * Allow numerical values for SideWML "controller" attribute.
+   * Allow WML menu items to use hotkeys alongside/instead of the menu.
+   * Really added sighted events for ambushing units.
+   * [scroll] now takes an optional side filter.
+   * Some support for negative healing. This is not guaranteed to work correctly
+     in all cases, but it does restore the basic functionality that was
+     (probably accidentally) in 1.10.
+   * Overhaul of the game events engine. Fixes some obscure bugs, like #21031,
+     and grants feature request #18713.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
