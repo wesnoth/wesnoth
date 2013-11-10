@@ -46,12 +46,6 @@ wmi_container::wmi_container()
 	: wml_menu_items_()
 {}
 
-wmi_container::wmi_container(const wmi_container& container)
-	: wml_menu_items_()
-{
-	copy(container.wml_menu_items_);
-}
-
 /**
  * Destructor.
  * Default implementation, but defined here because this function needs to be
@@ -61,25 +55,6 @@ wmi_container::~wmi_container()
 {
 }
 
-
-/**
- * Performs a deep copy, replacing our current contents.
- * Used by assignment and the copy constructor.
- */
-void wmi_container::copy(const map_t & source)
-{
-	// Safety measure.
-	if ( &source == &wml_menu_items_ )
-		return;
-
-	// Free up the old memory.
-	wml_menu_items_.clear();
-
-	const map_t::const_iterator source_end = source.end();
-	for ( map_t::const_iterator itor = source.begin(); itor != source_end; ++itor )
-		// Deep copy.
-		wml_menu_items_[itor->first].reset(new wml_menu_item(*(itor->second)));
-}
 
 /** Erases the item with id @a key. */
 wmi_container::size_type wmi_container::erase(const std::string & id)

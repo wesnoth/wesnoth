@@ -65,12 +65,7 @@ public:
 
 public:
 	wmi_container();
-	wmi_container(const wmi_container& container);
 	~wmi_container();
-
-	/// Assignment operator to support deep copies.
-	wmi_container & operator=(const wmi_container & that)
-	{ copy(that.wml_menu_items_); return *this; }
 
 	/// Returns true if *this contains no data.
 	bool empty() const { return wml_menu_items_.empty(); }
@@ -107,10 +102,6 @@ public:
 	iterator end()    { return iterator(wml_menu_items_.end()); }
 	const_iterator begin() const { return const_iterator(wml_menu_items_.begin()); }
 	const_iterator end()   const { return const_iterator(wml_menu_items_.end()); }
-
-private:
-	/// Performs a deep copy, replacing our current contents.
-	void copy(const map_t & source);
 
 private: // data
 	map_t wml_menu_items_;
