@@ -104,26 +104,38 @@ struct animation_cursor
 		// cull the branches where there are partial matches.
 		// Hence the need to check if the condition has come up before.
 		// Also, the attributes are merged here between branches.
-		bool condition_value_hits_set = false;
-		bool condition_value_direction_set = false;
-		bool condition_value_terrain_set = false;
+		bool previously_hits_set = false;
+		bool previously_direction_set = false;
+		bool previously_terrain_set = false;
+		bool previously_value_set = false;
+		bool previously_value_2nd_set = false;
 		std::string s_cfg_hits = cfg["hits"];
 		std::string s_cfg_direction = cfg["direction"];
 		std::string s_cfg_terrain = cfg["terrain_types"];
+		std::string s_cfg_value = cfg["value"];
+		std::string s_cfg_value_2nd = cfg["value_2nd"];
 		for (std::list<animation_branch>::iterator bi = branches.begin();
 			 bi != branches.end(); ++bi)
 		{
 			std::string s_branch_hits = (*bi).attributes["hits"];
 			std::string s_branch_direction = (*bi).attributes["direction"];
 			std::string s_branch_terrain = (*bi).attributes["terrain_types"];
+			std::string s_branch_value = (*bi).attributes["value"];
+			std::string s_branch_value_2nd = (*bi).attributes["value_second"];
 			if (s_branch_hits != "" && s_branch_hits == s_cfg_hits) {
-				condition_value_hits_set = true;
+				previously_hits_set = true;
 			}
 			if (s_branch_direction != "" && s_branch_direction == s_cfg_direction) {
-				condition_value_direction_set = true;
+				previously_direction_set = true;
 			}
 			if (s_branch_terrain != "" && s_branch_terrain == s_cfg_terrain) {
-				condition_value_terrain_set = true;
+				previously_terrain_set = true;
+			}
+			if (s_branch_value != "" && s_branch_value == s_cfg_value) {
+				previously_value_set = true;
+			}
+			if (s_branch_value_2nd != "" && s_branch_value_2nd == s_cfg_value_2nd) {
+				previously_value_2nd_set = true;
 			}
 		}
 		// Merge all frames that have new matches and prune any impossible
@@ -134,13 +146,19 @@ struct animation_cursor
 			std::string s_branch_hits = (*bi).attributes["hits"];
 			std::string s_branch_direction = (*bi).attributes["direction"];
 			std::string s_branch_terrain = (*bi).attributes["terrain_types"];
-			bool hits_match = (condition_value_hits_set && s_branch_hits != s_cfg_hits);
-			bool direction_match = (condition_value_direction_set && s_branch_direction != s_cfg_direction);
-			bool terrain_match = (condition_value_terrain_set && s_branch_terrain != s_cfg_terrain);
-			if ( (!condition_value_hits_set || hits_match) &&
-			     (!condition_value_direction_set || direction_match) && 
-			     (!condition_value_terrain_set || terrain_match) && 
-			     (hits_match || direction_match || terrain_match) )
+			std::string s_branch_value = (*bi).attributes["value"];
+			std::string s_branch_value_2nd = (*bi).attributes["value_second"];
+			bool hits_match = (previously_hits_set && s_branch_hits != s_cfg_hits);
+			bool direction_match = (previously_direction_set && s_branch_direction != s_cfg_direction);
+			bool terrain_match = (previously_terrain_set && s_branch_terrain != s_cfg_terrain);
+			bool value_match = (previously_value_set && s_branch_value != s_cfg_value);
+			bool value_2nd_match = (previously_value_2nd_set && s_branch_value_2nd != s_cfg_value_2nd);
+			if ( (!previously_hits_set || hits_match) &&
+			     (!previously_direction_set || direction_match) && 
+			     (!previously_terrain_set || terrain_match) && 
+			     (!previously_value_set || value_match) && 
+			     (!previously_value_2nd_set || value_2nd_match) && 
+			     (hits_match || direction_match || terrain_match || value_match || value_2nd_match) )
 			{
 				branches.erase(bi++);
 			}
@@ -157,13 +175,19 @@ struct animation_cursor
 			std::string s_branch_hits = (*bi).attributes["hits"];
 			std::string s_branch_direction = (*bi).attributes["direction"];
 			std::string s_branch_terrain = (*bi).attributes["terrain_types"];
-			bool hits_match = (condition_value_hits_set && s_branch_hits == s_cfg_hits);
-			bool direction_match = (condition_value_direction_set && s_branch_direction == s_cfg_direction);
-			bool terrain_match = (condition_value_terrain_set && s_branch_terrain == s_cfg_terrain);
-			if ( (!condition_value_hits_set || hits_match) &&
-			     (!condition_value_direction_set || direction_match) && 
-			     (!condition_value_terrain_set || terrain_match) && 
-			     (hits_match || direction_match || terrain_match) )
+			std::string s_branch_value = (*bi).attributes["value"];
+			std::string s_branch_value_2nd = (*bi).attributes["value_second"];
+			bool hits_match = (previously_hits_set && s_branch_hits == s_cfg_hits);
+			bool direction_match = (previously_direction_set && s_branch_direction == s_cfg_direction);
+			bool terrain_match = (previously_terrain_set && s_branch_terrain == s_cfg_terrain);
+			bool value_match = (previously_value_set && s_branch_value == s_cfg_value);
+			bool value_2nd_match = (previously_value_2nd_set && s_branch_value_2nd == s_cfg_value_2nd);
+			if ( (!previously_hits_set || hits_match) &&
+			     (!previously_direction_set || direction_match) && 
+			     (!previously_terrain_set || terrain_match) && 
+			     (!previously_value_set || value_match) && 
+			     (!previously_value_2nd_set || value_2nd_match) && 
+			     (hits_match || direction_match || terrain_match || value_match || value_2nd_match) )
 			{
 				parent->branches.erase(bi++);
 			}
