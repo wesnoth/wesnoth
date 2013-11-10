@@ -41,8 +41,6 @@ public:
 	const t_string & description() const { return description_; }
 	/// The name of the event to fire when this item is chosen.
 	const std::string & event_name() const { return event_name_; }
-	/// the id of this item. The id is also used for hotkey binding .
-	const std::string & item_id() const { return item_id_; }
 	/// The image associated with this menu item.
 	const std::string & image() const;
 	/// Config object containing the default hotkey.
@@ -58,6 +56,10 @@ public:
 	void fire_event(const map_location & event_hex) const;
 	/// Initializes the implicit event handler for an inlined [command].
 	void init_handler() const;
+	/// The text to put in a menu for this item.
+	/// This will be either translated text or a hotkey identifier.
+	std::string menu_text() const
+	{ return use_hotkey_ ? hotkey_id_ : description_.str() + ' '; } // The space is to prevent accidental hotkey binding.
 	/// Change the actions associated with this item.
 	/// (Internal bookkeeping only; the caller must still update the event handlers.)
 	void set_command(const config & cfg) { command_ = cfg; }
@@ -71,6 +73,8 @@ private:
 	const std::string item_id_;
 	/// The name of this item's event(s); based on the item's id.
 	const std::string event_name_;
+	/// The id for this item's hotkey; based on the item's id.
+	const std::string hotkey_id_;
 	/// The image to display in the menu next to this item's description.
 	std::string image_;
 	/// The text to display in the menu for this item.

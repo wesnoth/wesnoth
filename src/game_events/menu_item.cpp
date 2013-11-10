@@ -45,6 +45,7 @@ namespace game_events
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		item_id_(id),
 		event_name_("menu item" + (id.empty() ? "" : ' ' + id)),
+		hotkey_id_(play_controller::wml_menu_hotkey_prefix + id),
 		image_(),
 		description_(),
 		needs_select_(false),
@@ -159,8 +160,7 @@ void wml_menu_item::init_handler() const
 			// still reapplied if set_menu_item is called again, for example
 			// by starting a new campaign.) Since it isn't that important
 			// I'll just leave it for now.
-			hotkey::add_wml_hotkey(play_controller::wml_menu_hotkey_prefix + item_id_,
-			                       description_, default_hotkey_);
+			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
 		}
 	}
 }
