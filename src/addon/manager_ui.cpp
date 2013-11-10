@@ -1020,15 +1020,17 @@ bool uninstall_local_addons(display& disp)
 	BOOST_FOREACH(const std::string& id, addons) {
 		std::string title;
 
-		// _info.cfg may have the add-on's title starting with 1.11.7,
-		// if the add-on was downloading using the revised _info.cfg writer.
-		config cfg;
-		get_addon_install_info(id, cfg);
+		if(have_addon_install_info(id)) {
+			// _info.cfg may have the add-on's title starting with 1.11.7,
+			// if the add-on was downloading using the revised _info.cfg writer.
+			config cfg;
+			get_addon_install_info(id, cfg);
 
-		const config& info_cfg = cfg.child("info");
+			const config& info_cfg = cfg.child("info");
 
-		if(info_cfg) {
-			title = info_cfg["title"].str();
+			if(info_cfg) {
+				title = info_cfg["title"].str();
+			}
 		}
 
 		if(title.empty()) {
