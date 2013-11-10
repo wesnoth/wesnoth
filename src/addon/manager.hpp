@@ -83,6 +83,11 @@ void get_addon_pbl_info(const std::string& addon_name, class config& cfg);
 void set_addon_pbl_info(const std::string& addon_name, const class config& cfg);
 
 /**
+ * Returns true if there is a local installation info (_info.cfg) file for the add-on.
+ */
+bool have_addon_install_info(const std::string& addon_name);
+
+/**
  * Gets the installation info (_info.cfg) for an add-on.
  *
  * @param addon_name              The add-on's main directory/file name.

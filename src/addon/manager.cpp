@@ -105,6 +105,11 @@ void set_addon_pbl_info(const std::string& addon_name, const config& cfg)
 	write(*stream, cfg);
 }
 
+bool have_addon_install_info(const std::string& addon_name)
+{
+	return file_exists(get_info_file_path(addon_name));
+}
+
 void get_addon_install_info(const std::string& addon_name, config& cfg)
 {
 	scoped_istream stream = istream_file(get_info_file_path(addon_name));
