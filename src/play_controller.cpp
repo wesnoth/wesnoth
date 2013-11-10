@@ -812,7 +812,7 @@ bool play_controller::execute_command(const hotkey::hotkey_command& cmd, int ind
 			// Load the game by throwing load_game_exception
 			throw game::load_game_exception(savenames_[i],false,false,false,"");
 
-		} else if (i < wml_commands_.size() && wml_commands_[i] != NULL) {
+		} else if ( i < wml_commands_.size()  &&  wml_commands_[i] ) {
 			wml_commands_[i]->fire_event(mouse_handler_.get_last_hex());
 			return true;
 		}
@@ -834,7 +834,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	if(index >= 0) {
 		unsigned i = static_cast<unsigned>(index);
 		if((i < savenames_.size() && !savenames_[i].empty())
-		|| (i < wml_commands_.size() && wml_commands_[i] != NULL)) {
+		|| (i < wml_commands_.size() && wml_commands_[i])) {
 			return true;
 		}
 	}
@@ -1184,9 +1184,9 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 			// End the "for" loop.
 			break;
 		}
-		// Pad the commands with NULL (keeps the indices of items and
+		// Pad the commands with null pointers (keeps the indices of items and
 		// wml_commands_ synced).
-		wml_commands_.push_back(NULL);
+		wml_commands_.push_back(const_item_ptr());
 	}
 }
 
@@ -1270,8 +1270,8 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, int index) const
 {
 	if(index >= 0 && index < static_cast<int>(wml_commands_.size())) {
-		const game_events::wml_menu_item* const wmi = wml_commands_[index];
-		if(wmi != NULL) {
+		const const_item_ptr wmi = wml_commands_[index];
+		if ( wmi ) {
 			return wmi->image();
 		}
 	}

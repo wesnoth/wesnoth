@@ -52,6 +52,15 @@ wmi_container::wmi_container(const wmi_container& container)
 	copy(container.wml_menu_items_);
 }
 
+/**
+ * Destructor.
+ * Default implementation, but defined here because this function needs to be
+ * able to see wml_menu_item's destructor.
+ */
+wmi_container::~wmi_container()
+{
+}
+
 
 /**
  * Performs a deep copy, replacing our current contents.
@@ -64,23 +73,12 @@ void wmi_container::copy(const map_t & source)
 		return;
 
 	// Free up the old memory.
-	clear_wmi();
+	wml_menu_items_.clear();
 
 	const map_t::const_iterator source_end = source.end();
 	for ( map_t::const_iterator itor = source.begin(); itor != source_end; ++itor )
 		// Deep copy.
-		wml_menu_items_[itor->first] = new wml_menu_item(*(itor->second));
-}
-
-void wmi_container::clear_wmi()
-{
-	const map_t::iterator i_end = wml_menu_items_.end();
-	for ( map_t::iterator i = wml_menu_items_.begin(); i != i_end; ++i ) {
-		// Release the wml_menu_item.
-		delete i->second;
-	}
-
-	wml_menu_items_.clear();
+		wml_menu_items_[itor->first].reset(new wml_menu_item(*(itor->second)));
 }
 
 /** Erases the item with id @a key. */
@@ -99,9 +97,7 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 	remove_wmi_change(id);
 	remove_event_handler(id);
 
-	// Release the wml_menu_item.
-	delete iter->second;
-	// Remove the now-defunct pointer from the map.
+	// Remove the item from the map.
 	wml_menu_items_.erase(iter);
 
 	return 1; // Erased one item.
@@ -182,14 +178,11 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
 {
 	// Try to insert a dummy value. This combines looking for an existing
 	// entry with insertion.
-	
-	// the static cast fixes http://connect.microsoft.com/VisualStudio/feedback/details/520043/
-	// c++11's nullptr would be a better solution as soon as we support it.
-	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, static_cast<wml_menu_item *>(NULL))).first;
+	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
 
 	// If we ended up with a dummy value, create an entry for it.
-	if ( add_it->second == NULL )
-		add_it->second = new wml_menu_item(id);
+	if ( !add_it->second )
+		add_it->second.reset(new wml_menu_item(id));
 
 	// Return the item.
 	return *add_it->second;
@@ -202,7 +195,7 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
  * @param[out] descriptions Menu item text will be pushed onto @descriptions (in the same order as @a items).
  */
 void wmi_container::get_items(const map_location& hex,
-                              std::vector<const wml_menu_item *> & items,
+                              std::vector<boost::shared_ptr<const wml_menu_item> > & items,
                               std::vector<std::string> & descriptions) const
 {
 	size_t item_count = 0;
@@ -276,15 +269,15 @@ void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
  */
 void wmi_container::set_menu_items(const config& cfg)
 {
-	clear_wmi();
+	wml_menu_items_.clear();
 	BOOST_FOREACH(const config &item, cfg.child_range("menu_item"))
 	{
 		if(!item.has_attribute("id")){ continue; }
 
 		std::string id = item["id"];
-		wml_menu_item*& mref = wml_menu_items_[id];
-		if(mref == NULL) {
-			mref = new wml_menu_item(id, &item);
+		item_ptr & mref = wml_menu_items_[id];
+		if ( !mref ) {
+			mref.reset(new wml_menu_item(id, &item));
 		} else {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config\n";
 		}

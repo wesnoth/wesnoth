@@ -27,6 +27,7 @@
 #include "gamestatus.hpp"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 class game_display;
 class game_state;
@@ -259,6 +260,9 @@ protected:
 	void update_gui_to_player(const int team_index, const bool observe = false);
 
 private:
+	/// A smart pointer used when retrieving menu items.
+	typedef boost::shared_ptr<const game_events::wml_menu_item> const_item_ptr;
+
 	void init(CVideo &video);
 	// Expand AUTOSAVES in the menu items, setting the real savenames.
 	void expand_autosaves(std::vector<std::string>& items);
@@ -266,7 +270,7 @@ private:
 	std::vector<std::string> savenames_;
 
 	void expand_wml_commands(std::vector<std::string>& items);
-	std::vector<const game_events::wml_menu_item *> wml_commands_;
+	std::vector<const_item_ptr> wml_commands_;
 
 	bool victory_when_enemies_defeated_;
 	bool remove_from_carryover_on_leaders_loss_;

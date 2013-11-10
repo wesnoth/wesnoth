@@ -22,6 +22,8 @@
 
 #include "iterator.hpp"
 
+#include <boost/shared_ptr.hpp>
+
 #include <map>
 #include <vector>
 
@@ -38,7 +40,7 @@ class wml_menu_item;
 /// A container of wml_menu_item.
 class wmi_container{
 	/// Pointers to our elements.
-	typedef wml_menu_item * item_ptr;
+	typedef boost::shared_ptr<wml_menu_item> item_ptr;
 	/// The underlying storage type.
 	typedef std::map<std::string, item_ptr> map_t;
 	/// The key for interaction with our iterators.
@@ -64,13 +66,12 @@ public:
 public:
 	wmi_container();
 	wmi_container(const wmi_container& container);
-	~wmi_container() { clear_wmi(); }
+	~wmi_container();
 
 	/// Assignment operator to support deep copies.
 	wmi_container & operator=(const wmi_container & that)
 	{ copy(that.wml_menu_items_); return *this; }
 
-	void clear_wmi();
 	/// Returns true if *this contains no data.
 	bool empty() const { return wml_menu_items_.empty(); }
 	/// Erases the item with the provided @a id.
@@ -82,7 +83,7 @@ public:
 	bool fire_item(const std::string & id, const map_location & hex) const;
 	/// Returns the menu items that can be shown for the given location.
 	void get_items(const map_location& hex,
-	               std::vector<const wml_menu_item *> & items,
+	               std::vector<boost::shared_ptr<const wml_menu_item> > & items,
 	               std::vector<std::string> & descriptions) const;
 	/// Initializes the implicit event handlers for inlined [command]s.
 	void init_handlers() const;
