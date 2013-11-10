@@ -165,7 +165,7 @@ struct animation_cursor
 			     (!condition_value_terrain_set || terrain_match) && 
 			     (hits_match || direction_match || terrain_match) )
 			{
-				branches.erase(bi++);
+				parent->branches.erase(bi++);
 			}
 			else bi++;
 		}
