@@ -283,6 +283,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 		sample_rate_button3_.set_check(true);
 	sample_rate_input_.set_text(rate);
 	sample_rate_input_.set_help_string(_("User defined sample rate"));
+	sample_rate_input_.enable(sample_rate_button3_.checked());
 	confirm_sound_button_.enable(sample_rate_button3_.checked());
 
 	buffer_size_slider_.set_min(0);
@@ -855,6 +856,7 @@ void preferences_dialog::process_event()
 			if (sample_rate_button1_.checked()) {
 				sample_rate_button2_.set_check(false);
 				sample_rate_button3_.set_check(false);
+				sample_rate_input_.enable(false);
 				confirm_sound_button_.enable(false);
 				apply = true;
 				rate = "22050";
@@ -865,6 +867,7 @@ void preferences_dialog::process_event()
 			if (sample_rate_button2_.checked()) {
 				sample_rate_button1_.set_check(false);
 				sample_rate_button3_.set_check(false);
+				sample_rate_input_.enable(false);
 				confirm_sound_button_.enable(false);
 				apply = true;
 				rate = "44100";
@@ -875,6 +878,7 @@ void preferences_dialog::process_event()
 			if (sample_rate_button3_.checked()) {
 				sample_rate_button1_.set_check(false);
 				sample_rate_button2_.set_check(false);
+				sample_rate_input_.enable(true);
 				confirm_sound_button_.enable(true);
 			} else
 				sample_rate_button3_.set_check(true);
