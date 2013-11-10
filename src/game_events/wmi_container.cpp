@@ -199,7 +199,7 @@ wml_menu_item & wmi_container::get_item(const std::string& id)
  * Returns the menu items that can be shown for the given location.
  * The number of items returned is limited by MAX_WML_COMMANDS.
  * @param[out] items        Pointers to applicable menu items will be pushed onto @a items.
- * @param[out] descriptions Menu item descriptions will be pushed onto @descriptions (in the same order as @a items).
+ * @param[out] descriptions Menu item descriptions (or associated hotkey ids if available) will be pushed onto @descriptions (in the same order as @a items).
  */
 void wmi_container::get_items(const map_location& hex,
                               std::vector<const wml_menu_item *> & items,
@@ -224,8 +224,17 @@ void wmi_container::get_items(const map_location& hex,
 		{
 			// Include this item.
 			items.push_back(&item);
-			// Prevent accidental hotkey binding by appending a space
-			descriptions.push_back(item.description().str() + ' ');
+			if(item.use_hotkey()) 
+			{
+				// in this case we let the command_executor::get_menu_images handle it
+				// that way the bound hotkeys will also be shown in the right click menu.
+				descriptions.push_back(play_controller::wml_menu_hotkey_prefix + item.item_id());
+			}
+			else
+			{
+				// Prevent accidental hotkey binding by appending a space
+				descriptions.push_back(item.description().str() + ' ');
+			}
 
 			// Limit how many items can be returned.
 			if ( ++item_count >= MAX_WML_COMMANDS )
