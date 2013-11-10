@@ -160,6 +160,7 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
 	const_iterator iter = find(id);
 	if ( iter == end() )
 		return false;
+	const wml_menu_item & wmi = **iter;
 
 	// Prepare for can show().
 	resources::gamedata->get_variable("x1") = hex.x + 1;
@@ -167,8 +168,8 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
 
 	// Can this item be shown?
-	if ( iter->can_show(hex) )
-		iter->fire_event(hex);
+	if ( wmi.can_show(hex) )
+		wmi.fire_event(hex);
 
 	return true;
 }
@@ -216,14 +217,14 @@ void wmi_container::get_items(const map_location& hex,
 	scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, *resources::units);
 
 	// Check each menu item.
-	BOOST_FOREACH( const wml_menu_item & item, *this )
+	BOOST_FOREACH( const item_ptr & item, *this )
 	{
 		// Can this item be shown?
-		if ( item.use_wml_menu() && item.can_show(hex) )
+		if ( item->use_wml_menu() && item->can_show(hex) )
 		{
 			// Include this item.
-			items.push_back(&item);
-			descriptions.push_back(item.menu_text());
+			items.push_back(item);
+			descriptions.push_back(item->menu_text());
 
 			// Limit how many items can be returned.
 			if ( ++item_count >= MAX_WML_COMMANDS )
@@ -240,9 +241,9 @@ void wmi_container::init_handlers() const
 	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
-	BOOST_FOREACH( const wml_menu_item & wmi, *this ) {
+	BOOST_FOREACH( const item_ptr & wmi, *this ) {
 		// If this menu item has a [command], add a handler for it.
-		wmi.init_handler();
+		wmi->init_handler();
 		// Count the menu items (for the diagnostic message).
 		++wmi_count;
 	}
@@ -256,9 +257,9 @@ void wmi_container::init_handlers() const
 void wmi_container::to_config(config& cfg) const
 {
 	// Loop through our items.
-	for ( const_iterator j = begin(), wmi_end = end(); j != wmi_end; ++j )
+	BOOST_FOREACH( const item_ptr & item, *this )
 		// Add this item as a child of cfg.
-		j->to_config(cfg.add_child("menu_item"));
+		item->to_config(cfg.add_child("menu_item"));
 }
 
 /**

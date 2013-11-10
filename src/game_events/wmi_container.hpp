@@ -37,21 +37,23 @@ class wml_menu_item;
 
 /// A container of wml_menu_item.
 class wmi_container{
+	/// Pointers to our elements.
+	typedef wml_menu_item * item_ptr;
 	/// The underlying storage type.
-	typedef std::map<std::string, wml_menu_item*> map_t;
+	typedef std::map<std::string, item_ptr> map_t;
 	/// The key for interaction with our iterators.
 	struct key {
-		/// Instructions for converting a map_t iterator to a wml_menu_item.
-		static const wml_menu_item & eval(const map_t::const_iterator & iter)
-		{ return *iter->second; }
+		/// Instructions for converting a map_t iterator to an item_ptr.
+		static const item_ptr & eval(const map_t::const_iterator & iter)
+		{ return iter->second; }
 	};
 
 public:
 	// Typedefs required of a container:
-	typedef wml_menu_item          value_type;
-	typedef wml_menu_item *        pointer;
-	typedef wml_menu_item &        reference;
-	typedef const wml_menu_item &  const_reference;
+	typedef item_ptr               value_type;
+	typedef value_type *           pointer;
+	typedef value_type &           reference;
+	typedef const value_type &     const_reference;
 	typedef map_t::difference_type difference_type;
 	typedef map_t::size_type       size_type;
 
