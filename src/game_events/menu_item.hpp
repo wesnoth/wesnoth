@@ -41,6 +41,8 @@ public:
 	const t_string & description() const { return description_; }
 	/// The name of the event to fire when this item is chosen.
 	const std::string & event_name() const { return event_name_; }
+	/// the id of this item. The id is also used for hotkey binding .
+	const std::string & item_id() const { return item_id_; }
 	/// The image associated with this menu item.
 	const std::string & image() const;
 	/// Config object containing the default hotkey.
