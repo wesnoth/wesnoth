@@ -1534,7 +1534,7 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 					desc = b->title();
 				}
 			}
-			str << desc << COLUMN_SEPARATOR << hotkey::get_names(hk);
+			str << desc << COLUMN_SEPARATOR << hotkey::get_names(item);
 		}
 
 		result.push_back(str.str());
