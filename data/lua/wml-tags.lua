@@ -753,6 +753,9 @@ end
 function wml_actions.petrify(cfg)
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		unit.status.petrified = true
+		-- Extract unit and put it back to update animation (not needed for recall units)
+		wesnoth.extract_unit(unit)
+		wesnoth.put_unit(unit, unit.x, unit.y)
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -763,6 +766,9 @@ end
 function wml_actions.unpetrify(cfg)
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		unit.status.petrified = false
+		-- Extract unit and put it back to update animation (not needed for recall units)
+		wesnoth.extract_unit(unit)
+		wesnoth.put_unit(unit, unit.x, unit.y)
 	end
 
 	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
@@ -888,6 +894,10 @@ function wml_actions.harm_unit(cfg)
 			set_status("slowed", _"slowed", _"female^slowed", "slowed.wav")
 			set_status("petrified", _"petrified", _"female^petrified", "petrified.ogg")
 			set_status("unhealable", _"unhealable", _"female^unhealable")
+
+			-- Extract unit and put it back to update animation if status was changed
+			wesnoth.extract_unit(unit_to_harm)
+			wesnoth.put_unit(unit_to_harm, unit_to_harm.x, unit_to_harm.y)
 
 			if add_tab then
 				text = string.format("%s%s", "\t", text)
@@ -1045,7 +1055,7 @@ function wml_actions.add_ai_behavior(cfg)
 		helper.wml_error("[add_ai_behavior]: invalid execution/evaluation handler(s)")
 	end
 
-	
+
 	local path = "stage[" .. loop_id .. "].candidate_action[" .. id .. "]" -- bca: behavior candidate action
 
 	local conf = {

@@ -850,6 +850,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			u->set_state(unit::STATE_SLOWED, false);
 			u->set_state(unit::STATE_PETRIFIED, false);
 			u->set_state(unit::STATE_UNHEALABLE, false);
+			u->set_standing();
 		}
 
 		if (heal_amount_to_set)
@@ -1281,7 +1282,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		if ( !setc.empty() ) {
 			teams[team_index].set_no_turn_confirmation(setc.to_bool());
 		}
-		
+
 		// Change leader scrolling options
 		config::attribute_value stl = cfg["scroll_to_leader"];
 		if ( !stl.empty()) {
