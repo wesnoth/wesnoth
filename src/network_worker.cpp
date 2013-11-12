@@ -215,10 +215,11 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		} else if(bytes_read < 0) {
 #if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
 			if(errno == EAGAIN)
+#elif defined(_WIN32) && defined(WSAEWOULDBLOCK)
+			//it seems like 'errno == EWOULDBLOCK' compiles on msvc2010, but doesnt work properly at rumtime.
+			if(WSAGetLastError() == WSAEWOULDBLOCK)
 #elif defined(EWOULDBLOCK)
 			if(errno == EWOULDBLOCK)
-#elif defined(_WIN32) && defined(WSAEWOULDBLOCK)
-			if(WSAGetLastError() == WSAEWOULDBLOCK)
 #else
 			// assume non-recoverable error.
 			if(false)
