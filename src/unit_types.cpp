@@ -176,6 +176,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	const std::string& set_name = cfg["set_name"];
 	const t_string& set_desc = cfg["set_description"];
 	const std::string& set_type = cfg["set_type"];
+	const std::string& set_icon = cfg["set_icon"];
 	const std::string& del_specials = cfg["remove_specials"];
 	const config &set_specials = cfg.child("set_specials");
 	const std::string& increase_damage = cfg["increase_damage"];
@@ -200,6 +201,11 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 	if(set_type.empty() == false) {
 		type_ = set_type;
 		cfg_["type"] = type_;
+	}
+
+	if(set_icon.empty() == false) {
+		icon_ = set_icon;
+		cfg_["icon"] = icon_;
 	}
 
 	if(del_specials.empty() == false) {

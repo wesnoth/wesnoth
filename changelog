@@ -175,6 +175,7 @@ Version 1.11.6+dev:
      (probably accidentally) in 1.10.
    * Overhaul of the game events engine. Fixes some obscure bugs, like #21031,
      and grants feature request #18713.
+   * Added new set_icon attribute for [effect] apply_to=attack.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
