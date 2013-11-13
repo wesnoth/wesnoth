@@ -1247,7 +1247,7 @@ void config::merge_with(const config& c)
 	all_children_iterator::Itor i, i_end = ordered_children.end();
 	for(i = ordered_children.begin(); i != i_end; ++i) {
 		const std::string& tag = i->pos->first;
-		child_map::const_iterator j = c.children.find(tag);
+		const child_map::const_iterator j = c.children.find(tag);
 		if (j != c.children.end()) {
 			unsigned &visits = visitations[tag];
 			if(visits < j->second.size()) {
