@@ -568,10 +568,23 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("post_teleport");
 
 		animations.push_back(*itor);
+		animations.back().event_ = utils::split("healing");
+		animations.back().sub_anims_["_healing_sound"] = particule();
+		std::string healing_sound;
+		if (cfg["healing_sound"].empty()) {
+			healing_sound = "heal.wav";
+		} else {
+			healing_sound = cfg["healing_sound"].str();
+		}	
+		animations.back().sub_anims_["_healing_sound"].add_frame(1,frame_builder().sound(healing_sound),true);
+
+		animations.push_back(*itor);
 		animations.back().event_ = utils::split("healed");
 		animations.back().unit_anim_.override(0,300,particule::NO_CYCLE,"","0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30,0.5:30,0:30",display::rgb(255,255,255));
-		animations.back().sub_anims_["_healed_sound"] = particule();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
+		if(!cfg["healed_sound"].empty()) {
+			animations.back().sub_anims_["_healed_sound"] = particule();
+			animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(cfg["healed_sound"]),true);
+		}
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("poisoned");
@@ -646,6 +659,14 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["damage"];
 		animations.push_back(unit_animation(anim));
+		animations.back().sub_anims_["_healing_sound"] = particule();
+		std::string healing_sound;
+		if (cfg["healing_sound"].empty()) {
+			healing_sound = "heal.wav";
+		} else {
+			healing_sound = cfg["healing_sound"].str();
+		}	
+		animations.back().sub_anims_["_healing_sound"].add_frame(1,frame_builder().sound(healing_sound),true);	
 	}
 
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healed_anim"))
@@ -655,8 +676,10 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["healing"];
 		animations.push_back(unit_animation(anim));
-		animations.back().sub_anims_["_healed_sound"] = particule();
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
+		if(!cfg["healed_sound"].empty()) {
+			animations.back().sub_anims_["_healed_sound"] = particule();
+			animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(cfg["healed_sound"]),true);
+		}
 	}
 
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "poison_anim"))
