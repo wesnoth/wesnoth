@@ -11,12 +11,12 @@ local internal_params = {}
 wesnoth.require("ai/lua/generic_recruit_engine.lua").init(ai, internal_recruit_cas, internal_params)
 
 function ca_recruit_rushers:evaluation(ai, cfg)
-	internal_params.randomness = cfg.randomness
-	return internal_recruit_cas:recruit_rushers_eval()
+    internal_params.randomness = cfg.randomness
+    return internal_recruit_cas:recruit_rushers_eval()
 end
 
 function ca_recruit_rushers:execution(ai)
-	return internal_recruit_cas:recruit_rushers_exec(ai)
+    return internal_recruit_cas:recruit_rushers_exec(ai)
 end
 
 return ca_recruit_rushers

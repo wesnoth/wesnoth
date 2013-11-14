@@ -68,7 +68,7 @@ return {
         -------- Castle Switch CA --------------
         local function get_reachable_enemy_leaders(unit)
             local potential_enemy_leaders = AH.get_live_units { canrecruit = 'yes',
-	            { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
+                { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
             }
             local enemy_leaders = {}
             for j,e in ipairs(potential_enemy_leaders) do
@@ -120,7 +120,7 @@ return {
                 y = '1-'..height,
                 { "not", { {"filter", {}} }}, -- That have no unit
                 { "not", { radius = 6, {"filter", { canrecruit = 'yes',
-	                { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
+                    { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
                 }} }}, -- That are not too close to an enemy leader
                 { "not", {
                     x = leader.x, y = leader.y, terrain = 'K*,K*^*,*^K*',

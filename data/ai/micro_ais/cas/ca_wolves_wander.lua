@@ -6,58 +6,58 @@ local LS = wesnoth.require "lua/location_set.lua"
 local ca_wolves_wander = {}
 
 function ca_wolves_wander:evaluation(ai, cfg)
-	-- When there's no prey left, the wolves wander and regroup
-	local wolves = wesnoth.get_units { side = wesnoth.current.side,
-		formula = '$this_unit.moves > 0', { "and", cfg.filter }
-	}
+    -- When there's no prey left, the wolves wander and regroup
+    local wolves = wesnoth.get_units { side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0', { "and", cfg.filter }
+    }
 
-	if wolves[1] then return cfg.ca_score end
-	return 0
+    if wolves[1] then return cfg.ca_score end
+    return 0
 end
 
 function ca_wolves_wander:execution(ai, cfg)
-	local wolves = wesnoth.get_units { side = wesnoth.current.side,
-		formula = '$this_unit.moves > 0', { "and", cfg.filter }
-	}
+    local wolves = wesnoth.get_units { side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0', { "and", cfg.filter }
+    }
 
-	-- Number of wolves that can reach each hex
-	local reach_map = LS.create()
-	for i,w in ipairs(wolves) do
-		local r = AH.get_reachable_unocc(w)
-		reach_map:union_merge(r, function(x, y, v1, v2) return (v1 or 0) + (v2 or 0) end)
-	end
+    -- Number of wolves that can reach each hex
+    local reach_map = LS.create()
+    for i,w in ipairs(wolves) do
+        local r = AH.get_reachable_unocc(w)
+        reach_map:union_merge(r, function(x, y, v1, v2) return (v1 or 0) + (v2 or 0) end)
+    end
 
-	-- Add a random rating; avoid avoid_type units
-	local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
-		{ "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
-	}
-	--print('#avoid_units', #avoid_units)
-	-- negative hit for hexes these units can attack
-	local avoid = BC.get_attack_map(avoid_units).units
+    -- Add a random rating; avoid avoid_type units
+    local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
+        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
+    }
+    --print('#avoid_units', #avoid_units)
+    -- negative hit for hexes these units can attack
+    local avoid = BC.get_attack_map(avoid_units).units
 
-	local max_rating, goal_hex = -9e99, {}
-	reach_map:iter( function (x, y, v)
-		local rating = v + AH.random(99)/100.
-		if avoid:get(x, y) then rating = rating - 1000 end
+    local max_rating, goal_hex = -9e99, {}
+    reach_map:iter( function (x, y, v)
+        local rating = v + AH.random(99)/100.
+        if avoid:get(x, y) then rating = rating - 1000 end
 
-		if (rating > max_rating) then
-			max_rating, goal_hex = rating, { x, y }
-		end
+        if (rating > max_rating) then
+            max_rating, goal_hex = rating, { x, y }
+        end
 
-		reach_map:insert(x, y, rating)
-	end)
-	--AH.put_labels(reach_map)
-	--W.message { speaker = 'narrator', message = "Wolves random wander"}
+        reach_map:insert(x, y, rating)
+    end)
+    --AH.put_labels(reach_map)
+    --W.message { speaker = 'narrator', message = "Wolves random wander"}
 
-	for i,w in ipairs(wolves) do
-		-- For each wolf, we need to check that goal hex is reachable, and out of harm's way
-		local best_hex = AH.find_best_move(w, function(x, y)
-			local rating = - H.distance_between(x, y, goal_hex[1], goal_hex[2])
-			if avoid:get(x, y) then rating = rating - 1000 end
-			return rating
-		end)
-		AH.movefull_stopunit(ai, w, best_hex)
-	end
+    for i,w in ipairs(wolves) do
+        -- For each wolf, we need to check that goal hex is reachable, and out of harm's way
+        local best_hex = AH.find_best_move(w, function(x, y)
+            local rating = - H.distance_between(x, y, goal_hex[1], goal_hex[2])
+            if avoid:get(x, y) then rating = rating - 1000 end
+            return rating
+        end)
+        AH.movefull_stopunit(ai, w, best_hex)
+    end
 end
 
 return ca_wolves_wander
