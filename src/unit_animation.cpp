@@ -658,7 +658,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["damage"];
 		animations.push_back(unit_animation(anim));
-		animations.back().sub_anims_["_healing_sound"] = particule();
 		if(!cfg["healing_sound"].empty()) {
 			animations.back().sub_anims_["_healing_sound"] = particule();
 			animations.back().sub_anims_["_healing_sound"].add_frame(1,frame_builder().sound(cfg["healing_sound"]),true);
@@ -672,6 +671,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["healing"];
 		animations.push_back(unit_animation(anim));
+		animations.back().sub_anims_["_healed_sound"] = particule();
 		std::string healed_sound;
 		if (cfg["healed_sound"].empty()) {
 			healed_sound = "heal.wav";
