@@ -177,6 +177,9 @@ Version 1.11.6+dev:
    * Overhaul of the game events engine. Fixes some obscure bugs, like #21031,
      and grants feature request #18713.
    * Added new set_icon attribute for [effect] apply_to=attack.
+   * New attributes in [unit_type]: healing_sound and healed_sound. These
+     attributes allow for customization of the sounds played during healing
+     animations.
  * Miscellaneous and bug fixes:
    * Added -256 and -512 color shifts to FADE_TO_BLACK and FADE_TO_BLACK_HOLD
      macros to account for ToD color shifts greater than -31, guaranteeing
