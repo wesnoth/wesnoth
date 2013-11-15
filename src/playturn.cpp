@@ -104,7 +104,7 @@ void turn_info::handle_turn(
 }
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
-		network::connection from, std::deque<config>& backlog, bool skip_replay)
+		network::connection /*from*/, std::deque<config>& backlog, bool skip_replay)
 {
 	// we cannot be connected to multiple peers anymore because 
 	// the simple wesnothserver implementation in wesnoth was removed years ago. 
