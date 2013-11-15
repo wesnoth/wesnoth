@@ -709,12 +709,14 @@ function ai_helper.get_dst_src(units)
     return ai_helper.get_dst_src_units(my_units)
 end
 
-function ai_helper.get_enemy_dst_src()
-    -- Produces the same output as ai.get_enemy_dst_src()   (available in 1.11.0)
+function ai_helper.get_enemy_dst_src(enemies)
+    -- If 'enemies' table is given, use it, otherwise use all enemy units
 
-    local enemies = wesnoth.get_units {
-        { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
-    }
+    if (not enemies) then
+        enemies = wesnoth.get_units {
+            { "filter_side", { { "enemy_of", { side = wesnoth.current.side} } } }
+        }
+    end
 
     return ai_helper.get_dst_src_units(enemies, { moves = 'max' })
 end
