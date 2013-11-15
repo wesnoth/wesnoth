@@ -1061,8 +1061,8 @@ const config & unit_type::build_unit_cfg() const
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
 	static char const *unit_type_attrs[] = { "attacks", "die_sound",
-		"experience", "flies", "hide_help", "hitpoints", "id",
-		"ignore_race_traits", "inherit", "movement", "movement_type",
+		"healed_sound", "experience", "flies", "hide_help", "hitpoints",
+		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name" };
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
