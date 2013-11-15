@@ -696,17 +696,13 @@ function ai_helper.get_dst_src_units(units, cfg)
 end
 
 function ai_helper.get_dst_src(units)
-    -- Produces the same output as ai.get_dst_src()   (available in 1.11.0)
-    -- If units is given, use them, otherwise do it for all units on the current side
+    -- If 'units' table is given, use it, otherwise use all units on the current side
 
-    local my_units = {}
-    if units then
-        my_units = units
-    else
-        my_units = wesnoth.get_units { side = wesnoth.current.side }
+    if (not units) then
+        units = wesnoth.get_units { side = wesnoth.current.side }
     end
 
-    return ai_helper.get_dst_src_units(my_units)
+    return ai_helper.get_dst_src_units(units)
 end
 
 function ai_helper.get_enemy_dst_src(enemies)
