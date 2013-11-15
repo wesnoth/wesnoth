@@ -178,7 +178,7 @@ function retreat_functions.get_retreat_injured_units(healees, regenerates)
                 -- Penalty based on terrain defense for unit
                 rating = rating - wesnoth.unit_defense(u, wesnoth.get_terrain(loc[1], loc[2]))/10
 
-                if (loc[1] == u.x) and (loc[2] == u.y) then
+                if (loc[1] == u.x) and (loc[2] == u.y) and (not u.status.poisoned) then
                     if enemy_count == 0 then
                         -- Bonus if we can rest heal
                         -- TODO: Always apply bonus if unit has healthy trait
