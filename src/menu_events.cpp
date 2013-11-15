@@ -1125,7 +1125,9 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 		}
 		resources::screen->redraw_minimap();
 		game_events::fire("die", loc, loc);
-		resources::units->erase(i);
+		if (i.valid()) {
+			resources::units->erase(i);
+		}
 		actions::recalculate_fog(dying_side);
 		resources::controller->check_victory();
 	}
