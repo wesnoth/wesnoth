@@ -569,10 +569,6 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("healing");
-		if(!cfg["healing_sound"].empty()) {
-			animations.back().sub_anims_["_healing_sound"] = particule();
-			animations.back().sub_anims_["_healing_sound"].add_frame(1,frame_builder().sound(cfg["healing_sound"]),true);
-		}
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("healed");
@@ -658,10 +654,6 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["damage"];
 		animations.push_back(unit_animation(anim));
-		if(!cfg["healing_sound"].empty()) {
-			animations.back().sub_anims_["_healing_sound"] = particule();
-			animations.back().sub_anims_["_healing_sound"].add_frame(1,frame_builder().sound(cfg["healing_sound"]),true);
-		}
 	}
 
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "healed_anim"))
