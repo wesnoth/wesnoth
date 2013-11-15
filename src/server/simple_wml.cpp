@@ -98,6 +98,9 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	}
 }
 
+// Whatever it does, it doesn't work on visual studio 2010 because in msvc2010 setbuf does just nothing.
+// According to http://www.cplusplus.com/reference/sstream/stringbuf/setbuf/ setbuf can do anything.
+// So msvc2010 does nothing wrong by implementing it as nop.
 class charbuf : public std::stringbuf {
 public:
 	charbuf(char *buffer, int len) {
