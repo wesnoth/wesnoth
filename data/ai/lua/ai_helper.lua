@@ -356,7 +356,7 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
         if unit then
             for i,l in ipairs(locs) do
                 local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(l[1], l[2]))
-                if (movecost < 99) then return l end
+                if (movecost <= unit.max_moves) then return l end
             end
         else
             if locs[1] then return locs[1] end
@@ -388,7 +388,7 @@ function ai_helper.get_passable_locations(location_filter, unit)
         local locs = {}
         for i,l in ipairs(all_locs) do
             local movecost = wesnoth.unit_movement_cost(unit, wesnoth.get_terrain(l[1], l[2]))
-            if (movecost < 99) then table.insert(locs, l) end
+            if (movecost <= unit.max_moves) then table.insert(locs, l) end
         end
         return locs
     end
