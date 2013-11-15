@@ -43,7 +43,7 @@ function ca_protect_unit_move:execution(ai, cfg, self)
     --AH.put_labels(EAM)
 
     -- Now put the units back out there
-    for i,u in ipairs(units) do wesnoth.put_unit(u.x, u.y, u) end
+    for i,u in ipairs(units) do wesnoth.put_unit(u) end
 
     -- We move the weakest (fewest HP unit) first
     local unit = AH.choose(units, function(tmp) return -tmp.hitpoints end)

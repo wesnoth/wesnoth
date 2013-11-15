@@ -143,7 +143,7 @@ function ca_goto:execution(ai, cfg, self)
                     end
                     path, cost = wesnoth.find_path(u, l[1], l[2], { ignore_units = cfg.ignore_units })
                     if enemy_at_goal then
-                        wesnoth.put_unit(enemy_at_goal.x, enemy_at_goal.y, enemy_at_goal)
+                        wesnoth.put_unit(enemy_at_goal)
                         --- Give massive penalty for this goal hex
                         cost = cost + 100
                     end

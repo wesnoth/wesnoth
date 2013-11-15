@@ -1199,7 +1199,7 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
 
     -- Put the units back out there
     if (unit.side ~= wesnoth.current.side) then
-        for iu,uMP in ipairs(units_MP) do wesnoth.put_unit(uMP.x, uMP.y, uMP) end
+        for iu,uMP in ipairs(units_MP) do wesnoth.put_unit(uMP) end
     end
 
     for i,loc in ipairs(initial_reach) do
@@ -1352,7 +1352,7 @@ function battle_calcs.best_defense_map(units, cfg)
     end
 
     if cfg.ignore_these_units then
-        for i,u in ipairs(cfg.ignore_these_units) do wesnoth.put_unit(u.x, u.y, u) end
+        for i,u in ipairs(cfg.ignore_these_units) do wesnoth.put_unit(u) end
     end
 
     return defense_map

@@ -68,7 +68,7 @@ function ca_healer_move:evaluation(ai, cfg, self)
     local avoid_map = LS.of_pairs(ai.get_avoid())
 
     -- Put units back out there
-    for i,u in ipairs(units_MP) do wesnoth.put_unit(u.x, u.y, u) end
+    for i,u in ipairs(units_MP) do wesnoth.put_unit(u) end
 
     -- Now find the best healer move
     local max_rating, best_hex = -9e99, {}
