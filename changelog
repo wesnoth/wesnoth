@@ -217,6 +217,9 @@ Version 1.11.6+dev:
    * Fix bug #20936 with shuffle sides and incorrect initial side villages.
    * Fix bug #20564: crash of replays of games started from scenario start save
    * Fix bug #20124: animation not updated on [un]petrifying units with WML tags
+   * Fix bug #21264: Loading a turnsave in campaign sets negative gold to 0
+   * Fix unreported bug of Wesnoth sometimes crashing on killing unit under
+     cursor from context menu in debug mode
 
 Version 1.11.6:
  * Add-ons client:
