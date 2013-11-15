@@ -32,6 +32,7 @@
 
 #include <boost/foreach.hpp>
 
+#include <cassert>
 #include <ctime>
 
 static lg::log_domain log_network("network");
@@ -105,6 +106,10 @@ void turn_info::handle_turn(
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
 		network::connection from, std::deque<config>& backlog, bool skip_replay)
 {
+	// we cannot be connected to multiple peers anymore because 
+	// the simple wesnothserver implementation in wesnoth was removed years ago. 
+	assert(network::nconnections() <= 1);
+	
 	if (const config &rnd_seed = cfg.child("random_seed")) {
 		rand_rng::set_seed(rnd_seed["seed"]);
 		//may call a callback function, see rand_rng::set_seed_callback
@@ -139,10 +144,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	bool turn_end = false;
 
 	config::const_child_itors turns = cfg.child_range("turn");
-	if (turns.first != turns.second && from != network::null_connection) {
-		//forward the data to other peers
-		network::send_data_all_except(cfg, from);
-	}
 
 	const config& change = cfg.child_or_empty("change_controller");
 	const std::string& side_drop = cfg["side_drop"].str();
