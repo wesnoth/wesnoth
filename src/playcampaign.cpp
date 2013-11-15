@@ -56,16 +56,17 @@ static void team_init(config& level, game_state& gamestate){
 	//if we are at the start of a new scenario, initialize carryover_sides
 	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
 		gamestate.carryover_sides = gamestate.carryover_sides_start;
+
+
+		carryover_info sides(gamestate.carryover_sides);
+
+		sides.transfer_to(level);
+		BOOST_FOREACH(config& side_cfg, level.child_range("side")){
+			sides.transfer_all_to(side_cfg);
+		}
+
+		gamestate.carryover_sides = sides.to_config();
 	}
-
-	carryover_info sides(gamestate.carryover_sides);
-
-	sides.transfer_to(level);
-	BOOST_FOREACH(config& side_cfg, level.child_range("side")){
-		sides.transfer_all_to(side_cfg);
-	}
-
-	gamestate.carryover_sides = sides.to_config();
 }
 
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level){
