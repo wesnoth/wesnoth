@@ -20,6 +20,7 @@
 #include <boost/iostreams/copy.hpp>
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
+#include <boost/iostreams/filter/counter.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include "simple_wml.hpp"
@@ -98,16 +99,6 @@ char* uncompress_buffer(const string_span& input, string_span* span)
 	}
 }
 
-// Whatever it does, it doesn't work on visual studio 2010 because in msvc2010 setbuf does just nothing.
-// According to http://www.cplusplus.com/reference/sstream/stringbuf/setbuf/ setbuf can do anything.
-// So msvc2010 does nothing wrong by implementing it as nop.
-class charbuf : public std::stringbuf {
-public:
-	charbuf(char *buffer, int len) {
-		this->setbuf(buffer, len);
-	}
-};
-
 char* compress_buffer(const char* input, string_span* span, bool bzip2)
 {
 	int nalloc = strlen(input);
@@ -127,14 +118,14 @@ char* compress_buffer(const char* input, string_span* span, bool bzip2)
 		state = 4;
 		nalloc = in.size()*2 + 80;
 		std::vector<char> buf(nalloc);
-		charbuf wrapped_buffer(&buf[0], buf.size());
-		std::ostream out(&wrapped_buffer);
+		boost::iostreams::array_sink out(&buf[0], buf.size());
+		filter.push(boost::iostreams::counter());
 		filter.push(out);
 
 		state = 5;
 
 		boost::iostreams::copy(istream, filter, buf.size());
-		const int len = out.tellp();
+		const int len = filter.component<boost::iostreams::counter>(1)->characters();
 		assert(len < 128*1024*1024);
 		if((!filter.eof() && !filter.good()) || len == static_cast<int>(buf.size())) {
 			throw error("failed to compress");
