@@ -362,6 +362,9 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 /// deletes all wml hotkeys, should be called after a game has ended
 void delete_all_wml_hotkeys();
+///removes a wml hotkey with the given id, returns true if the deletion was successful
+bool remove_wml_hotkey(const std::string& id);
+
 /// returns the hotkey_command that is treated as null.
 hotkey_command& get_hotkey_null();
 
