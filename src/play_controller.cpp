@@ -512,6 +512,10 @@ void play_controller::unit_description(){
 	menu_handler_.unit_description();
 }
 
+void play_controller::terrain_description(){
+	menu_handler_.terrain_description(mouse_handler_);
+}
+
 void play_controller::toggle_ellipses(){
 	menu_handler_.toggle_ellipses();
 }
@@ -896,6 +900,9 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
 		return menu_handler_.current_unit() != units_.end();
+
+	case hotkey::HOTKEY_TERRAIN_DESCRIPTION:
+		return mouse_handler_.get_last_hex().valid();
 
 	case hotkey::HOTKEY_RENAME_UNIT:
 		return !events::commands_disabled &&

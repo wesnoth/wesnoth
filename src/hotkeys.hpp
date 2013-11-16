@@ -54,6 +54,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_UNDO, HOTKEY_REDO,
 	HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
 	HOTKEY_FULLSCREEN, HOTKEY_SCREENSHOT, HOTKEY_MAP_SCREENSHOT, HOTKEY_ACCELERATED,
+	HOTKEY_TERRAIN_DESCRIPTION,
 	HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_DELETE_UNIT,
 	HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE,
 	HOTKEY_EDITOR_UNIT_CHANGE_ID, HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL,
@@ -408,6 +409,7 @@ public:
 	virtual void end_unit_turn() {}
 	virtual void undo() {}
 	virtual void redo() {}
+	virtual void terrain_description() {}
 	virtual void unit_description() {}
 	virtual void rename_unit() {}
 	virtual void save_game() {}

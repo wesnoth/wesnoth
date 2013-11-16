@@ -529,6 +529,7 @@ static std::vector<std::string> make_unit_links_list(
 		const std::vector<std::string>& type_id_list, bool ordered = false);
 
 static void generate_races_sections(const config *help_cfg, section &sec, int level);
+static void generate_terrain_sections(const config* help_cfg, section &sec, int level);
 static std::vector<topic> generate_unit_topics(const bool, const std::string& race);
 static void generate_unit_sections(const config *help_cfg, section &sec, int level, const bool, const std::string& race);
 enum UNIT_DESCRIPTION_TYPE {FULL_DESCRIPTION, NO_DESCRIPTION, NON_REVEALING_DESCRIPTION};
@@ -622,6 +623,7 @@ namespace {
 	const std::string default_show_topic = "introduction_topic";
 	const std::string unknown_unit_topic = ".unknown_unit";
 	const std::string unit_prefix = "unit_";
+	const std::string terrain_prefix = "terrain_";
 	const std::string race_prefix = "race_";
 	const std::string faction_prefix = "faction_";
 	const std::string variation_prefix = "variation_";
@@ -1043,7 +1045,9 @@ void generate_sections(const config *help_cfg, const std::string &generator, sec
 {
 	if (generator == "races") {
 		generate_races_sections(help_cfg, sec, level);
-	} else {
+	} else if (generator == "terrains") {
+		generate_terrain_sections(help_cfg, sec, level);
+	} else 	{
 		std::vector<std::string> parts = utils::split(generator, ':', utils::STRIP_SPACES);
 		if (parts[0] == "units" && parts.size()>1) {
 			generate_unit_sections(help_cfg, sec, level, true, parts[1]);
@@ -1293,7 +1297,69 @@ std::vector<topic> generate_faction_topics(const bool sort_generated)
 	return topics;
 }
 
+class terrain_topic_generator: public topic_generator
+{
+	const terrain_type& type_;
 
+
+public:
+	terrain_topic_generator(const terrain_type& type) : type_(type) {}
+
+	virtual std::string operator()() const {
+
+		std::stringstream ss;
+
+		ss << "<img>src='" << type_.editor_image() << "'</img> ";
+
+		ss << type_.description().str() << "\n";
+
+		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
+
+			const t_translation::t_list& underlying_terrains = resources::game_map->underlying_mvt_terrain(type_.number());
+
+			ss << "\n" << N_("Base Terrain: ");
+
+			bool first = true;
+			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
+				const terrain_type& mvt_base = resources::game_map->get_terrain_info(underlying_terrain);
+
+				if (mvt_base.editor_name().empty()) continue;
+				if (!first) ss << ",";
+				else first = false;
+				ss << make_link(mvt_base.editor_name(), ".." + terrain_prefix + mvt_base.id());
+			}
+		}
+
+		if (game_config::debug) {
+
+			ss << "\n";
+			ss << "ID: "          << type_.id() << "\n";
+
+			ss << "Village: "     << (type_.is_village()   ? "Yes" : "No") << "\n";
+			ss << "Gives Healing: " << type_.gives_healing() << "\n";
+
+			ss << "Keep: "        << (type_.is_keep()      ? "Yes" : "No") << "\n";
+			ss << "Castle: "      << (type_.is_castle()    ? "Yes" : "No") << "\n";
+
+			ss << "Overlay: "     << (type_.is_overlay()   ? "Yes" : "No") << "\n";
+			ss << "Combined: "    << (type_.is_combined()  ? "Yes" : "No") << "\n";
+			ss << "Nonnull: "     << (type_.is_nonnull()   ? "Yes" : "No") << "\n";
+
+			ss << "Terrain string:"  << type_.number() << "\n";
+
+			ss << "Hide in Editor: " << (type_.hide_in_editor() ? "Yes" : "No") << "\n";
+			ss << "Hide Help: "      << (type_.hide_help() ? "Yes" : "No") << "\n";
+			ss << "Editor Group: "   << type_.editor_group() << "\n";
+
+			ss << "Light Bonus: "   << type_.light_bonus(0) << "\n";
+
+			ss << type_.income_description();
+		}
+
+		return ss.str();
+	}
+
+};
 class unit_topic_generator: public topic_generator
 {
 	const unit_type& type_;
@@ -1810,6 +1876,53 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 		parse_config_internal(help_cfg, &section_cfg, race_section, level+1);
 		sec.add_section(race_section);
+	}
+}
+
+void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
+{
+	if (resources::game_map == NULL) return;
+
+	std::map<std::string, section> base_map;
+
+	const t_translation::t_list& t_listi = resources::game_map->get_terrain_list();
+
+	BOOST_FOREACH(const t_translation::t_terrain& t, t_listi) {
+
+		const terrain_type& info = resources::game_map->get_terrain_info(t);
+
+		bool hidden = info.is_combined() || info.hide_help();
+
+		if (preferences::encountered_terrains().find(t)
+				== preferences::encountered_terrains().end() && !info.is_overlay())
+			hidden = true;
+
+		topic terrain_topic;
+		terrain_topic.title = info.editor_name();
+		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
+		terrain_topic.text  = new terrain_topic_generator(info);
+
+		t_translation::t_list base_terrains = resources::game_map->underlying_union_terrain(t);
+		BOOST_FOREACH(const t_translation::t_terrain& base, base_terrains) {
+
+			const terrain_type& base_info = resources::game_map->get_terrain_info(base);
+
+			if (!base_info.is_nonnull() || base_info.hide_help())
+				continue;
+
+			section& base_section = base_map[base_info.id()];
+
+			base_section.id = terrain_prefix + base_info.id();
+			base_section.title = base_info.editor_name();
+
+			if (base_info.id() == info.id())
+				terrain_topic.id = ".." + terrain_prefix + info.id();
+			base_section.topics.push_back(terrain_topic);
+		}
+	}
+
+	for (std::map<std::string, section>::const_iterator it = base_map.begin(); it != base_map.end(); it++) {
+		sec.add_section(it->second);
 	}
 }
 
@@ -3240,6 +3353,18 @@ void show_unit_help(display &disp, const std::string& show_topic, bool hidden, i
 {
 	show_help(disp, toplevel, hidden_symbol(hidden) + unit_prefix + show_topic, xloc, yloc);
 }
+
+/**
+ * Open the help browser, show terrain with id terrain_id.
+ *
+ * If show_topic is the empty string, the default topic will be shown.
+ */
+void show_terrain_help(display &disp, const std::string& show_topic, bool hidden, int xloc, int yloc)
+{
+	show_help(disp, toplevel, hidden_symbol(hidden) + terrain_prefix + show_topic, xloc, yloc);
+}
+
+
 
 /**
  * Open the help browser, show the variation of the unit matching.

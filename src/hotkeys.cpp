@@ -84,6 +84,7 @@ hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_TERRAIN_DESCRIPTION, "describeterrain", N_("Terrain Description"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_DELETE_UNIT, "editor-deleteunit", N_("Delete Unit"), false, hotkey::SCOPE_GENERAL, "" },
@@ -1101,6 +1102,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			break;
 		case HOTKEY_REDO:
 			redo();
+			break;
+		case HOTKEY_TERRAIN_DESCRIPTION:
+			terrain_description();
 			break;
 		case HOTKEY_UNIT_DESCRIPTION:
 			unit_description();

@@ -63,6 +63,7 @@ public:
 	bool end_turn(int side_num);
 	void goto_leader(int side_num);
 	void unit_description();
+	void terrain_description(mouse_handler& mousehandler);
 	void rename_unit();
 	void create_unit(mouse_handler& mousehandler);
 	void change_side(mouse_handler& mousehandler);

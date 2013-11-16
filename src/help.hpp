@@ -48,6 +48,10 @@ void show_unit_help(display &disp, const std::string& unit_id, bool hidden = fal
 void show_variation_help(display &disp, const std::string &unit_id, const std::string &variation,
 				bool hidden = false, int xloc=-1, int yloc=-1);
 
+/// wrapper to add terrain prefix and hiding symbol
+void show_terrain_help(display &disp, const std::string& unit_id, bool hidden = false,
+				int xloc = -1, int yloc = -1);
+
 class help_button : public gui::dialog_button, public hotkey::command_executor {
 public:
 	help_button(display& disp, const std::string &help_topic);
