@@ -728,17 +728,57 @@ void delete_all_wml_hotkeys()
 	}
 }
 
+//retunrs weather a hotkey was deleted.
+bool remove_wml_hotkey(const std::string& id)
+{
+	hotkey::hotkey_command& command = get_hotkey_command(id);
+	if(command.id == hotkey::HOTKEY_NULL)
+	{
+		LOG_G << "remove_wml_hotkey: command with id=" + id + " doesn't exist\n";
+		return false;
+	}
+	else if (command.id != hotkey::HOTKEY_WML)
+	{
+		LOG_G << "remove_wml_hotkey: command with id=" + id + " cannot be removed because it is no wml menu hotkey\n";
+		return false;
+	}
+	else
+	{
+		LOG_G << "removing wml hotkey with id=" + id + "\n";
+		for(boost::ptr_vector<hotkey_command>::iterator itor = known_hotkeys.begin(); itor != known_hotkeys.end(); itor ++)
+		{
+			if(itor->command == id)
+			{
+				known_hotkeys.erase(itor);
+				break;
+			}
+		}
+		//command_map_ might be all wrong now, so we need to rebuild.
+		command_map_.clear();
+		for(size_t index = 0; index < known_hotkeys.size(); index++)
+		{
+			command_map_[known_hotkeys[index].command] = index;
+		}
+		return true;
+	}
+}
+
 
 
 void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey)
 {
-	if(has_hotkey_command(id) || id == "null")
+	if(id == "null")
 	{
 		LOG_G << "coudn't add wml hotkey with id=" + id + " and description" + description.base_str();
 		return;
 	}
 	else
 	{
+		if(has_hotkey_command(id))
+		{
+			LOG_G << "hotkey with id " + id + "already exists. deleting the old hotkey_command";
+			remove_wml_hotkey(id);
+		}
 		DBG_G << "added wml hotkey with id=" + id + " and description" + description.base_str();
 		//i think i dont need the temp anymore.
 		hotkey_command temp_command(hotkey::HOTKEY_WML, id, description, false, hotkey::SCOPE_GAME, t_string(""));
