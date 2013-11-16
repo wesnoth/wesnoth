@@ -101,7 +101,10 @@ bool wmi_container::commit_change(const std::string & id, config & command)
 		for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
 			if ( hand->is_menu_item() ) {
 				LOG_NG << "changing command for " << event_name << " to:\n" << command;
-				*hand = event_handler(command, true);
+				// Update the handler. A remove/add pair ensures that if the
+				// handler is currently running, we don't interfere with it.
+				remove_event_handler(event_id.str());
+				add_event_handler(command, true);
 			}
 		}
 	} else if(!is_empty_command) {
