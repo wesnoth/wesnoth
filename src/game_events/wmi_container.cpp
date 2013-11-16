@@ -104,7 +104,8 @@ bool wmi_container::commit_change(const std::string & id, config & command)
 				// Update the handler. A remove/add pair ensures that if the
 				// handler is currently running, we don't interfere with it.
 				remove_event_handler(event_id.str());
-				add_event_handler(command, true);
+				if ( !is_empty_command )
+					add_event_handler(command, true);
 			}
 		}
 	} else if(!is_empty_command) {
