@@ -1060,7 +1060,7 @@ const config & unit_type::build_unit_cfg() const
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
-	static char const *unit_type_attrs[] = { "attacks", "die_sound",
+	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
 		"healed_sound", "experience", "flies", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name" };
@@ -1191,6 +1191,11 @@ namespace { // Helpers for set_config()
 		BOOST_FOREACH (config & base, ut_cfg.child_range("base_unit") )
 			base_ids.push_back(base["id"]);
 
+		if ( base_ids.empty() )
+			// Nothing to do.
+			return;
+
+		// Store the base ids for the help system.
 		ut_cfg["base_ids"] = utils::join(base_ids);
 
 		// Clear the base units (otherwise they could interfere with the merge).
