@@ -33,7 +33,13 @@ namespace game_events
 class wml_menu_item
 {
 public:
+	/// Constructor for when read from a saved config.
 	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
+	/// Constructor for when defined in an event.
+	wml_menu_item(const std::string& id, const vconfig & definition);
+	/// Constructor for when modified by an event.
+	wml_menu_item(const std::string& id, const vconfig & definition,
+	              const wml_menu_item & original);
 
 	/// The WML actions specified within this item.
 	const config & command() const { return command_; }

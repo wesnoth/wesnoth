@@ -235,8 +235,17 @@ void wmi_container::to_config(config& cfg) const
  */
 void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 {
-	// Get the item and update it.
-	get_item(id).update(menu_item);
+	// Try to insert a dummy value. This combines looking for an existing
+	// entry with insertion.
+	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
+
+	if ( add_it->second )
+		// Create a new menu item based on the old. This leaves the old item
+		// alone in case someone else is holding on to (and processing) it.
+		add_it->second.reset(new wml_menu_item(id, menu_item, *add_it->second));
+	else
+		// This is a new menu item.
+		add_it->second.reset(new wml_menu_item(id, menu_item));
 }
 
 /**

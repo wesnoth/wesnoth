@@ -42,10 +42,39 @@ static lg::log_domain log_engine("engine");
 namespace game_events
 {
 
+namespace { // Some helpers for construction.
+
+	/**
+	 * Build the event name associated with the given menu item id.
+	 * This is a separate function so it can be easily shared by multiple
+	 * constructors.
+	 */
+	inline std::string make_item_name(const std::string & id)
+	{
+		return std::string("menu_item") + (id.empty() ? "" : ' ' + id);
+	}
+
+	/**
+	 * Build the hotkey id associated with the given menu item id.
+	 * This is a separate function so it can be easily shared by multiple
+	 * constructors.
+	 */
+	inline std::string make_item_hotkey(const std::string & id)
+	{
+		return play_controller::wml_menu_hotkey_prefix + id;
+	}
+
+}// anonymous namespace
+
+
+/**
+ * Constructor for when read from a saved config.
+ * This is the reverse of to_config() and corresponds to reading [menu_item].
+ */
 wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		item_id_(id),
-		event_name_("menu item" + (id.empty() ? "" : ' ' + id)),
-		hotkey_id_(play_controller::wml_menu_hotkey_prefix + id),
+		event_name_(make_item_name(id)),
+		hotkey_id_(make_item_hotkey(id)),
 		image_(),
 		description_(),
 		needs_select_(false),
@@ -78,6 +107,59 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		if (const config &c = cfg->child("default_hotkey")) default_hotkey_ = c;
 	}
 }
+
+/**
+ * Constructor for when defined in an event.
+ * This is where default values are defined (the other constructors should have
+ * all values to work with).
+ * @param[in]  id          The id of the menu item.
+ * @param[in]  definition  The WML defining this menu item.
+ */
+wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition) :
+		item_id_(id),
+		event_name_(make_item_name(id)),
+		hotkey_id_(make_item_hotkey(id)),
+		image_(),
+		description_(),
+		needs_select_(false),
+		show_if_(vconfig::empty_vconfig()),
+		filter_location_(vconfig::empty_vconfig()),
+		command_(),
+		default_hotkey_(),
+		use_hotkey_(true),
+		use_wml_menu_(true)
+{
+	// Apply WML.
+	update(definition);
+}
+
+/**
+ * Constructor for when modified by an event.
+ * (To avoid problems with a menu item's command changing itself, we make a
+ * new menu item instead of modifying the existing one.)
+ * @param[in]  id          The id of the menu item.
+ * @param[in]  definition  The WML defining this menu item.
+ * @param[in]  original    The previous version of the menu item with this id.
+ */
+wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition,
+                             const wml_menu_item & original) :
+		item_id_(id),
+		event_name_(make_item_name(id)),
+		hotkey_id_(make_item_hotkey(id)),
+		image_(original.image_),
+		description_(original.description_),
+		needs_select_(original.needs_select_),
+		show_if_(original.show_if_),
+		filter_location_(original.filter_location_),
+		command_(original.command_),
+		default_hotkey_(original.default_hotkey_),
+		use_hotkey_(original.use_hotkey_),
+		use_wml_menu_(original.use_wml_menu_)
+{
+	// Apply WML.
+	update(definition);
+}
+
 
 /**
  * The image associated with this menu item.
@@ -167,6 +249,8 @@ void wml_menu_item::init_handler() const
 
 /**
  * Writes *this to the provided config.
+ * This is the reverse of the constructor from a config and corresponds to
+ * what will appear in [menu_item].
  */
 void wml_menu_item::to_config(config & cfg) const
 {
@@ -198,6 +282,7 @@ void wml_menu_item::to_config(config & cfg) const
 
 /**
  * Updates *this based on @a vcfg.
+ * This corresponds to what can appear in [set_menu_item].
  */
 void wml_menu_item::update(const vconfig & vcfg)
 {
