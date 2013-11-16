@@ -73,7 +73,7 @@ public:
 	size_type erase(const std::string & id);
 
 	/// Commits a single WML menu item command change.
-	bool commit_change(const std::string & id, config & command);
+	void commit_change(const std::string & id, config & command);
 	/// Fires the menu item with the given @a id.
 	bool fire_item(const std::string & id, const map_location & hex) const;
 	/// Returns the menu items that can be shown for the given location.

@@ -27,6 +27,7 @@
 #include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
+#include "../preferences.hpp"
 #include "../resources.hpp"
 
 #include <boost/foreach.hpp>
@@ -82,10 +83,9 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
  * Commits a single WML menu item command change.
  * Returns true if hotkeys have changed (so they need to be saved).
  */
-bool wmi_container::commit_change(const std::string & id, config & command)
+void wmi_container::commit_change(const std::string & id, config & command)
 {
 	const bool is_empty_command = command.empty();
-	bool hotkeys_changed = false;
 
 	wml_menu_item & item = get_item(id);
 	const std::string & event_name = item.event_name();
@@ -115,12 +115,11 @@ bool wmi_container::commit_change(const std::string & id, config & command)
 			const config & default_hotkey = item.default_hotkey();
 			hotkey::add_wml_hotkey(item.menu_text(), item.description(), default_hotkey);
 			if ( !default_hotkey.empty() )
-				hotkeys_changed = true;
+				preferences::save_hotkeys();
 		}
 	}
 
 	item.set_command(command);
-	return hotkeys_changed;
 }
 
 /**

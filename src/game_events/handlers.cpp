@@ -27,7 +27,6 @@
 #include "../gamestatus.hpp"
 #include "../hotkeys.hpp"
 #include "../log.hpp"
-#include "../preferences.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
 #include "../scripting/lua.hpp"
@@ -186,20 +185,14 @@ void add_wmi_change(const std::string & id, const config & new_command)
 /** Handles all the different types of actions that can be triggered by an event. */
 void commit_wmi_commands()
 {
-	bool hotkeys_changed = false;
 	// Commit WML Menu Item command changes
 	while(wmi_command_changes.size() > 0) {
 		wmi_command_change wcc = wmi_command_changes.front();
 
-		if ( resources::gamedata->get_wml_menu_items().commit_change(wcc.first, *wcc.second) )
-			hotkeys_changed = true;
+		resources::gamedata->get_wml_menu_items().commit_change(wcc.first, *wcc.second);
 
 		delete wcc.second;
 		wmi_command_changes.erase(wmi_command_changes.begin());
-	}
-	if(hotkeys_changed)
-	{
-		preferences::save_hotkeys();
 	}
 }
 
