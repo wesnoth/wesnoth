@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
+"POT-Creation-Date: 2013-11-16 09:29+0100\n"
 "PO-Revision-Date: 2012-04-18 23:26-0300\n"
 "Last-Translator: Davi Duarte Pinheiro <daviduartep@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -39,7 +39,7 @@ msgstr "Subsolo"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 755
 # File: data/core/macros/abilities.cfg, line: 562
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:755
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "frenesi"
@@ -52,7 +52,7 @@ msgstr "frenesi"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 757
 # File: data/core/macros/abilities.cfg, line: 563
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:563
 #, fuzzy
 msgid ""
@@ -72,7 +72,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 769
 # File: data/core/macros/abilities.cfg, line: 641
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "mágico"
@@ -85,7 +85,7 @@ msgstr "mágico"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 771
 # File: data/core/macros/abilities.cfg, line: 642
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
 #: data/core/macros/abilities.cfg:642
 #, fuzzy
 msgid ""
@@ -104,7 +104,7 @@ msgstr ""
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 783
 # File: data/core/macros/abilities.cfg, line: 686
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
 #: data/core/macros/abilities.cfg:686
 #, fuzzy
 msgid "first strike"
@@ -118,7 +118,7 @@ msgstr "iniciativa"
 # File: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg, line: 785
 # File: data/core/macros/abilities.cfg, line: 687
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
 #: data/core/macros/abilities.cfg:687
 #, fuzzy
 msgid ""
@@ -1432,7 +1432,7 @@ msgstr "Efeitos das Armas"
 # File: src/help.cpp, line: 1309
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1279 src/help.cpp:1281
+#: data/core/help.cfg:56 src/help.cpp:1285 src/help.cpp:1287
 msgid "Factions"
 msgstr "Facções"
 
@@ -5758,8 +5758,8 @@ msgstr "alimentar"
 #: data/core/macros/abilities.cfg:505
 #, fuzzy
 msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
-"unit."
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
 msgstr ""
 "Esta unidade ganha 1 ponto de vida acrescentado ao seu máximo sempre que "
 "matar uma unidade viva."
@@ -8144,7 +8144,7 @@ msgstr "Ajuda"
 # File: src/help.cpp, line: 1142
 # File: src/help.cpp, line: 1142
 # File: src/help.cpp, line: 1142
-#: src/help.cpp:1142
+#: src/help.cpp:1148
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Unidades que possuem este ataque especial'</header>"
 
@@ -8152,7 +8152,7 @@ msgstr "<header>text='Unidades que possuem este ataque especial'</header>"
 # File: src/help.cpp, line: 1236
 # File: src/help.cpp, line: 1236
 # File: src/help.cpp, line: 1236
-#: src/help.cpp:1208
+#: src/help.cpp:1214
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unidades que possuem esta habilidade'</header>"
 
@@ -8160,7 +8160,7 @@ msgstr "<header>text='Unidades que possuem esta habilidade'</header>"
 # File: src/help.cpp, line: 1269
 # File: src/help.cpp, line: 1269
 # File: src/help.cpp, line: 1269
-#: src/help.cpp:1241
+#: src/help.cpp:1247
 msgid "Leaders:"
 msgstr "Lideres: "
 
@@ -8168,7 +8168,7 @@ msgstr "Lideres: "
 # File: src/help.cpp, line: 1278
 # File: src/help.cpp, line: 1278
 # File: src/help.cpp, line: 1278
-#: src/help.cpp:1250
+#: src/help.cpp:1256
 msgid "Recruits:"
 msgstr "Recrutas: "
 
@@ -8176,7 +8176,7 @@ msgstr "Recrutas: "
 # File: src/help.cpp, line: 1292
 # File: src/help.cpp, line: 1292
 # File: src/help.cpp, line: 1292
-#: src/help.cpp:1264
+#: src/help.cpp:1270
 msgid "Era:"
 msgstr "Era:"
 
@@ -8184,7 +8184,7 @@ msgstr "Era:"
 # File: src/help.cpp, line: 1300
 # File: src/help.cpp, line: 1300
 # File: src/help.cpp, line: 1300
-#: src/help.cpp:1272
+#: src/help.cpp:1278
 msgid "Factions:"
 msgstr "Facções:"
 
@@ -8192,7 +8192,7 @@ msgstr "Facções:"
 # File: src/help.cpp, line: 1310
 # File: src/help.cpp, line: 1310
 # File: src/help.cpp, line: 1310
-#: src/help.cpp:1282
+#: src/help.cpp:1288
 msgid "Factions are only used in multiplayer"
 msgstr "Facções são somente usadas em multiplayer"
 
@@ -8200,7 +8200,7 @@ msgstr "Facções são somente usadas em multiplayer"
 # File: src/help.cpp, line: 1354
 # File: src/help.cpp, line: 1354
 # File: src/help.cpp, line: 1354
-#: src/help.cpp:1326
+#: src/help.cpp:1332
 msgid "level"
 msgstr "nível"
 
@@ -8208,7 +8208,7 @@ msgstr "nível"
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
 # File: src/help.cpp, line: 1387
-#: src/help.cpp:1359
+#: src/help.cpp:1365
 msgid "Advances from: "
 msgstr "Avança de: "
 
@@ -8216,7 +8216,7 @@ msgstr "Avança de: "
 # File: src/help.cpp, line: 1389
 # File: src/help.cpp, line: 1389
 # File: src/help.cpp, line: 1389
-#: src/help.cpp:1361
+#: src/help.cpp:1367
 msgid "Advances to: "
 msgstr "Avança para: "
 
@@ -8224,15 +8224,19 @@ msgstr "Avança para: "
 # File: src/help.cpp, line: 1412
 # File: src/help.cpp, line: 1412
 # File: src/help.cpp, line: 1412
-#: src/help.cpp:1384
+#: src/help.cpp:1392
 msgid "Base unit: "
+msgstr ""
+
+#: src/help.cpp:1397
+msgid "Base units: "
 msgstr ""
 
 #
 # File: src/help.cpp, line: 1422
 # File: src/help.cpp, line: 1422
 # File: src/help.cpp, line: 1422
-#: src/help.cpp:1394
+#: src/help.cpp:1411
 #, fuzzy
 msgid "Variations: "
 msgstr "Facções:"
@@ -8247,7 +8251,7 @@ msgstr "Facções:"
 # File: src/help.cpp, line: 1446
 # File: src/help.cpp, line: 1818
 # File: src/help.cpp, line: 1891
-#: src/help.cpp:1418 src/help.cpp:1790 src/help.cpp:1863
+#: src/help.cpp:1435 src/help.cpp:1800 src/help.cpp:1897
 msgid "race^Miscellaneous"
 msgstr "Miscelânea"
 
@@ -8255,7 +8259,7 @@ msgstr "Miscelânea"
 # File: src/help.cpp, line: 1448
 # File: src/help.cpp, line: 1448
 # File: src/help.cpp, line: 1448
-#: src/help.cpp:1420
+#: src/help.cpp:1437
 msgid "Race: "
 msgstr "Raça: "
 
@@ -8263,7 +8267,7 @@ msgstr "Raça: "
 # File: src/help.cpp, line: 1455
 # File: src/help.cpp, line: 1455
 # File: src/help.cpp, line: 1455
-#: src/help.cpp:1427
+#: src/help.cpp:1444
 msgid "Abilities: "
 msgstr "Habilidades: "
 
@@ -8271,7 +8275,7 @@ msgstr "Habilidades: "
 # File: src/help.cpp, line: 1472
 # File: src/help.cpp, line: 1472
 # File: src/help.cpp, line: 1472
-#: src/help.cpp:1444
+#: src/help.cpp:1460
 msgid "Ability Upgrades: "
 msgstr "Habilidades Melhoradas: "
 
@@ -8279,7 +8283,7 @@ msgstr "Habilidades Melhoradas: "
 # File: src/help.cpp, line: 1488
 # File: src/help.cpp, line: 1488
 # File: src/help.cpp, line: 1488
-#: src/help.cpp:1460
+#: src/help.cpp:1475
 msgid "HP: "
 msgstr "HP: "
 
@@ -8287,7 +8291,7 @@ msgstr "HP: "
 # File: src/help.cpp, line: 1489
 # File: src/help.cpp, line: 1489
 # File: src/help.cpp, line: 1489
-#: src/help.cpp:1461
+#: src/help.cpp:1476
 msgid "Moves: "
 msgstr "Movimento: "
 
@@ -8295,7 +8299,7 @@ msgstr "Movimento: "
 # File: src/help.cpp, line: 1491
 # File: src/help.cpp, line: 1491
 # File: src/help.cpp, line: 1491
-#: src/help.cpp:1463
+#: src/help.cpp:1478
 msgid "Vision: "
 msgstr ""
 
@@ -8303,7 +8307,7 @@ msgstr ""
 # File: src/help.cpp, line: 1493
 # File: src/help.cpp, line: 1493
 # File: src/help.cpp, line: 1493
-#: src/help.cpp:1465
+#: src/help.cpp:1480
 msgid "Jamming: "
 msgstr ""
 
@@ -8311,7 +8315,7 @@ msgstr ""
 # File: src/help.cpp, line: 1494
 # File: src/help.cpp, line: 1494
 # File: src/help.cpp, line: 1494
-#: src/help.cpp:1466
+#: src/help.cpp:1481
 msgid "Cost: "
 msgstr "Custo: "
 
@@ -8319,7 +8323,7 @@ msgstr "Custo: "
 # File: src/help.cpp, line: 1495
 # File: src/help.cpp, line: 1495
 # File: src/help.cpp, line: 1495
-#: src/help.cpp:1467
+#: src/help.cpp:1482
 msgid "Alignment: "
 msgstr "Alinhamento: "
 
@@ -8327,7 +8331,7 @@ msgstr "Alinhamento: "
 # File: src/help.cpp, line: 1501
 # File: src/help.cpp, line: 1501
 # File: src/help.cpp, line: 1501
-#: src/help.cpp:1473
+#: src/help.cpp:1486
 msgid "Required XP: "
 msgstr "XP necessário: "
 
@@ -8335,7 +8339,7 @@ msgstr "XP necessário: "
 # File: src/help.cpp, line: 1510
 # File: src/help.cpp, line: 1510
 # File: src/help.cpp, line: 1510
-#: src/help.cpp:1482
+#: src/help.cpp:1495
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
@@ -8343,7 +8347,7 @@ msgstr "Ataques"
 # File: src/help.cpp, line: 1517
 # File: src/help.cpp, line: 1517
 # File: src/help.cpp, line: 1517
-#: src/help.cpp:1489
+#: src/help.cpp:1502
 msgid "unit help^Name"
 msgstr "Nome"
 
@@ -8351,7 +8355,7 @@ msgstr "Nome"
 # File: src/help.cpp, line: 1518
 # File: src/help.cpp, line: 1518
 # File: src/help.cpp, line: 1518
-#: src/help.cpp:1490
+#: src/help.cpp:1503
 msgid "Type"
 msgstr "Tipo"
 
@@ -8359,7 +8363,7 @@ msgstr "Tipo"
 # File: src/help.cpp, line: 1519
 # File: src/help.cpp, line: 1519
 # File: src/help.cpp, line: 1519
-#: src/help.cpp:1491
+#: src/help.cpp:1504
 msgid "Strikes"
 msgstr "Golpes"
 
@@ -8367,7 +8371,7 @@ msgstr "Golpes"
 # File: src/help.cpp, line: 1520
 # File: src/help.cpp, line: 1520
 # File: src/help.cpp, line: 1520
-#: src/help.cpp:1492
+#: src/help.cpp:1505
 msgid "Range"
 msgstr "Distância"
 
@@ -8375,7 +8379,7 @@ msgstr "Distância"
 # File: src/help.cpp, line: 1521
 # File: src/help.cpp, line: 1521
 # File: src/help.cpp, line: 1521
-#: src/help.cpp:1493
+#: src/help.cpp:1506
 msgid "Special"
 msgstr "Especial"
 
@@ -8383,7 +8387,7 @@ msgstr "Especial"
 # File: src/help.cpp, line: 1567
 # File: src/help.cpp, line: 1567
 # File: src/help.cpp, line: 1567
-#: src/help.cpp:1539
+#: src/help.cpp:1551
 msgid "Resistances"
 msgstr "Resistências"
 
@@ -8391,7 +8395,7 @@ msgstr "Resistências"
 # File: src/help.cpp, line: 1571
 # File: src/help.cpp, line: 1571
 # File: src/help.cpp, line: 1571
-#: src/help.cpp:1543
+#: src/help.cpp:1555
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
@@ -8399,7 +8403,7 @@ msgstr "Tipo de ataque"
 # File: src/help.cpp, line: 1572
 # File: src/help.cpp, line: 1572
 # File: src/help.cpp, line: 1572
-#: src/help.cpp:1544
+#: src/help.cpp:1556
 msgid "Resistance"
 msgstr "Resistência"
 
@@ -8407,7 +8411,7 @@ msgstr "Resistência"
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
 # File: src/help.cpp, line: 1602
-#: src/help.cpp:1574
+#: src/help.cpp:1586
 msgid "Terrain Modifiers"
 msgstr "Modificadores de Terreno"
 
@@ -8415,7 +8419,7 @@ msgstr "Modificadores de Terreno"
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
 # File: src/help.cpp, line: 1606
-#: src/help.cpp:1578
+#: src/help.cpp:1590
 msgid "Terrain"
 msgstr "Terreno"
 
@@ -8423,7 +8427,7 @@ msgstr "Terreno"
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
 # File: src/help.cpp, line: 1607
-#: src/help.cpp:1579
+#: src/help.cpp:1591
 msgid "Defense"
 msgstr "Defesa"
 
@@ -8431,7 +8435,7 @@ msgstr "Defesa"
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
 # File: src/help.cpp, line: 1608
-#: src/help.cpp:1580
+#: src/help.cpp:1592
 msgid "Movement Cost"
 msgstr "Custo de Movimento"
 
@@ -8439,7 +8443,7 @@ msgstr "Custo de Movimento"
 # File: src/help.cpp, line: 1612
 # File: src/help.cpp, line: 1612
 # File: src/help.cpp, line: 1612
-#: src/help.cpp:1584
+#: src/help.cpp:1596
 msgid "Vision Cost"
 msgstr ""
 
@@ -8447,7 +8451,7 @@ msgstr ""
 # File: src/help.cpp, line: 1615
 # File: src/help.cpp, line: 1615
 # File: src/help.cpp, line: 1615
-#: src/help.cpp:1587
+#: src/help.cpp:1599
 msgid "Jamming Cost"
 msgstr ""
 
@@ -8455,7 +8459,7 @@ msgstr ""
 # File: src/help.cpp, line: 1897
 # File: src/help.cpp, line: 1897
 # File: src/help.cpp, line: 1897
-#: src/help.cpp:1869
+#: src/help.cpp:1903
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unidades desta raça'</header>"
 
@@ -8463,7 +8467,7 @@ msgstr "<header>text='Unidades desta raça'</header>"
 # File: src/help.cpp, line: 2809
 # File: src/help.cpp, line: 2809
 # File: src/help.cpp, line: 2809
-#: src/help.cpp:2781
+#: src/help.cpp:2815
 msgid " < Back"
 msgstr "< Voltar"
 
@@ -8471,7 +8475,7 @@ msgstr "< Voltar"
 # File: src/help.cpp, line: 2810
 # File: src/help.cpp, line: 2810
 # File: src/help.cpp, line: 2810
-#: src/help.cpp:2782
+#: src/help.cpp:2816
 msgid "Forward >"
 msgstr "Prosseguir >"
 
@@ -8479,7 +8483,7 @@ msgstr "Prosseguir >"
 # File: src/help.cpp, line: 2918
 # File: src/help.cpp, line: 2918
 # File: src/help.cpp, line: 2918
-#: src/help.cpp:2890
+#: src/help.cpp:2924
 msgid "Reference to unknown topic: "
 msgstr "Referência a um tópico desconhecido: "
 
@@ -8487,7 +8491,7 @@ msgstr "Referência a um tópico desconhecido: "
 # File: src/help.cpp, line: 3174
 # File: src/help.cpp, line: 3174
 # File: src/help.cpp, line: 3174
-#: src/help.cpp:3146
+#: src/help.cpp:3180
 msgid "corrupted original file"
 msgstr "arquivo original corrompido"
 
@@ -8495,7 +8499,7 @@ msgstr "arquivo original corrompido"
 # File: src/help.cpp, line: 3273
 # File: src/help.cpp, line: 3273
 # File: src/help.cpp, line: 3273
-#: src/help.cpp:3245
+#: src/help.cpp:3279
 msgid "Close"
 msgstr "Fechar"
 
@@ -8503,7 +8507,7 @@ msgstr "Fechar"
 # File: src/help.cpp, line: 3276
 # File: src/help.cpp, line: 3276
 # File: src/help.cpp, line: 3276
-#: src/help.cpp:3248
+#: src/help.cpp:3282
 msgid "The Battle for Wesnoth Help"
 msgstr "Ajuda para Battle for Wesnoth"
 
@@ -8511,6 +8515,6 @@ msgstr "Ajuda para Battle for Wesnoth"
 # File: src/help.cpp, line: 3332
 # File: src/help.cpp, line: 3332
 # File: src/help.cpp, line: 3332
-#: src/help.cpp:3304
+#: src/help.cpp:3338
 msgid "Parse error when parsing help text: "
 msgstr "Erro de formato ao ler o texto de ajuda: "

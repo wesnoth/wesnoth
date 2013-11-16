@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
+"POT-Creation-Date: 2013-11-16 09:29+0100\n"
 "PO-Revision-Date: 2005-12-14 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: Afrikaans\n"
@@ -24,13 +24,13 @@ msgid "Underground"
 msgstr "Ondergronds"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:755
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "beserk"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:563
 #, fuzzy
 #| msgid ""
@@ -48,13 +48,13 @@ msgstr ""
 "verby."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "magies"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
 #: data/core/macros/abilities.cfg:642
 #, fuzzy
 msgid ""
@@ -65,7 +65,7 @@ msgstr ""
 "Hierdie aanval het 'n 70 % kans om 'n trefhou te wees."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
 #: data/core/macros/abilities.cfg:686
 #, fuzzy
 #| msgid "firststrike"
@@ -73,7 +73,7 @@ msgid "first strike"
 msgstr "eerste trefhou"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
 #: data/core/macros/abilities.cfg:687
 #, fuzzy
 #| msgid ""
@@ -918,7 +918,7 @@ msgstr "Wapen Bonusse"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1279 src/help.cpp:1281
+#: data/core/help.cfg:56 src/help.cpp:1285 src/help.cpp:1287
 #, fuzzy
 msgid "Factions"
 msgstr "Faksie"
@@ -3929,8 +3929,8 @@ msgstr "Prinses"
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
 msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
-"unit."
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
 msgstr ""
 
 #. [unstore_unit]
@@ -5405,7 +5405,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: src/help.cpp:1142
+#: src/help.cpp:1148
 #, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
 msgstr ""
@@ -5413,7 +5413,7 @@ msgstr ""
 "\n"
 "<header>text='Kans om te tref'</header>"
 
-#: src/help.cpp:1208
+#: src/help.cpp:1214
 #, fuzzy
 msgid "<header>text='Units having this ability'</header>"
 msgstr ""
@@ -5421,162 +5421,166 @@ msgstr ""
 "\n"
 "<header>text='Kans om te tref'</header>"
 
-#: src/help.cpp:1241
+#: src/help.cpp:1247
 #, fuzzy
 msgid "Leaders:"
 msgstr "Leier: "
 
-#: src/help.cpp:1250
+#: src/help.cpp:1256
 #, fuzzy
 msgid "Recruits:"
 msgstr "Rekrute: "
 
-#: src/help.cpp:1264
+#: src/help.cpp:1270
 msgid "Era:"
 msgstr "Tydperk:"
 
-#: src/help.cpp:1272
+#: src/help.cpp:1278
 #, fuzzy
 msgid "Factions:"
 msgstr "Faksie"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1288
 msgid "Factions are only used in multiplayer"
 msgstr ""
 
-#: src/help.cpp:1326
+#: src/help.cpp:1332
 msgid "level"
 msgstr "vlak"
 
-#: src/help.cpp:1359
+#: src/help.cpp:1365
 #, fuzzy
 msgid "Advances from: "
 msgstr "Bevorder na: "
 
-#: src/help.cpp:1361
+#: src/help.cpp:1367
 msgid "Advances to: "
 msgstr "Bevorder na: "
 
-#: src/help.cpp:1384
+#: src/help.cpp:1392
 msgid "Base unit: "
 msgstr ""
 
-#: src/help.cpp:1394
+#: src/help.cpp:1397
+msgid "Base units: "
+msgstr ""
+
+#: src/help.cpp:1411
 #, fuzzy
 msgid "Variations: "
 msgstr "Faksie"
 
-#: src/help.cpp:1418 src/help.cpp:1790 src/help.cpp:1863
+#: src/help.cpp:1435 src/help.cpp:1800 src/help.cpp:1897
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "+Algemeen"
 
-#: src/help.cpp:1420
+#: src/help.cpp:1437
 #, fuzzy
 msgid "Race: "
 msgstr "knuppel"
 
-#: src/help.cpp:1427
+#: src/help.cpp:1444
 msgid "Abilities: "
 msgstr "Vermoëns: "
 
-#: src/help.cpp:1444
+#: src/help.cpp:1460
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Vermoëns: "
 
-#: src/help.cpp:1460
+#: src/help.cpp:1475
 msgid "HP: "
 msgstr "LP: "
 
-#: src/help.cpp:1461
+#: src/help.cpp:1476
 msgid "Moves: "
 msgstr "Skuiwe: "
 
-#: src/help.cpp:1463
+#: src/help.cpp:1478
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1465
+#: src/help.cpp:1480
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1466
+#: src/help.cpp:1481
 #, fuzzy
 msgid "Cost: "
 msgstr "Skuiwe: "
 
-#: src/help.cpp:1467
+#: src/help.cpp:1482
 msgid "Alignment: "
 msgstr "Orde: "
 
-#: src/help.cpp:1473
+#: src/help.cpp:1486
 msgid "Required XP: "
 msgstr "Vereiste EP: "
 
-#: src/help.cpp:1482
+#: src/help.cpp:1495
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1489
+#: src/help.cpp:1502
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Verlaat die spel"
 
-#: src/help.cpp:1490
+#: src/help.cpp:1503
 msgid "Type"
 msgstr "Tipe"
 
-#: src/help.cpp:1491
+#: src/help.cpp:1504
 msgid "Strikes"
 msgstr "Trefhoue"
 
-#: src/help.cpp:1492
+#: src/help.cpp:1505
 msgid "Range"
 msgstr "Afstand"
 
-#: src/help.cpp:1493
+#: src/help.cpp:1506
 msgid "Special"
 msgstr "Spesiaal"
 
-#: src/help.cpp:1539
+#: src/help.cpp:1551
 msgid "Resistances"
 msgstr "Weerstande"
 
-#: src/help.cpp:1543
+#: src/help.cpp:1555
 msgid "Attack Type"
 msgstr "Aanvalstipe"
 
-#: src/help.cpp:1544
+#: src/help.cpp:1556
 msgid "Resistance"
 msgstr "Weerstand"
 
-#: src/help.cpp:1574
+#: src/help.cpp:1586
 msgid "Terrain Modifiers"
 msgstr "Terreinverstellings"
 
-#: src/help.cpp:1578
+#: src/help.cpp:1590
 msgid "Terrain"
 msgstr "Terrein"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1591
 msgid "Defense"
 msgstr "Verdediging"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1592
 #, fuzzy
 msgid "Movement Cost"
 msgstr "Beweging"
 
-#: src/help.cpp:1584
+#: src/help.cpp:1596
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1587
+#: src/help.cpp:1599
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1869
+#: src/help.cpp:1903
 #, fuzzy
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
@@ -5584,32 +5588,32 @@ msgstr ""
 "\n"
 "<header>text='Kans om te tref'</header>"
 
-#: src/help.cpp:2781
+#: src/help.cpp:2815
 #, fuzzy
 msgid " < Back"
 msgstr "< Terug"
 
-#: src/help.cpp:2782
+#: src/help.cpp:2816
 msgid "Forward >"
 msgstr "Vorentoe >"
 
-#: src/help.cpp:2890
+#: src/help.cpp:2924
 msgid "Reference to unknown topic: "
 msgstr "Verwysing na onbekende onderwerp: "
 
-#: src/help.cpp:3146
+#: src/help.cpp:3180
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3245
+#: src/help.cpp:3279
 msgid "Close"
 msgstr "Sluit"
 
-#: src/help.cpp:3248
+#: src/help.cpp:3282
 msgid "The Battle for Wesnoth Help"
 msgstr "Die Stryd om Wesnoth Hulp"
 
-#: src/help.cpp:3304
+#: src/help.cpp:3338
 msgid "Parse error when parsing help text: "
 msgstr "Fout met lees hulp teks: "
 

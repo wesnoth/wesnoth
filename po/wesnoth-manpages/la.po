@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
-"POT-Creation-Date: 2013-03-09 08:50+0100\n"
+"POT-Creation-Date: 2013-11-16 09:28+0100\n"
 "PO-Revision-Date: 2013-06-21 15:09-0000\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin <http://wiki.wesnoth.org/LatinTranslation>\n"
@@ -672,25 +672,39 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:257
+#, fuzzy, no-wrap
+#| msgid "B<--era=>I<value>"
+msgid "B<--multiplayer-repeat=>I<value>"
+msgstr "B<--era=>I<value>"
+
+#. type: Plain text
+#: ../../doc/man/wesnoth.6:264
+msgid ""
+"repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
+"scriptable benchmarking."
+msgstr ""
+
+#. type: TP
+#: ../../doc/man/wesnoth.6:264
 #, no-wrap
 msgid "B<--nogui>"
 msgstr "B<--nogui>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:262
+#: ../../doc/man/wesnoth.6:269
 msgid ""
 "runs the game without the GUI. Must appear before B<--multiplayer> to have "
 "the desired effect."
 msgstr ""
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:262
+#: ../../doc/man/wesnoth.6:269
 #, no-wrap
 msgid "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 msgstr "B<--parm>I<number>B<=>I<name>B<:>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:271
+#: ../../doc/man/wesnoth.6:278
 msgid ""
 "sets additional parameters for this side. This parameter depends on the "
 "options used with B<--controller> and B<--algorithm>.  It should only be "
@@ -698,50 +712,50 @@ msgid ""
 msgstr ""
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:271
+#: ../../doc/man/wesnoth.6:278
 #, no-wrap
 msgid "B<--scenario=>I<value>"
 msgstr "B<--scenario=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:275
+#: ../../doc/man/wesnoth.6:282
 msgid ""
 "selects a multiplayer scenario by id. The default scenario id is "
 "B<multiplayer_The_Freelands>."
 msgstr ""
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:275
+#: ../../doc/man/wesnoth.6:282
 #, no-wrap
 msgid "B<--side>I<number>B<=>I<value>"
 msgstr "B<--side>I<number>B<=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:280
+#: ../../doc/man/wesnoth.6:287
 msgid ""
 "selects a faction of the current era for this side. The faction is chosen by "
 "an id. Factions are described in the data/multiplayer.cfg file."
 msgstr ""
 
 #. type: TP
-#: ../../doc/man/wesnoth.6:280
+#: ../../doc/man/wesnoth.6:287
 #, no-wrap
 msgid "B<--turns=>I<value>"
 msgstr "B<--turns=>I<value>"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:284
+#: ../../doc/man/wesnoth.6:291
 msgid "sets the number of turns for the chosen scenario. The default is B<50>."
 msgstr ""
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:285 ../../doc/man/wesnothd.6:265
+#: ../../doc/man/wesnoth.6:292 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
 msgstr "STATUS EXITUS"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:288
+#: ../../doc/man/wesnoth.6:295
 msgid ""
 "Normal exit status is 0. An exit status of 1 indicates an (SDL, video, "
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
@@ -749,19 +763,19 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:289 ../../doc/man/wesnothd.6:269
+#: ../../doc/man/wesnoth.6:296 ../../doc/man/wesnothd.6:269
 #, no-wrap
 msgid "AUTHOR"
 msgstr "SCRIPTOR"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:292
+#: ../../doc/man/wesnoth.6:299
 #, fuzzy
 msgid "Written by David White E<lt>davidnwhite@verizon.netE<gt>."
 msgstr "Scribebat (by) David White E<lt>davidnwhite@verizon.netE<gt>."
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:294
+#: ../../doc/man/wesnoth.6:301
 #, fuzzy
 msgid ""
 "Edited by Nils Kneuper E<lt>crazy-ivanovic@gmx.netE<gt>, ott E<lt>ott@gaon."
@@ -771,7 +785,7 @@ msgstr ""
 "E<lt>ott@gaon.netE<gt> et Soliton E<lt>soliton.de@gmail.comE<gt>."
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:296
+#: ../../doc/man/wesnoth.6:303
 #, fuzzy
 msgid ""
 "This manual page was originally written by Cyril Bouthors "
@@ -781,24 +795,24 @@ msgstr ""
 "orgE<gt>."
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:298 ../../doc/man/wesnothd.6:276
+#: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:299 ../../doc/man/wesnothd.6:277
+#: ../../doc/man/wesnoth.6:306 ../../doc/man/wesnothd.6:277
 #, no-wrap
 msgid "COPYRIGHT"
 msgstr ""
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:302 ../../doc/man/wesnothd.6:280
+#: ../../doc/man/wesnoth.6:309 ../../doc/man/wesnothd.6:280
 #, fuzzy
 msgid "Copyright \\(co 2003-2013 David White E<lt>davidnwhite@verizon.netE<gt>"
 msgstr "Scribebat (by) David White E<lt>davidnwhite@verizon.netE<gt>."
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:305 ../../doc/man/wesnothd.6:283
+#: ../../doc/man/wesnoth.6:312 ../../doc/man/wesnothd.6:283
 msgid ""
 "This is Free Software; this software is licensed under the GPL version 2, as "
 "published by the Free Software Foundation.  There is NO warranty; not even "
@@ -806,13 +820,13 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: ../../doc/man/wesnoth.6:306 ../../doc/man/wesnothd.6:284
+#: ../../doc/man/wesnoth.6:313 ../../doc/man/wesnothd.6:284
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VIDE QUOQUE"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:308
+#: ../../doc/man/wesnoth.6:315
 msgid "B<wesnothd>(6)."
 msgstr "B<wesnothd>(6)."
 
