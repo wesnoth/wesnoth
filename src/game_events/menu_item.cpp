@@ -30,12 +30,14 @@
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../play_controller.hpp"
+#include "../preferences.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
 #include "../terrain_filter.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 
 // This file is in the game_events namespace.
@@ -327,6 +329,54 @@ void wml_menu_item::update(const vconfig & vcfg)
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
 		add_wmi_change(item_id_, delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
+}
+
+/**
+ * Updates our command to @a new_command.
+ */
+void wml_menu_item::update_command(const config & command_cfg)
+{
+	// This was copied from wmi_container::commit_change.
+	// To limit the changes made as part of the copy, define what had
+	// been the parameters to wmi_container::commit_change.
+	const std::string & id = item_id_;
+	config new_command = command_cfg;
+
+	const bool is_empty_command = new_command.empty();
+
+	wml_menu_item & item = *this; // Another alias to limit changes. This had been a search for the item to update.
+	const std::string & event_name = item.event_name();
+
+	config::attribute_value & event_id = new_command["id"];
+	if ( event_id.empty() && !id.empty() ) {
+		event_id = id;
+	}
+	new_command["name"] = event_name;
+	new_command["first_time_only"] = false;
+
+	if ( !item.command().empty() ) {
+		for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
+			if ( hand->is_menu_item() ) {
+				LOG_NG << "changing command for " << event_name << " to:\n" << new_command;
+				// Update the handler. A remove/add pair ensures that if the
+				// handler is currently running, we don't interfere with it.
+				remove_event_handler(event_id.str());
+				if ( !is_empty_command )
+					add_event_handler(new_command, true);
+			}
+		}
+	} else if(!is_empty_command) {
+		LOG_NG << "setting command for " << event_name << " to:\n" << new_command;
+		add_event_handler(new_command, true);
+		if(item.use_hotkey()) {
+			const config & default_hotkey = item.default_hotkey();
+			hotkey::add_wml_hotkey(item.menu_text(), item.description(), default_hotkey);
+			if ( !default_hotkey.empty() )
+				preferences::save_hotkeys();
+		}
+	}
+
+	item.set_command(new_command);
 }
 
 } // end namespace game_events

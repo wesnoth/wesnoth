@@ -27,7 +27,6 @@
 #include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
-#include "../preferences.hpp"
 #include "../resources.hpp"
 
 #include <boost/foreach.hpp>
@@ -81,45 +80,10 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 
 /**
  * Commits a single WML menu item command change.
- * Returns true if hotkeys have changed (so they need to be saved).
  */
 void wmi_container::commit_change(const std::string & id, config & command)
 {
-	const bool is_empty_command = command.empty();
-
-	wml_menu_item & item = get_item(id);
-	const std::string & event_name = item.event_name();
-
-	config::attribute_value & event_id = command["id"];
-	if ( event_id.empty() && !id.empty() ) {
-		event_id = id;
-	}
-	command["name"] = event_name;
-	command["first_time_only"] = false;
-
-	if ( !item.command().empty() ) {
-		for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
-			if ( hand->is_menu_item() ) {
-				LOG_NG << "changing command for " << event_name << " to:\n" << command;
-				// Update the handler. A remove/add pair ensures that if the
-				// handler is currently running, we don't interfere with it.
-				remove_event_handler(event_id.str());
-				if ( !is_empty_command )
-					add_event_handler(command, true);
-			}
-		}
-	} else if(!is_empty_command) {
-		LOG_NG << "setting command for " << event_name << " to:\n" << command;
-		add_event_handler(command, true);
-		if(item.use_hotkey()) {
-			const config & default_hotkey = item.default_hotkey();
-			hotkey::add_wml_hotkey(item.menu_text(), item.description(), default_hotkey);
-			if ( !default_hotkey.empty() )
-				preferences::save_hotkeys();
-		}
-	}
-
-	item.set_command(command);
+	get_item(id).update_command(command);
 }
 
 /**

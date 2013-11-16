@@ -73,6 +73,8 @@ public:
 	void to_config(config & cfg) const;
 	/// Updates *this based on @a vcfg.
 	void update(const vconfig & vcfg);
+	/// Updates our command to @a new_command.
+	void update_command(const config & new_command);
 
 private:
 	/// The id of this menu item.
