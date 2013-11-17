@@ -134,7 +134,7 @@ namespace game_events
 	/**
 	 * Flushes WML messages and errors.
 	 */
-	void commit();
+	void flush_messages();
 
 	/**
 	 * This function can be used to detect when no WML/Lua has been executed.

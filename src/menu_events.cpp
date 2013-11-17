@@ -2945,7 +2945,7 @@ void console_handler::do_nodebug() {
 }
 void console_handler::do_lua() {
 	resources::lua_kernel->run(get_data().c_str());
-	game_events::commit();
+	game_events::flush_messages();
 }
 
 void console_handler::do_unsafe_lua()
