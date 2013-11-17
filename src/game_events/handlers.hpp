@@ -127,18 +127,12 @@ namespace game_events
 
 	/// Create an event handler.
 	void add_event_handler(const config & handler, bool is_menu_item=false);
-	/// Add a pending menu item command change.
-	void add_wmi_change(const std::string & id, const config & new_command);
-	/// Handles all the different types of actions that can be triggered by an event.
-	void commit_wmi_commands();
 	/// Checks if an item has been used.
 	bool item_used(const std::string & id);
 	/// Records if an item has been used.
 	void item_used(const std::string & id, bool used);
 	/// Removes an event handler.
 	void remove_event_handler(const std::string & id);
-	/// Removes a pending menu item command change.
-	void remove_wmi_change(const std::string & id);
 
 	void add_events(const config::const_child_itors &cfgs,
 	                const std::string& type = std::string());

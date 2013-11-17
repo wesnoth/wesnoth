@@ -69,21 +69,12 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 	}
 
 	// Clean up our bookkeeping.
-	remove_wmi_change(id);
 	iter->second->finish_handler();
 
 	// Remove the item from the map.
 	wml_menu_items_.erase(iter);
 
 	return 1; // Erased one item.
-}
-
-/**
- * Commits a single WML menu item command change.
- */
-void wmi_container::commit_change(const std::string & id, config & command)
-{
-	get_item(id).update_command(command);
 }
 
 /**
@@ -110,24 +101,6 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
 		wmi.fire_event(hex);
 
 	return true;
-}
-
-/**
- * Returns an item with the given id.
- * If one does not already exist, one will be created.
- */
-wml_menu_item & wmi_container::get_item(const std::string& id)
-{
-	// Try to insert a dummy value. This combines looking for an existing
-	// entry with insertion.
-	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
-
-	// If we ended up with a dummy value, create an entry for it.
-	if ( !add_it->second )
-		add_it->second.reset(new wml_menu_item(id));
-
-	// Return the item.
-	return *add_it->second;
 }
 
 /**

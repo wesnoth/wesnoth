@@ -330,7 +330,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
-		add_wmi_change(item_id_, delayed ? cmd.get_config() : cmd.get_parsed_config());
+		update_command(delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
 }
 

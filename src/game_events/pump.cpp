@@ -515,7 +515,7 @@ bool pump()
 			}
 		}
 
-		// Only commit new handlers when finished iterating over event_handlers.
+		// Flush messages when finished iterating over event_handlers.
 		commit();
 	}
 
@@ -535,9 +535,6 @@ void clear_events()
 
 void commit()
 {
-	DBG_EH << "committing new WML menu item commands; number of pump_instances: " <<
-	          pump_manager::count() << "\n";
-	commit_wmi_commands();
 	// Dialogs can only be shown if the display is not locked
 	if (!resources::screen->video().update_locked()) {
 		show_wml_errors();

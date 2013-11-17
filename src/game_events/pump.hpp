@@ -132,7 +132,7 @@ namespace game_events
 	void clear_events();
 
 	/**
-	 * Handles newly-created handlers. Flushes WML messages and errors.
+	 * Flushes WML messages and errors.
 	 */
 	void commit();
 
