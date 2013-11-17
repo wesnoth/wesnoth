@@ -230,12 +230,11 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
 void wml_menu_item::finish_handler() const
 {
 	if ( !command_.empty() )
-	{
 		remove_event_handler(command_["id"]);
-		// Hotkey support
-		if ( use_hotkey_ )
-			hotkey::remove_wml_hotkey(hotkey_id_);
-	}
+
+	// Hotkey support
+	if ( use_hotkey_ )
+		hotkey::remove_wml_hotkey(hotkey_id_);
 }
 
 /**
@@ -245,13 +244,11 @@ void wml_menu_item::init_handler() const
 {
 	// If this menu item has a [command], add a handler for it.
 	if ( !command_.empty() )
-	{
 		add_event_handler(command_, true);
 
-		// Hotkey support
-		if ( use_hotkey_ ) {
-			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
-		}
+	// Hotkey support
+	if ( use_hotkey_ ) {
+		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
 	}
 }
 
