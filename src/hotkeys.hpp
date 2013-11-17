@@ -344,6 +344,8 @@ private:
 void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();
 void save_hotkeys(config& cfg);
+/// Append a single hotkey item to @a cfg.
+void save_hotkey(config& cfg, const hotkey_item & item);
 
 /// returns get_hotkey_command(command).id
 HOTKEY_COMMAND get_id(const std::string& command);

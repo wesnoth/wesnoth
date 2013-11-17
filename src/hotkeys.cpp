@@ -629,13 +629,14 @@ void save_hotkeys(config& cfg)
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin();
 			i != hotkeys_.end(); ++i)
 	{
-		if (i->null()) {
-			continue;
-		}
-
-		config& item = cfg.add_child("hotkey");
-		i->save(item);
+		save_hotkey(cfg, *i);
 	}
+}
+
+void save_hotkey(config& cfg, const hotkey_item & item)
+{
+	if ( !item.null() )
+		item.save(cfg.add_child("hotkey"));
 }
 
 const std::string get_description(const std::string& command) 
