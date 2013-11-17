@@ -236,15 +236,9 @@ void wml_menu_item::init_handler() const
 
 		// Hotkey support
 		if ( use_hotkey_ ) {
-			// Applying default hotkeys here currently does not work because
-			// the hotkeys are reset by play_controler::init_managers() ->
-			// display_manager::display_manager, which is called after this.
-			// The result is that default wml hotkeys will be ignored if wml
-			// hotkeys are set to default in the preferences menu. (They are
-			// still reapplied if set_menu_item is called again, for example
-			// by starting a new campaign.) Since it isn't that important
-			// I'll just leave it for now.
 			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+			if ( !default_hotkey_.empty() )
+				preferences::save_hotkeys();
 		}
 	}
 }
@@ -362,12 +356,7 @@ void wml_menu_item::update_command(const config & new_command)
 
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
-		add_event_handler(command_, true);
-		if ( use_hotkey_ ) {
-			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
-			if ( !default_hotkey_.empty() )
-				preferences::save_hotkeys();
-		}
+		init_handler();
 	}
 }
 

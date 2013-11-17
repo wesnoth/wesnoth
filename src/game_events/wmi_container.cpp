@@ -173,6 +173,15 @@ void wmi_container::get_items(const map_location& hex,
  */
 void wmi_container::init_handlers() const
 {
+	// Applying default hotkeys here currently does not work because
+	// the hotkeys are reset by play_controler::init_managers() ->
+	// display_manager::display_manager, which is called after this.
+	// The result is that default wml hotkeys will be ignored if wml
+	// hotkeys are set to default in the preferences menu. (They are
+	// still reapplied if set_menu_item is called again, for example
+	// by starting a new campaign.) Since it isn't that important
+	// I'll just leave it for now.
+
 	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
