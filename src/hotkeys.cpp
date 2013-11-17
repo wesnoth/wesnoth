@@ -729,7 +729,7 @@ void delete_all_wml_hotkeys()
 	}
 }
 
-//retunrs weather a hotkey was deleted.
+// Returns whether a hotkey was deleted.
 bool remove_wml_hotkey(const std::string& id)
 {
 	hotkey::hotkey_command& command = get_hotkey_command(id);
