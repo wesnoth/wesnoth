@@ -25,6 +25,11 @@ class display;
 
 #include <utility>
 
+namespace hotkey {
+	class hotkey_item;
+}
+
+
 namespace preferences {
 
 	struct base_manager
@@ -115,6 +120,8 @@ namespace preferences {
 	// Proxies for preferences_dialog
 	void load_hotkeys();
 	void save_hotkeys();
+	/// Appends a single hotkey item to the current preferences.
+	void save_hotkey(const hotkey::hotkey_item & item);
 	void clear_hotkeys();
 
 	void add_alias(const std::string& alias, const std::string& command);

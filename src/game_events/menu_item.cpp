@@ -237,8 +237,6 @@ void wml_menu_item::init_handler() const
 		// Hotkey support
 		if ( use_hotkey_ ) {
 			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
-			if ( !default_hotkey_.empty() )
-				preferences::save_hotkeys();
 		}
 	}
 }

@@ -793,6 +793,7 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 			{
 				DBG_G << "added default description for the wml hotkey with id=" + id;
 				add_hotkey(new_item);
+				preferences::save_hotkey(new_item);
 			}
 			else
 			{

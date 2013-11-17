@@ -740,6 +740,11 @@ void save_hotkeys()
 	hotkey::save_hotkeys(prefs);
 }
 
+void save_hotkey(const hotkey::hotkey_item & item)
+{
+	hotkey::save_hotkey(prefs, item);
+}
+
 void clear_hotkeys()
 {
 	hotkey::reset_default_hotkeys();
