@@ -455,7 +455,7 @@ void hotkey_item::clear()
 	command_ = "null";
 }
 
-void hotkey_item::save(config& item)
+void hotkey_item::save(config& item) const
 {
 	if (get_button()    >= 0) item["button"]   = get_button();
 	if (get_joystick()  >= 0) item["joystick"] = get_joystick();

@@ -268,7 +268,7 @@ public:
 	/// i dont know what the axis_.. values are so i ignore them.
 	bool valid() const;
 
-	void save(config& cfg);
+	void save(config& cfg) const;
 
 	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
 
