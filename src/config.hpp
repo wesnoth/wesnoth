@@ -338,9 +338,9 @@ public:
 	bool has_child(const std::string& key) const;
 
 	/**
-	 * Copies the first child with the given @a key, or an empty config if there is none.
+	 * Returns the first child with the given @a key, or an empty config if there is none.
 	 */
-	config child_or_empty(const std::string &key) const;
+	const config & child_or_empty(const std::string &key) const;
 
 	/**
 	 * Returns the nth child with the given @a key, or

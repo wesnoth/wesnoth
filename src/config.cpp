@@ -618,15 +618,16 @@ const config& config::child(
 	return tconfig_implementation::child(this, key, parent);
 }
 
-config config::child_or_empty(const std::string& key) const
+const config & config::child_or_empty(const std::string& key) const
 {
+	static const config empty_cfg;
 	check_valid();
 
 	child_map::const_iterator i = children.find(key);
 	if (i != children.end() && !i->second.empty())
 		return *i->second.front();
 
-	return config();
+	return empty_cfg;
 }
 
 config &config::child_or_add(const std::string &key)
