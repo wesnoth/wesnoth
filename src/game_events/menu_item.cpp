@@ -225,6 +225,20 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
 }
 
 /**
+ * Removes the implicit event handler for an inlined [command].
+ */
+void wml_menu_item::finish_handler() const
+{
+	if ( !command_.empty() )
+	{
+		remove_event_handler(command_["id"]);
+		// Hotkey support
+		if ( use_hotkey_ )
+			hotkey::remove_wml_hotkey(hotkey_id_);
+	}
+}
+
+/**
  * Initializes the implicit event handler for an inlined [command].
  */
 void wml_menu_item::init_handler() const

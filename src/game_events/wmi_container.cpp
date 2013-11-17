@@ -70,7 +70,7 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 
 	// Clean up our bookkeeping.
 	remove_wmi_change(id);
-	remove_event_handler(id);
+	iter->second->finish_handler();
 
 	// Remove the item from the map.
 	wml_menu_items_.erase(iter);

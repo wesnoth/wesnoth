@@ -60,6 +60,8 @@ public:
 	bool can_show(const map_location & hex) const;
 	/// Causes the event associated with this item to fire.
 	void fire_event(const map_location & event_hex) const;
+	/// Removes the implicit event handler for an inlined [command].
+	void finish_handler() const;
 	/// Initializes the implicit event handler for an inlined [command].
 	void init_handler() const;
 	/// The text to put in a menu for this item.
