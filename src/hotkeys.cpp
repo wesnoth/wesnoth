@@ -769,20 +769,18 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 {
 	if(id == "null")
 	{
-		LOG_G << "coudn't add wml hotkey with id=" + id + " and description" + description.base_str();
+		LOG_G << "Couldn't add wml hotkey with null id and description = '" << description << "'.\n";
 		return;
 	}
 	else
 	{
 		if(has_hotkey_command(id))
 		{
-			LOG_G << "hotkey with id " + id + "already exists. deleting the old hotkey_command";
+			LOG_G << "Hotkey with id '" << id << "' already exists. Deleting the old hotkey_command.\n";
 			remove_wml_hotkey(id);
 		}
-		DBG_G << "added wml hotkey with id=" + id + " and description" + description.base_str();
-		//i think i dont need the temp anymore.
-		hotkey_command temp_command(hotkey::HOTKEY_WML, id, description, false, hotkey::SCOPE_GAME, t_string(""));
-		known_hotkeys.push_back(new hotkey_command(temp_command));
+		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
+		known_hotkeys.push_back(new hotkey_command(hotkey::HOTKEY_WML, id, description, false, hotkey::SCOPE_GAME, t_string("")));
 
 		command_map_[id] = known_hotkeys.size() - 1;
 
