@@ -210,7 +210,7 @@ void wmi_container::set_menu_items(const config& cfg)
 		std::string id = item["id"];
 		item_ptr & mref = wml_menu_items_[id];
 		if ( !mref ) {
-			mref.reset(new wml_menu_item(id, &item));
+			mref.reset(new wml_menu_item(id, item));
 		} else {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config\n";
 		}

@@ -34,7 +34,7 @@ class wml_menu_item
 {
 public:
 	/// Constructor for when read from a saved config.
-	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
+	wml_menu_item(const std::string& id, const config & cfg);
 	/// Constructor for when defined in an event.
 	wml_menu_item(const std::string& id, const vconfig & definition);
 	/// Constructor for when modified by an event.

@@ -73,41 +73,20 @@ namespace { // Some helpers for construction.
  * Constructor for when read from a saved config.
  * This is the reverse of to_config() and corresponds to reading [menu_item].
  */
-wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
+wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		item_id_(id),
 		event_name_(make_item_name(id)),
 		hotkey_id_(make_item_hotkey(id)),
-		image_(),
-		description_(),
-		needs_select_(false),
-		show_if_(vconfig::empty_vconfig()),
-		filter_location_(vconfig::empty_vconfig()),
-		command_(),
-		default_hotkey_(),
-		use_hotkey_(true),
-		use_wml_menu_(true)
+		image_(cfg["image"].str()),
+		description_(cfg["description"].t_str()),
+		needs_select_(cfg["needs_select"].to_bool(false)),
+		show_if_(cfg.child_or_empty("show_if"), true),
+		filter_location_(cfg.child_or_empty("filter_location"), true),
+		command_(cfg.child_or_empty("command")),
+		default_hotkey_(cfg.child_or_empty("default_hotkey")),
+		use_hotkey_(cfg["use_hotkey"].to_bool(true)),
+		use_wml_menu_(cfg["use_hotkey"].str() != "only")
 {
-	if(cfg != NULL) {
-		image_ = (*cfg)["image"].str();
-		description_ = (*cfg)["description"];
-		needs_select_ = (*cfg)["needs_select"].to_bool();
-		// use_hotkey is already a name of a member of this class.
-		const config::attribute_value & use_hotkey_attribute_value = (*cfg)["use_hotkey"];
-		if(use_hotkey_attribute_value.str() == "only" )
-		{
-			use_hotkey_ = true;
-			use_wml_menu_ = false;
-		}
-		else
-		{	
-			use_hotkey_ = use_hotkey_attribute_value.to_bool(true);
-			use_wml_menu_ = true;
-		}
-		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
-		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
-		if (const config &c = cfg->child("command")) command_ = c;
-		if (const config &c = cfg->child("default_hotkey")) default_hotkey_ = c;
-	}
 }
 
 /**
@@ -315,17 +294,10 @@ void wml_menu_item::update(const vconfig & vcfg)
 	}
 
 	if ( vcfg.has_attribute("use_hotkey") ) {
-		const config::attribute_value & use_hotkey_attribute_value = vcfg["use_hotkey"];
-		if(use_hotkey_attribute_value.str() == "only")
-		{
-			use_hotkey_ = true;
-			use_wml_menu_ = false;
-		}
-		else
-		{
-			use_hotkey_ = use_hotkey_attribute_value.to_bool(true);
-			use_wml_menu_ = true;
-		}
+		const config::attribute_value & use_hotkey_av = vcfg["use_hotkey"];
+
+		use_hotkey_ = use_hotkey_av.to_bool(true);
+		use_wml_menu_ = use_hotkey_av.str() != "only";
 	}
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {
