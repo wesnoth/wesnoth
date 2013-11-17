@@ -334,40 +334,41 @@ void wml_menu_item::update(const vconfig & vcfg)
 /**
  * Updates our command to @a new_command.
  */
-void wml_menu_item::update_command(const config & command_cfg)
+void wml_menu_item::update_command(const config & new_command)
 {
-	config new_command = command_cfg;
-	const bool is_empty_command = new_command.empty();
-
-	config::attribute_value & event_id = new_command["id"];
-	if ( event_id.empty() && !item_id_.empty() ) {
-		event_id = item_id_;
-	}
-	new_command["name"] = event_name_;
-	new_command["first_time_only"] = false;
-
+	// If there is an old command, remove it from the event handlers.
 	if ( !command_.empty() ) {
 		for ( manager::iteration hand(event_name_); hand.valid(); ++hand ) {
 			if ( hand->is_menu_item() ) {
-				LOG_NG << "changing command for " << event_name_ << " to:\n" << new_command;
-				// Update the handler. A remove/add pair ensures that if the
-				// handler is currently running, we don't interfere with it.
-				remove_event_handler(event_id.str());
-				if ( !is_empty_command )
-					add_event_handler(new_command, true);
+				LOG_NG << "Removing command for " << event_name_ << ".\n";
+				remove_event_handler(command_["id"].str());
 			}
 		}
-	} else if(!is_empty_command) {
-		LOG_NG << "setting command for " << event_name_ << " to:\n" << new_command;
-		add_event_handler(new_command, true);
+	}
+
+	// Update our stored command.
+	if ( new_command.empty() )
+		command_.clear();
+	else {
+		command_ = new_command;
+
+		// Set some fields required by event processing.
+		config::attribute_value & event_id = command_["id"];
+		if ( event_id.empty() && !item_id_.empty() ) {
+			event_id = item_id_;
+		}
+		command_["name"] = event_name_;
+		command_["first_time_only"] = false;
+
+		// Register the event.
+		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
+		add_event_handler(command_, true);
 		if ( use_hotkey_ ) {
 			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
 			if ( !default_hotkey_.empty() )
 				preferences::save_hotkeys();
 		}
 	}
-
-	command_ = new_command;
 }
 
 } // end namespace game_events
