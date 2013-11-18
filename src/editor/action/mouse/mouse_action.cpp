@@ -145,10 +145,8 @@ bool mouse_action::has_ctrl_modifier() const
 void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_translation::t_terrain & fg,
 		const t_translation::t_terrain & bg)
 {
-	surface image_fg(image::get_image("terrain/"
-		+ disp.get_map().get_terrain_info(fg).editor_image() + ".png"));
-	surface image_bg(image::get_image("terrain/"
-		+ disp.get_map().get_terrain_info(bg).editor_image() + ".png"));
+	surface image_fg(image::get_image(disp.get_map().get_terrain_info(fg).editor_image()));
+	surface image_bg(image::get_image(disp.get_map().get_terrain_info(bg).editor_image()));
 
 	if (image_fg == NULL || image_bg == NULL) {
 		ERR_ED << "Missing terrain icon\n";
