@@ -1392,11 +1392,11 @@ REPORT_GENERATOR(position)
 	int move_cost = u->movement_cost(terrain);
 	int defense = 100 - u->defense_modifier(terrain);
 	if (move_cost < movetype::UNREACHABLE) {
-		str << " (" << defense << "%," << move_cost << ')';
+		str << " " << defense << "%," << move_cost;
 	} else if (mouseover_hex == displayed_unit_hex) {
-		str << " (" << defense << "%,‒)";
+		str << " " << defense << "%,‒";
 	} else {
-		str << " (‒)";
+		str << " ‒";
 	}
 	return text_report(str.str());
 }
