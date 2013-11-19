@@ -143,7 +143,7 @@ void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::st
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(rects_overlap(i->rect,rect)) {
-			*i = tooltip(rect, message, action);
+			*i = tooltip(rect, message, action, use_markup);
 			return;
 		}
 	}
