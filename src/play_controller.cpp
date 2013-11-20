@@ -533,6 +533,7 @@ void play_controller::fire_prestart(bool execute)
 	// Run initialization scripts, even if loading from a snapshot.
 	gamedata_.set_phase(game_data::PRELOAD);
 	resources::lua_kernel->initialize();
+	gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
 
 	// pre-start events must be executed before any GUI operation,
@@ -544,6 +545,7 @@ void play_controller::fire_prestart(bool execute)
 		check_end_level();
 		// prestart event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
+		gamedata_.get_variable("turn_number") = int(start_turn_);
 	}
 }
 
@@ -1427,7 +1429,7 @@ void play_controller::update_gui_to_player(const int team_index, const bool obse
 void play_controller::toggle_accelerated_speed()
 {
 	preferences::set_turbo(!preferences::turbo());
-	
+
 	if (preferences::turbo())
 	{
 		utils::string_map symbols;
