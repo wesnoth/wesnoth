@@ -71,6 +71,7 @@ namespace { // Some helpers for construction.
 /**
  * Constructor for when read from a saved config.
  * This is the reverse of to_config() and corresponds to reading [menu_item].
+ * Handlers are not initialized.
  */
 wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		item_id_(id),
@@ -109,6 +110,10 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition) 
 		use_hotkey_(true),
 		use_wml_menu_(true)
 {
+	// On the off-chance that update() doesn't do it, add the hotkey here.
+	// (Update can always modify it.)
+	hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+
 	// Apply WML.
 	update(definition);
 }
@@ -269,11 +274,17 @@ void wml_menu_item::to_config(config & cfg) const
  */
 void wml_menu_item::update(const vconfig & vcfg)
 {
+	const bool old_use_hotkey = use_hotkey_;
+	// Tracks whether or not the hotkey has been updated.
+	bool hotkey_updated = false;
+
 	if ( vcfg.has_attribute("image") )
 		image_ = vcfg["image"].str();
 
-	if ( vcfg.has_attribute("description") )
+	if ( vcfg.has_attribute("description") ) {
 		description_ = vcfg["description"].t_str();
+		hotkey_updated = true;
+	}
 
 	if ( vcfg.has_attribute("needs_select") )
 		needs_select_ = vcfg["needs_select"].to_bool();
@@ -290,6 +301,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( const vconfig & child = vcfg.child("default_hotkey") ) {
 		default_hotkey_ = child.get_parsed_config();
+		hotkey_updated = true;
 	}
 
 	if ( vcfg.has_attribute("use_hotkey") ) {
@@ -303,6 +315,21 @@ void wml_menu_item::update(const vconfig & vcfg)
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
 		update_command(delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
+
+
+	// Update the registered hotkey?
+
+	if ( use_hotkey_ && !old_use_hotkey )
+		// The hotkey needs to be enabled.
+		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+
+	else if ( use_hotkey_ && hotkey_updated )
+		// The hotkey needs to be updated.
+		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+
+	else if ( !use_hotkey_ && old_use_hotkey )
+		// The hotkey needs to be disabled.
+		hotkey::remove_wml_hotkey(hotkey_id_);
 }
 
 /**
@@ -336,7 +363,7 @@ void wml_menu_item::update_command(const config & new_command)
 
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
-		init_handler();
+		add_event_handler(command_, true);
 	}
 }
 
