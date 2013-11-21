@@ -285,9 +285,9 @@ void replay_controller::reset_replay(){
 	}
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
-	fire_prestart(false);
+	fire_prestart(true);
 	init_gui();
-	fire_start(false);
+	fire_start(true);
 	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
 	it_is_a_new_turn_ = true;
 	update_gui();
