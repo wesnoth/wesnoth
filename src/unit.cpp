@@ -603,7 +603,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	advance_to(u_type, real_unit);
 
 	if(real_unit) {
-		generate_name();
+		generate_name(resources::gamedata ? &(resources::gamedata->rng()) : 0);
 	}
 	set_underlying_id();
 
