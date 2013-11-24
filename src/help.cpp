@@ -1687,8 +1687,16 @@ public:
 					const int moves = movement_type.movement_cost(terrain);
 					const int views = movement_type.vision_cost(terrain);
 					const int jams  = movement_type.jamming_cost(terrain);
-					row.push_back(std::make_pair(make_link(name, "terrain_" + id),
-							font::line_width(name, normal_font_size)));
+
+					bool high_res = false;
+					const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
+					const std::string terrain_image = "icons/terrain/terrain_type_" + id + (high_res ? "_30.png" : ".png");
+
+					const std::string final_image = tc_base + "~RC(magenta>" + id + ")~BLIT(" + terrain_image + ")";
+
+					row.push_back(std::make_pair( "<img>src='" + final_image + "'</img> " +
+							make_link(name, "..terrain_" + id),
+							font::line_width(name, normal_font_size) + (high_res ? 32 : 16) ));
 
 					//defense  -  range: +10 % .. +70 %
 					const int defense =
