@@ -340,7 +340,13 @@ static config unit_alignment(const unit* u)
 	char const *align = unit_type::alignment_description(u->alignment(), u->gender());
 	std::string align_id = unit_type::alignment_id(u->alignment());
 	int cm = combat_modifier(resources::screen->displayed_unit_hex(), u->alignment(), u->is_fearless());
-	str << align << " (" << utils::signed_percent(cm) << ")";
+	//str << align << " (" << utils::signed_percent(cm) << ")";
+
+	std::string color("grey");
+
+	if (cm != 0) color = (cm > 0) ? "green" : "red";
+
+	str << "<span foreground=\"" << color << "\">" << utils::signed_percent(cm) << "</span>\n";
 	tooltip << _("Alignment: ") << "<b>" << align << "</b>\n"
 		<< string_table[align_id + "_description"];
 	return text_report(str.str(), tooltip.str(), "time_of_day");
@@ -1049,6 +1055,27 @@ REPORT_GENERATOR(unit_profile)
 	return image_report(u->small_profile());
 }
 
+
+REPORT_GENERATOR(tod_stats)
+{
+	std::ostringstream tooltip;
+	std::ostringstream text;
+
+	int current = resources::tod_manager->get_current_time();
+	int i = 0;
+	BOOST_FOREACH(const time_of_day& tod, resources::tod_manager->times()) {
+		if (i == current) tooltip << "<b>";
+		tooltip << tod.name << "\n";
+		if (i == current) tooltip << "</b>";
+		i++;
+	}
+
+	int times = resources::tod_manager->times().size();
+	text << current + 1 << "/" << times;
+
+	return text_report(text.str(), tooltip.str());
+}
+
 static config time_of_day_at(const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
@@ -1365,6 +1392,17 @@ REPORT_GENERATOR(terrain)
 	}
 
 	return text_report(str.str());
+}
+
+REPORT_GENERATOR(zoom_level)
+{
+	std::ostringstream text;
+	std::ostringstream tooltip;
+	std::ostringstream help;
+
+	text << static_cast<int>(display::get_singleton()->get_zoom_factor() * 100) << "%";
+
+	return text_report(text.str(), tooltip.str(), help.str());
 }
 
 REPORT_GENERATOR(position)
