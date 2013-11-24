@@ -84,27 +84,27 @@ static const unit_type &get_unit_type(const std::string &type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, rand_rng::simple_rng* rng)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
-		int random = state ? resources::gamedata->rng().get_next_random() : get_random_nocheck();
+		int random = rng ? rng->get_next_random() : get_random_nocheck();
 		return genders[random % genders.size()];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, rand_rng::simple_rng* rng)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
 
-	return generate_gender(u_type, cfg["random_gender"].to_bool(), state);
+	return generate_gender(u_type, cfg["random_gender"].to_bool(), rng);
 }
 
 // Copy constructor
@@ -221,7 +221,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	image_mods_(),
 	unrenamable_(false),
 	side_(0),
-	gender_(generate_gender(*type_, cfg, state)),
+	gender_(generate_gender(*type_, cfg, &resources::gamedata->rng())),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -507,7 +507,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
-	
+
 	//debug unit animations for units as they appear in game
 	/*for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
 		std::cout << (*i).debug();
@@ -550,7 +550,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit, NULL)),
+		gender : generate_gender(u_type, real_unit, resources::gamedata ? &(resources::gamedata->rng()) : 0)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
