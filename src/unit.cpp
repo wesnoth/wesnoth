@@ -550,7 +550,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit, resources::gamedata ? &(resources::gamedata->rng()) : 0)),
+		gender : generate_gender(u_type, real_unit, resources::gamedata ? &(resources::gamedata->rng()) : NULL)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -603,7 +603,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	advance_to(u_type, real_unit);
 
 	if(real_unit) {
-		generate_name(resources::gamedata ? &(resources::gamedata->rng()) : 0);
+		generate_name(resources::gamedata ? &(resources::gamedata->rng()) : NULL);
 	}
 	set_underlying_id();
 
