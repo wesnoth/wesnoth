@@ -33,6 +33,8 @@ class tod_manager : public savegame::savegame_config
 
 		config to_config() const;
 
+		int get_current_time() const { return currentTime_; }
+
 		/**
 		 * Returns global time of day for the passed turn.
 		 * for_turn = 0 means current turn
