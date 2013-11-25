@@ -145,39 +145,6 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 	gamestate.carryover_sides_start = sides.to_config();
 }
 
-static void generate_scenario(config const* scenario)
-{
-	LOG_G << "randomly generating scenario...\n";
-	const cursor::setter cursor_setter(cursor::WAIT);
-
-	static config new_scenario;
-	new_scenario = random_generate_scenario((*scenario)["scenario_generation"],
-		scenario->child("generator"));
-
-	//TODO comment or remove
-	//level_ = scenario;
-	//merge carryover information into the newly generated scenario
-
-	scenario = &new_scenario;
-}
-
-static void generate_map(config const* scenario)
-{
-	LOG_G << "randomly generating map...\n";
-	const cursor::setter cursor_setter(cursor::WAIT);
-
-	const std::string map_data = random_generate_map(
-		(*scenario)["map_generation"], scenario->child("generator"));
-
-	// Since we've had to generate the map,
-	// make sure that when we save the game,
-	// it will not ask for the map to be generated again on reload
-	static config new_scenario;
-	new_scenario = *scenario;
-	new_scenario["map_data"] = map_data;
-	scenario = &new_scenario;
-}
-
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video)
 {
@@ -436,7 +403,18 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 			// If the entire scenario should be randomly generated
 			if((*scenario)["scenario_generation"] != "") {
-				generate_scenario(scenario);
+				LOG_G << "randomly generating scenario...\n";
+				const cursor::setter cursor_setter(cursor::WAIT);
+
+				static config new_scenario;
+				new_scenario = random_generate_scenario((*scenario)["scenario_generation"],
+					scenario->child("generator"));
+
+				//TODO comment or remove
+				//level_ = scenario;
+				//merge carryover information into the newly generated scenario
+
+				scenario = &new_scenario;
 			}
 			std::string map_data = (*scenario)["map_data"];
 			if(map_data.empty() && (*scenario)["map"] != "") {
@@ -445,7 +423,19 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 			// If the map should be randomly generated
 			if(map_data.empty() && (*scenario)["map_generation"] != "") {
-				generate_map(scenario);
+				LOG_G << "randomly generating map...\n";
+				const cursor::setter cursor_setter(cursor::WAIT);
+
+				map_data = random_generate_map(
+					(*scenario)["map_generation"], scenario->child("generator"));
+
+				// Since we've had to generate the map,
+				// make sure that when we save the game,
+				// it will not ask for the map to be generated again on reload
+				static config new_map;
+				new_map = *scenario;
+				new_map["map_data"] = map_data;
+				scenario = &new_map;
 			}
 
 			sound::empty_playlist();
