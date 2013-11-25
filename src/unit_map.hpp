@@ -23,6 +23,7 @@
 
 #include <cassert>
 #include <list>
+#include <map>
 #include <boost/unordered_map.hpp>
 
 class unit;
