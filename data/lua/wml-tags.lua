@@ -24,6 +24,27 @@ local function trim(s)
 	return r
 end
 
+local function optional_side_filter(cfg, key_name, filter_name)
+	local key_name = key_name or "side"
+	local sides = cfg[key_name]
+	local filter_name = filter_name or "filter_side"
+	local filter_side = helper.get_child(cfg, filter_name)
+	if filter_side then
+		sides = wesnoth.get_sides(filter_side)
+	elseif sides then
+		local dummy_cfg = {side=sides}
+		sides = wesnoth.get_sides(dummy_cfg)
+	else
+		return true
+	end
+	for index,side in ipairs(sides) do
+		if side.controller == "human" then
+			return true
+		end
+	end
+	return false
+end
+
 local engine_message = wml_actions.message
 
 function wml_actions.message(cfg)
@@ -352,12 +373,14 @@ end
 function wml_actions.scroll_to(cfg)
 	local loc = wesnoth.get_locations( cfg )[1]
 	if not loc then return end
+	if not optional_side_filter(cfg) then return end
 	wesnoth.scroll_to_tile(loc[1], loc[2], cfg.check_fogged, cfg.immediate)
 end
 
 function wml_actions.scroll_to_unit(cfg)
 	local u = wesnoth.get_units(cfg)[1]
 	if not u then return end
+	if not optional_side_filter(cfg, "for_side", "for_side") then return end
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged, cfg.immediate)
 end
 
