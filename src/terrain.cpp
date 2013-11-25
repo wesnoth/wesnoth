@@ -61,13 +61,14 @@ terrain_type::terrain_type() :
 		overlay_(false),
 		combined_(false),
 		editor_default_base_(t_translation::VOID_TERRAIN),
+		hide_help_(false),
 		hide_in_editor_(false)
 {}
 
 terrain_type::terrain_type(const config& cfg) :
 		minimap_image_(cfg["symbol_image"]),
 		minimap_image_overlay_(),
-		editor_image_(cfg["editor_image"]),
+		editor_image_(cfg["editor_image"].empty() ? "terrain/" + minimap_image_ + ".png" : "terrain/" + cfg["editor_image"].str() + ".png"),
 		id_(cfg["id"]),
 		name_(cfg["name"].t_str()),
 		editor_name_(cfg["editor_name"].t_str()),
@@ -95,6 +96,7 @@ terrain_type::terrain_type(const config& cfg) :
 		overlay_(number_.base == t_translation::NO_LAYER),
 		combined_(false),
 		editor_default_base_(t_translation::read_terrain_code(cfg["default_base"])),
+		hide_help_(cfg["hide_help"].to_bool(false)),
 		hide_in_editor_(cfg["hidden"].to_bool(false))
 {
 /**
@@ -115,7 +117,7 @@ terrain_type::terrain_type(const config& cfg) :
 #endif
 
 	if(editor_image_.empty()) {
-		editor_image_ = minimap_image_;
+		editor_image_ = "terrain/" + minimap_image_ + ".png";
 	}
 
 	mvt_type_.push_back(number_);
@@ -178,10 +180,10 @@ terrain_type::terrain_type(const config& cfg) :
 terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) :
 	minimap_image_(base.minimap_image_),
 	minimap_image_overlay_(overlay.minimap_image_),
-	editor_image_(overlay.editor_image_),
+	editor_image_(base.editor_image_ + "~BLIT(" + overlay.editor_image_ +")"),
 	id_(base.id_+"^"+overlay.id_),
 	name_(overlay.name_),
-	editor_name_(overlay.editor_name_),
+	editor_name_(base.editor_name_ + " / " + overlay.editor_name_),
 	description_(overlay.description()),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
@@ -206,6 +208,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	overlay_(false),
 	combined_(true),
 	editor_default_base_(),
+	hide_help_(base.hide_help_ || overlay.hide_help_),
 	hide_in_editor_(base.hide_in_editor_ || overlay.hide_in_editor_)
 {
 	if(description_.empty()) {
@@ -284,7 +287,8 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& castle_                == other.castle_
 		&& keep_                  == other.keep_
 		&& editor_default_base_   == other.editor_default_base_
-		&& hide_in_editor_        == other.hide_in_editor_;
+		&& hide_in_editor_        == other.hide_in_editor_
+		&& hide_help_             == other.hide_help_;
 }
 
 void create_terrain_maps(const config::const_child_itors &cfgs,

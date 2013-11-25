@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
+"POT-Creation-Date: 2013-11-16 09:29+0100\n"
 "PO-Revision-Date: 2012-10-31 12:39+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,19 +24,24 @@ msgstr ""
 msgid "User Map"
 msgstr "Карта користувача"
 
-#. [multiplayer_side]: id=Random
+#. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
+msgid "Custom"
+msgstr ""
+
+#. [multiplayer_side]: id=Random
+#: data/multiplayer/eras.cfg:13
 msgid "Random"
 msgstr "Випадкова"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:116
+#: data/multiplayer/eras.cfg:124
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
 "<span strikethrough='true' foreground='#%02x%02x%02x'>Сторона %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:132
+#: data/multiplayer/eras.cfg:140
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -45,24 +50,39 @@ msgstr ""
 "Рахунок бійців = %d  Золото = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:132
+#: data/multiplayer/eras.cfg:140
 msgid "Grand total: <b>%d</b>"
 msgstr "Загальний підсумок: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:142
+#: data/multiplayer/eras.cfg:150
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "<span foreground='%s'>Сторона %d</span> має перевагу."
 
 #. [era]: id=era_default
-#: data/multiplayer/eras.cfg:166
+#: data/multiplayer/eras.cfg:174
 msgid "Default"
 msgstr "Типово"
 
+#. [era]: id=era_default
+#: data/multiplayer/eras.cfg:175
+msgid ""
+"The standard era for Wesnoth multiplayer. Consists of six factions and is "
+"generally balanced."
+msgstr ""
+
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:186
+#: data/multiplayer/eras.cfg:195
 msgid "Age of Heroes"
 msgstr "Вік героїв"
+
+#. [era]: id=era_heroes
+#: data/multiplayer/eras.cfg:196
+msgid ""
+"An era with higher level units: level three leaders, with level one and two "
+"units available for recruit. Consists of six factions. Not considered "
+"balanced."
+msgstr ""
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4

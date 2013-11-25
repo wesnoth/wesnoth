@@ -186,6 +186,8 @@ public:
 	// translation engine upon changing the language in the same session.
 	t_string unit_description() const;
 	int hitpoints() const { return hitpoints_; }
+	double hp_bar_scaling() const { return hp_bar_scaling_; }
+	double xp_bar_scaling() const { return xp_bar_scaling_; }
 	int level() const { return level_; }
 	int movement() const { return movement_; }
 	int vision() const { return vision_ < 0 ? movement() : vision_; }
@@ -264,6 +266,7 @@ public:
 	/// Requires building to the HELP_INDEXED status to get the correct race.
 	const unit_race* race() const { return race_; }
 	bool hide_help() const;
+	bool do_not_list() const { return do_not_list_; }
 
 	const std::vector<tportrait>& portraits() const { return portraits_; }
 
@@ -296,6 +299,7 @@ private:
 	t_string type_name_;
 	t_string description_;
 	int hitpoints_;
+	double hp_bar_scaling_, xp_bar_scaling_;
 	int level_;
 	int movement_;
 	int vision_;
@@ -327,7 +331,7 @@ private:
 	std::vector<t_string> abilities_, adv_abilities_;
 	std::vector<t_string> ability_tooltips_, adv_ability_tooltips_;
 
-	bool zoc_, hide_help_;
+	bool zoc_, hide_help_, do_not_list_;
 
 	std::vector<std::string> advances_to_;
 	int experience_needed_;

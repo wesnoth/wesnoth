@@ -365,6 +365,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
+		// At the beginning of the scenario, save a snapshot as replay_start
+		if(gamestate_.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
+			gamestate_.replay_start() = to_config();
+			gamestate_.write_snapshot(gamestate_.replay_start(), gui_.get());
+		}
 
 		fire_prestart(!loading_game_);
 		init_gui();
@@ -396,12 +401,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			end_level.transient.carryover_report = false;
 			end_level.transient.disabled = true;
 			throw end_level_exception(SKIP_TO_LINGER);
-		}
-
-		//before first turn, save a snapshot as replay_start
-		if(gamestate_.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
-			gamestate_.replay_start() = to_config();
-			gamestate_.write_snapshot(gamestate_.replay_start(), gui_.get());
 		}
 
 		// Avoid autosaving after loading, but still

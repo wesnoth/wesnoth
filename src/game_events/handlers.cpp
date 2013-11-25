@@ -27,7 +27,6 @@
 #include "../gamestatus.hpp"
 #include "../hotkeys.hpp"
 #include "../log.hpp"
-#include "../preferences.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
 #include "../scripting/lua.hpp"
@@ -51,8 +50,6 @@ static lg::log_domain log_event_handler("event_handler");
 namespace game_events {
 
 namespace { // Types
-	typedef std::pair< std::string, config* > wmi_command_change;
-
 	class t_event_handlers {
 	public:
 		typedef handler_vec::iterator iterator;
@@ -167,7 +164,6 @@ namespace { // Variables
 	/** Map of the default action handlers known of the engine. */
 	std::set<std::string> unit_wml_ids;
 	std::set<std::string> used_items;
-	std::vector< wmi_command_change > wmi_command_changes;
 }// end anonymous namespace (variables)
 
 
@@ -175,32 +171,6 @@ namespace { // Variables
 void add_event_handler(const config & handler, bool is_menu_item)
 {
 	event_handlers.add_event_handler(handler, is_menu_item);
-}
-
-/** Add a pending menu item command change. */
-void add_wmi_change(const std::string & id, const config & new_command)
-{
-	wmi_command_changes.push_back(wmi_command_change(id, new config(new_command)));
-}
-
-/** Handles all the different types of actions that can be triggered by an event. */
-void commit_wmi_commands()
-{
-	bool hotkeys_changed = false;
-	// Commit WML Menu Item command changes
-	while(wmi_command_changes.size() > 0) {
-		wmi_command_change wcc = wmi_command_changes.front();
-
-		if ( resources::gamedata->get_wml_menu_items().commit_change(wcc.first, *wcc.second) )
-			hotkeys_changed = true;
-
-		delete wcc.second;
-		wmi_command_changes.erase(wmi_command_changes.begin());
-	}
-	if(hotkeys_changed)
-	{
-		preferences::save_hotkeys();
-	}
 }
 
 /**
@@ -223,21 +193,6 @@ void item_used(const std::string & id, bool used)
 		used_items.insert(id);
 	else
 		used_items.erase(id);
-}
-
-/** Removes a pending menu item command change. */
-void remove_wmi_change(const std::string & id)
-{
-	std::vector<wmi_command_change>::iterator wcc = wmi_command_changes.begin();
-	while ( wcc != wmi_command_changes.end() ) {
-		if ( wcc->first != id ) {
-			++wcc;
-			continue;
-		}
-		delete wcc->second;
-		wcc->second = NULL;
-		wcc = wmi_command_changes.erase(wcc);
-	}
 }
 
 /** Removes an event handler. */

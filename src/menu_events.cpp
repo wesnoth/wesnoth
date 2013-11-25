@@ -871,6 +871,18 @@ void menu_handler::unit_description()
 	}
 }
 
+void menu_handler::terrain_description(mouse_handler& mousehandler)
+{
+	const map_location& loc = mousehandler.get_last_hex();
+	if (map_.on_board(loc) == false) {
+		return;
+	}
+
+	const terrain_type& type = map_.get_terrain_info(loc);
+	//const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+	dialogs::show_terrain_description(type);
+}
+
 void menu_handler::rename_unit()
 {
 	const unit_map::iterator un = current_unit();
@@ -2933,7 +2945,7 @@ void console_handler::do_nodebug() {
 }
 void console_handler::do_lua() {
 	resources::lua_kernel->run(get_data().c_str());
-	game_events::commit();
+	game_events::flush_messages();
 }
 
 void console_handler::do_unsafe_lua()

@@ -54,6 +54,7 @@ enum HOTKEY_COMMAND {
 	HOTKEY_UNDO, HOTKEY_REDO,
 	HOTKEY_ZOOM_IN, HOTKEY_ZOOM_OUT, HOTKEY_ZOOM_DEFAULT,
 	HOTKEY_FULLSCREEN, HOTKEY_SCREENSHOT, HOTKEY_MAP_SCREENSHOT, HOTKEY_ACCELERATED,
+	HOTKEY_TERRAIN_DESCRIPTION,
 	HOTKEY_UNIT_DESCRIPTION, HOTKEY_RENAME_UNIT, HOTKEY_DELETE_UNIT,
 	HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE,
 	HOTKEY_EDITOR_UNIT_CHANGE_ID, HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL,
@@ -267,7 +268,7 @@ public:
 	/// i dont know what the axis_.. values are so i ignore them.
 	bool valid() const;
 
-	void save(config& cfg);
+	void save(config& cfg) const;
 
 	bool is_in_active_scope() const { return is_scope_active(get_scope()); }
 
@@ -343,6 +344,8 @@ private:
 void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();
 void save_hotkeys(config& cfg);
+/// Append a single hotkey item to @a cfg.
+void save_hotkey(config& cfg, const hotkey_item & item);
 
 /// returns get_hotkey_command(command).id
 HOTKEY_COMMAND get_id(const std::string& command);
@@ -361,6 +364,9 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 /// deletes all wml hotkeys, should be called after a game has ended
 void delete_all_wml_hotkeys();
+///removes a wml hotkey with the given id, returns true if the deletion was successful
+bool remove_wml_hotkey(const std::string& id);
+
 /// returns the hotkey_command that is treated as null.
 hotkey_command& get_hotkey_null();
 
@@ -408,6 +414,7 @@ public:
 	virtual void end_unit_turn() {}
 	virtual void undo() {}
 	virtual void redo() {}
+	virtual void terrain_description() {}
 	virtual void unit_description() {}
 	virtual void rename_unit() {}
 	virtual void save_game() {}

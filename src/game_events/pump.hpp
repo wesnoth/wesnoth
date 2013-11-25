@@ -132,9 +132,9 @@ namespace game_events
 	void clear_events();
 
 	/**
-	 * Handles newly-created handlers. Flushes WML messages and errors.
+	 * Flushes WML messages and errors.
 	 */
-	void commit();
+	void flush_messages();
 
 	/**
 	 * This function can be used to detect when no WML/Lua has been executed.

@@ -21,6 +21,7 @@ class game_display;
 class unit;
 class unit_map;
 class unit_type;
+class terrain_type;
 
 #include "map_location.hpp"
 #include "construct_dialog.hpp"
@@ -164,6 +165,7 @@ private:
 
 void show_unit_description(const unit_type &t);
 void show_unit_description(const unit &u);
+void show_terrain_description(const terrain_type& t);
 
 network::connection network_send_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);
 network::connection network_receive_dialog(display& disp, const std::string& msg, config& cfg, network::connection connection_num=0);

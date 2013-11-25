@@ -1,4 +1,25 @@
-Version 1.11.6+dev:
+Version 1.11.7+dev:
+ * Graphics:
+   * New and updated animations for the Loyalist Horseman.
+ * Language and i18n:
+   * Updated translations: Chinese (Traditional)
+ * Multiplayer:
+   * Unit names and genders are synced in MP games.
+ * Replays:
+   * Replays include the prestart and start events again.
+   * Unit names and genders are synced between games and replays.
+   * Play/stop buttons are disabled again at the end of a replay.
+   * The 'reset replay' button works correctly and does not cause OOS
+     errors any more.
+ * WML engine:
+   * WML variable turn_number is set correctly (to 1) in prestart and start
+     events.  Previously, it retained its last value from the previous scenario
+     until after the start event.
+   * [scroll_to] and [scroll_to_unit] now take an optional side filter.
+ * Miscellaneous and bug fixes:
+   * Pango markup is applied correctly and consistently in button tooltips.
+
+Version 1.11.7:
  * Add-ons client:
    * Add-ons downloaded with clients from this version onwards are shown
      in the Remove Add-ons with their original titles from the add-ons
@@ -49,6 +70,8 @@ Version 1.11.6+dev:
    * New macro AI_CONTROLLER_ALLOW_UNIT_CONTROL
    * Remove macro RCA_STAGE
  * Campaigns:
+   * A Tale of Two Brothers:
+     * Crop campaign icon to fit campaign selection dialog (fixes bug #20935)
    * Dead Water:
      * Converted animation WML to the new syntax
    * Delfador's Memoirs:

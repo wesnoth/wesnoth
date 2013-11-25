@@ -276,6 +276,7 @@ void replay_controller::reset_replay(){
 
 	gui_->labels().read(level_);
 
+	resources::gamedata->rng().seed_random(level_["random_seed"], level_["random_calls"]);
 	statistics::fresh_stats();
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 
@@ -285,9 +286,9 @@ void replay_controller::reset_replay(){
 	}
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
-	fire_prestart(false);
+	fire_prestart(true);
 	init_gui();
-	fire_start(false);
+	fire_start(true);
 	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
 	it_is_a_new_turn_ = true;
 	update_gui();
@@ -512,11 +513,7 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	switch(command) {
 
 	//commands we can always do
-	case hotkey::HOTKEY_PLAY_REPLAY:
 	case hotkey::HOTKEY_RESET_REPLAY:
-	case hotkey::HOTKEY_STOP_REPLAY:
-	case hotkey::HOTKEY_REPLAY_NEXT_TURN:
-	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
 	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
 	case hotkey::HOTKEY_REPLAY_SHOW_EACH:
 	case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
@@ -525,6 +522,17 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	case hotkey::HOTKEY_SAVE_REPLAY:
 	case hotkey::HOTKEY_CHAT_LOG:
 		return true;
+
+	//commands we only can do before the end of the replay
+	case hotkey::HOTKEY_PLAY_REPLAY:
+	case hotkey::HOTKEY_STOP_REPLAY:
+	case hotkey::HOTKEY_REPLAY_NEXT_TURN:
+	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
+		if(recorder.at_end()) {
+			return false;
+		} else {
+			return true;
+		}
 
 	default:
 		return result;

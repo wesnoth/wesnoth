@@ -20,6 +20,7 @@
 #include "marked-up_text.hpp"
 #include "tooltips.hpp"
 #include "overlay.hpp"
+#include "filesystem.hpp"
 
 #include "editor/action/mouse/mouse_action.hpp"
 
@@ -60,12 +61,20 @@ void editor_palette<Item>::expand_palette_groups_menu(std::vector<std::string>& 
 				std::stringstream str;
 				str << IMAGE_PREFIX << item_groups[mci].icon;
 				if (mci == active_group_index()) {
-					str << "_30-pressed.png";
+
+					if (file_exists(str.str() + "_30-pressed.png" ) ) {
+						str << "_30-pressed.png";
+					} else {
+						str << "_30.png~CS(70,70,0)";
+					}
+
 				} else {
 					str << "_30.png";
 				}
 				str << COLUMN_SEPARATOR << groupname;
 				groups.push_back(str.str());
+
+
 			}
 			items.insert(items.begin() + i, groups.begin(), groups.end());
 			break;

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-08-17 11:31+0200\n"
+"POT-Creation-Date: 2013-11-16 09:29+0100\n"
 "PO-Revision-Date: 2012-02-19 19:50+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -26,13 +26,13 @@ msgid "Underground"
 msgstr "Podzemie"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:755
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "zúrivý"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:757
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
 #: data/core/macros/abilities.cfg:563
 #, fuzzy
 #| msgid ""
@@ -49,13 +49,13 @@ msgstr ""
 "protivníkov, prípadne kým si nevymenia 30 sérií útokov."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "magický"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
 #: data/core/macros/abilities.cfg:642
 #, fuzzy
 #| msgid ""
@@ -71,7 +71,7 @@ msgstr ""
 "jednotky, na ktorú sa útočí."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
 #: data/core/macros/abilities.cfg:686
 #, fuzzy
 #| msgid "firststrike"
@@ -79,7 +79,7 @@ msgid "first strike"
 msgstr "prvý úder"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:785
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
 #: data/core/macros/abilities.cfg:687
 #, fuzzy
 #| msgid ""
@@ -924,7 +924,7 @@ msgstr "Špeciálne zbrane"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1279 src/help.cpp:1281
+#: data/core/help.cfg:56 src/help.cpp:1285 src/help.cpp:1287
 msgid "Factions"
 msgstr "Frakcie"
 
@@ -4087,8 +4087,8 @@ msgstr "kŕmenie"
 #| " This unit gains 1 hitpoint added to its maximum whenever it kills a "
 #| "living unit."
 msgid ""
-"This unit gains 1 hitpoint added to its maximum whenever it kills a living "
-"unit."
+"This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
+"except units that are immune to plague."
 msgstr ""
 " Táto jednotka získa 1 život k svojmu maximálnemu počtu kedykoľvek zabije "
 "inú živú jednotku."
@@ -5911,189 +5911,193 @@ msgstr ""
 msgid "Help"
 msgstr "Pomoc"
 
-#: src/help.cpp:1142
+#: src/help.cpp:1148
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Jednotky s týmto špeciálnym útokom'</header>"
 
-#: src/help.cpp:1208
+#: src/help.cpp:1214
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Jednotky s touto schopnosťou'</header>"
 
-#: src/help.cpp:1241
+#: src/help.cpp:1247
 msgid "Leaders:"
 msgstr "Velitelia: "
 
-#: src/help.cpp:1250
+#: src/help.cpp:1256
 msgid "Recruits:"
 msgstr "Verbovaní:"
 
-#: src/help.cpp:1264
+#: src/help.cpp:1270
 msgid "Era:"
 msgstr "Éra:"
 
-#: src/help.cpp:1272
+#: src/help.cpp:1278
 msgid "Factions:"
 msgstr "Frakcie: "
 
-#: src/help.cpp:1282
+#: src/help.cpp:1288
 msgid "Factions are only used in multiplayer"
 msgstr "Frakcie sú používané iba v hre viacerých hráčov"
 
-#: src/help.cpp:1326
+#: src/help.cpp:1332
 msgid "level"
 msgstr "Úroveň"
 
-#: src/help.cpp:1359
+#: src/help.cpp:1365
 msgid "Advances from: "
 msgstr "Povýšený z: "
 
-#: src/help.cpp:1361
+#: src/help.cpp:1367
 msgid "Advances to: "
 msgstr "Povýši sa na: "
 
-#: src/help.cpp:1384
+#: src/help.cpp:1392
 msgid "Base unit: "
 msgstr ""
 
-#: src/help.cpp:1394
+#: src/help.cpp:1397
+msgid "Base units: "
+msgstr ""
+
+#: src/help.cpp:1411
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "Frakcie: "
 
-#: src/help.cpp:1418 src/help.cpp:1790 src/help.cpp:1863
+#: src/help.cpp:1435 src/help.cpp:1800 src/help.cpp:1897
 msgid "race^Miscellaneous"
 msgstr "Rôzne"
 
-#: src/help.cpp:1420
+#: src/help.cpp:1437
 msgid "Race: "
 msgstr "Rasa: "
 
-#: src/help.cpp:1427
+#: src/help.cpp:1444
 msgid "Abilities: "
 msgstr "Schopnosti: "
 
-#: src/help.cpp:1444
+#: src/help.cpp:1460
 msgid "Ability Upgrades: "
 msgstr "Zvýšenie schopností: "
 
-#: src/help.cpp:1460
+#: src/help.cpp:1475
 msgid "HP: "
 msgstr "Životy: "
 
-#: src/help.cpp:1461
+#: src/help.cpp:1476
 msgid "Moves: "
 msgstr "Kroky: "
 
-#: src/help.cpp:1463
+#: src/help.cpp:1478
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1465
+#: src/help.cpp:1480
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1466
+#: src/help.cpp:1481
 msgid "Cost: "
 msgstr "Cena: "
 
-#: src/help.cpp:1467
+#: src/help.cpp:1482
 msgid "Alignment: "
 msgstr "Príslušnosť: "
 
-#: src/help.cpp:1473
+#: src/help.cpp:1486
 msgid "Required XP: "
 msgstr "Potrebné skúsenosti: "
 
-#: src/help.cpp:1482
+#: src/help.cpp:1495
 msgid "unit help^Attacks"
 msgstr "Útoky"
 
-#: src/help.cpp:1489
+#: src/help.cpp:1502
 msgid "unit help^Name"
 msgstr "Názov"
 
-#: src/help.cpp:1490
+#: src/help.cpp:1503
 msgid "Type"
 msgstr "Typ"
 
-#: src/help.cpp:1491
+#: src/help.cpp:1504
 msgid "Strikes"
 msgstr "Údery"
 
-#: src/help.cpp:1492
+#: src/help.cpp:1505
 msgid "Range"
 msgstr "Dosah"
 
-#: src/help.cpp:1493
+#: src/help.cpp:1506
 msgid "Special"
 msgstr "Špeciálne"
 
-#: src/help.cpp:1539
+#: src/help.cpp:1551
 msgid "Resistances"
 msgstr "Odolnosti"
 
-#: src/help.cpp:1543
+#: src/help.cpp:1555
 msgid "Attack Type"
 msgstr "Typ útoku"
 
-#: src/help.cpp:1544
+#: src/help.cpp:1556
 msgid "Resistance"
 msgstr "Odolnosť"
 
-#: src/help.cpp:1574
+#: src/help.cpp:1586
 msgid "Terrain Modifiers"
 msgstr "Vplyv terénu"
 
-#: src/help.cpp:1578
+#: src/help.cpp:1590
 msgid "Terrain"
 msgstr "Terén"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1591
 msgid "Defense"
 msgstr "Obrana"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1592
 msgid "Movement Cost"
 msgstr "Cena pohybu"
 
-#: src/help.cpp:1584
+#: src/help.cpp:1596
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1587
+#: src/help.cpp:1599
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:1869
+#: src/help.cpp:1903
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Jednotky tejto rasy'</header>"
 
-#: src/help.cpp:2781
+#: src/help.cpp:2815
 msgid " < Back"
 msgstr " < Naspäť"
 
-#: src/help.cpp:2782
+#: src/help.cpp:2816
 msgid "Forward >"
 msgstr "Ďalej >"
 
-#: src/help.cpp:2890
+#: src/help.cpp:2924
 msgid "Reference to unknown topic: "
 msgstr "Odkaz na neexistujúcu záložku: "
 
-#: src/help.cpp:3146
+#: src/help.cpp:3180
 msgid "corrupted original file"
 msgstr "poškodený originálny súbor"
 
-#: src/help.cpp:3245
+#: src/help.cpp:3279
 msgid "Close"
 msgstr "Zavri"
 
-#: src/help.cpp:3248
+#: src/help.cpp:3282
 msgid "The Battle for Wesnoth Help"
 msgstr "Návod k Bitke o Wesnoth"
 
-#: src/help.cpp:3304
+#: src/help.cpp:3338
 msgid "Parse error when parsing help text: "
 msgstr "Chyba pri analyzovaní pomocného textu: "
 

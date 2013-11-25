@@ -84,27 +84,27 @@ static const unit_type &get_unit_type(const std::string &type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, rand_rng::simple_rng* rng)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
-		int random = state ? resources::gamedata->rng().get_next_random() : get_random_nocheck();
+		int random = rng ? rng->get_next_random() : get_random_nocheck();
 		return genders[random % genders.size()];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, game_state *state)
+static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, rand_rng::simple_rng* rng)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
 
-	return generate_gender(u_type, cfg["random_gender"].to_bool(), state);
+	return generate_gender(u_type, cfg["random_gender"].to_bool(), rng);
 }
 
 // Copy constructor
@@ -189,13 +189,15 @@ unit::unit(const unit& o):
            refreshing_(o.refreshing_),
            hidden_(o.hidden_),
            draw_bars_(o.draw_bars_),
+           hp_bar_scaling_(o.hp_bar_scaling_),
+           xp_bar_scaling_(o.xp_bar_scaling_),
 
            modifications_(o.modifications_),
 		   invisibility_cache_()
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig* vcfg) :
+unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vconfig* vcfg) :
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
@@ -219,7 +221,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	image_mods_(),
 	unrenamable_(false),
 	side_(0),
-	gender_(generate_gender(*type_, cfg, state)),
+	gender_(generate_gender(*type_, cfg, &resources::gamedata->rng())),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -263,6 +265,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 	refreshing_(false),
 	hidden_(false),
 	draw_bars_(false),
+	hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"]),
+	xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"]),
 	modifications_(),
 	invisibility_cache_()
 {
@@ -503,7 +507,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig*
 		if (attr.first == "do_not_list") continue;
 		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
 	}
-	
+
 	//debug unit animations for units as they appear in game
 	/*for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
 		std::cout << (*i).debug();
@@ -546,7 +550,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit, NULL)),
+		gender : generate_gender(u_type, real_unit, resources::gamedata ? &(resources::gamedata->rng()) : NULL)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -599,7 +603,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	advance_to(u_type, real_unit);
 
 	if(real_unit) {
-		generate_name();
+		generate_name(resources::gamedata ? &(resources::gamedata->rng()) : NULL);
 	}
 	set_underlying_id();
 
@@ -806,6 +810,8 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	alignment_ = new_type.alignment();
 	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
+	hp_bar_scaling_ = new_type.hp_bar_scaling();
+	xp_bar_scaling_ = new_type.xp_bar_scaling();
 	max_movement_ = new_type.movement();
 	vision_ = new_type.vision(true);
 	jamming_ = new_type.jamming();
@@ -2074,7 +2080,7 @@ void unit::redraw_unit()
 			unit_energy = double(hitpoints())/double(max_hitpoints());
 		}
 		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
-		const int hp_bar_height = static_cast<int>(max_hitpoints()*game_config::hp_bar_scaling);
+		const int hp_bar_height = static_cast<int>(max_hitpoints() * hp_bar_scaling_);
 
 		const fixed_t bar_alpha = (loc_ == disp.mouseover_hex() || loc_ == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
 
@@ -2084,7 +2090,7 @@ void unit::redraw_unit()
 		if(experience() > 0 && can_advance()) {
 			const double filled = double(experience())/double(max_experience());
 
-			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / std::max<int>(level_,1));
+			const int xp_bar_height = static_cast<int>(max_experience() * xp_bar_scaling_ / std::max<int>(level_,1));
 
 			SDL_Color color=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,

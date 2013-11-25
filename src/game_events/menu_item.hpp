@@ -33,20 +33,16 @@ namespace game_events
 class wml_menu_item
 {
 public:
-	explicit wml_menu_item(const std::string& id, const config* cfg=NULL);
+	/// Constructor for when read from a saved config.
+	wml_menu_item(const std::string& id, const config & cfg);
+	/// Constructor for when defined in an event.
+	wml_menu_item(const std::string& id, const vconfig & definition);
+	/// Constructor for when modified by an event.
+	wml_menu_item(const std::string& id, const vconfig & definition,
+	              const wml_menu_item & original);
 
-	/// The WML actions specified within this item.
-	const config & command() const { return command_; }
-	/// The text to display in the menu for this item.
-	const t_string & description() const { return description_; }
-	/// The name of the event to fire when this item is chosen.
-	const std::string & event_name() const { return event_name_; }
 	/// The image associated with this menu item.
 	const std::string & image() const;
-	/// Config object containing the default hotkey.
-	const config & default_hotkey() const { return default_hotkey_; }
-	/// If true, allow using a hotkey to trigger this item.
-	bool use_hotkey() const { return use_hotkey_; }
 	/// If true, allow using the menu to trigger this item.
 	bool use_wml_menu() const { return use_wml_menu_; }
 
@@ -54,21 +50,24 @@ public:
 	bool can_show(const map_location & hex) const;
 	/// Causes the event associated with this item to fire.
 	void fire_event(const map_location & event_hex) const;
+	/// Removes the implicit event handler for an inlined [command].
+	void finish_handler() const;
 	/// Initializes the implicit event handler for an inlined [command].
 	void init_handler() const;
 	/// The text to put in a menu for this item.
 	/// This will be either translated text or a hotkey identifier.
 	std::string menu_text() const
 	{ return use_hotkey_ ? hotkey_id_ : description_.str() + ' '; } // The space is to prevent accidental hotkey binding.
-	/// Change the actions associated with this item.
-	/// (Internal bookkeeping only; the caller must still update the event handlers.)
-	void set_command(const config & cfg) { command_ = cfg; }
 	/// Writes *this to the provided config.
 	void to_config(config & cfg) const;
+
+private: // Functions
 	/// Updates *this based on @a vcfg.
 	void update(const vconfig & vcfg);
+	/// Updates our command to @a new_command.
+	void update_command(const config & new_command);
 
-private:
+private: // Data
 	/// The id of this menu item.
 	const std::string item_id_;
 	/// The name of this item's event(s); based on the item's id.

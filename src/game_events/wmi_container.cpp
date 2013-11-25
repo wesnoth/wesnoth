@@ -69,54 +69,12 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 	}
 
 	// Clean up our bookkeeping.
-	remove_wmi_change(id);
-	remove_event_handler(id);
+	iter->second->finish_handler();
 
 	// Remove the item from the map.
 	wml_menu_items_.erase(iter);
 
 	return 1; // Erased one item.
-}
-
-/**
- * Commits a single WML menu item command change.
- * Returns true if hotkeys have changed (so they need to be saved).
- */
-bool wmi_container::commit_change(const std::string & id, config & command)
-{
-	const bool is_empty_command = command.empty();
-	bool hotkeys_changed = false;
-
-	wml_menu_item & item = get_item(id);
-	const std::string & event_name = item.event_name();
-
-	config::attribute_value & event_id = command["id"];
-	if ( event_id.empty() && !id.empty() ) {
-		event_id = id;
-	}
-	command["name"] = event_name;
-	command["first_time_only"] = false;
-
-	if ( !item.command().empty() ) {
-		for ( manager::iteration hand(event_name); hand.valid(); ++hand ) {
-			if ( hand->is_menu_item() ) {
-				LOG_NG << "changing command for " << event_name << " to:\n" << command;
-				*hand = event_handler(command, true);
-			}
-		}
-	} else if(!is_empty_command) {
-		LOG_NG << "setting command for " << event_name << " to:\n" << command;
-		add_event_handler(command, true);
-		if(item.use_hotkey()) {
-			const config & default_hotkey = item.default_hotkey();
-			hotkey::add_wml_hotkey(item.menu_text(), item.description(), default_hotkey);
-			if ( !default_hotkey.empty() )
-				hotkeys_changed = true;
-		}
-	}
-
-	item.set_command(command);
-	return hotkeys_changed;
 }
 
 /**
@@ -143,24 +101,6 @@ bool wmi_container::fire_item(const std::string & id, const map_location & hex) 
 		wmi.fire_event(hex);
 
 	return true;
-}
-
-/**
- * Returns an item with the given id.
- * If one does not already exist, one will be created.
- */
-wml_menu_item & wmi_container::get_item(const std::string& id)
-{
-	// Try to insert a dummy value. This combines looking for an existing
-	// entry with insertion.
-	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
-
-	// If we ended up with a dummy value, create an entry for it.
-	if ( !add_it->second )
-		add_it->second.reset(new wml_menu_item(id));
-
-	// Return the item.
-	return *add_it->second;
 }
 
 /**
@@ -206,6 +146,15 @@ void wmi_container::get_items(const map_location& hex,
  */
 void wmi_container::init_handlers() const
 {
+	// Applying default hotkeys here currently does not work because
+	// the hotkeys are reset by play_controler::init_managers() ->
+	// display_manager::display_manager, which is called after this.
+	// The result is that default wml hotkeys will be ignored if wml
+	// hotkeys are set to default in the preferences menu. (They are
+	// still reapplied if set_menu_item is called again, for example
+	// by starting a new campaign.) Since it isn't that important
+	// I'll just leave it for now.
+
 	unsigned wmi_count = 0;
 
 	// Loop through each menu item.
@@ -235,8 +184,17 @@ void wmi_container::to_config(config& cfg) const
  */
 void wmi_container::set_item(const std::string& id, const vconfig& menu_item)
 {
-	// Get the item and update it.
-	get_item(id).update(menu_item);
+	// Try to insert a dummy value. This combines looking for an existing
+	// entry with insertion.
+	map_t::iterator add_it = wml_menu_items_.insert(map_t::value_type(id, item_ptr())).first;
+
+	if ( add_it->second )
+		// Create a new menu item based on the old. This leaves the old item
+		// alone in case someone else is holding on to (and processing) it.
+		add_it->second.reset(new wml_menu_item(id, menu_item, *add_it->second));
+	else
+		// This is a new menu item.
+		add_it->second.reset(new wml_menu_item(id, menu_item));
 }
 
 /**
@@ -252,7 +210,7 @@ void wmi_container::set_menu_items(const config& cfg)
 		std::string id = item["id"];
 		item_ptr & mref = wml_menu_items_[id];
 		if ( !mref ) {
-			mref.reset(new wml_menu_item(id, &item));
+			mref.reset(new wml_menu_item(id, item));
 		} else {
 			WRN_NG << "duplicate menu item (" << id << ") while loading from config\n";
 		}

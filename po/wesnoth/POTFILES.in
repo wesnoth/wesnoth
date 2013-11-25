@@ -42,6 +42,7 @@ src/ai/lua/core.cpp
 src/ai/lua/lua_object.cpp
 src/ai/lua/unit_advancements_aspect.cpp
 src/ai/manager.cpp
+src/ai/recruitment/recruitment.cpp
 src/ai/registry.cpp
 src/ai/testing/aspect_attacks.cpp
 src/ai/testing/ca.cpp
@@ -75,6 +76,7 @@ src/commandline_options.cpp
 src/config.cpp
 src/controller_base.cpp
 src/cursor.cpp
+src/desktop_util.cpp
 src/dialogs.cpp
 src/display.cpp
 src/editor/action/mouse/mouse_action_select.cpp
@@ -83,6 +85,7 @@ src/editor/editor_preferences.cpp
 src/editor/toolkit/editor_toolkit.cpp
 src/events.cpp
 src/filesystem.cpp
+src/flg_manager.cpp
 src/floating_textbox.cpp
 src/formula.cpp
 src/formula_debugger.cpp
@@ -101,7 +104,9 @@ src/game_events/action_wml.cpp
 src/game_events/conditional_wml.cpp
 src/game_events/entity_location.cpp
 src/game_events/handlers.cpp
+src/game_events/menu_item.cpp
 src/game_events/pump.cpp
+src/game_events/wmi_container.cpp
 src/game_instance.cpp
 src/gamestatus.cpp
 src/generators/cavegen.cpp
@@ -127,7 +132,6 @@ src/intro.cpp
 src/joystick.cpp
 src/key.cpp
 src/language.cpp
-src/leader_list.cpp
 src/leader_scroll_dialog.cpp
 src/loadscreen.cpp
 src/loadscreen_empty.cpp
@@ -144,10 +148,14 @@ src/mouse_handler_base.cpp
 src/movetype.cpp
 src/mp_depcheck.cpp
 src/mp_game_settings.cpp
+src/mp_game_utils.cpp
 src/mp_options.cpp
+src/multiplayer_configure.cpp
 src/multiplayer_connect.cpp
+src/multiplayer_connect_engine.cpp
 src/multiplayer.cpp
 src/multiplayer_create.cpp
+src/multiplayer_create_engine.cpp
 src/multiplayer_lobby.cpp
 src/multiplayer_ui.cpp
 src/multiplayer_wait.cpp
@@ -176,10 +184,11 @@ src/replay.cpp
 src/reports.cpp
 src/resources.cpp
 src/save_blocker.cpp
-src/savegame_config.cpp
 src/savegame.cpp
 src/scripting/debug_lua.cpp
+src/scripting/lua_api.cpp
 src/scripting/lua.cpp
+src/scripting/lua_types.cpp
 src/sdl_utils.cpp
 src/serialization/binary_or_text.cpp
 src/serialization/parser.cpp
@@ -213,6 +222,7 @@ src/storyscreen/controller.cpp
 src/storyscreen/interface.cpp
 src/storyscreen/part.cpp
 src/storyscreen/render.cpp
+src/strftime.cpp
 src/team.cpp
 src/terrain.cpp
 src/tests/create_images.cpp

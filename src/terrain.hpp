@@ -34,6 +34,7 @@ public:
 	const t_string& description() const { return description_.empty() ? name_ : description_; }
 	const std::string& id() const { return id_; }
 
+	bool hide_help() const { return hide_help_; }
 	bool hide_in_editor() const { return hide_in_editor_; }
 
 	//the character representing this terrain
@@ -122,7 +123,7 @@ private:
 
 	bool overlay_, combined_;
 	t_translation::t_terrain editor_default_base_;
-	bool hide_in_editor_;
+	bool hide_help_, hide_in_editor_;
 };
 
 void create_terrain_maps(const config::const_child_itors &cfgs,

@@ -515,8 +515,8 @@ bool pump()
 			}
 		}
 
-		// Only commit new handlers when finished iterating over event_handlers.
-		commit();
+		// Flush messages when finished iterating over event_handlers.
+		flush_messages();
 	}
 
 	if ( old_wml_track != internal_wml_tracking )
@@ -533,11 +533,8 @@ void clear_events()
 	events_queue.clear();
 }
 
-void commit()
+void flush_messages()
 {
-	DBG_EH << "committing new WML menu item commands; number of pump_instances: " <<
-	          pump_manager::count() << "\n";
-	commit_wmi_commands();
 	// Dialogs can only be shown if the display is not locked
 	if (!resources::screen->video().update_locked()) {
 		show_wml_errors();

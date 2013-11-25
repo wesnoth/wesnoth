@@ -14,56 +14,8 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="AI configuration fixes"]
-AI configuration with the [wiki=AiWML#The_.5Bai.5D_Tag:_Defining_Aspects]time_of_day aspect[/wiki] has been fixed in this release to compare with the current ToD's id instead of its user-visible name (e.g. "morning" vs. "Morning") from the [wiki=TimeWML][time] tag[/wiki]. Since the previous behavior was incorrect and mainline campaigns used ToD ids with it, this effectively fixes AI configuration for all of them. Authors of user-made campaigns and scenarios who were making use of this feature are strongly advised to playtest their scenarios with this version again to check for potential side-effects on gameplay balance.
-[/section]
-
-[section="Add-ons Manager improvements"]
-In this release, new sorting options have been added to the Add-ons Manager dialog to improve its usefulness. The new options allow to change the neutral sorting criterion between [i]By name[/i] (which continues to be the default), [i]By last updated[/i], and [i]By first upload[/i] (former default in all versions prior to 1.11.0); additionally, it is possible to switch between ascending and descending order. Due to UI framework limitations, these options only take effect when no column has been marked for sorting in the add-ons list.
-[/section]
-
-[section="Other miscellaneous add-on management improvements"]
-The Remove Add-ons dialog now displays add-ons with their real names from the add-ons server as opposed to their file/directory names with underscores removed. This is only effective for add-ons downloaded with this and future versions.
-
-Syntax errors in .pbl files are now reported properly in the user interface instead of being misclassified as network errors.
-
-Finally, some color key disparities between the Add-ons Manager view and the Description box (which were unintentionally using different shades of orange and green) have been fixed.
-[/section]
-
-[section="In-game chat log search"]
-A search box has been added to the in-game chat log dialog for easy filtering of conversations during an MP match.
-[/section]
-
-[section="Game Paths dialog"]
-A new informational dialog has been added to the General section in Preferences to display the various resource and configuration paths used by the game. From there, the user can copy individual paths to clipboard or launch the file browser on them (currently only tested with Windows, Linux, and Mac OS X).
-[/section]
-
-[section="Better support for multiplayer campaigns"]
-A support for CampaignWML has been added for multiplayer, thus allowing to use the same campaign in both multiplayer and singleplayer. As a result of this, difficulty levels and other features of singleplayer campaigns are supported in multiplayer as well. User interface has been improved to act better upon these changes and now it supports different types of level selection and difficulties dialog for campaigns.
-
-It is now possible (if campaign author intends) to go to the lobby in-between campaign's scenarios and easily modify sides using a user interface.
-
-In addition, there have been numerous improvements for underlying set up of multiplayer scenario, which should enhance the general stability and give way for further improvements of multiplayer campaigns.
-
-Finally, Legend of Wesmere campaign has been made available to play in multiplayer as a result of these changes.
-[/section]
-
-[section="Multiplayer server incompatibility"]
-Due to changes to server protocol, multiplayer campaigns might not work correctly for older client versions when connecting to a server in this release.
-[/section]
-
-[section="New Recruitment Engine for the AI"]
-The default recruitment candidate action (CA) was refactored completely. It is now much more configurable for scenario editors and hopefully does a better job than the old recruitment engine. Some aspects got deprecated ('recruitment', 'recruitment_ignore_bad_combat'), some aspects are new. Also, multiple leader recruitment by the AI is now supported. See [url]http://wiki.wesnoth.org/AI_Recruitment[/url] for more details.
-
-In addition to the modified default recruitment, it is now also possible to choose the AI 'Strong AI (RCA)' in MP games (note that this only affects recruitment at this time). It uses the same recruitment CA as the default, but with different parameters. It might perform slightly better than the default in certain circumstances, but recruits more units of the same type (and might therefore be less fun to play against).
-
-[b]As a result of the recruitment changes, some scenarios may have become somewhat unbalanced. Feedback about how the new recruitment engine affects the gameplay in scenarios is needed.[/b]
-[/section]
-
-[section="Son of the Black Eye Rebalancing"]
-We are currently in the process of rebalancing the campaign, making it more difficult in accordance with its status as an expert level campaign. Play testing and feedback by others would be extremely helpful. Rebalancing has so far only been done for Scenarios 1 to 3, but other scenarios are already being worked on and will be changed shortly.
-
-As part of this process, a number of other changes and fixes have also been made. See the complete changelog for details.
+[section="Example section header"]
+Example contents.
 [/section]
 
 ==========

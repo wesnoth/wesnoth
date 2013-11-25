@@ -30,22 +30,76 @@
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../play_controller.hpp"
+#include "../preferences.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
 #include "../terrain_filter.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
+#define LOG_NG LOG_STREAM(info, log_engine)
 
 
 // This file is in the game_events namespace.
 namespace game_events
 {
 
-wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
+namespace { // Some helpers for construction.
+
+	/**
+	 * Build the event name associated with the given menu item id.
+	 * This is a separate function so it can be easily shared by multiple
+	 * constructors.
+	 */
+	inline std::string make_item_name(const std::string & id)
+	{
+		return std::string("menu_item") + (id.empty() ? "" : ' ' + id);
+	}
+
+	/**
+	 * Build the hotkey id associated with the given menu item id.
+	 * This is a separate function so it can be easily shared by multiple
+	 * constructors.
+	 */
+	inline std::string make_item_hotkey(const std::string & id)
+	{
+		return play_controller::wml_menu_hotkey_prefix + id;
+	}
+
+}// anonymous namespace
+
+
+/**
+ * Constructor for when read from a saved config.
+ * This is the reverse of to_config() and corresponds to reading [menu_item].
+ */
+wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		item_id_(id),
-		event_name_("menu item" + (id.empty() ? "" : ' ' + id)),
-		hotkey_id_(play_controller::wml_menu_hotkey_prefix + id),
+		event_name_(make_item_name(id)),
+		hotkey_id_(make_item_hotkey(id)),
+		image_(cfg["image"].str()),
+		description_(cfg["description"].t_str()),
+		needs_select_(cfg["needs_select"].to_bool(false)),
+		show_if_(cfg.child_or_empty("show_if"), true),
+		filter_location_(cfg.child_or_empty("filter_location"), true),
+		command_(cfg.child_or_empty("command")),
+		default_hotkey_(cfg.child_or_empty("default_hotkey")),
+		use_hotkey_(cfg["use_hotkey"].to_bool(true)),
+		use_wml_menu_(cfg["use_hotkey"].str() != "only")
+{
+}
+
+/**
+ * Constructor for when defined in an event.
+ * This is where default values are defined (the other constructors should have
+ * all values to work with).
+ * @param[in]  id          The id of the menu item.
+ * @param[in]  definition  The WML defining this menu item.
+ */
+wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition) :
+		item_id_(id),
+		event_name_(make_item_name(id)),
+		hotkey_id_(make_item_hotkey(id)),
 		image_(),
 		description_(),
 		needs_select_(false),
@@ -56,28 +110,37 @@ wml_menu_item::wml_menu_item(const std::string& id, const config* cfg) :
 		use_hotkey_(true),
 		use_wml_menu_(true)
 {
-	if(cfg != NULL) {
-		image_ = (*cfg)["image"].str();
-		description_ = (*cfg)["description"];
-		needs_select_ = (*cfg)["needs_select"].to_bool();
-		// use_hotkey is already a name of a member of this class.
-		const config::attribute_value & use_hotkey_attribute_value = (*cfg)["use_hotkey"];
-		if(use_hotkey_attribute_value.str() == "only" )
-		{
-			use_hotkey_ = true;
-			use_wml_menu_ = false;
-		}
-		else
-		{	
-			use_hotkey_ = use_hotkey_attribute_value.to_bool(true);
-			use_wml_menu_ = true;
-		}
-		if (const config &c = cfg->child("show_if")) show_if_ = vconfig(c, true);
-		if (const config &c = cfg->child("filter_location")) filter_location_ = vconfig(c, true);
-		if (const config &c = cfg->child("command")) command_ = c;
-		if (const config &c = cfg->child("default_hotkey")) default_hotkey_ = c;
-	}
+	// Apply WML.
+	update(definition);
 }
+
+/**
+ * Constructor for when modified by an event.
+ * (To avoid problems with a menu item's command changing itself, we make a
+ * new menu item instead of modifying the existing one.)
+ * @param[in]  id          The id of the menu item.
+ * @param[in]  definition  The WML defining this menu item.
+ * @param[in]  original    The previous version of the menu item with this id.
+ */
+wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition,
+                             const wml_menu_item & original) :
+		item_id_(id),
+		event_name_(make_item_name(id)),
+		hotkey_id_(make_item_hotkey(id)),
+		image_(original.image_),
+		description_(original.description_),
+		needs_select_(original.needs_select_),
+		show_if_(original.show_if_),
+		filter_location_(original.filter_location_),
+		command_(original.command_),
+		default_hotkey_(original.default_hotkey_),
+		use_hotkey_(original.use_hotkey_),
+		use_wml_menu_(original.use_wml_menu_)
+{
+	// Apply WML.
+	update(definition);
+}
+
 
 /**
  * The image associated with this menu item.
@@ -141,32 +204,37 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
 }
 
 /**
+ * Removes the implicit event handler for an inlined [command].
+ */
+void wml_menu_item::finish_handler() const
+{
+	if ( !command_.empty() )
+		remove_event_handler(command_["id"]);
+
+	// Hotkey support
+	if ( use_hotkey_ )
+		hotkey::remove_wml_hotkey(hotkey_id_);
+}
+
+/**
  * Initializes the implicit event handler for an inlined [command].
  */
 void wml_menu_item::init_handler() const
 {
 	// If this menu item has a [command], add a handler for it.
 	if ( !command_.empty() )
-	{
 		add_event_handler(command_, true);
 
-		// Hotkey support
-		if ( use_hotkey_ ) {
-			// Applying default hotkeys here currently does not work because
-			// the hotkeys are reset by play_controler::init_managers() ->
-			// display_manager::display_manager, which is called after this.
-			// The result is that default wml hotkeys will be ignored if wml
-			// hotkeys are set to default in the preferences menu. (They are
-			// still reapplied if set_menu_item is called again, for example
-			// by starting a new campaign.) Since it isn't that important
-			// I'll just leave it for now.
-			hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
-		}
+	// Hotkey support
+	if ( use_hotkey_ ) {
+		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
 	}
 }
 
 /**
  * Writes *this to the provided config.
+ * This is the reverse of the constructor from a config and corresponds to
+ * what will appear in [menu_item].
  */
 void wml_menu_item::to_config(config & cfg) const
 {
@@ -198,6 +266,7 @@ void wml_menu_item::to_config(config & cfg) const
 
 /**
  * Updates *this based on @a vcfg.
+ * This corresponds to what can appear in [set_menu_item].
  */
 void wml_menu_item::update(const vconfig & vcfg)
 {
@@ -225,22 +294,50 @@ void wml_menu_item::update(const vconfig & vcfg)
 	}
 
 	if ( vcfg.has_attribute("use_hotkey") ) {
-		const config::attribute_value & use_hotkey_attribute_value = vcfg["use_hotkey"];
-		if(use_hotkey_attribute_value.str() == "only")
-		{
-			use_hotkey_ = true;
-			use_wml_menu_ = false;
-		}
-		else
-		{
-			use_hotkey_ = use_hotkey_attribute_value.to_bool(true);
-			use_wml_menu_ = true;
-		}
+		const config::attribute_value & use_hotkey_av = vcfg["use_hotkey"];
+
+		use_hotkey_ = use_hotkey_av.to_bool(true);
+		use_wml_menu_ = use_hotkey_av.str() != "only";
 	}
 
 	if ( const vconfig & cmd = vcfg.child("command") ) {
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
-		add_wmi_change(item_id_, delayed ? cmd.get_config() : cmd.get_parsed_config());
+		update_command(delayed ? cmd.get_config() : cmd.get_parsed_config());
+	}
+}
+
+/**
+ * Updates our command to @a new_command.
+ */
+void wml_menu_item::update_command(const config & new_command)
+{
+	// If there is an old command, remove it from the event handlers.
+	if ( !command_.empty() ) {
+		for ( manager::iteration hand(event_name_); hand.valid(); ++hand ) {
+			if ( hand->is_menu_item() ) {
+				LOG_NG << "Removing command for " << event_name_ << ".\n";
+				remove_event_handler(command_["id"].str());
+			}
+		}
+	}
+
+	// Update our stored command.
+	if ( new_command.empty() )
+		command_.clear();
+	else {
+		command_ = new_command;
+
+		// Set some fields required by event processing.
+		config::attribute_value & event_id = command_["id"];
+		if ( event_id.empty() && !item_id_.empty() ) {
+			event_id = item_id_;
+		}
+		command_["name"] = event_name_;
+		command_["first_time_only"] = false;
+
+		// Register the event.
+		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
+		init_handler();
 	}
 }
 

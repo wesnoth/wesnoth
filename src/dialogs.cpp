@@ -1428,6 +1428,11 @@ void show_unit_description(const unit &u)
 	show_unit_description(u.type());
 }
 
+void show_terrain_description(const terrain_type &t)
+{
+	help::show_terrain_help(*display::get_singleton(), t.id(), t.hide_in_editor() || t.is_combined());
+}
+
 void show_unit_description(const unit_type &t)
 {
 	const std::string& var_id = t.get_cfg()["variation_id"];

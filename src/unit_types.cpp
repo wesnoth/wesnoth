@@ -359,6 +359,8 @@ unit_type::unit_type(const unit_type& o) :
 	type_name_(o.type_name_),
 	description_(o.description_),
 	hitpoints_(o.hitpoints_),
+	hp_bar_scaling_(o.hp_bar_scaling_),
+	xp_bar_scaling_(o.xp_bar_scaling_),
 	level_(o.level_),
 	movement_(o.movement_),
 	vision_(o.vision_),
@@ -383,6 +385,7 @@ unit_type::unit_type(const unit_type& o) :
 	adv_ability_tooltips_(o.adv_ability_tooltips_),
 	zoc_(o.zoc_),
 	hide_help_(o.hide_help_),
+	do_not_list_(o.do_not_list_),
 	advances_to_(o.advances_to_),
 	experience_needed_(o.experience_needed_),
 	in_advancefrom_(o.in_advancefrom_),
@@ -413,6 +416,8 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	type_name_(cfg_["name"].t_str()),
 	description_(),
 	hitpoints_(0),
+	hp_bar_scaling_(0.0),
+	xp_bar_scaling_(0.0),
 	level_(0),
 	movement_(0),
 	vision_(-1),
@@ -439,6 +444,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	adv_ability_tooltips_(),
 	zoc_(false),
 	hide_help_(false),
+	do_not_list_(cfg_["do_not_list"].to_bool(false)),
 	advances_to_(),
 	experience_needed_(0),
 	in_advancefrom_(false),
@@ -534,6 +540,9 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	BOOST_FOREACH(const config &portrait, cfg_.child_range("portrait")) {
 		portraits_.push_back(tportrait(portrait));
 	}
+
+	hp_bar_scaling_ = cfg_["hp_bar_scaling"].to_double(game_config::hp_bar_scaling);
+	xp_bar_scaling_ = cfg_["xp_bar_scaling"].to_double(game_config::xp_bar_scaling);
 
 	// Propagate the build to the variations.
 	BOOST_FOREACH(variations_map::value_type & variation, variations_) {
@@ -1060,8 +1069,8 @@ const config & unit_type::build_unit_cfg() const
 
 	// Remove "pure" unit_type attributes (attributes that do not get directly
 	// copied to units; some do get copied, but under different keys).
-	static char const *unit_type_attrs[] = { "attacks", "die_sound",
-		"healed_sound", "experience", "flies", "hide_help", "hitpoints",
+	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
+		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
 		"name", "num_traits", "variation_id", "variation_name" };
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
@@ -1191,6 +1200,11 @@ namespace { // Helpers for set_config()
 		BOOST_FOREACH (config & base, ut_cfg.child_range("base_unit") )
 			base_ids.push_back(base["id"]);
 
+		if ( base_ids.empty() )
+			// Nothing to do.
+			return;
+
+		// Store the base ids for the help system.
 		ut_cfg["base_ids"] = utils::join(base_ids);
 
 		// Clear the base units (otherwise they could interfere with the merge).

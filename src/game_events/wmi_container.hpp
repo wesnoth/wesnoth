@@ -72,8 +72,6 @@ public:
 	/// Erases the item with the provided @a id.
 	size_type erase(const std::string & id);
 
-	/// Commits a single WML menu item command change.
-	bool commit_change(const std::string & id, config & command);
 	/// Fires the menu item with the given @a id.
 	bool fire_item(const std::string & id, const map_location & hex) const;
 	/// Returns the menu items that can be shown for the given location.
@@ -93,8 +91,6 @@ private:
 	iterator find(const std::string & id)             { return iterator(wml_menu_items_.find(id)); }
 	/// Returns an iterator to a menu item with the given @a id, if one exists.
 	const_iterator find(const std::string & id) const { return const_iterator(wml_menu_items_.find(id)); }
-	/// Returns an item with the given id.
-	wml_menu_item & get_item(const std::string& id);
 
 public:
 	// Iteration support:

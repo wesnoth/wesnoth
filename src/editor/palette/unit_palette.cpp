@@ -36,6 +36,8 @@ void unit_palette::setup(const config& /*cfg*/)
 {
 	BOOST_FOREACH(const unit_type_data::unit_type_map::value_type &i, unit_types.types())
 	{
+		if (i.second.do_not_list())
+			continue;
 		item_map_.insert(std::pair<std::string, unit_type>(i.second.id(), i.second));
 		group_map_[i.second.race_id()].push_back(i.second.id());
 		nmax_items_ = std::max(nmax_items_, group_map_[i.second.race_id()].size());
@@ -52,6 +54,8 @@ void unit_palette::setup(const config& /*cfg*/)
 
 	BOOST_FOREACH(const race_map::value_type &i, unit_types.races())
 	{
+		if (group_map_[i.second.id()].empty())
+			continue;
 		config cfg;
 		cfg["id"] = i.second.id();
 		cfg["name"] = i.second.plural_name();
@@ -64,11 +68,11 @@ void unit_palette::setup(const config& /*cfg*/)
 	//move "invalid" items to the end
 	//std::stable_partition(items.begin(), items.end(), is_valid_terrain);
 
-	select_fg_item("Elvish Fighter");
-	select_bg_item("Elvish Archer");
+	select_fg_item(item_map_.begin()->second.id());
+	select_bg_item(item_map_.begin()->second.id());
 
 	// Set the default group
-	set_group("human");
+	set_group(groups_[0].id);
 
 	if(active_group().empty()) {
 		ERR_ED << "No items found.\n";

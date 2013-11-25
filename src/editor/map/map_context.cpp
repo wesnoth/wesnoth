@@ -163,7 +163,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 		//	, units_, false);
 		team t;
 		side["side"] = i;
-		//side["no_leader"] = "yes";
+		side["no_leader"] = "yes";
 		i++;
 		t.build(side, map_);
 
@@ -302,7 +302,7 @@ bool map_context::save()
 		config& side = wml_data.add_child("side");
 		t->write(side);
 		// TODO make this customizable via gui
-		side["no_leader"] = "no";
+		side["no_leader"] = "yes";
 		side["allow_player"] = "yes";
 		side.remove_attribute("color");
 		side.remove_attribute("recruit");

@@ -84,6 +84,7 @@ hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_SCREENSHOT, "screenshot", N_("Screenshot"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_MAP_SCREENSHOT, "mapscreenshot", N_("Map Screenshot"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_ACCELERATED, "accelerated", N_("Accelerated"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_TERRAIN_DESCRIPTION, "describeterrain", N_("Terrain Description"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_UNIT_DESCRIPTION, "describeunit", N_("Unit Description"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_RENAME_UNIT, "renameunit", N_("Rename Unit"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_DELETE_UNIT, "editor-deleteunit", N_("Delete Unit"), false, hotkey::SCOPE_GENERAL, "" },
@@ -454,7 +455,7 @@ void hotkey_item::clear()
 	command_ = "null";
 }
 
-void hotkey_item::save(config& item)
+void hotkey_item::save(config& item) const
 {
 	if (get_button()    >= 0) item["button"]   = get_button();
 	if (get_joystick()  >= 0) item["joystick"] = get_joystick();
@@ -628,13 +629,14 @@ void save_hotkeys(config& cfg)
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin();
 			i != hotkeys_.end(); ++i)
 	{
-		if (i->null()) {
-			continue;
-		}
-
-		config& item = cfg.add_child("hotkey");
-		i->save(item);
+		save_hotkey(cfg, *i);
 	}
+}
+
+void save_hotkey(config& cfg, const hotkey_item & item)
+{
+	if ( !item.null() )
+		item.save(cfg.add_child("hotkey"));
 }
 
 const std::string get_description(const std::string& command) 
@@ -727,21 +729,59 @@ void delete_all_wml_hotkeys()
 	}
 }
 
+// Returns whether a hotkey was deleted.
+bool remove_wml_hotkey(const std::string& id)
+{
+	hotkey::hotkey_command& command = get_hotkey_command(id);
+	if(command.id == hotkey::HOTKEY_NULL)
+	{
+		LOG_G << "remove_wml_hotkey: command with id=" + id + " doesn't exist\n";
+		return false;
+	}
+	else if (command.id != hotkey::HOTKEY_WML)
+	{
+		LOG_G << "remove_wml_hotkey: command with id=" + id + " cannot be removed because it is no wml menu hotkey\n";
+		return false;
+	}
+	else
+	{
+		LOG_G << "removing wml hotkey with id=" + id + "\n";
+		for(boost::ptr_vector<hotkey_command>::iterator itor = known_hotkeys.begin(); itor != known_hotkeys.end(); itor ++)
+		{
+			if(itor->command == id)
+			{
+				known_hotkeys.erase(itor);
+				break;
+			}
+		}
+		//command_map_ might be all wrong now, so we need to rebuild.
+		command_map_.clear();
+		for(size_t index = 0; index < known_hotkeys.size(); index++)
+		{
+			command_map_[known_hotkeys[index].command] = index;
+		}
+		return true;
+	}
+}
+
 
 
 void add_wml_hotkey(const std::string& id, const t_string& description, const config& default_hotkey)
 {
-	if(has_hotkey_command(id) || id == "null")
+	if(id == "null")
 	{
-		LOG_G << "coudn't add wml hotkey with id=" + id + " and description" + description.base_str();
+		LOG_G << "Couldn't add wml hotkey with null id and description = '" << description << "'.\n";
 		return;
 	}
 	else
 	{
-		DBG_G << "added wml hotkey with id=" + id + " and description" + description.base_str();
-		//i think i dont need the temp anymore.
-		hotkey_command temp_command(hotkey::HOTKEY_WML, id, description, false, hotkey::SCOPE_GAME, t_string(""));
-		known_hotkeys.push_back(new hotkey_command(temp_command));
+		if(has_hotkey_command(id))
+		{
+			LOG_G << "Hotkey with id '" << id << "' already exists. Deleting the old hotkey_command.\n";
+			remove_wml_hotkey(id);
+		}
+		DBG_G << "Added wml hotkey with id = '" << id << "' and description = '" << description << "'.\n";
+		known_hotkeys.push_back(new hotkey_command(hotkey::HOTKEY_WML, id, description, false, hotkey::SCOPE_GAME, t_string("")));
 
 		command_map_[id] = known_hotkeys.size() - 1;
 
@@ -753,6 +793,7 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 			{
 				DBG_G << "added default description for the wml hotkey with id=" + id;
 				add_hotkey(new_item);
+				preferences::save_hotkey(new_item);
 			}
 			else
 			{
@@ -1101,6 +1142,9 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 			break;
 		case HOTKEY_REDO:
 			redo();
+			break;
+		case HOTKEY_TERRAIN_DESCRIPTION:
+			terrain_description();
 			break;
 		case HOTKEY_UNIT_DESCRIPTION:
 			unit_description();
