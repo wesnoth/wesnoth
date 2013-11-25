@@ -197,7 +197,7 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, game_state* state, const vconfig* vcfg) :
+unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vconfig* vcfg) :
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
