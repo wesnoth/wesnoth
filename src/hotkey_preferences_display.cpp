@@ -561,7 +561,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 	while ( event.type != SDL_KEYDOWN && event.type != SDL_JOYBUTTONDOWN
 			&& event.type  != SDL_JOYHATMOTION
-			&& (event.type != SDL_MOUSEBUTTONDOWN || event.button.button < 4)
+			&& (event.type != SDL_MOUSEBUTTONDOWN )
 	)
 		SDL_PollEvent(&event);
 
