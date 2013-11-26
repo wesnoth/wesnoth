@@ -496,7 +496,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Simple Attack Micro AI ---------------------------
     elseif (cfg.ai_type == 'simple_attack') then
-        optional_keys = { "filter", "filter_second" }
+        optional_keys = { "filter", "filter_second", "weapon" }
         CA_parms = { { ca_id = 'mai_simple_attack', location = 'ai/micro_ais/cas/ca_simple_attack.lua', score = cfg.ca_score or 110000 } }
 
     -- If we got here, none of the valid ai_types was specified
