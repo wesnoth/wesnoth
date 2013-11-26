@@ -117,9 +117,9 @@ std::pair<unit_map::unit_iterator, bool> unit_map::move(const map_location &src,
 
 It needs to succeed on the insertion to the umap and to the lmap
 otherwise all operations are reverted.
-1. Insert a unit_pod into the list
-2. Try insertion into the umap and remove the list item on failure
-3. Try insertion in the lmap and remove the umap and the list item on failure
+1. Construct a unit_pod
+2. Try insertion into the umap
+3. Try insertion in the lmap and remove the umap entry on failure
 
 The one oddity is that to facilitate non-invalidating iterators the list
 sometimes has NULL pointers which should be used when they correspond
@@ -336,50 +336,40 @@ std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const
 #ifdef DEBUG
 
 bool unit_map::self_check() const {
-	bool found_the_end(false), good(true);
-	t_ilist::const_iterator lit(ilist_.begin());
-	for(; lit != ilist_.end(); ++lit){
-		if(lit == the_end_){ found_the_end = true; continue; }
-		if(lit->ref_count < 0){
-			good=false;
-			ERR_NG << "unit_map list element ref_count <0 is " << lit->ref_count<<"\n"; }
-		if(lit->unit != NULL){
-			lit->unit->id(); //crash if bad pointer
-		} else {
-			if(lit->ref_count <= 0){
-				good=false;
-				ERR_NG << "unit_map list element ref_count <=0 is " << lit->ref_count<<", when unit deleted.\n"; }
-		}
-	}
-
-	if(!found_the_end){
-		good=false;
-		ERR_NG << "unit_map list the_end_ is missing. " <<"\n";}
+	bool good(true);
 
 	t_umap::const_iterator uit(umap_.begin());
 	for(; uit != umap_.end(); ++uit){
+		if(uit->second.ref_count < 0){
+			good=false;
+			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<<"\n";
+		}
+		if(uit->second.unit != NULL){
+			uit->second.unit->id(); //crash if bad pointer
+		}
 		if(uit->first <= 0){
 			good=false;
-			ERR_NG << "unit_map umap uid <=0 is " << uit->first <<"\n"; }
-		if(uit->second == the_end_ ){
-			good=false;
-			ERR_NG << "unit_map umap element == the_end_ "<<"\n"; }
-		if(uit->second->unit == NULL && uit->second->ref_count == 0 ){
+			ERR_NG << "unit_map umap uid <=0 is " << uit->first <<"\n";
+		}
+		if(uit->second.unit == NULL && uit->second.ref_count == 0 ){
 			good=false;
 			ERR_NG << "unit_map umap unit==NULL when refcount == 0\n";
 		}
-		if(uit->second->unit && uit->second->unit->underlying_id() != uit->first){
+		if(uit->second.unit && uit->second.unit->underlying_id() != uit->first){
 			good=false;
-			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second->unit->underlying_id()<< "]\n"; }
+			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second.unit->underlying_id()<< "]\n";
+		}
 	}
 	t_lmap::const_iterator locit(lmap_.begin());
 	for(; locit != lmap_.end(); ++locit){
-		if(locit->second == the_end_ ){
+		if(locit->second == umap_.end() ){
 			good=false;
-			ERR_NG << "unit_map lmap element == the_end_ "<<"\n"; }
-		if(locit->first != locit->second->unit->get_location()){
+			ERR_NG << "unit_map lmap element == umap_.end() "<<"\n";
+		}
+		if(locit->first != locit->second->second.unit->get_location()){
 			good=false;
-			ERR_NG << "unit_map lmap location != unit->get_location() " <<"\n"; }
+			ERR_NG << "unit_map lmap location != unit->get_location() " <<"\n";
+		}
 	}
 	//assert(good);
 	return good;

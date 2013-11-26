@@ -34,12 +34,12 @@ class unit;
  * stay valid even if WML modifies or moves units on the fly. They even stay
  * valid if a unit is erased from the map and another unit with the same
  * underlying id is inserted in the map.  In other words it is a doubly indexed ordered map
- with persistent iterators (that never invalidate)
+ * with persistent iterators (that never invalidate)
 
- @note The unit_map is implemented as 2 unordered maps storing iterators from a list of reference counted pointers to units.
- The unordered maps provide O(1) find times.  The list allows arbitrary ordering of units (not yet implemented).
+ @note The unit_map is implemented as 2 maps, one unordered map that stores iterators from the ordered map of reference counted pointers to units.
+ The unordered map provides O(1) find times. The ordered map ensures ordering of units by underlying_id.
  The reference counting is what guarantees the persistent iterators.
- Storing an iterator prevents only that dead unit's list location from being recovered.
+ Storing an iterator prevents only that dead unit's id-map entry from being recovered.
 
 @note Prefered usages for tight loops follows.
 Use the std::pair<iterator, bool> format which checks the preconditions and returns
@@ -83,8 +83,8 @@ if(try_add.second){i = try_add.first;}
  *       iterated upon may be skipped or visited twice.
  * @note Iterators prevent ghost units from being collected. So they should
  *       never be stored into data structures, as it will cause slowdowns!
- @note By popular demand iterators are effectively permanent.  They are handles and not iterators.
-  Any access might cause a full lookup.  Keeping iterators around holds onto memory.
+ * @note By popular demand iterators are effectively permanent. They are handles and not iterators.
+ * Any access might cause a full lookup. Keeping iterators around holds onto memory.
  */
 class unit_map {
 	/// The pointer to the unit and a reference counter to record the number of extant iterators
@@ -101,14 +101,11 @@ class unit_map {
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
 	};
 
-	/// A list pointing to unit and their reference counters.  Dead units have a unit pointer equal to NULL.
-	/// The list element is remove iff the reference counter equals zero and there are no more
+	///Map of underlying_id to unit and a reference counter. Dead units have a unit pointer equal to NULL.
+	///The map entry is removed iff the reference counter equals zero and there are no more
 	///iterators pointing to this unit.
-	//typedef std::list<unit_pod> t_ilist;
-
-	///Maps of id and location to list iterator.
-	///@note list iterators never invalidate due to resizing or deletion.
 	typedef std::map<size_t, unit_pod> t_umap;
+	///Map of location to umap iterator.
 	typedef boost::unordered_map<map_location, t_umap::iterator> t_lmap;
 
 public:
@@ -234,8 +231,6 @@ public:
 		bool operator==(const iterator_base &rhs) const { return (tank_ == rhs.tank_) && ( i_ == rhs.i_ ); }
 		bool operator!=(const iterator_base &rhs) const { return !operator==(rhs); }
 
-		//		container_type* get_map() const { return tank_; }
-
 		template<typename Y> friend struct iterator_base;
 
 	private:
@@ -252,8 +247,8 @@ public:
 		void inc() { if(valid_ref_count()) { ++(i_->second.ref_count); } }
 
 		///Decrement the reference counter
-		///Delete the list element and the dangling umap reference if the unit is gone and the reference counter is zero
-		///@note this deletion will advance i_ to the next list element.
+		///Delete the umap entry if the unit is gone and the reference counter is zero
+		///@note this deletion will advance i_ to the next umap entry.
 		void dec() {
 			if( valid_ref_count() ){
 				assert(i_->second.ref_count != 0);
@@ -398,11 +393,13 @@ private:
 	t_umap::iterator begin_core() const ;
 
 	bool is_valid(const t_umap::const_iterator &i) const {
-		return is_found(i) && (i->second.unit != NULL); }
+		return is_found(i) && (i->second.unit != NULL);
+	}
 	bool is_valid(const t_lmap::const_iterator &i) const {
-		return is_found(i) && (i->second->second.unit != NULL); }
+		return is_found(i) && (i->second->second.unit != NULL);
+	}
 
-	bool is_found(const t_umap::const_iterator &i) const { return i != umap_.end() ; }
+	bool is_found(const t_umap::const_iterator &i) const { return i != umap_.end(); }
 	bool is_found(const t_lmap::const_iterator &i) const { return i != lmap_.end(); }
 
 	template <typename X>
@@ -416,18 +413,14 @@ private:
 		return const_unit_iterator(i , this);
 	}
 
-	///Finds and deletes the umap_ item associated with @a lit when the underlying_id()
-	///has been changed externally after insertion and before extraction
-	void error_recovery_externally_changed_uid(t_umap::iterator const & uit) const;
-
 	/**
-	 * underlying_id -> ilist::iterator. This requires that underlying_id be
+	 * underlying_id -> unit_pod. This requires that underlying_id be
 	 * unique (which is enforced in unit_map::insert).
 	 */
 	mutable t_umap umap_;
 
 	/**
-	 * location -> ilist::iterator.
+	 * location -> umap::iterator.
 	 */
 	t_lmap lmap_;
 
