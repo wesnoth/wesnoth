@@ -287,17 +287,17 @@ static void jbutton_event_execute(display& disp, const SDL_JoyButtonEvent& event
 static void jhat_event_execute(display& disp, const SDL_JoyHatEvent& event, command_executor* executor);
 static void mbutton_event_execute(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
 
-scope hotkey_item::get_scope() const 
+scope hotkey_item::get_scope() const
 {
 	return hotkey::get_hotkey_command(get_command()).scope;
 }
 
-HOTKEY_COMMAND hotkey_item::get_id() const 
+HOTKEY_COMMAND hotkey_item::get_id() const
 {
 	return hotkey::get_id(get_command());
 }
 
-hotkey_command& hotkey_item::get_hotkey_command() const 
+hotkey_command& hotkey_item::get_hotkey_command() const
 {
 	return hotkey::get_hotkey_command(get_command());
 }
@@ -312,7 +312,7 @@ bool hotkey_item::valid() const
 	return (character_ | keycode_ | joystick_ | mouse_ | button_ | hat_ | value_) != 0;
 }
 
-const std::string hotkey_item::get_description() const 
+const std::string hotkey_item::get_description() const
 {
 	return hotkey::get_description(get_command());
 }
@@ -639,12 +639,12 @@ void save_hotkey(config& cfg, const hotkey_item & item)
 		item.save(cfg.add_child("hotkey"));
 }
 
-const std::string get_description(const std::string& command) 
+const std::string get_description(const std::string& command)
 {
 	return get_hotkey_command(command).description;
 }
 
-const std::string get_tooltip(const std::string& command) 
+const std::string get_tooltip(const std::string& command)
 {
 	// the null hotkey_command has the "" tooltip
 	return get_hotkey_command(command).tooltip;
@@ -689,7 +689,7 @@ hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND co
 		if(cmd.id == command)
 			return cmd;
 	}
-	ERR_G << " \"get_command_by_command\" returned get_hotkey_null() because no hotkey_command had the requested number:" << command; 
+	ERR_G << " \"get_command_by_command\" returned get_hotkey_null() because no hotkey_command had the requested number:" << command;
 	return get_hotkey_null();
 }
 
@@ -805,7 +805,7 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 hotkey_command& get_hotkey_command(const std::string& command)
 {
-	if (command_map_.find(command) == command_map_.end()) 
+	if (command_map_.find(command) == command_map_.end())
 	{
 		return get_hotkey_null();
 	}
@@ -813,7 +813,7 @@ hotkey_command& get_hotkey_command(const std::string& command)
 	return known_hotkeys[command_map_[command]];
 }
 
-HOTKEY_COMMAND get_id(const std::string& command) 
+HOTKEY_COMMAND get_id(const std::string& command)
 {
 	return get_hotkey_command(command).id;
 }

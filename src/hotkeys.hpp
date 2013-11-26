@@ -143,7 +143,7 @@ enum HOTKEY_COMMAND {
 	TITLE_SCREEN__CREDITS,
 	GLOBAL__HELPTIP,
 
-	HOTKEY_WML, 
+	HOTKEY_WML,
 
 	HOTKEY_NULL
 };
@@ -165,7 +165,7 @@ struct input_controll {
 
 
 /// Stores all information related to functions that can be bound to hotkeys.
-/// this is currently a semi struct: it haves a constructor, but only const-public members. 
+/// this is currently a semi struct: it haves a constructor, but only const-public members.
 struct hotkey_command {
 public:
 	/// the compiler want me to make a default constructor
@@ -186,12 +186,12 @@ public:
 	const hotkey::scope scope;
 
 	const t_string tooltip;
-	
+
 	/// checks weather this is the null hotkey_command
 	bool null() const;
 	/// returns the command that is treated as null
 	static hotkey_command& null_command();
-	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command, 
+	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
 	/// to be able to call it with HOTKEY_COMMAND, this function was created
 	static hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
@@ -199,15 +199,15 @@ public:
 /// hotkey_command uses t_string wich might cause bugs when used at progamm startup, so use this for the hotkey_list_ (and only there).
 struct hotkey_command_temp {
 	hotkey::HOTKEY_COMMAND id;
-	
+
 	const char* command;
 	/// description, tooltip are untranslated
 	const char* description;
-	
+
 	bool hidden;
-	
+
 	hotkey::scope scope;
-	
+
 	const char* tooltip;
 };
 
@@ -257,9 +257,9 @@ public:
 	std::string get_name() const;
 
 	void clear();
-	
+
 	bool null() const { return command_  == "null"; };
-	
+
 	/// retruns weather there is a associated hotkey_command.
 	// if the none of the hotkey_commands fits this hotkey_item then get_hotkey_command will return the hotkey_command::null_command().
 	bool active() const;
@@ -370,7 +370,7 @@ bool remove_wml_hotkey(const std::string& id);
 /// returns the hotkey_command that is treated as null.
 hotkey_command& get_hotkey_null();
 
-/// 
+///
 bool has_hotkey_command(const std::string& id);
 /// inicated weather there is at least one hotkey_item with the given command
 bool has_hotkey_item(const std::string& command);
