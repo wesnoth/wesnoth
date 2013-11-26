@@ -218,16 +218,16 @@ std::pair<unit_map::unit_iterator, bool> unit_map::replace(const map_location &l
 size_t unit_map::num_iters() const  {
 	///Add up number of extant iterators
 	size_t num_iters(0);
-    t_umap::const_iterator ui = umap_.begin();
-    t_umap::const_iterator uend = umap_.end();
+	t_umap::const_iterator ui = umap_.begin();
+	t_umap::const_iterator uend = umap_.end();
 	for( ; ui != uend ; ++ui){
 		if(ui->second.ref_count < 0) {
 			//Somewhere, someone generated 2^31 iterators to this unit
 			bool a_reference_counter_overflowed(false);
 			assert(a_reference_counter_overflowed);
-        }
+		}
 		num_iters += ui->second.ref_count;
-    }
+	}
 
 	return num_iters;
 }
