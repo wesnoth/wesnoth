@@ -859,11 +859,13 @@ function battle_calcs.attack_rating(attacker, defender, dst, cfg, cache)
 
     -- Get a very small bonus for hexes in between defender and AI leader
     -- 'relative_distances' is larger for attack hexes closer to the side leader (possible values: -1 .. 1)
-    local relative_distances =
-        H.distance_between(defender.x, defender.y, leader.x, leader.y)
-        - H.distance_between(dst[1], dst[2], leader.x, leader.y)
-    value_fraction = value_fraction + relative_distances * distance_leader_weight
-    --print('  relative_distances:', relative_distances, value_fraction)
+    if leader then
+        local relative_distances =
+            H.distance_between(defender.x, defender.y, leader.x, leader.y)
+            - H.distance_between(dst[1], dst[2], leader.x, leader.y)
+        value_fraction = value_fraction + relative_distances * distance_leader_weight
+        --print('  relative_distances:', relative_distances, value_fraction)
+    end
 
     -- Add a very small penalty for attack hexes occupied by other units
     -- Note: it must be checked previously that the unit on the hex can move away
