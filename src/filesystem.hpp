@@ -89,6 +89,7 @@ std::string get_exe_dir();
 
 bool make_directory(const std::string& dirname);
 bool delete_directory(const std::string& dirname, const bool keep_pbl = false);
+bool delete_file(const std::string &filename);
 
 bool looks_like_pbl(const std::string& file);
 

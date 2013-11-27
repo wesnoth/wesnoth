@@ -346,6 +346,15 @@ bool delete_directory(const std::string& path, const bool keep_pbl)
 	}
 	return ret;
 }
+bool delete_file(const std::string& path)
+{
+	bool ret = true;
+	if(remove(path.c_str()) != 0 && errno != ENOENT) {
+		ERR_FS << "remove(" << path << "): " << strerror(errno) << "\n";
+		ret = false;
+	}
+	return ret;
+}
 
 std::string get_cwd()
 {

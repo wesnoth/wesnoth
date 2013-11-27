@@ -553,6 +553,16 @@ bool delete_directory(const std::string& dirname, const bool keep_pbl)
 	return ret;
 }
 
+bool delete_file(const std::string &filename)
+{
+	error_code ec;
+	bool ret = bfs::remove(path(filename), ec);
+	if (ec) {
+		ERR_FS << "Could not delete file " << filename << ": " << ec.message() << '\n';
+	}
+	return ret;
+}
+
 std::string read_file(const std::string &fname)
 {
 	scoped_istream is = istream_file(fname);
