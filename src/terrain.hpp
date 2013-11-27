@@ -43,6 +43,7 @@ public:
 	//the underlying type of the terrain
 	const t_translation::t_list& mvt_type() const { return mvt_type_; }
 	const t_translation::t_list& def_type() const { return def_type_; }
+	const t_translation::t_list& vision_type() const { return vision_type_; }
 	const t_translation::t_list& union_type() const { return union_type_; }
 
 	bool is_nonnull() const { return  (number_ != t_translation::NONE_TERRAIN) &&
@@ -98,6 +99,7 @@ private:
 	//This is the internal number used, WML still uses character strings.
 	t_translation::t_terrain number_;
 	t_translation::t_list mvt_type_;
+	t_translation::t_list vision_type_;
 	t_translation::t_list def_type_;
 	t_translation::t_list union_type_;
 

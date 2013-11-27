@@ -40,6 +40,7 @@ terrain_type::terrain_type() :
 		description_(),
 		number_(t_translation::VOID_TERRAIN),
 		mvt_type_(1, t_translation::VOID_TERRAIN),
+		vision_type_(1, t_translation::VOID_TERRAIN),
 		def_type_(1, t_translation::VOID_TERRAIN),
 		union_type_(1, t_translation::VOID_TERRAIN),
 		height_adjust_(0),
@@ -75,6 +76,7 @@ terrain_type::terrain_type(const config& cfg) :
 		description_(cfg["description"].t_str()),
 		number_(t_translation::read_terrain_code(cfg["string"])),
 		mvt_type_(),
+		vision_type_(),
 		def_type_(),
 		union_type_(),
 		height_adjust_(cfg["unit_height_adjust"]),
@@ -122,9 +124,12 @@ terrain_type::terrain_type(const config& cfg) :
 
 	mvt_type_.push_back(number_);
 	def_type_.push_back(number_);
+	vision_type_.push_back(number_);
+
 	const t_translation::t_list& alias = t_translation::read_list(cfg["aliasof"]);
 	if(!alias.empty()) {
 		mvt_type_ = alias;
+		vision_type_ = alias;
 		def_type_ = alias;
 	}
 
@@ -137,8 +142,15 @@ terrain_type::terrain_type(const config& cfg) :
 	if(!def_alias.empty()) {
 		def_type_ = def_alias;
 	}
+
+	const t_translation::t_list& vision_alias = t_translation::read_list(cfg["vision_alias"]);
+	if(!def_alias.empty()) {
+		vision_type_ = vision_alias;
+	}
+
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
+	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
@@ -187,6 +199,7 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 	description_(overlay.description()),
 	number_(t_translation::t_terrain(base.number_.base, overlay.number_.overlay)),
 	mvt_type_(overlay.mvt_type_),
+	vision_type_(overlay.vision_type_),
 	def_type_(overlay.def_type_),
 	union_type_(),
 	height_adjust_(base.height_adjust_),
@@ -227,9 +240,11 @@ terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay
 
 	merge_alias_lists(mvt_type_, base.mvt_type_);
 	merge_alias_lists(def_type_, base.def_type_);
+	merge_alias_lists(vision_type_, base.vision_type_);
 
 	union_type_ = mvt_type_;
 	union_type_.insert( union_type_.end(), def_type_.begin(), def_type_.end() );
+	union_type_.insert( union_type_.end(), vision_type_.begin(), vision_type_.end() );
 
 	// remove + and -
 	union_type_.erase(std::remove(union_type_.begin(), union_type_.end(),
