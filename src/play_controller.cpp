@@ -458,6 +458,21 @@ void play_controller::left_mouse_click(){
 	mouse_handler_.mouse_press(event, false);
 }
 
+void play_controller::select_and_action() {
+	mouse_handler_.select_or_action();
+}
+
+void play_controller::move_action(){
+	mouse_handler_.move_action();
+}
+
+void play_controller::deselect_hex(){
+	mouse_handler_.deselect_hex();
+}
+void play_controller::select_hex(){
+	mouse_handler_.select_hex(gui_->mouseover_hex(), true, true, true);
+}
+
 void play_controller::right_mouse_click(){
 	int x = gui_->get_location_x(gui_->mouseover_hex());
 	int y = gui_->get_location_y(gui_->mouseover_hex());
@@ -875,8 +890,10 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_CUSTOM_CMD:
 	case hotkey::HOTKEY_AI_FORMULA:
 	case hotkey::HOTKEY_CLEAR_MSG:
-	case hotkey::HOTKEY_LEFT_MOUSE_CLICK:
-	case hotkey::HOTKEY_RIGHT_MOUSE_CLICK:
+	case hotkey::HOTKEY_SELECT_HEX:
+	case hotkey::HOTKEY_DESELECT_HEX:
+	case hotkey::HOTKEY_MOVE_ACTION:
+	case hotkey::HOTKEY_SELECT_AND_ACTION:
 	case hotkey::HOTKEY_MINIMAP_COLOR_CODING:
 		return true;
 

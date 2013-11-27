@@ -67,8 +67,10 @@ namespace hotkey {
 hotkey_command_temp hotkey_list_[] = {
 
 	{ hotkey::HOTKEY_CANCEL, N_("cancel"), N_("Cancel"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::HOTKEY_LEFT_MOUSE_CLICK, "leftmouseclick", N_("Left Mouse Click"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::HOTKEY_RIGHT_MOUSE_CLICK, "rightmouseclick", N_("Right Mouse Click"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_SELECT_HEX, "selecthex", N_("Select Hex"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_DESELECT_HEX, "deselecthex", N_("Deselect Hex"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_MOVE_ACTION, "moveaction", N_("Move/Attack"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_SELECT_AND_ACTION, "selectmoveaction", N_("Select/Move/Attack"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_ANIMATE_MAP, "animatemap", N_("Animate Map"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_CYCLE_UNITS, "cycle", N_("Next Unit"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_CYCLE_BACK_UNITS, "cycleback", N_("Previous Unit"), false, hotkey::SCOPE_GAME, "" },
@@ -1314,11 +1316,17 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_WB_SUPPOSE_DEAD:
 			whiteboard_suppose_dead();
 			break;
-		case HOTKEY_LEFT_MOUSE_CLICK:
-			left_mouse_click();
+		case HOTKEY_SELECT_HEX:
+			select_hex();
 			break;
-		case HOTKEY_RIGHT_MOUSE_CLICK:
-			right_mouse_click();
+		case HOTKEY_DESELECT_HEX:
+			deselect_hex();
+			break;
+		case HOTKEY_MOVE_ACTION:
+			move_action();
+			break;
+		case HOTKEY_SELECT_AND_ACTION:
+			select_and_action();
 			break;
 		case HOTKEY_ACCELERATED:
 			toggle_accelerated_speed();

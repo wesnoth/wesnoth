@@ -72,7 +72,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
 	HOTKEY_ANIMATE_MAP,
-	HOTKEY_LEFT_MOUSE_CLICK, HOTKEY_RIGHT_MOUSE_CLICK,
+	HOTKEY_SELECT_HEX, HOTKEY_DESELECT_HEX,
+	HOTKEY_MOVE_ACTION, HOTKEY_SELECT_AND_ACTION,
 	HOTKEY_CANCEL, HOTKEY_OKAY,
 
 	// Whiteboard commands
@@ -469,6 +470,10 @@ public:
 	virtual void whiteboard_bump_up_action() {}
 	virtual void whiteboard_bump_down_action() {}
 	virtual void whiteboard_suppose_dead() {}
+	virtual void select_hex() {}
+	virtual void deselect_hex() {}
+	virtual void move_action() {}
+	virtual void select_and_action() {}
 	virtual void left_mouse_click() {}
 	virtual void right_mouse_click() {}
 	virtual void toggle_accelerated_speed() {}

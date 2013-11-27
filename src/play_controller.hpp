@@ -84,6 +84,10 @@ public:
 	virtual void show_statistics();
 	virtual void unit_list();
 	virtual void left_mouse_click();
+	virtual void move_action();
+	virtual void select_and_action();
+	virtual void select_hex();
+	virtual void deselect_hex();
 	virtual void right_mouse_click();
 	virtual void status_table();
 	virtual void save_game();
