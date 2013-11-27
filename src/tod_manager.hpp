@@ -33,7 +33,7 @@ class tod_manager : public savegame::savegame_config
 
 		config to_config() const;
 
-		int get_current_time() const { return currentTime_; }
+		int get_current_time(const map_location& loc = map_location::null_location) const;
 
 		/**
 		 * Returns global time of day for the passed turn.
@@ -111,7 +111,9 @@ class tod_manager : public savegame::savegame_config
 
 		bool has_time_area() const {return !areas_.empty();};
 
-		const std::vector<time_of_day> times() const {return times_;}
+		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location) const;
+
+
 
 		//turn functions
 		int turn() const { return turn_; }

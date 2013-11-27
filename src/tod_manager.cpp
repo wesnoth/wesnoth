@@ -101,6 +101,34 @@ const time_of_day& tod_manager::get_previous_time_of_day() const
 	return get_time_of_day_turn(times_, turn_ - 1, currentTime_);
 }
 
+int tod_manager::get_current_time(const map_location& loc) const
+{
+	if ( loc != map_location::null_location ) {
+		for ( std::vector<area_time_of_day>::const_reverse_iterator
+				i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
+		{
+			if (i->hexes.find(loc) != i->hexes.end())
+				return i->currentTime;
+		}
+	}
+
+	return currentTime_;
+}
+
+const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
+{
+	if ( loc != map_location::null_location ) {
+		for ( std::vector<area_time_of_day>::const_reverse_iterator
+				i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
+		{
+			if (i->hexes.find(loc) != i->hexes.end())
+				return i->times;
+		}
+	}
+
+	return times_;
+}
+
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
 {
 	if(n_turn == 0)
@@ -196,7 +224,7 @@ void tod_manager::replace_schedule(const config& time_cfg)
 {
 	times_.clear();
 	time_of_day::parse_times(time_cfg,times_);
-	currentTime_ = 0;
+	currentTime_ = time_cfg["current_time"].to_int(0);
 }
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
@@ -241,6 +269,7 @@ void tod_manager::add_time_area(const std::string& id, const std::set<map_locati
 	area_time_of_day& area = areas_.back();
 	area.id = id;
 	area.hexes = locs;
+	area.currentTime = time_cfg["current_time"].to_int(0);
 	time_of_day::parse_times(time_cfg, area.times);
 }
 
