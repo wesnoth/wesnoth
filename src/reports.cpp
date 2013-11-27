@@ -1061,16 +1061,23 @@ REPORT_GENERATOR(tod_stats)
 	std::ostringstream tooltip;
 	std::ostringstream text;
 
-	int current = resources::tod_manager->get_current_time();
+	const map_location& selected_hex = resources::screen->selected_hex();
+	const map_location& mouseover_hex = resources::screen->mouseover_hex();
+
+	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : selected_hex;
+
+	const std::vector<time_of_day>& schedule = resources::tod_manager->times(hex);
+
+	int current = resources::tod_manager->get_current_time(hex);
 	int i = 0;
-	BOOST_FOREACH(const time_of_day& tod, resources::tod_manager->times()) {
+	BOOST_FOREACH(const time_of_day& tod, schedule) {
 		if (i == current) tooltip << "<b>";
 		tooltip << tod.name << "\n";
 		if (i == current) tooltip << "</b>";
 		i++;
 	}
 
-	int times = resources::tod_manager->times().size();
+	int times = schedule.size();
 	text << current + 1 << "/" << times;
 
 	return text_report(text.str(), tooltip.str());
@@ -1121,12 +1128,8 @@ static config time_of_day_at(const map_location& mouseover_hex)
 REPORT_GENERATOR(time_of_day)
 {
 	map_location mouseover_hex = resources::screen->mouseover_hex();
-	return time_of_day_at(mouseover_hex);
-}
-REPORT_GENERATOR(selected_time_of_day)
-{
-	map_location selected_hex = resources::screen->selected_hex();
-	return time_of_day_at(selected_hex);
+	if (mouseover_hex.valid()) return time_of_day_at(mouseover_hex);
+	return time_of_day_at(resources::screen->selected_hex());
 }
 
 static config unit_box_at(const map_location& mouseover_hex)
@@ -1409,9 +1412,17 @@ REPORT_GENERATOR(position)
 {
 	const gamemap &map = *resources::game_map;
 	map_location mouseover_hex = resources::screen->mouseover_hex(),
-		displayed_unit_hex = resources::screen->displayed_unit_hex();
-	if (!map.on_board(mouseover_hex))
-		return report();
+		displayed_unit_hex = resources::screen->displayed_unit_hex(),
+		selected_hex = resources::screen->selected_hex();
+
+	if (!map.on_board(mouseover_hex)) {
+		if (!map.on_board(selected_hex))
+			return report();
+		else {
+			mouseover_hex = selected_hex;
+		}
+	}
+
 	t_translation::t_terrain terrain = map[mouseover_hex];
 	if (terrain == t_translation::OFF_MAP_USER)
 		return report();
