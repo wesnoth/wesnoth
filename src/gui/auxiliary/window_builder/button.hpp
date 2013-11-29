@@ -29,6 +29,8 @@ struct tbuilder_button
 public:
 	explicit tbuilder_button(const config& cfg);
 
+	using tbuilder_control::build;
+	
 	twidget* build () const;
 
 private:
