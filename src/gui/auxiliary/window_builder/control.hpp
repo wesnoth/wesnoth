@@ -32,7 +32,7 @@ public:
 
 	using tbuilder_widget::build;
 
-	twidget* build(const treplacements& replacements) const;
+	virtual twidget* build(const treplacements& replacements) const OVERRIDE;
 
 	/** @deprecated The control can initialize itself. */
 	void init_control(tcontrol* control) const;
