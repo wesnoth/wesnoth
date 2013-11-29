@@ -470,7 +470,7 @@ void play_controller::deselect_hex(){
 	mouse_handler_.deselect_hex();
 }
 void play_controller::select_hex(){
-	mouse_handler_.select_hex(gui_->mouseover_hex(), true, true, true);
+	mouse_handler_.select_hex(gui_->mouseover_hex(), false);
 }
 
 void play_controller::right_mouse_click(){
