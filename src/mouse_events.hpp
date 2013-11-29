@@ -132,7 +132,7 @@ private:
 	map_location next_unit_;
 	pathfind::marked_route current_route_;
 	pathfind::paths current_paths_;
-	bool enemy_paths_;
+	bool unselected_paths_;
 	int path_turns_;
 	int side_num_;
 

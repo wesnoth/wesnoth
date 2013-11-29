@@ -65,7 +65,7 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	next_unit_(),
 	current_route_(),
 	current_paths_(),
-	enemy_paths_(false),
+	unselected_paths_(false),
 	path_turns_(0),
 	side_num_(1),
 	over_route_(false),
@@ -149,8 +149,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			resources::whiteboard->erase_temp_move();
 		}
 
-		if(enemy_paths_) {
-			enemy_paths_ = false;
+		if(unselected_paths_) {
+			unselected_paths_ = false;
 			current_paths_ = pathfind::paths();
 			gui().unhighlight_reach();
 		} else if(over_route_) {
@@ -281,20 +281,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			!gui().fogged(un->get_location()))
 		{
 			if (un->side() != side_num_) {
-				//unit under cursor is not on our team, highlight reach
+				//unit under cursor is not on our team
 				//Note: planned unit map must be activated after this is done,
 				//since the future state includes changes to units' movement.
 				unit_movement_resetter move_reset(*un);
-
-
-				{ // start planned unit map scope
-					wb::future_map_if_active raii;
-					current_paths_ = pathfind::paths(*un, false, true,
-					                                 viewing_team(), path_turns_);
-				} // end planned unit map scope
-
-				gui().highlight_reach(current_paths_);
-				enemy_paths_ = true;
 			} else {
 				//unit is on our team, show path if the unit has one
 				const map_location go_to = un->get_goto();
@@ -308,6 +298,15 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				}
 				over_route_ = true;
 			}
+
+			{ // start planned unit map scope
+				wb::future_map_if_active raii;
+				current_paths_ = pathfind::paths(*un, false, true,
+						viewing_team(), path_turns_);
+			} // end planned unit map scope
+
+			unselected_paths_ = true;
+			gui().highlight_reach(current_paths_);
 		}
 	}
 }
@@ -654,7 +653,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		}
 		// the highlight now comes from selection
 		// and not from the mouseover on an enemy
-		enemy_paths_ = false;
+		unselected_paths_ = false;
 		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
