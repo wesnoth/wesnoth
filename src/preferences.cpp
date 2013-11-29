@@ -679,6 +679,26 @@ bool minimap_movement_coding()
 	return preferences::get("minimap_movement_coding", false);
 }
 
+bool minimap_draw_units()
+{
+	return preferences::get("minimap_draw_units", true);
+}
+
+void toggle_minimap_draw_units()
+{
+	set("minimap_draw_units", !minimap_draw_units());
+}
+
+bool minimap_draw_villages()
+{
+	return preferences::get("minimap_draw_villages", false);
+}
+
+void toggle_minimap_draw_villages()
+{
+	set("minimap_draw_villages", !minimap_draw_villages());
+}
+
 void toggle_minimap_color_coding()
 {
 	set("minimap_movement_coding", !minimap_movement_coding());

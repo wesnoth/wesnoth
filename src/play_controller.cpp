@@ -895,6 +895,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_MOVE_ACTION:
 	case hotkey::HOTKEY_SELECT_AND_ACTION:
 	case hotkey::HOTKEY_MINIMAP_COLOR_CODING:
+	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
 		return true;
 
 	// Commands that have some preconditions:

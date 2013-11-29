@@ -182,6 +182,12 @@ namespace preferences {
 	bool minimap_movement_coding();
 	void toggle_minimap_color_coding();
 
+	bool minimap_draw_units();
+	void toggle_minimap_draw_units();
+
+	bool minimap_draw_villages();
+	void toggle_minimap_draw_villages();
+
 	bool show_standing_animations();
 	void set_show_standing_animations(bool value);
 

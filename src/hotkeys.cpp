@@ -188,6 +188,8 @@ hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_MINIMAP_COLOR_CODING, "minimap-color-coding", N_("Toggle Minimap color coding"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_DRAW_UNITS, "minimap-draw-units", N_("Toggle Minimap unit drawing"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES, "minimap-draw-villages", N_("Toggle Minimap village drawing"), false, hotkey::SCOPE_GENERAL, "" },
 
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_DEFAULT, "editor-brush-default", N_("Default Brush"), false, hotkey::SCOPE_EDITOR, "" },
@@ -1349,9 +1351,17 @@ void execute_command(display& disp, hotkey_command& command, command_executor* e
 		}
 	}
 	switch (command.id) {
+		case HOTKEY_MINIMAP_DRAW_UNITS:
+			preferences::toggle_minimap_draw_units();
+			disp.redraw_minimap();
+			break;
 		case HOTKEY_MINIMAP_COLOR_CODING:
 			preferences::toggle_minimap_color_coding();
 			disp.redraw_minimap();
+			break;
+		case HOTKEY_MINIMAP_DRAW_VILLAGES:
+			preferences::toggle_minimap_draw_villages();
+			disp.recalculate_minimap();
 			break;
 		case HOTKEY_ZOOM_IN:
 			disp.set_zoom(zoom_amount);

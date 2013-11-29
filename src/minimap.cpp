@@ -27,6 +27,8 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
+#include "preferences.hpp"
+
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
 #define WRN_DP LOG_STREAM(warn, log_display)
@@ -130,6 +132,26 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - 1
 						, 0
 						, 0);
+
+				if (preferences::minimap_draw_villages()) {
+					if (terrain_info.is_village()) {
+						int side = village_owner(loc);
+						if (side >= 0) {
+							if (!surf.null()) {
+								SDL_Color col = team::get_minimap_color(side + 1);
+
+								surface temp = create_neutral_surface(surf->h, surf->w);
+
+								if (!temp.null()) {
+									const Uint32 mapped_col = SDL_MapRGB(surf->format,col.r,col.g,col.b);
+									sdl_fill_rect(temp, NULL, mapped_col);
+
+									blit_surface(temp, NULL, surf, NULL);
+								}
+							}
+						}
+					}
+				}
 
 				if(surf != NULL)
 					sdl_blit(surf, NULL, minimap, &maprect);

@@ -1851,6 +1851,8 @@ void display::draw_minimap()
 
 void display::draw_minimap_units()
 {
+	if (!preferences::minimap_draw_units()) return;
+
 	double xscaling = 1.0 * minimap_location_.w / get_map().w();
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
