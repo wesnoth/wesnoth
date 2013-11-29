@@ -455,7 +455,7 @@ void mouse_handler::select_or_action()
 {
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	if (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
-		select_hex(last_hex_, true);
+		select_hex(last_hex_, false);
 	else
 		move_action();
 }
