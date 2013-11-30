@@ -912,7 +912,7 @@ void display::create_buttons()
 
 		if (!i->is_button()) continue;
 
-		gui::button b(screen_, i->title(), gui::button::TYPE_TURBO, i->image(),
+		gui::button b(screen_, i->title(), gui::button::TYPE_PRESS, i->image(),
 				gui::button::DEFAULT_SPACE, true, i->overlay());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
