@@ -77,6 +77,8 @@ public:
 
 	void select_or_action();
 
+	void left_mouse_up(int x, int y, const bool /*browse*/);
+
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the

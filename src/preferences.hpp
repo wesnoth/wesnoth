@@ -180,13 +180,19 @@ namespace preferences {
 	void set_animate_map(bool value);
 
 	bool minimap_movement_coding();
-	void toggle_minimap_color_coding();
+	void toggle_minimap_movement_coding();
+
+	bool minimap_terrain_coding();
+	void toggle_minimap_terrain_coding();
 
 	bool minimap_draw_units();
 	void toggle_minimap_draw_units();
 
 	bool minimap_draw_villages();
 	void toggle_minimap_draw_villages();
+
+	bool minimap_draw_terrain();
+	void toggle_minimap_draw_terrain();
 
 	bool show_standing_animations();
 	void set_show_standing_animations(bool value);

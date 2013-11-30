@@ -676,7 +676,22 @@ bool animate_map()
 
 bool minimap_movement_coding()
 {
-	return preferences::get("minimap_movement_coding", false);
+	return preferences::get("minimap_movement_coding", true);
+}
+
+void toggle_minimap_movement_coding()
+{
+	set("minimap_movement_coding", !minimap_movement_coding());
+}
+
+bool minimap_terrain_coding()
+{
+	return preferences::get("minimap_terrain_coding", true);
+}
+
+void toggle_minimap_terrain_coding()
+{
+	set("minimap_terrain_coding", !minimap_terrain_coding());
 }
 
 bool minimap_draw_units()
@@ -691,7 +706,7 @@ void toggle_minimap_draw_units()
 
 bool minimap_draw_villages()
 {
-	return preferences::get("minimap_draw_villages", false);
+	return preferences::get("minimap_draw_villages", true);
 }
 
 void toggle_minimap_draw_villages()
@@ -699,9 +714,14 @@ void toggle_minimap_draw_villages()
 	set("minimap_draw_villages", !minimap_draw_villages());
 }
 
-void toggle_minimap_color_coding()
+bool minimap_draw_terrain()
 {
-	set("minimap_movement_coding", !minimap_movement_coding());
+	return preferences::get("minimap_draw_terrain", true);
+}
+
+void toggle_minimap_draw_terrain()
+{
+	set("minimap_draw_terrain", !minimap_draw_terrain());
 }
 
 void set_animate_map(bool value)

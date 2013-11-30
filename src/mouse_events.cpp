@@ -451,10 +451,19 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 			point_in_rect(x, y, gui().map_area()) );
 }
 
+void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
 void mouse_handler::select_or_action()
 {
 	unit_map::iterator clicked_u = find_unit(last_hex_);
-	if (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
+	if ( (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
+			|| selected_unit() == resources::units->end())
 		select_hex(last_hex_, false);
 	else
 		move_action();

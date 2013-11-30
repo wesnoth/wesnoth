@@ -894,8 +894,11 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_DESELECT_HEX:
 	case hotkey::HOTKEY_MOVE_ACTION:
 	case hotkey::HOTKEY_SELECT_AND_ACTION:
-	case hotkey::HOTKEY_MINIMAP_COLOR_CODING:
+	case hotkey::HOTKEY_MINIMAP_TERRAIN_CODING:
+	case hotkey::HOTKEY_MINIMAP_UNIT_CODING:
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
+	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
+	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return true;
 
 	// Commands that have some preconditions:
@@ -1308,6 +1311,19 @@ std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, in
 hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
 	switch(command) {
+
+	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
+		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_UNIT_CODING:
+		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_TERRAIN_CODING:
+		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
+		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
+		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_ZOOM_DEFAULT:
+		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
 		return teams_[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:

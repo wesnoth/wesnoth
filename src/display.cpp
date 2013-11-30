@@ -1870,25 +1870,20 @@ void display::draw_minimap_units()
 		if (preferences::minimap_movement_coding()) {
 
 			if ((*teams_)[currentTeam_].is_enemy(side)) {
-				col = team::get_minimap_color(5);
+				col = int_to_color(game_config::color_info(game_config::images::enemy_orb_color).rep());
 			} else {
 
 				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
-					if (u->movement_left() == u->total_movement()) {
-						col = team::get_minimap_color(3);
-					} else {
+					if (u->movement_left() == u->total_movement())
+						col = int_to_color(game_config::color_info(game_config::images::unmoved_orb_color).rep());
+					else if (u->movement_left() == 0)
+						col = int_to_color(game_config::color_info(game_config::images::moved_orb_color).rep());
+					else
+						col = int_to_color(game_config::color_info(game_config::images::partmoved_orb_color).rep());
 
-						if (u->movement_left() == 0) {
-							col = team::get_minimap_color(1);
-						} else {
-							col = team::get_minimap_color(7);
-						}
-					}
-
-				} else {
-					col = team::get_minimap_color(2);
-				}
+				} else
+					col = int_to_color(game_config::color_info(game_config::images::ally_orb_color).rep());
 			}
 		}
 
