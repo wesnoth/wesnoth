@@ -461,6 +461,9 @@ void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 
 void mouse_handler::select_or_action()
 {
+	if (!resources::game_map->on_board(last_hex_))
+		return;
+
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	if ( (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
 			|| selected_unit() == resources::units->end())
