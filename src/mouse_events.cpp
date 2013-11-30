@@ -465,8 +465,10 @@ void mouse_handler::select_or_action()
 		return;
 
 	unit_map::iterator clicked_u = find_unit(last_hex_);
+	unit_map::iterator selected_u = find_unit(selected_hex_);
 	if ( (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
-			|| selected_unit() == resources::units->end())
+			|| ((selected_u == resources::units->end()) && (clicked_u != resources::units->end()))
+			|| ((selected_u != resources::units->end() && selected_u->side() != side_num_ && clicked_u != resources::units->end())) )
 		select_hex(last_hex_, false);
 	else
 		move_action();
@@ -712,7 +714,8 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		}
 		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
-		gui_->unhighlight_reach();
+		if (units_.find(last_hex_) == units_.end())
+			gui_->unhighlight_reach();
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
 
