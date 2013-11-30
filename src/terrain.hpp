@@ -32,6 +32,7 @@ public:
 	const t_string& name() const { return name_; }
 	const t_string& editor_name() const { return editor_name_.empty() ? description() : editor_name_; }
 	const t_string& description() const { return description_.empty() ? name_ : description_; }
+	const t_string& help_topic_text() const { return help_topic_text_; }
 	const std::string& id() const { return id_; }
 
 	bool hide_help() const { return hide_help_; }
@@ -92,6 +93,7 @@ private:
 	t_string name_;
 	t_string editor_name_;
 	t_string description_;
+	t_string help_topic_text_;
 
 	//the 'number' is the number that represents this
 	//terrain type. The 'type' is a list of the 'underlying types'

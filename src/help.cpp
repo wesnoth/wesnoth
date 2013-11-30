@@ -1311,7 +1311,7 @@ public:
 
 		ss << "<img>src='" << type_.editor_image() << "'</img> ";
 
-		ss << type_.description().str() << "\n";
+		ss << type_.help_topic_text().str() << "\n";
 
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
