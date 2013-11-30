@@ -1359,8 +1359,12 @@ REPORT_GENERATOR(terrain_info)
 	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
 	BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
+		if (underlying_terrain == t_translation::OFF_MAP_USER)
+			continue;
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
 		const std::string& terrain_icon = map.get_terrain_info(underlying_terrain).icon_image();
+		if (terrain_icon.empty())
+			continue;
 		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res);
 	}
 	return cfg;
