@@ -274,19 +274,20 @@ void slider::handle_event(const SDL_Event& event)
 		if (!mouse_locked())
 			mouse_motion(event.motion);
 		break;
-	case SDL_KEYDOWN:
-		if(focus(&event)) {
-			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
-			const int c = key.sym;
-			if(c == SDLK_LEFT) {
-				sound::play_UI_sound(game_config::sounds::slider_adjust);
-				set_value(value_ - increment_);
-			} else if(c == SDLK_RIGHT) {
-				sound::play_UI_sound(game_config::sounds::slider_adjust);
-				set_value(value_ + increment_);
-			}
-		}
-		break;
+		//TODO enable if you know how to fix the zoom slider bug
+//	case SDL_KEYDOWN:
+//		if(focus(&event)) {
+//			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+//			const int c = key.sym;
+//			if(c == SDLK_LEFT) {
+//				sound::play_UI_sound(game_config::sounds::slider_adjust);
+//				set_value(value_ - increment_);
+//			} else if(c == SDLK_RIGHT) {
+//				sound::play_UI_sound(game_config::sounds::slider_adjust);
+//				set_value(value_ + increment_);
+//			}
+//		}
+//		break;
 	default:
 		return;
 	}
