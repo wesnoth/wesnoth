@@ -268,7 +268,7 @@
 		B552D92F108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
 		B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B553B6BB12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
-		B559986C0EC616B3008DD061 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.m */; };
+		B559986C0EC616B3008DD061 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		B55998F80EC61EA5008DD061 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55998F70EC61EA5008DD061 /* SDL.framework */; };
 		B55999250EC61F59008DD061 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999220EC61F59008DD061 /* SDL_image.framework */; };
 		B55999260EC61F59008DD061 /* SDL_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999230EC61F59008DD061 /* SDL_net.framework */; };
@@ -4904,6 +4904,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-isystem",
+					./Headers,
+				);
 				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
 				SDKROOT = "";
@@ -4948,6 +4953,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-isystem",
+					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = macosx;
