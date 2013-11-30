@@ -147,20 +147,27 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 
 				} else {
 
+					SDL_Color col;
+					bool first = true;
 					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
 					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
 						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
-						SDL_Color col = fogged ? int_to_color(game_config::team_rgb_range.find(terrain_id)->second.min()) :
+						SDL_Color tmp = fogged ? int_to_color(game_config::team_rgb_range.find(terrain_id)->second.min()) :
 								int_to_color(game_config::team_rgb_range.find(terrain_id)->second.mid());
 
-						SDL_Rect fillrect = create_rect(maprect.x, maprect.y, scale, scale);
-
-						const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-						sdl_fill_rect(minimap, &fillrect, mapped_col);
-
-						break;
+						if (first) {
+							first = false;
+							col = tmp;
+						} else {
+							col.r = col.r - (col.r - tmp.r)/2;
+							col.g = col.g - (col.g - tmp.g)/2;
+							col.b = col.b - (col.b - tmp.b)/2;
+						}
 					}
+					SDL_Rect fillrect = create_rect(maprect.x, maprect.y, scale, scale);
+					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
+					sdl_fill_rect(minimap, &fillrect, mapped_col);
 				}
 			}
 

@@ -26,6 +26,7 @@ public:
 	terrain_type(const config& cfg);
 	terrain_type(const terrain_type& base, const terrain_type& overlay);
 
+	const std::string& icon_image() const { return icon_image_; }
 	const std::string& minimap_image() const { return minimap_image_; }
 	const std::string& minimap_image_overlay() const { return minimap_image_overlay_; }
 	const std::string& editor_image() const { return editor_image_; }
@@ -80,6 +81,10 @@ public:
 
 	bool operator==(const terrain_type& other) const;
 private:
+
+	/** The image used as symbol icon */
+	std::string icon_image_;
+
 	/** The image used in the minimap */
 	std::string minimap_image_;
 	std::string minimap_image_overlay_;

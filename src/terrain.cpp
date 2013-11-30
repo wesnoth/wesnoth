@@ -68,6 +68,7 @@ terrain_type::terrain_type() :
 {}
 
 terrain_type::terrain_type(const config& cfg) :
+		icon_image_(cfg["icon_image"]),
 		minimap_image_(cfg["symbol_image"]),
 		minimap_image_overlay_(),
 		editor_image_(cfg["editor_image"].empty() ? "terrain/" + minimap_image_ + ".png" : "terrain/" + cfg["editor_image"].str() + ".png"),
@@ -192,6 +193,7 @@ terrain_type::terrain_type(const config& cfg) :
 }
 
 terrain_type::terrain_type(const terrain_type& base, const terrain_type& overlay) :
+	icon_image_(),
 	minimap_image_(base.minimap_image_),
 	minimap_image_overlay_(overlay.minimap_image_),
 	editor_image_(base.editor_image_ + "~BLIT(" + overlay.editor_image_ +")"),

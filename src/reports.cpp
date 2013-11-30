@@ -1317,9 +1317,9 @@ REPORT_GENERATOR(income)
 }
 
 namespace {
-void blit_tced_icon(config &cfg, const std::string &terrain_id, bool high_res) {
+void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::string &icon_image, bool high_res) {
 	const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
-	const std::string terrain_image = "icons/terrain/terrain_type_" + terrain_id + (high_res ? "_30.png" : ".png");
+	const std::string terrain_image = "terrain/" + icon_image + (high_res ? "_30.png" : ".png");
 	add_image(cfg, tc_base + "~RC(magenta>" + terrain_id + ")~BLIT(" + terrain_image + ")", terrain_id);
 }
 }
@@ -1328,6 +1328,12 @@ REPORT_GENERATOR(terrain_info)
 {
 	const gamemap &map = *resources::game_map;
 	map_location mouseover_hex = display::get_singleton()->mouseover_hex();
+
+	if (!map.on_board(mouseover_hex))
+		mouseover_hex = display::get_singleton()->selected_hex();
+
+	if (!map.on_board(mouseover_hex))
+		return report();
 
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 	if (terrain == t_translation::OFF_MAP_USER)
@@ -1339,22 +1345,23 @@ REPORT_GENERATOR(terrain_info)
 	bool high_res = false;
 
 	if (display::get_singleton()->shrouded(mouseover_hex)) {
-		blit_tced_icon(cfg, "shroud", high_res);
 		return cfg;
 	}
-	if (display::get_singleton()->fogged(mouseover_hex)) {
-		blit_tced_icon(cfg, "fog", high_res);
-	}
-
-	if (map.is_keep(mouseover_hex)) {
-		blit_tced_icon(cfg, "keep", high_res);
-	}
+	//TODO
+//	if (display::get_singleton()->fogged(mouseover_hex)) {
+//		blit_tced_icon(cfg, "fog", high_res);
+//	}
+//
+//	if (map.is_keep(mouseover_hex)) {
+//		blit_tced_icon(cfg, "keep", high_res);
+//	}
 
 	const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
 	BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
 		const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
-		blit_tced_icon(cfg, terrain_id, high_res);
+		const std::string& terrain_icon = map.get_terrain_info(underlying_terrain).icon_image();
+		blit_tced_icon(cfg, terrain_id, terrain_icon, high_res);
 	}
 	return cfg;
 }

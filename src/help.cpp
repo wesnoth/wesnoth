@@ -1309,7 +1309,12 @@ public:
 
 		std::stringstream ss;
 
-		ss << "<img>src='" << type_.editor_image() << "'</img> ";
+		if (!type_.icon_image().empty())
+		ss << "<img>src='images/buttons/icon-base-32.png~RC(magenta>" << type_.id()
+				<< ")~BLIT("<< "terrain/" << type_.icon_image() << "_30.png)" << "'</img> ";
+
+		if (!type_.editor_image().empty())
+			ss << "<img>src='" << type_.editor_image() << "'</img> ";
 
 		ss << type_.help_topic_text().str() << "\n";
 
