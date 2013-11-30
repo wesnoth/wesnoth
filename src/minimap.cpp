@@ -165,7 +165,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 							col.b = col.b - (col.b - tmp.b)/2;
 						}
 					}
-					SDL_Rect fillrect = create_rect(maprect.x, maprect.y, scale, scale);
+					SDL_Rect fillrect = create_rect(maprect.x, maprect.y, scale * 3/4, scale);
 					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
 					sdl_fill_rect(minimap, &fillrect, mapped_col);
 				}
