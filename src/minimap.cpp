@@ -175,26 +175,26 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 
 				int side = village_owner(loc);
 
-				SDL_Color col;
+				SDL_Color col = int_to_color(game_config::team_rgb_range.find("white")->second.min());
 
-				if (fogged)
-					col = int_to_color(game_config::team_rgb_range.find("white")->second.min());
-				else if (side > -1) {
+				if (!fogged) {
+					if (side > -1) {
 
-					if (!preferences::minimap_movement_coding()) {
-						col = team::get_minimap_color(side + 1);
-					} else {
+						if (!preferences::minimap_movement_coding()) {
+							col = team::get_minimap_color(side + 1);
+						} else {
 
-						if (vw->owns_village(loc))
-							col = int_to_color(game_config::color_info(game_config::images::unmoved_orb_color).rep());
-						else if (vw->is_enemy(side + 1))
-							col = int_to_color(game_config::color_info(game_config::images::enemy_orb_color).rep());
-						else
-							col = int_to_color(game_config::color_info(game_config::images::ally_orb_color).rep());
-					}
+							if (vw->owns_village(loc))
+								col = int_to_color(game_config::color_info(game_config::images::unmoved_orb_color).rep());
+							else if (vw->is_enemy(side + 1))
+								col = int_to_color(game_config::color_info(game_config::images::enemy_orb_color).rep());
+							else
+								col = int_to_color(game_config::color_info(game_config::images::ally_orb_color).rep());
+						}
 
-				} else
-					col = int_to_color(game_config::team_rgb_range.find("white")->second.mid());
+					} else
+						col = int_to_color(game_config::team_rgb_range.find("white")->second.mid());
+				}
 
 				SDL_Rect fillrect = create_rect(
 						maprect.x +2
