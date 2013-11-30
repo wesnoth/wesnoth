@@ -170,7 +170,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 
 				SDL_Color col;
 
-				if (side > -1) {
+				if (fogged)
+					col = int_to_color(game_config::team_rgb_range.find("white")->second.min());
+				else if (side > -1) {
 
 					if (!preferences::minimap_movement_coding()) {
 						col = team::get_minimap_color(side + 1);
