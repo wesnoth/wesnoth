@@ -26,6 +26,8 @@ struct tbuilder_toggle_panel
 {
 	explicit tbuilder_toggle_panel(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	tbuilder_grid_ptr grid;

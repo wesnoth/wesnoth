@@ -27,6 +27,8 @@ struct tbuilder_progress_bar
 
 	explicit tbuilder_progress_bar(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 };
 

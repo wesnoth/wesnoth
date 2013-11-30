@@ -28,6 +28,8 @@ struct tbuilder_scrollbar_panel
 {
 	explicit tbuilder_scrollbar_panel(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;

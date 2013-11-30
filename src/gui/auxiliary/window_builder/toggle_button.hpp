@@ -26,6 +26,8 @@ struct tbuilder_toggle_button
 {
 	explicit tbuilder_toggle_button(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 private:

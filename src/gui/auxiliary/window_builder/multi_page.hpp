@@ -32,6 +32,8 @@ struct tbuilder_multi_page
 {
 	explicit tbuilder_multi_page(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	tbuilder_grid_ptr builder;

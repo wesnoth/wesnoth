@@ -26,6 +26,8 @@ struct tbuilder_minimap
 {
 	explicit tbuilder_minimap(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 };
 

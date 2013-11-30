@@ -28,6 +28,8 @@ struct tbuilder_stacked_widget
 {
 	explicit tbuilder_stacked_widget(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	/** The builders for all layers of the stack .*/

@@ -27,6 +27,8 @@ struct tbuilder_repeating_button
 public:
 	explicit tbuilder_repeating_button(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 };
 

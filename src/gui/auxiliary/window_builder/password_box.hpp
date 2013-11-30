@@ -29,6 +29,8 @@ struct tbuilder_password_box
 public:
 	explicit tbuilder_password_box(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 private:

@@ -26,6 +26,8 @@ struct tbuilder_horizontal_scrollbar
 {
 	explicit tbuilder_horizontal_scrollbar(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 };
 

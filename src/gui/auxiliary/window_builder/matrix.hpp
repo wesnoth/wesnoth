@@ -29,6 +29,8 @@ struct tbuilder_matrix
 {
 	explicit tbuilder_matrix(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;

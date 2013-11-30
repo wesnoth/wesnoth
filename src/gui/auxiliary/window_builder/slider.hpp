@@ -30,6 +30,8 @@ struct tbuilder_slider
 {
 	explicit tbuilder_slider(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 private:

@@ -27,6 +27,8 @@ struct tbuilder_text_box
 public:
 	explicit tbuilder_text_box(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	std::string history;

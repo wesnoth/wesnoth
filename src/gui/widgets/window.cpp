@@ -67,6 +67,8 @@ public:
 	{
 	}
 
+	using tbuilder_control::build;
+
 	twidget* build() const { return NULL; }
 };
 

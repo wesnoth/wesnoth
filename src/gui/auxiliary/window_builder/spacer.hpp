@@ -26,6 +26,8 @@ struct tbuilder_spacer
 {
 	explicit tbuilder_spacer(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 private:

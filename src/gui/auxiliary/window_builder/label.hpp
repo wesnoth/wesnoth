@@ -28,6 +28,8 @@ struct tbuilder_label
 {
 	tbuilder_label(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	bool wrap;

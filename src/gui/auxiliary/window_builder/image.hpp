@@ -26,6 +26,8 @@ struct tbuilder_image
 {
 	explicit tbuilder_image(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 };
 

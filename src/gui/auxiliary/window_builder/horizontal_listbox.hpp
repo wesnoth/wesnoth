@@ -28,6 +28,8 @@ struct tbuilder_horizontal_listbox
 {
 	explicit tbuilder_horizontal_listbox(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;

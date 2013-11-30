@@ -27,6 +27,8 @@ struct tbuilder_drawing
 {
 	explicit tbuilder_drawing(const config& cfg);
 
+	using tbuilder_control::build;
+
 	twidget* build () const;
 
 	/** The width of the widget. */
