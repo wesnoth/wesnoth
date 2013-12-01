@@ -206,7 +206,7 @@ void tcustom_tod::update_tod_display(twindow& window)
 	// invalidate all tiles so they are redrawn with the new ToD tint next
 	display_->invalidate_all();
 	// redraw tiles
-	display_->draw();
+	display_->draw(false);
 
 	window.invalidate_layout();
 }
