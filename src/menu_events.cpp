@@ -2609,8 +2609,8 @@ void menu_handler::do_search(const std::string& new_search)
 		//Not found, inform the player
 		utils::string_map symbols;
 		symbols["search"] = last_search_;
-		const std::string msg = vgettext("Couldn't find label or unit "
-				"containing the string '$search'.", symbols);
+		const std::string msg = vgettext("Could not find label or unit "
+				"containing the string ‘$search’.", symbols);
 		gui2::show_message(gui_->video(), "", msg, gui2::tmessage::auto_close);
 	}
 }
