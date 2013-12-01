@@ -2611,7 +2611,7 @@ void menu_handler::do_search(const std::string& new_search)
 		symbols["search"] = last_search_;
 		const std::string msg = vgettext("Couldn't find label or unit "
 				"containing the string '$search'.", symbols);
-		gui::dialog(*gui_,"",msg).show();
+		gui2::show_message(gui_->video(), "", msg, gui2::tmessage::auto_close);
 	}
 }
 
