@@ -158,6 +158,7 @@ private:
 	/***** Handlers *****/
 
 	/** Fires a draw event. */
+	using events::handler::draw;
 	void draw(const bool force);
 
 	/**
