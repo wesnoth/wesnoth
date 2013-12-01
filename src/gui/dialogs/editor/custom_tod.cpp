@@ -209,7 +209,6 @@ void tcustom_tod::update_tod_display(twindow& window)
 	display_->draw();
 
 	window.invalidate_layout();
-	window.draw();
 }
 
 void tcustom_tod::update_lawful_bonus(twindow& window)
