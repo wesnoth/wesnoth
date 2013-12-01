@@ -181,7 +181,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 				if (!fogged) {
 					if (side > -1) {
 
-						if (!preferences::minimap_movement_coding()) {
+						if (!preferences::minimap_movement_coding() || !vw ) {
 							col = team::get_minimap_color(side + 1);
 						} else {
 
@@ -192,9 +192,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 							else
 								col = int_to_color(game_config::color_info(game_config::images::ally_orb_color).rep());
 						}
-
-					} else
-						col = int_to_color(game_config::team_rgb_range.find("white")->second.mid());
+					}
 				}
 
 				SDL_Rect fillrect = create_rect(
