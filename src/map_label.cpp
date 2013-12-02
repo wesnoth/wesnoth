@@ -154,7 +154,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if(text.str().empty())
 		{
 			current_label->second->set_text("");
-			res = new terrain_label("",team_name,loc,*this,color,visible_in_fog,visible_in_shroud,immutable);
+			res = NULL;
 			delete current_label->second;
 			current_label_map->second.erase(loc);
 
