@@ -149,14 +149,12 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 }
 
 std::string del_tags(const std::string& text){
-	int ignore_int;
-	SDL_Color ignore_color;
 	std::vector<std::string> lines = utils::split(text, '\n', 0);
 	std::vector<std::string>::iterator line;
 	for(line = lines.begin(); line != lines.end(); ++line) {
 		std::string::const_iterator i1 = line->begin(),
 			i2 = line->end();
-		*line = std::string(parse_markup(i1,i2,&ignore_int,&ignore_color,&ignore_int),i2);
+		*line = std::string(parse_markup(i1,i2,NULL,NULL,NULL),i2);
 	}
 	return utils::join(lines, "\n");
 }
