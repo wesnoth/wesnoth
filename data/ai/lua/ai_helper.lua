@@ -82,8 +82,13 @@ function ai_helper.put_labels(map, cfg)
             if cfg.keys then
                 for i,k in ipairs(cfg.keys) do data = data[k] end
             end
-            out = tonumber(data) or 'nan'
+            if (type(data) == 'string') then
+                out = data
+            else
+                out = tonumber(data) or 'nan'
+            end
         end
+
         if (type(out) == 'number') then out = out * factor end
         W.label { x = x, y = y, text = out }
     end)
