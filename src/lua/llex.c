@@ -72,7 +72,7 @@ void luaX_init (lua_State *L) {
 
 
 const char *luaX_token2str (LexState *ls, int token) {
-  if (token < FIRST_RESERVED) {
+  if (token < FIRST_RESERVED - 1) {
     lua_assert(token == cast(unsigned char, token));
     return (lisprint(token)) ? luaO_pushfstring(ls->L, LUA_QL("%c"), token) :
                               luaO_pushfstring(ls->L, "char(%d)", token);
