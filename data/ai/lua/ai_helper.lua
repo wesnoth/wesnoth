@@ -82,8 +82,13 @@ function ai_helper.put_labels(map, cfg)
             if cfg.keys then
                 for i,k in ipairs(cfg.keys) do data = data[k] end
             end
-            out = tonumber(data) or 'nan'
+            if (type(data) == 'string') then
+                out = data
+            else
+                out = tonumber(data) or 'nan'
+            end
         end
+
         if (type(out) == 'number') then out = out * factor end
         W.label { x = x, y = y, text = out }
     end)
@@ -264,6 +269,63 @@ function ai_helper.LS_random_hex(set)
 end
 
 --------- Location, position or hex related helper functions ----------
+
+function ai_helper.cartesian_coords(x, y)
+    -- Converts coordinates from hex geometry to cartesian coordinates,
+    -- meaning that y coordinates are offset by 0.5 every other hex
+    -- Example: (1,1) stays (1,1) and (3,1) remains (3,1), but (2,1) -> (2,1.5) etc.
+    return x, y + ((x + 1) % 2) / 2.
+end
+
+function ai_helper.get_angle(from_hex, to_hex)
+    -- Returns the angle of the direction from 'from_hex' to 'to_hex'
+    -- Angle is in radians and goes from -pi to pi.  0 is toward east.
+    -- Input hex tables can be of form { x, y } or { x = x, y = y }, which
+    -- means that it is also possible to pass a unit table
+    local x1, y1 = from_hex.x or from_hex[1], from_hex.y or from_hex[2]
+    local x2, y2 = to_hex.x or to_hex[1], to_hex.y or to_hex[2]
+
+    local _, y1cart =  ai_helper.cartesian_coords(x1, y1)
+    local _, y2cart =  ai_helper.cartesian_coords(x2, y2)
+
+    return math.atan2(y2cart - y1cart, x2 - x1)
+end
+
+function ai_helper.get_direction_index(from_hex, to_hex, n, center_on_east)
+    -- Returns an integer index for the direction from 'from_hex' to 'to_hex'
+    -- with the full circle divided into 'n' slices
+    -- 1 is always to the east, with indices increasing clockwise
+    -- Input hex tables can be of form { x, y } or { x = x, y = y }, which
+    -- means that it is also possible to pass a unit table
+    --
+    -- Optional input:
+    -- center_on_east (false): boolean.  By default, the eastern direction is the
+    -- northern border of the first slice.  If this parameter is set, east will
+    -- instead be the center direction of the first slice
+
+    local d_east = 0
+    if center_on_east then d_east = 0.5 end
+
+    local angle = ai_helper.get_angle(from_hex, to_hex)
+    local index = math.floor((angle / math.pi * n/2 + d_east) % n ) + 1
+
+    return index
+end
+
+function ai_helper.get_cardinal_directions(from_hex, to_hex)
+    local dirs = { "E", "S", "W", "N" }
+    return dirs[ai_helper.get_direction_index(from_hex, to_hex, 4, true)]
+end
+
+function ai_helper.get_intercardinal_directions(from_hex, to_hex)
+    local dirs = { "E", "SE", "S", "SW", "W", "NW", "N", "NE" }
+    return dirs[ai_helper.get_direction_index(from_hex, to_hex, 8, true)]
+end
+
+function ai_helper.get_hex_facing(from_hex, to_hex)
+    local dirs = { "se", "s", "sw", "nw", "n", "ne" }
+    return dirs[ai_helper.get_direction_index(from_hex, to_hex, 6)]
+end
 
 function ai_helper.find_opposite_hex_adjacent(hex, center_hex)
     -- Find the hex that is opposite of 'hex' w.r.t. 'center_hex'
