@@ -865,7 +865,10 @@ set(libwesnoth-game_STAT_SRC
 	generators/yamg/yamg_hex.cpp
 	generators/yamg/yamg_hexheap.cpp
 	generators/yamg/yamg_params.cpp
-	hotkeys.cpp
+	hotkey/command_executor.cpp
+	hotkey/hotkey_item.cpp
+	hotkey/hotkey_command.cpp
+	hotkey/hotkey_manager.cpp
 	image.cpp
 	image_modifications.cpp
 	joystick.cpp
