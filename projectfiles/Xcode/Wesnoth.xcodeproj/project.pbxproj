@@ -359,7 +359,6 @@
 		B5599B340EC62181008DD061 /* key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0B0EC62181008DD061 /* key.cpp */; };
 		B5599B350EC62181008DD061 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0D0EC62181008DD061 /* intro.cpp */; };
 		B5599B360EC62181008DD061 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0F0EC62181008DD061 /* image.cpp */; };
-		B5599B370EC62181008DD061 /* hotkeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A110EC62181008DD061 /* hotkeys.cpp */; };
 		B5599B380EC62181008DD061 /* help.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A130EC62181008DD061 /* help.cpp */; };
 		B5599B390EC62181008DD061 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
 		B5599B630EC62181008DD061 /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A710EC62181008DD061 /* gettext.cpp */; };
@@ -625,7 +624,6 @@
 		B597C5D90FACD6CA00CE81F5 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998F0EC62181008DD061 /* text.cpp */; };
 		B597C5DA0FACD6CA00CE81F5 /* filechooser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A950EC62181008DD061 /* filechooser.cpp */; };
 		B597C5DB0FACD6CA00CE81F5 /* mp_method_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCC70ECA805A002BE442 /* mp_method_selection.cpp */; };
-		B597C5DC0FACD6CA00CE81F5 /* hotkeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A110EC62181008DD061 /* hotkeys.cpp */; };
 		B597C5DD0FACD6CA00CE81F5 /* statistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559999B0EC62181008DD061 /* statistics.cpp */; };
 		B597C5DE0FACD6CA00CE81F5 /* terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999950EC62181008DD061 /* terrain.cpp */; };
 		B597C5E00FACD6CA00CE81F5 /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C40EC62181008DD061 /* preferences.cpp */; };
@@ -909,6 +907,11 @@
 		EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4D40AD17FCCF14002E7C81 /* strftime.cpp */; };
 		ECA9E67B17F478B600F5DDC4 /* desktop_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9E67917F478B600F5DDC4 /* desktop_util.cpp */; };
 		ECA9E67E17F478D600F5DDC4 /* game_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */; };
+		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
+		ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DC184E59F3006782FB /* hotkey_command.cpp */; };
+		ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DE184E59F3006782FB /* hotkey_item.cpp */; };
+		ECFA82E6184E59F3006782FB /* hotkey_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */; };
+		ECFA82E7184E59F3006782FB /* hotkey_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */; };
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
 		F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A31014F8868A002F9ADC /* manager_ui.cpp */; };
@@ -920,7 +923,6 @@
 		F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
 		F449349C13FF652800DF01D5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F449349913FF652800DF01D5 /* validator.cpp */; };
 		F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F468E6AC16DF872200A31A5A /* movetype.cpp */; };
-		F469F29B160F9FB2008B209B /* hotkey_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */; };
 		F46C5DCC13A5074C00DD0816 /* game_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC513A5074C00DD0816 /* game_controller.cpp */; };
 		F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
 		F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DD313A5089100DD0816 /* lua_object.cpp */; };
@@ -1570,8 +1572,6 @@
 		B5599A0D0EC62181008DD061 /* intro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = intro.cpp; path = ../src/intro.cpp; sourceTree = "<group>"; };
 		B5599A0E0EC62181008DD061 /* image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = image.hpp; path = ../src/image.hpp; sourceTree = "<group>"; };
 		B5599A0F0EC62181008DD061 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../src/image.cpp; sourceTree = "<group>"; };
-		B5599A100EC62181008DD061 /* hotkeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkeys.hpp; path = ../src/hotkeys.hpp; sourceTree = "<group>"; };
-		B5599A110EC62181008DD061 /* hotkeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkeys.cpp; path = ../src/hotkeys.cpp; sourceTree = "<group>"; };
 		B5599A120EC62181008DD061 /* help.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = help.hpp; path = ../src/help.hpp; sourceTree = "<group>"; };
 		B5599A130EC62181008DD061 /* help.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = help.cpp; path = ../src/help.cpp; sourceTree = "<group>"; };
 		B5599A140EC62181008DD061 /* halo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = halo.hpp; path = ../src/halo.hpp; sourceTree = "<group>"; };
@@ -2037,6 +2037,15 @@
 		ECA9E67A17F478B600F5DDC4 /* desktop_util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = desktop_util.hpp; sourceTree = "<group>"; };
 		ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_paths.cpp; sourceTree = "<group>"; };
 		ECA9E67D17F478D600F5DDC4 /* game_paths.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_paths.hpp; sourceTree = "<group>"; };
+		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = command_executor.cpp; path = hotkey/command_executor.cpp; sourceTree = "<group>"; };
+		ECFA82DB184E59F3006782FB /* command_executor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = command_executor.hpp; path = hotkey/command_executor.hpp; sourceTree = "<group>"; };
+		ECFA82DC184E59F3006782FB /* hotkey_command.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_command.cpp; path = hotkey/hotkey_command.cpp; sourceTree = "<group>"; };
+		ECFA82DD184E59F3006782FB /* hotkey_command.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkey_command.hpp; path = hotkey/hotkey_command.hpp; sourceTree = "<group>"; };
+		ECFA82DE184E59F3006782FB /* hotkey_item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_item.cpp; path = hotkey/hotkey_item.cpp; sourceTree = "<group>"; };
+		ECFA82DF184E59F3006782FB /* hotkey_item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkey_item.hpp; path = hotkey/hotkey_item.hpp; sourceTree = "<group>"; };
+		ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_manager.cpp; path = hotkey/hotkey_manager.cpp; sourceTree = "<group>"; };
+		ECFA82E1184E59F3006782FB /* hotkey_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkey_manager.hpp; path = hotkey/hotkey_manager.hpp; sourceTree = "<group>"; };
+		ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_preferences_display.cpp; path = hotkey/hotkey_preferences_display.cpp; sourceTree = "<group>"; };
 		F40C04821706613100B4DA68 /* tip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tip.hpp; sourceTree = "<group>"; };
 		F40C04831706613100B4DA68 /* popup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = popup.hpp; sourceTree = "<group>"; };
 		F40C04841706613100B4DA68 /* mp_login.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_login.hpp; sourceTree = "<group>"; };
@@ -2071,7 +2080,6 @@
 		F449349A13FF652800DF01D5 /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
 		F468E6AB16DF872200A31A5A /* movetype.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = movetype.hpp; sourceTree = "<group>"; };
 		F468E6AC16DF872200A31A5A /* movetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = movetype.cpp; sourceTree = "<group>"; };
-		F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_preferences_display.cpp; sourceTree = "<group>"; };
 		F46C5DC413A5074C00DD0816 /* game_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_controller.hpp; sourceTree = "<group>"; };
 		F46C5DC513A5074C00DD0816 /* game_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_controller.cpp; sourceTree = "<group>"; };
 		F46C5DCA13A5074C00DD0816 /* commandline_options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commandline_options.hpp; sourceTree = "<group>"; };
@@ -2298,9 +2306,17 @@
 				F468E6AC16DF872200A31A5A /* movetype.cpp */,
 				F4D043D216167BD1007566E8 /* mp_options.hpp */,
 				F4D043D316167BD1007566E8 /* mp_depcheck.hpp */,
+				ECFA82DA184E59F3006782FB /* command_executor.cpp */,
+				ECFA82DB184E59F3006782FB /* command_executor.hpp */,
+				ECFA82DC184E59F3006782FB /* hotkey_command.cpp */,
+				ECFA82DD184E59F3006782FB /* hotkey_command.hpp */,
+				ECFA82DE184E59F3006782FB /* hotkey_item.cpp */,
+				ECFA82DF184E59F3006782FB /* hotkey_item.hpp */,
+				ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */,
+				ECFA82E1184E59F3006782FB /* hotkey_manager.hpp */,
+				ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */,
 				F4D043D016167BB9007566E8 /* mp_depcheck.cpp */,
 				F4D043CE16167B98007566E8 /* mp_options.cpp */,
-				F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */,
 				F480CD2D14035038007175D6 /* tools */,
@@ -2536,8 +2552,6 @@
 				B5599A0D0EC62181008DD061 /* intro.cpp */,
 				B5599A0E0EC62181008DD061 /* image.hpp */,
 				B5599A0F0EC62181008DD061 /* image.cpp */,
-				B5599A100EC62181008DD061 /* hotkeys.hpp */,
-				B5599A110EC62181008DD061 /* hotkeys.cpp */,
 				B5599A120EC62181008DD061 /* help.hpp */,
 				B5599A130EC62181008DD061 /* help.cpp */,
 				B5599A140EC62181008DD061 /* halo.hpp */,
@@ -3928,6 +3942,7 @@
 				B5599ADB0EC62181008DD061 /* menu_style.cpp in Sources */,
 				B5599ADC0EC62181008DD061 /* progressbar.cpp in Sources */,
 				B5599ADD0EC62181008DD061 /* scrollarea.cpp in Sources */,
+				ECFA82E7184E59F3006782FB /* hotkey_preferences_display.cpp in Sources */,
 				B5599ADE0EC62181008DD061 /* scrollbar.cpp in Sources */,
 				B5599ADF0EC62181008DD061 /* scrollpane.cpp in Sources */,
 				B5599AE00EC62181008DD061 /* slider.cpp in Sources */,
@@ -4005,7 +4020,6 @@
 				B5599B340EC62181008DD061 /* key.cpp in Sources */,
 				B5599B350EC62181008DD061 /* intro.cpp in Sources */,
 				B5599B360EC62181008DD061 /* image.cpp in Sources */,
-				B5599B370EC62181008DD061 /* hotkeys.cpp in Sources */,
 				B5599B380EC62181008DD061 /* help.cpp in Sources */,
 				B5599B390EC62181008DD061 /* halo.cpp in Sources */,
 				B5599B630EC62181008DD061 /* gettext.cpp in Sources */,
@@ -4068,6 +4082,7 @@
 				B5A9BD6A0ECA805A002BE442 /* scrollbar.cpp in Sources */,
 				B5A9BD6B0ECA805A002BE442 /* settings.cpp in Sources */,
 				B5A9BD6C0ECA805A002BE442 /* slider.cpp in Sources */,
+				ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */,
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
 				B5A9BD6E0ECA805A002BE442 /* text.cpp in Sources */,
 				EC48D75817F318DA00DE80BF /* flg_manager.cpp in Sources */,
@@ -4182,6 +4197,7 @@
 				B5FCE91B1104C2A50081F1DF /* scroll_label.cpp in Sources */,
 				B5FCE91C1104C2A50081F1DF /* scrollbar_panel.cpp in Sources */,
 				B5FCE91D1104C2A50081F1DF /* slider.cpp in Sources */,
+				ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */,
 				B5FCE91E1104C2A50081F1DF /* spacer.cpp in Sources */,
 				B5FCE91F1104C2A50081F1DF /* stacked_widget.cpp in Sources */,
 				B5FCE9201104C2A50081F1DF /* text_box.cpp in Sources */,
@@ -4277,6 +4293,7 @@
 				4944F40D1354FB760027E614 /* drawing.cpp in Sources */,
 				4944F4121354FB970027E614 /* debug_clock.cpp in Sources */,
 				4944F4131354FB970027E614 /* mp_login.cpp in Sources */,
+				ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */,
 				4944F4141354FB970027E614 /* popup.cpp in Sources */,
 				4944F4151354FB970027E614 /* tip.cpp in Sources */,
 				4944F4171354FBB20027E614 /* description.cpp in Sources */,
@@ -4339,6 +4356,7 @@
 				F4D5AFEC1571208B0062EAFC /* placer.cpp in Sources */,
 				F4D5AFF4157120B30062EAFC /* horizontal_list.cpp in Sources */,
 				F4D5AFF5157120B30062EAFC /* vertical_list.cpp in Sources */,
+				ECFA82E6184E59F3006782FB /* hotkey_manager.cpp in Sources */,
 				F4D5AFFA157120E60062EAFC /* viewport.cpp in Sources */,
 				62579C771573E682003089D5 /* matrix.cpp in Sources */,
 				62579C7E1573E70C003089D5 /* instance.cpp in Sources */,
@@ -4359,7 +4377,6 @@
 				620A387115E9364F00A4F513 /* move.cpp in Sources */,
 				620A387215E9364F00A4F513 /* undo.cpp in Sources */,
 				620A387315E9364F00A4F513 /* vision.cpp in Sources */,
-				F469F29B160F9FB2008B209B /* hotkey_preferences_display.cpp in Sources */,
 				F4D043CF16167B98007566E8 /* mp_options.cpp in Sources */,
 				F4D043D116167BB9007566E8 /* mp_depcheck.cpp in Sources */,
 				F4D043DA16167BF6007566E8 /* mp_depcheck_select_new.cpp in Sources */,
@@ -4547,7 +4564,6 @@
 				B597C5D90FACD6CA00CE81F5 /* text.cpp in Sources */,
 				B597C5DA0FACD6CA00CE81F5 /* filechooser.cpp in Sources */,
 				B597C5DB0FACD6CA00CE81F5 /* mp_method_selection.cpp in Sources */,
-				B597C5DC0FACD6CA00CE81F5 /* hotkeys.cpp in Sources */,
 				B597C5DD0FACD6CA00CE81F5 /* statistics.cpp in Sources */,
 				B597C5DE0FACD6CA00CE81F5 /* terrain.cpp in Sources */,
 				B597C5E00FACD6CA00CE81F5 /* preferences.cpp in Sources */,
