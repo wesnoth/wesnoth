@@ -20,7 +20,7 @@
 #include "editor/map/context_manager.hpp"
 #include "editor/palette/palette_manager.hpp"
 #include "editor/toolkit/brush.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
 
 #include <boost/scoped_ptr.hpp>
 

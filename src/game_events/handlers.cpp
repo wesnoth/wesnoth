@@ -25,7 +25,7 @@
 
 #include "../formula_string_utils.hpp"
 #include "../gamestatus.hpp"
-#include "../hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"

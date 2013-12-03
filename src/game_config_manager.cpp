@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include <boost/foreach.hpp>
 

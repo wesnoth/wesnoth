@@ -23,7 +23,7 @@
 
 #include "config.hpp"
 #include "filesystem.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "sound.hpp"

@@ -18,7 +18,8 @@
 
 #include "font.hpp"
 #include "gettext.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "theme.hpp"

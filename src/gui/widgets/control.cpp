@@ -27,6 +27,7 @@
 #include "gui/auxiliary/window_builder/control.hpp"
 #include "marked-up_text.hpp"
 #include "utils/foreach.tpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include <boost/bind.hpp>
 
@@ -547,7 +548,9 @@ void tcontrol::signal_handler_show_tooltip(
 		if(!help_message_.empty()) {
 			utils::string_map symbols;
 			symbols["hotkey"] =
-					hotkey::get_names(hotkey::GLOBAL__HELPTIP);
+					hotkey::get_names(
+							hotkey::hotkey_command::get_command_by_command(
+									hotkey::GLOBAL__HELPTIP).command);
 
 			tip = tooltip_ + utils::interpolate_variables_into_string(
 					  settings::has_helptip_message

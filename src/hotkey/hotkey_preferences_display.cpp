@@ -20,6 +20,7 @@
  */
 
 #include "preferences_display.hpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
@@ -31,7 +32,6 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
-#include "hotkeys.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"
@@ -636,23 +636,23 @@ void hotkey_preferences_dialog::show_binding_dialog(
 					(mod & KMOD_CTRL) != 0, (mod & KMOD_LMETA) != 0,
 					(mod & KMOD_ALT) != 0);
 
-			if ( (newhk.get_id() == hotkey::HOTKEY_SCREENSHOT
-					|| newhk.get_id() == hotkey::HOTKEY_MAP_SCREENSHOT)
-					&& (mod & any_mod) == 0 ) {
-				gui2::show_transient_message(disp_.video(), _("Warning"),
-						_("Screenshot hotkeys should be combined with the \
-Control, Alt or Meta modifiers to avoid problems."));
-			}
+//			if ( (hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_SCREENSHOT
+//					|| hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_MAP_SCREENSHOT)
+//					&& (mod & any_mod) == 0 ) {
+//				gui2::show_transient_message(disp_.video(), _("Warning"),
+/*						_("Screenshot hotkeys should be combined with the \
+Control, Alt or Meta modifiers to avoid problems.")); */
+//			}
 			break;
 		}
 
-		if (oldhk && oldhk->active()) {
+		if (oldhk) { // && oldhk->active()) {
 			if (oldhk->get_command() != id) {
 
 				utils::string_map symbols;
 				symbols["hotkey_sequence"]   = oldhk->get_name();
-				symbols["old_hotkey_action"] = oldhk->get_description();
-				symbols["new_hotkey_action"] = newhk.get_description();
+				symbols["old_hotkey_action"] = hotkey::get_description(oldhk->get_command());
+				symbols["new_hotkey_action"] = hotkey::get_description(newhk.get_command());
 
 				std::string text =
 						vgettext("\"$hotkey_sequence|\" is in use by \

@@ -31,7 +31,6 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
-#include "hotkeys.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "wml_separators.hpp"

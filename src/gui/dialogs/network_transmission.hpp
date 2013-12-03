@@ -19,6 +19,7 @@
 #include "gui/widgets/control.hpp"
 #include "network_asio.hpp"
 #include <boost/optional.hpp>
+#include "events.hpp"
 
 namespace gui2 {
 

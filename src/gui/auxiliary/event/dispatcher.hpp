@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_AUXILIARY_EVENT_DISPATCHER_HPP_INCLUDED
 
 #include "gui/auxiliary/event/handler.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_command.hpp"
 
 #include <boost/function.hpp>
 #include <boost/mpl/int.hpp>

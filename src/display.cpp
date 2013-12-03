@@ -23,7 +23,6 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
-#include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"

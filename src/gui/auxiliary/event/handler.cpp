@@ -23,7 +23,7 @@
 #include "gui/widgets/helper.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_item.hpp"
 #include "utils/foreach.tpp"
 #include "video.hpp"
 
@@ -663,7 +663,7 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
 		return false;
 	}
 
-	return dispatcher->execute_hotkey(key.get_id());
+	return dispatcher->execute_hotkey(hotkey::get_id(key.get_command()));
 }
 
 void thandler::key_down(const SDLKey key

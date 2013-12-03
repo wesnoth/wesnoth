@@ -20,7 +20,7 @@
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_manager.hpp"
 #include "resources.hpp"
 #include "sound.hpp"
 #include "thread.hpp"

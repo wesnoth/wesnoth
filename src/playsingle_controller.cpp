@@ -44,6 +44,7 @@
 #include "storyscreen/interface.hpp"
 #include "whiteboard/manager.hpp"
 #include "util.hpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -217,7 +218,7 @@ void playsingle_controller::whiteboard_toggle() {
 	resources::whiteboard->set_active(!resources::whiteboard->is_active());
 
 	if (resources::whiteboard->is_active()) {
-		std::string hk = hotkey::get_names(hotkey::HOTKEY_WB_TOGGLE);
+		std::string hk = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_WB_TOGGLE).command);
 		utils::string_map symbols;
 		symbols["hotkey"] = hk;
 

@@ -18,7 +18,7 @@
 
 #include "global.hpp"
 
-#include "hotkeys.hpp"
+#include "hotkey/command_executor.hpp"
 #include "key.hpp"
 
 #include "joystick.hpp"

@@ -15,7 +15,7 @@
 #define MULTIPLAYER_UI_HPP_INCLUDED
 
 #include "chat_events.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/command_executor.hpp"
 #include "network.hpp"
 #include "preferences_display.hpp"
 #include "widgets/combo.hpp"
@@ -199,13 +199,13 @@ protected:
 
 private:
 	/**
-	 * Set to true when the widgets are intialized. Allows delayed
+	 * Set to true when the widgets are initialized. Allows delayed
 	 * initialization on first positioning.
 	 */
 	bool initialized_;
 	bool gamelist_initialized_;
 
-	/** Ensures standard hotkeys are coorectly handled. */
+	/** Ensures standard hotkeys are correctly handled. */
 	const hotkey::basic_handler hotkey_handler_;
 
 	const preferences::display_manager disp_manager_;

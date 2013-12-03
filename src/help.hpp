@@ -18,7 +18,7 @@ class config;
 class display;
 class gamemap;
 
-#include "hotkeys.hpp"
+#include "hotkey/command_executor.hpp"
 #include "construct_dialog.hpp"
 
 namespace help {

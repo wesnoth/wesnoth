@@ -21,7 +21,6 @@
 
 #include "generators/mapgen.hpp"
 
-#include "hotkeys.hpp"
 
 namespace editor {
 

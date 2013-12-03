@@ -24,7 +24,6 @@
 
 #include "../config.hpp"
 #include "../gamestatus.hpp"
-#include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../map_location.hpp"
 #include "../resources.hpp"
