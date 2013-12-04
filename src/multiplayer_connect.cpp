@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "wml_separators.hpp"
+#include "sound.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -579,6 +580,11 @@ void connect::update_playerlist_state(bool silent)
 		}
 		set_user_list(playerlist, silent);
 		set_user_menu_items(playerlist);
+	}
+
+	if ((engine_.sides_available() != true) && (silent != true)) {
+		DBG_MP << "play game full sound" << std::endl;
+		sound::play_UI_sound(game_config::sounds::receive_message_highlight);
 	}
 }
 
