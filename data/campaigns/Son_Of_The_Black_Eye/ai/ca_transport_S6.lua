@@ -8,12 +8,10 @@ local ca_transport = {}
 --    close hex with the most unoccupied adjacent non-water hexes and move there
 -- 2. If landing site is out of reach, move toward destination while
 --    staying in deep water surrounded by deep water only
+-- Also unload units onto best hexes adjacent to landing site
 
 function ca_transport:evaluation(ai)
-    local units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0',
-    }
+    local units = wesnoth.get_units { side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
 
     for i,u in ipairs(units) do
         local vars = H.get_child(u.__cfg, "variables")
@@ -71,7 +69,7 @@ function ca_transport:execution(ai)
                     -- Main rating is number of unoccupied land hexes and
                     -- water hexes next to land hexes
                     -- But shouldn't be too far away (arb. set to 5 hexes here)
-                    -- This is mostly to avoid it being across the bay in S6
+                    -- This is mostly to avoid it being across the bay in SotBE S6
                     local adj_tiles = {}
                     if (rating >= -0.05) then
                         for x,y in H.adjacent_tiles(r[1], r[2]) do
@@ -79,9 +77,7 @@ function ca_transport:execution(ai)
                                 if wesnoth.match_location(x, y, { terrain = "!, W*" }) then
                                     rating = rating + 1
                                     table.insert(adj_tiles, { x, y, 1. } )
-                                end
-
-                                if wesnoth.match_location(x, y,
+                                elseif wesnoth.match_location(x, y,
                                     {
                                         terrain = "W*",
                                         { "filter_adjacent_location", { terrain = "!, W*" } }
@@ -90,6 +86,8 @@ function ca_transport:execution(ai)
                                 then
                                     rating = rating + 0.1
                                     table.insert(adj_tiles, { x, y, 0.1 } )
+                                else
+                                    table.insert(adj_tiles, { xa, ya, 0.0 } )
                                 end
                             end
                         end
@@ -107,22 +105,24 @@ function ca_transport:execution(ai)
     end
 
     if (max_rating > -9e99) then
-        -- Also find the best unloading hexes
-        -- TODO: this is currently not used as the AI functionality to make
-        -- it replay-safe does not exist; to be added later
-        --table.sort(best_adj_tiles, function(a, b) return a[3] > b[3] end)
-        --for i,tile in ipairs(best_adj_tiles) do
-        --    best_unit.variables['hex' .. i .. '_x'] = tile[1]
-        --    best_unit.variables['hex' .. i .. '_y'] = tile[2]
-        --end
-        -- For remaining hexes, simply use the center hex and let the engine decide itself
-        -- This also provides a safeguard against too many hexes being occupied
-        --for i = #best_adj_tiles + 1, 6 do
-        --    best_unit.variables['hex' .. i .. '_x'] = best_hex[1]
-        --    best_unit.variables['hex' .. i .. '_y'] = best_hex[2]
-        --end
-
         ai.move_full(best_unit, best_hex[1], best_hex[2])
+
+        -- Also unload units
+        table.sort(best_adj_tiles, function(a, b) return a[3] > b[3] end)
+
+        for i = 1, math.min(#best_adj_tiles, 3) do
+            local command = "local H = wesnoth.require 'lua/helper.lua' "
+                .. "wesnoth.put_unit(".. best_adj_tiles[i][1] .. "," .. best_adj_tiles[i][2]
+                .. ", { side = " .. wesnoth.current.side
+                .. ", type = H.rand('Fencer,Swordsman,Mage,Cavalryman,Javelineer,Bowman,Pikeman,Bowman,Fencer')"
+                .. ", moves = 2 }) "
+                .. "local unit = wesnoth.get_unit(x1, y1) "
+                .. "unit.variables.landed = 'yes' "
+                .. "unit.variables.destination_x = 1 "
+                .. "unit.variables.destination_y = 30"
+            ai.synced_command(command, best_unit.x, best_unit.y)
+        end
+
         return
     end
 
