@@ -463,6 +463,13 @@ void replay::add_event(const std::string& name, const map_location& loc)
 	(*cmd)["undo"] = false;
 }
 
+void replay::add_lua_ai(const std::string& lua_code)
+{
+	config* const cmd = add_command();
+	config& child = cmd->add_child("lua_ai");
+	child["code"] = lua_code;
+}
+
 void replay::add_log_data(const std::string &key, const std::string &var)
 {
 	config& ulog = cfg_.child_or_add("upload_log");
@@ -1287,14 +1294,17 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			} else {
 				game_events::fire(event);
 			}
-
+		}
+		else if (const config &child = cfg->child("lua_ai"))
+		{
+			const std::string &lua_code = child["code"];
+			game_events::run_lua_commands(lua_code.c_str());
 		}
 		else if (const config &child = cfg->child("advance_unit"))
 		{
 			const map_location loc(child, resources::gamedata);
 			get_replay_source().add_expected_advancement(loc);
 			DBG_REPLAY << "got an explicit advance\n";
-
 		}
 		else if (cfg->child("global_variable"))
 		{
@@ -1305,7 +1315,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			// Turning on automatic shroud causes vision to be updated.
 			if ( active )
 				resources::undo_stack->commit_vision(true);
- 
+
 			current_team.set_auto_shroud_updates(active);
 		}
 		else if ( cfg->child("update_shroud") )

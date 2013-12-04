@@ -143,6 +143,16 @@ stopunit_result_ptr readonly_context_impl::check_stopunit_action(const map_locat
 }
 
 
+synced_command_result_ptr readwrite_context_impl::execute_synced_command_action(const std::string& lua_code, const map_location& location){
+	return actions::execute_synced_command_action(get_side(),true,lua_code,location);
+}
+
+
+synced_command_result_ptr readonly_context_impl::check_synced_command_action(const std::string& lua_code, const map_location& location){
+	return actions::execute_synced_command_action(get_side(),false,lua_code,location);
+}
+
+
 template<typename T>
 void readonly_context_impl::add_known_aspect(const std::string &name, boost::shared_ptr< typesafe_aspect <T> > &where)
 {

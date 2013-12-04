@@ -42,6 +42,7 @@
 #include "../game_end_exceptions.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"
+#include "../scripting/lua.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
@@ -868,6 +869,57 @@ void stopunit_result::do_init_for_execution()
 }
 
 
+// synced_command_result
+synced_command_result::synced_command_result( side_number side, const std::string& lua_code, const map_location& location )
+	: action_result(side), lua_code_(lua_code), location_(location)
+{
+}
+
+void synced_command_result::do_check_before()
+{
+	LOG_AI_ACTIONS << " check_before " << *this << std::endl;
+}
+
+void synced_command_result::do_check_after()
+{
+}
+
+std::string synced_command_result::do_describe() const
+{
+	std::stringstream s;
+	s <<" synced_command by side ";
+	s << get_side();
+	s <<std::endl;
+	return s.str();
+}
+
+void synced_command_result::do_execute()
+{
+	LOG_AI_ACTIONS << "start of execution of: " << *this << std::endl;
+	assert(is_success());
+
+	std::stringstream s;
+	if (location_ != map_location::null_location){
+		s << "local x1 = " << location_.x << " local y1 = " << location_.y << " ";
+	}
+	s << lua_code_;
+
+	resources::lua_kernel->run(s.str().c_str());
+	try {
+		recorder.add_lua_ai(s.str());
+		set_gamestate_changed();
+		manager::raise_gamestate_changed();
+	} catch (...) {
+		is_ok(); //Silences "unchecked result" warning
+		throw;
+	}
+}
+
+void synced_command_result::do_init_for_execution()
+{
+}
+
+
 // =======================================================================
 // STATELESS INTERFACE TO AI ACTIONS
 // =======================================================================
@@ -926,6 +978,16 @@ stopunit_result_ptr actions::execute_stopunit_action( side_number side,
 	bool remove_attacks)
 {
 	stopunit_result_ptr action(new stopunit_result(side,unit_location,remove_movement,remove_attacks));
+	execute ? action->execute() : action->check_before();
+	return action;
+}
+
+synced_command_result_ptr actions::execute_synced_command_action( side_number side,
+	bool execute,
+	const std::string& lua_code,
+	const map_location& location)
+{
+	synced_command_result_ptr action(new synced_command_result(side,lua_code,location));
 	execute ? action->execute() : action->check_before();
 	return action;
 }
@@ -1009,6 +1071,11 @@ std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r) {
 }
 
 std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r) {
+        s << r.do_describe();
+        return s;
+}
+
+std::ostream &operator<<(std::ostream &s, ai::synced_command_result const &r) {
         s << r.do_describe();
         return s;
 }
