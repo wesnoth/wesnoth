@@ -177,7 +177,6 @@ mapchanges = (
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
         ("canrecruit=0", "canrecruit=no"),
-        ("generate_description", "generate_name"),
         # Fix a common typo
         ("agression=", "aggression="),
         # These changed just after 1.5.0
@@ -2525,6 +2524,8 @@ if __name__ == '__main__':
                 line = re.sub(r"\bdescription\s*=", "id=", line)
             if "name" not in tagstack[-1][1]:
                 line = re.sub(r"user_description\s*=", "name=", line)
+            if "generate_name" not in tagstack[-1][1]:
+                line = re.sub(r"generate_description\s*=", "generate_name=", line)
         # Now, inside objects...
         if under("object") and "description" not in tagstack[-1][1]:
             line = re.sub(r"user_description\s*=", "description=", line)
