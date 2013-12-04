@@ -28,6 +28,8 @@ Version 1.11.7+dev:
      events.  Previously, it retained its last value from the previous scenario
      until after the start event.
    * [scroll_to] and [scroll_to_unit] now take an optional side filter.
+   * [trait] now accepts a "generate_description=" attribute, allowing the
+     auto-generated effect descriptions to be turned off. 
  * Miscellaneous and bug fixes:
    * Pango markup is applied correctly and consistently in button tooltips.
 
