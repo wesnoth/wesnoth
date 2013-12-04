@@ -2342,11 +2342,16 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
+	bool generate_description = true;
+
 	//some trait activate specific flags
 	if ( mod_type == "trait" ) {
 		const std::string& id = mod["id"];
 		is_fearless_ = is_fearless_ || id == "fearless";
 		is_healthy_ = is_healthy_ || id == "healthy";
+		if (!mod["generate_description"].empty()) {
+			generate_description = mod["generate_description"];
+		}
 	}
 
 	config *new_child = NULL;
@@ -2718,7 +2723,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if(effects_description.empty() == false) {
+	if(effects_description.empty() == false && generate_description == true) {
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
 			description += *i;
