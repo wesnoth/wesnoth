@@ -401,6 +401,10 @@ void put_wml_message(const std::string& logger, const std::string& message)
 	}
 }
 
+void run_lua_commands(char const *lua_code)
+{
+	resources::lua_kernel->run(lua_code);
+}
 
 void handle_event_commands(const queued_event& event_info, const vconfig &cfg)
 {
@@ -476,7 +480,7 @@ bool pump()
 	wb::real_map real_unit_map;
 
 	pump_manager pump_instance;
-	
+
 	// Loop through the events we need to process.
 	while ( !pump_instance.done() )
 	{

@@ -83,6 +83,7 @@ public:
 	void end_turn();
 	void add_event(const std::string& name,
 		const map_location& loc=map_location::null_location);
+	void add_lua_ai(const std::string& lua_code);
 	void add_unit_checksum(const map_location& loc,config* const cfg);
 	void add_checksum_check(const map_location& loc);
 	void add_log_data(const std::string &key, const std::string &var);
