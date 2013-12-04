@@ -66,7 +66,6 @@ action_result::action_result( side_number side )
 {
 }
 
-
 action_result::~action_result()
 {
 	if (!return_value_checked_) {
@@ -74,18 +73,15 @@ action_result::~action_result()
 	}
 }
 
-
 void action_result::check_after()
 {
 	do_check_after();
 }
 
-
 void action_result::check_before()
 {
 	do_check_before();
 }
-
 
 void action_result::execute()
 {
@@ -115,19 +111,16 @@ void action_result::init_for_execution()
 	do_init_for_execution();
 }
 
-
 bool action_result::is_gamestate_changed() const
 {
 	return is_gamestate_changed_;
 }
-
 
 bool action_result::is_ok()
 {
 	return_value_checked_ = true;
 	return is_success();
 }
-
 
 void action_result::set_error(int error_code, bool log_as_error){
 	status_ = error_code;
@@ -142,12 +135,10 @@ void action_result::set_error(int error_code, bool log_as_error){
 	}
 }
 
-
 void action_result::set_gamestate_changed()
 {
 	is_gamestate_changed_ = true;
 }
-
 
 int action_result::get_status() const
 {
@@ -159,18 +150,15 @@ bool action_result::is_success() const
 	return (status_ == action_result::AI_ACTION_SUCCESS);
 }
 
-
 bool action_result::is_execution() const
 {
 	return is_execution_;
 }
 
-
 game_info& action_result::get_info() const
 {
 	return manager::get_active_ai_info_for_side(get_side());
 }
-
 
 team& action_result::get_my_team() const
 {
@@ -182,7 +170,6 @@ team& action_result::get_my_team() const
 attack_result::attack_result( side_number side, const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon, double aggression, const unit_advancements_aspect& advancements)
 	: action_result(side), attacker_loc_(attacker_loc), defender_loc_(defender_loc), attacker_weapon_(attacker_weapon), aggression_(aggression), advancements_(advancements){
 }
-
 
 void attack_result::do_check_before()
 {
@@ -249,11 +236,9 @@ void attack_result::do_check_before()
 	}
 }
 
-
 void attack_result::do_check_after()
 {
 }
-
 
 std::string attack_result::do_describe() const
 {
@@ -267,7 +252,6 @@ std::string attack_result::do_describe() const
 	s <<std::endl;
 	return s.str();
 }
-
 
 void attack_result::do_execute()
 {
@@ -326,12 +310,9 @@ void attack_result::do_execute()
 	}
 }
 
-
 void attack_result::do_init_for_execution()
 {
 }
-
-
 
 
 // move_result
@@ -347,7 +328,6 @@ move_result::move_result(side_number side, const map_location& from,
 	, unreach_is_ok_(unreach_is_ok)
 {
 }
-
 
 const unit *move_result::get_unit()
 {
@@ -367,7 +347,6 @@ const unit *move_result::get_unit()
 	}
 	return u;
 }
-
 
 bool move_result::test_route(const unit &un)
 {
@@ -416,12 +395,10 @@ void move_result::do_check_before()
 	}
 }
 
-
 const map_location& move_result::get_unit_location() const
 {
 	return unit_location_;
 }
-
 
 void move_result::do_check_after()
 {
@@ -441,7 +418,6 @@ void move_result::do_check_after()
 	}
 }
 
-
 std::string move_result::do_describe() const
 {
 	std::stringstream s;
@@ -456,7 +432,6 @@ std::string move_result::do_describe() const
 	s <<std::endl;
 	return s.str();
 }
-
 
 void move_result::do_execute()
 {
@@ -512,12 +487,10 @@ void move_result::do_execute()
 	}
 }
 
-
 void move_result::do_init_for_execution()
 {
 	move_spectator_.reset(*resources::units);
 }
-
 
 
 // recall_result
@@ -541,7 +514,6 @@ const unit * recall_result::get_recall_unit(const team &my_team)
 	}
 	return &*rec;
 }
-
 
 bool recall_result::test_enough_gold(const team &my_team)
 {
@@ -597,7 +569,6 @@ void recall_result::do_check_before()
 	}
 }
 
-
 void recall_result::do_check_after()
 {
 	if (!resources::game_map->on_board(recall_location_)){
@@ -614,7 +585,6 @@ void recall_result::do_check_after()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-
 }
 
 std::string recall_result::do_describe() const
@@ -631,7 +601,6 @@ std::string recall_result::do_describe() const
 	s <<std::endl;
 	return s.str();
 }
-
 
 void recall_result::do_execute()
 {
@@ -658,12 +627,9 @@ void recall_result::do_execute()
 	}
 }
 
-
 void recall_result::do_init_for_execution()
 {
 }
-
-
 
 
 // recruit_result
@@ -742,7 +708,6 @@ void recruit_result::do_check_before()
 	}
 }
 
-
 void recruit_result::do_check_after()
 {
 	if (!resources::game_map->on_board(recruit_location_)) {
@@ -759,7 +724,6 @@ void recruit_result::do_check_after()
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
-
 }
 
 std::string recruit_result::do_describe() const
@@ -776,7 +740,6 @@ std::string recruit_result::do_describe() const
 	s <<std::endl;
 	return s.str();
 }
-
 
 void recruit_result::do_execute()
 {
@@ -803,13 +766,9 @@ void recruit_result::do_execute()
 	}
 }
 
-
 void recruit_result::do_init_for_execution()
 {
 }
-
-
-
 
 
 // stopunit_result
@@ -844,9 +803,7 @@ void stopunit_result::do_check_before()
 	if (!get_unit()) {
 		return;
 	}
-
 }
-
 
 void stopunit_result::do_check_after()
 {
@@ -906,12 +863,9 @@ void stopunit_result::do_execute()
 	}
 }
 
-
 void stopunit_result::do_init_for_execution()
 {
 }
-
-
 
 
 // =======================================================================
@@ -931,8 +885,6 @@ attack_result_ptr actions::execute_attack_action( side_number side,
 	return action;
 }
 
-
-
 move_result_ptr actions::execute_move_action( side_number side,
 	bool execute,
 	const map_location& from,
@@ -943,9 +895,7 @@ move_result_ptr actions::execute_move_action( side_number side,
 	move_result_ptr action(new move_result(side,from,to,remove_movement,unreach_is_ok));
 	execute ? action->execute() : action->check_before();
 	return action;
-
 }
-
 
 recall_result_ptr actions::execute_recall_action( side_number side,
 	bool execute,
@@ -956,9 +906,7 @@ recall_result_ptr actions::execute_recall_action( side_number side,
 	recall_result_ptr action(new recall_result(side,unit_id,where,from));
 	execute ? action->execute() : action->check_before();
 	return action;
-
 }
-
 
 recruit_result_ptr actions::execute_recruit_action( side_number side,
 	bool execute,
@@ -969,9 +917,7 @@ recruit_result_ptr actions::execute_recruit_action( side_number side,
 	recruit_result_ptr action(new recruit_result(side,unit_name,where,from));
 	execute ? action->execute() : action->check_before();
 	return action;
-
 }
-
 
 stopunit_result_ptr actions::execute_stopunit_action( side_number side,
 	bool execute,
@@ -982,9 +928,7 @@ stopunit_result_ptr actions::execute_stopunit_action( side_number side,
 	stopunit_result_ptr action(new stopunit_result(side,unit_location,remove_movement,remove_attacks));
 	execute ? action->execute() : action->check_before();
 	return action;
-
 }
-
 
 const std::string& actions::get_error_name(int error_code)
 {
@@ -1039,7 +983,6 @@ const std::string& actions::get_error_name(int error_code)
 	return i->second;
 }
 
-
 std::map<int,std::string> actions::error_names_;
 
 } //end of namespace ai
@@ -1050,24 +993,20 @@ std::ostream &operator<<(std::ostream &s, ai::attack_result const &r) {
         return s;
 }
 
-
 std::ostream &operator<<(std::ostream &s, ai::move_result const &r) {
         s << r.do_describe();
         return s;
 }
-
 
 std::ostream &operator<<(std::ostream &s, ai::recall_result const &r) {
         s << r.do_describe();
         return s;
 }
 
-
 std::ostream &operator<<(std::ostream &s, ai::recruit_result const &r) {
         s << r.do_describe();
         return s;
 }
-
 
 std::ostream &operator<<(std::ostream &s, ai::stopunit_result const &r) {
         s << r.do_describe();
