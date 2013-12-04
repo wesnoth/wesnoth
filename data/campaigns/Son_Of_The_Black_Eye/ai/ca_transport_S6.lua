@@ -87,7 +87,7 @@ function ca_transport:execution(ai)
                                     rating = rating + 0.1
                                     table.insert(adj_tiles, { x, y, 0.1 } )
                                 else
-                                    table.insert(adj_tiles, { xa, ya, 0.0 } )
+                                    table.insert(adj_tiles, { x, y, 0.0 } )
                                 end
                             end
                         end
