@@ -290,6 +290,10 @@ namespace game_config
 			sinf.address = server["address"].str();
 			server_list.push_back(sinf);
 		}
+
+		assert(wesnoth_version.good());
+		assert(min_savegame_version.good());
+		assert(test_version.good());
 	}
 
 	void add_color_info(const config &v)
