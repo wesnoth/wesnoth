@@ -38,7 +38,7 @@ static lg::log_domain log_display("display");
 
 namespace image {
 
-surface getMinimap(int w, int h, const gamemap &map, const team *vw)
+surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::map<map_location,unsigned int> *reach_map)
 {
 	const int scale = 8;
 
@@ -57,6 +57,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 	typedef mini_terrain_cache_map cache_map;
 	cache_map *normal_cache = &mini_terrain_cache;
 	cache_map *fog_cache = &mini_fogged_terrain_cache;
+	cache_map *highlight_cache = &mini_highlighted_terrain_cache;
 
 	for(int y = 0; y != map.total_height(); ++y)
 		for(int x = 0; x != map.total_width(); ++x) {
@@ -64,6 +65,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 			const map_location loc(x,y);
 			if(!map.on_board(loc))
 				continue;
+
+			const bool highlighted = reach_map && reach_map->count(loc) != 0;
 
 			const bool shrouded = (vw != NULL && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
@@ -92,8 +95,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 					surface surf(NULL);
 
 					bool need_fogging = false;
+					bool need_highlighting = false;
 
 					cache_map* cache = fogged ? fog_cache : normal_cache;
+					if (highlighted)
+						cache = highlight_cache;
 					cache_map::iterator i = cache->find(terrain);
 
 					if (fogged && i == cache->end()) {
@@ -102,6 +108,14 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						cache = normal_cache;
 						i = cache->find(terrain);
 						need_fogging = true;
+					}
+
+					if (highlighted && i == cache->end()) {
+						// we don't have the highlighted version in cache
+						// try the normal cache and ask fogging the image
+						cache = normal_cache;
+						i = cache->find(terrain);
+						need_highlighting = true;
 					}
 
 					if(i == cache->end()) {
@@ -141,6 +155,10 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						fog_cache->insert(cache_map::value_type(terrain,surf));
 					}
 
+					if (need_highlighting) {
+						surf = adjust_surface_color(surf,50,50,50);
+						highlight_cache->insert(cache_map::value_type(terrain,surf));
+					}
 
 					if(surf != NULL)
 						sdl_blit(surf, NULL, minimap, &maprect);
@@ -156,6 +174,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						SDL_Color tmp = fogged ?
 								int_to_color(game_config::team_rgb_range.find(terrain_id)->second.min()) :
 								int_to_color(game_config::team_rgb_range.find(terrain_id)->second.mid());
+
+						if (highlighted)
+							tmp = int_to_color(game_config::team_rgb_range.find(terrain_id)->second.max());
 
 						if (first) {
 							first = false;
