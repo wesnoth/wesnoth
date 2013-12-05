@@ -20,7 +20,7 @@
 class gamemap;
 struct surface;
 class team;
-class map_location;
+struct map_location;
 
 namespace image {
 	///function to create the minimap for a given map
