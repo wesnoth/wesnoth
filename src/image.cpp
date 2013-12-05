@@ -156,6 +156,7 @@ namespace image {
 
 mini_terrain_cache_map mini_terrain_cache;
 mini_terrain_cache_map mini_fogged_terrain_cache;
+mini_terrain_cache_map mini_highlighted_terrain_cache;
 
 static int last_index_ = 0;
 
@@ -177,6 +178,7 @@ void flush_cache()
 		is_empty_hex_.flush();
 		mini_terrain_cache.clear();
 		mini_fogged_terrain_cache.clear();
+		mini_highlighted_terrain_cache.clear();
 		reversed_images_.clear();
 		image_existence_map.clear();
 		precached_dirs.clear();

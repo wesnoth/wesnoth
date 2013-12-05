@@ -138,6 +138,7 @@ namespace image {
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
+	extern mini_terrain_cache_map mini_highlighted_terrain_cache;
 
 	///light_string store colors info of central and adjacent hexes.
 	///The structure is one or several 4 chars blocks (L,R,G,B)
