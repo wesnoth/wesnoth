@@ -932,11 +932,12 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
                   const map_location & from, bool show, bool use_undo,
                   bool use_recorder)
 {
-	const unit new_unit(u_type, side_num, true);
-
 	// Record this before actually recruiting.
 	if ( use_recorder )
 		recorder.add_recruit(u_type.id(), loc, from);
+	
+	const unit new_unit(u_type, side_num, true);
+
 
 	// Place the recruit.
 	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
