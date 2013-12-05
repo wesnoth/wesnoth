@@ -29,6 +29,7 @@ namespace hotkey {
  */
 enum scope {
 	SCOPE_GENERAL,
+	SCOPE_MAIN_MENU,
 	SCOPE_GAME,
 	SCOPE_EDITOR,
 	SCOPE_COUNT

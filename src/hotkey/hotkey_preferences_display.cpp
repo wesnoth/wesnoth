@@ -105,6 +105,7 @@ private:
 	std::vector<std::string> general_commands_;
 	std::vector<std::string> game_commands_;
 	std::vector<std::string> editor_commands_;
+	std::vector<std::string> title_screen_commands_;
 
 	/** The header of all the scope menus */
 	const std::string heading_;
@@ -114,8 +115,8 @@ private:
 	 * while switching through the tabs.
 	 */
 	int selected_command_;
-	gui::menu::basic_sorter general_sorter_, game_sorter_, editor_sorter_;
-	gui::menu general_hotkeys_, game_hotkeys_, editor_hotkeys_;
+	gui::menu::basic_sorter general_sorter_, game_sorter_, editor_sorter_, title_screen_sorter_;
+	gui::menu general_hotkeys_, game_hotkeys_, editor_hotkeys_, title_screen_hotkeys_;
 
 	/** The display, for usage by child dialogs */
 	display &disp_;
@@ -213,6 +214,8 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	// tab names and icons
 	items.push_back(pre + "general.png" + sep
 			+ sgettext("Prefs section^General"));
+	items.push_back(pre + "title_screen.png" + sep
+			+ sgettext("Prefs section^Title Screen"));
 	items.push_back(pre + "game.png"    + sep
 			+ sgettext("Prefs section^Game"));
 	items.push_back(pre + "editor.png"  + sep
@@ -249,12 +252,14 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		general_commands_(),
 		game_commands_(),
 		editor_commands_(),
+		title_screen_commands_(),
 		heading_( (formatter() << HEADING_PREFIX << _("Action")
 						<< COLUMN_SEPARATOR << _("Binding")).str() ),
 		selected_command_(0),
 		general_sorter_(),
 		game_sorter_(),
 		editor_sorter_(),
+		title_screen_sorter_(),
 		// Note: If you don't instantiate the menus with heading_,
 		// the header can't be enabled later, seems to be a bug in gui::menu
 		general_hotkeys_(disp.video(), boost::assign::list_of(heading_),
@@ -263,6 +268,8 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 				false, -1, -1, &game_sorter_, &gui::menu::bluebg_style),
 		editor_hotkeys_(disp.video(), boost::assign::list_of(heading_),
 				false, -1, -1, &editor_sorter_, &gui::menu::bluebg_style),
+		title_screen_hotkeys_(disp.video(), boost::assign::list_of(heading_),
+				false, -1, -1, &title_screen_sorter_, &gui::menu::bluebg_style),
 		disp_(disp),
 		parent(NULL)
 {
@@ -291,6 +298,9 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		case hotkey::SCOPE_GENERAL:
 			general_commands_.push_back(command.command);
 			break;
+		case hotkey::SCOPE_MAIN_MENU:
+			title_screen_commands_.push_back(command.command);
+			break;
 		case hotkey::SCOPE_COUNT:
 			break;
 		}
@@ -303,6 +313,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 	general_sorter_.set_alpha_sort(0).set_alpha_sort(1);
 	game_sorter_.set_alpha_sort(0).set_alpha_sort(1);
 	editor_sorter_.set_alpha_sort(0).set_alpha_sort(1);
+	title_screen_sorter_.set_alpha_sort(0).set_alpha_sort(1);
 
 	// Populate every menu_
 	for (int scope = 0; scope != hotkey::SCOPE_COUNT; scope++) {
@@ -323,6 +334,7 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	game_hotkeys_.hide(true);
 	editor_hotkeys_.hide(true);
 	general_hotkeys_.hide(true);
+	title_screen_hotkeys_.hide(true);
 
 	// Helpers to keep the switch statement small.
 	gui::menu* active_hotkeys = NULL;
@@ -330,6 +342,10 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 
 	// Determine the menu corresponding to the selected tab.
 	switch (tab_) {
+	case hotkey::SCOPE_MAIN_MENU:
+		active_hotkeys = &title_screen_hotkeys_;
+		commands = &title_screen_commands_;
+		break;
 	case hotkey::SCOPE_GAME:
 		active_hotkeys = &game_hotkeys_;
 		commands = &game_commands_;
@@ -403,6 +419,7 @@ handler_vector hotkey_preferences_dialog::handler_members() {
 	h.push_back(&general_hotkeys_);
 	h.push_back(&game_hotkeys_);
 	h.push_back(&editor_hotkeys_);
+	h.push_back(&title_screen_hotkeys_);
 	return h;
 }
 
@@ -415,10 +432,15 @@ void hotkey_preferences_dialog::set_selection(int index) {
 
 	hotkey::deactivate_all_scopes();
 	switch (tab_) {
+	case hotkey::SCOPE_MAIN_MENU:
+		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
+		break;
 	case hotkey::SCOPE_GENERAL:
 		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_GAME);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
+		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 		break;
 	case hotkey::SCOPE_GAME:
 		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
@@ -440,6 +462,10 @@ void hotkey_preferences_dialog::process_event() {
 	std::string id;
 	gui::menu* active_menu_ = NULL;
 	switch (tab_) {
+	case hotkey::SCOPE_MAIN_MENU:
+		id = title_screen_commands_[title_screen_hotkeys_.selection()];
+		active_menu_ = &title_screen_hotkeys_;
+		break;
 	case hotkey::SCOPE_GAME:
 		id = game_commands_[game_hotkeys_.selection()];
 		active_menu_ = &game_hotkeys_;
@@ -453,6 +479,7 @@ void hotkey_preferences_dialog::process_event() {
 		active_menu_ = &general_hotkeys_;
 		break;
 	case hotkey::SCOPE_COUNT:
+		assert(false); // should not be reached.
 		break;
 	}
 
@@ -494,6 +521,12 @@ void hotkey_preferences_dialog::update_location(SDL_Rect const &rect) {
 
 	int xpos = rect.x;
 	int ypos = rect.y + top_border;
+
+	title_screen_hotkeys_.set_location(xpos, ypos);
+	title_screen_hotkeys_.set_max_height(h);
+	title_screen_hotkeys_.set_height(h);
+	title_screen_hotkeys_.set_max_width(w);
+	title_screen_hotkeys_.set_width(w);
 
 	general_hotkeys_.set_location(xpos, ypos);
 	general_hotkeys_.set_max_height(h);
@@ -636,6 +669,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 					(mod & KMOD_CTRL) != 0, (mod & KMOD_LMETA) != 0,
 					(mod & KMOD_ALT) != 0);
 
+			//TODO
 //			if ( (hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_SCREENSHOT
 //					|| hotkey::get_id(newhk.get_command()) == hotkey::HOTKEY_MAP_SCREENSHOT)
 //					&& (mod & any_mod) == 0 ) {

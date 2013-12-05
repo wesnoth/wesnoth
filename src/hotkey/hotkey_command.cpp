@@ -217,15 +217,17 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom Command"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run Formula"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, hotkey::SCOPE_GAME, "" },
-	{ hotkey::TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true ,hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__TUTORIAL, "title_screen__tutorial", N_("Start Tutorial"), false	, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__CAMPAIGN, "title_screen__campaign", N_("Start Campaign"), false	, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__MULTIPLAYER, "title_screen__multiplayer", N_("Start Multiplayer Game"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__ADDONS, "title_screen__addons", N_("Manage Add-ons"), false	, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__EDITOR, "title_screen__editor", N_("Start Editor"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::TITLE_SCREEN__CREDITS, "title_screen__credits", N_("Show Credits"), false	, hotkey::SCOPE_GENERAL, "" },
+
+	{ hotkey::TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true ,hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__TUTORIAL, "title_screen__tutorial", N_("Start Tutorial"), false	, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__CAMPAIGN, "title_screen__campaign", N_("Start Campaign"), false	, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__MULTIPLAYER, "title_screen__multiplayer", N_("Start Multiplayer Game"), false, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__ADDONS, "title_screen__addons", N_("Manage Add-ons"), false	, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__EDITOR, "title_screen__editor", N_("Start Editor"), false, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__CREDITS, "title_screen__credits", N_("Show Credits"), false	, hotkey::SCOPE_MAIN_MENU, "" },
+
 	{ hotkey::GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, hotkey::SCOPE_GENERAL, "" },
 
 	//This list item must stay at the end since it is used as terminator for iterating.
