@@ -77,9 +77,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		in_game_(false),
 		observers_(),
 		chat_messages_(),
-		reach_map_(),
-		reach_map_old_(),
-		reach_map_changed_(true),
 		game_mode_(RUNNING)
 {
 
@@ -578,46 +575,7 @@ void game_display::unhighlight_reach()
 	reach_map_changed_ = true;
 }
 
-void game_display::process_reachmap_changes()
-{
-	if (!reach_map_changed_) return;
-	if (reach_map_.empty() != reach_map_old_.empty()) {
-		// Invalidate everything except the non-darkened tiles
-		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
 
-		rect_of_hexes hexes = get_visible_hexes();
-		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-		for (;i != end; ++i) {
-			reach_map::iterator reach = full.find(*i);
-			if (reach == full.end()) {
-				// Location needs to be darkened or brightened
-				invalidate(*i);
-			} else if (reach->second != 1) {
-				// Number needs to be displayed or cleared
-				invalidate(*i);
-			}
-		}
-	} else if (!reach_map_.empty()) {
-		// Invalidate only changes
-		reach_map::iterator reach, reach_old;
-		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
-			reach_old = reach_map_old_.find(reach->first);
-			if (reach_old == reach_map_old_.end()) {
-				invalidate(reach->first);
-			} else {
-				if (reach_old->second != reach->second) {
-					invalidate(reach->first);
-				}
-				reach_map_old_.erase(reach_old);
-			}
-		}
-		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
-			invalidate(reach_old->first);
-		}
-	}
-	reach_map_old_ = reach_map_;
-	reach_map_changed_ = false;
-}
 
 void game_display::invalidate_route()
 {

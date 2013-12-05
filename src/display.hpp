@@ -1000,6 +1000,15 @@ public: //operations for the arrow framework
 	/** Called by arrow objects when they change. You should not need to call this directly. */
 	void update_arrow(arrow & a);
 
+protected:
+
+	// Tiles lit for showing where unit(s) can reach
+	typedef std::map<map_location,unsigned int> reach_map;
+	reach_map reach_map_;
+	reach_map reach_map_old_;
+	bool reach_map_changed_;
+	void process_reachmap_changes();
+
 private:
 
 	typedef std::multimap<map_location, overlay> overlay_map;

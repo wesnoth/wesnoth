@@ -346,12 +346,7 @@ private:
 
 	std::vector<chat_message> chat_messages_;
 
-	// Tiles lit for showing where unit(s) can reach
-	typedef std::map<map_location,unsigned int> reach_map;
-	reach_map reach_map_;
-	reach_map reach_map_old_;
-	bool reach_map_changed_;
-	void process_reachmap_changes();
+
 
 	tgame_mode game_mode_;
 
