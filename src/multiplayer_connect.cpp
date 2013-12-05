@@ -583,8 +583,8 @@ void connect::update_playerlist_state(bool silent)
 	}
 
 	if ((engine_.sides_available() != true) && (silent != true)) {
-		DBG_MP << "play game full sound" << std::endl;
-		sound::play_UI_sound(game_config::sounds::turn_bell);
+		DBG_MP << "play party full sound" << std::endl;
+		sound::play_UI_sound(game_config::sounds::party_full_bell);
 	}
 }
 
