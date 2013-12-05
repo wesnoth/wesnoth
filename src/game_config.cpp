@@ -135,7 +135,7 @@ namespace game_config
 
 	const version_info wesnoth_version(VERSION);
 	const version_info min_savegame_version(MIN_SAVEGAME_VERSION);
-	const std::string  test_version("test");
+	const version_info test_version("test");
 
 	const std::string observer_team_name = "observer";
 

@@ -165,7 +165,7 @@ namespace game_config
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
-	extern const std::string  test_version;
+	extern const version_info test_version;
 }
 
 #endif
