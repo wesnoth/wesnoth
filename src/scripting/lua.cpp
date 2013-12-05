@@ -40,6 +40,7 @@
 #include "ai/composite/engine_lua.hpp"
 #include "ai/testing/stage_rca.hpp"
 #include "attack_prediction.hpp"
+#include "formula_string_utils.hpp"
 #include "filesystem.hpp"
 #include "game_display.hpp"
 #include "game_events/conditional_wml.hpp"
@@ -1508,6 +1509,7 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
+	return_string_attrib("campaign_type", resources::state_of_game->classification().campaign_type);
 	return 0;
 }
 
@@ -1591,10 +1593,10 @@ static int impl_mp_settings_get(lua_State *L)
 		return_string_attrib("mp_scenario_name", game_state_.mp_settings().mp_scenario_name);//cfg["mp_scenario_name"] = mp_scenario_name;
 		return_string_attrib("mp_campaign",      game_state_.mp_settings().mp_campaign);//cfg["mp_campaign"] = mp_campaign;
 		return_string_attrib("difficulty_define",game_state_.mp_settings().difficulty_define);//cfg["difficulty_define"] = difficulty_define;
-		//cfg["active_mods"] = utils::join(active_mods, ",");
-		//cfg["side_users"] = utils::join_map(side_users);
+		return_string_attrib("active_mods",      utils::join(game_state_.mp_settings().active_mods));//cfg["active_mods"] = utils::join(active_mods, ",");
+		return_string_attrib("side_users",       utils::join_map(game_state_.mp_settings().side_users));//cfg["side_users"] = utils::join_map(side_users);
 		return_int_attrib("experience_modifier",        game_state_.mp_settings().xp_modifier);//cfg["experience_modifier"] = xp_modifier;
-		return_int_attrib("mp_countdown",               game_state_.mp_settings().mp_countdown);//cfg["mp_countdown"] = mp_countdown;
+		return_bool_attrib("mp_countdown",               game_state_.mp_settings().mp_countdown);//cfg["mp_countdown"] = mp_countdown;
 		return_int_attrib("mp_countdown_init_time",     game_state_.mp_settings().mp_countdown_init_time);//cfg["mp_countdown_init_time"] = mp_countdown_init_time;
 		return_int_attrib("mp_countdown_turn_bonus",    game_state_.mp_settings().mp_countdown_turn_bonus);//cfg["mp_countdown_turn_bonus"] = mp_countdown_turn_bonus;
 		return_int_attrib("mp_countdown_reservoir_time",game_state_.mp_settings().mp_countdown_reservoir_time);//cfg["mp_countdown_reservoir_time"] = mp_countdown_reservoir_time;
