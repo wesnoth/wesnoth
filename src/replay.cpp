@@ -399,7 +399,9 @@ void replay::add_pos(const std::string& type,
 
 void replay::user_input(const std::string &name, const config &input)
 {
-	add_command()->add_child(name, input);
+	config* const cmd = add_command();
+	(*cmd)["dependent"] = true;
+	cmd->add_child(name, input);
 }
 
 void replay::add_label(const terrain_label* label)
@@ -496,6 +498,7 @@ void replay::add_checksum_check(const map_location& loc)
 		return;
 	}
 	config* const cmd = add_command();
+	(*cmd)["dependent"] = true;
 	add_unit_checksum(loc,cmd);
 }
 
@@ -618,6 +621,10 @@ void replay::undo()
 	for (cmd = ncommands() - 1; cmd >= 0; --cmd)
 	{
 		config &c = command(cmd);
+		if (c["dependent"].to_bool(false))
+		{
+			continue;
+		}
 		if (c["undo"] != "no" && c["async"] != "yes" && c["sent"] != "yes") break;
 		if (c["async"] == "yes") {
 			async_cmd ac = { &c, cmd };
@@ -626,6 +633,17 @@ void replay::undo()
 	}
 
 	if (cmd < 0) return;
+	
+	//we remove dependent commands after the actual removed command that don't make sense if they stand alone especialy user choices and checksum data.
+	for(int cmd_2 = ncommands() - 1; cmd_2 > cmd; --cmd_2)
+	{
+		if(command(cmd_2)["dependent"].to_bool(false))
+		{
+			remove_command(cmd_2);
+		}
+	}
+	
+	
 	config &c = command(cmd);
 
 	if (const config &child = c.child("move"))
