@@ -1574,6 +1574,46 @@ static int impl_current_get(lua_State *L)
 }
 
 /**
+ * Get configuration options in [multiplayer] wml tag into a lua table.
+ *
+ */
+static int impl_mp_settings_get(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 2);
+
+	const game_state & game_state_ = *resources::state_of_game; 
+	//the comment lines are copied from block starting at line 195 in mp_game_settings.cpp, at the to_config() function
+	if(game_state_.classification().campaign_type=="multiplayer") {
+		return_string_attrib("scenario",         game_state_.mp_settings().name); //cfg["scenario"] = name;
+		return_string_attrib("hash",             game_state_.mp_settings().hash); //cfg["hash"] = hash;
+		return_string_attrib("mp_era",           game_state_.mp_settings().mp_era); //cfg["mp_era"] = mp_era;
+		return_string_attrib("mp_scenario",      game_state_.mp_settings().mp_scenario); //cfg["mp_scenario"] = mp_scenario;
+		return_string_attrib("mp_scenario_name", game_state_.mp_settings().mp_scenario_name);//cfg["mp_scenario_name"] = mp_scenario_name;
+		return_string_attrib("mp_campaign",      game_state_.mp_settings().mp_campaign);//cfg["mp_campaign"] = mp_campaign;
+		return_string_attrib("difficulty_define",game_state_.mp_settings().difficulty_define);//cfg["difficulty_define"] = difficulty_define;
+		//cfg["active_mods"] = utils::join(active_mods, ",");
+		//cfg["side_users"] = utils::join_map(side_users);
+		return_int_attrib("experience_modifier",        game_state_.mp_settings().xp_modifier);//cfg["experience_modifier"] = xp_modifier;
+		return_int_attrib("mp_countdown",               game_state_.mp_settings().mp_countdown);//cfg["mp_countdown"] = mp_countdown;
+		return_int_attrib("mp_countdown_init_time",     game_state_.mp_settings().mp_countdown_init_time);//cfg["mp_countdown_init_time"] = mp_countdown_init_time;
+		return_int_attrib("mp_countdown_turn_bonus",    game_state_.mp_settings().mp_countdown_turn_bonus);//cfg["mp_countdown_turn_bonus"] = mp_countdown_turn_bonus;
+		return_int_attrib("mp_countdown_reservoir_time",game_state_.mp_settings().mp_countdown_reservoir_time);//cfg["mp_countdown_reservoir_time"] = mp_countdown_reservoir_time;
+		return_int_attrib("mp_countdown_action_bonus",  game_state_.mp_settings().mp_countdown_action_bonus);//cfg["mp_countdown_action_bonus"] = mp_countdown_action_bonus;
+		return_int_attrib("mp_num_turns",               game_state_.mp_settings().num_turns);//cfg["mp_num_turns"] = num_turns;
+		return_int_attrib("mp_village_gold",            game_state_.mp_settings().village_gold);//cfg["mp_village_gold"] = village_gold;
+		return_int_attrib("mp_village_support",         game_state_.mp_settings().village_support);//cfg["mp_village_support"] = village_support;
+		return_bool_attrib("mp_fog",                    game_state_.mp_settings().fog_game);//cfg["mp_fog"] = fog_game;
+		return_bool_attrib("mp_shroud",                 game_state_.mp_settings().shroud_game);//cfg["mp_shroud"] = shroud_game;
+		return_bool_attrib("mp_use_map_settings",       game_state_.mp_settings().use_map_settings);//cfg["mp_use_map_settings"] = use_map_settings;
+		return_bool_attrib("mp_random_start_time",      game_state_.mp_settings().random_start_time);//cfg["mp_random_start_time"] = random_start_time;
+		return_bool_attrib("observer",                  game_state_.mp_settings().allow_observers);//cfg["observer"] = allow_observers;
+		return_bool_attrib("shuffle_sides",             game_state_.mp_settings().shuffle_sides);//cfg["shuffle_sides"] = shuffle_sides;
+		return_bool_attrib("savegame",                  game_state_.mp_settings().saved_game);//cfg["savegame"] = saved_game;
+	}
+	return 0;
+}
+
+/**
  * Displays a message in the chat window and in the logs.
  * - Arg 1: optional message header.
  * - Arg 2 (or 1): message.
@@ -3758,6 +3798,18 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "current");
+	lua_pop(L, 1);
+
+	// Create the mp_settings variable with its metatable
+	lua_getglobal(L, "wesnoth");
+	lua_newuserdata(L, 0);
+	lua_createtable(L, 0, 2);
+	lua_pushcfunction(L, impl_mp_settings_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushstring(L, "mp settings");
+	lua_setfield(L, -2, "__metatable");
+	lua_setmetatable(L, -2);
+	lua_setfield(L, -2, "mp_settings");
 	lua_pop(L, 1);
 
 	// Create the package table.
