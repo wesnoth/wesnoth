@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2013-08-18 12:25+0200\n"
+"PO-Revision-Date: 2013-12-06 09:31+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -1469,10 +1469,9 @@ msgstr "Modificacións mult."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
-#, fuzzy
 #| msgid "Actions"
 msgid "Options"
-msgstr "Accións"
+msgstr "Opcións"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
@@ -1498,31 +1497,33 @@ msgstr "Conmutar todo"
 #: data/gui/default/window/addon_filter_options.cfg:321
 msgid "Add-ons will be sorted as follows when no column is selected:"
 msgstr ""
+"Cando ningunha columna estea seleccionadas, os complementos ordenaranse da "
+"seguinte maneira:"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:351
 msgid "sort^By name"
-msgstr ""
+msgstr "Polo nome"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:356
 msgid "sort^By last updated"
-msgstr ""
+msgstr "Pola última actualización"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr ""
+msgstr "Polo envío inicial"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "Ascendente"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "Descendente"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1618,10 +1619,9 @@ msgstr "Anterior"
 
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:80
-#, fuzzy
 #| msgid "Previous"
 msgid "Previous page"
-msgstr "Anterior"
+msgstr "Páxina anterior"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
@@ -1634,10 +1634,9 @@ msgstr "Seguinte"
 
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:91
-#, fuzzy
 #| msgid "Next Side"
 msgid "Next page"
-msgstr "Seguinte bando"
+msgstr "Seguinte páxina"
 
 #. [label]
 #: data/gui/default/window/chat_log.cfg:101
@@ -2067,71 +2066,64 @@ msgstr "Cancelar calquera movemento pendente na partida."
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:47
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "Copiar"
 
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
-#, fuzzy
 #| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "Escoller unha partida a cargar:"
+msgstr "Copiar esta ruta no portapapeis."
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "Buscar"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:64
 msgid "Browse this location using a file manager"
-msgstr ""
+msgstr "Buscar neste lugar cun xestor de ficheiros."
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
 #| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "Camiño de cova"
+msgstr "Rutas do xogo"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
-#, fuzzy
 #| msgid "Metadata:"
 msgid "Game data:"
-msgstr "Metadatos:"
+msgstr "Datos do xogo:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
-#, fuzzy
 #| msgid "Confirmation requested"
 msgid "Configuration:"
-msgstr "Confirmación"
+msgstr "Configuración:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
-#, fuzzy
 #| msgid "Metadata:"
 msgid "User data:"
-msgstr "Metadatos:"
+msgstr "Datos do usuario:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
 #| msgid "Save Game"
 msgid "Saved games:"
-msgstr "Gardar a partida"
+msgstr "Partidas gardadas:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
 #| msgid "Add-ons"
 msgid "Add-ons:"
-msgstr "Complementos"
+msgstr "Complementos:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "Caché:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -3021,7 +3013,7 @@ msgstr "Atallos"
 
 #: src/game_preferences_display.cpp:203
 msgid "Paths"
-msgstr ""
+msgstr "Rutas"
 
 #: src/game_preferences_display.cpp:205
 msgid "Sound effects"
@@ -3324,7 +3316,7 @@ msgstr "Ver e configurar os atallos do teclado."
 
 #: src/game_preferences_display.cpp:432
 msgid "View game file paths"
-msgstr ""
+msgstr "Ver as rutas de ficheiros do xogo"
 
 # Cantidade pola que se multiplica a velocidade á que vai o xogo cando se activa a «velocidade acelerada».
 #: src/game_preferences_display.cpp:762
@@ -3893,7 +3885,6 @@ msgid "Reassign Hotkey"
 msgstr "Cambiar a acción do atallo"
 
 #: src/hotkeys.cpp:69
-#, fuzzy
 #| msgid "Cancel"
 msgid "cancel"
 msgstr "Cancelar"
@@ -4678,7 +4669,6 @@ msgid "Map-Screenshot"
 msgstr "Captura-do-mapa"
 
 #: src/hotkeys.cpp:1330 src/hotkeys.cpp:1332
-#, fuzzy
 #| msgid "Screenshot done"
 msgid "Screenshot Done"
 msgstr "Fíxose a captura"
