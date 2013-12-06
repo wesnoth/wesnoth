@@ -158,8 +158,8 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	allow_observers = cfg["observer"].to_bool();
 	shuffle_sides = cfg["shuffle_sides"].to_bool();
 	saved_game = cfg["savegame"].to_bool();
-	share_view = cfg["share_view"].to_bool();
-	share_maps = cfg["share_maps"].to_bool();
+	//share_maps and share_view are not read, because these are serialized in [side] tags in savegame files. 
+	//they may be set by a widget in mp create game, and used to initialize sides. see multiplayer_configure.cpp
 	options = cfg.child_or_empty("options");
 }
 
@@ -219,8 +219,8 @@ config mp_game_settings::to_config() const
 	cfg["observer"] = allow_observers;
 	cfg["shuffle_sides"] = shuffle_sides;
 	cfg["savegame"] = saved_game;
-	cfg["share_view"] = share_view;
-	cfg["share_maps"] = share_maps;
+	//share_maps and share_view are not written, because these are serialized in [side] tags in savegame files. 
+	//they may be set by a widget in mp create game, and used to initialize sides. see multiplayer_configure.cpp
 	cfg.add_child("options", options);
 
 	return cfg;
