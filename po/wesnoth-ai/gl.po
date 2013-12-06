@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2013-08-18 12:01+0200\n"
+"PO-Revision-Date: 2013-12-06 09:58+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -29,10 +29,9 @@ msgstr "IA predeterminada (RCA)"
 
 #. [ai]: id=ai_default_rca_strong
 #: data/ai/ais/ai_default_rca_strong.cfg:5
-#, fuzzy
 #| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Strong AI (RCA)"
-msgstr "IA predeterminada (RCA)"
+msgstr "IA difícil (RCA)"
 
 #. [ai]: id=experimental_ai
 #: data/ai/ais/ai_generic_rush.cfg:5
@@ -41,43 +40,44 @@ msgstr "IA experimental"
 
 #. [ai]: id=ai_old_recruitment
 #: data/ai/dev/ai_old_recruitment.cfg:5
-#, fuzzy
 #| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Default + Old Recruitment"
-msgstr "IA predeterminada (RCA)"
+msgstr "IA de desenvolvemento: predeterminada co sistema vello de recrutamento"
 
 #. [ai]: id=ai_akihara
 #: data/ai/dev/akihara_recruitment.cfg:6
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++ Akihara)"
 msgstr ""
+"IA de desenvolvemento: predeterminada cun sistema experimental de "
+"recrutamento (C++ Akihara)"
 
 #. [ai]: id=formula_ai # id is needed to uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/dev/formula_ai.cfg:4
-#, fuzzy
 #| msgid "Multiplayer_AI^Experimental AI"
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (Formula AI)"
-msgstr "IA experimental"
+msgstr ""
+"IA de desenvolvemento: predeterminada cun sistema experimental de "
+"recrutamento (Formula AI)"
 
 #. [ai]: id=default_ai_poisoning
 #: data/ai/dev/formula_ai_poisoning.cfg:5
-#, fuzzy
 #| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Default + Poisoning (Formula AI)"
-msgstr "IA predeterminada (RCA)"
+msgstr "IA de desenvolvemento: predeterminada con veleno (Formula AI)"
 
 #. [ai]: id=ai_idle
 #: data/ai/dev/idle_ai.cfg:4
-#, fuzzy
 #| msgid "Multiplayer_AI^Default AI (RCA)"
 msgid "Multiplayer_AI^Dev AI: Idle AI"
-msgstr "IA predeterminada (RCA)"
+msgstr "IA de desenvolvemento: IA inactiva"
 
 #. [ai]: id=testing_ai_recruitment
 #: data/ai/dev/testing_recruiting.cfg:5
-#, fuzzy
 #| msgid "Multiplayer_AI^Experimental AI"
 msgid "Multiplayer_AI^Dev AI: Default + Experimental Recruitment (C++)"
-msgstr "IA experimental"
+msgstr ""
+"IA de desenvolvemento: predeterminada cun sistema experimental de "
+"recrutamento (C++)"
 
 #. [test]: id=The_Elves_Besieged
 #: data/ai/micro_ais/scenarios/The_Elves_Besieged.cfg:5
@@ -432,7 +432,6 @@ msgstr "Pois nada, xa está."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:331
-#, fuzzy
 #| msgid ""
 #| "<span color='#A00000'>Important:</span> The animal Micro AIs in this "
 #| "scenario are written for a number of animal unit types that do not exist "
@@ -452,10 +451,7 @@ msgstr ""
 "animais que non existen na distribución oficial de A batalla polo Noroeste, "
 "como osos, rabaños ou cans pastores. Neste escenario de probas, esas "
 "unidades substituíronse por unidades “equivalentes” que si forman parte da "
-"distribución oficial. Se queres a “experiencia completa” cos tipos de "
-"unidade animais orixinais, bótalle unha ollada ao escenario «Animais» do "
-"complemento «AI Modification Demos» (demostracións de modificación das "
-"intelixencias artificiais)."
+"distribución oficial."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/animals.cfg:334
@@ -2433,7 +2429,6 @@ msgstr ""
 
 #. [event]: id=Koorzhar profile profile}
 #: data/ai/micro_ais/scenarios/recruiting.cfg:86
-#, fuzzy
 #| msgid ""
 #| "If you have not changed anything, Side 1 uses the Random Recruiting AI, "
 #| "with swordsmen and peasants having been given higher probability than the "
@@ -2461,13 +2456,15 @@ msgid ""
 "AI wiki page</span> at http://wiki.wesnoth.org/Micro_AIs for more "
 "information."
 msgstr ""
-"Se non cambiaches nada, o bando 1 usa a intelixencia artificial de "
+"Se non cambiaches nada no código do escenario, o bando 1 usa a intelixencia "
+"artificial de "
 "recrutamento aleatorio, cunha probabilidade superior de recrutar espadachíns "
 "e campesiños. Non se trata dun bo patrón de recrutamento, esa non é a "
 "intención, simplemente se trata dunha demostración de como se pode empregar "
 "a intelixencia artificial.\n"
 "\n"
-"O bando 2 emprega o sistema de recrutamento predeterminado do xogo.\n"
+"O bando 2 emprega a intelixencia artificial de recrutamento apurado (usada "
+"tamén na intelixencia artificial experimental).\n"
 "\n"
 "Téñase en conta tamén que hai varias intelixencias artificiais de "
 "recrutamento programadas como micro intelixencias artificiais, que poden "
@@ -2529,7 +2526,7 @@ msgstr "Matar o tempo e mensaxeiro"
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:89
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:5
 msgid "Simple Attack"
-msgstr ""
+msgstr "Ataque simple"
 
 #. [set_menu_item]: id=m01_menu_bottleneck_defense
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:96
@@ -2830,10 +2827,9 @@ msgstr ""
 #. [set_menu_item]: id=m14_simple_attack
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:322
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:331
-#, fuzzy
 #| msgid "Swamp Lurker Micro AI demo"
 msgid "Simple Attack Micro AI demo"
-msgstr "Demostración da micro IA de axexador nun lameiro"
+msgstr "Demostración da micro IA de ataque simple"
 
 #. [command]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:331
@@ -2842,6 +2838,9 @@ msgid ""
 "priority than the standard Wesnoth attacks and how the AI can be forced to "
 "do attacks that it would otherwise avoid."
 msgstr ""
+"Este escenario demostra como certos ataques poden executarse cunha prioridade "
+"maior que os ataques estándar do xogo, e como se pode obrigar á intelixencia "
+"artificial a empregar ataques que en principio evitaría."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:341
@@ -2871,17 +2870,17 @@ msgstr ""
 #. [side]: id=Grospur, type=General
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:17
 msgid "Grospur"
-msgstr ""
+msgstr "Grospur"
 
 #. [side]: type=Ancient Lich, id=Uralt
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:32
 msgid "Uralt"
-msgstr ""
+msgstr "Ural"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:118
 msgid "General Grospur, what do we do?  These undead will surely wipe us out."
-msgstr ""
+msgstr "Xeneral Grospur, que facemos?  Estes non mortos han acabar connosco."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:119
@@ -2897,33 +2896,44 @@ msgid ""
 "Attack Micro AI in this scenario. General Grospur might be in for a surprise."
 "</i>"
 msgstr ""
+"Non sexa caguiñas, sarxento! Teño unidades con moita experiencia apostadas no "
+"perímetro. Os non mortos non se atreverán a atacalas. E se algúns deles "
+"conseguen pasar… librarémonos deles facilmente en canto entren.\n"
+"\n"
+"<i>Noutras palabras, a intelixencia artificial do xogo non adoita atacar "
+"unidades a un punto de experiencia de subir de nivel salvo que exista algunha "
+"posibilidade de acabar con esa unidade dun golpe. Porén, neste escenario "
+"algúns dos ataques dos non mortos están controlados pola micro intelixencia "
+"artificial de ataque simple. Pode que o xeneral Grospur leve unha sorpresa."
+"</i>"
 
 #. [objectives]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:124
 msgid "Watch the undead take care of business"
-msgstr ""
+msgstr "Observa como os non mortos manexan o asunto"
 
 #. [objective]: condition=win
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:126
 msgid "Don't even try. You can't reach the Lich."
-msgstr ""
+msgstr "Nin o intentes. Non podes chegar ata o liche."
 
 #. [objective]: condition=lose
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:130
 msgid "Death of the last of Grospur's units"
-msgstr ""
+msgstr "Morte da última das uniades de Grospur."
 
 #. [note]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:134
 msgid "When your leader dies, side leadership passes on to another unit"
 msgstr ""
+"Cando morra o teu líder, o liderado do teu bando traspásase a outra unidade."
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:159
 msgid ""
 "What the ... ?!?  They are not supposed to attack me. That just doesn't "
 "happen in Wesnoth!"
-msgstr ""
+msgstr "Que cara… Non deberían atacarme! Iso non ocorre neste xogo!!!"
 
 #. [event]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:160
@@ -2941,16 +2951,30 @@ msgid ""
 "for their own safety.  Only after that does the default Wesnoth attack "
 "mechanism kick in to attack with the remaining units (skeletons).</i>"
 msgstr ""
+"Ha ha ha ha ha! Dinlles instrucións especiais aos inanimados: atacar primeiro "
+"a todas as unidades a piques de avanzar. Observa tamén como eses mesmos "
+"inanimados logo se lanzan sen piedade contra os teus pobres soldados, "
+"deixando os meus valiosos esqueletos para despois. Dinlle un novo significado "
+"a iso de «unidade de refugo». Goza da paisaxe!\n"
+"\n"
+"<i>Tradución: O bando dos non mortos inclúe dúas instancias de micro "
+"intelixencia artificial de ataque simple. A primeira fai que os inanimados "
+"ataquen a todas as unidades que estean a un punto de subir de nivel, para así "
+"eliminalas a continuación. A segunda executa todos os ataques restantes que "
+"poden realizar os inanimados (e os cadáveres andantes), sen importar a súa "
+"propia seguridade. Só entón entra en xogo o mecanismo de ataque "
+"predeterminado do xogo para as unidades restantes (os esqueletos).</i>"
 
 #. [then]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:176
 msgid "Rise, minions!"
-msgstr ""
+msgstr "Erguédevos, súbditos!"
 
 #. [else]
 #: data/ai/micro_ais/scenarios/simple_attack.cfg:219
 msgid "And that's how the undead AI executes total annihilation ..."
 msgstr ""
+"E así é como a intelixencia artificial dos non mortos consegue unha masacre…"
 
 #. [side]
 #: data/ai/micro_ais/scenarios/swarm.cfg:40

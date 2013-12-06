@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2013-08-18 11:27+0200\n"
+"PO-Revision-Date: 2013-12-06 09:25+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -730,7 +730,7 @@ msgstr "Faro"
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:22
 msgid "Ask $ai_controller_unit.name to move here"
-msgstr ""
+msgstr "Pedir a $ai_controller_unit.name que se poña aquí"
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai_controller.cfg:76
@@ -4088,6 +4088,11 @@ msgid ""
 "File: $path\n"
 "Error message: $msg"
 msgstr ""
+"Non foi posíbel ler un ficheiro local con información de publicación de "
+"complementos.\n"
+"\n"
+"Ficheiro: $path\n"
+"Mensaxe de erro: $msg"
 
 #: src/addon/manager_ui.cpp:1000
 msgid "The add-ons server address specified is not valid."
@@ -4430,7 +4435,7 @@ msgstr "Non se atopou ningún tipo de líder para a facción $faction|."
 
 #: src/flg_manager.cpp:289
 msgid "Cannot obtain genders for invalid leader $leader"
-msgstr ""
+msgstr "Non é posíbel obter o sexo co líder $leader. O líder non é valido."
 
 #: src/game_config.cpp:350
 msgid "Invalid color range: "
@@ -4500,10 +4505,9 @@ msgid "The game map could not be loaded: "
 msgstr "Non foi posíbel cargar o mapa da partida: "
 
 #: src/game_display.cpp:986 src/game_display.cpp:1012
-#, fuzzy
 #| msgid "Chat message aging"
 msgid "Chat message"
-msgstr "Tempo de caducidade das mensaxes."
+msgstr "Mensaxe de conversa"
 
 #: src/game_display.cpp:986 src/game_display.cpp:1008
 #: src/playmp_controller.cpp:96
@@ -4877,11 +4881,10 @@ msgstr ""
 "a quenda?"
 
 #: src/menu_events.cpp:843
-#, fuzzy
 #| msgid "Some units have movement left. Do you really want to end your turn?"
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
-"A algunhas unidades aínda lles quedan movementos. Seguro que queres rematar "
+"Algunhas unidades non se moveron. Seguro que queres rematar "
 "a quenda?"
 
 #: src/menu_events.cpp:883
@@ -5747,20 +5750,18 @@ msgid "You have made too many login attempts."
 msgstr "Intentou identificarse demasiadas veces sen conseguilo."
 
 #: src/multiplayer_configure.cpp:48
-#, fuzzy
 #| msgid "Confirm"
 msgid "Configure Game"
-msgstr "Confirmar"
+msgstr "Configurar a partida"
 
 #: src/multiplayer_configure.cpp:57
 msgid "Time limit"
 msgstr "Límite de tempo"
 
 #: src/multiplayer_configure.cpp:72
-#, fuzzy
 #| msgid "General commands"
 msgid "Generic"
-msgstr "Ordes xerais"
+msgstr "Xenérica"
 
 #: src/multiplayer_configure.cpp:73
 msgid "Name of game:"
@@ -5797,10 +5798,9 @@ msgid "Set Password..."
 msgstr "Establecer un contrasinal…"
 
 #: src/multiplayer_configure.cpp:88
-#, fuzzy
 #| msgid "Select Scenario"
 msgid "Select an entry point:"
-msgstr "Escoller un escenario"
+msgstr "Escolle un punto de entrada:"
 
 #: src/multiplayer_configure.cpp:105
 msgid "The maximum number of turns the game can last"
@@ -6041,23 +6041,21 @@ msgstr "Filtro:"
 
 #: src/multiplayer_create.cpp:70
 msgid "Number of players: any"
-msgstr ""
+msgstr "Número de xogadores: calquera"
 
 #: src/multiplayer_create.cpp:71
-#, fuzzy
 #| msgid "Random start time"
 msgid "Random map options:"
-msgstr "Hora de inicio ao chou"
+msgstr "Opcións do mapa aleatorio:"
 
 #: src/multiplayer_create.cpp:72
 msgid "Era:"
 msgstr "Era:"
 
 #: src/multiplayer_create.cpp:73
-#, fuzzy
 #| msgid "Modifications..."
 msgid "Modifications:"
-msgstr "Modificacións…"
+msgstr "Modificacións:"
 
 #: src/multiplayer_create.cpp:79
 msgid "Regenerate"
@@ -6073,13 +6071,12 @@ msgstr "Cargar unha partida…"
 
 #: src/multiplayer_create.cpp:82 src/multiplayer_create.cpp:277
 msgid "Activate"
-msgstr ""
+msgstr "Activar"
 
 #: src/multiplayer_create.cpp:122 src/multiplayer_create.cpp:123
-#, fuzzy
 #| msgid "No eras found."
 msgid "No games found."
-msgstr "Non se atoparon eras."
+msgstr "Non se atoparon partidas."
 
 #: src/multiplayer_create.cpp:160
 msgid "No eras found."
@@ -6090,22 +6087,19 @@ msgid "No eras found"
 msgstr "Non se atoparon eras"
 
 #: src/multiplayer_create.cpp:183
-#, fuzzy
 #| msgid "Modifications..."
 msgid "Modifications: none found"
-msgstr "Modificacións…"
+msgstr "Modificacións: ningunha."
 
 #: src/multiplayer_create.cpp:244
-#, fuzzy
 #| msgid "The map is invalid."
 msgid "The level is invalid."
-msgstr "O mapa non é válido."
+msgstr "O nivel non é válido."
 
 #: src/multiplayer_create.cpp:275
-#, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Deactivate"
-msgstr "Activouse o modo de depuración!"
+msgstr "Desactivar"
 
 #: src/multiplayer_create.cpp:324
 msgid "Players: "
@@ -6120,26 +6114,23 @@ msgid "No description available."
 msgstr "Sen descrición."
 
 #: src/multiplayer_create_engine.cpp:105 src/multiplayer_create_engine.cpp:635
-#, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded: "
-msgstr "Non foi posíbel cargar a partida: "
+msgstr "Non foi posíbel cargar o mapa: "
 
 #: src/multiplayer_create_engine.cpp:109
-#, fuzzy
 #| msgid "The game could not be loaded: "
 msgid "Map could not be loaded."
-msgstr "Non foi posíbel cargar a partida: "
+msgstr "Non foi posíbel cargar o mapa."
 
 #: src/multiplayer_create_engine.cpp:131
-#, fuzzy
 #| msgid " No help available."
 msgid "not available."
-msgstr " Non hai axuda dispoñíbel."
+msgstr "non dispoñíbel."
 
 #: src/multiplayer_create_engine.cpp:183
 msgid "User made map"
-msgstr ""
+msgstr "Mapa non oficial"
 
 # Aparece na sala de espera para partidas con varios xogadores cando non hai ningunha partida.
 #: src/multiplayer_lobby.cpp:125
@@ -6152,10 +6143,9 @@ msgid " (Unknown Era)"
 msgstr " (era descoñecida)"
 
 #: src/multiplayer_lobby.cpp:561
-#, fuzzy
 #| msgid "Campaign: $campaign_name"
 msgid "Unknown campaign: $campaign_id"
-msgstr "Campaña: $campaign_name"
+msgstr "Campaña descoñecida: $campaign_id"
 
 #: src/multiplayer_lobby.cpp:579
 msgid " (missing)"
@@ -7064,198 +7054,190 @@ msgid "Skip"
 msgstr "Saltar"
 
 #: src/strftime.cpp:23
-#, fuzzy
 #| msgid "Morning"
 msgid "Mon"
-msgstr "Mañá"
+msgstr "Lun"
 
 #: src/strftime.cpp:23
 msgid "Sun"
-msgstr ""
+msgstr "Dom"
 
 #: src/strftime.cpp:23
 msgid "Tue"
-msgstr ""
+msgstr "Mar"
 
 #: src/strftime.cpp:23
-#, fuzzy
 #| msgid "Red"
 msgid "Wed"
-msgstr "Vermello"
+msgstr "Mér"
 
 #: src/strftime.cpp:24
 msgid "Fri"
-msgstr ""
+msgstr "Ven"
 
 #: src/strftime.cpp:24
-#, fuzzy
 #| msgid "Status"
 msgid "Sat"
-msgstr "Estado"
+msgstr "Sáb"
 
 #: src/strftime.cpp:24
 msgid "Thu"
-msgstr ""
+msgstr "Xov"
 
 #: src/strftime.cpp:25
 msgid "Monday"
-msgstr ""
+msgstr "Luns"
 
 #: src/strftime.cpp:25
 msgid "Sunday"
-msgstr ""
+msgstr "Domingo"
 
 #: src/strftime.cpp:25
 msgid "Tuesday"
-msgstr ""
+msgstr "Martes"
 
 #: src/strftime.cpp:26
 msgid "Friday"
-msgstr ""
+msgstr "Venres"
 
 #: src/strftime.cpp:26
 msgid "Saturday"
-msgstr ""
+msgstr "Sábado"
 
 #: src/strftime.cpp:26
 msgid "Thursday"
-msgstr ""
+msgstr "Xoves"
 
 #: src/strftime.cpp:26
 msgid "Wednesday"
-msgstr ""
+msgstr "Mércores"
 
 #: src/strftime.cpp:27
 msgid "Apr"
-msgstr ""
+msgstr "Abr"
 
 #: src/strftime.cpp:27
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
 #: src/strftime.cpp:27
 msgid "Jan"
-msgstr ""
+msgstr "Xan"
 
 #: src/strftime.cpp:27
 msgid "Mar"
-msgstr ""
+msgstr "Mar"
 
 #: src/strftime.cpp:28
 msgid "Aug"
-msgstr ""
+msgstr "Ago"
 
 #: src/strftime.cpp:28
 msgid "Jul"
-msgstr ""
+msgstr "Xul"
 
 #: src/strftime.cpp:28
 msgid "Jun"
-msgstr ""
+msgstr "Xun"
 
 #: src/strftime.cpp:28
 msgid "Oct"
-msgstr ""
+msgstr "Out"
 
 #: src/strftime.cpp:28
 msgid "Sep"
-msgstr ""
+msgstr "Set"
 
 #: src/strftime.cpp:28
 msgid "abbrev^May"
-msgstr ""
+msgstr "Mai"
 
 #: src/strftime.cpp:29
 msgid "Dec"
-msgstr ""
+msgstr "Dec"
 
 #: src/strftime.cpp:29
 msgid "Nov"
-msgstr ""
+msgstr "Nov"
 
 #: src/strftime.cpp:30
 msgid "February"
-msgstr ""
+msgstr "Febreiro"
 
 #: src/strftime.cpp:30
 msgid "January"
-msgstr ""
+msgstr "Xaneiro"
 
 #: src/strftime.cpp:30
-#, fuzzy
 #| msgid "Search"
 msgid "March"
-msgstr "Buscar"
+msgstr "Marzo"
 
 #: src/strftime.cpp:31
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 #: src/strftime.cpp:31
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 #: src/strftime.cpp:31
 msgid "July"
-msgstr ""
+msgstr "Xullo"
 
 #: src/strftime.cpp:31
 msgid "June"
-msgstr ""
+msgstr "Xuño"
 
 #: src/strftime.cpp:31
 msgid "May"
-msgstr ""
+msgstr "Maio"
 
 #: src/strftime.cpp:32
 msgid "December"
-msgstr ""
+msgstr "Decembro"
 
 #: src/strftime.cpp:32
-#, fuzzy
 #| msgid "Movement"
 msgid "November"
-msgstr "Movemento"
+msgstr "Novembro"
 
 #: src/strftime.cpp:32
 msgid "October"
-msgstr ""
+msgstr "Outubro"
 
 #: src/strftime.cpp:32
 msgid "September"
-msgstr ""
+msgstr "Setembro"
 
 # Aparece ao cargar partidas.
 #: src/strftime.cpp:73
-#, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %b %e %H:%M:%S %Y"
-msgstr "%d/%m/%Y ás %H:%M"
+msgstr "%d/%m/%Y ás %H:%M:%S"
 
 # Aparece ao cargar partidas.
 #: src/strftime.cpp:77
-#, fuzzy
 #| msgid "%a %b %d %H:%M %Y"
 msgid "%a %d %b %Y %H:%M:%S %z"
-msgstr "%d/%m/%Y ás %H:%M"
+msgstr "%d/%m/%Y ás %H:%M:%S %z"
 
 #: src/strftime.cpp:88
 msgid "AM"
-msgstr ""
+msgstr "a.m."
 
 #: src/strftime.cpp:88
 msgid "PM"
-msgstr ""
+msgstr "p.m."
 
 #: src/strftime.cpp:91
-#, fuzzy
 #| msgid "Name"
 msgid "am"
-msgstr "Nome"
+msgstr "am"
 
 #: src/strftime.cpp:91
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: src/terrain.cpp:163
 msgid "Allied village"
