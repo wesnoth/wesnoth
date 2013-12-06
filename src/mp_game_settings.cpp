@@ -159,7 +159,6 @@ void mp_game_settings::set_from_config(const config& game_cfg)
 	shuffle_sides = cfg["shuffle_sides"].to_bool();
 	saved_game = cfg["savegame"].to_bool();
 	//share_maps and share_view are not read, because these are serialized in [side] tags in savegame files. 
-	//they may be set by a widget in mp create game, and used to initialize sides. see multiplayer_configure.cpp
 	options = cfg.child_or_empty("options");
 }
 
@@ -220,7 +219,6 @@ config mp_game_settings::to_config() const
 	cfg["shuffle_sides"] = shuffle_sides;
 	cfg["savegame"] = saved_game;
 	//share_maps and share_view are not written, because these are serialized in [side] tags in savegame files. 
-	//they may be set by a widget in mp create game, and used to initialize sides. see multiplayer_configure.cpp
 	cfg.add_child("options", options);
 
 	return cfg;
