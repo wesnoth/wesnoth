@@ -977,12 +977,32 @@ class HTMLOutput:
             already[tid] = 1
             name = T(t, "name")
             ticon = t.get_text_val("symbol_image")
-            if tid == "flat": ticon = "grass/green-symbol"
-            elif tid == "frozen": ticon = "frozen/ice"
-            elif tid == "unwalkable": ticon = "unwalkable/lava"
-            elif tid == "village": ticon = "village/human-tile"
-            elif tid == "forest": ticon = "forest/pine-tile"
-            terrainlist.append((name, tid, ticon))
+            if not ticon:
+                ticon = t.get_text_val("icon_image")
+
+            # Use nice images for known mainline terrain types
+            if tid == "fungus": ticon = "forest/mushrooms-tile"
+            elif tid = "cave": ticon = "cave/floor6"
+            elif tid = "sand": ticon = "sand/beach"
+            elif tid = "reef": ticon = "water/reef-tropical-tile"
+            elif tid = "hills": ticon = "hills/regular"
+            elif tid = "swamp_water": ticon = "swamp/water-tile"
+            elif tid = "shallow_water": ticon = "water/coast-tile"
+            elif tid = "castle": ticon = "castle/castle-tile"
+            elif tid = "mountains": ticon = "mountains/snow-tile"
+            elif tid = "deep_water": ticon = "water/ocean-tile"
+            elif tid = "flat": ticon = "grass/green-symbol"
+            elif tid = "forest": ticon = "forest/pine-tile"
+            elif tid = "frozen": ticon = "frozen/ice"
+            elif tid = "village": ticon = "village/human-tile"
+            elif tid = "impassable": ticon = "void/void"
+            elif tid = "unwalkable": ticon = "unwalkable/lava"
+            elif tid = "rails": ticon = "misc/rails-ne-sw"
+            
+            if ticon:
+                terrainlist.append((name, tid, ticon))
+            else:
+                error_message("Terrain " + tid + " has no symbol_image\n")
         terrainlist.sort()
 
         for tname, tid, ticon in terrainlist:
