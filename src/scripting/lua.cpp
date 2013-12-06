@@ -1508,7 +1508,12 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
-	return_string_attrib("campaign_type", resources::state_of_game->classification().campaign_type);
+
+	const game_state & game_state_ = *resources::state_of_game; 
+	return_string_attrib("campaign_type", game_state_.classification().campaign_type);
+	if(game_state_.classification().campaign_type=="multiplayer") {
+		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
+	}
 	return 0;
 }
 
@@ -1571,22 +1576,6 @@ static int impl_current_get(lua_State *L)
 		return 1;
 	}
 
-	return 0;
-}
-
-/**
- * Get configuration options in [multiplayer] wml tag into a lua table.
- *
- */
-static int impl_mp_settings_get(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 2);
-
-	const game_state & game_state_ = *resources::state_of_game; 
-
-	if(game_state_.classification().campaign_type=="multiplayer") {
-		return_cfg_attrib("__cfg", cfg=game_state_.mp_settings().to_config());
-	}
 	return 0;
 }
 
@@ -3775,18 +3764,6 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "__metatable");
 	lua_setmetatable(L, -2);
 	lua_setfield(L, -2, "current");
-	lua_pop(L, 1);
-
-	// Create the mp_settings variable with its metatable
-	lua_getglobal(L, "wesnoth");
-	lua_newuserdata(L, 0);
-	lua_createtable(L, 0, 2);
-	lua_pushcfunction(L, impl_mp_settings_get);
-	lua_setfield(L, -2, "__index");
-	lua_pushstring(L, "mp settings");
-	lua_setfield(L, -2, "__metatable");
-	lua_setmetatable(L, -2);
-	lua_setfield(L, -2, "mp_settings");
 	lua_pop(L, 1);
 
 	// Create the package table.
