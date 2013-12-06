@@ -680,7 +680,7 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 			break;
 		}
 
-		if (oldhk) { // && oldhk->active()) {
+		if (oldhk && oldhk->active()) {
 			if (oldhk->get_command() != id) {
 
 				utils::string_map symbols;
