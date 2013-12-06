@@ -212,12 +212,12 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, hotkey::SCOPE_GAME, "" },
-	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter User Command"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom Command"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run Formula"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, hotkey::SCOPE_GAME, "" },
 
+	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true ,hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, hotkey::SCOPE_MAIN_MENU, "" },
@@ -231,7 +231,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::GLOBAL__HELPTIP, "global__helptip", N_("Show Helptip"), false, hotkey::SCOPE_GENERAL, "" },
 
 	//This list item must stay at the end since it is used as terminator for iterating.
-	{ hotkey::HOTKEY_NULL, "null", N_("Unrecognized Command"), true, hotkey::SCOPE_GENERAL, "" }
+	{ hotkey::HOTKEY_NULL, "null", N_("Unrecognized Command"), true, hotkey::SCOPE_COUNT, "" }
 };
 
 // contains copies of hotkey_list_ and all current active wml menu hotkeys
