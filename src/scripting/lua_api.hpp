@@ -123,11 +123,6 @@ bool luaW_getglobal(lua_State *L, ...);
 /**
  * Converts a Lua value to a unit pointer.
  */
-unit *luaW_tounit(lua_State *L, int index, bool only_on_map);
-
-/**
- * Converts a Lua value to a unit pointer.
- */
 unit *luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
 
 /**
