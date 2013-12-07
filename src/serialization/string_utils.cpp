@@ -505,6 +505,7 @@ std::string half_signed_value(int val)
 }
 
 static void si_string_impl_stream_write(std::stringstream &ss, double input) {
+	std::streamsize oldprec = ss.precision();
 #ifdef _MSC_VER
 	// Visual C++ makes 'precision' set the number of decimal places.
 	// Other platforms make it set the number of significant figures
@@ -519,6 +520,7 @@ static void si_string_impl_stream_write(std::stringstream &ss, double input) {
 		ss.precision(3);
 	ss << input;
 #endif
+	ss.precision(oldprec);
 }
 
 std::string si_string(double input, bool base2, std::string unit) {
