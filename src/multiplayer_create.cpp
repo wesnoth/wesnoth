@@ -181,6 +181,8 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 
 	if (mod_selection_ == -1) {
 		mod_label_.set_text(_("Modifications: none found"));
+	} else if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
+		select_mod_.set_label(_("Deactivate"));
 	}
 
 	utils::string_map i18n_symbols;
