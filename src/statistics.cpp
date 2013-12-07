@@ -28,6 +28,7 @@
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace {
 
@@ -628,7 +629,12 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 {
 	int cost = 0;
 	for (stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		cost += i->second * unit_types.find(i->first)->cost();
+		const unit_type *t = unit_types.find(i->first);
+		if (!t) {
+			ERR_NG << "Statistics refer to unknown unit type '" << i->first << "'. Discarding.\n";
+		} else {
+			cost += i->second * t->cost();
+		}
 	}
 
 	return cost;
