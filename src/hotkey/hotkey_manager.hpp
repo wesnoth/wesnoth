@@ -1,5 +1,5 @@
 #ifndef HOTKEY_MANAGER_HPP_INCLUDED
-#define HOTKEY_HANAGER_HPP_INCLUDED
+#define HOTKEY_MANAGER_HPP_INCLUDED
 
 
 /* The hotkey system allows hotkey definitions to be loaded from
