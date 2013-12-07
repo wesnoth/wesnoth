@@ -140,6 +140,7 @@ class potential_recruit_converter
       potential_recruit operator()(const std::string &id)
       {
          const unit_type *type = unit_types.find(id);
+			assert(type);
          return potential_recruit(type->cost(),max_qty_,0,side_,type);
       }
    private:
