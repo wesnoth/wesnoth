@@ -188,6 +188,7 @@ void manager::layout_widgets(int startx, int starty)
 		 i != widgets_.end(); i++)
 	{
 		i->second->layout(startx, ypos, border_size, pane_);
+		ypos += border_size;
 	}
 }
 
@@ -381,7 +382,7 @@ config::attribute_value entry_display::get_value() const
 
 slider_display::slider_display(CVideo &video, const std::string &label, int value, int min, int max, int step) :
 	slider_(new gui::slider(video)),
-	label_(new gui::label(video, label))
+	label_(new gui::label(video, label, font::SIZE_SMALL))
 {
 	slider_->set_min(min);
 	slider_->set_max(max);
