@@ -5,14 +5,14 @@
 # Automatically generated, 2005.
 # naoki iimura <amatubu@gmail.com>, 2006-2008.
 # Nobuhito Okada <okyada@gmail.com>, 2006.
-# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2011.
+# IWAI, Masaharu <iwaim.sub@gmail.com>, 2010-2011, 2013.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2011-11-05 07:36+0900\n"
+"PO-Revision-Date: 2013-12-06 23:29+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: <wesnoth-ja-translate@lists.sourceforge.jp>\n"
 "Language: Japanese\n"
@@ -308,33 +308,23 @@ msgstr "王冠"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:461
-#, fuzzy
-#| msgid ""
-#| "Note: The tiny metal crown above Delfador means you will lose the game if "
-#| "he is killed. You will also lose the game if your leader (Konrad) is "
-#| "killed."
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
-"メモ：Delfador の上にある小さな王冠は、彼が殺されてしまうとゲームに敗北すると"
-"いうことを表しています。リーダー（Konrad）が殺された場合も同じようにゲームに"
-"敗北します。"
+"Delfador の上にある小さな王冠は、彼が殺されてしまうとゲームに敗北するというこ"
+"とを表しています。リーダー（Konrad）が殺された場合も同じようにゲームに敗北し"
+"ます。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:465
-#, fuzzy
-#| msgid ""
-#| "Note: The tiny metal crown above Delfador means you will lose the game if "
-#| "he is killed. You will also lose the game if your leader (Li’sar) is "
-#| "killed."
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
-"メモ：Delfador の上にある小さな王冠は、彼が殺されてしまうとゲームに敗北すると"
-"いうことを表しています。リーダー（Li’sar）が殺された場合も同じようにゲームに"
-"敗北します。"
+"Delfador の上にある小さな王冠は、彼が殺されてしまうとゲームに敗北するというこ"
+"とを表しています。リーダー（Li’sar）が殺された場合も同じようにゲームに敗北し"
+"ます。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
@@ -824,7 +814,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
 msgid "End Scenario"
-msgstr ""
+msgstr "シナリオ終了"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
@@ -832,6 +822,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"まだ続けますか？コンテキストメニューにある<b>シナリオ終了</b>を使うことで、い"
+"つでもこのシナリオを終了することができます。"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
@@ -1429,26 +1421,18 @@ msgstr "射手でオークを攻撃してください"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "（敵のユニットも含め）あるユニットがどのような能力を持っているのかを知るため"
 "には、そのユニットにマウスを乗せてください。画面の右側にユニットの概要が表示"
 "されます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>ユニットの概要</big>"
+msgstr "ユニットの概要"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
@@ -1491,25 +1475,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>長距離の移動</big>"
+msgstr "長距離の移動"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "複数のターンをかけてユニットを移動させることができます。ユニットを選択し、そ"
 "れから移動先をクリックします。そこに到達するまでにかかるターン数が数字で表示"
 "されます。"
@@ -1624,19 +1599,14 @@ msgstr ""
 #. [else]
 #. The unit with unit type $unit.language_name is female.
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
-#, fuzzy
-#| msgid ""
-#| "No other units can reach that orc. I hope my $unit.language_name survives "
-#| "its counter-attack! I’d better grab more villages and move everyone "
-#| "closer for next turn."
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
 "survives its counter-attack! I’d better grab more villages and move everyone "
 "closer for next turn."
 msgstr ""
-"ほかにあのオークのところまで移動できるユニットはありません。私の $unit."
-"language_name がオークの反撃を切り抜けられるとよいのですが！もっと多くの村を"
-"手に入れたいと思います。そして次のターンに備えてみんなを近くに移動させます。"
+"ほかにあのオークのところまで移動できるユニットはないわ。私の $unit."
+"language_name がオークの反撃を切り抜けられるとよいのだけど！もっと多くの村を"
+"手に入れたいと思います。そして次のターンに備えてみんなを近くに移動させるわ。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1150
@@ -1709,28 +1679,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "このダイアログを閉じたあと、右側の地図の下にある風景画像の上にマウスカーソル"
 "を置いてみてください。時刻についての詳細を確認でき、誰が有利になるのかを見る"
 "ことができます。"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>一日の時間帯</big>"
+msgstr "一日の時間帯"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
@@ -1759,21 +1720,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>未行動ユニットを調べる</big>"
+msgstr "未行動ユニットを調べる"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1781,7 +1732,6 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "<b>n</b> を押すごとにあなたの軍団のユニットを 1体ずつ順番に辿ることができま"
 "す。<b>space</b> を押せばそのときに選択しているユニットがそのターンでの役割が"
 "終わったと印をつけることができ、後で不用意に移動させてしまうことを防ぐことが"
@@ -1790,47 +1740,30 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "このシナリオであなたが勝利するためにはオークのリーダーを倒すだけです。（<b>メ"
 "ニュー</b>の<b>シナリオの目標</b>にシナリオの勝利条件があります）"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>勝利条件</big>"
+msgstr "勝利条件"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>有利なユニットの雇用</big>"
+msgstr "有利なユニットの雇用"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "状況に合わせて有利な部隊を雇用できることを忘れないでください。射手は兵卒やウ"
 "ルフライダー、そしてオークのリーダーに対して特に効果的です。"
 
@@ -1929,25 +1862,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>敵の移動範囲の調査</big>"
+msgstr "敵の移動範囲の調査"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "敵の上にマウスカーソルを置くことで、移動できる範囲を知ることができます。<b>行"
 "動</b>メニューから<b>敵の動きを見る</b>を選択することで、全ての敵が移動できる"
 "範囲を一度に知ることができます。"
