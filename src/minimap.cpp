@@ -217,10 +217,10 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				}
 
 				SDL_Rect fillrect = create_rect(
-						maprect.x +2
-						, maprect.y +2
-						, scale -4
-						, scale -4
+						maprect.x
+						, maprect.y
+						, scale * 3/4
+						, scale
 				);
 
 				const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
