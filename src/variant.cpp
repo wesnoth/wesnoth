@@ -1079,6 +1079,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 	switch(type_) {
 	case TYPE_NULL:
 		s << "(null)";
+		break;
 	case TYPE_INT:
 		s << int_value_;
 		break;
