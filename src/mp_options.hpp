@@ -50,7 +50,7 @@ public:
 	virtual void layout(int& xpos, int& ypos, int border_size, gui::scrollpane* pane) = 0;
 	virtual void set_value(const config::attribute_value& val) = 0;
 	virtual config::attribute_value get_value() const = 0;
-	virtual void process_event() = 0;
+	virtual void process_event() {}
 };
 
 class entry_display : public option_display
@@ -62,7 +62,6 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
-	void process_event() {}
 
 private:
 	gui::textbox* entry_;
@@ -98,7 +97,6 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
-	void process_event() {}
 private:
 	gui::button* checkbox_;
 };
@@ -112,7 +110,6 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &/*val*/) {}
 	config::attribute_value get_value() const { return config::attribute_value(); }
-	void process_event() {}
 
 private:
 	gui::label* title_;
