@@ -577,7 +577,7 @@ unsigned config::child_count(const std::string &key) const
 
 unsigned config::all_children_count() const
 {
-	return children.size();
+	return ordered_children.size();
 }
 
 bool config::has_child(const std::string &key) const
