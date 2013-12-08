@@ -777,9 +777,10 @@ void preferences_dialog::process_event()
 			set_show_floating_labels(show_floating_labels_button_.checked());
 		if (video_mode_button_.pressed())
 			throw video_mode_change_exception(video_mode_change_exception::CHANGE_RESOLUTION);
-		if (theme_button_.pressed())
+		if (theme_button_.pressed()) {
 			show_theme_dialog(disp_);
 			parent->clear_buttons();
+		}
 		if (fullscreen_button_.pressed())
 			throw video_mode_change_exception(fullscreen_button_.checked()
 											? video_mode_change_exception::MAKE_FULLSCREEN
