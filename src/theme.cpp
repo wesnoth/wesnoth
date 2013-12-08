@@ -441,10 +441,10 @@ theme::label::label(const config& cfg) :
 	    ++c;
 	    if(c != rgb_vec.end()){
 	      g = (atoi(c->c_str()));
+	      ++c;
 	    }else{
 	      g=0;
 	    }
-	    ++c;
 	    if(c != rgb_vec.end()){
 	      b=(atoi(c->c_str()));
 	    }else{
