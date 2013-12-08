@@ -79,7 +79,6 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
-	options_(disp.video(), _("Options...")),
 	cancel_game_(disp.video(), _("Cancel")),
 	launch_game_(disp.video(), _("OK")),
 	password_button_(disp.video(), _("Set Password...")),
@@ -92,7 +91,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
 	parameters_(params),
-	options_manager_(cfg, disp.video(), preferences::options())
+	options_manager_(cfg, disp.video(), &options_pane_, preferences::options())
 {
 	// Build the list of scenarios to play
 
@@ -319,10 +318,6 @@ void configure::process_event()
 				, disp_.video());
 	}
 
-	if(options_.pressed()) {
-		options_manager_.show_dialog();
-	}
-
 	if (entry_points_combo_.changed()) {
 		const config& scenario = *entry_points_[entry_points_combo_.selected()];
 
@@ -504,7 +499,6 @@ void configure::hide_children(bool hide)
 	shuffle_sides_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
-	options_.hide(hide);
 
 	password_button_.hide(hide);
 	vision_combo_.hide(hide);
@@ -588,9 +582,6 @@ void configure::layout_children(const SDL_Rect& rect)
 	countdown_action_bonus_slider_.set_location(xpos, ypos);
 	ypos += countdown_action_bonus_slider_.height() + border_size;
 
-	options_.set_location(xpos, ypos);
-	ypos += options_.height() + border_size;
-
 	if (show_entry_points_) {
 		ypos += border_size;
 		entry_points_label_.set_location(xpos, ypos);
@@ -645,6 +636,8 @@ void configure::layout_children(const SDL_Rect& rect)
 	village_gold_slider_.set_width(slider_width);
 	options_pane_.add_widget(&village_gold_slider_, xpos, ypos);
 	ypos += village_gold_slider_.height() + 3 * border_size;
+
+	options_manager_.layout_widgets(xpos, ypos);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

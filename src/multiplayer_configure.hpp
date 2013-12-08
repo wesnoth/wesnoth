@@ -75,7 +75,6 @@ private:
 	gui::button shroud_game_;
 	gui::button observers_game_;
 	gui::button shuffle_sides_;
-	gui::button options_;
 	gui::button cancel_game_;
 	gui::button launch_game_;
 	gui::button password_button_;
