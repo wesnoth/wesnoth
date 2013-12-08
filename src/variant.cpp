@@ -908,6 +908,7 @@ void variant::serialize_to_string(std::string& str) const
 	switch(type_) {
 	case TYPE_NULL:
 		str += "null()";
+		break;
 	case TYPE_INT:
 		str += boost::lexical_cast<std::string>(int_value_);
 		break;
