@@ -327,6 +327,7 @@ public:
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
 	unsigned child_count(const std::string &key) const;
+	unsigned all_children_count() const;
 
 	/**
 	 * Determine whether a config has a child or not.

@@ -575,6 +575,11 @@ unsigned config::child_count(const std::string &key) const
 	return 0;
 }
 
+unsigned config::all_children_count() const
+{
+	return children.size();
+}
+
 bool config::has_child(const std::string &key) const
 {
 	check_valid();
