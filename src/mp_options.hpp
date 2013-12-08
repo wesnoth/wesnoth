@@ -103,6 +103,21 @@ private:
 	gui::button* checkbox_;
 };
 
+class title_display : public option_display
+{
+public:
+	title_display(CVideo& video, const std::string& label);
+	~title_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &/*val*/) {}
+	config::attribute_value get_value() const { return config::attribute_value(); }
+	void process_event() {}
+
+private:
+	gui::label* title_;
+};
+
 class manager
 {
 public:
@@ -200,6 +215,7 @@ public:
 	 */
 	const config& get_values();
 
+	void init_widgets();
 
 private:
 
@@ -225,6 +241,7 @@ private:
 	std::vector<std::string> modifications_;
 
 	std::map<std::string, option_display*> widgets_;
+	std::vector<option_display*> widgets_ordered_;
 
 	/**
 	 * Adds the necessary information about the specified component
@@ -234,8 +251,6 @@ private:
 	 * @param key					The component's type.
 	 */
 	void init_info(const config& cfg, const std::string& key);
-
-	void init_widgets();
 
 	/**
 	 * Returns the node which holds the selected value of an option. If that
@@ -349,6 +364,8 @@ private:
 	 * @param w						A pointer to the window.
 	 */
 	static void restore_defaults_for_component(const config& comp, manager* m);
+
+	bool is_active(const std::string& id) const;
 };
 
 } // namespace options

@@ -204,6 +204,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	options_manager_.set_era(parameters_.mp_era);
 	options_manager_.set_scenario(parameters_.mp_scenario);
 	options_manager_.set_modifications(parameters_.active_mods);
+	options_manager_.init_widgets();
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -637,7 +638,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	ypos += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(slider_width);
 	options_pane_.add_widget(&village_gold_slider_, xpos, ypos);
-	ypos += village_gold_slider_.height() + 3 * border_size;
+	ypos += village_gold_slider_.height() + border_size;
 
 	options_manager_.layout_widgets(xpos, ypos);
 

@@ -80,16 +80,29 @@ void manager::init_info(const config& cfg, const std::string& key)
 
 void manager::init_widgets()
 {
+	BOOST_FOREACH(option_display* od, widgets_ordered_) {
+		delete od;
+	}
+
+	widgets_.clear();
+	widgets_ordered_.clear();
+
 	BOOST_FOREACH (const config::any_child& comp, options_info_.all_children_range()) {
+		if (comp.cfg.all_children_count() == 0 || !is_active(comp.cfg["id"])) {
+			continue;
+		}
+
+		widgets_ordered_.push_back(new title_display(video_, comp.cfg["name"]));
 		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
 			const std::string id = c.cfg["id"];
 			if (c.key == "slider") {
-				widgets_[id] = new slider_display(video_, c.cfg["name"], get_stored_value(id), c.cfg["min"], c.cfg["max"], c.cfg["step"]);
+				widgets_ordered_.push_back(new slider_display(video_, c.cfg["name"], get_stored_value(id), c.cfg["min"], c.cfg["max"], c.cfg["step"]));
 			} else if (c.key == "entry") {
-				widgets_[id] = new entry_display(video_, c.cfg["name"], get_stored_value(id));
+				widgets_ordered_.push_back(new entry_display(video_, c.cfg["name"], get_stored_value(id)));
 			} else if (c.key == "checkbox") {
-				widgets_[id] = new checkbox_display(video_, c.cfg["name"], get_stored_value(id));
+				widgets_ordered_.push_back(new checkbox_display(video_, c.cfg["name"], get_stored_value(id)));
 			}
+			widgets_[id] = widgets_ordered_.back();
 		}
 	}
 }
@@ -103,6 +116,7 @@ manager::manager(const config &gamecfg, CVideo& video, gui::scrollpane *pane, co
 	, scenario_()
 	, modifications_()
 	, widgets_()
+	, widgets_ordered_()
 {
 	DBG_MP << "Initializing the options manager" << std::endl;
 	init_info(gamecfg, "modification");
@@ -126,10 +140,9 @@ manager::manager(const config &gamecfg, CVideo& video, gui::scrollpane *pane, co
 
 manager::~manager()
 {
-	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
-		 i != widgets_.end(); i++)
+	BOOST_FOREACH(option_display* od, widgets_ordered_)
 	{
-		delete i->second;
+		delete od;
 	}
 }
 
@@ -184,10 +197,9 @@ void manager::layout_widgets(int startx, int starty)
 {
 	int ypos = starty;
 	int border_size = 3;
-	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
-		 i != widgets_.end(); i++)
+	BOOST_FOREACH(option_display* od, widgets_ordered_)
 	{
-		i->second->layout(startx, ypos, border_size, pane_);
+		od->layout(startx, ypos, border_size, pane_);
 		ypos += border_size;
 	}
 }
@@ -359,6 +371,12 @@ void manager::restore_defaults_for_component(const config& c, manager* m)
 	}
 }
 
+bool manager::is_active(const std::string &id) const
+{
+	return (era_ == id) || (scenario_ == id) ||
+			(std::find(modifications_.begin(), modifications_.end(), id) != modifications_.end());
+}
+
 entry_display::entry_display(CVideo &video, const std::string &label, const std::string &value) :
 	entry_(new gui::textbox(video, 150, value)),
 	label_(new gui::label(video, label))
@@ -472,6 +490,22 @@ config::attribute_value checkbox_display::get_value() const
 	config::attribute_value res;
 	res = checkbox_->checked();
 	return res;
+}
+
+title_display::title_display(CVideo &video, const std::string &label) :
+	title_(new gui::label(video, "`~" + label, font::SIZE_PLUS, font::LOBBY_COLOR))
+{}
+
+title_display::~title_display()
+{
+	delete title_;
+}
+
+void title_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	ypos += 4*border_size;
+	pane->add_widget(title_, xpos, ypos);
+	ypos += title_->height() + 2*border_size;
 }
 
 }	// namespace options
