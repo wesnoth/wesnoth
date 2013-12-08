@@ -350,7 +350,7 @@ void manager::restore_defaults_for_component(const config& c, manager* m)
 }
 
 entry_display::entry_display(CVideo &video, const std::string &label, const std::string &value) :
-	entry_(new gui::textbox(video, 100, value)),
+	entry_(new gui::textbox(video, 150, value)),
 	label_(new gui::label(video, label))
 {}
 
@@ -386,7 +386,7 @@ slider_display::slider_display(CVideo &video, const std::string &label, int valu
 	slider_->set_min(min);
 	slider_->set_max(max);
 	slider_->set_increment(step);
-	slider_->set_width(100);
+	slider_->set_width(150);
 	slider_->set_value(value);
 }
 
