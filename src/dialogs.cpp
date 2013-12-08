@@ -1440,6 +1440,7 @@ void show_unit_description(const unit_type &t)
 	bool use_variation = false;
 	if (!var_id.empty()) {
 		const unit_type *parent = unit_types.find(t.id());
+		assert(parent);
 		if (hide_help) {
 			hide_help = parent->hide_help();
 		} else {
