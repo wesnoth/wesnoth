@@ -78,11 +78,15 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
-	void process_event() {}
+	void process_event();
 
 private:
+	void update_label();
+
 	gui::slider* slider_;
 	gui::label* label_;
+	int last_value_;
+	const std::string label_text_;
 };
 
 class checkbox_display : public option_display
@@ -187,6 +191,7 @@ public:
 	void show_dialog();
 
 	void layout_widgets(int startx, int starty);
+	void process_event();
 
 	/**
 	 * Returns the the values for each option.

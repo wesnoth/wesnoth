@@ -458,6 +458,8 @@ void configure::process_event()
 		fog_game_.enable(!map_settings);
 		shroud_game_.enable(!map_settings);
 	}
+
+	options_manager_.process_event();
 }
 
 void configure::hide_children(bool hide)

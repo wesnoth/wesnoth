@@ -192,6 +192,15 @@ void manager::layout_widgets(int startx, int starty)
 	}
 }
 
+void manager::process_event()
+{
+	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
+		 i != widgets_.end(); i++)
+	{
+		i->second->process_event();
+	}
+}
+
 const config &manager::get_values()
 {
 	update_values();
@@ -382,13 +391,17 @@ config::attribute_value entry_display::get_value() const
 
 slider_display::slider_display(CVideo &video, const std::string &label, int value, int min, int max, int step) :
 	slider_(new gui::slider(video)),
-	label_(new gui::label(video, label, font::SIZE_SMALL))
+	label_(new gui::label(video, label, font::SIZE_SMALL)),
+	last_value_(value),
+	label_text_(label)
 {
 	slider_->set_min(min);
 	slider_->set_max(max);
 	slider_->set_increment(step);
 	slider_->set_width(150);
 	slider_->set_value(value);
+
+	update_label();
 }
 
 slider_display::~slider_display()
@@ -415,6 +428,21 @@ config::attribute_value slider_display::get_value() const
 	config::attribute_value res;
 	res = slider_->value();
 	return res;
+}
+
+void slider_display::process_event()
+{
+	if (slider_->value() != last_value_) {
+		update_label();
+		last_value_ = slider_->value();
+	}
+}
+
+void slider_display::update_label()
+{
+	std::stringstream ss;
+	ss << label_text_ << ' ' << last_value_;
+	label_->set_text(ss.str());
 }
 
 checkbox_display::checkbox_display(CVideo &video, const std::string &label, bool value) :
