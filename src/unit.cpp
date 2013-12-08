@@ -1406,6 +1406,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			const std::vector<std::string>& variation_types = utils::split(var_ids);
 			// If this unit is a variation itself then search in the base unit's variations.
 			const unit_type* const type = this_var.empty() ? type_ : unit_types.find(type_->base_id());
+			assert(type);
 
 			BOOST_FOREACH(const std::string& variation_id, variation_types) {
 				if (type->has_variation(variation_id)) {
