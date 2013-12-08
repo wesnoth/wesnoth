@@ -82,12 +82,13 @@ void manager::init_widgets()
 {
 	BOOST_FOREACH (const config::any_child& comp, options_info_.all_children_range()) {
 		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
+			const std::string id = c.cfg["id"];
 			if (c.key == "slider") {
-				widgets_[c.cfg["id"]] = new slider_display(video_, c.cfg["name"], c.cfg["min"], c.cfg["max"], c.cfg["step"]);
+				widgets_[id] = new slider_display(video_, c.cfg["name"], get_stored_value(id), c.cfg["min"], c.cfg["max"], c.cfg["step"]);
 			} else if (c.key == "entry") {
-				widgets_[c.cfg["id"]] = new entry_display(video_, c.cfg["name"]);
+				widgets_[id] = new entry_display(video_, c.cfg["name"], get_stored_value(id));
 			} else if (c.key == "checkbox") {
-				widgets_[c.cfg["id"]] = new checkbox_display(video_, c.cfg["name"]);
+				widgets_[id] = new checkbox_display(video_, c.cfg["name"], get_stored_value(id));
 			}
 		}
 	}
@@ -348,8 +349,8 @@ void manager::restore_defaults_for_component(const config& c, manager* m)
 	}
 }
 
-entry_display::entry_display(CVideo &video, const std::string &label) :
-	entry_(new gui::textbox(video, 100)),
+entry_display::entry_display(CVideo &video, const std::string &label, const std::string &value) :
+	entry_(new gui::textbox(video, 100, value)),
 	label_(new gui::label(video, label))
 {}
 
@@ -378,7 +379,7 @@ config::attribute_value entry_display::get_value() const
 	return res;
 }
 
-slider_display::slider_display(CVideo &video, const std::string &label, int min, int max, int step) :
+slider_display::slider_display(CVideo &video, const std::string &label, int value, int min, int max, int step) :
 	slider_(new gui::slider(video)),
 	label_(new gui::label(video, label))
 {
@@ -386,6 +387,7 @@ slider_display::slider_display(CVideo &video, const std::string &label, int min,
 	slider_->set_max(max);
 	slider_->set_increment(step);
 	slider_->set_width(100);
+	slider_->set_value(value);
 }
 
 slider_display::~slider_display()
@@ -414,9 +416,11 @@ config::attribute_value slider_display::get_value() const
 	return res;
 }
 
-checkbox_display::checkbox_display(CVideo &video, const std::string &label) :
+checkbox_display::checkbox_display(CVideo &video, const std::string &label, bool value) :
 	checkbox_(new gui::button(video, label, gui::button::TYPE_CHECK))
-{}
+{
+	checkbox_->set_check(value);
+}
 
 checkbox_display::~checkbox_display()
 {

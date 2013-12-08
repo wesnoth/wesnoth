@@ -56,7 +56,7 @@ public:
 class entry_display : public option_display
 {
 public:
-	entry_display(CVideo& video, const std::string& label);
+	entry_display(CVideo& video, const std::string& label, const std::string &value);
 	~entry_display();
 
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
@@ -72,7 +72,7 @@ private:
 class slider_display : public option_display
 {
 public:
-	slider_display(CVideo& video, const std::string& label, int min, int max, int step);
+	slider_display(CVideo& video, const std::string& label, int value, int min, int max, int step);
 	~slider_display();
 
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
@@ -88,7 +88,7 @@ private:
 class checkbox_display : public option_display
 {
 public:
-	checkbox_display(CVideo& video, const std::string& label);
+	checkbox_display(CVideo& video, const std::string& label, bool value);
 	~checkbox_display();
 
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
