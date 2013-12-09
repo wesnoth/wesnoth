@@ -147,7 +147,7 @@ terrain_type::terrain_type(const config& cfg) :
 	}
 
 	const t_translation::t_list& vision_alias = t_translation::read_list(cfg["vision_alias"]);
-	if(!def_alias.empty()) {
+	if(!vision_alias.empty()) {
 		vision_type_ = vision_alias;
 	}
 
