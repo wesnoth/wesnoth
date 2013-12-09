@@ -85,7 +85,8 @@ private:
 	gui::label entry_points_label_;
 	gui::combo entry_points_combo_;
 
-	gui::scrollpane options_pane_;
+	gui::scrollpane options_pane_left_;
+	gui::scrollpane options_pane_right_;
 
 	std::vector<config const*> entry_points_;
 	bool show_entry_points_;
