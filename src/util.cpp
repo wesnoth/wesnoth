@@ -323,7 +323,7 @@ std::string format_time_summary(time_t t) {
 
 	const struct tm save_time = *timeptr;
 
-	const char* format_string = _("%b %d %y");
+	const char* format_string = NULL;
 
 	if(current_time.tm_year == save_time.tm_year) {
 		const int days_apart = current_time.tm_yday - save_time.tm_yday;
@@ -351,6 +351,7 @@ std::string format_time_summary(time_t t) {
 		// save is from a different year
 		format_string = _("%b %d %y");
 	}
+	assert(format_string);
 
 	char buf[40];
 	const size_t res = util::strftime(buf,sizeof(buf),format_string,&save_time);
