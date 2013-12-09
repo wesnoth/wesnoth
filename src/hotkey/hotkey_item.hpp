@@ -126,10 +126,10 @@ hotkey_item& get_hotkey(int mouse, int joystick,
 hotkey_item& get_hotkey(int character, int keycode,
 		bool shift, bool ctrl, bool cmd, bool alt);
 
-hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
-hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
-hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event);
+const hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
+const hotkey_item& get_hotkey(const SDL_JoyHatEvent& event);
+const hotkey_item& get_hotkey(const SDL_KeyboardEvent& event);
+const hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event);
 
 void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();

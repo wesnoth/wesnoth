@@ -35,6 +35,7 @@ static lg::log_domain log_config("config");
 
 namespace {
 
+
 std::vector<hotkey::hotkey_item> hotkeys_;
 config default_hotkey_cfg_;
 
@@ -43,7 +44,9 @@ hotkey::hotkey_item null_hotkey_("null");
 }
 
 namespace hotkey {
-hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
+
+
+const hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 {
 	CKey keystate;
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
@@ -54,7 +57,7 @@ hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event)
 	return get_hotkey(-1, event.which, event.button, -1, -1, shift, ctrl, cmd, alt);
 }
 
-hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
+const hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 {
 	CKey keystate;
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
@@ -66,7 +69,7 @@ hotkey_item& get_hotkey(const SDL_JoyHatEvent& event)
 }
 
 
-hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
+const hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 {
 	CKey keystate;
 	bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
@@ -78,7 +81,7 @@ hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 }
 
 
-hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
+const hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
 	return get_hotkey(event.keysym.unicode, event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
