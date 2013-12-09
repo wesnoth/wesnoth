@@ -886,61 +886,6 @@ void save_preview_pane::draw_contents()
 	font::draw_text(&video(), area, font::SIZE_SMALL, font::NORMAL_COLOR, str.str(), area.x, ypos, true);
 }
 
-std::string format_time_summary(time_t t)
-{
-	time_t curtime = time(NULL);
-	const struct tm* timeptr = localtime(&curtime);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm current_time = *timeptr;
-
-	timeptr = localtime(&t);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm save_time = *timeptr;
-
-	const char* format_string = _("%b %d %y");
-
-	if(current_time.tm_year == save_time.tm_year) {
-		const int days_apart = current_time.tm_yday - save_time.tm_yday;
-		if(days_apart == 0) {
-			// save is from today
-			if(preferences::use_twelve_hour_clock_format() == false) {
-				format_string = _("%H:%M");
-			}
-			else {
-				format_string = _("%I:%M %p");
-			}
-		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
-			// save is from this week
-			if(preferences::use_twelve_hour_clock_format() == false) {
-				format_string = _("%A, %H:%M");
-			}
-			else {
-				format_string = _("%A, %I:%M %p");
-			}
-		} else {
-			// save is from current year
-			format_string = _("%b %d");
-		}
-	} else {
-		// save is from a different year
-		format_string = _("%b %d %y");
-	}
-
-	char buf[40];
-	const size_t res = util::strftime(buf,sizeof(buf),format_string,&save_time);
-	if(res == 0) {
-		buf[0] = 0;
-	}
-
-	return buf;
-}
-
 } // end anon namespace
 
 std::string load_game_dialog(display& disp, const config& game_config, bool* select_difficulty, bool* show_replay, bool* cancel_orders)
@@ -970,7 +915,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
 
 		std::ostringstream str;
-		str << name << COLUMN_SEPARATOR << format_time_summary(i->modified());
+		str << name << COLUMN_SEPARATOR << util::format_time_summary(i->modified());
 
 		items.push_back(str.str());
 	}

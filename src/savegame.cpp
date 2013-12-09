@@ -318,57 +318,7 @@ std::string save_info::format_time_local() const
 std::string save_info::format_time_summary() const
 {
 	time_t t = modified();
-	time_t curtime = time(NULL);
-	const struct tm* timeptr = localtime(&curtime);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm current_time = *timeptr;
-
-	timeptr = localtime(&t);
-	if(timeptr == NULL) {
-		return "";
-	}
-
-	const struct tm save_time = *timeptr;
-
-	const char* format_string = _("%b %d %y");
-
-	if(current_time.tm_year == save_time.tm_year) {
-		const int days_apart = current_time.tm_yday - save_time.tm_yday;
-		if(days_apart == 0) {
-			// save is from today
-			if(preferences::use_twelve_hour_clock_format() == false) {
-				format_string = _("%H:%M");
-			}
-			else {
-				format_string = _("%I:%M %p");
-			}
-		} else if(days_apart > 0 && days_apart <= current_time.tm_wday) {
-			// save is from this week
-			if(preferences::use_twelve_hour_clock_format() == false) {
-				format_string = _("%A, %H:%M");
-			}
-			else {
-				format_string = _("%A, %I:%M %p");
-			}
-		} else {
-			// save is from current year
-			format_string = _("%b %d");
-		}
-	} else {
-		// save is from a different year
-		format_string = _("%b %d %y");
-	}
-
-	char buf[40];
-	const size_t res = strftime(buf,sizeof(buf),format_string,&save_time);
-	if(res == 0) {
-		buf[0] = 0;
-	}
-
-	return buf;
+	return util::format_time_summary(t);
 }
 
 bool save_info_less_time::operator() (const save_info& a, const save_info& b) const {
