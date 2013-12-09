@@ -926,7 +926,7 @@ private:
 			status.push_back(variant("Poisoned"));
 		if (bc.get_defender_combatant().slowed != 0)
 			status.push_back(variant("Slowed"));
-		if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
+		if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_defender_stats().hp)
 			status.push_back(variant("Stoned"));
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));
