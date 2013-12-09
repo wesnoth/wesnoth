@@ -555,7 +555,7 @@ void create::layout_children(const SDL_Rect& rect)
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
 	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
-		2 * border_size - cancel_game_.height());
+		3 * border_size - cancel_game_.height() - select_mod_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -654,8 +654,8 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_max_width(menu_width);
 	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
-	ypos += mods_menu_.height() + border_size;
 	if (mods_menu_.number_of_items() > 0) {
+		ypos += mods_menu_.height() + border_size;
 		select_mod_.set_location(xpos, ypos);
 	}
 
