@@ -1225,7 +1225,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	std::vector<std::string> items = items_arg;
-	hotkey::hotkey_command* cmd;
+	const hotkey::hotkey_command* cmd;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
@@ -1450,7 +1450,7 @@ void play_controller::process_oos(const std::string& msg) const
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
-//this should be at the end of the file but it caused merging probmes there.
+//this should be at the end of the file but it caused merging problems there.
 const std::string play_controller::wml_menu_hotkey_prefix = "wml_menu:";
 
 

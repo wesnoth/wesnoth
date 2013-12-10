@@ -855,7 +855,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	while(i != items_arg.end())
 	{
 
-		hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
 
 		if ( ( can_execute_command(command) 
 			&& (!context_menu || in_context_menu(command.id)) )

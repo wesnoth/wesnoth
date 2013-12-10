@@ -282,7 +282,7 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 	std::vector<std::string> items = items_arg;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
 		if(!can_execute_command(command)
 			|| (context_menu && !in_context_menu(command.id))) {
 			i = items.erase(i);
@@ -301,7 +301,7 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 	std::vector<std::string> items;
 	BOOST_FOREACH(const std::string& item, items_arg) {
 
-		hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
 		if(can_execute_command(command))
 			items.push_back(item);
 	}
