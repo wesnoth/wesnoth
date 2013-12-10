@@ -176,9 +176,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						SDL_Color tmp = int_to_color(game_config::team_rgb_range.find(terrain_id)->second.rep());
 
 						if (fogged) {
-							tmp.b -= 50;
-							tmp.g -= 50;
-							tmp.r -= 50;
+							if (tmp.b < 50) tmp.b = 0;
+							else tmp.b -= 50;
+							if (tmp.g < 50) tmp.g = 0;
+							else tmp.g -= 50;
+							if (tmp.r < 50) tmp.r = 0;
+							else tmp.r -= 50;
 						}
 
 						if (highlighted) {
