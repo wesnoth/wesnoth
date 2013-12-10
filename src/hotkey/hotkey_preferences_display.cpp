@@ -651,12 +651,12 @@ void hotkey_preferences_dialog::show_binding_dialog(
 			newhk.set_jhat(joystick, hat, value, shift, ctrl, cmd, alt);
 			break;
 		case SDL_JOYBUTTONUP:
-			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1,
+			oldhk = &hotkey::get_hotkey(-1, joystick, button, -1, -1,
 					shift, ctrl, cmd, alt);
 			newhk.set_jbutton(joystick, button, shift, ctrl, cmd, alt);
 			break;
 		case SDL_MOUSEBUTTONUP:
-			oldhk = &hotkey::get_hotkey(mouse, joystick, button, -1, -1,
+			oldhk = &hotkey::get_hotkey(mouse, -1, button, -1, -1,
 					shift, ctrl, cmd, alt);
 			newhk.set_mbutton(mouse, button, shift, ctrl, cmd, alt);
 			break;
