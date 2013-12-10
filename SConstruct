@@ -123,8 +123,8 @@ opts.Save(GetOption("option_cache"), env)
 env.SConsignFile("$build_dir/sconsign.dblite")
 
 # Make sure the user's environment is always available
-env['ENV']['PATH'] = os.environ["PATH"]
-env['ENV']['TERM'] = os.environ["TERM"]
+env['ENV']['PATH'] = os.environ.get("PATH")
+env['ENV']['TERM'] = os.environ.get("TERM")
 if env["PLATFORM"] == "win32":
     env.Tool("mingw")
 elif env["PLATFORM"] == "sunos":
