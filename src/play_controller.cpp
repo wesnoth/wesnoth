@@ -128,7 +128,8 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	remove_from_carryover_on_leaders_loss_(true),
 	end_level_data_(),
 	victory_music_(),
-	defeat_music_()
+	defeat_music_(),
+	scope_()
 {
 	resources::controller = this;
 	resources::gamedata = &gamedata_;

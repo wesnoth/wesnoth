@@ -283,6 +283,8 @@ private:
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
 
+	hotkey::scope_changer scope_;
+
 };
 
 
