@@ -167,10 +167,10 @@ public:
 	/// checks weather this is the null hotkey_command
 	bool null() const;
 	/// returns the command that is treated as null
-	static hotkey_command& null_command();
+	static const hotkey_command& null_command();
 	/// the execute_command argument was changed from HOTKEY_COMMAND to hotkey_command,
 	/// to be able to call it with HOTKEY_COMMAND, this function was created
-	static hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
+	static const hotkey_command& get_command_by_command(HOTKEY_COMMAND command);
 };
 
 /// Do not use this outside hotkeys.cpp.
@@ -202,9 +202,10 @@ private:
 const boost::ptr_vector<hotkey_command>& get_hotkey_commands();
 
 /// returns the hotkey_command with the given name
-hotkey_command& get_hotkey_command(const std::string& command);
+const hotkey_command& get_hotkey_command(const std::string& command);
+
 /// returns the hotkey_command that is treated as null.
-hotkey_command& get_hotkey_null();
+const hotkey_command& get_hotkey_null();
 
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);

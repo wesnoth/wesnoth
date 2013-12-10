@@ -275,7 +275,7 @@ bool is_scope_active(scope s)
 }
 
 
-hotkey_command& get_hotkey_command(const std::string& command)
+const hotkey_command& get_hotkey_command(const std::string& command)
 {
 	if (command_map_.find(command) == command_map_.end())
 	{
@@ -294,7 +294,7 @@ const boost::ptr_vector<hotkey_command>& get_hotkey_commands()
 // Returns whether a hotkey was deleted.
 bool remove_wml_hotkey(const std::string& id)
 {
-	hotkey::hotkey_command& command = get_hotkey_command(id);
+	const hotkey::hotkey_command& command = get_hotkey_command(id);
 	if(command.id == hotkey::HOTKEY_NULL)
 	{
 		LOG_G << "remove_wml_hotkey: command with id=" + id + " doesn't exist\n";
@@ -352,13 +352,12 @@ void add_wml_hotkey(const std::string& id, const t_string& description, const co
 
 		if(!default_hotkey.empty() && !has_hotkey_item(id))
 		{
-			hotkey_item new_item(default_hotkey);
+			hotkey_item new_item(default_hotkey, true);
 			new_item.set_command(id);
 			if(new_item.valid())
 			{
 				DBG_G << "added default description for the wml hotkey with id=" + id;
 				add_hotkey(new_item);
-				preferences::save_hotkey(new_item);
 			}
 			else
 			{
@@ -382,7 +381,7 @@ hotkey_command::hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id
 {
 }
 
-hotkey_command& hotkey_command::null_command()
+const hotkey_command& hotkey_command::null_command()
 {
 	return get_hotkey_null();
 }
@@ -391,7 +390,7 @@ bool hotkey_command::null() const
 {
 	if(id == HOTKEY_NULL || command == "null")
 	{
-		hotkey_command& null_cmd = null_command();
+		const hotkey_command& null_cmd = null_command();
 		if(id == null_cmd.id && command == null_cmd.command && scope == null_cmd.scope && description == null_cmd.description)
 			return true;
 		else
@@ -404,7 +403,7 @@ bool hotkey_command::null() const
 }
 
 
-hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
+const hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND command)
 {
 	BOOST_FOREACH(hotkey_command& cmd, known_hotkeys)
 	{
@@ -416,7 +415,7 @@ hotkey_command& hotkey_command::get_command_by_command(hotkey::HOTKEY_COMMAND co
 }
 
 
-hotkey_command& get_hotkey_null()
+const hotkey_command& get_hotkey_null()
 {
 	//it is the last entry in that array, and the indexes in hotkey_list_ and known_hotkeys are the same.
 	return known_hotkeys[sizeof(hotkey_list_) / sizeof(hotkey_list_[0])  - 1];
@@ -434,6 +433,7 @@ void delete_all_wml_hotkeys()
 		known_hotkeys.erase(last_element);
 	}
 }
+
 const std::string get_description(const std::string& command)
 {
 	return get_hotkey_command(command).description;

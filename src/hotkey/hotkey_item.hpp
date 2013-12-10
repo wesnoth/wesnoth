@@ -29,15 +29,17 @@ public:
 	shift_(false), 	ctrl_(false), cmd_(false), alt_(false),
 	character_(-1), keycode_(-1),
 	joystick_(-1), mouse_(-1),
-	button_(-1), hat_(-1), value_(-1)
+	button_(-1), hat_(-1), value_(-1),
+	is_default_(false)
 	{}
 
-	explicit hotkey_item(const config& cfg):
+	explicit hotkey_item(const config& cfg, bool is_default):
 				command_("null"),
 				shift_(false), 	ctrl_(false), cmd_(false), alt_(false),
 				character_(-1), keycode_(-1),
 				joystick_(-1), mouse_(-1),
-				button_(-1), hat_(-1), value_(-1)
+				button_(-1), hat_(-1), value_(-1),
+				is_default_(is_default)
 	{
 		load_from_config(cfg);
 	}
@@ -52,6 +54,8 @@ public:
 	const std::string get_description() const;
 	/** @return if the item should appear in the hotkey preferences */
 	bool hidden() const;
+
+	bool is_default() const { return is_default_; }
 
 	/// Return "name" of hotkey. Example :"ctrl+alt+g"
 	std::string get_name() const;
@@ -113,6 +117,8 @@ protected:
 	int button_;
 	int hat_, value_;
 
+	bool is_default_;
+
 };
 
 /// Initiated weather there is at least one hotkey_item with the given command
@@ -120,10 +126,10 @@ bool has_hotkey_item(const std::string& command);
 
 void add_hotkey(const hotkey_item& item);
 
-hotkey_item& get_hotkey(int mouse, int joystick,
+const hotkey_item& get_hotkey(int mouse, int joystick,
 		int button, int hat, int value,
 		bool shift, bool ctrl, bool cmd, bool alt);
-hotkey_item& get_hotkey(int character, int keycode,
+const hotkey_item& get_hotkey(int character, int keycode,
 		bool shift, bool ctrl, bool cmd, bool alt);
 
 const hotkey_item& get_hotkey(const SDL_JoyButtonEvent& event);
@@ -134,7 +140,7 @@ const hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event);
 void load_hotkeys(const config& cfg, bool set_as_default = false);
 void reset_default_hotkeys();
 
-std::vector<hotkey_item>& get_hotkeys();
+const std::vector<hotkey_item>& get_hotkeys();
 
 void clear_hotkeys(const std::string& command);
 void clear_hotkeys();
@@ -144,8 +150,9 @@ void clear_hotkeys();
 std::string get_names(std::string id);
 
 void save_hotkeys(config& cfg);
+
 /// Append a single hotkey item to @a cfg.
-void save_hotkey(config& cfg, const hotkey_item & item);
+//void save_hotkey(config& cfg, const hotkey_item & item);
 
 
 }

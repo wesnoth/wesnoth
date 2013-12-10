@@ -35,11 +35,109 @@ static lg::log_domain log_config("config");
 
 namespace {
 
-
 std::vector<hotkey::hotkey_item> hotkeys_;
 config default_hotkey_cfg_;
 
 hotkey::hotkey_item null_hotkey_("null");
+
+hotkey::hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
+		bool shift, bool ctrl, bool cmd, bool alt)
+{
+	std::vector<hotkey::hotkey_item>::iterator itor;
+
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+
+		if ( !( hotkey::is_scope_active(hotkey::get_hotkey_command(itor->get_command()).scope) && itor->active() ) ) {
+			continue;
+		}
+
+		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
+				|| itor->get_cmd() != cmd || itor->get_alt() != alt ) {
+			continue;
+		}
+
+		if ( itor->get_joystick() == joystick && itor->get_button() == button
+				&& itor->get_hat() == hat && itor->get_value() == value
+				&& itor->get_mouse() == mouse ) {
+			return *itor;
+		}
+	}
+
+	return null_hotkey_;
+}
+
+hotkey::hotkey_item& get_hotkey(int character, int keycode,
+		bool shift, bool ctrl,	bool cmd, bool alt)
+{
+	std::vector<hotkey::hotkey_item>::iterator itor;
+
+	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
+		<< " keycode="  << lexical_cast<std::string>(keycode) << " "
+		<< (shift ? "shift," : "")
+		<< (ctrl  ? "ctrl,"  : "")
+		<< (cmd   ? "cmd,"   : "")
+		<< (alt   ? "alt,"   : "")
+		<< "\n";
+
+	// Sometimes control modifies by -64, ie ^A == 1.
+	if (0 < character && character < 64 && ctrl) {
+		if (shift) {
+			character += 64;
+		} else {
+			character += 96;
+		}
+		/// @todo
+		DBG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
+	}
+
+	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
+	if (cmd && character > 96 && character < 123 && shift) {
+		character -= 32; }
+
+	bool found = false;
+
+	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
+		if (itor->get_character() != -1) {
+			if (character == itor->get_character()) {
+				if (ctrl == itor->get_ctrl()
+						&& cmd == itor->get_cmd()
+						&& alt == itor->get_alt()) {
+					if (hotkey::is_scope_active(hotkey::get_hotkey_command(itor->get_command()).scope) && itor->active()) {
+						DBG_G << "Could match by character..." << "yes\n";
+						found = true;
+						break;
+					} else {
+						DBG_G << "Could match by character..." << "yes, but scope is inactive\n";
+					}
+				}
+				DBG_G << "Could match by character..." << "but modifiers different\n";
+			}
+		} else if (itor->get_keycode() != -1) {
+			if (keycode == itor->get_keycode()) {
+				if (shift == itor->get_shift()
+						&& ctrl == itor->get_ctrl()
+						&& cmd  == itor->get_cmd()
+						&& alt  == itor->get_alt()) {
+					if (hotkey::is_scope_active(hotkey::get_hotkey_command(itor->get_command()).scope) && itor->active()) {
+						DBG_G << "Could match by keycode..." << "yes\n";
+						found = true;
+						break;
+					} else {
+						DBG_G << "Could match by keycode..." << "yes, but scope is inactive\n";
+					}
+				}
+				DBG_G << "Could match by keycode..." << "but modifiers different\n";
+			}
+		}
+		if (found) { break; }
+	}
+
+	if (!found) {
+		return null_hotkey_; }
+
+	return *itor;
+}
+
 
 }
 
@@ -91,77 +189,7 @@ const hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 			);
 }
 
-hotkey_item& get_hotkey(int character, int keycode,
-		bool shift, bool ctrl,	bool cmd, bool alt)
-{
-	std::vector<hotkey_item>::iterator itor;
 
-	DBG_G << "getting hotkey: char=" << lexical_cast<std::string>(character)
-		<< " keycode="  << lexical_cast<std::string>(keycode) << " "
-		<< (shift ? "shift," : "")
-		<< (ctrl  ? "ctrl,"  : "")
-		<< (cmd   ? "cmd,"   : "")
-		<< (alt   ? "alt,"   : "")
-		<< "\n";
-
-	// Sometimes control modifies by -64, ie ^A == 1.
-	if (0 < character && character < 64 && ctrl) {
-		if (shift) {
-			character += 64;
-		} else {
-			character += 96;
-		}
-		/// @todo
-		DBG_G << "Mapped to character " << lexical_cast<std::string>(character) << "\n";
-	}
-
-	// For some reason on Mac OS, if cmd and shift are down, the character doesn't get upper-cased
-	if (cmd && character > 96 && character < 123 && shift) {
-		character -= 32; }
-
-	bool found = false;
-
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-		if (itor->get_character() != -1) {
-			if (character == itor->get_character()) {
-				if (ctrl == itor->get_ctrl()
-						&& cmd == itor->get_cmd()
-						&& alt == itor->get_alt()) {
-					if (is_scope_active(get_hotkey_command(itor->get_command()).scope) && itor->active()) {
-						DBG_G << "Could match by character..." << "yes\n";
-						found = true;
-						break;
-					} else {
-						DBG_G << "Could match by character..." << "yes, but scope is inactive\n";
-					}
-				}
-				DBG_G << "Could match by character..." << "but modifiers different\n";
-			}
-		} else if (itor->get_keycode() != -1) {
-			if (keycode == itor->get_keycode()) {
-				if (shift == itor->get_shift()
-						&& ctrl == itor->get_ctrl()
-						&& cmd  == itor->get_cmd()
-						&& alt  == itor->get_alt()) {
-					if (is_scope_active(get_hotkey_command(itor->get_command()).scope) && itor->active()) {
-						DBG_G << "Could match by keycode..." << "yes\n";
-						found = true;
-						break;
-					} else {
-						DBG_G << "Could match by keycode..." << "yes, but scope is inactive\n";
-					}
-				}
-				DBG_G << "Could match by keycode..." << "but modifiers different\n";
-			}
-		}
-		if (found) { break; }
-	}
-
-	if (!found) {
-		return null_hotkey_; }
-
-	return *itor;
-}
 
 std::string get_names(std::string id) {
 
@@ -175,30 +203,18 @@ std::string get_names(std::string id) {
 	return boost::algorithm::join(names, ", ");
 }
 
-hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
+const hotkey_item& get_hotkey(int mouse, int joystick, int button, int hat, int value,
 		bool shift, bool ctrl, bool cmd, bool alt)
 {
-	std::vector<hotkey_item>::iterator itor;
+	return ::get_hotkey(mouse, joystick, button, hat, value,
+			shift, ctrl, cmd, alt);
+}
 
-	for (itor = hotkeys_.begin(); itor != hotkeys_.end(); ++itor) {
-
-		if ( !( is_scope_active(get_hotkey_command(itor->get_command()).scope) && itor->active() ) ) {
-			continue;
-		}
-
-		if ( itor->get_shift() != shift || itor->get_ctrl() != ctrl
-				|| itor->get_cmd() != cmd || itor->get_alt() != alt ) {
-			continue;
-		}
-
-		if ( itor->get_joystick() == joystick && itor->get_button() == button
-				&& itor->get_hat() == hat && itor->get_value() == value
-				&& itor->get_mouse() == mouse ) {
-			return *itor;
-		}
-	}
-
-	return null_hotkey_;
+const hotkey::hotkey_item& get_hotkey(int character, int keycode,
+		bool shift, bool ctrl,	bool cmd, bool alt)
+{
+	return ::get_hotkey(character, keycode,
+			shift, ctrl, cmd, alt);
 }
 
 bool has_hotkey_item(const std::string& command)
@@ -210,8 +226,25 @@ bool has_hotkey_item(const std::string& command)
 	}
 	return false;
 }
+
 void add_hotkey(const hotkey_item& item) {
-	hotkeys_.push_back(item);
+
+	scope new_scope = hotkey::get_hotkey_command(item.get_command()).scope;
+	scope_changer scope_ch;
+	deactivate_all_scopes();
+	hotkey::set_scope_active(new_scope);
+	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
+
+	hotkey_item& old_hk = (item.get_mouse() != -1 || item.get_joystick() != -1) ?
+			::get_hotkey(item.get_mouse(), item.get_joystick(), item.get_button(), item.get_hat()
+					, item.get_value(), item.get_shift(), item.get_ctrl(), item.get_cmd(), item.get_alt()) :
+					::get_hotkey(item.get_character(), item.get_keycode(),
+							item.get_shift(), item.get_ctrl(), item.get_cmd(), item.get_alt());
+
+	if (old_hk.active())
+		old_hk.set_command(item.get_command());
+	else
+		hotkeys_.push_back(item);
 }
 
 void clear_hotkeys(const std::string& command)
@@ -229,14 +262,11 @@ void clear_hotkeys()
 
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
-	hotkeys_.clear();
 	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey")) {
-			hotkeys_.push_back(hotkey_item(hk));
+		add_hotkey(hotkey_item(hk, set_as_default));
 	}
 
-	if (hotkeys_.empty()) {
-		reset_default_hotkeys();
-	} else if (set_as_default) {
+	if (set_as_default) {
 		default_hotkey_cfg_ = cfg;
 	}
 }
@@ -246,21 +276,15 @@ void reset_default_hotkeys()
 	hotkeys_.clear();
 
 	if(!default_hotkey_cfg_.empty()) {
-		load_hotkeys(default_hotkey_cfg_, false);
+		load_hotkeys(default_hotkey_cfg_, true);
 	} else {
 		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!\n";
 	}
 }
 
-std::vector<hotkey_item>& get_hotkeys()
+const std::vector<hotkey_item>& get_hotkeys()
 {
 	return hotkeys_;
-}
-
-void save_hotkey(config& cfg, const hotkey_item & item)
-{
-	if ( !item.null() )
-		item.save(cfg.add_child("hotkey"));
 }
 
 void save_hotkeys(config& cfg)
@@ -270,7 +294,8 @@ void save_hotkeys(config& cfg)
 	for(std::vector<hotkey_item>::iterator i = hotkeys_.begin();
 			i != hotkeys_.end(); ++i)
 	{
-		save_hotkey(cfg, *i);
+		if (!i->is_default())
+			i->save(cfg.add_child("hotkey"));
 	}
 }
 
