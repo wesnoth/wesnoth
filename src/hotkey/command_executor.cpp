@@ -271,7 +271,7 @@ void command_executor::set_button_state(display& disp) {
 		int i = 0;
 		BOOST_FOREACH(const std::string& command, action.items()) {
 
-			hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
+			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			std::string tooltip = action.tooltip(i);
 			if (file_exists(game_config::path + "/images/icons/action/" + command + "_30.png" ))
 				button->set_overlay("icons/action/" + command);
@@ -326,7 +326,7 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 		SDL_GetMouseState(&x,&y);
 		this->show_menu(submenu->items(), x, y, submenu->is_context(), gui);
 	} else {
-		hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]);
+		const hotkey::hotkey_command& cmd = hotkey::get_hotkey_command(items[res]);
 		hotkey::execute_command(gui,cmd,this,res);
 		set_button_state(gui);
 	}
@@ -341,7 +341,7 @@ void command_executor::execute_action(const std::vector<std::string>& items_arg,
 
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		hotkey_command &command = hotkey::get_hotkey_command(*i);
+		const hotkey_command &command = hotkey::get_hotkey_command(*i);
 		if (can_execute_command(command)) {
 			hotkey::execute_command(gui, command, this);
 			set_button_state(gui);
@@ -553,7 +553,7 @@ void key_event_execute(display& disp, const SDL_KeyboardEvent& event, command_ex
 }
 
 
-void execute_command(display& disp, hotkey_command& command, command_executor* executor, int index)
+void execute_command(display& disp, const hotkey_command& command, command_executor* executor, int index)
 {
 	const int zoom_amount = 4;
 	bool map_screenshot = false;

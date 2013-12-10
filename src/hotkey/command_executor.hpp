@@ -137,7 +137,7 @@ void key_event(display& disp, const SDL_KeyboardEvent& event, command_executor* 
 void mbutton_event(display& disp, const SDL_MouseButtonEvent& event, command_executor* executor);
 
 //TODO
-void execute_command(display& disp, hotkey_command& command, command_executor* executor, int index=-1);
+void execute_command(display& disp, const hotkey_command& command, command_executor* executor, int index=-1);
 
 // Object which will ensure that basic keyboard events like escape
 // are handled properly for the duration of its lifetime.
