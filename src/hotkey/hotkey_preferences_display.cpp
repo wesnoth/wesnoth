@@ -635,7 +635,7 @@ void hotkey_preferences_dialog::show_binding_dialog(
 	if (!(keycode == SDLK_ESCAPE && (mod & any_mod) == 0)) {
 
 		hotkey::hotkey_item newhk(id);
-		hotkey::hotkey_item* oldhk = NULL;
+		const hotkey::hotkey_item* oldhk = NULL;
 
 		CKey keystate;
 		bool shift = keystate[SDLK_RSHIFT] || keystate[SDLK_LSHIFT];
@@ -697,7 +697,7 @@ Control, Alt or Meta modifiers to avoid problems.")); */
 						_("Reassign Hotkey"), text,
 						gui2::tmessage::yes_no_buttons);
 				if (res == gui2::twindow::OK) {
-					oldhk->set_command(id);
+					hotkey::add_hotkey(newhk);
 					set_hotkey_menu(true);
 				}
 			}
