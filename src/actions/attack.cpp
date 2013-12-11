@@ -536,6 +536,10 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	attacker_stats_ = best_att_stats;
 	defender_stats_ = best_def_stats;
 
+	// These currently mean the same thing, but assumptions like that have been broken before
+	if (!defender_stats_ || !attacker_stats_) {
+		return -1;
+	}
 	*defender_weapon = defender_stats_->attack_num;
 	return attacker_stats_->attack_num;
 }
