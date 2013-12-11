@@ -165,18 +165,31 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 				} else {
 
-					SDL_Color col = int_to_color(game_config::team_rgb_range.find(terrain_info.id())->second.mid());
+					SDL_Color normal_col = int_to_color(game_config::team_rgb_range.find(terrain_info.id())->second.rep());
+
+					SDL_Color col = normal_col;
 					bool first = true;
 					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
 					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
 						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
-						SDL_Color tmp = fogged ?
-								int_to_color(game_config::team_rgb_range.find(terrain_id)->second.min()) :
-								int_to_color(game_config::team_rgb_range.find(terrain_id)->second.mid());
+						SDL_Color tmp = int_to_color(game_config::team_rgb_range.find(terrain_id)->second.rep());
 
-						if (highlighted)
-							tmp = int_to_color(game_config::team_rgb_range.find(terrain_id)->second.max());
+						if (fogged) {
+							if (tmp.b < 50) tmp.b = 0;
+							else tmp.b -= 50;
+							if (tmp.g < 50) tmp.g = 0;
+							else tmp.g -= 50;
+							if (tmp.r < 50) tmp.r = 0;
+							else tmp.r -= 50;
+						}
+
+						if (highlighted) {
+							tmp.b += 50;
+							tmp.g += 50;
+							tmp.r += 50;
+						}
+
 
 						if (first) {
 							first = false;
