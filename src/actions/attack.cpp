@@ -352,6 +352,10 @@ battle_context::battle_context(const unit_map& units,
 		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, defender_weapon, false,
 				attacker, attacker_loc, adef, units);
 	}
+
+	// There have been various bugs where only one of these was set
+	assert(attacker_stats_);
+	assert(defender_stats_);
 }
 
 battle_context::battle_context(const battle_context_unit_stats &att,
