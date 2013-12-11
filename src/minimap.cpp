@@ -185,11 +185,13 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						}
 
 						if (highlighted) {
-							tmp.b += 50;
-							tmp.g += 50;
-							tmp.r += 50;
+							if (tmp.b > 205) tmp.b = 255;
+							else tmp.b += 50;
+							if (tmp.g > 205) tmp.g = 255;
+							else tmp.g += 50;
+							if (tmp.r > 205) tmp.r = 255;
+							else tmp.r += 50;
 						}
-
 
 						if (first) {
 							first = false;
