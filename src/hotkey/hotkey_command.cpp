@@ -157,9 +157,9 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_MINIMAP_UNIT_CODING, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_MINIMAP_TERRAIN_CODING, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, hotkey::SCOPE_GENERAL, "" },
 
-	{ hotkey::HOTKEY_MINIMAP_DRAW_UNITS, "minimap-draw-units", N_("Toggle Minimap unit drawing"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES, "minimap-draw-villages", N_("Toggle Minimap village drawing"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN, "minimap-draw-terrain", N_("Toggle Minimap terrain drawing"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_DRAW_UNITS, "minimap-draw-units", N_("Toggle Minimap Unit Drawing"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES, "minimap-draw-villages", N_("Toggle Minimap Village Drawing"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN, "minimap-draw-terrain", N_("Toggle Minimap Terrain Drawing"), false, hotkey::SCOPE_GENERAL, "" },
 
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NEXT, "editor-brush-next", N_("Next Brush"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_DEFAULT, "editor-brush-default", N_("Default Brush"), false, hotkey::SCOPE_EDITOR, "" },
