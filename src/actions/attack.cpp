@@ -498,7 +498,11 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			}
 			attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[i],
 				true, defender, defender_loc, def, units);
-			if (attacker_stats_->disable) continue;
+			if (attacker_stats_->disable) {
+				delete attacker_stats_;
+				attacker_stats_ = NULL;
+				continue;
+			}
 			defender_stats_ = new battle_context_unit_stats(defender, defender_loc, def_weapon, false,
 				attacker, attacker_loc, &att, units);
 			attacker_combatant_ = new combatant(*attacker_stats_);
