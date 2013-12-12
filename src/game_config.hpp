@@ -142,7 +142,7 @@ namespace game_config
 		extern const std::string turn_bell, timer_bell, receive_message,
 				receive_message_highlight, receive_message_friend,
 				receive_message_server, user_arrive, user_leave,
-				game_user_arrive, game_user_leave;
+				game_user_arrive, game_user_leave, party_full_bell;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 				menu_expand, menu_contract, menu_select;
 	}
