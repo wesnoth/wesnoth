@@ -290,6 +290,11 @@ void create::process_event()
 		synchronize_selections();
 	}
 
+	if (filter_name_.text() != engine_.level_name_filter()) {
+		engine_.apply_level_filter(filter_name_.text());
+		init_level_type_changed(0);
+	}
+
 	bool level_changed = level_selection_ != levels_menu_.selection();
 	level_selection_ = levels_menu_.selection();
 
