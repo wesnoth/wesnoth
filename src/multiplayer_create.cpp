@@ -112,7 +112,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	std::vector<std::string> combo_level_names;
 
 	BOOST_FOREACH(level_type_info type_info, all_level_types) {
-		if (!engine_.get_levels_by_type(type_info.first).empty()) {
+		if (!engine_.get_levels_by_type_unfiltered(type_info.first).empty()) {
 			available_level_types_.push_back(type_info.first);
 			combo_level_names.push_back(type_info.second);
 		}
@@ -288,6 +288,11 @@ void create::process_event()
 
 		set_description(engine_.current_extra(create_engine::ERA).description);
 		synchronize_selections();
+	}
+
+	if (filter_name_.text() != engine_.level_name_filter()) {
+		engine_.apply_level_filter(filter_name_.text());
+		init_level_type_changed(0);
 	}
 
 	bool level_changed = level_selection_ != levels_menu_.selection();

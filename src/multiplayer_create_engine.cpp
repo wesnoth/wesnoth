@@ -34,6 +34,27 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_create_engine("mp/create/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_create_engine)
 
+namespace {
+bool contains_ignore_case(const std::string& str1, const std::string& str2)
+{
+	for (size_t i = 0; i<str1.size() - str2.size()+1; i++) {
+		bool ok = true;
+		for (size_t j = 0; j<str2.size(); j++) {
+			if (std::tolower(str1[i+j]) != std::tolower(str2[j])) {
+				ok = false;
+				break;
+			}
+		}
+
+		if (ok) {
+			return true;
+		}
+	}
+
+	return false;
+}
+}
+
 namespace mp {
 
 level::level(const config& data) :
@@ -289,6 +310,7 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	current_level_index_(0),
 	current_era_index_(0),
 	current_mod_index_(0),
+	level_name_filter_(),
 	scenarios_(),
 	user_maps_(),
 	campaigns_(),
@@ -331,6 +353,8 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 		current_level_type_ != level::SP_CAMPAIGN) {
 		dependency_manager_.try_modifications(parameters_.active_mods, true);
 	}
+
+	reset_level_filters();
 }
 
 create_engine::~create_engine()
@@ -398,6 +422,81 @@ void create_engine::prepare_for_saved_game()
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
 	parameters_.name = vgettext("$login|’s game", i18n_symbols);
+}
+
+void create_engine::apply_level_filter(const std::string &name)
+{
+	scenarios_filtered_.clear();
+	for (size_t i = 0; i<scenarios_.size(); i++) {
+		if (contains_ignore_case(scenarios_[i]->name(), name)) {
+			scenarios_filtered_.push_back(i);
+		}
+	}
+
+	user_maps_filtered_.clear();
+	for (size_t i = 0; i<user_maps_.size(); i++) {
+		if (contains_ignore_case(user_maps_[i]->name(), name)) {
+			user_maps_filtered_.push_back(i);
+		}
+	}
+
+	campaigns_filtered_.clear();
+	for (size_t i = 0; i<campaigns_.size(); i++) {
+		if (contains_ignore_case(campaigns_[i]->name(), name)) {
+			campaigns_filtered_.push_back(i);
+		}
+	}
+
+	sp_campaigns_filtered_.clear();
+	for (size_t i = 0; i<sp_campaigns_.size(); i++) {
+		if (contains_ignore_case(sp_campaigns_[i]->name(), name)) {
+			sp_campaigns_filtered_.push_back(i);
+		}
+	}
+
+	random_maps_filtered_.clear();
+	for (size_t i = 0; i<random_maps_.size(); i++) {
+		if (contains_ignore_case(random_maps_[i]->name(), name)) {
+			random_maps_filtered_.push_back(i);
+		}
+	}
+
+	level_name_filter_ = name;
+}
+
+void create_engine::reset_level_filters()
+{
+	scenarios_filtered_.clear();
+	for (size_t i = 0; i<scenarios_.size(); i++) {
+		scenarios_filtered_.push_back(i);
+	}
+
+	user_maps_filtered_.clear();
+	for (size_t i = 0; i<user_maps_.size(); i++) {
+		user_maps_filtered_.push_back(i);
+	}
+
+	campaigns_filtered_.clear();
+	for (size_t i = 0; i<campaigns_.size(); i++) {
+		campaigns_filtered_.push_back(i);
+	}
+
+	sp_campaigns_filtered_.clear();
+	for (size_t i = 0; i<sp_campaigns_.size(); i++) {
+		sp_campaigns_filtered_.push_back(i);
+	}
+
+	random_maps_filtered_.clear();
+	for (size_t i = 0; i<random_maps_.size(); i++) {
+		random_maps_filtered_.push_back(i);
+	}
+
+	level_name_filter_ = "";
+}
+
+const std::string &create_engine::level_name_filter() const
+{
+	return level_name_filter_;
 }
 
 std::vector<std::string> create_engine::levels_menu_item_names() const
@@ -468,7 +567,23 @@ level::TYPE create_engine::current_level_type() const
 
 void create_engine::set_current_level(const size_t index)
 {
-	current_level_index_ = index;
+	switch (current_level_type()) {
+	case level::CAMPAIGN:
+		current_level_index_ = campaigns_filtered_[index];
+		break;
+	case level::SP_CAMPAIGN:
+		current_level_index_ = sp_campaigns_filtered_[index];
+		break;
+	case level::SCENARIO:
+		current_level_index_ = scenarios_filtered_[index];
+		break;
+	case level::RANDOM_MAP:
+		current_level_index_ = random_maps_filtered_[index];
+		break;
+	case level::USER_MAP:
+		current_level_index_ = user_maps_filtered_[index];
+		break;
+	}
 
 	if (current_level_type_ == level::RANDOM_MAP) {
 		random_map* current_random_map =
@@ -704,7 +819,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 }
 
 std::vector<create_engine::level_ptr>
-	create_engine::get_levels_by_type(level::TYPE type) const
+	create_engine::get_levels_by_type_unfiltered(level::TYPE type) const
 {
 	std::vector<level_ptr> levels;
 	switch (type) {
@@ -731,6 +846,40 @@ std::vector<create_engine::level_ptr>
 	case level::SP_CAMPAIGN:
 		BOOST_FOREACH(level_ptr level, sp_campaigns_) {
 			levels.push_back(level);
+		}
+		break;
+	} // end switch
+
+	return levels;
+}
+
+std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::TYPE type) const
+{
+	std::vector<level_ptr> levels;
+	switch (type) {
+	case level::SCENARIO:
+		BOOST_FOREACH(size_t level, scenarios_filtered_) {
+			levels.push_back(scenarios_[level]);
+		}
+		break;
+	case level::USER_MAP:
+		BOOST_FOREACH(size_t level, user_maps_filtered_) {
+			levels.push_back(user_maps_[level]);
+		}
+		break;
+	case level::RANDOM_MAP:
+		BOOST_FOREACH(size_t level, random_maps_filtered_) {
+			levels.push_back(random_maps_[level]);
+		}
+		break;
+	case level::CAMPAIGN:
+		BOOST_FOREACH(size_t level, campaigns_filtered_) {
+			levels.push_back(campaigns_[level]);
+		}
+		break;
+	case level::SP_CAMPAIGN:
+		BOOST_FOREACH(size_t level, sp_campaigns_filtered_) {
+			levels.push_back(sp_campaigns_[level]);
 		}
 		break;
 	} // end switch

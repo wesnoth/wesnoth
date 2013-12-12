@@ -176,6 +176,12 @@ public:
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();
 
+	void apply_level_filter(const std::string& name);
+	void reset_level_filters();
+
+	const std::string& level_name_filter() const;
+
+	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
 	std::vector<std::string> levels_menu_item_names() const;
@@ -219,17 +225,27 @@ private:
 	std::vector<extras_metadata_ptr>&
 		get_extras_by_type(const MP_EXTRA extra_type);
 
+	size_t map_level_index(size_t index) const;
+
 	level::TYPE current_level_type_;
 	size_t current_level_index_;
 
 	size_t current_era_index_;
 	size_t current_mod_index_;
 
+	std::string level_name_filter_;
+
 	std::vector<scenario_ptr> scenarios_;
 	std::vector<user_map_ptr> user_maps_;
 	std::vector<campaign_ptr> campaigns_;
 	std::vector<campaign_ptr> sp_campaigns_;
 	std::vector<random_map_ptr> random_maps_;
+
+	std::vector<size_t> scenarios_filtered_;
+	std::vector<size_t> user_maps_filtered_;
+	std::vector<size_t> campaigns_filtered_;
+	std::vector<size_t> sp_campaigns_filtered_;
+	std::vector<size_t> random_maps_filtered_;
 
 	std::vector<std::string> user_map_names_;
 
