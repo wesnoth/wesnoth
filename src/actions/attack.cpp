@@ -483,7 +483,15 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 			attacker_loc, defender_loc, prev_def);
 		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[0],
 						true, defender, defender_loc, &defender.attacks()[*defender_weapon], units);
-		return attacker_stats_->disable ? -1 : choices[0];
+		if (attacker_stats_->disable) {
+			delete attacker_stats_;
+			attacker_stats_ = NULL;
+			return -1;
+		}
+		const attack_type &att = attacker.attacks()[choices[0]];
+		defender_stats_ = new battle_context_unit_stats(defender, defender_loc, *defender_weapon, false,
+			attacker, attacker_loc, &att, units);
+		return choices[0];
 	}
 
 	// Multiple options: simulate them, save best.
