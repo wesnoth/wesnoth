@@ -482,7 +482,7 @@ std::vector<std::string> create_engine::levels_menu_item_names() const
 {
 	std::vector<std::string> menu_names;
 
-	BOOST_FOREACH(level_ptr level, get_filtered_levels_by_type(current_level_type_)) {
+	BOOST_FOREACH(level_ptr level, get_levels_by_type(current_level_type_)) {
 		menu_names.push_back(level->name() + HELP_STRING_SEPARATOR +
 			level->name());
 	}
@@ -798,7 +798,7 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 }
 
 std::vector<create_engine::level_ptr>
-	create_engine::get_levels_by_type(level::TYPE type) const
+	create_engine::get_levels_by_type_unfiltered(level::TYPE type) const
 {
 	std::vector<level_ptr> levels;
 	switch (type) {
@@ -832,7 +832,7 @@ std::vector<create_engine::level_ptr>
 	return levels;
 }
 
-std::vector<create_engine::level_ptr> create_engine::get_filtered_levels_by_type(level::TYPE type) const
+std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::TYPE type) const
 {
 	std::vector<level_ptr> levels;
 	switch (type) {

@@ -181,8 +181,8 @@ public:
 
 	const std::string& level_name_filter() const;
 
+	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
-	std::vector<level_ptr> get_filtered_levels_by_type(level::TYPE type) const;
 
 	std::vector<std::string> levels_menu_item_names() const;
 	std::vector<std::string> extras_menu_item_names(

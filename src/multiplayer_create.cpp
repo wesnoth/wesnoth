@@ -112,7 +112,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	std::vector<std::string> combo_level_names;
 
 	BOOST_FOREACH(level_type_info type_info, all_level_types) {
-		if (!engine_.get_levels_by_type(type_info.first).empty()) {
+		if (!engine_.get_levels_by_type_unfiltered(type_info.first).empty()) {
 			available_level_types_.push_back(type_info.first);
 			combo_level_names.push_back(type_info.second);
 		}
