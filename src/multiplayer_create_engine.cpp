@@ -874,7 +874,7 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
 		break;
 	case level::CAMPAIGN:
 		BOOST_FOREACH(size_t level, campaigns_filtered_) {
-			levels.push_back(random_maps_[level]);
+			levels.push_back(campaigns_[level]);
 		}
 		break;
 	case level::SP_CAMPAIGN:
