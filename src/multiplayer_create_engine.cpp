@@ -34,6 +34,27 @@ static lg::log_domain log_config("config");
 static lg::log_domain log_mp_create_engine("mp/create/engine");
 #define DBG_MP LOG_STREAM(debug, log_mp_create_engine)
 
+namespace {
+bool contains_ignore_case(const std::string& str1, const std::string& str2)
+{
+	for (size_t i = 0; i<str1.size() - str2.size()+1; i++) {
+		bool ok = true;
+		for (size_t j = 0; j<str2.size(); j++) {
+			if (std::tolower(str1[i+j]) != std::tolower(str2[j])) {
+				ok = false;
+				break;
+			}
+		}
+
+		if (ok) {
+			return true;
+		}
+	}
+
+	return false;
+}
+}
+
 namespace mp {
 
 level::level(const config& data) :
@@ -407,35 +428,35 @@ void create_engine::apply_level_filter(const std::string &name)
 {
 	scenarios_filtered_.clear();
 	for (size_t i = 0; i<scenarios_.size(); i++) {
-		if (scenarios_[i]->name().find(name, 0) != std::string::npos) {
+		if (contains_ignore_case(scenarios_[i]->name(), name)) {
 			scenarios_filtered_.push_back(i);
 		}
 	}
 
 	user_maps_filtered_.clear();
 	for (size_t i = 0; i<user_maps_.size(); i++) {
-		if (user_maps_[i]->name().find(name, 0) != std::string::npos) {
+		if (contains_ignore_case(user_maps_[i]->name(), name)) {
 			user_maps_filtered_.push_back(i);
 		}
 	}
 
 	campaigns_filtered_.clear();
 	for (size_t i = 0; i<campaigns_.size(); i++) {
-		if (campaigns_[i]->name().find(name, 0) != std::string::npos) {
+		if (contains_ignore_case(campaigns_[i]->name(), name)) {
 			campaigns_filtered_.push_back(i);
 		}
 	}
 
 	sp_campaigns_filtered_.clear();
 	for (size_t i = 0; i<sp_campaigns_.size(); i++) {
-		if (sp_campaigns_[i]->name().find(name, 0) != std::string::npos) {
+		if (contains_ignore_case(sp_campaigns_[i]->name(), name)) {
 			sp_campaigns_filtered_.push_back(i);
 		}
 	}
 
 	random_maps_filtered_.clear();
 	for (size_t i = 0; i<random_maps_.size(); i++) {
-		if (random_maps_[i]->name().find(name, 0) != std::string::npos) {
+		if (contains_ignore_case(random_maps_[i]->name(), name)) {
 			random_maps_filtered_.push_back(i);
 		}
 	}
