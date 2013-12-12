@@ -372,13 +372,14 @@ bool luaW_getglobal(lua_State *L, ...)
 		lua_rawget(L, -2);
 		lua_remove(L, -2);
 	}
-	va_end(ap);
 
 	if (lua_isnil(L, -1)) {
 		discard:
+		va_end(ap);
 		lua_pop(L, 1);
 		return false;
 	}
+	va_end(ap);
 	return true;
 }
 
