@@ -633,6 +633,7 @@ static void setup_user_data_dir()
 	_mkdir(user_data_dir.c_str());
 	_mkdir((user_data_dir + "/editor").c_str());
 	_mkdir((user_data_dir + "/editor/maps").c_str());
+	_mkdir((user_data_dir + "/editor/scenarios").c_str());
 	_mkdir((user_data_dir + "/data").c_str());
 	_mkdir((user_data_dir + "/data/add-ons").c_str());
 	_mkdir((user_data_dir + "/saves").c_str());
@@ -646,6 +647,7 @@ static void setup_user_data_dir()
 
 	BEOS_CREATE_PREFERENCES_SUBDIR("editor");
 	BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
+	BEOS_CREATE_PREFERENCES_SUBDIR("editor/scenarios");
 	BEOS_CREATE_PREFERENCES_SUBDIR("data");
 	BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
 	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
@@ -666,6 +668,7 @@ static void setup_user_data_dir()
 	// Create user data and add-on directories
 	create_directory_if_missing(dir_path + "/editor");
 	create_directory_if_missing(dir_path + "/editor/maps");
+	create_directory_if_missing(dir_path + "/editor/scenarios");
 	create_directory_if_missing(dir_path + "/data");
 	create_directory_if_missing(dir_path + "/data/add-ons");
 	create_directory_if_missing(dir_path + "/saves");
