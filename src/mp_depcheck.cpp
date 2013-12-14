@@ -614,7 +614,7 @@ bool manager::change_era(const std::string& id)
 
 	mods_ = newmods;
 
-	// Now checking if the currently selected scenarop conflicts the era
+	// Now checking if the currently selected scenario conflicts the era
 	// and changing scenario if necessary
 	if (!conflicts(era, elem(scenario_, "scenario"))) {
 		return true;
