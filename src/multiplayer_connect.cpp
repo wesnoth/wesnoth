@@ -257,27 +257,34 @@ void connect::side::update_ui()
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 {
+	// Offset value to align labels in y-axis.
+	int label_y_offset = (combo_leader_.height() - label_leader_name_.height()) / 2;
+
 	pane.add_widget(&label_player_number_, 0, 5 + pos);
+
 	pane.add_widget(combo_controller_.get(), 20, 5 + pos);
 	pane.add_widget(&label_original_controller_, 20 +
 		(combo_controller_->width() - label_original_controller_.width()) / 2,
-		35 + pos + (combo_leader_.height() -
-		label_original_controller_.height()) / 2);
+		35 + pos + label_y_offset);
 	pane.add_widget(&combo_ai_algorithm_, 20, 35 + pos);
 
 	pane.add_widget(&combo_faction_, 135, 5 + pos);
 	pane.add_widget(&label_leader_name_, 135 +
 		(combo_faction_.width() - label_leader_name_.width()) / 2,
-		35 + pos + (combo_leader_.height() -
-		label_leader_name_.height()) / 2);
+		35 + pos + label_y_offset);
+
 	pane.add_widget(&combo_leader_, 250, 5 + pos);
 	pane.add_widget(&combo_gender_, 250, 35 + pos);
+
 	pane.add_widget(&combo_team_, 365, 5 + pos);
 	pane.add_widget(&combo_color_, 365, 35 + pos);
+
 	pane.add_widget(&slider_gold_, 475, 5 + pos);
-	pane.add_widget(&label_gold_, 475 + 5, 35 + pos);
+	pane.add_widget(&label_gold_, 475 + 5, 35 + pos + label_y_offset);
+
 	pane.add_widget(&slider_income_, 475 + slider_gold_.width(), 5 + pos);
-	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
+	pane.add_widget(&label_income_, 475 + 5 + slider_gold_.width(),
+		35 + pos + label_y_offset);
 }
 
 void connect::side::update_faction_combo()
