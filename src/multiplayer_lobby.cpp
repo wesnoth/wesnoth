@@ -265,15 +265,15 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		xpos += xp_text->w + 2 * h_padding_;
 	}
 	
-	// Draw map size icon
-	const surface map_size_icon(image::get_image(map_size_icon_locator_));
-	if(map_size_icon) {
-		video().blit_surface(xpos, ypos - map_size_icon->h/2, map_size_icon);
-
-		xpos += map_size_icon->w + h_padding_image_to_text_;
-	}
-	
 	if(!game.map_data.empty()) {
+		// Draw map size icon
+		const surface map_size_icon(image::get_image(map_size_icon_locator_));
+		if(map_size_icon) {
+			video().blit_surface(xpos, ypos - map_size_icon->h/2, map_size_icon);
+
+			xpos += map_size_icon->w + h_padding_image_to_text_;
+		}
+	
 		// Draw map size text
 		const surface map_size_text(font::get_rendered_text(game.map_info_size,
 			font::SIZE_NORMAL, font::NORMAL_COLOR));
