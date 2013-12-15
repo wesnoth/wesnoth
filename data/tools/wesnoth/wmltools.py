@@ -173,9 +173,9 @@ def parse_macroref(start, line):
              line[i].isspace() and \
              brackdepth == 1 and \
              parendepth == 0:
-            args.append(arg)
+            args.append(arg.strip())
             arg = ""
-        elif not line[i].isspace():
+        elif not line[i].isspace() or parendepth > 0:
             arg += line[i]
     return (args, brackdepth, parendepth)
 
