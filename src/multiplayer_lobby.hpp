@@ -43,7 +43,7 @@ public:
 			name(),
 			map_info(),
 			map_info_size(),
-			mod_info(),
+			era_and_mod_info(),
 			gold(),
 			xp(),
 			vision(),
@@ -71,7 +71,7 @@ public:
 		std::string name;
 		std::string map_info;
 		std::string map_info_size;
-		std::string mod_info;
+		std::string era_and_mod_info;
 		std::string gold;
 		std::string xp;
 		std::string vision;
