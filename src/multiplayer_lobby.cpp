@@ -46,6 +46,7 @@ gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
 	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
+	map_size_icon_locator_("misc/map.png"),
 	vision_icon_locator_("misc/visibility.png"),
 	time_limit_icon_locator_("themes/sand-clock.png"),
 	observer_icon_locator_("misc/eye.png"),
@@ -262,6 +263,25 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		video().blit_surface(xpos, ypos - xp_text->h/2, xp_text);
 
 		xpos += xp_text->w + 2 * h_padding_;
+	}
+	
+	// Draw map size icon
+	const surface map_size_icon(image::get_image(map_size_icon_locator_));
+	if(map_size_icon) {
+		video().blit_surface(xpos, ypos - map_size_icon->h/2, map_size_icon);
+
+		xpos += map_size_icon->w + h_padding_image_to_text_;
+	}
+	
+	if(!game.map_data.empty()) {
+		// Draw map size text
+		const surface map_size_text(font::get_rendered_text(game.map_info_size,
+			font::SIZE_NORMAL, font::NORMAL_COLOR));
+		if(map_size_text) {
+			video().blit_surface(xpos, ypos - map_size_text->h/2, map_size_text);
+
+			xpos += map_size_text->w + 2 * h_padding_;
+		}
 	}
 
 	if(!game.time_limit.empty()) {
@@ -490,7 +510,6 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					games_.back().map_info_size = str_cast(map.w()) + utils::unicode_multiplication_sign
 						+ str_cast(map.h());
 				}
-				games_.back().map_info += " — " + games_.back().map_info_size;
 			} catch (incorrect_map_format_error &e) {
 				ERR_CF << "illegal map: " << e.message << '\n';
 				verified = false;
@@ -498,8 +517,6 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 				verified = false;
 			}
-		} else {
-			games_.back().map_info += " — ??×??";
 		}
 		games_.back().map_info += " ";
 		if (game["mp_campaign"].empty()) {

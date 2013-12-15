@@ -117,6 +117,7 @@ protected:
 private:
 	image::locator gold_icon_locator_;
 	image::locator xp_icon_locator_;
+	image::locator map_size_icon_locator_;
 	image::locator vision_icon_locator_;
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
