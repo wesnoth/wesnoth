@@ -129,6 +129,7 @@ private:
 	int margin_;
 	int minimap_size_;
 	int h_padding_;
+	int h_padding_image_to_text_;
 	int header_height_;
 	size_t selected_;
 	std::pair<size_t, size_t> visible_range_;

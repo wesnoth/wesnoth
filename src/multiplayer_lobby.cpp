@@ -46,7 +46,7 @@ gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
 	menu(video, empty_string_vector, false, -1, -1, NULL, &menu::bluebg_style),
 	gold_icon_locator_("themes/gold.png"),
 	xp_icon_locator_("themes/units.png"),
-	vision_icon_locator_("misc/invisible.png"),
+	vision_icon_locator_("misc/visibility.png"),
 	time_limit_icon_locator_("themes/sand-clock.png"),
 	observer_icon_locator_("misc/eye.png"),
 	no_observer_icon_locator_("misc/no_observer.png"),
@@ -56,6 +56,7 @@ gamebrowser::gamebrowser(CVideo& video, const config &map_hashes) :
 	margin_(5),
 	minimap_size_(item_height_ - 2*margin_),
 	h_padding_(5),
+	h_padding_image_to_text_(4),
 	header_height_(20),
 	selected_(0),
 	visible_range_(std::pair<size_t,size_t>(0,0)),
@@ -235,7 +236,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	if(gold_icon) {
 		video().blit_surface(xpos, ypos - gold_icon->h/2, gold_icon);
 
-		xpos += gold_icon->w + h_padding_;
+		xpos += gold_icon->w + h_padding_image_to_text_;
 	}
 
 	// Draw gold text
@@ -252,7 +253,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	if(xp_icon) {
 		video().blit_surface(xpos, ypos - xp_icon->h/2, xp_icon);
 
-		xpos += xp_icon->w + h_padding_;
+		xpos += xp_icon->w + h_padding_image_to_text_;
 	}
 
 	// Draw xp text
@@ -268,7 +269,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 		const surface time_icon(image::get_image(time_limit_icon_locator_));
 		video().blit_surface(xpos, ypos - time_icon->h/2, time_icon);
 
-		xpos += time_icon->w + h_padding_;
+		xpos += time_icon->w + h_padding_image_to_text_;
 
 		// Draw time text
 		const surface time_text(font::get_rendered_text(game.time_limit,
@@ -283,7 +284,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	if(vision_icon) {
 		video().blit_surface(xpos, ypos - vision_icon->h/2, vision_icon);
 
-		xpos += vision_icon->w + h_padding_;
+		xpos += vision_icon->w + h_padding_image_to_text_;
 	}
 
 	// Draw vision text
@@ -298,7 +299,7 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 
 	// Draw map settings text
 	if (game.use_map_settings) {
-		xpos += vision_text->w + 4 * h_padding_;
+		xpos += vision_text->w + 3 * h_padding_;
 		const surface map_settings_text(font::get_rendered_text(
 		    font::make_text_ellipsis(_("Use map settings"), font::SIZE_NORMAL,
 		        (item_rect.x + item_rect.w) - xpos - margin_),
