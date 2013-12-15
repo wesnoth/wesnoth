@@ -165,14 +165,14 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 	}
 
 	const surface status_text(font::get_rendered_text(game.status,
-	    font::SIZE_NORMAL, font_color));
+	    font::SIZE_NORMAL, font_color, TTF_STYLE_BOLD));
 	const int status_text_width = status_text ? status_text->w : 0;
 
 	// First line: draw game name
 	const surface name_surf(font::get_rendered_text(
 	    font::make_text_ellipsis(game.name + no_era_string, font::SIZE_PLUS,
 	        (item_rect.x + item_rect.w) - xpos - margin_ - status_text_width - h_padding_),
-	    font::SIZE_PLUS, font_color));
+	    font::SIZE_PLUS, font_color, TTF_STYLE_BOLD));
 	video().blit_surface(xpos, ypos, name_surf);
 
 	// Draw status text
