@@ -99,6 +99,13 @@
 # declaration will be useful if you are declaring units with macros that
 # include a substitutable formal in the unit name; there are examples in UtBS.
 #
+# If a mismatch between a recruit list and recruitment pattern involves a
+# usage type outside the five core types, the warning message will include a
+# note that a non-standard usage class is involved.  If you are using custom
+# usage classes and would like wmllint to be aware of them, you can insert
+# the magic comment, "wmllint: usagetype <class>".  This comment will take a
+# comma-separated list, and can also be pluralized to "usagetypes".
+#
 # You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
 #
@@ -1259,6 +1266,11 @@ def global_sanity_check(filename, lines):
         if m:
             usage[m.group(1)] = m.group(2).strip()
             unit_types.append(m.group(1))
+        # Magic comment for adding non-standard usage types
+        m = re.search('# *wmllint: usagetypes? +(.*)', lines[i])
+        if m:
+            for newusage in m.group(1).split(","):
+                usage_types.append(newusage.strip())
         # Accumulate global spelling exceptions
         words = re.search("wmllint: general spellings? (.*)", lines[i])
         if words:
