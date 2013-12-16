@@ -211,8 +211,6 @@ inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower
 
 namespace util {
 
-std::string format_time_summary(time_t t);
-
 template<class T>
 class unique_ptr
 {

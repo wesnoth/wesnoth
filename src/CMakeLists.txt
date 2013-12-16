@@ -857,6 +857,7 @@ set(libwesnoth-game_STAT_SRC
 	display.cpp
 	events.cpp
 	font.cpp
+	format_time_summary.cpp
   	generators/cavegen.cpp
 	generators/map_create.cpp
 	generators/mapgen.cpp
