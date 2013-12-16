@@ -26,6 +26,7 @@
 #include "minimap.hpp"
 #include "multiplayer_lobby.hpp"
 #include "gettext.hpp"
+#include "gui/auxiliary/old_markup.hpp"
 #include "log.hpp"
 #include "playmp_controller.hpp"
 #include "sound.hpp"
@@ -524,6 +525,30 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				games_.back().map_info += " (";
 				games_.back().map_info += (*level_cfg)["name"].str();
 				games_.back().map_info += ")";
+
+				// Difficulty.
+				const std::vector<std::string> difficulties =
+					utils::split((*level_cfg)["difficulties"]);
+				const std::string difficulty_descriptions =
+					(*level_cfg)["difficulty_descriptions"];
+				std::vector<std::string> difficulty_options =
+					utils::split(difficulty_descriptions, ';');
+				int index = 0;
+				BOOST_FOREACH(const std::string& difficulty, difficulties) {
+					if (difficulty == game["difficulty_define"]) {
+						gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
+						games_.back().map_info += " — ";
+						games_.back().map_info += _("Difficulty:");
+						games_.back().map_info += " ";
+						games_.back().map_info += menu_item.label();
+						games_.back().map_info += " ";
+						games_.back().map_info += menu_item.description();
+
+						break;
+					}
+					index++;
+				}
+
 			} else {
 				utils::string_map symbols;
 				symbols["campaign_id"] = game["mp_campaign"];
