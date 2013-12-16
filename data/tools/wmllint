@@ -1435,11 +1435,14 @@ def global_sanity_check(filename, lines):
                 except KeyError:
                     print >>sys.stderr, '%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
                                          % (filename, i+1, unmac, str(whopairs.keys())[1:-1])
-        if lines[i].lstrip().startswith('{'):
+        # Parse recruit/recall macros to recognize characters.  This section
+        # assumes that such a macro is the first item on a line.
+        leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
+        if leadmac:
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
             for mac in whopairs.keys():
-                if mac in lines[i]:
+                if mac in leadmac.group(0):
                     for who in whopairs[mac].split(","):
                         if who.strip().startswith("--"):
                             try:
