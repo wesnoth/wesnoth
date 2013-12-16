@@ -43,7 +43,7 @@ public:
 			name(),
 			map_info(),
 			map_info_size(),
-			mod_info(),
+			era_and_mod_info(),
 			gold(),
 			xp(),
 			vision(),
@@ -71,7 +71,7 @@ public:
 		std::string name;
 		std::string map_info;
 		std::string map_info_size;
-		std::string mod_info;
+		std::string era_and_mod_info;
 		std::string gold;
 		std::string xp;
 		std::string vision;
@@ -117,6 +117,7 @@ protected:
 private:
 	image::locator gold_icon_locator_;
 	image::locator xp_icon_locator_;
+	image::locator map_size_icon_locator_;
 	image::locator vision_icon_locator_;
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
@@ -129,6 +130,7 @@ private:
 	int margin_;
 	int minimap_size_;
 	int h_padding_;
+	int h_padding_image_to_text_;
 	int header_height_;
 	size_t selected_;
 	std::pair<size_t, size_t> visible_range_;
