@@ -28,7 +28,13 @@
 
 static bool use_color_cursors()
 {
+#ifdef __APPLE__
+	// Color cursors on OS X are known to be unusable, so don't use them ever.
+	// See bug #18112.
+	return false;
+#else
 	return game_config::editor == false && preferences::use_color_cursors();
+#endif
 }
 
 static SDL_Cursor* create_cursor(surface surf)

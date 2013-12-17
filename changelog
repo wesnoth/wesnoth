@@ -33,6 +33,8 @@ Version 1.11.7+dev:
      all human player slots have been taken.
    * Change layout for advertized games in the MP lobby and add map icon.
    * Moved color cursors option to Advanced Preferences.
+   * Always hide and disable color cursors option on Mac OS X since it's known
+     to cause severe lags that render the cursor unusable.
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario
