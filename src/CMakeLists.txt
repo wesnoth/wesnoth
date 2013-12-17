@@ -724,6 +724,8 @@ set(wesnoth-main_SRC
 	gui/dialogs/edit_label.cpp
 	gui/dialogs/editor/custom_tod.cpp
 	gui/dialogs/editor/editor_edit_label.cpp
+	gui/dialogs/editor/editor_edit_side.cpp
+	gui/dialogs/editor/editor_edit_scenario.cpp
 	gui/dialogs/editor_generate_map.cpp
 	gui/dialogs/editor_new_map.cpp
 	gui/dialogs/editor_resize_map.cpp
