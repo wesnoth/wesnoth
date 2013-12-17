@@ -1457,6 +1457,10 @@ def global_sanity_check(filename, lines):
                        re.match(r'([0-9]+|[^\s]*\$[^\s]*y[^\s]*|{[^\s]*Y[^\s]*})$', args[4]) and \
                        len(args[5]) > 0:
                         present.append(args[5])
+                elif macname == 'RECALL':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) == 2 and brack == 0:
+                        present.append(args[1])
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
             for mac in whopairs.keys():
