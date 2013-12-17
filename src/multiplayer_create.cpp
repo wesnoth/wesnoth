@@ -102,6 +102,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
 	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
 	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
+	all_level_types.push_back(std::make_pair(level::USER_SCENARIO, "User Scenarios"));
 	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, "Random Maps"));
 
 	if (game_config::debug) {
@@ -339,6 +340,7 @@ void create::process_event()
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
 		case level::USER_MAP:
+		case level::USER_SCENARIO:
 		case level::RANDOM_MAP: {
 
 			scenario* current_scenario =

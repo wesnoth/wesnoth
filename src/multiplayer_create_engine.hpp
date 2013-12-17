@@ -32,7 +32,7 @@ public:
 	level(const config& data);
 	virtual ~level() {};
 
-	enum TYPE { SCENARIO, USER_MAP, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
+	enum TYPE { SCENARIO, USER_MAP, USER_SCENARIO, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
 
 	virtual bool can_launch_game() const = 0;
 
@@ -237,6 +237,7 @@ private:
 
 	std::vector<scenario_ptr> scenarios_;
 	std::vector<user_map_ptr> user_maps_;
+	std::vector<scenario_ptr> user_scenarios_;
 	std::vector<campaign_ptr> campaigns_;
 	std::vector<campaign_ptr> sp_campaigns_;
 	std::vector<random_map_ptr> random_maps_;
@@ -248,6 +249,7 @@ private:
 	std::vector<size_t> random_maps_filtered_;
 
 	std::vector<std::string> user_map_names_;
+	std::vector<std::string> user_scenario_names_;
 
 	std::vector<extras_metadata_ptr> eras_;
 	std::vector<extras_metadata_ptr> mods_;

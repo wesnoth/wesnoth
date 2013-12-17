@@ -25,6 +25,9 @@
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
+#include "serialization/preprocessor.hpp"
+#include "serialization/parser.hpp"
+
 #include <boost/foreach.hpp>
 #include <sstream>
 
@@ -313,10 +316,12 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	level_name_filter_(),
 	scenarios_(),
 	user_maps_(),
+	user_scenarios_(),
 	campaigns_(),
 	sp_campaigns_(),
 	random_maps_(),
 	user_map_names_(),
+	user_scenario_names_(),
 	eras_(),
 	mods_(),
 	state_(state),
@@ -332,7 +337,11 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 
+	//TODO the editor dir is already configurable, is the preferences value
 	get_files_in_dir(get_user_data_dir() + "/editor/maps", &user_map_names_,
+		NULL, FILE_NAME_ONLY);
+
+	get_files_in_dir(get_user_data_dir() + "/editor/scenarios", &user_scenario_names_,
 		NULL, FILE_NAME_ONLY);
 
 	DBG_MP << "initializing all levels, eras and mods\n";
@@ -530,6 +539,9 @@ level& create_engine::current_level() const
 	case level::SCENARIO: {
 		return *scenarios_[current_level_index_];
 	}
+	case level::USER_SCENARIO: {
+		return *user_scenarios_[current_level_index_];
+	}
 	case level::USER_MAP: {
 		return *user_maps_[current_level_index_];
 	}
@@ -662,6 +674,14 @@ int create_engine::find_level_by_id(const std::string& id) const
 	}
 
 	i = 0;
+	BOOST_FOREACH(scenario_ptr scenario, user_scenarios_) {
+		if (scenario->id() == id) {
+			return i;
+		}
+		i++;
+	}
+
+	i = 0;
 	BOOST_FOREACH(campaign_ptr campaign, campaigns_) {
 		if (campaign->id() == id) {
 			return i;
@@ -770,6 +790,26 @@ void create_engine::init_all_levels()
 				i - dep_index_offset);
 			}
 		}
+
+		// User made scenarios.
+		dep_index_offset = 0;
+		for(size_t i = 0; i < user_scenario_names_.size(); i++)
+		{
+			config data;
+			read(data, *(preprocess_file(get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i])));
+
+			scenario_ptr new_scenario(new scenario(data));
+			if (new_scenario->id().empty()) continue;
+			user_scenarios_.push_back(new_scenario);
+
+			// Since user scenarios are treated as scenarios,
+			// some dependency info is required
+			config depinfo;
+			depinfo["id"] = data["id"];
+			depinfo["name"] = data["name"];
+			dependency_manager_.insert_element(depcheck::SCENARIO, depinfo,
+					i - dep_index_offset++);
+		}
 	}
 
 	// Stand-alone scenarios.
@@ -830,6 +870,11 @@ std::vector<create_engine::level_ptr>
 		break;
 	case level::USER_MAP:
 		BOOST_FOREACH(level_ptr level, user_maps_) {
+			levels.push_back(level);
+		}
+		break;
+	case level::USER_SCENARIO:
+		BOOST_FOREACH(level_ptr level, user_scenarios_) {
 			levels.push_back(level);
 		}
 		break;
