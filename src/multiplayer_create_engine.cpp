@@ -442,6 +442,13 @@ void create_engine::apply_level_filter(const std::string &name)
 		}
 	}
 
+	user_scenarios_filtered_.clear();
+	for (size_t i = 0; i<user_scenarios_.size(); i++) {
+		if (contains_ignore_case(user_scenarios_[i]->name(), name)) {
+			user_scenarios_filtered_.push_back(i);
+		}
+	}
+
 	user_maps_filtered_.clear();
 	for (size_t i = 0; i<user_maps_.size(); i++) {
 		if (contains_ignore_case(user_maps_[i]->name(), name)) {
@@ -478,6 +485,11 @@ void create_engine::reset_level_filters()
 	scenarios_filtered_.clear();
 	for (size_t i = 0; i<scenarios_.size(); i++) {
 		scenarios_filtered_.push_back(i);
+	}
+
+	user_scenarios_filtered_.clear();
+	for (size_t i = 0; i<user_scenarios_.size(); i++) {
+		user_scenarios_filtered_.push_back(i);
 	}
 
 	user_maps_filtered_.clear();
@@ -595,6 +607,8 @@ void create_engine::set_current_level(const size_t index)
 	case level::USER_MAP:
 		current_level_index_ = user_maps_filtered_[index];
 		break;
+	case level::USER_SCENARIO:
+		current_level_index_ = user_scenarios_filtered_[index];
 	}
 
 	if (current_level_type_ == level::RANDOM_MAP) {
@@ -910,6 +924,11 @@ std::vector<create_engine::level_ptr> create_engine::get_levels_by_type(level::T
 	case level::USER_MAP:
 		BOOST_FOREACH(size_t level, user_maps_filtered_) {
 			levels.push_back(user_maps_[level]);
+		}
+		break;
+	case level::USER_SCENARIO:
+		BOOST_FOREACH(size_t level, user_scenarios_filtered_) {
+			levels.push_back(user_scenarios_[level]);
 		}
 		break;
 	case level::RANDOM_MAP:

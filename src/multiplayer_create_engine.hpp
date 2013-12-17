@@ -244,6 +244,7 @@ private:
 
 	std::vector<size_t> scenarios_filtered_;
 	std::vector<size_t> user_maps_filtered_;
+	std::vector<size_t> user_scenarios_filtered_;
 	std::vector<size_t> campaigns_filtered_;
 	std::vector<size_t> sp_campaigns_filtered_;
 	std::vector<size_t> random_maps_filtered_;
