@@ -1439,6 +1439,15 @@ def global_sanity_check(filename, lines):
         # assumes that such a macro is the first item on a line.
         leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
         if leadmac:
+            if not leadmac.group().endswith('}'):
+                macname = leadmac.group()[1:-1]
+                # Update 1.4's {LOYAL_UNIT} macro to {NAMED_LOYAL_UNIT}.  Do
+                # this here rather than hack_syntax so the character can be
+                # recognized.
+                if macname == 'LOYAL_UNIT':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) == 7:
+                        lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
             for mac in whopairs.keys():
