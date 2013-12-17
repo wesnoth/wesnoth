@@ -522,7 +522,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				games_.back().map_info = _("Campaign:");
 				games_.back().map_info += " ";
 				games_.back().map_info += (*level_cfg)["name"].str();
-				games_.back().map_info += " —";
+				games_.back().map_info += " — ";
 				games_.back().map_info += game["mp_scenario_name"].str();
 
 				// Difficulty.
