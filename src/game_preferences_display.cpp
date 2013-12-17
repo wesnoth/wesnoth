@@ -123,7 +123,7 @@ private:
 			friends_remove_button_, show_floating_labels_button_,
 			turn_dialog_button_, whiteboard_on_start_button_,
 			hide_whiteboard_button_, turn_bell_button_, show_team_colors_button_,
-			show_color_cursors_button_, show_haloing_button_, video_mode_button_,
+			show_haloing_button_, video_mode_button_,
 			theme_button_, hotkeys_button_,
 			paths_button_,
 			advanced_button_, sound_button_,
@@ -195,7 +195,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  hide_whiteboard_button_(disp.video(), _("Hide allies’ plans by default"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn bell"), gui::button::TYPE_CHECK),
 	  show_team_colors_button_(disp.video(), _("Show team colors"), gui::button::TYPE_CHECK),
-	  show_color_cursors_button_(disp.video(), _("Show color cursors"), gui::button::TYPE_CHECK),
 	  show_haloing_button_(disp.video(), _("Show haloing effects"), gui::button::TYPE_CHECK),
 	  video_mode_button_(disp.video(), _("Change Resolution")),
 	  theme_button_(disp.video(), _("Theme")),
@@ -421,9 +420,6 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_team_colors_button_.set_check(show_side_colors());
 	show_team_colors_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
 
-	show_color_cursors_button_.set_check(use_color_cursors());
-	show_color_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
-
 	show_haloing_button_.set_check(show_haloes());
 	show_haloing_button_.set_help_string(_("Use graphical special effects (may be slower)"));
 
@@ -479,7 +475,6 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turn_bell_button_);
 	h.push_back(&UI_sound_button_);
 	h.push_back(&show_team_colors_button_);
-	h.push_back(&show_color_cursors_button_);
 	h.push_back(&show_haloing_button_);
 	h.push_back(&video_mode_button_);
 	h.push_back(&theme_button_);
@@ -566,7 +561,6 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos = rect.y + top_border;
 	fullscreen_button_.set_location(rect.x, ypos);
 
-	ypos += item_interline; show_color_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_team_colors_button_.set_location(rect.x, ypos);
@@ -785,8 +779,6 @@ void preferences_dialog::process_event()
 			throw video_mode_change_exception(fullscreen_button_.checked()
 											? video_mode_change_exception::MAKE_FULLSCREEN
 											: video_mode_change_exception::MAKE_WINDOWED);
-		if (show_color_cursors_button_.pressed())
-			set_color_cursors(show_color_cursors_button_.checked());
 		if (show_haloing_button_.pressed())
 			set_show_haloes(show_haloing_button_.checked());
 		if (show_team_colors_button_.pressed())
@@ -1058,6 +1050,10 @@ void preferences_dialog::process_event()
 				preferences::set(pref["field"],
 						advanced_button_.checked());
 				set_advanced_menu();
+
+				if(pref["field"] == "color_cursors") {
+					set_color_cursors(advanced_button_.checked());
+				}
 			}
 		}
 
@@ -1190,7 +1186,6 @@ void preferences_dialog::set_selection(int index)
 
 	const bool hide_display = tab_ != DISPLAY_TAB;
 	show_floating_labels_button_.hide(hide_display);
-	show_color_cursors_button_.hide(hide_display);
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
 	idle_anim_button_.hide(hide_display);
