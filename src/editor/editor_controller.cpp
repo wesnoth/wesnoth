@@ -314,11 +314,18 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
-		case HOTKEY_EDITOR_SIDE_NEW:
+		case HOTKEY_EDITOR_SCENARIO_NEW:
 		case HOTKEY_EDITOR_SIDE_SWITCH:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
+		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
+
+		case HOTKEY_EDITOR_SIDE_NEW:
+			return !context_manager_->get_map_context().is_pure_map();
+
+		case HOTKEY_EDITOR_SIDE_EDIT:
+			return !context_manager_->get_map_context().get_teams().empty();
 
 		// brushes
 		case HOTKEY_EDITOR_BRUSH_NEXT:
@@ -349,13 +356,17 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 					&& context_manager_->get_map_context().modified();
 
 		// Tools
+		// Pure map editing tools this can be used all the time.
 		case HOTKEY_EDITOR_TOOL_PAINT:
 		case HOTKEY_EDITOR_TOOL_FILL:
 		case HOTKEY_EDITOR_TOOL_SELECT:
 		case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
+			return true;
+		// WWL dependent tools which don't rely on defined sides.
+		case HOTKEY_EDITOR_SCENARIO_EDIT:
 		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_ITEM:
-			return true;
+			return !context_manager_->get_map_context().is_pure_map();
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return !context_manager_->get_map_context().get_teams().empty();
@@ -659,6 +670,10 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
 
+		case HOTKEY_EDITOR_SIDE_EDIT:
+			context_manager_->edit_side_dialog(gui_->viewing_team());
+			return true;
+
 		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
 			change_unit_id();
 			return true;
@@ -756,6 +771,10 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					context_manager_->get_map().selection()));
 			return true;
 
+		case HOTKEY_EDITOR_SCENARIO_EDIT:
+			context_manager_->edit_scenario_dialog();
+			return true;
+
 		// map specific
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			context_manager_->close_current_context();
@@ -769,6 +788,9 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_MAP_NEW:
 			context_manager_->new_map_dialog();
 			return true;
+		case HOTKEY_EDITOR_SCENARIO_NEW:
+			context_manager_->new_scenario_dialog();
+			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();
 			return true;
@@ -777,6 +799,9 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			context_manager_->save_map_as_dialog();
+			return true;
+		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
+			context_manager_->save_scenario_as_dialog();
 			return true;
 		case HOTKEY_EDITOR_MAP_GENERATE:
 			context_manager_->generate_map_dialog();

@@ -37,10 +37,11 @@ namespace editor {
 
 const size_t map_context::max_action_stack_size_ = 100;
 
-map_context::map_context(const editor_map& map, const display& disp)
+map_context::map_context(const editor_map& map, const display& disp, bool pure_map)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
+	, pure_map_(pure_map)
 	, map_(map)
 	, undo_stack_()
 	, redo_stack_()
@@ -65,6 +66,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	: filename_(filename)
 	, map_data_key_()
 	, embedded_(false)
+	, pure_map_(false)
 	, map_(game_config)
 	, undo_stack_()
 	, redo_stack_()
@@ -75,6 +77,9 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, needs_labels_reset_(false)
 	, changed_locations_()
 	, everything_changed_(false)
+	, scenario_id_()
+	, scenario_name_()
+	, scenario_description_()
 	, active_area_(0)
 	, labels_(disp, NULL)
 	, units_()
@@ -89,7 +94,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	 * 0. Not a scenario or map file.
 	 *    0.1 File not found
 	 *    0.2 Map file empty
-	 *    0.3
+	 *    0.3 No valid data
 	 * 1. It's a file containing only pure map data.
 	 *    * embedded_ = false
 	 *    *
@@ -97,74 +102,120 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	 *    The data/scenario-test.cfg for example.
 	 *    The map is written back to the file.
 	 *
-	 * 3. The file contains a [map]
-	 *
 	 */
 
-	log_scope2(log_editor, "Loading map " + filename);
-	// Case 0.1
-	if (!file_exists(filename) || is_directory(filename)) {
+	log_scope2(log_editor, "Loading file " + filename);
+
+	// 0.1 File not found
+	if (!file_exists(filename) || is_directory(filename))
 		throw editor_map_load_exception(filename, _("File not found"));
-	}
-	std::string map_string = read_file(filename);
-	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
-	boost::smatch m;
-	if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
-		boost::regex re2("\\{(.+?)\\}");
-		boost::smatch m2;
-		std::string m1 = m[1];
-		if (boost::regex_search(m1, m2, re2)) {
-			map_data_key_ = m1;
-			LOG_ED << "Map looks like a scenario, trying {" << m2[1] << "}\n";
-			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
-			if (new_filename.empty()) {
-				std::string message = _("The map file looks like a scenario, "
-					"but the map_data value does not point to an existing file")
-					+ std::string("\n") + m2[1];
-				throw editor_map_load_exception(filename, message);
-			}
-			LOG_ED << "New filename is: " << new_filename << "\n";
-			filename_ = new_filename;
-			map_string = read_file(filename_);
-		} else {
-			LOG_ED << "Loading embedded map file\n";
-			embedded_ = true;
-			map_string = m[1];
-		}
-	}
-	// Case 0.2
-	if (map_string.empty()) {
-		std::string message = _("Empty map file");
+
+	std::string file_string = read_file(filename);
+
+	// 0.2 Map file empty
+	if (file_string.empty()) {
+		std::string message = _("Empty file");
 		throw editor_map_load_exception(filename, message);
 	}
-	map_ = editor_map::from_string(game_config, map_string); //throws on error
 
-	config level;
-	read(level, *(preprocess_file(filename_ + ".cfg")));
+	// 1.0 Pure map data
+	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
+	boost::smatch m;
+	if (!boost::regex_search(file_string, m, re, boost::regex_constants::match_not_dot_null)) {
+		map_ = editor_map::from_string(game_config, file_string); //throws on error
+		pure_map_ = true;
+		return;
+	}
 
-	labels_.read(level);
+	// editor written scenario
+	load_scenario(game_config);
 
-	tod_manager_.reset(new tod_manager(level));
-	BOOST_FOREACH(const config &t, level.child_range("time_area")) {
+	//TODO
+//		boost::regex re2("\\{(.+?)\\}");
+//		boost::smatch m2;
+//		std::string m1 = m[1];
+//		if (boost::regex_search(m1, m2, re2)) {
+//			map_data_key_ = m1;
+//			LOG_ED << "Map looks like a scenario, trying {" << m2[1] << "}\n";
+//			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
+//			if (new_filename.empty()) {
+//				std::string message = _("The map file looks like a scenario, "
+//					"but the map_data value does not point to an existing file")
+//					+ std::string("\n") + m2[1];
+//				throw editor_map_load_exception(filename, message);
+//			}
+//			LOG_ED << "New filename is: " << new_filename << "\n";
+//			filename_ = new_filename;
+//			file_string = read_file(filename_);
+//		} else {
+//			LOG_ED << "Loading embedded map file\n";
+//			embedded_ = true;
+//			file_string = m[1];
+//		}
+
+}
+
+void map_context::set_side_setup(const std::string& /*id*/, const std::string& /*name*/,
+		int gold, int income, int village_gold, int village_support , bool fog, bool share_view, bool shroud, bool share_maps)
+{
+	team& t = teams_[0];
+	t.set_gold(gold);
+	t.set_base_income(income);
+	//t.set_hidden(hidden);
+	t.set_fog(fog);
+	t.set_share_maps(share_maps);
+	t.set_shroud(shroud);
+	t.set_share_view(share_view);
+	t.set_village_gold(village_gold);
+	t.set_village_support(village_support);
+}
+
+void map_context::set_scenario_setup(const std::string& id, const std::string& name, const std::string& description,
+		int turns, int xp_mod, bool victory_defeated, bool random_time)
+{
+	scenario_id_ = id;
+	scenario_name_ = name;
+	scenario_description_ = description;
+	random_time_ = random_time;
+	victory_defeated_ = victory_defeated;
+	tod_manager_->set_number_of_turns(turns);
+	xp_mod_ = xp_mod;
+}
+
+
+void map_context::load_scenario(const config& game_config)
+{
+	config scenario;
+	read(scenario, *(preprocess_file(filename_)));
+
+	scenario_id_   = scenario["id"].str();
+	scenario_name_ = scenario["name"].str();
+	scenario_description_ = scenario["description"].str();
+
+	map_ = editor_map::from_string(game_config, scenario["map_data"]); //throws on error
+
+	labels_.read(scenario);
+
+	tod_manager_.reset(new tod_manager(scenario));
+	BOOST_FOREACH(const config &t, scenario.child_range("time_area")) {
 		tod_manager_->add_time_area(t);
 	}
 
-	BOOST_FOREACH(const config& music, level.child_range("music")) {
+	BOOST_FOREACH(const config& music, scenario.child_range("music")) {
 		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
 
 	resources::teams = &teams_;
 
 	int i = 1;
-	BOOST_FOREACH(config &side, level.child_range("side"))
+	BOOST_FOREACH(config &side, scenario.child_range("side"))
 	{
 		//TODO clean up.
 		//state_.build_team(side, "", teams_, level, *this
 		//	, units_, false);
 		team t;
-		side["side"] = i;
+		side["side"] = i++;
 		side["no_leader"] = "yes";
-		i++;
 		t.build(side, map_);
 
 		teams_.push_back(t);
@@ -174,7 +225,6 @@ map_context::map_context(const config& game_config, const std::string& filename,
 					unit(a_unit, true, &state_) );
 		}
 	}
-
 }
 
 map_context::~map_context()
@@ -279,40 +329,40 @@ void map_context::reset_starting_position_labels(display& disp)
 	set_needs_labels_reset(false);
 }
 
-bool map_context::save()
+config map_context::to_config()
 {
-	std::string data = map_.write();
+	config scenario;
+	scenario["id"] = scenario_id_;
+	scenario["name"] = scenario_name_;
+	scenario["description"] = scenario_description_;
+	scenario.append(tod_manager_->to_config());
+	scenario["map_data"] = map_.write();
+	labels_.write(scenario);
 
-	config wml_data = tod_manager_->to_config();
-	labels_.write(wml_data);
+	scenario.remove_attribute("turn_at");
 
 	BOOST_FOREACH(const music_map::value_type& track, music_tracks_) {
-		track.second.write(wml_data, true);
+		track.second.write(scenario, true);
 	}
-
-	//TODO think about saving the map to the wml file
-	//config& map = cfg.add_child("map");
-	//gamemap::write(map);
-
-	std::stringstream buf;
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		int side_num = t - teams_.begin() + 1;
 
-		config& side = wml_data.add_child("side");
-		t->write(side);
-		// TODO make this customizable via gui
+		config& side = scenario.add_child("side");
+		//t->write(side);
+		// TODO make this customizable via gui and clean up
 		side["no_leader"] = "yes";
 		side["allow_player"] = "yes";
-		side.remove_attribute("color");
-		side.remove_attribute("recruit");
-		side.remove_attribute("recall_cost");
-		side.remove_attribute("gold");
-		side.remove_attribute("start_gold");
-		side.remove_attribute("hidden");
-		buf.str(std::string());
-		buf << side_num;
-		side["side"] = buf.str();
+
+		//side.clear_children("ai");
+
+		//side.remove_attribute("color");
+		//side.remove_attribute("recruit");
+		//side.remove_attribute("recall_cost");
+		//side.remove_attribute("gold");
+		//side.remove_attribute("start_gold");
+		//side.remove_attribute("hidden");
+		side["side"] = side_num;
 
 		//current visible units
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
@@ -323,19 +373,39 @@ bool map_context::save()
 			}
 		}
 	}
+	return scenario;
+}
+
+bool map_context::save_scenario()
+{
+	assert(!is_embedded());
+	try {
+		std::stringstream wml_stream;
+		{
+			config_writer out(wml_stream, false);
+			out.write(to_config());
+		}
+		if (!wml_stream.str().empty())
+			write_file(get_filename(), wml_stream.str());
+		clear_modified();
+	} catch (io_exception& e) {
+		utils::string_map symbols;
+		symbols["msg"] = e.what();
+		const std::string msg = vgettext("Could not save the scenario: $msg", symbols);
+		throw editor_map_save_exception(msg);
+	}
+	// TODO the return value of this method does not need to be boolean.
+	// We either return true or there is an exception thrown.
+	return true;
+}
+
+bool map_context::save_map()
+{
+	std::string map_data = map_.write();
 
 	try {
 		if (!is_embedded()) {
-			write_file(get_filename(), data);
-
-			std::stringstream wml_stream;
-			{
-				config_writer out(wml_stream, false);
-				out.write(wml_data);
-			}
-			if (!wml_stream.str().empty()) {
-				write_file(get_filename() + ".cfg", wml_stream.str());
-			}
+			write_file(get_filename(), map_data);
 		} else {
 			std::string map_string = read_file(get_filename());
 			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
@@ -343,7 +413,7 @@ bool map_context::save()
 			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
 				std::stringstream ss;
 				ss << m[1];
-				ss << data;
+				ss << map_data;
 				ss << m[3];
 				write_file(get_filename(), ss.str());
 			} else {

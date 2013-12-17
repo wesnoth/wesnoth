@@ -33,6 +33,9 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 
+#include "gui/dialogs/editor/editor_edit_scenario.hpp"
+#include "gui/dialogs/editor/editor_edit_side.hpp"
+
 #include <boost/foreach.hpp>
 
 #include "terrain_translation.hpp"
@@ -137,7 +140,7 @@ context_manager::context_manager(editor_display& gui, const config& game_config)
     , clipboard_()
 {
 	if (default_dir_.empty()) {
-		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
+		default_dir_ = get_dir(get_user_data_dir() + "/editor");
 	}
 	create_default_context();
 	init_map_generators(game_config);
@@ -173,9 +176,71 @@ void context_manager::load_map_dialog(bool force_same_context /* = false */)
 	if (fn.empty()) {
 		fn = default_dir_;
 	}
-	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a Map to Open"));
+	int res = dialogs::show_file_chooser_dialog(gui_, fn, _("Choose a File to Open"));
 	if (res == 0) {
 		load_map(fn, !force_same_context);
+	}
+}
+
+void context_manager::edit_side_dialog(int side)
+{
+	team& t = get_map_context().get_teams()[side];
+
+	//TODO
+	//t.controller();
+	//t.hidden();
+	//t.support()
+
+	std::string id = t.save_id();
+	std::string name = t.name();
+
+	int gold = t.gold();
+	int income = t.base_income();
+	int village_gold = t.village_gold();
+	int village_support = t.village_support();
+
+	bool share_view = t.share_view();
+	bool share_maps = t.share_maps();
+	bool fog = t.uses_fog();
+	bool shroud = t.uses_shroud();
+
+	bool ok = gui2::teditor_edit_side::execute(id, name,
+			gold, income,
+			fog, share_view, shroud, share_maps,
+			gui_.video());
+
+	if (ok) {
+		get_map_context().set_side_setup(id, name,
+				gold, income, village_gold, village_support,
+				fog, share_view, shroud, share_maps);
+	}
+}
+
+
+void context_manager::edit_scenario_dialog()
+{
+	// TODO
+	//std::string fn = directory_name(get_map_context().get_filename());
+
+	std::string id = get_map_context().get_id();
+	std::string name = get_map_context().get_name();
+	std::string description = get_map_context().get_description();
+
+	int turns = get_map_context().get_time_manager()->number_of_turns();
+	int xp_mod = get_map_context().get_xp_mod();
+
+	bool victory = get_map_context().victory_defeated();
+	bool random = get_map_context().random_start_time();
+
+	bool ok = gui2::teditor_edit_scenario::execute(id, name, description,
+			turns, xp_mod,
+			victory, random,
+			gui_.video());
+
+	if (ok) {
+		get_map_context().set_scenario_setup(id, name, description,
+				turns, xp_mod,
+				victory, random);
 	}
 }
 
@@ -189,6 +254,16 @@ void context_manager::new_map_dialog()
 	}
 }
 
+void context_manager::new_scenario_dialog()
+{
+	int w = get_map().w();
+	int h = get_map().h();
+	if(gui2::teditor_new_map::execute(w, h, gui_.video())) {
+		const t_translation::t_terrain& fill = get_selected_bg_terrain();
+		new_scenario(w, h, fill, true);
+	}
+}
+
 void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 {
 	for (unsigned int i = 0; i < items.size(); ++i) {
@@ -198,8 +273,12 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 			for (size_t mci = 0; mci < map_contexts_.size(); ++mci) {
 				std::string filename = map_contexts_[mci]->get_filename();
 				bool changed = map_contexts_[mci]->modified();
+				bool pure_map = map_contexts_[mci]->is_pure_map();
 				if (filename.empty()) {
-					filename = _("(New Map)");
+					if (pure_map)
+						filename = _("(New Map)");
+					else
+						filename = _("(New Scenario)");
 				}
 				std::string label = "[" + lexical_cast<std::string>(mci) + "] "
 					+ filename + (changed ? " [*]" : "");
@@ -275,6 +354,7 @@ void context_manager::expand_time_menu(std::vector<std::string>& items)
 
 			BOOST_FOREACH(const time_of_day& time, tod_m->times()) {
 
+				//TODO
 				//for (size_t mci = 0; mci < tod_m->times().size(); ++mci) {
 				//const time_of_day& time = tod_m->times()[mci];
 
@@ -445,7 +525,7 @@ void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
-		input_name = default_dir_;
+		input_name = default_dir_ + "/maps";
 	}
 	const std::string old_input_name = input_name;
 
@@ -468,6 +548,35 @@ void context_manager::save_map_as_dialog()
 	} while (overwrite_res != 0);
 
 	save_map_as(input_name);
+}
+
+void context_manager::save_scenario_as_dialog()
+{
+	std::string input_name = get_map_context().get_filename();
+	if (input_name.empty()) {
+		input_name = default_dir_ + "/scenarios";
+	}
+	const std::string old_input_name = input_name;
+
+	int res = 0;
+	int overwrite_res = 1;
+	do {
+		input_name = old_input_name;
+		res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Scenario As"));
+		if (res == 0) {
+			if (file_exists(input_name)) {
+				const int res = gui2::show_message(gui_.video(), "",
+						_("The file already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+				overwrite_res = gui2::twindow::CANCEL == res ? 1 : 0;
+			} else {
+				overwrite_res = 0;
+			}
+		} else {
+			return; //cancel pressed
+		}
+	} while (overwrite_res != 0);
+
+	save_scenario_as(input_name);
 }
 
 void context_manager::init_map_generators(const config& game_config)
@@ -542,7 +651,7 @@ void context_manager::create_default_context()
 		t_translation::t_terrain default_terrain =
 				t_translation::read_terrain_code(game_config::default_terrain);
 
-		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_);
+		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true);
 		add_map_context(mc);
 	} else {
 		BOOST_FOREACH(const std::string& filename, saved_windows_) {
@@ -601,9 +710,37 @@ void context_manager::save_map()
 {
 	const std::string& name = get_map_context().get_filename();
 	if (name.empty() || is_directory(name)) {
-		save_map_as_dialog();
+		if (get_map_context().is_pure_map())
+			save_map_as_dialog();
+		else
+			save_scenario_as_dialog();
 	} else {
-		write_map();
+		if (get_map_context().is_pure_map())
+			write_map();
+		else
+			write_scenario();
+	}
+}
+
+bool context_manager::save_scenario_as(const std::string& filename)
+{
+	size_t is_open = check_open_map(filename);
+	if (is_open < map_contexts_.size()
+			&& is_open != static_cast<unsigned>(current_context_index_)) {
+
+		gui2::show_transient_message(gui_.video(), _("This scenario is already open."), filename);
+		return false;
+	}
+	std::string old_filename = get_map_context().get_filename();
+	bool embedded = get_map_context().is_embedded();
+	get_map_context().set_filename(filename);
+	get_map_context().set_embedded(false);
+	if (!write_scenario(true)) {
+		get_map_context().set_filename(old_filename);
+		get_map_context().set_embedded(embedded);
+		return false;
+	} else {
+		return true;
 	}
 }
 
@@ -629,10 +766,24 @@ bool context_manager::save_map_as(const std::string& filename)
 	}
 }
 
+bool context_manager::write_scenario(bool display_confirmation)
+{
+	try {
+		get_map_context().save_scenario();
+		if (display_confirmation) {
+			gui2::show_transient_message(gui_.video(), "", _("Scenario saved."));
+		}
+	} catch (editor_map_save_exception& e) {
+		gui2::show_transient_message(gui_.video(), "", e.what());
+		return false;
+	}
+	return true;
+}
+
 bool context_manager::write_map(bool display_confirmation)
 {
 	try {
-		get_map_context().save();
+		get_map_context().save_map();
 		if (display_confirmation) {
 			gui2::show_transient_message(gui_.video(), "", _("Map saved."));
 		}
@@ -718,10 +869,21 @@ void context_manager::new_map(int width, int height, const t_translation::t_terr
 {
 	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
-		int new_id = add_map_context(new map_context(m, gui_));
+		int new_id = add_map_context(new map_context(m, gui_, true));
 		switch_context(new_id);
 	} else {
-		replace_map_context(new map_context(m, gui_));
+		replace_map_context(new map_context(m, gui_, true));
+	}
+}
+
+void context_manager::new_scenario(int width, int height, const t_translation::t_terrain & fill, bool new_context)
+{
+	editor_map m(game_config_, width, height, fill);
+	if (new_context) {
+		int new_id = add_map_context(new map_context(m, gui_, false));
+		switch_context(new_id);
+	} else {
+		replace_map_context(new map_context(m, gui_, false));
 	}
 }
 

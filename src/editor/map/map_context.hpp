@@ -43,7 +43,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp);
+	explicit map_context(const editor_map& map, const display& disp, bool pure_map);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -166,6 +166,18 @@ public:
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 
 	/**
+	 * TODO
+	 */
+	void set_scenario_setup(const std::string& id, const std::string& name, const std::string& description,
+			int turns, int xp_mod, bool victory_defeated, bool random_time);
+
+	/**
+	 * TODO
+	 */
+	void set_side_setup(const std::string& /*id*/, const std::string& /*name*/,
+			int gold, int income, int village_gold, int village_support , bool fog, bool share_view, bool shroud, bool share_maps);
+
+	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
 	 */
 	bool needs_labels_reset() const { return needs_labels_reset_; }
@@ -196,7 +208,18 @@ public:
 
 	const std::string& get_map_data_key() const { return map_data_key_; }
 
+	const std::string& get_id() const { return scenario_id_; }
+	const std::string& get_description() const { return scenario_id_; }
+	const std::string& get_name() const { return scenario_id_; }
+
+	int get_xp_mod() const { return xp_mod_; }
+
+	bool random_start_time() const { return random_time_; }
+	bool victory_defeated() const { return victory_defeated_; }
+
 	bool is_embedded() const { return embedded_; }
+
+	bool is_pure_map() const { return pure_map_; }
 
 	void set_embedded(bool v) { embedded_ = v; }
 
@@ -204,7 +227,18 @@ public:
 	 * Saves the map under the current filename. Filename must be valid.
 	 * May throw an exception on failure.
 	 */
-	bool save();
+	bool save_map();
+
+	/**
+	 * Saves the scenario under the current filename. Filename must be valid.
+	 * May throw an exception on failure.
+	 */
+	bool save_scenario();
+
+
+	void load_scenario(const config& game_config);
+
+	config to_config();
 
 	void set_map(const editor_map& map);
 
@@ -284,6 +318,11 @@ protected:
 	bool embedded_;
 
 	/**
+	 * Whether the map context refers to a file containing only the pure map data.
+	 */
+	bool pure_map_;
+
+	/**
 	 * The map object of this map_context.
 	 */
 	editor_map map_;
@@ -361,6 +400,11 @@ protected:
 	bool everything_changed_;
 
 private:
+
+	std::string scenario_id_, scenario_name_, scenario_description_;
+
+	int xp_mod_;
+	bool victory_defeated_, random_time_;
 
 	int active_area_;
 

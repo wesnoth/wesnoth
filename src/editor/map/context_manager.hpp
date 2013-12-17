@@ -126,11 +126,23 @@ public:
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);
 
+	/** Display a scenario edit dialog and process user input. */
+	void edit_scenario_dialog();
+
+	/** TODO */
+	void edit_side_dialog(int side);
+
 	/** Display a new map dialog and process user input. */
 	void new_map_dialog();
 
+	/** Display a new map dialog and process user input. */
+	void new_scenario_dialog();
+
 	/** Display a save map as dialog and process user input. */
 	void save_map_as_dialog();
+
+	/** Display a save map as dialog and process user input. */
+	void save_scenario_as_dialog();
 
 	/** Display a generate random map dialog and process user input. */
 	void generate_map_dialog();
@@ -211,17 +223,26 @@ private:
 	 * @return true on success
 	 */
 	bool save_map_as(const std::string& filename);
+	//TODO
+	bool save_scenario_as(const std::string& filename);
 
 	/**
 	 * Save the map under a given filename. Displays an error message on failure.
 	 * @return true on success
 	 */
 	bool write_map(bool display_confirmation = false);
+	bool write_scenario(bool display_confirmation = false);
 
 	/**
 	 * Create a new map.
 	 */
 	void new_map(int width, int height, const t_translation::t_terrain & fill,
+			bool new_context);
+
+	/**
+	 * Create a new scenario.
+	 */
+	void new_scenario(int width, int height, const t_translation::t_terrain & fill,
 			bool new_context);
 
 	/**
