@@ -521,10 +521,9 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 			if (*level_cfg) {
 				games_.back().map_info = _("Campaign:");
 				games_.back().map_info += " ";
-				games_.back().map_info += game["mp_scenario_name"].str();
-				games_.back().map_info += " (";
 				games_.back().map_info += (*level_cfg)["name"].str();
-				games_.back().map_info += ")";
+				games_.back().map_info += " —";
+				games_.back().map_info += game["mp_scenario_name"].str();
 
 				// Difficulty.
 				const std::vector<std::string> difficulties =
@@ -538,8 +537,6 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 					if (difficulty == game["difficulty_define"]) {
 						gui2::tlegacy_menu_item menu_item(difficulty_options[index]);
 						games_.back().map_info += " — ";
-						games_.back().map_info += _("Difficulty:");
-						games_.back().map_info += " ";
 						games_.back().map_info += menu_item.label();
 						games_.back().map_info += " ";
 						games_.back().map_info += menu_item.description();
