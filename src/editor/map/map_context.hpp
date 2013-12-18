@@ -43,7 +43,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp, bool pure_map);
+	explicit map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -81,6 +81,7 @@ public:
 		team t;
 		t.set_hidden(false);
     	teams_.push_back(t);
+    	actions_since_save_++;
     }
 
 	/** Get the team from the current map context object */
@@ -100,6 +101,10 @@ public:
 	const unit_map& get_units() const {
 		return units_;
 	}
+
+	void replace_schedule(const std::vector<time_of_day>& schedule);
+
+	void set_starting_time(int time);
 
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
@@ -174,8 +179,10 @@ public:
 	/**
 	 * TODO
 	 */
-	void set_side_setup(const std::string& /*id*/, const std::string& /*name*/,
-			int gold, int income, int village_gold, int village_support , bool fog, bool share_view, bool shroud, bool share_maps);
+	void set_side_setup(int side, const std::string& id, const std::string& name,
+			int gold, int income, int village_gold, int village_support,
+			bool fog, bool share_view, bool shroud, bool share_maps,
+			team::CONTROLLER controller, bool hidden);
 
 	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
@@ -209,8 +216,8 @@ public:
 	const std::string& get_map_data_key() const { return map_data_key_; }
 
 	const std::string& get_id() const { return scenario_id_; }
-	const std::string& get_description() const { return scenario_id_; }
-	const std::string& get_name() const { return scenario_id_; }
+	const std::string& get_description() const { return scenario_description_; }
+	const std::string& get_name() const { return scenario_name_; }
 
 	int get_xp_mod() const { return xp_mod_; }
 

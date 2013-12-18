@@ -37,7 +37,7 @@ namespace editor {
 
 const size_t map_context::max_action_stack_size_ = 100;
 
-map_context::map_context(const editor_map& map, const display& disp, bool pure_map)
+map_context::map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule)
 	: filename_()
 	, map_data_key_()
 	, embedded_(false)
@@ -62,7 +62,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 	, labels_(disp, NULL)
 	, units_()
 	, teams_()
-	, tod_manager_(new tod_manager)
+	, tod_manager_(new tod_manager(schedule))
 	, state_()
 	, music_tracks_()
 {
@@ -164,19 +164,26 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 }
 
-void map_context::set_side_setup(const std::string& /*id*/, const std::string& /*name*/,
-		int gold, int income, int village_gold, int village_support , bool fog, bool share_view, bool shroud, bool share_maps)
+void map_context::set_side_setup(int side, const std::string& id, const std::string& name,
+		int gold, int income, int village_gold, int village_support,
+		bool fog, bool share_view, bool shroud, bool share_maps,
+		team::CONTROLLER controller, bool hidden)
 {
-	team& t = teams_[0];
+	assert(teams_.size() > static_cast<u_int>(side));
+	team& t = teams_[side];
+	t.set_save_id(id);
+	t.set_name(name);
+	t.change_controller(controller);
 	t.set_gold(gold);
 	t.set_base_income(income);
-	//t.set_hidden(hidden);
+	t.set_hidden(hidden);
 	t.set_fog(fog);
 	t.set_share_maps(share_maps);
 	t.set_shroud(shroud);
 	t.set_share_view(share_view);
 	t.set_village_gold(village_gold);
 	t.set_village_support(village_support);
+	actions_since_save_++;
 }
 
 void map_context::set_scenario_setup(const std::string& id, const std::string& name, const std::string& description,
@@ -189,8 +196,22 @@ void map_context::set_scenario_setup(const std::string& id, const std::string& n
 	victory_defeated_ = victory_defeated;
 	tod_manager_->set_number_of_turns(turns);
 	xp_mod_ = xp_mod;
+	actions_since_save_++;
 }
 
+void map_context::set_starting_time(int time)
+{
+	tod_manager_->set_current_time(time);
+	if (!pure_map_)
+		actions_since_save_++;
+}
+
+void map_context::replace_schedule(const std::vector<time_of_day>& schedule)
+{
+	tod_manager_->replace_schedule(schedule);
+	if (!pure_map_)
+		actions_since_save_++;
+}
 
 void map_context::load_scenario(const config& game_config)
 {
@@ -201,11 +222,16 @@ void map_context::load_scenario(const config& game_config)
 	scenario_name_ = scenario["name"].str();
 	scenario_description_ = scenario["description"].str();
 
+	xp_mod_ = scenario["experience_modifier"].to_int();
+
+	victory_defeated_ = scenario["victory_when_enemies_defeated"].to_bool(true);
+	random_time_ = scenario["random_start_time"].to_bool(false);
+
 	map_ = editor_map::from_string(game_config, scenario["map_data"]); //throws on error
 
 	labels_.read(scenario);
 
-	tod_manager_.reset(new tod_manager(scenario));
+	tod_manager_.reset(new tod_manager(scenario, scenario["turns"].to_int(-1)));
 	BOOST_FOREACH(const config &t, scenario.child_range("time_area")) {
 		tod_manager_->add_time_area(t);
 	}
@@ -341,14 +367,21 @@ void map_context::reset_starting_position_labels(display& disp)
 config map_context::to_config()
 {
 	config scenario;
-	scenario["id"] = scenario_id_;
-	scenario["name"] = scenario_name_;
-	scenario["description"] = scenario_description_;
-	scenario.append(tod_manager_->to_config());
-	scenario["map_data"] = map_.write();
-	labels_.write(scenario);
 
+	scenario["id"] = scenario_id_;
+	scenario["name"] = t_string(scenario_name_);
+	scenario["description"] = scenario_description_;
+
+	scenario["experience_modifier"] = xp_mod_;
+	scenario["victory_when_enemies_defeated"] = victory_defeated_;
+	scenario["random_starting_time"] = random_time_;
+
+	scenario.append(tod_manager_->to_config());
 	scenario.remove_attribute("turn_at");
+
+	scenario["map_data"] = map_.write();
+
+	labels_.write(scenario);
 
 	BOOST_FOREACH(const music_map::value_type& track, music_tracks_) {
 		track.second.write(scenario, true);
@@ -358,27 +391,31 @@ config map_context::to_config()
 		int side_num = t - teams_.begin() + 1;
 
 		config& side = scenario.add_child("side");
-		//t->write(side);
-		// TODO make this customizable via gui and clean up
+
+		side["side"] = side_num;
+		side["hidden"] = t->hidden();
+
+		side["controller"] = t->controller_string();
+		// TODO make this customizable via gui
 		side["no_leader"] = "yes";
 		side["allow_player"] = "yes";
 
-		//side.clear_children("ai");
+		side["fog"] = t->uses_fog();
+		side["share_view"] = t->share_view();
+		side["shroud"] = t->uses_shroud();
+		side["share_maps"] = t->share_maps();
 
-		//side.remove_attribute("color");
-		//side.remove_attribute("recruit");
-		//side.remove_attribute("recall_cost");
-		//side.remove_attribute("gold");
-		//side.remove_attribute("start_gold");
-		//side.remove_attribute("hidden");
-		side["side"] = side_num;
+		side["gold"] = t->gold();
+		side["income"] = t->base_income();
 
 		//current visible units
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->side() == side_num) {
 				config& u = side.add_child("unit");
-				i->get_location().write(u); // TODO: Needed?
-				i->write(u);
+				i->get_location().write(u);
+				u["type"] = i->type_id();
+				u["canrecruit"] = i->can_recruit();
+				u["unrenamable"] = i->unrenamable();
 			}
 		}
 	}
@@ -388,6 +425,12 @@ config map_context::to_config()
 bool map_context::save_scenario()
 {
 	assert(!is_embedded());
+
+	if (scenario_id_.empty())
+		scenario_id_ = file_name(filename_);
+	if (scenario_name_.empty())
+		scenario_name_ = scenario_id_;
+
 	try {
 		std::stringstream wml_stream;
 		{

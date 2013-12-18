@@ -13,6 +13,8 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "team.hpp"
+
 #include "context_manager.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
@@ -187,9 +189,9 @@ void context_manager::edit_side_dialog(int side)
 	team& t = get_map_context().get_teams()[side];
 
 	//TODO
-	//t.controller();
-	//t.hidden();
 	//t.support()
+
+	team::CONTROLLER controller = t.controller();
 
 	std::string id = t.save_id();
 	std::string name = t.name();
@@ -199,6 +201,7 @@ void context_manager::edit_side_dialog(int side)
 	int village_gold = t.village_gold();
 	int village_support = t.village_support();
 
+	bool hidden = t.hidden();
 	bool share_view = t.share_view();
 	bool share_maps = t.share_maps();
 	bool fog = t.uses_fog();
@@ -206,13 +209,13 @@ void context_manager::edit_side_dialog(int side)
 
 	bool ok = gui2::teditor_edit_side::execute(id, name,
 			gold, income,
-			fog, share_view, shroud, share_maps,
+			fog, share_view, shroud, share_maps, controller,
 			gui_.video());
 
 	if (ok) {
-		get_map_context().set_side_setup(id, name,
+		get_map_context().set_side_setup(side, id, name,
 				gold, income, village_gold, village_support,
-				fog, share_view, shroud, share_maps);
+				fog, share_view, shroud, share_maps, controller, hidden);
 	}
 }
 
@@ -650,8 +653,8 @@ void context_manager::create_default_context()
 
 		t_translation::t_terrain default_terrain =
 				t_translation::read_terrain_code(game_config::default_terrain);
-
-		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true);
+		const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
+		map_context* mc = new map_context(editor_map(game_config_, 44, 33, default_terrain), gui_, true, default_schedule);
 		add_map_context(mc);
 	} else {
 		BOOST_FOREACH(const std::string& filename, saved_windows_) {
@@ -867,23 +870,25 @@ void context_manager::revert_map()
 
 void context_manager::new_map(int width, int height, const t_translation::t_terrain & fill, bool new_context)
 {
+	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
-		int new_id = add_map_context(new map_context(m, gui_, true));
+		int new_id = add_map_context(new map_context(m, gui_, true, default_schedule));
 		switch_context(new_id);
 	} else {
-		replace_map_context(new map_context(m, gui_, true));
+		replace_map_context(new map_context(m, gui_, true, default_schedule));
 	}
 }
 
 void context_manager::new_scenario(int width, int height, const t_translation::t_terrain & fill, bool new_context)
 {
+	const config& default_schedule = game_config_.find_child("editor_times", "id", "default");
 	editor_map m(game_config_, width, height, fill);
 	if (new_context) {
-		int new_id = add_map_context(new map_context(m, gui_, false));
+		int new_id = add_map_context(new map_context(m, gui_, false, default_schedule));
 		switch_context(new_id);
 	} else {
-		replace_map_context(new map_context(m, gui_, false));
+		replace_map_context(new map_context(m, gui_, false, default_schedule));
 	}
 }
 

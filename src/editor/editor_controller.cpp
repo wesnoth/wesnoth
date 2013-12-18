@@ -502,7 +502,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 			return static_cast<size_t>(index) == gui_->playing_team()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::TIME:
-			return index ==	context_manager_->get_map_context().get_time_manager()->turn() -1
+			return index ==	context_manager_->get_map_context().get_time_manager()->get_current_time()
 					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::MUSIC:
 			return context_manager_->get_map_context().is_in_playlist(music_tracks_[index].id())
@@ -561,9 +561,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				}
 			case TIME:
 				{
-					//TODO mark the map as changed
-					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
-					tod->set_turn(index +1, true);
+					context_manager_->get_map_context().set_starting_time(index);
+					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tod_color col = tod->times()[index].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
 					return true;
@@ -581,12 +580,10 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				}
 			case SCHEDULE:
 				{
-					//TODO mark the map as changed
-					tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
-					tod->replace_schedule(iter->second.second);
-					tod->set_turn(1, true);
+					context_manager_->get_map_context().replace_schedule(iter->second.second);
+					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tod_color col = tod->times()[0].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
 					return true;
