@@ -151,6 +151,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^Campaign");
 	case ADDON_SP_SCENARIO:
 		return _("addon_type^Scenario");
+	case ADDON_SP_MP_CAMPAIGN:
+		return _("addon_type^SP/MP Campaign");
 	case ADDON_MP_ERA:
 		return _("addon_type^MP era");
 	case ADDON_MP_FACTION:

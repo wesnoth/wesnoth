@@ -125,6 +125,7 @@ taddon_filter_options::taddon_filter_options()
 
 	register_displayed_type_field("show_unknown", ADDON_UNKNOWN);
 	register_displayed_type_field("show_sp_campaigns", ADDON_SP_CAMPAIGN);
+	register_displayed_type_field("show_sp_mp_campaigns", ADDON_SP_MP_CAMPAIGN);
 	register_displayed_type_field("show_sp_scenarios", ADDON_SP_SCENARIO);
 	register_displayed_type_field("show_mp_campaigns", ADDON_MP_CAMPAIGN);
 	register_displayed_type_field("show_mp_scenarios", ADDON_MP_SCENARIO);

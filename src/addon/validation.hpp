@@ -42,6 +42,7 @@ enum ADDON_TYPE {
 	ADDON_UNKNOWN,		/**< a.k.a. anything. */
 	ADDON_SP_CAMPAIGN,	/**< Single-player campaign. */
 	ADDON_SP_SCENARIO,	/**< Single-player scenario. */
+	ADDON_SP_MP_CAMPAIGN, /**< Hybrid campaign. */
 	ADDON_MP_CAMPAIGN,	/**< Multiplayer campaign. */
 	ADDON_MP_SCENARIO,	/**< Multiplayer scenario. */
 	ADDON_MP_MAPS,		/**< Multiplayer plain (no WML) map pack. */
