@@ -35,6 +35,8 @@ class tod_manager : public savegame::savegame_config
 
 		int get_current_time(const map_location& loc = map_location::null_location) const;
 
+		void set_current_time(int time) { currentTime_ = time; }
+
 		/**
 		 * Returns global time of day for the passed turn.
 		 * for_turn = 0 means current turn
