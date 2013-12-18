@@ -17,42 +17,44 @@
 
 #include "gui/dialogs/dialog.hpp"
 #include "config.hpp"
+#include "team.hpp"
 
 namespace gui2 {
+
+class ttoggle_button;
 
 class teditor_edit_side : public tdialog
 {
 public:
-	/**
-	 * Constructor.
-	 * TODO
-	 * @param[in] text            The initial value of the label.
-	 * @param[out] text           The label text the user entered if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
-	 * @param[in] team_only       The initial value of the team only toggle.
-	 * @param[out] team_only      The final value of the team only toggle if the
-	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherwise.
-	 */
+
 	teditor_edit_side(std::string& id, std::string& name, int& gold, int& income,
-			bool& fog, bool& share_view, bool& shroud, bool& share_maps);
+			bool& fog, bool& share_view, bool& shroud, bool& share_maps, team::CONTROLLER& controller);
 
 	/** The execute function see @ref tdialog for more information. */
 	static bool execute(std::string& id, std::string& name, int& gold, int& income,
-			bool& fog, bool& share_view, bool& shroud, bool& share_maps,
+			bool& fog, bool& share_view, bool& shroud, bool& share_maps, team::CONTROLLER& controller,
 			CVideo& video)
 	{
-		return teditor_edit_side(id, name, gold, income, fog, share_view, shroud, share_maps).show(video);
+		return teditor_edit_side(id, name, gold, income, fog, share_view, shroud, share_maps, controller).show(video);
 	}
 
 private:
 
+	void pre_show(CVideo& /*video*/, twindow& window);
+
+	void register_controller_toggle(twindow& window, const std::string& toggle_id, team::CONTROLLER value);
+
+	team::CONTROLLER& controller_;
+
+	typedef std::pair<ttoggle_button*, team::CONTROLLER> controller_toggle;
+	// Dialog display state variables.
+	std::vector<controller_toggle> controller_tgroup_;
+
+	void toggle_controller_callback(ttoggle_button* active);
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-//	std::string id_;
-//	std::string name_;
-//	int turns_;
 };
 
 }
