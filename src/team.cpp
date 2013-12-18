@@ -487,19 +487,19 @@ void team::set_share_view( bool share_view ){
 
 void team::change_controller(const std::string& controller)
 {
-	team::team_info::CONTROLLER cid;
+	team::CONTROLLER cid;
 	if (controller == "human")
-		cid = team::team_info::HUMAN;
+		cid = team::HUMAN;
 	else if (controller == "human_ai")
-		cid = team::team_info::HUMAN_AI;
+		cid = team::HUMAN_AI;
 	else if (controller == "network")
-		cid = team::team_info::NETWORK;
+		cid = team::NETWORK;
 	else if (controller == "network_ai")
-		cid = team::team_info::NETWORK_AI;
+		cid = team::NETWORK_AI;
 	else if (controller == "null")
-		cid = team::team_info::EMPTY;
+		cid = team::EMPTY;
 	else
-		cid = team::team_info::AI;
+		cid = team::AI;
 
 	info_.controller = cid;
 }

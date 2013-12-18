@@ -31,6 +31,10 @@ namespace wb {
  */
 class team : public savegame::savegame_config
 {
+public:
+	enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
+
+private:
 	class shroud_map {
 	public:
 		shroud_map() : enabled_(false), data_() {}
@@ -92,7 +96,6 @@ class team : public savegame::savegame_config
 		 * displayed to the user. */
 		bool objectives_changed;
 
-		enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
 		CONTROLLER controller;
 		char const *controller_string() const;
 
@@ -176,7 +179,10 @@ public:
 	void last_recruit(const std::string & u_type) { last_recruit_ = u_type; }
 	const std::string& name() const
 		{ return info_.name; }
+
+	void set_name(const std::string& name) { info_.name = name; }
 	const std::string& save_id() const { return info_.save_id; }
+	void set_save_id(const std::string& save_id) { info_.save_id = save_id; }
 	const std::string& current_player() const { return info_.current_player; }
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
@@ -195,26 +201,27 @@ public:
 		}
 	}
 
-	team_info::CONTROLLER controller() const { return info_.controller; }
+	CONTROLLER controller() const { return info_.controller; }
 	char const *controller_string() const { return info_.controller_string(); }
 	const std::string& color() const { return info_.color; }
 	void set_color(const std::string& color) { info_.color = color; }
-	bool is_human() const { return info_.controller == team_info::HUMAN; }
-	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
-	bool is_network_human() const { return info_.controller == team_info::NETWORK; }
-	bool is_network_ai() const { return info_.controller == team_info::NETWORK_AI; }
-	bool is_ai() const { return info_.controller == team_info::AI || is_human_ai(); }
-	bool is_empty() const { return info_.controller == team_info::EMPTY; }
+	bool is_human() const { return info_.controller == HUMAN; }
+	bool is_human_ai() const { return info_.controller == HUMAN_AI; }
+	bool is_network_human() const { return info_.controller == NETWORK; }
+	bool is_network_ai() const { return info_.controller == NETWORK_AI; }
+	bool is_ai() const { return info_.controller == AI || is_human_ai(); }
+	bool is_empty() const { return info_.controller == EMPTY; }
 
 	bool is_local() const { return is_human() || is_ai(); }
 	bool is_network() const { return is_network_human() || is_network_ai(); }
 
-	void make_human() { info_.controller = team_info::HUMAN; }
-	void make_human_ai() { info_.controller = team_info::HUMAN_AI; }
-	void make_network() { info_.controller = team_info::NETWORK; }
-	void make_network_ai() { info_.controller = team_info::NETWORK_AI; }
-	void make_ai() { info_.controller = team_info::AI; }
+	void make_human() { info_.controller = HUMAN; }
+	void make_human_ai() { info_.controller = HUMAN_AI; }
+	void make_network() { info_.controller = NETWORK; }
+	void make_network_ai() { info_.controller = NETWORK_AI; }
+	void make_ai() { info_.controller = AI; }
 	void change_controller(const std::string& controller);
+	void change_controller(CONTROLLER controller) { info_.controller = controller; };
 
 	const std::string& team_name() const { return info_.team_name; }
 	const t_string &user_team_name() const { return info_.user_team_name; }
