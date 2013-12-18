@@ -23,18 +23,6 @@ namespace gui2 {
 class teditor_edit_scenario : public tdialog
 {
 public:
-	/**
-	 * Constructor.
-	 *
-	 * @param[in] text            The initial value of the label.
-	 * @param[out] text           The label text the user entered if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
-	 * @param[in] team_only       The initial value of the team only toggle.
-	 * @param[out] team_only      The final value of the team only toggle if the
-	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherwise.
-	 */
-//	teditor_edit_scenario(std::string& text, bool& immutable, bool& visible_fog, bool& visible_shroud);
 
 	teditor_edit_scenario(std::string& id, std::string& name, std::string& description,
 			int& turns, int& experience_modifier, bool& victory_when_enemies_defeated, bool& random_start_time);
@@ -54,9 +42,6 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
-//	std::string id_;
-//	std::string name_;
-//	int turns_;
 };
 
 }
