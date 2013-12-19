@@ -1160,6 +1160,7 @@ static int impl_side_get(lua_State *L)
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
+	return_int_attrib("village_support", t.village_support());
 	return_int_attrib("recall_cost", t.recall_cost());
 	return_int_attrib("base_income", t.base_income());
 	return_int_attrib("total_income", t.total_income());

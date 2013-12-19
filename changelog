@@ -25,7 +25,8 @@ Version 1.11.7+dev:
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Dutch, Galician, Japanese
  * Lua API:
-   * Added flag and flag_icon fields to wesnoth.sides table elements.
+   * Added flag, flag_icon, and village_support fields to wesnoth.sides table
+     elements.
  * Multiplayer:
    * Unit names and genders are synced in MP games.
  * Replays:
@@ -51,7 +52,8 @@ Version 1.11.7+dev:
    * [modify_side] can now change a side's flags and status bar icon using the
      "flag" and "flag_icon" attributes also accepted in [side] definitions
      (bug #18454).
-   * [store_side] now stores the "flag" and "flag_icon" attributes from sides.
+   * [store_side] now stores the "flag", "flag_icon", and "village_support"
+     attributes from sides.
  * Miscellaneous and bug fixes:
    * Pango markup is applied correctly and consistently in button tooltips.
 
