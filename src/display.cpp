@@ -264,6 +264,11 @@ void display::init_flags() {
 
 void display::reinit_flags_for_side(size_t side)
 {
+	if (!teams_ || side >= teams_->size()) {
+		ERR_DP << "Cannot rebuild flags for inexistent or unconfigured side " << side << '\n';
+		return;
+	}
+
 	init_flags_for_side_internal(side, team::get_side_color_index(side + 1));
 }
 
