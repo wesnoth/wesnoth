@@ -223,6 +223,9 @@ public:
 	const std::string& flag() const { return info_.flag; }
 	const std::string& flag_icon() const { return info_.flag_icon; }
 
+	void set_flag(const std::string& flag) { info_.flag = flag; }
+	void set_flag_icon(const std::string& flag_icon) { info_.flag_icon = flag_icon; }
+
 	//Returns true if the hex is shrouded/fogged for this side, or
 	//any other ally with shared vision.
 	bool shrouded(const map_location& loc) const;
