@@ -27,6 +27,16 @@ Version 1.11.7+dev:
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Dutch, Galician, Japanese.
 
+ * Multiplayer:
+   * Unit names and genders are now synced in MP games.
+
+ * Replays:
+   * Replays include the prestart and start events again.
+   * Unit names and genders are now synced between games and replays.
+   * Play/stop buttons are disabled again at the end of a replay.
+   * The 'reset replay' button works correctly and does not cause OOS
+     errors any more.
+
  * User interface:
    * Added a party full bell to the MP game configuration screen, played once
      all human player slots have been taken.
