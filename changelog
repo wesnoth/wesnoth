@@ -46,6 +46,9 @@ Version 1.11.7+dev:
    * [scroll_to] and [scroll_to_unit] now take an optional side filter.
    * [trait] now accepts a "generate_description=" attribute, allowing the
      auto-generated effect descriptions to be turned off.
+   * [modify_side] can now change a side's flags and status bar icon using the
+     "flag" and "flag_icon" attributes also accepted in [side] definitions
+     (bug #18454).
  * Miscellaneous and bug fixes:
    * Pango markup is applied correctly and consistently in button tooltips.
 

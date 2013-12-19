@@ -1261,6 +1261,21 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			teams[team_index].set_color(color);
 			invalidate_screen = true;
 		}
+		// Change flag imageset
+		config::attribute_value flag = cfg["flag"];
+		if(!flag.empty()) {
+			teams[team_index].set_flag(flag);
+			resources::screen->reinit_flags_for_side(team_index);
+			// Needed especially when map isn't animated.
+			invalidate_screen = true;
+		}
+		// Change flag icon
+		config::attribute_value flag_icon = cfg["flag_icon"];
+		if(!flag_icon.empty()) {
+			teams[team_index].set_flag_icon(flag_icon);
+			// Not needed.
+			//invalidate_screen = true;
+		}
 		// Add shared view to current team
 		config::attribute_value share_view = cfg["share_view"];
 		if (!share_view.empty()){
