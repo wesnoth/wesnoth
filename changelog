@@ -57,6 +57,8 @@ Version 1.11.7+dev:
      attributes from sides.
  * Miscellaneous and bug fixes:
    * Pango markup is applied correctly and consistently in button tooltips.
+   * Fixed mishandling of invalid Pango markup resulting in previous messages
+     being displayed instead in e.g. [message] (bug #20996).
 
 Version 1.11.7:
  * Add-ons client:

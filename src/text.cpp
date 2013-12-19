@@ -725,10 +725,11 @@ bool ttext::set_markup(const std::string& text)
 
 	/*
 	 * If at least one ampersand is replaced the semi-escaped string
-	 * is longer than the original.
+	 * is longer than the original. If this isn't the case then the
+	 * markup wasn't (only) broken by ampersands in the first place.
 	 */
-	if(text.size() != semi_escaped.size()
-			&& !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
+	if(text.size() == semi_escaped.size()
+			|| !pango_parse_markup(semi_escaped.c_str(), semi_escaped.size()
 				, 0, NULL, NULL, NULL, NULL)) {
 
 		/* Fixing the ampersands didn't work. */
