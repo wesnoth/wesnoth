@@ -1046,6 +1046,8 @@ function wml_actions.store_side(cfg)
 				color = t.color,
 				gold = t.gold,
 				scroll_to_leader = t.scroll_to_leader,
+				flag = t.flag,
+				flag_icon = t.flag_icon,
 				side = side_number
 			}
 		wesnoth.set_variable(string.format("%s[%u]", variable, index), container)
