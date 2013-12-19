@@ -43,6 +43,7 @@ public:
 	virtual std::string name() const;
 	virtual std::string description() const;
 	virtual std::string id() const;
+	virtual bool allow_era_choice() const;
 
 	void set_data(const config& data);
 	const config& data() const;
@@ -134,6 +135,8 @@ public:
 
 	std::string id() const;
 
+	bool allow_era_choice() const;
+
 	int min_players() const;
 	int max_players() const;
 
@@ -142,6 +145,7 @@ private:
 	void operator=(const campaign&);
 
 	std::string id_;
+	bool allow_era_choice_;
 	std::string image_label_;
 	int min_players_;
 	int max_players_;

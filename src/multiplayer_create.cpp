@@ -70,6 +70,8 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	no_era_label_(disp.video(), _("No eras available\nfor this game."),
+		font::SIZE_SMALL, font::LOBBY_COLOR),
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -300,7 +302,7 @@ void create::process_event()
 	level_selection_ = levels_menu_.selection();
 
 	if (level_changed) {
-		engine_.set_current_level(levels_menu_.selection());
+		init_level_changed(levels_menu_.selection());
 
 		synchronize_selections();
 	}
@@ -387,12 +389,27 @@ void create::init_level_type_changed(size_t index)
 	const std::vector<std::string>& menu_item_names =
 		engine_.levels_menu_item_names();
 
-	engine_.set_current_level((index < menu_item_names.size()) ? index : 0);
+	init_level_changed((index < menu_item_names.size()) ? index : 0);
 
 	levels_menu_.set_items(menu_item_names);
 	levels_menu_.move_selection(index);
 
 	level_selection_ = -1;
+}
+
+void create::init_level_changed(size_t index)
+{
+	engine_.set_current_level(index);
+
+	// N.B. the order of hide() calls here is important
+	// to avoid redrawing glitches.
+	if (engine_.current_level().allow_era_choice()) {
+		no_era_label_.hide(true);
+		eras_menu_.hide(false);
+	} else {
+		eras_menu_.hide(true);
+		no_era_label_.hide(false);
+	}
 }
 
 void create::synchronize_selections()
@@ -499,7 +516,8 @@ void create::hide_children(bool hide)
 
 	ui::hide_children(hide);
 
-	eras_menu_.hide(hide),
+	eras_menu_.hide(hide || !engine_.current_level().allow_era_choice());
+	no_era_label_.hide(hide || engine_.current_level().allow_era_choice());
 	levels_menu_.hide(hide);
 	mods_menu_.hide(hide);
 
@@ -646,6 +664,7 @@ void create::layout_children(const SDL_Rect& rect)
 	xpos += menu_width + column_border_size;
 	era_label_.set_location(xpos, ypos);
 	ypos += era_label_.height() + border_size;
+	no_era_label_.set_location(xpos, ypos);
 	eras_menu_.set_max_width(menu_width);
 	eras_menu_.set_max_height(eras_menu_height);
 	eras_menu_.set_location(xpos, ypos);

@@ -80,6 +80,11 @@ std::string level::id() const
 	return data_["id"];
 }
 
+bool level::allow_era_choice() const
+{
+	return data_["allow_era_choice"].to_bool(true);
+}
+
 void level::set_data(const config& data)
 {
 	data_ = data;
@@ -253,6 +258,7 @@ std::string random_map::id() const
 campaign::campaign(const config& data) :
 	level(data),
 	id_(data["id"]),
+	allow_era_choice_(level::allow_era_choice()),
 	image_label_(),
 	min_players_(2),
 	max_players_(2)
@@ -296,6 +302,11 @@ void campaign::set_metadata()
 std::string campaign::id() const
 {
 	return id_;
+}
+
+bool campaign::allow_era_choice() const
+{
+	return allow_era_choice_;
 }
 
 int campaign::min_players() const
@@ -753,7 +764,8 @@ const mp_game_settings& create_engine::get_parameters()
 {
 	DBG_MP << "getting parameter values" << std::endl;
 
-	parameters_.mp_era = eras_[current_era_index_]->id;
+	int era_index = current_level().allow_era_choice() ? current_era_index_ : 0;
+	parameters_.mp_era = eras_[era_index]->id;
 
 	return parameters_;
 }
