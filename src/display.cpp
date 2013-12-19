@@ -274,7 +274,9 @@ void display::reinit_flags_for_side(size_t side)
 
 void display::init_flags_for_side_internal(size_t n, const std::string& side_color)
 {
+	assert(teams_ != NULL);
 	assert(n < teams_->size());
+	assert(n < flags_.size());
 
 	std::string flag = (*teams_)[n].flag();
 	std::string old_rgb = game_config::flag_rgb;
