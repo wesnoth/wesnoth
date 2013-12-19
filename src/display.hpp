@@ -608,6 +608,8 @@ public:
 	void init_flags();
 
 private:
+	void init_flags_for_side_internal(size_t side, const std::string& side_color);
+
 	/**
 	 * Finds the start and end rows on the energy bar image.
 	 *

@@ -249,7 +249,7 @@ void display::init_flags() {
 
 	flags_.clear();
 	if (!teams_) return;
-	flags_.reserve(teams_->size());
+	flags_.resize(teams_->size());
 
 	std::vector<std::string> side_colors;
 	side_colors.reserve(teams_->size());
@@ -257,45 +257,53 @@ void display::init_flags() {
 	for(size_t i = 0; i != teams_->size(); ++i) {
 		std::string side_color = team::get_side_color_index(i+1);
 		side_colors.push_back(side_color);
-		std::string flag = (*teams_)[i].flag();
-		std::string old_rgb = game_config::flag_rgb;
-		std::string new_rgb = side_color;
-
-		if(flag.empty()) {
-			flag = game_config::images::flag;
-		}
-
-		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
-
-		// Must recolor flag image
-		animated<image::locator> temp_anim;
-
-		std::vector<std::string> items = utils::square_parenthetical_split(flag);
-		std::vector<std::string>::const_iterator itor = items.begin();
-		for(; itor != items.end(); ++itor) {
-			const std::vector<std::string>& items = utils::split(*itor, ':');
-			std::string str;
-			int time;
-
-			if(items.size() > 1) {
-				str = items.front();
-				time = atoi(items.back().c_str());
-			} else {
-				str = *itor;
-				time = 100;
-			}
-			std::stringstream temp;
-			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
-			image::locator flag_image(temp.str());
-			temp_anim.add_frame(time, flag_image);
-		}
-		flags_.push_back(temp_anim);
-
-		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
+		init_flags_for_side_internal(i, side_color);
 	}
 	image::set_team_colors(&side_colors);
 }
 
+void display::init_flags_for_side_internal(size_t n, const std::string& side_color)
+{
+	assert(n < teams_->size());
+
+	std::string flag = (*teams_)[n].flag();
+	std::string old_rgb = game_config::flag_rgb;
+	std::string new_rgb = side_color;
+
+	if(flag.empty()) {
+		flag = game_config::images::flag;
+	}
+
+	LOG_DP << "Adding flag for team " << n << " from animation " << flag << "\n";
+
+	// Must recolor flag image
+	animated<image::locator> temp_anim;
+
+	std::vector<std::string> items = utils::square_parenthetical_split(flag);
+	std::vector<std::string>::const_iterator itor = items.begin();
+	for(; itor != items.end(); ++itor) {
+		const std::vector<std::string>& items = utils::split(*itor, ':');
+		std::string str;
+		int time;
+
+		if(items.size() > 1) {
+			str = items.front();
+			time = atoi(items.back().c_str());
+		} else {
+			str = *itor;
+			time = 100;
+		}
+		std::stringstream temp;
+		temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
+		image::locator flag_image(temp.str());
+		temp_anim.add_frame(time, flag_image);
+	}
+
+	animated<image::locator>& f = flags_[n];
+
+	f = temp_anim;
+	f.start_animation(rand() % f.get_end_time(), true);
+}
 
 struct is_energy_color {
 	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
