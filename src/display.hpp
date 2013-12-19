@@ -607,6 +607,9 @@ public:
 	/** Init the flag list and the team colors used by ~TC */
 	void init_flags();
 
+	/** Rebuild the flag list (not team colors) for a single side. */
+	void reinit_flags_for_side(size_t side);
+
 private:
 	void init_flags_for_side_internal(size_t side, const std::string& side_color);
 
