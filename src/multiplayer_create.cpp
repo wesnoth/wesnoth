@@ -183,7 +183,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	mod_selection_ = mods_menu_.selection();
 
 	if (mod_selection_ == -1) {
-		mod_label_.set_text(_("Modifications: none found"));
+		mod_label_.set_text(_("Modifications:\nNone found."));
 	} else if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
 		select_mod_.set_label(_("Deactivate"));
 	}
