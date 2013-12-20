@@ -71,10 +71,13 @@ Version 1.11.7+dev:
      (bug #18454).
    * [store_side] now stores the "flag", "flag_icon", and "village_support"
      attributes from sides.
+   * New macros RECALL and RECALL_XY
  * Miscellaneous and bug fixes:
    * Pango markup is applied correctly and consistently in button tooltips.
    * Fixed mishandling of invalid Pango markup resulting in previous messages
      being displayed instead in e.g. [message] (bug #20996).
+   * Added wmllint code for recognizing unit id fields in macros.
+   * Refactored code in wmltools to create a macro-parsing function.
 
 Version 1.11.7:
  * Add-ons client:
@@ -155,6 +158,8 @@ Version 1.11.7:
        pierce resistance from 30% to 60% and lowered its impact resistance
        from -10% to -20%.
      * Greatly decreased the Death Squire's HP from 66 to 44.
+   * Northern Rebirth:
+     * S5a: added dialog for dungeon signpost moveto
    * Sceptre of Fire:
      * Converted animation WML to the new syntax
    * Son of the Black Eye:
