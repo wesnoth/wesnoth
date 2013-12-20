@@ -26,6 +26,7 @@
 #include "lobby_preferences.hpp"
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
+#include "widgets/combo.hpp"
 #include "widgets/slider.hpp"
 #include "formula_string_utils.hpp"
 
@@ -138,8 +139,9 @@ private:
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
 			   idle_anim_slider_label_, autosavemax_slider_label_,
-			   advanced_slider_label_;
+			   advanced_option_label_;
 	gui::textbox sample_rate_input_, friends_input_;
+	gui::combo advanced_combo_;
 
 	unsigned slider_label_width_;
 
@@ -226,10 +228,12 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  sample_rate_label_(disp.video(), _("Sample rate (Hz):")), buffer_size_label_(disp.video(), ""),
 	  idle_anim_slider_label_(disp.video(), _("Frequency:"), font::SIZE_SMALL ),
 	  autosavemax_slider_label_(disp.video(), "", font::SIZE_SMALL),
-	  advanced_slider_label_(disp.video(), "", font::SIZE_SMALL),
+	  advanced_option_label_(disp.video(), "", font::SIZE_SMALL),
 
 	  sample_rate_input_(disp.video(), 70),
 	  friends_input_(disp.video(), 170),
+
+	  advanced_combo_(disp, std::vector<std::string>()),
 
 	  slider_label_width_(0),
 	  advanced_(disp.video(),std::vector<std::string>(),false,-1,-1,NULL,&gui::menu::bluebg_style),
@@ -468,6 +472,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&friends_add_ignore_button_);
 	h.push_back(&friends_remove_button_);
 	h.push_back(&friends_input_);
+	h.push_back(&advanced_combo_);
 	h.push_back(&show_floating_labels_button_);
 	h.push_back(&turn_dialog_button_);
 	h.push_back(&whiteboard_on_start_button_);
@@ -498,7 +503,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&turbo_slider_label_);
 	h.push_back(&idle_anim_slider_label_);
 	h.push_back(&autosavemax_slider_label_);
-	h.push_back(&advanced_slider_label_);
+	h.push_back(&advanced_option_label_);
 	h.push_back(&chat_lines_label_);
 	h.push_back(&sample_rate_label_);
 	h.push_back(&buffer_size_label_);
@@ -707,12 +712,13 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += advanced_.height() + font::relative_size(14);
 
 	advanced_button_.set_location(rect.x,ypos);
-	advanced_slider_label_.set_location(rect.x,ypos);
+	advanced_option_label_.set_location(rect.x,ypos);
 	const SDL_Rect advanced_slider_rect = create_rect(rect.x
 			, ypos + short_interline
 			, rect.w - right_border
 			, 0);
 	advanced_slider_.set_location(advanced_slider_rect);
+	advanced_combo_.set_location(rect.x,ypos + short_interline);
 
 	set_selection(tab_);
 }
@@ -1017,10 +1023,12 @@ void preferences_dialog::process_event()
 				const config& pref = *adv;
 				const std::string description = pref["description"];
 				std::string value = preferences::get(pref["field"]);
+				const bool hide_combo = pref["type"] != "combo";
+				advanced_combo_.hide(hide_combo);
 				advanced_button_.hide(pref["type"] != "boolean");
 				const bool hide_int = pref["type"] != "int";
 				advanced_slider_.hide(hide_int);
-				advanced_slider_label_.hide(hide_int);
+				advanced_option_label_.hide(hide_int && hide_combo);
 				if(value.empty()) {
 					value = pref["default"].str();
 				}
@@ -1032,13 +1040,28 @@ void preferences_dialog::process_event()
 				} else if (pref["type"] == "int") {
 					std::stringstream ss;
 					ss << pref["name"] << ": " << value;
-					advanced_slider_label_.set_text(ss.str());
-					advanced_slider_label_.set_help_string(description);
+					advanced_option_label_.set_text(ss.str());
+					advanced_option_label_.set_help_string(description);
 					advanced_slider_.set_min(pref["min"].to_int());
 					advanced_slider_.set_max(pref["max"].to_int());
 					advanced_slider_.set_increment(pref["step"].to_int(1));
 					advanced_slider_.set_value(lexical_cast<int>(value));
 					advanced_slider_.set_help_string(description);
+				} else if (pref["type"] == "combo") {
+					std::vector<std::string> adv_combo_items;
+					int adv_combo_choice = 0;
+					BOOST_FOREACH(const config& adv_combo_option, pref.child_range("option"))
+					{
+						adv_combo_items.push_back(adv_combo_option["name"]);
+						if(value == adv_combo_option["id"]) {
+							adv_combo_choice = adv_combo_items.size() - 1;
+						}
+					}
+					advanced_combo_.set_items(adv_combo_items);
+					advanced_combo_.set_selected(adv_combo_choice);
+					advanced_combo_.set_help_string(description);
+					advanced_option_label_.set_text(pref["name"].str() + ":");
+					advanced_option_label_.set_help_string(description);
 				}
 			}
 		}
@@ -1065,7 +1088,31 @@ void preferences_dialog::process_event()
 				set_advanced_menu();
 				std::stringstream ss;
 				ss << pref["name"] << ": " << advanced_slider_.value();
-				advanced_slider_label_.set_text(ss.str());
+				advanced_option_label_.set_text(ss.str());
+			}
+		}
+
+		if(advanced_combo_.changed()) {
+			if(adv != NULL) {
+				const config& pref = *adv;
+				config::const_child_itors options = pref.child_range("option");
+
+				const config* option = NULL;
+				int k = 0;
+
+				BOOST_FOREACH(const config& o, options)
+				{
+					if(advanced_combo_.selected() == k) {
+						option = &o;
+						break;
+					}
+					++k;
+				}
+
+				if(option) {
+					preferences::set(pref["field"], (*option)["id"].str());
+					set_advanced_menu();
+				}
 			}
 		}
 
@@ -1096,7 +1143,15 @@ void preferences_dialog::set_advanced_menu()
 			field = adv["default"].str();
 		}
 
-		if(field == "yes") {
+		if(adv["type"] == "combo") {
+			BOOST_FOREACH(const config& optdef, adv.child_range("option"))
+			{
+				if(field == optdef["id"]) {
+					field = optdef["name"].str();
+					break;
+				}
+			}
+		} else if(field == "yes") {
 			field = _("yes");
 		} else if(field == "no") {
 			field = _("no");
@@ -1260,9 +1315,11 @@ void preferences_dialog::set_selection(int index)
 	std::string adv_type = get_advanced_pref() != NULL ? (*get_advanced_pref())["type"].str() : "";
 	const bool hide_advanced_bool = hide_advanced || adv_type != "boolean";
 	const bool hide_advanced_int = hide_advanced || adv_type != "int";
+	const bool hide_advanced_combo = hide_advanced || adv_type != "combo";
 	advanced_button_.hide(hide_advanced_bool);
-	advanced_slider_label_.hide(hide_advanced_int);
 	advanced_slider_.hide(hide_advanced_int);
+	advanced_combo_.hide(hide_advanced_combo);
+	advanced_option_label_.hide(hide_advanced_int && hide_advanced_combo);
 }
 
 }
