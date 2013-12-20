@@ -169,7 +169,7 @@ void map_context::set_side_setup(int side, const std::string& id, const std::str
 		bool fog, bool share_view, bool shroud, bool share_maps,
 		team::CONTROLLER controller, bool hidden, bool no_leader)
 {
-	assert(teams_.size() > static_cast<u_int>(side));
+	assert(teams_.size() > static_cast<unsigned int>(side));
 	team& t = teams_[side];
 	t.set_save_id(id);
 	t.set_name(name);
