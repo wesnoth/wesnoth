@@ -30,6 +30,7 @@
 
 #include <boost/foreach.hpp>
 #include <sstream>
+#include <cctype>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
