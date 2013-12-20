@@ -80,6 +80,9 @@ public:
 	 */
 	static void clear_status_caches();
 
+	/** The path to the leader crown overlay. */
+	static const std::string& leader_crown();
+
 	// Copy constructor
 	unit(const unit& u);
 	/** Initializes a unit from a config */

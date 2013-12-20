@@ -68,6 +68,8 @@ namespace {
 	 * always valid.
 	 */
 	static std::vector<const unit *> units_with_cache;
+
+	const std::string leader_crown_path = "misc/leader-crown.png";
 }
 
 /**
@@ -105,6 +107,11 @@ static unit_race::GENDER generate_gender(const unit_type & u_type, const config 
 		return string_gender(gender);
 
 	return generate_gender(u_type, cfg["random_gender"].to_bool(), rng);
+}
+
+const std::string& unit::leader_crown()
+{
+	return leader_crown_path;
 }
 
 // Copy constructor
@@ -2099,7 +2106,7 @@ void unit::redraw_unit()
 		}
 
 		if (can_recruit()) {
-			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_ZOOM));
+			surface crown(image::get_image(leader_crown(),image::SCALED_TO_ZOOM));
 			if(!crown.null()) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
