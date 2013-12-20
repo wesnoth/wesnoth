@@ -27,15 +27,25 @@ class teditor_edit_side : public tdialog
 {
 public:
 
-	teditor_edit_side(std::string& id, std::string& name, int& gold, int& income,
-			bool& fog, bool& share_view, bool& shroud, bool& share_maps, team::CONTROLLER& controller);
+	teditor_edit_side(int side, std::string& id, std::string& name,
+			int& gold, int& income, int& village_income, int& village_support,
+			bool& fog, bool& share_view, bool& shroud, bool& share_maps,
+			team::CONTROLLER& controller, int controller_num,
+			bool& no_leader, bool& hidden);
 
 	/** The execute function see @ref tdialog for more information. */
-	static bool execute(std::string& id, std::string& name, int& gold, int& income,
-			bool& fog, bool& share_view, bool& shroud, bool& share_maps, team::CONTROLLER& controller,
+	static bool execute(int side, std::string& id, std::string& name,
+			int& gold, int& income, int& village_income, int& village_support,
+			bool& fog, bool& share_view, bool& shroud, bool& share_maps,
+			team::CONTROLLER& controller, int controller_num,
+			bool& no_leader, bool& hidden,
 			CVideo& video)
 	{
-		return teditor_edit_side(id, name, gold, income, fog, share_view, shroud, share_maps, controller).show(video);
+		return teditor_edit_side(side, id, name,
+				gold, income, village_income, village_support,
+				fog, share_view, shroud, share_maps,
+				controller, controller_num,
+				no_leader, hidden).show(video);
 	}
 
 private:

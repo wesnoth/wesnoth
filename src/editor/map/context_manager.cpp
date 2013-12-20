@@ -192,6 +192,7 @@ void context_manager::edit_side_dialog(int side)
 	//t.support()
 
 	team::CONTROLLER controller = t.controller();
+	int controller_num = 0;
 
 	std::string id = t.save_id();
 	std::string name = t.name();
@@ -201,21 +202,24 @@ void context_manager::edit_side_dialog(int side)
 	int village_gold = t.village_gold();
 	int village_support = t.village_support();
 
+	bool no_leader = t.no_leader();
 	bool hidden = t.hidden();
 	bool share_view = t.share_view();
 	bool share_maps = t.share_maps();
 	bool fog = t.uses_fog();
 	bool shroud = t.uses_shroud();
 
-	bool ok = gui2::teditor_edit_side::execute(id, name,
-			gold, income,
-			fog, share_view, shroud, share_maps, controller,
+	bool ok = gui2::teditor_edit_side::execute(side +1, id, name,
+			gold, income, village_gold, village_support,
+			fog, share_view, shroud, share_maps,
+			controller, controller_num,
+			no_leader, hidden,
 			gui_.video());
 
 	if (ok) {
 		get_map_context().set_side_setup(side, id, name,
 				gold, income, village_gold, village_support,
-				fog, share_view, shroud, share_maps, controller, hidden);
+				fog, share_view, shroud, share_maps, controller, hidden, no_leader);
 	}
 }
 

@@ -167,12 +167,13 @@ map_context::map_context(const config& game_config, const std::string& filename,
 void map_context::set_side_setup(int side, const std::string& id, const std::string& name,
 		int gold, int income, int village_gold, int village_support,
 		bool fog, bool share_view, bool shroud, bool share_maps,
-		team::CONTROLLER controller, bool hidden)
+		team::CONTROLLER controller, bool hidden, bool no_leader)
 {
 	assert(teams_.size() > static_cast<u_int>(side));
 	team& t = teams_[side];
 	t.set_save_id(id);
 	t.set_name(name);
+	t.have_leader(!no_leader);
 	t.change_controller(controller);
 	t.set_gold(gold);
 	t.set_base_income(income);
@@ -396,9 +397,10 @@ config map_context::to_config()
 		side["hidden"] = t->hidden();
 
 		side["controller"] = t->controller_string();
-		// TODO make this customizable via gui
-		side["no_leader"] = "yes";
-		side["allow_player"] = "yes";
+		side["no_leader"] = t->no_leader();
+
+		// TODO
+		// side["allow_player"] = "yes";
 
 		side["fog"] = t->uses_fog();
 		side["share_view"] = t->share_view();

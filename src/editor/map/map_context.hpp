@@ -182,7 +182,7 @@ public:
 	void set_side_setup(int side, const std::string& id, const std::string& name,
 			int gold, int income, int village_gold, int village_support,
 			bool fog, bool share_view, bool shroud, bool share_maps,
-			team::CONTROLLER controller, bool hidden);
+			team::CONTROLLER controller, bool hidden, bool no_leader);
 
 	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.

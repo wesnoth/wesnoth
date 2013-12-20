@@ -49,28 +49,46 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_edit_side)
 
-teditor_edit_side::teditor_edit_side(std::string& id, std::string& name, int& gold, int& income,
-		bool& fog, bool& share_view, bool& shroud, bool& share_maps, team::CONTROLLER& controller) :
+teditor_edit_side::teditor_edit_side(int side, std::string& id, std::string& name,
+		int& gold, int& income, int& village_income, int& village_support,
+		bool& fog, bool& share_view, bool& shroud, bool& share_maps,
+		team::CONTROLLER& controller, int controller_num,
+		bool& no_leader, bool& hidden) :
 		controller_(controller)
 {
+	std::stringstream side_stream;
+	side_stream << side;
+	register_label("side_number", true, side_stream.str(), true);
+
 	register_text("id", true, id, true);
 	register_text("name", true, name, true);
 
 	register_integer("gold", true, gold);
 	register_integer("income", true, income);
 
+	register_integer("village_income", true, village_income);
+	register_integer("village_support", true, village_support);
+
+	register_integer("controller_number_player", true, controller_num);
+
 	register_bool("fog", true, fog);
 	register_bool("share_view", true, share_view);
 
 	register_bool("shroud", true, shroud);
 	register_bool("share_maps", true, share_maps);
+
+	register_bool("no_leader", true, no_leader);
+	register_bool("hidden", true, hidden);
+
 }
 
 void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
 {
-	register_controller_toggle(window, "by_human", team::HUMAN);
-	register_controller_toggle(window, "by_ai", team::AI);
-	register_controller_toggle(window, "by_null", team::EMPTY);
+	register_controller_toggle(window, "human", team::HUMAN);
+	register_controller_toggle(window, "human_ai", team::HUMAN_AI);
+	register_controller_toggle(window, "ai", team::AI);
+	register_controller_toggle(window, "null", team::EMPTY);
+	register_controller_toggle(window, "number", team::CONTROLLER(-1));
 }
 
 void teditor_edit_side::register_controller_toggle(twindow& window, const std::string& toggle_id, team::CONTROLLER value)
