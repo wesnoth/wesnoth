@@ -339,7 +339,7 @@ namespace game_config
 			{
 				std::vector<Uint32> temp;
 				if(!string2rgb(rgb.second, temp)) {
-					ERR_NG << "Invalid team color: " << rgb.second << "\n";
+					ERR_NG << "Invalid color palette: " << rgb.second << "\n";
 				}
 				team_rgb_colors.insert(std::make_pair(rgb.first, temp));
 			}
@@ -366,7 +366,7 @@ namespace game_config
 			std::vector<Uint32> temp;
 			if(!string2rgb(name, temp)) {
 				static std::vector<Uint32> stv;
-				ERR_NG << "Invalid team color: " << name << "\n";
+				ERR_NG << "Invalid color palette: " << name << "\n";
 				return stv;
 			}
 			team_rgb_colors.insert(std::make_pair(name,temp));
