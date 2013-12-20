@@ -525,10 +525,21 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 		if (name.empty()) name = utils::unicode_em_dash;
 
 		option << IMAGE_PREFIX << u->absolute_image();
+
 	#ifndef LOW_MEM
 		option << "~RC("  << u->team_color() << '>'
 			<< team::get_side_color_index(side) << ')';
+
+		if(u->can_recruit()) {
+			option << "~BLIT(" << unit::leader_crown() << ")";
+		}
+
+		BOOST_FOREACH(const std::string& overlay, u->overlays())
+		{
+			option << "~BLIT(" << overlay << ")";
+		}
 	#endif
+
 		option << COLUMN_SEPARATOR
 			<< u->type_name() << COLUMN_SEPARATOR
 			<< name << COLUMN_SEPARATOR;
