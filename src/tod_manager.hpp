@@ -82,6 +82,12 @@ class tod_manager : public savegame::savegame_config
 		const std::set<map_location>& get_area_by_index(int index) const;
 
 		/**
+		 * @param id
+		 * @returns the area with @id
+		 */
+		const std::set<map_location>& get_area_by_id(const std::string& id) const;
+
+		/**
 		 * Adds a new local time area from config, making it follow its own
 		 * time-of-day sequence.
 		 *

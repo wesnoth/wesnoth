@@ -244,6 +244,15 @@ std::vector<std::string> tod_manager::get_area_ids() const
 	return areas;
 }
 
+const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id) const
+{
+	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+		if (area.id == id)
+			return area.hexes;
+	}
+	return areas_[0].hexes;
+}
+
 const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 {
 	return areas_[index].hexes;
