@@ -187,7 +187,7 @@ public:
 			iterator_type new_i(i_);
 			do{
 				++new_i;
-			}while ((new_i->second.unit == NULL) && (new_i != the_map().end() )) ;
+			}while ((new_i != the_map().end()) && (new_i->second.unit == NULL)) ;
 			dec();
 			i_ = new_i;
 			inc();
