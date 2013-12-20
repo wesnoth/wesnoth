@@ -49,7 +49,7 @@ tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	//Very bad, since we're pretending to not modify the cfg. Needed to transfer the result
 	//to the network clients in a mp game, otherwise we have OOS.
 	config& non_const_config = const_cast<config&>(scenario_cfg);
-	non_const_config["current_tod"] = currentTime_;
+	non_const_config["current_time"] = currentTime_;
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -73,7 +73,7 @@ config tod_manager::to_config() const
 	config cfg;
 	cfg["turn_at"] = turn_;
 	cfg["turns"] = num_turns_;
-	cfg["current_tod"] = currentTime_;
+	cfg["current_time"] = currentTime_;
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
@@ -303,10 +303,10 @@ void tod_manager::remove_time_area(const std::string& area_id)
 
 int tod_manager::get_start_ToD(const config &level) const
 {
-	const config::attribute_value& current_tod = level["current_tod"];
-	if (!current_tod.blank())
+	const config::attribute_value& current_time = level["current_time"];
+	if (!current_time.blank())
 	{
-		return calculate_current_time(times_.size(), turn_, current_tod.to_int(0), true);
+		return calculate_current_time(times_.size(), turn_, current_time.to_int(0), true);
 	}
 
 	const int default_result = calculate_current_time(times_.size(), turn_, currentTime_);
