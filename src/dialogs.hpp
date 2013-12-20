@@ -99,6 +99,7 @@ public:
 		std::string hp_color, xp_color;
 		int movement_left, total_movement;
 		std::vector<attack_type> attacks;
+		std::vector<std::string> overlays;
 	};
 
 	unit_preview_pane(const gui::filter_textbox *filter = NULL,

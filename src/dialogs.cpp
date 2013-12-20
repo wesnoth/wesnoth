@@ -1029,7 +1029,8 @@ unit_preview_pane::details::details() :
 	xp_color(),
 	movement_left(0),
 	total_movement(0),
-	attacks()
+	attacks(),
+	overlays()
 {
 }
 
@@ -1115,6 +1116,18 @@ void unit_preview_pane::draw_contents()
 
 		sdl_blit(unit_image,NULL,screen,&rect);
 		image_rect = rect;
+
+		if(!det.overlays.empty()) {
+			BOOST_FOREACH(const std::string& overlay, det.overlays) {
+				surface os = image::get_image(overlay);
+
+				if(os->w > rect.w || os->h > rect.h) {
+					os = scale_surface(os, rect.w, rect.h, false);
+				}
+
+				sdl_blit(os, NULL, screen, &rect);
+			}
+		}
 	}
 
 	// Place the 'unit profile' button
@@ -1281,6 +1294,15 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	det.total_movement= u.total_movement();
 
 	det.attacks = u.attacks();
+
+	if(u.can_recruit()) {
+		det.overlays.push_back(unit::leader_crown());
+	};
+
+	BOOST_FOREACH(const std::string& overlay, u.overlays()) {
+		det.overlays.push_back(overlay);
+	}
+
 	return det;
 }
 

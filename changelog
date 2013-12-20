@@ -43,7 +43,8 @@ Version 1.11.7+dev:
    * Moved color cursors option to Advanced Preferences.
    * Always hide and disable color cursors option on Mac OS X since it's known
      to cause severe lags that render the cursor unusable.
-   * Unit overlays are now displayed in the Recall dialog list and side panel.
+   * Unit overlays are now displayed in the Recall dialog, both on the list
+     and the description panel.
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario
