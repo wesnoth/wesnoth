@@ -353,25 +353,27 @@ function wesnoth.wml_actions.micro_ai(cfg)
             { ca_id = "mai_wolves_wander", location = 'ai/micro_ais/cas/ca_wolves_wander.lua', score = score - 1 }
         }
 
-       local wolves_aspects = {
-            {
-                aspect = "attacks",
-                facet = {
-                    name = "ai_default_rca::aspect_attacks",
-                    id = "dont_attack",
-                    invalidate_on_gamestate_change = "yes",
-                    { "filter_enemy", {
-                        { "not", {
-                            type=cfg.avoid_type
+        if cfg.avoid_type then
+            local wolves_aspects = {
+                {
+                    aspect = "attacks",
+                    facet = {
+                        name = "ai_default_rca::aspect_attacks",
+                        id = "dont_attack",
+                        invalidate_on_gamestate_change = "yes",
+                        { "filter_enemy", {
+                            { "not", {
+                                type=cfg.avoid_type
+                            } }
                         } }
-                    } }
+                    }
                 }
             }
-        }
-        if (cfg.action == "delete") then
-            delete_aspects(cfg.side, wolves_aspects)
-        else
-            add_aspects(cfg.side, wolves_aspects)
+            if (cfg.action == "delete") then
+                delete_aspects(cfg.side, wolves_aspects)
+            else
+                add_aspects(cfg.side, wolves_aspects)
+            end
         end
 
     elseif (cfg.ai_type == 'herding') then
