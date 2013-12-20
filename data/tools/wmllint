@@ -68,6 +68,14 @@
 # also be useful if you have wrapped unit-creation or recall markup in
 # non-core macros and wmllint cannot recognize it.
 #
+# If you use custom macros to create (or recall) a named unit, you can tell
+# wmllint which field contains the id with the string, "wmllint: whofield
+# <macro> <number>".  After the macro's last use, *make sure* to remove it
+# with "wmllint: whofield clear <macro>"; if "clear" is not followed by a
+# macro name, all macros will be cleared from the list.  (If the <number>
+# string was not a non-zero number, wmllint will also attempt to remove the
+# specified macro.)
+#
 # For macros used in multiple scenarios to field characters, you can tell
 # wmllint to recognize them with another magic comment:
 #     wmllint: who <macro> is <character(s)>
@@ -1481,6 +1489,9 @@ def global_sanity_check(filename, lines):
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 2 and brack == 0:
                         present.append(args[1])
+                elif macname in whomacros.keys():
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    present.append(args[whomacros[macname]])
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
             for mac in whopairs.keys():
