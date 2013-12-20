@@ -92,6 +92,7 @@ config tod_manager::to_config() const
 			t->write(area.add_child("time"));
 		}
 		area["current_time"] = i->currentTime;
+		area["id"] = i->id;
 	}
 	return cfg;
 }
