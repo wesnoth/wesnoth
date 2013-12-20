@@ -1489,6 +1489,10 @@ def global_sanity_check(filename, lines):
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 2 and brack == 0:
                         present.append(args[1])
+                elif macname == 'RECALL_XY':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) == 4:
+                        present.append(args[1])
                 elif macname in whomacros.keys():
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
