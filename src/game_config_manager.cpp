@@ -142,6 +142,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				const config& campaign = game_config().find_child("campaign",
 					"define", classification->campaign_define);
 				const std::string& campaign_id = campaign["id"];
+				const bool require_campaign =
+					campaign["require_campaign"].to_bool(true);
 
 				const config::const_child_itors &ci =
 					game_config().child_range("scenario");
@@ -151,6 +153,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 				BOOST_FOREACH(config& cfg, scenarios) {
 					cfg["campaign_id"] = campaign_id;
+					cfg["require_scenario"] = require_campaign;
 					game_config_.add_child("multiplayer", cfg);
 				}
 			}

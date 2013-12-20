@@ -2427,6 +2427,10 @@ void server::process_data_game(const network::connection sock,
 			}
 		}
 
+		if (data.attr("require_scenario").to_bool(false)) {
+			desc.set_attr("require_scenario", "yes");
+		}
+
 		const simple_wml::node::child_list& mlist = data.children("modification");
 		BOOST_FOREACH (const simple_wml::node* m, mlist) {
 			desc.add_child_at("modification", 0);
@@ -2514,6 +2518,10 @@ void server::process_data_game(const network::connection sock,
 			if (!e->attr("require_era").to_bool(true)) {
 				desc.set_attr("require_era", "no");
 			}
+		}
+
+		if (data.attr("require_scenario").to_bool(false)) {
+			desc.set_attr("require_scenario", "yes");
 		}
 
 		// Tell everyone that the next scenario data is available.

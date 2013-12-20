@@ -60,6 +60,7 @@ public:
 			use_map_settings(false),
 			verified(false),
 			password_required(false),
+			have_scenario(false),
 			have_era(false),
 			have_all_mods(false)
 		{
@@ -88,6 +89,7 @@ public:
 		bool use_map_settings;
 		bool verified;
 		bool password_required;
+		bool have_scenario;
 		bool have_era;
 		bool have_all_mods;
 	};
@@ -103,9 +105,18 @@ public:
 	SDL_Rect get_item_rect(size_t index) const;
 	bool empty() const { return games_.empty(); }
 	bool selection_is_joinable() const
-	{ return empty() ? false : (games_[selected_].vacant_slots > 0 && !games_[selected_].started && games_[selected_].have_era && games_[selected_].have_all_mods); }
+	{ return empty() ? false : (games_[selected_].vacant_slots > 0 &&
+		!games_[selected_].started &&
+		games_[selected_].have_scenario &&
+		games_[selected_].have_era &&
+		games_[selected_].have_all_mods); }
 	// Moderators may observe any game.
-	bool selection_is_observable() const { return empty() ? false : (games_[selected_].observers && games_[selected_].have_era && games_[selected_].have_all_mods) || preferences::is_authenticated(); }
+	bool selection_is_observable() const
+	{ return empty() ? false : (games_[selected_].observers &&
+		games_[selected_].have_scenario &&
+		games_[selected_].have_era &&
+		games_[selected_].have_all_mods) ||
+		preferences::is_authenticated(); }
 	bool selected() const { return double_clicked_ && !empty(); }
 	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }

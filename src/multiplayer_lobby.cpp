@@ -157,6 +157,9 @@ void gamebrowser::draw_row(const size_t index, const SDL_Rect& item_rect, ROW_TY
 			font_color = font::BAD_COLOR;
 		}
 	}
+	if(!game.have_scenario && font_color != font::BAD_COLOR) {
+		font_color = font::DISABLED_COLOR;
+	}
 	if(!game.have_era && font_color != font::BAD_COLOR) {
 		font_color = font::DISABLED_COLOR;
 		no_era_string = _(" (Unknown Era)");
@@ -468,6 +471,7 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 		games_.back().password_required = game["password"].to_bool();
 		games_.back().reloaded = game["savegame"].to_bool();
 		games_.back().have_era = true;
+		games_.back().have_scenario = true;
 		if (game["mp_campaign"].empty()) {
 			if (!game["mp_scenario"].empty()) {
 				// Check if it's a multiplayer scenario.
@@ -552,6 +556,10 @@ void gamebrowser::set_game_items(const config& cfg, const config& game_config)
 				games_.back().map_info =
 					vgettext("Unknown campaign: $campaign_id", symbols);
 				verified = false;
+
+				if (game["require_scenario"].to_bool(false)) {
+					games_.back().have_scenario = false;
+				}
 			}
 		}
 		games_.back().map_data = game["map_data"].str();
