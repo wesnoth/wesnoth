@@ -688,6 +688,10 @@ notepairs = [
 # but must be populated by the magic comment, "#wmllint: who ... is ...".
 whopairs = {}
 
+# This dictionary pairs macros with the id field of the characters they recall
+# or create, and is populated by the comment, "wmllint: whofield <macro> <#>."
+whomacros = {}
+
 # This list of the standard recruitable usage types can be appended with the
 # magic comment, "#wmllint: usagetype[s]".
 usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
@@ -1412,9 +1416,9 @@ def global_sanity_check(filename, lines):
             in_person = False
         if "wmllint: markcheck off" in lines[i]:
             markcheck = False
-        if "wmllint: markcheck on" in lines[i]:
+        elif "wmllint: markcheck on" in lines[i]:
             markcheck = True
-        if 'wmllint: who ' in lines[i]:
+        elif 'wmllint: who ' in lines[i]:
             try:
                 fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
                 if len(fields) == 2:
@@ -1435,6 +1439,22 @@ def global_sanity_check(filename, lines):
                 except KeyError:
                     print >>sys.stderr, '%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
                                          % (filename, i+1, unmac, str(whopairs.keys())[1:-1])
+        elif 'wmllint: whofield' in lines[i]:
+            fields = re.search(r'wmllint: whofield\s+([^\s]+)(\s+is)?\s*([^\s]*)', lines[i])
+            if fields:
+                if fields.group(1).startswith('clear'):
+                    if fields.group(3) in whomacros.keys():
+                        del whomacros[fields.group(3)]
+                    else:
+                        whomacros.clear()
+                elif re.match(r'[1-9][0-9]*$', fields.group(3)):
+                    whomacros.update({fields.group(1): int(fields.group(3))})
+                else:
+                    try:
+                        del whomacros[fields.group(1)]
+                    except KeyError:
+                        print >>sys.stderr, '%s, line %s: magic comment "whofield %s" should be followed by a number: %s' \
+                                         % (filename, i+1, unmac, fields.group(3))
         # Parse recruit/recall macros to recognize characters.  This section
         # assumes that such a macro is the first item on a line.
         leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
