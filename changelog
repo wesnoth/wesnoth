@@ -67,6 +67,11 @@ Version 1.11.7+dev:
      on the configuration screen.
    * Removed the MP modifications dialog; modifications are now displayed
      directly on the creation screen.
+   * The "Compressed saves" and "Compress savegames using bzip2" options in
+     Preferences -> Advanced have been replaced by a single option,
+     "Compressed saved games", that lets the user pick between gzip (default),
+     bzip2, and no compression. Users who previously enabled bzip2 compression
+     will need to do so again.
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario

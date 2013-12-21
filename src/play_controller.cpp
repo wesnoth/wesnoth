@@ -410,7 +410,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
+		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -420,7 +420,7 @@ void play_controller::save_game(){
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(gamestate_, preferences::compress_saves());
+		savegame::replay_savegame save(gamestate_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
@@ -1160,6 +1160,9 @@ static void trim_items(std::vector<std::string>& newitems) {
 
 void play_controller::expand_autosaves(std::vector<std::string>& items)
 {
+	const compression::format comp_format =
+		preferences::save_compression_format();
+
 	savenames_.clear();
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "AUTOSAVES") {
@@ -1168,23 +1171,17 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = this->turn(); turn != 0; turn--) {
 				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
-				if (savegame::save_game_exists(name, preferences::compress_saves())) {
-					if(preferences::compress_saves()) {
-						newsaves.push_back(name + (preferences::bzip2_savegame_compression() ? ".bz2" : ".gz"));
-					} else {
-						newsaves.push_back(name);
-					}
+				if (savegame::save_game_exists(name, comp_format)) {
+					newsaves.push_back(
+						name + compression::format_extension(comp_format));
 					newitems.push_back(_("Back to Turn ") + lexical_cast<std::string>(turn));
 				}
 			}
 
 			const std::string& start_name = gamestate_.classification().label;
-			if(savegame::save_game_exists(start_name, preferences::compress_saves())) {
-				if(preferences::compress_saves()) {
-					newsaves.push_back(start_name + (preferences::bzip2_savegame_compression() ? ".bz2" : ".gz"));
-				} else {
-					newsaves.push_back(start_name);
-				}
+			if(savegame::save_game_exists(start_name, comp_format)) {
+				newsaves.push_back(
+					start_name + compression::format_extension(comp_format));
 				newitems.push_back(_("Back to Start"));
 			}
 

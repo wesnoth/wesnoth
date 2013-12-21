@@ -913,9 +913,25 @@ void set_flip_time(bool value)
 	preferences::set("flip_time", value);
 }
 
-bool compress_saves()
+compression::format save_compression_format()
 {
-	return preferences::get("compress_saves", true);
+	const std::string& choice =
+		preferences::get("compress_saves");
+
+	// "yes" was used in 1.11.7 and earlier; the compress_saves
+	// option used to be a toggle for gzip in those versions.
+	if(choice.empty() || choice == "gzip" || choice == "yes") {
+		return compression::GZIP;
+	} else if(choice == "bzip2") {
+		return compression::BZIP2;
+	} else if(choice == "none" || choice == "no") { // see above
+		return compression::NONE;
+	} /*else*/
+
+	// In case the preferences file was created by a later version
+	// supporting some algorithm we don't; although why would anyone
+	// playing a game need more algorithms, really...
+	return compression::GZIP;
 }
 
 bool startup_effect()

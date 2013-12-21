@@ -182,10 +182,11 @@ public:
 		log_scope("write_save_index()");
 		try {
 			scoped_ostream stream = ostream_file(get_save_index_file());
-			if (preferences::compress_saves()) {
-			  write_gz(*stream, data());
+			if (preferences::save_compression_format() != compression::NONE) {
+				// TODO: maybe allow writing this using bz2 too?
+				write_gz(*stream, data());
 			} else {
-			  write(*stream, data());
+				write(*stream, data());
 			}
 		} catch(io_exception& e) {
 			ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
@@ -398,14 +399,12 @@ void read_save_file(const std::string& name, config& cfg, std::string* error_log
 	}
 }
 
-bool save_game_exists(const std::string& name, bool compress_saves)
+bool save_game_exists(const std::string& name, compression::format compressed)
 {
 	std::string fname = name;
 	replace_space2underbar(fname);
 
-	if(compress_saves) {
-		fname += preferences::bzip2_savegame_compression() ? ".bz2" : ".gz";
-	}
+	fname += compression::format_extension(compressed);
 
 	return file_exists(get_saves_dir() + "/" + fname);
 }
@@ -762,7 +761,7 @@ void loadgame::copy_era(config &cfg)
 	snapshot.add_child("era", era);
 }
 
-savegame::savegame(game_state& gamestate, const bool compress_saves, const std::string& title)
+savegame::savegame(game_state& gamestate, const compression::format compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
 	, filename_()
@@ -945,14 +944,11 @@ void savegame::write_game_to_disk(const std::string& filename)
 	LOG_SAVE << "savegame::save_game";
 
 	filename_ = filename;
-
-	if (compress_saves_) {
-		filename_ += preferences::bzip2_savegame_compression() ? ".bz2" : ".gz";
-	}
+	filename_ += compression::format_extension(compress_saves_);
 
 	std::stringstream ss;
 	{
-		config_writer out(ss, compress_saves_ ? preferences::bzip2_savegame_compression() ? config_writer::BZIP2 : config_writer::GZIP : config_writer::NONE);
+		config_writer out(ss, compress_saves_);
 		write_game(out);
 		finish_save_game(out);
 	}
@@ -1002,7 +998,7 @@ scoped_ostream savegame::open_save_game(const std::string &label)
 	}
 }
 
-scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const bool compress_saves)
+scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves)
 {
 	set_filename(gamestate.classification().label);
@@ -1014,7 +1010,7 @@ void scenariostart_savegame::write_game(config_writer &out){
 	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
 }
 
-replay_savegame::replay_savegame(game_state &gamestate, const bool compress_saves)
+replay_savegame::replay_savegame(game_state &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Replay"))
 {}
 
@@ -1039,7 +1035,7 @@ void replay_savegame::write_game(config_writer &out) {
 }
 
 autosave_savegame::autosave_savegame(game_state &gamestate,
-					game_display& gui, const config& snapshot_cfg, const bool compress_saves)
+					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
 	: ingame_savegame(gamestate, gui, snapshot_cfg, compress_saves)
 {
 	set_error_message(_("Could not auto save the game. Please save the game manually."));
@@ -1067,7 +1063,7 @@ void autosave_savegame::create_filename()
 }
 
 oos_savegame::oos_savegame(const config& snapshot_cfg)
-	: ingame_savegame(*resources::state_of_game, *resources::screen, snapshot_cfg, preferences::compress_saves())
+	: ingame_savegame(*resources::state_of_game, *resources::screen, snapshot_cfg, preferences::save_compression_format())
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
@@ -1090,7 +1086,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 }
 
 ingame_savegame::ingame_savegame(game_state &gamestate,
-					game_display& gui, const config& snapshot_cfg, const bool compress_saves)
+					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	gui_(gui)
 {

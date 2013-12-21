@@ -2825,7 +2825,7 @@ void console_handler::do_benchmark() {
 void console_handler::do_save() {
 	savegame::ingame_savegame save(menu_handler_.gamestate_, *menu_handler_.gui_,
 	                               resources::controller->to_config(),
-	                               preferences::compress_saves());
+	                               preferences::save_compression_format());
 	save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
 }
 void console_handler::do_save_quit() {

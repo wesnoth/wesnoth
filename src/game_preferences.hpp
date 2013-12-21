@@ -21,6 +21,8 @@ class unit_map;
 
 #include "preferences.hpp"
 
+#include "serialization/compression.hpp"
+
 #include <set>
 #include <vector>
 
@@ -230,7 +232,7 @@ class acquaintance;
 	bool show_all_units_in_help();
 	void set_show_all_units_in_help(bool value);
 
-	bool compress_saves();
+	compression::format save_compression_format();
 
 	bool startup_effect();
 
