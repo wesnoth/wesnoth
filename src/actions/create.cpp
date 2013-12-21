@@ -940,7 +940,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 
 	// Place the recruit.
-	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
+	/*bool mutated = */place_recruit(new_unit, loc, from, u_type.cost(), false, show);
 	statistics::recruit_unit(new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
