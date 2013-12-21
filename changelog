@@ -45,6 +45,8 @@ Version 1.11.7+dev:
    * Added flag, flag_icon, and village_support fields to wesnoth.sides table
      elements.
    * Made wesnoth.sides[n].hidden a read-write field.
+   * New lua proxy table "wesnoth.game_config.mp_settings" for access to
+     MP specific settings, such as era, scenario name, and timer
  * Multiplayer:
    * Unit names and genders are synced in MP games.
  * Replays:
