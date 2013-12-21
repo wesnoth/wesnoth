@@ -197,7 +197,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		}
 		// Don't scroll map and map zoom slider at same time
 		gui::slider* s = gui().find_slider("map-zoom-slider");
-		if (point_in_rect(event.x, event.y, s->location())) {
+		if (s && point_in_rect(event.x, event.y, s->location())) {
 			scrollx = 0; scrolly = 0;
 		}
 	}
