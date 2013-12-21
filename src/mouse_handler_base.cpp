@@ -181,12 +181,21 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	} else if (allow_mouse_wheel_scroll(event.x, event.y)) {
 		if (event.button == SDL_BUTTON_WHEELUP) {
 			scrolly = - preferences::scroll_speed();
+			mouse_wheel_up(event.x, event.y, browse);
 		} else if (event.button == SDL_BUTTON_WHEELDOWN) {
 			scrolly = preferences::scroll_speed();
+			mouse_wheel_down(event.x, event.y, browse);
 		} else if (event.button == SDL_BUTTON_WHEELLEFT) {
 			scrollx = - preferences::scroll_speed();
+			mouse_wheel_left(event.x, event.y, browse);
 		} else if (event.button == SDL_BUTTON_WHEELRIGHT) {
 			scrollx = preferences::scroll_speed();
+			mouse_wheel_right(event.x, event.y, browse);
+		}
+		// Don't scroll map and map zoom slider at same time
+		gui::slider* s = gui().find_slider("map-zoom-slider");
+		if (point_in_rect(event.x, event.y, s->location())) {
+			scrollx = 0; scrolly = 0;
 		}
 	}
 
@@ -257,6 +266,22 @@ void mouse_handler_base::left_drag_end(int x, int y, const bool browse)
 }
 
 void mouse_handler_base::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+}
+
+void mouse_handler_base::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+}
+
+void mouse_handler_base::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+}
+
+void mouse_handler_base::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+}
+
+void mouse_handler_base::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 }
 

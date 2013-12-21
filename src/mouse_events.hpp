@@ -78,6 +78,10 @@ public:
 	void select_or_action();
 
 	void left_mouse_up(int x, int y, const bool /*browse*/);
+	void mouse_wheel_up(int x, int y, const bool /*browse*/);
+	void mouse_wheel_down(int x, int y, const bool /*browse*/);
+	void mouse_wheel_left(int x, int y, const bool /*browse*/);
+	void mouse_wheel_right(int x, int y, const bool /*browse*/);
 
 protected:
 	/**

@@ -459,6 +459,38 @@ void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 			resources::controller->set_button_state(*gui_);
 }
 
+void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
 void mouse_handler::select_or_action()
 {
 	if (!resources::game_map->on_board(last_hex_))

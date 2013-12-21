@@ -209,14 +209,39 @@ void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 
 void slider::mouse_down(const SDL_MouseButtonEvent& event)
 {
-	if (event.button != SDL_BUTTON_LEFT || !point_in_rect(event.x, event.y, location()))
+	bool prev_change = value_change_;
+
+	if (!point_in_rect(event.x, event.y, location()))
+		return;
+
+	if (event.button == SDL_BUTTON_WHEELUP || event.button == SDL_BUTTON_WHEELRIGHT) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ + increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+	if (event.button == SDL_BUTTON_WHEELDOWN || event.button == SDL_BUTTON_WHEELLEFT) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ - increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+
+	if (event.button != SDL_BUTTON_LEFT)
 		return;
 
 	state_ = CLICKED;
 	if (point_in_rect(event.x, event.y, slider_area())) {
 		sound::play_UI_sound(game_config::sounds::button_press);
 	} else {
-		bool prev_change = value_change_;
 		value_change_ = false;
 		set_focus(true);
 		set_slider_position(event.x);

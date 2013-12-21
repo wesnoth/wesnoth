@@ -135,6 +135,26 @@ public:
 	virtual void right_mouse_up(int x, int y, const bool browse);
 
 	/**
+	 * Called when the mouse wheel is scrolled up
+	 */
+	virtual void mouse_wheel_up(int x, int y, const bool browse);
+
+	/**
+	 * Called when the mouse wheel is scrolled down
+	 */
+	virtual void mouse_wheel_down(int x, int y, const bool browse);
+
+	/**
+	 * Called when the mouse wheel is scrolled left
+	 */
+	virtual void mouse_wheel_left(int x, int y, const bool browse);
+
+	/**
+	 * Called when the mouse wheel is scrolled right
+	 */
+	virtual void mouse_wheel_right(int x, int y, const bool browse);
+
+	/**
 	 * Called when the middle click scrolling
 	 */
 	void set_scroll_start (int x, int y) { scroll_start_x_ = x; scroll_start_y_ = y; }
