@@ -1513,6 +1513,12 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
+
+	const game_state & game_state_ = *resources::state_of_game; 
+	return_string_attrib("campaign_type", game_state_.classification().campaign_type);
+	if(game_state_.classification().campaign_type=="multiplayer") {
+		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
+	}
 	return 0;
 }
 
