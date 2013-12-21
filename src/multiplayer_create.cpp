@@ -376,6 +376,19 @@ void create::process_event()
 		generator_settings_.enable(engine_.generator_assigned());
 		regenerate_map_.enable(engine_.generator_assigned());
 	}
+
+	if (filter_num_players_slider_.value() != engine_.player_num_filter()) {
+		const int val = filter_num_players_slider_.value();
+		engine_.apply_level_filter(val);
+		std::stringstream ss;
+		if (val == 0) {
+			ss << _("Number of players: any");
+		} else {
+			ss << _("Number of players: ") << val;
+		}
+		filter_num_players_label_.set_text(ss.str());
+		init_level_type_changed(0);
+	}
 }
 
 void create::init_level_type_changed(size_t index)

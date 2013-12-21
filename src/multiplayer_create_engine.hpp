@@ -181,9 +181,11 @@ public:
 	void prepare_for_saved_game();
 
 	void apply_level_filter(const std::string& name);
+	void apply_level_filter(int players);
 	void reset_level_filters();
 
 	const std::string& level_name_filter() const;
+	int player_num_filter() const;
 
 	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
@@ -223,6 +225,7 @@ private:
 
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
+	void apply_level_filters();
 
 	const std::vector<extras_metadata_ptr>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;
@@ -238,6 +241,7 @@ private:
 	size_t current_mod_index_;
 
 	std::string level_name_filter_;
+	int player_count_filter_;
 
 	std::vector<scenario_ptr> scenarios_;
 	std::vector<user_map_ptr> user_maps_;

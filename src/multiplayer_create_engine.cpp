@@ -326,6 +326,7 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	current_era_index_(0),
 	current_mod_index_(0),
 	level_name_filter_(),
+	player_count_filter_(0),
 	scenarios_(),
 	user_maps_(),
 	user_scenarios_(),
@@ -447,49 +448,14 @@ void create_engine::prepare_for_saved_game()
 
 void create_engine::apply_level_filter(const std::string &name)
 {
-	scenarios_filtered_.clear();
-	for (size_t i = 0; i<scenarios_.size(); i++) {
-		if (contains_ignore_case(scenarios_[i]->name(), name)) {
-			scenarios_filtered_.push_back(i);
-		}
-	}
-
-	user_scenarios_filtered_.clear();
-	for (size_t i = 0; i<user_scenarios_.size(); i++) {
-		if (contains_ignore_case(user_scenarios_[i]->name(), name)) {
-			user_scenarios_filtered_.push_back(i);
-		}
-	}
-
-	user_maps_filtered_.clear();
-	for (size_t i = 0; i<user_maps_.size(); i++) {
-		if (contains_ignore_case(user_maps_[i]->name(), name)) {
-			user_maps_filtered_.push_back(i);
-		}
-	}
-
-	campaigns_filtered_.clear();
-	for (size_t i = 0; i<campaigns_.size(); i++) {
-		if (contains_ignore_case(campaigns_[i]->name(), name)) {
-			campaigns_filtered_.push_back(i);
-		}
-	}
-
-	sp_campaigns_filtered_.clear();
-	for (size_t i = 0; i<sp_campaigns_.size(); i++) {
-		if (contains_ignore_case(sp_campaigns_[i]->name(), name)) {
-			sp_campaigns_filtered_.push_back(i);
-		}
-	}
-
-	random_maps_filtered_.clear();
-	for (size_t i = 0; i<random_maps_.size(); i++) {
-		if (contains_ignore_case(random_maps_[i]->name(), name)) {
-			random_maps_filtered_.push_back(i);
-		}
-	}
-
 	level_name_filter_ = name;
+	apply_level_filters();
+}
+
+void create_engine::apply_level_filter(int players)
+{
+	player_count_filter_ = players;
+	apply_level_filters();
 }
 
 void create_engine::reset_level_filters()
@@ -530,6 +496,11 @@ void create_engine::reset_level_filters()
 const std::string &create_engine::level_name_filter() const
 {
 	return level_name_filter_;
+}
+
+int create_engine::player_num_filter() const
+{
+	return player_count_filter_;
 }
 
 std::vector<std::string> create_engine::levels_menu_item_names() const
@@ -883,6 +854,66 @@ void create_engine::init_extras(const MP_EXTRA extra_type)
 
 		extras.push_back(new_extras_metadata);
 	}
+}
+
+void create_engine::apply_level_filters()
+{
+	scenarios_filtered_.clear();
+	for (size_t i = 0; i<scenarios_.size(); i++) {
+		if (contains_ignore_case(scenarios_[i]->name(), level_name_filter_) &&
+			(player_count_filter_ == 0 ||
+			 scenarios_[i]->num_players() == player_count_filter_)) {
+			scenarios_filtered_.push_back(i);
+		}
+	}
+
+	user_scenarios_filtered_.clear();
+	for (size_t i = 0; i<user_scenarios_.size(); i++) {
+		if (contains_ignore_case(user_scenarios_[i]->name(), level_name_filter_) &&
+			(player_count_filter_ == 0 ||
+			 user_scenarios_[i]->num_players() == player_count_filter_)) {
+			user_scenarios_filtered_.push_back(i);
+		}
+	}
+
+	user_maps_filtered_.clear();
+	for (size_t i = 0; i<user_maps_.size(); i++) {
+		if (contains_ignore_case(user_maps_[i]->name(), level_name_filter_) &&
+			(player_count_filter_ == 0 ||
+			 user_maps_[i]->num_players() == player_count_filter_)) {
+			user_maps_filtered_.push_back(i);
+		}
+	}
+
+	campaigns_filtered_.clear();
+	for (size_t i = 0; i<campaigns_.size(); i++) {
+		if (contains_ignore_case(campaigns_[i]->name(), level_name_filter_) &&
+			(player_count_filter_ == 0 ||
+			(campaigns_[i]->min_players() <= player_count_filter_ &&
+			 campaigns_[i]->max_players() >= player_count_filter_))) {
+			campaigns_filtered_.push_back(i);
+		}
+	}
+
+	sp_campaigns_filtered_.clear();
+	for (size_t i = 0; i<sp_campaigns_.size(); i++) {
+		if (contains_ignore_case(sp_campaigns_[i]->name(), level_name_filter_) &&
+			(player_count_filter_ == 0 ||
+			(sp_campaigns_[i]->min_players() <= player_count_filter_ &&
+			 sp_campaigns_[i]->max_players() >= player_count_filter_))) {
+			sp_campaigns_filtered_.push_back(i);
+		}
+	}
+
+	random_maps_filtered_.clear();
+	for (size_t i = 0; i<random_maps_.size(); i++) {
+		if (contains_ignore_case(random_maps_[i]->name(), level_name_filter_) &&
+			(player_count_filter_ == 0 ||
+			 random_maps_[i]->num_players() == player_count_filter_)) {
+			random_maps_filtered_.push_back(i);
+		}
+	}
+
 }
 
 std::vector<create_engine::level_ptr>
