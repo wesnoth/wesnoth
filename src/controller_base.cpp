@@ -179,9 +179,13 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 		if (point_in_rect(mousex, mousey,rect)) {
 			// Scroll speed is proportional from the distance from the first
 			// middle click and scrolling speed preference.
-			double speed = 0.02 * scroll_speed;
-			dx += speed * (mousex - original_loc.x);
-			dy += speed * (mousey - original_loc.y);
+			double speed = 0.04 * sqrt(scroll_speed);
+			double snap_dist = 16; // Snap to horizontal/vertical scrolling
+			double x_diff = (mousex - original_loc.x);
+			double y_diff = (mousey - original_loc.y);
+			
+			if (fabs(x_diff) > snap_dist || fabs(y_diff) <= snap_dist) dx += speed * x_diff;
+			if (fabs(y_diff) > snap_dist || fabs(x_diff) <= snap_dist) dy += speed * y_diff;
 		}
 	}
 
