@@ -62,6 +62,11 @@ Version 1.11.7+dev:
      to cause severe lags that render the cursor unusable.
    * Unit overlays are now displayed in the Recall dialog, both on the list
      and the description panel.
+   * Made filtering controls on the MP create screen functional.
+   * Removed the MP custom options dialog; all options are now shown directly
+     on the configuration screen.
+   * Removed the MP modifications dialog; modifications are now displayed
+     directly on the creation screen.
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario
@@ -81,6 +86,7 @@ Version 1.11.7+dev:
      being displayed instead in e.g. [message] (bug #20996).
    * Added wmllint code for recognizing unit id fields in macros.
    * Refactored code in wmltools to create a macro-parsing function.
+   * Added era descriptions.
 
 Version 1.11.7:
  * Add-ons client:
