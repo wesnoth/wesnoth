@@ -176,7 +176,8 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 		map_location original_loc = resources::controller->get_mouse_handler_base().get_scroll_start();
 		
 		const SDL_Rect& rect = get_display().map_outside_area();
-		if (point_in_rect(mousex, mousey,rect)) {
+		if (point_in_rect(mousex, mousey,rect) && 
+			resources::controller->get_mouse_handler_base().scroll_started()) {
 			// Scroll speed is proportional from the distance from the first
 			// middle click and scrolling speed preference.
 			double speed = 0.04 * sqrt(scroll_speed);

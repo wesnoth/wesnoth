@@ -159,6 +159,7 @@ public:
 	 */
 	void set_scroll_start (int x, int y) { scroll_start_x_ = x; scroll_start_y_ = y; }
 	const map_location get_scroll_start () { return map_location(scroll_start_x_, scroll_start_y_); }
+	bool scroll_started() { return scroll_started_; }
 
 protected:
 	void cancel_dragging();
@@ -191,6 +192,7 @@ protected:
 	/** Relative to middle click scrolling */
 	int scroll_start_x_;
 	int scroll_start_y_;
+	bool scroll_started_;
 };
 
 } // end namespace events

@@ -57,7 +57,8 @@ mouse_handler_base::mouse_handler_base() :
 	drag_from_y_(0),
 	drag_from_hex_(),
 	last_hex_(),
-	show_menu_(false)
+	show_menu_(false),
+	scroll_started_(false)
 {
 }
 
@@ -158,6 +159,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	} else if (is_middle_click(event)) {
 		if (event.state == SDL_PRESSED) {
 			set_scroll_start(event.x, event.y);
+			scroll_started_ = true;
 			
 			map_location loc = gui().minimap_location_on(event.x,event.y);
 			minimap_scrolling_ = false;
@@ -177,6 +179,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		} else if (event.state == SDL_RELEASED) {
 			minimap_scrolling_ = false;
 			simple_warp_ = false;
+			scroll_started_ = false;
 		}
 	} else if (allow_mouse_wheel_scroll(event.x, event.y)) {
 		if (event.button == SDL_BUTTON_WHEELUP) {
