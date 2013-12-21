@@ -1,4 +1,7 @@
 Version 1.11.7+dev:
+ * Add-ons client:
+   * Introduced new add-on type "SP/MP Campaign" for campaigns with
+     "type=hybrid."
  * AI:
    * RCA AI: fix bug #21334: surrounded units don't attack
    * Simple Attack Micro AI: new optional parameter weapon=
@@ -49,6 +52,8 @@ Version 1.11.7+dev:
      MP specific settings, such as era, scenario name, and timer
  * Multiplayer:
    * Unit names and genders are synced in MP games.
+   * Added new CampaignWML attribute "require_campaign". If set to "yes",
+     players not having campaign installed won't be able to join the game.
  * Replays:
    * Replays include the prestart and start events again.
    * Unit names and genders are synced between games and replays.
@@ -74,6 +79,9 @@ Version 1.11.7+dev:
      "Compressed saved games", that lets the user pick between gzip (default),
      bzip2, and no compression. Users who previously enabled bzip2 compression
      will need to do so again.
+   * Hide eras menu in MP Create for campaigns which have
+     "allow_era_choice=no".
+   * Introduced side's name in MP Connect.
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario

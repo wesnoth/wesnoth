@@ -3,6 +3,8 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
 
 Version 1.11.7+dev:
+ * Add-ons client:
+   * Introduced new add-on type "SP/MP Campaign".
  * Campaigns:
    * Dead Water:
      * New world map.
@@ -51,6 +53,8 @@ Version 1.11.7+dev:
      "Compressed saved games", that lets the user pick between gzip (default),
      bzip2, and no compression. Users who previously enabled bzip2 compression
      will need to do so again.
+   * Added possibility to hide eras menu for campaigns in MP Create.
+   * Introduced side's name in MP Connect.
 
 
 Version 1.11.7:
