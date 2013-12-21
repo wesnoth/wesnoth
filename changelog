@@ -105,6 +105,9 @@ Version 1.11.7+dev:
    * Added wmllint code for recognizing unit id fields in macros.
    * Refactored code in wmltools to create a macro-parsing function.
    * Added era descriptions.
+   * Fixed file chooser dialog (used in the map editor and for locating the
+     wesnothd executable) interpreting special markup at the beginning of file
+     names such as "#foo.map".
 
 Version 1.11.7:
  * Add-ons client:

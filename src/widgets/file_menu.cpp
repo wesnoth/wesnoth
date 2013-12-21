@@ -61,11 +61,11 @@ void file_menu::display_current_files() {
 	for (it = dirs_in_current_dir_.begin(); it != dirs_in_current_dir_.end(); ++it) {
 		// Add an image to show that these are directories.
 		std::stringstream ss;
-		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << *it;
+		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << font::NULL_MARKUP << *it;
 		to_show.push_back(ss.str());
 	}
 	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); ++it) {
-		const std::string display_string = COLUMN_SEPARATOR + *it;
+		const std::string display_string = COLUMN_SEPARATOR + std::string(1, font::NULL_MARKUP) + *it;
 		to_show.push_back(display_string);
 	}
 	const int menu_font_size = font::SIZE_NORMAL; // Known from menu.cpp.
