@@ -659,7 +659,7 @@ void configure::layout_children(const SDL_Rect& rect)
 	options_pane_right_.add_widget(&village_gold_slider_, xpos_right, ypos_right);
 	ypos_right += village_gold_slider_.height() + 3 * border_size;
 
-	options_manager_.layout_widgets(xpos, ypos);
+	options_manager_.layout_widgets(xpos_right, ypos_right);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;
