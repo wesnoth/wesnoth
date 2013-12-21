@@ -949,8 +949,18 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( use_undo ) {
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
-		if ( mutated  ||  u_type.genders().size() > 1  ||
-		     new_unit.type().has_random_traits() ) {
+		
+		// undoing unit recruits currently ends in oos in most cases
+		// because the random generator is called during unit creation for names.
+		// This is not impossible to fix, ofc we could just enable it for nameless units 
+		// but i'm not 100% sure wether units with no names call the random generator for random names or not.
+		// also names normaly don't have any influence on the game (same for genders maybe?)
+		// so there is no reason not to be able to undo it from a players point of view.
+		// we also cannot store the random state in undo_stack->add_recruit, because the unit creation happens before that.
+		
+		//if ( mutated  ||  u_type.genders().size() > 1  ||
+		//     new_unit.type().has_random_traits() ) {
+		if ( true ) {
 			resources::undo_stack->clear();
 		}
 	}
