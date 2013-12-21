@@ -51,6 +51,7 @@ public:
 	virtual void set_value(const config::attribute_value& val) = 0;
 	virtual config::attribute_value get_value() const = 0;
 	virtual void process_event() {}
+	virtual void hide_children(bool hide) = 0;
 };
 
 class entry_display : public option_display
@@ -62,6 +63,7 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
+	virtual void hide_children(bool hide);
 
 private:
 	gui::textbox* entry_;
@@ -78,6 +80,7 @@ public:
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
 	void process_event();
+	virtual void hide_children(bool hide);
 
 private:
 	void update_label();
@@ -97,6 +100,7 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &val);
 	config::attribute_value get_value() const;
+	virtual void hide_children(bool hide);
 private:
 	gui::button* checkbox_;
 };
@@ -110,6 +114,7 @@ public:
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
 	void set_value(const config::attribute_value &/*val*/) {}
 	config::attribute_value get_value() const { return config::attribute_value(); }
+	virtual void hide_children(bool hide);
 
 private:
 	gui::label* title_;
@@ -204,6 +209,7 @@ public:
 
 	void layout_widgets(int startx, int starty);
 	void process_event();
+	void hide_children(bool hide=true);
 
 	/**
 	 * Returns the the values for each option.

@@ -513,6 +513,8 @@ void configure::hide_children(bool hide)
 
 	options_pane_left_.hide(hide);
 	options_pane_right_.hide(hide);
+
+	options_manager_.hide_children(hide);
 }
 
 void configure::layout_children(const SDL_Rect& rect)

@@ -213,6 +213,16 @@ void manager::process_event()
 	}
 }
 
+void manager::hide_children(bool hide)
+{
+	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
+		 i != widgets_.end(); i++)
+	{
+		i->second->hide_children(hide);
+	}
+}
+
+
 const config &manager::get_values()
 {
 	update_values();
@@ -407,6 +417,12 @@ config::attribute_value entry_display::get_value() const
 	return res;
 }
 
+void entry_display::hide_children(bool hide)
+{
+	label_->hide(hide);
+	entry_->hide(hide);
+}
+
 slider_display::slider_display(CVideo &video, const std::string &label, int value, int min, int max, int step) :
 	slider_(new gui::slider(video)),
 	label_(new gui::label(video, label, font::SIZE_SMALL)),
@@ -456,6 +472,12 @@ void slider_display::process_event()
 	}
 }
 
+void slider_display::hide_children(bool hide)
+{
+	label_->hide(hide);
+	slider_->hide(hide);
+}
+
 void slider_display::update_label()
 {
 	std::stringstream ss;
@@ -492,6 +514,11 @@ config::attribute_value checkbox_display::get_value() const
 	return res;
 }
 
+void checkbox_display::hide_children(bool hide)
+{
+	checkbox_->hide(hide);
+}
+
 title_display::title_display(CVideo &video, const std::string &label) :
 	title_(new gui::label(video, "`~" + label, font::SIZE_PLUS, font::LOBBY_COLOR))
 {}
@@ -506,6 +533,11 @@ void title_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpan
 	ypos += 4*border_size;
 	pane->add_widget(title_, xpos, ypos);
 	ypos += title_->height() + 2*border_size;
+}
+
+void title_display::hide_children(bool hide)
+{
+	title_->hide(hide);
 }
 
 }	// namespace options
