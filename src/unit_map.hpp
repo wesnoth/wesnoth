@@ -204,7 +204,7 @@ public:
 			iterator_type new_i(i_);
 			do{
 				++new_i;
-			}while ((new_i->unit == NULL) && (new_i != the_end() )) ;
+			}while ((new_i != the_end()) && (new_i->unit == NULL)) ;
 			dec();
 			i_ = new_i;
 			inc();
