@@ -20,6 +20,8 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
+#include "resources.hpp"
+#include "play_controller.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -171,18 +173,15 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 		dx += scroll_speed;
 	}
 	if ((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
+		map_location original_loc = resources::controller->get_mouse_handler_base().get_scroll_start();
+		
 		const SDL_Rect& rect = get_display().map_outside_area();
 		if (point_in_rect(mousex, mousey,rect)) {
-			// relative distance from the center to the border
-			// NOTE: the view is a rectangle, so can be more sensible in one direction
-			// but seems intuitive to use and it's useful since you must
-			// more often scroll in the direction where the view is shorter
-			const double xdisp = ((1.0*mousex / rect.w) - 0.5);
-			const double ydisp = ((1.0*mousey / rect.h) - 0.5);
-			// 4.0 give twice the normal speed when mouse is at border (xdisp=0.5)
-			int speed = 4 * scroll_speed;
-			dx += round_double(xdisp * speed);
-			dy += round_double(ydisp * speed);
+			// Scroll speed is proportional from the distance from the first
+			// middle click and scrolling speed preference.
+			double speed = 0.02 * scroll_speed;
+			dx += speed * (mousex - original_loc.x);
+			dy += speed * (mousey - original_loc.y);
 		}
 	}
 

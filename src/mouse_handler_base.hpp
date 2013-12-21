@@ -134,6 +134,12 @@ public:
 	 */
 	virtual void right_mouse_up(int x, int y, const bool browse);
 
+	/**
+	 * Called when the middle click scrolling
+	 */
+	void set_scroll_start (int x, int y) { scroll_start_x_ = x; scroll_start_y_ = y; }
+	const map_location get_scroll_start () { return map_location(scroll_start_x_, scroll_start_y_); }
+
 protected:
 	void cancel_dragging();
 	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
@@ -161,6 +167,10 @@ protected:
 
 	/** Show context menu flag */
 	bool show_menu_;
+	
+	/** Relative to middle click scrolling */
+	int scroll_start_x_;
+	int scroll_start_y_;
 };
 
 } // end namespace events

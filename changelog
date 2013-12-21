@@ -82,6 +82,8 @@ Version 1.11.7+dev:
    * Hide eras menu in MP Create for campaigns which have
      "allow_era_choice=no".
    * Introduced side's name in MP Connect.
+   * Middle click scrolling is now based on distance from initial click instead
+     of the centre of the screen.
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario

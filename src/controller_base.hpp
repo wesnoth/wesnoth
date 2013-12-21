@@ -115,7 +115,6 @@ protected:
 	bool browse_;
 	bool scrolling_;
 	joystick_manager joystick_manager_;
-
 };
 
 

@@ -157,6 +157,8 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		}
 	} else if (is_middle_click(event)) {
 		if (event.state == SDL_PRESSED) {
+			set_scroll_start(event.x, event.y);
+			
 			map_location loc = gui().minimap_location_on(event.x,event.y);
 			minimap_scrolling_ = false;
 			if(loc.valid()) {
