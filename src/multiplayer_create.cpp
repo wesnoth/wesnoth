@@ -76,7 +76,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	level_type_label_(disp.video(), "Game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
-	launch_game_(disp.video(), _("OK")),
+	launch_game_(disp.video(), _("Next")),
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
@@ -375,6 +375,19 @@ void create::process_event()
 		launch_game_.enable(engine_.current_level().can_launch_game());
 		generator_settings_.enable(engine_.generator_assigned());
 		regenerate_map_.enable(engine_.generator_assigned());
+	}
+
+	if (filter_num_players_slider_.value() != engine_.player_num_filter()) {
+		const int val = filter_num_players_slider_.value();
+		engine_.apply_level_filter(val);
+		std::stringstream ss;
+		if (val == 0) {
+			ss << _("Number of players: any");
+		} else {
+			ss << _("Number of players: ") << val;
+		}
+		filter_num_players_label_.set_text(ss.str());
+		init_level_type_changed(0);
 	}
 }
 

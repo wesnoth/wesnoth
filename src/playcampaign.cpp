@@ -495,7 +495,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				savegame::clean_saves(gamestate.classification().label);
 
 			if (preferences::save_replays() && end_level.replay_save) {
-				savegame::replay_savegame save(gamestate, preferences::compress_saves());
+				savegame::replay_savegame save(gamestate, preferences::save_compression_format());
 				save.save_game_automatic(disp.video(), true);
 			}
 		}
@@ -642,7 +642,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// starting position needs to be empty,
 				// to force a reload of the scenario config.
 
-				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
+				savegame::scenariostart_savegame save(gamestate, preferences::save_compression_format());
 
 				save.save_game_automatic(disp.video());
 			}

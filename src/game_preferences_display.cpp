@@ -1052,7 +1052,18 @@ void preferences_dialog::process_event()
 					int adv_combo_choice = 0;
 					BOOST_FOREACH(const config& adv_combo_option, pref.child_range("option"))
 					{
-						adv_combo_items.push_back(adv_combo_option["name"]);
+						if(adv_combo_option.has_attribute("description")) {
+							// The longer description is supposed to be used in the combo
+							// box only as a workaround for the main listbox's layout
+							// limitations.
+							std::ostringstream ss;
+							ss << adv_combo_option["name"] << '='
+							   << adv_combo_option["description"];
+							adv_combo_items.push_back(ss.str());
+						} else {
+							adv_combo_items.push_back(adv_combo_option["name"]);
+						}
+
 						if(value == adv_combo_option["id"]) {
 							adv_combo_choice = adv_combo_items.size() - 1;
 						}
@@ -1147,7 +1158,11 @@ void preferences_dialog::set_advanced_menu()
 			BOOST_FOREACH(const config& optdef, adv.child_range("option"))
 			{
 				if(field == optdef["id"]) {
-					field = optdef["name"].str();
+					if(optdef.has_attribute("name_short")) {
+						field = optdef["name_short"].str();
+					} else {
+						field = optdef["name"].str();
+					}
 					break;
 				}
 			}

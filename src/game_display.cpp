@@ -64,6 +64,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const tod_manager& tod, const std::vector<team>& t,
 		const config& theme_cfg, const config& level) :
 		display(&units, video, &map, &t, theme_cfg, level),
+		overlay_map_(),
 		fake_units_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -71,7 +72,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		tod_manager_(tod),
 		level_(level),
 		displayedUnitHex_(),
-//		overlays_(),
 		sidebarScaling_(1.0),
 		first_turn_(true),
 		in_game_(false),
@@ -79,7 +79,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		chat_messages_(),
 		game_mode_(RUNNING)
 {
-
+	replace_overlay_map(&overlay_map_);
 	clear_screen();
 }
 

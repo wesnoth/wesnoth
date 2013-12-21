@@ -82,6 +82,8 @@ public:
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
 		context_manager_.gui().change_teams(&context_manager_.get_map_context().get_teams());
 
+		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
+
 		resources::teams = &context_manager_.get_map_context().get_teams();
 
 		resources::state_of_game = &context_manager_.get_map_context().get_game_state();

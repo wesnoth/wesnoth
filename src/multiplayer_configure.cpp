@@ -79,7 +79,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
-	cancel_game_(disp.video(), _("Cancel")),
+	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
 	password_button_(disp.video(), _("Set Password...")),
 	vision_combo_(disp, std::vector<std::string>()),

@@ -79,7 +79,7 @@ void display::parse_team_overlays()
 {
 	const team& curr_team = (*teams_)[playing_team()];
 	const team& prev_team = (*teams_)[playing_team()-1 < teams_->size() ? playing_team()-1 : teams_->size()-1];
-	BOOST_FOREACH(const game_display::overlay_map::value_type i, overlays_) {
+	BOOST_FOREACH(const game_display::overlay_map::value_type i, *overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
@@ -97,19 +97,19 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
 	const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
-	overlays_.insert(overlay_map::value_type(loc,item));
+	overlays_->insert(overlay_map::value_type(loc,item));
 }
 
 void display::remove_overlay(const map_location& loc)
 {
 	typedef overlay_map::const_iterator Itor;
-	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
+	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
 	while(itors.first != itors.second) {
 		halo::remove(itors.first->second.halo_handle);
 		++itors.first;
 	}
 
-	overlays_.erase(loc);
+	overlays_->erase(loc);
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
@@ -117,14 +117,14 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	//Iterate through the values with key of loc
 	typedef overlay_map::iterator Itor;
 	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
+	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
 	while(itors.first != itors.second) {
 		//If image or halo of overlay struct matches toDelete, remove the overlay
 		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
 			iteratorCopy = itors.first;
 			++itors.first;
 			halo::remove(iteratorCopy->second.halo_handle);
-			overlays_.erase(iteratorCopy);
+			overlays_->erase(iteratorCopy);
 		}
 		else {
 			++itors.first;
@@ -2561,7 +2561,7 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
+		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
 					overlays.first->second.team_name.find((*teams_)[playing_team()].team_name()) != std::string::npos)
