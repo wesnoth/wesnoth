@@ -778,6 +778,7 @@ void create_engine::init_all_levels()
 				user_map_ptr new_user_map(new user_map(user_map_data,
 					user_map_names_[i], map.get()));
 				user_maps_.push_back(new_user_map);
+				user_maps_.back()->set_metadata();
 
 				// Since user maps are treated as scenarios,
 				// some dependency info is required
@@ -799,6 +800,7 @@ void create_engine::init_all_levels()
 			scenario_ptr new_scenario(new scenario(data));
 			if (new_scenario->id().empty()) continue;
 			user_scenarios_.push_back(new_scenario);
+			user_scenarios_.back()->set_metadata();
 
 			// Since user scenarios are treated as scenarios,
 			// some dependency info is required
@@ -817,9 +819,11 @@ void create_engine::init_all_levels()
 		if (!data["map_generation"].empty()) {
 			random_map_ptr new_random_map(new random_map(data));
 			random_maps_.push_back(new_random_map);
+			random_maps_.back()->set_metadata();
 		} else if (data["allow_new_game"].to_bool(true)) {
 			scenario_ptr new_scenario(new scenario(data));
 			scenarios_.push_back(new_scenario);
+			scenarios_.back()->set_metadata();
 		}
 	}
 
@@ -832,9 +836,11 @@ void create_engine::init_all_levels()
 		if (type == "mp" || type == "hybrid") {
 			campaign_ptr new_campaign(new campaign(data));
 			campaigns_.push_back(new_campaign);
+			campaigns_.back()->set_metadata();
 		} else {
 			campaign_ptr new_sp_campaign(new campaign(data));
 			sp_campaigns_.push_back(new_sp_campaign);
+			sp_campaigns_.back()->set_metadata();
 		}
 	}
 }
