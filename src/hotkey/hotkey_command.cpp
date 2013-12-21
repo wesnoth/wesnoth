@@ -150,7 +150,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_TOOL_SOUNDSOURCE, "editor-tool-soundsource", N_("Soundsource Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets or drags a sound source, right clears. Not implemented yet.") },
 	{ hotkey::HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets the village ownership to the current side, right clears. Needs a defined side.") },
 
-	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Canrecruit"), false, hotkey::SCOPE_EDITOR, N_("Toggle the recruit attribute of a unit.") },
+	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Can Recruit"), false, hotkey::SCOPE_EDITOR, N_("Toggle the recruit attribute of a unit.") },
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE, "editor-toggle-renameable", N_("Can be Renamed"), false, hotkey::SCOPE_EDITOR, N_("Toggle the unit being renameable.") },
 
 	{ hotkey::HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, hotkey::SCOPE_EDITOR, "" },
