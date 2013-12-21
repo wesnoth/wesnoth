@@ -237,6 +237,11 @@ void map_context::load_scenario(const config& game_config)
 		tod_manager_->add_time_area(t);
 	}
 
+	BOOST_FOREACH(const config& item, scenario.child_range("item")) {
+		overlays_.insert(std::pair<map_location,
+				overlay>(map_location(item["x"], item["y"]), overlay(item) ));
+	}
+
 	BOOST_FOREACH(const config& music, scenario.child_range("music")) {
 		music_tracks_.insert(std::pair<std::string, sound::music_track>(music["name"], sound::music_track(music)));
 	}
@@ -384,6 +389,19 @@ config map_context::to_config()
 
 	labels_.write(scenario);
 
+	overlay_map::const_iterator it;
+	for (it = overlays_.begin(); it != overlays_.end(); it++) {
+
+			config& item = scenario.add_child("item");
+			it->first.write(item);
+			item["image"] = it->second.image;
+			item["id"] = it->second.id;
+			item["halo"] = it->second.halo;
+			item["visible_in_fog"] = it->second.visible_in_fog;
+			item["name"] = it->second.name;
+			item["team_name"] = it->second.team_name;
+	}
+
 	BOOST_FOREACH(const music_map::value_type& track, music_tracks_) {
 		track.second.write(scenario, true);
 	}
@@ -410,6 +428,10 @@ config map_context::to_config()
 		side["gold"] = t->gold();
 		side["income"] = t->base_income();
 
+		BOOST_FOREACH(const map_location& village, t->villages()) {
+			village.write(side.add_child("village"));
+		}
+
 		//current visible units
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 			if(i->side() == side_num) {
@@ -421,6 +443,9 @@ config map_context::to_config()
 			}
 		}
 	}
+
+
+
 	return scenario;
 }
 

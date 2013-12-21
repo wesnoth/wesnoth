@@ -1014,11 +1014,12 @@ protected:
 	bool reach_map_changed_;
 	void process_reachmap_changes();
 
-private:
-
 	typedef std::multimap<map_location, overlay> overlay_map;
 
-	overlay_map overlays_;
+private:
+
+
+	overlay_map* overlays_;
 
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
@@ -1049,6 +1050,9 @@ private:
 	/** Flag for bug #17573 - this is set in the constructor **/
 	bool do_reverse_memcpy_workaround_;
 #endif
+
+public:
+	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }
 
 protected:
 	static display * singleton_;

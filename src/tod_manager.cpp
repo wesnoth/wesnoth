@@ -378,6 +378,7 @@ int tod_manager::calculate_current_time(
 	const int current_time,
 	const bool only_to_allowed_range) const
 {
+	if (number_of_times == 0) return 0;
 	int new_current_time = 0;
 	if(only_to_allowed_range) new_current_time = current_time % number_of_times;
 	else new_current_time = (current_time + for_turn_number - turn_) % number_of_times;
