@@ -276,6 +276,7 @@ static config unit_traits(const unit* u)
 	config res;
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
+	const std::vector<std::string> &trait_ids = u->get_traits_list();
 	unsigned nb = traits.size();
 	for (unsigned i = 0; i < nb; ++i)
 	{
@@ -284,7 +285,7 @@ static config unit_traits(const unit* u)
 		if (i != nb - 1 ) str << ", ";
 		tooltip << _("Trait: ") << "<b>" << traits[i] << "</b>\n"
 			<< descriptions[i];
-		add_text(res, str.str(), tooltip.str(), "traits_" + traits[i].base_str());
+		add_text(res, str.str(), tooltip.str(), "traits_" + trait_ids[i]);
 	}
 	return res;
 }
