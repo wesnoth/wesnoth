@@ -747,7 +747,6 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_cmd_wrapper.cpp
 	gui/dialogs/mp_connect.cpp
 	gui/dialogs/mp_create_game.cpp
-	gui/dialogs/mp_create_game_choose_mods.cpp
 	gui/dialogs/mp_create_game_set_password.cpp
 	gui/dialogs/mp_depcheck_confirm_change.cpp
 	gui/dialogs/mp_depcheck_select_new.cpp

@@ -23,7 +23,6 @@
 #include "map_exception.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/mp_create_game_choose_mods.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
