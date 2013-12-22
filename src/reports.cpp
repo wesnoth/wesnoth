@@ -284,7 +284,7 @@ static config unit_traits(const unit* u)
 		if (i != nb - 1 ) str << ", ";
 		tooltip << _("Trait: ") << "<b>" << traits[i] << "</b>\n"
 			<< descriptions[i];
-		add_text(res, str.str(), tooltip.str());
+		add_text(res, str.str(), tooltip.str(), "traits_" + traits[i].base_str());
 	}
 	return res;
 }
