@@ -262,7 +262,7 @@ void create::process_event()
 	}
 
 	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();
-	if (select_mod_.pressed()) {
+	if (select_mod_.pressed() || mods_menu_.double_clicked()) {
 		int index = mods_menu_.selection();
 		engine_.set_current_mod_index(index);
 		engine_.toggle_current_mod();

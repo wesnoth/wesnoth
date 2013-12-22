@@ -1078,11 +1078,24 @@ void preferences_dialog::process_event()
 		}
 
 		const config* const adv = get_advanced_pref();
-		if(advanced_button_.pressed()) {
+		const config& pref = *adv;
+		const bool double_click_toggle_boolean = advanced_.double_clicked() &&
+			pref["type"] == "boolean";
+		
+		if(advanced_button_.pressed() || double_click_toggle_boolean) {
+			bool advanced_button_check = advanced_button_.checked();
+			if (double_click_toggle_boolean) {
+				if (advanced_button_.checked()) {
+					advanced_button_check = false;
+				}
+				else {
+					advanced_button_check = true;
+				}
+				advanced_button_.set_check(advanced_button_check);
+			}
 			if(adv != NULL) {
 				const config& pref = *adv;
-				preferences::set(pref["field"],
-						advanced_button_.checked());
+				preferences::set(pref["field"], advanced_button_check);
 				set_advanced_menu();
 
 				if(pref["field"] == "color_cursors") {
