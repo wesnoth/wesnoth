@@ -300,8 +300,8 @@ void create::process_event()
 	bool level_changed = level_selection_ != levels_menu_.selection();
 	level_selection_ = levels_menu_.selection();
 
-	if (level_changed) {
-		init_level_changed(levels_menu_.selection());
+	if (level_changed && level_selection_ >= 0) {
+		init_level_changed(level_selection_);
 
 		synchronize_selections();
 	}
