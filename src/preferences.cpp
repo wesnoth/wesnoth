@@ -227,6 +227,13 @@ std::pair<int,int> resolution()
 	}
 }
 
+void _set_resolution(const std::pair<int, int>& res)
+{
+	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
+	preferences::set('x' + postfix, lexical_cast<std::string>(res.first));
+	preferences::set('y' + postfix, lexical_cast<std::string>(res.second));
+}
+
 bool turbo()
 {
 	if(non_interactive()) {

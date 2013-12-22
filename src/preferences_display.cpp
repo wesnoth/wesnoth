@@ -150,12 +150,9 @@ void set_resolution(const std::pair<int,int>& resolution)
 	if(disp) {
 		set_resolution(disp->video(), resolution.first, resolution.second);
 	} else {
-		/* This part is needed when wesnoth is started with the -r parameter. */
-		const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-		preferences::set(
-				'x' + postfix, lexical_cast<std::string>(resolution.first));
-		preferences::set(
-				'y' + postfix, lexical_cast<std::string>(resolution.second));
+		// Only change the config value. This part is needed when wesnoth is
+		// started with the -r parameter.
+		_set_resolution(resolution);
 	}
 }
 
@@ -184,9 +181,7 @@ bool set_resolution(CVideo& video
 		return false;
 	}
 
-	const std::string postfix = fullscreen() ? "resolution" : "windowsize";
-	preferences::set('x' + postfix, lexical_cast<std::string>(width));
-	preferences::set('y' + postfix, lexical_cast<std::string>(height));
+	_set_resolution(std::make_pair(width, height));
 
 	return true;
 }
