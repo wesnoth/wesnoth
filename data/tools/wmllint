@@ -572,6 +572,21 @@ linechanges = (
         # Changed before 1.11.5 to incorporate 1.9.0 portraits
         ("portraits/orcs/warlord2.png","portraits/orcs/transparent/grunt-5.png"),
         ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-6.png"),
+
+        # Changed before 1.11.8
+        ("image=misc/schedule-dawn.png","image=misc/time-schedules/default/schedule-dawn.png"),
+        ("image=misc/schedule-morning.png","image=misc/time-schedules/default/schedule-morning.png"),
+        ("image=misc/schedule-afternoon.png","image=misc/time-schedules/default/schedule-afternoon.png"),
+        ("image=misc/schedule-dusk.png","image=misc/time-schedules/default/schedule-dusk.png"),
+        ("image=misc/schedule-firstwatch.png","image=misc/time-schedules/default/schedule-firstwatch.png"),
+        ("image=misc/schedule-secondwatch.png","image=misc/time-schedules/default/schedule-dawn.png"),
+
+        ("image=misc/schedule-indoors.png","image=misc/time-schedules/schedule-indoors.png"),
+        ("image=misc/schedule-underground.png","image=misc/time-schedules/schedule-underground.png"),
+        ("image=misc/schedule-underground-illum.png","image=misc/time-schedules/schedule-underground-illum.png"),
+
+        ("image=misc/tod-schedule-24hrs.png","image=misc/time-schedules/tod-schedule-24hrs.png")
+
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
