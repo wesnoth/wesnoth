@@ -409,6 +409,11 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
+		case HOTKEY_MINIMAP_TERRAIN_CODING:
+		case HOTKEY_MINIMAP_UNIT_CODING:
+		case HOTKEY_MINIMAP_DRAW_UNITS:
+		case HOTKEY_MINIMAP_DRAW_TERRAIN:
+		case HOTKEY_MINIMAP_DRAW_VILLAGES:
 			return true;
 		case HOTKEY_EDITOR_MAP_ROTATE:
 			return false; //not implemented
@@ -464,8 +469,6 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_BRUSH_SW_NE:
 		return toolkit_->is_active_brush("brush-sw-ne") ? ACTION_ON : ACTION_OFF;
 
-	case HOTKEY_ZOOM_DEFAULT:
-		return (gui_->get_zoom_factor() == 1.0) ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_TOGGLE_GRID:
 		return preferences::grid() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_SELECT_ALL:
@@ -488,6 +491,20 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		return gui_->get_draw_coordinates() ? ACTION_ON : ACTION_OFF;
 	case HOTKEY_EDITOR_DRAW_TERRAIN_CODES:
 		return gui_->get_draw_terrain_codes() ? ACTION_ON : ACTION_OFF;
+
+	case HOTKEY_MINIMAP_DRAW_VILLAGES:
+		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case HOTKEY_MINIMAP_UNIT_CODING:
+		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case HOTKEY_MINIMAP_TERRAIN_CODING:
+		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case HOTKEY_MINIMAP_DRAW_UNITS:
+		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case HOTKEY_MINIMAP_DRAW_TERRAIN:
+		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case HOTKEY_ZOOM_DEFAULT:
+		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+
 	case HOTKEY_NULL:
 		switch (active_menu_) {
 		case editor::MAP:
