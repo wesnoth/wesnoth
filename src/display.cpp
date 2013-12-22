@@ -190,6 +190,7 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 	reach_map_(),
 	reach_map_old_(),
 	reach_map_changed_(true),
+	overlays_(NULL),
 	fps_handle_(0),
 	invalidated_hexes_(0),
 	drawn_hexes_(0),
