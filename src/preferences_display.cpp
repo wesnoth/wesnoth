@@ -133,10 +133,11 @@ void set_fullscreen(CVideo& video, const bool ison)
 
 void set_fullscreen(bool ison)
 {
-	_set_fullscreen(ison);
-
 	if(disp != NULL) {
 		set_fullscreen(disp->video(), ison);
+	} else {
+		// Only change the config value.
+		_set_fullscreen(ison);
 	}
 }
 
