@@ -945,7 +945,6 @@
 		F4D043D116167BB9007566E8 /* mp_depcheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D016167BB9007566E8 /* mp_depcheck.cpp */; };
 		F4D043DA16167BF6007566E8 /* mp_depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */; };
 		F4D043DB16167BF6007566E8 /* mp_depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D716167BF6007566E8 /* mp_depcheck_confirm_change.cpp */; };
-		F4D043DC16167BF6007566E8 /* mp_create_game_choose_mods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D916167BF6007566E8 /* mp_create_game_choose_mods.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
@@ -2124,8 +2123,6 @@
 		F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_depcheck_select_new.cpp; sourceTree = "<group>"; };
 		F4D043D616167BF6007566E8 /* mp_depcheck_confirm_change.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_depcheck_confirm_change.hpp; sourceTree = "<group>"; };
 		F4D043D716167BF6007566E8 /* mp_depcheck_confirm_change.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_depcheck_confirm_change.cpp; sourceTree = "<group>"; };
-		F4D043D816167BF6007566E8 /* mp_create_game_choose_mods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_create_game_choose_mods.hpp; sourceTree = "<group>"; };
-		F4D043D916167BF6007566E8 /* mp_create_game_choose_mods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_create_game_choose_mods.cpp; sourceTree = "<group>"; };
 		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		F4D2DECA14DCA1D000CAFF31 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
 		F4D2DEDB14DED86800CAFF31 /* lbitlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lbitlib.c; sourceTree = "<group>"; };
@@ -3480,8 +3477,6 @@
 				F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */,
 				F4D043D616167BF6007566E8 /* mp_depcheck_confirm_change.hpp */,
 				F4D043D716167BF6007566E8 /* mp_depcheck_confirm_change.cpp */,
-				F4D043D816167BF6007566E8 /* mp_create_game_choose_mods.hpp */,
-				F4D043D916167BF6007566E8 /* mp_create_game_choose_mods.cpp */,
 				F49F134715BC627C00B64B0B /* editor */,
 				1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */,
 				1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */,
@@ -4399,7 +4394,6 @@
 				F4D043D116167BB9007566E8 /* mp_depcheck.cpp in Sources */,
 				F4D043DA16167BF6007566E8 /* mp_depcheck_select_new.cpp in Sources */,
 				F4D043DB16167BF6007566E8 /* mp_depcheck_confirm_change.cpp in Sources */,
-				F4D043DC16167BF6007566E8 /* mp_create_game_choose_mods.cpp in Sources */,
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
 				49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */,
 				49E84DC217384EF800A4F376 /* leader_scroll_dialog.cpp in Sources */,
