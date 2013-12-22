@@ -175,18 +175,23 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 	if ((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
 		map_location original_loc = get_mouse_handler_base().get_scroll_start();
 		
-		const SDL_Rect& rect = get_display().map_outside_area();
-		if (point_in_rect(mousex, mousey,rect) && 
-			get_mouse_handler_base().scroll_started()) {
-			// Scroll speed is proportional from the distance from the first
-			// middle click and scrolling speed preference.
-			double speed = 0.04 * sqrt(scroll_speed);
-			double snap_dist = 16; // Snap to horizontal/vertical scrolling
-			double x_diff = (mousex - original_loc.x);
-			double y_diff = (mousey - original_loc.y);
-			
-			if (fabs(x_diff) > snap_dist || fabs(y_diff) <= snap_dist) dx += speed * x_diff;
-			if (fabs(y_diff) > snap_dist || fabs(x_diff) <= snap_dist) dy += speed * y_diff;
+		if (get_mouse_handler_base().scroll_started()) {
+			const SDL_Rect& rect = get_display().map_outside_area();
+			if (point_in_rect(mousex, mousey,rect) && 
+				get_mouse_handler_base().scroll_started()) {
+				// Scroll speed is proportional from the distance from the first
+				// middle click and scrolling speed preference.
+				double speed = 0.04 * sqrt(scroll_speed);
+				double snap_dist = 16; // Snap to horizontal/vertical scrolling
+				double x_diff = (mousex - original_loc.x);
+				double y_diff = (mousey - original_loc.y);
+				
+				if (fabs(x_diff) > snap_dist || fabs(y_diff) <= snap_dist) dx += speed * x_diff;
+				if (fabs(y_diff) > snap_dist || fabs(x_diff) <= snap_dist) dy += speed * y_diff;
+			}
+		}
+		else { // Event may fire mouse down out of order with respect to initial click
+			get_mouse_handler_base().set_scroll_start(mousex, mousey);
 		}
 	}
 
