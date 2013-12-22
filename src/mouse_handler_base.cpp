@@ -58,6 +58,8 @@ mouse_handler_base::mouse_handler_base() :
 	drag_from_hex_(),
 	last_hex_(),
 	show_menu_(false),
+	scroll_start_x_(0),
+	scroll_start_y_(0),
 	scroll_started_(false)
 {
 }
