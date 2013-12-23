@@ -437,14 +437,32 @@ void create::synchronize_selections()
 		if (engine_.current_level().id() !=
 			engine_.dependency_manager().get_scenario()) {
 
+			// Match scenario and scenario type
+			const std::vector<std::string>& menu_item_names =
+				engine_.levels_menu_item_names();
+			level::TYPE level_type_at_index;
 			int index = engine_.find_level_by_id(
 				engine_.dependency_manager().get_scenario());
+			size_t type_index;
 
 			if (index == -1) {
 				return;
 			}
-
+			level_type_at_index = engine_.find_level_type_by_id(
+				engine_.dependency_manager().get_scenario());
+			engine_.set_current_level_type(level_type_at_index);
+			
+			init_level_changed(index);
+			levels_menu_.set_items(menu_item_names);
 			levels_menu_.move_selection(index);
+			type_index = 0;
+			BOOST_FOREACH(level::TYPE type, available_level_types_) {
+				if (level_type_at_index == type) {
+					level_type_combo_.set_selected(type_index);
+					break;
+				}
+				type_index++;
+			}
 		}
 
 		process_event();

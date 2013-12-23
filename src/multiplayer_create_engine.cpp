@@ -712,6 +712,36 @@ int create_engine::find_extra_by_id(const MP_EXTRA extra_type,
 	return -1;
 }
 
+level::TYPE create_engine::find_level_type_by_id(const std::string& id) const
+{
+	BOOST_FOREACH(user_map_ptr user_map, user_maps_) {
+		if (user_map->id() == id) {
+			return level::USER_MAP;
+		}
+	}
+	BOOST_FOREACH(random_map_ptr random_map, random_maps_) {
+		if (random_map->id() == id) {
+			return level::RANDOM_MAP;
+		}
+	}
+	BOOST_FOREACH(scenario_ptr scenario, scenarios_) {
+		if (scenario->id() == id) {
+			return level::SCENARIO;
+		}
+	}
+	BOOST_FOREACH(scenario_ptr scenario, user_scenarios_) {
+		if (scenario->id() == id) {
+			return level::USER_SCENARIO;
+		}
+	}
+	BOOST_FOREACH(campaign_ptr campaign, campaigns_) {
+		if (campaign->id() == id) {
+			return level::CAMPAIGN;
+		}
+	}
+	return level::SP_CAMPAIGN;
+}
+
 const depcheck::manager& create_engine::dependency_manager() const
 {
 	return dependency_manager_;
