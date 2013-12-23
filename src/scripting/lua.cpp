@@ -2983,6 +2983,22 @@ static int intf_set_dialog_callback(lua_State *L)
 }
 
 /**
+ * Enables/disables Pango markup on the label of a widget of the current dialog.
+ * - Arg 1: boolean.
+ * - Args 2..n: path of strings and integers.
+ */
+static int intf_set_dialog_markup(lua_State *L)
+{
+	bool b = lua_toboolean(L, 1);
+	gui2::twidget *w = find_widget(L, 2, true);
+	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+
+	c->set_use_markup(b);
+	return 0;
+}
+
+/**
  * Sets a canvas on a widget of the current dialog.
  * - Arg 1: integer.
  * - Arg 2: WML table.
@@ -3606,6 +3622,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "set_dialog_active",        &intf_set_dialog_active        },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
 		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
+		{ "set_dialog_markup",        &intf_set_dialog_markup        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
