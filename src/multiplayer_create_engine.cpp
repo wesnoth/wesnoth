@@ -719,11 +719,6 @@ const depcheck::manager& create_engine::dependency_manager() const
 
 void create_engine::init_active_mods()
 {
-	if (current_level_type_ != level::CAMPAIGN &&
-		current_level_type_ != level::SP_CAMPAIGN) {
-		dependency_manager_.try_modifications(parameters_.active_mods);
-	}
-
 	parameters_.active_mods = dependency_manager_.get_modifications();
 }
 
