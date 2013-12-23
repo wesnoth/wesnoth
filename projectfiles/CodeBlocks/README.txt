@@ -1,7 +1,7 @@
 Compiling Wesnoth on Windows using CodeBlocks
 ---------------------------------------------
 
-(Last tested using Wesnoth 1.11.6 on Code::Blocks 12.11.)
+(Last tested using Wesnoth 1.11.7+ on Code::Blocks 12.11.)
 
 1.  Get a Wesnoth source tarball or Git repository clone. The folder which
     contains the data/, projectfiles/, and src/ subfolders is referred to as
@@ -16,7 +16,7 @@ Compiling Wesnoth on Windows using CodeBlocks
     that this option is enabled while installing the compiler (mark the
     checkbox for this when choosing components to install).
 
-    NOTE: the newest version of tdm-gcc will NOT work; you need the
+    NOTE: The newest version of tdm-gcc will NOT work; you need the
     aforementioned one.
 
 4.  Download the latest CodeBlocksWinSDK*.zip package from <http://sourceforge.net/projects/wesnoth/files/unofficial/Windows%20Compile%20Stuff/>.
@@ -33,6 +33,8 @@ Compiling Wesnoth on Windows using CodeBlocks
     note of them for the next steps.
 
 5.  In CodeBlocks, open <wesnoth_root>/projectfiles/CodeBlocks/wesnoth.workspace.
+
+    NOTE: The first time CodeBlocks is opened you will be asked to select a complier.  If installation from step 3 is complete it may detect it for you, in which case you can select the GNU GCC complier which will produce some default selections for step 6 - be sure to change any that don't match as directed in step 6.
 
 6.  Go to the Settings -> Compiler option in the menu, and choose the
     Global compiler settings -> Toolchain executables tab in the settings
