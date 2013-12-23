@@ -8703,62 +8703,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\..\src\gui\dialogs\mp_create_game_choose_mods.cpp"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Debug_with_VLD|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Debug|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Test_Release|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="ReleaseDEBUG|Win32"
-						>
-						<Tool
-							Name="VCCLCompilerTool"
-							ObjectFile="$(IntDir)\Gui\Dialogs\"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
-					RelativePath="..\..\src\gui\dialogs\mp_create_game_choose_mods.hpp"
-					>
-				</File>
-				<File
 					RelativePath="..\..\src\gui\dialogs\mp_create_game_set_password.cpp"
 					>
 					<FileConfiguration
@@ -15796,6 +15740,10 @@
 			Name="utils"
 			>
 			<File
+				RelativePath="..\..\src\utils\iterator.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\utils\reference_counter.hpp"
 				>
 			</File>
@@ -19552,10 +19500,6 @@
 		</File>
 		<File
 			RelativePath="..\..\src\intro.hpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\iterator.hpp"
 			>
 		</File>
 		<File
