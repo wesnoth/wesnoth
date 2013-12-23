@@ -948,11 +948,13 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
     if "[part]" in ancestors and parent not in ("[part]", "[image]", "[insert_tag]", "[if]", "[then]", "[else]", "[switch]", "[case]", "[variable]", "[deprecated_message]") and not parent.startswith("#"):
         print errlead + '%s not permitted within [part] tag' % parent
     # Most tags are not permitted inside [if]
-    if len(ancestors) >= 2 and ancestors[-1] == "[if]":
-        if parent not in ("[and]", "[else]", "[frame]", "[have_location]",
+    if (len(ancestors) >= 1 and parent == "[if]") or \
+       (len(ancestors) >= 2 and parent == "#ifdef" and ancestors[-1] == "[if]"):
+        if isOpener(nav.element) and nav.element not in ("[and]",
+                           "[else]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]",
-                           "[variable]") and not parent.endswith("_frame]"):
-            print errlead + 'illegal child of [if]'
+                           "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
+            print errlead + 'illegal child of [if]:', nav.element
     # Check for fluky credit parts
     if parent == "[entry]":
         if key == "email" and " " in value:
@@ -2241,7 +2243,8 @@ def translator(filename, mapxforms, textxform):
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 local_sanity_check(filename, nav, key, prefix, value, comment)
             except TypeError:
-                pass
+                key = prefix = value = comment = None
+                local_sanity_check(filename, nav, key, prefix, value, comment)
         # Perform file-global semantic sanity checks
         newdata = global_sanity_check(filename, newdata)
         # OK, now perform WML rewrites
