@@ -1459,10 +1459,8 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 		} else {
 			// Can't directly blur the surface if not 32 bpp.
 			SDL_Rect r = rect;
-			///@todo we should use: get_surface_portion(surf, r, false)
-			///no need to optimize format, since blur_surface will undo it
-			surface s = get_surface_portion(surf, r, true);
-			s = blur_surface(s, blur_depth_);
+			surface s = get_surface_portion(surf, r, false);
+			s = blur_surface(s, blur_depth_, false);
 			sdl_blit(s, NULL, surf, &rect);
 		}
 	}
