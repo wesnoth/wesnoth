@@ -34,7 +34,7 @@ Compiling Wesnoth on Windows using CodeBlocks
 
 5.  In CodeBlocks, open <wesnoth_root>/projectfiles/CodeBlocks/wesnoth.workspace.
 
-    NOTE: The first time CodeBlocks is opened you will be asked to select a complier.  If installation from step 3 is complete it may detect it for you, in which case you can select the GNU GCC complier which will produce some default selections for step 6 - be sure to change any that don't match as directed in step 6.
+    NOTE: The first time CodeBlocks is opened you will be asked to select a compiler.  If installation from step 3 is complete it may detect it for you, in which case you can select the GNU GCC compiler which will produce some default selections for step 6 - be sure to change any that don't match as directed in step 6.
 
 6.  Go to the Settings -> Compiler option in the menu, and choose the
     Global compiler settings -> Toolchain executables tab in the settings
