@@ -388,7 +388,7 @@ namespace {
 						LOG_CS << "sending campaign '" << req["name"] << "' to " << network::ip_address(sock)  << " using gzip";
 						config &campaign = campaigns().find_child("campaign", "name", req["name"]);
 						if (!campaign) {
-							network::send_data(construct_error("Add-on '" + req["name"].str() + "'not found."), sock);
+							network::send_data(construct_error("Add-on '" + req["name"].str() + "' not found."), sock);
 						} else {
 							const int size = file_size(campaign["filename"]);
 
