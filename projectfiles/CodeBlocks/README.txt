@@ -17,7 +17,10 @@ Compiling Wesnoth on Windows using CodeBlocks
     checkbox for this when choosing components to install).
 
     NOTE: The newest version of tdm-gcc will NOT work; you need the
-    aforementioned one.
+    aforementioned one. You must also make sure to download the 32-bit version
+    (tdm-gcc-4.5.2.exe), NOT the 64-bit version (tdm64-gcc-4.5.2.exe). Building
+    a 64-bit Wesnoth executable on Windows is currently not supported and will
+    fail with the SDK package provided in the next step.
 
 4.  Download the latest CodeBlocksWinSDK*.zip package from <http://sourceforge.net/projects/wesnoth/files/unofficial/Windows%20Compile%20Stuff/>.
     The package contains the right version/build combination of source headers,
