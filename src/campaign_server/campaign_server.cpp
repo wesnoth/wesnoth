@@ -390,7 +390,16 @@ namespace {
 						if (!campaign) {
 							network::send_data(construct_error("Add-on '" + req["name"].str() + "'not found."), sock);
 						} else {
-							std::cerr << " size: " << (file_size(campaign["filename"])/1024) << "KiB\n";
+							const int size = file_size(campaign["filename"]);
+
+							if(size < 0) {
+								std::cerr << " size: <unknown> KiB\n";
+								LOG_CS << "File size unknown, aborting send.\n";
+								network::send_data(construct_error("Add-on '" + req["name"].str() + "' could not be read by the server."), sock);
+								continue;
+							}
+
+							std::cerr << " size: " << size/1024 << "KiB\n";
 							network::send_file(campaign["filename"], sock);
 							// Clients doing upgrades or some other specific thing shouldn't bump
 							// the downloads count. Default to true for compatibility with old
