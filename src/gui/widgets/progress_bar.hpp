@@ -50,7 +50,7 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_percentage(const unsigned percentage);
+	void set_percentage(unsigned percentage);
 	unsigned get_percentage() const { return percentage_; }
 
 private:
