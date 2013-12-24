@@ -60,10 +60,17 @@ Compiling Wesnoth on Windows using CodeBlocks
 8.  Change to the Search directories -> Linker tab and choose Add; enter the
     path to <sdk_root>/lib_tdm_gcc/.
 
-    Close the settings dialog.
+9.  OPTIONAL: By default, CodeBlocks will only run one compiler instance at a
+    time, making the overall build process very slow even with fast hardware.
+    If you have a multi-core processor, you may make better use of its power by
+    increasing the value of the option "Number of processes for parallel
+    builds" in the Build options tab. It is recommended to set this to at least
+    the number of CPU cores your system has.
 
-9.  Choose the Build -> Build workspace option in the CodeBlocks menu. Once
+10. Close the settings dialog.
+
+11. Choose the Build -> Build workspace option in the CodeBlocks menu. Once
     finished, wesnoth.exe and wesnothd.exe should appear in <wesnoth_root>.
 
-10. To be able to run your build, copy all *.dll files from the <sdk_root>/dll/
+12. To be able to run your build, copy all *.dll files from the <sdk_root>/dll/
     folder to <wesnoth_root> where the *.exe files are.
