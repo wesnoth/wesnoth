@@ -1023,12 +1023,31 @@ void preferences_dialog::process_event()
 				const config& pref = *adv;
 				const std::string description = pref["description"];
 				std::string value = preferences::get(pref["field"]);
-				const bool hide_combo = pref["type"] != "combo";
-				advanced_combo_.hide(hide_combo);
-				advanced_button_.hide(pref["type"] != "boolean");
-				const bool hide_int = pref["type"] != "int";
-				advanced_slider_.hide(hide_int);
-				advanced_option_label_.hide(hide_int && hide_combo);
+
+				// Hide all advanced preference controls before unhiding the
+				// ones needed for the selection, otherwise we may end up with
+				// a "ghost" of a previously visible control glitching through
+				// the current one when traversing the list item by item (e.g.
+				// with the keyboard.)
+				advanced_combo_.hide(true);
+				advanced_button_.hide(true);
+				advanced_slider_.hide(true);
+				advanced_option_label_.hide(true);
+
+				if(pref["type"] == "boolean") {
+					advanced_button_.hide(false);
+				}
+
+				if(pref["type"] == "int") {
+					advanced_option_label_.hide(false);
+					advanced_slider_.hide(false);
+				}
+
+				if(pref["type"] == "combo") {
+					advanced_option_label_.hide(false);
+					advanced_combo_.hide(false);
+				}
+
 				if(value.empty()) {
 					value = pref["default"].str();
 				}

@@ -181,7 +181,7 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 				get_mouse_handler_base().scroll_started()) {
 				// Scroll speed is proportional from the distance from the first
 				// middle click and scrolling speed preference.
-				const double speed = 0.04 * sqrt(scroll_speed);
+				const double speed = 0.04 * sqrt(static_cast<double>(scroll_speed));
 				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
 				const double x_diff = (mousex - original_loc.x);
 				const double y_diff = (mousey - original_loc.y);
