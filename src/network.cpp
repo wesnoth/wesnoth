@@ -1096,8 +1096,15 @@ void send_file(const std::string& filename, connection connection_num, const std
 		return;
 	}
 
+	const int size = file_size(filename);
+
+	if(size < 0) {
+		ERR_NW << "Could not determine size of file " << filename << ", not sending.\n";
+		return;
+	}
+
 	const int packet_headers = 4;
-	add_bandwidth_out(packet_type, file_size(filename) + packet_headers);
+	add_bandwidth_out(packet_type, size + packet_headers);
 	network_worker_pool::queue_file(info->second.sock, filename);
 
 }
