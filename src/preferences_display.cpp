@@ -37,6 +37,7 @@
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/math/common_factor_rt.hpp>
 
 namespace preferences {
 
@@ -343,9 +344,8 @@ bool show_video_mode_dialog(display& disp)
 			current_choice = static_cast<unsigned>(k);
 
 		option << res.first << utils::unicode_multiplication_sign << res.second;
-		/*widescreen threshold is 16:10*/
-		if (static_cast<double>(res.first)/res.second >= 16.0/10.0)
-		  option << _(" (widescreen)");
+		const int div = boost::math::gcd(res.first, res.second);
+		option << " (" << res.first/div << ':' << res.second/div << ')';
 		options.push_back(option.str());
 	}
 
