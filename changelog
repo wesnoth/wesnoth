@@ -2,6 +2,11 @@ Version 1.11.7+dev:
  * Add-ons client:
    * Introduced new add-on type "SP/MP Campaign" for campaigns with
      "type=hybrid."
+   * Fixed invalid file size data from the server crashing the client on the
+     network transfer progress dialog (bug #20893).
+ * Add-ons server:
+   * Fixed mishandling of inaccessible add-on packs resulting in multiple data
+     conversion errors and stalling clients (bug #20893).
  * AI:
    * RCA AI: fix bug #21334: surrounded units don't attack
    * Simple Attack Micro AI: new optional parameter weapon=
