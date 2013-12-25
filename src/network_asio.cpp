@@ -190,6 +190,9 @@ std::size_t connection::is_read_complete(
 			union { char binary[4]; boost::uint32_t num; } data_size;
 			is.read(data_size.binary, 4);
 			bytes_to_read_ = ntohl(data_size.num) + 4;
+			//Close immediately if we receive an invalid length
+			if (bytes_to_read_ < 4)
+				bytes_to_read_ = bytes_transferred;
 		}
 #if BOOST_VERSION >= 103700
 		return bytes_to_read_ - bytes_transferred;
