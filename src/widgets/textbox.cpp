@@ -66,13 +66,17 @@ const std::string textbox::text() const
 // set_text does not respect max_size_
 void textbox::set_text(const std::string& text, const SDL_Color& color)
 {
-	text_ = utils::string_to_wstring(text);
-	cursor_ = text_.size();
-	text_pos_ = 0;
-	selstart_ = -1;
-	selend_ = -1;
-	set_dirty(true);
-	update_text_cache(true, color);
+	// Loop twice so that if a scrollbar needs to be shown/hidden the
+	// horizontal text fit is recalculated.
+	for (size_t i=0; i<2; ++i) {
+		text_ = utils::string_to_wstring(text);
+		cursor_ = text_.size();
+		text_pos_ = 0;
+		selstart_ = -1;
+		selend_ = -1;
+		set_dirty(true);
+		update_text_cache(true, color);
+	}
 	handle_text_changed(text_);
 }
 
