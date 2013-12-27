@@ -84,6 +84,18 @@ public:
     	actions_since_save_++;
     }
 
+	void save_area(const std::set<map_location>& area) {
+		tod_manager_->replace_area_locations(active_area_, area);
+	}
+
+	void new_area(const std::set<map_location>& area) {
+		tod_manager_->add_time_area("", area, config());
+		active_area_ = tod_manager_->get_area_ids().size() -1;
+		actions_since_save_++;
+	}
+
+	void remove_area(int index);
+
 	/** Get the team from the current map context object */
 	std::vector<team>& get_teams() {
 		return teams_;
@@ -103,8 +115,24 @@ public:
 	}
 
 	void replace_schedule(const std::vector<time_of_day>& schedule);
+	
+	/**
+	 * Replace the [time]s of the currently active area.
+	 */
+	void replace_local_schedule(const std::vector<time_of_day>& schedule);
 
+	/**
+	 * TODO
+	 */
 	void set_starting_time(int time);
+
+	/**
+	 * TODO
+	 */
+	void set_local_starting_time(int time) {
+		tod_manager_->set_current_time(time, active_area_);
+		actions_since_save_++;
+	}
 
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
@@ -114,8 +142,16 @@ public:
 		return state_;
 	}
 
-	int get_active_area() {
+	/**
+	 * 
+ 	 * @return the index of the currently active area.
+ 	 */
+	int get_active_area() const {
 		return active_area_;
+	}
+
+	void set_active_area(int index) {
+		active_area_ = index;
 	}
 
 	bool is_in_playlist(std::string track_id) {

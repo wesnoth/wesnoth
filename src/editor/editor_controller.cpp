@@ -252,7 +252,9 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 					case editor::SIDE:
 					case editor::TIME:
 					case editor::SCHEDULE:
+					case editor::LOCAL_SCHEDULE:
 					case editor::MUSIC:
+					case editor::LOCAL_TIME:
 						return true;
 				}
 			}
@@ -315,12 +317,12 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_CUSTOM_TODS:
 		case HOTKEY_EDITOR_MAP_NEW:
 		case HOTKEY_EDITOR_SCENARIO_NEW:
-		case HOTKEY_EDITOR_SIDE_SWITCH:
 		case HOTKEY_EDITOR_MAP_LOAD:
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 		case HOTKEY_EDITOR_SCENARIO_SAVE_AS:
 			return true;
 
+		case HOTKEY_EDITOR_AREA_ADD:
 		case HOTKEY_EDITOR_SIDE_NEW:
 			return !context_manager_->get_map_context().is_pure_map();
 
@@ -348,7 +350,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 				return context_manager_->modified_maps(dummy) > 1;
 			}
 		case HOTKEY_EDITOR_SWITCH_MAP:
-		case HOTKEY_EDITOR_SWITCH_AREA:
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
@@ -371,7 +372,12 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return !context_manager_->get_map_context().get_teams().empty();
 
-		case HOTKEY_EDITOR_AREA_DEFINE:
+		case HOTKEY_EDITOR_AREA_REMOVE:
+		case HOTKEY_EDITOR_AREA_RENAME:
+			return !context_manager_->get_map_context().get_time_manager()->get_area_ids().empty();
+
+		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+		case HOTKEY_EDITOR_AREA_SAVE:
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
 		case HOTKEY_EDITOR_SELECTION_FILL:
@@ -521,6 +527,10 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 		case editor::TIME:
 			return index ==	context_manager_->get_map_context().get_time_manager()->get_current_time()
 					? ACTION_SELECTED : ACTION_DESELECTED;
+		case editor::LOCAL_TIME:
+			return index ==	context_manager_->get_map_context().get_time_manager()->get_current_area_time(
+					context_manager_->get_map_context().get_active_area())
+					? ACTION_SELECTED : ACTION_DESELECTED;
 		case editor::MUSIC:
 			return context_manager_->get_map_context().is_in_playlist(music_tracks_[index].id())
 					? ACTION_ON : ACTION_OFF;
@@ -530,6 +540,15 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				std::advance(it, index);
 				const std::vector<time_of_day>& times1 = it->second.second;
 				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times();
+				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
+			}
+		case editor::LOCAL_SCHEDULE:
+			{
+				tods_map::const_iterator it = tods_.begin();
+				std::advance(it, index);
+				const std::vector<time_of_day>& times1 = it->second.second;
+				int active_area = context_manager_->get_map_context().get_active_area();
+				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times(active_area);
 				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
 		}
@@ -567,8 +586,8 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 				toolkit_->get_palette_manager()->draw_contents();
 				return true;
 			case AREA:
-				//TODO store the selection for the state setting.
 				{
+					context_manager_->get_map_context().set_active_area(index);
 					const std::set<map_location>& area =
 							context_manager_->get_map_context().get_time_manager()->get_area_by_index(index);
 					std::vector<map_location> locs(area.begin(), area.end());
@@ -582,6 +601,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tod_color col = tod->times()[index].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
+					return true;
+				}
+			case LOCAL_TIME:
+				{
+					context_manager_->get_map_context().set_local_starting_time(index);
 					return true;
 				}
 			case MUSIC:
@@ -603,6 +627,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					const tod_manager* tod = context_manager_->get_map_context().get_time_manager();
 					tod_color col = tod->times()[0].color;
 					image::set_color_adjustment(col.r, col.g, col.b);
+					return true;
+				}
+			case LOCAL_SCHEDULE:
+				{
+					tods_map::iterator iter = tods_.begin();
+					std::advance(iter, index);
+					context_manager_->get_map_context().replace_local_schedule(iter->second.second);
 					return true;
 				}
 			}
@@ -628,7 +659,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			//Palette
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
 		{
-			//TODO
+			//TODO this code waits for the gui2 dialog to get ready
 //			std::vector< std::pair< std::string, std::string > > blah_items;
 //			toolkit_->get_palette_manager()->active_palette().expand_palette_groups_menu(blah_items);
 //			int selected = 1; //toolkit_->get_palette_manager()->active_palette().get_selected;
@@ -682,6 +713,10 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 		case HOTKEY_EDITOR_TOOL_ITEM:
 			toolkit_->hotkey_set_mouse_action(command);
+			return true;
+
+		case HOTKEY_EDITOR_AREA_ADD:
+			add_area();
 			return true;
 
 		case HOTKEY_EDITOR_SIDE_EDIT:
@@ -763,7 +798,13 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_CUT:
 			cut_selection();
 			return true;
-		case HOTKEY_EDITOR_AREA_DEFINE:
+		case HOTKEY_EDITOR_AREA_RENAME:
+			context_manager_->rename_area_dialog();
+			return true;
+		case HOTKEY_EDITOR_AREA_SAVE:
+			save_area();
+			return true;
+		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
 			export_selection_coords();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
@@ -787,6 +828,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 
 		case HOTKEY_EDITOR_SCENARIO_EDIT:
 			context_manager_->edit_scenario_dialog();
+			return true;
+
+		case HOTKEY_EDITOR_AREA_REMOVE:
+			context_manager_->get_map_context().remove_area(
+					context_manager_->get_map_context().get_active_area());
 			return true;
 
 		// map specific
@@ -923,6 +969,11 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::TIME;
 		context_manager_->expand_time_menu(items);
 	}
+	if (!items.empty() && items.front() == "editor-assign-local-time") {
+		active_menu_ = editor::LOCAL_TIME;
+		context_manager_->expand_local_time_menu(items);
+	}
+
 	if (!items.empty() && items.front() == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
@@ -932,6 +983,16 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 	}
 	if (!items.empty() && items.front() == "editor-assign-schedule") {
 		active_menu_ = editor::SCHEDULE;
+
+		items.erase(items.begin());
+
+		for (tods_map::iterator iter = tods_.begin();
+				iter != tods_.end(); ++iter) 	{
+			items.push_back(iter->second.first);
+		}
+	}
+	if (!items.empty() && items.front() == "editor-assign-local-schedule") {
+		active_menu_ = editor::LOCAL_SCHEDULE;
 
 		items.erase(items.begin());
 
@@ -1025,6 +1086,18 @@ void editor_controller::cut_selection()
 	context_manager_->perform_refresh(editor_action_paint_area(context_manager_->get_map().selection(), get_selected_bg_terrain()));
 }
 
+void editor_controller::save_area()
+{
+	const std::set<map_location>& area = context_manager_->get_map().selection();
+	context_manager_->get_map_context().save_area(area);
+}
+
+void editor_controller::add_area()
+{
+	const std::set<map_location>& area = context_manager_->get_map().selection();
+	context_manager_->get_map_context().new_area(area);
+}
+
 void editor_controller::export_selection_coords()
 {
 	std::stringstream ssx, ssy;
@@ -1041,10 +1114,6 @@ void editor_controller::export_selection_coords()
 		ssx << "\n" << ssy.str() << "\n";
 		copy_to_clipboard(ssx.str(), false);
 	}
-
-	const std::set<map_location>& area = context_manager_->get_map().selection();
-	context_manager_->get_map_context().get_time_manager()->
-			add_time_area("an area", area, config());
 }
 
 void editor_controller::perform_delete(editor_action* action)

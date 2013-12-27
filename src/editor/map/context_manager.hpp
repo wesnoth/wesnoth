@@ -111,6 +111,9 @@ public:
 	/** Display an apply mask dialog and process user input. */
 	void create_mask_to_dialog();
 
+	/** Display an dialog to querry a new id for an [time_area] */
+	void rename_area_dialog();
+
 	/** Menu expanding for open maps list */
 	void expand_open_maps_menu(std::vector<std::string>& items);
 
@@ -122,6 +125,9 @@ public:
 
 	/** Menu expanding for the map's defined areas */
 	void expand_time_menu(std::vector<std::string>& items);
+
+	/** Menu expanding for the map's defined areas */
+	void expand_local_time_menu(std::vector<std::string>& items);
 
 	/** Display a load map dialog and process user input. */
 	void load_map_dialog(bool force_same_context = false);

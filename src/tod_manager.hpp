@@ -37,6 +37,14 @@ class tod_manager : public savegame::savegame_config
 
 		void set_current_time(int time) { currentTime_ = time; }
 
+		void set_current_time(int time, int area_index) {
+			assert(area_index < static_cast<int>(areas_.size()));
+			assert(time < static_cast<int>(areas_[area_index].times.size()) );
+			areas_[area_index].currentTime = time;
+		}
+
+		void set_area_id(int area_index, const std::string& id);
+
 		/**
 		 * Returns global time of day for the passed turn.
 		 * for_turn = 0 means current turn
@@ -52,6 +60,8 @@ class tod_manager : public savegame::savegame_config
 		 */
 		const time_of_day& get_time_of_day(const map_location& loc,
 				int for_turn = 0) const;
+
+		int get_current_area_time(int index) const;
 
 		/**
 		 * Returns time of day object for the passed turn at a location.
@@ -70,6 +80,9 @@ class tod_manager : public savegame::savegame_config
 		 */
 		void replace_schedule(const config& time_cfg);
 		void replace_schedule(const std::vector<time_of_day>& schedule);
+		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index);
+
+		void replace_area_locations(int index, const std::set<map_location>& locs);
 
 		/**
 		 * @returns the [time_area]s' ids.
@@ -117,11 +130,19 @@ class tod_manager : public savegame::savegame_config
 		 */
 		void remove_time_area(const std::string& id);
 
+		void remove_time_area(int index);
+
+
 		bool has_time_area() const {return !areas_.empty();};
 
 		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location) const;
 
-
+		const std::vector<time_of_day>& times(int index) const {
+			std::cout << index << " area_index\n";
+			std::cout << "size of areas_: " << areas_.size() << "\n";
+			assert(index < static_cast<int>(areas_.size()));
+			return areas_[index].times;
+		}
 
 		//turn functions
 		int turn() const { return turn_; }
