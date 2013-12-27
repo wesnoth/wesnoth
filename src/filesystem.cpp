@@ -531,7 +531,7 @@ static const std::string& get_version_path_suffix()
 }
 #endif
 
-void set_preferences_dir(std::string path)
+void set_user_data_dir(std::string path)
 {
 #ifdef _WIN32
 	if(path.empty()) {
@@ -625,6 +625,12 @@ void set_preferences_dir(std::string path)
 	setup_user_data_dir();
 }
 
+void set_user_config_dir(std::string path)
+{
+	user_config_dir = path;
+	create_directory_if_missing(user_config_dir);
+}
+
 static void setup_user_data_dir()
 {
 #ifdef _WIN32
@@ -681,7 +687,7 @@ const std::string& get_user_data_dir()
 	// if the user deletes a dir while we are running?
 	if (user_data_dir.empty())
 	{
-		set_preferences_dir(std::string());
+		set_user_data_dir(std::string());
 	}
 	return user_data_dir;
 }
@@ -692,17 +698,18 @@ const std::string &get_user_config_dir()
 	{
 #if defined(_X11) && !defined(PREFERENCES_DIR)
 		char const *xdg_config = getenv("XDG_CONFIG_HOME");
+		std::string path;
 		if (!xdg_config || xdg_config[0] == '\0') {
 			xdg_config = getenv("HOME");
 			if (!xdg_config) {
 				user_config_dir = get_user_data_dir();
 				return user_config_dir;
 			}
-			user_config_dir = xdg_config;
-			user_config_dir += "/.config";
-		} else user_config_dir = xdg_config;
-		user_config_dir += "/wesnoth";
-		create_directory_if_missing_recursive(user_config_dir);
+			path = xdg_config;
+			path += "/.config";
+		} else path = xdg_config;
+		path += "/wesnoth";
+		set_user_config_dir(path);
 #else
 		user_config_dir = get_user_data_dir();
 #endif

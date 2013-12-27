@@ -274,7 +274,7 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
 	if(cmdline_opts.config_dir) {
-		set_preferences_dir(*cmdline_opts.config_dir);
+		set_user_data_dir(*cmdline_opts.config_dir);
 	}
 	if(cmdline_opts.config_path) {
 		std::cout << get_user_data_dir() << '\n';

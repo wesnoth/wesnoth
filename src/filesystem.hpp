@@ -74,7 +74,8 @@ std::string get_addon_campaigns_dir();
  * maximum 1000 files then start always giving 999
  */
 std::string get_next_filename(const std::string& name, const std::string& extension);
-void set_preferences_dir(std::string path);
+void set_user_config_dir(std::string path);
+void set_user_data_dir(std::string path);
 
 const std::string &get_user_config_dir();
 const std::string &get_user_data_dir();
