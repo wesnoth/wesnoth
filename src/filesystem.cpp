@@ -535,10 +535,10 @@ void set_preferences_dir(std::string path)
 {
 #ifdef _WIN32
 	if(path.empty()) {
-		game_config::preferences_dir = get_cwd() + "/userdata";
+		user_data_dir = get_cwd() + "/userdata";
 	} else if (path.size() > 2 && path[1] == ':') {
 		//allow absolute path override
-		game_config::preferences_dir = path;
+		user_data_dir = path;
 	} else {
 		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPTSTR, int, BOOL);
 		SHGSFPAddress SHGetSpecialFolderPath;
@@ -551,14 +551,14 @@ void set_preferences_dir(std::string path)
 				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
 				boost::algorithm::replace_all(mygames_path, std::string("\\"), std::string("/"));
 				create_directory_if_missing(mygames_path);
-				game_config::preferences_dir = mygames_path + "/" + path;
+				user_data_dir = mygames_path + "/" + path;
 			} else {
 				WRN_FS << "SHGetSpecialFolderPath failed\n";
-				game_config::preferences_dir = get_cwd() + "/" + path;
+				user_data_dir = get_cwd() + "/" + path;
 			}
 		} else {
 			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
-			game_config::preferences_dir = get_cwd() + "/" + path;
+			user_data_dir = get_cwd() + "/" + path;
 		}
 	}
 
@@ -586,21 +586,20 @@ void set_preferences_dir(std::string path)
 		user_data_dir += "/wesnoth/";
 		user_data_dir += get_version_path_suffix();
 		create_directory_if_missing_recursive(user_data_dir);
-		game_config::preferences_dir = user_data_dir;
 	} else {
 		other:
 		std::string home = home_str ? home_str : ".";
 
 		if (path[0] == '/')
-			game_config::preferences_dir = path;
+			user_data_dir = path;
 		else
-			game_config::preferences_dir = home + "/" + path;
+			user_data_dir = home + "/" + path;
 	}
 #else
 	if (path.empty()) path = path2;
 
 #ifdef __AMIGAOS4__
-	game_config::preferences_dir = "PROGDIR:" + path;
+	user_data_dir = "PROGDIR:" + path;
 #elif defined(__BEOS__)
 	if (be_path.InitCheck() != B_OK) {
 		BPath tpath;
@@ -609,21 +608,20 @@ void set_preferences_dir(std::string path)
 		} else {
 			be_path.SetTo("/boot/home/config/settings/wesnoth");
 		}
-		game_config::preferences_dir = be_path.Path();
+		user_data_dir = be_path.Path();
 	}
 #else
 	const char* home_str = getenv("HOME");
 	std::string home = home_str ? home_str : ".";
 
 	if (path[0] == '/')
-		game_config::preferences_dir = path;
+		user_data_dir = path;
 	else
-		game_config::preferences_dir = home + std::string("/") + path;
+		user_data_dir = home + std::string("/") + path;
 #endif
 #endif
 
 #endif /*_WIN32*/
-	user_data_dir = game_config::preferences_dir;
 	setup_user_data_dir();
 }
 
@@ -683,12 +681,7 @@ const std::string& get_user_data_dir()
 	// if the user deletes a dir while we are running?
 	if (user_data_dir.empty())
 	{
-		if (game_config::preferences_dir.empty())
-			set_preferences_dir(std::string());
-		else {
-			user_data_dir = game_config::preferences_dir;
-			setup_user_data_dir();
-		}
+		set_preferences_dir(std::string());
 	}
 	return user_data_dir;
 }

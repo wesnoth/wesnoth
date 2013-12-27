@@ -58,7 +58,6 @@ namespace game_config
 	extern int cache_compression_level;
 
 	extern std::string path;
-	extern std::string preferences_dir;
 	extern std::string default_preferences_path;
 
 	struct server_info {

@@ -180,8 +180,6 @@ namespace game_config
 	std::string default_preferences_path = "";
 #endif
 
-	std::string preferences_dir = "";
-
 	std::vector<server_info> server_list;
 
 	void load_config(const config &v)
