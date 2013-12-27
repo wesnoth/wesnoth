@@ -467,8 +467,8 @@ config::attribute_value slider_display::get_value() const
 void slider_display::process_event()
 {
 	if (slider_->value() != last_value_) {
-		update_label();
 		last_value_ = slider_->value();
+		update_label();
 	}
 }
 
