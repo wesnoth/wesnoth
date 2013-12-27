@@ -346,9 +346,9 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 				std::string dummy;
 				return context_manager_->modified_maps(dummy) > 1;
 			}
-		case HOTKEY_EDITOR_SWITCH_MAP:
+		case HOTKEY_EDITOR_MAP_SWITCH:
 		case HOTKEY_EDITOR_PLAYLIST:
-		case HOTKEY_EDITOR_CLOSE_MAP:
+		case HOTKEY_EDITOR_MAP_CLOSE:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
 			return !context_manager_->get_map_context().get_filename().empty()
@@ -377,33 +377,33 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 		case HOTKEY_EDITOR_SELECTION_EXPORT:
 		case HOTKEY_EDITOR_AREA_SAVE:
-		case HOTKEY_EDITOR_CUT:
-		case HOTKEY_EDITOR_COPY:
+		case HOTKEY_EDITOR_SELECTION_CUT:
+		case HOTKEY_EDITOR_SELECTION_COPY:
 		case HOTKEY_EDITOR_SELECTION_FILL:
 			return !context_manager_->get_map().selection().empty()
-					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
+					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_SELECTION_RANDOMIZE:
 			return (context_manager_->get_map().selection().size() > 1
-					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE));
+					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE));
 		case HOTKEY_EDITOR_SELECTION_ROTATE:
 		case HOTKEY_EDITOR_SELECTION_FLIP:
 		case HOTKEY_EDITOR_SELECTION_GENERATE:
 			return false; //not implemented
-		case HOTKEY_EDITOR_PASTE:
+		case HOTKEY_EDITOR_CLIPBOARD_PASTE:
 			return !context_manager_->clipboard_empty();
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CW:
 		case HOTKEY_EDITOR_CLIPBOARD_ROTATE_CCW:
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_HORIZONTAL:
 		case HOTKEY_EDITOR_CLIPBOARD_FLIP_VERTICAL:
 			return !context_manager_->clipboard_empty()
-					&& toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
+					&& toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_SELECT_ALL:
 		case HOTKEY_EDITOR_SELECT_NONE:
-			return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
+			return !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_SELECT_INVERSE:
 			return !context_manager_->get_map_context().get_map().selection().empty()
 					&& !context_manager_->get_map_context().get_map().everything_selected()
-					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_PASTE);
+					&& !toolkit_->is_mouse_action_set(HOTKEY_EDITOR_CLIPBOARD_PASTE);
 		case HOTKEY_EDITOR_MAP_RESIZE:
 		case HOTKEY_EDITOR_MAP_GENERATE:
 		case HOTKEY_EDITOR_MAP_APPLY_MASK:
@@ -414,8 +414,8 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS:
 		case HOTKEY_EDITOR_REFRESH_IMAGE_CACHE:
-		case HOTKEY_MINIMAP_TERRAIN_CODING:
-		case HOTKEY_MINIMAP_UNIT_CODING:
+		case HOTKEY_MINIMAP_CODING_TERRAIN:
+		case HOTKEY_MINIMAP_CODING_UNIT:
 		case HOTKEY_MINIMAP_DRAW_UNITS:
 		case HOTKEY_MINIMAP_DRAW_TERRAIN:
 		case HOTKEY_MINIMAP_DRAW_VILLAGES:
@@ -486,7 +486,7 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 	case HOTKEY_EDITOR_TOOL_LABEL:
 	case HOTKEY_EDITOR_TOOL_PAINT:
 	case HOTKEY_EDITOR_TOOL_SELECT:
-	case HOTKEY_EDITOR_PASTE:
+	case HOTKEY_EDITOR_CLIPBOARD_PASTE:
 	case HOTKEY_EDITOR_TOOL_STARTING_POSITION:
 	case HOTKEY_EDITOR_TOOL_UNIT:
 	case HOTKEY_EDITOR_TOOL_VILLAGE:
@@ -499,9 +499,9 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 
 	case HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case HOTKEY_MINIMAP_UNIT_CODING:
+	case HOTKEY_MINIMAP_CODING_UNIT:
 		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case HOTKEY_MINIMAP_TERRAIN_CODING:
+	case HOTKEY_MINIMAP_CODING_TERRAIN:
 		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case HOTKEY_MINIMAP_DRAW_UNITS:
 		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
@@ -747,7 +747,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			perform_delete(new editor_action_unit_delete(loc));
 		}
 		return true;
-		case HOTKEY_EDITOR_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
+		case HOTKEY_EDITOR_CLIPBOARD_PASTE: //paste is somewhat different as it might be "one action then revert to previous mode"
 			toolkit_->hotkey_set_mouse_action(command);
 			return true;
 
@@ -789,10 +789,10 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			toolkit_->set_brush("brush-sw-ne");
 			return true;
 
-		case HOTKEY_EDITOR_COPY:
+		case HOTKEY_EDITOR_SELECTION_COPY:
 			copy_selection();
 			return true;
-		case HOTKEY_EDITOR_CUT:
+		case HOTKEY_EDITOR_SELECTION_CUT:
 			cut_selection();
 			return true;
 		case HOTKEY_EDITOR_AREA_RENAME:
@@ -833,7 +833,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			return true;
 
 		// map specific
-		case HOTKEY_EDITOR_CLOSE_MAP:
+		case HOTKEY_EDITOR_MAP_CLOSE:
 			context_manager_->close_current_context();
 			return true;
 		case HOTKEY_EDITOR_MAP_LOAD:

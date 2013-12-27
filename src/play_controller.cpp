@@ -896,8 +896,8 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_DESELECT_HEX:
 	case hotkey::HOTKEY_MOVE_ACTION:
 	case hotkey::HOTKEY_SELECT_AND_ACTION:
-	case hotkey::HOTKEY_MINIMAP_TERRAIN_CODING:
-	case hotkey::HOTKEY_MINIMAP_UNIT_CODING:
+	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
+	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
@@ -1313,9 +1313,9 @@ hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND co
 
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
 		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_MINIMAP_UNIT_CODING:
+	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
 		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
-	case hotkey::HOTKEY_MINIMAP_TERRAIN_CODING:
+	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
 		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
 		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;

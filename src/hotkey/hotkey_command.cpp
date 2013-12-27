@@ -115,12 +115,12 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, hotkey::SCOPE_GAME, "" },
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_MAP_CLOSE, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR, "" },
 
 	// These are not really hotkey items but menu entries to get expanded.
 	// They need to have their own hotkey to control their active state.
 	{ hotkey::HOTKEY_EDITOR_PLAYLIST, "editor-playlist", N_("Switch Time of Day"), true, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_SWITCH_MAP, "editor-switch-map", N_("Switch Map"), true, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Custom Time of Day Creator"), false, hotkey::SCOPE_EDITOR, "" },
@@ -159,8 +159,8 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, hotkey::SCOPE_EDITOR, "" },
 
-	{ hotkey::HOTKEY_MINIMAP_UNIT_CODING, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::HOTKEY_MINIMAP_TERRAIN_CODING, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_CODING_UNIT, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_CODING_TERRAIN, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, hotkey::SCOPE_GENERAL, "" },
 
 	{ hotkey::HOTKEY_MINIMAP_DRAW_UNITS, "minimap-draw-units", N_("Toggle Minimap Unit Drawing"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES, "minimap-draw-villages", N_("Toggle Minimap Village Drawing"), false, hotkey::SCOPE_GENERAL, "" },
@@ -174,9 +174,9 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NW_SE, "editor-brush-nw-se", N_("Brush NW-SE"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_SW_NE, "editor-brush-sw-ne", N_("Brush SW-NE"), false, hotkey::SCOPE_EDITOR, "" },
 
-	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button pastes from the clipboard, right brings up a context menu.") },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button pastes from the clipboard, right brings up a context menu.") },
 	{ hotkey::HOTKEY_EDITOR_SELECTION_EXPORT, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all", N_("Select All"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse", N_("Select Inverse"), false, hotkey::SCOPE_EDITOR, "" },

@@ -587,11 +587,11 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 			preferences::toggle_minimap_draw_terrain();
 			disp.recalculate_minimap();
 			break;
-		case HOTKEY_MINIMAP_TERRAIN_CODING:
+		case HOTKEY_MINIMAP_CODING_TERRAIN:
 			preferences::toggle_minimap_terrain_coding();
 			disp.recalculate_minimap();
 			break;
-		case HOTKEY_MINIMAP_UNIT_CODING:
+		case HOTKEY_MINIMAP_CODING_UNIT:
 			preferences::toggle_minimap_movement_coding();
 			disp.recalculate_minimap();
 			break;
