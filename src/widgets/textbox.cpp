@@ -49,6 +49,13 @@ textbox::~textbox()
 {
 }
 
+void textbox::update_location(SDL_Rect const &rect)
+{
+	scrollarea::update_location(rect);
+	update_text_cache(true);
+	set_dirty(true);
+}
+
 void textbox::set_inner_location(SDL_Rect const &rect)
 {
 	bg_register(rect);

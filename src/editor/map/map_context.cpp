@@ -58,7 +58,7 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 	, xp_mod_(70)
     , victory_defeated_(true)
 	, random_time_(false)
-	, active_area_(1)
+	, active_area_(-1)
 	, labels_(disp, NULL)
 	, units_()
 	, teams_()
@@ -89,7 +89,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, xp_mod_(70)
 	, victory_defeated_(true)
 	, random_time_(false)
-	, active_area_(0)
+	, active_area_(-1)
 	, labels_(disp, NULL)
 	, units_()
 	, teams_()
@@ -207,9 +207,23 @@ void map_context::set_starting_time(int time)
 		actions_since_save_++;
 }
 
+void map_context::remove_area(int index)
+{
+	tod_manager_->remove_time_area(index);
+	active_area_--;
+	actions_since_save_++;
+}
+
 void map_context::replace_schedule(const std::vector<time_of_day>& schedule)
 {
 	tod_manager_->replace_schedule(schedule);
+	if (!pure_map_)
+		actions_since_save_++;
+}
+
+void map_context::replace_local_schedule(const std::vector<time_of_day>& schedule)
+{
+	tod_manager_->replace_local_schedule(schedule, active_area_);
 	if (!pure_map_)
 		actions_since_save_++;
 }

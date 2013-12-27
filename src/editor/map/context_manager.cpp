@@ -31,6 +31,7 @@
 #include "gui/dialogs/editor_generate_map.hpp"
 #include "gui/dialogs/editor_new_map.hpp"
 #include "gui/dialogs/editor_resize_map.hpp"
+#include "gui/dialogs/edit_text.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -225,7 +226,6 @@ void context_manager::edit_side_dialog(int side)
 	}
 }
 
-
 void context_manager::edit_scenario_dialog()
 {
 	// TODO
@@ -319,7 +319,7 @@ void context_manager::expand_areas_menu(std::vector<std::string>& items)
 				const std::string& area = area_ids[mci];
 				std::stringstream label;
 				label << "[" << mci+1 << "] ";
-				label << (area.empty() ? _("(New Area)") : area);
+				label << (area.empty() ? _("(Unnamed Area)") : area);
 				area_entries.push_back(label.str());
 			}
 
@@ -357,27 +357,44 @@ void context_manager::expand_time_menu(std::vector<std::string>& items)
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "editor-switch-time") {
 			items.erase(items.begin() + i);
-			std::vector<std::string> contexts;
+			std::vector<std::string> times;
 
 			tod_manager* tod_m = get_map_context().get_time_manager();
 
 			BOOST_FOREACH(const time_of_day& time, tod_m->times()) {
 
-				//TODO
-				//for (size_t mci = 0; mci < tod_m->times().size(); ++mci) {
-				//const time_of_day& time = tod_m->times()[mci];
-
 				std::stringstream label;
-				//  label << "[" << mci+1 << "] ";
 				if (!time.image.empty())
 					label << IMAGE_PREFIX << time.image << IMG_TEXT_SEPARATOR;
-					//<< COLUMN_SEPARATOR;
 				label << time.name;
-				//label << (time.name.empty() ? _("(New Side)") : time.name);
-				contexts.push_back(label.str());
+				times.push_back(label.str());
 			}
 
-			items.insert(items.begin() + i, contexts.begin(), contexts.end());
+			items.insert(items.begin() + i, times.begin(), times.end());
+			break;
+		}
+	}
+}
+
+void context_manager::expand_local_time_menu(std::vector<std::string>& items)
+{
+	for (unsigned int i = 0; i < items.size(); ++i) {
+		if (items[i] == "editor-assign-local-time") {
+			items.erase(items.begin() + i);
+			std::vector<std::string> times;
+
+			tod_manager* tod_m = get_map_context().get_time_manager();
+
+			BOOST_FOREACH(const time_of_day& time, tod_m->times(get_map_context().get_active_area())) {
+
+				std::stringstream label;
+				if (!time.image.empty())
+					label << IMAGE_PREFIX << time.image << IMG_TEXT_SEPARATOR;
+				label << time.name;
+				times.push_back(label.str());
+			}
+
+			items.insert(items.begin() + i, times.begin(), times.end());
 			break;
 		}
 	}
@@ -409,6 +426,15 @@ void context_manager::perform_refresh(const editor_action& action, bool drag_par
 {
 	get_map_context().perform_action(action);
 	refresh_after_action(drag_part);
+}
+
+void context_manager::rename_area_dialog()
+{
+	int active_area = get_map_context().get_active_area();
+	std::string name = get_map_context().get_time_manager()->get_area_ids()[active_area];
+	if (gui2::tedit_text::execute(N_("Rename Area"), N_("ID"), name, gui_.video())) {
+		get_map_context().get_time_manager()->set_area_id(active_area, name);
+	}
 }
 
 void context_manager::create_mask_to_dialog()

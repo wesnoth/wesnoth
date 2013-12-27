@@ -64,7 +64,9 @@ enum menu_type {
 	AREA,
 	SIDE,
 	TIME,
+	LOCAL_TIME,
 	SCHEDULE,
+	LOCAL_SCHEDULE,
 	MUSIC
 };
 
@@ -143,6 +145,12 @@ class editor_controller : public controller_base,
 		void export_selection_coords();
 
 		void update_mouse_action_highlights();
+
+		/** Save the current selection to the active area. */
+		void save_area();
+
+		/** Add a new area to the current context, filled with the selection if any. */
+		void add_area();
 
 		/* mouse_handler_base overrides */
 		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location);

@@ -193,13 +193,13 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_LANGUAGE:
 			change_language();
 			break;
-		case HOTKEY_PLAY_REPLAY:
+		case HOTKEY_REPLAY_PLAY:
 			play_replay();
 			break;
-		case HOTKEY_RESET_REPLAY:
+		case HOTKEY_REPLAY_RESET:
 			reset_replay();
 			break;
-		case HOTKEY_STOP_REPLAY:
+		case HOTKEY_REPLAY_STOP:
 			stop_replay();
 			break;
 		case HOTKEY_REPLAY_NEXT_TURN:
@@ -263,6 +263,23 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 }
 
 void command_executor::set_button_state(display& disp) {
+
+	BOOST_FOREACH(const theme::menu& menu, disp.get_theme().menus()) {
+
+		gui::button* button = disp.find_menu_button(menu.get_id());
+		if (!button) continue;
+		bool enabled = false;
+		BOOST_FOREACH(const std::string& command, menu.items()) {
+
+			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
+			bool can_execute = can_execute_command(command_obj);
+			if (can_execute) {
+				enabled = true;
+				break;
+			}
+		}
+		button->enable(enabled);
+	}
 
 	BOOST_FOREACH(const theme::action& action, disp.get_theme().actions()) {
 
@@ -360,7 +377,7 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 
 	const theme::menu* menu = disp.get_theme().get_menu_item(command);
 	if (menu)
-		return "buttons/fold-arrow.png";
+		return "buttons/fold-arrow.png"; // TODO should not be hardcoded
 
 	if (file_exists(game_config::path + "/images/" + base_image_name)) {
 		switch (state) {
@@ -570,11 +587,11 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 			preferences::toggle_minimap_draw_terrain();
 			disp.recalculate_minimap();
 			break;
-		case HOTKEY_MINIMAP_TERRAIN_CODING:
+		case HOTKEY_MINIMAP_CODING_TERRAIN:
 			preferences::toggle_minimap_terrain_coding();
 			disp.recalculate_minimap();
 			break;
-		case HOTKEY_MINIMAP_UNIT_CODING:
+		case HOTKEY_MINIMAP_CODING_UNIT:
 			preferences::toggle_minimap_movement_coding();
 			disp.recalculate_minimap();
 			break;

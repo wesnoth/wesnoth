@@ -88,9 +88,10 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_CLEAR_LABELS, "clearlabels", N_("Clear Labels"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_SHOW_ENEMY_MOVES, "showenemymoves", N_("Show Enemy Moves"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_BEST_ENEMY_MOVES, "bestenemymoves", N_("Best Possible Enemy Moves"), false, hotkey::SCOPE_GAME, "" },
-	{ hotkey::HOTKEY_PLAY_REPLAY, "playreplay", N_("Play Replay"), false, hotkey::SCOPE_GAME, "" },
-	{ hotkey::HOTKEY_RESET_REPLAY, "resetreplay", N_("Reset Replay"), false, hotkey::SCOPE_GAME, "" },
-	{ hotkey::HOTKEY_STOP_REPLAY, "stopreplay", N_("Stop Replay"), false, hotkey::SCOPE_GAME, "" },
+
+	{ hotkey::HOTKEY_REPLAY_PLAY, "playreplay", N_("Play Replay"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_REPLAY_RESET, "resetreplay", N_("Reset Replay"), false, hotkey::SCOPE_GAME, "" },
+	{ hotkey::HOTKEY_REPLAY_STOP, "stopreplay", N_("Stop Replay"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_REPLAY_NEXT_TURN, "replaynextturn", N_("Next Turn"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_REPLAY_NEXT_SIDE, "replaynextside", N_("Next Side"), false, hotkey::SCOPE_GAME, "" },
 	{ hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING, "replayshoweverything", N_("Full Map"), false, hotkey::SCOPE_GAME, "" },
@@ -114,9 +115,13 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_WB_SUPPOSE_DEAD, "wbsupposedead", N_("whiteboard^Suppose Dead"), false, hotkey::SCOPE_GAME, "" },
 
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_CLOSE_MAP, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_SWITCH_MAP, "editor-switch-map", N_("Switch Map"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_SWITCH_AREA, "editor-switch-area", N_("Switch Area"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_MAP_CLOSE, "editor-close-map", N_("Close Map"), false, hotkey::SCOPE_EDITOR, "" },
+
+	// These are not really hotkey items but menu entries to get expanded.
+	// They need to have their own hotkey to control their active state.
+	{ hotkey::HOTKEY_EDITOR_PLAYLIST, "editor-playlist", N_("Switch Time of Day"), true, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_EDITOR_CUSTOM_TODS, "editor-custom-tods", N_("Custom Time of Day Creator"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UNDO, "editor-partial-undo", N_("Partial Undo"), false, hotkey::SCOPE_EDITOR, "" },
@@ -129,14 +134,12 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_MAP_SAVE_ALL, "editor-map-save-all", N_("Save All Maps"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_REVERT, "editor-map-revert", N_("Revert All Changes"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_INFO, "editor-map-info", N_("Map Information"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_SIDE_NEW, "editor-side-new", N_("Add New Side"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_SIDE_SWITCH, "editor-switch-side", N_("Switch Side"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_ITEM_SWAP, "editor-terrain-palette-swap", N_("Swap Foreground/Background Palette Item"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_GROUPS, "editor-palette-groups", N_("Change Palette Group"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_UPSCROLL, "editor-palette-upscroll", N_("Scroll Palette Left"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_PALETTE_DOWNSCROLL, "editor-palette-downscroll", N_("Scroll Palette Right"), false, hotkey::SCOPE_EDITOR, "" },
 
-	{ hotkey::HOTKEY_EDITOR_SWITCH_TIME, "editor-switch-time", N_("Switch Time of Day"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_SIDE_NEW, "editor-side-new", N_("Add New Side"), false, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_EDITOR_TOOL_NEXT, "editor-tool-next", N_("Next Tool"), false, hotkey::SCOPE_EDITOR, "" },
 
@@ -156,8 +159,8 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, hotkey::SCOPE_EDITOR, "" },
 
-	{ hotkey::HOTKEY_MINIMAP_UNIT_CODING, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, hotkey::SCOPE_GENERAL, "" },
-	{ hotkey::HOTKEY_MINIMAP_TERRAIN_CODING, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_CODING_UNIT, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, hotkey::SCOPE_GENERAL, "" },
+	{ hotkey::HOTKEY_MINIMAP_CODING_TERRAIN, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, hotkey::SCOPE_GENERAL, "" },
 
 	{ hotkey::HOTKEY_MINIMAP_DRAW_UNITS, "minimap-draw-units", N_("Toggle Minimap Unit Drawing"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES, "minimap-draw-villages", N_("Toggle Minimap Village Drawing"), false, hotkey::SCOPE_GENERAL, "" },
@@ -170,10 +173,11 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_BRUSH_3, "editor-brush-3", N_("Radius Two"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_NW_SE, "editor-brush-nw-se", N_("Brush NW-SE"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_BRUSH_SW_NE, "editor-brush-sw-ne", N_("Brush SW-NE"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button pastes from the clipboard, right brings up a context menu.") },
-	{ hotkey::HOTKEY_EDITOR_EXPORT_SELECTION_COORDS, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), true, hotkey::SCOPE_EDITOR, "" },
+
+	{ hotkey::HOTKEY_EDITOR_SELECTION_CUT, "editor-cut", N_("Cut"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_COPY, "editor-copy", N_("Copy"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_CLIPBOARD_PASTE, "editor-paste", N_("Paste"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button pastes from the clipboard, right brings up a context menu.") },
+	{ hotkey::HOTKEY_EDITOR_SELECTION_EXPORT, "editor-export-selection-coords", N_("Export Selected Coordinates to System Clipboard"), true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SELECT_ALL, "editor-select-all", N_("Select All"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SELECT_INVERSE, "editor-select-inverse", N_("Select Inverse"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SELECT_NONE, "editor-select-none", N_("Select None"), false, hotkey::SCOPE_EDITOR, "" },
@@ -204,7 +208,10 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_DRAW_COORDINATES, "editor-draw-coordinates", N_("Draw Hex Coordinates"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_DRAW_TERRAIN_CODES, "editor-draw-terrain-codes", N_("Draw Terrain Codes"), false, hotkey::SCOPE_EDITOR, "" },
 
-	{ hotkey::HOTKEY_EDITOR_AREA_DEFINE, "editor-define-area", N_("Define (Time) Area"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_AREA_SAVE,   "editor-save-area",   N_("Save Selection to Area"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_AREA_RENAME, "editor-rename-area", N_("Rename Selected Area"),   false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_AREA_REMOVE, "editor-remove-area", N_("Remove Selected Area"),   false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_AREA_ADD,    "editor-add-area",    N_("Add new Area"),           false, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SIDE_EDIT, "editor-side-edit", N_("Edit Side"), false, hotkey::SCOPE_EDITOR, "" },

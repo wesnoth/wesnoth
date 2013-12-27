@@ -44,6 +44,7 @@ public:
 
 protected:
 	virtual void draw_contents();
+	virtual void update_location(SDL_Rect const &rect);
 	virtual void set_inner_location(SDL_Rect const &);
 	virtual void scroll(unsigned int pos);
 

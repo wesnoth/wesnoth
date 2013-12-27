@@ -1,0 +1,2871 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Utility macro reference</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="shortcut icon" type="image/png" href="/mw/skins/glamdrol/ico.png" />
+<style type="text/css">
+/*<![CDATA[*/
+@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');
+@import url('http://www.wesnoth.org/mw/skins/glamdrol/home.css');
+
+.toplink           {float:right; font-size: small;}
+.file_header       {font-style:normal; font-weight:bold;}
+.file_explanation  {font-style:normal; font-weight:bold;}
+.macro_name        {font-style:normal; font-weight:bold;}
+.macro_formals     {font-style:italic; font-weight:normal;}
+.macro_explanation {font-style:normal; font-weight:normal;}
+.listing           {font-style:normal; font-family:monospace;}
+/*]]>*/
+</style>
+</head>
+<body>
+
+<div id="global">
+
+<div id="header">
+  <div id="logo">
+    <a href="home"><img alt="Wesnoth logo" src="http://www.wesnoth.org/mw/skins/glamdrol/wesnoth-logo.jpg" /></a>
+  </div>
+</div>
+
+<div id="nav">
+  <ul>
+    <li><a href="http://www.wesnoth.org/">Home</a></li>
+    <li><a href="http://wiki.wesnoth.org/Play">Play</a></li>
+    <li><a href="http://wiki.wesnoth.org/Create">Create</a></li>
+    <li><a href="http://forums.wesnoth.org/">Forums</a></li>
+    <li><a href="http://wiki.wesnoth.org/Support">Support</a></li>
+    <li><a href="http://wiki.wesnoth.org/Project">Project</a></li>
+    <li><a href="http://wiki.wesnoth.org/Credits">Credits</a></li>
+    <li><a href="http://wiki.wesnoth.org/UsefulLinks">Links</a></li>
+  </ul>
+</div>
+
+<div id="main">
+
+<p>This page is an automatically-generated reference for all the
+utility macros with documentation strings in the Wesnoth source
+distribution. It will reflect the state of the latest development
+release. It can be generated with <code>make
+macro-reference.html</code> in the data/tools-directory.</p>
+
+<p>The organization of these macros may change in future releases,
+and some may be moved out of the default load path.  If in doubt,
+use <tt>wmlscope</tt> to check your campaign against the 
+macros in the Wesnoth distribution.</p>
+warning: ../../data/core/macros/ has no export property
+<p class='filelist'>Covered macro files: <a href='#file:abilities.cfg'>abilities.cfg</a> <a href='#file:ai.cfg'>ai.cfg</a> <a href='#file:ai_candidate_actions.cfg'>ai_candidate_actions.cfg</a> <a href='#file:ai_controller.cfg'>ai_controller.cfg</a> <a href='#file:amla.cfg'>amla.cfg</a> <a href='#file:animation-utils.cfg'>animation-utils.cfg</a> <a href='#file:animation-utils2.cfg'>animation-utils2.cfg</a> <a href='#file:conditional-utils.cfg'>conditional-utils.cfg</a> <a href='#file:debug-utils.cfg'>debug-utils.cfg</a> <a href='#file:deprecated-utils.cfg'>deprecated-utils.cfg</a> <a href='#file:event-utils.cfg'>event-utils.cfg</a> <a href='#file:image-utils.cfg'>image-utils.cfg</a> <a href='#file:interface-utils.cfg'>interface-utils.cfg</a> <a href='#file:items.cfg'>items.cfg</a> <a href='#file:objective-utils.cfg'>objective-utils.cfg</a> <a href='#file:scenario-utils.cfg'>scenario-utils.cfg</a> <a href='#file:side-utils.cfg'>side-utils.cfg</a> <a href='#file:sound-utils.cfg'>sound-utils.cfg</a> <a href='#file:teleport-utils.cfg'>teleport-utils.cfg</a> <a href='#file:terrain-utils.cfg'>terrain-utils.cfg</a> <a href='#file:traits.cfg'>traits.cfg</a> <a href='#file:unit-utils.cfg'>unit-utils.cfg</a> <a href='#file:utils.cfg'>utils.cfg</a></p>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:abilities.cfg' class='file_header'>From file: abilities.cfg</h1>
+<p class="file_explanation">Ability macros to be included in the SingleWML description of a unit.
+</p>
+<dl>
+
+<dt id='ABILITY_HEALS'>
+<em class='macro_name'>ABILITY_HEALS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the heal+4 ability to be included in an [abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_UNPOISON'>
+<em class='macro_name'>ABILITY_UNPOISON</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the cure-poison ability to be included
+in an [abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_CURES'>
+<em class='macro_name'>ABILITY_CURES</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the cure ability (which entails heal+8) to be
+included in an [abilities] clause..
+</p>
+</dd>
+
+<dt id='ABILITY_REGENERATES'>
+<em class='macro_name'>ABILITY_REGENERATES</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Regenerate ability to be included in an [abilities]
+clause.
+</p>
+</dd>
+
+<dt id='ABILITY_STEADFAST'>
+<em class='macro_name'>ABILITY_STEADFAST</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Steadfast ability to be included in an [abilities]
+clause.
+</p>
+</dd>
+
+<dt id='ABILITY_LEADERSHIP_LEVEL_1'>
+<em class='macro_name'>ABILITY_LEADERSHIP_LEVEL_1</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Leadership (level 1) ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_LEADERSHIP_LEVEL_2'>
+<em class='macro_name'>ABILITY_LEADERSHIP_LEVEL_2</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Leadership (level 2) ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_LEADERSHIP_LEVEL_3'>
+<em class='macro_name'>ABILITY_LEADERSHIP_LEVEL_3</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Leadership (level 3) ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_LEADERSHIP_LEVEL_4'>
+<em class='macro_name'>ABILITY_LEADERSHIP_LEVEL_4</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Leadership (level 4) ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_LEADERSHIP_LEVEL_5'>
+<em class='macro_name'>ABILITY_LEADERSHIP_LEVEL_5</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Leadership (level 5) ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_SKIRMISHER'>
+<em class='macro_name'>ABILITY_SKIRMISHER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Skirmisher ability to be included in an [abilities]
+clause.
+</p>
+</dd>
+
+<dt id='ABILITY_ILLUMINATES'>
+<em class='macro_name'>ABILITY_ILLUMINATES</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Illuminates ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_TELEPORT'>
+<em class='macro_name'>ABILITY_TELEPORT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the TELEPORT ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_AMBUSH'>
+<em class='macro_name'>ABILITY_AMBUSH</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Ambush ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_NIGHTSTALK'>
+<em class='macro_name'>ABILITY_NIGHTSTALK</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Nightstalk ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_CONCEALMENT'>
+<em class='macro_name'>ABILITY_CONCEALMENT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Concealment ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_SUBMERGE'>
+<em class='macro_name'>ABILITY_SUBMERGE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Submerge ability to be included in an
+[abilities] clause.
+</p>
+</dd>
+
+<dt id='ABILITY_FEEDING'>
+<em class='macro_name'>ABILITY_FEEDING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Feeding ability to be included in an
+[abilities] clause.  Note: this is deliberately unbalanced WML,
+in order to close the abilities clause then insert the event
+then reopen the abilities clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_BERSERK'>
+<em class='macro_name'>WEAPON_SPECIAL_BERSERK</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Berserk ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_BACKSTAB'>
+<em class='macro_name'>WEAPON_SPECIAL_BACKSTAB</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Backstab ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_PLAGUE_TYPE'>
+<em class='macro_name'>WEAPON_SPECIAL_PLAGUE_TYPE</em> <em class='macro_formals'>TYPE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Plague ability to be included in a
+[specials] clause (with type specifier).
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_PLAGUE'>
+<em class='macro_name'>WEAPON_SPECIAL_PLAGUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Plague ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_SLOW'>
+<em class='macro_name'>WEAPON_SPECIAL_SLOW</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Slow ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_PETRIFY'>
+<em class='macro_name'>WEAPON_SPECIAL_PETRIFY</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Petrify ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_MARKSMAN'>
+<em class='macro_name'>WEAPON_SPECIAL_MARKSMAN</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Marksman ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_MAGICAL'>
+<em class='macro_name'>WEAPON_SPECIAL_MAGICAL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Magical (targeting) ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_SWARM'>
+<em class='macro_name'>WEAPON_SPECIAL_SWARM</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Swarm ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_CHARGE'>
+<em class='macro_name'>WEAPON_SPECIAL_CHARGE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Charge ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_DRAIN'>
+<em class='macro_name'>WEAPON_SPECIAL_DRAIN</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Drain ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_FIRSTSTRIKE'>
+<em class='macro_name'>WEAPON_SPECIAL_FIRSTSTRIKE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the First-strike ability to be included in a
+[specials] clause.
+</p>
+</dd>
+
+<dt id='WEAPON_SPECIAL_POISON'>
+<em class='macro_name'>WEAPON_SPECIAL_POISON</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the Poison ability to be included in a
+[specials] clause.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:ai.cfg' class='file_header'>From file: ai.cfg</h1>
+<dl>
+
+<dt id='MODIFY_AI_ADD_ASPECT'>
+<em class='macro_name'>MODIFY_AI_ADD_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add facet to an aspect
+</p><p>example: {MODIFY_AI_ADD_ASPECT 1 aggression ([facet] id=always value=0.5 [/facet])}
+example: {MODIFY_AI_ADD_ASPECT 1 leader_goal ([facet] id=always [value]x=1 y=2[/value] [/facet])}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_STAGE'>
+<em class='macro_name'>MODIFY_AI_ADD_STAGE</em> <em class='macro_formals'>SIDE STAGE_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add stage
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_GOAL'>
+<em class='macro_name'>MODIFY_AI_ADD_GOAL</em> <em class='macro_formals'>SIDE GOAL_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add goal
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_CANDIDATE_ACTION'>
+<em class='macro_name'>MODIFY_AI_ADD_CANDIDATE_ACTION</em> <em class='macro_formals'>SIDE STAGE_ID CANDIDATE_ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add candidate action to a stage
+</p>
+</dd>
+
+<dt id='MODIFY_AI_DELETE_ASPECT'>
+<em class='macro_name'>MODIFY_AI_DELETE_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete facet from aspect
+</p><p>example: {MODIFY_AI_DELETE_ASPECT 1 aggression night}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_DELETE_STAGE'>
+<em class='macro_name'>MODIFY_AI_DELETE_STAGE</em> <em class='macro_formals'>SIDE STAGE_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete a stage
+</p><p>example: {MODIFY_AI_DELETE_STAGE 1 fallback}
+example: {MODIFY_AI_DELETE_STAGE 1 3}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_DELETE_GOAL'>
+<em class='macro_name'>MODIFY_AI_DELETE_GOAL</em> <em class='macro_formals'>SIDE GOAL_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete a goal
+</p><p>example: {MODIFY_AI_DELETE_GOAL 1 kill_undead}
+example: {MODIFY_AI_DELETE_GOAL 1 0}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_DELETE_CANDIDATE_ACTION'>
+<em class='macro_name'>MODIFY_AI_DELETE_CANDIDATE_ACTION</em> <em class='macro_formals'>SIDE STAGE_ID CANDIDATE_ACTION_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete candidate action from a stage
+</p><p>example: {MODIFY_AI_DELETE_CANDIDATE_ACTION 1 special_poisoning_formula}
+example: {MODIFY_AI_DELETE_CANDIDATE_ACTION 1 0}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_TRY_DELETE_ASPECT'>
+<em class='macro_name'>MODIFY_AI_TRY_DELETE_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete facet from aspect
+</p><p>example: {MODIFY_AI_TRY_DELETE_ASPECT 1 aggression night}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_TRY_DELETE_STAGE'>
+<em class='macro_name'>MODIFY_AI_TRY_DELETE_STAGE</em> <em class='macro_formals'>SIDE STAGE_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete a stage
+</p><p>example: {MODIFY_AI_TRY_DELETE_STAGE 1 fallback}
+example: {MODIFY_AI_TRY_DELETE_STAGE 1 3}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_TRY_DELETE_GOAL'>
+<em class='macro_name'>MODIFY_AI_TRY_DELETE_GOAL</em> <em class='macro_formals'>SIDE GOAL_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete a goal
+</p><p>example: {MODIFY_AI_TRY_DELETE_GOAL 1 kill_undead}
+example: {MODIFY_AI_TRY_DELETE_GOAL 2 *}
+example: {MODIFY_AI_TRY_DELETE_GOAL 3 0}
+</p>
+</dd>
+
+<dt id='MODIFY_AI_TRY_DELETE_CANDIDATE_ACTION'>
+<em class='macro_name'>MODIFY_AI_TRY_DELETE_CANDIDATE_ACTION</em> <em class='macro_formals'>SIDE STAGE_ID CANDIDATE_ACTION_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, delete candidate action from a stage
+</p><p>example: {MODIFY_AI_TRY_DELETE_CANDIDATE_ACTION 1 special_poisoning_formula}
+example: {MODIFY_AI_TRY_DELETE_CANDIDATE_ACTION 1 0}
+</p>
+</dd>
+
+<dt id='AI_ASPECT'>
+<em class='macro_name'>AI_ASPECT</em> <em class='macro_formals'>ASPECT_ID FACET_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">macro to define a named facet of ai aspect
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_ASPECT'>
+<em class='macro_name'>AI_SIMPLE_ASPECT</em> <em class='macro_formals'>ASPECT_ID FACET_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect with value=VALUE
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_ALWAYS_ASPECT'>
+<em class='macro_name'>AI_SIMPLE_ALWAYS_ASPECT</em> <em class='macro_formals'>ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is always active
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_ASPECT_FOR_TIME_OF_DAY'>
+<em class='macro_name'>AI_SIMPLE_ASPECT_FOR_TIME_OF_DAY</em> <em class='macro_formals'>ASPECT_ID FACET_ID TIMEOFDAY_VALUE VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is active during a specified time of day
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_NIGHT_ASPECT'>
+<em class='macro_name'>AI_SIMPLE_NIGHT_ASPECT</em> <em class='macro_formals'>ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is active during the night
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_DAY_ASPECT'>
+<em class='macro_name'>AI_SIMPLE_DAY_ASPECT</em> <em class='macro_formals'>ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is active during the day
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_ASPECT_VALUE'>
+<em class='macro_name'>AI_SIMPLE_ASPECT_VALUE</em> <em class='macro_formals'>ASPECT_ID FACET_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_ALWAYS_ASPECT_VALUE'>
+<em class='macro_name'>AI_SIMPLE_ALWAYS_ASPECT_VALUE</em> <em class='macro_formals'>ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is always active
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_ASPECT_FOR_TIME_OF_DAY_VALUE'>
+<em class='macro_name'>AI_SIMPLE_ASPECT_FOR_TIME_OF_DAY_VALUE</em> <em class='macro_formals'>ASPECT_ID FACET_ID TIMEOFDAY_VALUE VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is active during a specified time of day
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_NIGHT_ASPECT_VALUE'>
+<em class='macro_name'>AI_SIMPLE_NIGHT_ASPECT_VALUE</em> <em class='macro_formals'>ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is active during the night
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_DAY_ASPECT_VALUE'>
+<em class='macro_name'>AI_SIMPLE_DAY_ASPECT_VALUE</em> <em class='macro_formals'>ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">simple aspect which is active during the day
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_ASPECT'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple facet to an aspect
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_ALWAYS_ASPECT'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_ALWAYS_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is always active
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_ASPECT_FOR_TIME_OF_DAY'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_ASPECT_FOR_TIME_OF_DAY</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_ID TIMEOFDAY_VALUE VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is active during a specified time of day
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_NIGHT_ASPECT'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_NIGHT_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is active during the night
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_DAY_ASPECT'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_DAY_ASPECT</em> <em class='macro_formals'>SIDE ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is active during the day
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_ASPECT_VALUE'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_ASPECT_VALUE</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple facet to an aspect
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_ALWAYS_ASPECT_VALUE'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_ALWAYS_ASPECT_VALUE</em> <em class='macro_formals'>SIDE ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is always active
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_ASPECT_FOR_TIME_OF_DAY_VALUE'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_ASPECT_FOR_TIME_OF_DAY_VALUE</em> <em class='macro_formals'>SIDE ASPECT_ID FACET_ID TIMEOFDAY_VALUE VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is active during a specified time of day
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_NIGHT_ASPECT_VALUE'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_NIGHT_ASPECT_VALUE</em> <em class='macro_formals'>SIDE ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is active during the night
+</p>
+</dd>
+
+<dt id='MODIFY_AI_ADD_SIMPLE_DAY_ASPECT_VALUE'>
+<em class='macro_name'>MODIFY_AI_ADD_SIMPLE_DAY_ASPECT_VALUE</em> <em class='macro_formals'>SIDE ASPECT_ID VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">modify ai, add simple aspect which is active during the day
+</p>
+</dd>
+
+<dt id='AI_NO_SCOUTS'>
+<em class='macro_name'>AI_NO_SCOUTS</em>
+</dt>
+<dd>
+<p class="macro_explanation">make the AI team not recruit scouts.
+</p>
+</dd>
+
+<dt id='AI_NEW_SYNTAX'>
+<em class='macro_name'>AI_NEW_SYNTAX</em>
+</dt>
+<dd>
+<p class="macro_explanation">use stable 1.8 ai syntax
+</p>
+</dd>
+
+<dt id='AI_SCALE_ATTACK_DEPTH_BY_DIFFICULTY'>
+<em class='macro_name'>AI_SCALE_ATTACK_DEPTH_BY_DIFFICULTY</em>
+</dt>
+<dd>
+<p class="macro_explanation">change attack depth depending on difficulty
+ifdef EASY
+</p>
+</dd>
+
+<dt id='AI_DEACTIVATE_SAVE_GOLD'>
+<em class='macro_name'>AI_DEACTIVATE_SAVE_GOLD</em>
+</dt>
+<dd>
+<p class="macro_explanation">disable aspect recruitment_save_gold
+</p>
+</dd>
+
+<dt id='AI_NO_RECRUITMENT'>
+<em class='macro_name'>AI_NO_RECRUITMENT</em>
+</dt>
+<dd>
+<p class="macro_explanation">disable recruitment
+</p>
+</dd>
+
+<dt id='AI_SIMPLE_FORMULA_AI_EXPERIMENTAL_RECRUITMENT'>
+<em class='macro_name'>AI_SIMPLE_FORMULA_AI_EXPERIMENTAL_RECRUITMENT</em>
+</dt>
+<dd>
+<p class="macro_explanation">enable new formula-ai recruitment made by Dragonking (experimental!)
+</p>
+</dd>
+
+<dt id='AI_ASPECT_LEADER_GOAL_MOVE_TO'>
+<em class='macro_name'>AI_ASPECT_LEADER_GOAL_MOVE_TO</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">leader goal: move to X Y and be free
+</p>
+</dd>
+
+<dt id='AI_ASPECT_LEADER_GOAL_MOVE_TO_AND_STAY_THERE'>
+<em class='macro_name'>AI_ASPECT_LEADER_GOAL_MOVE_TO_AND_STAY_THERE</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">leader goal: move to X Y and stay there
+</p>
+</dd>
+
+<dt id='CLEAR_AI_ALWAYS_ASPECT_LEADER_GOAL'>
+<em class='macro_name'>CLEAR_AI_ALWAYS_ASPECT_LEADER_GOAL</em> <em class='macro_formals'>SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">clear AI leader goal "always"
+</p>
+</dd>
+
+<dt id='AI_ASPECT_LEADER_GOAL_RISKY_MOVE_TO'>
+<em class='macro_name'>AI_ASPECT_LEADER_GOAL_RISKY_MOVE_TO</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">leader goal: move to X Y and be free
+</p>
+</dd>
+
+<dt id='AI_ASPECT_LEADER_GOAL_RISKY_MOVE_TO_AND_STAY_THERE'>
+<em class='macro_name'>AI_ASPECT_LEADER_GOAL_RISKY_MOVE_TO_AND_STAY_THERE</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">leader goal: move to X Y and stay there
+</p>
+</dd>
+
+<dt id='EXPERIMENTAL_AI'>
+<em class='macro_name'>EXPERIMENTAL_AI</em>
+</dt>
+<dd>
+<p class="macro_explanation">Experimental AI with alternative recruitment, castle switching, alternative retreating,
+village grabbing, poison spreading, healer placement, village hunting and
+move-to-enemy candidate actions.
+Put this into the [side][ai] tag.
+Does not work in [modify_side][ai] or [modify_ai] at the moment.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:ai_candidate_actions.cfg' class='file_header'>From file: ai_candidate_actions.cfg</h1>
+<dl>
+
+<dt id='AI_CA_GOTO'>
+<em class='macro_name'>AI_CA_GOTO</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: goto
+</p>
+</dd>
+
+<dt id='AI_CA_RECRUITMENT'>
+<em class='macro_name'>AI_CA_RECRUITMENT</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: recruitment
+</p>
+</dd>
+
+<dt id='AI_CA_MOVE_LEADER_TO_GOALS'>
+<em class='macro_name'>AI_CA_MOVE_LEADER_TO_GOALS</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: move_leader_to_goals
+</p>
+</dd>
+
+<dt id='AI_CA_MOVE_LEADER_TO_KEEP'>
+<em class='macro_name'>AI_CA_MOVE_LEADER_TO_KEEP</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: move_leader_to_keep
+</p>
+</dd>
+
+<dt id='AI_CA_COMBAT'>
+<em class='macro_name'>AI_CA_COMBAT</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: combat
+</p>
+</dd>
+
+<dt id='AI_CA_HEALING'>
+<em class='macro_name'>AI_CA_HEALING</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: healing
+</p>
+</dd>
+
+<dt id='AI_CA_VILLAGES'>
+<em class='macro_name'>AI_CA_VILLAGES</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: villages
+</p>
+</dd>
+
+<dt id='AI_CA_RETREAT'>
+<em class='macro_name'>AI_CA_RETREAT</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: retreat
+</p>
+</dd>
+
+<dt id='AI_CA_MOVE_TO_TARGETS'>
+<em class='macro_name'>AI_CA_MOVE_TO_TARGETS</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: move_to_targets
+</p>
+</dd>
+
+<dt id='AI_CA_LEADER_SHARES_KEEP'>
+<em class='macro_name'>AI_CA_LEADER_SHARES_KEEP</em>
+</dt>
+<dd>
+<p class="macro_explanation">RCA AI candidate action: leader_shares_keep
+</p>
+</dd>
+
+<dt id='AI_CA_SIMPLE_MOVE_TO_TARGETS'>
+<em class='macro_name'>AI_CA_SIMPLE_MOVE_TO_TARGETS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Extra candidate action: simple_move_to_targets
+</p>
+</dd>
+
+<dt id='AI_CA_POISONING'>
+<em class='macro_name'>AI_CA_POISONING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Extra candidate action: Formula AI CA for poisoners to spread poison around
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:ai_controller.cfg' class='file_header'>From file: ai_controller.cfg</h1>
+<dl>
+
+<dt id='AI_CONTROLLER_ALLOW_UNIT_CONTROL'>
+<em class='macro_name'>AI_CONTROLLER_ALLOW_UNIT_CONTROL</em> <em class='macro_formals'>CONTROLLER_SIDE UNIT_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">Right-click content menu item for issuing instructions to an allied AI unit
+</p>
+</dd>
+
+<dt id='AI_CONTROLLER_ALLOW_LEADER_CONTROL'>
+<em class='macro_name'>AI_CONTROLLER_ALLOW_LEADER_CONTROL</em> <em class='macro_formals'>CONTROLLER_SIDE CONTROLLED_SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Right-click content menu item for issuing instructions to an allied AI side's leader
+</p>
+</dd>
+
+<dt id='AI_CONTROLLER_NOTE'>
+<em class='macro_name'>AI_CONTROLLER_NOTE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Note for the objectives that instructions can be issued to an allied AI side
+</p>
+</dd>
+
+<dt id='AI_CONTROLLER'>
+<em class='macro_name'>AI_CONTROLLER</em> <em class='macro_formals'>AFFIX PLAYER_SIDES ALLY_SIDES VARIABLES_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Right-click content menu item for issuing instructions to an allied AI side
+</p>
+</dd>
+
+<dt id='AI_CONTROLLER_FUTURE_STRINGS'>
+<em class='macro_name'>AI_CONTROLLER_FUTURE_STRINGS</em>
+</dt>
+<dd>
+<p class="macro_explanation">These will be used for the special orders menu and the order for telling
+the ally leader to move someplace
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:amla.cfg' class='file_header'>From file: amla.cfg</h1>
+<p class="file_explanation">this file contains macros for After Max Level Advancement (AMLA)
+</p>
+<dl>
+
+<dt id='AMLA_DEFAULT'>
+<em class='macro_name'>AMLA_DEFAULT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Canned definition of the default AMLA.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:animation-utils.cfg' class='file_header'>From file: animation-utils.cfg</h1>
+<p class="file_explanation">Macros for setting animations.
+</p>
+<dl>
+
+<dt id='LEADING_ANIM'>
+<em class='macro_name'>LEADING_ANIM</em> <em class='macro_formals'>FULL_IMAGE HALFWAYS_IMAGE OFFSET_POSITION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Define an animation of a unit waving/raising their weapon,
+with a gleam of light reflecting off it at the point specified by
+OFFSET_POSITION
+</p>
+</dd>
+
+<dt id='DEFENSE_ANIM'>
+<em class='macro_name'>DEFENSE_ANIM</em> <em class='macro_formals'>REACTION_IMAGE BASE_IMAGE HIT_SOUND</em>
+</dt>
+<dd>
+<p class="macro_explanation">Define a defensive animation moving from a specified BASE_IMAGE
+to REACTION_IMAGE, with HIT_SOUND playing only if a hit occurs.
+</p>
+</dd>
+
+<dt id='DEFENSE_ANIM_FILTERED'>
+<em class='macro_name'>DEFENSE_ANIM_FILTERED</em> <em class='macro_formals'>REACTION_IMAGE BASE_IMAGE HIT_SOUND FILTER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Define a defensive animation moving from a specified BASE_IMAGE
+to REACTION_IMAGE, with HIT_SOUND playing only if a hit occurs.  This
+fires only if FILTER is matched.
+</p>
+</dd>
+
+<dt id='DEFENSE_ANIM_DIRECTIONAL_FILTERED'>
+<em class='macro_name'>DEFENSE_ANIM_DIRECTIONAL_FILTERED</em> <em class='macro_formals'>REACTION_SE_IMAGE BASE_SE_IMAGE REACTION_NE_IMAGE BASE_NE_IMAGE HIT_SOUND FILTER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Define a defensive animation depending on direction moving from a specified NE or SE Base image
+to NE or SE Reaction image, with HIT_SOUND playing only if a hit occurs.  This
+fires only if FILTER is matched.
+</p>
+</dd>
+
+<dt id='DEFENSE_ANIM_RANGE'>
+<em class='macro_name'>DEFENSE_ANIM_RANGE</em> <em class='macro_formals'>REACTION_IMAGE BASE_IMAGE HIT_SOUND RANGE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Define a defensive animation moving from a specified BASE_IMAGE
+to REACTION_IMAGE, with HIT_SOUND playing only if a hit occurs.  This
+fires only on the class of attacks specified by RANGE.
+</p>
+</dd>
+
+<dt id='DEFENSE_ANIM_ELVEN_RANGE'>
+<em class='macro_name'>DEFENSE_ANIM_ELVEN_RANGE</em> <em class='macro_formals'>REACTION_IMAGE BASE_IMAGE HIT_SOUND RANGE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Define a defensive animation moving from a specified BASE_IMAGE
+to REACTION_IMAGE, with HIT_SOUND playing only if a hit occurs and an
+elven halo waxing and waning during the animation.  This
+fires only on the class of attacks specified by RANGE.
+</p>
+</dd>
+
+<dt id='STANDARD_IDLE_FILTER'>
+<em class='macro_name'>STANDARD_IDLE_FILTER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Poisoned units should have no idle animation.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_WAIL'>
+<em class='macro_name'>MISSILE_FRAME_WAIL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a wail attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_LIGHT_BEAM'>
+<em class='macro_name'>MISSILE_FRAME_LIGHT_BEAM</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a beam of light coming down from the heavens.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIRE_BREATH'>
+<em class='macro_name'>MISSILE_FRAME_FIRE_BREATH</em> <em class='macro_formals'>N_OFFSET_POSITION S_OFFSET_POSITION N_DIAGONAL_OFFSET_POSITION S_DIAGONAL_OFFSET_POSITION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fire-breath attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIRE_BREATH_N'>
+<em class='macro_name'>MISSILE_FRAME_FIRE_BREATH_N</em> <em class='macro_formals'>OFFSET_POSITION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fire-breath attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIRE_BREATH_S'>
+<em class='macro_name'>MISSILE_FRAME_FIRE_BREATH_S</em> <em class='macro_formals'>OFFSET_POSITION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fire-breath attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIRE_BREATH_N_DIAGONAL'>
+<em class='macro_name'>MISSILE_FRAME_FIRE_BREATH_N_DIAGONAL</em> <em class='macro_formals'>OFFSET_POSITION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fire-breath attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIRE_BREATH_S_DIAGONAL'>
+<em class='macro_name'>MISSILE_FRAME_FIRE_BREATH_S_DIAGONAL</em> <em class='macro_formals'>OFFSET_POSITION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fire-breath attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FAERIE_FIRE'>
+<em class='macro_name'>MISSILE_FRAME_FAERIE_FIRE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a faerie-fire attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIREBALL'>
+<em class='macro_name'>MISSILE_FRAME_FIREBALL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fireball attack.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_FIREBALL_XY'>
+<em class='macro_name'>MISSILE_FRAME_FIREBALL_XY</em> <em class='macro_formals'>OFFSET_X OFFSET_Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a fireball attack with an X and Y start offset from centre of hex.
+</p>
+</dd>
+
+<dt id='MISSILE_FRAME_HATCHET'>
+<em class='macro_name'>MISSILE_FRAME_HATCHET</em>
+</dt>
+<dd>
+<p class="macro_explanation">Animate a projectile for a thrown-hatchet attack.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:animation-utils2.cfg' class='file_header'>From file: animation-utils2.cfg</h1>
+<p class="file_explanation">Macros for setting animations.
+</p>
+<dl>
+
+<dt id='MAGIC_ARMRAISE_DIRECTIONAL_2_FRAME'>
+<em class='macro_name'>MAGIC_ARMRAISE_DIRECTIONAL_2_FRAME</em> <em class='macro_formals'>BASE_IMAGE_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">unlike the others, this one is used *inside* the attack/healing anim.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:conditional-utils.cfg' class='file_header'>From file: conditional-utils.cfg</h1>
+<p class="file_explanation">Conditionals for MP scenarios.
+</p>
+<dl>
+
+<dt id='OWN_VILLAGE'>
+<em class='macro_name'>OWN_VILLAGE</em> <em class='macro_formals'>X Y SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Test if a given side owns the village at the specified location
+</p>
+</dd>
+
+<dt id='IF_VAR'>
+<em class='macro_name'>IF_VAR</em> <em class='macro_formals'>VAR OP_NAME VALUE CONTENTS_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Shortcut for IF statements testing the value of a variable.
+Need to write [then] and [else] tags manually.
+Use like this:
+</p>
+<pre class='listing'> {IF_VAR some_variable equals yes (
+     [then]
+         ...
+     [/then]
+ )}
+</pre>
+</dd>
+
+<dt id='IF_ALIVE'>
+<em class='macro_name'>IF_ALIVE</em> <em class='macro_formals'>SIDE ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Condition triggering of ACTION_WML on whether SIDE has at least one unit left.
+For example, if the player 2 is still alive, kill all his units.
+</p>
+<pre class='listing'> {IF_ALIVE 2 (
+   [kill]
+       side=2
+   [/kill]
+ )}
+</pre>
+</dd>
+
+<dt id='IF_DEAD'>
+<em class='macro_name'>IF_DEAD</em> <em class='macro_formals'>SIDE ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Condition triggering of ACTION_WML on whether SIDE has no units left.
+For example, give player 2 gold if player 1 is dead
+</p>
+<pre class='listing'> {IF_DEAD 1 (
+   [gold]
+       side=2
+       amount=25
+   [/gold]
+ )}
+</pre>
+</dd>
+
+<dt id='IF_ALLIED'>
+<em class='macro_name'>IF_ALLIED</em> <em class='macro_formals'>PLAYER1_SIDE PLAYER2_SIDE ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Condition that triggers if PLAYER1_SIDE and PLAYER2_SIDE belong
+to the same team.
+NOTE: only works if leaders are alive, are the same leader as the game
+started and haven't changed teams.
+For example, if player 3 and 4 is allied, steal 10 gold from each:
+</p>
+<pre class='listing'> {IF_ALLIED 3 4 (
+   [gold]
+       side=3
+       amount=-10
+   [/gold]
+   [gold]
+       side=4
+       amount=-10
+   [/gold]
+ )}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:debug-utils.cfg' class='file_header'>From file: debug-utils.cfg</h1>
+<p class="file_explanation">This file contains macros useful for debugging and testing purposes.
+</p>
+<dl>
+
+<dt id='DEBUG_MSG'>
+<em class='macro_name'>DEBUG_MSG</em> <em class='macro_formals'>MESSAGE_TEXT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Emit a debug message.  Meant to be overridden with no-op definition
+of the same name for production use.
+</p>
+</dd>
+
+<dt id='DEBUG'>
+<em class='macro_name'>DEBUG</em> <em class='macro_formals'>TEXT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Logs a WML debug message to consol and the in-game chat.
+It does nothing unless the 'wml' log domain is set to debug
+level at application startup (usually with --log-debug=wml),
+or in-game with the :log command (e.g. :log debug wml).
+</p><p>Example:
+</p>
+<pre class='listing'> {DEBUG "inconsistency: $unit.id is not loyal!"}
+</pre>
+</dd>
+
+<dt id='LOG'>
+<em class='macro_name'>LOG</em> <em class='macro_formals'>TEXT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Logs a WML message to console and the in-game chat. It does
+nothing unless the 'wml' log domain is set to log level at
+application startup (usually with --log-info=wml), or in-game
+with the :log command (e.g. :log info wml).
+</p><p>Example:
+</p>
+<pre class='listing'> {LOG "player moved to forbidden location"}
+</pre>
+</dd>
+
+<dt id='WARNING'>
+<em class='macro_name'>WARNING</em> <em class='macro_formals'>TEXT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Logs a WML warning to console and the in-game chat. It does
+nothing unless the 'wml' log domain is set to warning level at
+application startup (usually with --log-warning=wml), or in-game
+with the :log command (e.g. :log warning wml).
+</p><p>Example:
+</p>
+<pre class='listing'> {WARNING "malformed unit data"}
+</pre>
+</dd>
+
+<dt id='ERROR'>
+<em class='macro_name'>ERROR</em> <em class='macro_formals'>TEXT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Logs a WML error to console and the in-game chat.
+</p><p>Example:
+</p>
+<pre class='listing'> {ERROR "could not respawn hero at 2,4"}
+</pre>
+</dd>
+
+<dt id='TIMED_ACTIONS'>
+<em class='macro_name'>TIMED_ACTIONS</em> <em class='macro_formals'>TITLE_TEXT CONTENT_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Measure (in milliseconds) the time arbitrary event WML takes to
+execute.
+</p><p>Example:
+</p>
+<pre class='listing'> [event]
+     name=start
+
+     {TIME_ACTIONS "orc renaming" (
+         {MODIFY_UNIT race=orc name ( _ "Azir")}
+     )}
+ [/event]
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:deprecated-utils.cfg' class='file_header'>From file: deprecated-utils.cfg</h1>
+<p class="file_explanation">These are clutter, scheduled to be removed.
+</p>
+<dl>
+
+<dt id='DEPRECATE'>
+<em class='macro_name'>DEPRECATE</em> <em class='macro_formals'>MACRO_NAME VERSION_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Tag macros for removal, the VERSION_NAME argument is the
+release where the message is shown the first time.
+The removal will be 2 versions later.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:event-utils.cfg' class='file_header'>From file: event-utils.cfg</h1>
+<p class="file_explanation">This file contains shortcuts for common WML events (such as prestart, side
+turn, and such), which can be used to write events faster and in less space.
+</p><p>It is recommended that you only use these if you're confident you could write
+the expanded form as well; these are mostly intended as shortcuts for
+experienced WML authors.
+</p>
+<dl>
+
+<dt id='CALL_FUNCTION'>
+<em class='macro_name'>CALL_FUNCTION</em> <em class='macro_formals'>EVENT_NAME PARAMETER_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">This will fire an event with a set of parameters, for example:
+</p>
+<pre class='listing'> {CALL_FUNCTION my_event a,b,c=1,2,3}
+</pre>
+<p>That example would fire an event with name "my_event"
+and inside that event, $param.c will be equal to "3"
+This will hold true even if the event is fired recursively
+</p>
+</dd>
+
+<dt id='NO_INTERRUPT_NO_UNDO'>
+<em class='macro_name'>NO_INTERRUPT_NO_UNDO</em>
+</dt>
+<dd>
+<p class="macro_explanation">This can be used in mid-movement events (enter_hex and exit_hex) to cause
+no interruption of movement, yet prevent the move from being undone.
+</p>
+</dd>
+
+<dt id='ON_SIGHTING'>
+<em class='macro_name'>ON_SIGHTING</em> <em class='macro_formals'>ID SIGHTING_SIDE SIGHTED_FILTER ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">This is intended to be used when a regular sighted event can't be relied
+on (that'd be most of the time). This event triggers when a unit matching
+SIGHTED_FILTER is first seen by a unit of side SIGHTING_SIDE. This works
+whether the sighting happens due to moving, recruiting, recalling,
+attacking (in case DSU was on before the attack) or advancing. If none of
+those actions manage to "catch" the moment of sighting, then it will occur
+when the current side ends their turn.
+</p><p>The 'unit' and 'second_unit' message speaker shortcuts as well as the
+auto-stored $unit and $second_unit should work normally: the sighting unit
+is the primary unit and the sighted unit is the secondary unit.
+</p><p>You need to provide a unique ID if you use several of these events in the
+same scenario. Otherwise it can be left empty.
+</p><p>Only works if SIGHTING_SIDE has fog and/or shroud.
+</p><p>Example:
+</p>
+<pre class='listing'> {ON_SIGHTING () 1 side=2,3 (
+     [message]
+         speaker=unit
+         message= _ "I can see a side $second_unit.side $second_unit.language_name|!"
+     [/message]
+     [message]
+         speaker=second_unit
+         message= _ "Oh my! I was seen by a side $unit.side $unit.language_name|!"
+     [/message]
+ )}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:image-utils.cfg' class='file_header'>From file: image-utils.cfg</h1>
+<p class="file_explanation">Utility macros for images, overlays, and display effects.
+</p>
+<dl>
+
+<dt id='MAGENTA_IS_THE_TEAM_COLOR'>
+<em class='macro_name'>MAGENTA_IS_THE_TEAM_COLOR</em>
+</dt>
+<dd>
+<p class="macro_explanation">A macro to define a common set of magenta color values which different
+units can be color shifted by using the team color system.
+</p>
+</dd>
+
+<dt id='IS_HERO'>
+<em class='macro_name'>IS_HERO</em>
+</dt>
+<dd>
+<p class="macro_explanation">Embed this into a unit declaration to add a hero icon to the unit.
+</p>
+</dd>
+
+<dt id='IS_LOYAL'>
+<em class='macro_name'>IS_LOYAL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Embed this into a unit declaration to add a loyalty icon to the unit.
+</p>
+</dd>
+
+<dt id='IS_EXPENDABLE_LEADER'>
+<em class='macro_name'>IS_EXPENDABLE_LEADER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Embed this into a unit declaration to add an expendable leader icon to the unit.
+</p>
+</dd>
+
+<dt id='NEW_JOURNEY'>
+<em class='macro_name'>NEW_JOURNEY</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make a new journey mark on a tracking map
+</p>
+</dd>
+
+<dt id='OLD_JOURNEY'>
+<em class='macro_name'>OLD_JOURNEY</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make an old journey mark on a tracking map
+</p>
+</dd>
+
+<dt id='NEW_BATTLE'>
+<em class='macro_name'>NEW_BATTLE</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make a new battle mark on a tracking map, with a blinking animation.
+Because of the animation, generally you should only use this as the final
+journey marker in any given story screen.
+</p>
+</dd>
+
+<dt id='OLD_BATTLE'>
+<em class='macro_name'>OLD_BATTLE</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make an old battle mark on a tracking map
+</p>
+</dd>
+
+<dt id='NEW_REST'>
+<em class='macro_name'>NEW_REST</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make a new rest mark on a tracking map, with a blinking animation.
+Because of the animation, generally you should only use this as the final
+journey marker in any given story screen.
+</p>
+</dd>
+
+<dt id='OLD_REST'>
+<em class='macro_name'>OLD_REST</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make an old rest mark on a tracking map
+</p>
+</dd>
+
+<dt id='PLACE_IMAGE'>
+<em class='macro_name'>PLACE_IMAGE</em> <em class='macro_formals'>IMAGE X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Place an image at a specified location on the map.
+</p>
+</dd>
+
+<dt id='REMOVE_IMAGE'>
+<em class='macro_name'>REMOVE_IMAGE</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Removes a previously set image from a tile.
+</p><p>Example:
+</p>
+<pre class='listing'> {REMOVE_IMAGE 14 5}
+</pre>
+</dd>
+
+<dt id='TEAM_COLOR_OVERRIDE'>
+<em class='macro_name'>TEAM_COLOR_OVERRIDE</em> <em class='macro_formals'>FILTER TEAMCOLOR_ID</em>
+</dt>
+<dd>
+<p class="macro_explanation">Override the team color of filtered units.
+</p>
+</dd>
+
+<dt id='MAKE_HERO'>
+<em class='macro_name'>MAKE_HERO</em> <em class='macro_formals'>ID_STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Give an existing unit a hero overlay
+</p>
+</dd>
+
+<dt id='UNMAKE_HERO'>
+<em class='macro_name'>UNMAKE_HERO</em> <em class='macro_formals'>ID_STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Remove the hero overlay from a unit
+</p>
+</dd>
+
+<dt id='ANIMATED_CAMPFIRE'>
+<em class='macro_name'>ANIMATED_CAMPFIRE</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Embed this at scenario toplevel, not within an event.
+Note that it will freeze while dialogue popups are onscreen.
+</p>
+</dd>
+
+<dt id='ANIMATED_BRAZIER'>
+<em class='macro_name'>ANIMATED_BRAZIER</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Embed this at scenario toplevel, not within an event.
+Note that it will freeze while dialogue popups are onscreen.
+</p>
+</dd>
+
+<dt id='FLAG_VARIANT'>
+<em class='macro_name'>FLAG_VARIANT</em> <em class='macro_formals'>NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Enable the specified flag variant: knalgan, loyalist, ragged,
+long, undead, or wood-elvish. Use within a [side] block; only
+affects that side.
+</p>
+</dd>
+
+<dt id='ANIMATED_MAUSOLEUM'>
+<em class='macro_name'>ANIMATED_MAUSOLEUM</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Embed this at scenario toplevel, not within an event.
+Note that it will freeze while dialogue popups are onscreen.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:interface-utils.cfg' class='file_header'>From file: interface-utils.cfg</h1>
+<p class="file_explanation">Interface shortcut macros.
+</p>
+<dl>
+
+<dt id='MESSAGE'>
+<em class='macro_name'>MESSAGE</em> <em class='macro_formals'>SPEAKER_ID IMAGE CAPTION_TEXT MESSAGE_TEXT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Displays a text message spoken by SPEAKER_ID.
+Speaker can be any of: narrator, unit and second_unit
+For example, let's have the narrator, which looks like a faery
+express some feelings on the undead:
+</p>
+<pre class='listing'> {MESSAGE narrator "units/elves-wood/shyde.png" _ "Faery" _ "Aarr! Them be undeadies! Loooks at them.."}
+</pre>
+</dd>
+
+<dt id='HIGHLIGHT_IMAGE'>
+<em class='macro_name'>HIGHLIGHT_IMAGE</em> <em class='macro_formals'>X Y IMAGE BACKGROUND_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Scrolls to the given location, blinks the given image in and out a few
+times, and then leaves the image in place. Use this to pinpoint an
+important location to the player. If there's an existing [item] on the
+location, specify it as the BACKGROUND_VALUE or else it'll get lost
+during the blinking.
+</p>
+</dd>
+
+<dt id='CLEAR_FOG'>
+<em class='macro_name'>CLEAR_FOG</em> <em class='macro_formals'>SIDE X Y RADIUS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Clears fog in a specific area for the given side.
+This will persist until {UNCLEAR_FOG} (below) is used.
+</p>
+</dd>
+
+<dt id='UNCLEAR_FOG'>
+<em class='macro_name'>UNCLEAR_FOG</em>
+</dt>
+<dd>
+<p class="macro_explanation">Restores fog that was temporarily cleared (check CLEAR_FOG above). Only
+one UNCLEAR_FOG is required no matter how many times CLEAR_FOG was used.
+</p>
+</dd>
+
+<dt id='SET_LABEL'>
+<em class='macro_name'>SET_LABEL</em> <em class='macro_formals'>X Y STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Puts STRING on the map at X,Y.  Strictly a syntactic shortcut.
+</p><p>For example:
+</p>
+<pre class='listing'> {SET_LABEL 4 7 ( _ "There be dragons here!")}
+</pre>
+</dd>
+
+<dt id='REMOVE_LABEL'>
+<em class='macro_name'>REMOVE_LABEL</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Removes a label from a given tile.
+</p><p>For example, remove it from 4,7
+</p>
+<pre class='listing'> {REMOVE_LABEL 4 7}
+</pre>
+</dd>
+
+<dt id='FAKE_UNIT_MOVE'>
+<em class='macro_name'>FAKE_UNIT_MOVE</em> <em class='macro_formals'>FROM_X TO_X FROM_Y TO_Y SIDE TYPE MODIFIER_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Moves a fake unit using TYPE's animations, from (FROM_X, FROM_Y)
+to (TO_X, TO_Y).  You can also specify modifiers that change the
+baseframe displayed by unit's gender or variation, or none at
+all.
+</p><p>Example:
+</p>
+<pre class='listing'> {FAKE_UNIT_MOVE 1 2 1 2 1 (Dark Adept) (
+     gender=female
+     variation=fancy
+ )}
+</pre>
+</dd>
+
+<dt id='SCROLL'>
+<em class='macro_name'>SCROLL</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Scrolls the screen by the specified offsets
+</p><p>For example, let's scroll 5 right and 3 down:
+</p>
+<pre class='listing'> {SCROLL 5 3}
+</pre>
+</dd>
+
+<dt id='SCROLL_TO'>
+<em class='macro_name'>SCROLL_TO</em> <em class='macro_formals'>X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Scrolls the screen to focus on the specified coordinates
+</p><p>For example, let's focus on 26,35:
+</p>
+<pre class='listing'> {SCROLL 26 35}
+</pre>
+</dd>
+
+<dt id='QUAKE'>
+<em class='macro_name'>QUAKE</em> <em class='macro_formals'>SOUND</em>
+</dt>
+<dd>
+<p class="macro_explanation">Visuals and sound for an earth tremor.
+</p>
+</dd>
+
+<dt id='EARTHQUAKE'>
+<em class='macro_name'>EARTHQUAKE</em> <em class='macro_formals'>ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates an earthquake-effect while performing ACTION_WML
+For example we could kill all non-leader units in the earthquake:
+</p>
+<pre class='listing'> {EARTHQUAKE (
+   [kill]
+       canrecruit=no
+       animate=yes
+   [/kill]
+ )}
+</pre>
+</dd>
+
+<dt id='COLOR_ADJUST'>
+<em class='macro_name'>COLOR_ADJUST</em> <em class='macro_formals'>RED GREEN BLUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Adjusts the color of the screen by a tint or red, green and blue
+for example, let's make it very blueish:
+</p>
+<pre class='listing'> {COLOR_ADJUST 0 0 100}
+</pre>
+</dd>
+
+<dt id='FLASH_WHITE'>
+<em class='macro_name'>FLASH_WHITE</em> <em class='macro_formals'>ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Flash the screen momentarily white.
+</p>
+</dd>
+
+<dt id='FLASH_RED'>
+<em class='macro_name'>FLASH_RED</em> <em class='macro_formals'>ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Flash the screen momentarily red.
+</p>
+</dd>
+
+<dt id='FLASH_GREEN'>
+<em class='macro_name'>FLASH_GREEN</em> <em class='macro_formals'>ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Flash the screen momentarily green.
+</p>
+</dd>
+
+<dt id='FLASH_BLUE'>
+<em class='macro_name'>FLASH_BLUE</em> <em class='macro_formals'>ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Flash the screen momentarily blue.
+</p>
+</dd>
+
+<dt id='THUNDER'>
+<em class='macro_name'>THUNDER</em> <em class='macro_formals'>ACTION_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a thunder-and-lightning effect while performing ACTION_WML.
+For example, player 3 might disappear in the flash of lightning:
+</p>
+<pre class='listing'> {THUNDER (
+   [store_unit]
+       [filter]
+           side=3
+       [/filter]
+       variable=player3
+       kill=yes
+   [/store_unit]
+ )}
+</pre>
+</dd>
+
+<dt id='FADE_TO_BLACK'>
+<em class='macro_name'>FADE_TO_BLACK</em>
+</dt>
+<dd>
+<p class="macro_explanation">Fades the screen to black. Use {FADE_IN} to return to normal
+</p>
+</dd>
+
+<dt id='FADE_TO_BLACK_HOLD'>
+<em class='macro_name'>FADE_TO_BLACK_HOLD</em> <em class='macro_formals'>TIME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Fades the screen to black and then pauses for TIME milliseconds.
+Use {FADE_IN} to return to normal
+</p>
+</dd>
+
+<dt id='FADE_IN'>
+<em class='macro_name'>FADE_IN</em>
+</dt>
+<dd>
+<p class="macro_explanation">Brings the screen back from a {FADE_TO_BLACK}
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:items.cfg' class='file_header'>From file: items.cfg</h1>
+<p class="file_explanation"></p><p>Macros for items and objects
+</p>
+<dl>
+
+<dt id='PICKUPPABLE_ITEM'>
+<em class='macro_name'>PICKUPPABLE_ITEM</em> <em class='macro_formals'>ID X Y CAN_TAKE_FILTER_WML IMAGE TEXT TAKE_IT_STRING LEAVE_IT_STRING CANNOT_TAKE_TEXT OBJECT_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">This places an item on the map which can be picked up once, but allows the
+player to choose whether the unit stepping on it should take it or not.
+The "object" doesn't necessarily need to be an [object], any action works.
+</p><p>An example which shows the:
+</p>
+<pre class='listing'> {PICKUPPABLE_ITEM ring_of_hp 8 12 race=human items/ring-red.png
+     _"$unit.name finds a pretty ring. Should he pick it up?"
+     _"ring of HP^Take it"
+     _"ring of HP^Leave it"
+     _"$unit.name finds a pretty ring. But only a human can take it!" (
+     [object]
+         name= _ "Ring of HP"
+         image=items/ring-red.png
+         description= _ "This ring grants the wearer +10 max hp!"
+
+         [effect]
+             apply_to=hitpoints
+             increase_total=10
+         [/effect]
+     [/object]
+ )}
+</pre>
+</dd>
+
+<dt id='LIGHTNING_ANIMATION'>
+<em class='macro_name'>LIGHTNING_ANIMATION</em> <em class='macro_formals'>NAME_STRING DIRECTION_NUMBER</em>
+</dt>
+<dd>
+<p class="macro_explanation">"Effect generating a new animation that throws lightning in a specified direction."
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:objective-utils.cfg' class='file_header'>From file: objective-utils.cfg</h1>
+<p class="file_explanation">Utility macros for use in the objectives dialog or for defining the whole
+[objectives] tag.
+</p>
+<dl>
+
+<dt id='EARLY_FINISH_BONUS_CAPTION'>
+<em class='macro_name'>EARLY_FINISH_BONUS_CAPTION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Deprecated; use the below EARLY_FINISH_BONUS_FOOTNOTE instead
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:scenario-utils.cfg' class='file_header'>From file: scenario-utils.cfg</h1>
+<p class="file_explanation">Utility macros for scenario-objective control.
+</p>
+<dl>
+
+<dt id='NO_MAP_DATA'>
+<em class='macro_name'>NO_MAP_DATA</em>
+</dt>
+<dd>
+<p class="macro_explanation">The display code in the game becomes confused if you give it a
+scenario with no map data (like, a text epilog).  Use this
+macro to feed it dummy map data that won't actually be used.
+</p>
+</dd>
+
+<dt id='AI_CANT_PLAY'>
+<em class='macro_name'>AI_CANT_PLAY</em> <em class='macro_formals'>SIDES</em>
+</dt>
+<dd>
+<p class="macro_explanation">Displays a standard warning at the start of the first AI turn for each
+given side about the AI not knowing how to play this side properly. Use
+this to tag sides intended solely for human players in special multiplayer
+scenarios (ones with shops, custom right-click options and such).
+</p><p>Example:
+</p>
+<pre class='listing'> {AI_CANT_PLAY 1,2,3,4}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:side-utils.cfg' class='file_header'>From file: side-utils.cfg</h1>
+<dl>
+
+<dt id='LIMIT_CONTEMPORANEOUS_RECRUITS'>
+<em class='macro_name'>LIMIT_CONTEMPORANEOUS_RECRUITS</em> <em class='macro_formals'>SIDES TYPE LIMIT_NUMBER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Limit the number of units passing a specified filter that a side
+can have simultaneously. When the number of matching units
+side has reaches or exceeds LIMIT_NUMBER, that side is prevented from
+recruiting more until the number of units of that type drops
+below LIMIT_NUMBER again.
+</p><p>Allow sides 2 and 3 no more than 2 Troll Rocklobbers at a time
+</p>
+<pre class='listing'> {LIMIT_CONTEMPORANEOUS_RECRUITS 2,3 "Troll Rocklobber" 2}
+</pre>
+</dd>
+
+<dt id='LIMIT_RECRUITS'>
+<em class='macro_name'>LIMIT_RECRUITS</em> <em class='macro_formals'>SIDE TYPE LIMIT_NUMBER</em>
+</dt>
+<dd>
+<p class="macro_explanation">Limit the total number of units passing a specified filter that a given
+side can recruit in the scenario.
+</p><p>Allow side 2 no more than 1 Draug in the entire scenario
+</p>
+<pre class='listing'> {LIMIT_RECRUITS 2 Draug 1}
+</pre>
+</dd>
+
+<dt id='CAPTURE_VILLAGES_OF_TYPE'>
+<em class='macro_name'>CAPTURE_VILLAGES_OF_TYPE</em> <em class='macro_formals'>TERRAIN SIDE X Y RADIUS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Change ownership of the villages on a specified terrain type
+near a specified location.
+</p>
+</dd>
+
+<dt id='CAPTURE_VILLAGES'>
+<em class='macro_name'>CAPTURE_VILLAGES</em> <em class='macro_formals'>SIDE X Y RADIUS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Change ownership of all villages near a specified location.
+</p>
+</dd>
+
+<dt id='STARTING_VILLAGES'>
+<em class='macro_name'>STARTING_VILLAGES</em> <em class='macro_formals'>SIDE RADIUS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to make a side start a scenario with villages.
+Creates an event, so it must be called from within the
+toplevel scenario tag.  Also note that this relies on the
+side having a unit with canrecruit-yes at start; if it
+doesn't, you should use STARTING_VILLAGES_AREA instead.
+</p>
+</dd>
+
+<dt id='STARTING_VILLAGES_AREA'>
+<em class='macro_name'>STARTING_VILLAGES_AREA</em> <em class='macro_formals'>SIDE X Y RADIUS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make a side start with ownership of villages in a given area.
+Creates an event, so it must be called from within the
+toplevel scenario tag.
+</p>
+</dd>
+
+<dt id='STARTING_VILLAGES_ALL'>
+<em class='macro_name'>STARTING_VILLAGES_ALL</em> <em class='macro_formals'>SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Make a side start with ownership of all villages.
+Creates an event, so it must be called from within the
+toplevel scenario tag.
+</p>
+</dd>
+
+<dt id='TRANSFER_VILLAGE_OWNERSHIP'>
+<em class='macro_name'>TRANSFER_VILLAGE_OWNERSHIP</em> <em class='macro_formals'>FROM_SIDE TO_SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Transfers ownership of all villages of one side to another side. Useful
+when you're for example moving all units of some side to another, and want
+to transfer the village ownership as well.
+</p>
+</dd>
+
+<dt id='MAKE_AI_SIDE_PERSISTENT'>
+<em class='macro_name'>MAKE_AI_SIDE_PERSISTENT</em> <em class='macro_formals'>SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to make a ai controlled side persistent.
+Needs to be placed below the side definition.
+</p>
+</dd>
+
+<dt id='RECALL_AI_SIDE'>
+<em class='macro_name'>RECALL_AI_SIDE</em> <em class='macro_formals'>SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Recalls an ai side that is persistent (MAKE_AI_SIDE_PERSISTENT)
+Needs to be placed below the side definition.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:sound-utils.cfg' class='file_header'>From file: sound-utils.cfg</h1>
+<p class="file_explanation">Music control macros, and declarations of sound resource lists.
+</p><p>As of 1.1.3, music is parsed as follows:
+</p>
+<pre class='listing'> 1. the [scenario]-level [music] tag
+ 2. the [story]-level music key
+ 3. any [event]-level [music] tags
+</pre>
+<p>If you change the music at a lower level, the tags above it will NOT
+be re-parsed and your scenario will sound wrong.  For example, if
+you set scenario music with the normal [scenario]-level music tag
+but change the music during the [story], it is never reset back to
+normal.  Therefore, these macros are intended to catch instances
+like that.  Of course, if you want something more elaborate, code it
+manually.
+</p>
+<dl>
+
+<dt id='DEFAULT_MUSIC_PLAYLIST'>
+<em class='macro_name'>DEFAULT_MUSIC_PLAYLIST</em>
+</dt>
+<dd>
+<p class="macro_explanation">A macro to define a standard playlist suitable for any level.  The
+music is defined twice to catch instances where music is changed in
+a story and not set back.
+</p>
+</dd>
+
+<dt id='FULL_MUSIC_PLAYLIST'>
+<em class='macro_name'>FULL_MUSIC_PLAYLIST</em>
+</dt>
+<dd>
+<p class="macro_explanation">A macro to define a playlist of all tracks in alphabetical order.  The
+music is defined twice to catch instances where music is changed in
+a story and not set back
+</p>
+</dd>
+
+<dt id='SCENARIO_MUSIC'>
+<em class='macro_name'>SCENARIO_MUSIC</em> <em class='macro_formals'>MUSIC</em>
+</dt>
+<dd>
+<p class="macro_explanation">This music macro ensures that the correct music is selected
+for a scenario just in case it is changed by [story].
+It should be positioned at the top of the scenario file
+so it can be overridden by other prestart or start events.
+</p><p>It also allows for the convenient use of standardized
+intra-scenario music, should we decide to use one.
+</p>
+</dd>
+
+<dt id='EXTRA_SCENARIO_MUSIC'>
+<em class='macro_name'>EXTRA_SCENARIO_MUSIC</em> <em class='macro_formals'>MUSIC</em>
+</dt>
+<dd>
+<p class="macro_explanation">Use this immediately after the above SCENARIO_MUSIC macro to append extra
+tracks to the playlist.
+</p><p>Example:
+</p>
+<pre class='listing'> {SCENARIO_MUSIC battle.ogg}
+ {EXTRA_SCENARIO_MUSIC knolls.ogg}
+ {EXTRA_SCENARIO_MUSIC frantic.ogg}
+</pre>
+</dd>
+
+<dt id='INTRO_AND_SCENARIO_MUSIC'>
+<em class='macro_name'>INTRO_AND_SCENARIO_MUSIC</em> <em class='macro_formals'>INTRO_MUSIC SCENARIO_MUSIC</em>
+</dt>
+<dd>
+<p class="macro_explanation">This works as SCENARIO_MUSIC does, except that it allows you to specify
+the music used for the story screen (if any) as well.
+</p>
+</dd>
+
+<dt id='INCIDENTAL_MUSIC'>
+<em class='macro_name'>INCIDENTAL_MUSIC</em> <em class='macro_formals'>MUSIC</em>
+</dt>
+<dd>
+<p class="macro_explanation">To be played immediately to mark an incident,
+but not appended to the scenario playlist.
+The playlist will be resumed afterwards.
+</p>
+</dd>
+
+<dt id='APPEND_MUSIC'>
+<em class='macro_name'>APPEND_MUSIC</em> <em class='macro_formals'>MUSIC</em>
+</dt>
+<dd>
+<p class="macro_explanation">Append to playlist.  Meant to be used after REPLACE_SCENARIO_MUSIC.
+</p>
+</dd>
+
+<dt id='REPLACE_SCENARIO_MUSIC'>
+<em class='macro_name'>REPLACE_SCENARIO_MUSIC</em> <em class='macro_formals'>MUSIC</em>
+</dt>
+<dd>
+<p class="macro_explanation">To be used mid-scenario to replace the current playlist.
+</p>
+</dd>
+
+<dt id='SOUND:SLOW'>
+<em class='macro_name'>SOUND:SLOW</em>
+</dt>
+<dd>
+<p class="macro_explanation">A convenient way to use the standard slowing sound in an attack
+animation. Put anywhere inside an attack animation block.
+</p>
+</dd>
+
+<dt id='SOUND:POISON'>
+<em class='macro_name'>SOUND:POISON</em>
+</dt>
+<dd>
+<p class="macro_explanation">A convenient way to use the standard poison sound in an attack
+animation. Put anywhere inside an attack animation block.
+</p>
+</dd>
+
+<dt id='SOUND:HIT_AND_MISS'>
+<em class='macro_name'>SOUND:HIT_AND_MISS</em> <em class='macro_formals'>HITSOUND MISSSOUND TIME</em>
+</dt>
+<dd>
+<p class="macro_explanation">A more convenient way of wiring in hit and miss sounds to an
+attack animation. Just specify the sounds to use and the time
+when they should trigger.
+</p>
+</dd>
+
+<dt id='SOUND:HIT'>
+<em class='macro_name'>SOUND:HIT</em> <em class='macro_formals'>HITSOUND TIME</em>
+</dt>
+<dd>
+<p class="macro_explanation">A more convenient way of wiring in hit only sounds to an
+attack animation. Just specify the sound to use and the time
+when it should trigger.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:teleport-utils.cfg' class='file_header'>From file: teleport-utils.cfg</h1>
+<p class="file_explanation">Macros for teleporting units.
+</p>
+<dl>
+
+<dt id='TELEPORT_UNIT'>
+<em class='macro_name'>TELEPORT_UNIT</em> <em class='macro_formals'>FILTER X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Teleports a unit matching FILTER to X,Y
+</p><p>For example, teleport player 3's leader to 4,5
+</p>
+<pre class='listing'> {TELEPORT_UNIT (
+ 	side=3
+ 	canrecruit=yes
+ ) 4 5}
+</pre>
+</dd>
+
+<dt id='TELEPORT_TILE'>
+<em class='macro_name'>TELEPORT_TILE</em> <em class='macro_formals'>OLD_X OLD_Y NEW_X NEW_Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Teleports a unit on tile OLD_X,OLD_Y to NEW_X,NEW_Y
+</p><p>For example, teleport any unit thats currently on 1,1 to 4,5
+</p>
+<pre class='listing'> {TELEPORT_TILE 1 1 4 5}
+</pre>
+</dd>
+
+<dt id='TELEPORT_OUT_ANIMATION'>
+<em class='macro_name'>TELEPORT_OUT_ANIMATION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Generalized silver mage teleport out (disappear) animation
+</p><p>For example, to apply a teleport animation to a custom unit definition:
+</p>
+<pre class='listing'>[animation]
+    apply_to=pre_teleport
+    {TELEPORT_OUT_ANIMATION}
+[/animation]
+</pre>
+</dd>
+
+<dt id='TELEPORT_IN_ANIMATION'>
+<em class='macro_name'>TELEPORT_IN_ANIMATION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Generalized silver mage teleport in (reappear) animation
+</p><p>For example, to apply a teleport animation to a custom unit definition:
+</p>
+<pre class='listing'>[animation]
+    apply_to=post_teleport
+    {TELEPORT_IN_ANIMATION}
+[/animation]
+</pre>
+</dd>
+
+<dt id='TELEPORT_EFFECT_OBJECT_ID'>
+<em class='macro_name'>TELEPORT_EFFECT_OBJECT_ID</em> <em class='macro_formals'>_ID_</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates and assigns a temporary object which applies the generalized silver mage
+teleport animations to the unit with the matching ID
+</p><p>For example, to apply teleport animations to the unit 'Bob':
+</p>
+<pre class='listing'>{TELEPORT_EFFECT_OBJECT_ID Bob}
+</pre>
+</dd>
+
+<dt id='TELEPORT_EFFECT_OBJECT'>
+<em class='macro_name'>TELEPORT_EFFECT_OBJECT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates and assigns a temporary object which applies the generalized silver mage
+teleport animations to the primary unit
+</p><p>For example, to apply teleport animations to the unit that triggered a 'move_to' event:
+</p>
+<pre class='listing'>{TELEPORT_EFFECT_OBJECT}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:terrain-utils.cfg' class='file_header'>From file: terrain-utils.cfg</h1>
+<p class="file_explanation">Utility macros for manipulating map terrain and overlays.
+</p>
+<dl>
+
+<dt id='MODIFY_TERRAIN'>
+<em class='macro_name'>MODIFY_TERRAIN</em> <em class='macro_formals'>TERRAIN X_SPAN Y_SPAN</em>
+</dt>
+<dd>
+<p class="macro_explanation">Changes the terrain at a given list of coordinates
+</p><p>For example, we could make 14,15 and 14,16 grassland:
+</p>
+<pre class='listing'> {MODIFY_TERRAIN Gg (14,14) (15,16)}
+</pre>
+</dd>
+
+<dt id='MODIFY_TERRAIN_MASK'>
+<em class='macro_name'>MODIFY_TERRAIN_MASK</em> <em class='macro_formals'>X Y MASK_VALUE RULES_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Changes the terrain for a given area
+</p>
+</dd>
+
+<dt id='SCATTER_IMAGE'>
+<em class='macro_name'>SCATTER_IMAGE</em> <em class='macro_formals'>FILTER NUMBER IMAGE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Place NUMBER copies of the IMAGE on map hexes matching FILTER.
+</p><p>This call will scatter 20 copies of a pine-tree graphic over grassland:
+</p>
+<pre class='listing'> {SCATTER_IMAGE (terrain=Gg) 20 scenery/pine1.png}
+</pre>
+</dd>
+
+<dt id='SCATTER_EMBELLISHMENTS'>
+<em class='macro_name'>SCATTER_EMBELLISHMENTS</em> <em class='macro_formals'>TERRAINLIST EMBELLISHMENT_NAME PERCENTAGE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Adds the given embellishment to the given percentage of the given terrain
+on the map.
+</p><p>For example, this will add flowers to 5% of all grassland:
+</p>
+<pre class='listing'> {SCATTER_EMBELLISHMENTS G* ^Efm 5}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:traits.cfg' class='file_header'>From file: traits.cfg</h1>
+<p class="file_explanation">Traits for the [modifications] clause of SingleWML descriptions
+</p>
+<dl>
+
+<dt id='TRAIT_LOYAL'>
+<em class='macro_name'>TRAIT_LOYAL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Loyal have no upkeep.
+</p>
+</dd>
+
+<dt id='TRAIT_UNDEAD'>
+<em class='macro_name'>TRAIT_UNDEAD</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Undead cannot be drained, poisoned, or plagued.
+</p>
+</dd>
+
+<dt id='TRAIT_MECHANICAL'>
+<em class='macro_name'>TRAIT_MECHANICAL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Mechanical cannot be drained, poisoned, or plagued.
+</p>
+</dd>
+
+<dt id='TRAIT_ELEMENTAL'>
+<em class='macro_name'>TRAIT_ELEMENTAL</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Elemental cannot be drained, poisoned, or plagued.
+</p>
+</dd>
+
+<dt id='TRAIT_STRONG'>
+<em class='macro_name'>TRAIT_STRONG</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Strong get a +1 increment in hitpoints and melee damage.
+</p>
+</dd>
+
+<dt id='TRAIT_DEXTROUS'>
+<em class='macro_name'>TRAIT_DEXTROUS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Dextrous get a +1 to ranged damage.
+</p>
+</dd>
+
+<dt id='TRAIT_QUICK'>
+<em class='macro_name'>TRAIT_QUICK</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Quick have +1 movement and 5% less hitpoints.
+</p>
+</dd>
+
+<dt id='TRAIT_INTELLIGENT'>
+<em class='macro_name'>TRAIT_INTELLIGENT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Intelligent get a 20% decrease in XP required to advance.
+</p>
+</dd>
+
+<dt id='TRAIT_RESILIENT'>
+<em class='macro_name'>TRAIT_RESILIENT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Resilient get 4 more HP plus 1 per level.
+</p>
+</dd>
+
+<dt id='TRAIT_HEALTHY'>
+<em class='macro_name'>TRAIT_HEALTHY</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Healthy get 1 more HP plus 1 per level and always rest heal.
+</p>
+</dd>
+
+<dt id='TRAIT_FEARLESS'>
+<em class='macro_name'>TRAIT_FEARLESS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Fearless fight normally during unfavorable day/night times.
+</p>
+</dd>
+
+<dt id='TRAIT_FEARLESS_MUSTHAVE'>
+<em class='macro_name'>TRAIT_FEARLESS_MUSTHAVE</em>
+</dt>
+<dd>
+<p class="macro_explanation">A clone of the above that would be generated even if random
+trait generation is not used. This is needed for WCs and
+Soullesses
+</p>
+</dd>
+
+<dt id='TRAIT_FERAL_MUSTHAVE'>
+<em class='macro_name'>TRAIT_FERAL_MUSTHAVE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Feral only receive 50% defense in villages regardless of
+the base terrain the village is on.
+</p>
+</dd>
+
+<dt id='TRAIT_WEAK'>
+<em class='macro_name'>TRAIT_WEAK</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Weak get a -1 increment in hitpoints and melee damage.
+</p>
+</dd>
+
+<dt id='TRAIT_SLOW'>
+<em class='macro_name'>TRAIT_SLOW</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Slow have -1 movement and 5% more hitpoints.
+</p>
+</dd>
+
+<dt id='TRAIT_DIM'>
+<em class='macro_name'>TRAIT_DIM</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Dim get a 20% increase in XP required to advance.
+</p>
+</dd>
+
+<dt id='TRAIT_AGED'>
+<em class='macro_name'>TRAIT_AGED</em>
+</dt>
+<dd>
+<p class="macro_explanation">Units with trait Aged get a 8 points HP decrease and have -1 movement and melee damage.
+</p>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:unit-utils.cfg' class='file_header'>From file: unit-utils.cfg</h1>
+<p class="file_explanation">This file contains unit utility macros for WML authors.
+</p><p>These don't rely on any other macros.   Please don't change this.
+</p>
+<dl>
+
+<dt id='UNIT'>
+<em class='macro_name'>UNIT</em> <em class='macro_formals'>SIDE TYPE X Y WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Place a unit with embedded WML specified.
+</p>
+</dd>
+
+<dt id='GENERIC_UNIT'>
+<em class='macro_name'>GENERIC_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a generic unit of TYPE belonging to SIDE at X,Y, which has a
+random name, gender and traits (just like a recruited unit).
+</p>
+</dd>
+
+<dt id='NOTRAIT_UNIT'>
+<em class='macro_name'>NOTRAIT_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a unit with no traits, random gender and generated name.
+</p><p>Example:
+</p>
+<pre class='listing'> {NOTRAIT_UNIT 1 (Elvish Fighter) 19 16}
+</pre>
+</dd>
+
+<dt id='LOYAL_UNIT'>
+<em class='macro_name'>LOYAL_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a unit with the Loyal trait.
+</p><p>Example:
+</p>
+<pre class='listing'> {LOYAL_UNIT 1 (Elvish Fighter) 19 16}
+</pre>
+</dd>
+
+<dt id='LOYAL_UNDEAD_UNIT'>
+<em class='macro_name'>LOYAL_UNDEAD_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Create a unit with the Undead and Loyal traits.
+</p>
+</dd>
+
+<dt id='NAMED_UNIT'>
+<em class='macro_name'>NAMED_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y ID_STRING NAME_STRING WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Place a named unit with embedded WML specified.
+</p>
+</dd>
+
+<dt id='NAMED_LOYAL_UNIT'>
+<em class='macro_name'>NAMED_LOYAL_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y ID_STRING NAME_STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a unit with the Loyal trait.
+</p><p>Example:
+</p>
+<pre class='listing'> {NAMED_LOYAL_UNIT 1 (Elvish Fighter) 19 16 (Myname) ( _ "Myname")}
+</pre>
+</dd>
+
+<dt id='NAMED_GENERIC_UNIT'>
+<em class='macro_name'>NAMED_GENERIC_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y ID_STRING NAME_STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a generic unit of TYPE belonging to SIDE at X,Y, which has a
+generated gender and traits (just like a recruited unit).
+</p>
+</dd>
+
+<dt id='NAMED_NOTRAIT_UNIT'>
+<em class='macro_name'>NAMED_NOTRAIT_UNIT</em> <em class='macro_formals'>SIDE TYPE X Y ID_STRING NAME_STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Creates a unit with no traits, random gender and specified name.
+</p><p>Example:
+</p>
+<pre class='listing'> {NAMED_NOTRAIT_UNIT 1 (Elvish Fighter) 20 22 (Mochi) (_"Mochi") }
+</pre>
+</dd>
+
+<dt id='RECALL_XY'>
+<em class='macro_name'>RECALL_XY</em> <em class='macro_formals'>ID_STRING X Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Note that id precedes x and y, unlike with the unit-generating macros.
+</p>
+</dd>
+
+<dt id='GUARDIAN'>
+<em class='macro_name'>GUARDIAN</em>
+</dt>
+<dd>
+<p class="macro_explanation">Meant to be used as a suffix to a unit-generating macro call.
+</p>
+</dd>
+
+<dt id='NO_UPKEEP'>
+<em class='macro_name'>NO_UPKEEP</em>
+</dt>
+<dd>
+<p class="macro_explanation">Meant to be used as a suffix to a unit-generating macro call.
+Use this when you don't want to use up a traits slot.
+</p>
+</dd>
+
+<dt id='FACING'>
+<em class='macro_name'>FACING</em> <em class='macro_formals'>DIRECTION</em>
+</dt>
+<dd>
+<p class="macro_explanation">Meant to be used as a suffix to a unit-generating macro call.
+</p>
+</dd>
+
+<dt id='VARIATION'>
+<em class='macro_name'>VARIATION</em> <em class='macro_formals'>VARIATION_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Meant to be used as a suffix to a unit-generating macro call.
+</p>
+</dd>
+
+<dt id='STORE_UNIT_VAR'>
+<em class='macro_name'>STORE_UNIT_VAR</em> <em class='macro_formals'>FILTER VAR TO_VAR_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Stores an attribute of a unit to the given variable.
+</p><p>Example where this is used to flip all orcs to whatever side James is on:
+</p>
+<pre class='listing'> {STORE_UNIT_VAR (id=James) side side_of_James}
+ {MODIFY_UNIT (race=orc) side $side_of_James}
+</pre>
+</dd>
+
+<dt id='ADVANCE_UNIT'>
+<em class='macro_name'>ADVANCE_UNIT</em> <em class='macro_formals'>FILTER ID_STRING</em>
+</dt>
+<dd>
+<p class="macro_explanation">Advances all units matching the filter to ID_STRING or if missing, their normal advancement
+</p><p>Example to advance all spearmen to a cavalrymen:
+</p>
+<pre class='listing'> {ADVANCE_UNIT type=Spearman Cavalryman}
+</pre>
+<p>Example to advance your leader normally:
+</p>
+<pre class='listing'> {ADVANCE_UNIT canrecruit,side=yes,1 ""}
+</pre>
+</dd>
+
+<dt id='TRANSFORM_UNIT'>
+<em class='macro_name'>TRANSFORM_UNIT</em> <em class='macro_formals'>FILTER TYPE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Transforms all units matching the filter into TYPE or if missing, their normal advancement
+Keeps the unit's hitpoints, experience and status intact.
+</p><p>Example to turn all spearmen into cavalrymen:
+</p>
+<pre class='listing'> {TRANSFORM_UNIT type=Spearman Cavalryman}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<h1 id='file:utils.cfg' class='file_header'>From file: utils.cfg</h1>
+<p class="file_explanation">This file contains general utility macros for WML authors.
+</p><p>Later macros in this file are built using earlier ones, which
+is why they live here rather than being broken out into topic-specific files.
+</p>
+<dl>
+
+<dt id='QUANTITY'>
+<em class='macro_name'>QUANTITY</em> <em class='macro_formals'>NAME EASY_VALUE NORMAL_VALUE HARD_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to define a 'quantity' differently based on difficulty levels.
+ifdef EASY
+</p>
+</dd>
+
+<dt id='QUANTITY4'>
+<em class='macro_name'>QUANTITY4</em> <em class='macro_formals'>NAME EASY_VALUE NORMAL_VALUE HARD_VALUE NIGHTMARE_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Four-difficulty version of QUANTITY
+ifdef EASY
+</p>
+</dd>
+
+<dt id='TURNS'>
+<em class='macro_name'>TURNS</em> <em class='macro_formals'>EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to define number of turns for different difficulty levels.
+</p>
+</dd>
+
+<dt id='TURNS4'>
+<em class='macro_name'>TURNS4</em> <em class='macro_formals'>EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT NIGHTMARE_AMOUNT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Four-difficulty version of TURNS
+</p>
+</dd>
+
+<dt id='GOLD'>
+<em class='macro_name'>GOLD</em> <em class='macro_formals'>EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro which will let you say {GOLD x y z} to set
+starting gold depending on easy/medium/hard - x/y/z
+</p>
+</dd>
+
+<dt id='GOLD4'>
+<em class='macro_name'>GOLD4</em> <em class='macro_formals'>EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT NIGHTMARE_AMOUNT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Four-difficulty version of GOLD
+</p>
+</dd>
+
+<dt id='INCOME'>
+<em class='macro_name'>INCOME</em> <em class='macro_formals'>EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro which will let you say {GOLD x y z} to set
+per-turn income depending on easy/medium/hard - x/y/z
+</p>
+</dd>
+
+<dt id='INCOME4'>
+<em class='macro_name'>INCOME4</em> <em class='macro_formals'>EASY_AMOUNT NORMAL_AMOUNT HARD_AMOUNT NIGHTMARE_AMOUNT</em>
+</dt>
+<dd>
+<p class="macro_explanation">Four-difficulty version of INCOME
+</p>
+</dd>
+
+<dt id='NO_INCOME'>
+<em class='macro_name'>NO_INCOME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Used to specify when a side should not have any income
+every turn.
+</p>
+</dd>
+
+<dt id='ATTACK_DEPTH'>
+<em class='macro_name'>ATTACK_DEPTH</em> <em class='macro_formals'>EASY_VALUE NORMAL_VALUE HARD_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to define AI attack depth for different difficulty levels
+(set it to 1-6)
+</p>
+</dd>
+
+<dt id='ATTACK_DEPTH4'>
+<em class='macro_name'>ATTACK_DEPTH4</em> <em class='macro_formals'>EASY_VALUE NORMAL_VALUE HARD_VALUE NIGHTMARE_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Four-difficulty version of ATTACK_DEPTH
+</p>
+</dd>
+
+<dt id='NO_SCOUTS'>
+<em class='macro_name'>NO_SCOUTS</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to make an AI team not recruit scouts.
+</p>
+</dd>
+
+<dt id='RANDOM'>
+<em class='macro_name'>RANDOM</em> <em class='macro_formals'>THING_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to quickly pick a random value (in the $random variable, to avoid
+cluttering up savegames with such temporary variables).
+</p>
+</dd>
+
+<dt id='VARIABLE'>
+<em class='macro_name'>VARIABLE</em> <em class='macro_formals'>VAR VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to initialize a variable.  Strictly a syntatic shortcut.
+</p>
+</dd>
+
+<dt id='GLOBAL_VARIABLE'>
+<em class='macro_name'>GLOBAL_VARIABLE</em> <em class='macro_formals'>NAMESPACE LOCAL_VAR_NAME GLOBAL_VAR_NAME SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Assigns a persistent variable with the contents of a standard variable.
+</p>
+</dd>
+
+<dt id='VARIABLE_FROM_GLOBAL'>
+<em class='macro_name'>VARIABLE_FROM_GLOBAL</em> <em class='macro_formals'>NAMESPACE GLOBAL_VAR_NAME LOCAL_VAR_NAME SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Retrieves the contents of a persistent variable and stores them in a standard variable.
+</p>
+</dd>
+
+<dt id='VARIABLE_OP'>
+<em class='macro_name'>VARIABLE_OP</em> <em class='macro_formals'>VAR OP_NAME VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to do mathematical operations on variables.
+</p>
+</dd>
+
+<dt id='VARIABLE_CONDITIONAL'>
+<em class='macro_name'>VARIABLE_CONDITIONAL</em> <em class='macro_formals'>VAR OP_NAME VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to do conditional operations on variables.
+</p>
+</dd>
+
+<dt id='CLEAR_VARIABLE'>
+<em class='macro_name'>CLEAR_VARIABLE</em> <em class='macro_formals'>VAR_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to clear a variable previously set.
+</p>
+</dd>
+
+<dt id='CLEAR_GLOBAL_VARIABLE'>
+<em class='macro_name'>CLEAR_GLOBAL_VARIABLE</em> <em class='macro_formals'>NAMESPACE MY_VARIABLE_NAME SIDE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Clears a persistent variable entirely.
+</p>
+</dd>
+
+<dt id='FOREACH'>
+<em class='macro_name'>FOREACH</em> <em class='macro_formals'>ARRAY_VALUE VAR</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to begin a WML clause that iterates over an array.
+</p>
+</dd>
+
+<dt id='NEXT'>
+<em class='macro_name'>NEXT</em> <em class='macro_formals'>VAR</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to end a WML clause that iterates over an array.
+</p>
+</dd>
+
+<dt id='REPEAT'>
+<em class='macro_name'>REPEAT</em> <em class='macro_formals'>NUMBER BODY_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Macro to execute some WML a defined number of times.
+</p><p>Example that causes screen to quake 5 times:
+</p>
+<pre class='listing'> {REPEAT 5 (
+     {QUAKE "rumble.ogg"}
+ )}
+</pre>
+</dd>
+
+<dt id='LOOKUP_INDEX'>
+<em class='macro_name'>LOOKUP_INDEX</em> <em class='macro_formals'>FROM_ARRAY_NAME WHERE_KEY_NAME WHERE_VALUE SAVE_AS_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Call this to lookup an array element that has a particular key-value pair
+then it saves the index of that element, or
+if the key-value pair is not found it saves the array's length
+</p>
+</dd>
+
+<dt id='LOOKUP_VALUE'>
+<em class='macro_name'>LOOKUP_VALUE</em> <em class='macro_formals'>FROM_ARRAY_NAME WHERE_KEY_NAME WHERE_VALUE SAVE_KEY_NAME DEFAULT_VALUE SAVE_AS_NAME</em>
+</dt>
+<dd>
+<p class="macro_explanation">Call this to look up an array element that has a particular key-value pair
+then it saves another key from that same element.
+</p>
+</dd>
+
+<dt id='MODIFY_UNIT'>
+<em class='macro_name'>MODIFY_UNIT</em> <em class='macro_formals'>FILTER VAR VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Alters a unit variable (such as unit.x, unit.type,
+unit.side), handling all the storing and unstoring.
+</p><p>Example that flips all spearmen to side 2:
+</p>
+<pre class='listing'> {MODIFY_UNIT type=Spearman side 2}
+</pre>
+</dd>
+
+<dt id='MOVE_UNIT_BY'>
+<em class='macro_name'>MOVE_UNIT_BY</em> <em class='macro_formals'>FILTER OFFSET_X OFFSET_Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">TODO COMMENT
+</p>
+</dd>
+
+<dt id='MOVE_UNIT'>
+<em class='macro_name'>MOVE_UNIT</em> <em class='macro_formals'>FILTER TO_X TO_Y</em>
+</dt>
+<dd>
+<p class="macro_explanation">Moves a unit from its current location to the given location, displaying
+movement normally.
+</p><p>Note that setting the destination on an existing unit does not kill either
+one, but causes the unit to move to the nearest vacant hex instead.
+</p>
+</dd>
+
+<dt id='FULL_HEAL'>
+<em class='macro_name'>FULL_HEAL</em> <em class='macro_formals'>FILTER</em>
+</dt>
+<dd>
+<p class="macro_explanation">This heals the specified unit(s) to full health.
+</p>
+</dd>
+
+<dt id='PUT_TO_RECALL_LIST'>
+<em class='macro_name'>PUT_TO_RECALL_LIST</em> <em class='macro_formals'>FILTER</em>
+</dt>
+<dd>
+<p class="macro_explanation">This places a given unit back to the recall list of the side it is on.
+Note however, that the unit is not healed to full health, so when
+recalled (even if not until the next scenario) the unit may have less
+than his maximum hp left.
+</p><p>An example that returns all units stepping on (20,38) back to the recall
+list:
+</p>
+<pre class='listing'> [event]
+     name=moveto
+
+     [filter]
+         x,y=20,38
+     [/filter]
+
+     {PUT_TO_RECALL_LIST x,y=20,38}
+ [/event]
+</pre>
+</dd>
+
+<dt id='RECRUIT_UNIT_VARIATIONS'>
+<em class='macro_name'>RECRUIT_UNIT_VARIATIONS</em> <em class='macro_formals'>SIDE TYPE VARIATIONS_VALUE</em>
+</dt>
+<dd>
+<p class="macro_explanation">Allows a side to seemingly recruit variations of a given unit, such as the
+the Walking Corpse.
+</p><p>An example which makes side 2 have a 50% chance of getting a normal WC
+and a 50% chance of getting either a drake or dwarf variation:
+</p>
+<pre class='listing'> {RECRUIT_UNIT_VARIATIONS 2 "Walking Corpse" none,none,drake,dwarf}
+</pre>
+</dd>
+
+<dt id='SCATTER_UNITS'>
+<em class='macro_name'>SCATTER_UNITS</em> <em class='macro_formals'>NUMBER TYPES PADDING_RADIUS FILTER UNIT_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Scatters the given kind of units randomly on a given area on the map.
+</p><p>An example which scatters some loyal elves on forest hexes in
+x,y=10-30,20-40, at a minimum of three hexes apart from each other and
+never on top of or adjacent to any already existing units:
+</p>
+<pre class='listing'> {SCATTER_UNITS 20 "Elvish Fighter,Elvish Archer,Elvish Shaman" 3 (
+     terrain=Gs^Fp
+     x=10-30
+     y=20-40
+
+     [not]
+         [filter]
+         [/filter]
+     [/not]
+
+     [not]
+         [filter_adjacent_location]
+             [filter]
+             [/filter]
+         [/filter_adjacent_location]
+     [/not]
+ ) (
+     side=2
+     generate_name=yes
+     random_traits=yes
+
+     [modifications]
+         {TRAIT_LOYAL}
+     [/modifications]
+ )}
+</pre>
+</dd>
+
+<dt id='FORCE_CHANCE_TO_HIT'>
+<em class='macro_name'>FORCE_CHANCE_TO_HIT</em> <em class='macro_formals'>FILTER SECOND_FILTER CTH_NUMBER EXTRA_CONDITIONS_WML</em>
+</dt>
+<dd>
+<p class="macro_explanation">Invisibly forces certain units to always have a specific chance to hit
+when fighting against certain other units.
+</p><p>Note that the player still only sees the regular damage calculations, so
+this is useful if you need to give an invisible helping hand to the player
+or AI. For example, if the player is forced to attack with only a couple
+of units at the beginning of a scenario, you can use this to ensure that
+simply having bad luck cannot ruin their attempt so easily. Also you might
+have enemy leaders which the player is not supposed to fight or be able to
+defeat due to storyline reasons, but could theoretically still kill with
+some clever trick, AI mistake or sheer exceptional luck.
+</p><p>An example which forces Konrad's attacks to always hit Li'sar, but only
+after turn 10:
+</p>
+<pre class='listing'> {FORCE_CHANCE_TO_HIT id=Konrad id="Li'sar" 100 (
+     [variable]
+         name=turn_number
+         greater_than=10
+     [/variable]
+ )}
+</pre>
+</dd>
+</dl>
+<p class='toplink'>(<a href='#global'>top</a>)</p>
+<div class="visualClear"></div>
+
+<div id="footer">
+  <div id="note">
+    <p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2013 The Battle for Wesnoth</p>
+    <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a>.</p>
+  </div>
+</div>
+
+</div> <!-- main -->
+
+</div> <!-- global -->
+
+</body>
+</html>

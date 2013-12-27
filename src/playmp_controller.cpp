@@ -535,7 +535,7 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case hotkey::HOTKEY_STOP_NETWORK:
 			res = is_observer();
 			break;
-		case hotkey::HOTKEY_STOP_REPLAY:
+		case hotkey::HOTKEY_REPLAY_STOP:
 			if (is_observer()){
 				network_processing_stopped_ = true;
 				LOG_NG << "network processing stopped";

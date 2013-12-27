@@ -945,12 +945,20 @@ config side_engine::new_config() const
 
 			break;
 		case CNTR_LOCAL:
+			if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
+				res["save_id"] = preferences::login() + res["side"].str();
+			}
+
 			res["player_id"] = preferences::login() + res["side"].str();
 			res["current_player"] = preferences::login();
 			description = N_("Anonymous local player");
 
 			break;
 		case CNTR_COMPUTER: {
+			if (!parent_.params_.saved_game && !cfg_.has_attribute("saved_id")) {
+				res["save_id"] = "ai" + res["side"].str();
+			}
+
 			utils::string_map symbols;
 			if (allow_player_) {
 				const config& ai_cfg =
@@ -991,6 +999,9 @@ config side_engine::new_config() const
 		res["user_description"] = t_string(description, "wesnoth");
 	} else {
 		res["player_id"] = player_id_ + res["side"];
+		if (!parent_.params_.saved_game && !cfg_.has_attribute("save_id")) {
+			res["save_id"] = player_id_ + res["side"];
+		}
 		res["user_description"] = player_id_;
 	}
 
