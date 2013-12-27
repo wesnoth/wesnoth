@@ -138,8 +138,6 @@ class tod_manager : public savegame::savegame_config
 		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location) const;
 
 		const std::vector<time_of_day>& times(int index) const {
-			std::cout << index << " area_index\n";
-			std::cout << "size of areas_: " << areas_.size() << "\n";
 			assert(index < static_cast<int>(areas_.size()));
 			return areas_[index].times;
 		}
