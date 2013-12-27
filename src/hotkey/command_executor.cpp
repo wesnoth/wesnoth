@@ -193,13 +193,13 @@ bool command_executor::execute_command(const hotkey_command&  cmd, int /*index*/
 		case HOTKEY_LANGUAGE:
 			change_language();
 			break;
-		case HOTKEY_PLAY_REPLAY:
+		case HOTKEY_REPLAY_PLAY:
 			play_replay();
 			break;
-		case HOTKEY_RESET_REPLAY:
+		case HOTKEY_REPLAY_RESET:
 			reset_replay();
 			break;
-		case HOTKEY_STOP_REPLAY:
+		case HOTKEY_REPLAY_STOP:
 			stop_replay();
 			break;
 		case HOTKEY_REPLAY_NEXT_TURN:

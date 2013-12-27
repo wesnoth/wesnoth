@@ -288,9 +288,6 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_STATUS_TABLE:
 			return !context_manager_->get_map_context().get_teams().empty();
 
-		case HOTKEY_EDITOR_SWITCH_TIME:
-			return true;
-
 			// unit tool related
 		case HOTKEY_UNIT_DESCRIPTION:
 			return toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT);
@@ -350,6 +347,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 				return context_manager_->modified_maps(dummy) > 1;
 			}
 		case HOTKEY_EDITOR_SWITCH_MAP:
+		case HOTKEY_EDITOR_PLAYLIST:
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:
@@ -374,9 +372,10 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 		case HOTKEY_EDITOR_AREA_REMOVE:
 		case HOTKEY_EDITOR_AREA_RENAME:
+		case HOTKEY_EDITOR_LOCAL_TIME:
 			return !context_manager_->get_map_context().get_time_manager()->get_area_ids().empty();
 
-		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+		case HOTKEY_EDITOR_SELECTION_EXPORT:
 		case HOTKEY_EDITOR_AREA_SAVE:
 		case HOTKEY_EDITOR_CUT:
 		case HOTKEY_EDITOR_COPY:
@@ -666,8 +665,6 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 //			gui2::teditor_select_palette_group::execute(selected, blah_items, gui_->video());
 		}
 			return true;
-		case HOTKEY_EDITOR_SWITCH_TIME:
-			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
 			toolkit_->get_palette_manager()->scroll_up();
 			gui_->draw(true,false);
@@ -804,7 +801,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_AREA_SAVE:
 			save_area();
 			return true;
-		case HOTKEY_EDITOR_EXPORT_SELECTION_COORDS:
+		case HOTKEY_EDITOR_SELECTION_EXPORT:
 			export_selection_coords();
 			return true;
 		case HOTKEY_EDITOR_SELECT_ALL:
