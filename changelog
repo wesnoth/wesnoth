@@ -121,6 +121,9 @@ Version 1.11.7+dev:
      names such as "#foo.map".
    * Fixed bug with modifications dependency check dialogs (bug #21365)
    * Fixed bug with scrollbar overlaying mp description text (bug #21364)
+   * Split command line option --config-dir into --userconfig-dir and
+     --userdata-dir, with --userconfig-dir defaulting to --userdata-dir's
+     value on some platforms.
 
 Version 1.11.7:
  * Add-ons client:
