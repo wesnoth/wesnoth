@@ -90,7 +90,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	available_level_types_(),
 	engine_(disp, state)
 {
-	filter_num_players_slider_.set_min(0);
+	filter_num_players_slider_.set_min(1);
 	filter_num_players_slider_.set_max(9);
 	filter_num_players_slider_.set_increment(1);
 
@@ -380,7 +380,7 @@ void create::process_event()
 		const int val = filter_num_players_slider_.value();
 		engine_.apply_level_filter(val);
 		std::stringstream ss;
-		if (val == 0) {
+		if (val == 1) {
 			ss << _("Number of players: any");
 		} else {
 			ss << _("Number of players: ") << val;

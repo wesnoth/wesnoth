@@ -892,7 +892,7 @@ void create_engine::apply_level_filters()
 	scenarios_filtered_.clear();
 	for (size_t i = 0; i<scenarios_.size(); i++) {
 		if (contains_ignore_case(scenarios_[i]->name(), level_name_filter_) &&
-			(player_count_filter_ == 0 ||
+			(player_count_filter_ == 1 ||
 			 scenarios_[i]->num_players() == player_count_filter_)) {
 			scenarios_filtered_.push_back(i);
 		}
@@ -901,7 +901,7 @@ void create_engine::apply_level_filters()
 	user_scenarios_filtered_.clear();
 	for (size_t i = 0; i<user_scenarios_.size(); i++) {
 		if (contains_ignore_case(user_scenarios_[i]->name(), level_name_filter_) &&
-			(player_count_filter_ == 0 ||
+			(player_count_filter_ == 1 ||
 			 user_scenarios_[i]->num_players() == player_count_filter_)) {
 			user_scenarios_filtered_.push_back(i);
 		}
@@ -910,7 +910,7 @@ void create_engine::apply_level_filters()
 	user_maps_filtered_.clear();
 	for (size_t i = 0; i<user_maps_.size(); i++) {
 		if (contains_ignore_case(user_maps_[i]->name(), level_name_filter_) &&
-			(player_count_filter_ == 0 ||
+			(player_count_filter_ == 1 ||
 			 user_maps_[i]->num_players() == player_count_filter_)) {
 			user_maps_filtered_.push_back(i);
 		}
@@ -919,7 +919,7 @@ void create_engine::apply_level_filters()
 	campaigns_filtered_.clear();
 	for (size_t i = 0; i<campaigns_.size(); i++) {
 		if (contains_ignore_case(campaigns_[i]->name(), level_name_filter_) &&
-			(player_count_filter_ == 0 ||
+			(player_count_filter_ == 1 ||
 			(campaigns_[i]->min_players() <= player_count_filter_ &&
 			 campaigns_[i]->max_players() >= player_count_filter_))) {
 			campaigns_filtered_.push_back(i);
@@ -929,7 +929,7 @@ void create_engine::apply_level_filters()
 	sp_campaigns_filtered_.clear();
 	for (size_t i = 0; i<sp_campaigns_.size(); i++) {
 		if (contains_ignore_case(sp_campaigns_[i]->name(), level_name_filter_) &&
-			(player_count_filter_ == 0 ||
+			(player_count_filter_ == 1 ||
 			(sp_campaigns_[i]->min_players() <= player_count_filter_ &&
 			 sp_campaigns_[i]->max_players() >= player_count_filter_))) {
 			sp_campaigns_filtered_.push_back(i);
@@ -939,7 +939,7 @@ void create_engine::apply_level_filters()
 	random_maps_filtered_.clear();
 	for (size_t i = 0; i<random_maps_.size(); i++) {
 		if (contains_ignore_case(random_maps_[i]->name(), level_name_filter_) &&
-			(player_count_filter_ == 0 ||
+			(player_count_filter_ == 1 ||
 			 random_maps_[i]->num_players() == player_count_filter_)) {
 			random_maps_filtered_.push_back(i);
 		}
