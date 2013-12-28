@@ -96,12 +96,13 @@ void manager::init_widgets()
 		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
 			const std::string id = c.cfg["id"];
 			if (c.key == "slider") {
-				widgets_ordered_.push_back(new slider_display(video_, c.cfg["name"], get_stored_value(id), c.cfg["min"], c.cfg["max"], c.cfg["step"]));
+				widgets_ordered_.push_back(new slider_display(video_, c.cfg));
 			} else if (c.key == "entry") {
-				widgets_ordered_.push_back(new entry_display(video_, c.cfg["name"], get_stored_value(id)));
+				widgets_ordered_.push_back(new entry_display(video_, c.cfg));
 			} else if (c.key == "checkbox") {
-				widgets_ordered_.push_back(new checkbox_display(video_, c.cfg["name"], get_stored_value(id)));
+				widgets_ordered_.push_back(new checkbox_display(video_, c.cfg));
 			}
+			widgets_ordered_.back()->set_value(get_stored_value(id));
 			widgets_[id] = widgets_ordered_.back();
 		}
 	}
@@ -387,9 +388,9 @@ bool manager::is_active(const std::string &id) const
 			(std::find(modifications_.begin(), modifications_.end(), id) != modifications_.end());
 }
 
-entry_display::entry_display(CVideo &video, const std::string &label, const std::string &value) :
-	entry_(new gui::textbox(video, 150, value)),
-	label_(new gui::label(video, label))
+entry_display::entry_display(CVideo &video, const config &cfg) :
+	entry_(new gui::textbox(video, 150, cfg["default"])),
+	label_(new gui::label(video, cfg["name"]))
 {}
 
 entry_display::~entry_display()
@@ -423,17 +424,17 @@ void entry_display::hide_children(bool hide)
 	entry_->hide(hide);
 }
 
-slider_display::slider_display(CVideo &video, const std::string &label, int value, int min, int max, int step) :
+slider_display::slider_display(CVideo &video, const config &cfg) :
 	slider_(new gui::slider(video)),
-	label_(new gui::label(video, label, font::SIZE_SMALL)),
-	last_value_(value),
-	label_text_(label)
+	label_(new gui::label(video, cfg["name"], font::SIZE_SMALL)),
+	last_value_(cfg["default"].to_int()),
+	label_text_(cfg["name"])
 {
-	slider_->set_min(min);
-	slider_->set_max(max);
-	slider_->set_increment(step);
+	slider_->set_min(cfg["min"].to_int());
+	slider_->set_max(cfg["max"].to_int());
+	slider_->set_increment(cfg["step"].to_int());
 	slider_->set_width(150);
-	slider_->set_value(value);
+	slider_->set_value(cfg["default"].to_int());
 
 	update_label();
 }
@@ -485,10 +486,10 @@ void slider_display::update_label()
 	label_->set_text(ss.str());
 }
 
-checkbox_display::checkbox_display(CVideo &video, const std::string &label, bool value) :
-	checkbox_(new gui::button(video, label, gui::button::TYPE_CHECK))
+checkbox_display::checkbox_display(CVideo &video, const config &cfg) :
+	checkbox_(new gui::button(video, cfg["name"], gui::button::TYPE_CHECK))
 {
-	checkbox_->set_check(value);
+	checkbox_->set_check(cfg["default"].to_bool());
 }
 
 checkbox_display::~checkbox_display()
