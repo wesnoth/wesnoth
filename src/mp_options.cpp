@@ -92,25 +92,28 @@ void manager::init_widgets()
 			continue;
 		}
 
-		widgets_ordered_.push_back(new title_display(video_, comp.cfg["name"]));
+		widgets_ordered_.push_back(new title_display(display_.video(), comp.cfg["name"]));
 		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
 			const std::string id = c.cfg["id"];
 			if (c.key == "slider") {
-				widgets_ordered_.push_back(new slider_display(video_, c.cfg["name"], get_stored_value(id), c.cfg["min"], c.cfg["max"], c.cfg["step"]));
+				widgets_ordered_.push_back(new slider_display(display_.video(), c.cfg));
 			} else if (c.key == "entry") {
-				widgets_ordered_.push_back(new entry_display(video_, c.cfg["name"], get_stored_value(id)));
+				widgets_ordered_.push_back(new entry_display(display_.video(), c.cfg));
 			} else if (c.key == "checkbox") {
-				widgets_ordered_.push_back(new checkbox_display(video_, c.cfg["name"], get_stored_value(id)));
+				widgets_ordered_.push_back(new checkbox_display(display_.video(), c.cfg));
+			} else if (c.key == "combo") {
+				widgets_ordered_.push_back(new combo_display(display_, c.cfg));
 			}
+			widgets_ordered_.back()->set_value(get_stored_value(id));
 			widgets_[id] = widgets_ordered_.back();
 		}
 	}
 }
 
-manager::manager(const config &gamecfg, CVideo& video, gui::scrollpane *pane, const config &values)
+manager::manager(const config &gamecfg, game_display &display, gui::scrollpane *pane, const config &values)
 	: options_info_()
 	, values_(values)
-	, video_(video)
+	, display_(display)
 	, pane_(pane)
 	, era_()
 	, scenario_()
@@ -348,7 +351,7 @@ void manager::update_values()
 
 bool manager::is_valid_option(const std::string& key, const config& option)
 {
-	return (key == "slider" || key == "entry" || key == "checkbox") &&
+	return (key == "slider" || key == "entry" || key == "checkbox" || key == "combo") &&
 		   (!option["id"].empty());
 }
 
@@ -387,10 +390,12 @@ bool manager::is_active(const std::string &id) const
 			(std::find(modifications_.begin(), modifications_.end(), id) != modifications_.end());
 }
 
-entry_display::entry_display(CVideo &video, const std::string &label, const std::string &value) :
-	entry_(new gui::textbox(video, 150, value)),
-	label_(new gui::label(video, label))
-{}
+entry_display::entry_display(CVideo &video, const config &cfg) :
+	entry_(new gui::textbox(video, 150, cfg["default"])),
+	label_(new gui::label(video, cfg["name"]))
+{
+	entry_->set_help_string(cfg["description"]);
+}
 
 entry_display::~entry_display()
 {
@@ -423,17 +428,19 @@ void entry_display::hide_children(bool hide)
 	entry_->hide(hide);
 }
 
-slider_display::slider_display(CVideo &video, const std::string &label, int value, int min, int max, int step) :
+slider_display::slider_display(CVideo &video, const config &cfg) :
 	slider_(new gui::slider(video)),
-	label_(new gui::label(video, label, font::SIZE_SMALL)),
-	last_value_(value),
-	label_text_(label)
+	label_(new gui::label(video, cfg["name"], font::SIZE_SMALL)),
+	last_value_(cfg["default"].to_int()),
+	label_text_(cfg["name"])
 {
-	slider_->set_min(min);
-	slider_->set_max(max);
-	slider_->set_increment(step);
+	slider_->set_min(cfg["min"].to_int());
+	slider_->set_max(cfg["max"].to_int());
+	slider_->set_increment(cfg["step"].to_int());
 	slider_->set_width(150);
-	slider_->set_value(value);
+	slider_->set_value(cfg["default"].to_int());
+
+	slider_->set_help_string(cfg["description"]);
 
 	update_label();
 }
@@ -467,8 +474,8 @@ config::attribute_value slider_display::get_value() const
 void slider_display::process_event()
 {
 	if (slider_->value() != last_value_) {
-		update_label();
 		last_value_ = slider_->value();
+		update_label();
 	}
 }
 
@@ -485,10 +492,11 @@ void slider_display::update_label()
 	label_->set_text(ss.str());
 }
 
-checkbox_display::checkbox_display(CVideo &video, const std::string &label, bool value) :
-	checkbox_(new gui::button(video, label, gui::button::TYPE_CHECK))
+checkbox_display::checkbox_display(CVideo &video, const config &cfg) :
+	checkbox_(new gui::button(video, cfg["name"], gui::button::TYPE_CHECK))
 {
-	checkbox_->set_check(value);
+	checkbox_->set_check(cfg["default"].to_bool());
+	checkbox_->set_help_string(cfg["description"]);
 }
 
 checkbox_display::~checkbox_display()
@@ -538,6 +546,59 @@ void title_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpan
 void title_display::hide_children(bool hide)
 {
 	title_->hide(hide);
+}
+
+combo_display::combo_display(game_display &display, const config &cfg) :
+	label_(new gui::label(display.video(), cfg["name"])),
+	combo_(new gui::combo(display, std::vector<std::string>())),
+	values_()
+{
+	std::vector<std::string> items;
+	BOOST_FOREACH(const config& item, cfg.child_range("item")) {
+		items.push_back(item["name"]);
+		values_.push_back(item["value"]);
+	}
+
+	combo_->set_items(items);
+	combo_->set_help_string(cfg["description"]);
+	set_value(cfg["default"]);
+}
+
+combo_display::~combo_display()
+{
+	delete label_;
+	delete combo_;
+}
+
+void combo_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	pane->add_widget(label_, xpos, ypos);
+	pane->add_widget(combo_, xpos + label_->width() + border_size, ypos);
+	ypos += std::max(label_->height(), combo_->height()) + border_size;
+}
+
+void combo_display::set_value(const config::attribute_value &val)
+{
+	const std::string value = val;
+	for (size_t i = 0; i<values_.size(); i++) {
+		if (value == values_[i]) {
+			combo_->set_selected(i);
+			break;
+		}
+	}
+}
+
+config::attribute_value combo_display::get_value() const
+{
+	config::attribute_value res;
+	res = values_[combo_->selected()];
+	return res;
+}
+
+void combo_display::hide_children(bool hide)
+{
+	label_->hide(hide);
+	combo_->hide(hide);
 }
 
 }	// namespace options

@@ -18,6 +18,7 @@
 #include <string>
 #include "config.hpp"
 #include "video.hpp"
+#include "game_display.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
 #include "widgets/scrollpane.hpp"
@@ -25,6 +26,7 @@
 #include "widgets/button.hpp"
 #include "widgets/textbox.hpp"
 #include "widgets/slider.hpp"
+#include "widgets/combo.hpp"
 
 namespace mp
 {
@@ -57,7 +59,7 @@ public:
 class entry_display : public option_display
 {
 public:
-	entry_display(CVideo& video, const std::string& label, const std::string &value);
+	entry_display(CVideo& video, const config& cfg);
 	~entry_display();
 
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
@@ -73,7 +75,7 @@ private:
 class slider_display : public option_display
 {
 public:
-	slider_display(CVideo& video, const std::string& label, int value, int min, int max, int step);
+	slider_display(CVideo& video, const config& cfg);
 	~slider_display();
 
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
@@ -94,7 +96,7 @@ private:
 class checkbox_display : public option_display
 {
 public:
-	checkbox_display(CVideo& video, const std::string& label, bool value);
+	checkbox_display(CVideo& video, const config& cfg);
 	~checkbox_display();
 
 	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
@@ -103,6 +105,24 @@ public:
 	virtual void hide_children(bool hide);
 private:
 	gui::button* checkbox_;
+};
+
+class combo_display : public option_display
+{
+public:
+	combo_display(game_display& display, const config& cfg);
+	~combo_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &val);
+	config::attribute_value get_value() const;
+	void hide_children(bool hide);
+
+private:
+	gui::label* label_;
+	gui::combo* combo_;
+
+	std::vector<std::string> values_;
 };
 
 class title_display : public option_display
@@ -136,7 +156,7 @@ public:
 	 */
 	//manager(const config& gamecfg, CVideo& video, const config& initial_values);
 
-	manager(const config& gamecfg, CVideo& video, gui::scrollpane* pane, const config& initial_value);
+	manager(const config& gamecfg, game_display& display, gui::scrollpane* pane, const config& initial_value);
 
 	~manager();
 
@@ -229,7 +249,7 @@ private:
 	config values_;
 
 	/** The screen to display the dialog on */
-	CVideo &video_;
+	game_display &display_;
 
 	/** The scrollarea to put the widgets on */
 	gui::scrollpane* pane_;

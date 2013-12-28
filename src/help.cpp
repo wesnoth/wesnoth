@@ -2112,7 +2112,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		section_list::const_iterator s;
 		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
 			if (is_visible_id((*s)->id)) {
-				std::string link = make_link((*s)->title, (*s)->id);
+				std::string link = make_link((*s)->title, ".."+(*s)->id);
 				res << link << "\n";
 			}
 		}
@@ -2124,7 +2124,6 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 				res << link << "\n";
 			}
 		}
-
 		return res.str();
 }
 

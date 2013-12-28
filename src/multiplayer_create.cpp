@@ -84,13 +84,13 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
-	filter_name_(disp.video(), 100, "", true),
+	filter_name_(disp.video(), 100, "", true, 256, font::SIZE_SMALL),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
 	engine_(disp, state)
 {
-	filter_num_players_slider_.set_min(0);
+	filter_num_players_slider_.set_min(1);
 	filter_num_players_slider_.set_max(9);
 	filter_num_players_slider_.set_increment(1);
 
@@ -380,7 +380,7 @@ void create::process_event()
 		const int val = filter_num_players_slider_.value();
 		engine_.apply_level_filter(val);
 		std::stringstream ss;
-		if (val == 0) {
+		if (val == 1) {
 			ss << _("Number of players: any");
 		} else {
 			ss << _("Number of players: ") << val;

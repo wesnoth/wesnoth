@@ -84,6 +84,12 @@ public:
     	actions_since_save_++;
     }
 
+	/** removes the last side from the scenario */
+	void remove_side() {
+		teams_.pop_back();
+		actions_since_save_++;
+	}
+
 	void save_area(const std::set<map_location>& area) {
 		tod_manager_->replace_area_locations(active_area_, area);
 	}

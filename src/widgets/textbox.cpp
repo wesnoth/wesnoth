@@ -27,10 +27,8 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-const int font_size = font::SIZE_PLUS;
-
-textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus, const bool auto_join)
-	   : scrollarea(video, auto_join), max_size_(max_size), text_(utils::string_to_wstring(text)),
+textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
+	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(utils::string_to_wstring(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
@@ -40,8 +38,8 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 {
 	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
-	set_measurements(width, font::get_max_height(font_size));
-	set_scroll_rate(font::get_max_height(font_size) / 2);
+	set_measurements(width, font::get_max_height(font_size_));
+	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);
 }
 
@@ -227,6 +225,16 @@ bool textbox::editable() const
 	return editable_;
 }
 
+int textbox::font_size() const
+{
+	return font_size_;
+}
+
+void textbox::set_font_size(int fs)
+{
+	font_size_ = fs;
+}
+
 void textbox::scroll_to_bottom()
 {
 	set_position(get_max_position());
@@ -249,7 +257,7 @@ void textbox::scroll(unsigned int pos)
 
 surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 {
-	line_height_ = font::get_max_height(font_size);
+	line_height_ = font::get_max_height(font_size_);
 
 	if(char_y_.empty()) {
 		char_y_.push_back(0);
@@ -281,7 +289,7 @@ surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 			visible_string = "";
 		}
 
-		int w = font::line_width(visible_string, font_size);
+		int w = font::line_width(visible_string, font_size_);
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {
@@ -307,7 +315,7 @@ surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 	}
 
 	const std::string s = utils::wstring_to_string(wrapped_text);
-	const surface res(font::get_rendered_text(s, font_size, color));
+	const surface res(font::get_rendered_text(s, font_size_, color));
 
 	return res;
 }
