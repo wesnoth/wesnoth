@@ -324,6 +324,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return !context_manager_->get_map_context().is_pure_map();
 
 		case HOTKEY_EDITOR_SIDE_EDIT:
+		case HOTKEY_EDITOR_SIDE_REMOVE:
 			return !context_manager_->get_map_context().get_teams().empty();
 
 		// brushes
@@ -375,8 +376,11 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_LOCAL_TIME:
 			return !context_manager_->get_map_context().get_time_manager()->get_area_ids().empty();
 
-		case HOTKEY_EDITOR_SELECTION_EXPORT:
 		case HOTKEY_EDITOR_AREA_SAVE:
+			return !context_manager_->get_map_context().get_time_manager()->get_area_ids().empty()
+					&& !context_manager_->get_map().selection().empty();
+
+		case HOTKEY_EDITOR_SELECTION_EXPORT:
 		case HOTKEY_EDITOR_SELECTION_CUT:
 		case HOTKEY_EDITOR_SELECTION_COPY:
 		case HOTKEY_EDITOR_SELECTION_FILL:
@@ -716,10 +720,6 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			add_area();
 			return true;
 
-		case HOTKEY_EDITOR_SIDE_EDIT:
-			context_manager_->edit_side_dialog(gui_->viewing_team());
-			return true;
-
 		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
 			change_unit_id();
 			return true;
@@ -877,6 +877,16 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 		case HOTKEY_EDITOR_SIDE_NEW:
 			context_manager_->get_map_context().new_side();
 			gui_->init_flags();
+			return true;
+
+		case HOTKEY_EDITOR_SIDE_REMOVE:
+			gui_->set_team(0, true);
+			gui_->set_playing_team(0);
+			context_manager_->get_map_context().remove_side();
+			return true;
+
+		case HOTKEY_EDITOR_SIDE_EDIT:
+			context_manager_->edit_side_dialog(gui_->viewing_team());
 			return true;
 
 		// Transitions
