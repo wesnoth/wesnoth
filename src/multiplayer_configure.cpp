@@ -91,7 +91,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
 	parameters_(params),
-	options_manager_(cfg, disp.video(), &options_pane_right_, preferences::options())
+	options_manager_(cfg, disp, &options_pane_right_, preferences::options())
 {
 	// Build the list of scenarios to play
 
