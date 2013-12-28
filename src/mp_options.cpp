@@ -393,7 +393,9 @@ bool manager::is_active(const std::string &id) const
 entry_display::entry_display(CVideo &video, const config &cfg) :
 	entry_(new gui::textbox(video, 150, cfg["default"])),
 	label_(new gui::label(video, cfg["name"]))
-{}
+{
+	entry_->set_help_string(cfg["description"]);
+}
 
 entry_display::~entry_display()
 {
@@ -437,6 +439,8 @@ slider_display::slider_display(CVideo &video, const config &cfg) :
 	slider_->set_increment(cfg["step"].to_int());
 	slider_->set_width(150);
 	slider_->set_value(cfg["default"].to_int());
+
+	slider_->set_help_string(cfg["description"]);
 
 	update_label();
 }
@@ -492,6 +496,7 @@ checkbox_display::checkbox_display(CVideo &video, const config &cfg) :
 	checkbox_(new gui::button(video, cfg["name"], gui::button::TYPE_CHECK))
 {
 	checkbox_->set_check(cfg["default"].to_bool());
+	checkbox_->set_help_string(cfg["description"]);
 }
 
 checkbox_display::~checkbox_display()
@@ -555,6 +560,7 @@ combo_display::combo_display(game_display &display, const config &cfg) :
 	}
 
 	combo_->set_items(items);
+	combo_->set_help_string(cfg["description"]);
 	set_value(cfg["default"]);
 }
 
