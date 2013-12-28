@@ -116,7 +116,7 @@ namespace gui{
 		}
 
 
-		box_.assign(new gui::textbox(gui.video(),100,"",true,256,0.8,0.6));
+		box_.assign(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
 
 		update_location(gui);
 	}
