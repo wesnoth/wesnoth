@@ -48,6 +48,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	campaign_difficulty(),
 	campaign_scenario(),
 	clock(false),
+	data_path(false),
 	data_dir(),
 	debug(false),
 	debug_lua(false),
@@ -131,6 +132,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-path and userconfig-path instead.")
 		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path and userconfig-path instead.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
+		("data-path", "prints the path of the data directory and exits.")
 		("debug,d", "enables additional command mode options in-game.")
 		("debug-lua", "enables some Lua debugging mechanisms")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -266,6 +268,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string> >());
 	if (vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
+	if (vm.count("data-path"))
+		data_path = true;
 	if (vm.count("debug"))
 		debug = true;
 	if (vm.count("debug-lua"))
