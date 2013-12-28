@@ -58,16 +58,6 @@ The difficulty of the specified campaign (1 to max). If none specified, the camp
 .B --campaign-scenario <id_scenario>
 The id of the scenario from the specified campaign. The default is the first scenario.
 .TP
-.BI --config-dir \ name
-sets the user configuration directory to
-.I name
-under $HOME or "My Documents\\My Games" for windows.
-You can also specify an absolute path for the configuration directory outside
-the $HOME or "My Documents\\My Games"
-.TP
-.B --config-path
-prints the path of the user configuration directory and exits.
-.TP
 .B --data-dir <directory>
 overrides the data directory with the one specified
 .TP
@@ -202,6 +192,28 @@ validation errors are treated as fatal errors.
 .TP
 .B -t, --test
 runs the game in a small test scenario.
+.TP
+.BI --userconfig-dir \ name
+sets the user configuration directory to
+.I name
+under $HOME or "My Documents\\My Games" for windows.
+You can also specify an absolute path for the configuration directory outside
+the $HOME or "My Documents\\My Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth,
+on other systems to the userdata path.
+.TP
+.B --userconfig-path
+prints the path of the user configuration directory and exits.
+.TP
+.BI --userdata-dir \ name
+sets the userdata directory to
+.I name
+under $HOME or "My Documents\\My Games" for windows.
+You can also specify an absolute path for the userdata directory outside
+the $HOME or "My Documents\\My Games".
+.TP
+.B --userdata-path
+prints the path of the userdata directory and exits.
 .TP
 .B --validcache
 assumes that the cache is valid. (dangerous)

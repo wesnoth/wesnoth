@@ -22,6 +22,9 @@ Example contents.
 Rebalancing of the campaign continues and is mostly done for Scenarios 1 (End of Peace) through 8 (Silent Forest) with only some fine tuning left to do. Play testing and feedback by others would be extremely helpful for this process. The first newly rebalanced scenario of this release is 'The Siege of Barag Gor'. Scenarios after 'Silent Forest' have also seen some changes but are not balanced yet.
 [/section]
 
+[section="Userdata command line options"]
+Since 1.9.0, Wesnoth obeys the XDG Basedir Specification, meaning that on X11-based systems, such as most linux distros, the userdata and the preferences have been split between $HOME/.local/share/wesnoth/<version> and $HOME/.config/wesnoth. The old command line options --config-dir and --config-path remained in place, referring to the userdata though. New options, --userdata-dir, --userdata-path, --userconfig-dir and --userconfig-path now replace these old ones.
+[/section]
 
 
 ==========
