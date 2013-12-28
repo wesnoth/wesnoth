@@ -164,15 +164,16 @@ map_context::map_context(const config& game_config, const std::string& filename,
 
 }
 
-void map_context::set_side_setup(int side, const std::string& id, const std::string& name,
+void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
 		int gold, int income, int village_gold, int village_support,
 		bool fog, bool share_view, bool shroud, bool share_maps,
 		team::CONTROLLER controller, bool hidden, bool no_leader)
 {
 	assert(teams_.size() > static_cast<unsigned int>(side));
 	team& t = teams_[side];
-	t.set_save_id(id);
-	t.set_name(name);
+//	t.set_save_id(id);
+//	t.set_name(name);
+	t.change_team(team_name, user_team_name);
 	t.have_leader(!no_leader);
 	t.change_controller(controller);
 	t.set_gold(gold);
