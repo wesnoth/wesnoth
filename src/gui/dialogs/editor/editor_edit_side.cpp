@@ -60,8 +60,8 @@ teditor_edit_side::teditor_edit_side(int side, std::string& id, std::string& nam
 	side_stream << side;
 	register_label("side_number", true, side_stream.str(), true);
 
-	register_text("id", true, id, true);
-	register_text("name", true, name, true);
+	register_text("team_name", true, id, true);
+	register_text("user_team_name", true, name, true);
 
 	register_integer("gold", true, gold);
 	register_integer("income", true, income);
