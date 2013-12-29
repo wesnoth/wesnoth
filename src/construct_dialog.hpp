@@ -93,8 +93,8 @@ private:
 
 class dialog_textbox : public textbox {
 public:
-	dialog_textbox(label *const label_widget, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, double alpha = 0.4, double alpha_focus = 0.2)
-		: textbox(video, width, text, editable, max_size, alpha, alpha_focus, false),
+	dialog_textbox(label *const label_widget, CVideo &video, int width, const std::string& text="", bool editable=true, size_t max_size = 256, int font_size = font::SIZE_PLUS, double alpha = 0.4, double alpha_focus = 0.2)
+		: textbox(video, width, text, editable, max_size, font_size, alpha, alpha_focus, false),
 		label_(label_widget)
 	{}
 	virtual ~dialog_textbox();
