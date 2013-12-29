@@ -374,10 +374,12 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_AREA_REMOVE:
 		case HOTKEY_EDITOR_AREA_RENAME:
 		case HOTKEY_EDITOR_LOCAL_TIME:
-			return !context_manager_->get_map_context().get_time_manager()->get_area_ids().empty();
+			return !context_manager_->get_map_context().is_pure_map() &&
+					!context_manager_->get_map_context().get_time_manager()->get_area_ids().empty();
 
 		case HOTKEY_EDITOR_AREA_SAVE:
-			return !context_manager_->get_map_context().get_time_manager()->get_area_ids().empty()
+			return 	!context_manager_->get_map_context().is_pure_map() &&
+					!context_manager_->get_map_context().get_time_manager()->get_area_ids().empty()
 					&& !context_manager_->get_map().selection().empty();
 
 		case HOTKEY_EDITOR_SELECTION_EXPORT:
