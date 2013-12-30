@@ -690,6 +690,18 @@ code = <<
 [/test]
 """, "quoted2")
 
+        test(
+"""
+foo="bar"+
+
+
+
+"baz"
+""",
+"""
+foo='bar' .. 'baz'
+""", "multi line string")
+
         test2(
 """
 [test]
