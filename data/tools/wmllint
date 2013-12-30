@@ -1603,7 +1603,7 @@ def global_sanity_check(filename, lines):
                               % (filename, i+1, key)
                     lines[i] = prefix + value.replace("_", "", 1) + comment + '\n'
     # Now that we know who's present, register all these names as spellings
-    declared_spellings[filename] = [x.lower() for x in present]
+    declared_spellings[filename] = [x.lower() for x in present if len(x) > 0]
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
