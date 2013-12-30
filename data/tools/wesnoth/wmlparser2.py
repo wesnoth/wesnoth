@@ -204,6 +204,7 @@ class Parser:
         self.no_preprocess = no_preprocess
         self.preprocessed = None
         self.verbose = False
+        self.skip_newlines = False
 
         self.last_wml_line = "?"
         self.parser_line = 0
@@ -313,6 +314,9 @@ class Parser:
                 self.temp_key_nodes[self.commas].value.append(
                     self.temp_string_node)
 
+                if line[quote + 1:] == "\n":
+                    self.skip_newlines = False
+
                 self.in_string = False
                 self.parse_line_without_commands(line[quote + 1:])
             else:
@@ -354,7 +358,11 @@ class Parser:
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue
 
-                self.handle_value(segment, i == 0)
+                if i > 0 and segment == "\n":
+                    self.skip_newlines = True
+                elif segment != "\n":
+                    self.skip_newlines = False
+                self.handle_value(segment)
 
     def handle_tag(self, line):
         end = line.find("]")
@@ -389,7 +397,7 @@ class Parser:
         if remainder:
             self.parse_outside_strings(remainder)
 
-    def handle_value(self, segment, is_first):
+    def handle_value(self, segment):
 
         def add_text(segment):
             n = len(self.temp_key_nodes)
@@ -411,7 +419,7 @@ class Parser:
             if segment:
                 add_text(segment)
                 self.temp_key_nodes = []
-            elif is_first:
+            elif not self.skip_newlines:
                 self.temp_key_nodes = []
         else:
             add_text(segment)
