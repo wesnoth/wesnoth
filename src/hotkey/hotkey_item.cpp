@@ -241,8 +241,10 @@ void add_hotkey(const hotkey_item& item) {
 					::get_hotkey(item.get_character(), item.get_keycode(),
 							item.get_shift(), item.get_ctrl(), item.get_cmd(), item.get_alt());
 
-	if (old_hk.active())
+	if (old_hk.active()) {
 		old_hk.set_command(item.get_command());
+		old_hk.unset_default();
+	}
 	else
 		hotkeys_.push_back(item);
 }
