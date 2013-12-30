@@ -57,6 +57,10 @@ public:
 
 	bool is_default() const { return is_default_; }
 
+	void unset_default(bool is_not_default = true) {
+		is_default_ = !is_not_default;
+	}
+
 	/// Return "name" of hotkey. Example :"ctrl+alt+g"
 	std::string get_name() const;
 
