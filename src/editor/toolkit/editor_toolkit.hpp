@@ -47,7 +47,7 @@ private:
 	void init_brushes(const config& game_config);
 
 	/** init the mouse actions (tools) */
-	void init_mouse_actions(const config& game_config, context_manager& c_manager);
+	void init_mouse_actions(context_manager& c_manager);
 
 public:
 	void set_mouseover_overlay();
@@ -96,10 +96,6 @@ private:
 	/** The mouse actions */
 	typedef std::map<hotkey::HOTKEY_COMMAND, mouse_action*> mouse_action_map;
 	mouse_action_map mouse_actions_;
-
-	/** Usage tips for mouse actions */
-	typedef std::map<hotkey::HOTKEY_COMMAND, std::string> mouse_action_string_map;
-	mouse_action_string_map mouse_action_hints_;
 
 //Brush members
 

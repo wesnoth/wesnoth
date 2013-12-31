@@ -17,15 +17,12 @@
 #include "builder.hpp"
 #include "reports.hpp"
 
-#include <boost/foreach.hpp>
-
 namespace editor {
 
 editor_display::editor_display(unit_map* units, CVideo& video, const editor_map* map,
 		const std::vector<team>* t, const config& theme_cfg, const config& level)
 	: display(units, video, map, t, theme_cfg, level)
 	, brush_locations_()
-	, toolbar_hint_()
 	, palette_report_()
 {
 	clear_screen();
@@ -120,9 +117,6 @@ void editor_display::draw_sidebar()
 		refresh_report("villages");
 		refresh_report("num_units");
 	}
-
-	text = toolbar_hint_;
-	refresh_report("editor_tool_hint", &element);
 }
 
 

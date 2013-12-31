@@ -1510,11 +1510,6 @@ REPORT_GENERATOR(edit_left_button_function)
 }
 */
 
-REPORT_GENERATOR(editor_tool_hint)
-{
-	return report();
-}
-
 REPORT_GENERATOR(report_clock)
 {
 	time_t t = std::time(NULL);
