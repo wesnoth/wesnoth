@@ -153,7 +153,7 @@ syn keyword wesmlStdTag contained case chat choose clear_global_variable clear_m
 syn keyword wesmlStdTag contained clear_variable colour_adjust command damage deaths 
 syn keyword wesmlStdTag contained defend defends defense delay deprecated_message 
 syn keyword wesmlStdTag contained destination disallow_end_turn disallow_extra_recruit disallow_recruit do 
-syn keyword wesmlStdTag contained editor_group editor_music editor_times editor_tool_hint effect 
+syn keyword wesmlStdTag contained editor_group editor_music editor_times effect 
 syn keyword wesmlStdTag contained else endlevel end_turn era event 
 syn keyword wesmlStdTag contained expenses filter filter filter_attack filter_attack 
 syn keyword wesmlStdTag contained filter_condition filter_location filter_second filter_second filter_second_attack 

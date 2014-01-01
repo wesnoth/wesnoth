@@ -266,20 +266,17 @@ void map_context::load_scenario(const config& game_config)
 	int i = 1;
 	BOOST_FOREACH(config &side, scenario.child_range("side"))
 	{
-		//TODO clean up.
-		//state_.build_team(side, "", teams_, level, *this
-		//	, units_, false);
 		team t;
-		side["side"] = i++;
-		side["no_leader"] = "yes";
+		side["side"] = i;
 		t.build(side, map_);
-
 		teams_.push_back(t);
-		BOOST_FOREACH(const config &a_unit, side.child_range("unit")) {
+
+		BOOST_FOREACH(config &a_unit, side.child_range("unit")) {
 			map_location loc(a_unit, NULL);
-			units_.add(loc,
-					unit(a_unit, true, &state_) );
+			a_unit["side"] = i;
+			units_.add(loc, unit(a_unit, true, &state_) );
 		}
+		i++;
 	}
 }
 
@@ -455,6 +452,9 @@ config map_context::to_config()
 				u["type"] = i->type_id();
 				u["canrecruit"] = i->can_recruit();
 				u["unrenamable"] = i->unrenamable();
+				u["id"] = i->id();
+				u["name"] = i->name();
+				u["extra_recruit"] = utils::join(i->recruits());
 			}
 		}
 	}

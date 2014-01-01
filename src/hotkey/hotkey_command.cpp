@@ -214,7 +214,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_AREA_SAVE,   "editor-save-area",   N_("Save Selection to Area"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_AREA_RENAME, "editor-rename-area", N_("Rename Selected Area"),   false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_AREA_REMOVE, "editor-remove-area", N_("Remove Selected Area"),   false, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_AREA_ADD,    "editor-add-area",    N_("Add new Area"),           false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_AREA_ADD,    "editor-add-area",    N_("Add New Area"),           false, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_EDITOR_SCENARIO_EDIT, "editor-scenario-edit", N_("Edit Scenario"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_SIDE_EDIT, "editor-side-edit", N_("Edit Side"), false, hotkey::SCOPE_EDITOR, "" },

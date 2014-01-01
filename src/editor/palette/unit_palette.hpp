@@ -37,12 +37,19 @@ public:
 
 	virtual std::string get_help_string();
 
+	const std::set<std::string>& get_selected_bg_items() { return selected_bg_items_; }
+
 private:
 	virtual const std::string& get_id(const unit_type& terrain);
 
 	virtual void draw_item(const unit_type& terrain, surface& image, std::stringstream& tooltip_text);
 
+	virtual bool is_selected_bg_item(const std::string& id);
+
+	virtual void select_bg_item(const std::string& item_id);
 //	virtual void update_report();
+
+	std::set<std::string> selected_bg_items_;
 
 };
 

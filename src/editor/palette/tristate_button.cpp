@@ -373,7 +373,7 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 		if (state_ == TOUCHED_BOTH_RIGHT) {
 			state_ = PRESSED_ACTIVE_BOTH;
 			palette_->select_fg_item(item_id_);
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
 			pressed_ = true;
 		}
@@ -381,18 +381,21 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 
 	if (event.button == SDL_BUTTON_RIGHT) {
 
+		pressed_ = true;
+		palette_->select_bg_item(item_id_);
+
 		if (state_ == TOUCHED_RIGHT) {
 			state_ = PRESSED_ACTIVE_RIGHT;
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
-			pressed_ = true;
+		//	pressed_ = true;
 		}
 		if (state_ == TOUCHED_BOTH_LEFT) {
 			state_ = PRESSED_ACTIVE_BOTH;
-			palette_->select_fg_item(item_id_);
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_fg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
-			pressed_ = true;
+		//	pressed_ = true;
 		}
 	}
 

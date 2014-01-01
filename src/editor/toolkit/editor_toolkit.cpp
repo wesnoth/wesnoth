@@ -33,13 +33,12 @@ editor_toolkit::editor_toolkit(editor_display& gui, const CKey& key,
 	, palette_manager_()
 	, mouse_action_(NULL)
 	, mouse_actions_()
-	, mouse_action_hints_()
 	, brush_(NULL)
 	, brushes_()
 {
 	init_brushes(game_config);
 	init_sidebar(game_config);
-	init_mouse_actions(game_config, c_manager);
+	init_mouse_actions(c_manager);
 }
 
 editor_toolkit::~editor_toolkit()
@@ -69,7 +68,7 @@ void editor_toolkit::init_sidebar(const config& game_config)
 	palette_manager_.reset(new palette_manager(gui_, game_config, &mouse_action_));
 }
 
-void editor_toolkit::init_mouse_actions(const config& game_config, context_manager& cmanager)
+void editor_toolkit::init_mouse_actions(context_manager& cmanager)
 {
 	mouse_actions_.insert(std::make_pair(hotkey::HOTKEY_EDITOR_TOOL_PAINT,
 		new mouse_action_paint(&brush_, key_, *palette_manager_->terrain_palette_.get())));
@@ -97,13 +96,6 @@ void editor_toolkit::init_mouse_actions(const config& game_config, context_manag
 			if (i != mouse_actions_.end()) {
 				i->second->set_toolbar_button(&menu);
 			}
-		}
-	}
-	BOOST_FOREACH(const config &c, game_config.child_range("editor_tool_hint")) {
-		mouse_action_map::iterator i =
-			mouse_actions_.find(hotkey::get_id(c["id"]));
-		if (i != mouse_actions_.end()) {
-			mouse_action_hints_.insert(std::make_pair(i->first, c["text"]));
 		}
 	}
 

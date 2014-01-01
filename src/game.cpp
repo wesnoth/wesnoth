@@ -142,7 +142,6 @@ static void bzip2_decode(const std::string & input_file, const std::string & out
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
 {
-	std::string output_macros_file;
 	preproc_map input_macros;
 
 	if( cmdline_opts.preprocess_input_macros ) {
@@ -231,12 +230,6 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
 	std::cerr << "acquired " << (defines_map.size() - input_macros.size())
 		<< " total defines.\n";
-
-	if( cmdline_opts.preprocess_output_macros &&
-		!cmdline_opts.preprocess_output_macros->empty()) {
-
-			output_macros_file = *cmdline_opts.preprocess_output_macros;
-	}
 
 	if ( cmdline_opts.preprocess_output_macros )
 	{

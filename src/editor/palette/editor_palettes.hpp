@@ -124,6 +124,9 @@ private:
 
 	virtual const std::string& active_group_id() {return active_group_;};
 
+	virtual bool is_selected_fg_item(const std::string& id);
+	virtual bool is_selected_bg_item(const std::string& id);
+
 	/** Return the number of items in the palette. */
 	size_t num_items();
 
