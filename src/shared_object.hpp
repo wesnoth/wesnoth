@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Chris Hopman <cjhopman@gmail.com>
+   Copyright (C) 2009 - 2014 by Chris Hopman <cjhopman@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify

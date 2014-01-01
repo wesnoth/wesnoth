@@ -1,6 +1,6 @@
 
 /*
-   Copyright (C) 2008 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
