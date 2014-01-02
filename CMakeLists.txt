@@ -82,6 +82,7 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
+option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis support" OFF)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -463,6 +464,10 @@ endif(DEFAULT_PREFS_FILE)
 if(ENABLE_LOW_MEM)
 	add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
+
+if(ENABLE_PANDORA)
+	add_definitions(-DPANDORA)
+endif(ENABLE_PANDORA)
 
 if(ENABLE_OMP)
 	find_package(OpenMP REQUIRED)
