@@ -100,6 +100,8 @@ Version 1.11.7+dev:
    * Make sliders able to be scrolled with the mouse wheel
    * Allow advanced preference booleans and mp modifications to be toggled
      via double click
+   * Fixed slight scrolling glitches with credits sections with multi-line
+     headers (e.g. those generated for campaigns with multi-line titles).
  * WML engine:
    * WML variable turn_number is set correctly (to 1) in prestart and start
      events.  Previously, it retained its last value from the previous scenario

@@ -28,7 +28,7 @@ namespace about
 
 void show_about(display &disp, const std::string &campaign = std::string());
 void set_about(const config& cfg);
-std::vector<std::string> get_text(const std::string &campaign = std::string());
+std::vector<std::string> get_text(const std::string &campaign = std::string(), bool split_multiline_headers = false);
 
 }
 

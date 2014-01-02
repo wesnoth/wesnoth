@@ -44,11 +44,27 @@ namespace about
  * Given a vector of strings, and a config representing an [about] section,
  * add all the credits lines from the about section to the list of strings.
  */
-static void add_lines(std::vector<std::string> &res, config const &c) {
+static void add_lines(std::vector<std::string> &res, config const &c, bool split_multiline_headers) {
 	std::string title = c["title"];
 	if (!title.empty()) {
-		title = "+" + title;
-		res.push_back(title);
+		if(split_multiline_headers) {
+			// If the title is multi-line, we need to split it accordingly or we
+			// get slight scrolling glitches in the credits screen.
+			const std::vector<std::string>& lines = utils::split(c["title"], '\n');
+			bool first = true;
+			BOOST_FOREACH(const std::string& line, lines) {
+				if(first) {
+					res.push_back("+" + line);
+					first = false;
+				} else {
+					// Don't convert other lines into headers or they get extra
+					// spacing on the credits screen.
+					res.push_back(line);
+				}
+			}
+		} else {
+			res.push_back("+" + title);
+		}
 	}
 
 	std::vector<std::string> lines = utils::split(c["text"], '\n');
@@ -73,7 +89,7 @@ static void add_lines(std::vector<std::string> &res, config const &c) {
 }
 
 
-std::vector<std::string> get_text(const std::string &campaign)
+std::vector<std::string> get_text(const std::string &campaign, bool split_multiline_headers)
 {
 	std::vector< std::string > res;
 
@@ -83,13 +99,13 @@ std::vector<std::string> get_text(const std::string &campaign)
 		BOOST_FOREACH(const config &about, about_entries) {
 			// just finished a particular campaign
 			if (campaign == about["id"]) {
-				add_lines(res, about);
+				add_lines(res, about, split_multiline_headers);
 			}
 		}
 	}
 
 	BOOST_FOREACH(const config &about, about_entries) {
-		add_lines(res, about);
+		add_lines(res, about, split_multiline_headers);
 	}
 
 	return res;
@@ -178,7 +194,10 @@ void show_about(display &disp, const std::string &campaign)
 	surface screen = video.getSurface();
 	if (screen == NULL) return;
 
-	std::vector<std::string> text = about::get_text(campaign);
+	// If the title is multi-line, we need to split it accordingly or we
+	// get slight scrolling glitches in the credits screen.
+	std::vector<std::string> text = about::get_text(campaign, true);
+
 	SDL_Rect screen_rect = create_rect(0, 0, screen->w, screen->h);
 
 	const surface_restorer restorer(&video, screen_rect);
