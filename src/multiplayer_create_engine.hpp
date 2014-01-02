@@ -60,7 +60,7 @@ class scenario : public level
 {
 public:
 	scenario(const config& data);
-	~scenario();
+	virtual ~scenario();
 
 	bool can_launch_game() const;
 
@@ -87,7 +87,7 @@ class user_map : public scenario
 {
 public:
 	user_map(const config& data, const std::string& name, gamemap* map);
-	~user_map();
+	virtual ~user_map();
 
 	void set_metadata();
 
@@ -106,7 +106,7 @@ class random_map : public scenario
 {
 public:
 	random_map(const config& generator_data);
-	~random_map();
+	virtual ~random_map();
 
 	const config& generator_data() const;
 
@@ -125,7 +125,7 @@ class campaign : public level
 {
 public:
 	campaign(const config& data);
-	~campaign();
+	virtual ~campaign();
 
 	bool can_launch_game() const;
 
