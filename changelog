@@ -131,6 +131,11 @@ Version 1.11.7+dev:
    * Split command line option --config-dir into --userconfig-dir and
      --userdata-dir, with --userconfig-dir defaulting to --userdata-dir's
      value on some platforms.
+   * The color_adjust_blue_ attribute in [display] tags of saved games has
+     been renamed to color_adjust_blue. Since it is only non-zero following a
+     [color_adjust] action in a WML event, only mid-scenario saved games
+     created with previous versions may present minor color issues after this
+     change.
 
 Version 1.11.7:
  * Add-ons client:

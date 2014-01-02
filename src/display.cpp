@@ -3075,7 +3075,7 @@ void display::write(config& cfg) const
 	cfg["view_locked"] = view_locked_;
 	cfg["color_adjust_red"] = color_adjust_.r;
 	cfg["color_adjust_green"] = color_adjust_.g;
-	cfg["color_adjust_blue_"] = color_adjust_.b;
+	cfg["color_adjust_blue"] = color_adjust_.b;
 }
 
 void display::read(const config& cfg)
@@ -3083,7 +3083,7 @@ void display::read(const config& cfg)
 	view_locked_ = cfg["view_locked"].to_bool(false);
 	color_adjust_.r = cfg["color_adjust_red"].to_int(0);
 	color_adjust_.g = cfg["color_adjust_green"].to_int(0);
-	color_adjust_.b = cfg["color_adjust_blue_"].to_int(0);
+	color_adjust_.b = cfg["color_adjust_blue"].to_int(0);
 }
 
 void display::process_reachmap_changes()
