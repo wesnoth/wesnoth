@@ -290,7 +290,7 @@ void command_executor::set_button_state(display& disp) {
 
 			const hotkey::hotkey_command& command_obj = hotkey::get_hotkey_command(command);
 			std::string tooltip = action.tooltip(i);
-			if (file_exists(game_config::path + "/images/icons/action/" + command + "_30.png" ))
+			if (file_exists(game_config::path + "/images/icons/action/" + command + "_25.png" ))
 				button->set_overlay("icons/action/" + command);
 			if (!tooltip.empty())
 				button->set_tooltip_string(tooltip);
