@@ -20,7 +20,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
 #include "vorbis/vorbisfile.h"
 #endif
 
@@ -82,7 +82,7 @@ void music_track::resolve()
 	}
 
 
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
 	if (title_.empty()) {
 		FILE* f;
 		f = fopen(file_path_.c_str(), "r");
