@@ -268,8 +268,8 @@ void map_context::load_scenario(const config& game_config)
 	labels_.read(scenario);
 
 	tod_manager_.reset(new tod_manager(scenario, scenario["turns"].to_int(-1)));
-	BOOST_FOREACH(const config &t, scenario.child_range("time_area")) {
-		tod_manager_->add_time_area(t);
+	BOOST_FOREACH(const config &time_area, scenario.child_range("time_area")) {
+		tod_manager_->add_time_area(time_area);
 	}
 
 	BOOST_FOREACH(const config& item, scenario.child_range("item")) {
@@ -361,16 +361,14 @@ void map_context::clear_changed_locations()
 
 void map_context::add_changed_location(const map_location& loc)
 {
-	if (!everything_changed()) {
+	if (!everything_changed())
 		changed_locations_.insert(loc);
-	}
 }
 
 void map_context::add_changed_location(const std::set<map_location>& locs)
 {
-	if (!everything_changed()) {
+	if (!everything_changed())
 		changed_locations_.insert(locs.begin(), locs.end());
-	}
 }
 
 void map_context::set_everything_changed()
@@ -482,8 +480,6 @@ config map_context::to_config()
 		}
 	}
 
-
-
 	return scenario;
 }
 
@@ -525,13 +521,14 @@ bool map_context::save_map()
 			write_file(get_filename(), map_data);
 		} else {
 			std::string map_string = read_file(get_filename());
-			boost::regex re("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
-			boost::smatch m;
-			if (boost::regex_search(map_string, m, re, boost::regex_constants::match_not_dot_null)) {
+			boost::regex rexpression_map_data("(.*map_data\\s*=\\s*\")(.+?)(\".*)");
+			boost::smatch matched_map_data;
+			if (boost::regex_search(map_string, matched_map_data, rexpression_map_data,
+					boost::regex_constants::match_not_dot_null)) {
 				std::stringstream ss;
-				ss << m[1];
+				ss << matched_map_data[1];
 				ss << map_data;
-				ss << m[3];
+				ss << matched_map_data[3];
 				write_file(get_filename(), ss.str());
 			} else {
 				throw editor_map_save_exception(_("Could not save into scenario"));
@@ -591,6 +588,7 @@ void map_context::perform_partial_action(const editor_action& action)
 	undo_chain->prepend_action(undo);
 	clear_stack(redo_stack_);
 }
+
 bool map_context::modified() const
 {
 	return actions_since_save_ != 0;
