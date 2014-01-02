@@ -143,7 +143,7 @@ void terrain_palette::setup(const config& cfg)
 	}
 
 	// Set the default terrain
-	select_fg_item("mountains");
+	select_fg_item("regular_mountains");
 	select_bg_item("grassland");
 
 	// Set the default group
@@ -152,8 +152,6 @@ void terrain_palette::setup(const config& cfg)
 	if(active_group().empty()) {
 		ERR_ED << "No items found.\n";
 	}
-
-//	update_report();
 }
 
 void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
