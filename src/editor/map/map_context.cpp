@@ -449,6 +449,9 @@ config map_context::to_config()
 		side["controller"] = t->controller_string();
 		side["no_leader"] = t->no_leader();
 
+		side["team_name"] = t->team_name();
+		side["user_team_name"] = t->user_team_name();
+
 		// TODO
 		// side["allow_player"] = "yes";
 
