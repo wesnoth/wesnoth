@@ -106,11 +106,18 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	 *    0.3 No valid data
 	 * 1. It's a file containing only pure map data.
 	 *    * embedded_ = false
-	 *    *
+	 *    * pure_map_ = true
 	 * 2. A scenario embedding the map
+	 *    * embedded_ = true
+	 *    * pure_map_ = true
 	 *    The data/scenario-test.cfg for example.
 	 *    The map is written back to the file.
-	 *
+	 * 3. The map file is referenced by map_data={MACRO_ARGUEMENT}.
+	 *    * embedded_ = false
+	 *    * pure_map_ = true
+	 * 4. The file contains an editor generated scenario file.
+	 *    * embedded_ = false
+	 *    * pure_map_ = false
 	 */
 
 	log_scope2(log_editor, "Loading file " + filename);
@@ -128,40 +135,53 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	}
 
 	// 1.0 Pure map data
-	boost::regex re("map_data\\s*=\\s*\"(.+?)\"");
-	boost::smatch m;
-	if (!boost::regex_search(file_string, m, re, boost::regex_constants::match_not_dot_null)) {
+	boost::regex rexpression_map_data("map_data\\s*=\\s*\"(.+?)\"");
+	boost::smatch matched_map_data;
+	if (!boost::regex_search(file_string, matched_map_data, rexpression_map_data,
+			boost::regex_constants::match_not_dot_null)) {
 		map_ = editor_map::from_string(game_config, file_string); //throws on error
 		pure_map_ = true;
 		return;
 	}
 
-	// editor written scenario
-	load_scenario(game_config);
+	// 2.0 Embedded map
+	const std::string& map_data = matched_map_data[1];
+	boost::regex rexpression_macro("\\{(.+?)\\}");
+	boost::smatch matched_macro;
+	if (!boost::regex_search(map_data, matched_macro, rexpression_macro)) {
+		// We have a map_data string but no macro ---> embedded or scenario
 
-	//TODO
-//		boost::regex re2("\\{(.+?)\\}");
-//		boost::smatch m2;
-//		std::string m1 = m[1];
-//		if (boost::regex_search(m1, m2, re2)) {
-//			map_data_key_ = m1;
-//			LOG_ED << "Map looks like a scenario, trying {" << m2[1] << "}\n";
-//			std::string new_filename = get_wml_location(m2[1], directory_name(m2[1]));
-//			if (new_filename.empty()) {
-//				std::string message = _("The map file looks like a scenario, "
-//					"but the map_data value does not point to an existing file")
-//					+ std::string("\n") + m2[1];
-//				throw editor_map_load_exception(filename, message);
-//			}
-//			LOG_ED << "New filename is: " << new_filename << "\n";
-//			filename_ = new_filename;
-//			file_string = read_file(filename_);
-//		} else {
-//			LOG_ED << "Loading embedded map file\n";
-//			embedded_ = true;
-//			file_string = m[1];
-//		}
+		boost::regex rexpression_scenario("\\[scenario\\]|\\[test\\]|\\[multiplayer\\]");
+		if (!boost::regex_search(file_string, rexpression_scenario)) {
+			LOG_ED << "Loading generated scenario file\n";
+			// 4.0 editor generated scenario
+			load_scenario(game_config);
+			return;
+		} else {
+			LOG_ED << "Loading embedded map file\n";
+			embedded_ = true;
+			pure_map_ = true;
+			map_ = editor_map::from_string(game_config, map_data);
+			return;
+		}
+	}
 
+	// 3.0 Macro referenced pure map
+	const std::string& macro_argument = matched_macro[1];
+	LOG_ED << "Map looks like a scenario, trying {" << macro_argument << "}\n";
+	std::string new_filename = get_wml_location(macro_argument,
+			directory_name(macro_argument));
+	if (new_filename.empty()) {
+		std::string message = _("The map file looks like a scenario, "
+				"but the map_data value does not point to an existing file")
+												+ std::string("\n") + macro_argument;
+		throw editor_map_load_exception(filename, message);
+	}
+	LOG_ED << "New filename is: " << new_filename << "\n";
+	filename_ = new_filename;
+	file_string = read_file(filename_);
+	map_ = editor_map::from_string(game_config, file_string);
+	pure_map_ = true;
 }
 
 void map_context::set_side_setup(int side, const std::string& team_name, const std::string& user_team_name,
