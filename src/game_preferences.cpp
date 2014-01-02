@@ -859,7 +859,11 @@ std::string theme()
 
 	std::string res = preferences::get("theme");
 	if(res.empty()) {
+#ifndef PANDORA
 		return "Default";
+#else
+		return "Pandora";
+#endif
 	}
 
 	return res;
