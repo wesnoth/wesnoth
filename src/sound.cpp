@@ -628,7 +628,17 @@ void reposition_sound(int id, unsigned int distance)
 	{
 		if (channel_ids[ch] != id) continue;
 		if (distance >= DISTANCE_SILENT) {
-			Mix_FadeOutChannel(ch, 100);
+			// Don't call Mix_FadeOutChannel if the channel's volume is set to
+			// zero. It doesn't do anything in that case and the channel will
+			// resume playing as soon as its volume is reset to a non-zero
+			// value, which results in issues like sound sources deleted while
+			// their volume is zero coming back to life and escaping Wesnoth's
+			// sound source management code.
+			if (Mix_Volume(ch, -1) == 0) {
+				Mix_HaltChannel(ch);
+			} else {
+				Mix_FadeOutChannel(ch, 100);
+			}
 		} else {
 			Mix_SetDistance(ch, distance);
 		}

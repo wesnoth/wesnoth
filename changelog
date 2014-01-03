@@ -10,6 +10,9 @@ Version 1.10.7+dev:
      Greek, Indonesian, Italian, Japanese, Korean, Vietnamese
  * Miscellaneous and bug fixes:
    * Fixed pofix.py to function with python-3.2
+   * Fixed sound sources removed while the sound effects volume is zero
+     (either in Preferences -> Sound or through the [volume] WML action)
+     persisting and escaping the sound source management code (bug #21426).
 
 Version 1.10.7:
  * Add-ons server:
