@@ -20,7 +20,9 @@ include_directories(SYSTEM ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories(SYSTEM ${GETTEXT_INCLUDE_DIR} )
 include_directories(SYSTEM ${LIBDBUS_INCLUDE_DIRS} )
 include_directories(SYSTEM ${LIBINTL_INCLUDE_DIR} )
-include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
+if(NOT ENABLE_PANDORA)
+	include_directories(SYSTEM ${VORBISFILE_INCLUDE_DIR} )
+endif(NOT ENABLE_PANDORA)
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
@@ -91,8 +93,14 @@ set(game-external-libs
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
-	${VORBISFILE_LIBRARIES}
 )
+
+if(NOT ENABLE_PANDORA)
+	set(game-external-libs
+		${game-external-libs}
+		${VORBISFILE_LIBRARIES}
+	)
+endif(NOT ENABLE_PANDORA)
 
 if(MSVC)
 	set(game-external-libs
