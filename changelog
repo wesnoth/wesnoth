@@ -147,6 +147,8 @@ Version 1.11.7+dev:
    * Fixed sound sources removed while the sound effects volume is zero
      (either in Preferences -> Sound or through the [volume] WML action)
      persisting and escaping the sound source management code (bug #21426).
+   * The negative sign is no longer dropped when formula AI prints numbers
+     between 0 and -1.
 
 Version 1.11.7:
  * Add-ons client:
