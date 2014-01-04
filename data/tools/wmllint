@@ -79,26 +79,20 @@
 # For macros used in multiple scenarios to field characters, you can tell
 # wmllint to recognize them with another magic comment:
 #     wmllint: who <macro> is <character(s)>
-# <Macro> should be a text string sufficient to distinguish the macro from
-# any other; <character(s)> would be the ids of the recalled (or created)
-# characters, comma-separated if there were more than one.  (Enclosing <macro>
-# in quotes is possible, if a space is needed at the end; for example, if a
-# campaign had a "{GARARD_I $x $y}" macro and also a "GARARD_II" macro,
-# "who '{GARARD_I '" would distinguish I from II.)
-#
-# If more characters attach to a macro in later scenarios, they can be appended
-# with additional "who" magic comments (though this requires scenarios to
-# be numbered or otherwise sorted to work properly, as wmllint traverses files
-# in alphabetical order).  If there is a character that drops out, preceding that
-# person's entry with a double-minus will cause that character to be removed,
-# e.g., "-- Garak".
+# <Macro> should be the macro name; <character(s)> would be the ids of the
+# recalled (or created) characters, comma-separated if there were more than
+# one.  If more characters attach to a macro in later scenarios, they can be
+# appended with additional "who" magic comments (though this requires scenarios
+# to be numbered or otherwise sorted to work properly, as wmllint traverses
+# files in alphabetical order).  If there is a character that drops out,
+# preceding that person's entry with a double-minus will cause that character
+# to be removed, e.g., "-- Garak".
 #
 # At the end of the campaign, *make sure* you use:
 #     wmllint: unwho ALL
 # This will clear the list of "who" magic comments and tell wmllint to stop
 # checking for them in later files and directories.  If a specific macro is
-# not used in subsequent scenarios, put "unwho <macro>" in its last scenario,
-# where <macro> should be the string you originally used for "wmllint: who".
+# not used in subsequent scenarios, put "unwho <macro>" in its last scenario.
 #
 # Similarly, it is possible to explicitly declare a unit's usage class
 # with a magic comment that looks like this:
@@ -951,14 +945,19 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if m and not m.group(1):
             print errlead + 'translatability mark before non-string'
     # Most tags are not allowed with [part]
-    if "[part]" in ancestors and parent not in ("[part]", "[image]", "[insert_tag]", "[if]", "[then]", "[else]", "[switch]", "[case]", "[variable]", "[deprecated_message]") and not parent.startswith("#"):
-        print errlead + '%s not permitted within [part] tag' % parent
+    if ("[part]" in ancestors or parent == "[part]") and isOpener(nav.element) and \
+                    nav.element not in ("[part]", "[image]", "[insert_tag]",
+                    "[if]", "[then]", "[else]", "[switch]", "[case]",
+                    "[variable]", "[deprecated_message]"):
+        print errlead + '%s not permitted within [part] tag' % nav.element
     # Most tags are not permitted inside [if]
-    if len(ancestors) >= 2 and ancestors[-1] == "[if]":
-        if parent not in ("[and]", "[else]", "[frame]", "[have_location]",
+    if (len(ancestors) >= 1 and parent == "[if]") or \
+       (len(ancestors) >= 2 and parent == "#ifdef" and ancestors[-1] == "[if]"):
+        if isOpener(nav.element) and nav.element not in ("[and]",
+                           "[else]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]",
-                           "[variable]") and not parent.endswith("_frame]"):
-            print errlead + 'illegal child of [if]'
+                           "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
+            print errlead + 'illegal child of [if]:', nav.element
     # Check for fluky credit parts
     if parent == "[entry]":
         if key == "email" and " " in value:
@@ -1445,7 +1444,7 @@ def global_sanity_check(filename, lines):
             try:
                 fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
                 if len(fields) == 2:
-                    mac = string_strip(fields[0].strip())
+                    mac = string_strip(fields[0].strip()).strip('{}')
                     if whopairs.has_key(mac):
                         whopairs[mac] = whopairs[mac] + ", " + fields[1].strip()
                     else:
@@ -1458,7 +1457,7 @@ def global_sanity_check(filename, lines):
                 whopairs.clear()
             else:
                 try:
-                    del whopairs[string_strip(unmac)]
+                    del whopairs[string_strip(unmac).strip('{}')]
                 except KeyError:
                     print >>sys.stderr, '%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
                                          % (filename, i+1, unmac, str(whopairs.keys())[1:-1])
@@ -1482,8 +1481,19 @@ def global_sanity_check(filename, lines):
         # assumes that such a macro is the first item on a line.
         leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
         if leadmac:
-            if not leadmac.group().endswith('}'):
-                macname = leadmac.group()[1:-1]
+            macname = leadmac.group()[1:-1]
+            # Recognize macro pairings from "wmllint: who" magic
+            # comments.
+            if macname in whopairs.keys():
+                for who in whopairs[macname].split(","):
+                    if who.strip().startswith("--"):
+                        try:
+                            present.remove(who.replace('--', '', 1).strip())
+                        except:
+                            ValueError
+                    else:
+                        present.append(who.strip())
+            elif not leadmac.group().endswith('}'):
                 # Update 1.4's {LOYAL_UNIT} macro to {NAMED_LOYAL_UNIT}.  Do
                 # this here rather than hack_syntax so the character can be
                 # recognized.
@@ -1511,18 +1521,6 @@ def global_sanity_check(filename, lines):
                 elif macname in whomacros.keys():
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
-            # Recognize macro pairings from "wmllint: who" magic
-            # comments.
-            for mac in whopairs.keys():
-                if mac in leadmac.group(0):
-                    for who in whopairs[mac].split(","):
-                        if who.strip().startswith("--"):
-                            try:
-                                present.remove(who.replace('--', '', 1).strip())
-                            except:
-                                ValueError
-                        else:
-                            present.append(who.strip())
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
@@ -1596,12 +1594,16 @@ def global_sanity_check(filename, lines):
                             if ids[j].lstrip() not in present and not in_clear_menu_item:
                                 print '"%s", line %d: unknown \'%s\' referred to by id' \
                                     % (filename, i+1, ids[j])
+                if (in_scenario or in_multiplayer) and key == "speaker":
+                    if value not in present and value not in ("narrator", "unit", "second_unit") and value[0] not in ("$", "{"):
+                        print '"%s", line %d: unknown speaker \'%s\' in message' \
+                              % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
                               % (filename, i+1, key)
                     lines[i] = prefix + value.replace("_", "", 1) + comment + '\n'
     # Now that we know who's present, register all these names as spellings
-    declared_spellings[filename] = [x.lower() for x in present]
+    declared_spellings[filename] = [x.lower() for x in present if len(x) > 0]
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
@@ -2248,7 +2250,8 @@ def translator(filename, mapxforms, textxform):
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 local_sanity_check(filename, nav, key, prefix, value, comment)
             except TypeError:
-                pass
+                key = prefix = value = comment = None
+                local_sanity_check(filename, nav, key, prefix, value, comment)
         # Perform file-global semantic sanity checks
         newdata = global_sanity_check(filename, newdata)
         # OK, now perform WML rewrites

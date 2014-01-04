@@ -160,6 +160,9 @@ def parse_macroref(start, line):
             brackdepth -= 1
             if brackdepth == 0:
                 if not line[i-1].isspace():
+                    arg = arg.strip()
+                    if arg.startswith('"') and arg.endswith('"'):
+                        arg = arg[1:-1].strip()
                     args.append(arg)
                     arg = ""
                 break
@@ -173,9 +176,10 @@ def parse_macroref(start, line):
              line[i].isspace() and \
              brackdepth == 1 and \
              parendepth == 0:
+            arg = arg.strip()
             if arg.startswith('"') and arg.endswith('"'):
-                arg = arg[1:-1]
-            args.append(arg.strip())
+                arg = arg[1:-1].strip()
+            args.append(arg)
             arg = ""
         elif not line[i].isspace() or parendepth > 0:
             arg += line[i]

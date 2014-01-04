@@ -35,9 +35,11 @@ function ca_coward:execution(ai, cfg)
     end
 
     local reach = wesnoth.find_reach(unit)
+
     -- enemy units within reach
+    local filter_second = cfg.filter_second or { { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
     local enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
+        { "and", filter_second },
         { "filter_location", {x = unit.x, y = unit.y, radius = cfg.distance} }
     }
 

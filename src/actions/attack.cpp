@@ -481,8 +481,9 @@ int battle_context::choose_attacker_weapon(const unit &attacker,
 	if (choices.size() == 1) {
 		*defender_weapon = choose_defender_weapon(attacker, defender, choices[0], units,
 			attacker_loc, defender_loc, prev_def);
+		const attack_type *def_weapon = *defender_weapon >= 0 ? &defender.attacks()[*defender_weapon] : NULL;
 		attacker_stats_ = new battle_context_unit_stats(attacker, attacker_loc, choices[0],
-						true, defender, defender_loc, &defender.attacks()[*defender_weapon], units);
+						true, defender, defender_loc, def_weapon, units);
 		if (attacker_stats_->disable) {
 			delete attacker_stats_;
 			attacker_stats_ = NULL;

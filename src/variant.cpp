@@ -1088,6 +1088,9 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		int fractional = decimal_value_ % 1000;
 		int integer = (decimal_value_ - fractional) / 1000;
 
+		// Make sure we get the sign on small negative values.
+		if ( integer == 0  &&  decimal_value_ < 0 )
+			s << '-';
 		s << integer << ".";
 
 		fractional = abs(fractional);
