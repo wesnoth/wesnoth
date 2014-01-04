@@ -13,7 +13,10 @@ Version 1.11.7+dev:
    * Simple Attack Micro AI: new optional parameter weapon=
    * Wolves Micro AI: fix bug that sometimes kept predators from attacking
    * Lua AI: new replay-safe action ai.synced_command()
+   * ai.cfg: fix MEDIUM to NORMAL in attack_depth macro
  * Campaigns:
+   * all: convert many wmllint magic comments from "recognize" to "who" and
+     "whofield",
    * Dead Water:
      * New world map.
    * Delfador's Memoirs:
@@ -34,15 +37,19 @@ Version 1.11.7+dev:
        Delfador can now tell the player the shortest path to the Sceptre.
      * Fixed Konrad's level 1's attack animation giving an 'image not found'
        error.
+     * Fixed Konrad's dying words event.
    * Legend of Wesmere:
      * S9: set aggression=1 for Side 4 to avoid wrong choice of attack
    * Liberty:
      * New world map.
      * S5: set aggression=1 for Side 3 to avoid wrong choice of attack
+   * Northern Rebirth:
+     * S5a: dialogue tweaks
    * The Rise of Wesnoth:
      * New world maps.
      * Redesigned scenario 'A New Land'.
    * The South Guard:
+     * S6a: fix ogre's last words event
      * S6b: set aggression=1 for Side 2 to avoid wrong choice of attack
    * Son of the Black Eye:
      * Rebalancing of the campaign continues and is mostly done for Scenarios 1
@@ -128,7 +135,8 @@ Version 1.11.7+dev:
    * Pango markup is applied correctly and consistently in button tooltips.
    * Fixed mishandling of invalid Pango markup resulting in previous messages
      being displayed instead in e.g. [message] (bug #20996).
-   * Added wmllint code for recognizing unit id fields in macros.
+   * Added wmllint code for recognizing unit id fields in macros, added
+     non-attribute lines to local_sanity_check, added unknown speaker check.
    * Refactored code in wmltools to create a macro-parsing function.
    * Added era descriptions.
    * Fixed file chooser dialog (used in the map editor and for locating the
