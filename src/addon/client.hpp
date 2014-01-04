@@ -60,7 +60,7 @@ public:
 	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
 	 *
 	 * @param cfg A config object whose contents are replaced with
-	 *            the server's list.
+	 *            the server's list if available, cleared otherwise.
 	 */
 	bool request_addons_list(config& cfg);
 
