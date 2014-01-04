@@ -230,6 +230,11 @@ namespace gui2 {
  *         Like the ''description'' it can also show a default text if no
  *         translations are available. $
  *
+ * dependencies & & control & m &
+ *         Label for displaying a list of dependencies of the add-on. Like the
+ *         ''description'' it can also show a default text if no dependencies
+ *         are defined.
+ *
  * @end{table}
  */
 
