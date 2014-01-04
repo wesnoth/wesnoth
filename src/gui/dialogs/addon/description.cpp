@@ -255,6 +255,10 @@ namespace gui2 {
  *         Button for copying the add-on's feedback page URL to clipboard if
  *         provided by the server. $
  *
+ * url_none & & control & m &
+ *         Label displayed instead of the other url_* widgets when no URL is
+ *         provided by the server.
+ *
  * @end{table}
  */
 
@@ -314,6 +318,8 @@ void taddon_description::copy_url_callback()
 
 void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 {
+	tcontrol& url_none =
+		find_widget<tcontrol>(&window, "url_none", false);
 	tbutton& url_go_button =
 		find_widget<tbutton>(&window, "url_go", false);
 	tbutton& url_copy_button =
@@ -325,6 +331,8 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 	url_textbox.set_active(false);
 
 	if(!feedback_url_.empty()) {
+		url_none.set_visible(tcontrol::tvisible::invisible);
+
 		connect_signal_mouse_left_click(url_go_button,
 			boost::bind(&taddon_description::browse_url_callback, this));
 		connect_signal_mouse_left_click(url_copy_button,
@@ -332,6 +340,10 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 	} else {
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);
+
+		url_go_button.set_visible(tcontrol::tvisible::invisible);
+		url_copy_button.set_visible(tcontrol::tvisible::invisible);
+		url_textbox.set_visible(tcontrol::tvisible::invisible);
 	}
 }
 
