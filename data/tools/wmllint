@@ -55,7 +55,8 @@
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore" or
 # "wmllint: noconvert". The same magic comments will also disable checking
-# of translation marks.
+# of translation marks, which may alternatively be toggled for line blocks
+# with "wmllint: markcheck off" and "wmllint: markcheck on".
 #
 # You can also prevent description insertions with "wmllint: no-icon".
 #
