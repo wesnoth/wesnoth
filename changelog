@@ -9,6 +9,7 @@ Version 1.11.7+dev:
      conversion errors and stalling clients (bug #20893).
  * AI:
    * RCA AI: fix bug #21334: surrounded units don't attack
+   * Coward Micro AI: new optional parameter [filter_second]
    * Simple Attack Micro AI: new optional parameter weapon=
    * Wolves Micro AI: fix bug that sometimes kept predators from attacking
    * Lua AI: new replay-safe action ai.synced_command()
