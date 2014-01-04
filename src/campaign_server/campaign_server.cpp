@@ -80,6 +80,30 @@ namespace {
 		return illegal_markup_chars.find(c) != std::string::npos;
 	}
 
+	typedef std::map<std::string, std::string> plain_string_map;
+
+	/**
+	 * Quick and dirty alternative to @a uitls::interpolate_variables_into_string that
+	 * doesn't require formula AI code. It is definitely NOT safe for normal
+	 * use since it doesn't do strict checks on where variable placeholders
+	 * ("$foobar") end and doesn't support pipe ("|") terminators.
+	 *
+	 * @param str     The format string.
+	 * @param symbols The symbols table.
+	 */
+	std::string fast_interpolate_variables_into_string(const std::string &str, const plain_string_map * const symbols)
+	{
+		std::string res = str;
+
+		if(symbols) {
+			BOOST_FOREACH(const plain_string_map::value_type& sym, *symbols) {
+				res = utils::replace(res, "$" + sym.first, sym.second);
+			}
+		}
+
+		return res;
+	}
+
 	config construct_message(const std::string& msg)
 	{
 		config cfg;
