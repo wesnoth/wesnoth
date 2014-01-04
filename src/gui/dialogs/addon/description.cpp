@@ -16,11 +16,19 @@
 
 #include "gui/dialogs/addon/description.hpp"
 
+#include "clipboard.hpp"
+#include "desktop_util.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
+#include "gui/auxiliary/find_widget.tpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
+#include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "utils/foreach.tpp"
+
+#include <boost/bind.hpp>
 
 namespace {
 	std::string langcode_to_string(const std::string& lcode)
@@ -233,7 +241,19 @@ namespace gui2 {
  * dependencies & & control & m &
  *         Label for displaying a list of dependencies of the add-on. Like the
  *         ''description'' it can also show a default text if no dependencies
- *         are defined.
+ *         are defined. $
+ *
+ * url & & text_box & m &
+ *         Textbox displaying the add-on's feedback page URL if provided by
+ *         the server. $
+ *
+ * url_go & & button & m &
+ *         Button for launching a web browser to visit the add-on's feedback
+ *         page URL if provided by the server. $
+ *
+ * url_copy & & button & m &
+ *         Button for copying the add-on's feedback page URL to clipboard if
+ *         provided by the server. $
  *
  * @end{table}
  */
@@ -241,6 +261,7 @@ namespace gui2 {
 REGISTER_DIALOG(addon_description)
 
 taddon_description::taddon_description(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states)
+	: feedback_url_()
 {
 	const addon_info& addon = const_at(addon_id, addons_list);
 	const addon_tracking_info& state = const_at(addon_id, addon_states);
@@ -260,6 +281,8 @@ taddon_description::taddon_description(const std::string& addon_id, const addons
 		register_label("dependencies", true, make_display_dependencies(addon_id, addons_list, addon_states), true);
 	}
 
+	feedback_url_ = addon.feedback_url;
+
 	std::string languages;
 
 	FOREACH(const AUTO& lc, addon.locales) {
@@ -274,6 +297,41 @@ taddon_description::taddon_description(const std::string& addon_id, const addons
 
 	if(!languages.empty()) {
 		register_label("translations", true, languages);
+	}
+}
+
+void taddon_description::browse_url_callback()
+{
+	/* TODO: ask for confirmation */
+
+	desktop::open_in_file_manager(feedback_url_);
+}
+
+void taddon_description::copy_url_callback()
+{
+	copy_to_clipboard(feedback_url_, false);
+}
+
+void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
+{
+	tbutton& url_go_button =
+		find_widget<tbutton>(&window, "url_go", false);
+	tbutton& url_copy_button =
+		find_widget<tbutton>(&window, "url_copy", false);
+	ttext_box& url_textbox =
+		find_widget<ttext_box>(&window, "url", false);
+
+	url_textbox.set_value(feedback_url_);
+	url_textbox.set_active(false);
+
+	if(!feedback_url_.empty()) {
+		connect_signal_mouse_left_click(url_go_button,
+			boost::bind(&taddon_description::browse_url_callback, this));
+		connect_signal_mouse_left_click(url_copy_button,
+			boost::bind(&taddon_description::copy_url_callback, this));
+	} else {
+		url_go_button.set_active(false);
+		url_copy_button.set_active(false);
 	}
 }
 
