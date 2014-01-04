@@ -140,6 +140,10 @@ namespace {
 			int load_config(); // return the server port
 			const config &campaigns() const { return cfg_.child("campaigns"); }
 			config &campaigns() { return cfg_.child("campaigns"); }
+
+			const config& server_info() const { return cfg_.child("server_info"); }
+			config& server_info() { return cfg_.child("server_info"); }
+
 			config cfg_;
 			const std::string file_;
 			const network::manager net_manager_;
@@ -147,6 +151,10 @@ namespace {
 			input_stream* input_;
 			int compress_level_;
 			bool read_only_;
+
+			/** Feedback URL format string used for add-ons. */
+			std::string feedback_url_format_;
+
 			const network::server_manager server_manager_;
 
 	};
@@ -199,6 +207,12 @@ namespace {
 		/** Seems like compression level above 6 is waste of cpu cycle */
 		compress_level_ = cfg_["compress_level"].to_int(6);
 		cfg_["compress_level"] = compress_level_;
+
+		const config& svinfo_cfg = server_info();
+		if(svinfo_cfg) {
+			feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+		}
+
 		return cfg_["port"].to_int(default_campaignd_port);
 	}
 
@@ -211,6 +225,7 @@ namespace {
 		input_(0),
 		compress_level_(0), // Will be properly set by load_config()
 		read_only_(false),
+		feedback_url_format_(), // Will be properly set by load_config()
 		server_manager_(load_config())
 	{
 #ifndef _MSC_VER
