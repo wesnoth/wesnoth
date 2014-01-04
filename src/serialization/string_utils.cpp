@@ -476,6 +476,34 @@ std::string unescape(const std::string &str)
 	return str;
 }
 
+std::string urlencode(const std::string &str)
+{
+	static std::string nonresv =
+		"-."
+		"0123456789"
+		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+		"_"
+		"abcdefghijklmnopqrstuvwxyz"
+		"~";
+
+	std::string res;
+
+	for(size_t n = 0; n < str.length(); ++n) {
+		const char& c = str[n];
+
+		if(nonresv.find(c) != std::string::npos) {
+			res += c;
+			continue;
+		}
+
+		char buf[4];
+		snprintf(buf, sizeof(buf), "%%%02X", c);
+		res += buf;
+	}
+
+	return res;
+}
+
 bool string_bool(const std::string& str, bool def) {
 	if (str.empty()) return def;
 
