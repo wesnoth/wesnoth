@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
+"POT-Creation-Date: 2014-01-04 20:07+0100\n"
 "PO-Revision-Date: 2013-12-06 10:03+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -48,12 +48,12 @@ msgid "Random"
 msgstr "Ao chou"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:124
+#: data/multiplayer/eras.cfg:125
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Bando %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:140
+#: data/multiplayer/eras.cfg:141
 msgid ""
 "<span foreground='#%02x%02x%02x'>Side %d</span>:  Income score = %d  Unit "
 "score = %d  Gold = %d"
@@ -62,23 +62,23 @@ msgstr ""
 "Puntos por unidades = %d  Moedas = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:140
+#: data/multiplayer/eras.cfg:141
 msgid "Grand total: <b>%d</b>"
 msgstr "Total: <b>%d</b>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
-#: data/multiplayer/eras.cfg:150
+#: data/multiplayer/eras.cfg:151
 msgid "<span foreground='%s'>Side %d</span> has the advantage."
 msgstr "O <span foreground='%s'>bando %d</span> vai en cabeza."
 
 # Aparece cando se acceder a «Varios xogadores → Partida local». «Predeterminada» non cabe no botón, de aí que se acurte co punto.
 #. [era]: id=era_default
-#: data/multiplayer/eras.cfg:174
+#: data/multiplayer/eras.cfg:176
 msgid "Default"
 msgstr "Predeterm."
 
 #. [era]: id=era_default
-#: data/multiplayer/eras.cfg:175
+#: data/multiplayer/eras.cfg:177
 msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
@@ -87,12 +87,12 @@ msgstr ""
 "seis faccións igualadas."
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:195
+#: data/multiplayer/eras.cfg:197
 msgid "Age of Heroes"
 msgstr "Idade dos heroes"
 
 #. [era]: id=era_heroes
-#: data/multiplayer/eras.cfg:196
+#: data/multiplayer/eras.cfg:198
 msgid ""
 "An era with higher level units: level three leaders, with level one and two "
 "units available for recruit. Consists of six factions. Not considered "
@@ -102,11 +102,51 @@ msgstr ""
 "recrutar unidades de niveis 1 e 2. Está formada por 6 faccións. Non se "
 "considera que as faccións estean igualadas."
 
+#. [era]: id=era_khalifate
+#: data/multiplayer/eras.cfg:205
+msgid "Default + Khalifate"
+msgstr "Preterm. co califato"
+
+#. [era]: id=era_khalifate
+#: data/multiplayer/eras.cfg:206
+msgid ""
+"An era featuring an additional faction besides the six factions from Default "
+"Era. Khalifate units use no magic, but instead rely on careful use of "
+"terrain and coordinated strikes around dusk or dawn.\n"
+"\n"
+"This era is still under development, so please be sure to report any "
+"problems that arise."
+msgstr ""
+
+#. [era]: id=era_khalifate_heroes
+#: data/multiplayer/eras.cfg:216
+#, fuzzy
+#| msgid "Age of Heroes"
+msgid "Age of Heroes + Khalifate"
+msgstr "Idade dos heroes"
+
+#. [era]: id=era_khalifate_heroes
+#: data/multiplayer/eras.cfg:217
+msgid ""
+"An era featuring an additional faction besides the six factions from Age of "
+"Heroes Era. Khalifate units use no magic, but instead rely on careful use of "
+"terrain and coordinated strikes around dusk or dawn.\n"
+"\n"
+"This era is still under development, so please be sure to report any "
+"problems that arise."
+msgstr ""
+
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
 #: data/multiplayer/factions/drakes-default.cfg:4
 msgid "Drakes"
 msgstr "Draconiáns"
+
+#. [multiplayer_side]: id=Khalifate, type=random
+#: data/multiplayer/factions/khalifate-aoh.cfg:4
+#: data/multiplayer/factions/khalifate-default.cfg:4
+msgid "Khalifate"
+msgstr "Califato"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -179,7 +219,7 @@ msgstr ""
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:37
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:34
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:22
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:48
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:43
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:47
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:21
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:67
@@ -212,7 +252,7 @@ msgstr "Norte"
 #: data/multiplayer/scenarios/2p_Den_of_Onis.cfg:26
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:22
 #: data/multiplayer/scenarios/2p_Hamlets.cfg:33
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:60
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:55
 #: data/multiplayer/scenarios/2p_Howling_Ghost_Badlands.cfg:36
 #: data/multiplayer/scenarios/2p_Sablestone_Delta.cfg:32
 #: data/multiplayer/scenarios/2p_Sullas_Ruins.cfg:55
@@ -323,7 +363,7 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:22
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:38
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:33
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:32
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:31
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:31
@@ -353,7 +393,7 @@ msgstr "Leste"
 
 #. [side]
 #: data/multiplayer/scenarios/2p_Arcanclave_Citadel.cfg:35
-#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:27
+#: data/multiplayer/scenarios/2p_Fallenstar_Lake.cfg:22
 #: data/multiplayer/scenarios/2p_Silverhead_Crossing.cfg:21
 #: data/multiplayer/scenarios/3p_Alirok_Marsh.cfg:42
 #: data/multiplayer/scenarios/3p_Island_of_the_Horatii.cfg:42
@@ -1146,100 +1186,100 @@ msgstr ""
 
 #. [unit]: type=Young Ogre, id=Baby Baby Bo
 #. [unit]: type=Young Ogre, id=Big Baby Bo
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:101
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:181
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:222
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:297
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:351
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:487
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:96
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:176
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:217
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:292
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:346
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:482
 msgid "Big Baby Bo"
 msgstr "Pequeno Bou"
 
 #. [unit]: type=Drake Fighter, id=Rawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:115
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:110
 msgid "Rawffus the Dim"
 msgstr "Rufus “O escuro”"
 
 #. [unit]: type=Dwarvish Scout, id=Kolbur
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:168
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:163
 msgid "Kolbur"
 msgstr "Colbur"
 
 #. [unit]: type=Dwarvish Scout, id=Vilhelm Viskitynnyri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:195
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:190
 msgid "Vilhelm Viskitynnyri"
 msgstr "Vilem Visquitiniri"
 
 #. [unit]: type=Woodsman, id=Clockwork Boy
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:257
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:269
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:717
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:729
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:252
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:264
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:712
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:724
 msgid "Clockwork Boy"
 msgstr "Rapaz mecánico"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brutal
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:322
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:317
 msgid "Neki the Brutal"
 msgstr "Nequi “O bruto”"
 
 #. [unit]: type=Elvish Fighter, id=Drowsk Calbeht
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:365
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:360
 msgid "Drowsk Calbeht"
 msgstr "Drous Calbet"
 
 #. [unit]: id=Rzrrt the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:428
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:423
 msgid "Rzrrt the Dauntless"
 msgstr "Riz “O Afouto”"
 
 #. [unit]: id=Sorrek, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:469
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:464
 msgid "Sorrek, Chosen of Death"
 msgstr "Sorec, “O Elixido da Morte”"
 
 #. [unit]: type=Young Ogre, id=Baby Baby Dro
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:561
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:641
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:682
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:757
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:811
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:947
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:556
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:636
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:677
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:752
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:806
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:942
 msgid "Big Baby Dro"
 msgstr "Pequeno Drou"
 
 #. [unit]: type=Drake Fighter, id=Gawffus the Dim
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:575
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:570
 msgid "Gawffus the Dim"
 msgstr "Gofus “O escuro”"
 
 #. [unit]: type=Dwarvish Scout, id=Rublok
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:628
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:623
 msgid "Rublok"
 msgstr "Rubloc"
 
 #. [unit]: type=Dwarvish Scout, id=Ulysses Mantyjuuri
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:655
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:650
 msgid "Ulysses Mantyjuuri"
 msgstr "Ulises Mantiuri"
 
 #. [unit]: type=Orcish Leader, id=Neki the Brute
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:782
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:777
 msgid "Neki the Brute"
 msgstr "Nequi “O bruto”"
 
 #. [unit]: type=Elvish Fighter, id=Claiomh Dubh
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:825
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:820
 msgid "Claiomh Dubh"
 msgstr "Claion Dub"
 
 #. [unit]: id=Tyxrrn the Dauntless, type=Soulless
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:888
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:883
 msgid "Tyxrrn the Dauntless"
 msgstr "Tison “O Valente”"
 
 #. [unit]: id=Rukhos, Chosen of Death, type=Skeleton
-#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:929
+#: data/multiplayer/scenarios/2p_Hornshark_Island.cfg:924
 msgid "Rukhos, Chosen of Death"
 msgstr "Rucos, “O Elixido da Morte”"
 
@@ -1708,8 +1748,8 @@ msgstr ""
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:32
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:37
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:48
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:32
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:43
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:46
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:33
 #: data/multiplayer/scenarios/5p_Forest_of_Fear.cfg:42
@@ -1721,8 +1761,8 @@ msgstr "Sueste"
 
 #. [side]
 #: data/multiplayer/scenarios/4p_King_of_the_Hill.cfg:56
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:26
-#: data/multiplayer/scenarios/4p_Loris_River.cfg:59
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:21
+#: data/multiplayer/scenarios/4p_Loris_River.cfg:54
 #: data/multiplayer/scenarios/4p_Siege_Castles.cfg:22
 #: data/multiplayer/scenarios/5p_Auction-X.cfg:57
 msgid "teamname^Northwest"
@@ -2257,12 +2297,6 @@ msgstr ""
 
 #~ msgid "Four factions contend for dominance over this watery settlement."
 #~ msgstr "Catro faccións se enfrontan para dominar este asentamento na auga."
-
-#~ msgid "Default + Khalifate"
-#~ msgstr "Preterm. co califato"
-
-#~ msgid "Khalifate"
-#~ msgstr "Califato"
 
 #~ msgid "Single player mode — uses the reduced strength spawns."
 #~ msgstr "Modo dun só xogador. Emprega ondas de atacantes de forza reducida."

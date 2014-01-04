@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
+"POT-Creation-Date: 2014-01-04 20:08+0100\n"
 "PO-Revision-Date: 2013-12-06 09:59+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -62,7 +62,7 @@ msgstr ""
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:30
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:27
 #: data/core/units/dwarves/Dragonguard.cfg:50
-#: data/core/units/dwarves/Thunderer.cfg:64
+#: data/core/units/dwarves/Thunderer.cfg:63
 #: data/core/units/dwarves/Thunderguard.cfg:51
 #: data/core/units/humans/Outlaw_Assassin.cfg:40
 #: data/core/units/humans/Outlaw_Rogue.cfg:39
@@ -108,6 +108,9 @@ msgstr ""
 #: data/core/units/dwarves/Pathfinder.cfg:49
 #: data/core/units/dwarves/Pathfinder.cfg:57
 #: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
+#: data/core/units/khalifate/Batal.cfg:23
+#: data/core/units/khalifate/Jundi.cfg:22
+#: data/core/units/khalifate/Muharib.cfg:22
 #: data/core/units/undead/Skele_Deathblade.cfg:66
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
@@ -164,9 +167,11 @@ msgstr ""
 #: data/core/units/goblins/Rouser.cfg:44
 #: data/core/units/goblins/Spearman.cfg:42
 #: data/core/units/goblins/Spearman.cfg:52
-#: data/core/units/humans/Horseman.cfg:36
+#: data/core/units/humans/Horseman.cfg:37
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:77
+#: data/core/units/khalifate/Mudafi.cfg:22
+#: data/core/units/khalifate/Rasikh.cfg:23
 #: data/core/units/merfolk/Hoplite.cfg:47
 #: data/core/units/merfolk/Hunter.cfg:36 data/core/units/merfolk/Hunter.cfg:44
 #: data/core/units/merfolk/Javelineer.cfg:36
@@ -250,7 +255,7 @@ msgstr ""
 #. [unit_type]: id=Dwarvish Masked Thunderer, race=dwarf
 #. [unit_type]: id=Dwarvish Thunderer, race=dwarf
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:18
-#: data/core/units/dwarves/Thunderer.cfg:19
+#: data/core/units/dwarves/Thunderer.cfg:18
 msgid ""
 "When the men of Wesnoth first encountered the dwarves, they were mystified "
 "by the power of the Dwarvish Thunderers, who were able to hurl death from "
@@ -268,7 +273,7 @@ msgstr ""
 #. [attack]: type=pierce
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderer.cfg:39
 #: data/campaigns/The_Hammer_of_Thursagan/units/Dwarvish_Masked_Thunderguard.cfg:36
-#: data/core/units/dwarves/Thunderer.cfg:73
+#: data/core/units/dwarves/Thunderer.cfg:72
 #: data/core/units/dwarves/Thunderguard.cfg:60
 msgid "thunderstick"
 msgstr "arcabuz"
@@ -623,6 +628,8 @@ msgstr ""
 #: data/core/units/gryphons/Gryphon.cfg:40
 #: data/core/units/gryphons/Gryphon_Master.cfg:42
 #: data/core/units/gryphons/Gryphon_Rider.cfg:41
+#: data/core/units/khalifate/Elder_Falcon.cfg:27
+#: data/core/units/khalifate/Falcon.cfg:26
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:26
 #: data/core/units/undead/Corpse_Necrophage.cfg:39
@@ -1261,7 +1268,7 @@ msgstr ""
 #: data/core/units/elves/Rider.cfg:48 data/core/units/elves/Scout.cfg:46
 #: data/core/units/elves/Sharpshooter.cfg:37
 #: data/core/units/humans/Horse_Knight.cfg:35
-#: data/core/units/humans/Horse_Paladin.cfg:51
+#: data/core/units/humans/Horse_Paladin.cfg:52
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:56
 #: data/core/units/humans/Loyalist_Dragoon.cfg:48
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:41
@@ -1291,8 +1298,9 @@ msgstr "espada"
 #: data/core/units/humans/Woodsman_Poacher.cfg:55
 #: data/core/units/humans/Woodsman_Ranger.cfg:67
 #: data/core/units/humans/Woodsman_Trapper.cfg:61
-#: data/core/units/orcs/Archer.cfg:48 data/core/units/orcs/Archer.cfg:57
-#: data/core/units/orcs/Warlord.cfg:46
+#: data/core/units/khalifate/Hadaf.cfg:31
+#: data/core/units/khalifate/Qanas.cfg:30 data/core/units/orcs/Archer.cfg:48
+#: data/core/units/orcs/Archer.cfg:57 data/core/units/orcs/Warlord.cfg:46
 #: data/core/units/undead/Skele_Banebow.cfg:53
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:51
 #: data/core/units/undead/Skeleton_Archer.cfg:53
@@ -2150,7 +2158,10 @@ msgstr "espada longa"
 #: data/core/units/humans/Horse_Grand_Knight.cfg:45
 #: data/core/units/humans/Horse_Knight.cfg:44
 #: data/core/units/humans/Horse_Lancer.cfg:36
-#: data/core/units/humans/Horse_Paladin.cfg:60
+#: data/core/units/humans/Horse_Paladin.cfg:61
+#: data/core/units/khalifate/Faris.cfg:22
+#: data/core/units/khalifate/Khaiyal.cfg:31
+#: data/core/units/khalifate/Mufariq.cfg:24
 msgid "lance"
 msgstr "lanza"
 
@@ -2209,7 +2220,7 @@ msgid "Paladin"
 msgstr "Paladín"
 
 #. [unit_type]: id=Paladin, race=human
-#: data/core/units/humans/Horse_Paladin.cfg:20
+#: data/core/units/humans/Horse_Paladin.cfg:21
 msgid ""
 "Knights of the highest virtue, Paladins have sworn their strength not to "
 "king and crown, but to ideals themselves; of chivalry, and the stewardship "
@@ -2560,6 +2571,16 @@ msgstr ""
 #: data/core/units/humans/Outlaw_Fugitive.cfg:41
 #: data/core/units/humans/Outlaw_Highwayman.cfg:37
 #: data/core/units/humans/Royal_Warrior.cfg:34
+#: data/core/units/khalifate/Faris.cfg:30
+#: data/core/units/khalifate/Hadaf.cfg:23
+#: data/core/units/khalifate/Hakim.cfg:26
+#: data/core/units/khalifate/Jawal.cfg:24
+#: data/core/units/khalifate/Khaiyal.cfg:39
+#: data/core/units/khalifate/Mufariq.cfg:32
+#: data/core/units/khalifate/Qanas.cfg:22
+#: data/core/units/khalifate/Rami.cfg:23
+#: data/core/units/khalifate/Saree.cfg:23
+#: data/core/units/khalifate/Tabib.cfg:28
 msgid "mace"
 msgstr "maza"
 
@@ -3682,6 +3703,449 @@ msgstr ""
 "\n"
 "A súa destreza na caza é moi útil no combate, e tamén os fai especialmente "
 "competentes pola noite, e nos bosques e nas brañas."
+
+#. [unit_type]: id=Arif, race=khalifate
+#: data/core/units/khalifate/Arif.cfg:4
+msgid "Arif"
+msgstr "Arif"
+
+#. [unit_type]: id=Arif, race=khalifate
+#: data/core/units/khalifate/Arif.cfg:17
+msgid ""
+"The Arif form the backbone of any Khalifate foot advance. Many come from "
+"noble or military families, and have spent most of their lives training "
+"their craft. Given their intense focus on swordplay, they are often sent "
+"against fortified enemy positions to create a breach for the remaining "
+"troops to exploit. The sight of Arif on the march, shields high, has caused "
+"many a defender to worry about the strength of their walls."
+msgstr ""
+
+# sword=espada FIXADO
+#. [attack]: type=blade
+#: data/core/units/khalifate/Arif.cfg:22
+#: data/core/units/khalifate/Ghazi.cfg:22
+#: data/core/units/khalifate/Khalid.cfg:23
+#: data/core/units/khalifate/Mighwar.cfg:26
+#: data/core/units/khalifate/Monawish.cfg:25
+#: data/core/units/khalifate/Shuja.cfg:22
+msgid "long sword"
+msgstr "espada longa"
+
+#. [unit_type]: id=Batal, race=khalifate
+#: data/core/units/khalifate/Batal.cfg:4
+msgid "Batal"
+msgstr "Batal"
+
+#. [unit_type]: id=Batal, race=khalifate
+#: data/core/units/khalifate/Batal.cfg:18
+msgid ""
+"Batal are the elite of the Muharib, engaging in constant hit and run attacks "
+"against an enemy army. Nimble as a goat and strong as a ram, they prefer to "
+"coordinate multiple attacks at the same time, sending foes running from "
+"their arrows only to be cut down by their axes. Given their penchant for "
+"taking on only the most daring missions, Batal are often heroes to the "
+"common troopers, an image they do not try to dissuade."
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/khalifate/Batal.cfg:31
+#: data/core/units/khalifate/Jawal.cfg:32
+#: data/core/units/khalifate/Jundi.cfg:30
+#: data/core/units/khalifate/Muharib.cfg:30
+#: data/core/units/khalifate/Rami.cfg:31
+#: data/core/units/khalifate/Saree.cfg:31
+msgid "composite bow"
+msgstr "arco composto"
+
+# Elder Mage=mago vello FIXADO
+#. [unit_type]: id=Elder Falcon, race=falcon
+#: data/core/units/khalifate/Elder_Falcon.cfg:4
+msgid "Elder Falcon"
+msgstr "Falcón vello"
+
+#. [unit_type]: id=Elder Falcon, race=falcon
+#: data/core/units/khalifate/Elder_Falcon.cfg:19
+msgid ""
+"Elder Falcons bear the telltale scars of veteran warriors from protecting "
+"their masters, their bodies proof of repeated dives into a swirling melee. "
+"Stronger and faster than their younger kin, they are rumored to hit with "
+"enough force to remove an enemy's head. "
+msgstr ""
+
+#. [attack]: type=pierce
+#: data/core/units/khalifate/Elder_Falcon.cfg:36
+#: data/core/units/khalifate/Falcon.cfg:35
+msgid "beak"
+msgstr "pico"
+
+#. [unit_type]: id=Falcon, race=falcon
+#: data/core/units/khalifate/Falcon.cfg:4
+msgid "Falcon"
+msgstr "Falcón"
+
+#. [unit_type]: id=Falcon, race=falcon
+#: data/core/units/khalifate/Falcon.cfg:18
+msgid ""
+"Seen as status symbols of the nobles, falcons are precious possessions "
+"normally used for sport. The same techniques are employed to rend and tear "
+"the enemies of the Khalifate, and their great speed is a boon to scouting "
+"out the land."
+msgstr ""
+
+#. [unit_type]: id=Faris, race=khalifate
+#: data/core/units/khalifate/Faris.cfg:4
+msgid "Faris"
+msgstr "Faris"
+
+#. [unit_type]: id=Faris, race=khalifate
+#: data/core/units/khalifate/Faris.cfg:17
+msgid ""
+"Those Khaiyal who distinguish themselves in battle are given the opportunity "
+"to prove themselves worthy of becoming a Faris. Those who pass the trial are "
+"given the traditional barding for their horse, distinguishing them from the "
+"rest of the Khalifate cavalry. Consummate horsemen, the Faris have long "
+"claimed they need only a single lance strike to kill a man."
+msgstr ""
+
+#. [unit_type]: id=Ghazi, race=khalifate
+#: data/core/units/khalifate/Ghazi.cfg:4
+msgid "Ghazi"
+msgstr "Gazi"
+
+#. [unit_type]: id=Ghazi, race=khalifate
+#: data/core/units/khalifate/Ghazi.cfg:17
+msgid ""
+"Armed with their sword, shield and faith, Ghazis are warriors of some renown "
+"among the Khalifate armies. They have further refined their combat arts, "
+"adding a powerful shield bash to knock back unsuspecting enemies. Though few "
+"in number, their presence can be decisive in dislodging even the most "
+"hardened redoubt."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/khalifate/Ghazi.cfg:34
+#: data/core/units/khalifate/Khalid.cfg:35
+#: data/core/units/khalifate/Shuja.cfg:34
+msgid "shield bash"
+msgstr "golpe co escudo"
+
+#. [unit_type]: id=Hadaf, race=khalifate
+#: data/core/units/khalifate/Hadaf.cfg:4
+msgid "Hadaf"
+msgstr "Hadaf"
+
+#. [unit_type]: id=Hadaf, race=khalifate
+#: data/core/units/khalifate/Hadaf.cfg:18
+msgid ""
+"Those Qanas who prove to be particularly skilled are formed into units of "
+"Hadaf, which are often used to raid enemy depots and towns for supplies. "
+"This greater autonomy often means that these horsemen are gone for weeks at "
+"a time, returning to camp only for supplies and to pass on news of their "
+"exploits."
+msgstr ""
+
+#. [unit_type]: id=Hakim, race=khalifate
+#: data/core/units/khalifate/Hakim.cfg:4
+msgid "Hakim"
+msgstr "Haquim"
+
+#. [unit_type]: id=Hakim, race=khalifate
+#: data/core/units/khalifate/Hakim.cfg:21
+msgid ""
+"Hakim are learned individuals who have given up their urban life in order to "
+"assist the Khalifate armies in their travels. Their motivations are many; "
+"some look to it as an adventure or as a steady source of pay, while others "
+"feel it to be a requirement of their faith. Regardless, Hakims are highly "
+"respected by all. They are trained with the advanced medical techniques and "
+"possess a potent clutch of medicines and herbs, which allows them to quickly "
+"heal even the most gravely wounded allies."
+msgstr ""
+
+#. [unit_type]: id=Jawal, race=khalifate
+#: data/core/units/khalifate/Jawal.cfg:4
+msgid "Jawal"
+msgstr "Iagual"
+
+#. [unit_type]: id=Jawal, race=khalifate
+#: data/core/units/khalifate/Jawal.cfg:19
+msgid ""
+"The elite of the Saree are the Jawal, horse archers of such speed and "
+"dexterity that rumors are always spread that they have elven blood. "
+"Irritated at such mystical nonsense, the Jawal can frequently be found "
+"demonstrating their exceptional skill at the forefront of battle, riding "
+"with great speed through the lines of battle to rain arrows down upon the "
+"enemy."
+msgstr ""
+
+#. [unit_type]: id=Jundi, race=khalifate
+#: data/core/units/khalifate/Jundi.cfg:4
+msgid "Jundi"
+msgstr "Iundi"
+
+#. [unit_type]: id=Jundi, race=khalifate
+#: data/core/units/khalifate/Jundi.cfg:17
+msgid ""
+"Jundi in many ways represent the ideal Khalifate unit; flexible, mobile, "
+"equally effective in defense and offense as well as in ranged or close "
+"combat. They are most comfortable operating in terrain and environments "
+"common to them; the deserts and hills of their southern lands, Moreover they "
+"fight best at dawn or dusk, corresponding to the time when desert "
+"temperatures are the most reasonable."
+msgstr ""
+
+#. [unit_type]: id=Khaiyal, race=khalifate
+#: data/core/units/khalifate/Khaiyal.cfg:4
+msgid "Khaiyal"
+msgstr "Caial"
+
+#. [unit_type]: id=Khaiyal, race=khalifate
+#: data/core/units/khalifate/Khaiyal.cfg:26
+msgid ""
+"The Khaiyal understand the psychological impact of a charging horse, and "
+"reinforce this by cladding themselves in heavy armor. Majestic at rest, a "
+"Khaiyal at the charge with lance in hand is often impetus enough to break "
+"men. On the rare occurrences that their charge fails to rout their foe, the "
+"Khaiyal ride into the resulting melee with their maces in hand, trusting "
+"their armor to keep them safe."
+msgstr ""
+
+#. [unit_type]: id=Khalid, race=khalifate
+#: data/core/units/khalifate/Khalid.cfg:4
+msgid "Khalid"
+msgstr "Calid"
+
+#. [unit_type]: id=Khalid, race=khalifate
+#: data/core/units/khalifate/Khalid.cfg:18
+msgid ""
+"Among every generation, a warrior elevates himself above his peers and foes; "
+"They seem to be able to alter the destiny of the world themselves. Often "
+"given the name Khalid, after a legendary leader of old, these individuals "
+"are celebrated for the piety and skill. Their travels and travails are told "
+"endlessly around the campfire with the reverent tones of those that speak of "
+"living legends."
+msgstr ""
+
+#. [unit_type]: id=Mighwar, race=khalifate
+#: data/core/units/khalifate/Mighwar.cfg:4
+msgid "Mighwar"
+msgstr "Maiguar"
+
+#. [unit_type]: id=Mighwar, race=khalifate
+#: data/core/units/khalifate/Mighwar.cfg:21
+msgid ""
+"Mighwar hold themselves to a higher standard than the ranks of the Monawish "
+"from which they ascended. Not content to merely draw the enemy out, they "
+"combine their speed with an aggression that sends the Mighwar dancing "
+"through the ranks of the enemy, swords ripping and tearing at those around "
+"them. "
+msgstr ""
+
+#. [unit_type]: id=Monawish, race=khalifate
+#: data/core/units/khalifate/Monawish.cfg:4
+msgid "Monawish"
+msgstr "Monagüis"
+
+#. [unit_type]: id=Monawish, race=khalifate
+#: data/core/units/khalifate/Monawish.cfg:20
+msgid ""
+"Those Jundi who are proficient at scouting are elevated into the ranks of "
+"the Monawish. Discarding their bow, the Monawish focus on developing their "
+"swiftness of foot to allow them to flow in and out of combat. They are often "
+"used to harry the flanks of opposing forces, and it is said to be easier to "
+"catch the wind in your hand than to catch a Monawish."
+msgstr ""
+
+#. [unit_type]: id=Mudafi, race=khalifate
+#: data/core/units/khalifate/Mudafi.cfg:4
+msgid "Mudafi"
+msgstr "Mudafi"
+
+#. [unit_type]: id=Mudafi, race=khalifate
+#: data/core/units/khalifate/Mudafi.cfg:17
+msgid ""
+"Although the Khalifate armies are known for their astonishing mobility and "
+"fierce attack, they can be able defenders. Mudafis excel at holding their "
+"ground, keeping opponents at bay with long, razor sharp spears. Their "
+"preferred strategy is to gradually wear down enemies, until they can be "
+"defeated in a vicious counter stroke."
+msgstr ""
+
+#. [unit_type]: id=Mufariq, race=khalifate
+#: data/core/units/khalifate/Mufariq.cfg:4
+msgid "Mufariq"
+msgstr "Mufariq"
+
+#. [unit_type]: id=Mufariq, race=khalifate
+#: data/core/units/khalifate/Mufariq.cfg:19
+msgid ""
+"The Mufariq are eminent horsemen, amassing titles and accolades that are as "
+"distinguishing for them as the scrollwork on their armor. Having honed their "
+"skill with a lance in years of battle, the Mufariq are an unstoppable force "
+"of nature. Fleeing enemies swiftly discover that hills do not deter these "
+"riders in the slightest, and the displaced air of a descending mace is the "
+"last sound they hear."
+msgstr ""
+
+#. [unit_type]: id=Muharib, race=khalifate
+#: data/core/units/khalifate/Muharib.cfg:4
+msgid "Muharib"
+msgstr "Muharib"
+
+#. [unit_type]: id=Muharib, race=khalifate
+#: data/core/units/khalifate/Muharib.cfg:17
+msgid ""
+"Muharib are often utilized as heavy scouts, no longer just probing the enemy "
+"but conducting raids on the supply lines or eliminating patrols. Often away "
+"from the main body of the army for long periods of time, Muharib have no "
+"issue pilfering these supplies, and so they tend to be more well-equipped "
+"than most."
+msgstr ""
+
+#. [unit_type]: id=Naffat, race=khalifate
+#: data/core/units/khalifate/Naffat.cfg:4
+msgid "Naffat"
+msgstr "Nafat"
+
+#. [unit_type]: id=Naffat, race=khalifate
+#: data/core/units/khalifate/Naffat.cfg:22
+msgid ""
+"Naffat are a necessary evil in the ranks of Khalifate armies, utilizing fire "
+"to burn down enemy fortifications and sow terror among their ranks. While "
+"the use of fire in warfare is not a novel concept, the flames of the Naffat "
+"have proven disturbingly difficult for their enemies to extinguish."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/khalifate/Naffat.cfg:27
+#: data/core/units/khalifate/Qatif-al-nar.cfg:27
+#: data/core/units/khalifate/Tineen.cfg:28
+msgid "naphtha attack"
+msgstr "ataque con nafta"
+
+# claws=poutas FIXADO
+#. [attack]: type=fire
+#: data/core/units/khalifate/Naffat.cfg:36
+#: data/core/units/khalifate/Qatif-al-nar.cfg:36
+#: data/core/units/khalifate/Tineen.cfg:37
+msgid "fire arrow"
+msgstr "frecha incendiaria"
+
+#. [unit_type]: id=Qanas, race=khalifate
+#: data/core/units/khalifate/Qanas.cfg:4
+msgid "Qanas"
+msgstr "Cuanas"
+
+#. [unit_type]: id=Qanas, race=khalifate
+#: data/core/units/khalifate/Qanas.cfg:17
+msgid ""
+"Those horsemen who are not skilled enough to join the ranks of the Faris or "
+"quick enough with a bow for the Saree are instead placed with the Qanas. Far "
+"from being a sign of failure, the Qanas were created as a mounted "
+"counterpart to the Muharib, supporting the foot troops with mace or bow as "
+"needed. Qanas are often used to draw enemies into a position where they will "
+"be surrounded and crushed by Faris."
+msgstr ""
+
+#. [unit_type]: id=Qatif_al_nar, race=khalifate
+#: data/core/units/khalifate/Qatif-al-nar.cfg:5
+msgid "Qatif-al-nar"
+msgstr "Cuatif-al-nar"
+
+#. [unit_type]: id=Qatif_al_nar, race=khalifate
+#: data/core/units/khalifate/Qatif-al-nar.cfg:22
+msgid ""
+"Qatif-al-nar spend so much time experimenting with their weapons that they "
+"smell constantly of ash and flame. Regarded with wariness by their fellow "
+"troops, Qatif-al-nar can be easily located in battle by the cleared charred "
+"area around them, a testament to the success of their experiments."
+msgstr ""
+
+#. [unit_type]: id=Rami, race=khalifate
+#: data/core/units/khalifate/Rami.cfg:4
+msgid "Rami"
+msgstr "Rami"
+
+#. [unit_type]: id=Rami, race=khalifate
+#: data/core/units/khalifate/Rami.cfg:18
+msgid ""
+"Rami are excellent horsemen, able to shoot from horseback better than most "
+"men can manage from foot. Disdaining the use of heavy armor, Rami use their "
+"superior speed and agility to circle and harass their foes, whittling down "
+"their numbers with relentless arrows."
+msgstr ""
+
+#. [unit_type]: id=Rasikh, race=khalifate
+#: data/core/units/khalifate/Rasikh.cfg:4
+msgid "Rasikh"
+msgstr "Rasiq"
+
+#. [unit_type]: id=Rasikh, race=khalifate
+#: data/core/units/khalifate/Rasikh.cfg:18
+msgid ""
+"Spread across the Khalifate's lands are lonely towers and garrisons that "
+"provide shelter to caravans and locals from bandits and monsters. These "
+"bastions are defended by the most determined of soldiers, who have often "
+"faced off against overwhelming odds only to repel the invaders. In an army "
+"they can be trusted to hold any position or line, long after lesser soldiers "
+"and men have fled in terror."
+msgstr ""
+
+#. [unit_type]: id=Saree, race=khalifate
+#: data/core/units/khalifate/Saree.cfg:4
+msgid "Saree"
+msgstr "Sari"
+
+#. [unit_type]: id=Saree, race=khalifate
+#: data/core/units/khalifate/Saree.cfg:18
+msgid ""
+"Rami who demonstrate exceptional skill with the bow are made into Saree, "
+"spending hours every day practicing and building a rapport with their steed. "
+"This has made them the fastest riders in the Khalifate armies, and a wise "
+"Khalid uses to this advantage."
+msgstr ""
+
+#. [unit_type]: id=Shuja, race=khalifate
+#: data/core/units/khalifate/Shuja.cfg:4
+msgid "Shuja"
+msgstr "Xuia"
+
+#. [unit_type]: id=Shuja, race=khalifate
+#: data/core/units/khalifate/Shuja.cfg:17
+msgid ""
+"Distinguished for their bravery and skill, Shujas are the leaders among the "
+"Khalif's ranks. Their exploits are well known among their cohorts, inspiring "
+"soldiers to fight for their cause. Despite this, they are often found "
+"leading from the front, taking down their foes with sword and shield."
+msgstr ""
+
+#. [unit_type]: id=Tabib, race=khalifate
+#: data/core/units/khalifate/Tabib.cfg:4
+msgid "Tabib"
+msgstr "Tabib"
+
+#. [unit_type]: id=Tabib, race=khalifate
+#: data/core/units/khalifate/Tabib.cfg:23
+msgid ""
+"Some men excel at medicine the way others do at strength of arms, and the "
+"Tabib are those whose knowledge is without peer outside of the Khalifate. "
+"Their remedies cannot only heal wounds but remove infection and poison as "
+"well, often to the disbelief of the injured. Hardened by years of travels, "
+"many are able to treat themselves."
+msgstr ""
+
+#. [unit_type]: id=Tineen, race=khalifate
+#: data/core/units/khalifate/Tineen.cfg:4
+msgid "Tineen"
+msgstr "Tinin"
+
+#. [unit_type]: id=Tineen, race=khalifate
+#: data/core/units/khalifate/Tineen.cfg:23
+msgid ""
+"Qatif-al-nar who have shut out the world for their experiments are given the "
+"honorific Tineen, as both a sign of respect and of fear. No longer cognizant "
+"of the value of life, Tineen are caught up in the power of their caged fire "
+"and likely to test their latest naptha jar at the first opportunity."
+msgstr ""
 
 # female^Mermaid Diviner=sirénida adiviña FIXADO
 #. [unit_type]: id=Mermaid Diviner, race=merman
@@ -5200,17 +5664,6 @@ msgstr "Adepto escuro"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:23
-#| msgid ""
-#| "To attract any practitioners, the lure of black magic must be a great "
-#| "prize indeed, for anyone caught practicing the art in the civilized world "
-#| "is subject to a death sentence. And yet there are those who pursue this "
-#| "art, for the prize offered is nothing less than immortality. Hidden away "
-#| "in secret cults, or initiated into the dark orders of the underworld, the "
-#| "training which these fanatics must endure often drives them to exhaustion "
-#| "and enfeeblement.\n"
-#| "\n"
-#| "In such condition, their only weapon is the craft they have so committed "
-#| "themselves to learning."
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -5805,9 +6258,6 @@ msgstr ""
 "Os woses están totalmente en contra da guerra, pero posúen unha gran forza. "
 "En troques, aínda que non adoitan facelo, son rápidos movéndose."
 
-#~ msgid "Arif"
-#~ msgstr "Arif"
-
 #~ msgid ""
 #~ "The Arif form the backbone of any Khalifate foot advance. They are often "
 #~ "sent against fortified enemy positions where their valor and skill with a "
@@ -5818,22 +6268,8 @@ msgstr ""
 #~ "maila a súa habilidade coa espada lles permiten asaltar defensas "
 #~ "aparentemente impenetrábeis."
 
-# sword=espada FIXADO
-#~ msgid "long sword"
-#~ msgstr "espada longa"
-
-#~ msgid "Batal"
-#~ msgstr "Batal"
-
 #~ msgid "There is currently no description available for this unit."
 #~ msgstr "Aínda non hai ningunha descrición para esta unidade."
-
-#~ msgid "composite bow"
-#~ msgstr "arco composto"
-
-# Elder Mage=mago vello FIXADO
-#~ msgid "Elder Falcon"
-#~ msgstr "Falcón vello"
 
 #~ msgid ""
 #~ "These falcons have been through many perils and somehow managed to "
@@ -5844,36 +6280,12 @@ msgstr ""
 #~ "seus descensos en picado alcanzan velocidades tales que son centos as "
 #~ "historias que falan de como decapitan limpamente aos seus inimigos."
 
-#~ msgid "beak"
-#~ msgstr "pico"
-
-#~ msgid "Falcon"
-#~ msgstr "Falcón"
-
-#~ msgid "Faris"
-#~ msgstr "Faris"
-
-#~ msgid "Ghazi"
-#~ msgstr "Gazi"
-
-#~ msgid "shield bash"
-#~ msgstr "golpe co escudo"
-
-#~ msgid "Hadaf"
-#~ msgstr "Hadaf"
-
-#~ msgid "Hakim"
-#~ msgstr "Haquim"
-
 #~ msgid ""
 #~ "Hakim use their knowledge of ancient medicine and herbal concoctions to "
 #~ "quickly bring the Khalifate soldiers back to the front lines."
 #~ msgstr ""
 #~ "Os haquims empregan os seus coñecementos da medicina antiga e os remedios "
 #~ "de herbas para devolver canto antes aos soldados do califato á batalla."
-
-#~ msgid "Jawal"
-#~ msgstr "Iagual"
 
 #~ msgid ""
 #~ "Jawal are excellent horsemen and few can shoot as well from horseback as "
@@ -5888,18 +6300,12 @@ msgstr ""
 #~ msgid "cavalry sword"
 #~ msgstr "espada da cabalería"
 
-#~ msgid "Jundi"
-#~ msgstr "Iundi"
-
 #~ msgid ""
 #~ "The Khalifate uses these Hillmen as their foot force. They are versatile "
 #~ "and excel in hilly terrain."
 #~ msgstr ""
 #~ "O califato usa a estes homes das montañas no seu exército a pé. Son "
 #~ "unidades versátiles, sobresaíntes nos terreos montañosos."
-
-#~ msgid "Khaiyal"
-#~ msgstr "Caial"
 
 #~ msgid ""
 #~ "The Khaiyal wear truly heavy armor, and thus close with a single high "
@@ -5910,27 +6316,6 @@ msgstr ""
 #~ "impacto alto coa súa lanza para non esgotar ás súas monturas, para logo "
 #~ "cambiar a lanza pola maza."
 
-#~ msgid "Khalid"
-#~ msgstr "Calid"
-
-#~ msgid "Mighwar"
-#~ msgstr "Maiguar"
-
-#~ msgid "Monawish"
-#~ msgstr "Monagüis"
-
-#~ msgid "Mudafi"
-#~ msgstr "Mudafi"
-
-#~ msgid "Mufariq"
-#~ msgstr "Mufariq"
-
-#~ msgid "Muharib"
-#~ msgstr "Muharib"
-
-#~ msgid "Naffat"
-#~ msgstr "Nafat"
-
 #~ msgid ""
 #~ "Naffat frequently use burning arrows to set fire to enemy fortifications "
 #~ "and generally sow terror amongst the enemy. Such tactics may also have "
@@ -5939,22 +6324,6 @@ msgstr ""
 #~ "Os nafat adoitan empregar frechas incendiarias para disparar contra as "
 #~ "fortificacións inimigas e aterrar a calquera adversario. Tácticas coma "
 #~ "esa poden ter outros usos nunhas terras cheas de estrañas marabillas…"
-
-#~ msgid "naphtha attack"
-#~ msgstr "ataque con nafta"
-
-# claws=poutas FIXADO
-#~ msgid "fire arrow"
-#~ msgstr "frecha incendiaria"
-
-#~ msgid "Qanas"
-#~ msgstr "Cuanas"
-
-#~ msgid "Qatif-al-nar"
-#~ msgstr "Cuatif-al-nar"
-
-#~ msgid "Rami"
-#~ msgstr "Rami"
 
 #~ msgid ""
 #~ "Rami are excellent horsemen and few can shoot as well from horseback as "
@@ -5966,12 +6335,6 @@ msgstr ""
 #~ "mentres aproveitan a súa maior velocidade para evitar un duro "
 #~ "contraataque."
 
-#~ msgid "Rasikh"
-#~ msgstr "Rasiq"
-
-#~ msgid "Saree"
-#~ msgstr "Sari"
-
 #~ msgid ""
 #~ "Saree are excellent horsemen and few can shoot as well from horseback as "
 #~ "they. They love to circle and harass enemies from afar while using their "
@@ -5981,15 +6344,6 @@ msgstr ""
 #~ "ben coma eles a cabalo. Gustan de rodear ao adversario dende a distancia "
 #~ "mentres aproveitan a súa maior velocidade para evitar un duro "
 #~ "contraataque."
-
-#~ msgid "Shuja"
-#~ msgstr "Xuia"
-
-#~ msgid "Tabib"
-#~ msgstr "Tabib"
-
-#~ msgid "Tineen"
-#~ msgstr "Tinin"
 
 #~ msgid ""
 #~ "Dwarven magic most often manifests itself by the inscription of runes in "

@@ -84,6 +84,8 @@ src/gui/dialogs/debug_clock.cpp
 src/gui/dialogs/dialog.cpp
 src/gui/dialogs/edit_label.cpp
 src/gui/dialogs/editor/editor_edit_label.cpp
+src/gui/dialogs/editor/editor_edit_scenario.cpp
+src/gui/dialogs/editor/editor_edit_side.cpp
 src/gui/dialogs/edit_text.cpp
 src/gui/dialogs/folder_create.cpp
 src/gui/dialogs/formula_debugger.cpp
@@ -97,7 +99,6 @@ src/gui/dialogs/message.cpp
 src/gui/dialogs/mp_change_control.cpp
 src/gui/dialogs/mp_cmd_wrapper.cpp
 src/gui/dialogs/mp_connect.cpp
-src/gui/dialogs/mp_create_game_choose_mods.cpp
 src/gui/dialogs/mp_create_game.cpp
 src/gui/dialogs/mp_create_game_set_password.cpp
 src/gui/dialogs/mp_depcheck_confirm_change.cpp
@@ -153,8 +154,8 @@ src/gui/widgets/vertical_scrollbar.cpp
 src/gui/widgets/viewport.cpp
 src/gui/widgets/widget.cpp
 src/gui/widgets/window.cpp
-src/hotkey_preferences_display.cpp
-src/hotkeys.cpp
+src/hotkey/hotkey_item.cpp
+src/hotkey/hotkey_preferences_display.cpp
 src/image.cpp
 src/image_modifications.cpp
 src/marked-up_text.cpp

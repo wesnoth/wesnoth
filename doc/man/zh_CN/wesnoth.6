@@ -49,15 +49,11 @@ wesnoth \- 韦诺之战（Battle for Wesnoth），一个回合制的奇幻策略
 \fB\-\-campaign\-scenario <id_scenario>\fP
 指定战役中的场景ID。默认为第一个场景。
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-设置用户配置目录为$HOME或者Windows下“我的文档\我的游戏（My Documents\eMy
-Games）”下的\fIname\fP目录。也可以为配置目录指定一条绝对路径，此路径可以在$HOME或者“My Documents\eMy Games”之外。
-.TP 
-\fB\-\-config\-path\fP
-输出用户配置目录的路径并退出。
-.TP 
 \fB\-\-data\-dir <directory>\fP
 使用指定的目录作为数据目录
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 在游戏中启用附加的命令模式选项。（关于命令模式的更多信息请参阅wiki页面：http://www.wesnoth.org/wiki/CommandMode）
@@ -152,6 +148,24 @@ preferences. Unsafe.
 .TP 
 \fB\-t, \-\-test\fP
 使用一个小测试场景启动游戏。
+.TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+输出用户配置目录的路径并退出。
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
 .TP 
 \fB\-\-validcache\fP
 假定缓存是有效的。（因此不进行缓存验证，危险）
