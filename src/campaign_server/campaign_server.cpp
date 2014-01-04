@@ -104,6 +104,61 @@ namespace {
 		return res;
 	}
 
+	/**
+	 * Format a feedback URL for an add-on.
+	 *
+	 * @param format        The format string for the URL, presumably obtained
+	 *                      from the add-ons server identification.
+	 *
+	 * @param params        The URL format parameters table.
+	 *
+	 * @return A string containing a feedback URL or an empty string if that
+	 *         is not possible (e.g. empty or invalid @a format, empty
+	 *         @a params table, or a result that is identical in content to
+	 *         the @a format suggesting that the @a params table contains
+	 *         incorrect data).
+	 */
+	std::string format_addon_feedback_url(const std::string& format, const config& params)
+	{
+		if(!format.empty() && !params.empty()) {
+#if 0
+			utils::string_map escaped;
+#else
+			plain_string_map escaped;
+#endif
+
+			config::const_attr_itors attrs = params.attribute_range();
+
+			// Percent-encode parameter values for URL interpolation. This is
+			// VERY important since otherwise people could e.g. alter query
+			// strings from the format string.
+			BOOST_FOREACH(const config::attribute& a, attrs) {
+				escaped[a.first] = utils::urlencode(a.second.str());
+			}
+
+			// FIXME: We cannot use utils::interpolate_variables_into_string
+			//        because it is implemented using a lot of formula AI junk
+			//        that really doesn't belong in campaignd.
+#if 0
+			const std::string& res =
+				utils::interpolate_variables_into_string(format, &escaped);
+#else
+			const std::string& res =
+				fast_interpolate_variables_into_string(format, &escaped);
+#endif
+
+			if(res != format) {
+				return res;
+			}
+
+			// If we get here, that means that no interpolation took place; in
+			// that case, the parameters table probably contains entries that
+			// do not match the format string expectations.
+		}
+
+		return std::string();
+	}
+
 	config construct_message(const std::string& msg)
 	{
 		config cfg;
@@ -416,10 +471,21 @@ namespace {
 							j["passphrase"] = t_string();
 							j["upload_ip"] = t_string();
 							j["email"] = t_string();
+							j["feedback_url"] = t_string();
+
+							// Build a feedback_url string attribute from the
+							// internal [feedback] data.
+							config url_params = j.child_or_empty("feedback");
+							j.clear_children("feedback");
+
+							if(!url_params.empty() && !feedback_url_format_.empty()) {
+								j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
+							}
 						}
 
 						config response;
 						response.add_child("campaigns",campaign_list);
+
 						std::cerr << " size: " << (network::send_data(response, sock)/1024) << "KiB\n";
 					}
 					else if (const config &req = data.child("request_campaign"))
@@ -564,6 +630,11 @@ namespace {
 
 							int uploads = (*campaign)["uploads"].to_int() + 1;
 							(*campaign)["uploads"] = uploads;
+
+							(*campaign).clear_children("feedback");
+							if(const config& url_params = upload.child("feedback")) {
+								(*campaign).add_child("feedback", url_params);
+							}
 
 							std::string filename = (*campaign)["filename"];
 							data["title"] = (*campaign)["title"];
