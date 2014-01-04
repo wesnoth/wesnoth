@@ -4,9 +4,19 @@ Version 1.11.7+dev:
      "type=hybrid."
    * Fixed invalid file size data from the server crashing the client on the
      network transfer progress dialog (bug #20893).
+   * Added support for specifying a feedback page URL in the .pbl file when
+     publishing an add-on, currently intended for associating add-ons in the
+     official add-ons server with threads from forums.wesnoth.org; this is
+     achieved by including a [feedback] block with a thread_id=<number> key in
+     it.
+   * Redesigned Add-ons Description dialog, including support for displaying
+     add-on feedback page URLs.
  * Add-ons server:
    * Fixed mishandling of inaccessible add-on packs resulting in multiple data
      conversion errors and stalling clients (bug #20893).
+   * Added support for managing and emitting add-on feedback page URLs to
+     clients ([server_info] feedback_url_format option in the server
+     configuration file).
  * AI:
    * RCA AI: fix bug #21334: surrounded units don't attack
    * Coward Micro AI: new optional parameter [filter_second]
