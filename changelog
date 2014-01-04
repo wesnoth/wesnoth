@@ -6,8 +6,8 @@ Version 1.11.7+dev:
      network transfer progress dialog (bug #20893).
    * Added support for specifying a feedback page URL in the .pbl file when
      publishing an add-on, currently intended for associating add-ons in the
-     official add-ons server with threads from forums.wesnoth.org; this is
-     achieved by including a [feedback] block with a thread_id=<number> key in
+     official add-ons server with topics from forums.wesnoth.org; this is
+     achieved by including a [feedback] block with a topic_id=<number> key in
      it.
    * Redesigned Add-ons Description dialog, including support for displaying
      add-on feedback page URLs.
