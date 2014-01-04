@@ -1596,7 +1596,7 @@ def global_sanity_check(filename, lines):
                                     % (filename, i+1, ids[j])
                 if (in_scenario or in_multiplayer) and key == "speaker":
                     if value not in present and value not in ("narrator", "unit", "second_unit") and value[0] not in ("$", "{"):
-                        print '"%s", line %d: unknown speaker \'%s\' in message' \
+                        print '"%s", line %d: unknown speaker \'%s\' of [message]' \
                               % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
