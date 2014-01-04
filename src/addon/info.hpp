@@ -48,6 +48,8 @@ struct addon_info
 	std::vector<std::string> depends;
 	// std::vector<addon_dependency> conflicts, recommends, replaces;
 
+	std::string feedback_url;
+
 	time_t updated;
 
 	// Artificial upload order index used to preserve add-ons upload order
@@ -60,6 +62,7 @@ struct addon_info
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
+		, feedback_url()
 		, updated(), order()
 	{}
 
@@ -68,6 +71,7 @@ struct addon_info
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
+		, feedback_url()
 		, updated(), order()
 	{
 		this->read(cfg);
@@ -87,6 +91,7 @@ struct addon_info
 			this->type = o.type;
 			this->locales = o.locales;
 			this->depends = o.depends;
+			this->feedback_url = o.feedback_url;
 			this->updated = o.updated;
 			this->order = o.order;
 		}

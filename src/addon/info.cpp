@@ -80,6 +80,7 @@ void addon_info::read(const config& cfg)
 	}
 
 	this->depends = utils::split(cfg["dependencies"].str());
+	this->feedback_url = cfg["feedback_url"].str();
 
 	this->updated = cfg["timestamp"].to_time_t();
 }
@@ -102,6 +103,7 @@ void addon_info::write(config& cfg) const
 	}
 
 	cfg["dependencies"] = utils::join(this->depends);
+	cfg["feedback_url"] = this->feedback_url;
 
 	cfg["timestamp"] = this->updated;
 }
