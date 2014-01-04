@@ -351,6 +351,17 @@ class Parser:
         else:
             for i, segment in enumerate(line.split("+")):
                 segment = segment.lstrip(" ")
+                empty = not segment.strip()
+
+                # if a plus sign is followed by only whitespace on that line,
+                # we need to ignore the following empty lines to find the
+                # continuation
+
+                if i > 0 and empty:
+                    self.skip_newlines = True
+                elif not empty:
+                    self.skip_newlines = False
+                
                 if not segment: continue
 
                 if segment[0] == "_":
@@ -358,10 +369,6 @@ class Parser:
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue
 
-                if i > 0 and segment == "\n":
-                    self.skip_newlines = True
-                elif segment != "\n":
-                    self.skip_newlines = False
                 self.handle_value(segment)
 
     def handle_tag(self, line):
@@ -701,6 +708,18 @@ foo="bar"+
 """
 foo='bar' .. 'baz'
 """, "multi line string")
+
+        test(
+"""
+#define baz
+
+"baz"
+#enddef
+foo="bar"+{baz}
+""",
+"""
+foo='bar' .. 'baz'
+""", "defined multi line string")
 
         test2(
 """
