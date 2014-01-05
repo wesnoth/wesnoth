@@ -67,11 +67,6 @@ public:
 
 	/**
 	 * Creates a new item.
-	 *
-	 * @note At the moment it's a simple label nothing fancy or controlable by
-	 * the client code.
-	 *
-	 * @param label               The text on the label.
 	 */
 	unsigned create_item(
 			  const std::map<std::string, string_map>& item_data
