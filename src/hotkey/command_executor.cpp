@@ -383,9 +383,9 @@ std::string command_executor::get_menu_image(display& disp, const std::string& c
 		switch (state) {
 			case ACTION_ON:
 			case ACTION_SELECTED:
-				return pressed_image_name;
+				return pressed_image_name + "~CROP(3,3,18,18)";
 			default:
-				return base_image_name;
+				return base_image_name + "~CROP(3,3,18,18)";
 		}
 	}
 
