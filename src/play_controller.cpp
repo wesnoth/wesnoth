@@ -1275,7 +1275,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 		     !resources::game_map->is_castle(last_hex) )
 			return false;
 
-		wb::future_map future; //< lasts until method returns.
+		wb::future_map future; /* lasts until method returns. */
 
 		unit_map::const_iterator leader = units_.find(last_hex);
 		if ( leader != units_.end() )
