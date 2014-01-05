@@ -21,7 +21,7 @@
  * Call this function to register a widget. Use this macro in the
  * implementation, inside the gui2 namespace.
  *
- * @see @ref gui2::load_widget_definitions for more information.
+ * See @ref gui2::load_widget_definitions for more information.
  *
  * @note When the type is tfoo_definition, the id "foo" and no special key best
  * use RESISTER_WIDGET(foo) instead.
