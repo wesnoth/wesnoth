@@ -184,7 +184,7 @@ public:
 	/**
 	 * Tries to reduce the width of a container.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
@@ -199,7 +199,7 @@ public:
 	/**
 	 * Tries to reduce the height of a container.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
