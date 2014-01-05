@@ -32,7 +32,7 @@ public:
 	 * @param addon_id            The requested add-on's id.
 	 * @param addons_list         Complete list of add-ons including the requested add-on
 	 *                            and its dependencies.
-	 * @param state               Local installation status of the add-ons in @a addons_list.
+	 * @param addon_states        Local installation status of the add-ons in @a addons_list.
 	 */
 	taddon_description(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states);
 
