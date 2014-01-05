@@ -26,13 +26,11 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param[in] text            The initial value of the label.
-	 * @param[out] text           The label text the user entered if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
-	 * @param[in] team_only       The initial value of the team only toggle.
-	 * @param[out] team_only      The final value of the team only toggle if the
-	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherwise.
+	 * @param[in, out] text       The parameter's usage is:
+	 *                            - Input: The initial value of the label.
+	 *                            - Output: The label text the user entered if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 */
 	teditor_edit_label(std::string& text, bool& immutable, bool& visible_fog, bool& visible_shroud);
 
