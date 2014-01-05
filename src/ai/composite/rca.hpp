@@ -40,12 +40,6 @@ public:
 	//this is a score guaranteed to be very high, higher than any 'normal' candidate action score
 	static const double HIGH_SCORE;
 
-	/**
-	 * Constructor
-	 * @param ai context of the candidate action
-	 * @param name name of the action (for debug purposes)
-	 * @param type type of the action (for debug purposes)
-	 */
 	candidate_action( rca_context &context, const config &cfg );
 
 	/**
