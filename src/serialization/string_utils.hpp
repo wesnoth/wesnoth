@@ -264,12 +264,16 @@ std::string si_string(double input, bool base2, std::string unit);
 /**
  * Try to complete the last word of 'text' with the 'wordlist'.
  *
- * @param[in]  'text'     Text where we try to complete the last word of.
- * @param[out] 'text'     Text with completed last word.
- * @param[in]  'wordlist' A vector of strings to complete against.
- * @param[out] 'wordlist' A vector of strings that matched 'text'.
+ * @param[in, out] text  The parameter's usage is:
+ *                       - Input: Text where we try to complete the last word
+ *                         of.
+ *                       - Output: Text with completed last word.
+ * @param[in, out] wordlist
+ *                        The parameter's usage is:
+ *                        - Inout: A vector of strings to complete against.
+ *                        - Output: A vector of strings that matched 'text'.
  *
- * @return 'true' iff text is just one word (no spaces)
+ * @retval true           iff text is just one word (no spaces)
  */
 bool word_completion(std::string& text, std::vector<std::string>& wordlist);
 
@@ -349,8 +353,10 @@ utf8_string lowercase(const utf8_string&);
  * to this size.
  * No assumptions can be made about the actual size of the string.
  *
- * @param[in]  str     String which can be converted to utf-8.
- * @param[out] str     String which contains maximal size utf-8 characters.
+ * @param[in, out] str The parameter's usage is:
+ *                     - Input: String which can be converted to utf-8.
+ *                     - Output: String which contains maximal size utf-8
+ *                       characters.
  * @param size         The size to truncate at.
  */
 void truncate_as_wstring(std::string& str, const size_t size);
