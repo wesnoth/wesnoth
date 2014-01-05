@@ -29,10 +29,11 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param host_name [in]      The initial value for the host_name.
-	 * @param host_name [out]     The final value of the host_name if the
-	 *                            dialog returns @ref twindow::OK or 3
-	 *                            undefined otherwise.
+	 * @param [in, out]host_name  The parameter's usage is:
+	 *                            - Input: The initial value for the host_name.
+	 *                            - Output :The final value of the host_name if
+	 *                              the dialog returns @ref twindow::OK or 3
+	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 * @param disp                The display object used for showing the
 	 *                            in-game help when requested.
