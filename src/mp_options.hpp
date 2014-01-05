@@ -348,7 +348,6 @@ private:
 	 *
 	 * @param key					The component's type.
 	 * @param id					The component's id.
-	 * @param window				The window.
 	 */
 	void extract_values(const std::string& key, const std::string& id);
 
@@ -372,7 +371,6 @@ private:
 	 *
 	 * @param m						A pointer to the manager which generated
 	 * 								the window.
-	 * @param w						A pointer to the window itself.
 	 */
 	static void restore_defaults(manager* m);
 
@@ -384,7 +382,6 @@ private:
 	 * @param comp					The config of the component.
 	 * @param m						A pointer to the manager which generated
 	 * 								the window.
-	 * @param w						A pointer to the window.
 	 */
 	static void restore_defaults_for_component(const config& comp, manager* m);
 
