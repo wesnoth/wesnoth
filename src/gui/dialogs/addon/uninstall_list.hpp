@@ -28,7 +28,8 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param addon_names_map Internal id <-> user-visible title mappings for
+	 * @param addon_titles_map
+	 *                        Internal id <-> user-visible title mappings for
 	 *                        the add-ons to display.
 	 */
 	explicit taddon_uninstall_list(const std::map<std::string, std::string>& addon_titles_map)
