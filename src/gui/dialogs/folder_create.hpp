@@ -25,9 +25,12 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param folder_name [in]    A suggested folder name.
-	 * @param folder_name [out]   The folder name the user actually entered if the dialog
-	 *                            returns @ref twindow::OK; undefined otherwise.
+	 * @param [in, out] folder_name
+	 *                            The parameter's usage is:
+	 *                            - Input: A suggested folder name.
+	 *                            - Output: The folder name the user actually
+	 *                              entered if the dialog returns @ref
+	 *                              twindow::OK; undefined otherwise.
 	 */
 	tfolder_create(std::string& folder_name);
 
