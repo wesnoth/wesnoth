@@ -228,7 +228,7 @@ private:
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
 	 *
-	 * @see @ref characters_per_line_.
+	 * See @ref characters_per_line_.
 	 */
 	int maximum_width_;
 
