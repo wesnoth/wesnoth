@@ -258,38 +258,38 @@ endif()
 
 set(libwesnoth-lua_STAT_SRC
 	lua_jailbreak_exception.cpp
-	lua/lapi.c
-	lua/lbitlib.c
-	lua/lcode.c
-	lua/lcorolib.c
-	lua/lctype.c
-	lua/ldebug.c
-	lua/ldo.c
-	lua/ldump.c
-	lua/lfunc.c
-	lua/lgc.c
-	lua/llex.c
-	lua/lmem.c
-	lua/lobject.c
-	lua/lopcodes.c
-	lua/lparser.c
-	lua/lstate.c
-	lua/lstring.c
-	lua/ltable.c
-	lua/ltm.c
-	lua/lundump.c
-	lua/lvm.c
-	lua/lzio.c
-	lua/lauxlib.c
-	lua/lbaselib.c
-	lua/ldblib.c
-	lua/liolib.c
-	lua/lmathlib.c
-	lua/loslib.c
-	lua/ltablib.c
-	lua/lstrlib.c
-	lua/loadlib.c
-	lua/linit.c
+	lua/lapi.cpp
+	lua/lbitlib.cpp
+	lua/lcode.cpp
+	lua/lcorolib.cpp
+	lua/lctype.cpp
+	lua/ldebug.cpp
+	lua/ldo.cpp
+	lua/ldump.cpp
+	lua/lfunc.cpp
+	lua/lgc.cpp
+	lua/llex.cpp
+	lua/lmem.cpp
+	lua/lobject.cpp
+	lua/lopcodes.cpp
+	lua/lparser.cpp
+	lua/lstate.cpp
+	lua/lstring.cpp
+	lua/ltable.cpp
+	lua/ltm.cpp
+	lua/lundump.cpp
+	lua/lvm.cpp
+	lua/lzio.cpp
+	lua/lauxlib.cpp
+	lua/lbaselib.cpp
+	lua/ldblib.cpp
+	lua/liolib.cpp
+	lua/lmathlib.cpp
+	lua/loslib.cpp
+	lua/ltablib.cpp
+	lua/lstrlib.cpp
+	lua/loadlib.cpp
+	lua/linit.cpp
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
