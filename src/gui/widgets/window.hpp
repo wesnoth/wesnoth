@@ -157,7 +157,7 @@ public:
 	 *
 	 * @todo implement @p auto_close_timeout.
 	 *
-	 * @param auto_close_timeout  The time in ms after which the window will
+	 * @p     auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no guarantee about how fast it closes
@@ -172,7 +172,7 @@ public:
 	 *
 	 * @todo implement @p auto_close_timeout.
 	 *
-	 * @param auto_close_timeout  The time in ms after which the window will
+	 * @p     auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no guarantee about how fast it closes
@@ -572,14 +572,14 @@ private:
 	 * This part does the pre and post processing for the actual layout
 	 * algorithm.
 	 *
-	 * @see layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 */
 	void layout();
 
 	/**
 	 * Layouts the linked widgets.
 	 *
-	 * @see layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 */
 	void layout_linked_widgets();
 
