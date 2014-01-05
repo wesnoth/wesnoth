@@ -291,7 +291,7 @@ void manager::on_init_side()
 	//Turn should never start with action auto-execution already enabled!
 	assert(!executing_all_actions_ && !executing_actions_);
 
-	update_plan_hiding(); //< validates actions
+	update_plan_hiding(); /* validates actions */
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";
 
@@ -350,7 +350,7 @@ void manager::update_plan_hiding(size_t team_index)
 	//We don't control the "viewing" side ... we're probably an observer
 	if(!resources::teams->at(team_index).is_human())
 		hide_all_plans();
-	else //< normal circumstance
+	else // normal circumstance
 	{
 		BOOST_FOREACH(team& t, *resources::teams)
 		{
@@ -378,7 +378,7 @@ void manager::on_viewer_change(size_t team_index)
 void manager::on_change_controller(int side, team& t)
 {
 	wb::side_actions& sa = *t.get_side_actions();
-	if(t.is_human()) //< we own this side now
+	if(t.is_human()) // we own this side now
 	{
 		//tell everyone to clear this side's actions -- we're starting anew
 		resources::whiteboard->queue_net_cmd(sa.team_index(),sa.make_net_cmd_clear());
@@ -386,12 +386,12 @@ void manager::on_change_controller(int side, team& t)
 		//refresh the hidden_ attribute of every team's side_actions
 		update_plan_hiding();
 	}
-	else if(t.is_ai() || t.is_network_ai()) //< no one owns this side anymore
-		sa.clear(); //< clear its plans away -- the ai doesn't plan ... yet
-	else if(t.is_network()) //< Another client is taking control of the side
+	else if(t.is_ai() || t.is_network_ai()) // no one owns this side anymore
+		sa.clear(); // clear its plans away -- the ai doesn't plan ... yet
+	else if(t.is_network()) // Another client is taking control of the side
 	{
-		if(side==viewer_side()) //< They're taking OUR side away!
-			hide_all_plans(); //< give up knowledge of everyone's plans, in case we became an observer
+		if(side==viewer_side()) // They're taking OUR side away!
+			hide_all_plans(); // give up knowledge of everyone's plans, in case we became an observer
 
 		//tell them our plans -- they may not have received them up to this point
 		size_t num_teams = resources::teams->size();
@@ -554,7 +554,7 @@ void manager::draw_hex(const map_location& hex)
 			if(!sa.hidden())
 				sa.get_numbers(hex,numbers);
 		}
-		draw_numbers(hex,numbers); //< helper fcn
+		draw_numbers(hex,numbers); // helper fcn
 	}
 
 }
@@ -564,7 +564,7 @@ void manager::on_mouseover_change(const map_location& hex)
 
 	map_location selected_hex = resources::controller->get_mouse_handler_base().get_selected_hex();
 	bool hex_has_unit;
-	{ wb::future_map future; //< start planned unit map scope
+	{ wb::future_map future; // start planned unit map scope
 		hex_has_unit = resources::units->find(selected_hex) != resources::units->end();
 	} // end planned unit map scope
 	if (!((selected_hex.valid() && hex_has_unit)
