@@ -112,7 +112,7 @@ void load_widget_definitions(
  *                                belongs to.
  * @param definition_type         The type of the widget whose definitions are
  *                                to be loaded.
- * @param config                  The config to serialiaze the definitions
+ * @param cfg                     The config to serialise the definitions
  *                                from.
  * @param key                     Optional id of the definition to load.
  */
