@@ -25,7 +25,7 @@ namespace gui2 {
 /**
  * Exception thrown when the width has been modified during resizing.
  *
- * @see layout_algorithm for more information.
+ * See layout_algorithm for more information.
  */
 struct tlayout_exception_width_modified {};
 
@@ -35,7 +35,7 @@ struct tlayout_exception_resize_failed {};
 /**
  * Exception thrown when the width resizing has failed.
  *
- * @see layout_algorithm for more information.
+ * See layout_algorithm for more information.
  */
 struct tlayout_exception_width_resize_failed
 	: public tlayout_exception_resize_failed
@@ -45,7 +45,7 @@ struct tlayout_exception_width_resize_failed
 /**
  * Exception thrown when the height resizing has failed.
  *
- * @see layout_algorithm for more information.
+ * See layout_algorithm for more information.
  */
 struct tlayout_exception_height_resize_failed
 	: public tlayout_exception_resize_failed
