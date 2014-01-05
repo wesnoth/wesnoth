@@ -191,6 +191,21 @@ twindow* tdialog::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
+void tdialog::post_build(CVideo& /*video*/, twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
+
+void tdialog::pre_show(CVideo& /*video*/, twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
+
+void tdialog::post_show(twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
+
 void tdialog::init_fields(twindow& window)
 {
 	FOREACH(AUTO field, fields_) {
