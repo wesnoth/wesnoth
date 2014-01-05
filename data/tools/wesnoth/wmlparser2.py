@@ -351,17 +351,17 @@ class Parser:
         else:
             for i, segment in enumerate(line.split("+")):
                 segment = segment.lstrip(" ")
-                empty = not segment.strip()
+                at_line_end = segment.endswith("\n")
 
-                # if a plus sign is followed by only whitespace on that line,
+                # if a plus sign is followed by the end of the line,
                 # we need to ignore the following empty lines to find the
                 # continuation
 
-                if i > 0 and empty:
+                if i > 0 and at_line_end:
                     self.skip_newlines = True
-                elif not empty:
+                elif not at_line_end:
                     self.skip_newlines = False
-                
+
                 if not segment: continue
 
                 if segment[0] == "_":
@@ -458,7 +458,7 @@ class Parser:
             # Everything from chr(254) to newline is the command.
             compos = rawline.find(command_marker_byte)
             if compos >= 0:
-                self.parse_line_without_commands(rawline[:compos])
+                self.parse_line_without_commands(rawline[:compos] + "\n")
                 self.handle_command(rawline[compos + 1:-1])
             else:
                 self.parse_line_without_commands(rawline)
@@ -720,6 +720,14 @@ foo="bar"+{baz}
 """
 foo='bar' .. 'baz'
 """, "defined multi line string")
+
+        test(
+"""
+foo="bar" + "baz" # blah
+""",
+"""
+foo='bar' .. 'baz'
+""", "comment after +")
 
         test2(
 """
