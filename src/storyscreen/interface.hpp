@@ -51,7 +51,7 @@ enum START_POSITION {
  * storyline,and 'img' is a background image. Each part of the sequence will
  * be displayed in turn, with the user able to go to the next part, or skip
  * it entirely.
- * @return is NEXT if the segment played to the end, BACK if the segment played to the beginning,
+ * Return is NEXT if the segment played to the end, BACK if the segment played to the beginning,
  * and QUIT if the story was quit
  */
 void show_story(display &disp, const std::string &scenario_name,
