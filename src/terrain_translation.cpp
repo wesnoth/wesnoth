@@ -93,8 +93,6 @@ namespace t_translation {
 	 * @param terrain               The terrain number to convert.
 	 * @param start_position        The starting position, if smaller than 0
 	 *                              it's ignored else it's written.
-	 * @param min_size              Padds the results with spaces if required,
-	 *                              until the result has a length of min_size.
 	 *
 	 * @return                      The converted string, if no starting
 	 *                              position given it's padded to 4 chars else
