@@ -292,17 +292,6 @@ check_compiler_has_flag(
 	"-Wno-null-conversion"
 )
 
-if(NOT CMAKE_COMPILER_IS_GNUCXX)
-	# Silences warnings about overloaded virtuals.
-	# (GCC doesn't complain Clang does.)
-	check_compiler_has_flag(
-		CXX_FLAGS_STRICT_COMPILATION
-		"-Woverloaded-virtual"
-		HAS_COMPILER_FLAG_WOVERLOADED_VIRTUAL
-		"-Wno-overloaded-virtual"
-	)
-endif(NOT CMAKE_COMPILER_IS_GNUCXX)
-
 check_compiler_has_flag(
 	CXX_FLAGS_STRICT_COMPILATION
 	"-Wdeprecated-register"
