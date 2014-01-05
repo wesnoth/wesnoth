@@ -261,7 +261,7 @@ public:
 	 *
 	 * Clears the initial best size for the widgets.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param full_initialisation For widgets with scrollbars it hides them
 	 *                            unless the mode is
@@ -276,7 +276,7 @@ public:
 	 * This function tries to do it 'friendly' and only use scrollbars or
 	 * tries to wrap the widget.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
@@ -290,7 +290,7 @@ public:
 	 *
 	 * @todo Make pure virtual.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_width       The wanted maximum width.
 	 */
@@ -303,7 +303,7 @@ public:
 	 *
 	 * @todo Make pure virtual.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */
@@ -317,7 +317,7 @@ public:
 	 *
 	 * @todo Make pure virtual.
 	 *
-	 * @see @ref layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 *
 	 * @param maximum_height      The wanted maximum height.
 	 */

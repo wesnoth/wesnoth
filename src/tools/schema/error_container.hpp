@@ -107,13 +107,13 @@ public:
 	 * Generate and put GCC-style error message about unknown type to type cache
 	 * @param file Filename
 	 * @param line Number with error
-	 * @param name Name of type
+	 * @param type Name of type
 	 */
 	void add_type_error(const std::string & file,int line,
 						  const std::string & type);
 	/**
 	 * Clears type cache
-	 * @param name Name of type
+	 * @param type Name of type
 	 */
 	void remove_type_errors(const std::string & type);
 	/**
@@ -122,7 +122,7 @@ public:
 	 * and it's old value is lost.
 	 * @param file Filename
 	 * @param line Number of line with error
-	 * @param name Name of type
+	 * @param type Name of type
 	 */
 	void overriding_type_error(const std::string & file,int line,
 							   const std::string & type);
@@ -131,13 +131,13 @@ public:
 	 * Generate and put GCC-style error message about failed link to link cache
 	 * @param file Filename
 	 * @param line Number of line with error
-	 * @param name Name of link
+	 * @param link Name of link
 	 */
 	void add_link_error(const std::string & file,int line,
 						  const std::string & link);
 	/**
 	 * Clears link cache
-	 * @param name Name of link
+	 * @param link Name of link
 	 */
 	void remove_link_errors(const std::string & link);
 

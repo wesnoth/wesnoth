@@ -31,17 +31,6 @@ public:
 
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param has_minimum         Does the listbox need to have one item
-	 *                            selected.
-	 * @param has_maximum         Can the listbox only have one item
-	 *                            selected.
-	 * @param placement           How are the items placed.
-	 * @param select              Select an item when selected, if false it
-	 *                            changes the visible state instead.
-	 */
 	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
 
 	using tscrollbar_container::finalize_setup;

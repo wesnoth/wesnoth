@@ -625,7 +625,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	map_location loc = last_hex;
 	map_location recruited_from = map_location::null_location;
 	std::string msg;
-	{ wb::future_map_if_active future; //< start planned unit map scope if in planning mode
+	{ wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
 		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
 	} // end planned unit map scope
 	if (!msg.empty()) {

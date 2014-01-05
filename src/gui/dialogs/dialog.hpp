@@ -355,7 +355,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(CVideo& /*video*/, twindow& /*window*/) {}
+	virtual void post_build(CVideo& video, twindow& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -367,7 +367,7 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(CVideo& /*video*/, twindow& /*window*/) {}
+	virtual void pre_show(CVideo& video, twindow& window);
 
 	/**
 	 * Actions to be taken after the window has been shown.
@@ -377,7 +377,7 @@ private:
 	 *
 	 * @param window              The window which has been shown.
 	 */
-	virtual void post_show(twindow& /*window*/) {}
+	virtual void post_show(twindow& window);
 
 	/**
 	 * Initializes all fields in the dialog and set the keyboard focus.

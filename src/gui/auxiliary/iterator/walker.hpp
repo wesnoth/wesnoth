@@ -101,7 +101,8 @@ public:
 	/**
 	 * Returns a pointer to the current widget.
 	 *
-	 * @pre @ref at_end(level) == false
+	 * @pre                       The following assertion holds:
+	 *                            @code at_end(level) == false @endcode
 	 *
 	 * @param level               Determines from which level should the
 	 *                            current widget be returned.

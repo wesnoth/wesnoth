@@ -68,5 +68,14 @@ twindow* tpopup::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-} // namespace gui2
+void tpopup::post_build(CVideo& /*video*/, twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
 
+void tpopup::pre_show(CVideo& /*video*/, twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
+
+} // namespace gui2

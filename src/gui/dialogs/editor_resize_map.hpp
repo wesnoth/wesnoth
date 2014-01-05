@@ -39,25 +39,30 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param width [in]          The initial width of the map.
-	 * @param width [out]         The selected width of the map if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
+	 * @param [in, out] width     The parameter's usage is:
+	 *                            - Input: The initial width of the map.
+	 *                            - Output: The selected width of the map if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 *
-	 * @param height [in]         The initial height of the map.
-	 * @param height [out]        The selected height of the map if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
+	 * @param [in, out] height    The parameter's usage is:
+	 *                            - Input: The initial height of the map.
+	 *                            - Output: The selected height of the map if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 *
-	 * @param expand_direction [out]
+	 * @param [out] expand_direction
 	 *                            The selected expand direction if the dialog
 	 *                            returns  @ref twindow::OK undefined
 	 *                            otherwise.
 	 *
-	 * @param copy_edge_terrain [in]
-	 *                            The initial value of the copy edge toggle.
-	 * @param copy_edge_terrain [out]
-	 *                            The final value of the copy edge toggle if
-	 *                            the dialog returns  @ref twindow::OK
-	 *                            undefined otherwise.
+	 * @param [in, out] copy_edge_terrain
+	 *                            The parameter's usage is:
+	 *                            - Input: The initial value of the copy edge
+	 *                              toggle.
+	 *                            - Output: The final value of the copy edge
+	 *                              toggle if the dialog returns @ref
+	 *                              twindow::OK undefined otherwise.
 	 */
 	teditor_resize_map(
 			  int& width

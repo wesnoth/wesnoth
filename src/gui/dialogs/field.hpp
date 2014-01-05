@@ -131,8 +131,6 @@ public:
 	 * Detaches the field from a window.
 	 *
 	 * @pre widget_ != NULL || !mandatory_
-	 *
-	 * @param window               The window to be attached to.
 	 */
 	void detach_from_window()
 	{
@@ -240,10 +238,10 @@ private:
 /**
  * Template class to implement the generic field implementation.
  *
- * @param T                       The type of the item to show in the widget.
- * @param W                       The type of widget to show, this is not a
+ * @tparam T                      The type of the item to show in the widget.
+ * @tparam W                      The type of widget to show, this is not a
  *                                widget class but a behavior class.
- * @param CT                      The type tp be used in the
+ * @tparam CT                     The type tp be used in the
  *                                callback_save_value callback. Normally this
  *                                is const T but for example with strings it
  *                                can be const T&. Note the const needs to be

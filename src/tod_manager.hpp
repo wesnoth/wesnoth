@@ -95,8 +95,8 @@ class tod_manager : public savegame::savegame_config
 		const std::set<map_location>& get_area_by_index(int index) const;
 
 		/**
-		 * @param id
-		 * @returns the area with @id
+		 * @param id The id of the area to return.
+		 * @returns The area with id @p id.
 		 */
 		const std::set<map_location>& get_area_by_id(const std::string& id) const;
 

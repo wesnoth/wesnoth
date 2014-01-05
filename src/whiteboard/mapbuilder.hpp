@@ -42,9 +42,7 @@ public:
 
 	/**
 	 * Builds every team's actions as far into the future as possible, in the correct order.
-	 *
-	 * @return whether all the actions were valid.
-	 * */
+	 */
 	void build_map();
 
 private:

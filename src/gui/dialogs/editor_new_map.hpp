@@ -26,12 +26,16 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param width [in]          The initial width of the map.
-	 * @param width [out]         The selected width of the map if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
-	 * @param height [in]         The initial height of the map.
-	 * @param height [out]        The selected height of the map if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
+	 * @param [in, out] width     The parameter's usage is:
+	 *                            - Input: The initial width of the map.
+	 *                            - Output: The selected width of the map if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
+	 * @param [in, out] height    The parameter's usage is:
+	 *                            - Input: The initial height of the map.
+	 *                            - Output: The selected height of the map if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 */
 	teditor_new_map(int& width, int& height);
 

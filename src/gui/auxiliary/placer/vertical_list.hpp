@@ -31,7 +31,7 @@ namespace implementation {
 /**
  * The placement class for a vertical list.
  *
- * @see @ref tplacer_ for more information.
+ * See @ref tplacer_ for more information.
  */
 class tplacer_vertical_list
 	: public tplacer_

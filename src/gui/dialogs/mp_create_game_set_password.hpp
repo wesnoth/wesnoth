@@ -26,10 +26,11 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param password [in]       The initial value for the password.
-	 * @param password [out]      The password selected by the user if the
-	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherwise.
+	 * @param [in, out] password  The parameter's usage is:
+	 *                            - Input: The initial value for the password.
+	 *                            - Output: The password selected by the user
+	 *                              if the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 */
 	explicit tmp_create_game_set_password(std::string& password);
 

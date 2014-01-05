@@ -16,7 +16,7 @@
  * @file
  * Contains the base iterator class for the gui2 widgets.
  *
- * For more information @see @ref gui2_iterator for more information.
+ * See @ref gui2_iterator for more information.
  */
 
 #ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_ITERATOR_HPP_INCLUDED
@@ -31,7 +31,7 @@ namespace iterator {
 /**
  * The iterator class.
  *
- * @see @ref gui2_iterator_iterator for more information.
+ * See @ref gui2_iterator_iterator for more information.
  */
 template<class order>
 class titerator
@@ -62,9 +62,11 @@ public:
 	/**
 	 * Visit the next widget.
 	 *
-	 * @pre @ref at_end() == false
+	 * @pre                       The following assertion holds:
+	 *                            @code at_end() == false @endcode
 	 *
-	 * @throws @ref trange_error upon pre condition violation.
+	 * @throws                    A @ref trange_error exception upon pre
+	 *                            condition violation.
 	 *
 	 * @returns                   Whether the next widget can be safely
 	 *                            deferred.

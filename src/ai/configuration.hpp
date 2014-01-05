@@ -144,7 +144,6 @@ private:
 	/**
 	 * Upgrade side config from version 1.7.2 to version 1.7.3
 	 * @param[in] cfg the config to be read
-	 * @param[out] parsed_cfg parsed config
 	 * @return was all ok?
 	 * @retval true success, cfg is guaranteed to be valid
 	 * @retval false failure

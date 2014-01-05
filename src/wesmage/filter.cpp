@@ -29,8 +29,8 @@ struct tfilter
 	/**
 	 * The functor to call for the filter.
 	 *
-	 * @param surf                The surface to apply the filter to.
-	 * @param parameters          A string with the parameters for the
+	 * @p surf                    The surface to apply the filter to.
+	 * @p parameters              A string with the parameters for the
 	 *                            functor. The code is expected to be
 	 *                            supplied on the command line. So it should
 	 *                            be validated.

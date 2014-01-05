@@ -31,7 +31,7 @@ namespace implementation {
 /**
  * The placement class for a horizontal list.
  *
- * @see @ref tplacer_ for more information.
+ * See @ref tplacer_ for more information.
  */
 class tplacer_horizontal_list
 	: public tplacer_

@@ -2283,7 +2283,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
 std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 {
 	std::vector<std::pair<std::string,std::string> > temp;
-	std::pair<std::string,std::string> icon; //<image,tooltip>
+	std::pair<std::string,std::string> icon; // <image,tooltip>
 
 	BOOST_FOREACH(const config &adv, get_modification_advances())
 	{
