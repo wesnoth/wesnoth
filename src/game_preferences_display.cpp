@@ -1076,7 +1076,7 @@ void preferences_dialog::process_event()
 							// box only as a workaround for the main listbox's layout
 							// limitations.
 							std::ostringstream ss;
-							ss << adv_combo_option["name"] << '='
+							ss << adv_combo_option["name"] << COLUMN_SEPARATOR
 							   << adv_combo_option["description"];
 							adv_combo_items.push_back(ss.str());
 						} else {
