@@ -60,4 +60,8 @@
 #define OVERRIDE
 #endif
 
+#ifdef NDEBUG
+#error "NDEBUG is not supported"
+#endif
+
 #endif //GLOBAL_HPP_INCLUDED
