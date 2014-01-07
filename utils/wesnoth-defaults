@@ -1,0 +1,47 @@
+#!/bin/sh
+#
+# Runs Wesnoth using a clean, throwaway config directory.
+#
+# The configuration directory is created on your temporary
+# directory (i.e. /tmp) with a unique name every time, and
+# deleted when finished.
+#
+# Usage:
+#     wesnoth-defaults <command line>
+#
+# Examples:
+#     wesnoth-defaults ~/src/wesnoth-1.12/wesnoth
+#     wesnoth-defaults ~/src/wesnoth-1.12/wesnoth -s server.wesnoth.org
+#     wesnoth-defaults ~/src/wesnoth-trunk/wesnoth-debug --campaign Heir_To_The_Throne
+#
+
+SELF=`basename $0`
+
+do_error()
+{
+	echo "$SELF: $*" 1>&2
+}
+
+if [ -z $1 ]; then
+	do_error "You must specify a command line to run!"
+	exit 1
+fi
+
+WESNOTH_BIN_PATH=$1
+TEMP_CONFIG_DIR=`mktemp -qd`
+
+if [ -z $TEMP_CONFIG_DIR ]; then
+	do_error "Could not create temporary dir before launch!"
+	exit 2
+fi
+
+do_cleanup()
+{
+	rm -rf $TEMP_CONFIG_DIR || do_error "Could not remove temporary config dir"
+}
+
+trap do_cleanup INT QUIT HUP TERM EXIT
+
+shift
+
+$WESNOTH_BIN_PATH --nocache --userdata-dir $TEMP_CONFIG_DIR --userconfig-dir $TEMP_CONFIG_DIR $@
