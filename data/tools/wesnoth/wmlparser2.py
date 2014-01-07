@@ -204,7 +204,6 @@ class Parser:
         self.no_preprocess = no_preprocess
         self.preprocessed = None
         self.verbose = False
-        self.skip_newlines = False
 
         self.last_wml_line = "?"
         self.parser_line = 0
@@ -270,6 +269,9 @@ class Parser:
         """
         if not line: return
 
+        if line.strip():
+            self.skip_newlines_after_plus = False
+
         if self.in_arrows:
             arrows = line.find('>>')
             if arrows >= 0:
@@ -314,9 +316,6 @@ class Parser:
                 self.temp_key_nodes[self.commas].value.append(
                     self.temp_string_node)
 
-                if line[quote + 1:] == "\n":
-                    self.skip_newlines = False
-
                 self.in_string = False
                 self.parse_line_without_commands(line[quote + 1:])
             else:
@@ -351,16 +350,11 @@ class Parser:
         else:
             for i, segment in enumerate(line.split("+")):
                 segment = segment.lstrip(" ")
-                at_line_end = segment.endswith("\n")
 
-                # if a plus sign is followed by the end of the line,
-                # we need to ignore the following empty lines to find the
-                # continuation
-
-                if i > 0 and at_line_end:
-                    self.skip_newlines = True
-                elif not at_line_end:
-                    self.skip_newlines = False
+                if i > 0:
+                    # If the last segment is empty (there was a plus sign
+                    # at the end) we need to skip newlines.
+                    self.skip_newlines_after_plus = not segment.strip()
 
                 if not segment: continue
 
@@ -368,8 +362,8 @@ class Parser:
                     self.translatable = True
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue
-
                 self.handle_value(segment)
+
 
     def handle_tag(self, line):
         end = line.find("]")
@@ -405,8 +399,9 @@ class Parser:
             self.parse_outside_strings(remainder)
 
     def handle_value(self, segment):
-
         def add_text(segment):
+            segment = segment.rstrip()
+            if not segment: return
             n = len(self.temp_key_nodes)
             maxsplit = n - self.commas - 1
             if maxsplit < 0: maxsplit = 0
@@ -421,15 +416,9 @@ class Parser:
 
         # Finish assignment on newline, except if there is a
         # plus sign before the newline.
-        if segment[-1] == "\n":
-            segment = segment.rstrip()
-            if segment:
-                add_text(segment)
-                self.temp_key_nodes = []
-            elif not self.skip_newlines:
-                self.temp_key_nodes = []
-        else:
-            add_text(segment)
+        add_text(segment)
+        if segment[-1] == "\n" and not self.skip_newlines_after_plus:
+            self.temp_key_nodes = []
 
     def parse(self):
         """
@@ -447,6 +436,7 @@ class Parser:
         self.translatable = False
         self.root = RootNode()
         self.parent_node = [self.root]
+        self.skip_newlines_after_plus = False
 
         command_marker_byte = chr(254)
 
@@ -458,7 +448,7 @@ class Parser:
             # Everything from chr(254) to newline is the command.
             compos = rawline.find(command_marker_byte)
             if compos >= 0:
-                self.parse_line_without_commands(rawline[:compos] + "\n")
+                self.parse_line_without_commands(rawline[:compos])
                 self.handle_command(rawline[compos + 1:-1])
             else:
                 self.parse_line_without_commands(rawline)
@@ -581,6 +571,9 @@ if __name__ == "__main__":
         print("Running tests")
         p = Parser(args.wesnoth, args.config_dir,
             args.data_dir, args.no_preprocess)
+        if args.keep_temp:
+            p.keep_temp_dir = args.keep_temp
+        if args.verbose: p.verbose = True
 
         only = None
         def test2(input, expected, note, function):
@@ -728,6 +721,18 @@ foo="bar" + "baz" # blah
 """
 foo='bar' .. 'baz'
 """, "comment after +")
+
+        test(
+"""
+#define baz
+"baz"
+#enddef
+foo="bar" {baz}
+""",
+"""
+foo='bar' .. 'baz'
+""", "defined string concatenation")
+
 
         test2(
 """
