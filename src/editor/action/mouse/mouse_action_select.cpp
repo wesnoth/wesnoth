@@ -42,7 +42,10 @@ editor_action* mouse_action_select::key_event(
 editor_action* mouse_action_select::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
-	return new editor_action_chain(new editor_action_select(hexes));
+	if (has_ctrl_modifier())
+		return new editor_action_chain(new editor_action_deselect(hexes));
+	else
+		return new editor_action_chain(new editor_action_select(hexes));
 }
 
 editor_action* mouse_action_select::click_perform_right(

@@ -49,6 +49,22 @@ class editor_action_select : public editor_action_area
 };
 
 /**
+ * Deselect the given locations
+ */
+class editor_action_deselect : public editor_action_area
+{
+public:
+	editor_action_deselect(const std::set<map_location>& area) :
+		editor_action_area(area) {}
+
+	editor_action_deselect* clone() const;
+	void extend(const editor_map& map, const std::set<map_location>& locs);
+	editor_action* perform(map_context& mc) const;
+	void perform_without_undo(map_context& mc) const;
+	const char* get_name() const { return "deselect"; }
+};
+
+/**
  * Select the entire map
  */
 class editor_action_select_all : public editor_action
