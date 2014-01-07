@@ -2432,7 +2432,7 @@ def spellcheck(fn, d):
                         d.add_to_session(word)
                         local_spellings.append(word)
                     else:
-                        nav.printError(" %s already declared" % word)
+                        nav.printError("spelling '%s' already declared" % word)
     #if local_spellings:
     #    print "%s: with this file's local spellings: %s" % (fn,local_spellings)
 
