@@ -7,6 +7,8 @@ Version 1.11.8+dev:
  * User interface:
    * Fixed hidden variations of unit types (hide_help=yes) being listed in the
      help browser when they shouldn't.
+   * Gray-out GUI1 scrollbar upwards scrolling button by default when starting
+     with the view scrolled to the top.
  * Miscellaneous and bug fixes:
    * Added -Wno-documentation-deprecated-sync to the CMake pedantic flags.
    * Fixed several Doxygen issues found by Clang 3.4.
