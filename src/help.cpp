@@ -1478,6 +1478,10 @@ public:
 		BOOST_FOREACH(const std::string &var_id, parent->variations()) {
 			const unit_type &type = parent->get_variation(var_id);
 
+			if(type.hide_help()) {
+				continue;
+			}
+
 			if (first) {
 				ss << _("Variations: ");
 				first = false;
