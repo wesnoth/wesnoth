@@ -280,12 +280,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
 			!gui().fogged(un->get_location()))
 	{
-		if (un->side() != side_num_) {
-			//unit under cursor is not on our team
-			//Note: planned unit map must be activated after this is done,
-			//since the future state includes changes to units' movement.
-			unit_movement_resetter move_reset(*un);
-		} else {
+		if (un->side() == side_num_) {
 			//unit is on our team, show path if the unit has one
 			const map_location go_to = un->get_goto();
 			if(map_.on_board(go_to)) {
@@ -297,13 +292,20 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 				gui().set_route(&route);
 			}
 			over_route_ = true;
-		}
 
-		{ // start planned unit map scope
 			wb::future_map_if_active raii;
 			current_paths_ = pathfind::paths(*un, false, true,
 					viewing_team(), path_turns_);
-		} // end planned unit map scope
+		} else {
+			//unit under cursor is not on our team
+			//Note: planned unit map must be activated after this is done,
+			//since the future state includes changes to units' movement.
+			unit_movement_resetter move_reset(*un);
+
+			wb::future_map_if_active raii;
+			current_paths_ = pathfind::paths(*un, false, true,
+					viewing_team(), path_turns_);
+		}
 
 		unselected_paths_ = true;
 		gui().highlight_reach(current_paths_);
