@@ -125,7 +125,7 @@ void editor_controller::init_tods(const config& game_config)
 			(schedule_id, std::pair<std::string, std::vector<time_of_day> >(schedule_name, std::vector<time_of_day>())) );
 			times = new_times.first;
 		} else {
-			ERR_ED << "Duplicate TOD Schedule ids.\n";
+			ERR_ED << "Duplicate TOD Schedule identifiers.\n";
 			continue;
 		}
 
