@@ -298,7 +298,7 @@ void playsingle_controller::report_victory(
 
 	symbols["gold"] = lexical_cast_default<std::string>(player_gold);
 
-	// Note that both strings are the same in english, but some languages will
+	// Note that both strings are the same in English, but some languages will
 	// want to translate them differently.
 	if(end_level.carryover_add) {
 		if(player_gold > 0) {
