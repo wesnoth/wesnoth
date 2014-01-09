@@ -901,6 +901,7 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
+	case hotkey::HOTKEY_NULL:
 		return true;
 
 	// Commands that have some preconditions:
