@@ -1204,7 +1204,18 @@ void preferences_dialog::set_advanced_menu()
 			field = _("no");
 		}
 
-		str << adv["name"] << COLUMN_SEPARATOR << field;
+		std::string label = adv["name"];
+
+		// NOTE:
+		// The character count limits below only really work with the basic
+		// ASCII character set. Some Unicode characters may be rendered wider.
+		// Furthermore, the Preferences page selection list may container
+		// longer entries that push this listbox further to the right, closer
+		// to the dialog's right edge.
+		utils::ellipsis_truncate(label, 46);
+		utils::ellipsis_truncate(field, 8);
+
+		str << label << COLUMN_SEPARATOR << field;
 		advanced_items.push_back(str.str());
 	}
 
