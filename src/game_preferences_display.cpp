@@ -1021,7 +1021,12 @@ void preferences_dialog::process_event()
 			const config* const adv = get_advanced_pref();
 			if(adv != NULL) {
 				const config& pref = *adv;
-				const std::string description = pref["description"];
+
+				std::string description = pref["description"];
+				if(description.empty()) {
+					description = pref["name"].str();
+				}
+
 				std::string value = preferences::get(pref["field"]);
 
 				// Hide all advanced preference controls before unhiding the
@@ -1204,7 +1209,26 @@ void preferences_dialog::set_advanced_menu()
 			field = _("no");
 		}
 
-		str << adv["name"] << COLUMN_SEPARATOR << field;
+		const std::string& label = adv["name"];
+
+		std::string display_label = label;
+		std::string display_field = field;
+
+		// NOTE:
+		// The character count limits below only really work with the basic
+		// ASCII character set. Some Unicode characters may be rendered wider.
+		// Furthermore, the Preferences page selection list may container
+		// longer entries that push this listbox further to the right, closer
+		// to the dialog's right edge.
+		utils::ellipsis_truncate(display_label, 46);
+		utils::ellipsis_truncate(display_field, 8);
+
+		// We need the tooltip twice because individual columns have
+		// individual tooltips.
+
+		str << display_label << HELP_STRING_SEPARATOR << label
+		    << COLUMN_SEPARATOR
+		    << display_field << HELP_STRING_SEPARATOR << label;
 		advanced_items.push_back(str.str());
 	}
 

@@ -13,6 +13,8 @@ Version 1.11.8+dev:
  * User interface:
    * Fixed hidden variations of unit types (hide_help=yes) being listed in the
      help browser when they shouldn't.
+   * Truncate long Advanced Preferences entries with ellipses to avoid
+     situations where the listbox is wider than the Preferences dialog frame.
 
  * Miscellaneous and bug fixes:
    * Fixed possible invalid memory access issue in the MP sides configuration

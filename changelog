@@ -9,6 +9,9 @@ Version 1.11.8+dev:
      help browser when they shouldn't.
    * Gray-out GUI1 scrollbar upwards scrolling button by default when starting
      with the view scrolled to the top.
+   * Truncate long Advanced Preferences entries with ellipses to avoid
+     situations where the listbox is wider than the Preferences dialog frame
+     (bug #19482).
  * Miscellaneous and bug fixes:
    * Added -Wno-documentation-deprecated-sync to the CMake pedantic flags.
    * Fixed several Doxygen issues found by Clang 3.4.
