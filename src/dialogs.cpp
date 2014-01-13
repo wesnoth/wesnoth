@@ -1414,7 +1414,9 @@ void show_terrain_description(const terrain_type &t)
 
 void show_unit_description(const unit_type &t)
 {
-	const std::string& var_id = t.get_cfg()["variation_id"];
+	std::string var_id = t.get_cfg()["variation_id"].str();
+	if (var_id.empty())
+		var_id = t.get_cfg()["variation_name"].str();
 	bool hide_help = t.hide_help();
 	bool use_variation = false;
 	if (!var_id.empty()) {
