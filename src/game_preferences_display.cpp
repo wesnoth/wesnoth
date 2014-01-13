@@ -1021,7 +1021,12 @@ void preferences_dialog::process_event()
 			const config* const adv = get_advanced_pref();
 			if(adv != NULL) {
 				const config& pref = *adv;
-				const std::string description = pref["description"];
+
+				std::string description = pref["description"];
+				if(description.empty()) {
+					description = pref["name"].str();
+				}
+
 				std::string value = preferences::get(pref["field"]);
 
 				// Hide all advanced preference controls before unhiding the
