@@ -1209,7 +1209,10 @@ void preferences_dialog::set_advanced_menu()
 			field = _("no");
 		}
 
-		std::string label = adv["name"];
+		const std::string& label = adv["name"];
+
+		std::string display_label = label;
+		std::string display_field = field;
 
 		// NOTE:
 		// The character count limits below only really work with the basic
@@ -1217,10 +1220,15 @@ void preferences_dialog::set_advanced_menu()
 		// Furthermore, the Preferences page selection list may container
 		// longer entries that push this listbox further to the right, closer
 		// to the dialog's right edge.
-		utils::ellipsis_truncate(label, 46);
-		utils::ellipsis_truncate(field, 8);
+		utils::ellipsis_truncate(display_label, 46);
+		utils::ellipsis_truncate(display_field, 8);
 
-		str << label << COLUMN_SEPARATOR << field;
+		// We need the tooltip twice because individual columns have
+		// individual tooltips.
+
+		str << display_label << HELP_STRING_SEPARATOR << label
+		    << COLUMN_SEPARATOR
+		    << display_field << HELP_STRING_SEPARATOR << label;
 		advanced_items.push_back(str.str());
 	}
 
