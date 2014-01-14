@@ -1,7 +1,12 @@
 Version 1.10.7+dev:
+ * Add-ons client:
+   * Fixed invalid file size data from the server crashing the client on the
+     network transfer progress dialog (bug #20893).
  * Add-ons server:
    * Implemented read-only mode option (read_only boolean attribute in
      server config WML, defaults to "no").
+   * Fixed mishandling of inaccessible add-on packs resulting in multiple data
+     conversion errors and stalling clients (bug #20893).
  * Campaigns:
    * The Rise of Wesnoth:
      * Fix bug #19427: Spawned units rise in cave wall in Temple of the Deep
