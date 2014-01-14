@@ -14,6 +14,8 @@ Version 1.11.8+dev:
    * Truncate long Advanced Preferences entries with ellipses to avoid
      situations where the listbox is wider than the Preferences dialog frame
      (bug #19482).
+   * Team color is now applied on the Unknown unit icon in the game Status
+     Table regardless of whether the side's leader unit supports team color.
  * Miscellaneous and bug fixes:
    * Added -Wno-documentation-deprecated-sync to the CMake pedantic flags.
    * Fixed several Doxygen issues found by Clang 3.4.

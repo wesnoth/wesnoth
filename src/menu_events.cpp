@@ -238,10 +238,16 @@ void menu_handler::status_table(int selected)
 			// show only a random leader image.
 			if (!fogged || known || game_config::debug) {
 				str << IMAGE_PREFIX << leader->absolute_image();
+#ifndef LOW_MEM
+				str << leader->image_mods();
+#endif
 				leader_bools.push_back(true);
 				leader_name = leader->name();
 			} else {
 				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
+#ifndef LOW_MEM
+				str << "~RC(magenta>" << teams_[n].color() << ")";
+#endif
 				leader_bools.push_back(false);
 				leader_name = "Unknown";
 			}
@@ -249,9 +255,6 @@ void menu_handler::status_table(int selected)
 			if (gamestate_.classification().campaign_type == "multiplayer")
 				leader_name = teams_[n].current_player();
 
-#ifndef LOW_MEM
-			str << leader->image_mods();
-#endif
 		} else {
 			leader_bools.push_back(false);
 		}
