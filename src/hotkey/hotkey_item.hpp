@@ -10,7 +10,8 @@
    but WITHOUT ANY WARRANTY.
 
    See the COPYING file for more details.
- */
+*/
+
 #ifndef HOTKEY_ITEM_HPP_INCLUDED
 #define HOTKEY_ITEM_HPP_INCLUDED
 
