@@ -169,7 +169,7 @@ namespace {
 	config construct_error(const std::string& msg)
 	{
 		config cfg;
-		cfg.add_child("error")["message"] = "#Error: " + msg;
+		cfg.add_child("error")["message"] = msg;
 		LOG_CS << "ERROR: "<<msg<<"\n";
 		return cfg;
 	}
