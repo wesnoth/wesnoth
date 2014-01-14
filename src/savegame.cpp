@@ -202,23 +202,13 @@ public:
    }
 private:
 	config& data(const std::string& name) {
-		std::string save = name;
-		/*
-		 * All saves are .gz files now so make sure we use that name when opening
-		 * a file. If not some parts of the code use the name with and some parts
-		 * without the .gz suffix.
-		 */
-		if(save.length() < 3 || save.substr(save.length() - 3) != ".gz") {
-			save += ".gz";
-		}
-
 		config& cfg = data();
-		if (config& sv = cfg.find_child("save", "save", save)) {
+		if (config& sv = cfg.find_child("save", "save", name)) {
 			return sv;
 		}
 
 		config& res = cfg.add_child("save");
-		res["save"] = save;
+		res["save"] = name;
 		return res;
 	}
 	config& data() {
