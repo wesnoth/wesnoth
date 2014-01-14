@@ -11,8 +11,6 @@
 
    See the COPYING file for more details.
 */
-//TODO uncomment or remove
-//#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "mouse_action_village.hpp"
 #include "../action_village.hpp"
