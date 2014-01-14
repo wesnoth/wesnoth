@@ -245,7 +245,8 @@ void menu_handler::status_table(int selected)
 				leader_bools.push_back(false);
 				leader_name = "Unknown";
 			}
-		if (gamestate_.classification().campaign_type == "multiplayer")
+
+			if (gamestate_.classification().campaign_type == "multiplayer")
 				leader_name = teams_[n].current_player();
 
 #ifndef LOW_MEM
