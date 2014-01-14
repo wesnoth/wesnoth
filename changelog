@@ -24,6 +24,8 @@ Version 1.11.8+dev:
    * Fixed broken image references in the Gameplay -> Time of Day help topic.
    * The internal variables used by the LIMIT_RECRUITS WML macro are now
      cleared on victory.
+   * Fixed missing log error message for invalid music tracks set with
+     play_once=yes (bug #21479).
 
 Version 1.11.8:
  * Add-ons client:

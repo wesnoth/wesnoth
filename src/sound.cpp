@@ -525,6 +525,10 @@ void play_music_config(const config &music_node)
 {
 	music_track track( music_node );
 
+	if (!track.valid() && !track.id().empty()) {
+		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.\n";
+	}
+
 	// If they say play once, we don't alter playlist.
 	if (track.play_once()) {
 		current_track = track;
@@ -552,9 +556,6 @@ void play_music_config(const config &music_node)
 		} else {
 			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'\n";
 		}
-	}
-	else if(track.id().empty() == false) {
-		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.\n";
 	}
 
 	// They can tell us to start playing this list immediately.
