@@ -272,6 +272,10 @@ class Parser:
         if line.strip():
             self.skip_newlines_after_plus = False
 
+        if self.in_tag:
+            self.handle_tag(line)
+            return
+
         if self.in_arrows:
             arrows = line.find('>>')
             if arrows >= 0:
@@ -367,9 +371,13 @@ class Parser:
 
     def handle_tag(self, line):
         end = line.find("]")
-        if end <= 0:
-            raise WMLError(self, "Expected closing bracket.")
-        tag = line[1:end]
+        if end < 0:
+            if line.endswith("\n"):
+                raise WMLError(self, "Expected closing bracket.")
+            self.in_tag += line
+            return
+        tag = (self.in_tag + line[:end])[1:]
+        self.in_tag = ""
         if tag[0] == "/":
             self.parent_node = self.parent_node[:-1]
         else:
@@ -437,6 +445,7 @@ class Parser:
         self.root = RootNode()
         self.parent_node = [self.root]
         self.skip_newlines_after_plus = False
+        self.in_tag = ""
 
         command_marker_byte = chr(254)
 
@@ -733,6 +742,18 @@ foo="bar" {baz}
 foo='bar' .. 'baz'
 """, "defined string concatenation")
 
+        test(
+"""
+#define A BLOCK
+[{BLOCK}]
+[/{BLOCK}]
+#enddef
+{A blah}
+""",
+"""
+[blah]
+[/blah]
+""", "defined tag")
 
         test2(
 """
