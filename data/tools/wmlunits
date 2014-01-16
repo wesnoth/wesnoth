@@ -149,7 +149,8 @@ def list_contents():
         #print("local", s, local.wesnoth)
         p.join()
         if s == "e":
-            raise local.wesnoth
+            remote_exception = local.wesnoth
+            raise remote_exception
     
     def get_version(addon):
         try:
@@ -234,6 +235,14 @@ def list_contents():
             ef.write("</TIMEOUT ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
+        except Exception as e:
+            ef = open(logname, "w")
+            ef.write("<INTERNAL ERROR>\n")
+            ef.write(str(e))
+            ef.write("</INTERNAL ERROR>\n")
+            ef.close()
+            sys.stdout.write("failed\n")
+
         finally:
             move(options.config_dir + "/data/add-ons", options.addons, addon)
         
