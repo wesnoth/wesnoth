@@ -710,6 +710,9 @@ whopairs = {}
 # or create, and is populated by the comment, "wmllint: whofield <macro> <#>."
 whomacros = {}
 
+# This dictionary pairs the ids of stored units with their variable name.
+storedids = {}
+
 # This list of the standard recruitable usage types can be appended with the
 # magic comment, "#wmllint: usagetype[s]".
 usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
@@ -1336,6 +1339,8 @@ def global_sanity_check(filename, lines):
     #in case some [filter]id= comes in this [event]
     directly_in_event = []
     in_time_area = False
+    in_store = False
+    in_unstore = False
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
@@ -1437,6 +1442,14 @@ def global_sanity_check(filename, lines):
             continue
         elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
             in_person = False
+        elif "[store_unit]" in lines[i]:
+            in_store = True
+        elif "[/store_unit]" in lines[i]:
+            in_store = False
+        elif "[unstore_unit]" in lines[i]:
+            in_unstore = True
+        elif "[/unstore_unit]" in lines[i]:
+            in_unstore = False
         if "wmllint: markcheck off" in lines[i]:
             markcheck = False
         elif "wmllint: markcheck on" in lines[i]:
