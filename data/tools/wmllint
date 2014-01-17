@@ -1341,6 +1341,10 @@ def global_sanity_check(filename, lines):
     in_time_area = False
     in_store = False
     in_unstore = False
+    in_not = False
+    in_clear = False
+    storeid = None
+    storevar = None
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
@@ -1445,11 +1449,22 @@ def global_sanity_check(filename, lines):
         elif "[store_unit]" in lines[i]:
             in_store = True
         elif "[/store_unit]" in lines[i]:
+            if storeid and storevar:
+                storedids.update({storevar: storeid})
             in_store = False
+            storeid = storevar = None
         elif "[unstore_unit]" in lines[i]:
             in_unstore = True
         elif "[/unstore_unit]" in lines[i]:
             in_unstore = False
+        elif "[not]" in lines[i]:
+            in_not = True
+        elif "[/not]" in lines[i]:
+            in_not = False
+        elif "[clear_variable]" in lines[i]:
+            in_clear = True
+        elif "[/clear_variable]" in lines[i]:
+            in_clear = False
         if "wmllint: markcheck off" in lines[i]:
             markcheck = False
         elif "wmllint: markcheck on" in lines[i]:
@@ -1532,6 +1547,11 @@ def global_sanity_check(filename, lines):
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     if len(args) == 4:
                         present.append(args[1])
+                elif macname == 'CLEAR_VARIABLE':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    for arg in [x.lstrip() for x in args[1].split(',')]:
+                        if arg in storedids.keys():
+                            del storedids[arg]
                 elif macname in whomacros.keys():
                     (args, brack, paren) = parse_macroref(0, leadmac.string)
                     present.append(args[whomacros[macname]])
@@ -1549,6 +1569,29 @@ def global_sanity_check(filename, lines):
         if parseable:
             if "wmllint: ignore" in comment:
                 continue
+            # Recognize units when unstored
+            if (in_scenario or in_multiplayer) and in_store:
+                if key == 'id' and not in_not:
+                    if not storeid == None:
+                        storeid == storeid + ',' + value
+                    else:
+                        storeid = value
+                elif key == 'variable' and '{' not in value:
+                    storevar = value
+            elif in_unstore:
+                if key == 'variable':
+                    value = value.split("[$")[0]
+                    if value in storedids.keys():
+                        for unit_id in storedids[value].split(','):
+                            present.append(unit_id.lstrip())
+                        print storedids
+                        del storedids[value]
+                        print present
+            elif key == 'name' and in_clear:
+                for val in value.split(','):
+                    val = val.lstrip()
+                    if val in storedids.keys():
+                        del storedids[val]
             has_tr_mark = translation_mark.search(value)
             if key == 'role':
                 present.append(value)
