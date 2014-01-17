@@ -3,14 +3,14 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2013-02-18 17:15-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
+"PO-Revision-Date: 2014-01-15 14:17+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -328,10 +328,8 @@ msgid "(New Scenario)"
 msgstr "(Mapa ùr)"
 
 #: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(Unnamed Area)"
-msgstr "(Mapa ùr)"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:345
 #, fuzzy
@@ -397,7 +395,7 @@ msgstr "Atharraichean gun shàbhaladh"
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
-"A bheil thu airson a h-uile atharrachadh a rinn thu air a’ mhapa on t-"
+"A bheil thu airson a h-uile atharrachadh a rinn thu air a’ mhapa bhon t-"
 "sàbhaladh mu dheireadh a thilgeil air  falbh?"
 
 #: src/editor/map/context_manager.cpp:766
@@ -428,7 +426,7 @@ msgstr "Dàta leabaichte a’ mhapa air luchdadh"
 #: src/editor/map/context_manager.cpp:867
 #: src/editor/map/context_manager.cpp:881
 msgid "Map loaded from scenario"
-msgstr "Mapa air luchdadh o chnàmh-sgeul"
+msgstr "Mapa air luchdadh bho chnàmh-sgeul"
 
 #: src/editor/map/context_manager.cpp:877
 msgid ""
@@ -444,7 +442,7 @@ msgstr "Cluicheadair"
 
 #: src/editor/map/editor_map.cpp:266
 msgid "The size of the target map is different from the current map"
-msgstr "Tha meud a’ mhapa amais eadar-dhealaichte on mhapa seo"
+msgstr "Tha meud a’ mhapa amais eadar-dhealaichte bhon mhapa seo"
 
 #: src/editor/map/map_context.cpp:127
 msgid "File not found"
