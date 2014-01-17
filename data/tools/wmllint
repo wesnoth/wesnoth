@@ -1584,9 +1584,7 @@ def global_sanity_check(filename, lines):
                     if value in storedids.keys():
                         for unit_id in storedids[value].split(','):
                             present.append(unit_id.lstrip())
-                        print storedids
                         del storedids[value]
-                        print present
             elif key == 'name' and in_clear:
                 for val in value.split(','):
                     val = val.lstrip()
