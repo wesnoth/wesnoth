@@ -3,14 +3,14 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-07-28 18:25+0200\n"
-"PO-Revision-Date: 2013-02-21 18:08-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
+"POT-Creation-Date: 2013-08-17 11:34+0200\n"
+"PO-Revision-Date: 2014-01-15 14:39+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [terrain_type]: id=deep_water_gray
 #. [terrain_type]: id=deep_water
@@ -1593,7 +1593,7 @@ msgstr "Fàilte"
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:71
 msgid "state"
-msgstr "cor"
+msgstr "staid"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:85
@@ -1747,7 +1747,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:46
 msgid "Gamestate Inspector"
-msgstr "Sgrùdair cor a’ gheama"
+msgstr "Sgrùdair staid a’ gheama"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:100
@@ -1999,7 +1999,7 @@ msgstr "Maorsainneachd"
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:148
 msgid "Check status"
-msgstr "Dearbhaich cor"
+msgstr "Dearbhaich an staid"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:155
@@ -2085,7 +2085,7 @@ msgstr "Ùine:"
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:374
 msgid "Status"
-msgstr "Cor"
+msgstr "Staid"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:404
@@ -2263,7 +2263,7 @@ msgstr "Geama lìonraidh le òstair"
 #: data/gui/default/window/mp_method_selection.cfg:167
 msgid "Host a game using dedicated server ‘wesnothd’"
 msgstr ""
-"Bi nad òstair airson geama leis an fhrithealaiche choisrigte ‘wesnothd’"
+"Bi ’nad òstair airson geama leis an fhrithealaiche choisrigte ‘wesnothd’"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:176
@@ -2565,7 +2565,7 @@ msgstr "Seall cùrsairean dathte"
 
 #: src/game_preferences_display.cpp:198
 msgid "Show haloing effects"
-msgstr "Seall buaidhean riombaill"
+msgstr "Seall èifeachdan riombaill"
 
 #: src/game_preferences_display.cpp:199
 msgid "Change Resolution"
@@ -2581,7 +2581,7 @@ msgstr "Hotkeys"
 
 #: src/game_preferences_display.cpp:203
 msgid "Sound effects"
-msgstr "Buaidhean fuaime"
+msgstr "Èifeachdan fuaime"
 
 #: src/game_preferences_display.cpp:204
 msgid "Music"
@@ -2638,11 +2638,11 @@ msgstr "Tricead:"
 
 #: src/game_preferences_display.cpp:249
 msgid "Sound effects on/off"
-msgstr "Buaidhean fuaime air/dheth"
+msgstr "Èifeachdan fuaime air/dheth"
 
 #: src/game_preferences_display.cpp:253
 msgid "Change the sound effects volume"
-msgstr "Atharraich àirde nam buaidhean fuaime"
+msgstr "Atharraich àirde nan èifeachdan fuaime"
 
 #: src/game_preferences_display.cpp:256
 msgid "Music on/off"
@@ -2710,7 +2710,7 @@ msgstr "Cluich beòthachadh goirid air thuaiream airson aonadan nach dèan dad"
 
 #: src/game_preferences_display.cpp:343
 msgid "Continuously animate standing units in the battlefield"
-msgstr "Seall beòthachadh gun sgur airson aonadan nan seasamh air a’ bhlàr"
+msgstr "Seall beòthachadh gun sgur airson aonadan ’nan seasamh air a’ bhlàr"
 
 #: src/game_preferences_display.cpp:346
 msgid "Display animated terrain graphics"
@@ -2858,7 +2858,7 @@ msgstr "Cleachd cùrsairean luchaige dathte (faodaidh e bhith nas maille)"
 #: src/game_preferences_display.cpp:426
 msgid "Use graphical special effects (may be slower)"
 msgstr ""
-"Cleachd buaidhean sònraichte grafaigeachd (faodaidh e bhith nas maille)"
+"Cleachd èifeachdan sònraichte grafaigeachd (faodaidh e bhith nas maille)"
 
 #: src/game_preferences_display.cpp:428
 msgid "View and configure keyboard shortcuts"
@@ -3334,7 +3334,7 @@ msgstr "Staitistearachd"
 
 #: src/hotkeys.cpp:93
 msgid "Pause Network Game"
-msgstr "Cuir geama lìonraidh na stad"
+msgstr "Cuir geama lìonraidh ’na stad"
 
 #: src/hotkeys.cpp:94
 msgid "Continue Network Game"
@@ -3803,7 +3803,7 @@ msgstr "Falamhaich hotkey"
 #: src/preferences_display.cpp:395 src/preferences_display.cpp:403
 #: src/preferences_display.cpp:415
 msgid "This hotkey is already in use."
-msgstr "Tha an hotkey seo ga chleachdadh mu thràth."
+msgstr "Tha an hotkey seo ’ga chleachdadh mu thràth."
 
 #: src/preferences_display.cpp:430
 msgid ""
