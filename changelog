@@ -8,8 +8,12 @@ Version 1.10.7+dev:
    * Fixed mishandling of inaccessible add-on packs resulting in multiple data
      conversion errors and stalling clients (bug #20893).
  * Campaigns:
+   * Heir to the Throne:
+     * Fixed Konrad's dying words event.
    * The Rise of Wesnoth:
      * Fix bug #19427: Spawned units rise in cave wall in Temple of the Deep
+   * The South Guard:
+     * S6a: fix ogre's last breath message.
  * Language and i18n:
    * Updated translations: British English, Chinese (Traditional), German,
      Greek, Indonesian, Italian, Japanese, Korean, Vietnamese
@@ -18,6 +22,8 @@ Version 1.10.7+dev:
    * Fixed sound sources removed while the sound effects volume is zero
      (either in Preferences -> Sound or through the [volume] WML action)
      persisting and escaping the sound source management code (bug #21426).
+   * Fixed wmlindent and wmltools.py to not interpret Pango hexadecimal
+     color codes as the start of a comment.
 
 Version 1.10.7:
  * Add-ons server:
