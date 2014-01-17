@@ -67,6 +67,23 @@ def move(f, t, name):
 
     com = "mv " + f + "/" + bash(name) + " " + t + "/"
     return shell(com)
+   
+_info = {}
+def get_info(addon):
+    global _info
+    if addon in _info:
+        return _info[addon]
+    _info[addon] = None
+    try:
+        path = options.addons + "/" + addon + "/_info.cfg"
+        if os.path.exists(path):
+            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+                options.data_dir, no_preprocess = False)
+            parser.parse_file(path)
+            _info[addon] = parser
+    except wmlparser2.WMLError as e:
+        print(e)
+    return _info[addon]
 
 def list_contents():
     class Empty: pass
@@ -151,16 +168,12 @@ def list_contents():
         if s == "e":
             remote_exception = local.wesnoth
             raise remote_exception
-    
+   
     def get_version(addon):
-        try:
-            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
-                options.data_dir, no_preprocess = False)
-            parser.parse_file(options.config_dir + "/data/add-ons/" + addon + "/_info.cfg")
+        parser = get_info(addon)
+        if parser:
             for info in parser.get_all(tag = "info"):
                 return info.get_text_val("version") + "*" + info.get_text_val("uploads")
-        except wmlparser2.WMLError as e:
-            print(e)
 
     try: os.makedirs(options.output + "/mainline")
     except OSError: pass
@@ -198,6 +211,48 @@ def list_contents():
     addons = []
     if options.addons:
         addons = os.listdir(options.addons)
+
+    _deps = [{}]
+    def get_dependencies(addon):
+        if addon in _deps[0]:
+            return _deps[0][addon]
+        _deps[0][addon] = []
+        try:
+            info = get_info(addon).get_all(tag = "info")[0]
+            row = info.get_text_val("dependencies")
+            if row:
+                deps1 = row.split(",")
+            else:
+                deps = []
+            for d in deps1:
+                if d in addons:
+                    _deps[0][addon].append(d)
+                else:
+                    print("Missing dependency for " + addon + ": " + d)
+        except Exception as e:
+            pass
+        return _deps[0][addon]
+
+    sorted = []
+    unsorted = addons[:]
+    while unsorted:
+        n = 0
+        print(len(sorted))
+        for addon in unsorted:
+            for d in get_dependencies(addon):
+                if d not in sorted:
+                    break
+            else:
+                sorted.append(addon)
+                unsorted.remove(addon)
+                n += 1
+                continue
+        if n == 0:
+             print("Cannot sort dependencies for these addons: " + str(unsorted))
+             sorted += unsorted
+             break
+    addons = sorted
+
     for i, addon in enumerate(addons):
         if not os.path.isdir(options.addons + "/" + addon): continue
         sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " ... ")
@@ -206,11 +261,11 @@ def list_contents():
         logname = d + "/error.log"
         try: os.makedirs(d)
         except OSError: pass
+        version = get_version(addon)
         move(options.addons, options.config_dir + "/data/add-ons", addon)
         try:
             info = search(addon)
 
-            version = get_version(addon)
             if info.get("version", "") == version and info.get("parsed", False) == True:
                 sys.stdout.write("up to date\n")
                 continue
