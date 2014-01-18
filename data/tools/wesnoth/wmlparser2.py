@@ -58,8 +58,9 @@ class AttributeNode:
             id=Elfish Archer
         [/unit]
     """
-    def __init__(self, name):
+    def __init__(self, name, location=None):
         self.name = name
+        self.location = location
         self.value = [] # List of StringNode
 
     def debug(self):
@@ -83,8 +84,9 @@ class TagNode:
             id=Elfish Archer
         [/unit]
     """
-    def __init__(self, name):
+    def __init__(self, name, location=None):
         self.name = name
+        self.location = location
         # List of child elements, which are either of type TagNode or
         # AttributeNode.
         self.data = []
@@ -207,6 +209,8 @@ class Parser:
 
         self.last_wml_line = "?"
         self.parser_line = 0
+        self.line_in_file = 42424242
+        self.chunk_start = "?"
 
     def parse_file(self, path, defines=""):
         self.path = path
@@ -271,6 +275,10 @@ class Parser:
 
         if line.strip():
             self.skip_newlines_after_plus = False
+
+        if self.in_tag:
+            self.handle_tag(line)
+            return
 
         if self.in_arrows:
             arrows = line.find('>>')
@@ -367,13 +375,17 @@ class Parser:
 
     def handle_tag(self, line):
         end = line.find("]")
-        if end <= 0:
-            raise WMLError(self, "Expected closing bracket.")
-        tag = line[1:end]
+        if end < 0:
+            if line.endswith("\n"):
+                raise WMLError(self, "Expected closing bracket.")
+            self.in_tag += line
+            return
+        tag = (self.in_tag + line[:end])[1:]
+        self.in_tag = ""
         if tag[0] == "/":
             self.parent_node = self.parent_node[:-1]
         else:
-            node = TagNode(tag)
+            node = TagNode(tag, location=(self.line_in_file, self.chunk_start))
             if self.parent_node:
                 self.parent_node[-1].append(node)
             self.parent_node.append(node)
@@ -390,7 +402,7 @@ class Parser:
         self.temp_key_nodes = []
         for att in line.split(","):
             att = att.strip()
-            node = AttributeNode(att)
+            node = AttributeNode(att, location=(self.line_in_file, self.chunk_start))
             self.temp_key_nodes.append(node)
             if self.parent_node:
                 self.parent_node[-1].append(node)
@@ -437,6 +449,7 @@ class Parser:
         self.root = RootNode()
         self.parent_node = [self.root]
         self.skip_newlines_after_plus = False
+        self.in_tag = ""
 
         command_marker_byte = chr(254)
 
@@ -444,9 +457,11 @@ class Parser:
         if not input: input = self.path
 
         for rawline in open(input, "rb"):
+            compos = rawline.find(command_marker_byte)
             self.parser_line += 1
             # Everything from chr(254) to newline is the command.
-            compos = rawline.find(command_marker_byte)
+            if compos != 0:
+                self.line_in_file += 1
             if compos >= 0:
                 self.parse_line_without_commands(rawline[:compos])
                 self.handle_command(rawline[compos + 1:-1])
@@ -461,6 +476,9 @@ class Parser:
     def handle_command(self, com):
         if com.startswith("line "):
             self.last_wml_line = com[5:]
+            _ = self.last_wml_line.split(" ")
+            self.chunk_start = [(_[i+1], int(_[i])) for i in range(0, len(_), 2)]
+            self.line_in_file = self.chunk_start[0][1]
         elif com.startswith("textdomain "):
             self.textdomain = com[11:]
         else:
@@ -733,6 +751,18 @@ foo="bar" {baz}
 foo='bar' .. 'baz'
 """, "defined string concatenation")
 
+        test(
+"""
+#define A BLOCK
+[{BLOCK}]
+[/{BLOCK}]
+#enddef
+{A blah}
+""",
+"""
+[blah]
+[/blah]
+""", "defined tag")
 
         test2(
 """

@@ -1567,11 +1567,10 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			}
 			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
 			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-				bool not_fogged = !teams_manager::get_teams()[*viewer - 1].fogged(loc);
-				bool not_hiding = !this->invisible(loc/*, false(?) */);
-				if (visible != not_fogged && not_hiding) {
-					return false;
-				}
+				bool fogged = teams_manager::get_teams()[*viewer - 1].fogged(loc);
+				bool hiding = this->invisible(loc/*, false(?) */);
+				bool unit_hidden = fogged || hiding;
+				if (visible == unit_hidden) return false;
 			}
 		}
 	}

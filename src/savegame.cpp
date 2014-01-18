@@ -29,6 +29,7 @@
 #include "gui/dialogs/game_save.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "log.hpp"
@@ -689,7 +690,7 @@ void loadgame::load_multiplayer_game()
 	}
 
 	if(gamestate_.classification().campaign_type != "multiplayer") {
-		gui2::show_message(gui_.video(), "", _("This is not a multiplayer save"));
+		gui2::show_transient_error_message(gui_.video(), _("This is not a multiplayer save."));
 		throw load_game_cancelled_exception();
 	}
 
@@ -915,7 +916,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
 
 		if (video != NULL && show_confirmation_)
-			gui2::show_message(*video, _("Saved"), _("The game has been saved"));
+			gui2::show_transient_message(*video, _("Saved"), _("The game has been saved."));
 		return true;
 	} catch(game::save_game_failed& e) {
 		ERR_SAVE << error_message_ << e.message;

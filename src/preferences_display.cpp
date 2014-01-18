@@ -345,7 +345,8 @@ bool show_video_mode_dialog(display& disp)
 
 		option << res.first << utils::unicode_multiplication_sign << res.second;
 		const int div = boost::math::gcd(res.first, res.second);
-		option << " (" << res.first/div << ':' << res.second/div << ')';
+		if (div >= 10)
+			option << " (" << res.first/div << ':' << res.second/div << ')';
 		options.push_back(option.str());
 	}
 

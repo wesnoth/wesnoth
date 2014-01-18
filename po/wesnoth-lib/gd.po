@@ -3,14 +3,14 @@
 # Copyright (C) 2012 Wesnoth development team
 # This file is distributed under the same license as the wesnoth_up package.
 # Automatically generated, 2012.
-# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013.
+# GunChleoc <fios@foramnagaidhlig.net>, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2013-02-21 18:08-0000\n"
-"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
+"PO-Revision-Date: 2014-01-15 14:39+0100\n"
+"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. [terrain_type]: id=tri_trash
 #: data/core/terrain.cfg:18
@@ -1649,7 +1649,7 @@ msgstr "Seòrsa"
 #, fuzzy
 #| msgid "Status"
 msgid "Status:"
-msgstr "Cor"
+msgstr "Staid"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:146
@@ -1701,10 +1701,8 @@ msgstr "Dèan lethbhreac"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:380
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "Tagh an geama airson luchdadh"
+msgstr ""
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:393
@@ -2417,7 +2415,7 @@ msgstr "Fàilte"
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:71
 msgid "state"
-msgstr "cor"
+msgstr "staid"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:85
@@ -2649,7 +2647,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:45
 msgid "Gamestate Inspector"
-msgstr "Sgrùdair cor a’ gheama"
+msgstr "Sgrùdair staid a’ gheama"
 
 #. [label]: id=typename
 #. [label]: id=unit_type
@@ -2881,7 +2879,7 @@ msgstr "Maorsainneachd"
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:148
 msgid "Check status"
-msgstr "Dearbhaich cor"
+msgstr "Dearbhaich an staid"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:155
@@ -2967,7 +2965,7 @@ msgstr "Ùine:"
 #. [button]: id=status
 #: data/gui/default/window/mp_cmd_wrapper.cfg:374
 msgid "Status"
-msgstr "Cor"
+msgstr "Staid"
 
 #. [button]: id=ban
 #: data/gui/default/window/mp_cmd_wrapper.cfg:404
@@ -3181,7 +3179,7 @@ msgstr "Gabh ann an fhrithealaiche eile"
 #: data/gui/default/window/mp_method_selection.cfg:167
 msgid "Host a game using dedicated server ‘wesnothd’"
 msgstr ""
-"Bi nad òstair airson geama leis an fhrithealaiche choisrigte ‘wesnothd’"
+"Bi ’nad òstair airson geama leis an fhrithealaiche choisrigte ‘wesnothd’"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:176
@@ -3472,7 +3470,7 @@ msgstr "Seall dathan an sgioba"
 
 #: src/game_preferences_display.cpp:200
 msgid "Show haloing effects"
-msgstr "Seall buaidhean riombaill"
+msgstr "Seall èifeachdan riombaill"
 
 #: src/game_preferences_display.cpp:201
 msgid "Change Resolution"
@@ -3492,7 +3490,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:206
 msgid "Sound effects"
-msgstr "Buaidhean fuaime"
+msgstr "Èifeachdan fuaime"
 
 #: src/game_preferences_display.cpp:207
 msgid "Music"
@@ -3553,11 +3551,11 @@ msgstr "Tricead:"
 
 #: src/game_preferences_display.cpp:253
 msgid "Sound effects on/off"
-msgstr "Buaidhean fuaime air/dheth"
+msgstr "Èifeachdan fuaime air/dheth"
 
 #: src/game_preferences_display.cpp:257
 msgid "Change the sound effects volume"
-msgstr "Atharraich àirde nam buaidhean fuaime"
+msgstr "Atharraich àirde nan èifeachdan fuaime"
 
 #: src/game_preferences_display.cpp:260
 msgid "Music on/off"
@@ -3625,7 +3623,7 @@ msgstr "Cluich beòthachadh goirid air thuaiream airson aonadan nach dèan dad"
 
 #: src/game_preferences_display.cpp:348
 msgid "Continuously animate standing units in the battlefield"
-msgstr "Seall beòthachadh gun sgur airson aonadan nan seasamh air a’ bhlàr"
+msgstr "Seall beòthachadh gun sgur airson aonadan ’nan seasamh air a’ bhlàr"
 
 #: src/game_preferences_display.cpp:351
 msgid "Display animated terrain graphics"
@@ -3782,7 +3780,7 @@ msgstr ""
 #: src/game_preferences_display.cpp:428
 msgid "Use graphical special effects (may be slower)"
 msgstr ""
-"Cleachd buaidhean sònraichte grafaigeachd (faodaidh e bhith nas maille)"
+"Cleachd èifeachdan sònraichte grafaigeachd (faodaidh e bhith nas maille)"
 
 #: src/game_preferences_display.cpp:430
 msgid "View and configure keyboard shortcuts"
@@ -4538,46 +4536,75 @@ msgstr ""
 #~ msgid "Snowy Mixed Forested Hills"
 #~ msgstr "Cnuic coille measgaichte shneachdach"
 
-#, fuzzy
-#~| msgid "Tropical Forest"
-#~ msgid "Tropical Forested Hills"
-#~ msgstr "Coille thropaigeach"
+#~ msgid "Update Add-ons"
+#~ msgstr "Ùraich tuilleadain"
 
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Palm Forested Hills"
-#~ msgstr "Cnuic coille"
+#~ msgid "Create New Map"
+#~ msgstr "Cruthaich mapa ùr"
 
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Dense Palm Forested Hills"
-#~ msgstr "Cnuic coille"
+#~ msgid "Time of day lighting preset:"
+#~ msgstr "Ro-shuidheachadh solas àm an latha:"
 
-#, fuzzy
-#~| msgid "Forested Hills"
-#~ msgid "Savanna Forested Hills"
-#~ msgstr "Cnuic coille"
+#~ msgid "Custom lighting settings"
+#~ msgstr "Roghainnean solais gnàthaichte"
+
+#~ msgid "Automatically update map view"
+#~ msgstr "Fèin-ùraich sealladh a’ mhapa"
+
+#~ msgid "Allow multiple maps to be open simultaneously"
+#~ msgstr "Ceadaich gun tèid iomadh mapa fhosgladh air an aon àm"
+
+#~ msgid "Don’t ask me again!"
+#~ msgstr "Na faighnich dhìom a-rithist!"
+
+#~ msgid "x"
+#~ msgstr "x"
+
+#~ msgid "OOS error"
+#~ msgstr "Mearachd OOS"
+
+#~ msgid "Types"
+#~ msgstr "Seòrsaichean"
+
+#~ msgid "Inspection window"
+#~ msgstr "Uinneag sgrùdaidh"
+
+#~ msgid "Variable"
+#~ msgstr "Caochladair"
+
+#~ msgid "Change Language"
+#~ msgstr "Atharraich an cànan"
+
+#~ msgid "Create game"
+#~ msgstr "Cruthaich geama"
+
+#~ msgid "Save replay on SP/MP victory or MP defeat"
+#~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
 
 #~ msgid "Show color cursors"
 #~ msgstr "Seall cùrsairean dathte"
 
+#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
+#~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
+
+#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
+#~ msgstr ""
+#~ "Sguab às dha fhèin-shàbhalaidhean le buaidh AonChl/IomChl no ruaig IomChl"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Cuir ainm a’ chleachdaiche seo air liosta nan caraidean agad"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Cuir ainm a’ chleachdaiche seo ris an liosta neo-shuime agad"
+
 #~ msgid "Use colored mouse cursors (may be slower)"
 #~ msgstr "Cleachd cùrsairean luchaige dathte (faodaidh e bhith nas maille)"
-
-#~ msgid "Warning"
-#~ msgstr "Rabhadh"
-
-#~ msgid ""
-#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
-#~ "modifiers to avoid problems."
-#~ msgstr ""
-#~ "Bu chòir do hotkeys glacadh-sgrìn a’ dol còmhla ri atharraichearan "
-#~ "Control, Alt no Meta gus duilgheadasan a sheachnadh."
-
-#, fuzzy
-#~| msgid "Cancel"
-#~ msgid "cancel"
-#~ msgstr "Sgur dheth"
 
 #~ msgid "Left Mouse Click"
 #~ msgstr "Briogadh deas"
@@ -4633,11 +4660,6 @@ msgstr ""
 #~ msgid "Rename Unit"
 #~ msgstr "Ath-ainmich aonad"
 
-#, fuzzy
-#~| msgid "Delete File"
-#~ msgid "Delete Unit"
-#~ msgstr "Sguab às dhan fhaidhle"
-
 #~ msgid "Save Replay"
 #~ msgstr "Sàbhail ath-chluiche"
 
@@ -4656,9 +4678,6 @@ msgstr ""
 #~ msgid "End Turn"
 #~ msgstr "Cuairt deiseil"
 
-#~ msgid "Toggle Ellipses"
-#~ msgstr "Toglaich eileapsan"
-
 #~ msgid "Toggle Grid"
 #~ msgstr "Toglaich griod"
 
@@ -4674,11 +4693,6 @@ msgstr ""
 #~ msgid "Change Side (Debug!)"
 #~ msgstr "Atharraich taobh (Dì-bhugaich!)"
 
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
-#~ msgid "Kill Unit (Debug!)"
-#~ msgstr "Cruthaich aonad (Dì-bhugaich!)"
-
 #~ msgid "Scenario Objectives"
 #~ msgstr "Amasan a’ chnàmh-sgeòil"
 
@@ -4689,15 +4703,10 @@ msgstr ""
 #~ msgstr "Staitistearachd"
 
 #~ msgid "Pause Network Game"
-#~ msgstr "Cuir geama lìonraidh na stad"
+#~ msgstr "Cuir geama lìonraidh ’na stad"
 
 #~ msgid "Continue Network Game"
 #~ msgstr "Lean air geama lìonraidh"
-
-#, fuzzy
-#~| msgid "Start Editor"
-#~ msgid "Quit Editor"
-#~ msgstr "Tòisich an deasaiche"
 
 #~ msgid "Set Team Label"
 #~ msgstr "Suidhich leubail an sgioba"
@@ -4725,9 +4734,6 @@ msgstr ""
 
 #~ msgid "Next Turn"
 #~ msgstr "Ath chuairt"
-
-#~ msgid "Next Side"
-#~ msgstr "Ath thaobh"
 
 #~ msgid "Full Map"
 #~ msgstr "Mapa slàn"
@@ -4771,11 +4777,6 @@ msgstr ""
 #~ msgid "Switch Map"
 #~ msgstr "Suids mapa"
 
-#, fuzzy
-#~| msgid "Switch Map"
-#~ msgid "Switch Area"
-#~ msgstr "Suids mapa"
-
 #~ msgid "Partial Undo"
 #~ msgstr "Uimhir dhe neo-dhèanamh"
 
@@ -4794,19 +4795,7 @@ msgstr ""
 #~ msgid "Map Information"
 #~ msgstr "Fiosrachadh mapa"
 
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Add New Side"
-#~ msgstr "Ath thaobh"
-
-#, fuzzy
-#~| msgid "Switch Map"
-#~ msgid "Switch Side"
-#~ msgstr "Suids mapa"
-
-#, fuzzy
-#~| msgid "Swap Foreground/Background Terrains"
-#~ msgid "Swap Foreground/Background Palette Item"
+#~ msgid "Swap Foreground/Background Terrains"
 #~ msgstr "Dèan suaip air cruth-tìre beulaibh/cùlaibh"
 
 #~ msgid "Next Tool"
@@ -4821,40 +4810,8 @@ msgstr ""
 #~ msgid "Selection Tool"
 #~ msgstr "Inneal taghaidh"
 
-#, fuzzy
-#~| msgid "Set Starting Positions Tool"
-#~ msgid "Starting Positions Tool"
+#~ msgid "Set Starting Positions Tool"
 #~ msgstr "Suidhich inneal nan àiteachan tòiseachaidh"
-
-#, fuzzy
-#~| msgid "Fill Tool"
-#~ msgid "Label Tool"
-#~ msgstr "Inneal lìonaidh"
-
-#, fuzzy
-#~| msgid "Paint Tool"
-#~ msgid "Unit Tool"
-#~ msgstr "Inneal peant"
-
-#, fuzzy
-#~| msgid "Next Tool"
-#~ msgid "Item Tool"
-#~ msgstr "An t-ath inneal"
-
-#, fuzzy
-#~| msgid "Village gold"
-#~ msgid "Village Tool"
-#~ msgstr "Òr bhailtean"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Canrecruit"
-#~ msgstr "Trus"
-
-#, fuzzy
-#~| msgid "Change Control"
-#~ msgid "Change Unit ID"
-#~ msgstr "Atharraich smachd"
 
 #~ msgid "Next Brush"
 #~ msgstr "Ath bhruis"
@@ -4925,22 +4882,7 @@ msgstr ""
 #~ msgid "Update Terrain Transitions"
 #~ msgstr "Ùraich tar-mhùthaidhean crutha-thìre"
 
-#, fuzzy
-#~| msgid "Update Terrain Transitions"
-#~ msgid "Toggle Terrain Transition Update"
-#~ msgstr "Ùraich tar-mhùthaidhean crutha-thìre"
-
 #~ msgid "Auto-update Terrain Transitions"
-#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
-
-#, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
-
-#, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
-#~ msgid "Auto-update Terrain Transitions: Partial"
 #~ msgstr "Fèin-ùraich tar-mhùthaidhean crutha-thìre"
 
 #~ msgid "Refresh Image Cache"
@@ -4972,9 +4914,6 @@ msgstr ""
 
 #~ msgid "View Chat Log"
 #~ msgstr "Faic loga a’ chabadaich"
-
-#~ msgid "Change Language"
-#~ msgstr "Atharraich an cànan"
 
 #~ msgid "Enter User Command"
 #~ msgstr "Cuir àithne cleachdaiche a-steach"
@@ -5024,95 +4963,24 @@ msgstr ""
 #~ msgid "Map-Screenshot"
 #~ msgstr "Glacadh-sgrìn mapa"
 
-#, fuzzy
-#~| msgid "Screenshot done"
-#~ msgid "Screenshot Done"
+#~ msgid "Screenshot done"
 #~ msgstr "Glacadh-sgrìn dèanta"
-
-#~ msgid " (widescreen)"
-#~ msgstr " (sgrìn leathann)"
-
-#, fuzzy
-#~| msgid "Multiplayer Options"
-#~ msgid "Filter Options"
-#~ msgstr "Roghainnean ioma-chluicheadair"
-
-#~ msgid "Uninstall Add-ons"
-#~ msgstr "Dì-stàlaich tuilleadain"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Horizontally"
-#~ msgid "Scroll Viewport Horizontally"
-#~ msgstr "Flip am bòrd-chliopaichean gu còmhnard"
-
-#, fuzzy
-#~| msgid "Flip Clipboard Vertically"
-#~ msgid "Scroll Viewport Vertically"
-#~ msgstr "Flip am bòrd-chliopaichean gu h-inghearach"
-
-#~ msgid "Update Add-ons"
-#~ msgstr "Ùraich tuilleadain"
-
-#~ msgid "Create New Map"
-#~ msgstr "Cruthaich mapa ùr"
-
-#~ msgid "Time of day lighting preset:"
-#~ msgstr "Ro-shuidheachadh solas àm an latha:"
-
-#~ msgid "Custom lighting settings"
-#~ msgstr "Roghainnean solais gnàthaichte"
-
-#~ msgid "Automatically update map view"
-#~ msgstr "Fèin-ùraich sealladh a’ mhapa"
-
-#~ msgid "Allow multiple maps to be open simultaneously"
-#~ msgstr "Ceadaich gun tèid iomadh mapa fhosgladh air an aon àm"
-
-#~ msgid "Don’t ask me again!"
-#~ msgstr "Na faighnich dhìom a-rithist!"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "OOS error"
-#~ msgstr "Mearachd OOS"
-
-#~ msgid "Types"
-#~ msgstr "Seòrsaichean"
-
-#~ msgid "Inspection window"
-#~ msgstr "Uinneag sgrùdaidh"
-
-#~ msgid "Variable"
-#~ msgstr "Caochladair"
-
-#~ msgid "Create game"
-#~ msgstr "Cruthaich geama"
-
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
-
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "Sàbhail ath-chluiche le buaidh AonChl/IomChl no ruaig IomChl"
-
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr ""
-#~ "Sguab às dha fhèin-shàbhalaidhean le buaidh AonChl/IomChl no ruaig IomChl"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "Cleachd eadar-aghaidh ùr an lobaidh"
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "Cuir ainm a’ chleachdaiche seo air liosta nan caraidean agad"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Cuir ainm a’ chleachdaiche seo ris an liosta neo-shuime agad"
 
 #~ msgid "Change Hotkey"
 #~ msgstr "Atharraich hotkey"
 
 #~ msgid "This hotkey is already in use."
-#~ msgstr "Tha an hotkey seo ga chleachdadh mu thràth."
+#~ msgstr "Tha an hotkey seo ’ga chleachdadh mu thràth."
+
+#~ msgid ""
+#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
+#~ "modifiers to avoid problems."
+#~ msgstr ""
+#~ "Bu chòir do hotkeys glacadh-sgrìn a’ dol còmhla ri atharraichearan "
+#~ "Control, Alt no Meta gus duilgheadasan a sheachnadh."
+
+#~ msgid "Warning"
+#~ msgstr "Rabhadh"
+
+#~ msgid " (widescreen)"
+#~ msgstr " (sgrìn leathann)"
