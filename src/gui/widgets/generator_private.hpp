@@ -55,6 +55,9 @@ struct tone
 	 */
 	void create_item(const unsigned index);
 
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
+
 	/**
 	 * Called when the users wants to deselect an item.
 	 *
@@ -93,6 +96,9 @@ struct tnone
 
 	/** See @ref minimum_selection::tone::create_item() */
 	void create_item(const unsigned /*index*/) {}
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref minimum_selection::tone::deselect_item() */
 	bool deselect_item(const unsigned index)
@@ -174,6 +180,9 @@ struct thorizontal_list
 	 */
 	void create_item(const unsigned index);
 
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
+
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) OVERRIDE
 	{
@@ -252,6 +261,9 @@ struct tvertical_list
 
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned index);
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) OVERRIDE
@@ -333,6 +345,9 @@ struct tmatrix
 {
 	/** See thorizontal_list::create_item(). */
 	void create_item(const unsigned /*index*/) { ERROR_LOG(false); }
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned /*maximum_width*/) OVERRIDE
@@ -421,6 +436,9 @@ struct tindependent
 	{
 		/* DO NOTHING */
 	}
+
+	/* Also make the overload from the generator_ visible. */
+	using tgenerator_::create_item;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
