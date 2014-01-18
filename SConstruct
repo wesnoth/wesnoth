@@ -419,7 +419,7 @@ for env in [test_env, client_env, env]:
         env["OPT_FLAGS"] = "-O2"
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
 
-    if "clang" in env["TOOLS"]:
+    if "clang" in env["CXX"]:
         env.AppendUnique(CCFLAGS = "-Wno-unknown-warning-option")
 
     if "suncc" in env["TOOLS"]:
