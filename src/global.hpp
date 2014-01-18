@@ -61,7 +61,13 @@
 #endif
 
 #ifdef NDEBUG
-#error "NDEBUG is not supported"
+/*
+ * Wesnoth uses asserts to avoid undefined behaviour. For example, to make sure
+ * pointers are not NULL before deferring them, or collections are not empty
+ * before accessing their elements. Therefore Wesnoth should not be compiled
+ * with assertions disabled.
+ */
+#error "Compilation with NDEBUG defined isn't supported, Wesnoth depends on asserts."
 #endif
 
 #endif //GLOBAL_HPP_INCLUDED
