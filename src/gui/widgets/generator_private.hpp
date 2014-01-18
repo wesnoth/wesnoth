@@ -134,10 +134,17 @@ struct tone
 	 * function should always call do_select_item() so the new item does get
 	 * selected.
 	 *
+	 * Since this funcion controls the maximum selection count it should only
+	 * be used to select items, not to deselect them.
+	 *
+	 * @pre                       @p select == @c true
+	 *
 	 * @param index               The item to select.
 	 */
-	void select_item(const unsigned index)
+	void select_item(const unsigned index, const bool select) OVERRIDE
 	{
+		assert(select);
+
 		if(get_selected_item_count() == 1) {
 			// deselect current.
 			do_deselect_item(get_selected_item());
@@ -152,8 +159,10 @@ struct tinfinite
 	: public virtual tgenerator_
 {
 	/** See tone::select_item(). */
-	void select_item(const unsigned index)
+	void select_item(const unsigned index, const bool select) OVERRIDE
 	{
+		assert(select);
+
 		do_select_item(index);
 	}
 };
@@ -636,7 +645,7 @@ public:
 		assert(index < items_.size());
 
 		if(select && !is_selected(index)) {
-			maximum_selection::select_item(index);
+			maximum_selection::select_item(index, true);
 			last_selected_item_ = index;
 		} else if(is_selected(index)) {
 			if(!minimum_selection::deselect_item(index)) {

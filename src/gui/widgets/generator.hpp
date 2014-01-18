@@ -85,8 +85,7 @@ public:
 	 * @param index               The item to (de)select.
 	 * @param select              If true selects, if false deselects.
 	 */
-	virtual void select_item(const unsigned index,
-			const bool select = true) = 0;
+	virtual void select_item(const unsigned index, const bool select) = 0;
 
 	/**
 	 * Toggles the selection state of an item.

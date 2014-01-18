@@ -267,7 +267,7 @@ void thorizontal_list::handle_key_left_arrow(
 		// active flag. This method might not be entirely reliable.
 		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i);
+			select_item(i, true);
 			return;
 		}
 	}
@@ -295,7 +295,7 @@ void thorizontal_list::handle_key_right_arrow(
 		// active flag. This method might not be entirely reliable.
 		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i);
+			select_item(i, true);
 			return;
 		}
 	}
@@ -470,7 +470,7 @@ void tvertical_list::handle_key_up_arrow(SDLMod /*modifier*/, bool& handled)
 		// active flag. This method might not be entirely reliable.
 		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i);
+			select_item(i, true);
 			return;
 		}
 	}
@@ -497,7 +497,7 @@ void tvertical_list::handle_key_down_arrow(SDLMod /*modifier*/, bool& handled)
 		// active flag. This method might not be entirely reliable.
 		tcontrol* control = dynamic_cast<tcontrol*>(item(i).widget(0, 0));
 		if(control && control->get_active()) {
-			select_item(i);
+			select_item(i, true);
 			return;
 		}
 	}
