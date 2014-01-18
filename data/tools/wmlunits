@@ -233,25 +233,8 @@ def list_contents():
             pass
         return _deps[0][addon]
 
-    sorted = []
-    unsorted = addons[:]
-    while unsorted:
-        n = 0
-        print(len(sorted))
-        for addon in unsorted:
-            for d in get_dependencies(addon):
-                if d not in sorted:
-                    break
-            else:
-                sorted.append(addon)
-                unsorted.remove(addon)
-                n += 1
-                continue
-        if n == 0:
-             print("Cannot sort dependencies for these addons: " + str(unsorted))
-             sorted += unsorted
-             break
-    addons = sorted
+    for addon in addons:
+        get_dependencies(addon)
 
     for i, addon in enumerate(addons):
         if not os.path.isdir(options.addons + "/" + addon): continue
@@ -263,6 +246,8 @@ def list_contents():
         except OSError: pass
         version = get_version(addon)
         move(options.addons, options.config_dir + "/data/add-ons", addon)
+        for d in get_dependencies(addon):
+            move(options.addons, options.config_dir + "/data/add-ons", d)
         try:
             info = search(addon)
 
@@ -300,6 +285,8 @@ def list_contents():
 
         finally:
             move(options.config_dir + "/data/add-ons", options.addons, addon)
+            for d in get_dependencies(addon):
+                move(options.config_dir + "/data/add-ons", options.addons, d)
         
     yaml.safe_dump(batchlist, open(filename, "w"),
         encoding = "utf-8", default_flow_style = False)
