@@ -102,17 +102,17 @@ def list_contents():
             info[-1]["name"] = name
         info[-1]["units"] = "?"
         info[-1]["translations"] = {}
-        
-        info[-1]["translations"] = {}
+
         for isocode in languages:
             translation = html_output.Translation(options.transdir, isocode)
             def translate(string, domain):
                 return translation.translate(string, domain)
             if c:
-                info[-1]["translations"][isocode] = c.get_text_val("name",
-                    translation = translate)
+                t = c.get_text_val("name", translation = translate)
             else:
-                info[-1]["translations"][isocode] = translate(name, domain)
+                t = translate(name, domain)
+            if t != info[-1]["name"]:
+                info[-1]["translations"][isocode] = t
 
     def list_eras(addon):
         eras = local.wesnoth.parser.get_all(tag = "era")

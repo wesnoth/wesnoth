@@ -1169,7 +1169,6 @@ def html_postprocess_file(filename, isocode, batchlist):
             else:
                 eids[1].append(e)
             
-            
     for i in xrange(2):
         eras = eids[i]
         eras.sort(key = lambda x: x[2])
