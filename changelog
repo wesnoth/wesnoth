@@ -29,6 +29,8 @@ Version 1.11.8+dev:
    * Don't force the .gz suffix on every entry of the save_index (bug #20849).
    * Fixed a bug in [filter_vision] in SUFs that caused a hidden unit under
      fog/shroud to produce a false positive.
+   * A lack of ToD schedule no longer causes segfaults (bug #21489).
+   * SLF work again when x XOR y is specified (bug #21488).
 
 Version 1.11.8:
  * Add-ons client:
