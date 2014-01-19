@@ -260,6 +260,7 @@ def list_contents():
             info["eras"] = list_eras(addon)
             info["campaigns"] = list_campaigns(addon)
             info["version"] = version
+            info["dependencies"] = get_dependencies(addon)
             sys.stdout.write("ok\n")
         except wmlparser2.WMLError as e:
             ef = open(logname, "w")
@@ -371,6 +372,8 @@ def batch_process():
             worked = True
         else:
             worked = (move(options.addons, options.config_dir + "/data/add-ons", name) == 0)
+            for d in addon.get("dependencies", []):
+                move(options.addons, options.config_dir + "/data/add-ons", d)
         d = options.output + "/" + name
         try: os.makedirs(d)
         except OSError: pass
@@ -418,6 +421,8 @@ def batch_process():
         finally:
             if name != "mainline":
                 move(options.config_dir + "/data/add-ons", options.addons, name)
+                for d in addon.get("dependencies", []):
+                    move(options.config_dir + "/data/add-ons", options.addons, d)
                 
         addon["parsed"] = True
 
