@@ -31,6 +31,8 @@ Version 1.11.8+dev:
      fog/shroud to produce a false positive.
    * A lack of ToD schedule no longer causes segfaults (bug #21489).
    * SLF work again when x XOR y is specified (bug #21488).
+   * Selecting off-map hexes, then hovering over a unit no longer causes
+     the game to crash (bug #21351).
 
 Version 1.11.8:
  * Add-ons client:

@@ -252,7 +252,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 			}
 		}
 
-		if(selected_hex_.valid()
+		if(map_.on_board(selected_hex_)
 				&& selected_unit == units_.end()
 				&& mouseover_unit.valid()
 				&& mouseover_unit != units_.end()) {
