@@ -521,7 +521,7 @@ if __name__ == '__main__':
 
     if not options.output and not options.wiki:
         sys.stderr.write("Need --output (or --wiki).\n")
-        op.print_help()
+        ap.print_help()
         sys.exit(-1)
 
     if options.output:
