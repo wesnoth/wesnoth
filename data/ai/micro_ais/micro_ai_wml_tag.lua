@@ -346,14 +346,33 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     elseif (cfg.ai_type == 'wolves') then
         required_keys = { "filter", "filter_second" }
-        optional_keys = { "avoid_type" }
+        optional_keys = { "attack_only_prey", "avoid_type" }
         local score = cfg.ca_score or 90000
         CA_parms = {
             { ca_id = "mai_wolves_move", location = 'ai/micro_ais/cas/ca_wolves_move.lua', score = score },
             { ca_id = "mai_wolves_wander", location = 'ai/micro_ais/cas/ca_wolves_wander.lua', score = score - 1 }
         }
 
-        if cfg.avoid_type then
+        if cfg.attack_only_prey then
+            local wolves_aspects = {
+                {
+                    aspect = "attacks",
+                    facet = {
+                        name = "ai_default_rca::aspect_attacks",
+                        id = "dont_attack",
+                        invalidate_on_gamestate_change = "yes",
+                        { "filter_enemy", {
+                            { "and", H.get_child(cfg, "filter_second") }
+                        } }
+                    }
+                }
+            }
+            if (cfg.action == "delete") then
+                delete_aspects(cfg.side, wolves_aspects)
+            else
+                add_aspects(cfg.side, wolves_aspects)
+            end
+        elseif cfg.avoid_type then
             local wolves_aspects = {
                 {
                     aspect = "attacks",
