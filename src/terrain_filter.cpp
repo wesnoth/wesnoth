@@ -384,7 +384,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	std::set<map_location> match_set;
 
 	// None of the generators provided
-	if ( !(cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
 			&& !cfg_.has_attribute("find_in")
 			&& !cfg_.has_attribute("area") ) {
 
@@ -400,7 +400,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	} else
 
 	// Only the x,y attributes found
-	if ( (cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
 			&& !cfg_.has_attribute("find_in")
 			&& !cfg_.has_attribute("area") ) {
 
@@ -410,7 +410,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	} else
 
 	// Only find_in provided
-	if ( !(cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
 			&& cfg_.has_attribute("find_in")
 			&& !cfg_.has_attribute("area") ) {
 
@@ -430,7 +430,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	} else
 
 	// Only area provided
-	if ( !(cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
 			&& !cfg_.has_attribute("find_in")
 			&& cfg_.has_attribute("area") ) {
 
@@ -439,7 +439,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	} else
 
 	// find_in + xy
-	if ( (cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
 			&& cfg_.has_attribute("find_in")
 			&& !cfg_.has_attribute("area") ) {
 
@@ -472,7 +472,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	} else
 
 	// xy + area
-	if ( (cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
 			&& !cfg_.has_attribute("find_in")
 			&& cfg_.has_attribute("area") ) {
 
