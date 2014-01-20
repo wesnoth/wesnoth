@@ -373,17 +373,18 @@ bool game_controller::init_video()
 		bpp = 32;
 	}
 
+	if(!found_matching && (video_flags & FULL_SCREEN)) {
+		video_flags ^= FULL_SCREEN;
+		found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
+		if (found_matching) {
+			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
+		}
+	}
+
 	if(!found_matching) {
 		std::cerr << "Video mode " << resolution.first << 'x'
 			<< resolution.second << 'x' << bpp
 			<< " is not supported.\n";
-
-		if ((video_flags & FULL_SCREEN)) {
-			std::cerr << "Try running the program with the --windowed option "
-				<< "using a " << bpp << "bpp setting for your display adapter.\n";
-		} else {
-			std::cerr << "Try running the program with the --fullscreen option.\n";
-		}
 
 		return false;
 	}
