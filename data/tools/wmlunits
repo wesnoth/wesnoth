@@ -102,17 +102,17 @@ def list_contents():
             info[-1]["name"] = name
         info[-1]["units"] = "?"
         info[-1]["translations"] = {}
-        
-        info[-1]["translations"] = {}
+
         for isocode in languages:
             translation = html_output.Translation(options.transdir, isocode)
             def translate(string, domain):
                 return translation.translate(string, domain)
             if c:
-                info[-1]["translations"][isocode] = c.get_text_val("name",
-                    translation = translate)
+                t = c.get_text_val("name", translation = translate)
             else:
-                info[-1]["translations"][isocode] = translate(name, domain)
+                t = translate(name, domain)
+            if t != info[-1]["name"]:
+                info[-1]["translations"][isocode] = t
 
     def list_eras(addon):
         eras = local.wesnoth.parser.get_all(tag = "era")
@@ -260,6 +260,7 @@ def list_contents():
             info["eras"] = list_eras(addon)
             info["campaigns"] = list_campaigns(addon)
             info["version"] = version
+            info["dependencies"] = get_dependencies(addon)
             sys.stdout.write("ok\n")
         except wmlparser2.WMLError as e:
             ef = open(logname, "w")
@@ -371,6 +372,8 @@ def batch_process():
             worked = True
         else:
             worked = (move(options.addons, options.config_dir + "/data/add-ons", name) == 0)
+            for d in addon.get("dependencies", []):
+                move(options.addons, options.config_dir + "/data/add-ons", d)
         d = options.output + "/" + name
         try: os.makedirs(d)
         except OSError: pass
@@ -418,6 +421,8 @@ def batch_process():
         finally:
             if name != "mainline":
                 move(options.config_dir + "/data/add-ons", options.addons, name)
+                for d in addon.get("dependencies", []):
+                    move(options.config_dir + "/data/add-ons", options.addons, d)
                 
         addon["parsed"] = True
 
@@ -516,7 +521,7 @@ if __name__ == '__main__':
 
     if not options.output and not options.wiki:
         sys.stderr.write("Need --output (or --wiki).\n")
-        op.print_help()
+        ap.print_help()
         sys.exit(-1)
 
     if options.output:
