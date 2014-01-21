@@ -1785,6 +1785,9 @@ def consistency_check():
         if value not in scenario_to_filename:
             print '"%s", line %d: unresolved scenario reference %s' % \
                   (filename, lineno, value)
+    # Report stored units never unstored or cleared
+    for store in storedids.keys():
+        print 'wmllint: stored unit "%s" not unstored or cleared from "%s"' % (storedids[store], store)
 
 # Syntax transformations
 
