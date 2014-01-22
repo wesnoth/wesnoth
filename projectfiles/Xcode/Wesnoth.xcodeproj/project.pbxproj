@@ -4957,6 +4957,11 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
+					"$(OTHER_CFLAGS)",
+					"-isystem",
+					./Headers,
+				);
 				PRODUCT_NAME = Wesnoth;
 				WRAPPER_EXTENSION = app;
 			};
