@@ -420,7 +420,8 @@ for env in [test_env, client_env, env]:
         env["DEBUG_FLAGS"] = Split("-O0 -DDEBUG -ggdb3")
 
     if "clang" in env["CXX"]:
-        env.AppendUnique(CCFLAGS = "-Wno-unknown-warning-option")
+        # Silence warnings about unused -I options and unknown warning switches.
+        env.AppendUnique(CCFLAGS = Split("-Qunused-arguments -Wno-unknown-warning-option"))
 
     if "suncc" in env["TOOLS"]:
         env["OPT_FLAGS"] = "-g0"
