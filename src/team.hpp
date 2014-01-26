@@ -221,7 +221,7 @@ public:
 	void make_network_ai() { info_.controller = NETWORK_AI; }
 	void make_ai() { info_.controller = AI; }
 	void change_controller(const std::string& controller);
-	void change_controller(CONTROLLER controller) { info_.controller = controller; };
+	void change_controller(CONTROLLER controller) { info_.controller = controller; }
 
 	const std::string& team_name() const { return info_.team_name; }
 	const t_string &user_team_name() const { return info_.user_team_name; }
@@ -261,7 +261,7 @@ public:
 
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
-	bool get_disallow_observers() const {return info_.disallow_observers; };
+	bool get_disallow_observers() const {return info_.disallow_observers; }
 	bool no_leader() const { return info_.no_leader; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }

@@ -80,10 +80,10 @@ protected:
 	void bg_update();
 	void bg_cancel();
 
-	CVideo& video() const { return *video_; };
+	CVideo& video() const { return *video_; }
 
 	virtual void draw();
-	virtual void draw_contents() {};
+	virtual void draw_contents() {}
 	virtual void update_location(SDL_Rect const &rect);
 
 	const SDL_Rect* clip_rect() const;

@@ -69,7 +69,7 @@ public:
 	/**
 	 * Map accessor
 	 */
-	editor_map& get_map() { return map_; };
+	editor_map& get_map() { return map_; }
 
 	/**
 	 * Map accessor - const version

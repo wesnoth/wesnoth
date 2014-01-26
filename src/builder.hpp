@@ -156,7 +156,7 @@ public:
 			images(),
 			tods(),
 			random_start(random_start)
-			{};
+			{}
 
 		/** Constructor for true [variant] cases */
 		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start = true);
@@ -250,7 +250,7 @@ public:
 			no_flag(),
 			has_flag(),
 			images()
-			{};
+			{}
 
 		terrain_constraint(map_location loc) :
 			loc(loc),
@@ -259,7 +259,7 @@ public:
 			no_flag(),
 			has_flag(),
 			images()
-			{};
+			{}
 
 		map_location loc;
 		t_translation::t_match terrain_types_match;

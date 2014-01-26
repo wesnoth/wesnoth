@@ -293,13 +293,13 @@ public:
 		/**  very simple iterator to walk into the rect_of_hexes */
 		struct iterator {
 			iterator(const map_location &loc, const rect_of_hexes &rect)
-				: loc_(loc), rect_(rect){};
+				: loc_(loc), rect_(rect){}
 
 			/** increment y first, then when reaching bottom, increment x */
 			iterator& operator++();
 			bool operator==(const iterator &that) const { return that.loc_ == loc_; }
 			bool operator!=(const iterator &that) const { return that.loc_ != loc_; }
-			const map_location& operator*() const {return loc_;};
+			const map_location& operator*() const {return loc_;}
 
 			typedef std::forward_iterator_tag iterator_category;
 			typedef map_location value_type;
@@ -321,7 +321,7 @@ public:
 	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
 
 	/** Returns the rectangular area of visible hexes */
-	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());};
+	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());}
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const {
@@ -449,7 +449,7 @@ public:
 	 */
 	static void toggle_debug_foreground();
 
-	terrain_builder& get_builder() {return *builder_;};
+	terrain_builder& get_builder() {return *builder_;}
 
 	void flip();
 
@@ -517,7 +517,7 @@ public:
 	bool view_locked() const { return view_locked_; }
 
 	/** Sets whether the map view is locked (e.g. so the user can't scroll away) */
-	void set_view_locked(bool value) { view_locked_ = value; };
+	void set_view_locked(bool value) { view_locked_ = value; }
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN, ONSCREEN_WARP };
 
@@ -587,7 +587,7 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; };
+	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; }
 
 	/**
 	 * Schedule the minimap to be redrawn.
@@ -597,7 +597,7 @@ public:
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location) const;
 
-	virtual bool has_time_area() const {return false;};
+	virtual bool has_time_area() const {return false;}
 
 	void write(config& cfg) const;
 private:
@@ -681,7 +681,7 @@ protected:
 	 * Called near the end of a draw operation, derived classes can use this
 	 * to render a specific sidebar. Very similar to post_commit.
 	 */
-	virtual void draw_sidebar() {};
+	virtual void draw_sidebar() {}
 
 	/**
 	 * Draws the border tile overlay.

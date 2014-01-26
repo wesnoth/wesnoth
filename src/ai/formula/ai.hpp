@@ -63,7 +63,7 @@ namespace ai {
 class formula_ai : public readonly_context_proxy, public game_logic::formula_callable, public boost::noncopyable {
 public:
 	explicit formula_ai(readonly_context &context, const config &cfg);
-	virtual ~formula_ai() {};
+	virtual ~formula_ai() {}
 	virtual config to_config() const;
 
 	std::string evaluate(const std::string& formula_str);

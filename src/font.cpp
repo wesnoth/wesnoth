@@ -62,15 +62,15 @@ typedef int subset_id;
 
 struct font_id
 {
-	font_id(subset_id subset, int size) : subset(subset), size(size) {};
+	font_id(subset_id subset, int size) : subset(subset), size(size) {}
 	bool operator==(const font_id& o) const
 	{
 		return subset == o.subset && size == o.size;
-	};
+	}
 	bool operator<(const font_id& o) const
 	{
 		return subset < o.subset || (subset == o.subset && size < o.size);
-	};
+	}
 
 	subset_id subset;
 	int size;

@@ -61,7 +61,7 @@ public:
 		return do_compare(other) < 0;
 	}
 
-	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {};
+	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {}
 
         //note: this function should NOT overwrite str, but append text to it!
 	void serialize(std::string& str) const {

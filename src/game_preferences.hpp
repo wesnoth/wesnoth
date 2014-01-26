@@ -291,9 +291,9 @@ public:
 
 	void load_from_config(const config& cfg);
 
-	const std::string& get_nick() const { return nick_; };
-	const std::string& get_status() const { return status_; };
-	const std::string& get_notes() const { return notes_; };
+	const std::string& get_nick() const { return nick_; }
+	const std::string& get_status() const { return status_; }
+	const std::string& get_notes() const { return notes_; }
 
 	void save(config& cfg);
 

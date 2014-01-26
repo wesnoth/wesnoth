@@ -375,8 +375,9 @@ public:
 	bool self_check() const
 #ifndef DEBUG
 	{ return true; }
-#endif
+#else
 	;
+#endif
 
 	/**
 	 * Is the unit in the map?

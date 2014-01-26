@@ -89,7 +89,7 @@ namespace image {
 		int get_center_x() const { return val_.center_x_; }
 		int get_center_y() const { return val_.center_y_; }
 		const std::string& get_modifications() const {return val_.modifications_;}
-		type get_type() const { return val_.type_; };
+		type get_type() const { return val_.type_; }
 		// const int get_index() const { return index_; };
 
 		// returns true if the locator does not correspond to any

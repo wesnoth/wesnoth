@@ -39,8 +39,8 @@ const t_translation::t_terrain& get_selected_fg_terrain() {
 	return fg_terrain;
 }
 
-const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; };
-const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; };
+const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; }
+const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; }
 
 
 static bool is_valid_terrain(const t_translation::t_terrain & c) {

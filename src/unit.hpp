@@ -254,8 +254,8 @@ public:
 
 	void set_idling();
 	void set_selecting();
-	unit_animation* get_animation() {  return anim_.get();};
-	const unit_animation* get_animation() const {  return anim_.get();};
+	unit_animation* get_animation() {  return anim_.get();}
+	const unit_animation* get_animation() const {  return anim_.get();}
 	void set_facing(map_location::DIRECTION dir);
 	map_location::DIRECTION facing() const { return facing_; }
 

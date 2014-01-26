@@ -59,7 +59,7 @@ class network_game_manager
 {
 public:
 	// Add a constructor to avoid stupid warnings with some versions of GCC
-	network_game_manager() {};
+	network_game_manager() {}
 
 	~network_game_manager()
 	{
@@ -70,7 +70,7 @@ public:
 			network::send_data(cfg, 0);
 			LOG_NW << "sent leave_game\n";
 		}
-	};
+	}
 };
 
 }

@@ -371,7 +371,7 @@ void manager::try_modification_by_index(int index, bool activate, bool force)
 	}
 
 	try_modifications(mods_copy, force);
-};
+}
 
 void manager::try_era_by_index(int index, bool force)
 {

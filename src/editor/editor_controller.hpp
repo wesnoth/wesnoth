@@ -106,7 +106,7 @@ class editor_controller : public controller_base,
 		void custom_tods_dialog();
 
 		/** Save the map, open dialog if not named yet. */
-		void save_map() {context_manager_->save_map();};
+		void save_map() {context_manager_->save_map();}
 
 		/** command_executor override */
 		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const;
@@ -169,8 +169,8 @@ class editor_controller : public controller_base,
 	protected:
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event);
-		mouse_handler_base& get_mouse_handler_base() { return *this; };
-		editor_display& get_display() {return *gui_;};
+		mouse_handler_base& get_mouse_handler_base() { return *this; }
+		editor_display& get_display() {return *gui_;}
 
 		/** Get the current mouse action */
 		mouse_action* get_mouse_action();

@@ -50,17 +50,14 @@ public:
 		}
 		return false;
 	}
-	;
 
 	bool clipboard_empty() {
 		return clipboard_.empty();
 	}
-	;
 
 	map_fragment& get_clipboard() {
 		return clipboard_;
 	}
-	;
 
 	/** Fill the selection with the foreground terrain */
 	void fill_selection();
@@ -69,7 +66,6 @@ public:
 	int current_context_index() {
 		return current_context_index_;
 	}
-	;
 
 public:
 	context_manager(editor_display& gui, const config& game_config);
@@ -78,7 +74,6 @@ public:
 	size_t open_maps(void) {
 		return map_contexts_.size();
 	}
-	;
 
 	/**
 	 * Perform an action on the current map_context, then refresh the display.
@@ -98,7 +93,6 @@ public:
 	editor_display& gui() {
 		return gui_;
 	}
-	;
 
 	/**
 	 * Refresh everything, i.e. invalidate all hexes and redraw them. Does *not* reload the map.

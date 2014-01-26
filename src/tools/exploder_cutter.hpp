@@ -49,7 +49,7 @@ public:
 			, image(NULL)
 			, mask()
 		{
-		};
+		}
 
 		std::string name;
 		exploder_point pos;

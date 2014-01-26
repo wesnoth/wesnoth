@@ -24,7 +24,7 @@ namespace savegame {
 class savegame_config
 {
 public:
-	virtual ~savegame_config() {};
+	virtual ~savegame_config() {}
 	virtual config to_config() const = 0;
 };
 

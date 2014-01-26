@@ -65,7 +65,7 @@ public:
 
 
 	/** Get the current mouse action */
- 	mouse_action* get_mouse_action() { return mouse_action_; };
+	mouse_action* get_mouse_action() { return mouse_action_; }
 
 // Brush related methods
 
@@ -76,9 +76,9 @@ public:
 	void set_brush(std::string id);
 
 	/** TODO */
-	bool is_active_brush(std::string id) const { return brush_->id() == id; };
+	bool is_active_brush(std::string id) const { return brush_->id() == id; }
 
-	palette_manager* get_palette_manager() { return palette_manager_.get(); };
+	palette_manager* get_palette_manager() { return palette_manager_.get(); }
 
 private:
 

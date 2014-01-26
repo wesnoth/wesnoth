@@ -503,7 +503,7 @@ private:
 
 class null_expression : public formula_expression {
 public:
-	explicit null_expression() {};
+	explicit null_expression() {}
 	std::string str() const {
 		return "";
 	}

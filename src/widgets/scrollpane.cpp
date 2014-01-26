@@ -25,7 +25,7 @@
 namespace {
 class widget_finder {
 public:
-	widget_finder(gui::widget* w) : w_(w) {};
+	widget_finder(gui::widget* w) : w_(w) {}
 
 	bool operator()(const std::pair<int, gui::scrollpane::scrollpane_widget>& p)
 	{

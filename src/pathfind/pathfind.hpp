@@ -283,7 +283,7 @@ struct full_cost_map
 	double get_average_cost_at(int x, int y) const;
 	virtual ~full_cost_map()
 	{
-	};
+	}
 
 	// This is a vector of pairs
 	// Every hex has an entry.

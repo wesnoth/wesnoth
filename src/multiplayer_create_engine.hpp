@@ -30,7 +30,7 @@ class level
 {
 public:
 	level(const config& data);
-	virtual ~level() {};
+	virtual ~level() {}
 
 	enum TYPE { SCENARIO, USER_MAP, USER_SCENARIO, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
 

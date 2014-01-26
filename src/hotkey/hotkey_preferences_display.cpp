@@ -140,7 +140,7 @@ public:
 	hotkey_resetter(display& disp, hotkey_preferences_dialog& dialog) :
 		disp_(disp),
 		dialog_(dialog)
-	{};
+	{}
 
 	// This method is called when the button is pressed.
 	RESULT button_pressed(int /*selection*/)
@@ -150,7 +150,7 @@ public:
 				_("All hotkeys have been reset to their default values."));
 		dialog_.set_hotkey_menu(true);
 		return gui::CONTINUE_DIALOG;
-	};
+	}
 
 private:
 	display& disp_;

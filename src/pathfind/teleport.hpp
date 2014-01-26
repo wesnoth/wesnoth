@@ -102,7 +102,7 @@ public:
 	 * Constructs an empty teleport map.
 	 */
 	teleport_map() :
-		teleport_map_(), sources_(), targets_() {};
+		teleport_map_(), sources_(), targets_() {}
 
 	/*
 	 * @param adjacents		used to return the adjacent hexes

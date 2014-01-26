@@ -133,7 +133,7 @@ class tod_manager : public savegame::savegame_config
 		void remove_time_area(int index);
 
 
-		bool has_time_area() const {return !areas_.empty();};
+		bool has_time_area() const {return !areas_.empty();}
 
 		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location) const;
 

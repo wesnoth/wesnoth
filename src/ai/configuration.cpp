@@ -47,7 +47,7 @@ public:
 	{
 	}
 
-	virtual ~well_known_aspect() {};
+	virtual ~well_known_aspect() {}
 
 	std::string name_;
 	bool was_an_attribute_;

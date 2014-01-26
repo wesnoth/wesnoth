@@ -187,7 +187,7 @@ void testing_move_to_targets_phase::execute()
 
 // structure storing the maximal possible rating of a target
 struct rated_target{
-	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {};
+	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {}
 	std::vector<target>::iterator tg;
 	double max_rating;
 };

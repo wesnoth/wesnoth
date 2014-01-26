@@ -50,7 +50,7 @@ public:
 	void set_command(const std::string& command);
 
 	/** get the string name of the HOTKEY_COMMAND */
-	const std::string get_command() const { return command_; };
+	const std::string get_command() const { return command_; }
 	/** The translated description */
 	const std::string get_description() const;
 	/** @return if the item should appear in the hotkey preferences */
@@ -67,7 +67,7 @@ public:
 
 	void clear();
 
-	bool null() const { return command_  == "null"; };
+	bool null() const { return command_  == "null"; }
 
 	/// returns weather there is a associated hotkey_command.
 	// if the none of the hotkey_commands fits this hotkey_item then get_hotkey_command will return the hotkey_command::null_command().

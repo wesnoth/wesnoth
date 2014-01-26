@@ -63,13 +63,13 @@ public:
 		, previous_recruits_()
 		, recall_list_()
 		, save_id_()
-	{};
+	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover(const config& side);
 	carryover(const team& t, const int gold, const bool add);
-	~carryover(){};
+	~carryover(){}
 
-	const std::string& get_save_id() const{ return save_id_; };
+	const std::string& get_save_id() const{ return save_id_; }
 	void transfer_all_gold_to(config& side_cfg);
 	void transfer_all_recruits_to(config& side_cfg);
 	void transfer_all_recalls_to(config& side_cfg);
@@ -257,7 +257,7 @@ public:
 	game_state(const game_state& state);
 	explicit game_state(const config& cfg, bool show_replay = false);
 
-	~game_state(){};
+	~game_state(){}
 	game_state& operator=(const game_state& state);
 
 	//write the gamestate into a config object

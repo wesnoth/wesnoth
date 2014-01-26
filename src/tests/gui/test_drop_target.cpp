@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_SUITE( test_drop_target )
 		}
 		static bool empty() {
 			return gui::drop_target::empty();
-		};
+		}
 	};
 
 BOOST_AUTO_TEST_CASE( test_create_group )

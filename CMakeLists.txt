@@ -399,6 +399,12 @@ check_compiler_has_flag(
 	"-Wno-documentation-deprecated-sync"
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wextra-semi"
+	HAS_COMPILER_FLAG_WEXTRA_SEMI
+)
+
 
 ### Set the final compiler flags.
 

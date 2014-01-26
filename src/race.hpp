@@ -35,11 +35,11 @@ public:
 
 	explicit unit_race(const config& cfg);
 
-	const config& get_cfg() const { return cfg_; };
-	const std::string& id() const { return id_; };
-	const t_string& name(GENDER gender=MALE) const { return name_[gender]; };
-	const t_string& plural_name() const { return plural_name_; };
-	const t_string& description() const { return description_; };
+	const config& get_cfg() const { return cfg_; }
+	const std::string& id() const { return id_; }
+	const t_string& name(GENDER gender=MALE) const { return name_[gender]; }
+	const t_string& plural_name() const { return plural_name_; }
+	const t_string& description() const { return description_; }
 
 	std::string generate_name(GENDER gender, rand_rng::simple_rng* rng = 0) const;
 
@@ -48,7 +48,7 @@ public:
 	const config::const_child_itors &additional_traits() const;
 	const config::const_child_itors &additional_topics() const;
 	unsigned int num_traits() const;
-	const std::string& undead_variation() const { return undead_variation_; };
+	const std::string& undead_variation() const { return undead_variation_; }
 
 	/// Dummy race used when a race is not yet known.
 	static const unit_race null_race;

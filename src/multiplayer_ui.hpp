@@ -51,7 +51,7 @@ public:
 private:
 	struct msg {
 		msg(const time_t& time, const std::string& user, const std::string& message)
-			: time(time), user(user), message(message) {};
+			: time(time), user(user), message(message) {}
 		time_t time;
 		std::string user;
 		std::string message;
@@ -109,7 +109,7 @@ protected:
 	SDL_Rect client_area() const;
 
 	game_display& disp_;
-	game_display& disp() { return disp_; };
+	game_display& disp() { return disp_; }
 
 	/**
 	 * Returns the main game config, as defined by loading the preprocessed WML
@@ -151,7 +151,7 @@ protected:
 	 * Return true if we must accept incoming connections, false if not.
 	 * Defaults to not.
 	 */
-	virtual bool accept_connections() { return false; };
+	virtual bool accept_connections() { return false; }
 
 	/** Processes a pending network connection. */
 	virtual void process_network_connection(const network::connection sock);
@@ -188,7 +188,7 @@ protected:
 	void set_user_menu_items(const std::vector<std::string>& list);
 
 	/** Returns the current gamelist */
-	config& gamelist() { return gamelist_; };
+	config& gamelist() { return gamelist_; }
 
 	void append_to_title(const std::string& name);
 	const gui::label& title() const;

@@ -30,7 +30,7 @@ namespace utils {
 class string_map_variable_set : public variable_set
 {
 public:
-	string_map_variable_set(const string_map& map) : map_(map) {};
+	string_map_variable_set(const string_map& map) : map_(map) {}
 
 	virtual config::attribute_value get_variable_const(const std::string &key) const
 	{
