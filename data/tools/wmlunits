@@ -212,6 +212,9 @@ def list_contents():
             d = campaign.get_text_val("define")
             d2 = campaign.get_text_val("extra_defines")
             if d2: d += "," + d2
+            d3 = campaign.get_text_val("difficulties")
+            if d3:
+                d += "," + d3.split(",")[0]
             append(info, cid, d, c = campaign)
 
         return info
