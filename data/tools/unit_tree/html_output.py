@@ -1123,7 +1123,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         
 def html_postprocess_file(filename, isocode, batchlist):
 
-    print("postprocessing " + filename)
+    print("postprocessing " + filename.encode("utf8"))
     
     chtml = u""
     ehtml = u""

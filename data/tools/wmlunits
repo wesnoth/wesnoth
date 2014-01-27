@@ -477,6 +477,7 @@ def batch_process():
             ef = open(logname, "a")
             ef.write("<INTERNAL ERROR>\n")
             ef.write("please report as bug")
+            ef.write(str(e))
             ef.write("</INTERNAL ERROR>\n")
             ef.close()
         finally:
