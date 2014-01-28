@@ -1108,7 +1108,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in wesnoth.unit_lookup.items():
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        filename = os.path.join(path, "%s.html" % uid)
+        filename = os.path.join(path, "%s.html" % (uid.encode("utf8")))
 
         # We probably can come up with something better.
         if os.path.exists(filename):
@@ -1123,7 +1123,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         
 def html_postprocess_file(filename, isocode, batchlist):
 
-    print("postprocessing " + filename.encode("utf8"))
+    print(u"postprocessing " + repr(filename))
     
     chtml = u""
     ehtml = u""
