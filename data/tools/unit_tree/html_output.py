@@ -1,9 +1,10 @@
 #encoding: utf8
 
 import os, gettext, time, copy, sys, re
-
+import traceback
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser2 as wmlparser2
+
 
 pics_location = "../../pics"
 
@@ -1108,19 +1109,22 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in wesnoth.unit_lookup.items():
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        htmlname = u"%s.html" % uid
+        
         try:
-            filename = os.path.join(path, htmlname)
-        except UnicodeDecodeError as e:
+            htmlname = u"%s.html" % uid
+            filename = os.path.join(path, htmlname).encode("utf8")
+
+            # We probably can come up with something better.
+            if os.path.exists(filename):
+                age = time.time() - os.path.getmtime(filename)
+                # was modified in the last 12 hours - we should be ok
+                if age < 3600 * 12: continue
+        except (UnicodeDecodeError, UnicodeEncodeError) as e:
+            traceback.print_exc()
             error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
-            raise
-
-        # We probably can come up with something better.
-        if os.path.exists(filename):
-            age = time.time() - os.path.getmtime(filename)
-            # was modified in the last 12 hours - we should be ok
-            if age < 3600 * 12: continue
-
+            error_message(str(e) + "\n")
+            continue
+        
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
