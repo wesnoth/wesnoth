@@ -1108,7 +1108,12 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in wesnoth.unit_lookup.items():
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        filename = os.path.join(path, "%s.html" % (uid.encode("utf8")))
+        htmlname = u"%s.html" % uid
+        try:
+            filename = os.path.join(path, htmlname)
+        except UnicodeDecodeError as e:
+            error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
+            raise
 
         # We probably can come up with something better.
         if os.path.exists(filename):
