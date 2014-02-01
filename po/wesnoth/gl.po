@@ -8,13 +8,13 @@
 # Leandro Regueiro <leandro.regueiro@gmail.com>, 2007-2009.
 # Jacobo Abel Fernández García <xakobe_gz@hotmail.com>, 2007.
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
-# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013.
+# Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009-2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2013-12-06 09:25+0100\n"
+"PO-Revision-Date: 2014-02-01 15:03+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -29,55 +29,54 @@ msgstr ""
 #. possible to avoid stretching the advanced preferences list too
 #. much.
 #: data/advanced_preferences.cfg:7
-#, fuzzy
 #| msgid "Compressed saves"
 msgid "Compress saved games"
-msgstr "Comprimir as partidas gardadas."
+msgstr "Comprimir as partidas."
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:12
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:13
 msgid "save_compression_short^gzip"
-msgstr ""
+msgstr "gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:14
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "Compresión predeterminada, rápida"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:18
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:19
 msgid "save_compression_short^bzip2"
-msgstr ""
+msgstr "bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "Compresión eficiente, lenta"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:24
 msgid "save_compression^No"
-msgstr ""
+msgstr "Non"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:25
 msgid "save_compression_short^no"
-msgstr ""
+msgstr "non"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:26
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "Grandes ficheiro de texto sen formato"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
@@ -230,7 +229,7 @@ msgstr "Substituír a sala de espera clásica cunha nova interface experimental.
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:194
 msgid "Show color cursors"
-msgstr ""
+msgstr "Empregar punteiros de cores."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:195
@@ -238,6 +237,8 @@ msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
+"Empregar punteiros de cores, que poden facer que o xogo vaia máis lento ou "
+"quebre (úsaos baixo a túa propia responsabilidade)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:204
@@ -700,7 +701,7 @@ msgstr "Altar"
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:21
 msgid "Ankh Necklace"
-msgstr ""
+msgstr "Colgante de anca"
 
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:27
@@ -715,7 +716,7 @@ msgstr "Obxectivo de tiro"
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:39
 msgid "Golden Armor"
-msgstr ""
+msgstr "Armadura dourada"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:45
@@ -729,27 +730,25 @@ msgstr "Machado"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:57
-#, fuzzy
 #| msgid "Blue"
 msgid "Blue Ball"
-msgstr "Azul"
+msgstr "Bóla azul"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:63
-#, fuzzy
 #| msgid "Green"
 msgid "Green Ball"
-msgstr "Verde"
+msgstr "Bóla verde"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:69
 msgid "Magenta Ball"
-msgstr ""
+msgstr "Bóla fucsia"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:75
 msgid "Barrel"
-msgstr ""
+msgstr "Barril"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:81
@@ -763,10 +762,9 @@ msgstr "Ósos"
 
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:93
-#, fuzzy
 #| msgid "Bones"
 msgid "Bonestack"
-msgstr "Ósos"
+msgstr "Monte de ósos"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -777,7 +775,7 @@ msgstr "Ósos"
 #: data/core/editor/items.cfg:111 data/core/editor/items.cfg:117
 #: data/core/editor/items.cfg:123
 msgid "Book"
-msgstr ""
+msgstr "Libro"
 
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:129
@@ -802,7 +800,7 @@ msgstr "Caixa"
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:153
 msgid "Brazier"
-msgstr ""
+msgstr "Braseiro"
 
 #. [item]: id=buckler
 #: data/core/editor/items.cfg:159
@@ -811,10 +809,9 @@ msgstr "Broquel"
 
 #. [item]: id=burial
 #: data/core/editor/items.cfg:165
-#, fuzzy
 #| msgid "Tutorial"
 msgid "Burial"
-msgstr "Aprendizaxe"
+msgstr "Sepulcro"
 
 #. [item]: id=cage
 #: data/core/editor/items.cfg:171
@@ -824,12 +821,12 @@ msgstr "Gaiola"
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:177
 msgid "Closed Plain Chest"
-msgstr ""
+msgstr "Cofre de madeira pechado"
 
 #. [item]: id=chest-plain-open
 #: data/core/editor/items.cfg:183
 msgid "Open Plain Chest"
-msgstr ""
+msgstr "Cofre de madeira aberto"
 
 #. [item]: id=chest
 #: data/core/editor/items.cfg:189
@@ -838,25 +835,24 @@ msgstr "Cofre"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:195
-#, fuzzy
 #| msgid "Green"
 msgid "Green Cloak"
-msgstr "Verde"
+msgstr "Capa verde"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:201
 msgid "Closed Coffin"
-msgstr ""
+msgstr "Ataúde pechado"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:207
 msgid "Dragon Statue"
-msgstr ""
+msgstr "Estatua dun dragón"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:213
 msgid "Flaming Sword"
-msgstr ""
+msgstr "Espada flamexante"
 
 #. [item]: id=flower1
 #. [item]: id=flower2
@@ -864,40 +860,39 @@ msgstr ""
 #. [item]: id=flower4
 #: data/core/editor/items.cfg:219 data/core/editor/items.cfg:225
 #: data/core/editor/items.cfg:231 data/core/editor/items.cfg:237
-#, fuzzy
 #| msgid "slowed"
 msgid "Flower"
-msgstr "Ralentizado"
+msgstr "Flor"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:243
 msgid "Go Here Overlay"
-msgstr ""
+msgstr "Revestimento de obxectivo"
 
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:249
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "Monte de moedas"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:255
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "Morea de moedas"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:261
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "Montón de moedas"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:267
 msgid "Grain Sheaf"
-msgstr ""
+msgstr "Feixe de gran"
 
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:273
 msgid "Runic Hammer"
-msgstr ""
+msgstr "Martelo con runas"
 
 #. [item]: id=holly-water
 #. [object]
@@ -913,35 +908,34 @@ msgstr "Chave"
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:291
 msgid "Leather Pack"
-msgstr ""
+msgstr "Bolsa de coiro"
 
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:297
 msgid "Orcish Flag"
-msgstr ""
+msgstr "Bandeira dos orcos"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
 #: data/core/editor/items.cfg:303 data/core/editor/items.cfg:309
 msgid "Ornate"
-msgstr ""
+msgstr "Vaso"
 
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:315
 msgid "Blue Potion"
-msgstr ""
+msgstr "Poción azul"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:321
-#, fuzzy
 #| msgid "Invalid location"
 msgid "Green Potion"
-msgstr "Lugar incorrecto."
+msgstr "Poción verde"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:327
 msgid "Gray Potion"
-msgstr ""
+msgstr "Poción gris"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
@@ -951,76 +945,72 @@ msgstr "Veleno"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:339
-#, fuzzy
 #| msgid "Invalid location"
 msgid "Red Potion"
-msgstr "Lugar incorrecto."
+msgstr "Poción vermella"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:345
 msgid "Yellow Potion"
-msgstr ""
+msgstr "Poción amarela"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:351
-#, fuzzy
 #| msgid "Brown"
 msgid "Brown Ring"
-msgstr "Marrón"
+msgstr "Anel marrón"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:357
 msgid "Golden Ring"
-msgstr ""
+msgstr "Anel dourado"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:363
 msgid "Red Ring"
-msgstr ""
+msgstr "Anel vermello"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:369
 msgid "Silver Ring"
-msgstr ""
+msgstr "Anel de prata"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:375
-#, fuzzy
 #| msgid "White"
 msgid "White Ring"
-msgstr "Branco"
+msgstr "Anel branco"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:381
 msgid "Scarecrow"
-msgstr ""
+msgstr "Espantallo"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:387
-#, fuzzy
 #| msgid "sceptre of fire"
 msgid "Sceptre of Fire"
-msgstr "cetro de lume"
+msgstr "Cetro de Lume"
 
 #. [item]: id=spear-fancy
 #: data/core/editor/items.cfg:393
 msgid "Fancy Spear"
-msgstr ""
+msgstr "Lanza elegante"
 
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:399
 msgid "Magic Staff"
-msgstr ""
+msgstr "Bastón máxico"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:405
 msgid "Staff"
-msgstr ""
+msgstr "Bastón"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:411
 msgid "Stone Tablet"
-msgstr ""
+msgstr "Lousa"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -1032,7 +1022,7 @@ msgstr "Tridente da tormenta"
 #. [item]: id=straw-bale2
 #: data/core/editor/items.cfg:423 data/core/editor/items.cfg:429
 msgid "Bale of Straw"
-msgstr ""
+msgstr "Feixe de palla"
 
 #. [item]: id=sword
 #: data/core/editor/items.cfg:435
@@ -1047,57 +1037,55 @@ msgstr "Escenario"
 
 #. [item]: id=castle-ruins
 #: data/core/editor/items.cfg:447
-#, fuzzy
 #| msgid "Castle"
 msgid "Castle Ruins"
-msgstr "Castelo"
+msgstr "Ruínas dun castelo"
 
 #. [item]: id=circle-magic-glow
 #: data/core/editor/items.cfg:453
 msgid "Glowing Magic Circle"
-msgstr ""
+msgstr "Círculo máxico brillante"
 
 #. [item]: id=circle-magic
 #: data/core/editor/items.cfg:459
 msgid "Magic Circle"
-msgstr ""
+msgstr "Círculo máxico"
 
 #. [item]: id=dwarven-doors-closed
 #: data/core/editor/items.cfg:465
 msgid "Closed Dwarven Doors"
-msgstr ""
+msgstr "Portas dos ananos pechadas"
 
 #. [item]: id=fire
 #: data/core/editor/items.cfg:472
-#, fuzzy
 #| msgid "fire"
 msgid "Campfire"
-msgstr "lume"
+msgstr "Fogueira"
 
 #. [item]: id=flames
 #: data/core/editor/items.cfg:479
 msgid "Flames"
-msgstr ""
+msgstr "Chamas"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:485
 msgid "Rusty Gate South East"
-msgstr ""
+msgstr "Porta sueste oxidada"
 
 #. [item]: id=gate-rusty-sw
 #: data/core/editor/items.cfg:491
 msgid "Rusty Gate South West"
-msgstr ""
+msgstr "Porta suroeste oxidada"
 
 #. [item]: id=icepack1
 #: data/core/editor/items.cfg:497
 msgid "Ice Pack"
-msgstr ""
+msgstr "Xeo"
 
 #. [item]: id=leanto
 #: data/core/editor/items.cfg:503
 msgid "Lean-to"
-msgstr ""
+msgstr "Alpendre"
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:508
@@ -1107,12 +1095,12 @@ msgstr "Faro"
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:516
 msgid "Mausoleum"
-msgstr ""
+msgstr "Mausoleo"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:522
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "Mina abandonada"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1121,37 +1109,35 @@ msgstr ""
 #: data/core/editor/items.cfg:528 data/core/editor/items.cfg:534
 #: data/core/editor/items.cfg:540 data/core/editor/items.cfg:546
 msgid "Monolith"
-msgstr ""
+msgstr "Monólito"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:552
-#, fuzzy
 #| msgid "(Empty slot)"
 msgid "Empty Nest"
-msgstr "(Posto baleiro)"
+msgstr "Niño baleiro"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:558
 msgid "Full Nest"
-msgstr ""
+msgstr "Niño con ovos"
 
 #. [item]: id=oak-leaning
 #: data/core/editor/items.cfg:564
-#, fuzzy
 #| msgid "Warning: "
 msgid "Leaning Oak"
-msgstr "Advertencia: "
+msgstr "Carballo inclinado"
 
 #. [item]: id=pine1
 #. [item]: id=pine2
 #: data/core/editor/items.cfg:570 data/core/editor/items.cfg:576
 msgid "Pine Tree"
-msgstr ""
+msgstr "Piñeiro"
 
 #. [item]: id=rock-cairn
 #: data/core/editor/items.cfg:582
 msgid "Rock Cairn"
-msgstr ""
+msgstr "Túmulo de rocha"
 
 #. [item]: id=rock1
 #. [item]: id=rock2
@@ -1160,12 +1146,12 @@ msgstr ""
 #: data/core/editor/items.cfg:588 data/core/editor/items.cfg:594
 #: data/core/editor/items.cfg:600 data/core/editor/items.cfg:606
 msgid "Rock"
-msgstr ""
+msgstr "Rocha"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:612
 msgid "Rubble"
-msgstr ""
+msgstr "Cascabullada"
 
 #. [item]: id=rune1
 #. [item]: id=rune2
@@ -1177,7 +1163,7 @@ msgstr ""
 #: data/core/editor/items.cfg:630 data/core/editor/items.cfg:636
 #: data/core/editor/items.cfg:642 data/core/editor/items.cfg:648
 msgid "Rune"
-msgstr ""
+msgstr "Runa"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1189,13 +1175,13 @@ msgstr ""
 #: data/core/editor/items.cfg:666 data/core/editor/items.cfg:672
 #: data/core/editor/items.cfg:678 data/core/editor/items.cfg:684
 msgid "Glowing Rune"
-msgstr ""
+msgstr "Runa resplandecente"
 
 #. [item]: id=shipwreck
 #. [item]: id=wreck
 #: data/core/editor/items.cfg:690 data/core/editor/items.cfg:841
 msgid "Shipwreck"
-msgstr ""
+msgstr "Afundimento de barco"
 
 #. [item]: id=signpost
 #: data/core/editor/items.cfg:695
@@ -1205,17 +1191,17 @@ msgstr "Sinal"
 #. [item]: id=slab1
 #: data/core/editor/items.cfg:701
 msgid "Slab"
-msgstr ""
+msgstr "Lousa"
 
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:707
 msgid "Piles of Snow"
-msgstr ""
+msgstr "Moreas de neve"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:714
 msgid "Summoning Center"
-msgstr ""
+msgstr "Centro de invocación"
 
 #. [item]: id=summoning-circle1
 #. [item]: id=summoning-circle2
@@ -1227,44 +1213,43 @@ msgstr ""
 #: data/core/editor/items.cfg:732 data/core/editor/items.cfg:738
 #: data/core/editor/items.cfg:744 data/core/editor/items.cfg:750
 msgid "Summoning Circle"
-msgstr ""
+msgstr "Círculo de invocación"
 
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:756
 msgid "Temple"
-msgstr ""
+msgstr "Templo"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:762
 msgid "Fancy Red Tent"
-msgstr ""
+msgstr "Tenda vermella elegante"
 
 #. [item]: id=tent-ruin-1
 #: data/core/editor/items.cfg:768
 msgid "Ruined Tent"
-msgstr ""
+msgstr "Tenda en ruínas"
 
 #. [item]: id=tent-shop-weapons
 #: data/core/editor/items.cfg:773
-#, fuzzy
 #| msgid "Weapon Specials"
 msgid "Weapons Shop Tent"
-msgstr "Propiedades das armas"
+msgstr "Tenda de venda de armas"
 
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:780
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "Trampa pechada"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:786
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "Trampa aberta"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:792
 msgid "Trash Pile"
-msgstr ""
+msgstr "Monte de lixo"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1272,10 +1257,9 @@ msgstr ""
 #. [item]: id=village-human-burned4
 #: data/core/editor/items.cfg:798 data/core/editor/items.cfg:804
 #: data/core/editor/items.cfg:810 data/core/editor/items.cfg:816
-#, fuzzy
 #| msgid "Submerged Village"
 msgid "Burned Human Village"
-msgstr "Vila somerxida"
+msgstr "Vila dos humanos incendiada"
 
 #. [item]: id=well
 #: data/core/editor/items.cfg:821
@@ -1290,7 +1274,7 @@ msgstr "Remuíño"
 #. [item]: id=windmill
 #: data/core/editor/items.cfg:835
 msgid "Windmill"
-msgstr ""
+msgstr "Muíño de vento"
 
 #. [set_menu_item]: id=ai_controller_unit_control_{UNIT_ID}
 #: data/core/macros/ai_controller.cfg:22
@@ -3257,14 +3241,15 @@ msgid ""
 "Use the map editor's <i>Areas</i> menu to define regions later addressed by "
 "event or ai coding."
 msgstr ""
+"Usa o menú <i>Zoans</i> do editor de mapas para definir rexións ás que facer "
+"logo referencia mediante eventos ou código da intelixencia artificial."
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:9
 #: data/hardwired/tips.cfg:13
-#, fuzzy
 #| msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>— A guía táctica do Noroeste</i>"
+msgstr "<i>— A guía de deseño do Noroeste</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
@@ -3272,6 +3257,8 @@ msgid ""
 "Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
 "advanced features."
 msgstr ""
+"Crea un <i>Novo escenario</i> desde o menú <i>Ficheiro</i> do editor para "
+"facer uso das funcionalidades avanzadas."
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
@@ -3279,6 +3266,9 @@ msgid ""
 "Scenarios saved from the editor in their default folder can be selected in "
 "the mp create screen's <i>User Scenarios</i> section."
 msgstr ""
+"Os escenarios gardados desde o editor no seu cartafol predeterminado poden "
+"seleccionarse na páxina de creación de partidas para varios xogadores, na "
+"sección de <i>Escenarios do usuario</i>."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -4205,7 +4195,7 @@ msgstr "Para varios xogadores"
 #. [label]: id=label-def
 #: data/themes/default.cfg:248
 msgid "def"
-msgstr ""
+msgstr "Defensa"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:258 data/themes/pandora.cfg:179
@@ -4239,7 +4229,6 @@ msgstr "Ingresos"
 
 #. [unit_level]: id=unit-level
 #: data/themes/default.cfg:486
-#, fuzzy
 #| msgid "statuspanel^level"
 msgid "statuspanel^lvl"
 msgstr "Nivel"
@@ -4314,7 +4303,6 @@ msgstr "Saltar a animación"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:151
-#, fuzzy
 #| msgid "End Turn"
 msgid ""
 "End\n"
@@ -4492,10 +4480,9 @@ msgstr "Escenario"
 
 # Optimizado para baixas resolucións.
 #: src/addon/info.cpp:157
-#, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
-msgstr "Campaña mult."
+msgstr "Campaña ind./mult."
 
 # Optimizado para baixas resolucións.
 #: src/addon/info.cpp:159
@@ -5375,76 +5362,68 @@ msgid "Quit"
 msgstr "Saír"
 
 #: src/hotkey/command_executor.cpp:508 src/hotkey/command_executor.cpp:672
-#, fuzzy
 #| msgid "Do you really want to dismiss him?"
 msgid "Do you really want to quit?"
-msgstr "Seguro que queres despedilo?"
+msgstr "Seguro que queres saír?"
 
 #: src/hotkey/command_executor.cpp:625
-#, fuzzy
 #| msgid "Screenshot"
 msgid "Map-Screenshot"
-msgstr "Captura de pantalla"
+msgstr "Captura-do-mapa"
 
 #: src/hotkey/command_executor.cpp:625 src/hotkey/hotkey_command.cpp:53
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
 #: src/hotkey/command_executor.cpp:632 src/hotkey/command_executor.cpp:634
-#, fuzzy
 #| msgid "Screenshot"
 msgid "Screenshot Done"
-msgstr "Captura de pantalla"
+msgstr "Fíxose a captura."
 
 #: src/hotkey/hotkey_command.cpp:36
-#, fuzzy
 #| msgid "Cancel"
 msgid "cancel"
 msgstr "Cancelar"
 
 #: src/hotkey/hotkey_command.cpp:37
-#, fuzzy
 #| msgid "Select Scenario"
 msgid "Select Hex"
-msgstr "Escoller un escenario"
+msgstr "Seleccionar"
 
 #: src/hotkey/hotkey_command.cpp:38
 msgid "Deselect Hex"
-msgstr ""
+msgstr "Anular a selección"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
 #| msgid "Attacker"
 msgid "Move/Attack"
-msgstr "Atacante"
+msgstr "Moverse ou atacar"
 
 #: src/hotkey/hotkey_command.cpp:40
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Seleccionar, mover ou atacar"
 
 #: src/hotkey/hotkey_command.cpp:41
 msgid "Animate Map"
 msgstr "Animacións nos mapas."
 
 #: src/hotkey/hotkey_command.cpp:42
-#, fuzzy
 #| msgid "Next Turn"
 msgid "Next Unit"
-msgstr "Seguinte quenda"
+msgstr "Seguinte unidade"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Previous Unit"
-msgstr ""
+msgstr "Unidade anterior"
 
 #: src/hotkey/hotkey_command.cpp:44
 msgid "Hold Position"
-msgstr ""
+msgstr "Manter a posición"
 
 #: src/hotkey/hotkey_command.cpp:45
-#, fuzzy
 #| msgid "End Turn"
 msgid "End Unit Turn"
-msgstr "Continuar"
+msgstr "Rematar a quenda da unidade"
 
 #: src/hotkey/hotkey_command.cpp:46 src/leader_scroll_dialog.cpp:45
 #: src/menu_events.cpp:191
@@ -5453,61 +5432,56 @@ msgstr "Líder"
 
 #: src/hotkey/hotkey_command.cpp:47
 msgid "Undo"
-msgstr ""
+msgstr "Desfacer"
 
 #: src/hotkey/hotkey_command.cpp:48
 msgid "Redo"
-msgstr ""
+msgstr "Refacer"
 
 #: src/hotkey/hotkey_command.cpp:49
 msgid "Zoom In"
-msgstr ""
+msgstr "Achegar"
 
 #: src/hotkey/hotkey_command.cpp:50
 msgid "Zoom Out"
-msgstr ""
+msgstr "Afastar"
 
 #: src/hotkey/hotkey_command.cpp:51
-#, fuzzy
 #| msgid "Defaults"
 msgid "Default Zoom"
-msgstr "Valores predeterminados"
+msgstr "Restablecer"
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Toggle Full Screen"
-msgstr ""
+msgstr "Cambiar a pantalla completa"
 
 #: src/hotkey/hotkey_command.cpp:54
-#, fuzzy
 #| msgid "Screenshot"
 msgid "Map Screenshot"
-msgstr "Captura de pantalla"
+msgstr "Facer unha captura do mapa"
 
 #: src/hotkey/hotkey_command.cpp:55
 msgid "Accelerated"
-msgstr ""
+msgstr "Activar a velocidade acelerada"
 
 #: src/hotkey/hotkey_command.cpp:56
-#, fuzzy
 #| msgid "Description"
 msgid "Terrain Description"
-msgstr "Descrición"
+msgstr "Descrición do terreo"
 
 #: src/hotkey/hotkey_command.cpp:57
-#, fuzzy
 #| msgid "Description"
 msgid "Unit Description"
-msgstr "Descrición"
+msgstr "Descrición da unidade"
 
 #: src/hotkey/hotkey_command.cpp:58 src/menu_events.cpp:895
 msgid "Rename Unit"
 msgstr "Cambiar o nome"
 
 #: src/hotkey/hotkey_command.cpp:59
-#, fuzzy
 #| msgid "Delete: $addon_title"
 msgid "Delete Unit"
-msgstr "Eliminar: $addon_title"
+msgstr "Eliminar a unidade"
 
 #: src/hotkey/hotkey_command.cpp:61 src/savegame.cpp:1090
 msgid "Save Game"
@@ -5518,86 +5492,77 @@ msgid "Save Replay"
 msgstr "Gardar a repetición"
 
 #: src/hotkey/hotkey_command.cpp:63 src/hotkey/hotkey_command.cpp:131
-#, fuzzy
 #| msgid "Share Maps"
 msgid "Save Map"
-msgstr "Compartir os mapas"
+msgstr "Gardar o mapa"
 
 #: src/hotkey/hotkey_command.cpp:66
-#, fuzzy
 #| msgid "Recruit"
 msgid "Repeat Recruit"
-msgstr "Recrutar"
+msgstr "Repetir o recrutamento"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Toggle Ellipses"
-msgstr ""
+msgstr "Activar as elipses"
 
 #: src/hotkey/hotkey_command.cpp:70
 msgid "Toggle Grid"
-msgstr ""
+msgstr "Activar a grade"
 
 #: src/hotkey/hotkey_command.cpp:71
-#, fuzzy
 #| msgid "Mouse scrolling"
 msgid "Mouse Scrolling"
 msgstr "Desprazamento co rato."
 
 #: src/hotkey/hotkey_command.cpp:72
-#, fuzzy
 #| msgid "Status"
 msgid "Status Table"
-msgstr "Estado"
+msgstr "Cadro da situación"
 
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Mute"
-msgstr ""
+msgstr "Silenciar"
 
 #: src/hotkey/hotkey_command.cpp:74
 msgid "Speak"
-msgstr ""
+msgstr "Falar"
 
 #: src/hotkey/hotkey_command.cpp:75 src/menu_events.cpp:1001
 msgid "Create Unit (Debug!)"
 msgstr "Crear a unidade (depuración!)"
 
 #: src/hotkey/hotkey_command.cpp:76
-#, fuzzy
 #| msgid "Create Unit (Debug!)"
 msgid "Change Side (Debug!)"
-msgstr "Crear a unidade (depuración!)"
+msgstr "Cambiar de bando (depuración!)"
 
 #: src/hotkey/hotkey_command.cpp:77
-#, fuzzy
 #| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Crear a unidade (depuración!)"
+msgstr "Matar a unidade (depuración!)"
 
 #: src/hotkey/hotkey_command.cpp:78 src/multiplayer_lobby.cpp:862
 msgid "Preferences"
 msgstr "Configuración"
 
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
 #| msgid "Scenario Settings"
 msgid "Scenario Objectives"
-msgstr "Configuración do escenario"
+msgstr "Obxectivos do escenario"
 
 #: src/hotkey/hotkey_command.cpp:81 src/menu_events.cpp:141
 msgid "Statistics"
 msgstr "Estatísticas"
 
 #: src/hotkey/hotkey_command.cpp:82
-#, fuzzy
 #| msgid "Network Player"
 msgid "Pause Network Game"
-msgstr "Xogador na rede"
+msgstr "Deter a partida en rede"
 
 #: src/hotkey/hotkey_command.cpp:83
-#, fuzzy
 #| msgid "Configure Game"
 msgid "Continue Network Game"
-msgstr "Configurar a partida"
+msgstr "Continuar a partida en rede"
 
 #: src/hotkey/hotkey_command.cpp:84
 msgid "Quit Game"
@@ -5605,68 +5570,60 @@ msgstr "Saír da Partida"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Quit Editor"
-msgstr ""
+msgstr "Saír do editor"
 
 #: src/hotkey/hotkey_command.cpp:86
 msgid "Set Team Label"
-msgstr ""
+msgstr "Poñer unha etiqueta do equipo"
 
 #: src/hotkey/hotkey_command.cpp:87
-#, fuzzy
 #| msgid "Place Label"
 msgid "Set Label"
-msgstr "Etiquetar"
+msgstr "Poñer unha etiqueta"
 
 #: src/hotkey/hotkey_command.cpp:88
-#, fuzzy
 #| msgid "Place Label"
 msgid "Clear Labels"
-msgstr "Etiquetar"
+msgstr "Quitar as etiquetas"
 
 #: src/hotkey/hotkey_command.cpp:89
 msgid "Show Enemy Moves"
-msgstr ""
+msgstr "Mostrar os movementos do inimigo"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Best Possible Enemy Moves"
-msgstr ""
+msgstr "Mellores movementos posíbeis do inimigo"
 
 #: src/hotkey/hotkey_command.cpp:92
-#, fuzzy
 #| msgid "Save Replay"
 msgid "Play Replay"
-msgstr "Gardar a repetición"
+msgstr "Reproducir a repetición"
 
 #: src/hotkey/hotkey_command.cpp:93
-#, fuzzy
 #| msgid "Save Replay"
 msgid "Reset Replay"
-msgstr "Gardar a repetición"
+msgstr "Restaurar a repetición"
 
 #: src/hotkey/hotkey_command.cpp:94
-#, fuzzy
 #| msgid "Save Replay"
 msgid "Stop Replay"
-msgstr "Gardar a repetición"
+msgstr "Deter a repetición"
 
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Full Map"
-msgstr ""
+msgstr "Mapa completo"
 
 #: src/hotkey/hotkey_command.cpp:98
-#, fuzzy
 #| msgid "Team"
 msgid "Each Team"
-msgstr "Alianza"
+msgstr "Cada equipo"
 
 #: src/hotkey/hotkey_command.cpp:99
-#, fuzzy
 #| msgid "Team"
 msgid "Team 1"
-msgstr "Alianza"
+msgstr "Equipo 1"
 
 #: src/hotkey/hotkey_command.cpp:100
-#, fuzzy
 #| msgid "Skip animation"
 msgid "Skip Animation"
 msgstr "Saltar a animación"
@@ -5674,184 +5631,174 @@ msgstr "Saltar a animación"
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:103
 msgid "whiteboard^Planning Mode"
-msgstr ""
+msgstr "Modo de planificación"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:105
-#, fuzzy
 #| msgid "Whiteboard Options"
 msgid "whiteboard^Execute Action"
-msgstr "Opcións de planificación"
+msgstr "Executar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:107
-#, fuzzy
 #| msgid "Whiteboard Options"
 msgid "whiteboard^Execute All Actions"
-msgstr "Opcións de planificación"
+msgstr "Executar as accións"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:109
-#, fuzzy
 #| msgid "Whiteboard Options"
 msgid "whiteboard^Delete Action"
-msgstr "Opcións de planificación"
+msgstr "Eliminar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:111
-#, fuzzy
 #| msgid "Whiteboard Options"
 msgid "whiteboard^Move Action Up"
-msgstr "Opcións de planificación"
+msgstr "Adiantar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:113
-#, fuzzy
 #| msgid "Whiteboard Options"
 msgid "whiteboard^Move Action Down"
-msgstr "Opcións de planificación"
+msgstr "Atrasar a acción"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:115
 msgid "whiteboard^Suppose Dead"
-msgstr ""
+msgstr "Dar por morto"
 
 #: src/hotkey/hotkey_command.cpp:117
 msgid "Quit to Desktop"
-msgstr ""
+msgstr "Saír ao escritorio"
 
 #: src/hotkey/hotkey_command.cpp:118
-#, fuzzy
 #| msgid "Close"
 msgid "Close Map"
-msgstr "Pechar"
+msgstr "Pechar o mapa"
 
 #: src/hotkey/hotkey_command.cpp:122
-#, fuzzy
 #| msgid "Stub Time of Day"
 msgid "Switch Time of Day"
-msgstr "Momento do día de proba"
+msgstr "Cambiar o momento do día"
 
 #: src/hotkey/hotkey_command.cpp:123
-#, fuzzy
 #| msgid "Share Maps"
 msgid "Switch Map"
-msgstr "Compartir os mapas"
+msgstr "Cambiar de mapa"
 
 #: src/hotkey/hotkey_command.cpp:124
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Asignar a hora local"
 
 #: src/hotkey/hotkey_command.cpp:126
-#, fuzzy
 #| msgid "Stub Time of Day"
 msgid "Custom Time of Day Creator"
-msgstr "Momento do día de proba"
+msgstr "Creador de momentos do día personalizados"
 
 #: src/hotkey/hotkey_command.cpp:127
 msgid "Partial Undo"
-msgstr ""
+msgstr "Desfacer parcialmente"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "New Map"
-msgstr ""
+msgstr "Novo mapa"
 
 # Optimizado para a interface.
 #: src/hotkey/hotkey_command.cpp:129
-#, fuzzy
 #| msgid "Scenario"
 msgid "New Scenario"
-msgstr "Escenario"
+msgstr "Novo escenario"
 
 #: src/hotkey/hotkey_command.cpp:130
-#, fuzzy
 #| msgid "Load Game"
 msgid "Load Map"
-msgstr "Cargar unha partida"
+msgstr "Cargar un mapa"
 
 #: src/hotkey/hotkey_command.cpp:132
-#, fuzzy
 #| msgid "Save the Map As"
 msgid "Save Map As"
 msgstr "Gardar o mapa como"
 
 #: src/hotkey/hotkey_command.cpp:133
-#, fuzzy
 #| msgid "Select Scenario"
 msgid "Save Scenario As"
-msgstr "Escoller un escenario"
+msgstr "Gardar o escenario como"
 
 #: src/hotkey/hotkey_command.cpp:134
-#, fuzzy
 #| msgid "Save the Map As"
 msgid "Save All Maps"
-msgstr "Gardar o mapa como"
+msgstr "Gardar oos mapas"
 
 #: src/hotkey/hotkey_command.cpp:135
 msgid "Revert All Changes"
-msgstr ""
+msgstr "Desbotar todos os cambios"
 
 #: src/hotkey/hotkey_command.cpp:136
-#, fuzzy
 #| msgid "Skip animation"
 msgid "Map Information"
-msgstr "Saltar a animación"
+msgstr "Información do mapa"
 
 #: src/hotkey/hotkey_command.cpp:138
 msgid "Clear Selected Item Set"
-msgstr ""
+msgstr "Anular a selección"
 
 #: src/hotkey/hotkey_command.cpp:139
 msgid "Swap Foreground/Background Palette Item"
-msgstr ""
+msgstr "Intercambiar os elementos da paleta en primeiro e segundo plano"
 
 #: src/hotkey/hotkey_command.cpp:140
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Cambiar o grupo da paleta"
 
 #: src/hotkey/hotkey_command.cpp:141
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Mover a paleta á esquerda"
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Mover a paleta á dereita"
 
 #: src/hotkey/hotkey_command.cpp:144
-#, fuzzy
 #| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Seguinte bando"
+msgstr "Engadir un bando"
 
 #: src/hotkey/hotkey_command.cpp:146
-#, fuzzy
 #| msgid "Next Turn"
 msgid "Next Tool"
-msgstr "Seguinte quenda"
+msgstr "Seguinte ferramenta"
 
 #: src/hotkey/hotkey_command.cpp:148
 msgid "Paint Tool"
-msgstr ""
+msgstr "Ferramenta de pintura"
 
 #: src/hotkey/hotkey_command.cpp:148 src/hotkey/hotkey_command.cpp:149
 msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Use os botóns esquerdo ou dereito do rato para pintar o terreo en primeiro "
+"ou segundo plano. Mantén premida a tecla «Maiús» para pintar só a capa base. "
+"Premendo «Ctrl» e un dos botóns podes copiar o terreo que estea baixo o "
+"punteiro."
 
 #: src/hotkey/hotkey_command.cpp:149
 msgid "Fill Tool"
-msgstr ""
+msgstr "Ferramenta de recheo"
 
 #: src/hotkey/hotkey_command.cpp:150
 msgid ""
 "Left mouse button selects or deselects, right brings up a context menu. Hold "
 "Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"O botón principal selecciona ou cancela a selección, o secundario abre un "
+"menú de contexto. Mantén premida a tecla «Maiús» para seleccionar mediante a "
+"vara máxica hexágonos co mesmo tipo de terreo."
 
 #: src/hotkey/hotkey_command.cpp:150
 msgid "Selection Tool"
-msgstr ""
+msgstr "Ferramenta de selección"
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid ""
@@ -5859,96 +5806,106 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"O botón esquerdo do rato amosa a selección do usuario, mentres que o dereito "
+"a quita. As teclas numéricas van á posición inicial, premer «Alt» xunto cun "
+"número establece a respectiva posición inicial baixo o punteiro, «Supr» "
+"bórraa."
 
 #: src/hotkey/hotkey_command.cpp:151
-#, fuzzy
 #| msgid "Starting position: "
 msgid "Starting Positions Tool"
-msgstr "Posición inicial: "
+msgstr "Ferramenta das posicións iniciais"
 
 #: src/hotkey/hotkey_command.cpp:152
-#, fuzzy
 #| msgid "Label: "
 msgid "Label Tool"
-msgstr "Etiqueta: "
+msgstr "Ferramenta de etiquetas"
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Left mouse button sets or drags a label, right clears."
 msgstr ""
+"O botón principal establece ou arrastra a etiqueta, o secundario elimínaa."
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"O botón principal establece unha nova unidade ou move unha existente —"
+"arrastrar e soltar—, o secundario abre un menú de contexto. É necesario ter "
+"un bando definido."
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid "Unit Tool"
-msgstr ""
+msgstr "Ferramenta de unidades"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Item Tool"
-msgstr ""
+msgstr "Ferramenta de elementos"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"O botón principal establece un novo elemento ou move un existente —arrastrar "
+"e soltar—, o botón secundario sóltao. Aínda non funciona."
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"O botón principal establece ou arrastra a fonte do son, o secundario "
+"elimínaa. Aínda non funciona."
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Ferramenta de fontes de sons"
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"O botón principal establece a propiedade da vila ao bando actual, o "
+"secundario quita a propiedade. É necesario ter un bando definido."
 
 #: src/hotkey/hotkey_command.cpp:156
-#, fuzzy
 #| msgid "Village gold: "
 msgid "Village Tool"
-msgstr "Ouro por vila: "
+msgstr "Ferramenta de vilas"
 
 #: src/hotkey/hotkey_command.cpp:158
-#, fuzzy
 #| msgid "Recruit"
 msgid "Can Recruit"
-msgstr "Recrutar"
+msgstr "Pode recrutar"
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Conmuta o atributo de recrutar dunha unidade."
 
 #: src/hotkey/hotkey_command.cpp:159
 msgid "Can be Renamed"
-msgstr ""
+msgstr "Pode renomearse"
 
 #: src/hotkey/hotkey_command.cpp:159
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Conmuta a posibilidade de renomear a unidade."
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Asignar unha lista de recrutamento"
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
+"Asignar o grupo de unidades seleccionado como lista de recrutamento á unidade."
 
 #: src/hotkey/hotkey_command.cpp:162
-#, fuzzy
 #| msgid "Advance Unit"
 msgid "Change Unit ID"
-msgstr "Avanzar a unidade"
+msgstr "Cambiar o identificador da unidade"
 
 #: src/hotkey/hotkey_command.cpp:163
 msgid "Loyal"
@@ -5956,375 +5913,343 @@ msgstr "Lealdade"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Cambiar o código de unidades do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:166
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Cambiar o código de terreos do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Cambiar o debuxado de unidades do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:169
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Cambiar o debuxado de vilas do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle Minimap Terrain Drawing"
-msgstr ""
+msgstr "Cambiar o debuxado de terreos do minimapa"
 
 #: src/hotkey/hotkey_command.cpp:172
-#, fuzzy
 #| msgid "Next Turn"
 msgid "Next Brush"
-msgstr "Seguinte quenda"
+msgstr "Seguinte brocha"
 
 #: src/hotkey/hotkey_command.cpp:173
-#, fuzzy
 #| msgid "Defaults"
 msgid "Default Brush"
-msgstr "Valores predeterminados"
+msgstr "Brocha predeterminada"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Single Tile"
-msgstr ""
+msgstr "Unha tesela"
 
 #: src/hotkey/hotkey_command.cpp:175
 msgid "Radius One"
-msgstr ""
+msgstr "Raio 1"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Radius Two"
-msgstr ""
+msgstr "Raio 2"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Pincel NO-SL"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Pincel SO-NL"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Cut"
-msgstr ""
+msgstr "Cortar"
 
 #: src/hotkey/hotkey_command.cpp:181
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
 msgstr ""
+"O botón principal pega o contido do portapapeis, o secundario mostra un menú "
+"de contexto."
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Paste"
-msgstr ""
+msgstr "Pegar"
 
 #: src/hotkey/hotkey_command.cpp:183
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr ""
+msgstr "Exportar as coordenadas seleccionadas ao portapapeis do sistema"
 
 # Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar.
 #: src/hotkey/hotkey_command.cpp:184
-#, fuzzy
 #| msgid "Select unit:"
 msgid "Select All"
-msgstr "Escolle unha unidade:"
+msgstr "Seleccionalo todo"
 
 #: src/hotkey/hotkey_command.cpp:185
-#, fuzzy
 #| msgid "Select an add-on to update:"
 msgid "Select Inverse"
-msgstr "Seleccione un complemento a actualizar:"
+msgstr "Inverter a selección"
 
 # Mensaxe que aparece encabezando a lista de unidades a recrutar ou reincorporar.
 #: src/hotkey/hotkey_command.cpp:186
-#, fuzzy
 #| msgid "Select unit:"
 msgid "Select None"
-msgstr "Escolle unha unidade:"
+msgstr "Anular a selección"
 
 #: src/hotkey/hotkey_command.cpp:187
 msgid "Rotate Clipboard Clockwise"
-msgstr ""
+msgstr "Rotar o que hai no portapapeis no sentido das agullas do reloxo"
 
 #: src/hotkey/hotkey_command.cpp:188
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
+"Rotar o que hai no portapapeis no sentido contrario ao das agullas do "
+"reloxo"
 
 #: src/hotkey/hotkey_command.cpp:189
 msgid "Flip Clipboard Horizontally"
-msgstr ""
+msgstr "Voltear horizontalmente o que hai no portapapeis"
 
 #: src/hotkey/hotkey_command.cpp:190
 msgid "Flip Clipboard Vertically"
-msgstr ""
+msgstr "Voltear verticalmente o que hai no portapapeis"
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Rotate Selection"
-msgstr ""
+msgstr "Rotar a selección"
 
 #: src/hotkey/hotkey_command.cpp:192
-#, fuzzy
 #| msgid "Invalid location"
 msgid "Flip Selection"
-msgstr "Lugar incorrecto."
+msgstr "Voltear a selección"
 
 #: src/hotkey/hotkey_command.cpp:193
 msgid "Fill Selection"
-msgstr ""
+msgstr "Encher a selección"
 
 #: src/hotkey/hotkey_command.cpp:194
 msgid "Generate Tiles in Selection"
-msgstr ""
+msgstr "Xerar hexágonos na selección"
 
 #: src/hotkey/hotkey_command.cpp:195
-#, fuzzy
 #| msgid "Randomize time of day in begin"
 msgid "Randomize Tiles in Selection"
-msgstr "Comezar nun momento do día ao chou."
+msgstr "Xerar ao chou os hexágonos da selección"
 
 #: src/hotkey/hotkey_command.cpp:196
 msgid "Resize Map"
-msgstr ""
+msgstr "Cambiar as dimensións"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
 #| msgid "Animate Map"
 msgid "Rotate Map"
-msgstr "Animacións nos mapas."
+msgstr "Rotar o mapa"
 
 #: src/hotkey/hotkey_command.cpp:198
-#, fuzzy
 #| msgid "Animate Map"
 msgid "Generate Map"
-msgstr "Animacións nos mapas."
+msgstr "Xerar un mapa"
 
 #: src/hotkey/hotkey_command.cpp:199
 msgid "Apply a Mask"
-msgstr ""
+msgstr "Aplicar unha máscara"
 
 #: src/hotkey/hotkey_command.cpp:200
-#, fuzzy
 #| msgid "Create Game"
 msgid "Create Mask"
-msgstr "Crear unha partida"
+msgstr "Crear unha máscara"
 
 #: src/hotkey/hotkey_command.cpp:201
-#, fuzzy
 #| msgid "Refresh gui."
 msgid "Refresh Display"
-msgstr "Actualizar a interface gráfica."
+msgstr "Actualizar a pantalla"
 
 #: src/hotkey/hotkey_command.cpp:202
-#, fuzzy
 #| msgid "Latin Translation"
 msgid "Update Terrain Transitions"
-msgstr "Tradución ao latín"
+msgstr "Actualizar as transicións dos terreos"
 
 #: src/hotkey/hotkey_command.cpp:204
 msgid "Toggle Terrain Transition Update"
-msgstr ""
+msgstr "Conmutar a actualización das transicións dos terreos"
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Auto-update Terrain Transitions"
-msgstr ""
+msgstr "Actualizar automaticamente as transicións dos terreos"
 
 #: src/hotkey/hotkey_command.cpp:207
 msgid "Auto-update Terrain Transitions: No"
-msgstr ""
+msgstr "Actualizar automaticamente as transicións dos terreos: non."
 
 #: src/hotkey/hotkey_command.cpp:208
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente."
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Refresh Image Cache"
-msgstr ""
+msgstr "Actualizar a caché das imaxes"
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Draw Hex Coordinates"
-msgstr ""
+msgstr "Mostrar as coordenadas dos hexágonos"
 
 #: src/hotkey/hotkey_command.cpp:212
-#, fuzzy
 #| msgid "Terrain Modifiers"
 msgid "Draw Terrain Codes"
-msgstr "Modificadores do terreo"
+msgstr "Mostrar os códigos dos terreos"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Save Selection to Area"
-msgstr ""
+msgstr "Gardar a selección como zona"
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Rename Selected Area"
-msgstr ""
+msgstr "Renomear a zona seleccionada"
 
 #: src/hotkey/hotkey_command.cpp:216
 msgid "Remove Selected Area"
-msgstr ""
+msgstr "Eliminar a zona seleccionada"
 
 #: src/hotkey/hotkey_command.cpp:217
 msgid "Add New Area"
-msgstr ""
+msgstr "Engadir unha nova zona"
 
 # Optimizado para a interface.
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
 #| msgid "End Scenario"
 msgid "Edit Scenario"
-msgstr "Finalizar"
+msgstr "Editar o escenario"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
 #| msgid "Next Side"
 msgid "Edit Side"
-msgstr "Seguinte bando"
+msgstr "Editar o bando"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
 #| msgid "Remove"
 msgid "Remove Side"
-msgstr "Desinstalar"
+msgstr "Eliminar o bando"
 
 #: src/hotkey/hotkey_command.cpp:223
 msgid "Delay Shroud Updates"
-msgstr ""
+msgstr "Retardar as actualizacións do manto do descoñecido"
 
 #: src/hotkey/hotkey_command.cpp:224
 msgid "Update Shroud Now"
-msgstr ""
+msgstr "Actualizar o manto do descoñecido"
 
 #: src/hotkey/hotkey_command.cpp:225
 msgid "Continue Move"
-msgstr ""
+msgstr "Continuar o movemento"
 
 #: src/hotkey/hotkey_command.cpp:226
 msgid "Find Label or Unit"
-msgstr ""
+msgstr "Buscar un elemento ou unidade"
 
 #: src/hotkey/hotkey_command.cpp:227
-#, fuzzy
 #| msgid "Update All"
 msgid "Speak to Ally"
-msgstr "Actualizalos todos"
+msgstr "Escribirlles unha mensaxe aos aliados"
 
 #: src/hotkey/hotkey_command.cpp:228
-#, fuzzy
 #| msgid "Update All"
 msgid "Speak to All"
-msgstr "Actualizalos todos"
+msgstr "Escribirlle unha mensaxe a todo o mundo"
 
 #: src/hotkey/hotkey_command.cpp:229
 msgid "Help"
 msgstr "Axuda"
 
 #: src/hotkey/hotkey_command.cpp:230
-#, fuzzy
 #| msgid "Chat Log"
 msgid "View Chat Log"
-msgstr "Rexistro de conversas"
+msgstr "Ver o rexistro das conversas"
 
 #: src/hotkey/hotkey_command.cpp:231
-#, fuzzy
 #| msgid "User-Command#3"
 msgid "Enter User Command"
-msgstr "Orde do usuario número 3"
+msgstr "Escribir unha orde"
 
 #: src/hotkey/hotkey_command.cpp:232
-#, fuzzy
 #| msgid "Commands"
 msgid "Custom Command"
-msgstr "Ordes"
+msgstr "Orde personalizada"
 
 #: src/hotkey/hotkey_command.cpp:233
 msgid "Run Formula"
-msgstr ""
+msgstr "Executar o código Formula"
 
 #: src/hotkey/hotkey_command.cpp:234
-#, fuzzy
 #| msgid ""
 #| "\n"
 #| "Clear chat messages.\n"
 #| "\n"
 msgid "Clear Messages"
-msgstr ""
-"\n"
-"Borrar as mensaxes da conversa.\n"
-"\n"
+msgstr "Borrar as mensaxes"
 
 #: src/hotkey/hotkey_command.cpp:236
 msgid "Change Language"
-msgstr ""
+msgstr "Cambiar de idioma"
 
 #: src/hotkey/hotkey_command.cpp:237
-#, fuzzy
 #| msgid "Refresh gui."
 msgid "Refresh WML"
-msgstr "Actualizar a interface gráfica."
+msgstr "Actualizar o código WML"
 
 #: src/hotkey/hotkey_command.cpp:238
-#, fuzzy
 #| msgid "Show next tip of the day"
 msgid "Next Tip of the Day"
-msgstr "Amosar o seguinte consello"
+msgstr "Seguinte consello"
 
 #: src/hotkey/hotkey_command.cpp:239
-#, fuzzy
 #| msgid "Show previous tip of the day"
 msgid "Previous Tip of the Day"
-msgstr "Amosar o consello anterior"
+msgstr "Consello anterior"
 
 #: src/hotkey/hotkey_command.cpp:240
-#, fuzzy
 #| msgid "Tutorial"
 msgid "Start Tutorial"
-msgstr "Aprendizaxe"
+msgstr "Comezar a aprendizaxe"
 
 #: src/hotkey/hotkey_command.cpp:241
-#, fuzzy
 #| msgid "Campaign"
 msgid "Start Campaign"
-msgstr "Campaña"
+msgstr "Comezar unha campaña"
 
 #: src/hotkey/hotkey_command.cpp:242
-#, fuzzy
 #| msgid "Multiplayer"
 msgid "Start Multiplayer Game"
-msgstr "Escenario"
+msgstr "Comezar unha partida con varios xogadores"
 
 #: src/hotkey/hotkey_command.cpp:243
-#, fuzzy
 #| msgid "Remove Add-ons"
 msgid "Manage Add-ons"
-msgstr "Eliminar Complementos"
+msgstr "Xestionar os complementos"
 
 #: src/hotkey/hotkey_command.cpp:244
-#, fuzzy
 #| msgid "Start the map editor"
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapas"
 
 #: src/hotkey/hotkey_command.cpp:245
-#, fuzzy
 #| msgid "Show replay"
 msgid "Show Credits"
-msgstr "Mostrar a repetición."
+msgstr "Mostrar os autores"
 
 #: src/hotkey/hotkey_command.cpp:247
-#, fuzzy
 #| msgid "Show replay"
 msgid "Show Helptip"
-msgstr "Mostrar a repetición."
+msgstr "Mostrar a axuda"
 
 #: src/hotkey/hotkey_command.cpp:250
-#, fuzzy
 #| msgid "Unknown command."
 msgid "Unrecognized Command"
-msgstr "Comando descoñecido."
+msgstr "Orde descoñecida"
 
 #: src/intro.cpp:36
 msgid "The End"
@@ -7153,12 +7078,11 @@ msgid "requesting information for user $nick"
 msgstr "solicitando información do usuario $nick|."
 
 #: src/menu_events.cpp:2612
-#, fuzzy
 #| msgid "Couldn't find label or unit containing the string '$search'."
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr ""
 "non foi posíbel atopar ningunha etiqueta nin unidade que conteña o texto "
-"«$search|»."
+"«$search|»’."
 
 # droid???
 #: src/menu_events.cpp:2651
@@ -7615,22 +7539,19 @@ msgid "Player/Type"
 msgstr "Xogador e tipo"
 
 #: src/multiplayer_connect.cpp:372
-#, fuzzy
 #| msgid "Faction"
 msgid "Faction/Name"
-msgstr "Facción"
+msgstr "Facción ou nome"
 
 #: src/multiplayer_connect.cpp:374
-#, fuzzy
 #| msgid "Team/Gender"
 msgid "Leader/Gender"
-msgstr "Alianza e sexo"
+msgstr "Líder ou sexo"
 
 #: src/multiplayer_connect.cpp:376
-#, fuzzy
 #| msgid "Color"
 msgid "Team/Color"
-msgstr "Cor"
+msgstr "Equipo ou cor"
 
 #: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
@@ -7719,12 +7640,13 @@ msgid "Era:"
 msgstr "Era:"
 
 #: src/multiplayer_create.cpp:72
-#, fuzzy
 #| msgid "No multiplayer sides available in this game"
 msgid ""
 "No eras available\n"
 "for this game."
-msgstr "Non hai bandos multixogador dispoñibles nesta partida"
+msgstr ""
+"Non hai eras dispoñíbeis\n"
+"para esta partida."
 
 #: src/multiplayer_create.cpp:74 src/multiplayer_lobby.cpp:622
 msgid "Modifications:"
@@ -7763,12 +7685,13 @@ msgid "No eras found"
 msgstr "Non se atoparon eras"
 
 #: src/multiplayer_create.cpp:185
-#, fuzzy
 #| msgid "Modifications: none found"
 msgid ""
 "Modifications:\n"
 "None found."
-msgstr "Modificacións: ningunha."
+msgstr ""
+"Modificacións:\n"
+"Non se atopou ningunha."
 
 #: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:279
 msgid "Deactivate"
@@ -7787,10 +7710,9 @@ msgid "Size: "
 msgstr "Tamaño: "
 
 #: src/multiplayer_create.cpp:386
-#, fuzzy
 #| msgid "Number of players: any"
 msgid "Number of players: "
-msgstr "Número de xogadores: calquera"
+msgstr "Número de xogadores: "
 
 #: src/multiplayer_create.cpp:493 src/unit_types.cpp:785
 msgid "No description available."
@@ -7824,16 +7746,14 @@ msgstr " (era descoñecida)"
 
 # Optimizado para a interface.
 #: src/multiplayer_lobby.cpp:486
-#, fuzzy
 #| msgid "Scenario"
 msgid "Scenario:"
-msgstr "Escenario"
+msgstr "Escenario:"
 
 #: src/multiplayer_lobby.cpp:526
-#, fuzzy
 #| msgid "Campaign"
 msgid "Campaign:"
-msgstr "Campaña"
+msgstr "Campaña:"
 
 #: src/multiplayer_lobby.cpp:557
 msgid "Unknown campaign: $campaign_id"
@@ -8477,7 +8397,6 @@ msgstr ""
 "así.\n"
 
 #: src/savegame.cpp:613
-#, fuzzy
 #| msgid ""
 #| "This save is from an old, unsupported version ($version_number|) and "
 #| "cannot be loaded."
@@ -8485,7 +8404,7 @@ msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
 "loaded."
 msgstr ""
-"Esta partida corresponde a unha versión demasiado antiga para poder cargala "
+"Esta partida non pode cargarse por ter información de versión incorrecta "
 "($version_number|)."
 
 #: src/savegame.cpp:636
