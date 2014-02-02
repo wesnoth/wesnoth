@@ -9,13 +9,13 @@
 # Fran Diéguez <fran dot dieguez at glug dot es>, 2008.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2010.
 # Adrián Chaves Fernández (Gallaecio) <adriyetichaves@gmail.com>, 2010, 2011.
-# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013.
+# Adrian Chaves Fernandez (Gallaecio) <adriyetichaves@gmail.com>, 2011, 2012, 2013, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2013-12-06 09:31+0100\n"
+"PO-Revision-Date: 2014-02-01 15:32+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -38,12 +38,12 @@ msgstr ""
 #. [terrain_type]: id=tri_trash
 #: data/core/terrain.cfg:18
 msgid "Trash"
-msgstr ""
+msgstr "Lixo"
 
 #. [terrain_type]: id=tri_bones
 #: data/core/terrain.cfg:27
 msgid "Remains"
-msgstr ""
+msgstr "Restos"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -108,6 +108,11 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Cando un río é moi pouco profundo, atravesalo é unha cousa trivial para as "
+"unidades terrestres. Ademais, calquera criatura afeita a nadar ten total "
+"liberdade de movemento mesmo nestas partes dos ríos. No que concerne ao "
+"xogo, un vao trátase coma se fose unha chaira ou auga pouco profunda, o que "
+"mellor acaia a cada unidade en cuestións de defensa e movemento."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -126,10 +131,9 @@ msgstr "Arrecife costeiro gris"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:130
-#, fuzzy
 #| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "Arrecife costeiro"
+msgstr "Arrecife costeiro mediano"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:141
@@ -146,10 +150,9 @@ msgstr "Braña"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:154
-#, fuzzy
 #| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
-msgstr "Torre de castelo dos humanos lamacento"
+msgstr "Xunco de auga de braña"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:165
@@ -231,6 +234,9 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"Os <italic>text='camiños'</italic> son rutas de terra pisada, creadas polos "
+"moitos viaxeiros que as percorreron. No que atinxe ao xogo, os camiños son "
+"idénticos ás chairas."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:268
@@ -269,6 +275,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"Os <italic>text='desertos'</italic> teñen unha composición algo diferente á "
+"das fosas de area e das praias pero, a efectos do xogo, todas son iguais. "
+"Consulta a información sobre a <ref>dst='terrain_sand' text='area'</ref>."
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -292,6 +301,13 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"A inestabilidade da <italic>text='area'</italic> fai que sexa difícil de "
+"cruzar para a maioría das unidades, que ademais quedan moi expostas a "
+"posíbeis ataques. Por outra banda, os pés grandes ou os corpos con forma de "
+"serpes das especies réptiles fai que estas se desenvolvan moi ben neste "
+"medio.\n"
+"\n"
+"A maioría das unidades teñen entre un 20% e un 40% de defensa na area."
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:337
@@ -534,10 +550,9 @@ msgstr "Montañas"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:750
-#, fuzzy
 #| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
-msgstr "Montañas infranqueábeis normais"
+msgstr "Montañas normais"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:760
@@ -629,6 +644,18 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"As <italic>text='covas rochosas'</italic> fórmanse pola acción da auga e do "
+"vento, que arrastran partículas erosivas que roen a rocha. Semellan cavernas "
+"subterráneas estreitas, o cal reduce a eficiencia da maioría das unidades, "
+"pero dálles abeiro. Os ananos e mailos trolles, principais habitantes das "
+"covas, poden desprazarse por este terreo con relativa facilidade. Os ananos, "
+"debido ao seu pequeno tamaño, non teñen ningún problema para moverse neste "
+"ambiente. En certas ocasións as covas están "
+"<ref>dst=terrain_illuminated_cave text=iluminadas</ref>.\n"
+"\n"
+"A maioría das unidades teñen arredor dun 50% de defensa nas covas rochosas, "
+"mentres que a cabalería está limitada ao 40%. Os ananos gozan dun 60% de "
+"defensa neste medio."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -683,6 +710,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Os perigos inherentes a intentar camiñar sobre a <italic>text='lava'</"
+"italic> resultan bastante evidentes. No que se refire ao movemento, a lava é "
+"equivalente ao terreo <ref>dst='terrain_unwalkable' text='intransitable'</"
+"ref>, e só poden cruzala aquelas unidades capaces de voar a unha altura "
+"considerable. O magma fundido produce ademais un brillo considerable que "
+"proporciona unha bonificación de ataque ás unidades legais e elimina a "
+"bonificación ofensiva das unidades caóticas."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:989
@@ -965,6 +999,16 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"As <italic>text='vilas somerxidas'</italic> son o fogar dos sirénidos e dos "
+"nagas. Se ben se trata do medio natural para as criaturas acuáticas, as "
+"terrestres teñen grandes dificultades para percorrer e defender estas "
+"aldeas. Non obstante, como en calquera outra aldea, as instalacións están "
+"dispoñíbeis para todas as criaturas, o que permite que as unidades poidan "
+"sandar as súas feridas. Calquera unidade situada nunha aldea pode sandar ata "
+"oito puntos de vida por rolda, ou ser curada do envelenamento.\n"
+"\n"
+"Os sirénidos e mailos nagas teñen un 60% de defensa nas vilas somerxidas, "
+"mentres que as unidades terrestres teñen normalmente pouca defensa nelas."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1521
@@ -1215,6 +1259,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Para aqueles capaces de construílas, as <italic>text='pontes'</italic> "
+"ofrecen unha liberación da inconstante natureza dos camiños que forma a "
+"auga, cuxos vaos veñen e van segundo sobe ou baixa o nivel fluvial. Por non "
+"falar da comodidade de non ter os pés mollados, que non é para tomar a risa "
+"durante o inverno.\n"
+"\n"
+"Para os anfibios unha ponte ten o mellor de ambos os dous mundos —a efectos "
+"do xogo, trátase como unha chaira ou auga superficial, segundo o que mellor "
+"lle acaia á criatura do hexágono en cuestións de defensa e movemento—. Ten "
+"en conta que unha unidade acuática e unha terrestre non poden ocupar un "
+"mesmo hexágono ao mesmo tempo."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1289,7 +1344,7 @@ msgstr "Néboa da guerra"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2225 data/core/terrain.cfg:2226
 msgid "Fungus"
-msgstr ""
+msgstr "Cogomelos"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2229
@@ -1305,6 +1360,17 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"As <italic>text='colonias de cogomelos'</italic> son vastos bosques "
+"subterráneos de cogomelos xigantes\n"
+"que medran na húmida escuridade. A "
+"maioría das unidades teñen problemas ao franquear o chan esponxoso dos "
+"pequenos fungos, pero teñen moito abeiro tras os grandes talos. As unidades "
+"montadas, en troques, quedan totalmente atoadas e carecen de liberdade de "
+"movemento para o combate. As unidades non mortas teñen unha afinidade "
+"natural pola podremia e desenvólvense moi ben nos bosques de cogomelos.\n"
+"\n"
+"A maioría das unidades reciben entre un 50% e un 60% de defensa nas colonias "
+"de cogomelos, mentres que a cabalería só recibe un 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2241
@@ -1326,13 +1392,30 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"O terreo de tipo <italic>text='cova'</italic> representa calquera caverna "
+"subterránea ampla dabondo como para que pase unha unidade.\n"
+"A meirande parte das unidades non están familiarizadas co terreo, e polo "
+"tanto avanzarán máis amodo e terán maiores dificultades para defenderse. Os "
+"ananos e mailos trolles, que habitan en covas, desenvólvense relativamente "
+"ben neste tipo de terreo, en especial os ananos, que grazas ao seu reducido "
+"tamaño son capaces de superar moitos obstáculos que outras especies non "
+"poderían. Ás veces as covas poden estar <ref>dst='terrain_illuminated_cave' "
+"text='iluminadas'</ref>.\n"
+"\n"
+"É pouca a frecuencia coa que no mundo subterráneo se ven zonas bañadas con "
+"luz da superficie. Estas zonas fornecen ás unidades legais unha bonificación "
+"de ataque, e réstalle bonificación de ataque ás unidades caóticas. Alén desta "
+"peculiaridade, este tipo de terreo se comporta de maneira idéntica aos <ref>"
+"dst='terrain_cave' text='terreos de cova'</ref> normais.\n"
+"\n"
+"A meirande parte das unidades teñen entre un 20% e un 40% de defensa nas "
+"covas, mentres que os ananos gozan dun 50% de defensa."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2254
-#, fuzzy
 #| msgid "Sand"
 msgid "Sands"
-msgstr "Area"
+msgstr "Areas"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2271
@@ -1345,6 +1428,13 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"Os <italic>text='arrecifes costeiros'</italic> son baixíos formados por "
+"rochas, coral e area.\n"
+"Isto permite que a maioría das unidades terrestres se "
+"movan e defendan mellor neste terreo que ao vadear augas pouco profundas, e "
+"ademais garántelles ás criaturas acuáticas unha defensa excepcional.\n"
+"\n"
+"Os sirénidos e os nagas obteñen un 70% de defensa nos arrecifes costeiros."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2285
@@ -1359,6 +1449,16 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"Os <italic>text='outeiros'</italic> representan calquera terreo "
+"razoablemente esgrevio, con altos e baixos que sirvan de abeiro.\n"
+"A maioría "
+"das tropas teñen dificultades para moverse por eles. Os ananos, trolles e "
+"orcos están tan familiarizados co terreo que poden atravesalo sen reducir a "
+"marcha, porén a cabalería ten tantos problemas ao desprazarse por el que "
+"calquera vantaxe defensiva queda contrarrestada.\n"
+"\n"
+"Case todas as unidades teñen arredor dun 50% de defensa nos outeiros, "
+"mentres que a cabalería está limitada ao 40%, e os ananos gozan dun 60%."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2300
@@ -1373,6 +1473,16 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"As <italic>text='brañas'</italic> ou <italic>text='lameiros'</italic> "
+"representan calquera tipo de terras húmidas.\n"
+"Entorpecen o avance de case "
+"calquera, e adoitan inhibir a súa capacidade de defensa. porén, as especies "
+"cun corpo afeito a moverse pola auga teñen nas brañas unha liberdade de "
+"movemento completa e mais unha bonificación defensiva. Quen nos lameiros "
+"habita, nos lameiros se agocha.\n"
+"\n"
+"Case todas as unidades teñen un 30% de defensa nas brañas, salvo os "
+"sirénidos, os nagas e mailos saurios, que adoitan gozar do 60%."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2313
@@ -1388,6 +1498,16 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"As <italic>text='augas pouco profundas'</italic> representan calquera "
+"extensión de auga profunda abondo como para cubrir a un humano ata a "
+"cintura, o que abonda para reducir o avance de case calquera criatura, así "
+"coma deixala case sen defensa. Os ananos, dado que a auga lles chega case "
+"ata o pescozo, pásano verdadeiramente mal neste medio. Pola outra banda, as "
+"criaturas con corpos afeitos á natación móvense con completa liberdade na "
+"auga, ademais de gañar unha bonificación defensiva considerable.\n"
+"\n"
+"A maioría das unidades teñen entre un 20% e un 30% de defensa nas augas "
+"pouco profundas, mentres que os nagas e os sirénidos gozan dun 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2328
@@ -1401,6 +1521,16 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"Os <italic>text='castelos'</italic> son calquera tipo de fortificación "
+"permanente.\n"
+"Case todas as unidades reciben unha considerable bonificación "
+"defensiva nos castelos, e a maior parte teñen total liberdade de movemento "
+"neles. As unidades situadas dentro dun castelo representan a súa capacidade "
+"defensiva. Sen unha unidade en cada hexágono con muralla, un inimigo pode "
+"simplemente entrar no castelo sen loitar, conseguindo a mesma bonificación "
+"defensiva que os que xa estaban dentro.\n"
+"\n"
+"A maioría das unidades teñen arredor dun 60% de defensa nun castelo."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2342
@@ -1415,6 +1545,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"As <italic>text='montañas'</italic> son tan esgrevias que as unidades a "
+"miúdo teñen que gabear por obstáculos para moverse. Pola súa natureza, "
+"proporcionan unha importante bonificación defensiva a case todas as tropas, "
+"pero tamén limitan bastante o seu avance. A cabalería rara vez pode "
+"atravesar os terreos montañosos, coas excepcións da cabalería dos elfos e os "
+"trasnos montados en lobo. Os ananos e mailos trolles están afeitos aos "
+"terreos montañosos, polo que se desenvolven moi ben neles.\n"
+"\n"
+"Case todas as unidades reciben arredor dun 60% de defensa nas montañas, "
+"mentres que os ananos gozan dun 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2353
@@ -1426,6 +1566,13 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"As <italic>text='augas profundas'</italic> representan calquera extensión de "
+"auga profunda abondo para cubrir a cabeza dun home. A maioría das unidades "
+"non poden entrar nas augas profundas, nas que se desenvolven ben as que "
+"poden voar ou nadar moi ben.\n"
+"\n"
+"Os sirénidos e mailos nagas teñen un 50% de defensa nas profundidades, con "
+"total liberdade de movemento."
 
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:2364 data/core/terrain.cfg:2365
@@ -1444,6 +1591,14 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"As <italic>text='chairas'</italic> representan calquera tipo de terreo "
+"aberto e chan, xa teña cultivos, pasto ou estea botado a monte. Ao ser "
+"terreo aberto é moi fácil moverse por el, pero tamén é moi difícil "
+"defenderse nel. Normalmente as unidades que se desenvolven ben nas chairas "
+"son as de cabalería, ou unidades moi áxiles que se benefician dos espazos "
+"abertos.\n"
+"\n"
+"Case todas as unidades teñen entre un 30% e un 40% de defensa nas chairas."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2379
@@ -1463,6 +1618,21 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"Os <italic>text='bosques'</italic> representan calquera terra con árbores e "
+"maleza suficiente para dificultar o paso. Case todas as unidades son máis "
+"rápidas por chairas que por bosques, pero tamén lles resulta máis doado "
+"defenderse neles que en terra aberta. Á cabalería, pola contra, cústalle "
+"tanto desprazarse pola maleza que non a dan aproveitado para defenderse. Os "
+"elfos son unha excepción a esta regra xeral dos bosques. Non só se moven con "
+"total liberdade por eles, senón que ademais gañan unha considerable "
+"bonificación defensiva. Os ananos son outra excepción. Aínda que son capaces "
+"de abrirse paso a través dos bosques sen moita dificultade, o seu "
+"descoñecemento do terreo déixaos completamente vulnerables.\n"
+"\n"
+"A maioría das unidades teñen un 50% de defensa no bosque, pero a cabalería "
+"está limitada ao 30%. Os elfos, por outra banda, gozan de entre un 60% e un "
+"70%, mesmo os que van a cabalo. Os ananos adoitan recibir só un 30% de "
+"defensa nos bosques."
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:2389 data/core/terrain.cfg:2390
@@ -1480,6 +1650,14 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"Os terreos <italic>text='xeados'</italic> representan calquera área chá "
+"cuberta de xeo ou neve. A meirande parte das unidades van máis a modo sobre "
+"estes terreos, e cústalles máis defenderse neles. Nótese que as unidades "
+"nadadoras, mesmo as que poden respirar baixo a auga, non poden mergullarse "
+"baixo o xeo.\n"
+"\n"
+"A meirande parte das unidades teñen entre un 20% e un 40% de defensa nos "
+"terreos xeados."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2405
@@ -1495,6 +1673,15 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"As <italic>text='vilas'</italic> representan calquera grupo de edificios. "
+"Case todas as unidades, incluso as montadas a cabalo, se moven perfectamente "
+"polas vilas, e a maioría das unidades obteñen unha bonificación defensiva "
+"por estar nelas. As vilas ofrecen ás unidades os recursos necesarios para "
+"limpar e curar as feridas, o que lle permite ás unidades situadas nelas "
+"sandar oito puntos de vida cada rolda, ou curar do envelenamento.\n"
+"\n"
+"A maioría das unidades teñen dun 50% a un 60% de defensa nas vilas, mentres "
+"que a cabalería só recibe un 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2415 data/core/terrain.cfg:2416
@@ -1510,6 +1697,11 @@ msgid ""
 "jagged peaks at such rarified heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Os obstáculos que incluso o viaxeiro máis determinado non podería superar "
+"son as paredes de pedra sólida e montañas tan altas e empinadas que están "
+"constantemente cubertas de nubes. Nin as criaturas voadoras poden "
+"desprazarse por picos tan elevados, e nin o troll máis feroz pode atravesar "
+"as grosas paredes de pedra."
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:2425 data/core/terrain.cfg:2426
@@ -1524,6 +1716,10 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"Un terreo <italic>text='intransitable'</italic> é calquera abismo ou canón "
+"que, como o seu propio nome indica, non se pode transitar. Os abismos "
+"salientan por ter paredes moi esgrevias que leva días atravesar. A efectos "
+"do xogo, só as unidades capaces de voar poden cruzar estes terreos."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2435 data/core/terrain.cfg:2436
@@ -1535,6 +1731,8 @@ msgstr "Raís"
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
 msgstr ""
+"Os <italic>text='raís'</italic> úsanse para transportar minerais en bruto. "
+"Adoitan usalo os ananos."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1681,38 +1879,35 @@ msgstr "Sen descrición."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:320
 msgid "Website:"
-msgstr ""
+msgstr "Sitio web:"
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:344
-#, fuzzy
 #| msgid "None"
 msgid "url^None"
-msgstr "Nada"
+msgstr "Ningún"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:379
-#, fuzzy
 #| msgid "Copy"
 msgid "url^Copy"
 msgstr "Copiar"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:380
-#, fuzzy
 #| msgid "Copy this path to clipboard"
 msgid "Copy this URL to clipboard"
-msgstr "Copiar esta ruta no portapapeis."
+msgstr "Copiar este URL no portapapeis."
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:393
 msgid "url^Go"
-msgstr ""
+msgstr "Ir"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:394
 msgid "Visit this URL with a web browser"
-msgstr ""
+msgstr "Visitar o URL nun navegador web."
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:422
@@ -1756,10 +1951,9 @@ msgstr "Faccións mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
-#, fuzzy
 #| msgid "addons_of_type^MP campaigns"
 msgid "addons_of_type^SP/MP Campaigns"
-msgstr "Campañas mult."
+msgstr "Campañas ind./mult."
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
@@ -2135,83 +2329,74 @@ msgstr "Visíbel no manto"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
-#, fuzzy
 #| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "Configuración do editor"
+msgstr "Editar a configuración do escenario"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "Identificador:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
-#, fuzzy
 #| msgid "Experience modifier"
 msgid "Experience modifier:"
-msgstr "Modificador da experiencia"
+msgstr "Modificador da experiencia:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
 #| msgid "Turn"
 msgid "Turns:"
-msgstr "Rolda:"
+msgstr "Roldas:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
-msgstr ""
+msgstr "Declarar a vitoria tras derrotar a todos os inimigos"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
-#, fuzzy
 #| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Momento do día inicial ao chou"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
-#, fuzzy
 #| msgid "Side $side"
 msgid "Side Setup"
-msgstr "Bando $side"
+msgstr "Configuración do bando"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
-#, fuzzy
 #| msgid "Number of hills:"
 msgid "Number:"
-msgstr "Número de outeiros:"
+msgstr "Número:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:105
 msgid "Team identifier:"
-msgstr ""
+msgstr "Identificador do equipo:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
 #| msgid "Team only"
 msgid "Team name:"
-msgstr "Só co equipo"
+msgstr "Nome do equipo:"
 
 # Accesible dende:
 # «Configuración → Visualización».
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
 #| msgid "Animate map"
 msgid "Share map"
-msgstr "Mostrar as animacións do mapa."
+msgstr "Compartir o mapa"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
-#, fuzzy
 #| msgid "Leader"
 msgid "No leader"
-msgstr "Líder"
+msgstr "Sen líder"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/editor_edit_side.cfg:216
@@ -2222,68 +2407,65 @@ msgstr "Néboa da guerra"
 #. [toggle_button]: id=share_view
 #: data/gui/default/window/editor_edit_side.cfg:228
 msgid "Share view"
-msgstr ""
+msgstr "Compartir a vista"
 
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
-#, fuzzy
 #| msgid "Status Table"
 msgid "Hide in status table"
-msgstr "Cadro da situación"
+msgstr "Ocultar o cadro da situación"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "Ouro:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
 #| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Ouro por vila"
+msgstr "Ouro por vila:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "Ingresos:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
-#, fuzzy
 #| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "Ouro por vila"
+msgstr "Abastecemento por vila:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:383
 msgid "Controller:"
-msgstr ""
+msgstr "Controlador:"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:400
 msgid "controller^Human"
-msgstr ""
+msgstr "Humano"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
 msgid "controller^Human/AI"
-msgstr ""
+msgstr "Humano/IA"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^AI only"
-msgstr ""
+msgstr "Só IA"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:406
 msgid "controller^None"
-msgstr ""
+msgstr "Ninguén"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:423
 msgid "controller^Player number:"
-msgstr ""
+msgstr "Número do xogador:"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -3053,7 +3235,7 @@ msgstr "Contrasinal:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Confirmar"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
@@ -3062,7 +3244,6 @@ msgstr "Estás seguro de que queres aplicar os cambios?"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
-#, fuzzy
 #| msgid "User interaction required"
 msgid "User Interaction Required"
 msgstr "Requírese da interacción do usuario"
@@ -4349,10 +4530,9 @@ msgid "Reset all bindings to the default values"
 msgstr "Restablecer todos os atallos aos seus valores predeterminados."
 
 #: src/hotkey/hotkey_preferences_display.cpp:218
-#, fuzzy
 #| msgid "Prefs section^Editor"
 msgid "Prefs section^Title Screen"
-msgstr "Editor"
+msgstr "Pantalla de inicio"
 
 #: src/hotkey/hotkey_preferences_display.cpp:220
 msgid "Prefs section^Game"
