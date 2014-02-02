@@ -752,6 +752,7 @@ struct set_completion
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
+	const events::command_disabler disable_commands;
 	browse_ = true;
 	linger_ = true;
 

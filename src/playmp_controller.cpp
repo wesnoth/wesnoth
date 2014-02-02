@@ -275,6 +275,7 @@ void playmp_controller::reset_end_scenario_button()
 void playmp_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
+	const events::command_disabler disable_commands;
 	browse_ = true;
 	linger_ = true;
 	// If we need to set the status depending on the completion state
