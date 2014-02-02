@@ -17,6 +17,7 @@
 
 #include "global.hpp"
 
+#include <ctime>
 #include <string>
 
 namespace util {
