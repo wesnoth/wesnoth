@@ -1169,8 +1169,8 @@ static config unit_box_at(const map_location& mouseover_hex)
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
 		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
 
-	std::string local_tod_image  = "themes/classic/" + local_tod.image;
-	std::string global_tod_image = "themes/classic/" + global_tod.image;
+	std::string local_tod_image  = "themes/unit_box/" + local_tod.image;
+	std::string global_tod_image = "themes/unit_box/" + global_tod.image;
 	if (local_tod.bonus_modified > 0) local_tod_image += "~BRIGHTEN()";
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";
