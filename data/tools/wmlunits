@@ -311,12 +311,11 @@ def list_contents():
                 sys.stdout.write("up to date\n")
                 continue
             info["parsed"] = False
-            
+            info["dependencies"] = get_dependencies(addon)
             parse("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
             info["eras"] = list_eras(batchlist, addon)
             info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
-            info["dependencies"] = get_dependencies(addon)
             sys.stdout.write("ok\n")
         except wmlparser2.WMLError as e:
             ef = open(logname, "w")
