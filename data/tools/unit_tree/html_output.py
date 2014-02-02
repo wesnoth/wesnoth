@@ -775,6 +775,8 @@ class HTMLOutput:
         hp = uval("hitpoints")
         mp = uval("movement")
         xp = uval("experience")
+        vision = uval("vision")
+        jamming = uval("jamming")
         level = uval("level")
         alignment = uval("alignment")
 
@@ -821,14 +823,17 @@ class HTMLOutput:
             ("cost", _("Cost: ", "wesnoth-help")),
             ("hitpoints", _("HP: ")),
             ("movement", _("Movement", "wesnoth-help") + ": "),
+            ("vision", _("Vision", "wesnoth-help") + ": "),
+            ("jamming", _("Jamming", "wesnoth-help") + ":"),
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
             ("alignment", _("Alignment: ")),
             ("id", "ID")]:
+            x = uval(val)
+            if not x and val in ("jamming", "vision"): continue
+            if val == "alignment": x = _(x)
             write("<tr>\n")
             write("<td>%s</td>" % text)
-            x = uval(val)
-            if val == "alignment": x = _(x)
             write("<td class=\"val\">%s</td>" % x)
             write("</tr>\n")
 
