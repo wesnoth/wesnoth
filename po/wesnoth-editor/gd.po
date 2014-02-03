@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2014-01-15 14:17+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"PO-Revision-Date: 2014-01-31 13:04-0000\n"
+"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
@@ -38,19 +38,17 @@ msgstr "Sia-cheàrnach rèideas 2"
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
 msgid "Hex Line NW-SE"
-msgstr "Loidhne sia-cheàrnach IT-ED"
+msgstr "Loidhne sia-cheàrnach ITh-EDh"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Loidhne sia-cheàrnach IT-ED"
+msgstr "Loidhne sia-cheàrnach ITh-EDh"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
 msgid "all"
-msgstr "a h-uile"
+msgstr "Na h-uile cruth-tìre"
 
 #. [editor_group]: id=water
 #: data/core/editor/terrain-groups.cfg:17
@@ -80,7 +78,7 @@ msgstr "coille"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "foghar"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -125,52 +123,52 @@ msgstr "sònraichte"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr ""
+msgstr "Falamh"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "Deuchainn"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "Tùsail"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "Samhradh"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "Geamhradh"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "Fon talamh"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "Fada fon talamh"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "Taobh a-staigh"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "Sgeideal 24 uairean"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "Às dèidh an Tuiteam"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:63
@@ -185,7 +183,7 @@ msgstr "Mapa"
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:97
 msgid "Transition Update"
-msgstr ""
+msgstr "Ùrachadh an tar-mhùthaidh"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:104
@@ -195,22 +193,22 @@ msgstr "Uinneag"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:113
 msgid "Areas"
-msgstr ""
+msgstr "Raointean"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:121
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Sònraich an t-àm ionadail"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:127
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Sònraich sgeideal an ama ionadail"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:135
 msgid "Side"
-msgstr ""
+msgstr "Taobh"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:154
@@ -220,46 +218,46 @@ msgstr "bailtean"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:171
 msgid "units"
-msgstr ""
+msgstr "aonadan"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:509
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Clàr-taice sgeideal an ama"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:520
 msgid "Playlist"
-msgstr ""
+msgstr "Liosta-chluich"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:526
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Sònraich sgeideal an ama"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Aithnichear: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "Ainm: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
-msgstr ""
+msgstr "Seòrsa: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Level: "
-msgstr ""
+msgstr "Leibheil: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Cost: "
-msgstr ""
+msgstr "Cosgais: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "Trus: "
 
 #: src/editor/editor_controller.cpp:173
 msgid "Fatal error"
@@ -296,19 +294,19 @@ msgstr "Cha deach àm-an-latha deasaiche a lorg."
 
 #: src/editor/editor_controller.cpp:1068
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Atharraich ID an aonaid"
 
 #: src/editor/editor_controller.cpp:1069
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/editor_controller.cpp:1085
 msgid "Rename Unit"
-msgstr ""
+msgstr "Thoir ainm ùr air an aonad"
 
 #: src/editor/editor_controller.cpp:1086
 msgid "Name:"
-msgstr ""
+msgstr "Ainm:"
 
 #: src/editor/map/context_manager.cpp:127
 #: src/editor/map/context_manager.cpp:288
@@ -316,26 +314,20 @@ msgid "(New Map)"
 msgstr "(Mapa ùr)"
 
 #: src/editor/map/context_manager.cpp:184
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "Tagh mapa airson fhosgladh"
+msgstr "Tagh faidhle airson fhosgladh"
 
 #: src/editor/map/context_manager.cpp:290
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Scenario)"
-msgstr "(Mapa ùr)"
+msgstr "(Cnàmh-sgeul ùr)"
 
 #: src/editor/map/context_manager.cpp:322
 msgid "(Unnamed Area)"
-msgstr ""
+msgstr "(Raon gun ainm)"
 
 #: src/editor/map/context_manager.cpp:345
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Mapa ùr)"
+msgstr "(Taobh ùr)"
 
 #: src/editor/map/context_manager.cpp:409
 msgid "Choose a Mask to Apply"
@@ -347,11 +339,11 @@ msgstr "Mearachd le luchdadh a’ mhasga"
 
 #: src/editor/map/context_manager.cpp:435
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: src/editor/map/context_manager.cpp:435
 msgid "Rename Area"
-msgstr ""
+msgstr "Thoir ainm ùr air an raon"
 
 #: src/editor/map/context_manager.cpp:446
 msgid "Choose Target Map"
@@ -370,13 +362,11 @@ msgstr "Sàbhail am mapa mar"
 #: src/editor/map/context_manager.cpp:604
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr ""
-"Tha am  faidhle ann mu thràth. A bheil thu airson sgrìobhadh thairis air?"
+"Tha am faidhle ann mu thràth. A bheil thu airson sgrìobhadh thairis air?"
 
 #: src/editor/map/context_manager.cpp:600
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Sàbhail am mapa mar"
+msgstr "Sàbhail an cnàmh-sgeul mar"
 
 #: src/editor/map/context_manager.cpp:639
 msgid "No random map generators found."
@@ -396,13 +386,11 @@ msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "A bheil thu airson a h-uile atharrachadh a rinn thu air a’ mhapa bhon t-"
-"sàbhaladh mu dheireadh a thilgeil air  falbh?"
+"sàbhaladh mu dheireadh a thilgeil air falbh?"
 
 #: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Tha am mapa seo fosgailte mu thràth."
+msgstr "Tha an cnàmh-sgeul seo fosgailte mar-thà."
 
 #: src/editor/map/context_manager.cpp:788
 #: src/editor/map/context_manager.cpp:843
@@ -410,10 +398,8 @@ msgid "This map is already open."
 msgstr "Tha am mapa seo fosgailte mu thràth."
 
 #: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Mapa air a shàbhaladh."
+msgstr "Cnàmh-sgeul air a shàbhaladh."
 
 #: src/editor/map/context_manager.cpp:823
 msgid "Map saved."
@@ -446,13 +432,11 @@ msgstr "Tha meud a’ mhapa amais eadar-dhealaichte bhon mhapa seo"
 
 #: src/editor/map/map_context.cpp:127
 msgid "File not found"
-msgstr "Cha deach am  faidhle a lorg"
+msgstr "Cha deach am faidhle a lorg"
 
 #: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Faidhle mapa falamh"
+msgstr "Faidhle falamh"
 
 #: src/editor/map/map_context.cpp:175
 msgid ""
@@ -463,10 +447,8 @@ msgstr ""
 "map_data a’ tomhadh ri faidhle a tha ann"
 
 #: src/editor/map/map_context.cpp:507
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Cha b' urrainn dhuinn am mapa sàbhaladh: $msg"
+msgstr "Cha b' urrainn dhuinn an cnàmh-sgeul a shàbhaladh: $msg"
 
 #: src/editor/map/map_context.cpp:534
 msgid "Could not save into scenario"
@@ -474,12 +456,12 @@ msgstr "Cha b' urrainn dhuinn sàbhaladh dhan chnàmh-sgeul"
 
 #: src/editor/map/map_context.cpp:541
 msgid "Could not save the map: $msg"
-msgstr "Cha b' urrainn dhuinn am mapa sàbhaladh: $msg"
+msgstr "Cha b' urrainn dhuinn am mapa a shàbhaladh: $msg"
 
 #: src/editor/palette/editor_palettes.cpp:59
 #: src/editor/palette/editor_palettes.cpp:114
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Buidheann neo-aithnichte)"
 
 #: src/editor/palette/editor_palettes.cpp:383
 msgid "(non-core)"
@@ -499,7 +481,7 @@ msgstr "Cùlaibh:"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:123
 msgid "Choose file"
-msgstr ""
+msgstr "Tagh faidhle"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:86
 msgid "player^None"
