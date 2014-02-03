@@ -28,7 +28,6 @@
 #include "unit_map.hpp"
 
 class display;
-class game_state;
 class vconfig;
 class team;
 
@@ -87,7 +86,11 @@ public:
 	unit(const unit& u);
 
 	/** Initializes a unit from a config */
-	explicit unit(const config& cfg, bool use_traits = false, game_state *state = NULL, const vconfig* vcfg = NULL);
+	explicit unit(
+			  const config& cfg
+			, bool use_traits = false
+			, const vconfig* vcfg = NULL);
+
 	/**
 	  * Initializes a unit from a unit type
 	  * only real_unit may have random traits, name and gender

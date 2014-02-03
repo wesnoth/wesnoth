@@ -2125,7 +2125,7 @@ static int intf_put_unit(lua_State *L)
 			if (!resources::game_map->on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
-		u = new unit(cfg, true, resources::state_of_game);
+		u = new unit(cfg, true);
 	}
 
 	resources::screen->invalidate(loc);
@@ -2167,7 +2167,7 @@ static int intf_put_recall_unit(lua_State *L)
 	else
 	{
 		config cfg = luaW_checkconfig(L, 1);
-		u = new unit(cfg, true, resources::state_of_game);
+		u = new unit(cfg, true);
 	}
 
 	if (!side) side = u->side();
@@ -2244,7 +2244,7 @@ static int intf_find_vacant_tile(lua_State *L)
 			u = static_cast<lua_unit *>(lua_touserdata(L, 3))->get();
 		} else {
 			config cfg = luaW_checkconfig(L, 3);
-			u = new unit(cfg, false, resources::state_of_game);
+			u = new unit(cfg, false);
 			fake_unit = true;
 		}
 	}
@@ -2285,7 +2285,7 @@ static int intf_float_label(lua_State *L)
 static int intf_create_unit(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
-	unit *u = new unit(cfg, true, resources::state_of_game);
+	unit *u = new unit(cfg, true);
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L
 			, getunitKey);

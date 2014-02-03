@@ -294,7 +294,7 @@ void map_context::load_scenario(const config& game_config)
 		BOOST_FOREACH(config &a_unit, side.child_range("unit")) {
 			map_location loc(a_unit, NULL);
 			a_unit["side"] = i;
-			units_.add(loc, unit(a_unit, true, &state_) );
+			units_.add(loc, unit(a_unit, true) );
 		}
 		i++;
 	}

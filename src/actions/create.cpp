@@ -190,7 +190,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	if ( recall_list_element == recall_list.end() ) {
 		//make a temporary unit
-		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
+		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
 		if ( loc.valid() ) {
 			unit *new_unit = temp_unit.get();
