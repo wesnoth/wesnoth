@@ -85,8 +85,9 @@ public:
 
 	// Copy constructor
 	unit(const unit& u);
+
 	/** Initializes a unit from a config */
-	unit(const config& cfg, bool use_traits = false, game_state *state = NULL, const vconfig* vcfg = NULL);
+	explicit unit(const config& cfg, bool use_traits = false, game_state *state = NULL, const vconfig* vcfg = NULL);
 	/**
 	  * Initializes a unit from a unit type
 	  * only real_unit may have random traits, name and gender
