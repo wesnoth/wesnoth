@@ -591,6 +591,8 @@ namespace {
 							LOG_CS << "Upload aborted - incorrect passphrase.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
 						} else {
+							const time_t upload_ts = time(NULL);
+
 							// Warn admins in the log about reuploading add-ons whose names don't
 							// pass the addon_name_legal() whitelist check above.
 
@@ -607,6 +609,7 @@ namespace {
 
 							if(campaign == NULL) {
 								campaign = &campaigns().add_child("campaign");
+								(*campaign)["original_timestamp"] = lexical_cast<std::string>(upload_ts);
 							}
 
 							(*campaign)["title"] = upload["title"];
@@ -626,7 +629,7 @@ namespace {
 							if((*campaign)["downloads"].empty()) {
 								(*campaign)["downloads"] = 0;
 							}
-							(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
+							(*campaign)["timestamp"] = lexical_cast<std::string>(upload_ts);
 
 							int uploads = (*campaign)["uploads"].to_int() + 1;
 							(*campaign)["uploads"] = uploads;
@@ -644,6 +647,7 @@ namespace {
 							data["description"] = (*campaign)["description"];
 							data["version"] = (*campaign)["version"];
 							data["timestamp"] = (*campaign)["timestamp"];
+							data["original_timestamp"] = (*campaign)["original_timestamp"];
 							data["icon"] = (*campaign)["icon"];
 							data["type"] = (*campaign)["type"];
 							(*campaign).clear_children("translation");
