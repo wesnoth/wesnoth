@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gettext.hpp"
 #include "hotkey_command.hpp"
 #include "hotkey_item.hpp"
