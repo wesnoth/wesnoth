@@ -21,7 +21,7 @@ import urllib2
 
 #TODO: document and log where missing
 
-class Error(Exception):
+class Error(StandardError):
     """Base class for exceptions in this module."""
     pass
 
