@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-05 19:37+0100\n"
 "PO-Revision-Date: 2014-02-01 15:45+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -42,19 +42,19 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:532
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Baixo a terra"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:665
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "furioso"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:563
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -64,13 +64,13 @@ msgstr ""
 "morre un dos combatentes, ou ata que se realicen trinta rondas de ataques."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:676
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "máxico"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:642
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -80,13 +80,13 @@ msgstr ""
 "defensivas da unidade atacada."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
 msgid "first strike"
 msgstr "primeiro golpe"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:689
 #: data/core/macros/abilities.cfg:687
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
@@ -2872,10 +2872,6 @@ msgstr ""
 
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:493
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -2924,13 +2920,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:514
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Single-player campaigns are collections of scenarios that fit together to "
-#| "tell a story. Both stand-alone scenarios—if intended to be played as such—"
-#| "and regular campaigns are available from the <italic>text='Campaigns'</"
-#| "italic> menu in the title screen."
 msgid ""
 "\n"
 "\n"
@@ -2959,13 +2948,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:518
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<italic>text='Multiplayer'</italic> games can be played on fully "
-#| "customized, scripted scenarios or even specially designed campaigns. "
-#| "There are also packs providing sets of individual multiplayer scenarios "
-#| "not connected in the form of a campaign."
 msgid ""
 "\n"
 "\n"
@@ -3018,10 +3000,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:526
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "<header>text='Multiplayer Eras and Factions'</header>"
 msgid ""
 "\n"
 "\n"
@@ -3044,9 +3022,9 @@ msgstr ""
 "\n"
 "\n"
 "As modificacións son scripts para partidas de <italic>text='varios "
-"xogadores'</italic> que non están asociadas a escenarios ou eras concretas, e "
-"que permiten alterar varios aspectos das regras predeterminadas. Podes elixir "
-"e configrar modificacións ao crear unha nova partida."
+"xogadores'</italic> que non están asociadas a escenarios ou eras concretas, "
+"e que permiten alterar varios aspectos das regras predeterminadas. Podes "
+"elixir e configrar modificacións ao crear unha nova partida."
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:530
@@ -3061,14 +3039,6 @@ msgstr ""
 
 #. [topic]: id=using_addons
 #: data/core/help.cfg:532
-#| msgid ""
-#| "\n"
-#| "\n"
-#| "Content authors can use resource packs available on the add-ons server to "
-#| "enrich their own content with existing assets such as images, music, and "
-#| "code. These are not generally intended for the players’ use and cannot be "
-#| "directly used in-game on their own; however, other playable add-ons may "
-#| "depend on them and suggest or require their installation during download."
 msgid ""
 "\n"
 "\n"
@@ -3084,8 +3054,7 @@ msgstr ""
 "servidor de complementos para enriquecer os seus contidos con elementos "
 "existentes: imaxes, música e código. Normalmente estes recursos non están "
 "pensados para usarse directamente no xogo. Porén, outros complementos poden "
-"requirilos ou recomendar a súa "
-"instalación ao descargarse."
+"requirilos ou recomendar a súa instalación ao descargarse."
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:541
@@ -3094,30 +3063,6 @@ msgstr "Instalación de complementos"
 
 #. [topic]: id=installing_addons
 #: data/core/help.cfg:542
-#| msgid ""
-#| "User-made add-ons can be obtained and updated through the "
-#| "<italic>text='Add-ons'</italic> option in the main menu. After connecting "
-#| "to the add-ons server (by default <italic>text='add-ons.wesnoth.org'</"
-#| "italic>), you will be presented with a list of add-ons available in the "
-#| "server for downloading.\n"
-#| "\n"
-#| "The installation status for each add-on is shown below each entry. For "
-#| "add-ons that are <italic>text='upgradable'</italic> or "
-#| "<italic>text='outdated'</italic> on the server, their installed and "
-#| "remote versions will be shown on the <italic>text='Version'</italic> "
-#| "column.\n"
-#| "\n"
-#| "To search for add-ons by using keywords, type them in any order in the "
-#| "<bold>text='Filter'</bold> box, separated by spaces. You can also sort "
-#| "the add-on list by clicking the column headers. It is also possible to "
-#| "choose to display only add-ons of specific categories by clicking on the "
-#| "<bold>text='Options'</bold> button on the top-right corner.\n"
-#| "\n"
-#| "To install an add-on, select it from the list and click <bold>text='OK'</"
-#| "bold>, or simply double click the add-on’s title. The "
-#| "<bold>text='Description'</bold> button provides you with additional "
-#| "details about the add-on, such as its full description, installation "
-#| "status, and available languages."
 msgid ""
 "User-made add-ons can be obtained and updated through the <italic>text='Add-"
 "ons'</italic> option in the main menu. After connecting to the add-ons "
@@ -3150,8 +3095,8 @@ msgstr ""
 "O estado de instalación de cada un deles mostrarase nunha columna. No caso "
 "dos complementos <italic>text='anovábeis'</italic> ou "
 "<italic>text='obsoletos'</italic> no servidor, a columna da "
-"<italic>text='Versión'</italic> indicará tanto a instalada como a "
-"última publicada.\n"
+"<italic>text='Versión'</italic> indicará tanto a instalada como a última "
+"publicada.\n"
 "\n"
 "Para buscar complementos mediante termos de busca, escríbeos —non importa a "
 "orde— na caixa de <bold>text='Filtro'</bold>, separados por espazos. Tamén "
@@ -3173,16 +3118,6 @@ msgstr "Eliminación de complementos"
 
 #. [topic]: id=removing_addons
 #: data/core/help.cfg:556
-#| msgid ""
-#| "To remove add-ons, click <bold>text='Remove Add-ons'</bold> in the add-"
-#| "ons server connection dialog. You will be presented with options to "
-#| "remove any number of add-ons you currently have installed.\n"
-#| "\n"
-#| "This feature cannot remove add-ons for which there is publishing "
-#| "information (<italic>text='.pbl'</italic> files) attached, in order to "
-#| "prevent accidental loss. Instead, you have to manually delete the "
-#| "information files or the add-ons themselves using your platform’s "
-#| "facilities."
 msgid ""
 "To remove add-ons, choose <bold>text='Remove Add-ons'</bold> in the add-ons "
 "server connection dialog. You will be presented with options to remove any "
@@ -3856,9 +3791,6 @@ msgstr "aliméntase"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:505
-#| msgid ""
-#| "This unit gains 1 hitpoint added to its maximum whenever it kills a "
-#| "living unit."
 msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a unit, "
 "except units that are immune to plague."
@@ -4175,62 +4107,52 @@ msgstr "Noite (segunda hora)"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#| msgid "First Watch"
 msgid "First Dawn"
 msgstr "Primeira garda"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#| msgid "Second Watch"
 msgid "Second Dawn"
 msgstr "Segunda garda"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#| msgid "Morning"
 msgid "First Morning"
 msgstr "Primeira mañá"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#| msgid "Morning"
 msgid "Second Morning"
 msgstr "Segunda mañá"
 
 # 12:00
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#| msgid "Midday"
 msgid "First Midday"
 msgstr "Primeiro mediodía"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#| msgid "Second Watch"
 msgid "Second Midday"
 msgstr "Segundo mediodía"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#| msgid "Afternoon"
 msgid "First Afternoon"
 msgstr "Primeira tarde"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#| msgid "Afternoon"
 msgid "Second Afternoon"
 msgstr "Segunda tarde"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#| msgid "first strike"
 msgid "First Dusk"
 msgstr "Lusco"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#| msgid "Second Watch"
 msgid "Second Dusk"
 msgstr "Fusco"
 
@@ -4726,74 +4648,6 @@ msgstr "Draconiáns"
 
 #. [race]: id=drake
 #: data/core/units.cfg:58
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -5503,21 +5357,6 @@ msgstr "Ogros"
 
 #. [race]: id=ogre
 #: data/core/units.cfg:272
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5981,7 +5820,6 @@ msgid "Factions are only used in multiplayer"
 msgstr "As faccións só se utilizan en partidas de varios xogadores."
 
 #: src/help.cpp:1325
-#| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Terreo base: "
 
@@ -6002,148 +5840,147 @@ msgid "Base unit: "
 msgstr "Unidade base: "
 
 #: src/help.cpp:1468
-#| msgid "Base unit: "
 msgid "Base units: "
 msgstr "Unidade base: "
 
-#: src/help.cpp:1482
+#: src/help.cpp:1486
 msgid "Variations: "
 msgstr "Variacións: "
 
-#: src/help.cpp:1506 src/help.cpp:1883 src/help.cpp:2027
+#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
 msgid "race^Miscellaneous"
 msgstr "Varios"
 
-#: src/help.cpp:1508
+#: src/help.cpp:1512
 msgid "Race: "
 msgstr "Especie: "
 
-#: src/help.cpp:1515
+#: src/help.cpp:1519
 msgid "Abilities: "
 msgstr "Habilidades: "
 
-#: src/help.cpp:1531
+#: src/help.cpp:1535
 msgid "Ability Upgrades: "
 msgstr "Melloras das habilidades: "
 
-#: src/help.cpp:1546
+#: src/help.cpp:1550
 msgid "HP: "
 msgstr "Vida: "
 
-#: src/help.cpp:1547
+#: src/help.cpp:1551
 msgid "Moves: "
 msgstr "Movementos: "
 
-#: src/help.cpp:1549
+#: src/help.cpp:1553
 msgid "Vision: "
 msgstr "Visión: "
 
 # Para detalles sobre a funcionalidade: http://forum.wesnoth.org/viewtopic.php?t=36716&p=528674
-#: src/help.cpp:1551
+#: src/help.cpp:1555
 msgid "Jamming: "
 msgstr "Ofuscamento: "
 
-#: src/help.cpp:1552
+#: src/help.cpp:1556
 msgid "Cost: "
 msgstr "Custo: "
 
-#: src/help.cpp:1553
+#: src/help.cpp:1557
 msgid "Alignment: "
 msgstr "Aliñación: "
 
-#: src/help.cpp:1557
+#: src/help.cpp:1561
 msgid "Required XP: "
 msgstr "Experiencia necesaria: "
 
-#: src/help.cpp:1566
+#: src/help.cpp:1570
 msgid "unit help^Attacks"
 msgstr "Ataques"
 
-#: src/help.cpp:1573
+#: src/help.cpp:1577
 msgid "unit help^Name"
 msgstr "Nome"
 
-#: src/help.cpp:1574
+#: src/help.cpp:1578
 msgid "Type"
 msgstr "Tipo"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1579
 msgid "Strikes"
 msgstr "Golpes"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1580
 msgid "Range"
 msgstr "Alcance"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1581
 msgid "Special"
 msgstr "Especial"
 
-#: src/help.cpp:1626
+#: src/help.cpp:1630
 msgid "Resistances"
 msgstr "Resistencias"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1634
 msgid "Attack Type"
 msgstr "Tipo de ataque"
 
-#: src/help.cpp:1631
+#: src/help.cpp:1635
 msgid "Resistance"
 msgstr "Resistencia"
 
-#: src/help.cpp:1661
+#: src/help.cpp:1665
 msgid "Terrain Modifiers"
 msgstr "Modificadores do terreo"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1669
 msgid "Terrain"
 msgstr "Terreo"
 
-#: src/help.cpp:1666
+#: src/help.cpp:1670
 msgid "Defense"
 msgstr "Defensa"
 
-#: src/help.cpp:1667
+#: src/help.cpp:1671
 msgid "Movement Cost"
 msgstr "Custo de movemento"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1675
 msgid "Vision Cost"
 msgstr "Custo de visión"
 
-#: src/help.cpp:1674
+#: src/help.cpp:1678
 msgid "Jamming Cost"
 msgstr "Custo de ofuscamento"
 
-#: src/help.cpp:2033
+#: src/help.cpp:2037
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unidades desta especie'</header>"
 
-#: src/help.cpp:2944
+#: src/help.cpp:2948
 msgid " < Back"
 msgstr "< Anterior"
 
-#: src/help.cpp:2945
+#: src/help.cpp:2949
 msgid "Forward >"
 msgstr "Seguinte >"
 
-#: src/help.cpp:3053
+#: src/help.cpp:3057
 msgid "Reference to unknown topic: "
 msgstr "Referencia a un tema descoñecido: "
 
-#: src/help.cpp:3309
+#: src/help.cpp:3313
 msgid "corrupted original file"
 msgstr "o ficheiro orixinal non está ben."
 
-#: src/help.cpp:3420
+#: src/help.cpp:3424
 msgid "Close"
 msgstr "Pechar"
 
-#: src/help.cpp:3423
+#: src/help.cpp:3427
 msgid "The Battle for Wesnoth Help"
 msgstr "Axuda do xogo"
 
-#: src/help.cpp:3479
+#: src/help.cpp:3483
 msgid "Parse error when parsing help text: "
 msgstr "Houbo un erro ao analizar o texto da axuda: "
 

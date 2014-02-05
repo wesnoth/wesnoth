@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-05 19:37+0100\n"
 "PO-Revision-Date: 2014-02-01 15:35+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -208,7 +208,6 @@ msgstr "Asignar a hora local"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:127
-#| msgid "Assign Time Schedule"
 msgid "Assign Local Time Schedule"
 msgstr "Asignar o calendario da hora local"
 
@@ -320,17 +319,14 @@ msgid "(New Map)"
 msgstr "(Mapa novo)"
 
 #: src/editor/map/context_manager.cpp:184
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
 msgstr "Escolle un ficheiro para abrilo"
 
 #: src/editor/map/context_manager.cpp:290
-#| msgid "(New Side)"
 msgid "(New Scenario)"
 msgstr "(Novo escenario)"
 
 #: src/editor/map/context_manager.cpp:322
-#| msgid "(New Area)"
 msgid "(Unnamed Area)"
 msgstr "(Zona sen nome)"
 
@@ -347,12 +343,10 @@ msgid "Error loading mask"
 msgstr "Houbo un erro ao cargar a máscara"
 
 #: src/editor/map/context_manager.cpp:435
-#| msgid "ID:"
 msgid "ID"
 msgstr "Identificador"
 
 #: src/editor/map/context_manager.cpp:435
-#| msgid "Rename Unit"
 msgid "Rename Area"
 msgstr "Renomear a zona"
 
@@ -375,7 +369,6 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O ficheiro xa existe. Queres substituílo?"
 
 #: src/editor/map/context_manager.cpp:600
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "Gardar o escenario como"
 
@@ -400,7 +393,6 @@ msgstr ""
 "o gardaches?"
 
 #: src/editor/map/context_manager.cpp:766
-#| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "O escenario xa está aberto."
 
@@ -410,7 +402,6 @@ msgid "This map is already open."
 msgstr "O mapa xa está aberto."
 
 #: src/editor/map/context_manager.cpp:809
-#| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Gardouse o escenario."
 
@@ -448,7 +439,6 @@ msgid "File not found"
 msgstr "Non se atopou o ficheiro"
 
 #: src/editor/map/map_context.cpp:133
-#| msgid "Empty map file"
 msgid "Empty file"
 msgstr "Ficheiro baleiro"
 
@@ -461,7 +451,6 @@ msgstr ""
 "referencia a ningún ficheiro existente"
 
 #: src/editor/map/map_context.cpp:507
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
 msgstr "Non foi posíbel gardar o escenario: $msg"
 

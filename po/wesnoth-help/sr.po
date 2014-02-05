@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-help\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-05 19:37+0100\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -22,19 +22,19 @@ msgstr ""
 "X-Associated-UI-Catalogs: wesnoth-lib wesnoth wesnoth-httt\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:532
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "подземље"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:665
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "безглавост"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:563
 #, fuzzy
 #| msgid ""
@@ -51,13 +51,13 @@ msgstr ""
 "упетљана јединица не настрада, или прође 30 рунди напада."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:676
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "магичност"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:642
 #, fuzzy
 #| msgid ""
@@ -73,7 +73,7 @@ msgstr ""
 "нападнуте јединице."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
 #, fuzzy
 #| msgid "firststrike"
@@ -81,7 +81,7 @@ msgid "first strike"
 msgstr "први удар"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:689
 #: data/core/macros/abilities.cfg:687
 #, fuzzy
 #| msgid ""
@@ -5967,148 +5967,148 @@ msgstr ""
 msgid "Base units: "
 msgstr ""
 
-#: src/help.cpp:1482
+#: src/help.cpp:1486
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "фракције:"
 
-#: src/help.cpp:1506 src/help.cpp:1883 src/help.cpp:2027
+#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
 msgid "race^Miscellaneous"
 msgstr "разни"
 
-#: src/help.cpp:1508
+#: src/help.cpp:1512
 msgid "Race: "
 msgstr "раса: "
 
-#: src/help.cpp:1515
+#: src/help.cpp:1519
 msgid "Abilities: "
 msgstr "способности: "
 
 # well-spelled: спос
-#: src/help.cpp:1531
+#: src/help.cpp:1535
 msgid "Ability Upgrades: "
 msgstr "доградње спос.: "
 
-#: src/help.cpp:1546
+#: src/help.cpp:1550
 msgid "HP: "
 msgstr "УП: "
 
-#: src/help.cpp:1547
+#: src/help.cpp:1551
 msgid "Moves: "
 msgstr "кретање: "
 
-#: src/help.cpp:1549
+#: src/help.cpp:1553
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1551
+#: src/help.cpp:1555
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1552
+#: src/help.cpp:1556
 msgid "Cost: "
 msgstr "кошта: "
 
-#: src/help.cpp:1553
+#: src/help.cpp:1557
 msgid "Alignment: "
 msgstr "поредак: "
 
-#: src/help.cpp:1557
+#: src/help.cpp:1561
 msgid "Required XP: "
 msgstr "тражи ИП: "
 
 # >> Title to table of attacks.
-#: src/help.cpp:1566
+#: src/help.cpp:1570
 msgid "unit help^Attacks"
 msgstr "Напади"
 
-#: src/help.cpp:1573
+#: src/help.cpp:1577
 msgid "unit help^Name"
 msgstr "назив"
 
-#: src/help.cpp:1574
+#: src/help.cpp:1578
 msgid "Type"
 msgstr "тип"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1579
 msgid "Strikes"
 msgstr "удари"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1580
 msgid "Range"
 msgstr "домет"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1581
 msgid "Special"
 msgstr "посебно"
 
 # >> Title to table of resistances.
-#: src/help.cpp:1626
+#: src/help.cpp:1630
 msgid "Resistances"
 msgstr "Отпорности"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1634
 msgid "Attack Type"
 msgstr "тип напада"
 
-#: src/help.cpp:1631
+#: src/help.cpp:1635
 msgid "Resistance"
 msgstr "отпорност"
 
-#: src/help.cpp:1661
+#: src/help.cpp:1665
 msgid "Terrain Modifiers"
 msgstr "теренски модификатори"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1669
 msgid "Terrain"
 msgstr "терен"
 
-#: src/help.cpp:1666
+#: src/help.cpp:1670
 msgid "Defense"
 msgstr "одбрана"
 
-#: src/help.cpp:1667
+#: src/help.cpp:1671
 msgid "Movement Cost"
 msgstr "трошак кретања"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1675
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1674
+#: src/help.cpp:1678
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:2033
+#: src/help.cpp:2037
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Јединице ове расе'</header>"
 
-#: src/help.cpp:2944
+#: src/help.cpp:2948
 msgid " < Back"
 msgstr " < Назад"
 
-#: src/help.cpp:2945
+#: src/help.cpp:2949
 msgid "Forward >"
 msgstr "Напред >"
 
-#: src/help.cpp:3053
+#: src/help.cpp:3057
 msgid "Reference to unknown topic: "
 msgstr "Упут на непознату тему: "
 
-#: src/help.cpp:3309
+#: src/help.cpp:3313
 msgid "corrupted original file"
 msgstr "искварена изворна датотека"
 
-#: src/help.cpp:3420
+#: src/help.cpp:3424
 msgid "Close"
 msgstr "Затвори"
 
-#: src/help.cpp:3423
+#: src/help.cpp:3427
 msgid "The Battle for Wesnoth Help"
 msgstr "Помоћ „Боја за Веснот“"
 
-#: src/help.cpp:3479
+#: src/help.cpp:3483
 msgid "Parse error when parsing help text: "
 msgstr "Грешка при рашчлањивању текста помоћи: "
 

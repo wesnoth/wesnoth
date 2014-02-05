@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-05 19:37+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -17,19 +17,19 @@ msgstr ""
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:532
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Požemis"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:665
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "berserkas"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:563
 #, fuzzy
 msgid ""
@@ -41,13 +41,13 @@ msgstr ""
 "pat vieno iš besikaunančiųjų mirties, arba trisdešimt atakos raundų."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:676
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "magiška"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:642
 #, fuzzy
 msgid ""
@@ -59,14 +59,14 @@ msgstr ""
 "dalinio gynybinių gebėjimų."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
 #, fuzzy
 msgid "first strike"
 msgstr "pirmenybė"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:689
 #: data/core/macros/abilities.cfg:687
 #, fuzzy
 msgid ""
@@ -5328,144 +5328,144 @@ msgstr ""
 msgid "Base units: "
 msgstr ""
 
-#: src/help.cpp:1482
+#: src/help.cpp:1486
 #, fuzzy
 msgid "Variations: "
 msgstr "Frakcijos:"
 
-#: src/help.cpp:1506 src/help.cpp:1883 src/help.cpp:2027
+#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
 msgid "race^Miscellaneous"
 msgstr "Įvairūs"
 
-#: src/help.cpp:1508
+#: src/help.cpp:1512
 msgid "Race: "
 msgstr "Rasė: "
 
-#: src/help.cpp:1515
+#: src/help.cpp:1519
 msgid "Abilities: "
 msgstr "Gebėjimai: "
 
-#: src/help.cpp:1531
+#: src/help.cpp:1535
 msgid "Ability Upgrades: "
 msgstr "Gebėjimų patobulinimai: "
 
-#: src/help.cpp:1546
+#: src/help.cpp:1550
 msgid "HP: "
 msgstr "GT: "
 
-#: src/help.cpp:1547
+#: src/help.cpp:1551
 msgid "Moves: "
 msgstr "Žingsniai: "
 
-#: src/help.cpp:1549
+#: src/help.cpp:1553
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1551
+#: src/help.cpp:1555
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1552
+#: src/help.cpp:1556
 msgid "Cost: "
 msgstr "Kaina: "
 
-#: src/help.cpp:1553
+#: src/help.cpp:1557
 msgid "Alignment: "
 msgstr "Prigimtis: "
 
-#: src/help.cpp:1557
+#: src/help.cpp:1561
 msgid "Required XP: "
 msgstr "Reikalingi PT: "
 
-#: src/help.cpp:1566
+#: src/help.cpp:1570
 msgid "unit help^Attacks"
 msgstr "Atakos"
 
-#: src/help.cpp:1573
+#: src/help.cpp:1577
 msgid "unit help^Name"
 msgstr "Vardas"
 
-#: src/help.cpp:1574
+#: src/help.cpp:1578
 msgid "Type"
 msgstr "Tipas"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1579
 msgid "Strikes"
 msgstr "Smūgiai"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1580
 msgid "Range"
 msgstr "Nuotolis"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1581
 msgid "Special"
 msgstr "Ypatinga"
 
-#: src/help.cpp:1626
+#: src/help.cpp:1630
 msgid "Resistances"
 msgstr "Atsparumai"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1634
 msgid "Attack Type"
 msgstr "Atakos tipas"
 
-#: src/help.cpp:1631
+#: src/help.cpp:1635
 msgid "Resistance"
 msgstr "Atsparumas"
 
-#: src/help.cpp:1661
+#: src/help.cpp:1665
 msgid "Terrain Modifiers"
 msgstr "Vietovių modifikatoriai"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1669
 msgid "Terrain"
 msgstr "Vietovė"
 
-#: src/help.cpp:1666
+#: src/help.cpp:1670
 msgid "Defense"
 msgstr "Gynyba"
 
-#: src/help.cpp:1667
+#: src/help.cpp:1671
 msgid "Movement Cost"
 msgstr "Judėjimo kaina"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1675
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1674
+#: src/help.cpp:1678
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:2033
+#: src/help.cpp:2037
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Šios rasės daliniai'</header>"
 
-#: src/help.cpp:2944
+#: src/help.cpp:2948
 msgid " < Back"
 msgstr " < Atgal"
 
-#: src/help.cpp:2945
+#: src/help.cpp:2949
 msgid "Forward >"
 msgstr "Pirmyn >"
 
-#: src/help.cpp:3053
+#: src/help.cpp:3057
 msgid "Reference to unknown topic: "
 msgstr "Nuoroda į nežinomą temą: "
 
-#: src/help.cpp:3309
+#: src/help.cpp:3313
 msgid "corrupted original file"
 msgstr "sugadintas pradinis failas"
 
-#: src/help.cpp:3420
+#: src/help.cpp:3424
 msgid "Close"
 msgstr "Užverti"
 
-#: src/help.cpp:3423
+#: src/help.cpp:3427
 msgid "The Battle for Wesnoth Help"
 msgstr "Mūšio dėl Vesnoto pagalba"
 
-#: src/help.cpp:3479
+#: src/help.cpp:3483
 msgid "Parse error when parsing help text: "
 msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
 

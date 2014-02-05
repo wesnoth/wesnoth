@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-05 19:37+0100\n"
 "PO-Revision-Date: 2014-01-06 13:27+0100\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
@@ -215,7 +215,9 @@ msgstr "Usa relógio de formato de 12 horas"
 #
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-msgid "Confirm loading of saves from a different version"
+#, fuzzy
+#| msgid "Confirm loading of saves from a different version"
+msgid "Confirm loading saves from a different version"
 msgstr "Confirmar ao carregar uma partida gravada de outra versão"
 
 #
@@ -381,7 +383,7 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -389,7 +391,7 @@ msgstr "envenenado"
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:1835
+#: data/lua/wml/objectives.lua:12316
 msgid "Gold carryover:"
 msgstr "Ouro carregado:"
 
@@ -397,7 +399,7 @@ msgstr "Ouro carregado:"
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:1836
+#: data/lua/wml/objectives.lua:12317
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -1492,8 +1494,10 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:248
 #: data/core/macros/ai_controller.cfg:379
 #: data/core/macros/ai_controller.cfg:383
-msgid "(side $temp_i|)"
-msgstr "(side $temp_i|)"
+#, fuzzy
+#| msgid "side $temp_i"
+msgid "Side $temp_i"
+msgstr "side $temp_i"
 
 #
 #. [else]
@@ -1506,7 +1510,9 @@ msgstr "side $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:262
 #: data/core/macros/ai_controller.cfg:397
-msgid "$side_i_leader.name (side $temp_i|)"
+#, fuzzy
+#| msgid "$side_i_leader.name (side $temp_i|)"
+msgid "side $temp_i ($side_i_leader.name|)"
 msgstr "$side_i_leader.name (side $temp_i|)"
 
 #
@@ -1514,8 +1520,8 @@ msgstr "$side_i_leader.name (side $temp_i|)"
 #. [value]
 #: data/core/macros/ai_controller.cfg:288
 #: data/core/macros/ai_controller.cfg:424
-#: data/core/macros/ai_controller.cfg:816
-#: data/core/macros/ai_controller.cfg:907 src/multiplayer_configure.cpp:81
+#: data/core/macros/ai_controller.cfg:818
+#: data/core/macros/ai_controller.cfg:909 src/multiplayer_configure.cpp:81
 msgid "Back"
 msgstr "Retroceder"
 
@@ -1573,26 +1579,30 @@ msgstr "Limpar ordens de objectivo"
 
 #
 #. [revoke_behavior_orders]
-#: data/core/macros/ai_controller.cfg:568
+#. [revoke_objective_orders]
+#. [then]
+#: data/core/macros/ai_controller.cfg:557
+#: data/core/macros/ai_controller.cfg:570
+#: data/core/macros/ai_controller.cfg:700
+#: data/core/macros/ai_controller.cfg:711
+msgid "none set."
+msgstr "nada."
+
+#
+#. [revoke_behavior_orders]
+#: data/core/macros/ai_controller.cfg:569
 msgid "Clear behavior orders"
 msgstr "Limpar ordens de comportamento"
 
 #
 #. [revoke_all_orders]
-#: data/core/macros/ai_controller.cfg:581
+#: data/core/macros/ai_controller.cfg:583
 msgid "Clear all orders"
 msgstr "Limpa todas as ordens"
 
 #
-#. [then]
-#: data/core/macros/ai_controller.cfg:698
-#: data/core/macros/ai_controller.cfg:709
-msgid "none set."
-msgstr "nada."
-
-#
 #. [do]
-#: data/core/macros/ai_controller.cfg:750
+#: data/core/macros/ai_controller.cfg:752
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -1606,54 +1616,54 @@ msgstr ""
 
 #
 #. [literal]
-#: data/core/macros/ai_controller.cfg:759
+#: data/core/macros/ai_controller.cfg:761
 msgid "Set objective..."
 msgstr "Definir objectivo..."
 
 #
 #. [literal]
-#: data/core/macros/ai_controller.cfg:850
+#: data/core/macros/ai_controller.cfg:852
 msgid "Set behavior..."
 msgstr "Definir atitude..."
 
 #
 #. [literal]
-#: data/core/macros/ai_controller.cfg:955
+#: data/core/macros/ai_controller.cfg:957
 msgid "Exit"
 msgstr "Sair"
 
 #
-#: data/core/macros/ai_controller.cfg:1082
+#: data/core/macros/ai_controller.cfg:1084
 msgid "Set special orders..."
 msgstr "Defina ordens especiais..."
 
 #
-#: data/core/macros/ai_controller.cfg:1083
+#: data/core/macros/ai_controller.cfg:1085
 msgid "Move leader to..."
 msgstr "Mover líder para..."
 
 #
-#: data/core/macros/ai_controller.cfg:1084
+#: data/core/macros/ai_controller.cfg:1086
 msgid "Right-click to select a location to move leader to"
 msgstr "Clique com o direito para seleccionar um local e mover o líder até lá"
 
 #
-#: data/core/macros/ai_controller.cfg:1085
+#: data/core/macros/ai_controller.cfg:1087
 msgid "Move leader here"
 msgstr "Mova o líder aqui"
 
 #
-#: data/core/macros/ai_controller.cfg:1086
+#: data/core/macros/ai_controller.cfg:1088
 msgid "moving leader to $x1|,$y1|."
 msgstr "a mover líder para $x1|,$y1|."
 
 #
-#: data/core/macros/ai_controller.cfg:1087
+#: data/core/macros/ai_controller.cfg:1089
 msgid "Clear special orders"
 msgstr "Limpar as ordens especiais"
 
 #
-#: data/core/macros/ai_controller.cfg:1088
+#: data/core/macros/ai_controller.cfg:1090
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
@@ -2847,13 +2857,13 @@ msgstr "Fim dos turnos"
 
 #
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12378
 msgid "Early finish bonus."
 msgstr "Bónus por fim prematuro."
 
 #
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12380
 msgid "No early finish bonus."
 msgstr "Sem bónus por fim prematuro."
 
@@ -2869,7 +2879,7 @@ msgstr "(Bónus por fim prematuro)"
 
 #
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12388
 msgid "No gold carried over to the next scenario."
 msgstr "Nenhum ouro será transferido ao próximo cenário."
 
@@ -3029,7 +3039,7 @@ msgstr "Anil"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:98 src/leader_scroll_dialog.cpp:47
-#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:378
+#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:381
 msgid "Gold"
 msgstr "Ouro"
 
@@ -4311,78 +4321,78 @@ msgstr ""
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "envenenada"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "atrasada"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "atrasado"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "petrificada"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "petrificado"
 
 #
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357
+#: data/lua/wml-tags.lua:11838
 msgid "female^unhealable"
 msgstr "Incurável"
 
 #
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357
+#: data/lua/wml-tags.lua:11838
 msgid "unhealable"
 msgstr "Incurável"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:12314 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "Vitória:"
 
 #
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1834
+#: data/lua/wml/objectives.lua:12315
 msgid "Defeat:"
 msgstr "Derrota:"
 
 #
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1854
+#: data/lua/wml/objectives.lua:12335
 msgid "(%d turns left)"
 msgstr "(%d turnos restantes)"
 
 #
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:12337
 msgid "(this turn left)"
 msgstr "(este turno restante)"
 
 #
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1909
+#: data/lua/wml/objectives.lua:12390
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% do ouro transportado ao próximo cenário."
 
@@ -4397,50 +4407,56 @@ msgstr "Confirmar"
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1446
-#: src/dialogs.cpp:1552 src/hotkey/hotkey_command.cpp:36
-#: src/multiplayer_connect.cpp:384 src/multiplayer_create.cpp:79
-#: src/multiplayer_wait.cpp:184
+#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1448
+#: src/dialogs.cpp:1554 src/multiplayer_connect.cpp:387
+#: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Cancelar"
 
 #
-#: data/scenario-test.cfg:3944
+#: data/scenario-test.cfg:3983
 msgid "very long"
 msgstr "muito longo"
 
 #
-#: data/scenario-test.cfg:3945
+#: data/scenario-test.cfg:3984
 msgid "electrical"
 msgstr "eléctrico"
 
 #
 #. [menu]: id=menu-main
-#: data/themes/default.cfg:96 data/themes/pandora.cfg:112
+#: data/themes/default.cfg:71 data/themes/pandora.cfg:112
 #: data/themes/unit_box.cfg:107 data/themes/widescreen.cfg:137
 msgid "Menu"
 msgstr "Menu"
 
 #
+#. [menu]: id=menu-autosaves
+#: data/themes/default.cfg:81
+#, fuzzy
+#| msgid "Back to Turn "
+msgid "Back to..."
+msgstr "Voltar ao turno "
+
+#
 #. [menu]: id=actions-menu
-#: data/themes/default.cfg:107 data/themes/unit_box.cfg:118
+#: data/themes/default.cfg:89 data/themes/unit_box.cfg:118
 #: data/themes/widescreen.cfg:148
 msgid "Actions"
 msgstr "Acções"
 
 #
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [action]: id=button-endturn
 #. [menu]: id=button-endturn
-#: data/themes/default.cfg:208 data/themes/unit_box.cfg:314
-#: data/themes/widescreen.cfg:178 src/hotkey/hotkey_command.cpp:68
+#: data/themes/default.cfg:110 data/themes/unit_box.cfg:314
+#: data/themes/widescreen.cfg:178
 msgid "End Turn"
 msgstr "Terminar Turno"
 
 #
 #. [action]: id=button-endturn
 #. [menu]: id=button-endturn
-#: data/themes/default.cfg:209 data/themes/unit_box.cfg:315
+#: data/themes/default.cfg:111 data/themes/unit_box.cfg:315
 #: data/themes/widescreen.cfg:179
 msgid "End Scenario"
 msgstr "Terminar Cenário"
@@ -4449,9 +4465,9 @@ msgstr "Terminar Cenário"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
 #. [label]: id=selected-label-hp
-#: data/themes/default.cfg:221 data/themes/unit_box.cfg:373
+#: data/themes/default.cfg:123 data/themes/unit_box.cfg:373
 #: data/themes/widescreen.cfg:237 data/themes/widescreen.cfg:257
-#: src/dialogs.cpp:337 src/unit.cpp:2469 src/unit.cpp:2669
+#: src/dialogs.cpp:337 src/unit.cpp:2467 src/unit.cpp:2667
 msgid "HP"
 msgstr "PV"
 
@@ -4459,7 +4475,7 @@ msgstr "PV"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
 #. [label]: id=selected-label-xp
-#: data/themes/default.cfg:230 data/themes/unit_box.cfg:383
+#: data/themes/default.cfg:132 data/themes/unit_box.cfg:383
 #: data/themes/widescreen.cfg:246 data/themes/widescreen.cfg:266
 #: src/dialogs.cpp:339 src/dialogs.cpp:511
 msgid "XP"
@@ -4467,133 +4483,131 @@ msgstr "XP"
 
 #
 #. [label]: id=label-mp
-#: data/themes/default.cfg:239 data/themes/unit_box.cfg:392
+#: data/themes/default.cfg:141 data/themes/unit_box.cfg:392
 msgid "MP"
 msgstr "JR"
 
 #. [label]: id=label-def
-#: data/themes/default.cfg:248
+#: data/themes/default.cfg:150
 msgid "def"
 msgstr "def"
 
 #
 #. [label]: id=gold-icon
-#: data/themes/default.cfg:258 data/themes/pandora.cfg:179
+#: data/themes/default.cfg:160 data/themes/pandora.cfg:179
 #: data/themes/unit_box.cfg:402 data/themes/widescreen.cfg:276
 msgid "gold"
 msgstr "ouro"
 
 #
 #. [label]: id=villages-icon
-#: data/themes/default.cfg:267 data/themes/unit_box.cfg:411
+#: data/themes/default.cfg:169 data/themes/unit_box.cfg:411
 #: data/themes/widescreen.cfg:285
 msgid "villages"
 msgstr "aldeias"
 
 #
 #. [label]: id=units-icon
-#: data/themes/default.cfg:276 data/themes/unit_box.cfg:420
+#: data/themes/default.cfg:178 data/themes/unit_box.cfg:420
 #: data/themes/widescreen.cfg:294
 msgid "units"
 msgstr "unidades"
 
 #
 #. [label]: id=upkeep-icon
-#: data/themes/default.cfg:285 data/themes/unit_box.cfg:429
+#: data/themes/default.cfg:187 data/themes/unit_box.cfg:429
 #: data/themes/widescreen.cfg:303
 msgid "upkeep"
 msgstr "manutenção"
 
 #
 #. [label]: id=income-icon
-#: data/themes/default.cfg:294 data/themes/pandora.cfg:132
+#: data/themes/default.cfg:196 data/themes/pandora.cfg:132
 #: data/themes/unit_box.cfg:438 data/themes/widescreen.cfg:312
 msgid "income"
 msgstr "rendimento"
 
 #. [unit_level]: id=unit-level
-#: data/themes/default.cfg:486
+#: data/themes/default.cfg:388
 msgid "statuspanel^lvl"
 msgstr "nvl"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=replay-label
-#: data/themes/macros.cfg:225 src/dialogs.cpp:885
+#: data/themes/macros.cfg:337 src/dialogs.cpp:885
 msgid "Replay"
 msgstr "Revisão"
 
 #
 #. [action]: id=button-playreplay, type=image
-#: data/themes/macros.cfg:241
+#: data/themes/macros.cfg:353
 msgid "Play"
 msgstr "Iniciar"
 
 #
 #. [action]: id=button-playreplay, type=image
-#: data/themes/macros.cfg:242
+#: data/themes/macros.cfg:354
 msgid "continuous replay"
 msgstr "revisão contínua"
 
 #
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/macros.cfg:256
+#: data/themes/macros.cfg:368
 msgid "Stop"
 msgstr "Parar"
 
 #
 #. [action]: id=button-stopreplay, type=image
-#: data/themes/macros.cfg:257
+#: data/themes/macros.cfg:369
 msgid "pause at end of turn"
 msgstr "pausa no fim do turno"
 
 #
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/macros.cfg:272
+#: data/themes/macros.cfg:384
 msgid "Reset"
 msgstr "Repor"
 
 #
 #. [action]: id=button-resetreplay, type=image
-#: data/themes/macros.cfg:273
+#: data/themes/macros.cfg:385
 msgid "reset to beginning"
 msgstr "repor para o inicio"
 
 #
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [action]: id=button-nextturn, type=image
-#: data/themes/macros.cfg:288 src/hotkey/hotkey_command.cpp:95
+#: data/themes/macros.cfg:400
 msgid "Next Turn"
 msgstr "Próximo turno"
 
 #
 #. [action]: id=button-nextturn, type=image
-#: data/themes/macros.cfg:289
+#: data/themes/macros.cfg:401
 msgid "play turn"
 msgstr "jogar turno"
 
 #
-#. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [action]: id=button-nextside, type=image
-#: data/themes/macros.cfg:304 src/hotkey/hotkey_command.cpp:96
+#: data/themes/macros.cfg:416
 msgid "Next Side"
 msgstr "Próxima Equipa"
 
 #
 #. [action]: id=button-nextside, type=image
-#: data/themes/macros.cfg:305
+#: data/themes/macros.cfg:417
 msgid "play side turn"
 msgstr "jogar lado activo"
 
 #
 #. [menu]: id=show-what
-#: data/themes/macros.cfg:317
+#: data/themes/macros.cfg:429
 msgid "Point of view"
 msgstr "Ponto de vista"
 
 #
 #. [action]: id=skip-animation, type=checkbox
-#: data/themes/macros.cfg:329
+#: data/themes/macros.cfg:441
 msgid "Skip animation"
 msgstr "Saltar animação"
 
@@ -4857,7 +4871,7 @@ msgid "addon_type^(unknown)"
 msgstr "(desconhecido)"
 
 #
-#: src/addon/info.cpp:214 src/dialogs.cpp:1479
+#: src/addon/info.cpp:214 src/dialogs.cpp:1481
 #: src/hotkey/command_executor.cpp:631
 msgid "unit_byte^B"
 msgstr "B"
@@ -4960,7 +4974,7 @@ msgstr "Tamanho"
 
 #
 #: src/addon/manager_ui.cpp:174 src/addon/manager_ui.cpp:591
-#: src/dialogs.cpp:333 src/dialogs.cpp:508 src/menu_events.cpp:981
+#: src/dialogs.cpp:333 src/dialogs.cpp:508 src/menu_events.cpp:985
 msgid "Type"
 msgstr "Tipo"
 
@@ -5099,7 +5113,7 @@ msgstr ""
 
 #
 #: src/addon/manager_ui.cpp:764 src/dialogs.cpp:591 src/dialogs.cpp:947
-#: src/menu_events.cpp:1014
+#: src/menu_events.cpp:1018
 msgid "Filter: "
 msgstr "Filtro: "
 
@@ -5312,7 +5326,7 @@ msgid "Total damage"
 msgstr "Dano total"
 
 #
-#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1019
+#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1021
 msgid "No usable weapon"
 msgstr "Nenhuma arma usável"
 
@@ -5322,7 +5336,7 @@ msgid "Chance of being unscathed"
 msgstr "Hipótese de sair sem dano"
 
 #
-#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1028
+#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1030
 msgid "Damage Calculations"
 msgstr "Cálculo de Danos"
 
@@ -5390,7 +5404,7 @@ msgid "unit list^Traits"
 msgstr "Características"
 
 #
-#: src/dialogs.cpp:440 src/hotkey/hotkey_command.cpp:80
+#: src/dialogs.cpp:440
 msgid "Unit List"
 msgstr "Lista de Unidades"
 
@@ -5405,7 +5419,7 @@ msgid "No objectives available"
 msgstr "Nenhum objectivo disponível"
 
 #
-#: src/dialogs.cpp:478 src/hotkey/hotkey_command.cpp:65
+#: src/dialogs.cpp:478
 msgid "Recruit"
 msgstr "Recrutar"
 
@@ -5420,17 +5434,17 @@ msgid "Traits"
 msgstr "Características"
 
 #
-#: src/dialogs.cpp:578 src/hotkey/hotkey_command.cpp:67
+#: src/dialogs.cpp:578
 msgid "Recall"
 msgstr "Convocar"
 
 #
-#: src/dialogs.cpp:832 src/savegame.cpp:308
+#: src/dialogs.cpp:832 src/savegame.cpp:299
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #
-#: src/dialogs.cpp:832 src/savegame.cpp:308
+#: src/dialogs.cpp:832 src/savegame.cpp:299
 msgid "%a %b %d %I:%M %p %Y"
 msgstr "%a %b %d %I:%M %p %Y"
 
@@ -5460,7 +5474,7 @@ msgid "Test scenario"
 msgstr "Cenário de teste"
 
 #
-#: src/dialogs.cpp:887 src/savegame.cpp:1102
+#: src/dialogs.cpp:887 src/savegame.cpp:1093
 msgid "Turn"
 msgstr "Turno"
 
@@ -5501,7 +5515,7 @@ msgid "Date"
 msgstr "Data"
 
 #
-#: src/dialogs.cpp:939 src/hotkey/hotkey_command.cpp:64 src/savegame.cpp:648
+#: src/dialogs.cpp:939 src/savegame.cpp:639
 msgid "Load Game"
 msgstr "Carregar Partida Guardada"
 
@@ -5653,56 +5667,56 @@ msgid "ERROR DETAILS:"
 msgstr "DETALHES DO ERRO:"
 
 #
-#: src/game_controller.cpp:336 src/game_controller.cpp:923
+#: src/game_controller.cpp:336 src/game_controller.cpp:924
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "A Batalha por Wesnoth"
 
 #
-#: src/game_controller.cpp:474 src/game_controller.cpp:492
+#: src/game_controller.cpp:475 src/game_controller.cpp:493
 msgid "The file you have tried to load is corrupt"
 msgstr "O ficheiro que tentaste carregar está corrompido"
 
 #
-#: src/game_controller.cpp:477 src/game_controller.cpp:495
-#: src/savegame.cpp:696
+#: src/game_controller.cpp:478 src/game_controller.cpp:496
+#: src/savegame.cpp:687
 msgid "The file you have tried to load is corrupt: '"
 msgstr "O ficheiro que tentaste carregar está corrompido:'"
 
 #
-#: src/game_controller.cpp:485
+#: src/game_controller.cpp:486
 msgid "File I/O Error while reading the game"
 msgstr "Erro de E/S ao ler o jogo"
 
 #
-#: src/game_controller.cpp:487
+#: src/game_controller.cpp:488
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro de E/S ao ler o jogo: '"
 
 #
-#: src/game_controller.cpp:588
+#: src/game_controller.cpp:589
 msgid "No campaigns are available.\n"
 msgstr "Nenhuma campanha está disponível.\n"
 
 #
-#: src/game_controller.cpp:860
+#: src/game_controller.cpp:861
 msgid "Error while starting server: "
 msgstr "Erro ao iniciar o servidor: "
 
 #
-#: src/game_controller.cpp:862 src/playcampaign.cpp:218
+#: src/game_controller.cpp:863 src/playcampaign.cpp:218
 #: src/playcampaign.cpp:470
 msgid "The game could not be loaded: "
 msgstr "Não foi possível guardar a partida: "
 
 #
-#: src/game_controller.cpp:864 src/playcampaign.cpp:220
+#: src/game_controller.cpp:865 src/playcampaign.cpp:220
 #: src/playcampaign.cpp:473
 msgid "Error while playing the game: "
 msgstr "Ocorreu um erro ao jogar a partida:  "
 
 #
-#: src/game_controller.cpp:882 src/playcampaign.cpp:222
+#: src/game_controller.cpp:883 src/playcampaign.cpp:222
 #: src/playcampaign.cpp:476
 msgid "The game map could not be loaded: "
 msgstr "O mapa da partida não pôde ser guardado: "
@@ -5851,7 +5865,7 @@ msgstr "Erro"
 
 #
 #: src/hotkey/command_executor.cpp:507 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
+#: src/multiplayer_connect.cpp:387 src/multiplayer_lobby.cpp:863
 #: src/multiplayer_wait.cpp:184
 msgid "Quit"
 msgstr "Sair"
@@ -5864,795 +5878,13 @@ msgstr "Queres realmente sair?"
 msgid "Map-Screenshot"
 msgstr "Captura do mapa"
 
-#: src/hotkey/command_executor.cpp:625 src/hotkey/hotkey_command.cpp:53
+#: src/hotkey/command_executor.cpp:625
 msgid "Screenshot"
 msgstr "Captura do ecrã"
 
 #: src/hotkey/command_executor.cpp:632 src/hotkey/command_executor.cpp:634
 msgid "Screenshot Done"
 msgstr "Fotografia do ecrã tirada"
-
-#: src/hotkey/hotkey_command.cpp:36
-msgid "cancel"
-msgstr "Cancelar"
-
-#: src/hotkey/hotkey_command.cpp:37
-msgid "Select Hex"
-msgstr "Seleccionar hexágono"
-
-#: src/hotkey/hotkey_command.cpp:38
-msgid "Deselect Hex"
-msgstr "Libertar hexágono"
-
-#: src/hotkey/hotkey_command.cpp:39
-msgid "Move/Attack"
-msgstr "Mover/Atacar"
-
-#: src/hotkey/hotkey_command.cpp:40
-msgid "Select/Move/Attack"
-msgstr "Seleccionar/Mover/Atacar"
-
-#: src/hotkey/hotkey_command.cpp:41
-msgid "Animate Map"
-msgstr "Animar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:42
-msgid "Next Unit"
-msgstr "Próxima unidade"
-
-#: src/hotkey/hotkey_command.cpp:43
-msgid "Previous Unit"
-msgstr "Anterior unidade"
-
-#: src/hotkey/hotkey_command.cpp:44
-msgid "Hold Position"
-msgstr "Manter Posição"
-
-#: src/hotkey/hotkey_command.cpp:45
-msgid "End Unit Turn"
-msgstr "Terminar o Turno da Unidade"
-
-#
-#: src/hotkey/hotkey_command.cpp:46 src/leader_scroll_dialog.cpp:45
-#: src/menu_events.cpp:191
-msgid "Leader"
-msgstr "Líder"
-
-#: src/hotkey/hotkey_command.cpp:47
-msgid "Undo"
-msgstr "Desfazer"
-
-#: src/hotkey/hotkey_command.cpp:48
-msgid "Redo"
-msgstr "Refazer"
-
-#: src/hotkey/hotkey_command.cpp:49
-msgid "Zoom In"
-msgstr "Ampliar"
-
-#: src/hotkey/hotkey_command.cpp:50
-msgid "Zoom Out"
-msgstr "Afastar"
-
-#: src/hotkey/hotkey_command.cpp:51
-msgid "Default Zoom"
-msgstr "Ampliação normal"
-
-#: src/hotkey/hotkey_command.cpp:52
-msgid "Toggle Full Screen"
-msgstr "Alternar Ecrã Inteiro"
-
-#: src/hotkey/hotkey_command.cpp:54
-msgid "Map Screenshot"
-msgstr "Foto do Mapa"
-
-#: src/hotkey/hotkey_command.cpp:55
-msgid "Accelerated"
-msgstr "Acelerado"
-
-#: src/hotkey/hotkey_command.cpp:56
-msgid "Terrain Description"
-msgstr "Descrição do terreno"
-
-#: src/hotkey/hotkey_command.cpp:57
-msgid "Unit Description"
-msgstr "Descrição da Unidade"
-
-#
-#: src/hotkey/hotkey_command.cpp:58 src/menu_events.cpp:895
-msgid "Rename Unit"
-msgstr "Renomear unidade"
-
-#: src/hotkey/hotkey_command.cpp:59
-msgid "Delete Unit"
-msgstr "Remover Unidade"
-
-#
-#: src/hotkey/hotkey_command.cpp:61 src/savegame.cpp:1090
-msgid "Save Game"
-msgstr "Guardar a Partida"
-
-#
-#: src/hotkey/hotkey_command.cpp:62 src/savegame.cpp:1014
-msgid "Save Replay"
-msgstr "Guardar Revisão"
-
-#: src/hotkey/hotkey_command.cpp:63 src/hotkey/hotkey_command.cpp:131
-msgid "Save Map"
-msgstr "Guardar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:66
-msgid "Repeat Recruit"
-msgstr "Repetir Recrutamento"
-
-#: src/hotkey/hotkey_command.cpp:69
-msgid "Toggle Ellipses"
-msgstr "Alternar Elipses"
-
-#: src/hotkey/hotkey_command.cpp:70
-msgid "Toggle Grid"
-msgstr "Alternar Grade"
-
-#: src/hotkey/hotkey_command.cpp:71
-msgid "Mouse Scrolling"
-msgstr "Rolar com o rato"
-
-#: src/hotkey/hotkey_command.cpp:72
-msgid "Status Table"
-msgstr "Tabela de Estado"
-
-#: src/hotkey/hotkey_command.cpp:73
-msgid "Mute"
-msgstr "Silenciar"
-
-#: src/hotkey/hotkey_command.cpp:74
-msgid "Speak"
-msgstr "Falar"
-
-#
-#: src/hotkey/hotkey_command.cpp:75 src/menu_events.cpp:1001
-msgid "Create Unit (Debug!)"
-msgstr "Criar Unidade (Modo de Deburação!)"
-
-#: src/hotkey/hotkey_command.cpp:76
-msgid "Change Side (Debug!)"
-msgstr "Mudar de Equipa (Modo de Depuração!)"
-
-#: src/hotkey/hotkey_command.cpp:77
-msgid "Kill Unit (Debug!)"
-msgstr "Matar Unidade (Modo de Depuração!)"
-
-#
-#: src/hotkey/hotkey_command.cpp:78 src/multiplayer_lobby.cpp:862
-msgid "Preferences"
-msgstr "Preferências"
-
-#: src/hotkey/hotkey_command.cpp:79
-msgid "Scenario Objectives"
-msgstr "Objectivos do Cenário"
-
-#
-#: src/hotkey/hotkey_command.cpp:81 src/menu_events.cpp:141
-msgid "Statistics"
-msgstr "Estatísticas"
-
-#: src/hotkey/hotkey_command.cpp:82
-msgid "Pause Network Game"
-msgstr "Pausar jogo em rede"
-
-#: src/hotkey/hotkey_command.cpp:83
-msgid "Continue Network Game"
-msgstr "Continuar jogo em rede"
-
-#: src/hotkey/hotkey_command.cpp:84
-msgid "Quit Game"
-msgstr "Sair do Jogo"
-
-#: src/hotkey/hotkey_command.cpp:85
-msgid "Quit Editor"
-msgstr "Sair do Editor"
-
-#: src/hotkey/hotkey_command.cpp:86
-msgid "Set Team Label"
-msgstr "Definir legenda da equipa"
-
-#: src/hotkey/hotkey_command.cpp:87
-msgid "Set Label"
-msgstr "Definir Legenda"
-
-#: src/hotkey/hotkey_command.cpp:88
-msgid "Clear Labels"
-msgstr "Limpar legendas"
-
-#: src/hotkey/hotkey_command.cpp:89
-msgid "Show Enemy Moves"
-msgstr "Mostrar Movimentos Inimigos"
-
-#: src/hotkey/hotkey_command.cpp:90
-msgid "Best Possible Enemy Moves"
-msgstr "Melhores Movimentos Inimigos Possíveis"
-
-#: src/hotkey/hotkey_command.cpp:92
-msgid "Play Replay"
-msgstr "Ver Revisão"
-
-#: src/hotkey/hotkey_command.cpp:93
-msgid "Reset Replay"
-msgstr "Repor Revisão"
-
-#: src/hotkey/hotkey_command.cpp:94
-msgid "Stop Replay"
-msgstr "Parar Revisão"
-
-#: src/hotkey/hotkey_command.cpp:97
-msgid "Full Map"
-msgstr "Mapa Completo"
-
-#: src/hotkey/hotkey_command.cpp:98
-msgid "Each Team"
-msgstr "Cada equipa"
-
-#: src/hotkey/hotkey_command.cpp:99
-msgid "Team 1"
-msgstr "Equipa 1"
-
-#: src/hotkey/hotkey_command.cpp:100
-msgid "Skip Animation"
-msgstr "Saltar animação"
-
-#. TRANSLATORS: whiteboard menu entry: toggle planning mode
-#: src/hotkey/hotkey_command.cpp:103
-msgid "whiteboard^Planning Mode"
-msgstr "Modo de Planificação"
-
-#. TRANSLATORS: whiteboard menu entry: execute planned action
-#: src/hotkey/hotkey_command.cpp:105
-msgid "whiteboard^Execute Action"
-msgstr "Executa Acções"
-
-#. TRANSLATORS: whiteboard menu entry: execute all planned actions
-#: src/hotkey/hotkey_command.cpp:107
-msgid "whiteboard^Execute All Actions"
-msgstr "Executa todas as acções"
-
-#. TRANSLATORS: whiteboard menu entry: delete planned action
-#: src/hotkey/hotkey_command.cpp:109
-msgid "whiteboard^Delete Action"
-msgstr "Apagar Acção"
-
-#. TRANSLATORS: whiteboard menu entry: move planned action up queue
-#: src/hotkey/hotkey_command.cpp:111
-msgid "whiteboard^Move Action Up"
-msgstr "Mova acção para a frente na fila"
-
-#. TRANSLATORS: whiteboard menu entry: move planned action down queue
-#: src/hotkey/hotkey_command.cpp:113
-msgid "whiteboard^Move Action Down"
-msgstr "Mova acção para trás na fila"
-
-#. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
-#: src/hotkey/hotkey_command.cpp:115
-msgid "whiteboard^Suppose Dead"
-msgstr "Supõe morto"
-
-#: src/hotkey/hotkey_command.cpp:117
-msgid "Quit to Desktop"
-msgstr "Sair Completamente"
-
-#: src/hotkey/hotkey_command.cpp:118
-msgid "Close Map"
-msgstr "Fechar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:122
-msgid "Switch Time of Day"
-msgstr "Trocar Tempo de Dia"
-
-#: src/hotkey/hotkey_command.cpp:123
-msgid "Switch Map"
-msgstr "Trocar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:124
-msgid "Assign Local Time"
-msgstr "Definir hora local"
-
-#: src/hotkey/hotkey_command.cpp:126
-msgid "Custom Time of Day Creator"
-msgstr "Criar Tempo de Dia personalizado"
-
-#: src/hotkey/hotkey_command.cpp:127
-msgid "Partial Undo"
-msgstr "Desfazer parcialmente"
-
-#: src/hotkey/hotkey_command.cpp:128
-msgid "New Map"
-msgstr "Novo Mapa"
-
-#: src/hotkey/hotkey_command.cpp:129
-msgid "New Scenario"
-msgstr "Novo cenário"
-
-#: src/hotkey/hotkey_command.cpp:130
-msgid "Load Map"
-msgstr "Carregar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:132
-msgid "Save Map As"
-msgstr "Gravar Mapa como"
-
-#: src/hotkey/hotkey_command.cpp:133
-msgid "Save Scenario As"
-msgstr "Guardar Cenário Como"
-
-#: src/hotkey/hotkey_command.cpp:134
-msgid "Save All Maps"
-msgstr "Gravar todos os Mapas"
-
-#: src/hotkey/hotkey_command.cpp:135
-msgid "Revert All Changes"
-msgstr "Reverter todas as mudanças"
-
-#: src/hotkey/hotkey_command.cpp:136
-msgid "Map Information"
-msgstr "Informação do Mapa"
-
-#: src/hotkey/hotkey_command.cpp:138
-msgid "Clear Selected Item Set"
-msgstr "Limpar Itens Definidos"
-
-#: src/hotkey/hotkey_command.cpp:139
-msgid "Swap Foreground/Background Palette Item"
-msgstr "Trocar terreno de fundo e sobreposto"
-
-#: src/hotkey/hotkey_command.cpp:140
-msgid "Change Palette Group"
-msgstr "Mudar Grupo de Desenho"
-
-#: src/hotkey/hotkey_command.cpp:141
-msgid "Scroll Palette Left"
-msgstr "Rolar para a esquerda"
-
-#: src/hotkey/hotkey_command.cpp:142
-msgid "Scroll Palette Right"
-msgstr "Rolar para a direita"
-
-#: src/hotkey/hotkey_command.cpp:144
-msgid "Add New Side"
-msgstr "Adicionar nova equipa"
-
-#: src/hotkey/hotkey_command.cpp:146
-msgid "Next Tool"
-msgstr "Próxima ferramenta"
-
-#: src/hotkey/hotkey_command.cpp:148
-msgid "Paint Tool"
-msgstr "Ferramenta de desenho"
-
-#: src/hotkey/hotkey_command.cpp:148 src/hotkey/hotkey_command.cpp:149
-msgid ""
-"Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
-"paint base layer only. Ctrl+click to sample terrain under cursor."
-msgstr ""
-"Usa o botão esquerdo/direito do rato para desenhar o terreno da frente/"
-"fundo. Segura Shift para pintar apenas a camada base.·Ctrl+clique·para pegar "
-"uma amostra do terreno sob o cursor."
-
-#: src/hotkey/hotkey_command.cpp:149
-msgid "Fill Tool"
-msgstr "Ferramenta de encher"
-
-#: src/hotkey/hotkey_command.cpp:150
-msgid ""
-"Left mouse button selects or deselects, right brings up a context menu. Hold "
-"Shift for magic-wand selection of tiles with same terrain."
-msgstr ""
-"O botão esquerdo selecciona/desselecciona, o direito traz a toa o menu de "
-"contexto. Prima Shift para seleccionares todo os hexágonos com o mesmo tipo "
-"de terreno."
-
-#: src/hotkey/hotkey_command.cpp:150
-msgid "Selection Tool"
-msgstr "Ferramenta de selecção"
-
-#: src/hotkey/hotkey_command.cpp:151
-msgid ""
-"Left mouse button displays player selection, right clears. Number keys "
-"scroll to the starting position, alt+number sets respective starting "
-"position under cursor, delete clears."
-msgstr ""
-"O botão esquerdo do rato mostra a selecção do jogador, o direito limpa. "
-"Teclas numéricas rolam para a posição inicial, alt+número ajusta a posição "
-"inicial para o ponto debaixo do cursor, a tecla del remove-a."
-
-#: src/hotkey/hotkey_command.cpp:151
-msgid "Starting Positions Tool"
-msgstr "Ferramenta de definição de posições iniciais"
-
-#: src/hotkey/hotkey_command.cpp:152
-msgid "Label Tool"
-msgstr "Ferramenta de legendas"
-
-#: src/hotkey/hotkey_command.cpp:152
-msgid "Left mouse button sets or drags a label, right clears."
-msgstr "O botão esquerdo define ou arrasta uma legenda, o direito limpa-a."
-
-#: src/hotkey/hotkey_command.cpp:153
-msgid ""
-"Left mouse button sets a new unit or moves a unit via drag and drop, right "
-"brings up a context menu. Needs a defined side."
-msgstr ""
-"O botão esquerdo do rato cria ou move uma unidade por arrastamento, o "
-"direito traz a toa um menu de acção. Tens de definir uma equipa primeiro."
-
-#: src/hotkey/hotkey_command.cpp:153
-msgid "Unit Tool"
-msgstr "Ferramenta de unidades"
-
-#: src/hotkey/hotkey_command.cpp:154
-msgid "Item Tool"
-msgstr "Ferramenta de Itens"
-
-#: src/hotkey/hotkey_command.cpp:154
-msgid ""
-"Left mouse button sets a new item or moves it via drag and drop, right "
-"clears. Not implemented yet."
-msgstr ""
-"O botão esquerdo cria um novo item ou move um existente, o direito elimina. "
-"Ainda não implementado."
-
-#: src/hotkey/hotkey_command.cpp:155
-msgid ""
-"Left mouse button sets or drags a sound source, right clears. Not "
-"implemented yet."
-msgstr ""
-"O botão direito define um som de fundo ou modifica um existente, o direito "
-"elimina. Ainda não implementado."
-
-#: src/hotkey/hotkey_command.cpp:155
-msgid "Sound Source Tool"
-msgstr "Ferramenta de fonte sonora"
-
-#: src/hotkey/hotkey_command.cpp:156
-msgid ""
-"Left mouse button sets the village ownership to the current side, right "
-"clears. Needs a defined side."
-msgstr ""
-"O botão esquerdo do rato muda o controlo das aldeias para a equipa actual, o "
-"direito limpa. Tens de definir uma equipa primeiro."
-
-#: src/hotkey/hotkey_command.cpp:156
-msgid "Village Tool"
-msgstr "Ferramenta de aldeia"
-
-#: src/hotkey/hotkey_command.cpp:158
-msgid "Can Recruit"
-msgstr "Pode recrutar"
-
-#: src/hotkey/hotkey_command.cpp:158
-msgid "Toggle the recruit attribute of a unit."
-msgstr "Permite mudar se a unidade pode recrutar"
-
-#: src/hotkey/hotkey_command.cpp:159
-msgid "Can be Renamed"
-msgstr "Pode ser renomeado"
-
-#: src/hotkey/hotkey_command.cpp:159
-msgid "Toggle the unit being renameable."
-msgstr "Permite que a unidade seja renomeada"
-
-#: src/hotkey/hotkey_command.cpp:160
-msgid "Assign Recruit List"
-msgstr "Define a lista de recrutamento"
-
-#: src/hotkey/hotkey_command.cpp:160
-msgid "Assign the selected unit set as recruit list to the unit."
-msgstr "Define a unidade seleccionada como uma das que pode ser recruta."
-
-#: src/hotkey/hotkey_command.cpp:162
-msgid "Change Unit ID"
-msgstr "Mudar ID da unidade"
-
-#: src/hotkey/hotkey_command.cpp:163
-msgid "Loyal"
-msgstr "Leal"
-
-#: src/hotkey/hotkey_command.cpp:165
-msgid "Toggle Minimap Unit Coding"
-msgstr "Mostra a codificação das unidades"
-
-#: src/hotkey/hotkey_command.cpp:166
-msgid "Toggle Minimap Terrain Coding"
-msgstr "Mostra a codificação do terreno"
-
-#: src/hotkey/hotkey_command.cpp:168
-msgid "Toggle Minimap Unit Drawing"
-msgstr "Mostra a visualização das unidades"
-
-#: src/hotkey/hotkey_command.cpp:169
-msgid "Toggle Minimap Village Drawing"
-msgstr "Mostra a visualização das aldeias"
-
-#: src/hotkey/hotkey_command.cpp:170
-msgid "Toggle Minimap Terrain Drawing"
-msgstr "Mostra a visualização do terreno"
-
-#: src/hotkey/hotkey_command.cpp:172
-msgid "Next Brush"
-msgstr "Próximo Pincel"
-
-#: src/hotkey/hotkey_command.cpp:173
-msgid "Default Brush"
-msgstr "Pincel Padrão"
-
-#: src/hotkey/hotkey_command.cpp:174
-msgid "Single Tile"
-msgstr "Hexágono Único"
-
-#: src/hotkey/hotkey_command.cpp:175
-msgid "Radius One"
-msgstr "De rádio um"
-
-#: src/hotkey/hotkey_command.cpp:176
-msgid "Radius Two"
-msgstr "De rádio dois"
-
-#: src/hotkey/hotkey_command.cpp:177
-msgid "Brush NW-SE"
-msgstr "Linha Noroeste-Sudeste"
-
-#: src/hotkey/hotkey_command.cpp:178
-msgid "Brush SW-NE"
-msgstr "Linha Sudoeste-Nordeste"
-
-#: src/hotkey/hotkey_command.cpp:180
-msgid "Cut"
-msgstr "Cortar"
-
-#: src/hotkey/hotkey_command.cpp:181
-msgid "Copy"
-msgstr "Copiar"
-
-#: src/hotkey/hotkey_command.cpp:182
-msgid ""
-"Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr ""
-"O botão esquerdo do rato copia da área de transferência, o direito traz à "
-"toa um menu de contexto."
-
-#: src/hotkey/hotkey_command.cpp:182
-msgid "Paste"
-msgstr "Colar"
-
-#: src/hotkey/hotkey_command.cpp:183
-msgid "Export Selected Coordinates to System Clipboard"
-msgstr "Exportar coordenadas seleccionadas para a área de transferência"
-
-#: src/hotkey/hotkey_command.cpp:184
-msgid "Select All"
-msgstr "Seleccionar tudo"
-
-#: src/hotkey/hotkey_command.cpp:185
-msgid "Select Inverse"
-msgstr "Inverter selecção"
-
-#: src/hotkey/hotkey_command.cpp:186
-msgid "Select None"
-msgstr "Seleccionar Nada"
-
-#: src/hotkey/hotkey_command.cpp:187
-msgid "Rotate Clipboard Clockwise"
-msgstr "Rodar Selecção no sentido do relógio"
-
-#: src/hotkey/hotkey_command.cpp:188
-msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "Rodar Selecção contra o sentido do relógio"
-
-#: src/hotkey/hotkey_command.cpp:189
-msgid "Flip Clipboard Horizontally"
-msgstr "Espelhar Selecção Horizontalmente"
-
-#: src/hotkey/hotkey_command.cpp:190
-msgid "Flip Clipboard Vertically"
-msgstr "Espelhar Selecção Verticalmente"
-
-#: src/hotkey/hotkey_command.cpp:191
-msgid "Rotate Selection"
-msgstr "Rodar Selecção"
-
-#: src/hotkey/hotkey_command.cpp:192
-msgid "Flip Selection"
-msgstr "Girar Selecção"
-
-#: src/hotkey/hotkey_command.cpp:193
-msgid "Fill Selection"
-msgstr "Preencher Selecção"
-
-#: src/hotkey/hotkey_command.cpp:194
-msgid "Generate Tiles in Selection"
-msgstr "Gerar terreno na selecção"
-
-#: src/hotkey/hotkey_command.cpp:195
-msgid "Randomize Tiles in Selection"
-msgstr "Terreno na selecção aleatório"
-
-#: src/hotkey/hotkey_command.cpp:196
-msgid "Resize Map"
-msgstr "Redimensionar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:197
-msgid "Rotate Map"
-msgstr "Rodar Mapa"
-
-#: src/hotkey/hotkey_command.cpp:198
-msgid "Generate Map"
-msgstr "Gerar novo mapa"
-
-#: src/hotkey/hotkey_command.cpp:199
-msgid "Apply a Mask"
-msgstr "Aplicar máscara"
-
-#: src/hotkey/hotkey_command.cpp:200
-msgid "Create Mask"
-msgstr "Criar Máscara"
-
-#: src/hotkey/hotkey_command.cpp:201
-msgid "Refresh Display"
-msgstr "Actualizar Ecrã"
-
-#: src/hotkey/hotkey_command.cpp:202
-msgid "Update Terrain Transitions"
-msgstr "Actualizar transições de terreno"
-
-#: src/hotkey/hotkey_command.cpp:204
-msgid "Toggle Terrain Transition Update"
-msgstr "Ligar actualização das transições de terreno"
-
-#: src/hotkey/hotkey_command.cpp:205
-msgid "Auto-update Terrain Transitions"
-msgstr "Actualizar Automaticamente Transições de Terreno"
-
-#: src/hotkey/hotkey_command.cpp:207
-msgid "Auto-update Terrain Transitions: No"
-msgstr "Actualização automática das transições: não"
-
-#: src/hotkey/hotkey_command.cpp:208
-msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Actualização automática das transições: parcial"
-
-#: src/hotkey/hotkey_command.cpp:210
-msgid "Refresh Image Cache"
-msgstr "Actualizar a Cache de Imagens"
-
-#: src/hotkey/hotkey_command.cpp:211
-msgid "Draw Hex Coordinates"
-msgstr "Desenhar coordenadas dos hexágonos"
-
-#: src/hotkey/hotkey_command.cpp:212
-msgid "Draw Terrain Codes"
-msgstr "Desenhar código do Terreno"
-
-#: src/hotkey/hotkey_command.cpp:214
-msgid "Save Selection to Area"
-msgstr "Gravar Selecção para um Canal"
-
-#: src/hotkey/hotkey_command.cpp:215
-msgid "Rename Selected Area"
-msgstr "Renomear a área seleccionada"
-
-#: src/hotkey/hotkey_command.cpp:216
-msgid "Remove Selected Area"
-msgstr "Mover a área seleccionada"
-
-#: src/hotkey/hotkey_command.cpp:217
-msgid "Add New Area"
-msgstr "Adicionar nova área"
-
-#: src/hotkey/hotkey_command.cpp:219
-msgid "Edit Scenario"
-msgstr "Editar Cenário"
-
-#: src/hotkey/hotkey_command.cpp:220
-msgid "Edit Side"
-msgstr "Editar Equipa"
-
-#: src/hotkey/hotkey_command.cpp:221
-msgid "Remove Side"
-msgstr "Remover Equipa"
-
-#: src/hotkey/hotkey_command.cpp:223
-msgid "Delay Shroud Updates"
-msgstr "Adiar Actualizações da Sombra"
-
-#: src/hotkey/hotkey_command.cpp:224
-msgid "Update Shroud Now"
-msgstr "Actualizar a Sombra Agora"
-
-#: src/hotkey/hotkey_command.cpp:225
-msgid "Continue Move"
-msgstr "Continuar Movimento"
-
-#: src/hotkey/hotkey_command.cpp:226
-msgid "Find Label or Unit"
-msgstr "Procurar Etiqueta ou Unidade"
-
-#: src/hotkey/hotkey_command.cpp:227
-msgid "Speak to Ally"
-msgstr "Falar com Aliados"
-
-#: src/hotkey/hotkey_command.cpp:228
-msgid "Speak to All"
-msgstr "Falar com Todos"
-
-#: src/hotkey/hotkey_command.cpp:229
-msgid "Help"
-msgstr "Ajuda"
-
-#: src/hotkey/hotkey_command.cpp:230
-msgid "View Chat Log"
-msgstr "Ver Registo da Conversa"
-
-#: src/hotkey/hotkey_command.cpp:231
-msgid "Enter User Command"
-msgstr "Introduzir comando"
-
-#: src/hotkey/hotkey_command.cpp:232
-msgid "Custom Command"
-msgstr "Comando Próprio"
-
-#: src/hotkey/hotkey_command.cpp:233
-msgid "Run Formula"
-msgstr "Executar Fórmula"
-
-#: src/hotkey/hotkey_command.cpp:234
-msgid "Clear Messages"
-msgstr "Apagar mensagens"
-
-#: src/hotkey/hotkey_command.cpp:236
-msgid "Change Language"
-msgstr "Modificar o Idioma"
-
-#: src/hotkey/hotkey_command.cpp:237
-msgid "Refresh WML"
-msgstr "Actualizar WML"
-
-#: src/hotkey/hotkey_command.cpp:238
-msgid "Next Tip of the Day"
-msgstr "Próxima dica do dia"
-
-#: src/hotkey/hotkey_command.cpp:239
-msgid "Previous Tip of the Day"
-msgstr "Anterior dica do dia"
-
-#: src/hotkey/hotkey_command.cpp:240
-msgid "Start Tutorial"
-msgstr "Iniciar o Tutorial"
-
-#: src/hotkey/hotkey_command.cpp:241
-msgid "Start Campaign"
-msgstr "Começar uma Campanha"
-
-#: src/hotkey/hotkey_command.cpp:242
-msgid "Start Multiplayer Game"
-msgstr "Começar um jogo em rede"
-
-#: src/hotkey/hotkey_command.cpp:243
-msgid "Manage Add-ons"
-msgstr "Actualizar Extras"
-
-#: src/hotkey/hotkey_command.cpp:244
-msgid "Start Editor"
-msgstr "Iniciar o editor de mapa"
-
-#: src/hotkey/hotkey_command.cpp:245
-msgid "Show Credits"
-msgstr "Mostra os créditos"
-
-#: src/hotkey/hotkey_command.cpp:247
-msgid "Show Helptip"
-msgstr "Mostra as dicas"
-
-#: src/hotkey/hotkey_command.cpp:250
-msgid "Unrecognized Command"
-msgstr "Comando não reconhecido"
 
 #
 #: src/intro.cpp:36
@@ -6663,6 +5895,11 @@ msgstr "Fim"
 #: src/language.cpp:107
 msgid "System default language"
 msgstr "Idioma padrão do sistema"
+
+#
+#: src/leader_scroll_dialog.cpp:45 src/menu_events.cpp:191
+msgid "Leader"
+msgstr "Líder"
 
 #
 #: src/leader_scroll_dialog.cpp:46 src/menu_events.cpp:192
@@ -6687,32 +5924,32 @@ msgstr "Manutenção"
 
 #
 #: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:197
-#: src/multiplayer_connect.cpp:380 src/multiplayer_wait.cpp:542
+#: src/multiplayer_connect.cpp:383 src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "Rendimento"
 
 #
-#: src/leader_scroll_dialog.cpp:163 src/menu_events.cpp:302
+#: src/leader_scroll_dialog.cpp:163 src/menu_events.cpp:306
 msgid "Current Status"
 msgstr "Estado actual"
 
 #
-#: src/leader_scroll_dialog.cpp:164 src/menu_events.cpp:303
+#: src/leader_scroll_dialog.cpp:164 src/menu_events.cpp:307
 msgid "More >"
 msgstr "Mais >"
 
 #
-#: src/leader_scroll_dialog.cpp:184 src/menu_events.cpp:321
+#: src/leader_scroll_dialog.cpp:184 src/menu_events.cpp:325
 msgid "scenario settings^Leader"
 msgstr "Líder"
 
 #
-#: src/leader_scroll_dialog.cpp:186 src/menu_events.cpp:323
+#: src/leader_scroll_dialog.cpp:186 src/menu_events.cpp:327
 msgid "scenario settings^Side"
 msgstr "Equipa"
 
 #
-#: src/leader_scroll_dialog.cpp:187 src/menu_events.cpp:324
+#: src/leader_scroll_dialog.cpp:187 src/menu_events.cpp:328
 msgid ""
 "scenario settings^Start\n"
 "Gold"
@@ -6721,7 +5958,7 @@ msgstr ""
 "Inicial"
 
 #
-#: src/leader_scroll_dialog.cpp:188 src/menu_events.cpp:325
+#: src/leader_scroll_dialog.cpp:188 src/menu_events.cpp:329
 msgid ""
 "scenario settings^Base\n"
 "Income"
@@ -6730,7 +5967,7 @@ msgstr ""
 "Básico"
 
 #
-#: src/leader_scroll_dialog.cpp:189 src/menu_events.cpp:326
+#: src/leader_scroll_dialog.cpp:189 src/menu_events.cpp:330
 msgid ""
 "scenario settings^Gold Per\n"
 "Village"
@@ -6739,7 +5976,7 @@ msgstr ""
 "Por Aldeia"
 
 #
-#: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:327
+#: src/leader_scroll_dialog.cpp:190 src/menu_events.cpp:331
 msgid ""
 "scenario settings^Support Per\n"
 "Village"
@@ -6748,34 +5985,34 @@ msgstr ""
 "Por Aldeia"
 
 #
-#: src/leader_scroll_dialog.cpp:191 src/menu_events.cpp:328
+#: src/leader_scroll_dialog.cpp:191 src/menu_events.cpp:332
 msgid "scenario settings^Fog"
 msgstr "Nevoeiro"
 
 #
-#: src/leader_scroll_dialog.cpp:192 src/menu_events.cpp:329
+#: src/leader_scroll_dialog.cpp:192 src/menu_events.cpp:333
 msgid "scenario settings^Shroud"
 msgstr "Sombra"
 
 #
 #: src/leader_scroll_dialog.cpp:246 src/leader_scroll_dialog.cpp:247
-#: src/menu_events.cpp:379 src/menu_events.cpp:380
+#: src/menu_events.cpp:383 src/menu_events.cpp:384
 msgid "no"
 msgstr "não"
 
 #
 #: src/leader_scroll_dialog.cpp:246 src/leader_scroll_dialog.cpp:247
-#: src/menu_events.cpp:379 src/menu_events.cpp:380
+#: src/menu_events.cpp:383 src/menu_events.cpp:384
 msgid "yes"
 msgstr "sim"
 
 #
-#: src/leader_scroll_dialog.cpp:263 src/menu_events.cpp:396
+#: src/leader_scroll_dialog.cpp:263 src/menu_events.cpp:400
 msgid "Scenario Settings"
 msgstr "Configurações de Cenário"
 
 #
-#: src/leader_scroll_dialog.cpp:266 src/menu_events.cpp:399
+#: src/leader_scroll_dialog.cpp:266 src/menu_events.cpp:403
 msgid " < Back"
 msgstr " < Voltar"
 
@@ -6855,64 +6092,69 @@ msgid "Starting game"
 msgstr "A iniciar a partida"
 
 #
-#: src/menu_events.cpp:418
+#: src/menu_events.cpp:141
+msgid "Statistics"
+msgstr "Estatísticas"
+
+#
+#: src/menu_events.cpp:422
 msgid "Save the Map As"
 msgstr "Guardar o mapa como"
 
 #
-#: src/menu_events.cpp:422
+#: src/menu_events.cpp:426
 msgid "The map already exists. Do you want to overwrite it?"
 msgstr "O mapa já existe. Queres sobrescrever-lo?"
 
 #
-#: src/menu_events.cpp:434
+#: src/menu_events.cpp:438
 msgid "Map saved."
 msgstr "Mapa guardado."
 
 #
-#: src/menu_events.cpp:438
+#: src/menu_events.cpp:442
 msgid "Could not save the map: $msg"
 msgstr "Não é possível gravar o mapa: $msg"
 
 #
-#: src/menu_events.cpp:510
+#: src/menu_events.cpp:514
 msgid "Message:"
 msgstr "Mensagem:"
 
 #
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:515
 msgid "Send to allies only"
 msgstr "Enviar apenas para aliados"
 
 #
-#: src/menu_events.cpp:511
+#: src/menu_events.cpp:515
 msgid "Send to observers only"
 msgstr "Enviar apenas para observadores"
 
 #
-#: src/menu_events.cpp:578
+#: src/menu_events.cpp:582
 msgid "unit^Gold"
 msgid_plural "Gold"
 msgstr[0] "Ouro"
 msgstr[1] "Ouro"
 
 #
-#: src/menu_events.cpp:585
+#: src/menu_events.cpp:589
 msgid "You have no units available to recruit."
 msgstr "Não tens unidades disponíveis para recrutar."
 
 #
-#: src/menu_events.cpp:618
+#: src/menu_events.cpp:622
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Não tens ouro suficiente para recrutar esta unidade"
 
 #
-#: src/menu_events.cpp:650
+#: src/menu_events.cpp:654
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Estás separado dos teus soldados e não podes convocá-los"
 
 #
-#: src/menu_events.cpp:677
+#: src/menu_events.cpp:681
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -6921,72 +6163,82 @@ msgstr ""
 "(É necessário que tropas tenham sobrevivido num cenário anterior)"
 
 #
-#: src/menu_events.cpp:683
+#: src/menu_events.cpp:687
 msgid "You currently can't recall at the highlighted location"
 msgstr "Não podes convocar neste momento na localização seleccionada"
 
 #
-#: src/menu_events.cpp:695
+#: src/menu_events.cpp:699
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] "Tens de ter pelo menos uma moeda de ouro para convocar a unidade"
 msgstr[1] "Tens de ter pelo menos $cost moedas de ouro para convocar a unidade"
 
 #
-#: src/menu_events.cpp:815
+#: src/menu_events.cpp:819
 msgid "You cannot end your turn yet!"
 msgstr "Ainda não podes terminar o teu turno!"
 
 #
-#: src/menu_events.cpp:829
+#: src/menu_events.cpp:833
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Ainda não começaste o teu turno. Queres realmente terminá-lo?"
 
 #
-#: src/menu_events.cpp:836
+#: src/menu_events.cpp:840
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 "Algumas unidades ainda se podem mover. Queres realmente terminar o teu turno?"
 
 #
-#: src/menu_events.cpp:843
+#: src/menu_events.cpp:847
 msgid "Some units have not moved. Do you really want to end your turn?"
 msgstr ""
 "Algumas unidades ainda não se moveram. Queres realmente terminar o teu turno?"
 
 #
-#: src/menu_events.cpp:896
+#: src/menu_events.cpp:899
+msgid "Rename Unit"
+msgstr "Renomear unidade"
+
+#
+#: src/menu_events.cpp:900
 msgid "Name:"
 msgstr "Nome:"
 
 #
-#: src/menu_events.cpp:980
+#: src/menu_events.cpp:984
 msgid "Race"
 msgstr "Raça"
 
 #
-#: src/menu_events.cpp:1004 src/multiplayer_wait.cpp:139
+#: src/menu_events.cpp:1005
+msgid "Create Unit (Debug!)"
+msgstr "Criar Unidade (Modo de Deburação!)"
+
+#
+#: src/menu_events.cpp:1008 src/multiplayer_wait.cpp:139
 msgid "Gender: "
 msgstr "Sexo: "
 
 #
-#: src/menu_events.cpp:1004
+#: src/menu_events.cpp:1008
 msgid "gender^Random"
 msgstr "Aleatório"
 
 #
-#: src/menu_events.cpp:1355
+#: src/menu_events.cpp:1359
 msgid "Search"
 msgstr "Procurar"
 
 #
-#: src/menu_events.cpp:1532
+#: src/menu_events.cpp:1536
 msgid "This command is currently unavailable."
 msgstr "Este comando está actualmente indisponível."
 
 #
-#: src/menu_events.cpp:1538
+#: src/menu_events.cpp:1542
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
@@ -6995,7 +6247,7 @@ msgstr ""
 "comandos disponíveis."
 
 #
-#: src/menu_events.cpp:1556
+#: src/menu_events.cpp:1560
 msgid ""
 "Available commands list and command-specific help. Use \"help all\" to "
 "include currently unavailable commands."
@@ -7004,22 +6256,22 @@ msgstr ""
 "all” para incluir comandos actualmente indisponíveis."
 
 #
-#: src/menu_events.cpp:1558
+#: src/menu_events.cpp:1562
 msgid "do not translate the 'all'^[all|<command>]"
 msgstr "[all|<command>]"
 
 #
-#: src/menu_events.cpp:1602
+#: src/menu_events.cpp:1606
 msgid "Error:"
 msgstr "Erro:"
 
 #
-#: src/menu_events.cpp:1608
+#: src/menu_events.cpp:1612
 msgid "Missing argument $arg_id"
 msgstr "Argumento em falta $arg_id"
 
 #
-#: src/menu_events.cpp:1656
+#: src/menu_events.cpp:1660
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
@@ -7028,42 +6280,42 @@ msgstr ""
 "$list_of_commands"
 
 #
-#: src/menu_events.cpp:1656 src/menu_events.cpp:1657 src/menu_events.cpp:1680
+#: src/menu_events.cpp:1660 src/menu_events.cpp:1661 src/menu_events.cpp:1684
 msgid "help"
 msgstr "ajuda"
 
 #
-#: src/menu_events.cpp:1657
+#: src/menu_events.cpp:1661
 msgid "Type $help_command <command> for more info."
 msgstr "Escreva $help_command <comando> para mais informações."
 
 #
-#: src/menu_events.cpp:1668
+#: src/menu_events.cpp:1672
 msgid " No help available."
 msgstr " Nenhuma ajuda disponível."
 
 #
-#: src/menu_events.cpp:1673
+#: src/menu_events.cpp:1677
 msgid "Usage:"
 msgstr "Uso:"
 
 #
-#: src/menu_events.cpp:1678
+#: src/menu_events.cpp:1682
 msgid "aliases:"
 msgstr "atalhos:"
 
 #
-#: src/menu_events.cpp:1799
+#: src/menu_events.cpp:1803
 msgid "(A) — admin command"
 msgstr "(A) — comando administrativo"
 
 #
-#: src/menu_events.cpp:1806 src/menu_events.cpp:2013
+#: src/menu_events.cpp:1810 src/menu_events.cpp:2017
 msgid "(admin only)"
 msgstr "(só administrador)"
 
 #
-#: src/menu_events.cpp:1826
+#: src/menu_events.cpp:1830
 msgid ""
 "Send a query to the server. Without arguments the server should tell you the "
 "available commands."
@@ -7072,7 +6324,7 @@ msgstr ""
 "comandos disponíveis."
 
 #
-#: src/menu_events.cpp:1830
+#: src/menu_events.cpp:1834
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
@@ -7081,41 +6333,41 @@ msgstr ""
 "partida mas no servidor só irá ser banido."
 
 #
-#: src/menu_events.cpp:1831 src/menu_events.cpp:1834 src/menu_events.cpp:1836
-#: src/menu_events.cpp:1838 src/menu_events.cpp:1840 src/menu_events.cpp:1867
-#: src/menu_events.cpp:1869 src/menu_events.cpp:1871 src/menu_events.cpp:1885
+#: src/menu_events.cpp:1835 src/menu_events.cpp:1838 src/menu_events.cpp:1840
+#: src/menu_events.cpp:1842 src/menu_events.cpp:1844 src/menu_events.cpp:1871
+#: src/menu_events.cpp:1873 src/menu_events.cpp:1875 src/menu_events.cpp:1889
 msgid "<nickname>"
 msgstr "<alcunha>"
 
 #
-#: src/menu_events.cpp:1833
+#: src/menu_events.cpp:1837
 msgid "Unban a user. He does not have to be in the game but on the server."
 msgstr ""
 "Readmitir um utilizador. Não precisará de estar numa partida, mas no "
 "servidor."
 
 #
-#: src/menu_events.cpp:1836
+#: src/menu_events.cpp:1840
 msgid "Kick a player or observer."
 msgstr "Expulsar um jogador ou observador."
 
 #
-#: src/menu_events.cpp:1838
+#: src/menu_events.cpp:1842
 msgid "Mute an observer. Without an argument displays the mute status."
 msgstr "Calar um observador. Sem argumentos mostra o estado da conversa."
 
 #
-#: src/menu_events.cpp:1840
+#: src/menu_events.cpp:1844
 msgid "Unmute an observer. Without an argument unmutes everyone."
 msgstr "Permitir a fala a um observador. Sem argumentos permita a todos."
 
 #
-#: src/menu_events.cpp:1842
+#: src/menu_events.cpp:1846
 msgid "Mute/Unmute all observers. (toggles)"
 msgstr "Silenciar/Remover todos os observadores. (alternar)"
 
 #
-#: src/menu_events.cpp:1852
+#: src/menu_events.cpp:1856
 msgid ""
 "Report abuse, rule violations, etc. to the server moderators. Make sure to "
 "mention relevant nicknames, etc."
@@ -7124,17 +6376,17 @@ msgstr ""
 "Certifica-te de mencionar alcunhas relevantes, etc."
 
 #
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1860
 msgid "<message>"
 msgstr "<mensagem>"
 
 #
-#: src/menu_events.cpp:1856
+#: src/menu_events.cpp:1860
 msgid "Send an emotion or personal action in chat."
 msgstr "Envia uma acção ou emoção no chat."
 
 #
-#: src/menu_events.cpp:1859
+#: src/menu_events.cpp:1863
 msgid ""
 "Sends a private message. You cannot send private messages to players in a "
 "running game you observe or play in."
@@ -7143,237 +6395,237 @@ msgstr ""
 "controlam qualquer lado na partida em que estás."
 
 #
-#: src/menu_events.cpp:1861
+#: src/menu_events.cpp:1865
 msgid "<nickname> <message>"
 msgstr "<alcunha> <mensagem>"
 
 #
-#: src/menu_events.cpp:1865
+#: src/menu_events.cpp:1869
 msgid "<level> <domain>"
 msgstr "<nível> <domínio>"
 
 #
-#: src/menu_events.cpp:1865
+#: src/menu_events.cpp:1869
 msgid "Change the log level of a log domain."
 msgstr "Muda o nível de log de um domínio de log."
 
 #
-#: src/menu_events.cpp:1867
+#: src/menu_events.cpp:1871
 msgid "Add a nickname to your ignores list."
 msgstr "Adicionar um nome a tua lista de ignorados."
 
 #
-#: src/menu_events.cpp:1869
+#: src/menu_events.cpp:1873
 msgid "Add a nickname to your friends list."
 msgstr "Adicionar um nome à lista de amigos."
 
 #
-#: src/menu_events.cpp:1871
+#: src/menu_events.cpp:1875
 msgid "Remove a nickname from your ignores or friends list."
 msgstr "Remova um nome da tua lista de ignorados ou de amigos."
 
 #
-#: src/menu_events.cpp:1873
+#: src/menu_events.cpp:1877
 msgid "Show your ignores and friends list."
 msgstr "Mostra a tua lista de ignorados e amigos."
 
 #
-#: src/menu_events.cpp:1876
+#: src/menu_events.cpp:1880
 msgid "Display version information."
 msgstr "Mostra informação da versão."
 
 #
-#: src/menu_events.cpp:1878
+#: src/menu_events.cpp:1882
 msgid "<password> <email (optional)>"
 msgstr "<password> <email (opcional)>"
 
 #
-#: src/menu_events.cpp:1878
+#: src/menu_events.cpp:1882
 msgid "Register your nickname"
 msgstr "Regista o teu usuário"
 
 #
-#: src/menu_events.cpp:1880
+#: src/menu_events.cpp:1884
 msgid "Drop your nickname."
 msgstr "Descartar o teu nome registado."
 
 #
-#: src/menu_events.cpp:1882
+#: src/menu_events.cpp:1886
 msgid "Update details for your nickname. For possible details see '/details'."
 msgstr ""
 "Actualizar detalhes do teu usuário. Para detalhes possíveis veja '/details'."
 
 #
-#: src/menu_events.cpp:1883
+#: src/menu_events.cpp:1887
 msgid "<detail> <value>"
 msgstr "<detalhe> <valor>"
 
 #
-#: src/menu_events.cpp:1885
+#: src/menu_events.cpp:1889
 msgid "Request information about a nickname."
 msgstr "Requisitar informação sobre o nick."
 
 #
-#: src/menu_events.cpp:1887
+#: src/menu_events.cpp:1891
 msgid "Request a list of details you can set for your registered nickname."
 msgstr ""
 "Requerer uma lista de detalhes que podes definir ao teu nome registado."
 
 #
-#: src/menu_events.cpp:1889 src/menu_events.cpp:1892 src/menu_events.cpp:1894
+#: src/menu_events.cpp:1893 src/menu_events.cpp:1896 src/menu_events.cpp:1898
 msgid "<room>"
 msgstr "<sala>"
 
 #
-#: src/menu_events.cpp:1889
+#: src/menu_events.cpp:1893
 msgid "Join a room."
 msgstr "Entrar na sala."
 
 #
-#: src/menu_events.cpp:1892
+#: src/menu_events.cpp:1896
 msgid "Part a room."
 msgstr "Abandonar uma sala."
 
 #
-#: src/menu_events.cpp:1894
+#: src/menu_events.cpp:1898
 msgid "List room members."
 msgstr "Lista de Membros da Sala."
 
 #
-#: src/menu_events.cpp:1896
+#: src/menu_events.cpp:1900
 msgid "List available rooms."
 msgstr "Lista de salas disponíveis."
 
 #
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1902
 msgid "<room> <msg>"
 msgstr "<sala> <mensagem>"
 
 #
-#: src/menu_events.cpp:1898
+#: src/menu_events.cpp:1902
 msgid "Room message."
 msgstr "Mensagens na sala."
 
 #
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1904
 msgid "<room> <type> [value]"
 msgstr "<sala> <tipo> [valor]"
 
 #
-#: src/menu_events.cpp:1900
+#: src/menu_events.cpp:1904
 msgid "Room query."
 msgstr "Lista de espera."
 
 #
-#: src/menu_events.cpp:2005
+#: src/menu_events.cpp:2009
 msgid "(D) — debug only, (N) — network only, (A) — admin only"
 msgstr ""
 "(D) — somente no modo de depuração, (N) — somente em rede, (A) — somente "
 "administrador"
 
 #
-#: src/menu_events.cpp:2011
+#: src/menu_events.cpp:2015
 msgid "(debug command)"
 msgstr "(comando de depuração)"
 
 #
-#: src/menu_events.cpp:2012
+#: src/menu_events.cpp:2016
 msgid "(network only)"
 msgstr "(só rede)"
 
 #
-#: src/menu_events.cpp:2037
+#: src/menu_events.cpp:2041
 msgid "Refresh gui."
 msgstr "Actualizar janela."
 
 #
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:2043
 msgid "Switch a side to/from AI control."
 msgstr "Muda o lado de/para controlo IA."
 
 #
-#: src/menu_events.cpp:2039
+#: src/menu_events.cpp:2043
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<equipa> [on/off]]"
 
 #
-#: src/menu_events.cpp:2042
+#: src/menu_events.cpp:2046
 msgid "<side> <nickname>"
 msgstr "<equipa> <alcunha>"
 
 #
-#: src/menu_events.cpp:2042
+#: src/menu_events.cpp:2046
 msgid "Assign control of a side to a different player or observer."
 msgstr ""
 "Atribuir o controlo de um lado para um jogador diferente ou um observador."
 
 #
-#: src/menu_events.cpp:2044
+#: src/menu_events.cpp:2048
 msgid "Clear chat history."
 msgstr "Limpa o histórico das mensagens."
 
 #
-#: src/menu_events.cpp:2046
+#: src/menu_events.cpp:2050
 msgid "Visualize the screen refresh procedure."
 msgstr "Visualiza o procedimento de actualização do ecrã."
 
 #
-#: src/menu_events.cpp:2048
+#: src/menu_events.cpp:2052
 msgid "Debug foreground terrain."
 msgstr "Depurar terreno de primeiro plano."
 
 #
-#: src/menu_events.cpp:2050
+#: src/menu_events.cpp:2054
 msgid "Debug layers from terrain under the mouse."
 msgstr "Depurar camadas de terrenos sob o rato."
 
 #
-#: src/menu_events.cpp:2051
+#: src/menu_events.cpp:2055
 msgid "Show fps."
 msgstr "Mostrar FPS (frames por segundo)."
 
 #
-#: src/menu_events.cpp:2053
+#: src/menu_events.cpp:2057
 msgid "Save game."
 msgstr "Guardar Partida."
 
 #
-#: src/menu_events.cpp:2055
+#: src/menu_events.cpp:2059
 msgid "Quit game."
 msgstr "Sair da Partida."
 
 #
-#: src/menu_events.cpp:2059
+#: src/menu_events.cpp:2063
 msgid "Save and quit."
 msgstr "Guardar e sair."
 
 #
-#: src/menu_events.cpp:2062
+#: src/menu_events.cpp:2066
 msgid "Ignore replay errors."
 msgstr "Ignorar erros da revisão."
 
 #
-#: src/menu_events.cpp:2064
+#: src/menu_events.cpp:2068
 msgid "Disable autosaves."
 msgstr "Desabilitar guardações automáticas."
 
 #
-#: src/menu_events.cpp:2066
+#: src/menu_events.cpp:2070
 msgid "<id>"
 msgstr "<id>"
 
 #
-#: src/menu_events.cpp:2066
+#: src/menu_events.cpp:2070
 msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Avançar para o próximo cenário, ou cenário identificado pela 'id'"
 
 #
-#: src/menu_events.cpp:2069
+#: src/menu_events.cpp:2073
 msgid "Choose next scenario"
 msgstr "Escolha o próximo cenário"
 
 #
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2076
 msgid ""
 "Change turn number (and time of day), or increase by one if no number is "
 "specified."
@@ -7382,12 +6634,12 @@ msgstr ""
 "especificado o número."
 
 #
-#: src/menu_events.cpp:2072
+#: src/menu_events.cpp:2076
 msgid "[turn]"
 msgstr "[turno]"
 
 #
-#: src/menu_events.cpp:2074
+#: src/menu_events.cpp:2078
 msgid ""
 "Change turn limit, or turn the turn limit off if no number is specified or "
 "it’s −1."
@@ -7396,318 +6648,318 @@ msgstr ""
 "seja passado—1)."
 
 #
-#: src/menu_events.cpp:2074
+#: src/menu_events.cpp:2078
 msgid "[limit]"
 msgstr "[limite]"
 
 #
-#: src/menu_events.cpp:2076
+#: src/menu_events.cpp:2080
 msgid "Turn debug mode on."
 msgstr "Activa o modo de depuração."
 
 #
-#: src/menu_events.cpp:2078
+#: src/menu_events.cpp:2082
 msgid "Turn debug mode off."
 msgstr "Desactiva o modo de depuração."
 
 #
-#: src/menu_events.cpp:2080 src/menu_events.cpp:2084
+#: src/menu_events.cpp:2084 src/menu_events.cpp:2088
 msgid "<command>[;<command>...]"
 msgstr "<comando>[;<comando>...]"
 
 #
-#: src/menu_events.cpp:2080
+#: src/menu_events.cpp:2084
 msgid "Execute a Lua statement."
 msgstr "Executa um elemento Lua."
 
 #
-#: src/menu_events.cpp:2082
+#: src/menu_events.cpp:2086
 msgid "Grant higher privileges to Lua scripts."
 msgstr "Conceda altos privilégios a scripts Lua."
 
 #
-#: src/menu_events.cpp:2084
+#: src/menu_events.cpp:2088
 msgid "Set the command used by the custom command hotkey"
 msgstr ""
 "Estabelece o comando usado pela tecla de atalho de comando personalizado"
 
 #
-#: src/menu_events.cpp:2087
+#: src/menu_events.cpp:2091
 msgid "Invoke a dialog allowing changing control of MP sides."
 msgstr "Abre um diálogo que permite alterar o controlo das equipas."
 
 #
-#: src/menu_events.cpp:2091
+#: src/menu_events.cpp:2095
 msgid "Launch the gamestate inspector"
 msgstr "Inicia o inspector do jogo"
 
 #
-#: src/menu_events.cpp:2093
+#: src/menu_events.cpp:2097
 msgid "Manage persistence data"
 msgstr "Referenciar dados persistentes"
 
 #
-#: src/menu_events.cpp:2095
+#: src/menu_events.cpp:2099
 msgid "<name>[=<command>]"
 msgstr "<nome>[=<comando>]"
 
 #
-#: src/menu_events.cpp:2095
+#: src/menu_events.cpp:2099
 msgid "Set or show alias to a command"
 msgstr "Define ou exibe um atalho para um comando"
 
 #
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:2101
 msgid "<var>=<value>"
 msgstr "<var>=<valor>"
 
 #
-#: src/menu_events.cpp:2097
+#: src/menu_events.cpp:2101
 msgid "Set a scenario variable."
 msgstr "Define uma variável do jogo."
 
 #
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:2103
 msgid "<var>"
 msgstr "<var>"
 
 #
-#: src/menu_events.cpp:2099
+#: src/menu_events.cpp:2103
 msgid "Show a scenario variable."
 msgstr "Mostra uma variável do cenário."
 
 #
-#: src/menu_events.cpp:2101
+#: src/menu_events.cpp:2105
 msgid "Modify a unit variable. (Only top level keys are supported.)"
 msgstr ""
 "Modifica uma variável de unidade. (Somente chaves de primeiro nível são "
 "suportadas.)"
 
 #
-#: src/menu_events.cpp:2108
+#: src/menu_events.cpp:2112
 msgid "Discover all units in help."
 msgstr "Descobre todas as unidades na ajuda."
 
 #
-#: src/menu_events.cpp:2110
+#: src/menu_events.cpp:2114
 msgid "'Undiscover' all units in help."
 msgstr "'Oculta' todas as unidades na ajuda."
 
 #
-#: src/menu_events.cpp:2112
+#: src/menu_events.cpp:2116
 msgid "Create a unit."
 msgstr "Criar uma unidade."
 
 #
-#: src/menu_events.cpp:2114
+#: src/menu_events.cpp:2118
 msgid "Toggle fog for the current player."
 msgstr "Liga/Desliga o Nevoeiro para o jogador actual."
 
 #
-#: src/menu_events.cpp:2116
+#: src/menu_events.cpp:2120
 msgid "Toggle shroud for the current player."
 msgstr "Liga/Desliga a Sombra para o jogador actual."
 
 #
-#: src/menu_events.cpp:2118
+#: src/menu_events.cpp:2122
 msgid "Give gold to the current player."
 msgstr "Oferecer ouro para o jogador actual."
 
 #
-#: src/menu_events.cpp:2120
+#: src/menu_events.cpp:2124
 msgid "Fire a game event."
 msgstr "Disparar um evento do jogo."
 
 #
-#: src/menu_events.cpp:2123
+#: src/menu_events.cpp:2127
 msgid "Toggle overlaying of x,y coordinates on hexes."
 msgstr "Liga/desliga exibição das coordenadas sobre os hexágonos."
 
 #
-#: src/menu_events.cpp:2126
+#: src/menu_events.cpp:2130
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr "Liga/desliga a exibição dos códigos de terreno nos hexágonos."
 
 #
-#: src/menu_events.cpp:2129
+#: src/menu_events.cpp:2133
 msgid "Toggle planning mode."
 msgstr "Activar o modo de planificação."
 
 #
-#: src/menu_events.cpp:2132
+#: src/menu_events.cpp:2136
 msgid "Access whiteboard options dialog."
 msgstr "Acesa o diálogo de opções do modo de planificação."
 
 #
-#: src/menu_events.cpp:2175
+#: src/menu_events.cpp:2179
 msgid "Unknown debug level: '$level'."
 msgstr "Nível de depuração desconhecido: '$level'."
 
 #
-#: src/menu_events.cpp:2177 src/menu_events.cpp:2186
+#: src/menu_events.cpp:2181 src/menu_events.cpp:2190
 msgid "error"
 msgstr "erro"
 
 #
-#: src/menu_events.cpp:2184
+#: src/menu_events.cpp:2188
 msgid "Unknown debug domain: '$domain'."
 msgstr "Domínio de depuração desconhecido: '$domain'."
 
 #
-#: src/menu_events.cpp:2193
+#: src/menu_events.cpp:2197
 msgid "Switched domain: '$domain' to level: '$level'."
 msgstr "Alterado domínio '$domain' para nível: '$level'."
 
 #
-#: src/menu_events.cpp:2264
+#: src/menu_events.cpp:2268
 msgid "whisper to $receiver"
 msgstr "sussurrar a $receiver"
 
 #
-#: src/menu_events.cpp:2271 src/multiplayer_ui.cpp:432
+#: src/menu_events.cpp:2275 src/multiplayer_ui.cpp:432
 msgid "whisper: $sender"
 msgstr "sussurro: $sender"
 
 #
-#: src/menu_events.cpp:2367 src/menu_events.cpp:2385
+#: src/menu_events.cpp:2371 src/menu_events.cpp:2389
 #: src/multiplayer_connect_engine.cpp:993
 msgid "(empty)"
 msgstr "(vago)"
 
 #
-#: src/menu_events.cpp:2367 src/menu_events.cpp:2373 src/menu_events.cpp:2420
+#: src/menu_events.cpp:2371 src/menu_events.cpp:2377 src/menu_events.cpp:2424
 msgid "ignores list"
 msgstr "lista de ignorados"
 
 #
-#: src/menu_events.cpp:2373
+#: src/menu_events.cpp:2377
 msgid "Added to ignore list: $nick"
 msgstr "Adicionado a lista de ignorados: $nick"
 
 #
-#: src/menu_events.cpp:2376 src/menu_events.cpp:2394
+#: src/menu_events.cpp:2380 src/menu_events.cpp:2398
 msgid "Invalid username: $nick"
 msgstr "Nome de utilizador inválido: $nick"
 
 #
-#: src/menu_events.cpp:2385 src/menu_events.cpp:2391 src/menu_events.cpp:2416
+#: src/menu_events.cpp:2389 src/menu_events.cpp:2395 src/menu_events.cpp:2420
 msgid "friends list"
 msgstr "lista dos amigos"
 
 #
-#: src/menu_events.cpp:2391
+#: src/menu_events.cpp:2395
 msgid "Added to friends list: $nick"
 msgstr "Adicionado à lista de amigos: $nick"
 
 #
-#: src/menu_events.cpp:2406
+#: src/menu_events.cpp:2410
 msgid "Removed from list: $nick"
 msgstr "Removido da lista: $nick"
 
 #
-#: src/menu_events.cpp:2406 src/menu_events.cpp:2424
+#: src/menu_events.cpp:2410 src/menu_events.cpp:2428
 msgid "friends and ignores list"
 msgstr "Lista de amigos e ignorados"
 
 #
-#: src/menu_events.cpp:2424
+#: src/menu_events.cpp:2428
 msgid "There are no players on your friends or ignore list."
 msgstr "Não há jogadores na tua lista de amigos ou de ignorados."
 
 #
-#: src/menu_events.cpp:2429
+#: src/menu_events.cpp:2433
 msgid "version"
 msgstr "versão"
 
 #
-#: src/menu_events.cpp:2445
+#: src/menu_events.cpp:2449
 msgid "registering with password *** and no email address"
 msgstr "a registar com a senha *** e nenhum endereço de email"
 
 #
-#: src/menu_events.cpp:2449
+#: src/menu_events.cpp:2453
 msgid "registering with password *** and email address $email"
 msgstr "a registar com a senha *** e o endereço de email $email"
 
 #
-#: src/menu_events.cpp:2452 src/menu_events.cpp:2463 src/menu_events.cpp:2481
-#: src/menu_events.cpp:2495
+#: src/menu_events.cpp:2456 src/menu_events.cpp:2467 src/menu_events.cpp:2485
+#: src/menu_events.cpp:2499
 msgid "nick registration"
 msgstr "Registo de usuário"
 
 #
-#: src/menu_events.cpp:2463
+#: src/menu_events.cpp:2467
 msgid "dropping your username"
 msgstr "a descartar o teu nome de usuário"
 
 #
-#: src/menu_events.cpp:2481
+#: src/menu_events.cpp:2485
 msgid "setting $var to $value"
 msgstr "a definir $var para $value"
 
 #
-#: src/menu_events.cpp:2495
+#: src/menu_events.cpp:2499
 msgid "requesting information for user $nick"
 msgstr "a requisitar informações do usuário $nick"
 
-#: src/menu_events.cpp:2612
+#: src/menu_events.cpp:2616
 msgid "Could not find label or unit containing the string ‘$search’."
 msgstr "Não é possível encontrar uma legenda ou unidade contendo '$search'."
 
 #
-#: src/menu_events.cpp:2651
+#: src/menu_events.cpp:2655
 msgid "Can't droid invalid side: '$side'."
 msgstr "Não é possível automatizar equipa: '$side| é inválido."
 
 #
-#: src/menu_events.cpp:2656
+#: src/menu_events.cpp:2660
 msgid "Can't droid networked side: '$side'."
 msgstr "Não é possível automatizar equipa em rede: '$side| é inválido."
 
 #
-#: src/menu_events.cpp:2694
+#: src/menu_events.cpp:2698
 msgid "Can't change control of invalid side: '$side'."
 msgstr "Não é possível alterar o controlo da equipa: '$side' é invalido."
 
 #
-#: src/menu_events.cpp:2700
+#: src/menu_events.cpp:2704
 msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 "Não é possível alterar o controlo da equipa fora dos limites: '$side' é "
 "invalido."
 
 #
-#: src/menu_events.cpp:2814
+#: src/menu_events.cpp:2818
 msgid "Layers"
 msgstr "Camadas"
 
 #
-#: src/menu_events.cpp:2888
+#: src/menu_events.cpp:2892
 msgid "Choose Scenario (Debug!)"
 msgstr "Escolher cenário (Modo de Depuração!)"
 
 #
-#: src/menu_events.cpp:2934
+#: src/menu_events.cpp:2938
 msgid "Debug mode activated!"
 msgstr "Modo de depuração activado!"
 
 #
-#: src/menu_events.cpp:2937
+#: src/menu_events.cpp:2941
 msgid "Debug mode not available in network games"
 msgstr "Modo de depuração não está disponível nos jogos em rede"
 
 #
-#: src/menu_events.cpp:2942
+#: src/menu_events.cpp:2946
 msgid "Debug mode deactivated!"
 msgstr "Modo de depuração desactivado!"
 
 #
-#: src/menu_events.cpp:2953
+#: src/menu_events.cpp:2957
 msgid "Unsafe Lua scripts."
 msgstr "Scripts Lua não-seguros."
 
 #
-#: src/menu_events.cpp:2954
+#: src/menu_events.cpp:2958
 msgid ""
 "You are about to open a security breach in Wesnoth. Are you sure you want to "
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
@@ -7718,17 +6970,17 @@ msgstr ""
 "instantaneamente tomar o controlo do teu computador. Foste avisado."
 
 #
-#: src/menu_events.cpp:2957
+#: src/menu_events.cpp:2961
 msgid "Unsafe mode enabled!"
 msgstr "Modo não-seguro activado!"
 
 #
-#: src/menu_events.cpp:3000
+#: src/menu_events.cpp:3004
 msgid "Variable not found"
 msgstr "Variável não encontrada"
 
 #
-#: src/menu_events.cpp:3051
+#: src/menu_events.cpp:3055
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral, "
 "chaotic, or liminal."
@@ -7737,42 +6989,42 @@ msgstr ""
 "nocturno ou liminar."
 
 #
-#: src/menu_events.cpp:3107
+#: src/menu_events.cpp:3111
 msgid "Do you wish to clear all of your discovered units from help?"
 msgstr "Desejas limpar todas as suas unidades descobertas da ajuda?"
 
 #
-#: src/menu_events.cpp:3121
+#: src/menu_events.cpp:3125
 msgid "Invalid unit type"
 msgstr "tipo de unidade inválido"
 
 #
-#: src/menu_events.cpp:3129
+#: src/menu_events.cpp:3133
 msgid "Invalid location"
 msgstr "localização inválida"
 
 #
-#: src/menu_events.cpp:3164 src/playsingle_controller.cpp:225
+#: src/menu_events.cpp:3168 src/playsingle_controller.cpp:225
 msgid "Planning mode activated!"
 msgstr "Modo de planificação activado!"
 
 #
-#: src/menu_events.cpp:3167 src/playsingle_controller.cpp:228
+#: src/menu_events.cpp:3171 src/playsingle_controller.cpp:228
 msgid "Planning mode deactivated!"
 msgstr "Modo de planificação desactivado!"
 
 #
-#: src/menu_events.cpp:3180
+#: src/menu_events.cpp:3184
 msgid "ai"
 msgstr "ia"
 
 #
-#: src/menu_events.cpp:3190 src/menu_events.cpp:3220
+#: src/menu_events.cpp:3194 src/menu_events.cpp:3224
 msgid "prompt^Command:"
 msgstr "Comando:"
 
 #
-#: src/mouse_events.cpp:837
+#: src/mouse_events.cpp:839
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
@@ -7781,12 +7033,12 @@ msgstr ""
 "convocatórias planeados restantes."
 
 #
-#: src/mouse_events.cpp:1018 src/mouse_events.cpp:1036
+#: src/mouse_events.cpp:1020 src/mouse_events.cpp:1038
 msgid "Attack Enemy"
 msgstr "Atacar Inimigo"
 
 #
-#: src/mouse_events.cpp:1037
+#: src/mouse_events.cpp:1039
 msgid "Choose weapon:"
 msgstr "Escolha a arma:"
 
@@ -8188,49 +7440,49 @@ msgid "+"
 msgstr "+"
 
 #
-#: src/multiplayer_connect.cpp:364
+#: src/multiplayer_connect.cpp:367
 msgid "Game Lobby: "
 msgstr "Sala de espera: "
 
 #
-#: src/multiplayer_connect.cpp:370
+#: src/multiplayer_connect.cpp:373
 msgid "Player/Type"
 msgstr "Jogador/Tipo"
 
-#: src/multiplayer_connect.cpp:372
+#: src/multiplayer_connect.cpp:375
 msgid "Faction/Name"
 msgstr "Facção/Nome"
 
-#: src/multiplayer_connect.cpp:374
+#: src/multiplayer_connect.cpp:377
 msgid "Leader/Gender"
 msgstr "Líder/Sexo"
 
-#: src/multiplayer_connect.cpp:376
+#: src/multiplayer_connect.cpp:379
 msgid "Team/Color"
 msgstr "Equipa/Cor"
 
 #
-#: src/multiplayer_connect.cpp:383
+#: src/multiplayer_connect.cpp:386
 msgid "I’m Ready"
 msgstr "Estou pronto"
 
 #
-#: src/multiplayer_connect.cpp:399
+#: src/multiplayer_connect.cpp:402
 msgid "The scenario is invalid because it has no id."
 msgstr "O cenário é inválido porque não tem identificação (id)."
 
 #
-#: src/multiplayer_connect.cpp:415
+#: src/multiplayer_connect.cpp:418
 msgid "The scenario is invalid because it has no sides."
 msgstr "O cenário é inválido porque não tem equipas."
 
 #
-#: src/multiplayer_connect.cpp:581
+#: src/multiplayer_connect.cpp:584
 msgid "Waiting for players to join..."
 msgstr "A esperar por outros jogadores em ligar-se..."
 
 #
-#: src/multiplayer_connect.cpp:582
+#: src/multiplayer_connect.cpp:585
 msgid "Waiting for players to choose factions..."
 msgstr "A esperar pelos outros jogadores escolher as suas facções..."
 
@@ -8478,6 +7730,11 @@ msgid "Quick replays"
 msgstr "Revisões Rápidas"
 
 #
+#: src/multiplayer_lobby.cpp:862
+msgid "Preferences"
+msgstr "Preferências"
+
+#
 #: src/multiplayer_lobby.cpp:864
 msgid "Apply filter"
 msgstr "Aplicar Filtro"
@@ -8658,23 +7915,23 @@ msgid "current local time"
 msgstr "hora local"
 
 #
-#: src/play_controller.cpp:1173 src/savegame.cpp:415 src/savegame.cpp:427
-#: src/savegame.cpp:1058 src/savegame.cpp:1060
+#: src/play_controller.cpp:1174 src/savegame.cpp:406 src/savegame.cpp:418
+#: src/savegame.cpp:1049 src/savegame.cpp:1051
 msgid "Auto-Save"
 msgstr "Auto-Guardar"
 
 #
-#: src/play_controller.cpp:1177
+#: src/play_controller.cpp:1178
 msgid "Back to Turn "
 msgstr "Voltar ao turno "
 
 #
-#: src/play_controller.cpp:1185
+#: src/play_controller.cpp:1186
 msgid "Back to Start"
 msgstr "Voltar ao Inicio"
 
 #
-#: src/play_controller.cpp:1443
+#: src/play_controller.cpp:1444
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -8683,22 +7940,22 @@ msgstr ""
 "continuar. Queres guardar-a?"
 
 #
-#: src/play_controller.cpp:1444 src/replay_controller.cpp:335
+#: src/play_controller.cpp:1445 src/replay_controller.cpp:335
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
 #
-#: src/play_controller.cpp:1470
+#: src/play_controller.cpp:1471
 msgid "Accelerated speed enabled!"
 msgstr "Velocidade acelerada activada!"
 
 #
-#: src/play_controller.cpp:1471
+#: src/play_controller.cpp:1472
 msgid "(press $hk to disable)"
 msgstr "(carrega $hk para desactivar)"
 
 #
-#: src/play_controller.cpp:1475
+#: src/play_controller.cpp:1476
 msgid "Accelerated speed disabled!"
 msgstr "Velocidade acelerada desactivada!"
 
@@ -8758,12 +8015,12 @@ msgid "Undoing moves not yet transmitted to the server."
 msgstr "A anulação dos movimentos ainda não transmitido ao servidor."
 
 #
-#: src/playmp_controller.cpp:357
+#: src/playmp_controller.cpp:358
 msgid "Waiting for next scenario..."
 msgstr "A esperar pelo próximo cenário..."
 
 #
-#: src/playmp_controller.cpp:488
+#: src/playmp_controller.cpp:489
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "
@@ -8922,7 +8179,7 @@ msgstr ""
 "sentido continuar. Queres guardar a partida?"
 
 #
-#: src/reports.cpp:159 src/savegame.cpp:851
+#: src/reports.cpp:159 src/savegame.cpp:842
 msgid "Name: "
 msgstr "Nome: "
 
@@ -9202,18 +8459,18 @@ msgid "Observers:"
 msgstr "Observadores:"
 
 #
-#: src/savegame.cpp:336 src/savegame.cpp:338
+#: src/savegame.cpp:327 src/savegame.cpp:329
 msgid " replay"
 msgstr " revisão"
 
 #
-#: src/savegame.cpp:576 src/savegame.cpp:580
+#: src/savegame.cpp:567 src/savegame.cpp:571
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Aviso: O ficheiro que tentaste carregar está corrompido. A tentar carregar "
 "mesmo assim.\n"
 
-#: src/savegame.cpp:613
+#: src/savegame.cpp:604
 msgid ""
 "The save has corrupt version information ($version_number|) and cannot be "
 "loaded."
@@ -9222,7 +8479,7 @@ msgstr ""
 "($version_number|) e não pode ser recarregada."
 
 #
-#: src/savegame.cpp:636
+#: src/savegame.cpp:627
 msgid ""
 "This save is from an old, unsupported version ($version_number|) and cannot "
 "be loaded."
@@ -9231,7 +8488,7 @@ msgstr ""
 "($version_number|) e não pode ser recarregada."
 
 #
-#: src/savegame.cpp:645
+#: src/savegame.cpp:636
 msgid ""
 "This save is from a different version of the game ($version_number|). Do you "
 "wish to try to load it?"
@@ -9240,27 +8497,29 @@ msgstr ""
 "Queres tentar carregá-la?"
 
 #
-#: src/savegame.cpp:702
-msgid "This is not a multiplayer save"
+#: src/savegame.cpp:693
+#, fuzzy
+#| msgid "This is not a multiplayer save"
+msgid "This is not a multiplayer save."
 msgstr "Esta não é uma partida guardado em rede"
 
 #
-#: src/savegame.cpp:769
+#: src/savegame.cpp:760
 msgid "The game could not be saved: "
 msgstr "Não foi possível guardar a partida: "
 
 #
-#: src/savegame.cpp:851
+#: src/savegame.cpp:842
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "O ficheiro já existe. Queres sobrescrevê-lo?"
 
 #
-#: src/savegame.cpp:852
+#: src/savegame.cpp:843
 msgid "Overwrite?"
 msgstr "Sobrescrever?"
 
 #
-#: src/savegame.cpp:862
+#: src/savegame.cpp:853
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
@@ -9268,31 +8527,43 @@ msgstr ""
 "favor escolha outro nome."
 
 #
-#: src/savegame.cpp:928
+#: src/savegame.cpp:919
 msgid "Saved"
 msgstr "Guardado"
 
 #
-#: src/savegame.cpp:928
-msgid "The game has been saved"
+#: src/savegame.cpp:919
+#, fuzzy
+#| msgid "The game has been saved"
+msgid "The game has been saved."
 msgstr "A partida foi gravada"
 
 #
-#: src/savegame.cpp:959 src/savegame.cpp:980
+#: src/savegame.cpp:950 src/savegame.cpp:971
 msgid "Could not write to file"
 msgstr "Não foi possível escrever no ficheiro"
 
 #
-#: src/savegame.cpp:1023
+#: src/savegame.cpp:1005
+msgid "Save Replay"
+msgstr "Guardar Revisão"
+
+#
+#: src/savegame.cpp:1014
 msgid "replay"
 msgstr "revisão"
 
 #
-#: src/savegame.cpp:1041
+#: src/savegame.cpp:1032
 msgid "Could not auto save the game. Please save the game manually."
 msgstr ""
 "Não é possivel guardar a partida automaticamente. Por favor guarda-a "
 "manualmente."
+
+#
+#: src/savegame.cpp:1081
+msgid "Save Game"
+msgstr "Guardar a Partida"
 
 #
 #: src/serialization/parser.cpp:127
@@ -9782,32 +9053,32 @@ msgid "Stub Time of Day"
 msgstr "Rascunho do Tempo do dia"
 
 #
-#: src/unit.cpp:2428 src/unit.cpp:2658 src/unit.cpp:2739
+#: src/unit.cpp:2426 src/unit.cpp:2656 src/unit.cpp:2737
 msgid " and "
 msgstr " e "
 
 #
-#: src/unit.cpp:2439
+#: src/unit.cpp:2437
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
 #
-#: src/unit.cpp:2500
+#: src/unit.cpp:2498
 msgid "moves"
 msgstr "movimentos"
 
 #
-#: src/unit.cpp:2530 src/unit.cpp:2682
+#: src/unit.cpp:2528 src/unit.cpp:2680
 msgid "XP to advance"
 msgstr "XP para avançar"
 
 #
-#: src/unit.cpp:2675
+#: src/unit.cpp:2673
 msgid " move"
 msgstr " movimento"
 
 #
-#: src/unit.cpp:2690
+#: src/unit.cpp:2688
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
@@ -9901,3 +9172,571 @@ msgstr "Esconder os planos de $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Opções do modo de planificação"
+
+#
+#~ msgid "(side $temp_i|)"
+#~ msgstr "(side $temp_i|)"
+
+#~ msgid "cancel"
+#~ msgstr "Cancelar"
+
+#~ msgid "Select Hex"
+#~ msgstr "Seleccionar hexágono"
+
+#~ msgid "Deselect Hex"
+#~ msgstr "Libertar hexágono"
+
+#~ msgid "Move/Attack"
+#~ msgstr "Mover/Atacar"
+
+#~ msgid "Select/Move/Attack"
+#~ msgstr "Seleccionar/Mover/Atacar"
+
+#~ msgid "Animate Map"
+#~ msgstr "Animar Mapa"
+
+#~ msgid "Next Unit"
+#~ msgstr "Próxima unidade"
+
+#~ msgid "Previous Unit"
+#~ msgstr "Anterior unidade"
+
+#~ msgid "Hold Position"
+#~ msgstr "Manter Posição"
+
+#~ msgid "End Unit Turn"
+#~ msgstr "Terminar o Turno da Unidade"
+
+#~ msgid "Undo"
+#~ msgstr "Desfazer"
+
+#~ msgid "Redo"
+#~ msgstr "Refazer"
+
+#~ msgid "Zoom In"
+#~ msgstr "Ampliar"
+
+#~ msgid "Zoom Out"
+#~ msgstr "Afastar"
+
+#~ msgid "Default Zoom"
+#~ msgstr "Ampliação normal"
+
+#~ msgid "Toggle Full Screen"
+#~ msgstr "Alternar Ecrã Inteiro"
+
+#~ msgid "Map Screenshot"
+#~ msgstr "Foto do Mapa"
+
+#~ msgid "Accelerated"
+#~ msgstr "Acelerado"
+
+#~ msgid "Terrain Description"
+#~ msgstr "Descrição do terreno"
+
+#~ msgid "Unit Description"
+#~ msgstr "Descrição da Unidade"
+
+#~ msgid "Delete Unit"
+#~ msgstr "Remover Unidade"
+
+#~ msgid "Save Map"
+#~ msgstr "Guardar Mapa"
+
+#~ msgid "Repeat Recruit"
+#~ msgstr "Repetir Recrutamento"
+
+#~ msgid "Toggle Ellipses"
+#~ msgstr "Alternar Elipses"
+
+#~ msgid "Toggle Grid"
+#~ msgstr "Alternar Grade"
+
+#~ msgid "Mouse Scrolling"
+#~ msgstr "Rolar com o rato"
+
+#~ msgid "Status Table"
+#~ msgstr "Tabela de Estado"
+
+#~ msgid "Mute"
+#~ msgstr "Silenciar"
+
+#~ msgid "Speak"
+#~ msgstr "Falar"
+
+#~ msgid "Change Side (Debug!)"
+#~ msgstr "Mudar de Equipa (Modo de Depuração!)"
+
+#~ msgid "Kill Unit (Debug!)"
+#~ msgstr "Matar Unidade (Modo de Depuração!)"
+
+#~ msgid "Scenario Objectives"
+#~ msgstr "Objectivos do Cenário"
+
+#~ msgid "Pause Network Game"
+#~ msgstr "Pausar jogo em rede"
+
+#~ msgid "Continue Network Game"
+#~ msgstr "Continuar jogo em rede"
+
+#~ msgid "Quit Game"
+#~ msgstr "Sair do Jogo"
+
+#~ msgid "Quit Editor"
+#~ msgstr "Sair do Editor"
+
+#~ msgid "Set Team Label"
+#~ msgstr "Definir legenda da equipa"
+
+#~ msgid "Set Label"
+#~ msgstr "Definir Legenda"
+
+#~ msgid "Clear Labels"
+#~ msgstr "Limpar legendas"
+
+#~ msgid "Show Enemy Moves"
+#~ msgstr "Mostrar Movimentos Inimigos"
+
+#~ msgid "Best Possible Enemy Moves"
+#~ msgstr "Melhores Movimentos Inimigos Possíveis"
+
+#~ msgid "Play Replay"
+#~ msgstr "Ver Revisão"
+
+#~ msgid "Reset Replay"
+#~ msgstr "Repor Revisão"
+
+#~ msgid "Stop Replay"
+#~ msgstr "Parar Revisão"
+
+#~ msgid "Full Map"
+#~ msgstr "Mapa Completo"
+
+#~ msgid "Each Team"
+#~ msgstr "Cada equipa"
+
+#~ msgid "Team 1"
+#~ msgstr "Equipa 1"
+
+#~ msgid "Skip Animation"
+#~ msgstr "Saltar animação"
+
+#~ msgid "whiteboard^Planning Mode"
+#~ msgstr "Modo de Planificação"
+
+#~ msgid "whiteboard^Execute Action"
+#~ msgstr "Executa Acções"
+
+#~ msgid "whiteboard^Execute All Actions"
+#~ msgstr "Executa todas as acções"
+
+#~ msgid "whiteboard^Delete Action"
+#~ msgstr "Apagar Acção"
+
+#~ msgid "whiteboard^Move Action Up"
+#~ msgstr "Mova acção para a frente na fila"
+
+#~ msgid "whiteboard^Move Action Down"
+#~ msgstr "Mova acção para trás na fila"
+
+#~ msgid "whiteboard^Suppose Dead"
+#~ msgstr "Supõe morto"
+
+#~ msgid "Quit to Desktop"
+#~ msgstr "Sair Completamente"
+
+#~ msgid "Close Map"
+#~ msgstr "Fechar Mapa"
+
+#~ msgid "Switch Time of Day"
+#~ msgstr "Trocar Tempo de Dia"
+
+#~ msgid "Switch Map"
+#~ msgstr "Trocar Mapa"
+
+#~ msgid "Assign Local Time"
+#~ msgstr "Definir hora local"
+
+#~ msgid "Custom Time of Day Creator"
+#~ msgstr "Criar Tempo de Dia personalizado"
+
+#~ msgid "Partial Undo"
+#~ msgstr "Desfazer parcialmente"
+
+#~ msgid "New Map"
+#~ msgstr "Novo Mapa"
+
+#~ msgid "New Scenario"
+#~ msgstr "Novo cenário"
+
+#~ msgid "Load Map"
+#~ msgstr "Carregar Mapa"
+
+#~ msgid "Save Map As"
+#~ msgstr "Gravar Mapa como"
+
+#~ msgid "Save Scenario As"
+#~ msgstr "Guardar Cenário Como"
+
+#~ msgid "Save All Maps"
+#~ msgstr "Gravar todos os Mapas"
+
+#~ msgid "Revert All Changes"
+#~ msgstr "Reverter todas as mudanças"
+
+#~ msgid "Map Information"
+#~ msgstr "Informação do Mapa"
+
+#~ msgid "Clear Selected Item Set"
+#~ msgstr "Limpar Itens Definidos"
+
+#~ msgid "Swap Foreground/Background Palette Item"
+#~ msgstr "Trocar terreno de fundo e sobreposto"
+
+#~ msgid "Change Palette Group"
+#~ msgstr "Mudar Grupo de Desenho"
+
+#~ msgid "Scroll Palette Left"
+#~ msgstr "Rolar para a esquerda"
+
+#~ msgid "Scroll Palette Right"
+#~ msgstr "Rolar para a direita"
+
+#~ msgid "Add New Side"
+#~ msgstr "Adicionar nova equipa"
+
+#~ msgid "Next Tool"
+#~ msgstr "Próxima ferramenta"
+
+#~ msgid "Paint Tool"
+#~ msgstr "Ferramenta de desenho"
+
+#~ msgid ""
+#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
+#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
+#~ msgstr ""
+#~ "Usa o botão esquerdo/direito do rato para desenhar o terreno da frente/"
+#~ "fundo. Segura Shift para pintar apenas a camada base.·Ctrl+clique·para "
+#~ "pegar uma amostra do terreno sob o cursor."
+
+#~ msgid "Fill Tool"
+#~ msgstr "Ferramenta de encher"
+
+#~ msgid ""
+#~ "Left mouse button selects or deselects, right brings up a context menu. "
+#~ "Hold Shift for magic-wand selection of tiles with same terrain."
+#~ msgstr ""
+#~ "O botão esquerdo selecciona/desselecciona, o direito traz a toa o menu de "
+#~ "contexto. Prima Shift para seleccionares todo os hexágonos com o mesmo "
+#~ "tipo de terreno."
+
+#~ msgid "Selection Tool"
+#~ msgstr "Ferramenta de selecção"
+
+#~ msgid ""
+#~ "Left mouse button displays player selection, right clears. Number keys "
+#~ "scroll to the starting position, alt+number sets respective starting "
+#~ "position under cursor, delete clears."
+#~ msgstr ""
+#~ "O botão esquerdo do rato mostra a selecção do jogador, o direito limpa. "
+#~ "Teclas numéricas rolam para a posição inicial, alt+número ajusta a "
+#~ "posição inicial para o ponto debaixo do cursor, a tecla del remove-a."
+
+#~ msgid "Starting Positions Tool"
+#~ msgstr "Ferramenta de definição de posições iniciais"
+
+#~ msgid "Label Tool"
+#~ msgstr "Ferramenta de legendas"
+
+#~ msgid "Left mouse button sets or drags a label, right clears."
+#~ msgstr "O botão esquerdo define ou arrasta uma legenda, o direito limpa-a."
+
+#~ msgid ""
+#~ "Left mouse button sets a new unit or moves a unit via drag and drop, "
+#~ "right brings up a context menu. Needs a defined side."
+#~ msgstr ""
+#~ "O botão esquerdo do rato cria ou move uma unidade por arrastamento, o "
+#~ "direito traz a toa um menu de acção. Tens de definir uma equipa primeiro."
+
+#~ msgid "Unit Tool"
+#~ msgstr "Ferramenta de unidades"
+
+#~ msgid "Item Tool"
+#~ msgstr "Ferramenta de Itens"
+
+#~ msgid ""
+#~ "Left mouse button sets a new item or moves it via drag and drop, right "
+#~ "clears. Not implemented yet."
+#~ msgstr ""
+#~ "O botão esquerdo cria um novo item ou move um existente, o direito "
+#~ "elimina. Ainda não implementado."
+
+#~ msgid ""
+#~ "Left mouse button sets or drags a sound source, right clears. Not "
+#~ "implemented yet."
+#~ msgstr ""
+#~ "O botão direito define um som de fundo ou modifica um existente, o "
+#~ "direito elimina. Ainda não implementado."
+
+#~ msgid "Sound Source Tool"
+#~ msgstr "Ferramenta de fonte sonora"
+
+#~ msgid ""
+#~ "Left mouse button sets the village ownership to the current side, right "
+#~ "clears. Needs a defined side."
+#~ msgstr ""
+#~ "O botão esquerdo do rato muda o controlo das aldeias para a equipa "
+#~ "actual, o direito limpa. Tens de definir uma equipa primeiro."
+
+#~ msgid "Village Tool"
+#~ msgstr "Ferramenta de aldeia"
+
+#~ msgid "Can Recruit"
+#~ msgstr "Pode recrutar"
+
+#~ msgid "Toggle the recruit attribute of a unit."
+#~ msgstr "Permite mudar se a unidade pode recrutar"
+
+#~ msgid "Can be Renamed"
+#~ msgstr "Pode ser renomeado"
+
+#~ msgid "Toggle the unit being renameable."
+#~ msgstr "Permite que a unidade seja renomeada"
+
+#~ msgid "Assign Recruit List"
+#~ msgstr "Define a lista de recrutamento"
+
+#~ msgid "Assign the selected unit set as recruit list to the unit."
+#~ msgstr "Define a unidade seleccionada como uma das que pode ser recruta."
+
+#~ msgid "Change Unit ID"
+#~ msgstr "Mudar ID da unidade"
+
+#~ msgid "Loyal"
+#~ msgstr "Leal"
+
+#~ msgid "Toggle Minimap Unit Coding"
+#~ msgstr "Mostra a codificação das unidades"
+
+#~ msgid "Toggle Minimap Terrain Coding"
+#~ msgstr "Mostra a codificação do terreno"
+
+#~ msgid "Toggle Minimap Unit Drawing"
+#~ msgstr "Mostra a visualização das unidades"
+
+#~ msgid "Toggle Minimap Village Drawing"
+#~ msgstr "Mostra a visualização das aldeias"
+
+#~ msgid "Toggle Minimap Terrain Drawing"
+#~ msgstr "Mostra a visualização do terreno"
+
+#~ msgid "Next Brush"
+#~ msgstr "Próximo Pincel"
+
+#~ msgid "Default Brush"
+#~ msgstr "Pincel Padrão"
+
+#~ msgid "Single Tile"
+#~ msgstr "Hexágono Único"
+
+#~ msgid "Radius One"
+#~ msgstr "De rádio um"
+
+#~ msgid "Radius Two"
+#~ msgstr "De rádio dois"
+
+#~ msgid "Brush NW-SE"
+#~ msgstr "Linha Noroeste-Sudeste"
+
+#~ msgid "Brush SW-NE"
+#~ msgstr "Linha Sudoeste-Nordeste"
+
+#~ msgid "Cut"
+#~ msgstr "Cortar"
+
+#~ msgid "Copy"
+#~ msgstr "Copiar"
+
+#~ msgid ""
+#~ "Left mouse button pastes from the clipboard, right brings up a context "
+#~ "menu."
+#~ msgstr ""
+#~ "O botão esquerdo do rato copia da área de transferência, o direito traz à "
+#~ "toa um menu de contexto."
+
+#~ msgid "Paste"
+#~ msgstr "Colar"
+
+#~ msgid "Export Selected Coordinates to System Clipboard"
+#~ msgstr "Exportar coordenadas seleccionadas para a área de transferência"
+
+#~ msgid "Select All"
+#~ msgstr "Seleccionar tudo"
+
+#~ msgid "Select Inverse"
+#~ msgstr "Inverter selecção"
+
+#~ msgid "Select None"
+#~ msgstr "Seleccionar Nada"
+
+#~ msgid "Rotate Clipboard Clockwise"
+#~ msgstr "Rodar Selecção no sentido do relógio"
+
+#~ msgid "Rotate Clipboard Counter-Clockwise"
+#~ msgstr "Rodar Selecção contra o sentido do relógio"
+
+#~ msgid "Flip Clipboard Horizontally"
+#~ msgstr "Espelhar Selecção Horizontalmente"
+
+#~ msgid "Flip Clipboard Vertically"
+#~ msgstr "Espelhar Selecção Verticalmente"
+
+#~ msgid "Rotate Selection"
+#~ msgstr "Rodar Selecção"
+
+#~ msgid "Flip Selection"
+#~ msgstr "Girar Selecção"
+
+#~ msgid "Fill Selection"
+#~ msgstr "Preencher Selecção"
+
+#~ msgid "Generate Tiles in Selection"
+#~ msgstr "Gerar terreno na selecção"
+
+#~ msgid "Randomize Tiles in Selection"
+#~ msgstr "Terreno na selecção aleatório"
+
+#~ msgid "Resize Map"
+#~ msgstr "Redimensionar Mapa"
+
+#~ msgid "Rotate Map"
+#~ msgstr "Rodar Mapa"
+
+#~ msgid "Generate Map"
+#~ msgstr "Gerar novo mapa"
+
+#~ msgid "Apply a Mask"
+#~ msgstr "Aplicar máscara"
+
+#~ msgid "Create Mask"
+#~ msgstr "Criar Máscara"
+
+#~ msgid "Refresh Display"
+#~ msgstr "Actualizar Ecrã"
+
+#~ msgid "Update Terrain Transitions"
+#~ msgstr "Actualizar transições de terreno"
+
+#~ msgid "Toggle Terrain Transition Update"
+#~ msgstr "Ligar actualização das transições de terreno"
+
+#~ msgid "Auto-update Terrain Transitions"
+#~ msgstr "Actualizar Automaticamente Transições de Terreno"
+
+#~ msgid "Auto-update Terrain Transitions: No"
+#~ msgstr "Actualização automática das transições: não"
+
+#~ msgid "Auto-update Terrain Transitions: Partial"
+#~ msgstr "Actualização automática das transições: parcial"
+
+#~ msgid "Refresh Image Cache"
+#~ msgstr "Actualizar a Cache de Imagens"
+
+#~ msgid "Draw Hex Coordinates"
+#~ msgstr "Desenhar coordenadas dos hexágonos"
+
+#~ msgid "Draw Terrain Codes"
+#~ msgstr "Desenhar código do Terreno"
+
+#~ msgid "Save Selection to Area"
+#~ msgstr "Gravar Selecção para um Canal"
+
+#~ msgid "Rename Selected Area"
+#~ msgstr "Renomear a área seleccionada"
+
+#~ msgid "Remove Selected Area"
+#~ msgstr "Mover a área seleccionada"
+
+#~ msgid "Add New Area"
+#~ msgstr "Adicionar nova área"
+
+#~ msgid "Edit Scenario"
+#~ msgstr "Editar Cenário"
+
+#~ msgid "Edit Side"
+#~ msgstr "Editar Equipa"
+
+#~ msgid "Remove Side"
+#~ msgstr "Remover Equipa"
+
+#~ msgid "Delay Shroud Updates"
+#~ msgstr "Adiar Actualizações da Sombra"
+
+#~ msgid "Update Shroud Now"
+#~ msgstr "Actualizar a Sombra Agora"
+
+#~ msgid "Continue Move"
+#~ msgstr "Continuar Movimento"
+
+#~ msgid "Find Label or Unit"
+#~ msgstr "Procurar Etiqueta ou Unidade"
+
+#~ msgid "Speak to Ally"
+#~ msgstr "Falar com Aliados"
+
+#~ msgid "Speak to All"
+#~ msgstr "Falar com Todos"
+
+#~ msgid "Help"
+#~ msgstr "Ajuda"
+
+#~ msgid "View Chat Log"
+#~ msgstr "Ver Registo da Conversa"
+
+#~ msgid "Enter User Command"
+#~ msgstr "Introduzir comando"
+
+#~ msgid "Custom Command"
+#~ msgstr "Comando Próprio"
+
+#~ msgid "Run Formula"
+#~ msgstr "Executar Fórmula"
+
+#~ msgid "Clear Messages"
+#~ msgstr "Apagar mensagens"
+
+#~ msgid "Change Language"
+#~ msgstr "Modificar o Idioma"
+
+#~ msgid "Refresh WML"
+#~ msgstr "Actualizar WML"
+
+#~ msgid "Next Tip of the Day"
+#~ msgstr "Próxima dica do dia"
+
+#~ msgid "Previous Tip of the Day"
+#~ msgstr "Anterior dica do dia"
+
+#~ msgid "Start Tutorial"
+#~ msgstr "Iniciar o Tutorial"
+
+#~ msgid "Start Campaign"
+#~ msgstr "Começar uma Campanha"
+
+#~ msgid "Start Multiplayer Game"
+#~ msgstr "Começar um jogo em rede"
+
+#~ msgid "Manage Add-ons"
+#~ msgstr "Actualizar Extras"
+
+#~ msgid "Start Editor"
+#~ msgstr "Iniciar o editor de mapa"
+
+#~ msgid "Show Credits"
+#~ msgstr "Mostra os créditos"
+
+#~ msgid "Show Helptip"
+#~ msgstr "Mostra as dicas"
+
+#~ msgid "Unrecognized Command"
+#~ msgstr "Comando não reconhecido"

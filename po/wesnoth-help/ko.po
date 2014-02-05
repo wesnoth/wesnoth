@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-05 19:37+0100\n"
 "PO-Revision-Date: 2013-10-25 16:24+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:532
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "지하"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:677
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:665
 #: data/core/macros/abilities.cfg:562
 msgid "berserk"
 msgstr "광전사"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:679
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:667
 #: data/core/macros/abilities.cfg:563
 msgid ""
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -41,13 +41,13 @@ msgstr ""
 "때까지 강제로 전투를 계속합니다."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:688
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:676
 #: data/core/macros/abilities.cfg:641
 msgid "magical"
 msgstr "마법"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:690
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:678
 #: data/core/macros/abilities.cfg:642
 msgid ""
 "This attack always has a 70% chance to hit regardless of the defensive "
@@ -57,13 +57,13 @@ msgstr ""
 "다."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:699
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
 msgid "first strike"
 msgstr "선공"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:701
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:689
 #: data/core/macros/abilities.cfg:687
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
@@ -4910,145 +4910,145 @@ msgstr ""
 msgid "Base units: "
 msgstr ""
 
-#: src/help.cpp:1482
+#: src/help.cpp:1486
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "당파:"
 
-#: src/help.cpp:1506 src/help.cpp:1883 src/help.cpp:2027
+#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
 msgid "race^Miscellaneous"
 msgstr "기타"
 
-#: src/help.cpp:1508
+#: src/help.cpp:1512
 msgid "Race: "
 msgstr "종족:"
 
-#: src/help.cpp:1515
+#: src/help.cpp:1519
 msgid "Abilities: "
 msgstr "능력:"
 
-#: src/help.cpp:1531
+#: src/help.cpp:1535
 msgid "Ability Upgrades: "
 msgstr "추가 능력:"
 
-#: src/help.cpp:1546
+#: src/help.cpp:1550
 msgid "HP: "
 msgstr "체력: "
 
-#: src/help.cpp:1547
+#: src/help.cpp:1551
 msgid "Moves: "
 msgstr "이동력: "
 
-#: src/help.cpp:1549
+#: src/help.cpp:1553
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1551
+#: src/help.cpp:1555
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1552
+#: src/help.cpp:1556
 msgid "Cost: "
 msgstr "소집비용: "
 
-#: src/help.cpp:1553
+#: src/help.cpp:1557
 msgid "Alignment: "
 msgstr "선호시간대: "
 
-#: src/help.cpp:1557
+#: src/help.cpp:1561
 msgid "Required XP: "
 msgstr "필요 경험치: "
 
-#: src/help.cpp:1566
+#: src/help.cpp:1570
 msgid "unit help^Attacks"
 msgstr "공격"
 
-#: src/help.cpp:1573
+#: src/help.cpp:1577
 msgid "unit help^Name"
 msgstr "이름"
 
-#: src/help.cpp:1574
+#: src/help.cpp:1578
 msgid "Type"
 msgstr "속성"
 
-#: src/help.cpp:1575
+#: src/help.cpp:1579
 msgid "Strikes"
 msgstr "공격력"
 
-#: src/help.cpp:1576
+#: src/help.cpp:1580
 msgid "Range"
 msgstr "공격범위"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1581
 msgid "Special"
 msgstr "특수능력"
 
-#: src/help.cpp:1626
+#: src/help.cpp:1630
 msgid "Resistances"
 msgstr "저항력"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1634
 msgid "Attack Type"
 msgstr "공격 유형"
 
-#: src/help.cpp:1631
+#: src/help.cpp:1635
 msgid "Resistance"
 msgstr "저항도"
 
-#: src/help.cpp:1661
+#: src/help.cpp:1665
 msgid "Terrain Modifiers"
 msgstr "지형 수정"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1669
 msgid "Terrain"
 msgstr "지형"
 
-#: src/help.cpp:1666
+#: src/help.cpp:1670
 msgid "Defense"
 msgstr "방어도"
 
-#: src/help.cpp:1667
+#: src/help.cpp:1671
 msgid "Movement Cost"
 msgstr "소모 이동력"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1675
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1674
+#: src/help.cpp:1678
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:2033
+#: src/help.cpp:2037
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='이 종족 소속 유닛'</header>"
 
-#: src/help.cpp:2944
+#: src/help.cpp:2948
 msgid " < Back"
 msgstr "< 뒤로"
 
-#: src/help.cpp:2945
+#: src/help.cpp:2949
 msgid "Forward >"
 msgstr "앞으로 >"
 
-#: src/help.cpp:3053
+#: src/help.cpp:3057
 msgid "Reference to unknown topic: "
 msgstr "없는 항목으로 이어져 있습니다: "
 
-#: src/help.cpp:3309
+#: src/help.cpp:3313
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3420
+#: src/help.cpp:3424
 msgid "Close"
 msgstr "닫기"
 
-#: src/help.cpp:3423
+#: src/help.cpp:3427
 msgid "The Battle for Wesnoth Help"
 msgstr "Battle for Wesnoth 도움말"
 
-#: src/help.cpp:3479
+#: src/help.cpp:3483
 msgid "Parse error when parsing help text: "
 msgstr ""
 
