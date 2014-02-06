@@ -55,6 +55,9 @@ Version 1.11.8+dev:
      the game to crash (bug #21351).
    * Changed: Added -Wextra-semi to pedantic compilation.
    * Changed: Added -Wconditional-uninitialized to pedantic compilation.
+   * Fixed NULL pointer dereference when viewing units in the Recall Unit
+     dialog including nonexistent/unreadable images in their overlays, while
+     not in debug mode.
 
 Version 1.11.8:
  * Add-ons client:
