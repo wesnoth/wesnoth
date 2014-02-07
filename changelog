@@ -1,6 +1,6 @@
 Version 1.11.8+dev:
  * AI:
-   * RCA (default) AI: Gold saving is turned off by default again
+   * Default AI: Gold saving is turned off by default again
    * New macros AI_SAVE_GOLD and AI_SAVE_GOLD_DEFAULT for easy enabling of
      recruitment gold saving in specific scenarios
    * Wolves Micro AI: new optional parameter attack_only_prey=
@@ -8,6 +8,14 @@ Version 1.11.8+dev:
    * Heir to the Throne:
      * Gave Li'sar a new ability "initiative" (grants adjacent allies first
        strike in melee).
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is done for Scenarios 1 (End
+       of Peace) through 12 (Giving Some Back).  In addition, the following
+       not directly balance related changes have also been made:
+     * S3: remove AI controller right-click menu option
+     * S4 & S9: make AI attack enemies 1 XP from leveling so that it is not
+       possible to block key locations with such units
+     * S10 & S12: don't give huge unannounced gold bonus to AIs
  * Editor:
    * Added Impassable Overlay and Unwalkable Overlay terrains to the obstacle
      group.
@@ -28,7 +36,7 @@ Version 1.11.8+dev:
    * Fixed subtle magenta TC for the Giant Mudcrawler sprites not being
      enabled in-game.
  * User interface:
-   * Restored the old controll scheme as the default  
+   * Restored the old control scheme as the default
    * Fixed hidden variations of unit types (hide_help=yes) being listed in the
      help browser when they shouldn't.
    * Gray-out GUI1 scrollbar upwards scrolling button by default when starting
