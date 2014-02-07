@@ -1639,14 +1639,14 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value and value[0] in ("$", "{"):
                         continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not directly_in_event[-1] and not in_time_area:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area:
                         ids = value.split(",")
                         for j in xrange(len(ids)):
                             # removal of leading whitespace of items in comma-separated lists
                             # is usually supported in the mainline wesnoth lua scripts
                             # not sure about trailing one
                             # also, do not complain about ids if they're referred to a menu item being cleared
-                            if ids[j].lstrip() not in present and not in_clear_menu_item:
+                            if ids[j].lstrip() not in present:
                                 print '"%s", line %d: unknown \'%s\' referred to by id' \
                                     % (filename, i+1, ids[j])
                 if (in_scenario or in_multiplayer) and key == "speaker":
