@@ -137,7 +137,6 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 
 	BOOST_FOREACH(const std::string& place, placements) {
 		map_location loc;
-		bool pass((place == "leader_passable") || (place == "map_passable"));
 
 		if ( place == "recall" ) {
 			return map_location::null_location;
@@ -159,6 +158,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		}
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
+			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : NULL);
