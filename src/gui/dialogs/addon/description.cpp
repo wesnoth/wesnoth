@@ -26,11 +26,31 @@
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
+#include "preferences.hpp"
+#include "strftime.hpp"
 #include "utils/foreach.tpp"
 
 #include <boost/bind.hpp>
 
 namespace {
+	std::string format_addon_time(time_t time)
+	{
+		if(time) {
+			char buf[1024] = { 0 };
+			struct std::tm * const t = std::localtime(&time);
+
+			const char* format = preferences::use_twelve_hour_clock_format()
+				? "%Y-%m-%d %I:%M %p"
+				: "%Y-%m-%d %H:%M";
+
+			if(util::strftime(buf, sizeof(buf), format, t)) {
+				return buf;
+			}
+		}
+
+		return utils::unicode_em_dash;
+	}
+
 	std::string langcode_to_string(const std::string& lcode)
 	{
 		FOREACH(const AUTO& ld, get_languages()) {
@@ -243,6 +263,12 @@ namespace gui2 {
  *         ''description'' it can also show a default text if no dependencies
  *         are defined. $
  *
+ * updated & & control & m &
+ *         Label displaying the add-on's last upload date. $
+ *
+ * created & & control & m &
+ *         Label displaying the add-on's first upload date. $
+ *
  * url & & text_box & m &
  *         Textbox displaying the add-on's feedback page URL if provided by
  *         the server. $
@@ -270,6 +296,9 @@ taddon_description::taddon_description(const std::string& addon_id, const addons
 	const addon_info& addon = const_at(addon_id, addons_list);
 	const addon_tracking_info& state = const_at(addon_id, addon_states);
 
+	const std::string& created_text = format_addon_time(addon.created);
+	const std::string& updated_text = format_addon_time(addon.updated);
+
 	register_label("image", true, addon.display_icon());
 	register_label("title", true, addon.title);
 	register_label("version", true, addon.version);
@@ -278,6 +307,8 @@ taddon_description::taddon_description(const std::string& addon_id, const addons
 	register_label("type", true, addon.display_type());
 	register_label("size", true, size_display_string(addon.size));
 	register_label("downloads", true, str_cast(addon.downloads));
+	register_label("created", true, created_text);
+	register_label("updated", true, updated_text);
 	if(!addon.description.empty()) {
 		register_label("description", true, addon.description);
 	}
