@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2012-10-31 12:37+0200\n"
 "Last-Translator: Igor Paliychuk <mansonigor@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -332,21 +332,21 @@ msgstr "Джойстік: мертва зона штовхача"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "отруєний"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12316
+#: data/lua/wml/objectives.lua:1835
 msgid "Gold carryover:"
 msgstr "Золота переноситься:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12317
+#: data/lua/wml/objectives.lua:1836
 msgid "Notes:"
 msgstr "Нотатки:"
 
@@ -2669,12 +2669,12 @@ msgid "Turns run out"
 msgstr "Закінчились ходи"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12378
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
 msgid "Early finish bonus."
 msgstr "Бонус швидкого завершення."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12380
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
 msgid "No early finish bonus."
 msgstr "Немає бонусу швидкого завершення."
 
@@ -2687,7 +2687,7 @@ msgid "(early finish bonus)"
 msgstr "(бонус швидкого завершення)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12388
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
 msgid "No gold carried over to the next scenario."
 msgstr "Золото не переноситься в наступний сценарій."
 
@@ -2826,7 +2826,7 @@ msgstr "Блакитний"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:98 src/leader_scroll_dialog.cpp:47
-#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:381
+#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:378
 msgid "Gold"
 msgstr "Золото"
 
@@ -3959,67 +3959,67 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "отруєна"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "уповільнена"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "уповільнений"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "паралізована"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "паралізований"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "female^unhealable"
 msgstr "невиліковна"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "unhealable"
 msgstr "невиліковний"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12314 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "Перемога:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12315
+#: data/lua/wml/objectives.lua:1834
 msgid "Defeat:"
 msgstr "Поразка:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12335
+#: data/lua/wml/objectives.lua:1854
 msgid "(%d turns left)"
 msgstr "(лишилось %d ходів)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12337
+#: data/lua/wml/objectives.lua:1856
 msgid "(this turn left)"
 msgstr "(це останній хід)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12390
+#: data/lua/wml/objectives.lua:1909
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "В наступний сценарій переноситься %d%% золота."
 
@@ -4032,8 +4032,8 @@ msgstr "Гаразд"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1448
-#: src/dialogs.cpp:1554 src/multiplayer_connect.cpp:387
+#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1452
+#: src/dialogs.cpp:1558 src/multiplayer_connect.cpp:384
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Скасувати"
@@ -4384,57 +4384,57 @@ msgstr ""
 msgid "Add-ons Manager"
 msgstr "Менеджер Аддонів"
 
-#: src/addon/info.cpp:153
+#: src/addon/info.cpp:155
 msgid "addon_type^Campaign"
 msgstr "Кампанія"
 
-#: src/addon/info.cpp:155
+#: src/addon/info.cpp:157
 msgid "addon_type^Scenario"
 msgstr "Сценарій"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:159
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "Кампанія для МП"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:161
 msgid "addon_type^MP era"
 msgstr "Ера для МП"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:163
 msgid "addon_type^MP faction"
 msgstr "Фракція для МП"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:165
 msgid "addon_type^MP map-pack"
 msgstr "Пакет карт для МП"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^MP scenario"
 msgstr "Сценарій для МП"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^MP campaign"
 msgstr "Кампанія для МП"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:171
 msgid "addon_type^MP modification"
 msgstr "Модифікація МП"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:173
 msgid "addon_type^Resources"
 msgstr "Ресурси"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:175
 msgid "addon_type^Other"
 msgstr "Інше"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
 msgstr "(невідомо)"
 
-#: src/addon/info.cpp:214 src/dialogs.cpp:1481
+#: src/addon/info.cpp:216 src/dialogs.cpp:1485
 #: src/hotkey/command_executor.cpp:631
 msgid "unit_byte^B"
 msgstr "Б"
@@ -5018,19 +5018,19 @@ msgstr "Видалити запис"
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/dialogs.cpp:1164
+#: src/dialogs.cpp:1168
 msgid "level"
 msgstr "рівень"
 
-#: src/dialogs.cpp:1177
+#: src/dialogs.cpp:1181
 msgid "HP: "
 msgstr "ЗД: "
 
-#: src/dialogs.cpp:1180
+#: src/dialogs.cpp:1184
 msgid "XP: "
 msgstr "ДВ: "
 
-#: src/dialogs.cpp:1184
+#: src/dialogs.cpp:1188
 msgid "Moves: "
 msgstr "Ходів:"
 
@@ -5079,7 +5079,9 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
-msgid "%b %d %y"
+#, fuzzy
+#| msgid "%b %d %y"
+msgid "%b %d %Y"
 msgstr "%b %d %y"
 
 #: src/game_config.cpp:353
@@ -5269,7 +5271,7 @@ msgid "Error"
 msgstr "Помилка"
 
 #: src/hotkey/command_executor.cpp:507 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:387 src/multiplayer_lobby.cpp:863
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
 #: src/multiplayer_wait.cpp:184
 msgid "Quit"
 msgstr "Вийти"
@@ -5322,7 +5324,7 @@ msgid "Upkeep"
 msgstr "Утримання"
 
 #: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:197
-#: src/multiplayer_connect.cpp:383 src/multiplayer_wait.cpp:542
+#: src/multiplayer_connect.cpp:380 src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "Прибуток"
 
@@ -6558,49 +6560,49 @@ msgstr ")"
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:367
+#: src/multiplayer_connect.cpp:364
 msgid "Game Lobby: "
 msgstr "Фойє гри: "
 
-#: src/multiplayer_connect.cpp:373
+#: src/multiplayer_connect.cpp:370
 msgid "Player/Type"
 msgstr "Гравець/Тип"
 
-#: src/multiplayer_connect.cpp:375
+#: src/multiplayer_connect.cpp:372
 #, fuzzy
 #| msgid "Faction"
 msgid "Faction/Name"
 msgstr "Фракція"
 
-#: src/multiplayer_connect.cpp:377
+#: src/multiplayer_connect.cpp:374
 #, fuzzy
 #| msgid "Team/Gender"
 msgid "Leader/Gender"
 msgstr "Команда/Стать"
 
-#: src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:376
 #, fuzzy
 #| msgid "Color"
 msgid "Team/Color"
 msgstr "Колір"
 
-#: src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
 msgstr "Я готовий"
 
-#: src/multiplayer_connect.cpp:402
+#: src/multiplayer_connect.cpp:399
 msgid "The scenario is invalid because it has no id."
 msgstr "Цей сценарій недійсний, бо він не має id."
 
-#: src/multiplayer_connect.cpp:418
+#: src/multiplayer_connect.cpp:415
 msgid "The scenario is invalid because it has no sides."
 msgstr "Цей сценарій недійсний, бо він не має сторін."
 
-#: src/multiplayer_connect.cpp:584
+#: src/multiplayer_connect.cpp:581
 msgid "Waiting for players to join..."
 msgstr "Чекаємо підключення гравців..."
 
-#: src/multiplayer_connect.cpp:585
+#: src/multiplayer_connect.cpp:582
 msgid "Waiting for players to choose factions..."
 msgstr "Чекаємо, поки гравці виберуть фракцію..."
 
@@ -7064,11 +7066,11 @@ msgstr "$name прийняв управління"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Скасування ходів, ще не переданих на сервер."
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:360
 msgid "Waiting for next scenario..."
 msgstr "Очікую наступний сценарій..."
 
-#: src/playmp_controller.cpp:489
+#: src/playmp_controller.cpp:491
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

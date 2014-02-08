@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2014-01-31 13:05-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -1049,8 +1049,10 @@ msgstr "Caisteal a’ Chinne-daonna sneachdach"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1606
-msgid "Elvish Castle"
-msgstr "Caisteal Sìthiche"
+#, fuzzy
+#| msgid "Elven Castle Keep"
+msgid "Elven Castle"
+msgstr "Daingean Sìthiche"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1618
@@ -1729,7 +1731,7 @@ msgstr ""
 #. [button]: id=close_window
 #. [button]: id=ok
 #: data/gui/default/widget/window_default.cfg:140
-#: data/gui/default/window/addon_description.cfg:499
+#: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:416
 #: data/gui/default/window/chat_log.cfg:158
 #: data/gui/default/window/gamestate_inspector.cfg:254
@@ -1857,63 +1859,77 @@ msgid "Downloads:"
 msgstr "Luchdaidhean a-nuas:"
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:273
+#: data/gui/default/window/addon_description.cfg:258
+#, fuzzy
+#| msgid "sort^By last updated"
+msgid "date^Last updated:"
+msgstr "Leis an ùrachadh mu dheireadh"
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:284
+#, fuzzy
+#| msgid "sort^By first upload"
+msgid "date^First uploaded:"
+msgstr "Leis a' chiad luchdadh suas"
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:329
 #: data/gui/default/window/editor_edit_scenario.cfg:142
 msgid "Description:"
 msgstr "Tuairisgeul:"
 
 #. [scroll_label]: id=description
-#: data/gui/default/window/addon_description.cfg:290
+#: data/gui/default/window/addon_description.cfg:346
 msgid "No description available."
 msgstr "Chan eil tuairisgeul ri fhaighinn."
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:320
+#: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
 msgstr "Làrach-lìn:"
 
 #. [label]: id=url_none
-#: data/gui/default/window/addon_description.cfg:344
+#: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
 msgstr "Gun làrach-lìn"
 
 #. [button]: id=url_copy
-#: data/gui/default/window/addon_description.cfg:379
+#: data/gui/default/window/addon_description.cfg:435
 msgid "url^Copy"
 msgstr "Dèan lethbhreac"
 
 #. [button]: id=url_copy
-#: data/gui/default/window/addon_description.cfg:380
+#: data/gui/default/window/addon_description.cfg:436
 msgid "Copy this URL to clipboard"
 msgstr "Cuir lethbhreac dhen URL dhan stòr-bhòrd"
 
 #. [button]: id=url_go
-#: data/gui/default/window/addon_description.cfg:393
+#: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
 msgstr "Siuthad"
 
 #. [button]: id=url_go
-#: data/gui/default/window/addon_description.cfg:394
+#: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
 msgstr "Tadhail air an URL seo le brabhsair-lìn"
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:422
+#: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
 msgstr "Eisimeileachdan:"
 
 #. [scroll_label]: id=dependencies
-#: data/gui/default/window/addon_description.cfg:436
+#: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
 msgstr "Gun eisimeileachd"
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:454
+#: data/gui/default/window/addon_description.cfg:510
 msgid "Translations:"
 msgstr "Eadar-theangachaidhean:"
 
 #. [scroll_label]: id=translations
-#: data/gui/default/window/addon_description.cfg:468
+#: data/gui/default/window/addon_description.cfg:524
 msgid "translations^None"
 msgstr "Gin"
 
@@ -4171,55 +4187,55 @@ msgstr "Tha [node]id ‘root’ glèidhte airson an toirt gu buil."
 msgid "No node defined."
 msgstr "Cha deach nòd a mhìneachadh."
 
-#: src/gui/dialogs/addon/description.cpp:86
+#: src/gui/dialogs/addon/description.cpp:106
 msgid "addon_state^Not installed"
 msgstr "Gun stàladh"
 
-#: src/gui/dialogs/addon/description.cpp:88
+#: src/gui/dialogs/addon/description.cpp:108
 msgid "addon_state^Published, not installed"
 msgstr "Foillsichte, gun stàladh"
 
-#: src/gui/dialogs/addon/description.cpp:93
+#: src/gui/dialogs/addon/description.cpp:113
 msgid "addon_state^Installed"
 msgstr "Air a stàladh"
 
-#: src/gui/dialogs/addon/description.cpp:95
+#: src/gui/dialogs/addon/description.cpp:115
 msgid "addon_state^Published"
 msgstr "Foillsichte"
 
-#: src/gui/dialogs/addon/description.cpp:100
+#: src/gui/dialogs/addon/description.cpp:120
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Air a stàladh, gun tracadh an tionndaidh ionadail"
 
-#: src/gui/dialogs/addon/description.cpp:104
+#: src/gui/dialogs/addon/description.cpp:124
 msgid "addon_state^Published, not tracking local version"
 msgstr "Foillsichte, gun tracadh an tionndaidh ionadail"
 
-#: src/gui/dialogs/addon/description.cpp:110
+#: src/gui/dialogs/addon/description.cpp:130
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "($local_version|) air a stàladh, gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/description.cpp:111
+#: src/gui/dialogs/addon/description.cpp:131
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "($local_version| air a stàladh), gabhaidh e ùrachadh"
 
-#: src/gui/dialogs/addon/description.cpp:118
+#: src/gui/dialogs/addon/description.cpp:138
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "($local_version|) air a stàladh, ro shean air an fhrithealaiche"
 
-#: src/gui/dialogs/addon/description.cpp:119
+#: src/gui/dialogs/addon/description.cpp:139
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "($local_version| air a stàladh), ro shean air an fhrithealaiche"
 
-#: src/gui/dialogs/addon/description.cpp:125
+#: src/gui/dialogs/addon/description.cpp:145
 msgid "addon_state^Installed, broken"
 msgstr "Air a stàladh, briste"
 
-#: src/gui/dialogs/addon/description.cpp:127
+#: src/gui/dialogs/addon/description.cpp:147
 msgid "addon_state^Published, broken"
 msgstr "Foillsichte, briste"
 
-#: src/gui/dialogs/addon/description.cpp:131
+#: src/gui/dialogs/addon/description.cpp:151
 msgid "addon_state^Unknown"
 msgstr "Chan eil fios"
 
@@ -5451,6 +5467,9 @@ msgstr ""
 "Chaidh an iuchair ‘$deprecated_key’ ath-ainmeachadh gu ‘$key’. Thèid gach "
 "taic airson ‘$deprecated_key’ a thoirt air falbh leis an tionndadh "
 "$removal_version."
+
+#~ msgid "Elvish Castle"
+#~ msgstr "Caisteal Sìthiche"
 
 #~ msgid "Forested Hills"
 #~ msgstr "Cnuic coille"

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2013-08-22 14:24+0800\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -1001,8 +1001,10 @@ msgstr "Lâu đài phủ tuyết của con người"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1606
-msgid "Elvish Castle"
-msgstr "Lâu đài của thần tiên"
+#, fuzzy
+#| msgid "Elven Castle Keep"
+msgid "Elven Castle"
+msgstr "Pháo đài của thần tiên"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1618
@@ -1521,7 +1523,7 @@ msgstr ""
 #. [button]: id=close_window
 #. [button]: id=ok
 #: data/gui/default/widget/window_default.cfg:140
-#: data/gui/default/window/addon_description.cfg:499
+#: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:416
 #: data/gui/default/window/chat_log.cfg:158
 #: data/gui/default/window/gamestate_inspector.cfg:254
@@ -1648,67 +1650,77 @@ msgid "Downloads:"
 msgstr "Lượt tải về:"
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:273
+#: data/gui/default/window/addon_description.cfg:258
+msgid "date^Last updated:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:284
+msgid "date^First uploaded:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:329
 #: data/gui/default/window/editor_edit_scenario.cfg:142
 msgid "Description:"
 msgstr "Mô tả:"
 
 #. [scroll_label]: id=description
-#: data/gui/default/window/addon_description.cfg:290
+#: data/gui/default/window/addon_description.cfg:346
 msgid "No description available."
 msgstr "Không có mô tả."
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:320
+#: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
 msgstr ""
 
 #. [label]: id=url_none
-#: data/gui/default/window/addon_description.cfg:344
+#: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
 msgstr ""
 
 #. [button]: id=url_copy
-#: data/gui/default/window/addon_description.cfg:379
+#: data/gui/default/window/addon_description.cfg:435
 #, fuzzy
 #| msgid "Copy"
 msgid "url^Copy"
 msgstr "Chép"
 
 #. [button]: id=url_copy
-#: data/gui/default/window/addon_description.cfg:380
+#: data/gui/default/window/addon_description.cfg:436
 #, fuzzy
 #| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
 msgstr "Chọn trò chơi cần tải"
 
 #. [button]: id=url_go
-#: data/gui/default/window/addon_description.cfg:393
+#: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
 msgstr ""
 
 #. [button]: id=url_go
-#: data/gui/default/window/addon_description.cfg:394
+#: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:422
+#: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
 msgstr "Thành phần phụ thuộc:"
 
 #. [scroll_label]: id=dependencies
-#: data/gui/default/window/addon_description.cfg:436
+#: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
 msgstr "Không có"
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:454
+#: data/gui/default/window/addon_description.cfg:510
 msgid "Translations:"
 msgstr "Bản dịch:"
 
 #. [scroll_label]: id=translations
-#: data/gui/default/window/addon_description.cfg:468
+#: data/gui/default/window/addon_description.cfg:524
 msgid "translations^None"
 msgstr "Không có"
 
@@ -3977,55 +3989,55 @@ msgstr "[nút]id 'root' được dành riêng để cài đặt."
 msgid "No node defined."
 msgstr "Không xác định được nút."
 
-#: src/gui/dialogs/addon/description.cpp:86
+#: src/gui/dialogs/addon/description.cpp:106
 msgid "addon_state^Not installed"
 msgstr "Chưa cài đặt"
 
-#: src/gui/dialogs/addon/description.cpp:88
+#: src/gui/dialogs/addon/description.cpp:108
 msgid "addon_state^Published, not installed"
 msgstr "Đã phát hành, chưa cài đặt"
 
-#: src/gui/dialogs/addon/description.cpp:93
+#: src/gui/dialogs/addon/description.cpp:113
 msgid "addon_state^Installed"
 msgstr "Đã cài đặt"
 
-#: src/gui/dialogs/addon/description.cpp:95
+#: src/gui/dialogs/addon/description.cpp:115
 msgid "addon_state^Published"
 msgstr "Đã phát hành"
 
-#: src/gui/dialogs/addon/description.cpp:100
+#: src/gui/dialogs/addon/description.cpp:120
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Đã cài đặt, không theo dõi phiên bản cục bộ"
 
-#: src/gui/dialogs/addon/description.cpp:104
+#: src/gui/dialogs/addon/description.cpp:124
 msgid "addon_state^Published, not tracking local version"
 msgstr "Đã phát hành, không theo dõi phiên bản cục bộ"
 
-#: src/gui/dialogs/addon/description.cpp:110
+#: src/gui/dialogs/addon/description.cpp:130
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Đã cài đặt ($local_version|), có thể nâng cấp"
 
-#: src/gui/dialogs/addon/description.cpp:111
+#: src/gui/dialogs/addon/description.cpp:131
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Đã phát hành (đã cài đặt $local_version|), có thể nâng cấp"
 
-#: src/gui/dialogs/addon/description.cpp:118
+#: src/gui/dialogs/addon/description.cpp:138
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Đã cài đặt ($local_version|), hết hạn trên máy chủ"
 
-#: src/gui/dialogs/addon/description.cpp:119
+#: src/gui/dialogs/addon/description.cpp:139
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Đã phát hành (đã cài đặt $local_version|), hết hạn trên máy chủ"
 
-#: src/gui/dialogs/addon/description.cpp:125
+#: src/gui/dialogs/addon/description.cpp:145
 msgid "addon_state^Installed, broken"
 msgstr "Đã cài đặt, bị hỏng"
 
-#: src/gui/dialogs/addon/description.cpp:127
+#: src/gui/dialogs/addon/description.cpp:147
 msgid "addon_state^Published, broken"
 msgstr "Đã phát hành, bị hỏng"
 
-#: src/gui/dialogs/addon/description.cpp:131
+#: src/gui/dialogs/addon/description.cpp:151
 msgid "addon_state^Unknown"
 msgstr "Không xác định"
 
@@ -5253,6 +5265,9 @@ msgid ""
 msgstr ""
 "Khóa '$deprecated_key' đã được đổi tên thành '$key'. Hỗ trợ cho khóa "
 "'$deprecated_key' sẽ bị gỡ bỏ trong phiên bản $removal_version."
+
+#~ msgid "Elvish Castle"
+#~ msgstr "Lâu đài của thần tiên"
 
 #~ msgid "Forested Hills"
 #~ msgstr "Rừng trên đồi"

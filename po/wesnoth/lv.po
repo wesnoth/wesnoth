@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.10+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2011-11-15 17:56+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -333,21 +333,21 @@ msgstr "Kursorsvira: dzinekļa nejutības apgabals"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "saindēts/-a"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12316
+#: data/lua/wml/objectives.lua:1835
 msgid "Gold carryover:"
 msgstr "Zelta pārnesums:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12317
+#: data/lua/wml/objectives.lua:1836
 msgid "Notes:"
 msgstr "Piezīmes:"
 
@@ -2657,12 +2657,12 @@ msgid "Turns run out"
 msgstr "Tiek izmantoti visi dotie gājieni"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12378
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
 msgid "Early finish bonus."
 msgstr "Laicīgas pabeigšanas prēmija."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12380
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
 msgid "No early finish bonus."
 msgstr "Nav laicīgās pabeigšanas prēmija."
 
@@ -2675,7 +2675,7 @@ msgid "(early finish bonus)"
 msgstr "(laicīgas pabeigšanas prēmija)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12388
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
 msgid "No gold carried over to the next scenario."
 msgstr "Uz nākamo scenāriju zelts netiek pārnests."
 
@@ -2814,7 +2814,7 @@ msgstr "Zilgan-zaļa"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:98 src/leader_scroll_dialog.cpp:47
-#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:381
+#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:378
 msgid "Gold"
 msgstr "Zelts"
 
@@ -3962,67 +3962,67 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "saindēta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "sapīta"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "sapīts/-a"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "pārakmeņojusies"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "pārakmeņojies"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "female^unhealable"
 msgstr "nedziedināma"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "unhealable"
 msgstr "nedziedināms"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12314 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "Uzvara:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12315
+#: data/lua/wml/objectives.lua:1834
 msgid "Defeat:"
 msgstr "Sakāve:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12335
+#: data/lua/wml/objectives.lua:1854
 msgid "(%d turns left)"
 msgstr "(%d gājieni atlikuši)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12337
+#: data/lua/wml/objectives.lua:1856
 msgid "(this turn left)"
 msgstr "(šis gājiens atlicis)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12390
+#: data/lua/wml/objectives.lua:1909
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Uz nākamo scenāriju pārnesti %d%% zelta gabali."
 
@@ -4035,8 +4035,8 @@ msgstr "Labi"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1448
-#: src/dialogs.cpp:1554 src/multiplayer_connect.cpp:387
+#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1452
+#: src/dialogs.cpp:1558 src/multiplayer_connect.cpp:384
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Atcelt"
@@ -4405,59 +4405,59 @@ msgstr ""
 msgid "Add-ons Manager"
 msgstr "Papildinājums uzinstalēts"
 
-#: src/addon/info.cpp:153
+#: src/addon/info.cpp:155
 msgid "addon_type^Campaign"
 msgstr "Kampaņa"
 
-#: src/addon/info.cpp:155
+#: src/addon/info.cpp:157
 msgid "addon_type^Scenario"
 msgstr "Scenārijs"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:159
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "DS kampaņa"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:161
 msgid "addon_type^MP era"
 msgstr "DS ēra"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:163
 msgid "addon_type^MP faction"
 msgstr "DS frakcija"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:165
 msgid "addon_type^MP map-pack"
 msgstr "DS karšu paka"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^MP scenario"
 msgstr "DS scenārijs"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^MP campaign"
 msgstr "DS kampaņa"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:171
 #, fuzzy
 #| msgid "addon_type^MP faction"
 msgid "addon_type^MP modification"
 msgstr "DS frakcija"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:173
 msgid "addon_type^Resources"
 msgstr "Resursi"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:175
 msgid "addon_type^Other"
 msgstr "Citi"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
 msgstr "(nezināms)"
 
-#: src/addon/info.cpp:214 src/dialogs.cpp:1481
+#: src/addon/info.cpp:216 src/dialogs.cpp:1485
 #: src/hotkey/command_executor.cpp:631
 msgid "unit_byte^B"
 msgstr "B"
@@ -5102,19 +5102,19 @@ msgstr "Dzēst spēli"
 msgid "Profile"
 msgstr "Profils"
 
-#: src/dialogs.cpp:1164
+#: src/dialogs.cpp:1168
 msgid "level"
 msgstr "pakāpe"
 
-#: src/dialogs.cpp:1177
+#: src/dialogs.cpp:1181
 msgid "HP: "
 msgstr "Veselība: "
 
-#: src/dialogs.cpp:1180
+#: src/dialogs.cpp:1184
 msgid "XP: "
 msgstr "Pieredze: "
 
-#: src/dialogs.cpp:1184
+#: src/dialogs.cpp:1188
 msgid "Moves: "
 msgstr "Gājieni: "
 
@@ -5163,7 +5163,9 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
-msgid "%b %d %y"
+#, fuzzy
+#| msgid "%b %d %y"
+msgid "%b %d %Y"
 msgstr "%b %d %y"
 
 #: src/game_config.cpp:353
@@ -5355,7 +5357,7 @@ msgid "Error"
 msgstr "Kļūda"
 
 #: src/hotkey/command_executor.cpp:507 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:387 src/multiplayer_lobby.cpp:863
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
 #: src/multiplayer_wait.cpp:184
 msgid "Quit"
 msgstr "Pamest"
@@ -5408,7 +5410,7 @@ msgid "Upkeep"
 msgstr "Uzturēšana"
 
 #: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:197
-#: src/multiplayer_connect.cpp:383 src/multiplayer_wait.cpp:542
+#: src/multiplayer_connect.cpp:380 src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "Ienākumi"
 
@@ -6676,49 +6678,49 @@ msgstr ")"
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:367
+#: src/multiplayer_connect.cpp:364
 msgid "Game Lobby: "
 msgstr "Spēles priekšnams:"
 
-#: src/multiplayer_connect.cpp:373
+#: src/multiplayer_connect.cpp:370
 msgid "Player/Type"
 msgstr "Spēlētājs/Tips"
 
-#: src/multiplayer_connect.cpp:375
+#: src/multiplayer_connect.cpp:372
 #, fuzzy
 #| msgid "Faction"
 msgid "Faction/Name"
 msgstr "Frakcija"
 
-#: src/multiplayer_connect.cpp:377
+#: src/multiplayer_connect.cpp:374
 #, fuzzy
 #| msgid "Team/Gender"
 msgid "Leader/Gender"
 msgstr "Komanda/Dzimums"
 
-#: src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:376
 #, fuzzy
 #| msgid "Color"
 msgid "Team/Color"
 msgstr "Krāsa"
 
-#: src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
 msgstr "Esmu gatavs"
 
-#: src/multiplayer_connect.cpp:402
+#: src/multiplayer_connect.cpp:399
 msgid "The scenario is invalid because it has no id."
 msgstr "Scenārijs ir nederīgs, jo tam nav id."
 
-#: src/multiplayer_connect.cpp:418
+#: src/multiplayer_connect.cpp:415
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenārijs ir nederīgs jo tajā nav neviena puse."
 
-#: src/multiplayer_connect.cpp:584
+#: src/multiplayer_connect.cpp:581
 msgid "Waiting for players to join..."
 msgstr "Gaida spēlētāju pievienošanos..."
 
-#: src/multiplayer_connect.cpp:585
+#: src/multiplayer_connect.cpp:582
 msgid "Waiting for players to choose factions..."
 msgstr "Gaida, kamēr spēlētāji izvēlas puses..."
 
@@ -7187,11 +7189,11 @@ msgstr "$name ir pārņēmis kontroli"
 msgid "Undoing moves not yet transmitted to the server."
 msgstr "Atdarīšanas gājieni vēl nav pārsūtīti uz serveri."
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:360
 msgid "Waiting for next scenario..."
 msgstr "Gaida nākamo scenāriju..."
 
-#: src/playmp_controller.cpp:489
+#: src/playmp_controller.cpp:491
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2013-12-03 18:18+0100\n"
 "Last-Translator: Foppe Benedictus <foppe.benedictus@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -331,21 +331,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "vergiftigd"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12316
+#: data/lua/wml/objectives.lua:1835
 msgid "Gold carryover:"
 msgstr "Overdracht goud:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12317
+#: data/lua/wml/objectives.lua:1836
 msgid "Notes:"
 msgstr "Opmerkingen:"
 
@@ -2665,12 +2665,12 @@ msgid "Turns run out"
 msgstr "Beurten raken op"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12378
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
 msgid "Early finish bonus."
 msgstr "Vroege overwinningsbonus."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12380
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
 msgid "No early finish bonus."
 msgstr "Geen vroege overwinningsbonus."
 
@@ -2683,7 +2683,7 @@ msgid "(early finish bonus)"
 msgstr "(vroege overwinningsbonus)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12388
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
 msgid "No gold carried over to the next scenario."
 msgstr "Er wordt geen goud meegenomen naar het volgende scenario."
 
@@ -2822,7 +2822,7 @@ msgstr "Lichtblauw"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:98 src/leader_scroll_dialog.cpp:47
-#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:381
+#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:378
 msgid "Gold"
 msgstr "Goud"
 
@@ -3980,67 +3980,67 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "vergiftigd"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "vertraagd"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "vertraagd"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "versteend"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "versteend"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "female^unhealable"
 msgstr "ongeneesbaar"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "unhealable"
 msgstr "ongeneesbaar"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12314 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "Overwinning:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12315
+#: data/lua/wml/objectives.lua:1834
 msgid "Defeat:"
 msgstr "Nederlaag:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12335
+#: data/lua/wml/objectives.lua:1854
 msgid "(%d turns left)"
 msgstr "(%d beurten over)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12337
+#: data/lua/wml/objectives.lua:1856
 msgid "(this turn left)"
 msgstr "(deze beurt over)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12390
+#: data/lua/wml/objectives.lua:1909
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Er wordt %d%% goud overgedragen naar het volgende scenario."
 
@@ -4053,8 +4053,8 @@ msgstr "OK"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1448
-#: src/dialogs.cpp:1554 src/multiplayer_connect.cpp:387
+#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1452
+#: src/dialogs.cpp:1558 src/multiplayer_connect.cpp:384
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Annuleren"
@@ -4418,57 +4418,57 @@ msgstr ""
 msgid "Add-ons Manager"
 msgstr "Add-on geïnstalleerd"
 
-#: src/addon/info.cpp:153
+#: src/addon/info.cpp:155
 msgid "addon_type^Campaign"
 msgstr "Veldtocht"
 
-#: src/addon/info.cpp:155
+#: src/addon/info.cpp:157
 msgid "addon_type^Scenario"
 msgstr "Scenario"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:159
 #, fuzzy
 #| msgid "addon_type^MP campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "MP veldtocht"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:161
 msgid "addon_type^MP era"
 msgstr "MP tijdperk"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:163
 msgid "addon_type^MP faction"
 msgstr "MP factie"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:165
 msgid "addon_type^MP map-pack"
 msgstr "MP kaartencollectie"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 msgid "addon_type^MP scenario"
 msgstr "MP scenario"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^MP campaign"
 msgstr "MP veldtocht"
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:171
 msgid "addon_type^MP modification"
 msgstr "MP modificatie"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:173
 msgid "addon_type^Resources"
 msgstr "Middelen"
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:175
 msgid "addon_type^Other"
 msgstr "Anders"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
 msgstr "(onbekend)"
 
-#: src/addon/info.cpp:214 src/dialogs.cpp:1481
+#: src/addon/info.cpp:216 src/dialogs.cpp:1485
 #: src/hotkey/command_executor.cpp:631
 msgid "unit_byte^B"
 msgstr ""
@@ -5069,19 +5069,19 @@ msgstr "Spel verwijderen"
 msgid "Profile"
 msgstr "Profiel"
 
-#: src/dialogs.cpp:1164
+#: src/dialogs.cpp:1168
 msgid "level"
 msgstr "rang"
 
-#: src/dialogs.cpp:1177
+#: src/dialogs.cpp:1181
 msgid "HP: "
 msgstr "HP: "
 
-#: src/dialogs.cpp:1180
+#: src/dialogs.cpp:1184
 msgid "XP: "
 msgstr "XP: "
 
-#: src/dialogs.cpp:1184
+#: src/dialogs.cpp:1188
 msgid "Moves: "
 msgstr "Zetten: "
 
@@ -5130,7 +5130,9 @@ msgid "%b %d"
 msgstr "%d %b"
 
 #: src/format_time_summary.cpp:65
-msgid "%b %d %y"
+#, fuzzy
+#| msgid "%b %d %y"
+msgid "%b %d %Y"
 msgstr "%d %b %y"
 
 #: src/game_config.cpp:353
@@ -5324,7 +5326,7 @@ msgid "Error"
 msgstr "Fout"
 
 #: src/hotkey/command_executor.cpp:507 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:387 src/multiplayer_lobby.cpp:863
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
 #: src/multiplayer_wait.cpp:184
 msgid "Quit"
 msgstr "Afsluiten"
@@ -5380,7 +5382,7 @@ msgid "Upkeep"
 msgstr "Onderhoud"
 
 #: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:197
-#: src/multiplayer_connect.cpp:383 src/multiplayer_wait.cpp:542
+#: src/multiplayer_connect.cpp:380 src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "Inkomen"
 
@@ -6645,49 +6647,49 @@ msgstr ")"
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:367
+#: src/multiplayer_connect.cpp:364
 msgid "Game Lobby: "
 msgstr "Spellobby: "
 
-#: src/multiplayer_connect.cpp:373
+#: src/multiplayer_connect.cpp:370
 msgid "Player/Type"
 msgstr "Speler/Type"
 
-#: src/multiplayer_connect.cpp:375
+#: src/multiplayer_connect.cpp:372
 #, fuzzy
 #| msgid "Faction"
 msgid "Faction/Name"
 msgstr "Factie"
 
-#: src/multiplayer_connect.cpp:377
+#: src/multiplayer_connect.cpp:374
 #, fuzzy
 #| msgid "Team/Gender"
 msgid "Leader/Gender"
 msgstr "Team/Geslacht"
 
-#: src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:376
 #, fuzzy
 #| msgid "Color"
 msgid "Team/Color"
 msgstr "Kleur"
 
-#: src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
 msgstr "Ik ben klaar!"
 
-#: src/multiplayer_connect.cpp:402
+#: src/multiplayer_connect.cpp:399
 msgid "The scenario is invalid because it has no id."
 msgstr "Dit scenario is ongeldig omdat het geen id bevat."
 
-#: src/multiplayer_connect.cpp:418
+#: src/multiplayer_connect.cpp:415
 msgid "The scenario is invalid because it has no sides."
 msgstr "Dit scenario is ongeldig vermits het geen zijdes bevat."
 
-#: src/multiplayer_connect.cpp:584
+#: src/multiplayer_connect.cpp:581
 msgid "Waiting for players to join..."
 msgstr "Aan het wachten op netwerkspelers..."
 
-#: src/multiplayer_connect.cpp:585
+#: src/multiplayer_connect.cpp:582
 msgid "Waiting for players to choose factions..."
 msgstr "Aan het wachten op de keuze van de facties door de spelers..."
 
@@ -7143,11 +7145,11 @@ msgstr ""
 "Bezig met het ongedaan maken van zetten die nog niet naar de server zijn "
 "verstuurd."
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:360
 msgid "Waiting for next scenario..."
 msgstr "Wacht op het volgende scenario..."
 
-#: src/playmp_controller.cpp:489
+#: src/playmp_controller.cpp:491
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

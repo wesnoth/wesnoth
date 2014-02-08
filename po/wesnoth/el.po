@@ -29,7 +29,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2013-08-30 15:57+0300\n"
 "Last-Translator: Antonis Geralis <capoiosct@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-doc@kde.org>\n"
@@ -347,21 +347,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "δηλητηριασμένος"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12316
+#: data/lua/wml/objectives.lua:1835
 msgid "Gold carryover:"
 msgstr ""
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12317
+#: data/lua/wml/objectives.lua:1836
 msgid "Notes:"
 msgstr "Σημειώσεις:"
 
@@ -2223,12 +2223,12 @@ msgid "Turns run out"
 msgstr "Οι γύροι θα τελειώσουν"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12378
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
 msgid "Early finish bonus."
 msgstr "Πριμ πρόωρης λήξης."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12380
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
 msgid "No early finish bonus."
 msgstr "Χωρίς πριμ πρόωρης λήξης."
 
@@ -2241,7 +2241,7 @@ msgid "(early finish bonus)"
 msgstr ""
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12388
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
 msgid "No gold carried over to the next scenario."
 msgstr ""
 
@@ -2376,7 +2376,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=gold
 #: data/core/team-colors.cfg:98 src/leader_scroll_dialog.cpp:47
-#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:381
+#: src/menu_events.cpp:193 src/multiplayer_connect.cpp:378
 msgid "Gold"
 msgstr "Χρυσό"
 
@@ -3372,69 +3372,69 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11834 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "δηλητηριασμένη"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "επιβραδυμένη"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11836 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "επιβραδυμένος"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 #, fuzzy
 msgid "female^petrified"
 msgstr "απέθαντη"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11837 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr ""
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 #, fuzzy
 msgid "female^unhealable"
 msgstr "απέθαντη"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11838
+#: data/lua/wml-tags.lua:1357
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12314 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "Νίκη:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12315
+#: data/lua/wml/objectives.lua:1834
 msgid "Defeat:"
 msgstr "Ήττα:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12335
+#: data/lua/wml/objectives.lua:1854
 msgid "(%d turns left)"
 msgstr "(απομένουν %d γύροι)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12337
+#: data/lua/wml/objectives.lua:1856
 msgid "(this turn left)"
 msgstr "(απομένει αυτός ο γύρος)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12390
+#: data/lua/wml/objectives.lua:1909
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Το %d%% του χρυσαφιού μεταφέρεται στην επόμενη αποστολή."
 
@@ -3447,8 +3447,8 @@ msgstr "Εντάξει"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=helptip_large, id=tooltip_large, id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
-#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1448
-#: src/dialogs.cpp:1554 src/multiplayer_connect.cpp:387
+#: data/scenario-test.cfg:1042 src/dialogs.cpp:977 src/dialogs.cpp:1452
+#: src/dialogs.cpp:1558 src/multiplayer_connect.cpp:384
 #: src/multiplayer_create.cpp:79 src/multiplayer_wait.cpp:184
 msgid "Cancel"
 msgstr "Ακύρωση"
@@ -3818,63 +3818,63 @@ msgstr ""
 msgid "Add-ons Manager"
 msgstr "Διαχείριση Επεκτάσεων"
 
-#: src/addon/info.cpp:153
+#: src/addon/info.cpp:155
 msgid "addon_type^Campaign"
 msgstr "Εκστρατεία"
 
-#: src/addon/info.cpp:155
+#: src/addon/info.cpp:157
 msgid "addon_type^Scenario"
 msgstr "Αποστολή"
 
-#: src/addon/info.cpp:157
+#: src/addon/info.cpp:159
 #, fuzzy
 #| msgid "addon_type^Campaign"
 msgid "addon_type^SP/MP Campaign"
 msgstr "Εκστρατεία"
 
-#: src/addon/info.cpp:159
+#: src/addon/info.cpp:161
 #, fuzzy
 msgid "addon_type^MP era"
 msgstr "Απομακρυσμένο σενάριο"
 
-#: src/addon/info.cpp:161
+#: src/addon/info.cpp:163
 #, fuzzy
 msgid "addon_type^MP faction"
 msgstr "Απομακρυσμένο σενάριο"
 
-#: src/addon/info.cpp:163
+#: src/addon/info.cpp:165
 #, fuzzy
 msgid "addon_type^MP map-pack"
 msgstr "Απομακρυσμένο σενάριο"
 
-#: src/addon/info.cpp:165
+#: src/addon/info.cpp:167
 #, fuzzy
 msgid "addon_type^MP scenario"
 msgstr "Απομακρυσμένο σενάριο"
 
-#: src/addon/info.cpp:167
+#: src/addon/info.cpp:169
 msgid "addon_type^MP campaign"
 msgstr ""
 
-#: src/addon/info.cpp:169
+#: src/addon/info.cpp:171
 #, fuzzy
 msgid "addon_type^MP modification"
 msgstr "Απομακρυσμένο σενάριο"
 
-#: src/addon/info.cpp:171
+#: src/addon/info.cpp:173
 msgid "addon_type^Resources"
 msgstr ""
 
-#: src/addon/info.cpp:173
+#: src/addon/info.cpp:175
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "Απομακρυσμένο σενάριο"
 
-#: src/addon/info.cpp:175
+#: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
 msgstr ""
 
-#: src/addon/info.cpp:214 src/dialogs.cpp:1481
+#: src/addon/info.cpp:216 src/dialogs.cpp:1485
 #: src/hotkey/command_executor.cpp:631
 msgid "unit_byte^B"
 msgstr ""
@@ -4439,19 +4439,19 @@ msgstr "Διαγραφή Αποθήκευσης"
 msgid "Profile"
 msgstr "Προφίλ"
 
-#: src/dialogs.cpp:1164
+#: src/dialogs.cpp:1168
 msgid "level"
 msgstr "επίπεδο"
 
-#: src/dialogs.cpp:1177
+#: src/dialogs.cpp:1181
 msgid "HP: "
 msgstr "Υγεία: "
 
-#: src/dialogs.cpp:1180
+#: src/dialogs.cpp:1184
 msgid "XP: "
 msgstr "Εμπειρία: "
 
-#: src/dialogs.cpp:1184
+#: src/dialogs.cpp:1188
 msgid "Moves: "
 msgstr "Κινήσεις: "
 
@@ -4500,7 +4500,9 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
-msgid "%b %d %y"
+#, fuzzy
+#| msgid "%b %d %y"
+msgid "%b %d %Y"
 msgstr "%b %d %y"
 
 #: src/game_config.cpp:353
@@ -4694,7 +4696,7 @@ msgid "Error"
 msgstr "Σφάλμα"
 
 #: src/hotkey/command_executor.cpp:507 src/hotkey/command_executor.cpp:671
-#: src/multiplayer_connect.cpp:387 src/multiplayer_lobby.cpp:863
+#: src/multiplayer_connect.cpp:384 src/multiplayer_lobby.cpp:863
 #: src/multiplayer_wait.cpp:184
 msgid "Quit"
 msgstr "Έξοδος"
@@ -4750,7 +4752,7 @@ msgid "Upkeep"
 msgstr "Συντήρηση"
 
 #: src/leader_scroll_dialog.cpp:51 src/menu_events.cpp:197
-#: src/multiplayer_connect.cpp:383 src/multiplayer_wait.cpp:542
+#: src/multiplayer_connect.cpp:380 src/multiplayer_wait.cpp:542
 msgid "Income"
 msgstr "Εισόδημα"
 
@@ -5980,49 +5982,49 @@ msgstr ")"
 msgid "+"
 msgstr "+"
 
-#: src/multiplayer_connect.cpp:367
+#: src/multiplayer_connect.cpp:364
 msgid "Game Lobby: "
 msgstr ""
 
-#: src/multiplayer_connect.cpp:373
+#: src/multiplayer_connect.cpp:370
 msgid "Player/Type"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:375
+#: src/multiplayer_connect.cpp:372
 #, fuzzy
 #| msgid "Faction"
 msgid "Faction/Name"
 msgstr "Παράταξη"
 
-#: src/multiplayer_connect.cpp:377
+#: src/multiplayer_connect.cpp:374
 #, fuzzy
 #| msgid "Team/Gender"
 msgid "Leader/Gender"
 msgstr "Ομάδα/Φύλο"
 
-#: src/multiplayer_connect.cpp:379
+#: src/multiplayer_connect.cpp:376
 #, fuzzy
 #| msgid "Color"
 msgid "Team/Color"
 msgstr "Χρώμα"
 
-#: src/multiplayer_connect.cpp:386
+#: src/multiplayer_connect.cpp:383
 msgid "I’m Ready"
 msgstr "Είμαι έτοιμος"
 
-#: src/multiplayer_connect.cpp:402
+#: src/multiplayer_connect.cpp:399
 msgid "The scenario is invalid because it has no id."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:418
+#: src/multiplayer_connect.cpp:415
 msgid "The scenario is invalid because it has no sides."
 msgstr ""
 
-#: src/multiplayer_connect.cpp:584
+#: src/multiplayer_connect.cpp:581
 msgid "Waiting for players to join..."
 msgstr "Περιμένοντας άλλους παίκτες να συνδεθούν..."
 
-#: src/multiplayer_connect.cpp:585
+#: src/multiplayer_connect.cpp:582
 msgid "Waiting for players to choose factions..."
 msgstr "Περιμένοντας τους άλλους παίκτες να επιλέξουν παρατάξεις..."
 
@@ -6479,11 +6481,11 @@ msgstr ""
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
-#: src/playmp_controller.cpp:358
+#: src/playmp_controller.cpp:360
 msgid "Waiting for next scenario..."
 msgstr "Αναμονή για την επόμενη αποστολή..."
 
-#: src/playmp_controller.cpp:489
+#: src/playmp_controller.cpp:491
 msgid ""
 "The game is out of sync, and cannot continue. There are a number of reasons "
 "this could happen: this can occur if you or another player have modified "

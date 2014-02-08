@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-08 13:24+0100\n"
 "PO-Revision-Date: 2013-09-27 19:41+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1007,8 +1007,10 @@ msgstr "Castello umano innevato"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1606
-msgid "Elvish Castle"
-msgstr "Castello degli elfi"
+#, fuzzy
+#| msgid "Elven Castle Keep"
+msgid "Elven Castle"
+msgstr "Castello-fortezza degli elfi"
 
 #. [terrain_type]: id=dwarven_castle
 #: data/core/terrain.cfg:1618
@@ -1527,7 +1529,7 @@ msgstr ""
 #. [button]: id=close_window
 #. [button]: id=ok
 #: data/gui/default/widget/window_default.cfg:140
-#: data/gui/default/window/addon_description.cfg:499
+#: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:416
 #: data/gui/default/window/chat_log.cfg:158
 #: data/gui/default/window/gamestate_inspector.cfg:254
@@ -1654,69 +1656,79 @@ msgid "Downloads:"
 msgstr "Scaricamenti:"
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:273
+#: data/gui/default/window/addon_description.cfg:258
+msgid "date^Last updated:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:284
+msgid "date^First uploaded:"
+msgstr ""
+
+#. [label]
+#: data/gui/default/window/addon_description.cfg:329
 #: data/gui/default/window/editor_edit_scenario.cfg:142
 msgid "Description:"
 msgstr "Descrizione:"
 
 #. [scroll_label]: id=description
-#: data/gui/default/window/addon_description.cfg:290
+#: data/gui/default/window/addon_description.cfg:346
 msgid "No description available."
 msgstr "Nessuna descrizione disponibile."
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:320
+#: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
 msgstr ""
 
 #. [label]: id=url_none
-#: data/gui/default/window/addon_description.cfg:344
+#: data/gui/default/window/addon_description.cfg:400
 #, fuzzy
 #| msgid "None"
 msgid "url^None"
 msgstr "Nessuno"
 
 #. [button]: id=url_copy
-#: data/gui/default/window/addon_description.cfg:379
+#: data/gui/default/window/addon_description.cfg:435
 #, fuzzy
 #| msgid "Copy"
 msgid "url^Copy"
 msgstr "Copia"
 
 #. [button]: id=url_copy
-#: data/gui/default/window/addon_description.cfg:380
+#: data/gui/default/window/addon_description.cfg:436
 #, fuzzy
 #| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
 msgstr "Scegli la partita da caricare"
 
 #. [button]: id=url_go
-#: data/gui/default/window/addon_description.cfg:393
+#: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
 msgstr ""
 
 #. [button]: id=url_go
-#: data/gui/default/window/addon_description.cfg:394
+#: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:422
+#: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
 msgstr ""
 
 #. [scroll_label]: id=dependencies
-#: data/gui/default/window/addon_description.cfg:436
+#: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
 msgstr ""
 
 #. [label]
-#: data/gui/default/window/addon_description.cfg:454
+#: data/gui/default/window/addon_description.cfg:510
 msgid "Translations:"
 msgstr "Traduzioni:"
 
 #. [scroll_label]: id=translations
-#: data/gui/default/window/addon_description.cfg:468
+#: data/gui/default/window/addon_description.cfg:524
 msgid "translations^None"
 msgstr "Nessuna"
 
@@ -3999,55 +4011,55 @@ msgstr "[nodo] l’id «root» è riservato dall’implementazione."
 msgid "No node defined."
 msgstr "Non è stato definito nessun nodo."
 
-#: src/gui/dialogs/addon/description.cpp:86
+#: src/gui/dialogs/addon/description.cpp:106
 msgid "addon_state^Not installed"
 msgstr "Non installata"
 
-#: src/gui/dialogs/addon/description.cpp:88
+#: src/gui/dialogs/addon/description.cpp:108
 msgid "addon_state^Published, not installed"
 msgstr "Pubblicata, non installata"
 
-#: src/gui/dialogs/addon/description.cpp:93
+#: src/gui/dialogs/addon/description.cpp:113
 msgid "addon_state^Installed"
 msgstr "Installata"
 
-#: src/gui/dialogs/addon/description.cpp:95
+#: src/gui/dialogs/addon/description.cpp:115
 msgid "addon_state^Published"
 msgstr "Pubblicata"
 
-#: src/gui/dialogs/addon/description.cpp:100
+#: src/gui/dialogs/addon/description.cpp:120
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Installata, nessun tracciamento della versione locale"
 
-#: src/gui/dialogs/addon/description.cpp:104
+#: src/gui/dialogs/addon/description.cpp:124
 msgid "addon_state^Published, not tracking local version"
 msgstr "Pubblicata, nessun tracciamento della versione locale"
 
-#: src/gui/dialogs/addon/description.cpp:110
+#: src/gui/dialogs/addon/description.cpp:130
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Installata ($local_version|), aggiornabile"
 
-#: src/gui/dialogs/addon/description.cpp:111
+#: src/gui/dialogs/addon/description.cpp:131
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Pubbblicata ($local_version| installata), aggiornabile"
 
-#: src/gui/dialogs/addon/description.cpp:118
+#: src/gui/dialogs/addon/description.cpp:138
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Installata ($local_vesion|), antiquata sul server"
 
-#: src/gui/dialogs/addon/description.cpp:119
+#: src/gui/dialogs/addon/description.cpp:139
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Pubblicata ($local_vesion|), antiquata sul server"
 
-#: src/gui/dialogs/addon/description.cpp:125
+#: src/gui/dialogs/addon/description.cpp:145
 msgid "addon_state^Installed, broken"
 msgstr "Installata, corrotta"
 
-#: src/gui/dialogs/addon/description.cpp:127
+#: src/gui/dialogs/addon/description.cpp:147
 msgid "addon_state^Published, broken"
 msgstr "Pubblicata, corrotta"
 
-#: src/gui/dialogs/addon/description.cpp:131
+#: src/gui/dialogs/addon/description.cpp:151
 msgid "addon_state^Unknown"
 msgstr "Sconosciuta"
 
@@ -5288,6 +5300,9 @@ msgid ""
 msgstr ""
 "La chiave «$deprecated_key» è stata rinonimata in «$key». Il supporto per "
 "«$deprecated_key» verrà rimosso nella versione $removal_version."
+
+#~ msgid "Elvish Castle"
+#~ msgstr "Castello degli elfi"
 
 #~ msgid "Forested Hills"
 #~ msgstr "Colline boscose"
