@@ -4,21 +4,26 @@ changelog: https://github.com/wesnoth/wesnoth-old/blob/master/changelog
 
 Version 1.11.8+dev:
  * AI:
-   * RCA (default) AI: Gold saving is turned off by default again
+   * Default AI: Gold saving is turned off by default again.
+
  * Campaigns:
    * Heir to the Throne:
      * Gave Li'sar a new ability "initiative" (grants adjacent allies first
        strike in melee).
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is done for Scenarios 1 (End
+       of Peace) through 8 (Giving Some Back).
 
  * Language and i18n:
    * Updated translations: Dutch, Portuguese, Scottish Gaelic.
 
-* Unit changes and balancing:
+ * Units:
    * Decreased the strikes of the Dwarvish Lord's hatchet attack from 2 to 1.
    * Fixed subtle magenta TC for the Giant Mudcrawler sprites not being
      enabled in-game.
-	 
+
  * User interface:
+   * Restored the old controll scheme as the default
    * Fixed hidden variations of unit types (hide_help=yes) being listed in the
      help browser when they shouldn't.
    * Truncate long Advanced Preferences entries with ellipses to avoid
@@ -27,7 +32,6 @@ Version 1.11.8+dev:
      Table regardless of whether the side's leader unit supports team color.
 
  * Miscellaneous and bug fixes:
-   * Properly disabled commands in linger mode (bug #21450)
    * Fixed possible invalid memory access issue in the MP sides configuration
      code causing crashes for some users (bug #21449).
    * Fixed broken image references in the Gameplay -> Time of Day help topic.

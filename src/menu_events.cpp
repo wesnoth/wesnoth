@@ -1923,7 +1923,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		using chmap::get_commands_list;
 
 	protected:
-		//chat_command_handler's init_map() and hanlers will end up calling these.
+		//chat_command_handler's init_map() and handlers will end up calling these.
 		//this makes sure the commands end up in our map
 		virtual void register_command(const std::string& cmd,
 			chat_command_handler::command_handler h, const std::string& help="",

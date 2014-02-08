@@ -890,13 +890,11 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			context_manager_->get_map_context().new_side();
 			gui_->init_flags();
 			return true;
-
 		case HOTKEY_EDITOR_SIDE_REMOVE:
 			gui_->set_team(0, true);
 			gui_->set_playing_team(0);
 			context_manager_->get_map_context().remove_side();
 			return true;
-
 		case HOTKEY_EDITOR_SIDE_EDIT:
 			context_manager_->edit_side_dialog(gui_->viewing_team());
 			return true;

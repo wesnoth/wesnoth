@@ -214,7 +214,7 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	// tab names and icons
 	items.push_back(pre + "general.png" + sep
 			+ sgettext("Prefs section^General"));
-	items.push_back(pre + "title_screen.png" + sep
+	items.push_back(pre + "titlescreen.png" + sep
 			+ sgettext("Prefs section^Title Screen"));
 	items.push_back(pre + "game.png"    + sep
 			+ sgettext("Prefs section^Game"));
