@@ -1,0 +1,116 @@
+\section{Tooltip placement}
+\label{sec:tooltip_placement}
+
+
+The placement of the GUI2 tooltips are handled by the tooltip window. This
+window needs to determine where it wants the tooltip to be placed, and
+determine its optimal size.
+
+\begin{description}
+\item[\cref{sec:tooltip_placement:normal}]
+	Shows the how normal tooltips look in the game window.
+
+\item[\cref{sec:tooltip_placement:large}]
+	Shows the how large tooltips look in the game window.
+
+\item[\cref{sec:tooltip_placement:huge}]
+	Shows the how huge tooltips look in the game window.
+
+\end{description}
+
+
+\subsection{Normal}
+\label{sec:tooltip_placement:normal}
+
+This tooltip has a single line of text and the width of the tooltip is below or
+equal to the wanted width of the tooltip. The wanted width of the tooltip is
+determined by a size where the line-length of the text is pleasant to read.
+
+Or the  tooltip has either a end of line character, causing it to be spread
+over several lines, or its text is too long for the wanted width, causing it to
+be wrapped. The text's height will still fit on the screen.
+
+\Cref{fig:tooltip_placement} gives a visual representation of the placement
+algorithms used. The algorithms used are:
+\begin{enumerate}[I.]
+\item\label{sec:tooltip_placement:algorithm:I}
+	This is the preferred placement of the tooltip. The lower right corner of
+	the tooltip is attached to the top left of the mouse pointer.
+
+\item\label{sec:tooltip_placement:algorithm:II}
+	This is used when the mouse \mbox{x-position} is greater than the width of
+	the tooltip window, but the mouse \mbox{y-position} is smaller than the
+	height of the tooltip window. The top of the tooltip is attached to the top
+	of the screen at the left side of the mouse pointer.
+
+\item\label{sec:tooltip_placement:algorithm:III}
+	This is used when the mouse \mbox{x-position} is smaller than the width of
+	the tooltip window, but the mouse \mbox{x-position} is greater than the
+	height of the tooltip window. The left side of the tooltip is attached to
+	the left side of the screen at the top of the mouse pointer.
+
+\item\label{sec:tooltip_placement:algorithm:IV}
+	This is used when the mouse \mbox{x-position} is smaller than the width of
+	the tooltip window, and the mouse \mbox{y-position} is smaller than the
+	height of the tooltip window. The top of the tooltip is attached to the top
+	of the screen at the right side of the mouse pointer.
+
+\end{enumerate}
+
+\begin{figure}[tbh]
+\centering\begin{tikzpicture}[
+	  x=0.0008\textwidth
+	, y=0.0008\textwidth
+	, pointer/.style={dart, draw=black, rotate=120, anchor=tip, fill=gray!60}
+	, shadow/.style={dart, draw=black!40, rotate=120, anchor=tip, fill=gray!15}
+	, tooltip/.style={draw=black, minimum width=100, minimum height=50}
+	]
+
+	\draw (0,0) rectangle (1200, 800);
+
+	% pointer size 55 x 75
+	\node[pointer] at (1135, 80) {};
+	\node[tooltip, anchor=south east] at (1135, 80) {Algorithm I};
+
+	\node[shadow] at (1135, 795) {};
+	\node[pointer] at (1135, 725) {};
+	\node[shadow] at (1135, 615) {};
+	\node[tooltip, anchor=north east] at (1135, 795) {Algorithm II};
+
+
+	\node[shadow] at (5, 80) {};
+	\node[pointer] at (155, 80) {};
+	\node[shadow] at (370, 80) {};
+	\node[tooltip, anchor=south west] at (5, 80) {Algorithm III};
+
+	\node[shadow] at (5, 795) {};
+	\node[pointer] at (5, 725) {};
+	\node[shadow] at (5, 615) {};
+	\node[tooltip, anchor=north west] at (70, 795) {Algorithm III};
+
+
+\end{tikzpicture}
+\caption{Overview of the tooltip placement.}
+\label{fig:tooltip_placement}
+\end{figure}
+
+
+\subsection{Large}
+\label{sec:tooltip_placement:large}
+
+This tooltip needs so much space that its height no longer fits on the
+screen. In this case the width will be increased. There is no guarantee the
+tooltip will fit properly; the creator of the tooltip should consider
+whether or not it contains too much information. Once the width is adjusted the
+placement algorithm used it the same as for the normal tooltip, see
+\cref{sec:tooltip_placement:normal}.
+
+
+\subsection{Huge}
+\label{sec:tooltip_placement:huge}
+
+The tooltip will certainly not fit nicely on the screen and no attempt is
+made to even try to do something sane. Instead it is placed in the top left
+corner. Unless a very small screen resolution is used the creator of the
+tooltip really needs to consider reducing the amount of text on the tooltip.
+There is no guarantee the entire tooltip is visible.

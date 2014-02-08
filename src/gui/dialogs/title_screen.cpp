@@ -26,6 +26,10 @@
 #include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/debug_clock.hpp"
 #include "gui/dialogs/language_selection.hpp"
+//#define DEBUG_TOOLTIP
+#ifdef DEBUG_TOOLTIP
+#include "gui/dialogs/tip.hpp"
+#endif
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/multi_page.hpp"
@@ -277,12 +281,49 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					, QUIT_GAME));
 }
 
+#ifdef DEBUG_TOOLTIP
+static void debug_tooltip(
+		  twindow& window
+		, bool& handled
+		, const tpoint& coordinate)
+{
+	std::string message = "Hello world.";
+	/*
+	 * This function is used to test the tooltip placement algorithms as
+	 * described in the »Tooltip placement« section in the GUI2 design
+	 * document.
+	 *
+	 * Use a 1024 x 768 screen size, set the maximum loop iteration to:
+	 * - 0  to test with a normal tooltip placement.
+	 * - 30 to test with a larger normal tooltip placement.
+	 * - 60 to test with a huge tooltip placement.
+	 * - 150 to test with a borderline to insanely huge tooltip placement.
+	 * - 180 to test with an insanely huge tooltip placement.
+	 */
+	for(int i = 0; i < 0; ++i) {
+		message += " More greetings.";
+	}
+	gui2::tip::remove();
+	gui2::tip::show(window.video()
+			, "tooltip"
+			, message
+			, coordinate);
+	handled = true;
+}
+#endif
+
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
 {
 	set_restore(false);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
+
+#ifdef DEBUG_TOOLTIP
+	window.connect_signal<event::SDL_MOUSE_MOTION>(
+			  boost::bind(debug_tooltip, boost::ref(window), _3, _5)
+			, event::tdispatcher::front_child);
+#endif
 
 	/**** Set the version number ****/
 	if(tcontrol* control
