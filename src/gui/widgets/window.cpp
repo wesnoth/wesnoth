@@ -79,7 +79,6 @@ unsigned twindow::sunset_ = 0;
 
 namespace {
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
-	const unsigned MANUAL = tdebug_layout_graph::MANUAL;
 	const unsigned SHOW = tdebug_layout_graph::SHOW;
 	const unsigned LAYOUT = tdebug_layout_graph::LAYOUT;
 #else
