@@ -1102,10 +1102,10 @@ void preferences_dialog::process_event()
 		}
 
 		const config* const adv = get_advanced_pref();
-		const config& pref = *adv;
-		const bool double_click_toggle_boolean = advanced_.double_clicked() &&
-			pref["type"] == "boolean";
-		
+		const bool double_click_toggle_boolean = adv
+				? advanced_.double_clicked() && (*adv)["type"] == "boolean"
+				: false;
+
 		if(advanced_button_.pressed() || double_click_toggle_boolean) {
 			bool advanced_button_check = advanced_button_.checked();
 			if (double_click_toggle_boolean) {
