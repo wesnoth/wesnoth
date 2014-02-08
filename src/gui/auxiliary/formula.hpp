@@ -16,6 +16,7 @@
 #define GUI_WIDGETS_FORMULA_HPP_INCLUDED
 
 #include "formula_callable.hpp"
+#include "formula_function.hpp"
 #include "../../formula.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
@@ -71,8 +72,23 @@ public:
 		return value_;
 	}
 
-	/** Returns the value, can always be used. */
-	T operator() (const game_logic::map_formula_callable& variables) const;
+	/**
+	 * Returns the value, can always be used.
+	 *
+	 * @param variables           The variables, which can be used during the
+	 *                            evaluation of the formula.
+	 * @param functions           The variables, which can be called during the
+	 *                            evaluation of the formula. (Note is is also
+	 *                            possible to add extra functions to the table,
+	 *                            when the variable is not @c NULL.
+	 *
+	 * @returns                   The stored result or the result of the
+	 *                            evaluation of the formula.
+	 */
+	T operator() (
+			  const game_logic::map_formula_callable& variables
+			, game_logic::function_symbol_table* functions = NULL
+			) const;
 
 	/** Determine whether the class contains a formula. */
 	bool has_formula() const { return !formula_.empty(); }
@@ -99,10 +115,16 @@ private:
 	 *                            the formula. For example a screen_width can
 	 *                            be set so the formula can return the half
 	 *                            width of the screen.
+	 * @param functions           The variables, which can be called during the
+	 *                            evaluation of the formula. (Note is is also
+	 *                            possible to add extra functions to the table,
+	 *                            when the variable is not @c NULL.
 	 *
 	 * @returns                   The calculated value.
 	 */
-	T execute(const game_logic::map_formula_callable& variables) const;
+	T execute(
+			  const game_logic::map_formula_callable& variables
+			, game_logic::function_symbol_table* functions) const;
 
 	/**
 	 * Contains the formula for the variable.
@@ -133,10 +155,11 @@ tformula<T>::tformula(const std::string& str, const T value) :
 
 template<class T>
 inline T tformula<T>::operator()(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
 	if(has_formula()) {
-		const T& result = execute(variables);
+		const T& result = execute(variables, functions);
 		LOG_GUI_D << "Formula: execute '" << formula_
 			<< "' result '" << result
 			<< "'.\n";
@@ -148,50 +171,63 @@ inline T tformula<T>::operator()(
 
 template<>
 inline bool tformula<bool>::execute(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_).evaluate(variables).as_bool();
+	return game_logic::formula(formula_, functions)
+			.evaluate(variables).as_bool();
 }
 
 template<>
 inline int tformula<int>::execute(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_).evaluate(variables).as_int();
+	return game_logic::formula(formula_, functions)
+			.evaluate(variables).as_int();
 }
 
 template<>
 inline unsigned tformula<unsigned>::execute(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_).evaluate(variables).as_int();
+	return game_logic::formula(formula_, functions)
+			.evaluate(variables).as_int();
 }
 
 template<>
 inline std::string tformula<std::string>::execute(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_).evaluate(variables).as_string();
+	return game_logic::formula(formula_, functions)
+			.evaluate(variables).as_string();
 }
 
 template<>
 inline t_string tformula<t_string>::execute(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
-	return game_logic::formula(formula_).evaluate(variables).as_string();
+	return game_logic::formula(formula_, functions)
+			.evaluate(variables).as_string();
 }
 
 template<>
 inline PangoAlignment tformula<PangoAlignment>::execute(
-		const game_logic::map_formula_callable& variables) const
+		  const game_logic::map_formula_callable& variables
+		, game_logic::function_symbol_table* functions) const
 {
 	return decode_text_alignment(
-			game_logic::formula(formula_).evaluate(variables).as_string());
+			game_logic::formula(formula_, functions)
+				.evaluate(variables).as_string());
 }
 
 template<class T>
 inline T tformula<T>::execute(
-		const game_logic::map_formula_callable& /*variables*/) const
+		  const game_logic::map_formula_callable& /*variables*/
+		, game_logic::function_symbol_table* /*functions*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
