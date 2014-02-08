@@ -135,7 +135,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	BOOST_FOREACH(std::string place, placements) {
+	BOOST_FOREACH(const std::string& place, placements) {
 		map_location loc;
 		bool pass((place == "leader_passable") || (place == "map_passable"));
 
