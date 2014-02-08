@@ -265,6 +265,8 @@ twindow::twindow(CVideo& video,
 		tformula<unsigned>y,
 		tformula<unsigned>w,
 		tformula<unsigned>h,
+		tformula<bool>reevaluate_best_size,
+		const game_logic::function_symbol_table& functions,
 		const bool automatic_placement,
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
@@ -294,6 +296,8 @@ twindow::twindow(CVideo& video,
 	, y_(y)
 	, w_(w)
 	, h_(h)
+	, reevaluate_best_size_(reevaluate_best_size)
+	, functions_(functions)
 	, tooltip_(tooltip)
 	, helptip_(helptip)
 	, click_dismiss_(false)
@@ -1004,19 +1008,25 @@ void twindow::layout()
 
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
+	const tpoint mouse = get_mouse_position();
+	variables_.add("mouse_x", variant(mouse.x));
+	variables_.add("mouse_y", variant(mouse.y));
+	variables_.add("window_width", variant(0));
+	variables_.add("window_height", variant(0));
+	variables_.add("size_request_mode", variant("maximum"));
 	get_screen_size_variables(variables_);
 
 	const int maximum_width = automatic_placement_
 			?  maximum_width_
 				? std::min(maximum_width_, settings::screen_width)
 				: settings::screen_width
-			: w_(variables_);
+			: w_(variables_, &functions_);
 
 	const int maximum_height = automatic_placement_
 			? maximum_height_
 				? std::min(maximum_height_, settings::screen_height)
 				: settings::screen_height
-			: h_(variables_);
+			: h_(variables_, &functions_);
 
 	/***** Handle click dismiss status. *****/
 	tbutton* click_dismiss_button = NULL;
@@ -1138,11 +1148,31 @@ void twindow::layout()
 				assert(false);
 		}
 	} else {
-		origin.x = x_(variables_);
-		origin.y = y_(variables_);
 
-		size.x = w_(variables_);
-		size.y = h_(variables_);
+		variables_.add("window_width", variant(size.x));
+		variables_.add("window_height", variant(size.y));
+
+		while(reevaluate_best_size_(variables_, &functions_)) {
+			layout_initialise(true);
+
+			twindow_implementation::layout(
+					  *this
+					, w_(variables_, &functions_)
+					, h_(variables_, &functions_));
+
+			size = get_best_size();
+			variables_.add("window_width", variant(size.x));
+			variables_.add("window_height", variant(size.y));
+
+		}
+
+		variables_.add("size_request_mode", variant("size"));
+
+		origin.x = x_(variables_, &functions_);
+		origin.y = y_(variables_, &functions_);
+
+		size.x = w_(variables_, &functions_);
+		size.y = h_(variables_, &functions_);
 	}
 
 	/***** Set the window size *****/

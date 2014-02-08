@@ -80,6 +80,8 @@ twindow *build(CVideo &video, const twindow_builder::tresolution *definition)
 			, definition->y
 			, definition->width
 			, definition->height
+			, definition->reevaluate_best_size
+			, definition->functions
 			, definition->automatic_placement
 			, definition->horizontal_placement
 			, definition->vertical_placement
@@ -271,6 +273,8 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	y(cfg["y"]),
 	width(cfg["width"]),
 	height(cfg["height"]),
+	reevaluate_best_size(cfg["reevaluate_best_size"]),
+	functions(),
 	vertical_placement(
 			implementation::get_v_align(cfg["vertical_placement"])),
 	horizontal_placement(
@@ -307,6 +311,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * width & f_unsigned & 0 &        Width of the window to show. $
  * height & f_unsigned & 0 &       Height of the window to show. $
  *
+ * reevaluate_best_size & f_bool & false &
+ *     The foo $
+ *
+ * functions & function & "" &
+ *     The function definitions s available for the formula fields in window. $
  *
  * vertical_placement & v_align & "" &
  *     The vertical placement of the window. $
@@ -383,6 +392,10 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @end{tag}{name="helptip"}
  * @end{parent}{name=gui/window/resolution/}
  */
+
+	if(!cfg["functions"].empty()) {
+		game_logic::formula(cfg["functions"], &functions).evaluate();
+	}
 
 	const config &c = cfg.child("grid");
 

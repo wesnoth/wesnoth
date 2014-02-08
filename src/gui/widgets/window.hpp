@@ -65,6 +65,8 @@ public:
 		tformula<unsigned>y,
 		tformula<unsigned>w,
 		tformula<unsigned>h,
+		tformula<bool>reevaluate_best_size,
+		const game_logic::function_symbol_table& functions,
 		const bool automatic_placement,
 		const unsigned horizontal_placement,
 		const unsigned vertical_placement,
@@ -496,6 +498,12 @@ private:
 
 	/** The formula to calulate the height of the dialog. */
 	tformula<unsigned>h_;
+
+	/** The formula to determine whether the size is good. */
+	tformula<bool> reevaluate_best_size_;
+
+	/** The formula definitions available for the calulation formulas. */
+	game_logic::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
 	twindow_builder::tresolution::ttip tooltip_;

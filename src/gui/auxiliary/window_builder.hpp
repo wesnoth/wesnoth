@@ -178,6 +178,9 @@ public:
 		tformula<unsigned> y;
 		tformula<unsigned> width;
 		tformula<unsigned> height;
+		tformula<bool> reevaluate_best_size;
+
+		game_logic::function_symbol_table functions;
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;

@@ -368,6 +368,42 @@ tline::tline(const config& cfg)
  *     gamemap_height & unsigned &      The usable height of the Wesnoth gamemap,
  *                                      if no gamemap shown it's the same value as
  *                                      screen_height. $
+ *
+ *     mouse_x & unsigned &             The x coordinate of the mouse pointer. $
+ *     mouse_y & unsigned &             The y coordinate of the mouse pointer. $
+ *
+ *     window_width & unsigned &        The window width. This value has two
+ *                                      meanings during the layout phase. This
+ *                                      only applies if automatic placement is
+ *                                      not enabled.
+ *                                      - When set to 0 it should return the
+ *                                        wanted maximum width. If no maximum
+ *                                        is wanted it should be set to the
+ *                                        '"(screen_width)"'.
+ *                                      - When not equal to 0 its value is the
+ *                                        best width for the window. When the
+ *                                        size should remain unchanged it
+ *                                        should be set to '"(window_width)"'.
+ *                                        $
+ *
+ *     window_height & unsigned &       The window height. This value has two
+ *                                      meanings during the layout phase. This
+ *                                      only applies if automatic placement is
+ *                                      not enabled.
+ *                                      - When set to 0 it should return the
+ *                                        wanted maximum height. If no maximum
+ *                                        is wanted it should be set to the
+ *                                        '"(screen_height)"'.
+ *                                      - When not equal to 0 its value is the
+ *                                        best height for the window. When the
+ *                                        size should remain unchanged it
+ *                                        should be set to '"(window_height)"'.
+ *                                        $
+ *
+ *    size_request_mode & string &      A field foo:
+ *                                      - maximum
+ *                                      - size
+ *
  * @end{table}
  *
  * Note when drawing the valid coordinates are:<br>
@@ -434,6 +470,8 @@ tline::tline(const config& cfg)
  *     string &                        A text. $
  *     tstring &                       A translatable string. $
  *     f_tstring &                     Formula returning a translatable string. $
+ *     function &                      A string containing a set of function
+ *                                     definition for the formula language. $
  *
  *     color &                         A string which contains the color, this
  *                                     a group of 4 numbers between 0 and 255
@@ -548,6 +586,7 @@ tline::tline(const config& cfg)
  * @allow{type}{name="t_string"}{value="^_?.*$"}
  * @allow{type}{name="f_string"}{value="^.*$"}
  * @allow{type}{name="f_tstring"}{value="^_?.*$"}
+ * @allow{type}{name="function"}{value="^_?.*$"}
  *
  * @allow{type}{name="color"}{value="^(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)[.,]\s*(?:2[0-5][0-5]|[01]?\d?\d)$"}
  *
