@@ -353,8 +353,13 @@ if env["prereqs"]:
             client_env['fribidi'] = conf.CheckPKG('fribidi >= 0.10.9') or Warning("Can't find libfribidi, disabling freebidi support.")
 
     if env["forum_user_handler"]:
-        env.ParseConfig("mysql_config --libs --cflags")
+        flags = env.ParseFlags("!mysql_config --libs --cflags")
+        try: # Some versions of mysql_config add -DNDEBUG but we don't want it
+            flags["CPPDEFINES"].remove("NDEBUG")
+        except ValueError:
+            pass
         env.Append(CPPDEFINES = ["HAVE_MYSQLPP"])
+        env.MergeFlags(flags)
 
     client_env = conf.Finish()
 
