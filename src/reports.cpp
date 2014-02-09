@@ -604,7 +604,6 @@ static config unit_moves(const unit* u)
 		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 
 			const std::string& name = info.name();
-			const std::string id = info.id();
 			const int moves = u->movement_cost(terrain);
 
 			tooltip << name << ": ";
