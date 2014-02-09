@@ -420,7 +420,7 @@ config map_context::to_config()
 	labels_.write(scenario);
 
 	overlay_map::const_iterator it;
-	for (it = overlays_.begin(); it != overlays_.end(); it++) {
+	for (it = overlays_.begin(); it != overlays_.end(); ++it) {
 
 			config& item = scenario.add_child("item");
 			it->first.write(item);
