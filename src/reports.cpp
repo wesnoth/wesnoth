@@ -417,7 +417,6 @@ static config unit_hp(const unit* u)
 		<< '/' << u->max_hitpoints() << naps;
 
 	std::set<std::string> resistances_table;
-	utils::string_map resistances = u->get_base_resistances();
 
 	bool att_def_diff = false;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
