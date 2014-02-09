@@ -418,8 +418,10 @@ void menu_handler::save_map()
 	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
 	int res = 0;
 	int overwrite = 1;
+	std::string untitled_str = _("Untitled");
+	untitled_str += ".map";
 	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
+		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), untitled_str);
 		if (res == 0) {
 
 			if (file_exists(input_name)) {

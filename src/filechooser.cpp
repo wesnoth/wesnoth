@@ -32,7 +32,7 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 							 const std::string& type_a_head,
 							 int xloc, int yloc) {
 
-	file_dialog d(disp, filename, title, show_directory_buttons);
+	file_dialog d(disp, filename, title, "", show_directory_buttons);
 	if (!type_a_head.empty())
 		d.select_file(type_a_head);
 	if(d.show(xloc, yloc) >= 0) {
@@ -42,11 +42,13 @@ int show_file_chooser_dialog(display &disp, std::string &filename,
 }
 
 int show_file_chooser_dialog_save(display &disp, std::string &filename,
-                             std::string const &title, bool show_directory_buttons,
+                             std::string const &title,
+                             const std::string& default_file_name,
+                             bool show_directory_buttons,
 							 const std::string& type_a_head,
 							 int xloc, int yloc) {
 
-	file_dialog d(disp, filename, title, show_directory_buttons);
+	file_dialog d(disp, filename, title, default_file_name, show_directory_buttons);
     d.set_autocomplete(false);
 	if (!type_a_head.empty())
 		d.select_file(type_a_head);
@@ -57,7 +59,8 @@ int show_file_chooser_dialog_save(display &disp, std::string &filename,
 }
 
 file_dialog::file_dialog(display &disp, const std::string& file_path,
-		const std::string& title, bool show_directory_buttons) :
+		const std::string& title, const std::string& default_file_name,
+		bool show_directory_buttons) :
 	gui::dialog(disp, title, file_path, gui::OK_CANCEL),
 	show_directory_buttons_(show_directory_buttons),
 	files_list_(NULL),
@@ -72,6 +75,7 @@ file_dialog::file_dialog(display &disp, const std::string& file_path,
 	files_list_->set_measurements(file_list_width, file_list_height);
 	files_list_->set_max_height(file_list_height);
 	set_menu(files_list_);
+	default_file_name_ = default_file_name;
 	get_message().set_text(format_dirname(files_list_->get_directory()));
 	set_textbox(_("File: "), format_filename(file_path), 100);
 	if (show_directory_buttons_)
@@ -124,7 +128,7 @@ std::string file_dialog::unformat_filename(const std::string& filename) const
 std::string file_dialog::format_filename(const std::string& filename) const
 {
 	if(files_list_->is_directory(filename)) {
-		return "";
+		return default_file_name_;
 	}
 	std::string::size_type last_delim = filename.find_last_of(gui::file_menu::path_delim);
 	if(last_delim != std::string::npos) {
