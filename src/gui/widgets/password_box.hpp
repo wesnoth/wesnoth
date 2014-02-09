@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2009 - 2014 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2009 - 2014 by Thomas Baumhauer
+   <thomas.baumhauer@NOSPAMgmail.com>
    Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -26,34 +27,41 @@
  * @todo This implementation is quite a hack that
  * needs to be rewritten cleanly
  */
-namespace gui2 {
+namespace gui2
+{
 
-class tpassword_box : public ttext_box {
+class tpassword_box : public ttext_box
+{
 
-// The hack works like this: we add the member real_value_
-// that holds the actual user input.
-// Overridden functions now simply
-//  - call set_value() from ttext_box with real_value_,
-//    which is done in prefunction()
-//  - call ttext_box::overridden_function()
-//  - set real_value_ to get_value() from ttext_box and
-//    call set_value() from ttext_box with real_value_
-//    turned into stars, which is done in post_function()
-//
-// and overridden function should therefore look like this:
-//
-// overridden_function(some parameter) {
-// 	pre_function();
-// 	ttext_box::overridden_function(some parameter);
-// 	post_function();
-// }
+	// The hack works like this: we add the member real_value_
+	// that holds the actual user input.
+	// Overridden functions now simply
+	//  - call set_value() from ttext_box with real_value_,
+	//    which is done in prefunction()
+	//  - call ttext_box::overridden_function()
+	//  - set real_value_ to get_value() from ttext_box and
+	//    call set_value() from ttext_box with real_value_
+	//    turned into stars, which is done in post_function()
+	//
+	// and overridden function should therefore look like this:
+	//
+	// overridden_function(some parameter) {
+	// 	pre_function();
+	// 	ttext_box::overridden_function(some parameter);
+	// 	post_function();
+	// }
 
 public:
-	tpassword_box() : ttext_box(), real_value_() {}
+	tpassword_box() : ttext_box(), real_value_()
+	{
+	}
 
 	/** Inherited from ttext_. */
 	virtual void set_value(const std::string& text);
-	std::string get_real_value() const { return real_value_; }
+	std::string get_real_value() const
+	{
+		return real_value_;
+	}
 
 
 protected:
@@ -79,7 +87,6 @@ private:
 	virtual const std::string& get_control_type() const OVERRIDE;
 };
 
-} //namespace gui2
+} // namespace gui2
 
 #endif
-

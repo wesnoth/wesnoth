@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tmulti_page_definition::tmulti_page_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -52,14 +53,12 @@ tmulti_page_definition::tmulti_page_definition(const config& cfg)
  * A multipage has no states.
  */
 tmulti_page_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
+	: tresolution_definition_(cfg), grid(NULL)
 {
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

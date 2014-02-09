@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tbutton_definition::tbutton_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -67,4 +68,3 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

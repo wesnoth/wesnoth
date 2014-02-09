@@ -22,9 +22,11 @@
 
 class config;
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 /**
  * Returns the vertical alignment.
@@ -70,7 +72,7 @@ unsigned read_flags(const config& cfg);
  * @returns                       The scrollbar mode flags.
  */
 tscrollbar_container::tscrollbar_mode
-		get_scrollbar_mode(const std::string& scrollbar_mode);
+get_scrollbar_mode(const std::string& scrollbar_mode);
 
 /**
  * Returns the return value for a widget.
@@ -79,13 +81,12 @@ tscrollbar_container::tscrollbar_mode
  * Else if there's a retval that's returned.
  * Else it falls back to the id.
  */
-int get_retval(const std::string& retval_id
-		, const int retval
-		, const std::string& id);
+int get_retval(const std::string& retval_id,
+			   const int retval,
+			   const std::string& id);
 
 } // namespace implementation
 
 } // namespace gui2
 
 #endif
-

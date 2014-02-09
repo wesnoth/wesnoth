@@ -20,17 +20,22 @@
 #ifndef GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
 #define GUI_AUXILIRY_LAYOUT_EXCEPTION_HPP_INCLUDED
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Exception thrown when the width has been modified during resizing.
  *
  * See layout_algorithm for more information.
  */
-struct tlayout_exception_width_modified {};
+struct tlayout_exception_width_modified
+{
+};
 
 /** Basic exception when the layout doesn't fit. */
-struct tlayout_exception_resize_failed {};
+struct tlayout_exception_resize_failed
+{
+};
 
 /**
  * Exception thrown when the width resizing has failed.
@@ -38,7 +43,7 @@ struct tlayout_exception_resize_failed {};
  * See layout_algorithm for more information.
  */
 struct tlayout_exception_width_resize_failed
-	: public tlayout_exception_resize_failed
+		: public tlayout_exception_resize_failed
 {
 };
 
@@ -48,7 +53,7 @@ struct tlayout_exception_width_resize_failed
  * See layout_algorithm for more information.
  */
 struct tlayout_exception_height_resize_failed
-	: public tlayout_exception_resize_failed
+		: public tlayout_exception_resize_failed
 {
 };
 

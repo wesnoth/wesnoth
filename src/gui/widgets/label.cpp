@@ -23,7 +23,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(label)
 
@@ -79,4 +80,3 @@ const std::string& tlabel::get_control_type() const
 }
 
 } // namespace gui2
-

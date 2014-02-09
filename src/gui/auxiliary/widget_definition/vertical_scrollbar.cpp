@@ -19,7 +19,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tvertical_scrollbar_definition::tvertical_scrollbar_definition(
 		const config& cfg)
@@ -55,9 +56,9 @@ tvertical_scrollbar_definition::tvertical_scrollbar_definition(
  *                                     the same value the positioner is fixed
  *                                     size. If the maximum is 0 (and the
  *                                     minimum not) there's no maximum. $
- *     top_offset & unsigned & 0 &       The number of pixels at the top which
+ *     top_offset & unsigned & 0 &     The number of pixels at the top which
  *                                     can't be used by the positioner. $
- *     bottom_offset & unsigned & 0 &    The number of pixels at the bottom which
+ *     bottom_offset & unsigned & 0 &  The number of pixels at the bottom which
  *                                     can't be used by the positioner. $
  * @end{table}
  * The following states exist:
@@ -85,10 +86,9 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
 	, top_offset(cfg["top_offset"])
 	, bottom_offset(cfg["bottom_offset"])
 {
-	VALIDATE(minimum_positioner_length
-			, missing_mandatory_wml_key(
-				  "resolution"
-				, "minimum_positioner_length"));
+	VALIDATE(minimum_positioner_length,
+			 missing_mandatory_wml_key("resolution",
+									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate in scrollbar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -98,4 +98,3 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

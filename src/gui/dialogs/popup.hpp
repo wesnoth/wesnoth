@@ -19,7 +19,8 @@
 
 class CVideo;
 
-namespace gui2 {
+namespace gui2
+{
 
 class twindow;
 
@@ -66,9 +67,9 @@ public:
 	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 */
-	void show(CVideo& video
-			, const bool allow_interaction = false
-			, const unsigned auto_close_time = 0);
+	void show(CVideo& video,
+			  const bool allow_interaction = false,
+			  const unsigned auto_close_time = 0);
 
 
 	/**
@@ -80,7 +81,6 @@ public:
 	void hide();
 
 private:
-
 	/** The window, used in show. */
 	twindow* window_;
 
@@ -121,4 +121,3 @@ private:
 } // namespace gui2
 
 #endif
-

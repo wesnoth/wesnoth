@@ -19,10 +19,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-thorizontal_scrollbar_definition::
-		thorizontal_scrollbar_definition(const config& cfg)
+thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
+		const config& cfg)
 	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
@@ -85,11 +86,9 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 	, left_offset(cfg["left_offset"])
 	, right_offset(cfg["right_offset"])
 {
-	VALIDATE(
-			  minimum_positioner_length
-			, missing_mandatory_wml_key(
-				  "resolution"
-				, "minimum_positioner_length"));
+	VALIDATE(minimum_positioner_length,
+			 missing_mandatory_wml_key("resolution",
+									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is scrollbar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -99,4 +98,3 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

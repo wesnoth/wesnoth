@@ -28,7 +28,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(progress_bar)
 
@@ -54,7 +55,8 @@ void tprogress_bar::set_percentage(unsigned percentage)
 	if(percentage_ != percentage) {
 		percentage_ = percentage;
 
-		FOREACH(AUTO& c, canvas()) {
+		FOREACH(AUTO & c, canvas())
+		{
 			c.set_variable("percentage", variant(percentage));
 		}
 
@@ -74,4 +76,3 @@ const std::string& tprogress_bar::get_control_type() const
 }
 
 } // namespace gui2
-

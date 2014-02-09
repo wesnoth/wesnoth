@@ -47,7 +47,8 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -124,9 +125,7 @@ static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 	return true;
 }
 
-ttitle_screen::ttitle_screen()
-	: logo_timer_id_(0)
-	, debug_clock_(NULL)
+ttitle_screen::ttitle_screen() : logo_timer_id_(0), debug_clock_(NULL)
 {
 }
 
@@ -138,11 +137,10 @@ ttitle_screen::~ttitle_screen()
 	delete debug_clock_;
 }
 
-static void animate_logo(
-		  size_t& timer_id
-		, unsigned& percentage
-		, tprogress_bar& progress_bar
-		, twindow& window)
+static void animate_logo(size_t& timer_id,
+						 unsigned& percentage,
+						 tprogress_bar& progress_bar,
+						 twindow& window)
 {
 	assert(percentage <= 100);
 	++percentage;
@@ -164,7 +162,7 @@ static void animate_logo(
 
 static bool fullscreen(CVideo& video)
 {
-	preferences::set_fullscreen(video , !preferences::fullscreen());
+	preferences::set_fullscreen(video, !preferences::fullscreen());
 
 	// Setting to fullscreen doesn't seem to generate a resize event.
 	const SDL_Rect& rect = screen_area();
@@ -183,109 +181,75 @@ static bool fullscreen(CVideo& video)
 void ttitle_screen::post_build(CVideo& video, twindow& window)
 {
 	/** @todo Should become a title screen hotkey. */
-	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, RELOAD_GAME_DATA));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__RELOAD_WML,
+			boost::bind(&hotkey, boost::ref(window), RELOAD_GAME_DATA));
 
-	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
-			, boost::bind(fullscreen, boost::ref(video)));
+	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN,
+						   boost::bind(fullscreen, boost::ref(video)));
 
-	window.register_hotkey(hotkey::HOTKEY_LANGUAGE
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, CHANGE_LANGUAGE));
+	window.register_hotkey(
+			hotkey::HOTKEY_LANGUAGE,
+			boost::bind(&hotkey, boost::ref(window), CHANGE_LANGUAGE));
 
-	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, LOAD_GAME));
+	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME,
+						   boost::bind(&hotkey, boost::ref(window), LOAD_GAME));
 
-	window.register_hotkey(hotkey::HOTKEY_HELP
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, SHOW_HELP));
+	window.register_hotkey(hotkey::HOTKEY_HELP,
+						   boost::bind(&hotkey, boost::ref(window), SHOW_HELP));
 
-	window.register_hotkey(hotkey::HOTKEY_PREFERENCES
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, EDIT_PREFERENCES));
+	window.register_hotkey(
+			hotkey::HOTKEY_PREFERENCES,
+			boost::bind(&hotkey, boost::ref(window), EDIT_PREFERENCES));
 
 	static const boost::function<void()> next_tip_wrapper = boost::bind(
-			  &ttitle_screen::update_tip
-			, this
-			, boost::ref(window)
-			, true);
+			&ttitle_screen::update_tip, this, boost::ref(window), true);
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__NEXT_TIP
-			, boost::bind(function_wrapper<bool, boost::function<void()> >
-				, true
-				, boost::cref(next_tip_wrapper)));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__NEXT_TIP,
+			boost::bind(function_wrapper<bool, boost::function<void()> >,
+						true,
+						boost::cref(next_tip_wrapper)));
 
 	static const boost::function<void()> previous_tip_wrapper = boost::bind(
-			  &ttitle_screen::update_tip
-			, this
-			, boost::ref(window)
-			, false);
+			&ttitle_screen::update_tip, this, boost::ref(window), false);
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__PREVIOUS_TIP
-			, boost::bind(function_wrapper<bool, boost::function<void()> >
-				, true
-				, boost::cref(previous_tip_wrapper)));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__PREVIOUS_TIP,
+			boost::bind(function_wrapper<bool, boost::function<void()> >,
+						true,
+						boost::cref(previous_tip_wrapper)));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, TUTORIAL));
+	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL,
+						   boost::bind(&hotkey, boost::ref(window), TUTORIAL));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__CAMPAIGN
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, NEW_CAMPAIGN));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__CAMPAIGN,
+			boost::bind(&hotkey, boost::ref(window), NEW_CAMPAIGN));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__MULTIPLAYER
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, MULTIPLAYER));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__MULTIPLAYER,
+			boost::bind(&hotkey, boost::ref(window), MULTIPLAYER));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__ADDONS
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, GET_ADDONS));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__ADDONS,
+			boost::bind(&hotkey, boost::ref(window), GET_ADDONS));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__EDITOR
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, START_MAP_EDITOR));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__EDITOR,
+			boost::bind(&hotkey, boost::ref(window), START_MAP_EDITOR));
 
-	window.register_hotkey(hotkey::TITLE_SCREEN__CREDITS
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, SHOW_ABOUT));
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__CREDITS,
+			boost::bind(&hotkey, boost::ref(window), SHOW_ABOUT));
 
-	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME
-				, boost::bind(
-					  &hotkey
-					, boost::ref(window)
-					, QUIT_GAME));
+	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME,
+						   boost::bind(&hotkey, boost::ref(window), QUIT_GAME));
 }
 
 #ifdef DEBUG_TOOLTIP
-static void debug_tooltip(
-		  twindow& window
-		, bool& handled
-		, const tpoint& coordinate)
+static void
+debug_tooltip(twindow& window, bool& handled, const tpoint& coordinate)
 {
 	std::string message = "Hello world.";
 	/*
@@ -304,10 +268,7 @@ static void debug_tooltip(
 		message += " More greetings.";
 	}
 	gui2::tip::remove();
-	gui2::tip::show(window.video()
-			, "tooltip"
-			, message
-			, coordinate);
+	gui2::tip::show(window.video(), "tooltip", message, coordinate);
 	handled = true;
 }
 #endif
@@ -321,18 +282,19 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 #ifdef DEBUG_TOOLTIP
 	window.connect_signal<event::SDL_MOUSE_MOTION>(
-			  boost::bind(debug_tooltip, boost::ref(window), _3, _5)
-			, event::tdispatcher::front_child);
+			boost::bind(debug_tooltip, boost::ref(window), _3, _5),
+			event::tdispatcher::front_child);
 #endif
 
 	/**** Set the version number ****/
 	if(tcontrol* control
-			= find_widget<tcontrol>(&window, "revision_number", false, false)) {
+	   = find_widget<tcontrol>(&window, "revision_number", false, false)) {
 
 		control->set_label(_("Version ") + game_config::revision);
 	}
-	window.canvas()[0].set_variable("revision_number",
-		variant(_("Version") + std::string(" ") + game_config::revision));
+	window.canvas()[0].set_variable(
+			"revision_number",
+			variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/**** Set the tip of the day ****/
 	tmulti_page& tip_pages = find_widget<tmulti_page>(&window, "tips", false);
@@ -342,7 +304,8 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		WRN_CF << "There are not tips of day available.\n";
 	}
 
-	FOREACH(const AUTO& tip, tips) {
+	FOREACH(const AUTO & tip, tips)
+	{
 
 		string_map widget;
 		std::map<std::string, string_map> page;
@@ -361,38 +324,37 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	update_tip(window, true);
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "next_tip", false)
-			, boost::bind(
-				  &ttitle_screen::update_tip
-				, this
-				, boost::ref(window)
-				, true));
+			find_widget<tbutton>(&window, "next_tip", false),
+			boost::bind(&ttitle_screen::update_tip,
+						this,
+						boost::ref(window),
+						true));
 
 	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "previous_tip", false)
-			, boost::bind(
-				  &ttitle_screen::update_tip
-				, this
-				, boost::ref(window)
-				, false));
+			find_widget<tbutton>(&window, "previous_tip", false),
+			boost::bind(&ttitle_screen::update_tip,
+						this,
+						boost::ref(window),
+						false));
 
 	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined\n";
 	} else {
-        window.canvas()[0].set_variable("title_image",
-			variant(game_config::images::game_title));
+		window.canvas()[0].set_variable(
+				"title_image", variant(game_config::images::game_title));
 	}
 
-    if(game_config::images::game_title_background.empty()) {
-        ERR_CF << "No title background image defined\n";
-    } else {
-        window.canvas()[0].set_variable("background_image",
-            variant(game_config::images::game_title_background));
-    }
+	if(game_config::images::game_title_background.empty()) {
+		ERR_CF << "No title background image defined\n";
+	} else {
+		window.canvas()[0].set_variable(
+				"background_image",
+				variant(game_config::images::game_title_background));
+	}
 
 	/***** Set the logo *****/
-	tprogress_bar* logo =
-			find_widget<tprogress_bar>(&window, "logo", false, false);
+	tprogress_bar* logo
+			= find_widget<tprogress_bar>(&window, "logo", false, false);
 	if(logo) {
 		/*
 		 * A 'singleton' value, since the progress bar only needs to progress
@@ -406,28 +368,26 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 			 * The interval is empirically determined  so that the speed "felt"
 			 * good.
 			 */
-			logo_timer_id_ = add_timer(30
-					, boost::bind(animate_logo
-						, boost::ref(logo_timer_id_)
-						, boost::ref(percentage)
-						, boost::ref(*logo)
-						, boost::ref(window))
-					, true);
+			logo_timer_id_ = add_timer(30,
+									   boost::bind(animate_logo,
+												   boost::ref(logo_timer_id_),
+												   boost::ref(percentage),
+												   boost::ref(*logo),
+												   boost::ref(window)),
+									   true);
 		}
 	}
 
 	/***** Set the clock button. *****/
 	tbutton& clock = find_widget<tbutton>(&window, "clock", false);
-	clock.set_visible(show_debug_clock_button
-			? twidget::tvisible::visible
-			: twidget::tvisible::invisible);
+	clock.set_visible(show_debug_clock_button ? twidget::tvisible::visible
+											  : twidget::tvisible::invisible);
 
 	connect_signal_mouse_left_click(
-			  clock
-			, boost::bind(
-				  &ttitle_screen::show_debug_clock_window
-				, this
-				, boost::ref(video)));
+			clock,
+			boost::bind(&ttitle_screen::show_debug_clock_window,
+						this,
+						boost::ref(video)));
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)
@@ -467,4 +427,3 @@ void ttitle_screen::show_debug_clock_window(CVideo& video)
 }
 
 } // namespace gui2
-

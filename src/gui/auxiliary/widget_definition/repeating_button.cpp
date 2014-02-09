@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 trepeating_button_definition::trepeating_button_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -68,4 +69,3 @@ trepeating_button_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

@@ -23,18 +23,19 @@
 
 typedef std::map<std::string, t_string> string_map;
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_multi_page
-	: public tbuilder_control
+struct tbuilder_multi_page : public tbuilder_control
 {
 	explicit tbuilder_multi_page(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 	tbuilder_grid_ptr builder;
 
@@ -52,4 +53,3 @@ struct tbuilder_multi_page
 } // namespace gui2
 
 #endif
-

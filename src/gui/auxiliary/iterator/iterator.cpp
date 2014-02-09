@@ -16,9 +16,11 @@
 
 #include "gui/auxiliary/iterator/iterator.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
 
 } // namespace iterator
@@ -184,4 +186,3 @@ for(titerator<policy> itor(root); !itor.at_end(); ++itor) {
  *
  * [GoF] http://en.wikipedia.org/wiki/Design_Patterns_%28book%29
  */
-

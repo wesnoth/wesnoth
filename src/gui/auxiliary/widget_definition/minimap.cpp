@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tminimap_definition::tminimap_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -55,4 +56,3 @@ tminimap_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

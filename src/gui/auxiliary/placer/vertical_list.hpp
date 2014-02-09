@@ -24,20 +24,20 @@
 
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 /**
  * The placement class for a vertical list.
  *
  * See @ref tplacer_ for more information.
  */
-class tplacer_vertical_list
-	: public tplacer_
+class tplacer_vertical_list : public tplacer_
 {
 public:
-
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
 	explicit tplacer_vertical_list(const unsigned maximum_columns);
@@ -57,7 +57,6 @@ public:
 	/***** ***** Members. ***** *****/
 
 private:
-
 	/**
 	 * The maximum number of columns to use.
 	 *

@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tpanel_definition::tpanel_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -79,4 +80,3 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

@@ -18,16 +18,15 @@
 #include "gui/auxiliary/widget_definition.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct tmatrix_definition
-	: public tcontrol_definition
+struct tmatrix_definition : public tcontrol_definition
 {
 
 	explicit tmatrix_definition(const config& cfg);
 
-	struct tresolution
-		: public tresolution_definition_
+	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
 
@@ -38,4 +37,3 @@ struct tmatrix_definition
 } // namespace gui2
 
 #endif
-

@@ -23,7 +23,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(scrollbar_panel)
 
@@ -39,8 +40,8 @@ unsigned tscrollbar_panel::get_state() const
 
 const std::string& tscrollbar_panel::get_control_type() const
 {
-    static const std::string type = "scrollbar_panel";
-    return type;
+	static const std::string type = "scrollbar_panel";
+	return type;
 }
 
 void tscrollbar_panel::set_self_active(const bool /*active*/)
@@ -49,4 +50,3 @@ void tscrollbar_panel::set_self_active(const bool /*active*/)
 }
 
 } // namespace gui2
-

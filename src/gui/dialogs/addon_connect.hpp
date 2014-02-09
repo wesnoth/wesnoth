@@ -19,11 +19,11 @@
 
 class display;
 
-namespace gui2 {
+namespace gui2
+{
 
 /** Addon connect dialog. */
-class taddon_connect
-	: public tdialog
+class taddon_connect : public tdialog
 {
 public:
 	/**
@@ -38,12 +38,11 @@ public:
 	 * @param disp                The display object used for showing the
 	 *                            in-game help when requested.
 	 */
-	taddon_connect(std::string& host_name
-			, const bool allow_remove
-			, display* disp = NULL);
+	taddon_connect(std::string& host_name,
+				   const bool allow_remove,
+				   display* disp = NULL);
 
 private:
-
 	/** Enable the addon remove button? */
 	bool allow_remove_;
 

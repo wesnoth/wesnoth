@@ -19,7 +19,8 @@
 //#include "gui/dialogs/field.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -46,4 +47,3 @@ tmp_create_game_set_password::tmp_create_game_set_password(
 }
 
 } // namespace gui2
-

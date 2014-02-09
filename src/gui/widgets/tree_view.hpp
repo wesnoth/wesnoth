@@ -18,34 +18,38 @@
 #include "gui/widgets/scrollbar_container.hpp"
 #include "gui/auxiliary/window_builder/tree_view.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class ttree_view_node;
 
-class ttree_view
-		: public tscrollbar_container
+class ttree_view : public tscrollbar_container
 {
 	friend struct implementation::tbuilder_tree_view;
 	friend class ttree_view_node;
-public:
 
+public:
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
 
 	explicit ttree_view(const std::vector<tnode_definition>& node_definitions);
 
 	using tscrollbar_container::finalize_setup;
 
-	ttree_view_node& get_root_node() { return *root_node_; }
+	ttree_view_node& get_root_node()
+	{
+		return *root_node_;
+	}
 
-	ttree_view_node& add_node(const std::string& id
-			, const std::map<std::string /* widget id */, string_map>& data);
+	ttree_view_node&
+	add_node(const std::string& id,
+			 const std::map<std::string /* widget id */, string_map>& data);
 
 	void remove_node(ttree_view_node* tree_view_node);
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref tcontainer_::set_self_active. */
 	virtual void set_self_active(const bool active) OVERRIDE;
@@ -62,9 +66,15 @@ public:
 		indention_step_size_ = indention_step_size;
 	}
 
-	ttree_view_node* selected_item() { return selected_item_; }
+	ttree_view_node* selected_item()
+	{
+		return selected_item_;
+	}
 
-	const ttree_view_node* selected_item() const { return selected_item_; }
+	const ttree_view_node* selected_item() const
+	{
+		return selected_item_;
+	}
 
 	void set_selection_change_callback(boost::function<void()> callback)
 	{
@@ -72,8 +82,7 @@ public:
 	}
 
 protected:
-
-	/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
+/***** ***** ***** ***** keyboard functions ***** ***** ***** *****/
 #if 0
 	/** Inherited from tscrollbar_container. */
 	void handle_key_up_arrow(SDLMod modifier, bool& handled);
@@ -88,7 +97,6 @@ protected:
 	void handle_key_right_arrow(SDLMod modifier, bool& handled);
 #endif
 private:
-
 	/**
 	 * @todo evaluate which way the dependancy should go.
 	 *
@@ -105,7 +113,7 @@ private:
 
 	ttree_view_node* selected_item_;
 
-	boost::function<void ()> selection_change_callback_;
+	boost::function<void()> selection_change_callback_;
 
 	/**
 	 * Resizes the content.
@@ -122,9 +130,8 @@ private:
 	 *                            * zero leave height as is.
 	 *                            * positive values increase height.
 	 */
-	void resize_content(
-			  const int width_modification
-			, const int height_modification);
+	void resize_content(const int width_modification,
+						const int height_modification);
 
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
@@ -143,4 +150,3 @@ private:
 } // namespace gui2
 
 #endif
-

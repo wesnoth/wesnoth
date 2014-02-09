@@ -18,12 +18,13 @@
 #include "gui/auxiliary/placer.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_pane
-	: public tbuilder_widget
+struct tbuilder_pane : public tbuilder_widget
 {
 	explicit tbuilder_pane(const config& cfg);
 

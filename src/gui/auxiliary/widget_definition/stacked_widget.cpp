@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -51,18 +52,16 @@ tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  */
 tstacked_widget_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
+	: tresolution_definition_(cfg), grid(NULL)
 {
 	// Add a dummy state since every widget needs a state.
-	static config dummy ("draw");
+	static config dummy("draw");
 	state.push_back(tstate_definition(dummy));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

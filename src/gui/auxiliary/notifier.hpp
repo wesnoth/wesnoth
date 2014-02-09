@@ -21,7 +21,8 @@
 #include <cassert>
 #include <map>
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper class to implement callbacks with lifetime management.
@@ -30,21 +31,20 @@ namespace gui2 {
  *
  * Subclasses should implement a way to call all callback.
  */
-template<class FUNCTOR>
+template <class FUNCTOR>
 class tnotifier
 {
 public:
-
 	typedef FUNCTOR tfunctor;
 
-	tnotifier()
-		: notifiees_()
+	tnotifier() : notifiees_()
 	{
 	}
 
 	~tnotifier()
 	{
-		FOREACH(AUTO& item, notifiees_) {
+		FOREACH(AUTO & item, notifiees_)
+		{
 			assert(item.first);
 			assert((*item.first).notifier_ == this);
 
@@ -59,9 +59,7 @@ public:
 	 *                               the callback.
 	 * @param functor                The callback to call.
 	 */
-	void connect_notifiee(
-			  tnotifiee<tfunctor>& notifiee
-			, tfunctor functor)
+	void connect_notifiee(tnotifiee<tfunctor>& notifiee, tfunctor functor)
 	{
 		notifiees_.insert(std::make_pair(&notifiee, functor));
 
@@ -79,8 +77,8 @@ public:
 	 */
 	void disconnect_notifiee(tnotifiee<tfunctor>& notifiee)
 	{
-		typename std::map<tnotifiee<tfunctor>*, tfunctor>::iterator
-				itor = notifiees_.find(&notifiee);
+		typename std::map<tnotifiee<tfunctor>*, tfunctor>::iterator itor
+				= notifiees_.find(&notifiee);
 
 		if(itor != notifiees_.end()) {
 
@@ -100,14 +98,10 @@ public:
 	}
 
 private:
-
 	/** List of registered callbacks. */
 	std::map<tnotifiee<tfunctor>*, tfunctor> notifiees_;
-
 };
 
-} //namespace gui2
+} // namespace gui2
 
 #endif
-
-

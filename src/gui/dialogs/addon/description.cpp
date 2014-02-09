@@ -32,44 +32,47 @@
 
 #include <boost/bind.hpp>
 
-namespace {
-	std::string format_addon_time(time_t time)
-	{
-		if(time) {
-			char buf[1024] = { 0 };
-			struct std::tm * const t = std::localtime(&time);
+namespace
+{
+std::string format_addon_time(time_t time)
+{
+	if(time) {
+		char buf[1024] = { 0 };
+		struct std::tm* const t = std::localtime(&time);
 
-			const char* format = preferences::use_twelve_hour_clock_format()
-				? "%Y-%m-%d %I:%M %p"
-				: "%Y-%m-%d %H:%M";
+		const char* format = preferences::use_twelve_hour_clock_format()
+									 ? "%Y-%m-%d %I:%M %p"
+									 : "%Y-%m-%d %H:%M";
 
-			if(util::strftime(buf, sizeof(buf), format, t)) {
-				return buf;
-			}
+		if(util::strftime(buf, sizeof(buf), format, t)) {
+			return buf;
 		}
-
-		return utils::unicode_em_dash;
 	}
 
-	std::string langcode_to_string(const std::string& lcode)
-	{
-		FOREACH(const AUTO& ld, get_languages()) {
-			if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
-				return ld.language;
-			}
-		}
+	return utils::unicode_em_dash;
+}
 
-		return "";
+std::string langcode_to_string(const std::string& lcode)
+{
+	FOREACH(const AUTO & ld, get_languages())
+	{
+		if(ld.localename == lcode || ld.localename.substr(0, 2) == lcode) {
+			return ld.language;
+		}
 	}
 
-	std::string colorify_addon_state_string(const std::string& str, const addon_tracking_info& state)
-	{
-		std::string colorname = "";
+	return "";
+}
 
-		// NOTE: these Pango color names must match the colors used
-		// in describe_addon_status() for GUI1.
+std::string colorify_addon_state_string(const std::string& str,
+										const addon_tracking_info& state)
+{
+	std::string colorname = "";
 
-		switch(state.state) {
+	// NOTE: these Pango color names must match the colors used
+	// in describe_addon_status() for GUI1.
+
+	switch(state.state) {
 		case ADDON_NONE:
 			return str;
 		case ADDON_INSTALLED:
@@ -88,19 +91,19 @@ namespace {
 		default:
 			colorname = "#777777"; // GRAY_COLOR
 			break;
-		}
-
-		return "<span color='" + colorname + "'>" + str + "</span>";
 	}
 
-	std::string describe_addon_state_info(const addon_tracking_info& state)
-	{
-		std::string s;
+	return "<span color='" + colorname + "'>" + str + "</span>";
+}
 
-		utils::string_map i18n_symbols;
-		i18n_symbols["local_version"] = state.installed_version.str();
+std::string describe_addon_state_info(const addon_tracking_info& state)
+{
+	std::string s;
 
-		switch(state.state) {
+	utils::string_map i18n_symbols;
+	i18n_symbols["local_version"] = state.installed_version.str();
+
+	switch(state.state) {
 		case ADDON_NONE:
 			if(!state.can_publish) {
 				s = _("addon_state^Not installed");
@@ -124,22 +127,24 @@ namespace {
 				s = _("addon_state^Published, not tracking local version");
 			}
 			break;
-		case ADDON_INSTALLED_UPGRADABLE:
-			{
-				const char* const vstr = !state.can_publish
-					? _("addon_state^Installed ($local_version|), upgradable")
-					: _("addon_state^Published ($local_version| installed), upgradable");
-				s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
-			}
-			break;
-		case ADDON_INSTALLED_OUTDATED:
-			{
-				const char* const vstr = !state.can_publish
-					? _("addon_state^Installed ($local_version|), outdated on server")
-					: _("addon_state^Published ($local_version| installed), outdated on server");
-				s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
-			}
-			break;
+		case ADDON_INSTALLED_UPGRADABLE: {
+			const char* const vstr
+					= !state.can_publish
+							  ? _("addon_state^Installed ($local_version|), "
+								  "upgradable")
+							  : _("addon_state^Published ($local_version| "
+								  "installed), upgradable");
+			s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
+		} break;
+		case ADDON_INSTALLED_OUTDATED: {
+			const char* const vstr
+					= !state.can_publish
+							  ? _("addon_state^Installed ($local_version|), "
+								  "outdated on server")
+							  : _("addon_state^Published ($local_version| "
+								  "installed), outdated on server");
+			s = utils::interpolate_variables_into_string(vstr, &i18n_symbols);
+		} break;
 		case ADDON_INSTALLED_BROKEN:
 			if(!state.can_publish) {
 				s = _("addon_state^Installed, broken");
@@ -149,69 +154,76 @@ namespace {
 			break;
 		default:
 			s = _("addon_state^Unknown");
-		}
-
-		return colorify_addon_state_string(s, state);
 	}
 
-	/**
-	 * Retrieves an element from the given associative container or dies in some way.
-	 *
-	 * It fails an @a assert() check or throws an exception if the requested element
-	 * does not exist.
-	 *
-	 * @return An element from the container that is guranteed to have existed before
-	 *         running this function.
-	 */
-	template<typename MapT>
-	typename MapT::mapped_type const& const_at(typename MapT::key_type const& key, MapT const& map)
-	{
-		typename MapT::const_iterator it = map.find(key);
-		if(it == map.end()) {
-			assert(it != map.end());
-			throw std::out_of_range("const_at()"); // Shouldn't get here without disabling assert()
-		}
-		return it->second;
-	}
-
-	std::string make_display_dependencies(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states)
-	{
-		const addon_info& addon = const_at(addon_id, addons_list);
-		std::string str;
-
-		const std::set<std::string>& deps = addon.resolve_dependencies(addons_list);
-
-		FOREACH(const AUTO& dep_id, deps) {
-			addon_info dep;
-			addon_tracking_info depstate;
-
-			addons_list::const_iterator ali = addons_list.find(dep_id);
-			addons_tracking_list::const_iterator tli = addon_states.find(dep_id);
-
-			if(ali == addons_list.end()) {
-				dep.id = dep_id; // Build dummy addon_info.
-			} else {
-				dep = ali->second;
-			}
-
-			if(tli == addon_states.end()) {
-				depstate = get_addon_tracking_info(dep);
-			} else {
-				depstate = tli->second;
-			}
-
-			if(!str.empty()) {
-				str += ", ";
-			}
-
-			str += colorify_addon_state_string(dep.display_title(), depstate);
-		}
-
-		return str;
-	}
+	return colorify_addon_state_string(s, state);
 }
 
-namespace gui2 {
+/**
+ * Retrieves an element from the given associative container or dies in some
+ * way.
+ *
+ * It fails an @a assert() check or throws an exception if the requested element
+ * does not exist.
+ *
+ * @return An element from the container that is guranteed to have existed
+ *         before running this function.
+ */
+template <typename MapT>
+typename MapT::mapped_type const& const_at(typename MapT::key_type const& key,
+										   MapT const& map)
+{
+	typename MapT::const_iterator it = map.find(key);
+	if(it == map.end()) {
+		assert(it != map.end());
+		throw std::out_of_range(
+				"const_at()"); // Shouldn't get here without disabling assert()
+	}
+	return it->second;
+}
+
+std::string make_display_dependencies(const std::string& addon_id,
+									  const addons_list& addons_list,
+									  const addons_tracking_list& addon_states)
+{
+	const addon_info& addon = const_at(addon_id, addons_list);
+	std::string str;
+
+	const std::set<std::string>& deps = addon.resolve_dependencies(addons_list);
+
+	FOREACH(const AUTO & dep_id, deps)
+	{
+		addon_info dep;
+		addon_tracking_info depstate;
+
+		addons_list::const_iterator ali = addons_list.find(dep_id);
+		addons_tracking_list::const_iterator tli = addon_states.find(dep_id);
+
+		if(ali == addons_list.end()) {
+			dep.id = dep_id; // Build dummy addon_info.
+		} else {
+			dep = ali->second;
+		}
+
+		if(tli == addon_states.end()) {
+			depstate = get_addon_tracking_info(dep);
+		} else {
+			depstate = tli->second;
+		}
+
+		if(!str.empty()) {
+			str += ", ";
+		}
+
+		str += colorify_addon_state_string(dep.display_title(), depstate);
+	}
+
+	return str;
+}
+}
+
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -290,7 +302,9 @@ namespace gui2 {
 
 REGISTER_DIALOG(addon_description)
 
-taddon_description::taddon_description(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states)
+taddon_description::taddon_description(const std::string& addon_id,
+									   const addons_list& addons_list,
+									   const addons_tracking_list& addon_states)
 	: feedback_url_()
 {
 	const addon_info& addon = const_at(addon_id, addons_list);
@@ -313,14 +327,19 @@ taddon_description::taddon_description(const std::string& addon_id, const addons
 		register_label("description", true, addon.description);
 	}
 	if(!addon.depends.empty()) {
-		register_label("dependencies", true, make_display_dependencies(addon_id, addons_list, addon_states), true);
+		register_label(
+				"dependencies",
+				true,
+				make_display_dependencies(addon_id, addons_list, addon_states),
+				true);
 	}
 
 	feedback_url_ = addon.feedback_url;
 
 	std::string languages;
 
-	FOREACH(const AUTO& lc, addon.locales) {
+	FOREACH(const AUTO & lc, addon.locales)
+	{
 		const std::string& langlabel = langcode_to_string(lc);
 		if(!langlabel.empty()) {
 			if(!languages.empty()) {
@@ -349,14 +368,10 @@ void taddon_description::copy_url_callback()
 
 void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 {
-	tcontrol& url_none =
-		find_widget<tcontrol>(&window, "url_none", false);
-	tbutton& url_go_button =
-		find_widget<tbutton>(&window, "url_go", false);
-	tbutton& url_copy_button =
-		find_widget<tbutton>(&window, "url_copy", false);
-	ttext_box& url_textbox =
-		find_widget<ttext_box>(&window, "url", false);
+	tcontrol& url_none = find_widget<tcontrol>(&window, "url_none", false);
+	tbutton& url_go_button = find_widget<tbutton>(&window, "url_go", false);
+	tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
+	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
 
 	url_textbox.set_value(feedback_url_);
 	url_textbox.set_active(false);
@@ -364,10 +379,12 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 	if(!feedback_url_.empty()) {
 		url_none.set_visible(tcontrol::tvisible::invisible);
 
-		connect_signal_mouse_left_click(url_go_button,
-			boost::bind(&taddon_description::browse_url_callback, this));
-		connect_signal_mouse_left_click(url_copy_button,
-			boost::bind(&taddon_description::copy_url_callback, this));
+		connect_signal_mouse_left_click(
+				url_go_button,
+				boost::bind(&taddon_description::browse_url_callback, this));
+		connect_signal_mouse_left_click(
+				url_copy_button,
+				boost::bind(&taddon_description::copy_url_callback, this));
 	} else {
 		url_go_button.set_active(false);
 		url_copy_button.set_active(false);
@@ -379,4 +396,3 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 }
 
 } // namespace  gui2
-

@@ -17,18 +17,19 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_toggle_button
-	: public tbuilder_control
+struct tbuilder_toggle_button : public tbuilder_control
 {
 	explicit tbuilder_toggle_button(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 private:
 	std::string icon_name_;
@@ -41,4 +42,3 @@ private:
 } // namespace gui2
 
 #endif
-

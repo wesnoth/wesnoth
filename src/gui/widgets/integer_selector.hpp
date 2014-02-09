@@ -15,7 +15,8 @@
 #ifndef GUI_WIDGETS_INTEGER_SELECTOR_HPP_INCLUDED
 #define GUI_WIDGETS_INTEGER_SELECTOR_HPP_INCLUDED
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Small abstract helper class.
@@ -26,7 +27,9 @@ namespace gui2 {
 class tinteger_selector_
 {
 public:
-	virtual ~tinteger_selector_() {}
+	virtual ~tinteger_selector_()
+	{
+	}
 
 	/** Sets the selected value. */
 	virtual void set_value(const int value) = 0;

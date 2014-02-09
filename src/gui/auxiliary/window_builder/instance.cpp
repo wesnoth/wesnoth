@@ -18,13 +18,14 @@
 
 #include "gui/auxiliary/window_builder/spacer.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_instance::tbuilder_instance(const config& cfg)
-	: tbuilder_widget(cfg)
-	, configuration(cfg)
+	: tbuilder_widget(cfg), configuration(cfg)
 {
 }
 

@@ -18,7 +18,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -43,5 +44,4 @@ tfolder_create::tfolder_create(std::string& folder_name)
 {
 	register_text("name", true, folder_name, true);
 }
-
 }

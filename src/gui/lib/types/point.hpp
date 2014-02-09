@@ -17,15 +17,15 @@
 
 #include <iosfwd>
 
-namespace gui2 {
+namespace gui2
+{
 
 /** Holds a 2D point. */
 struct tpoint
 {
-	tpoint(const int x_, const int y_) :
-		x(x_),
-		y(y_)
-		{}
+	tpoint(const int x_, const int y_) : x(x_), y(y_)
+	{
+	}
 
 	/** x coordinate. */
 	int x;
@@ -33,26 +33,40 @@ struct tpoint
 	/** y coordinate. */
 	int y;
 
-	bool operator==(const tpoint& point) const { return x == point.x && y == point.y; }
-	bool operator!=(const tpoint& point) const { return x != point.x || y != point.y; }
+	bool operator==(const tpoint& point) const
+	{
+		return x == point.x && y == point.y;
+	}
+	bool operator!=(const tpoint& point) const
+	{
+		return x != point.x || y != point.y;
+	}
 	bool operator<(const tpoint& point) const
-		{ return x < point.x || (x == point.x && y < point.y); }
+	{
+		return x < point.x || (x == point.x && y < point.y);
+	}
 
 	bool operator<=(const tpoint& point) const
-		{ return x < point.x || (x == point.x && y <= point.y); }
+	{
+		return x < point.x || (x == point.x && y <= point.y);
+	}
 
 	tpoint operator+(const tpoint& point) const
-		{ return tpoint(x + point.x, y + point.y); }
+	{
+		return tpoint(x + point.x, y + point.y);
+	}
 
 	tpoint& operator+=(const tpoint& point);
 
 	tpoint operator-(const tpoint& point) const
-		{ return tpoint(x - point.x, y - point.y); }
+	{
+		return tpoint(x - point.x, y - point.y);
+	}
 
 	tpoint& operator-=(const tpoint& point);
 };
 
-std::ostream &operator<<(std::ostream &stream, const tpoint& point);
+std::ostream& operator<<(std::ostream& stream, const tpoint& point);
 
 
 } // namespace gui2

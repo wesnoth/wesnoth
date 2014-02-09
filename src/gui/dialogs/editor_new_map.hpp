@@ -17,12 +17,12 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class teditor_new_map : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -46,7 +46,6 @@ public:
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -54,4 +53,3 @@ private:
 } // namespace gui2
 
 #endif
-

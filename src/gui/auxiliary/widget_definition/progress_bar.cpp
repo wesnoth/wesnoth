@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -58,4 +59,3 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

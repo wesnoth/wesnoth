@@ -17,18 +17,19 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_image
-	: public tbuilder_control
+struct tbuilder_image : public tbuilder_control
 {
 	explicit tbuilder_image(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 };
 
 } // namespace implementation
@@ -36,4 +37,3 @@ struct tbuilder_image
 } // namespace gui2
 
 #endif
-

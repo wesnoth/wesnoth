@@ -17,15 +17,14 @@
 
 #include "gui/auxiliary/widget_definition.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct thorizontal_scrollbar_definition
-	: public tcontrol_definition
+struct thorizontal_scrollbar_definition : public tcontrol_definition
 {
 	explicit thorizontal_scrollbar_definition(const config& cfg);
 
-	struct tresolution
-		: public tresolution_definition_
+	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
 
@@ -40,4 +39,3 @@ struct thorizontal_scrollbar_definition
 } // namespace gui2
 
 #endif
-

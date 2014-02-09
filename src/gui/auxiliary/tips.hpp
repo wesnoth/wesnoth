@@ -21,11 +21,13 @@
 
 class config;
 
-namespace gui2 {
+namespace gui2
+{
 
 class ttip;
 
-namespace tips {
+namespace tips
+{
 
 /**
  * Loads the tips from a config.
@@ -53,16 +55,21 @@ std::vector<ttip> shuffle(const std::vector<ttip>& tips);
 class ttip
 {
 public:
-
-	const t_string& text() const { return text_; }
-	const t_string& source() const { return source_; }
+	const t_string& text() const
+	{
+		return text_;
+	}
+	const t_string& source() const
+	{
+		return source_;
+	}
 
 private:
 	friend std::vector<ttip> tips::load(const config&);
 	friend std::vector<ttip> tips::shuffle(const std::vector<ttip>& tips);
-	ttip(const t_string& text
-			, const t_string& source
-			, const std::string& unit_filter);
+	ttip(const t_string& text,
+		 const t_string& source,
+		 const std::string& unit_filter);
 
 	/** The text of the tip. */
 	t_string text_;
@@ -83,4 +90,3 @@ private:
 } // namespace gui2
 
 #endif
-

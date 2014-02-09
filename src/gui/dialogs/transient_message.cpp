@@ -20,49 +20,43 @@
 #include "gui/widgets/settings.hpp"
 #include "log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_DIALOG(transient_message)
 
-ttransient_message::ttransient_message(const std::string& title
-		, const bool title_use_markup
-		, const std::string& message
-		, const bool message_use_markup
-		, const std::string& image)
+ttransient_message::ttransient_message(const std::string& title,
+									   const bool title_use_markup,
+									   const std::string& message,
+									   const bool message_use_markup,
+									   const std::string& image)
 {
 	register_label("title", true, title, title_use_markup);
 	register_label("message", true, message, message_use_markup);
 	register_image("image", true, image);
 }
 
-void show_transient_message(CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& image
-		, const bool message_use_markup
-		, const bool title_use_markup)
+void show_transient_message(CVideo& video,
+							const std::string& title,
+							const std::string& message,
+							const std::string& image,
+							const bool message_use_markup,
+							const bool title_use_markup)
 {
-	ttransient_message dlg(title
-			, title_use_markup
-			, message
-			, message_use_markup
-			, image);
+	ttransient_message dlg(
+			title, title_use_markup, message, message_use_markup, image);
 
 	dlg.show(video);
 }
 
-void show_transient_error_message(CVideo& video
-		, const std::string& message
-		, const std::string& image
-		, const bool message_use_markup)
+void show_transient_error_message(CVideo& video,
+								  const std::string& message,
+								  const std::string& image,
+								  const bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general) << message << '\n';
-	show_transient_message(video
-			, _("Error")
-			, message
-			, image
-			, message_use_markup);
+	show_transient_message(
+			video, _("Error"), message, image, message_use_markup);
 }
 
 } // namespace gui2
-

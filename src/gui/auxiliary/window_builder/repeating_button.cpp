@@ -20,9 +20,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/repeating_button.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_repeating_button::tbuilder_repeating_button(const config& cfg)
 	: tbuilder_control(cfg)
@@ -35,9 +37,8 @@ twidget* tbuilder_repeating_button::build() const
 
 	init_control(widget);
 
-	DBG_GUI_G << "Window builder: placed repeating button '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed repeating button '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }

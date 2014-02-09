@@ -19,12 +19,12 @@
 
 #include <map>
 
-namespace gui2 {
+namespace gui2
+{
 
 class tgame_paths : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 */
@@ -67,7 +67,6 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 };
-
 }
 
 #endif

@@ -28,7 +28,8 @@
 
 #include <cassert>
 
-namespace gui2{
+namespace gui2
+{
 
 /**
  * Template class can hold a value or a formula to calculate the value.
@@ -85,16 +86,16 @@ public:
 	 * @returns                   The stored result or the result of the
 	 *                            evaluation of the formula.
 	 */
-	T operator() (
-			  const game_logic::map_formula_callable& variables
-			, game_logic::function_symbol_table* functions = NULL
-			) const;
+	T operator()(const game_logic::map_formula_callable& variables,
+				 game_logic::function_symbol_table* functions = NULL) const;
 
 	/** Determine whether the class contains a formula. */
-	bool has_formula() const { return !formula_.empty(); }
+	bool has_formula() const
+	{
+		return !formula_.empty();
+	}
 
 private:
-
 	/**
 	 * Converts the string to the template type.
 	 *
@@ -122,9 +123,8 @@ private:
 	 *
 	 * @returns                   The calculated value.
 	 */
-	T execute(
-			  const game_logic::map_formula_callable& variables
-			, game_logic::function_symbol_table* functions) const;
+	T execute(const game_logic::map_formula_callable& variables,
+			  game_logic::function_symbol_table* functions) const;
 
 	/**
 	 * Contains the formula for the variable.
@@ -137,10 +137,9 @@ private:
 	T value_;
 };
 
-template<class T>
-tformula<T>::tformula(const std::string& str, const T value) :
-	formula_(),
-	value_(value)
+template <class T>
+tformula<T>::tformula(const std::string& str, const T value)
+	: formula_(), value_(value)
 {
 	if(str.empty()) {
 		return;
@@ -153,81 +152,86 @@ tformula<T>::tformula(const std::string& str, const T value) :
 	}
 }
 
-template<class T>
-inline T tformula<T>::operator()(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+template <class T>
+inline T tformula<T>::
+operator()(const game_logic::map_formula_callable& variables,
+		   game_logic::function_symbol_table* functions) const
 {
 	if(has_formula()) {
 		const T& result = execute(variables, functions);
-		LOG_GUI_D << "Formula: execute '" << formula_
-			<< "' result '" << result
-			<< "'.\n";
+		LOG_GUI_D << "Formula: execute '" << formula_ << "' result '" << result
+				  << "'.\n";
 		return result;
 	} else {
 		return value_;
 	}
 }
 
-template<>
-inline bool tformula<bool>::execute(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+template <>
+inline bool
+tformula<bool>::execute(const game_logic::map_formula_callable& variables,
+						game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
-			.evaluate(variables).as_bool();
+			.evaluate(variables)
+			.as_bool();
 }
 
-template<>
-inline int tformula<int>::execute(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+template <>
+inline int
+tformula<int>::execute(const game_logic::map_formula_callable& variables,
+					   game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
-			.evaluate(variables).as_int();
+			.evaluate(variables)
+			.as_int();
 }
 
-template<>
-inline unsigned tformula<unsigned>::execute(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+template <>
+inline unsigned
+tformula<unsigned>::execute(const game_logic::map_formula_callable& variables,
+							game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
-			.evaluate(variables).as_int();
+			.evaluate(variables)
+			.as_int();
 }
 
-template<>
+template <>
 inline std::string tformula<std::string>::execute(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+		const game_logic::map_formula_callable& variables,
+		game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
-			.evaluate(variables).as_string();
+			.evaluate(variables)
+			.as_string();
 }
 
-template<>
-inline t_string tformula<t_string>::execute(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+template <>
+inline t_string
+tformula<t_string>::execute(const game_logic::map_formula_callable& variables,
+							game_logic::function_symbol_table* functions) const
 {
 	return game_logic::formula(formula_, functions)
-			.evaluate(variables).as_string();
+			.evaluate(variables)
+			.as_string();
 }
 
-template<>
+template <>
 inline PangoAlignment tformula<PangoAlignment>::execute(
-		  const game_logic::map_formula_callable& variables
-		, game_logic::function_symbol_table* functions) const
+		const game_logic::map_formula_callable& variables,
+		game_logic::function_symbol_table* functions) const
 {
-	return decode_text_alignment(
-			game_logic::formula(formula_, functions)
-				.evaluate(variables).as_string());
+	return decode_text_alignment(game_logic::formula(formula_, functions)
+										 .evaluate(variables)
+										 .as_string());
 }
 
-template<class T>
-inline T tformula<T>::execute(
-		  const game_logic::map_formula_callable& /*variables*/
-		, game_logic::function_symbol_table* /*functions*/) const
+template <class T>
+inline T
+tformula<T>::execute(const game_logic::map_formula_callable& /*variables*/
+					 ,
+					 game_logic::function_symbol_table* /*functions*/) const
 {
 	// Every type needs its own execute function avoid instantiation of the
 	// default execute.
@@ -235,31 +239,31 @@ inline T tformula<T>::execute(
 	return T();
 }
 
-template<>
+template <>
 inline void tformula<bool>::convert(const std::string& str)
 {
 	value_ = utils::string_bool(str);
 }
 
-template<>
+template <>
 inline void tformula<std::string>::convert(const std::string& str)
 {
 	value_ = str;
 }
 
-template<>
+template <>
 inline void tformula<t_string>::convert(const std::string& str)
 {
 	value_ = str;
 }
 
-template<>
+template <>
 inline void tformula<PangoAlignment>::convert(const std::string& str)
 {
 	value_ = decode_text_alignment(str);
 }
 
-template<class T>
+template <class T>
 inline void tformula<T>::convert(const std::string& str)
 {
 	value_ = lexical_cast_default<T>(str);

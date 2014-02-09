@@ -19,12 +19,13 @@
 
 #include "config.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_instance
-	: public tbuilder_widget
+struct tbuilder_instance : public tbuilder_widget
 {
 	explicit tbuilder_instance(const config& cfg);
 

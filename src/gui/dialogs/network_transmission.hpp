@@ -21,7 +21,8 @@
 #include <boost/optional.hpp>
 #include "events.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tnetwork_transmission;
 
@@ -42,25 +43,26 @@ class tnetwork_transmission : public tdialog
 		network_asio::connection& connection_;
 		bool& track_upload_;
 		virtual void process(events::pump_info&);
-		public:
+
+	public:
 		pump_monitor(network_asio::connection& connection, bool& track_upload)
-			: connection_(connection)
-			, track_upload_(track_upload)
-			, window_()
+			: connection_(connection), track_upload_(track_upload), window_()
 		{
 		}
 
 		boost::optional<twindow&> window_;
 	} pump_monitor_;
-public:
 
-	tnetwork_transmission(
-		  network_asio::connection& connection
-		, const std::string& title
-		, const std::string& subtitle);
+public:
+	tnetwork_transmission(network_asio::connection& connection,
+						  const std::string& title,
+						  const std::string& subtitle);
 
 	void set_subtitle(const std::string&);
-	void set_track_upload(bool track_upload) { track_upload_ = track_upload; }
+	void set_track_upload(bool track_upload)
+	{
+		track_upload_ = track_upload;
+	}
 
 protected:
 	/** Inherited from tdialog. */
@@ -85,4 +87,3 @@ private:
 } // namespace gui2
 
 #endif
-

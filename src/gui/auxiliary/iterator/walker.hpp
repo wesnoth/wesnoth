@@ -15,28 +15,32 @@
 #ifndef GUI_WIDGETS_AUXILIARY_ITERATOR_WALKER_HPP_INCLUDED
 #define GUI_WIDGETS_AUXILIARY_ITERATOR_WALKER_HPP_INCLUDED
 
-namespace gui2 {
+namespace gui2
+{
 
 class twidget;
 
-namespace iterator {
+namespace iterator
+{
 
 /** The walker abstract base class. */
 class twalker_
 {
 public:
-
-	virtual ~twalker_() {}
+	virtual ~twalker_()
+	{
+	}
 
 	/** The level to walk at. */
-	enum tlevel
-	{
+	enum tlevel {
 		/** Visit the widget itself. */
-		  widget
+		widget
 		/** Visit its nested grid. */
-		, grid
+		,
+		grid
 		/** Visit the children of its nested grid. */
-		, child
+		,
+		child
 	};
 
 	/**
@@ -44,8 +48,7 @@ public:
 	 *
 	 * The enum is used to return the state of @ref next.
 	 */
-	enum tstate
-	{
+	enum tstate {
 		/**
 		 * When calling next the following it has the following results.
 		 *
@@ -54,7 +57,7 @@ public:
 		 * @post the next widget became the current one.
 		 * @post at_end == false
 		 */
-		  valid
+		valid
 
 		/**
 		 * When calling next the following it has the following results.
@@ -64,7 +67,8 @@ public:
 		 * @post there is no longer a current widget.
 		 * @post at_end == true
 		 */
-		, invalid
+		,
+		invalid
 
 		/**
 		 * When calling next the following it has the following results.
@@ -73,8 +77,8 @@ public:
 		 *
 		 * @post at_end == true
 		 */
-		, fail
-
+		,
+		fail
 	};
 
 	/**
@@ -117,5 +121,3 @@ public:
 } // namespace gui2
 
 #endif
-
-

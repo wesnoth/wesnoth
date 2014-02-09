@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tdrawing_definition::tdrawing_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -65,4 +66,3 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

@@ -19,16 +19,16 @@
 
 #include "gui/widgets/grid.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
 /** A walker for a @ref gui2::tgrid. */
-class tgrid
-	: public twalker_
+class tgrid : public twalker_
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -46,7 +46,6 @@ public:
 	virtual gui2::twidget* get(const tlevel level);
 
 private:
-
 	/** The grid which the walker is attached to. */
 	gui2::tgrid& grid_;
 
@@ -72,6 +71,3 @@ private:
 } // namespace gui2
 
 #endif
-
-
-

@@ -19,7 +19,8 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tmatrix_definition::tmatrix_definition(const config& cfg)
 	: tcontrol_definition(cfg)

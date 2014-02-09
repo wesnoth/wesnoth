@@ -17,21 +17,22 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tcontrol;
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_button
-	: public tbuilder_control
+struct tbuilder_button : public tbuilder_control
 {
 public:
 	explicit tbuilder_button(const config& cfg);
 
 	using tbuilder_control::build;
-	
-	twidget* build () const;
+
+	twidget* build() const;
 
 private:
 	std::string retval_id_;
@@ -43,4 +44,3 @@ private:
 } // namespace gui2
 
 #endif
-

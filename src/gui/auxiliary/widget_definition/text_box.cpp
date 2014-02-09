@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 ttext_box_definition::ttext_box_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -76,4 +77,3 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

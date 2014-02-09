@@ -17,7 +17,8 @@
 #include "game_preferences.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -59,11 +60,8 @@ static void set_dont_ask_again(const bool ask_again)
 
 tgame_delete::tgame_delete()
 {
-	register_bool("dont_ask_again"
-			, true
-			, &get_dont_ask_again
-			, &set_dont_ask_again);
+	register_bool(
+			"dont_ask_again", true, &get_dont_ask_again, &set_dont_ask_again);
 }
 
 } // namespace gui2
-

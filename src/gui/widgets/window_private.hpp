@@ -27,7 +27,8 @@
 
 #include "gui/widgets/window.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -49,8 +50,8 @@ struct twindow_implementation
 	 * @param maximum_height      The maximum height of the window.
 	 */
 	static void layout(twindow& window,
-			const unsigned maximum_width, const unsigned maximum_height);
-
+					   const unsigned maximum_width,
+					   const unsigned maximum_height);
 };
 
 } // namespace gui2

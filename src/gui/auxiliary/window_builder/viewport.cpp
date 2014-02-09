@@ -19,9 +19,11 @@
 #include "config.hpp"
 #include "gui/widgets/viewport.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_viewport::tbuilder_viewport(const config& cfg)
 	: tbuilder_widget(cfg)

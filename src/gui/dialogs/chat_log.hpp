@@ -22,14 +22,16 @@
 
 class replay;
 
-namespace gui2 {
+namespace gui2
+{
 
-class tchat_log: public tdialog {
+class tchat_log : public tdialog
+{
 public:
 	class model;
 	class view;
 	class controller;
-	tchat_log(const vconfig &cfg, replay *replay);
+	tchat_log(const vconfig& cfg, replay* replay);
 
 	/** Inherited from tdialog. */
 	twindow* build_window(CVideo& video);
@@ -44,9 +46,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	boost::shared_ptr<view> view_;
-
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_CHAT_LOG_HPP_INCLUDED */

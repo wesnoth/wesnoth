@@ -18,7 +18,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -50,6 +51,4 @@ tedit_label::tedit_label(std::string& label, bool& team_only)
 	register_text("label", true, label, true);
 	register_bool("team_only_toggle", true, team_only);
 }
-
 }
-

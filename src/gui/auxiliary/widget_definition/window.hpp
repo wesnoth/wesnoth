@@ -18,15 +18,14 @@
 #include "gui/auxiliary/widget_definition/panel.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct twindow_definition
-	: public tcontrol_definition
+struct twindow_definition : public tcontrol_definition
 {
 	explicit twindow_definition(const config& cfg);
 
-	struct tresolution
-		: public tpanel_definition::tresolution
+	struct tresolution : public tpanel_definition::tresolution
 	{
 		explicit tresolution(const config& cfg);
 
@@ -37,4 +36,3 @@ struct twindow_definition
 } // namespace gui2
 
 #endif
-

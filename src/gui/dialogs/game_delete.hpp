@@ -17,13 +17,12 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class tgame_delete
-	: public tdialog
+class tgame_delete : public tdialog
 {
 public:
-
 	tgame_delete();
 
 	/** The execute function see @ref tdialog for more information. */
@@ -33,12 +32,9 @@ public:
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-
 }
 
 #endif
-

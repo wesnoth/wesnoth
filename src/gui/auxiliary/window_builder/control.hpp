@@ -17,17 +17,17 @@
 
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tcontrol;
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_control
-	: public tbuilder_widget
+struct tbuilder_control : public tbuilder_widget
 {
 public:
-
 	tbuilder_control(const config& cfg);
 
 	using tbuilder_widget::build;
@@ -50,4 +50,3 @@ public:
 } // namespace gui2
 
 #endif
-

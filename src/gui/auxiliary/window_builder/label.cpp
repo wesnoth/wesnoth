@@ -20,9 +20,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/label.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_label::tbuilder_label(const config& cfg)
 	: tbuilder_control(cfg)
@@ -42,9 +44,8 @@ twidget* tbuilder_label::build() const
 	label->set_characters_per_line(characters_per_line);
 	label->set_text_alignment(text_alignment);
 
-	DBG_GUI_G << "Window builder: placed label '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed label '" << id << "' with definition '"
+			  << definition << "'.\n";
 
 	return label;
 }
@@ -89,4 +90,3 @@ twidget* tbuilder_label::build() const
  * @end{tag}{name="label"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

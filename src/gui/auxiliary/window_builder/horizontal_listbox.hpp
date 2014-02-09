@@ -19,18 +19,19 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_horizontal_listbox
-	: public tbuilder_control
+struct tbuilder_horizontal_listbox : public tbuilder_control
 {
 	explicit tbuilder_horizontal_listbox(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 	tscrollbar_container::tscrollbar_mode vertical_scrollbar_mode;
 	tscrollbar_container::tscrollbar_mode horizontal_scrollbar_mode;
@@ -51,4 +52,3 @@ struct tbuilder_horizontal_listbox
 } // namespace gui2
 
 #endif
-

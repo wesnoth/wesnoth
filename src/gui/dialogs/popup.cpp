@@ -19,10 +19,10 @@
 #include "gui/widgets/window.hpp"
 #include "video.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-tpopup::tpopup()
-	: window_(NULL)
+tpopup::tpopup() : window_(NULL)
 {
 }
 
@@ -31,9 +31,9 @@ tpopup::~tpopup()
 	hide();
 }
 
-void tpopup::show(CVideo& video
-		, const bool allow_interaction
-		, const unsigned /*auto_close_time*/)
+void tpopup::show(CVideo& video,
+				  const bool allow_interaction,
+				  const unsigned /*auto_close_time*/)
 {
 	if(video.faked()) {
 		return;

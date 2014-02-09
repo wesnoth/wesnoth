@@ -30,33 +30,35 @@
  * @param id                      Id of the widget
  * @param key                     The id to load if differs from id.
  */
-#define REGISTER_WIDGET3(                                                  \
-		  type                                                             \
-		, id                                                               \
-		, key)                                                             \
-namespace {                                                                \
-                                                                           \
-	namespace ns_##type {                                                  \
-                                                                           \
-		struct tregister_helper {                                          \
-			tregister_helper()                                             \
-			{                                                              \
-				register_widget(#id, boost::bind(                          \
-						  load_widget_definitions<type>                    \
-						, _1                                               \
-						, _2                                               \
-						, _3                                               \
-						, key));                                           \
-                                                                           \
-				register_builder_widget(#id, boost::bind(                  \
-							  build_widget<implementation::tbuilder_##id>  \
-							, _1));                                        \
-			}                                                              \
-		};                                                                 \
-                                                                           \
-		static tregister_helper register_helper;                           \
-	}                                                                      \
-}
+#define REGISTER_WIDGET3(type, id, key)                                        \
+	namespace                                                                  \
+	{                                                                          \
+                                                                               \
+	namespace ns_##type                                                        \
+	{                                                                          \
+                                                                               \
+		struct tregister_helper                                                \
+		{                                                                      \
+			tregister_helper()                                                 \
+			{                                                                  \
+				register_widget(#id,                                           \
+								boost::bind(load_widget_definitions<type>,     \
+											_1,                                \
+											_2,                                \
+											_3,                                \
+											key));                             \
+                                                                               \
+				register_builder_widget(                                       \
+						#id,                                                   \
+						boost::bind(                                           \
+								build_widget<implementation::tbuilder_##id>,   \
+								_1));                                          \
+			}                                                                  \
+		};                                                                     \
+                                                                               \
+		static tregister_helper register_helper;                               \
+	}                                                                          \
+	}
 
 /**
  * Wrapper for REGISTER_WIDGET3.

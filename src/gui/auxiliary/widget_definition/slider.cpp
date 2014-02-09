@@ -19,7 +19,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tslider_definition::tslider_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -83,10 +84,9 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 	, left_offset(cfg["left_offset"])
 	, right_offset(cfg["right_offset"])
 {
-	VALIDATE(minimum_positioner_length
-			, missing_mandatory_wml_key(
-				  "resolution"
-				, "minimum_positioner_length"));
+	VALIDATE(minimum_positioner_length,
+			 missing_mandatory_wml_key("resolution",
+									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is slider.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -96,4 +96,3 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

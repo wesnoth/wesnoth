@@ -18,7 +18,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -45,17 +46,23 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_edit_scenario)
 
-teditor_edit_scenario::teditor_edit_scenario(std::string& id, std::string& name, std::string& description,
-					int& turns, int& experience_modifier, bool& victory_when_enemies_defeated, bool& random_start_time)
+teditor_edit_scenario::teditor_edit_scenario(
+		std::string& id,
+		std::string& name,
+		std::string& description,
+		int& turns,
+		int& experience_modifier,
+		bool& victory_when_enemies_defeated,
+		bool& random_start_time)
 {
 	register_text("id", true, id, true);
 	register_text("name", true, name, true);
 	register_text("description", true, description, true);
 	register_integer("turns", true, turns);
 	register_integer("experience_modifier", true, experience_modifier);
-	register_bool("victory_when_enemies_defeated", true, victory_when_enemies_defeated);
+	register_bool("victory_when_enemies_defeated",
+				  true,
+				  victory_when_enemies_defeated);
 	register_bool("random_start_time", true, random_start_time);
 }
-
 }
-

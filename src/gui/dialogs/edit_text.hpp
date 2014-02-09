@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tedit_text : public tdialog
 {
@@ -33,7 +34,9 @@ public:
 	 *                              if the dialog returns @ref twindow::OK,
 	 *                              undefined otherwise.
 	 */
-	tedit_text(const std::string& title, const std::string& label, std::string& text);
+	tedit_text(const std::string& title,
+			   const std::string& label,
+			   std::string& text);
 
 	/**
 	 * Executes the dialog.
@@ -45,7 +48,10 @@ public:
 	 *                              if this method returns @a true, undefined
 	 *                              otherwise.
 	 */
-	static bool execute(const std::string& title, const std::string& label, std::string& text, CVideo& video)
+	static bool execute(const std::string& title,
+						const std::string& label,
+						std::string& text,
+						CVideo& video)
 	{
 		return tedit_text(title, label, text).show(video);
 	}
@@ -54,7 +60,6 @@ private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-	
 }
 
 #endif /* ! GUI_DIALOGS_EDIT_TEXT_INCLUDED */

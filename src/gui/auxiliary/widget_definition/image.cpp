@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 timage_definition::timage_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -59,4 +60,3 @@ timage_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

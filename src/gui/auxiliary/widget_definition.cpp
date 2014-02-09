@@ -21,7 +21,8 @@
 #include "gui/widgets/helper.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIToolkitWML
@@ -100,8 +101,8 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
 	, text_font_style(decode_font_style(cfg["text_font_style"]))
 	, state()
 {
-	DBG_GUI_P << "Parsing resolution "
-			<< window_width << ", " << window_height << '\n';
+	DBG_GUI_P << "Parsing resolution " << window_width << ", " << window_height
+			  << '\n';
 }
 
 /*WIKI
@@ -128,13 +129,11 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  * @end{parent}{name="generic/"}
  */
 tcontrol_definition::tcontrol_definition(const config& cfg)
-	: id(cfg["id"])
-	, description(cfg["description"].t_str())
-	, resolutions()
+	: id(cfg["id"]), description(cfg["description"].t_str()), resolutions()
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));
-	VALIDATE(!description.empty()
-			, missing_mandatory_wml_key("control", "description"));
+	VALIDATE(!description.empty(),
+			 missing_mandatory_wml_key("control", "description"));
 
 	/*
 	 * Do this validation here instead of in load_resolutions so the
@@ -146,4 +145,3 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
 }
 
 } // namespace gui2
-

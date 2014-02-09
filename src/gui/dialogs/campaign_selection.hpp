@@ -19,25 +19,26 @@
 
 #include "config.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class tcampaign_selection
-	: public tdialog
+class tcampaign_selection : public tdialog
 {
 public:
 	explicit tcampaign_selection(const std::vector<config>& campaigns)
-		: campaigns_(campaigns)
-		, choice_(-1)
+		: campaigns_(campaigns), choice_(-1)
 
 	{
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	int get_choice() const { return choice_; }
+	int get_choice() const
+	{
+		return choice_;
+	}
 
 private:
-
 	/** Called when another campaign is selected. */
 	void campaign_selected(twindow& window);
 
@@ -51,7 +52,7 @@ private:
 	void post_show(twindow& window);
 
 	/** Contains the config objects for all campaigns. */
-	const std::vector<config> &campaigns_;
+	const std::vector<config>& campaigns_;
 
 	/** The chosen campaign. */
 	int choice_;

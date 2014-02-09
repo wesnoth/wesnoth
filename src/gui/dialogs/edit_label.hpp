@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tedit_label : public tdialog
 {
@@ -46,11 +47,9 @@ public:
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

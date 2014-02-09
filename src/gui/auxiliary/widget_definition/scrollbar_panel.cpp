@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -56,18 +57,16 @@ tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  */
 tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid()
+	: tresolution_definition_(cfg), grid()
 {
 	// The panel needs to know the order.
 	state.push_back(tstate_definition(cfg.child("background")));
 	state.push_back(tstate_definition(cfg.child("foreground")));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 ttree_view_definition::ttree_view_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -56,18 +57,16 @@ ttree_view_definition::ttree_view_definition(const config& cfg)
  * @end{parent}{name="gui/"}
  */
 ttree_view_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
+	: tresolution_definition_(cfg), grid(NULL)
 {
 	// Note the order should be the same as the enum tstate is listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWidgetDefinitionWML
@@ -48,11 +49,10 @@ twindow_definition::twindow_definition(const config& cfg)
 }
 
 twindow_definition::tresolution::tresolution(const config& cfg)
-	: tpanel_definition::tresolution(cfg)
-	, grid(NULL)
+	: tpanel_definition::tresolution(cfg), grid(NULL)
 {
-	const config &child = cfg.child("grid");
-//	VALIDATE(child, _("No grid defined."));
+	const config& child = cfg.child("grid");
+	// VALIDATE(child, _("No grid defined."));
 
 	/** @todo Evaluate whether the grid should become mandatory. */
 	if(child) {
@@ -61,4 +61,3 @@ twindow_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

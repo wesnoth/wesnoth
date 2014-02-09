@@ -17,15 +17,14 @@
 
 #include "gui/auxiliary/widget_definition.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct tspacer_definition
-	: public tcontrol_definition
+struct tspacer_definition : public tcontrol_definition
 {
 	explicit tspacer_definition(const config& cfg);
 
-	struct tresolution
-		: public tresolution_definition_
+	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
 	};
@@ -34,4 +33,3 @@ struct tspacer_definition
 } // namespace gui2
 
 #endif
-

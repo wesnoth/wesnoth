@@ -22,7 +22,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -49,12 +50,22 @@ namespace gui2 {
 
 REGISTER_DIALOG(editor_edit_side)
 
-teditor_edit_side::teditor_edit_side(int side, std::string& id, std::string& name,
-		int& gold, int& income, int& village_income, int& village_support,
-		bool& fog, bool& share_view, bool& shroud, bool& share_maps,
-		team::CONTROLLER& controller, int controller_num,
-		bool& no_leader, bool& hidden) :
-		controller_(controller)
+teditor_edit_side::teditor_edit_side(int side,
+									 std::string& id,
+									 std::string& name,
+									 int& gold,
+									 int& income,
+									 int& village_income,
+									 int& village_support,
+									 bool& fog,
+									 bool& share_view,
+									 bool& shroud,
+									 bool& share_maps,
+									 team::CONTROLLER& controller,
+									 int controller_num,
+									 bool& no_leader,
+									 bool& hidden)
+	: controller_(controller)
 {
 	std::stringstream side_stream;
 	side_stream << side;
@@ -79,7 +90,6 @@ teditor_edit_side::teditor_edit_side(int side, std::string& id, std::string& nam
 
 	register_bool("no_leader", true, no_leader);
 	register_bool("hidden", true, hidden);
-
 }
 
 void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
@@ -91,35 +101,36 @@ void teditor_edit_side::pre_show(CVideo& /*video*/, twindow& window)
 	register_controller_toggle(window, "number", team::CONTROLLER(-1));
 }
 
-void teditor_edit_side::register_controller_toggle(twindow& window, const std::string& toggle_id, team::CONTROLLER value)
+void teditor_edit_side::register_controller_toggle(twindow& window,
+												   const std::string& toggle_id,
+												   team::CONTROLLER value)
 {
-	ttoggle_button* b = &find_widget<ttoggle_button>(&window, "controller_" + toggle_id, false);
+	ttoggle_button* b = &find_widget<ttoggle_button>(
+								 &window, "controller_" + toggle_id, false);
 
 	b->set_value(value == controller_);
-	connect_signal_mouse_left_click(*b, boost::bind(&teditor_edit_side::toggle_controller_callback, this, b));
+	connect_signal_mouse_left_click(
+			*b,
+			boost::bind(
+					&teditor_edit_side::toggle_controller_callback, this, b));
 
 	controller_tgroup_.push_back(std::make_pair(b, value));
 }
 
 void teditor_edit_side::toggle_controller_callback(ttoggle_button* active)
 {
-	FOREACH(const AUTO& e, controller_tgroup_) {
+	FOREACH(const AUTO & e, controller_tgroup_)
+	{
 		ttoggle_button* const b = e.first;
 		if(b == NULL) {
 			continue;
-		}
-		else if(b == active && !b->get_value()) {
+		} else if(b == active && !b->get_value()) {
 			b->set_value(true);
-		}
-		else if(b == active) {
+		} else if(b == active) {
 			controller_ = e.second;
-		}
-		else if(b != active && b->get_value()) {
+		} else if(b != active && b->get_value()) {
 			b->set_value(false);
 		}
 	}
 }
-
-
 }
-

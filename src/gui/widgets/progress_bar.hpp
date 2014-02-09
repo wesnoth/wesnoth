@@ -17,16 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class tprogress_bar
-	: public tcontrol
+class tprogress_bar : public tcontrol
 {
 public:
-
-	tprogress_bar()
-		: tcontrol(COUNT)
-		, percentage_(static_cast<unsigned>(-1))
+	tprogress_bar() : tcontrol(COUNT), percentage_(static_cast<unsigned>(-1))
 	{
 		// Force canvas update
 		set_percentage(0);
@@ -50,16 +47,21 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_percentage(unsigned percentage);
-	unsigned get_percentage() const { return percentage_; }
+	unsigned get_percentage() const
+	{
+		return percentage_;
+	}
 
 private:
-
 	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		COUNT
+	};
 
 	/** The percentage done. */
 	unsigned percentage_;
@@ -71,4 +73,3 @@ private:
 } // namespace gui2
 
 #endif
-
