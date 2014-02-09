@@ -133,6 +133,36 @@ void textbox::clear()
 	handle_text_changed(text_);
 }
 
+void textbox::set_selection(const int selstart, const int selend)
+{
+	if (!editable_) {
+		return;
+	}
+	if (selstart < 0 || selend < 0 || size_t(selstart) > text_.size() ||
+		size_t(selend) > text_.size()) {
+		WRN_DP << "out-of-boundary selection\n";
+		return;
+	}
+	selstart_= selstart;
+	selend_ = selend;
+	set_dirty(true);
+}
+
+void textbox::set_cursor_pos(const int cursor_pos)
+{
+	if (!editable_) {
+		return;
+	}
+	if (cursor_pos < 0 || size_t(cursor_pos) > text_.size()) {
+		WRN_DP << "out-of-boundary selection\n";
+		return;
+	}
+	
+	cursor_ = cursor_pos;
+	update_text_cache(false);
+	set_dirty(true);
+}
+
 void textbox::draw_cursor(int pos, CVideo &video) const
 {
 	if(show_cursor_ && editable_ && enabled()) {

@@ -42,6 +42,7 @@ public:
 
 protected:
 	void action(gui::dialog_process_info &dp_info);
+	void set_save_text(const std::string& filename);
 	std::string unformat_filename(const std::string& filename) const;
 	std::string format_filename(const std::string& filename) const;
 	std::string format_dirname(const std::string& dirname) const;

@@ -184,8 +184,17 @@ std::string file_dialog::format_dirname(const std::string& dirname) const
 	return dir_prefix + tmp;
 }
 
+void file_dialog::set_save_text(const std::string& filename)
+{
+	const std::string fn = format_filename(filename);
+	const size_t filename_dot = fn.find_last_of('.');
+	get_textbox().set_text(fn);
+	get_textbox().set_selection(0, filename_dot != std::string::npos ? filename_dot : fn.length());
+	get_textbox().set_cursor_pos(0);
+}
 
-void file_dialog::action(gui::dialog_process_info &dp_info) {
+void file_dialog::action(gui::dialog_process_info &dp_info)
+{
 	if(result() == gui::CLOSE_DIALOG)
 		return;
 
@@ -231,7 +240,7 @@ void file_dialog::action(gui::dialog_process_info &dp_info) {
 		files_list_->reset_type_a_head();
 
 		chosen_file_ = files_list_->get_choice();
-		get_textbox().set_text(format_filename(chosen_file_));
+		set_save_text(chosen_file_);
 		last_selection_ = (dp_info.double_clicked) ? -1 : dp_info.selection;
 		last_textbox_text_ = textbox_text();
 	}
