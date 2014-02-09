@@ -164,7 +164,7 @@ struct animation_cursor
 			}
 			else {
 				(*bi).attributes.merge_attributes(cfg);
-				bi++;
+				++bi;
 			}
 		}
 		// Then we prune all parent branches with similar matches as they
@@ -191,7 +191,7 @@ struct animation_cursor
 			{
 				parent->branches.erase(bi++);
 			}
-			else bi++;
+			else ++bi;
 		}
 	}
 };
