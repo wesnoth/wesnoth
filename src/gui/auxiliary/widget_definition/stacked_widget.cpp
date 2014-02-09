@@ -30,10 +30,6 @@ tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tstacked_widget_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_stacked_widget
@@ -54,7 +50,10 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="stacked_widget_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tstacked_widget_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
+{
 	// Add a dummy state since every widget needs a state.
 	static config dummy ("draw");
 	state.push_back(tstate_definition(dummy));

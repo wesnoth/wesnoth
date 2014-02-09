@@ -224,8 +224,6 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	ERROR_LOG(false);
 }
 
-const std::string& twindow_builder::read(const config& cfg)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window
@@ -247,7 +245,8 @@ const std::string& twindow_builder::read(const config& cfg)
  *
  *
  */
-
+const std::string& twindow_builder::read(const config& cfg)
+{
 	id_ = cfg["id"].str();
 	description_ = cfg["description"].str();
 
@@ -265,29 +264,6 @@ const std::string& twindow_builder::read(const config& cfg)
 	return id_;
 }
 
-twindow_builder::tresolution::tresolution(const config& cfg) :
-	window_width(cfg["window_width"]),
-	window_height(cfg["window_height"]),
-	automatic_placement(cfg["automatic_placement"].to_bool(true)),
-	x(cfg["x"]),
-	y(cfg["y"]),
-	width(cfg["width"]),
-	height(cfg["height"]),
-	reevaluate_best_size(cfg["reevaluate_best_size"]),
-	functions(),
-	vertical_placement(
-			implementation::get_v_align(cfg["vertical_placement"])),
-	horizontal_placement(
-			implementation::get_h_align(cfg["horizontal_placement"])),
-	maximum_width(cfg["maximum_width"]),
-	maximum_height(cfg["maximum_height"]),
-	click_dismiss(cfg["click_dismiss"].to_bool()),
-	definition(cfg["definition"]),
-	linked_groups(),
-	tooltip(cfg.child_or_empty("tooltip")),
-	helptip(cfg.child_or_empty("helptip")),
-	grid(0)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window
@@ -392,7 +368,29 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @end{tag}{name="helptip"}
  * @end{parent}{name=gui/window/resolution/}
  */
-
+twindow_builder::tresolution::tresolution(const config& cfg) :
+	window_width(cfg["window_width"]),
+	window_height(cfg["window_height"]),
+	automatic_placement(cfg["automatic_placement"].to_bool(true)),
+	x(cfg["x"]),
+	y(cfg["y"]),
+	width(cfg["width"]),
+	height(cfg["height"]),
+	reevaluate_best_size(cfg["reevaluate_best_size"]),
+	functions(),
+	vertical_placement(
+			implementation::get_v_align(cfg["vertical_placement"])),
+	horizontal_placement(
+			implementation::get_h_align(cfg["horizontal_placement"])),
+	maximum_width(cfg["maximum_width"]),
+	maximum_height(cfg["maximum_height"]),
+	click_dismiss(cfg["click_dismiss"].to_bool()),
+	definition(cfg["definition"]),
+	linked_groups(),
+	tooltip(cfg.child_or_empty("tooltip")),
+	helptip(cfg.child_or_empty("helptip")),
+	grid(0)
+{
 	if(!cfg["functions"].empty()) {
 		game_logic::formula(cfg["functions"], &functions).evaluate();
 	}
@@ -448,16 +446,6 @@ twindow_builder::tresolution::ttip::ttip(const config& cfg)
 			, missing_mandatory_wml_key("[window][resolution][tip]", "id"));
 }
 
-tbuilder_grid::tbuilder_grid(const config& cfg) :
-	tbuilder_widget(cfg),
-	rows(0),
-	cols(0),
-	row_grow_factor(),
-	col_grow_factor(),
-	flags(),
-	border_size(),
-	widgets()
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 2_cell
@@ -520,6 +508,16 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * @end{parent}{name="gui/window/resolution/"}
  *
  */
+tbuilder_grid::tbuilder_grid(const config& cfg) :
+	tbuilder_widget(cfg),
+	rows(0),
+	cols(0),
+	row_grow_factor(),
+	col_grow_factor(),
+	flags(),
+	border_size(),
+	widgets()
+{
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
 	FOREACH(const AUTO& row, cfg.child_range("row")) {
@@ -629,6 +627,7 @@ void tbuilder_grid::build(tgrid& grid, const treplacements& replacements) const
 }
 
 } // namespace gui2
+
 /*WIKI
  * @page = GUIToolkitWML
  * @order = ZZZZZZ_footer

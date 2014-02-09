@@ -28,13 +28,6 @@ ttoggle_panel_definition::ttoggle_panel_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, top_border(cfg["top_border"])
-	, bottom_border(cfg["bottom_border"])
-	, left_border(cfg["left_border"])
-	, right_border(cfg["right_border"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_toggle_panel
@@ -84,6 +77,13 @@ ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="toggle_panel_definition"}
  * @end{parent}{name="gui/"}
  */
+ttoggle_panel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, top_border(cfg["top_border"])
+	, bottom_border(cfg["bottom_border"])
+	, left_border(cfg["left_border"])
+	, right_border(cfg["right_border"])
+{
 	// Note the order should be the same as the enum tstate in toggle_panel.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

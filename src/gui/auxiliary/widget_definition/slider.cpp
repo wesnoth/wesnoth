@@ -29,13 +29,6 @@ tslider_definition::tslider_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tslider_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, minimum_positioner_length(cfg["minimum_positioner_length"])
-	, maximum_positioner_length(cfg["maximum_positioner_length"])
-	, left_offset(cfg["left_offset"])
-	, right_offset(cfg["right_offset"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_slider
@@ -83,6 +76,13 @@ tslider_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="slider_definition"}
  * @end{parent}{name="gui/"}
  */
+tslider_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, left_offset(cfg["left_offset"])
+	, right_offset(cfg["right_offset"])
+{
 	VALIDATE(minimum_positioner_length
 			, missing_mandatory_wml_key(
 				  "resolution"

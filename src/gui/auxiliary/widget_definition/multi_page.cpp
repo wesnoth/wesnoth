@@ -30,10 +30,6 @@ tmulti_page_definition::tmulti_page_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tmulti_page_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_multi_page
@@ -55,7 +51,10 @@ tmulti_page_definition::tresolution::tresolution(const config& cfg)
  * @end{parent}{name="gui/"}
  * A multipage has no states.
  */
-
+tmulti_page_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
+{
 	const config &child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 

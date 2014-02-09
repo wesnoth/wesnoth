@@ -28,11 +28,6 @@ ttext_box_definition::ttext_box_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-ttext_box_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, text_x_offset(cfg["text_x_offset"])
-	, text_y_offset(cfg["text_y_offset"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_text_box
@@ -69,6 +64,11 @@ ttext_box_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="text_box_definition"}
  * @end{parent}{name="gui/"}
  */
+ttext_box_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, text_x_offset(cfg["text_x_offset"])
+	, text_y_offset(cfg["text_y_offset"])
+{
 	// Note the order should be the same as the enum tstate in text_box.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

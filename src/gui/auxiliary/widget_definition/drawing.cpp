@@ -28,9 +28,6 @@ tdrawing_definition::tdrawing_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tdrawing_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_drawing
@@ -55,6 +52,9 @@ tdrawing_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="drawing_definition"}
  * @end{parent}{name="gui/"}
  */
+tdrawing_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	/*
 	 * Note the order should be the same as the enum tstate in drawing.hpp.
 	 * Normally the [draw] section is in the config, but for this widget the

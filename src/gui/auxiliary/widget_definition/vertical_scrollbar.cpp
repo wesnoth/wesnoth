@@ -30,13 +30,6 @@ tvertical_scrollbar_definition::tvertical_scrollbar_definition(
 	load_resolutions<tresolution>(cfg);
 }
 
-tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, minimum_positioner_length(cfg["minimum_positioner_length"])
-	, maximum_positioner_length(cfg["maximum_positioner_length"])
-	, top_offset(cfg["top_offset"])
-	, bottom_offset(cfg["bottom_offset"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_vertical_scrollbar
@@ -85,7 +78,13 @@ tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="vertical_scrollbar_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tvertical_scrollbar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, top_offset(cfg["top_offset"])
+	, bottom_offset(cfg["bottom_offset"])
+{
 	VALIDATE(minimum_positioner_length
 			, missing_mandatory_wml_key(
 				  "resolution"

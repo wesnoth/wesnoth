@@ -30,10 +30,6 @@ tlistbox_definition::tlistbox_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tlistbox_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_listbox
@@ -107,6 +103,10 @@ tlistbox_definition::tresolution::tresolution(const config& cfg)
  * @macro = horizontal_listbox_description
  * The definition of a horizontal listbox is the same as for a normal listbox.
  */
+tlistbox_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
+{
 	// Note the order should be the same as the enum tstate in listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

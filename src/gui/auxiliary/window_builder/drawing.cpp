@@ -71,7 +71,6 @@ twidget* tbuilder_drawing::build() const
  * @end{macro}
  */
 
-
 /*WIKI
  * @page = GUIWidgetInstanceWML
  * @order = 2_drawing

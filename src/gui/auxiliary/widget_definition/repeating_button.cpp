@@ -28,9 +28,6 @@ trepeating_button_definition::trepeating_button_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-trepeating_button_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_repeating_button
@@ -59,6 +56,9 @@ trepeating_button_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="repeating_button_definition"}
  * @end{parent}{name="gui/"}
  */
+trepeating_button_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate in
 	// repeating_button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));

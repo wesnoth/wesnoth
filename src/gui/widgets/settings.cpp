@@ -156,8 +156,6 @@ private:
 	std::vector<ttip> tips_;
 };
 
-const std::string& tgui_definition::read(const config& cfg)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1
@@ -268,44 +266,7 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end{tag}{name=gui}
  * @end{parent}{name="/"}
  */
-	id = cfg["id"].str();
-	description = cfg["description"];
 
-	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
-	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
-
-	DBG_GUI_P << "Parsing gui " << id << '\n';
-
-	/***** Control definitions *****/
-
-	FOREACH(AUTO& widget_type, registred_widget_type()) {
-		widget_type.second(*this, widget_type.first, cfg, NULL);
-	}
-
-	/***** Window types *****/
-	FOREACH(const AUTO& w, cfg.child_range("window")) {
-		std::pair<std::string, twindow_builder> child;
-		child.first = child.second.read(w);
-		window_types.insert(child);
-	}
-
-	if(id == "default") {
-		// The default gui needs to define all window types since we're the
-		// fallback in case another gui doesn't define the window type.
-		for(std::vector<std::string>::const_iterator itor
-				= registered_window_types().begin()
-				; itor != registered_window_types().end()
-				; ++itor) {
-
-            const std::string error_msg("Window not defined in WML: '" +
-                                         *itor +
-                                         "'. Perhaps a mismatch between data and source versions."
-                                         " Try --data-dir <trunk-dir>" );
-			VALIDATE(window_types.find(*itor) != window_types.end(), error_msg );
-		}
-	}
-
-	/***** settings *****/
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1
@@ -364,6 +325,46 @@ const std::string& tgui_definition::read(const config& cfg)
  * @end{tag}{name="tip"}
  * @end{parent}{name="gui/"}
 */
+const std::string& tgui_definition::read(const config& cfg)
+{
+	id = cfg["id"].str();
+	description = cfg["description"];
+
+	VALIDATE(!id.empty(), missing_mandatory_wml_key("gui", "id"));
+	VALIDATE(!description.empty(), missing_mandatory_wml_key("gui", "description"));
+
+	DBG_GUI_P << "Parsing gui " << id << '\n';
+
+	/***** Control definitions *****/
+
+	FOREACH(AUTO& widget_type, registred_widget_type()) {
+		widget_type.second(*this, widget_type.first, cfg, NULL);
+	}
+
+	/***** Window types *****/
+	FOREACH(const AUTO& w, cfg.child_range("window")) {
+		std::pair<std::string, twindow_builder> child;
+		child.first = child.second.read(w);
+		window_types.insert(child);
+	}
+
+	if(id == "default") {
+		// The default gui needs to define all window types since we're the
+		// fallback in case another gui doesn't define the window type.
+		for(std::vector<std::string>::const_iterator itor
+				= registered_window_types().begin()
+				; itor != registered_window_types().end()
+				; ++itor) {
+
+            const std::string error_msg("Window not defined in WML: '" +
+                                         *itor +
+                                         "'. Perhaps a mismatch between data and source versions."
+                                         " Try --data-dir <trunk-dir>" );
+			VALIDATE(window_types.find(*itor) != window_types.end(), error_msg );
+		}
+	}
+
+	/***** settings *****/
 
 /**
  * @todo Regarding sounds:
@@ -505,9 +506,6 @@ void load_settings()
 	current_gui->second.activate();
 }
 
-tstate_definition::tstate_definition(const config &cfg) :
-	canvas()
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget
@@ -526,7 +524,9 @@ tstate_definition::tstate_definition(const config &cfg) :
  * @end{parent}{name="generic/"}
  *
  */
-
+tstate_definition::tstate_definition(const config &cfg) :
+	canvas()
+{
 	const config &draw = *(cfg ? &cfg.child("draw") : &cfg);
 
 	VALIDATE(draw, _("No state or draw section defined."));

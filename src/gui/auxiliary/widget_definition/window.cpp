@@ -20,9 +20,6 @@
 
 namespace gui2 {
 
-twindow_definition::twindow_definition(const config& cfg)
-	: tcontrol_definition(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_window
@@ -42,7 +39,9 @@ twindow_definition::twindow_definition(const config& cfg)
  * @end{tag}{name="window_definition"}
  * @end{parent}{name="gui/"}
  */
-
+twindow_definition::twindow_definition(const config& cfg)
+	: tcontrol_definition(cfg)
+{
 	DBG_GUI_P << "Parsing window " << id << '\n';
 
 	load_resolutions<tresolution>(cfg);

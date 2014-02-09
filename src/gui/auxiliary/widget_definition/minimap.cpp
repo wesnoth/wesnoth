@@ -28,9 +28,6 @@ tminimap_definition::tminimap_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tminimap_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_minimap
@@ -50,6 +47,9 @@ tminimap_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="minimap_definition"}
  * @end{parent}{name="gui/"}
  */
+tminimap_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate in minimap.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }

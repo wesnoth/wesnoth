@@ -30,10 +30,6 @@ tscroll_label_definition::tscroll_label_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tscroll_label_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_scroll_label
@@ -76,6 +72,10 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="scroll_label_definition"}
  * @end{parent}{name="gui/"}
  */
+tscroll_label_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
+{
 	// Note the order should be the same as the enum tstate is scroll_label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

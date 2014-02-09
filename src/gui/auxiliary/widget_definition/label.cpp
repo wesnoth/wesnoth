@@ -28,10 +28,6 @@ tlabel_definition::tlabel_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-
-tlabel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_label
@@ -58,6 +54,9 @@ tlabel_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="label_definition"}
  * @end{parent}{name="gui/"}
  */
+tlabel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate is label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

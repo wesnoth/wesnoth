@@ -28,9 +28,6 @@ tbutton_definition::tbutton_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tbutton_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_button
@@ -59,7 +56,9 @@ tbutton_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="button_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tbutton_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate in button.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

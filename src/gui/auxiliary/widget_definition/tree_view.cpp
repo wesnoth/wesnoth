@@ -30,10 +30,6 @@ ttree_view_definition::ttree_view_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-ttree_view_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_tree_view
@@ -59,7 +55,10 @@ ttree_view_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="tree_view_definition"}
  * @end{parent}{name="gui/"}
  */
-
+ttree_view_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, grid(NULL)
+{
 	// Note the order should be the same as the enum tstate is listbox.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));

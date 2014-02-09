@@ -28,13 +28,6 @@ tpanel_definition::tpanel_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tpanel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, top_border(cfg["top_border"])
-	, bottom_border(cfg["bottom_border"])
-	, left_border(cfg["left_border"])
-	, right_border(cfg["right_border"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_panel
@@ -73,7 +66,13 @@ tpanel_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="panel_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tpanel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, top_border(cfg["top_border"])
+	, bottom_border(cfg["bottom_border"])
+	, left_border(cfg["left_border"])
+	, right_border(cfg["right_border"])
+{
 	// The panel needs to know the order.
 	state.push_back(tstate_definition(cfg.child("background")));
 	state.push_back(tstate_definition(cfg.child("foreground")));

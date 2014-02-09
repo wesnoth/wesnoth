@@ -299,14 +299,6 @@ private:
 	unsigned thickness_;
 };
 
-tline::tline(const config& cfg)
-	: x1_(cfg["x1"])
-	, y1_(cfg["y1"])
-	, x2_(cfg["x2"])
-	, y2_(cfg["y2"])
-	, color_(decode_color(cfg["color"]))
-	, thickness_(cfg["thickness"])
-{
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -335,10 +327,10 @@ tline::tline(const config& cfg)
  *     width & unsigned &                 The width of the canvas. $
  *     height & unsigned &                The height of the canvas. $
  *     text & tstring &                   The text to render on the widget. $
- *     text_maximum_width & unsigned &    The maximum width available for the text
- *                                        on the widget. $
- *     text_maximum_height & unsigned &   The maximum height available for the text
- *                                        on the widget. $
+ *     text_maximum_width & unsigned &    The maximum width available for the
+ *                                        text on the widget. $
+ *     text_maximum_height & unsigned &   The maximum height available for the
+ *                                        text on the widget. $
  *     text_wrap_mode & int  &            When the text doesn't fit in the
  *                                        available width there are several ways
  *                                        to fix that. This variable holds the
@@ -363,11 +355,11 @@ tline::tline(const config& cfg)
  *     gamemapx_offset & unsigned &     The distance between left edge of the
  *                                      screen and the game map. $
  *     gamemap_width & unsigned &       The usable width of the Wesnoth gamemap,
- *                                      if no gamemap shown it's the same value as
- *                                      screen_width. $
- *     gamemap_height & unsigned &      The usable height of the Wesnoth gamemap,
- *                                      if no gamemap shown it's the same value as
- *                                      screen_height. $
+ *                                      if no gamemap shown it's the same value
+ *                                      as screen_width. $
+ *     gamemap_height & unsigned &      The usable height of the Wesnoth
+ *                                      gamemap, if no gamemap shown it's the
+ *                                      same value as screen_height. $
  *
  *     mouse_x & unsigned &             The x coordinate of the mouse pointer. $
  *     mouse_y & unsigned &             The y coordinate of the mouse pointer. $
@@ -469,7 +461,8 @@ tline::tline(const config& cfg)
  *                                     boolean value. $
  *     string &                        A text. $
  *     tstring &                       A translatable string. $
- *     f_tstring &                     Formula returning a translatable string. $
+ *     f_tstring &                     Formula returning a translatable string.
+ *                                     $
  *     function &                      A string containing a set of function
  *                                     definition for the formula language. $
  *
@@ -479,7 +472,8 @@ tline::tline(const config& cfg)
  *                                     component, green component, blue
  *                                     component and alpha. A color of 0 is not
  *                                     available. An alpha of 255 is fully
- *                                     transparent. Omitted values are set to 0. $
+ *                                     transparent. Omitted values are set to
+ *                                     0. $
  *
  *     font_style &                    A string which contains the style of the
  *                                     font:
@@ -618,6 +612,14 @@ tline::tline(const config& cfg)
  * @end{table}
  */
 
+tline::tline(const config& cfg)
+	: x1_(cfg["x1"])
+	, y1_(cfg["y1"])
+	, x2_(cfg["x2"])
+	, y2_(cfg["y2"])
+	, color_(decode_color(cfg["color"]))
+	, thickness_(cfg["thickness"])
+{
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Line: found debug message '" << debug << "'.\n";
@@ -714,15 +716,6 @@ private:
 	Uint32 fill_color_;
 };
 
-trectangle::trectangle(const config& cfg)
-	: x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
-	, border_thickness_(cfg["border_thickness"])
-	, border_color_(decode_color(cfg["border_color"]))
-	, fill_color_(decode_color(cfg["fill_color"]))
-{
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -735,8 +728,10 @@ trectangle::trectangle(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x & f_unsigned & 0 &            The x coordinate of the top left corner. $
- *     y & f_unsigned & 0 &            The y coordinate of the top left corner. $
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner.
+ *                                     $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner.
+ *                                     $
  *     w & f_unsigned & 0 &            The width of the rectangle. $
  *     h & f_unsigned & 0 &            The height of the rectangle. $
  *     border_thickness & unsigned & 0 &
@@ -754,6 +749,15 @@ trectangle::trectangle(const config& cfg)
  * See [[#general_variables|Line]].
  *
  */
+trectangle::trectangle(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, border_thickness_(cfg["border_thickness"])
+	, border_color_(decode_color(cfg["border_color"]))
+	, fill_color_(decode_color(cfg["fill_color"]))
+{
 	if(border_color_ == 0) {
 		border_thickness_ = 0;
 	}
@@ -860,12 +864,6 @@ private:
 
 };
 
-tcircle::tcircle(const config& cfg)
-	: x_(cfg["x"])
-	, y_(cfg["y"])
-	, radius_(cfg["radius"])
-	, color_(decode_color(cfg["color"]))
-{
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -893,7 +891,12 @@ tcircle::tcircle(const config& cfg)
  * Drawing outside the area will result in unpredictable results including
  * crashing. (That should be fixed, when encountered.)
  */
-
+tcircle::tcircle(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, radius_(cfg["radius"])
+	, color_(decode_color(cfg["color"]))
+{
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Circle: found debug message '" << debug << "'.\n";
@@ -1011,17 +1014,6 @@ private:
 	tformula<bool> vertical_mirror_;
 };
 
-timage::timage(const config& cfg)
-	: x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
-	, src_clip_()
-	, image_()
-	, image_name_(cfg["name"])
-	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
-	, vertical_mirror_(cfg["vertical_mirror"])
-{
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -1031,8 +1023,10 @@ timage::timage(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x & f_unsigned & 0 &            The x coordinate of the top left corner. $
- *     y & f_unsigned & 0 &            The y coordinate of the top left corner. $
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner.
+ *                                     $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner.
+ *                                     $
  *     w & f_unsigned & 0 &            The width of the image, if not zero the
  *                                     image will be scaled to the desired
  *                                     width. $
@@ -1043,7 +1037,8 @@ timage::timage(const config& cfg)
  *                                     Determines how an image is scaled to fit
  *                                     the wanted size. $
  *     vertical_mirror & f_bool & false &
- *                                     Mirror the image over the vertical axis. $
+ *                                     Mirror the image over the vertical axis.
+ *                                     $
  *     name & f_string & "" &          The name of the image. $
  *     debug & string & "" &           Debug message to show upon creation
  *                                     this message is not stored. $
@@ -1075,7 +1070,17 @@ timage::timage(const config& cfg)
  * @end{table}
  * Also the general variables are available, see [[#general_variables|Line]].
  */
-
+timage::timage(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, src_clip_()
+	, image_()
+	, image_name_(cfg["name"])
+	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
+	, vertical_mirror_(cfg["vertical_mirror"])
+{
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Image: found debug message '" << debug << "'.\n";
@@ -1297,22 +1302,6 @@ private:
 	tformula<int> maximum_height_;
 };
 
-ttext::ttext(const config& cfg)
-	: x_(cfg["x"])
-	, y_(cfg["y"])
-	, w_(cfg["w"])
-	, h_(cfg["h"])
-	, font_size_(cfg["font_size"])
-	, font_style_(decode_font_style(cfg["font_style"]))
-	, text_alignment_(cfg["text_alignment"])
-	, color_(decode_color(cfg["color"]))
-	, text_(cfg["text"])
-	, text_markup_(cfg["text_markup"], false)
-	, maximum_width_(cfg["maximum_width"], -1)
-	, characters_per_line_(cfg["text_characters_per_line"])
-	, maximum_height_(cfg["maximum_height"], -1)
-{
-
 /*WIKI
  * @page = GUICanvasWML
  *
@@ -1322,8 +1311,9 @@ ttext::ttext(const config& cfg)
  *
  * Keys:
  * @begin{table}{config}
- *     x & f_unsigned & 0 &            The x coordinate of the top left corner. $
- *     y & f_unsigned & 0 &            The y coordinate of the top left corner. $
+ *     x & f_unsigned & 0 &            The x coordinate of the top left corner.
+ *                                     $
+ *     y & f_unsigned & 0 &            The y coordinate of the top left corner.
  *     w & f_unsigned & 0 &            The width of the text's bounding
  *                                     rectangle. $
  *     h & f_unsigned & 0 &            The height of the text's bounding
@@ -1357,6 +1347,21 @@ ttext::ttext(const config& cfg)
  * @end{parent}{name="generic/state/draw/"}
  */
 
+ttext::ttext(const config& cfg)
+	: x_(cfg["x"])
+	, y_(cfg["y"])
+	, w_(cfg["w"])
+	, h_(cfg["h"])
+	, font_size_(cfg["font_size"])
+	, font_style_(decode_font_style(cfg["font_style"]))
+	, text_alignment_(cfg["text_alignment"])
+	, color_(decode_color(cfg["color"]))
+	, text_(cfg["text"])
+	, text_markup_(cfg["text_markup"], false)
+	, maximum_width_(cfg["maximum_width"], -1)
+	, characters_per_line_(cfg["text_characters_per_line"])
+	, maximum_height_(cfg["maximum_height"], -1)
+{
 	VALIDATE(font_size_, _("Text has a font size of 0."));
 
 	const std::string& debug = (cfg["debug"]);
@@ -1553,6 +1558,7 @@ void tcanvas::parse_cfg(const config& cfg)
 /***** ***** ***** ***** ***** SHAPE ***** ***** ***** ***** *****/
 
 } // namespace gui2
+
 /*WIKI
  * @page = GUICanvasWML
  * @order = ZZZZZZ_footer
