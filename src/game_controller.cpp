@@ -296,14 +296,10 @@ bool game_controller::init_joystick()
 
 	SDL_JoystickEventState(SDL_ENABLE);
 
-	SDL_Joystick* joystick;
-
 	bool joystick_found = false;
 	for (int i = 0; i<joysticks; i++)  {
 
-		joystick = SDL_JoystickOpen(i);
-
-		if (joystick)
+		if (SDL_JoystickOpen(i))
 			joystick_found = true;
 	}
 	return joystick_found;
