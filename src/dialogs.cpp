@@ -1121,6 +1121,10 @@ void unit_preview_pane::draw_contents()
 			BOOST_FOREACH(const std::string& overlay, det.overlays) {
 				surface os = image::get_image(overlay);
 
+				if(!os) {
+					continue;
+				}
+
 				if(os->w > rect.w || os->h > rect.h) {
 					os = scale_surface(os, rect.w, rect.h, false);
 				}

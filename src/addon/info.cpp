@@ -83,6 +83,7 @@ void addon_info::read(const config& cfg)
 	this->feedback_url = cfg["feedback_url"].str();
 
 	this->updated = cfg["timestamp"].to_time_t();
+	this->created = cfg["original_timestamp"].to_time_t();
 }
 
 void addon_info::write(config& cfg) const
@@ -106,6 +107,7 @@ void addon_info::write(config& cfg) const
 	cfg["feedback_url"] = this->feedback_url;
 
 	cfg["timestamp"] = this->updated;
+	cfg["original_timestamp"] = this->created;
 }
 
 void addon_info::write_minimal(config& cfg) const

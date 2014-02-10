@@ -18,7 +18,8 @@
 #include "game_preferences.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -56,11 +57,10 @@ static void set_do_not_show_again(const bool do_not_show_again)
 
 tmp_host_game_prompt::tmp_host_game_prompt()
 {
-	register_bool("do_not_show_again"
-			, true
-			, &get_do_not_show_again
-			, &set_do_not_show_again);
+	register_bool("do_not_show_again",
+				  true,
+				  &get_do_not_show_again,
+				  &set_do_not_show_again);
 }
 
 } // namespace gui2
-

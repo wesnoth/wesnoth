@@ -12,6 +12,8 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gettext.hpp"
 #include "hotkey_command.hpp"
 #include "hotkey_item.hpp"
@@ -324,7 +326,7 @@ bool remove_wml_hotkey(const std::string& id)
 	else
 	{
 		LOG_G << "removing wml hotkey with id=" + id + "\n";
-		for(boost::ptr_vector<hotkey_command>::iterator itor = known_hotkeys.begin(); itor != known_hotkeys.end(); itor ++)
+		for(boost::ptr_vector<hotkey_command>::iterator itor = known_hotkeys.begin(); itor != known_hotkeys.end(); ++itor)
 		{
 			if(itor->command == id)
 			{

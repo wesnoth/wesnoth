@@ -17,19 +17,20 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_repeating_button
-	: public tbuilder_control
+struct tbuilder_repeating_button : public tbuilder_control
 {
 public:
 	explicit tbuilder_repeating_button(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 };
 
 } // namespace implementation
@@ -37,4 +38,3 @@ public:
 } // namespace gui2
 
 #endif
-

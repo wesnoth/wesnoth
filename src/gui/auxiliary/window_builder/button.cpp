@@ -21,9 +21,11 @@
 #include "gui/auxiliary/window_builder/helper.hpp"
 #include "gui/widgets/button.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_button::tbuilder_button(const config& cfg)
 	: tbuilder_control(cfg)
@@ -40,9 +42,8 @@ twidget* tbuilder_button::build() const
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI_G << "Window builder: placed button '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed button '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -88,4 +89,3 @@ twidget* tbuilder_button::build() const
  * @end{tag}{name="button"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

@@ -20,28 +20,34 @@
 #include "addon/info.hpp"
 #include "addon/state.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class taddon_description : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
 	 * @param addon_id            The requested add-on's id.
-	 * @param addons_list         Complete list of add-ons including the requested add-on
-	 *                            and its dependencies.
-	 * @param addon_states        Local installation status of the add-ons in @a addons_list.
+	 * @param addons_list         Complete list of add-ons including the
+	 *                            requested add-on and its dependencies.
+	 * @param addon_states        Local installation status of the add-ons in
+	 *                            @a addons_list.
 	 */
-	taddon_description(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states);
+	taddon_description(const std::string& addon_id,
+					   const addons_list& addons_list,
+					   const addons_tracking_list& addon_states);
 
 	/**
 	 * The display function.
 	 *
 	 * See @ref tdialog for more information.
 	 */
-	static void display(const std::string& addon_id, const addons_list& addons_list, const addons_tracking_list& addon_states, CVideo& video)
+	static void display(const std::string& addon_id,
+						const addons_list& addons_list,
+						const addons_tracking_list& addon_states,
+						CVideo& video)
 	{
 		taddon_description(addon_id, addons_list, addon_states).show(video);
 	}
@@ -58,7 +64,6 @@ private:
 	void browse_url_callback();
 	void copy_url_callback();
 };
-
 }
 
 #endif

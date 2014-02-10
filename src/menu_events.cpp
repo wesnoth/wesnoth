@@ -418,8 +418,10 @@ void menu_handler::save_map()
 	std::string input_name = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps/");
 	int res = 0;
 	int overwrite = 1;
+	std::string untitled_str = _("Untitled");
+	untitled_str += ".map";
 	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
+		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), untitled_str);
 		if (res == 0) {
 
 			if (file_exists(input_name)) {
@@ -1923,7 +1925,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		using chmap::get_commands_list;
 
 	protected:
-		//chat_command_handler's init_map() and hanlers will end up calling these.
+		//chat_command_handler's init_map() and handlers will end up calling these.
 		//this makes sure the commands end up in our map
 		virtual void register_command(const std::string& cmd,
 			chat_command_handler::command_handler h, const std::string& help="",

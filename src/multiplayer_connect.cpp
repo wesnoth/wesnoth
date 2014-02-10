@@ -290,10 +290,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 void connect::side::update_faction_combo()
 {
 	std::vector<std::string> factions;
-	const std::vector<const config*>& choosable =
-		engine_->flg().choosable_factions();
-
-	BOOST_FOREACH(const config* faction, choosable) {
+	BOOST_FOREACH(const config* faction, engine_->flg().choosable_factions()) {
 		const std::string& name = (*faction)["name"];
 		const std::string& icon = (*faction)["image"];
 		if (!icon.empty()) {

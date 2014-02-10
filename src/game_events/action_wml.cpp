@@ -2416,7 +2416,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	if (!to_variable.blank())
 	{
 		parsed_cfg.remove_attribute("to_variable");
-		unit new_unit(parsed_cfg, true, resources::state_of_game);
+		unit new_unit(parsed_cfg, true);
 		config &var = resources::gamedata->get_variable_cfg(to_variable);
 		var.clear();
 		new_unit.write(var);

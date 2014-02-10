@@ -17,16 +17,15 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_login : public tdialog
 {
 public:
-	tmp_login(const std::string& label,
-		const bool focus_password);
+	tmp_login(const std::string& label, const bool focus_password);
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -40,4 +39,3 @@ private:
 } // namespace gui2
 
 #endif
-

@@ -17,7 +17,8 @@
 
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -47,4 +48,3 @@ teditor_new_map::teditor_new_map(int& width, int& height)
 }
 
 } // namespace gui2
-

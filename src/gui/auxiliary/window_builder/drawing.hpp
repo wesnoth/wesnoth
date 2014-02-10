@@ -18,18 +18,19 @@
 #include "config.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_drawing
-	: public tbuilder_control
+struct tbuilder_drawing : public tbuilder_control
 {
 	explicit tbuilder_drawing(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 	/** The width of the widget. */
 	tformula<unsigned> width;
@@ -46,4 +47,3 @@ struct tbuilder_drawing
 } // namespace gui2
 
 #endif
-

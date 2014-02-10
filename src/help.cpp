@@ -1938,7 +1938,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		}
 	}
 
-	for (std::map<std::string, section>::const_iterator it = base_map.begin(); it != base_map.end(); it++) {
+	for (std::map<std::string, section>::const_iterator it = base_map.begin(); it != base_map.end(); ++it) {
 		sec.add_section(it->second);
 	}
 }

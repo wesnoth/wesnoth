@@ -405,6 +405,11 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WEXTRA_SEMI
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wconditional-uninitialized"
+	HAS_COMPILER_FLAG_WCONDITIONAL_INITIALIZED
+)
 
 ### Set the final compiler flags.
 

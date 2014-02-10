@@ -17,22 +17,20 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /** Shows a transient message. */
-class ttransient_message
-	: public tdialog
+class ttransient_message : public tdialog
 {
 public:
-
-	ttransient_message(const std::string& title
-			, const bool title_use_markup
-			, const std::string& message
-			, const bool message_use_markup
-			, const std::string& image);
+	ttransient_message(const std::string& title,
+					   const bool title_use_markup,
+					   const std::string& message,
+					   const bool message_use_markup,
+					   const std::string& image);
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -54,12 +52,12 @@ private:
  * @param message_use_markup  Use markup for the message?
  * @param title_use_markup    Use markup for the title?
  */
-void show_transient_message(CVideo& video
-		, const std::string& title
-		, const std::string& message
-		, const std::string& image = std::string()
-		, const bool message_use_markup = false
-		, const bool title_use_markup = false);
+void show_transient_message(CVideo& video,
+							const std::string& title,
+							const std::string& message,
+							const std::string& image = std::string(),
+							const bool message_use_markup = false,
+							const bool title_use_markup = false);
 
 /**
  * Shows a transient error message to the user.
@@ -73,12 +71,11 @@ void show_transient_message(CVideo& video
  * @param image               An image to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  */
-void show_transient_error_message(CVideo& video
-		, const std::string& message
-		, const std::string& image = std::string()
-		, const bool message_use_markup = false);
+void show_transient_error_message(CVideo& video,
+								  const std::string& message,
+								  const std::string& image = std::string(),
+								  const bool message_use_markup = false);
 
 } // namespace gui2
 
 #endif
-

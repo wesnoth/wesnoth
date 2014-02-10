@@ -51,6 +51,7 @@ struct addon_info
 	std::string feedback_url;
 
 	time_t updated;
+	time_t created;
 
 	// Artificial upload order index used to preserve add-ons upload order
 	// until we have actual first-upload timestamps implemented. This index
@@ -63,7 +64,9 @@ struct addon_info
 		, uploads(), type(), locales()
 		, depends()
 		, feedback_url()
-		, updated(), order()
+		, updated()
+		, created()
+		, order()
 	{}
 
 	explicit addon_info(const config& cfg)
@@ -72,7 +75,9 @@ struct addon_info
 		, uploads(), type(), locales()
 		, depends()
 		, feedback_url()
-		, updated(), order()
+		, updated()
+		, created()
+		, order()
 	{
 		this->read(cfg);
 	}
@@ -93,6 +98,7 @@ struct addon_info
 			this->depends = o.depends;
 			this->feedback_url = o.feedback_url;
 			this->updated = o.updated;
+			this->created = o.created;
 			this->order = o.order;
 		}
 		return *this;

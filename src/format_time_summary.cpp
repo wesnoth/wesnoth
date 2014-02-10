@@ -62,7 +62,7 @@ std::string format_time_summary(time_t t) {
 		}
 	} else {
 		// save is from a different year
-		format_string = _("%b %d %y");
+		format_string = _("%b %d %Y");
 	}
 	assert(format_string);
 

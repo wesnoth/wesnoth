@@ -375,7 +375,7 @@ theme::object::ANCHORING theme::object::read_anchor(const std::string& str)
 {
 	static const std::string top_anchor = "top", left_anchor = "left",
 	                         bot_anchor = "bottom", right_anchor = "right",
-							 fixed_anchor = "fixed", proportional_anchor = "proportional";
+							 proportional_anchor = "proportional";
 	if(str == top_anchor || str == left_anchor)
 		return TOP_ANCHORED;
 	else if(str == bot_anchor || str == right_anchor)

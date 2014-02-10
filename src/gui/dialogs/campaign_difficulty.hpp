@@ -20,19 +20,22 @@
 #include "gui/auxiliary/old_markup.hpp"
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
 class tcampaign_difficulty : public tdialog
 {
 public:
-	explicit tcampaign_difficulty(
-			  const std::vector<std::string>& items);
+	explicit tcampaign_difficulty(const std::vector<std::string>& items);
 
 	/**
 	 * Returns the selected item index after displaying.
 	 * @return -1 if the dialog was canceled.
 	 */
-	int selected_index() const { return index_; }
+	int selected_index() const
+	{
+		return index_;
+	}
 
 private:
 	int index_;
@@ -47,8 +50,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 };
-
-
 }
 
 

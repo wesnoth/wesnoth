@@ -59,7 +59,7 @@ public:
 	// matching the criteria.
 	int find_suitable_faction(const std::string& faction_id = "") const;
 
-	const std::vector<const config*> choosable_factions() const
+	const std::vector<const config*>& choosable_factions() const
 		{ return choosable_factions_; }
 	const std::vector<std::string>& choosable_leaders() const
 		{ return choosable_leaders_; }

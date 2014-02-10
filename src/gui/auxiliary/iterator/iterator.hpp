@@ -24,29 +24,27 @@
 
 #include "gui/auxiliary/iterator/policy_order.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
 /**
  * The iterator class.
  *
  * See @ref gui2_iterator_iterator for more information.
  */
-template<class order>
-class titerator
-	: private order
-	, private boost::noncopyable
+template <class order>
+class titerator : private order, private boost::noncopyable
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
 	 * @param root                The widget where to start the iteration.
 	 */
-	titerator(twidget& root)
-		: order(root)
+	titerator(twidget& root) : order(root)
 	{
 	}
 
@@ -57,7 +55,10 @@ public:
 	 * @retval [true]             At the end.
 	 * @retval [false]            Not at the end.
 	 */
-	bool at_end() const { return order::at_end(); }
+	bool at_end() const
+	{
+		return order::at_end();
+	}
 
 	/**
 	 * Visit the next widget.
@@ -71,7 +72,10 @@ public:
 	 * @returns                   Whether the next widget can be safely
 	 *                            deferred.
 	 */
-	bool next() { return order::next(); }
+	bool next()
+	{
+		return order::next();
+	}
 
 	/** See @ref next. */
 	titerator<order>& operator++()
@@ -85,7 +89,10 @@ public:
 	 *
 	 * @returns                   The current widget.
 	 */
-	twidget& operator*() { return order::operator*(); }
+	twidget& operator*()
+	{
+		return order::operator*();
+	}
 
 	/** See @ref operator*. */
 	twidget* operator->()
@@ -99,4 +106,3 @@ public:
 } // namespace gui2
 
 #endif
-

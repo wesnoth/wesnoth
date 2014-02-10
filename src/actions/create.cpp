@@ -135,9 +135,8 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	BOOST_FOREACH(std::string place, placements) {
+	BOOST_FOREACH(const std::string& place, placements) {
 		map_location loc;
-		bool pass((place == "leader_passable") || (place == "map_passable"));
 
 		if ( place == "recall" ) {
 			return map_location::null_location;
@@ -159,6 +158,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		}
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
+			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : NULL);
@@ -190,7 +190,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	if ( recall_list_element == recall_list.end() ) {
 		//make a temporary unit
-		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
+		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
 		if ( loc.valid() ) {
 			unit *new_unit = temp_unit.get();

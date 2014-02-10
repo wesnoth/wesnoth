@@ -210,7 +210,7 @@ void manager::layout_widgets(int startx, int starty)
 void manager::process_event()
 {
 	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
-		 i != widgets_.end(); i++)
+		 i != widgets_.end(); ++i)
 	{
 		i->second->process_event();
 	}
@@ -219,7 +219,7 @@ void manager::process_event()
 void manager::hide_children(bool hide)
 {
 	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
-		 i != widgets_.end(); i++)
+		 i != widgets_.end(); ++i)
 	{
 		i->second->hide_children(hide);
 	}

@@ -1,26 +1,26 @@
 #!/bin/sh
-if ! [ $# -ge 2 ]; then
-	echo "Syntax: $0 <server version> <command [arguments]>" >&2
-	exit 1
-fi
+die() {	echo >&2 "$@"; exit 1; }
+notfound() { echo >&2 "$SOCKET not found, sending to the '$1'."; SOCKET=$SERVERBASE/$1/var/run/socket; }
+
+[ $# -ge 1 ] || die "Syntax: $0 <server version> <command [arguments]>"
 
 SERVER=$1
 SERVERBASE=$HOME/servers/$SERVER
 SOCKET=$SERVERBASE/build/var/run/socket
-if ! [ -d "$SERVERBASE" ]; then
-	echo "Server '$SERVER' not found." >&2
-	exit 1
-fi
-if ! [ -e $SOCKET ]; then
-	echo "$SOCKET not found, using the 'oldbuild'." >&2
-	SOCKET=$SERVERBASE/oldbuild/var/run/socket
-fi
-if ! [ -p $SOCKET ]; then
-	echo "$SOCKET is not a named pipe (fifo)." >&2
-	echo "Is the $SERVER server running?" >&2
-	exit 1
-fi
+
+[ -d "$SERVERBASE" ] || die "Server '$SERVER' not found."
+
+[ -e $SOCKET ] || { notfound oldbuild; [ -e $SOCKET ] || notfound revertedbuild; }
+[ -p $SOCKET ] || die "$SOCKET is not a named pipe (fifo).
+Is the $SERVER server running?"
 
 shift
-echo $* > $SOCKET
+echo "$@" > $SOCKET
 
+# hack to start the irc echo for the old instance on a restart
+case "$1" in
+restart*)
+	# delay for a bit to make sure we get the right log file since log rotation is also delayed
+	sleep 10
+	screen -S wesnoth-mp-servers -X eval "select lobby-echo" "stuff /wl-old $SERVER\012" ;;
+esac

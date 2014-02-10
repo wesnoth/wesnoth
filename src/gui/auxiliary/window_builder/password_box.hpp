@@ -17,21 +17,22 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 // copy & paste from tbuilder_text_box...
 // does it make more sense to inherit from it?
-struct tbuilder_password_box
-	: public tbuilder_control
+struct tbuilder_password_box : public tbuilder_control
 {
 public:
 	explicit tbuilder_password_box(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 private:
 	std::string history_;
@@ -42,4 +43,3 @@ private:
 } // namespace gui2
 
 #endif
-

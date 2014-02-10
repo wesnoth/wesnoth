@@ -253,14 +253,6 @@ private:
 	size_t check_open_map(const std::string& fn) const;
 
 	/**
-	 * check_open_map shorthand
-	 * @return true if the map is open, false otherwise
-	 */
-	bool map_is_open(const std::string& fn) const {
-		return check_open_map(fn) < map_contexts_.size();
-	}
-
-	/**
 	 * Check if a map is already open. If yes, switch to it
 	 * and return true, return false otherwise.
 	 */

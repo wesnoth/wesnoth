@@ -17,12 +17,13 @@
 
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_viewport
-	: public tbuilder_widget
+struct tbuilder_viewport : public tbuilder_widget
 {
 	explicit tbuilder_viewport(const config& cfg);
 
@@ -31,7 +32,6 @@ struct tbuilder_viewport
 	twidget* build(const treplacements& replacements) const;
 
 	tbuilder_widget_ptr widget;
-
 };
 
 } // namespace implementation
@@ -39,4 +39,3 @@ struct tbuilder_viewport
 } // namespace gui2
 
 #endif
-

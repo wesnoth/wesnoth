@@ -21,7 +21,7 @@ import urllib2
 
 #TODO: document and log where missing
 
-class Error(Exception):
+class Error(StandardError):
     """Base class for exceptions in this module."""
     pass
 
@@ -585,8 +585,14 @@ def _gen(possible_dirs):
         realish_github = GitHub(tempfile.mkdtemp(),"system")
         build_system = realish_github.addon("build", readonly=True)
         return build_system, True
-    bs, fresh = _get_build_system(possible_dirs)
-    bs.update()
+    try:
+        bs, fresh = _get_build_system(possible_dirs)
+        bs.update()
+    except Error as e:
+        # Exception to make sure nobody catches it
+        # Use raise ... from syntax in python3
+        import sys
+        raise Exception(str(e)), None, sys.exc_info()[2]
     # Add references to shutil and os to ensure we're destructed before they are
     stored_shutil = shutil
     stored_os = os

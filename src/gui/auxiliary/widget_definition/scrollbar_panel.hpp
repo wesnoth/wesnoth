@@ -18,16 +18,15 @@
 #include "gui/auxiliary/widget_definition.hpp"
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-struct tscrollbar_panel_definition
-	: public tcontrol_definition
+struct tscrollbar_panel_definition : public tcontrol_definition
 {
 
 	explicit tscrollbar_panel_definition(const config& cfg);
 
-	struct tresolution
-		: public tresolution_definition_
+	struct tresolution : public tresolution_definition_
 	{
 		explicit tresolution(const config& cfg);
 
@@ -38,4 +37,3 @@ struct tscrollbar_panel_definition
 } // namespace gui2
 
 #endif
-

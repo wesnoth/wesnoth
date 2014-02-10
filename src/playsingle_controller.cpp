@@ -752,6 +752,9 @@ struct set_completion
 void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
+	// TODO this seemed the right way to handle bug #21450
+	// but it is causing to end scenario button to be disabled
+	//const events::command_disabler disable_commands;
 	browse_ = true;
 	linger_ = true;
 

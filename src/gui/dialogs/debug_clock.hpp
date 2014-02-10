@@ -19,7 +19,8 @@
 
 #include "gui/auxiliary/event/dispatcher.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tcontrol;
 class tpane;
@@ -27,8 +28,7 @@ class tprogress_bar;
 class tinteger_selector_;
 
 /** Clock to test the draw events. */
-class tdebug_clock
-	: public tpopup
+class tdebug_clock : public tpopup
 {
 public:
 	tdebug_clock()
@@ -48,7 +48,6 @@ public:
 	}
 
 private:
-
 	/** Progress bar for displaying the hours as a percentage. */
 	tprogress_bar* hour_percentage_;
 
@@ -149,4 +148,3 @@ private:
 } // namespace gui2
 
 #endif
-

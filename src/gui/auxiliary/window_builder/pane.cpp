@@ -21,14 +21,16 @@
 #include "gui/widgets/pane.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_pane::tbuilder_pane(const config& cfg)
 	: tbuilder_widget(cfg)
 	, grow_direction(
-			lexical_cast<tplacer_::tgrow_direction>(cfg["grow_direction"]))
+			  lexical_cast<tplacer_::tgrow_direction>(cfg["grow_direction"]))
 	, parallel_items(cfg["parallel_items"])
 	, item_definition(new tbuilder_grid(cfg.child("item_definition", "[pane]")))
 {

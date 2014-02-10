@@ -20,12 +20,13 @@
 
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_matrix
-	: public tbuilder_control
+struct tbuilder_matrix : public tbuilder_control
 {
 	explicit tbuilder_matrix(const config& cfg);
 

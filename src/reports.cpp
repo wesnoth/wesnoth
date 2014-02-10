@@ -417,7 +417,6 @@ static config unit_hp(const unit* u)
 		<< '/' << u->max_hitpoints() << naps;
 
 	std::set<std::string> resistances_table;
-	utils::string_map resistances = u->get_base_resistances();
 
 	bool att_def_diff = false;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
@@ -605,7 +604,6 @@ static config unit_moves(const unit* u)
 		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 
 			const std::string& name = info.name();
-			const std::string id = info.id();
 			const int moves = u->movement_cost(terrain);
 
 			tooltip << name << ": ";
@@ -1169,8 +1167,8 @@ static config unit_box_at(const map_location& mouseover_hex)
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
 		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
 
-	std::string local_tod_image  = "themes/classic/" + local_tod.image;
-	std::string global_tod_image = "themes/classic/" + global_tod.image;
+	std::string local_tod_image  = "themes/unit_box/" + local_tod.image;
+	std::string global_tod_image = "themes/unit_box/" + global_tod.image;
 	if (local_tod.bonus_modified > 0) local_tod_image += "~BRIGHTEN()";
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";

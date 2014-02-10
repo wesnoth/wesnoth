@@ -17,22 +17,22 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace game_logic {
-	class formula_debugger;
+namespace game_logic
+{
+class formula_debugger;
 }
 
-namespace gui2 {
+namespace gui2
+{
 
-class tformula_debugger
-	: public tdialog
+class tformula_debugger : public tdialog
 {
 public:
-	explicit tformula_debugger(game_logic::formula_debugger &fdb) :
-		fdb_(fdb)
-	{}
+	explicit tformula_debugger(game_logic::formula_debugger& fdb) : fdb_(fdb)
+	{
+	}
 
 private:
-
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 
@@ -48,8 +48,7 @@ private:
 
 	void callback_stepout_button(twindow& window);
 
-	game_logic::formula_debugger &fdb_;
-
+	game_logic::formula_debugger& fdb_;
 };
 
 } // namespace gui2

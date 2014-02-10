@@ -17,18 +17,19 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_spacer
-	: public tbuilder_control
+struct tbuilder_spacer : public tbuilder_control
 {
 	explicit tbuilder_spacer(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 private:
 	tformula<unsigned> width_;
@@ -40,4 +41,3 @@ private:
 } // namespace gui2
 
 #endif
-

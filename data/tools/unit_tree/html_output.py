@@ -1,9 +1,10 @@
 #encoding: utf8
 
 import os, gettext, time, copy, sys, re
-
+import traceback
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser2 as wmlparser2
+
 
 pics_location = "../../pics"
 
@@ -774,6 +775,8 @@ class HTMLOutput:
         hp = uval("hitpoints")
         mp = uval("movement")
         xp = uval("experience")
+        vision = uval("vision")
+        jamming = uval("jamming")
         level = uval("level")
         alignment = uval("alignment")
 
@@ -820,14 +823,17 @@ class HTMLOutput:
             ("cost", _("Cost: ", "wesnoth-help")),
             ("hitpoints", _("HP: ")),
             ("movement", _("Movement", "wesnoth-help") + ": "),
+            ("vision", _("Vision", "wesnoth-help") + ": "),
+            ("jamming", _("Jamming", "wesnoth-help") + ":"),
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
             ("alignment", _("Alignment: ")),
             ("id", "ID")]:
+            x = uval(val)
+            if not x and val in ("jamming", "vision"): continue
+            if val == "alignment": x = _(x)
             write("<tr>\n")
             write("<td>%s</td>" % text)
-            x = uval(val)
-            if val == "alignment": x = _(x)
             write("<td class=\"val\">%s</td>" % x)
             write("</tr>\n")
 
@@ -1108,14 +1114,22 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in wesnoth.unit_lookup.items():
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        filename = os.path.join(path, "%s.html" % (uid.encode("utf8")))
+        
+        try:
+            htmlname = u"%s.html" % uid
+            filename = os.path.join(path, htmlname).encode("utf8")
 
-        # We probably can come up with something better.
-        if os.path.exists(filename):
-            age = time.time() - os.path.getmtime(filename)
-            # was modified in the last 12 hours - we should be ok
-            if age < 3600 * 12: continue
-
+            # We probably can come up with something better.
+            if os.path.exists(filename):
+                age = time.time() - os.path.getmtime(filename)
+                # was modified in the last 12 hours - we should be ok
+                if age < 3600 * 12: continue
+        except (UnicodeDecodeError, UnicodeEncodeError) as e:
+            traceback.print_exc()
+            error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
+            error_message(str(e) + "\n")
+            continue
+        
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)

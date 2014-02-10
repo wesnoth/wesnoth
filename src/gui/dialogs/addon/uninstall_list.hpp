@@ -19,12 +19,12 @@
 
 #include <map>
 
-namespace gui2 {
+namespace gui2
+{
 
 class taddon_uninstall_list : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -32,8 +32,11 @@ public:
 	 *                        Internal id <-> user-visible title mappings for
 	 *                        the add-ons to display.
 	 */
-	explicit taddon_uninstall_list(const std::map<std::string, std::string>& addon_titles_map)
-		: titles_map_(addon_titles_map), ids_(), selections_() {}
+	explicit taddon_uninstall_list(
+			const std::map<std::string, std::string>& addon_titles_map)
+		: titles_map_(addon_titles_map), ids_(), selections_()
+	{
+	}
 
 	std::vector<std::string> selected_addons() const;
 

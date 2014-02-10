@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class ttoggle_button;
 
@@ -64,29 +65,24 @@ public:
 	 *                              toggle if the dialog returns @ref
 	 *                              twindow::OK undefined otherwise.
 	 */
-	teditor_resize_map(
-			  int& width
-			, int& height
-			, EXPAND_DIRECTION& expand_direction
-			, bool& copy_edge_terrain);
+	teditor_resize_map(int& width,
+					   int& height,
+					   EXPAND_DIRECTION& expand_direction,
+					   bool& copy_edge_terrain);
 
 	/** The execute function see @ref tdialog for more information. */
-	static bool execute(
-			  int& width
-			, int& height
-			, EXPAND_DIRECTION& expand_direction
-			, bool& copy_edge_terrain
-			, CVideo& video)
+	static bool execute(int& width,
+						int& height,
+						EXPAND_DIRECTION& expand_direction,
+						bool& copy_edge_terrain,
+						CVideo& video)
 	{
 		return teditor_resize_map(
-				  width
-				, height
-				, expand_direction
-				, copy_edge_terrain).show(video);
+					   width, height, expand_direction, copy_edge_terrain)
+				.show(video);
 	}
 
 private:
-
 	/** The currently selected width. */
 	tfield_integer* width_;
 
@@ -124,4 +120,3 @@ private:
 } // namespace gui2
 
 #endif
-

@@ -187,9 +187,6 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 		select_mod_.set_label(_("Deactivate"));
 	}
 
-	utils::string_map i18n_symbols;
-	i18n_symbols["login"] = preferences::login();
-
 	gamelist_updated();
 }
 

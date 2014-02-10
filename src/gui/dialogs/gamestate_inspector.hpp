@@ -20,14 +20,16 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
-class tgamestate_inspector : public tdialog {
+class tgamestate_inspector : public tdialog
+{
 public:
 	class model;
 	class view;
 	class controller;
-	explicit tgamestate_inspector(const vconfig &cfg);
+	explicit tgamestate_inspector(const vconfig& cfg);
 
 	boost::shared_ptr<view> get_view();
 
@@ -39,9 +41,7 @@ private:
 	virtual const std::string& window_id() const;
 
 	boost::shared_ptr<view> view_;
-
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_GAMESTATE_INSPECTOR_HPP_INCLUDED */

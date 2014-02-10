@@ -50,9 +50,11 @@
 /* Since this code is still very experimental it's not enabled yet. */
 //#define ENABLE
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace event {
+namespace event
+{
 
 /***** Static data. *****/
 class thandler;
@@ -74,7 +76,7 @@ static unsigned event_poll_interval = 0;
  */
 static Uint32 timer_sdl_draw_event(Uint32, void*)
 {
-//	DBG_GUI_E << "Pushing draw event in queue.\n";
+	// DBG_GUI_E << "Pushing draw event in queue.\n";
 
 	SDL_Event event;
 	SDL_UserEvent data;
@@ -100,9 +102,12 @@ static Uint32 timer_sdl_draw_event(Uint32, void*)
  */
 static Uint32 timer_sdl_poll_events(Uint32, void*)
 {
-	try {
+	try
+	{
 		events::pump();
-	} catch(CVideo::quit&) {
+	}
+	catch(CVideo::quit&)
+	{
 		return 0;
 	}
 	return event_poll_interval;
@@ -116,10 +121,10 @@ static Uint32 timer_sdl_poll_events(Uint32, void*)
  *
  * It's a new experimental class.
  */
-class thandler
-	: public events::handler
+class thandler : public events::handler
 {
 	friend bool gui2::is_in_dialog();
+
 public:
 	thandler();
 
@@ -146,7 +151,6 @@ public:
 	tdispatcher* mouse_focus;
 
 private:
-
 	/**
 	 * Reinitializes the state of all dispatchers.
 	 *
@@ -241,9 +245,8 @@ private:
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
 	 */
-	void key_down(const SDLKey key
-			, const SDLMod modifier
-			, const Uint16 unicode);
+	void
+	key_down(const SDLKey key, const SDLMod modifier, const Uint16 unicode);
 
 	/**
 	 * Fires a keyboard event which has no parameters.
@@ -284,7 +287,7 @@ thandler::thandler()
 		}
 	}
 
-	// The event context is created now we join it.
+// The event context is created now we join it.
 #ifdef ENABLE
 	join();
 #endif
@@ -310,13 +313,13 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case SDL_MOUSEBUTTONDOWN:
-			mouse_button_down(tpoint(event.button.x, event.button.y)
-					, event.button.button);
+			mouse_button_down(tpoint(event.button.x, event.button.y),
+							  event.button.button);
 			break;
 
 		case SDL_MOUSEBUTTONUP:
-			mouse_button_up(tpoint(event.button.x, event.button.y)
-					, event.button.button);
+			mouse_button_up(tpoint(event.button.x, event.button.y),
+							event.button.button);
 			break;
 
 		case SHOW_HELPTIP_EVENT:
@@ -324,7 +327,7 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		case HOVER_REMOVE_POPUP_EVENT:
-//			remove_popup();
+			// remove_popup();
 			break;
 
 		case DRAW_EVENT:
@@ -335,17 +338,15 @@ void thandler::handle_event(const SDL_Event& event)
 			execute_timer(reinterpret_cast<size_t>(event.user.data1));
 			break;
 
-		case CLOSE_WINDOW_EVENT:
-				{
-					/** @todo Convert this to a proper new style event. */
-					DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
+		case CLOSE_WINDOW_EVENT: {
+			/** @todo Convert this to a proper new style event. */
+			DBG_GUI_E << "Firing " << CLOSE_WINDOW << ".\n";
 
-					twindow* window = twindow::window_instance(event.user.code);
-					if(window) {
-						window->set_retval(twindow::AUTO_CLOSE);
-					}
-				}
-			break;
+			twindow* window = twindow::window_instance(event.user.code);
+			if(window) {
+				window->set_retval(twindow::AUTO_CLOSE);
+			}
+		} break;
 
 		case SDL_JOYBUTTONDOWN:
 			button_down(event.jbutton);
@@ -373,7 +374,7 @@ void thandler::handle_event(const SDL_Event& event)
 			video_resize(tpoint(event.resize.w, event.resize.h));
 			break;
 
-#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
+#if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
 			/* DO NOTHING */
 			break;
@@ -389,8 +390,8 @@ void thandler::handle_event(const SDL_Event& event)
 			break;
 
 		default:
-			WRN_GUI_E << "Unhandled event "
-					<< static_cast<Uint32>(event.type) << ".\n";
+			WRN_GUI_E << "Unhandled event " << static_cast<Uint32>(event.type)
+					  << ".\n";
 			break;
 	}
 }
@@ -398,7 +399,7 @@ void thandler::handle_event(const SDL_Event& event)
 void thandler::connect(tdispatcher* dispatcher)
 {
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
-			== dispatchers_.end());
+		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
 		event_context = new events::event_context();
@@ -411,8 +412,8 @@ void thandler::connect(tdispatcher* dispatcher)
 void thandler::disconnect(tdispatcher* dispatcher)
 {
 	/***** Validate pre conditions. *****/
-	std::vector<tdispatcher*>::iterator itor =
-			std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher);
+	std::vector<tdispatcher*>::iterator itor
+			= std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher);
 	assert(itor != dispatchers_.end());
 
 	/***** Remove dispatcher. *****/
@@ -426,7 +427,8 @@ void thandler::disconnect(tdispatcher* dispatcher)
 	}
 
 	/***** Set proper state for the other dispatchers. *****/
-	FOREACH(AUTO dispatcher, dispatchers_) {
+	FOREACH(AUTO dispatcher, dispatchers_)
+	{
 		dynamic_cast<twidget&>(*dispatcher).set_is_dirty(true);
 	}
 
@@ -434,7 +436,7 @@ void thandler::disconnect(tdispatcher* dispatcher)
 
 	/***** Validate post conditions. *****/
 	assert(std::find(dispatchers_.begin(), dispatchers_.end(), dispatcher)
-			== dispatchers_.end());
+		   == dispatchers_.end());
 
 	if(dispatchers_.empty()) {
 		leave();
@@ -445,17 +447,17 @@ void thandler::disconnect(tdispatcher* dispatcher)
 
 void thandler::activate()
 {
-	FOREACH(AUTO dispatcher, dispatchers_) {
-		dispatcher->fire(SDL_ACTIVATE
-				, dynamic_cast<twidget&>(*dispatcher)
-				, NULL);
+	FOREACH(AUTO dispatcher, dispatchers_)
+	{
+		dispatcher->fire(
+				SDL_ACTIVATE, dynamic_cast<twidget&>(*dispatcher), NULL);
 	}
 }
 
 void thandler::draw(const bool force)
 {
 	// Don't display this event since it floods the screen
-	//DBG_GUI_E << "Firing " << DRAW << ".\n";
+	// DBG_GUI_E << "Firing " << DRAW << ".\n";
 
 	/*
 	 * In normal draw mode the first window in not forced to be drawn the
@@ -469,7 +471,8 @@ void thandler::draw(const bool force)
 	 *
 	 * For now we use a hack, but would be nice to rewrite it for 1.9/1.11.
 	 */
-	FOREACH(AUTO dispatcher, dispatchers_) {
+	FOREACH(AUTO dispatcher, dispatchers_)
+	{
 		if(!first) {
 			/*
 			 * This leaves glitches on window borders if the window beneath it
@@ -500,10 +503,11 @@ void thandler::video_resize(const tpoint& new_size)
 {
 	DBG_GUI_E << "Firing: " << SDL_VIDEO_RESIZE << ".\n";
 
-	FOREACH(AUTO dispatcher, dispatchers_) {
-		dispatcher->fire(SDL_VIDEO_RESIZE
-				, dynamic_cast<twidget&>(*dispatcher)
-				, new_size);
+	FOREACH(AUTO dispatcher, dispatchers_)
+	{
+		dispatcher->fire(SDL_VIDEO_RESIZE,
+						 dynamic_cast<twidget&>(*dispatcher),
+						 new_size);
 	}
 }
 
@@ -512,27 +516,26 @@ void thandler::mouse(const tevent event, const tpoint& position)
 	DBG_GUI_E << "Firing: " << event << ".\n";
 
 	if(mouse_focus) {
-		mouse_focus->fire(event
-				, dynamic_cast<twidget&>(*mouse_focus)
-				, position);
+		mouse_focus->fire(
+				event, dynamic_cast<twidget&>(*mouse_focus), position);
 	} else {
 
-		for(std::vector<tdispatcher*>::reverse_iterator ritor =
-				dispatchers_.rbegin(); ritor != dispatchers_.rend(); ++ritor) {
+		for(std::vector<tdispatcher*>::reverse_iterator ritor
+			= dispatchers_.rbegin();
+			ritor != dispatchers_.rend();
+			++ritor) {
 
 			if((**ritor).get_mouse_behavior() == tdispatcher::all) {
-				(**ritor).fire(event
-						, dynamic_cast<twidget&>(**ritor)
-						, position);
+				(**ritor)
+						.fire(event, dynamic_cast<twidget&>(**ritor), position);
 				break;
 			}
 			if((**ritor).get_mouse_behavior() == tdispatcher::none) {
 				continue;
 			}
 			if((**ritor).is_at(position)) {
-				(**ritor).fire(event
-						, dynamic_cast<twidget&>(**ritor)
-						, position);
+				(**ritor)
+						.fire(event, dynamic_cast<twidget&>(**ritor), position);
 				break;
 			}
 		}
@@ -542,32 +545,32 @@ void thandler::mouse(const tevent event, const tpoint& position)
 void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 {
 	switch(button) {
-		case SDL_BUTTON_LEFT :
+		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_UP, position);
 			break;
-		case SDL_BUTTON_MIDDLE :
+		case SDL_BUTTON_MIDDLE:
 			mouse(SDL_MIDDLE_BUTTON_UP, position);
 			break;
-		case SDL_BUTTON_RIGHT :
+		case SDL_BUTTON_RIGHT:
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
 
-		case SDL_BUTTON_WHEELLEFT :
+		case SDL_BUTTON_WHEELLEFT:
 			mouse(SDL_WHEEL_LEFT, get_mouse_position());
 			break;
-		case SDL_BUTTON_WHEELRIGHT :
+		case SDL_BUTTON_WHEELRIGHT:
 			mouse(SDL_WHEEL_RIGHT, get_mouse_position());
 			break;
-		case SDL_BUTTON_WHEELUP :
+		case SDL_BUTTON_WHEELUP:
 			mouse(SDL_WHEEL_UP, get_mouse_position());
 			break;
-		case SDL_BUTTON_WHEELDOWN :
+		case SDL_BUTTON_WHEELDOWN:
 			mouse(SDL_WHEEL_DOWN, get_mouse_position());
 			break;
 
 		default:
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
-					<< static_cast<Uint32>(button) << ".\n";
+					  << static_cast<Uint32>(button) << ".\n";
 			break;
 	}
 }
@@ -577,27 +580,25 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 	// The wheel buttons generate and up and down event we handle the
 	// up event so ignore the mouse if it's a down event. Handle it
 	// here to avoid a warning.
-	if(button == SDL_BUTTON_WHEELUP
-			|| button == SDL_BUTTON_WHEELDOWN
-			|| button == SDL_BUTTON_WHEELLEFT
-			|| button == SDL_BUTTON_WHEELRIGHT) {
+	if(button == SDL_BUTTON_WHEELUP || button == SDL_BUTTON_WHEELDOWN
+	   || button == SDL_BUTTON_WHEELLEFT || button == SDL_BUTTON_WHEELRIGHT) {
 
 		return;
 	}
 
 	switch(button) {
-		case SDL_BUTTON_LEFT :
+		case SDL_BUTTON_LEFT:
 			mouse(SDL_LEFT_BUTTON_DOWN, position);
 			break;
-		case SDL_BUTTON_MIDDLE :
+		case SDL_BUTTON_MIDDLE:
 			mouse(SDL_MIDDLE_BUTTON_DOWN, position);
 			break;
-		case SDL_BUTTON_RIGHT :
+		case SDL_BUTTON_RIGHT:
 			mouse(SDL_RIGHT_BUTTON_DOWN, position);
 			break;
 		default:
 			WRN_GUI_E << "Unhandled 'mouse button down' event for button "
-					<< static_cast<Uint32>(button) << ".\n";
+					  << static_cast<Uint32>(button) << ".\n";
 			break;
 	}
 }
@@ -608,8 +609,10 @@ tdispatcher* thandler::keyboard_dispatcher()
 		return keyboard_focus_;
 	}
 
-	for(std::vector<tdispatcher*>::reverse_iterator ritor =
-			dispatchers_.rbegin(); ritor != dispatchers_.rend(); ++ritor) {
+	for(std::vector<tdispatcher*>::reverse_iterator ritor
+		= dispatchers_.rbegin();
+		ritor != dispatchers_.rend();
+		++ritor) {
 
 		if((**ritor).get_want_keyboard_input()) {
 			return *ritor;
@@ -627,7 +630,8 @@ void thandler::hat_motion(const SDL_JoyHatEvent& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-		//TODO fendrin think about handling hat motions that are not bound to a hotkey.
+		// TODO fendrin think about handling hat motions that are not bound to a
+		// hotkey.
 	}
 }
 
@@ -639,7 +643,8 @@ void thandler::button_down(const SDL_JoyButtonEvent& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
-		//TODO fendrin think about handling button down events that are not bound to a hotkey.
+		// TODO fendrin think about handling button down events that are not
+		// bound to a hotkey.
 	}
 }
 
@@ -666,18 +671,18 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
 	return dispatcher->execute_hotkey(hotkey::get_id(key.get_command()));
 }
 
-void thandler::key_down(const SDLKey key
-		, const SDLMod modifier
-		, const Uint16 unicode)
+void thandler::key_down(const SDLKey key,
+						const SDLMod modifier,
+						const Uint16 unicode)
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
 
 	if(tdispatcher* dispatcher = keyboard_dispatcher()) {
-		dispatcher->fire(SDL_KEY_DOWN
-				, dynamic_cast<twidget&>(*dispatcher)
-				, key
-				, modifier
-				, unicode);
+		dispatcher->fire(SDL_KEY_DOWN,
+						 dynamic_cast<twidget&>(*dispatcher),
+						 key,
+						 modifier,
+						 unicode);
 	}
 }
 
@@ -773,54 +778,130 @@ void capture_keyboard(tdispatcher* dispatcher)
 std::ostream& operator<<(std::ostream& stream, const tevent event)
 {
 	switch(event) {
-		case DRAW                   : stream << "draw"; break;
-		case CLOSE_WINDOW           : stream << "close window"; break;
-		case SDL_VIDEO_RESIZE       : stream << "SDL video resize"; break;
-		case SDL_MOUSE_MOTION       : stream << "SDL mouse motion"; break;
-		case MOUSE_ENTER            : stream << "mouse enter"; break;
-		case MOUSE_LEAVE            : stream << "mouse leave"; break;
-		case MOUSE_MOTION           : stream << "mouse motion"; break;
-		case SDL_LEFT_BUTTON_DOWN   : stream << "SDL left button down"; break;
-		case SDL_LEFT_BUTTON_UP     : stream << "SDL left button up"; break;
-		case LEFT_BUTTON_DOWN       : stream << "left button down"; break;
-		case LEFT_BUTTON_UP         : stream << "left button up"; break;
-		case LEFT_BUTTON_CLICK      : stream << "left button click"; break;
-		case LEFT_BUTTON_DOUBLE_CLICK
-		                            : stream << "left button double click";
-		                              break;
-		case SDL_MIDDLE_BUTTON_DOWN : stream << "SDL middle button down"; break;
-		case SDL_MIDDLE_BUTTON_UP   : stream << "SDL middle button up"; break;
-		case MIDDLE_BUTTON_DOWN     : stream << "middle button down"; break;
-		case MIDDLE_BUTTON_UP       : stream << "middle button up"; break;
-		case MIDDLE_BUTTON_CLICK    : stream << "middle button click"; break;
-		case MIDDLE_BUTTON_DOUBLE_CLICK
-		                            : stream << "middle button double click";
-		                              break;
-		case SDL_RIGHT_BUTTON_DOWN  : stream << "SDL right button down"; break;
-		case SDL_RIGHT_BUTTON_UP    : stream << "SDL right button up"; break;
-		case RIGHT_BUTTON_DOWN      : stream << "right button down"; break;
-		case RIGHT_BUTTON_UP        : stream << "right button up"; break;
-		case RIGHT_BUTTON_CLICK     : stream << "right button click"; break;
-		case RIGHT_BUTTON_DOUBLE_CLICK
-		                            : stream << "right button double click";
-		                              break;
-		case SDL_WHEEL_LEFT         : stream << "SDL wheel left"; break;
-		case SDL_WHEEL_RIGHT        : stream << "SDL wheel right"; break;
-		case SDL_WHEEL_UP           : stream << "SDL wheel up"; break;
-		case SDL_WHEEL_DOWN         : stream << "SDL wheel down"; break;
-		case SDL_KEY_DOWN           : stream << "SDL key down"; break;
+		case DRAW:
+			stream << "draw";
+			break;
+		case CLOSE_WINDOW:
+			stream << "close window";
+			break;
+		case SDL_VIDEO_RESIZE:
+			stream << "SDL video resize";
+			break;
+		case SDL_MOUSE_MOTION:
+			stream << "SDL mouse motion";
+			break;
+		case MOUSE_ENTER:
+			stream << "mouse enter";
+			break;
+		case MOUSE_LEAVE:
+			stream << "mouse leave";
+			break;
+		case MOUSE_MOTION:
+			stream << "mouse motion";
+			break;
+		case SDL_LEFT_BUTTON_DOWN:
+			stream << "SDL left button down";
+			break;
+		case SDL_LEFT_BUTTON_UP:
+			stream << "SDL left button up";
+			break;
+		case LEFT_BUTTON_DOWN:
+			stream << "left button down";
+			break;
+		case LEFT_BUTTON_UP:
+			stream << "left button up";
+			break;
+		case LEFT_BUTTON_CLICK:
+			stream << "left button click";
+			break;
+		case LEFT_BUTTON_DOUBLE_CLICK:
+			stream << "left button double click";
+			break;
+		case SDL_MIDDLE_BUTTON_DOWN:
+			stream << "SDL middle button down";
+			break;
+		case SDL_MIDDLE_BUTTON_UP:
+			stream << "SDL middle button up";
+			break;
+		case MIDDLE_BUTTON_DOWN:
+			stream << "middle button down";
+			break;
+		case MIDDLE_BUTTON_UP:
+			stream << "middle button up";
+			break;
+		case MIDDLE_BUTTON_CLICK:
+			stream << "middle button click";
+			break;
+		case MIDDLE_BUTTON_DOUBLE_CLICK:
+			stream << "middle button double click";
+			break;
+		case SDL_RIGHT_BUTTON_DOWN:
+			stream << "SDL right button down";
+			break;
+		case SDL_RIGHT_BUTTON_UP:
+			stream << "SDL right button up";
+			break;
+		case RIGHT_BUTTON_DOWN:
+			stream << "right button down";
+			break;
+		case RIGHT_BUTTON_UP:
+			stream << "right button up";
+			break;
+		case RIGHT_BUTTON_CLICK:
+			stream << "right button click";
+			break;
+		case RIGHT_BUTTON_DOUBLE_CLICK:
+			stream << "right button double click";
+			break;
+		case SDL_WHEEL_LEFT:
+			stream << "SDL wheel left";
+			break;
+		case SDL_WHEEL_RIGHT:
+			stream << "SDL wheel right";
+			break;
+		case SDL_WHEEL_UP:
+			stream << "SDL wheel up";
+			break;
+		case SDL_WHEEL_DOWN:
+			stream << "SDL wheel down";
+			break;
+		case SDL_KEY_DOWN:
+			stream << "SDL key down";
+			break;
 
-		case NOTIFY_REMOVAL         : stream << "notify removal"; break;
-		case NOTIFY_MODIFIED        : stream << "notify modified"; break;
-		case RECEIVE_KEYBOARD_FOCUS : stream << "receive keyboard focus"; break;
-		case LOSE_KEYBOARD_FOCUS    : stream << "lose keyboard focus"; break;
-		case SHOW_TOOLTIP           : stream << "show tooltip"; break;
-		case NOTIFY_REMOVE_TOOLTIP  : stream << "notify remove tooltip"; break;
-		case SDL_ACTIVATE           : stream << "SDL activate"; break;
-		case MESSAGE_SHOW_TOOLTIP   : stream << "message show tooltip"; break;
-		case SHOW_HELPTIP           : stream << "show helptip"; break;
-		case MESSAGE_SHOW_HELPTIP   : stream << "message show helptip"; break;
-		case REQUEST_PLACEMENT      : stream << "request placement"; break;
+		case NOTIFY_REMOVAL:
+			stream << "notify removal";
+			break;
+		case NOTIFY_MODIFIED:
+			stream << "notify modified";
+			break;
+		case RECEIVE_KEYBOARD_FOCUS:
+			stream << "receive keyboard focus";
+			break;
+		case LOSE_KEYBOARD_FOCUS:
+			stream << "lose keyboard focus";
+			break;
+		case SHOW_TOOLTIP:
+			stream << "show tooltip";
+			break;
+		case NOTIFY_REMOVE_TOOLTIP:
+			stream << "notify remove tooltip";
+			break;
+		case SDL_ACTIVATE:
+			stream << "SDL activate";
+			break;
+		case MESSAGE_SHOW_TOOLTIP:
+			stream << "message show tooltip";
+			break;
+		case SHOW_HELPTIP:
+			stream << "show helptip";
+			break;
+		case MESSAGE_SHOW_HELPTIP:
+			stream << "message show helptip";
+			break;
+		case REQUEST_PLACEMENT:
+			stream << "request placement";
+			break;
 	}
 
 	return stream;
@@ -834,4 +915,3 @@ bool is_in_dialog()
 }
 
 } // namespace gui2
-

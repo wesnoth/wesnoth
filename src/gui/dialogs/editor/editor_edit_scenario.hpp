@@ -18,32 +18,43 @@
 #include "gui/dialogs/dialog.hpp"
 #include "config.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class teditor_edit_scenario : public tdialog
 {
 public:
-
-	teditor_edit_scenario(std::string& id, std::string& name, std::string& description,
-			int& turns, int& experience_modifier, bool& victory_when_enemies_defeated, bool& random_start_time);
+	teditor_edit_scenario(std::string& id,
+						  std::string& name,
+						  std::string& description,
+						  int& turns,
+						  int& experience_modifier,
+						  bool& victory_when_enemies_defeated,
+						  bool& random_start_time);
 
 	/** The execute function see @ref tdialog for more information. */
-	static bool execute(std::string& id, std::string& name, std::string& description,
-			int& turns, int& experience_modifier,
-			bool& victory_when_enemies_defeated, bool& random_start_time,
-			CVideo& video)
+	static bool execute(std::string& id,
+						std::string& name,
+						std::string& description,
+						int& turns,
+						int& experience_modifier,
+						bool& victory_when_enemies_defeated,
+						bool& random_start_time,
+						CVideo& video)
 	{
-		return teditor_edit_scenario(id, name, description,
-				turns, experience_modifier, victory_when_enemies_defeated, random_start_time).show(video);
+		return teditor_edit_scenario(id,
+									 name,
+									 description,
+									 turns,
+									 experience_modifier,
+									 victory_when_enemies_defeated,
+									 random_start_time).show(video);
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_EDIT_LABEL_INCLUDED */

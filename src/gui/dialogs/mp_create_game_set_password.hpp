@@ -17,12 +17,12 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_create_game_set_password : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -41,7 +41,6 @@ public:
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };

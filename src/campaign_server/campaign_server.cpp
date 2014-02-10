@@ -191,7 +191,6 @@ namespace {
 			 * If a script is defined but can't be executed it will return false
 			 */
 			void fire(const std::string& hook, const std::string& addon);
-			void convert_binary_to_gzip();
 			int load_config(); // return the server port
 			const config &campaigns() const { return cfg_.child("campaigns"); }
 			config &campaigns() { return cfg_.child("campaigns"); }
@@ -335,58 +334,9 @@ namespace {
 		copying["contents"] = contents;
 
 	}
-	/// @todo Check if this function has any purpose left
-	void campaign_server::convert_binary_to_gzip()
-	{
-		if (!cfg_["encoded"].to_bool())
-		{
-			// Convert all addons to gzip
-			config::const_child_itors camps = campaigns().child_range("campaign");
-			LOG_CS << "Encoding all stored addons. Number of addons: "
-				<< std::distance(camps.first, camps.second) << '\n';
-
-			BOOST_FOREACH(const config &cm, camps)
-			{
-				LOG_CS << "Encoding " << cm["name"] << '\n';
-				std::string filename = cm["filename"], newfilename = filename + ".new";
-
-				{
-					scoped_istream in_file = istream_file(filename);
-					boost::iostreams::filtering_stream<boost::iostreams::input> in_filter;
-					in_filter.push(boost::iostreams::gzip_decompressor());
-					in_filter.push(*in_file);
-
-					scoped_ostream out_file = ostream_file(newfilename);
-					boost::iostreams::filtering_stream<boost::iostreams::output> out_filter;
-					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
-					out_filter.push(*out_file);
-
-					unsigned char c = in_filter.get();
-					while( in_filter.good())
-					{
-						if (needs_escaping(c) && c != '\x01')
-						{
-							out_filter.put('\x01');
-						   	out_filter.put(c+1);
-						} else {
-							out_filter.put(c);
-						}
-						c = in_filter.get();
-					}
-				}
-
-				std::remove(filename.c_str());
-				std::rename(newfilename.c_str(), filename.c_str());
-			}
-
-			cfg_["encoded"] = true;
-		}
- 	}
 
 	void campaign_server::run()
 	{
- 		convert_binary_to_gzip();
-
  		if (!cfg_["control_socket"].empty())
  			input_ = new input_stream(cfg_["control_socket"]);
 
@@ -591,6 +541,8 @@ namespace {
 							LOG_CS << "Upload aborted - incorrect passphrase.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
 						} else {
+							const time_t upload_ts = time(NULL);
+
 							// Warn admins in the log about reuploading add-ons whose names don't
 							// pass the addon_name_legal() whitelist check above.
 
@@ -607,6 +559,7 @@ namespace {
 
 							if(campaign == NULL) {
 								campaign = &campaigns().add_child("campaign");
+								(*campaign)["original_timestamp"] = lexical_cast<std::string>(upload_ts);
 							}
 
 							(*campaign)["title"] = upload["title"];
@@ -626,7 +579,7 @@ namespace {
 							if((*campaign)["downloads"].empty()) {
 								(*campaign)["downloads"] = 0;
 							}
-							(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
+							(*campaign)["timestamp"] = lexical_cast<std::string>(upload_ts);
 
 							int uploads = (*campaign)["uploads"].to_int() + 1;
 							(*campaign)["uploads"] = uploads;
@@ -644,6 +597,7 @@ namespace {
 							data["description"] = (*campaign)["description"];
 							data["version"] = (*campaign)["version"];
 							data["timestamp"] = (*campaign)["timestamp"];
+							data["original_timestamp"] = (*campaign)["original_timestamp"];
 							data["icon"] = (*campaign)["icon"];
 							data["type"] = (*campaign)["type"];
 							(*campaign).clear_children("translation");

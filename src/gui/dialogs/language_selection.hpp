@@ -17,15 +17,17 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tlanguage_selection : public tdialog
 {
 public:
-	tlanguage_selection() {}
+	tlanguage_selection()
+	{
+	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -39,4 +41,3 @@ private:
 } // namespace gui2
 
 #endif
-

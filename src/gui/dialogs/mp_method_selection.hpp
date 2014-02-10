@@ -17,22 +17,27 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_method_selection : public tdialog
 {
 public:
-	tmp_method_selection() :
-		user_name_(),
-		choice_(-1)
-	{}
+	tmp_method_selection() : user_name_(), choice_(-1)
+	{
+	}
 
-	const std::string& user_name() const { return user_name_; }
+	const std::string& user_name() const
+	{
+		return user_name_;
+	}
 
-	int get_choice() const { return choice_; }
+	int get_choice() const
+	{
+		return choice_;
+	}
 
 private:
-
 	/** The name to use on the MP server. */
 	std::string user_name_;
 

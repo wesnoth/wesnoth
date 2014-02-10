@@ -17,22 +17,22 @@
 
 #include "gui/widgets/container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_stacked_widget;
+namespace implementation
+{
+struct tbuilder_stacked_widget;
 }
 
 class tgenerator_;
 
-class tstacked_widget
-		: public tcontainer_
+class tstacked_widget : public tcontainer_
 {
 	friend struct implementation::tbuilder_stacked_widget;
 	friend class tdebug_layout_graph;
 
 public:
-
 	tstacked_widget();
 
 	/***** ***** ***** inherited ***** ****** *****/
@@ -47,7 +47,6 @@ public:
 	virtual void layout_children() OVERRIDE;
 
 private:
-
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -75,4 +74,3 @@ private:
 } // namespace gui2
 
 #endif
-

@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2014-01-15 14:27+0100\n"
-"Last-Translator: GunChleoc <fios@foramnagaidhlig.net>\n"
+"PO-Revision-Date: 2014-01-31 13:06-0000\n"
+"Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Virtaal 0.7.1\n"
+"X-Generator: Poedit 1.6.3\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -28,7 +28,7 @@ msgstr "Mapa cleachdaiche"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "Gnàthaichte"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -47,7 +47,7 @@ msgid ""
 "score = %d  Gold = %d"
 msgstr ""
 "<span foreground='#%02x%02x%02x'>Taobh %d</span>:  Sgòr teachd a-steach = "
-"%d  Sgòr aonadan = %d  bonn òr"
+"%d  Sgòr aonadan = %d  Buinn òr = %d"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
@@ -62,7 +62,7 @@ msgstr "Tha a’ bhuannachd aig <span foreground='%s'>taobh %d</span>."
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:176
 msgid "Default"
-msgstr "Bunaiteach"
+msgstr "Tùsail"
 
 #. [era]: id=era_default
 #: data/multiplayer/eras.cfg:177
@@ -70,6 +70,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"An linn tùsail airson Wesnoth sa mhodh ioma-chluicheadair. Tha sia buidhnean "
+"’na lùib agus meidh air san fharsaingeachd."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -83,11 +85,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Linn le aonadan aig a bheil leibheil as àirde: ceannardan leibheil a trì le "
+"aonadan leibheil a h-aon ’s a dhà airson trusadh. Tha sia buidhnean ’na "
+"lùib. Chan eil meidh air gach rud."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Tùsail &#204A; a' Chèileafaid"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -99,13 +104,18 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Seo na buidhnean on linn tùsail agus buidheann a bharrachd. Cha chleachd "
+"muinntir na Cèileafaid draoidheachd ach chleachdaidh iad an crith-tìre gu "
+"cùramach agus bheir iad ionnsaigh co-òrdanaichte air a’ chiaradh no a’ "
+"chamhanach.\n"
+"\n"
+"Tha an linn seo ’ga leasachadh fhathast, mar sin innis duinn mu dhuilgheadas "
+"sam bith."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Linn nan laoch"
+msgstr "Linn nan laoch &#204A; a' Chèileafaid"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -117,6 +127,13 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Seo na buidhnean o linn nan laoch agus buidheann a bharrachd. Cha chleachd "
+"muinntir na Cèileafaid draoidheachd ach chleachdaidh iad an crith-tìre gu "
+"cùramach agus bheir iad ionnsaigh co-òrdanaichte air a’ chiaradh no a’ "
+"chamhanach.\n"
+"\n"
+"Tha an linn seo ’ga leasachadh fhathast, mar sin innis duinn mu dhuilgheadas "
+"sam bith."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -128,7 +145,7 @@ msgstr "Dràic"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Muinntir na Cèileafaid"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -280,8 +297,7 @@ msgid ""
 "end of turn 6.</span>\n"
 msgstr ""
 "Tha an sàr-dhraoidh Sulla air an fheachd agad a thoirt dhan cheangal neònach "
-"a tha seo is tha i a’ toirt ort cogadh a dhèanamh ach am  faigh i tlachd "
-"às.\n"
+"a tha seo is tha i a’ toirt ort cogadh a dhèanamh ach am faigh i tlachd às.\n"
 "\n"
 "\n"
 "\n"
@@ -290,7 +306,7 @@ msgstr ""
 "\n"
 "<span color='green'>Chan urrainn dha dh’aonadan a ghluasad a-steach dha shia-"
 "cheàrnagan sa bheil càrn cloiche. ’S urrainn dhut an trusadh orra co-dhiù is "
-"an gluasad air  falbh bhuapa.</span>\n"
+"an gluasad air falbh bhuapa.</span>\n"
 "\n"
 "<span color='green'>A’ tòiseachadh sa chuairt 4, aonaidh an sàr-dhraoidh "
 "Sulla an dà leth dhen bhlàr beag air bheag. Bidh am pròiseas seo coileanta "
@@ -329,7 +345,7 @@ msgid ""
 "Great Mage Dauntless, may yet remain hidden, lost somewhere within the "
 "granite and obsidian walls of Arcanclave Citadel. Designed by Doc Paterson."
 msgstr ""
-"Bho chionn aimsir, iomadh linn ro àm Thaldraig is fad air  falbh taobh thall "
+"Bho chionn aimsir, iomadh linn ro àm Thaldraig is fad air falbh taobh thall "
 "crìochan earach Coille Liontainir, bhiodh cogaidhean mòra uabhasach ann. Tha "
 "na clàran ag innse dhuinn mu dhraoidh-catha cumhachdach a bhiodh ’na shàr-"
 "mhaighstir air cath-innleachd is nan ealainean dìomhair agus chuireadh a "
@@ -345,9 +361,9 @@ msgstr ""
 "linn nas anmoiche, fhuadaich a’ chiad Bhànrigh Cionsan cinneadh dhe mharbh-"
 "dhraoidhean bho thobhta Torr-chathair na h-Iuchrach Dìomhaire is sna "
 "bliadhnaichean an dèidh seo thionndaidh i an sgìre ’na daingean armailteach. "
-"A rèir  fhathannan, tha buill-cheàirde chumhachdach a tha air  fhàgail bho "
-"rìoghachd an sàr-dhraoidh Urranta fhathast air am  falach ann, air an call "
-"am measg nam ballachan cloiche-gràin is cloiche-làbha aig Torr-chathair na h-"
+"A rèir fhathannan, tha buill-cheàirde chumhachdach a tha air fhàgail bho "
+"rìoghachd an sàr-dhraoidh Urranta fhathast air am falach ann, air an call am "
+"measg nam ballachan cloiche-gràin is cloiche-làbha aig Torr-chathair na h-"
 "Iuchrach Dìomhaire. Air a dhealbhadh le Doc Paterson."
 
 #. [side]
@@ -490,10 +506,10 @@ msgstr ""
 "phasgadh gu cùramach a thuit a-steach dha tholl beag ann an làr na h-uaimhe "
 "a rèir coltais. Dh’fhosgail e an sgrola is leugh e earrann bheag ann am "
 "meadhan an teacsa: “Nuair a bha e air nasgadh is fhuadach bhon t-saoghal "
-"uachdarach, bha anam  feargach Chak’kso a’ sireadh saoradh is bhuannaich e "
+"uachdarach, bha anam feargach Chak’kso a’ sireadh saoradh is bhuannaich e "
 "buaidh truaillidh air pàirtean den t-saoghal uachdarach a chuir e tro "
 "‘shlighean cloiche’ a shìneas bhon uachdar gu doimhneachd nan raointean "
-"domhainn. Dh’atharraich am  fearg seo uighean nan laghairtean mòra a chuir "
+"domhainn. Dh’atharraich am fearg seo uighean nan laghairtean mòra a chuir "
 "cruth air na bodhaigean is anman a dhèanadh uidheaman fuath Chak’kso asta.” "
 "’Na bhreisleach, thill Xikkrisx aire air an t-saothair a bha roimhe. Làn "
 "bheachd gum b’ urrainn dha na seanairean dòigh a lorg gus Oxsrrsk aiseag, "
@@ -540,13 +556,13 @@ msgstr ""
 "eachdraidhean nan sìthichean e mar ‘mhòr-ifrinneach na talmhainn.’ Chuir "
 "Chak’kso roimhe a h-uile creutair beò a thionndadh gu cloiche uair oir bha "
 "fhuath air bithean cho mòr ri sin. Chaidh ruaig a thoirt dha air a cheann "
-"thall is a nasgadh le draoidheachd chumhachdach, ach sna linntean a lean "
-"air  fhògradh (gu raon fada fon talamh), nochd sìolradh ùr dhe chreutair sna "
-"h-eachdraidhean, sìolradh air an robh an comas gus creutair dhe dh’fheòil "
-"sam bith a thionndadh gu cloiche. Bha linn ann far an do rinn na rìgh-"
+"thall is a nasgadh le draoidheachd chumhachdach, ach sna linntean a lean air "
+"fhògradh (gu raon fada fon talamh), nochd sìolradh ùr dhe chreutair sna h-"
+"eachdraidhean, sìolradh air an robh an comas gus creutair dhe dh’fheòil sam "
+"bith a thionndadh gu cloiche. Bha linn ann far an do rinn na rìgh-"
 "nathraichean seo (’s e seo na chuireadh orra) milleadh mòr air saoghal nan "
-"creutairean beòtha, a’ tionndadh mìltean dhiubh gu cloiche. Fear air  fear "
-"is le cosgaisean mòra, chaidh ruaig a chur air na rìgh-nathraichean, air a h-"
+"creutairean beòtha, a’ tionndadh mìltean dhiubh gu cloiche. Fear air fear is "
+"le cosgaisean mòra, chaidh ruaig a chur air na rìgh-nathraichean, air a h-"
 "uile gin diubh ach aon a rèir coltais; an rìgh nathair air an robh “An "
 "Ney’yks,” no “Am mac as sine” sa chànan an latha an-diugh. Làn-bheachd gum "
 "biodh an comas aige gus an creutair cumhachdach seo a lorg is a "
@@ -689,7 +705,7 @@ msgstr ""
 "creutairean olca an sgiath-chùil dha is chaidh mòran dhe chuideachd a "
 "mharbhadh, ach rinn e sabaid gu dàna, a’ cur às dha dh’iomadh nàmhaid. Ach "
 "ochan ò! Thionndaidh an rìgh-nathair olc gu cloiche e an dearbh àm a bha e "
-"a’ marbhadh an deamhan mu dheireadh. A-nis, chan eil air  fhàgail dha ach "
+"a’ marbhadh an deamhan mu dheireadh. A-nis, chan eil air fhàgail dha ach "
 "cuimhneachan cruaidh air a ghiùlan is neart mòr.\n"
 "(sgrìobhte le Fynmiir)"
 
@@ -726,7 +742,7 @@ msgstr ""
 "Co-dhiù no co-dheth, greis an dèidh seo, chuala coimhearsnachd ionadail nan "
 "gillean-dubha gun robh biast uabhasach ri thighinn a bhiodh cumhachdach gu "
 "leòr gus an àireamh bheag dhe ghillean-dubha bha a’ fuireach san sgìre a "
-"mhilleadh. Ghluais iad air  falbh gu luath (cho luath ’s a ghluaiseadh gille-"
+"mhilleadh. Ghluais iad air falbh gu luath (cho luath ’s a ghluaiseadh gille-"
 "dubh sam bith co-dhiù), ach chaidh Bramwythl fhàgail — leis a’ chabhag a bh’ "
 "orra, dhìochuimhnich iad a lorg gus innse dha mun chunnart.\n"
 "Ghlac an rìgh-nathair e gun fhiosta is thionndaidh e gu cloiche e fiù ’s mus "
@@ -859,11 +875,11 @@ msgstr ""
 "’S e cnàmh-segul maireachdainn beò a th’ anns a’ choille duibh airson aonar "
 "no sgiobaidhean dhe dhithis an aghaidh aonadan FI a thèid a ghintinn air "
 "thuaiream. Bheir thu buaidh ma chuireas tu às dhan a h-uile ionnsaigh nàmhad "
-"is ma mhaireas tu beò. Air  feadh a’ gheama, atharraichidh cruth na tìre le "
+"is ma mhaireas tu beò. Air feadh a’ gheama, atharraichidh cruth na tìre le "
 "buaidhean sìde.\n"
 "\n"
-"Aire: Bidh rèiteachadh bunaiteach a’ mhapa a dhìth ort ach an obraich an "
-"cnàmh-sgeul seo gu ceart."
+"Aire: Bidh rèiteachadh tùsail a’ mhapa a dhìth ort ach an obraich an cnàmh-"
+"sgeul seo gu ceart."
 
 #. [message]: speaker=narrator
 #: data/multiplayer/scenarios/2p_Dark_Forecast.cfg:369
@@ -1020,7 +1036,7 @@ msgid ""
 "our claim is not going to be unopposed. We must be prepared for the "
 "surprises of this land."
 msgstr ""
-"A rèir nam  fathannan, tha caidreabhach neònach dhe dhaoine is biastan a’ "
+"A rèir nam fathannan, tha caidreabhach neònach dhe dhaoine is biastan a’ "
 "fhuireach ann is seasaidh iad an aghaidh ar tagairte. Feumaidh sinn ar "
 "ullachadh an aghaidh iongnaidhean na tìre seo."
 
@@ -1061,7 +1077,7 @@ msgid ""
 msgstr ""
 "Tha an nàmhaid a’ gàireachdainn fhad ’s a tha ceò dorcha ag èirigh bhon tìr "
 "is ’gad chuairteachadh. Fhad ’s a tha sionnachain thaibhseach a’ tarraing do "
-"thoil air  falbh, tha e a’ tighinn a-steach ort gun do dh’fhalbh d’ àm san "
+"thoil air falbh, tha e a’ tighinn a-steach ort gun do dh’fhalbh d’ àm san "
 "tìr seo."
 
 #. [multiplayer]: id=multiplayer_Den_of_Onis
@@ -1083,11 +1099,11 @@ msgstr ""
 "Bhiodh Seòmar nan Diabhlan Gàire air an uamh iongantach seo uair is bhiodh e "
 "’na phrìomh thorr-chathair nan Kah Ruuk Onaidh. ’S e cinneadh dhe "
 "dh’ifrinnich sheòlta is olc a dh’itheadh daoine a bhiodh sna Kah Ruuk is a "
-"chuireadh ceannairceachd air muinntir nan tìrean an ear  fad cha mhòr "
-"ceithir linntean mus deach iad a-mach à sealladh bho Irdya gun sgeul aca. "
-"Bhon àm ud a-mach, tha mòran bhuidhnean air an strì airson ùghdarras air "
-"Garadh Onais, an dòchas gun ionnsaicheadh iad mun draoidheachd neònach is "
-"dhìomhair aig an t-sluagh a chruthaich e."
+"chuireadh ceannairceachd air muinntir nan tìrean an ear fad cha mhòr ceithir "
+"linntean mus deach iad a-mach à sealladh bho Irdya gun sgeul aca. Bhon àm ud "
+"a-mach, tha mòran bhuidhnean air an strì airson ùghdarras air Garadh Onais, "
+"an dòchas gun ionnsaicheadh iad mun draoidheachd neònach is dhìomhair aig an "
+"t-sluagh a chruthaich e."
 
 #. [multiplayer]: id=multiplayer_elensefar_courtyard
 #: data/multiplayer/scenarios/2p_Elensefar_Courtyard.cfg:5
@@ -1261,7 +1277,7 @@ msgid ""
 "Little remains of this once wealthy mining colony, now a haven for raiders "
 "and thieves."
 msgstr ""
-"Chan eil mòran air  fhàgail dhe na b’ àbhaist a bhith ’na thuineachadh "
+"Chan eil mòran air fhàgail dhe na b’ àbhaist a bhith ’na thuineachadh "
 "mèinnearachd beartach is a tha ’na chomraich dha spùinneadairean is mèirlich "
 "a-nis."
 
@@ -1320,7 +1336,7 @@ msgid ""
 "and ice now remain in the shadow of this once mighty empire."
 msgstr ""
 "Bhon a chaidh tuiltean mara oirre is ’ga bualadh le dùilean geamhraidh, chan "
-"eil ach tobhtaichean, uisge is deigh air  fhàgail fo sgàil na b’ àbhaist a "
+"eil ach tobhtaichean, uisge is deigh air fhàgail fo sgàil na b’ àbhaist a "
 "bhith ’na impireachd mhòr."
 
 #. [side]
@@ -1394,7 +1410,7 @@ msgid ""
 "for hundreds of years, repelling great beasts from their western borders, "
 "and Carorathian Imperialists from their eastern borders."
 msgstr ""
-"Tha na Tìrean Saoire air a chuireas muinntir an ear  fharsaing Tìr gun "
+"Tha na Tìrean Saoire air a chuireas muinntir an ear fharsaing Tìr gun "
 "Rìghrean cuideachd suidhichte eadar na Tìrean Fàsach is Rìoghachd Carorath, "
 "a’ sgaradh tìr le lagh ceannasach bho thìr làn buirbe. Tha muinntir nan "
 "Tìrean Saoire air a shabaid an aghaidh daoine a cheannsaicheadh an tìr aca "
@@ -1657,7 +1673,7 @@ msgid ""
 "1&4 vs. 2&3 (northeast vs. southwest). Designed for 75 starting gold, 20 "
 "villages."
 msgstr ""
-"Mapa 2 an aghaidh 2 glè bheag. Tha sabaid gun mhòran rùm a’ ciallachadh gum  "
+"Mapa 2 an aghaidh 2 glè bheag. Tha sabaid gun mhòran rùm a’ ciallachadh gum "
 "feum thu a’ bhith cùramach le ro-innleachd nan gluasadan is cuairteachadh "
 "nan aonadan. Tha sgiobaidhean ’gan stèidheachadh airson cluicheadair 1 is 4 "
 "an aghaidh 2 is 3 (ear-thuath an aghaidh iar-dheas). Air a dhealbhadh airson "
@@ -2014,7 +2030,7 @@ msgid ""
 msgstr ""
 "Meal do naidheachd gun do mhair thu beò air a’ mhapa seo is mòran dhen "
 "bheachd nach gabh seo dèanamh. A dh’innse na fìrinn, chan eil sgot agam "
-"ciamar a rinn thu e, mar sin cuir  fios thugam le post-d gu roze@roze.mine."
+"ciamar a rinn thu e, mar sin cuir fios thugam le post-d gu roze@roze.mine."
 "nu. Mòran taing!"
 
 #. [message]: speaker=narrator
@@ -2211,10 +2227,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
 msgid "Random map by YAMG"
-msgstr "Mapa air thuaiream"
+msgstr "Mapa air thuaiream le YAMG"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
@@ -2247,7 +2261,7 @@ msgstr ""
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:9
 msgid "Wesnoth Benchmark: Walking through Shroud"
-msgstr "Deuchainn-luathais Bheasnaid: Coiseachd tro sgàil"
+msgstr "Deuchainn-luathais Bheasnaid: Coiseachd tro sgleò"
 
 #. [multiplayer]: id=wesbench_shroud_walk
 #: data/multiplayer/scenarios/Wesbench_Shroud_Walk.cfg:10

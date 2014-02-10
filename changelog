@@ -1,6 +1,27 @@
-Version 1.11.8+dev:
+Version 1.11.9+dev:
+ * Campaigns:
+   * Heir to the Throne:
+     * Fixed Delfador clobbering whichever unit happens to be standing on
+       31,11 at the end of The Bay of Pearls, causing it to disappear
+       forever.
+ * GUI2
+   * Added: FAI-function handling in GUI2 widgets.
+   * Added: A new tooltip window.
+ * Language and i18n:
+   * Updated translations:
+ * Miscellaneous and bug fixes:
+   * Fixed: A compilation warning with DEBUG_WINDOW_LAYOUT_GRAPHS.
+   * Add translatable default filename to map editor save dialog box
+
+Version 1.11.9:
+ * Add-ons client:
+   * Display the first and last upload dates in the Description dialog.
+ * Add-ons server:
+   * Record the first upload date and time for new add-ons.
+   * Removed ancient compatibility code used only for add-ons stored by some
+     1.5.x versions.
  * AI:
-   * RCA (default) AI: Gold saving is turned off by default again
+   * Default AI: Gold saving is turned off by default again
    * New macros AI_SAVE_GOLD and AI_SAVE_GOLD_DEFAULT for easy enabling of
      recruitment gold saving in specific scenarios
    * Wolves Micro AI: new optional parameter attack_only_prey=
@@ -8,14 +29,35 @@ Version 1.11.8+dev:
    * Heir to the Throne:
      * Gave Li'sar a new ability "initiative" (grants adjacent allies first
        strike in melee).
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is done for Scenarios 1 (End
+       of Peace) through 12 (Giving Some Back).  In addition, the following
+       not directly balance related changes have also been made:
+     * S3: remove AI controller right-click menu option
+     * S4 & S9: make AI attack enemies 1 XP from leveling so that it is not
+       possible to block key locations with such units
+     * S10 & S12: don't give huge unannounced gold bonus to AIs
+ * Editor:
+   * Added Impassable Overlay and Unwalkable Overlay terrains to the obstacle
+     group.
+   * Added Snowy Human City village terrain to the frozen group.
+   * Added Cave Path terrain to the flat group.
+   * Added Dry Hills terrain to the fall group.
  * Language and i18n:
-   * Updated translations: Portuguese, Scottish Gaelic
+   * Updated translations: Dutch, Portuguese, Scottish Gaelic
  * Lua API:
    * Added wesnoth.set_dialog_markup function (patch #2759).
+ * Multiplayer
+   * Updated map: Ruins of Terra-Dwelve.
+ * Terrains:
+   * Made Snowy Encampment, Snowy Orcish Castle, Snowy Encampment Keep and Snowy
+     Orcish Keep aliases of both castle and frozen terrains
  * Units:
+   * Decreased the strikes of the Dwarvish Lord's hatchet attack from 2 to 1.
    * Fixed subtle magenta TC for the Giant Mudcrawler sprites not being
      enabled in-game.
  * User interface:
+   * Restored the old control scheme as the default
    * Fixed hidden variations of unit types (hide_help=yes) being listed in the
      help browser when they shouldn't.
    * Gray-out GUI1 scrollbar upwards scrolling button by default when starting
@@ -43,6 +85,10 @@ Version 1.11.8+dev:
    * Selecting off-map hexes, then hovering over a unit no longer causes
      the game to crash (bug #21351).
    * Changed: Added -Wextra-semi to pedantic compilation.
+   * Changed: Added -Wconditional-uninitialized to pedantic compilation.
+   * Fixed NULL pointer dereference when viewing units in the Recall Unit
+     dialog including nonexistent/unreadable images in their overlays, while
+     not in debug mode.
 
 Version 1.11.8:
  * Add-ons client:

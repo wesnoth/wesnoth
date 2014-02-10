@@ -24,21 +24,21 @@
 
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 /**
  * The placement class for a horizontal list.
  *
  * See @ref tplacer_ for more information.
  */
-class tplacer_horizontal_list
-	: public tplacer_
+class tplacer_horizontal_list : public tplacer_
 {
 
 public:
-
 	/***** ***** Constructor, destructor, assignment. ***** *****/
 
 	explicit tplacer_horizontal_list(const unsigned maximum_rows);
@@ -58,7 +58,6 @@ public:
 	/***** ***** Members. ***** *****/
 
 private:
-
 	/**
 	 * The maximum number of rows to use.
 	 *
@@ -84,7 +83,6 @@ private:
 
 	/** The column to add an item to. */
 	unsigned column_;
-
 };
 
 } // namespace implementation

@@ -25,7 +25,6 @@
 #include "game_display.hpp"
 #include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -204,7 +203,7 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vconfig* vcfg) :
+unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),

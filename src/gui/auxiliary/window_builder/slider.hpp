@@ -21,18 +21,19 @@
 
 #include <vector>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_slider
-	: public tbuilder_control
+struct tbuilder_slider : public tbuilder_control
 {
 	explicit tbuilder_slider(const config& cfg);
 
 	using tbuilder_control::build;
 
-	twidget* build () const;
+	twidget* build() const;
 
 private:
 	unsigned best_slider_length_;
@@ -52,4 +53,3 @@ private:
 } // namespace gui2
 
 #endif
-

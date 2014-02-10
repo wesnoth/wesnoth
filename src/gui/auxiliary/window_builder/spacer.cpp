@@ -20,14 +20,14 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/spacer.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_spacer::tbuilder_spacer(const config& cfg)
-	: tbuilder_control(cfg)
-	, width_(cfg["width"])
-	, height_(cfg["height"])
+	: tbuilder_control(cfg), width_(cfg["width"]), height_(cfg["height"])
 {
 }
 
@@ -46,9 +46,8 @@ twidget* tbuilder_spacer::build() const
 		widget->set_best_size(tpoint(width, height));
 	}
 
-	DBG_GUI_G << "Window builder: placed spacer '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed spacer '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -89,4 +88,3 @@ twidget* tbuilder_spacer::build() const
  * @end{tag}{name="spacer"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

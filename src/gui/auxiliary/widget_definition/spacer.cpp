@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tspacer_definition::tspacer_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -28,9 +29,6 @@ tspacer_definition::tspacer_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tspacer_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_spacer
@@ -45,7 +43,9 @@ tspacer_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="spacer_definition"}
  * @end{parent}{name="gui/"}
  */
+tspacer_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 }
 
 } // namespace gui2
-

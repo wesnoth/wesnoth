@@ -81,10 +81,10 @@ To lexical_cast(From a)
 	To res;
 	std::stringstream str;
 
-	if(!(str << a && str >> res)) {
-		throw bad_lexical_cast();
-	} else {
+	if(str << a && str >> res) {
 		return res;
+	} else {
+		throw bad_lexical_cast();
 	}
 }
 
@@ -94,10 +94,10 @@ To lexical_cast_default(From a, To def=To())
 	To res;
 	std::stringstream str;
 
-	if(!(str << a && str >> res)) {
-		return def;
-	} else {
+	if(str << a && str >> res) {
 		return res;
+	} else {
+		return def;
 	}
 }
 
@@ -173,9 +173,7 @@ To lexical_cast_in_range(From a, To def, To min, To max)
 	To res;
 	std::stringstream str;
 
-	if(!(str << a && str >> res)) {
-		return def;
-	} else {
+	if(str << a && str >> res) {
 		if(res < min) {
 			return min;
 		}
@@ -183,6 +181,8 @@ To lexical_cast_in_range(From a, To def, To min, To max)
 			return max;
 		}
 		return res;
+	} else {
+		return def;
 	}
 }
 

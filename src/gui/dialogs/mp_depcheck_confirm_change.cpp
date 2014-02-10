@@ -52,18 +52,22 @@ namespace gui2
 
 REGISTER_DIALOG(mp_depcheck_confirm_change)
 
-tmp_depcheck_confirm_change::tmp_depcheck_confirm_change
-			(bool action,
-			 const std::vector<std::string>& mods,
-			 const std::string&	requester)
+tmp_depcheck_confirm_change::tmp_depcheck_confirm_change(
+		bool action,
+		const std::vector<std::string>& mods,
+		const std::string& requester)
 {
 	utils::string_map symbols;
 	symbols["requester"] = requester;
 	std::string message;
-	if (action) {
-		message = vgettext("$requester requires the following modifications to be enabled:", symbols);
+	if(action) {
+		message = vgettext("$requester requires the following modifications to "
+						   "be enabled:",
+						   symbols);
 	} else {
-		message = vgettext("$requester requires the following modifications to be disabled:", symbols);
+		message = vgettext("$requester requires the following modifications to "
+						   "be disabled:",
+						   symbols);
 	}
 
 	std::string list = "\t";
@@ -73,5 +77,4 @@ tmp_depcheck_confirm_change::tmp_depcheck_confirm_change
 
 	register_label("itemlist", false, list);
 }
-
 }
