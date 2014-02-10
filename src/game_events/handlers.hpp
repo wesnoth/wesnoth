@@ -77,11 +77,12 @@ namespace game_events
 	public:
 		/// This class is similar to an input iterator through event handlers,
 		/// except each instance knows its own end (determined when constructed).
-		/// Each instance remains valid and dereferencable until it is past-the-
-		/// end, regardless of what is done to the underlying structure (even if
-		/// what it points to has been removed from the structure). Thus, basic
-		/// looping is along the lines of "for ( iteration X; X.valid(); ++X )".
-		///  
+		/// Subsequent dereferences are not guaranteed to return the same element,
+		/// so it is important to assign a dereference to a variable if you want
+		/// to use it more than once. On the other hand, a dereference will not
+		/// return a null pointer until the end of the iteration is reached (and
+		/// this is how to detect the end of the iteration).
+		///
 		/// For simplicity, this class is neither assignable nor equality
 		/// comparable nor default constructable, and there is no postincrement.
 		/// Typedefs are also skipped.
@@ -91,15 +92,10 @@ namespace game_events
 			/// Event-specific constructor.
 			explicit iteration(const std::string & event_name);
 
-
 			// Increment:
 			iteration & operator++();
-
 			// Dereference:
-			event_handler & operator*()  const { return *data_; }
-			const handler_ptr & operator->() const { return  data_; }
-			/// Test for being dereferenceable.
-			bool valid() const { return bool(data_); }
+			const handler_ptr & operator*();
 
 		private: // functions
 			/// Tests index_ for being skippable in this iteration.
@@ -114,8 +110,6 @@ namespace game_events
 
 			/// The current index.
 			handler_vec::size_type index_;
-			/// The current element.
-			handler_ptr data_;
 		};
 
 	public:

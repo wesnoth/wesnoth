@@ -495,18 +495,21 @@ bool pump()
 			++internal_wml_tracking;
 
 		// Initialize an iteration over event handlers matching this event.
-		manager::iteration cur_handler(event_name);
+		manager::iteration handler_iter(event_name);
 
 		// If there are any matching event handlers, initialize variables.
-		if ( cur_handler.valid() ) {
+		// Note: Initializing variables all the time would not be
+		//       functionally wrong, merely inefficient. So we do not have
+		//       to cache *handler_iter here.
+		if ( *handler_iter ) {
 			resources::gamedata->get_variable("x1") = ev.loc1.filter_x() + 1;
 			resources::gamedata->get_variable("y1") = ev.loc1.filter_y() + 1;
 			resources::gamedata->get_variable("x2") = ev.loc2.filter_x() + 1;
 			resources::gamedata->get_variable("y2") = ev.loc2.filter_y() + 1;
 		}
 
-		// For each event handler matching this event's name.
-		for ( ; cur_handler.valid(); ++cur_handler ) {
+		// While there is a potential handler for this event name.
+		while ( handler_ptr cur_handler = *handler_iter ) {
 			event_handler & handler = *cur_handler;
 
 			DBG_EH << "processing event " << event_name << " with id="<<
@@ -517,6 +520,8 @@ bool pump()
 				// Game state changed.
 				result = true;
 			}
+
+			++handler_iter;
 		}
 
 		// Flush messages when finished iterating over event_handlers.

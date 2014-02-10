@@ -339,11 +339,13 @@ void wml_menu_item::update_command(const config & new_command)
 {
 	// If there is an old command, remove it from the event handlers.
 	if ( !command_.empty() ) {
-		for ( manager::iteration hand(event_name_); hand.valid(); ++hand ) {
+		manager::iteration iter(event_name_);
+		while ( handler_ptr hand = *iter ) {
 			if ( hand->is_menu_item() ) {
 				LOG_NG << "Removing command for " << event_name_ << ".\n";
 				remove_event_handler(command_["id"].str());
 			}
+			++iter;
 		}
 	}
 

@@ -259,37 +259,46 @@ manager::~manager() {
 manager::iteration::iteration(const std::string & event_name) :
 	event_name_(event_name),
 	end_(event_handlers.size()),
-	index_(event_name.empty() ? end_ : 0),
-	data_()
+	index_(event_name.empty() ? end_ : 0)
 {
-	// Look for the first handler that matches the provided name.
-	while ( is_name_mismatch() )
-		++index_;
-
-	// Set the pointer?
-	if ( index_ < end_ )
-		data_ = event_handlers[index_];
 }
-
 
 /**
  * Increment
+ * Incrementing guarantees that the next dereference will differ from the
+ * previous derference (unless the iteration is exhausted). However, multiple
+ * increments between dereferences are allowed to have the same effect as a
+ * single increment.
  */
 manager::iteration & manager::iteration::operator++()
 {
-	// Look for the next handler that matches our stored name.
-	do
-		++index_;
-	while ( is_name_mismatch() );
-
-	// Set the pointer.
 	if ( index_ < end_ )
-		data_ = event_handlers[index_];
-	else
-		data_.reset();
+		// Guarantee a different element next dereference.
+		// (We'll check for a name match when we dereference.)
+		++index_;
 
 	// Done.
 	return *this;
+}
+
+/**
+ * Dereference
+ * Will return a null pointer when the end of the iteration is reached.
+ */
+const handler_ptr & manager::iteration::operator*()
+{
+	static handler_ptr empty_ptr;
+
+	// Make sure we are pointing to a valid handler.
+	while ( is_name_mismatch() )
+		++index_;
+
+	if ( index_ < end_ )
+		return event_handlers[index_];
+
+	// Past the end of the list; return a null pointer.
+	empty_ptr.reset(); // Just in case someone does something wierd.
+	return empty_ptr;
 }
 
 
