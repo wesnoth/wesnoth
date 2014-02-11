@@ -59,9 +59,28 @@ function ca_hang_out:execution(ai, cfg, self)
     }
     --print('#locs', #locs)
 
-    -- Get map for locations to be avoided (defaults to all castle terrain)
-    local avoid = cfg.avoid or { terrain = 'C*,C*^*,*^C*' }
-    local avoid_map = LS.of_pairs(wesnoth.get_locations(avoid))
+    -- Get map of locations to be avoided.
+    -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
+    -- If neither is given, default to all castle terrain.
+    -- ai.get_avoid() cannot be used as it always returns an array, even when the aspect is not set,
+    -- and an empty array could also mean that no hexes match the filter
+    local avoid_tag
+    if cfg.avoid then
+        avoid_tag = cfg.avoid
+    else
+        local ai_tag = H.get_child(wesnoth.sides[wesnoth.current.side].__cfg, 'ai')
+        for aspect in H.child_range(ai_tag, 'aspect') do
+            if (aspect.id == 'avoid') then
+                local facet = H.get_child(aspect, 'facet')
+                if facet then
+                    avoid_tag = H.get_child(facet, 'value')
+                else
+                    avoid_tag = { terrain = 'C*,C*^*,*^C*' }
+                end
+            end
+        end
+    end
+    local avoid_map = LS.of_pairs(wesnoth.get_locations(avoid_tag))
 
     local best_hex, best_unit, max_rating = {}, {}, -9e99
     for i,u in ipairs(units) do
