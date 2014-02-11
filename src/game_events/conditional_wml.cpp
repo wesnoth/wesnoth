@@ -47,6 +47,18 @@ namespace { // Support functions
 
 	bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
 	{
+		const vconfig::child_list& true_keyword = cond.get_children("true");
+		backwards_compat = backwards_compat && true_keyword.empty();
+		if(!true_keyword.empty()) {
+			return true;
+		}
+
+		const vconfig::child_list& false_keyword = cond.get_children("false");
+		backwards_compat = backwards_compat && false_keyword.empty();
+		if(!false_keyword.empty()) {
+			return false;
+		}
+
 		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
 		// If the if statement requires we have a certain unit,
