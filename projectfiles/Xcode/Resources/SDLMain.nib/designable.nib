@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B3116" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1050" defaultVersion="1090" identifier="macosx"/>
+        <deployment version="1050" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
     </dependencies>
     <objects>
@@ -133,7 +133,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="471" y="210" width="475" height="420"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <view key="contentView" id="486">
                 <rect key="frame" x="0.0" y="0.0" width="475" height="420"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -146,7 +146,7 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="492">
-                                    <rect key="frame" x="0.0" y="36" width="418" height="4248"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="418" height="4248"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="418" height="378"/>
@@ -520,7 +520,7 @@ cyBMaWNlbnNlLgo
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="489" y="172" width="524" height="503"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
             <view key="contentView" id="501">
                 <rect key="frame" x="0.0" y="0.0" width="524" height="503"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -529,22 +529,343 @@ cyBMaWNlbnNlLgo
                         <rect key="frame" x="41" y="54" width="457" height="408"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <clipView key="contentView" id="Pg7-qf-R9o">
-                            <rect key="frame" x="1" y="1" width="455" height="406"/>
+                            <rect key="frame" x="1" y="1" width="440" height="406"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" spellingCorrection="YES" smartInsertDelete="YES" id="503">
-                                    <rect key="frame" x="0.0" y="0.0" width="455" height="13809"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="440" height="15123"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="455" height="406"/>
+                                    <size key="minSize" width="440" height="406"/>
                                     <size key="maxSize" width="897" height="100000"/>
                                     <attributedString key="textStorage">
                                         <fragment>
                                             <string key="content">This is meant to be a concise list of player-visible changes (very minor
 changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
-
 </string>
+                                            <attributes>
+                                                <font key="NSFont" metaFont="label"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <string key="content" base64-UTF8="YES">
+Cgo
+</string>
+                                            <attributes>
+                                                <font key="NSFont" size="10" name="LucidaGrande"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <string key="content">Version 1.11.9:
+</string>
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                                <font key="NSOriginalFont" size="12" name="LucidaGrande-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <mutableString key="content"> * AI:
+   * Default AI: Gold saving is turned off by default again.
+
+ * Campaigns:
+   * Heir to the Throne:
+     * Gave Li'sar a new ability "initiative" (grants adjacent allies first
+       strike in melee).
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is done for Scenarios 1 (End
+       of Peace) through 8 (Giving Some Back).
+
+ * Language and i18n:
+   * Updated translations: Dutch, Portuguese, Scottish Gaelic.
+
+ * Units:
+   * Decreased the strikes of the Dwarvish Lord's hatchet attack from 2 to 1.
+   * Fixed subtle magenta TC for the Giant Mudcrawler sprites not being
+     enabled in-game.
+
+ * User interface:
+   * Restored the old controll scheme as the default
+   * Fixed hidden variations of unit types (hide_help=yes) being listed in the
+     help browser when they shouldn't.
+   * Truncate long Advanced Preferences entries with ellipses to avoid
+     situations where the listbox is wider than the Preferences dialog frame.
+   * Team color is now applied on the Unknown unit icon in the game Status
+     Table regardless of whether the side's leader unit supports team color.
+
+ * Miscellaneous and bug fixes:
+   * Fixed possible invalid memory access issue in the MP sides configuration
+     code causing crashes for some users (bug #21449).
+   * Fixed broken image references in the Gameplay -&gt; Time of Day help topic.
+
+
+</mutableString>
+                                            <attributes>
+                                                <font key="NSFont" metaFont="label"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <string key="content">Version 1.11.8:
+</string>
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
+                                                <font key="NSOriginalFont" size="12" name="LucidaGrande-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="0.0"/>
+                                                        <textTab alignment="left" location="56"/>
+                                                        <textTab alignment="left" location="112"/>
+                                                        <textTab alignment="left" location="168"/>
+                                                        <textTab alignment="left" location="224"/>
+                                                        <textTab alignment="left" location="280"/>
+                                                        <textTab alignment="left" location="336"/>
+                                                        <textTab alignment="left" location="392"/>
+                                                        <textTab alignment="left" location="448"/>
+                                                        <textTab alignment="left" location="504"/>
+                                                        <textTab alignment="left" location="560"/>
+                                                        <textTab alignment="left" location="616"/>
+                                                        <textTab alignment="left" location="672"/>
+                                                        <textTab alignment="left" location="728"/>
+                                                        <textTab alignment="left" location="784"/>
+                                                        <textTab alignment="left" location="840"/>
+                                                        <textTab alignment="left" location="896"/>
+                                                        <textTab alignment="left" location="952"/>
+                                                        <textTab alignment="left" location="1008"/>
+                                                        <textTab alignment="left" location="1064"/>
+                                                        <textTab alignment="left" location="1120"/>
+                                                        <textTab alignment="left" location="1176"/>
+                                                        <textTab alignment="left" location="1232"/>
+                                                        <textTab alignment="left" location="1288"/>
+                                                        <textTab alignment="left" location="1344"/>
+                                                        <textTab alignment="left" location="1400"/>
+                                                        <textTab alignment="left" location="1456"/>
+                                                        <textTab alignment="left" location="1512"/>
+                                                        <textTab alignment="left" location="1568"/>
+                                                        <textTab alignment="left" location="1624"/>
+                                                        <textTab alignment="left" location="1680"/>
+                                                        <textTab alignment="left" location="1736"/>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <mutableString key="content"> * Add-ons client:
+   * Introduced new add-on type "SP/MP Campaign".
+   * Redesigned Add-ons Description dialog, including support for displaying
+     add-on feedback page URLs.
+
+ * Campaigns:
+   * Dead Water:
+     * New world map.
+   * Delfador's Memoirs:
+     * Updated sprite and animations for the Wose Shaman.
+   * Eastern Invasion:
+     * Made Dacyn use teal TC and Mal-Ravanal blue TC, to make them fit the
+       portraits more.
+     * Updated maps for scenario 1-7.
+   * Heir To The Throne:
+     * Increased Li'sar's lvl3 hitpoints from 52 to 62.
+     * Implemented the portrait variations for Delfador and Asheviere.
+     * Changed Kaylan's portrait and gave him teal team coloring.
+     * Changed the flaming sword so it's now a 25% increase to damage, instead
+       of changing the damage to 15-4.
+     * Added a new mechanic to Sceptre of Fire. By standing still for a turn,
+       Delfador can now tell the player the shortest path to the Sceptre.
+     * Fixed Konrad's level 1's attack animation giving an 'image not found'
+       error.
+   * Liberty:
+     * New world map.
+   * The Rise of Wesnoth:
+     * New world maps.
+     * Redesigned scenario 'A New Land'.
+   * Son of the Black Eye:
+     * Rebalancing of the campaign continues and is mostly done for Scenarios 1
+       (End of Peace) through 8 (Silent Forest).
+     * Updated sprites and animations for the Orcish Shamans.
+
+ * Graphics:
+   * New and updated animations for the Loyalist Horseman.
+
+ * Language and i18n:
+   * Updated translations: Catalan, Chinese (Traditional), Dutch, Galician,
+     Japanese, Latin.
+
+ * Multiplayer:
+   * Unit names and genders are now synced in MP games.
+   * New eras: the Default+Khalifate and Age of Heroes+Khalifate eras are now
+     available.
+
+ * Replays:
+   * Replays include the prestart and start events again.
+   * Unit names and genders are now synced between games and replays.
+   * Play/stop buttons are disabled again at the end of a replay.
+   * The 'reset replay' button works correctly and does not cause OOS
+     errors any more.
+
+ * User interface:
+   * Removed the possibility to undo unit recruits because it caused oos.
+   * Added a party full bell to the MP game configuration screen, played once
+     all human player slots have been taken.
+   * Change layout for advertized games in the MP lobby and add map icon.
+   * The "Compressed saves" and "Compress savegames using bzip2" options in
+     Preferences -&gt; Advanced have been replaced by a single option,
+     "Compressed saved games", that lets the user pick between gzip (default),
+     bzip2, and no compression. Users who previously enabled bzip2 compression
+     will need to do so again.
+   * Added possibility to hide eras menu for campaigns in MP Create.
+   * Introduced side's name in MP Connect.
+   * Middle click scrolling is now based on distance from initial click instead
+     of the centre of the screen.
+   * Make sliders able to be scrolled with the mouse wheel
+   * Allow advanced preference booleans and mp modifications to be toggled
+     via double click
+
+
+</mutableString>
                                             <attributes>
                                                 <font key="NSFont" metaFont="label"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural">
@@ -1309,7 +1630,7 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
                                         <fragment content="Version 1.11.1:">
                                             <attributes>
                                                 <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36">
                                                     <tabStops/>
                                                 </paragraphStyle>
                                             </attributes>
@@ -1394,7 +1715,7 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
    * Fix OOS when observe scenario 2 in a multiplayer campaign (bug #20217).</mutableString>
                                             <attributes>
                                                 <font key="NSFont" metaFont="label"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36">
                                                     <tabStops/>
                                                 </paragraphStyle>
                                             </attributes>
@@ -1405,7 +1726,7 @@ Cg
 </string>
                                             <attributes>
                                                 <font key="NSFont" size="12" name="Courier"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36">
                                                     <tabStops/>
                                                 </paragraphStyle>
                                             </attributes>
@@ -2758,7 +3079,7 @@ Cgo
                                         <fragment content="Version 1.9.6:">
                                             <attributes>
                                                 <font key="NSFont" size="12" name="LucidaGrande-Bold"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36">
                                                     <tabStops/>
                                                 </paragraphStyle>
                                             </attributes>
@@ -2809,7 +3130,7 @@ Cgo
    * Fix linker issues with cmake and scons.</mutableString>
                                             <attributes>
                                                 <font key="NSFont" size="11" name="LucidaGrande"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36">
                                                     <tabStops/>
                                                 </paragraphStyle>
                                             </attributes>
@@ -2820,7 +3141,7 @@ Cg
 </string>
                                             <attributes>
                                                 <font key="NSFont" metaFont="label"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36">
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="36">
                                                     <tabStops/>
                                                 </paragraphStyle>
                                             </attributes>
@@ -3778,7 +4099,7 @@ Cg
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="455" height="406"/>
+                                    <size key="minSize" width="440" height="406"/>
                                     <size key="maxSize" width="897" height="100000"/>
                                     <attributedString key="userComments">
                                         <fragment content="jhjhj">
@@ -3797,7 +4118,7 @@ Cg
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="511">
-                            <rect key="frame" x="440" y="1" width="16" height="406"/>
+                            <rect key="frame" x="441" y="1" width="15" height="406"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
