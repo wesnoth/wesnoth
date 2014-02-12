@@ -352,10 +352,10 @@ void parser::error(const std::string& error_type)
 {
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
-	i18n_symbols["value"] = tok_->current_token().value;
 	std::stringstream ss;
 	ss << tok_->get_start_line() << " " << tok_->get_file();
 #ifdef DEBUG
+	i18n_symbols["value"] = tok_->current_token().value;
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
@@ -363,7 +363,7 @@ void parser::error(const std::string& error_type)
 #else
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error, value '$value' at $pos")));
+		              N_("$error at $pos")));
 #endif
 }
 
