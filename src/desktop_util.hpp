@@ -50,6 +50,9 @@ namespace desktop {
  */
 bool open_object(const std::string& path_or_url);
 
+/** Returns whether open_object() is supported/implemented for the current platform. */
+bool open_object_is_supported();
+
 }
 
 #endif
