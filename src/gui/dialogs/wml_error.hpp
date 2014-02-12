@@ -23,16 +23,18 @@ class twml_error : public tdialog
 {
 public:
     twml_error(const std::string& summary,
+			   const std::string& post_summary,
 			   const std::vector<std::string>& files,
 			   const std::string& details);
 
 	/** The display function; see @ref tdialog for more information. */
 	static void display(const std::string& summary,
+						const std::string& post_summary,
 						const std::vector<std::string>& files,
 						const std::string& details,
 						CVideo& video)
 	{
-		twml_error(summary, files, details).show(video);
+		twml_error(summary, post_summary, files, details).show(video);
 	}
 
 	/** The display function; see @ref tdialog for more information. */
@@ -40,11 +42,12 @@ public:
 						const std::string& details,
 						CVideo& video)
 	{
-		display(summary, std::vector<std::string>(), details, video);
+		display(summary, "", std::vector<std::string>(), details, video);
 	}
 
 private:
 	bool have_files_;
+	bool have_post_summary_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

@@ -152,6 +152,11 @@ namespace gui2
  *         applicable. It is hidden otherwise. It is recommended to place it
  *         after the summary label. $
  *
+ * post_summary & & control & m &
+ *         Label used for displaying instructions for reporting the error.
+ *         It is recommended to place it after the file list label. It may be
+ *         hidden if empty. $
+ *
  * details & & control & m &
  *         Full report of the parser or preprocessor error(s) found. $
  *
@@ -161,11 +166,14 @@ namespace gui2
 REGISTER_DIALOG(wml_error)
 
 twml_error::twml_error(const std::string& summary,
+					   const std::string& post_summary,
 					   const std::vector<std::string>& files,
 					   const std::string& details)
 	: have_files_(!files.empty())
+	, have_post_summary_(!post_summary.empty())
 {
 	register_label("summary", true, summary);
+	register_label("post_summary", true, post_summary);
 	register_label("files", true, format_file_list(files));
 	register_label("details", true, details);
 }
@@ -175,6 +183,12 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
     if(!have_files_) {
 		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
 		filelist.set_visible(tcontrol::tvisible::invisible);
+	}
+
+	if(!have_post_summary_) {
+		tcontrol& post_summary = find_widget<tcontrol>(&window,
+													   "post_summary", false);
+		post_summary.set_visible(tcontrol::tvisible::invisible);
 	}
 }
 

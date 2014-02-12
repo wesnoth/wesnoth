@@ -275,14 +275,18 @@ void game_config_manager::load_addons_cfg()
 	}
 	if(error_addons.empty() == false) {
 		const size_t n = error_addons.size();
-		const std::string& msg =
+		const std::string& msg1 =
 			_n("The following add-on had errors and could not be loaded:",
 			   "The following add-ons had errors and could not be loaded:",
+			   n);
+		const std::string& msg2 =
+			_n("Please report this to the author or maintainer of this add-on.",
+			   "Please report this to the respective authors or maintainers of these add-ons.",
 			   n);
 
 		const std::string& report = utils::join(error_log, "\n\n");
 
-		gui2::twml_error::display(msg, error_addons, report,
+		gui2::twml_error::display(msg1, msg2, error_addons, report,
 								  disp_.video());
 	}
 }
