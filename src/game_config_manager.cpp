@@ -259,10 +259,12 @@ void game_config_manager::load_addons_cfg()
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
 			user_error_log << err.message << "\n";
 		} catch(preproc_config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
 			user_error_log << err.message << "\n";
 		} catch(io_exception&) {
@@ -280,7 +282,6 @@ void game_config_manager::load_addons_cfg()
 
 		const std::string& report = user_error_log.str();
 
-		ERR_CONFIG << report; // report has a trailing newline
 
 		gui2::twml_error::display(msg, error_addons, report,
 								  disp_.video());
