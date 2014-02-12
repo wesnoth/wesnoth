@@ -24,7 +24,7 @@
 
 namespace desktop {
 
-bool open_in_file_manager(const std::string& path);
+bool open_object(const std::string& path_or_url);
 
 }
 

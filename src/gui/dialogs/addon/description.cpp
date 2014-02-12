@@ -358,7 +358,7 @@ void taddon_description::browse_url_callback()
 {
 	/* TODO: ask for confirmation */
 
-	desktop::open_in_file_manager(feedback_url_);
+	desktop::open_object(feedback_url_);
 }
 
 void taddon_description::copy_url_callback()
