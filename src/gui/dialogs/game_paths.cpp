@@ -105,6 +105,12 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 				boost::bind(&tgame_paths::browse_directory_callback,
 							this,
 							path_path));
+
+		if(!desktop::open_object_is_supported()) {
+			// No point in displaying these on platforms that can't do
+			// open_object().
+			browse_w.set_visible(tcontrol::tvisible::invisible);
+		}
 	}
 }
 

@@ -393,6 +393,12 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 		url_copy_button.set_visible(tcontrol::tvisible::invisible);
 		url_textbox.set_visible(tcontrol::tvisible::invisible);
 	}
+
+	if(!desktop::open_object_is_supported()) {
+		// No point in displaying the button on platforms that can't do
+		// open_object().
+		url_go_button.set_visible(tcontrol::tvisible::invisible);
+	}
 }
 
 } // namespace  gui2
