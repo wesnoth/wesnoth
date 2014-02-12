@@ -15,6 +15,7 @@
 #include "gui/dialogs/wml_error.hpp"
 
 #include "addon/info.hpp"
+#include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/settings.hpp"
@@ -23,11 +24,82 @@
 
 namespace
 {
-
-std::string format_file_list(const std::vector<std::string>& files)
+inline bool is_dir_separator(char c)
 {
-	if(files.empty()) {
+#ifdef _WIN32
+	return c == '/' || c == '\\';
+#else
+	return c == '/';
+#endif
+}
+
+void strip_trailing_dir_separators(std::string& str)
+{
+	while(is_dir_separator(str[str.size() - 1])) {
+		str.erase(str.size() - 1);
+	}
+}
+
+std::string format_file_list(const std::vector<std::string>& files_original)
+{
+	if(files_original.empty()) {
 		return "";
+	}
+
+	const std::string& addons_path = get_addon_campaigns_dir();
+	std::vector<std::string> files(files_original);
+
+	BOOST_FOREACH(std::string& file, files)
+	{
+		std::string base;
+		std::string filename = file_name(file);
+		std::string parent_path;
+
+		const bool is_main_cfg = filename == "_main.cfg";
+
+		if(is_main_cfg) {
+			parent_path = directory_name(file) + "/..";
+		} else {
+			parent_path = directory_name(file);
+		}
+
+		// Only proceed to pretty-format the filename if it's from the add-ons
+		// directory.
+		if(normalize_path(parent_path) != normalize_path(addons_path)) {
+			continue;
+		}
+
+		if(is_main_cfg) {
+			base = directory_name(file);
+			// HACK: fool file_name() into giving us the parent directory name
+			//       alone by making base seem not like a directory path,
+			//       otherwise it returns an empty string.
+			strip_trailing_dir_separators(base);
+			base = file_name(base);
+		} else {
+			base = filename;
+		}
+
+		if(base.empty()) {
+			// We did something wrong. In the interest of not messing up the
+			// report, leave the original filename intact.
+			continue;
+		}
+
+		// Display the name as an add-on name instead of a filename.
+		if(!is_main_cfg) {
+			// Remove the file extension first.
+			static const std::string wml_suffix = ".cfg";
+
+			if(base.size() > wml_suffix.size()) {
+				const size_t suffix_pos = base.size() - wml_suffix.size();
+				if(base.substr(suffix_pos) == wml_suffix) {
+					base.erase(suffix_pos);
+				}
+			}
+		}
+
+		file = make_addon_title(base);
 	}
 
 	if(files.size() == 1) {
