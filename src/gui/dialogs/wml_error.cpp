@@ -14,7 +14,30 @@
 
 #include "gui/dialogs/wml_error.hpp"
 
+#include "addon/info.hpp"
+#include "gui/auxiliary/find_widget.tpp"
+#include "gui/widgets/control.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
+#include "serialization/string_utils.hpp"
+
+namespace
+{
+
+std::string format_file_list(const std::vector<std::string>& files)
+{
+	if(files.empty()) {
+		return "";
+	}
+
+	if(files.size() == 1) {
+		return files.front();
+	}
+
+	return utils::bullet_list(files);
+}
+
+}
 
 namespace gui2
 {
@@ -32,6 +55,11 @@ namespace gui2
  * summary & & control & m &
  *         Label used for displaying a brief summary of the error(s). $
  *
+ * files & & control & m &
+ *         Label used to display the list of affected add-ons or files, if
+ *         applicable. It is hidden otherwise. It is recommended to place it
+ *         after the summary label. $
+ *
  * details & & control & m &
  *         Full report of the parser or preprocessor error(s) found. $
  *
@@ -40,10 +68,22 @@ namespace gui2
 
 REGISTER_DIALOG(wml_error)
 
-twml_error::twml_error(const std::string& summary, const std::string& details)
+twml_error::twml_error(const std::string& summary,
+					   const std::vector<std::string>& files,
+					   const std::string& details)
+	: have_files_(!files.empty())
 {
 	register_label("summary", true, summary);
+	register_label("files", true, format_file_list(files));
 	register_label("details", true, details);
+}
+
+void twml_error::pre_show(CVideo& /*video*/, twindow& window)
+{
+    if(!have_files_) {
+		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
+		filelist.set_visible(tcontrol::tvisible::invisible);
+	}
 }
 
 } // end namespace gui2

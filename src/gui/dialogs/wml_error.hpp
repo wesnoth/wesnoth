@@ -22,19 +22,35 @@ namespace gui2 {
 class twml_error : public tdialog
 {
 public:
-    twml_error(const std::string& summary, const std::string& details);
+    twml_error(const std::string& summary,
+			   const std::vector<std::string>& files,
+			   const std::string& details);
+
+	/** The display function; see @ref tdialog for more information. */
+	static void display(const std::string& summary,
+						const std::vector<std::string>& files,
+						const std::string& details,
+						CVideo& video)
+	{
+		twml_error(summary, files, details).show(video);
+	}
 
 	/** The display function; see @ref tdialog for more information. */
 	static void display(const std::string& summary,
 						const std::string& details,
 						CVideo& video)
 	{
-		twml_error(summary, details).show(video);
+		display(summary, std::vector<std::string>(), details, video);
 	}
 
 private:
+	bool have_files_;
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
+
+	/** Inherited from tdialog. */
+	void pre_show(CVideo& video, twindow& window);
 };
 
 }  // end namespace gui2
