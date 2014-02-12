@@ -115,8 +115,6 @@ void tgame_paths::browse_directory_callback(const std::string& path)
 
 void tgame_paths::copy_to_clipboard_callback(const std::string& path)
 {
-	// std::cerr << "copy_to_clipboard_callback(): " << path << '\n';
 	copy_to_clipboard(path, false);
-	// std::cerr << "clipboard: " << copy_from_clipboard(false) << '\n';
 }
 }
