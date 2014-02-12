@@ -199,7 +199,8 @@ void game_config_manager::load_addons_cfg()
 
 	get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
 		ENTIRE_FILE_PATH);
-	std::stringstream user_error_log;
+
+	std::vector<std::string> error_log;
 
 	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
 	BOOST_FOREACH(const std::string& uc, user_files) {
@@ -230,11 +231,11 @@ void game_config_manager::load_addons_cfg()
 				ERR_CONFIG << "error reading usermade add-on '"
 					<< file << "'\n";
 				error_addons.push_back(file);
-				user_error_log << "The format '~" << file.substr(userdata_loc)
-					<< "' is only for single-file add-ons, use '~"
-					<< file.substr(userdata_loc,
+				error_log.push_back("The format '~" + file.substr(userdata_loc)
+					+ "' is only for single-file add-ons, use '~"
+					+ file.substr(userdata_loc,
 						size_minus_extension - userdata_loc)
-					<< "/_main.cfg' instead.\n";
+					+ "/_main.cfg' instead.");
 			}
 			else {
 				addons_to_load.push_back(file);
@@ -261,12 +262,12 @@ void game_config_manager::load_addons_cfg()
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
-			user_error_log << err.message << "\n";
+			error_log.push_back(err.message);
 		} catch(preproc_config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
-			user_error_log << err.message << "\n";
+			error_log.push_back(err.message);
 		} catch(io_exception&) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
 			error_addons.push_back(uc);
@@ -279,9 +280,7 @@ void game_config_manager::load_addons_cfg()
 			   "The following add-ons had errors and could not be loaded:",
 			   n);
 
-
-		const std::string& report = user_error_log.str();
-
+		const std::string& report = utils::join(error_log, "\n\n");
 
 		gui2::twml_error::display(msg, error_addons, report,
 								  disp_.video());
