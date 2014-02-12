@@ -112,8 +112,15 @@ bool have_addon_install_info(const std::string& addon_name)
 
 void get_addon_install_info(const std::string& addon_name, config& cfg)
 {
-	scoped_istream stream = istream_file(get_info_file_path(addon_name));
-	read(cfg, *stream);
+	const std::string& info_path = get_info_file_path(addon_name);
+	scoped_istream stream = istream_file(info_path);
+	try {
+		read(cfg, *stream);
+	} catch(const config::error& e) {
+		ERR_CFG << "Failed to read add-on installation information for '"
+				<< addon_name << "' from " << info_path << ":\n"
+				<< e.message << '\n';
+	}
 }
 
 bool remove_local_addon(const std::string& addon)
