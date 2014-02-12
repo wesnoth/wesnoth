@@ -24,6 +24,20 @@
 
 namespace desktop {
 
+/**
+ * Opens the specified object with the default application configured for its type.
+ *
+ * The default application for handling the object represented by
+ * @a path_or_url is defined by the operating system and desktop environment
+ * under which Wesnoth is running, and it is not under our control. Therefore,
+ * <b>EXTREME CAUTION</b> is advised when using this function with URLs or
+ * paths that are entirely or partially constructed from user-provided input
+ * (e.g., WML from user-made add-ons, chat log messages).
+ *
+ * If the content pointed to by @a path_or_url cannot be trusted, you should
+ * either refrain from using this function, or warn the user before calling
+ * this function.
+ */
 bool open_object(const std::string& path_or_url);
 
 }
