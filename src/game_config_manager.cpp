@@ -20,13 +20,14 @@
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/wml_error.hpp"
 #include "language.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "hotkey/hotkey_item.hpp"
+#include "hotkey/hotkey_command.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -174,10 +175,10 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 	} catch(game::error& e) {
-		ERR_CONFIG << "Error loading game configuration files\n";
-		gui2::show_error_message(disp_.video(),
-			_("Error loading game configuration files: '") +
-			e.message + _("' (The game will now exit)"));
+		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
+		gui2::twml_error::display(
+			_("Error loading game configuration files. The game will now exit."),
+			e.message, disp_.video());
 		throw;
 	}
 
@@ -270,17 +271,19 @@ void game_config_manager::load_addons_cfg()
 		}
 	}
 	if(error_addons.empty() == false) {
-		std::stringstream msg;
-		msg << _n("The following add-on had errors and could not be loaded:",
-			"The following add-ons had errors and could not be loaded:",
-				error_addons.size());
-		BOOST_FOREACH(const std::string& error_addon, error_addons) {
-			msg << "\n" << error_addon;
-		}
+		const size_t n = error_addons.size();
+		const std::string& msg =
+			_n("The following add-on had errors and could not be loaded:",
+			   "The following add-ons had errors and could not be loaded:",
+			   n);
 
-		msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
 
-		gui2::show_error_message(disp_.video(),msg.str());
+		const std::string& report = user_error_log.str();
+
+		ERR_CONFIG << report; // report has a trailing newline
+
+		gui2::twml_error::display(msg, error_addons, report,
+								  disp_.video());
 	}
 }
 
