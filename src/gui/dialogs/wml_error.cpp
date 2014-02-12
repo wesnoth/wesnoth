@@ -15,6 +15,7 @@
 #include "gui/dialogs/wml_error.hpp"
 
 #include "addon/info.hpp"
+#include "addon/manager.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/control.hpp"
@@ -86,7 +87,10 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 			continue;
 		}
 
+		//
 		// Display the name as an add-on name instead of a filename.
+		//
+
 		if(!is_main_cfg) {
 			// Remove the file extension first.
 			static const std::string wml_suffix = ".cfg";
@@ -99,6 +103,22 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 			}
 		}
 
+		if(have_addon_install_info(base)) {
+			// _info.cfg may have the add-on's title starting with 1.11.7,
+			// if the add-on was downloaded using the revised _info.cfg writer.
+			config cfg;
+			get_addon_install_info(base, cfg);
+
+			const config& info_cfg = cfg.child("info");
+
+			if(info_cfg) {
+				file = info_cfg["title"].str();
+				continue;
+			}
+		}
+
+		// Fallback to using a synthetic title with underscores replaced with
+		// whitespace.
 		file = make_addon_title(base);
 	}
 
