@@ -64,7 +64,7 @@ private:
 	void parse_element();
 	void parse_variable();
 	std::string lineno_string(utils::string_map &map, std::string const &lineno,
-		const char *error_string);
+		const char *error_string, const char *hint_string = NULL);
 	void error(const std::string& message);
 
 	config& cfg_;
@@ -142,7 +142,8 @@ void parser::operator()()
 		std::stringstream ss;
 		ss << elements.top().start_line << " " << elements.top().file;
 		error(lineno_string(i18n_symbols, ss.str(),
-				N_("Missing closing tag for tag [$tag] at $pos")));
+				N_("Missing closing tag for tag [$tag]"),
+				N_("at $pos")));
 	}
 }
 
@@ -205,7 +206,8 @@ void parser::parse_element()
 			std::stringstream ss;
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
-					N_("Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)")));
+					N_("Found invalid closing tag [/$tag2] for tag [$tag1]"),
+					N_("opened at $pos")));
 		}
 		if(validator_){
 			element & el= elements.top();
@@ -339,10 +341,18 @@ void parser::parse_variable()
  * This function is crap. Don't use it on a string_map with prefixes.
  */
 std::string parser::lineno_string(utils::string_map &i18n_symbols,
-	std::string const &lineno, const char *error_string)
+								  std::string const &lineno,
+								  const char *error_string,
+								  const char *hint_string)
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
 	std::string result = _(error_string);
+
+	if(hint_string != NULL) {
+		result += "\n    ";
+		result += hint_string;
+	}
+
 	BOOST_FOREACH(utils::string_map::value_type& var, i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	return result;
@@ -359,11 +369,11 @@ void parser::error(const std::string& error_type)
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error, value '$value', previous '$previous_value' at $pos")));
+		              N_("$error"), N_("at $pos (value '$value', previous '$previous_value')")));
 #else
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error at $pos")));
+		              N_("$error"), N_("at $pos")));
 #endif
 }
 
