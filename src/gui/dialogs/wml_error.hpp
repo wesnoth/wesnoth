@@ -19,9 +19,19 @@
 
 namespace gui2 {
 
+/** WML preprocessor/parser error report dialog. */
 class twml_error : public tdialog
 {
 public:
+	/**
+	 * Constructor.
+	 *
+	 * @param summary      Leading summary line for the report.
+	 * @param post_summary Additional line with instructions for the user, may
+	 *                     be empty.
+	 * @param files        List of WML files on which errors were detected.
+	 * @param details      Detailed WML preprocessor/parser error report.
+	 */
     twml_error(const std::string& summary,
 			   const std::string& post_summary,
 			   const std::vector<std::string>& files,
@@ -48,7 +58,7 @@ public:
 private:
 	bool have_files_;
 	bool have_post_summary_;
-	std::string report_;
+	std::string report_; // Plain text report for copying to clipboard.
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
