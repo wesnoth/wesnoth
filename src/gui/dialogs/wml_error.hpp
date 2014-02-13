@@ -48,12 +48,15 @@ public:
 private:
 	bool have_files_;
 	bool have_post_summary_;
+	std::string report_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
+
+	void copy_report_callback();
 };
 
 }  // end namespace gui2

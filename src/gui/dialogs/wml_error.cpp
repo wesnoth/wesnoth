@@ -16,12 +16,16 @@
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "clipboard.hpp"
 #include "filesystem.hpp"
 #include "gui/auxiliary/find_widget.tpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/control.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/string_utils.hpp"
+
+#include <boost/bind.hpp>
 
 namespace
 {
@@ -160,6 +164,10 @@ namespace gui2
  * details & & control & m &
  *         Full report of the parser or preprocessor error(s) found. $
  *
+ * copy & & button & m &
+ *         Button that the user can click on to copy the error report to the
+ *         system clipboard. $
+ *
  * @end{table}
  */
 
@@ -171,6 +179,7 @@ twml_error::twml_error(const std::string& summary,
 					   const std::string& details)
 	: have_files_(!files.empty())
 	, have_post_summary_(!post_summary.empty())
+	, report_(summary + "\n\n" + details)
 {
 	register_label("summary", true, summary);
 	register_label("post_summary", true, post_summary);
@@ -190,6 +199,16 @@ void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 													   "post_summary", false);
 		post_summary.set_visible(tcontrol::tvisible::invisible);
 	}
+
+	tbutton& copy_button = find_widget<tbutton>(&window, "copy", false);
+
+	connect_signal_mouse_left_click(
+			copy_button, boost::bind(&twml_error::copy_report_callback, this));
+}
+
+void twml_error::copy_report_callback()
+{
+	copy_to_clipboard(report_, false);
 }
 
 } // end namespace gui2
