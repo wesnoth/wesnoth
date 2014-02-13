@@ -55,6 +55,8 @@ static t_file_number_map file_number_map;
 
 static bool encode_filename = true;
 
+static std::string preprocessor_error_detail_prefix = "\n    ";
+
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code){
 	if(!encode_filename)
@@ -326,7 +328,8 @@ std::string lineno_string(const std::string &lineno)
 {
 	std::vector< std::string > pos = utils::quoted_split(lineno, ' ');
 	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
-	std::string included_from = " included from ";
+	std::string included_from =
+		preprocessor_error_detail_prefix + "included from ";
 	std::string res;
 	while (i != end) {
 		std::string const &line = *(i++);
@@ -348,7 +351,7 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	std::ostringstream pos;
 	pos << l << ' ' << location_;
 	position = lineno_string(pos.str());
-	error = error_type + " at " + position;
+	error = error_type + preprocessor_error_detail_prefix + "at " + position;
 	ERR_CF << error << '\n';
 	throw preproc_config::error(error);
 }

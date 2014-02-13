@@ -769,6 +769,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp
 	gui/dialogs/unit_create.cpp
+	gui/dialogs/wml_error.cpp
 	gui/dialogs/wml_message.cpp
 	halo.cpp
 	help.cpp
