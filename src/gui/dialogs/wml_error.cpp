@@ -12,12 +12,15 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 #include "gui/dialogs/wml_error.hpp"
 
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "clipboard.hpp"
 #include "filesystem.hpp"
+#include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/control.hpp"
@@ -179,11 +182,30 @@ twml_error::twml_error(const std::string& summary,
 					   const std::string& details)
 	: have_files_(!files.empty())
 	, have_post_summary_(!post_summary.empty())
-	, report_(summary + "\n\n" + details)
+	, report_()
 {
+	const std::string& file_list_text = format_file_list(files);
+
+	report_ = summary;
+
+	if(!file_list_text.empty()) {
+		report_ += "\n" + file_list_text;
+	}
+
+	if(!post_summary.empty()) {
+		report_ += "\n\n" + post_summary;
+	}
+
+	report_ += "\n\n";
+	report_ += _("Details:");
+	report_ += "\n\n" + utils::indent(details);
+	// Since this is likely to be pasted into a text file, add a final line
+	// break for convenience, since otherwise the report ends mid-line.
+	report_ += "\n";
+
 	register_label("summary", true, summary);
 	register_label("post_summary", true, post_summary);
-	register_label("files", true, format_file_list(files));
+	register_label("files", true, file_list_text);
 	register_label("details", true, details);
 }
 
