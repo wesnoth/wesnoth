@@ -130,7 +130,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 	}
 
 	if(files.size() == 1) {
-		return files.front();
+		return utils::indent(files.front());
 	}
 
 	return utils::bullet_list(files);
