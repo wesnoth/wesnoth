@@ -709,7 +709,6 @@ set(wesnoth-main_SRC
 	game_events/menu_item.cpp
 	game_events/pump.cpp
 	game_events/wmi_container.cpp
-	game_instance.cpp
 	game_preferences.cpp
 	game_preferences_display.cpp
 	gamestatus.cpp
