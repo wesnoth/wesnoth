@@ -741,6 +741,35 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 	return matches;
 }
 
+std::string indent(const std::string& string, size_t indent_size)
+{
+	if(string.empty() || indent_size == 0) {
+		return "";
+	}
+
+	const std::string indent(indent_size, ' ');
+
+	const std::vector<std::string>& lines = split(string, '\x0A', 0);
+	std::string res;
+
+	for(size_t lno = 0; lno < lines.size();) {
+		const std::string& line = lines[lno];
+
+		// Lines containing only a carriage return count as empty.
+		if(!line.empty() && line != "\x0D") {
+			res += indent;
+		}
+
+		res += line;
+
+		if(++lno < lines.size()) {
+			res += '\x0A';
+		}
+	}
+
+	return res;
+}
+
 std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)
 {
 	std::vector<std::string> res;
