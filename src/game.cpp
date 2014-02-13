@@ -466,6 +466,10 @@ static int do_gameloop(int argc, char** argv)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
+#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
+	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
+#endif
+
 	loadscreen::global_loadscreen_manager loadscreen_manager(game->disp().video());
 
 	loadscreen::start_stage("init gui");
@@ -491,10 +495,6 @@ static int do_gameloop(int argc, char** argv)
 
 	loadscreen::start_stage("refresh addons");
 	refresh_addon_version_info_cache();
-
-#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
-	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
-#endif
 
 	config tips_of_day;
 
