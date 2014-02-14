@@ -198,7 +198,6 @@ std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet
  *
  * @param string      Text to indent.
  * @param indent_size Number of indentation units to use.
- * @param indent_unit Indentation unit.
  */
 std::string indent(const std::string& string, size_t indent_size = 4);
 
