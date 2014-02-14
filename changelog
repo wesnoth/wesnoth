@@ -13,7 +13,12 @@ Version 1.11.9+dev:
    * Added: A new tooltip window.
  * Language and i18n:
    * Updated translations:
+ * User interface:
+   * New UI for displaying errors detected during the core and add-on WML
+     loading process (parser and preprocessor errors), including the
+     ability to copy the report to clipboard.
  * WML engine:
+   * WML loading phase errors are reported to stderr in a new indented format.
    * Implemented [true] and [false] ConditionalWML tags, which describe a
      condition that always yields true or false, respectively.
  * Miscellaneous and bug fixes:
