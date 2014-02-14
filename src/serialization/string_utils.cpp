@@ -210,18 +210,22 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 						std::string s_begin = (*itor).substr(0,found_tilde);
 						s_begin = strip(s_begin);
 						int begin = atoi(s_begin.c_str());
-						size_t padding = 0;
+						size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
 						std::string s_end = (*itor).substr(found_tilde+1);
 						s_end = strip(s_end);
 						int end = atoi(s_end.c_str());
-						if (padding==0) {
-							while (padding<s_end.size() && s_end[padding]=='0') {
-								padding++;
-							}
+						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
+							padding_end++;
 						}
+						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
+							ERR_GENERAL << "Square bracket padding sizes not matching: "
+										<< s_begin << " and " << s_end <<".\n";
+						}
+						if (padding_end > padding) padding = padding_end;
+						
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
 						for (int k=begin; k!=end; k+=increment) {
