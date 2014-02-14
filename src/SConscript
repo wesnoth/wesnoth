@@ -82,7 +82,6 @@ libwesnoth_sources = Split("""
     hotkey/hotkey_command.cpp
     hotkey/command_executor.cpp
     hotkey/hotkey_manager.cpp
-    hotkey/hotkey_preferences_display.cpp
     image.cpp
     image_modifications.cpp
     joystick.cpp
@@ -438,6 +437,7 @@ wesnoth_sources = Split("""
     gui/widgets/window.cpp
     halo.cpp
     help.cpp
+    hotkey/hotkey_preferences_display.cpp
     intro.cpp
     leader_scroll_dialog.cpp
     lobby_preferences.cpp
