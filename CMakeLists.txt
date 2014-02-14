@@ -305,6 +305,12 @@ endif(NOT CMAKE_COMPILER_IS_GNUCXX)
 
 check_compiler_has_flag(
 	CXX_FLAGS_STRICT_COMPILATION
+	"-Wold-style-cast"
+	HAS_COMPILER_FLAG_WOLD_STYLE_CAST
+)
+
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
 	"-Wdeprecated-register"
 	HAS_COMPILER_FLAG_WDEPRECATED_REGISTER
 	"-Wno-deprecated-register"
