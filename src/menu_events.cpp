@@ -1168,12 +1168,6 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const std::string& old_team_name = old_label ? old_label->team_name() : "";
-		// remove the old label if we changed the team_name
-		if (team_only == (old_team_name == "")) {
-			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, color);
-			if (old) recorder.add_label(old);
-		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
 		if (res)
 			recorder.add_label(res);
