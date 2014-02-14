@@ -82,6 +82,7 @@ libwesnoth_sources = Split("""
     hotkey/hotkey_command.cpp
     hotkey/command_executor.cpp
     hotkey/hotkey_manager.cpp
+    hotkey/hotkey_preferences_display.cpp
     image.cpp
     image_modifications.cpp
     joystick.cpp
@@ -523,7 +524,6 @@ if env["PLATFORM"] == "win32":
     wesnoth_sources.append("windows_tray_notification.cpp")
 
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
-wesnoth_sources.extend(client_env.Object("hotkey/hotkey_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
 
