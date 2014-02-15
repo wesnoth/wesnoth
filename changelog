@@ -11,6 +11,8 @@ Version 1.11.9+dev:
        31,11 at the end of The Bay of Pearls, causing it to disappear
        forever.
      * S15 (The Lost General): fix bug of sighted events firing too early
+ * Editor:
+  * Fixed: Drawing the offmap area for small resolutions.
  * GUI2
    * Added: FAI-function handling in GUI2 widgets.
    * Added: A new tooltip window.
@@ -20,10 +22,13 @@ Version 1.11.9+dev:
    * New UI for displaying errors detected during the core and add-on WML
      loading process (parser and preprocessor errors), including the
      ability to copy the report to clipboard.
+   * Fixed bug #21584: Properly redraw the minimap when the minimap is
+     resized.
  * WML engine:
    * WML loading phase errors are reported to stderr in a new indented format.
    * Implemented [true] and [false] ConditionalWML tags, which describe a
      condition that always yields true or false, respectively.
+   * Fixed: Disallow change and remove sections without an id in the ThemeWML.
  * Miscellaneous and bug fixes:
    * Fixed: A compilation warning with DEBUG_WINDOW_LAYOUT_GRAPHS.
    * Added -Wold-style-cast to the CMake strict flags.
