@@ -26,6 +26,7 @@ Version 1.11.9+dev:
    * WML loading phase errors are reported to stderr in a new indented format.
    * Implemented [true] and [false] ConditionalWML tags, which describe a
      condition that always yields true or false, respectively.
+   * Fixed: Disallow change and remove sections without an id in the ThemeWML.
  * Miscellaneous and bug fixes:
    * Fixed: A compilation warning with DEBUG_WINDOW_LAYOUT_GRAPHS.
    * Added -Wold-style-cast to the CMake strict flags.
