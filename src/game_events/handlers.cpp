@@ -324,27 +324,33 @@ event_handler::event_handler(const config &cfg, bool imi) :
  * Handles the queued event, according to our WML instructions.
  * WARNING: *this may be destroyed at the end of this call, unless
  *          the caller maintains a handler_ptr to this.
+ *
+ * @param[in]     event_info  Information about the event that needs handling.
+ * @param[in,out] handler_p   The caller's smart pointer to *this. It may be
+ *                            reset() during processing.
  */
-void event_handler::handle_event(const queued_event& event_info)
+void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p)
 {
-	handler_ptr preservative;
+	// We will need our config after possibly self-destructing. Make a copy now.
+	vconfig vcfg(cfg_, true);
+
+	if (is_menu_item_) {
+		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
+	}
 
 	if (first_time_only_)
 	{
 		// We should only be handling events if we've been added to the
 		// active handlers.
 		assert ( index_ < event_handlers.size() );
-		// Prevent self-destructing mid-function.
-		preservative = event_handlers[index_];
 		// Disable this handler.
 		event_handlers[index_].reset();
+		// Also remove our caller's hold on us.
+		handler_p.reset();
 	}
+	// *WARNING*: At this point, dereferencing this could be a memory violation!
 
-	if (is_menu_item_) {
-		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
-	}
-
-	handle_event_commands(event_info, vconfig(cfg_));
+	handle_event_commands(event_info, vcfg);
 }
 
 bool event_handler::matches_name(const std::string &name) const

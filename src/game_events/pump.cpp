@@ -234,21 +234,38 @@ namespace { // Support functions
 		return true;
 	}
 
-	bool process_event(event_handler& handler, const queued_event& ev)
+	/**
+	 * Processes an event through a single event handler.
+	 * This includes checking event filters, but not checking that the event
+	 * name matches.
+	 *
+	 * @param[in,out]  handler_p  The handler to offer the event to.
+	 *                            This may be reset during processing.
+	 * @param[in]      ev         The event information.
+	 *
+	 * @returns true if the game state changed.
+	 */
+	bool process_event(handler_ptr& handler_p, const queued_event& ev)
 	{
+		// We currently never pass a null pointer to this function, but to
+		// guard against future modifications:
+		if ( !handler_p )
+			return false;
+
 		unit_map *units = resources::units;
 		scoped_xy_unit first_unit("unit", ev.loc1.x, ev.loc1.y, *units);
 		scoped_xy_unit second_unit("second_unit", ev.loc2.x, ev.loc2.y, *units);
 		scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 		scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 
-		if ( !filter_event(handler, ev) )
+		if ( !filter_event(*handler_p, ev) )
 			return false;
 
 		// The event hasn't been filtered out, so execute the handler.
 		++internal_wml_tracking;
 		context::scoped evc;
-		handler.handle_event(ev);
+		handler_p->handle_event(ev, handler_p);
+		// NOTE: handler_p may be null at this point!
 
 		if(ev.name == "select") {
 			resources::gamedata->last_selected = ev.loc1;
@@ -510,16 +527,15 @@ bool pump()
 
 		// While there is a potential handler for this event name.
 		while ( handler_ptr cur_handler = *handler_iter ) {
-			event_handler & handler = *cur_handler;
-
 			DBG_EH << "processing event " << event_name << " with id="<<
-				handler.get_config()["id"] << "\n";
+			          cur_handler->get_config()["id"] << "\n";
 			// Let this handler process our event.
-			if(process_event(handler, ev))
+			if ( process_event(cur_handler, ev) )
 			{
 				// Game state changed.
 				result = true;
 			}
+			// NOTE: cur_handler may be null at this point!
 
 			++handler_iter;
 		}

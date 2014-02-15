@@ -33,7 +33,13 @@
 namespace game_events
 {
 	struct queued_event;
+	class event_handler;  // Defined a few lines down.
 
+
+	/// Shared pointer to handler objects.
+	typedef boost::shared_ptr<event_handler> handler_ptr;
+	/// Storage of event handlers.
+	typedef std::vector<handler_ptr> handler_vec;
 
 	class event_handler
 	{
@@ -41,26 +47,22 @@ namespace game_events
 			explicit event_handler(const config &cfg, bool is_menu_item = false);
 
 			/// Allows the event_handlers object to record the index of *this.
-			void set_index(size_t index) { index_ = index; }
+			void set_index(handler_vec::size_type index) { index_ = index; }
 
 			bool matches_name(const std::string& name) const;
 
 			bool is_menu_item() const { return is_menu_item_; }
 
-			void handle_event(const queued_event& event_info);
+			void handle_event(const queued_event& event_info, handler_ptr& handler_p);
 
 			const config &get_config() const { return cfg_; }
 
 		private:
 			bool first_time_only_;
 			bool is_menu_item_;
-			size_t index_;
+			handler_vec::size_type index_;
 			config cfg_;
 	};
-	/// Shared pointer to handler objects.
-	typedef boost::shared_ptr<event_handler> handler_ptr;
-	/// Storage of event handlers.
-	typedef std::vector<handler_ptr> handler_vec;
 
 
 	/// The game event manager loads the scenario configuration object,
