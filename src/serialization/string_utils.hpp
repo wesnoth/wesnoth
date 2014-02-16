@@ -194,7 +194,9 @@ std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet
 /**
  * Indent a block of text.
  *
- * Only lines with content are changed; empty lines are left intact.
+ * Only lines with content are changed; empty lines are left intact. However,
+ * if @a string is an empty string itself, the indentation unit with the
+ * specified @a indent_size will be returned instead.
  *
  * @param string      Text to indent.
  * @param indent_size Number of indentation units to use.
