@@ -25,7 +25,7 @@
 
 #include "../formula_string_utils.hpp"
 #include "../gamestatus.hpp"
-#include "hotkey/hotkey_command.hpp"
+#include "../hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
@@ -310,6 +310,29 @@ bool manager::iteration::is_name_mismatch() const
 	return index_ < end_  &&
 		       (!event_handlers[index_]  ||
 		        !event_handlers[index_]->matches_name(event_name_));
+}
+
+
+/* ** handler_list::iterator ** */
+
+/**
+ * Dereference.
+ * If the current element has become invalid, we will increment first.
+ */
+handler_ptr handler_list::iterator::operator*()
+{
+	// Check for an available handler.
+	while ( iter_.derefable() ) {
+		// Handler still accessible?
+		if ( handler_ptr lock = iter_->lock() )
+			return lock;
+		else
+			// Remove the now-defunct entry.
+			iter_ = list_t::erase(iter_);
+	}
+
+	// End of the list.
+	return handler_ptr();
 }
 
 
