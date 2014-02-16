@@ -747,8 +747,12 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 
 std::string indent(const std::string& string, size_t indent_size)
 {
-	if(string.empty() || indent_size == 0) {
+	if(string.empty()) {
 		return "";
+	}
+
+	if(indent_size == 0) {
+		return string;
 	}
 
 	const std::string indent(indent_size, ' ');
