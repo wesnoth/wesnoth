@@ -9483,6 +9483,62 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath="..\..\src\gui\dialogs\wml_error.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Dialogs\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\dialogs\wml_error.hpp"
+					>
+				</File>
+				<File
 					RelativePath="..\..\src\gui\dialogs\wml_message.cpp"
 					>
 					<FileConfiguration
@@ -19408,14 +19464,6 @@
 		</File>
 		<File
 			RelativePath="..\..\src\game_errors.hpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\game_instance.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\game_instance.hpp"
 			>
 		</File>
 		<File
