@@ -34,6 +34,7 @@
 #include "../soundsource.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/unordered_map.hpp>
 #include <iostream>
 
 
@@ -49,24 +50,38 @@ static lg::log_domain log_event_handler("event_handler");
 // This file is in the game_events namespace.
 namespace game_events {
 
+
 namespace { // Types
 	class t_event_handlers {
+		typedef boost::unordered_map<std::string, handler_list> map_t;
+
 	public:
 		typedef handler_vec::iterator iterator;
 		typedef handler_vec::const_iterator const_iterator;
 
 	private:
-		handler_vec active_; ///Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
+		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
+		map_t        by_name_; /// Active event handlers with fixed event names, organized by event name.
+		handler_list dynamic_; /// Active event handlers with variables in their event names.
 
 
 		void log_handlers();
+		/// Utility to standardize the event names used in by_name_.
+		static std::string standardize_name(const std::string & name);
 
 	public:
 		typedef handler_vec::size_type size_type;
 
 		t_event_handlers()
 			: active_()
+			, by_name_()
+			, dynamic_()
 		{}
+
+		/// Read-only access to the handlers with varying event names.
+		const handler_list & get() const { return dynamic_; }
+		/// Read-only access to the handlers with fixed event names, by event name.
+		const handler_list & get(const std::string & name) const;
 
 		/// Adds an event handler.
 		void add_event_handler(const config & cfg, bool is_menu_item=false);
@@ -102,12 +117,56 @@ namespace { // Types
 	}
 
 	/**
+	 * Utility to standardize the event names used in by_name_.
+	 * This means stripping leading and trailing spaces, and converting internal
+	 * spaces to underscores.
+	 */
+	std::string t_event_handlers::standardize_name(const std::string & name)
+	{
+		std::string retval;
+		size_t name_index = 0;
+		size_t name_size = name.size();
+
+		// Trim trailing spaces off the name.
+		while ( name_size > 0  &&  name[name_size-1] == ' ' )
+			--name_size	;
+
+		// Trim leading spaces off the name.
+		while ( name_index < name_size  &&  name[name_index] == ' ' )
+			++name_index;
+
+		// Copy the rest, converting any remaining spaces to underscores.
+		retval.reserve(name_size - name_index);
+		while ( name_index < name_size ) {
+			char c = name[name_index++];
+			retval.push_back(c == ' ' ? '_' : c);
+		}
+
+		return retval;
+	}
+
+	/**
+	 * Read-only access to the handlers with fixed event names, by event name.
+	 */
+	const handler_list & t_event_handlers::get(const std::string & name) const
+	{
+		// Empty list for the "not found" case.
+		static const handler_list empty_list;
+
+		// Look for the name in the name map.
+		map_t::const_iterator find_it = by_name_.find(standardize_name(name));
+		return find_it == by_name_.end() ? empty_list : find_it->second;
+	}
+
+	/**
 	 * Adds an event handler.
 	 * An event with a nonempty ID will not be added if an event with that
 	 * ID already exists.
 	 */
 	void t_event_handlers::add_event_handler(const config & cfg, bool is_menu_item)
 	{
+		const std::string name = cfg["name"];
+
 		std::string id = cfg["id"];
 		if(!id.empty()) {
 			BOOST_FOREACH( handler_ptr const & eh, active_ ) {
@@ -115,17 +174,26 @@ namespace { // Types
 					continue;
 				config const & temp_config(eh->get_config());
 				if(id == temp_config["id"]) {
-					DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
+					DBG_EH << "ignoring event handler for name=" << name <<
 						" with id " << id << "\n";
 					return;
 				}
 			}
 		}
-		DBG_EH << "inserting event handler for name=" << cfg["name"] <<
+
+		// Create a new handler.
+		DBG_EH << "inserting event handler for name=" << name <<
 			" with id=" << id << "\n";
 		handler_ptr new_handler(new event_handler(cfg, is_menu_item));
 		new_handler->set_index(active_.size());
 		active_.push_back(new_handler);
+
+		// File by name.
+		if ( utils::might_contain_variables(name) )
+			dynamic_.push_back(new_handler);
+		else
+			by_name_[standardize_name(name)].push_back(new_handler);
+
 		log_handlers();
 	}
 
@@ -149,12 +217,16 @@ namespace { // Types
 			if ( event_id == id )
 				i->reset();
 		}
+		// The index by name will self-adjust later. No need to adjust it now.
+
 		log_handlers();
 	}
 
 	void t_event_handlers::clear()
 	{
 		active_.clear();
+		by_name_.clear();
+		dynamic_.clear();
 	}
 
 }// end anonymous namespace (types)
