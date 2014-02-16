@@ -351,7 +351,8 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	std::ostringstream pos;
 	pos << l << ' ' << location_;
 	position = lineno_string(pos.str());
-	error = error_type + preprocessor_error_detail_prefix + "at " + position;
+	error = error_type + '\n';
+	error += "at " + position;
 	ERR_CF << error << '\n';
 	throw preproc_config::error(error);
 }

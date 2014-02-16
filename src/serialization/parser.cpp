@@ -64,8 +64,10 @@ private:
 	void parse_element();
 	void parse_variable();
 	std::string lineno_string(utils::string_map &map, std::string const &lineno,
-		const char *error_string, const char *hint_string = NULL);
-	void error(const std::string& message);
+		const std::string &error_string,
+		const std::string &hint_string = "",
+		const std::string &debug_string = "");
+	void error(const std::string& message, const std::string& pos_format = "");
 
 	config& cfg_;
 	tokenizer *tok_;
@@ -142,8 +144,8 @@ void parser::operator()()
 		std::stringstream ss;
 		ss << elements.top().start_line << " " << elements.top().file;
 		error(lineno_string(i18n_symbols, ss.str(),
-				N_("Missing closing tag for tag [$tag]"),
-				N_("at $pos")));
+				_("Missing closing tag for tag [$tag]"),
+				_("expected at $pos")), _("opened at $pos"));
 	}
 }
 
@@ -206,8 +208,8 @@ void parser::parse_element()
 			std::stringstream ss;
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
-					N_("Found invalid closing tag [/$tag2] for tag [$tag1]"),
-					N_("opened at $pos")));
+					_("Found invalid closing tag [/$tag2] for tag [$tag1]"),
+					_("opened at $pos")), _("closed at $pos"));
 		}
 		if(validator_){
 			element & el= elements.top();
@@ -342,15 +344,19 @@ void parser::parse_variable()
  */
 std::string parser::lineno_string(utils::string_map &i18n_symbols,
 								  std::string const &lineno,
-								  const char *error_string,
-								  const char *hint_string)
+								  std::string const &error_string,
+								  std::string const &hint_string,
+								  std::string const &debug_string)
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
-	std::string result = _(error_string);
+	std::string result = error_string;
 
-	if(hint_string != NULL) {
-		result += "\n    ";
-		result += hint_string;
+	if(!hint_string.empty()) {
+		result += '\n' + hint_string;
+	}
+
+	if(!debug_string.empty()) {
+		result += '\n' + debug_string;
 	}
 
 	BOOST_FOREACH(utils::string_map::value_type& var, i18n_symbols)
@@ -358,30 +364,32 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols,
 	return result;
 }
 
-void parser::error(const std::string& error_type)
+void parser::error(const std::string& error_type, const std::string& pos_format)
 {
+	std::string hint_string = pos_format;
+
+	if(hint_string.empty()) {
+		hint_string = _("at $pos");
+	}
+
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
 
 	std::stringstream ss;
 	ss << tok_->get_start_line() << " " << tok_->get_file();
 
-	const char* const error_string = N_("$error");
-
 #ifdef DEBUG
 	i18n_symbols["value"] = tok_->current_token().value;
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
 
-	const char* const hint_string =
-		N_("at $pos\n"
-		   "Value: '$value' Previous: '$previous_value'");
+	const std::string& tok_state =
+		_("Value: '$value' Previous: '$previous_value'");
 #else
-	const char* const hint_string =
-		N_("at $pos");
+	const std::string& tok_state = "";
 #endif
 
 	const std::string& message =
-		lineno_string(i18n_symbols, ss.str(), error_string, hint_string);
+		lineno_string(i18n_symbols, ss.str(), "$error", hint_string, tok_state);
 
 	throw config::error(message);
 }
