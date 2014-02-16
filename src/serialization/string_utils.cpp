@@ -747,15 +747,15 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 
 std::string indent(const std::string& string, size_t indent_size)
 {
-	if(string.empty()) {
-		return "";
-	}
-
 	if(indent_size == 0) {
 		return string;
 	}
 
 	const std::string indent(indent_size, ' ');
+
+	if(string.empty()) {
+		return indent;
+	}
 
 	const std::vector<std::string>& lines = split(string, '\x0A', 0);
 	std::string res;
