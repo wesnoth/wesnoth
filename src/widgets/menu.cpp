@@ -983,8 +983,9 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				}
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				const size_t padding = 5;
-				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,xpos+padding,y);
+				const size_t padding = 2;
+				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,
+					(type == HEADING_ROW ? xpos+padding : xpos), y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
