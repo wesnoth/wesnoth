@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"POT-Creation-Date: 2013-05-05 10:53+0300\n"
+"POT-Creation-Date: 2014-02-16 13:53+0100\n"
 "PO-Revision-Date: 2011-06-14 14:41+0800\n"
 "Last-Translator: 楊綮銘 <steven.sheep@hotmail.com>\n"
 "Language-Team: \n"
@@ -211,7 +211,7 @@ msgstr ""
 #| "<imageobject> <imagedata fileref=\"images/main-menu-1.5.11.jpg\"/> </"
 #| "imageobject>"
 msgid ""
-"<imageobject> <imagedata fileref=\"images/main-menu-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/main-menu-1.11.9.jpg\"/> </"
 "imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/main-menu-1.5.11.jpg\"/> </"
@@ -549,7 +549,7 @@ msgstr "選擇“多人遊戲”選項可能會出現這幾個選項："
 #| "<imageobject> <imagedata fileref=\"images/multiplayer-1.5.11.jpg\"/> </"
 #| "imageobject>"
 msgid ""
-"<imageobject> <imagedata fileref=\"images/multiplayer-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/multiplayer-1.11.9.jpg\"/> </"
 "imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/multiplayer-1.5.11.jpg\"/> </"
@@ -699,7 +699,7 @@ msgstr "游戲畫面"
 #| "<imageobject> <imagedata fileref=\"images/game-screen-1.5.7.jpg\"/> </"
 #| "imageobject>"
 msgid ""
-"<imageobject> <imagedata fileref=\"images/game-screen-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/game-screen-1.11.9.jpg\"/> </"
 "imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/game-screen-1.5.7.jpg\"/> </"
@@ -730,7 +730,7 @@ msgstr ""
 #| "<imageobject> <imagedata fileref=\"images/top_pane-1.5.7.jpg\"/> </"
 #| "imageobject>"
 msgid ""
-"<imageobject> <imagedata fileref=\"images/top_pane-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/top_pane-1.11.9.jpg\"/> </"
 "imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/top_pane-1.5.7.jpg\"/> </"
@@ -814,7 +814,7 @@ msgstr "目前地形"
 #| "<imageobject> <imagedata fileref=\"images/right_pane-1.5.7.jpg\"/> </"
 #| "imageobject>"
 msgid ""
-"<imageobject> <imagedata fileref=\"images/right_pane-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/right_pane-1.11.9.jpg\"/> </"
 "imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/right_pane-1.5.7.jpg\"/> </"
@@ -1200,9 +1200,8 @@ msgstr "+"
 msgid "Zoom in"
 msgstr "放大"
 
-#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#. type: Content of: <book><chapter><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:700
-#: /src/wesnoth-master/doc/manual/manual.en.xml:2344
 msgid "-"
 msgstr "-"
 
@@ -1880,7 +1879,7 @@ msgstr "招募與徵召"
 #| "<imageobject> <imagedata fileref=\"images/recruit-1.5.7.jpg\"/> </"
 #| "imageobject>"
 msgid ""
-"<imageobject> <imagedata fileref=\"images/recruit-1.9.4.jpg\"/> </"
+"<imageobject> <imagedata fileref=\"images/recruit-1.11.9.jpg\"/> </"
 "imageobject>"
 msgstr ""
 "<imageobject> <imagedata fileref=\"images/recruit-1.5.7.jpg\"/> </"
@@ -3180,8 +3179,8 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2312
-msgid "Red"
-msgstr "紅色"
+msgid "Black"
+msgstr ""
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2316
@@ -3192,8 +3191,10 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2319
-msgid "Red orb"
-msgstr "紅色行動圖示"
+#, fuzzy
+#| msgid "Blue orb"
+msgid "Black orb"
+msgstr "藍色行動圖示"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2323
@@ -3226,6 +3227,11 @@ msgstr "藍色行動圖示"
 msgid "If the unit is an ally you do not control"
 msgstr "您不能控制的友軍單位。"
 
+#. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
+#: /src/wesnoth-master/doc/manual/manual.en.xml:2344
+msgid "Red"
+msgstr "紅色"
+
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2348
 msgid ""
@@ -3235,12 +3241,14 @@ msgstr ""
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry><inlinemediaobject><textobject><phrase>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2351
-msgid "No orb"
-msgstr "無行動圖示"
+msgid "Red orb"
+msgstr "紅色行動圖示"
 
 #. type: Content of: <book><chapter><section><section><table><tgroup><tbody><row><entry>
 #: /src/wesnoth-master/doc/manual/manual.en.xml:2355
-msgid "Enemy units have no orb on the top of their energy bar"
+#, fuzzy
+#| msgid "Enemy units have no orb on the top of their energy bar"
+msgid "Enemy units have a red orb on the top of their energy bar"
 msgstr "沒有標示顏色的為敵方單位。"
 
 #. type: Content of: <book><chapter><section><section><title>
@@ -4263,6 +4271,9 @@ msgid ""
 "Advanced units have higher upkeep than lower level units (1 gp per level), "
 "loyal units are an exception."
 msgstr "高等級單位比低等級單位支出高（每等級高1點）。忠誠單位除外。"
+
+#~ msgid "No orb"
+#~ msgstr "無行動圖示"
 
 #~ msgid "Envelope"
 #~ msgstr "回報"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -342,10 +342,8 @@ msgid "Error loading mask"
 msgstr "Klaida, įkeliant kaukę"
 
 #: src/editor/map/context_manager.cpp:435
-#, fuzzy
-#| msgid "ID:"
-msgid "ID"
-msgstr "ID:"
+msgid "Identifier:"
+msgstr ""
 
 #: src/editor/map/context_manager.cpp:435
 #, fuzzy
@@ -358,76 +356,76 @@ msgid "Choose Target Map"
 msgstr "Pasirinkite žemėlapį"
 
 #: src/editor/map/context_manager.cpp:453
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:885
 msgid "Error loading map"
 msgstr "Klaida įkeliant žemėlapį"
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:570
 msgid "Save the Map As"
 msgstr "Išsaugoti žemėlapį kaip"
 
-#: src/editor/map/context_manager.cpp:575
-#: src/editor/map/context_manager.cpp:604
+#: src/editor/map/context_manager.cpp:574
+#: src/editor/map/context_manager.cpp:602
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
 
-#: src/editor/map/context_manager.cpp:600
+#: src/editor/map/context_manager.cpp:598
 #, fuzzy
 #| msgid "Save the Map As"
 msgid "Save the Scenario As"
 msgstr "Išsaugoti žemėlapį kaip"
 
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:637
 msgid "No random map generators found."
 msgstr "Nerasta atsitiktinių žemėlapių generatorių."
 
-#: src/editor/map/context_manager.cpp:652
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:650
+#: src/editor/map/context_manager.cpp:654
 msgid "Map creation failed."
 msgstr "Žemėlapio kūrimas nepavyko."
 
-#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:666
 msgid "Unsaved Changes"
 msgstr "Neišsaugoti pakeitimai"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:667
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Ar norite išmesti visus pakeitimus, darytus žemėlapiui nuo paskutinio "
 "išsaugojimo?"
 
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:764
 #, fuzzy
 #| msgid "This map is already open."
 msgid "This scenario is already open."
 msgstr "Šis žemėlapis jau atvertas."
 
-#: src/editor/map/context_manager.cpp:788
-#: src/editor/map/context_manager.cpp:843
+#: src/editor/map/context_manager.cpp:786
+#: src/editor/map/context_manager.cpp:841
 msgid "This map is already open."
 msgstr "Šis žemėlapis jau atvertas."
 
-#: src/editor/map/context_manager.cpp:809
+#: src/editor/map/context_manager.cpp:807
 #, fuzzy
 #| msgid "Map saved."
 msgid "Scenario saved."
 msgstr "Žemėlapis išsaugotas."
 
-#: src/editor/map/context_manager.cpp:823
+#: src/editor/map/context_manager.cpp:821
 msgid "Map saved."
 msgstr "Žemėlapis išsaugotas."
 
-#: src/editor/map/context_manager.cpp:866
+#: src/editor/map/context_manager.cpp:864
 msgid "Loaded embedded map data"
 msgstr "Įkeliami įdėto žemėlapio duomenys"
 
-#: src/editor/map/context_manager.cpp:867
-#: src/editor/map/context_manager.cpp:881
+#: src/editor/map/context_manager.cpp:865
+#: src/editor/map/context_manager.cpp:879
 msgid "Map loaded from scenario"
 msgstr "Žemėlapis įkeltas iš scenarijaus"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:875
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -496,17 +494,22 @@ msgstr "Priešakinis planas: "
 msgid "BG: "
 msgstr "Fonas: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:123
+#: src/gui/dialogs/editor/custom_tod.cpp:129
 msgid "Choose file"
 msgstr "Pasirinkite failą"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:86
+#: src/gui/dialogs/editor_set_starting_position.cpp:87
 msgid "player^None"
 msgstr "Joks"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:98
+#: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Žaidėjas $player_number"
+
+#, fuzzy
+#~| msgid "ID:"
+#~ msgid "ID"
+#~ msgstr "ID:"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "

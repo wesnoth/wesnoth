@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2011-12-28 23:31+0100\n"
 "Last-Translator: Bjørn Håvard Stokke <bjoennungen@yahoo.no>\n"
 "Language-Team: None\n"
@@ -2869,15 +2869,15 @@ msgstr "Ufremkommelig"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:306
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Stridsdis"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
+#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Skodde"
@@ -3125,742 +3125,6 @@ msgstr ""
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:4
-msgid ""
-"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
-"event or ai coding."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:9
-#: data/hardwired/tips.cfg:13
-msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:8
-msgid ""
-"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
-"advanced features."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:12
-msgid ""
-"Scenarios saved from the editor in their default folder can be selected in "
-"the mp create screen's <i>User Scenarios</i> section."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:16
-msgid ""
-"Don’t neglect to earn your leader experience! You need to keep him safe, but "
-"if you coddle him too much he may be too weak to survive future battles."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:149
-msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:20
-msgid ""
-"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
-"highlight all the hexes your adversary can move to (assuming your units stay "
-"where they are). Use this to make sure the enemy can’t reach your weak or "
-"injured units on his next turn."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:21 data/hardwired/tips.cfg:33
-#: data/hardwired/tips.cfg:37 data/hardwired/tips.cfg:45
-#: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:65
-#: data/hardwired/tips.cfg:69 data/hardwired/tips.cfg:73
-#: data/hardwired/tips.cfg:77 data/hardwired/tips.cfg:81
-#: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:97
-#: data/hardwired/tips.cfg:101 data/hardwired/tips.cfg:113
-#: data/hardwired/tips.cfg:121 data/hardwired/tips.cfg:125
-#: data/hardwired/tips.cfg:133 data/hardwired/tips.cfg:157
-#: data/hardwired/tips.cfg:161 data/hardwired/tips.cfg:165
-#: data/hardwired/tips.cfg:173 data/hardwired/tips.cfg:181
-#: data/hardwired/tips.cfg:189 data/hardwired/tips.cfg:193
-#: data/hardwired/tips.cfg:201 data/hardwired/tips.cfg:205
-#: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:213
-#: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:241
-#: data/hardwired/tips.cfg:250
-msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:24
-msgid ""
-"Units with the <i>Intelligent</i> trait need fewer experience points to "
-"level up. Early in a campaign, try to give killing blows to these units so "
-"you can get some high-level troops sooner."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:25
-msgid "<i>― King Konrad, 536YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:28
-msgid ""
-"The encircling tactic is very powerful, particularly against fast opponents. "
-"By placing two units on opposite sides of an enemy, their zones of control "
-"will restrict it to one hex of movement in any direction. Unfortunately, you "
-"must completely surround skirmishers to immobilize them."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:141
-msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:32
-msgid ""
-"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
-"clicking on a castle tile. That will let you choose the precise hex you put "
-"a unit in. Placing units wisely can sometimes let you reach a village a turn "
-"earlier."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:36
-msgid ""
-"There are some helpful summary screens in the main menu: for instance, the "
-"<b>Status Table</b> will let you know how your enemies are doing, and how "
-"you are doing in comparison."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:40
-msgid ""
-"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
-"can be very important when moving through difficult terrain such as water or "
-"caves. It can make the difference between being able to move one hex or two."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:41 data/hardwired/tips.cfg:117
-#: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:237
-msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:44
-msgid ""
-"After you have played a few scenarios, read the <b>Gameplay</b> section in "
-"the <b>Help</b> screen carefully. Details become important as scenarios get "
-"harder!"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:48
-msgid ""
-"It is usually better to start the next scenario in a campaign with lower-"
-"level units that are about to level up than with those same units at a "
-"higher level."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:52
-msgid ""
-"On www.wesnoth.org you can find strategy guides, technical support, the "
-"history of Wesnoth, and much more."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:53
-msgid "<i>― The Wesnoth Community</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:56
-#, fuzzy
-msgid ""
-"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
-"rare <i>liminal</i> units fight best during twilight."
-msgstr ""
-"Hederlige enheter kjemper bedre om dagen, og lyssky enheter kjemper bedre om "
-"natten. Nøytrale enheter er upåvirket av dag og natt."
-
-#. [tip]
-#: data/hardwired/tips.cfg:57
-msgid ""
-"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:60
-msgid ""
-"An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:61 data/hardwired/tips.cfg:85
-#: data/hardwired/tips.cfg:137 data/hardwired/tips.cfg:145
-#: data/hardwired/tips.cfg:229
-msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:64
-msgid ""
-"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
-"know what you’re facing. In this case, long-range scouting units are worth "
-"their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:68
-#, fuzzy
-msgid ""
-"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
-"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
-"against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
-"affect it the most."
-msgstr ""
-"Der finnes seks typer angrep: stikk, hugg, slag, ild, kulde og hellig. "
-"Forskjellige enheter er svake for forskjellige typer angrep. Høyreklikk på "
-"en enhet og velg så 'enhetsbeskrivelse' og ruller ned til motstandstabellen "
-"kan du se hvilke resistanser og svakheter en enhet har mot de forskjellige "
-"typer angrep."
-
-#. [tip]
-#: data/hardwired/tips.cfg:72
-#, fuzzy
-#| msgid ""
-#| "The terrain your units are occupying determines the chance your opponents "
-#| "have of hitting them in battle. The defensive rating for the currently "
-#| "selected unit in the currently selected terrain is displayed in the top "
-#| "right corner of the screen."
-msgid ""
-"The terrain occupied by your units is the main factor determining the chance "
-"that they will be hit. The defensive rating for the currently selected unit "
-"in the currently selected terrain is displayed in the top right corner of "
-"the screen."
-msgstr ""
-"Terrengtypen enhetene dine står på avgjør sjansen for at fiender treffer dem "
-"i kamp. Forsvarsprosenten for den valgte enheten i terrenget du har "
-"musepekeren over vises øverst i skjermens høyre hjørne."
-
-#. [tip]
-#: data/hardwired/tips.cfg:76
-msgid ""
-"Poisoned units will lose eight hitpoints every turn until they are one point "
-"from dying. They will then remain at death’s door until the poison is "
-"removed. Healers can prevent a poisoned unit from deteriorating, but the "
-"poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:80
-#, fuzzy
-msgid ""
-"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
-"the <b>Actions</b> menu. By recalling the same units over and over, you can "
-"build up a powerful and experienced army."
-msgstr ""
-"Du kan hente enheter fra tidligere scenarier ved å velge 'tilbakekall' i "
-"spillemenyen. Ved å kalle de samme enhetene tilbake gang etter gang, kan du "
-"bygge opp en erfaren veteranarmé."
-
-#. [tip]
-#: data/hardwired/tips.cfg:84
-#, fuzzy
-msgid ""
-"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
-"around them. If a unit moves into an enemy’s zone of control, it may not "
-"move any further that turn. This means that units can have two empty hexes "
-"between them and still create a barrier to the enemy. Beware, though: "
-"skirmishers can pass through these gaps."
-msgstr ""
-"Enheter har en Kontrollsone (ZoC) i hver av feltene som omgir dem. Hvis en "
-"enhet flytter inn i en fiendes kontrollsone, kan den ikke flytte lengre den "
-"runden. Enheter med grad 0 er for svake til å kontrollere soner; "
-"linjebrytere er kyndige nok til å ignorere slike soner."
-
-#. [tip]
-#: data/hardwired/tips.cfg:88
-#, fuzzy
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain in which it is standing. However, magical attacks "
-"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
-"are guaranteed at least a 60% chance of a hit when they attack on their own "
-"turn."
-msgstr ""
-"Sjansen for å treffe en enhet avhenger vanligvis av hvor godt enheten kan "
-"forsvare seg i det terrenget den befinner seg i. Magiske angrep har en 70% "
-"sjanse til å treffe brukt både offensivt og defensivt. Skarpskytterangrep "
-"har minst 60% sjanse for å treffe brukt offensivt."
-
-#. [tip]
-#: data/hardwired/tips.cfg:89
-msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:92
-#, fuzzy
-msgid ""
-"Units stationed in villages will either heal eight hitpoints at the "
-"beginning of their turn, or will recover from poisoning."
-msgstr ""
-"Enheter stasjonert i landsbyer heles 8 helsepoeng ved begynnelsen av turen "
-"sin."
-
-#. [tip]
-#: data/hardwired/tips.cfg:96
-#, fuzzy
-msgid ""
-"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
-"does not move or attack, it will recover two hitpoints at the beginning of "
-"its next turn."
-msgstr ""
-"Enheter hviler hvis de ikke flytter, angriper eller blir angrepet i løpet av "
-"en runde. Hvilende enheter får 2 HP tilbake ved begynnelsen av sin neste "
-"tur, som legges til annen helbredelse."
-
-#. [tip]
-#: data/hardwired/tips.cfg:100
-#, fuzzy
-msgid ""
-"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
-"units’ sightlines are limited by their maximum movement. If you have some "
-"valuable but slow units, keep at least one fast unit with them so that you "
-"are not caught out by a surprise attack."
-msgstr ""
-"På kart med skodde eller stridsdis, vil en enhets synsvidde være bestemt av "
-"den maksimale bevegelsen dens. Husk dette når du skal avgøre hvilke enheter "
-"å speide med i ulike terreng."
-
-#. [tip]
-#: data/hardwired/tips.cfg:104
-#, fuzzy
-msgid ""
-"Foot units tend to defend better in villages and castles than in other "
-"terrain types, while most mounted units do not gain any defensive advantages "
-"from villages or castles."
-msgstr ""
-"De fleste fotsoldater forsvarer seg bedre i landsbyer og festninger enn i de "
-"fleste andre terrengtyper. Ridende enheter har ingen eller redusert defensiv "
-"fordel i landsbyer og festninger."
-
-#. [tip]
-#: data/hardwired/tips.cfg:105 data/hardwired/tips.cfg:185
-msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:108
-#, fuzzy
-msgid ""
-"Horse-based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"Hestebaserte enheter er generelt motstandsdyktige mot angrep med hugg- eller "
-"slagvåpen, men er sårbare mot angrep med stikkvåpen som buer og spyd."
-
-#. [tip]
-#: data/hardwired/tips.cfg:109
-msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-#, fuzzy
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain eight experience points for "
-"every level of the unit they kill, or four experience points for a zero-"
-"level opponent."
-msgstr ""
-"Å inngi en fiende dødsstøtet er den snareste veien for en enhet å vinne "
-"erfaring. Enheten som dreper en fiende vinner 8 erfaringspoeng (XP) for "
-"hvert grad den beseirede enheten hadde."
-
-#. [tip]
-#: data/hardwired/tips.cfg:116
-#, fuzzy
-msgid ""
-"Elvish units move and fight well in forest. Dwarvish units move and fight "
-"well in hills, mountains and caves."
-msgstr ""
-"Alviske enheter sloss og beveger seg godt i skog. Dverger sloss og beveger "
-"seg svært bra i åser og fjell. Utnytt terrenget i kamp, og gå ikke "
-"fiendtlige alver og dverger i møte i terrengene der de har store fordeler."
-
-#. [tip]
-#: data/hardwired/tips.cfg:120
-#, fuzzy
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"Tålmodighet er ofte nøkkelen til seier. Vent heller på bedre betingelser, "
-"enn å angripe under dårlige forhold, eller med få styrker."
-
-#. [tip]
-#: data/hardwired/tips.cfg:124
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"Hvis du blir angrepet fra flere kanter, kan det være en god ide å sende "
-"mindre viktige enheter for å angripe andre steder for å forsinke fiendens "
-"tropper. Raske enheter som løper rundt fienden for å stjele landsbyer kan "
-"tvinge fienden til å trekke enheter tilbake i forsvar."
-
-#. [tip]
-#: data/hardwired/tips.cfg:128
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"Vær ikke redd for tilbaketrekninger og omgrupperinger; de er ofte nøkkelen "
-"til seier."
-
-#. [tip]
-#: data/hardwired/tips.cfg:129
-msgid "<i>― Meneldur, 123YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:132
-#, fuzzy
-#| msgid ""
-#| "In most campaigns you will receive a gold bonus for finishing early, "
-#| "depending on the number of villages on the map and the number of turns "
-#| "you finish early. You will always earn more gold this way than through "
-#| "capturing villages and waiting for turns to run out."
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns "
-"remaining. You will usually earn more gold this way than through capturing "
-"villages and waiting for the turns to run out."
-msgstr ""
-"I de fleste felttog mottar du en gullbonus for å avslutte et scenario "
-"tidlig. Bonusen vil avheng av antall landsbyer på kartet og antall runder du "
-"har igjen. Du vil alltid tjene mer gull ved å avslutte tidlig enn ved å "
-"erobre landsbyer og vente på at rundene skal ta slutt."
-
-#. [tip]
-#: data/hardwired/tips.cfg:136
-#, fuzzy
-#| msgid ""
-#| "Your leader can recruit or recall units from any keep inside a castle, "
-#| "not just the keep they start on. You can capture a keep from an enemy and "
-#| "recruit from there. Also, some of your allies may be willing to make room "
-#| "for you on their keep so you can recruit there."
-msgid ""
-"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
-"not just the keep they start on. Sometimes your allies may be willing to "
-"make room for you on their keep so you can recruit from there, and you can "
-"even capture an enemy’s keep and use that."
-msgstr ""
-"En hærfører kan rekruttere og tilbakekalle enheter fra et hvilket som helst "
-"vakttårn, ikke bare fra det de starter på. Du kan erobre et hvilket som "
-"helst tårn og rekruttere derfra. En alliert kan og være villig til å gi deg "
-"tilgang til tårnet sitt så du kan rekruttere."
-
-#. [tip]
-#: data/hardwired/tips.cfg:140
-#, fuzzy
-msgid ""
-"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
-"vulnerable to impact, fire, and arcane attacks."
-msgstr ""
-"Skjeletter er motstandsdyktige mot stikk- og huggangrep, men sårbare overfor "
-"slag-, ild- og hellige angrep."
-
-#. [tip]
-#: data/hardwired/tips.cfg:144
-#, fuzzy
-msgid ""
-"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
-"the same side fight better. You can move these units slowly along your "
-"battle lines and give bonuses to large numbers of lower-level troops."
-msgstr ""
-"Enheter med egenskapen 'leder' kan lede naboenheter av lavere grad i kamp "
-"slik at de gjør mer skade."
-
-#. [tip]
-#: data/hardwired/tips.cfg:148
-#, fuzzy
-msgid ""
-"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
-"the village and attack you, while enjoying the defense and healing of the "
-"village."
-msgstr ""
-"Unngå å plassere enheter ved siden av ubesatte landsbyer. Fiendlige enheter "
-"kan angripe deg fra landsbyen, og nyte godt av feltest forsvars- og "
-"helbredelsesmuligheter. "
-
-#. [tip]
-#: data/hardwired/tips.cfg:152
-#, fuzzy
-#| msgid "Use lines of units to screen injured units to let them recover."
-msgid "Use lines of troops to screen your injured units while they recover."
-msgstr ""
-"Bruk friske enheter akivt for å skjerme skadde enheter. Ved å trykke ctrl-v "
-"kan du se om fienden rekker fram til dine skadde enheter."
-
-#. [tip]
-#: data/hardwired/tips.cfg:153
-msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:156
-#, fuzzy
-#| msgid "Read the hotkeys list in the preferences menu."
-msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Les listen over hurtigtaster under menyen for innstillinger."
-
-#. [tip]
-#: data/hardwired/tips.cfg:160
-#, fuzzy
-#| msgid ""
-#| "If you move a unit, but don’t attack or discover any additional "
-#| "information, you can undo your move by pressing 'u'."
-msgid ""
-"If you move a unit, but don’t attack or discover any additional information, "
-"you can undo your move by pressing <b>u</b>."
-msgstr ""
-"Hvis du flytter en enhet, men ikke angriper eller avslører annen "
-"informasjon, kan du gjøre om ved å trykke 'u'."
-
-#. [tip]
-#: data/hardwired/tips.cfg:164
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"Du kan se en fiendes rekkevidde ved å holde musepekeren over den aktuelle "
-"enheten."
-
-#. [tip]
-#: data/hardwired/tips.cfg:168
-msgid ""
-"Use healers to support your attacks — they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-"Bruk helbredere til å støtte opp under angrepene dine - de kan være tungen "
-"på vektskålen i slag - også uten å angripe selv."
-
-#. [tip]
-#: data/hardwired/tips.cfg:169 data/hardwired/tips.cfg:217
-msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:172
-#, fuzzy
-#| msgid ""
-#| "The 'slow' attack ability makes enemy units move slower and halves the "
-#| "damage they do on all attacks until they end a turn."
-msgid ""
-"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
-"they do on all attacks until they end a turn."
-msgstr ""
-"'Forsinkende' angrep gjør en enhet tregere, og skaden den gjør blir halvert "
-"for alle angrep en hel runde."
-
-#. [tip]
-#: data/hardwired/tips.cfg:176
-#, fuzzy
-msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Hellige angrep er svært kraftige mot alle vandøde."
-
-#. [tip]
-#: data/hardwired/tips.cfg:177
-msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:180
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-"Enheter helbredes når de går opp et nivå. Hvis du greier å utnytte dette "
-"godt kan det snu en kamp."
-
-#. [tip]
-#: data/hardwired/tips.cfg:184
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr ""
-"Enheter med stormangrep brukes best når de kan drepe en fiende med ett "
-"enkelt slag."
-
-#. [tip]
-#: data/hardwired/tips.cfg:188
-#, fuzzy
-msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
-"benefits of advancing a level, so it is generally wiser to advance your "
-"lower-level units instead."
-msgstr ""
-"Enheter kan avansere også etter de har nådd sin høyeste grad. Dette øker "
-"vanligvis enhetens maksimale helsepoeng med 3, men gir ikke full "
-"helbredelse. Det vil ofte være nyttigere å avansere enheter på lavere nivå."
-
-#. [tip]
-#: data/hardwired/tips.cfg:192
-#, fuzzy
-#| msgid ""
-#| "Nearly every icon and word in Wesnoth’s playing screen has a tooltip. "
-#| "Place your mouse pointer over one to get an explanation or description."
-msgid ""
-"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-"mouse pointer over any button or icon to get a description or explanation of "
-"what it does."
-msgstr ""
-"Nær hvert eneste symbol og ord i Wesnoths spilleskjerm har hurtigtips. Pek "
-"på ordet med musepekeren for å se en kort beskrivelse."
-
-#. [tip]
-#: data/hardwired/tips.cfg:196
-msgid ""
-"To advance low-level units quickly, team them with a veteran and use the "
-"veteran to damage a joint target heavily enough for the junior partner to "
-"get in the killing blow."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:197
-msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:200
-msgid ""
-"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
-"the <b>Delay Shroud Updates</b> option when you need to move units while "
-"retaining the ability to undo, or use the new Whiteboard planning tool."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:204
-msgid ""
-"If an enemy benefits more from a rare terrain type than you do, occupying "
-"that terrain will deprive them of its benefits."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:208
-msgid ""
-"Few units have good defenses in water; a line of attackers along the edge of "
-"a river can inflict heavy casualties. Elves can use the edge of a forest in "
-"a similar manner, and dwarves can do the same with mountains."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:212
-msgid ""
-"In many campaign scenarios, you may issue simple instructions for your "
-"computer-controlled allies using the right-click context menu."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:216
-msgid ""
-"The <i>Slow</i> ability is extremely powerful because it has such wide-"
-"ranging effects. Enemy undead get half the normal benefit from their "
-"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
-"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
-"to escape; slow enemies are almost immobilized, and your own units suffer "
-"less retaliation damage, so it’s quicker to heal them."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:220
-msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
-"This gives you another try whenever your first devastating attack misses — "
-"as inevitably happens from time to time."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:224
-msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:228
-msgid ""
-"Think twice before dismissing any unit from your recall list, no matter how "
-"little experience it has. Sometimes it’s worth paying a premium to know "
-"exactly what traits a new arrival will have."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:232
-msgid ""
-"When a tough unit is heavily injured, send it to heal in a village several "
-"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
-"hitpoints per turn) without tying up front-line villages."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:233 data/hardwired/tips.cfg:245
-msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:236
-msgid ""
-"Combining multiple special abilities can be deadly. While it may take some "
-"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
-"<i>Charge</i> against a slowed opponent, the results can be impressive."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:240
-msgid ""
-"While finishing early gives a gold bonus, and reduces the opportunities for "
-"enemies to kill your valuable troops, it also means you lose chances to earn "
-"your units extra experience. When deciding whether or not to finish a "
-"scenario early, weigh these factors against one another."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:244
-msgid ""
-"If your forces have weak defenses everywhere on the map, occupy the areas "
-"where your enemies can only attack you by sharing the same disadvantages. "
-"Avoid places where your defenses are poor and your enemy’s are merely "
-"average. Plan for heavy losses, and take firm control of any hex where the "
-"land does favor you."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:249
-msgid ""
-"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
-"if they occupy a village hex, they do not gain any defensive benefits from "
-"the village, although they will still be healed."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -4159,6 +3423,731 @@ msgstr "forflytning"
 #, fuzzy
 msgid "statuspanel^terrain def."
 msgstr "grad"
+
+#. [tip]
+#: data/tips.cfg:4
+msgid ""
+"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
+"event or ai coding."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
+msgid "<i>― The Wesnoth Design Guide</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:8
+msgid ""
+"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
+"advanced features."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:12
+msgid ""
+"Scenarios saved from the editor in their default folder can be selected in "
+"the mp create screen's <i>User Scenarios</i> section."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:16
+msgid ""
+"Don’t neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be too weak to survive future battles."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:17 data/tips.cfg:149
+msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:20
+msgid ""
+"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
+"highlight all the hexes your adversary can move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can’t reach your weak or "
+"injured units on his next turn."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
+#: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
+#: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
+#: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
+#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
+#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
+#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
+#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:250
+msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:24
+msgid ""
+"Units with the <i>Intelligent</i> trait need fewer experience points to "
+"level up. Early in a campaign, try to give killing blows to these units so "
+"you can get some high-level troops sooner."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:25
+msgid "<i>― King Konrad, 536YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:28
+msgid ""
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction. Unfortunately, you "
+"must completely surround skirmishers to immobilize them."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:29 data/tips.cfg:141
+msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:32
+msgid ""
+"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
+"clicking on a castle tile. That will let you choose the precise hex you put "
+"a unit in. Placing units wisely can sometimes let you reach a village a turn "
+"earlier."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:36
+msgid ""
+"There are some helpful summary screens in the main menu: for instance, the "
+"<b>Status Table</b> will let you know how your enemies are doing, and how "
+"you are doing in comparison."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:40
+msgid ""
+"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
+"can be very important when moving through difficult terrain such as water or "
+"caves. It can make the difference between being able to move one hex or two."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+msgid "<i>― High Lord Kalenz, 470YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:44
+msgid ""
+"After you have played a few scenarios, read the <b>Gameplay</b> section in "
+"the <b>Help</b> screen carefully. Details become important as scenarios get "
+"harder!"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:48
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:52
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:53
+msgid "<i>― The Wesnoth Community</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:56
+#, fuzzy
+msgid ""
+"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>liminal</i> units fight best during twilight."
+msgstr ""
+"Hederlige enheter kjemper bedre om dagen, og lyssky enheter kjemper bedre om "
+"natten. Nøytrale enheter er upåvirket av dag og natt."
+
+#. [tip]
+#: data/tips.cfg:57
+msgid ""
+"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:60
+msgid ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
+#: data/tips.cfg:229
+msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:64
+msgid ""
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
+"know what you’re facing. In this case, long-range scouting units are worth "
+"their cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units can only see as far as they can move in one turn."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:68
+#, fuzzy
+msgid ""
+"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
+"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
+msgstr ""
+"Der finnes seks typer angrep: stikk, hugg, slag, ild, kulde og hellig. "
+"Forskjellige enheter er svake for forskjellige typer angrep. Høyreklikk på "
+"en enhet og velg så 'enhetsbeskrivelse' og ruller ned til motstandstabellen "
+"kan du se hvilke resistanser og svakheter en enhet har mot de forskjellige "
+"typer angrep."
+
+#. [tip]
+#: data/tips.cfg:72
+#, fuzzy
+#| msgid ""
+#| "The terrain your units are occupying determines the chance your opponents "
+#| "have of hitting them in battle. The defensive rating for the currently "
+#| "selected unit in the currently selected terrain is displayed in the top "
+#| "right corner of the screen."
+msgid ""
+"The terrain occupied by your units is the main factor determining the chance "
+"that they will be hit. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top right corner of "
+"the screen."
+msgstr ""
+"Terrengtypen enhetene dine står på avgjør sjansen for at fiender treffer dem "
+"i kamp. Forsvarsprosenten for den valgte enheten i terrenget du har "
+"musepekeren over vises øverst i skjermens høyre hjørne."
+
+#. [tip]
+#: data/tips.cfg:76
+msgid ""
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from dying. They will then remain at death’s door until the poison is "
+"removed. Healers can prevent a poisoned unit from deteriorating, but the "
+"poison will not be removed unless the unit regenerates, or begins a turn in "
+"a village or next to a unit with the <i>Cures</i> ability."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:80
+#, fuzzy
+msgid ""
+"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
+"the <b>Actions</b> menu. By recalling the same units over and over, you can "
+"build up a powerful and experienced army."
+msgstr ""
+"Du kan hente enheter fra tidligere scenarier ved å velge 'tilbakekall' i "
+"spillemenyen. Ved å kalle de samme enhetene tilbake gang etter gang, kan du "
+"bygge opp en erfaren veteranarmé."
+
+#. [tip]
+#: data/tips.cfg:84
+#, fuzzy
+msgid ""
+"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
+"around them. If a unit moves into an enemy’s zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. Beware, though: "
+"skirmishers can pass through these gaps."
+msgstr ""
+"Enheter har en Kontrollsone (ZoC) i hver av feltene som omgir dem. Hvis en "
+"enhet flytter inn i en fiendes kontrollsone, kan den ikke flytte lengre den "
+"runden. Enheter med grad 0 er for svake til å kontrollere soner; "
+"linjebrytere er kyndige nok til å ignorere slike soner."
+
+#. [tip]
+#: data/tips.cfg:88
+#, fuzzy
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
+"are guaranteed at least a 60% chance of a hit when they attack on their own "
+"turn."
+msgstr ""
+"Sjansen for å treffe en enhet avhenger vanligvis av hvor godt enheten kan "
+"forsvare seg i det terrenget den befinner seg i. Magiske angrep har en 70% "
+"sjanse til å treffe brukt både offensivt og defensivt. Skarpskytterangrep "
+"har minst 60% sjanse for å treffe brukt offensivt."
+
+#. [tip]
+#: data/tips.cfg:89
+msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:92
+#, fuzzy
+msgid ""
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
+msgstr ""
+"Enheter stasjonert i landsbyer heles 8 helsepoeng ved begynnelsen av turen "
+"sin."
+
+#. [tip]
+#: data/tips.cfg:96
+#, fuzzy
+msgid ""
+"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
+msgstr ""
+"Enheter hviler hvis de ikke flytter, angriper eller blir angrepet i løpet av "
+"en runde. Hvilende enheter får 2 HP tilbake ved begynnelsen av sin neste "
+"tur, som legges til annen helbredelse."
+
+#. [tip]
+#: data/tips.cfg:100
+#, fuzzy
+msgid ""
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ sightlines are limited by their maximum movement. If you have some "
+"valuable but slow units, keep at least one fast unit with them so that you "
+"are not caught out by a surprise attack."
+msgstr ""
+"På kart med skodde eller stridsdis, vil en enhets synsvidde være bestemt av "
+"den maksimale bevegelsen dens. Husk dette når du skal avgøre hvilke enheter "
+"å speide med i ulike terreng."
+
+#. [tip]
+#: data/tips.cfg:104
+#, fuzzy
+msgid ""
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
+msgstr ""
+"De fleste fotsoldater forsvarer seg bedre i landsbyer og festninger enn i de "
+"fleste andre terrengtyper. Ridende enheter har ingen eller redusert defensiv "
+"fordel i landsbyer og festninger."
+
+#. [tip]
+#: data/tips.cfg:105 data/tips.cfg:185
+msgid "<i>― Sir Kaylan, 498YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:108
+#, fuzzy
+msgid ""
+"Horse-based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"Hestebaserte enheter er generelt motstandsdyktige mot angrep med hugg- eller "
+"slagvåpen, men er sårbare mot angrep med stikkvåpen som buer og spyd."
+
+#. [tip]
+#: data/tips.cfg:109
+msgid "<i>― Sir Kaylan, 502YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:112
+#, fuzzy
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
+msgstr ""
+"Å inngi en fiende dødsstøtet er den snareste veien for en enhet å vinne "
+"erfaring. Enheten som dreper en fiende vinner 8 erfaringspoeng (XP) for "
+"hvert grad den beseirede enheten hadde."
+
+#. [tip]
+#: data/tips.cfg:116
+#, fuzzy
+msgid ""
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
+msgstr ""
+"Alviske enheter sloss og beveger seg godt i skog. Dverger sloss og beveger "
+"seg svært bra i åser og fjell. Utnytt terrenget i kamp, og gå ikke "
+"fiendtlige alver og dverger i møte i terrengene der de har store fordeler."
+
+#. [tip]
+#: data/tips.cfg:120
+#, fuzzy
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"Tålmodighet er ofte nøkkelen til seier. Vent heller på bedre betingelser, "
+"enn å angripe under dårlige forhold, eller med få styrker."
+
+#. [tip]
+#: data/tips.cfg:124
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"Hvis du blir angrepet fra flere kanter, kan det være en god ide å sende "
+"mindre viktige enheter for å angripe andre steder for å forsinke fiendens "
+"tropper. Raske enheter som løper rundt fienden for å stjele landsbyer kan "
+"tvinge fienden til å trekke enheter tilbake i forsvar."
+
+#. [tip]
+#: data/tips.cfg:128
+msgid ""
+"Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr ""
+"Vær ikke redd for tilbaketrekninger og omgrupperinger; de er ofte nøkkelen "
+"til seier."
+
+#. [tip]
+#: data/tips.cfg:129
+msgid "<i>― Meneldur, 123YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:132
+#, fuzzy
+#| msgid ""
+#| "In most campaigns you will receive a gold bonus for finishing early, "
+#| "depending on the number of villages on the map and the number of turns "
+#| "you finish early. You will always earn more gold this way than through "
+#| "capturing villages and waiting for turns to run out."
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map and the number of turns "
+"remaining. You will usually earn more gold this way than through capturing "
+"villages and waiting for the turns to run out."
+msgstr ""
+"I de fleste felttog mottar du en gullbonus for å avslutte et scenario "
+"tidlig. Bonusen vil avheng av antall landsbyer på kartet og antall runder du "
+"har igjen. Du vil alltid tjene mer gull ved å avslutte tidlig enn ved å "
+"erobre landsbyer og vente på at rundene skal ta slutt."
+
+#. [tip]
+#: data/tips.cfg:136
+#, fuzzy
+#| msgid ""
+#| "Your leader can recruit or recall units from any keep inside a castle, "
+#| "not just the keep they start on. You can capture a keep from an enemy and "
+#| "recruit from there. Also, some of your allies may be willing to make room "
+#| "for you on their keep so you can recruit there."
+msgid ""
+"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
+"not just the keep they start on. Sometimes your allies may be willing to "
+"make room for you on their keep so you can recruit from there, and you can "
+"even capture an enemy’s keep and use that."
+msgstr ""
+"En hærfører kan rekruttere og tilbakekalle enheter fra et hvilket som helst "
+"vakttårn, ikke bare fra det de starter på. Du kan erobre et hvilket som "
+"helst tårn og rekruttere derfra. En alliert kan og være villig til å gi deg "
+"tilgang til tårnet sitt så du kan rekruttere."
+
+#. [tip]
+#: data/tips.cfg:140
+#, fuzzy
+msgid ""
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
+"vulnerable to impact, fire, and arcane attacks."
+msgstr ""
+"Skjeletter er motstandsdyktige mot stikk- og huggangrep, men sårbare overfor "
+"slag-, ild- og hellige angrep."
+
+#. [tip]
+#: data/tips.cfg:144
+#, fuzzy
+msgid ""
+"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
+"the same side fight better. You can move these units slowly along your "
+"battle lines and give bonuses to large numbers of lower-level troops."
+msgstr ""
+"Enheter med egenskapen 'leder' kan lede naboenheter av lavere grad i kamp "
+"slik at de gjør mer skade."
+
+#. [tip]
+#: data/tips.cfg:148
+#, fuzzy
+msgid ""
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
+msgstr ""
+"Unngå å plassere enheter ved siden av ubesatte landsbyer. Fiendlige enheter "
+"kan angripe deg fra landsbyen, og nyte godt av feltest forsvars- og "
+"helbredelsesmuligheter. "
+
+#. [tip]
+#: data/tips.cfg:152
+#, fuzzy
+#| msgid "Use lines of units to screen injured units to let them recover."
+msgid "Use lines of troops to screen your injured units while they recover."
+msgstr ""
+"Bruk friske enheter akivt for å skjerme skadde enheter. Ved å trykke ctrl-v "
+"kan du se om fienden rekker fram til dine skadde enheter."
+
+#. [tip]
+#: data/tips.cfg:153
+msgid "<i>― Princess Li’sar, 515YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:156
+#, fuzzy
+#| msgid "Read the hotkeys list in the preferences menu."
+msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
+msgstr "Les listen over hurtigtaster under menyen for innstillinger."
+
+#. [tip]
+#: data/tips.cfg:160
+#, fuzzy
+#| msgid ""
+#| "If you move a unit, but don’t attack or discover any additional "
+#| "information, you can undo your move by pressing 'u'."
+msgid ""
+"If you move a unit, but don’t attack or discover any additional information, "
+"you can undo your move by pressing <b>u</b>."
+msgstr ""
+"Hvis du flytter en enhet, men ikke angriper eller avslører annen "
+"informasjon, kan du gjøre om ved å trykke 'u'."
+
+#. [tip]
+#: data/tips.cfg:164
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"Du kan se en fiendes rekkevidde ved å holde musepekeren over den aktuelle "
+"enheten."
+
+#. [tip]
+#: data/tips.cfg:168
+msgid ""
+"Use healers to support your attacks — they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+"Bruk helbredere til å støtte opp under angrepene dine - de kan være tungen "
+"på vektskålen i slag - også uten å angripe selv."
+
+#. [tip]
+#: data/tips.cfg:169 data/tips.cfg:217
+msgid "<i>― The Scroll of Chantal, 516YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:172
+#, fuzzy
+#| msgid ""
+#| "The 'slow' attack ability makes enemy units move slower and halves the "
+#| "damage they do on all attacks until they end a turn."
+msgid ""
+"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
+"they do on all attacks until they end a turn."
+msgstr ""
+"'Forsinkende' angrep gjør en enhet tregere, og skaden den gjør blir halvert "
+"for alle angrep en hel runde."
+
+#. [tip]
+#: data/tips.cfg:176
+#, fuzzy
+msgid "<i>Arcane</i> attacks are very powerful against undead."
+msgstr "Hellige angrep er svært kraftige mot alle vandøde."
+
+#. [tip]
+#: data/tips.cfg:177
+msgid "<i>― Great Sage Dacyn, 626YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:180
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+"Enheter helbredes når de går opp et nivå. Hvis du greier å utnytte dette "
+"godt kan det snu en kamp."
+
+#. [tip]
+#: data/tips.cfg:184
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr ""
+"Enheter med stormangrep brukes best når de kan drepe en fiende med ett "
+"enkelt slag."
+
+#. [tip]
+#: data/tips.cfg:188
+#, fuzzy
+msgid ""
+"Instead of leveling up, high-level units gain an <i>After Maximum Level "
+"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+"hitpoints by three and fully heals it. This is much less than the normal "
+"benefits of advancing a level, so it is generally wiser to advance your "
+"lower-level units instead."
+msgstr ""
+"Enheter kan avansere også etter de har nådd sin høyeste grad. Dette øker "
+"vanligvis enhetens maksimale helsepoeng med 3, men gir ikke full "
+"helbredelse. Det vil ofte være nyttigere å avansere enheter på lavere nivå."
+
+#. [tip]
+#: data/tips.cfg:192
+#, fuzzy
+#| msgid ""
+#| "Nearly every icon and word in Wesnoth’s playing screen has a tooltip. "
+#| "Place your mouse pointer over one to get an explanation or description."
+msgid ""
+"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
+"mouse pointer over any button or icon to get a description or explanation of "
+"what it does."
+msgstr ""
+"Nær hvert eneste symbol og ord i Wesnoths spilleskjerm har hurtigtips. Pek "
+"på ordet med musepekeren for å se en kort beskrivelse."
+
+#. [tip]
+#: data/tips.cfg:196
+msgid ""
+"To advance low-level units quickly, team them with a veteran and use the "
+"veteran to damage a joint target heavily enough for the junior partner to "
+"get in the killing blow."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:197
+msgid "<i>― Queen Li’sar, 528YW</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:200
+msgid ""
+"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
+"the <b>Delay Shroud Updates</b> option when you need to move units while "
+"retaining the ability to undo, or use the new Whiteboard planning tool."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:204
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:208
+msgid ""
+"Few units have good defenses in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:212
+msgid ""
+"In many campaign scenarios, you may issue simple instructions for your "
+"computer-controlled allies using the right-click context menu."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:216
+msgid ""
+"The <i>Slow</i> ability is extremely powerful because it has such wide-"
+"ranging effects. Enemy undead get half the normal benefit from their "
+"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
+"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
+"to escape; slow enemies are almost immobilized, and your own units suffer "
+"less retaliation damage, so it’s quicker to heal them."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:220
+msgid ""
+"Try to operate units with a small number of powerful attacks—such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"This gives you another try whenever your first devastating attack misses — "
+"as inevitably happens from time to time."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:224
+msgid ""
+"Units with three or more attacks—especially magical attacks—are ideal for "
+"finishing off enemies with only a few hitpoints remaining. Be sure to use "
+"leadership—or a strong or dextrous unit—whenever the extra point or two of "
+"damage makes a one-hit kill possible."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:228
+msgid ""
+"Think twice before dismissing any unit from your recall list, no matter how "
+"little experience it has. Sometimes it’s worth paying a premium to know "
+"exactly what traits a new arrival will have."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:232
+msgid ""
+"When a tough unit is heavily injured, send it to heal in a village several "
+"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
+"hitpoints per turn) without tying up front-line villages."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:233 data/tips.cfg:245
+msgid "<i>― Lord Hamel of Knalga</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:236
+msgid ""
+"Combining multiple special abilities can be deadly. While it may take some "
+"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
+"<i>Charge</i> against a slowed opponent, the results can be impressive."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:240
+msgid ""
+"While finishing early gives a gold bonus, and reduces the opportunities for "
+"enemies to kill your valuable troops, it also means you lose chances to earn "
+"your units extra experience. When deciding whether or not to finish a "
+"scenario early, weigh these factors against one another."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:244
+msgid ""
+"If your forces have weak defenses everywhere on the map, occupy the areas "
+"where your enemies can only attack you by sharing the same disadvantages. "
+"Avoid places where your defenses are poor and your enemy’s are merely "
+"average. Plan for heavy losses, and take firm control of any hex where the "
+"land does favor you."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:249
+msgid ""
+"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
+"if they occupy a village hex, they do not gain any defensive benefits from "
+"the village, although they will still be healed."
+msgstr ""
 
 #: src/about.cpp:227 src/dialogs.cpp:448 src/menu_events.cpp:166
 #: src/statistics_dialog.cpp:182
@@ -4776,7 +4765,7 @@ msgstr "sårbar mot"
 msgid "Slowed"
 msgstr "forsinket"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:915
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:913
 msgid "Total damage"
 msgstr "Totalskade"
 
@@ -5025,11 +5014,11 @@ msgstr "Klarer ikke finne en passende leder for fraksjonen $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/format_time_summary.cpp:46 src/reports.cpp:1520
+#: src/format_time_summary.cpp:46 src/reports.cpp:1518
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:49 src/reports.cpp:1520
+#: src/format_time_summary.cpp:49 src/reports.cpp:1518
 msgid "%I:%M %p"
 msgstr ""
 
@@ -5058,70 +5047,71 @@ msgstr "%b %d %y"
 msgid "Invalid color range: "
 msgstr "Ugyldig farge"
 
-#: src/game_config_manager.cpp:179
-msgid "Error loading game configuration files: '"
+#: src/game_config_manager.cpp:180
+#, fuzzy
+#| msgid "Error loading game configuration files: '"
+msgid "Error loading game configuration files. The game will now exit."
 msgstr "Feil ved lasting av konfigurasjonsfiler: '"
 
-#: src/game_config_manager.cpp:180
-msgid "' (The game will now exit)"
-msgstr "' (Spillet avsluttes)"
-
-#: src/game_config_manager.cpp:274
+#: src/game_config_manager.cpp:279
 #, fuzzy
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 msgstr[1] "Følgende ekstra felttog hadde feil og kunne ikke lastes inn: "
 
-#: src/game_config_manager.cpp:281
-msgid "ERROR DETAILS:"
-msgstr "FEILRAPPORT:"
+#: src/game_config_manager.cpp:283
+msgid "Please report this to the author or maintainer of this add-on."
+msgid_plural ""
+"Please report this to the respective authors or maintainers of these add-ons."
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/game_controller.cpp:336 src/game_controller.cpp:924
+#: src/game_controller.cpp:332 src/game_controller.cpp:920
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "Kampen om Wesnoth"
 
-#: src/game_controller.cpp:475 src/game_controller.cpp:493
+#: src/game_controller.cpp:471 src/game_controller.cpp:489
 msgid "The file you have tried to load is corrupt"
 msgstr "Det er noe galt med filen du prøvde å laste"
 
-#: src/game_controller.cpp:478 src/game_controller.cpp:496
+#: src/game_controller.cpp:474 src/game_controller.cpp:492
 #: src/savegame.cpp:687
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Filen du prøver å laste er i ustand: '"
 
-#: src/game_controller.cpp:486
+#: src/game_controller.cpp:482
 msgid "File I/O Error while reading the game"
 msgstr "I/O-feil ved lesing av spillet"
 
-#: src/game_controller.cpp:488
+#: src/game_controller.cpp:484
 #, fuzzy
 #| msgid "File I/O Error while reading the game"
 msgid "File I/O Error while reading the game: '"
 msgstr "I/O-feil ved lesing av spillet"
 
-#: src/game_controller.cpp:589
+#: src/game_controller.cpp:585
 #, fuzzy
 msgid "No campaigns are available.\n"
 msgstr "Ingen mål tilgjengelig."
 
-#: src/game_controller.cpp:861
+#: src/game_controller.cpp:857
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "Feil under spill: "
 
-#: src/game_controller.cpp:863 src/playcampaign.cpp:218
+#: src/game_controller.cpp:859 src/playcampaign.cpp:218
 #: src/playcampaign.cpp:470
 msgid "The game could not be loaded: "
 msgstr "Spillet kunne ikke lastes: "
 
-#: src/game_controller.cpp:865 src/playcampaign.cpp:220
+#: src/game_controller.cpp:861 src/playcampaign.cpp:220
 #: src/playcampaign.cpp:473
 msgid "Error while playing the game: "
 msgstr "Feil under spill: "
 
-#: src/game_controller.cpp:883 src/playcampaign.cpp:222
+#: src/game_controller.cpp:879 src/playcampaign.cpp:222
 #: src/playcampaign.cpp:476
 msgid "The game map could not be loaded: "
 msgstr "Kartet kunne ikke lastes: "
@@ -5170,77 +5160,77 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "Ukjent epoke: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "Ukjent epoke"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "Scenario hos annen spiller"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "Ukjent scenario: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "Ukjent scenario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "Fortsett et lagret spill"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Runde "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Ledig plass:"
 msgstr[1] "Ledig plasser:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "ingen"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:107
 msgid "In game:"
 msgstr "Delar i spillet:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:109
 msgid "(observing)"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "(playing)"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:114
 msgid "In lobby"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:138
 msgid "On friends list"
 msgstr "På vennelisten"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:143
 msgid "On ignores list"
 msgstr "På ignoreringslisten"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:148
 msgid "Neither a friend nor ignored"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:153
 msgid "You"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:147
+#: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "Feil"
 
@@ -6676,7 +6666,7 @@ msgstr "Opprett spill"
 msgid "Filter:"
 msgstr "Filter:"
 
-#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
 msgstr ""
 
@@ -6720,9 +6710,37 @@ msgstr "Innstillinger..."
 msgid "Load Game..."
 msgstr "Last spill..."
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
 msgstr ""
+
+#: src/multiplayer_create.cpp:103
+#, fuzzy
+msgid "Scenarios"
+msgstr "Scenario hos annen spiller"
+
+#: src/multiplayer_create.cpp:104
+#, fuzzy
+#| msgid "Campaign"
+msgid "Campaigns"
+msgstr "Felttog"
+
+#: src/multiplayer_create.cpp:105
+#, fuzzy
+#| msgid "Close"
+msgid "User Maps"
+msgstr "Lukk"
+
+#: src/multiplayer_create.cpp:106
+#, fuzzy
+msgid "User Scenarios"
+msgstr "Scenario hos annen spiller"
+
+#: src/multiplayer_create.cpp:107
+#, fuzzy
+#| msgid "Random"
+msgid "Random Maps"
+msgstr "Tilfeldig"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
 #, fuzzy
@@ -6746,33 +6764,33 @@ msgid ""
 "None found."
 msgstr "Deaktiver varslinger"
 
-#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:279
+#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
 #, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Deactivate"
 msgstr "Feilsøkmodus aktivert!"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:245
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The level is invalid."
 msgstr "Kartet er ugyldig."
 
-#: src/multiplayer_create.cpp:333
+#: src/multiplayer_create.cpp:330
 msgid "Players: "
 msgstr "Spillere: "
 
-#: src/multiplayer_create.cpp:351
+#: src/multiplayer_create.cpp:348
 msgid "Size: "
 msgstr "Størrelse: "
 
-#: src/multiplayer_create.cpp:386
+#: src/multiplayer_create.cpp:383
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "Spillets navn:"
 
-#: src/multiplayer_create.cpp:493 src/unit_types.cpp:785
+#: src/multiplayer_create.cpp:490 src/unit_types.cpp:785
 #, fuzzy
 msgid "No description available."
 msgstr "Ingen mål tilgjengelig."
@@ -7333,189 +7351,189 @@ msgstr "Sinnelag: "
 msgid "Ability: "
 msgstr "Egenskaper: "
 
-#: src/reports.cpp:393 src/reports.cpp:817
+#: src/reports.cpp:393 src/reports.cpp:815
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:446
+#: src/reports.cpp:445
 #, fuzzy
 msgid "Resistances: "
 msgstr "Motstander"
 
-#: src/reports.cpp:448
+#: src/reports.cpp:447
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:474
+#: src/reports.cpp:473
 msgid "Experience Modifier: "
 msgstr "Erfaringsskalering: "
 
-#: src/reports.cpp:525
+#: src/reports.cpp:524
 #, fuzzy
 #| msgid "Terrain"
 msgid "Terrain: "
 msgstr "Terreng"
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:547
+#: src/reports.cpp:546
 #, fuzzy
 #| msgid "Defense"
 msgid "Defense: "
 msgstr "Forsvar"
 
-#: src/reports.cpp:568
+#: src/reports.cpp:567
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Versjon: "
 
-#: src/reports.cpp:596
+#: src/reports.cpp:595
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Forflytningskostnad"
 
-#: src/reports.cpp:687 src/reports.cpp:902 src/reports.cpp:914
+#: src/reports.cpp:685 src/reports.cpp:900 src/reports.cpp:912
 #, fuzzy
 #| msgid "weapon range: "
 msgid "Weapon: "
 msgstr "våpenrekkevidde: "
 
-#: src/reports.cpp:688 src/reports.cpp:903
+#: src/reports.cpp:686 src/reports.cpp:901
 #, fuzzy
 #| msgid "Damage"
 msgid "Damage: "
 msgstr "Skade"
 
-#: src/reports.cpp:692
+#: src/reports.cpp:690
 #, fuzzy
 #| msgid "Total damage"
 msgid "Base damage: "
 msgstr "Totalskade"
 
-#: src/reports.cpp:694 src/reports.cpp:728 src/reports.cpp:738
+#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "With specials: "
 msgstr "Spesielle våpen"
 
-#: src/reports.cpp:697
+#: src/reports.cpp:695
 #, fuzzy
 #| msgid "Time of day"
 msgid "Time of day: "
 msgstr "Tid på døgnet"
 
-#: src/reports.cpp:701
+#: src/reports.cpp:699
 #, fuzzy
 #| msgid "Leadership"
 msgid "Leadership: "
 msgstr "Lederbonus"
 
-#: src/reports.cpp:705
+#: src/reports.cpp:703
 #, fuzzy
 #| msgid "slowed: "
 msgid "Slowed: "
 msgstr "forsinket: "
 
-#: src/reports.cpp:709
+#: src/reports.cpp:707
 #, fuzzy
 #| msgid "Attacker"
 msgid "Attacks: "
 msgstr "Angriper"
 
-#: src/reports.cpp:713
+#: src/reports.cpp:711
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Maks HP bonus +"
 
-#: src/reports.cpp:714 src/reports.cpp:733
+#: src/reports.cpp:712 src/reports.cpp:731
 #, fuzzy
 #| msgid "swarm"
 msgid "Swarm: "
 msgstr "sverm"
 
-#: src/reports.cpp:715 src/reports.cpp:726 src/reports.cpp:737
+#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:721
+#: src/reports.cpp:719
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Spesial"
 
-#: src/reports.cpp:731
+#: src/reports.cpp:729
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:750
+#: src/reports.cpp:748
 #, fuzzy
 #| msgid "weapon range: "
 msgid "Weapon range: "
 msgstr "våpenrekkevidde: "
 
-#: src/reports.cpp:751
+#: src/reports.cpp:749
 #, fuzzy
 #| msgid "damage type: "
 msgid "Damage type: "
 msgstr "skadetype: "
 
-#: src/reports.cpp:752
+#: src/reports.cpp:750
 #, fuzzy
 #| msgid "damage type: "
 msgid "Damage versus: "
 msgstr "skadetype: "
 
-#: src/reports.cpp:791
+#: src/reports.cpp:789
 #, fuzzy
 #| msgid "% accuracy"
 msgid "Accuracy:"
 msgstr "% nøyaktighet"
 
-#: src/reports.cpp:796
+#: src/reports.cpp:794
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:815
+#: src/reports.cpp:813
 #, fuzzy
 #| msgid "Weapon Specials"
 msgid "Weapon special: "
 msgstr "Spesielle våpen"
 
-#: src/reports.cpp:886
+#: src/reports.cpp:884
 #, fuzzy
 msgid "None"
 msgstr "ingen"
 
-#: src/reports.cpp:1114 src/reports.cpp:1164
+#: src/reports.cpp:1112 src/reports.cpp:1162
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Hederlige enheter: "
 
-#: src/reports.cpp:1116 src/reports.cpp:1166
+#: src/reports.cpp:1114 src/reports.cpp:1164
 msgid "Neutral units: "
 msgstr "Nøytrale enheter: "
 
-#: src/reports.cpp:1117 src/reports.cpp:1167
+#: src/reports.cpp:1115 src/reports.cpp:1165
 msgid "Chaotic units: "
 msgstr "Lyssky enheter: "
 
-#: src/reports.cpp:1119 src/reports.cpp:1169
+#: src/reports.cpp:1117 src/reports.cpp:1167
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Liminal units: "
 msgstr "Hederlige enheter: "
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1482
 msgid "Observers:"
 msgstr "Observatører:"
 
@@ -7613,136 +7631,150 @@ msgstr "Kunne ikke lagre spillet automatisk. Vennligst lagre spillet manuelt."
 msgid "Save Game"
 msgstr "Lagre spill"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "Uventet tegnsetting ved linjestart"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:147
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
-msgid "Missing closing tag for tag [$tag] at $pos"
+msgid "Missing closing tag for tag [$tag]"
 msgstr "Savner avsluttende tegn for tegnet $tag ved $pos"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:148
+msgid "expected at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:148 src/serialization/parser.cpp:212
+msgid "opened at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:161
 msgid "Unterminated [element] tag"
 msgstr "Ikke utført [element] tegn"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:173 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "Ugyldig tegnnavn"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated [+element] tag"
 msgstr "Ikke utført [+element] tegn"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:198
 msgid "Invalid closing tag name"
 msgstr "Ugyldig sluttegnnavn"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:201
 msgid "Unterminated closing tag"
 msgstr "Ikke utført sluttegn"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:203
 msgid "Unexpected closing tag"
 msgstr "Uventet sluttegn"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:211
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
+msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
 "Funnet ugyldig slutt kode $tag2 for innledende kode $tag (åpnet ved $pos)"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:212
+#, fuzzy
+#| msgid "Close"
+msgid "closed at $pos"
+msgstr "Lukk"
+
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "Tomt variabelnavn"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Uventede tegn etter variabelnavn (forventet , eller =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:286 src/serialization/parser.cpp:314
 msgid "Unterminated quoted string"
 msgstr "Ikke utført sitert streng"
 
-#: src/serialization/parser.cpp:362
-msgid "$error, value '$value', previous '$previous_value' at $pos"
+#: src/serialization/parser.cpp:372
+msgid "at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:366
-msgid "$error, value '$value' at $pos"
-msgstr "$error, verdi '$value' ved $pos"
-
-#: src/serialization/string_utils.cpp:564
-msgid "prefix_milli^m"
-msgstr ""
-
-#: src/serialization/string_utils.cpp:565
-msgid "prefix_micro^µ"
-msgstr ""
-
-#: src/serialization/string_utils.cpp:566
-msgid "prefix_nano^n"
-msgstr ""
-
-#: src/serialization/string_utils.cpp:567
-msgid "prefix_pico^p"
+#: src/serialization/parser.cpp:386
+msgid "Value: '$value' Previous: '$previous_value'"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:568
-msgid "prefix_femto^f"
+msgid "prefix_milli^m"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:569
-msgid "prefix_atto^a"
+msgid "prefix_micro^µ"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:570
-msgid "prefix_zepto^z"
+msgid "prefix_nano^n"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:571
+msgid "prefix_pico^p"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:572
+msgid "prefix_femto^f"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:573
+msgid "prefix_atto^a"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:574
+msgid "prefix_zepto^z"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_yocto^y"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_kibi^K"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:588
 msgid "prefix_kilo^k"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:590
 msgid "prefix_mega^M"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:591
 msgid "prefix_giga^G"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:592
 msgid "prefix_tera^T"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:593
 msgid "prefix_peta^P"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:590
+#: src/serialization/string_utils.cpp:594
 msgid "prefix_exa^E"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:595
 msgid "prefix_zetta^Z"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:596
 msgid "prefix_yotta^Y"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:606
+#: src/serialization/string_utils.cpp:610
 msgid "infix_binary^i"
 msgstr ""
 
@@ -8016,11 +8048,11 @@ msgstr "Fiendtlig landsby"
 msgid "Owned village"
 msgstr "Egen landsby"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."
 msgstr ""
 
-#: src/theme.cpp:574 src/theme.cpp:579
+#: src/theme.cpp:599 src/theme.cpp:604
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8135,6 +8167,15 @@ msgstr "Erstatt med $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "' (The game will now exit)"
+#~ msgstr "' (Spillet avsluttes)"
+
+#~ msgid "ERROR DETAILS:"
+#~ msgstr "FEILRAPPORT:"
+
+#~ msgid "$error, value '$value' at $pos"
+#~ msgstr "$error, verdi '$value' ved $pos"
 
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(side $temp_i|)"
@@ -8265,11 +8306,6 @@ msgstr ""
 #~ msgstr "Utelat animasjon"
 
 #, fuzzy
-#~| msgid "Close"
-#~ msgid "Close Map"
-#~ msgstr "Lukk"
-
-#, fuzzy
 #~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Tid på døgnet"
@@ -8283,10 +8319,6 @@ msgstr ""
 #~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Tid på døgnet"
-
-#, fuzzy
-#~ msgid "New Scenario"
-#~ msgstr "Scenario hos annen spiller"
 
 #, fuzzy
 #~| msgid "Load Game"

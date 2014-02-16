@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2014-01-31 13:05-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Poedit 1.6.3\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Fon talamh"
@@ -1199,7 +1199,7 @@ msgstr "Airm shònraichte"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1289 src/help.cpp:1291
+#: data/core/help.cfg:56 src/help.cpp:1291 src/help.cpp:1293
 msgid "Factions"
 msgstr "Buidhnean"
 
@@ -1571,8 +1571,12 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
+#, fuzzy
+#| msgid ""
+#| " red if it can no longer move or attack, or the user ended the unit’s "
+#| "turn."
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit’s turn."
+" black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 " dearg mura h-eil gluasad no ionnsaigh air fhàgail, no ma chuireadh crìoch "
 "air a chuairt."
@@ -1584,7 +1588,9 @@ msgstr " gorm mas e caidreabhach a th’ ann air nach eil smachd agad."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-msgid " Enemy units have no orb on top of their energy bar."
+#, fuzzy
+#| msgid " Enemy units have no orb on top of their energy bar."
+msgid " Enemy units have a red orb on top of their energy bar."
 msgstr " Chan eil cruinne os cionn a’ bhàir-lùiths aig aonadan nàmhad."
 
 #. [topic]: id=hitpoints
@@ -5737,197 +5743,197 @@ msgstr ""
 msgid "Help"
 msgstr "Cobhair"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 msgid "<header>text='Units having this special attack'</header>"
 msgstr ""
 "<header>text='Aonadan aig a bheil an ionnsaigh shònraichte seo'</header>"
 
-#: src/help.cpp:1218
+#: src/help.cpp:1220
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Aonadan aig a bheil an comas seo'</header>"
 
-#: src/help.cpp:1251
+#: src/help.cpp:1253
 msgid "Leaders:"
 msgstr "Ceannardan:"
 
-#: src/help.cpp:1260
+#: src/help.cpp:1262
 msgid "Recruits:"
 msgstr "Luchd air trusadh:"
 
-#: src/help.cpp:1274
+#: src/help.cpp:1276
 msgid "Era:"
 msgstr "Linn:"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1284
 msgid "Factions:"
 msgstr "Buidhnean:"
 
-#: src/help.cpp:1292
+#: src/help.cpp:1294
 msgid "Factions are only used in multiplayer"
 msgstr ""
 "Cha tèid buidhnean a chleachdadh ach ann an geamannan ioma-chluicheadair"
 
-#: src/help.cpp:1325
+#: src/help.cpp:1327
 msgid "Base Terrain: "
 msgstr "Cruth-tìre bunasach: "
 
-#: src/help.cpp:1403
+#: src/help.cpp:1405
 msgid "level"
 msgstr "rang"
 
-#: src/help.cpp:1436
+#: src/help.cpp:1438
 msgid "Advances from: "
 msgstr "Àrdaichidh e bho: "
 
-#: src/help.cpp:1438
+#: src/help.cpp:1440
 msgid "Advances to: "
 msgstr "Àrdaichidh e gu: "
 
-#: src/help.cpp:1463
+#: src/help.cpp:1465
 msgid "Base unit: "
 msgstr "Aonad bunasach: "
 
-#: src/help.cpp:1468
+#: src/help.cpp:1470
 msgid "Base units: "
 msgstr "Aonadan bunasach: "
 
-#: src/help.cpp:1486
+#: src/help.cpp:1488
 msgid "Variations: "
 msgstr "Caochlaidhean: "
 
-#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
+#: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 msgid "race^Miscellaneous"
 msgstr "Measgaichte"
 
-#: src/help.cpp:1512
+#: src/help.cpp:1514
 msgid "Race: "
 msgstr "Cinneadh: "
 
-#: src/help.cpp:1519
+#: src/help.cpp:1521
 msgid "Abilities: "
 msgstr "Comasan: "
 
-#: src/help.cpp:1535
+#: src/help.cpp:1537
 msgid "Ability Upgrades: "
 msgstr "Àrdachadh chomasan: "
 
-#: src/help.cpp:1550
+#: src/help.cpp:1552
 msgid "HP: "
 msgstr "PB: "
 
-#: src/help.cpp:1551
+#: src/help.cpp:1553
 msgid "Moves: "
 msgstr "Gluasadan: "
 
-#: src/help.cpp:1553
+#: src/help.cpp:1555
 msgid "Vision: "
 msgstr "Lèirsinn: "
 
-#: src/help.cpp:1555
+#: src/help.cpp:1557
 msgid "Jamming: "
 msgstr "Casg: "
 
-#: src/help.cpp:1556
+#: src/help.cpp:1558
 msgid "Cost: "
 msgstr "Cosgais: "
 
-#: src/help.cpp:1557
+#: src/help.cpp:1559
 msgid "Alignment: "
 msgstr "Co-thaobhadh: "
 
-#: src/help.cpp:1561
+#: src/help.cpp:1563
 msgid "Required XP: "
 msgstr "PE a dhìth: "
 
-#: src/help.cpp:1570
+#: src/help.cpp:1572
 msgid "unit help^Attacks"
 msgstr "Ionnsaighean"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1579
 msgid "unit help^Name"
 msgstr "Ainm"
 
-#: src/help.cpp:1578
+#: src/help.cpp:1580
 msgid "Type"
 msgstr "Seòrsa"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1581
 msgid "Strikes"
 msgstr "Buillean"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1582
 msgid "Range"
 msgstr "Astar"
 
-#: src/help.cpp:1581
+#: src/help.cpp:1583
 msgid "Special"
 msgstr "Sònraichte"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1632
 msgid "Resistances"
 msgstr "Comasan-seasaimh"
 
-#: src/help.cpp:1634
+#: src/help.cpp:1636
 msgid "Attack Type"
 msgstr "Seòrsa na h-ionnsaighe"
 
-#: src/help.cpp:1635
+#: src/help.cpp:1637
 msgid "Resistance"
 msgstr "Comas-seasaimh"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1667
 msgid "Terrain Modifiers"
 msgstr "Atharraichearan crutha-thìre"
 
-#: src/help.cpp:1669
+#: src/help.cpp:1671
 msgid "Terrain"
 msgstr "Cruth-tìre"
 
-#: src/help.cpp:1670
+#: src/help.cpp:1672
 msgid "Defense"
 msgstr "Dìon"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1673
 msgid "Movement Cost"
 msgstr "Cosgais ghluasaid"
 
-#: src/help.cpp:1675
+#: src/help.cpp:1677
 msgid "Vision Cost"
 msgstr "Cosgais lèirsinne"
 
-#: src/help.cpp:1678
+#: src/help.cpp:1680
 msgid "Jamming Cost"
 msgstr "Cosgais caisg"
 
-#: src/help.cpp:2037
+#: src/help.cpp:2039
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Aonadan aig a’ chinneadh seo'</header>"
 
-#: src/help.cpp:2948
+#: src/help.cpp:2950
 msgid " < Back"
 msgstr "< Air ais"
 
-#: src/help.cpp:2949
+#: src/help.cpp:2951
 msgid "Forward >"
 msgstr "Air adhart >"
 
-#: src/help.cpp:3057
+#: src/help.cpp:3059
 msgid "Reference to unknown topic: "
 msgstr "Iomradh dha chuspair neo-aithnichte: "
 
-#: src/help.cpp:3313
+#: src/help.cpp:3315
 msgid "corrupted original file"
 msgstr "faile tùsach coirbte"
 
-#: src/help.cpp:3424
+#: src/help.cpp:3426
 msgid "Close"
 msgstr "Dùin"
 
-#: src/help.cpp:3427
+#: src/help.cpp:3429
 msgid "The Battle for Wesnoth Help"
 msgstr "Cobhair aig Strì Bheasnaid"
 
-#: src/help.cpp:3483
+#: src/help.cpp:3485
 msgid "Parse error when parsing help text: "
 msgstr "Mearachd parsaidh le parsadh an teacsa taice: "
 

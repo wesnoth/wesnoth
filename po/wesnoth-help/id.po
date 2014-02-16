@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2012-12-31 00:00+0700\n"
 "Last-Translator: Yuris <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Bawah tanah"
@@ -1265,7 +1265,7 @@ msgstr "Kemampuan Khusus Senjata"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1289 src/help.cpp:1291
+#: data/core/help.cfg:56 src/help.cpp:1291 src/help.cpp:1293
 msgid "Factions"
 msgstr "kelompok-kelompok"
 
@@ -1641,8 +1641,12 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
+#, fuzzy
+#| msgid ""
+#| " red if it can no longer move or attack, or the user ended the unit’s "
+#| "turn."
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit’s turn."
+" black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 " merah jika ia tidak dapat lagi bergerak atau menyerang, atau pemain "
 "mengakhiri giliran unit."
@@ -1654,7 +1658,9 @@ msgstr " biru jika unitnya adalah seorang sekutu yang anda tidak kendalikan."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-msgid " Enemy units have no orb on top of their energy bar."
+#, fuzzy
+#| msgid " Enemy units have no orb on top of their energy bar."
+msgid " Enemy units have a red orb on top of their energy bar."
 msgstr ""
 " Unit-unit musuh tidak memiliki bola kristal di atas batang energy mereka."
 
@@ -6097,199 +6103,199 @@ msgstr ""
 msgid "Help"
 msgstr "Bantuan"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Unit-unit memiliki serangan spesial ini'</header>"
 
-#: src/help.cpp:1218
+#: src/help.cpp:1220
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Unit-unit memiliki kemampuan ini'</header>"
 
-#: src/help.cpp:1251
+#: src/help.cpp:1253
 msgid "Leaders:"
 msgstr "Pemimpin:"
 
-#: src/help.cpp:1260
+#: src/help.cpp:1262
 msgid "Recruits:"
 msgstr "Rekrut:"
 
-#: src/help.cpp:1274
+#: src/help.cpp:1276
 msgid "Era:"
 msgstr "Era:"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1284
 msgid "Factions:"
 msgstr "Faction"
 
-#: src/help.cpp:1292
+#: src/help.cpp:1294
 msgid "Factions are only used in multiplayer"
 msgstr "golongan-golongan hanya digunakan dalam multiplayer"
 
-#: src/help.cpp:1325
+#: src/help.cpp:1327
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Daerah"
 
-#: src/help.cpp:1403
+#: src/help.cpp:1405
 msgid "level"
 msgstr "level"
 
-#: src/help.cpp:1436
+#: src/help.cpp:1438
 msgid "Advances from: "
 msgstr "Naik level dari:"
 
-#: src/help.cpp:1438
+#: src/help.cpp:1440
 msgid "Advances to: "
 msgstr "Naik level ke:"
 
-#: src/help.cpp:1463
+#: src/help.cpp:1465
 msgid "Base unit: "
 msgstr ""
 
-#: src/help.cpp:1468
+#: src/help.cpp:1470
 msgid "Base units: "
 msgstr ""
 
-#: src/help.cpp:1486
+#: src/help.cpp:1488
 #, fuzzy
 #| msgid "Factions:"
 msgid "Variations: "
 msgstr "Faction"
 
-#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
+#: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 msgid "race^Miscellaneous"
 msgstr "Yang Lain"
 
-#: src/help.cpp:1512
+#: src/help.cpp:1514
 msgid "Race: "
 msgstr "Ras:"
 
-#: src/help.cpp:1519
+#: src/help.cpp:1521
 msgid "Abilities: "
 msgstr "Kemampuan:"
 
-#: src/help.cpp:1535
+#: src/help.cpp:1537
 msgid "Ability Upgrades: "
 msgstr "Peningkatan Kemampuan:"
 
-#: src/help.cpp:1550
+#: src/help.cpp:1552
 msgid "HP: "
 msgstr "Darah:"
 
-#: src/help.cpp:1551
+#: src/help.cpp:1553
 msgid "Moves: "
 msgstr "Gerakan:"
 
-#: src/help.cpp:1553
+#: src/help.cpp:1555
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1555
+#: src/help.cpp:1557
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1556
+#: src/help.cpp:1558
 msgid "Cost: "
 msgstr "Harga:"
 
-#: src/help.cpp:1557
+#: src/help.cpp:1559
 msgid "Alignment: "
 msgstr "Golongan:"
 
-#: src/help.cpp:1561
+#: src/help.cpp:1563
 msgid "Required XP: "
 msgstr "AP Diperlukan:"
 
-#: src/help.cpp:1570
+#: src/help.cpp:1572
 msgid "unit help^Attacks"
 msgstr "Serangan"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1579
 msgid "unit help^Name"
 msgstr "Nama"
 
-#: src/help.cpp:1578
+#: src/help.cpp:1580
 msgid "Type"
 msgstr "Tipe"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1581
 msgid "Strikes"
 msgstr "Serangan"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1582
 msgid "Range"
 msgstr "Jarak"
 
-#: src/help.cpp:1581
+#: src/help.cpp:1583
 msgid "Special"
 msgstr "Spesial"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1632
 msgid "Resistances"
 msgstr "Daya Tahan"
 
-#: src/help.cpp:1634
+#: src/help.cpp:1636
 msgid "Attack Type"
 msgstr "Tipe Serangan"
 
-#: src/help.cpp:1635
+#: src/help.cpp:1637
 msgid "Resistance"
 msgstr "Daya Tahan"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1667
 msgid "Terrain Modifiers"
 msgstr "Pemodifikasi Daerah"
 
-#: src/help.cpp:1669
+#: src/help.cpp:1671
 msgid "Terrain"
 msgstr "Daerah"
 
-#: src/help.cpp:1670
+#: src/help.cpp:1672
 msgid "Defense"
 msgstr "Perlindungan"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1673
 msgid "Movement Cost"
 msgstr "Harga Pergerakan"
 
-#: src/help.cpp:1675
+#: src/help.cpp:1677
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1678
+#: src/help.cpp:1680
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:2037
+#: src/help.cpp:2039
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Unit-unit ras ini'</header>"
 
-#: src/help.cpp:2948
+#: src/help.cpp:2950
 msgid " < Back"
 msgstr "  < Kembali"
 
-#: src/help.cpp:2949
+#: src/help.cpp:2951
 msgid "Forward >"
 msgstr "Terus >"
 
-#: src/help.cpp:3057
+#: src/help.cpp:3059
 msgid "Reference to unknown topic: "
 msgstr "Referensi ke topic yang tidak diketahui:"
 
-#: src/help.cpp:3313
+#: src/help.cpp:3315
 msgid "corrupted original file"
 msgstr "file asli rusak"
 
-#: src/help.cpp:3424
+#: src/help.cpp:3426
 msgid "Close"
 msgstr "Tutup"
 
-#: src/help.cpp:3427
+#: src/help.cpp:3429
 msgid "The Battle for Wesnoth Help"
 msgstr "Bantuan Pertempuran demi Wesnoth"
 
-#: src/help.cpp:3483
+#: src/help.cpp:3485
 msgid "Parse error when parsing help text: "
 msgstr "Error uraian ketika menguraikan teks bantuan:"
 

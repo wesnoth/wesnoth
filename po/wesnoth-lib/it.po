@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2013-09-27 19:41+0100\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -1531,7 +1531,7 @@ msgstr ""
 #: data/gui/default/widget/window_default.cfg:140
 #: data/gui/default/window/addon_description.cfg:555
 #: data/gui/default/window/addon_filter_options.cfg:416
-#: data/gui/default/window/chat_log.cfg:158
+#: data/gui/default/window/chat_log.cfg:172
 #: data/gui/default/window/gamestate_inspector.cfg:254
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
@@ -1903,10 +1903,11 @@ msgstr "Gioca una campagna"
 #: data/gui/default/window/simple_item_selector.cfg:145
 #: data/gui/default/window/unit_create.cfg:198
 #: data/gui/default/window/unit_create.cfg:199
+#: data/gui/default/window/wml_error.cfg:162
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:121
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:162
-#: src/gui/dialogs/message.cpp:169
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:167
+#: src/gui/dialogs/message.cpp:174
 msgid "OK"
 msgstr "OK"
 
@@ -2386,7 +2387,7 @@ msgstr "Che giocatore deve partire da qui?"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=title
-#: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:81
+#: data/gui/default/window/folder_create.cfg:43 src/filechooser.cpp:85
 msgid "New Folder"
 msgstr "Nuova cartella"
 
@@ -2478,7 +2479,7 @@ msgstr "Non mostrare di nuovo"
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:130
 #: data/gui/default/window/mp_host_game_prompt.cfg:105
-#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:176
+#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:182
 msgid "Yes"
 msgstr "Sì"
 
@@ -2490,14 +2491,14 @@ msgstr "Sì"
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:144
 #: data/gui/default/window/mp_host_game_prompt.cfg:118
-#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:178
+#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:185
 msgid "No"
 msgstr "No"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:50
-#: src/gui/dialogs/mp_create_game.cpp:99 src/hotkey/hotkey_command.cpp:66
+#: src/gui/dialogs/mp_create_game.cpp:94 src/hotkey/hotkey_command.cpp:66
 msgid "Load Game"
 msgstr "Carica una partita"
 
@@ -3129,7 +3130,7 @@ msgstr "Ricorda password"
 #. [label]
 #: data/gui/default/window/mp_method_selection.cfg:39
 #: data/gui/default/window/title_screen.cfg:258
-#: src/gui/dialogs/game_load.cpp:296
+#: src/gui/dialogs/game_load.cpp:301
 msgid "Multiplayer"
 msgstr "Multigiocatori"
 
@@ -3216,7 +3217,7 @@ msgstr "Inizia un’esercitazione per familiarizzare col gioco"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:256
-#: src/gui/dialogs/game_load.cpp:298
+#: src/gui/dialogs/game_load.cpp:303
 msgid "Tutorial"
 msgstr "Esercitazione"
 
@@ -3330,19 +3331,46 @@ msgstr "Femmina"
 msgid "Race"
 msgstr "Razza"
 
-#: src/filechooser.cpp:76
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]
+#: data/gui/default/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:199
+#: src/gui/dialogs/transient_message.cpp:59
+msgid "Error"
+msgstr "Errore"
+
+#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
+#. [label]: id=details_heading
+#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:200
+#, fuzzy
+#| msgid "Rails"
+msgid "Details:"
+msgstr "Binari"
+
+#. [button]: id=copy
+#: data/gui/default/window/wml_error.cfg:124
+msgid "clipboard^Copy"
+msgstr ""
+
+#. [button]: id=copy
+#: data/gui/default/window/wml_error.cfg:125
+#, fuzzy
+#| msgid "Choose the game to load"
+msgid "Copy this report to clipboard"
+msgstr "Scegli la partita da caricare"
+
+#: src/filechooser.cpp:80
 msgid "File: "
 msgstr "File: "
 
-#: src/filechooser.cpp:79
+#: src/filechooser.cpp:83
 msgid "Delete File"
 msgstr "Elimina file"
 
-#: src/filechooser.cpp:195
+#: src/filechooser.cpp:208
 msgid "Deletion of the file failed."
 msgstr "Eliminazione file non riuscita."
 
-#: src/filechooser.cpp:211
+#: src/filechooser.cpp:224
 msgid "Creation of the directory failed."
 msgstr "Creazione cartella non riuscita."
 
@@ -3898,86 +3926,86 @@ msgstr "Entroterra"
 msgid "Island"
 msgstr "Isola"
 
-#: src/gui/auxiliary/canvas.cpp:611
+#: src/gui/auxiliary/canvas.cpp:645
 msgid "Line doesn't fit on canvas."
 msgstr "La linea non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:750
+#: src/gui/auxiliary/canvas.cpp:782
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Il rettangolo non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:883 src/gui/auxiliary/canvas.cpp:888
-#: src/gui/auxiliary/canvas.cpp:893 src/gui/auxiliary/canvas.cpp:899
+#: src/gui/auxiliary/canvas.cpp:909 src/gui/auxiliary/canvas.cpp:914
+#: src/gui/auxiliary/canvas.cpp:919 src/gui/auxiliary/canvas.cpp:925
 msgid "Circle doesn't fit on canvas."
 msgstr "Il cerchio non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:1085 src/gui/auxiliary/canvas.cpp:1092
-#: src/gui/auxiliary/canvas.cpp:1102 src/gui/auxiliary/canvas.cpp:1109
+#: src/gui/auxiliary/canvas.cpp:1109 src/gui/auxiliary/canvas.cpp:1116
+#: src/gui/auxiliary/canvas.cpp:1126 src/gui/auxiliary/canvas.cpp:1133
 msgid "Image doesn't fit on canvas."
 msgstr "L’immagine non entra nella tela."
 
-#: src/gui/auxiliary/canvas.cpp:1321
+#: src/gui/auxiliary/canvas.cpp:1341
 msgid "Text has a font size of 0."
 msgstr "Il testo ha una dimensione di carattere di 0."
 
-#: src/gui/auxiliary/canvas.cpp:1391
+#: src/gui/auxiliary/canvas.cpp:1412
 msgid "Text doesn't start on canvas."
 msgstr "Il testo non inizia su una tela."
 
-#: src/gui/auxiliary/widget_definition.cpp:146
-#: src/gui/auxiliary/window_builder.cpp:258
+#: src/gui/auxiliary/widget_definition.cpp:144
+#: src/gui/auxiliary/window_builder.cpp:263
 msgid "No resolution defined."
 msgstr "Non è stato definita nessuna risoluzione."
 
-#: src/gui/auxiliary/widget_definition/listbox.cpp:115
-#: src/gui/auxiliary/widget_definition/multi_page.cpp:60
+#: src/gui/auxiliary/widget_definition/listbox.cpp:121
+#: src/gui/auxiliary/widget_definition/multi_page.cpp:59
 #: src/gui/auxiliary/widget_definition/scroll_label.cpp:84
 #: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:67
-#: src/gui/auxiliary/widget_definition/stacked_widget.cpp:63
-#: src/gui/auxiliary/widget_definition/tree_view.cpp:68
-#: src/gui/auxiliary/window_builder.cpp:389
-#: src/gui/auxiliary/window_builder/panel.cpp:35
-#: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
+#: src/gui/auxiliary/widget_definition/stacked_widget.cpp:62
+#: src/gui/auxiliary/widget_definition/tree_view.cpp:67
+#: src/gui/auxiliary/window_builder.cpp:404
+#: src/gui/auxiliary/window_builder/panel.cpp:36
+#: src/gui/auxiliary/window_builder/toggle_panel.cpp:40
 msgid "No grid defined."
 msgstr "Non è stata definita nessuna griglia."
 
-#: src/gui/auxiliary/window_builder.cpp:99
+#: src/gui/auxiliary/window_builder.cpp:103
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Il gruppo «$id» collegato ha definizioni multiple."
 
-#: src/gui/auxiliary/window_builder.cpp:420
+#: src/gui/auxiliary/window_builder.cpp:436
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
 "Il gruppo «$id» collegato richiede una delle parole chiave «fixed_width» o "
 "«fixed_height»."
 
-#: src/gui/auxiliary/window_builder.cpp:533
+#: src/gui/auxiliary/window_builder.cpp:550
 msgid "A row must have a column."
 msgstr "Una riga deve avere una colonna."
 
-#: src/gui/auxiliary/window_builder.cpp:534
+#: src/gui/auxiliary/window_builder.cpp:551
 msgid "Number of columns differ."
 msgstr "Il numero di colonne è diverso."
 
 # XXX Controllare helptip e tooltip
-#: src/gui/auxiliary/window_builder/control.cpp:43
+#: src/gui/auxiliary/window_builder/control.cpp:46
 msgid "Found a widget with a helptip and without a tooltip."
 msgstr "Trovato un widget con un helptip e senza un tooltip."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:46
-#: src/gui/auxiliary/window_builder/listbox.cpp:60
-#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:41
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:48
+#: src/gui/auxiliary/window_builder/listbox.cpp:62
+#: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:43
 msgid "No list defined."
 msgstr "Non è stata definita nessuna lista."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:50
-#: src/gui/auxiliary/window_builder/listbox.cpp:64
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:52
+#: src/gui/auxiliary/window_builder/listbox.cpp:66
 msgid "A 'list_definition' should contain one row."
 msgstr "Una «list_definition» deve contenere una riga."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:66
-#: src/gui/auxiliary/window_builder/listbox.cpp:83
-#: src/gui/auxiliary/window_builder/multi_page.cpp:60
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:73
+#: src/gui/auxiliary/window_builder/listbox.cpp:88
+#: src/gui/auxiliary/window_builder/multi_page.cpp:63
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
@@ -3987,153 +4015,153 @@ msgstr ""
 msgid "No page defined."
 msgstr "Non è stata definita nessuna pagina."
 
-#: src/gui/auxiliary/window_builder/pane.cpp:35
+#: src/gui/auxiliary/window_builder/pane.cpp:37
 msgid "Need at least 1 parallel item."
 msgstr "Necessita di almeno un item parallelo"
 
-#: src/gui/auxiliary/window_builder/slider.cpp:65
+#: src/gui/auxiliary/window_builder/slider.cpp:68
 msgid "The number of value_labels and values don't match."
 msgstr "Il numero di value_labels e values non corrisponde."
 
-#: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
+#: src/gui/auxiliary/window_builder/stacked_widget.cpp:37
 msgid "No stack defined."
 msgstr "Non è stata definita nessuno stack."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:45
+#: src/gui/auxiliary/window_builder/tree_view.cpp:48
 msgid "No nodes defined for a tree view."
 msgstr "Non è stato definito nessun nodo per una vista ad albero."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:85
+#: src/gui/auxiliary/window_builder/tree_view.cpp:87
 msgid "[node]id 'root' is reserved for the implementation."
 msgstr "[nodo] l’id «root» è riservato dall’implementazione."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:89
+#: src/gui/auxiliary/window_builder/tree_view.cpp:91
 msgid "No node defined."
 msgstr "Non è stato definito nessun nodo."
 
-#: src/gui/dialogs/addon/description.cpp:106
+#: src/gui/dialogs/addon/description.cpp:109
 msgid "addon_state^Not installed"
 msgstr "Non installata"
 
-#: src/gui/dialogs/addon/description.cpp:108
+#: src/gui/dialogs/addon/description.cpp:111
 msgid "addon_state^Published, not installed"
 msgstr "Pubblicata, non installata"
 
-#: src/gui/dialogs/addon/description.cpp:113
+#: src/gui/dialogs/addon/description.cpp:116
 msgid "addon_state^Installed"
 msgstr "Installata"
 
-#: src/gui/dialogs/addon/description.cpp:115
+#: src/gui/dialogs/addon/description.cpp:118
 msgid "addon_state^Published"
 msgstr "Pubblicata"
 
-#: src/gui/dialogs/addon/description.cpp:120
+#: src/gui/dialogs/addon/description.cpp:123
 msgid "addon_state^Installed, not tracking local version"
 msgstr "Installata, nessun tracciamento della versione locale"
 
-#: src/gui/dialogs/addon/description.cpp:124
+#: src/gui/dialogs/addon/description.cpp:127
 msgid "addon_state^Published, not tracking local version"
 msgstr "Pubblicata, nessun tracciamento della versione locale"
 
-#: src/gui/dialogs/addon/description.cpp:130
+#: src/gui/dialogs/addon/description.cpp:133
 msgid "addon_state^Installed ($local_version|), upgradable"
 msgstr "Installata ($local_version|), aggiornabile"
 
-#: src/gui/dialogs/addon/description.cpp:131
+#: src/gui/dialogs/addon/description.cpp:135
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr "Pubbblicata ($local_version| installata), aggiornabile"
 
-#: src/gui/dialogs/addon/description.cpp:138
+#: src/gui/dialogs/addon/description.cpp:142
 msgid "addon_state^Installed ($local_version|), outdated on server"
 msgstr "Installata ($local_vesion|), antiquata sul server"
 
-#: src/gui/dialogs/addon/description.cpp:139
+#: src/gui/dialogs/addon/description.cpp:144
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr "Pubblicata ($local_vesion|), antiquata sul server"
 
-#: src/gui/dialogs/addon/description.cpp:145
+#: src/gui/dialogs/addon/description.cpp:150
 msgid "addon_state^Installed, broken"
 msgstr "Installata, corrotta"
 
-#: src/gui/dialogs/addon/description.cpp:147
+#: src/gui/dialogs/addon/description.cpp:152
 msgid "addon_state^Published, broken"
 msgstr "Pubblicata, corrotta"
 
-#: src/gui/dialogs/addon/description.cpp:151
+#: src/gui/dialogs/addon/description.cpp:156
 msgid "addon_state^Unknown"
 msgstr "Sconosciuta"
 
-#: src/gui/dialogs/addon/filter_options.cpp:274
+#: src/gui/dialogs/addon/filter_options.cpp:294
 msgid "addons_view^Not Installed"
 msgstr "Non installate"
 
-#: src/gui/dialogs/addon/filter_options.cpp:276
+#: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
 msgstr "Aggiornabili"
 
-#: src/gui/dialogs/addon/filter_options.cpp:278
+#: src/gui/dialogs/addon/filter_options.cpp:298
 msgid "addons_view^Installed"
 msgstr "Installate"
 
-#: src/gui/dialogs/addon/filter_options.cpp:280
+#: src/gui/dialogs/addon/filter_options.cpp:300
 msgid "addons_view^All Add-ons"
 msgstr "Tutte le estensioni"
 
-#: src/gui/dialogs/addon_list.cpp:256
-#: src/gui/dialogs/network_transmission.cpp:54
+#: src/gui/dialogs/addon_list.cpp:233
 #: src/gui/dialogs/network_transmission.cpp:56
+#: src/gui/dialogs/network_transmission.cpp:57
 msgid "unit_byte^B"
 msgstr "B"
 
-#: src/gui/dialogs/game_load.cpp:269
+#: src/gui/dialogs/game_load.cpp:274
 msgid "#(Invalid)"
 msgstr "#(Non valido)"
 
-#: src/gui/dialogs/game_load.cpp:289
+#: src/gui/dialogs/game_load.cpp:294
 msgid "Campaign: $campaign_name"
 msgstr "Campagna: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:300
+#: src/gui/dialogs/game_load.cpp:305
 msgid "Test scenario"
 msgstr "Scenario di prova"
 
-#: src/gui/dialogs/game_load.cpp:308
+#: src/gui/dialogs/game_load.cpp:314
 msgid "Replay"
 msgstr "Replay"
 
-#: src/gui/dialogs/game_load.cpp:310
+#: src/gui/dialogs/game_load.cpp:316
 msgid "Turn"
 msgstr "Turno"
 
-#: src/gui/dialogs/game_load.cpp:312
+#: src/gui/dialogs/game_load.cpp:318
 msgid "Scenario start"
 msgstr "Inizio dello scenario"
 
-#: src/gui/dialogs/game_load.cpp:315
+#: src/gui/dialogs/game_load.cpp:321
 msgid "Difficulty: "
 msgstr "Difficoltà: "
 
-#: src/gui/dialogs/game_load.cpp:319
+#: src/gui/dialogs/game_load.cpp:325
 msgid "Version: "
 msgstr "Versione: "
 
-#: src/gui/dialogs/lobby_main.cpp:229
+#: src/gui/dialogs/lobby_main.cpp:225
 msgid "whisper to $receiver"
 msgstr "Bisbiglia a $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:662
+#: src/gui/dialogs/lobby_main.cpp:692
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Partite: mostrate $num_shown di $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:705
+#: src/gui/dialogs/lobby_main.cpp:736
 msgid "Observers allowed"
 msgstr "Osservatori ammessi"
 
-#: src/gui/dialogs/lobby_main.cpp:708
+#: src/gui/dialogs/lobby_main.cpp:739
 msgid "Observers not allowed"
 msgstr "Osservatori non ammessi"
 
-#: src/gui/dialogs/lobby_main.cpp:1107
+#: src/gui/dialogs/lobby_main.cpp:1152
 msgid ""
 "Whisper session with $name started. If you don’t want to receive messages "
 "from this user, type /ignore $name\n"
@@ -4141,39 +4169,35 @@ msgstr ""
 "Iniziata una sessione bisbigliata con $name. Se non vuoi ricevere messaggi "
 "da questo utente, scrivi /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1113
+#: src/gui/dialogs/lobby_main.cpp:1160
 msgid "Room $name joined"
 msgstr "Sei entrato nella stanza $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1420
+#: src/gui/dialogs/lobby_main.cpp:1486
 msgid "$player has entered the room"
 msgstr "$player è entrato nella stanza"
 
-#: src/gui/dialogs/lobby_main.cpp:1458
+#: src/gui/dialogs/lobby_main.cpp:1526
 msgid "$player has left the room"
 msgstr "$player ha lasciato la stanza"
 
-#: src/gui/dialogs/lobby_main.cpp:1571
+#: src/gui/dialogs/lobby_main.cpp:1644
 msgid "Password Required"
 msgstr "Password necessaria"
 
-#: src/gui/dialogs/lobby_main.cpp:1572
+#: src/gui/dialogs/lobby_main.cpp:1645
 msgid "Joining this game requires a password."
 msgstr "Entrare in questa partita richiede una password."
 
-#: src/gui/dialogs/lobby_main.cpp:1573
+#: src/gui/dialogs/lobby_main.cpp:1649
 msgid "Password: "
 msgstr "Password: "
 
-#: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:61
-msgid "Error"
-msgstr "Errore"
-
-#: src/gui/dialogs/mp_change_control.cpp:246
+#: src/gui/dialogs/mp_change_control.cpp:250
 msgid "Side $side"
 msgstr "Fazione $side"
 
-#: src/gui/dialogs/mp_create_game.cpp:100
+#: src/gui/dialogs/mp_create_game.cpp:95
 msgid "Load Game..."
 msgstr "Carica partita..."
 
@@ -4181,11 +4205,11 @@ msgstr "Carica partita..."
 msgid "$requester requires the following modifications to be enabled:"
 msgstr "$requester richiede che le seguenti modifiche vengano abilitate:"
 
-#: src/gui/dialogs/mp_depcheck_confirm_change.cpp:66
+#: src/gui/dialogs/mp_depcheck_confirm_change.cpp:68
 msgid "$requester requires the following modifications to be disabled:"
 msgstr "$requester richiede che le seguenti modifiche vengano disabilitate:"
 
-#: src/gui/dialogs/mp_depcheck_select_new.cpp:69
+#: src/gui/dialogs/mp_depcheck_select_new.cpp:67
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -4193,7 +4217,7 @@ msgstr ""
 "Lo scenario attualmente scelto non è compatibile con la tua configurazione.\n"
 "Sei pregato di selezionarne uno compatibile."
 
-#: src/gui/dialogs/mp_depcheck_select_new.cpp:74
+#: src/gui/dialogs/mp_depcheck_select_new.cpp:72
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -4201,7 +4225,7 @@ msgstr ""
 "L’ era attualmente scelta non è compatibile con la tua configurazione.\n"
 "Sei pregato di sceglierne una compatibile."
 
-#: src/gui/dialogs/mp_depcheck_select_new.cpp:80
+#: src/gui/dialogs/mp_depcheck_select_new.cpp:78
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
@@ -4209,41 +4233,41 @@ msgstr ""
 "La modifica attualmente scelta non è compatibile con il tuo setup.\n"
 "Prova a sceglierne una compatibile. "
 
-#: src/gui/dialogs/title_screen.cpp:291
+#: src/gui/dialogs/title_screen.cpp:293
 msgid "Version "
 msgstr "Versione "
 
-#: src/gui/dialogs/title_screen.cpp:294
+#: src/gui/dialogs/title_screen.cpp:297
 msgid "Version"
 msgstr "Versione"
 
-#: src/gui/widgets/helper.cpp:116
+#: src/gui/widgets/helper.cpp:125
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Non è stato definito il widget obbligatorio «$id»."
 
-#: src/gui/widgets/settings.cpp:435
+#: src/gui/widgets/settings.cpp:448
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "La definizione del widget «$definition» non contiene la definizione di «$id»."
 
-#: src/gui/widgets/settings.cpp:502
+#: src/gui/widgets/settings.cpp:521
 msgid "No default gui defined."
 msgstr "Non è stato definita una gui predefinita."
 
-#: src/gui/widgets/settings.cpp:532
+#: src/gui/widgets/settings.cpp:550
 msgid "No state or draw section defined."
 msgstr "Non è stata definita nessuna sezione state o draw."
 
-#: src/gui/widgets/tree_view_node.cpp:104
+#: src/gui/widgets/tree_view_node.cpp:110
 msgid "Unknown builder id for tree view node."
 msgstr "Id sconosciuta per un nodo di vista ad albero"
 
-#: src/gui/widgets/window.cpp:1036
+#: src/gui/widgets/window.cpp:1047
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "L’ignora con un clic richiede un pulsante «click_dismiss» o «ok»."
 
-#: src/gui/widgets/window.cpp:1061 src/gui/widgets/window.cpp:1101
+#: src/gui/widgets/window.cpp:1072 src/gui/widgets/window.cpp:1109
 #: src/tests/gui/test_gui2.cpp:430
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Non è stato possibile mostrare una finestra che non sta nello schermo."

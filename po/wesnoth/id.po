@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2013-09-09 11:47+0700\n"
 "Last-Translator: Yuristyawan Pambudi Wicaksana <yuris_wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
@@ -2926,15 +2926,15 @@ msgstr "Tak Terlalui"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:306
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Kabut"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
+#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Selubung"
@@ -3177,821 +3177,6 @@ msgstr ""
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
-
-#. [tip]
-#: data/hardwired/tips.cfg:4
-msgid ""
-"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
-"event or ai coding."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:9
-#: data/hardwired/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>― Buku Penuntun Taktis Wesnoth</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:8
-msgid ""
-"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
-"advanced features."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:12
-msgid ""
-"Scenarios saved from the editor in their default folder can be selected in "
-"the mp create screen's <i>User Scenarios</i> section."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:16
-msgid ""
-"Don’t neglect to earn your leader experience! You need to keep him safe, but "
-"if you coddle him too much he may be too weak to survive future battles."
-msgstr ""
-"Jangan lupa untuk menambah pengalaman pemimpin anda! Anda perlu menjaganya, "
-"tetapi jika anda terlalu memanjakannya dia bisa terlalu lemah untuk bertahan "
-"hidup di pertempuran-pertempuran yang akan datang."
-
-#. [tip]
-#: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:149
-msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― Penyihir Hebat Delfador, 516TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:20
-msgid ""
-"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
-"highlight all the hexes your adversary can move to (assuming your units stay "
-"where they are). Use this to make sure the enemy can’t reach your weak or "
-"injured units on his next turn."
-msgstr ""
-"Di menu <b>Aksi</b> , anda bisa memilih <b>Tunjukkan Pergerakan Musuh</b> "
-"untuk menyoroti semua heks mana saja musuh anda bisa berpindah "
-"(mengasumsikan bahwa unit-unit anda berdiri di mana mereka berada). Gunakan "
-"ini untuk meyakinkan bahwa musuh tidak bisa mencapai unit-unit anda yang "
-"lemah atau terluka pada giliran dia yang berikutnya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:21 data/hardwired/tips.cfg:33
-#: data/hardwired/tips.cfg:37 data/hardwired/tips.cfg:45
-#: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:65
-#: data/hardwired/tips.cfg:69 data/hardwired/tips.cfg:73
-#: data/hardwired/tips.cfg:77 data/hardwired/tips.cfg:81
-#: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:97
-#: data/hardwired/tips.cfg:101 data/hardwired/tips.cfg:113
-#: data/hardwired/tips.cfg:121 data/hardwired/tips.cfg:125
-#: data/hardwired/tips.cfg:133 data/hardwired/tips.cfg:157
-#: data/hardwired/tips.cfg:161 data/hardwired/tips.cfg:165
-#: data/hardwired/tips.cfg:173 data/hardwired/tips.cfg:181
-#: data/hardwired/tips.cfg:189 data/hardwired/tips.cfg:193
-#: data/hardwired/tips.cfg:201 data/hardwired/tips.cfg:205
-#: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:213
-#: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:241
-#: data/hardwired/tips.cfg:250
-msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "<i>― Buku Penuntun Taktis Wesnoth</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:24
-msgid ""
-"Units with the <i>Intelligent</i> trait need fewer experience points to "
-"level up. Early in a campaign, try to give killing blows to these units so "
-"you can get some high-level troops sooner."
-msgstr ""
-"Unit-unit dengan sifat <i>Pandai</i> memerlukan lebih sedikit poin "
-"pengalaman untuk naik level. Sejak permulaan kampanye, cobalah berikan "
-"pukulan mematikan untuk unit-unit ini supaya anda bisa mendapatkan beberapa "
-"pasukan berlevel tinggi lebih cepat."
-
-#. [tip]
-#: data/hardwired/tips.cfg:25
-msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Raja Konrad, 536TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:28
-msgid ""
-"The encircling tactic is very powerful, particularly against fast opponents. "
-"By placing two units on opposite sides of an enemy, their zones of control "
-"will restrict it to one hex of movement in any direction. Unfortunately, you "
-"must completely surround skirmishers to immobilize them."
-msgstr ""
-"Siasat mengepung sangat ampuh, terutama melawan musuh-musuh yang cepat. "
-"Dengan menaruh dua unit di sisi berlawanan dari musuh, zona kendali mereka "
-"akan membatasinya ke satu heks pergerakan ke arah manapun. Sayangnya, anda "
-"harus mengepung para skirmisher dengan sepenuhnya untuk menghentikan mereka."
-
-#. [tip]
-#: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:141
-msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>― Riwayat Hidup Gweddry, 627TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:32
-msgid ""
-"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
-"clicking on a castle tile. That will let you choose the precise hex you put "
-"a unit in. Placing units wisely can sometimes let you reach a village a turn "
-"earlier."
-msgstr ""
-"Anda bisa mengakses perintah <b>Rekrut</b> dan <b>Panggil Kembali</b> dengan "
-"mengklik kanan pada heks istana. Itu akan membuat anda memilih di heks mana "
-"anda mau menaruh unit baru tersebut. Menaruh unit-unit dengan bijaksana "
-"kadang-kadang bisa memudahkan anda mencapai sebuah desa satu giliran lebih "
-"awal."
-
-#. [tip]
-#: data/hardwired/tips.cfg:36
-msgid ""
-"There are some helpful summary screens in the main menu: for instance, the "
-"<b>Status Table</b> will let you know how your enemies are doing, and how "
-"you are doing in comparison."
-msgstr ""
-"Ada beberapa layar ringkasan berguna di menu utama: misalnya, <b>Tabel "
-"Status</b> akan menunjukkan anda kabar musuh-musuh anda, dan kabar anda juga "
-"di perbandingan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:40
-msgid ""
-"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
-"can be very important when moving through difficult terrain such as water or "
-"caves. It can make the difference between being able to move one hex or two."
-msgstr ""
-"Unit-unit dengan sifat <i>Cepat</i> mendapatkan pergerakan tambahan per "
-"giliran. Ini bisa menjadi sangat penting ketika melintasi daerah sulit "
-"seperti perairan atau gua-gua. Sifat tersebut bisa membuat perbedaan di "
-"antara bisa bergerak satu atau dua heks."
-
-#. [tip]
-#: data/hardwired/tips.cfg:41 data/hardwired/tips.cfg:117
-#: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:237
-msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― Tuan Tinggi Kalenz, 470TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:44
-msgid ""
-"After you have played a few scenarios, read the <b>Gameplay</b> section in "
-"the <b>Help</b> screen carefully. Details become important as scenarios get "
-"harder!"
-msgstr ""
-"Setelah anda memainkan beberapa skenario, bacalah bagian <b>Permainan</b> di "
-"layar <b>Bantuan</b> dengan teliti. Detil-detil menjadi penting ketika "
-"skenario menjadi lebih sulit!"
-
-#. [tip]
-#: data/hardwired/tips.cfg:48
-msgid ""
-"It is usually better to start the next scenario in a campaign with lower-"
-"level units that are about to level up than with those same units at a "
-"higher level."
-msgstr ""
-"Biasanya, memulai skenario berikutnya di sebuah kampanye dengan unit "
-"berlevel lebih rendah yang hampir menaik level lebih baik daripada dengan "
-"unit tersebut dengan level yang lebih tinggi."
-
-#. [tip]
-#: data/hardwired/tips.cfg:52
-msgid ""
-"On www.wesnoth.org you can find strategy guides, technical support, the "
-"history of Wesnoth, and much more."
-msgstr ""
-"Di www.wesnoth.org anda bisa menemukan penuntun strategi, dukungan teknis, "
-"sejarah Wesnoth, dan banyak lagi."
-
-#. [tip]
-#: data/hardwired/tips.cfg:53
-msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>― Komunitas Wesnoth</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:56
-msgid ""
-"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
-"rare <i>liminal</i> units fight best during twilight."
-msgstr ""
-"Unit-unit <i>Baik</i> bertarung lebih baik pada siang hari, dan unit-unit "
-"<i>brutal</i> bertarung lebih baik pada malam hari. Unit-unit <i>netral</i> "
-"tidak terpengaruh oleh waktu. Unit-unit <i>liminal</i> yang langka bertarung "
-"paling baik pada senjakala."
-
-#. [tip]
-#: data/hardwired/tips.cfg:57
-msgid ""
-"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr ""
-"<i>― Ikhtisar Kerajaan tentang Istilah Peperangan: Jilid II (dicetak kembali "
-"221TW)</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:60
-msgid ""
-"An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr ""
-"Rencana cemerlang bisa gagal jika anda menyerang pada jam hari yang salah."
-
-#. [tip]
-#: data/hardwired/tips.cfg:61 data/hardwired/tips.cfg:85
-#: data/hardwired/tips.cfg:137 data/hardwired/tips.cfg:145
-#: data/hardwired/tips.cfg:229
-msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― Haldric II, 42TW, Buku Pedoman Analisa Taktis: Jilid I</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:64
-msgid ""
-"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
-"know what you’re facing. In this case, long-range scouting units are worth "
-"their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
-msgstr ""
-"Jika anda bermain dengan <b>Selubung</b> atau <b>Kabut Peperangan</b> aktif, "
-"anda tidak akan tahu apa yang anda hadapi. Dalam keadaan ini, unit-unit "
-"pengintai jarak jauh sangat berguna. Cobalah memilih pengintai-pengintai "
-"yang bisa melintasi daerah sekeliling dengan mudah, karena unit-unit hanya "
-"bisa melihat sejauh pergerakan mereka pada satu giliran."
-
-#. [tip]
-#: data/hardwired/tips.cfg:68
-msgid ""
-"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
-"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
-"against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
-"affect it the most."
-msgstr ""
-"Ada enam jenis serangan: <i>menusuk</i>, <i>senjata tajam</i>, <i>peremuk</"
-"i>, <i>api</i>, <i>dingin</i> dan <i>misterius</i>. Unit-unit berbeda "
-"memiliki kelemahan melawan jenis-jenis serangan berbeda. Klik kanan pada "
-"sebuah unit dan pilih <b>Deskripsi Unit</b> untuk melihat terhadap serangan "
-"mana ia tahan, dan terhadap serangan yang mana yang akan paling merusaknya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:72
-msgid ""
-"The terrain occupied by your units is the main factor determining the chance "
-"that they will be hit. The defensive rating for the currently selected unit "
-"in the currently selected terrain is displayed in the top right corner of "
-"the screen."
-msgstr ""
-"Daerah yang unit-unit anda sedang tempati adalah faktor utama yang "
-"menentukan kesempatan bahwa mereka akan di pukul di peperangan. Angka "
-"bertahan unit yang sedang dipilih di daerah yang sedang dipilih ditunjukkan "
-"di sudut paling kanan atas layar."
-
-#. [tip]
-#: data/hardwired/tips.cfg:76
-msgid ""
-"Poisoned units will lose eight hitpoints every turn until they are one point "
-"from dying. They will then remain at death’s door until the poison is "
-"removed. Healers can prevent a poisoned unit from deteriorating, but the "
-"poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
-msgstr ""
-"Unit-unit keracunan akan kehilangan delapan darah setiap giliran sampai "
-"mereka tinggal satu darah dari kematian. Ia akan dekat dengan kematian "
-"sampai racun tersebut dihilangkan. Para pengobat bisa mencegah unit "
-"keracunan memburuk, tetapi racun tersebut tidak akan hilang kecuali unit "
-"tersebut memulihkan diri, atau memulai sebuah giliran di desa atau di "
-"sebelah unit dengan kemampuan <i>Menyembuhkan</i> ."
-
-#. [tip]
-#: data/hardwired/tips.cfg:80
-msgid ""
-"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
-"the <b>Actions</b> menu. By recalling the same units over and over, you can "
-"build up a powerful and experienced army."
-msgstr ""
-"Anda bisa menggunakan kembali unit-unit dari skenario sebelumnya dengan "
-"memilih <b>Panggil Kembali</b> di menu <b>Aksi</b>. Dengan memanggil kembali "
-"unit yang sama berulang kali, anda bisa mendirikan tentara kuat dan "
-"berpengalaman."
-
-#. [tip]
-#: data/hardwired/tips.cfg:84
-msgid ""
-"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
-"around them. If a unit moves into an enemy’s zone of control, it may not "
-"move any further that turn. This means that units can have two empty hexes "
-"between them and still create a barrier to the enemy. Beware, though: "
-"skirmishers can pass through these gaps."
-msgstr ""
-"Unit-unit berlevel satu dan lebih tinggi memiliki <i>Zona Kontrol</i> di "
-"enam heks di sekitarnya. Jika sebuah unit bergerak ke dalam zona kontrol "
-"musuh, ia tidak bisa bergerak lebih jauh pada giliran itu. Ini berarti unit-"
-"unit bisa memiliki dua heks kosong di antara mereka dan masih membuat "
-"penghalang untuk musuh. Berhati-hatilah, karena: para skirmisher dapat "
-"melewati celah-celah ini."
-
-#. [tip]
-#: data/hardwired/tips.cfg:88
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain in which it is standing. However, magical attacks "
-"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
-"are guaranteed at least a 60% chance of a hit when they attack on their own "
-"turn."
-msgstr ""
-"Kemungkinan untuk mengenai sebuah unit biasanya tergantung oleh seberapa "
-"bagus unit itu bisa melindungi dirinya sendiri di daerah di mana ia sedang "
-"berdiri. Namun, serangan sihir selalu memiliki 70% kemungkinan mengenai "
-"sasaran, dan unit-unit dengan kemampuan <i>Ahli menembak</i> dijamin "
-"setidaknya 60% kemungkinan mengenai ketika mereka menyerang pada giliran "
-"mereka sendiri."
-
-#. [tip]
-#: data/hardwired/tips.cfg:89
-msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― Haldric II, 43TW, Buku Pedoman Analisa Taktis: Jilid II</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:92
-msgid ""
-"Units stationed in villages will either heal eight hitpoints at the "
-"beginning of their turn, or will recover from poisoning."
-msgstr ""
-"Unit-unit yang ditempatkan di desa akan diobati delapan darah pada permulaan "
-"giliran mereka, atau akan disembuhkan dari keracunan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:96
-msgid ""
-"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
-"does not move or attack, it will recover two hitpoints at the beginning of "
-"its next turn."
-msgstr ""
-"Jangan gerakkan unit terluka jika anda tidak perlu — biarkan ia "
-"beristirahat. Jika sebuah unit tidak bergerak atau menyerang, ia akan "
-"diobati dua darah pada permulaan giliran berikutnya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:100
-msgid ""
-"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
-"units’ sightlines are limited by their maximum movement. If you have some "
-"valuable but slow units, keep at least one fast unit with them so that you "
-"are not caught out by a surprise attack."
-msgstr ""
-"Di peta di mana <i>Selubung</i> atau <i>Kabut Peperangan</i> dinyalakan, "
-"penglihatan seluruh unit terbatas oleh pergerakan maksimumnya. Jika anda "
-"memiliki unit-unit berharga tetapi lambat, berikan paling tidak satu unit "
-"cepat bersama mereka sehingga anda tidak terkena serangan mendadak."
-
-#. [tip]
-#: data/hardwired/tips.cfg:104
-msgid ""
-"Foot units tend to defend better in villages and castles than in other "
-"terrain types, while most mounted units do not gain any defensive advantages "
-"from villages or castles."
-msgstr ""
-"Pasukan infanteri cenderung berlindung lebih baik di desa dan istana "
-"daripada tipe daerah yang lain, sedangkan hampir semua pasukan berkuda tidak "
-"mendapat keuntungan perlindungan apapun dari desa atau istana."
-
-#. [tip]
-#: data/hardwired/tips.cfg:105 data/hardwired/tips.cfg:185
-msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Sir Kaylan, 498TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:108
-msgid ""
-"Horse-based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"Pasukan berkuda biasanya kebal dari serangan senjata tajam atau senjata "
-"peremuk, tetapi lemah melawan serangan penusuk, termasuk panah dan tombak."
-
-#. [tip]
-#: data/hardwired/tips.cfg:109
-msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Sir Kaylan, 502TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain eight experience points for "
-"every level of the unit they kill, or four experience points for a zero-"
-"level opponent."
-msgstr ""
-"Melakukan pukulan membunuh kepada unit musuh adalah cara terbaik untuk "
-"memperoleh pengalaman. Unit yang membunuh musuh akan memperoleh delapan "
-"angka pengalaman untuk setiap level unit yang mereka bunuh, atau empat angka "
-"pengalaman untuk sebuah mush berlevel nol."
-
-#. [tip]
-#: data/hardwired/tips.cfg:116
-msgid ""
-"Elvish units move and fight well in forest. Dwarvish units move and fight "
-"well in hills, mountains and caves."
-msgstr ""
-"Unit elf bergerak dan bertempur dengan baik di hutan. Unit kurcaci bergerak "
-"dan bertempur dengan baik di bukit, gunung dan gua."
-
-#. [tip]
-#: data/hardwired/tips.cfg:120
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"Kesabaran sering adalah jawabannya. Daripada menyerang di dalam kondisi "
-"buruk atau dengan pasukan sedikit, tunggulah untuk kondisi yang lebih baik, "
-"baru serang."
-
-#. [tip]
-#: data/hardwired/tips.cfg:124
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"Jika anda diserang dari beberapa arah, barangkali mengirim unit yang tidak "
-"penting ke beberapa arah untuk memperlambat unit musuh adalah ide bagus."
-
-#. [tip]
-#: data/hardwired/tips.cfg:128
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"Jangan takut mengundurkan diri dan berkumpul kembali; ini biasanya adalah "
-"kunci kemenangan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:129
-msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:132
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns "
-"remaining. You will usually earn more gold this way than through capturing "
-"villages and waiting for the turns to run out."
-msgstr ""
-"Di dalam hampir semua kampanye, anda akan menerima bonus emas karena "
-"menyelesaikan lebih awal, tergantung pada jumlah desa di peta dan jumlah "
-"giliran yang tersisa. Anda akan selalu memperoleh lebih banyak emas dengan "
-"cara ini daripada merebut semua desa dan menunggu giliran habis."
-
-#. [tip]
-#: data/hardwired/tips.cfg:136
-msgid ""
-"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
-"not just the keep they start on. Sometimes your allies may be willing to "
-"make room for you on their keep so you can recruit from there, and you can "
-"even capture an enemy’s keep and use that."
-msgstr ""
-"<i>Para pemimpin</i> bisa merekrut atau memanggil kembali unit-unit dari "
-"benteng manapun di dalam sebuah istana, bukan hanya benteng di mana mereka "
-"memulai. Kadang kala sekutu-sekutu anda barangkali bersedia memberikan "
-"ruangan untuk anda di benteng mereka sehingga anda dapat merekrut di benteng "
-"mereka, dan anda bahkan bisa merebut sebuah benteng musuh dan "
-"menggunakannya. "
-
-#. [tip]
-#: data/hardwired/tips.cfg:140
-msgid ""
-"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
-"vulnerable to impact, fire, and arcane attacks."
-msgstr ""
-"Kerangka kebal dari serangan penusuk, senjata tajam dan serangan dingin "
-"tetapi lemah melawan serangan peremuk, api dan misterius."
-
-#. [tip]
-#: data/hardwired/tips.cfg:144
-msgid ""
-"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
-"the same side fight better. You can move these units slowly along your "
-"battle lines and give bonuses to large numbers of lower-level troops."
-msgstr ""
-"Unit-unit dengan kemampuan <i>Kepemimpinan</i> membantu unit-unit berlevel "
-"rendah yang berdekatan di pihak yang sama bertarung lebih baik. Anda dapat "
-"menggerakkan unit-unit ini dengan lambat sepanjang barisan-barisan "
-"pertempuran dan memberikan bonus-bonus ke sebanyak mungkin pasukan berlevel "
-"lebih rendah."
-
-#. [tip]
-#: data/hardwired/tips.cfg:148
-msgid ""
-"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
-"the village and attack you, while enjoying the defense and healing of the "
-"village."
-msgstr ""
-"Cobalah menghindari bergerak ke sebelah desa tak didiami. Sebuah unit musuh "
-"bisa masuk ke dalam desa tersebut dan menyerang anda, dan juga menikmati "
-"perlindungan dan perawatan desa itu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:152
-msgid "Use lines of troops to screen your injured units while they recover."
-msgstr ""
-"Gunakan barisan-barisan pasukan untuk melindungi unit-unit terluka anda "
-"sementara mereka memulihkan diri."
-
-#. [tip]
-#: data/hardwired/tips.cfg:153
-msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― Putri Li'sar, 515TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:156
-msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Bacalah daftar <b>Kunci panas</b> di menu <b>Pilihan</b> ."
-
-#. [tip]
-#: data/hardwired/tips.cfg:160
-msgid ""
-"If you move a unit, but don’t attack or discover any additional information, "
-"you can undo your move by pressing <b>u</b>."
-msgstr ""
-"Jika anda memindahkan sebuah unit, tetapi tidak menyerang atau menemukan "
-"informasi tambahan apapun, anda bisa membatalkan gerakan anda dengan menekan "
-"<b>u</b>."
-
-#. [tip]
-#: data/hardwired/tips.cfg:164
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"Anda bisa melihat sejauh mana unit musuh bisa bergerak dengan memindahkan "
-"tetikus anda ke atasnya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:168
-msgid ""
-"Use healers to support your attacks — they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-"Gunakan pengobat untuk mendukung serangan anda — mereka akan memenangkan "
-"peperangan untuk anda tanpa perlu menyerang siapapun."
-
-#. [tip]
-#: data/hardwired/tips.cfg:169 data/hardwired/tips.cfg:217
-msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>―Gulungan Surat Perkamen Chantal, 516TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:172
-msgid ""
-"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
-"they do on all attacks until they end a turn."
-msgstr ""
-"Serangan <i>Memperlambat</i> membuat unit-unit musuh bergerak lebih lambat "
-"dan membagi dua kerusakan yang mereka lakukan pada semua serangan sampai "
-"mereka mengakhiri giliran."
-
-#. [tip]
-#: data/hardwired/tips.cfg:176
-msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Serangan <i>Misterius</i> sangat ampuh melawan mayat hidup."
-
-#. [tip]
-#: data/hardwired/tips.cfg:177
-msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― Guru Bijaksana Hebat Dacyn, 626TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:180
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-"Unit disembuhkan ketika mereka naik level. Dipakai secara bijaksana, ini "
-"bisa memputarbalikkan pertarungan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:184
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr ""
-"Unit menyerbu paling bagus digunakan melawan musuh yang mereka bisa bunuh "
-"dengan satu pukulan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:188
-msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
-"benefits of advancing a level, so it is generally wiser to advance your "
-"lower-level units instead."
-msgstr ""
-"Daripada menaikkan level, unit-unit berlevel tinggi mendapatkan bonus "
-"<i>Kenaikan Level Setelah Level Maksimum</i> (KLSLM), yang biasanya menambah "
-"darah maksimum unit itu dengan tiga dan memberikan kesembuhan penuh "
-"kepadanya. Ini jauh lebih sedikit dari manfaat biasa yang didapatkan dari "
-"kenaikan level, jadi biasanya lebih bijaksana mencoba menaikkan level unit-"
-"unit anda yang berlevel lebih rendah sebagai gantinya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:192
-msgid ""
-"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-"mouse pointer over any button or icon to get a description or explanation of "
-"what it does."
-msgstr ""
-"Hampir setiap tombol dan ikon di permainan Wesnoth memiliki sebuah nasehat. "
-"Taruhlah pointer mouse anda di atas salah satu tombol atau ikon untuk "
-"mendapatkan sebuah keterangan atau deskripsi tentang apa itu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:196
-msgid ""
-"To advance low-level units quickly, team them with a veteran and use the "
-"veteran to damage a joint target heavily enough for the junior partner to "
-"get in the killing blow."
-msgstr ""
-"Untuk menaikkan level unit berlevel rendah secara cepat, sekutukan mereka "
-"dengan seorang kawakan dan gunakan kawakan tersebut untuk melukai sasaran "
-"bersama, cukup untuk teman junior ini untuk membawa pukulan membunuh."
-
-#. [tip]
-#: data/hardwired/tips.cfg:197
-msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― Ratu Li'sar, 528TW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:200
-msgid ""
-"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
-"the <b>Delay Shroud Updates</b> option when you need to move units while "
-"retaining the ability to undo, or use the new Whiteboard planning tool."
-msgstr ""
-"Anda tidak bisa membatalkan sebuah gerakan yang membuka heks-heks "
-"tersembunyi oleh kabut atau selubung. Nyalakan pilihan <b>Lambatkan Masukan "
-"Selubung</b> ketika anda perlu memindahkan unit-unit saat tertahan kemampuan "
-"untuk membatalkan, atau gunakan alat perencanaan whiteboard baru."
-
-#. [tip]
-#: data/hardwired/tips.cfg:204
-msgid ""
-"If an enemy benefits more from a rare terrain type than you do, occupying "
-"that terrain will deprive them of its benefits."
-msgstr ""
-"Jika musuh beruntung lebih banyak dari sebuah tipe daerah langka daripada "
-"anda sendiri, menempati daerah tersebut akan menghalangi mereka dari "
-"manfaatnya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:208
-msgid ""
-"Few units have good defenses in water; a line of attackers along the edge of "
-"a river can inflict heavy casualties. Elves can use the edge of a forest in "
-"a similar manner, and dwarves can do the same with mountains."
-msgstr ""
-"Sedikit unit yang memiliki perlindungan bagus di perairan; sebuah barisan "
-"penyerang sepanjang ujung sungai bisa menyebabkan banyak korban. Elf bisa "
-"menggunakan ujung hutan dengan cara yang sama, dan orang kurcaci bisa "
-"melakukan hal yang sama dengan pegunungan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:212
-msgid ""
-"In many campaign scenarios, you may issue simple instructions for your "
-"computer-controlled allies using the right-click context menu."
-msgstr ""
-"Di dalam banyak skenario kampanye, anda bisa memberikan perintah sederhana "
-"untuk sekutu-sekutu yang dikontrol oleh computer menggunakan menu konteks "
-"klik kanan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:216
-msgid ""
-"The <i>Slow</i> ability is extremely powerful because it has such wide-"
-"ranging effects. Enemy undead get half the normal benefit from their "
-"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
-"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
-"to escape; slow enemies are almost immobilized, and your own units suffer "
-"less retaliation damage, so it’s quicker to heal them."
-msgstr ""
-"Kemampuan <i>Melambatkan</i> sangat kuat karena memiliki efek bermacam-"
-"macam. Musuh mayat hidup mendapatkan setengah keuntungan normal dari "
-"kemampuan <i>Menghisap</i> mereka,  bonus kerusakan dari <i>Serangan</i> "
-"atau <i>Tikaman</i> dihapuskan, dan kemampuan <i>Mengamuk</i> dilemahkan. "
-"Musuh-musuh cepat dengan susah payah melarikan diri; musuh-musuh yang lambat "
-"hampir dihentikan, dan unit-unit anda sendiri menderita sedikit kerusakan "
-"balasan, sehingga lebih cepat untuk menyembuhkan mereka."
-
-#. [tip]
-#: data/hardwired/tips.cfg:220
-msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
-"This gives you another try whenever your first devastating attack misses — "
-"as inevitably happens from time to time."
-msgstr ""
-"Cobalah untuk menjalankan unit-unit dengan sejumlah kecil serangan kuat—"
-"seperti Ahli Nujum, Penunggang Kuda, Orc Muda atau Para Dwarvish Thunderer—"
-"berpasangan atau bertiga. Ini membuat anda dapat mencoba lagi setiap kali "
-"serangan pertama menghancurkan anda luput — sebagai peristiwa tak terelakkan "
-"dari waktu ke waktu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:224
-msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
-msgstr ""
-"Unit-unit dengan tiga atau lebih serangan—terutama serangan sihir—baik untuk "
-"menghabisi musuh-musuh dengan hanya tersisa sedikit hitpoints. Pastikan "
-"untuk menggunakan unit kepemimpinan—atau unit kuat atau cekatan—setiap kali "
-"poin tambahan atau dua kerusakan membuat satu pukulan membunuh memungkinkan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:228
-msgid ""
-"Think twice before dismissing any unit from your recall list, no matter how "
-"little experience it has. Sometimes it’s worth paying a premium to know "
-"exactly what traits a new arrival will have."
-msgstr ""
-"Berpikirlah dua kali sebelum memecat setiap unit dari daftar ingat anda, "
-"tidak peduli seberapa sedikit pengalaman yang dimilikinya. Kadang-kadang hal "
-"itu layak membayar bayaran untuk mengetahui persisnya sifat-sifat apa yang "
-"akan dimiliki pendatang baru."
-
-#. [tip]
-#: data/hardwired/tips.cfg:232
-msgid ""
-"When a tough unit is heavily injured, send it to heal in a village several "
-"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
-"hitpoints per turn) without tying up front-line villages."
-msgstr ""
-"Ketika sebuah unit kuat terluka berat, kirim unit itu untuk menyembuhkan "
-"diri di sebuah desa beberapa giliran gerakan jauh dari pertempuran. Kemudian "
-"ia dapat memulihkan diri dengan tenang (pada 10 hitpoint per giliran) tanpa "
-"tertahan di desa-desa garis depan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:233 data/hardwired/tips.cfg:245
-msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― Tuan Hamel dari Knalga</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:236
-msgid ""
-"Combining multiple special abilities can be deadly. While it may take some "
-"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
-"<i>Charge</i> against a slowed opponent, the results can be impressive."
-msgstr ""
-"Menggabungkan beberapa kemampuan khusus dapat menjadi mematikan. Walaupun "
-"itu mungkin membutuhkan kerja keras untuk menggabungkan, misalnya, "
-"<i>Kepemimpinan</i>, <i>Menerangi</i> dan <i>Menyerang</i> terhadap lawan "
-"melambat, hasilnya bisa menjadi mengesankan."
-
-#. [tip]
-#: data/hardwired/tips.cfg:240
-msgid ""
-"While finishing early gives a gold bonus, and reduces the opportunities for "
-"enemies to kill your valuable troops, it also means you lose chances to earn "
-"your units extra experience. When deciding whether or not to finish a "
-"scenario early, weigh these factors against one another."
-msgstr ""
-"Ketika menyelesaikan lebih awal memberikan bonus emas, dan mengurangi "
-"kesempatan bagi musuh-musuh untuk membunuh tentara berharga anda, itu juga "
-"berarti anda kehilangan kesempatan untuk mendapatkan pengalaman tambahan "
-"unit-unit anda. Ketika memutuskan apakah menyelesaikan skenario lebih awal "
-"atau tidak, pertimbangkan faktor-faktor ini terhadap satu sama lainnnya."
-
-#. [tip]
-#: data/hardwired/tips.cfg:244
-msgid ""
-"If your forces have weak defenses everywhere on the map, occupy the areas "
-"where your enemies can only attack you by sharing the same disadvantages. "
-"Avoid places where your defenses are poor and your enemy’s are merely "
-"average. Plan for heavy losses, and take firm control of any hex where the "
-"land does favor you."
-msgstr ""
-"Jika pasukan anda memiliki pertahanan yang lemah di mana-mana di peta, "
-"tempati daerah-daerah di mana musuh-musuh anda hanya dapat menyerang anda "
-"dengan berbagi keadaan merugikan yang sama. Hindari tempat-tempat dimana "
-"pertahanan-pertahanan anda buruk dan musuh anda sedang. Rencanakan kerugian "
-"besar, dan mengambil kendali yang kuat dari setiap heks di mana tanah benar-"
-"benar menguntungkan anda."
-
-#. [tip]
-#: data/hardwired/tips.cfg:249
-msgid ""
-"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
-"if they occupy a village hex, they do not gain any defensive benefits from "
-"the village, although they will still be healed."
-msgstr ""
-"Unit-unit <i>Feral</i> , seperti Kelelawar dan binatang-binatang liar, akan "
-"menghindari desa-desa. Bahkan jika mereka menempati heks desa, mereka tidak "
-"mendapatkan keuntungan bertahan dari desa, meskipun mereka masih akan "
-"disembuhkan."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -4277,6 +3462,810 @@ msgstr "pergerakan"
 #: data/themes/widescreen.cfg:530 data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."
 msgstr "lantai pertahanan"
+
+#. [tip]
+#: data/tips.cfg:4
+msgid ""
+"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
+"event or ai coding."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
+#, fuzzy
+#| msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgid "<i>― The Wesnoth Design Guide</i>"
+msgstr "<i>― Buku Penuntun Taktis Wesnoth</i>"
+
+#. [tip]
+#: data/tips.cfg:8
+msgid ""
+"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
+"advanced features."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:12
+msgid ""
+"Scenarios saved from the editor in their default folder can be selected in "
+"the mp create screen's <i>User Scenarios</i> section."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:16
+msgid ""
+"Don’t neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be too weak to survive future battles."
+msgstr ""
+"Jangan lupa untuk menambah pengalaman pemimpin anda! Anda perlu menjaganya, "
+"tetapi jika anda terlalu memanjakannya dia bisa terlalu lemah untuk bertahan "
+"hidup di pertempuran-pertempuran yang akan datang."
+
+#. [tip]
+#: data/tips.cfg:17 data/tips.cfg:149
+msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgstr "<i>― Penyihir Hebat Delfador, 516TW</i>"
+
+#. [tip]
+#: data/tips.cfg:20
+msgid ""
+"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
+"highlight all the hexes your adversary can move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can’t reach your weak or "
+"injured units on his next turn."
+msgstr ""
+"Di menu <b>Aksi</b> , anda bisa memilih <b>Tunjukkan Pergerakan Musuh</b> "
+"untuk menyoroti semua heks mana saja musuh anda bisa berpindah "
+"(mengasumsikan bahwa unit-unit anda berdiri di mana mereka berada). Gunakan "
+"ini untuk meyakinkan bahwa musuh tidak bisa mencapai unit-unit anda yang "
+"lemah atau terluka pada giliran dia yang berikutnya."
+
+#. [tip]
+#: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
+#: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
+#: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
+#: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
+#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
+#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
+#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
+#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:250
+msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgstr "<i>― Buku Penuntun Taktis Wesnoth</i>"
+
+#. [tip]
+#: data/tips.cfg:24
+msgid ""
+"Units with the <i>Intelligent</i> trait need fewer experience points to "
+"level up. Early in a campaign, try to give killing blows to these units so "
+"you can get some high-level troops sooner."
+msgstr ""
+"Unit-unit dengan sifat <i>Pandai</i> memerlukan lebih sedikit poin "
+"pengalaman untuk naik level. Sejak permulaan kampanye, cobalah berikan "
+"pukulan mematikan untuk unit-unit ini supaya anda bisa mendapatkan beberapa "
+"pasukan berlevel tinggi lebih cepat."
+
+#. [tip]
+#: data/tips.cfg:25
+msgid "<i>― King Konrad, 536YW</i>"
+msgstr "<i>― Raja Konrad, 536TW</i>"
+
+#. [tip]
+#: data/tips.cfg:28
+msgid ""
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction. Unfortunately, you "
+"must completely surround skirmishers to immobilize them."
+msgstr ""
+"Siasat mengepung sangat ampuh, terutama melawan musuh-musuh yang cepat. "
+"Dengan menaruh dua unit di sisi berlawanan dari musuh, zona kendali mereka "
+"akan membatasinya ke satu heks pergerakan ke arah manapun. Sayangnya, anda "
+"harus mengepung para skirmisher dengan sepenuhnya untuk menghentikan mereka."
+
+#. [tip]
+#: data/tips.cfg:29 data/tips.cfg:141
+msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+msgstr "<i>― Riwayat Hidup Gweddry, 627TW</i>"
+
+#. [tip]
+#: data/tips.cfg:32
+msgid ""
+"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
+"clicking on a castle tile. That will let you choose the precise hex you put "
+"a unit in. Placing units wisely can sometimes let you reach a village a turn "
+"earlier."
+msgstr ""
+"Anda bisa mengakses perintah <b>Rekrut</b> dan <b>Panggil Kembali</b> dengan "
+"mengklik kanan pada heks istana. Itu akan membuat anda memilih di heks mana "
+"anda mau menaruh unit baru tersebut. Menaruh unit-unit dengan bijaksana "
+"kadang-kadang bisa memudahkan anda mencapai sebuah desa satu giliran lebih "
+"awal."
+
+#. [tip]
+#: data/tips.cfg:36
+msgid ""
+"There are some helpful summary screens in the main menu: for instance, the "
+"<b>Status Table</b> will let you know how your enemies are doing, and how "
+"you are doing in comparison."
+msgstr ""
+"Ada beberapa layar ringkasan berguna di menu utama: misalnya, <b>Tabel "
+"Status</b> akan menunjukkan anda kabar musuh-musuh anda, dan kabar anda juga "
+"di perbandingan."
+
+#. [tip]
+#: data/tips.cfg:40
+msgid ""
+"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
+"can be very important when moving through difficult terrain such as water or "
+"caves. It can make the difference between being able to move one hex or two."
+msgstr ""
+"Unit-unit dengan sifat <i>Cepat</i> mendapatkan pergerakan tambahan per "
+"giliran. Ini bisa menjadi sangat penting ketika melintasi daerah sulit "
+"seperti perairan atau gua-gua. Sifat tersebut bisa membuat perbedaan di "
+"antara bisa bergerak satu atau dua heks."
+
+#. [tip]
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+msgid "<i>― High Lord Kalenz, 470YW</i>"
+msgstr "<i>― Tuan Tinggi Kalenz, 470TW</i>"
+
+#. [tip]
+#: data/tips.cfg:44
+msgid ""
+"After you have played a few scenarios, read the <b>Gameplay</b> section in "
+"the <b>Help</b> screen carefully. Details become important as scenarios get "
+"harder!"
+msgstr ""
+"Setelah anda memainkan beberapa skenario, bacalah bagian <b>Permainan</b> di "
+"layar <b>Bantuan</b> dengan teliti. Detil-detil menjadi penting ketika "
+"skenario menjadi lebih sulit!"
+
+#. [tip]
+#: data/tips.cfg:48
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+"Biasanya, memulai skenario berikutnya di sebuah kampanye dengan unit "
+"berlevel lebih rendah yang hampir menaik level lebih baik daripada dengan "
+"unit tersebut dengan level yang lebih tinggi."
+
+#. [tip]
+#: data/tips.cfg:52
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+"Di www.wesnoth.org anda bisa menemukan penuntun strategi, dukungan teknis, "
+"sejarah Wesnoth, dan banyak lagi."
+
+#. [tip]
+#: data/tips.cfg:53
+msgid "<i>― The Wesnoth Community</i>"
+msgstr "<i>― Komunitas Wesnoth</i>"
+
+#. [tip]
+#: data/tips.cfg:56
+msgid ""
+"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>liminal</i> units fight best during twilight."
+msgstr ""
+"Unit-unit <i>Baik</i> bertarung lebih baik pada siang hari, dan unit-unit "
+"<i>brutal</i> bertarung lebih baik pada malam hari. Unit-unit <i>netral</i> "
+"tidak terpengaruh oleh waktu. Unit-unit <i>liminal</i> yang langka bertarung "
+"paling baik pada senjakala."
+
+#. [tip]
+#: data/tips.cfg:57
+msgid ""
+"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
+msgstr ""
+"<i>― Ikhtisar Kerajaan tentang Istilah Peperangan: Jilid II (dicetak kembali "
+"221TW)</i>"
+
+#. [tip]
+#: data/tips.cfg:60
+msgid ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr ""
+"Rencana cemerlang bisa gagal jika anda menyerang pada jam hari yang salah."
+
+#. [tip]
+#: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
+#: data/tips.cfg:229
+msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
+msgstr "<i>― Haldric II, 42TW, Buku Pedoman Analisa Taktis: Jilid I</i>"
+
+#. [tip]
+#: data/tips.cfg:64
+msgid ""
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
+"know what you’re facing. In this case, long-range scouting units are worth "
+"their cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units can only see as far as they can move in one turn."
+msgstr ""
+"Jika anda bermain dengan <b>Selubung</b> atau <b>Kabut Peperangan</b> aktif, "
+"anda tidak akan tahu apa yang anda hadapi. Dalam keadaan ini, unit-unit "
+"pengintai jarak jauh sangat berguna. Cobalah memilih pengintai-pengintai "
+"yang bisa melintasi daerah sekeliling dengan mudah, karena unit-unit hanya "
+"bisa melihat sejauh pergerakan mereka pada satu giliran."
+
+#. [tip]
+#: data/tips.cfg:68
+msgid ""
+"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
+"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
+msgstr ""
+"Ada enam jenis serangan: <i>menusuk</i>, <i>senjata tajam</i>, <i>peremuk</"
+"i>, <i>api</i>, <i>dingin</i> dan <i>misterius</i>. Unit-unit berbeda "
+"memiliki kelemahan melawan jenis-jenis serangan berbeda. Klik kanan pada "
+"sebuah unit dan pilih <b>Deskripsi Unit</b> untuk melihat terhadap serangan "
+"mana ia tahan, dan terhadap serangan yang mana yang akan paling merusaknya."
+
+#. [tip]
+#: data/tips.cfg:72
+msgid ""
+"The terrain occupied by your units is the main factor determining the chance "
+"that they will be hit. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top right corner of "
+"the screen."
+msgstr ""
+"Daerah yang unit-unit anda sedang tempati adalah faktor utama yang "
+"menentukan kesempatan bahwa mereka akan di pukul di peperangan. Angka "
+"bertahan unit yang sedang dipilih di daerah yang sedang dipilih ditunjukkan "
+"di sudut paling kanan atas layar."
+
+#. [tip]
+#: data/tips.cfg:76
+msgid ""
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from dying. They will then remain at death’s door until the poison is "
+"removed. Healers can prevent a poisoned unit from deteriorating, but the "
+"poison will not be removed unless the unit regenerates, or begins a turn in "
+"a village or next to a unit with the <i>Cures</i> ability."
+msgstr ""
+"Unit-unit keracunan akan kehilangan delapan darah setiap giliran sampai "
+"mereka tinggal satu darah dari kematian. Ia akan dekat dengan kematian "
+"sampai racun tersebut dihilangkan. Para pengobat bisa mencegah unit "
+"keracunan memburuk, tetapi racun tersebut tidak akan hilang kecuali unit "
+"tersebut memulihkan diri, atau memulai sebuah giliran di desa atau di "
+"sebelah unit dengan kemampuan <i>Menyembuhkan</i> ."
+
+#. [tip]
+#: data/tips.cfg:80
+msgid ""
+"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
+"the <b>Actions</b> menu. By recalling the same units over and over, you can "
+"build up a powerful and experienced army."
+msgstr ""
+"Anda bisa menggunakan kembali unit-unit dari skenario sebelumnya dengan "
+"memilih <b>Panggil Kembali</b> di menu <b>Aksi</b>. Dengan memanggil kembali "
+"unit yang sama berulang kali, anda bisa mendirikan tentara kuat dan "
+"berpengalaman."
+
+#. [tip]
+#: data/tips.cfg:84
+msgid ""
+"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
+"around them. If a unit moves into an enemy’s zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. Beware, though: "
+"skirmishers can pass through these gaps."
+msgstr ""
+"Unit-unit berlevel satu dan lebih tinggi memiliki <i>Zona Kontrol</i> di "
+"enam heks di sekitarnya. Jika sebuah unit bergerak ke dalam zona kontrol "
+"musuh, ia tidak bisa bergerak lebih jauh pada giliran itu. Ini berarti unit-"
+"unit bisa memiliki dua heks kosong di antara mereka dan masih membuat "
+"penghalang untuk musuh. Berhati-hatilah, karena: para skirmisher dapat "
+"melewati celah-celah ini."
+
+#. [tip]
+#: data/tips.cfg:88
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
+"are guaranteed at least a 60% chance of a hit when they attack on their own "
+"turn."
+msgstr ""
+"Kemungkinan untuk mengenai sebuah unit biasanya tergantung oleh seberapa "
+"bagus unit itu bisa melindungi dirinya sendiri di daerah di mana ia sedang "
+"berdiri. Namun, serangan sihir selalu memiliki 70% kemungkinan mengenai "
+"sasaran, dan unit-unit dengan kemampuan <i>Ahli menembak</i> dijamin "
+"setidaknya 60% kemungkinan mengenai ketika mereka menyerang pada giliran "
+"mereka sendiri."
+
+#. [tip]
+#: data/tips.cfg:89
+msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
+msgstr "<i>― Haldric II, 43TW, Buku Pedoman Analisa Taktis: Jilid II</i>"
+
+#. [tip]
+#: data/tips.cfg:92
+msgid ""
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
+msgstr ""
+"Unit-unit yang ditempatkan di desa akan diobati delapan darah pada permulaan "
+"giliran mereka, atau akan disembuhkan dari keracunan."
+
+#. [tip]
+#: data/tips.cfg:96
+msgid ""
+"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
+msgstr ""
+"Jangan gerakkan unit terluka jika anda tidak perlu — biarkan ia "
+"beristirahat. Jika sebuah unit tidak bergerak atau menyerang, ia akan "
+"diobati dua darah pada permulaan giliran berikutnya."
+
+#. [tip]
+#: data/tips.cfg:100
+msgid ""
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ sightlines are limited by their maximum movement. If you have some "
+"valuable but slow units, keep at least one fast unit with them so that you "
+"are not caught out by a surprise attack."
+msgstr ""
+"Di peta di mana <i>Selubung</i> atau <i>Kabut Peperangan</i> dinyalakan, "
+"penglihatan seluruh unit terbatas oleh pergerakan maksimumnya. Jika anda "
+"memiliki unit-unit berharga tetapi lambat, berikan paling tidak satu unit "
+"cepat bersama mereka sehingga anda tidak terkena serangan mendadak."
+
+#. [tip]
+#: data/tips.cfg:104
+msgid ""
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
+msgstr ""
+"Pasukan infanteri cenderung berlindung lebih baik di desa dan istana "
+"daripada tipe daerah yang lain, sedangkan hampir semua pasukan berkuda tidak "
+"mendapat keuntungan perlindungan apapun dari desa atau istana."
+
+#. [tip]
+#: data/tips.cfg:105 data/tips.cfg:185
+msgid "<i>― Sir Kaylan, 498YW</i>"
+msgstr "<i>― Sir Kaylan, 498TW</i>"
+
+#. [tip]
+#: data/tips.cfg:108
+msgid ""
+"Horse-based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"Pasukan berkuda biasanya kebal dari serangan senjata tajam atau senjata "
+"peremuk, tetapi lemah melawan serangan penusuk, termasuk panah dan tombak."
+
+#. [tip]
+#: data/tips.cfg:109
+msgid "<i>― Sir Kaylan, 502YW</i>"
+msgstr "<i>― Sir Kaylan, 502TW</i>"
+
+#. [tip]
+#: data/tips.cfg:112
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
+msgstr ""
+"Melakukan pukulan membunuh kepada unit musuh adalah cara terbaik untuk "
+"memperoleh pengalaman. Unit yang membunuh musuh akan memperoleh delapan "
+"angka pengalaman untuk setiap level unit yang mereka bunuh, atau empat angka "
+"pengalaman untuk sebuah mush berlevel nol."
+
+#. [tip]
+#: data/tips.cfg:116
+msgid ""
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
+msgstr ""
+"Unit elf bergerak dan bertempur dengan baik di hutan. Unit kurcaci bergerak "
+"dan bertempur dengan baik di bukit, gunung dan gua."
+
+#. [tip]
+#: data/tips.cfg:120
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"Kesabaran sering adalah jawabannya. Daripada menyerang di dalam kondisi "
+"buruk atau dengan pasukan sedikit, tunggulah untuk kondisi yang lebih baik, "
+"baru serang."
+
+#. [tip]
+#: data/tips.cfg:124
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"Jika anda diserang dari beberapa arah, barangkali mengirim unit yang tidak "
+"penting ke beberapa arah untuk memperlambat unit musuh adalah ide bagus."
+
+#. [tip]
+#: data/tips.cfg:128
+msgid ""
+"Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr ""
+"Jangan takut mengundurkan diri dan berkumpul kembali; ini biasanya adalah "
+"kunci kemenangan."
+
+#. [tip]
+#: data/tips.cfg:129
+msgid "<i>― Meneldur, 123YW</i>"
+msgstr "<i>― Meneldur, 123TW</i>"
+
+#. [tip]
+#: data/tips.cfg:132
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map and the number of turns "
+"remaining. You will usually earn more gold this way than through capturing "
+"villages and waiting for the turns to run out."
+msgstr ""
+"Di dalam hampir semua kampanye, anda akan menerima bonus emas karena "
+"menyelesaikan lebih awal, tergantung pada jumlah desa di peta dan jumlah "
+"giliran yang tersisa. Anda akan selalu memperoleh lebih banyak emas dengan "
+"cara ini daripada merebut semua desa dan menunggu giliran habis."
+
+#. [tip]
+#: data/tips.cfg:136
+msgid ""
+"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
+"not just the keep they start on. Sometimes your allies may be willing to "
+"make room for you on their keep so you can recruit from there, and you can "
+"even capture an enemy’s keep and use that."
+msgstr ""
+"<i>Para pemimpin</i> bisa merekrut atau memanggil kembali unit-unit dari "
+"benteng manapun di dalam sebuah istana, bukan hanya benteng di mana mereka "
+"memulai. Kadang kala sekutu-sekutu anda barangkali bersedia memberikan "
+"ruangan untuk anda di benteng mereka sehingga anda dapat merekrut di benteng "
+"mereka, dan anda bahkan bisa merebut sebuah benteng musuh dan "
+"menggunakannya. "
+
+#. [tip]
+#: data/tips.cfg:140
+msgid ""
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
+"vulnerable to impact, fire, and arcane attacks."
+msgstr ""
+"Kerangka kebal dari serangan penusuk, senjata tajam dan serangan dingin "
+"tetapi lemah melawan serangan peremuk, api dan misterius."
+
+#. [tip]
+#: data/tips.cfg:144
+msgid ""
+"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
+"the same side fight better. You can move these units slowly along your "
+"battle lines and give bonuses to large numbers of lower-level troops."
+msgstr ""
+"Unit-unit dengan kemampuan <i>Kepemimpinan</i> membantu unit-unit berlevel "
+"rendah yang berdekatan di pihak yang sama bertarung lebih baik. Anda dapat "
+"menggerakkan unit-unit ini dengan lambat sepanjang barisan-barisan "
+"pertempuran dan memberikan bonus-bonus ke sebanyak mungkin pasukan berlevel "
+"lebih rendah."
+
+#. [tip]
+#: data/tips.cfg:148
+msgid ""
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
+msgstr ""
+"Cobalah menghindari bergerak ke sebelah desa tak didiami. Sebuah unit musuh "
+"bisa masuk ke dalam desa tersebut dan menyerang anda, dan juga menikmati "
+"perlindungan dan perawatan desa itu."
+
+#. [tip]
+#: data/tips.cfg:152
+msgid "Use lines of troops to screen your injured units while they recover."
+msgstr ""
+"Gunakan barisan-barisan pasukan untuk melindungi unit-unit terluka anda "
+"sementara mereka memulihkan diri."
+
+#. [tip]
+#: data/tips.cfg:153
+msgid "<i>― Princess Li’sar, 515YW</i>"
+msgstr "<i>― Putri Li'sar, 515TW</i>"
+
+#. [tip]
+#: data/tips.cfg:156
+msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
+msgstr "Bacalah daftar <b>Kunci panas</b> di menu <b>Pilihan</b> ."
+
+#. [tip]
+#: data/tips.cfg:160
+msgid ""
+"If you move a unit, but don’t attack or discover any additional information, "
+"you can undo your move by pressing <b>u</b>."
+msgstr ""
+"Jika anda memindahkan sebuah unit, tetapi tidak menyerang atau menemukan "
+"informasi tambahan apapun, anda bisa membatalkan gerakan anda dengan menekan "
+"<b>u</b>."
+
+#. [tip]
+#: data/tips.cfg:164
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"Anda bisa melihat sejauh mana unit musuh bisa bergerak dengan memindahkan "
+"tetikus anda ke atasnya."
+
+#. [tip]
+#: data/tips.cfg:168
+msgid ""
+"Use healers to support your attacks — they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+"Gunakan pengobat untuk mendukung serangan anda — mereka akan memenangkan "
+"peperangan untuk anda tanpa perlu menyerang siapapun."
+
+#. [tip]
+#: data/tips.cfg:169 data/tips.cfg:217
+msgid "<i>― The Scroll of Chantal, 516YW</i>"
+msgstr "<i>―Gulungan Surat Perkamen Chantal, 516TW</i>"
+
+#. [tip]
+#: data/tips.cfg:172
+msgid ""
+"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
+"they do on all attacks until they end a turn."
+msgstr ""
+"Serangan <i>Memperlambat</i> membuat unit-unit musuh bergerak lebih lambat "
+"dan membagi dua kerusakan yang mereka lakukan pada semua serangan sampai "
+"mereka mengakhiri giliran."
+
+#. [tip]
+#: data/tips.cfg:176
+msgid "<i>Arcane</i> attacks are very powerful against undead."
+msgstr "Serangan <i>Misterius</i> sangat ampuh melawan mayat hidup."
+
+#. [tip]
+#: data/tips.cfg:177
+msgid "<i>― Great Sage Dacyn, 626YW</i>"
+msgstr "<i>― Guru Bijaksana Hebat Dacyn, 626TW</i>"
+
+#. [tip]
+#: data/tips.cfg:180
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+"Unit disembuhkan ketika mereka naik level. Dipakai secara bijaksana, ini "
+"bisa memputarbalikkan pertarungan."
+
+#. [tip]
+#: data/tips.cfg:184
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr ""
+"Unit menyerbu paling bagus digunakan melawan musuh yang mereka bisa bunuh "
+"dengan satu pukulan."
+
+#. [tip]
+#: data/tips.cfg:188
+msgid ""
+"Instead of leveling up, high-level units gain an <i>After Maximum Level "
+"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+"hitpoints by three and fully heals it. This is much less than the normal "
+"benefits of advancing a level, so it is generally wiser to advance your "
+"lower-level units instead."
+msgstr ""
+"Daripada menaikkan level, unit-unit berlevel tinggi mendapatkan bonus "
+"<i>Kenaikan Level Setelah Level Maksimum</i> (KLSLM), yang biasanya menambah "
+"darah maksimum unit itu dengan tiga dan memberikan kesembuhan penuh "
+"kepadanya. Ini jauh lebih sedikit dari manfaat biasa yang didapatkan dari "
+"kenaikan level, jadi biasanya lebih bijaksana mencoba menaikkan level unit-"
+"unit anda yang berlevel lebih rendah sebagai gantinya."
+
+#. [tip]
+#: data/tips.cfg:192
+msgid ""
+"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
+"mouse pointer over any button or icon to get a description or explanation of "
+"what it does."
+msgstr ""
+"Hampir setiap tombol dan ikon di permainan Wesnoth memiliki sebuah nasehat. "
+"Taruhlah pointer mouse anda di atas salah satu tombol atau ikon untuk "
+"mendapatkan sebuah keterangan atau deskripsi tentang apa itu."
+
+#. [tip]
+#: data/tips.cfg:196
+msgid ""
+"To advance low-level units quickly, team them with a veteran and use the "
+"veteran to damage a joint target heavily enough for the junior partner to "
+"get in the killing blow."
+msgstr ""
+"Untuk menaikkan level unit berlevel rendah secara cepat, sekutukan mereka "
+"dengan seorang kawakan dan gunakan kawakan tersebut untuk melukai sasaran "
+"bersama, cukup untuk teman junior ini untuk membawa pukulan membunuh."
+
+#. [tip]
+#: data/tips.cfg:197
+msgid "<i>― Queen Li’sar, 528YW</i>"
+msgstr "<i>― Ratu Li'sar, 528TW</i>"
+
+#. [tip]
+#: data/tips.cfg:200
+msgid ""
+"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
+"the <b>Delay Shroud Updates</b> option when you need to move units while "
+"retaining the ability to undo, or use the new Whiteboard planning tool."
+msgstr ""
+"Anda tidak bisa membatalkan sebuah gerakan yang membuka heks-heks "
+"tersembunyi oleh kabut atau selubung. Nyalakan pilihan <b>Lambatkan Masukan "
+"Selubung</b> ketika anda perlu memindahkan unit-unit saat tertahan kemampuan "
+"untuk membatalkan, atau gunakan alat perencanaan whiteboard baru."
+
+#. [tip]
+#: data/tips.cfg:204
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+"Jika musuh beruntung lebih banyak dari sebuah tipe daerah langka daripada "
+"anda sendiri, menempati daerah tersebut akan menghalangi mereka dari "
+"manfaatnya."
+
+#. [tip]
+#: data/tips.cfg:208
+msgid ""
+"Few units have good defenses in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+"Sedikit unit yang memiliki perlindungan bagus di perairan; sebuah barisan "
+"penyerang sepanjang ujung sungai bisa menyebabkan banyak korban. Elf bisa "
+"menggunakan ujung hutan dengan cara yang sama, dan orang kurcaci bisa "
+"melakukan hal yang sama dengan pegunungan."
+
+#. [tip]
+#: data/tips.cfg:212
+msgid ""
+"In many campaign scenarios, you may issue simple instructions for your "
+"computer-controlled allies using the right-click context menu."
+msgstr ""
+"Di dalam banyak skenario kampanye, anda bisa memberikan perintah sederhana "
+"untuk sekutu-sekutu yang dikontrol oleh computer menggunakan menu konteks "
+"klik kanan."
+
+#. [tip]
+#: data/tips.cfg:216
+msgid ""
+"The <i>Slow</i> ability is extremely powerful because it has such wide-"
+"ranging effects. Enemy undead get half the normal benefit from their "
+"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
+"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
+"to escape; slow enemies are almost immobilized, and your own units suffer "
+"less retaliation damage, so it’s quicker to heal them."
+msgstr ""
+"Kemampuan <i>Melambatkan</i> sangat kuat karena memiliki efek bermacam-"
+"macam. Musuh mayat hidup mendapatkan setengah keuntungan normal dari "
+"kemampuan <i>Menghisap</i> mereka,  bonus kerusakan dari <i>Serangan</i> "
+"atau <i>Tikaman</i> dihapuskan, dan kemampuan <i>Mengamuk</i> dilemahkan. "
+"Musuh-musuh cepat dengan susah payah melarikan diri; musuh-musuh yang lambat "
+"hampir dihentikan, dan unit-unit anda sendiri menderita sedikit kerusakan "
+"balasan, sehingga lebih cepat untuk menyembuhkan mereka."
+
+#. [tip]
+#: data/tips.cfg:220
+msgid ""
+"Try to operate units with a small number of powerful attacks—such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"This gives you another try whenever your first devastating attack misses — "
+"as inevitably happens from time to time."
+msgstr ""
+"Cobalah untuk menjalankan unit-unit dengan sejumlah kecil serangan kuat—"
+"seperti Ahli Nujum, Penunggang Kuda, Orc Muda atau Para Dwarvish Thunderer—"
+"berpasangan atau bertiga. Ini membuat anda dapat mencoba lagi setiap kali "
+"serangan pertama menghancurkan anda luput — sebagai peristiwa tak terelakkan "
+"dari waktu ke waktu."
+
+#. [tip]
+#: data/tips.cfg:224
+msgid ""
+"Units with three or more attacks—especially magical attacks—are ideal for "
+"finishing off enemies with only a few hitpoints remaining. Be sure to use "
+"leadership—or a strong or dextrous unit—whenever the extra point or two of "
+"damage makes a one-hit kill possible."
+msgstr ""
+"Unit-unit dengan tiga atau lebih serangan—terutama serangan sihir—baik untuk "
+"menghabisi musuh-musuh dengan hanya tersisa sedikit hitpoints. Pastikan "
+"untuk menggunakan unit kepemimpinan—atau unit kuat atau cekatan—setiap kali "
+"poin tambahan atau dua kerusakan membuat satu pukulan membunuh memungkinkan."
+
+#. [tip]
+#: data/tips.cfg:228
+msgid ""
+"Think twice before dismissing any unit from your recall list, no matter how "
+"little experience it has. Sometimes it’s worth paying a premium to know "
+"exactly what traits a new arrival will have."
+msgstr ""
+"Berpikirlah dua kali sebelum memecat setiap unit dari daftar ingat anda, "
+"tidak peduli seberapa sedikit pengalaman yang dimilikinya. Kadang-kadang hal "
+"itu layak membayar bayaran untuk mengetahui persisnya sifat-sifat apa yang "
+"akan dimiliki pendatang baru."
+
+#. [tip]
+#: data/tips.cfg:232
+msgid ""
+"When a tough unit is heavily injured, send it to heal in a village several "
+"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
+"hitpoints per turn) without tying up front-line villages."
+msgstr ""
+"Ketika sebuah unit kuat terluka berat, kirim unit itu untuk menyembuhkan "
+"diri di sebuah desa beberapa giliran gerakan jauh dari pertempuran. Kemudian "
+"ia dapat memulihkan diri dengan tenang (pada 10 hitpoint per giliran) tanpa "
+"tertahan di desa-desa garis depan."
+
+#. [tip]
+#: data/tips.cfg:233 data/tips.cfg:245
+msgid "<i>― Lord Hamel of Knalga</i>"
+msgstr "<i>― Tuan Hamel dari Knalga</i>"
+
+#. [tip]
+#: data/tips.cfg:236
+msgid ""
+"Combining multiple special abilities can be deadly. While it may take some "
+"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
+"<i>Charge</i> against a slowed opponent, the results can be impressive."
+msgstr ""
+"Menggabungkan beberapa kemampuan khusus dapat menjadi mematikan. Walaupun "
+"itu mungkin membutuhkan kerja keras untuk menggabungkan, misalnya, "
+"<i>Kepemimpinan</i>, <i>Menerangi</i> dan <i>Menyerang</i> terhadap lawan "
+"melambat, hasilnya bisa menjadi mengesankan."
+
+#. [tip]
+#: data/tips.cfg:240
+msgid ""
+"While finishing early gives a gold bonus, and reduces the opportunities for "
+"enemies to kill your valuable troops, it also means you lose chances to earn "
+"your units extra experience. When deciding whether or not to finish a "
+"scenario early, weigh these factors against one another."
+msgstr ""
+"Ketika menyelesaikan lebih awal memberikan bonus emas, dan mengurangi "
+"kesempatan bagi musuh-musuh untuk membunuh tentara berharga anda, itu juga "
+"berarti anda kehilangan kesempatan untuk mendapatkan pengalaman tambahan "
+"unit-unit anda. Ketika memutuskan apakah menyelesaikan skenario lebih awal "
+"atau tidak, pertimbangkan faktor-faktor ini terhadap satu sama lainnnya."
+
+#. [tip]
+#: data/tips.cfg:244
+msgid ""
+"If your forces have weak defenses everywhere on the map, occupy the areas "
+"where your enemies can only attack you by sharing the same disadvantages. "
+"Avoid places where your defenses are poor and your enemy’s are merely "
+"average. Plan for heavy losses, and take firm control of any hex where the "
+"land does favor you."
+msgstr ""
+"Jika pasukan anda memiliki pertahanan yang lemah di mana-mana di peta, "
+"tempati daerah-daerah di mana musuh-musuh anda hanya dapat menyerang anda "
+"dengan berbagi keadaan merugikan yang sama. Hindari tempat-tempat dimana "
+"pertahanan-pertahanan anda buruk dan musuh anda sedang. Rencanakan kerugian "
+"besar, dan mengambil kendali yang kuat dari setiap heks di mana tanah benar-"
+"benar menguntungkan anda."
+
+#. [tip]
+#: data/tips.cfg:249
+msgid ""
+"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
+"if they occupy a village hex, they do not gain any defensive benefits from "
+"the village, although they will still be healed."
+msgstr ""
+"Unit-unit <i>Feral</i> , seperti Kelelawar dan binatang-binatang liar, akan "
+"menghindari desa-desa. Bahkan jika mereka menempati heks desa, mereka tidak "
+"mendapatkan keuntungan bertahan dari desa, meskipun mereka masih akan "
+"disembuhkan."
 
 #: src/about.cpp:227 src/dialogs.cpp:448 src/menu_events.cpp:166
 #: src/statistics_dialog.cpp:182
@@ -4910,7 +4899,7 @@ msgstr "kelemahan melawan"
 msgid "Slowed"
 msgstr "diperlambat"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:915
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:913
 msgid "Total damage"
 msgstr "Luka total"
 
@@ -5152,11 +5141,11 @@ msgstr "Tidak bisa menemukan tipe pemimpin untuk faction $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/format_time_summary.cpp:46 src/reports.cpp:1520
+#: src/format_time_summary.cpp:46 src/reports.cpp:1518
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:49 src/reports.cpp:1520
+#: src/format_time_summary.cpp:49 src/reports.cpp:1518
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5182,66 +5171,66 @@ msgstr "%d %b %y"
 msgid "Invalid color range: "
 msgstr "Jarak warna yang tidak berlaku:"
 
-#: src/game_config_manager.cpp:179
-msgid "Error loading game configuration files: '"
+#: src/game_config_manager.cpp:180
+#, fuzzy
+#| msgid "Error loading game configuration files: '"
+msgid "Error loading game configuration files. The game will now exit."
 msgstr "Error meload file konfigurasi permainan: '"
 
-#: src/game_config_manager.cpp:180
-msgid "' (The game will now exit)"
-msgstr "'(Permainan akan sekarang ditutup)"
-
-#: src/game_config_manager.cpp:274
+#: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] ""
 "1 Add-on berikut memiliki error dan tidak bisa diload: Semua add-on berikut "
 "memiliki error dan tidak bisa diload:"
 
-#: src/game_config_manager.cpp:281
-msgid "ERROR DETAILS:"
-msgstr "RINCI-RINCI ERROR:"
+#: src/game_config_manager.cpp:283
+msgid "Please report this to the author or maintainer of this add-on."
+msgid_plural ""
+"Please report this to the respective authors or maintainers of these add-ons."
+msgstr[0] ""
 
-#: src/game_controller.cpp:336 src/game_controller.cpp:924
+#: src/game_controller.cpp:332 src/game_controller.cpp:920
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "Peperangan untuk Wesnoth"
 
-#: src/game_controller.cpp:475 src/game_controller.cpp:493
+#: src/game_controller.cpp:471 src/game_controller.cpp:489
 msgid "The file you have tried to load is corrupt"
 msgstr "File yang anda coba load rusak"
 
-#: src/game_controller.cpp:478 src/game_controller.cpp:496
+#: src/game_controller.cpp:474 src/game_controller.cpp:492
 #: src/savegame.cpp:687
 msgid "The file you have tried to load is corrupt: '"
 msgstr "File yang anda coba load rusak: '"
 
-#: src/game_controller.cpp:486
+#: src/game_controller.cpp:482
 msgid "File I/O Error while reading the game"
 msgstr "Error file I/O ketika membaca permainan"
 
-#: src/game_controller.cpp:488
+#: src/game_controller.cpp:484
 msgid "File I/O Error while reading the game: '"
 msgstr "File I/O Error ketika membaca permainan: '"
 
-#: src/game_controller.cpp:589
+#: src/game_controller.cpp:585
 msgid "No campaigns are available.\n"
 msgstr "Tidak ada kampanye yang tersedia.\n"
 
-#: src/game_controller.cpp:861
+#: src/game_controller.cpp:857
 msgid "Error while starting server: "
 msgstr "Error ketika memulai server:"
 
-#: src/game_controller.cpp:863 src/playcampaign.cpp:218
+#: src/game_controller.cpp:859 src/playcampaign.cpp:218
 #: src/playcampaign.cpp:470
 msgid "The game could not be loaded: "
 msgstr "Permainan tidak bisa diload:"
 
-#: src/game_controller.cpp:865 src/playcampaign.cpp:220
+#: src/game_controller.cpp:861 src/playcampaign.cpp:220
 #: src/playcampaign.cpp:473
 msgid "Error while playing the game: "
 msgstr "Error ketika memainkan permainan:"
 
-#: src/game_controller.cpp:883 src/playcampaign.cpp:222
+#: src/game_controller.cpp:879 src/playcampaign.cpp:222
 #: src/playcampaign.cpp:476
 msgid "The game map could not be loaded: "
 msgstr "Peta permainan tidak bisa diload:"
@@ -5289,76 +5278,76 @@ msgstr ""
 "Tidak ada lokasi benteng yang valid ditemukan. Heks gunung terlalu banyak "
 "atau terlalu sedikit? (silakan cek parameter 'ukuran bukit max')"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "Era tidak diketahui: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "Era tidak diketahui"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "Skenario jauh"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "Skenario tidak diketahui: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "Skenario tidak diketahui"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "Permainan reload"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Giliran"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "Tempat Kosong:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "tidak ada"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:107
 msgid "In game:"
 msgstr "Nama:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:109
 msgid "(observing)"
 msgstr "(mengamati)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "(playing)"
 msgstr "(bermain)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:114
 msgid "In lobby"
 msgstr "di lobi"
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:138
 msgid "On friends list"
 msgstr "Dimasukkan ke daftar teman:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:143
 msgid "On ignores list"
 msgstr "Dimasukkan ke daftar abaian:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:148
 msgid "Neither a friend nor ignored"
 msgstr "tidak menjadi teman juga tidak diabaikan"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:153
 msgid "You"
 msgstr "Anda"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147
+#: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "Error"
 
@@ -6786,7 +6775,7 @@ msgstr "Membuat Permainan"
 msgid "Filter:"
 msgstr "Filter:"
 
-#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
 msgstr ""
 
@@ -6828,9 +6817,39 @@ msgstr "Setting..."
 msgid "Load Game..."
 msgstr "Meload Permainan..."
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
 msgstr ""
+
+#: src/multiplayer_create.cpp:103
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenarios"
+msgstr "Akhir Skenario"
+
+#: src/multiplayer_create.cpp:104
+#, fuzzy
+#| msgid "Campaign Design"
+msgid "Campaigns"
+msgstr "Model Kampanye"
+
+#: src/multiplayer_create.cpp:105
+#, fuzzy
+#| msgid "Close"
+msgid "User Maps"
+msgstr "Tutup"
+
+#: src/multiplayer_create.cpp:106
+#, fuzzy
+#| msgid "End Scenario"
+msgid "User Scenarios"
+msgstr "Akhir Skenario"
+
+#: src/multiplayer_create.cpp:107
+#, fuzzy
+#| msgid "Random"
+msgid "Random Maps"
+msgstr "Acak"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
 #, fuzzy
@@ -6854,33 +6873,33 @@ msgid ""
 "None found."
 msgstr "Matikan pemberitahuan"
 
-#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:279
+#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
 #, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Deactivate"
 msgstr "Mode debug dinyalakan!"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:245
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The level is invalid."
 msgstr "peta permainan salah."
 
-#: src/multiplayer_create.cpp:333
+#: src/multiplayer_create.cpp:330
 msgid "Players: "
 msgstr "Pemain:"
 
-#: src/multiplayer_create.cpp:351
+#: src/multiplayer_create.cpp:348
 msgid "Size: "
 msgstr "Dimensi:"
 
-#: src/multiplayer_create.cpp:386
+#: src/multiplayer_create.cpp:383
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "Nama permainan:"
 
-#: src/multiplayer_create.cpp:493 src/unit_types.cpp:785
+#: src/multiplayer_create.cpp:490 src/unit_types.cpp:785
 msgid "No description available."
 msgstr "Tidak ada deskripsi."
 
@@ -7417,153 +7436,153 @@ msgstr "Golongan:"
 msgid "Ability: "
 msgstr "Kemampuan:"
 
-#: src/reports.cpp:393 src/reports.cpp:817
+#: src/reports.cpp:393 src/reports.cpp:815
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:446
+#: src/reports.cpp:445
 msgid "Resistances: "
 msgstr "Daya Tahan:"
 
-#: src/reports.cpp:448
+#: src/reports.cpp:447
 msgid "(Att / Def)"
 msgstr "(Ser / Per)"
 
-#: src/reports.cpp:474
+#: src/reports.cpp:473
 msgid "Experience Modifier: "
 msgstr "Pemodifikasi Pengalaman:"
 
-#: src/reports.cpp:525
+#: src/reports.cpp:524
 msgid "Terrain: "
 msgstr "Daerah:"
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "maximum^max."
 msgstr "maks."
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:547
+#: src/reports.cpp:546
 msgid "Defense: "
 msgstr "Pertahanan:"
 
-#: src/reports.cpp:568
+#: src/reports.cpp:567
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Versi:"
 
-#: src/reports.cpp:596
+#: src/reports.cpp:595
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Harga Pergerakan"
 
-#: src/reports.cpp:687 src/reports.cpp:902 src/reports.cpp:914
+#: src/reports.cpp:685 src/reports.cpp:900 src/reports.cpp:912
 msgid "Weapon: "
 msgstr "Senjata:"
 
-#: src/reports.cpp:688 src/reports.cpp:903
+#: src/reports.cpp:686 src/reports.cpp:901
 msgid "Damage: "
 msgstr "Kerusakan:"
 
-#: src/reports.cpp:692
+#: src/reports.cpp:690
 msgid "Base damage: "
 msgstr "Kerusakan pokok:"
 
-#: src/reports.cpp:694 src/reports.cpp:728 src/reports.cpp:738
+#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "Kemampuan khusus senjata:"
 
-#: src/reports.cpp:697
+#: src/reports.cpp:695
 msgid "Time of day: "
 msgstr "Waktu hari:"
 
-#: src/reports.cpp:701
+#: src/reports.cpp:699
 msgid "Leadership: "
 msgstr "Kepemimpinan:"
 
-#: src/reports.cpp:705
+#: src/reports.cpp:703
 msgid "Slowed: "
 msgstr "Diperlambat:"
 
-#: src/reports.cpp:709
+#: src/reports.cpp:707
 msgid "Attacks: "
 msgstr "Serangan:"
 
-#: src/reports.cpp:713
+#: src/reports.cpp:711
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Bonus darah maks +"
 
-#: src/reports.cpp:714 src/reports.cpp:733
+#: src/reports.cpp:712 src/reports.cpp:731
 msgid "Swarm: "
 msgstr "Kawan:"
 
-#: src/reports.cpp:715 src/reports.cpp:726 src/reports.cpp:737
+#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
 msgid "Base attacks: "
 msgstr "Serangan pokok:"
 
-#: src/reports.cpp:721
+#: src/reports.cpp:719
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Spesial"
 
-#: src/reports.cpp:731
+#: src/reports.cpp:729
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:750
+#: src/reports.cpp:748
 msgid "Weapon range: "
 msgstr "Jarak senjata:"
 
-#: src/reports.cpp:751
+#: src/reports.cpp:749
 msgid "Damage type: "
 msgstr "Jenis kerusakan:"
 
-#: src/reports.cpp:752
+#: src/reports.cpp:750
 msgid "Damage versus: "
 msgstr "Kerusakan melawan:"
 
-#: src/reports.cpp:791
+#: src/reports.cpp:789
 msgid "Accuracy:"
 msgstr "Akurasi:"
 
-#: src/reports.cpp:796
+#: src/reports.cpp:794
 msgid "Parry:"
 msgstr "Menangkis:"
 
-#: src/reports.cpp:815
+#: src/reports.cpp:813
 msgid "Weapon special: "
 msgstr "Kemampuan khusus senjata:"
 
-#: src/reports.cpp:886
+#: src/reports.cpp:884
 msgid "None"
 msgstr "Tidak ada"
 
-#: src/reports.cpp:1114 src/reports.cpp:1164
+#: src/reports.cpp:1112 src/reports.cpp:1162
 msgid "Lawful units: "
 msgstr "Unit baik:"
 
-#: src/reports.cpp:1116 src/reports.cpp:1166
+#: src/reports.cpp:1114 src/reports.cpp:1164
 msgid "Neutral units: "
 msgstr "Unit netral:"
 
-#: src/reports.cpp:1117 src/reports.cpp:1167
+#: src/reports.cpp:1115 src/reports.cpp:1165
 msgid "Chaotic units: "
 msgstr "Unit brutal:"
 
-#: src/reports.cpp:1119 src/reports.cpp:1169
+#: src/reports.cpp:1117 src/reports.cpp:1167
 msgid "Liminal units: "
 msgstr "Unit-unit liminal:"
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1482
 msgid "Observers:"
 msgstr "Peninjau:"
 
@@ -7663,136 +7682,152 @@ msgstr ""
 msgid "Save Game"
 msgstr "Simpan Permainan"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "Karakter tidak terharap di permulaan kalimat"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:147
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
-msgid "Missing closing tag for tag [$tag] at $pos"
+msgid "Missing closing tag for tag [$tag]"
 msgstr "Tag penutup hilang untuk tag $tag di $pos"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:148
+msgid "expected at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:148 src/serialization/parser.cpp:212
+msgid "opened at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:161
 msgid "Unterminated [element] tag"
 msgstr "Tag [elemen] tidak selesai"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:173 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "Nama tag tidak berlaku"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated [+element] tag"
 msgstr "Tag [+elemen] tidak selesai"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:198
 msgid "Invalid closing tag name"
 msgstr "Nama tag penutup tidak berlaku"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:201
 msgid "Unterminated closing tag"
 msgstr "Tag penutup tidak selesai"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:203
 msgid "Unexpected closing tag"
 msgstr "Tag penutup tidak terharap"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:211
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
+msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
 "Tag penutup tidak berlaku ditemukan $tag2 untuk tag $tag1 (dibuka di $pos)"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:212
+#, fuzzy
+#| msgid "Close"
+msgid "closed at $pos"
+msgstr "Tutup"
+
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "Nama variable kosong"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Karakter tidak terharap setelah nama variable (terharap, atau =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:286 src/serialization/parser.cpp:314
 msgid "Unterminated quoted string"
 msgstr "Untaian dikutip tidak selesai"
 
-#: src/serialization/parser.cpp:362
-msgid "$error, value '$value', previous '$previous_value' at $pos"
+#: src/serialization/parser.cpp:372
+msgid "at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:386
+#, fuzzy
+#| msgid "$error, value '$value', previous '$previous_value' at $pos"
+msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "$error, nilai '$value', sebelumnya '$previous_value' di $pos"
 
-#: src/serialization/parser.cpp:366
-msgid "$error, value '$value' at $pos"
-msgstr " $error, value '$value' di $pos"
-
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:568
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:569
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:588
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:590
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:591
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:592
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:593
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:590
+#: src/serialization/string_utils.cpp:594
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:595
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:596
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:606
+#: src/serialization/string_utils.cpp:610
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8066,11 +8101,11 @@ msgstr "Desa musuh"
 msgid "Owned village"
 msgstr "Desa anda"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "ukuran_batas harus di antara 0.0 dan 0.5"
 
-#: src/theme.cpp:574 src/theme.cpp:579
+#: src/theme.cpp:599 src/theme.cpp:604
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8175,6 +8210,15 @@ msgstr "Sembunyikan rencana untuk $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Pilihan Papan Tulis Putih"
+
+#~ msgid "' (The game will now exit)"
+#~ msgstr "'(Permainan akan sekarang ditutup)"
+
+#~ msgid "ERROR DETAILS:"
+#~ msgstr "RINCI-RINCI ERROR:"
+
+#~ msgid "$error, value '$value' at $pos"
+#~ msgstr " $error, value '$value' di $pos"
 
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(sisi $temp_i|)"
@@ -8341,11 +8385,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~ msgstr "Pilihan Papan Tulis Putih"
 
 #, fuzzy
-#~| msgid "Close"
-#~ msgid "Close Map"
-#~ msgstr "Tutup"
-
-#, fuzzy
 #~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Jam"
@@ -8359,11 +8398,6 @@ msgstr "Pilihan Papan Tulis Putih"
 #~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Jam"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "New Scenario"
-#~ msgstr "Akhir Skenario"
 
 #, fuzzy
 #~| msgid "Load Game"

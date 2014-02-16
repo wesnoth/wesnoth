@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -2895,15 +2895,15 @@ msgstr "Montanyes infranquejables"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:306
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "Boira"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
+#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "Ocultació"
@@ -3150,802 +3150,6 @@ msgstr ""
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:4
-msgid ""
-"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
-"event or ai coding."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:9
-#: data/hardwired/tips.cfg:13
-#, fuzzy
-msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "- La Guia Tàctica de Wesnoth"
-
-#. [tip]
-#: data/hardwired/tips.cfg:8
-msgid ""
-"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
-"advanced features."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:12
-msgid ""
-"Scenarios saved from the editor in their default folder can be selected in "
-"the mp create screen's <i>User Scenarios</i> section."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:16
-#, fuzzy
-msgid ""
-"Don’t neglect to earn your leader experience! You need to keep him safe, but "
-"if you coddle him too much he may be too weak to survive future battles."
-msgstr ""
-"¡No oblides acumular experiència en el teu líder! Necesites mantindre-ho "
-"segur, pero si li protegixes massa pot quedar-se en un nivell massa baix per "
-"a sobreviure futures batalles."
-
-#. [tip]
-#: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:149
-#, fuzzy
-msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "- Gran Mac Delfador, 516AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:20
-#, fuzzy
-msgid ""
-"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
-"highlight all the hexes your adversary can move to (assuming your units stay "
-"where they are). Use this to make sure the enemy can’t reach your weak or "
-"injured units on his next turn."
-msgstr ""
-"En el menú \"Accions\", pots seleccionar \"Mostrar Moviments Enemics\" per a "
-"destacar totes les caselles possibles a les que el teu adversari podria "
-"moure's (suponent que les teues unitats es queden on esten). Utilisa açò per "
-"a assegurar-te de que l'enemic no pot alcançar a les teues unitats débiles o "
-"ferides en la seua següent tanda."
-
-#. [tip]
-#: data/hardwired/tips.cfg:21 data/hardwired/tips.cfg:33
-#: data/hardwired/tips.cfg:37 data/hardwired/tips.cfg:45
-#: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:65
-#: data/hardwired/tips.cfg:69 data/hardwired/tips.cfg:73
-#: data/hardwired/tips.cfg:77 data/hardwired/tips.cfg:81
-#: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:97
-#: data/hardwired/tips.cfg:101 data/hardwired/tips.cfg:113
-#: data/hardwired/tips.cfg:121 data/hardwired/tips.cfg:125
-#: data/hardwired/tips.cfg:133 data/hardwired/tips.cfg:157
-#: data/hardwired/tips.cfg:161 data/hardwired/tips.cfg:165
-#: data/hardwired/tips.cfg:173 data/hardwired/tips.cfg:181
-#: data/hardwired/tips.cfg:189 data/hardwired/tips.cfg:193
-#: data/hardwired/tips.cfg:201 data/hardwired/tips.cfg:205
-#: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:213
-#: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:241
-#: data/hardwired/tips.cfg:250
-#, fuzzy
-msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "- La Guia Tàctica de Wesnoth"
-
-#. [tip]
-#: data/hardwired/tips.cfg:24
-#, fuzzy
-msgid ""
-"Units with the <i>Intelligent</i> trait need fewer experience points to "
-"level up. Early in a campaign, try to give killing blows to these units so "
-"you can get some high-level troops sooner."
-msgstr ""
-"Les unitats ab la traça 'sabut' necesiten menys punts d'experiència per a "
-"pujar de nivell. En els inicis d'una campanya, tracta de facilitar-los el "
-"colp final ad estes unitats de manera que podas obtindre algunes tropes "
-"d'alt nivell més pronte."
-
-#. [tip]
-#: data/hardwired/tips.cfg:25
-#, fuzzy
-msgid "<i>― King Konrad, 536YW</i>"
-msgstr "- Rei Konrad, 536AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:28
-#, fuzzy
-msgid ""
-"The encircling tactic is very powerful, particularly against fast opponents. "
-"By placing two units on opposite sides of an enemy, their zones of control "
-"will restrict it to one hex of movement in any direction. Unfortunately, you "
-"must completely surround skirmishers to immobilize them."
-msgstr ""
-"La tàctica del sege es molt potent, en particular contra oponedors ràpits. "
-"Al colocar dos unitats en costats oposts d'un enemic, les seues zones de "
-"control li restringiran a poder moure's una sola casella en qualsevol "
-"direcció."
-
-#. [tip]
-#: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:141
-#, fuzzy
-msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "- Memòries de Gweddry, 627AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:32
-#, fuzzy
-msgid ""
-"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
-"clicking on a castle tile. That will let you choose the precise hex you put "
-"a unit in. Placing units wisely can sometimes let you reach a village a turn "
-"earlier."
-msgstr ""
-"Pots accedir a les órdens 'Reclutar' i 'Reincorporar' fent clic dret en una "
-"baldosa del castell. Això et permetrà triar en qué casella situes una nova "
-"unitat. Situant les unidades sabiament pot a voltes permetre't alcançar una "
-"aldea una tanda més pronte."
-
-#. [tip]
-#: data/hardwired/tips.cfg:36
-#, fuzzy
-msgid ""
-"There are some helpful summary screens in the main menu: for instance, the "
-"<b>Status Table</b> will let you know how your enemies are doing, and how "
-"you are doing in comparison."
-msgstr ""
-"Hi ha algunes pantalles útiles de resum en el menú principal: per eixemple, "
-"la 'Taula d'Estat' et permetrà saber cóm ho esten fent els teus enemics, i "
-"la manera en que tu ho estes fent en comparació."
-
-#. [tip]
-#: data/hardwired/tips.cfg:40
-#, fuzzy
-msgid ""
-"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
-"can be very important when moving through difficult terrain such as water or "
-"caves. It can make the difference between being able to move one hex or two."
-msgstr ""
-"Les unitats ab la traça 'ràpit'  es mouen una casella extra per tanda. Açò "
-"pot ser molt important al desplaçar-se a través de terreny difícil, com "
-"l'aigua o les coves. Pot marcar la diferència entre ser capaç de moure una o "
-"dos caselles."
-
-#. [tip]
-#: data/hardwired/tips.cfg:41 data/hardwired/tips.cfg:117
-#: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:237
-#, fuzzy
-msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "- Gran Senyor Kalenz, 470AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:44
-#, fuzzy
-msgid ""
-"After you have played a few scenarios, read the <b>Gameplay</b> section in "
-"the <b>Help</b> screen carefully. Details become important as scenarios get "
-"harder!"
-msgstr ""
-"Després de haver jugat uns pocs escenaris, llegix cuidadosamente la secció "
-"'Joc' en la pantalla d'ajuda. ¡Els detalls es convertixen en importants quan "
-"els escenaris es tornen més difícils!"
-
-#. [tip]
-#: data/hardwired/tips.cfg:48
-msgid ""
-"It is usually better to start the next scenario in a campaign with lower-"
-"level units that are about to level up than with those same units at a "
-"higher level."
-msgstr ""
-"Normalment és millor començar el següent escenari d'una campanya ab unitats "
-"de menor nivell que esten a punt de pujar de nivell que ab les mateixes "
-"unitats, en un nivell superior."
-
-#. [tip]
-#: data/hardwired/tips.cfg:52
-msgid ""
-"On www.wesnoth.org you can find strategy guides, technical support, the "
-"history of Wesnoth, and much more."
-msgstr ""
-"En www.wesnoth.org podràs trobar guies d'estratègia, soport tècnic, "
-"l'història de Wesnoth, i molt més."
-
-#. [tip]
-#: data/hardwired/tips.cfg:53
-#, fuzzy
-msgid "<i>― The Wesnoth Community</i>"
-msgstr "- La comunitat de Wesnoth"
-
-#. [tip]
-#: data/hardwired/tips.cfg:56
-#, fuzzy
-msgid ""
-"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
-"rare <i>liminal</i> units fight best during twilight."
-msgstr ""
-"Les unitats llegals lluiten millor de dia, les caòtiques lluiten millor de "
-"nit. Les neutrals no es veuen afectades pel dia o la nit."
-
-#. [tip]
-#: data/hardwired/tips.cfg:57
-#, fuzzy
-msgid ""
-"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "- Compendi Real de Terminologia de Guerra, volum II, 212AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:60
-msgid ""
-"An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr ""
-"Lo que en atres condicions sería un bon plan pot fallar si ataques en un "
-"moment inadecuat del dia."
-
-#. [tip]
-#: data/hardwired/tips.cfg:61 data/hardwired/tips.cfg:85
-#: data/hardwired/tips.cfg:137 data/hardwired/tips.cfg:145
-#: data/hardwired/tips.cfg:229
-#, fuzzy
-msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- Manual d'Anàlisis Tàctic, volum I - Haldric II, 42AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:64
-#, fuzzy
-msgid ""
-"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
-"know what you’re facing. In this case, long-range scouting units are worth "
-"their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
-msgstr ""
-"Si estes jugant ab 'Ocultació' o 'Boira de Guerra' activada, no sabràs a lo "
-"que t'estes enfrontant. En este cas, les unitats exploradores de llarc "
-"alcanç valen el seu cost. Tracta de triar exploradors que podan moure's "
-"fàcilment a través del terreny, ya que les unitats ven tan llunt com poden "
-"moure's en una tanda."
-
-#. [tip]
-#: data/hardwired/tips.cfg:68
-#, fuzzy
-msgid ""
-"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
-"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
-"against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
-"affect it the most."
-msgstr ""
-"Hi ha sis tipos d'atac: tallant, perforant, impactant, foc, fret i arcà. Les "
-"unitats tenen debilitats contra certs tipos d'atacs. Fes click dret en una "
-"unitat i selecciona 'Descripció d'Unitat' per a vore les seus resistències "
-"específiques contra els distintis atacs, i qual li afectarà més."
-
-#. [tip]
-#: data/hardwired/tips.cfg:72
-#, fuzzy
-msgid ""
-"The terrain occupied by your units is the main factor determining the chance "
-"that they will be hit. The defensive rating for the currently selected unit "
-"in the currently selected terrain is displayed in the top right corner of "
-"the screen."
-msgstr ""
-"El terreny que ocupen les teues unitats determina la provabilitat que tenen "
-"els teus adversaris de colpejar-les. L'índex de defensa de l'unitat "
-"seleccionada en el terreny seleccionat actualment es mostra al cantó "
-"superior dret de la pantalla."
-
-#. [tip]
-#: data/hardwired/tips.cfg:76
-#, fuzzy
-msgid ""
-"Poisoned units will lose eight hitpoints every turn until they are one point "
-"from dying. They will then remain at death’s door until the poison is "
-"removed. Healers can prevent a poisoned unit from deteriorating, but the "
-"poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
-msgstr ""
-"Les unitats enverinades perdran huit punts de vida cada tanda fins quedar-se "
-"a un punt de la mort. Permaneixeran en les portes de la mort fins que "
-"s'elimine el verí. Els Sanadors poden previndre un deteriorament de l'unitat "
-"enverinada, pero no s'eliminarà el verí a menys que l'unitat es regenere, o "
-"passe una tanda en una aldea o al costat d'una unitat ab la habilitat de "
-"'Curar'."
-
-#. [tip]
-#: data/hardwired/tips.cfg:80
-#, fuzzy
-msgid ""
-"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
-"the <b>Actions</b> menu. By recalling the same units over and over, you can "
-"build up a powerful and experienced army."
-msgstr ""
-"Pots usar unitats d'escenaris anteriors seleccionant 'Reincorporar' en el "
-"menú 'Accions'. Si reincorpores les mateixes unitats una i atra volta, "
-"podràs construir un eixèrcit poderós i experimentat."
-
-#. [tip]
-#: data/hardwired/tips.cfg:84
-#, fuzzy
-msgid ""
-"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
-"around them. If a unit moves into an enemy’s zone of control, it may not "
-"move any further that turn. This means that units can have two empty hexes "
-"between them and still create a barrier to the enemy. Beware, though: "
-"skirmishers can pass through these gaps."
-msgstr ""
-"Les unitats de nivell u o més tenen una 'Zona de Control' en cadascuna de "
-"les caselles adjacents ad elles. Si una unitat entra en una zona de control "
-"enemiga, no es podrà moure més durant eixa tanda. Açò significa que eixes "
-"unitats poden tindre dos caselles buides entre ells i encara crear una "
-"barrera a l'enemic. No obstant, les unitats fustigadores són suficientment "
-"hábils per a ignorar estes zones."
-
-#. [tip]
-#: data/hardwired/tips.cfg:88
-#, fuzzy
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain in which it is standing. However, magical attacks "
-"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
-"are guaranteed at least a 60% chance of a hit when they attack on their own "
-"turn."
-msgstr ""
-"Les possibilitats de colpejar una unitat normalment depenen de la seua "
-"habilitat per a defendre's en el terreny a on es troba. No obstant, els "
-"atacs màgics tenen sempre un 70% de provabilitats d'encertar, i les unitats "
-"ab l'habilitat de 'Tirador' sempre tenen a lo manco un 60% de possibilitats "
-"de colpejar quan ataquen en la seua tanda."
-
-#. [tip]
-#: data/hardwired/tips.cfg:89
-#, fuzzy
-msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "- Manual d'Anàlisis Tàctic, volum I - Haldric II, 42AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:92
-msgid ""
-"Units stationed in villages will either heal eight hitpoints at the "
-"beginning of their turn, or will recover from poisoning."
-msgstr ""
-"Les unitats estejades en les aldees recuperaran o be 8 punts de vida al "
-"principi de la següent tanda, o be es recuperaran d'un enverinament."
-
-#. [tip]
-#: data/hardwired/tips.cfg:96
-msgid ""
-"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
-"does not move or attack, it will recover two hitpoints at the beginning of "
-"its next turn."
-msgstr ""
-"No mogues una unitat ferida si no necessites fer-ho. Deixa-la descansar. Si "
-"una unitat no es mou ni ataca, recuperarà dos punts de vida a l'inici de la "
-"seua següent tanda."
-
-#. [tip]
-#: data/hardwired/tips.cfg:100
-#, fuzzy
-msgid ""
-"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
-"units’ sightlines are limited by their maximum movement. If you have some "
-"valuable but slow units, keep at least one fast unit with them so that you "
-"are not caught out by a surprise attack."
-msgstr ""
-"En els mapes on s'haja habilitat la 'ocultació' o 'boira de guerra', "
-"l'alcanç de la vista d'una unitat està llimitat pel seu màxim moviment. "
-"Recorde açò quan decida qué unitat és la millor per a explorar tipos "
-"específics de terreny."
-
-#. [tip]
-#: data/hardwired/tips.cfg:104
-msgid ""
-"Foot units tend to defend better in villages and castles than in other "
-"terrain types, while most mounted units do not gain any defensive advantages "
-"from villages or castles."
-msgstr ""
-"Casi tota l'infantería es defen millor en les aldees i els castells que en "
-"atres terrenys, mentres que les tropes montades no reben cap bonificació "
-"defensiva ni en aldees ni en castells."
-
-#. [tip]
-#: data/hardwired/tips.cfg:105 data/hardwired/tips.cfg:185
-#, fuzzy
-msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "- Senyor Kaylan, 498AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:108
-msgid ""
-"Horse-based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"Les unitats a cavall solen ser resistents a armes tallants i impactants, "
-"pero són vulnerables a atacs d'armes perforants, incluint els arcs i les "
-"llances."
-
-#. [tip]
-#: data/hardwired/tips.cfg:109
-#, fuzzy
-msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "- Senyor Kaylan, 502AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain eight experience points for "
-"every level of the unit they kill, or four experience points for a zero-"
-"level opponent."
-msgstr ""
-"La millor manera de guanyar experiència és donar el colp de gràcia a un "
-"enemic. Les unitats que maten un enemic guanyaran 8 punts d'experiència per "
-"cada nivell de l'enemic, o quatre punts d'experiència per a un oponedor de "
-"nivell cero."
-
-#. [tip]
-#: data/hardwired/tips.cfg:116
-msgid ""
-"Elvish units move and fight well in forest. Dwarvish units move and fight "
-"well in hills, mountains and caves."
-msgstr ""
-"Les tropes élfiques es mouen i lluiten be en els boscs. Els nanos, en canvi, "
-"es defenen millor en els tossals, montanyes i coves."
-
-#. [tip]
-#: data/hardwired/tips.cfg:120
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"La paciència és a sovint la clau. En conte de llançar l'atac en condicions "
-"roïnes o ab poques tropes, espera a que les coses es posen millor i llavors "
-"ataca."
-
-#. [tip]
-#: data/hardwired/tips.cfg:124
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"Si eres atacat des de diferents flancs, tal volta siga una bona idea enviar "
-"tropes prescindibles per a retrasar l'atac."
-
-#. [tip]
-#: data/hardwired/tips.cfg:128
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"No tingues por de retirar-te i reagrupar-te; a sovint esta és la clau de la "
-"victòria."
-
-#. [tip]
-#: data/hardwired/tips.cfg:129
-#, fuzzy
-msgid "<i>― Meneldur, 123YW</i>"
-msgstr "― Meneldur, 123AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:132
-#, fuzzy
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns "
-"remaining. You will usually earn more gold this way than through capturing "
-"villages and waiting for the turns to run out."
-msgstr ""
-"En la major part de batalles rebràs una bonificació d'or per acabar pronte, "
-"depenent del número d'aldees del mapa i del número de tandes que hages "
-"empleat. Sempre obtindràs més diners d'esta manera que capturant aldees i "
-"esperant que finalisen les tandes."
-
-#. [tip]
-#: data/hardwired/tips.cfg:136
-#, fuzzy
-msgid ""
-"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
-"not just the keep they start on. Sometimes your allies may be willing to "
-"make room for you on their keep so you can recruit from there, and you can "
-"even capture an enemy’s keep and use that."
-msgstr ""
-"El teu líder pot reclutar unitats des de qualsevol torre del castell. També "
-"pots capturar un castell enemic i reclutar des d'allà, o fer-ho des d'un "
-"castell aliat."
-
-#. [tip]
-#: data/hardwired/tips.cfg:140
-msgid ""
-"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
-"vulnerable to impact, fire, and arcane attacks."
-msgstr ""
-"Els esquelets son resistents als atacs de penetració, tallants i de fret, "
-"pero vulnerables als atacs d'impacte, foc i arcans."
-
-#. [tip]
-#: data/hardwired/tips.cfg:144
-#, fuzzy
-msgid ""
-"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
-"the same side fight better. You can move these units slowly along your "
-"battle lines and give bonuses to large numbers of lower-level troops."
-msgstr ""
-"Les unitats ab l'habilitat 'liderage' fan que les tropes adjacents del "
-"mateix bando ab nivells inferiors d'experiència lluiten millor. Use líders "
-"per a ajudar a les teues atres unitats a alvançar de nivell més ràpit."
-
-#. [tip]
-#: data/hardwired/tips.cfg:148
-msgid ""
-"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
-"the village and attack you, while enjoying the defense and healing of the "
-"village."
-msgstr ""
-"Evita acostar-te a aldees desocupades. Un enemic podria entrar ahi i atacar-"
-"te des d'allà, mentres es beneficia de la defensa i la curació de l'aldea."
-
-#. [tip]
-#: data/hardwired/tips.cfg:152
-#, fuzzy
-msgid "Use lines of troops to screen your injured units while they recover."
-msgstr ""
-"Forma llínees d'unitats per a protegir les que estan ferides mentres es "
-"recuperen."
-
-#. [tip]
-#: data/hardwired/tips.cfg:153
-#, fuzzy
-msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "- Princesa Li'sar, 515AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:156
-#, fuzzy
-msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Llig les dreceres de teclat en el menú de preferències."
-
-#. [tip]
-#: data/hardwired/tips.cfg:160
-#, fuzzy
-msgid ""
-"If you move a unit, but don’t attack or discover any additional information, "
-"you can undo your move by pressing <b>u</b>."
-msgstr ""
-"Si mous una unitat, pero no ataques ni descobrixes cap informació adicional, "
-"pots desfer el moviment pulsant la tecla 'u'."
-
-#. [tip]
-#: data/hardwired/tips.cfg:164
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"Pots vore la distància a la que es poden desplaçar les unitats situant el "
-"ratolí sobre elles."
-
-#. [tip]
-#: data/hardwired/tips.cfg:168
-msgid ""
-"Use healers to support your attacks — they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-"Utilisa els curadors per a ajudar a les unitats d'atac. Et faran guanyar "
-"batalles sens atacar a ningú directament."
-
-#. [tip]
-#: data/hardwired/tips.cfg:169 data/hardwired/tips.cfg:217
-#, fuzzy
-msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "- El Pergamí de Chantal, 516AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:172
-#, fuzzy
-msgid ""
-"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
-"they do on all attacks until they end a turn."
-msgstr ""
-"L'atac 'retardar' fa que les unitats enemigues siguen més lentes, i ademés "
-"reduïx a la mitat el dany que fan en tots els seus atacs."
-
-#. [tip]
-#: data/hardwired/tips.cfg:176
-#, fuzzy
-msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "Els atacs arcans són molt poderosos contra els no morts."
-
-#. [tip]
-#: data/hardwired/tips.cfg:177
-#, fuzzy
-msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "- Gran Sabi Dacyn, 626AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:180
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-"Les unitats recuperen tota la seua vida quan pugen de nivell. Si açò "
-"s'utilisa correctament, pot canviar el destí d'una batalla."
-
-#. [tip]
-#: data/hardwired/tips.cfg:184
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr ""
-"Les unitats que poden fer càrregues són molt millors contra els enemics que "
-"poden matar d'un sol colp."
-
-#. [tip]
-#: data/hardwired/tips.cfg:188
-#, fuzzy
-msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
-"benefits of advancing a level, so it is generally wiser to advance your "
-"lower-level units instead."
-msgstr ""
-"En conte de pujar de nivell, les unitats d'alt nivell guanyen un 'Alvanç "
-"Sobre el Màxim Nivell' (ASMN, AMLA en anglés), lo que normalment eleva els "
-"punts de vida màxims de l'unitat en 3 i la sana completament. Açò és molt "
-"menys que el benefici obtingut per alvançar un nivell, per tant es "
-"generalment més útil intentar millorar les teues unitats de més baix nivell."
-
-#. [tip]
-#: data/hardwired/tips.cfg:192
-#, fuzzy
-msgid ""
-"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-"mouse pointer over any button or icon to get a description or explanation of "
-"what it does."
-msgstr ""
-"Casi cada icon i paraula en la pantalla de joc de Wesnoth té una llegenda "
-"informativa. Pose el punter sobre u d'ells per a obtindre una explicació o "
-"descripció."
-
-#. [tip]
-#: data/hardwired/tips.cfg:196
-msgid ""
-"To advance low-level units quickly, team them with a veteran and use the "
-"veteran to damage a joint target heavily enough for the junior partner to "
-"get in the killing blow."
-msgstr ""
-"Per a fer pujar de nivell a les teues unitats ràpidament, agrupe'ls ab un "
-"veterà i use al veterà per a debilitar a un enemic comun lo suficient com "
-"per a que el membre més menut poda donar el colp de gràcia."
-
-#. [tip]
-#: data/hardwired/tips.cfg:197
-#, fuzzy
-msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "- Reina Li'sar, 528AW"
-
-#. [tip]
-#: data/hardwired/tips.cfg:200
-#, fuzzy
-msgid ""
-"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
-"the <b>Delay Shroud Updates</b> option when you need to move units while "
-"retaining the ability to undo, or use the new Whiteboard planning tool."
-msgstr ""
-"No pots desfer un moviment que haja mostrat una part del terreny oculta per "
-"l'ocultació o la boira. Activa l'opció «Retardar refresc de zones ocultes» "
-"quan vullgues moure unitats i a la seua tanda preservar la teua capacitat de "
-"desfer moviments."
-
-#. [tip]
-#: data/hardwired/tips.cfg:204
-msgid ""
-"If an enemy benefits more from a rare terrain type than you do, occupying "
-"that terrain will deprive them of its benefits."
-msgstr ""
-"Si un enemic es beneficia més d'un tipo de terreny rar que tu, ocupar eixe "
-"terreny li privarà d'eixe benefici."
-
-#. [tip]
-#: data/hardwired/tips.cfg:208
-msgid ""
-"Few units have good defenses in water; a line of attackers along the edge of "
-"a river can inflict heavy casualties. Elves can use the edge of a forest in "
-"a similar manner, and dwarves can do the same with mountains."
-msgstr ""
-"Poques unitats tenen bones defenses en l'aigua; una llínea d'atacants a lo "
-"llarc de la vora d'un riu poden infligir fortes baixes. Els elfs poden "
-"utilisar el bordell d'un bosc d'una manera similar, i els nanos poden fer lo "
-"mateix ab les montanyes."
-
-#. [tip]
-#: data/hardwired/tips.cfg:212
-msgid ""
-"In many campaign scenarios, you may issue simple instructions for your "
-"computer-controlled allies using the right-click context menu."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:216
-msgid ""
-"The <i>Slow</i> ability is extremely powerful because it has such wide-"
-"ranging effects. Enemy undead get half the normal benefit from their "
-"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
-"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
-"to escape; slow enemies are almost immobilized, and your own units suffer "
-"less retaliation damage, so it’s quicker to heal them."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:220
-msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
-"This gives you another try whenever your first devastating attack misses — "
-"as inevitably happens from time to time."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:224
-msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:228
-msgid ""
-"Think twice before dismissing any unit from your recall list, no matter how "
-"little experience it has. Sometimes it’s worth paying a premium to know "
-"exactly what traits a new arrival will have."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:232
-msgid ""
-"When a tough unit is heavily injured, send it to heal in a village several "
-"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
-"hitpoints per turn) without tying up front-line villages."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:233 data/hardwired/tips.cfg:245
-msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:236
-msgid ""
-"Combining multiple special abilities can be deadly. While it may take some "
-"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
-"<i>Charge</i> against a slowed opponent, the results can be impressive."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:240
-msgid ""
-"While finishing early gives a gold bonus, and reduces the opportunities for "
-"enemies to kill your valuable troops, it also means you lose chances to earn "
-"your units extra experience. When deciding whether or not to finish a "
-"scenario early, weigh these factors against one another."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:244
-msgid ""
-"If your forces have weak defenses everywhere on the map, occupy the areas "
-"where your enemies can only attack you by sharing the same disadvantages. "
-"Avoid places where your defenses are poor and your enemy’s are merely "
-"average. Plan for heavy losses, and take firm control of any hex where the "
-"land does favor you."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:249
-msgid ""
-"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
-"if they occupy a village hex, they do not gain any defensive benefits from "
-"the village, although they will still be healed."
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -4244,6 +3448,791 @@ msgstr "moviments"
 #, fuzzy
 msgid "statuspanel^terrain def."
 msgstr "nivell"
+
+#. [tip]
+#: data/tips.cfg:4
+msgid ""
+"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
+"event or ai coding."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
+#, fuzzy
+msgid "<i>― The Wesnoth Design Guide</i>"
+msgstr "- La Guia Tàctica de Wesnoth"
+
+#. [tip]
+#: data/tips.cfg:8
+msgid ""
+"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
+"advanced features."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:12
+msgid ""
+"Scenarios saved from the editor in their default folder can be selected in "
+"the mp create screen's <i>User Scenarios</i> section."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:16
+#, fuzzy
+msgid ""
+"Don’t neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be too weak to survive future battles."
+msgstr ""
+"¡No oblides acumular experiència en el teu líder! Necesites mantindre-ho "
+"segur, pero si li protegixes massa pot quedar-se en un nivell massa baix per "
+"a sobreviure futures batalles."
+
+#. [tip]
+#: data/tips.cfg:17 data/tips.cfg:149
+#, fuzzy
+msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgstr "- Gran Mac Delfador, 516AW"
+
+#. [tip]
+#: data/tips.cfg:20
+#, fuzzy
+msgid ""
+"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
+"highlight all the hexes your adversary can move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can’t reach your weak or "
+"injured units on his next turn."
+msgstr ""
+"En el menú \"Accions\", pots seleccionar \"Mostrar Moviments Enemics\" per a "
+"destacar totes les caselles possibles a les que el teu adversari podria "
+"moure's (suponent que les teues unitats es queden on esten). Utilisa açò per "
+"a assegurar-te de que l'enemic no pot alcançar a les teues unitats débiles o "
+"ferides en la seua següent tanda."
+
+#. [tip]
+#: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
+#: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
+#: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
+#: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
+#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
+#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
+#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
+#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:250
+#, fuzzy
+msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgstr "- La Guia Tàctica de Wesnoth"
+
+#. [tip]
+#: data/tips.cfg:24
+#, fuzzy
+msgid ""
+"Units with the <i>Intelligent</i> trait need fewer experience points to "
+"level up. Early in a campaign, try to give killing blows to these units so "
+"you can get some high-level troops sooner."
+msgstr ""
+"Les unitats ab la traça 'sabut' necesiten menys punts d'experiència per a "
+"pujar de nivell. En els inicis d'una campanya, tracta de facilitar-los el "
+"colp final ad estes unitats de manera que podas obtindre algunes tropes "
+"d'alt nivell més pronte."
+
+#. [tip]
+#: data/tips.cfg:25
+#, fuzzy
+msgid "<i>― King Konrad, 536YW</i>"
+msgstr "- Rei Konrad, 536AW"
+
+#. [tip]
+#: data/tips.cfg:28
+#, fuzzy
+msgid ""
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction. Unfortunately, you "
+"must completely surround skirmishers to immobilize them."
+msgstr ""
+"La tàctica del sege es molt potent, en particular contra oponedors ràpits. "
+"Al colocar dos unitats en costats oposts d'un enemic, les seues zones de "
+"control li restringiran a poder moure's una sola casella en qualsevol "
+"direcció."
+
+#. [tip]
+#: data/tips.cfg:29 data/tips.cfg:141
+#, fuzzy
+msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+msgstr "- Memòries de Gweddry, 627AW"
+
+#. [tip]
+#: data/tips.cfg:32
+#, fuzzy
+msgid ""
+"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
+"clicking on a castle tile. That will let you choose the precise hex you put "
+"a unit in. Placing units wisely can sometimes let you reach a village a turn "
+"earlier."
+msgstr ""
+"Pots accedir a les órdens 'Reclutar' i 'Reincorporar' fent clic dret en una "
+"baldosa del castell. Això et permetrà triar en qué casella situes una nova "
+"unitat. Situant les unidades sabiament pot a voltes permetre't alcançar una "
+"aldea una tanda més pronte."
+
+#. [tip]
+#: data/tips.cfg:36
+#, fuzzy
+msgid ""
+"There are some helpful summary screens in the main menu: for instance, the "
+"<b>Status Table</b> will let you know how your enemies are doing, and how "
+"you are doing in comparison."
+msgstr ""
+"Hi ha algunes pantalles útiles de resum en el menú principal: per eixemple, "
+"la 'Taula d'Estat' et permetrà saber cóm ho esten fent els teus enemics, i "
+"la manera en que tu ho estes fent en comparació."
+
+#. [tip]
+#: data/tips.cfg:40
+#, fuzzy
+msgid ""
+"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
+"can be very important when moving through difficult terrain such as water or "
+"caves. It can make the difference between being able to move one hex or two."
+msgstr ""
+"Les unitats ab la traça 'ràpit'  es mouen una casella extra per tanda. Açò "
+"pot ser molt important al desplaçar-se a través de terreny difícil, com "
+"l'aigua o les coves. Pot marcar la diferència entre ser capaç de moure una o "
+"dos caselles."
+
+#. [tip]
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+#, fuzzy
+msgid "<i>― High Lord Kalenz, 470YW</i>"
+msgstr "- Gran Senyor Kalenz, 470AW"
+
+#. [tip]
+#: data/tips.cfg:44
+#, fuzzy
+msgid ""
+"After you have played a few scenarios, read the <b>Gameplay</b> section in "
+"the <b>Help</b> screen carefully. Details become important as scenarios get "
+"harder!"
+msgstr ""
+"Després de haver jugat uns pocs escenaris, llegix cuidadosamente la secció "
+"'Joc' en la pantalla d'ajuda. ¡Els detalls es convertixen en importants quan "
+"els escenaris es tornen més difícils!"
+
+#. [tip]
+#: data/tips.cfg:48
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+"Normalment és millor començar el següent escenari d'una campanya ab unitats "
+"de menor nivell que esten a punt de pujar de nivell que ab les mateixes "
+"unitats, en un nivell superior."
+
+#. [tip]
+#: data/tips.cfg:52
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+"En www.wesnoth.org podràs trobar guies d'estratègia, soport tècnic, "
+"l'història de Wesnoth, i molt més."
+
+#. [tip]
+#: data/tips.cfg:53
+#, fuzzy
+msgid "<i>― The Wesnoth Community</i>"
+msgstr "- La comunitat de Wesnoth"
+
+#. [tip]
+#: data/tips.cfg:56
+#, fuzzy
+msgid ""
+"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>liminal</i> units fight best during twilight."
+msgstr ""
+"Les unitats llegals lluiten millor de dia, les caòtiques lluiten millor de "
+"nit. Les neutrals no es veuen afectades pel dia o la nit."
+
+#. [tip]
+#: data/tips.cfg:57
+#, fuzzy
+msgid ""
+"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
+msgstr "- Compendi Real de Terminologia de Guerra, volum II, 212AW"
+
+#. [tip]
+#: data/tips.cfg:60
+msgid ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr ""
+"Lo que en atres condicions sería un bon plan pot fallar si ataques en un "
+"moment inadecuat del dia."
+
+#. [tip]
+#: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
+#: data/tips.cfg:229
+#, fuzzy
+msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
+msgstr "- Manual d'Anàlisis Tàctic, volum I - Haldric II, 42AW"
+
+#. [tip]
+#: data/tips.cfg:64
+#, fuzzy
+msgid ""
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
+"know what you’re facing. In this case, long-range scouting units are worth "
+"their cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units can only see as far as they can move in one turn."
+msgstr ""
+"Si estes jugant ab 'Ocultació' o 'Boira de Guerra' activada, no sabràs a lo "
+"que t'estes enfrontant. En este cas, les unitats exploradores de llarc "
+"alcanç valen el seu cost. Tracta de triar exploradors que podan moure's "
+"fàcilment a través del terreny, ya que les unitats ven tan llunt com poden "
+"moure's en una tanda."
+
+#. [tip]
+#: data/tips.cfg:68
+#, fuzzy
+msgid ""
+"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
+"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
+msgstr ""
+"Hi ha sis tipos d'atac: tallant, perforant, impactant, foc, fret i arcà. Les "
+"unitats tenen debilitats contra certs tipos d'atacs. Fes click dret en una "
+"unitat i selecciona 'Descripció d'Unitat' per a vore les seus resistències "
+"específiques contra els distintis atacs, i qual li afectarà més."
+
+#. [tip]
+#: data/tips.cfg:72
+#, fuzzy
+msgid ""
+"The terrain occupied by your units is the main factor determining the chance "
+"that they will be hit. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top right corner of "
+"the screen."
+msgstr ""
+"El terreny que ocupen les teues unitats determina la provabilitat que tenen "
+"els teus adversaris de colpejar-les. L'índex de defensa de l'unitat "
+"seleccionada en el terreny seleccionat actualment es mostra al cantó "
+"superior dret de la pantalla."
+
+#. [tip]
+#: data/tips.cfg:76
+#, fuzzy
+msgid ""
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from dying. They will then remain at death’s door until the poison is "
+"removed. Healers can prevent a poisoned unit from deteriorating, but the "
+"poison will not be removed unless the unit regenerates, or begins a turn in "
+"a village or next to a unit with the <i>Cures</i> ability."
+msgstr ""
+"Les unitats enverinades perdran huit punts de vida cada tanda fins quedar-se "
+"a un punt de la mort. Permaneixeran en les portes de la mort fins que "
+"s'elimine el verí. Els Sanadors poden previndre un deteriorament de l'unitat "
+"enverinada, pero no s'eliminarà el verí a menys que l'unitat es regenere, o "
+"passe una tanda en una aldea o al costat d'una unitat ab la habilitat de "
+"'Curar'."
+
+#. [tip]
+#: data/tips.cfg:80
+#, fuzzy
+msgid ""
+"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
+"the <b>Actions</b> menu. By recalling the same units over and over, you can "
+"build up a powerful and experienced army."
+msgstr ""
+"Pots usar unitats d'escenaris anteriors seleccionant 'Reincorporar' en el "
+"menú 'Accions'. Si reincorpores les mateixes unitats una i atra volta, "
+"podràs construir un eixèrcit poderós i experimentat."
+
+#. [tip]
+#: data/tips.cfg:84
+#, fuzzy
+msgid ""
+"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
+"around them. If a unit moves into an enemy’s zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. Beware, though: "
+"skirmishers can pass through these gaps."
+msgstr ""
+"Les unitats de nivell u o més tenen una 'Zona de Control' en cadascuna de "
+"les caselles adjacents ad elles. Si una unitat entra en una zona de control "
+"enemiga, no es podrà moure més durant eixa tanda. Açò significa que eixes "
+"unitats poden tindre dos caselles buides entre ells i encara crear una "
+"barrera a l'enemic. No obstant, les unitats fustigadores són suficientment "
+"hábils per a ignorar estes zones."
+
+#. [tip]
+#: data/tips.cfg:88
+#, fuzzy
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
+"are guaranteed at least a 60% chance of a hit when they attack on their own "
+"turn."
+msgstr ""
+"Les possibilitats de colpejar una unitat normalment depenen de la seua "
+"habilitat per a defendre's en el terreny a on es troba. No obstant, els "
+"atacs màgics tenen sempre un 70% de provabilitats d'encertar, i les unitats "
+"ab l'habilitat de 'Tirador' sempre tenen a lo manco un 60% de possibilitats "
+"de colpejar quan ataquen en la seua tanda."
+
+#. [tip]
+#: data/tips.cfg:89
+#, fuzzy
+msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
+msgstr "- Manual d'Anàlisis Tàctic, volum I - Haldric II, 42AW"
+
+#. [tip]
+#: data/tips.cfg:92
+msgid ""
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
+msgstr ""
+"Les unitats estejades en les aldees recuperaran o be 8 punts de vida al "
+"principi de la següent tanda, o be es recuperaran d'un enverinament."
+
+#. [tip]
+#: data/tips.cfg:96
+msgid ""
+"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
+msgstr ""
+"No mogues una unitat ferida si no necessites fer-ho. Deixa-la descansar. Si "
+"una unitat no es mou ni ataca, recuperarà dos punts de vida a l'inici de la "
+"seua següent tanda."
+
+#. [tip]
+#: data/tips.cfg:100
+#, fuzzy
+msgid ""
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ sightlines are limited by their maximum movement. If you have some "
+"valuable but slow units, keep at least one fast unit with them so that you "
+"are not caught out by a surprise attack."
+msgstr ""
+"En els mapes on s'haja habilitat la 'ocultació' o 'boira de guerra', "
+"l'alcanç de la vista d'una unitat està llimitat pel seu màxim moviment. "
+"Recorde açò quan decida qué unitat és la millor per a explorar tipos "
+"específics de terreny."
+
+#. [tip]
+#: data/tips.cfg:104
+msgid ""
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
+msgstr ""
+"Casi tota l'infantería es defen millor en les aldees i els castells que en "
+"atres terrenys, mentres que les tropes montades no reben cap bonificació "
+"defensiva ni en aldees ni en castells."
+
+#. [tip]
+#: data/tips.cfg:105 data/tips.cfg:185
+#, fuzzy
+msgid "<i>― Sir Kaylan, 498YW</i>"
+msgstr "- Senyor Kaylan, 498AW"
+
+#. [tip]
+#: data/tips.cfg:108
+msgid ""
+"Horse-based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"Les unitats a cavall solen ser resistents a armes tallants i impactants, "
+"pero són vulnerables a atacs d'armes perforants, incluint els arcs i les "
+"llances."
+
+#. [tip]
+#: data/tips.cfg:109
+#, fuzzy
+msgid "<i>― Sir Kaylan, 502YW</i>"
+msgstr "- Senyor Kaylan, 502AW"
+
+#. [tip]
+#: data/tips.cfg:112
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
+msgstr ""
+"La millor manera de guanyar experiència és donar el colp de gràcia a un "
+"enemic. Les unitats que maten un enemic guanyaran 8 punts d'experiència per "
+"cada nivell de l'enemic, o quatre punts d'experiència per a un oponedor de "
+"nivell cero."
+
+#. [tip]
+#: data/tips.cfg:116
+msgid ""
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
+msgstr ""
+"Les tropes élfiques es mouen i lluiten be en els boscs. Els nanos, en canvi, "
+"es defenen millor en els tossals, montanyes i coves."
+
+#. [tip]
+#: data/tips.cfg:120
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"La paciència és a sovint la clau. En conte de llançar l'atac en condicions "
+"roïnes o ab poques tropes, espera a que les coses es posen millor i llavors "
+"ataca."
+
+#. [tip]
+#: data/tips.cfg:124
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"Si eres atacat des de diferents flancs, tal volta siga una bona idea enviar "
+"tropes prescindibles per a retrasar l'atac."
+
+#. [tip]
+#: data/tips.cfg:128
+msgid ""
+"Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr ""
+"No tingues por de retirar-te i reagrupar-te; a sovint esta és la clau de la "
+"victòria."
+
+#. [tip]
+#: data/tips.cfg:129
+#, fuzzy
+msgid "<i>― Meneldur, 123YW</i>"
+msgstr "― Meneldur, 123AW"
+
+#. [tip]
+#: data/tips.cfg:132
+#, fuzzy
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map and the number of turns "
+"remaining. You will usually earn more gold this way than through capturing "
+"villages and waiting for the turns to run out."
+msgstr ""
+"En la major part de batalles rebràs una bonificació d'or per acabar pronte, "
+"depenent del número d'aldees del mapa i del número de tandes que hages "
+"empleat. Sempre obtindràs més diners d'esta manera que capturant aldees i "
+"esperant que finalisen les tandes."
+
+#. [tip]
+#: data/tips.cfg:136
+#, fuzzy
+msgid ""
+"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
+"not just the keep they start on. Sometimes your allies may be willing to "
+"make room for you on their keep so you can recruit from there, and you can "
+"even capture an enemy’s keep and use that."
+msgstr ""
+"El teu líder pot reclutar unitats des de qualsevol torre del castell. També "
+"pots capturar un castell enemic i reclutar des d'allà, o fer-ho des d'un "
+"castell aliat."
+
+#. [tip]
+#: data/tips.cfg:140
+msgid ""
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
+"vulnerable to impact, fire, and arcane attacks."
+msgstr ""
+"Els esquelets son resistents als atacs de penetració, tallants i de fret, "
+"pero vulnerables als atacs d'impacte, foc i arcans."
+
+#. [tip]
+#: data/tips.cfg:144
+#, fuzzy
+msgid ""
+"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
+"the same side fight better. You can move these units slowly along your "
+"battle lines and give bonuses to large numbers of lower-level troops."
+msgstr ""
+"Les unitats ab l'habilitat 'liderage' fan que les tropes adjacents del "
+"mateix bando ab nivells inferiors d'experiència lluiten millor. Use líders "
+"per a ajudar a les teues atres unitats a alvançar de nivell més ràpit."
+
+#. [tip]
+#: data/tips.cfg:148
+msgid ""
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
+msgstr ""
+"Evita acostar-te a aldees desocupades. Un enemic podria entrar ahi i atacar-"
+"te des d'allà, mentres es beneficia de la defensa i la curació de l'aldea."
+
+#. [tip]
+#: data/tips.cfg:152
+#, fuzzy
+msgid "Use lines of troops to screen your injured units while they recover."
+msgstr ""
+"Forma llínees d'unitats per a protegir les que estan ferides mentres es "
+"recuperen."
+
+#. [tip]
+#: data/tips.cfg:153
+#, fuzzy
+msgid "<i>― Princess Li’sar, 515YW</i>"
+msgstr "- Princesa Li'sar, 515AW"
+
+#. [tip]
+#: data/tips.cfg:156
+#, fuzzy
+msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
+msgstr "Llig les dreceres de teclat en el menú de preferències."
+
+#. [tip]
+#: data/tips.cfg:160
+#, fuzzy
+msgid ""
+"If you move a unit, but don’t attack or discover any additional information, "
+"you can undo your move by pressing <b>u</b>."
+msgstr ""
+"Si mous una unitat, pero no ataques ni descobrixes cap informació adicional, "
+"pots desfer el moviment pulsant la tecla 'u'."
+
+#. [tip]
+#: data/tips.cfg:164
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"Pots vore la distància a la que es poden desplaçar les unitats situant el "
+"ratolí sobre elles."
+
+#. [tip]
+#: data/tips.cfg:168
+msgid ""
+"Use healers to support your attacks — they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+"Utilisa els curadors per a ajudar a les unitats d'atac. Et faran guanyar "
+"batalles sens atacar a ningú directament."
+
+#. [tip]
+#: data/tips.cfg:169 data/tips.cfg:217
+#, fuzzy
+msgid "<i>― The Scroll of Chantal, 516YW</i>"
+msgstr "- El Pergamí de Chantal, 516AW"
+
+#. [tip]
+#: data/tips.cfg:172
+#, fuzzy
+msgid ""
+"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
+"they do on all attacks until they end a turn."
+msgstr ""
+"L'atac 'retardar' fa que les unitats enemigues siguen més lentes, i ademés "
+"reduïx a la mitat el dany que fan en tots els seus atacs."
+
+#. [tip]
+#: data/tips.cfg:176
+#, fuzzy
+msgid "<i>Arcane</i> attacks are very powerful against undead."
+msgstr "Els atacs arcans són molt poderosos contra els no morts."
+
+#. [tip]
+#: data/tips.cfg:177
+#, fuzzy
+msgid "<i>― Great Sage Dacyn, 626YW</i>"
+msgstr "- Gran Sabi Dacyn, 626AW"
+
+#. [tip]
+#: data/tips.cfg:180
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+"Les unitats recuperen tota la seua vida quan pugen de nivell. Si açò "
+"s'utilisa correctament, pot canviar el destí d'una batalla."
+
+#. [tip]
+#: data/tips.cfg:184
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr ""
+"Les unitats que poden fer càrregues són molt millors contra els enemics que "
+"poden matar d'un sol colp."
+
+#. [tip]
+#: data/tips.cfg:188
+#, fuzzy
+msgid ""
+"Instead of leveling up, high-level units gain an <i>After Maximum Level "
+"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+"hitpoints by three and fully heals it. This is much less than the normal "
+"benefits of advancing a level, so it is generally wiser to advance your "
+"lower-level units instead."
+msgstr ""
+"En conte de pujar de nivell, les unitats d'alt nivell guanyen un 'Alvanç "
+"Sobre el Màxim Nivell' (ASMN, AMLA en anglés), lo que normalment eleva els "
+"punts de vida màxims de l'unitat en 3 i la sana completament. Açò és molt "
+"menys que el benefici obtingut per alvançar un nivell, per tant es "
+"generalment més útil intentar millorar les teues unitats de més baix nivell."
+
+#. [tip]
+#: data/tips.cfg:192
+#, fuzzy
+msgid ""
+"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
+"mouse pointer over any button or icon to get a description or explanation of "
+"what it does."
+msgstr ""
+"Casi cada icon i paraula en la pantalla de joc de Wesnoth té una llegenda "
+"informativa. Pose el punter sobre u d'ells per a obtindre una explicació o "
+"descripció."
+
+#. [tip]
+#: data/tips.cfg:196
+msgid ""
+"To advance low-level units quickly, team them with a veteran and use the "
+"veteran to damage a joint target heavily enough for the junior partner to "
+"get in the killing blow."
+msgstr ""
+"Per a fer pujar de nivell a les teues unitats ràpidament, agrupe'ls ab un "
+"veterà i use al veterà per a debilitar a un enemic comun lo suficient com "
+"per a que el membre més menut poda donar el colp de gràcia."
+
+#. [tip]
+#: data/tips.cfg:197
+#, fuzzy
+msgid "<i>― Queen Li’sar, 528YW</i>"
+msgstr "- Reina Li'sar, 528AW"
+
+#. [tip]
+#: data/tips.cfg:200
+#, fuzzy
+msgid ""
+"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
+"the <b>Delay Shroud Updates</b> option when you need to move units while "
+"retaining the ability to undo, or use the new Whiteboard planning tool."
+msgstr ""
+"No pots desfer un moviment que haja mostrat una part del terreny oculta per "
+"l'ocultació o la boira. Activa l'opció «Retardar refresc de zones ocultes» "
+"quan vullgues moure unitats i a la seua tanda preservar la teua capacitat de "
+"desfer moviments."
+
+#. [tip]
+#: data/tips.cfg:204
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+"Si un enemic es beneficia més d'un tipo de terreny rar que tu, ocupar eixe "
+"terreny li privarà d'eixe benefici."
+
+#. [tip]
+#: data/tips.cfg:208
+msgid ""
+"Few units have good defenses in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+"Poques unitats tenen bones defenses en l'aigua; una llínea d'atacants a lo "
+"llarc de la vora d'un riu poden infligir fortes baixes. Els elfs poden "
+"utilisar el bordell d'un bosc d'una manera similar, i els nanos poden fer lo "
+"mateix ab les montanyes."
+
+#. [tip]
+#: data/tips.cfg:212
+msgid ""
+"In many campaign scenarios, you may issue simple instructions for your "
+"computer-controlled allies using the right-click context menu."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:216
+msgid ""
+"The <i>Slow</i> ability is extremely powerful because it has such wide-"
+"ranging effects. Enemy undead get half the normal benefit from their "
+"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
+"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
+"to escape; slow enemies are almost immobilized, and your own units suffer "
+"less retaliation damage, so it’s quicker to heal them."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:220
+msgid ""
+"Try to operate units with a small number of powerful attacks—such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"This gives you another try whenever your first devastating attack misses — "
+"as inevitably happens from time to time."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:224
+msgid ""
+"Units with three or more attacks—especially magical attacks—are ideal for "
+"finishing off enemies with only a few hitpoints remaining. Be sure to use "
+"leadership—or a strong or dextrous unit—whenever the extra point or two of "
+"damage makes a one-hit kill possible."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:228
+msgid ""
+"Think twice before dismissing any unit from your recall list, no matter how "
+"little experience it has. Sometimes it’s worth paying a premium to know "
+"exactly what traits a new arrival will have."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:232
+msgid ""
+"When a tough unit is heavily injured, send it to heal in a village several "
+"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
+"hitpoints per turn) without tying up front-line villages."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:233 data/tips.cfg:245
+msgid "<i>― Lord Hamel of Knalga</i>"
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:236
+msgid ""
+"Combining multiple special abilities can be deadly. While it may take some "
+"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
+"<i>Charge</i> against a slowed opponent, the results can be impressive."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:240
+msgid ""
+"While finishing early gives a gold bonus, and reduces the opportunities for "
+"enemies to kill your valuable troops, it also means you lose chances to earn "
+"your units extra experience. When deciding whether or not to finish a "
+"scenario early, weigh these factors against one another."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:244
+msgid ""
+"If your forces have weak defenses everywhere on the map, occupy the areas "
+"where your enemies can only attack you by sharing the same disadvantages. "
+"Avoid places where your defenses are poor and your enemy’s are merely "
+"average. Plan for heavy losses, and take firm control of any hex where the "
+"land does favor you."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:249
+msgid ""
+"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
+"if they occupy a village hex, they do not gain any defensive benefits from "
+"the village, although they will still be healed."
+msgstr ""
 
 #: src/about.cpp:227 src/dialogs.cpp:448 src/menu_events.cpp:166
 #: src/statistics_dialog.cpp:182
@@ -4855,7 +4844,7 @@ msgstr " vulnerabilitat de l'atacant contra"
 msgid "Slowed"
 msgstr "Retardat"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:915
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:913
 msgid "Total damage"
 msgstr "Dany total"
 
@@ -5101,11 +5090,11 @@ msgstr "No ha segut possible trobar un líder de la facció $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/format_time_summary.cpp:46 src/reports.cpp:1520
+#: src/format_time_summary.cpp:46 src/reports.cpp:1518
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:49 src/reports.cpp:1520
+#: src/format_time_summary.cpp:49 src/reports.cpp:1518
 msgid "%I:%M %p"
 msgstr ""
 
@@ -5133,67 +5122,68 @@ msgstr "%b %d %y"
 msgid "Invalid color range: "
 msgstr "Ranc de color invàlit:"
 
-#: src/game_config_manager.cpp:179
-msgid "Error loading game configuration files: '"
+#: src/game_config_manager.cpp:180
+#, fuzzy
+#| msgid "Error loading game configuration files: '"
+msgid "Error loading game configuration files. The game will now exit."
 msgstr "Erro carregant els archius de configuració del joc: '"
 
-#: src/game_config_manager.cpp:180
-msgid "' (The game will now exit)"
-msgstr "' (ara es tancarà el joc)."
-
-#: src/game_config_manager.cpp:274
+#: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "La següent expansió conté erros i no s'ha pogut carregar:"
 msgstr[1] "Les següents expansions contenen erros i no s'han pogut carregar:"
 
-#: src/game_config_manager.cpp:281
-msgid "ERROR DETAILS:"
-msgstr "DETALLS DE L'ERRO:"
+#: src/game_config_manager.cpp:283
+msgid "Please report this to the author or maintainer of this add-on."
+msgid_plural ""
+"Please report this to the respective authors or maintainers of these add-ons."
+msgstr[0] ""
+msgstr[1] ""
 
-#: src/game_controller.cpp:336 src/game_controller.cpp:924
+#: src/game_controller.cpp:332 src/game_controller.cpp:920
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "La Batalla per Wesnoth"
 
-#: src/game_controller.cpp:475 src/game_controller.cpp:493
+#: src/game_controller.cpp:471 src/game_controller.cpp:489
 msgid "The file you have tried to load is corrupt"
 msgstr "L'archiu que ha intentat carregar està danyat."
 
-#: src/game_controller.cpp:478 src/game_controller.cpp:496
+#: src/game_controller.cpp:474 src/game_controller.cpp:492
 #: src/savegame.cpp:687
 msgid "The file you have tried to load is corrupt: '"
 msgstr "L'archiu que has intentat carregar està danyat: '"
 
-#: src/game_controller.cpp:486
+#: src/game_controller.cpp:482
 msgid "File I/O Error while reading the game"
 msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 
-#: src/game_controller.cpp:488
+#: src/game_controller.cpp:484
 #, fuzzy
 msgid "File I/O Error while reading the game: '"
 msgstr "Erro d'E/S en l'archiu mentres es llegia la partida"
 
-#: src/game_controller.cpp:589
+#: src/game_controller.cpp:585
 msgid "No campaigns are available.\n"
 msgstr "No hi ha campanyes disponibles.\n"
 
-#: src/game_controller.cpp:861
+#: src/game_controller.cpp:857
 #, fuzzy
 msgid "Error while starting server: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_controller.cpp:863 src/playcampaign.cpp:218
+#: src/game_controller.cpp:859 src/playcampaign.cpp:218
 #: src/playcampaign.cpp:470
 msgid "The game could not be loaded: "
 msgstr "No ha segut possible guardar la partida:"
 
-#: src/game_controller.cpp:865 src/playcampaign.cpp:220
+#: src/game_controller.cpp:861 src/playcampaign.cpp:220
 #: src/playcampaign.cpp:473
 msgid "Error while playing the game: "
 msgstr "S'ha produït un erro durant la partida: "
 
-#: src/game_controller.cpp:883 src/playcampaign.cpp:222
+#: src/game_controller.cpp:879 src/playcampaign.cpp:222
 #: src/playcampaign.cpp:476
 msgid "The game map could not be loaded: "
 msgstr "No ha segut possible carregar la partida:"
@@ -5248,35 +5238,35 @@ msgid ""
 "check the 'max hill size' parameter)"
 msgstr ""
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "Era desconeguda: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "Era desconeguda"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "Escenari remot"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "Escenari desconegut: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "Escenari desconegut"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "Partida recarregada"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "Tanda"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
 #, fuzzy
 #| msgid "Vacant Slot:"
 #| msgid_plural "Vacant slots:"
@@ -5285,47 +5275,47 @@ msgid_plural "Vacant Slots:"
 msgstr[0] "Plaça lliure:"
 msgstr[1] "Places lliures:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "cap"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:107
 #, fuzzy
 msgid "In game:"
 msgstr "Nom: "
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:109
 msgid "(observing)"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "(playing)"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:114
 msgid "In lobby"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:138
 #, fuzzy
 msgid "On friends list"
 msgstr "Afegir al llistat d'amics:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:143
 #, fuzzy
 msgid "On ignores list"
 msgstr "Afegir a llistat d'ignorats:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:148
 msgid "Neither a friend nor ignored"
 msgstr ""
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:153
 #, fuzzy
 msgid "You"
 msgstr "Jove"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147
+#: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "Erro"
 
@@ -6799,7 +6789,7 @@ msgstr "Crear partida"
 msgid "Filter:"
 msgstr "Filtre:"
 
-#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
 msgstr ""
 
@@ -6842,9 +6832,39 @@ msgstr "Paràmetros..."
 msgid "Load Game..."
 msgstr "Carregar partida..."
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
 msgstr ""
+
+#: src/multiplayer_create.cpp:103
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenarios"
+msgstr "Fi de l'escenari"
+
+#: src/multiplayer_create.cpp:104
+#, fuzzy
+#| msgid "Campaign"
+msgid "Campaigns"
+msgstr "Campanya"
+
+#: src/multiplayer_create.cpp:105
+#, fuzzy
+#| msgid "Close"
+msgid "User Maps"
+msgstr "Tancar"
+
+#: src/multiplayer_create.cpp:106
+#, fuzzy
+#| msgid "End Scenario"
+msgid "User Scenarios"
+msgstr "Fi de l'escenari"
+
+#: src/multiplayer_create.cpp:107
+#, fuzzy
+#| msgid "Random"
+msgid "Random Maps"
+msgstr "Aleatori"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
 #, fuzzy
@@ -6867,32 +6887,32 @@ msgid ""
 "None found."
 msgstr "Color no vàlit"
 
-#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:279
+#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
 #, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Deactivate"
 msgstr "¡Modo de depuració activat!"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:245
 #, fuzzy
 msgid "The level is invalid."
 msgstr "La partida ha acabat."
 
-#: src/multiplayer_create.cpp:333
+#: src/multiplayer_create.cpp:330
 msgid "Players: "
 msgstr "Jugadors: "
 
-#: src/multiplayer_create.cpp:351
+#: src/multiplayer_create.cpp:348
 msgid "Size: "
 msgstr "Tamany:"
 
-#: src/multiplayer_create.cpp:386
+#: src/multiplayer_create.cpp:383
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "Nom de la partida:"
 
-#: src/multiplayer_create.cpp:493 src/unit_types.cpp:785
+#: src/multiplayer_create.cpp:490 src/unit_types.cpp:785
 #, fuzzy
 msgid "No description available."
 msgstr "No hi ha objectius"
@@ -7456,172 +7476,172 @@ msgstr "Alineació: "
 msgid "Ability: "
 msgstr "Habilitats: "
 
-#: src/reports.cpp:393 src/reports.cpp:817
+#: src/reports.cpp:393 src/reports.cpp:815
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:446
+#: src/reports.cpp:445
 msgid "Resistances: "
 msgstr "Resistències:"
 
-#: src/reports.cpp:448
+#: src/reports.cpp:447
 msgid "(Att / Def)"
 msgstr ""
 
-#: src/reports.cpp:474
+#: src/reports.cpp:473
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Modificador d'experiència: "
 
-#: src/reports.cpp:525
+#: src/reports.cpp:524
 #, fuzzy
 msgid "Terrain: "
 msgstr "Terreny"
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:547
+#: src/reports.cpp:546
 #, fuzzy
 msgid "Defense: "
 msgstr "Defensa"
 
-#: src/reports.cpp:568
+#: src/reports.cpp:567
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Versió:"
 
-#: src/reports.cpp:596
+#: src/reports.cpp:595
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Cost de moviment"
 
-#: src/reports.cpp:687 src/reports.cpp:902 src/reports.cpp:914
+#: src/reports.cpp:685 src/reports.cpp:900 src/reports.cpp:912
 #, fuzzy
 msgid "Weapon: "
 msgstr "alcanç de l'arma: "
 
-#: src/reports.cpp:688 src/reports.cpp:903
+#: src/reports.cpp:686 src/reports.cpp:901
 #, fuzzy
 msgid "Damage: "
 msgstr "Dany"
 
-#: src/reports.cpp:692
+#: src/reports.cpp:690
 #, fuzzy
 msgid "Base damage: "
 msgstr "Dany total"
 
-#: src/reports.cpp:694 src/reports.cpp:728 src/reports.cpp:738
+#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
 #, fuzzy
 msgid "With specials: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:697
+#: src/reports.cpp:695
 #, fuzzy
 msgid "Time of day: "
 msgstr "Hora del dia"
 
-#: src/reports.cpp:701
+#: src/reports.cpp:699
 #, fuzzy
 msgid "Leadership: "
 msgstr "Liderage"
 
-#: src/reports.cpp:705
+#: src/reports.cpp:703
 #, fuzzy
 msgid "Slowed: "
 msgstr "retardat"
 
-#: src/reports.cpp:709
+#: src/reports.cpp:707
 #, fuzzy
 msgid "Attacks: "
 msgstr "atacs"
 
-#: src/reports.cpp:713
+#: src/reports.cpp:711
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "Bonificació PV màxim +"
 
-#: src/reports.cpp:714 src/reports.cpp:733
+#: src/reports.cpp:712 src/reports.cpp:731
 #, fuzzy
 msgid "Swarm: "
 msgstr "eixam"
 
-#: src/reports.cpp:715 src/reports.cpp:726 src/reports.cpp:737
+#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
 #, fuzzy
 msgid "Base attacks: "
 msgstr "atacs"
 
-#: src/reports.cpp:721
+#: src/reports.cpp:719
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Especial"
 
-#: src/reports.cpp:731
+#: src/reports.cpp:729
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:750
+#: src/reports.cpp:748
 #, fuzzy
 msgid "Weapon range: "
 msgstr "alcanç de l'arma: "
 
-#: src/reports.cpp:751
+#: src/reports.cpp:749
 #, fuzzy
 msgid "Damage type: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:752
+#: src/reports.cpp:750
 #, fuzzy
 msgid "Damage versus: "
 msgstr "tipo de dany: "
 
-#: src/reports.cpp:791
+#: src/reports.cpp:789
 msgid "Accuracy:"
 msgstr ""
 
-#: src/reports.cpp:796
+#: src/reports.cpp:794
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:815
+#: src/reports.cpp:813
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Armes Especials"
 
-#: src/reports.cpp:886
+#: src/reports.cpp:884
 msgid "None"
 msgstr ""
 
-#: src/reports.cpp:1114 src/reports.cpp:1164
+#: src/reports.cpp:1112 src/reports.cpp:1162
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1116 src/reports.cpp:1166
+#: src/reports.cpp:1114 src/reports.cpp:1164
 msgid "Neutral units: "
 msgstr "Unitats neutrals: "
 
-#: src/reports.cpp:1117 src/reports.cpp:1167
+#: src/reports.cpp:1115 src/reports.cpp:1165
 msgid "Chaotic units: "
 msgstr "Unitats caòtiques: "
 
-#: src/reports.cpp:1119 src/reports.cpp:1169
+#: src/reports.cpp:1117 src/reports.cpp:1167
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Unitats llegals: "
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1482
 msgid "Observers:"
 msgstr "Observadors:"
 
@@ -7723,137 +7743,150 @@ msgstr ""
 msgid "Save Game"
 msgstr "Guardar partida"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "Caràcters inesperats al principi de llínea"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:147
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
-msgid "Missing closing tag for tag [$tag] at $pos"
+msgid "Missing closing tag for tag [$tag]"
 msgstr "Falta l'etiqueta de tancament per a $tag a $pos"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:148
+msgid "expected at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:148 src/serialization/parser.cpp:212
+msgid "opened at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:161
 msgid "Unterminated [element] tag"
 msgstr "Etiqueta [element] no finalisada"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:173 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "Nom d'etiqueta invàlit"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated [+element] tag"
 msgstr "Etiqueta [+element] no finalisada"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:198
 msgid "Invalid closing tag name"
 msgstr "Nom d'etiqueta de tancament invàlit"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:201
 msgid "Unterminated closing tag"
 msgstr "Etiqueta de tancament no finalisada"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:203
 msgid "Unexpected closing tag"
 msgstr "Etiqueta de tancament inesperada"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:211
 #, fuzzy
-msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
+msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
 "S'ha trobat una etiqueta de tancament invàlida $tag2 per a $tag (posició "
 "$pos)"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:212
+#, fuzzy
+#| msgid "Close"
+msgid "closed at $pos"
+msgstr "Tancar"
+
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "Nom de variable buit"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Caràcters inesperats després del nom de la variable (s'esperava , o =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:286 src/serialization/parser.cpp:314
 msgid "Unterminated quoted string"
 msgstr "Cadena entre cometes sense finalisar"
 
-#: src/serialization/parser.cpp:362
-msgid "$error, value '$value', previous '$previous_value' at $pos"
+#: src/serialization/parser.cpp:372
+msgid "at $pos"
 msgstr ""
 
-#: src/serialization/parser.cpp:366
-#, fuzzy
-msgid "$error, value '$value' at $pos"
-msgstr "$error a $pos"
-
-#: src/serialization/string_utils.cpp:564
-msgid "prefix_milli^m"
-msgstr ""
-
-#: src/serialization/string_utils.cpp:565
-msgid "prefix_micro^µ"
-msgstr ""
-
-#: src/serialization/string_utils.cpp:566
-msgid "prefix_nano^n"
-msgstr ""
-
-#: src/serialization/string_utils.cpp:567
-msgid "prefix_pico^p"
+#: src/serialization/parser.cpp:386
+msgid "Value: '$value' Previous: '$previous_value'"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:568
-msgid "prefix_femto^f"
+msgid "prefix_milli^m"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:569
-msgid "prefix_atto^a"
+msgid "prefix_micro^µ"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:570
-msgid "prefix_zepto^z"
+msgid "prefix_nano^n"
 msgstr ""
 
 #: src/serialization/string_utils.cpp:571
+msgid "prefix_pico^p"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:572
+msgid "prefix_femto^f"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:573
+msgid "prefix_atto^a"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:574
+msgid "prefix_zepto^z"
+msgstr ""
+
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_yocto^y"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_kibi^K"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:588
 msgid "prefix_kilo^k"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:590
 msgid "prefix_mega^M"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:591
 msgid "prefix_giga^G"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:592
 msgid "prefix_tera^T"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:593
 msgid "prefix_peta^P"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:590
+#: src/serialization/string_utils.cpp:594
 msgid "prefix_exa^E"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:595
 msgid "prefix_zetta^Z"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:596
 msgid "prefix_yotta^Y"
 msgstr ""
 
-#: src/serialization/string_utils.cpp:606
+#: src/serialization/string_utils.cpp:610
 msgid "infix_binary^i"
 msgstr ""
 
@@ -8139,11 +8172,11 @@ msgstr "Aldea enemiga"
 msgid "Owned village"
 msgstr "Aldea pròpia"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size deuria estar entre 0.0 i 0.5."
 
-#: src/theme.cpp:574 src/theme.cpp:579
+#: src/theme.cpp:599 src/theme.cpp:604
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8259,6 +8292,16 @@ msgstr "Reemplaçar ab $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr ""
+
+#~ msgid "' (The game will now exit)"
+#~ msgstr "' (ara es tancarà el joc)."
+
+#~ msgid "ERROR DETAILS:"
+#~ msgstr "DETALLS DE L'ERRO:"
+
+#, fuzzy
+#~ msgid "$error, value '$value' at $pos"
+#~ msgstr "$error a $pos"
 
 #, fuzzy
 #~| msgid "Cancel"
@@ -8402,11 +8445,6 @@ msgstr ""
 #~ msgstr "Saltar l'animació"
 
 #, fuzzy
-#~| msgid "Close"
-#~ msgid "Close Map"
-#~ msgstr "Tancar"
-
-#, fuzzy
 #~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "Hora del dia"
@@ -8420,11 +8458,6 @@ msgstr ""
 #~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "Hora del dia"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "New Scenario"
-#~ msgstr "Fi de l'escenari"
 
 #, fuzzy
 #~| msgid "Load Game"

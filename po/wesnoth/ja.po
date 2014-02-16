@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2013-01-11 21:14+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team:  <wesnoth-ja-translate@lists.sourceforge.jp>\n"
@@ -2927,15 +2927,15 @@ msgstr "通行不能"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:306
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "霧"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
+#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "幕"
@@ -3170,775 +3170,6 @@ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc,Junicode-Regular.ttf"
 #, fuzzy
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei,Junicode"
-
-#. [tip]
-#: data/hardwired/tips.cfg:4
-msgid ""
-"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
-"event or ai coding."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:9
-#: data/hardwired/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>― Wesnoth 戦術ガイド</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:8
-msgid ""
-"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
-"advanced features."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:12
-msgid ""
-"Scenarios saved from the editor in their default folder can be selected in "
-"the mp create screen's <i>User Scenarios</i> section."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:16
-msgid ""
-"Don’t neglect to earn your leader experience! You need to keep him safe, but "
-"if you coddle him too much he may be too weak to survive future battles."
-msgstr ""
-"リーダーに経験を積ませることを怠ってはならない！ 彼を安全に保つ必要があるが、"
-"あまりに甘やかしすぎると、将来の戦闘を生き残るにはレベルが低すぎるということ"
-"になりかねない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:149
-msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>― 偉大なる魔法使い Delfador, 516YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:20
-msgid ""
-"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
-"highlight all the hexes your adversary can move to (assuming your units stay "
-"where they are). Use this to make sure the enemy can’t reach your weak or "
-"injured units on his next turn."
-msgstr ""
-"<b>「行動」</b>メニューにおいて<b>「敵の動きを見る」</b>を選ぶと、敵が動く可"
-"能性があるすべてのヘクスがハイライトされる（あなたのユニットが今いる場所にい"
-"ると仮定して）。次のターンに、弱い、あるいは傷ついたユニットに敵が到達できな"
-"いことを確認するためにこれを使え。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:21 data/hardwired/tips.cfg:33
-#: data/hardwired/tips.cfg:37 data/hardwired/tips.cfg:45
-#: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:65
-#: data/hardwired/tips.cfg:69 data/hardwired/tips.cfg:73
-#: data/hardwired/tips.cfg:77 data/hardwired/tips.cfg:81
-#: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:97
-#: data/hardwired/tips.cfg:101 data/hardwired/tips.cfg:113
-#: data/hardwired/tips.cfg:121 data/hardwired/tips.cfg:125
-#: data/hardwired/tips.cfg:133 data/hardwired/tips.cfg:157
-#: data/hardwired/tips.cfg:161 data/hardwired/tips.cfg:165
-#: data/hardwired/tips.cfg:173 data/hardwired/tips.cfg:181
-#: data/hardwired/tips.cfg:189 data/hardwired/tips.cfg:193
-#: data/hardwired/tips.cfg:201 data/hardwired/tips.cfg:205
-#: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:213
-#: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:241
-#: data/hardwired/tips.cfg:250
-msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "<i>― Wesnoth 戦術ガイド</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:24
-msgid ""
-"Units with the <i>Intelligent</i> trait need fewer experience points to "
-"level up. Early in a campaign, try to give killing blows to these units so "
-"you can get some high-level troops sooner."
-msgstr ""
-"「知的」特性を持ったユニットはレベルアップするために少ない経験しか必要としな"
-"い。キャンペーンの序盤では、これらのユニットにとどめを刺させるようにすればよ"
-"り早くレベルの高い軍隊を作り上げることができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:25
-msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>― Konrad 王, 536YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:28
-msgid ""
-"The encircling tactic is very powerful, particularly against fast opponents. "
-"By placing two units on opposite sides of an enemy, their zones of control "
-"will restrict it to one hex of movement in any direction. Unfortunately, you "
-"must completely surround skirmishers to immobilize them."
-msgstr ""
-"2 体のユニットで敵を取り囲む戦術は非常に強力である。特に素早い相手に対して。"
-"2 体のユニットを敵の両側に配置することで、彼らの支配ゾーンによってどの方向に"
-"も 1 ヘクスしか動くことができないよう制限することができる。しかし、散兵ユニッ"
-"トを移動不可能にするためには周囲 6 ヘクスを全て取り囲まければならない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:141
-msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>― Gweddry の自叙伝, 627YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:32
-msgid ""
-"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
-"clicking on a castle tile. That will let you choose the precise hex you put "
-"a unit in. Placing units wisely can sometimes let you reach a village a turn "
-"earlier."
-msgstr ""
-"城タイルの上で右クリックすることで「雇用」や「召還」コマンドを使用することが"
-"できる。これによって新しいユニットを配置するヘクスを選ぶことができる。賢明に"
-"ユニットを配置することにより、しばしば早いターンに村にたどり着くことができ"
-"る。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:36
-msgid ""
-"There are some helpful summary screens in the main menu: for instance, the "
-"<b>Status Table</b> will let you know how your enemies are doing, and how "
-"you are doing in comparison."
-msgstr ""
-"メインメニューにはいくつかの有用な概要を確認するための画面がある。例えば「ス"
-"テータス表」は、敵がどのようなことをしているか、またそれに対してあなたがどの"
-"ようなことをしているかを教えてくれる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:40
-msgid ""
-"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
-"can be very important when moving through difficult terrain such as water or "
-"caves. It can make the difference between being able to move one hex or two."
-msgstr ""
-"「敏捷」特性を持ったユニットは 1 ターンにつき 1 ヘクス追加で移動することがで"
-"きる。これは水中や洞窟のような通ることが難しい地形を通って移動する際に非常に"
-"重要である。1 ヘクスしか動けないか、2 ヘクス動けるかの違いをもたらす可能性が"
-"ある。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:41 data/hardwired/tips.cfg:117
-#: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:237
-msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>― 高級貴族 Kalenz, 470YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:44
-msgid ""
-"After you have played a few scenarios, read the <b>Gameplay</b> section in "
-"the <b>Help</b> screen carefully. Details become important as scenarios get "
-"harder!"
-msgstr ""
-"いくつかのシナリオをプレイしたら、ヘルプ画面の「ゲームの遊び方」セクションを"
-"注意深く読め。シナリオが難しくなると、些細な点が重要になってくる！"
-
-#. [tip]
-#: data/hardwired/tips.cfg:48
-msgid ""
-"It is usually better to start the next scenario in a campaign with lower-"
-"level units that are about to level up than with those same units at a "
-"higher level."
-msgstr ""
-"たいてい、キャンペーンにおいて次のシナリオを始めるとき、高いレベルのユニット"
-"で始めるよりもレベルアップの近い低いレベルの同じユニットで始める方が良い。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:52
-msgid ""
-"On www.wesnoth.org you can find strategy guides, technical support, the "
-"history of Wesnoth, and much more."
-msgstr ""
-"www.wesnoth.org において、戦術ガイド、技術サポート、Wesnoth の歴史、その他を"
-"読むことができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:53
-msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>― Wesnoth コミュニティー</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:56
-msgid ""
-"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
-"rare <i>liminal</i> units fight best during twilight."
-msgstr ""
-"<i>秩序</i>ユニットは昼間の戦闘に強く、<i>混沌</i>ユニットは夜間の戦闘に強"
-"い。<i>中立</i>ユニットは昼夜の影響を受けない。稀有な<i>薄明</i>ユニットは周"
-"囲が薄明かりの時のみ本来の力を出せる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:57
-msgid ""
-"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr ""
-"- 戦闘における専門用語についての最高の概要書 - 第 2 巻, （221YWの再版本より）"
-
-#. [tip]
-#: data/hardwired/tips.cfg:60
-msgid ""
-"An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr "適切な計画であっても、もし間違った時刻に攻撃すれば失敗しかねない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:61 data/hardwired/tips.cfg:85
-#: data/hardwired/tips.cfg:137 data/hardwired/tips.cfg:145
-#: data/hardwired/tips.cfg:229
-msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>― 戦術分析のハンドブック 第 1 巻 - Haldric II 世, 42YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:64
-msgid ""
-"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
-"know what you’re facing. In this case, long-range scouting units are worth "
-"their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
-msgstr ""
-"霧や幕の中でプレイしているときには、どんなものと向き合っているのか最初に知る"
-"ことはできない。この場合、長距離を移動できる偵察ユニットはそのコストに見合う"
-"価値がある。周りを取り囲んでいる地形を簡単に移動することができる偵察者を選択"
-"してみるのだ。ユニットは 1 ターンで移動することができるところまで見ることがで"
-"きるからだ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:68
-msgid ""
-"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
-"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
-"against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
-"affect it the most."
-msgstr ""
-"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして秘術による攻撃がある。そ"
-"れぞれのユニットは攻撃の種類によって異なる弱点を持っている。ユニットの上で右"
-"クリックして、「ユニットの解説」を選択すると、ユニットがそれぞれの攻撃の種類"
-"に対してどのくらい抵抗力を持っているか、またどの種類に最も影響されるかを見る"
-"ことができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:72
-msgid ""
-"The terrain occupied by your units is the main factor determining the chance "
-"that they will be hit. The defensive rating for the currently selected unit "
-"in the currently selected terrain is displayed in the top right corner of "
-"the screen."
-msgstr ""
-"ユニットが占領している地形によって、戦闘において敵がそのユニットに命中を与え"
-"る確率が決定する。選択中のユニットの選択中の地形における防御率は、画面の右上"
-"の隅に表示されている。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:76
-msgid ""
-"Poisoned units will lose eight hitpoints every turn until they are one point "
-"from dying. They will then remain at death’s door until the poison is "
-"removed. Healers can prevent a poisoned unit from deteriorating, but the "
-"poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
-msgstr ""
-"毒を受けているユニットは残り 1 ポイントになるまで毎ターンごとに最大で 8 ヒッ"
-"トポイントを失う。彼らは毒が取り除かれるまで死の入り口にいることになる。回復"
-"ユニットは毒を受けたユニットが悪化するのを防ぐことができるが、ユニットが再生"
-"能力を持っているか、村か「治療」能力を持ったユニットの隣で 1 ターン過ごさなけ"
-"れば毒を取り除くことはできない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:80
-msgid ""
-"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
-"the <b>Actions</b> menu. By recalling the same units over and over, you can "
-"build up a powerful and experienced army."
-msgstr ""
-"「アクション」メニューの「召還」を選択することで、前のシナリオからのユニット"
-"を再使用することができる。同じユニットを何度も何度も召還することで、強力で経"
-"験を積んだ軍隊を築き上げることが可能となる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:84
-msgid ""
-"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
-"around them. If a unit moves into an enemy’s zone of control, it may not "
-"move any further that turn. This means that units can have two empty hexes "
-"between them and still create a barrier to the enemy. Beware, though: "
-"skirmishers can pass through these gaps."
-msgstr ""
-"レベル 1 以上のユニットは隣接する各ヘクスに「支配ゾーン(ZOC)」を持っている。"
-"もしユニットが敵の支配ゾーンに入れば、そのターンにそれ以上移動することはでき"
-"ない。これは、ユニットの間に 2 つの無人のヘクスがあったとしても敵に対するバリ"
-"アを構築することができることを意味している。しかしながら、散兵ユニットはこの"
-"ゾーンを無視するスキルを持つ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:88
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain in which it is standing. However, magical attacks "
-"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
-"are guaranteed at least a 60% chance of a hit when they attack on their own "
-"turn."
-msgstr ""
-"敵ユニットに命中する確率は通常、そのユニットがいる地形で自分をどれだけ防御す"
-"ることができるかによる。しかしながら、魔法攻撃は常に 70% の確率で命中し、「射"
-"撃」能力を持っているユニットの攻撃は彼らのターンに攻撃したときには常に最低で"
-"も 60% の確率で命中する。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:89
-msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>― 戦術分析のハンドブック 第 2 巻 - Haldric II 世, 42YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:92
-msgid ""
-"Units stationed in villages will either heal eight hitpoints at the "
-"beginning of their turn, or will recover from poisoning."
-msgstr ""
-"村に駐留しているユニットはそのターンの開始時に 8 ヒットポイント回復するか、毒"
-"から回復する。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:96
-msgid ""
-"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
-"does not move or attack, it will recover two hitpoints at the beginning of "
-"its next turn."
-msgstr ""
-"必要がなければ、傷ついたユニットを動かすな。ユニットを休ませるのだ。ユニット"
-"が移動や攻撃をしなければ、次のターンの開始時に 2 ヒットポイント回復する。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:100
-msgid ""
-"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
-"units’ sightlines are limited by their maximum movement. If you have some "
-"valuable but slow units, keep at least one fast unit with them so that you "
-"are not caught out by a surprise attack."
-msgstr ""
-"「幕」や「戦雲（霧）」が有効になっているマップでは、ユニットの視界はそのユ"
-"ニットが最大で移動できる範囲に制限されている。特定の地形を偵察するのにどのユ"
-"ニットが最適かを決めるときにこのことを思い出すように。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:104
-msgid ""
-"Foot units tend to defend better in villages and castles than in other "
-"terrain types, while most mounted units do not gain any defensive advantages "
-"from villages or castles."
-msgstr ""
-"ほとんどの徒歩ユニットは村と城において、他の地形よりもよりよく防御することが"
-"できるという傾向があるが、ほとんどの乗馬ユニットは村や城での防御上の利点を受"
-"けることは全くない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:105 data/hardwired/tips.cfg:185
-msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>― Kaylan 卿, 498YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:108
-msgid ""
-"Horse-based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"馬に乗ったユニットは全般的に、斬撃や打撃といった攻撃には耐性があるが、弓や槍"
-"などの貫通する武器での攻撃には弱い。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:109
-msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>― Kaylan 卿, 502YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain eight experience points for "
-"every level of the unit they kill, or four experience points for a zero-"
-"level opponent."
-msgstr ""
-"敵ユニットにとどめの一撃を与えることが、経験を得る最も良い方法である。敵を殺"
-"したユニットは、その敵のレベルの 8 倍の経験値を得られる。あるいは、レベル 0 "
-"の敵については 4 ポイントの経験値を得られる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:116
-msgid ""
-"Elvish units move and fight well in forest. Dwarvish units move and fight "
-"well in hills, mountains and caves."
-msgstr ""
-"エルフ族のユニットは、森における移動や戦闘が得意である。ドワーフ族のユニット"
-"は、丘や山、洞窟における移動や攻撃を得意とする。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:120
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"忍耐はしばしば鍵となる。悪条件や少数軍で攻撃するよりも、より良い条件になるま"
-"で待ってから攻撃するとよい。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:124
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"もし多方面からの攻撃を受けたなら、敵ユニットを遅らせるため、何方向かに損害覚"
-"悟のユニットを送るのも良い考えかもしれない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:128
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"退却や再編成することを怖れてはいけない。それは、しばしば勝利への鍵となる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:129
-msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>― Meneldur, 123YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:132
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns "
-"remaining. You will usually earn more gold this way than through capturing "
-"villages and waiting for the turns to run out."
-msgstr ""
-"多くのキャンペーンにおいて、早期終了すると、マップ上の村の数と残りターン数に"
-"応じて、ゴールドでボーナスを受け取る。こちらの方が、村を占領してターンが尽き"
-"るまで待ったりするよりも多くのゴールドを稼ぐことになるだろう。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:136
-msgid ""
-"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
-"not just the keep they start on. Sometimes your allies may be willing to "
-"make room for you on their keep so you can recruit from there, and you can "
-"even capture an enemy’s keep and use that."
-msgstr ""
-"あなたのリーダーは、スタート地点だけでなく、どの城内の主塔からもユニットを雇"
-"用したり召還することができる。敵から主塔を奪って、そこから雇用することもでき"
-"る。また、あなたの同盟軍のあるものは、主塔の場所をあなたのために空けて、そこ"
-"から雇用できるようにしてくれるかもしれない。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:140
-msgid ""
-"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
-"vulnerable to impact, fire, and arcane attacks."
-msgstr ""
-"スケルトンは、貫通、斬撃、冷気による攻撃に耐性があるが、打撃、火炎、秘術によ"
-"る攻撃には弱い。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:144
-msgid ""
-"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
-"the same side fight better. You can move these units slowly along your "
-"battle lines and give bonuses to large numbers of lower-level troops."
-msgstr ""
-"「統率」能力をもつユニットは、隣接する、同陣営で自分より低レベルのユニットの"
-"戦闘力をより良くしてくれる。他のユニットをより早くレベルアップさせるために"
-"リーダーを使うのだ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:148
-msgid ""
-"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
-"the village and attack you, while enjoying the defense and healing of the "
-"village."
-msgstr ""
-"未占拠の村の隣に移動することは避けた方がよい。敵ユニットがその村に移動し、村"
-"の防御力と回復効果を享受しながらあなたを攻撃してくるかもしれないからだ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:152
-msgid "Use lines of troops to screen your injured units while they recover."
-msgstr "負傷したユニットの回復を待つ間は軍団のラインを使えばいいわ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:153
-msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>― Li’sar 王女, 515YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:156
-msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "設定メニューのホットキーの一覧を読んでみよ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:160
-msgid ""
-"If you move a unit, but don’t attack or discover any additional information, "
-"you can undo your move by pressing <b>u</b>."
-msgstr ""
-"もし、ユニットを動かしても、攻撃をしたり、何か追加情報を発見したりしていない"
-"なら、'u' を押してその移動を元に戻す（アンドゥ）ことができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:164
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"敵ユニットがどれだけの距離を移動できるかは、マウスカーソルをそのユニットの上"
-"に当てることで、見ることができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:168
-msgid ""
-"Use healers to support your attacks — they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-"回復させる者を攻撃のサポートに用いよ - 彼等は自身では何も攻撃せずとも、あなた"
-"を戦いに勝利させてくれるだろう。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:169 data/hardwired/tips.cfg:217
-msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>― Chantal の巻物, 516YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:172
-msgid ""
-"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
-"they do on all attacks until they end a turn."
-msgstr ""
-"「遅化」攻撃の能力は敵ユニットを遅くし、彼らのターンが終わるまで敵ユニットの"
-"攻撃によるダメージを半減させる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:176
-msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "<i>秘術</i>による攻撃はアンデッドに対して大変強力である。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:177
-msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>― 偉大なる賢者 Dacyn, 626YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:180
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-"ユニットはレベルが上がると回復する。これを賢く使えば、戦いに逆転することもで"
-"きる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:184
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr "突撃ユニットは、一撃で倒すことのできる敵に対して最も役立つ。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:188
-msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
-"benefits of advancing a level, so it is generally wiser to advance your "
-"lower-level units instead."
-msgstr ""
-"レベルの高いユニットは、レベルアップの代わりに、「最高位後昇進（AMLA）」を得"
-"ることができる。これは通常ユニットの最大 HP を 3 増加させるとともに完全に回復"
-"させる。これはレベルアップによって得られる通常の変化よりも効果が小さい。従っ"
-"て、低いレベルのユニットを成長させるようにする方がたいていは有益である。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:192
-msgid ""
-"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-"mouse pointer over any button or icon to get a description or explanation of "
-"what it does."
-msgstr ""
-"Wesnoth のゲーム画面にあるほとんどすべてのアイコンや単語にはツールティップが"
-"ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:196
-msgid ""
-"To advance low-level units quickly, team them with a veteran and use the "
-"veteran to damage a joint target heavily enough for the junior partner to "
-"get in the killing blow."
-msgstr ""
-"レベルの低いユニットを早くレベルアップさせるためには、ベテランユニットとチー"
-"ムを組ませ、共通のターゲットに対してベテランにダメージを十分与えさせ、若手の"
-"パートナーに致死となる一撃を与えさせるのがよい。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:197
-msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>― Li’sar 女王, 528YW</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:200
-msgid ""
-"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
-"the <b>Delay Shroud Updates</b> option when you need to move units while "
-"retaining the ability to undo, or use the new Whiteboard planning tool."
-msgstr ""
-"霧や幕を取り除くような動きは取り消すことができない。「幕の更新を遅らせる」オ"
-"プションで設定を切り替えることができる。ユニットの移動取り消しを維持したい"
-"か、または新たな行動予定計画ツールを使うのであれば。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:204
-msgid ""
-"If an enemy benefits more from a rare terrain type than you do, occupying "
-"that terrain will deprive them of its benefits."
-msgstr ""
-"もし、珍しい地形タイプにおいて敵があなたよりも利益を受けるのであれば、その地"
-"形を占拠することによって彼らの利益を奪うことができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:208
-msgid ""
-"Few units have good defenses in water; a line of attackers along the edge of "
-"a river can inflict heavy casualties. Elves can use the edge of a forest in "
-"a similar manner, and dwarves can do the same with mountains."
-msgstr ""
-"水中で高い防御力を発揮できるユニットはほとんどいない。そのため、川の水際に"
-"そって攻撃ユニットを配置することによって甚大な被害を与えることができる。同様"
-"に、森のふちにエルフを配置したり、山々にドワーフを配置することによって同じよ"
-"うな効果を発揮することができる。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:212
-msgid ""
-"In many campaign scenarios, you may issue simple instructions for your "
-"computer-controlled allies using the right-click context menu."
-msgstr ""
-"多くのキャンペーンシナリオでは、右クリックのコンテキストメニューを使って、コ"
-"ンピュータが操作する友軍に単純な指示を発行するかもしれません。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:216
-msgid ""
-"The <i>Slow</i> ability is extremely powerful because it has such wide-"
-"ranging effects. Enemy undead get half the normal benefit from their "
-"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
-"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
-"to escape; slow enemies are almost immobilized, and your own units suffer "
-"less retaliation damage, so it’s quicker to heal them."
-msgstr ""
-"「遅化」能力は多くの効果があるため非常に強力です。敵がアンデッドであっても"
-"「生命吸収」能力からの利益は半減しますし、「突撃」や「奇襲」による攻撃力倍増"
-"効果も無効にされます、また「狂戦」能力も弱体化されます。いつもは素早い敵でも"
-"脱出するのに四苦八苦するでしょうし、ただでさえ遅い敵なら、ほとんど移動不可能"
-"になるでしょう。一方あなたのユニットは敵の反撃によるダメージが軽減され、よっ"
-"て回復もしやすいでしょう。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:220
-msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
-"This gives you another try whenever your first devastating attack misses — "
-"as inevitably happens from time to time."
-msgstr ""
-"少ない回数ながら命中すれば強力な攻撃を持つユニット—たとえば暗黒僧・騎兵・オー"
-"クの兵卒・ドワーフの銃撃兵—を二つか三つを一組にして運用してみてください。. そ"
-"うすれば最初の攻撃が失敗（常に起こる可能性があります）しても次の攻撃ができま"
-"す。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:224
-msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
-msgstr ""
-"三回以上の攻撃回数を持つユニット—特に魔法攻撃に多い—はヒットポイントが残り少"
-"ない敵に最後の止めをさすのに向いています。一撃の命中では倒せない敵を相手にす"
-"る時には、「統率」の支援を受けるか「強力」や「器用」なユニットであれば理想的"
-"です。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:228
-msgid ""
-"Think twice before dismissing any unit from your recall list, no matter how "
-"little experience it has. Sometimes it’s worth paying a premium to know "
-"exactly what traits a new arrival will have."
-msgstr ""
-"あなたの召還リストからユニットを解雇する時はよく考え直してからにしてくださ"
-"い。それが経験値の少ないユニットだったとしてもです。その特性が既にわかってい"
-"ることは新しく雇用するよりも価値を持つ場合があります。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:232
-msgid ""
-"When a tough unit is heavily injured, send it to heal in a village several "
-"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
-"hitpoints per turn) without tying up front-line villages."
-msgstr ""
-"高級ユニットが深刻なダメージを受けている時には、戦場から後退させて村で回復さ"
-"せましょう。そうすれば、そのユニットは前線の村と違って平和にターンあたり 10 "
-"ヒットポイントずつ回復できます。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:233 data/hardwired/tips.cfg:245
-msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― Knalga のドワーフ王 Hamel</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:236
-msgid ""
-"Combining multiple special abilities can be deadly. While it may take some "
-"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
-"<i>Charge</i> against a slowed opponent, the results can be impressive."
-msgstr ""
-"複数の特殊能力が重なると致命的です。たとえば、「統率」「照明」「突撃」の効果"
-"を同時に受けるユニットが「遅化」された敵ユニットを攻撃するような場合です。そ"
-"の結果は劇的です。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:240
-msgid ""
-"While finishing early gives a gold bonus, and reduces the opportunities for "
-"enemies to kill your valuable troops, it also means you lose chances to earn "
-"your units extra experience. When deciding whether or not to finish a "
-"scenario early, weigh these factors against one another."
-msgstr ""
-"シナリオ早期終了するとゴールドでボーナスが与えられますし、あなたの軍隊で貴重"
-"なユニットを殺される可能性も低下させられます。しかし、経験値獲得の機会を少な"
-"くすることでもあります。シナリオ早期終了するかどうか決定する時はこれらの各要"
-"素の重要性を比較しましょう。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:244
-msgid ""
-"If your forces have weak defenses everywhere on the map, occupy the areas "
-"where your enemies can only attack you by sharing the same disadvantages. "
-"Avoid places where your defenses are poor and your enemy’s are merely "
-"average. Plan for heavy losses, and take firm control of any hex where the "
-"land does favor you."
-msgstr ""
-"もし、あなたの軍隊がマップ上の全ての場所で低い地形効果しか得られないならば、"
-"敵にも同じ不利を与えられる場所を占領するべきです。あなたの防御が弱いのに敵の"
-"防御は平均的という場所は避けましょう。戦場であなたに有利な場所をしっかり管理"
-"し続けることを計画しましょう。"
-
-#. [tip]
-#: data/hardwired/tips.cfg:249
-msgid ""
-"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
-"if they occupy a village hex, they do not gain any defensive benefits from "
-"the village, although they will still be healed."
-msgstr ""
-"コウモリや野生動物のような「野生」ユニットは村を避けて移動します。もし、村ヘ"
-"クスを占領したとしても、それらは村での防御力の向上が一切ありません、しかし回"
-"復はします。"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -4224,6 +3455,764 @@ msgstr "移動"
 #: data/themes/widescreen.cfg:530 data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."
 msgstr "地形防御"
+
+#. [tip]
+#: data/tips.cfg:4
+msgid ""
+"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
+"event or ai coding."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
+#, fuzzy
+#| msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgid "<i>― The Wesnoth Design Guide</i>"
+msgstr "<i>― Wesnoth 戦術ガイド</i>"
+
+#. [tip]
+#: data/tips.cfg:8
+msgid ""
+"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
+"advanced features."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:12
+msgid ""
+"Scenarios saved from the editor in their default folder can be selected in "
+"the mp create screen's <i>User Scenarios</i> section."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:16
+msgid ""
+"Don’t neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be too weak to survive future battles."
+msgstr ""
+"リーダーに経験を積ませることを怠ってはならない！ 彼を安全に保つ必要があるが、"
+"あまりに甘やかしすぎると、将来の戦闘を生き残るにはレベルが低すぎるということ"
+"になりかねない。"
+
+#. [tip]
+#: data/tips.cfg:17 data/tips.cfg:149
+msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgstr "<i>― 偉大なる魔法使い Delfador, 516YW</i>"
+
+#. [tip]
+#: data/tips.cfg:20
+msgid ""
+"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
+"highlight all the hexes your adversary can move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can’t reach your weak or "
+"injured units on his next turn."
+msgstr ""
+"<b>「行動」</b>メニューにおいて<b>「敵の動きを見る」</b>を選ぶと、敵が動く可"
+"能性があるすべてのヘクスがハイライトされる（あなたのユニットが今いる場所にい"
+"ると仮定して）。次のターンに、弱い、あるいは傷ついたユニットに敵が到達できな"
+"いことを確認するためにこれを使え。"
+
+#. [tip]
+#: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
+#: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
+#: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
+#: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
+#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
+#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
+#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
+#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:250
+msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgstr "<i>― Wesnoth 戦術ガイド</i>"
+
+#. [tip]
+#: data/tips.cfg:24
+msgid ""
+"Units with the <i>Intelligent</i> trait need fewer experience points to "
+"level up. Early in a campaign, try to give killing blows to these units so "
+"you can get some high-level troops sooner."
+msgstr ""
+"「知的」特性を持ったユニットはレベルアップするために少ない経験しか必要としな"
+"い。キャンペーンの序盤では、これらのユニットにとどめを刺させるようにすればよ"
+"り早くレベルの高い軍隊を作り上げることができる。"
+
+#. [tip]
+#: data/tips.cfg:25
+msgid "<i>― King Konrad, 536YW</i>"
+msgstr "<i>― Konrad 王, 536YW</i>"
+
+#. [tip]
+#: data/tips.cfg:28
+msgid ""
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction. Unfortunately, you "
+"must completely surround skirmishers to immobilize them."
+msgstr ""
+"2 体のユニットで敵を取り囲む戦術は非常に強力である。特に素早い相手に対して。"
+"2 体のユニットを敵の両側に配置することで、彼らの支配ゾーンによってどの方向に"
+"も 1 ヘクスしか動くことができないよう制限することができる。しかし、散兵ユニッ"
+"トを移動不可能にするためには周囲 6 ヘクスを全て取り囲まければならない。"
+
+#. [tip]
+#: data/tips.cfg:29 data/tips.cfg:141
+msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+msgstr "<i>― Gweddry の自叙伝, 627YW</i>"
+
+#. [tip]
+#: data/tips.cfg:32
+msgid ""
+"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
+"clicking on a castle tile. That will let you choose the precise hex you put "
+"a unit in. Placing units wisely can sometimes let you reach a village a turn "
+"earlier."
+msgstr ""
+"城タイルの上で右クリックすることで「雇用」や「召還」コマンドを使用することが"
+"できる。これによって新しいユニットを配置するヘクスを選ぶことができる。賢明に"
+"ユニットを配置することにより、しばしば早いターンに村にたどり着くことができ"
+"る。"
+
+#. [tip]
+#: data/tips.cfg:36
+msgid ""
+"There are some helpful summary screens in the main menu: for instance, the "
+"<b>Status Table</b> will let you know how your enemies are doing, and how "
+"you are doing in comparison."
+msgstr ""
+"メインメニューにはいくつかの有用な概要を確認するための画面がある。例えば「ス"
+"テータス表」は、敵がどのようなことをしているか、またそれに対してあなたがどの"
+"ようなことをしているかを教えてくれる。"
+
+#. [tip]
+#: data/tips.cfg:40
+msgid ""
+"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
+"can be very important when moving through difficult terrain such as water or "
+"caves. It can make the difference between being able to move one hex or two."
+msgstr ""
+"「敏捷」特性を持ったユニットは 1 ターンにつき 1 ヘクス追加で移動することがで"
+"きる。これは水中や洞窟のような通ることが難しい地形を通って移動する際に非常に"
+"重要である。1 ヘクスしか動けないか、2 ヘクス動けるかの違いをもたらす可能性が"
+"ある。"
+
+#. [tip]
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+msgid "<i>― High Lord Kalenz, 470YW</i>"
+msgstr "<i>― 高級貴族 Kalenz, 470YW</i>"
+
+#. [tip]
+#: data/tips.cfg:44
+msgid ""
+"After you have played a few scenarios, read the <b>Gameplay</b> section in "
+"the <b>Help</b> screen carefully. Details become important as scenarios get "
+"harder!"
+msgstr ""
+"いくつかのシナリオをプレイしたら、ヘルプ画面の「ゲームの遊び方」セクションを"
+"注意深く読め。シナリオが難しくなると、些細な点が重要になってくる！"
+
+#. [tip]
+#: data/tips.cfg:48
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+"たいてい、キャンペーンにおいて次のシナリオを始めるとき、高いレベルのユニット"
+"で始めるよりもレベルアップの近い低いレベルの同じユニットで始める方が良い。"
+
+#. [tip]
+#: data/tips.cfg:52
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+"www.wesnoth.org において、戦術ガイド、技術サポート、Wesnoth の歴史、その他を"
+"読むことができる。"
+
+#. [tip]
+#: data/tips.cfg:53
+msgid "<i>― The Wesnoth Community</i>"
+msgstr "<i>― Wesnoth コミュニティー</i>"
+
+#. [tip]
+#: data/tips.cfg:56
+msgid ""
+"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>liminal</i> units fight best during twilight."
+msgstr ""
+"<i>秩序</i>ユニットは昼間の戦闘に強く、<i>混沌</i>ユニットは夜間の戦闘に強"
+"い。<i>中立</i>ユニットは昼夜の影響を受けない。稀有な<i>薄明</i>ユニットは周"
+"囲が薄明かりの時のみ本来の力を出せる。"
+
+#. [tip]
+#: data/tips.cfg:57
+msgid ""
+"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
+msgstr ""
+"- 戦闘における専門用語についての最高の概要書 - 第 2 巻, （221YWの再版本より）"
+
+#. [tip]
+#: data/tips.cfg:60
+msgid ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr "適切な計画であっても、もし間違った時刻に攻撃すれば失敗しかねない。"
+
+#. [tip]
+#: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
+#: data/tips.cfg:229
+msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
+msgstr "<i>― 戦術分析のハンドブック 第 1 巻 - Haldric II 世, 42YW</i>"
+
+#. [tip]
+#: data/tips.cfg:64
+msgid ""
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
+"know what you’re facing. In this case, long-range scouting units are worth "
+"their cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units can only see as far as they can move in one turn."
+msgstr ""
+"霧や幕の中でプレイしているときには、どんなものと向き合っているのか最初に知る"
+"ことはできない。この場合、長距離を移動できる偵察ユニットはそのコストに見合う"
+"価値がある。周りを取り囲んでいる地形を簡単に移動することができる偵察者を選択"
+"してみるのだ。ユニットは 1 ターンで移動することができるところまで見ることがで"
+"きるからだ。"
+
+#. [tip]
+#: data/tips.cfg:68
+msgid ""
+"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
+"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
+msgstr ""
+"戦闘には６種類、貫通、斬撃、打撃、火炎、冷気、そして秘術による攻撃がある。そ"
+"れぞれのユニットは攻撃の種類によって異なる弱点を持っている。ユニットの上で右"
+"クリックして、「ユニットの解説」を選択すると、ユニットがそれぞれの攻撃の種類"
+"に対してどのくらい抵抗力を持っているか、またどの種類に最も影響されるかを見る"
+"ことができる。"
+
+#. [tip]
+#: data/tips.cfg:72
+msgid ""
+"The terrain occupied by your units is the main factor determining the chance "
+"that they will be hit. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top right corner of "
+"the screen."
+msgstr ""
+"ユニットが占領している地形によって、戦闘において敵がそのユニットに命中を与え"
+"る確率が決定する。選択中のユニットの選択中の地形における防御率は、画面の右上"
+"の隅に表示されている。"
+
+#. [tip]
+#: data/tips.cfg:76
+msgid ""
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from dying. They will then remain at death’s door until the poison is "
+"removed. Healers can prevent a poisoned unit from deteriorating, but the "
+"poison will not be removed unless the unit regenerates, or begins a turn in "
+"a village or next to a unit with the <i>Cures</i> ability."
+msgstr ""
+"毒を受けているユニットは残り 1 ポイントになるまで毎ターンごとに最大で 8 ヒッ"
+"トポイントを失う。彼らは毒が取り除かれるまで死の入り口にいることになる。回復"
+"ユニットは毒を受けたユニットが悪化するのを防ぐことができるが、ユニットが再生"
+"能力を持っているか、村か「治療」能力を持ったユニットの隣で 1 ターン過ごさなけ"
+"れば毒を取り除くことはできない。"
+
+#. [tip]
+#: data/tips.cfg:80
+msgid ""
+"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
+"the <b>Actions</b> menu. By recalling the same units over and over, you can "
+"build up a powerful and experienced army."
+msgstr ""
+"「アクション」メニューの「召還」を選択することで、前のシナリオからのユニット"
+"を再使用することができる。同じユニットを何度も何度も召還することで、強力で経"
+"験を積んだ軍隊を築き上げることが可能となる。"
+
+#. [tip]
+#: data/tips.cfg:84
+msgid ""
+"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
+"around them. If a unit moves into an enemy’s zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. Beware, though: "
+"skirmishers can pass through these gaps."
+msgstr ""
+"レベル 1 以上のユニットは隣接する各ヘクスに「支配ゾーン(ZOC)」を持っている。"
+"もしユニットが敵の支配ゾーンに入れば、そのターンにそれ以上移動することはでき"
+"ない。これは、ユニットの間に 2 つの無人のヘクスがあったとしても敵に対するバリ"
+"アを構築することができることを意味している。しかしながら、散兵ユニットはこの"
+"ゾーンを無視するスキルを持つ。"
+
+#. [tip]
+#: data/tips.cfg:88
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
+"are guaranteed at least a 60% chance of a hit when they attack on their own "
+"turn."
+msgstr ""
+"敵ユニットに命中する確率は通常、そのユニットがいる地形で自分をどれだけ防御す"
+"ることができるかによる。しかしながら、魔法攻撃は常に 70% の確率で命中し、「射"
+"撃」能力を持っているユニットの攻撃は彼らのターンに攻撃したときには常に最低で"
+"も 60% の確率で命中する。"
+
+#. [tip]
+#: data/tips.cfg:89
+msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
+msgstr "<i>― 戦術分析のハンドブック 第 2 巻 - Haldric II 世, 42YW</i>"
+
+#. [tip]
+#: data/tips.cfg:92
+msgid ""
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
+msgstr ""
+"村に駐留しているユニットはそのターンの開始時に 8 ヒットポイント回復するか、毒"
+"から回復する。"
+
+#. [tip]
+#: data/tips.cfg:96
+msgid ""
+"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
+msgstr ""
+"必要がなければ、傷ついたユニットを動かすな。ユニットを休ませるのだ。ユニット"
+"が移動や攻撃をしなければ、次のターンの開始時に 2 ヒットポイント回復する。"
+
+#. [tip]
+#: data/tips.cfg:100
+msgid ""
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ sightlines are limited by their maximum movement. If you have some "
+"valuable but slow units, keep at least one fast unit with them so that you "
+"are not caught out by a surprise attack."
+msgstr ""
+"「幕」や「戦雲（霧）」が有効になっているマップでは、ユニットの視界はそのユ"
+"ニットが最大で移動できる範囲に制限されている。特定の地形を偵察するのにどのユ"
+"ニットが最適かを決めるときにこのことを思い出すように。"
+
+#. [tip]
+#: data/tips.cfg:104
+msgid ""
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
+msgstr ""
+"ほとんどの徒歩ユニットは村と城において、他の地形よりもよりよく防御することが"
+"できるという傾向があるが、ほとんどの乗馬ユニットは村や城での防御上の利点を受"
+"けることは全くない。"
+
+#. [tip]
+#: data/tips.cfg:105 data/tips.cfg:185
+msgid "<i>― Sir Kaylan, 498YW</i>"
+msgstr "<i>― Kaylan 卿, 498YW</i>"
+
+#. [tip]
+#: data/tips.cfg:108
+msgid ""
+"Horse-based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"馬に乗ったユニットは全般的に、斬撃や打撃といった攻撃には耐性があるが、弓や槍"
+"などの貫通する武器での攻撃には弱い。"
+
+#. [tip]
+#: data/tips.cfg:109
+msgid "<i>― Sir Kaylan, 502YW</i>"
+msgstr "<i>― Kaylan 卿, 502YW</i>"
+
+#. [tip]
+#: data/tips.cfg:112
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
+msgstr ""
+"敵ユニットにとどめの一撃を与えることが、経験を得る最も良い方法である。敵を殺"
+"したユニットは、その敵のレベルの 8 倍の経験値を得られる。あるいは、レベル 0 "
+"の敵については 4 ポイントの経験値を得られる。"
+
+#. [tip]
+#: data/tips.cfg:116
+msgid ""
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
+msgstr ""
+"エルフ族のユニットは、森における移動や戦闘が得意である。ドワーフ族のユニット"
+"は、丘や山、洞窟における移動や攻撃を得意とする。"
+
+#. [tip]
+#: data/tips.cfg:120
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"忍耐はしばしば鍵となる。悪条件や少数軍で攻撃するよりも、より良い条件になるま"
+"で待ってから攻撃するとよい。"
+
+#. [tip]
+#: data/tips.cfg:124
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"もし多方面からの攻撃を受けたなら、敵ユニットを遅らせるため、何方向かに損害覚"
+"悟のユニットを送るのも良い考えかもしれない。"
+
+#. [tip]
+#: data/tips.cfg:128
+msgid ""
+"Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr ""
+"退却や再編成することを怖れてはいけない。それは、しばしば勝利への鍵となる。"
+
+#. [tip]
+#: data/tips.cfg:129
+msgid "<i>― Meneldur, 123YW</i>"
+msgstr "<i>― Meneldur, 123YW</i>"
+
+#. [tip]
+#: data/tips.cfg:132
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map and the number of turns "
+"remaining. You will usually earn more gold this way than through capturing "
+"villages and waiting for the turns to run out."
+msgstr ""
+"多くのキャンペーンにおいて、早期終了すると、マップ上の村の数と残りターン数に"
+"応じて、ゴールドでボーナスを受け取る。こちらの方が、村を占領してターンが尽き"
+"るまで待ったりするよりも多くのゴールドを稼ぐことになるだろう。"
+
+#. [tip]
+#: data/tips.cfg:136
+msgid ""
+"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
+"not just the keep they start on. Sometimes your allies may be willing to "
+"make room for you on their keep so you can recruit from there, and you can "
+"even capture an enemy’s keep and use that."
+msgstr ""
+"あなたのリーダーは、スタート地点だけでなく、どの城内の主塔からもユニットを雇"
+"用したり召還することができる。敵から主塔を奪って、そこから雇用することもでき"
+"る。また、あなたの同盟軍のあるものは、主塔の場所をあなたのために空けて、そこ"
+"から雇用できるようにしてくれるかもしれない。"
+
+#. [tip]
+#: data/tips.cfg:140
+msgid ""
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
+"vulnerable to impact, fire, and arcane attacks."
+msgstr ""
+"スケルトンは、貫通、斬撃、冷気による攻撃に耐性があるが、打撃、火炎、秘術によ"
+"る攻撃には弱い。"
+
+#. [tip]
+#: data/tips.cfg:144
+msgid ""
+"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
+"the same side fight better. You can move these units slowly along your "
+"battle lines and give bonuses to large numbers of lower-level troops."
+msgstr ""
+"「統率」能力をもつユニットは、隣接する、同陣営で自分より低レベルのユニットの"
+"戦闘力をより良くしてくれる。他のユニットをより早くレベルアップさせるために"
+"リーダーを使うのだ。"
+
+#. [tip]
+#: data/tips.cfg:148
+msgid ""
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
+msgstr ""
+"未占拠の村の隣に移動することは避けた方がよい。敵ユニットがその村に移動し、村"
+"の防御力と回復効果を享受しながらあなたを攻撃してくるかもしれないからだ。"
+
+#. [tip]
+#: data/tips.cfg:152
+msgid "Use lines of troops to screen your injured units while they recover."
+msgstr "負傷したユニットの回復を待つ間は軍団のラインを使えばいいわ。"
+
+#. [tip]
+#: data/tips.cfg:153
+msgid "<i>― Princess Li’sar, 515YW</i>"
+msgstr "<i>― Li’sar 王女, 515YW</i>"
+
+#. [tip]
+#: data/tips.cfg:156
+msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
+msgstr "設定メニューのホットキーの一覧を読んでみよ。"
+
+#. [tip]
+#: data/tips.cfg:160
+msgid ""
+"If you move a unit, but don’t attack or discover any additional information, "
+"you can undo your move by pressing <b>u</b>."
+msgstr ""
+"もし、ユニットを動かしても、攻撃をしたり、何か追加情報を発見したりしていない"
+"なら、'u' を押してその移動を元に戻す（アンドゥ）ことができる。"
+
+#. [tip]
+#: data/tips.cfg:164
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"敵ユニットがどれだけの距離を移動できるかは、マウスカーソルをそのユニットの上"
+"に当てることで、見ることができる。"
+
+#. [tip]
+#: data/tips.cfg:168
+msgid ""
+"Use healers to support your attacks — they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+"回復させる者を攻撃のサポートに用いよ - 彼等は自身では何も攻撃せずとも、あなた"
+"を戦いに勝利させてくれるだろう。"
+
+#. [tip]
+#: data/tips.cfg:169 data/tips.cfg:217
+msgid "<i>― The Scroll of Chantal, 516YW</i>"
+msgstr "<i>― Chantal の巻物, 516YW</i>"
+
+#. [tip]
+#: data/tips.cfg:172
+msgid ""
+"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
+"they do on all attacks until they end a turn."
+msgstr ""
+"「遅化」攻撃の能力は敵ユニットを遅くし、彼らのターンが終わるまで敵ユニットの"
+"攻撃によるダメージを半減させる。"
+
+#. [tip]
+#: data/tips.cfg:176
+msgid "<i>Arcane</i> attacks are very powerful against undead."
+msgstr "<i>秘術</i>による攻撃はアンデッドに対して大変強力である。"
+
+#. [tip]
+#: data/tips.cfg:177
+msgid "<i>― Great Sage Dacyn, 626YW</i>"
+msgstr "<i>― 偉大なる賢者 Dacyn, 626YW</i>"
+
+#. [tip]
+#: data/tips.cfg:180
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+"ユニットはレベルが上がると回復する。これを賢く使えば、戦いに逆転することもで"
+"きる。"
+
+#. [tip]
+#: data/tips.cfg:184
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr "突撃ユニットは、一撃で倒すことのできる敵に対して最も役立つ。"
+
+#. [tip]
+#: data/tips.cfg:188
+msgid ""
+"Instead of leveling up, high-level units gain an <i>After Maximum Level "
+"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+"hitpoints by three and fully heals it. This is much less than the normal "
+"benefits of advancing a level, so it is generally wiser to advance your "
+"lower-level units instead."
+msgstr ""
+"レベルの高いユニットは、レベルアップの代わりに、「最高位後昇進（AMLA）」を得"
+"ることができる。これは通常ユニットの最大 HP を 3 増加させるとともに完全に回復"
+"させる。これはレベルアップによって得られる通常の変化よりも効果が小さい。従っ"
+"て、低いレベルのユニットを成長させるようにする方がたいていは有益である。"
+
+#. [tip]
+#: data/tips.cfg:192
+msgid ""
+"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
+"mouse pointer over any button or icon to get a description or explanation of "
+"what it does."
+msgstr ""
+"Wesnoth のゲーム画面にあるほとんどすべてのアイコンや単語にはツールティップが"
+"ある。マウスポインタをその上に置けば、説明や詳細を見ることができる。"
+
+#. [tip]
+#: data/tips.cfg:196
+msgid ""
+"To advance low-level units quickly, team them with a veteran and use the "
+"veteran to damage a joint target heavily enough for the junior partner to "
+"get in the killing blow."
+msgstr ""
+"レベルの低いユニットを早くレベルアップさせるためには、ベテランユニットとチー"
+"ムを組ませ、共通のターゲットに対してベテランにダメージを十分与えさせ、若手の"
+"パートナーに致死となる一撃を与えさせるのがよい。"
+
+#. [tip]
+#: data/tips.cfg:197
+msgid "<i>― Queen Li’sar, 528YW</i>"
+msgstr "<i>― Li’sar 女王, 528YW</i>"
+
+#. [tip]
+#: data/tips.cfg:200
+msgid ""
+"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
+"the <b>Delay Shroud Updates</b> option when you need to move units while "
+"retaining the ability to undo, or use the new Whiteboard planning tool."
+msgstr ""
+"霧や幕を取り除くような動きは取り消すことができない。「幕の更新を遅らせる」オ"
+"プションで設定を切り替えることができる。ユニットの移動取り消しを維持したい"
+"か、または新たな行動予定計画ツールを使うのであれば。"
+
+#. [tip]
+#: data/tips.cfg:204
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+"もし、珍しい地形タイプにおいて敵があなたよりも利益を受けるのであれば、その地"
+"形を占拠することによって彼らの利益を奪うことができる。"
+
+#. [tip]
+#: data/tips.cfg:208
+msgid ""
+"Few units have good defenses in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+"水中で高い防御力を発揮できるユニットはほとんどいない。そのため、川の水際に"
+"そって攻撃ユニットを配置することによって甚大な被害を与えることができる。同様"
+"に、森のふちにエルフを配置したり、山々にドワーフを配置することによって同じよ"
+"うな効果を発揮することができる。"
+
+#. [tip]
+#: data/tips.cfg:212
+msgid ""
+"In many campaign scenarios, you may issue simple instructions for your "
+"computer-controlled allies using the right-click context menu."
+msgstr ""
+"多くのキャンペーンシナリオでは、右クリックのコンテキストメニューを使って、コ"
+"ンピュータが操作する友軍に単純な指示を発行するかもしれません。"
+
+#. [tip]
+#: data/tips.cfg:216
+msgid ""
+"The <i>Slow</i> ability is extremely powerful because it has such wide-"
+"ranging effects. Enemy undead get half the normal benefit from their "
+"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
+"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
+"to escape; slow enemies are almost immobilized, and your own units suffer "
+"less retaliation damage, so it’s quicker to heal them."
+msgstr ""
+"「遅化」能力は多くの効果があるため非常に強力です。敵がアンデッドであっても"
+"「生命吸収」能力からの利益は半減しますし、「突撃」や「奇襲」による攻撃力倍増"
+"効果も無効にされます、また「狂戦」能力も弱体化されます。いつもは素早い敵でも"
+"脱出するのに四苦八苦するでしょうし、ただでさえ遅い敵なら、ほとんど移動不可能"
+"になるでしょう。一方あなたのユニットは敵の反撃によるダメージが軽減され、よっ"
+"て回復もしやすいでしょう。"
+
+#. [tip]
+#: data/tips.cfg:220
+msgid ""
+"Try to operate units with a small number of powerful attacks—such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"This gives you another try whenever your first devastating attack misses — "
+"as inevitably happens from time to time."
+msgstr ""
+"少ない回数ながら命中すれば強力な攻撃を持つユニット—たとえば暗黒僧・騎兵・オー"
+"クの兵卒・ドワーフの銃撃兵—を二つか三つを一組にして運用してみてください。. そ"
+"うすれば最初の攻撃が失敗（常に起こる可能性があります）しても次の攻撃ができま"
+"す。"
+
+#. [tip]
+#: data/tips.cfg:224
+msgid ""
+"Units with three or more attacks—especially magical attacks—are ideal for "
+"finishing off enemies with only a few hitpoints remaining. Be sure to use "
+"leadership—or a strong or dextrous unit—whenever the extra point or two of "
+"damage makes a one-hit kill possible."
+msgstr ""
+"三回以上の攻撃回数を持つユニット—特に魔法攻撃に多い—はヒットポイントが残り少"
+"ない敵に最後の止めをさすのに向いています。一撃の命中では倒せない敵を相手にす"
+"る時には、「統率」の支援を受けるか「強力」や「器用」なユニットであれば理想的"
+"です。"
+
+#. [tip]
+#: data/tips.cfg:228
+msgid ""
+"Think twice before dismissing any unit from your recall list, no matter how "
+"little experience it has. Sometimes it’s worth paying a premium to know "
+"exactly what traits a new arrival will have."
+msgstr ""
+"あなたの召還リストからユニットを解雇する時はよく考え直してからにしてくださ"
+"い。それが経験値の少ないユニットだったとしてもです。その特性が既にわかってい"
+"ることは新しく雇用するよりも価値を持つ場合があります。"
+
+#. [tip]
+#: data/tips.cfg:232
+msgid ""
+"When a tough unit is heavily injured, send it to heal in a village several "
+"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
+"hitpoints per turn) without tying up front-line villages."
+msgstr ""
+"高級ユニットが深刻なダメージを受けている時には、戦場から後退させて村で回復さ"
+"せましょう。そうすれば、そのユニットは前線の村と違って平和にターンあたり 10 "
+"ヒットポイントずつ回復できます。"
+
+#. [tip]
+#: data/tips.cfg:233 data/tips.cfg:245
+msgid "<i>― Lord Hamel of Knalga</i>"
+msgstr "<i>― Knalga のドワーフ王 Hamel</i>"
+
+#. [tip]
+#: data/tips.cfg:236
+msgid ""
+"Combining multiple special abilities can be deadly. While it may take some "
+"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
+"<i>Charge</i> against a slowed opponent, the results can be impressive."
+msgstr ""
+"複数の特殊能力が重なると致命的です。たとえば、「統率」「照明」「突撃」の効果"
+"を同時に受けるユニットが「遅化」された敵ユニットを攻撃するような場合です。そ"
+"の結果は劇的です。"
+
+#. [tip]
+#: data/tips.cfg:240
+msgid ""
+"While finishing early gives a gold bonus, and reduces the opportunities for "
+"enemies to kill your valuable troops, it also means you lose chances to earn "
+"your units extra experience. When deciding whether or not to finish a "
+"scenario early, weigh these factors against one another."
+msgstr ""
+"シナリオ早期終了するとゴールドでボーナスが与えられますし、あなたの軍隊で貴重"
+"なユニットを殺される可能性も低下させられます。しかし、経験値獲得の機会を少な"
+"くすることでもあります。シナリオ早期終了するかどうか決定する時はこれらの各要"
+"素の重要性を比較しましょう。"
+
+#. [tip]
+#: data/tips.cfg:244
+msgid ""
+"If your forces have weak defenses everywhere on the map, occupy the areas "
+"where your enemies can only attack you by sharing the same disadvantages. "
+"Avoid places where your defenses are poor and your enemy’s are merely "
+"average. Plan for heavy losses, and take firm control of any hex where the "
+"land does favor you."
+msgstr ""
+"もし、あなたの軍隊がマップ上の全ての場所で低い地形効果しか得られないならば、"
+"敵にも同じ不利を与えられる場所を占領するべきです。あなたの防御が弱いのに敵の"
+"防御は平均的という場所は避けましょう。戦場であなたに有利な場所をしっかり管理"
+"し続けることを計画しましょう。"
+
+#. [tip]
+#: data/tips.cfg:249
+msgid ""
+"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
+"if they occupy a village hex, they do not gain any defensive benefits from "
+"the village, although they will still be healed."
+msgstr ""
+"コウモリや野生動物のような「野生」ユニットは村を避けて移動します。もし、村ヘ"
+"クスを占領したとしても、それらは村での防御力の向上が一切ありません、しかし回"
+"復はします。"
 
 #: src/about.cpp:227 src/dialogs.cpp:448 src/menu_events.cpp:166
 #: src/statistics_dialog.cpp:182
@@ -4848,7 +4837,7 @@ msgstr "弱点:"
 msgid "Slowed"
 msgstr "遅くなった"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:915
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:913
 msgid "Total damage"
 msgstr "総ダメージ"
 
@@ -5091,11 +5080,11 @@ msgstr "党派 $faction のリーダーのタイプが見つかりません。"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/format_time_summary.cpp:46 src/reports.cpp:1520
+#: src/format_time_summary.cpp:46 src/reports.cpp:1518
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:49 src/reports.cpp:1520
+#: src/format_time_summary.cpp:49 src/reports.cpp:1518
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5122,64 +5111,64 @@ msgstr "%y年%m月%d日"
 msgid "Invalid color range: "
 msgstr "無効な色範囲: "
 
-#: src/game_config_manager.cpp:179
-msgid "Error loading game configuration files: '"
+#: src/game_config_manager.cpp:180
+#, fuzzy
+#| msgid "Error loading game configuration files: '"
+msgid "Error loading game configuration files. The game will now exit."
 msgstr "ゲーム設定ファイルの読み込みエラー: 「"
 
-#: src/game_config_manager.cpp:180
-msgid "' (The game will now exit)"
-msgstr "」 （このゲームは終了します）"
-
-#: src/game_config_manager.cpp:274
+#: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "以下のアドオンキャンペーンには問題があり、読み込めませんでした:"
 
-#: src/game_config_manager.cpp:281
-msgid "ERROR DETAILS:"
-msgstr "エラー詳細:"
+#: src/game_config_manager.cpp:283
+msgid "Please report this to the author or maintainer of this add-on."
+msgid_plural ""
+"Please report this to the respective authors or maintainers of these add-ons."
+msgstr[0] ""
 
-#: src/game_controller.cpp:336 src/game_controller.cpp:924
+#: src/game_controller.cpp:332 src/game_controller.cpp:920
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "The Battle for Wesnoth"
 
-#: src/game_controller.cpp:475 src/game_controller.cpp:493
+#: src/game_controller.cpp:471 src/game_controller.cpp:489
 msgid "The file you have tried to load is corrupt"
 msgstr "読み込もうとしたファイルは壊れています。"
 
-#: src/game_controller.cpp:478 src/game_controller.cpp:496
+#: src/game_controller.cpp:474 src/game_controller.cpp:492
 #: src/savegame.cpp:687
 msgid "The file you have tried to load is corrupt: '"
 msgstr "読み込もうとしたファイルは壊れています: '"
 
-#: src/game_controller.cpp:486
+#: src/game_controller.cpp:482
 msgid "File I/O Error while reading the game"
 msgstr "ゲーム読み込み中のファイル入出力エラー"
 
-#: src/game_controller.cpp:488
+#: src/game_controller.cpp:484
 msgid "File I/O Error while reading the game: '"
 msgstr "ゲーム読み込み中のファイル入出力エラー: '"
 
-#: src/game_controller.cpp:589
+#: src/game_controller.cpp:585
 msgid "No campaigns are available.\n"
 msgstr "キャンペーンが存在しません。\n"
 
-#: src/game_controller.cpp:861
+#: src/game_controller.cpp:857
 msgid "Error while starting server: "
 msgstr "サーバー開始中のエラー: "
 
-#: src/game_controller.cpp:863 src/playcampaign.cpp:218
+#: src/game_controller.cpp:859 src/playcampaign.cpp:218
 #: src/playcampaign.cpp:470
 msgid "The game could not be loaded: "
 msgstr "ゲームはロードできませんでした: "
 
-#: src/game_controller.cpp:865 src/playcampaign.cpp:220
+#: src/game_controller.cpp:861 src/playcampaign.cpp:220
 #: src/playcampaign.cpp:473
 msgid "Error while playing the game: "
 msgstr "ゲームプレイ中のエラー: "
 
-#: src/game_controller.cpp:883 src/playcampaign.cpp:222
+#: src/game_controller.cpp:879 src/playcampaign.cpp:222
 #: src/playcampaign.cpp:476
 msgid "The game map could not be loaded: "
 msgstr "ゲームマップを読み込めませんでした: "
@@ -5227,76 +5216,76 @@ msgstr ""
 "城に適した場所を発見できません。山のヘクスが多すぎるかまたは少なすぎるので"
 "は？（'max hill size'パラメーターを確認することもできます）"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "不明な時代: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "不明な時代"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "リモートシナリオ"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "不明なシナリオ: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "不明なシナリオ"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "リロードされたゲーム"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "ターン "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "空いているスロット"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "なし"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:107
 msgid "In game:"
 msgstr "ゲーム内:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:109
 msgid "(observing)"
 msgstr "（観戦中）"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "(playing)"
 msgstr "（プレイ中）"
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:114
 msgid "In lobby"
 msgstr "ロビー内"
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:138
 msgid "On friends list"
 msgstr "友人リスト上"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:143
 msgid "On ignores list"
 msgstr "無視リスト上"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:148
 msgid "Neither a friend nor ignored"
 msgstr "友人でも無視してもいない"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:153
 msgid "You"
 msgstr "あなた"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147
+#: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "エラー"
 
@@ -6717,7 +6706,7 @@ msgstr "ゲームの作成"
 msgid "Filter:"
 msgstr "フィルター:"
 
-#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
 msgstr ""
 
@@ -6760,9 +6749,39 @@ msgstr "設定..."
 msgid "Load Game..."
 msgstr "ゲームの読み込み..."
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
 msgstr ""
+
+#: src/multiplayer_create.cpp:103
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenarios"
+msgstr "シナリオ終了"
+
+#: src/multiplayer_create.cpp:104
+#, fuzzy
+#| msgid "Campaign Design"
+msgid "Campaigns"
+msgstr "キャンペーンデザイン"
+
+#: src/multiplayer_create.cpp:105
+#, fuzzy
+#| msgid "Close"
+msgid "User Maps"
+msgstr "閉じる"
+
+#: src/multiplayer_create.cpp:106
+#, fuzzy
+#| msgid "End Scenario"
+msgid "User Scenarios"
+msgstr "シナリオ終了"
+
+#: src/multiplayer_create.cpp:107
+#, fuzzy
+#| msgid "Random"
+msgid "Random Maps"
+msgstr "ランダム"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
 #, fuzzy
@@ -6786,33 +6805,33 @@ msgid ""
 "None found."
 msgstr "通知を無効にする"
 
-#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:279
+#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
 #, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Deactivate"
 msgstr "デバッグモードが有効になりました！"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:245
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The level is invalid."
 msgstr "このマップは無効です。"
 
-#: src/multiplayer_create.cpp:333
+#: src/multiplayer_create.cpp:330
 msgid "Players: "
 msgstr "プレイヤー数: "
 
-#: src/multiplayer_create.cpp:351
+#: src/multiplayer_create.cpp:348
 msgid "Size: "
 msgstr "大きさ: "
 
-#: src/multiplayer_create.cpp:386
+#: src/multiplayer_create.cpp:383
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "ゲーム名:"
 
-#: src/multiplayer_create.cpp:493 src/unit_types.cpp:785
+#: src/multiplayer_create.cpp:490 src/unit_types.cpp:785
 msgid "No description available."
 msgstr "解説はありません。"
 
@@ -7347,154 +7366,154 @@ msgstr "属性: "
 msgid "Ability: "
 msgstr "能力: "
 
-#: src/reports.cpp:393 src/reports.cpp:817
+#: src/reports.cpp:393 src/reports.cpp:815
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:446
+#: src/reports.cpp:445
 msgid "Resistances: "
 msgstr "抵抗力: "
 
-#: src/reports.cpp:448
+#: src/reports.cpp:447
 msgid "(Att / Def)"
 msgstr "(攻撃 / 防御)"
 
-#: src/reports.cpp:474
+#: src/reports.cpp:473
 msgid "Experience Modifier: "
 msgstr "経験の修正: "
 
-#: src/reports.cpp:525
+#: src/reports.cpp:524
 msgid "Terrain: "
 msgstr "地形: "
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "maximum^max."
 msgstr "最大値."
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "minimum^min."
 msgstr "最小値."
 
-#: src/reports.cpp:547
+#: src/reports.cpp:546
 msgid "Defense: "
 msgstr "防御: "
 
-#: src/reports.cpp:568
+#: src/reports.cpp:567
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "バージョン: "
 
-#: src/reports.cpp:596
+#: src/reports.cpp:595
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "移動コスト"
 
-#: src/reports.cpp:687 src/reports.cpp:902 src/reports.cpp:914
+#: src/reports.cpp:685 src/reports.cpp:900 src/reports.cpp:912
 msgid "Weapon: "
 msgstr "武器: "
 
-#: src/reports.cpp:688 src/reports.cpp:903
+#: src/reports.cpp:686 src/reports.cpp:901
 msgid "Damage: "
 msgstr "ダメージ: "
 
-#: src/reports.cpp:692
+#: src/reports.cpp:690
 msgid "Base damage: "
 msgstr "基本ダメージ: "
 
-#: src/reports.cpp:694 src/reports.cpp:728 src/reports.cpp:738
+#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "武器の特殊効果: "
 
-#: src/reports.cpp:697
+#: src/reports.cpp:695
 msgid "Time of day: "
 msgstr "時刻修正: "
 
-#: src/reports.cpp:701
+#: src/reports.cpp:699
 msgid "Leadership: "
 msgstr "統率: "
 
-#: src/reports.cpp:705
+#: src/reports.cpp:703
 msgid "Slowed: "
 msgstr "遅化: "
 
-#: src/reports.cpp:709
+#: src/reports.cpp:707
 msgid "Attacks: "
 msgstr "攻撃回数: "
 
-#: src/reports.cpp:713
+#: src/reports.cpp:711
 #, fuzzy
 #| msgid "Max HP bonus +"
 msgid "Max swarm bonus: "
 msgstr "最大 HP ボーナス +"
 
-#: src/reports.cpp:714 src/reports.cpp:733
+#: src/reports.cpp:712 src/reports.cpp:731
 msgid "Swarm: "
 msgstr "群れ"
 
-#: src/reports.cpp:715 src/reports.cpp:726 src/reports.cpp:737
+#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
 msgid "Base attacks: "
 msgstr "基本攻撃力: "
 
-#: src/reports.cpp:721
+#: src/reports.cpp:719
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "特殊"
 
-#: src/reports.cpp:731
+#: src/reports.cpp:729
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:750
+#: src/reports.cpp:748
 msgid "Weapon range: "
 msgstr "武器の射程: "
 
-#: src/reports.cpp:751
+#: src/reports.cpp:749
 msgid "Damage type: "
 msgstr "ダメージの種類: "
 
 # [ja] それぞれのユニットに与えるダメージの一覧表示のラベル
-#: src/reports.cpp:752
+#: src/reports.cpp:750
 msgid "Damage versus: "
 msgstr "与えるダメージ: "
 
-#: src/reports.cpp:791
+#: src/reports.cpp:789
 msgid "Accuracy:"
 msgstr "% 命中"
 
-#: src/reports.cpp:796
+#: src/reports.cpp:794
 msgid "Parry:"
 msgstr "% 回避"
 
-#: src/reports.cpp:815
+#: src/reports.cpp:813
 msgid "Weapon special: "
 msgstr "武器の特殊効果: "
 
-#: src/reports.cpp:886
+#: src/reports.cpp:884
 msgid "None"
 msgstr "なし"
 
-#: src/reports.cpp:1114 src/reports.cpp:1164
+#: src/reports.cpp:1112 src/reports.cpp:1162
 msgid "Lawful units: "
 msgstr "秩序ユニット: "
 
-#: src/reports.cpp:1116 src/reports.cpp:1166
+#: src/reports.cpp:1114 src/reports.cpp:1164
 msgid "Neutral units: "
 msgstr "中立ユニット: "
 
-#: src/reports.cpp:1117 src/reports.cpp:1167
+#: src/reports.cpp:1115 src/reports.cpp:1165
 msgid "Chaotic units: "
 msgstr "混沌ユニット: "
 
-#: src/reports.cpp:1119 src/reports.cpp:1169
+#: src/reports.cpp:1117 src/reports.cpp:1167
 msgid "Liminal units: "
 msgstr "薄明ユニット: "
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1482
 msgid "Observers:"
 msgstr "観戦者:"
 
@@ -7588,136 +7607,152 @@ msgstr "ゲームを自動保存できませんでした。手動で保存して
 msgid "Save Game"
 msgstr "ゲームの保存"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "行頭に予期せぬ文字"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:147
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
-msgid "Missing closing tag for tag [$tag] at $pos"
+msgid "Missing closing tag for tag [$tag]"
 msgstr "$pos の位置のタグ $tag に対する閉じタグがない"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:148
+msgid "expected at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:148 src/serialization/parser.cpp:212
+msgid "opened at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:161
 msgid "Unterminated [element] tag"
 msgstr "予期せぬ [element] タグ"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:173 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "無効なタグ名"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated [+element] tag"
 msgstr "予期せぬ [+element] タグ"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:198
 msgid "Invalid closing tag name"
 msgstr "無効な閉じタグ名"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:201
 msgid "Unterminated closing tag"
 msgstr "終わっていない閉じタグ"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:203
 msgid "Unexpected closing tag"
 msgstr "予期せぬ閉じタグ"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:211
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
+msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
 "($pos にて開かれた)タグ $tag1 に対するタグ $tag2 の無効な閉じタグを発見"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:212
+#, fuzzy
+#| msgid "Close"
+msgid "closed at $pos"
+msgstr "閉じる"
+
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "空の変数名"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "変数名の後に予期せぬ文字 ( , あるいは = を期待)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:286 src/serialization/parser.cpp:314
 msgid "Unterminated quoted string"
 msgstr "引用符が閉じられていない文字列"
 
-#: src/serialization/parser.cpp:362
-msgid "$error, value '$value', previous '$previous_value' at $pos"
+#: src/serialization/parser.cpp:372
+msgid "at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:386
+#, fuzzy
+#| msgid "$error, value '$value', previous '$previous_value' at $pos"
+msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "$pos の $error 、値「 $value 」、以前の値「 $previous_value 」"
 
-#: src/serialization/parser.cpp:366
-msgid "$error, value '$value' at $pos"
-msgstr "$pos の $error 、値「 $value 」"
-
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:568
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:569
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_kibi^K"
 msgstr "K"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:588
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:590
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:591
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:592
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:593
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:590
+#: src/serialization/string_utils.cpp:594
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:595
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:596
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:606
+#: src/serialization/string_utils.cpp:610
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -7993,11 +8028,11 @@ msgstr "敵所有の村"
 msgid "Owned village"
 msgstr "自軍所有の村"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size は 0.0 から 0.5 の間であるべきです。"
 
-#: src/theme.cpp:574 src/theme.cpp:579
+#: src/theme.cpp:599 src/theme.cpp:604
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8103,6 +8138,15 @@ msgstr "$player と交代する"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "行動予定オプション"
+
+#~ msgid "' (The game will now exit)"
+#~ msgstr "」 （このゲームは終了します）"
+
+#~ msgid "ERROR DETAILS:"
+#~ msgstr "エラー詳細:"
+
+#~ msgid "$error, value '$value' at $pos"
+#~ msgstr "$pos の $error 、値「 $value 」"
 
 #~ msgid "(side $temp_i|)"
 #~ msgstr "（陣営 $temp_i| ）"
@@ -8274,11 +8318,6 @@ msgstr "行動予定オプション"
 #~ msgstr "行動予定オプション"
 
 #, fuzzy
-#~| msgid "Close"
-#~ msgid "Close Map"
-#~ msgstr "閉じる"
-
-#, fuzzy
 #~| msgid "Time of Day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "時刻"
@@ -8292,11 +8331,6 @@ msgstr "行動予定オプション"
 #~| msgid "Time of Day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "時刻"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "New Scenario"
-#~ msgstr "シナリオ終了"
 
 #, fuzzy
 #~| msgid "Load Game"
