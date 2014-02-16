@@ -46,6 +46,7 @@
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "map.hpp"
@@ -1518,7 +1519,8 @@ static int impl_game_config_get(lua_State *L)
 	return_string_attrib("campaign_type", game_state_.classification().campaign_type);
 	if(game_state_.classification().campaign_type=="multiplayer") {
 		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
-	}
+		return_cfgref_attrib("era", resources::config_manager->game_config().find_child("era","id",game_state_.mp_settings().mp_era));
+	}	//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era. 
 	return 0;
 }
 
