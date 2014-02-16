@@ -432,7 +432,7 @@ void context_manager::rename_area_dialog()
 {
 	int active_area = get_map_context().get_active_area();
 	std::string name = get_map_context().get_time_manager()->get_area_ids()[active_area];
-	if (gui2::tedit_text::execute(N_("Rename Area"), N_("ID"), name, gui_.video())) {
+	if (gui2::tedit_text::execute(N_("Rename Area"), N_("Identifier:"), name, gui_.video())) {
 		get_map_context().get_time_manager()->set_area_id(active_area, name);
 	}
 }
