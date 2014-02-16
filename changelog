@@ -33,6 +33,8 @@ Version 1.11.9+dev:
  * Miscellaneous and bug fixes:
    * Fixed: A compilation warning with DEBUG_WINDOW_LAYOUT_GRAPHS.
    * Added -Wold-style-cast to the CMake strict flags.
+   * Made sure that cmake does not add -NDEBUG for release builds since this
+     flag breaks building.
 
 Version 1.11.9:
  * Add-ons client:
