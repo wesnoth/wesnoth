@@ -369,7 +369,9 @@ void parser::error(const std::string& error_type)
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error"), N_("at $pos (value '$value', previous '$previous_value')")));
+		              N_("$error"),
+		              N_("at $pos\n"
+		                 "Value: '$value' Previous: '$previous_value'")));
 #else
 	throw config::error(
 		lineno_string(i18n_symbols, ss.str(),
