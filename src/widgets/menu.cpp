@@ -933,8 +933,12 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 
 		if(lang_rtl)
 			xpos -= widths[i];
-		if(type == HEADING_ROW && highlight_heading_ == int(i)) {
-			draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+		if(type == HEADING_ROW) {
+			if(highlight_heading_ == int(i)) {
+				draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+			} else if(sortby_ == int(i)) {
+				draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.1,video().getSurface());
+			}
 		}
 
 		const int last_x = xpos;
