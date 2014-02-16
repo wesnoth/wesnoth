@@ -362,21 +362,28 @@ void parser::error(const std::string& error_type)
 {
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
+
 	std::stringstream ss;
 	ss << tok_->get_start_line() << " " << tok_->get_file();
+
+	const char* const error_string = N_("$error");
+
 #ifdef DEBUG
 	i18n_symbols["value"] = tok_->current_token().value;
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
-	throw config::error(
-		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error"),
-		              N_("at $pos\n"
-		                 "Value: '$value' Previous: '$previous_value'")));
+
+	const char* const hint_string =
+		N_("at $pos\n"
+		   "Value: '$value' Previous: '$previous_value'");
 #else
-	throw config::error(
-		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error"), N_("at $pos")));
+	const char* const hint_string =
+		N_("at $pos");
 #endif
+
+	const std::string& message =
+		lineno_string(i18n_symbols, ss.str(), error_string, hint_string);
+
+	throw config::error(message);
 }
 
 } // end anon namespace
