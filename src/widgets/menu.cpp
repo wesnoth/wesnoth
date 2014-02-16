@@ -979,13 +979,14 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				}
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,xpos,y);
+				const size_t padding = 5;
+				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,xpos+padding,y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const surface sort_img = image::get_image(sortreversed_ ? "buttons/sliders/slider_arrow_blue.png" :
 					                                   "buttons/sliders/slider_arrow_blue.png~ROTATE(180)");
 					if(sort_img != NULL && sort_img->w <= widths[i] && sort_img->h <= rect.h) {
-						const size_t sort_x = xpos + widths[i] - sort_img->w;
+						const size_t sort_x = xpos + widths[i] - sort_img->w - padding;
 						const size_t sort_y = rect.y + rect.h/2 - sort_img->h/2;
 						video().blit_surface(sort_x,sort_y,sort_img);
 					}
