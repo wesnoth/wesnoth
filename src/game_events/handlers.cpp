@@ -329,9 +329,14 @@ manager::~manager() {
  * An empty @a event_name will automatically match nothing.
  */
 manager::iteration::iteration(const std::string & event_name) :
+	main_list_(event_handlers.get(event_name)),
+	var_list_(event_handlers.get()),
 	event_name_(event_name),
 	end_(event_handlers.size()),
-	index_(event_name.empty() ? end_ : 0)
+	current_is_known_(false),
+	main_is_current_(false),
+	main_it_(main_list_.begin()),
+	var_it_(event_name.empty() ? var_list_.end() : var_list_.begin())
 {
 }
 
@@ -344,10 +349,19 @@ manager::iteration::iteration(const std::string & event_name) :
  */
 manager::iteration & manager::iteration::operator++()
 {
-	if ( index_ < end_ )
-		// Guarantee a different element next dereference.
-		// (We'll check for a name match when we dereference.)
-		++index_;
+	if ( !current_is_known_ )
+		// Either *this has never been dereferenced, or we already incremented
+		// since the last dereference. We are allowed to ignore this increment.
+		return *this;
+
+	// Guarantee a different element next dereference.
+	if ( main_is_current_ )
+		++main_it_;
+	else
+		++var_it_; // (We'll check for a name match when we dereference.)
+
+	// We no longer know which list is current.
+	current_is_known_ = false;
 
 	// Done.
 	return *this;
@@ -357,31 +371,28 @@ manager::iteration & manager::iteration::operator++()
  * Dereference
  * Will return a null pointer when the end of the iteration is reached.
  */
-const handler_ptr & manager::iteration::operator*()
+handler_ptr manager::iteration::operator*()
 {
-	static handler_ptr empty_ptr;
+	// Get the candidate for the current element from the main list.
+	handler_ptr main_ptr = *main_it_;
+	handler_vec::size_type main_index = ptr_index(main_ptr);
 
-	// Make sure we are pointing to a valid handler.
-	while ( is_name_mismatch() )
-		++index_;
+	// Get the candidate for the current element from the var list.
+	handler_ptr var_ptr = *var_it_;
+	// (Loop while var_ptr would be chosen over main_ptr, but the name does not match.)
+	while ( var_ptr  &&  var_ptr->index() < main_index  &&
+	        !var_ptr->matches_name(event_name_) )
+		var_ptr = *++var_it_;
+	handler_vec::size_type var_index = ptr_index(var_ptr);
 
-	if ( index_ < end_ )
-		return event_handlers[index_];
+	// Which list? (Index ties go to the main list.)
+	current_is_known_ = main_index < end_  ||  var_index < end_;
+	main_is_current_ = main_index <= var_index;
 
-	// Past the end of the list; return a null pointer.
-	empty_ptr.reset(); // Just in case someone does something wierd.
-	return empty_ptr;
-}
-
-
-/**
- * Tests index_ for being skippable when looking for an event name.
- */
-bool manager::iteration::is_name_mismatch() const
-{
-	return index_ < end_  &&
-		       (!event_handlers[index_]  ||
-		        !event_handlers[index_]->matches_name(event_name_));
+	if ( !current_is_known_ )
+		return handler_ptr(); // End of list; return a null pointer.
+	else
+		return main_is_current_ ? main_ptr : var_ptr;
 }
 
 

@@ -68,6 +68,10 @@ Version 1.11.9+dev:
      have a separate 'id' attribute.
    * [endlevel] now has two optional subtags [next_scenario_settings],
      [next_scenario_append], which can be used to reconfigure next scenario.
+   * Optimizations made to the game events engine. Slower machines may notice
+     an improvement during movement (when enter/exit_hex events are triggered).
+     The optimization is more effective when relatively few events have variables
+     in their names.
  * Miscellaneous and bug fixes:
    * Fixed: A compilation warning with DEBUG_WINDOW_LAYOUT_GRAPHS.
    * Added -Wold-style-cast to the CMake strict flags.

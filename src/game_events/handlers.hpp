@@ -51,6 +51,8 @@ namespace game_events
 
 			/// Allows the event_handlers object to record the index of *this.
 			void set_index(handler_vec::size_type index) { index_ = index; }
+			/// The index of *this should only be of interest when controlling iterations.
+			handler_vec::size_type index() const { return index_; }
 
 			bool matches_name(const std::string& name) const;
 
@@ -114,8 +116,10 @@ namespace game_events
 	public: // functions
 		const_iterator begin() const           { return iterator(const_cast<list_t &>(data_).begin()); }
 		// The above const_cast is so the iterator can remove obsolete entries.
+		const_iterator end() const             { return iterator(const_cast<list_t &>(data_).end()); }
 
 		// push_front() is probably unneeded, but I'll leave the code here, just in case.
+		// (These lists must be maintained in index order, which means pushing to the back.)
 		void push_front(const handler_ptr & p) { data_.push_front(internal_ptr(p)); }
 		void push_back(const handler_ptr & p)  { data_.push_back(internal_ptr(p)); }
 
@@ -162,21 +166,32 @@ namespace game_events
 			// Increment:
 			iteration & operator++();
 			// Dereference:
-			const handler_ptr & operator*();
+			handler_ptr operator*();
 
 		private: // functions
-			/// Tests index_ for being skippable in this iteration.
-			bool is_name_mismatch() const;
+			/// Gets the index from a pointer, capped at end_.
+			handler_vec::size_type ptr_index(const handler_ptr & ptr) const
+			{ return !bool(ptr) ? end_ : std::min(ptr->index(), end_); }
 
 		private: // data
+			/// The fixed-name event handlers for this iteration.
+			const handler_list & main_list_;
+			/// The varying-name event handlers for this iteration.
+			const handler_list & var_list_;
 			/// The event name for this iteration.
 			const std::string event_name_;
 			/// The end of this iteration. We intentionally exclude handlers
 			/// added after *this is constructed.
 			const handler_vec::size_type end_;
 
-			/// The current index.
-			handler_vec::size_type index_;
+			/// Set to true upon dereferencing.
+			bool current_is_known_;
+			/// true if the most recent dereference was taken from main_list_.
+			bool main_is_current_;
+			/// The current (or next) element from main_list_.
+			handler_list::iterator main_it_;
+			/// The current (or next) element from var_list_.
+			handler_list::iterator var_it_;
 		};
 
 	public:
