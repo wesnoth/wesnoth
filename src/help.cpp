@@ -1133,7 +1133,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
 					std::string type_name = type.type_name();
-					std::string ref_id = unit_prefix + type.id();
+					//check for variations (walking corpse/soulless etc)
+					const std::string section_prefix = type.variations().empty() ? "" : "..";
+					std::string ref_id = section_prefix + unit_prefix + type.id();
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link = make_link(type_name, ref_id);
