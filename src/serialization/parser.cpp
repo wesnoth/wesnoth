@@ -67,7 +67,7 @@ private:
 		const std::string &error_string,
 		const std::string &hint_string = "",
 		const std::string &debug_string = "");
-	void error(const std::string& message);
+	void error(const std::string& message, const std::string& pos_format = "");
 
 	config& cfg_;
 	tokenizer *tok_;
@@ -145,7 +145,7 @@ void parser::operator()()
 		ss << elements.top().start_line << " " << elements.top().file;
 		error(lineno_string(i18n_symbols, ss.str(),
 				_("Missing closing tag for tag [$tag]"),
-				_("at $pos")));
+				_("expected at $pos")), _("opened at $pos"));
 	}
 }
 
@@ -209,7 +209,7 @@ void parser::parse_element()
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
 					_("Found invalid closing tag [/$tag2] for tag [$tag1]"),
-					_("at $pos")));
+					_("opened at $pos")), _("closed at $pos"));
 		}
 		if(validator_){
 			element & el= elements.top();
@@ -352,7 +352,7 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols,
 	std::string result = error_string;
 
 	if(!hint_string.empty()) {
-		result += "\n    " + hint_string;
+		result += '\n' + hint_string;
 	}
 
 	if(!debug_string.empty()) {
@@ -364,9 +364,13 @@ std::string parser::lineno_string(utils::string_map &i18n_symbols,
 	return result;
 }
 
-void parser::error(const std::string& error_type)
+void parser::error(const std::string& error_type, const std::string& pos_format)
 {
-	const std::string& hint_string = _("at $pos");
+	std::string hint_string = pos_format;
+
+	if(hint_string.empty()) {
+		hint_string = _("at $pos");
+	}
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
