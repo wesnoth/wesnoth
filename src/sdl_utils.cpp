@@ -433,9 +433,6 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 		return NULL;
 	}
 
-#ifdef PANDORA
-	if (w > surf->w || h > surf->h)
-#endif
 	{
 		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
@@ -563,12 +560,6 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 			}
 		}
 	}
-#ifdef PANDORA
-	else
-	{
-		scale_surface_down(dst, src, w, h);
-	}
-#endif
 
 	return optimize ? create_optimized_surface(dst) : dst;
 }
