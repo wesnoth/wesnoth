@@ -305,19 +305,16 @@ class CampaignClient:
 
         return None
 
-    def put_campaign(self, name, cfgfile, directory, ign, stuff):
+    def put_campaign(self, name, cfgfile, directory, ign, pbl):
         """
-        Uploads a campaign to the server. The title, name, author, passphrase,
-        description, version and icon parameters are what would normally be
-        found in a .pbl file.
+        Uploads a campaign to the server.
 
         The cfgfile is the name of the main .cfg file of the campaign.
 
         The directory is the name of the campaign's directory.
         """
-        request = wmldata.DataSub("upload")
-        for k, v in stuff.items():
-            request.set_text_val(k, v)
+        request = pbl.copy()
+        request.name = "upload"
         request.set_text_val("name", name)
 
         data = wmldata.DataSub("data")
