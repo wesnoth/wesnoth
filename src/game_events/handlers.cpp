@@ -32,6 +32,7 @@
 #include "../scripting/lua.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../soundsource.hpp"
+#include "../util.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/unordered_map.hpp>
@@ -54,6 +55,7 @@ namespace game_events {
 namespace { // Types
 	class t_event_handlers {
 		typedef boost::unordered_map<std::string, handler_list> map_t;
+		typedef boost::unordered_map<std::string, boost::weak_ptr<event_handler> > id_map_t;
 
 	public:
 		typedef handler_vec::iterator iterator;
@@ -63,6 +65,7 @@ namespace { // Types
 		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
 		map_t        by_name_; /// Active event handlers with fixed event names, organized by event name.
 		handler_list dynamic_; /// Active event handlers with variables in their event names.
+		id_map_t     id_map_;  /// Allows quick locating of handlers by id.
 
 
 		void log_handlers();
@@ -76,6 +79,7 @@ namespace { // Types
 			: active_()
 			, by_name_()
 			, dynamic_()
+			, id_map_()
 		{}
 
 		/// Read-only access to the handlers with varying event names.
@@ -166,18 +170,15 @@ namespace { // Types
 	void t_event_handlers::add_event_handler(const config & cfg, bool is_menu_item)
 	{
 		const std::string name = cfg["name"];
-
 		std::string id = cfg["id"];
+
 		if(!id.empty()) {
-			BOOST_FOREACH( handler_ptr const & eh, active_ ) {
-				if ( !eh )
-					continue;
-				config const & temp_config(eh->get_config());
-				if(id == temp_config["id"]) {
-					DBG_EH << "ignoring event handler for name=" << name <<
-						" with id " << id << "\n";
-					return;
-				}
+			// Ignore this handler if there is already one with this ID.
+			id_map_t::iterator find_it = id_map_.find(id);
+			if ( find_it != id_map_.end()  &&  !find_it->second.expired() ) {
+				DBG_EH << "ignoring event handler for name='" << name
+				       << "' with id '" << id << "'\n";
+				return;
 			}
 		}
 
@@ -193,6 +194,9 @@ namespace { // Types
 			dynamic_.push_back(new_handler);
 		else
 			by_name_[standardize_name(name)].push_back(new_handler);
+		// File by ID.
+		if ( !id.empty() )
+			id_map_[id] = new_handler;
 
 		log_handlers();
 	}
@@ -208,16 +212,16 @@ namespace { // Types
 
 		DBG_EH << "removing event handler with id " << id << "\n";
 
-		// Loop through the active handler_vec.
-		for ( handler_vec::iterator i = active_.begin(); i != active_.end(); ++i ) {
-			if ( !*i )
-				continue;
-			// Try to match the id
-			std::string event_id = (*i)->get_config()["id"];
-			if ( event_id == id )
-				i->reset();
+		// Find the existing handler with this ID.
+		id_map_t::iterator find_it = id_map_.find(id);
+		if ( find_it != id_map_.end() ) {
+			handler_ptr handler = find_it->second.lock();
+			// Remove handler.
+			if ( handler )
+				handler->disable();
+			id_map_.erase(find_it); // Do this even if the lock failed.
+			// The index by name will self-adjust later. No need to adjust it now.
 		}
-		// The index by name will self-adjust later. No need to adjust it now.
 
 		log_handlers();
 	}
@@ -227,6 +231,7 @@ namespace { // Types
 		active_.clear();
 		by_name_.clear();
 		dynamic_.clear();
+		id_map_.clear();
 	}
 
 }// end anonymous namespace (types)
@@ -427,6 +432,22 @@ event_handler::event_handler(const config &cfg, bool imi) :
 {}
 
 /**
+ * Disables *this, removing it from the game.
+ * (Technically, the handler is only removed once no one is hanging on to a
+ * handler_ptr to *this. So be careful how long they persist.)
+ *
+ * WARNING: *this may be destroyed at the end of this call, unless
+ *          the caller maintains a handler_ptr to this.
+ */
+void event_handler::disable()
+{
+	// Handlers must have an index after they're created.
+	assert ( index_ < event_handlers.size() );
+	// Disable this handler.
+	event_handlers[index_].reset();
+}
+
+/**
  * Handles the queued event, according to our WML instructions.
  * WARNING: *this may be destroyed at the end of this call, unless
  *          the caller maintains a handler_ptr to this.
@@ -446,11 +467,8 @@ void event_handler::handle_event(const queued_event& event_info, handler_ptr& ha
 
 	if (first_time_only_)
 	{
-		// We should only be handling events if we've been added to the
-		// active handlers.
-		assert ( index_ < event_handlers.size() );
 		// Disable this handler.
-		event_handlers[index_].reset();
+		disable();
 		// Also remove our caller's hold on us.
 		handler_p.reset();
 	}

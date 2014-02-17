@@ -58,6 +58,8 @@ namespace game_events
 
 			bool is_menu_item() const { return is_menu_item_; }
 
+			/// Disables *this, removing it from the game.
+			void disable();
 			void handle_event(const queued_event& event_info, handler_ptr& handler_p);
 
 			const config &get_config() const { return cfg_; }
