@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2012-04-01 16:53+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -2933,15 +2933,15 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=fog
-#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:306
+#: data/core/team-colors.cfg:215 src/gui/dialogs/lobby/lobby_data.cpp:324
 #: src/multiplayer_lobby.cpp:678
 msgid "Fog"
 msgstr "magla"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [color_range]: id=shroud
-#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:309
-#: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_configure.cpp:78
+#: data/core/team-colors.cfg:221 src/gui/dialogs/lobby/lobby_data.cpp:327
+#: src/gui/dialogs/lobby/lobby_data.cpp:330 src/multiplayer_configure.cpp:78
 #: src/multiplayer_lobby.cpp:682 src/multiplayer_lobby.cpp:688
 msgid "Shroud"
 msgstr "pokrov"
@@ -3193,789 +3193,6 @@ msgstr ""
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
-
-#. [tip]
-#: data/hardwired/tips.cfg:4
-msgid ""
-"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
-"event or ai coding."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:9
-#: data/hardwired/tips.cfg:13
-#, fuzzy
-#| msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgid "<i>― The Wesnoth Design Guide</i>"
-msgstr "<i>— Taktički vodič Vesnota</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:8
-msgid ""
-"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
-"advanced features."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:12
-msgid ""
-"Scenarios saved from the editor in their default folder can be selected in "
-"the mp create screen's <i>User Scenarios</i> section."
-msgstr ""
-
-# >> Great Mage Delfador
-#. [tip]
-#: data/hardwired/tips.cfg:16
-msgid ""
-"Don’t neglect to earn your leader experience! You need to keep him safe, but "
-"if you coddle him too much he may be too weak to survive future battles."
-msgstr ""
-"Ne zanemari pribavljanje iskustva svome vođu! Moraš ga čuvati od zla, ali "
-"ako ga previše maziš, može ostati preslab da bi preživio buduće bojeve."
-
-#. [tip]
-#: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:149
-msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "<i>— veliki mag Delfador, 516. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:20
-msgid ""
-"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
-"highlight all the hexes your adversary can move to (assuming your units stay "
-"where they are). Use this to make sure the enemy can’t reach your weak or "
-"injured units on his next turn."
-msgstr ""
-"Iz menija <b>Radnje</b> izaberite <b>Protivnički pokreti</b> da se istaknu "
-"sva polja koja vaš protivnik može doseći (pod pretpostavkom da vaše jedinice "
-"ostanu gdje jesu). Korisno da se uvjerite da neprijatelj ne može dohvatiti "
-"vaše oslabljene ili povrijeđene jedinice u narednom potezu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:21 data/hardwired/tips.cfg:33
-#: data/hardwired/tips.cfg:37 data/hardwired/tips.cfg:45
-#: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:65
-#: data/hardwired/tips.cfg:69 data/hardwired/tips.cfg:73
-#: data/hardwired/tips.cfg:77 data/hardwired/tips.cfg:81
-#: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:97
-#: data/hardwired/tips.cfg:101 data/hardwired/tips.cfg:113
-#: data/hardwired/tips.cfg:121 data/hardwired/tips.cfg:125
-#: data/hardwired/tips.cfg:133 data/hardwired/tips.cfg:157
-#: data/hardwired/tips.cfg:161 data/hardwired/tips.cfg:165
-#: data/hardwired/tips.cfg:173 data/hardwired/tips.cfg:181
-#: data/hardwired/tips.cfg:189 data/hardwired/tips.cfg:193
-#: data/hardwired/tips.cfg:201 data/hardwired/tips.cfg:205
-#: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:213
-#: data/hardwired/tips.cfg:221 data/hardwired/tips.cfg:241
-#: data/hardwired/tips.cfg:250
-msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "<i>— Taktički vodič Vesnota</i>"
-
-# >> King Konrad
-#. [tip]
-#: data/hardwired/tips.cfg:24
-msgid ""
-"Units with the <i>Intelligent</i> trait need fewer experience points to "
-"level up. Early in a campaign, try to give killing blows to these units so "
-"you can get some high-level troops sooner."
-msgstr ""
-"Jedinice s osobinom <i>oštroumnosti</i> zahtijevaju manje iskustvenih poena "
-"za napredovanje. Pokušaj da njima zadaješ završne udarce rano tokom pohoda, "
-"kako bi vojska ranije dobila jedinice viših nivoa."
-
-#. [tip]
-#: data/hardwired/tips.cfg:25
-msgid "<i>― King Konrad, 536YW</i>"
-msgstr "<i>— kralj Konrad, 536. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:28
-msgid ""
-"The encircling tactic is very powerful, particularly against fast opponents. "
-"By placing two units on opposite sides of an enemy, their zones of control "
-"will restrict it to one hex of movement in any direction. Unfortunately, you "
-"must completely surround skirmishers to immobilize them."
-msgstr ""
-"Taktika opkoljavanja je vrlo moćna, posebice protiv hitrog protivnika. "
-"Postavivši dve jedinice na suprotnim stranama neprijateljske, njihovi "
-"nadzorni pojasevi ograničiće joj kretanje na jedno polje u bilo kom smjeru. "
-"Čarkaši se, nažalost, moraju potpuno opkoliti da bi se sputali."
-
-#. [tip]
-#: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:141
-msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "<i>— Životopis Gvedrijev, 627. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:32
-msgid ""
-"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
-"clicking on a castle tile. That will let you choose the precise hex you put "
-"a unit in. Placing units wisely can sometimes let you reach a village a turn "
-"earlier."
-msgstr ""
-"Naredbama <b>Unajmi</b> i <b>Sazovi</b> možete pristupiti desnim klikom na "
-"polje zamka. Potom izaberite polje gdje želite da se jedinica pojavi. Mudrim "
-"postavljanjem jedinica možete doseći pokoje selo potez ranije."
-
-#. [tip]
-#: data/hardwired/tips.cfg:36
-msgid ""
-"There are some helpful summary screens in the main menu: for instance, the "
-"<b>Status Table</b> will let you know how your enemies are doing, and how "
-"you are doing in comparison."
-msgstr ""
-"Glavni meni pruža nekoliko sažetaka od koristi; na primer, <b>Tabela stanja</"
-"b> pokazuje kako se drže vaši neprijatelji, i vi nasuprot njima."
-
-#. [tip]
-#: data/hardwired/tips.cfg:40
-msgid ""
-"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
-"can be very important when moving through difficult terrain such as water or "
-"caves. It can make the difference between being able to move one hex or two."
-msgstr ""
-"Jedinice s osobinom <i>hitrosti</i> imaju jedan poen pokreta više po potezu. "
-"Ovo može biti presudno pri napredovanju teškim terenom, poput vode ili "
-"pećina, gdje čini razliku između jednog i dva polja mogućeg pokreta."
-
-#. [tip]
-#: data/hardwired/tips.cfg:41 data/hardwired/tips.cfg:117
-#: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:237
-msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "<i>— nadgospodar Kalenz, 470. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:44
-msgid ""
-"After you have played a few scenarios, read the <b>Gameplay</b> section in "
-"the <b>Help</b> screen carefully. Details become important as scenarios get "
-"harder!"
-msgstr ""
-"Pošto odigrate nekoliko scenarija, pažljivo pročitajte odjeljak "
-"<b>Izvođenje</b> u okviru pomoći. Detalji su sve važniji kako narasta težina "
-"scenarija!"
-
-#. [tip]
-#: data/hardwired/tips.cfg:48
-msgid ""
-"It is usually better to start the next scenario in a campaign with lower-"
-"level units that are about to level up than with those same units at a "
-"higher level."
-msgstr ""
-"Obično je bolje započeti naredni scenario u pohodu jedinicama nižeg nivoa "
-"koje samo što nisu isprednjačile, nego sa istim takvima višeg nivoa."
-
-#. [tip]
-#: data/hardwired/tips.cfg:52
-msgid ""
-"On www.wesnoth.org you can find strategy guides, technical support, the "
-"history of Wesnoth, and much more."
-msgstr ""
-"Na www.wesnoth.org možete naći strateške vodiče, tehničku podršku, istorijat "
-"Vesnota, i još mnogo toga."
-
-#. [tip]
-#: data/hardwired/tips.cfg:53
-msgid "<i>― The Wesnoth Community</i>"
-msgstr "<i>— Zajednica Vesnota</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:56
-msgid ""
-"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
-"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
-"rare <i>liminal</i> units fight best during twilight."
-msgstr ""
-"<i>Dobre</i> jedinice bolje se bore danju, a <i>haotične</i> jedinice su "
-"jače noću. Na <i>neutralne</i> jedinice doba dana ne utiče. Retke "
-"<i>dvojstvene</i> jedinice najbolje se bore tokom sumraka."
-
-#. [tip]
-#: data/hardwired/tips.cfg:57
-msgid ""
-"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr ""
-"<i>— Kraljevski zbornik bojne terminologije, tom II, 212. gv. (doštampano "
-"221. gv.)</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:60
-msgid ""
-"An otherwise sound plan can fail if you attack at the wrong time of day."
-msgstr "Naum inače valjan može propasti napadne li se u pogrešno doba dana."
-
-#. [tip]
-#: data/hardwired/tips.cfg:61 data/hardwired/tips.cfg:85
-#: data/hardwired/tips.cfg:137 data/hardwired/tips.cfg:145
-#: data/hardwired/tips.cfg:229
-msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "<i>— Haldrik Drugi, Priručnik taktičke analize, tom I, 42. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:64
-msgid ""
-"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
-"know what you’re facing. In this case, long-range scouting units are worth "
-"their cost. Try to choose scouts that can easily move across the surrounding "
-"terrain, because units can only see as far as they can move in one turn."
-msgstr ""
-"Ako vam je tokom igre aktivan <b>pokrov</b> ili <b>magla rata</b>, nećete "
-"znati s čim ste suočeni. U tim okolnostima, dalekodometne izviđačke jedinice "
-"vrijede svaku paru. Pokušajte da birate one koje će se lako kretati okolnim "
-"terenom, jer jedinice vide onoliko daleko koliko mogu prevaliti u jednom "
-"potezu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:68
-msgid ""
-"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
-"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
-"against different types of attacks. Right-click on a unit and select <b>Unit "
-"Description</b> to see which attacks it is resistant to, and which will "
-"affect it the most."
-msgstr ""
-"Postoji šest tipova napada: <i>proboj</i>, <i>sječivo</i>, <i>udar</i>, "
-"<i>vatra</i>, <i>mraz</i> i <i>volšebni</i>. Oni različito utiču na "
-"različite jedinice. Kliknite desnim na jedinicu, izaberite <b>Opis jedinice</"
-"b>, gdje možete vidjeti na koje je napade otporna, a koji će je najteže "
-"pogoditi."
-
-#. [tip]
-#: data/hardwired/tips.cfg:72
-msgid ""
-"The terrain occupied by your units is the main factor determining the chance "
-"that they will be hit. The defensive rating for the currently selected unit "
-"in the currently selected terrain is displayed in the top right corner of "
-"the screen."
-msgstr ""
-"Teren na kome se vaše jedinice nalaze glavni je činilac za to kakvi su "
-"izgledi protivnika da ih pogode. Odbrambeni razred trenutno izabrane "
-"jedinice prikazan je u gornjem desnom uglu ekrana."
-
-#. [tip]
-#: data/hardwired/tips.cfg:76
-msgid ""
-"Poisoned units will lose eight hitpoints every turn until they are one point "
-"from dying. They will then remain at death’s door until the poison is "
-"removed. Healers can prevent a poisoned unit from deteriorating, but the "
-"poison will not be removed unless the unit regenerates, or begins a turn in "
-"a village or next to a unit with the <i>Cures</i> ability."
-msgstr ""
-"Otrovane jedinice gubiće osam udarpoena po potezu, dok ne spadnu na jedan "
-"pred smrt. Stajaće tada na korak do smrti dok se otrov ne iscijeli. Vidari "
-"mogu spriječiti pogoršanje stanja otrovane jedinice, ali se otrova neće "
-"riješiti dok se ne obnovi (ako može), ili započne potez u selu ili nadomak "
-"jedinice sa sposobnošću <i>iscjeljivanja</i>."
-
-#. [tip]
-#: data/hardwired/tips.cfg:80
-msgid ""
-"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
-"the <b>Actions</b> menu. By recalling the same units over and over, you can "
-"build up a powerful and experienced army."
-msgstr ""
-"Možete koristiti jedinice iz prethodnog scenarija, pomoću <b>Sazovi</b> iz "
-"menija <b>Radnje</b>. Uzastopnim sazivanjem istih jedinica, možete izgraditi "
-"moćnu i iskusnu vojsku."
-
-#. [tip]
-#: data/hardwired/tips.cfg:84
-msgid ""
-"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
-"around them. If a unit moves into an enemy’s zone of control, it may not "
-"move any further that turn. This means that units can have two empty hexes "
-"between them and still create a barrier to the enemy. Beware, though: "
-"skirmishers can pass through these gaps."
-msgstr ""
-"Jedinice prvog i višeg nivoa postavljaju <i>nadzorni pojas</i> u šest polja "
-"oko sebe. Ako se jedinica pomjeri u neprijateljev nadzorni pojas, ne može se "
-"više pomijerati u toku tog poteza. Ovo znači da i jedinice razmaknute dva "
-"polja zaprečavaju put neprijatelju. Ali pazite: čarkaši, međutim, mogu da "
-"prođu kroz ovakve procepe."
-
-#. [tip]
-#: data/hardwired/tips.cfg:88
-msgid ""
-"The chance to hit a unit usually depends on how well that unit can defend "
-"itself in the terrain in which it is standing. However, magical attacks "
-"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
-"are guaranteed at least a 60% chance of a hit when they attack on their own "
-"turn."
-msgstr ""
-"Izgledi da se jedinica pogodi zavise od toga koliko se ona može dobro "
-"braniti na terenu gdje se nalazi. Ipak, magični napadi uvijek imaju 70% "
-"izgleda za pogodak, a jedinice s osobinom <i>oštrookosti</i> imaju "
-"garantovanih bar 60% izgleda kada udare u svom potezu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:89
-msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "<i>— Haldrik Drugi, Priručnik taktičke analize, tom II, 43. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:92
-msgid ""
-"Units stationed in villages will either heal eight hitpoints at the "
-"beginning of their turn, or will recover from poisoning."
-msgstr ""
-"Jedinice razmještene u selima ili će se zaliječiti 8 udarpoena na početku "
-"svog poteza, ili oporaviti od trovanja."
-
-#. [tip]
-#: data/hardwired/tips.cfg:96
-msgid ""
-"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
-"does not move or attack, it will recover two hitpoints at the beginning of "
-"its next turn."
-msgstr ""
-"Ne pomijerajte povređenu jedinicu ako ne morate — neka se odmori. Ako se "
-"jedinica niti pomjeri niti napadne, povratiće 2 udarpoena na početku "
-"sljedećeg poteza."
-
-#. [tip]
-#: data/hardwired/tips.cfg:100
-msgid ""
-"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
-"units’ sightlines are limited by their maximum movement. If you have some "
-"valuable but slow units, keep at least one fast unit with them so that you "
-"are not caught out by a surprise attack."
-msgstr ""
-"Na mapama gdje je uključen <i>pokrov</i> ili <i>magla rata</i>, vidik svih "
-"jedinica ograničen je njihovim dometom kretanja. Ako imate neke vredne ali "
-"spore jedinice, držite kraj njih bar jednu brzu jedinicu kako ne bi bile "
-"uhvaćene iznenadnim napadom."
-
-#. [tip]
-#: data/hardwired/tips.cfg:104
-msgid ""
-"Foot units tend to defend better in villages and castles than in other "
-"terrain types, while most mounted units do not gain any defensive advantages "
-"from villages or castles."
-msgstr ""
-"Pješačke jedinice se obično bolje brane u selima i zamkovima nego na drugom "
-"terenu, dok većina konjičkih jedinica tu nema nikakvu odbrambenu dobit."
-
-#. [tip]
-#: data/hardwired/tips.cfg:105 data/hardwired/tips.cfg:185
-msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "<i>— ser Kajlan, 498. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:108
-msgid ""
-"Horse-based units are generally resistant to attacks with bladed or impact "
-"weapons, but are vulnerable to attacks with piercing weapons, including bows "
-"and spears."
-msgstr ""
-"Konjičke jedinice su obično otporne na napade sečivima i udarnim oružjima, "
-"ali ranjive na probojna oružja, uključujući i lukove i koplja."
-
-#. [tip]
-#: data/hardwired/tips.cfg:109
-msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "<i>— ser Kajlan, 502. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:112
-msgid ""
-"Inflicting the killing blow on an enemy unit is the best way to gain "
-"experience. Units killing an enemy will gain eight experience points for "
-"every level of the unit they kill, or four experience points for a zero-"
-"level opponent."
-msgstr ""
-"Najbolji način za dobijanje iskustva jeste nanošenje završnog udarca "
-"neprijateljskoj jedinici. Jedinice koje dovrše neprijatelja dobiće po osam "
-"poena iskustva na svaki nivo ubijene jedinice, ili četiri za nesrećnika "
-"nultog nivoa."
-
-#. [tip]
-#: data/hardwired/tips.cfg:116
-msgid ""
-"Elvish units move and fight well in forest. Dwarvish units move and fight "
-"well in hills, mountains and caves."
-msgstr ""
-"Vilenjačke jedinice se izvrsno kreću i bore u šumi. Za patuljačke jedinice "
-"isto važi u brdima, planinama i pećinama."
-
-#. [tip]
-#: data/hardwired/tips.cfg:120
-msgid ""
-"Patience is often key. Rather than attacking in bad conditions or with few "
-"troops, wait for better conditions and then attack."
-msgstr ""
-"Strpljenje je često ključno. Umjesto napadanja u lošim uslovima, ili sa malo "
-"snaga, bolje je sačekati povoljnije prilike i tada udariti."
-
-#. [tip]
-#: data/hardwired/tips.cfg:124
-msgid ""
-"If you are attacked from several directions, it may be a good idea to send "
-"expendable units in some directions to delay enemy units."
-msgstr ""
-"Ako vas napadnu iz nekoliko pravaca, može biti promućurno poslati nešto "
-"potrošnih jedinica da zapriječe te pravce, kako bi se dobilo na vremenu."
-
-# >> Meneldur
-#. [tip]
-#: data/hardwired/tips.cfg:128
-msgid ""
-"Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr ""
-"Ne plaši se povlačenja radi boljeg raspoređivanja; često je to neophodno za "
-"pobjedu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:129
-msgid "<i>― Meneldur, 123YW</i>"
-msgstr "<i>— Meneldur, 123. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:132
-msgid ""
-"In most campaigns you will receive a gold bonus for finishing early, "
-"depending on the number of villages on the map and the number of turns "
-"remaining. You will usually earn more gold this way than through capturing "
-"villages and waiting for the turns to run out."
-msgstr ""
-"U većini pohoda dobijaćete novčane bonuse za rano završavanje scenarija, već "
-"prema broju sela na mapi i broju preostalih poteza. Ovako ćete obično dobiti "
-"više zlata, nego kada biste zaposijedali sela i čekali isticanje poteza."
-
-# >> Handbook of Tactical Analysis Volume I - Haldric II
-#. [tip]
-#: data/hardwired/tips.cfg:136
-msgid ""
-"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
-"not just the keep they start on. Sometimes your allies may be willing to "
-"make room for you on their keep so you can recruit from there, and you can "
-"even capture an enemy’s keep and use that."
-msgstr ""
-"<i>Vođi</i> mogu unajmljivati ili sazivati jedinice sa bilo koje kule unutar "
-"zamka, ne samo iz onog odakle su krenuli. Ponekad će neki saveznik biti "
-"voljan da ti privremeno ustupi svoj zamak radi unajmljivanja, a možeš čak "
-"zarobiti neprijateljev zamak pa odande unajmljivati."
-
-#. [tip]
-#: data/hardwired/tips.cfg:140
-msgid ""
-"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
-"vulnerable to impact, fire, and arcane attacks."
-msgstr ""
-"Skeleti su otporni na sječiva, mraz i probojne napade, ali ranjivi na udar, "
-"vatru, i volšebne napade."
-
-# >> Handbook of Tactical Analysis Volume I - Haldric II
-#. [tip]
-#: data/hardwired/tips.cfg:144
-msgid ""
-"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
-"the same side fight better. You can move these units slowly along your "
-"battle lines and give bonuses to large numbers of lower-level troops."
-msgstr ""
-"Jedinice sa sposobnošću <i>vođstva</i> čine da se susjedne jedinice nižeg "
-"nivoa bore bolje. Ovakve jedinice možeš sporo pomijerati duž svojih "
-"frontova, dajući bonuse velikom broju jedinica nižeg nivoa."
-
-# >> Great Mage Delfador
-#. [tip]
-#: data/hardwired/tips.cfg:148
-msgid ""
-"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
-"the village and attack you, while enjoying the defense and healing of the "
-"village."
-msgstr ""
-"Izbjegavaj stupanje nadomak nezauzetog sela. Neprijateljska jedinica može "
-"uskočiti u selo i napasti tvoju, dok uživa zaštitu i liječenje koje joj selo "
-"pruža."
-
-# >> Princess Li'sar
-#. [tip]
-#: data/hardwired/tips.cfg:152
-msgid "Use lines of troops to screen your injured units while they recover."
-msgstr "Koristi frontove jedinica za zaštitu svojih ranjenih tokom oporavka."
-
-#. [tip]
-#: data/hardwired/tips.cfg:153
-msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "<i>— princeza Lizára, 515. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:156
-msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "Pročitajte spisak prečica sa tastature u meniju <b>Postavke</b>."
-
-#. [tip]
-#: data/hardwired/tips.cfg:160
-msgid ""
-"If you move a unit, but don’t attack or discover any additional information, "
-"you can undo your move by pressing <b>u</b>."
-msgstr ""
-"Ako pomjerite jedinicu, a pritom ne napadnete ili saznate nove činjenice, "
-"možete opozvati potez pritiskom na <b>u</b>."
-
-#. [tip]
-#: data/hardwired/tips.cfg:164
-msgid ""
-"You can see how far enemy units can move by moving the mouse cursor over "
-"them."
-msgstr ""
-"Možete vidjeti gdje se neprijateljska jedinica može pomjeriti pomakom miša "
-"preko nje."
-
-# >> Scroll of Chantal
-#. [tip]
-#: data/hardwired/tips.cfg:168
-msgid ""
-"Use healers to support your attacks — they will win you battles without "
-"needing to attack anything themselves."
-msgstr ""
-"Koristi vidare kao podršku u napadima — dobijaće ti bitke, a da sami ništa "
-"napali nisu."
-
-# >> Chantal is an elvish druid (female).
-#. [tip]
-#: data/hardwired/tips.cfg:169 data/hardwired/tips.cfg:217
-msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "<i>— Svitak Čantalin, 516. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:172
-msgid ""
-"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
-"they do on all attacks until they end a turn."
-msgstr ""
-"Udar <i>usporenja</i> usporava kretanje neprijateljske jedinice i "
-"prepolovljava štetu koju nanosi u svim napadima do kraja poteza."
-
-#. [tip]
-#: data/hardwired/tips.cfg:176
-msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "<i>Volšebni</i> napadi su vrlo moćni protiv nemrtvih."
-
-#. [tip]
-#: data/hardwired/tips.cfg:177
-msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "<i>— veliki mudrac Desin, 626. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:180
-msgid ""
-"Units are healed when they advance a level. Used wisely, this can turn a "
-"fight."
-msgstr ""
-"Jedinice se potpuno zalječuju kada isprednjače u nivou. Vješto "
-"upotrijebljeno, može preokrenuti bitku."
-
-#. [tip]
-#: data/hardwired/tips.cfg:184
-msgid ""
-"Charging units are best used against enemies they can kill with a single "
-"blow."
-msgstr ""
-"Jurišne jedinice najbolje je koristiti protiv neprijatelja koje mogu "
-"dovršiti jednim udarom."
-
-#. [tip]
-#: data/hardwired/tips.cfg:188
-msgid ""
-"Instead of leveling up, high-level units gain an <i>After Maximum Level "
-"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
-"hitpoints by three and fully heals it. This is much less than the normal "
-"benefits of advancing a level, so it is generally wiser to advance your "
-"lower-level units instead."
-msgstr ""
-"Umjesto novog nivoa, jedinice visokog nivoa dobijaju bonus <i>napredovanja "
-"po najvišem nivou</i> (NAPON), što im obično povećava maksimum udarpoena za "
-"tri i potpuno ih zalječuje. Ovo je mnogo manja dobit od one pri napredovanju "
-"u nivou, tako da je obično mudrije da unapređujete jedinica nižeg nivoa."
-
-#. [tip]
-#: data/hardwired/tips.cfg:192
-msgid ""
-"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
-"mouse pointer over any button or icon to get a description or explanation of "
-"what it does."
-msgstr ""
-"Skoro svako dugme i ikona tokom igranja Vesnota ima oblačić — postavite "
-"pokazivač miša iznad onoga za šta želite opis ili objašnjenje šta radi."
-
-# >> Queen Li'sar
-#. [tip]
-#: data/hardwired/tips.cfg:196
-msgid ""
-"To advance low-level units quickly, team them with a veteran and use the "
-"veteran to damage a joint target heavily enough for the junior partner to "
-"get in the killing blow."
-msgstr ""
-"Da brzo iznapreduješ jedinicu niskog nivoa, upari ja sa jednom veteranskom, "
-"pa koristi veterana da ošteti zajedničkog neprijatelja dovoljno teško da ga "
-"mlađi saborac može uništiti u jednom napadu."
-
-#. [tip]
-#: data/hardwired/tips.cfg:197
-msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "<i>— kraljica Lizára, 528. gv.</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:200
-msgid ""
-"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
-"the <b>Delay Shroud Updates</b> option when you need to move units while "
-"retaining the ability to undo, or use the new Whiteboard planning tool."
-msgstr ""
-"Ne možete opozvati pokret koji otkrije polja sakrivena maglom ili pokrovom. "
-"Uključite opciju <b>Zastoj ažuriranja pokrova</b> ako želite da uvijek "
-"možete opozvati pokret, ili upotrebite blokče, novu alatku za planiranje."
-
-#. [tip]
-#: data/hardwired/tips.cfg:204
-msgid ""
-"If an enemy benefits more from a rare terrain type than you do, occupying "
-"that terrain will deprive them of its benefits."
-msgstr ""
-"Ako neprijatelju rijedak tip terena koristi više nego vama, zauzimanjem tih "
-"polja uskratićete neprijatelju njihove prednosti."
-
-#. [tip]
-#: data/hardwired/tips.cfg:208
-msgid ""
-"Few units have good defenses in water; a line of attackers along the edge of "
-"a river can inflict heavy casualties. Elves can use the edge of a forest in "
-"a similar manner, and dwarves can do the same with mountains."
-msgstr ""
-"Malobrojne su jedinice vične odbrani u vodi; postrojba napadača duž rečne "
-"obale može nanijeti žestoke gubitke. Vilenjacima slično koristi rub šume, a "
-"patuljcima planinski obronci."
-
-#. [tip]
-#: data/hardwired/tips.cfg:212
-msgid ""
-"In many campaign scenarios, you may issue simple instructions for your "
-"computer-controlled allies using the right-click context menu."
-msgstr ""
-"U mnogim scenarijima u pohodu, saveznicima kojima upravlja računar možete "
-"izdavati jednostavne upute preko kontekstnog menija na desni klik."
-
-#. [tip]
-#: data/hardwired/tips.cfg:216
-msgid ""
-"The <i>Slow</i> ability is extremely powerful because it has such wide-"
-"ranging effects. Enemy undead get half the normal benefit from their "
-"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
-"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
-"to escape; slow enemies are almost immobilized, and your own units suffer "
-"less retaliation damage, so it’s quicker to heal them."
-msgstr ""
-"Sposobnost <i>usporavanja</i> izvanredno je moćna, zbog svog dalekosežnog "
-"uticaja. Neprijateljskim nemrtvima sposobnost <i>crpljenja</i> spada napola, "
-"bonus na štetu pri <i>jurišu</i> i <i>nožu u leđa</i> nestaje, a "
-"<i>bezglavost</i> je oslabljena. Brzi protivnici naprežu se da izmaknu, "
-"spori bivaju gotovo ukopani, a vaše jedinice trpe manje uzvratne štete, tako "
-"da se mogu brže zalečiti."
-
-#. [tip]
-#: data/hardwired/tips.cfg:220
-msgid ""
-"Try to operate units with a small number of powerful attacks—such as Dark "
-"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
-"This gives you another try whenever your first devastating attack misses — "
-"as inevitably happens from time to time."
-msgstr ""
-"Pokušajte da dejstvujete jedinicama sa malim brojem moćnih napada — poput "
-"mračnih posvećenika, konjanika, orko-groktaša ili patulj-gromovnika — u "
-"parovima ili trojkama. To vam daje dodatni pokušaj kad god prvi razarajući "
-"napad promaši, do čega neminovno dolazi s vremena na vreme."
-
-#. [tip]
-#: data/hardwired/tips.cfg:224
-msgid ""
-"Units with three or more attacks—especially magical attacks—are ideal for "
-"finishing off enemies with only a few hitpoints remaining. Be sure to use "
-"leadership—or a strong or dextrous unit—whenever the extra point or two of "
-"damage makes a one-hit kill possible."
-msgstr ""
-"Jedinice sa tri ili više napada — posebno magičnih — idealne su za "
-"dokrajčivanje neprijatelja kojima je ostalo malo udarpoena. Gledajte da "
-"upotrebite vođstvo, ili kršnu ili spretnu jedinicu, kad god jedan ili dva "
-"dodatna poena štete mogu omogućiti pobedu iz prve."
-
-#. [tip]
-#: data/hardwired/tips.cfg:228
-msgid ""
-"Think twice before dismissing any unit from your recall list, no matter how "
-"little experience it has. Sometimes it’s worth paying a premium to know "
-"exactly what traits a new arrival will have."
-msgstr ""
-"Dvaput razmislite pre nego što otpustite jedinicu sa spiska sazivanja, ma "
-"koliko malo iskustva imala. Nekada vredi dobro platiti znanje o tome tačno "
-"koje osobine će novopridošla jedinica imati."
-
-#. [tip]
-#: data/hardwired/tips.cfg:232
-msgid ""
-"When a tough unit is heavily injured, send it to heal in a village several "
-"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
-"hitpoints per turn) without tying up front-line villages."
-msgstr ""
-"Kada žilava jedinica bude teško povređena, pošaljite je na lečenje u selo "
-"nekoliko poteza kretanja daleko od borbe. Tako se može oporaviti u miru (10 "
-"udarpoena po potezu) i bez zauzimanja sela na liniji fronta."
-
-#. [tip]
-#: data/hardwired/tips.cfg:233 data/hardwired/tips.cfg:245
-msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr "<i>― gospodar Hamel od Knalge</i>"
-
-#. [tip]
-#: data/hardwired/tips.cfg:236
-msgid ""
-"Combining multiple special abilities can be deadly. While it may take some "
-"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
-"<i>Charge</i> against a slowed opponent, the results can be impressive."
-msgstr ""
-"Udruživanje više specijalnih sposobnosti može biti smrtonosno. Iako može "
-"potrajati udruživanje, na primer, <i>vođstva</i>, <i>obasjavanja</i> i "
-"<i>juriša</i> protiv usporenog protivnika, rezultati će biti impozantni."
-
-#. [tip]
-#: data/hardwired/tips.cfg:240
-msgid ""
-"While finishing early gives a gold bonus, and reduces the opportunities for "
-"enemies to kill your valuable troops, it also means you lose chances to earn "
-"your units extra experience. When deciding whether or not to finish a "
-"scenario early, weigh these factors against one another."
-msgstr ""
-"Dok rani završetak daje bonus u zlatu, i oduzima neprijatelju prilike da vam "
-"uništi vredne jedinice, takođe znači gubitak prilika da svojim jedinicama "
-"zaradite još iskustva. Kada odlučujete da li ćete scenario rano završiti, "
-"odvagajte ove činioce."
-
-#. [tip]
-#: data/hardwired/tips.cfg:244
-msgid ""
-"If your forces have weak defenses everywhere on the map, occupy the areas "
-"where your enemies can only attack you by sharing the same disadvantages. "
-"Avoid places where your defenses are poor and your enemy’s are merely "
-"average. Plan for heavy losses, and take firm control of any hex where the "
-"land does favor you."
-msgstr ""
-"Ako vaše snage imaju slabu odbranu svuda na mapi, zauzmite ona područja gde "
-"vas neprijatelj može napasti pod za njega jednako lošim uslovima. "
-"Izbegavajte mesta gde je vaša odbrana slaba a neprijateljeva tek prosečna. "
-"Planirajte sa teškim gubicima, i čvrsto držite svako polje na kojem vam "
-"teren odgovara."
-
-#. [tip]
-#: data/hardwired/tips.cfg:249
-msgid ""
-"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
-"if they occupy a village hex, they do not gain any defensive benefits from "
-"the village, although they will still be healed."
-msgstr ""
-"<i>Neukroćene</i> jedinice, poput slepih miševa i drugih divljih životinja, "
-"izbegavaće sela. Čak i kada stanu na polje sa selom, ne dobijaju odbrambenih "
-"prednosti; mada će ipak biti lečene."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
@@ -4266,6 +3483,778 @@ msgstr "kretnji"
 #: data/themes/widescreen.cfg:530 data/themes/widescreen.cfg:656
 msgid "statuspanel^terrain def."
 msgstr "terenska odb."
+
+#. [tip]
+#: data/tips.cfg:4
+msgid ""
+"Use the map editor's <i>Areas</i> menu to define regions later addressed by "
+"event or ai coding."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:5 data/tips.cfg:9 data/tips.cfg:13
+#, fuzzy
+#| msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgid "<i>― The Wesnoth Design Guide</i>"
+msgstr "<i>— Taktički vodič Vesnota</i>"
+
+#. [tip]
+#: data/tips.cfg:8
+msgid ""
+"Create a <i>New Scenario</i> in the editor's <i>File</i> menu to make use of "
+"advanced features."
+msgstr ""
+
+#. [tip]
+#: data/tips.cfg:12
+msgid ""
+"Scenarios saved from the editor in their default folder can be selected in "
+"the mp create screen's <i>User Scenarios</i> section."
+msgstr ""
+
+# >> Great Mage Delfador
+#. [tip]
+#: data/tips.cfg:16
+msgid ""
+"Don’t neglect to earn your leader experience! You need to keep him safe, but "
+"if you coddle him too much he may be too weak to survive future battles."
+msgstr ""
+"Ne zanemari pribavljanje iskustva svome vođu! Moraš ga čuvati od zla, ali "
+"ako ga previše maziš, može ostati preslab da bi preživio buduće bojeve."
+
+#. [tip]
+#: data/tips.cfg:17 data/tips.cfg:149
+msgid "<i>― Great Mage Delfador, 516YW</i>"
+msgstr "<i>— veliki mag Delfador, 516. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:20
+msgid ""
+"In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
+"highlight all the hexes your adversary can move to (assuming your units stay "
+"where they are). Use this to make sure the enemy can’t reach your weak or "
+"injured units on his next turn."
+msgstr ""
+"Iz menija <b>Radnje</b> izaberite <b>Protivnički pokreti</b> da se istaknu "
+"sva polja koja vaš protivnik može doseći (pod pretpostavkom da vaše jedinice "
+"ostanu gdje jesu). Korisno da se uvjerite da neprijatelj ne može dohvatiti "
+"vaše oslabljene ili povrijeđene jedinice u narednom potezu."
+
+#. [tip]
+#: data/tips.cfg:21 data/tips.cfg:33 data/tips.cfg:37 data/tips.cfg:45
+#: data/tips.cfg:49 data/tips.cfg:65 data/tips.cfg:69 data/tips.cfg:73
+#: data/tips.cfg:77 data/tips.cfg:81 data/tips.cfg:93 data/tips.cfg:97
+#: data/tips.cfg:101 data/tips.cfg:113 data/tips.cfg:121 data/tips.cfg:125
+#: data/tips.cfg:133 data/tips.cfg:157 data/tips.cfg:161 data/tips.cfg:165
+#: data/tips.cfg:173 data/tips.cfg:181 data/tips.cfg:189 data/tips.cfg:193
+#: data/tips.cfg:201 data/tips.cfg:205 data/tips.cfg:209 data/tips.cfg:213
+#: data/tips.cfg:221 data/tips.cfg:241 data/tips.cfg:250
+msgid "<i>― The Wesnoth Tactical Guide</i>"
+msgstr "<i>— Taktički vodič Vesnota</i>"
+
+# >> King Konrad
+#. [tip]
+#: data/tips.cfg:24
+msgid ""
+"Units with the <i>Intelligent</i> trait need fewer experience points to "
+"level up. Early in a campaign, try to give killing blows to these units so "
+"you can get some high-level troops sooner."
+msgstr ""
+"Jedinice s osobinom <i>oštroumnosti</i> zahtijevaju manje iskustvenih poena "
+"za napredovanje. Pokušaj da njima zadaješ završne udarce rano tokom pohoda, "
+"kako bi vojska ranije dobila jedinice viših nivoa."
+
+#. [tip]
+#: data/tips.cfg:25
+msgid "<i>― King Konrad, 536YW</i>"
+msgstr "<i>— kralj Konrad, 536. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:28
+msgid ""
+"The encircling tactic is very powerful, particularly against fast opponents. "
+"By placing two units on opposite sides of an enemy, their zones of control "
+"will restrict it to one hex of movement in any direction. Unfortunately, you "
+"must completely surround skirmishers to immobilize them."
+msgstr ""
+"Taktika opkoljavanja je vrlo moćna, posebice protiv hitrog protivnika. "
+"Postavivši dve jedinice na suprotnim stranama neprijateljske, njihovi "
+"nadzorni pojasevi ograničiće joj kretanje na jedno polje u bilo kom smjeru. "
+"Čarkaši se, nažalost, moraju potpuno opkoliti da bi se sputali."
+
+#. [tip]
+#: data/tips.cfg:29 data/tips.cfg:141
+msgid "<i>― Memoirs of Gweddry, 627YW</i>"
+msgstr "<i>— Životopis Gvedrijev, 627. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:32
+msgid ""
+"You can access the <b>Recruit</b> and <b>Recall</b> commands by right-"
+"clicking on a castle tile. That will let you choose the precise hex you put "
+"a unit in. Placing units wisely can sometimes let you reach a village a turn "
+"earlier."
+msgstr ""
+"Naredbama <b>Unajmi</b> i <b>Sazovi</b> možete pristupiti desnim klikom na "
+"polje zamka. Potom izaberite polje gdje želite da se jedinica pojavi. Mudrim "
+"postavljanjem jedinica možete doseći pokoje selo potez ranije."
+
+#. [tip]
+#: data/tips.cfg:36
+msgid ""
+"There are some helpful summary screens in the main menu: for instance, the "
+"<b>Status Table</b> will let you know how your enemies are doing, and how "
+"you are doing in comparison."
+msgstr ""
+"Glavni meni pruža nekoliko sažetaka od koristi; na primer, <b>Tabela stanja</"
+"b> pokazuje kako se drže vaši neprijatelji, i vi nasuprot njima."
+
+#. [tip]
+#: data/tips.cfg:40
+msgid ""
+"Units with the <i>Quick</i> trait get an extra movement point per turn. This "
+"can be very important when moving through difficult terrain such as water or "
+"caves. It can make the difference between being able to move one hex or two."
+msgstr ""
+"Jedinice s osobinom <i>hitrosti</i> imaju jedan poen pokreta više po potezu. "
+"Ovo može biti presudno pri napredovanju teškim terenom, poput vode ili "
+"pećina, gdje čini razliku između jednog i dva polja mogućeg pokreta."
+
+#. [tip]
+#: data/tips.cfg:41 data/tips.cfg:117 data/tips.cfg:225 data/tips.cfg:237
+msgid "<i>― High Lord Kalenz, 470YW</i>"
+msgstr "<i>— nadgospodar Kalenz, 470. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:44
+msgid ""
+"After you have played a few scenarios, read the <b>Gameplay</b> section in "
+"the <b>Help</b> screen carefully. Details become important as scenarios get "
+"harder!"
+msgstr ""
+"Pošto odigrate nekoliko scenarija, pažljivo pročitajte odjeljak "
+"<b>Izvođenje</b> u okviru pomoći. Detalji su sve važniji kako narasta težina "
+"scenarija!"
+
+#. [tip]
+#: data/tips.cfg:48
+msgid ""
+"It is usually better to start the next scenario in a campaign with lower-"
+"level units that are about to level up than with those same units at a "
+"higher level."
+msgstr ""
+"Obično je bolje započeti naredni scenario u pohodu jedinicama nižeg nivoa "
+"koje samo što nisu isprednjačile, nego sa istim takvima višeg nivoa."
+
+#. [tip]
+#: data/tips.cfg:52
+msgid ""
+"On www.wesnoth.org you can find strategy guides, technical support, the "
+"history of Wesnoth, and much more."
+msgstr ""
+"Na www.wesnoth.org možete naći strateške vodiče, tehničku podršku, istorijat "
+"Vesnota, i još mnogo toga."
+
+#. [tip]
+#: data/tips.cfg:53
+msgid "<i>― The Wesnoth Community</i>"
+msgstr "<i>— Zajednica Vesnota</i>"
+
+#. [tip]
+#: data/tips.cfg:56
+msgid ""
+"<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
+"better at night. <i>Neutral</i> units are unaffected by the time of day. The "
+"rare <i>liminal</i> units fight best during twilight."
+msgstr ""
+"<i>Dobre</i> jedinice bolje se bore danju, a <i>haotične</i> jedinice su "
+"jače noću. Na <i>neutralne</i> jedinice doba dana ne utiče. Retke "
+"<i>dvojstvene</i> jedinice najbolje se bore tokom sumraka."
+
+#. [tip]
+#: data/tips.cfg:57
+msgid ""
+"<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
+msgstr ""
+"<i>— Kraljevski zbornik bojne terminologije, tom II, 212. gv. (doštampano "
+"221. gv.)</i>"
+
+#. [tip]
+#: data/tips.cfg:60
+msgid ""
+"An otherwise sound plan can fail if you attack at the wrong time of day."
+msgstr "Naum inače valjan može propasti napadne li se u pogrešno doba dana."
+
+#. [tip]
+#: data/tips.cfg:61 data/tips.cfg:85 data/tips.cfg:137 data/tips.cfg:145
+#: data/tips.cfg:229
+msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
+msgstr "<i>— Haldrik Drugi, Priručnik taktičke analize, tom I, 42. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:64
+msgid ""
+"If you are playing with <b>Shroud</b> or <b>Fog of War</b> active, you won’t "
+"know what you’re facing. In this case, long-range scouting units are worth "
+"their cost. Try to choose scouts that can easily move across the surrounding "
+"terrain, because units can only see as far as they can move in one turn."
+msgstr ""
+"Ako vam je tokom igre aktivan <b>pokrov</b> ili <b>magla rata</b>, nećete "
+"znati s čim ste suočeni. U tim okolnostima, dalekodometne izviđačke jedinice "
+"vrijede svaku paru. Pokušajte da birate one koje će se lako kretati okolnim "
+"terenom, jer jedinice vide onoliko daleko koliko mogu prevaliti u jednom "
+"potezu."
+
+#. [tip]
+#: data/tips.cfg:68
+msgid ""
+"There are six types of attack: <i>pierce</i>, <i>blade</i>, <i>impact</i>, "
+"<i>fire</i>, <i>cold</i> and <i>arcane</i>. Different units have weaknesses "
+"against different types of attacks. Right-click on a unit and select <b>Unit "
+"Description</b> to see which attacks it is resistant to, and which will "
+"affect it the most."
+msgstr ""
+"Postoji šest tipova napada: <i>proboj</i>, <i>sječivo</i>, <i>udar</i>, "
+"<i>vatra</i>, <i>mraz</i> i <i>volšebni</i>. Oni različito utiču na "
+"različite jedinice. Kliknite desnim na jedinicu, izaberite <b>Opis jedinice</"
+"b>, gdje možete vidjeti na koje je napade otporna, a koji će je najteže "
+"pogoditi."
+
+#. [tip]
+#: data/tips.cfg:72
+msgid ""
+"The terrain occupied by your units is the main factor determining the chance "
+"that they will be hit. The defensive rating for the currently selected unit "
+"in the currently selected terrain is displayed in the top right corner of "
+"the screen."
+msgstr ""
+"Teren na kome se vaše jedinice nalaze glavni je činilac za to kakvi su "
+"izgledi protivnika da ih pogode. Odbrambeni razred trenutno izabrane "
+"jedinice prikazan je u gornjem desnom uglu ekrana."
+
+#. [tip]
+#: data/tips.cfg:76
+msgid ""
+"Poisoned units will lose eight hitpoints every turn until they are one point "
+"from dying. They will then remain at death’s door until the poison is "
+"removed. Healers can prevent a poisoned unit from deteriorating, but the "
+"poison will not be removed unless the unit regenerates, or begins a turn in "
+"a village or next to a unit with the <i>Cures</i> ability."
+msgstr ""
+"Otrovane jedinice gubiće osam udarpoena po potezu, dok ne spadnu na jedan "
+"pred smrt. Stajaće tada na korak do smrti dok se otrov ne iscijeli. Vidari "
+"mogu spriječiti pogoršanje stanja otrovane jedinice, ali se otrova neće "
+"riješiti dok se ne obnovi (ako može), ili započne potez u selu ili nadomak "
+"jedinice sa sposobnošću <i>iscjeljivanja</i>."
+
+#. [tip]
+#: data/tips.cfg:80
+msgid ""
+"You can reuse units from a previous scenario by selecting <b>Recall</b> from "
+"the <b>Actions</b> menu. By recalling the same units over and over, you can "
+"build up a powerful and experienced army."
+msgstr ""
+"Možete koristiti jedinice iz prethodnog scenarija, pomoću <b>Sazovi</b> iz "
+"menija <b>Radnje</b>. Uzastopnim sazivanjem istih jedinica, možete izgraditi "
+"moćnu i iskusnu vojsku."
+
+#. [tip]
+#: data/tips.cfg:84
+msgid ""
+"Units of level one and higher have a <i>Zone of Control</i> in the six hexes "
+"around them. If a unit moves into an enemy’s zone of control, it may not "
+"move any further that turn. This means that units can have two empty hexes "
+"between them and still create a barrier to the enemy. Beware, though: "
+"skirmishers can pass through these gaps."
+msgstr ""
+"Jedinice prvog i višeg nivoa postavljaju <i>nadzorni pojas</i> u šest polja "
+"oko sebe. Ako se jedinica pomjeri u neprijateljev nadzorni pojas, ne može se "
+"više pomijerati u toku tog poteza. Ovo znači da i jedinice razmaknute dva "
+"polja zaprečavaju put neprijatelju. Ali pazite: čarkaši, međutim, mogu da "
+"prođu kroz ovakve procepe."
+
+#. [tip]
+#: data/tips.cfg:88
+msgid ""
+"The chance to hit a unit usually depends on how well that unit can defend "
+"itself in the terrain in which it is standing. However, magical attacks "
+"always have a 70% chance to hit, and units with the <i>Marksman</i> ability "
+"are guaranteed at least a 60% chance of a hit when they attack on their own "
+"turn."
+msgstr ""
+"Izgledi da se jedinica pogodi zavise od toga koliko se ona može dobro "
+"braniti na terenu gdje se nalazi. Ipak, magični napadi uvijek imaju 70% "
+"izgleda za pogodak, a jedinice s osobinom <i>oštrookosti</i> imaju "
+"garantovanih bar 60% izgleda kada udare u svom potezu."
+
+#. [tip]
+#: data/tips.cfg:89
+msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
+msgstr "<i>— Haldrik Drugi, Priručnik taktičke analize, tom II, 43. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:92
+msgid ""
+"Units stationed in villages will either heal eight hitpoints at the "
+"beginning of their turn, or will recover from poisoning."
+msgstr ""
+"Jedinice razmještene u selima ili će se zaliječiti 8 udarpoena na početku "
+"svog poteza, ili oporaviti od trovanja."
+
+#. [tip]
+#: data/tips.cfg:96
+msgid ""
+"Don’t move an injured unit if you don’t have to — let it rest. If a unit "
+"does not move or attack, it will recover two hitpoints at the beginning of "
+"its next turn."
+msgstr ""
+"Ne pomijerajte povređenu jedinicu ako ne morate — neka se odmori. Ako se "
+"jedinica niti pomjeri niti napadne, povratiće 2 udarpoena na početku "
+"sljedećeg poteza."
+
+#. [tip]
+#: data/tips.cfg:100
+msgid ""
+"On maps where <i>Shroud</i> or <i>Fog of War</i> has been enabled, all "
+"units’ sightlines are limited by their maximum movement. If you have some "
+"valuable but slow units, keep at least one fast unit with them so that you "
+"are not caught out by a surprise attack."
+msgstr ""
+"Na mapama gdje je uključen <i>pokrov</i> ili <i>magla rata</i>, vidik svih "
+"jedinica ograničen je njihovim dometom kretanja. Ako imate neke vredne ali "
+"spore jedinice, držite kraj njih bar jednu brzu jedinicu kako ne bi bile "
+"uhvaćene iznenadnim napadom."
+
+#. [tip]
+#: data/tips.cfg:104
+msgid ""
+"Foot units tend to defend better in villages and castles than in other "
+"terrain types, while most mounted units do not gain any defensive advantages "
+"from villages or castles."
+msgstr ""
+"Pješačke jedinice se obično bolje brane u selima i zamkovima nego na drugom "
+"terenu, dok većina konjičkih jedinica tu nema nikakvu odbrambenu dobit."
+
+#. [tip]
+#: data/tips.cfg:105 data/tips.cfg:185
+msgid "<i>― Sir Kaylan, 498YW</i>"
+msgstr "<i>— ser Kajlan, 498. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:108
+msgid ""
+"Horse-based units are generally resistant to attacks with bladed or impact "
+"weapons, but are vulnerable to attacks with piercing weapons, including bows "
+"and spears."
+msgstr ""
+"Konjičke jedinice su obično otporne na napade sečivima i udarnim oružjima, "
+"ali ranjive na probojna oružja, uključujući i lukove i koplja."
+
+#. [tip]
+#: data/tips.cfg:109
+msgid "<i>― Sir Kaylan, 502YW</i>"
+msgstr "<i>— ser Kajlan, 502. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:112
+msgid ""
+"Inflicting the killing blow on an enemy unit is the best way to gain "
+"experience. Units killing an enemy will gain eight experience points for "
+"every level of the unit they kill, or four experience points for a zero-"
+"level opponent."
+msgstr ""
+"Najbolji način za dobijanje iskustva jeste nanošenje završnog udarca "
+"neprijateljskoj jedinici. Jedinice koje dovrše neprijatelja dobiće po osam "
+"poena iskustva na svaki nivo ubijene jedinice, ili četiri za nesrećnika "
+"nultog nivoa."
+
+#. [tip]
+#: data/tips.cfg:116
+msgid ""
+"Elvish units move and fight well in forest. Dwarvish units move and fight "
+"well in hills, mountains and caves."
+msgstr ""
+"Vilenjačke jedinice se izvrsno kreću i bore u šumi. Za patuljačke jedinice "
+"isto važi u brdima, planinama i pećinama."
+
+#. [tip]
+#: data/tips.cfg:120
+msgid ""
+"Patience is often key. Rather than attacking in bad conditions or with few "
+"troops, wait for better conditions and then attack."
+msgstr ""
+"Strpljenje je često ključno. Umjesto napadanja u lošim uslovima, ili sa malo "
+"snaga, bolje je sačekati povoljnije prilike i tada udariti."
+
+#. [tip]
+#: data/tips.cfg:124
+msgid ""
+"If you are attacked from several directions, it may be a good idea to send "
+"expendable units in some directions to delay enemy units."
+msgstr ""
+"Ako vas napadnu iz nekoliko pravaca, može biti promućurno poslati nešto "
+"potrošnih jedinica da zapriječe te pravce, kako bi se dobilo na vremenu."
+
+# >> Meneldur
+#. [tip]
+#: data/tips.cfg:128
+msgid ""
+"Do not be afraid to retreat and regroup; it is often the key to victory."
+msgstr ""
+"Ne plaši se povlačenja radi boljeg raspoređivanja; često je to neophodno za "
+"pobjedu."
+
+#. [tip]
+#: data/tips.cfg:129
+msgid "<i>― Meneldur, 123YW</i>"
+msgstr "<i>— Meneldur, 123. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:132
+msgid ""
+"In most campaigns you will receive a gold bonus for finishing early, "
+"depending on the number of villages on the map and the number of turns "
+"remaining. You will usually earn more gold this way than through capturing "
+"villages and waiting for the turns to run out."
+msgstr ""
+"U većini pohoda dobijaćete novčane bonuse za rano završavanje scenarija, već "
+"prema broju sela na mapi i broju preostalih poteza. Ovako ćete obično dobiti "
+"više zlata, nego kada biste zaposijedali sela i čekali isticanje poteza."
+
+# >> Handbook of Tactical Analysis Volume I - Haldric II
+#. [tip]
+#: data/tips.cfg:136
+msgid ""
+"<i>Leaders</i> can recruit or recall units from any keep inside a castle, "
+"not just the keep they start on. Sometimes your allies may be willing to "
+"make room for you on their keep so you can recruit from there, and you can "
+"even capture an enemy’s keep and use that."
+msgstr ""
+"<i>Vođi</i> mogu unajmljivati ili sazivati jedinice sa bilo koje kule unutar "
+"zamka, ne samo iz onog odakle su krenuli. Ponekad će neki saveznik biti "
+"voljan da ti privremeno ustupi svoj zamak radi unajmljivanja, a možeš čak "
+"zarobiti neprijateljev zamak pa odande unajmljivati."
+
+#. [tip]
+#: data/tips.cfg:140
+msgid ""
+"Skeletons are resistant to piercing, bladed and cold-based attacks but are "
+"vulnerable to impact, fire, and arcane attacks."
+msgstr ""
+"Skeleti su otporni na sječiva, mraz i probojne napade, ali ranjivi na udar, "
+"vatru, i volšebne napade."
+
+# >> Handbook of Tactical Analysis Volume I - Haldric II
+#. [tip]
+#: data/tips.cfg:144
+msgid ""
+"Units with the <i>Leadership</i> ability help lower-level adjacent units on "
+"the same side fight better. You can move these units slowly along your "
+"battle lines and give bonuses to large numbers of lower-level troops."
+msgstr ""
+"Jedinice sa sposobnošću <i>vođstva</i> čine da se susjedne jedinice nižeg "
+"nivoa bore bolje. Ovakve jedinice možeš sporo pomijerati duž svojih "
+"frontova, dajući bonuse velikom broju jedinica nižeg nivoa."
+
+# >> Great Mage Delfador
+#. [tip]
+#: data/tips.cfg:148
+msgid ""
+"Try to avoid moving next to unoccupied villages. An enemy unit may move into "
+"the village and attack you, while enjoying the defense and healing of the "
+"village."
+msgstr ""
+"Izbjegavaj stupanje nadomak nezauzetog sela. Neprijateljska jedinica može "
+"uskočiti u selo i napasti tvoju, dok uživa zaštitu i liječenje koje joj selo "
+"pruža."
+
+# >> Princess Li'sar
+#. [tip]
+#: data/tips.cfg:152
+msgid "Use lines of troops to screen your injured units while they recover."
+msgstr "Koristi frontove jedinica za zaštitu svojih ranjenih tokom oporavka."
+
+#. [tip]
+#: data/tips.cfg:153
+msgid "<i>― Princess Li’sar, 515YW</i>"
+msgstr "<i>— princeza Lizára, 515. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:156
+msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
+msgstr "Pročitajte spisak prečica sa tastature u meniju <b>Postavke</b>."
+
+#. [tip]
+#: data/tips.cfg:160
+msgid ""
+"If you move a unit, but don’t attack or discover any additional information, "
+"you can undo your move by pressing <b>u</b>."
+msgstr ""
+"Ako pomjerite jedinicu, a pritom ne napadnete ili saznate nove činjenice, "
+"možete opozvati potez pritiskom na <b>u</b>."
+
+#. [tip]
+#: data/tips.cfg:164
+msgid ""
+"You can see how far enemy units can move by moving the mouse cursor over "
+"them."
+msgstr ""
+"Možete vidjeti gdje se neprijateljska jedinica može pomjeriti pomakom miša "
+"preko nje."
+
+# >> Scroll of Chantal
+#. [tip]
+#: data/tips.cfg:168
+msgid ""
+"Use healers to support your attacks — they will win you battles without "
+"needing to attack anything themselves."
+msgstr ""
+"Koristi vidare kao podršku u napadima — dobijaće ti bitke, a da sami ništa "
+"napali nisu."
+
+# >> Chantal is an elvish druid (female).
+#. [tip]
+#: data/tips.cfg:169 data/tips.cfg:217
+msgid "<i>― The Scroll of Chantal, 516YW</i>"
+msgstr "<i>— Svitak Čantalin, 516. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:172
+msgid ""
+"The <i>Slow</i> attack makes enemy units move slower and halves the damage "
+"they do on all attacks until they end a turn."
+msgstr ""
+"Udar <i>usporenja</i> usporava kretanje neprijateljske jedinice i "
+"prepolovljava štetu koju nanosi u svim napadima do kraja poteza."
+
+#. [tip]
+#: data/tips.cfg:176
+msgid "<i>Arcane</i> attacks are very powerful against undead."
+msgstr "<i>Volšebni</i> napadi su vrlo moćni protiv nemrtvih."
+
+#. [tip]
+#: data/tips.cfg:177
+msgid "<i>― Great Sage Dacyn, 626YW</i>"
+msgstr "<i>— veliki mudrac Desin, 626. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:180
+msgid ""
+"Units are healed when they advance a level. Used wisely, this can turn a "
+"fight."
+msgstr ""
+"Jedinice se potpuno zalječuju kada isprednjače u nivou. Vješto "
+"upotrijebljeno, može preokrenuti bitku."
+
+#. [tip]
+#: data/tips.cfg:184
+msgid ""
+"Charging units are best used against enemies they can kill with a single "
+"blow."
+msgstr ""
+"Jurišne jedinice najbolje je koristiti protiv neprijatelja koje mogu "
+"dovršiti jednim udarom."
+
+#. [tip]
+#: data/tips.cfg:188
+msgid ""
+"Instead of leveling up, high-level units gain an <i>After Maximum Level "
+"Advancement</i> (AMLA) bonus, which usually increases the unit’s maximum "
+"hitpoints by three and fully heals it. This is much less than the normal "
+"benefits of advancing a level, so it is generally wiser to advance your "
+"lower-level units instead."
+msgstr ""
+"Umjesto novog nivoa, jedinice visokog nivoa dobijaju bonus <i>napredovanja "
+"po najvišem nivou</i> (NAPON), što im obično povećava maksimum udarpoena za "
+"tri i potpuno ih zalječuje. Ovo je mnogo manja dobit od one pri napredovanju "
+"u nivou, tako da je obično mudrije da unapređujete jedinica nižeg nivoa."
+
+#. [tip]
+#: data/tips.cfg:192
+msgid ""
+"Nearly every button and icon in the Wesnoth game has a tooltip. Hover the "
+"mouse pointer over any button or icon to get a description or explanation of "
+"what it does."
+msgstr ""
+"Skoro svako dugme i ikona tokom igranja Vesnota ima oblačić — postavite "
+"pokazivač miša iznad onoga za šta želite opis ili objašnjenje šta radi."
+
+# >> Queen Li'sar
+#. [tip]
+#: data/tips.cfg:196
+msgid ""
+"To advance low-level units quickly, team them with a veteran and use the "
+"veteran to damage a joint target heavily enough for the junior partner to "
+"get in the killing blow."
+msgstr ""
+"Da brzo iznapreduješ jedinicu niskog nivoa, upari ja sa jednom veteranskom, "
+"pa koristi veterana da ošteti zajedničkog neprijatelja dovoljno teško da ga "
+"mlađi saborac može uništiti u jednom napadu."
+
+#. [tip]
+#: data/tips.cfg:197
+msgid "<i>― Queen Li’sar, 528YW</i>"
+msgstr "<i>— kraljica Lizára, 528. gv.</i>"
+
+#. [tip]
+#: data/tips.cfg:200
+msgid ""
+"You cannot undo a move that uncovers hexes hidden by fog or shroud. Turn on "
+"the <b>Delay Shroud Updates</b> option when you need to move units while "
+"retaining the ability to undo, or use the new Whiteboard planning tool."
+msgstr ""
+"Ne možete opozvati pokret koji otkrije polja sakrivena maglom ili pokrovom. "
+"Uključite opciju <b>Zastoj ažuriranja pokrova</b> ako želite da uvijek "
+"možete opozvati pokret, ili upotrebite blokče, novu alatku za planiranje."
+
+#. [tip]
+#: data/tips.cfg:204
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+"Ako neprijatelju rijedak tip terena koristi više nego vama, zauzimanjem tih "
+"polja uskratićete neprijatelju njihove prednosti."
+
+#. [tip]
+#: data/tips.cfg:208
+msgid ""
+"Few units have good defenses in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+"Malobrojne su jedinice vične odbrani u vodi; postrojba napadača duž rečne "
+"obale može nanijeti žestoke gubitke. Vilenjacima slično koristi rub šume, a "
+"patuljcima planinski obronci."
+
+#. [tip]
+#: data/tips.cfg:212
+msgid ""
+"In many campaign scenarios, you may issue simple instructions for your "
+"computer-controlled allies using the right-click context menu."
+msgstr ""
+"U mnogim scenarijima u pohodu, saveznicima kojima upravlja računar možete "
+"izdavati jednostavne upute preko kontekstnog menija na desni klik."
+
+#. [tip]
+#: data/tips.cfg:216
+msgid ""
+"The <i>Slow</i> ability is extremely powerful because it has such wide-"
+"ranging effects. Enemy undead get half the normal benefit from their "
+"<i>Drain</i> ability, the damage bonus from <i>Charge</i> or <i>Backstab</i> "
+"is cancelled, and the <i>Berserk</i> ability is weakened. Fast foes struggle "
+"to escape; slow enemies are almost immobilized, and your own units suffer "
+"less retaliation damage, so it’s quicker to heal them."
+msgstr ""
+"Sposobnost <i>usporavanja</i> izvanredno je moćna, zbog svog dalekosežnog "
+"uticaja. Neprijateljskim nemrtvima sposobnost <i>crpljenja</i> spada napola, "
+"bonus na štetu pri <i>jurišu</i> i <i>nožu u leđa</i> nestaje, a "
+"<i>bezglavost</i> je oslabljena. Brzi protivnici naprežu se da izmaknu, "
+"spori bivaju gotovo ukopani, a vaše jedinice trpe manje uzvratne štete, tako "
+"da se mogu brže zalečiti."
+
+#. [tip]
+#: data/tips.cfg:220
+msgid ""
+"Try to operate units with a small number of powerful attacks—such as Dark "
+"Adepts, Horsemen, Orcish Grunts or Dwarvish Thunderers—in pairs or threes. "
+"This gives you another try whenever your first devastating attack misses — "
+"as inevitably happens from time to time."
+msgstr ""
+"Pokušajte da dejstvujete jedinicama sa malim brojem moćnih napada — poput "
+"mračnih posvećenika, konjanika, orko-groktaša ili patulj-gromovnika — u "
+"parovima ili trojkama. To vam daje dodatni pokušaj kad god prvi razarajući "
+"napad promaši, do čega neminovno dolazi s vremena na vreme."
+
+#. [tip]
+#: data/tips.cfg:224
+msgid ""
+"Units with three or more attacks—especially magical attacks—are ideal for "
+"finishing off enemies with only a few hitpoints remaining. Be sure to use "
+"leadership—or a strong or dextrous unit—whenever the extra point or two of "
+"damage makes a one-hit kill possible."
+msgstr ""
+"Jedinice sa tri ili više napada — posebno magičnih — idealne su za "
+"dokrajčivanje neprijatelja kojima je ostalo malo udarpoena. Gledajte da "
+"upotrebite vođstvo, ili kršnu ili spretnu jedinicu, kad god jedan ili dva "
+"dodatna poena štete mogu omogućiti pobedu iz prve."
+
+#. [tip]
+#: data/tips.cfg:228
+msgid ""
+"Think twice before dismissing any unit from your recall list, no matter how "
+"little experience it has. Sometimes it’s worth paying a premium to know "
+"exactly what traits a new arrival will have."
+msgstr ""
+"Dvaput razmislite pre nego što otpustite jedinicu sa spiska sazivanja, ma "
+"koliko malo iskustva imala. Nekada vredi dobro platiti znanje o tome tačno "
+"koje osobine će novopridošla jedinica imati."
+
+#. [tip]
+#: data/tips.cfg:232
+msgid ""
+"When a tough unit is heavily injured, send it to heal in a village several "
+"turns’ movement away from the fighting. Then it can recover in peace (at 10 "
+"hitpoints per turn) without tying up front-line villages."
+msgstr ""
+"Kada žilava jedinica bude teško povređena, pošaljite je na lečenje u selo "
+"nekoliko poteza kretanja daleko od borbe. Tako se može oporaviti u miru (10 "
+"udarpoena po potezu) i bez zauzimanja sela na liniji fronta."
+
+#. [tip]
+#: data/tips.cfg:233 data/tips.cfg:245
+msgid "<i>― Lord Hamel of Knalga</i>"
+msgstr "<i>― gospodar Hamel od Knalge</i>"
+
+#. [tip]
+#: data/tips.cfg:236
+msgid ""
+"Combining multiple special abilities can be deadly. While it may take some "
+"work to combine, for example, <i>Leadership</i>, <i>Illuminates</i> and "
+"<i>Charge</i> against a slowed opponent, the results can be impressive."
+msgstr ""
+"Udruživanje više specijalnih sposobnosti može biti smrtonosno. Iako može "
+"potrajati udruživanje, na primer, <i>vođstva</i>, <i>obasjavanja</i> i "
+"<i>juriša</i> protiv usporenog protivnika, rezultati će biti impozantni."
+
+#. [tip]
+#: data/tips.cfg:240
+msgid ""
+"While finishing early gives a gold bonus, and reduces the opportunities for "
+"enemies to kill your valuable troops, it also means you lose chances to earn "
+"your units extra experience. When deciding whether or not to finish a "
+"scenario early, weigh these factors against one another."
+msgstr ""
+"Dok rani završetak daje bonus u zlatu, i oduzima neprijatelju prilike da vam "
+"uništi vredne jedinice, takođe znači gubitak prilika da svojim jedinicama "
+"zaradite još iskustva. Kada odlučujete da li ćete scenario rano završiti, "
+"odvagajte ove činioce."
+
+#. [tip]
+#: data/tips.cfg:244
+msgid ""
+"If your forces have weak defenses everywhere on the map, occupy the areas "
+"where your enemies can only attack you by sharing the same disadvantages. "
+"Avoid places where your defenses are poor and your enemy’s are merely "
+"average. Plan for heavy losses, and take firm control of any hex where the "
+"land does favor you."
+msgstr ""
+"Ako vaše snage imaju slabu odbranu svuda na mapi, zauzmite ona područja gde "
+"vas neprijatelj može napasti pod za njega jednako lošim uslovima. "
+"Izbegavajte mesta gde je vaša odbrana slaba a neprijateljeva tek prosečna. "
+"Planirajte sa teškim gubicima, i čvrsto držite svako polje na kojem vam "
+"teren odgovara."
+
+#. [tip]
+#: data/tips.cfg:249
+msgid ""
+"<i>Feral</i> units, such as Bats and wild animals, will avoid villages. Even "
+"if they occupy a village hex, they do not gain any defensive benefits from "
+"the village, although they will still be healed."
+msgstr ""
+"<i>Neukroćene</i> jedinice, poput slepih miševa i drugih divljih životinja, "
+"izbegavaće sela. Čak i kada stanu na polje sa selom, ne dobijaju odbrambenih "
+"prednosti; mada će ipak biti lečene."
 
 #: src/about.cpp:227 src/dialogs.cpp:448 src/menu_events.cpp:166
 #: src/statistics_dialog.cpp:182
@@ -4949,7 +4938,7 @@ msgstr " ranjivost pr. "
 msgid "Slowed"
 msgstr "usporen"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:915
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:913
 msgid "Total damage"
 msgstr "ukupna šteta"
 
@@ -5192,12 +5181,12 @@ msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
 # >> Datetime format, see 'man strftime' for possible placeholders.
-#: src/format_time_summary.cpp:46 src/reports.cpp:1520
+#: src/format_time_summary.cpp:46 src/reports.cpp:1518
 msgid "%H:%M"
 msgstr "%H.%M"
 
 # >> Datetime format, see 'man strftime' for possible placeholders.
-#: src/format_time_summary.cpp:49 src/reports.cpp:1520
+#: src/format_time_summary.cpp:49 src/reports.cpp:1518
 msgid "%I:%M %p"
 msgstr "%H.%M"
 
@@ -5226,15 +5215,13 @@ msgstr "%b %d %y"
 msgid "Invalid color range: "
 msgstr "Loš opseg boja: "
 
-#: src/game_config_manager.cpp:179
-msgid "Error loading game configuration files: '"
+#: src/game_config_manager.cpp:180
+#, fuzzy
+#| msgid "Error loading game configuration files: '"
+msgid "Error loading game configuration files. The game will now exit."
 msgstr "Greška pri učitavanju postavnih datoteka igre: '"
 
-#: src/game_config_manager.cpp:180
-msgid "' (The game will now exit)"
-msgstr "' (igra će se sad ugasiti)"
-
-#: src/game_config_manager.cpp:274
+#: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
 msgstr[0] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
@@ -5242,51 +5229,56 @@ msgstr[1] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[2] "Sljedeći dodaci imaju grešku i ne mogu se učitati:"
 msgstr[3] "Sljedeći dodatak ima grešku i ne može se učitati:"
 
-#: src/game_config_manager.cpp:281
-msgid "ERROR DETAILS:"
-msgstr "DETALJI GREŠKE:"
+#: src/game_config_manager.cpp:283
+msgid "Please report this to the author or maintainer of this add-on."
+msgid_plural ""
+"Please report this to the respective authors or maintainers of these add-ons."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
 
-#: src/game_controller.cpp:336 src/game_controller.cpp:924
+#: src/game_controller.cpp:332 src/game_controller.cpp:920
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "Boj za Vesnot"
 
-#: src/game_controller.cpp:475 src/game_controller.cpp:493
+#: src/game_controller.cpp:471 src/game_controller.cpp:489
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka koju ste pokušali da otvorite iskvarena je"
 
-#: src/game_controller.cpp:478 src/game_controller.cpp:496
+#: src/game_controller.cpp:474 src/game_controller.cpp:492
 #: src/savegame.cpp:687
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka koju ste pokušali da učitate iskvarena je: '"
 
-#: src/game_controller.cpp:486
+#: src/game_controller.cpp:482
 msgid "File I/O Error while reading the game"
 msgstr "U/I greška u datoteci prilikom čitanja pozicije"
 
-#: src/game_controller.cpp:488
+#: src/game_controller.cpp:484
 msgid "File I/O Error while reading the game: '"
 msgstr "U/I greška u datoteci prilikom čitanja pozicije: '"
 
-#: src/game_controller.cpp:589
+#: src/game_controller.cpp:585
 msgid "No campaigns are available.\n"
 msgstr "Nema nijednog pohoda.\n"
 
-#: src/game_controller.cpp:861
+#: src/game_controller.cpp:857
 msgid "Error while starting server: "
 msgstr "Greška pri pokretanju servera: "
 
-#: src/game_controller.cpp:863 src/playcampaign.cpp:218
+#: src/game_controller.cpp:859 src/playcampaign.cpp:218
 #: src/playcampaign.cpp:470
 msgid "The game could not be loaded: "
 msgstr "Poziciju nije moguće učitati: "
 
-#: src/game_controller.cpp:865 src/playcampaign.cpp:220
+#: src/game_controller.cpp:861 src/playcampaign.cpp:220
 #: src/playcampaign.cpp:473
 msgid "Error while playing the game: "
 msgstr "Greška prilikom igranja partije: "
 
-#: src/game_controller.cpp:883 src/playcampaign.cpp:222
+#: src/game_controller.cpp:879 src/playcampaign.cpp:222
 #: src/playcampaign.cpp:476
 msgid "The game map could not be loaded: "
 msgstr "Mapu igre nije moguće učitati: "
@@ -5334,35 +5326,35 @@ msgstr ""
 "Nema nijedne pogodne lokacije za zamak. Previše ili premalo planinskih "
 "polja? Proverite parametar ‘max hill size’."
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:611
+#: src/gui/dialogs/lobby/lobby_data.cpp:211 src/multiplayer_lobby.cpp:611
 msgid "Unknown era: $era_id"
 msgstr "nepoznata epoha: $era_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:210 src/multiplayer_lobby.cpp:615
+#: src/gui/dialogs/lobby/lobby_data.cpp:216 src/multiplayer_lobby.cpp:615
 msgid "Unknown era"
 msgstr "nepoznata epoha"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:266 src/multiplayer_lobby.cpp:507
+#: src/gui/dialogs/lobby/lobby_data.cpp:283 src/multiplayer_lobby.cpp:507
 msgid "Remote scenario"
 msgstr "udaljeni scenario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:274 src/multiplayer_lobby.cpp:515
+#: src/gui/dialogs/lobby/lobby_data.cpp:291 src/multiplayer_lobby.cpp:515
 msgid "Unknown scenario: $scenario_id"
 msgstr "nepoznat scenario: $scenario_id"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:279 src/multiplayer_lobby.cpp:519
+#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:519
 msgid "Unknown scenario"
 msgstr "nepoznat scenario"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:647
+#: src/gui/dialogs/lobby/lobby_data.cpp:302 src/multiplayer_lobby.cpp:647
 msgid "Reloaded game"
 msgstr "učitana pozicija"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:663
+#: src/gui/dialogs/lobby/lobby_data.cpp:313 src/multiplayer_lobby.cpp:663
 msgid "Turn "
 msgstr "potez "
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:667
+#: src/gui/dialogs/lobby/lobby_data.cpp:318 src/multiplayer_lobby.cpp:667
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
 msgstr[0] "slobodna mjesta:"
@@ -5370,43 +5362,43 @@ msgstr[1] "slobodna mjesta:"
 msgstr[2] "slobodna mjesta:"
 msgstr[3] "slobodno mjesto:"
 
-#: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:692
+#: src/gui/dialogs/lobby/lobby_data.cpp:332 src/multiplayer_lobby.cpp:692
 msgid "none"
 msgstr "nema"
 
-#: src/gui/dialogs/lobby_player_info.cpp:98
+#: src/gui/dialogs/lobby_player_info.cpp:107
 msgid "In game:"
 msgstr "u igri:"
 
-#: src/gui/dialogs/lobby_player_info.cpp:100
+#: src/gui/dialogs/lobby_player_info.cpp:109
 msgid "(observing)"
 msgstr "(posmatra)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:102
+#: src/gui/dialogs/lobby_player_info.cpp:111
 msgid "(playing)"
 msgstr "(igra)"
 
-#: src/gui/dialogs/lobby_player_info.cpp:105
+#: src/gui/dialogs/lobby_player_info.cpp:114
 msgid "In lobby"
 msgstr "u holu"
 
-#: src/gui/dialogs/lobby_player_info.cpp:129
+#: src/gui/dialogs/lobby_player_info.cpp:138
 msgid "On friends list"
 msgstr "na spisku prijatelja"
 
-#: src/gui/dialogs/lobby_player_info.cpp:134
+#: src/gui/dialogs/lobby_player_info.cpp:143
 msgid "On ignores list"
 msgstr "na spisku ignorisanih"
 
-#: src/gui/dialogs/lobby_player_info.cpp:139
+#: src/gui/dialogs/lobby_player_info.cpp:148
 msgid "Neither a friend nor ignored"
 msgstr "ni prijatelj ni ignorisan"
 
-#: src/gui/dialogs/lobby_player_info.cpp:144
+#: src/gui/dialogs/lobby_player_info.cpp:153
 msgid "You"
 msgstr "ja"
 
-#: src/gui/dialogs/lobby_player_info.cpp:147
+#: src/gui/dialogs/lobby_player_info.cpp:156
 msgid "Error"
 msgstr "Greška"
 
@@ -6821,7 +6813,7 @@ msgstr "Napravi partiju"
 msgid "Filter:"
 msgstr "Filter: "
 
-#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:384
+#: src/multiplayer_create.cpp:69 src/multiplayer_create.cpp:381
 msgid "Number of players: any"
 msgstr ""
 
@@ -6865,9 +6857,41 @@ msgstr "Postavke..."
 msgid "Load Game..."
 msgstr "Učitaj poziciju..."
 
-#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:281
+#: src/multiplayer_create.cpp:83 src/multiplayer_create.cpp:278
 msgid "Activate"
 msgstr ""
+
+# намерно кратко, на уском дугмету
+#: src/multiplayer_create.cpp:103
+#, fuzzy
+#| msgid "End Scenario"
+msgid "Scenarios"
+msgstr "Kraj"
+
+#: src/multiplayer_create.cpp:104
+#, fuzzy
+#| msgid "Campaign Design"
+msgid "Campaigns"
+msgstr "Dizajn pohoda"
+
+#: src/multiplayer_create.cpp:105
+#, fuzzy
+#| msgid "Close"
+msgid "User Maps"
+msgstr "Zatvori"
+
+# намерно кратко, на уском дугмету
+#: src/multiplayer_create.cpp:106
+#, fuzzy
+#| msgid "End Scenario"
+msgid "User Scenarios"
+msgstr "Kraj"
+
+#: src/multiplayer_create.cpp:107
+#, fuzzy
+#| msgid "Random"
+msgid "Random Maps"
+msgstr "nasumično"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
 #, fuzzy
@@ -6891,33 +6915,33 @@ msgid ""
 "None found."
 msgstr "Bez obavještenja"
 
-#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:279
+#: src/multiplayer_create.cpp:187 src/multiplayer_create.cpp:276
 #, fuzzy
 #| msgid "Debug mode activated!"
 msgid "Deactivate"
 msgstr "Ispravljanje aktivirano!"
 
-#: src/multiplayer_create.cpp:248
+#: src/multiplayer_create.cpp:245
 #, fuzzy
 #| msgid "The map is invalid."
 msgid "The level is invalid."
 msgstr "Mapa je nepravilna."
 
-#: src/multiplayer_create.cpp:333
+#: src/multiplayer_create.cpp:330
 msgid "Players: "
 msgstr "igrača: "
 
-#: src/multiplayer_create.cpp:351
+#: src/multiplayer_create.cpp:348
 msgid "Size: "
 msgstr "veličina: "
 
-#: src/multiplayer_create.cpp:386
+#: src/multiplayer_create.cpp:383
 #, fuzzy
 #| msgid "Name of game:"
 msgid "Number of players: "
 msgstr "naziv partije:"
 
-#: src/multiplayer_create.cpp:493 src/unit_types.cpp:785
+#: src/multiplayer_create.cpp:490 src/unit_types.cpp:785
 msgid "No description available."
 msgstr "Opis nije dostupan."
 
@@ -7471,153 +7495,153 @@ msgstr "poredak: "
 msgid "Ability: "
 msgstr "sposobnost: "
 
-#: src/reports.cpp:393 src/reports.cpp:817
+#: src/reports.cpp:393 src/reports.cpp:815
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:446
+#: src/reports.cpp:445
 msgid "Resistances: "
 msgstr "otpornosti: "
 
-#: src/reports.cpp:448
+#: src/reports.cpp:447
 msgid "(Att / Def)"
 msgstr "(npd/obr)"
 
-#: src/reports.cpp:474
+#: src/reports.cpp:473
 msgid "Experience Modifier: "
 msgstr "modifikator iskustva: "
 
-#: src/reports.cpp:525
+#: src/reports.cpp:524
 msgid "Terrain: "
 msgstr "teren: "
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "maximum^max."
 msgstr "maks."
 
-#: src/reports.cpp:542
+#: src/reports.cpp:541
 msgid "minimum^min."
 msgstr "min."
 
-#: src/reports.cpp:547
+#: src/reports.cpp:546
 msgid "Defense: "
 msgstr "odbrana: "
 
-#: src/reports.cpp:568
+#: src/reports.cpp:567
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Verzija: "
 
-#: src/reports.cpp:596
+#: src/reports.cpp:595
 msgid "Movement Costs:"
 msgstr ""
 
-#: src/reports.cpp:687 src/reports.cpp:902 src/reports.cpp:914
+#: src/reports.cpp:685 src/reports.cpp:900 src/reports.cpp:912
 msgid "Weapon: "
 msgstr "oružje: "
 
-#: src/reports.cpp:688 src/reports.cpp:903
+#: src/reports.cpp:686 src/reports.cpp:901
 msgid "Damage: "
 msgstr "šteta: "
 
-#: src/reports.cpp:692
+#: src/reports.cpp:690
 msgid "Base damage: "
 msgstr "bazna šteta: "
 
-#: src/reports.cpp:694 src/reports.cpp:728 src/reports.cpp:738
+#: src/reports.cpp:692 src/reports.cpp:726 src/reports.cpp:736
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "svojstvo oružja: "
 
-#: src/reports.cpp:697
+#: src/reports.cpp:695
 msgid "Time of day: "
 msgstr "doba dana: "
 
-#: src/reports.cpp:701
+#: src/reports.cpp:699
 msgid "Leadership: "
 msgstr "vođstvo: "
 
-#: src/reports.cpp:705
+#: src/reports.cpp:703
 msgid "Slowed: "
 msgstr "usporena: "
 
-#: src/reports.cpp:709
+#: src/reports.cpp:707
 msgid "Attacks: "
 msgstr "napada: "
 
-#: src/reports.cpp:713
+#: src/reports.cpp:711
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
 msgstr "bonus poteza: "
 
-#: src/reports.cpp:714 src/reports.cpp:733
+#: src/reports.cpp:712 src/reports.cpp:731
 msgid "Swarm: "
 msgstr "roj: "
 
-#: src/reports.cpp:715 src/reports.cpp:726 src/reports.cpp:737
+#: src/reports.cpp:713 src/reports.cpp:724 src/reports.cpp:735
 msgid "Base attacks: "
 msgstr "baznih napada: "
 
-#: src/reports.cpp:721
+#: src/reports.cpp:719
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Specials: "
 msgstr "svojstvo oružja: "
 
-#: src/reports.cpp:731
+#: src/reports.cpp:729
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:750
+#: src/reports.cpp:748
 msgid "Weapon range: "
 msgstr "domet oružja: "
 
-#: src/reports.cpp:751
+#: src/reports.cpp:749
 msgid "Damage type: "
 msgstr "vid štete: "
 
-#: src/reports.cpp:752
+#: src/reports.cpp:750
 msgid "Damage versus: "
 msgstr "šteta protiv: "
 
-#: src/reports.cpp:791
+#: src/reports.cpp:789
 msgid "Accuracy:"
 msgstr "preciznost: "
 
-#: src/reports.cpp:796
+#: src/reports.cpp:794
 msgid "Parry:"
 msgstr "pariranje: "
 
-#: src/reports.cpp:815
+#: src/reports.cpp:813
 msgid "Weapon special: "
 msgstr "svojstvo oružja: "
 
-#: src/reports.cpp:886
+#: src/reports.cpp:884
 msgid "None"
 msgstr "nema"
 
-#: src/reports.cpp:1114 src/reports.cpp:1164
+#: src/reports.cpp:1112 src/reports.cpp:1162
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "zakonite jedinice: "
 
-#: src/reports.cpp:1116 src/reports.cpp:1166
+#: src/reports.cpp:1114 src/reports.cpp:1164
 msgid "Neutral units: "
 msgstr "neutralne jedinice: "
 
-#: src/reports.cpp:1117 src/reports.cpp:1167
+#: src/reports.cpp:1115 src/reports.cpp:1165
 msgid "Chaotic units: "
 msgstr "haotične jedinice: "
 
-#: src/reports.cpp:1119 src/reports.cpp:1169
+#: src/reports.cpp:1117 src/reports.cpp:1167
 msgid "Liminal units: "
 msgstr "dvojstvene jedinice: "
 
-#: src/reports.cpp:1484
+#: src/reports.cpp:1482
 msgid "Observers:"
 msgstr "posmatrači:"
 
@@ -7715,135 +7739,151 @@ msgstr ""
 msgid "Save Game"
 msgstr "Sačuvaj poziciju"
 
-#: src/serialization/parser.cpp:127
+#: src/serialization/parser.cpp:129
 msgid "Unexpected characters at line start"
 msgstr "Neočekivani znakovi na početku linije"
 
-#: src/serialization/parser.cpp:145
+#: src/serialization/parser.cpp:147
 #, fuzzy
 #| msgid "Missing closing tag for tag $tag at $pos"
-msgid "Missing closing tag for tag [$tag] at $pos"
+msgid "Missing closing tag for tag [$tag]"
 msgstr "Nedostaje zatvarajuća oznaka za $tag kod $pos"
 
-#: src/serialization/parser.cpp:158
+#: src/serialization/parser.cpp:148
+msgid "expected at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:148 src/serialization/parser.cpp:212
+msgid "opened at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:161
 msgid "Unterminated [element] tag"
 msgstr "Nedovršena oznaka [element]"
 
-#: src/serialization/parser.cpp:170 src/serialization/parser.cpp:218
+#: src/serialization/parser.cpp:173 src/serialization/parser.cpp:222
 msgid "Invalid tag name"
 msgstr "Loše ime oznake"
 
-#: src/serialization/parser.cpp:173
+#: src/serialization/parser.cpp:176
 msgid "Unterminated [+element] tag"
 msgstr "Nedovršena oznaka [+element]"
 
-#: src/serialization/parser.cpp:195
+#: src/serialization/parser.cpp:198
 msgid "Invalid closing tag name"
 msgstr "Loše ime zatvarajuće oznake"
 
-#: src/serialization/parser.cpp:198
+#: src/serialization/parser.cpp:201
 msgid "Unterminated closing tag"
 msgstr "Nedovršena zatvarajuća oznaka"
 
-#: src/serialization/parser.cpp:200
+#: src/serialization/parser.cpp:203
 msgid "Unexpected closing tag"
 msgstr "Neočekivana zatvarajuća oznaka"
 
-#: src/serialization/parser.cpp:208
+#: src/serialization/parser.cpp:211
 #, fuzzy
 #| msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
+msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr "Nađena loša zatvarajuća oznaka $tag2 za $tag1 (otvoreno kod $pos)"
 
-#: src/serialization/parser.cpp:237 src/serialization/parser.cpp:249
+#: src/serialization/parser.cpp:212
+#, fuzzy
+#| msgid "Close"
+msgid "closed at $pos"
+msgstr "Zatvori"
+
+#: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
 msgstr "Prazno ime promjenljive"
 
-#: src/serialization/parser.cpp:243
+#: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
 msgstr "Neočekivani znakovi poslije imena promjenljive (očekivah , ili =)"
 
-#: src/serialization/parser.cpp:282 src/serialization/parser.cpp:310
+#: src/serialization/parser.cpp:286 src/serialization/parser.cpp:314
 msgid "Unterminated quoted string"
 msgstr "Nedovršen tekst pod navodnicima"
 
-#: src/serialization/parser.cpp:362
-msgid "$error, value '$value', previous '$previous_value' at $pos"
+#: src/serialization/parser.cpp:372
+msgid "at $pos"
+msgstr ""
+
+#: src/serialization/parser.cpp:386
+#, fuzzy
+#| msgid "$error, value '$value', previous '$previous_value' at $pos"
+msgid "Value: '$value' Previous: '$previous_value'"
 msgstr "$error, vrijednost „$value“, prethodna „$previous_value“ kod $pos"
 
-#: src/serialization/parser.cpp:366
-msgid "$error, value '$value' at $pos"
-msgstr "$error, vrijednost „$value“ kod $pos"
-
-#: src/serialization/string_utils.cpp:564
+#: src/serialization/string_utils.cpp:568
 msgid "prefix_milli^m"
 msgstr "m"
 
-#: src/serialization/string_utils.cpp:565
+#: src/serialization/string_utils.cpp:569
 msgid "prefix_micro^µ"
 msgstr "µ"
 
-#: src/serialization/string_utils.cpp:566
+#: src/serialization/string_utils.cpp:570
 msgid "prefix_nano^n"
 msgstr "n"
 
-#: src/serialization/string_utils.cpp:567
+#: src/serialization/string_utils.cpp:571
 msgid "prefix_pico^p"
 msgstr "p"
 
-#: src/serialization/string_utils.cpp:568
+#: src/serialization/string_utils.cpp:572
 msgid "prefix_femto^f"
 msgstr "f"
 
-#: src/serialization/string_utils.cpp:569
+#: src/serialization/string_utils.cpp:573
 msgid "prefix_atto^a"
 msgstr "a"
 
-#: src/serialization/string_utils.cpp:570
+#: src/serialization/string_utils.cpp:574
 msgid "prefix_zepto^z"
 msgstr "z"
 
-#: src/serialization/string_utils.cpp:571
+#: src/serialization/string_utils.cpp:575
 msgid "prefix_yocto^y"
 msgstr "y"
 
-#: src/serialization/string_utils.cpp:583
+#: src/serialization/string_utils.cpp:587
 msgid "prefix_kibi^K"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:584
+#: src/serialization/string_utils.cpp:588
 msgid "prefix_kilo^k"
 msgstr "k"
 
-#: src/serialization/string_utils.cpp:586
+#: src/serialization/string_utils.cpp:590
 msgid "prefix_mega^M"
 msgstr "M"
 
-#: src/serialization/string_utils.cpp:587
+#: src/serialization/string_utils.cpp:591
 msgid "prefix_giga^G"
 msgstr "G"
 
-#: src/serialization/string_utils.cpp:588
+#: src/serialization/string_utils.cpp:592
 msgid "prefix_tera^T"
 msgstr "T"
 
-#: src/serialization/string_utils.cpp:589
+#: src/serialization/string_utils.cpp:593
 msgid "prefix_peta^P"
 msgstr "P"
 
-#: src/serialization/string_utils.cpp:590
+#: src/serialization/string_utils.cpp:594
 msgid "prefix_exa^E"
 msgstr "E"
 
-#: src/serialization/string_utils.cpp:591
+#: src/serialization/string_utils.cpp:595
 msgid "prefix_zetta^Z"
 msgstr "Z"
 
-#: src/serialization/string_utils.cpp:592
+#: src/serialization/string_utils.cpp:596
 msgid "prefix_yotta^Y"
 msgstr "Y"
 
-#: src/serialization/string_utils.cpp:606
+#: src/serialization/string_utils.cpp:610
 msgid "infix_binary^i"
 msgstr "i"
 
@@ -8114,11 +8154,11 @@ msgstr "protivničko selo"
 msgid "Owned village"
 msgstr "zaposjednuto selo"
 
-#: src/theme.cpp:314
+#: src/theme.cpp:339
 msgid "border_size should be between 0.0 and 0.5."
 msgstr "border_size treba da je između 0,0 i 0,5."
 
-#: src/theme.cpp:574 src/theme.cpp:579
+#: src/theme.cpp:599 src/theme.cpp:604
 msgid "Hotkey(s): "
 msgstr ""
 
@@ -8229,6 +8269,15 @@ msgstr "Sakrij planove igrača $player"
 #: src/whiteboard/manager.cpp:1114
 msgid "Whiteboard Options"
 msgstr "Opcije blokčeta"
+
+#~ msgid "' (The game will now exit)"
+#~ msgstr "' (igra će se sad ugasiti)"
+
+#~ msgid "ERROR DETAILS:"
+#~ msgstr "DETALJI GREŠKE:"
+
+#~ msgid "$error, value '$value' at $pos"
+#~ msgstr "$error, vrijednost „$value“ kod $pos"
 
 #~ msgid "(side $temp_i|)"
 #~ msgstr "(strana $temp_i|)"
@@ -8386,11 +8435,6 @@ msgstr "Opcije blokčeta"
 #~ msgstr "Opcije blokčeta"
 
 #, fuzzy
-#~| msgid "Close"
-#~ msgid "Close Map"
-#~ msgstr "Zatvori"
-
-#, fuzzy
 #~| msgid "Time of day"
 #~ msgid "Switch Time of Day"
 #~ msgstr "doba dana"
@@ -8404,12 +8448,6 @@ msgstr "Opcije blokčeta"
 #~| msgid "Time of day"
 #~ msgid "Custom Time of Day Creator"
 #~ msgstr "doba dana"
-
-# намерно кратко, на уском дугмету
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "New Scenario"
-#~ msgstr "Kraj"
 
 #, fuzzy
 #~| msgid "Load Game"

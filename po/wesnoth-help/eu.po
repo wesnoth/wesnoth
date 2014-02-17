@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2005-08-23 11:08+0100\n"
 "Last-Translator: Alfredo Beaumont <ziberpunk@ziberghetto.dhis.org>\n"
 "Language-Team: Basque <ziberpunk@ziberghetto.dhis.org>\n"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Lurazpia"
@@ -879,7 +879,7 @@ msgstr "Armen berezitasunak"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1289 src/help.cpp:1291
+#: data/core/help.cfg:56 src/help.cpp:1291 src/help.cpp:1293
 #, fuzzy
 msgid "Factions"
 msgstr "Fakzio"
@@ -1152,7 +1152,7 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit’s turn."
+" black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 
 #. [topic]: id=orbs
@@ -1162,7 +1162,7 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-msgid " Enemy units have no orb on top of their energy bar."
+msgid " Enemy units have a red orb on top of their energy bar."
 msgstr ""
 
 #. [topic]: id=hitpoints
@@ -4403,7 +4403,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 #, fuzzy
 msgid "<header>text='Units having this special attack'</header>"
 msgstr ""
@@ -4411,7 +4411,7 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help.cpp:1218
+#: src/help.cpp:1220
 #, fuzzy
 msgid "<header>text='Units having this ability'</header>"
 msgstr ""
@@ -4419,172 +4419,172 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help.cpp:1251
+#: src/help.cpp:1253
 #, fuzzy
 msgid "Leaders:"
 msgstr "Burua: "
 
-#: src/help.cpp:1260
+#: src/help.cpp:1262
 #, fuzzy
 msgid "Recruits:"
 msgstr "Bilketak: "
 
-#: src/help.cpp:1274
+#: src/help.cpp:1276
 msgid "Era:"
 msgstr "Garaia:"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1284
 #, fuzzy
 msgid "Factions:"
 msgstr "Fakzio"
 
-#: src/help.cpp:1292
+#: src/help.cpp:1294
 msgid "Factions are only used in multiplayer"
 msgstr ""
 
-#: src/help.cpp:1325
+#: src/help.cpp:1327
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Lursaila"
 
-#: src/help.cpp:1403
+#: src/help.cpp:1405
 msgid "level"
 msgstr "maila"
 
-#: src/help.cpp:1436
+#: src/help.cpp:1438
 #, fuzzy
 msgid "Advances from: "
 msgstr "Hurrengo unitatea: "
 
-#: src/help.cpp:1438
+#: src/help.cpp:1440
 msgid "Advances to: "
 msgstr "Hurrengo unitatea: "
 
-#: src/help.cpp:1463
+#: src/help.cpp:1465
 msgid "Base unit: "
 msgstr ""
 
-#: src/help.cpp:1468
+#: src/help.cpp:1470
 msgid "Base units: "
 msgstr ""
 
-#: src/help.cpp:1486
+#: src/help.cpp:1488
 #, fuzzy
 msgid "Variations: "
 msgstr "Fakzio"
 
-#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
+#: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 #, fuzzy
 msgid "race^Miscellaneous"
 msgstr "+Hainbat"
 
-#: src/help.cpp:1512
+#: src/help.cpp:1514
 #, fuzzy
 msgid "Race: "
 msgstr "matrailu"
 
-#: src/help.cpp:1519
+#: src/help.cpp:1521
 msgid "Abilities: "
 msgstr "Trebetasunak:"
 
-#: src/help.cpp:1535
+#: src/help.cpp:1537
 #, fuzzy
 msgid "Ability Upgrades: "
 msgstr "Trebetasunak:"
 
-#: src/help.cpp:1550
+#: src/help.cpp:1552
 msgid "HP: "
 msgstr "BP: "
 
-#: src/help.cpp:1551
+#: src/help.cpp:1553
 msgid "Moves: "
 msgstr "Mugimenduak:"
 
-#: src/help.cpp:1553
+#: src/help.cpp:1555
 msgid "Vision: "
 msgstr ""
 
-#: src/help.cpp:1555
+#: src/help.cpp:1557
 msgid "Jamming: "
 msgstr ""
 
-#: src/help.cpp:1556
+#: src/help.cpp:1558
 #, fuzzy
 msgid "Cost: "
 msgstr "Mugimenduak:"
 
-#: src/help.cpp:1557
+#: src/help.cpp:1559
 msgid "Alignment: "
 msgstr "Lerrokatzea:"
 
-#: src/help.cpp:1561
+#: src/help.cpp:1563
 msgid "Required XP: "
 msgstr "Beharrezko EP: "
 
-#: src/help.cpp:1570
+#: src/help.cpp:1572
 msgid "unit help^Attacks"
 msgstr ""
 
-#: src/help.cpp:1577
+#: src/help.cpp:1579
 #, fuzzy
 msgid "unit help^Name"
 msgstr "Jokutik irten"
 
-#: src/help.cpp:1578
+#: src/help.cpp:1580
 msgid "Type"
 msgstr "Mota"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1581
 msgid "Strikes"
 msgstr "Atakatu"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1582
 msgid "Range"
 msgstr "Distantzia"
 
-#: src/help.cpp:1581
+#: src/help.cpp:1583
 msgid "Special"
 msgstr "Berezia"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1632
 msgid "Resistances"
 msgstr "Erresistentzia"
 
-#: src/help.cpp:1634
+#: src/help.cpp:1636
 msgid "Attack Type"
 msgstr "Atake moeta"
 
-#: src/help.cpp:1635
+#: src/help.cpp:1637
 msgid "Resistance"
 msgstr "Erresistentzia"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1667
 msgid "Terrain Modifiers"
 msgstr "Lursail modifikatzaileak"
 
-#: src/help.cpp:1669
+#: src/help.cpp:1671
 msgid "Terrain"
 msgstr "Lursaila"
 
-#: src/help.cpp:1670
+#: src/help.cpp:1672
 msgid "Defense"
 msgstr "Defentsa"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1673
 #, fuzzy
 msgid "Movement Cost"
 msgstr "Mugimendua"
 
-#: src/help.cpp:1675
+#: src/help.cpp:1677
 msgid "Vision Cost"
 msgstr ""
 
-#: src/help.cpp:1678
+#: src/help.cpp:1680
 msgid "Jamming Cost"
 msgstr ""
 
-#: src/help.cpp:2037
+#: src/help.cpp:2039
 #, fuzzy
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
@@ -4592,33 +4592,33 @@ msgstr ""
 "\n"
 "<header>text='Kolpeatzeko aukera'</header>"
 
-#: src/help.cpp:2948
+#: src/help.cpp:2950
 #, fuzzy
 msgid " < Back"
 msgstr "< Atzera"
 
-#: src/help.cpp:2949
+#: src/help.cpp:2951
 msgid "Forward >"
 msgstr "Aurrera >"
 
-#: src/help.cpp:3057
+#: src/help.cpp:3059
 #, fuzzy
 msgid "Reference to unknown topic: "
 msgstr "erreferentzia urruneko fitxategiari"
 
-#: src/help.cpp:3313
+#: src/help.cpp:3315
 msgid "corrupted original file"
 msgstr ""
 
-#: src/help.cpp:3424
+#: src/help.cpp:3426
 msgid "Close"
 msgstr "Itxi"
 
-#: src/help.cpp:3427
+#: src/help.cpp:3429
 msgid "The Battle for Wesnoth Help"
 msgstr "Wesnoth-eko Gudaren Laguntza"
 
-#: src/help.cpp:3483
+#: src/help.cpp:3485
 #, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Errorea jokuan jolasterakoan:"

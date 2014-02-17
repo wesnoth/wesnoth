@@ -23,9 +23,8 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "theme.hpp"
+#include "utils/foreach.tpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -158,60 +157,86 @@ namespace {
 
 #endif
 
-static void expand_partialresolution(config& dst_cfg, const config& top_cfg)
+/**
+ * Returns a copy of the wanted resolution.
+ *
+ * The function returns a copy since our caller uses a copy of this resolution
+ * as base to expand a partial resolution.
+ *
+ * @param resolutions             A config object containing the expanded
+ *                                resolutions.
+ * @param id                      The id of the resolution to return.
+ *
+ * @throw config::error           If the @p id is not found.
+ *
+ * @returns                       A copy of the resolution config.
+ */
+static config get_resolution(const config& resolutions, const std::string& id)
 {
-	std::vector<config> res_cfgs_;
-	// resolve all the partialresolutions
-	BOOST_FOREACH(const config &part, top_cfg.child_range("partialresolution"))
-	{
-		// follow the inheritance hierarchy and push all the nodes on the stack
-		std::vector<const config*> parent_stack(1, &part);
-		const config *parent;
-		std::string parent_id = part["inherits"];
-		while (!*(parent = &top_cfg.find_child("resolution", "id", parent_id)))
-		{
-			parent = &top_cfg.find_child("partialresolution", "id", parent_id);
-			if (!*parent)
-				throw config::error("[partialresolution] refers to non-existent [resolution] " + parent_id);
-			parent_stack.push_back(parent);
-			parent_id = (*parent)["inherits"].str();
-		}
-
-		// Add the parent resolution and apply all the modifications of its children
-		res_cfgs_.push_back(*parent);
-		while (!parent_stack.empty()) {
-			//override attributes
-			res_cfgs_.back().merge_attributes(*parent_stack.back());
-			BOOST_FOREACH(const config &rm, parent_stack.back()->child_range("remove")) {
-				find_ref(rm["id"], res_cfgs_.back(), true);
-			}
-
-			BOOST_FOREACH(const config &chg, parent_stack.back()->child_range("change"))
-			{
-				config &target = find_ref(chg["id"], res_cfgs_.back());
-				target.merge_attributes(chg);
-			}
-
-			// cannot add [status] sub-elements, but who cares
-			if (const config &c = parent_stack.back()->child("add"))
-			{
-				BOOST_FOREACH(const config::any_child &j, c.all_children_range()) {
-					res_cfgs_.back().add_child(j.key, j.cfg);
-				}
-			}
-
-			parent_stack.pop_back();
+	FOREACH(const AUTO& resolution, resolutions.child_range("resolution")) {
+		if(resolution["id"] == id) {
+			return resolution;
 		}
 	}
+
+	throw config::error(
+			  "[partialresolution] refers to non-existent [resolution] " + id);
+}
+
+/**
+ * Returns a config with all partial resolutions of a theme expanded.
+ *
+ * @param theme                   The original object, whose objects need to be
+ *                                expanded.
+ *
+ * @returns                       A new object with the expanded resolutions in
+ *                                a theme. This object no longer contains
+ *                                partial resolutions.
+ */
+static config expand_partialresolution(const config& theme)
+{
+	config result;
+
 	// Add all the resolutions
-	BOOST_FOREACH(const config &res, top_cfg.child_range("resolution")) {
-		dst_cfg.add_child("resolution", res);
+	FOREACH(const AUTO& resolution, theme.child_range("resolution")) {
+		result.add_child("resolution", resolution);
 	}
-	// Add all the resolved resolutions
-	for(std::vector<config>::const_iterator k = res_cfgs_.begin(); k != res_cfgs_.end(); ++k) {
-		dst_cfg.add_child("resolution", (*k));
+
+	// Resolve all the partialresolutions
+	FOREACH(const AUTO& part, theme.child_range("partialresolution")) {
+		config resolution = get_resolution(result, part["inherits"]);
+		resolution.merge_attributes(part);
+
+		FOREACH(const AUTO& remove, part.child_range("remove")) {
+			VALIDATE(!remove["id"].empty()
+					, missing_mandatory_wml_key(
+						  "[theme][partialresolution][remove]"
+						, "id"));
+
+			find_ref(remove["id"], resolution, true);
+		}
+
+		FOREACH(const AUTO& change, part.child_range("change")) {
+			VALIDATE(!change["id"].empty()
+					, missing_mandatory_wml_key(
+						  "[theme][partialresolution][change]"
+						, "id"));
+
+			config& target = find_ref(change["id"], resolution, false);
+			target.merge_attributes(change);
+		}
+
+		// cannot add [status] sub-elements, but who cares
+		FOREACH(const AUTO& add, part.child_range("add")) {
+			FOREACH(const AUTO& child, add.all_children_range()) {
+				resolution.add_child(child.key, child.cfg);
+			}
+		}
+
+		result.add_child("resolution", resolution);
 	}
-	return;
+
+	return result;
 }
 
 static void do_resolve_rects(const config& cfg, config& resolved_config, config* resol_cfg = NULL) {
@@ -599,9 +624,7 @@ theme::theme(const config& cfg, const SDL_Rect& screen) :
 	palette_(),
 	border_()
 {
-	config tmp;
-	expand_partialresolution(tmp, cfg);
-	do_resolve_rects(tmp, cfg_);
+	do_resolve_rects(expand_partialresolution(cfg), cfg_);
 	set_resolution(screen);
 }
 

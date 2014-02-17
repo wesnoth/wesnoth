@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Eastern_Invasion-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2013-03-06 09:31+0200\n"
 "Last-Translator: Guillaume Pascal <guillaume.pascal43@laposte.net>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -230,7 +230,7 @@ msgstr ""
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:27
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:24
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:27
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:32
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:28
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:36
@@ -269,7 +269,7 @@ msgstr "Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:32
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:32
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:29
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:33
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:37
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:33
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:38
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:41
@@ -391,7 +391,7 @@ msgstr "Défendre l'avant-poste"
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:86
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:108
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:66
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:72
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:121
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:117
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:96
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:263
@@ -417,7 +417,7 @@ msgstr "Mort de Gweddry"
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:90
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:112
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:70
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:76
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:125
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:121
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:100
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:147
@@ -565,7 +565,6 @@ msgstr "L'Échappée souterraine"
 msgid "Kabak"
 msgstr "Kabak"
 
-#. [side]
 #. [side]: type=Gryphon, id=Kraagak
 #. [side]: type=Ogre, id=Grug
 #. [side]: type=Orcish Warrior, id=Gruga-Har
@@ -574,7 +573,6 @@ msgstr "Kabak"
 #: data/campaigns/Eastern_Invasion/scenarios/02_The_Escape_Tunnel.cfg:41
 #: data/campaigns/Eastern_Invasion/scenarios/04a_An_Elven_Alliance.cfg:67
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:81
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:43
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:56
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:72
 msgid "Monsters"
@@ -1481,7 +1479,7 @@ msgstr "Vaincre le chef mort-vivant"
 #: data/campaigns/Eastern_Invasion/scenarios/06_Two_Paths.cfg:94
 #: data/campaigns/Eastern_Invasion/scenarios/07a_The_Crossing.cfg:116
 #: data/campaigns/Eastern_Invasion/scenarios/07b_Undead_Crossing.cfg:74
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:80
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:129
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:125
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:104
 #: data/campaigns/Eastern_Invasion/scenarios/10_Lake_Vrug.cfg:267
@@ -1996,68 +1994,131 @@ msgstr ""
 
 #. [scenario]: id=08_Training_the_Ogres
 #: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:4
-msgid "Training the Ogres"
+#, fuzzy
+#| msgid "Training the Ogres"
+msgid "Capturing the Ogres"
 msgstr "L'Entraînement des ogres"
 
-#. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:63
-msgid "Survive until end of turns"
-msgstr "Survivre jusqu'à la fin des tours"
+#. [side]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:47
+msgid "Ogres"
+msgstr ""
+
+#. [literal]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:70
+msgid "Waah! Run!"
+msgstr ""
+
+#. [literal]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:74
+msgid "Run for your lives!"
+msgstr ""
+
+#. [literal]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:78
+msgid "Help!"
+msgstr ""
+
+#. [literal]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:87
+msgid "$ogre_name surrender!"
+msgstr ""
+
+#. [literal]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:91
+msgid "Don't hurt $ogre_name|!"
+msgstr ""
+
+#. [literal]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:95
+msgid "$ogre_name will be good! Promise!"
+msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:68
-msgid "To add ogres to your army, keep two on the grass until end of turns"
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:116
+msgid "(captured ogres will be made available for recall)"
 msgstr ""
-"Pour pouvoir recruter des ogres dans votre armée, gardez-en au moins deux "
-"dans la plaine jusqu'au dernier tour de jeu"
+
+#. [objective]: condition=win
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:116
+msgid "Capture as many ogres as you can"
+msgstr ""
+
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:134
+msgid ""
+"An ogre is captured when it starts a turn being unable to move more than one "
+"hex."
+msgstr ""
+
+#. [note]
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:137
+msgid "If an ogre reaches the edge of the map, it will escape."
+msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:110
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:160
+#, fuzzy
+#| msgid ""
+#| "Look, we have found a pack of ogres. We should try to capture some to "
+#| "train."
 msgid ""
-"Look, we have found a pack of ogres. We should try to capture some to train."
+"Look, this valley is inhabited by a tribe of ogres. We should try to capture "
+"some to train."
 msgstr ""
 "Regardez, nous avons trouvé une bande d'ogres. Nous devrions en capturer "
 "quelques-uns pour les entraîner."
 
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:114
-msgid ""
-"All right, we have to keep at least two of these ogres on the grass where "
-"they can’t escape until our troops get here to capture them."
+#. [message]: race=ogre
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:164
+msgid "Humans are coming! Run!"
 msgstr ""
-"Bien, deux ogres au moins doivent rester sur le pré jusqu'à l'arrivée de nos "
-"troupes, qui les captureront."
 
 #. [message]: speaker=Owaec
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:118
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:168
 msgid ""
-"We should try to surround them. Gweddry, you stay where you are. Dacyn, you "
-"go north-east. I’ll go north-west."
+"Looks like they are fleeing. I think they will surrender easily if we can "
+"surround them."
 msgstr ""
-"Nous devrions essayer de les encercler. Gweddry, reste où tu es ! Dacyn, "
-"allez au nord-est ! J'irai au nord-ouest."
+
+#. [message]: speaker=Dacyn
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:172
+msgid "All right, we have to capture them one by one."
+msgstr ""
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:146
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:188
 msgid "We have let one escape. Let’s hope they don’t all!"
 msgstr ""
 "Nous en avons laissé un s'enfuir. Espérons qu'ils n'en fassent pas tous "
 "autant."
 
-#. [message]: speaker=Dacyn
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:171
-msgid "Our troops have caught up! Now, we will be able to recruit ogres!"
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:325
+msgid "We failed to capture any of them!"
 msgstr ""
-"Nos troupes nous ont rejoints ! Désormais, nous pourrons recruter des ogres !"
 
 #. [message]: speaker=Gweddry
-#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:182
-msgid ""
-"We didn’t capture enough of the ogres here. We will have to go on without "
-"them."
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:334
+msgid "We only captured one ogre."
 msgstr ""
-"Nous n'avons pas capturé assez d'ogres ici. Nous allons devoir nous en "
-"passer."
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:343
+msgid "We failed to capture more than two of the ogres."
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:352
+msgid "We captured three ogres! I hope they will prove useful."
+msgstr ""
+
+#. [message]: speaker=Gweddry
+#: data/campaigns/Eastern_Invasion/scenarios/08_Training_the_Ogres.cfg:359
+msgid ""
+"We managed to capture many ogres! They will make a good addition to our "
+"troops."
+msgstr ""
 
 #. [scenario]: id=09_Xenophobia
 #: data/campaigns/Eastern_Invasion/scenarios/09_Xenophobia.cfg:4
@@ -3934,6 +3995,40 @@ msgstr "Quoi ?!... Je... ne peux pas... perdre..."
 msgid "I wasn’t able to prevent his escape from here. Now Wesnoth is doomed..."
 msgstr ""
 "Je n'ai pas pu l'empêcher de fuir d'ici. Maintenant Wesnoth est condamné..."
+
+#~ msgid "Survive until end of turns"
+#~ msgstr "Survivre jusqu'à la fin des tours"
+
+#~ msgid "To add ogres to your army, keep two on the grass until end of turns"
+#~ msgstr ""
+#~ "Pour pouvoir recruter des ogres dans votre armée, gardez-en au moins deux "
+#~ "dans la plaine jusqu'au dernier tour de jeu"
+
+#~ msgid ""
+#~ "All right, we have to keep at least two of these ogres on the grass where "
+#~ "they can’t escape until our troops get here to capture them."
+#~ msgstr ""
+#~ "Bien, deux ogres au moins doivent rester sur le pré jusqu'à l'arrivée de "
+#~ "nos troupes, qui les captureront."
+
+#~ msgid ""
+#~ "We should try to surround them. Gweddry, you stay where you are. Dacyn, "
+#~ "you go north-east. I’ll go north-west."
+#~ msgstr ""
+#~ "Nous devrions essayer de les encercler. Gweddry, reste où tu es ! Dacyn, "
+#~ "allez au nord-est ! J'irai au nord-ouest."
+
+#~ msgid "Our troops have caught up! Now, we will be able to recruit ogres!"
+#~ msgstr ""
+#~ "Nos troupes nous ont rejoints ! Désormais, nous pourrons recruter des "
+#~ "ogres !"
+
+#~ msgid ""
+#~ "We didn’t capture enough of the ogres here. We will have to go on without "
+#~ "them."
+#~ msgstr ""
+#~ "Nous n'avons pas capturé assez d'ogres ici. Nous allons devoir nous en "
+#~ "passer."
 
 #~ msgid "Resist until Dacyn’s return tomorrow night"
 #~ msgstr "Résister jusqu'au retour de Dacyn demain soir"

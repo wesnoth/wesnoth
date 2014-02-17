@@ -100,11 +100,11 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 
 	typedef std::pair<level::TYPE, std::string> level_type_info;
 	std::vector<level_type_info> all_level_types;
-	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
-	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
-	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
-	all_level_types.push_back(std::make_pair(level::USER_SCENARIO, "User Scenarios"));
-	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, "Random Maps"));
+	all_level_types.push_back(std::make_pair(level::SCENARIO, _("Scenarios")));
+	all_level_types.push_back(std::make_pair(level::CAMPAIGN, _("Campaigns")));
+	all_level_types.push_back(std::make_pair(level::USER_MAP, _("User Maps")));
+	all_level_types.push_back(std::make_pair(level::USER_SCENARIO, _("User Scenarios")));
+	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, _("Random Maps")));
 
 	if (game_config::debug) {
 		all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,

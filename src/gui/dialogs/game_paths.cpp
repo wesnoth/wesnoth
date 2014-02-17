@@ -105,18 +105,22 @@ void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 				boost::bind(&tgame_paths::browse_directory_callback,
 							this,
 							path_path));
+
+		if(!desktop::open_object_is_supported()) {
+			// No point in displaying these on platforms that can't do
+			// open_object().
+			browse_w.set_visible(tcontrol::tvisible::invisible);
+		}
 	}
 }
 
 void tgame_paths::browse_directory_callback(const std::string& path)
 {
-	desktop::open_in_file_manager(path);
+	desktop::open_object(path);
 }
 
 void tgame_paths::copy_to_clipboard_callback(const std::string& path)
 {
-	// std::cerr << "copy_to_clipboard_callback(): " << path << '\n';
 	copy_to_clipboard(path, false);
-	// std::cerr << "clipboard: " << copy_from_clipboard(false) << '\n';
 }
 }

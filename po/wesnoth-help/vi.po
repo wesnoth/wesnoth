@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2013-08-22 22:29+0800\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Lokalize 1.5\n"
 
 #. [time]: id=underground
-#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:533
+#: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
 #: data/core/macros/schedules.cfg:99
 msgid "Underground"
 msgstr "Dưới lòng đất"
@@ -1126,7 +1126,7 @@ msgstr "Tính đặc biệt của vũ khí"
 
 #. #-#-#-#-#  wesnoth-help.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
-#: data/core/help.cfg:56 src/help.cpp:1289 src/help.cpp:1291
+#: data/core/help.cfg:56 src/help.cpp:1291 src/help.cpp:1293
 msgid "Factions"
 msgstr "Liên minh"
 
@@ -1504,8 +1504,12 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
+#, fuzzy
+#| msgid ""
+#| " red if it can no longer move or attack, or the user ended the unit’s "
+#| "turn."
 msgid ""
-" red if it can no longer move or attack, or the user ended the unit’s turn."
+" black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
 " đỏ nếu đơn vị không thể di chuyển hay tấn công được nữa, hoặc đã kết thúc "
 "lượt."
@@ -1517,7 +1521,9 @@ msgstr " xanh lam nếu đơn vị là một đồng minh bạn không điều k
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-msgid " Enemy units have no orb on top of their energy bar."
+#, fuzzy
+#| msgid " Enemy units have no orb on top of their energy bar."
+msgid " Enemy units have a red orb on top of their energy bar."
 msgstr " Các đơn vị của kẻ thù không có quả cầu phía trên thanh năng lượng."
 
 #. [topic]: id=hitpoints
@@ -5863,199 +5869,199 @@ msgstr ""
 msgid "Help"
 msgstr "Trợ giúp"
 
-#: src/help.cpp:1152
+#: src/help.cpp:1154
 msgid "<header>text='Units having this special attack'</header>"
 msgstr "<header>text='Các đơn vị có đòn tấn công đặc biệt này'</header>"
 
-#: src/help.cpp:1218
+#: src/help.cpp:1220
 msgid "<header>text='Units having this ability'</header>"
 msgstr "<header>text='Các đơn vị có khả năng này'</header>"
 
-#: src/help.cpp:1251
+#: src/help.cpp:1253
 msgid "Leaders:"
 msgstr "Người chỉ huy:"
 
-#: src/help.cpp:1260
+#: src/help.cpp:1262
 msgid "Recruits:"
 msgstr "Tuyển quân:"
 
-#: src/help.cpp:1274
+#: src/help.cpp:1276
 msgid "Era:"
 msgstr "Thời đại:"
 
-#: src/help.cpp:1282
+#: src/help.cpp:1284
 msgid "Factions:"
 msgstr "Liên minh:"
 
-#: src/help.cpp:1292
+#: src/help.cpp:1294
 msgid "Factions are only used in multiplayer"
 msgstr "Liên minh chỉ được sử dụng trong chế độ nhiều người chơi."
 
-#: src/help.cpp:1325
+#: src/help.cpp:1327
 #, fuzzy
 #| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Địa hình"
 
-#: src/help.cpp:1403
+#: src/help.cpp:1405
 msgid "level"
 msgstr "cấp độ"
 
-#: src/help.cpp:1436
+#: src/help.cpp:1438
 msgid "Advances from: "
 msgstr "Nâng cấp từ: "
 
-#: src/help.cpp:1438
+#: src/help.cpp:1440
 msgid "Advances to: "
 msgstr "Nâng cấp thành: "
 
-#: src/help.cpp:1463
+#: src/help.cpp:1465
 msgid "Base unit: "
 msgstr "Đơn vị cơ bản: "
 
-#: src/help.cpp:1468
+#: src/help.cpp:1470
 #, fuzzy
 #| msgid "Base unit: "
 msgid "Base units: "
 msgstr "Đơn vị cơ bản: "
 
-#: src/help.cpp:1486
+#: src/help.cpp:1488
 msgid "Variations: "
 msgstr "Biến thể: "
 
-#: src/help.cpp:1510 src/help.cpp:1887 src/help.cpp:2031
+#: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 msgid "race^Miscellaneous"
 msgstr "Hỗn hợp"
 
-#: src/help.cpp:1512
+#: src/help.cpp:1514
 msgid "Race: "
 msgstr "Chủng tộc: "
 
-#: src/help.cpp:1519
+#: src/help.cpp:1521
 msgid "Abilities: "
 msgstr "Khả năng: "
 
-#: src/help.cpp:1535
+#: src/help.cpp:1537
 msgid "Ability Upgrades: "
 msgstr "Nâng cấp khả năng: "
 
-#: src/help.cpp:1550
+#: src/help.cpp:1552
 msgid "HP: "
 msgstr "Máu: "
 
-#: src/help.cpp:1551
+#: src/help.cpp:1553
 msgid "Moves: "
 msgstr "Di chuyển: "
 
-#: src/help.cpp:1553
+#: src/help.cpp:1555
 msgid "Vision: "
 msgstr "Tầm nhìn: "
 
-#: src/help.cpp:1555
+#: src/help.cpp:1557
 msgid "Jamming: "
 msgstr "Phá rối: "
 
-#: src/help.cpp:1556
+#: src/help.cpp:1558
 msgid "Cost: "
 msgstr "Chi phí: "
 
-#: src/help.cpp:1557
+#: src/help.cpp:1559
 msgid "Alignment: "
 msgstr "Phân loại: "
 
-#: src/help.cpp:1561
+#: src/help.cpp:1563
 msgid "Required XP: "
 msgstr "KN cần thiết: "
 
-#: src/help.cpp:1570
+#: src/help.cpp:1572
 msgid "unit help^Attacks"
 msgstr "Đòn tấn công"
 
-#: src/help.cpp:1577
+#: src/help.cpp:1579
 msgid "unit help^Name"
 msgstr "Tên"
 
-#: src/help.cpp:1578
+#: src/help.cpp:1580
 msgid "Type"
 msgstr "Kiểu"
 
-#: src/help.cpp:1579
+#: src/help.cpp:1581
 msgid "Strikes"
 msgstr "Đòn đánh"
 
-#: src/help.cpp:1580
+#: src/help.cpp:1582
 msgid "Range"
 msgstr "Phạm vi"
 
-#: src/help.cpp:1581
+#: src/help.cpp:1583
 msgid "Special"
 msgstr "Đặc biệt"
 
-#: src/help.cpp:1630
+#: src/help.cpp:1632
 msgid "Resistances"
 msgstr "Sức kháng cự"
 
-#: src/help.cpp:1634
+#: src/help.cpp:1636
 msgid "Attack Type"
 msgstr "Kiểu tấn công"
 
-#: src/help.cpp:1635
+#: src/help.cpp:1637
 msgid "Resistance"
 msgstr "Sức kháng cự"
 
-#: src/help.cpp:1665
+#: src/help.cpp:1667
 msgid "Terrain Modifiers"
 msgstr "Hệ số địa hình"
 
-#: src/help.cpp:1669
+#: src/help.cpp:1671
 msgid "Terrain"
 msgstr "Địa hình"
 
-#: src/help.cpp:1670
+#: src/help.cpp:1672
 msgid "Defense"
 msgstr "Phòng thủ"
 
-#: src/help.cpp:1671
+#: src/help.cpp:1673
 msgid "Movement Cost"
 msgstr "Chi phí di chuyển"
 
-#: src/help.cpp:1675
+#: src/help.cpp:1677
 msgid "Vision Cost"
 msgstr "Chi phí tầm nhìn"
 
-#: src/help.cpp:1678
+#: src/help.cpp:1680
 msgid "Jamming Cost"
 msgstr "Chi phí phá rối"
 
-#: src/help.cpp:2037
+#: src/help.cpp:2039
 msgid "<header>text='Units of this race'</header>"
 msgstr "<header>text='Các đơn vị thuộc chủng tộc này'</header>"
 
-#: src/help.cpp:2948
+#: src/help.cpp:2950
 msgid " < Back"
 msgstr " < Trở lại"
 
-#: src/help.cpp:2949
+#: src/help.cpp:2951
 msgid "Forward >"
 msgstr "Tiếp theo >"
 
-#: src/help.cpp:3057
+#: src/help.cpp:3059
 msgid "Reference to unknown topic: "
 msgstr "Tham chiếu đến chủ đề không xác định: "
 
-#: src/help.cpp:3313
+#: src/help.cpp:3315
 msgid "corrupted original file"
 msgstr "tập tin gốc bị hỏng"
 
-#: src/help.cpp:3424
+#: src/help.cpp:3426
 msgid "Close"
 msgstr "Đóng"
 
-#: src/help.cpp:3427
+#: src/help.cpp:3429
 msgid "The Battle for Wesnoth Help"
 msgstr "Trợ giúp Trận chiến vì Wesnoth"
 
-#: src/help.cpp:3483
+#: src/help.cpp:3485
 msgid "Parse error when parsing help text: "
 msgstr "Lỗi phân tích khi phân tích văn bản trợ giúp: "
 

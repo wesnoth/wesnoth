@@ -210,18 +210,22 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 						std::string s_begin = (*itor).substr(0,found_tilde);
 						s_begin = strip(s_begin);
 						int begin = atoi(s_begin.c_str());
-						size_t padding = 0;
+						size_t padding = 0, padding_end = 0;
 						while (padding<s_begin.size() && s_begin[padding]=='0') {
 							padding++;
 						}
 						std::string s_end = (*itor).substr(found_tilde+1);
 						s_end = strip(s_end);
 						int end = atoi(s_end.c_str());
-						if (padding==0) {
-							while (padding<s_end.size() && s_end[padding]=='0') {
-								padding++;
-							}
+						while (padding_end<s_end.size() && s_end[padding_end]=='0') {
+							padding_end++;
 						}
+						if (padding*padding_end > 0 && s_begin.size() != s_end.size()) {
+							ERR_GENERAL << "Square bracket padding sizes not matching: "
+										<< s_begin << " and " << s_end <<".\n";
+						}
+						if (padding_end > padding) padding = padding_end;
+						
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
 						for (int k=begin; k!=end; k+=increment) {
@@ -739,6 +743,39 @@ bool wildcard_string_match(const std::string& str, const std::string& match) {
 		}
 	} while(wild_matching && !matches && ++current < str.length());
 	return matches;
+}
+
+std::string indent(const std::string& string, size_t indent_size)
+{
+	if(indent_size == 0) {
+		return string;
+	}
+
+	const std::string indent(indent_size, ' ');
+
+	if(string.empty()) {
+		return indent;
+	}
+
+	const std::vector<std::string>& lines = split(string, '\x0A', 0);
+	std::string res;
+
+	for(size_t lno = 0; lno < lines.size();) {
+		const std::string& line = lines[lno];
+
+		// Lines containing only a carriage return count as empty.
+		if(!line.empty() && line != "\x0D") {
+			res += indent;
+		}
+
+		res += line;
+
+		if(++lno < lines.size()) {
+			res += '\x0A';
+		}
+	}
+
+	return res;
 }
 
 std::vector< std::string > quoted_split(std::string const &val, char c, int flags, char quote)

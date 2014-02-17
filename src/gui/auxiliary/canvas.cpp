@@ -30,6 +30,7 @@
 #include "gui/widgets/helper.hpp"
 #include "../../text.hpp"
 #include "utils/foreach.tpp"
+#include "video.hpp"
 #include "wml_exception.hpp"
 
 namespace gui2
@@ -1475,7 +1476,12 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 	draw();
 
 	if(blur_depth_) {
-		if(is_neutral(surf)) {
+		/*
+		 * If the surf is the video surface the blurring seems to stack, this
+		 * can be seen in the title screen. So also use the not 32 bpp method
+		 * for this situation.
+		 */
+		if(surf != get_video_surface() && is_neutral(surf)) {
 			blur_surface(surf, rect, blur_depth_);
 		} else {
 			// Can't directly blur the surface if not 32 bpp.

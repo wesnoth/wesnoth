@@ -327,12 +327,7 @@ dependencies="%s"
                 "*.wesnoth",
                 "*.project"]
 
-        stuff = {}
-        for field in ["title", "author", "passphrase", "description",
-            "version", "icon", "type", "email", "translate"]:
-            stuff[field] = pbl.get_text_val(field)
-
-        mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, stuff)
+        mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, pbl)
 
         pcounter = 0
         while not mythread.event.isSet():

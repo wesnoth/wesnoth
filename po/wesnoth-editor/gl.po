@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-08 13:24+0100\n"
+"POT-Creation-Date: 2014-02-16 13:54+0100\n"
 "PO-Revision-Date: 2014-02-01 15:35+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -343,8 +343,10 @@ msgid "Error loading mask"
 msgstr "Houbo un erro ao cargar a máscara"
 
 #: src/editor/map/context_manager.cpp:435
-msgid "ID"
-msgstr "Identificador"
+#, fuzzy
+#| msgid "Identifier: "
+msgid "Identifier:"
+msgstr "Identificador: "
 
 #: src/editor/map/context_manager.cpp:435
 msgid "Rename Area"
@@ -355,70 +357,70 @@ msgid "Choose Target Map"
 msgstr "Escolle o mapa de destino"
 
 #: src/editor/map/context_manager.cpp:453
-#: src/editor/map/context_manager.cpp:887
+#: src/editor/map/context_manager.cpp:885
 msgid "Error loading map"
 msgstr "Houbo un erro ao cargar o mapa"
 
-#: src/editor/map/context_manager.cpp:571
+#: src/editor/map/context_manager.cpp:570
 msgid "Save the Map As"
 msgstr "Gardar o mapa como"
 
-#: src/editor/map/context_manager.cpp:575
-#: src/editor/map/context_manager.cpp:604
+#: src/editor/map/context_manager.cpp:574
+#: src/editor/map/context_manager.cpp:602
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O ficheiro xa existe. Queres substituílo?"
 
-#: src/editor/map/context_manager.cpp:600
+#: src/editor/map/context_manager.cpp:598
 msgid "Save the Scenario As"
 msgstr "Gardar o escenario como"
 
-#: src/editor/map/context_manager.cpp:639
+#: src/editor/map/context_manager.cpp:637
 msgid "No random map generators found."
 msgstr "Non se atoparon xeradores de mapas ao chou."
 
-#: src/editor/map/context_manager.cpp:652
-#: src/editor/map/context_manager.cpp:656
+#: src/editor/map/context_manager.cpp:650
+#: src/editor/map/context_manager.cpp:654
 msgid "Map creation failed."
 msgstr "Non foi posíbel crear o mapa."
 
-#: src/editor/map/context_manager.cpp:668
+#: src/editor/map/context_manager.cpp:666
 msgid "Unsaved Changes"
 msgstr "Cambios sen gardar"
 
-#: src/editor/map/context_manager.cpp:669
+#: src/editor/map/context_manager.cpp:667
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Queres desbotar todos os cambios que fixeches no mapa desde a última vez que "
 "o gardaches?"
 
-#: src/editor/map/context_manager.cpp:766
+#: src/editor/map/context_manager.cpp:764
 msgid "This scenario is already open."
 msgstr "O escenario xa está aberto."
 
-#: src/editor/map/context_manager.cpp:788
-#: src/editor/map/context_manager.cpp:843
+#: src/editor/map/context_manager.cpp:786
+#: src/editor/map/context_manager.cpp:841
 msgid "This map is already open."
 msgstr "O mapa xa está aberto."
 
-#: src/editor/map/context_manager.cpp:809
+#: src/editor/map/context_manager.cpp:807
 msgid "Scenario saved."
 msgstr "Gardouse o escenario."
 
-#: src/editor/map/context_manager.cpp:823
+#: src/editor/map/context_manager.cpp:821
 msgid "Map saved."
 msgstr "Gardouse o mapa."
 
-#: src/editor/map/context_manager.cpp:866
+#: src/editor/map/context_manager.cpp:864
 msgid "Loaded embedded map data"
 msgstr "Cargáronse os datos integrados no mapa"
 
-#: src/editor/map/context_manager.cpp:867
-#: src/editor/map/context_manager.cpp:881
+#: src/editor/map/context_manager.cpp:865
+#: src/editor/map/context_manager.cpp:879
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde o escenario"
 
-#: src/editor/map/context_manager.cpp:877
+#: src/editor/map/context_manager.cpp:875
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -483,17 +485,20 @@ msgstr "1P: "
 msgid "BG: "
 msgstr "2P: "
 
-#: src/gui/dialogs/editor/custom_tod.cpp:123
+#: src/gui/dialogs/editor/custom_tod.cpp:129
 msgid "Choose file"
 msgstr "Escoller un ficheiro"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:86
+#: src/gui/dialogs/editor_set_starting_position.cpp:87
 msgid "player^None"
 msgstr "Ningún"
 
-#: src/gui/dialogs/editor_set_starting_position.cpp:98
+#: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Xogador $player_number"
+
+#~ msgid "ID"
+#~ msgstr "Identificador"
 
 #~ msgid ""
 #~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "

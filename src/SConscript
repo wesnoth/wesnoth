@@ -272,7 +272,6 @@ wesnoth_sources = Split("""
     game_events/menu_item.cpp
     game_events/pump.cpp
     game_events/wmi_container.cpp
-    game_instance.cpp
     game_preferences.cpp
     gamestatus.cpp
     gui/auxiliary/canvas.cpp
@@ -395,6 +394,7 @@ wesnoth_sources = Split("""
     gui/dialogs/transient_message.cpp
     gui/dialogs/unit_attack.cpp
     gui/dialogs/unit_create.cpp
+    gui/dialogs/wml_error.cpp
     gui/dialogs/wml_message.cpp
     gui/lib/types/point.cpp
     gui/widgets/button.cpp
@@ -437,6 +437,7 @@ wesnoth_sources = Split("""
     gui/widgets/window.cpp
     halo.cpp
     help.cpp
+    hotkey/hotkey_preferences_display.cpp
     intro.cpp
     leader_scroll_dialog.cpp
     lobby_preferences.cpp
@@ -523,7 +524,6 @@ if env["PLATFORM"] == "win32":
     wesnoth_sources.append("windows_tray_notification.cpp")
 
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
-wesnoth_sources.extend(client_env.Object("hotkey/hotkey_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
 

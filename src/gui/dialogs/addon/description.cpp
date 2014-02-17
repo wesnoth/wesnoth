@@ -358,7 +358,7 @@ void taddon_description::browse_url_callback()
 {
 	/* TODO: ask for confirmation */
 
-	desktop::open_in_file_manager(feedback_url_);
+	desktop::open_object(feedback_url_);
 }
 
 void taddon_description::copy_url_callback()
@@ -392,6 +392,12 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 		url_go_button.set_visible(tcontrol::tvisible::invisible);
 		url_copy_button.set_visible(tcontrol::tvisible::invisible);
 		url_textbox.set_visible(tcontrol::tvisible::invisible);
+	}
+
+	if(!desktop::open_object_is_supported()) {
+		// No point in displaying the button on platforms that can't do
+		// open_object().
+		url_go_button.set_visible(tcontrol::tvisible::invisible);
 	}
 }
 

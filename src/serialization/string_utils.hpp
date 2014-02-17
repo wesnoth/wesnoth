@@ -192,6 +192,18 @@ std::string bullet_list(const T& v, size_t indent = 4, const std::string& bullet
 }
 
 /**
+ * Indent a block of text.
+ *
+ * Only lines with content are changed; empty lines are left intact. However,
+ * if @a string is an empty string itself, the indentation unit with the
+ * specified @a indent_size will be returned instead.
+ *
+ * @param string      Text to indent.
+ * @param indent_size Number of indentation units to use.
+ */
+std::string indent(const std::string& string, size_t indent_size = 4);
+
+/**
  * This function is identical to split(), except it does not split
  * when it otherwise would if the previous character was identical to the parameter 'quote'.
  * i.e. it does not split quoted commas.

@@ -1454,6 +1454,12 @@ void display::draw_all_panels()
 {
 	const surface& screen(screen_.getSurface());
 
+	/*
+	 * The minimap is also a panel, force it to update its contents.
+	 * This is required when the size of the minimap has been modified.
+	 */
+	recalculate_minimap();
+
 	const std::vector<theme::panel>& panels = theme_.panels();
 	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
 		draw_panel(video(), *p, menu_buttons_);

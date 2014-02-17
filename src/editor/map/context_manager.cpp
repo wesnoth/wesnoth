@@ -432,7 +432,7 @@ void context_manager::rename_area_dialog()
 {
 	int active_area = get_map_context().get_active_area();
 	std::string name = get_map_context().get_time_manager()->get_area_ids()[active_area];
-	if (gui2::tedit_text::execute(N_("Rename Area"), N_("ID"), name, gui_.video())) {
+	if (gui2::tedit_text::execute(N_("Rename Area"), N_("Identifier:"), name, gui_.video())) {
 		get_map_context().get_time_manager()->set_area_id(active_area, name);
 	}
 }
@@ -563,13 +563,11 @@ void context_manager::save_map_as_dialog()
 		input_name = default_dir_ + "/maps";
 	}
 	const std::string old_input_name = input_name;
-	std::string untitled_str = _("Untitled");
-	untitled_str += ".map";
 	
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Map As"), untitled_str);
+		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 			if (file_exists(input_name)) {
 				res = gui2::show_message(gui_.video(), "",
@@ -593,13 +591,11 @@ void context_manager::save_scenario_as_dialog()
 		input_name = default_dir_ + "/scenarios";
 	}
 	const std::string old_input_name = input_name;
-	std::string untitled_str = _("Untitled");
-	untitled_str += ".scenario";
 
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;
-		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Scenario As"), untitled_str);
+		int res = dialogs::show_file_chooser_dialog_save(gui_, input_name, _("Save the Scenario As"), ".cfg");
 		if (res == 0) {
 			if (file_exists(input_name)) {
 				res = gui2::show_message(gui_.video(), "",
