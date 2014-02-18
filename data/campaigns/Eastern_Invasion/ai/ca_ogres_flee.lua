@@ -43,9 +43,10 @@ function ca_ogres_flee:execution(ai, cfg, self)
                 -- First rating is distance from a map edge
                 local dist_left = r[1] - 1
                 local dist_right = width - r[1]
-                local dist_top = r[2] - 1
+                local dist_top_left = H.distance_between(r[1], r[2], 4, 1)
+                local dist_top_right = H.distance_between(r[1], r[2], 40, 1)
                 local dist_bottom = height - r[2]
-                local dist = math.min(dist_left, dist_right, dist_top, dist_bottom)
+                local dist = math.min(dist_left, dist_right, dist_top_left, dist_top_right, dist_bottom)
 
                 local rating = - dist
 
