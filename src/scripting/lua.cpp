@@ -1520,6 +1520,12 @@ static int impl_game_config_get(lua_State *L)
 	if(game_state_.classification().campaign_type=="multiplayer") {
 		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
 		return_cfgref_attrib("era", resources::config_manager->game_config().find_child("era","id",game_state_.mp_settings().mp_era));
+
+		std::vector<std::string> eras_list;
+		for(config::const_child_itors its = resources::config_manager->game_config().child_range("era"); its.first != its.second; ++its.first) {
+			eras_list.push_back((*its.first)["id"]);
+		}
+		return_vector_string_attrib("eras", eras_list);
 	}	//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era. 
 	return 0;
 }
