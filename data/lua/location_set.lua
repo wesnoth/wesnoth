@@ -15,7 +15,7 @@ local methods = {}
 local locset_meta = { __index = methods }
 
 function methods:empty()
-	return next(self.values)
+	return (not next(self.values))
 end
 
 function methods:size()
