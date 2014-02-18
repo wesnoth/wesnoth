@@ -21,7 +21,8 @@ The user interface used for displaying WML errors during the content load and in
 [*]The list of affected add-ons in the summary is now displayed in a bulleted format when applicable, and add-ons are identified by their regular names (or approximations thereof when those are unavailable) instead of the complete paths to their [tt]_main.cfg[/tt] files.
 [*]Users are encouraged to report any errors found to the add-on authors or maintainers. A new button is available above the detailed report to copy it to clipboard, e.g., for including it in a forum post without having to upload large screenshots or checking stderr.
 [*]Parser implementation details (specifically, “value ‘[i]token[/i]’ at [i]location[/i]”) are no longer included in the report since they don’t really help WML authors with debugging.
-[*]Error messages that point to chains of file and line locations have those displayed in separate indented lines to avoid the “text wall” effect.
+[*]Preprocessor substitution traces (“included from”) are now displayed on separate indented lines in order to avoid a “text wall” effect.
+[*]Parser errors for mismatched opening/closing tags and missing closing tags are worded in a clearer fashion.
 [/list]
 
 Additionally, the format used for logging these errors to stderr has changed:
