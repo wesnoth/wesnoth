@@ -69,12 +69,7 @@ void ttheme_list::pre_show(CVideo& /*video*/, twindow& window)
 		std::map<std::string, string_map> data;
 		string_map column;
 
-		std::string theme_name = t.name;
-		if(theme_name.empty()) {
-			theme_name = t.id;
-		}
-
-		column["label"] = theme_name;
+		column["label"] = t.name;
 		data.insert(std::make_pair("name", column));
 		column["label"] = t.description;
 		data.insert(std::make_pair("description", column));
