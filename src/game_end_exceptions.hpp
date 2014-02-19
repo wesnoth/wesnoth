@@ -109,6 +109,7 @@ struct end_level_data
 	transient_end_level transient;
 
 	config next_scenario_settings;
+	config next_scenario_append;
 
 	void write(config& cfg) const;
 

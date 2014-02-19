@@ -80,6 +80,10 @@ static void do_carryover_WML(config & level, game_state& gamestate){
 		if(!end_level_.next_scenario_settings.empty()) {
 			level.merge_with(end_level_.next_scenario_settings);
 		}
+		if(!end_level_.next_scenario_append.empty())
+		{
+			level.append_children(end_level_.next_scenario_append);
+		}
 	}
 }
 
@@ -88,6 +92,7 @@ static void clear_carryover_WML (game_state & gamestate) {
 	if (gamestate.carryover_sides.has_child("end_level_data")) {
 		config & eld = gamestate.carryover_sides.child("end_level_data");
 		eld.clear_children("next_scenario_settings");
+		eld.clear_children("next_scenario_append");
 	}	
 }
 
