@@ -22,8 +22,10 @@
 #include "gettext.hpp"
 #include "gui/dialogs/game_paths.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/theme_list.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "lobby_preferences.hpp"
+#include "marked-up_text.hpp"
 #include "preferences_display.hpp"
 #include "wml_separators.hpp"
 #include "widgets/combo.hpp"
@@ -1437,12 +1439,13 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 
 bool show_theme_dialog(display& disp)
 {
-	std::vector<std::string> options = disp.get_theme().get_known_themes();
-	if(!options.empty()){
-		gui2::tsimple_item_selector dlg(_("Choose Theme"), "", options);
+	std::vector<theme_info> themes = disp.get_theme().get_known_themes();
 
-		for(size_t k = 0; k < options.size(); ++k) {
-			if(options[k] == preferences::theme()) {
+	if(!themes.empty()){
+		gui2::ttheme_list dlg(themes);
+
+		for(size_t k = 0; k < themes.size(); ++k) {
+			if(themes[k].id == preferences::theme()) {
 				dlg.set_selected_index(static_cast<int>(k));
 			}
 		}
@@ -1451,16 +1454,16 @@ bool show_theme_dialog(display& disp)
 		const int action = dlg.selected_index();
 
 		if(action >= 0){
-		preferences::set_theme(options[action]);
-		//it would be preferable for the new theme to take effect
-		//immediately, however, this will have to do for now.
-		gui2::show_transient_message(disp.video(),"",_("New theme will take effect on next new or loaded game."));
-		return(1);
+			preferences::set_theme(themes[action].id);
+			// FIXME: it would be preferable for the new theme to take effect
+			//        immediately.
+			return 1;
 		}
-	}else{
+	} else {
 		gui2::show_transient_message(disp.video(),"",_("No known themes. Try changing from within an existing game."));
 	}
-	return(0);
+
+	return 0;
 }
 
 void show_paths_dialog(display& disp)

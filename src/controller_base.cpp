@@ -331,12 +331,20 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 {
 	if (theme_name.empty()) theme_name = preferences::theme();
 
-	if (const config &c = game_config.find_child("theme", "name", theme_name))
+	if (const config &c = game_config.find_child("theme", "id", theme_name))
 		return c;
+
+	// Themes created for version 1.11.9 and earlier use name= for
+	// untranslatable ids.
+	// TODO: remove support for this in 1.13.x (1.13.2?).
+	if (const config &c = game_config.find_child("theme", "name", theme_name)) {
+		ERR_DP << "Theme '" << theme_name << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x.\n";
+		return c;
+	}
 
 	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme.\n";
 
-	if (const config &c = game_config.find_child("theme", "name", "Default"))
+	if (const config &c = game_config.find_child("theme", "id", "Default"))
 		return c;
 
 	ERR_DP << "Default theme not found.\n";

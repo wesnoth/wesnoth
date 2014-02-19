@@ -904,7 +904,9 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 		return NULL;
 }
 
-std::map<std::string, config> theme::known_themes;
+typedef std::map<std::string, config> known_themes_map;
+known_themes_map theme::known_themes;
+
 void theme::set_known_themes(const config* cfg)
 {
 	known_themes.clear();
@@ -913,20 +915,34 @@ void theme::set_known_themes(const config* cfg)
 
 	BOOST_FOREACH(const config &thm, cfg->child_range("theme"))
 	{
-		std::string thm_name = thm["name"];
-		if (!thm["hidden"].to_bool(false))
-			known_themes[thm_name] = thm;
+		std::string thm_id = thm["id"];
+
+		if (thm_id.empty() && thm.has_attribute("name")) {
+			thm_id = thm["name"].str();
+			ERR_DP << "Theme '" << thm_id << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x.\n";
+		}
+
+		if (!thm["hidden"].to_bool(false)) {
+			known_themes[thm_id] = thm;
+		}
 	}
 }
 
-std::vector<std::string> theme::get_known_themes(){
-    std::vector<std::string> names;
+std::vector<theme_info> theme::get_known_themes()
+{
+    std::vector<theme_info> res;
 
+	for(known_themes_map::const_iterator i = known_themes.begin();
+		i != known_themes.end();
+		++i)
+	{
+		res.push_back(theme_info());
+		res.back().id = i->first;
+		res.back().name = i->second["name"].t_str();
+		res.back().description = i->second["description"].t_str();
+	}
 
-    for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();++p_thm){
-        names.push_back(p_thm->first);
-    }
-    return(names);
+	return res;
 }
 
 const theme::menu *theme::get_menu_item(const std::string &key) const
