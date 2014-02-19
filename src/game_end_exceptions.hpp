@@ -26,7 +26,7 @@
 
 #include <string>
 
-class config;
+#include "config.hpp"
 
 enum LEVEL_RESULT {
 	NONE,
@@ -107,6 +107,9 @@ struct end_level_data
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	transient_end_level transient;
+
+	config next_scenario_settings;
+	config next_scenario_append;
 
 	void write(config& cfg) const;
 
