@@ -1440,22 +1440,12 @@ void show_preferences_dialog(display& disp, const config& game_cfg)
 bool show_theme_dialog(display& disp)
 {
 	std::vector<theme_info> themes = disp.get_theme().get_known_themes();
-	std::vector<std::string> options;
 
-	BOOST_FOREACH(const theme_info& t, themes)
-	{
-		options.push_back(t.name);
-
-		if(!t.description.empty()) {
-			options.back() += "\n<span size='small' color='#" + font::color2hexa(font::TITLE_COLOR) + "'>"+ t.description +"</span>";
-		}
-	}
-
-	if(!options.empty()){
+	if(!themes.empty()){
 		gui2::ttheme_list dlg(themes);
 
-		for(size_t k = 0; k < options.size(); ++k) {
-			if(options[k] == preferences::theme()) {
+		for(size_t k = 0; k < themes.size(); ++k) {
+			if(themes[k].name == preferences::theme()) {
 				dlg.set_selected_index(static_cast<int>(k));
 			}
 		}
@@ -1464,7 +1454,7 @@ bool show_theme_dialog(display& disp)
 		const int action = dlg.selected_index();
 
 		if(action >= 0){
-			preferences::set_theme(options[action]);
+			preferences::set_theme(themes[action].name);
 			// FIXME: it would be preferable for the new theme to take effect
 			//        immediately.
 			return 1;
