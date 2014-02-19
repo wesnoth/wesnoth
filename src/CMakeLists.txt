@@ -780,6 +780,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/popup.cpp
 	gui/dialogs/edit_text.cpp
 	gui/dialogs/simple_item_selector.cpp
+	gui/dialogs/theme_list.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp

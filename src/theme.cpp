@@ -904,7 +904,9 @@ const theme::status_item* theme::get_status_item(const std::string& key) const
 		return NULL;
 }
 
-std::map<std::string, config> theme::known_themes;
+typedef std::map<std::string, config> known_themes_map;
+known_themes_map theme::known_themes;
+
 void theme::set_known_themes(const config* cfg)
 {
 	known_themes.clear();
@@ -919,14 +921,20 @@ void theme::set_known_themes(const config* cfg)
 	}
 }
 
-std::vector<std::string> theme::get_known_themes(){
-    std::vector<std::string> names;
+std::vector<theme_info> theme::get_known_themes()
+{
+    std::vector<theme_info> res;
 
+	for(known_themes_map::const_iterator i = known_themes.begin();
+		i != known_themes.end();
+		++i)
+	{
+		res.push_back(theme_info());
+		res.back().name = i->first;
+		res.back().description = i->second["description"].t_str();
+	}
 
-    for(std::map<std::string, config>::iterator p_thm=known_themes.begin();p_thm!=known_themes.end();++p_thm){
-        names.push_back(p_thm->first);
-    }
-    return(names);
+	return res;
 }
 
 const theme::menu *theme::get_menu_item(const std::string &key) const
