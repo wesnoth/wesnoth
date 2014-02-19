@@ -602,6 +602,14 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// mp::connect_engine.
 				team_init(starting_pos, gamestate);
 
+				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
+				//then we have to move "allow_new_game" attribute over now.
+				bool allow_new_game_flag = (*scenario)["allow_new_game"].to_bool(true);
+
+				if (gamestate.carryover_sides_start.child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
+					allow_new_game_flag = gamestate.carryover_sides_start.child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
+				}
+
 				params.scenario_data = *scenario;
 				params.mp_scenario = (*scenario)["id"].str();
 				params.mp_scenario_name = (*scenario)["name"].str();
@@ -614,8 +622,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					connect_engine(new mp::connect_engine(disp, gamestate,
 						params, !network_game, false));
 
-				if ((*scenario)["allow_new_game"].to_bool(true) ||
-					game_config::debug) {
+				if (allow_new_game_flag || game_config::debug) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
