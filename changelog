@@ -2,6 +2,8 @@ Version 1.11.9+dev:
  * Add-ons client:
    * Fixed faulty add-on _info.cfg files causing the game to display obscure
      error messages or crash to desktop.
+ * AI:
+   * Hang Out Micro AI: default AI [avoid] aspect is now taken into account
  * Campaigns:
    * Eastern Invasion:
      * New world map.
@@ -12,6 +14,8 @@ Version 1.11.9+dev:
        31,11 at the end of The Bay of Pearls, causing it to disappear
        forever.
      * S15 (The Lost General): fix bug of sighted events firing too early
+   * Son of the Black Eye:
+     * Rebalancing of the campaign is now complete
  * Editor:
   * Fixed: Drawing the offmap area for small resolutions.
  * GUI2
@@ -46,7 +50,7 @@ Version 1.11.9+dev:
      flag breaks building.
    * Updated screenshots used inside the ingame help and fixed description of
      orbs.
-   * Fixed bug #21659: lua location_set:empty now works as described 
+   * Fixed bug #21659: lua location_set:empty now works as described
 
 Version 1.11.9:
  * Add-ons client:
