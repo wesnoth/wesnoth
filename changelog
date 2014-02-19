@@ -43,6 +43,8 @@ Version 1.11.9+dev:
    * [theme] name attribute is now expected to be translatable and used only
      for the theme selection UI. Existing [theme]s need to be converted to
      have a separate 'id' attribute.
+   * [endlevel] now has two optional subtags [next_scenario_settings], 
+     [next_scenario_append], which can be used to reconfigure next scenario.
  * Miscellaneous and bug fixes:
    * Fixed: A compilation warning with DEBUG_WINDOW_LAYOUT_GRAPHS.
    * Added -Wold-style-cast to the CMake strict flags.
