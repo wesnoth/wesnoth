@@ -1445,7 +1445,7 @@ bool show_theme_dialog(display& disp)
 		gui2::ttheme_list dlg(themes);
 
 		for(size_t k = 0; k < themes.size(); ++k) {
-			if(themes[k].name == preferences::theme()) {
+			if(themes[k].id == preferences::theme()) {
 				dlg.set_selected_index(static_cast<int>(k));
 			}
 		}
@@ -1454,7 +1454,7 @@ bool show_theme_dialog(display& disp)
 		const int action = dlg.selected_index();
 
 		if(action >= 0){
-			preferences::set_theme(themes[action].name);
+			preferences::set_theme(themes[action].id);
 			// FIXME: it would be preferable for the new theme to take effect
 			//        immediately.
 			return 1;
