@@ -915,9 +915,16 @@ void theme::set_known_themes(const config* cfg)
 
 	BOOST_FOREACH(const config &thm, cfg->child_range("theme"))
 	{
-		std::string thm_name = thm["name"];
-		if (!thm["hidden"].to_bool(false))
-			known_themes[thm_name] = thm;
+		std::string thm_id = thm["id"];
+
+		if (thm_id.empty() && thm.has_attribute("name")) {
+			thm_id = thm["name"].str();
+			ERR_DP << "Theme '" << thm_id << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x.\n";
+		}
+
+		if (!thm["hidden"].to_bool(false)) {
+			known_themes[thm_id] = thm;
+		}
 	}
 }
 
@@ -930,7 +937,8 @@ std::vector<theme_info> theme::get_known_themes()
 		++i)
 	{
 		res.push_back(theme_info());
-		res.back().name = i->first;
+		res.back().id = i->first;
+		res.back().name = i->second["name"].t_str();
 		res.back().description = i->second["description"].t_str();
 	}
 

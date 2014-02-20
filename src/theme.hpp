@@ -28,7 +28,8 @@ typedef struct { size_t x1,y1,x2,y2; } _rect;
 
 struct theme_info
 {
-	std::string name;
+	std::string id;
+	t_string name;
 	t_string description;
 };
 
