@@ -2688,6 +2688,8 @@ if __name__ == '__main__':
         if "wmllint: noconvert" not in original:
             for (old, new) in linechanges + mapchanges:
                 line = line.replace(old, new)
+            # Perform any base terrain string conversions needed in
+            # [terrain_type]aliasof= attributes.
             if under("terrain_type"):
                 match = re.search(r"\baliasof\s*=(.*)$", line)
                 if match:
