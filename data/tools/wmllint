@@ -612,6 +612,12 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if closer == "theme" and "id" not in attributes:
         if "name" in attributes:
             print '"%s", line %d: using [theme]name= instead of [theme]id= is deprecated' % (filename, lineno)
+    # Check for user-visible themes that lack a UI name or description.
+    if closer == "theme" and ("hidden" not in attributes or attributes["hidden"] not in ("yes", "true")):
+        for attr in ("name", "description"):
+            if attr not in attributes:
+                print '"%s", line %d: [theme] needs a %s attribute unless hidden=yes' % \
+                      (filename, lineno, attr)
     if closer == "filter_side":
         ancestor = False
         if "gold" in ancestors:
