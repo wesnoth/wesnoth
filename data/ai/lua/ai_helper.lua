@@ -164,16 +164,6 @@ function ai_helper.choose(input, value)
     return best_input, max_value, best_key
 end
 
-function ai_helper.random(min, max)
-    -- Use this function as Lua's 'math.random' is not replay or MP safe
-
-    if not max then min, max = 1, min end
-    wesnoth.fire("set_variable", { name = "LUA_random", rand = string.format("%d..%d", min, max) })
-    local res = wesnoth.get_variable "LUA_random"
-    wesnoth.set_variable "LUA_random"
-    return res
-end
-
 function ai_helper.table_copy(t)
     -- Make a copy of a table (rather than just another pointer to the same table)
     local copy = {}
@@ -258,7 +248,7 @@ function ai_helper.LS_random_hex(set)
     -- This seems "inelegant", but I can't come up with another way without creating an extra array
     -- Return -1, -1 if set is empty
 
-    local r = ai_helper.random(set:size())
+    local r = math.random(set:size())
     local i, xr, yr = 1, -1, -1
     set:iter( function(x, y, v)
         if (i == r) then xr, yr = x, y end
@@ -970,7 +960,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
             local rating = rating_function(x, y)
 
             -- If cfg.random is set, add some randomness (on 0.0001 - 0.0099 level)
-            if (not cfg.no_random) then rating = rating + ai_helper.random(99) / 10000. end
+            if (not cfg.no_random) then rating = rating + math.random(99) / 10000. end
             -- If cfg.labels is set: insert values for label map
             if cfg.labels then reach_map:insert(x, y, rating) end
 

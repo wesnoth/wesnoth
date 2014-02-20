@@ -95,7 +95,7 @@ function ca_forest_animals_move:execution(ai, cfg)
 
             -- Choose one of the possible locations at random
             if reachable_terrain[1] then
-                local rand = AH.random(#reachable_terrain)
+                local rand = math.random(#reachable_terrain)
                 -- This is not a full move, as running away might happen next
                 if (unit.x ~= reachable_terrain[rand][1]) or (unit.y ~= reachable_terrain[rand][2]) then
                     ai.move(unit, reachable_terrain[rand][1], reachable_terrain[rand][2])

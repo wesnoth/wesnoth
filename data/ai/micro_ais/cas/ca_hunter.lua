@@ -75,11 +75,11 @@ function ca_hunter:execution(ai, cfg)
     -- If hunting_status is not set for the unit -> default behavior -> hunting
     if (not unit.variables.hunting_status) then
         -- Unit gets a new goal if none exist or on any move with 10% random chance
-        local r = AH.random(10)
+        local r = math.random(10)
         if (not unit.variables.goal_x) or (r <= 1) then
             -- 'locs' includes border hexes, but that does not matter here
             locs = AH.get_passable_locations((cfg.filter_location or {}), unit)
-            local rand = AH.random(#locs)
+            local rand = math.random(#locs)
             --print('#locs', #locs, rand)
             unit.variables.goal_x, unit.variables.goal_y = locs[rand][1], locs[rand][2]
         end

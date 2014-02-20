@@ -37,9 +37,9 @@ function ca_herding_dog_move:execution(ai, cfg)
         -- Or, if dog cannot get there, prefer to be av_dist from the center
         local rating = 0
         if herding_perimeter:get(x, y) then
-            rating = rating + 1000 + AH.random(99) / 100.
+            rating = rating + 1000 + math.random(99) / 100.
         else
-            rating = rating - math.abs(H.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist) + AH.random(99) / 100.
+            rating = rating - math.abs(H.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist) + math.random(99) / 100.
         end
 
         return rating

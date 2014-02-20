@@ -39,7 +39,7 @@ function ca_wolves_multipacks_wander:execution(ai, cfg)
         end
 
         -- Pack gets a new goal if none exist or on any move with 10% random chance
-        local r = AH.random(10)
+        local r = math.random(10)
         if (not goal[1]) or (r == 1) then
             local w,h,b = wesnoth.get_map_size()
             local locs = {}
@@ -49,7 +49,7 @@ function ca_wolves_multipacks_wander:execution(ai, cfg)
             -- We only check whether the first wolf can get there
             local unreachable = true
             while unreachable do
-                local rand = AH.random(#locs)
+                local rand = math.random(#locs)
                 local next_hop = AH.next_hop(wolves[1], locs[rand][1], locs[rand][2])
                 if next_hop then
                     goal = { locs[rand][1], locs[rand][2] }

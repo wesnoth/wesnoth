@@ -60,7 +60,7 @@ function ca_lurkers:execution(ai, cfg)
         if rattack_nt_target:size() > 0 then
 
             -- Choose one of the possible attack locations  at random
-            local rand = AH.random(1, rattack_nt_target:size())
+            local rand = math.random(1, rattack_nt_target:size())
             local dst = rattack_nt_target:to_stable_pairs()
             AH.movefull_stopunit(ai, me, dst[rand])
             ai.attack(dst[rand][1], dst[rand][2], target.x, target.y)
@@ -81,7 +81,7 @@ function ca_lurkers:execution(ai, cfg)
         reachable_wander_terrain:inter(reach)
 
         -- get one of the reachable wander terrain hexes randomly
-        local rand = AH.random(1, reachable_wander_terrain:size())
+        local rand = math.random(1, reachable_wander_terrain:size())
         --print("  reach_wander no allies: " .. reachable_wander_terrain:size() .. "  rand #: " .. rand)
         local dst = reachable_wander_terrain:to_stable_pairs()
         if dst[1] then

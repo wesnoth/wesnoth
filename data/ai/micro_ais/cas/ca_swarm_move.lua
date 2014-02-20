@@ -33,7 +33,7 @@ function swarm_move:execution(ai, cfg)
     --print('#units, #units_no_moves, #enemies', #units, #units_no_moves, #enemies)
 
     -- pick a random unit and remove it from 'units'
-    local rand = AH.random(#units)
+    local rand = math.random(#units)
     local unit = units[rand]
     table.remove(units, rand)
 

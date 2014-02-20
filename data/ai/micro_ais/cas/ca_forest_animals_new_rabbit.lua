@@ -38,10 +38,10 @@ function ca_forest_animals_new_rabbit:execution(ai, cfg)
                 if (holes[i].image ~= cfg.rabbit_hole_img) and (holes[i].halo ~= cfg.rabbit_hole_img) then
                     table.remove(holes, i)
                 else
-                    holes[i].random = AH.random(100)
+                    holes[i].random = math.random(100)
                 end
             else
-                holes[i].random = AH.random(100)
+                holes[i].random = math.random(100)
             end
         end
     end
