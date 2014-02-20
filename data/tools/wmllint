@@ -2689,9 +2689,9 @@ if __name__ == '__main__':
             for (old, new) in linechanges + mapchanges:
                 line = line.replace(old, new)
             # Perform any base terrain string conversions needed in
-            # [terrain_type] aliasof= and mvt_alias= attributes.
+            # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
             if under("terrain_type"):
-                match = re.search(r"\b(?:aliasof|mvt_alias)\s*=(.*)$", line)
+                match = re.search(r"\b(?:aliasof|mvt_alias|def_alias)\s*=(.*)$", line)
                 if match:
                     aliases = match.group()
                     for (old, new) in aliaschanges:
