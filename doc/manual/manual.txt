@@ -798,6 +798,9 @@ Concealment::
 Cures::
   A unit which can cure an ally of poison, although the ally will receive no
   additional healing on the turn it is cured of the poison.
+Feeding::
+  This unit gains 1 hitpoint added to its maximum whenever it kills a unit,
+  except units that are immune to plague.
 Heals +4::
   Allows the unit to heal adjacent friendly units at the beginning of each
   turn.
@@ -846,6 +849,9 @@ Submerge::
 Teleport::
   This unit may teleport between any two friendly villages using one of its
   moves.
+Unpoison::
+  A curer can cure a unit of poison, although that unit will receive no additional
+  healing on the turn it is cured of the poison.
 
 Experience
 ^^^^^^^^^^
