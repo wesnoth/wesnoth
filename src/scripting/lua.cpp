@@ -1492,6 +1492,19 @@ static int intf_get_starting_location(lua_State* L)
 }
 
 /**
+ * Gets a table for an era tag.
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing id of the desired era
+ * - Ret 1: config for the era
+ */
+static int intf_get_era(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	luaW_pushconfig(L, resources::config_manager->game_config().find_child("era","id",m));
+	return 1;
+}
+
+/**
  * Gets some game_config data (__index metamethod).
  * - Arg 1: userdata (ignored).
  * - Arg 2: string containing the name of the property.
@@ -1520,7 +1533,17 @@ static int impl_game_config_get(lua_State *L)
 	if(game_state_.classification().campaign_type=="multiplayer") {
 		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
 		return_cfgref_attrib("era", resources::config_manager->game_config().find_child("era","id",game_state_.mp_settings().mp_era));
-	}	//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era. 
+		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
+
+                //This code for SigurdFD, not the cleanest implementation but seems to work just fine.
+		config::const_child_itors its = resources::config_manager->game_config().child_range("era");
+		std::string eras_list((*(its.first))["id"]);
+		++its.first;
+		for(; its.first != its.second; ++its.first) {
+			eras_list = eras_list + "," + (*(its.first))["id"];
+		}
+		return_string_attrib("eras", eras_list);
+	}	 
 	return 0;
 }
 
@@ -3587,6 +3610,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "float_label",              &intf_float_label              },
 		{ "get_dialog_value",         &intf_get_dialog_value         },
 		{ "get_displayed_unit",       &intf_get_displayed_unit       },
+		{ "get_era",                  &intf_get_era                  },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_locations",            &intf_get_locations            },
 		{ "get_map_size",             &intf_get_map_size             },
