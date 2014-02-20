@@ -183,6 +183,25 @@ mapchanges = (
     ("Qv,",  "Mv"),
     )
 
+# Base terrain aliasing changes.
+aliaschanges = (
+    # 1.11.8:
+    ("Ch",   "Ct"),
+    ("Ds",   "Dt"),
+    ("Hh",   "Ht"),
+    ("Mm",   "Mt"),
+    ("Ss",   "St"),
+    ("Uu",   "Ut"),
+    ("Ww",   "Wst"),
+    ("Wo",   "Wdt"),
+    ("Wwr",  "Wrt"),
+    ("^Uf",  "Uft"),
+    # Vi -> Vit in 1.11.8, Vit -> Vt in 1.11.9.
+    ("Vit",  "Vt"),
+    # 1.11.9:
+    ("Vi",   "Vt"),
+    )
+
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
@@ -2669,6 +2688,13 @@ if __name__ == '__main__':
         if "wmllint: noconvert" not in original:
             for (old, new) in linechanges + mapchanges:
                 line = line.replace(old, new)
+            if under("terrain_type"):
+                match = re.search(r"\baliasof\s*=(.*)$", line)
+                if match:
+                    aliases = match.group()
+                    for (old, new) in aliaschanges:
+                        aliases = aliases.replace(old, new)
+                    line = line.replace(match.group(), aliases)
         # Perform tag renaming for 1.5.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been
         # mapped to [unit_type].  Also, beware that this test will fail to
