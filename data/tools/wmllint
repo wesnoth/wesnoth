@@ -2556,7 +2556,7 @@ def spellcheck(fn, d):
         except AttributeError:
             print "Caught AttributeError when trying to remove %s from dict" % word
 
-vctypes = (".svn", ".git")
+vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
