@@ -3272,6 +3272,18 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 		if (player == preferences::login())
 			return;
 		change_side_controller(side,player);
+	} else if (teams_[side_num - 1].is_idle()) { //if this is our side and it is idle, make human and throw an end turn exception
+		LOG_NG << " *** Got an idle side with requested control change " << std::endl;
+		teams_[side_num - 1].make_human();
+		change_controller(lexical_cast<std::string>(side_num),"human");
+
+		if (player == preferences::login()) {
+			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
+		} else {
+			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
+			change_side_controller(side,player);		 
+		}
+		throw end_turn_exception(side_num);
 	} else {
 		//it is not our side, the server will decide if we can change the
 		//controller (that is if we are host of the game)
