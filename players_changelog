@@ -12,6 +12,7 @@ Version 1.11.9+dev:
      * Fixed Delfador clobbering whichever unit happens to be standing on
        31,11 at the end of The Bay of Pearls, causing it to disappear
        forever.
+     * S15 (The Lost General): fix bug of sighted events firing too early
    * Son of the Black Eye:
      * Rebalancing of the campaign is now complete
 
@@ -26,6 +27,12 @@ Version 1.11.9+dev:
      screenshot was successfully saved to disk, including options to open it
      in an external application, copy the path to clipboard, or browse the
      screenshots folder.
+   * Added descriptions to the options in Preferences -> Display -> Themes.
+
+ * Miscellaneous and bug fixes:
+   * Users now get a warning if they start a multiplayer scenario through the
+     title screen load button, as this may cause eras and modifications not
+     to work correctly in subsequent scenarios of an mp campaign.
 
 
 Version 1.11.9:
