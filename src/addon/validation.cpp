@@ -19,7 +19,7 @@
 
 #include <boost/foreach.hpp>
 
-const unsigned short default_campaignd_port = 15006;
+const unsigned short default_campaignd_port = 15007;
 
 namespace {
 	const std::string addon_type_strings[] = {
