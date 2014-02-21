@@ -2,8 +2,13 @@ Version 1.11.9+dev:
  * Add-ons client:
    * Fixed faulty add-on _info.cfg files causing the game to display obscure
      error messages or crash to desktop.
-   * Fixed wesnoth_addon_manager not supporting the dependencies= attribute
-     and the [feedback] tag in .pbl files.
+   * Generated _info.cfg files now contain the list of dependencies for an
+     add-on as well (needed by wesnoth_addon_manager).
+   * Python wesnoth_addon_manager client:
+     * The dependencies= attribute and the [feedback] tag in .pbl files are
+       now properly supported (bug #21189).
+     * Generated _info.cfg files now contain the same information as the
+       game's built-in client (type and title were missing).
  * AI:
    * Hang Out Micro AI: default AI [avoid] aspect is now taken into account
  * Campaigns:
