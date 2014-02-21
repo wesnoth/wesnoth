@@ -82,6 +82,7 @@ protected:
 	void end_turn_enable(bool enable);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	void play_ai_turn();
+	void play_idle_loop();
 	virtual void play_network_turn();
 	virtual void init_gui();
 	void check_time_over();
