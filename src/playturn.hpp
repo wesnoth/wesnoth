@@ -61,6 +61,8 @@ private:
 		const bool skip_replay,
 		std::deque<config>& backlog);
 
+	void do_save();
+
 	unsigned int team_num_;
 
 	replay_network_sender& replay_sender_;
