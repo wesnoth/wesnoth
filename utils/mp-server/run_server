@@ -41,6 +41,8 @@ case $SERVER in
 1.7*)  PORT=14997
        THREADS=16 ;;
 1.9*)  PORT=14997
+       THREADS=16 ;;
+1.10)
        THREADS=30 ;;
 esac
 
