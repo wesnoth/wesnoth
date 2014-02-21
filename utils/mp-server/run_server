@@ -33,7 +33,7 @@ PORT=15000
 case $SERVER in
 1.4|1.8)
        PORT=14998
-       THREADS=30 ;;
+       THREADS=8  ;;
 1.6)   PORT=14999
        THREADS=8  ;;
 1.5*)  PORT=14999
@@ -41,7 +41,7 @@ case $SERVER in
 1.7*)  PORT=14997
        THREADS=16 ;;
 1.9*)  PORT=14997
-       THREADS=16 ;;
+       THREADS=30 ;;
 esac
 
 ulimit -Ss 2048
