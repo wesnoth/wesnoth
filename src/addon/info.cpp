@@ -116,6 +116,7 @@ void addon_info::write_minimal(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 	cfg["title"] = this->title;
+	cfg["dependencies"] = utils::join(this->depends);
 }
 
 std::string addon_info::display_title() const
