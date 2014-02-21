@@ -695,19 +695,31 @@ Dextrous::
   their uncanny grace, and their great facility with the bow. Some, however,
   are gifted with natural talent that exceeds their brethren. These elves
   inflict an additional point of damage with each arrow.
+Fearless::
+  Does not suffer from a negative attack bonus during its unfavorable
+  time of day (Heavy Infantry, Necrophage, Trolls, Walking Corpses).
 Healthy::
   Renowned for their vitality, some dwarves are sturdier than others and can
   rest heal even when traveling or fighting.
   Healthy units have 1 HP plus 1 HP per level more than usual and rest heal the
   usual 2 HP after each turn regardless.
-Fearless::
-  Does not suffer from a negative attack bonus during its unfavorable
-  time of day (Heavy Infantry, Necrophage, Trolls, Walking Corpses).
 
 There are also some traits that are not assigned randomly.
 These traits can either be assigned by the scenario designer or are always
 assigned based on the unit type:
 
+Aged::
+  The oldest units may have the Aged trait, receiving a 8 points HP decrease and 
+  having -1 movement and melee damage.
+Dim::
+  Units with the Dim trait have get a 20% increase in XP required to advance.
+Elemental::
+  Elemental units aren't alive and thus are immune to poison, also drain and
+  plague doesn't work on them.
+  Mechanical units generally have 'Mechanical' as their only trait.
+Feral::
+  Units with the Feral trait only receive 50% defense in villages regardless of
+  the base terrain the village is on.
 Loyal::
   Loyal units don't incur upkeep. Most units incur an upkeep cost at the end
   of every turn, which is equal to their level. Loyal units do not incur this
@@ -718,16 +730,21 @@ Loyal::
   make them invaluable during a long campaign, when gold is in short supply.
   This trait is never given to recruited units, so it may be unwise to dismiss
   such units or to send them to a foolish death.
+Mechanical::
+  Mechanical units aren't alive and thus are immune to poison, also drain and
+  plague doesn't work on them.
+  Mechanical units generally have 'Mechanical' as their only trait.
+Slow::
+  Large, unwieldy units with the Slow trait have -1 movement and 5% more hitpoints.
 Undead::
   Undead units are immune to poison, also drain and plague doesn't work on them.
   Undead units generally have 'Undead' as their only trait. Since Undead units
   are the bodies of the dead, risen to fight again, poison has no effect upon
   them. This can make them invaluable in dealing with foes who use poison in
   conjunction with their attacks.
-Mechanical::
-  Mechanical units aren't alive and thus are immune to poison, also drain and
-  plague doesn't work on them.
-  Mechanical units generally have 'Mechanical' as their only trait.
+Weak::
+  Units may have the Weak trait, receiving a -1 increment in hitpoints and
+  melee damage.
 
 Unit Specialties
 ^^^^^^^^^^^^^^^^
