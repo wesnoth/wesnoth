@@ -243,6 +243,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 
 		int action = 0;
+		int first_observer_option_idx = 0;
 
 		std::vector<std::string> observers;
 		std::vector<team*> allies;
@@ -253,7 +254,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			utils::string_map t_vars;
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
+			options.push_back(_("Set side to idle"));
 			options.push_back(_("Save and Abort game"));
+
+			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
 			BOOST_FOREACH(const std::string &ob, resources::screen->observers())
@@ -309,12 +313,19 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
+				tm.make_idle();
+				tm.set_current_player("idle" + side_drop);
+				if (have_leader) leader->rename("idle" + side_drop);
+
+				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+
+			case 3:
 				//The user pressed "end game". Don't throw a network error here or he will get
 				//thrown back to the title screen.
 				do_save();
 				throw end_level_exception(QUIT);
 			default:
-				if (action > 2) {
+				if (action > 3) {
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
@@ -323,7 +334,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						if (have_leader) leader->rename("human"+side_drop);
 					}
 
-					const size_t index = static_cast<size_t>(action - 3);
+					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
 					if (index < observers.size()) {
 						change_side_controller(side_drop, observers[index]);
 					} else if (index < options.size() - 1) {
