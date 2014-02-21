@@ -227,6 +227,7 @@ char const *team::team_info::controller_string() const
 	case HUMAN_AI: return "human_ai";
 	case NETWORK: return "network";
 	case NETWORK_AI: return "network_ai";
+	case IDLE: return "idle";
 	case EMPTY: return "null";
 	default: assert(false); return NULL;
 	}
@@ -498,6 +499,8 @@ void team::change_controller(const std::string& controller)
 		cid = team::NETWORK_AI;
 	else if (controller == "null")
 		cid = team::EMPTY;
+	else if (controller == "idle")
+		cid = team::IDLE;
 	else
 		cid = team::AI;
 
