@@ -495,18 +495,13 @@ namespace {
 							}
 						}
 
-						// TODO: remove for next add-ons server instance.
-						bool illegal_name_upload = false;
-
 						if (read_only_) {
 							LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
 							network::send_data(construct_error("Add-on rejected: The server is currently in read-only mode."), sock);
 						} else if (!data) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock);
-						} else if ((illegal_name_upload = !addon_name_legal(upload["name"])) && campaign == NULL) {
-							// Only deny upload if we don't have an add-on with that id/name
-							// already. TODO: remove for next add-ons server instance.
+						} else if (!addon_name_legal(upload["name"])) {
 							LOG_CS << "Upload aborted - invalid add-on name.\n";
 							network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), sock);
 						} else if (is_text_markup_char(upload["name"].str()[0])) {
@@ -542,13 +537,6 @@ namespace {
 							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
 						} else {
 							const time_t upload_ts = time(NULL);
-
-							// Warn admins in the log about reuploading add-ons whose names don't
-							// pass the addon_name_legal() whitelist check above.
-
-							if(illegal_name_upload) {
-								LOG_CS << "Ignoring invalid add-on name '" << upload["name"] << "' because it already exists on the server.\n";
-							}
 
 							LOG_CS << "Upload is owner upload.\n";
 							std::string message = "Add-on accepted.";
