@@ -18,6 +18,7 @@
 #include "boost/foreach.hpp"
 
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "wml_separators.hpp"
@@ -627,9 +628,7 @@ void execute_command(display& disp, const hotkey_command& command, command_execu
 			filename = get_next_filename(filename, ".bmp");
 			int size = disp.screenshot(filename, map_screenshot);
 			if (size > 0) {
-				std::stringstream res;
-				res << filename << " ( " << utils::si_string(size, true, _("unit_byte^B")) << " )";
-				gui2::show_message(disp.video(), _("Screenshot Done"), res.str());
+				gui2::tscreenshot_notification::display(filename, size, disp.video());
 			} else {
 				gui2::show_message(disp.video(), _("Screenshot Done"), "");
 			}

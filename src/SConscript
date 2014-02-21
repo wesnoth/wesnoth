@@ -388,6 +388,7 @@ wesnoth_sources = Split("""
     gui/dialogs/network_transmission.cpp
     gui/dialogs/popup.cpp
     gui/dialogs/edit_text.cpp
+    gui/dialogs/screenshot_notification.cpp
     gui/dialogs/simple_item_selector.cpp
     gui/dialogs/theme_list.cpp
     gui/dialogs/tip.cpp
@@ -555,7 +556,7 @@ for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
 wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
-                   libwesnoth, env["wesnoth_res"]]
+                   libwesnoth, libwesnoth_extras, env["wesnoth_res"]]
 if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
