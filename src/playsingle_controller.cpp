@@ -700,6 +700,7 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 					play_idle_loop();
 				}
 			} catch(end_turn_exception& end_turn) {
+				LOG_NG << "Escaped from idle state with exception!" << std::endl;
 				if (end_turn.redo == side_number) {
 					player_type_changed_ = true;
 					// If new controller is not human,

@@ -1962,6 +1962,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 		void do_refresh();
 		void do_droid();
+		void do_idle();
 		void do_theme();
 		void do_control();
 		void do_clear();
@@ -2041,6 +2042,8 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Refresh gui."));
 			register_command("droid", &console_handler::do_droid,
 				_("Switch a side to/from AI control."), _("do not translate the on/off^[<side> [on/off]]"));
+			register_command("idle", &console_handler::do_idle,
+				_("Switch a side to/from idle state."), _("do not translate the on/off^[<side> [on/off]]"));
 			register_command("theme", &console_handler::do_theme);
 			register_command("control", &console_handler::do_control,
 				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
@@ -2671,6 +2674,49 @@ void console_handler::do_droid() {
 	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " on") {
 		menu_handler_.teams_[side - 1].make_human();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+	}
+	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+}
+
+void console_handler::do_idle() {
+	// :idle [<side> [on/off]]
+	const std::string side_s = get_arg(1);
+	const std::string action = get_arg(2);
+	// default to the current side if empty
+	const unsigned int side = side_s.empty() ?
+		team_num_ : lexical_cast_default<unsigned int>(side_s);
+
+	if (side < 1 || side > menu_handler_.teams_.size()) {
+		utils::string_map symbols;
+		symbols["side"] = side_s;
+		command_failed(vgettext("Can't idle invalid side: '$side'.", symbols));
+		return;
+	} else if (menu_handler_.teams_[side - 1].is_network()) {
+		utils::string_map symbols;
+		symbols["side"] = lexical_cast<std::string>(side);
+		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
+		return;
+	} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
+		//this is our side, so give it to idle
+		menu_handler_.teams_[side - 1].make_idle();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"idle");
+		if(team_num_ == side) {
+			//if it is our turn at the moment, we have to indicate to the
+			//play_controller, that we are no longer in control
+			throw end_turn_exception(side);
+		}
+	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " off") {
+		//this is our side, so give it to idle
+		menu_handler_.teams_[side - 1].make_human_ai();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"human_ai");
+	} else if (menu_handler_.teams_[side - 1].is_idle() && action != " on") {
+		menu_handler_.teams_[side - 1].make_human();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+		if(team_num_ == side) {
+			//if it is our turn at the moment, we have to indicate to the
+			//play_controller, that idle should no longer be in control
+			throw end_turn_exception(side);
+		}
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
