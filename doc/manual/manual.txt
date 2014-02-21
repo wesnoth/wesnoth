@@ -709,14 +709,14 @@ These traits can either be assigned by the scenario designer or are always
 assigned based on the unit type:
 
 Aged::
-  The oldest units may have the Aged trait, receiving a 8 points HP decrease and 
+  The oldest units may have the Aged trait, receiving an 8 points HP decrease and 
   having -1 movement and melee damage.
 Dim::
-  Units with the Dim trait have get a 20% increase in XP required to advance.
+  Units with the Dim trait require 20% more expereince to advance.
 Elemental::
-  Elemental units aren't alive and thus are immune to poison, also drain and
-  plague doesn't work on them.
-  Mechanical units generally have 'Mechanical' as their only trait.
+  Elemental units aren't alive and thus are immune to poison, and drain and
+  plague don't work on them.
+  Elemental units generally have 'Elemental' as their only trait.
 Feral::
   Units with the Feral trait only receive 50% defense in villages regardless of
   the base terrain the village is on.
@@ -731,8 +731,8 @@ Loyal::
   This trait is never given to recruited units, so it may be unwise to dismiss
   such units or to send them to a foolish death.
 Mechanical::
-  Mechanical units aren't alive and thus are immune to poison, also drain and
-  plague doesn't work on them.
+  Mechanical units aren't alive and thus are immune to poison, and drain and
+  plague don't work on them.
   Mechanical units generally have 'Mechanical' as their only trait.
 Slow::
   Large, unwieldy units with the Slow trait have -1 movement and 5% more hitpoints.
