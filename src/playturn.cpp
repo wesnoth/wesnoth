@@ -29,6 +29,7 @@
 #include "whiteboard/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
+#include "savegame.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -101,6 +102,14 @@ void turn_info::handle_turn(
 		backlog.push_back(config());
 		backlog.back().add_child("turn", t);
 	}
+}
+
+void turn_info::do_save()
+{
+	savegame::ingame_savegame save(*resources::state_of_game, *resources::screen,
+                               resources::controller->to_config(),
+                               preferences::save_compression_format());
+	save.save_game_interactive(resources::screen->video(), "", gui::OK_CANCEL);
 }
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
@@ -244,7 +253,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			utils::string_map t_vars;
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
-			options.push_back(_("Abort game"));
+			options.push_back(_("Save and Abort game"));
 
 			//get all observers in as options to transfer control
 			BOOST_FOREACH(const std::string &ob, resources::screen->observers())
@@ -302,6 +311,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			case 2:
 				//The user pressed "end game". Don't throw a network error here or he will get
 				//thrown back to the title screen.
+				do_save();
 				throw end_level_exception(QUIT);
 			default:
 				if (action > 2) {
