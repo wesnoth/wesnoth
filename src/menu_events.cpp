@@ -1965,6 +1965,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_idle();
 		void do_theme();
 		void do_control();
+		void do_controller();
 		void do_clear();
 		void do_sunset();
 		void do_foreground();
@@ -2047,6 +2048,8 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("theme", &console_handler::do_theme);
 			register_command("control", &console_handler::do_control,
 				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
+			register_command("controller", &console_handler::do_controller,
+				_("Query the controller status of a side."), _("<side>"));
 			register_command("clear", &console_handler::do_clear,
 				_("Clear chat history."));
 			register_command("sunset", &console_handler::do_sunset,
@@ -2753,6 +2756,27 @@ void console_handler::do_control() {
 	menu_handler_.request_control_change(side_num,player);
 	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
 }
+void console_handler::do_controller()
+{
+	const std::string side = get_arg(1);
+	unsigned int side_num;
+	try {
+		side_num = lexical_cast<unsigned int>(side);
+	} catch(bad_lexical_cast&) {
+		utils::string_map symbols;
+		symbols["side"] = side;
+		command_failed(vgettext("Can't query control of invalid side: '$side'.", symbols));
+		return;
+	}
+	if (side_num < 1 || side_num > menu_handler_.teams_.size()) {
+		utils::string_map symbols;
+		symbols["side"] = side;
+		command_failed(vgettext("Can't query control of out-of-bounds side: '$side'.",	symbols));
+		return;
+	}
+	print(get_cmd(), menu_handler_.teams_[side_num - 1].controller_string());
+}
+
 void console_handler::do_clear() {
 	menu_handler_.gui_->clear_chat_messages();
 }
