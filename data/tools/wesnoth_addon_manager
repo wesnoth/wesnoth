@@ -105,7 +105,7 @@ if __name__ == "__main__":
     if not ":" in address:
         address += ":" + str(port)
 
-    def get(name, version, uploads, dependencies, cdir):
+    def get(name, title, version, type, uploads, dependencies, cdir):
         mythread = cs.get_campaign_raw_async(name)
 
         pcounter = 0
@@ -138,10 +138,12 @@ if __name__ == "__main__":
 version="%s"
 uploads="%s"
 dependencies="%s"
+title="%s"
+type="%s"
 [/info]
 """
                 f.write(infowml %
-                    (version, uploads, dependencies))
+                    (version, uploads, dependencies, title, type))
                 f.close()
             except OSError:
                 pass
@@ -230,24 +232,25 @@ dependencies="%s"
             campaigns = data.get_or_create_sub("campaigns")
             for campaign in campaigns.get_all("campaign"):
                 name = campaign.get_text_val("name", "?")
+                title = campaign.get_text_val("title")
                 type = campaign.get_text_val("type", "")
                 version = campaign.get_text_val("version", "")
                 uploads = campaign.get_text_val("uploads", "")
                 dependencies = campaign.get_text_val("dependencies", "")
                 if re.escape(args.download).replace("\\_", "_") == args.download:
                     if name == args.download:
-                        fetchlist.append((name, version, uploads, dependencies))
+                        fetchlist.append((name, title, version, type, uploads, dependencies))
                 elif not args.type or args.type == type:
                     if re.search(args.download, name):
-                        fetchlist.append((name, version, uploads, dependencies))
+                        fetchlist.append((name, title, version, type, uploads, dependencies))
 
-        for name, version, uploads, dependencies in fetchlist:
+        for name, title, version, type, uploads, dependencies in fetchlist:
             info = os.path.join(args.campaigns_dir, name, "_info.cfg")
             local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
                 # The uploads > local_uploads likely means a server reset
                 if version != local_version or uploads > local_uploads:
-                    get(name, version, uploads, dependencies, args.campaigns_dir)
+                    get(name, title, version, type, uploads, dependencies, args.campaigns_dir)
                 else:
                     print "Not downloading", name, \
                         "as the version already is", local_version, \
@@ -360,7 +363,9 @@ dependencies="%s"
             dirname = os.path.basename(d)
             if dirname in campaigns:
                 info = os.path.join(d, "_info.cfg")
+                stitle = campaigns[dirname].get_text_val("title", "")
                 sversion = campaigns[dirname].get_text_val("version", "")
+                stype = campaigns[dirname].get_text_val("type", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
                 sdeps = campaigns[dirname].get_text_val("dependencies", "")
                 if os.path.exists(info):
@@ -378,17 +383,17 @@ dependencies="%s"
                             (lrev, srev))
                         if srev > lrev: # server reset?
                             if args.update:
-                                get(dirname, sversion, srev, sdeps, cdir)
+                                get(dirname, stitle, sversion, stype, srev, sdeps, cdir)
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
                             "revision " + lrev + " but revision " + srev +
                             " is available.\n")
-                        if args.update: get(dirname, sversion, srev, sdeps, cdir)
+                        if args.update: get(dirname, stitle, sversion, stype, srev, sdeps, cdir)
                 else:
                     sys.stdout.write(" ? " + dirname +
                         " - is installed but has no " +
                         "version info.\n")
-                    if args.update: get(dirname, sversion, srev, sdeps, cdir)
+                    if args.update: get(dirname, stitle, sversion, stype, srev, sdeps, cdir)
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)
