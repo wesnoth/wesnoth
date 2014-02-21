@@ -138,7 +138,8 @@ if __name__ == "__main__":
 version="%s"
 uploads="%s"
 dependencies="%s"
-[/info]"""
+[/info]
+"""
                 f.write(infowml %
                     (version, uploads, dependencies))
                 f.close()
