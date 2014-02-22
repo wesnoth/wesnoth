@@ -36,6 +36,19 @@ Additionally, the format used for logging these errors to stderr has changed:
 The pop-up notification displayed when taking a screenshot of the game UI or map has been replaced with a small dialog including options to copy the screenshot file path to clipboard, open it with an external application, or browse the screenshots folder in the file manager application defined by the platform.
 [/section]
 
+[section="New Support for MP Disconnects"]
+When players disconnect from an MP game, the host has somewhat improved options:
+[list]
+[*] Save and abort, where formerly was just abort.
+[*] Set side to idle. An idle side will not move or pass its turns, the host will not gain vision, and control will revert to a human side if the game is saved.
+[/list]
+There are two new commands, :idle which toggles the idle state, and :controller which is a debugging command querying the current controller type of a side.
+Additionally the :give_control command is now documented -- although it has existed in 1.10, it changed names and somehow became undocumented. This command
+launches a friendly gui to assist with changing side controllers. 
+
+All commands :control, :give_control, :idle, :droid, should interact correctly with idle sides.
+[/section]
+
 [section="Example section header"]
 Example contents.
 [/section]
