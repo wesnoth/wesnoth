@@ -126,6 +126,7 @@ namespace game_events
 
 		void clear()                           { data_.clear(); }
 
+		handler_list() {}
 	private:
 		/// No implementation of operator=() since smart_list does not support it.
 		handler_list & operator=(const handler_list &);
