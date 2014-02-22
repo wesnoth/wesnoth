@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-sotbe\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-16 13:54+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2011-12-10 09:11+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -167,7 +167,7 @@ msgstr "Nastrada li Kapue"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:66
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:55
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:157
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:161
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/19_Epilogue.cfg:19
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:80
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:93
@@ -351,8 +351,12 @@ msgstr "Govori, jahaču."
 
 #. [message]: speaker=Vrag
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/01_End_of_Peace.cfg:207
+#, fuzzy
+#| msgid ""
+#| "There is a huge human army marching on us! They can’t be more then one or "
+#| "two days march from here."
 msgid ""
-"There is a huge human army marching on us! They can’t be more then one or "
+"There is a huge human army marching on us! They can’t be more than one or "
 "two days march from here."
 msgstr ""
 "Prema nama se kreće ogromna ljudska vojska! Ne mogu biti dalje od jednog ili "
@@ -1814,7 +1818,7 @@ msgstr "Ar-Dant"
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:178
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:98
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:88
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:131
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:133
 msgid "Villains"
 msgstr "Zlikovci"
 
@@ -2360,7 +2364,7 @@ msgstr "Poraziš li Šana Tauma"
 #. [unit]: type=Orcish Warlord, id=Shan Taum
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_the_Smug.cfg:64
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/16_The_Coward.cfg:143
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:124
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:126
 msgid "Shan Taum"
 msgstr "Šan Taum"
 
@@ -4231,7 +4235,7 @@ msgid "Defeat Earl Lanbec’h"
 msgstr "Poraziš li župana Lanbeka"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:135
 #, fuzzy
 #| msgid ""
 #| "As Kapou’e expected, by the time his forces had been defeated Shan Taum "
@@ -4250,7 +4254,7 @@ msgstr ""
 "Dorsetu."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:139
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:141
 #, fuzzy
 #| msgid ""
 #| "Once there he found his generals, Al’Brock and Flar’Tar had already "
@@ -4272,7 +4276,7 @@ msgstr ""
 "jedinstvo Horde."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:145
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:147
 msgid ""
 "Their presence proved to be unnecessary. It came as a shock to Kapou’e to "
 "discover, after a few days, that his people held him in awe. News of "
@@ -4289,7 +4293,7 @@ msgstr ""
 "zastrašujuće."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:151
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:153
 msgid ""
 "Days passed, the snows melted and Kapou’e readied his defenses. A few weeks "
 "after Kapou’e’s arrival, riders caught sight of Earl Lanbec’h’s army."
@@ -4298,7 +4302,7 @@ msgstr ""
 "sedmica po Kapuovom prispeću, jahači prvi put opaziše vojsku župana Lanbeka."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:207
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:209
 #, fuzzy
 #| msgid ""
 #| "This is it, men! It is time to make these orcs pay for all that they have "
@@ -4315,50 +4319,45 @@ msgstr ""
 "pravu naša!"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:212
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:214
 msgid "Forward, men! Our wolves will feed well tonight!"
 msgstr "Napred, orkovi! Naši vukovi silno će se pogostiti večeras!"
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:218
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:220
 msgid "Come here, human softlings. Grüü has a little present for you..."
 msgstr "Dođite, ljudski slabići. Gri je spremio mali poklon za vas..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:316
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:319
 msgid "As a fresh day dawned, more human forces arrived."
 msgstr "Kako se ozario novi dan, pristiže još ljudskih snaga."
 
-#. [message]: speaker=narrator
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:328
-msgid "At the dawn of the third day, still more human forces arrived."
-msgstr "U zoru trećeg dana, pojavi se još više ljudi."
-
 #. [message]: speaker=Bruce
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:343
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:332
 msgid "We have arrived, my lord."
 msgstr "Stigli smo, gospodaru."
 
 # well-spelled: Ааа
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:352
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:343
 msgid "Ahhh, perfect, more reinforcements."
 msgstr "Aaa, odlično, još pojačanja."
 
 #. [side]: type=General, id=Howgarth III
 #. [unit]: type=General, id=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:372
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:150
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:361
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:154
 msgid "Howgarth III"
 msgstr "Hogart Treći"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:413
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:402
 msgid "Hold it! What in the wide green world is going on here!"
 msgstr "Stoj! Šta se, zelene mi travice, događa ovde!?"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:419
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:408
 msgid ""
 "Howgarth? You and your interfering alliance always show up at the worst "
 "possible time."
@@ -4367,17 +4366,17 @@ msgstr ""
 "trenutku."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:424
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:413
 msgid "Just who do you think you are, slug?"
 msgstr "Koji si sad pa ti, golaću?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:430
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:419
 msgid "I am Howgarth of the Northern Alliance, successor to the late Rahul I."
 msgstr "Ja sam Hogart od Severnjačkog saveza, naslednik počivšeg Rahula Prvog."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:436
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:425
 msgid ""
 "This is a strictly territorial matter, Howgarth. The Northern Alliance has "
 "no right to intervene in this affair."
@@ -4386,7 +4385,7 @@ msgstr ""
 "nikakvog prava da se meša u ova zbivanja."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:441
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:430
 msgid ""
 "The hell I don’t, Earl Lanbec’h, the Northern Alliance was witness to a "
 "treaty some twenty seven years ago between your people and the orcs, which "
@@ -4399,7 +4398,7 @@ msgstr ""
 "sporazuma da obezbedimo da se poštuje."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:447
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:436
 msgid ""
 "Well, good for you. As a matter of fact, this land is clearly defined under "
 "your precious treaty as human territory. So if you are so keen on being all "
@@ -4410,7 +4409,7 @@ msgstr ""
 "plemenit, pridruži nam svoje snage da odbijemo ovu orkovsku napast."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:441
 msgid ""
 "Cease your lies, Lanbec’h. We all know that you were the one who started "
 "this war. But enough, it is time for all this to end. I call for both sides "
@@ -4421,7 +4420,7 @@ msgstr ""
 "raspravimo ovu stvar."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:457
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:446
 msgid ""
 "Ha ha, very funny, old fool. You think we are stupid enough to fall for "
 "that? I’ve not forgotten what you people did to my father."
@@ -4430,12 +4429,12 @@ msgstr ""
 "nasednemo? Nisam zaboravio što su tvoji satrapi uradili mom ocu."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:452
 msgid "What in the world are you talking about?"
 msgstr "O čemu to dođavola pričaš?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:468
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:457
 msgid ""
 "I am Kapou’e, son of the Black-Eye Karun. Twenty-seven years ago you people "
 "assassinated my father after inviting him to join the Northern Alliance."
@@ -4444,7 +4443,7 @@ msgstr ""
 "zasede mog oca, pošto ste ga pozvali da se priključi Severnjačkom savezu."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:474
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:463
 msgid ""
 "What? We received word that he declined our invitation and that was the end "
 "of the matter. I know nothing of his assassination. As a matter of fact, I "
@@ -4455,17 +4454,17 @@ msgstr ""
 "orkovski glasnik predao Rahulu Karunov odgovor."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:468
 msgid "Messenger, what messenger?"
 msgstr "Glasnik, kakav glasnik?"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:485
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:474
 msgid "If I remember correctly, it was some orc named Shan Taum."
 msgstr "Ako dobro pamtim, beše to neki ork po imenu Šan Taum."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:490
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/17_The_Human_Attack.cfg:479
 msgid "Funny, that name sounds oddly familiar..."
 msgstr "Zanimljivo, to ime mi zvuči poznato odnekud..."
 
@@ -4485,7 +4484,7 @@ msgid "Death of Howgarth III"
 msgstr "Nastrada li Hogart Treći"
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:166
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:182
 msgid ""
 "Kapou’e agreed to meet Howgarth III. Not trusting the human however, Kapou’e "
 "brought along Grüü, as well as one of his most trusted soldiers. Earl "
@@ -4496,7 +4495,7 @@ msgstr ""
 "Lanbek glatko odbi da prisustvuje pregovoru."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:172
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:188
 #, fuzzy
 #| msgid ""
 #| "The human attack having stopped for the time being, both parties met in "
@@ -4523,7 +4522,7 @@ msgstr ""
 "i raspustiti Hordu."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:178
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:194
 msgid ""
 "Howgarth III agreed and further added that, if Earl Lanbec’h continued in "
 "aggression, then under the dictates of the Northern Alliance, he himself "
@@ -4534,7 +4533,7 @@ msgstr ""
 "župana."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:184
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:200
 #, fuzzy
 #| msgid ""
 #| "That having been settled, Kapou’e began to inquire about the death of his "
@@ -4553,7 +4552,7 @@ msgstr ""
 "isporučio niko drugi do Šan Taum lično."
 
 #. [part]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:206
 msgid ""
 "As they were discussing the matter, a group of orcs charged from the "
 "surrounding trees and hills and surrounded the parley."
@@ -4562,7 +4561,7 @@ msgstr ""
 "pregovarače."
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:405
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:483
 msgid ""
 "Now now now, what do we have here. Collaborating with the enemy again just "
 "like your disgusting father, are you?"
@@ -4571,29 +4570,29 @@ msgstr ""
 "odvratni otac, je l’ tako?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:411
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:489
 msgid ""
 "Collaborating with the humans, pfff. You’re one to talk. What are you doing "
 "here, Shan Taum?"
 msgstr "Sarađujem sa ljudima, ha. Ti mi kažeš. Šta radiš ovde, Šane Taume?"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:416
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:494
 msgid "I am here to do to you what I did to your father."
 msgstr "Ovde sam da uradim tebi što sam i tvom ocu."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:421
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:499
 msgid "So you did kill my father then."
 msgstr "Znači, ipak si ti ubio mog oca."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:426
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:504
 msgid "What did I tell you, Kapou’e?"
 msgstr "Šta sam ti rekao, Kapue?"
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:432
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:510
 #, fuzzy
 #| msgid ""
 #| "Ha ha! Good work Shan Taum. That will teach them. Attack, boys, I want "
@@ -4606,7 +4605,7 @@ msgstr ""
 "hoću da Dorset bude povraćen do sumraka."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:437
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:515
 #, fuzzy
 #| msgid ""
 #| "Hold, Earl Lanbec’h. I have reached an agreement with these orcs. Since "
@@ -4631,7 +4630,7 @@ msgstr ""
 "nije dovoljno, tu smo mi da te zaštitimo u slučaju da pogazi dogovor."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:443
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:521
 msgid ""
 "You and your damned compromises can go to hell. Your beloved Kapou’e will be "
 "joining you shortly."
@@ -4640,12 +4639,12 @@ msgstr ""
 "pridružiti i tvoj voljeni Kapue."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:448
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:526
 msgid "You leave us no choice but to take military action against you."
 msgstr "Ne ostavljaš nam izbora do da pokrenemo vojnu akciju protiv tebe."
 
 #. [message]: speaker=Earl Lanbec'h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:454
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:532
 msgid ""
 "Ha ha! Very funny, Howgarth. Look around you. You are going to be dead as "
 "soon as my orc friend here gives the order. And then your men will "
@@ -4656,12 +4655,12 @@ msgstr ""
 "Kapue nasamario i posekao."
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:459
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:537
 msgid "Not today, my friend. (<i>Whistles</i>)"
 msgstr "Neće danas, prijatelju. [<i>zazvižda</i>]"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:546
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:645
 msgid ""
 "Kapou’e, it is essential that I make it back to my camp to bring news of our "
 "agreement and this treachery. One of my gryphon riders will take me. My "
@@ -4678,12 +4677,12 @@ msgstr ""
 "svoj deo našeg sporazuma."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:551
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:650
 msgid "Agreed. Let’s get to it. BLOOD AND STEEL!"
 msgstr "Dogovoreno. Krećemo. KRV I ČELIK!"
 
 #. [message]: speaker=Shan Taum
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:575
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:674
 msgid ""
 "Blast! The human has escaped. Orcs, bring me Kapou’e’s head. I must get to "
 "my camp and assault the city."
@@ -4692,12 +4691,12 @@ msgstr ""
 "vratiti u logor i napasti grad."
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:604
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:703
 msgid "Shan Taum big coward. Never want to fight."
 msgstr "Šta Taum, velika kukavica. Nikad neće da se bije."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:664
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:758
 #, fuzzy
 #| msgid ""
 #| "Yeah, we finally got the coward. What do you want us to do with him chief?"
@@ -4705,7 +4704,7 @@ msgid "Yeah, we finally got the coward."
 msgstr "Jeste, konačno smo uhvatili kukavicu. Šta ćemo sa njim, poglavice?"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:670
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:764
 #, fuzzy
 #| msgid ""
 #| "Yeah, we finally got the coward. What do you want us to do with him chief?"
@@ -4714,24 +4713,24 @@ msgid ""
 msgstr "Jeste, konačno smo uhvatili kukavicu. Šta ćemo sa njim, poglavice?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:679
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:773
 msgid "Blood and steel! The traitor was mine!"
 msgstr "Krv i čelik! Taj izdajnik je bio moj!"
 
 #. [message]: speaker=Howgarth III
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:685
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:779
 msgid "I’m sorry, Kapou’e. I’ll have my men leave what remains of him to you."
 msgstr "Izvini, Kapue. Naložiću svojima da ti ostave što ostane od njega."
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:691
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:785
 #, fuzzy
 #| msgid "What do you want us to do with him chief?"
 msgid "What do you want us to do with him, Chief?"
 msgstr "Šta ćemo sa njim, poglavice?"
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:698
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:792
 msgid ""
 "Stick his head at the end of a pike and let the buzzards pick it clean. I "
 "wasn’t joking about making a mug from his skull."
@@ -4740,12 +4739,12 @@ msgstr ""
 "za krčag od njegove lobanje."
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:711
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:805
 msgid "No! Without him the Northern Alliance will continue to fall apart."
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:724
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/18_Northern_Alliance.cfg:818
 msgid "YEAH!"
 msgstr "DA!"
 
@@ -4982,6 +4981,9 @@ msgstr "Flartar"
 #: data/campaigns/Son_Of_The_Black_Eye/utils/utils.cfg:99
 msgid "The Great Horde: upkeep cost of every unit decreased by one."
 msgstr "Velika horda: izdaci svake jedinice smanjeni su za po jedan."
+
+#~ msgid "At the dawn of the third day, still more human forces arrived."
+#~ msgstr "U zoru trećeg dana, pojavi se još više ljudi."
 
 #~ msgid "Yeah, sure."
 #~ msgstr "Da, sigurno."

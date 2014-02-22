@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-16 13:54+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2011-12-14 21:17+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -172,68 +172,75 @@ msgstr ""
 msgid "After the Fall"
 msgstr ""
 
+#. [theme]: id=editor
+#: data/themes/editor.cfg:11
+#, fuzzy
+#| msgid "Quit Editor"
+msgid "theme^Editor"
+msgstr "退出编辑器"
+
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:63
+#: data/themes/editor.cfg:64
 msgid "File"
 msgstr "文件"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:89
+#: data/themes/editor.cfg:90
 msgid "Map"
 msgstr "地图"
 
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:97
+#: data/themes/editor.cfg:98
 msgid "Transition Update"
 msgstr ""
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:104
+#: data/themes/editor.cfg:105
 msgid "Window"
 msgstr "窗口"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:113
+#: data/themes/editor.cfg:114
 msgid "Areas"
 msgstr ""
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:121
+#: data/themes/editor.cfg:122
 msgid "Assign Local Time"
 msgstr ""
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:127
+#: data/themes/editor.cfg:128
 msgid "Assign Local Time Schedule"
 msgstr ""
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:135
+#: data/themes/editor.cfg:136
 msgid "Side"
 msgstr ""
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:154
+#: data/themes/editor.cfg:155
 msgid "villages"
 msgstr "村庄"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:171
+#: data/themes/editor.cfg:172
 msgid "units"
 msgstr ""
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:509
+#: data/themes/editor.cfg:510
 msgid "Time Schedule Menu"
 msgstr ""
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:520
+#: data/themes/editor.cfg:521
 msgid "Playlist"
 msgstr ""
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:526
+#: data/themes/editor.cfg:527
 msgid "Assign Time Schedule"
 msgstr ""
 
@@ -540,9 +547,6 @@ msgstr "玩家 $player_number"
 
 #~ msgid "Edit"
 #~ msgstr "编辑"
-
-#~ msgid "Quit Editor"
-#~ msgstr "退出编辑器"
 
 #~ msgid "Undo"
 #~ msgstr "撤销"

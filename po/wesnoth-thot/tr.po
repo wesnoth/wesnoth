@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2009-02-23 19:46+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -198,7 +198,7 @@ msgstr "Başnark’ı yen"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:218
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:229
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:159
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:421
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:354
 msgid "Death of Aiglondur"
 msgstr "Aglondur’un ölümü"
 
@@ -574,7 +574,7 @@ msgstr "Mart Tak’ın Gotras’ı yenmesine yardım et"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:222
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:233
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:163
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:425
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:358
 msgid "Death of Angarthing"
 msgstr "Angarting’in ölümü"
 
@@ -1720,7 +1720,7 @@ msgstr "Kal Kartanus"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:155
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:417
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:350
 msgid "Defeat Karrag"
 msgstr "Karrag’ı yen"
 
@@ -1933,8 +1933,77 @@ msgstr "Flelen"
 msgid "Lannex"
 msgstr "Lanneks"
 
+#. [objective]: condition=lose
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:362
+msgid "Death of Dulcatulos"
+msgstr "Dulkatulos’un ölümü"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:386
+msgid "This place smells of death."
+msgstr "Burası ölüm kokuyor."
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:391
+msgid ""
+"It’s been... it’s been years since I’ve been down here. Only Karrag and his "
+"personal followers used this level. Why did I never wonder about that before?"
+msgstr ""
+"Evet... yıllardır aşağılara inmemiştim. Sadece Karrag ve kişisel "
+"yardımcıları bu katı kullanır. Neden bu konuyu daha önce merak etmedim ki?"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:397
+msgid ""
+"Karrag’s will, and his dark magic. I think he has been casting glamours on "
+"all of you ever since he passed over."
+msgstr ""
+"Karrag ve kara büyüsü yüzünden olmalı. Buraya geldiğinden beri hepinize büyü "
+"yaptığını düşünüyorum."
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:402
+#, fuzzy
+msgid ""
+"Where <i>is</i> Karrag? We can’t have been more than seconds behind him."
+msgstr "Karrag nerede? Hemen arkasından girdik halbuki."
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:407
+msgid ""
+"This is the Grand Gallery. There are rows of small chambers along its sides; "
+"he could have slipped into any of them."
+msgstr ""
+"Burası Büyük Galeri. Her iki tarafında bir dizi küçük oda var. Onlardan "
+"birine girmiş olmalı."
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:412
+msgid ""
+"More likely he has cloaked himself, thinking to run ahead to gather his "
+"followers. He could be within a spear-cast of us now and we wouldn’t know it "
+"in this gloom."
+msgstr ""
+"Kendini maskenin ardına gizliyor. Bence gidip takipçilerini toplayacak. "
+"Bizden bir mızrak menzili mesafede olması lazım ama bu karanlıkta yerini "
+"bilemiyoruz."
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:421
+msgid "Those are war-drums!"
+msgstr "Bunlar savaş davulları!"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:426
+msgid ""
+"Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
+"hellspawn the lich will summon. AXES UP!"
+msgstr ""
+"Evet. Karrag askerlerini savaşa çağırıyor. Umacı neler yumurtladı kimbilir. "
+"BALTALAR HAZIR!"
+
 #. [message]: speaker={ID_STRING}
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:236
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:451
 msgid ""
 "Finally! I see someone managed to see through the web of deception thrown up "
 "by that vile Karrag!"
@@ -1942,7 +2011,7 @@ msgstr ""
 "Sonunda! Şu aşağılık Karrag’ın dalaverelerine kanmamış birileri kalmış."
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:241
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:456
 msgid ""
 "I thought Karrag’s fight was against the so called ‘dirtgrubbers’. Why would "
 "he keep you, a dwarf captive?"
@@ -1951,7 +2020,7 @@ msgstr ""
 "olarak tutuyordu?"
 
 #. [message]: speaker={ID_STRING}
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:246
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:461
 #, fuzzy
 msgid ""
 "I guess Karrag thought I knew too much. When his masked henchmen started "
@@ -1966,7 +2035,7 @@ msgstr ""
 "bunları duyuramadan yakalandım ve buraya hapsedildim."
 
 #. [message]: speaker={ID_STRING}
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:251
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:466
 msgid ""
 "I gather that he is involved in some sick ritual which requires the blood of "
 "living creatures. These cells seem to be the holding place where he keeps "
@@ -1979,7 +2048,7 @@ msgstr ""
 "tercih ediyor. Artık bizden çok az cüce kaldı..."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:256
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:471
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag then we thought, for now "
 "he is unable to continue his foul sorcery."
@@ -1988,78 +2057,9 @@ msgstr ""
 "alçakça büyülerine devam edemeyecek."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:269
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:484
 msgid "I sense wrongness. Some greater evil awakens before us."
 msgstr "Yanlış giden birşeyler var. Büyük bir kötülük bizden önce davranmış."
-
-#. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:429
-msgid "Death of Dulcatulos"
-msgstr "Dulkatulos’un ölümü"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:453
-msgid "This place smells of death."
-msgstr "Burası ölüm kokuyor."
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:458
-msgid ""
-"It’s been... it’s been years since I’ve been down here. Only Karrag and his "
-"personal followers used this level. Why did I never wonder about that before?"
-msgstr ""
-"Evet... yıllardır aşağılara inmemiştim. Sadece Karrag ve kişisel "
-"yardımcıları bu katı kullanır. Neden bu konuyu daha önce merak etmedim ki?"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:464
-msgid ""
-"Karrag’s will, and his dark magic. I think he has been casting glamours on "
-"all of you ever since he passed over."
-msgstr ""
-"Karrag ve kara büyüsü yüzünden olmalı. Buraya geldiğinden beri hepinize büyü "
-"yaptığını düşünüyorum."
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:469
-#, fuzzy
-msgid ""
-"Where <i>is</i> Karrag? We can’t have been more than seconds behind him."
-msgstr "Karrag nerede? Hemen arkasından girdik halbuki."
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:474
-msgid ""
-"This is the Grand Gallery. There are rows of small chambers along its sides; "
-"he could have slipped into any of them."
-msgstr ""
-"Burası Büyük Galeri. Her iki tarafında bir dizi küçük oda var. Onlardan "
-"birine girmiş olmalı."
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:479
-msgid ""
-"More likely he has cloaked himself, thinking to run ahead to gather his "
-"followers. He could be within a spear-cast of us now and we wouldn’t know it "
-"in this gloom."
-msgstr ""
-"Kendini maskenin ardına gizliyor. Bence gidip takipçilerini toplayacak. "
-"Bizden bir mızrak menzili mesafede olması lazım ama bu karanlıkta yerini "
-"bilemiyoruz."
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:488
-msgid "Those are war-drums!"
-msgstr "Bunlar savaş davulları!"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:493
-msgid ""
-"Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
-"hellspawn the lich will summon. AXES UP!"
-msgstr ""
-"Evet. Karrag askerlerini savaşa çağırıyor. Umacı neler yumurtladı kimbilir. "
-"BALTALAR HAZIR!"
 
 #. [message]: speaker=Dranath
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:521

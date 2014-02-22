@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-16 13:54+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2013-02-13 16:59-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: English (British) <http://wiki.wesnoth.org/"
@@ -3099,7 +3099,7 @@ msgstr "General commands"
 #. [topic]: id=debug_commands
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:573 data/core/help.cfg:613 data/core/help.cfg:645
+#: data/core/help.cfg:573 data/core/help.cfg:616 data/core/help.cfg:654
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3160,59 +3160,67 @@ msgstr ""
 #: data/core/help.cfg:585
 msgid ""
 "\n"
-"Toggle the display of the current frames per second.\n"
+"Display the controller status of a side.\n"
 "\n"
 msgstr ""
-"\n"
-"Toggle the display of the current frames per second.\n"
-"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:588
 msgid ""
 "\n"
-"Switch a log domain to a different log level.\n"
+"Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
 "\n"
-"Switch a log domain to a different log level.\n"
+"Toggle the display of the current frames per second.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:591
 msgid ""
 "\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
+"Switch a log domain to a different log level.\n"
 "\n"
 msgstr ""
 "\n"
-"Redraws the screen and reloads any image files that have been changed.\n"
+"Switch a log domain to a different log level.\n"
 "\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:594
 msgid ""
 "\n"
-"Bring up theme selection menu.\n"
+"Redraws the screen and reloads any image files that have been changed.\n"
 "\n"
 msgstr ""
 "\n"
-"Bring up theme selection menu.\n"
+"Redraws the screen and reloads any image files that have been changed.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:597
 msgid ""
 "\n"
-"Quit the scenario (without prompting).\n"
+"Bring up theme selection menu.\n"
 "\n"
 msgstr ""
 "\n"
-"Quit the scenario (without prompting).\n"
+"Bring up theme selection menu.\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:600
 msgid ""
 "\n"
+"Quit the scenario (without prompting).\n"
+"\n"
+msgstr ""
+"\n"
+"Quit the scenario (without prompting).\n"
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:603
+msgid ""
+"\n"
 "Save the game (without prompting).\n"
 "\n"
 msgstr ""
@@ -3220,7 +3228,7 @@ msgstr ""
 "Save the game (without prompting).\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3229,12 +3237,12 @@ msgstr ""
 "Save the game and quit the scenario (without prompting)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:612
+#: data/core/help.cfg:615
 msgid "Multiplayer commands"
 msgstr "Multiplayer commands"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:615
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3250,83 +3258,101 @@ msgstr ""
 
 # 2 full stops
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:618
-msgid ""
-"\n"
-"Change the controller for side (write here the number of the side) to "
-"username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <bold>text='Scenario Settings'</"
-"bold> dialog (Press the <bold>text='More'</bold> button in the "
-"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
-"can change control of any side.\n"
-"\n"
-msgstr ""
-"\n"
-"Change the controller for side (write here the number of the side) to "
-"username (write here the nickname of the player or observer). You can check "
-"what side belongs to which player in the <bold>text='Scenario Settings'</"
-"bold> dialog (Press the <bold>text='More'</bold> button in the "
-"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
-"can change control of any side.\n"
-"\n"
-
-#. [topic]: id=mp_commands
 #: data/core/help.cfg:621
 msgid ""
 "\n"
-"Kick a user in multiplayer. They will be able to rejoin the game. If you "
-"just want to change control of their side(s) use the :control command "
-"instead.\n"
+"Change the controller for side (write here the number of the side) to "
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 msgstr ""
 "\n"
-"Kick a user in multiplayer. They will be able to rejoin the game. If you "
-"just want to change control of their side(s) use the :control command "
-"instead.\n"
+"Change the controller for side (write here the number of the side) to "
+"username (write here the nickname of the player or observer). You can check "
+"what side belongs to which player in the <bold>text='Scenario Settings'</"
+"bold> dialog (Press the <bold>text='More'</bold> button in the "
+"<bold>text='Status Table'</bold> (alt+s by default) to get there.). The host "
+"can change control of any side.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:624
 msgid ""
 "\n"
-"Send a private message to a user. When in a game, it is not possible to send "
-"private messages to players who are currently controlling a side in the same "
-"game.\n"
+"Launch a dialog to assist the host in changing the human controllers of "
+"sides.\n"
 "\n"
 msgstr ""
-"\n"
-"Send a private message to a user. When in a game, it is not possible to send "
-"private messages to players who are currently controlling a side in the same "
-"game.\n"
-"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:627
 msgid ""
 "\n"
-"Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
+"Toggle the idle state for a side. The host may make a side idle after a "
+"network disconnection.\n"
 "\n"
 msgstr ""
-"\n"
-"Mute a specific observer. If no username is supplied the muted usernames are "
-"displayed.\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:630
 msgid ""
 "\n"
-"Toggle muting/silencing of all observers on/off.\n"
+"Kick a user in multiplayer. They will be able to rejoin the game. If you "
+"just want to change control of their side(s) use the :control command "
+"instead.\n"
 "\n"
 msgstr ""
 "\n"
-"Toggle muting/silencing of all observers on/off.\n"
+"Kick a user in multiplayer. They will be able to rejoin the game. If you "
+"just want to change control of their side(s) use the :control command "
+"instead.\n"
 "\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:633
 msgid ""
 "\n"
+"Send a private message to a user. When in a game, it is not possible to send "
+"private messages to players who are currently controlling a side in the same "
+"game.\n"
+"\n"
+msgstr ""
+"\n"
+"Send a private message to a user. When in a game, it is not possible to send "
+"private messages to players who are currently controlling a side in the same "
+"game.\n"
+"\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:636
+msgid ""
+"\n"
+"Mute a specific observer. If no username is supplied the muted usernames are "
+"displayed.\n"
+"\n"
+msgstr ""
+"\n"
+"Mute a specific observer. If no username is supplied the muted usernames are "
+"displayed.\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:639
+msgid ""
+"\n"
+"Toggle muting/silencing of all observers on/off.\n"
+"\n"
+msgstr ""
+"\n"
+"Toggle muting/silencing of all observers on/off.\n"
+"\n"
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:642
+msgid ""
+"\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
 "Can be used on users not in the game but on the server.\n"
 "\n"
@@ -3337,7 +3363,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:645
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3346,95 +3372,95 @@ msgstr ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
 "observers is cleared."
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:644
-msgid "Debug mode commands"
-msgstr "Debug mode commands"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:647
-msgid ""
-"\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
-"\n"
-msgstr ""
-"\n"
-"Brings up a menu for choosing a scenario to immediately advance to in a "
-"campaign.\n"
-"\n"
-
-#. [topic]: id=debug_commands
-#: data/core/help.cfg:650
-msgid ""
-"\n"
-"Create a unit of the specified type on the selected hex.\n"
-"\n"
-msgstr ""
-"\n"
-"Create a unit of the specified type on the selected hex.\n"
-"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:653
-msgid ""
-"\n"
-"Toggle fog/shroud for the current side.\n"
-"\n"
-msgstr ""
-"\n"
-"Toggle fog/shroud for the current side.\n"
-"\n"
+msgid "Debug mode commands"
+msgstr "Debug mode commands"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:656
 msgid ""
 "\n"
-"Adds the specified amount to the current side’s gold.\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign.\n"
 "\n"
 msgstr ""
 "\n"
-"Adds the specified amount to the current side’s gold.\n"
+"Brings up a menu for choosing a scenario to immediately advance to in a "
+"campaign.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:659
 msgid ""
 "\n"
-"Immediately advances to the next scenario in a campaign.\n"
+"Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
 "\n"
-"Immediately advances to the next scenario in a campaign.\n"
+"Create a unit of the specified type on the selected hex.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:662
 msgid ""
 "\n"
-"Manually set a gamestate variable to value.\n"
+"Toggle fog/shroud for the current side.\n"
 "\n"
 msgstr ""
 "\n"
-"Manually set a gamestate variable to value.\n"
+"Toggle fog/shroud for the current side.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:665
 msgid ""
 "\n"
-"Show a gamestate variable.\n"
+"Adds the specified amount to the current side’s gold.\n"
 "\n"
 msgstr ""
 "\n"
-"Show a gamestate variable.\n"
+"Adds the specified amount to the current side’s gold.\n"
 "\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:668
 msgid ""
 "\n"
+"Immediately advances to the next scenario in a campaign.\n"
+"\n"
+msgstr ""
+"\n"
+"Immediately advances to the next scenario in a campaign.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:671
+msgid ""
+"\n"
+"Manually set a gamestate variable to value.\n"
+"\n"
+msgstr ""
+"\n"
+"Manually set a gamestate variable to value.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:674
+msgid ""
+"\n"
+"Show a gamestate variable.\n"
+"\n"
+msgstr ""
+"\n"
+"Show a gamestate variable.\n"
+"\n"
+
+#. [topic]: id=debug_commands
+#: data/core/help.cfg:677
+msgid ""
+"\n"
 "Manually fire the specified event.\n"
 "\n"
 msgstr ""
@@ -3443,7 +3469,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:671
+#: data/core/help.cfg:680
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3456,7 +3482,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:674
+#: data/core/help.cfg:683
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"

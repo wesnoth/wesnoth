@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Delfadors_Memoirs-1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-05 19:37+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2013-01-12 18:25+0100\n"
 "Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
 "Language-Team: French <wesnoth@ml.free.fr>\n"
@@ -2167,13 +2167,11 @@ msgstr "Terreur au Gué de Parthyn"
 msgid "Find out what is happening at the Ford"
 msgstr "Trouvez ce qu'il se passe au Gué"
 
-# vaincre tous les chefs ennemis != vaincre tous les ennemis /!\ A laisser en fuzzy tant que ce n'est pas vérifié !
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:58
-#: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:666
-#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:187
-#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:150
-msgid "Defeat all enemies"
+#, fuzzy
+#| msgid "Defeat all enemy leaders"
+msgid "Defeat all enemey leaders"
 msgstr "Vaincre tous les chefs ennemis"
 
 #. [side]: type=Orcish Warlord, id=Upgar
@@ -2453,6 +2451,14 @@ msgstr ""
 "Je ne sais pas. Personne n'a pu voir leurs visages et survivre. Tout ce que "
 "j'ai entendu, ce sont les hurlements de mes camarades tandis qu'ils étaient "
 "massacrés."
+
+# vaincre tous les chefs ennemis != vaincre tous les ennemis /!\ A laisser en fuzzy tant que ce n'est pas vérifié !
+#. [objective]: condition=win
+#: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:666
+#: data/campaigns/Delfadors_Memoirs/scenarios/13_The_Return_of_Trouble.cfg:187
+#: data/campaigns/Delfadors_Memoirs/scenarios/19_Showdown_in_the_Northern_Swamp.cfg:150
+msgid "Defeat all enemies"
+msgstr "Vaincre tous les chefs ennemis"
 
 #. [unit]: type=Heavy Infantryman, id=Donc
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_Terror_at_the_Ford_of_Parthyn.cfg:702

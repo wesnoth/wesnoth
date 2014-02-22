@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-16 13:54+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2011-01-01 01:34+0100\n"
 "Last-Translator: Floris Kint <floris.kint@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -3193,7 +3193,7 @@ msgstr "Algemene commando's"
 #. [topic]: id=debug_commands
 #. [topic]: id=general_commands
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:573 data/core/help.cfg:613 data/core/help.cfg:645
+#: data/core/help.cfg:573 data/core/help.cfg:616 data/core/help.cfg:654
 msgid ""
 "These commands can either be issued via the command line by prefixing them "
 "with ':' (as shown here) or via the chat by prefixing them with '/' (press "
@@ -3251,6 +3251,14 @@ msgstr ""
 #: data/core/help.cfg:585
 msgid ""
 "\n"
+"Display the controller status of a side.\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=general_commands
+#: data/core/help.cfg:588
+msgid ""
+"\n"
 "Toggle the display of the current frames per second.\n"
 "\n"
 msgstr ""
@@ -3259,7 +3267,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:588
+#: data/core/help.cfg:591
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -3270,7 +3278,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:591
+#: data/core/help.cfg:594
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -3281,7 +3289,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:594
+#: data/core/help.cfg:597
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -3292,7 +3300,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:597
+#: data/core/help.cfg:600
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -3303,7 +3311,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:600
+#: data/core/help.cfg:603
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -3314,7 +3322,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:603
+#: data/core/help.cfg:606
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -3323,12 +3331,12 @@ msgstr ""
 "Spel opslaan en scenario afsluiten (zonder bevestiging)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:612
+#: data/core/help.cfg:615
 msgid "Multiplayer commands"
 msgstr "Multiplayercommando's"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:615
+#: data/core/help.cfg:618
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3344,7 +3352,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:618
+#: data/core/help.cfg:621
 #, fuzzy
 #| msgid ""
 #| "\n"
@@ -3375,7 +3383,25 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:621
+#: data/core/help.cfg:624
+msgid ""
+"\n"
+"Launch a dialog to assist the host in changing the human controllers of "
+"sides.\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:627
+msgid ""
+"\n"
+"Toggle the idle state for a side. The host may make a side idle after a "
+"network disconnection.\n"
+"\n"
+msgstr ""
+
+#. [topic]: id=mp_commands
+#: data/core/help.cfg:630
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3390,7 +3416,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:624
+#: data/core/help.cfg:633
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3405,7 +3431,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:627
+#: data/core/help.cfg:636
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3418,7 +3444,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:630
+#: data/core/help.cfg:639
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3429,7 +3455,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:633
+#: data/core/help.cfg:642
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3444,7 +3470,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:636
+#: data/core/help.cfg:645
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3455,12 +3481,12 @@ msgstr ""
 "lijst met waarnemers die de mond gesnoerd zijn gewist."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:644
+#: data/core/help.cfg:653
 msgid "Debug mode commands"
 msgstr "Debug modus commando's"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:647
+#: data/core/help.cfg:656
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3473,7 +3499,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:650
+#: data/core/help.cfg:659
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3484,7 +3510,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:653
+#: data/core/help.cfg:662
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3495,7 +3521,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:656
+#: data/core/help.cfg:665
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3506,7 +3532,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:659
+#: data/core/help.cfg:668
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3517,7 +3543,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:662
+#: data/core/help.cfg:671
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3528,7 +3554,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:665
+#: data/core/help.cfg:674
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3539,7 +3565,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:668
+#: data/core/help.cfg:677
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3550,7 +3576,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:671
+#: data/core/help.cfg:680
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3563,7 +3589,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:674
+#: data/core/help.cfg:683
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"

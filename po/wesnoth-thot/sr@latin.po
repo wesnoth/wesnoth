@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-thot\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
+"POT-Creation-Date: 2014-02-22 14:15+0100\n"
 "PO-Revision-Date: 2011-12-10 10:17+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -200,7 +200,7 @@ msgstr "Poraziš li Bašnarka"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:218
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:229
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:159
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:421
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:354
 msgid "Death of Aiglondur"
 msgstr "Nastrada li Aiglondur"
 
@@ -571,7 +571,7 @@ msgstr "Pomogneš li Mart-Taku da porazi Gotrasa"
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/09_Forbidden_Forest.cfg:222
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/10_The_Siege_of_Kal_Kartha.cfg:233
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:163
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:425
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:358
 msgid "Death of Angarthing"
 msgstr "Nastrada li Angarting"
 
@@ -1725,7 +1725,7 @@ msgstr "Kalkartanci"
 
 #. [objective]: condition=win
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/11_The_Court_of_Karrag.cfg:155
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:417
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:350
 msgid "Defeat Karrag"
 msgstr "Poraziš li Karaga"
 
@@ -1937,8 +1937,77 @@ msgstr "Flelin"
 msgid "Lannex"
 msgstr "Laneks"
 
+#. [objective]: condition=lose
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:362
+msgid "Death of Dulcatulos"
+msgstr "Nastrada li Dulkatlos"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:386
+msgid "This place smells of death."
+msgstr "Ovo mesto zaudara smrću."
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:391
+msgid ""
+"It’s been... it’s been years since I’ve been down here. Only Karrag and his "
+"personal followers used this level. Why did I never wonder about that before?"
+msgstr ""
+"Prođoše... prođoše godine otkako sam zašao ovde dole. Samo su Karag i "
+"njegovi lični sledbenici koristili ovaj nivo. Zašto se nijednom ne zamislih "
+"oko toga?"
+
+#. [message]: speaker=Angarthing
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:397
+msgid ""
+"Karrag’s will, and his dark magic. I think he has been casting glamours on "
+"all of you ever since he passed over."
+msgstr ""
+"Karagova volja, i njegova mračna magija. Mislim da je bacao varke na sve "
+"vas, još od trenutka kad se preobratio."
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:402
+msgid ""
+"Where <i>is</i> Karrag? We can’t have been more than seconds behind him."
+msgstr "A <i>gde</i> je Karag? Tek sekunde su prošle kako smo pošli za njim."
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:407
+msgid ""
+"This is the Grand Gallery. There are rows of small chambers along its sides; "
+"he could have slipped into any of them."
+msgstr ""
+"Ovo je Velika dvorana. Redovi malih odaja pružaju se uz njene strane; mogao "
+"je skliznuti u bilo koju od njih."
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:412
+msgid ""
+"More likely he has cloaked himself, thinking to run ahead to gather his "
+"followers. He could be within a spear-cast of us now and we wouldn’t know it "
+"in this gloom."
+msgstr ""
+"Pre će biti da se zamaskirao, s namerom da pođe napred i sakupi svoje "
+"sledbenike. Može nam u ovom času biti u domašaju kopalja, a da to ne znamo u "
+"ovoj pomrčini."
+
+#. [message]: speaker=Dulcatulos
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:421
+msgid "Those are war-drums!"
+msgstr "To su ratni bubnjevi!"
+
+#. [message]: speaker=Aiglondur
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:426
+msgid ""
+"Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
+"hellspawn the lich will summon. AXES UP!"
+msgstr ""
+"Jesu. Karag, saziva svoju vojsku u boj. Samo mračni bogovi znaju kakav će "
+"pakleni izrod kosac prizvati. DIŽI SEKIRE!"
+
 #. [message]: speaker={ID_STRING}
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:236
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:451
 msgid ""
 "Finally! I see someone managed to see through the web of deception thrown up "
 "by that vile Karrag!"
@@ -1947,7 +2016,7 @@ msgstr ""
 "pogani Karag!"
 
 #. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:241
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:456
 msgid ""
 "I thought Karrag’s fight was against the so called ‘dirtgrubbers’. Why would "
 "he keep you, a dwarf captive?"
@@ -1956,7 +2025,7 @@ msgstr ""
 "zatočio tebe, jednog patuljka?"
 
 #. [message]: speaker={ID_STRING}
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:246
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:461
 msgid ""
 "I guess Karrag thought I knew too much. When his masked henchmen started "
 "raiding, plundering and taking all sorts of prisoners — which were sent to "
@@ -1971,7 +2040,7 @@ msgstr ""
 "uspeh da ih pronesem, uzaptiše ma i baciše ovde dole."
 
 #. [message]: speaker={ID_STRING}
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:251
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:466
 msgid ""
 "I gather that he is involved in some sick ritual which requires the blood of "
 "living creatures. These cells seem to be the holding place where he keeps "
@@ -1984,7 +2053,7 @@ msgstr ""
 "patuljaka..."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:256
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:471
 msgid ""
 "Freeing these prisoners is more of a blow to Karrag then we thought, for now "
 "he is unable to continue his foul sorcery."
@@ -1993,78 +2062,9 @@ msgstr ""
 "mišljasmo, jer sada više ne može izvoditi svoje pogano čarobnjaštvo."
 
 #. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:269
+#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:484
 msgid "I sense wrongness. Some greater evil awakens before us."
 msgstr "Osećam iskvarenost. Neko veće zlo budi se pred nama."
-
-#. [objective]: condition=lose
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:429
-msgid "Death of Dulcatulos"
-msgstr "Nastrada li Dulkatlos"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:453
-msgid "This place smells of death."
-msgstr "Ovo mesto zaudara smrću."
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:458
-msgid ""
-"It’s been... it’s been years since I’ve been down here. Only Karrag and his "
-"personal followers used this level. Why did I never wonder about that before?"
-msgstr ""
-"Prođoše... prođoše godine otkako sam zašao ovde dole. Samo su Karag i "
-"njegovi lični sledbenici koristili ovaj nivo. Zašto se nijednom ne zamislih "
-"oko toga?"
-
-#. [message]: speaker=Angarthing
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:464
-msgid ""
-"Karrag’s will, and his dark magic. I think he has been casting glamours on "
-"all of you ever since he passed over."
-msgstr ""
-"Karagova volja, i njegova mračna magija. Mislim da je bacao varke na sve "
-"vas, još od trenutka kad se preobratio."
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:469
-msgid ""
-"Where <i>is</i> Karrag? We can’t have been more than seconds behind him."
-msgstr "A <i>gde</i> je Karag? Tek sekunde su prošle kako smo pošli za njim."
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:474
-msgid ""
-"This is the Grand Gallery. There are rows of small chambers along its sides; "
-"he could have slipped into any of them."
-msgstr ""
-"Ovo je Velika dvorana. Redovi malih odaja pružaju se uz njene strane; mogao "
-"je skliznuti u bilo koju od njih."
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:479
-msgid ""
-"More likely he has cloaked himself, thinking to run ahead to gather his "
-"followers. He could be within a spear-cast of us now and we wouldn’t know it "
-"in this gloom."
-msgstr ""
-"Pre će biti da se zamaskirao, s namerom da pođe napred i sakupi svoje "
-"sledbenike. Može nam u ovom času biti u domašaju kopalja, a da to ne znamo u "
-"ovoj pomrčini."
-
-#. [message]: speaker=Dulcatulos
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:488
-msgid "Those are war-drums!"
-msgstr "To su ratni bubnjevi!"
-
-#. [message]: speaker=Aiglondur
-#: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:493
-msgid ""
-"Aye. Karrag, calling his troops to battle. Only the Dark Gods know what "
-"hellspawn the lich will summon. AXES UP!"
-msgstr ""
-"Jesu. Karag, saziva svoju vojsku u boj. Samo mračni bogovi znaju kakav će "
-"pakleni izrod kosac prizvati. DIŽI SEKIRE!"
 
 #. [message]: speaker=Dranath
 #: data/campaigns/The_Hammer_of_Thursagan/scenarios/12_The_Underlevels.cfg:521
