@@ -859,6 +859,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
 	skip_replay_(disp.video(), _("Quick replays"), gui::button::TYPE_CHECK),
+	blindfold_(disp.video(), _("Enter blindfolded"), gui::button::TYPE_CHECK),
 	game_preferences_(disp.video(), _("Preferences")),
 	quit_game_(disp.video(), _("Quit")),
 	apply_filter_(disp.video(), _("Apply filter"), gui::button::TYPE_CHECK),
@@ -874,6 +875,9 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 {
 	skip_replay_.set_check(preferences::skip_mp_replay());
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
+
+	blindfold_.set_check(preferences::blindfold_replay());
+	blindfold_.set_help_string(_("Don't show the turns of replay"));
 
 	apply_filter_.set_check(preferences::filter_lobby());
 	apply_filter_.set_help_string(_("Enable the games filter. If unchecked all games are shown, regardless of any filter."));
@@ -909,6 +913,7 @@ void lobby::hide_children(bool hide)
 	join_game_.hide(hide);
 	create_game_.hide(hide);
 	skip_replay_.hide(hide);
+	blindfold_.hide(hide);
 	game_preferences_.hide(hide);
 	quit_game_.hide(hide);
 	apply_filter_.hide(hide);
@@ -940,7 +945,8 @@ void lobby::layout_children(const SDL_Rect& rect)
 	             - skip_replay_.location().w - game_preferences_.location().w - btn_space) / 2;
 	if (space < btn_space) space = btn_space;
 	skip_replay_.set_location(create_game_.location().x + create_game_.location().w + space, yscale(yborder));
-	game_preferences_.set_location(quit_game_.location().x - game_preferences_.location().w - space, yscale(yborder));
+	blindfold_.set_location(quit_game_.location().x - game_preferences_.location().w - space , yscale(yborder));
+	game_preferences_.set_location(quit_game_.location().x - game_preferences_.location().w - space + blindfold_.location().w, yscale(yborder));
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
 	games_menu_.set_measurements(client_area().w, client_area().h
@@ -980,6 +986,8 @@ void lobby::process_event()
 	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
 	games_menu_.reset_selection();
 	preferences::set_skip_mp_replay(skip_replay_.checked());
+	preferences::set_blindfold_replay(blindfold_.checked());
+
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
 

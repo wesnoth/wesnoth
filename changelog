@@ -83,15 +83,19 @@ Version 1.11.9+dev:
    * Users now get a warning if they start a multiplayer scenario through the
      title screen load button, as this may cause eras and modifications not
      to work correctly in subsequent scenarios of an mp campaign.
-   * Partial fix for bug #21405: The abort option presented when a player
-     disconnects from a networked game is now a "save and abort" option.
-   * Partial fix for bug #21405: Sides may now be set in an "idle" state when
-     a player disconnects from a network game. This does not give any player
-     control or vision. To proceed with the game, the host must reassign the
-     controller using :control, :droid, or :give_control as usual.
-     Related to this, there are new commands :controller which query the 
-     controller status, and :idle which toggles the idle status.
-
+   * Fix for bug #21405, in a series of features:
+       * The abort option presented to the host when a player disconnects 
+         from a networked game is now a "save and abort" option.
+       * New Idle controller status: Sides may now be set in an "idle" state 
+         by the host when a player disconnects from a network game. This does 
+         not give any player control or vision. To proceed with the game, the 
+         host must reassign the side's controller using :control, :droid, or 
+         :give_control as usual. (give_control existed but was not documented)
+         Related to this, there are new commands :controller which query the 
+         controller status, and :idle which toggles the idle status.
+       * New "Blindfold Replays" option: Observers may check a box in the 
+         lobby so that if they join a game, they will be "blindfolded" and see
+         only a black screen until they are given control of a side.
 Version 1.11.9:
  * Add-ons client:
    * Display the first and last upload dates in the Description dialog.

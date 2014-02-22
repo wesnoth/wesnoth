@@ -35,7 +35,8 @@ LEVEL_RESULT play_game(game_display& disp, game_state& state,
 		const config& game_config,
 		io_type_t io_type=IO_NONE,
 		bool skip_replay = false,
-		bool network_game = false);
+		bool network_game = false,
+		bool blindfold_replay = false);
 
 void play_replay(display& disp, game_state& state,
 		const config& game_config, CVideo& video);
