@@ -25,7 +25,7 @@ class playmp_controller : public playsingle_controller, public events::pump_moni
 public:
 	playmp_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video,
-		bool skip_replay, bool is_host);
+		bool skip_replay, bool blindfold_replay, bool is_host);
 	virtual ~playmp_controller();
 
 	bool is_host() const { return is_host_; }
@@ -65,6 +65,7 @@ protected:
 
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;
+	bool blindfold_replay;
 private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();

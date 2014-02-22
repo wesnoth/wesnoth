@@ -39,18 +39,23 @@ unsigned int playmp_controller::replay_last_turn_ = 0;
 playmp_controller::playmp_controller(const config& level,
 		game_state& state_of_game, const int ticks,
 		const int num_turns, const config& game_config, CVideo& video,
-		bool skip_replay, bool is_host) :
+		bool skip_replay, bool blindfold_replay_, bool is_host) :
 	playsingle_controller(level, state_of_game, ticks, num_turns,
 		game_config, video, skip_replay),
 	turn_data_(NULL),
 	beep_warning_time_(0),
-	network_processing_stopped_(false)
+	network_processing_stopped_(false),
+	blindfold_replay(blindfold_replay_)
 {
 	is_host_ = is_host;
 	// We stop quick replay if play isn't yet past turn 1
 	if ( replay_last_turn_ <= 1)
 	{
 		skip_replay_ = false;
+		blindfold_replay = false;
+	} else if (blindfold_replay) { //this is the blindfold mechanism
+		resources::screen->video().lock_updates(true);
+		LOG_NG << " *** Putting on the blindfold now " << std::endl;
 	}
 }
 
@@ -445,8 +450,15 @@ void playmp_controller::play_network_turn(){
 			}
 
 			if(have_data) {
-				if (skip_replay_ && replay_last_turn_ <= turn()){
+				if (replay_last_turn_ <= turn()){
+					if (skip_replay_) {
 						skip_replay_ = false;
+					}
+					if (blindfold_replay) {
+						resources::screen->video().lock_updates(false);
+						blindfold_replay = false;
+						LOG_NG << " *** Taking off the blindfold now " << std::endl;
+					}
 				}
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
 				if (result == turn_info::PROCESS_RESTART_TURN) {

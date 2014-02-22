@@ -304,7 +304,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
-		io_type_t& io_type, end_level_data &end_level)
+		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
@@ -315,7 +315,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	clear_carryover_WML(state_of_game);
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
-		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
+		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
 
@@ -364,8 +364,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 }
 
 LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
-	const config& game_config, io_type_t io_type, bool skip_replay,
-	bool network_game)
+	const config& game_config, io_type_t io_type, bool skip_replay, 
+	bool network_game, bool blindfold_replay)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -494,7 +494,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level);
+				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
