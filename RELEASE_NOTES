@@ -37,18 +37,27 @@ The pop-up notification displayed when taking a screenshot of the game UI or map
 [/section]
 
 [section="New Support for MP Disconnects"]
-When players disconnect from an MP game, the host has somewhat improved options:
+When players disconnect from an MP game, the host has improved options:
 [list]
 [*] Save and abort: Formerly the host only had an "abort" option here. 
 [*] Set side to idle: An idle side will not move or pass its turns, the host will not gain vision, and control will revert to a human side if the game is saved.
 If play progresses to a side in an idle mode, then to proceed with the game, the host must assign control to a player by any of the usual means.
-[*] "Blindfold Replays" option: If enabled via a lobby checkbox, then if the player joins a game as an observer, they will see only a black screen until they are given control of a side. (This feature is still experimental.)
+[*] "Blindfold Replays" option: If a player checks a box in the lobby, then if they join a game as an observer, they will see only a black screen until they are given control of a side by the host. (This feature is still experimental.)
 [/list]
 There are two new commands, :idle which toggles the idle state, and :controller which is a debugging command querying the current controller type of a side.
 Additionally the :give_control command is now documented -- although it has existed in 1.10, it changed names and somehow became undocumented. This command
 launches a friendly gui to assist with changing side controllers. 
 
-All commands :control, :give_control, :idle, :droid, should interact correctly with idle sides.
+All commands :control, :give_control, :idle, :droid, interact correctly with idle sides.
+[/section]
+
+[section="New Notification Sounds in MP Connect Dialogs"]
+Some players had requested sound notifications for events like:
+[list]
+[*] the game is now full and the host may begin
+[*] the host has begun the game
+[/list]
+Both of these are implemented in 1.11.10.
 [/section]
 
 [section="Example section header"]
