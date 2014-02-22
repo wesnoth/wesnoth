@@ -163,6 +163,13 @@ namespace {
 
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
+
+	if (blindfold_replay) {
+		resources::screen->video().lock_updates(false);
+		blindfold_replay = false;
+		LOG_NG << " *** Taking off the blindfold now " << std::endl;
+	}
+
 	command_disabled_resetter reset_commands;
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
@@ -453,11 +460,6 @@ void playmp_controller::play_network_turn(){
 				if (replay_last_turn_ <= turn()){
 					if (skip_replay_) {
 						skip_replay_ = false;
-					}
-					if (blindfold_replay) {
-						resources::screen->video().lock_updates(false);
-						blindfold_replay = false;
-						LOG_NG << " *** Taking off the blindfold now " << std::endl;
 					}
 				}
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
