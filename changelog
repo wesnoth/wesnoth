@@ -99,6 +99,9 @@ Version 1.11.9+dev:
    * Users now get a warning if they start a multiplayer scenario through the
      title screen load button, as this may cause eras and modifications not
      to work correctly in subsequent scenarios of an mp campaign.
+   * wmllint can now update base terrain aliases in UMC after the changes in
+     versions 1.11.8 and 1.11.9. This conversion is applied to the aliasof,
+     mvt_alias, and def_alias attributes under the [terrain_type] tag.
 
 Version 1.11.9:
  * Add-ons client:
