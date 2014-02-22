@@ -33,6 +33,8 @@ Version 1.11.9+dev:
      screenshot was successfully saved to disk, including options to open it
      in an external application, copy the path to clipboard, or browse the
      screenshots folder.
+   * Force grayscale antialiasing for text rendered using Cairo/Pango (e.g. by
+     GUI2) on Windows to work around ClearType-induced glitches (bug #21648).
    * Added descriptions to the options in Preferences -> Display -> Themes.
 
  * Miscellaneous and bug fixes:

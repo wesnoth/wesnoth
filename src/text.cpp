@@ -122,6 +122,15 @@ ttext::ttext() :
 	cairo_font_options_t *fo = cairo_font_options_create();
 	cairo_font_options_set_hint_style(fo, CAIRO_HINT_STYLE_FULL);
 	cairo_font_options_set_hint_metrics(fo, CAIRO_HINT_METRICS_ON);
+#ifdef _WIN32
+	// Cairo on Windows (at least the latest available version from gtk.org
+	// as of 2014-02-22, version 1.10.2) has issues with ClearType resulting
+	// in glitchy anti-aliasing with CAIRO_ANTIALIAS_SUBPIXEL or
+	// CAIRO_ANTIALIAS_DEFAULT, but not CAIRO_ANTIALIAS_GRAY, so we use that
+	// as a workaround until the Windows package is updated to use a newer
+	// version of Cairo (see Wesnoth bug #21648).
+	cairo_font_options_set_antialias(fo, CAIRO_ANTIALIAS_GRAY);
+#endif
 	pango_cairo_context_set_font_options(context_, fo);
 	cairo_font_options_destroy(fo);
 }
