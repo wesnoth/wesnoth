@@ -22,6 +22,21 @@ Version 1.11.9+dev:
  * Language and i18n:
    * Updated translations: Scottish Gaelic
 
+ * Multiplayer:
+   * Fix for bug #21405, in a series of features:
+     * The abort option presented to the host when a player disconnects
+       from a networked game is now a "save and abort" option.
+     * New Idle controller status: Sides may now be set in an "idle" state
+       by the host when a player disconnects from a network game. This does
+       not give any player control or vision. To proceed with the game, the
+       host must reassign the side's controller using :control, :droid, or
+       :give_control as usual. (give_control existed but was not documented)
+       Related to this, there are new commands :controller which query the
+       controller status, and :idle which toggles the idle status.
+     * New "Blindfold Replays" option: Observers may check a box in the
+       lobby so that if they join a game, they will be "blindfolded" and see
+       only a black screen until they are given control of a side.
+
  * Units:
    * New baseframes for jundi, muharib, batal, qatif-al-nar, mudafi, rasikh
 
