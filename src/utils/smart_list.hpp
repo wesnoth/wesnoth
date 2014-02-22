@@ -578,7 +578,7 @@ inline void smart_list<Data>::sort(const BinaryPredicate & p)
 		// Merge consecutive data-bearing lists. Summing over all iterations of
 		// this (inner) loop, there will be O(n) comparisons made.
 		for ( size_type i = 0; i + step < count; i += 2*step )
-			sorter[i].merge(sorter[i+step]);
+			sorter[i].merge(sorter[i+step], p);
 
 	// The entire (sorted) list is now in the first element of the vector.
 	swap(sorter[0]);
