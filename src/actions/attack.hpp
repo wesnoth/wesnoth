@@ -110,7 +110,7 @@ struct battle_context_unit_stats
 		weapon(NULL), attack_num(0), is_attacker(true), // These are not used in attack prediction.
 		is_poisoned(false), is_slowed(slowed),
 		slows(slows), drains(drain), petrifies(false), plagues(false),
-		poisons(false), backstab_pos(false), swarm(do_swarm), firststrike(first),
+		poisons(false), backstab_pos(false), swarm(do_swarm), firststrike(first), disable(false),
 		experience(0), max_experience(50), level(1), // No units should advance in the attack prediction tests.
 		rounds(berserk ? 30 : 1),
 		hp(std::max<int>(0, hitpoints)), max_hp(std::max<int>(1, maximum_hp)),
