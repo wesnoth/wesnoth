@@ -25,6 +25,7 @@
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
 #include "statistics.hpp"
+#include "sound.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -394,6 +395,7 @@ void wait::start_game()
 	}
 
 	LOG_NW << "starting game\n";
+	sound::play_UI_sound(game_config::sounds::mp_game_begins);
 }
 
 void wait::layout_children(const SDL_Rect& rect)
