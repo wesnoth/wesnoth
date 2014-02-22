@@ -19,6 +19,7 @@
 
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "sdl/compat.hpp"
 
 #include "SDL.h"
 

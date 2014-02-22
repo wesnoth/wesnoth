@@ -21,6 +21,7 @@
 #include "SDL.h"
 
 #include "events.hpp"
+#include "sdl/compat.hpp"
 
 namespace test_utils {
 
