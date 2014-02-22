@@ -115,6 +115,12 @@ namespace game_events
 		typedef iterator const_iterator;
 
 	public: // functions
+		/// Default constructor.
+		/// Note: This explicit definition is required (by the more pedantic
+		///       compilers) in order to declare a default-constructed, static,
+		///       and const variable in t_event_handlers::get(), in handlers.cpp.
+		handler_list() : data_() {}
+
 		const_iterator begin() const           { return iterator(const_cast<list_t &>(data_).begin()); }
 		// The above const_cast is so the iterator can remove obsolete entries.
 		const_iterator end() const             { return iterator(const_cast<list_t &>(data_).end()); }
@@ -126,7 +132,6 @@ namespace game_events
 
 		void clear()                           { data_.clear(); }
 
-		handler_list() {}
 	private:
 		/// No implementation of operator=() since smart_list does not support it.
 		handler_list & operator=(const handler_list &);
