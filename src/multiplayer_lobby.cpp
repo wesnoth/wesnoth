@@ -877,7 +877,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
 
 	blindfold_.set_check(preferences::blindfold_replay());
-	blindfold_.set_help_string(_("Don't show the turns of replay"));
+	blindfold_.set_help_string(_("Do not show replay turns"));
 
 	apply_filter_.set_check(preferences::filter_lobby());
 	apply_filter_.set_help_string(_("Enable the games filter. If unchecked all games are shown, regardless of any filter."));
