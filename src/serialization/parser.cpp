@@ -124,7 +124,13 @@ void parser::operator()()
 			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
 			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
 			{
-				ERR_CF << "Skipping over a utf8 BOM\n";
+				utils::string_map i18n_symbols;
+				std::stringstream ss;
+				ss << tok_->get_start_line() << " " << tok_->get_file();
+				ERR_CF << lineno_string(i18n_symbols,
+										ss.str(),
+										"Skipping over a utf8 BOM at $pos")
+					   << '\n';
 			} else {
 				error(_("Unexpected characters at line start"));
 			}
