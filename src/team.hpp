@@ -32,7 +32,7 @@ namespace wb {
 class team : public savegame::savegame_config
 {
 public:
-	enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
+	enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
 
 private:
 	class shroud_map {
@@ -210,6 +210,7 @@ public:
 	bool is_network_human() const { return info_.controller == NETWORK; }
 	bool is_network_ai() const { return info_.controller == NETWORK_AI; }
 	bool is_ai() const { return info_.controller == AI || is_human_ai(); }
+	bool is_idle() const { return info_.controller == IDLE; }
 	bool is_empty() const { return info_.controller == EMPTY; }
 
 	bool is_local() const { return is_human() || is_ai(); }
@@ -220,6 +221,7 @@ public:
 	void make_network() { info_.controller = NETWORK; }
 	void make_network_ai() { info_.controller = NETWORK_AI; }
 	void make_ai() { info_.controller = AI; }
+	void make_idle() { info_.controller = IDLE; }
 	void change_controller(const std::string& controller);
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
 
