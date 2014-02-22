@@ -652,6 +652,16 @@ void set_skip_mp_replay(bool value)
 	preferences::set("skip_mp_replay", value);
 }
 
+bool blindfold_replay()
+{
+	return preferences::get("blindfold_replay", false);
+}
+
+void set_blindfold_replay(bool value)
+{
+	preferences::set("blindfold_replay", value);
+}
+
 bool countdown()
 {
 	return preferences::get("mp_countdown", false);

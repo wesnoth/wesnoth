@@ -151,6 +151,9 @@ class acquaintance;
 	bool skip_mp_replay();
 	void set_skip_mp_replay(bool value);
 
+	bool blindfold_replay();
+	void set_blindfold_replay(bool value);
+
 	bool countdown();
 	void set_countdown(bool value);
 	int countdown_init_time();
