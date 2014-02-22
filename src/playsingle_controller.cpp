@@ -691,10 +691,7 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 		} else if(current_team().is_idle()) {
 			try{
 				end_turn_enable(false);
-				resources::screen->add_chat_message(time(NULL), "Wesnoth", 0, 
-					"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
-					events::chat_handler::MESSAGE_PUBLIC, false);
-
+				do_idle_notification();
 				before_human_turn(save);
 				while(1) {
 					play_idle_loop();
@@ -916,6 +913,16 @@ void playsingle_controller::play_ai_turn(){
 	gui_->delay(100);
 }
 
+
+/**
+ * Will handle sending a networked notification in descendent classes.
+ */
+void playsingle_controller::do_idle_notification()
+{
+	resources::screen->add_chat_message(time(NULL), "Wesnoth", 0, 
+		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
+		events::chat_handler::MESSAGE_PUBLIC, false);
+}
 
 /**
  * Will handle networked turns in descendent classes.
