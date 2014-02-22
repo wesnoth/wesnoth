@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-02-16 13:54+0100\n"
-"PO-Revision-Date: 2014-01-31 13:04-0000\n"
+"PO-Revision-Date: 2014-02-21 08:38-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : "
 "(n > 2 && n < 20) ? 2 : 3;\n"
-"X-Generator: Poedit 1.6.3\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -76,7 +76,7 @@ msgstr "Faidhlichean teacsa luim mòra"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
 msgid "Confirm deleting saves"
-msgstr "Dearbhaich sguabadh às dha shàbhaladh"
+msgstr "Dearbhaich sguabadh às nan sàbhalaidhean"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:39
@@ -192,8 +192,6 @@ msgstr "Cleachd fòrmat uaireadair 12-uairean"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
 msgstr "Dearbhaich luchdadh aig sàbhaladh bho tionndadh eile"
 
@@ -1342,10 +1340,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:248
 #: data/core/macros/ai_controller.cfg:379
 #: data/core/macros/ai_controller.cfg:383
-#, fuzzy
-#| msgid "side $temp_i"
 msgid "Side $temp_i"
-msgstr "taobh $temp_i"
+msgstr "Taobh $temp_i"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:249
@@ -1356,10 +1352,8 @@ msgstr "taobh $temp_i"
 #. [command]
 #: data/core/macros/ai_controller.cfg:262
 #: data/core/macros/ai_controller.cfg:397
-#, fuzzy
-#| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "$side_i_leader.name (taobh $temp_i|)"
+msgstr "taobh $temp_i ($side_i_leader.name|)"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [value]
@@ -3400,10 +3394,8 @@ msgstr "Clàr-taice"
 
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:81
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to..."
-msgstr "Till dhan chuairt "
+msgstr "Till dha..."
 
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:89 data/themes/unit_box.cfg:118
@@ -3423,7 +3415,7 @@ msgstr "Cuairt deiseil"
 #: data/themes/default.cfg:111 data/themes/unit_box.cfg:315
 #: data/themes/widescreen.cfg:179
 msgid "End Scenario"
-msgstr "Cnàmh-sgeul deis"
+msgstr "Cnàmh-sgeul deiseil"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -4507,7 +4499,7 @@ msgstr[3] "$friends aonad càirdeil air fàire"
 
 #: src/actions/move.cpp:1148
 msgid "(press $hotkey to keep moving)"
-msgstr "(brùth air $hotkey gus leantainn ort leis an gulasad)"
+msgstr "(brùth air $hotkey gus leantainn air adhart leis a’ ghluasad)"
 
 #: src/addon/client.cpp:68
 msgid "Connecting to $server_address|..."
@@ -4592,7 +4584,7 @@ msgstr "Eile"
 
 #: src/addon/info.cpp:177
 msgid "addon_type^(unknown)"
-msgstr "(neo-aithnichte)"
+msgstr "(gun seòrsa)"
 
 #: src/addon/info.cpp:216 src/dialogs.cpp:1485
 #: src/hotkey/command_executor.cpp:631
@@ -4779,7 +4771,7 @@ msgid ""
 msgstr ""
 "Ma sguabas tu às dha ‘$addon|’, bheir seo air falbh an cunntas air "
 "luchdaidhean suas is a-nuas air frithealaiche nan tuilleadan. A bheil thu "
-"cinnteach gu bheil thu airson leantainn ort?"
+"cinnteach gu bheil thu airson leantainn air adhart?"
 
 #: src/addon/manager_ui.cpp:317 src/addon/manager_ui.cpp:336
 #: src/multiplayer_wait.cpp:429
@@ -4973,29 +4965,29 @@ msgstr[3] ""
 #: src/addon/manager_ui.cpp:1101
 msgid "The following add-on could not be deleted properly:"
 msgid_plural "The following add-ons could not be deleted properly:"
-msgstr[0] "Cha b' urrainn dhuinn sguabadh às dhan tuilleadan seo mar bu chòir:"
+msgstr[0] "Cha b' urrainn dhuinn an tuilleadan seo a sguabadh às mar bu chòir:"
 msgstr[1] ""
-"Cha b' urrainn dhuinn sguabadh às dhan dà thuilleadan seo mar bu chòir:"
+"Cha b' urrainn dhuinn na tuilleadain seo a sguabadh às mar bu chòir:"
 msgstr[2] ""
-"Cha b' urrainn dhuinn sguabadh às dha na tuilleadain seo mar bu chòir:"
+"Cha b' urrainn dhuinn na tuilleadain seo a sguabadh às mar bu chòir:"
 msgstr[3] ""
-"Cha b' urrainn dhuinn sguabadh às dha na tuilleadain seo mar bu chòir:"
+"Cha b' urrainn dhuinn na tuilleadain seo a sguabadh às mar bu chòir:"
 
 #: src/addon/manager_ui.cpp:1108
 msgid "Add-on Deleted"
 msgid_plural "Add-ons Deleted"
-msgstr[0] "Chaidh sguabadh às dha tuilleadan"
-msgstr[1] "Chaidh sguabadh às dha dà thuilleadan"
-msgstr[2] "Chaidh sguabadh às dha tuilleadain"
-msgstr[3] "Chaidh sguabadh às dha tuilleadain"
+msgstr[0] "Chaidh an tuilleadan a sguabadh às"
+msgstr[1] "Chaidh na tuilleadain a sguabadh às"
+msgstr[2] "Chaidh na tuilleadain a sguabadh às"
+msgstr[3] "Chaidh na tuilleadain a sguabadh às"
 
 #: src/addon/manager_ui.cpp:1110
 msgid "The following add-on was successfully deleted:"
 msgid_plural "The following add-ons were successfully deleted:"
-msgstr[0] "Chaidh sguabadh às dhan tuilleadan seo gu soirbheachail:"
-msgstr[1] "Chaidh sguabadh às dhan dà thuilleadan seo gu soirbheachail:"
-msgstr[2] "Chaidh sguabadh às dha na tuilleadain seo gu soirbheachail:"
-msgstr[3] "Chaidh sguabadh às dha na tuilleadain seo gu soirbheachail:"
+msgstr[0] "Tha thu air an tuilleadan seo a sguabadh às:"
+msgstr[1] "Tha thu air na tuilleadain seo a sguabadh às:"
+msgstr[2] "Tha thu air na tuilleadain seo a sguabadh às:"
+msgstr[3] "Tha thu air na tuilleadain seo a sguabadh às:"
 
 #: src/attack_prediction_display.cpp:104 src/attack_prediction_display.cpp:236
 msgid "Attacker"
@@ -5219,7 +5211,7 @@ msgstr ""
 
 #: src/dialogs.cpp:980
 msgid "Delete Save"
-msgstr "Sguab às dhan t-sàbhaladh"
+msgstr "Sguab às an sàbhaladh"
 
 #: src/dialogs.cpp:1039
 msgid "Profile"
@@ -5286,20 +5278,18 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/format_time_summary.cpp:65
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
-msgstr "%b %d %y"
+msgstr "%b %d %Y"
 
 #: src/game_config.cpp:353
 msgid "Invalid color range: "
 msgstr "Raon datha mì-dhligheach: "
 
 #: src/game_config_manager.cpp:180
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid "Error loading game configuration files. The game will now exit."
-msgstr "Mearachd a’ luchdadh faidhlichean rèiteachaidh: ‘"
+msgstr ""
+"Mearachd a’ luchdadh faidhlichean rèiteachaidh a’ gheama. Fàgar an geama a-"
+"nis."
 
 #: src/game_config_manager.cpp:279
 msgid "The following add-on had errors and could not be loaded:"
@@ -5317,10 +5307,10 @@ msgstr[3] ""
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "An innis thu seo dha ùghdar no neach-glèidhidh an tuilleadain seo?"
+msgstr[1] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
+msgstr[2] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
+msgstr[3] "An innis thu seo dha ùghdar no neach-glèidhidh nan tuilleadan seo?"
 
 #: src/game_controller.cpp:332 src/game_controller.cpp:920
 #: src/windows_tray_notification.cpp:107
@@ -6412,9 +6402,9 @@ msgid ""
 "instantly take over your computer. You have been warned."
 msgstr ""
 "Tha thu an impis laigse tèarainteachd fhosgladh ann am Beasnad. A bheil thu "
-"cinnteach gu bheil thu airson leantainn ort? Ma tha thu air tuilleadain a "
-"luchdadh a-nuas, na briog air ‘ceart ma-thà’! Bhiodh iad a’ ghabhail air a’ "
-"choimpiutair agad sa bhad. Chaidh rabhadh a thoirt dhut."
+"cinnteach gu bheil thu airson leantainn air adhart? Ma tha thu air "
+"tuilleadain a luchdadh a-nuas, na briog air ‘ceart ma-thà’! Bhiodh iad a’ "
+"ghabhail air a’ choimpiutair agad sa bhad. Chaidh rabhadh a thoirt dhut."
 
 #: src/menu_events.cpp:2961
 msgid "Unsafe mode enabled!"
@@ -6553,7 +6543,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:260
 msgid "Do you want to continue?"
-msgstr "A bheil thu airson leantainn ort?"
+msgstr "A bheil thu airson leantainn air adhart?"
 
 #: src/multiplayer.cpp:262
 msgid "Warning"
@@ -6948,34 +6938,24 @@ msgid "Activate"
 msgstr "Gnìomhaich"
 
 #: src/multiplayer_create.cpp:103
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenarios"
-msgstr "Cnàmh-sgeul"
+msgstr "Cnàmh-sgeulan"
 
 #: src/multiplayer_create.cpp:104
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaigns"
-msgstr "Iomairt"
+msgstr "Iomairtean"
 
 #: src/multiplayer_create.cpp:105
-#, fuzzy
-#| msgid "Close Map"
 msgid "User Maps"
-msgstr "Dùin am mapa"
+msgstr "Mapaichean cleachdaiche"
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
-#| msgid "New Scenario"
 msgid "User Scenarios"
-msgstr "Cnàmh-sgeul ùr"
+msgstr "Cnàmh-sgeulan cleachdaiche"
 
 #: src/multiplayer_create.cpp:107
-#, fuzzy
-#| msgid "Random"
 msgid "Random Maps"
-msgstr "Air thuaiream"
+msgstr "Mapaichean air thuaiream"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
 msgid "No games found."
@@ -7302,8 +7282,8 @@ msgstr "Crìoch a' Gheama"
 #: src/playcampaign.cpp:516
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
-"Tha an cnàmh-sgeul seo deiseil. A bheil thu airson leantainn ort leis an "
-"iomairt?"
+"Tha an cnàmh-sgeul seo deiseil. A bheil thu airson leantainn air adhart leis "
+"an iomairt?"
 
 #: src/playcampaign.cpp:655
 msgid "Unknown scenario: '$scenario|'"
@@ -7652,7 +7632,7 @@ msgstr "Ionnsaighean bunasach: "
 
 #: src/reports.cpp:719
 msgid "Specials: "
-msgstr "Feartan sònraichte: "
+msgstr "Sònraichte: "
 
 #: src/reports.cpp:729
 msgid "Subject to swarm: "
@@ -7680,7 +7660,7 @@ msgstr "Cuir seachad:"
 
 #: src/reports.cpp:813
 msgid "Weapon special: "
-msgstr "Arm sònraichte: "
+msgstr "Ionnsaigh shònraichte: "
 
 #: src/reports.cpp:884
 msgid "None"
@@ -7741,10 +7721,8 @@ msgstr ""
 "bheil thu airson feuchainn ri a luchdadh?"
 
 #: src/savegame.cpp:693
-#, fuzzy
-#| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
-msgstr "Chan e sàbhaladh ioma-chluicheadair a tha seo"
+msgstr "Chan e sàbhaladh ioma-chluicheadair a tha seo."
 
 #: src/savegame.cpp:760
 msgid "The game could not be saved: "
@@ -7771,10 +7749,8 @@ msgid "Saved"
 msgstr "Air a shàbhaladh"
 
 #: src/savegame.cpp:919
-#, fuzzy
-#| msgid "The game has been saved"
 msgid "The game has been saved."
-msgstr "Chaidh an geama a shàbhaladh"
+msgstr "Chaidh an geama a shàbhaladh."
 
 #: src/savegame.cpp:950 src/savegame.cpp:971
 msgid "Could not write to file"
@@ -7801,18 +7777,16 @@ msgid "Unexpected characters at line start"
 msgstr "Caractaran air nach robhar an dùil aig toiseach an loidhne"
 
 #: src/serialization/parser.cpp:147
-#, fuzzy
-#| msgid "Missing closing tag for tag [$tag] at $pos"
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Taga dùinidh a dhìth air an taga [$tag] aig $pos"
+msgstr "Taga dùinidh a dhìth air an taga [$tag]"
 
 #: src/serialization/parser.cpp:148
 msgid "expected at $pos"
-msgstr ""
+msgstr "an dùil air aig $pos"
 
 #: src/serialization/parser.cpp:148 src/serialization/parser.cpp:212
 msgid "opened at $pos"
-msgstr ""
+msgstr "fosgailte aig $pos"
 
 #: src/serialization/parser.cpp:161
 msgid "Unterminated [element] tag"
@@ -7839,18 +7813,13 @@ msgid "Unexpected closing tag"
 msgstr "Taga dùinidh air nach robhar an dùil"
 
 #: src/serialization/parser.cpp:211
-#, fuzzy
-#| msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
 msgstr ""
-"Chaidh taga dùinidh [/$tag2] mì-dhligheach a lorg airson an taga [$tag1] "
-"(air fhosgladh aig $pos)"
+"Chaidh taga dùinidh [/$tag2] mì-dhligheach a lorg airson an taga [$tag1]"
 
 #: src/serialization/parser.cpp:212
-#, fuzzy
-#| msgid "Closed Trapdoor"
 msgid "closed at $pos"
-msgstr "Doras dìomhair dùinte"
+msgstr "dùinte aig $pos"
 
 #: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
@@ -7868,13 +7837,11 @@ msgstr "Comharra-labhairt aig sreang gun chrìochnachadh"
 
 #: src/serialization/parser.cpp:372
 msgid "at $pos"
-msgstr ""
+msgstr "aig $pos"
 
 #: src/serialization/parser.cpp:386
-#, fuzzy
-#| msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "$error, luach ‘$value’, ‘$previous_value’ roimhe aig $pos"
+msgstr "Luach “$value”, “$previous_value” roimhe"
 
 #: src/serialization/string_utils.cpp:568
 msgid "prefix_milli^m"
@@ -8205,10 +8172,8 @@ msgid "Hotkey(s): "
 msgstr "Hotkey(s): "
 
 #: src/time_of_day.cpp:43
-#, fuzzy
-#| msgid "Time of day"
 msgid "Stub Time of Day"
-msgstr "Àm an latha"
+msgstr "Stub àm an latha"
 
 #: src/unit.cpp:2426 src/unit.cpp:2656 src/unit.cpp:2737
 msgid " and "
@@ -8312,17 +8277,14 @@ msgstr "Falaich planaichean airson $player"
 msgid "Whiteboard Options"
 msgstr "Roghainnean a’ bhùird-ghil"
 
+#~ msgid "(side $temp_i|)"
+#~ msgstr "(taobh $temp_i|)"
+
 #~ msgid "' (The game will now exit)"
 #~ msgstr "’ (Sguiridh an geama seo a-nis)"
 
 #~ msgid "ERROR DETAILS:"
 #~ msgstr "MION-FHIOSRACHADH NA MEARACHD:"
-
-#~ msgid "$error, value '$value' at $pos"
-#~ msgstr "$error, luach ‘$value’ aig $pos"
-
-#~ msgid "(side $temp_i|)"
-#~ msgstr "(taobh $temp_i|)"
 
 #~ msgid "cancel"
 #~ msgstr "sguir dheth"
@@ -8889,6 +8851,9 @@ msgstr "Roghainnean a’ bhùird-ghil"
 
 #~ msgid "Unrecognized Command"
 #~ msgstr "Àithne neo-aithnichte"
+
+#~ msgid "$error, value '$value' at $pos"
+#~ msgstr "$error, luach ‘$value’ aig $pos"
 
 #~ msgid "Multiplayer_AI^RCA AI"
 #~ msgstr "IF IomChl"
