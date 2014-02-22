@@ -47,10 +47,9 @@ namespace game_events
 	class event_handler
 	{
 		public:
-			explicit event_handler(const config &cfg, bool is_menu_item = false);
+			event_handler(const config &cfg, bool is_menu_item,
+			              handler_vec::size_type index);
 
-			/// Allows the event_handlers object to record the index of *this.
-			void set_index(handler_vec::size_type index) { index_ = index; }
 			/// The index of *this should only be of interest when controlling iterations.
 			handler_vec::size_type index() const { return index_; }
 

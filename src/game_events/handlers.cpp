@@ -185,8 +185,7 @@ namespace { // Types
 		// Create a new handler.
 		DBG_EH << "inserting event handler for name=" << name <<
 			" with id=" << id << "\n";
-		handler_ptr new_handler(new event_handler(cfg, is_menu_item));
-		new_handler->set_index(active_.size());
+		handler_ptr new_handler(new event_handler(cfg, is_menu_item, active_.size()));
 		active_.push_back(new_handler);
 
 		// File by name.
@@ -426,9 +425,9 @@ handler_ptr handler_list::iterator::operator*()
 
 /* ** event_handler ** */
 
-event_handler::event_handler(const config &cfg, bool imi) :
+event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type index) :
 	first_time_only_(cfg["first_time_only"].to_bool(true)),
-	is_menu_item_(imi), index_(static_cast<size_t>(-1)), cfg_(cfg)
+	is_menu_item_(imi), index_(index), cfg_(cfg)
 {}
 
 /**
