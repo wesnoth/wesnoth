@@ -143,7 +143,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const bool visible_in_shroud,
 					   const bool immutable)
 {
-	terrain_label* res = 0;
+	terrain_label* res = NULL;
 
 	// See if there is already a label in this location for this team.
 	// (We do not use get_label_private() here because we might need
@@ -157,15 +157,13 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		// Found old checking if need to erase it
 		if(text.str().empty())
 		{
-			current_label->second->set_text("");
-			res = NULL;
+			// Erase the old label.
 			delete current_label->second;
-			current_label_map->second.erase(loc);
+			current_label_map->second.erase(current_label);
 
 			// Restore the global label in the same spot, if any.
 			if ( terrain_label* global_label = get_label_private(loc, "") )
 				global_label->recalculate();
-
 		}
 		else
 		{
@@ -179,7 +177,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		terrain_label* global_label = get_label_private(loc, "");
 
 		// Add the new label.
-		terrain_label* label = new terrain_label(text,
+		terrain_label* res = new terrain_label(text,
 				team_name,
 				loc,
 				*this,
@@ -187,14 +185,11 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				visible_in_fog,
 				visible_in_shroud,
 				immutable);
-		add_label(loc,label);
-
-		res = label;
+		add_label(loc, res);
 
 		// Hide the old label.
 		if ( global_label != NULL )
 			global_label->recalculate();
-
 	}
 	return res;
 }
