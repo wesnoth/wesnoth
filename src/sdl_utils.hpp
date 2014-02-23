@@ -46,9 +46,7 @@
 #define SDL_BUTTON_WHEELRIGHT 7
 #endif
 
-namespace {
-const SDL_Rect empty_rect = { 0, 0, 0, 0 };
-}
+extern const SDL_Rect empty_rect;
 
 SDLKey sdl_keysym_from_name(std::string const &keyname);
 

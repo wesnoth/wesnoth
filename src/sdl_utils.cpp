@@ -32,6 +32,8 @@
 
 #include <boost/math/constants/constants.hpp>
 
+const SDL_Rect empty_rect = { 0, 0, 0, 0 };
+
 surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
 {
 	if (SDL_MUSTLOCK(surface_))
