@@ -53,6 +53,10 @@ stringfixes = {
 ("Save and Abort game", "Save and abort game"),
 ),
 
+"wesnoth-editor" : (
+("Choose file", "Choose File"),
+),
+
 "1.10-announcement" : (
 ("roleplaying", "role-playing"),
 ),
