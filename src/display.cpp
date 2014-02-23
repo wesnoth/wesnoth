@@ -1031,6 +1031,16 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 
 		if(start == 6) {
+			// Completely surrounded by fog or shroud. This might have
+			// a special graphic.
+			const std::string name = *image_prefix[v] + "-all.png";
+			if ( image::exists(name) ) {
+				names.push_back(name);
+				// Proceed to the next visibility (fog -> shroud -> clear).
+				continue;
+			}
+			// No special graphic found. We'll just combine some other images
+			// and hope it works out.
 			start = 0;
 		}
 
