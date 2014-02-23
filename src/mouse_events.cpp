@@ -493,7 +493,7 @@ void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*
 			resources::controller->set_button_state(*gui_);
 }
 
-void mouse_handler::select_or_action()
+void mouse_handler::select_or_action(bool browse)
 {
 	if (!resources::game_map->on_board(last_hex_))
 		return;
@@ -505,13 +505,11 @@ void mouse_handler::select_or_action()
 			|| ((selected_u != resources::units->end() && selected_u->side() != side_num_ && clicked_u != resources::units->end())) )
 		select_hex(last_hex_, false);
 	else
-		move_action();
+		move_action(browse);
 }
 
-void mouse_handler::move_action()
+void mouse_handler::move_action(bool browse)
 {
-	bool browse = false;
-
 	// Lock whiteboard activation state to avoid problems due to
 	// its changing while an animation takes place.
 	wb::whiteboard_lock wb_lock = resources::whiteboard->get_activation_state_lock();

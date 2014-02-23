@@ -461,11 +461,11 @@ void play_controller::left_mouse_click(){
 }
 
 void play_controller::select_and_action() {
-	mouse_handler_.select_or_action();
+	mouse_handler_.select_or_action(browse_);
 }
 
 void play_controller::move_action(){
-	mouse_handler_.move_action();
+	mouse_handler_.move_action(browse_);
 }
 
 void play_controller::deselect_hex(){
