@@ -106,6 +106,8 @@ Version 1.11.10:
    * wmllint can now update base terrain aliases in UMC after the changes in
      versions 1.11.8 and 1.11.9. This conversion is applied to the aliasof,
      mvt_alias, and def_alias attributes under the [terrain_type] tag.
+   * Parser warnings when skipping over Unicode BOMs are now printed in stderr
+     with the file location and substitution trail when available.
 
 Version 1.11.9:
  * Add-ons client:
