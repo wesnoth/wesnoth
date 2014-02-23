@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "sdl_utils.hpp"
+#include "sdl/alpha.hpp"
 
 #include "floating_point_emulation.hpp"
 #include "neon.hpp"

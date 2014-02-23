@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
+#include "sdl/alpha.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>

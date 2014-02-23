@@ -26,6 +26,7 @@
 #include "text.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
+#include "sdl/alpha.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"

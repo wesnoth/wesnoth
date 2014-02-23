@@ -354,6 +354,20 @@ endif()
 
 ########### Helper libraries ###############
 
+set(wesnoth-sdl_SRC
+	sdl/alpha.cpp
+)
+
+add_library(wesnoth-sdl
+	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-sdl_SRC}
+)
+
+target_link_libraries(wesnoth-sdl
+	${SDL_LIBRARY}
+)
+
 # The main library is rather huge especially in debug mode, causing quite a bit
 # of overhead packing objects that haven't been changed for quite a while.
 # Attempting to solve the issue with several smaller libraries when adding new
@@ -964,6 +978,7 @@ if(ENABLE_GAME AND ENABLE_TESTS)
 	target_link_libraries(wesnoth-game
 		wesnoth-core
 		wesnoth-lua
+		wesnoth-sdl
 	)
 endif(ENABLE_GAME AND ENABLE_TESTS)
 
