@@ -208,6 +208,8 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 {
 	singleton_ = this;
 
+	blindfold_ctr_ = 0;
+
 	read(level.child_or_empty("display"));
 
 	if(non_interactive()
@@ -574,6 +576,19 @@ void display::change_units(unit_map* umap)
 void display::change_teams(const std::vector<team>* teams)
 {
 	teams_ = teams;
+}
+
+void display::blindfold(bool value)
+{
+	if(value == true)
+		++blindfold_ctr_;
+	else
+		--blindfold_ctr_;
+}
+
+bool display::is_blindfolded() const
+{
+	return blindfold_ctr_ > 0;
 }
 
 

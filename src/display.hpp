@@ -599,6 +599,9 @@ public:
 
 	virtual bool has_time_area() const {return false;}
 
+	void blindfold(bool flag);
+	bool is_blindfolded() const;
+
 	void write(config& cfg) const;
 private:
 	void read(const config& cfg);
@@ -620,6 +623,7 @@ private:
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf);
 
+	int blindfold_ctr_;
 
 protected:
 	//TODO sort
