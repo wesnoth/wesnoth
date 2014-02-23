@@ -304,6 +304,31 @@ void pump()
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+			case SDL_WINDOWEVENT:
+				switch(event.window.event) {
+					case SDL_WINDOWEVENT_ENTER:
+					case SDL_WINDOWEVENT_FOCUS_GAINED:
+						cursor::set_focus(1);
+						break;
+
+					case SDL_WINDOWEVENT_LEAVE:
+					case SDL_WINDOWEVENT_FOCUS_LOST:
+						cursor::set_focus(1);
+						break;
+
+					case SDL_WINDOWEVENT_EXPOSED:
+						update_whole_screen();
+						break;
+
+					case SDL_WINDOWEVENT_RESIZED: {
+						info.resize_dimensions.first = event.window.data1;
+						info.resize_dimensions.second = event.window.data2;
+						break;
+					}
+				}
+				break;
+#else
 			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
 				if((ae.state & SDL_APPMOUSEFOCUS) != 0 || (ae.state & SDL_APPINPUTFOCUS) != 0) {
@@ -313,10 +338,9 @@ void pump()
 			}
 
 			//if the window must be redrawn, update the entire screen
-			case SDL_VIDEOEXPOSE: {
+			case SDL_VIDEOEXPOSE:
 				update_whole_screen();
 				break;
-			}
 
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
@@ -324,6 +348,7 @@ void pump()
 				info.resize_dimensions.second = resize->h;
 				break;
 			}
+#endif
 
 			case SDL_MOUSEMOTION: {
 				//always make sure a cursor is displayed if the
