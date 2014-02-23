@@ -1035,13 +1035,13 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 
 		// Find all the directions overlap occurs from
-		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
+		for (int i = (start+1)%6, cap1 = 0;  i != start && cap1 != 6;  ++cap1) {
 			if(tiles[i] == v) {
 				std::ostringstream stream;
 				std::string name;
 				stream << *image_prefix[v];
 
-				for(int n = 0; v == tiles[i] && n != 6; i = (i+1)%6, ++n) {
+				for (int cap2 = 0;  v == tiles[i] && cap2 != 6;  i = (i+1)%6, ++cap2) {
 					stream << get_direction(i);
 
 					if(!image::exists(stream.str() + ".png")) {
