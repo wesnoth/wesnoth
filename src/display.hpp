@@ -1061,5 +1061,30 @@ protected:
 	static display * singleton_;
 };
 
+struct blindfold
+{
+	blindfold(display& d, bool lock=true) : display_(d), blind(lock) {
+		if(blind) {
+			display_.blindfold(true);
+		}
+	}
+
+	~blindfold() {
+		unblind();
+	}
+
+	void unblind() {
+		if(blind) {
+			display_.blindfold(false);
+			blind = false;
+		}
+	}
+
+private:
+	display& display_;
+	bool blind;
+};
+
+
 #endif
 
