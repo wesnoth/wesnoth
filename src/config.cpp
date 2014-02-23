@@ -1257,12 +1257,13 @@ void config::merge_with(const config& c)
 		if (j != c.children.end()) {
 			unsigned &visits = visitations[tag];
 			if(visits < j->second.size()) {
+				// Get a const config so we do not add attributes.
+				const config & merge_child = *j->second[visits++];
 
-				if ((*j->second[visits])["__remove"].to_bool()) {
-					visits++;
+				if ( merge_child["__remove"].to_bool() ) {
 					to_remove.push_back(*i);
 				} else
-					(i->pos->second[i->index])->merge_with(*j->second[visits++]);
+					(i->pos->second[i->index])->merge_with(merge_child);
 			}
 		}
 	}
