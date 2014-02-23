@@ -48,6 +48,11 @@
 
 stringfixes = {
 
+"wesnoth" : (
+# conversion added in 1.11.10+dev
+("Save and Abort game", "Save and abort game"),
+),
+
 "1.10-announcement" : (
 ("roleplaying", "role-playing"),
 ),
