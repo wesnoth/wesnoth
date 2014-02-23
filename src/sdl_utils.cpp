@@ -90,6 +90,9 @@ SDL_Color create_color(const unsigned char red
 
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	return SDL_GetKeyFromName(keyname.c_str());
+#else
 	static bool initialized = false;
 	typedef std::map<std::string const, SDLKey> keysym_map_t;
 	static keysym_map_t keysym_map;
@@ -108,6 +111,7 @@ SDLKey sdl_keysym_from_name(std::string const &keyname)
 		return it->second;
 	else
 		return SDLK_UNKNOWN;
+#endif
 }
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
