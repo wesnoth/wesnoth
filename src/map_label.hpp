@@ -138,7 +138,8 @@ private:
 	const terrain_label& operator=(const terrain_label&);
 	void clear();
 	void draw();
-	bool visible() const;
+	bool hidden() const;
+	bool viewable() const;
 	std::string cfg_color() const;
 
 	int handle_;

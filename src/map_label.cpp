@@ -22,13 +22,21 @@
 
 #include <boost/foreach.hpp>
 
-//our definition of map labels being obscured is if the tile is obscured,
+//Our definition of map labels being obscured is if the tile is obscured,
 //or the tile below is obscured. This is because in the case where the tile
 //itself is visible, but the tile below is obscured, the bottom half of the
-//tile will still be shrouded, and the label being drawn looks weird
-static bool is_shrouded(const display& disp, const map_location& loc)
+//tile will still be shrouded, and the label being drawn looks weird.
+inline bool is_shrouded(const display& disp, const map_location& loc)
 {
 	return disp.shrouded(loc) || disp.shrouded(map_location(loc.x,loc.y+1));
+}
+
+/// Rather simple test for a hex being fogged.
+/// This only exists because is_shrouded() does. (The code looks nicer if
+/// the test for being fogged looks similar to the test for being shrouded.)
+inline bool is_fogged(const display& disp, const map_location& loc)
+{
+	return disp.fogged(loc);
 }
 
 map_labels::map_labels(const display &disp, const team *team) :
@@ -253,6 +261,11 @@ void map_labels::enable(bool is_enabled) {
 	}
 }
 
+/**
+ * Returns whether or not a global (non-team) label can be shown at a
+ * specified location.
+ * (Global labels are suppressed in favor of team labels.)
+ */
 bool map_labels::visible_global_label(const map_location& loc) const
 {
 	const team_label_map::const_iterator glabels = labels_.find(team_name());
@@ -434,11 +447,9 @@ void terrain_label::recalculate()
 
 void terrain_label::calculate_shroud() const
 {
-
 	if (handle_)
 	{
-        bool shrouded = visible_in_shroud_ || !is_shrouded(parent_->disp(), loc_);
-        font::show_floating_label(handle_, shrouded);
+		font::show_floating_label(handle_, !hidden());
 	}
 }
 
@@ -448,7 +459,7 @@ void terrain_label::draw()
 		return;
 	clear();
 
-	if (!visible())
+	if ( !viewable() )
 		return;
 
 	const map_location loc_nextx(loc_.x+1,loc_.y);
@@ -477,16 +488,46 @@ void terrain_label::draw()
 
 }
 
-bool terrain_label::visible() const
+/**
+ * This is a lightweight test used to see if labels are revealed as a result
+ * of unit actions (i.e. fog/shroud clearing). It should not contain any tests
+ * that are invariant during unit movement (disregarding potential WML events);
+ * those belong in visible().
+ */
+bool terrain_label::hidden() const
 {
-	if (!parent_->enabled()) return false;
-	if ((!visible_in_fog_ && parent_->disp().fogged(loc_))
-        || (!visible_in_shroud_ && parent_->disp().shrouded(loc_))) {
-            return false;
-	}
+	// Fog can hide some labels.
+	if ( !visible_in_fog_ && is_fogged(parent_->disp(), loc_) )
+		return true;
 
-	return ((parent_->team_name() == team_name_ && (!is_observer() || !team::nteams()))
-			|| (team_name_.empty() && parent_->visible_global_label(loc_)));
+	// Shroud can hide some labels.
+	if ( !visible_in_shroud_ && is_shrouded(parent_->disp(), loc_) )
+		return true;
+
+	return false;
+}
+
+/**
+ * This is a test used to see if we should bother with the overhead of actually
+ * creating a label. Conditions that can change during unit movement (disregarding
+ * potential WML events) should not be listed here; they belong in hidden().
+ */
+bool terrain_label::viewable() const
+{
+	if ( !parent_->enabled() )
+		return false;
+
+	// Observers are not privvy to team labels. (Unless this is the map editor,
+	// in which we want location labels initially visible; this is implied by
+	// case team::nteams() being zero.)
+	bool can_see_team_labels = (!is_observer() || !team::nteams());
+
+	// Global labels are shown unless covered by a team label.
+	if ( team_name_.empty() )
+		return !can_see_team_labels || parent_->visible_global_label(loc_);
+
+	// Team labels are only shown to members of the team.
+	return can_see_team_labels  &&  parent_->team_name() == team_name_;
 }
 
 void terrain_label::clear()

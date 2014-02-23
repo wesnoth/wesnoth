@@ -6,6 +6,8 @@ Version 1.11.10+dev:
  * Miscellaneous and bug fixes:
    * Units can no longer be moved in linger mode (bug #21450).
    * Changed: Updated valgrind suppression file.
+   * Labels are now removed when shroud/fog is removed, rather than waiting
+     for a new turn (bug #21434).
 
 Version 1.11.10:
  * Add-ons client:
