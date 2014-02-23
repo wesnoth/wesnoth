@@ -74,6 +74,12 @@ public:
 
 private:
 	void clear_map(label_map &, bool);
+	/// For our private use, a wrapper for get_label() that can return a pointer
+	/// to a non-const terrain_label.
+	terrain_label* get_label_private(const map_location& loc, const std::string& team_name)
+	{ return const_cast<terrain_label*>(get_label(loc, team_name)); }
+	// Note: this is not an overload of get_label() so that we do not block
+	//       outsiders from calling get_label for a non-const map_labels object.
 
 	const display& disp_;
 	const team* team_;

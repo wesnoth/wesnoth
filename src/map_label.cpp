@@ -144,6 +144,10 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const bool immutable)
 {
 	terrain_label* res = 0;
+
+	// See if there is already a label in this location for this team.
+	// (We do not use get_label_private() here because we might need
+	// the label_map as well as the terrain_label.)
 	team_label_map::iterator current_label_map = labels_.find(team_name);
 	label_map::iterator current_label;
 
@@ -158,17 +162,9 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			delete current_label->second;
 			current_label_map->second.erase(loc);
 
-			team_label_map::iterator global_label_map = labels_.find("");
-			label_map::iterator itor;
-			bool update = false;
-			if(global_label_map != labels_.end()) {
-				itor = global_label_map->second.find(loc);
-				update = itor != global_label_map->second.end();
-			}
-			if (update)
-			{
-				itor->second->recalculate();
-			}
+			// Restore the global label in the same spot, if any.
+			if ( terrain_label* global_label = get_label_private(loc, "") )
+				global_label->recalculate();
 
 		}
 		else
@@ -179,14 +175,10 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 	}
 	else if(!text.str().empty())
 	{
-		team_label_map::iterator global_label_map = labels_.find("");
-		label_map::iterator itor;
-		bool update = false;
-		if(global_label_map != labels_.end()) {
-			itor = global_label_map->second.find(loc);
-			update = itor != global_label_map->second.end();
-		}
+		// See if we will be replacing a global label.
+		terrain_label* global_label = get_label_private(loc, "");
 
+		// Add the new label.
 		terrain_label* label = new terrain_label(text,
 				team_name,
 				loc,
@@ -199,10 +191,9 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 
 		res = label;
 
-		if (update)
-		{
-			itor->second->recalculate();
-		}
+		// Hide the old label.
+		if ( global_label != NULL )
+			global_label->recalculate();
 
 	}
 	return res;
