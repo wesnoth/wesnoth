@@ -255,7 +255,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
 			options.push_back(_("Set side to idle"));
-			options.push_back(_("Save and Abort game"));
+			options.push_back(_("Save and abort game"));
 
 			first_observer_option_idx = options.size();
 
