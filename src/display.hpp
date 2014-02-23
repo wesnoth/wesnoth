@@ -325,11 +325,11 @@ public:
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const {
-		return viewpoint_ && viewpoint_->shrouded(loc);
+		return is_blindfolded() || (viewpoint_ && viewpoint_->shrouded(loc));
 	}
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const {
-		return viewpoint_ && viewpoint_->fogged(loc);
+		return is_blindfolded() || (viewpoint_ && viewpoint_->fogged(loc));
 	}
 
 	/**
