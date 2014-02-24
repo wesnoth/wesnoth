@@ -921,8 +921,7 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	while (i != i_end && i->owner != owner) ++i;
 
 	if (i != i_end) {
-		i->message += "\n";
-		i->message += message;
+		i->message = message + "\n" + i->message;
 		send_dbus_notification(connection, i->id, owner, i->message);
 		return;
 	}
