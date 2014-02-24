@@ -2869,8 +2869,8 @@ bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap cons
 		return false;
 	if (see_all)
 		return true;
-	if (is_observer() && resources::screen->is_blindfolded())
-		return false; //since see_all must be false in this case, this means we are a "blind observer"
+	if (resources::screen->is_blindfolded())
+		return false;
 	if (team.is_enemy(side()) && invisible(loc))
 		return false;
 	if (team.is_enemy(side()) && team.fogged(loc))
