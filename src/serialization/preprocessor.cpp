@@ -545,6 +545,12 @@ bool preprocessor_file::get_chunk()
 		// Use reverse iterator to optimize testing
 		if (sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc."))
 			continue;
+		// The preprocessor should catch directly-included files
+		// It interprets them as macros with arguments
+		if (name.find(' ') != std::string::npos) {
+			ERR_CF << "Filename '" << name << "' contains spaces\n";
+			continue;
+		}
 		new preprocessor_file(target_, name);
 		return true;
 	}
