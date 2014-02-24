@@ -65,7 +65,7 @@ protected:
 
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;
-	bool blindfold_replay;
+	blindfold blindfold_;
 private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();

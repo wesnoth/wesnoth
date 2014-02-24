@@ -208,6 +208,8 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 {
 	singleton_ = this;
 
+	blindfold_ctr_ = 0;
+
 	read(level.child_or_empty("display"));
 
 	if(non_interactive()
@@ -574,6 +576,19 @@ void display::change_units(unit_map* umap)
 void display::change_teams(const std::vector<team>* teams)
 {
 	teams_ = teams;
+}
+
+void display::blindfold(bool value)
+{
+	if(value == true)
+		++blindfold_ctr_;
+	else
+		--blindfold_ctr_;
+}
+
+bool display::is_blindfolded() const
+{
+	return blindfold_ctr_ > 0;
 }
 
 
@@ -1842,7 +1857,7 @@ void display::draw_minimap()
 	}
 
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_, selectedHex_.valid() ? &reach_map_ : NULL);
+		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_, (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
 		if(minimap_ == NULL) {
 			return;
 		}
@@ -1890,7 +1905,7 @@ void display::draw_minimap()
 
 void display::draw_minimap_units()
 {
-	if (!preferences::minimap_draw_units()) return;
+	if (!preferences::minimap_draw_units() || is_blindfolded()) return;
 
 	double xscaling = 1.0 * minimap_location_.w / get_map().w();
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();

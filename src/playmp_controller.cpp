@@ -45,16 +45,16 @@ playmp_controller::playmp_controller(const config& level,
 	turn_data_(NULL),
 	beep_warning_time_(0),
 	network_processing_stopped_(false),
-	blindfold_replay(blindfold_replay_)
+	blindfold_(*resources::screen,blindfold_replay_)
 {
 	is_host_ = is_host;
 	// We stop quick replay if play isn't yet past turn 1
 	if ( replay_last_turn_ <= 1)
 	{
 		skip_replay_ = false;
-		blindfold_replay = false;
-	} else if (blindfold_replay) { //this is the blindfold mechanism
-		resources::screen->video().lock_updates(true);
+		blindfold_.unblind();
+	} else if (blindfold_replay_) { 
+		//blindfold_ = resources::screen->video().lock_updates(true);
 		LOG_NG << " *** Putting on the blindfold now " << std::endl;
 	}
 }
@@ -164,10 +164,10 @@ namespace {
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
 
-	if (blindfold_replay) {
-		resources::screen->video().lock_updates(false);
-		blindfold_replay = false;
+	if (resources::screen->is_blindfolded()) {
+		blindfold_.unblind();
 		LOG_NG << " *** Taking off the blindfold now " << std::endl;
+		resources::screen->redraw_everything();
 	}
 
 	command_disabled_resetter reset_commands;

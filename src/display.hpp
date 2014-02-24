@@ -66,7 +66,7 @@ public:
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
-	bool show_everything() const { return !viewpoint_; }
+	bool show_everything() const { return !viewpoint_ && !is_blindfolded(); }
 
 	const std::vector<team>& get_teams() const {return *teams_;}
 
@@ -325,11 +325,11 @@ public:
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const {
-		return viewpoint_ && viewpoint_->shrouded(loc);
+		return is_blindfolded() || (viewpoint_ && viewpoint_->shrouded(loc));
 	}
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const {
-		return viewpoint_ && viewpoint_->fogged(loc);
+		return is_blindfolded() || (viewpoint_ && viewpoint_->fogged(loc));
 	}
 
 	/**
@@ -599,6 +599,9 @@ public:
 
 	virtual bool has_time_area() const {return false;}
 
+	void blindfold(bool flag);
+	bool is_blindfolded() const;
+
 	void write(config& cfg) const;
 private:
 	void read(const config& cfg);
@@ -620,6 +623,7 @@ private:
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf);
 
+	int blindfold_ctr_;
 
 protected:
 	//TODO sort
@@ -1056,6 +1060,31 @@ public:
 protected:
 	static display * singleton_;
 };
+
+struct blindfold
+{
+	blindfold(display& d, bool lock=true) : display_(d), blind(lock) {
+		if(blind) {
+			display_.blindfold(true);
+		}
+	}
+
+	~blindfold() {
+		unblind();
+	}
+
+	void unblind() {
+		if(blind) {
+			display_.blindfold(false);
+			blind = false;
+		}
+	}
+
+private:
+	display& display_;
+	bool blind;
+};
+
 
 #endif
 
