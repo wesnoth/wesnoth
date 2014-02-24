@@ -66,7 +66,7 @@ public:
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
-	bool show_everything() const { return !viewpoint_; }
+	bool show_everything() const { return !viewpoint_ && !is_blindfolded(); }
 
 	const std::vector<team>& get_teams() const {return *teams_;}
 
