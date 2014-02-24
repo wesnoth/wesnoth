@@ -531,7 +531,7 @@ namespace {
 						} else if (!check_names_legal(data)) {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
-									" File or directory names may not contain any of the following characters: '/ \\ : ~'"), sock);
+									" File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'"), sock);
 						} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
 							LOG_CS << "Upload aborted - incorrect passphrase.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
