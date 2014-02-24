@@ -476,14 +476,9 @@ class Parser:
     def handle_command(self, com):
         if com.startswith("line "):
             self.last_wml_line = com[5:]
-            number, rest = self.last_wml_line.split(" ", 1)
-            number = int(number)
-            # Note: filenames contain spaces so this is bogus
-            #_ = self.last_wml_line.split(" ")
-            #self.chunk_start = [(_[i+1], int(_[i])) for i in range(0, len(_), 2)]
-            #self.line_in_file = self.chunk_start[0][1]
-            self.chunk_start = [(rest, number)]
-            self.line_in_file = number
+            _ = self.last_wml_line.split(" ")
+            self.chunk_start = [(_[i+1], int(_[i])) for i in range(0, len(_), 2)]
+            self.line_in_file = self.chunk_start[0][1]
         elif com.startswith("textdomain "):
             self.textdomain = com[11:]
         else:
