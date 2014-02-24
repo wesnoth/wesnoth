@@ -61,7 +61,7 @@ bool addon_name_legal(const std::string& name)
 bool addon_filename_legal(const std::string& name)
 {
 	if(name.empty() || name == "." ||
-	   name.find_first_of("/:\\~ ") != std::string::npos ||
+	   name.find_first_of("/:\\~ \r\n\v\t") != std::string::npos ||
 	   name.find("..") != std::string::npos) {
 		return false;
 	} else {
