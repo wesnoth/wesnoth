@@ -14,62 +14,8 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Improved WML load error reports"]
-The user interface used for displaying WML errors during the content load and initialization phase (also known as “[i]Reading files and creating cache[/i]”) has received a complete makeover in this version:
-
-[list]
-[*]The list of affected add-ons in the summary is now displayed in a bulleted format when applicable, and add-ons are identified by their regular names (or approximations thereof when those are unavailable) instead of the complete paths to their [tt]_main.cfg[/tt] files.
-[*]Users are encouraged to report any errors found to the add-on authors or maintainers. A new button is available above the detailed report to copy it to clipboard, e.g., for including it in a forum post without having to upload large screenshots or checking stderr.
-[*]Parser implementation details (specifically, “value ‘[i]token[/i]’ at [i]location[/i]”) are no longer included in the report since they don’t really help WML authors with debugging.
-[*]Preprocessor substitution traces (“included from”) are now displayed on separate indented lines in order to avoid a “text wall” effect.
-[*]Parser errors for mismatched opening/closing tags and missing closing tags are worded in a clearer fashion.
-[/list]
-
-Additionally, the format used for logging these errors to stderr has changed:
-[list]
-[*]Messages for errors from multiple add-ons are now sent to stderr one by one as they happen, rather than printed all at once at the end of the loading phase.
-[*]The indented format used in the UI is used in stderr now as well.
-[/list]
-[/section]
-
-[section="New screenshots notification dialog"]
-The pop-up notification displayed when taking a screenshot of the game UI or map has been replaced with a small dialog including options to copy the screenshot file path to clipboard, open it with an external application, or browse the screenshots folder in the file manager application defined by the platform.
-[/section]
-
-[section="New Support for MP Disconnects"]
-When players disconnect from an MP game, the host has improved options:
-[list]
-[*] Save and abort: Formerly the host only had an "abort" option here. 
-[*] Set side to idle: An idle side will not move or pass its turns, the host will not gain vision, and control will revert to a human side if the game is saved.
-If play progresses to a side in an idle mode, then to proceed with the game, the host must assign control to a player by any of the usual means.
-[*] "Blindfold Replays" option: If a player checks a box in the lobby, then if they join a game as an observer, they will see only a black screen until they are given control of a side by the host. (This feature is still experimental.)
-[/list]
-There are two new commands, :idle which toggles the idle state, and :controller which is a debugging command querying the current controller type of a side.
-Additionally the :give_control command is now documented -- although it has existed in 1.10, it changed names and somehow became undocumented. This command
-launches a friendly gui to assist with changing side controllers. 
-
-All commands :control, :give_control, :idle, :droid, interact correctly with idle sides.
-[/section]
-
-[section="New Notification Sounds in MP Connect Dialogs"]
-Some players had requested sound notifications for events like:
-[list]
-[*] the game is now full and the host may begin
-[*] the host has begun the game
-[/list]
-Both of these are implemented in 1.11.10.
-[/section]
-
 [section="Example section header"]
 Example contents.
-[/section]
-
-[section="Eastern Invasion"]
-Two scenarios have been redesigned, 'Captured' and 'Training the Ogres' (now called 'Capturing the Ogres').
-[/section]
-
-[section="Son of the Black Eye rebalancing"]
-Rebalancing is now complete. The intention of this effort was to make the campaign significantly more difficult in accordance with its status as an expert campaign, but still reasonably comfortably playable on medium difficulty [i]by an expert player[/i]. On nightmare difficulty, it is now supposed to be very hard. Feedback by players would be very helpful to assess whether these goals were met.
 [/section]
 
 ==========
