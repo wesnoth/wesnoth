@@ -213,7 +213,7 @@ public:
 	bool is_idle() const { return info_.controller == IDLE; }
 	bool is_empty() const { return info_.controller == EMPTY; }
 
-	bool is_local() const { return is_human() || is_ai(); }
+	bool is_local() const { return is_human() || is_ai() || is_idle(); }
 	bool is_network() const { return is_network_human() || is_network_ai(); }
 
 	void make_human() { info_.controller = HUMAN; }
