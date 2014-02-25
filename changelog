@@ -1,11 +1,17 @@
 Version 1.11.10+dev:
  * Add-ons server:
    * Filenames with whitespace in them are no longer allowed.
+ * Campaigns:
+   * Eastern Invasion:
+     * Updated maps for scenario 8, 11, 12, 14, 16 and 17a.
  * Language and i18n:
    * Updated translations:
  * WML engine:
    * Bug #21643: Removing fog from a single hex no longer makes the hex ugly.
    * WML files whose names contain spaces are ignored.
+ * User interface:
+   * Non-team labels no longer remove team labels that were present in the
+     same hex.
  * Miscellaneous and bug fixes:
    * Units can no longer be moved in linger mode (bug #21450).
    * Changed: Updated valgrind suppression file.
