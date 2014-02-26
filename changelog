@@ -9,6 +9,7 @@ Version 1.11.10+dev:
  * WML engine:
    * Bug #21643: Removing fog from a single hex no longer makes the hex ugly.
    * WML files whose names contain spaces are ignored.
+   * Bug #21722: Event handlers with multiple names never fired.
  * User interface:
    * Non-team labels no longer remove team labels that were present in the
      same hex.

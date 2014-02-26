@@ -191,8 +191,11 @@ namespace { // Types
 		// File by name.
 		if ( utils::might_contain_variables(name) )
 			dynamic_.push_back(new_handler);
-		else
-			by_name_[standardize_name(name)].push_back(new_handler);
+		else {
+			std::vector<std::string> name_list = utils::split(name);
+			BOOST_FOREACH( const std::string & single_name, name_list )
+			by_name_[standardize_name(single_name)].push_back(new_handler);
+		}
 		// File by ID.
 		if ( !id.empty() )
 			id_map_[id] = new_handler;
