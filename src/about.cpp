@@ -23,6 +23,7 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "events.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -211,17 +212,17 @@ void show_about(display &disp, const std::string &campaign)
 		image_list = utils::parenthetical_split(images_default, ',');
 	}
 
-	surface map_image;
+	surface map_image, map_image_scaled;
 
 	if(!image_list.empty()) {
-		map_image = scale_surface(image::get_image(image_list[0]), screen->w, screen->h);
+		map_image = image::get_image(image_list[0]);
 	} else {
 		image_list.push_back("");
 	}
 
 	if(!map_image){
         image_list[0]=game_config::images::game_title_background;
-		map_image=scale_surface(image::get_image(image_list[0]), screen->w, screen->h);
+		map_image=image::get_image(image_list[0]);
 	}
 
 	gui::button close(video,_("Close"));
@@ -263,34 +264,28 @@ void show_about(display &disp, const std::string &campaign)
 
 	int first_line_height = 0;
 
-	SDL_Rect frame_area = create_rect(
-			  screen->w * 3 / 32
-			, top_margin
-			, screen->w * 13 / 16
-			, screen->h - top_margin - bottom_margin);
+	SDL_Rect frame_area;
 
 	// we use a dialog to contains the text. Strange idea but at least the style
 	// will be consistent with the titlescreen
 	gui::dialog_frame f(video, "", gui::dialog_frame::titlescreen_style, false);
 
-	// set the layout and get the interior rectangle
-	SDL_Rect text_rect = f.layout(frame_area).interior;
-	text_rect.x += text_left_padding;
-	text_rect.w -= text_left_padding;
-	// make a copy to prevent SDL_blit to change its w and h
-	SDL_Rect text_rect_blit = text_rect;
+	// the text area's dimensions
+	SDL_Rect text_rect;
+	// we'll retain a copy to prevent SDL_blit to change its w and h
+	SDL_Rect text_rect_blit;
+
+	surface text_surf;
 
 	CKey key;
 	bool last_escape;
-
-	surface text_surf = create_compatible_surface(screen, text_rect.w, text_rect.h);
-	SDL_SetAlpha(text_surf, SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
 
 	int image_count = 0;
 	int scroll_speed = 4;	// scroll_speed*50 = speed of scroll in pixel per second
 
 	// Initially redraw all
 	bool redraw_mapimage = true;
+	bool update_dimensions = true;
 	int max_text_width = text_rect.w;
 
 	do {
@@ -302,14 +297,43 @@ void show_about(display &disp, const std::string &campaign)
 				static_cast<int>(text.size())))){
 
 			image_count++;
-			surface temp=scale_surface(image::get_image(image_list[image_count]), screen->w, screen->h);
+			surface temp=image::get_image(image_list[image_count]);
 			map_image=temp?temp:map_image;
 			redraw_mapimage = true;
 		}
 
+		if (update_dimensions) {
+			// rescale the background
+			map_image_scaled = scale_surface(map_image, screen->w, screen->h);
+			screen_rect = create_rect(0, 0, screen->w, screen->h);
+			redraw_mapimage = true;
+
+			// update the frame
+			frame_area = create_rect(
+						  screen->w * 3 / 32
+						, top_margin
+						, screen->w * 13 / 16
+						, screen->h - top_margin - bottom_margin);
+
+			text_rect = f.layout(frame_area).interior;
+
+			// update the text area
+			text_rect.x += text_left_padding;
+			text_rect.w -= text_left_padding;
+			text_rect_blit = text_rect;
+
+			text_surf = create_compatible_surface(screen, text_rect.w, text_rect.h);
+			SDL_SetAlpha(text_surf, SDL_RLEACCEL, SDL_ALPHA_OPAQUE);
+
+			// relocate the close button
+			close.set_location((screen->w/2)-(close.width()/2), screen->h - 30);
+
+			update_dimensions = false;
+		}
+
 		if (redraw_mapimage) {
 			// draw map to screen, thus erasing all text
-			sdl_blit(map_image, NULL, screen, NULL);
+			sdl_blit(map_image_scaled, NULL, screen, NULL);
 			update_rect(screen_rect);
 
 			// redraw the dialog
@@ -376,6 +400,9 @@ void show_about(display &disp, const std::string &campaign)
 		}
 		if (key[SDLK_DOWN] && scroll_speed > 0) {
 			--scroll_speed;
+		}
+		if (screen->w != screen_rect.w || screen->h != screen_rect.h) {
+			update_dimensions = true;
 		}
 
 		events::pump();
