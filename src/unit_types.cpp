@@ -245,7 +245,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 		if(description != NULL) {
 			int inc_damage = lexical_cast<int>(increase_damage);
-			desc << utils::signed_value(inc_damage) << " "
+			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
 	}
@@ -256,7 +256,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 		if(description != NULL) {
 			int inc_attacks = lexical_cast<int>(increase_attacks);
-			desc << utils::signed_value(inc_attacks) << " "
+			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
 		}
 	}
@@ -326,13 +326,13 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 
 		if(increase_damage.empty() == false) {
 			int inc_damage = lexical_cast<int>(increase_damage);
-			desc << utils::signed_value(inc_damage) << " "
+			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
 
 		if(increase_attacks.empty() == false) {
 			int inc_attacks = lexical_cast<int>(increase_attacks);
-			desc << utils::signed_value(inc_attacks) << " "
+			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
 		}
 
