@@ -317,28 +317,25 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	if( !matches_filter(cfg) )
 		return false;
 
-	const std::string& increase_damage = cfg["increase_damage"];
-	const std::string& increase_attacks = cfg["increase_attacks"];
+	// Did the caller want the description?
+	if(description != NULL) {
+		const std::string& increase_damage = cfg["increase_damage"];
+		const std::string& increase_attacks = cfg["increase_attacks"];
 
-	std::stringstream desc;
+		std::stringstream desc;
 
-	if(increase_damage.empty() == false) {
-		if(description != NULL) {
+		if(increase_damage.empty() == false) {
 			int inc_damage = lexical_cast<int>(increase_damage);
 			desc << utils::signed_value(inc_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
-	}
 
-	if(increase_attacks.empty() == false) {
-		if(description != NULL) {
+		if(increase_attacks.empty() == false) {
 			int inc_attacks = lexical_cast<int>(increase_attacks);
 			desc << utils::signed_value(inc_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
 		}
-	}
 
-	if(description != NULL) {
 		*description = desc.str();
 	}
 
