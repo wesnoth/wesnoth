@@ -23,7 +23,6 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
-#include "events.hpp"
 
 #include <boost/foreach.hpp>
 
