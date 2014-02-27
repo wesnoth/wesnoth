@@ -202,7 +202,7 @@ function ca_goto:execution(ai, cfg, self)
     end
 
     if closest_hex then
-        ai.move_full(best_unit, closest_hex[1], closest_hex[2])
+        AH.checked_move_full(ai, best_unit, closest_hex[1], closest_hex[2])
     else
         ai.stopunit_moves(best_unit)
     end

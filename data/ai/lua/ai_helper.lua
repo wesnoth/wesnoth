@@ -144,6 +144,23 @@ function ai_helper.checked_attack(ai, attacker, defender, weapon)
     ai.attack(attacker, defender, weapon)
 end
 
+function ai_helper.checked_move_full(ai, unit, x, y)
+    local check = ai.check_move(unit, x, y)
+
+    if (not check.ok) then
+        -- The following errors are not fatal:
+        -- E_EMPTY_MOVE = 2001
+        -- E_AMBUSHED = 2005
+        -- E_NOT_REACHED_DESTINATION = 2007
+        if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
+            ai_helper.checked_action_error('ai.move_full', check.status)
+            return
+        end
+    end
+
+    ai.move_full(unit, x, y)
+end
+
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)
@@ -1042,7 +1059,7 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai.move_full(unit, next_hop[1], next_hop[2])
+        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
         ai.stopunit_moves(unit)
     end
@@ -1071,7 +1088,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai.move_full(unit, next_hop[1], next_hop[2])
+        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
         ai.stopunit_moves(unit)
     end
