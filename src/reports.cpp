@@ -175,7 +175,7 @@ static config unit_type(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
-	str << span_color(font::unit_type_color) << u->type_name() << naps;
+	str << u->type_name();
 	tooltip << _("Type: ") << "<b>" << u->type_name() << "</b>\n"
 		<< u->unit_description();
 	return text_report(str.str(), tooltip.str(), "unit_" + u->type_id());
@@ -195,7 +195,7 @@ static config unit_race(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
-	str << span_color(font::race_color) << u->race()->name(u->gender()) << naps;
+	str << u->race()->name(u->gender());
 	tooltip << _("Race: ") << "<b>" << u->race()->name(u->gender()) << "</b>";
 	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
 }
@@ -213,6 +213,8 @@ REPORT_GENERATOR(selected_unit_race)
 static config unit_side(const unit* u)
 {
 	if (!u) return report();
+
+	config report;
 	const team &u_team = (*resources::teams)[u->side() - 1];
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
@@ -220,7 +222,13 @@ static config unit_side(const unit* u)
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
-	return image_report(flag_icon + mods, u_team.current_player());
+
+	std::stringstream text;
+	text << u->side();
+
+	add_image(report, flag_icon + mods, u_team.current_player(), "");
+	add_text(report, text.str(), "", "");
+	return report;
 }
 REPORT_GENERATOR(unit_side)
 {
@@ -281,7 +289,7 @@ static config unit_traits(const unit* u)
 	for (unsigned i = 0; i < nb; ++i)
 	{
 		std::ostringstream str, tooltip;
-		str << traits[i];
+		str << span_color(font::weapon_color) << traits[i] << naps;
 		if (i != nb - 1 ) str << ", ";
 		tooltip << _("Trait: ") << "<b>" << traits[i] << "</b>\n"
 			<< descriptions[i];
@@ -340,16 +348,19 @@ static config unit_alignment(const unit* u)
 	std::ostringstream str, tooltip;
 	char const *align = unit_type::alignment_description(u->alignment(), u->gender());
 	std::string align_id = unit_type::alignment_id(u->alignment());
-	int cm = combat_modifier(resources::screen->displayed_unit_hex(), u->alignment(), u->is_fearless());
-	//str << align << " (" << utils::signed_percent(cm) << ")";
+	int cm = combat_modifier(resources::screen->displayed_unit_hex(), u->alignment(),
+			u->is_fearless());
 
-	std::string color("grey");
+	SDL_Color color = font::weapon_color;
+	if (cm != 0)
+		color = (cm > 0) ? font::good_dmg_color : font::bad_dmg_color;
 
-	if (cm != 0) color = (cm > 0) ? "green" : "red";
+	str << align << " (" << span_color(color) << utils::signed_percent(cm)
+		<< naps << ")";
 
-	str << "<span foreground=\"" << color << "\">" << utils::signed_percent(cm) << "</span>\n";
 	tooltip << _("Alignment: ") << "<b>" << align << "</b>\n"
 		<< string_table[align_id + "_description"];
+
 	return text_report(str.str(), tooltip.str(), "time_of_day");
 }
 REPORT_GENERATOR(unit_alignment)
@@ -430,13 +441,13 @@ static config unit_hp(const unit* u)
 		const std::string def_color = unit_helper::resistance_color(res_def);
 		if (res_att == res_def) {
 			line << "<span foreground=\"" << def_color << "\">" << utils::signed_percent(res_def)
-			<< "</span>\n";
+			<< naps << '\n';
 		} else {
 			const std::string att_color = unit_helper::resistance_color(res_att);
 			line << "<span foreground=\"" << att_color << "\">" << utils::signed_percent(res_att)
-			<< "</span>/"
+			<< naps << "/"
 			<< "<span foreground=\"" << def_color << "\">" << utils::signed_percent(res_def)
-			<< "</span>\n";
+			<< naps << '\n';
 			att_def_diff = true;
 		}
 		resistances_table.insert(line.str());
@@ -520,7 +531,7 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 	const t_translation::t_terrain &terrain = map[displayed_unit_hex];
 	int def = 100 - u->defense_modifier(terrain);
 	SDL_Color color = int_to_color(game_config::red_to_green(def));
-	str << span_color(color) << def << "%</span>";
+	str << span_color(color) << def << '%' << naps;
 	tooltip << _("Terrain: ") << "<b>" << map.get_terrain_info(terrain).description() << "</b>\n";
 
 	const t_translation::t_list &underlyings = map.underlying_def_terrain(terrain);
@@ -537,13 +548,13 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 				int t_def = 100 - u->defense_modifier(t);
 				SDL_Color color = int_to_color(game_config::red_to_green(t_def));
 				tooltip << '\t' << map.get_terrain_info(t).description() << ": "
-					<< span_color(color) << t_def << "%</span> "
+					<< span_color(color) << t_def << '%' << naps
 					<< (revert ? _("maximum^max.") : _("minimum^min.")) << '\n';
 			}
 		}
 	}
 
-	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << "%</span></b>";
+	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << '%' << naps << "</b>";
 	return text_report(str.str(), tooltip.str());
 }
 REPORT_GENERATOR(unit_defense)
@@ -564,7 +575,7 @@ static config unit_vision(const unit* u)
 	if (!u) return report();
 	std::ostringstream str;
 	if (u->vision() != u->total_movement()) {
-		str << _("vision: ") << u->vision(); }
+		str << _("VP/JP") << '\n' << u->vision() << '/' << u->jamming(); }
 	return text_report(str.str());
 }
 REPORT_GENERATOR(unit_vision)
@@ -625,7 +636,7 @@ static config unit_moves(const unit* u)
 			} else {
 				tooltip << moves;
 			}
-			tooltip << "</span>\n";
+			tooltip << naps << '\n';
 		}
 	}
 
@@ -679,7 +690,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	else if ( damage < specials_damage )
 		dmg_color = font::bad_dmg_color;
 
-	str << span_color(dmg_color) << damage << naps << span_color(font::weapon_color)
+	str << span_color(dmg_color) << "  " << damage << naps << span_color(font::weapon_color)
 		<< font::weapon_numbers_sep << num_attacks << ' ' << at.name()
 		<< "</span>\n";
 	tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
@@ -741,7 +752,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	std::string range = string_table["range_" + at.range()];
 	std::string lang_type = string_table["type_" + at.type()];
 
-	str << span_color(font::weapon_details_color) << "  "
+	str << span_color(font::weapon_details_color) << "  " << "  "
 		<< range << font::weapon_details_sep
 		<< lang_type << "</span>\n";
 
@@ -808,7 +819,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 		const SDL_Color &details_color = active[i] ? font::weapon_details_color :
 		                                             font::inactive_details_color;
 
-		str << span_color(details_color) << "  " << name << naps << '\n';
+		str << span_color(details_color) << "  " << "  " << name << naps << '\n';
 		std::string help_page = "weaponspecial_" + name.base_str();
 		tooltip << _("Weapon special: ") << "<b>" << name << "</b>";
 		if ( !active[i] )
@@ -976,9 +987,14 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 
 static config unit_weapons(const unit *u)
 {
-	if (!u) return report();
+	if (!u || u->attacks().empty()) return report();
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
 	config res;
+
+	const std::string attack_headline =
+			( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
+	add_text(res,  /*span_color(font::weapon_details_color)
+			+*/ attack_headline /*+ "</span>\n"*/ + '\n', "am arsch");
 
 	BOOST_FOREACH(const attack_type &at, u->attacks())
 	{
@@ -1053,7 +1069,6 @@ REPORT_GENERATOR(unit_profile)
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
-
 
 REPORT_GENERATOR(tod_stats)
 {
@@ -1167,8 +1182,8 @@ static config unit_box_at(const map_location& mouseover_hex)
 		<< _("Liminal units: ") << "<span foreground=\"" << liminal_color << "\">"
 		<< utils::signed_percent(-(abs(bonus))) << "</span>\n";
 
-	std::string local_tod_image  = "themes/unit_box/" + local_tod.image;
-	std::string global_tod_image = "themes/unit_box/" + global_tod.image;
+	std::string local_tod_image  = "themes/classic/" + local_tod.image;
+	std::string global_tod_image = "themes/classic/" + global_tod.image;
 	if (local_tod.bonus_modified > 0) local_tod_image += "~BRIGHTEN()";
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";
