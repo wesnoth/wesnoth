@@ -31,7 +31,7 @@ try:
     version = build_config["VERSION"]
     print "Building Wesnoth version %s" % version
 except KeyError:
-    print "Couldn't determin the Wesnoth version number, bailing out!"
+    print "Couldn't determine the Wesnoth version number, bailing out!"
     sys.exit(1)
 
 #
