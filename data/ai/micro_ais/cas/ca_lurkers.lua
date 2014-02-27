@@ -93,7 +93,7 @@ function ca_lurkers:execution(ai, cfg)
     end
 
     -- If the unit has moves or attacks left at this point, take them away
-    if me and me.valid then ai.stopunit_all(me) end
+    if me and me.valid then AH.checked_stopunit_all(ai, me) end
 end
 
 return ca_lurkers

@@ -45,7 +45,7 @@ function ca_coward:execution(ai, cfg)
 
     -- if no enemies are within reach: keep unit from doing anything and exit
     if not enemies[1] then
-        ai.stopunit_all(unit)
+        AH.checked_stopunit_all(ai, unit)
         return
     end
 
@@ -119,7 +119,7 @@ function ca_coward:execution(ai, cfg)
 
     -- Get unit again, just in case it was killed by a moveto event
     local unit = wesnoth.get_units{ id = cfg.id }[1]
-    if unit then ai.stopunit_all(unit) end
+    if unit then AH.checked_stopunit_all(ai, unit) end
 end
 
 return ca_coward

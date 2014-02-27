@@ -163,7 +163,7 @@ function ca_forest_animals_move:execution(ai, cfg)
 
         -- Finally, take moves away, as only partial move might have been done
         -- Also attacks, as these units never attack
-        if unit and unit.valid then ai.stopunit_all(unit) end
+        if unit and unit.valid then AH.checked_stopunit_all(ai, unit) end
         -- Need this ^ test here because bunnies might have disappeared
     end
 end

@@ -60,7 +60,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
         AH.checked_move(ai, messenger, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(messenger)
+        AH.checked_stopunit_moves(ai, messenger)
     end
 
     -- We also test whether an attack without retaliation or with little damage is possible
@@ -118,7 +118,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     end
 
     -- Finally, make sure unit is really done after this
-    ai.stopunit_attacks(messenger)
+    AH.checked_stopunit_attacks(ai, messenger)
 end
 
 return ca_messenger_move

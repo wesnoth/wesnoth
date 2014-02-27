@@ -173,6 +173,39 @@ function ai_helper.checked_move(ai, unit, x, y)
     ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
 end
 
+function ai_helper.checked_stopunit_all(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_all', check.status)
+        return
+    end
+
+    ai.stopunit_all(unit)
+end
+
+function ai_helper.checked_stopunit_attacks(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_attacks', check.status)
+        return
+    end
+
+    ai.stopunit_attacks(unit)
+end
+
+function ai_helper.checked_stopunit_moves(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_moves', check.status)
+        return
+    end
+
+    ai.stopunit_moves(unit)
+end
+
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)
@@ -1073,7 +1106,7 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
         ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(unit)
+        ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 
@@ -1102,7 +1135,7 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
         ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(unit)
+        ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 

@@ -44,7 +44,7 @@ function ca_stationed_guardian:execution(ai, cfg)
     -- if no enemies are within 'distance': keep unit from doing anything and exit
     if not enemies[1] then
         --print("No enemies close -> sleeping:",unit.id)
-        ai.stopunit_moves(unit)
+        AH.checked_stopunit_moves(ai, unit)
         return
     end
 
@@ -127,7 +127,7 @@ function ca_stationed_guardian:execution(ai, cfg)
 
     -- Get unit again, just in case something was done to it in a 'moveto' or 'attack' event
     local unit = wesnoth.get_units{ id = cfg.id }[1]
-    if unit then ai.stopunit_moves(unit) end
+    if unit then AH.checked_stopunit_moves(ai, unit) end
     -- If there are attacks left and unit ended up next to an enemy, we'll leave this to RCA AI
 end
 

@@ -41,7 +41,7 @@ function ca_forest_animals_tusklet_move:execution(ai, cfg)
         AH.movefull_stopunit(ai, tusklet, best_hex)
 
         -- Also make sure tusklets never attack
-        ai.stopunit_all(tusklet)
+        AH.checked_stopunit_all(ai, tusklet)
     end
 end
 

@@ -61,7 +61,7 @@ function ca_forest_animals_tusker_attack:execution(ai, cfg)
     if (dist == 1) then
         AH.checked_attack(ai, attacker, target)
     else
-        ai.stopunit_attacks(attacker)
+        AH.checked_stopunit_attacks(ai, attacker)
     end
 end
 

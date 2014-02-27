@@ -204,7 +204,7 @@ function ca_goto:execution(ai, cfg, self)
     if closest_hex then
         AH.checked_move_full(ai, best_unit, closest_hex[1], closest_hex[2])
     else
-        ai.stopunit_moves(best_unit)
+        AH.checked_stopunit_moves(ai, best_unit)
     end
 
     -- If release_unit_at_goal= or release_all_units_at_goal= key is set:

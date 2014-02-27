@@ -72,7 +72,7 @@ function ca_bottleneck_attack:execution(ai, cfg, self)
     if self.data.bottleneck_attacks_done then
         local units = wesnoth.get_units { side = wesnoth.current.side, formula = '$this_unit.attacks_left > 0' }
         for i,u in ipairs(units) do
-            ai.stopunit_attacks(u)
+            AH.checked_stopunit_attacks(ai, u)
         end
     else
         AH.checked_attack(ai, self.data.attacker, self.data.target, self.data.weapon)

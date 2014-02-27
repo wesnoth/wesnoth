@@ -114,14 +114,14 @@ function ca_patrol:execution(ai, cfg, self)
         if cfg.one_time_only and
             (patrol.x == waypoints[n_wp][1]) and (patrol.y == waypoints[n_wp][2])
         then
-            ai.stopunit_moves(patrol)
+            AH.checked_stopunit_moves(ai, patrol)
         else  -- otherwise move toward next WP
             local x, y = wesnoth.find_vacant_tile(self.data[patrol.id..'_x'], self.data[patrol.id..'_y'], patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
                 AH.checked_move(ai, patrol, nh[1], nh[2])
             else
-                ai.stopunit_moves(patrol)
+                AH.checked_stopunit_moves(ai, patrol)
             end
         end
     end
@@ -154,7 +154,7 @@ function ca_patrol:execution(ai, cfg, self)
     end
 
     -- Check that patrol is not killed
-    if patrol and patrol.valid then ai.stopunit_all(patrol) end
+    if patrol and patrol.valid then AH.checked_stopunit_all(ai, patrol) end
 end
 
 return ca_patrol

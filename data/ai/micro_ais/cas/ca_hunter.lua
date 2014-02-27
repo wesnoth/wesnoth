@@ -115,7 +115,7 @@ function ca_hunter:execution(ai, cfg)
         if (best_hex[1] ~= unit.x) or (best_hex[2] ~= unit.y) then
             AH.checked_move(ai, unit, best_hex[1], best_hex[2])  -- partial move only
         else  -- If hunter did not move, we need to stop it (also delete the goal)
-            ai.stopunit_moves(unit)
+            AH.checked_stopunit_moves(ai, unit)
             unit.variables.goal_x, unit.variables.goal_y = nil, nil
         end
 
@@ -181,7 +181,7 @@ function ca_hunter:execution(ai, cfg)
     -- If we got here, the only remaining action is resting
     if (unit.variables.hunting_status == 'resting') then
         -- So all we need to do is take moves away from the unit
-        ai.stopunit_moves(unit)
+        AH.checked_stopunit_moves(ai, unit)
 
         -- However, we do also attack the weakest adjacent enemy, if still possible
         hunter_attack_weakest_adj_enemy(ai, unit)

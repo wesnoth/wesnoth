@@ -126,7 +126,7 @@ function ca_hang_out:execution(ai, cfg, self)
     -- respective best locations already, we take moves away from all units
     if (max_rating == -9e99) then
         for i,u in ipairs(units) do
-            ai.stopunit_moves(u)
+            AH.checked_stopunit_moves(ai, u)
             -- Also remove the markers
             u.variables.mai_hangout_moved = nil
         end

@@ -491,7 +491,7 @@ function ca_bottleneck_move:execution(ai, cfg, self)
             }
         end
         for i,u in ipairs(units) do
-            ai.stopunit_moves(u)
+            AH.checked_stopunit_moves(ai, u)
         end
     else
         --print("Moving unit:",self.data.unit.id, self.data.unit.x, self.data.unit.y, " ->", best_hex[1], best_hex[2], " -- turn:", wesnoth.current.turn)
