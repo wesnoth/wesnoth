@@ -173,6 +173,17 @@ function ai_helper.checked_move(ai, unit, x, y)
     ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
 end
 
+function ai_helper.checked_recruit(ai, unit_type, x, y)
+    local check = ai.check_recruit(unit_type, x, y)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.recruit', check.status)
+        return
+    end
+
+    ai.recruit(unit_type, x, y)
+end
+
 function ai_helper.checked_stopunit_all(ai, unit)
     local check = ai.check_stopunit(unit)
 

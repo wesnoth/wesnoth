@@ -103,7 +103,7 @@ end
 function ca_recruit_random:execution(ai, cfg)
     -- Let this function blacklist itself if the chosen recruit is too expensive
     if wesnoth.unit_types[recruit].cost <= wesnoth.sides[wesnoth.current.side].gold then
-        ai.recruit(recruit)
+        AH.checked_recruit(ai, recruit)
     end
 end
 
