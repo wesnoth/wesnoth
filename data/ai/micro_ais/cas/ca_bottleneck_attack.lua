@@ -1,3 +1,4 @@
+local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local H = wesnoth.require "lua/helper.lua"
 
 local ca_bottleneck_attack = {}
@@ -74,7 +75,7 @@ function ca_bottleneck_attack:execution(ai, cfg, self)
             ai.stopunit_attacks(u)
         end
     else
-        ai.attack(self.data.attacker, self.data.target, self.data.weapon)
+        AH.checked_attack(ai, self.data.attacker, self.data.target, self.data.weapon)
     end
 
     self.data.attacker, self.data.target, self.data.weapon = nil, nil, nil

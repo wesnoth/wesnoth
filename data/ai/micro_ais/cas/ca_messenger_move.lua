@@ -100,7 +100,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     end
 
     if max_rating > -9e99 then
-        ai.attack(messenger, best_tar, best_weapon)
+        AH.checked_attack(ai, messenger, best_tar, best_weapon)
     else
         -- Otherwise, always attack enemy on last waypoint
         local waypoint_x = AH.split(cfg.waypoint_x, ",")
@@ -113,7 +113,7 @@ function ca_messenger_move:execution(ai, cfg, self)
         }[1]
 
         if target then
-            ai.attack(messenger, target)
+            AH.checked_attack(ai, messenger, target)
         end
     end
 

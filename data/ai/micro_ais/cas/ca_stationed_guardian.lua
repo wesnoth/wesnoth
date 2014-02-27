@@ -94,7 +94,7 @@ function ca_stationed_guardian:execution(ai, cfg)
             AH.movefull_stopunit(ai, unit, attack_loc)
             -- There should be an ai.check_attack_action() here in case something weird is
             -- done in a 'moveto' event.
-            ai.attack(unit, target)
+            AH.checked_attack(ai, unit, target)
         else  -- otherwise move toward that enemy
             --print("Cannot reach target, moving toward it")
             local reach = wesnoth.find_reach(unit)

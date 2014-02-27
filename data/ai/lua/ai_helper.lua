@@ -126,6 +126,24 @@ function ai_helper.print_ts_delta(start_time, ...)
     return ts, delta
 end
 
+----- AI execution helper functions ------
+
+function ai_helper.checked_action_error(action, error_code)
+        wesnoth.message('Lua AI error', 'If you see this message, something has gone wrong. Please report this on the Wesnoth forums, ideally with a replay and/or savegame.')
+        wesnoth.message('Lua AI error', action .. ' could not be executed. Error code: ' .. error_code)
+end
+
+function ai_helper.checked_attack(ai, attacker, defender, weapon)
+    local check = ai.check_attack(attacker, defender, weapon)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.attack', check.status)
+        return
+    end
+
+    ai.attack(attacker, defender, weapon)
+end
+
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)

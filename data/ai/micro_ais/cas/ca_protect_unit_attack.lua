@@ -127,7 +127,7 @@ function ca_protect_unit_attack:execution(ai, cfg, self)
     local defender = wesnoth.get_unit(self.data.best_attack.target.x, self.data.best_attack.target.y)
 
     AH.movefull_stopunit(ai, attacker, self.data.best_attack.dst.x, self.data.best_attack.dst.y)
-    ai.attack(attacker, defender)
+    AH.checked_attack(ai, attacker, defender)
     self.data.best_attack = nil
 end
 

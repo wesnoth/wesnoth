@@ -504,7 +504,7 @@ function ca_bottleneck_move:execution(ai, cfg, self)
         if self.data.lu_defender then
             --print("Level-up attack",self.data.unit.id, self.data.lu_defender.id, self.data.lu_weapon)
 
-            ai.attack(self.data.unit, self.data.lu_defender, self.data.lu_weapon)
+            AH.checked_attack(ai, self.data.unit, self.data.lu_defender, self.data.lu_weapon)
         end
     end
 

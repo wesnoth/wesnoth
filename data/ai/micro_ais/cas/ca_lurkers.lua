@@ -63,7 +63,7 @@ function ca_lurkers:execution(ai, cfg)
             local rand = math.random(1, rattack_nt_target:size())
             local dst = rattack_nt_target:to_stable_pairs()
             AH.movefull_stopunit(ai, me, dst[rand])
-            ai.attack(dst[rand][1], dst[rand][2], target.x, target.y)
+            AH.checked_attack(ai, me, target)
             attacked = true
             break
        end

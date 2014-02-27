@@ -27,7 +27,7 @@ local function hunter_attack_weakest_adj_enemy(ai, unit)
 
     if target.id then
         --W.message { speaker = unit.id, message = 'Attacking weakest adjacent enemy' }
-        ai.attack(unit, target)
+        AH.checked_attack(ai, unit, target)
         if target.valid then
             return 'attacked'
         else
@@ -157,7 +157,7 @@ function ca_hunter:execution(ai, cfg)
                     if cfg.show_messages then
                         W.message { speaker = unit.id, message = 'Get out of my home!' }
                     end
-                    ai.attack(unit, enemy)
+                    AH.checked_attack(ai, unit, enemy)
                 end
             end
         end

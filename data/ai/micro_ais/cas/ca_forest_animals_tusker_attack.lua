@@ -59,7 +59,7 @@ function ca_forest_animals_tusker_attack:execution(ai, cfg)
     -- If adjacent, attack
     local dist = H.distance_between(attacker.x, attacker.y, target.x, target.y)
     if (dist == 1) then
-        ai.attack(attacker, target)
+        AH.checked_attack(ai, attacker, target)
     else
         ai.stopunit_attacks(attacker)
     end

@@ -106,7 +106,7 @@ function ca_big_animals:execution(ai, cfg)
             end
         end
         if target.id then
-            ai.attack(unit, target)
+            AH.checked_attack(ai, unit, target)
         end
 
     end

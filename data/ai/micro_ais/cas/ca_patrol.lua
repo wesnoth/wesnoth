@@ -148,7 +148,7 @@ function ca_patrol:execution(ai, cfg, self)
 
     if next(enemies) then
         for i,v in ipairs(enemies) do
-            ai.attack(patrol, v)
+            AH.checked_attack(ai, patrol, v)
             break
         end
     end

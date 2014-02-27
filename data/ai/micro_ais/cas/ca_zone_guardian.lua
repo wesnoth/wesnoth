@@ -84,7 +84,7 @@ function ca_zone_guardian:execution(ai, cfg)
             if (best_defense ~= -9e99) then
                 --print("Attack at:",attack_loc[1],attack_loc[2],best_defense)
                 AH.movefull_stopunit(ai, unit, attack_loc)
-                ai.attack(unit, target)
+                AH.checked_attack(ai, unit, target)
             else  -- otherwise move toward that enemy
                 --print("Cannot reach target, moving toward it")
                 local reach = wesnoth.find_reach(unit)
