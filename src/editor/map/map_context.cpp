@@ -273,8 +273,9 @@ void map_context::load_scenario(const config& game_config)
 	}
 
 	BOOST_FOREACH(const config& item, scenario.child_range("item")) {
+		const map_location loc(item);
 		overlays_.insert(std::pair<map_location,
-				overlay>(map_location(item["x"], item["y"]), overlay(item) ));
+				overlay>(loc, overlay(item) ));
 	}
 
 	BOOST_FOREACH(const config& music, scenario.child_range("music")) {
