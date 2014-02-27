@@ -201,11 +201,13 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_MAP_APPLY_MASK, "editor-map-apply-mask", N_("Apply a Mask"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_CREATE_MASK_TO, "editor-map-create-mask-to", N_("Create Mask"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_REFRESH, "editor-refresh", N_("Refresh Display"), false, hotkey::SCOPE_EDITOR, "" },
+
 	{ hotkey::HOTKEY_EDITOR_UPDATE_TRANSITIONS, "editor-update-transitions", N_("Update Terrain Transitions"), false, hotkey::SCOPE_EDITOR, "" },
-		// This item is for binding in the preferences
-	{ hotkey::HOTKEY_EDITOR_TOGGLE_TRANSITIONS, "editor-toggle-transitions", N_("Toggle Terrain Transition Update"), true, hotkey::SCOPE_EDITOR, "" },
-	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", N_("Auto-update Terrain Transitions"), false, hotkey::SCOPE_EDITOR, "" },
-		// The next three are for displaying the different states in the menu
+
+	// This item is for binding in the preferences
+	{ hotkey::HOTKEY_EDITOR_TOGGLE_TRANSITIONS, "editor-toggle-transitions", N_("Toggle Terrain Transition Update"), false, hotkey::SCOPE_EDITOR, "" },
+	// The next three are for displaying the different states in the menu
+	{ hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS, "editor-auto-update-transitions", N_("Auto-update Terrain Transitions"), true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_NO_UPDATE_TRANSITIONS, "editor-no-update-transitions", N_("Auto-update Terrain Transitions: No"), true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_PARTIAL_UPDATE_TRANSITIONS, "editor-partial-update-transitions", N_("Auto-update Terrain Transitions: Partial"), true, hotkey::SCOPE_EDITOR, "" },
 
