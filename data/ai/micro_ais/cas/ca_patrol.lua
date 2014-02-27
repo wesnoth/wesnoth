@@ -119,7 +119,7 @@ function ca_patrol:execution(ai, cfg, self)
             local x, y = wesnoth.find_vacant_tile(self.data[patrol.id..'_x'], self.data[patrol.id..'_y'], patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
-                ai.move(patrol, nh[1], nh[2])
+                AH.checked_move(ai, patrol, nh[1], nh[2])
             else
                 ai.stopunit_moves(patrol)
             end

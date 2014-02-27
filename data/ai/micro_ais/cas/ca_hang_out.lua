@@ -132,7 +132,7 @@ function ca_hang_out:execution(ai, cfg, self)
         end
     else
         -- Otherwise move unit and mark as having been used
-        ai.move(best_unit, best_hex[1], best_hex[2])
+        AH.checked_move(ai, best_unit, best_hex[1], best_hex[2])
         best_unit.variables.mai_hangout_moved = true
     end
 end

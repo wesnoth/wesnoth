@@ -98,7 +98,7 @@ function ca_forest_animals_move:execution(ai, cfg)
                 local rand = math.random(#reachable_terrain)
                 -- This is not a full move, as running away might happen next
                 if (unit.x ~= reachable_terrain[rand][1]) or (unit.y ~= reachable_terrain[rand][2]) then
-                    ai.move(unit, reachable_terrain[rand][1], reachable_terrain[rand][2])
+                    AH.checked_move(ai, unit, reachable_terrain[rand][1], reachable_terrain[rand][2])
                 end
             else  -- or if no close reachable terrain was found, move toward the closest
                 local locs = wesnoth.get_locations(wander_terrain)
@@ -114,7 +114,7 @@ function ca_forest_animals_move:execution(ai, cfg)
                     local next_hop = AH.next_hop(unit, x, y)
                     --print(next_hop[1], next_hop[2])
                     if (unit.x ~= next_hop[1]) or (unit.y ~= next_hop[2]) then
-                        ai.move(unit, next_hop[1], next_hop[2])
+                        AH.checked_move(ai, unit, next_hop[1], next_hop[2])
                     end
                 end
             end

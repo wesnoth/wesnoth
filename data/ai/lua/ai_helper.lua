@@ -144,7 +144,7 @@ function ai_helper.checked_attack(ai, attacker, defender, weapon)
     ai.attack(attacker, defender, weapon)
 end
 
-function ai_helper.checked_move_full(ai, unit, x, y)
+function ai_helper.checked_move_core(ai, unit, x, y, move_type)
     local check = ai.check_move(unit, x, y)
 
     if (not check.ok) then
@@ -153,12 +153,24 @@ function ai_helper.checked_move_full(ai, unit, x, y)
         -- E_AMBUSHED = 2005
         -- E_NOT_REACHED_DESTINATION = 2007
         if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
-            ai_helper.checked_action_error('ai.move_full', check.status)
+            ai_helper.checked_action_error(move_type, check.status)
             return
         end
     end
 
-    ai.move_full(unit, x, y)
+    if (move_type == 'ai.move_full') then
+        ai.move_full(unit, x, y)
+    else
+        ai.move(unit, x, y)
+    end
+end
+
+function ai_helper.checked_move_full(ai, unit, x, y)
+    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
+end
+
+function ai_helper.checked_move(ai, unit, x, y)
+    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
 end
 
 ----- General functionality and maths helper functions ------
@@ -1041,7 +1053,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
 
     if (max_rating > -9e99) then
         --W.message { speaker = unit.id, message = 'Moving out of way' }
-        ai.move(unit, best_hex[1], best_hex[2])
+        ai_helper.checked_move(ai, unit, best_hex[1], best_hex[2])
     end
 end
 

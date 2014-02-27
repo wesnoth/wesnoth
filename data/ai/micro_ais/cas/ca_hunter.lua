@@ -113,7 +113,7 @@ function ca_hunter:execution(ai, cfg)
         --AH.put_labels(reach_map)
 
         if (best_hex[1] ~= unit.x) or (best_hex[2] ~= unit.y) then
-            ai.move(unit, best_hex[1], best_hex[2])  -- partial move only
+            AH.checked_move(ai, unit, best_hex[1], best_hex[2])  -- partial move only
         else  -- If hunter did not move, we need to stop it (also delete the goal)
             ai.stopunit_moves(unit)
             unit.variables.goal_x, unit.variables.goal_y = nil, nil

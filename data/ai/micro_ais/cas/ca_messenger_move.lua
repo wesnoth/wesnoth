@@ -58,7 +58,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     --print(next_hop[1], next_hop[2])
 
     if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
-        ai.move(messenger, next_hop[1], next_hop[2])
+        AH.checked_move(ai, messenger, next_hop[1], next_hop[2])
     else
         ai.stopunit_moves(messenger)
     end

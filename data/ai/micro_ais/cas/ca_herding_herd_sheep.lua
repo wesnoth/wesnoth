@@ -86,7 +86,7 @@ function ca_herding_herd_sheep:execution(ai, cfg)
         ai.stopunit_moves(best_dog)
     else
         --print('Dog moving to herd sheep')
-        ai.move(best_dog, best_hex[1], best_hex[2])  -- partial move only
+        AH.checked_move(ai, best_dog, best_hex[1], best_hex[2])  -- partial move only
     end
 end
 
