@@ -114,8 +114,10 @@ function ca_hunter:execution(ai, cfg)
 
         if (best_hex[1] ~= unit.x) or (best_hex[2] ~= unit.y) then
             AH.checked_move(ai, unit, best_hex[1], best_hex[2])  -- partial move only
+            if (not unit) or (not unit.valid) then return end
         else  -- If hunter did not move, we need to stop it (also delete the goal)
             AH.checked_stopunit_moves(ai, unit)
+            if (not unit) or (not unit.valid) then return end
             unit.variables.goal_x, unit.variables.goal_y = nil, nil
         end
 
@@ -149,6 +151,7 @@ function ca_hunter:execution(ai, cfg)
         if next_hop then
             --print(next_hop[1], next_hop[2])
             AH.movefull_stopunit(ai, unit, next_hop)
+            if (not unit) or (not unit.valid) then return end
 
             -- If there's an enemy on the 'home' hex and we got right next to it, attack that enemy
             if (H.distance_between(cfg.home_x, cfg.home_y, next_hop[1], next_hop[2]) == 1) then
@@ -158,15 +161,17 @@ function ca_hunter:execution(ai, cfg)
                         W.message { speaker = unit.id, message = 'Get out of my home!' }
                     end
                     AH.checked_attack(ai, unit, enemy)
+                    if (not unit) or (not unit.valid) then return end
                 end
             end
         end
 
         -- We also attack the weakest adjacent enemy, if still possible
         hunter_attack_weakest_adj_enemy(ai, unit)
+        if (not unit) or (not unit.valid) then return end
 
         -- If the unit got home, start the resting counter
-        if unit.valid and (unit.x == cfg.home_x) and (unit.y == cfg.home_y) then
+        if (unit.x == cfg.home_x) and (unit.y == cfg.home_y) then
             unit.variables.hunting_status = 'resting'
             unit.variables.resting_until = wesnoth.current.turn + (cfg.rest_turns or 3)
             if cfg.show_messages then
@@ -182,12 +187,14 @@ function ca_hunter:execution(ai, cfg)
     if (unit.variables.hunting_status == 'resting') then
         -- So all we need to do is take moves away from the unit
         AH.checked_stopunit_moves(ai, unit)
+        if (not unit) or (not unit.valid) then return end
 
         -- However, we do also attack the weakest adjacent enemy, if still possible
         hunter_attack_weakest_adj_enemy(ai, unit)
+        if (not unit) or (not unit.valid) then return end
 
         -- If this is the last turn of resting, we also remove the status and turn variable
-        if unit.valid and (unit.hitpoints >= unit.max_hitpoints) and (unit.variables.resting_until <= wesnoth.current.turn) then
+        if (unit.hitpoints >= unit.max_hitpoints) and (unit.variables.resting_until <= wesnoth.current.turn) then
             unit.variables.hunting_status = nil
             unit.variables.resting_until = nil
             if cfg.show_messages then

@@ -63,11 +63,13 @@ function ca_lurkers:execution(ai, cfg)
             local rand = math.random(1, rattack_nt_target:size())
             local dst = rattack_nt_target:to_stable_pairs()
             AH.movefull_stopunit(ai, me, dst[rand])
+            if (not me) or (not me.valid) then return end
             AH.checked_attack(ai, me, target)
             attacked = true
             break
        end
     end
+    if (not me) or (not me.valid) then return end
 
     -- If unit has moves left (that is, it didn't attack), go to random wander terrain hex
     -- Check first that unit wasn't killed in the attack
@@ -91,9 +93,10 @@ function ca_lurkers:execution(ai, cfg)
         end
         AH.movefull_stopunit(ai, me, dst)
     end
+    if (not me) or (not me.valid) then return end
 
     -- If the unit has moves or attacks left at this point, take them away
-    if me and me.valid then AH.checked_stopunit_all(ai, me) end
+    AH.checked_stopunit_all(ai, me)
 end
 
 return ca_lurkers

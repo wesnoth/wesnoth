@@ -124,6 +124,7 @@ function ca_patrol:execution(ai, cfg, self)
                 AH.checked_stopunit_moves(ai, patrol)
             end
         end
+        if (not patrol) or (not patrol.valid) then return end
     end
 
     -- Attack unit on the last waypoint under all circumstances if cfg.one_time_only is set
@@ -152,9 +153,9 @@ function ca_patrol:execution(ai, cfg, self)
             break
         end
     end
+    if (not patrol) or (not patrol.valid) then return end
 
-    -- Check that patrol is not killed
-    if patrol and patrol.valid then AH.checked_stopunit_all(ai, patrol) end
+    AH.checked_stopunit_all(ai, patrol)
 end
 
 return ca_patrol

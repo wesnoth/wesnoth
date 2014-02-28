@@ -182,7 +182,7 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                         W.label { x = w.x, y = w.y, text = "" }
                     end
                     AH.movefull_stopunit(ai, w, best_hex)
-                    if cfg.show_pack_number then
+                    if cfg.show_pack_number and w and w.valid then
                         WMPF.color_label(w.x, w.y, pack_number)
                     end
                 end

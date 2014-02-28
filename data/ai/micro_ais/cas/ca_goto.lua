@@ -206,6 +206,7 @@ function ca_goto:execution(ai, cfg, self)
     else
         AH.checked_stopunit_moves(ai, best_unit)
     end
+    if (not best_unit) or (not best_unit.valid) then return end
 
     -- If release_unit_at_goal= or release_all_units_at_goal= key is set:
     -- Check if the unit made it to one of the goal hexes

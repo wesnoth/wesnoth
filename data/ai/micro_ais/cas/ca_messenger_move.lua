@@ -62,6 +62,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     else
         AH.checked_stopunit_moves(ai, messenger)
     end
+    if (not messenger) or (not messenger.valid) then return end
 
     -- We also test whether an attack without retaliation or with little damage is possible
     if (not H.get_child(messenger.__cfg, 'attack')) then return end
@@ -116,6 +117,7 @@ function ca_messenger_move:execution(ai, cfg, self)
             AH.checked_attack(ai, messenger, target)
         end
     end
+    if (not messenger) or (not messenger.valid) then return end
 
     -- Finally, make sure unit is really done after this
     AH.checked_stopunit_attacks(ai, messenger)

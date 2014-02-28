@@ -499,6 +499,7 @@ function ca_bottleneck_move:execution(ai, cfg, self)
         if (self.data.unit.x ~= self.data.hex[1]) or (self.data.unit.y ~= self.data.hex[2]) then  -- test needed for level-up move
             AH.checked_move(ai, self.data.unit, self.data.hex[1], self.data.hex[2])   -- don't want full move, as this might be stepping out of the way
         end
+        if (not self.data.unit) or (not self.data.unit.valid) then return end
 
         -- If this is a move for a level-up attack, do the attack also
         if self.data.lu_defender then

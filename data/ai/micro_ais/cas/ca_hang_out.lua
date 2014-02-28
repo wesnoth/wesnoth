@@ -128,12 +128,12 @@ function ca_hang_out:execution(ai, cfg, self)
         for i,u in ipairs(units) do
             AH.checked_stopunit_moves(ai, u)
             -- Also remove the markers
-            u.variables.mai_hangout_moved = nil
+            if u and u.valid then u.variables.mai_hangout_moved = nil end
         end
     else
         -- Otherwise move unit and mark as having been used
         AH.checked_move(ai, best_unit, best_hex[1], best_hex[2])
-        best_unit.variables.mai_hangout_moved = true
+        if best_unit and best_unit.valid then best_unit.variables.mai_hangout_moved = true end
     end
 end
 

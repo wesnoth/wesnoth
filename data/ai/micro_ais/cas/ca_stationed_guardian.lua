@@ -92,8 +92,8 @@ function ca_stationed_guardian:execution(ai, cfg)
         if (best_defense ~= -9e99) then
             --print("Attack at:",attack_loc[1],attack_loc[2],best_defense)
             AH.movefull_stopunit(ai, unit, attack_loc)
-            -- There should be an ai.check_attack_action() here in case something weird is
-            -- done in a 'moveto' event.
+            if (not unit) or (not unit.valid) then return end
+            if (not target) or (not target.valid) then return end
             AH.checked_attack(ai, unit, target)
         else  -- otherwise move toward that enemy
             --print("Cannot reach target, moving toward it")
@@ -125,9 +125,9 @@ function ca_stationed_guardian:execution(ai, cfg)
         AH.movefull_stopunit(ai, unit, nh)
     end
 
-    -- Get unit again, just in case something was done to it in a 'moveto' or 'attack' event
-    local unit = wesnoth.get_units{ id = cfg.id }[1]
-    if unit then AH.checked_stopunit_moves(ai, unit) end
+    if (not unit) or (not unit.valid) then return end
+
+    AH.checked_stopunit_moves(ai, unit)
     -- If there are attacks left and unit ended up next to an enemy, we'll leave this to RCA AI
 end
 

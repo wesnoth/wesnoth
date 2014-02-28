@@ -83,8 +83,10 @@ function ca_big_animals:execution(ai, cfg)
 
         if (best_hex[1] ~= unit.x) or (best_hex[2] ~= unit.y) then
             AH.checked_move(ai, unit, best_hex[1], best_hex[2])  -- partial move only
+            if (not unit) or (not unit.valid) then return end
         else  -- If animal did not move, we need to stop it (also delete the goal)
             AH.checked_stopunit_moves(ai, unit)
+            if (not unit) or (not unit.valid) then return end
             unit.variables.goal_x = nil
             unit.variables.goal_y = nil
         end
@@ -108,7 +110,6 @@ function ca_big_animals:execution(ai, cfg)
         if target.id then
             AH.checked_attack(ai, unit, target)
         end
-
     end
 end
 

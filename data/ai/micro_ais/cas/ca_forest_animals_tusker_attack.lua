@@ -55,6 +55,8 @@ function ca_forest_animals_tusker_attack:execution(ai, cfg)
     end)
     --print('attacker', attacker.x, attacker.y, ' -> ', best_hex[1], best_hex[2])
     AH.movefull_stopunit(ai, attacker, best_hex)
+    if (not attacker) or (not attacker.valid) then return end
+    if (not target) or (not target.valid) then return end
 
     -- If adjacent, attack
     local dist = H.distance_between(attacker.x, attacker.y, target.x, target.y)

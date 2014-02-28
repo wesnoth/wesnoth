@@ -122,9 +122,14 @@ function ca_forest_animals_move:execution(ai, cfg)
 
         -- Now we check for close enemies again, as we might just have moved within reach of some
         local close_enemies = {}
-        for j,e in ipairs(enemies) do
-            if (H.distance_between(unit.x, unit.y, e.x, e.y) <= unit.max_moves+1) then
-                table.insert(close_enemies, e)
+
+        -- We use a trick here to exclude the case when the unit might have been
+        -- removed in an event above
+        if unit and unit.valid then
+            for j,e in ipairs(enemies) do
+                if (H.distance_between(unit.x, unit.y, e.x, e.y) <= unit.max_moves+1) then
+                    table.insert(close_enemies, e)
+                end
             end
         end
         --print('  #close_enemies after move', #close_enemies, #enemies, unit.id)
@@ -163,7 +168,6 @@ function ca_forest_animals_move:execution(ai, cfg)
         -- Finally, take moves away, as only partial move might have been done
         -- Also attacks, as these units never attack
         if unit and unit.valid then AH.checked_stopunit_all(ai, unit) end
-        -- Need this ^ test here because bunnies might have disappeared
     end
 end
 
