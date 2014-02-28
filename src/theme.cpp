@@ -458,26 +458,26 @@ theme::label::label(const config& cfg) :
 
 	if (cfg.has_attribute("font_rgb"))
 	{
-	std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
-	  if(3 <= rgb_vec.size()){
-	    std::vector<std::string>::iterator c=rgb_vec.begin();
-	    int r,g,b;
-	    r = (atoi(c->c_str()));
-	    ++c;
-	    if(c != rgb_vec.end()){
-	      g = (atoi(c->c_str()));
-	      ++c;
-	    }else{
-	      g=0;
-	    }
-	    if(c != rgb_vec.end()){
-	      b=(atoi(c->c_str()));
-	    }else{
-	      b=0;
-	    }
-	    font_rgb_ = (((r<<16) & 0x00FF0000) + ((g<<8) & 0x0000FF00) + ((b) & 0x000000FF));
-	    font_rgb_set_=true;
-	  }
+		std::vector<std::string> rgb_vec = utils::split(cfg["font_rgb"]);
+		if (3 <= rgb_vec.size()) {
+			std::vector<std::string>::iterator c=rgb_vec.begin();
+			int r,g,b;
+			r = (atoi(c->c_str()));
+			++c;
+			if (c != rgb_vec.end()) {
+				g = (atoi(c->c_str()));
+				++c;
+			} else {
+				g=0;
+			}
+			if (c != rgb_vec.end()) {
+				b=(atoi(c->c_str()));
+			} else {
+				b=0;
+			}
+			font_rgb_ = (((r<<16) & 0x00FF0000) + ((g<<8) & 0x0000FF00) + ((b) & 0x000000FF));
+			font_rgb_set_=true;
+		}
 	}
 }
 

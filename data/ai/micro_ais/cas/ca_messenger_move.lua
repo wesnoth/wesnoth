@@ -58,10 +58,11 @@ function ca_messenger_move:execution(ai, cfg, self)
     --print(next_hop[1], next_hop[2])
 
     if next_hop and ((next_hop[1] ~= messenger.x) or (next_hop[2] ~= messenger.y)) then
-        ai.move(messenger, next_hop[1], next_hop[2])
+        AH.checked_move(ai, messenger, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(messenger)
+        AH.checked_stopunit_moves(ai, messenger)
     end
+    if (not messenger) or (not messenger.valid) then return end
 
     -- We also test whether an attack without retaliation or with little damage is possible
     if (not H.get_child(messenger.__cfg, 'attack')) then return end
@@ -100,7 +101,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     end
 
     if max_rating > -9e99 then
-        ai.attack(messenger, best_tar, best_weapon)
+        AH.checked_attack(ai, messenger, best_tar, best_weapon)
     else
         -- Otherwise, always attack enemy on last waypoint
         local waypoint_x = AH.split(cfg.waypoint_x, ",")
@@ -113,12 +114,13 @@ function ca_messenger_move:execution(ai, cfg, self)
         }[1]
 
         if target then
-            ai.attack(messenger, target)
+            AH.checked_attack(ai, messenger, target)
         end
     end
+    if (not messenger) or (not messenger.valid) then return end
 
     -- Finally, make sure unit is really done after this
-    ai.stopunit_attacks(messenger)
+    AH.checked_stopunit_attacks(ai, messenger)
 end
 
 return ca_messenger_move

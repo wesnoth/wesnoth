@@ -79,7 +79,10 @@ function ca_simple_attack:execution(ai, cfg, self)
     local defender = wesnoth.get_unit(self.data.attack.target.x, self.data.attack.target.y)
 
     AH.movefull_outofway_stopunit(ai, attacker, self.data.attack.dst.x, self.data.attack.dst.y)
-    ai.attack(attacker, defender, (cfg.weapon or -1))
+    if (not attacker) or (not attacker.valid) then return end
+    if (not defender) or (not defender.valid) then return end
+
+    AH.checked_attack(ai, attacker, defender, (cfg.weapon or -1))
     self.data.attack = nil
 end
 

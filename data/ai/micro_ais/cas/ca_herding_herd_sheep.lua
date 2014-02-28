@@ -83,10 +83,10 @@ function ca_herding_herd_sheep:execution(ai, cfg)
     -- If it's already in the best position, we just take moves away from it
     -- (to avoid black-listing of CA, in the worst case)
     if (best_hex[1] == best_dog.x) and (best_hex[2] == best_dog.y) then
-        ai.stopunit_moves(best_dog)
+        AH.checked_stopunit_moves(ai, best_dog)
     else
         --print('Dog moving to herd sheep')
-        ai.move(best_dog, best_hex[1], best_hex[2])  -- partial move only
+        AH.checked_move(ai, best_dog, best_hex[1], best_hex[2])  -- partial move only
     end
 end
 

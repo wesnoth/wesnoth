@@ -114,16 +114,17 @@ function ca_patrol:execution(ai, cfg, self)
         if cfg.one_time_only and
             (patrol.x == waypoints[n_wp][1]) and (patrol.y == waypoints[n_wp][2])
         then
-            ai.stopunit_moves(patrol)
+            AH.checked_stopunit_moves(ai, patrol)
         else  -- otherwise move toward next WP
             local x, y = wesnoth.find_vacant_tile(self.data[patrol.id..'_x'], self.data[patrol.id..'_y'], patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
-                ai.move(patrol, nh[1], nh[2])
+                AH.checked_move(ai, patrol, nh[1], nh[2])
             else
-                ai.stopunit_moves(patrol)
+                AH.checked_stopunit_moves(ai, patrol)
             end
         end
+        if (not patrol) or (not patrol.valid) then return end
     end
 
     -- Attack unit on the last waypoint under all circumstances if cfg.one_time_only is set
@@ -148,13 +149,13 @@ function ca_patrol:execution(ai, cfg, self)
 
     if next(enemies) then
         for i,v in ipairs(enemies) do
-            ai.attack(patrol, v)
+            AH.checked_attack(ai, patrol, v)
             break
         end
     end
+    if (not patrol) or (not patrol.valid) then return end
 
-    -- Check that patrol is not killed
-    if patrol and patrol.valid then ai.stopunit_all(patrol) end
+    AH.checked_stopunit_all(ai, patrol)
 end
 
 return ca_patrol

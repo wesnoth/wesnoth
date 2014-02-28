@@ -126,14 +126,14 @@ function ca_hang_out:execution(ai, cfg, self)
     -- respective best locations already, we take moves away from all units
     if (max_rating == -9e99) then
         for i,u in ipairs(units) do
-            ai.stopunit_moves(u)
+            AH.checked_stopunit_moves(ai, u)
             -- Also remove the markers
-            u.variables.mai_hangout_moved = nil
+            if u and u.valid then u.variables.mai_hangout_moved = nil end
         end
     else
         -- Otherwise move unit and mark as having been used
-        ai.move(best_unit, best_hex[1], best_hex[2])
-        best_unit.variables.mai_hangout_moved = true
+        AH.checked_move(ai, best_unit, best_hex[1], best_hex[2])
+        if best_unit and best_unit.valid then best_unit.variables.mai_hangout_moved = true end
     end
 end
 

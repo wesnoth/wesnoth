@@ -67,7 +67,7 @@ function ca_herding_attack_close_enemy:execution(ai, cfg)
         --print('Dog moving in to attack')
         AH.movefull_stopunit(ai, best_dog, best_hex)
         if H.distance_between(best_dog.x, best_dog.y, best_enemy.x, best_enemy.y) == 1 then
-            ai.attack(best_dog, best_enemy)
+            AH.checked_attack(ai, best_dog, best_enemy)
         end
         return
     end

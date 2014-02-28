@@ -491,20 +491,21 @@ function ca_bottleneck_move:execution(ai, cfg, self)
             }
         end
         for i,u in ipairs(units) do
-            ai.stopunit_moves(u)
+            AH.checked_stopunit_moves(ai, u)
         end
     else
         --print("Moving unit:",self.data.unit.id, self.data.unit.x, self.data.unit.y, " ->", best_hex[1], best_hex[2], " -- turn:", wesnoth.current.turn)
 
         if (self.data.unit.x ~= self.data.hex[1]) or (self.data.unit.y ~= self.data.hex[2]) then  -- test needed for level-up move
-            ai.move(self.data.unit, self.data.hex[1], self.data.hex[2])   -- don't want full move, as this might be stepping out of the way
+            AH.checked_move(ai, self.data.unit, self.data.hex[1], self.data.hex[2])   -- don't want full move, as this might be stepping out of the way
         end
+        if (not self.data.unit) or (not self.data.unit.valid) then return end
 
         -- If this is a move for a level-up attack, do the attack also
         if self.data.lu_defender then
             --print("Level-up attack",self.data.unit.id, self.data.lu_defender.id, self.data.lu_weapon)
 
-            ai.attack(self.data.unit, self.data.lu_defender, self.data.lu_weapon)
+            AH.checked_attack(ai, self.data.unit, self.data.lu_defender, self.data.lu_weapon)
         end
     end
 

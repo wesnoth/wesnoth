@@ -126,6 +126,97 @@ function ai_helper.print_ts_delta(start_time, ...)
     return ts, delta
 end
 
+----- AI execution helper functions ------
+
+function ai_helper.checked_action_error(action, error_code)
+        wesnoth.message('Lua AI error', 'If you see this message, something has gone wrong. Please report this on the Wesnoth forums, ideally with a replay and/or savegame.')
+        error(action .. ' could not be executed. Error code: ' .. error_code)
+end
+
+function ai_helper.checked_attack(ai, attacker, defender, weapon)
+    local check = ai.check_attack(attacker, defender, weapon)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.attack', check.status)
+        return
+    end
+
+    ai.attack(attacker, defender, weapon)
+end
+
+function ai_helper.checked_move_core(ai, unit, x, y, move_type)
+    local check = ai.check_move(unit, x, y)
+
+    if (not check.ok) then
+        -- The following errors are not fatal:
+        -- E_EMPTY_MOVE = 2001
+        -- E_AMBUSHED = 2005
+        -- E_NOT_REACHED_DESTINATION = 2007
+        if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
+            ai_helper.checked_action_error(move_type, check.status)
+            return
+        end
+    end
+
+    if (move_type == 'ai.move_full') then
+        ai.move_full(unit, x, y)
+    else
+        ai.move(unit, x, y)
+    end
+end
+
+function ai_helper.checked_move_full(ai, unit, x, y)
+    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
+end
+
+function ai_helper.checked_move(ai, unit, x, y)
+    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
+end
+
+function ai_helper.checked_recruit(ai, unit_type, x, y)
+    local check = ai.check_recruit(unit_type, x, y)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.recruit', check.status)
+        return
+    end
+
+    ai.recruit(unit_type, x, y)
+end
+
+function ai_helper.checked_stopunit_all(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_all', check.status)
+        return
+    end
+
+    ai.stopunit_all(unit)
+end
+
+function ai_helper.checked_stopunit_attacks(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_attacks', check.status)
+        return
+    end
+
+    ai.stopunit_attacks(unit)
+end
+
+function ai_helper.checked_stopunit_moves(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_moves', check.status)
+        return
+    end
+
+    ai.stopunit_moves(unit)
+end
+
 ----- General functionality and maths helper functions ------
 
 function ai_helper.filter(input, condition)
@@ -1006,7 +1097,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
 
     if (max_rating > -9e99) then
         --W.message { speaker = unit.id, message = 'Moving out of way' }
-        ai.move(unit, best_hex[1], best_hex[2])
+        ai_helper.checked_move(ai, unit, best_hex[1], best_hex[2])
     end
 end
 
@@ -1024,9 +1115,9 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai.move_full(unit, next_hop[1], next_hop[2])
+        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(unit)
+        ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 
@@ -1053,9 +1144,9 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai.move_full(unit, next_hop[1], next_hop[2])
+        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(unit)
+        ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 

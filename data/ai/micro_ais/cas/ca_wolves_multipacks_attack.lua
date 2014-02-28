@@ -136,7 +136,7 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                 end
 
                 local a_x, a_y, d_x, d_y = attacker.x, attacker.y, defender.x, defender.y
-                ai.attack(attacker, defender)
+                AH.checked_attack(ai, attacker, defender)
                 -- Remove the labels, if one of the units died
                 if cfg.show_pack_number then
                     if (not attacker.valid) then W.label { x = a_x, y = a_y, text = "" } end
@@ -182,7 +182,7 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                         W.label { x = w.x, y = w.y, text = "" }
                     end
                     AH.movefull_stopunit(ai, w, best_hex)
-                    if cfg.show_pack_number then
+                    if cfg.show_pack_number and w and w.valid then
                         WMPF.color_label(w.x, w.y, pack_number)
                     end
                 end
