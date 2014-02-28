@@ -44,7 +44,7 @@ return {
         end
 
         function move_to_any_target:move_to_enemy_exec()
-            ai.move(self.data.unit, self.data.destination[1], self.data.destination[2])
+            AH.checked_move(ai, self.data.unit, self.data.destination[1], self.data.destination[2])
         end
 
         return move_to_any_target
