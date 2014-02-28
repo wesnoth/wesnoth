@@ -493,6 +493,8 @@ return {
             local defender = wesnoth.get_unit(self.data.attack.target.x, self.data.attack.target.y)
 
             AH.movefull_stopunit(ai, attacker, self.data.attack.dst.x, self.data.attack.dst.y)
+            if (not attacker) or (not attacker.valid) then return end
+            if (not defender) or (not defender.valid) then return end
 
             -- Find the poison weapon
             -- If several attacks have poison, this will always find the last one
