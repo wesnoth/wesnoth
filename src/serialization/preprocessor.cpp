@@ -405,7 +405,7 @@ class preprocessor_file: preprocessor
 	std::vector< std::string > files_;
 	std::vector< std::string >::const_iterator pos_, end_;
 public:
-	preprocessor_file(preprocessor_streambuf &, std::string const &);
+	preprocessor_file(preprocessor_streambuf &, std::string const &, size_t);
 	virtual bool get_chunk();
 };
 
@@ -509,14 +509,27 @@ bool operator==(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs){ return
 bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE rhs, char lhs){ return !(lhs == rhs); }
 bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs){ return rhs != lhs; }
 
-preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name) :
+preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name, size_t symbol_index=-1) :
 	preprocessor(t),
 	files_(),
 	pos_(),
 	end_()
 {
-	if (is_directory(name))
+	if (is_directory(name)) {
+
 		get_files_in_dir(name, &files_, NULL, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
+
+		BOOST_FOREACH(std::string fname, files_) {
+			size_t cpos = fname.rfind(" ");
+			if (cpos != std::string::npos && cpos >= symbol_index) {
+				std::stringstream ss;
+				ss << "Found filename containing whitespace: '" << file_name(fname) << "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
+				 << directory_name(fname.substr(symbol_index)) << "'";
+				// TODO: find a real linenumber
+				target_.error(ss.str(), -1);
+			}
+		}
+	}
 	else {
 		std::istream * file_stream = istream_file(name);
 		if (!file_stream->good()) {
@@ -545,12 +558,6 @@ bool preprocessor_file::get_chunk()
 		// Use reverse iterator to optimize testing
 		if (sz < 5 || !std::equal(name.rbegin(), name.rbegin() + 4, "gfc."))
 			continue;
-		// The preprocessor should catch directly-included files
-		// It interprets them as macros with arguments
-		if (name.find(' ') != std::string::npos) {
-			ERR_CF << "Filename '" << name << "' contains spaces\n";
-			continue;
-		}
 		new preprocessor_file(target_, name);
 		return true;
 	}
@@ -1089,13 +1096,15 @@ bool preprocessor_data::get_chunk()
 				if (!nfname.empty())
 				{
 					if (!slowpath_)
-						new preprocessor_file(target_, nfname);
+						// nfname.size() - symbol.size() gives you an index into nfname
+						// This does not necessarily match the symbol though, as it can start with ~ or ./
+						new preprocessor_file(target_, nfname, nfname.size() - symbol.size());
 					else {
 						std::ostringstream res;
 						preprocessor_streambuf *buf =
 							new preprocessor_streambuf(target_);
 						{	std::istream in(buf);
-							new preprocessor_file(*buf, nfname);
+							new preprocessor_file(*buf, nfname, nfname.size() - symbol.size());
 							res << in.rdbuf(); }
 						delete buf;
 						put(res.str());
