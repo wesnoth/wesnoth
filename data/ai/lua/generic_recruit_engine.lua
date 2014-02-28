@@ -559,7 +559,7 @@ return {
             until recruit_type ~= nil
 
             if wesnoth.unit_types[recruit_type].cost <= wesnoth.sides[wesnoth.current.side].gold then
-                ai.recruit(recruit_type, recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
+                AH.checked_recruit(ai, recruit_type, recruit_data.recruit.best_hex[1], recruit_data.recruit.best_hex[2])
 
                 -- If the recruited unit cannot reach the target hex, return it to the pool of targets
                 if recruit_data.recruit.target_hex ~= nil and recruit_data.recruit.target_hex[1] ~= nil then

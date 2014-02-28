@@ -1,6 +1,11 @@
 Version 1.11.10+dev:
  * Add-ons server:
    * Filenames with whitespace in them are no longer allowed.
+ * AI:
+   * Non-default multiplayer and Micro AIs:
+     * Fixed bugs which could lead to the AIs being disabled for the rest of the
+       turn if WML events removed or changed units during the AI turn
+     * Improved error reporting of invalid AI actions
  * Campaigns:
    * Eastern Invasion:
      * Updated maps for scenario 8, 11, 12, 14, 16 and 17a.
