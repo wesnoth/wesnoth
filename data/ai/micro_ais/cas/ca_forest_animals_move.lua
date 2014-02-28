@@ -155,7 +155,6 @@ function ca_forest_animals_move:execution(ai, cfg)
             AH.movefull_stopunit(ai, unit, farthest_hex)
             -- If this is a rabbit ending on a hole -> disappears
             if (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2]) then
-                wesnoth.put_unit(farthest_hex[1], farthest_hex[2])
                 local command =  "wesnoth.put_unit(x1, y1)"
                 ai.synced_command(command, farthest_hex[1], farthest_hex[2])
             end
