@@ -2826,7 +2826,10 @@ void display::refresh_report(std::string const &report_name, const config * new_
 			// Draw a text element.
 			font::ttext text;
 			if (item->font_rgb_set()) {
-				text.set_foreground_color(item->font_rgb());
+				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
+				// layout instead of 0xRRGGBBAA which is what ttext expects,
+				// so shift the value to the left and add fully-opaque alpha.
+				text.set_foreground_color((item->font_rgb() << 8) + 0xFF);
 			}
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
