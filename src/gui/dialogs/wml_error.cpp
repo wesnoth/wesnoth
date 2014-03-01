@@ -32,18 +32,10 @@
 
 namespace
 {
-inline bool is_dir_separator(char c)
-{
-#ifdef _WIN32
-	return c == '/' || c == '\\';
-#else
-	return c == '/';
-#endif
-}
 
 void strip_trailing_dir_separators(std::string& str)
 {
-	while(is_dir_separator(str[str.size() - 1])) {
+	while(is_path_sep(str[str.size() - 1])) {
 		str.erase(str.size() - 1);
 	}
 }
