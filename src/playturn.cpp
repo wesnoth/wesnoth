@@ -106,10 +106,10 @@ void turn_info::handle_turn(
 
 void turn_info::do_save()
 {
-	savegame::ingame_savegame save(*resources::state_of_game, *resources::screen,
-                               resources::controller->to_config(),
-                               preferences::save_compression_format());
-	save.save_game_interactive(resources::screen->video(), "", gui::OK_CANCEL);
+	if ((resources::state_of_game != NULL) && (resources::screen != NULL) && (resources::controller != NULL)) {
+		savegame::autosave_savegame save(*resources::state_of_game, *resources::screen, resources::controller->to_config(), preferences::save_compression_format());
+		save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+	}
 }
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
