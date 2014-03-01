@@ -1883,7 +1883,6 @@ surface flop_surface(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-
 surface create_compatible_surface(const surface &surf, int width, int height)
 {
 	if(surf == NULL)
@@ -1898,7 +1897,11 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	surface s = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surf->format->BitsPerPixel,
 		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask);
 	if (surf->format->palette) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		SDL_SetPaletteColors(s->format->palette, surf->format->palette->colors, 0, surf->format->palette->ncolors);
+#else
 		SDL_SetPalette(s, SDL_LOGPAL, surf->format->palette->colors, 0, surf->format->palette->ncolors);
+#endif
 	}
 	return s;
 }
