@@ -148,7 +148,11 @@ void editor_controller::init_music(const config& game_config)
 	else {
 		BOOST_FOREACH(const config& editor_music, game_config.child_range(tag_name)) {
 			BOOST_FOREACH(const config& music, editor_music.child_range("music")) {
-				music_tracks_.push_back(sound::music_track(music));
+				sound::music_track track(music);
+				if (track.file_path().empty())
+					WRN_ED << "Music track " << track.id() << " not found.\n";
+				else
+					music_tracks_.push_back(sound::music_track(music));
 			}
 		}
 	}
