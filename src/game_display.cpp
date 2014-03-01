@@ -926,6 +926,12 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 		return;
 	}
 
+	int endl_pos = 0;
+	for (int ctr = 0; ctr < 5; ctr++)
+		endl_pos = i->message.find('\n', endl_pos);
+
+	i->message = i->message.substr(0,endl_pos);
+
 	uint32_t id = send_dbus_notification(connection, 0, owner, message);
 	if (!id) return;
 	wnotify visual;
