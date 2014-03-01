@@ -2051,7 +2051,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 {
-	if (game_config::debug || preferences::show_all_units_in_help()) {
+	if (game_config::debug || preferences::show_all_units_in_help()	||
+			hotkey::is_scope_active(hotkey::SCOPE_EDITOR) ) {
 		return FULL_DESCRIPTION;
 	}
 
