@@ -27,6 +27,8 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 
+#include "game_display.hpp"
+
 #include "boost/foreach.hpp"
 
 #include "preferences.hpp"
@@ -68,7 +70,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			const bool highlighted = reach_map && reach_map->count(loc) != 0;
 
-			const bool shrouded = (vw != NULL && vw->shrouded(loc));
+			const bool shrouded = (resources::screen != NULL && resources::screen->is_blindfolded()) || (vw != NULL && vw->shrouded(loc));
 			// shrouded hex are not considered fogged (no need to fog a black image)
 			const bool fogged = (vw != NULL && !shrouded && vw->fogged(loc));
 
