@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 #include "key.hpp"
+#include "sdl/compat.hpp"
 
 CKey::CKey() :
 	key_list(SDL_GetKeyState(NULL))

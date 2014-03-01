@@ -29,6 +29,7 @@
 
 #define SDLKey SDL_Keycode
 #define SDLMod SDL_Keymod
+#define SDL_GetKeyState SDL_GetKeyboardState
 
 #endif
 
