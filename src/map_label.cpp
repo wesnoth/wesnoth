@@ -517,10 +517,12 @@ bool terrain_label::viewable() const
 	if ( !parent_->enabled() )
 		return false;
 
-	// Observers are not privvy to team labels. (Unless this is the map editor,
-	// in which we want location labels initially visible; this is implied by
-	// case team::nteams() being zero.)
-	bool can_see_team_labels = (!is_observer() || !team::nteams());
+	// In the editor, all labels are viewable.
+	if ( team::nteams() == 0 )
+		return true;
+
+	// Observers are not privvy to team labels.
+	const bool can_see_team_labels = !is_observer();
 
 	// Global labels are shown unless covered by a team label.
 	if ( team_name_.empty() )
