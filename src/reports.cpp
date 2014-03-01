@@ -224,7 +224,7 @@ static config unit_side(const unit* u)
 		flag_icon = game_config::images::flag_icon;
 
 	std::stringstream text;
-	text << u->side();
+	text << " " << u->side();
 
 	add_image(report, flag_icon + mods, u_team.current_player(), "");
 	add_text(report, text.str(), "", "");
