@@ -361,6 +361,8 @@ void context_manager::expand_time_menu(std::vector<std::string>& items)
 
 			tod_manager* tod_m = get_map_context().get_time_manager();
 
+			assert(tod_m != NULL);
+
 			BOOST_FOREACH(const time_of_day& time, tod_m->times()) {
 
 				std::stringstream label;

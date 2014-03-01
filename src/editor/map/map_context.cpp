@@ -93,7 +93,7 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, labels_(disp, NULL)
 	, units_()
 	, teams_()
-	, tod_manager_(NULL)
+	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "default")))
 	, state_()
 	, music_tracks_()
 {
