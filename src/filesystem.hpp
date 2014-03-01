@@ -179,6 +179,14 @@ std::string directory_name(const std::string& file);
 std::string normalize_path(const std::string &path);
 
 /**
+ * Returns whether @a c is a path separator.
+ *
+ * @note / is always a path separator. Additionally, on Windows \\ is a
+ *       path separator as well.
+ */
+bool is_path_sep(char c);
+
+/**
  *  The paths manager is responsible for recording the various paths
  *  that binary files may be located at.
  *  It should be passed a config object which holds binary path information.

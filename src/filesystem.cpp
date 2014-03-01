@@ -1258,7 +1258,7 @@ std::string get_program_invocation(const std::string& program_name) {
 #endif
 }
 
-static bool is_path_sep(char c)
+bool is_path_sep(char c)
 {
 #ifdef _WIN32
 	if (c == '/' || c == '\\') return true;
