@@ -194,7 +194,7 @@ namespace { // Types
 		else {
 			std::vector<std::string> name_list = utils::split(name);
 			BOOST_FOREACH( const std::string & single_name, name_list )
-			by_name_[standardize_name(single_name)].push_back(new_handler);
+				by_name_[standardize_name(single_name)].push_back(new_handler);
 		}
 		// File by ID.
 		if ( !id.empty() )
