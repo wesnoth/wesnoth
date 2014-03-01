@@ -289,7 +289,7 @@ static config unit_traits(const unit* u)
 	for (unsigned i = 0; i < nb; ++i)
 	{
 		std::ostringstream str, tooltip;
-		str << span_color(font::weapon_color) << traits[i] << naps;
+		str << traits[i];
 		if (i != nb - 1 ) str << ", ";
 		tooltip << _("Trait: ") << "<b>" << traits[i] << "</b>\n"
 			<< descriptions[i];
@@ -991,10 +991,12 @@ static config unit_weapons(const unit *u)
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
 	config res;
 
-	const std::string attack_headline =
-			( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
-	add_text(res,  /*span_color(font::weapon_details_color)
-			+*/ attack_headline /*+ "</span>\n"*/ + '\n', "am arsch");
+	//TODO enable after the string frezze is lifted
+	//const std::string attack_headline =
+	//		( u->attacks().size() > 1 ) ? N_("Attacks") : N_("Attack");
+
+	//add_text(res,  /*span_color(font::weapon_details_color)
+	//		+*/ attack_headline /*+ "</span>\n"*/ + '\n', "");
 
 	BOOST_FOREACH(const attack_type &at, u->attacks())
 	{
