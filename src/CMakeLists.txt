@@ -70,12 +70,14 @@ if(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
 		${SDLMAIN_LIBRARY}
+		wesnoth-sdl
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
 	)
 else(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
+		wesnoth-sdl
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -978,7 +980,6 @@ if(ENABLE_GAME AND ENABLE_TESTS)
 	target_link_libraries(wesnoth-game
 		wesnoth-core
 		wesnoth-lua
-		wesnoth-sdl
 	)
 endif(ENABLE_GAME AND ENABLE_TESTS)
 
