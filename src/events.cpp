@@ -164,7 +164,13 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joined_(false)
+handler::handler(const bool auto_join)
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	: unicode_(1)
+#else
+	: unicode_(SDL_EnableUNICODE(1))
+#endif
+	, has_joined_(false)
 {
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
 	if(auto_join) {
@@ -177,7 +183,9 @@ handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joi
 handler::~handler()
 {
 	leave();
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableUNICODE(unicode_);
+#endif
 }
 
 void handler::join()
