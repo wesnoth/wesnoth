@@ -8,72 +8,70 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.10\n"
+"Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2013-03-10 12:41+0100\n"
+"PO-Revision-Date: 2014-03-02 17:54+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
-"Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
+"Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
 #. possible to avoid stretching the advanced preferences list too
 #. much.
 #: data/advanced_preferences.cfg:7
-#, fuzzy
 msgid "Compress saved games"
 msgstr "Komprimierte Spielstände"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:12
 msgid "save_compression^Gzip"
-msgstr ""
+msgstr "Gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:13
 msgid "save_compression_short^gzip"
-msgstr ""
+msgstr "gzip"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:14
 msgid "save_compression_desc^Default compression, faster"
-msgstr ""
+msgstr "Standard Kompressionsrate, schneller"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:18
 msgid "save_compression^Bzip2"
-msgstr ""
+msgstr "Bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:19
 msgid "save_compression_short^bzip2"
-msgstr ""
+msgstr "bzip2"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:20
 msgid "save_compression_desc^Best compression, slower"
-msgstr ""
+msgstr "Beste Kompressionsrate, langsamer"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:24
 msgid "save_compression^No"
-msgstr ""
+msgstr "Nein"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:25
 msgid "save_compression_short^no"
-msgstr ""
+msgstr "no"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:26
 msgid "save_compression_desc^Large plain text files"
-msgstr ""
+msgstr "Große Textdateien"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:32
@@ -237,6 +235,8 @@ msgid ""
 "Use colored mouse cursors, which may be slower or break the game (use at "
 "your own risk)"
 msgstr ""
+"Farbige Mauscursor verwenden, welche das Spiel verlangsamen oder unspielbar "
+"machen können (Verwendung auf eigene Gefahr)"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:204
@@ -683,17 +683,17 @@ msgstr "Bots"
 #. [item_group]: id=items
 #: data/core/editor/items.cfg:4
 msgid "Items"
-msgstr ""
+msgstr "Gegenstände"
 
 #. [item]: id=altar_evil
 #: data/core/editor/items.cfg:9
 msgid "Evil Altar"
-msgstr ""
+msgstr "Böser Altar"
 
 #. [item]: id=altar
 #: data/core/editor/items.cfg:15
 msgid "Altar"
-msgstr ""
+msgstr "Altar"
 
 #. [item]: id=ankh-necklace
 #: data/core/editor/items.cfg:21
@@ -703,54 +703,52 @@ msgstr "Heiliges Amulett"
 #. [item]: id=anvil
 #: data/core/editor/items.cfg:27
 msgid "Anvil"
-msgstr ""
+msgstr "Amboss"
 
 #. [item]: id=archery-target
 #: data/core/editor/items.cfg:33
 msgid "Archery Target"
-msgstr ""
+msgstr "Zielscheibe"
 
 #. [item]: id=armor-golden
 #: data/core/editor/items.cfg:39
 msgid "Golden Armor"
-msgstr ""
+msgstr "Goldene Rüstung"
 
 #. [item]: id=armor
 #: data/core/editor/items.cfg:45
 msgid "Armor"
-msgstr ""
+msgstr "Rüstung"
 
 #. [item]: id=axe
 #: data/core/editor/items.cfg:51
 msgid "Axe"
-msgstr ""
+msgstr "Axt"
 
 #. [item]: id=ball-blue
 #: data/core/editor/items.cfg:57
-#, fuzzy
 msgid "Blue Ball"
-msgstr "Blau"
+msgstr "Blaue Kugel"
 
 #. [item]: id=ball-green
 #: data/core/editor/items.cfg:63
-#, fuzzy
 msgid "Green Ball"
-msgstr "Grün"
+msgstr "Grüne Kugel"
 
 #. [item]: id=ball-magenta
 #: data/core/editor/items.cfg:69
 msgid "Magenta Ball"
-msgstr ""
+msgstr "Magenta Kugel"
 
 #. [item]: id=barrel
 #: data/core/editor/items.cfg:75
 msgid "Barrel"
-msgstr ""
+msgstr "Fass"
 
 #. [item]: id=bomb
 #: data/core/editor/items.cfg:81
 msgid "Bomb"
-msgstr ""
+msgstr "Bombe"
 
 #. [item]: id=bones
 #: data/core/editor/items.cfg:87
@@ -760,7 +758,7 @@ msgstr "Bones"
 #. [item]: id=bonestack
 #: data/core/editor/items.cfg:93
 msgid "Bonestack"
-msgstr ""
+msgstr "Knochenhaufen"
 
 #. [item]: id=book1
 #. [item]: id=book2
@@ -771,28 +769,27 @@ msgstr ""
 #: data/core/editor/items.cfg:111 data/core/editor/items.cfg:117
 #: data/core/editor/items.cfg:123
 msgid "Book"
-msgstr ""
+msgstr "Buch"
 
 #. [item]: id=bow-crystal
 #: data/core/editor/items.cfg:129
 msgid "Crystal Bow"
-msgstr ""
+msgstr "Kristallbogen"
 
 #. [item]: id=bow-elven
 #: data/core/editor/items.cfg:135
 msgid "Elven Bow"
-msgstr ""
+msgstr "Elfenbogen"
 
 #. [item]: id=bow
 #: data/core/editor/items.cfg:141
-#, fuzzy
 msgid "Bow"
-msgstr "Braun"
+msgstr "Bogen"
 
 #. [item]: id=box
 #: data/core/editor/items.cfg:147
 msgid "Box"
-msgstr ""
+msgstr "Kiste"
 
 #. [item]: id=brazier
 #: data/core/editor/items.cfg:153
@@ -813,7 +810,7 @@ msgstr "Einführung"
 #. [item]: id=cage
 #: data/core/editor/items.cfg:171
 msgid "Cage"
-msgstr ""
+msgstr "Käfig"
 
 #. [item]: id=chest-plain-closed
 #: data/core/editor/items.cfg:177
@@ -828,23 +825,22 @@ msgstr ""
 #. [item]: id=chest
 #: data/core/editor/items.cfg:189
 msgid "Chest"
-msgstr ""
+msgstr "Truhe"
 
 #. [item]: id=cloak-green
 #: data/core/editor/items.cfg:195
-#, fuzzy
 msgid "Green Cloak"
-msgstr "Grün"
+msgstr "Grüner Mantel"
 
 #. [item]: id=coffin-closed
 #: data/core/editor/items.cfg:201
 msgid "Closed Coffin"
-msgstr ""
+msgstr "Geschlossener Sarg"
 
 #. [item]: id=dragonstatue
 #: data/core/editor/items.cfg:207
 msgid "Dragon Statue"
-msgstr ""
+msgstr "Drachenstatue"
 
 #. [item]: id=flame-sword
 #: data/core/editor/items.cfg:213
@@ -857,9 +853,8 @@ msgstr "Flammenschwert"
 #. [item]: id=flower4
 #: data/core/editor/items.cfg:219 data/core/editor/items.cfg:225
 #: data/core/editor/items.cfg:231 data/core/editor/items.cfg:237
-#, fuzzy
 msgid "Flower"
-msgstr "verlangsamt"
+msgstr "Blume"
 
 #. [item]: id=gohere
 #: data/core/editor/items.cfg:243
@@ -869,17 +864,17 @@ msgstr ""
 #. [item]: id=gold-coins-large
 #: data/core/editor/items.cfg:249
 msgid "Large Pile of Gold Coins"
-msgstr ""
+msgstr "Großer Haufen Goldmünzen"
 
 #. [item]: id=gold-coins-medium
 #: data/core/editor/items.cfg:255
 msgid "Pile of Gold Coins"
-msgstr ""
+msgstr "Haufen Goldmünzen"
 
 #. [item]: id=gold-coins-small
 #: data/core/editor/items.cfg:261
 msgid "Small Pile of Gold Coins"
-msgstr ""
+msgstr "Kleiner Haufen Goldmünzen"
 
 #. [item]: id=grain-sheaf
 #: data/core/editor/items.cfg:267
@@ -889,7 +884,7 @@ msgstr ""
 #. [item]: id=hammer-runic
 #: data/core/editor/items.cfg:273
 msgid "Runic Hammer"
-msgstr ""
+msgstr "Runnenhammer"
 
 #. [item]: id=holly-water
 #. [object]
@@ -900,7 +895,7 @@ msgstr "Weihwasser"
 #. [item]: id=key
 #: data/core/editor/items.cfg:285
 msgid "Key"
-msgstr ""
+msgstr "Schlüssel"
 
 #. [item]: id=leather-pack
 #: data/core/editor/items.cfg:291
@@ -910,7 +905,7 @@ msgstr ""
 #. [item]: id=orcish-flag
 #: data/core/editor/items.cfg:297
 msgid "Orcish Flag"
-msgstr ""
+msgstr "Orkische Flagge"
 
 #. [item]: id=ornate1
 #. [item]: id=ornate2
@@ -921,18 +916,17 @@ msgstr ""
 #. [item]: id=potion-blue
 #: data/core/editor/items.cfg:315
 msgid "Blue Potion"
-msgstr ""
+msgstr "Blauer Trank"
 
 #. [item]: id=potion-green
 #: data/core/editor/items.cfg:321
-#, fuzzy
 msgid "Green Potion"
-msgstr "Ungültiger Ort"
+msgstr "Grüner Trank"
 
 #. [item]: id=potion-gray
 #: data/core/editor/items.cfg:327
 msgid "Gray Potion"
-msgstr ""
+msgstr "Grauer Trank"
 
 #. [item]: id=potion-poison
 #. [object]: id={ID}
@@ -942,46 +936,43 @@ msgstr "Gift"
 
 #. [item]: id=potion-red
 #: data/core/editor/items.cfg:339
-#, fuzzy
 msgid "Red Potion"
-msgstr "Ungültiger Ort"
+msgstr "Roter Trank"
 
 #. [item]: id=potion-yellow
 #: data/core/editor/items.cfg:345
 msgid "Yellow Potion"
-msgstr ""
+msgstr "Gelber Trank"
 
 #. [item]: id=ring-brown
 #: data/core/editor/items.cfg:351
-#, fuzzy
 msgid "Brown Ring"
-msgstr "Braun"
+msgstr "Brauner Ring"
 
 #. [item]: id=ring-gold
 #: data/core/editor/items.cfg:357
 msgid "Golden Ring"
-msgstr ""
+msgstr "Goldring"
 
 #. [item]: id=ring-red
 #: data/core/editor/items.cfg:363
 msgid "Red Ring"
-msgstr ""
+msgstr "Roter Ring"
 
 #. [item]: id=ring-silver
 #: data/core/editor/items.cfg:369
 msgid "Silver Ring"
-msgstr ""
+msgstr "Silberring"
 
 #. [item]: id=ring-white
 #: data/core/editor/items.cfg:375
-#, fuzzy
 msgid "White Ring"
-msgstr "Weiß"
+msgstr "Weißer Ring"
 
 #. [item]: id=scarecrow
 #: data/core/editor/items.cfg:381
 msgid "Scarecrow"
-msgstr ""
+msgstr "Vogelscheuche"
 
 #. [item]: id=sceptre-of-fire
 #: data/core/editor/items.cfg:387
@@ -996,17 +987,17 @@ msgstr ""
 #. [item]: id=staff-magic
 #: data/core/editor/items.cfg:399
 msgid "Magic Staff"
-msgstr ""
+msgstr "Magischer Stab"
 
 #. [item]: id=staff
 #: data/core/editor/items.cfg:405
 msgid "Staff"
-msgstr ""
+msgstr "Stab"
 
 #. [item]: id=stone-tablet
 #: data/core/editor/items.cfg:411
 msgid "Stone Tablet"
-msgstr ""
+msgstr "Steintafel"
 
 #. [item]: id=storm-trident
 #. [object]
@@ -1023,7 +1014,7 @@ msgstr ""
 #. [item]: id=sword
 #: data/core/editor/items.cfg:435
 msgid "Sword"
-msgstr ""
+msgstr "Schwert"
 
 #. [item_group]: id=scenery
 #: data/core/editor/items.cfg:441
@@ -1059,7 +1050,7 @@ msgstr "Lagerfeuer"
 #. [item]: id=flames
 #: data/core/editor/items.cfg:479
 msgid "Flames"
-msgstr ""
+msgstr "Flammen"
 
 #. [item]: id=gate-rusty-se
 #: data/core/editor/items.cfg:485
@@ -1083,19 +1074,18 @@ msgstr ""
 
 #. [item]: id=lighthouse
 #: data/core/editor/items.cfg:508
-#, fuzzy
 msgid "Lighthouse"
-msgstr "Hellrot"
+msgstr "Leuchtturm"
 
 #. [item]: id=mausoleum
 #: data/core/editor/items.cfg:516
 msgid "Mausoleum"
-msgstr ""
+msgstr "Mausoleum"
 
 #. [item]: id=mine-abandoned
 #: data/core/editor/items.cfg:522
 msgid "Abandoned Mine"
-msgstr ""
+msgstr "Verlassene Mine"
 
 #. [item]: id=monolith1
 #. [item]: id=monolith2
@@ -1104,13 +1094,12 @@ msgstr ""
 #: data/core/editor/items.cfg:528 data/core/editor/items.cfg:534
 #: data/core/editor/items.cfg:540 data/core/editor/items.cfg:546
 msgid "Monolith"
-msgstr ""
+msgstr "Monolith"
 
 #. [item]: id=nest-empty
 #: data/core/editor/items.cfg:552
-#, fuzzy
 msgid "Empty Nest"
-msgstr "(leerer Platz)"
+msgstr "Leeres Nest"
 
 #. [item]: id=nest-full
 #: data/core/editor/items.cfg:558
@@ -1141,7 +1130,7 @@ msgstr ""
 #: data/core/editor/items.cfg:588 data/core/editor/items.cfg:594
 #: data/core/editor/items.cfg:600 data/core/editor/items.cfg:606
 msgid "Rock"
-msgstr ""
+msgstr "Fels"
 
 #. [item]: id=rubble
 #: data/core/editor/items.cfg:612
@@ -1158,7 +1147,7 @@ msgstr "Trümmer"
 #: data/core/editor/items.cfg:630 data/core/editor/items.cfg:636
 #: data/core/editor/items.cfg:642 data/core/editor/items.cfg:648
 msgid "Rune"
-msgstr ""
+msgstr "Rune"
 
 #. [item]: id=rune1-glow
 #. [item]: id=rune2-glow
@@ -1191,7 +1180,7 @@ msgstr ""
 #. [item]: id=snowbits
 #: data/core/editor/items.cfg:707
 msgid "Piles of Snow"
-msgstr ""
+msgstr "Schneehaufen"
 
 #. [item]: id=summoning-center
 #: data/core/editor/items.cfg:714
@@ -1213,7 +1202,7 @@ msgstr ""
 #. [item]: id=temple1
 #: data/core/editor/items.cfg:756
 msgid "Temple"
-msgstr ""
+msgstr "Tempel"
 
 #. [item]: id=tent-fancy-red
 #: data/core/editor/items.cfg:762
@@ -1233,17 +1222,17 @@ msgstr ""
 #. [item]: id=trapdoor-closed
 #: data/core/editor/items.cfg:780
 msgid "Closed Trapdoor"
-msgstr ""
+msgstr "Geschlossene Falltür"
 
 #. [item]: id=trapdoor-open
 #: data/core/editor/items.cfg:786
 msgid "Open Trapdoor"
-msgstr ""
+msgstr "Offene Falltür"
 
 #. [item]: id=trash
 #: data/core/editor/items.cfg:792
 msgid "Trash Pile"
-msgstr ""
+msgstr "Müllhaufen"
 
 #. [item]: id=village-human-burned1
 #. [item]: id=village-human-burned2
@@ -1258,7 +1247,7 @@ msgstr "Eigenes Dorf"
 #. [item]: id=well
 #: data/core/editor/items.cfg:821
 msgid "Well"
-msgstr ""
+msgstr "Brunnen"
 
 #. [item]: id=whirlpool
 #: data/core/editor/items.cfg:827
@@ -2745,9 +2734,8 @@ msgstr "Blau"
 
 #. [color_range]: id=lightblue
 #: data/core/team-colors.cfg:38
-#, fuzzy
 msgid "Light blue"
-msgstr "Hellrot"
+msgstr "Hellblau"
 
 #. [color_range]: id=3
 #. [color_range]: id=green
@@ -3251,12 +3239,12 @@ msgstr "elektrisch"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "Standard"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
 msgid "Default theme."
-msgstr ""
+msgstr "Standard Grafikthema"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3423,20 +3411,21 @@ msgstr "Keine Animationen"
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:22
 msgid "theme^Pandora"
-msgstr ""
+msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
 msgid "800x480 theme optimized for Pandora devices."
-msgstr ""
+msgstr "Für die Pandora Konsole optimiertes 800x480 Grafikthema"
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
-#, fuzzy
 msgid ""
 "End\n"
 "Turn"
-msgstr "Zug beenden"
+msgstr ""
+"Zug\n"
+"beenden"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
@@ -3447,21 +3436,24 @@ msgstr ""
 #: data/themes/unit_box.cfg:12
 msgid "Experimental work-in-progress replacement for the default theme."
 msgstr ""
+"Experimentelles, unvollständiges Grafikthema welches irgendwann das "
+"Standardgrafikthema ablösen soll."
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/unit_box.cfg:205
 msgid "Not implemented yet."
-msgstr ""
+msgstr "Noch nicht implementiert."
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr ""
+msgstr "Breitbild"
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
 msgid "Experimental theme optimized for widescreen resolutions."
 msgstr ""
+"Experimentelles Grafikthema welches für Breitbildauflösungen optimiert ist."
 
 #. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
@@ -4675,12 +4667,10 @@ msgid "Terms"
 msgstr "Bedingungen"
 
 #: src/addon/manager_ui.cpp:578
-#, fuzzy
 msgid "New Version"
 msgstr "Neue Version"
 
 #: src/addon/manager_ui.cpp:578
-#, fuzzy
 msgid "Old Version"
 msgstr "Alte Version"
 
@@ -4689,14 +4679,12 @@ msgid "Downloads"
 msgstr "Geladen"
 
 #: src/addon/manager_ui.cpp:705
-#, fuzzy
 msgid "Publish: $addon_title"
-msgstr "Erweiterung veröffentlichen: "
+msgstr "Erweiterung veröffentlichen:  $addon_title"
 
 #: src/addon/manager_ui.cpp:714
-#, fuzzy
 msgid "Delete: $addon_title"
-msgstr "Erweiterung löschen: "
+msgstr "Erweiterung löschen: $addon_title"
 
 #: src/addon/manager_ui.cpp:741
 msgid "There are no add-ons available for download from this server."
@@ -4717,7 +4705,6 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: src/addon/manager_ui.cpp:779
-#, fuzzy
 msgid "Update All"
 msgstr "Alles aktualisieren"
 
@@ -4731,45 +4718,38 @@ msgid "Add-on Installed"
 msgstr "Erweiterung installiert"
 
 #: src/addon/manager_ui.cpp:892
-#, fuzzy
 msgid "Add-on Updated"
-msgstr "Erweiterung entfernt"
+msgstr "Erweiterung aktualisiert"
 
 #: src/addon/manager_ui.cpp:893
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "Die Erweiterung »$addon_title|« wurde erfolgreich installiert."
 
 #: src/addon/manager_ui.cpp:893
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully updated."
-msgstr "Die Erweiterung »$addon_title|« wurde erfolgreich installiert."
+msgstr "Die Erweiterung »$addon_title|« wurde erfolgreich aktualisiert."
 
 #: src/addon/manager_ui.cpp:898
-#, fuzzy
 msgid "Add-ons Installed"
-msgstr "Erweiterung installiert"
+msgstr "Erweiterungen installiert"
 
 #: src/addon/manager_ui.cpp:898
-#, fuzzy
 msgid "Add-ons Updated"
-msgstr "Erweiterung entfernt"
+msgstr "Erweiterungen aktualisiert"
 
 #: src/addon/manager_ui.cpp:899
-#, fuzzy
 msgid "All add-ons installed successfully."
-msgstr "Alle Erweiterungen erfolgreich aktualisiert."
+msgstr "Alle Erweiterungen erfolgreich installiert."
 
 #: src/addon/manager_ui.cpp:899
 msgid "All add-ons updated successfully."
 msgstr "Alle Erweiterungen erfolgreich aktualisiert."
 
 #: src/addon/manager_ui.cpp:903
-#, fuzzy
 msgid "Installation Failed"
 msgstr "Installation fehlgeschlagen"
 
 #: src/addon/manager_ui.cpp:903
-#, fuzzy
 msgid "Update Failed"
 msgstr "Aktualisierung fehlgeschlagen"
 
@@ -5059,9 +5039,8 @@ msgid "Load Game"
 msgstr "Spielstand laden"
 
 #: src/dialogs.cpp:954
-#, fuzzy
 msgid "Change difficulty"
-msgstr "Schwierigkeitsgrad: "
+msgstr "Schwierigkeitsgrad ändern"
 
 #: src/dialogs.cpp:957
 msgid "Change campaign difficulty before loading"
@@ -6919,19 +6898,16 @@ msgid "No description available."
 msgstr "Keine Beschreibung verfügbar."
 
 #: src/multiplayer_create_engine.cpp:139 src/multiplayer_create_engine.cpp:797
-#, fuzzy
 msgid "Map could not be loaded: "
-msgstr "Der Spielstand konnte nicht geladen werden: "
+msgstr "Die Karte konnte nicht geladen werden: "
 
 #: src/multiplayer_create_engine.cpp:143
-#, fuzzy
 msgid "Map could not be loaded."
-msgstr "Der Spielstand konnte nicht geladen werden: "
+msgstr "Die Karte konnte nicht geladen werden."
 
 #: src/multiplayer_create_engine.cpp:165
-#, fuzzy
 msgid "not available."
-msgstr " Keine Hilfe verfügbar."
+msgstr "nicht verfügbar."
 
 #: src/multiplayer_create_engine.cpp:217
 msgid "User made map"
@@ -7151,14 +7127,12 @@ msgid "Auto-Save"
 msgstr "Autospeichern"
 
 #: src/play_controller.cpp:1178
-#, fuzzy
 msgid "Back to Turn "
 msgstr "Zurück zu Runde "
 
 #: src/play_controller.cpp:1186
-#, fuzzy
 msgid "Back to Start"
-msgstr "Zurück zu Runde "
+msgstr "Zurück zum Anfang"
 
 #: src/play_controller.cpp:1444
 msgid ""
@@ -7650,9 +7624,8 @@ msgstr ""
 "Spielstand laden?"
 
 #: src/savegame.cpp:693
-#, fuzzy
 msgid "This is not a multiplayer save."
-msgstr "Dies ist kein Mehrspieler-Spielstand"
+msgstr "Dies ist kein Mehrspieler-Spielstand."
 
 #: src/savegame.cpp:760
 msgid "The game could not be saved: "
@@ -7667,21 +7640,19 @@ msgid "Overwrite?"
 msgstr "Überschreiben?"
 
 #: src/savegame.cpp:853
-#, fuzzy
 msgid ""
 "Save names should not end on '.gz' or '.bz2'. Please remove the extension."
 msgstr ""
-"Der Name eines Spielstands darf nicht auf ».gz« enden. Bitte verwendet einen "
-"anderen Namen."
+"Der Name eines Spielstands darf nicht auf ».gz« oder ».bz2« enden. Bitte "
+"entfernt die Erweiterung."
 
 #: src/savegame.cpp:919
 msgid "Saved"
 msgstr "Gespeichert"
 
 #: src/savegame.cpp:919
-#, fuzzy
 msgid "The game has been saved."
-msgstr "Der Spielstand wurde gespeichert"
+msgstr "Der Spielstand wurde gespeichert."
 
 #: src/savegame.cpp:950 src/savegame.cpp:971
 msgid "Could not write to file"
@@ -7877,18 +7848,16 @@ msgid "Details"
 msgstr "Details"
 
 #: src/statistics_dialog.cpp:169
-#, fuzzy
 msgid "Select Scenario"
-msgstr "Testszenario"
+msgstr "Szenario auswählen"
 
 #: src/statistics_dialog.cpp:225 src/statistics_dialog.cpp:303
 msgid "Campaign"
 msgstr "Kampagne"
 
 #: src/statistics_dialog.cpp:225 src/statistics_dialog.cpp:303
-#, fuzzy
 msgid "Scenario"
-msgstr "Szenario beenden"
+msgstr "Szenario"
 
 #: src/statistics_dialog.cpp:283
 msgid "Damage"
@@ -7916,81 +7885,79 @@ msgstr "Überspringen"
 
 #: src/strftime.cpp:23
 msgid "Mon"
-msgstr ""
+msgstr "Mon"
 
 #: src/strftime.cpp:23
 msgid "Sun"
-msgstr ""
+msgstr "Son"
 
 #: src/strftime.cpp:23
 msgid "Tue"
-msgstr ""
+msgstr "Die"
 
 #: src/strftime.cpp:23
-#, fuzzy
 msgid "Wed"
-msgstr "Rot"
+msgstr "Mit"
 
 #: src/strftime.cpp:24
 msgid "Fri"
-msgstr ""
+msgstr "Fre"
 
 #: src/strftime.cpp:24
-#, fuzzy
 msgid "Sat"
-msgstr "Status"
+msgstr "Sam"
 
 #: src/strftime.cpp:24
 msgid "Thu"
-msgstr ""
+msgstr "Don"
 
 #: src/strftime.cpp:25
 msgid "Monday"
-msgstr ""
+msgstr "Montag"
 
 #: src/strftime.cpp:25
 msgid "Sunday"
-msgstr ""
+msgstr "Sonntag"
 
 #: src/strftime.cpp:25
 msgid "Tuesday"
-msgstr ""
+msgstr "Dienstag"
 
 #: src/strftime.cpp:26
 msgid "Friday"
-msgstr ""
+msgstr "Freitag"
 
 #: src/strftime.cpp:26
 msgid "Saturday"
-msgstr ""
+msgstr "Samstag"
 
 #: src/strftime.cpp:26
 msgid "Thursday"
-msgstr ""
+msgstr "Donnerstag"
 
 #: src/strftime.cpp:26
 msgid "Wednesday"
-msgstr ""
+msgstr "Mittwoch"
 
 #: src/strftime.cpp:27
 msgid "Apr"
-msgstr ""
+msgstr "Apr"
 
 #: src/strftime.cpp:27
 msgid "Feb"
-msgstr ""
+msgstr "Feb"
 
 #: src/strftime.cpp:27
 msgid "Jan"
-msgstr ""
+msgstr "Jan"
 
 #: src/strftime.cpp:27
 msgid "Mar"
-msgstr ""
+msgstr "Mär"
 
 #: src/strftime.cpp:28
 msgid "Aug"
-msgstr ""
+msgstr "Aug"
 
 #: src/strftime.cpp:28
 msgid "Jul"
@@ -7998,76 +7965,75 @@ msgstr "Jul"
 
 #: src/strftime.cpp:28
 msgid "Jun"
-msgstr ""
+msgstr "Jun"
 
 #: src/strftime.cpp:28
 msgid "Oct"
-msgstr ""
+msgstr "Okt"
 
 #: src/strftime.cpp:28
 msgid "Sep"
-msgstr ""
+msgstr "Sep"
 
 #: src/strftime.cpp:28
 msgid "abbrev^May"
-msgstr ""
+msgstr "Mai"
 
 #: src/strftime.cpp:29
 msgid "Dec"
-msgstr ""
+msgstr "Dez"
 
 #: src/strftime.cpp:29
 msgid "Nov"
-msgstr ""
+msgstr "Nov"
 
 #: src/strftime.cpp:30
 msgid "February"
-msgstr ""
+msgstr "Februar"
 
 #: src/strftime.cpp:30
 msgid "January"
-msgstr ""
+msgstr "Januar"
 
 #: src/strftime.cpp:30
-#, fuzzy
 msgid "March"
-msgstr "Suchen"
+msgstr "März"
 
 #: src/strftime.cpp:31
 msgid "April"
-msgstr ""
+msgstr "April"
 
 #: src/strftime.cpp:31
 msgid "August"
-msgstr ""
+msgstr "August"
 
 #: src/strftime.cpp:31
 msgid "July"
-msgstr ""
+msgstr "Juli"
 
 #: src/strftime.cpp:31
 msgid "June"
-msgstr ""
+msgstr "Juni"
 
 #: src/strftime.cpp:31
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 #: src/strftime.cpp:32
 msgid "December"
-msgstr ""
+msgstr "Dezember"
 
 #: src/strftime.cpp:32
 msgid "November"
-msgstr ""
+msgstr "November"
 
 #: src/strftime.cpp:32
 msgid "October"
-msgstr ""
+msgstr "Oktober"
 
 #: src/strftime.cpp:32
 msgid "September"
-msgstr ""
+msgstr "September"
 
 #: src/strftime.cpp:73
 #, fuzzy
@@ -8081,20 +8047,19 @@ msgstr "%a %d %b %H:%M %Y"
 
 #: src/strftime.cpp:88
 msgid "AM"
-msgstr ""
+msgstr "AM"
 
 #: src/strftime.cpp:88
 msgid "PM"
-msgstr ""
+msgstr "PM"
 
 #: src/strftime.cpp:91
-#, fuzzy
 msgid "am"
-msgstr "Name"
+msgstr "am"
 
 #: src/strftime.cpp:91
 msgid "pm"
-msgstr ""
+msgstr "pm"
 
 #: src/terrain.cpp:180
 msgid "Allied village"
@@ -8323,492 +8288,3 @@ msgstr "Reißbrett Optionen"
 
 #~ msgid "The server responded with an error: \"$error|\""
 #~ msgstr "Der Server gab folgenden Fehler zurück »$error|«"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "AI Location:"
-#~ msgstr "Ungültiger Ort"
-
-#, fuzzy
-#~| msgid "Swarm: "
-#~ msgid "Swarm"
-#~ msgstr "Schwarm: "
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Recruiting"
-#~ msgstr "Ausbilden"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Rossauba here"
-#~ msgstr "Sendet den Anführer hierher"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "AI moves Messenger here"
-#~ msgstr "Sendet den Anführer hierher"
-
-#, fuzzy
-#~| msgid "Message:"
-#~ msgid "Messenger"
-#~ msgstr "Nachricht:"
-
-#, fuzzy
-#~| msgid "Clear all orders"
-#~ msgid "Defeat all lurkers"
-#~ msgstr "Alle Befehle verwerfen"
-
-#, fuzzy
-#~| msgid "Notes:"
-#~ msgid "Notes"
-#~ msgstr "Anmerkungen:"
-
-#, fuzzy
-#~| msgid "Defeat enemy leader(s)"
-#~ msgid "Defeat all enemy units"
-#~ msgstr "Besiegt alle gegnerischen Anführer"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 2"
-#~ msgstr "Fraktion"
-
-#, fuzzy
-#~| msgid "Faction"
-#~ msgid "Station 1"
-#~ msgstr "Fraktion"
-
-#, fuzzy
-#~| msgid "Defeat"
-#~ msgid "Defeat Rowck"
-#~ msgstr "Niederlage"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Take the pass"
-#~ msgstr "Karte speichern unter"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "End scenario"
-#~ msgstr "Szenario beenden"
-
-#, fuzzy
-#~| msgid "help"
-#~ msgid "Whelps"
-#~ msgstr "Hilfe"
-
-#, fuzzy
-#~| msgid "Move leader here"
-#~ msgid "Move Konrad here"
-#~ msgstr "Sendet den Anführer hierher"
-
-#, fuzzy
-#~| msgid "Enemy unit sighted!"
-#~| msgid_plural "$enemies enemy units sighted!"
-#~ msgid "Enemy unit weight  (default: 100)"
-#~ msgstr "Gegnerische Einheit gesichtet!"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^RCA AI"
-#~ msgid "Multiplayer_AI^Experimental AI"
-#~ msgstr "RCA KI"
-
-#, fuzzy
-#~| msgid "Multiplayer_AI^RCA AI"
-#~ msgid "Multiplayer_AI^Default AI (RCA)"
-#~ msgstr "RCA KI"
-
-#~ msgid "KB"
-#~ msgstr "KB"
-
-#~ msgid "Downloading next scenario..."
-#~ msgstr "Nächstes Szenario wird geladen..."
-
-#~ msgid "Invalid era selected"
-#~ msgstr "Ungültige Epoche ausgewählt"
-
-#~ msgid "Map to play:"
-#~ msgstr "Verfügbare Karten:"
-
-#~ msgid "Enter a name for the new player"
-#~ msgstr "Vergebt einen Namen für den neuen Spieler"
-
-#~ msgid "Add named local player"
-#~ msgstr "Benannten lokaler Spieler hinzufügen"
-
-#~ msgid "?"
-#~ msgstr "?"
-
-#, fuzzy
-#~| msgid "Settings..."
-#~ msgid "Options..."
-#~ msgstr "Einstellungen..."
-
-#, fuzzy
-#~| msgid "Compressed saves"
-#~ msgid "Compress savegames using bzip2"
-#~ msgstr "Komprimierte Spielstände"
-
-#, fuzzy
-#~| msgid "Show replay"
-#~ msgid "Show Helptip"
-#~ msgstr "Spielverlauf anzeigen"
-
-#, fuzzy
-#~| msgid "Show replay"
-#~ msgid "Show Credits"
-#~ msgstr "Spielverlauf anzeigen"
-
-#, fuzzy
-#~| msgid "Update add-ons"
-#~ msgid "Manage Add-ons"
-#~ msgstr "Erweiterungen aktualisieren"
-
-#, fuzzy
-#~| msgid "Multiplayer"
-#~ msgid "Start Multiplayer Game"
-#~ msgstr "Mehrspieler"
-
-#, fuzzy
-#~| msgid "Campaign Design"
-#~ msgid "Start Campaign"
-#~ msgstr "Kampagnengestaltung"
-
-#, fuzzy
-#~| msgid "Tutorial"
-#~ msgid "Start Tutorial"
-#~ msgstr "Einführung"
-
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Next Tip of the Day"
-#~ msgstr "Tageszeit"
-
-#, fuzzy
-#~| msgid "Refresh gui."
-#~ msgid "Refresh WML"
-#~ msgstr "Zeichnet die Benutzeroberfläche neu."
-
-#, fuzzy
-#~| msgid "Chat message aging"
-#~ msgid "Clear Messages"
-#~ msgstr "Alternde Chatnachrichten"
-
-#, fuzzy
-#~| msgid "prompt^Command:"
-#~ msgid "Custom Command"
-#~ msgstr "Befehl:"
-
-#, fuzzy
-#~| msgid "Update all"
-#~ msgid "Speak to All"
-#~ msgstr "Alles aktualisieren"
-
-#, fuzzy
-#~| msgid "Update all"
-#~ msgid "Speak to Ally"
-#~ msgstr "Alles aktualisieren"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Remove Side"
-#~ msgstr "Nächste Seite"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Edit Side"
-#~ msgstr "Nächste Seite"
-
-#, fuzzy
-#~| msgid "End Scenario"
-#~ msgid "Edit Scenario"
-#~ msgstr "Szenario beenden"
-
-#, fuzzy
-#~| msgid "Latin Translation"
-#~ msgid "Update Terrain Transitions"
-#~ msgstr "Lateinische Übersetzung"
-
-#, fuzzy
-#~| msgid "Refresh gui."
-#~ msgid "Refresh Display"
-#~ msgstr "Zeichnet die Benutzeroberfläche neu."
-
-#, fuzzy
-#~| msgid "Create Game"
-#~ msgid "Create Mask"
-#~ msgstr "Partie eröffnen"
-
-#, fuzzy
-#~| msgid "Regenerate"
-#~ msgid "Generate Map"
-#~ msgstr "Neu erstellen"
-
-#, fuzzy
-#~| msgid "Share Maps"
-#~ msgid "Rotate Map"
-#~ msgstr "Karten teilen"
-
-#, fuzzy
-#~| msgid "Randomize time of day in begin"
-#~ msgid "Randomize Tiles in Selection"
-#~ msgstr "Legt die Tageszeit zu Spielbeginn zufällig fest"
-
-#, fuzzy
-#~| msgid "Invalid location"
-#~ msgid "Flip Selection"
-#~ msgstr "Ungültiger Ort"
-
-#, fuzzy
-#~| msgid "Select unit:"
-#~ msgid "Select None"
-#~ msgstr "Einheit auswählen:"
-
-#, fuzzy
-#~| msgid "Select an add-on to update:"
-#~ msgid "Select Inverse"
-#~ msgstr "Wählt die Erweiterung, welche Ihr aktualisieren wollt:"
-
-#, fuzzy
-#~| msgid "Select unit:"
-#~ msgid "Select All"
-#~ msgstr "Einheit auswählen:"
-
-#, fuzzy
-#~| msgid "Next Turn"
-#~ msgid "Next Brush"
-#~ msgstr "Nächste Runde"
-
-#, fuzzy
-#~| msgid "Advance Unit"
-#~ msgid "Change Unit ID"
-#~ msgstr "Einheit befördern"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Can Recruit"
-#~ msgstr "Ausbilden"
-
-#, fuzzy
-#~| msgid "Village gold: "
-#~ msgid "Village Tool"
-#~ msgstr "Steuereinnahmen pro Dorf: "
-
-#, fuzzy
-#~| msgid "Starting position: "
-#~ msgid "Starting Positions Tool"
-#~ msgstr "Startposition: "
-
-#, fuzzy
-#~| msgid "Next Turn"
-#~ msgid "Next Tool"
-#~ msgstr "Nächste Runde"
-
-#, fuzzy
-#~| msgid "Next Side"
-#~ msgid "Add New Side"
-#~ msgstr "Nächste Seite"
-
-#, fuzzy
-#~| msgid "Skip animation"
-#~ msgid "Map Information"
-#~ msgstr "Keine Animationen"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save All Maps"
-#~ msgstr "Karte speichern unter"
-
-#, fuzzy
-#~| msgid "Test scenario"
-#~ msgid "Save Scenario As"
-#~ msgstr "Testszenario"
-
-#, fuzzy
-#~| msgid "Save the Map As"
-#~ msgid "Save Map As"
-#~ msgstr "Karte speichern unter"
-
-#, fuzzy
-#~| msgid "Load Game"
-#~ msgid "Load Map"
-#~ msgstr "Spielstand laden"
-
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Custom Time of Day Creator"
-#~ msgstr "Tageszeit"
-
-#, fuzzy
-#~| msgid "Share Maps"
-#~ msgid "Switch Map"
-#~ msgstr "Karten teilen"
-
-#, fuzzy
-#~| msgid "Time of day"
-#~ msgid "Switch Time of Day"
-#~ msgstr "Tageszeit"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Move Action Down"
-#~ msgstr "Reißbrett Optionen"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Move Action Up"
-#~ msgstr "Reißbrett Optionen"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Delete Action"
-#~ msgstr "Reißbrett Optionen"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Execute All Actions"
-#~ msgstr "Reißbrett Optionen"
-
-#, fuzzy
-#~| msgid "Whiteboard Options"
-#~ msgid "whiteboard^Execute Action"
-#~ msgstr "Reißbrett Optionen"
-
-#, fuzzy
-#~| msgid "Skip animation"
-#~ msgid "Skip Animation"
-#~ msgstr "Keine Animationen"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Team 1"
-#~ msgstr "Team"
-
-#, fuzzy
-#~| msgid "Team"
-#~ msgid "Each Team"
-#~ msgstr "Team"
-
-#, fuzzy
-#~| msgid "Save Replay"
-#~ msgid "Stop Replay"
-#~ msgstr "Aufzeichnung speichern"
-
-#, fuzzy
-#~| msgid "Save Replay"
-#~ msgid "Reset Replay"
-#~ msgstr "Aufzeichnung speichern"
-
-#, fuzzy
-#~| msgid "Save Replay"
-#~ msgid "Play Replay"
-#~ msgstr "Aufzeichnung speichern"
-
-#, fuzzy
-#~| msgid "Clear all orders"
-#~ msgid "Clear Labels"
-#~ msgstr "Alle Befehle verwerfen"
-
-#, fuzzy
-#~| msgid "Quit game."
-#~ msgid "Quit Game"
-#~ msgstr "Beendet das Spiel."
-
-#, fuzzy
-#~| msgid "Confirm"
-#~ msgid "Continue Network Game"
-#~ msgstr "Bestätigen"
-
-#, fuzzy
-#~| msgid "Network Player"
-#~ msgid "Pause Network Game"
-#~ msgstr "Netzwerkspieler"
-
-#, fuzzy
-#~| msgid "Scenario Settings"
-#~ msgid "Scenario Objectives"
-#~ msgstr "Szenarioneinstellungen"
-
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
-#~ msgid "Kill Unit (Debug!)"
-#~ msgstr "Einheit erstellen (Debug!)"
-
-#, fuzzy
-#~| msgid "Create Unit (Debug!)"
-#~ msgid "Change Side (Debug!)"
-#~ msgstr "Einheit erstellen (Debug!)"
-
-#, fuzzy
-#~| msgid "Status"
-#~ msgid "Status Table"
-#~ msgstr "Status"
-
-#, fuzzy
-#~| msgid "Mouse scrolling"
-#~ msgid "Mouse Scrolling"
-#~ msgstr "Mit der Maus scrollen"
-
-#, fuzzy
-#~| msgid "Recruit"
-#~ msgid "Repeat Recruit"
-#~ msgstr "Ausbilden"
-
-#, fuzzy
-#~| msgid "Share Maps"
-#~ msgid "Save Map"
-#~ msgstr "Karten teilen"
-
-#, fuzzy
-#~| msgid "Delete add-on: "
-#~ msgid "Delete Unit"
-#~ msgstr "Erweiterung löschen: "
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "Unit Description"
-#~ msgstr "Beschreibung"
-
-#, fuzzy
-#~| msgid "Description"
-#~ msgid "Terrain Description"
-#~ msgstr "Beschreibung"
-
-#, fuzzy
-#~| msgid "End Turn"
-#~ msgid "End Unit Turn"
-#~ msgstr "Zug beenden"
-
-#, fuzzy
-#~| msgid "Next Turn"
-#~ msgid "Next Unit"
-#~ msgstr "Nächste Runde"
-
-#, fuzzy
-#~| msgid "Attacker"
-#~ msgid "Move/Attack"
-#~ msgstr "Angreifer"
-
-#, fuzzy
-#~| msgid "Test scenario"
-#~ msgid "Select Hex"
-#~ msgstr "Testszenario"
-
-#, fuzzy
-#~| msgid "Cancel"
-#~ msgid "cancel"
-#~ msgstr "Abbrechen"
-
-#~ msgid "(side $temp_i|)"
-#~ msgstr "(Seite $temp_i|)"
-
-#~ msgid "$error, value '$value' at $pos"
-#~ msgstr "$error, Wert '$value' an $pos"
-
-#~ msgid "ERROR DETAILS:"
-#~ msgstr "Fehlerdetails:"
-
-#~ msgid "' (The game will now exit)"
-#~ msgstr "' (Das Spiel wird nun beendet)"
