@@ -443,6 +443,7 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
 	} else if(update_rects.empty() == false) {
@@ -453,6 +454,7 @@ void CVideo::flip()
 	}
 
 	clear_updates();
+#endif
 }
 
 void CVideo::lock_updates(bool value)
