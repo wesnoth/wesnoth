@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2012-01-06 16:17+0100\n"
+"POT-Creation-Date: 2014-02-22 14:39+0100\n"
+"PO-Revision-Date: 2014-03-01 13:18+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -27,7 +27,7 @@ msgstr "Užívateľská mapa"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "Vlastná"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -37,7 +37,7 @@ msgstr "Náhodná"
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:125
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
-msgstr ""
+msgstr "<span strikethrough='true' foreground='#%02x%02x%02x'>Strana %d</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
@@ -69,6 +69,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"Štandardná éra pre hru viacerých hráčov. Skladá sa zo šiestich frakcií a je "
+"dobre vyvážená."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -82,11 +84,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Éra s jednotkami vyšších úrovní: velitelia na tretej úrovni a jednotky na "
+"verbovanie prvej a druhej úrovne. Skladá sa zo šiestich frakcí. Nie je "
+"vyvážená."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Štandardná + Kalifát"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -98,13 +103,16 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Éra obsahujúca jednu frakciu navyše oproti štandardnej ére. Jednotky "
+"Kalifátu nepoužívajú mágiu, ale spoliehajú sa na dobré využitie terénu a "
+"koordinované útoky pri súmraku a brieždení.\n"
+"\n"
+"Táto éra je ešte vo vývoji, preto prosíme nahláste vzniknuté problémy."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Vek hrdinov"
+msgstr "Vek hrdinov + Kalifát"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -116,6 +124,11 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Éra obsahujúca jednu frakciu navyše oproti ére Vek hrdinov. Jednotky "
+"Kalifátu nepoužívajú mágiu, ale spoliehajú sa na dobré využitie terénu a "
+"koordinované útoky pri súmraku a brieždení.\n"
+"\n"
+"Táto éra je ešte vo vývoji, preto prosíme nahláste vzniknuté problémy."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -127,7 +140,7 @@ msgstr "Jašteri"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Kalifát"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -2175,10 +2188,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
 msgid "Random map by YAMG"
-msgstr "Náhodná mapa"
+msgstr "Náhodná mapa od YAMG"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
