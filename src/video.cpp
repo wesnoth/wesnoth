@@ -405,6 +405,9 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return 0;
+#else
 	update_rects.clear();
 	if (fake_screen_) return 0;
 	mode_changed_ = true;
@@ -422,6 +425,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		image::set_pixel_format(frameBuffer->format);
 		return bits_per_pixel;
 	} else	return 0;
+#endif
 }
 
 bool CVideo::modeChanged()
