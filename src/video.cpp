@@ -223,16 +223,22 @@ bool non_interactive()
 {
 	if (fake_interactive)
 		return false;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return false;
+#else
 	return SDL_GetVideoSurface() == NULL;
+#endif
 }
 
 surface display_format_alpha(surface surf)
 {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(SDL_GetVideoSurface() != NULL)
 		return SDL_DisplayFormatAlpha(surf);
 	else if(frameBuffer != NULL)
 		return SDL_ConvertSurface(surf,frameBuffer->format,0);
 	else
+#endif
 		return NULL;
 }
 
@@ -258,7 +264,11 @@ void update_rect(const SDL_Rect& rect_value)
 
 	SDL_Rect rect = rect_value;
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	surface const fb = NULL;
+#else
 	surface const fb = SDL_GetVideoSurface();
+#endif
 	if(fb != NULL) {
 		if(rect.x < 0) {
 			if(rect.x*-1 >= int(rect.w))
