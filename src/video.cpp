@@ -518,6 +518,30 @@ void CVideo::set_window_icon(surface& icon)
 }
 #endif
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
+{
+	std::vector<std::pair<int, int> > result;
+
+	const int modes = SDL_GetNumDisplayModes(0);
+	if(modes <= 0) {
+		std::cerr << "No modes supported\n";
+		return result;
+	}
+
+	SDL_DisplayMode mode;
+	for(int i = 0; i < modes; ++i) {
+		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
+			result.push_back(std::make_pair(mode.w, mode.h));
+		}
+	}
+
+	std::sort(result.begin(), result.end());
+	result.erase(std::unique(result.begin(), result.end()), result.end());
+
+	return result;
+}
+#else
 std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 {
 	std::vector<std::pair<int, int> > result;
@@ -564,6 +588,7 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 
 	return result;
 }
+#endif
 
 surface& CVideo::getSurface()
 {
