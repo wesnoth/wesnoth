@@ -579,7 +579,11 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		pass_event_to_target(event);
 	}
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	wchar_t character = key.scancode;
+#else
 	wchar_t character = key.unicode;
+#endif
 
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
