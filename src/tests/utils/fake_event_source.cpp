@@ -18,6 +18,7 @@
 
 #include "mouse_handler_base.hpp"
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 	/**
 	 * Base class for all event nodes to be used to fire fake input events
@@ -225,3 +226,4 @@ namespace test_utils {
 		}
 	}
 }
+#endif
