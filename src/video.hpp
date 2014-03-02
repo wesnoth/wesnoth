@@ -131,6 +131,15 @@ class CVideo : private boost::noncopyable {
 	 * @warning The function always return 0 for now.
 	 */
 	static Uint8 window_state();
+
+	/**
+	 * Sets the title of the main window.
+	 *
+	 * @warning The function is a NOP at the moment.
+	 *
+	 * @param title               The new title for the window.
+	 */
+	static void set_window_title(const std::string& title);
 #endif
 
 	/**

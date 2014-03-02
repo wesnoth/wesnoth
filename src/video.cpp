@@ -474,6 +474,13 @@ CVideo::window_state(void)
     }
     return state;
 }
+
+void CVideo::set_window_title(const std::string& title)
+{
+	if(window) {
+		SDL_SetWindowTitle(window, title.c_str());
+	}
+}
 #endif
 
 std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
