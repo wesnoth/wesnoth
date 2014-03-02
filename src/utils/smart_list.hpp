@@ -747,7 +747,7 @@ inline smart_list<Data>::node_t::~node_t()
 /** Assignment */
 template <class Data>
 template <class Value, bool Reversed>
-inline smart_list<Data>::iterator_base<Value, Reversed> &
+inline typename smart_list<Data>::template iterator_base<Value, Reversed> &
 	smart_list<Data>::iterator_base<Value, Reversed>::operator=
 		(const iterator_base & that)
 {
@@ -765,7 +765,7 @@ inline smart_list<Data>::iterator_base<Value, Reversed> &
 /** Post-increment */
 template <class Data>
 template <class Value, bool Reversed>
-inline smart_list<Data>::iterator_base<Value, Reversed>
+inline typename smart_list<Data>::template iterator_base<Value, Reversed>
 	smart_list<Data>::iterator_base<Value, Reversed>::operator++(int)
 {
 	iterator_base retval(*this);
@@ -775,7 +775,7 @@ inline smart_list<Data>::iterator_base<Value, Reversed>
 /** Post-decrement */
 template <class Data>
 template <class Value, bool Reversed>
-inline smart_list<Data>::iterator_base<Value, Reversed>
+inline typename smart_list<Data>::template iterator_base<Value, Reversed>
 	smart_list<Data>::iterator_base<Value, Reversed>::operator--(int)
 {
 	iterator_base retval(*this);
