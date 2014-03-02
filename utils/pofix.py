@@ -54,6 +54,7 @@ stringfixes = {
 ),
 
 "wesnoth-editor" : (
+# conversion added in 1.11.10+dev
 ("Choose file", "Choose File"),
 ),
 
