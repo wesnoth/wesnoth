@@ -11,14 +11,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-03-02 17:54+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2014-03-02 20:04+0100\n"
+"Last-Translator: Nils Kneuper (Ivanovic) <crazy-ivanovic@gmx.net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [advanced_preference]: type=combo
 #. Associated save_compression_short^ entries need to be as short as
@@ -61,12 +62,12 @@ msgstr "Beste Kompressionsrate, langsamer"
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:24
 msgid "save_compression^No"
-msgstr "Nein"
+msgstr "Keine"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:25
 msgid "save_compression_short^no"
-msgstr "no"
+msgstr "keine"
 
 #. [option]: type=combo
 #: data/advanced_preferences.cfg:26
@@ -3304,7 +3305,7 @@ msgstr "MP"
 #. [label]: id=label-def
 #: data/themes/default.cfg:159
 msgid "def"
-msgstr ""
+msgstr "abw"
 
 #. [label]: id=gold-icon
 #: data/themes/default.cfg:168 data/themes/pandora.cfg:181
@@ -4324,7 +4325,7 @@ msgstr "Es gibt keine freien Burgfelder zum wieder Einberufen von Einheiten."
 
 #: src/actions/create.cpp:626 src/actions/create.cpp:762
 msgid "An unrecognized error has occurred."
-msgstr ""
+msgstr "Ein unbekannter Fehler ist aufgetreten."
 
 #: src/actions/create.cpp:740
 msgid "You don’t have a leader to recruit with."
@@ -4435,9 +4436,8 @@ msgstr ""
 "kann nicht installiert werden."
 
 #: src/addon/client.cpp:306 src/addon/manager_ui.cpp:745
-#, fuzzy
 msgid "Add-ons Manager"
-msgstr "Erweiterung installiert"
+msgstr "Erweiterungsmanager"
 
 #: src/addon/info.cpp:156
 msgid "addon_type^Campaign"
@@ -4448,9 +4448,8 @@ msgid "addon_type^Scenario"
 msgstr "Szenario"
 
 #: src/addon/info.cpp:160
-#, fuzzy
 msgid "addon_type^SP/MP Campaign"
-msgstr "MS Kampagne"
+msgstr "ES/MS Kampagne"
 
 #: src/addon/info.cpp:162
 msgid "addon_type^MP era"
@@ -4473,9 +4472,8 @@ msgid "addon_type^MP campaign"
 msgstr "MS Kampagne"
 
 #: src/addon/info.cpp:172
-#, fuzzy
 msgid "addon_type^MP modification"
-msgstr "MS Fraktion"
+msgstr "MS Modifikation"
 
 #: src/addon/info.cpp:174
 msgid "addon_type^Resources"
@@ -4494,22 +4492,20 @@ msgid "unit_byte^B"
 msgstr "B"
 
 #: src/addon/manager_ui.cpp:97
-#, fuzzy
 msgid "addon_state^Not installed"
-msgstr "Erweiterung installiert"
+msgstr "Nicht installiert"
 
 #: src/addon/manager_ui.cpp:97
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "Veröffentlicht, nicht installiert"
 
 #: src/addon/manager_ui.cpp:104
-#, fuzzy
 msgid "addon_state^Installed"
-msgstr "Erweiterung installiert"
+msgstr "Installiert"
 
 #: src/addon/manager_ui.cpp:104
 msgid "addon_state^Published"
-msgstr ""
+msgstr "Veröffentlicht"
 
 #: src/addon/manager_ui.cpp:107
 msgid "addon_state^Installed, upgradable"
@@ -4536,9 +4532,8 @@ msgid "addon_state^Published, broken"
 msgstr ""
 
 #: src/addon/manager_ui.cpp:115
-#, fuzzy
 msgid "addon_state^Unknown"
-msgstr "(unbekannt)"
+msgstr "Unbekannt"
 
 #: src/addon/manager_ui.cpp:148
 #, fuzzy
@@ -4583,7 +4578,6 @@ msgid "Type"
 msgstr "Typ"
 
 #: src/addon/manager_ui.cpp:204
-#, fuzzy
 msgid "Install Dependencies"
 msgstr "Abhängigkeiten installieren"
 
@@ -5353,7 +5347,7 @@ msgstr "Bildschirmfoto"
 
 #: src/hotkey/command_executor.cpp:633
 msgid "Screenshot Done"
-msgstr ""
+msgstr "Bildschirmfoto erstellt"
 
 #: src/intro.cpp:36
 msgid "The End"
@@ -6846,14 +6840,12 @@ msgid "User Scenarios"
 msgstr "Szenario beenden"
 
 #: src/multiplayer_create.cpp:107
-#, fuzzy
 msgid "Random Maps"
-msgstr "Zufall"
+msgstr "Zufallskarten"
 
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
-#, fuzzy
 msgid "No games found."
-msgstr "Keine Epoche gefunden."
+msgstr "Keine Partien gefunden."
 
 #: src/multiplayer_create.cpp:162
 msgid "No eras found."
@@ -6889,9 +6881,8 @@ msgid "Size: "
 msgstr "Größe: "
 
 #: src/multiplayer_create.cpp:383
-#, fuzzy
 msgid "Number of players: "
-msgstr "Name der Partie:"
+msgstr "Anzahl Spieler: "
 
 #: src/multiplayer_create.cpp:490 src/unit_types.cpp:782
 msgid "No description available."
@@ -6922,14 +6913,12 @@ msgid " (Unknown Era)"
 msgstr " (Unbekannte Ära)"
 
 #: src/multiplayer_lobby.cpp:486
-#, fuzzy
 msgid "Scenario:"
-msgstr "Szenario beenden"
+msgstr "Szenario:"
 
 #: src/multiplayer_lobby.cpp:526
-#, fuzzy
 msgid "Campaign:"
-msgstr "Kampagnengestaltung"
+msgstr "Kampagne:"
 
 #: src/multiplayer_lobby.cpp:557
 #, fuzzy
@@ -7335,9 +7324,8 @@ msgid "Set side to idle"
 msgstr ""
 
 #: src/playturn.cpp:258
-#, fuzzy
 msgid "Save and abort game"
-msgstr "Spiel abbrechen"
+msgstr "Spiel speichern und abbrechen"
 
 #: src/playturn.cpp:266 src/playturn.cpp:280
 msgid "Replace with $player"
@@ -7568,7 +7556,6 @@ msgid "None"
 msgstr "keine"
 
 #: src/reports.cpp:1131 src/reports.cpp:1181
-#, fuzzy
 msgid "Lawful units: "
 msgstr "Redliche Einheiten: "
 
