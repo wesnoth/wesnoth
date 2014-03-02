@@ -15,9 +15,10 @@
 #define FONT_HPP_INCLUDED
 
 #include "exceptions.hpp"
-#include "SDL_ttf.h"
 
 #include "sdl_utils.hpp"
+
+#include <SDL_ttf.h>
 
 class t_string;
 
