@@ -481,6 +481,13 @@ void CVideo::set_window_title(const std::string& title)
 		SDL_SetWindowTitle(window, title.c_str());
 	}
 }
+
+void CVideo::set_window_icon(surface& icon)
+{
+	if(window) {
+		SDL_SetWindowIcon(window, icon);
+	}
+}
 #endif
 
 std::vector<std::pair<int, int> > CVideo::get_available_resolutions()

@@ -140,6 +140,15 @@ class CVideo : private boost::noncopyable {
 	 * @param title               The new title for the window.
 	 */
 	static void set_window_title(const std::string& title);
+
+	/**
+	 * Sets the icon of the main window.
+	 *
+	 * @warning The function is a NOP at the moment.
+	 *
+	 * @param icon                The new icon for the window.
+	 */
+	static void set_window_icon(surface& icon);
 #endif
 
 	/**
