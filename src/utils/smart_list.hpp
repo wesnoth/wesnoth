@@ -112,7 +112,20 @@ class  smart_list
 		~iterator_base()                   { unref(ptr_); }
 
 		// Assignment
-		iterator_base & operator=(const iterator_base & that);
+		iterator_base & operator=(const iterator_base & that)
+		// NOTE: This is defined here because MSVC was unable to match the
+		//       definition to the declaration when they were separate.
+		{
+			// Update our pointer.
+			node_t * old_ptr = ptr_;
+			ptr_ = that.ptr_;
+
+			// Update reference counts.
+			refer();
+			unref(old_ptr);
+
+			return *this;
+		}
 
 		// Comparison:
 		bool operator==(const iterator_base & that) const  { return ptr_ == that.ptr_; }
@@ -125,8 +138,22 @@ class  smart_list
 		// Increment/decrement:
 		iterator_base & operator++()       { advance(Reversed);  return *this; }
 		iterator_base & operator--()       { advance(!Reversed); return *this; }
-		iterator_base operator++(int);
-		iterator_base operator--(int);
+		iterator_base operator++(int)
+		// NOTE: This is defined here because MSVC was unable to match the
+		//       definition to the declaration when they were separate.
+		{
+			iterator_base retval(*this);
+			advance(Reversed);
+			return retval;
+		}
+		iterator_base operator--(int)
+		// NOTE: This is defined here because MSVC was unable to match the
+		//       definition to the declaration when they were separate.
+		{
+			iterator_base retval(*this);
+			advance(!Reversed);
+			return retval;
+		}
 
 		/// Test for being in a list, rather than past-the-end (or unassigned).
 		bool derefable() const             { return derefable(ptr_); }
@@ -743,45 +770,6 @@ inline smart_list<Data>::node_t::~node_t()
 
 
 /* ** smart_list::iterator_base ** */
-
-/** Assignment */
-template <class Data>
-template <class Value, bool Reversed>
-inline typename smart_list<Data>::template iterator_base<Value, Reversed> &
-	smart_list<Data>::iterator_base<Value, Reversed>::operator=
-		(const iterator_base & that)
-{
-	// Update our pointer.
-	node_t * old_ptr = ptr_;
-	ptr_ = that.ptr_;
-
-	// Update reference counts.
-	refer();
-	unref(old_ptr);
-
-	return *this;
-}
-
-/** Post-increment */
-template <class Data>
-template <class Value, bool Reversed>
-inline typename smart_list<Data>::template iterator_base<Value, Reversed>
-	smart_list<Data>::iterator_base<Value, Reversed>::operator++(int)
-{
-	iterator_base retval(*this);
-	advance(Reversed);
-	return retval;
-}
-/** Post-decrement */
-template <class Data>
-template <class Value, bool Reversed>
-inline typename smart_list<Data>::template iterator_base<Value, Reversed>
-	smart_list<Data>::iterator_base<Value, Reversed>::operator--(int)
-{
-	iterator_base retval(*this);
-	advance(!Reversed);
-	return retval;
-}
 
 /**
  * Advances our pointer to an unflagged node, possibly in the reverse direction.
