@@ -68,10 +68,13 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 	resolution = preferences::resolution();
 
 	int DefaultBPP = 24;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	/* This needs to be fixed properly. */
 	const SDL_VideoInfo* const video_info = SDL_GetVideoInfo();
 	if(video_info != NULL && video_info->vfmt != NULL) {
 		DefaultBPP = video_info->vfmt->BitsPerPixel;
 	}
+#endif
 
 	std::cerr << "Checking video mode: " << resolution.first << 'x'
 		<< resolution.second << 'x' << DefaultBPP << "...\n";
