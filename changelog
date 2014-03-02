@@ -15,7 +15,7 @@ Version 1.11.10+dev:
    * Updated translations: Slovak
  * WML engine:
    * Bug #21643: Removing fog from a single hex no longer makes the hex ugly.
-   * WML files whose names contain spaces are ignored.
+   * WML files whose names contain whitespace trigger preprocessor errors.
    * Bug #21722: Event handlers with multiple names never fired.
  * User interface:
    * Corrected most of the issues left with the new default theme.
