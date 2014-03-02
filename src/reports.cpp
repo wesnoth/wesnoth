@@ -573,9 +573,11 @@ REPORT_GENERATOR(selected_unit_defense)
 static config unit_vision(const unit* u)
 {
 	if (!u) return report();
+
+	// TODO
 	std::ostringstream str;
 	if (u->vision() != u->total_movement()) {
-		str << _("VP/JP") << '\n' << u->vision() << '/' << u->jamming(); }
+		str << _("vision: ") << u->vision(); }
 	return text_report(str.str());
 }
 REPORT_GENERATOR(unit_vision)
