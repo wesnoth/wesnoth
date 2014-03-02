@@ -37,6 +37,7 @@
 #define KMOD_META KMOD_GUI
 #define SDL_FULLSCREEN SDL_WINDOW_FULLSCREEN_DESKTOP
 #define SDL_EVENTMASK(EVENT) EVENT, EVENT
+#define SDL_GetAppState CVideo::window_state
 
 #endif
 

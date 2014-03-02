@@ -25,6 +25,12 @@ struct surface;
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+#define SDL_APPMOUSEFOCUS	0x01		/**< The app has mouse coverage */
+#define SDL_APPINPUTFOCUS	0x02		/**< The app has input focus */
+#define SDL_APPACTIVE		0x04		/**< The application is active */
+#endif
+
 surface display_format_alpha(surface surf);
 surface get_video_surface();
 SDL_Rect screen_area();
@@ -117,6 +123,15 @@ class CVideo : private boost::noncopyable {
 	//updates.
 	void lock_updates(bool value);
 	bool update_locked() const;
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	/**
+	 * Wrapper for SDL_GetAppState.
+	 *
+	 * @warning The function always return 0 for now.
+	 */
+	static Uint8 window_state();
+#endif
 
 private:
 

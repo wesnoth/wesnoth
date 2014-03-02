@@ -449,6 +449,33 @@ bool CVideo::update_locked() const
 	return updatesLocked_ > 0;
 }
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+static SDL_Window* window = NULL;
+
+Uint8
+CVideo::window_state(void)
+{
+    Uint8 state = 0;
+    Uint32 flags = 0;
+
+	if(!::window) {
+		return state;
+	}
+
+    flags = SDL_GetWindowFlags(::window);
+    if ((flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED)) {
+        state |= SDL_APPACTIVE;
+    }
+    if (flags & SDL_WINDOW_INPUT_FOCUS) {
+        state |= SDL_APPINPUTFOCUS;
+    }
+    if (flags & SDL_WINDOW_MOUSE_FOCUS) {
+        state |= SDL_APPMOUSEFOCUS;
+    }
+    return state;
+}
+#endif
+
 surface& CVideo::getSurface()
 {
 	return frameBuffer;
