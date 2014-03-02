@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
+"POT-Creation-Date: 2014-03-02 10:23+0100\n"
 "PO-Revision-Date: 2014-02-01 15:32+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -1811,7 +1811,7 @@ msgstr "Eliminar complementos"
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
 #: data/gui/default/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Help"
 msgstr "Axuda"
 
@@ -3605,7 +3605,7 @@ msgstr "Houbo un erro"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:200
+#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 #, fuzzy
 #| msgid "Rails"
 msgid "Details:"
@@ -5235,169 +5235,169 @@ msgstr "Crear unha máscara"
 msgid "Refresh Display"
 msgstr "Actualizar a pantalla"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Update Terrain Transitions"
 msgstr "Actualizar as transicións dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Toggle Terrain Transition Update"
 msgstr "Conmutar a actualización das transicións dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar automaticamente as transicións dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Actualizar automaticamente as transicións dos terreos: non."
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Actualizar automaticamente as transicións dos terreos: parcialmente."
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
 msgstr "Actualizar a caché das imaxes"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:215
 msgid "Draw Hex Coordinates"
 msgstr "Mostrar as coordenadas dos hexágonos"
 
-#: src/hotkey/hotkey_command.cpp:214
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Draw Terrain Codes"
 msgstr "Mostrar os códigos dos terreos"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 #, fuzzy
 #| msgid "Rotate Selection"
 msgid "Save Selection to Area"
 msgstr "Rotar a selección"
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:219
 #, fuzzy
 #| msgid "Selected game"
 msgid "Rename Selected Area"
 msgstr "Partida escollida"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Selected game"
 msgid "Remove Selected Area"
 msgstr "Partida escollida"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 #, fuzzy
 #| msgid "Add New Side"
 msgid "Add New Area"
 msgstr "Engadir un bando"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:223
 #, fuzzy
 #| msgid "Edit Scenario Settings"
 msgid "Edit Scenario"
 msgstr "Editar a configuración do escenario"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 #, fuzzy
 #| msgid "Switch Side"
 msgid "Edit Side"
 msgstr "Cambiar de bando"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove Side"
 msgstr "Eliminar"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
 msgstr "Retardar as actualizacións do manto do descoñecido"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Update Shroud Now"
 msgstr "Actualizar o manto do descoñecido"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Continue Move"
 msgstr "Continuar o movemento"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Find Label or Unit"
 msgstr "Buscar un elemento ou unidade"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Speak to Ally"
 msgstr "Escribirlles unha mensaxe aos aliados"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Speak to All"
 msgstr "Escribirlle unha mensaxe a todo o mundo"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "View Chat Log"
 msgstr "Ver o rexistro das conversas"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Enter User Command"
 msgstr "Escribir unha orde"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Custom Command"
 msgstr "Orde personalizada"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Run Formula"
 msgstr "Executar o código Formula"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Clear Messages"
 msgstr "Quitar as mensaxes"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Change Language"
 msgstr "Cambiar de lingua"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Refresh WML"
 msgstr "Actualizar o WML"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Next Tip of the Day"
 msgstr "Seguinte consello"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Previous Tip of the Day"
 msgstr "Consello anterior"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Start Tutorial"
 msgstr "Comezar a aprendizaxe"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Start Campaign"
 msgstr "Comezar unha partida individual"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Start Multiplayer Game"
 msgstr "Comezar unha partida con varios xogadores"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Manage Add-ons"
 msgstr "Xestionar os complementos"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Start Editor"
 msgstr "Iniciar o editor de mapas"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Show Credits"
 msgstr "Mostrar a lista dos autores"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 msgid "Show Helptip"
 msgstr "Mostrar a axuda"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
 msgstr "Orde descoñecida"
 

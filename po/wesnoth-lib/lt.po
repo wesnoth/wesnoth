@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
+"POT-Creation-Date: 2014-03-02 10:23+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -1579,7 +1579,7 @@ msgstr "Pašalinti priedus"
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
 #: data/gui/default/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Help"
 msgstr "Pagalba"
 
@@ -3380,7 +3380,7 @@ msgstr "Klaida"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:200
+#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 msgid "Details:"
 msgstr ""
 
@@ -4923,171 +4923,171 @@ msgstr "Sukurti kaukę"
 msgid "Refresh Display"
 msgstr "Atnaujinti vaizdą"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Update Terrain Transitions"
 msgstr "Atnaujinti vietovių perėjimus"
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:208
 #, fuzzy
 msgid "Toggle Terrain Transition Update"
 msgstr "Atnaujinti vietovių perėjimus"
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Auto-update Terrain Transitions"
 msgstr "Automatiškai atnaujinti vietovių perėjimus"
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Automatiškai atnaujinti vietovių perėjimus: ne "
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Automatiškai atnaujinti vietovių perėjimus: dalinai"
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
 msgstr "Atnaujinti paveikslėlių podėlį"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:215
 msgid "Draw Hex Coordinates"
 msgstr "Rodyti langelių koordinates"
 
-#: src/hotkey/hotkey_command.cpp:214
+#: src/hotkey/hotkey_command.cpp:216
 msgid "Draw Terrain Codes"
 msgstr "Piešti vietovių kodus"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 #, fuzzy
 #| msgid "Rotate Selection"
 msgid "Save Selection to Area"
 msgstr "Sukti pažymėjimą"
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:219
 #, fuzzy
 #| msgid "Selected game"
 msgid "Rename Selected Area"
 msgstr "Pasirinktas žaidimas"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Selected game"
 msgid "Remove Selected Area"
 msgstr "Pasirinktas žaidimas"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 #, fuzzy
 #| msgid "Add New Side"
 msgid "Add New Area"
 msgstr "Pridėti pusę"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:223
 #, fuzzy
 #| msgid "Scenario Objectives"
 msgid "Edit Scenario"
 msgstr "Scenarijaus tikslas"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 #, fuzzy
 #| msgid "Switch Side"
 msgid "Edit Side"
 msgstr "Keisti pusę"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove Side"
 msgstr "Pašalinti"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
 msgstr "Atidėti uždangos atnaujinimą"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Update Shroud Now"
 msgstr "Dabar atnaujinti uždangą"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 msgid "Continue Move"
 msgstr "Tęsti judėjimą"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Find Label or Unit"
 msgstr "Rasti žymę arba dalinį"
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Speak to Ally"
 msgstr "Kalbėti draugui"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Speak to All"
 msgstr "Kalbėti visiems"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "View Chat Log"
 msgstr "Žiūrėti pokalbių žurnalą"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Enter User Command"
 msgstr "Įveskite naudotojo komandą"
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 msgid "Custom Command"
 msgstr "Pasirinkta komanda"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Run Formula"
 msgstr "Paleisti formulę"
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 msgid "Clear Messages"
 msgstr "Išvalyti žinutes"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Change Language"
 msgstr "Keisti kalbą"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 msgid "Refresh WML"
 msgstr "Atnaujinti WML"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Next Tip of the Day"
 msgstr "Kitas dienos patarimas"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Previous Tip of the Day"
 msgstr "Ankstesnis dienos patarimas"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Start Tutorial"
 msgstr "Pradėti apmokymą"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Start Campaign"
 msgstr "Pradėti kampaniją"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Start Multiplayer Game"
 msgstr "Pradėti daugelio žaidėjų žaidimą"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Manage Add-ons"
 msgstr "Tvarkyti priedus"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Start Editor"
 msgstr "Paleisti redaktorių"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Show Credits"
 msgstr "Rodyti autorius"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 #, fuzzy
 msgid "Show Helptip"
 msgstr "Rodyti autorius"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
+"POT-Creation-Date: 2014-03-02 10:23+0100\n"
 "PO-Revision-Date: 2013-10-25 16:23+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -1583,7 +1583,7 @@ msgstr "추가 기능 삭제"
 #. [button]: id=show_help
 #: data/gui/default/window/addon_connect.cfg:188
 #: data/gui/default/window/title_screen.cfg:179
-#: src/hotkey/hotkey_command.cpp:231
+#: src/hotkey/hotkey_command.cpp:233
 msgid "Help"
 msgstr "도움말"
 
@@ -3405,7 +3405,7 @@ msgstr "에러"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=details_heading
-#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:200
+#: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 msgid "Details:"
 msgstr ""
 
@@ -4993,181 +4993,181 @@ msgstr "방 만들기"
 msgid "Refresh Display"
 msgstr "새로고침"
 
-#: src/hotkey/hotkey_command.cpp:204
+#: src/hotkey/hotkey_command.cpp:205
 msgid "Update Terrain Transitions"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:206
+#: src/hotkey/hotkey_command.cpp:208
 msgid "Toggle Terrain Transition Update"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:207
+#: src/hotkey/hotkey_command.cpp:210
 msgid "Auto-update Terrain Transitions"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:209
+#: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions: No"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:210
+#: src/hotkey/hotkey_command.cpp:212
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:212
+#: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
 msgstr "이미지 파일 갱신"
 
-#: src/hotkey/hotkey_command.cpp:213
+#: src/hotkey/hotkey_command.cpp:215
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:214
+#: src/hotkey/hotkey_command.cpp:216
 #, fuzzy
 #| msgid "Draw Terrain"
 msgid "Draw Terrain Codes"
 msgstr "지형 그리기"
 
-#: src/hotkey/hotkey_command.cpp:216
+#: src/hotkey/hotkey_command.cpp:218
 #, fuzzy
 #| msgid "Selection Tool"
 msgid "Save Selection to Area"
 msgstr "선택 도구"
 
-#: src/hotkey/hotkey_command.cpp:217
+#: src/hotkey/hotkey_command.cpp:219
 #, fuzzy
 #| msgid "Selected game"
 msgid "Rename Selected Area"
 msgstr "선택된 방"
 
-#: src/hotkey/hotkey_command.cpp:218
+#: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
 #| msgid "Selected game"
 msgid "Remove Selected Area"
 msgstr "선택된 방"
 
-#: src/hotkey/hotkey_command.cpp:219
+#: src/hotkey/hotkey_command.cpp:221
 #, fuzzy
 #| msgid "Next Side"
 msgid "Add New Area"
 msgstr "다음 진영"
 
-#: src/hotkey/hotkey_command.cpp:221
+#: src/hotkey/hotkey_command.cpp:223
 #, fuzzy
 #| msgid "Random Generator Settings"
 msgid "Edit Scenario"
 msgstr "랜덤 생성기 설정"
 
-#: src/hotkey/hotkey_command.cpp:222
+#: src/hotkey/hotkey_command.cpp:224
 #, fuzzy
 #| msgid "Next Side"
 msgid "Edit Side"
 msgstr "다음 진영"
 
-#: src/hotkey/hotkey_command.cpp:223
+#: src/hotkey/hotkey_command.cpp:225
 #, fuzzy
 #| msgid "Remove"
 msgid "Remove Side"
 msgstr "삭제하기"
 
-#: src/hotkey/hotkey_command.cpp:225
+#: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
 msgstr "안개/장막 상태 갱신을 미룬다"
 
-#: src/hotkey/hotkey_command.cpp:226
+#: src/hotkey/hotkey_command.cpp:228
 msgid "Update Shroud Now"
 msgstr "지금 안개/장막 상태를 갱신한다"
 
-#: src/hotkey/hotkey_command.cpp:227
+#: src/hotkey/hotkey_command.cpp:229
 #, fuzzy
 #| msgid "Continue Network Game"
 msgid "Continue Move"
 msgstr "게임 계속 플레이"
 
-#: src/hotkey/hotkey_command.cpp:228
+#: src/hotkey/hotkey_command.cpp:230
 msgid "Find Label or Unit"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:229
+#: src/hotkey/hotkey_command.cpp:231
 msgid "Speak to Ally"
 msgstr "동맹에게만"
 
-#: src/hotkey/hotkey_command.cpp:230
+#: src/hotkey/hotkey_command.cpp:232
 msgid "Speak to All"
 msgstr "모두에게"
 
-#: src/hotkey/hotkey_command.cpp:232
+#: src/hotkey/hotkey_command.cpp:234
 msgid "View Chat Log"
 msgstr "채팅 기록 보기"
 
-#: src/hotkey/hotkey_command.cpp:233
+#: src/hotkey/hotkey_command.cpp:235
 msgid "Enter User Command"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:234
+#: src/hotkey/hotkey_command.cpp:236
 #, fuzzy
 #| msgid "Custom"
 msgid "Custom Command"
 msgstr "임의 설정"
 
-#: src/hotkey/hotkey_command.cpp:235
+#: src/hotkey/hotkey_command.cpp:237
 msgid "Run Formula"
 msgstr ""
 
-#: src/hotkey/hotkey_command.cpp:236
+#: src/hotkey/hotkey_command.cpp:238
 #, fuzzy
 #| msgid "Clear Labels"
 msgid "Clear Messages"
 msgstr "딱지 삭제"
 
-#: src/hotkey/hotkey_command.cpp:238
+#: src/hotkey/hotkey_command.cpp:240
 msgid "Change Language"
 msgstr "언어 변경"
 
-#: src/hotkey/hotkey_command.cpp:239
+#: src/hotkey/hotkey_command.cpp:241
 #, fuzzy
 #| msgid "Refresh"
 msgid "Refresh WML"
 msgstr "새로고침"
 
-#: src/hotkey/hotkey_command.cpp:240
+#: src/hotkey/hotkey_command.cpp:242
 msgid "Next Tip of the Day"
 msgstr "오늘의 팁 다음으로 넘기기"
 
-#: src/hotkey/hotkey_command.cpp:241
+#: src/hotkey/hotkey_command.cpp:243
 msgid "Previous Tip of the Day"
 msgstr "오늘의 팁 이전으로 넘기기"
 
-#: src/hotkey/hotkey_command.cpp:242
+#: src/hotkey/hotkey_command.cpp:244
 msgid "Start Tutorial"
 msgstr "연습 게임 시작하기"
 
-#: src/hotkey/hotkey_command.cpp:243
+#: src/hotkey/hotkey_command.cpp:245
 msgid "Start Campaign"
 msgstr "캠페인 시작하기"
 
-#: src/hotkey/hotkey_command.cpp:244
+#: src/hotkey/hotkey_command.cpp:246
 msgid "Start Multiplayer Game"
 msgstr "멀티플레이 시작하기"
 
-#: src/hotkey/hotkey_command.cpp:245
+#: src/hotkey/hotkey_command.cpp:247
 msgid "Manage Add-ons"
 msgstr "추가 기능 메뉴 열기"
 
-#: src/hotkey/hotkey_command.cpp:246
+#: src/hotkey/hotkey_command.cpp:248
 msgid "Start Editor"
 msgstr "맵 에디터 열기"
 
-#: src/hotkey/hotkey_command.cpp:247
+#: src/hotkey/hotkey_command.cpp:249
 msgid "Show Credits"
 msgstr "만든 이들 보기"
 
-#: src/hotkey/hotkey_command.cpp:249
+#: src/hotkey/hotkey_command.cpp:251
 #, fuzzy
 #| msgid "Show floating labels"
 msgid "Show Helptip"
 msgstr "띄워진 딱지 보이기"
 
-#: src/hotkey/hotkey_command.cpp:252
+#: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
 msgstr ""
 

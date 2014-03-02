@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
+"POT-Creation-Date: 2014-03-02 10:23+0100\n"
 "PO-Revision-Date: 2014-02-01 15:35+0100\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -184,67 +184,67 @@ msgid "theme^Editor"
 msgstr "Saír do editor"
 
 #. [menu]: id=menu-editor-file, type=turbo
-#: data/themes/editor.cfg:64
+#: data/themes/editor.cfg:63
 msgid "File"
 msgstr "Ficheiro"
 
 #. [menu]: id=menu-editor-map
-#: data/themes/editor.cfg:90
+#: data/themes/editor.cfg:84
 msgid "Map"
 msgstr "Mapa"
 
 #. [menu]: id=menu-editor-transitions
-#: data/themes/editor.cfg:98
+#: data/themes/editor.cfg:92
 msgid "Transition Update"
 msgstr "Actualización da transición"
 
 #. [menu]: id=menu-editor-window
-#: data/themes/editor.cfg:105
+#: data/themes/editor.cfg:99
 msgid "Window"
 msgstr "Xanela"
 
 #. [menu]: id=menu-editor-areas
-#: data/themes/editor.cfg:114
+#: data/themes/editor.cfg:108
 msgid "Areas"
 msgstr "Zonas"
 
 #. [menu]: id=menu-editor-local-time
-#: data/themes/editor.cfg:122
+#: data/themes/editor.cfg:116
 msgid "Assign Local Time"
 msgstr "Asignar a hora local"
 
 #. [menu]: id=menu-editor-local-schedule
-#: data/themes/editor.cfg:128
+#: data/themes/editor.cfg:122
 msgid "Assign Local Time Schedule"
 msgstr "Asignar o calendario da hora local"
 
 #. [menu]: id=menu-editor-side
-#: data/themes/editor.cfg:136
+#: data/themes/editor.cfg:130
 msgid "Side"
 msgstr "Bando"
 
 #. [label]: id=villages-icon
-#: data/themes/editor.cfg:155
+#: data/themes/editor.cfg:148
 msgid "villages"
 msgstr "Vilas"
 
 #. [label]: id=units-icon
-#: data/themes/editor.cfg:172
+#: data/themes/editor.cfg:165
 msgid "units"
 msgstr "unidades"
 
 #. [menu]: id=switch_time
-#: data/themes/editor.cfg:510
+#: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
 msgstr "Menú do horario"
 
 #. [menu]: id=menu-playlist
-#: data/themes/editor.cfg:521
+#: data/themes/editor.cfg:455
 msgid "Playlist"
 msgstr "Lista de reprodución"
 
 #. [menu]: id=menu-editor-schedule
-#: data/themes/editor.cfg:527
+#: data/themes/editor.cfg:461
 msgid "Assign Time Schedule"
 msgstr "Asignar un horario"
 
@@ -272,15 +272,15 @@ msgstr "Custo: "
 msgid "Recruit: "
 msgstr "Recrutar: "
 
-#: src/editor/editor_controller.cpp:173
+#: src/editor/editor_controller.cpp:177
 msgid "Fatal error"
 msgstr "Houbo un erro grave"
 
-#: src/editor/editor_controller.cpp:201
+#: src/editor/editor_controller.cpp:205
 msgid "Do you really want to quit?"
 msgstr "Seguro que queres saír?"
 
-#: src/editor/editor_controller.cpp:203
+#: src/editor/editor_controller.cpp:207
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -288,7 +288,7 @@ msgstr ""
 "Seguro que queres saír? Hanse perder os cambios realizados no mapa desde a "
 "última vez que se gardou."
 
-#: src/editor/editor_controller.cpp:205
+#: src/editor/editor_controller.cpp:209
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -296,27 +296,27 @@ msgstr ""
 "Seguro que queres saír? Estes mapas modificáronse e hanse perder todos os "
 "cambios realizados desde a última vez que se gardaron:"
 
-#: src/editor/editor_controller.cpp:208
+#: src/editor/editor_controller.cpp:212
 msgid "Quit"
 msgstr "Saír"
 
-#: src/editor/editor_controller.cpp:219
+#: src/editor/editor_controller.cpp:223
 msgid "No editor time-of-day found."
 msgstr "Non se atopou o momento do día do editor."
 
-#: src/editor/editor_controller.cpp:1066
+#: src/editor/editor_controller.cpp:1070
 msgid "Change Unit ID"
 msgstr "Cambiar o identificador da unidade"
 
-#: src/editor/editor_controller.cpp:1067
+#: src/editor/editor_controller.cpp:1071
 msgid "ID:"
 msgstr "Identificador:"
 
-#: src/editor/editor_controller.cpp:1083
+#: src/editor/editor_controller.cpp:1087
 msgid "Rename Unit"
 msgstr "Renomear a unidade"
 
-#: src/editor/editor_controller.cpp:1084
+#: src/editor/editor_controller.cpp:1088
 msgid "Name:"
 msgstr "Nome:"
 
@@ -341,93 +341,93 @@ msgstr "(Zona sen nome)"
 msgid "(New Side)"
 msgstr "(Bando novo)"
 
-#: src/editor/map/context_manager.cpp:409
+#: src/editor/map/context_manager.cpp:411
 msgid "Choose a Mask to Apply"
 msgstr "Escolle unha máscara a aplicar"
 
-#: src/editor/map/context_manager.cpp:416
+#: src/editor/map/context_manager.cpp:418
 msgid "Error loading mask"
 msgstr "Houbo un erro ao cargar a máscara"
 
-#: src/editor/map/context_manager.cpp:435
+#: src/editor/map/context_manager.cpp:437
 #, fuzzy
 #| msgid "Identifier: "
 msgid "Identifier:"
 msgstr "Identificador: "
 
-#: src/editor/map/context_manager.cpp:435
+#: src/editor/map/context_manager.cpp:437
 msgid "Rename Area"
 msgstr "Renomear a zona"
 
-#: src/editor/map/context_manager.cpp:446
+#: src/editor/map/context_manager.cpp:448
 msgid "Choose Target Map"
 msgstr "Escolle o mapa de destino"
 
-#: src/editor/map/context_manager.cpp:453
-#: src/editor/map/context_manager.cpp:885
+#: src/editor/map/context_manager.cpp:455
+#: src/editor/map/context_manager.cpp:887
 msgid "Error loading map"
 msgstr "Houbo un erro ao cargar o mapa"
 
-#: src/editor/map/context_manager.cpp:570
+#: src/editor/map/context_manager.cpp:572
 msgid "Save the Map As"
 msgstr "Gardar o mapa como"
 
-#: src/editor/map/context_manager.cpp:574
-#: src/editor/map/context_manager.cpp:602
+#: src/editor/map/context_manager.cpp:576
+#: src/editor/map/context_manager.cpp:604
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "O ficheiro xa existe. Queres substituílo?"
 
-#: src/editor/map/context_manager.cpp:598
+#: src/editor/map/context_manager.cpp:600
 msgid "Save the Scenario As"
 msgstr "Gardar o escenario como"
 
-#: src/editor/map/context_manager.cpp:637
+#: src/editor/map/context_manager.cpp:639
 msgid "No random map generators found."
 msgstr "Non se atoparon xeradores de mapas ao chou."
 
-#: src/editor/map/context_manager.cpp:650
-#: src/editor/map/context_manager.cpp:654
+#: src/editor/map/context_manager.cpp:652
+#: src/editor/map/context_manager.cpp:656
 msgid "Map creation failed."
 msgstr "Non foi posíbel crear o mapa."
 
-#: src/editor/map/context_manager.cpp:666
+#: src/editor/map/context_manager.cpp:668
 msgid "Unsaved Changes"
 msgstr "Cambios sen gardar"
 
-#: src/editor/map/context_manager.cpp:667
+#: src/editor/map/context_manager.cpp:669
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Queres desbotar todos os cambios que fixeches no mapa desde a última vez que "
 "o gardaches?"
 
-#: src/editor/map/context_manager.cpp:764
+#: src/editor/map/context_manager.cpp:766
 msgid "This scenario is already open."
 msgstr "O escenario xa está aberto."
 
-#: src/editor/map/context_manager.cpp:786
-#: src/editor/map/context_manager.cpp:841
+#: src/editor/map/context_manager.cpp:788
+#: src/editor/map/context_manager.cpp:843
 msgid "This map is already open."
 msgstr "O mapa xa está aberto."
 
-#: src/editor/map/context_manager.cpp:807
+#: src/editor/map/context_manager.cpp:809
 msgid "Scenario saved."
 msgstr "Gardouse o escenario."
 
-#: src/editor/map/context_manager.cpp:821
+#: src/editor/map/context_manager.cpp:823
 msgid "Map saved."
 msgstr "Gardouse o mapa."
 
-#: src/editor/map/context_manager.cpp:864
+#: src/editor/map/context_manager.cpp:866
 msgid "Loaded embedded map data"
 msgstr "Cargáronse os datos integrados no mapa"
 
-#: src/editor/map/context_manager.cpp:865
-#: src/editor/map/context_manager.cpp:879
+#: src/editor/map/context_manager.cpp:867
+#: src/editor/map/context_manager.cpp:881
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde o escenario"
 
-#: src/editor/map/context_manager.cpp:875
+#: src/editor/map/context_manager.cpp:877
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -459,15 +459,15 @@ msgstr ""
 "O ficheiro de mapa parece un escenario, pero o valor de map_data non fai "
 "referencia a ningún ficheiro existente"
 
-#: src/editor/map/map_context.cpp:507
+#: src/editor/map/map_context.cpp:508
 msgid "Could not save the scenario: $msg"
 msgstr "Non foi posíbel gardar o escenario: $msg"
 
-#: src/editor/map/map_context.cpp:534
+#: src/editor/map/map_context.cpp:535
 msgid "Could not save into scenario"
 msgstr "Non foi posíbel gardar no escenario"
 
-#: src/editor/map/map_context.cpp:541
+#: src/editor/map/map_context.cpp:542
 msgid "Could not save the map: $msg"
 msgstr "Non foi posíbel gardar o mapa: $msg"
 
