@@ -330,7 +330,7 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	current_era_index_(0),
 	current_mod_index_(0),
 	level_name_filter_(),
-	player_count_filter_(0),
+	player_count_filter_(1),
 	scenarios_(),
 	user_maps_(),
 	user_scenarios_(),
