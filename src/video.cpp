@@ -61,13 +61,22 @@ resize_lock::~resize_lock()
 
 static unsigned int get_flags(unsigned int flags)
 {
+	/* The wanted flags for the render need to be evaluated for SDL2. */
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// SDL under Windows doesn't seem to like hardware surfaces
 	// for some reason.
 #if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
 		flags |= SDL_HWSURFACE;
 #endif
+#endif
+
+
 	if((flags&SDL_FULLSCREEN) == 0)
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		flags |= SDL_WINDOW_RESIZABLE;
+#else
 		flags |= SDL_RESIZABLE;
+#endif
 
 	return flags;
 }
