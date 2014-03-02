@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
 "PO-Revision-Date: 2013-10-25 16:21+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
@@ -331,21 +331,21 @@ msgstr ""
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:12072 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "중독"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:1835
+#: data/lua/wml/objectives.lua:12554
 msgid "Gold carryover:"
 msgstr "자금 이월:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:1836
+#: data/lua/wml/objectives.lua:12555
 msgid "Notes:"
 msgstr ""
 
@@ -355,42 +355,42 @@ msgid "Programming"
 msgstr "프로그래밍 담당"
 
 #. [about]
-#: data/core/about.cfg:243
+#: data/core/about.cfg:235
 msgid "General Purpose Administration and Coordination"
 msgstr "일반적 목표 관리 및 협력"
 
 #. [about]
-#: data/core/about.cfg:265
+#: data/core/about.cfg:257
 msgid "Artwork and Graphics"
 msgstr "삽화 및 그래픽 디자이너"
 
 #. [about]
-#: data/core/about.cfg:657
+#: data/core/about.cfg:649
 msgid "Music"
 msgstr "음악 담당"
 
 #. [about]
-#: data/core/about.cfg:694
+#: data/core/about.cfg:686
 msgid "Sound Effects"
 msgstr "효과음 담당"
 
 #. [about]
-#: data/core/about.cfg:710
+#: data/core/about.cfg:702
 msgid "Campaign Design"
 msgstr "캠페인 설계 담당"
 
 #. [about]
-#: data/core/about.cfg:781
+#: data/core/about.cfg:773
 msgid "Multiplayer Maps and Balancing"
 msgstr "멀티플레이 맵과 밸런싱 담당"
 
 #. [about]
-#: data/core/about.cfg:826
+#: data/core/about.cfg:818
 msgid "Packagers"
 msgstr "각 플랫폼 적용"
 
 #. [about]
-#: data/core/about.cfg:901
+#: data/core/about.cfg:893
 msgid "Miscellaneous Contributors"
 msgstr "기타 기여한 사람들"
 
@@ -2639,12 +2639,12 @@ msgid "Turns run out"
 msgstr "턴 오버"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12616
 msgid "Early finish bonus."
 msgstr "조기 종료 보너스 있음."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12618
 msgid "No early finish bonus."
 msgstr "조기 종료 보너스 없음."
 
@@ -2657,7 +2657,7 @@ msgid "(early finish bonus)"
 msgstr "(조기 종료 보너스)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12626
 msgid "No gold carried over to the next scenario."
 msgstr "자금은 다음 시나리오로 이월되지 않습니다."
 
@@ -3142,68 +3142,68 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Fallback,Droid Sans Japanese,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:12072 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "중독"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:12074 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:12074 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "둔화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:12075 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "석화"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:12075 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "석화"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357
+#: data/lua/wml-tags.lua:12076
 #, fuzzy
 msgid "female^unhealable"
 msgstr "언데드"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357
+#: data/lua/wml-tags.lua:12076
 msgid "unhealable"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:12552 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "승리조건:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1834
+#: data/lua/wml/objectives.lua:12553
 msgid "Defeat:"
 msgstr "패배조건:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1854
+#: data/lua/wml/objectives.lua:12573
 msgid "(%d turns left)"
 msgstr "(%d 턴 남음)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:12575
 msgid "(this turn left)"
 msgstr "(마지막 턴)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1909
+#: data/lua/wml/objectives.lua:12628
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "총 자금의 %d%% 가 다음 시나리오로 이월됩니다."
 

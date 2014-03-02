@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
 "PO-Revision-Date: 2013-03-09 13:27+0300\n"
 "Last-Translator: Kaido Kikkas <kaido.kikkas@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -336,21 +336,21 @@ msgstr "Juhtkang: liikumiskangi 'surnud tsoon'"
 #. [lua]: set_status
 #. [unstore_unit]
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:12072 src/actions/attack.cpp:958
 msgid "poisoned"
 msgstr "mürgitatud"
 
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:1835
+#: data/lua/wml/objectives.lua:12554
 msgid "Gold carryover:"
 msgstr "Kulla ülekandumine:"
 
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:1836
+#: data/lua/wml/objectives.lua:12555
 msgid "Notes:"
 msgstr "Märkused:"
 
@@ -360,42 +360,42 @@ msgid "Programming"
 msgstr "Programmeerimine"
 
 #. [about]
-#: data/core/about.cfg:243
+#: data/core/about.cfg:235
 msgid "General Purpose Administration and Coordination"
 msgstr "Projekti üldine haldus ja juhtimine"
 
 #. [about]
-#: data/core/about.cfg:265
+#: data/core/about.cfg:257
 msgid "Artwork and Graphics"
 msgstr "Graafika ja pilditöötlus"
 
 #. [about]
-#: data/core/about.cfg:657
+#: data/core/about.cfg:649
 msgid "Music"
 msgstr "Muusika"
 
 #. [about]
-#: data/core/about.cfg:694
+#: data/core/about.cfg:686
 msgid "Sound Effects"
 msgstr "Heliefektid"
 
 #. [about]
-#: data/core/about.cfg:710
+#: data/core/about.cfg:702
 msgid "Campaign Design"
 msgstr "Sõjakäikude koostamine"
 
 #. [about]
-#: data/core/about.cfg:781
+#: data/core/about.cfg:773
 msgid "Multiplayer Maps and Balancing"
 msgstr "Mitmemängija kaardid ja mängu tasakaalustamine"
 
 #. [about]
-#: data/core/about.cfg:826
+#: data/core/about.cfg:818
 msgid "Packagers"
 msgstr "Koostajad"
 
 #. [about]
-#: data/core/about.cfg:901
+#: data/core/about.cfg:893
 msgid "Miscellaneous Contributors"
 msgstr "Erinevad kaastöötajad"
 
@@ -2664,12 +2664,12 @@ msgid "Turns run out"
 msgstr "Käigud saavad otsa"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:1897
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12616
 msgid "Early finish bonus."
 msgstr "Varakult lõpetamise boonus."
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:1899
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12618
 msgid "No early finish bonus."
 msgstr "Varakult lõpetamise boonust ei ole."
 
@@ -2682,7 +2682,7 @@ msgid "(early finish bonus)"
 msgstr "(Varakult lõpetamise preemia)"
 
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:1907
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12626
 msgid "No gold carried over to the next scenario."
 msgstr "Järgmisse stsenaariumi kulda üle ei kanta."
 
@@ -3171,67 +3171,67 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1353 src/actions/attack.cpp:958
+#: data/lua/wml-tags.lua:12072 src/actions/attack.cpp:958
 msgid "female^poisoned"
 msgstr "mürgitatud"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:12074 src/actions/attack.cpp:963
 msgid "female^slowed"
 msgstr "aeglustatud"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1355 src/actions/attack.cpp:963
+#: data/lua/wml-tags.lua:12074 src/actions/attack.cpp:963
 msgid "slowed"
 msgstr "aeglustatud"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:12075 src/actions/attack.cpp:968
 msgid "female^petrified"
 msgstr "kivistatud"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1356 src/actions/attack.cpp:968
+#: data/lua/wml-tags.lua:12075 src/actions/attack.cpp:968
 msgid "petrified"
 msgstr "kivistunud"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357
+#: data/lua/wml-tags.lua:12076
 msgid "female^unhealable"
 msgstr "ravimatu"
 
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:1357
+#: data/lua/wml-tags.lua:12076
 msgid "unhealable"
 msgstr "ravimatu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1833 src/mp_game_utils.cpp:146
+#: data/lua/wml/objectives.lua:12552 src/mp_game_utils.cpp:146
 msgid "Victory:"
 msgstr "Võit:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1834
+#: data/lua/wml/objectives.lua:12553
 msgid "Defeat:"
 msgstr "Kaotus:"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1854
+#: data/lua/wml/objectives.lua:12573
 msgid "(%d turns left)"
 msgstr "(%d käiku järel)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1856
+#: data/lua/wml/objectives.lua:12575
 msgid "(this turn left)"
 msgstr "(see on viimane käik)"
 
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:1909
+#: data/lua/wml/objectives.lua:12628
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Järgmisse stsenaariumi kantakse üle %d%% kuldraha."
 
