@@ -81,6 +81,13 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"Wird ein Fluss sehr seicht, stellt er kein Hindernis mehr für Fußtruppen "
+"dar. Zudem bleibt jedem schwimmenden Wesen sogar an solchen Orten seine "
+"volle Mobilität erhalten.\n"
+"\n"
+"Spieltechnisch hat das Gelände Furt dieselben Auswirkungen wie Wiesen oder "
+"Seichtes Wasser, je nachdem in welchem Gelände bessere Bewegungs- und "
+"Verteidigungsboni für die Einheit gelten."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -100,7 +107,6 @@ msgstr "Trübes küstennahes Riff"
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
 #, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
 msgstr "Küstennahes Riff"
 
@@ -120,7 +126,6 @@ msgstr "Sumpf"
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
 #, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
 msgstr "Sumpfiger Burgfried"
 
@@ -242,6 +247,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"Eigentlich sind <italic>text='Wüsten'</italic> anders beschaffen, als kleine "
+"Sandflächen oder Strände. Der Einfachheit halber verhält sich eine Wüste "
+"spieltechnisch jedoch wie das Gelände <ref>dst=terrain_sand text=Sand</ref>."
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -265,6 +273,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"Der instabile Untergrund, den <italic>text='Sand'</italic> bietet, macht es "
+"den meisten Einheiten schwer, ihn zu durchqueren und macht sie zu leichten "
+"Angriffszielen. Im Gegensatz dazu können sich Echsenwesen durch ihre breiten "
+"Füße oder ihre schlangenähnlichen Körper viel leichter fortbewegen.\n"
+"\n"
+"Die meisten Einheiten haben 20 bis 40% Verteidigung im Sand."
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:315
@@ -323,10 +337,8 @@ msgstr "Windmühle"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:423
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Kampagne"
+msgstr "Lagerfeuer"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:432
@@ -406,21 +418,18 @@ msgstr "Tropischer Wald"
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:530
 #, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
 msgstr "Nadelwald"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:542
 #, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
 msgstr "Nadelwald"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:554
 #, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
 msgstr "Nadelwald"
 
@@ -526,7 +535,6 @@ msgstr "Berge"
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
 #, fuzzy
-#| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
 msgstr "Unpassierbare Berge"
 
@@ -620,6 +628,15 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"Wind und Wasser haben im Laufe der Zeit Felsen und Steine herbeigetragen und "
+"eine <italic>text='unwegsame Höhle'</italic> geformt. Zwerge und Trolle, die "
+"in den Höhlen leben, haben es dagegen relativ leicht, sich in ihnen "
+"fortzubewegen, besonders die Zwerge, die durch ihren kleinen Wuchs leichter "
+"durch viele Hindernisse kriechen können. Gelegentlich sind Höhlen "
+"<ref>dst='terrain_illuminated_cave' text='erhellt'</ref>.\n"
+"\n"
+"Die meisten Einheiten haben 50% Verteidigung in unwegsamen Höhlen, "
+"wohingegen Kavallerie auf 40% begrenzt ist. Zwerge erhalten 60% Verteidigung."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -674,6 +691,13 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Die Gefahren, die mit dem Überqueren von flüssiger <italic>text='Lava'</"
+"italic> verbunden sind, sollten offensichtlich sein. Was die Bewegung "
+"angeht, verhält sich Lava wie <ref>dst='terrain_unwalkable' "
+"text='unpassierbares'</ref> Gelände und kann deshalb nur von fliegenden "
+"Einheiten passiert werden. Die geschmolzene Lava erhellt zudem das "
+"umliegende Gebiet, was redliche Einheiten einen Angriffsbonus verleiht und "
+"lichtscheue Einheiten den ihrigen entzieht."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:986
@@ -743,7 +767,6 @@ msgstr "Unpassierbar-Overlay"
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1112
 #, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
 msgstr "Unpassierbar-Overlay"
 
@@ -1015,7 +1038,6 @@ msgstr "Verschneite Burg"
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
 #, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
 msgstr "Elfischer Burgfried"
 
@@ -1209,6 +1231,18 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Diejenigen, die in der Lage sind, eine <italic>text='Brücke'</italic> zu "
+"bauen, haben sich von den Gesetzen der Natur insoweit losgesagt, dass sie "
+"einen Fluss überqueren können, unabhängig von einer vorhandenen Furt, die "
+"vielleicht beim nächsten Wasseranstieg unpassierbar wird. Vielen Kriegern, "
+"denen in den kalten Monaten nach der Durchquerung eines Flusses die Beine "
+"erfroren, blieb dieses Schicksal erspart, da sie eine Brücke benutzen "
+"konnten.\n"
+"\n"
+"Spieltechnisch hat das Gelände Brücke dieselben Auswirkungen wie Wiesen oder "
+"Seichtes Wasser, je nachdem in welchem Gelände bessere Bewegungs- und "
+"Verteidigungsboni für die Einheit gelten. Es ist nicht möglich, dass sich "
+"eine schwimmende und eine Landeinheit ein Brückenfeld teilen."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1240,7 +1274,6 @@ msgstr "Rundbogenbrücke"
 #: data/core/terrain.cfg:2072 data/core/terrain.cfg:2084
 #: data/core/terrain.cfg:2096
 #, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
 msgstr "Morsche Brücke"
 
@@ -1250,7 +1283,6 @@ msgstr "Morsche Brücke"
 #: data/core/terrain.cfg:2109 data/core/terrain.cfg:2120
 #: data/core/terrain.cfg:2131
 #, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
 msgstr "Rundbogenbrücke"
 
@@ -1260,7 +1292,6 @@ msgstr "Rundbogenbrücke"
 #: data/core/terrain.cfg:2143 data/core/terrain.cfg:2154
 #: data/core/terrain.cfg:2165
 #, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
 msgstr "Brücke"
 
@@ -1330,7 +1361,6 @@ msgstr ""
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2256
 #, fuzzy
-#| msgid "Sand"
 msgid "Sands"
 msgstr "Sand"
 
@@ -1388,6 +1418,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"<italic>text='Seichtes Wasser'</italic> ist tief genug, einem erwachsenen "
+"Mann bis zur Hüfte zu reichen. Das verlangsamt fast alle Einheiten und macht "
+"sie zu leichten Angriffszielen. Zwerge, denen das Wasser dort sprichwörtlich "
+"bis zum Hals steht, haben es besonders schwer. Die Ausnahme sind alle "
+"Einheiten, deren Körper zum Schwimmen geeignet sind. Sie bekommen einen "
+"beträchtlichen Verteidigungsbonus und volle Bewegung.\n"
+"\n"
+"Die meisten Einheiten haben zwischen 20 und 30% Verteidigung im seichten "
+"Wasser, Naga und Angehörige des Meervolkes haben 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2330
@@ -1524,6 +1563,12 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"<italic>text='Unbegehbares Gelände'</italic> stellt jede Art von Schlund "
+"oder Kluft im Boden dar, deren Tiefen ins Unbekannte reichen. Sie zeichnen "
+"sich durch ihre hohen Wände aus, die zu durchqueren viele Tagesmärsche in "
+"Anspruch nehmen. Da das Durchqueren von unbegehbarem Gelände für Reiter und "
+"Fußtruppen viel zu lange dauern würde, können nur fliegende Einheiten dieses "
+"Hindernis passieren."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2438 data/core/terrain.cfg:2439
@@ -1642,14 +1687,12 @@ msgstr "Abbrechen"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
 #, fuzzy
-#| msgid "Type"
 msgid "Type:"
 msgstr "Typ"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:115
 #, fuzzy
-#| msgid "Status"
 msgid "Status:"
 msgstr "Status"
 
@@ -1708,14 +1751,12 @@ msgstr ""
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
 #, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
 msgstr "Kopieren"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
 #, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
 msgstr "Wählt den zu ladenden Spielstand"
 
@@ -1812,7 +1853,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
 #, fuzzy
-#| msgid "Actions"
 msgid "Options"
 msgstr "Aktionen"
 
@@ -1824,21 +1864,18 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:221
 #, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
 msgstr "Übersetzungen:"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:264
 #, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
 msgstr "Erweiterungen"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:277
 #, fuzzy
-#| msgid "Toggle Ellipses"
 msgid "Toggle All"
 msgstr "Teammarkierungen anzeigen"
 
@@ -1889,7 +1926,6 @@ msgstr "Entfernen"
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
 #, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Eine Kampagne spielen"
 
@@ -1971,7 +2007,6 @@ msgstr "Zurück"
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:87
 #, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
 msgstr "Zurück"
 
@@ -1987,7 +2022,6 @@ msgstr "Weiter"
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:95
 #, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
 msgstr "Nächste Fraktion"
 
@@ -2023,10 +2057,11 @@ msgstr ""
 msgid "Metadata:"
 msgstr ""
 
+# type: Content of: <book><chapter><section><section><table><tgroup><thead><row><entry>
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "Bild"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
@@ -2076,7 +2111,6 @@ msgstr ""
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
 #, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
 msgstr "Löschen"
 
@@ -2149,7 +2183,6 @@ msgstr "Nur für Verbündete"
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
 #, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
 msgstr "Unpassierbar"
 
@@ -2166,7 +2199,6 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
 #, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
 msgstr "Editoreinstellungen"
 
@@ -2178,14 +2210,12 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
 #, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
 msgstr "Erfahrungsmodifikator"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
 #, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
 msgstr "Runde"
 
@@ -2197,21 +2227,18 @@ msgstr ""
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
 #, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Zufällige Startzeit"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
 #, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
 msgstr "Fraktion $side"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
 #, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
 msgstr "Anzahl an Bergen:"
 
@@ -2223,21 +2250,18 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
 #, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
 msgstr "Nur für Verbündete"
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
 #, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
 msgstr "Karte animieren"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
 #, fuzzy
-#| msgid "Leader"
 msgid "No leader"
 msgstr "Heerführer"
 
@@ -2255,7 +2279,6 @@ msgstr ""
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
 #, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
 msgstr "Spielübersicht"
 
@@ -2267,7 +2290,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
 #, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
 msgstr "Steuereinnahmen pro Dorf"
 
@@ -2279,7 +2301,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
 #, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
 msgstr "Steuereinnahmen pro Dorf"
 
@@ -2359,7 +2380,6 @@ msgstr "Höhe:"
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
 #, fuzzy
-#| msgid "Create Game"
 msgid "Create"
 msgstr "Partie eröffnen"
 
@@ -2393,7 +2413,6 @@ msgstr "Alte Höhe:"
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
 #, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
 msgstr "Richtung erweitern/verringern"
 
@@ -2405,7 +2424,6 @@ msgstr "Rahmengelände kopieren"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
 #, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
 msgstr "Kartengröße anpassen"
 
@@ -2499,7 +2517,6 @@ msgstr "Möchtet Ihr diesen Spielstand wirklich löschen?"
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
 #, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
 msgstr "Erscheinen von Spielern in der Lobby nicht anzeigen"
 
@@ -2547,7 +2564,6 @@ msgstr "Löschen"
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
 #, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
 msgstr "Schwierigkeitsgrad"
 
@@ -2588,7 +2604,6 @@ msgstr ""
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
 #, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
 msgstr "Wählt den zu ladenden Spielstand"
 
@@ -2605,7 +2620,6 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
 #, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
 msgstr "Höhlenpfad"
 
@@ -2627,14 +2641,12 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
 #, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
 msgstr "Spiel speichern"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
 #, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
 msgstr "Erweiterungen"
 
@@ -2694,7 +2706,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:223
 #, fuzzy
-#| msgid "Content"
 msgid "Contents"
 msgstr "Wert"
 
@@ -3075,7 +3086,6 @@ msgstr "Zufällige Startzeit"
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
 #, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
 msgstr "Wählt die gewünschte Auflösung"
 
@@ -3101,7 +3111,7 @@ msgstr "Passwort:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Bestätigen"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
@@ -3111,14 +3121,12 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
 #, fuzzy
-#| msgid "User interface sounds"
 msgid "User Interaction Required"
 msgstr "Klänge der Benutzeroberfläche"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
 #, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
 msgstr "Klänge der Benutzeroberfläche"
 
@@ -3245,14 +3253,12 @@ msgstr ""
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
 #, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
 msgstr "Bildschirmfoto erstellt"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
 #, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
 msgstr "Bildschirmfoto"
 
@@ -3269,7 +3275,6 @@ msgstr "Grafikthema wählen"
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
 #, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
 msgstr ""
 "Das Grafikthema wird aktualisiert, sobald ein neues oder gespeichertes Spiel "
@@ -3433,7 +3438,6 @@ msgstr ""
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
 #, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
 msgstr "Wählt den zu ladenden Spielstand"
 
@@ -3755,7 +3759,6 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:377
 #, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
 msgstr "Spielstände nach ES/MS Sieg oder MS Niederlage löschen"
@@ -3770,13 +3773,11 @@ msgstr "Sortiert die Liste der Spieler in der Lobby nach Gruppen"
 
 #: src/game_preferences_display.cpp:385
 #, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
 msgstr "Zeigt Piktogramme vor den Spielernamen in der Empfangshalle an."
 
 #: src/game_preferences_display.cpp:388
 #, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
 msgstr "Deaktiveren, um gespeicherte Passwörter zu löschen (bei Programmende)."
 
@@ -3795,7 +3796,6 @@ msgstr "Zeigt eine Mitteilung, wenn ein Spieler die Mehrspielerlobby betritt"
 
 #: src/game_preferences_display.cpp:398
 #, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr "Gebt den Pfad zum MS Server an, um Mehrspielerpartien auszurichten."
 
@@ -3980,7 +3980,6 @@ msgstr "Straßen zwischen den Burgen"
 
 #: src/generators/mapgen_dialog.cpp:256
 #, fuzzy
-#| msgid "Show floating labels"
 msgid "Show labels"
 msgstr "Schwebende Meldungen anzeigen"
 
@@ -4179,7 +4178,6 @@ msgstr ""
 
 #: src/gui/dialogs/addon/filter_options.cpp:300
 #, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
 msgstr "Erweiterungen entfernen"
 
@@ -4350,25 +4348,21 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:38
 #, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
 msgstr "Abbrechen"
 
 #: src/hotkey/hotkey_command.cpp:39
 #, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
 msgstr "Nichts auswählen"
 
 #: src/hotkey/hotkey_command.cpp:40
 #, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
 msgstr "Nichts auswählen"
 
 #: src/hotkey/hotkey_command.cpp:41
 #, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
 msgstr "Angreifen"
 
@@ -4397,8 +4391,6 @@ msgid "End Unit Turn"
 msgstr "Zug der Einheit beenden"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
 msgstr "Heerführer"
 
@@ -4440,7 +4432,6 @@ msgstr "Beschleunigt"
 
 #: src/hotkey/hotkey_command.cpp:58
 #, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
 msgstr "Einheitenbeschreibung"
 
@@ -4454,7 +4445,6 @@ msgstr "Einheit umbenennen"
 
 #: src/hotkey/hotkey_command.cpp:61
 #, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
 msgstr "Datei löschen"
 
@@ -4496,7 +4486,6 @@ msgstr "Mit der Maus scrollen"
 
 #: src/hotkey/hotkey_command.cpp:74
 #, fuzzy
-#| msgid "Status"
 msgid "Status Table"
 msgstr "Status"
 
@@ -4514,7 +4503,6 @@ msgstr "Zugehörigkeit ändern (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:79
 #, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
 msgstr "Einheit erstellen (Debug!)"
 
@@ -4540,7 +4528,6 @@ msgstr "Netzwerkpartie fortsetzen"
 
 #: src/hotkey/hotkey_command.cpp:87
 #, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
 msgstr "Den Karteneditor starten"
 
@@ -4645,7 +4632,6 @@ msgstr "Karte schließen"
 
 #: src/hotkey/hotkey_command.cpp:124
 #, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
 msgstr "Karte wechseln"
 
@@ -4667,7 +4653,6 @@ msgstr "Teilweise rückgängig"
 
 #: src/hotkey/hotkey_command.cpp:131
 #, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
 msgstr "Testszenario"
 
@@ -4681,7 +4666,6 @@ msgstr "Karte speichern unter"
 
 #: src/hotkey/hotkey_command.cpp:135
 #, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
 msgstr "Szenariostart"
 
@@ -4699,13 +4683,11 @@ msgstr "Karteninformationen"
 
 #: src/hotkey/hotkey_command.cpp:140
 #, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
 msgstr "Ausgewähltes Spiel"
 
 #: src/hotkey/hotkey_command.cpp:141
 #, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
 msgstr "Vorder- und Hintergrundgelände tauschen"
 
@@ -4723,7 +4705,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:146
 #, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
 msgstr "Nächste Fraktion"
 
@@ -4740,6 +4721,10 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Verwendet die linke und rechte Maustaste, um Gelände im Vorder- oder "
+"Hintergrund zu zeichnen. Haltet Shift gedrückt, um nur auf der Basisebene zu "
+"zeichnen. Mit Ctrl+Klick wird das Gelände unter dem Cursor als Pinsel "
+"übernommen."
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid "Fill Tool"
@@ -4761,16 +4746,17 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Die linke Maustaste setzt die Spielerposition, die Rechte löscht sie. Mit "
+"den Zifferntasten springt Ihr zur jeweiligen Startposition, Alt+Nummer setzt "
+"die jeweilige Startposition, Entfernen löscht diese."
 
 #: src/hotkey/hotkey_command.cpp:153
 #, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
 msgstr "Startpositionswerkzeug"
 
 #: src/hotkey/hotkey_command.cpp:154
 #, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
 msgstr "Füllwerkzeug"
 
@@ -4786,13 +4772,11 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:155
 #, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
 msgstr "Malwerkzeug"
 
 #: src/hotkey/hotkey_command.cpp:156
 #, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
 msgstr "Nächstes Werkzeug"
 
@@ -4820,13 +4804,11 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:158
 #, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
 msgstr "Steuereinnahmen pro Dorf:"
 
 #: src/hotkey/hotkey_command.cpp:160
 #, fuzzy
-#| msgid "Recruit"
 msgid "Can Recruit"
 msgstr "Ausbilden"
 
@@ -4852,13 +4834,12 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:164
 #, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
 msgstr "Kontrolle ändern"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Loyal"
-msgstr ""
+msgstr "Loyal"
 
 #: src/hotkey/hotkey_command.cpp:167
 msgid "Toggle Minimap Unit Coding"
@@ -4878,7 +4859,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:172
 #, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Minimap Terrain Drawing"
 msgstr "Geländeübergänge aktualisieren"
 
@@ -4916,7 +4896,6 @@ msgstr "Ausschneiden"
 
 #: src/hotkey/hotkey_command.cpp:183
 #, fuzzy
-#| msgid "Copy"
 msgid "Copy"
 msgstr "Kopieren"
 
@@ -4975,13 +4954,11 @@ msgstr "Ausgewählten Bereich füllen"
 
 #: src/hotkey/hotkey_command.cpp:196
 #, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
 msgstr "Felder in Auswahl generieren"
 
 #: src/hotkey/hotkey_command.cpp:197
 #, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
 msgstr "Felder in Auswahl randomisieren"
 
@@ -5011,7 +4988,6 @@ msgstr "Geländeübergänge aktualisieren"
 
 #: src/hotkey/hotkey_command.cpp:208
 #, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Geländeübergänge aktualisieren"
 
@@ -5020,16 +4996,12 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Geländeübergänge automatisch aktualisieren"
 
 #: src/hotkey/hotkey_command.cpp:211
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Geländeübergänge automatisch aktualisieren"
+msgstr "Geländeübergänge automatisch aktualisieren: Nein"
 
 #: src/hotkey/hotkey_command.cpp:212
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Geländeübergänge automatisch aktualisieren"
+msgstr "Geländeübergänge automatisch aktualisieren: Teilweise"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
@@ -5045,43 +5017,36 @@ msgstr "Geländekürzel zeigen"
 
 #: src/hotkey/hotkey_command.cpp:218
 #, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
 msgstr "Auswahl rotieren"
 
 #: src/hotkey/hotkey_command.cpp:219
 #, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
 msgstr "Ausgewähltes Spiel"
 
 #: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
 msgstr "Ausgewähltes Spiel"
 
 #: src/hotkey/hotkey_command.cpp:221
 #, fuzzy
-#| msgid "Next Side"
 msgid "Add New Area"
 msgstr "Nächste Fraktion"
 
 #: src/hotkey/hotkey_command.cpp:223
 #, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
 msgstr "Editoreinstellungen"
 
 #: src/hotkey/hotkey_command.cpp:224
 #, fuzzy
-#| msgid "Switch Map"
 msgid "Edit Side"
 msgstr "Karte wechseln"
 
 #: src/hotkey/hotkey_command.cpp:225
 #, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
 msgstr "Entfernen"
 
@@ -5199,7 +5164,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_item.cpp:417
 #, fuzzy
-#| msgid "Height:"
 msgid "Right"
 msgstr "Höhe:"
 
@@ -5229,19 +5193,16 @@ msgstr ""
 
 #: src/hotkey/hotkey_item.cpp:438
 #, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
 msgstr "Unbekannte Epoche"
 
 #: src/hotkey/hotkey_item.cpp:441
 #, fuzzy
-#| msgid "Hut"
 msgid "Hat"
 msgstr "Hüttensiedlung"
 
 #: src/hotkey/hotkey_preferences_display.cpp:149
 #, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
 msgstr "Tastenkürzel"
 
@@ -5255,7 +5216,6 @@ msgstr "Tastenkürzel anpassen"
 
 #: src/hotkey/hotkey_preferences_display.cpp:171
 #, fuzzy
-#| msgid "Default"
 msgid "Defaults"
 msgstr "Standard"
 
@@ -5265,25 +5225,21 @@ msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:218
 #, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Title Screen"
 msgstr "Audio"
 
 #: src/hotkey/hotkey_preferences_display.cpp:220
 #, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
 msgstr "Allgemein"
 
 #: src/hotkey/hotkey_preferences_display.cpp:222
 #, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
 msgstr "Audio"
 
 #: src/hotkey/hotkey_preferences_display.cpp:249
 #, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
 msgstr "Tastenkürzel"
 
@@ -5311,7 +5267,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:697
 #, fuzzy
-#| msgid "Clear Hotkey"
 msgid "Reassign Hotkey"
 msgstr "Tastenkürzel entfernen"
 
@@ -5405,47 +5360,145 @@ msgstr ""
 "Der Schlüssel »$deprecated_key« wurde in »$key« umbenannt. Unterstützung für "
 "»$deprecated_key« wird in Version $removal_version entfernt."
 
-#~ msgid "Elvish Castle"
-#~ msgstr "Elfenkastell"
+#~ msgid "Delete Planned Action"
+#~ msgstr "Geplante Aktionen löschen"
 
-#~ msgid "Forested Hills"
-#~ msgstr "Bewaldete Hügel"
+#~ msgid "Execute Planned Action"
+#~ msgstr "Geplante Aktionen umsetzen"
 
-#~ msgid "Forested Snow Hills"
-#~ msgstr "Bewaldete verschneite Hügel"
+#~ msgid "This hotkey is already in use."
+#~ msgstr "Dieses Tastenkürzel wird bereits verwendet."
 
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Lauschig bewaldeter Hügel"
+#~ msgid "Change Hotkey"
+#~ msgstr "Tastenkürzel ändern"
 
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Herbstbunte Hügel"
+#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
+#~ msgstr "Automatische Spielstände nach ES/MS Sieg oder MS Niederlage löschen"
 
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Frostige kahle Hänge"
+#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
+#~ msgstr "Spielverläufe nach ES/MS Sieg oder MS Niederlage speichern"
 
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Kahle eingeschneite Hänge"
+#~ msgid "Save replay on SP/MP victory or MP defeat"
+#~ msgstr "Spielverläufe nach ES/MS Sieg oder MS Niederlage speichern"
 
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Sommerlicher Bergmischwald"
+#~ msgid "Create game"
+#~ msgstr "Partie eröffnen"
 
-#~ msgid "Fall Mixed Forested Hills"
-#~ msgstr "Herbstbunter Bergmischwald"
+#~ msgid "OOS error"
+#~ msgstr "Synchronisationsfehler"
 
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Winterlicher Bergmischwald"
+#~ msgid "x"
+#~ msgstr "x"
 
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Verschneiter Bergmischwald"
+#~ msgid "Don’t ask me again!"
+#~ msgstr "Nicht nochmal fragen!"
+
+#~ msgid "Create New Map"
+#~ msgstr "Karte erstellen"
+
+#~ msgid "Update Add-ons"
+#~ msgstr "Erweiterungen aktualisieren"
 
 #, fuzzy
-#~| msgid "Tropical Forest"
-#~ msgid "Tropical Forested Hills"
-#~ msgstr "Tropischer Wald"
+#~| msgid "Default"
+#~ msgid "Reset Defaults"
+#~ msgstr "Standard"
+
+#~ msgid "Use New Lobby Interface"
+#~ msgstr "Die neue Mehrspielerlobby verwenden"
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Die neue Lobby verwenden"
+
+#~ msgid "Variable"
+#~ msgstr "Variable"
+
+#~ msgid "Inspection window"
+#~ msgstr "Inspektor"
+
+#~ msgid "Types"
+#~ msgstr "Typen"
+
+#, fuzzy
+#~| msgid "Auto-update Terrain Transitions"
+#~ msgid "Auto-update Terrain Transitions: Yes"
+#~ msgstr "Geländeübergänge automatisch aktualisieren"
+
+#~ msgid "Add this username to your ignores list"
+#~ msgstr "Diesen Spieler zu Eurer Ignorierliste hinzufügen"
+
+#~ msgid "Add this username to your friends list"
+#~ msgstr "Diesen Spieler zu Eurer Freundesliste hinzufügen"
+
+#~ msgid "Allow multiple maps to be open simultaneously"
+#~ msgstr "Mehre Karten gleichzeitig öffnen"
+
+#~ msgid "Automatically update map view"
+#~ msgstr "Kartenansicht automatisch aktualisieren"
+
+#~ msgid "Custom lighting settings"
+#~ msgstr "Benutzerdefinierte Lichteinstellungen"
+
+#~ msgid "Time of day lighting preset:"
+#~ msgstr "Tageszeitvoreinstellungen"
+
+#, fuzzy
+#~| msgid "Flip Clipboard Vertically"
+#~ msgid "Scroll Viewport Vertically"
+#~ msgstr "Zwischenablage vertikal spiegeln"
+
+#, fuzzy
+#~| msgid "Flip Clipboard Horizontally"
+#~ msgid "Scroll Viewport Horizontally"
+#~ msgstr "Zwischenablage horizontal spiegeln"
+
+#~ msgid "Uninstall Add-ons"
+#~ msgstr "Erweiterungen entfernen"
+
+#, fuzzy
+#~| msgid "Multiplayer Options"
+#~ msgid "Filter Options"
+#~ msgstr "Mehrspieler"
+
+#~ msgid " (widescreen)"
+#~ msgstr " (Breitbild)"
+
+#~ msgid "Map-Screenshot"
+#~ msgstr "Bildschirmfoto der Karte"
+
+#~ msgid "Do you really want to quit?"
+#~ msgstr "Möchtet Ihr das Spiel wirklich beenden?"
+
+#, fuzzy
+#~| msgid "Switch Map"
+#~ msgid "Switch Area"
+#~ msgstr "Karte wechseln"
+
+#~ msgid "Right Mouse Click"
+#~ msgstr "Rechtsklick"
+
+#~ msgid "Left Mouse Click"
+#~ msgstr "Linksklick"
+
+#~ msgid ""
+#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
+#~ "modifiers to avoid problems."
+#~ msgstr ""
+#~ "Zur Vermeidung von Problemen, sollten Tastaturkürzel für Schnappschüsse "
+#~ "mit Strg, Alt oder der Metataste kombiniert werden."
+
+#~ msgid "Warning"
+#~ msgstr "Warnung"
+
+#~ msgid "Use colored mouse cursors (may be slower)"
+#~ msgstr "Farbige Mauscursor verwenden (kann das Spiel verlangsamen)"
+
+#~ msgid "Show color cursors"
+#~ msgstr "Farbige Mauszeiger anzeigen"
 
 #, fuzzy
 #~| msgid "Forested Hills"
-#~ msgid "Palm Forested Hills"
+#~ msgid "Savanna Forested Hills"
 #~ msgstr "Bewaldete Hügel"
 
 #, fuzzy
@@ -5455,141 +5508,43 @@ msgstr ""
 
 #, fuzzy
 #~| msgid "Forested Hills"
-#~ msgid "Savanna Forested Hills"
+#~ msgid "Palm Forested Hills"
 #~ msgstr "Bewaldete Hügel"
 
-#~ msgid "Show color cursors"
-#~ msgstr "Farbige Mauszeiger anzeigen"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "Farbige Mauscursor verwenden (kann das Spiel verlangsamen)"
-
-#~ msgid "Warning"
-#~ msgstr "Warnung"
-
-#~ msgid ""
-#~ "Screenshot hotkeys should be combined with the Control, Alt or Meta "
-#~ "modifiers to avoid problems."
-#~ msgstr ""
-#~ "Zur Vermeidung von Problemen, sollten Tastaturkürzel für Schnappschüsse "
-#~ "mit Strg, Alt oder der Metataste kombiniert werden."
-
-#~ msgid "Left Mouse Click"
-#~ msgstr "Linksklick"
-
-#~ msgid "Right Mouse Click"
-#~ msgstr "Rechtsklick"
-
 #, fuzzy
-#~| msgid "Switch Map"
-#~ msgid "Switch Area"
-#~ msgstr "Karte wechseln"
+#~| msgid "Tropical Forest"
+#~ msgid "Tropical Forested Hills"
+#~ msgstr "Tropischer Wald"
 
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Möchtet Ihr das Spiel wirklich beenden?"
+#~ msgid "Snowy Mixed Forested Hills"
+#~ msgstr "Verschneiter Bergmischwald"
 
-#~ msgid "Map-Screenshot"
-#~ msgstr "Bildschirmfoto der Karte"
+#~ msgid "Winter Mixed Forested Hills"
+#~ msgstr "Winterlicher Bergmischwald"
 
-#~ msgid " (widescreen)"
-#~ msgstr " (Breitbild)"
+#~ msgid "Fall Mixed Forested Hills"
+#~ msgstr "Herbstbunter Bergmischwald"
 
-#, fuzzy
-#~| msgid "Multiplayer Options"
-#~ msgid "Filter Options"
-#~ msgstr "Mehrspieler"
+#~ msgid "Summer Mixed Forested Hills"
+#~ msgstr "Sommerlicher Bergmischwald"
 
-#~ msgid "Uninstall Add-ons"
-#~ msgstr "Erweiterungen entfernen"
+#~ msgid "Snowy Deciduous Forested Hills"
+#~ msgstr "Kahle eingeschneite Hänge"
 
-#, fuzzy
-#~| msgid "Flip Clipboard Horizontally"
-#~ msgid "Scroll Viewport Horizontally"
-#~ msgstr "Zwischenablage horizontal spiegeln"
+#~ msgid "Winter Deciduous Forested Hills"
+#~ msgstr "Frostige kahle Hänge"
 
-#, fuzzy
-#~| msgid "Flip Clipboard Vertically"
-#~ msgid "Scroll Viewport Vertically"
-#~ msgstr "Zwischenablage vertikal spiegeln"
+#~ msgid "Fall Deciduous Forested Hills"
+#~ msgstr "Herbstbunte Hügel"
 
-#~ msgid "Time of day lighting preset:"
-#~ msgstr "Tageszeitvoreinstellungen"
+#~ msgid "Summer Deciduous Forested Hills"
+#~ msgstr "Lauschig bewaldeter Hügel"
 
-#~ msgid "Custom lighting settings"
-#~ msgstr "Benutzerdefinierte Lichteinstellungen"
+#~ msgid "Forested Snow Hills"
+#~ msgstr "Bewaldete verschneite Hügel"
 
-#~ msgid "Automatically update map view"
-#~ msgstr "Kartenansicht automatisch aktualisieren"
+#~ msgid "Forested Hills"
+#~ msgstr "Bewaldete Hügel"
 
-#~ msgid "Allow multiple maps to be open simultaneously"
-#~ msgstr "Mehre Karten gleichzeitig öffnen"
-
-#~ msgid "Add this username to your friends list"
-#~ msgstr "Diesen Spieler zu Eurer Freundesliste hinzufügen"
-
-#~ msgid "Add this username to your ignores list"
-#~ msgstr "Diesen Spieler zu Eurer Ignorierliste hinzufügen"
-
-#, fuzzy
-#~| msgid "Auto-update Terrain Transitions"
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Geländeübergänge automatisch aktualisieren"
-
-#~ msgid "Types"
-#~ msgstr "Typen"
-
-#~ msgid "Inspection window"
-#~ msgstr "Inspektor"
-
-#~ msgid "Variable"
-#~ msgstr "Variable"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Die neue Lobby verwenden"
-
-#~ msgid "Use New Lobby Interface"
-#~ msgstr "Die neue Mehrspielerlobby verwenden"
-
-#, fuzzy
-#~| msgid "Default"
-#~ msgid "Reset Defaults"
-#~ msgstr "Standard"
-
-#~ msgid "Update Add-ons"
-#~ msgstr "Erweiterungen aktualisieren"
-
-#~ msgid "Create New Map"
-#~ msgstr "Karte erstellen"
-
-#~ msgid "Don’t ask me again!"
-#~ msgstr "Nicht nochmal fragen!"
-
-#~ msgid "x"
-#~ msgstr "x"
-
-#~ msgid "OOS error"
-#~ msgstr "Synchronisationsfehler"
-
-#~ msgid "Create game"
-#~ msgstr "Partie eröffnen"
-
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "Spielverläufe nach ES/MS Sieg oder MS Niederlage speichern"
-
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "Spielverläufe nach ES/MS Sieg oder MS Niederlage speichern"
-
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr "Automatische Spielstände nach ES/MS Sieg oder MS Niederlage löschen"
-
-#~ msgid "Change Hotkey"
-#~ msgstr "Tastenkürzel ändern"
-
-#~ msgid "This hotkey is already in use."
-#~ msgstr "Dieses Tastenkürzel wird bereits verwendet."
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "Geplante Aktionen umsetzen"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "Geplante Aktionen löschen"
+#~ msgid "Elvish Castle"
+#~ msgstr "Elfenkastell"
