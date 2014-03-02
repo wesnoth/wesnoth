@@ -102,6 +102,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	case SDL_ACTIVEEVENT:
 		if (event.active.state == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
 			if (get_mouse_handler_base().is_dragging()) {
@@ -116,6 +117,7 @@ void controller_base::handle_event(const SDL_Event& event)
 			}
 		}
 		break;
+#endif
 	default:
 		break;
 	}
