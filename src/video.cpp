@@ -476,6 +476,53 @@ CVideo::window_state(void)
 }
 #endif
 
+std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
+{
+	std::vector<std::pair<int, int> > result;
+
+	SDL_PixelFormat format = *getSurface()->format;
+	format.BitsPerPixel = getBpp();
+
+	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
+
+	// The SDL documentation says that a return value of -1
+	// means that all dimensions are supported/possible.
+	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
+		// SDL says that all modes are possible, so it's OK to use a
+		// hardcoded list here. Include tiny and small gui since they
+		// will be filtered out later if not needed.
+		result.push_back(std::make_pair(800, 480));	// EeePC resolution
+		result.push_back(std::make_pair(800, 600));
+		result.push_back(std::make_pair(1024, 600)); // used on many netbooks
+		result.push_back(std::make_pair(1024, 768));
+		result.push_back(std::make_pair(1280, 960));
+		result.push_back(std::make_pair(1280, 1024));
+		result.push_back(std::make_pair(1366, 768)); // 16:9 notebooks
+		result.push_back(std::make_pair(1440, 900));
+		result.push_back(std::make_pair(1440, 1200));
+		result.push_back(std::make_pair(1600, 1200));
+		result.push_back(std::make_pair(1680, 1050));
+		result.push_back(std::make_pair(1920, 1080));
+		result.push_back(std::make_pair(1920, 1200));
+		result.push_back(std::make_pair(2560, 1600));
+
+		return result;
+	} else if(modes == NULL) {
+		std::cerr << "No modes supported\n";
+		return result;
+	}
+
+	result.push_back(std::make_pair(getSurface()->w, getSurface()->h));
+	for(int i = 0; modes[i] != NULL; ++i) {
+		result.push_back(std::make_pair(modes[i]->w,modes[i]->h));
+	}
+
+	std::sort(result.begin(), result.end());
+	result.erase(std::unique(result.begin(), result.end()), result.end());
+
+	return result;
+}
+
 surface& CVideo::getSurface()
 {
 	return frameBuffer;

@@ -133,6 +133,11 @@ class CVideo : private boost::noncopyable {
 	static Uint8 window_state();
 #endif
 
+	/**
+	 * Returns the list of available screen resolutions.
+	 */
+	std::vector<std::pair<int, int> > get_available_resolutions();
+
 private:
 
 	void initSDL();

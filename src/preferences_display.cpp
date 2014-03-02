@@ -254,95 +254,40 @@ private:
 } // end anonymous namespace
 
 
-bool compare_resolutions(const std::pair<int,int>& lhs, const std::pair<int,int>& rhs)
-{
-	return lhs.first*lhs.second < rhs.first*rhs.second;
-}
-
 bool show_video_mode_dialog(display& disp)
 {
 	const resize_lock prevent_resizing;
 	const events::event_context dialog_events_context;
 
-	CVideo& video = disp.video();
+	std::vector<std::pair<int,int> > resolutions
+			= disp.video().get_available_resolutions();
 
-	SDL_PixelFormat format = *video.getSurface()->format;
-	format.BitsPerPixel = video.getBpp();
+	if(resolutions.empty()) {
+		gui2::show_transient_message(
+				disp.video()
+				, ""
+				, _("There are no alternative video modes available"));
 
-	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
-
-	// The SDL documentation says that a return value of -1
-	// means that all dimensions are supported/possible.
-	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
-		std::cerr << "Can support any video mode\n";
-		// SDL says that all modes are possible, so it's OK to use a
-		// hardcoded list here. Include tiny and small gui since they
-		// will be filtered out later if not needed.
-		static const SDL_Rect scr_modes[] = {
-			{ 0, 0,  800, 480  },	// small-gui (EeePC resolution)
-			{ 0, 0,  800, 600  },
-			{ 0, 0, 1024, 600  },	// used on many netbooks
-			{ 0, 0, 1024, 768  },
-			{ 0, 0, 1280, 960  },
-			{ 0, 0, 1280, 1024 },
-			{ 0, 0, 1366, 768  },	// 16:9 notebooks
-			{ 0, 0, 1440, 900  },
-			{ 0, 0, 1440, 1200 },
-			{ 0, 0, 1600, 1200 },
-			{ 0, 0, 1680, 1050 },
-			{ 0, 0, 1920, 1080 },
-			{ 0, 0, 1920, 1200 },
-			{ 0, 0, 2560, 1600 }
-		};
-		static const SDL_Rect * const scr_modes_list[] = {
-			&scr_modes[0],
-			&scr_modes[1],
-			&scr_modes[2],
-			&scr_modes[3],
-			&scr_modes[4],
-			&scr_modes[5],
-			&scr_modes[6],
-			&scr_modes[7],
-			&scr_modes[8],
-			&scr_modes[9],
-			&scr_modes[10],
-			&scr_modes[11],
-			&scr_modes[12],
-			&scr_modes[13],
-			NULL
-		};
-
-		modes = scr_modes_list;
-	} else if(modes == NULL) {
-		std::cerr << "No modes supported\n";
-		gui2::show_transient_message(disp.video(),"",_("There are no alternative video modes available"));
 		return false;
 	}
 
-	std::vector<std::pair<int,int> > resolutions;
-
-	for(int i = 0; modes[i] != NULL; ++i) {
-		if(modes[i]->w >= min_allowed_width() && modes[i]->h >= min_allowed_height()) {
-			resolutions.push_back(std::pair<int,int>(modes[i]->w,modes[i]->h));
-		}
-	}
-
-	const std::pair<int,int> current_res(video.getSurface()->w,video.getSurface()->h);
-	resolutions.push_back(current_res);
-
-	std::sort(resolutions.begin(),resolutions.end(),compare_resolutions);
-	resolutions.erase(std::unique(resolutions.begin(),resolutions.end()),resolutions.end());
+	const std::pair<int,int> current_res(
+			  disp.video().getSurface()->w
+			, disp.video().getSurface()->h);
 
 	std::vector<std::string> options;
 	unsigned current_choice = 0;
 
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
-		std::ostringstream option;
+		if(res.first < min_allowed_width() || res.second < min_allowed_height()) {
+			continue;
+		}
 
 		if (res == current_res)
 			current_choice = static_cast<unsigned>(k);
 
+		std::ostringstream option;
 		option << res.first << utils::unicode_multiplication_sign << res.second;
 		const int div = boost::math::gcd(res.first, res.second);
 		if (div >= 10)
