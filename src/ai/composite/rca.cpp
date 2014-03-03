@@ -90,6 +90,7 @@ config candidate_action::to_config() const
 	config cfg;
 	cfg["enabled"] = enabled_;
 	cfg["engine"] = engine_;
+	cfg["id"] = id_;
 	cfg["name"] = name_;
 	cfg["score"] = score_;
 	cfg["max_score"] = max_score_;
