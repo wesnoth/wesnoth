@@ -167,15 +167,17 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 				} else {
 
-					SDL_Color normal_col = int_to_color(game_config::team_rgb_range.find(terrain_info.id())->second.rep());
-
-					SDL_Color col = normal_col;
+					SDL_Color col;
 					bool first = true;
 					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
 					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
 
 						const std::string& terrain_id = map.get_terrain_info(underlying_terrain).id();
-						SDL_Color tmp = int_to_color(game_config::team_rgb_range.find(terrain_id)->second.rep());
+						std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_id);
+						if (it == game_config::team_rgb_range.end())
+							continue;
+
+						SDL_Color tmp = int_to_color(it->second.rep());
 
 						if (fogged) {
 							if (tmp.b < 50) tmp.b = 0;
