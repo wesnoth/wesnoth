@@ -288,7 +288,7 @@ game_info::game_info(const config& game, const config& game_config)
 		} else {
 			utils::string_map symbols;
 			symbols["scenario_id"] = game["mp_scenario"];
-			scenario = vgettext("Unknown scenario: $scenario_id", symbols);
+			scenario = vgettext("Unknown scenario",": $scenario_id", symbols);
 			map_info += scenario;
 			verified = false;
 		}
