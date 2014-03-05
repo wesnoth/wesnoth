@@ -922,23 +922,23 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 
 	if (i != i_end) {
 		i->message = message + "\n" + i->message;
+		int endl_pos = 0;
+		for (int ctr = 0; ctr < 5; ctr++)
+			endl_pos = i->message.find('\n', endl_pos);
+
+		i->message = i->message.substr(0,endl_pos);
+
 		send_dbus_notification(connection, i->id, owner, i->message);
 		return;
+	} else {
+		uint32_t id = send_dbus_notification(connection, 0, owner, message);
+		if (!id) return;
+		wnotify visual;
+		visual.id = id;
+		visual.owner = owner;
+		visual.message = message;
+		notifications.push_back(visual);
 	}
-
-	int endl_pos = 0;
-	for (int ctr = 0; ctr < 5; ctr++)
-		endl_pos = i->message.find('\n', endl_pos);
-
-	i->message = i->message.substr(0,endl_pos);
-
-	uint32_t id = send_dbus_notification(connection, 0, owner, message);
-	if (!id) return;
-	wnotify visual;
-	visual.id = id;
-	visual.owner = owner;
-	visual.message = message;
-	notifications.push_back(visual);
 #endif
 
 #ifdef HAVE_GROWL
