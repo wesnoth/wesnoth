@@ -168,6 +168,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				} else {
 
 					SDL_Color col;
+					std::map<std::string, color_range>::const_iterator it = game_config::team_rgb_range.find(terrain_info.id());
+					if (it == game_config::team_rgb_range.end()) {
+						col = create_color(0,0,0,0);
+					} else
+						col = int_to_color(it->second.rep());
+
 					bool first = true;
 					const t_translation::t_list& underlying_terrains = map.underlying_union_terrain(terrain);
 					BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
