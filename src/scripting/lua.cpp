@@ -2652,8 +2652,11 @@ namespace {
 					index = 2;
 			}
 			lua_settop(L, index);
-			if (luaW_pcall(L, 0, 1, false))
-				luaW_toconfig(L, -1, cfg);
+			if (luaW_pcall(L, 0, 1, false)) {
+				if(!luaW_toconfig(L, -1, cfg) && game_config::debug) {
+					chat_message("Lua warning", "function returned to wesnoth.synchronize_choice a table which was partially invalid");
+				}
+			}
 			return cfg;
 		}
 
