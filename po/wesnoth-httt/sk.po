@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-11-14 22:00+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-03-03 20:38+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -4794,7 +4794,7 @@ msgstr "Konrád alebo Li'sar získa Ohnivé žezlo"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:251
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
-msgstr ""
+msgstr "Ak Delfador oddychuje, môže sa sústrediť na polohu Ohnivého žezla"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:164
@@ -4874,58 +4874,60 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
+"Myslím... Myslím, že keby som sa trochu sústredil, vedel by som povedať kde "
+"je."
 
 #. [floating_text]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:275
 msgid "Concentrating"
-msgstr ""
+msgstr "Sústreďuje sa"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:299
 msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
-msgstr ""
+msgstr "Cítim, že sme celkom blízko Žezla. Dokonca by sme ho už mali vidieť..."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:362
 msgid "I sense the path to the sceptre is to the east of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je východne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:363
 msgid "I sense the path to the sceptre is to the south-east of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je juhovýchodne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:364
 msgid "I sense the path to the sceptre is to the south of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je južne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:365
 msgid "I sense the path to the sceptre is to the south-west of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je juhozápadne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:366
 msgid "I sense the path to the sceptre is to the west of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je západne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:367
 msgid "I sense the path to the sceptre is to the north-west of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je severozápadne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
 msgid "I sense the path to the sceptre is to the north of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je severne odomňa."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:369
 msgid "I sense the path to the sceptre is to the north-east of me."
-msgstr ""
+msgstr "Cítim, že cesta k žezlu je severovýchodne odomňa."
 
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
@@ -6889,15 +6891,11 @@ msgstr ""
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:155
-#, fuzzy
-#| msgid ""
-#| "Princess, when Delfador the Great speaks of the Queen Mother, Asheviere, "
-#| "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgid ""
 "Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
 "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgstr ""
-"Princezná, keď Delfador Veľký hovorí, že kráľovná matka Aševiera rozkázala "
+"Princezná, keď Delfador Veľký hovorí, že kráľovná vdova Aševiera rozkázala "
 "usmrtiť princov z Wesnothu, hovorí pravdu."
 
 #. [message]: speaker=Li'sar
@@ -6919,19 +6917,13 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:173
-#, fuzzy
-#| msgid ""
-#| "Well, that is why I must take the Sceptre. I will return, and people will "
-#| "accept me as Queen. I will rule justly and fairly. My mother is only "
-#| "Queen Mother. The throne is rightfully mine, and with the Sceptre I can "
-#| "prove it."
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
 "Dowager. The throne is rightfully mine, and with the Sceptre I can prove it."
 msgstr ""
-"Potom si musím vziať Žezlo. Vrátim sa a ľud ma prijme ako kráľovnú. Budem "
-"vládnuť spravodlivo. Moja matka je iba kráľovnou matkou. Trón je po práve "
+"Preto si musím vziať Žezlo. Vrátim sa a ľud ma prijme ako kráľovnú. Budem "
+"vládnuť spravodlivo. Moja matka je iba kráľovnou vdovou. Trón je po práve "
 "môj a pomocou Žezla to dokážem."
 
 #. [message]: speaker=Delfador
@@ -6945,12 +6937,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:184
-#, fuzzy
-#| msgid ""
-#| "Well, I have the Sceptre! I will return and the people will accept me as "
-#| "Queen! My mother is only Queen Mother. The Throne is rightfully mine, and "
-#| "I will rule from it with justice and fairness. I may even accept you as "
-#| "my adviser and counselor, Delfador."
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Dowager. The Throne is rightfully mine, and I "
@@ -6958,7 +6944,7 @@ msgid ""
 "adviser and counselor, Delfador."
 msgstr ""
 "Nuž teraz mám Žezlo! Vrátim sa a ľud ma prijme ako kráľovnú! Moja matka je "
-"iba kráľovnou matkou. Trón je po práve môj a ja z neho budem vládnuť "
+"iba kráľovnou vdovou. Trón je po práve môj a ja z neho budem vládnuť "
 "spravodlivo. Možno vás dokonca prijmem ako svojho radcu, Delfador."
 
 #. [message]: speaker=Delfador
@@ -8142,18 +8128,13 @@ msgstr "Temná kráľovná"
 
 #. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
-#| "Her knowledge of magic makes her a worthy foe in combat, although her "
-#| "power is mostly derived from those she commands."
 msgid ""
 "The evil queen Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
-"Zlá kráľovná matka Aševiera terorizovala Wesnoth dlhé roky. Jej znalosť "
-"mágie z nej robí dôstojného súpera v boji, ale jej moc plynie hlavne z tých, "
+"Zlá kráľovná Aševiera terorizovala Wesnoth dlhé roky. Jej znalosť mágie z "
+"nej robí dôstojného súpera v boji, avšak jej moc plynie hlavne z tých, "
 "ktorým vládne."
 
 #. [attack]: type=impact
@@ -8213,13 +8194,6 @@ msgstr "Princezná"
 #. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals and battle tactics with the greatest sages, making her both a "
-#| "great combatant and leader. The units of lower level around the Princess "
-#| "will fight better due to her presence. The Princess is also nimble and "
-#| "dextrous, having skills like that of a thief."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
@@ -8229,8 +8203,7 @@ msgstr ""
 "Princezná s urodzeným pôvodom sa vycvičila v boji s mečom u najlepších "
 "generálov a v taktike boja u najväčších mudrcov. To ju urobilo výbornou "
 "bojovníčkou a vodkyňou. Jednotky nižších úrovní okolo princeznej budú "
-"bojovať lepšie vďaka jej prítomnosti. Princezná je tiež rýchla a obratná, so "
-"schopnosťami zlodejov."
+"bojovať lepšie vďaka jej prítomnosti."
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
@@ -8270,7 +8243,7 @@ msgstr "pazúry"
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:9
 msgid "initiative"
-msgstr ""
+msgstr "iniciatíva"
 
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:10
@@ -8278,12 +8251,16 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"Všetky susedné priateľské jednotky zaútočia ako prvé pri boji zblízka, aj "
+"keď sa bránia."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
 msgid ""
 "This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
+"Táto jednotka ovláda taktiku boja zblízka a tým umožňuje susedným spojencom "
+"zasadiť prvý úder aj pri obrane."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9
