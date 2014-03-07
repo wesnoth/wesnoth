@@ -24,6 +24,7 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 	play_scenario::play_scenario(const std::string& id) :
 		id_(id),
@@ -127,3 +128,4 @@ namespace test_utils {
 	}
 
 }
+#endif

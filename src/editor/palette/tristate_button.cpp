@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "sdl/alpha.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"

@@ -70,12 +70,14 @@ if(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
 		${SDLMAIN_LIBRARY}
+		wesnoth-sdl
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
 	)
 else(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
+		wesnoth-sdl
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -353,6 +355,20 @@ if(LIBDBUS_FOUND)
 endif()
 
 ########### Helper libraries ###############
+
+set(wesnoth-sdl_SRC
+	sdl/alpha.cpp
+)
+
+add_library(wesnoth-sdl
+	${LIBRARY_TYPE}
+	EXCLUDE_FROM_ALL
+	${wesnoth-sdl_SRC}
+)
+
+target_link_libraries(wesnoth-sdl
+	${SDL_LIBRARY}
+)
 
 # The main library is rather huge especially in debug mode, causing quite a bit
 # of overhead packing objects that haven't been changed for quite a while.

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,20 +12,25 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-#include "key.hpp"
-#include "sdl/compat.hpp"
+#ifndef SDL_ALPHA_HPP_INCLUDED
+#define SDL_ALPHA_HPP_INCLUDED
 
-CKey::CKey() :
-	key_list(SDL_GetKeyState(NULL))
-{
-}
+/**
+ * @file
+ * Compatibility layer for using SDL 1.2 and 2.0.
+ *
+ * Emulates SDL_SetAlpha.
+ */
 
-bool CKey::operator[](int k) const
-{
-#if SDL_VERSION_ATLEAST(2,0,0)
-	return key_list[SDL_GetScancodeFromKey(k)] > 0;
-#else
-	return key_list[k] > 0;
+#include <SDL.h>
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+
+#define SDL_SRCALPHA 0x00010000
+
+int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha);
+
 #endif
-}
+
+#endif
+

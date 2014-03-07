@@ -19,6 +19,7 @@
 #include "image.hpp"
 #include "image_modifications.hpp"
 #include "log.hpp"
+#include "sdl/alpha.hpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/foreach.hpp>
@@ -451,8 +452,13 @@ surface darken_modification::operator()(const surface &src) const
 surface background_modification::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
+					    color_.b, color_.a));
+#else
 	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.unused));
+#endif
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
 	SDL_BlitSurface(src, NULL, ret, NULL);
 	return ret;

@@ -603,7 +603,11 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 		case SDL_KEYDOWN:
 			keycode = event.key.keysym.sym;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+			character = event.key.keysym.scancode,
+#else
 			character = event.key.keysym.unicode;
+#endif
 			mod = event.key.keysym.mod;
 			break;
 		case SDL_JOYBUTTONDOWN:

@@ -61,13 +61,22 @@ resize_lock::~resize_lock()
 
 static unsigned int get_flags(unsigned int flags)
 {
+	/* The wanted flags for the render need to be evaluated for SDL2. */
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// SDL under Windows doesn't seem to like hardware surfaces
 	// for some reason.
 #if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
 		flags |= SDL_HWSURFACE;
 #endif
+#endif
+
+
 	if((flags&SDL_FULLSCREEN) == 0)
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		flags |= SDL_WINDOW_RESIZABLE;
+#else
 		flags |= SDL_RESIZABLE;
+#endif
 
 	return flags;
 }
@@ -214,16 +223,22 @@ bool non_interactive()
 {
 	if (fake_interactive)
 		return false;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return false;
+#else
 	return SDL_GetVideoSurface() == NULL;
+#endif
 }
 
 surface display_format_alpha(surface surf)
 {
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(SDL_GetVideoSurface() != NULL)
 		return SDL_DisplayFormatAlpha(surf);
 	else if(frameBuffer != NULL)
 		return SDL_ConvertSurface(surf,frameBuffer->format,0);
 	else
+#endif
 		return NULL;
 }
 
@@ -249,7 +264,11 @@ void update_rect(const SDL_Rect& rect_value)
 
 	SDL_Rect rect = rect_value;
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	surface const fb = NULL;
+#else
 	surface const fb = SDL_GetVideoSurface();
+#endif
 	if(fb != NULL) {
 		if(rect.x < 0) {
 			if(rect.x*-1 >= int(rect.w))
@@ -365,7 +384,9 @@ int CVideo::bppForMode( int x, int y, int flags)
 
 int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool current_screen_optimal )
 {
-
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return bits_per_pixel;
+#else
 	int bpp = SDL_VideoModeOK( x, y, bits_per_pixel, get_flags(flags) );
 	if(current_screen_optimal)
 	{
@@ -379,10 +400,14 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 		}
 	}
 	return bpp;
+#endif
 }
 
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	return 0;
+#else
 	update_rects.clear();
 	if (fake_screen_) return 0;
 	mode_changed_ = true;
@@ -400,6 +425,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		image::set_pixel_format(frameBuffer->format);
 		return bits_per_pixel;
 	} else	return 0;
+#endif
 }
 
 bool CVideo::modeChanged()
@@ -424,6 +450,7 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	if(update_all) {
 		::SDL_Flip(frameBuffer);
 	} else if(update_rects.empty() == false) {
@@ -434,6 +461,7 @@ void CVideo::flip()
 	}
 
 	clear_updates();
+#endif
 }
 
 void CVideo::lock_updates(bool value)
@@ -448,6 +476,119 @@ bool CVideo::update_locked() const
 {
 	return updatesLocked_ > 0;
 }
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+static SDL_Window* window = NULL;
+
+Uint8
+CVideo::window_state(void)
+{
+    Uint8 state = 0;
+    Uint32 flags = 0;
+
+	if(!::window) {
+		return state;
+	}
+
+    flags = SDL_GetWindowFlags(::window);
+    if ((flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED)) {
+        state |= SDL_APPACTIVE;
+    }
+    if (flags & SDL_WINDOW_INPUT_FOCUS) {
+        state |= SDL_APPINPUTFOCUS;
+    }
+    if (flags & SDL_WINDOW_MOUSE_FOCUS) {
+        state |= SDL_APPMOUSEFOCUS;
+    }
+    return state;
+}
+
+void CVideo::set_window_title(const std::string& title)
+{
+	if(window) {
+		SDL_SetWindowTitle(window, title.c_str());
+	}
+}
+
+void CVideo::set_window_icon(surface& icon)
+{
+	if(window) {
+		SDL_SetWindowIcon(window, icon);
+	}
+}
+#endif
+
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
+{
+	std::vector<std::pair<int, int> > result;
+
+	const int modes = SDL_GetNumDisplayModes(0);
+	if(modes <= 0) {
+		std::cerr << "No modes supported\n";
+		return result;
+	}
+
+	SDL_DisplayMode mode;
+	for(int i = 0; i < modes; ++i) {
+		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
+			result.push_back(std::make_pair(mode.w, mode.h));
+		}
+	}
+
+	std::sort(result.begin(), result.end());
+	result.erase(std::unique(result.begin(), result.end()), result.end());
+
+	return result;
+}
+#else
+std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
+{
+	std::vector<std::pair<int, int> > result;
+
+	SDL_PixelFormat format = *getSurface()->format;
+	format.BitsPerPixel = getBpp();
+
+	const SDL_Rect* const * modes = SDL_ListModes(&format,FULL_SCREEN);
+
+	// The SDL documentation says that a return value of -1
+	// means that all dimensions are supported/possible.
+	if(modes == reinterpret_cast<SDL_Rect**>(-1)) {
+		// SDL says that all modes are possible, so it's OK to use a
+		// hardcoded list here. Include tiny and small gui since they
+		// will be filtered out later if not needed.
+		result.push_back(std::make_pair(800, 480));	// EeePC resolution
+		result.push_back(std::make_pair(800, 600));
+		result.push_back(std::make_pair(1024, 600)); // used on many netbooks
+		result.push_back(std::make_pair(1024, 768));
+		result.push_back(std::make_pair(1280, 960));
+		result.push_back(std::make_pair(1280, 1024));
+		result.push_back(std::make_pair(1366, 768)); // 16:9 notebooks
+		result.push_back(std::make_pair(1440, 900));
+		result.push_back(std::make_pair(1440, 1200));
+		result.push_back(std::make_pair(1600, 1200));
+		result.push_back(std::make_pair(1680, 1050));
+		result.push_back(std::make_pair(1920, 1080));
+		result.push_back(std::make_pair(1920, 1200));
+		result.push_back(std::make_pair(2560, 1600));
+
+		return result;
+	} else if(modes == NULL) {
+		std::cerr << "No modes supported\n";
+		return result;
+	}
+
+	result.push_back(std::make_pair(getSurface()->w, getSurface()->h));
+	for(int i = 0; modes[i] != NULL; ++i) {
+		result.push_back(std::make_pair(modes[i]->w,modes[i]->h));
+	}
+
+	std::sort(result.begin(), result.end());
+	result.erase(std::unique(result.begin(), result.end()), result.end());
+
+	return result;
+}
+#endif
 
 surface& CVideo::getSurface()
 {

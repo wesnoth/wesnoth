@@ -181,7 +181,13 @@ const hotkey_item& get_hotkey(const SDL_MouseButtonEvent& event)
 
 const hotkey_item& get_hotkey(const SDL_KeyboardEvent& event)
 {
-	return get_hotkey(event.keysym.unicode, event.keysym.sym,
+	return get_hotkey(
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+			event.keysym.scancode,
+#else
+			event.keysym.unicode,
+#endif
+			event.keysym.sym,
 			(event.keysym.mod & KMOD_SHIFT) != 0,
 			(event.keysym.mod & KMOD_CTRL)  != 0,
 			(event.keysym.mod & KMOD_META)  != 0,

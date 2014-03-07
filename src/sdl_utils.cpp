@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "sdl_utils.hpp"
+#include "sdl/alpha.hpp"
 
 #include "floating_point_emulation.hpp"
 #include "neon.hpp"
@@ -64,26 +65,37 @@ SDL_Color int_to_color(const Uint32 rgb)
 	result.r = (0x00FF0000 & rgb )>> 16;
 	result.g = (0x0000FF00 & rgb) >> 8;
 	result.b = (0x000000FF & rgb);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	result.a = 0;
+#else
 	result.unused = 0;
+#endif
 	return result;
 }
 
 SDL_Color create_color(const unsigned char red
 		, unsigned char green
 		, unsigned char blue
-		, unsigned char unused)
+		, unsigned char alpha)
 {
 	SDL_Color result;
 	result.r = red;
 	result.g = green;
 	result.b = blue;
-	result.unused = unused;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	result.a = alpha;
+#else
+	result.unused = alpha;
+#endif
 
 	return result;
 }
 
 SDLKey sdl_keysym_from_name(std::string const &keyname)
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	return SDL_GetKeyFromName(keyname.c_str());
+#else
 	static bool initialized = false;
 	typedef std::map<std::string const, SDLKey> keysym_map_t;
 	static keysym_map_t keysym_map;
@@ -102,6 +114,7 @@ SDLKey sdl_keysym_from_name(std::string const &keyname)
 		return it->second;
 	else
 		return SDLK_UNKNOWN;
+#endif
 }
 
 bool point_in_rect(int x, int y, const SDL_Rect& rect)
@@ -1872,7 +1885,6 @@ surface flop_surface(const surface &surf, bool optimize)
 	return optimize ? create_optimized_surface(nsurf) : nsurf;
 }
 
-
 surface create_compatible_surface(const surface &surf, int width, int height)
 {
 	if(surf == NULL)
@@ -1887,7 +1899,11 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	surface s = SDL_CreateRGBSurface(SDL_SWSURFACE, width, height, surf->format->BitsPerPixel,
 		surf->format->Rmask, surf->format->Gmask, surf->format->Bmask, surf->format->Amask);
 	if (surf->format->palette) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		SDL_SetPaletteColors(s->format->palette, surf->format->palette->colors, 0, surf->format->palette->ncolors);
+#else
 		SDL_SetPalette(s, SDL_LOGPAL, surf->format->palette->colors, 0, surf->format->palette->ncolors);
+#endif
 	}
 	return s;
 }
@@ -2199,7 +2215,11 @@ SDL_Color inverse(const SDL_Color& color) {
 	inverse.r = 255 - color.r;
 	inverse.g = 255 - color.g;
 	inverse.b = 255 - color.b;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	inverse.a = 0;
+#else
 	inverse.unused = 0;
+#endif
 	return inverse;
 }
 
@@ -2281,7 +2301,11 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_C
 {
 	clip_rect_setter clip_setter(target, &rect);
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.a);
+#else
 	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.unused);
+#endif
 	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
 	sdl_fill_rect(target, &r, col);

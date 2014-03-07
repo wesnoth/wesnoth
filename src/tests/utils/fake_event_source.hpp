@@ -21,7 +21,9 @@
 #include "SDL.h"
 
 #include "events.hpp"
+#include "sdl/compat.hpp"
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 
 
@@ -177,4 +179,5 @@ namespace test_utils {
 			void process(events::pump_info& /*info*/);
 	};
 }
+#endif
 #endif

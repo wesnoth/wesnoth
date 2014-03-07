@@ -331,7 +331,11 @@ bool game_controller::init_language()
 	if(!cmdline_opts_.nogui) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		CVideo::set_window_title(wm_title_string);
+#else
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
 	}
 
 	return true;
@@ -353,7 +357,11 @@ bool game_controller::init_video()
 	surface icon(image::get_image("game-icon.png", image::UNSCALED));
 	if(icon != NULL) {
 		///must be called after SDL_Init() and before setting video mode
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		CVideo::set_window_icon(icon);
+#else
 		SDL_WM_SetIcon(icon,NULL);
+#endif
 	}
 #endif
 
@@ -920,7 +928,11 @@ bool game_controller::change_language()
 	if (!cmdline_opts_.nogui) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		CVideo::set_window_title(wm_title_string);
+#else
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
 	}
 
 	return true;

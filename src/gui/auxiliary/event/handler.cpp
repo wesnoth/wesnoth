@@ -366,6 +366,25 @@ void thandler::handle_event(const SDL_Event& event)
 			key_down(event.key);
 			break;
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		case SDL_WINDOWEVENT:
+			switch(event.window.event) {
+				case SDL_WINDOWEVENT_EXPOSED:
+					draw(true);
+					break;
+
+			case SDL_WINDOWEVENT_RESIZED:
+				video_resize(tpoint(event.window.data1, event.window.data2));
+				break;
+
+			case SDL_WINDOWEVENT_ENTER:
+			case SDL_WINDOWEVENT_FOCUS_GAINED:
+				activate();
+				break;
+			}
+
+			break;
+#else
 		case SDL_VIDEOEXPOSE:
 			draw(true);
 			break;
@@ -374,15 +393,16 @@ void thandler::handle_event(const SDL_Event& event)
 			video_resize(tpoint(event.resize.w, event.resize.h));
 			break;
 
+		case SDL_ACTIVEEVENT:
+			activate();
+			break;
+#endif
+
 #if(defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
 		case SDL_SYSWMEVENT:
 			/* DO NOTHING */
 			break;
 #endif
-
-		case SDL_ACTIVEEVENT:
-			activate();
-			break;
 
 		// Silently ignored events.
 		case SDL_KEYUP:
@@ -656,7 +676,14 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 		done = hotkey_pressed(hk);
 	}
 	if(!done) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		key_down(
+				  event.keysym.sym
+				, static_cast<const SDL_Keymod>(event.keysym.mod)
+				, static_cast<const Uint16>(event.keysym.scancode));
+#else
 		key_down(event.keysym.sym, event.keysym.mod, event.keysym.unicode);
+#endif
 	}
 }
 

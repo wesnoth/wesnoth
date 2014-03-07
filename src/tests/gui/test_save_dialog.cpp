@@ -35,6 +35,7 @@
 
 // Linker workarounds end here
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test {
 
 	struct save_dialog_fixture {
@@ -127,3 +128,4 @@ namespace test {
 
 	BOOST_AUTO_TEST_SUITE_END()
 }
+#endif

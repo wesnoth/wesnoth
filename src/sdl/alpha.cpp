@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -12,20 +12,17 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-#include "key.hpp"
-#include "sdl/compat.hpp"
+#include "sdl/alpha.hpp"
 
-CKey::CKey() :
-	key_list(SDL_GetKeyState(NULL))
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+
+int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha)
 {
+	if(flag & SDL_SRCALPHA) {
+		return SDL_SetSurfaceAlphaMod(surface, alpha);
+	} else {
+		return SDL_SetSurfaceAlphaMod(surface, SDL_ALPHA_OPAQUE);
+	}
 }
 
-bool CKey::operator[](int k) const
-{
-#if SDL_VERSION_ATLEAST(2,0,0)
-	return key_list[SDL_GetScancodeFromKey(k)] > 0;
-#else
-	return key_list[k] > 0;
 #endif
-}

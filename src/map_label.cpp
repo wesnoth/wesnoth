@@ -407,7 +407,11 @@ std::string terrain_label::cfg_color() const
 	const unsigned int red = static_cast<unsigned int>(color_.r);
 	const unsigned int green = static_cast<unsigned int>(color_.g);
 	const unsigned int blue = static_cast<unsigned int>(color_.b);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	const unsigned int alpha = static_cast<unsigned int>(color_.a);
+#else
 	const unsigned int alpha = static_cast<unsigned int>(color_.unused);
+#endif
 	buf << red << "," << green << "," << blue << "," << alpha;
 	return buf.str();
 }

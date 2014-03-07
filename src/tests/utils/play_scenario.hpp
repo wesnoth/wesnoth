@@ -24,6 +24,7 @@
 class config;
 
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test_utils {
 
 	class end_position_collector;
@@ -90,4 +91,5 @@ namespace test_utils {
 	};
 }
 
+#endif
 #endif

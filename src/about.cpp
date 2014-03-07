@@ -23,6 +23,7 @@
 #include "display.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/alpha.hpp"
 
 #include <boost/foreach.hpp>
 

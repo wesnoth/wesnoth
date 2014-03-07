@@ -26,6 +26,7 @@
 #include "text.hpp"
 #include "tooltips.hpp"
 #include "video.hpp"
+#include "sdl/alpha.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
 #include "serialization/string_utils.hpp"
@@ -1138,7 +1139,11 @@ SDL_Rect get_floating_label_rect(int handle)
 
 floating_label_context::floating_label_context()
 {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	surface const screen = NULL;
+#else
 	surface const screen = SDL_GetVideoSurface();
+#endif
 	if(screen != NULL) {
 		draw_floating_labels(screen);
 	}
@@ -1155,7 +1160,11 @@ floating_label_context::~floating_label_context()
 
 	label_contexts.pop();
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	surface const screen = NULL;
+#else
 	surface const screen = SDL_GetVideoSurface();
+#endif
 	if(screen != NULL) {
 		undraw_floating_labels(screen);
 	}
