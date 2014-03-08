@@ -358,6 +358,7 @@ endif()
 
 set(wesnoth-sdl_SRC
 	sdl/alpha.cpp
+	sdl/window.cpp
 )
 
 add_library(wesnoth-sdl

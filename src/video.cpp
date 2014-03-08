@@ -25,6 +25,7 @@
 #include "preferences.hpp"
 #include "preferences_display.hpp"
 #include "sdl_utils.hpp"
+#include "sdl/window.hpp"
 #include "video.hpp"
 
 #include <boost/foreach.hpp>
@@ -217,6 +218,9 @@ namespace {
 
 surface frameBuffer = NULL;
 bool fake_interactive = false;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+sdl::twindow* main_window = NULL;
+#endif
 }
 
 bool non_interactive()
@@ -340,6 +344,9 @@ CVideo::~CVideo()
 {
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	delete main_window;
+#endif
 	LOG_DP << "called SDL_Quit()\n";
 }
 
@@ -403,11 +410,40 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 #endif
 }
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	return 0;
+	update_rects.clear();
+	if (fake_screen_) return 0;
+	mode_changed_ = true;
+
+	flags = get_flags(flags);
+
+	fullScreen = (flags & FULL_SCREEN) != 0;
+
+	if(!main_window) {
+		main_window
+			= new sdl::twindow("", 0, 0, x, y, flags, SDL_RENDERER_SOFTWARE);
+	} else {
+		if(fullScreen) {
+			main_window->full_screen();
+		} else {
+			main_window->set_size(x, y);
+		}
+	}
+
+	frameBuffer = SDL_GetWindowSurface(*main_window);
+
+	if(frameBuffer != NULL) {
+		image::set_pixel_format(frameBuffer->format);
+		return bits_per_pixel;
+	} else	{
+		return 0;
+	}
+}
 #else
+int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
+{
 	update_rects.clear();
 	if (fake_screen_) return 0;
 	mode_changed_ = true;
@@ -425,8 +461,8 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		image::set_pixel_format(frameBuffer->format);
 		return bits_per_pixel;
 	} else	return 0;
-#endif
 }
+#endif
 
 bool CVideo::modeChanged()
 {
