@@ -285,7 +285,7 @@ void show_about(display &disp, const std::string &campaign)
 	// Initially redraw all
 	bool redraw_mapimage = true;
 	bool update_dimensions = true;
-	int max_text_width = text_rect.w;
+	int max_text_width = 0;
 
 	do {
 		last_escape = key[SDLK_ESCAPE] != 0;
