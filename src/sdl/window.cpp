@@ -68,9 +68,19 @@ void twindow::full_screen()
 	/** @todo Implement. */
 }
 
+void twindow::render()
+{
+	SDL_RenderPresent(*this);
+}
+
 twindow::operator SDL_Window*()
 {
 	return window_;
+}
+
+twindow::operator SDL_Renderer*()
+{
+	return SDL_GetRenderer(window_);
 }
 
 } // namespace sdl

@@ -497,6 +497,9 @@ void CVideo::flip()
 	}
 
 	clear_updates();
+#else
+	assert(main_window);
+	main_window->render();
 #endif
 }
 

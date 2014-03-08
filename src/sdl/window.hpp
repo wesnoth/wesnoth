@@ -30,6 +30,8 @@
 
 #include <string>
 
+struct SDL_Renderer;
+
 namespace sdl
 {
 
@@ -91,6 +93,8 @@ public:
 	 */
 	void full_screen();
 
+	/** Renders the contents of the window. */
+	void render();
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
@@ -101,6 +105,14 @@ public:
 
 
 private:
+
+	/**
+	 * Conversion operator to a SDL_Renderer*.
+	 *
+	 * @todo Evaluate whether the function should become public or not.
+	 */
+	operator SDL_Renderer*();
+
 	/***** ***** ***** Members. ***** ***** *****/
 
 	/** The @ref SDL_Window we own. */
