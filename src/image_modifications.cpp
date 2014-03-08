@@ -460,7 +460,7 @@ surface background_modification::operator()(const surface &src) const
 					    color_.b, color_.unused));
 #endif
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-	SDL_BlitSurface(src, NULL, ret, NULL);
+	blit_surface(src, NULL, ret, NULL);
 	return ret;
 }
 

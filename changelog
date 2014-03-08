@@ -18,6 +18,8 @@ Version 1.13.0-dev:
    * Increased the experience requirement for the Saree from 56 to 64
  * Miscellaneous and bug fixes:
    * Fix Fisher-Yates implemenation of Lua helper.shuffle (bug #21706)
+   * Fixed issues with the ~BG() image path function not always working with
+     cached images.
    * Idle controlled sides now serialize as human controlled.
 
 Version 1.11.11:
