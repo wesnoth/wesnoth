@@ -65,9 +65,6 @@ static lg::log_domain log_preprocessor("preprocessor");
 static void safe_exit(int res) {
 
 	LOG_GENERAL << "exiting with code " << res << "\n";
-#ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
-        SDL_Quit();
-#endif
 	exit(res);
 }
 
