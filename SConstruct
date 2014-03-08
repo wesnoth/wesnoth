@@ -102,7 +102,8 @@ opts.AddVariables(
     BoolVariable('cxx0x', 'Use C++0x features.', False),
     BoolVariable('openmp', 'Enable openmp use.', False),
     BoolVariable("fast", "Make scons faster at cost of less precise dependency tracking.", False),
-    BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False)
+    BoolVariable("lockfile", "Create a lockfile to prevent multiple instances of scons from being run at the same time on this working copy.", False),
+    BoolVariable("sdl2", "Build with SDL2 support (experimental!)", False)
     )
 
 #
@@ -315,29 +316,44 @@ if env["prereqs"]:
         conf.CheckLib("vorbis")
         conf.CheckLib("mikmod")
 
-    have_server_prereqs = \
+    if env['sdl2']:
+        have_sdl_net = \
+        conf.CheckSDL(require_version = '2.0.0') and \
+        conf.CheckSDL("SDL2_net", header_file = "SDL_net")
+
+        have_sdl_other = \
+        conf.CheckSDL("SDL2_ttf", header_file = "SDL_ttf") and \
+        conf.CheckSDL("SDL2_mixer", header_file = "SDL_mixer") and \
+        conf.CheckSDL("SDL2_image", header_file = "SDL_image")
+
+    else:
+        have_sdl_net = \
+        conf.CheckSDL(require_version = '1.2.0') and \
+        conf.CheckSDL('SDL_net')
+
+        have_sdl_other = \
+        conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
+        conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
+        conf.CheckSDL("SDL_image", require_version = '1.2.0')
+
+    have_server_prereqs = have_sdl_net and \
         conf.CheckCPlusPlus(gcc_version = "3.3") and \
         conf.CheckGettextLibintl() and \
         conf.CheckBoost("iostreams", require_version = "1.34.1") and \
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoostIostreamsBZip2() and \
-        conf.CheckBoost("smart_ptr", header_only = True) and \
-        conf.CheckSDL(require_version = '1.2.7') and \
-        conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
+        conf.CheckBoost("smart_ptr", header_only = True) or Warning("Base prerequisites are not met.")
 
     env = conf.Finish()
     client_env = env.Clone()
     conf = client_env.Configure(**configure_args)
-    have_client_prereqs = have_server_prereqs and \
+    have_client_prereqs = have_server_prereqs and have_sdl_other and \
         CheckAsio(conf) and \
         conf.CheckPango("cairo", require_version = "1.21.3") and \
         conf.CheckPKG("fontconfig") and \
         conf.CheckBoost("program_options", require_version="1.35.0") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \
-        conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
-        conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \
         conf.CheckLib("vorbisfile") and \
-        conf.CheckSDL("SDL_image", require_version = '1.2.0') and \
         conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
 
     have_X = False
