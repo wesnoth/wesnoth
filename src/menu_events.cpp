@@ -3275,7 +3275,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
 		} else {
 			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
-			change_side_controller(side,player);		 
+			change_side_controller(side,player);
 		}
 		throw end_turn_exception(side_num);
 	} else {
