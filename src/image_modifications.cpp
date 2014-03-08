@@ -454,7 +454,7 @@ surface background_modification::operator()(const surface &src) const
 	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.unused));
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-	SDL_BlitSurface(src, NULL, ret, NULL);
+	blit_surface(src, NULL, ret, NULL);
 	return ret;
 }
 
