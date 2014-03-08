@@ -103,7 +103,6 @@ void get_files_in_dir(const std::string &directory,
 	// If we have a path to find directories in,
 	// then convert relative pathnames to be rooted
 	// on the wesnoth path
-#ifndef __AMIGAOS4__
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 		std::string dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
@@ -111,18 +110,13 @@ void get_files_in_dir(const std::string &directory,
 			return;
 		}
 	}
-#endif /* __AMIGAOS4__ */
 
 	struct stat st;
 
 	if (reorder == DO_REORDER) {
 		LOG_FS << "searching for _main.cfg in directory " << directory << '\n';
 		std::string maincfg;
-		if (directory.empty() || directory[directory.size()-1] == '/'
-#ifdef __AMIGAOS4__
-			|| (directory[directory.size()-1]==':')
-#endif /* __AMIGAOS4__ */
-		)
+		if (directory.empty() || directory[directory.size()-1] == '/')
 			maincfg = directory + maincfg_filename;
 		else
 			maincfg = (directory + "/") + maincfg_filename;
@@ -171,11 +165,7 @@ void get_files_in_dir(const std::string &directory,
 #endif /* !APPLE */
 
 		std::string fullname;
-		if (directory.empty() || directory[directory.size()-1] == '/'
-#ifdef __AMIGAOS4__
-			|| (directory[directory.size()-1]==':')
-#endif /* __AMIGAOS4__ */
-		)
+		if (directory.empty() || directory[directory.size()-1] == '/')
 			fullname = directory + basename;
 		else
 			fullname = directory + "/" + basename;
@@ -598,9 +588,7 @@ void set_user_data_dir(std::string path)
 #else
 	if (path.empty()) path = path2;
 
-#ifdef __AMIGAOS4__
-	user_data_dir = "PROGDIR:" + path;
-#elif defined(__BEOS__)
+#if defined(__BEOS__)
 	if (be_path.InitCheck() != B_OK) {
 		BPath tpath;
 		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {

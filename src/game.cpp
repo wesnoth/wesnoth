@@ -51,11 +51,6 @@
 #include "vld.h"
 #endif
 
-// Minimum stack cookie to prevent stack overflow on AmigaOS4
-#ifdef __amigaos4__
-const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
-#endif
-
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
