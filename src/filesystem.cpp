@@ -36,13 +36,6 @@
 #include <libgen.h>
 #endif /* !_WIN32 */
 
-#ifdef __BEOS__
-#include <Directory.h>
-#include <FindDirectory.h>
-#include <Path.h>
-BPath be_path;
-#endif
-
 // for getenv
 #include <cerrno>
 #include <fstream>
@@ -103,7 +96,6 @@ void get_files_in_dir(const std::string &directory,
 	// If we have a path to find directories in,
 	// then convert relative pathnames to be rooted
 	// on the wesnoth path
-#ifndef __AMIGAOS4__
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 		std::string dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
@@ -111,18 +103,13 @@ void get_files_in_dir(const std::string &directory,
 			return;
 		}
 	}
-#endif /* __AMIGAOS4__ */
 
 	struct stat st;
 
 	if (reorder == DO_REORDER) {
 		LOG_FS << "searching for _main.cfg in directory " << directory << '\n';
 		std::string maincfg;
-		if (directory.empty() || directory[directory.size()-1] == '/'
-#ifdef __AMIGAOS4__
-			|| (directory[directory.size()-1]==':')
-#endif /* __AMIGAOS4__ */
-		)
+		if (directory.empty() || directory[directory.size()-1] == '/')
 			maincfg = directory + maincfg_filename;
 		else
 			maincfg = (directory + "/") + maincfg_filename;
@@ -171,11 +158,7 @@ void get_files_in_dir(const std::string &directory,
 #endif /* !APPLE */
 
 		std::string fullname;
-		if (directory.empty() || directory[directory.size()-1] == '/'
-#ifdef __AMIGAOS4__
-			|| (directory[directory.size()-1]==':')
-#endif /* __AMIGAOS4__ */
-		)
+		if (directory.empty() || directory[directory.size()-1] == '/')
 			fullname = directory + basename;
 		else
 			fullname = directory + "/" + basename;
@@ -598,19 +581,6 @@ void set_user_data_dir(std::string path)
 #else
 	if (path.empty()) path = path2;
 
-#ifdef __AMIGAOS4__
-	user_data_dir = "PROGDIR:" + path;
-#elif defined(__BEOS__)
-	if (be_path.InitCheck() != B_OK) {
-		BPath tpath;
-		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {
-			be_path.Append("wesnoth");
-		} else {
-			be_path.SetTo("/boot/home/config/settings/wesnoth");
-		}
-		user_data_dir = be_path.Path();
-	}
-#else
 	const char* home_str = getenv("HOME");
 	std::string home = home_str ? home_str : ".";
 
@@ -618,7 +588,6 @@ void set_user_data_dir(std::string path)
 		user_data_dir = path;
 	else
 		user_data_dir = home + std::string("/") + path;
-#endif
 #endif
 
 #endif /*_WIN32*/
@@ -642,21 +611,6 @@ static void setup_user_data_dir()
 	_mkdir((user_data_dir + "/data/add-ons").c_str());
 	_mkdir((user_data_dir + "/saves").c_str());
 	_mkdir((user_data_dir + "/persist").c_str());
-#elif defined(__BEOS__)
-	BPath tpath;
-	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
-		tpath = be_path;                       \
-		tpath.Append(subdir);                  \
-		create_directory(tpath.Path(), 0775);
-
-	BEOS_CREATE_PREFERENCES_SUBDIR("editor");
-	BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
-	BEOS_CREATE_PREFERENCES_SUBDIR("editor/scenarios");
-	BEOS_CREATE_PREFERENCES_SUBDIR("data");
-	BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
-	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
-	BEOS_CREATE_PREFERENCES_SUBDIR("persist");
-	#undef BEOS_CREATE_PREFERENCES_SUBDIR
 #else
 	const std::string& dir_path = user_data_dir;
 

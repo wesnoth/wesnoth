@@ -65,7 +65,7 @@ static unsigned int get_flags(unsigned int flags)
 #if !SDL_VERSION_ATLEAST(2, 0, 0)
 	// SDL under Windows doesn't seem to like hardware surfaces
 	// for some reason.
-#if !(defined(_WIN32) || defined(__APPLE__) || defined(__AMIGAOS4__))
+#if !(defined(_WIN32) || defined(__APPLE__))
 		flags |= SDL_HWSURFACE;
 #endif
 #endif

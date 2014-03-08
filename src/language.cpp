@@ -134,12 +134,10 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	// LANGUAGE overrides other settings, so for now just get rid of it
 	// FIXME: add configure check for unsetenv
 #ifndef _WIN32
-#ifndef __AMIGAOS4__
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
-#endif
 
-#if defined(__BEOS__) || defined(__APPLE__)
+#ifdef __APPLE__
 	if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
 		ERR_G << "setenv LANG failed: " << strerror(errno);
 	}
@@ -197,13 +195,11 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	}
 
 #ifndef _WIN32
-#ifndef __AMIGAOS4__
 		if(category == LC_MESSAGES) {
 			WRN_G << "Setting LANGUAGE to '" << slocale << "'.\n";
 			setenv("LANGUAGE", slocale.c_str(), 1);
 			std::setlocale(LC_MESSAGES, "");
 		}
-#endif
 #endif
 
 	done:
