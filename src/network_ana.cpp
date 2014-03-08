@@ -50,11 +50,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>  // for TCP_NODELAY
-#ifdef __BEOS__
-#include <socket.h>
-#else
 #include <fcntl.h>
-#endif
 #define SOCKET int
 #endif
 

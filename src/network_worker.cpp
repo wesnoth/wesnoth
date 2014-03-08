@@ -59,11 +59,7 @@ typedef int socklen_t;
 #else
 #  include <sys/types.h>
 #  include <sys/socket.h>
-#  ifdef __BEOS__
-#    include <socket.h>
-#  else
-#    include <fcntl.h>
-#  endif
+#  include <fcntl.h>
 #  define SOCKET int
 #  ifdef HAVE_POLL_H
 #    define USE_POLL 1
@@ -208,7 +204,7 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 		if(bytes_read == 0) {
 			return false;
 		} else if(bytes_read < 0) {
-#if defined(EAGAIN) && !defined(__BEOS__) && !defined(_WIN32)
+#if defined(EAGAIN) && !defined(_WIN32)
 			if(errno == EAGAIN)
 #elif defined(_WIN32) && defined(WSAEWOULDBLOCK)
 			//it seems like 'errno == EWOULDBLOCK' compiles on msvc2010, but doesnt work properly at rumtime.
@@ -350,9 +346,6 @@ static void make_network_buffer(const char* input, int len, std::vector<char>& b
 
 static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_size = -1)
 {
-#ifdef __BEOS__
-	int timeout = 60000;
-#endif
 //	check_send_buffer_size(sock);
 	size_t upto = 0;
 	size_t size = buf.size();
@@ -365,11 +358,8 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 		const threading::lock lock(*stats_mutex);
 		transfer_stats[sock].first.fresh_current(size);
 	}
-#ifdef __BEOS__
-	while(upto < size && timeout > 0) {
-#else
+
 	while(true) {
-#endif
 		{
 			const size_t shard = get_shard(sock);
 			// check if the socket is still locked
@@ -393,7 +383,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 		}
 #if defined(_WIN32)
 		if(WSAGetLastError() == WSAEWOULDBLOCK)
-#elif defined(EAGAIN) && !defined(__BEOS__)
+#elif defined(EAGAIN)
 		if(errno == EAGAIN)
 #elif defined(EWOULDBLOCK)
 		if(errno == EWOULDBLOCK)
@@ -417,7 +407,7 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 
 			if(poll_res > 0)
 				continue;
-#elif defined(USE_SELECT) && !defined(__BEOS__)
+#elif defined(USE_SELECT)
 			fd_set writefds;
 			FD_ZERO(&writefds);
 			FD_SET(((_TCPsocket*)sock)->channel, &writefds);
@@ -432,16 +422,6 @@ static SOCKET_STATE send_buffer(TCPsocket sock, std::vector<char>& buf, int in_s
 
 			if(retval > 0)
 				continue;
-#elif defined(__BEOS__)
-			if(res > 0) {
-				// some data was sent, reset timeout
-				timeout = 60000;
-			} else {
-				// sleep for 100 milliseconds
-				SDL_Delay(100);
-				timeout -= 100;
-			}
-			continue;
 #endif
 		}
 
