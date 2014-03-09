@@ -37,14 +37,14 @@ twindow::twindow(const std::string& title,
 	: window_(SDL_CreateWindow(title.c_str(), x, y, w, h, window_flags))
 {
 	if(!window_) {
-		ERR_DP << "Failed to create a SDL_Window object with error»"
+		ERR_DP << "Failed to create a SDL_Window object with error »"
 			   << SDL_GetError() << "«.\n";
 
 		throw game::error("");
 	}
 
 	if(!SDL_CreateRenderer(window_, -1, render_flags)) {
-		ERR_DP << "Failed to create a SDL_Window object with error»"
+		ERR_DP << "Failed to create a SDL_Window object with error »"
 			   << SDL_GetError() << "«.\n";
 
 		throw game::error("");
