@@ -557,8 +557,8 @@ def WesnothProgram(env, target, source, can_build, **kw):
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
-wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
-                   libwesnoth, libwesnoth_extras, env["wesnoth_res"]]
+wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
+                   libwesnoth_sdl, libwesnoth_extras, env["wesnoth_res"]]
 if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
