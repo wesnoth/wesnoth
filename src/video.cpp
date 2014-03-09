@@ -25,6 +25,7 @@
 #include "preferences.hpp"
 #include "preferences_display.hpp"
 #include "sdl_utils.hpp"
+#include "sdl/window.hpp"
 #include "video.hpp"
 
 #include <boost/foreach.hpp>
@@ -217,6 +218,9 @@ namespace {
 
 surface frameBuffer = NULL;
 bool fake_interactive = false;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+sdl::twindow* window = NULL;
+#endif
 }
 
 bool non_interactive()
@@ -340,6 +344,9 @@ CVideo::~CVideo()
 {
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	delete window;
+#endif
 	LOG_DP << "called SDL_Quit()\n";
 }
 
@@ -403,11 +410,39 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 #endif
 }
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-	return 0;
+	update_rects.clear();
+	if (fake_screen_) return 0;
+	mode_changed_ = true;
+
+	flags = get_flags(flags);
+
+	fullScreen = (flags & FULL_SCREEN) != 0;
+
+	if(!window) {
+		window = new sdl::twindow("", 0, 0, x, y, flags, SDL_RENDERER_SOFTWARE);
+	} else {
+		if(fullScreen) {
+			window->full_screen();
+		} else {
+			window->set_size(x, y);
+		}
+	}
+
+	frameBuffer = SDL_GetWindowSurface(*window);
+
+	if(frameBuffer != NULL) {
+		image::set_pixel_format(frameBuffer->format);
+		return bits_per_pixel;
+	} else	{
+		return 0;
+	}
+}
 #else
+int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
+{
 	update_rects.clear();
 	if (fake_screen_) return 0;
 	mode_changed_ = true;
@@ -425,8 +460,8 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		image::set_pixel_format(frameBuffer->format);
 		return bits_per_pixel;
 	} else	return 0;
-#endif
 }
+#endif
 
 bool CVideo::modeChanged()
 {
@@ -461,6 +496,9 @@ void CVideo::flip()
 	}
 
 	clear_updates();
+#else
+	assert(window);
+	window->render();
 #endif
 }
 
@@ -478,19 +516,17 @@ bool CVideo::update_locked() const
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-static SDL_Window* window = NULL;
-
 Uint8
-CVideo::window_state(void)
+CVideo::window_state()
 {
     Uint8 state = 0;
     Uint32 flags = 0;
 
-	if(!::window) {
+	if(!window) {
 		return state;
 	}
 
-    flags = SDL_GetWindowFlags(::window);
+    flags = SDL_GetWindowFlags(*window);
     if ((flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED)) {
         state |= SDL_APPACTIVE;
     }
@@ -505,16 +541,14 @@ CVideo::window_state(void)
 
 void CVideo::set_window_title(const std::string& title)
 {
-	if(window) {
-		SDL_SetWindowTitle(window, title.c_str());
-	}
+	assert(window);
+	window->set_title(title);
 }
 
 void CVideo::set_window_icon(surface& icon)
 {
-	if(window) {
-		SDL_SetWindowIcon(window, icon);
-	}
+	assert(window);
+	window->set_icon(icon);
 }
 #endif
 
