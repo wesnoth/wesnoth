@@ -517,19 +517,17 @@ bool CVideo::update_locked() const
 }
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-static SDL_Window* window = NULL;
-
 Uint8
-CVideo::window_state(void)
+CVideo::window_state()
 {
     Uint8 state = 0;
     Uint32 flags = 0;
 
-	if(!::window) {
+	if(!main_window) {
 		return state;
 	}
 
-    flags = SDL_GetWindowFlags(::window);
+    flags = SDL_GetWindowFlags(*main_window);
     if ((flags & SDL_WINDOW_SHOWN) && !(flags & SDL_WINDOW_MINIMIZED)) {
         state |= SDL_APPACTIVE;
     }
