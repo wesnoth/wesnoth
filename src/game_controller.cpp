@@ -353,9 +353,7 @@ bool game_controller::init_video()
 	surface icon(image::get_image("game-icon.png", image::UNSCALED));
 	if(icon != NULL) {
 		///must be called after SDL_Init() and before setting video mode
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-		CVideo::set_window_icon(icon);
-#else
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 		SDL_WM_SetIcon(icon,NULL);
 #endif
 	}
@@ -399,6 +397,11 @@ bool game_controller::init_video()
 	}
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	CVideo::set_window_title(wm_title_string);
+#if !(defined(__APPLE__))
+	if(icon != NULL) {
+		CVideo::set_window_icon(icon);
+	}
+#endif
 #endif
 	return true;
 }

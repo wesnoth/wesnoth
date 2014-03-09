@@ -550,9 +550,8 @@ void CVideo::set_window_title(const std::string& title)
 
 void CVideo::set_window_icon(surface& icon)
 {
-	if(window) {
-		SDL_SetWindowIcon(window, icon);
-	}
+	assert(main_window);
+	main_window->set_icon(icon);
 }
 #endif
 

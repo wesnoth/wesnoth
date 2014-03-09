@@ -78,6 +78,11 @@ void twindow::set_title(const std::string& title)
 	SDL_SetWindowTitle(window_, title.c_str());
 }
 
+void twindow::set_icon(const surface& icon)
+{
+	SDL_SetWindowIcon(window_, icon);
+}
+
 twindow::operator SDL_Window*()
 {
 	return window_;
