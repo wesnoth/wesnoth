@@ -544,9 +544,8 @@ CVideo::window_state(void)
 
 void CVideo::set_window_title(const std::string& title)
 {
-	if(window) {
-		SDL_SetWindowTitle(window, title.c_str());
-	}
+	assert(main_window);
+	main_window->set_title(title);
 }
 
 void CVideo::set_window_icon(surface& icon)

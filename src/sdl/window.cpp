@@ -73,6 +73,11 @@ void twindow::render()
 	SDL_RenderPresent(*this);
 }
 
+void twindow::set_title(const std::string& title)
+{
+	SDL_SetWindowTitle(window_, title.c_str());
+}
+
 twindow::operator SDL_Window*()
 {
 	return window_;

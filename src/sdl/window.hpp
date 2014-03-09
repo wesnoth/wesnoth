@@ -96,6 +96,16 @@ public:
 	/** Renders the contents of the window. */
 	void render();
 
+	/**
+	 * Sets the title of the window.
+	 *
+	 * This is a wrapper for @ref SDL_SetWindowTitle.
+	 *
+	 * @param title               The new title for the window.
+	 */
+	void set_title(const std::string& title);
+
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**
@@ -105,7 +115,6 @@ public:
 
 
 private:
-
 	/**
 	 * Conversion operator to a SDL_Renderer*.
 	 *
