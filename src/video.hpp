@@ -127,15 +127,11 @@ class CVideo : private boost::noncopyable {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 	/**
 	 * Wrapper for SDL_GetAppState.
-	 *
-	 * @warning The function always return 0 for now.
 	 */
 	static Uint8 window_state();
 
 	/**
 	 * Sets the title of the main window.
-	 *
-	 * @warning The function is a NOP at the moment.
 	 *
 	 * @param title               The new title for the window.
 	 */
@@ -143,8 +139,6 @@ class CVideo : private boost::noncopyable {
 
 	/**
 	 * Sets the icon of the main window.
-	 *
-	 * @warning The function is a NOP at the moment.
 	 *
 	 * @param icon                The new icon for the window.
 	 */
