@@ -16,8 +16,8 @@
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
+#include "exceptions.hpp"
 #include "log.hpp"
-#include "wml_exception.hpp"
 
 #include <SDL_render.h>
 
