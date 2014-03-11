@@ -42,10 +42,10 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	config orc_config;
 	orc_config["id"]="Orcish Grunt";
 	orc_config["random_traits"]=false;
-    orc_config["animate"]=false;
+	orc_config["animate"]=false;
 	unit_type orc_type(orc_config);
 
-    unit_types.build_unit_type(orc_type, unit_type::FULL);
+	unit_types.build_unit_type(orc_type, unit_type::FULL);
 
 	unit orc1_side0_real(orc_type, 0, false);
 	unit orc2_side0_fake(orc_type, 0, false);
@@ -115,10 +115,10 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
 	config orc_config;
 	orc_config["id"]="Orcish Grunt";
 	orc_config["random_traits"] = false;
-    orc_config["animate"]=false;
+	orc_config["animate"]=false;
 	unit_type orc_type(orc_config);
 
-    unit_types.build_unit_type(orc_type, unit_type::FULL);
+	unit_types.build_unit_type(orc_type, unit_type::FULL);
 
 	unit orc1_side0_real(orc_type, 0, true);
 
@@ -162,7 +162,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 	config orc_config;
 	orc_config["id"]="Orcish Grunt";
 	orc_config["random_traits"] = false;
-    orc_config["animate"]=false;
+	orc_config["animate"]=false;
 	unit_type orc_type(orc_config);
 
 	unit_types.build_unit_type(orc_type, unit_type::FULL);
@@ -209,7 +209,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
 	config orc_config;
 	orc_config["id"]="Orcish Grunt";
 	orc_config["random_traits"] = false;
-    orc_config["animate"]=false;
+	orc_config["animate"]=false;
 	unit_type orc_type(orc_config);
 
 	unit_types.build_unit_type(orc_type, unit_type::FULL);
@@ -245,7 +245,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
 	config orc_config;
 	orc_config["id"]="Orcish Grunt";
 	orc_config["random_traits"] = false;
-    orc_config["animate"]=false;
+	orc_config["animate"]=false;
 	unit_type orc_type(orc_config);
 
 	unit_types.build_unit_type(orc_type, unit_type::FULL);
