@@ -88,6 +88,7 @@ static const unit_type &get_unit_type(const std::string &type_id)
 static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, rand_rng::simple_rng* rng)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
+	assert( genders.size() > 0 );
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
@@ -96,6 +97,9 @@ static unit_race::GENDER generate_gender(const unit_type & type, bool random_gen
 		return genders[random % genders.size()];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
+		// Note: Whoever wrote this code, you should have used an assertion, to save others hours of work...
+		// If the assertion size>0 is failing for you, one possible cause is that you are constructing a unit
+		// from a unit type which has not been ``built'' using the unit_type_data methods.
 	}
 }
 
@@ -573,7 +577,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	attacks_left_(0),
 	max_attacks_(0),
 	states_(),
-	known_boolean_states_(known_boolean_state_names_.size(),false),
+	known_boolean_states_( get_known_boolean_state_names().size(),false),
 	variables_(),
 	events_(),
 	filter_recall_(),
