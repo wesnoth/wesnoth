@@ -1043,7 +1043,7 @@ bool preprocessor_data::get_chunk()
 				if (strings_.size() - token.stack_pos != 1)
 				{
 					std::ostringstream error;
-					error << "macro argument '" << symbol
+					error << "Macro argument '" << symbol
 					      << "' does not expect any argument";
 					target_.error(error.str(), linenum_);
 				}
@@ -1060,7 +1060,7 @@ bool preprocessor_data::get_chunk()
 				if (nb_arg != val.arguments.size())
 				{
 					std::ostringstream error;
-					error << "preprocessor symbol '" << symbol << "' expects "
+					error << "Preprocessor symbol '" << symbol << "' expects "
 					      << val.arguments.size() << " arguments, but has "
 					      << nb_arg << " arguments";
 					target_.error(error.str(), linenum_);
