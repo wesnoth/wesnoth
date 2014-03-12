@@ -902,7 +902,6 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;
 	}
-
 	// Fog clearing.
 	actions::shroud_clearer clearer;
 	if ( !wml_triggered ) // To preserve current WML behavior.
@@ -993,7 +992,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	// Record this before actually recalling.
 	if ( use_recorder )
 		recorder.add_recall(id, loc, from);
-
+	
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);
 	recall_list.erase(recall_it);
@@ -1001,8 +1000,17 @@ bool recall_unit(const std::string & id, team & current_team,
 	// (Use recall.id() instead, if needed.)
 
 	// Place the recall.
-	bool mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
+	// We also check to see if a custom unit level recall has been set if not,
+	// we use the team's recall cost otherwise the unit's.
+	bool mutated;
+	if (recall.recall_cost()==(-1)){
+		mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
 	                             true, show);
+	}
+	else{
+		mutated = place_recruit(recall, loc, from, recall.recall_cost(),
+	                             true, show);
+	}
 	statistics::recall_unit(recall);
 
 	// To speed things a bit, don't bother with the undo stack during
@@ -1026,6 +1034,5 @@ bool recall_unit(const std::string & id, team & current_team,
 
 	return true;
 }
-
 
 }//namespace actions

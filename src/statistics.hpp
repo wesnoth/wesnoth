@@ -98,6 +98,7 @@ namespace statistics
 	void recruit_unit(const unit& u);
 	void recall_unit(const unit& u);
 	void un_recall_unit(const unit& u);
+	int un_recall_unit_cost(const unit& u);
 	void un_recruit_unit(const unit& u);
 
 	void advance_unit(const unit& u);
