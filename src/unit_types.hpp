@@ -189,6 +189,7 @@ public:
 	double hp_bar_scaling() const { return hp_bar_scaling_; }
 	double xp_bar_scaling() const { return xp_bar_scaling_; }
 	int level() const { return level_; }
+	int recall_cost() const { return recall_cost_;}
 	int movement() const { return movement_; }
 	int vision() const { return vision_ < 0 ? movement() : vision_; }
 	/// If @a base_value is set to true, do not fall back to movement().
@@ -301,6 +302,7 @@ private:
 	int hitpoints_;
 	double hp_bar_scaling_, xp_bar_scaling_;
 	int level_;
+	int recall_cost_;
 	int movement_;
 	int vision_;
 	int jamming_;
