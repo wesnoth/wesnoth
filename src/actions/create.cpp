@@ -992,7 +992,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	// Record this before actually recalling.
 	if ( use_recorder )
 		recorder.add_recall(id, loc, from);
-	
+
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);
 	recall_list.erase(recall_it);
@@ -1003,11 +1003,11 @@ bool recall_unit(const std::string & id, team & current_team,
 	// We also check to see if a custom unit level recall has been set if not,
 	// we use the team's recall cost otherwise the unit's.
 	bool mutated;
-	if (recall.recall_cost()==(-1)){
+	if (recall.recall_cost()==(-1)) {
 		mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
 	                             true, show);
 	}
-	else{
+	else {
 		mutated = place_recruit(recall, loc, from, recall.recall_cost(),
 	                             true, show);
 	}

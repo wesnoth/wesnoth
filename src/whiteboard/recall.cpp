@@ -116,7 +116,7 @@ void recall::execute(bool& success, bool& complete)
 	temporary_unit_hider const raii(*fake_unit_);
 	//Give back the spent gold so we don't get "not enough gold" message
 	int cost = current_team.recall_cost();
-	if (temp_unit_->recall_cost() > (-1)){
+	if (temp_unit_->recall_cost() > (-1)) {
 		cost=temp_unit_->recall_cost();
 	}
 	
@@ -148,7 +148,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 	//Add cost to money spent on recruits.
 	int cost = resources::teams->at(team_index()).recall_cost();
-	if (it->recall_cost() > (-1)){
+	if (it->recall_cost() > (-1)) {
 		cost = it->recall_cost();
 	}
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
@@ -177,10 +177,10 @@ void recall::draw_hex(map_location const& hex)
 		
 		unit &it = *get_unit();
 		int cost = statistics::un_recall_unit_cost(it);
-		if (cost == (-1)){
+		if (cost == (-1)) {
 			number_text << utils::unicode_minus << resources::teams->at(team_index()).recall_cost();
 		}
-		else{
+		else {
 			number_text << utils::unicode_minus << cost;
 		}
 		size_t font_size = 16;

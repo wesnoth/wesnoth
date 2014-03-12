@@ -690,10 +690,10 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
 	int unit_cost = current_team.recall_cost();
-	if (res < 0){ 
+	if (res < 0) { 
 		return;
 	}
-	else{
+	else {
 		unit_cost = recall_list_team[res]->recall_cost();
 	}
 

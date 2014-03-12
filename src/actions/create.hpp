@@ -227,7 +227,6 @@ bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  bool show=true, bool use_undo=true, bool use_recorder=true);
 
-//int recall_unit_cost(const std::string & id, team & current_team);
 }//namespace actions
 
 #endif

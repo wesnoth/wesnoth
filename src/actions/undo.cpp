@@ -627,10 +627,10 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 	const unit &un = *un_it;
 	statistics::un_recall_unit(un);
 	int cost = statistics::un_recall_unit_cost(un);
-	if (cost == (-1)){
+	if (cost == (-1)) {
 		current_team.spend_gold(-current_team.recall_cost());
 	}
-	else{
+	else {
 		current_team.spend_gold(-cost);
 	}
 	current_team.recall_list().push_back(un);
