@@ -1044,7 +1044,7 @@ bool preprocessor_data::get_chunk()
 				{
 					std::ostringstream error;
 					error << "Macro argument '" << symbol
-					      << "' does not expect any argument";
+					      << "' does not expect any arguments";
 					target_.error(error.str(), linenum_);
 				}
 				std::ostringstream v;
