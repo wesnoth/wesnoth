@@ -118,6 +118,11 @@ void controller_base::handle_event(const SDL_Event& event)
 		}
 		break;
 #endif
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, browse_);
+		break;
+#endif
 	default:
 		break;
 	}

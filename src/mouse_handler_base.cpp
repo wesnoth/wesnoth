@@ -197,6 +197,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			scrollx = preferences::scroll_speed();
 			mouse_wheel_right(event.x, event.y, browse);
 		}
+
 		// Don't scroll map and map zoom slider at same time
 		gui::slider* s = gui().find_slider("map-zoom-slider");
 		if (s && point_in_rect(event.x, event.y, s->location())) {
@@ -273,6 +274,45 @@ void mouse_handler_base::left_drag_end(int x, int y, const bool browse)
 void mouse_handler_base::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
+{
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	int movex = scrollx * preferences::scroll_speed();
+	int movey = scrolly * preferences::scroll_speed();
+
+	// Don't scroll map and map zoom slider at same time
+	gui::slider* s = gui().find_slider("map-zoom-slider");
+	if (s && point_in_rect(x, y, s->location())) {
+		movex = 0; movey = 0;
+	}
+
+	if (movex != 0 || movey != 0) {
+		CKey pressed;
+		// Alt + mousewheel do an 90° rotation on the scroll direction
+		if (pressed[SDLK_LALT] || pressed[SDLK_RALT]) {
+			gui().scroll(movey,movex);
+		} else {
+			gui().scroll(movex,movey);
+		}
+	}
+
+	if (scrollx < 0) {
+		mouse_wheel_left(x, y, browse);
+	} else if (scrollx > 0) {
+		mouse_wheel_right(x, y, browse);
+	}
+
+	if (scrolly < 0) {
+		mouse_wheel_down(x, y, browse);
+	} else if (scrolly > 0) {
+		mouse_wheel_up(x, y, browse);
+	}
+}
+#endif
 
 void mouse_handler_base::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
