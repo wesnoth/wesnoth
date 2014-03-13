@@ -73,12 +73,18 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 			window, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
+	tcontrol& title_widget = find_widget<tlabel>(&window, "title", false);
 	if(!title_.empty()) {
-		find_widget<tlabel>(&window, "title", false).set_label(title_);
+		title_widget.set_label(title_);
+	} else {
+		title_widget.set_visible(twidget::tvisible::invisible);
 	}
 
+	tcontrol& img_widget = find_widget<timage>(&window, "image", false);
 	if(!image_.empty()) {
-		find_widget<timage>(&window, "image", false).set_label(image_);
+		img_widget.set_label(image_);
+	} else {
+		img_widget.set_visible(twidget::tvisible::invisible);
 	}
 
 	tcontrol& label = find_widget<tcontrol>(&window, "label", false);
