@@ -135,8 +135,10 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 	show_menu_ = false;
 	map_location loc = gui().hex_clicked_on(event.x,event.y);
 	mouse_update(browse, loc);
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	int scrollx = 0;
 	int scrolly = 0;
+#endif
 
 	if (is_left_click(event)) {
 		if (event.state == SDL_PRESSED) {
@@ -183,7 +185,9 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 			simple_warp_ = false;
 			scroll_started_ = false;
 		}
-	} else if (allow_mouse_wheel_scroll(event.x, event.y)) {
+	}
+#if !SDL_VERSION_ATLEAST(2,0,0)
+	else if (allow_mouse_wheel_scroll(event.x, event.y)) {
 		if (event.button == SDL_BUTTON_WHEELUP) {
 			scrolly = - preferences::scroll_speed();
 			mouse_wheel_up(event.x, event.y, browse);
@@ -213,6 +217,7 @@ void mouse_handler_base::mouse_press(const SDL_MouseButtonEvent& event, const bo
 		else
 			gui().scroll(scrollx,scrolly);
 	}
+#endif
 	if (!dragging_left_ && !dragging_right_ && dragging_started_) {
 		dragging_started_ = false;
 		cursor::set_dragging(false);
