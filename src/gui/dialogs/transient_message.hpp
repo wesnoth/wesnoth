@@ -31,8 +31,14 @@ public:
 					   const std::string& image);
 
 private:
+	bool hide_title_;
+	bool hide_image_;
+
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
+
+	/** Inherited from tdialog. */
+	virtual void pre_show(CVideo& video, twindow& window);
 };
 
 /**
