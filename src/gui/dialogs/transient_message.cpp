@@ -16,9 +16,12 @@
 
 #include "gui/dialogs/transient_message.hpp"
 
-#include "gettext.hpp"
+#include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "log.hpp"
+
+#include "gettext.hpp"
 
 namespace gui2
 {
@@ -30,10 +33,25 @@ ttransient_message::ttransient_message(const std::string& title,
 									   const std::string& message,
 									   const bool message_use_markup,
 									   const std::string& image)
+	: hide_title_(title.empty())
+	, hide_image_(image.empty())
 {
 	register_label("title", true, title, title_use_markup);
 	register_label("message", true, message, message_use_markup);
 	register_image("image", true, image);
+}
+
+void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
+{
+	if(hide_title_) {
+		twidget& title = find_widget<twidget>(&window, "title", false);
+		title.set_visible(twidget::tvisible::invisible);
+	}
+
+	if(hide_image_) {
+		twidget& image = find_widget<twidget>(&window, "image", false);
+		image.set_visible(twidget::tvisible::invisible);
+	}
 }
 
 void show_transient_message(CVideo& video,
