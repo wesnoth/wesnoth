@@ -107,8 +107,8 @@ private:
 	}
 
 	int value_;
-	int maximum_value_;
 	int minimum_value_;
+	int maximum_value_;
 	
 	void validate(const int value, const int cursor_shift = 0);
 	
