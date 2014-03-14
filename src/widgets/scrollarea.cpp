@@ -149,7 +149,11 @@ unsigned scrollarea::scrollbar_width() const
 
 void scrollarea::handle_event(const SDL_Event& event)
 {
-	if (mouse_locked() || hidden() || event.type != SDL_MOUSEBUTTONDOWN)
+	if (mouse_locked() || hidden())
+		return;
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
+	if (event.type != SDL_MOUSEBUTTONDOWN)
 		return;
 
 	SDL_MouseButtonEvent const &e = event.button;
@@ -160,6 +164,21 @@ void scrollarea::handle_event(const SDL_Event& event)
 			scrollbar_.scroll_up();
 		}
 	}
+#else
+	if (event.type != SDL_MOUSEWHEEL)
+		return;
+
+	const SDL_MouseWheelEvent &ev = event.wheel;
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	if (point_in_rect(x, y, inner_location())) {
+		if (ev.y > 0) {
+			scrollbar_.scroll_up();
+		} else if (ev.y < 0) {
+			scrollbar_.scroll_down();
+		}
+	}
+#endif
 }
 
 } // end namespace gui
