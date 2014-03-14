@@ -214,6 +214,7 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 	if (!point_in_rect(event.x, event.y, location()))
 		return;
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	if (event.button == SDL_BUTTON_WHEELUP || event.button == SDL_BUTTON_WHEELRIGHT) {
 		value_change_ = false;
 		set_focus(true);
@@ -234,6 +235,7 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 			value_change_ = prev_change;
 		}
 	}
+#endif
 
 	if (event.button != SDL_BUTTON_LEFT)
 		return;
