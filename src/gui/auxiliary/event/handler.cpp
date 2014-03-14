@@ -590,6 +590,7 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
 
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		case SDL_BUTTON_WHEELLEFT:
 			mouse(SDL_WHEEL_LEFT, get_mouse_position());
 			break;
@@ -602,6 +603,7 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 		case SDL_BUTTON_WHEELDOWN:
 			mouse(SDL_WHEEL_DOWN, get_mouse_position());
 			break;
+#endif
 
 		default:
 			WRN_GUI_E << "Unhandled 'mouse button up' event for button "
