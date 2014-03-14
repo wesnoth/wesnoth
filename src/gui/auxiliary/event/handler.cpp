@@ -199,6 +199,15 @@ private:
 	void mouse_button_down(const tpoint& position, const Uint8 button);
 
 	/**
+	 * Fires a mouse wheel event.
+	 *
+	 * @param position               The position of the mouse.
+	 * @param scrollx                The amount of horizontal scrolling.
+	 * @param scrolly                The amount of vertical scrolling.
+	 */
+	void mouse_wheel(const tpoint& position, int scrollx, int scrolly);
+
+	/**
 	 * Gets the dispatcher that wants to receive the keyboard input.
 	 *
 	 * @returns                   The dispatcher.
@@ -321,6 +330,12 @@ void thandler::handle_event(const SDL_Event& event)
 			mouse_button_up(tpoint(event.button.x, event.button.y),
 							event.button.button);
 			break;
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+		case SDL_MOUSEWHEEL:
+			mouse_wheel(get_mouse_position(), event.wheel.x, event.wheel.y);
+			break;
+#endif
 
 		case SHOW_HELPTIP_EVENT:
 			mouse(SHOW_HELPTIP, get_mouse_position());
@@ -622,6 +637,23 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 			break;
 	}
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+void thandler::mouse_wheel(const tpoint& position, int x, int y)
+{
+	if (x > 0) {
+		mouse(SDL_WHEEL_RIGHT, position);
+	} else if (x < 0) {
+		mouse(SDL_WHEEL_LEFT, position);
+	}
+
+	if (y < 0) {
+		mouse(SDL_WHEEL_DOWN, position);
+	} else if (y > 0){
+		mouse(SDL_WHEEL_UP, position);
+	}
+}
+#endif
 
 tdispatcher* thandler::keyboard_dispatcher()
 {
