@@ -78,7 +78,7 @@ void tnum_box::insert_char(const Uint16 unicode)
 
 void tnum_box::paste_selection(const bool mouse)
 {
-	std::string& paste = copy_from_clipboard(mouse);
+	std::string paste = copy_from_clipboard(mouse);
 	
 	// trim leading and trailing whitespaces
 	boost::algorithm::trim(paste);
