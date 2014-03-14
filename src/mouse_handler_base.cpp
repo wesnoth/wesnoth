@@ -301,7 +301,7 @@ void mouse_handler_base::mouse_wheel(int scrollx, int scrolly, bool browse)
 		if (pressed[SDLK_LALT] || pressed[SDLK_RALT]) {
 			gui().scroll(movey,movex);
 		} else {
-			gui().scroll(movex,movey);
+			gui().scroll(movex,-movey);
 		}
 	}
 
