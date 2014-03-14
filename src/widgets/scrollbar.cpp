@@ -375,6 +375,21 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+	{
+		const SDL_MouseWheelEvent& e = event.wheel;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		bool on_groove = point_in_rect(x, y, groove);
+		if (on_groove && e.y < 0) {
+			move_position(scroll_rate_);
+		} else if (on_groove && e.y > 0) {
+			move_position(-scroll_rate_);
+		}
+		break;
+	}
+#endif
 	default:
 		break;
 	}
