@@ -592,7 +592,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&friends_);
 
 	// Colors tab
-	for (u_int i = 0; i < color_ids_.size(); i++) {
+	for (unsigned i = 0; i < color_ids_.size(); i++) {
 		h.push_back(&orb_colors_ally_buttons_[i]);
 		h.push_back(&orb_colors_enemy_buttons_[i]);
 		h.push_back(&orb_colors_moved_buttons_[i]);
@@ -688,8 +688,8 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	// Color tab
 	const int width = 28; // orb_colors_ally_buttons_[0].width();
-	const u_int color_number = color_ids_.size();
-	const u_int number = std::max(color_number, 2u);
+	const unsigned color_number = color_ids_.size();
+	const unsigned number = std::max(color_number, 2u);
 
 	const int orb_x_offset = ( (rect.w - width*number) / number ) * 2;
 
@@ -1023,7 +1023,7 @@ void preferences_dialog::process_event()
 			return;
 		}
 
-		for (u_int i = 0; i < color_ids_.size(); i++) {
+		for (unsigned i = 0; i < color_ids_.size(); i++) {
 			if (orb_colors_ally_buttons_[i].pressed())
 				preferences::set_allied_color(color_ids_[i]);
 			if (orb_colors_enemy_buttons_[i].pressed())
@@ -1573,7 +1573,7 @@ void preferences_dialog::set_selection(int index)
 	orb_colors_moved_toggle_.hide(hide_colors);
 	orb_colors_partial_toggle_.hide(hide_colors);
 	orb_colors_unmoved_toggle_.hide(hide_colors);
-	for (u_int i = 0; i < color_ids_.size(); i++) {
+	for (unsigned i = 0; i < color_ids_.size(); i++) {
 		orb_colors_ally_buttons_[i].hide(hide_colors);
 		orb_colors_enemy_buttons_[i].hide(hide_colors);
 		orb_colors_moved_buttons_[i].hide(hide_colors);
