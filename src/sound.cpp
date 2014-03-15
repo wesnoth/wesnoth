@@ -57,14 +57,14 @@ int fadingout_time=5000;
 bool no_fading = false;
 
 // number of allocated channels,
-const size_t n_of_channels = 16;
+const size_t n_of_channels = 32;
 
 // we need 2 channels, because we it for timer as well
 const size_t bell_channel = 0;
 const size_t timer_channel = 1;
 
 // number of channels reserved for sound sources
-const size_t source_channels = n_of_channels - 8;
+const size_t source_channels = 8;
 const size_t source_channel_start = timer_channel + 1;
 const size_t source_channel_last = source_channel_start + source_channels - 1;
 const size_t UI_sound_channel = source_channel_last + 1;
