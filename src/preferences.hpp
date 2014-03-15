@@ -125,6 +125,39 @@ namespace preferences {
 	void add_alias(const std::string& alias, const std::string& command);
 	const config &get_alias();
 
+
+	std::string allied_color();
+	void set_allied_color(const std::string& color_id);
+
+	std::string enemy_color();
+	void set_enemy_color(const std::string& color_id);
+
+	std::string unmoved_color();
+	void set_unmoved_color(const std::string& color_id);
+
+	std::string partial_color();
+	void set_partial_color(const std::string& color_id);
+
+	std::string moved_color();
+	void set_moved_color(const std::string& color_id);
+
+
+	bool show_allied_orb();
+	void set_show_allied_orb(bool show_orb);
+
+	bool show_enemy_orb();
+	void set_show_enemy_orb(bool show_orb);
+
+	bool show_moved_orb();
+	void set_show_moved_orb(bool show_orb);
+
+	bool show_unmoved_orb();
+	void set_show_unmoved_orb(bool show_orb);
+
+	bool show_partial_orb();
+	void set_show_partial_orb(bool show_orb);
+
+
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
 
