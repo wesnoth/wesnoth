@@ -30,6 +30,7 @@
 #include <list>
 
 static lg::log_domain log_audio("audio");
+#define DBG_AUDIO LOG_STREAM(debug, log_audio)
 #define LOG_AUDIO LOG_STREAM(info, log_audio)
 #define ERR_AUDIO LOG_STREAM(err, log_audio)
 
@@ -328,6 +329,13 @@ bool init_sound() {
 		Mix_ChannelFinished(channel_finished_hook);
 
 		LOG_AUDIO << "Audio initialized.\n";
+
+		DBG_AUDIO << "Channel layout: " << n_of_channels << " channels (" << n_reserved_channels << " reserved)\n"
+				  << "    " << bell_channel << " - bell\n"
+				  << "    " << timer_channel << " - timer\n"
+				  << "    " << source_channel_start << ".." << source_channel_last << " - sound sources\n"
+				  << "    " << UI_sound_channel << " - UI\n"
+				  << "    " << UI_sound_channel + 1 << ".." << n_of_channels - 1 << " - sound effects\n";
 
 		play_music();
 	}
