@@ -481,6 +481,7 @@ set(wesnoth-gui_widget_SRC
 	gui/widgets/matrix.cpp
 	gui/widgets/minimap.cpp
 	gui/widgets/multi_page.cpp
+	gui/widgets/num_box.cpp
 	gui/widgets/pane.cpp
 	gui/widgets/panel.cpp
 	gui/widgets/password_box.cpp
@@ -518,6 +519,7 @@ set(wesnoth-gui_widget_SRC
 	gui/auxiliary/window_builder/matrix.cpp
 	gui/auxiliary/window_builder/minimap.cpp
 	gui/auxiliary/window_builder/multi_page.cpp
+	gui/auxiliary/window_builder/num_box.cpp
 	gui/auxiliary/window_builder/pane.cpp
 	gui/auxiliary/window_builder/panel.cpp
 	gui/auxiliary/window_builder/password_box.cpp

@@ -37,6 +37,7 @@
 #include "gui/auxiliary/window_builder/drawing.hpp"
 #include "gui/auxiliary/window_builder/pane.hpp"
 #include "gui/auxiliary/window_builder/password_box.hpp"
+#include "gui/auxiliary/window_builder/num_box.hpp"
 #include "gui/auxiliary/window_builder/viewport.hpp"
 #endif
 #include "gui/auxiliary/window_builder/instance.hpp"
@@ -219,6 +220,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	TRY(button);
 	TRY(drawing);
 	TRY(password_box);
+	TRY(num_box);
 #undef TRY
 #endif
 
