@@ -22,8 +22,8 @@
   ("resolution")
   nil)
  ("column"
-  ("drawing" "matrix" "window" "tree_view" "slider" "minimap" "password_box" "progress_bar" "stacked_widget" "multi_page" "listbox" "toggle_button" "text_box" "scroll_label" "panel" "image" "toggle_panel" "viewport" "label" "button" "grid" "scrollbar_panel" "spacer" "horizontal_scrollbar" "vertical_scrollbar" "repeating_button")
-  ("_grid" "_vertical_scrollbar" "_tree_view" "_toggle_panel" "_toggle_button" "_password_box" "_text_box" "_stacked_widget" "_spacer" "_slider" "_scrollbar_panel" "_scroll_label" "_repeating_button" "_panel" "_multi_page" "_minimap" "_menubar" "_listbox" "_label" "_image" "_horizontal_scrollbar" "_horizontal_listbox" "_button" "vertical_grow" "horizontal_grow" "border_size" "horizontal_alignment" "border" "grow_factor" "vertical_alignment"))
+  ("drawing" "matrix" "window" "tree_view" "slider" "minimap" "password_box" "num_box" "progress_bar" "stacked_widget" "multi_page" "listbox" "toggle_button" "text_box" "scroll_label" "panel" "image" "toggle_panel" "viewport" "label" "button" "grid" "scrollbar_panel" "spacer" "horizontal_scrollbar" "vertical_scrollbar" "repeating_button")
+  ("_grid" "_vertical_scrollbar" "_tree_view" "_toggle_panel" "_toggle_button" "_password_box" "_num_box" "_text_box" "_stacked_widget" "_spacer" "_slider" "_scrollbar_panel" "_scroll_label" "_repeating_button" "_panel" "_multi_page" "_minimap" "_menubar" "_listbox" "_label" "_image" "_horizontal_scrollbar" "_horizontal_listbox" "_button" "vertical_grow" "horizontal_grow" "border_size" "horizontal_alignment" "border" "grow_factor" "vertical_alignment"))
  ("row"
   ("grid" "toggle_button" "text_box" "row" "column")
   ("_column" "grow_factor"))

@@ -91,6 +91,9 @@ public:
 	}
 
 protected:
+	/** The text entered in the widget. */
+	font::ttext text_;
+
 	/**
 	 * Moves the cursor to the end of the line.
 	 *
@@ -247,9 +250,6 @@ private:
 	 * reacts to certain 'events'.
 	 */
 	tstate state_;
-
-	/** The text entered in the widget. */
-	font::ttext text_;
 
 	/** Start of the selected text. */
 	size_t selection_start_;

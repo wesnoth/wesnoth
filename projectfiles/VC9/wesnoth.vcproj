@@ -126,7 +126,7 @@
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -374,7 +374,7 @@
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;MSVC_DO_UNIT_TESTS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS;MSVC_DO_UNIT_TESTS"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -464,7 +464,7 @@
 				EnableIntrinsicFunctions="true"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="..\..\src"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;HAVE_PYTHON;USE_GZIP;NO_HAVE_FRIBIDI;NOMINMAX;_SCL_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="false"
@@ -5764,6 +5764,62 @@
 				</File>
 				<File
 					RelativePath="..\..\src\gui\widgets\multi_page.hpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\num_box.cpp"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug_with_VLD|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Test_Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="ReleaseDEBUG|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Gui\Widgets\"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath="..\..\src\gui\widgets\num_box.hpp"
 					>
 				</File>
 				<File
@@ -11319,6 +11375,62 @@
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\window_builder\multi_page.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\window_builder\num_box.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug_with_VLD|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Test_Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Test_Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="ReleaseDEBUG|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\auxiliary\window_builder\num_box.hpp"
 						>
 					</File>
 					<File
