@@ -132,12 +132,12 @@ void ttext_::insert_char(const Uint16 unicode)
 	delete_selection();
 
 	if(text_.insert_unicode(selection_start_, unicode)) {
-
-		// Update status
 		set_cursor(selection_start_ + 1, false);
-		update_canvas();
-		set_is_dirty(true);
 	}
+
+	// Since delete selection might have modified the content force an update.
+	update_canvas();
+	set_is_dirty(true);
 }
 
 void ttext_::copy_selection(const bool mouse)
@@ -258,6 +258,8 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_) {
 		delete_char(true);
+	} else {
+		return;
 	}
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
@@ -271,6 +273,8 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
+	} else {
+		return;
 	}
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
