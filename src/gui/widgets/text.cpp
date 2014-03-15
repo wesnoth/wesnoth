@@ -258,6 +258,8 @@ void ttext_::handle_key_backspace(SDLMod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_) {
 		delete_char(true);
+	} else {
+		return;
 	}
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
@@ -271,6 +273,8 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 		delete_selection();
 	} else if(selection_start_ < text_.get_length()) {
 		delete_char(false);
+	} else {
+		return;
 	}
 	fire(event::NOTIFY_MODIFIED, *this, NULL);
 }
