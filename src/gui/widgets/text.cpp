@@ -30,8 +30,8 @@ namespace gui2
 
 ttext_::ttext_()
 	: tcontrol(COUNT)
-	, state_(ENABLED)
 	, text_()
+	, state_(ENABLED)
 	, selection_start_(0)
 	, selection_length_(0)
 	, text_changed_callback_()
