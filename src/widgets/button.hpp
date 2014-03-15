@@ -47,6 +47,7 @@ public:
 	void set_label(const std::string& val);
 	void set_image(const std::string& image_file_base);
 	void set_overlay(const std::string& image_file_base);
+	void set_image_path_suffix(const std::string& suffix) { button_image_path_suffix_ = suffix; load_images(); }
 
 	bool pressed();
 	bool hit(int x, int y) const;
@@ -86,6 +87,7 @@ private:
 
 	std::string button_image_name_;
 	std::string button_overlay_image_name_;
+	std::string button_image_path_suffix_;
 
 }; //end class button
 
