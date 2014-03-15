@@ -465,6 +465,7 @@ static int impl_unit_type_get(lua_State *L)
 	return_int_attrib("max_experience", ut.experience_needed());
 	return_int_attrib("cost", ut.cost());
 	return_int_attrib("level", ut.level());
+	return_int_attrib("recall_cost", ut.recall_cost());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	return 0;
 }
@@ -560,6 +561,7 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
 	return_int_attrib("max_experience", u.max_experience());
+	return_int_attrib("recall_cost", u.recall_cost());
 	return_int_attrib("moves", u.movement_left());
 	return_int_attrib("max_moves", u.total_movement());
 	return_int_attrib("max_attacks", u.max_attacks());
@@ -618,6 +620,7 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_int_attrib("hitpoints", u.set_hitpoints(value));
 	modify_int_attrib("experience", u.set_experience(value));
+	modify_int_attrib("recall_cost", u.set_recall_cost(value));
 	modify_int_attrib("attacks_left", u.set_attacks(value));
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));

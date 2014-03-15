@@ -147,7 +147,9 @@ public:
 	int experience() const { return experience_; }
 	int max_experience() const { return max_experience_; }
 	void set_experience(int xp) { experience_ = xp; }
+	void set_recall_cost(int recall_cost) { recall_cost_ = recall_cost; }
 	int level() const { return level_; }
+	int recall_cost() const { return recall_cost_; }
 	void remove_movement_ai();
 	void remove_attacks_ai();
 
@@ -450,6 +452,7 @@ private:
 	int experience_;
 	int max_experience_;
 	int level_;
+	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
 	unit_type::ALIGNMENT alignment_;

@@ -136,6 +136,7 @@ unit::unit(const unit& o):
            experience_(o.experience_),
            max_experience_(o.max_experience_),
            level_(o.level_),
+           recall_cost_(o.recall_cost_),
            canrecruit_(o.canrecruit_),
            recruit_list_(o.recruit_list_),
            alignment_(o.alignment_),
@@ -224,6 +225,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	experience_(0),
 	max_experience_(0),
 	level_(0),
+	recall_cost_(cfg["recall_cost"].to_int(-1)),
 	canrecruit_(cfg["canrecruit"].to_bool()),
 	recruit_list_(),
 	alignment_(),
@@ -354,6 +356,12 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	if (const config::attribute_value *v = cfg.get("description")) {
 		cfg_["description"] = *v;
 	}
+	if (const config::attribute_value *v = cfg.get("recall_cost")) {
+		recall_cost_ = *v;
+	}
+	else {
+		recall_cost_ = type_->recall_cost();
+	}
 	if (const config::attribute_value *v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
@@ -462,6 +470,16 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
 
+	/* We need to check to make sure that the cfg is not blank and  if it
+	is and the unit_type gives a default of 0 then treat as if the unit's
+	type had a value of -1 so it will use the team recall cost. */
+	if(cfg["recall_cost"] > 0) {
+		recall_cost_ = cfg["recall_cost"].to_int(-1);
+	}
+
+	if(cfg["recall_cost"] > 0) {
+		recall_cost_ = cfg["recall_cost"];
+	}
 	const std::string& align = cfg["alignment"];
 	if(align == "lawful") {
 		alignment_ = unit_type::LAWFUL;
@@ -492,7 +510,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	static char const *internalized_attrs[] = { "type", "id", "name",
 		"gender", "random_gender", "variation", "role", "ai_special",
 		"side", "underlying_id", "overlays", "facing", "race",
-		"level", "undead_variation", "max_attacks",
+		"level", "recall_cost", "undead_variation", "max_attacks",
 		"attacks_left", "alpha", "zoc", "flying", "cost",
 		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
@@ -552,6 +570,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	experience_(0),
 	max_experience_(0),
 	level_(0),
+	recall_cost_(-1),
 	canrecruit_(false),
 	recruit_list_(),
 	alignment_(),
@@ -1663,7 +1682,8 @@ void unit::write(config& cfg) const
 
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
-
+	cfg["recall_cost"] = recall_cost_;
+	
 	cfg["side"] = side_;
 
 	cfg["type"] = type_id();
@@ -3217,6 +3237,7 @@ std::string get_checksum(const unit& u) {
 		"ignore_race_traits",
 		"ignore_global_traits",
 		"level",
+		"recall_cost",
 		"max_attacks",
 		"max_experience",
 		"max_hitpoints",
