@@ -689,7 +689,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	// Color tab
 	const int width = 28; // orb_colors_ally_buttons_[0].width();
 	const u_int color_number = color_ids_.size();
-	const u_int number = std::max(color_number, (u_int)2);
+	const u_int number = std::max(color_number, 2u);
 
 	const int orb_x_offset = ( (rect.w - width*number) / number ) * 2;
 
