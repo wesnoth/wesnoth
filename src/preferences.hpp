@@ -20,7 +20,6 @@
 class config;
 class display;
 
-#include "game_config.hpp"
 #include "terrain_translation.hpp"
 
 #include <utility>

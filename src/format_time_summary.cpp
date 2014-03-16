@@ -14,6 +14,7 @@
 
 #include "format_time_summary.hpp"
 
+#include "assert.h"
 #include "gettext.hpp"
 #include "preferences.hpp"
 #include "strftime.hpp"

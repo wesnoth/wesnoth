@@ -20,6 +20,7 @@ class team;
 class unit_map;
 
 #include "preferences.hpp"
+#include "game_config.hpp"
 
 #include "serialization/compression.hpp"
 
