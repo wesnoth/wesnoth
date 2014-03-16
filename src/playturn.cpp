@@ -192,6 +192,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				tm.make_network_ai();
 			} else if (controller == "ai" && !tm.is_ai()) {
 				tm.make_ai();
+			} else if (controller == "idle" && !tm.is_idle()) {
+				tm.make_idle();
 			}
 			else
 			{
