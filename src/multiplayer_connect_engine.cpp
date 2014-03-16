@@ -690,7 +690,9 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			LOG_CF << "client has taken a valid position\n";
 
+			bool was_reserved = (side_engines_[side_taken]->controller() == CNTR_RESERVED);
 			import_user(data, false, side_taken);
+			side_engines_[side_taken]->set_waiting_to_choose_status(!was_reserved);
 
 			update_and_send_diff();
 
@@ -848,6 +850,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_player_(cfg["current_player"]),
 	player_id_(cfg["player_id"]),
 	ai_algorithm_(),
+	waiting_to_choose_faction_(allow_changes_ && allow_player_),
+	chose_random_(cfg["chose_random"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
 		parent_.params_.saved_game, color_)
 {
@@ -1008,6 +1012,10 @@ config side_engine::new_config() const
 
 	res["name"] = res["user_description"];
 	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
+	res["chose_random"] = false;
+	if(cfg_.has_attribute("chose_random")) {
+		res["chose_random"] = cfg_["chose_random"];
+	}
 
 	if (!parent_.params_.saved_game) {
 		// Find a config where a default leader is and set a new type
@@ -1097,9 +1105,15 @@ bool side_engine::ready_for_start() const
 		return true;
 	}
 
+	if (available_for_user()) return false;
+
 	if (controller_ == CNTR_NETWORK && !player_id_.empty()) {
-		// Side is assigned to a network player.
-		return true;
+		if (player_id_ == preferences::login()) {
+			return true;//the host is ready
+		}
+		if (!waiting_to_choose_faction_ || !allow_changes_) {
+			return true;  // Side is assigned to a network player, and they got a chance to choose faction if allowed
+		}
 	}
 
 	return false;
@@ -1162,6 +1176,8 @@ void side_engine::resolve_random()
 		return;
 	}
 
+	chose_random_ = flg_.is_random_faction();
+
 	flg_.resolve_random();
 
 	LOG_MP << "side " << (index_ + 1) << ": faction=" <<
@@ -1172,6 +1188,7 @@ void side_engine::resolve_random()
 void side_engine::reset()
 {
 	player_id_.clear();
+	set_waiting_to_choose_status(false);
 	set_controller(parent_.default_controller_);
 
 	if (!parent_.params_.saved_game) {
@@ -1198,6 +1215,7 @@ void side_engine::place_user(const config& data, bool contains_selection)
 		flg_.set_current_faction(data["faction"].str());
 		flg_.set_current_leader(data["leader"].str());
 		flg_.set_current_gender(data["gender"].str());
+		waiting_to_choose_faction_ = false;
 	}
 }
 
@@ -1257,6 +1275,7 @@ bool side_engine::controller_changed(const int selection)
 	// If not, make sure that no user is assigned to this side.
 	if (selected_cntr == parent_.default_controller_ && selection != 0) {
 		player_id_ = controller_options_[selection].second;
+		set_waiting_to_choose_status(false);
 	} else {
 		player_id_.clear();
 	}
