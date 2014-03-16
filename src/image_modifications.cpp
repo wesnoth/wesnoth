@@ -216,7 +216,17 @@ surface crop_modification::operator()(const surface& src) const
 		ERR_DP << "start Y coordinate of CROP modification is negative - truncating to zero\n";
 		area.y = 0;
 	}
-	return cut_surface(src, area);
+
+	/*
+	 * Unlike other image functions cut_surface does not convert the input
+	 * surface to a neutral surface, nor does it convert its return surface
+	 * to an optimised surface.
+	 *
+	 * Since it seems to work for most cases, rather change this caller instead
+	 * of the function signature. (The issue was discovered in bug #20876).
+	 */
+	return create_optimized_surface(
+			cut_surface(make_neutral_surface(src), area));
 }
 
 const SDL_Rect& crop_modification::get_slice() const
@@ -454,7 +464,7 @@ surface background_modification::operator()(const surface &src) const
 	SDL_FillRect(ret, NULL, SDL_MapRGBA(ret->format, color_.r, color_.g,
 					    color_.b, color_.unused));
 	SDL_SetAlpha(src, SDL_SRCALPHA, SDL_ALPHA_OPAQUE);
-	SDL_BlitSurface(src, NULL, ret, NULL);
+	blit_surface(src, NULL, ret, NULL);
 	return ret;
 }
 

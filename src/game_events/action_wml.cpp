@@ -165,7 +165,7 @@ namespace { // Types
 				input_max_size = 256;
 			}
 
-			int option_chosen;
+			int option_chosen = -1;
 			int dlg_result = gui2::show_wml_message(left_side,
 				resources::screen->video(), caption, cfg["message"],
 				image, false, has_text_input, text_input_label,

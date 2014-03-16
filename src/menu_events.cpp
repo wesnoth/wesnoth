@@ -1063,7 +1063,8 @@ namespace { // Helpers for create_unit()
 		std::pair<unit_map::iterator, bool> add_result =
 			units.replace(loc, created);
 		gui.invalidate_unit();
-		unit_display::unit_recruited(loc);
+		// Disable animation for now as workaround for bug #18921
+		//unit_display::unit_recruited(loc);
 
 		// Village capture?
 		if ( map.is_village(loc) )
@@ -1136,9 +1137,10 @@ void menu_handler::kill_unit(mouse_handler& mousehandler)
 	if(i != units_.end()) {
 		const int dying_side = i->side();
 		game_events::fire("last breath", loc, loc);
-		if (i.valid()) {
+		// Disable animation for now as workaround for bug #18921
+		/* if (i.valid()) {
 			unit_display::unit_die(loc, *i);
-		}
+		} */
 		resources::screen->redraw_minimap();
 		game_events::fire("die", loc, loc);
 		if (i.valid()) {
@@ -3275,7 +3277,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
 		} else {
 			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
-			change_side_controller(side,player);		 
+			change_side_controller(side,player);
 		}
 		throw end_turn_exception(side_num);
 	} else {
