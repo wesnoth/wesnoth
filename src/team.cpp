@@ -60,7 +60,7 @@ const char * const team::attributes[] = {
 	"countdown_time", "disallow_observers", "faction",
 	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
 	"leader", "random_leader", "team_lock", "terrain_liked",
-	"user_description", "default_recruit", "controller_lock",
+	"user_description", "default_recruit", "controller_lock", "chose_random",
 	// Terminate the list with NULL.
 	NULL };
 
@@ -99,6 +99,7 @@ team::team_info::team_info() :
 	share_view(false),
 	disallow_observers(false),
 	allow_player(false),
+	chose_random(false),
 	no_leader(true),
 	hidden(true),
 	no_turn_confirmation(false),
@@ -128,6 +129,7 @@ void team::team_info::read(const config &cfg)
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);
+	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -256,6 +258,7 @@ void team::team_info::write(config& cfg) const
 	cfg["recall_cost"] = recall_cost;
 	cfg["disallow_observers"] = disallow_observers;
 	cfg["allow_player"] = allow_player;
+	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
