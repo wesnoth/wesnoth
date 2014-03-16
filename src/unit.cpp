@@ -2049,40 +2049,51 @@ void unit::redraw_unit()
 	}
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
-		static const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
-						game_config::images::partmoved_orb_color + ")"  );
-		static const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
-						game_config::images::moved_orb_color + ")"  );
-		static const image::locator ally_orb(game_config::images::orb + "~RC(magenta>" +
-				game_config::images::ally_orb_color + ")"  );
-		static const image::locator enemy_orb(game_config::images::orb + "~RC(magenta>" +
-				game_config::images::enemy_orb_color + ")"  );
-		static const image::locator unmoved_orb(game_config::images::orb + "~RC(magenta>" +
-					game_config::images::unmoved_orb_color + ")"  );
+		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::partial_color() + ")"  );
+		/*static*/ const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::moved_color() + ")"  );
+		/*static*/ const image::locator ally_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::allied_color() + ")"  );
+		/*static*/ const image::locator enemy_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::enemy_color() + ")"  );
+		/*static*/ const image::locator unmoved_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::unmoved_color() + ")"  );
 
 		const std::string* energy_file = &game_config::images::energy;
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
 			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				orb_img = &enemy_orb;
+				if (preferences::show_enemy_orb())
+					orb_img = &enemy_orb;
+				else
+					orb_img = NULL;
 			} else {
-				orb_img = &ally_orb;
+				if (preferences::show_allied_orb())
+					orb_img = &ally_orb;
+				else orb_img = NULL;
 			}
 		} else {
-			orb_img = &moved_orb;
+			if (preferences::show_moved_orb())
+				orb_img = &moved_orb;
+			else orb_img = NULL;
+
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
-					orb_img = &unmoved_orb;
+					if (preferences::show_unmoved_orb())
+						orb_img = &unmoved_orb;
+					else orb_img = NULL;
 				} else if ( actions::unit_can_move(*this) ) {
-					orb_img = &partmoved_orb;
+					if (preferences::show_partial_orb())
+						orb_img = &partmoved_orb;
+					else orb_img = NULL;
 				}
 			}
 		}
 
-		assert(orb_img != NULL);
-		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
-		if (orb != NULL) {
+		if (orb_img != NULL) {
+			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 				loc_, xsrc, ysrc +adjusted_params.y, orb);
 		}

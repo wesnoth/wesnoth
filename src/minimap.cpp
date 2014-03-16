@@ -232,11 +232,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 						} else {
 
 							if (vw->owns_village(loc))
-								col = int_to_color(game_config::color_info(game_config::images::unmoved_orb_color).rep());
+								col = int_to_color(game_config::color_info(preferences::unmoved_color()).rep());
 							else if (vw->is_enemy(side + 1))
-								col = int_to_color(game_config::color_info(game_config::images::enemy_orb_color).rep());
+								col = int_to_color(game_config::color_info(preferences::enemy_color()).rep());
 							else
-								col = int_to_color(game_config::color_info(game_config::images::ally_orb_color).rep());
+								col = int_to_color(game_config::color_info(preferences::allied_color()).rep());
 						}
 					}
 				}

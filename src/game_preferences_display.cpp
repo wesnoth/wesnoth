@@ -106,12 +106,12 @@ private:
 	void sort_advanced_preferences();
 	void set_friends_menu();
 	std::vector<std::string> friends_names_;
+	std::vector<std::string> color_ids_;
 
-//
-	// change
 	gui::slider music_slider_, sound_slider_, UI_sound_slider_, bell_slider_,
-	            scroll_slider_, chat_lines_slider_,
-	  buffer_size_slider_, idle_anim_slider_, autosavemax_slider_, advanced_slider_;
+	            scroll_slider_, chat_lines_slider_, buffer_size_slider_,
+	            idle_anim_slider_, autosavemax_slider_, advanced_slider_;
+
 	gui::list_slider<double> turbo_slider_;
 	gui::button fullscreen_button_, turbo_button_, show_ai_moves_button_,
 			interrupt_when_ally_sighted_button_,
@@ -127,16 +127,32 @@ private:
 			turn_dialog_button_, whiteboard_on_start_button_,
 			hide_whiteboard_button_, turn_bell_button_, show_team_colors_button_,
 			show_haloing_button_, video_mode_button_,
-			theme_button_, hotkeys_button_,
-			paths_button_,
+			theme_button_,
+			hotkeys_button_, paths_button_, colors_button_,
 			advanced_button_, sound_button_,
 			music_button_, chat_timestamp_button_,
 			advanced_sound_button_, normal_sound_button_,
+			display_button_,
 			UI_sound_button_, sample_rate_button1_,
 			sample_rate_button2_, sample_rate_button3_,
 			confirm_sound_button_, idle_anim_button_,
 			standing_anim_button_,
-			animate_map_button_;
+			animate_map_button_,
+
+			// color tab
+			orb_colors_defaults_,
+			orb_colors_enemy_toggle_,
+			orb_colors_ally_toggle_,
+			orb_colors_unmoved_toggle_,
+			orb_colors_partial_toggle_,
+			orb_colors_moved_toggle_;
+
+	std::vector<gui::button> orb_colors_ally_buttons_;
+	std::vector<gui::button> orb_colors_enemy_buttons_;
+	std::vector<gui::button> orb_colors_moved_buttons_;
+	std::vector<gui::button> orb_colors_partial_buttons_;
+	std::vector<gui::button> orb_colors_unmoved_buttons_;
+
 	gui::label music_label_, sound_label_, UI_sound_label_, bell_label_,
 	           scroll_label_, chat_lines_label_,
 	           turbo_slider_label_, sample_rate_label_, buffer_size_label_,
@@ -152,7 +168,7 @@ private:
 
 	enum TAB {	GENERAL_TAB, DISPLAY_TAB, SOUND_TAB, MULTIPLAYER_TAB, ADVANCED_TAB,
 				/*extra tab*/
-				ADVANCED_SOUND_TAB, FRIENDS_TAB};
+				COLOR_TAB, ADVANCED_SOUND_TAB, FRIENDS_TAB};
 	TAB tab_;
 	display &disp_;
 	const config& game_cfg_;
@@ -165,6 +181,7 @@ public:
 preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	: gui::preview_pane(disp.video()),
 	  friends_names_(),
+	  color_ids_(),
 	  music_slider_(disp.video()), sound_slider_(disp.video()),
 	  UI_sound_slider_(disp.video()), bell_slider_(disp.video()),
 	  scroll_slider_(disp.video()),
@@ -204,12 +221,14 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  theme_button_(disp.video(), _("Theme")),
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  paths_button_(disp.video(), _("Paths")),
+	  colors_button_(disp.video(), _("Colors")),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
 	  chat_timestamp_button_(disp.video(), _("Chat timestamping"), gui::button::TYPE_CHECK),
 	  advanced_sound_button_(disp.video(), _("sound^Advanced Options")),
 	  normal_sound_button_(disp.video(), _("sound^Standard Options")),
+	  display_button_(disp.video(), _("colors^Display")),
 	  UI_sound_button_(disp.video(), _("User interface sounds"), gui::button::TYPE_CHECK),
 	  sample_rate_button1_(disp.video(), "22050", gui::button::TYPE_RADIO),
 	  sample_rate_button2_(disp.video(), "44100", gui::button::TYPE_RADIO),
@@ -219,6 +238,22 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  standing_anim_button_(disp.video(), _("Show unit standing animations"), gui::button::TYPE_CHECK),
 	  animate_map_button_(disp.video(), _("Animate map"), gui::button::TYPE_CHECK),
 
+	  // Colors tab buttons
+	  orb_colors_defaults_(disp.video(), _("Defaults")),
+	  orb_colors_enemy_toggle_(disp.video(), _("Show enemy orb"), gui::button::TYPE_CHECK),
+	  orb_colors_ally_toggle_(disp.video(), _("Show ally orb"), gui::button::TYPE_CHECK),
+	  orb_colors_unmoved_toggle_(disp.video(), _("Show unmoved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_partial_toggle_(disp.video(), _("Show partial moved orb"), gui::button::TYPE_CHECK),
+	  orb_colors_moved_toggle_(disp.video(), _("Show moved orb"), gui::button::TYPE_CHECK),
+
+	  //colors tab buttons
+	  orb_colors_ally_buttons_(),
+	  orb_colors_enemy_buttons_(),
+	  orb_colors_moved_buttons_(),
+	  orb_colors_partial_buttons_(),
+	  orb_colors_unmoved_buttons_(),
+
+	  // Sound tab labels
 	  music_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
 	  sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
 	  UI_sound_label_(disp.video(), _("Volume:"), font::SIZE_SMALL),
@@ -264,6 +299,48 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	music_slider_.set_max(128);
 	music_slider_.set_value(music_volume());
 	music_slider_.set_help_string(_("Change the music volume"));
+
+	orb_colors_ally_toggle_.set_check(preferences::show_allied_orb());
+	orb_colors_enemy_toggle_.set_check(preferences::show_enemy_orb());
+	orb_colors_moved_toggle_.set_check(preferences::show_moved_orb());
+	orb_colors_partial_toggle_.set_check(preferences::show_partial_orb());
+	orb_colors_unmoved_toggle_.set_check(preferences::show_unmoved_orb());
+
+	const std::map<std::string, t_string>& colors = game_config::team_rgb_name;
+	std::map<std::string, t_string>::const_iterator colors_it;
+	for (colors_it = colors.begin(); colors_it != colors.end(); colors_it++) {
+
+		const std::string& color_id = colors_it->first;
+		const t_string& color_name  = colors_it->second;
+
+		if (color_id.substr(0,4) != "orb_")
+			continue;
+
+		color_ids_.push_back(color_id);
+
+		std::string image_path = "misc/orb"; //game_config::images::orb;
+		std::string image_path_suffix = "~RC(magenta>" + color_id + ")~CROP(14,0,14,14)~SCALE(28,28)";
+
+		gui::button color_radio_button(disp.video(), "", gui::button::TYPE_IMAGE, image_path, gui::button::MINIMUM_SPACE);
+		color_radio_button.set_tooltip_string(color_name);
+		color_radio_button.set_help_string(color_name);
+		color_radio_button.set_image_path_suffix(image_path_suffix);
+
+		color_radio_button.set_check(color_id == preferences::allied_color());
+		orb_colors_ally_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::enemy_color());
+		orb_colors_enemy_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::moved_color());
+		orb_colors_moved_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::partial_color());
+		orb_colors_partial_buttons_.push_back(color_radio_button);
+
+		color_radio_button.set_check(color_id == preferences::unmoved_color());
+		orb_colors_unmoved_buttons_.push_back(color_radio_button);
+	}
 
 	// bell volume slider
 	bell_slider_.set_min(0);
@@ -430,8 +507,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	show_haloing_button_.set_help_string(_("Use graphical special effects (may be slower)"));
 
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
-
 	paths_button_.set_help_string(_("View game file paths"));
+	colors_button_.set_help_string(_("Adjust orb colors"));
 
 	set_advanced_menu();
 	set_friends_menu();
@@ -487,6 +564,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&theme_button_);
 	h.push_back(&hotkeys_button_);
 	h.push_back(&paths_button_);
+	h.push_back(&colors_button_);
 	h.push_back(&advanced_button_);
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
@@ -512,6 +590,24 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&sample_rate_input_);
 	h.push_back(&advanced_);
 	h.push_back(&friends_);
+
+	// Colors tab
+	for (unsigned i = 0; i < color_ids_.size(); i++) {
+		h.push_back(&orb_colors_ally_buttons_[i]);
+		h.push_back(&orb_colors_enemy_buttons_[i]);
+		h.push_back(&orb_colors_moved_buttons_[i]);
+		h.push_back(&orb_colors_partial_buttons_[i]);
+		h.push_back(&orb_colors_unmoved_buttons_[i]);
+	}
+
+	h.push_back(&orb_colors_ally_toggle_);
+	h.push_back(&orb_colors_enemy_toggle_);
+	h.push_back(&orb_colors_moved_toggle_);
+	h.push_back(&orb_colors_partial_toggle_);
+	h.push_back(&orb_colors_unmoved_toggle_);
+	h.push_back(&orb_colors_defaults_);
+	h.push_back(&display_button_);
+
 	return h;
 }
 
@@ -587,6 +683,73 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
 	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
 	                           bottom_row_y - theme_button_.height());
+	colors_button_.set_location(rect.x + video_mode_button_.width() + theme_button_.width() + 20, bottom_row_y - colors_button_.height());
+
+
+	// Color tab
+	const int width = 28; // orb_colors_ally_buttons_[0].width();
+	const unsigned color_number = color_ids_.size();
+	const unsigned number = std::max(color_number, 2u);
+
+	const int orb_x_offset = ( (rect.w - width*number) / number ) * 2;
+
+	int xpos = rect.x;
+	ypos = rect.y + top_border;
+	orb_colors_unmoved_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_unmoved_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_partial_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_partial_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_moved_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_moved_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_ally_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_ally_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	xpos = rect.x;
+	ypos += item_interline;
+	orb_colors_enemy_toggle_.set_location(xpos, ypos);
+	ypos += item_interline - 10;
+	xpos -= orb_x_offset;
+	xpos += horizontal_padding;
+	BOOST_FOREACH(gui::button& button, orb_colors_enemy_buttons_) {
+		xpos += orb_x_offset;
+		button.set_location(xpos, ypos);
+	}
+
+	display_button_.set_location(rect.x, bottom_row_y - display_button_.height());
+	orb_colors_defaults_.set_location(rect.x + display_button_.width() + 10, bottom_row_y - orb_colors_defaults_.height());
 
 	// Sound tab
 	slider_label_width_ = std::max<unsigned>(music_label_.width(), sound_label_.width());
@@ -808,9 +971,84 @@ void preferences_dialog::process_event()
 
 		set_idle_anim_rate(idle_anim_slider_.value());
 
+		if (colors_button_.pressed())
+				set_selection(COLOR_TAB);
+
 		return;
 	}
 
+	if (tab_ == COLOR_TAB) {
+
+		if (display_button_.pressed()) {
+			set_selection(DISPLAY_TAB);
+			return;
+		}
+
+		if (orb_colors_defaults_.pressed()) {
+			preferences::set_show_allied_orb(game_config::show_ally_orb);
+			preferences::set_show_enemy_orb(game_config::show_enemy_orb);
+			preferences::set_show_moved_orb(game_config::show_moved_orb);
+			preferences::set_show_partial_orb(game_config::show_partial_orb);
+			preferences::set_show_unmoved_orb(game_config::show_unmoved_orb);
+			orb_colors_ally_toggle_.set_check(preferences::show_allied_orb());
+			orb_colors_enemy_toggle_.set_check(preferences::show_enemy_orb());
+			orb_colors_moved_toggle_.set_check(preferences::show_moved_orb());
+			orb_colors_partial_toggle_.set_check(preferences::show_partial_orb());
+			orb_colors_unmoved_toggle_.set_check(preferences::show_unmoved_orb());
+			preferences::set_allied_color(game_config::colors::ally_orb_color);
+			preferences::set_enemy_color(game_config::colors::enemy_orb_color);
+			preferences::set_moved_color(game_config::colors::moved_orb_color);
+			preferences::set_unmoved_color(game_config::colors::unmoved_orb_color);
+			preferences::set_partial_color(game_config::colors::partial_orb_color);
+		}
+
+		if (orb_colors_ally_toggle_.pressed()) {
+			preferences::set_show_allied_orb(orb_colors_ally_toggle_.checked());
+			return;
+		}
+		if (orb_colors_enemy_toggle_.pressed()) {
+			preferences::set_show_enemy_orb(orb_colors_enemy_toggle_.checked());
+			return;
+		}
+		if (orb_colors_moved_toggle_.pressed()) {
+			preferences::set_show_moved_orb(orb_colors_moved_toggle_.checked());
+			return;
+		}
+		if (orb_colors_partial_toggle_.pressed()) {
+			preferences::set_show_partial_orb(orb_colors_partial_toggle_.checked());
+			return;
+		}
+		if (orb_colors_unmoved_toggle_.pressed()) {
+			preferences::set_show_unmoved_orb(orb_colors_unmoved_toggle_.checked());
+			return;
+		}
+
+		for (unsigned i = 0; i < color_ids_.size(); i++) {
+			if (orb_colors_ally_buttons_[i].pressed())
+				preferences::set_allied_color(color_ids_[i]);
+			if (orb_colors_enemy_buttons_[i].pressed())
+				preferences::set_enemy_color(color_ids_[i]);
+			if (orb_colors_moved_buttons_[i].pressed())
+				preferences::set_moved_color(color_ids_[i]);
+			if (orb_colors_unmoved_buttons_[i].pressed())
+				preferences::set_unmoved_color(color_ids_[i]);
+			if (orb_colors_partial_buttons_[i].pressed())
+				preferences::set_partial_color(color_ids_[i]);
+
+			orb_colors_ally_buttons_[i].set_check(
+					preferences::allied_color() == color_ids_[i]);
+			orb_colors_enemy_buttons_[i].set_check(
+					preferences::enemy_color() == color_ids_[i]);
+			orb_colors_moved_buttons_[i].set_check(
+					preferences::moved_color() == color_ids_[i]);
+			orb_colors_partial_buttons_[i].set_check(
+					preferences::partial_color() == color_ids_[i]);
+			orb_colors_unmoved_buttons_[i].set_check(
+					preferences::unmoved_color() == color_ids_[i]);
+		}
+
+		return;
+	}
 
 	if (tab_ == SOUND_TAB) {
 		if (turn_bell_button_.pressed()) {
@@ -1327,6 +1565,25 @@ void preferences_dialog::set_selection(int index)
 	theme_button_.hide(hide_display);
 	show_team_colors_button_.hide(hide_display);
 	show_grid_button_.hide(hide_display);
+	colors_button_.hide(hide_display);
+
+	const bool hide_colors = tab_ != COLOR_TAB;
+	orb_colors_ally_toggle_.hide(hide_colors);
+	orb_colors_enemy_toggle_.hide(hide_colors);
+	orb_colors_moved_toggle_.hide(hide_colors);
+	orb_colors_partial_toggle_.hide(hide_colors);
+	orb_colors_unmoved_toggle_.hide(hide_colors);
+	for (unsigned i = 0; i < color_ids_.size(); i++) {
+		orb_colors_ally_buttons_[i].hide(hide_colors);
+		orb_colors_enemy_buttons_[i].hide(hide_colors);
+		orb_colors_moved_buttons_[i].hide(hide_colors);
+		orb_colors_partial_buttons_[i].hide(hide_colors);
+		orb_colors_unmoved_buttons_[i].hide(hide_colors);
+	}
+	display_button_.hide(hide_colors);
+	display_button_.enable(!hide_colors);
+	orb_colors_defaults_.hide(hide_colors);
+	orb_colors_defaults_.enable(!hide_colors);
 
 	const bool hide_sound = tab_ != SOUND_TAB;
 	music_button_.hide(hide_sound);

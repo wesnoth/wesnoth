@@ -353,9 +353,7 @@ std::string gamemap::write() const
 
 	// Let the low level converter do the conversion
 	std::ostringstream s;
-	s << "border_size=" << border_size_ << "\nusage="
-		<< (usage_ == IS_MAP ? "map" : "mask") << "\n\n"
-		<< t_translation::write_game_map(tiles_, starting_positions)
+	s << t_translation::write_game_map(tiles_, starting_positions)
 		<< "\n";
 	return s.str();
 }

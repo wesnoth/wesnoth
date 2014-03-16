@@ -271,7 +271,7 @@ void show_about(display &disp, const std::string &campaign)
 	gui::dialog_frame f(video, "", gui::dialog_frame::titlescreen_style, false);
 
 	// the text area's dimensions
-	SDL_Rect text_rect;
+	SDL_Rect text_rect = { 0, 0, 0, 0 };
 	// we'll retain a copy to prevent SDL_blit to change its w and h
 	SDL_Rect text_rect_blit;
 
