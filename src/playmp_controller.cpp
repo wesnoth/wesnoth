@@ -41,7 +41,7 @@ playmp_controller::playmp_controller(const config& level,
 		const int num_turns, const config& game_config, CVideo& video,
 		bool skip_replay, bool blindfold_replay_, bool is_host) :
 	playsingle_controller(level, state_of_game, ticks, num_turns,
-		game_config, video, skip_replay),
+		game_config, video, skip_replay || blindfold_replay_), //this || means that if blindfold is enabled, quick replays will be on.
 	turn_data_(NULL),
 	beep_warning_time_(0),
 	network_processing_stopped_(false),

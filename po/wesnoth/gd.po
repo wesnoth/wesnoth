@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-02-21 08:38-0000\n"
+"PO-Revision-Date: 2014-03-16 07:16-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
@@ -3389,14 +3389,12 @@ msgstr "dealanach"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "Tùsail"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
-#, fuzzy
-#| msgid "Default Zoom"
 msgid "Default theme."
-msgstr "Sùm tùsail"
+msgstr "Ùrlar tùsail"
 
 #. [menu]: id=menu-main
 #: data/themes/default.cfg:82 data/themes/pandora.cfg:114
@@ -3561,12 +3559,12 @@ msgstr "Leig beòthachadh seachad"
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:22
 msgid "theme^Pandora"
-msgstr ""
+msgstr "Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
 msgid "800x480 theme optimized for Pandora devices."
-msgstr ""
+msgstr "Ùrlar 800x480 air a phiseachadh do dh’uidheaman Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -3578,12 +3576,12 @@ msgstr "Cuairt deiseil"
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
 msgid "theme^UnitBox"
-msgstr ""
+msgstr "UnitBox"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:12
 msgid "Experimental work-in-progress replacement for the default theme."
-msgstr ""
+msgstr "Ùrlar deuchainneach a chum a chur an àite an fhir thùsail."
 
 #. [action]: id=flip_map_button_editor, type=checkbox
 #: data/themes/unit_box.cfg:205
@@ -3593,12 +3591,12 @@ msgstr "Gun a chur an sàs fhathast."
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr ""
+msgstr "Sgrìn leathann"
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
 msgid "Experimental theme optimized for widescreen resolutions."
-msgstr ""
+msgstr "Ùrlar deuchainneach air a phiseachadh do sgrìnichean leathann."
 
 #. [selected_unit_level]: id=selected-unit-level
 #. [unit_level]: id=unit-level
@@ -4414,7 +4412,7 @@ msgid ""
 "land does favor you."
 msgstr ""
 "Ma tha dìon lag aig na saighdearan agad sa h-uile àite air a’ mhapa, cuir "
-"ann an àiteachan iad far a bheil an t-aon ana-chothrom aig na nàimhdean ma "
+"ann an àiteachan iad far a bheil an aon ana-chothrom aig na nàimhdean ma "
 "bheir iad ionnsaigh ort. Seachnaich na h-àiteachan far a bheil droch dhìon "
 "agad is dìon co-dhiù meadhanach math aig an nàmhaid. Cuir romhad gun caill "
 "thu grunn shaighdearan is faigh smachd seasmhach air gach sia-cheàrnach far "
@@ -5381,6 +5379,9 @@ msgid ""
 "single-player. It is recommended to load this scenario through the "
 "Multiplayer -> Load Game dialog instead."
 msgstr ""
+"Seo cnàmh-sgeul ioma-chluicheadair. Dh’fhaoidte nach obraich a h-uile càil "
+"mar bu chòir sa mhodh aon-chluicheadair. Mholamaid gum fosgail thu tron "
+"chòmhradh Ioma-Chluicheadair -> Luchdaich geama e ’na àite."
 
 #: src/game_controller.cpp:534 src/multiplayer.cpp:262
 msgid "Warning"
@@ -6112,10 +6113,8 @@ msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<taobh> [on/off]]"
 
 #: src/menu_events.cpp:2041
-#, fuzzy
-#| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
-msgstr "Dèan suids air taobh dha/bho smachd an IF."
+msgstr "Dèan suids air taobh dha/bho staid ’na thàmh."
 
 #: src/menu_events.cpp:2044
 msgid "<side> <nickname>"
@@ -6127,11 +6126,11 @@ msgstr "Sònraich smachd air taobh dha chluicheadair no amharc eile."
 
 #: src/menu_events.cpp:2046
 msgid "<side>"
-msgstr ""
+msgstr "<taobh>"
 
 #: src/menu_events.cpp:2046
 msgid "Query the controller status of a side."
-msgstr ""
+msgstr "Faigh staid an smachd air taobh."
 
 #: src/menu_events.cpp:2048
 msgid "Clear chat history."
@@ -6429,11 +6428,8 @@ msgid "Can't droid networked side: '$side'."
 msgstr "Chan urrainn dhan IF smachd a ghabhail air taobh lìonraidh: ‘$side’."
 
 #: src/menu_events.cpp:2689
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
-msgstr ""
-"Chan urrainn dhan IF smachd a ghabhail air taobh mì-dhligheach: ‘$side’."
+msgstr "Chan urrainn dhut taobh mì-dhligheach a chur ’na thàmh: ‘$side’."
 
 #: src/menu_events.cpp:2741
 msgid "Can't change control of invalid side: '$side'."
@@ -6445,17 +6441,16 @@ msgstr ""
 "Cha ghabh smachd air taobh taobh a-muigh nan crìochan atharrachadh: ‘$side’."
 
 #: src/menu_events.cpp:2762
-#, fuzzy
-#| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
-msgstr "Cha ghabh smachd air taobh mì-dhligheach atharrachadh: ‘$side’."
+msgstr ""
+"Chan urrainn dhut an staid aig smachd air taobh mì-dhligheach fhaighinn: "
+"‘$side’."
 
 #: src/menu_events.cpp:2768
-#, fuzzy
-#| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
-"Cha ghabh smachd air taobh taobh a-muigh nan crìochan atharrachadh: ‘$side’."
+"Chan urrainn dhut an staid aig smachd air taobh taobh a-muigh nan crìochan "
+"fhaighinn: ‘$side’."
 
 #: src/menu_events.cpp:2882
 msgid "Layers"
@@ -7145,7 +7140,7 @@ msgstr "Ath-chluichean luatha"
 
 #: src/multiplayer_lobby.cpp:862
 msgid "Enter blindfolded"
-msgstr ""
+msgstr "Rach a-steach ’nad dhallan"
 
 #: src/multiplayer_lobby.cpp:863
 msgid "Preferences"
@@ -7177,7 +7172,7 @@ msgstr "Leum gu luath dhan chuairt ghnìomhach nuair a bhios tu ag amharc"
 
 #: src/multiplayer_lobby.cpp:880
 msgid "Do not show replay turns"
-msgstr ""
+msgstr "Na seall cuairtean ath-chluiche"
 
 #: src/multiplayer_lobby.cpp:883
 msgid ""
@@ -7530,13 +7525,11 @@ msgstr "Cuir cluicheadair ionadail ’na àite"
 
 #: src/playturn.cpp:257
 msgid "Set side to idle"
-msgstr ""
+msgstr "Cuir an taobh ’na thàmh"
 
 #: src/playturn.cpp:258
-#, fuzzy
-#| msgid "Abort game"
 msgid "Save and abort game"
-msgstr "Sgur dhen gheama"
+msgstr "Sàbhail is sgur dhen gheama"
 
 #: src/playturn.cpp:266 src/playturn.cpp:280
 msgid "Replace with $player"
