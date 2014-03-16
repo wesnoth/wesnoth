@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2014-02-19 10:42-0000\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-03-16 07:31-0000\n"
 "Last-Translator: GunChleoc <fiosAIGforamnagaidhligDOTnet>\n"
 "Language-Team: Fòram na Gàidhlig http://www.foramnagaidhlig.net\n"
 "Language: gd\n"
@@ -970,17 +970,6 @@ msgstr "Baile Sluaigh-mhara"
 
 #. [terrain_type]: id=mermen-village
 #: data/core/terrain.cfg:1503
-#, fuzzy
-#| msgid ""
-#| "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#| "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#| "have a hard time navigating and defending these villages. However, like "
-#| "any village, the facilites are available to all creatures which allow "
-#| "units to tend to their wounds. Any unit stationed in a village can heal "
-#| "eight hitpoints each turn, or be cured of poison.\n"
-#| "\n"
-#| "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#| "based units usually have a low defense."
 msgid ""
 "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
 "nagas. While water-dwelling creatures are at home here, land-dwellers have a "
@@ -1677,13 +1666,6 @@ msgstr "Do-shiubhal"
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2421
-#, fuzzy
-#| msgid ""
-#| "Obstacles that not even the most determined traveler may overcome include "
-#| "solid walls of stone and mountains so tall and steep that they are "
-#| "constantly wreathed in cloud. Even flying creatures cannot navigate the "
-#| "jagged peaks at such rarified heights, and not even the fiercest troll "
-#| "can smash through thick walls of stone."
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -3363,36 +3345,28 @@ msgstr "Tagh"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
-#, fuzzy
-#| msgid "filesystem^Copy"
 msgid "filesystem^Open"
-msgstr "Dèan lethbhreac"
+msgstr "Fosgail"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Fosgail am faidhle seo le prògram taobh a-muigh"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
-msgstr "Glacadh-sgrìn dèanta"
+msgstr "Glacadh-sgrìn air a shàbhaladh"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Glacadh-sgrìn"
+msgstr "Glacaidhean-sgrìn..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
-#, fuzzy
-#| msgid "Browse this location using a file manager"
 msgid "Browse the screenshots folder using a file manager"
-msgstr "Rùraich an t-ionad seo le manaidsear fhaidhlichean"
+msgstr "Rùraich pasgan nan glacaidhean-sgrìn le manaidsear fhaidhlichean"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:51
@@ -3401,8 +3375,6 @@ msgstr "Tagh ùrlar"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
 msgstr ""
 "Thèid an t-ùrlar ùr a chur an sàs leis an ath gheama a thòisicheas no "
@@ -4226,8 +4198,8 @@ msgstr "Bu chòir do ràgh a bhith ann an ‘list_definition’."
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr ""
-"Feumaidh an t-aon àireamh dhe chuilbh a bhith aig ‘list_data’ ’s a tha aig "
-"an ‘list_definition’."
+"Feumaidh an aon àireamh dhe chuilbh a bhith aig ‘list_data’ ’s a tha aig an "
+"‘list_definition’."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:38
 msgid "No page defined."
