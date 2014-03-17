@@ -365,7 +365,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay, 
-	bool network_game, bool blindfold_replay)
+	bool network_game, bool blindfold_replay, bool observer)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -428,7 +428,9 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 	while(scenario != NULL) {
 		// If we are a multiplayer client, tweak the controllers
+		LOG_RG << "*** Playcampaign.cpp: Tweaking controllers ***" << std::endl;
 		if(io_type == IO_CLIENT) {
+			LOG_RG << "*** Playcampaign.cpp: We are a IO_CLIENT ***" << std::endl;
 			if(scenario != &starting_pos) {
 				starting_pos = *scenario;
 				scenario = &starting_pos;
@@ -436,11 +438,27 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 			BOOST_FOREACH(config &side, starting_pos.child_range("side"))
 			{
-				if (side["current_player"] == preferences::login()) {
+				LOG_RG << "*** Playcampaign.cpp: Tweaked " << side["controller"] << " -> " << std::endl;
+				if (!observer && side["current_player"] == preferences::login()) {//if we are not an observer and we are this player, it is our side
 					side["controller"] = "human";
-				} else if (side["controller"] != "null") {
-					side["controller"] = "network";
-				}
+				} else if (side["controller"] == "ai" || side["controller"] == "human_ai" || side["controller"] == "network_ai") { 	
+					side["controller"] = "network_ai";					//if server sends an ai side at start of scenario, it
+				} else if (side["controller"] != "null") {					//is owned by the host (and definitely not us)
+					side["controller"] = "network"; 					//otherwise, side is controlled by human-host or null 
+				}										//and shold be networked, null resp. 
+														//(did we miss anything?)
+				LOG_RG << "\t\t\t\t\t" << side["controller"] << std::endl;
+			}
+		} else if (io_type == IO_SERVER)
+		{
+			LOG_RG << "*** Playcampaign.cpp: We are a IO_SERVER ***" << std::endl;
+			BOOST_FOREACH(config &side, starting_pos.child_range("side"))
+			{
+				LOG_RG << "*** Playcampaign.cpp: Tweaked " << side["controller"] << " -> " << std::endl;
+				if (side["controller"] == "ai") { 	
+					side["controller"] = "human_ai"; //this is to guarantee that in an actual mp game, all ai sides will be "human_ai" 
+				}					 //or "network_ai", and "ai" only occurs during configuration.
+				LOG_RG << "\t\t\t\t\t" << side["controller"] << std::endl;
 			}
 		}
 

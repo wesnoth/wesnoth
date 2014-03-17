@@ -183,6 +183,8 @@ void game::start_game(const player_map::const_iterator starter) {
 	// Set all side controllers to 'human' so that observers will understand
 	// that they can't take control of any sides if they happen to have the
 	// same name as one of the descriptions.
+	// iceiceice 3/17/2014: disabled this behavior as it causes out of sync
+	// the observer issue is now handled by ... client remembers if they are observing.
 	const simple_wml::node::child_list& sides = level_.root().children("side");
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		nsides_++;
@@ -194,7 +196,7 @@ void game::start_game(const player_map::const_iterator starter) {
 				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
 				send_and_record_server_message(msg.str());
 			}
-			(*s)->set_attr("controller", "human");
+			//(*s)->set_attr("controller", "human");
 		}
 	}
 
