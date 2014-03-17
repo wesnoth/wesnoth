@@ -497,9 +497,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, std::vector< const unit* >& units, int /*side*/, const std::string& title_suffix)
+int recall_dialog(display& disp, std::vector< const unit* >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix)
+int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -540,8 +540,22 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 		}
 	#endif
 
-		option << COLUMN_SEPARATOR
-			<< u->type_name() << COLUMN_SEPARATOR
+		option << COLUMN_SEPARATOR;
+		int cost = u->recall_cost();
+		if(cost < 0) {
+			cost = team_recall_cost;
+		}
+		option << u->type_name() << "\n";
+		if(cost > team_recall_cost) {
+			option << font::NORMAL_TEXT << "<255,0,0>";
+		}
+		else if(cost == team_recall_cost) {
+			option << font::NORMAL_TEXT << "<255,255,255>";
+		}
+		else if(cost < team_recall_cost) {
+			option << font::NORMAL_TEXT << "<0,255,0>";
+		}
+		option << cost << " Gold" << COLUMN_SEPARATOR
 			<< name << COLUMN_SEPARATOR;
 
 		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)

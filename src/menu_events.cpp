@@ -688,17 +688,23 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num));
-	if (res < 0) return;
+	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
+	int unit_cost = current_team.recall_cost();
+	if (res < 0) { 
+		return;
+	}
+	else if(recall_list_team[res]->recall_cost() < 0) {
+		unit_cost = recall_list_team[res]->recall_cost();
+	}
 
 	int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
-	if (current_team.gold() - wb_gold < current_team.recall_cost()) {
+	if (current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
+		i18n_symbols["cost"] = lexical_cast<std::string>(unit_cost);
 		std::string msg = vngettext(
 			"You must have at least 1 gold piece to recall a unit",
-			"You must have at least $cost gold pieces to recall a unit",
-			current_team.recall_cost(), i18n_symbols);
+			"You must have at least $cost gold pieces to recall this unit",
+			unit_cost, i18n_symbols);
 		gui2::show_transient_message(gui_->video(), "", msg);
 		return;
 	}
