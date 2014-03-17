@@ -29,6 +29,10 @@ Version 1.11.11+dev:
    * Fixed: A bug causing text boxes not properly updating.
    * Fixed: A bug causing text boxes to spuriously firing modification events.
    * Fix bug #21758: "Ready not blocked while player pick faction."
+   * Fix bug #18829: "ai sides show up as "controller=network" on remote clients".
+     This issue is the source of some difficulties with mp campaigns which occur
+     when the campaign is reloaded from a non-host side, or after a player rejoins
+     from observer status. Hopefully, reloading campaigns is easier after this.
 
 Version 1.11.11:
  * Add-ons server:

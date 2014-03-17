@@ -191,7 +191,13 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			} else if (controller == "network_ai" && !tm.is_network_ai()) {
 				tm.make_network_ai();
 			} else if (controller == "ai" && !tm.is_ai()) {
-				tm.make_ai();
+				//if we are the controller, this should become human_ai, if not then network_ai
+				//this is to ensure that no side during an mp game is ever "ai", and always either human_ai or network_ai (except during configuration)
+				if (player == preferences::login()) {
+					tm.make_human_ai();
+				} else {
+					tm.make_network_ai();
+				}
 			} else if (controller == "idle" && !tm.is_idle()) {
 				tm.make_idle();
 			}
