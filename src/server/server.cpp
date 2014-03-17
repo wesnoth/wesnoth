@@ -2286,7 +2286,8 @@ void server::process_data_lobby(const network::connection sock,
 		if (!joined) {
 			WRN_SERVER << network::ip_address(sock) << "\t" << pl->second.name()
 				<< "\tattempted to observe game:\t\"" << (*g)->name() << "\" ("
-				<< game_id << ") which doesn't allow observers.\n";
+				<< game_id << ") which doesn't allow observers.\n" 
+				<< "(*g)->allow_observers() = " << (*g)->allow_observers() << std::endl;
 			send_doc(leave_game_doc, sock);
 			rooms_.lobby().send_server_message("Attempt to observe a game that doesn't allow observers. (You probably joined the game shortly after it filled up.)", sock);
 			send_doc(games_and_users_list_, sock);
