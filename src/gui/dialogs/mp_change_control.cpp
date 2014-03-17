@@ -177,7 +177,7 @@ public:
 		for(std::vector<team>::const_iterator it = resources::teams->begin();
 			it != resources::teams->end();
 			++it) {
-			if(!it->is_ai() && !it->is_idle() && !it->is_empty() && !it->current_player().empty())
+			if(!it->is_ai() && !it->is_network_ai() && !it->is_idle() && !it->is_empty() && !it->current_player().empty())
 				nicks.insert(it->current_player());
 		}
 
