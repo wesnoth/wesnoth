@@ -264,6 +264,132 @@ inline unsigned int count_ones(N n) {
 	return r;
 }
 
+// Support functions for `count_leading_zeros`.
+#if defined(__GNUC__) || defined(__clang__)
+inline unsigned int count_leading_zeros_impl(
+		unsigned char n, std::size_t w) {
+	// Returns the result of the compiler built-in function, adjusted for
+	// the difference between the width, in bits, of the built-in
+	// function’s parameter’s type (which is `unsigned int`, at the
+	// smallest) and the width, in bits, of the input to this function, as
+	// specified at the call-site in `count_leading_zeros`.
+	return static_cast<unsigned int>(__builtin_clz(n))
+		- static_cast<unsigned int>(
+			bit_width<unsigned int>() - w);
+}
+inline unsigned int count_leading_zeros_impl(
+		unsigned short int n, std::size_t w) {
+	return static_cast<unsigned int>(__builtin_clz(n))
+		- static_cast<unsigned int>(
+			bit_width<unsigned int>() - w);
+}
+inline unsigned int count_leading_zeros_impl(
+		unsigned int n, std::size_t w) {
+	return static_cast<unsigned int>(__builtin_clz(n))
+		- static_cast<unsigned int>(
+			bit_width<unsigned int>() - w);
+}
+inline unsigned int count_leading_zeros_impl(
+		unsigned long int n, std::size_t w) {
+	return static_cast<unsigned int>(__builtin_clzl(n))
+		- static_cast<unsigned int>(
+			bit_width<unsigned long int>() - w);
+}
+inline unsigned int count_leading_zeros_impl(
+		unsigned long long int n, std::size_t w) {
+	return static_cast<unsigned int>(__builtin_clzll(n))
+		- static_cast<unsigned int>(
+			bit_width<unsigned long long int>() - w);
+}
+inline unsigned int count_leading_zeros_impl(
+		char n, std::size_t w) {
+	return count_leading_zeros_impl(
+		static_cast<unsigned char>(n), w);
+}
+inline unsigned int count_leading_zeros_impl(
+		signed char n, std::size_t w) {
+	return count_leading_zeros_impl(
+		static_cast<unsigned char>(n), w);
+}
+inline unsigned int count_leading_zeros_impl(
+		signed short int n, std::size_t w) {
+	return count_leading_zeros_impl(
+		static_cast<unsigned short int>(n), w);
+}
+inline unsigned int count_leading_zeros_impl(
+		signed int n, std::size_t w) {
+	return count_leading_zeros_impl(
+		static_cast<unsigned int>(n), w);
+}
+inline unsigned int count_leading_zeros_impl(
+		signed long int n, std::size_t w) {
+	return count_leading_zeros_impl(
+		static_cast<unsigned long int>(n), w);
+}
+inline unsigned int count_leading_zeros_impl(
+		signed long long int n, std::size_t w) {
+	return count_leading_zeros_impl(
+		static_cast<unsigned long long int>(n), w);
+}
+#else
+template<typename N>
+inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
+	// Algorithm adapted from:
+	// <http://aggregate.org/MAGIC/#Leading%20Zero%20Count>
+	for (unsigned int shift = 1; shift < w; shift *= 2) {
+		n |= (n >> shift);
+	}
+	return static_cast<unsigned int>(w) - count_ones(n);
+}
+#endif
+
+/**
+ * Returns the quantity of leading `0` bits in `n` — i.e., the quantity of
+ * bits in `n`, minus the 1-based bit index of the most significant `1` bit in
+ * `n`, or minus 0 if `n` is 0.
+ *
+ * @tparam N The type of `n`. This should be a fundamental integer type that
+ *  (a) is not wider than `unsigned long long int` (the GCC
+ *   count-leading-zeros built-in functions are defined for `unsigned int`,
+ *   `unsigned long int`, and `unsigned long long int`), and
+ *  (b) is no greater than `INT_MAX` bits in width (the GCC built-in functions
+ *   return instances of type `int`);
+ * if `N` does not satisfy these constraints, the return value is undefined.
+ *
+ * @param n An integer upon which to operate.
+ *
+ * @returns the quantity of leading `0` bits in `n`, if `N` satisfies the
+ * above constraints.
+ */
+template<typename N>
+inline unsigned int count_leading_zeros(N n) {
+#if defined(__GNUC__) || defined(__clang__)
+	// GCC’s `__builtin_clz` returns an undefined value when called with 0
+	// as argument.
+	// [<http://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html>]
+	if (n == 0) {
+		// Return the quantity of zero bits in `n` rather than
+		// returning that undefined value.
+		return static_cast<unsigned int>(bit_width(n));
+	}
+#endif
+	// Dispatch, on the static type of `n`, to one of the
+	// `count_leading_zeros_impl` functions.
+	return count_leading_zeros_impl(n, bit_width(n));
+	// The second argument to `count_leading_zeros_impl` specifies the
+	// width, in bits, of `n`.
+	//
+	// This is necessary because `n` may be widened (or, alas, shrunk),
+	// and thus the information of `n`’s true width may be lost.
+	//
+	// At least, this *was* necessary before there were so many overloads
+	// of `count_leading_zeros_impl`, but I’ve kept it anyway as an extra
+	// precautionary measure, that will (I hope) be optimized out.
+	//
+	// To be clear, `n` would only be shrunk in cases noted above as
+	// having an undefined result.
+}
+
 #ifdef __GNUC__
 #define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen
 #define UNLIKELY(a)  __builtin_expect((a),0) // Tells GCC to optimize code so that if is unlikely to happen

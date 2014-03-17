@@ -104,6 +104,29 @@ BOOST_AUTO_TEST_CASE( test_count_ones )
 	BOOST_CHECK( count_ones(12345) == 6 );
 }
 
+BOOST_AUTO_TEST_CASE( test_count_leading_zeros )
+{
+	BOOST_CHECK( count_leading_zeros((boost::uint8_t) 1) == 7 );
+	BOOST_CHECK( count_leading_zeros((boost::uint16_t) 1) == 15 );
+	BOOST_CHECK( count_leading_zeros((boost::uint32_t) 1) == 31 );
+	BOOST_CHECK( count_leading_zeros((boost::uint64_t) 1) == 63 );
+	BOOST_CHECK( count_leading_zeros((boost::uint8_t) 0xFF) == 0 );
+	BOOST_CHECK( count_leading_zeros((unsigned int) 0)
+		== bit_width<unsigned int>() );
+	BOOST_CHECK( count_leading_zeros((unsigned long int) 0)
+		== bit_width<unsigned long int>() );
+	BOOST_CHECK( count_leading_zeros((unsigned long long int) 0)
+		== bit_width<unsigned long long int>() );
+	BOOST_CHECK( count_leading_zeros('\0')
+		== bit_width<char>() );
+	BOOST_CHECK( count_leading_zeros('\b')
+		== bit_width<char>() - 4 );
+	BOOST_CHECK( count_leading_zeros('\033')
+		== bit_width<char>() - 5 );
+	BOOST_CHECK( count_leading_zeros(' ')
+		== bit_width<char>() - 6 );
+}
+
 /* vim: set ts=4 sw=4: */
 
 BOOST_AUTO_TEST_SUITE_END()
