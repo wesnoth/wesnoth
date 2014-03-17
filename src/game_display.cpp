@@ -922,9 +922,9 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 
 	if (i != i_end) {
 		i->message = message + "\n" + i->message;
-		int endl_pos = 0;
+		int endl_pos = -1;
 		for (int ctr = 0; ctr < 5; ctr++)
-			endl_pos = i->message.find('\n', endl_pos);
+			endl_pos = i->message.find('\n', endl_pos+1);
 
 		i->message = i->message.substr(0,endl_pos);
 

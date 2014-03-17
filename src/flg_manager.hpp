@@ -53,6 +53,7 @@ public:
 	void reset_leader_combo(gui::combo& combo_leader) const;
 	void reset_gender_combo(gui::combo& combo_gender) const;
 
+	bool is_random_faction();
 	void resolve_random();
 
 	// Picks the first faction with the greater amount of data

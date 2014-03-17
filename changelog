@@ -29,6 +29,11 @@ Version 1.13.0-dev:
    * Changed: Dropped support for AmigaOS, BeOS, and OS/2.
    * Increased the sound mixer channel allocation from 16 to 32, thereby
      raising the limit for simultaneous sound effects from 5 to 21.
+   * Fix bug #21758: "Ready not blocked while player pick faction."
+   * Fix bug #18829: "ai sides show up as "controller=network" on remote clients".
+     This issue is the source of some difficulties with mp campaigns which occur
+     when the campaign is reloaded from a non-host side, or after a player rejoins
+     from observer status. Hopefully, reloading campaigns is easier after this.
 
 Version 1.11.11:
  * Add-ons server:

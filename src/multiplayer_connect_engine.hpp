@@ -193,6 +193,9 @@ public:
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
 	bool allow_player() const { return allow_player_; }
+	bool waiting_to_choose_faction() const { return waiting_to_choose_faction_; }
+	void set_waiting_to_choose_status(bool status) { waiting_to_choose_faction_ = status;}
+	bool chose_random() const { return chose_random_;}
 	const std::vector<std::string>& player_teams() const
 		{ return parent_.player_teams_; }
 	flg_manager& flg() { return flg_; }
@@ -224,6 +227,8 @@ private:
 	std::string player_id_;
 	std::string ai_algorithm_;
 
+	bool waiting_to_choose_faction_;
+	bool chose_random_;
 	flg_manager flg_;
 };
 

@@ -102,6 +102,7 @@ private:
 		bool share_maps, share_view;
 		bool disallow_observers;
 		bool allow_player;
+		bool chose_random;
 		bool no_leader;
 		bool hidden;
 		bool no_turn_confirmation;  // Can suppress confirmations when ending a turn.

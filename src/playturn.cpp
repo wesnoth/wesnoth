@@ -191,7 +191,15 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			} else if (controller == "network_ai" && !tm.is_network_ai()) {
 				tm.make_network_ai();
 			} else if (controller == "ai" && !tm.is_ai()) {
-				tm.make_ai();
+				//if we are the controller, this should become human_ai, if not then network_ai
+				//this is to ensure that no side during an mp game is ever "ai", and always either human_ai or network_ai (except during configuration)
+				if (player == preferences::login()) {
+					tm.make_human_ai();
+				} else {
+					tm.make_network_ai();
+				}
+			} else if (controller == "idle" && !tm.is_idle()) {
+				tm.make_idle();
 			}
 			else
 			{
@@ -236,7 +244,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const bool have_leader = leader.valid();
 
 		if (controller == "ai"){
-			tm.make_ai();
+			tm.make_network_ai();
 			tm.set_current_player("ai" + side_drop);
 			if (have_leader) leader->rename("ai" + side_drop);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -270,7 +278,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all allies in as options to transfer control
 			BOOST_FOREACH(team &t, *resources::teams)
 			{
-				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_empty()
+				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())
 				{
 					//if this is an ally of the dropping side and it is not us (choose local player
