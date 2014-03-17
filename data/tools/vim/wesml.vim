@@ -89,7 +89,7 @@ syn match wesmlMacroName display /{\@<=[^ }]\+/ contained contains=wesmlIncludeM
 " Tag "
 """""""
 " A tag is of the form : \[\s*[+/]\?\s*\w\+\s*\]
-syn match wesmlTag display /\[[^]]\+\]/ contains=wesmlTagMark,wesmlStdTag,wesmlTagError
+syn match wesmlTag display /\[[^]]\+\]/ contains=wesmlTagMark,wesmlStdTag,wesmlTagError,wesmlGUITag
 syn match wesmlTagMark display /\[\s*[+/]\?\|\]/ contained
 syn match wesmlTagError display "\[\s*\([^a-zA-Z_\]/+ ]\|\(\w\+\([^a-zA-Z_\] ]\|\s\+[^\] ]\+\)\|[/+]\(\s*[^\] ]\+\s\+[^\] ]\+\|\s*\w*[^a-zA-Z_ \]]\+\)\)\)[^\]]*\]" contained
 
@@ -195,6 +195,31 @@ syn keyword wesmlStdTag contained unit_traits unit_type unit_weapons unit_xp uni
 syn keyword wesmlStdTag contained unpetrify unstore_unit upkeep variable variables 
 syn keyword wesmlStdTag contained village villages volume while wml_message 
 
+" GUI tags, listed via grep "\[[[:lower:]_-]\+\]" data/gui/default/w*/*.cfg -ho | sort -u
+" image is already a standard tag
+syn keyword wesmlGUITag contained background blur button button_definition circle
+syn keyword wesmlGUITag contained column content definition draw drawing
+syn keyword wesmlGUITag contained drawing_definition foreground grid header
+syn keyword wesmlGUITag contained helptip horizontal_listbox_definition horizontal_scrollbar horizontal_scrollbar_definition
+syn keyword wesmlGUITag contained image_definition instance item_definition
+syn keyword wesmlGUITag contained label label_definition layer line linked_group
+syn keyword wesmlGUITag contained list_data list_definition listbox listbox_definition main
+syn keyword wesmlGUITag contained matrix matrix_definition minimap minimap_definition 
+syn keyword wesmlGUITag contained multi_page multi_page_definition num_box node node_definition
+syn keyword wesmlGUITag contained page_definition pane panel panel_definition password_box pre_commit
+syn keyword wesmlGUITag contained progress_bar progress_bar_definition rectangle repeating_button repeating_button_definition
+syn keyword wesmlGUITag contained resolution row scroll_label scroll_label_definition 
+syn keyword wesmlGUITag contained scrollbar_panel scrollbar_panel_definition slider slider_definition
+syn keyword wesmlGUITag contained spacer spacer_definition stack stacked_widget stacked_widget_definition
+syn keyword wesmlGUITag contained state_disabled state_disabled_selected state_enabled state_enabled_selected
+syn keyword wesmlGUITag contained state_focussed state_focussed_selected state_pressed text
+syn keyword wesmlGUITag contained text_box text_box_definition toggle_button toggle_button_definition
+syn keyword wesmlGUITag contained toggle_panel toggle_panel_definition tooltip tree_view tree_view_definition
+syn keyword wesmlGUITag contained vertical_scrollbar vertical_scrollbar_definition viewport
+syn keyword wesmlGUITag contained widget window window_definition
+
+
+
 
 """""""""""""
 " Highlight "
@@ -243,3 +268,4 @@ hi def link wesmlFormulaOperator			Function
 hi def link wesmlFormulaString				String
 
 hi def link wesmlStdTag						Statement
+hi def link wesmlGUITag						Statement
