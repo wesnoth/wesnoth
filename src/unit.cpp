@@ -836,6 +836,13 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
+	recall_cost_ = new_type.recall_cost();
+	/* Need to add a check to see if the unit's old cost is equal 
+	to the unit's old unit_type cost first.  If it is change the cost
+	otherwise keep the old cost. */
+	if(old_type.recall_cost() == recall_cost_) {
+		recall_cost_ = new_type.recall_cost();
+	}
 	alignment_ = new_type.alignment();
 	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
@@ -1530,7 +1537,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if (!cfg_canrecruit.blank() && cfg_canrecruit.to_bool() != can_recruit()) {
 		return false;
 	}
-
+	
+	config::attribute_value cfg_recall_cost = cfg["recall_cost"];
+	if (!cfg_recall_cost.blank() && cfg_recall_cost.to_int(-1) != recall_cost_) {
+		return false;
+	}
+	
 	config::attribute_value cfg_level = cfg["level"];
 	if (!cfg_level.blank() && cfg_level.to_int(-1) != level_) {
 		return false;

@@ -1001,8 +1001,17 @@ bool recall_unit(const std::string & id, team & current_team,
 	// (Use recall.id() instead, if needed.)
 
 	// Place the recall.
-	bool mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
+	// We also check to see if a custom unit level recall has been set if not,
+	// we use the team's recall cost otherwise the unit's.
+	bool mutated;
+	if (recall.recall_cost() < 0) {
+		mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
 	                             true, show);
+	}
+	else {
+		mutated = place_recruit(recall, loc, from, recall.recall_cost(),
+	                             true, show);
+	}
 	statistics::recall_unit(recall);
 
 	// To speed things a bit, don't bother with the undo stack during
