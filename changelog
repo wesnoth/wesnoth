@@ -4,13 +4,14 @@ Version 1.11.11+dev:
      game had been reloaded (bug #21750). This was a general bug in the RCA AI
      mechanism and applied to other CAs as well, but it was most visible in the
      Micro AIs.
+   * Patrol Micro AI: fixed bug in the attack part of this MAI
  * Campaigns:
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
  * Language and i18n:
    * Updated translations: German, Scottish Gaelic, Slovak
  * Lua API:
-   * Fix bug #21761: wesnoth.synchronize_choice will now give a warning when 
+   * Fix bug #21761: wesnoth.synchronize_choice will now give a warning when
      the table returned by the user-specified function is not completely valid,
      when wesnoth is running in debug mode (--debug command line flag).
  * Units:
