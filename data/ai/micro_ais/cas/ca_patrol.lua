@@ -63,7 +63,7 @@ function ca_patrol:execution(ai, cfg, self)
         -- If so, don't move, but attack that enemy
         local enemies = wesnoth.get_units {
             id = cfg.attack,
-            { "filter_adjacent", { id = cfg.id } },
+            { "filter_adjacent", { id = patrol.id } },
             { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
         }
         if next(enemies) then break end
@@ -72,7 +72,7 @@ function ca_patrol:execution(ai, cfg, self)
         local unit_on_wp = wesnoth.get_units {
             x = self.data[patrol.id..'_x'],
             y = self.data[patrol.id..'_y'],
-            { "filter_adjacent", { id = cfg.id } }
+            { "filter_adjacent", { id = patrol.id } }
         }[1]
 
         for i,wp in ipairs(waypoints) do
@@ -133,7 +133,7 @@ function ca_patrol:execution(ai, cfg, self)
         enemies = wesnoth.get_units{
             x = waypoints[n_wp][1],
             y = waypoints[n_wp][2],
-            { "filter_adjacent", { id = cfg.id } },
+            { "filter_adjacent", { id = patrol.id } },
             { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
         }
     end
@@ -142,7 +142,7 @@ function ca_patrol:execution(ai, cfg, self)
     if (not next(enemies)) then
         enemies = wesnoth.get_units{
             id = cfg.attack,
-            { "filter_adjacent", { id = cfg.id } },
+            { "filter_adjacent", { id = patrol.id } },
             { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
         }
     end
