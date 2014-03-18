@@ -360,6 +360,8 @@ inline unsigned int count_leading_zeros_impl(N n, std::size_t w) {
  *
  * @returns the quantity of leading `0` bits in `n`, if `N` satisfies the
  * above constraints.
+ *
+ * @see count_leading_ones()
  */
 template<typename N>
 inline unsigned int count_leading_zeros(N n) {
@@ -388,6 +390,30 @@ inline unsigned int count_leading_zeros(N n) {
 	//
 	// To be clear, `n` would only be shrunk in cases noted above as
 	// having an undefined result.
+}
+
+/**
+ * Returns the quantity of leading `1` bits in `n` — i.e., the quantity of
+ * bits in `n`, minus the 1-based bit index of the most significant `0` bit in
+ * `n`, or minus 0 if `n` contains no `0` bits.
+ *
+ * @tparam N The type of `n`. This should be a fundamental integer type that
+ *  (a) is not wider than `unsigned long long int`, and
+ *  (b) is no greater than `INT_MAX` bits in width;
+ * if `N` does not satisfy these constraints, the return value is undefined.
+ *
+ * @param n An integer upon which to operate.
+ *
+ * @returns the quantity of leading `1` bits in `n`, if `N` satisfies the
+ * above constraints.
+ *
+ * @see count_leading_zeros()
+ */
+template<typename N>
+inline unsigned int count_leading_ones(N n) {
+	// Explicitly specify the type for which to instantiate
+	// `count_leading_zeros` in case `~n` is of a different type.
+	return count_leading_zeros<N>(~n);
 }
 
 #ifdef __GNUC__
