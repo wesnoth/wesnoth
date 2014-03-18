@@ -79,7 +79,7 @@ std::string load_game_dialog(display& disp, const config& terrain_config, bool* 
 
 int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
 
-int recall_dialog(display& disp, std::vector<const unit*>& units, int side, const std::string& title_suffix);
+int recall_dialog(display& disp, std::vector<const unit*>& units, int side, const std::string& title_suffix, const int team_recall_cost);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane

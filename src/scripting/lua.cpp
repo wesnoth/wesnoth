@@ -465,6 +465,7 @@ static int impl_unit_type_get(lua_State *L)
 	return_int_attrib("max_experience", ut.experience_needed());
 	return_int_attrib("cost", ut.cost());
 	return_int_attrib("level", ut.level());
+	return_int_attrib("recall_cost", ut.recall_cost());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	return 0;
 }
