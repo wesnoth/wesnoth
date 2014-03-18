@@ -19,6 +19,8 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
+#include <boost/cstdint.hpp>
+
 BOOST_AUTO_TEST_SUITE( util )
 
 BOOST_AUTO_TEST_CASE( test_lexical_cast )
@@ -78,6 +80,19 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
 BOOST_AUTO_TEST_CASE( test_lowercase )
 {
 	BOOST_CHECK_EQUAL ( utils::lowercase("FOO") , "foo" );
+}
+
+BOOST_AUTO_TEST_CASE( test_count_leading_ones )
+{
+	BOOST_CHECK( count_leading_ones(0) == 0 );
+	BOOST_CHECK( count_leading_ones(1) == 0 );
+	BOOST_CHECK( count_leading_ones((boost::uint8_t) 0xFF) == 8 );
+	BOOST_CHECK( count_leading_ones((boost::uint16_t) 0xFFFF) == 16 );
+	BOOST_CHECK( count_leading_ones((boost::uint32_t) 0xFFFFFFFF) == 32 );
+	BOOST_CHECK( count_leading_ones((boost::uint64_t) 0xFFFFFFFFFFFFFFFF)
+		== 64 );
+	BOOST_CHECK( count_leading_ones((boost::uint8_t) 0xF8) == 5 );
+	BOOST_CHECK( count_leading_ones((boost::uint16_t) 54321) == 2 );
 }
 
 /* vim: set ts=4 sw=4: */
