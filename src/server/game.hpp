@@ -193,6 +193,8 @@ public:
 
 	void allow_global(const simple_wml::document &data);
 
+	void require_random(const simple_wml::document &data, const player_map::iterator user);
+
 private:
 	//forbidden operations
 	game(const game&);
