@@ -937,6 +937,7 @@ set(libwesnoth-game_STAT_SRC
 	reports.cpp
 	sdl_utils.cpp
 	show_dialog.cpp
+	simple_rng.cpp
 	sound.cpp
 	soundsource.cpp
 	sound_music_track.cpp
