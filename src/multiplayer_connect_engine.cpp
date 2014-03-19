@@ -24,7 +24,7 @@
 #include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
-
+#include <stdlib.h>
 static lg::log_domain log_config("config");
 #define LOG_CF LOG_STREAM(info, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
@@ -430,7 +430,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		// Fisher-Yates shuffle.
 		for (int i = playable_sides.size(); i > 1; i--)
 		{
-			int j_side = playable_sides[get_random() % i];
+			int j_side = playable_sides[rand() % i];
 			int i_side = playable_sides[i - 1];
 			
 			if (i_side == j_side) continue; //nothing to swap
