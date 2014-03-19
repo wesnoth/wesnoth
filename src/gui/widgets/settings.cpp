@@ -208,6 +208,7 @@ private:
  * Minimap &                      @macro = minimap_description $
  * Multi_page &                   @macro = multi_page_description $
  * Panel &                        @macro = panel_description $
+ * Password_box &                 A text box masking it's content by asterisks. $
  * Repeating_button &             @macro = repeating_button_description $
  * Scroll_label &                 @macro = scroll_label_description $
  * Slider &                       @macro = slider_description $
