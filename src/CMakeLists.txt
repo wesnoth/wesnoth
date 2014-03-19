@@ -694,6 +694,7 @@ set(wesnoth-main_SRC
 	callable_objects.cpp
 	commandline_options.cpp
 	config_cache.cpp
+	config_assign.cpp
 	controller_base.cpp
 	desktop_util.cpp
 	dialogs.cpp
