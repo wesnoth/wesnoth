@@ -215,6 +215,15 @@ void effect::unrender()
 		return;
 	}
 
+	// Shrouded haloes are never rendered unless shroud has been re-placed; in
+	// that case, unrendering causes the hidden terrain (and previous halo
+	// frame, when dealing with animated halos) to glitch through shroud. We
+	// don't need to unrender them because shroud paints over the underlying
+	// area anyway.
+	if (loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_)) {
+		return;
+	}
+
 	surface screen = disp->get_screen_surface();
 
 	SDL_Rect clip_rect = disp->map_outside_area();
