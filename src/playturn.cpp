@@ -354,7 +354,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				}
 				break;
 		}
-		throw network::error("");
+		//Lua code currently catches this exception if this function was called from lua code
+		// in that case network::error doesn't end the game.
+		// but at least he sees this error message.
+		throw network::error("Network Error: A player left and you pressed Escape.");
 	}
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
