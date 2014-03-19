@@ -2663,8 +2663,8 @@ void console_handler::do_droid() {
 		return;
 	} else if ((menu_handler_.teams_[side - 1].is_human() || menu_handler_.teams_[side - 1].is_idle()) && action != " off") {
 		//this is our side, so give it to AI
-		menu_handler_.teams_[side - 1].make_human_ai();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"human_ai");
+		menu_handler_.teams_[side - 1].make_ai();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"ai");
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
@@ -2705,9 +2705,9 @@ void console_handler::do_idle() {
 			throw end_turn_exception(side);
 		}
 	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " off") {
-		//this is our side, so give it to idle
-		menu_handler_.teams_[side - 1].make_human_ai();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"human_ai");
+		//this is our side, so give it to idle, without end turn exception. tell network it is human
+		menu_handler_.teams_[side - 1].make_idle();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
 	} else if (menu_handler_.teams_[side - 1].is_idle() && action != " on") {
 		menu_handler_.teams_[side - 1].make_human();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
