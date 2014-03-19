@@ -65,6 +65,7 @@ function ca_messenger_move:execution(ai, cfg, self)
     if (not messenger) or (not messenger.valid) then return end
 
     -- We also test whether an attack without retaliation or with little damage is possible
+    if (messenger.attacks_left <= 0) then return end
     if (not H.get_child(messenger.__cfg, 'attack')) then return end
 
     local targets = wesnoth.get_units {
