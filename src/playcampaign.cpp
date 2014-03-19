@@ -460,17 +460,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 														//(did we miss anything?)
 				LOG_RG << "\t\t\t\t\t" << side["controller"] << std::endl;
 			}
-		} else if (io_type == IO_SERVER)
-		{
-			LOG_RG << "*** Playcampaign.cpp: We are a IO_SERVER ***" << std::endl;
-			BOOST_FOREACH(config &side, starting_pos.child_range("side"))
-			{
-				LOG_RG << "*** Playcampaign.cpp: Tweaked " << side["controller"] << " -> " << std::endl;
-				if (side["controller"] == "ai") { 	
-					side["controller"] = "human_ai"; //this is to guarantee that in an actual mp game, all ai sides will be "human_ai" 
-				}					 //or "network_ai", and "ai" only occurs during configuration.
-				LOG_RG << "\t\t\t\t\t" << side["controller"] << std::endl;
-			}
 		}
 
 		config::const_child_itors story = scenario->child_range("story");

@@ -538,7 +538,7 @@ bool game_controller::load_game()
 			if (side["controller"] == "network")
 				side["controller"] = "human";
 			if (side["controller"] == "network_ai")
-				side["controller"] = "human_ai";
+				side["controller"] = "ai";
 		}
 		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the Multiplayer -> Load Game dialog instead."));
 	}
