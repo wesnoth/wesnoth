@@ -121,7 +121,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),
-	init_side_done_(false),
+	init_side_done_(true),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
@@ -631,6 +631,9 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
  */
 void play_controller::do_init_side(const unsigned int team_index, bool is_replay) {
 	log_scope("player turn");
+	//In case we might end up calling sync:network during the side turn events,
+	//and we dont want do_init_side to be called when a player drops.
+	init_side_done_ = true;
 	team& current_team = teams_[team_index];
 
 	const std::string turn_num = str_cast(turn());
@@ -705,7 +708,6 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
-	init_side_done_ = true;
 
 	resources::whiteboard->on_init_side();
 }
