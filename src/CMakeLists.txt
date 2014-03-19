@@ -868,6 +868,9 @@ set(wesnoth-main_SRC
 	storyscreen/part.cpp
 	storyscreen/render.cpp
 	strftime.cpp
+	synced_checkup.cpp
+	synced_context.cpp
+	synced_commands.cpp
 	team.cpp
 	terrain_filter.cpp
 	tod_manager.cpp
