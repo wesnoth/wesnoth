@@ -89,6 +89,21 @@ BOOST_AUTO_TEST_CASE( test_bit_width )
 	BOOST_CHECK( bit_width((boost::uint64_t) 0) == 64 );
 }
 
+BOOST_AUTO_TEST_CASE( test_count_ones )
+{
+	BOOST_CHECK( count_ones(0) == 0 );
+	BOOST_CHECK( count_ones(1) == 1 );
+	BOOST_CHECK( count_ones(2) == 1 );
+	BOOST_CHECK( count_ones(3) == 2 );
+	BOOST_CHECK( count_ones(4) == 1 );
+	BOOST_CHECK( count_ones(5) == 2 );
+	BOOST_CHECK( count_ones(6) == 2 );
+	BOOST_CHECK( count_ones(7) == 3 );
+	BOOST_CHECK( count_ones(8) == 1 );
+	BOOST_CHECK( count_ones(9) == 2 );
+	BOOST_CHECK( count_ones(12345) == 6 );
+}
+
 /* vim: set ts=4 sw=4: */
 
 BOOST_AUTO_TEST_SUITE_END()

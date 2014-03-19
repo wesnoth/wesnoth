@@ -237,6 +237,33 @@ inline std::size_t bit_width(const T& x) {
 	return sizeof(x) * std::numeric_limits<unsigned char>::digits;
 }
 
+/**
+ * Returns the quantity of `1` bits in `n` — i.e., `n`’s population count.
+ *
+ * Algorithm adapted from:
+ * <https://graphics.stanford.edu/~seander/bithacks.html#CountBitsSetKernighan>
+ *
+ * This algorithm was chosen for relative simplicity, not for speed.
+ *
+ * @tparam N The type of `n`. This should be a fundamental integer type no
+ * greater than `UINT_MAX` bits in width; if it is not, the return value is
+ * undefined.
+ *
+ * @param n An integer upon which to operate.
+ *
+ * @returns the quantity of `1` bits in `n`, if `N` is a fundamental integer
+ * type.
+ */
+template<typename N>
+inline unsigned int count_ones(N n) {
+	unsigned int r = 0;
+	while (n) {
+		n &= n-1;
+		++r;
+	}
+	return r;
+}
+
 #ifdef __GNUC__
 #define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen
 #define UNLIKELY(a)  __builtin_expect((a),0) // Tells GCC to optimize code so that if is unlikely to happen
