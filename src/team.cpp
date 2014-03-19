@@ -188,8 +188,6 @@ void team::team_info::read(const config &cfg)
 	persistent = true;
 	if (control == "human")
 		controller = HUMAN;
-	else if (control == "human_ai")
-		controller = HUMAN_AI;
 	else if (control == "network")
 		controller = NETWORK;
 	else if (control == "network_ai")
@@ -226,7 +224,6 @@ char const *team::team_info::controller_string() const
 	switch(controller) {
 	case AI: return "ai";
 	case HUMAN: return "human";
-	case HUMAN_AI: return "human_ai";
 	case NETWORK: return "network";
 	case NETWORK_AI: return "network_ai";
 	case IDLE: return "idle";
@@ -494,8 +491,6 @@ void team::change_controller(const std::string& controller)
 	team::CONTROLLER cid;
 	if (controller == "human")
 		cid = team::HUMAN;
-	else if (controller == "human_ai")
-		cid = team::HUMAN_AI;
 	else if (controller == "network")
 		cid = team::NETWORK;
 	else if (controller == "network_ai")
@@ -658,7 +653,7 @@ bool is_observer()
 	}
 
 	BOOST_FOREACH(const team &t, *teams) {
-		if (t.is_human() || t.is_human_ai())
+		if (t.is_local())
 			return false;
 	}
 

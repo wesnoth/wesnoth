@@ -184,20 +184,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			if (controller == "human" && !tm.is_human()) {
 				tm.make_human();
-			} else if (controller == "human_ai" && !tm.is_human_ai()) {
-				tm.make_human_ai();
 			} else if (controller == "network" && !tm.is_network_human()) {
 				tm.make_network();
 			} else if (controller == "network_ai" && !tm.is_network_ai()) {
 				tm.make_network_ai();
 			} else if (controller == "ai" && !tm.is_ai()) {
-				//if we are the controller, this should become human_ai, if not then network_ai
-				//this is to ensure that no side during an mp game is ever "ai", and always either human_ai or network_ai (except during configuration)
-				if (player == preferences::login()) {
-					tm.make_human_ai();
-				} else {
-					tm.make_network_ai();
-				}
+				tm.make_ai();
 			} else if (controller == "idle" && !tm.is_idle()) {
 				tm.make_idle();
 			}
@@ -303,10 +295,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//an AI.
 		switch(action) {
 			case 0:
-				tm.make_human_ai();
+				tm.make_ai();
 				tm.set_current_player("ai" + side_drop);
 				if (have_leader) leader->rename("ai" + side_drop);
-				change_controller(side_drop, "human_ai");
+				change_controller(side_drop, "ai");
 				resources::controller->maybe_do_init_side(side_index);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -349,10 +341,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						tm.make_human_ai();
+						tm.make_ai();
 						tm.set_current_player("ai"+side_drop);
 						if (have_leader) leader->rename("ai" + side_drop);
-						change_controller(side_drop, "human_ai");
+						change_controller(side_drop, "ai");
 					}
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				}
