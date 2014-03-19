@@ -61,6 +61,7 @@
 #include "terrain_translation.hpp"
 #include "side_filter.hpp"
 #include "sound.hpp"
+#include "synced_context.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
 #include "version.hpp"
@@ -1430,6 +1431,15 @@ static int intf_set_village_owner(lua_State *L)
 }
 
 /**
+ * - Ret 1: bool wether is in sycned context.
+ */
+static int intf_is_synced(lua_State *L)
+{
+	lua_pushboolean(L, synced_context::get_syced_state() == synced_context::SYNCED);
+	return 1;
+}
+
+/**
  * Returns the map size.
  * - Ret 1: width.
  * - Ret 2: height.
@@ -2663,7 +2673,7 @@ namespace {
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
@@ -3638,6 +3648,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "have_file",                &intf_have_file                },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
+		{ "is_synced",                &intf_is_synced                },
 		{ "lock_view",                &intf_lock_view                },
 		{ "match_location",           &intf_match_location           },
 		{ "match_side",               &intf_match_side               },
