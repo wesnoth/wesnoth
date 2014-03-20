@@ -2603,7 +2603,6 @@ void server::process_data_game(const network::connection sock,
 		if (g->describe_slots()) {
 			update_game_in_lobby(g);
 		}
-		// FIXME: Why not save it in the history_? (if successful)
 		return;
 	// If all observers should be muted. (toggles)
 	} else if (data.child("muteall")) {

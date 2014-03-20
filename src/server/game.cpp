@@ -185,6 +185,8 @@ void game::start_game(const player_map::const_iterator starter) {
 	// same name as one of the descriptions.
 	// iceiceice 3/17/2014: disabled this behavior as it causes out of sync
 	// the observer issue is now handled by ... client remembers if they are observing.
+	// iceiceice: the server now performs the tweaks to controller types in
+	// in level as appropriate, so that it is ready to send to an observer.
 	const simple_wml::node::child_list& sides = level_.root().children("side");
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
 		nsides_++;
@@ -196,7 +198,11 @@ void game::start_game(const player_map::const_iterator starter) {
 				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
 				send_and_record_server_message(msg.str());
 			}
-			//(*s)->set_attr("controller", "human");
+			if ((**s)["controller"] == "ai") {
+				(*s)->set_attr("controller", "network_ai");
+			} else {	//this catches "reserved" also
+				(*s)->set_attr("controller", "network");
+			}
 		}
 	}
 
@@ -272,6 +278,12 @@ bool game::take_side(const player_map::const_iterator user)
 }
 
 void game::update_side_data() {
+				//added by iceiceice: since level_ will now reflect how an observer 
+	if (started_) return; 	//views the replay start position and not the current position, the sides_, side_controllers_,
+				//players_ info should not be updated from the level_ after the game has started.
+				//controller changes are now stored in the history, so an observer that joins will get up to
+				//date that way.
+
 	DBG_GAME << "update_side_data...\n";
 	DBG_GAME << debug_player_info();
 	// Remember everyone that is in the game.
@@ -464,7 +476,17 @@ void game::change_controller(const size_t side_num,
 
 	// Tell everyone but the new player that this side's controller changed.
 	change.set_attr("controller", (side_controllers_[side_num] == "ai" ? "network_ai" : "network"));
+
 	send_data(response, sock);
+	if (started_) { //this is added instead of the if (started_) {...} below
+		simple_wml::document *record = new simple_wml::document;
+		simple_wml::node& recchg = record->root().add_child("record_change_controller");
+		recchg.set_attr("side", side.c_str());
+		recchg.set_attr("player", player_name.c_str());
+		recchg.set_attr("controller", (side_controllers_[side_num] == "ai" ? "network_ai" : "network"));
+
+		record_data(record);
+	}
 
 	// Tell the new player that he controls this side now.
 	// Just don't send it when the player left the game. (The host gets the
@@ -472,15 +494,6 @@ void game::change_controller(const size_t side_num,
 	if (!player_left) {
 		change.set_attr("controller", (side_controllers_[side_num] == "ai" ? "ai" : "human"));
 		wesnothd::send_to_one(response, sock);
-	}
-
-	// Update the level so observers who join get the new name. (The host handles level changes before game start.)
-	if (started_) {
-		const simple_wml::node::child_list& side_list = level_.root().children("side");
-		assert(side_num < side_list.size());
-		side_list[side_num]->set_attr_dup("current_player", player_name.c_str());
-		// Also update controller type (so savegames of observers have proper controllers)
-		side_list[side_num]->set_attr_dup("controller", side_controllers_[side_num].c_str());
 	}
 }
 
