@@ -140,7 +140,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	std::vector<unit>::iterator it = find_if_matches_id(recalls, temp_unit_->id());
 	assert(it != recalls.end());
 	recalls.erase(it);
-	
+
 	// Temporarily insert unit into unit_map
 	//unit map takes ownership of temp_unit
 	unit_map.insert(temp_unit_.release());
@@ -173,7 +173,6 @@ void recall::draw_hex(map_location const& hex)
 		const double y_offset = 0.7;
 		//position 0,0 in the hex is the upper left corner
 		std::stringstream number_text;
-//		number_text << utils::unicode_minus << resources::teams->at(team_index()).recall_cost();
 		unit &it = *get_unit();
 		int cost = statistics::un_recall_unit_cost(it);
 		if (cost < 0) {
