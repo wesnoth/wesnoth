@@ -112,8 +112,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 	sdl_blit(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
-	text_.resize(text_.size() + wtext.size());
-	std::copy(wtext.begin(),wtext.end(),text_.end()-wtext.size());
+	text_.insert(text_.end(), wtext.begin(), wtext.end());
 
 	set_dirty(true);
 	update_text_cache(false);
@@ -158,7 +157,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 		WRN_DP << "out-of-boundary selection\n";
 		return;
 	}
-	
+
 	cursor_ = cursor_pos;
 	update_text_cache(false);
 	set_dirty(true);

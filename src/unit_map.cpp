@@ -328,8 +328,7 @@ std::vector<unit_map::unit_iterator> unit_map::find_leaders(int side) {
 }
 std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const{
 	const std::vector<unit_map::unit_iterator> &leaders = const_cast<unit_map*>(this)->find_leaders(side);
-	std::vector<unit_map::const_unit_iterator> const_leaders;
-	std::copy(leaders.begin(), leaders.end(), std::back_inserter(const_leaders));
+	std::vector<unit_map::const_unit_iterator> const_leaders (leaders.begin(), leaders.end());
 	return const_leaders;
 }
 

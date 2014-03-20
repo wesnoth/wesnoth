@@ -1564,7 +1564,7 @@ void get_villages_phase::dispatch_complex(
 			}
 		}
 		// End of loop no optimal found, assign the best
-		std::copy(best_result.begin(), best_result.end(), std::back_inserter(moves));
+		moves.insert(moves.end(), best_result.begin(), best_result.end());
 
 		// Clean up the reachmap for dispatched units.
 		for(std::vector<std::pair<map_location, map_location> >::const_iterator
@@ -1594,7 +1594,7 @@ void get_villages_phase::dispatch_complex(
 				}
 			}
 			if(result.size() == max_result) {
-				std::copy(result.begin(), result.end(), std::back_inserter(moves));
+				moves.insert(moves.end(), result.begin(), result.end());
 				reachmap.clear();
 				return;
 			}
@@ -1604,7 +1604,7 @@ void get_villages_phase::dispatch_complex(
 			}
 		}
 		// End of loop no optimal found, assign the best
-		std::copy(best_result.begin(), best_result.end(), std::back_inserter(moves));
+		moves.insert(moves.end(), best_result.begin(), best_result.end());
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.
@@ -1637,7 +1637,7 @@ void get_villages_phase::dispatch_complex(
 				}
 			}
 			if(result.size() == max_result) {
-				std::copy(result.begin(), result.end(), std::back_inserter(moves));
+				moves.insert(moves.end(), result.begin(), result.end());
 				reachmap.clear();
 				return;
 			}
@@ -1647,7 +1647,7 @@ void get_villages_phase::dispatch_complex(
 			}
 		}
 		// End of loop no optimal found, assigne the best
-		std::copy(best_result.begin(), best_result.end(), std::back_inserter(moves));
+		moves.insert(moves.end(), best_result.begin(), best_result.end());
 
 		// clean up the reachmap we need to test whether the leader is still there
 		// and if so remove him manually to get him dispatched.

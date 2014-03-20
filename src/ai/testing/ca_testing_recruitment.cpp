@@ -1014,9 +1014,8 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
 
 void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double quality_factor)
 {
-   std::vector<fake_team> tmp_fake_teams;
+   std::vector<fake_team> tmp_fake_teams (resources::teams->begin(), resources::teams->end());
    std::vector<fake_team> fake_teams;
-   std::copy(resources::teams->begin(), resources::teams->end(), std::back_inserter(tmp_fake_teams));
    fake_team *ai_t = 0;
    for(int i = get_side() - 1
 		   ; static_cast<unsigned int>(i) < tmp_fake_teams.size()
