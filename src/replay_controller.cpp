@@ -433,6 +433,8 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		player_number_++;
 
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
+			//during the orginal game player_number_ would also be teams_.size(),
+			player_number_ = teams_.size();
 			finish_turn();
 			tod_manager_.next_turn();
 			it_is_a_new_turn_ = true;
