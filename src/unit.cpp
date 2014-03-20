@@ -225,7 +225,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	experience_(0),
 	max_experience_(0),
 	level_(0),
-	recall_cost_(cfg["recall_cost"].to_int(-1)),
+	recall_cost_(-1),
 	canrecruit_(cfg["canrecruit"].to_bool()),
 	recruit_list_(),
 	alignment_(),
@@ -356,12 +356,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	if (const config::attribute_value *v = cfg.get("description")) {
 		cfg_["description"] = *v;
 	}
-	if (const config::attribute_value *v = cfg.get("recall_cost")) {
-		recall_cost_ = *v;
-	}
-	else {
-		recall_cost_ = type_->recall_cost();
-	}
 	if (const config::attribute_value *v = cfg.get("cost")) {
 		unit_value_ = *v;
 	}
@@ -470,16 +464,12 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
 
-	/* We need to check to make sure that the cfg is not blank and  if it
-	is and the unit_type gives a default of 0 then treat as if the unit's
-	type had a value of -1 so it will use the team recall cost. */
-	if(cfg["recall_cost"] > 0) {
-		recall_cost_ = cfg["recall_cost"].to_int(-1);
+	/* We need to check to make sure that the cfg is not blank and if it
+	isn't pull that value otherwise it goes with the default of -1.  */
+	if(!cfg["recall_cost"].blank()) {
+		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
 	}
 
-	if(cfg["recall_cost"] > 0) {
-		recall_cost_ = cfg["recall_cost"];
-	}
 	const std::string& align = cfg["alignment"];
 	if(align == "lawful") {
 		alignment_ = unit_type::LAWFUL;
@@ -489,7 +479,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 		alignment_ = unit_type::CHAOTIC;
 	} else if(align == "liminal") {
 		alignment_ = unit_type::LIMINAL;
-	} else if(align.empty()==false){
+	} else if(align.empty()==false) {
 		alignment_ = unit_type::NEUTRAL;
 	}
 
@@ -583,7 +573,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
-    unit_priority_formula_(),
+	unit_priority_formula_(),
 	formula_vars_(),
 	movement_(0),
 	max_movement_(0),
