@@ -634,7 +634,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border);
 		}
 	} else {
-        locs.insert(match_set.begin(), match_set.end());
+		locs.insert(match_set.begin(), match_set.end());
 	}
 }
 

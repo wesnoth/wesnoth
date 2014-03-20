@@ -371,7 +371,7 @@ namespace game_config {
 	{
 		if(active_map_.empty())
 		{
-            active_map_.insert(defines_map.begin(), defines_map.end());
+			active_map_.insert(defines_map.begin(), defines_map.end());
 			if ( get_state() == NEW)
 				state_ = ACTIVE;
 		 }

@@ -516,7 +516,7 @@ std::string create::select_campaign_difficulty()
 	if(!difficulties.empty()) {
 		int difficulty = 0;
 		if(difficulty_options.size() != difficulties.size()) {
-            difficulty_options = difficulties;
+			difficulty_options = difficulties;
 		}
 
 		gui2::tcampaign_difficulty dlg(difficulty_options);

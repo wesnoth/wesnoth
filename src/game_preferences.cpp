@@ -105,10 +105,10 @@ manager::manager() :
 	}
 
 	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
-    encountered_units_set.insert(v.begin(), v.end());
+	encountered_units_set.insert(v.begin(), v.end());
 
 	const t_translation::t_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
-    encountered_terrains_set.insert(terrain.begin(), terrain.end());
+	encountered_terrains_set.insert(terrain.begin(), terrain.end());
 
 	if (const config &history = preferences::get_child("history"))
 	{
@@ -1047,7 +1047,7 @@ void encounter_recruitable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
 		help_team_it != teams.end(); ++help_team_it) {
 		help_team_it->log_recruitable();
-        encountered_units_set.insert(help_team_it->recruits().begin(), help_team_it->recruits().end());
+		encountered_units_set.insert(help_team_it->recruits().begin(), help_team_it->recruits().end());
 	}
 }
 

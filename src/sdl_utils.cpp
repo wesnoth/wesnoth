@@ -257,7 +257,7 @@ surface stretch_surface_horizontal(
 	surface dst(create_neutral_surface(w, surf->h));
 
 	surface src(make_neutral_surface(surf));
-	// Now both surfacedvances fires when the advancement path is already chosen, which in partics are always in the "neutral" pixel format
+	// Now both surfaces are always in the "neutral" pixel format
 
 	if(src == NULL || dst == NULL) {
 		std::cerr << "Could not create surface to scale onto\n";

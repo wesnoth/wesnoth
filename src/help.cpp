@@ -999,10 +999,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			  ,std::back_inserter(sec.topics),title_less());
 		}
 		else {
-            sec.topics.insert(sec.topics.end(),
-                topics.begin(), topics.end());
-            sec.topics.insert(sec.topics.end(),
-                generated_topics.begin(), generated_topics.end());
+			sec.topics.insert(sec.topics.end(),
+				topics.begin(), topics.end());
+			sec.topics.insert(sec.topics.end(),
+				generated_topics.begin(), generated_topics.end());
 		}
 	}
 }
