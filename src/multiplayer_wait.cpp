@@ -36,6 +36,9 @@ static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
 #define LOG_NW LOG_STREAM(info, log_network)
 
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
+
 namespace {
 
 const SDL_Rect leader_pane_position = {-260,-370,260,370};
@@ -448,6 +451,19 @@ void wait::process_network_data(const config& data, const network::connection so
 		/** @todo We should catch config::error and then leave the game. */
 		level_.apply_diff(c);
 		generate_menu();
+	} else if(const config &change = data.child("change_controller")) {
+		LOG_NW << "received change controller" << std::endl;
+		LOG_RG << "multiplayer_wait: [change_controller]" << std::endl;
+		LOG_RG << data.debug() << std::endl;
+		//const int side = lexical_cast<int>(change["side"]);
+
+		if (config & sidetochange = level_.find_child("side", "side", change["side"])) {
+			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
+			sidetochange.merge_with(change);
+			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
+		} else {
+			LOG_RG << "change_controller didn't find any side!" << std::endl;
+		}
 	} else if(data.child("side") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 		LOG_NW << "got some sides. Current number of sides = "
