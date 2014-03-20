@@ -550,7 +550,7 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 			option << font::NORMAL_TEXT << "<255,0,0>";
 		}
 		else if(cost == team_recall_cost) {
-			option << font::NORMAL_TEXT << "<255,255,255>";
+			option << font::NORMAL_TEXT;
 		}
 		else if(cost < team_recall_cost) {
 			option << font::NORMAL_TEXT << "<0,255,0>";
