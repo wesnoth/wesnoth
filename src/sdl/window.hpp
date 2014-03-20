@@ -37,6 +37,8 @@ struct SDL_Renderer;
 namespace sdl
 {
 
+class ttexture;
+
 /**
  * The wrapper class for the @ref SDL_Window class.
  *
@@ -119,6 +121,14 @@ public:
 	 */
 	void set_icon(const surface& icon);
 
+	/**
+	 * Creates a texture for the renderer of this object.
+	 *
+	 * @param access              Used as access for @ref SDL_CreateTexture.
+	 * @param w                   Used as w for @ref SDL_CreateTexture.
+	 * @param h                   Used as x for @ref SDL_CreateTexture.
+	 */
+	ttexture create_texture(const int access, const int w, const int h);
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
@@ -140,6 +150,9 @@ private:
 
 	/** The @ref SDL_Window we own. */
 	SDL_Window* window_;
+
+	/** The preferred pixel format for the renderer. */
+	Uint32 pixel_format_;
 };
 
 } // namespace sdl
