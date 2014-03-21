@@ -626,8 +626,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		radius = max_loop_;
 	}
 	if(radius > 0) {
-		std::vector<map_location> xy_vector;
-		std::copy(match_set.begin(),match_set.end(),std::inserter(xy_vector,xy_vector.end()));
+		std::vector<map_location> xy_vector (match_set.begin(), match_set.end());
 		if(cfg_.has_child("filter_radius")) {
 			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
 			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border, r_filter);
@@ -635,7 +634,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border);
 		}
 	} else {
-		std::copy(match_set.begin(),match_set.end(),std::inserter(locs,locs.end()));
+		locs.insert(match_set.begin(), match_set.end());
 	}
 }
 

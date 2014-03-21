@@ -188,20 +188,16 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 
 		if (n.t >= nodes[index(dst)].g) break;
 
-		std::vector<map_location> locs;
+		std::vector<map_location> locs(6);
 
-		int i;
 		if (teleports && !teleports->empty()) {
 
 			std::set<map_location> allowed_teleports;
 			teleports->get_adjacents(allowed_teleports, n.curr);
+			locs.insert(locs.end(), allowed_teleports.begin(), allowed_teleports.end());
+		}
 
-			i = allowed_teleports.size() +6;
-			locs = std::vector<map_location>(i);
-
-			std::copy(allowed_teleports.begin(), allowed_teleports.end(), locs.begin() + 6);
-		} else
-		{ locs = std::vector<map_location>(6); i = 6;}
+		int i = locs.size();
 
 		get_adjacent_tiles(n.curr, &locs[0]);
 

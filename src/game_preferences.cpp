@@ -104,14 +104,11 @@ manager::manager() :
 		preferences::erase("mp_countdown_action_bonus");
 	}
 
-	const std::vector<std::string> v = utils::split(preferences::get("encountered_units"));
-	std::copy(v.begin(), v.end(),
-			std::inserter(encountered_units_set, encountered_units_set.begin()));
+	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
+	encountered_units_set.insert(v.begin(), v.end());
 
-	const t_translation::t_list terrain =
-			t_translation::read_list(preferences::get("encountered_terrain_list"));
-	std::copy(terrain.begin(), terrain.end(),
-			std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
+	const t_translation::t_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
+	encountered_terrains_set.insert(terrain.begin(), terrain.end());
 
 	if (const config &history = preferences::get_child("history"))
 	{
@@ -135,12 +132,9 @@ manager::manager() :
 
 manager::~manager()
 {
-	std::vector<std::string> v;
-	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
+	std::vector<std::string> v (encountered_units_set.begin(), encountered_units_set.end());
 	preferences::set("encountered_units", utils::join(v));
-	t_translation::t_list terrain;
-	std::copy(encountered_terrains_set.begin(), encountered_terrains_set.end(),
-			  std::back_inserter(terrain));
+	t_translation::t_list terrain (encountered_terrains_set.begin(), encountered_terrains_set.end());
 	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
 
 /* Structure of the history
@@ -1053,8 +1047,7 @@ void encounter_recruitable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
 		help_team_it != teams.end(); ++help_team_it) {
 		help_team_it->log_recruitable();
-		std::copy(help_team_it->recruits().begin(), help_team_it->recruits().end(),
-				  std::inserter(encountered_units_set, encountered_units_set.begin()));
+		encountered_units_set.insert(help_team_it->recruits().begin(), help_team_it->recruits().end());
 	}
 }
 

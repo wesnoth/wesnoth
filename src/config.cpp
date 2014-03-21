@@ -437,10 +437,8 @@ config& config::operator=(const config& cfg)
 	if(this == &cfg) {
 		return *this;
 	}
-
-	clear();
-	append_children(cfg);
-	values.insert(cfg.values.begin(), cfg.values.end());
+	config tmp(cfg);
+	swap(tmp);
 	return *this;
 }
 

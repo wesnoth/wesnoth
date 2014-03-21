@@ -446,7 +446,7 @@ void create::synchronize_selections()
 			level_type_at_index = engine_.find_level_type_by_id(
 				engine_.dependency_manager().get_scenario());
 			engine_.set_current_level_type(level_type_at_index);
-			
+
 			init_level_changed(index);
 			levels_menu_.set_items(engine_.levels_menu_item_names());
 			levels_menu_.move_selection(index);
@@ -513,12 +513,10 @@ std::string create::select_campaign_difficulty()
 	const std::vector<std::string> difficulties =
 		utils::split(engine_.current_level().data()["difficulties"]);
 
-	if(difficulties.empty() == false) {
+	if(!difficulties.empty()) {
 		int difficulty = 0;
 		if(difficulty_options.size() != difficulties.size()) {
-			difficulty_options.resize(difficulties.size());
-			std::copy(difficulties.begin(), difficulties.end(),
-				difficulty_options.begin());
+			difficulty_options = difficulties;
 		}
 
 		gui2::tcampaign_difficulty dlg(difficulty_options);
