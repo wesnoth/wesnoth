@@ -39,11 +39,6 @@ namespace font {
 struct floating_label_context;
 }
 
-namespace rand_rng {
-class rng;
-struct set_random_generator;
-}
-
 namespace preferences {
 	struct display_manager;
 } // namespace preferences
@@ -222,9 +217,6 @@ class editor_controller : public controller_base,
 
 		editor::menu_type active_menu_;
 
-		boost::scoped_ptr<rand_rng::rng> rng_;
-
-		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
 
 		/** The display object used and owned by the editor. */
 		boost::scoped_ptr<editor_display> gui_;

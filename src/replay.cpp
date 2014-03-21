@@ -39,7 +39,6 @@
 #include "synced_context.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "statistics.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -189,8 +188,7 @@ replay::replay() :
 	pos_(0),
 	current_(NULL),
 	skip_(false),
-	message_locations(),
-	expected_advancements_()
+	message_locations()
 {}
 
 replay::replay(const config& cfg) :
@@ -198,8 +196,7 @@ replay::replay(const config& cfg) :
 	pos_(0),
 	current_(NULL),
 	skip_(false),
-	message_locations(),
-	expected_advancements_()
+	message_locations()
 {}
 
 void replay::append(const config& cfg)
@@ -275,12 +272,6 @@ void replay::add_synced_command(const std::string& name, const config& command)
 }
 
 
-
-void replay::add_seed(const char* child_name, int seed)
-{
-	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
-	random()->child(child_name)["seed"] = seed;
-}
 
 void replay::user_input(const std::string &name, const config &input, int from_side)
 {
@@ -637,16 +628,6 @@ config* replay::get_next_action()
 
 void replay::pre_replay()
 {
-	if (rng::random() == NULL && ncommands() > 0) {
-		if (at_end())
-		{
-			add_command(true);
-		}
-		else
-		{
-			set_random(&command(pos_));
-		}
-	}
 }
 
 bool replay::at_end() const
@@ -758,8 +739,6 @@ bool do_replay(int side_num)
 	if (!get_replay_source().is_skipping()){
 		resources::screen->recalculate_minimap();
 	}
-
-	const rand_rng::set_random_generator generator_setter(&get_replay_source());
 
 	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
 	return do_replay_handle(side_num, "");

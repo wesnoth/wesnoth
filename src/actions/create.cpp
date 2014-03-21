@@ -24,6 +24,7 @@
 #include "vision.hpp"
 
 #include "../config.hpp"
+#include "../config_assign.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
@@ -770,32 +771,24 @@ namespace { // Helpers for place_recruit()
 	/**
 	 * Performs a checksum check on a newly recruited/recalled unit.
 	 */
-	void recruit_checksums(const unit &new_unit, bool wml_triggered)
+	void recruit_checksums(const unit &new_unit, bool /*wml_triggered*/)
 	{
-		const config* ran_results = get_random_results();
-		if ( ran_results != NULL ) {
-			// When recalling from WML there should be no random results, if we
-			// use random we might get the replay out of sync.
-			assert(!wml_triggered);
-			const std::string checksum = get_checksum(new_unit);
-			const std::string rc = (*ran_results)["checksum"];
-			if ( rc != checksum ) {
-				std::stringstream error_msg;
-				error_msg << "SYNC: In recruit " << new_unit.type_id() <<
-					": has checksum " << checksum <<
-					" while datasource has checksum " << rc << "\n";
-				ERR_NG << error_msg.str();
+		const std::string checksum = get_checksum(new_unit);
+		config original_checksum_config;
 
-				config cfg_unit1;
-				new_unit.write(cfg_unit1);
-				DBG_NG << cfg_unit1;
-				replay::process_error(error_msg.str());
-			}
-
-		} else if ( wml_triggered == false ) {
-			config cfg;
-			cfg["checksum"] = get_checksum(new_unit);
-			set_random_results(cfg);
+		bool checksum_equals = checkup_instance->local_checkup(config_of("checksum", checksum),original_checksum_config);
+		if(!checksum_equals)
+		{
+			const std::string old_checksum = original_checksum_config["checksum"];
+			std::stringstream error_msg;
+			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
+				": has checksum " << checksum <<
+				" while datasource has checksum " << old_checksum << "\n";
+			ERR_NG << error_msg.str();
+			config cfg_unit1;
+			new_unit.write(cfg_unit1);
+			DBG_NG << cfg_unit1;
+			replay::process_error(error_msg.str());
 		}
 	}
 

@@ -16,7 +16,6 @@
 //
 //#include "log.hpp"
 //#include "config.hpp"
-//#include "rng.hpp"
 //#include "unit.hpp"
 //#include "tests/utils/game_config_manager.hpp"
 //#include "unit_map.hpp"
@@ -36,8 +35,6 @@
 
 //	config game_config(test_utils::get_test_config());
 //
-//	rand_rng::rng random_number_generator;
-//	rand_rng::set_random_generator rng_setter(&random_number_generator);
 //
 //	config orc_config;
 //	orc_config["id"]="Orcish Grunt";

@@ -22,8 +22,6 @@
 #include "race.hpp"
 
 #include "log.hpp"
-#include "random.hpp"
-
 #include "random_new.hpp"
 
 

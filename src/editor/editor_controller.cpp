@@ -42,7 +42,6 @@
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
 #include "../preferences_display.hpp"
-#include "../rng.hpp"
 #include "../sound.hpp"
 #include "../leader_scroll_dialog.hpp"
 
@@ -62,8 +61,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base()
 	, active_menu_(editor::MAP)
-	, rng_(NULL)
-	, rng_setter_(NULL)
 	, gui_(new editor_display(NULL, video, NULL, NULL, get_theme(game_config, "editor"), config()))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
@@ -83,8 +80,6 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 	context_manager_->switch_context(0);
 	init_tods(game_config);
 	init_music(game_config);
-	rng_.reset(new rand_rng::rng());
-	rng_setter_.reset(new rand_rng::set_random_generator(rng_.get()));
 	context_manager_->get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
 	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());

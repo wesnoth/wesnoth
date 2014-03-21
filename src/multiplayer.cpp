@@ -741,7 +741,6 @@ void start_local_game(game_display& disp, const config& game_config,
 	game_state& state)
 {
 	DBG_MP << "starting local game" << std::endl;
-	const rand_rng::set_random_generator generator_setter(&recorder);
 	gamechat.clear_history();
 	gamelist.clear();
 	playmp_controller::set_replay_last_turn(0);
@@ -757,7 +756,6 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not
 	// needed in commandline mode, but they are required by the functions called.
-	const rand_rng::set_random_generator generator_setter(&recorder);
 	gamechat.clear_history();
 	gamelist.clear();
 	playmp_controller::set_replay_last_turn(0);
@@ -882,7 +880,6 @@ void start_client(game_display& disp, const config& game_config,
 	game_state& state, const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
-	const rand_rng::set_random_generator generator_setter(&recorder);
 	const network::manager net_manager(1,1);
 
 	gamechat.clear_history();

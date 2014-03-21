@@ -39,7 +39,6 @@
 #include "replay.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "synced_context.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
@@ -79,7 +78,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 
 mouse_handler::~mouse_handler()
 {
-	rand_rng::clear_new_seed_callback();
 	singleton_ = NULL;
 }
 
@@ -1127,7 +1125,6 @@ void mouse_handler::perform_attack(
 	// this function gets it's arguments by value because the calling function
 	// object might get deleted in the clear callback call below, invalidating
 	// const ref arguments
-	rand_rng::clear_new_seed_callback();
 	LOG_NG << "Performing attack with seed " << seed << "\n";
 	recorder.add_seed("attack", seed);
 	//MP_COUNTDOWN grant time bonus for attacking
