@@ -963,7 +963,8 @@ static config get_user_choice_internal(const std::string &name, const mp_sync::u
 {
 	//this should never change during the execution of this function.
 	int current_side = resources::controller->current_side();
-	
+	bool is_mp_game = network::nconnections() != 0;
+
 	if(current_side != side)
 	{
 		//if side != current_side we send the data over the network, that means undoing is impossible
@@ -1004,6 +1005,7 @@ static config get_user_choice_internal(const std::string &name, const mp_sync::u
 			//we are in a mp game, and the data has not been recieved yet.
 			DBG_REPLAY << "MP synchronization: waiting for remote choice\n";
 			
+			assert(is_mp_game);
 			synced_context::pull_remote_user_input();
 
 			SDL_Delay(10);
