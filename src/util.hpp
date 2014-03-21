@@ -22,6 +22,8 @@
 
 #include "global.hpp"
 #include <cmath>
+#include <cstddef>
+#include <limits>
 #include <math.h> // cmath may not provide round()
 #include <vector>
 #include <sstream>
@@ -201,6 +203,39 @@ bool in_ranges(const Cmp c, const std::vector<std::pair<Cmp, Cmp> >&ranges) {
 
 inline bool chars_equal_insensitive(char a, char b) { return tolower(a) == tolower(b); }
 inline bool chars_less_insensitive(char a, char b) { return tolower(a) < tolower(b); }
+
+/**
+ * Returns the size, in bits, of an instance of type `T`, providing a
+ * convenient and self-documenting name for the underlying expression:
+ *
+ *     sizeof(T) * std::numeric_limits<unsigned char>::digits
+ *
+ * @tparam T The return value is the size, in bits, of an instance of this
+ * type.
+ *
+ * @returns the size, in bits, of an instance of type `T`.
+ */
+template<typename T>
+inline std::size_t bit_width() {
+	return sizeof(T) * std::numeric_limits<unsigned char>::digits;
+}
+
+/**
+ * Returns the size, in bits, of `x`, providing a convenient and
+ * self-documenting name for the underlying expression:
+ *
+ *     sizeof(x) * std::numeric_limits<unsigned char>::digits
+ *
+ * @tparam T The type of `x`.
+ *
+ * @param x The return value is the size, in bits, of this object.
+ *
+ * @returns the size, in bits, of an instance of type `T`.
+ */
+template<typename T>
+inline std::size_t bit_width(T x) {
+	return sizeof(x) * std::numeric_limits<unsigned char>::digits;
+}
 
 #ifdef __GNUC__
 #define LIKELY(a)    __builtin_expect((a),1) // Tells GCC to optimize code so that if is likely to happen

@@ -18,6 +18,8 @@
 
 #include "util.hpp"
 
+#include <boost/cstdint.hpp>
+
 BOOST_AUTO_TEST_SUITE( util )
 
 BOOST_AUTO_TEST_CASE( test_lexical_cast )
@@ -72,6 +74,19 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
 
 	double result6 = lexical_cast_default<double, const std::string&>(std::string(), 0.5);
 	BOOST_CHECK( result6 >= 0.499 && result6 <= 0.511 );
+}
+
+BOOST_AUTO_TEST_CASE( test_bit_width )
+{
+	BOOST_CHECK( bit_width<boost::uint8_t>() == 8 );
+	BOOST_CHECK( bit_width<boost::uint16_t>() == 16 );
+	BOOST_CHECK( bit_width<boost::uint32_t>() == 32 );
+	BOOST_CHECK( bit_width<boost::uint64_t>() == 64 );
+
+	BOOST_CHECK( bit_width((boost::uint8_t) 0) == 8 );
+	BOOST_CHECK( bit_width((boost::uint16_t) 0) == 16 );
+	BOOST_CHECK( bit_width((boost::uint32_t) 0) == 32 );
+	BOOST_CHECK( bit_width((boost::uint64_t) 0) == 64 );
 }
 
 /* vim: set ts=4 sw=4: */
