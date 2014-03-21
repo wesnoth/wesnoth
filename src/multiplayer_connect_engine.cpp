@@ -1018,10 +1018,7 @@ config side_engine::new_config() const
 
 	res["name"] = res["user_description"];
 	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
-	res["chose_random"] = false;
-	if(cfg_.has_attribute("chose_random")) {
-		res["chose_random"] = cfg_["chose_random"];
-	}
+	res["chose_random"] = chose_random_;
 
 	if (!parent_.params_.saved_game) {
 		// Find a config where a default leader is and set a new type
@@ -1111,14 +1108,11 @@ bool side_engine::ready_for_start() const
 		return true;
 	}
 
-	if (available_for_user()) return false;
+	if (available_for_user()) return false; //if controller_ == CNTR_NETWORK and player_id_.empty(), this line will return false.
 
-	if (controller_ == CNTR_NETWORK && !player_id_.empty()) {
-		if (player_id_ == preferences::login()) {
-			return true;//the host is ready
-		}
-		if (!waiting_to_choose_faction_ || !allow_changes_) {
-			return true;  // Side is assigned to a network player, and they got a chance to choose faction if allowed
+	if (controller_ == CNTR_NETWORK) {
+		if (player_id_ == preferences::login() || !waiting_to_choose_faction_ || !allow_changes_) {
+			return true;//the host is ready. a network player, who got a chance to choose faction if allowed, is also ready
 		}
 	}
 
