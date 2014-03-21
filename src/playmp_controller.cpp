@@ -241,13 +241,6 @@ void playmp_controller::play_human_turn(){
 					// because remote players only notice network disconnection
 					// Current solution end remaining turns automatically
 					current_team().set_countdown_time(10);
-				} else {
-					const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
-					int secs = gamestate_.mp_settings().mp_countdown_turn_bonus;
-					secs += action_increment  * current_team().action_bonus_count();
-					current_team().set_action_bonus_count(0);
-					secs = (secs > maxtime) ? maxtime : secs;
-					current_team().set_countdown_time(1000 * secs);
 				}
 				turn_data_->send_data();
 
