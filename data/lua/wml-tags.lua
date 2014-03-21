@@ -242,6 +242,7 @@ function wml_actions.unit_worth(cfg)
 	local ut = wesnoth.unit_types[u.type]
 	local hp = u.hitpoints / u.max_hitpoints
 	local xp = u.experience / u.max_experience
+	local recall_cost = unit.recall_cost
 	local best_adv = ut.cost
 	for w in string.gmatch(ut.__cfg.advances_to, "[^%s,][^,]*") do
 		local uta = wesnoth.unit_types[w]
@@ -251,6 +252,7 @@ function wml_actions.unit_worth(cfg)
 	wesnoth.set_variable("next_cost", best_adv)
 	wesnoth.set_variable("health", math.floor(hp * 100))
 	wesnoth.set_variable("experience", math.floor(xp * 100))
+	wesnoth.set_variable("recall_cost", ut.recall_cost)
 	wesnoth.set_variable("unit_worth", math.floor(math.max(ut.cost * hp, best_adv * xp)))
 end
 
@@ -1008,6 +1010,7 @@ function wml_actions.transform_unit(cfg)
 		else
 			local hitpoints = unit.hitpoints
 			local experience = unit.experience
+			local recall_cost = unit.recall_cost
 			local status = helper.get_child( unit.__cfg, "status" )
 
 			unit.experience = unit.max_experience
@@ -1017,6 +1020,7 @@ function wml_actions.transform_unit(cfg)
 
 			unit.hitpoints = hitpoints
 			unit.experience = experience
+			recall_cost = unit.recall_cost
 
 			for key, value in pairs(status) do unit.status[key] = value end
 			if unit.status.unpoisonable then unit.status.poisoned = nil end

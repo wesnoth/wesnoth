@@ -499,6 +499,13 @@ void un_recruit_unit(const unit& u)
 	s.recruit_cost -= u.cost();
 }
 
+int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhaps in undo.cpp
+{					// but I'm too lazy to do it at the moment
+	stats& s = get_stats(u.side_id());
+	s.recalls[u.type_id()]--;
+	return u.recall_cost();
+}
+ 
 
 void advance_unit(const unit& u)
 {

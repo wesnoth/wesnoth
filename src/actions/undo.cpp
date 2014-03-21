@@ -626,7 +626,13 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 
 	const unit &un = *un_it;
 	statistics::un_recall_unit(un);
-	current_team.spend_gold(-current_team.recall_cost());
+	int cost = statistics::un_recall_unit_cost(un);
+	if (cost < 0) {
+		current_team.spend_gold(-current_team.recall_cost());
+	}
+	else {
+		current_team.spend_gold(-cost);
+	}
 
 	current_team.recall_list().push_back(un);
 	// invalidate before erasing allow us

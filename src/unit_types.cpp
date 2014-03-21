@@ -416,6 +416,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	hp_bar_scaling_(0.0),
 	xp_bar_scaling_(0.0),
 	level_(0),
+	recall_cost_(),
 	movement_(0),
 	vision_(-1),
 	jamming_(0),
@@ -567,6 +568,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	description_ = cfg_["description"];
 	hitpoints_ = cfg_["hitpoints"].to_int(1);
 	level_ = cfg_["level"];
+	recall_cost_ = cfg_["recall_cost"].to_int(-1);
 	movement_ = cfg_["movement"].to_int(1);
 	vision_ = cfg_["vision"].to_int(-1);
 	jamming_ = cfg_["jamming"].to_int(0);
@@ -1069,7 +1071,7 @@ const config & unit_type::build_unit_cfg() const
 	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
-		"name", "num_traits", "variation_id", "variation_name" };
+		"name", "num_traits", "variation_id", "variation_name", "recall_cost" };
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}
