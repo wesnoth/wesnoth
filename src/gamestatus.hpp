@@ -22,7 +22,6 @@
 #include "game_events/wmi_container.hpp"
 #include "map_location.hpp"
 #include "mp_game_settings.hpp"
-#include "random.hpp"
 #include "simple_rng.hpp"
 
 #include <boost/shared_ptr.hpp>
@@ -212,13 +211,13 @@ private:
 	rand_rng::simple_rng rng_;
 	config variables_;
 	mutable config temporaries_; // lengths of arrays, etc.
-	const rand_rng::set_random_generator generator_setter_; /**< Make sure that rng is initialized first */
 	friend struct variable_info;
 	PHASE phase_;
 	bool can_end_turn_;
 	std::string difficulty_; /**< The difficulty level the game is being played on. */
 	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
+	bool is_determisic_mode_;
 };
 
 //meta information of the game

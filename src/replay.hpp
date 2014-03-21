@@ -22,7 +22,6 @@
 
 #include "config.hpp"
 #include "map_location.hpp"
-#include "rng.hpp"
 
 #include <deque>
 
@@ -47,7 +46,7 @@ private:
 	time_t time_;
 };
 
-class replay: public rand_rng::rng
+class replay
 {
 public:
 	replay();
@@ -69,7 +68,6 @@ public:
 	*/
 	config& get_last_real_command();
 
-	void add_seed(const char* child_name, int seed);
 	void user_input(const std::string &, const config &, int from_side);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
@@ -157,11 +155,8 @@ private:
 
 	std::vector<int> message_locations;
 
-	/**
-	 * A queue of units (locations) that are supposed to advance but the
-	 * relevant advance (choice) message has not yet been received
-	 */
-	std::deque<map_location> expected_advancements_;
+	/*a leftover from rng*/
+	void set_random(config*) {}
 };
 
 replay& get_replay_source();
