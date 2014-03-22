@@ -253,7 +253,9 @@ void replay_controller::reset_replay_ui()
 }
 
 
-void replay_controller::reset_replay(){
+void replay_controller::reset_replay()
+{
+	DBG_REPLAY << "replay_controller::reset_replay\n";
 
 	gui_->clear_chat_messages();
 	is_playing_ = false;
@@ -289,7 +291,7 @@ void replay_controller::reset_replay(){
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
 	fire_preload();
-	if(true){
+	if(true){ //block for set_scontext_synced
 		config* pstart = recorder.get_next_action();
 		assert(pstart->has_child("start"));
 		/*
@@ -297,18 +299,10 @@ void replay_controller::reset_replay(){
 			because set_scontext_synced sets the checkup to the last added command
 		*/
 		set_scontext_synced sync;
-
-
-			//block for RAII
-			// if we use set_scontext_synced we need to have fire_prestart and fire_start in the same set_scontext_synced block because 
-			// we can only have one set_scontext_synced per replay command (here it is the "start" replay command).
-			// and there is no replay command between them.
-			// EDIT: if the server dont allow require_random form other sides this comment is outdated.
-		DBG_REPLAY << "set_random_determinstic sync in replay_controller::reset_replay()\n";
+		
 		fire_prestart(true);
 		init_gui();
 		fire_start(true);
-		DBG_REPLAY << "set_scontext_synced sync in replay_controller::reset_replay() end\n";
 	}
 	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
 	it_is_a_new_turn_ = true;

@@ -35,42 +35,28 @@ public:
 		
 		Sets the context to 'synced', initialises random context, and calls the given function.
 		The plan is that in replay and in real game the same function is called.
-		
+		however, if you cannot call this function you can also use set_scontext_synced directly (use it like it's used in this method).
 
-		when redoing an action it does not matter whether we run them i synced context because it's save to assume that they do not have any mean effect (otherwise they couldn’t be undone)
-		
-		TODO: call clear undo stack in the right places (get_user_choice / ask_server) DONE
-		
-
-
-		TODO: implement the "Deterministic SP Mode".
-		TODO: implement access to get_syced_state() in lua. DONE.
-		TODO: repair checkups in attacks. DONE
-		TODO: handle layer leaving  during get_user_choice correctly DONE
-		
-		
-		TODO: move_unit currently ignores when the unit moves further than it can, 
-			it would be good to give an oos error especially to notice cheating in mp.
-		
-		TODO: movement commands are currently treated specially, 
+		movement commands are currently treated specially, 
 			thats because actions::move_unit returns a value and some function use that value.
 			maybe i should add a way here to return a value.
 		
-		TODO: move_unit tried to preserve the replay at all costs, the disadvantage is 
-			1)we notice OOS later, 
-			2)we don't notice another player cheating in MP, 
-			3)i forgot
-			4)we make the code more complicated
-			my proposed solution would be to execute the command normally 
-			and then just set the unit to the replay destination after we gave an OOS error. 
+		ai's attacks are also treated special because the ai wants to pass advancement_aspects.
 
-		TODO: undos are crrently recorded AFTER the action takes place, 
-			that means you cannot disallow an action during it's execution by calling undo_stack->clear();
+
+		redoing does normaly not take place in a synced context, because we saved the dependent=true replaycommands in the replaystack data. 
+			also there are no events of similar fired when redoing an action (in most cases).
+		
+		TODO: implement the optional "Deterministic Mode" for MP to lower network traffic.
+		
+		TODO: move_unit currently ignores when the unit moves further than it can, 
+			it would be good to give an oos in this case.
+		
+		TODO: undos are currently recorded AFTER the action takes place, 
+			that means you cannot disallow undoing an action during it's execution by calling undo_stack->clear();
 			it would make things easier if that was possible.
 		
-		TODO: the ai can currently not decide how units advance.
-		TODO: don't change comments in this header everytime i do something because that causes rebuild of other files ...
-
+		
 		@param save_in_replay whether data should be saved in replay.
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
 		@param store_in_replay only true if called by do_replay_handle
