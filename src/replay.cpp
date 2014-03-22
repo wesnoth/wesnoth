@@ -407,7 +407,9 @@ const std::vector<chat_msg>& replay::build_chat_log()
 	for (loc_it = message_locations.begin(); loc_it != message_locations.end(); ++loc_it)
 	{
 		last_location = *loc_it;
+		
 		const config &speak = command(last_location).child("speak");
+		assert(speak);
 		add_chat_log_entry(speak, chat_log_appender);
 
 	}
@@ -440,10 +442,14 @@ struct async_cmd
 
 void replay::redo(const config& cfg)
 {
+	//we set pos_ = ncommands(), if we recorded something else in the meantime it doesn't make sense to redo an action.
+	assert(pos_ == ncommands());
 	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
 	{
 		/*config &cfg = */cfg_.add_child("command", cmd);
 	}
+	pos_ = ncommands();
+	
 }
 
 
@@ -469,7 +475,8 @@ config& replay::get_last_real_command()
 void replay::undo_cut(config& dst)
 {
 	assert(dst.empty());
-
+	//pos_ < ncommands() could mean that we try to undo commands that haven't been executed yet.
+	assert(pos_ == ncommands());
 	std::vector<async_cmd> async_cmds;
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
@@ -570,8 +577,8 @@ void replay::undo_cut(config& dst)
 			}
 		}
 	}
-
 	remove_command(cmd);
+	pos_ = ncommands();
 	current_ = NULL;
 	set_random(NULL);
 }
@@ -584,7 +591,9 @@ void replay::undo()
 
 config &replay::command(int n)
 {
-	return cfg_.child("command", n);
+	config & retv = cfg_.child("command", n);
+	assert(retv);
+	return retv;
 }
 
 int replay::ncommands() const
@@ -594,6 +603,8 @@ int replay::ncommands() const
 
 config* replay::add_command(bool update_random_context)
 {
+	//pos_ != ncommands() means that there is a command on the replay which would be skipped.
+	assert(pos_ == ncommands());
 	pos_ = ncommands()+1;
 	current_ = &cfg_.add_child("command");
 	if(update_random_context)
@@ -780,7 +791,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		config::all_children_itors ch_itors = cfg->all_children_range();
 		//if there is an empty command tag, create by pre_replay() or a start tag
-		if (ch_itors.first == ch_itors.second || cfg->child("start"))
+		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
 		{
 			//do nothing
 		}
