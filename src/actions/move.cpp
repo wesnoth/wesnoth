@@ -948,7 +948,9 @@ namespace { // Private helpers for move_unit()
 				// See if we can leave *step_from.
 				// Already accounted for: ambusher
 				if ( event_mutated_  &&  can_break )
+				{
 					break;
+				}
 				if ( sighted_ && can_break && is_reasonable_stop(*step_from) )
 				{
 					sighted_stop_ = true;
@@ -970,8 +972,10 @@ namespace { // Private helpers for move_unit()
 					break;
 				}
 				if ( is_replay_  &&  replay_dest_ == *step_from )
+				{
 					// Preserve the replay.
 					break;
+				}
 
 				// We can leave *step_from. Make the move to *real_end_.
 				bool new_animation = do_move(step_from, real_end_, animator);
@@ -1176,19 +1180,16 @@ static size_t move_unit_internal(undo_list* undo_stack,
 	// Attempt moving.
 	mover.try_actual_movement(show_move);
 	
-	/*
-	we could add some checkup here like this:
 	config co;
-	config cn = config_of("stopped_early", mover.stopped_early())("final_hex_x", mover.final_hex().x)("final_hex_y", mover.final_hex().y);
+	config cn = config_of("stopped_early", mover.stopped_early())("final_hex_x", mover.final_hex().x + 1)("final_hex_y", mover.final_hex().y + 1);
 	bool matches_replay = checkup_instance->local_checkup(cn,co);
 	if(!matches_replay)
 	{
-		//SHOW OOS ERROR
-		
+		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +   
+			")didn't match the original destination(x="+ co["final_hex_x"].str() +  " y=" + co["final_hex_y"].str());
 
-		mover.reset_final_hex(co["x"], co["y"]);
+		//TODO: move the unit by force to the desired destination with something like mover.reset_final_hex(co["x"], co["y"]);
 	}
-	*/
 	
 	// Bookkeeping, etc.
 	// also fires the moveto event
