@@ -33,5 +33,13 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 	fruit.push_back("lemons");
 
 	BOOST_CHECK( utils::join(fruit) == "apples,oranges,lemons" );
+	
+	utf8_string unicode = "ünicod€ check";
+	BOOST_CHECK( u8size(unicode) == 13 );
+	
+	int euro = u8index(unicode,6);
+	BOOST_CHECK( str.substr(euro,u8index(unicode,7)-euro) == "€" );
+	
+	BOOST_CHECK( u8truncate(unicode,3) == "üni");
 }
 

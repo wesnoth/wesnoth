@@ -938,7 +938,7 @@ std::string load_game_dialog(display& disp, const config& game_config, bool* sel
 	std::vector<savegame::save_info>::const_iterator i;
 	for(i = games.begin(); i != games.end(); ++i) {
 		std::string name = i->name();
-		utils::truncate_as_wstring(name, std::min<size_t>(name.size(), 40));
+		utils::u8truncate(name, 40);	// truncate only acts if the name is longer
 
 		std::ostringstream str;
 		str << name << COLUMN_SEPARATOR << util::format_time_summary(i->modified());
