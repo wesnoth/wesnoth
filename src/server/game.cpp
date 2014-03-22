@@ -855,7 +855,6 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 			if((**command)["from_side"] == "server")
 			{
 				//this could mean someone wants to cheat.
-				//but i dont know 
 				(**command).set_attr("side_invalid", "true");
 			}
 			else
@@ -863,7 +862,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 				int from_side = (**command)["from_side"].to_int() - 1;
 				if(from_side < 0 || static_cast<unsigned int>(from_side) >= sides_.size() ||sides_[from_side] != user->first)
 				{
-					//this COULD mean someone wants to cheat.
+					//this could mean someone wants to cheat.
 					(**command).set_attr("side_invalid", "true");
 				}
 			}
