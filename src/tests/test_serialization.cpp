@@ -34,12 +34,12 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 
 	BOOST_CHECK( utils::join(fruit) == "apples,oranges,lemons" );
 	
-	utf8_string unicode = "ünicod€ check";
-	BOOST_CHECK( u8size(unicode) == 13 );
+	utf8_string unicode = "\xC3\xBCnicod\xE2\x82\xAC check"; // "ünicod€ check" in UTF-8
+	BOOST_CHECK( utils::u8size(unicode) == 13 );
 	
-	int euro = u8index(unicode,6);
-	BOOST_CHECK( str.substr(euro,u8index(unicode,7)-euro) == "€" );
+	int euro = utils::u8index(unicode,6);
+	BOOST_CHECK( unicode.substr(euro,utils::u8index(unicode,7)-euro) == "\xE2\x82\xAC" ); // € sign
 	
-	BOOST_CHECK( u8truncate(unicode,3) == "üni");
+	BOOST_CHECK( utils::u8truncate(unicode,3) == "\xC3\xBCni"); // "üni"
 }
 
