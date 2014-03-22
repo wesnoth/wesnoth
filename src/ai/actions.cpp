@@ -277,12 +277,15 @@ void attack_result::do_execute()
 	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
 	//to get rid of an unused member varuiable warning, FIXME: find a way to 'ask' the ai wich advancement should be chosen from synced_commands.cpp .
-	assert(&this->advancements_ != NULL);
-	synced_context::run_in_synced_context("attack", 
-		replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
+	if(true) //RAII block for set_scontext_synced
+	{
+		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
+		recorder.add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
 			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
 			resources::tod_manager->get_time_of_day()));
-
+		set_scontext_synced sync("attack");
+		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
+	}
 	
 
 	set_gamestate_changed();

@@ -40,8 +40,6 @@ static lg::log_domain log_replay("replay");
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
 
-
-
 /**
  * @param[in]  tag       The replay tag for this action.
  * @param[in]  function  The callback for this action.
@@ -141,89 +139,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 	return true;
 }
 
-namespace
-{
-	
-
-	class unit_advancement_choice : public mp_sync::user_choice
-	{
-	public:
-		unit_advancement_choice(const map_location& loc, int total_opt, int side_num)
-			: loc_ (loc), nb_options_(total_opt), side_num_(side_num)
-		{	
-		}
-		
-		virtual ~unit_advancement_choice() 
-		{
-		}
-
-		virtual config query_user() const
-		{
-			int res = 0;
-			team t = (*resources::teams)[side_num_ - 1];
-			//note, that the advancements for networked sides are also determined on the current playing side.
-			if(t.is_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
-			{
-				//TODO: if ai, call something like ai::choose_uni_advancement
-				//	To make the ai_advancement_aspect work again.
-				res = rand() % nb_options_;
-			}
-			else if (t.is_local())
-			{
-				res = rand() % nb_options_;
-				assert(t.is_human());
-				res = dialogs::advance_unit_dialog(loc_); 
-			}
-			else
-			{
-				assert(t.is_network_human());
-				res = 0;
-			}
-			LOG_REPLAY << "unit at position " << loc_ << "choose advancement number " << res << "\n";
-			config retv;
-			retv["value"] = res;
-			return retv;
-
-		}
-		virtual config random_choice() const 
-		{
-			config retv;
-			retv["value"] = 0;
-			return retv;
-		}
-	private:
-		const map_location loc_;
-		int nb_options_;
-		int side_num_;
-	};
-
-	void advance_unit_internal(const map_location& loc)
-	{
-		//i just don't want infinite loops...
-		for(int advacment_number = 0; advacment_number < 20; advacment_number++)
-		{
-			unit_map::iterator u = resources::units->find(loc);
-			//this implies u.valid()
-			if(!unit_helper::will_certainly_advance(u)) {
-				return;
-			}
-			config selected = mp_sync::get_user_choice("choose",
-					unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side())); 
-			dialogs::animate_unit_advancement(loc, selected["value"], true, true); //or pass show with the last argument?
-
-			//i want to remove the next few lines...
-			u = resources::units->find(loc);
-			// level 10 unit gives 80 XP and the highest mainline is level 5
-			if (u.valid() && u->experience() > 80) 
-			{
-				ERR_REPLAY << "Unit has too many (" << u->experience() << ") XP left; cascade leveling disabled.\n";
-				return;
-			}
-		}
-		ERR_REPLAY << "unit at " << loc << "tried to adcance more than 21 times\n";
-	}
-}
-
 SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler)
 {
 
@@ -290,37 +205,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	
 	
 	resources::undo_stack->clear();
-	try
-	{
-		DBG_REPLAY << "Attacking NOW!: attacker: " << src << " defender: "<< dst <<"\n";
-		attack_unit(src, dst, weapon_num, def_weapon_num, show);
-	}
-	catch(end_level_exception&)
-	{
-
-		unit_map::const_iterator atku = resources::units->find(src);
-		// i think this check is not needed but i'm not sure.
-		if (atku != resources::units->end()) {
-			advance_unit_internal(src);
-		}
-
-		unit_map::const_iterator defu = resources::units->find(dst);
-		if (defu != resources::units->end()) {
-			advance_unit_internal(dst);
-		}
-		throw;
-	}
-	unit_map::const_iterator atku = resources::units->find(src);
-	if (atku != resources::units->end()) {
-		advance_unit_internal(src);
-	}
-
-	unit_map::const_iterator defu = resources::units->find(dst);
-	if (defu != resources::units->end()) {
-		advance_unit_internal(dst);
-	}
-	
-	
+	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
 	return true;
 }
 

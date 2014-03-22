@@ -21,8 +21,10 @@
 
 #include "vision.hpp"
 
+#include "../ai/lua/unit_advancements_aspect.hpp"
 #include "../attack_prediction.hpp"
 #include "../config_assign.hpp"
+#include "../dialogs.hpp"
 #include "../game_config.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
@@ -43,6 +45,7 @@
 #include "../unit.hpp"
 #include "../unit_abilities.hpp"
 #include "../unit_display.hpp"
+#include "../unit_helper.hpp"
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
 #include "../wml_exception.hpp"
@@ -1355,6 +1358,138 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 {
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
 	dummy.perform();
+}
+
+
+
+namespace
+{
+	class unit_advancement_choice : public mp_sync::user_choice
+	{
+	public:
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect& ai_advancement)
+			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement)
+		{	
+		}
+		
+		virtual ~unit_advancement_choice() 
+		{
+		}
+
+		virtual config query_user() const
+		{
+			int res = 0;
+			team t = (*resources::teams)[side_num_ - 1];
+			//note, that the advancements for networked sides are also determined on the current playing side.
+			if(t.is_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
+			{
+				res = rand() % nb_options_;
+
+				//if ai_advancement_ is the default advancement the following code will 
+				//have no effect because get_advancements returns an empty list.
+				unit_map::iterator u = resources::units->find(loc_);
+				const std::vector<std::string>& options = u->advances_to();
+				const std::vector<std::string>& allowed = ai_advancement_.get_advancements(u);
+
+				for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
+					if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
+						res = a - options.begin();
+						break;
+					}
+				}
+
+			}
+			else if (t.is_local())
+			{
+				assert(t.is_human());
+				res = rand() % nb_options_;
+				res = dialogs::advance_unit_dialog(loc_); 
+			}
+			else
+			{
+				assert(t.is_network_human());
+				res = 0;
+			}
+			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
+			config retv;
+			retv["value"] = res;
+			return retv;
+
+		}
+		virtual config random_choice() const 
+		{
+			config retv;
+			retv["value"] = 0;
+			return retv;
+		}
+	private:
+		const map_location loc_;
+		int nb_options_;
+		int side_num_;
+		const ai::unit_advancements_aspect& ai_advancement_;
+	};
+	/*
+		advances the unit and stores data in the replay (or reads data from replay).
+	*/
+	void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement)
+	{
+		//i just don't want infinite loops...
+		// the 20 is picked rather randomly.
+		for(int advacment_number = 0; advacment_number < 20; advacment_number++)
+		{
+			unit_map::iterator u = resources::units->find(loc);
+			//this implies u.valid()
+			if(!unit_helper::will_certainly_advance(u)) {
+				return;
+			}
+			config selected = mp_sync::get_user_choice("choose",
+					unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement)); 
+			//calls actions::advance_unit.
+			dialogs::animate_unit_advancement(loc, selected["value"], true, true);
+			u = resources::units->find(loc);
+			// level 10 unit gives 80 XP and the highest mainline is level 5
+			if (u.valid() && u->experience() > 80) 
+			{
+				ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.\n";
+			}
+		}
+		ERR_NG << "unit at " << loc << "tried to adcance more than 20 times\n";
+	}
+}
+
+
+
+void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
+                 int attack_with, int defend_with, bool update_display, 
+				 const ai::unit_advancements_aspect& ai_advancement)
+{	try
+	{
+		attack_unit(attacker, defender, attack_with, defend_with, update_display);
+	}
+	catch(end_level_exception&)
+	{
+
+		unit_map::const_iterator atku = resources::units->find(attacker);
+		
+		if (atku != resources::units->end()) {
+			advance_unit_at(attacker, ai_advancement);
+		}
+
+		unit_map::const_iterator defu = resources::units->find(defender);
+		if (defu != resources::units->end()) {
+			advance_unit_at(defender, ai_advancement);
+		}
+		throw;
+	}
+	unit_map::const_iterator atku = resources::units->find(attacker);
+	if (atku != resources::units->end()) {
+		advance_unit_at(attacker, ai_advancement);
+	}
+
+	unit_map::const_iterator defu = resources::units->find(defender);
+	if (defu != resources::units->end()) {
+		advance_unit_at(defender, ai_advancement);
+	}
 }
 
 
