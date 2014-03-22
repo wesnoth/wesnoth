@@ -40,6 +40,10 @@ Version 1.11.11+dev:
    * Fix bug #21797: "Mandatory WML child missing" when leaving a reloaded game.
    * Fixed halos glitching through locations that become shrouded after the
      halo is rendered for the first time.
+   * Workaround for bug #18921: disable animations for debug create/kill unit
+     menu actions. An actual fix of the bug requires refactoring of the
+     animation code which will happen in Wesnoth 1.13.
+   * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.12
 
 Version 1.11.11:
  * Add-ons server:
