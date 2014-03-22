@@ -66,7 +66,7 @@ inline bool contains(const tpane::titem& item,
 					 const std::string& tag,
 					 const ttext_box& text_box)
 {
-	return at(item.tags, tag).find(utils::lowercase(text_box.text()))
+	return at(item.tags, tag).find(utf8::lowercase(text_box.text()))
 		   != std::string::npos;
 }
 

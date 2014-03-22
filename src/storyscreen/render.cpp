@@ -600,7 +600,7 @@ part_ui::RESULT part_ui::show()
 	try {
 		render_story_box();
 	}
-	catch(utils::invalid_utf8_exception const&) {
+	catch(utf8::invalid_utf8_exception const&) {
 		ERR_NG << "invalid UTF-8 sequence in story text, skipping part...\n";
 	}
 

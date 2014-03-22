@@ -32,7 +32,7 @@ typedef std::vector<wchar_t> wide_string;
 /** If we append a 0 to that one, we can pass it to SDL_ttf as a const Uint16*. */
 typedef std::vector<Uint16> ucs2_string;
 typedef std::vector<Uint32> ucs4_string;
-typedef std::string utf8_string;
+namespace utf8 { typedef std::string string; }
 
 class t_string;
 
@@ -315,72 +315,9 @@ bool isvalid_wildcard(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
 
-/**
- * Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
- * back and forth.
- */
-class invalid_utf8_exception : public std::exception {
-};
-
-class utf8_iterator
-{
-public:
-	typedef std::input_iterator_tag iterator_category;
-	typedef wchar_t value_type;
-	typedef ptrdiff_t difference_type;
-	typedef wchar_t* pointer;
-	typedef wchar_t& reference;
-
-	utf8_iterator(const std::string& str);
-	utf8_iterator(std::string::const_iterator const &begin, std::string::const_iterator const &end);
-
-	static utf8_iterator begin(const std::string& str);
-	static utf8_iterator end(const std::string& str);
-
-	bool operator==(const utf8_iterator& a) const;
-	bool operator!=(const utf8_iterator& a) const { return ! (*this == a); }
-	utf8_iterator& operator++();
-	wchar_t operator*() const;
-	bool next_is_end();
-	const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
-private:
-	void update();
-
-	wchar_t current_char;
-	std::string::const_iterator string_end;
-	std::pair<std::string::const_iterator, std::string::const_iterator> current_substr;
-};
-
 std::string wstring_to_string(const wide_string &);
 wide_string string_to_wstring(const std::string &);
 std::string wchar_to_string(const wchar_t);
-
-/** Returns a lowercased version of the string. */
-utf8_string lowercase(const utf8_string&);
-
-/**
- * index of the ...th character in an UTF-8 encoded string
- * if there are less than index characters, return str.length()
- */
-unsigned int u8index(const utf8_string& str, const unsigned int index);
-
-/** length in characters of an UTF-8 encoded string */
-size_t u8size(const utf8_string& str);
-
-/** insert at position pos into an UTF-8 encoded string */
-utf8_string& u8insert(utf8_string& str, const size_t pos, const utf8_string& insert);
-
-/**
- * erase len characters at position start from an UTF-8 encoded string
- * this implementation doesn't check for valid UTF-8, don't use for user input
- */
-utf8_string& u8erase(utf8_string& str, const size_t start, const size_t len = std::string::npos);
-
-/**
-* truncate an UTF-8 encoded string after size characters
-* this implementation doesn't check for valid UTF-8, don't use for user input
-*/
-utf8_string& u8truncate(utf8_string& str, const size_t size);
 
 /**
  * Truncates a string.
@@ -402,6 +339,73 @@ void truncate_as_wstring(std::string& str, const size_t size);
  */
 void ellipsis_truncate(std::string& str, const size_t size);
 
-}
+} // end namespace utils
+
+namespace utf8 {
+
+	/**
+	* Functions for converting Unicode wide-char strings to UTF-8 encoded strings,
+	* back and forth.
+	*/
+	class invalid_utf8_exception : public std::exception {};
+
+	
+	class iterator
+	{
+	public:
+		typedef std::input_iterator_tag iterator_category;
+		typedef wchar_t value_type;
+		typedef ptrdiff_t difference_type;
+		typedef wchar_t* pointer;
+		typedef wchar_t& reference;
+
+		iterator(const std::string& str);
+		iterator(std::string::const_iterator const &begin, std::string::const_iterator const &end);
+
+		static iterator begin(const std::string& str);
+		static iterator end(const std::string& str);
+
+		bool operator==(const utf8::iterator& a) const;
+		bool operator!=(const utf8::iterator& a) const { return ! (*this == a); }
+		iterator& operator++();
+		wchar_t operator*() const;
+		bool next_is_end();
+		const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
+	private:
+		void update();
+
+		wchar_t current_char;
+		std::string::const_iterator string_end;
+		std::pair<std::string::const_iterator, std::string::const_iterator> current_substr;
+	};
+
+	/** Returns a lowercased version of the string. */
+	utf8::string lowercase(const utf8::string&);
+
+	/**
+	 * codepoint index corresponing to the ...th character in an UTF-8 encoded string
+	 * if there are less than index characters, return str.length()
+	 */
+	size_t index(const utf8::string& str, const size_t index);
+
+	/** length in characters of an UTF-8 encoded string */
+	size_t size(const utf8::string& str);
+
+	/** insert at position pos into an UTF-8 encoded string */
+	utf8::string& insert(utf8::string& str, const size_t pos, const utf8::string& insert);
+
+	/**
+	 * erase len characters at position start from an UTF-8 encoded string
+	 * this implementation doesn't check for valid UTF-8, don't use for user input
+	 */
+	utf8::string& erase(utf8::string& str, const size_t start, const size_t len = std::string::npos);
+
+	/**
+	* truncate an UTF-8 encoded string after size characters
+	* this implementation doesn't check for valid UTF-8, don't use for user input
+	*/
+	utf8::string& truncate(utf8::string& str, const size_t size);
+
+} // end namespace utf8
 
 #endif

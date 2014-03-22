@@ -145,15 +145,15 @@ void ttext_::copy_selection(const bool mouse)
 	if(selection_length_ == 0) return;
 	
 	unsigned end,start = selection_start_;
-	const utf8_string txt = text_.text();
+	const utf8::string txt = text_.text();
 	
 	if(selection_length_  > 0) {
-		end   = utils::u8index(txt,start+selection_length_);
-		start = utils::u8index(txt,start);
+		end   = utf8::index(txt,start+selection_length_);
+		start = utf8::index(txt,start);
 	} else {
 		// inverse selection: selection_start_ is in fact the end
-		end   = utils::u8index(txt,start);
-		start = utils::u8index(txt,start+selection_length_);
+		end   = utf8::index(txt,start);
+		start = utf8::index(txt,start+selection_length_);
 	}
 	copy_to_clipboard(txt.substr(start,end-start), mouse);
 }

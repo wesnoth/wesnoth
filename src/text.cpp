@@ -185,16 +185,16 @@ unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 		return 0;
 	}
 
-	// do we really need that assert? u8insert will just append in this case, which seems fine
+	// do we really need that assert? utf8::insert will just append in this case, which seems fine
 	assert(offset <= length_);
 
-	unsigned len = utils::u8size(text);
+	unsigned len = utf8::size(text);
 	if (length_ + len > maximum_length_) {
 		len = maximum_length_ - length_;
 	}
-	const utf8_string insert = text.substr(0, utils::u8index(text, len));
-	utf8_string tmp = text_;
-	set_text(utils::u8insert(tmp, offset, insert), false);
+	const utf8::string insert = text.substr(0, utf8::index(text, len));
+	utf8::string tmp = text_;
+	set_text(utf8::insert(tmp, offset, insert), false);
 	// report back how many characters were actually inserted (e.g. to move the cursor selection)
 	return len;
 }
@@ -206,7 +206,7 @@ bool ttext::insert_unicode(const unsigned offset, const wchar_t unicode)
 
 unsigned ttext::insert_unicode(const unsigned offset, const wide_string& unicode)
 {
-	const utf8_string insert = utils::wstring_to_string(unicode);
+	const utf8::string insert = utils::wstring_to_string(unicode);
 	return insert_text(offset, insert);
 }
 
@@ -447,8 +447,8 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 	if(maximum_length != maximum_length_) {
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
-			utf8_string tmp = text_;
-			set_text(utils::u8truncate(tmp, maximum_length_), false);
+			utf8::string tmp = text_;
+			set_text(utf8::truncate(tmp, maximum_length_), false);
 		}
 	}
 

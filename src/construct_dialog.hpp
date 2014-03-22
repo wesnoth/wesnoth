@@ -223,7 +223,7 @@ public:
 
 	//Constructor & destructor
 	//dialog - throws button::error() if standard buttons fail to initialize
-	//         throws utils::invalid_utf8_exception() if message is invalid
+	//         throws utf8::invalid_utf8_exception() if message is invalid
 	dialog(display &disp,
 	       const std::string& title="",
 	       const std::string& message="",

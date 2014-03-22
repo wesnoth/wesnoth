@@ -140,7 +140,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	try {
 		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
 		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
-	} catch(utils::invalid_utf8_exception&) {
+	} catch(utf8::invalid_utf8_exception&) {
 		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
 		throw;
 	}

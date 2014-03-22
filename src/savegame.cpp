@@ -566,7 +566,7 @@ void loadgame::load_game(
 		    gui2::show_error_message(gui_.video(),
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
 				    error_log);
-        } catch (utils::invalid_utf8_exception&) {
+        } catch (utf8::invalid_utf8_exception&) {
 		    gui2::show_error_message(gui_.video(),
 				    _("Warning: The file you have tried to load is corrupt. Loading anyway.\n") +
                     std::string("(UTF-8 ERROR)"));

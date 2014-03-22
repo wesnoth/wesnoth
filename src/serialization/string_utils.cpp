@@ -840,6 +840,111 @@ std::vector< std::pair< int, int > > parse_ranges(std::string const &str)
 	return to_return;
 }
 
+
+std::string wstring_to_string(const wide_string &src)
+{
+	std::string ret;
+
+	try {
+		for(wide_string::const_iterator i = src.begin(); i != src.end(); ++i) {
+			unsigned int count;
+			wchar_t ch = *i;
+
+			// Determine the bytes required
+			count = 1;
+			if(ch >= 0x80)
+				count++;
+
+			Uint32 bitmask = 0x800;
+			for(unsigned int j = 0; j < 5; ++j) {
+				if(static_cast<Uint32>(ch) >= bitmask) {
+					count++;
+				}
+
+				bitmask <<= 5;
+			}
+
+			if(count > 6) {
+				throw utf8::invalid_utf8_exception();
+			}
+
+			if(count == 1) {
+				ret.push_back(static_cast<char>(ch));
+			} else {
+				for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
+					unsigned char c = (ch >> (6 * j)) & 0x3f;
+					c |= 0x80;
+					if(j == static_cast<int>(count) - 1) {
+						c |= 0xff << (8 - count);
+					}
+					ret.push_back(c);
+				}
+			}
+
+		}
+
+		return ret;
+	}
+	catch (utf8::invalid_utf8_exception&) {
+		ERR_GENERAL << "Invalid wide character string\n";
+		return ret;
+	}
+}
+
+std::string wchar_to_string(const wchar_t c)
+{
+	wide_string s;
+	s.push_back(c);
+	return wstring_to_string(s);
+}
+
+wide_string string_to_wstring(const std::string &src)
+{
+	wide_string res;
+
+	try {
+		utf8::iterator i1(src);
+		const utf8::iterator i2(utf8::iterator::end(src));
+
+		// Equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
+		while(i1 != i2) {
+			res.push_back(*i1);
+			++i1;
+		}
+	}
+	catch (utf8::invalid_utf8_exception&) {
+		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
+		return res;
+	}
+
+	return res;
+}
+
+
+void truncate_as_wstring(std::string& str, const size_t size)
+{
+	wide_string wide = utils::string_to_wstring(str);
+	if(wide.size() > size) {
+		wide.resize(size);
+		str = utils::wstring_to_string(wide);
+	}
+}
+
+void ellipsis_truncate(std::string& str, const size_t size)
+{
+	const size_t prev_size = str.length();
+
+	utf8::truncate(str, size);
+
+	if(str.length() != prev_size) {
+		str += ellipsis;
+	}
+}
+
+} // end namespace utils
+
+namespace utf8 {
+
 static int byte_size_from_utf8_first(const unsigned char ch)
 {
 	if (!(ch & 0x80)) {
@@ -858,7 +963,7 @@ static int byte_size_from_utf8_first(const unsigned char ch)
 	}
 }
 
-utf8_iterator::utf8_iterator(const std::string& str) :
+iterator::iterator(const std::string& str) :
 	current_char(0),
 	string_end(str.end()),
 	current_substr(std::make_pair(str.begin(), str.begin()))
@@ -866,7 +971,7 @@ utf8_iterator::utf8_iterator(const std::string& str) :
 	update();
 }
 
-utf8_iterator::utf8_iterator(std::string::const_iterator const &beg,
+iterator::iterator(std::string::const_iterator const &beg,
 		std::string::const_iterator const &end) :
 	current_char(0),
 	string_end(end),
@@ -875,46 +980,46 @@ utf8_iterator::utf8_iterator(std::string::const_iterator const &beg,
 	update();
 }
 
-utf8_iterator utf8_iterator::begin(std::string const &str)
+iterator iterator::begin(std::string const &str)
 {
-	return utf8_iterator(str.begin(), str.end());
+	return iterator(str.begin(), str.end());
 }
 
-utf8_iterator utf8_iterator::end(const std::string& str)
+iterator iterator::end(const std::string& str)
 {
-	return utf8_iterator(str.end(), str.end());
+	return iterator(str.end(), str.end());
 }
 
-bool utf8_iterator::operator==(const utf8_iterator& a) const
+bool iterator::operator==(const utf8::iterator& a) const
 {
 	return current_substr.first == a.current_substr.first;
 }
 
-utf8_iterator& utf8_iterator::operator++()
+iterator& iterator::operator++()
 {
 	current_substr.first = current_substr.second;
 	update();
 	return *this;
 }
 
-wchar_t utf8_iterator::operator*() const
+wchar_t iterator::operator*() const
 {
 	return current_char;
 }
 
-bool utf8_iterator::next_is_end()
+bool iterator::next_is_end()
 {
 	if(current_substr.second == string_end)
 		return true;
 	return false;
 }
 
-const std::pair<std::string::const_iterator, std::string::const_iterator>& utf8_iterator::substr() const
+const std::pair<std::string::const_iterator, std::string::const_iterator>& iterator::substr() const
 {
 	return current_substr;
 }
 
-void utf8_iterator::update()
+void iterator::update()
 {
 	// Do not try to update the current unicode char at end-of-string.
 	if(current_substr.first == string_end)
@@ -945,92 +1050,13 @@ void utf8_iterator::update()
 }
 
 
-std::string wstring_to_string(const wide_string &src)
-{
-	std::string ret;
-
-	try {
-		for(wide_string::const_iterator i = src.begin(); i != src.end(); ++i) {
-			unsigned int count;
-			wchar_t ch = *i;
-
-			// Determine the bytes required
-			count = 1;
-			if(ch >= 0x80)
-				count++;
-
-			Uint32 bitmask = 0x800;
-			for(unsigned int j = 0; j < 5; ++j) {
-				if(static_cast<Uint32>(ch) >= bitmask) {
-					count++;
-				}
-
-				bitmask <<= 5;
-			}
-
-			if(count > 6) {
-				throw invalid_utf8_exception();
-			}
-
-			if(count == 1) {
-				ret.push_back(static_cast<char>(ch));
-			} else {
-				for(int j = static_cast<int>(count) - 1; j >= 0; --j) {
-					unsigned char c = (ch >> (6 * j)) & 0x3f;
-					c |= 0x80;
-					if(j == static_cast<int>(count) - 1) {
-						c |= 0xff << (8 - count);
-					}
-					ret.push_back(c);
-				}
-			}
-
-		}
-
-		return ret;
-	}
-	catch(invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid wide character string\n";
-		return ret;
-	}
-}
-
-std::string wchar_to_string(const wchar_t c)
-{
-	wide_string s;
-	s.push_back(c);
-	return wstring_to_string(s);
-}
-
-wide_string string_to_wstring(const std::string &src)
-{
-	wide_string res;
-
-	try {
-		utf8_iterator i1(src);
-		const utf8_iterator i2(utf8_iterator::end(src));
-
-		// Equivalent to res.insert(res.end(),i1,i2) which doesn't work on VC++6.
-		while(i1 != i2) {
-			res.push_back(*i1);
-			++i1;
-		}
-	}
-	catch(invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
-		return res;
-	}
-
-	return res;
-}
-
-utf8_string lowercase(const utf8_string& s)
+utf8::string lowercase(const utf8::string& s)
 {
 	if(!s.empty()) {
-		utf8_iterator itor(s);
+		utf8::iterator itor(s);
 		std::string res;
 
-		for(;itor != utf8_iterator::end(s); ++itor) {
+		for(;itor != utf8::iterator::end(s); ++itor) {
 #if defined(__APPLE__) || defined(__OpenBSD__)
 			/** @todo FIXME: Should we support towupper on recent OSX platforms? */
 			wchar_t uchar = *itor;
@@ -1048,7 +1074,7 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
-unsigned int u8index(const utf8_string& str, const unsigned int index)
+unsigned int index(const utf8::string& str, const unsigned int index)
 {
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
@@ -1063,7 +1089,7 @@ unsigned int u8index(const utf8_string& str, const unsigned int index)
 	return i;
 }
 
-size_t u8size(const utf8_string& str)
+size_t size(const utf8::string& str)
 {
 	unsigned int chr, i = 0, len = str.size();
 	try {
@@ -1076,46 +1102,27 @@ size_t u8size(const utf8_string& str)
 	return chr;
 }
 
-utf8_string& u8insert(utf8_string& str, const size_t pos, const utf8_string& insert)
+utf8::string& insert(utf8::string& str, const size_t pos, const utf8::string& insert)
 {
-	return str.insert(u8index(str, pos), insert);
+	return str.insert(index(str, pos), insert);
 }
 
-utf8_string& u8erase(utf8_string& str, const size_t start, const size_t len)
+utf8::string& erase(utf8::string& str, const size_t start, const size_t len)
 {
-	if (start > u8size(str)) return str;
-	unsigned pos = u8index(str, start);
+	if (start > size(str)) return str;
+	unsigned pos = index(str, start);
+
 	if (len == std::string::npos) {
 		// without second argument, std::string::erase truncates
 		return str.erase(pos);
 	} else {
-		return str.erase(pos, u8index(str,start+len) - pos);
+		return str.erase(pos, index(str,start+len) - pos);
 	}
 }
 
-utf8_string& u8truncate(utf8_string& str, const size_t size)
+utf8::string& truncate(utf8::string& str, const size_t size)
 {
-	return u8erase(str, size);
+	return erase(str, size);
 }
 
-void truncate_as_wstring(std::string& str, const size_t size)
-{
-	wide_string wide = utils::string_to_wstring(str);
-	if(wide.size() > size) {
-		wide.resize(size);
-		str = utils::wstring_to_string(wide);
-	}
-}
-
-void ellipsis_truncate(std::string& str, const size_t size)
-{
-	const size_t prev_size = str.length();
-
-	u8truncate(str, size);
-
-	if(str.length() != prev_size) {
-		str += ellipsis;
-	}
-}
-
-} // end namespace utils
+} // end namespace utf8

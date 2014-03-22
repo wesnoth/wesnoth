@@ -1493,7 +1493,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 		try {
 			gui2::show_transient_message(resources::screen->video(), caption, text, image, true);
-		} catch(utils::invalid_utf8_exception&) {
+		} catch(utf8::invalid_utf8_exception&) {
 			// we already had a warning so do nothing.
 		}
 	}

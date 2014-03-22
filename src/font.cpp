@@ -177,10 +177,10 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 		return chunks;
 
 	try {
-		utils::utf8_iterator ch(utf8_text);
+		utf8::iterator ch(utf8_text);
 		int sub = char_blocks.get_id(*ch);
 		if (sub >= 0) current_chunk.subset = sub;
-		for(utils::utf8_iterator end = utils::utf8_iterator::end(utf8_text); ch != end; ++ch)
+		for(utf8::iterator end = utf8::iterator::end(utf8_text); ch != end; ++ch)
 		{
 			sub = char_blocks.get_id(*ch);
 			if (sub >= 0 && sub != current_chunk.subset) {
@@ -194,7 +194,7 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 			chunks.push_back(current_chunk);
 		}
 	}
-	catch(utils::invalid_utf8_exception&) {
+	catch(utf8::invalid_utf8_exception&) {
 		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"\n";
 	}
 	return chunks;
@@ -886,9 +886,9 @@ std::string make_text_ellipsis(const std::string &text, int font_size,
 
 	std::string current_substring;
 
-	utils::utf8_iterator itor(text);
+	utf8::iterator itor(text);
 
-	for(; itor != utils::utf8_iterator::end(text); ++itor) {
+	for(; itor != utf8::iterator::end(text); ++itor) {
 		std::string tmp = current_substring;
 		tmp.append(itor.substr().first, itor.substr().second);
 

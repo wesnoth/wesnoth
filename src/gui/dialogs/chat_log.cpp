@@ -106,7 +106,7 @@ public:
 
 	void populate_chat_message_list(int first, int last)
 	{
-		const std::string& lcfilter = utils::lowercase(filter->get_value());
+		const std::string& lcfilter = utf8::lowercase(filter->get_value());
 		std::stringstream str;
 		LOG_CHAT_LOG
 		<< "entering tchat_log::model::add_row_to_chat_message_list\n";
@@ -120,9 +120,9 @@ public:
 						= preferences::get_chat_timestamp(t.time());
 
 				if(lcfilter.empty() == false) {
-					const std::string& lcsample = utils::lowercase(timestamp)
-												  + utils::lowercase(t.nick())
-												  + utils::lowercase(t.text());
+					const std::string& lcsample = utf8::lowercase(timestamp)
+												  + utf8::lowercase(t.nick())
+												  + utf8::lowercase(t.text());
 
 					if(lcsample.find(lcfilter) == std::string::npos) {
 						continue;

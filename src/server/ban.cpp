@@ -371,7 +371,7 @@ static lg::log_domain log_server("server");
 			return true;
 		}
 		default_ban_times::const_iterator time_itor = ban_times_.find(duration);
-		if (utils::lowercase(duration) == "permanent" || duration == "0") {
+		if (utf8::lowercase(duration) == "permanent" || duration == "0") {
 			*time = 0;
 		} else if (ban_times_.find(duration) != ban_times_.end()) {
 			*time += time_itor->second;
