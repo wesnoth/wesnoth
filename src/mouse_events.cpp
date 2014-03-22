@@ -1107,54 +1107,6 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	synced_context::run_in_synced_context("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
 		attacker->type_id(), defender->type_id(), att.level,
 		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day()));
-	/*
-	if (rand_rng::has_valid_seed()) { //means SRNG is disabled
-		perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
-	} else {
-		rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
-			this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
-	}*/
-}
-
-void mouse_handler::perform_attack(
-	map_location /*attacker_loc*/, map_location /*defender_loc*/,
-	int /*attacker_weapon*/, int /*defender_weapon*/, int /*seed*/)
-{
-	throw "Not supported";
-	/*
-	// this function gets it's arguments by value because the calling function
-	// object might get deleted in the clear callback call below, invalidating
-	// const ref arguments
-	LOG_NG << "Performing attack with seed " << seed << "\n";
-	recorder.add_seed("attack", seed);
-	//MP_COUNTDOWN grant time bonus for attacking
-	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
-
-	try {
-		events::command_disabler disabler; // Rather than decrementing for every possible exception, use RAII
-		commands_disabled--;
-		attack_unit(attacker_loc, defender_loc, attacker_weapon, defender_weapon);
-	} catch(end_level_exception&) {
-		//if the level ends due to a unit being killed, still see if
-		//either the attacker or defender should advance
-		dialogs::advance_unit(attacker_loc);
-		unit_map::const_iterator defu = units_.find(defender_loc);
-		if (defu != units_.end()) {
-			bool defender_human = teams_[defu->side() - 1].is_human();
-			dialogs::advance_unit(defender_loc, !defender_human);
-		}
-		throw;
-	}
-
-	dialogs::advance_unit(attacker_loc);
-	unit_map::const_iterator defu = units_.find(defender_loc);
-	if (defu != units_.end()) {
-		bool defender_human = teams_[defu->side() - 1].is_human();
-		dialogs::advance_unit(defender_loc, !defender_human);
-	}
-
-	resources::controller->check_victory();
-	gui().draw();*/
 }
 
 std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const
