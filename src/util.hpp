@@ -233,7 +233,7 @@ inline std::size_t bit_width() {
  * @returns the size, in bits, of an instance of type `T`.
  */
 template<typename T>
-inline std::size_t bit_width(T x) {
+inline std::size_t bit_width(const T& x) {
 	return sizeof(x) * std::numeric_limits<unsigned char>::digits;
 }
 
