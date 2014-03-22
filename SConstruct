@@ -110,8 +110,9 @@ opts.AddVariables(
 # Setup
 #
 
-sys.path.insert(0, "./scons")
-env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = ["scons"])
+toolpath = ["scons"] + map(lambda x : x.abspath + "/scons", Dir(".").repositories)
+sys.path = toolpath + sys.path
+env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
 
 if env["lockfile"]:
     print "Creating lockfile"
@@ -550,7 +551,7 @@ def CopyFilter(fn):
 
 env["copy_filter"] = CopyFilter
 
-linguas = Split(open("po/LINGUAS").read())
+linguas = Split(File("po/LINGUAS").get_contents())
 
 def InstallManpages(env, component):
     env.InstallData("mandir", component, os.path.join("doc", "man", component + ".6"), "man6")
