@@ -1074,7 +1074,7 @@ utf8::string lowercase(const utf8::string& s)
 	return s;
 }
 
-unsigned int index(const utf8::string& str, const unsigned int index)
+size_t index(const utf8::string& str, const size_t index)
 {
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
