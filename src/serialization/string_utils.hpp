@@ -359,6 +359,30 @@ std::string wchar_to_string(const wchar_t);
 utf8_string lowercase(const utf8_string&);
 
 /**
+ * index of the ...th character in an UTF-8 encoded string
+ * if there are less than index characters, return str.length()
+ */
+unsigned int u8index(const utf8_string& str, const unsigned int index);
+
+/** length in characters of an UTF-8 encoded string */
+size_t u8size(const utf8_string& str);
+
+/** insert at position pos into an UTF-8 encoded string */
+utf8_string& u8insert(utf8_string& str, const size_t pos, const utf8_string& insert);
+
+/**
+ * erase len characters at position start from an UTF-8 encoded string
+ * this implementation doesn't check for valid UTF-8, don't use for user input
+ */
+utf8_string& u8erase(utf8_string& str, const size_t start, const size_t len = std::string::npos);
+
+/**
+* truncate an UTF-8 encoded string after size characters
+* this implementation doesn't check for valid UTF-8, don't use for user input
+*/
+utf8_string& u8truncate(utf8_string& str, const size_t size);
+
+/**
  * Truncates a string.
  *
  * If the string send has more than size utf-8 characters it will be truncated

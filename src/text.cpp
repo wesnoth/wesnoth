@@ -181,11 +181,22 @@ bool ttext::is_truncated() const
 
 unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 {
-	if(text.empty()) {
+	if (text.empty() || length_ == maximum_length_) {
 		return 0;
 	}
 
-	return insert_unicode(offset, utils::string_to_wstring(text));
+	// do we really need that assert? u8insert will just append in this case, which seems fine
+	assert(offset <= length_);
+
+	unsigned len = utils::u8size(text);
+	if (length_ + len > maximum_length_) {
+		len = maximum_length_ - length_;
+	}
+	const utf8_string insert = text.substr(0, utils::u8index(text, len));
+	utf8_string tmp = text_;
+	set_text(utils::u8insert(tmp, offset, insert), false);
+	// report back how many characters were actually inserted (e.g. to move the cursor selection)
+	return len;
 }
 
 bool ttext::insert_unicode(const unsigned offset, const wchar_t unicode)
@@ -195,21 +206,8 @@ bool ttext::insert_unicode(const unsigned offset, const wchar_t unicode)
 
 unsigned ttext::insert_unicode(const unsigned offset, const wide_string& unicode)
 {
-	assert(offset <= length_);
-
-	if(length_ == maximum_length_) {
-		return 0;
-	}
-
-	const unsigned len = length_ + unicode.size() > maximum_length_
-		? maximum_length_ - length_  : unicode.size();
-
-	wide_string tmp = utils::string_to_wstring(text_);
-	tmp.insert(tmp.begin() + offset, unicode.begin(), unicode.begin() + len);
-
-	set_text(utils::wstring_to_string(tmp), false);
-
-	return len;
+	const utf8_string insert = utils::wstring_to_string(unicode);
+	return insert_text(offset, insert);
 }
 
 gui2::tpoint ttext::get_cursor_position(
@@ -449,10 +447,8 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 	if(maximum_length != maximum_length_) {
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
-
-			wide_string tmp = utils::string_to_wstring(text_);
-			tmp.resize(maximum_length_);
-			set_text(utils::wstring_to_string(tmp), false);
+			utf8_string tmp = text_;
+			set_text(utils::u8truncate(tmp, maximum_length_), false);
 		}
 	}
 
@@ -598,7 +594,7 @@ struct decode_table
 	}
 };
 
-static decode_table decode_table;
+static struct decode_table decode_table;
 
 
 #ifndef _WIN32

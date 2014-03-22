@@ -840,26 +840,22 @@ std::vector< std::pair< int, int > > parse_ranges(std::string const &str)
 	return to_return;
 }
 
-static int byte_size_from_utf8_first(unsigned char ch)
+static int byte_size_from_utf8_first(const unsigned char ch)
 {
-	int count;
-
-	if ((ch & 0x80) == 0)
-		count = 1;
-	else if ((ch & 0xE0) == 0xC0)
-		count = 2;
-	else if ((ch & 0xF0) == 0xE0)
-		count = 3;
-	else if ((ch & 0xF8) == 0xF0)
-		count = 4;
-	else if ((ch & 0xFC) == 0xF8)
-		count = 5;
-	else if ((ch & 0xFE) == 0xFC)
-		count = 6;
-	else
-		throw invalid_utf8_exception(); // Stop on invalid characters
-
-	return count;
+	if (!(ch & 0x80)) {
+		return 1;  // US-ASCII character, 1 byte
+	}
+	/* first bit set: character not in US-ASCII, multiple bytes
+	 * number of set bits at the beginning = bytes per character
+	 * e.g. 11110xxx indicates a 4-byte character */
+	if (!(ch & 0x40)) throw invalid_utf8_exception();
+	switch (ch & 0x30) {
+	case 0x30:
+		if (ch & 0x08) throw invalid_utf8_exception();
+		return 4;
+	case 0x20: return 3;
+	default: return 2;
+	}
 }
 
 utf8_iterator::utf8_iterator(const std::string& str) :
@@ -1052,12 +1048,62 @@ utf8_string lowercase(const utf8_string& s)
 	return s;
 }
 
+unsigned int u8index(const utf8_string& str, const unsigned int index)
+{
+	// chr counts characters, i is the codepoint index
+	// remark: several functions rely on the fallback to str.length()
+	unsigned int chr, i = 0, len = str.size();
+	try {
+		for (chr=0; chr<index && i<len; ++chr) {
+			i += byte_size_from_utf8_first(str[i]);
+		}
+	} catch(invalid_utf8_exception&) {
+		ERR_GENERAL << "Invalid UTF-8 string.\n";
+	}
+	return i;
+}
+
+size_t u8size(const utf8_string& str)
+{
+	unsigned int chr, i = 0, len = str.size();
+	try {
+		for (chr=0; i<len; ++chr) {
+			i += byte_size_from_utf8_first(str[i]);
+		}
+	} catch(invalid_utf8_exception&) {
+		ERR_GENERAL << "Invalid UTF-8 string.\n";
+	}
+	return chr;
+}
+
+utf8_string& u8insert(utf8_string& str, const size_t pos, const utf8_string& insert)
+{
+	return str.insert(u8index(str, pos), insert);
+}
+
+utf8_string& u8erase(utf8_string& str, const size_t start, const size_t len)
+{
+	if (start > u8size(str)) return str;
+	unsigned pos = u8index(str, start);
+	if (len == std::string::npos) {
+		// without second argument, std::string::erase truncates
+		return str.erase(pos);
+	} else {
+		return str.erase(pos, u8index(str,start+len) - pos);
+	}
+}
+
+utf8_string& u8truncate(utf8_string& str, const size_t size)
+{
+	return u8erase(str, size);
+}
+
 void truncate_as_wstring(std::string& str, const size_t size)
 {
-	wide_string utf8_str = utils::string_to_wstring(str);
-	if(utf8_str.size() > size) {
-		utf8_str.resize(size);
-		str = utils::wstring_to_string(utf8_str);
+	wide_string wide = utils::string_to_wstring(str);
+	if(wide.size() > size) {
+		wide.resize(size);
+		str = utils::wstring_to_string(wide);
 	}
 }
 
@@ -1065,7 +1111,7 @@ void ellipsis_truncate(std::string& str, const size_t size)
 {
 	const size_t prev_size = str.length();
 
-	truncate_as_wstring(str, size);
+	u8truncate(str, size);
 
 	if(str.length() != prev_size) {
 		str += ellipsis;
