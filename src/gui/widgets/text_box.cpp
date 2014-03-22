@@ -208,7 +208,8 @@ void ttext_box::delete_selection()
 		start -= len;
 	}
 
-	set_value(utils::u8erase(get_value(), start, len));
+	utf8_string tmp = get_value();
+	set_value(utils::u8erase(tmp, start, len));
 	set_cursor(start, false);
 }
 
