@@ -73,7 +73,7 @@ private:
 	static void adjust_length(std::string& title, std::string& message);
 	static HWND get_window_handle();
 	static void switch_to_wesnoth_window();
-	static std::wstring string_to_wstring(const std::string& string);
+	static std::wstring string_to_wstring(const std::string& string, size_t maxlength);
 
 	explicit windows_tray_notification();
 	windows_tray_notification(const windows_tray_notification& w);
