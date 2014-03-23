@@ -30,6 +30,7 @@
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "sdl/exception.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/validator.hpp"
@@ -720,6 +721,9 @@ int main(int argc, char** argv)
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
+		return 1;
+	} catch(const sdl::texception& e) {
+		std::cerr << e.what();
 		return 1;
 	} catch(game::error &) {
 		// A message has already been displayed.
