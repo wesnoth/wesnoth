@@ -58,12 +58,24 @@ config replay_helper::get_disband(const std::string& unit_id)
  * This should be the steps to be taken this turn, ending in an
  * apparently-unoccupied (from the moving team's perspective) hex.
  */
-config replay_helper::get_movement(const std::vector<map_location>& steps, bool skip_sighed)
+config replay_helper::get_movement(const std::vector<map_location>& steps, bool skip_sighed, bool skip_ally_sighted)
 {
 	assert(!steps.empty());
 	
 	config move;
-	move["skip_sighed"] = skip_sighed;
+	if(skip_sighed)
+	{
+		//note, that skip_ally_sighted has no effect if skip_sighed is true
+		move["skip_sighed"] = "all";
+	}
+	else if(skip_ally_sighted && !skip_sighed)
+	{
+		move["skip_sighed"] = "only_ally";
+	}
+	else 
+	{
+		//leave it empty
+	}
 	write_locations(steps, move);
 
 	return move;
