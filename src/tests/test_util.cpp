@@ -18,6 +18,8 @@
 
 #include "util.hpp"
 
+#include <boost/cstdint.hpp>
+
 BOOST_AUTO_TEST_SUITE( util )
 
 BOOST_AUTO_TEST_CASE( test_lexical_cast )
@@ -72,6 +74,70 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
 
 	double result6 = lexical_cast_default<double, const std::string&>(std::string(), 0.5);
 	BOOST_CHECK( result6 >= 0.499 && result6 <= 0.511 );
+}
+
+BOOST_AUTO_TEST_CASE( test_bit_width )
+{
+	BOOST_CHECK( bit_width<boost::uint8_t>() == 8 );
+	BOOST_CHECK( bit_width<boost::uint16_t>() == 16 );
+	BOOST_CHECK( bit_width<boost::uint32_t>() == 32 );
+	BOOST_CHECK( bit_width<boost::uint64_t>() == 64 );
+
+	BOOST_CHECK( bit_width((boost::uint8_t) 0) == 8 );
+	BOOST_CHECK( bit_width((boost::uint16_t) 0) == 16 );
+	BOOST_CHECK( bit_width((boost::uint32_t) 0) == 32 );
+	BOOST_CHECK( bit_width((boost::uint64_t) 0) == 64 );
+}
+
+BOOST_AUTO_TEST_CASE( test_count_ones )
+{
+	BOOST_CHECK( count_ones(0) == 0 );
+	BOOST_CHECK( count_ones(1) == 1 );
+	BOOST_CHECK( count_ones(2) == 1 );
+	BOOST_CHECK( count_ones(3) == 2 );
+	BOOST_CHECK( count_ones(4) == 1 );
+	BOOST_CHECK( count_ones(5) == 2 );
+	BOOST_CHECK( count_ones(6) == 2 );
+	BOOST_CHECK( count_ones(7) == 3 );
+	BOOST_CHECK( count_ones(8) == 1 );
+	BOOST_CHECK( count_ones(9) == 2 );
+	BOOST_CHECK( count_ones(12345) == 6 );
+}
+
+BOOST_AUTO_TEST_CASE( test_count_leading_zeros )
+{
+	BOOST_CHECK( count_leading_zeros((boost::uint8_t) 1) == 7 );
+	BOOST_CHECK( count_leading_zeros((boost::uint16_t) 1) == 15 );
+	BOOST_CHECK( count_leading_zeros((boost::uint32_t) 1) == 31 );
+	BOOST_CHECK( count_leading_zeros((boost::uint64_t) 1) == 63 );
+	BOOST_CHECK( count_leading_zeros((boost::uint8_t) 0xFF) == 0 );
+	BOOST_CHECK( count_leading_zeros((unsigned int) 0)
+		== bit_width<unsigned int>() );
+	BOOST_CHECK( count_leading_zeros((unsigned long int) 0)
+		== bit_width<unsigned long int>() );
+	BOOST_CHECK( count_leading_zeros((unsigned long long int) 0)
+		== bit_width<unsigned long long int>() );
+	BOOST_CHECK( count_leading_zeros('\0')
+		== bit_width<char>() );
+	BOOST_CHECK( count_leading_zeros('\b')
+		== bit_width<char>() - 4 );
+	BOOST_CHECK( count_leading_zeros('\033')
+		== bit_width<char>() - 5 );
+	BOOST_CHECK( count_leading_zeros(' ')
+		== bit_width<char>() - 6 );
+}
+
+BOOST_AUTO_TEST_CASE( test_count_leading_ones )
+{
+	BOOST_CHECK( count_leading_ones(0) == 0 );
+	BOOST_CHECK( count_leading_ones(1) == 0 );
+	BOOST_CHECK( count_leading_ones((boost::uint8_t) 0xFF) == 8 );
+	BOOST_CHECK( count_leading_ones((boost::uint16_t) 0xFFFF) == 16 );
+	BOOST_CHECK( count_leading_ones((boost::uint32_t) 0xFFFFFFFF) == 32 );
+	BOOST_CHECK( count_leading_ones((boost::uint64_t) 0xFFFFFFFFFFFFFFFF)
+		== 64 );
+	BOOST_CHECK( count_leading_ones((boost::uint8_t) 0xF8) == 5 );
+	BOOST_CHECK( count_leading_ones((boost::uint16_t) 54321) == 2 );
 }
 
 /* vim: set ts=4 sw=4: */
