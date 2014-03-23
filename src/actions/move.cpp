@@ -189,7 +189,7 @@ namespace { // Private helpers for move_unit()
 	public:
 		unit_mover(const std::vector<map_location> & route,
 		           move_unit_spectator *move_spectator,
-		           bool skip_sightings, const map_location *replay_dest);
+		           bool skip_sightings, bool skip_ally_sightings, const map_location *replay_dest);
 		~unit_mover();
 
 		/// Determines how far along the route the unit can expect to move this turn.
@@ -265,8 +265,7 @@ namespace { // Private helpers for move_unit()
 		                    const route_iterator & step_to,
 		                    unit_display::unit_mover & animator);
 		/// Clears fog/shroud and handles units being sighted.
-		inline void handle_fog(const map_location & hex, bool ally_interrupts,
-		                       bool new_animation);
+		inline void handle_fog(const map_location & hex, bool new_animation);
 		inline bool is_reasonable_stop(const map_location & hex) const;
 		/// Reveals the units stored in ambushers_ (and blocked_loc_).
 		inline void reveal_ambushers();
@@ -282,6 +281,7 @@ namespace { // Private helpers for move_unit()
 		const bool is_replay_;
 		const map_location & replay_dest_;
 		const bool skip_sighting_;
+		const bool skip_ally_sighting_;
 		const bool playing_team_is_viewing_;
 		// Needed to interface with unit_display::unit_mover.
 		const std::vector<map_location> & route_;
@@ -340,11 +340,12 @@ namespace { // Private helpers for move_unit()
 	/// affects whether or not gotos are changed).
 	unit_mover::unit_mover(const std::vector<map_location> & route,
 	                       move_unit_spectator *move_spectator,
-	                       bool skip_sightings, const map_location *replay_dest) :
+	                       bool skip_sightings, bool skip_ally_sightings,  const map_location *replay_dest) :
 		spectator_(move_spectator),
 		is_replay_(replay_dest != NULL),
 		replay_dest_(is_replay_ ? *replay_dest : route.back()),
 		skip_sighting_(is_replay_ || skip_sightings),
+		skip_ally_sighting_(is_replay_ || skip_ally_sightings),
 		playing_team_is_viewing_(resources::screen->playing_team() ==
 		                         resources::screen->viewing_team()
 		                         ||  resources::screen->show_everything()),
@@ -526,7 +527,7 @@ namespace { // Private helpers for move_unit()
 	 * @a hex is both the center of fog clearing and the filtered location of
 	 * the moving unit when the sighted events will be fired.
 	 */
-	inline void unit_mover::handle_fog(const map_location & hex, bool ally_interrupts,
+	inline void unit_mover::handle_fog(const map_location & hex,
 	                                   bool new_animation)
 	{
 		// Clear the fog.
@@ -540,8 +541,11 @@ namespace { // Private helpers for move_unit()
 
 		// Check for sighted units?
 		if ( !skip_sighting_ ) {
-			sighted_ = enemy_count_ != 0  ||
-			           (ally_interrupts  &&  friend_count_ != 0 );
+			sighted_ = enemy_count_ != 0 ;
+		}
+		if( !skip_sighting_ && !skip_ally_sighting_ )
+		{
+			sighted_ |= (friend_count_ != 0);
 		}
 	}
 
@@ -922,8 +926,7 @@ namespace { // Private helpers for move_unit()
 		static const std::string enter_hex_str("enter_hex");
 		static const std::string exit_hex_str("exit_hex");
 
-		const bool ally_interrupts = preferences::interrupt_when_ally_sighted();
-
+		
 		bool obstructed_stop = false;
 
 
@@ -981,7 +984,7 @@ namespace { // Private helpers for move_unit()
 				bool new_animation = do_move(step_from, real_end_, animator);
 				// Update the fog.
 				if ( current_uses_fog_ )
-					handle_fog(*real_end_, ally_interrupts, new_animation);
+					handle_fog(*real_end_, new_animation);
 				animator.wait_for_anims();
 
 				// Fire the events for this step.
@@ -1238,27 +1241,28 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
 		return 0;
 	}
+	
+	const bool skip_ally_sighted = !preferences::interrupt_when_ally_sighted();
 
 	// Evaluate this move.
-	unit_mover mover(steps, move_spectator, continued_move, NULL);
+	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted, NULL);
 	if ( !mover.check_expected_movement() )
 		return 0;
-
 
 	/*
 		enter the synced mode and do the actual movement.
 	*/
-	recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move));
+	recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
 	set_scontext_synced sync;
 	return move_unit_internal(undo_stack, show_move, interrupted, mover);
 }
 
 size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  undo_list* undo_stack,
-                 bool continued_move, bool show_move)
+                 bool continued_move,bool skip_ally_sighted, bool show_move)
 {
 	// Evaluate this move.
-	unit_mover mover(steps, NULL, continued_move, NULL);
+	unit_mover mover(steps, NULL, continued_move,skip_ally_sighted, NULL);
 	if ( !mover.check_expected_movement() ) 
 	{
 		replay::process_error("found corrupt movement in replay.");

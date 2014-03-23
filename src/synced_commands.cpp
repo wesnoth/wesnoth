@@ -250,21 +250,14 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...\n";
 		return false;
 	}
-	//storign the early stope 
-	map_location early_stop(child["stop_x"].to_int(-999) - 1,
-		child["stop_y"].to_int(-999) - 1);
-	if ( !early_stop.valid() )
-		early_stop = dst; // Not really "early", but we need a valid stopping point.
-
+	
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
 		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.\n";
 		// We'll still proceed with this movement, though, since
 		// an event might intervene.
-		// for a player it is NOT POSSIBLE to give the command to move a unit to a blocked hex, 
-		// and it doesnt matter whether the units still stands there when the unit reaches the destination
-		// so this is an OOS.
+		// 'event' doesnt mean wml event but rather it means 'hidden' units form the movers point of view.
 	}
 
 	u = resources::units->find(src);
@@ -275,13 +268,23 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		error_handler(errbuf.str(), true);
 		return false;
 	}
+	bool skip_sighted = false;
+	bool skip_ally_sighted = false;
+	if(child["skip_sighed"] == "all")
+	{
+		skip_sighted = true;
+	}
+	else if(child["skip_sighted"] == "only_ally")
+	{
+		skip_ally_sighted = true;
+	}
 
 	bool show_move = show;
 	if ( current_team.is_ai() || current_team.is_network_ai() )
 	{
 		show_move = show_move && preferences::show_ai_moves();
 	}
-	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, child["skip_sighed"].to_bool(false), show_move);
+	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, skip_sighted, skip_ally_sighted, show_move);
 	
 	return true;
 }
