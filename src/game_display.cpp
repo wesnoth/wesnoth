@@ -1062,7 +1062,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
 		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
-	} catch (utils::invalid_utf8_exception&) {
+	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored.\n";
 		return;
 	}

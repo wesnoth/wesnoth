@@ -321,10 +321,10 @@ bool is_cjk_char(const wchar_t c)
 static void cut_word(std::string& line, std::string& word, int font_size, int style, int max_width)
 {
 	std::string tmp = line;
-	utils::utf8_iterator tc(word);
+	utf8::iterator tc(word);
 	bool first = true;
 
-	for(;tc != utils::utf8_iterator::end(word); ++tc) {
+	for(;tc != utf8::iterator::end(word); ++tc) {
 		tmp.append(tc.substr().first, tc.substr().second);
 		SDL_Rect tsize = line_size(tmp, font_size, style);
 		if(tsize.w > max_width) {
@@ -440,7 +440,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 {
 	VALIDATE(max_width > 0, _("The maximum text width is less than 1."));
 
-	utils::utf8_iterator ch(unwrapped_text);
+	utf8::iterator ch(unwrapped_text);
 	std::string current_word;
 	std::string current_line;
 	size_t line_width = 0;
@@ -453,7 +453,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 	SDL_Color color;
 	int font_sz = font_size;
 	int style = TTF_STYLE_NORMAL;
-	utils::utf8_iterator end = utils::utf8_iterator::end(unwrapped_text);
+	utf8::iterator end = utf8::iterator::end(unwrapped_text);
 
 	while(1) {
 		if(start_of_line) {
@@ -483,7 +483,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 				++ch;
 			} else {
 				wchar_t previous = 0;
-				for(;ch != utils::utf8_iterator::end(unwrapped_text) &&
+				for(;ch != utf8::iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 
 					if(!current_word.empty() &&

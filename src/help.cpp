@@ -3310,7 +3310,7 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 		res.push_back(s.substr(first_line.size()));
 	}
 	}
-	catch (utils::invalid_utf8_exception&)
+	catch (utf8::invalid_utf8_exception&)
 	{
 		throw parse_error (_("corrupted original file"));
 	}
@@ -3341,8 +3341,8 @@ std::string get_first_word(const std::string &s)
 	//if no gap(' ' or '\n') found, test if it is CJK character
 	std::string re = s.substr(0, first_word_end);
 
-	utils::utf8_iterator ch(re);
-	if (ch == utils::utf8_iterator::end(re))
+	utf8::iterator ch(re);
+	if (ch == utf8::iterator::end(re))
 		return re;
 
 	wchar_t firstchar = *ch;

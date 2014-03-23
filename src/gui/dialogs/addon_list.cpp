@@ -176,19 +176,16 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 			item["label"] = c["icon"];
 			data.insert(std::make_pair("icon", item));
 
-			std::string tmp = c["name"];
-			utils::truncate_as_wstring(tmp, 20);
-			item["label"] = tmp;
+			utf8::string tmp = c["name"];
+			item["label"] = utf8::truncate(tmp, 20);
 			data.insert(std::make_pair("name", item));
 
 			tmp = c["version"].str();
-			utils::truncate_as_wstring(tmp, 12);
-			item["label"] = tmp;
+			item["label"] = utf8::truncate(tmp, 12);
 			data.insert(std::make_pair("version", item));
 
 			tmp = c["author"].str();
-			utils::truncate_as_wstring(tmp, 16);
-			item["label"] = tmp;
+			item["label"] = utf8::truncate(tmp, 16);
 			data.insert(std::make_pair("author", item));
 
 			item["label"] = c["downloads"];
@@ -212,19 +209,16 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 	item["label"] = campaign["icon"];
 	data.insert(std::make_pair("icon", item));
 
-	std::string tmp = campaign["name"];
-	utils::truncate_as_wstring(tmp, 20);
-	item["label"] = tmp;
+	utf8::string tmp = campaign["name"];
+	item["label"] = utf8::truncate(tmp, 20);
 	data.insert(std::make_pair("name", item));
 
 	tmp = campaign["version"].str();
-	utils::truncate_as_wstring(tmp, 12);
-	item["label"] = tmp;
+	item["label"] = utf8::truncate(tmp, 12);
 	data.insert(std::make_pair("version", item));
 
 	tmp = campaign["author"].str();
-	utils::truncate_as_wstring(tmp, 16);
-	item["label"] = tmp;
+	item["label"] = utf8::truncate(tmp, 16);
 	data.insert(std::make_pair("author", item));
 
 	item["label"] = campaign["downloads"];
@@ -247,7 +241,7 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 	filter << campaign["version"] << '\n' << campaign["author"] << '\n'
 		   << campaign["type"] << '\n' << campaign["description"];
 
-	tags.insert(std::make_pair("filter", utils::lowercase(filter.str())));
+	tags.insert(std::make_pair("filter", utf8::lowercase(filter.str())));
 
 	/***** Add the campaign. *****/
 

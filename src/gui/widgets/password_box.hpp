@@ -65,7 +65,6 @@ public:
 
 
 protected:
-	// Overwritten functions must of course be virtual!
 	void insert_char(const Uint16 unicode);
 	void delete_char(const bool before_cursor);
 

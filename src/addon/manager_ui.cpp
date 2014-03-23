@@ -460,7 +460,7 @@ struct addon_pointer_list_sorter
 		switch(sort_) {
 		case SORT_NAMES:
 			// Alphanumerical by name, case insensitive.
-			return utils::lowercase(a->second.title) < utils::lowercase(b->second.title);
+			return utf8::lowercase(a->second.title) < utf8::lowercase(b->second.title);
 		case SORT_UPDATED:
 			// Numerical by last upload TS.
 			return a->second.updated < b->second.updated;
