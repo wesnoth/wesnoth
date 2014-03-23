@@ -227,7 +227,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 										<< s_begin << " and " << s_end <<".\n";
 						}
 						if (padding_end > padding) padding = padding_end;
-						
+
 						int increment = (end >= begin ? 1 : -1);
 						end+=increment; //include end in expansion
 						for (int k=begin; k!=end; k+=increment) {
