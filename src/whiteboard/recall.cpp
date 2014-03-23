@@ -139,17 +139,18 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	std::vector<unit>& recalls = resources::teams->at(team_index()).recall_list();
 	std::vector<unit>::iterator it = find_if_matches_id(recalls, temp_unit_->id());
 	assert(it != recalls.end());
-	recalls.erase(it);
-
-	// Temporarily insert unit into unit_map
-	//unit map takes ownership of temp_unit
-	unit_map.insert(temp_unit_.release());
 
 	//Add cost to money spent on recruits.
 	int cost = resources::teams->at(team_index()).recall_cost();
 	if (it->recall_cost() > -1) {
 		cost = it->recall_cost();
 	}
+
+	recalls.erase(it);
+
+	// Temporarily insert unit into unit_map
+	//unit map takes ownership of temp_unit
+	unit_map.insert(temp_unit_.release());
 
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 	// Update gold in top bar
