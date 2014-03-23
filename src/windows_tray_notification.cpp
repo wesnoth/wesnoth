@@ -104,7 +104,7 @@ bool windows_tray_notification::create_tray_icon()
 		return false;
 	}
 
-	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"), 63);
+	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"), MAX_TITLE_LENGTH);
 
 	// filling notification structure
 	nid = new NOTIFYICONDATA;
@@ -132,8 +132,8 @@ bool windows_tray_notification::set_tray_message(const std::string& title, const
 	message_reset = (nid->uFlags & NIF_INFO) != 0;
 
 	nid->uFlags |= NIF_INFO;
-	lstrcpy(nid->szInfoTitle, string_to_wstring(title, 63).c_str());
-	lstrcpy(nid->szInfo, string_to_wstring(message, 255).c_str());
+	lstrcpy(nid->szInfoTitle, string_to_wstring(title, MAX_TITLE_LENGTH).c_str());
+	lstrcpy(nid->szInfo, string_to_wstring(message, MAX_MESSAGE_LENGTH).c_str());
 
 	// setting notification
 	return Shell_NotifyIcon(NIM_MODIFY, nid) != FALSE;
