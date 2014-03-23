@@ -308,9 +308,16 @@ void unit_mover::start(unit& u)
  */
 void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 {
-	// Nothing to do here if animations can/should not be shown.
-	if ( !can_draw_  || !animate_ )
+	// Nothing to do here if animations cannot be shown.
+	if ( !can_draw_ )
 		return;
+
+	// If no animation then hide unit until end of movement
+	if (!animate_)
+	{
+		u.set_hidden(true);
+		return;
+	}
 
 	// Handle pending visibility issues before introducing new ones.
 	wait_for_anims();
@@ -453,6 +460,11 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 		if ( mousehandler ) {
 			mousehandler->invalidate_reachmap();
 		}
+	}
+	else
+	{
+		// Show the unit at end of skipped animation
+		u.set_hidden(was_hidden_);
 	}
 
 	// Facing gets set even when not animating.
