@@ -54,6 +54,7 @@
 #include "loadscreen.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "version.hpp"
 
 #include <boost/foreach.hpp>

@@ -25,6 +25,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "game_config.hpp"
 #include "addon/validation.hpp"
 #include "version.hpp"

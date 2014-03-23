@@ -18,6 +18,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "util.hpp"
 
 #include "ban.hpp"

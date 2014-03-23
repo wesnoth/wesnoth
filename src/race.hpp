@@ -16,7 +16,7 @@
 #define RACE_HPP_INCLUDED
 
 #include "config.hpp"
-#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 namespace rand_rng {
 	class simple_rng;

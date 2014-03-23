@@ -19,7 +19,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "gettext.hpp"
-#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "sdl_utils.hpp"
 
 #include "boost/foreach.hpp"

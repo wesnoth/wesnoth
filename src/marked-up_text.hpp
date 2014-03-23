@@ -22,7 +22,7 @@ class CVideo;
 struct surface;
 #include <SDL_video.h>
 #include <string>
-#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 namespace font {
 

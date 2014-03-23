@@ -16,7 +16,7 @@
 #define TEXT_HPP_INCLUDED
 
 #include "sdl_utils.hpp"
-#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/noncopyable.hpp>
 
