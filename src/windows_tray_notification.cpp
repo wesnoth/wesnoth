@@ -104,7 +104,7 @@ bool windows_tray_notification::create_tray_icon()
 		return false;
 	}
 
-	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"));
+	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"), 63);
 
 	// filling notification structure
 	nid = new NOTIFYICONDATA;
@@ -132,8 +132,8 @@ bool windows_tray_notification::set_tray_message(const std::string& title, const
 	message_reset = (nid->uFlags & NIF_INFO) != 0;
 
 	nid->uFlags |= NIF_INFO;
-	lstrcpy(nid->szInfoTitle, string_to_wstring(title).c_str());
-	lstrcpy(nid->szInfo, string_to_wstring(message).c_str());
+	lstrcpy(nid->szInfoTitle, string_to_wstring(title, 63).c_str());
+	lstrcpy(nid->szInfo, string_to_wstring(message, 255).c_str());
 
 	// setting notification
 	return Shell_NotifyIcon(NIM_MODIFY, nid) != FALSE;
@@ -176,10 +176,16 @@ void windows_tray_notification::switch_to_wesnoth_window()
 	SetForegroundWindow(window);
 }
 
-std::wstring windows_tray_notification::string_to_wstring(const std::string& string)
+std::wstring windows_tray_notification::string_to_wstring(const std::string& string, size_t maxlength)
 {
 	const utils::ucs4_string u4_string = utils::string_to_ucs4string(string);
-	const utils::utf16_string u16_string = utils::ucs4string_to_utf16string(u4_string);
+	utils::utf16_string u16_string = utils::ucs4string_to_utf16string(u4_string);
+	if(u16_string.size() > maxlength) {
+		if((u16_string[maxlength-1] & 0xDC00) == 0xD800)
+			u16_string.resize(maxlength - 1);
+		else
+			u16_string.resize(maxlength);
+	}
 	return std::wstring(utf16_string.begin(), utf16_string.end());
 }
 
