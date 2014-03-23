@@ -358,6 +358,7 @@ endif()
 
 set(wesnoth-sdl_SRC
 	sdl/alpha.cpp
+	sdl/exception.cpp
 	sdl/texture.cpp
 	sdl/window.cpp
 )
