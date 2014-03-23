@@ -359,6 +359,7 @@ unit_type::unit_type(const unit_type& o) :
 	hp_bar_scaling_(o.hp_bar_scaling_),
 	xp_bar_scaling_(o.xp_bar_scaling_),
 	level_(o.level_),
+	recall_cost_(o.recall_cost_),
 	movement_(o.movement_),
 	vision_(o.vision_),
 	jamming_(o.jamming_),
