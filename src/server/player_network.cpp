@@ -29,10 +29,10 @@ const size_t max_message_length = 256;
 void truncate_message(const simple_wml::string_span& str, simple_wml::node& message)
 {
 	// testing for msg.size() is not sufficient but we're not getting false negatives
-	// and it's cheaper than always converting to ucs4_string.
+	// and it's cheaper than always converting to ucs4::string.
 	if(str.size() > static_cast<int>(chat_message::max_message_length)) {
 		std::string tmp(str.begin(), str.end());
-		// The string can contain utf-8 characters so truncate as ucs4_string otherwise
+		// The string can contain utf-8 characters so truncate as ucs4::string otherwise
 		// a corrupted utf-8 string can be returned.
 		utils::truncate_as_ucs4string(tmp, max_message_length);
 		message.set_attr_dup("message", tmp.c_str());

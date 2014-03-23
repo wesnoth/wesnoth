@@ -23,7 +23,7 @@ namespace rand_rng {
 } // namespace rand_rng
 
 
-typedef std::map<ucs4_string, ucs4_string > markov_prefix_map;
+typedef std::map<ucs4::string, ucs4::string > markov_prefix_map;
 
 class unit_race
 {

@@ -26,15 +26,19 @@
 
 #include "SDL_types.h"
 
-typedef Uint32 ucs4char;
-typedef std::vector<ucs4char> ucs4_string;
+namespace ucs4 {
+	typedef Uint32 char_t;
+	typedef std::vector<char_t> string;
+}
 namespace utf8 { typedef std::string string; }
 /**
  * For win32 API.
  * On windows, wchar_t is defined as Uint16
  * Wide strings are expected to be UTF-16
  */
-typedef std::vector<wchar_t> utf16_string;
+namespace utf16 {
+	typedef std::vector<wchar_t> string;
+}
 
 class t_string;
 
@@ -317,11 +321,11 @@ bool isvalid_wildcard(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
 
-std::string ucs4string_to_string(const ucs4_string &);
-ucs4_string string_to_ucs4string(const std::string &);
-std::string ucs4char_to_string(const ucs4char);
+std::string ucs4string_to_string(const ucs4::string &);
+ucs4::string string_to_ucs4string(const std::string &);
+std::string ucs4char_to_string(const ucs4::char_t);
 
-utf16_string ucs4string_to_utf16string(const ucs4_string &);
+utf16::string ucs4string_to_utf16string(const ucs4::string &);
 
 /**
  * Truncates a string.
@@ -358,10 +362,10 @@ namespace utf8 {
 	{
 	public:
 		typedef std::input_iterator_tag iterator_category;
-		typedef ucs4char value_type;
+		typedef ucs4::char_t value_type;
 		typedef ptrdiff_t difference_type;
-		typedef ucs4char* pointer;
-		typedef ucs4char& reference;
+		typedef ucs4::char_t* pointer;
+		typedef ucs4::char_t& reference;
 
 		iterator(const std::string& str);
 		iterator(std::string::const_iterator const &begin, std::string::const_iterator const &end);
@@ -372,13 +376,13 @@ namespace utf8 {
 		bool operator==(const utf8::iterator& a) const;
 		bool operator!=(const utf8::iterator& a) const { return ! (*this == a); }
 		iterator& operator++();
-		ucs4char operator*() const;
+		ucs4::char_t operator*() const;
 		bool next_is_end();
 		const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
 	private:
 		void update();
 
-		ucs4char current_char;
+		ucs4::char_t current_char;
 		std::string::const_iterator string_end;
 		std::pair<std::string::const_iterator, std::string::const_iterator> current_substr;
 	};

@@ -102,7 +102,7 @@ public:
 	 *
 	 * @returns                   True upon success, false otherwise.
 	 */
-	bool insert_unicode(const unsigned offset, ucs4char unicode);
+	bool insert_unicode(const unsigned offset, ucs4::char_t unicode);
 
 	/**
 	 * Inserts unicode text.
@@ -113,7 +113,7 @@ public:
 	 * @returns                   The number of characters inserted.
 	 */
 	unsigned insert_unicode(
-		const unsigned offset, const ucs4_string& unicode);
+		const unsigned offset, const ucs4::string& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 

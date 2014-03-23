@@ -199,12 +199,12 @@ unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 	return len;
 }
 
-bool ttext::insert_unicode(const unsigned offset, ucs4char unicode)
+bool ttext::insert_unicode(const unsigned offset, ucs4::char_t unicode)
 {
-	return (insert_unicode(offset, ucs4_string(1, unicode)) == 1);
+	return (insert_unicode(offset, ucs4::string(1, unicode)) == 1);
 }
 
-unsigned ttext::insert_unicode(const unsigned offset, const ucs4_string& unicode)
+unsigned ttext::insert_unicode(const unsigned offset, const ucs4::string& unicode)
 {
 	const utf8::string insert = utils::ucs4string_to_string(unicode);
 	return insert_text(offset, insert);
@@ -293,7 +293,7 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
 
-		const ucs4_string wide = utils::string_to_ucs4string(text);
+		const ucs4::string wide = utils::string_to_ucs4string(text);
 		const std::string narrow = utils::ucs4string_to_string(wide);
 		if(text != narrow) {
 			ERR_GUI_L << "ttext::" << __func__

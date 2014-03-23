@@ -35,7 +35,7 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace {
-size_t byte_size_from_ucs4_codepoint(ucs4char ch)
+size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
 {
 	if(ch < (1u << 7))
 		return 1;
@@ -862,14 +862,14 @@ std::vector< std::pair< int, int > > parse_ranges(std::string const &str)
 	return to_return;
 }
 
-std::string ucs4string_to_string(const ucs4_string &src)
+std::string ucs4string_to_string(const ucs4::string &src)
 {
 	std::string ret;
 
 	try {
-		for(ucs4_string::const_iterator i = src.begin(); i != src.end(); ++i) {
+		for(ucs4::string::const_iterator i = src.begin(); i != src.end(); ++i) {
 			unsigned int count;
-			ucs4char ch = *i;
+			ucs4::char_t ch = *i;
 
 			// Determine the bytes required
 			count = byte_size_from_ucs4_codepoint(ch);
@@ -897,16 +897,16 @@ std::string ucs4string_to_string(const ucs4_string &src)
 	}
 }
 
-std::string ucs4char_to_string(const ucs4char c)
+std::string ucs4char_to_string(const ucs4::char_t c)
 {
-	ucs4_string s;
+	ucs4::string s;
 	s.push_back(c);
 	return ucs4string_to_string(s);
 }
 
-ucs4_string string_to_ucs4string(const std::string &src)
+ucs4::string string_to_ucs4string(const std::string &src)
 {
-	ucs4_string res;
+	ucs4::string res;
 
 	try {
 		utf8::iterator i1(src);
@@ -926,18 +926,18 @@ ucs4_string string_to_ucs4string(const std::string &src)
 	return res;
 }
 
-utf16_string ucs4string_to_utf16string(const ucs4_string &src)
+utf16::string ucs4string_to_utf16string(const ucs4::string &src)
 {
-	utf16_string res;
+	utf16::string res;
 	const Uint32 bit17 = 0x10000;
-	BOOST_FOREACH(const ucs4char &u4, src) {
+	BOOST_FOREACH(const ucs4::char_t &u4, src) {
 		if(u4 < bit17)
 			res.push_back(static_cast<wchar_t>(u4));
 		else {
 			const Uint32 char20 = u4 - bit17;
 			assert(char20 < (1 << 20));
-			const ucs4char lead = 0xD800 + (char20 >> 10);
-			const ucs4char trail = 0xDC00 + (char20 & 0x3FF);
+			const ucs4::char_t lead = 0xD800 + (char20 >> 10);
+			const ucs4::char_t trail = 0xDC00 + (char20 & 0x3FF);
 			assert(lead < bit17);
 			assert(trail < bit17);
 			res.push_back(static_cast<wchar_t>(lead));
@@ -950,7 +950,7 @@ utf16_string ucs4string_to_utf16string(const ucs4_string &src)
 
 void truncate_as_ucs4string(std::string& str, const size_t size)
 {
-	ucs4_string u4_str = utils::string_to_ucs4string(str);
+	ucs4::string u4_str = utils::string_to_ucs4string(str);
 	if(u4_str.size() > size) {
 		u4_str.resize(size);
 		str = utils::ucs4string_to_string(u4_str);
@@ -1029,7 +1029,7 @@ iterator& iterator::operator++()
 	return *this;
 }
 
-ucs4char iterator::operator*() const
+ucs4::char_t iterator::operator*() const
 {
 	return current_char;
 }
@@ -1089,10 +1089,10 @@ utf8::string lowercase(const utf8::string& s)
 		std::string res;
 
 		for(;itor != utf8::iterator::end(s); ++itor) {
-			ucs4char uchar = *itor;
+			ucs4::char_t uchar = *itor;
 			// If wchar_t is less than 32 bits wide, we cannot apply towlower() to all codepoints
-			if(uchar <= static_cast<ucs4char>(std::numeric_limits<wchar_t>::max()) &&
-			   uchar >= static_cast<ucs4char>(std::numeric_limits<wchar_t>::min()))
+			if(uchar <= static_cast<ucs4::char_t>(std::numeric_limits<wchar_t>::max()) &&
+			   uchar >= static_cast<ucs4::char_t>(std::numeric_limits<wchar_t>::min()))
 				uchar = towlower(static_cast<wchar_t>(uchar));
 			res += utils::ucs4char_to_string(uchar);
 		}

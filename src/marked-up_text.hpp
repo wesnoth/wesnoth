@@ -96,12 +96,12 @@ std::string del_tags(const std::string& text);
 bool is_format_char(char c);
 
 /**
- * Determine if a ucs4char is a CJK character
+ * Determine if a ucs4::char_t is a CJK character
  *
  * @retval true                   Input-char is a CJK char
  * @retval false                  Input-char is a not CJK char.
  */
-bool is_cjk_char(const ucs4char ch);
+bool is_cjk_char(const ucs4::char_t ch);
 
 /** Create string of color-markup, such as "<255,255,0>" for yellow. */
 std::string color2markup(const SDL_Color &color);

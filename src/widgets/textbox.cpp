@@ -94,7 +94,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 		return;
 	}
 	const bool is_at_bottom = get_position() == get_max_position();
-	const ucs4_string& wtext = utils::string_to_ucs4string(text);
+	const ucs4::string& wtext = utils::string_to_ucs4string(text);
 
 	const surface new_text = add_text_line(wtext, color);
 	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
@@ -285,7 +285,7 @@ void textbox::scroll(unsigned int pos)
 	set_dirty(true);
 }
 
-surface textbox::add_text_line(const ucs4_string& text, const SDL_Color& color)
+surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
 {
 	line_height_ = font::get_max_height(font_size_);
 
@@ -302,11 +302,11 @@ surface textbox::add_text_line(const ucs4_string& text, const SDL_Color& color)
 	// some more complex scripts (that is, RTL languages). This part of the work should
 	// actually be done by the font-rendering system.
 	std::string visible_string;
-	ucs4_string wrapped_text;
+	ucs4::string wrapped_text;
 
-	ucs4_string::const_iterator backup_itor = text.end();
+	ucs4::string::const_iterator backup_itor = text.end();
 
-	ucs4_string::const_iterator itor = text.begin();
+	ucs4::string::const_iterator itor = text.begin();
 	while(itor != text.end()) {
 		//If this is a space, save copies of the current state so we can roll back
 		if(char(*itor) == ' ') {
@@ -332,7 +332,7 @@ surface textbox::add_text_line(const ucs4_string& text, const SDL_Color& color)
 				}
 			}
 			backup_itor = text.end();
-			wrapped_text.push_back(ucs4char('\n'));
+			wrapped_text.push_back(ucs4::char_t('\n'));
 			char_x_.push_back(0);
 			char_y_.push_back(char_y_.back() + line_height_);
 			visible_string = "";
@@ -385,7 +385,7 @@ void textbox::erase_selection()
 	if(!is_selection())
 		return;
 
-	ucs4_string::iterator itor = text_.begin() + std::min(selstart_, selend_);
+	ucs4::string::iterator itor = text_.begin() + std::min(selstart_, selend_);
 	text_.erase(itor, itor + abs(selend_ - selstart_));
 	cursor_ = std::min(selstart_, selend_);
 	selstart_ = selend_ = -1;
@@ -579,9 +579,9 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	}
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-	ucs4char character = key.scancode;
+	ucs4::char_t character = key.scancode;
 #else
-	ucs4char character = key.unicode;
+	ucs4::char_t character = key.unicode;
 #endif
 
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
@@ -614,7 +614,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
 
-				ucs4_string s = utils::string_to_ucs4string(str);
+				ucs4::string s = utils::string_to_ucs4string(str);
 
 				if(text_.size() < max_size_) {
 					if(s.size() + text_.size() > max_size_) {
@@ -635,7 +635,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 						const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
 						const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
 
-						ucs4_string ws(text_.begin() + beg, text_.begin() + end);
+						ucs4::string ws(text_.begin() + beg, text_.begin() + end);
 						std::string s = utils::ucs4string_to_string(ws);
 						copy_to_clipboard(s, false);
 					}
