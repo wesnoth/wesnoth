@@ -8,14 +8,15 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-10-28 17:36+0100\n"
-"Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
+"PO-Revision-Date: 2014-03-23 11:19+0100\n"
+"Last-Translator: Christoph Berg <christoph.berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:11
@@ -1076,7 +1077,7 @@ msgstr "Die Perlenbucht"
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:19
 msgid "Defeat one enemy leader, and resist the other until turns run out"
 msgstr ""
-"Besiegt einen gegnerischen Anführer und wiedersteht dem Anderen bis zum "
+"Besiegt einen gegnerischen Anführer und widersteht dem Anderen bis zum "
 "Ablauf des Rundenlimits"
 
 #. [objective]: condition=win
@@ -4999,6 +5000,8 @@ msgstr "Erkämpft euch das Zepter des Feuers mit Konrad oder Li'sar"
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
 msgstr ""
+"Wenn Delfador rastet, kann er sich auf den Fundort des Zepters des Feuers "
+"konzentrieren."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:164
@@ -5080,11 +5083,12 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
+"Wenn ich einige Zeit der Ruhe habe, so will ich versuchen, es zu erspüren."
 
 #. [floating_text]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:275
 msgid "Concentrating"
-msgstr ""
+msgstr "Konzentrierend"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:299
@@ -5092,46 +5096,48 @@ msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
 msgstr ""
+"Ich spüre, das Zepter ist nahe; tatsächlich sollten wir jeden Moment seiner "
+"Pracht gewahr werden…"
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:362
 msgid "I sense the path to the sceptre is to the east of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters östlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:363
 msgid "I sense the path to the sceptre is to the south-east of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters südöstlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:364
 msgid "I sense the path to the sceptre is to the south of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters südlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:365
 msgid "I sense the path to the sceptre is to the south-west of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters südwestlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:366
 msgid "I sense the path to the sceptre is to the west of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters westlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:367
 msgid "I sense the path to the sceptre is to the north-west of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters nordwestlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
 msgid "I sense the path to the sceptre is to the north of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters nördlich von mir."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:369
 msgid "I sense the path to the sceptre is to the north-east of me."
-msgstr ""
+msgstr "Ich spüre die Aura des Zepters nordöstlich von mir."
 
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
@@ -7205,13 +7211,12 @@ msgstr ""
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:155
-#, fuzzy
 msgid ""
 "Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
 "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgstr ""
-"Delfador der Große spricht die Wahrheit, Prinzessin. Eure Mutter Asheviere "
-"hat den Tod der Prinzen befohlen."
+"Delfador der Große spricht die Wahrheit, Prinzessin. Eure Mutter Asheviere, "
+"die Königinwitwe, hat den Tod der Prinzen Wesnoths befohlen."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:159
@@ -7233,15 +7238,15 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:173
-#, fuzzy
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
 "Dowager. The throne is rightfully mine, and with the Sceptre I can prove it."
 msgstr ""
 "Und darum muss ich das Zepter nehmen. Ich werde zurückkehren und das Volk "
-"wird mich als Königin akzeptieren. Ich werde gerecht und gütig regieren. Der "
-"Thron ist rechtmäßig mein und mit dem Zepter kann ich es beweisen."
+"wird mich als Königin akzeptieren. Ich werde gerecht und gütig regieren. "
+"Meine Mutter ist nur Königinwitwe. Der Thron ist rechtmäßig mein und mit dem "
+"Zepter kann ich es beweisen."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:178
@@ -7254,7 +7259,6 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:184
-#, fuzzy
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Dowager. The Throne is rightfully mine, and I "
@@ -7262,9 +7266,9 @@ msgid ""
 "adviser and counselor, Delfador."
 msgstr ""
 "Ich besitze das Zepter! Ich werde zurückkehren und die Menschen werden mich "
-"als Königin akzeptieren. Ich werde gerecht und gütig regieren. Der Thron ist "
-"rechtmäßig mein. Ich werde euch sogar als meinen Ratgeber akzeptieren, "
-"Delfador."
+"als Königin akzeptieren. Meine Mutter ist nur Königinwitwe. Der Thron ist "
+"rechtmäßig mein und Ich werde mit Recht und Güte regieren. Vielleicht werde "
+"ich euch sogar als meinen Ratgeber akzeptieren, Delfador."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:189
@@ -8516,7 +8520,6 @@ msgstr "Dunkle Königin"
 
 #. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
-#, fuzzy
 msgid ""
 "The evil queen Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
@@ -8584,17 +8587,17 @@ msgstr "Prinzessin"
 #. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
-#, fuzzy
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
 "combatant and leader. The units of lower level around the Princess will "
 "fight better due to her presence."
 msgstr ""
-"Als Adlige hat die Prinzessin das Schwertkämpfen bei den besten Generälen "
-"gelernt. Außerdem wurden sie von den klügsten Köpfen des Landes in "
-"verschiedenen Kampftaktiken unterrichtet, was sie zu einer guten Kämpferin "
-"und Anführerin macht."
+"Als geborene Adlige hat die Prinzessin das Schwertkämpfen bei den besten "
+"Generälen und Kampftaktiken bei den weisesten Strategen erlernt, was sie zu "
+"einer herausragenden Kämpferin und Anführerin macht. Sämtliche "
+"niedrigstufigeren Einheiten, welche sich um die Prinzessin scharen, werden "
+"durch ihre Präsenz zu größerem Wagemut inspiriert."
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
@@ -8636,7 +8639,7 @@ msgstr "Klauen"
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:9
 msgid "initiative"
-msgstr ""
+msgstr "Kampfgepühr"
 
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:10
@@ -8644,12 +8647,16 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"Alle angrenzenden, befreundeten Einheiten führen den ersten Streich im "
+"Nahkampf, sogar wenn sie sich verteidigen."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
 msgid ""
 "This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
+"Das Wissen dieser Einheit um Nahkampftaktiken, erlaubt es allen angrenzenden "
+"Verbündeten selbst in der Verteidigung den ersten Streich zu führen."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9
