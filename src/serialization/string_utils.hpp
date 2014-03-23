@@ -26,13 +26,15 @@
 
 #include "SDL_types.h"
 
-/** The type we use to represent Unicode strings. */
-typedef std::vector<wchar_t> wide_string;
-
-/** If we append a 0 to that one, we can pass it to SDL_ttf as a const Uint16*. */
-typedef std::vector<Uint16> ucs2_string;
-typedef std::vector<Uint32> ucs4_string;
+typedef Uint32 ucs4char;
+typedef std::vector<ucs4char> ucs4_string;
 namespace utf8 { typedef std::string string; }
+/**
+ * For win32 API.
+ * On windows, wchar_t is defined as Uint16
+ * Wide strings are expected to be UTF-16
+ */
+typedef std::vector<wchar_t> utf16_string;
 
 class t_string;
 
@@ -315,9 +317,11 @@ bool isvalid_wildcard(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
 
-std::string wstring_to_string(const wide_string &);
-wide_string string_to_wstring(const std::string &);
-std::string wchar_to_string(const wchar_t);
+std::string ucs4string_to_string(const ucs4_string &);
+ucs4_string string_to_ucs4string(const std::string &);
+std::string ucs4char_to_string(const ucs4char);
+
+utf16_string ucs4string_to_utf16string(const ucs4_string &);
 
 /**
  * Truncates a string.
@@ -332,7 +336,7 @@ std::string wchar_to_string(const wchar_t);
  *                       characters.
  * @param size         The size to truncate at.
  */
-void truncate_as_wstring(std::string& str, const size_t size);
+void truncate_as_ucs4string(std::string& str, const size_t size);
 
 /**
  * Truncates a string to a given utf-8 character count and then appends an ellipsis.
@@ -354,10 +358,10 @@ namespace utf8 {
 	{
 	public:
 		typedef std::input_iterator_tag iterator_category;
-		typedef wchar_t value_type;
+		typedef ucs4char value_type;
 		typedef ptrdiff_t difference_type;
-		typedef wchar_t* pointer;
-		typedef wchar_t& reference;
+		typedef ucs4char* pointer;
+		typedef ucs4char& reference;
 
 		iterator(const std::string& str);
 		iterator(std::string::const_iterator const &begin, std::string::const_iterator const &end);
@@ -368,13 +372,13 @@ namespace utf8 {
 		bool operator==(const utf8::iterator& a) const;
 		bool operator!=(const utf8::iterator& a) const { return ! (*this == a); }
 		iterator& operator++();
-		wchar_t operator*() const;
+		ucs4char operator*() const;
 		bool next_is_end();
 		const std::pair<std::string::const_iterator, std::string::const_iterator>& substr() const;
 	private:
 		void update();
 
-		wchar_t current_char;
+		ucs4char current_char;
 		std::string::const_iterator string_end;
 		std::pair<std::string::const_iterator, std::string::const_iterator> current_substr;
 	};

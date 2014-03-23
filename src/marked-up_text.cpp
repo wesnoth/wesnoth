@@ -261,7 +261,7 @@ bool is_format_char(char c)
 	}
 }
 
-bool is_cjk_char(const wchar_t c)
+bool is_cjk_char(const ucs4char ch)
 {
 	/**
 	 * You can check these range at http://unicode.org/charts/
@@ -269,9 +269,6 @@ bool is_cjk_char(const wchar_t c)
 	 * Notice that not all characters in that part is still in use today, so don't list them all here.
 	 * Below are characters that I guess may be used in wesnoth translations.
 	 */
-
-	// cast to silence a windows warning (uses only 16bit for wchar_t)
-	const unsigned int ch = static_cast<unsigned int>(c);
 
 	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
 
@@ -359,7 +356,7 @@ namespace {
  *   CJK 标点符号 (CJK punctuations)
  *   http://www.unicode.org/charts/PDF/U3000.pdf
  */
-inline bool no_break_after(const wchar_t ch)
+inline bool no_break_after(const ucs4char ch)
 {
 	return
 		/**
@@ -380,7 +377,7 @@ inline bool no_break_after(const wchar_t ch)
 		ch == 0x3016 || ch == 0x301a || ch == 0x301d;
 }
 
-inline bool no_break_before(const wchar_t ch)
+inline bool no_break_before(const ucs4char ch)
 {
 	return
 		/**
@@ -417,7 +414,7 @@ inline bool no_break_before(const wchar_t ch)
 		ch == 0x301b || ch == 0x301e;
 }
 
-inline bool break_before(const wchar_t ch)
+inline bool break_before(const ucs4char ch)
 {
 	if(no_break_before(ch))
 		return false;
@@ -425,7 +422,7 @@ inline bool break_before(const wchar_t ch)
 	return is_cjk_char(ch);
 }
 
-inline bool break_after(const wchar_t ch)
+inline bool break_after(const ucs4char ch)
 {
 	if(no_break_after(ch))
 		return false;
@@ -459,7 +456,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 		if(start_of_line) {
 			line_width = 0;
 			format_string.clear();
-			while(ch != end && *ch < static_cast<wchar_t>(0x100)
+			while(ch != end && *ch < static_cast<ucs4char>(0x100)
 					&& is_format_char(*ch) && !ch.next_is_end()) {
 
 				format_string.append(ch.substr().first, ch.substr().second);
@@ -482,7 +479,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 				current_word = *ch;
 				++ch;
 			} else {
-				wchar_t previous = 0;
+				ucs4char previous = 0;
 				for(;ch != utf8::iterator::end(unwrapped_text) &&
 						*ch != ' ' && *ch != '\n'; ++ch) {
 

@@ -16,6 +16,7 @@
 #define TEXT_HPP_INCLUDED
 
 #include "sdl_utils.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -101,7 +102,7 @@ public:
 	 *
 	 * @returns                   True upon success, false otherwise.
 	 */
-	bool insert_unicode(const unsigned offset, const wchar_t unicode);
+	bool insert_unicode(const unsigned offset, ucs4char unicode);
 
 	/**
 	 * Inserts unicode text.
@@ -112,7 +113,7 @@ public:
 	 * @returns                   The number of characters inserted.
 	 */
 	unsigned insert_unicode(
-		const unsigned offset, const std::vector<wchar_t>& unicode);
+		const unsigned offset, const ucs4_string& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 

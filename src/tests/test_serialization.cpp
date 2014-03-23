@@ -43,3 +43,32 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 	BOOST_CHECK( utf8::truncate(unicode,3) == "\xC3\xBCni"); // "üni"
 }
 
+BOOST_AUTO_TEST_CASE( utils_unicode_test )
+{
+	utf8::string apple_u8("apple");
+	ucs4_string apple_u4 = utils::string_to_ucs4string(apple_u8);
+	utf16_string apple_u16 = utils::ucs4string_to_utf16string(apple_u4);
+
+	BOOST_CHECK( apple_u4.size() == 5 );
+	BOOST_CHECK_EQUAL( apple_u8, utils::ucs4string_to_string(apple_u4) );
+	BOOST_CHECK_EQUAL( apple_u8.size(), apple_u16.size() );
+
+	ucs4_string water_u4;
+	water_u4.push_back(0x6C34);
+	utf8::string water_u8 = utils::ucs4string_to_string(water_u4);
+	utf16_string water_u16 = utils::ucs4string_to_utf16string(water_u4);
+
+	BOOST_CHECK_EQUAL(water_u4[0], water_u16[0]);
+	BOOST_CHECK_EQUAL(water_u8, "\u6C34");
+
+	utf8::string nonbmp_u8("\U00010000");
+	ucs4_string nonbmp_u4 = utils::string_to_ucs4string(nonbmp_u8);
+	utf16_string nonbmp_u16 = utils::ucs4string_to_utf16string(nonbmp_u4);
+
+	BOOST_CHECK_EQUAL(nonbmp_u8.size(), 4);
+	BOOST_CHECK_EQUAL(nonbmp_u4[0], 0x10000);
+	BOOST_CHECK_EQUAL(nonbmp_u16[0], 0xD800);
+	BOOST_CHECK_EQUAL(nonbmp_u16[1], 0xDC00);
+	BOOST_CHECK_EQUAL(nonbmp_u8, utils::ucs4string_to_string(nonbmp_u4));
+}
+
