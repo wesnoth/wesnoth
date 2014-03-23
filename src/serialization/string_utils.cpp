@@ -25,7 +25,9 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#include <limits>
 #include <boost/array.hpp>
+#include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_engine("engine");
@@ -858,6 +860,24 @@ static int byte_size_from_utf8_first(const unsigned char ch)
 	}
 }
 
+static size_t byte_size_from_ucs4_codepoint(ucs4char ch)
+{
+	if(ch < (1u << 7))
+		return 1;
+	else if(ch < (1u << 11))
+		return 2;
+	else if(ch < (1u << 16))
+		return 3;
+	else if(ch < (1u << 21))
+		return 4;
+	else if(ch < (1u << 26))
+		return 5;
+	else if(ch < (1u << 31))
+		return 6;
+	else
+		throw invalid_utf8_exception(); // Invalid UCS-4
+}
+
 utf8_iterator::utf8_iterator(const std::string& str) :
 	current_char(0),
 	string_end(str.end()),
@@ -897,7 +917,7 @@ utf8_iterator& utf8_iterator::operator++()
 	return *this;
 }
 
-wchar_t utf8_iterator::operator*() const
+ucs4char utf8_iterator::operator*() const
 {
 	return current_char;
 }
@@ -942,35 +962,25 @@ void utf8_iterator::update()
 
 		current_char = (current_char << 6) | (static_cast<unsigned char>(*c) & 0x3F);
 	}
+
+	// Check for non-shortest-form encoding
+	// This has been forbidden in Unicode 3.1 for security reasons
+	if (size > byte_size_from_ucs4_codepoint(current_char))
+		throw invalid_utf8_exception();
 }
 
 
-std::string wstring_to_string(const wide_string &src)
+std::string ucs4string_to_string(const ucs4_string &src)
 {
 	std::string ret;
 
 	try {
-		for(wide_string::const_iterator i = src.begin(); i != src.end(); ++i) {
+		for(ucs4_string::const_iterator i = src.begin(); i != src.end(); ++i) {
 			unsigned int count;
-			wchar_t ch = *i;
+			ucs4char ch = *i;
 
 			// Determine the bytes required
-			count = 1;
-			if(ch >= 0x80)
-				count++;
-
-			Uint32 bitmask = 0x800;
-			for(unsigned int j = 0; j < 5; ++j) {
-				if(static_cast<Uint32>(ch) >= bitmask) {
-					count++;
-				}
-
-				bitmask <<= 5;
-			}
-
-			if(count > 6) {
-				throw invalid_utf8_exception();
-			}
+			count = byte_size_from_ucs4_codepoint(ch);
 
 			if(count == 1) {
 				ret.push_back(static_cast<char>(ch));
@@ -990,21 +1000,21 @@ std::string wstring_to_string(const wide_string &src)
 		return ret;
 	}
 	catch(invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid wide character string\n";
+		ERR_GENERAL << "Invalid UCS-4 character string\n";
 		return ret;
 	}
 }
 
-std::string wchar_to_string(const wchar_t c)
+std::string ucs4char_to_string(const ucs4char c)
 {
-	wide_string s;
+	ucs4_string s;
 	s.push_back(c);
-	return wstring_to_string(s);
+	return ucs4string_to_string(s);
 }
 
-wide_string string_to_wstring(const std::string &src)
+ucs4_string string_to_ucs4string(const std::string &src)
 {
-	wide_string res;
+	ucs4_string res;
 
 	try {
 		utf8_iterator i1(src);
@@ -1024,6 +1034,28 @@ wide_string string_to_wstring(const std::string &src)
 	return res;
 }
 
+utf16_string ucs4string_to_utf16string(const ucs4_string &src)
+{
+	utf16_string res;
+	const Uint32 bit17 = 0x10000;
+	BOOST_FOREACH(const ucs4char &u4, src) {
+		if(u4 < bit17)
+			res.push_back(static_cast<wchar_t>(u4));
+		else {
+			const Uint32 char20 = u4 - bit17;
+			assert(char20 < (1 << 20));
+			const ucs4char lead = 0xD800 + (char20 >> 10);
+			const ucs4char trail = 0xDC00 + (char20 & 0x3FF);
+			assert(lead < bit17);
+			assert(trail < bit17);
+			res.push_back(static_cast<wchar_t>(lead));
+			res.push_back(static_cast<wchar_t>(trail));
+		}
+	}
+
+	return res;
+}
+
 utf8_string lowercase(const utf8_string& s)
 {
 	if(!s.empty()) {
@@ -1031,15 +1063,12 @@ utf8_string lowercase(const utf8_string& s)
 		std::string res;
 
 		for(;itor != utf8_iterator::end(s); ++itor) {
-#if defined(__APPLE__) || defined(__OpenBSD__) || defined(__AMIGAOS4__)
-			/** @todo FIXME: Should we support towupper on recent OSX platforms? */
-			wchar_t uchar = *itor;
-			if(uchar >= 0 && uchar < 0x100)
-				uchar = tolower(uchar);
-			res += utils::wchar_to_string(uchar);
-#else
-			res += utils::wchar_to_string(towlower(*itor));
-#endif
+			ucs4char uchar = *itor;
+			// If wchar_t is less than 32 bits wide, we cannot apply towlower() to all codepoints
+			if(uchar <= static_cast<ucs4char>(std::numeric_limits<wchar_t>::max()) &&
+			   uchar >= static_cast<ucs4char>(std::numeric_limits<wchar_t>::min()))
+				uchar = towlower(static_cast<wchar_t>(uchar));
+			res += utils::ucs4char_to_string(uchar);
 		}
 
 		res.append(itor.substr().second, s.end());
@@ -1098,12 +1127,12 @@ utf8_string& u8truncate(utf8_string& str, const size_t size)
 	return u8erase(str, size);
 }
 
-void truncate_as_wstring(std::string& str, const size_t size)
+void truncate_as_ucs4string(std::string& str, const size_t size)
 {
-	wide_string wide = utils::string_to_wstring(str);
-	if(wide.size() > size) {
-		wide.resize(size);
-		str = utils::wstring_to_string(wide);
+	ucs4_string utf8_str = utils::string_to_ucs4string(str);
+	if(utf8_str.size() > size) {
+		utf8_str.resize(size);
+		str = utils::ucs4string_to_string(utf8_str);
 	}
 }
 

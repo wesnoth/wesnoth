@@ -55,13 +55,13 @@ protected:
 	virtual void scroll(unsigned int pos);
 
 private:
-	virtual void handle_text_changed(const wide_string&) {}
+	virtual void handle_text_changed(const ucs4_string&) {}
 
 	size_t max_size_;
 
 	int font_size_;
 
-	wide_string text_;
+	ucs4_string text_;
 
 	// mutable unsigned int firstOnScreen_;
 	int cursor_;
@@ -100,7 +100,7 @@ private:
 
 	void draw_cursor(int pos, CVideo &video) const;
 	void update_text_cache(bool reset = false, const SDL_Color& color =font::NORMAL_COLOR);
-	surface add_text_line(const wide_string& text, const SDL_Color& color =font::NORMAL_COLOR);
+	surface add_text_line(const ucs4_string& text, const SDL_Color& color =font::NORMAL_COLOR);
 	bool is_selection();
 	void erase_selection();
 
