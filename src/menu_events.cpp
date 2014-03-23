@@ -693,12 +693,12 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	if (res < 0) { 
 		return;
 	}
-	else if(recall_list_team[res]->recall_cost() < 0) {
+	else if(recall_list_team[res]->recall_cost() < -1) {
 		unit_cost = recall_list_team[res]->recall_cost();
 	}
 
 	int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
-	if (current_team.gold() - wb_gold < unit_cost) {
+	if ((current_team.gold() - wb_gold) < unit_cost) {
 		utils::string_map i18n_symbols;
 		i18n_symbols["cost"] = lexical_cast<std::string>(unit_cost);
 		std::string msg = vngettext(
