@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-23 18:07+0100\n"
 "PO-Revision-Date: 2008-05-11 16:12+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1521,7 +1521,7 @@ msgstr ""
 #: data/gui/default/window/gamestate_inspector.cfg:254
 #: data/gui/default/window/lobby_main.cfg:619
 #: data/gui/default/window/lobby_player_info.cfg:200
-#: data/gui/default/window/message.cfg:135 src/construct_dialog.cpp:135
+#: data/gui/default/window/message.cfg:137 src/construct_dialog.cpp:135
 #: src/generators/mapgen_dialog.cpp:110
 msgid "Close"
 msgstr ""
@@ -1583,7 +1583,7 @@ msgstr ""
 #: data/gui/default/window/edit_text.cfg:130
 #: data/gui/default/window/editor_edit_label.cfg:191
 #: data/gui/default/window/editor_edit_scenario.cfg:304
-#: data/gui/default/window/editor_edit_side.cfg:490
+#: data/gui/default/window/editor_edit_side.cfg:488
 #: data/gui/default/window/editor_generate_map.cfg:107
 #: data/gui/default/window/editor_new_map.cfg:125
 #: data/gui/default/window/editor_resize_map.cfg:284
@@ -1592,7 +1592,7 @@ msgstr ""
 #: data/gui/default/window/game_load.cfg:477
 #: data/gui/default/window/game_save.cfg:135
 #: data/gui/default/window/language_selection.cfg:141
-#: data/gui/default/window/message.cfg:149
+#: data/gui/default/window/message.cfg:151
 #: data/gui/default/window/mp_change_control.cfg:160
 #: data/gui/default/window/mp_cmd_wrapper.cfg:470
 #: data/gui/default/window/mp_connect.cfg:176
@@ -1860,7 +1860,7 @@ msgstr ""
 #: data/gui/default/window/edit_text.cfg:116
 #: data/gui/default/window/editor_edit_label.cfg:177
 #: data/gui/default/window/editor_edit_scenario.cfg:290
-#: data/gui/default/window/editor_edit_side.cfg:478
+#: data/gui/default/window/editor_edit_side.cfg:476
 #: data/gui/default/window/editor_set_starting_position.cfg:162
 #: data/gui/default/window/folder_create.cfg:120
 #: data/gui/default/window/game_load.cfg:463
@@ -1884,8 +1884,8 @@ msgstr ""
 #: data/gui/default/window/wml_error.cfg:162
 #: data/gui/default/window/wml_message.cfg:485
 #: data/gui/default/window/wml_message.cfg:714 src/construct_dialog.cpp:121
-#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:167
-#: src/gui/dialogs/message.cpp:174
+#: src/construct_dialog.cpp:128 src/gui/dialogs/message.cpp:173
+#: src/gui/dialogs/message.cpp:180
 msgid "OK"
 msgstr ""
 
@@ -2218,21 +2218,16 @@ msgstr ""
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
-msgid "controller^Human/AI"
-msgstr ""
-
-#. [row]
-#: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^AI only"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/editor_edit_side.cfg:406
+#: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^None"
 msgstr ""
 
 #. [row]
-#: data/gui/default/window/editor_edit_side.cfg:423
+#: data/gui/default/window/editor_edit_side.cfg:421
 msgid "controller^Player number:"
 msgstr ""
 
@@ -2430,7 +2425,7 @@ msgstr ""
 #: data/gui/default/window/game_save_overwrite.cfg:97
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:130
 #: data/gui/default/window/mp_host_game_prompt.cfg:105
-#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:182
+#: src/construct_dialog.cpp:124 src/gui/dialogs/message.cpp:188
 msgid "Yes"
 msgstr ""
 
@@ -2442,7 +2437,7 @@ msgstr ""
 #: data/gui/default/window/game_save_overwrite.cfg:111
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:144
 #: data/gui/default/window/mp_host_game_prompt.cfg:118
-#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:185
+#: src/construct_dialog.cpp:125 src/gui/dialogs/message.cpp:191
 msgid "No"
 msgstr ""
 
@@ -3290,8 +3285,8 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:199
-#: src/gui/dialogs/transient_message.cpp:59
+#: data/gui/default/window/wml_error.cfg:40 src/gui/dialogs/message.cpp:205
+#: src/gui/dialogs/transient_message.cpp:77
 msgid "Error"
 msgstr ""
 
