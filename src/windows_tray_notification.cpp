@@ -186,7 +186,7 @@ std::wstring windows_tray_notification::string_to_wstring(const std::string& str
 		else
 			u16_string.resize(maxlength);
 	}
-	return std::wstring(utf16_string.begin(), utf16_string.end());
+	return std::wstring(u16_string.begin(), u16_string.end());
 }
 
 bool windows_tray_notification::show(std::string title, std::string message)
