@@ -44,12 +44,12 @@ static const config &empty_topics() {
 		return cfg;
 }
 
-static void add_prefixes(const wide_string& str, size_t length, markov_prefix_map& res)
+static void add_prefixes(const ucs4_string& str, size_t length, markov_prefix_map& res)
 {
 	for(size_t i = 0; i <= str.size(); ++i) {
 		const size_t start = i > length ? i - length : 0;
-		const wide_string key(str.begin() + start, str.begin() + i);
-		const wchar_t c = i != str.size() ? str[i] : 0;
+		const ucs4_string key(str.begin() + start, str.begin() + i);
+		const ucs4char c = i != str.size() ? str[i] : 0;
 		res[key].push_back(c);
 	}
 }
@@ -59,19 +59,19 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(utils::string_to_wstring(*i),length,res);
+		add_prefixes(utils::string_to_ucs4string(*i),length,res);
 	}
 
 	return res;
 }
 
-static wide_string markov_generate_name(const markov_prefix_map& prefixes,
+static ucs4_string markov_generate_name(const markov_prefix_map& prefixes,
 	size_t chain_size, size_t max_len, rand_rng::simple_rng* rng)
 {
 	if(chain_size == 0)
-		return wide_string();
+		return ucs4_string();
 
-	wide_string prefix, res;
+	ucs4_string prefix, res;
 
 	// Since this function is called in the name description in a MP game it
 	// uses the local locale. The locale between players can be different and
@@ -96,7 +96,7 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 			return res;
 		}
 
-		const wchar_t c = i->second[random[j++]%i->second.size()];
+		const ucs4char c = i->second[random[j++]%i->second.size()];
 		if(c == 0) {
 			return res;
 		}
@@ -119,17 +119,17 @@ static wide_string markov_generate_name(const markov_prefix_map& prefixes,
 	// name has end-of-string as a possible next character in the
 	// markov prefix map. If no valid ending is found, use the
 	// originally generated name.
-	wide_string originalRes = res;
+	ucs4_string originalRes = res;
 	int prefixLen;
 	while(!res.empty()) {
 		prefixLen = chain_size < res.size() ? chain_size : res.size();
-		prefix = wide_string(res.end() - prefixLen, res.end());
+		prefix = ucs4_string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
 		if (i == prefixes.end() || i->second.empty()) {
 			return res;
 		}
-		if (std::find(i->second.begin(), i->second.end(), static_cast<wchar_t>(0))
+		if (std::find(i->second.begin(), i->second.end(), static_cast<ucs4char>(0))
 				!= i->second.end()) {
 			// This ending is valid.
 			return res;
@@ -202,7 +202,7 @@ unit_race::unit_race(const config& cfg) :
 std::string unit_race::generate_name(
 		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
 {
-	return utils::wstring_to_string(
+	return utils::ucs4string_to_string(
 		markov_generate_name(next_[gender], chain_size_, 12, rng));
 }
 

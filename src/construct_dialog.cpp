@@ -910,8 +910,8 @@ void filter_textbox::delete_item(int selection) {
 	/* dialog_.set_menu_items(filtered_items_); */
 }
 
-void filter_textbox::handle_text_changed(const wide_string& text) {
-	const std::vector<std::string> words = utils::split(utils::wstring_to_string(text),' ');
+void filter_textbox::handle_text_changed(const ucs4_string& text) {
+	const std::vector<std::string> words = utils::split(utils::ucs4string_to_string(text),' ');
 	if (words == last_words)
 		return;
 	last_words = words;

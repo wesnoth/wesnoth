@@ -185,15 +185,15 @@ unsigned ttext::insert_text(const unsigned offset, const std::string& text)
 		return 0;
 	}
 
-	return insert_unicode(offset, utils::string_to_wstring(text));
+	return insert_unicode(offset, utils::string_to_ucs4string(text));
 }
 
-bool ttext::insert_unicode(const unsigned offset, const wchar_t unicode)
+bool ttext::insert_unicode(const unsigned offset, ucs4char unicode)
 {
-	return (insert_unicode(offset, wide_string(1, unicode)) == 1);
+	return (insert_unicode(offset, ucs4_string(1, unicode)) == 1);
 }
 
-unsigned ttext::insert_unicode(const unsigned offset, const wide_string& unicode)
+unsigned ttext::insert_unicode(const unsigned offset, const ucs4_string& unicode)
 {
 	assert(offset <= length_);
 
@@ -204,10 +204,10 @@ unsigned ttext::insert_unicode(const unsigned offset, const wide_string& unicode
 	const unsigned len = length_ + unicode.size() > maximum_length_
 		? maximum_length_ - length_  : unicode.size();
 
-	wide_string tmp = utils::string_to_wstring(text_);
+	ucs4_string tmp = utils::string_to_ucs4string(text_);
 	tmp.insert(tmp.begin() + offset, unicode.begin(), unicode.begin() + len);
 
-	set_text(utils::wstring_to_string(tmp), false);
+	set_text(utils::ucs4string_to_string(tmp), false);
 
 	return len;
 }
@@ -295,8 +295,8 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
 
-		const wide_string wide = utils::string_to_wstring(text);
-		const std::string narrow = utils::wstring_to_string(wide);
+		const ucs4_string wide = utils::string_to_ucs4string(text);
+		const std::string narrow = utils::ucs4string_to_string(wide);
 		if(text != narrow) {
 			ERR_GUI_L << "ttext::" << __func__
 					<< " text '" << text
@@ -450,9 +450,9 @@ ttext& ttext::set_maximum_length(const size_t maximum_length)
 		maximum_length_ = maximum_length;
 		if(length_ > maximum_length_) {
 
-			wide_string tmp = utils::string_to_wstring(text_);
+			ucs4_string tmp = utils::string_to_ucs4string(text_);
 			tmp.resize(maximum_length_);
-			set_text(utils::wstring_to_string(tmp), false);
+			set_text(utils::ucs4string_to_string(tmp), false);
 		}
 	}
 

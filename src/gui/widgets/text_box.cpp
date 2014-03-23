@@ -209,9 +209,9 @@ void ttext_box::delete_selection()
 	}
 
 	// Update the text, we need to assume it's a wide string.
-	wide_string tmp = utils::string_to_wstring(get_value());
+	ucs4_string tmp = utils::string_to_ucs4string(get_value());
 	tmp.erase(tmp.begin() + start, tmp.begin() + start + len);
-	const std::string& text = utils::wstring_to_string(tmp);
+	const std::string& text = utils::ucs4string_to_string(tmp);
 	set_value(text);
 	set_cursor(start, false);
 }

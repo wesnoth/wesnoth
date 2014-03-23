@@ -178,8 +178,9 @@ void windows_tray_notification::switch_to_wesnoth_window()
 
 std::wstring windows_tray_notification::string_to_wstring(const std::string& string)
 {
-	const std::vector<wchar_t> wide_string = utils::string_to_wstring(string);
-	return std::wstring(wide_string.begin(), wide_string.end());
+	const utils::ucs4_string u4_string = utils::string_to_ucs4string(string);
+	const utils::utf16_string u16_string = utils::ucs4string_to_utf16string(u4_string);
+	return std::wstring(utf16_string.begin(), utf16_string.end());
 }
 
 bool windows_tray_notification::show(std::string title, std::string message)

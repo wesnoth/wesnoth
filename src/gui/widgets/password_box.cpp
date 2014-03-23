@@ -40,7 +40,7 @@ namespace
 
 size_t get_text_length(const std::string& str)
 {
-	return utils::string_to_wstring(str).size();
+	return utils::string_to_ucs4string(str).size();
 }
 
 } // namespace

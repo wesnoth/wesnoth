@@ -177,17 +177,17 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 			data.insert(std::make_pair("icon", item));
 
 			std::string tmp = c["name"];
-			utils::truncate_as_wstring(tmp, 20);
+			utils::truncate_as_ucs4string(tmp, 20);
 			item["label"] = tmp;
 			data.insert(std::make_pair("name", item));
 
 			tmp = c["version"].str();
-			utils::truncate_as_wstring(tmp, 12);
+			utils::truncate_as_ucs4string(tmp, 12);
 			item["label"] = tmp;
 			data.insert(std::make_pair("version", item));
 
 			tmp = c["author"].str();
-			utils::truncate_as_wstring(tmp, 16);
+			utils::truncate_as_ucs4string(tmp, 16);
 			item["label"] = tmp;
 			data.insert(std::make_pair("author", item));
 
@@ -213,17 +213,17 @@ void taddon_list::create_campaign(tpane& pane, const config& campaign)
 	data.insert(std::make_pair("icon", item));
 
 	std::string tmp = campaign["name"];
-	utils::truncate_as_wstring(tmp, 20);
+	utils::truncate_as_ucs4string(tmp, 20);
 	item["label"] = tmp;
 	data.insert(std::make_pair("name", item));
 
 	tmp = campaign["version"].str();
-	utils::truncate_as_wstring(tmp, 12);
+	utils::truncate_as_ucs4string(tmp, 12);
 	item["label"] = tmp;
 	data.insert(std::make_pair("version", item));
 
 	tmp = campaign["author"].str();
-	utils::truncate_as_wstring(tmp, 16);
+	utils::truncate_as_ucs4string(tmp, 16);
 	item["label"] = tmp;
 	data.insert(std::make_pair("author", item));
 

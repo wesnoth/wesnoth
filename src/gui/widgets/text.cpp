@@ -154,9 +154,9 @@ void ttext_::copy_selection(const bool mouse)
 		start -= length;
 	}
 
-	const wide_string& wtext = utils::string_to_wstring(text_.text());
-	const std::string& text = utils::wstring_to_string(
-			wide_string(wtext.begin() + start, wtext.begin() + start + length));
+	const ucs4_string& wtext = utils::string_to_ucs4string(text_.text());
+	const std::string& text = utils::ucs4string_to_string(
+			ucs4_string(wtext.begin() + start, wtext.begin() + start + length));
 
 	copy_to_clipboard(text, mouse);
 }
