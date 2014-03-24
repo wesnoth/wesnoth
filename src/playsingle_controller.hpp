@@ -94,6 +94,7 @@ protected:
 	const cursor::setter cursor_setter;
 	std::deque<config> data_backlog_;
 	gui::floating_textbox textbox_info_;
+
 	replay_network_sender replay_sender_;
 
 	bool end_turn_;
