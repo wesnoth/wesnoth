@@ -186,7 +186,6 @@ chat_msg::~chat_msg()
 replay::replay() :
 	cfg_(),
 	pos_(0),
-	current_(NULL),
 	skip_(false),
 	message_locations()
 {}
@@ -194,7 +193,6 @@ replay::replay() :
 replay::replay(const config& cfg) :
 	cfg_(cfg),
 	pos_(0),
-	current_(NULL),
 	skip_(false),
 	message_locations()
 {}
@@ -244,14 +242,7 @@ void replay::init_side()
 
 void replay::add_start()
 {
-	config* const cmd = add_command(true);
-	/*
-		before, the "start" command was called from play_controller::init which is called from play_controller contructor which is called bepfre the contrucotr of replay_sender_ 
-		and thats was why the "start" command wanst't sended over network.
-	
-		i wanto to add the stat event direct before the "prestart" is fired. which happends after playsingle_controller::replay_sender_ is initialised.
-		in order to allow ger_user_inut in prestart events.
-	*/
+	config* const cmd = add_command();
 	(*cmd)["sent"] = true;
 	cmd->add_child("start");
 }
@@ -291,7 +282,7 @@ void replay::user_input(const std::string &name, const config &input, int from_s
 void replay::add_label(const terrain_label* label)
 {
 	assert(label);
-	config* const cmd = add_command(false);
+	config* const cmd = add_command();
 
 	(*cmd)["undo"] = false;
 
@@ -304,7 +295,7 @@ void replay::add_label(const terrain_label* label)
 
 void replay::clear_labels(const std::string& team_name, bool force)
 {
-	config* const cmd = add_command(false);
+	config* const cmd = add_command();
 
 	(*cmd)["undo"] = false;
 	config val;
@@ -315,7 +306,7 @@ void replay::clear_labels(const std::string& team_name, bool force)
 
 void replay::add_rename(const std::string& name, const map_location& loc)
 {
-	config* const cmd = add_command(false);
+	config* const cmd = add_command();
 	(*cmd)["async"] = true; // Not undoable, but depends on moves/recruits that are
 	config val;
 	loc.write(val);
@@ -368,7 +359,7 @@ void replay::add_chat_message_location()
 
 void replay::speak(const config& cfg)
 {
-	config* const cmd = add_command(false);
+	config* const cmd = add_command();
 	if(cmd != NULL) {
 		cmd->add_child("speak",cfg);
 		(*cmd)["undo"] = false;
@@ -579,8 +570,6 @@ void replay::undo_cut(config& dst)
 	}
 	remove_command(cmd);
 	pos_ = ncommands();
-	current_ = NULL;
-	set_random(NULL);
 }
 
 void replay::undo()
@@ -601,16 +590,12 @@ int replay::ncommands() const
 	return cfg_.child_count("command");
 }
 
-config* replay::add_command(bool update_random_context)
+config* replay::add_command()
 {
 	//pos_ != ncommands() means that there is a command on the replay which would be skipped.
 	assert(pos_ == ncommands());
 	pos_ = ncommands()+1;
-	current_ = &cfg_.add_child("command");
-	if(update_random_context)
-		set_random(current_);
-
-	return current_;
+	return &cfg_.add_child("command");
 }
 
 void replay::start_replay()
@@ -630,16 +615,12 @@ config* replay::get_next_action()
 		return NULL;
 
 	LOG_REPLAY << "up to replay action " << pos_ + 1 << '/' << ncommands() << '\n';
-
-	current_ = &command(pos_);
-	set_random(current_);
+	
+	config* retv =  &command(pos_);
 	++pos_;
-	return current_;
+	return retv;
 }
 
-void replay::pre_replay()
-{
-}
 
 bool replay::at_end() const
 {
@@ -649,8 +630,6 @@ bool replay::at_end() const
 void replay::set_to_end()
 {
 	pos_ = ncommands();
-	current_ = NULL;
-	set_random(NULL);
 }
 
 void replay::clear()
@@ -659,8 +638,6 @@ void replay::clear()
 	message_log.clear();
 	cfg_ = config();
 	pos_ = 0;
-	current_ = NULL;
-	set_random(NULL);
 	skip_ = false;
 }
 
@@ -790,7 +767,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 
 		config::all_children_itors ch_itors = cfg->all_children_range();
-		//if there is an empty command tag, create by pre_replay() or a start tag
+		//if there is an empty command tag or a start tag
 		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
 		{
 			//do nothing
@@ -903,13 +880,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			//this means user choice.
 			// it never makes sense to try to execute a user choice.
 			// but we are called from 
-			// the onyl other otoion for "dependent" command is checksum wich is already checked.
+			// the only other option for "dependent" command is checksum wich is already checked.
 			assert(cfg->all_children_count() == 1);
 			std::string child_name = cfg->all_children_range().first->key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
 			get_replay_source().revert_action();
-			// simply returning here is dangerous becaus we don't know wether the caller was waiting for a dependen command or not, 
-			// in case not, it's an oos error we don't report.
 			return false;
 		}
 		else

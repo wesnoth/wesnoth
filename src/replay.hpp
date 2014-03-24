@@ -113,7 +113,6 @@ public:
 	void start_replay();
 	void revert_action();
 	config* get_next_action();
-	void pre_replay();
 
 	bool at_end() const;
 	void set_to_end();
@@ -129,9 +128,6 @@ public:
 	static void process_error(const std::string& msg);
 
 private:
-	//generic for add_movement and add_attack
-	void add_pos(const std::string& type,
-	             const map_location& a, const map_location& b);
 
 	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;
 
@@ -139,20 +135,11 @@ private:
 	void remove_command(int);
 	/** Adds a new empty command to the command list.
 	 *
-	 * @param update_random_context  If set to false, do not update the
-	 *           random context variables: all random generation will take
-	 *           place in the previous random context. Used for commands
-	 *           for which "random context" is pointless, and which can be
-	 *           issued while some other commands are still taking place,
-	 *           like, for example, messages during combats.
-	 *
 	 * @return a pointer to the added command
 	 */
-	config* add_command(bool update_random_context=true);
+	config* add_command();
 	config cfg_;
 	int pos_;
-
-	config* current_;
 
 	bool skip_;
 
@@ -189,8 +176,7 @@ namespace mp_sync {
 
 /**
  * Interface for querying local choices.
- * It has to support querying the user and making a random choice from a
- * preseeded random generator.
+ * It has to support querying the user and making a random choice
  */
 struct user_choice
 {
