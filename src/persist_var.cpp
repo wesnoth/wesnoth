@@ -14,7 +14,6 @@
 
 #include "global.hpp"
 
-#include "ai/manager.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "network.hpp"
@@ -28,6 +27,10 @@
 #include "util.hpp"
 #include "variable.hpp"
 
+
+
+//TODO: remove LOG_PERSIST, ERR_PERSIST from persist_context.hpp to .cpp files.
+#define DBG_PERSIST LOG_STREAM(debug, log_persist)
 
 struct persist_choice: mp_sync::user_choice {
 	const persist_context &ctx;
@@ -44,7 +47,7 @@ struct persist_choice: mp_sync::user_choice {
 		ret.add_child("variables",ctx.get_var(var_name));
 		return ret;
 	}
-	virtual config random_choice(rand_rng::simple_rng &) const {
+	virtual config random_choice() const {
 		return config();
 	}
 };
@@ -56,7 +59,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	config::attribute_value pcfg_side = pcfg["side"];
 	int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
 	persist_choice choice(ctx,global,side);
-	config cfg = mp_sync::get_user_choice("global_variable",choice,side,true).child("variables");
+	config cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
 	if (cfg) {
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {
@@ -118,27 +121,17 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 			valid = false;
 		}
 		else {
+			DBG_PERSIST << "verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
 			config::attribute_value pcfg_side = pcfg["side"];
 			int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
 			if (unsigned (side - 1) >= resources::teams->size()) {
-				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
+				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number." << "\n";
 				valid = false;
-			} else {
-				if ((side != resources::controller->current_side())
-					&& !((*resources::teams)[side - 1].is_local())) {
-					if ((*resources::teams)[resources::controller->current_side() - 1].is_local()) {
-						config data;
-						data.add_child("wait_global");
-						data.child("wait_global")["side"] = side;
-						network::send_data(data,0);
-					}
-					while (get_replay_source().at_end()) {
-						ai::manager::raise_user_interact();
-						ai::manager::raise_sync_network();
-						SDL_Delay(10);
-					}
-				}
+			} 
+			else 
+			{
 			}
+			DBG_PERSIST <<  "end verify_and_get_global_variable with from_global=" << pcfg["from_global"] << " from side " << pcfg["side"] << "\n";
 		}
 	}
 	if (valid)

@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include "ai/manager.hpp"
 #include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "actions/move.hpp"
@@ -35,6 +36,7 @@
 #include "map_label.hpp"
 #include "map_location.hpp"
 #include "play_controller.hpp"
+#include "synced_context.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "rng.hpp"
@@ -1412,73 +1414,136 @@ void replay_network_sender::commit_and_sync()
 	}
 }
 
-config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
-	int side, bool force_sp)
+
+static config get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, int side)
 {
-	if (force_sp && network::nconnections() != 0 &&
-	    resources::gamedata->phase() != game_data::PLAY)
+	//this should never change during the execution of this function.
+	int current_side = resources::controller->current_side();
+	
+	if(current_side != side)
 	{
-		/* We are in a multiplayer game, during an early event which
-		   prevents synchronization, and the WML is not interested
-		   in a random result. We cannot silently ignore the issue,
-		   since it would lead to a broken replay. To be sure that
-		   the WML does not catch the error and keep the game going,
-		   we use a sticky exception to forcefully quit. */
-		ERR_REPLAY << "MP synchronization does not work during prestart and start events.";
-		throw end_level_exception(QUIT);
+		//if side != current_side we send the data over the network, that means undoing is impossible
+		//maybe it would be better to do this in replayturn.cpp or similar. or maybe not.
+		resources::undo_stack->clear();
 	}
-	if (resources::gamedata->phase() == game_data::PLAY || force_sp)
+	/*
+		if we have to wait for network data, the controlling side might change due to 
+		players leaving/ getting reassigned during raise_sync_network.
+	*/
+	while(true)
 	{
-		/* We have to communicate with the player and store the
-		   choices in the replay. So a decision will be made on
-		   one host and shared amongst all of them. */
+		/*
+			there might be speak or simiar comands in the replay before the user input.
+		*/
+		do_replay_handle(current_side, name);
 
-		/* process the side parameter and ensure it is within boundaries */
-		const int max_side = static_cast<int>(resources::teams->size());
-		if ( side < 1  ||  max_side < side )
-			side = resources::controller->current_side();
-		assert(1 <= side && side <= max_side);
-		// There is a chance of having a null-controlled team at this point
-		// (in the start event, with side 1 being null-controlled).
-		if ( (*resources::teams)[side-1].is_empty() )
+		/*
+			these value might change due to player left/reassign during pull_remote_user_input
+		*/
+		bool is_local_side = (*resources::teams)[side-1].is_local();
+		bool is_replay_end = get_replay_source().at_end();
+		
+		if (is_replay_end && is_local_side)
 		{
-			// Shift the side to the first controlled side.
-			side = 1;
-			while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
-				side++;
-			assert(side <= max_side);
-		}
-
-		if ((*resources::teams)[side-1].is_local() &&
-		    get_replay_source().at_end())
-		{
+			set_scontext_local_choice sync;
 			/* The decision is ours, and it will be inserted
 			   into the replay. */
 			DBG_REPLAY << "MP synchronization: local choice\n";
 			config cfg = uch.query_user();
+			
 			recorder.user_input(name, cfg);
 			return cfg;
 
-		} else {
-			/* The decision has already been made, and must
-			   be extracted from the replay. */
-			DBG_REPLAY << "MP synchronization: remote choice\n";
-			do_replay_handle(side, name);
+		}
+		else if(is_replay_end && !is_local_side)
+		{
+			//we are in a mp game, and the data has not been recieved yet.
+			DBG_REPLAY << "MP synchronization: waiting for remote choice\n";
+			
+			synced_context::pull_remote_user_input();
+
+			SDL_Delay(10);
+			continue;
+		}
+		else if(!is_replay_end)
+		{
+
+			DBG_REPLAY << "MP synchronization: extracting choice from replay with is_local_side=" << is_local_side << "\n";
+			
 			const config *action = get_replay_source().get_next_action();
-			if (!action || !*(action = &action->child(name))) {
+			if (!action) 
+			{
 				replay::process_error("[" + name + "] expected but none found\n");
 				return config();
+			} 
+			else if( !action->has_child(name))
+			{
+				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
+				return config();
 			}
-			return *action;
+			if ((*action)["side_invalid"].to_bool(false) == true)
+			{
+				WRN_REPLAY << "MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n";
+			}
+			if ((*action)["from_side"].to_int(0) != side)
+			{
+				WRN_REPLAY << "MP synchronization: wrong from_side in replay data, this could mean someone wants to cheat.\n";
+			}
+			return action->child(name);
 		}
-	}
-	else
+	}//while
+}
+/*
+	fixes some rare cases and calls get_user_choice_internal if we are in a synced context.
+*/
+config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_choice &uch,
+	int side)
+{	
+	bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
+	bool is_mp_game = network::nconnections() != 0;
+	bool is_side_null_controlled;
+	const int max_side  = static_cast<int>(resources::teams->size());
+
+	if(!is_synced)
 	{
-		/* Neither the user nor a replay can be consulted, so a
-		   decision will be made at all hosts simultaneously.
-		   The result is not stored in the replay, since the
-		   other clients have already taken the same decision. */
-		DBG_REPLAY << "MP synchronization: synchronized choice\n";
-		return uch.random_choice(resources::gamedata->rng());
+		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
+		replay::process_error("MP synchronization only works in a synced context (for example Select events are no synced context).\n");
+		return uch.query_user();
 	}
+	/*
+		side = 0 should default to the currently active side per definition.
+	*/
+	if ( side < 1  ||  max_side < side )
+	{
+		if(side != 0)
+		{
+			ERR_REPLAY << "Invalid parameter for side in get_user_choice.\n";
+		}
+		side = resources::controller->current_side();
+		LOG_REPLAY << " side changed to " << side << "\n";
+	}
+	is_side_null_controlled = (*resources::teams)[side-1].is_empty();
+	
+	LOG_REPLAY << "get_user_choice_called with"
+			<< " name=" << name
+			<< " is_synced=" << is_synced
+			<< " is_mp_game=" << is_mp_game
+			<< " is_side_null_controlled=" << is_side_null_controlled << "\n";
+
+	if (is_side_null_controlled)
+	{
+		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
+		//most likeley we are in a start event with an empty side 1 
+		//but calling [set_global_variable] to an empty side might also cause this.
+		//i think in that case we should better use uch.random_choice(), 
+		//which could return something like config_of("invalid", true);
+		side = 1;
+		while ( side <= max_side  &&  (*resources::teams)[side-1].is_empty() )
+			side++;
+		assert(side <= max_side);
+	}
+
+
+	assert(1 <= side && side <= max_side);
+	return get_user_choice_internal(name, uch, side);
 }

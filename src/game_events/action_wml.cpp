@@ -190,7 +190,7 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
@@ -221,10 +221,10 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &rng) const
+		virtual config random_choice() const
 		{
 			config cfg;
-			cfg["value"] = rng.get_next_random() % nb_options;
+			cfg["value"] = random_new::generator->next_random() % nb_options;
 			return cfg;
 		}
 	};
@@ -1115,7 +1115,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 	else
 	{
-		config choice = mp_sync::get_user_choice("input", msg, 0, true);
+		config choice = mp_sync::get_user_choice("input", msg);
 		option_chosen = choice["value"];
 		text_input_result = choice["text"].str();
 	}
