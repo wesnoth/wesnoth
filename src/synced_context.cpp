@@ -257,6 +257,11 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
 				return config();
 			}
+			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false) )
+			{
+				//we can proceed without getting OOS in this case, but allowing this would allow a "player chan choose their attack results in mp" cheat
+				replay::process_error("wrong from_side or side_invalid this could mean someone wants to cheat\n");
+			}
 			return action->child(name);
 		}
 	}
