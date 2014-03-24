@@ -323,7 +323,6 @@
 		B5599B060EC62181008DD061 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AB0EC62181008DD061 /* parser.cpp */; };
 		B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AD0EC62181008DD061 /* preprocessor.cpp */; };
 		B5599B080EC62181008DD061 /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
-		B5599B080EC62181008DD061 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* unicode.cpp */; };
 		B5599B090EC62181008DD061 /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B10EC62181008DD061 /* tokenizer.cpp */; };
 		B5599B0A0EC62181008DD061 /* sdl_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B40EC62181008DD061 /* sdl_utils.cpp */; };
 		B5599B0B0EC62181008DD061 /* reports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B70EC62181008DD061 /* reports.cpp */; };
@@ -580,7 +579,6 @@
 		B597C59E0FACD6CA00CE81F5 /* color_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AAA0EC62181008DD061 /* color_range.cpp */; };
 		B597C5A00FACD6CA00CE81F5 /* theme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998D0EC62181008DD061 /* theme.cpp */; };
 		B597C5A20FACD6CA00CE81F5 /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
-		B597C5A20FACD6CA00CE81F5 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* unicode.cpp */; };
 		B597C5A30FACD6CA00CE81F5 /* mp_connect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCC30ECA805A002BE442 /* mp_connect.cpp */; };
 		B597C5A40FACD6CA00CE81F5 /* wml_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999430EC62181008DD061 /* wml_exception.cpp */; };
 		B597C5A50FACD6CA00CE81F5 /* label.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCFD0ECA805A002BE442 /* label.cpp */; };
@@ -777,7 +775,6 @@
 		B5BB6C8F0F89448000444FBF /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AB0EC62181008DD061 /* parser.cpp */; };
 		B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AD0EC62181008DD061 /* preprocessor.cpp */; };
 		B5BB6C910F89448200444FBF /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
-		B5BB6C910F89448200444FBF /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* unicode.cpp */; };
 		B5BB6C920F89448300444FBF /* tokenizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B10EC62181008DD061 /* tokenizer.cpp */; };
 		B5BB6C960F8944FB00444FBF /* loadscreen_empty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A030EC62181008DD061 /* loadscreen_empty.cpp */; };
 		B5BB6CD90F89470B00444FBF /* server_main.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BB6CD80F89470B00444FBF /* server_main.m */; };
@@ -1469,8 +1466,6 @@
 		B55999AE0EC62181008DD061 /* preprocessor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = preprocessor.hpp; sourceTree = "<group>"; };
 		B55999AF0EC62181008DD061 /* string_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = string_utils.cpp; sourceTree = "<group>"; };
 		B55999B00EC62181008DD061 /* string_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = string_utils.hpp; sourceTree = "<group>"; };
-		B55999AF0EC62181008DD061 /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
-		B55999B00EC62181008DD061 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
 		B55999B10EC62181008DD061 /* tokenizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tokenizer.cpp; sourceTree = "<group>"; };
 		B55999B20EC62181008DD061 /* tokenizer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tokenizer.hpp; sourceTree = "<group>"; };
 		B55999B30EC62181008DD061 /* sdl_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = sdl_utils.hpp; path = ../src/sdl_utils.hpp; sourceTree = "<group>"; };
@@ -3161,8 +3156,6 @@
 				B55999B00EC62181008DD061 /* string_utils.hpp */,
 				B55999B10EC62181008DD061 /* tokenizer.cpp */,
 				B55999B20EC62181008DD061 /* tokenizer.hpp */,
-				B55999AF0EC62181008DD061 /* unicode.cpp */,
-				B55999B00EC62181008DD061 /* unicode.hpp */,
 			);
 			name = serialization;
 			path = ../src/serialization;
@@ -3980,7 +3973,6 @@
 				B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */,
 				EC89A1381879D17D00A3B0B1 /* llex.cpp in Sources */,
 				B5599B080EC62181008DD061 /* string_utils.cpp in Sources */,
-				B5599B080EC62181008DD061 /* unicode.cpp in Sources */,
 				B5599B090EC62181008DD061 /* tokenizer.cpp in Sources */,
 				B5599B0A0EC62181008DD061 /* sdl_utils.cpp in Sources */,
 				B5599B0B0EC62181008DD061 /* reports.cpp in Sources */,
@@ -4518,7 +4510,6 @@
 				B597C59E0FACD6CA00CE81F5 /* color_range.cpp in Sources */,
 				B597C5A00FACD6CA00CE81F5 /* theme.cpp in Sources */,
 				B597C5A20FACD6CA00CE81F5 /* string_utils.cpp in Sources */,
-				B597C5A20FACD6CA00CE81F5 /* unicode.cpp in Sources */,
 				B597C5A30FACD6CA00CE81F5 /* mp_connect.cpp in Sources */,
 				B597C5A40FACD6CA00CE81F5 /* wml_exception.cpp in Sources */,
 				B597C5A50FACD6CA00CE81F5 /* label.cpp in Sources */,
@@ -4794,7 +4785,6 @@
 				B5BB6C8F0F89448000444FBF /* parser.cpp in Sources */,
 				B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */,
 				B5BB6C910F89448200444FBF /* string_utils.cpp in Sources */,
-				B5BB6C910F89448200444FBF /* unicode.cpp in Sources */,
 				B5BB6C920F89448300444FBF /* tokenizer.cpp in Sources */,
 				B5BB6C960F8944FB00444FBF /* loadscreen_empty.cpp in Sources */,
 				B5BB6CD90F89470B00444FBF /* server_main.m in Sources */,
