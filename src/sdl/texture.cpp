@@ -16,12 +16,9 @@
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
-#include "log.hpp"
+#include "sdl/exception.hpp"
 
 #include <cassert>
-
-static lg::log_domain log_display("display");
-#define ERR_DP LOG_STREAM(err, log_display)
 
 namespace sdl
 {
@@ -35,8 +32,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, texture_(SDL_CreateTexture(&renderer, format, access, w, h))
 {
 	if(!texture_) {
-		ERR_DP << "Failed to create a SDL_Texture object with error »"
-			   << SDL_GetError() << "«.\n";
+		throw texception("Failed to create a SDL_Texture object.", true);
 	}
 }
 
