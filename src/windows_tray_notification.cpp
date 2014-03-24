@@ -18,6 +18,7 @@
 
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 NOTIFYICONDATA* windows_tray_notification::nid = NULL;
 bool windows_tray_notification::message_reset = false;
