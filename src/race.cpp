@@ -24,8 +24,7 @@
 #include "log.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
-#include "simple_rng.hpp"
-
+#include "random_new.hpp"
 
 /// Dummy race used when a race is not yet known.
 const unit_race unit_race::null_race;
@@ -67,7 +66,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 }
 
 static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
-	size_t chain_size, size_t max_len, rand_rng::simple_rng* rng)
+	size_t chain_size, size_t max_len)
 {
 	if(chain_size == 0)
 		return ucs4::string();
@@ -87,7 +86,7 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	std::vector<int> random(max_len);
 	size_t j = 0;
 	for(; j < max_len; ++j) {
-		random[j] = rng ? rng->get_next_random() : get_random_nocheck();
+		random[j] = random_new::generator->next_random();
 	}
 
 	j = 0;
@@ -201,10 +200,10 @@ unit_race::unit_race(const config& cfg) :
 }
 
 std::string unit_race::generate_name(
-		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
+		unit_race::GENDER gender) const
 {
 	return unicode_cast<utf8::string>(
-		markov_generate_name(next_[gender], chain_size_, 12, rng));
+		markov_generate_name(next_[gender], chain_size_, 12));
 }
 
 bool unit_race::uses_global_traits() const

@@ -384,7 +384,7 @@ public:
 	void backup_state();
 	void apply_modifications();
 	void generate_traits(bool musthaveonly=false);
-	void generate_name(rand_rng::simple_rng *rng = 0);
+	void generate_name();
 
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc, bool see_all=true) const;
