@@ -189,6 +189,8 @@ protected:
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	void init_managers();
+	///preload events cannot be synced
+	void fire_preload();
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
 	virtual void init_gui();

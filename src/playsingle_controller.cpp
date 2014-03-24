@@ -35,8 +35,11 @@
 #include "marked-up_text.hpp"
 #include "playturn.hpp"
 #include "resources.hpp"
+#include "random_new_deterministic.hpp"
+#include "replay_helper.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
+#include "synced_context.hpp"
 #include "formula_string_utils.hpp"
 #include "events.hpp"
 #include "save_blocker.hpp"
@@ -371,19 +374,47 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			gamestate_.replay_start() = to_config();
 			gamestate_.write_snapshot(gamestate_.replay_start(), gui_.get());
 		}
-
-		fire_prestart(!loading_game_);
-		init_gui();
-
-		past_prestart = true;
-
-		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
-
-		events::raise_draw_event();
-		fire_start(!loading_game_);
-		gui_->recalculate_minimap();
-
+		fire_preload();
+		
 		replaying_ = (recorder.at_end() == false);
+
+		if(!loading_game_ )
+		{
+			if(replaying_)
+			{
+				//can this codepath be reached ?
+				//note this when we are entering an mp game and see the 'replay' of the game 
+				//this path is not reached because we receive the replay later
+				config* pstart = recorder.get_next_action();
+				assert(pstart->has_child("start"));
+			}
+			else
+			{
+				assert(recorder.empty());
+				recorder.add_start();
+				recorder.get_next_action();
+			}
+			//we can only use a set_scontext_synced with a non empty recorder.
+			set_scontext_synced sync;
+			
+			fire_prestart(true);
+			init_gui();
+			past_prestart = true;
+			LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
+
+			events::raise_draw_event();
+			fire_start(true);
+			gui_->recalculate_minimap();
+		}
+		else
+		{
+			init_gui();
+			past_prestart = true;
+			events::raise_draw_event();
+			fire_start(false);
+			gui_->recalculate_minimap();
+		}
+		
 
 		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
@@ -890,8 +921,7 @@ void playsingle_controller::play_ai_turn(){
 	if ( !cur_team.auto_shroud_updates() ) {
 		// We just took control, so the undo stack is empty. We still need
 		// to record this change for the replay though.
-		recorder.add_auto_shroud(true);
-		cur_team.set_auto_shroud_updates(true);
+		synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(true));
 	}
 
 	turn_info turn_data(player_number_, replay_sender_);
