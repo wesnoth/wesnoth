@@ -93,8 +93,11 @@ void turn_info::handle_turn(
 		replay_.append(t);
 		replay_.set_skip(skip_replay);
 
-		turn_end = do_replay(team_num_, &replay_);
+		//turn_end = do_replay(team_num_, &replay_);
+		//note, that this cunfion might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 		recorder.add_config(t, replay::MARK_AS_SENT);
+		turn_end = do_replay(team_num_);
+		
 	} else {
 
 		//this turn has finished, so push the remaining moves
@@ -159,8 +162,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	BOOST_FOREACH(const config &t, turns)
 	{
-		handle_turn(turn_end, t, skip_replay, backlog);
+		recorder.add_config(t, replay::MARK_AS_SENT);
 	}
+	handle_turn(turn_end, config(), skip_replay, backlog);
 
 	resources::whiteboard->process_network_data(cfg);
 
