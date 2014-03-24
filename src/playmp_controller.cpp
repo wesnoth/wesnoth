@@ -468,6 +468,16 @@ void playmp_controller::play_network_turn(){
 					break;
 				}
 			}
+			/*
+				we might have data left in replay that we recieved during prestart events. (or maybe other events.)
+			*/
+			else if(!recorder.at_end())
+			{
+				if(do_replay(current_side()))
+				{
+					break;
+				}
+			}
 		}
 
 		play_slice();

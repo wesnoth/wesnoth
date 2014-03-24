@@ -809,11 +809,6 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
 	{
 		config &cfg = cfg_.add_child("command", cmd);
-		if (cfg.child("speak"))
-		{
-			pos_ = ncommands();
-			add_chat_message_location();
-		}
 		if(mark == MARK_AS_SENT) {
 			cfg["sent"] = true;
 		}
@@ -1405,9 +1400,10 @@ void replay_network_sender::commit_and_sync()
 {
 	if(network::nconnections() > 0) {
 		resources::whiteboard->send_network_data();
-
+		
 		config cfg;
 		const config& data = cfg.add_child("turn",obj_.get_data_range(upto_,obj_.ncommands()));
+		
 		if(data.empty() == false) {
 			network::send_data(cfg, 0);
 		}
