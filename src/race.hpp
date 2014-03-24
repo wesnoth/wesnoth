@@ -18,9 +18,6 @@
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
 
-namespace rand_rng {
-	class simple_rng;
-} // namespace rand_rng
 
 
 typedef std::map<ucs4_string, ucs4_string > markov_prefix_map;
@@ -41,7 +38,7 @@ public:
 	const t_string& plural_name() const { return plural_name_; }
 	const t_string& description() const { return description_; }
 
-	std::string generate_name(GENDER gender, rand_rng::simple_rng* rng = 0) const;
+	std::string generate_name(GENDER gender) const;
 
 	bool uses_global_traits() const;
 

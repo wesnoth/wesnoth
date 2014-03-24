@@ -33,6 +33,7 @@
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
+#include "random_new.hpp"
 #include "scripting/lua.hpp"
 #include "side_filter.hpp"
 #include "play_controller.hpp"
@@ -85,27 +86,27 @@ static const unit_type &get_unit_type(const std::string &type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, rand_rng::simple_rng* rng)
+static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
-		int random = rng ? rng->get_next_random() : get_random_nocheck();
+		int random = random_new::generator->next_random();
 		return genders[random % genders.size()];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, rand_rng::simple_rng* rng)
+static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
 
-	return generate_gender(u_type, cfg["random_gender"].to_bool(), rng);
+	return generate_gender(u_type, cfg["random_gender"].to_bool());
 }
 
 const std::string& unit::leader_crown()
@@ -227,7 +228,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	image_mods_(),
 	unrenamable_(false),
 	side_(0),
-	gender_(generate_gender(*type_, cfg, &resources::gamedata->rng())),
+	gender_(generate_gender(*type_, cfg)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -471,7 +472,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 		alignment_ = unit_type::NEUTRAL;
 	}
 
-	generate_name(resources::gamedata ? &(resources::gamedata->rng()) : 0);
+	generate_name();
 
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
@@ -556,7 +557,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit, resources::gamedata ? &(resources::gamedata->rng()) : NULL)),
+		gender : generate_gender(u_type, real_unit)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -609,7 +610,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	advance_to(u_type, real_unit);
 
 	if(real_unit) {
-		generate_name(resources::gamedata ? &(resources::gamedata->rng()) : NULL);
+		generate_name();
 	}
 	set_underlying_id();
 
@@ -656,11 +657,11 @@ unit& unit::operator=(const unit& u)
 }
 
 
-void unit::generate_name(rand_rng::simple_rng* rng)
+void unit::generate_name()
 {
 	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
 
-	name_ = race_->generate_name(gender_, rng);
+	name_ = race_->generate_name(gender_);
 	cfg_["generate_name"] = false;
 }
 
@@ -724,8 +725,7 @@ void unit::generate_traits(bool musthaveonly)
 	int max_traits = u_type.num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = (resources::gamedata ? resources::gamedata->rng().get_next_random() : get_random_nocheck())
-		          % candidate_traits.size();
+		int num = random_new::generator->next_random() % candidate_traits.size();
 		modifications_.add_child("trait", candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}

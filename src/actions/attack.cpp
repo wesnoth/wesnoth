@@ -32,9 +32,11 @@
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../random.hpp"
+#include "../random_new.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
 #include "../team.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
@@ -882,7 +884,7 @@ namespace {
 		int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 		bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
 
-		int ran_num = get_random();
+		int ran_num = random_new::generator->next_random();
 		bool hits = (ran_num % 100) < attacker.cth_;
 
 		int damage = 0;
