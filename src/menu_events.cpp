@@ -693,7 +693,11 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	if (res < 0) { 
 		return;
 	}
-	else if(recall_list_team[res]->recall_cost() < 0) {
+	// we need to check if unit has a specific recall cost
+	// if it does we use it elsewise we use the team.recall_cost()
+	// the magic number -1 is what it gets set to if the unit doesn't
+	// have a special recall_cost of its own.
+	else if(recall_list_team[res]->recall_cost() > -1) {
 		unit_cost = recall_list_team[res]->recall_cost();
 	}
 
