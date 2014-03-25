@@ -43,6 +43,9 @@
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/lexical_cast.hpp>
+#include <set>
+#include <map>
 
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
@@ -945,48 +948,75 @@ void replay_network_sender::commit_and_sync()
 }
 
 
-static config get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, int side)
+static std::map<int, config> get_user_choice_internal(const std::string &name, const mp_sync::user_choice &uch, const std::set<int>& sides)
 {
+	const int max_side  = static_cast<int>(resources::teams->size());
+	
+	BOOST_FOREACH(int side, sides)
+	{
+		//the caller has to ensure this.
+		assert(1 <= side && side <= max_side);
+		assert(!(*resources::teams)[side-1].is_empty());
+	}
+
+
 	//this should never change during the execution of this function.
 	int current_side = resources::controller->current_side();
 	bool is_mp_game = network::nconnections() != 0;
-
-	if(current_side != side)
-	{
-		//if side != current_side we send the data over the network, that means undoing is impossible
-		//maybe it would be better to do this in replayturn.cpp or similar. or maybe not.
-		resources::undo_stack->clear();
-	}
+	
+	std::map<int,config> retv;
 	/*
-		if we have to wait for network data, the controlling side might change due to 
-		players leaving/ getting reassigned during raise_sync_network.
+		when we got all our answers we stop.
 	*/
-	while(true)
+	while(retv.size() != sides.size())
 	{
 		/*
-			there might be speak or simiar comands in the replay before the user input.
+			there might be speak or similar commands in the replay before the user input.
 		*/
 		do_replay_handle(current_side, name);
 
 		/*
 			these value might change due to player left/reassign during pull_remote_user_input
 		*/
-		bool is_local_side = (*resources::teams)[side-1].is_local();
+		//equals to any side in sides that is local, 0 if no such side exists.
+		int local_side = 0;
+		//if for any side from which we need an answer
+		BOOST_FOREACH(int side, sides)
+		{
+			//and we havent already received our answer from that side
+			if(retv.find(side) == retv.end())
+			{
+				//and it is local
+				if((*resources::teams)[side-1].is_local())
+				{
+					//then we have to make a local choice.
+					local_side = side;
+					break;
+				}
+			}
+		}
+
+		bool has_local_side = local_side != 0;
 		bool is_replay_end = get_replay_source().at_end();
 		
-		if (is_replay_end && is_local_side)
+		if (is_replay_end && has_local_side)
 		{
 			set_scontext_local_choice sync;
-			/* The decision is ours, and it will be inserted
+			/* At least one of the decisions is ours, and it will be inserted
 			   into the replay. */
 			DBG_REPLAY << "MP synchronization: local choice\n";
 			config cfg = uch.query_user();
 			
-			recorder.user_input(name, cfg, side);
-			return cfg;
+			recorder.user_input(name, cfg, local_side);
+			retv[local_side]= cfg;
+
+			//send data to others.
+			//TODO: check wether we are still in a local context (= wether we haven't senden anything during this action yet).
+			synced_context::pull_remote_user_input();
+			continue;
 
 		}
-		else if(is_replay_end && !is_local_side)
+		else if(is_replay_end && !has_local_side)
 		{
 			//we are in a mp game, and the data has not been recieved yet.
 			DBG_REPLAY << "MP synchronization: waiting for remote choice\n";
@@ -999,49 +1029,105 @@ static config get_user_choice_internal(const std::string &name, const mp_sync::u
 		}
 		else if(!is_replay_end)
 		{
-
-			DBG_REPLAY << "MP synchronization: extracting choice from replay with is_local_side=" << is_local_side << "\n";
+			DBG_REPLAY << "MP synchronization: extracting choice from replay with has_local_side=" << has_local_side << "\n";
 			
 			const config *action = get_replay_source().get_next_action();
 			if (!action) 
 			{
 				replay::process_error("[" + name + "] expected but none found\n");
-				return config();
+				//this is weird, because it means that there is data on the replay but get_next_action returned an invalid config which should be impossible.
+				assert(false);
 			} 
 			else if( !action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
-				return config();
+				return retv;
 			}
+			int from_side = (*action)["from_side"].to_int(0);
 			if ((*action)["side_invalid"].to_bool(false) == true)
 			{
-				WRN_REPLAY << "MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n";
+				//since this 'cheat' can have a quite heavy effect especialy in umc content we give an oos error .
+				replay::process_error("MP synchronization: side_invalid in replay data, this could mean someone wants to cheat.\n");
 			}
-			if ((*action)["from_side"].to_int(0) != side)
+			if (sides.find(from_side) == sides.end())
 			{
-				WRN_REPLAY << "MP synchronization: wrong from_side in replay data, this could mean someone wants to cheat.\n";
+				replay::process_error("MP synchronization: we got an answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + name + "] which is not was we expected\n");
+				continue;
 			}
-			return action->child(name);
+			if(retv.find(from_side) != retv.end())
+			{
+				replay::process_error("MP synchronization: we got already our answer from side " + boost::lexical_cast<std::string>(from_side) + "for [" + name + "] now we have it twice.\n");
+			}
+			retv[from_side] = action->child(name);
+			continue;
 		}
 	}//while
+	return retv;
 }
-/*
-	fixes some rare cases and calls get_user_choice_internal if we are in a synced context.
-*/
-config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_choice &uch,
-	int side)
+
+std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &name, const mp_sync::user_choice &uch,
+	std::set<int> sides)
 {	
+	//pass sides by copy becasue we need a copy.
 	bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
-	bool is_mp_game = network::nconnections() != 0;
-	bool is_side_null_controlled;
 	const int max_side  = static_cast<int>(resources::teams->size());
 
 	if(!is_synced)
 	{
 		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
-		replay::process_error("MP synchronization only works in a synced context (for example Select events are no synced context).\n");
+		replay::process_error("MP synchronization only works in a synced context (for example Select or preload events are no synced context).\n");
+		return std::map<int,config>();
+	}
+
+	/*
+		for empty sides we want to use reandom choice instead.
+	*/
+	std::set<int> empty_sides;
+	BOOST_FOREACH(int side, sides)
+	{
+		assert(1 <= side && side <= max_side);
+		if( (*resources::teams)[side-1].is_empty())
+		{
+			empty_sides.insert(side);
+		}
+	}
+
+	BOOST_FOREACH(int side, empty_sides)
+	{
+		sides.erase(side);
+	}
+
+	std::map<int,config> retv =  get_user_choice_internal(name, uch, sides);
+	
+	BOOST_FOREACH(int side, empty_sides)
+	{
+		retv[side] = uch.random_choice();
+	}
+	return retv;
+
+}
+
+/*
+	fixes some rare cases and calls get_user_choice_internal if we are in a synced context.
+*/
+config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_choice &uch,
+	int side)
+{
+	bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
+	bool is_mp_game = network::nconnections() != 0;
+	bool is_side_null_controlled;
+	const int max_side  = static_cast<int>(resources::teams->size());
+	int current_side = resources::controller->current_side();
+
+	if(!is_synced)
+	{
+		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
+		//This doesn't cause problems but someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice wich could be useful, 
+		//so just give a warning.
+		WRN_REPLAY << "MP synchronization called during an unsynced context.";; 
 		return uch.query_user();
 	}
+
 	/*
 		side = 0 should default to the currently active side per definition.
 	*/
@@ -1077,5 +1163,20 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 
 
 	assert(1 <= side && side <= max_side);
-	return get_user_choice_internal(name, uch, side);
+	
+	if(current_side != side)
+	{
+		//if side != current_side we send the data over the network, that means undoing is impossible
+		//maybe it would be better to do this in replayturn.cpp or similar. or maybe not.
+		resources::undo_stack->clear();
+	}
+	std::set<int> sides;
+	sides.insert(side);
+	std::map<int, config> retv = get_user_choice_internal(name, uch, sides);
+	if(retv.find(side) == retv.end())
+	{
+		//An error occured, get_user_choice_internal should have given an oos error message
+		return config();
+	}
+	return retv[side];
 }

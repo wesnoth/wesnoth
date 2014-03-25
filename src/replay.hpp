@@ -24,7 +24,8 @@
 #include "map_location.hpp"
 
 #include <deque>
-
+#include <map>
+#include <set>
 class game_display;
 class terrain_label;
 class unit_map;
@@ -208,6 +209,13 @@ struct user_choice
  */
 config get_user_choice(const std::string &name, const user_choice &uch,
 	int side = 0);
+/**
+ * Performs a choice for mutiple sides for WML events.
+ * uch is called on all sies specified in sides, this in done simulaniously on all those sides (or one after another if one client controlls mutiple sides)
+ * and after all calls are executed the results are returned.
+ */
+std::map<int, config> get_user_choice_multiple_sides(const std::string &name, const user_choice &uch,
+	std::set<int> sides);
 
 }
 
