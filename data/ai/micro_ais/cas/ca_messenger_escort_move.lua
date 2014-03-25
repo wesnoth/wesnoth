@@ -10,7 +10,11 @@ function ca_messenger_escort_move:evaluation(ai, cfg)
     local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
     if (not messenger) then return 0 end
 
-    local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
+    local my_units = wesnoth.get_units {
+        side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0',
+        { "and", cfg.filter_second }
+    }
 
     if my_units[1] then
         return cfg.ca_score
@@ -20,7 +24,11 @@ end
 
 function ca_messenger_escort_move:execution(ai, cfg)
     local messenger = wesnoth.get_units{ id = cfg.id }[1]
-    local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
+    local my_units = wesnoth.get_units {
+        side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0',
+        { "and", cfg.filter_second }
+    }
 
     -- Simply move units one at a time
     local next_unit = my_units[1]

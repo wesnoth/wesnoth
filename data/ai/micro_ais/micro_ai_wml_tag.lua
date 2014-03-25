@@ -207,7 +207,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
     --------- Messenger Escort Micro AI ------------------------------------
     elseif (cfg.ai_type == 'messenger_escort') then
         required_keys = { "id", "waypoint_x", "waypoint_y" }
-        optional_keys = { "enemy_death_chance", "messenger_death_chance" }
+        optional_keys = { "enemy_death_chance", "filter_second", "messenger_death_chance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
             { ca_id = 'mai_messenger_attack', location = 'ai/micro_ais/cas/ca_messenger_attack.lua', score = score },
