@@ -68,8 +68,11 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	defender_right_strings_width_(0),
 	units_strings_height_(0),
 	hp_distrib_string_(),
+	hp_cumulative_distrib_string_(),
 	attacker_hp_distrib_(),
 	defender_hp_distrib_(),
+	attacker_hp_cumulative_distrib_(),
+	defender_hp_cumulative_distrib_(),
 	hp_distrib_string_width_(0),
 	attacker_hp_distrib_width_(0),
 	defender_hp_distrib_width_(0),
@@ -95,8 +98,12 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	get_hp_prob_vector(attacker_combatant.hp_dist, hp_prob_vector);
 	get_hp_distrib_surface(hp_prob_vector, attacker_stats, defender_stats, attacker_hp_distrib_,
 						   attacker_hp_distrib_width_, attacker_hp_distrib_height_);
+	get_hp_cumulative_distrib_surface(hp_prob_vector, attacker_stats, defender_stats, attacker_hp_cumulative_distrib_,
+						   attacker_hp_distrib_width_, attacker_hp_distrib_height_);					   
 	get_hp_prob_vector(defender_combatant.hp_dist, hp_prob_vector);
 	get_hp_distrib_surface(hp_prob_vector, defender_stats, attacker_stats, defender_hp_distrib_,
+					   defender_hp_distrib_width_, defender_hp_distrib_height_);
+	get_hp_cumulative_distrib_surface(hp_prob_vector, defender_stats, attacker_stats, defender_hp_cumulative_distrib_,
 					   defender_hp_distrib_width_, defender_hp_distrib_height_);
 	hp_distribs_height_ = std::max<int>(attacker_hp_distrib_height_, defender_hp_distrib_height_);
 
@@ -122,6 +129,7 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 
 	hp_distrib_string_ = _("Expected Battle Result (HP)");
 	hp_distrib_string_width_ = font::line_width(hp_distrib_string_, font::SIZE_SMALL);
+	hp_cumulative_distrib_string_ = ("Expected Minimum HP");
 
 	attacker_width_ = std::max<int>(attacker_label_width_, attacker_strings_width_);
 	attacker_width_ = std::max<int>(attacker_width_, hp_distrib_string_width_);
@@ -132,7 +140,7 @@ battle_prediction_pane::battle_prediction_pane(const battle_context &bc,
 	units_width_ = std::max<int>(attacker_width_, defender_width_);
 
 	dialog_width_ = 2 * units_width_ + inter_units_gap_;
-	dialog_height_ = 15 + 24 + units_strings_height_ + 14 + 19 + hp_distribs_height_ + 18;
+	dialog_height_ = 15 + 24 + units_strings_height_ + 2*14 + 2*19 + 2*hp_distribs_height_ + 18;
 
 	// Set the dialog size.
 	set_measurements(dialog_width_, dialog_height_);
@@ -328,18 +336,20 @@ void battle_prediction_pane::draw_contents()
 
 	draw_unit(0, damage_line_skip,
 			  attacker_left_strings_width_, attacker_left_strings_, attacker_right_strings_,
-			  attacker_label_, attacker_label_width_, attacker_hp_distrib_, attacker_hp_distrib_width_);
+			  attacker_label_, attacker_label_width_, attacker_hp_distrib_, 
+			  attacker_hp_distrib_width_,attacker_hp_cumulative_distrib_);
 
 	draw_unit(units_width_ + inter_units_gap_, damage_line_skip,
 			  defender_left_strings_width_, defender_left_strings_, defender_right_strings_,
-			  defender_label_, defender_label_width_, defender_hp_distrib_, defender_hp_distrib_width_);
+			  defender_label_, defender_label_width_, defender_hp_distrib_, defender_hp_distrib_width_,
+			  defender_hp_cumulative_distrib_);
 }
 
 void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left_strings_width,
 									   const std::vector<std::string>& left_strings,
 									   const std::vector<std::string>& right_strings,
 									   const std::string& label, int label_width,
-									   surface& hp_distrib, int hp_distrib_width)
+									   surface& hp_distrib, int hp_distrib_width, surface& cumulative_hp_distrib)
 {
 	surface screen = resources::screen->get_screen_surface();
 	int i;
@@ -402,6 +412,33 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 
 	// Draw hitpoints distributions.
 	video().blit_surface(clip_rect.x + x_off + (units_width_ - hp_distrib_width) / 2, clip_rect.y + y_off, hp_distrib);
+	
+	y_off += hp_distribs_height_ + 14;
+	// Draw hitpoints cumulative distribution strings.
+	font::draw_text(screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOR, hp_cumulative_distrib_string_,
+					clip_rect.x + x_off + (units_width_ - hp_distrib_string_width_) / 2, clip_rect.y + y_off);
+
+	y_off += 19;
+
+	// Draw hitpoints cumulative distributions.
+	video().blit_surface(clip_rect.x + x_off + (units_width_ - hp_distrib_width) / 2, clip_rect.y + y_off, cumulative_hp_distrib);
+}
+
+void battle_prediction_pane::get_hp_cumulative_distrib_surface(std::vector<std::pair<int, double> >& hp_prob_vector,
+													const battle_context_unit_stats& stats,
+													const battle_context_unit_stats& opp_stats,
+													surface& surf, int& width, int& height)
+{
+
+	// Make it a cumulative density function
+	for(int i = static_cast<int>(hp_prob_vector.size())-2; i >=0 ; i--) {
+		//i = last e is unchanged.
+		// Update the probability as necessary
+		//adding previous one only is sufficient (and more efficient)
+		//since it will cascade to higher levels.
+		hp_prob_vector[i].second += hp_prob_vector[i+1].second;
+	}
+	get_hp_distrib_surface(hp_prob_vector,stats,opp_stats,surf, width, height);
 }
 
 void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
