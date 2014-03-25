@@ -64,7 +64,8 @@ private:
 	int units_strings_height_;
 
 	std::string hp_distrib_string_;
-	surface attacker_hp_distrib_, defender_hp_distrib_;
+	std::string hp_cumulative_distrib_string_;
+	surface attacker_hp_distrib_, defender_hp_distrib_,attacker_hp_cumulative_distrib_, defender_hp_cumulative_distrib_;
 	int hp_distrib_string_width_;
 	int attacker_hp_distrib_width_, defender_hp_distrib_width_;
 	int attacker_hp_distrib_height_, defender_hp_distrib_height_, hp_distribs_height_;
@@ -96,7 +97,8 @@ private:
 				   const std::vector<std::string>& left_strings,
 				   const std::vector<std::string>& right_strings,
 				   const std::string& label, int label_width,
-				   surface& hp_distrib, int hp_distrib_width);
+				   surface& hp_distrib, int hp_distrib_width,
+				   surface& cumulative_hp_distrib);
 
 	// This method draws the image of the hitpoints distribution of a
 	// combatant after a fight. The method takes as input the
@@ -104,6 +106,13 @@ private:
 	// It draws the image in the surface 'surf' and set the width and
 	// height of the image in the fields specified.
 	void get_hp_distrib_surface(const std::vector<std::pair<int, double> >& hp_prob_vector,
+							const battle_context_unit_stats& stats,
+								const battle_context_unit_stats& opp_stats,
+								surface& surf, int& width, int& height);
+								
+	// Same as above but draws the cumulative probability instead.
+	// This method also uses the above method to do the actual drawing.
+	void get_hp_cumulative_distrib_surface(std::vector<std::pair<int, double> >& hp_prob_vector,
 							const battle_context_unit_stats& stats,
 								const battle_context_unit_stats& opp_stats,
 								surface& surf, int& width, int& height);
