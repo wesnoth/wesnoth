@@ -602,8 +602,14 @@ void recall_result::do_execute()
 	assert(location_checked_);
 
 	// Do the actual recalling.
-	::actions::recall_unit(unit_id_, get_my_team(), recall_location_,
-	                       recall_from_, preferences::show_ai_moves(), false);
+	//we ignore possible erros (=unit doesnt exist on the recall list)
+	//becasue that was the previous behaviour.
+	synced_context::run_in_synced_context("recall", 
+		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
+		false, 
+		preferences::show_ai_moves(),
+		true,
+		synced_context::ignore_error_function);
 
 	set_gamestate_changed();
 	try {
@@ -740,9 +746,11 @@ void recruit_result::do_execute()
 	// This should be implied by is_success() once check_before() has been
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
-
-	::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
-	                        preferences::show_ai_moves(), false);
+	
+	synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
+	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
+	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
+	//                        preferences::show_ai_moves(), false);
 
 	set_gamestate_changed();
 	try {

@@ -644,7 +644,8 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
-		actions::recruit_unit(*u_type, side_num, loc, recruited_from);
+		
+		synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
 		return true;
 	}
 	return false;
@@ -720,8 +721,15 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
-		if ( !actions::recall_unit(recall_list_team[res]->id(), teams_[side_num-1],
-		                           recall_location, recall_from) ) {
+		bool success = synced_context::run_in_synced_context("recall", 
+			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
+			true,
+			true,
+			true,
+			synced_context::ignore_error_function);
+
+		if(!success)
+		{
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
 		}
 	}

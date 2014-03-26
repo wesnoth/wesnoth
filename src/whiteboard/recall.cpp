@@ -27,6 +27,8 @@
 #include "game_display.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "replay_helper.hpp"
+#include "synced_context.hpp"
 #include "team.hpp"
 #include "unit.hpp"
 
@@ -117,7 +119,13 @@ void recall::execute(bool& success, bool& complete)
 	//Give back the spent gold so we don't get "not enough gold" message
 	int cost = current_team.recall_cost();
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
-	bool const result = actions::recall_unit(temp_unit_->id(), current_team, recall_hex_, map_location::null_location);
+	bool const result = synced_context::run_in_synced_context("recall", 
+		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location),
+		true, 
+		true,
+		true,
+		synced_context::ignore_error_function);
+
 	if (!result) {
 		current_team.get_side_actions()->change_gold_spent_by(cost);
 	}
