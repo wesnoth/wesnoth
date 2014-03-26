@@ -236,22 +236,27 @@ void replay::add_unit_checksum(const map_location& loc,config* const cfg)
 	cc["value"] = get_checksum(*u);
 }
 
+
+void replay::init_side()
+{
+	config* const cmd = add_command();
+	config init_side;
+	init_side["side_number"] = resources::controller->current_side();
+	cmd->add_child("init_side", init_side);
+}
+
 void replay::add_start()
 {
 	config* const cmd = add_command(true);
+	/*
+		before, the "start" command was called from play_controller::init which is called from play_controller contructor which is called bepfre the contrucotr of replay_sender_ 
+		and thats was why the "start" command wanst't sended over network.
+	
+		i wanto to add the stat event direct before the "prestart" is fired. which happends after playsingle_controller::replay_sender_ is initialised.
+		in order to allow ger_user_inut in prestart events.
+	*/
+	(*cmd)["sent"] = true;
 	cmd->add_child("start");
-}
-
-
-void replay::add_disband(const std::string& unit_id)
-{
-	config* const cmd = add_command();
-
-	config val;
-
-	val["value"] = unit_id;
-
-	cmd->add_child("disband",val);
 }
 
 void replay::add_countdown_update(int value, int team)
@@ -270,24 +275,6 @@ void replay::add_synced_command(const std::string& name, const config& command)
 }
 
 
-/**
- * Records that the player has toggled automatic shroud updates.
- */
-void replay::add_auto_shroud(bool turned_on)
-{
-	config* cmd = add_command(false);
-	config& child = cmd->add_child("auto_shroud");
-	child["active"] = turned_on;
-}
-
-/**
- * Records that the player has manually updated fog/shroud.
- */
-void replay::update_shroud()
-{
-	config* cmd = add_command(false);
-	cmd->add_child("update_shroud");
-}
 
 void replay::add_seed(const char* child_name, int seed)
 {
@@ -345,13 +332,6 @@ void replay::add_rename(const std::string& name, const map_location& loc)
 	cmd->add_child("rename", val);
 }
 
-void replay::init_side()
-{
-	config* const cmd = add_command();
-	config init_side;
-	if(!lg::debug.dont_log("network")) init_side["side_number"] = resources::controller->current_side();
-	cmd->add_child("init_side", init_side);
-}
 
 void replay::end_turn()
 {
@@ -359,24 +339,6 @@ void replay::end_turn()
 	cmd->add_child("end_turn");
 }
 
-void replay::add_event(const std::string& name, const map_location& loc)
-{
-	config* const cmd = add_command();
-	config& ev = cmd->add_child("fire_event");
-	ev["raise"] = name;
-	if(loc.valid()) {
-		config& source = ev.add_child("source");
-		loc.write(source);
-	}
-	(*cmd)["undo"] = false;
-}
-
-void replay::add_lua_ai(const std::string& lua_code)
-{
-	config* const cmd = add_command();
-	config& child = cmd->add_child("lua_ai");
-	child["code"] = lua_code;
-}
 
 void replay::add_log_data(const std::string &key, const std::string &var)
 {
@@ -485,6 +447,16 @@ struct async_cmd
 	int num;
 };
 
+void replay::redo(const config& cfg)
+{
+	BOOST_FOREACH(const config &cmd, cfg.child_range("command"))
+	{
+		/*config &cfg = */cfg_.add_child("command", cmd);
+	}
+}
+
+
+
 config& replay::get_last_real_command()
 {
 	for (int cmd_num = pos_ - 1; cmd_num >= 0; --cmd_num)
@@ -502,8 +474,11 @@ config& replay::get_last_real_command()
 	throw "assert didnt work :o";
 }
 
-void replay::undo()
+
+void replay::undo_cut(config& dst)
 {
+	assert(dst.empty());
+
 	std::vector<async_cmd> async_cmds;
 	// Remember commands not yet synced and skip over them.
 	// We assume that all already sent (sent=yes) data isn't undoable
@@ -530,7 +505,25 @@ void replay::undo()
 	}
 
 	if (cmd < 0) return;
+	dst.add_child("command", cfg_.child("command", cmd));
 	
+	for(int cmd_2 = cmd + 1; cmd_2 < ncommands(); ++cmd_2)
+	{
+		if(command(cmd_2)["dependent"].to_bool(false))
+		{
+			dst.add_child("command", cfg_.child("command", cmd_2));
+		}
+	}
+
+	/*
+	
+	cfg_.remove_child("command", index);
+	std::vector<int>::reverse_iterator loc_it;
+	for (loc_it = message_locations.rbegin(); loc_it != message_locations.rend() && index < *loc_it;++loc_it)
+	{
+		--(*loc_it);
+	}
+	*/
 	//we remove dependent commands after the actual removed command that don't make sense if they stand alone especialy user choices and checksum data.
 	for(int cmd_2 = ncommands() - 1; cmd_2 > cmd; --cmd_2)
 	{
@@ -590,6 +583,12 @@ void replay::undo()
 	remove_command(cmd);
 	current_ = NULL;
 	set_random(NULL);
+}
+
+void replay::undo()
+{
+	config dummy;
+	undo_cut(dummy);
 }
 
 config &replay::command(int n)

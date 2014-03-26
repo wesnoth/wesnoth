@@ -777,14 +777,13 @@ void menu_handler::toggle_shroud_updates(int side_num)
 	if (!auto_shroud) update_shroud_now(side_num);
 
 	// Toggle the setting and record this.
-	recorder.add_auto_shroud(!auto_shroud);
-	current_team.set_auto_shroud_updates(!auto_shroud);
+	synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(!auto_shroud));
 	resources::undo_stack->add_auto_shroud(!auto_shroud);
 }
 
 void menu_handler::update_shroud_now(int /* side_num */)
 {
-	resources::undo_stack->commit_vision();
+	synced_context::run_in_synced_context("update_shroud", replay_helper::get_update_shroud());
 }
 
 

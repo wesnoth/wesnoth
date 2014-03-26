@@ -897,10 +897,10 @@ void synced_command_result::do_execute()
 		s << "local x1 = " << location_.x << " local y1 = " << location_.y << " ";
 	}
 	s << lua_code_;
-
-	resources::lua_kernel->run(s.str().c_str());
+	
+	synced_context::run_in_synced_context("lua_ai", replay_helper::get_lua_ai(s.str()));
+	
 	try {
-		recorder.add_lua_ai(s.str());
 		set_gamestate_changed();
 		manager::raise_gamestate_changed();
 	} catch (...) {

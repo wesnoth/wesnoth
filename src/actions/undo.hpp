@@ -86,7 +86,14 @@ class undo_list : boost::noncopyable {
 		/// @return true on success; false on an error.
 		virtual bool redo(int side) = 0;
 
+		config& get_replay_data() { return replay_data; }
+
 		// Data:
+		/// the replay data to do this action, this is only !empty() when this action is on the redo stack
+		/// we need this because we dont recalculate the redos like they would be in real game, 
+		/// but even undoable comands can have "dependent" (= user_input) commands, which we save here.
+		config replay_data;
+
 		/// The hexes occupied by the affected unit during this action.
 		std::vector<map_location> route;
 		/// A record of the affected unit's ability to see.

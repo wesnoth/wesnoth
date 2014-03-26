@@ -59,12 +59,10 @@ public:
 	bool is_skipping() const;
 
 	void add_start();
-	void add_disband(const std::string& unit_id);
 	void add_countdown_update(int value,int team);
-	void add_auto_shroud(bool turned_on);
-	void update_shroud();
 
 	void add_synced_command(const std::string& name, const config& command);
+	void init_side();
 	/*
 		returns a reference to the newest config that us not dependent or has undo =no
 	
@@ -76,11 +74,7 @@ public:
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
-	void init_side();
 	void end_turn();
-	void add_event(const std::string& name,
-		const map_location& loc=map_location::null_location);
-	void add_lua_ai(const std::string& lua_code);
 	void add_unit_checksum(const map_location& loc,config* const cfg);
 	void add_checksum_check(const map_location& loc);
 	void add_log_data(const std::string &key, const std::string &var);
@@ -103,8 +97,17 @@ public:
 	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
 	config get_last_turn(int num_turns=1);
 	const config& get_replay_data() const { return cfg_; }
-
+	
 	void undo();
+	/*
+	undoes the last move and puts it into given config to be reone with redo
+	this is good, because even undoable commands can have dependent commands, which would otherwise get lost causing oos.
+	*/
+	void undo_cut(config& dst);
+	/*
+		puts the given config which was cut with undo_cut back in the replay.
+	*/
+	void redo(const config& dst);
 
 	void start_replay();
 	void revert_action();
