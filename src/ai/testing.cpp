@@ -76,10 +76,10 @@ void ai_testing::log_draw()
 	recorder.add_log_data("ai_log","result","draw");
 }
 
-void ai_testing::log_victory(std::vector<unsigned int> winners)
+void ai_testing::log_victory(std::set<unsigned int> winners)
 {
 	recorder.add_log_data("ai_log","result","victory");
-	for(std::vector<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {
+	for(std::set<unsigned int>::const_iterator w = winners.begin(); w != winners.end(); ++w) {
 		LOG_AI_TESTING << "WINNER: "<< *w <<std::endl;
 		recorder.add_log_data("ai_log","winner",str_cast(*w));
 	}
