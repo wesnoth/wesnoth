@@ -843,7 +843,9 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	size_t moves = 0;
 	try {
-		moves = actions::move_unit(steps, &recorder, resources::undo_stack,
+		
+		LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
+		moves = actions::move_unit_and_record(steps, resources::undo_stack,
 		                           false, true, &interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);

@@ -57,10 +57,12 @@
 #include "play_controller.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
+#include "synced_context.hpp"
 #include "unit_display.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -1220,7 +1222,10 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 
 	gui_->set_route(&route);
 	gui_->unhighlight_reach();
-	actions::move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
+	{
+		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back() << "\n";
+		actions::move_unit_and_record(route.steps, resources::undo_stack, continue_move);
+	}
 	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
 }
@@ -1289,8 +1294,12 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			}
 
 			gui_->set_route(&route);
-			int moves = actions::move_unit(route.steps, &recorder, resources::undo_stack);
-			change = moves > 0;
+
+			{
+				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back() << "\n";
+				int moves = actions::move_unit_and_record(route.steps, resources::undo_stack);
+				change = moves > 0;
+			}
 
 			if (change) {
 				// something changed, resume waiting blocker (maybe one can move now)

@@ -28,7 +28,7 @@ public:
 
 	static config get_disband(const std::string& unit_id);
 	//TODO: add some additional checkup (unit checksum) here.
-	static config get_movement(const std::vector<map_location>& steps);
+	static config get_movement(const std::vector<map_location>& steps, bool skipsighed);
 
 	static config get_attack(const map_location& a, const map_location& b,
 		int att_weapon, int def_weapon, const std::string& attacker_type_id,

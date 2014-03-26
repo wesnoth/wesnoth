@@ -63,11 +63,6 @@ public:
 	void add_recall(const std::string& unit_id, const map_location& loc, const map_location& from);
 	void add_disband(const std::string& unit_id);
 	void add_countdown_update(int value,int team);
-	/// Records a move that follows the provided @a steps.
-	void add_movement(const std::vector<map_location>& steps);
-	/// Modifies the most recently recorded move to indicate that it
-	/// stopped early (due to unforseen circumstances, such as an ambush).
-	void limit_movement(const map_location& early_stop);
 	void add_auto_shroud(bool turned_on);
 	void update_shroud();
 
