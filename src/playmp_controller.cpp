@@ -52,9 +52,8 @@ playmp_controller::playmp_controller(const config& level,
 	if ( replay_last_turn_ <= 1)
 	{
 		skip_replay_ = false;
-		blindfold_.unblind();
-	} else if (blindfold_replay_) { 
-		//blindfold_ = resources::screen->video().lock_updates(true);
+	} 
+	if (blindfold_replay_) { 
 		LOG_NG << " *** Putting on the blindfold now " << std::endl;
 	}
 }
@@ -111,6 +110,19 @@ void playmp_controller::before_human_turn(bool save){
 	init_turn_data();
 }
 
+void playmp_controller::on_not_observer() {
+	remove_blindfold();
+}
+
+void playmp_controller::remove_blindfold() {
+	if (resources::screen->is_blindfolded()) {
+		blindfold_.unblind();
+		LOG_NG << " *** Taking off the blindfold now " << std::endl;
+		resources::screen->redraw_everything();
+	}
+}
+
+
 bool playmp_controller::counting_down() {
 	return beep_warning_time_ > 0;
 }
@@ -164,11 +176,7 @@ namespace {
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
 
-	if (resources::screen->is_blindfolded()) {
-		blindfold_.unblind();
-		LOG_NG << " *** Taking off the blindfold now " << std::endl;
-		resources::screen->redraw_everything();
-	}
+	remove_blindfold();
 
 	command_disabled_resetter reset_commands;
 	int cur_ticks = SDL_GetTicks();

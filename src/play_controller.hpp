@@ -117,6 +117,8 @@ public:
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
 	virtual void check_end_level() = 0;
+
+	virtual void on_not_observer() = 0;
 	/**
 	 * Asks the user whether to continue on an OOS error.
 	 * @throw end_level_exception If the user wants to abort.

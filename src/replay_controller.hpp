@@ -50,6 +50,7 @@ public:
 	virtual void force_end_turn() {}
 	virtual void force_end_level(LEVEL_RESULT) {}
 	virtual void check_end_level() {}
+	virtual void on_not_observer() {}
 
 	std::vector<team> teams_start_;
 

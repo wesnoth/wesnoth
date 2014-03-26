@@ -65,6 +65,10 @@ protected:
 
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;
+
+	virtual void on_not_observer();
+	void remove_blindfold();
+
 	blindfold blindfold_;
 private:
 	void set_end_scenario_button();
