@@ -25,7 +25,6 @@
 #include "map_label.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "whiteboard/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
@@ -122,11 +121,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// the simple wesnothserver implementation in wesnoth was removed years ago. 
 	assert(network::nconnections() <= 1);
 	
-	if (const config &rnd_seed = cfg.child("random_seed")) {
-		rand_rng::set_seed(rnd_seed["seed"]);
-		//may call a callback function, see rand_rng::set_seed_callback
-	}
-
 	if (const config &msg = cfg.child("message"))
 	{
 		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],

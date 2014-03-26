@@ -87,10 +87,8 @@ int get_last_seed();
  * @todo needs a reliable way of clearing the callback when things don't go as
  * normal (e.g. player quit the game while the callback is set)
  */
-void set_new_seed_callback(boost::function<void (int)> f);
+//void set_new_seed_callback(boost::function<void (int)> f);
 
-/** @return true if the seed callback is not NULL */
-bool has_new_seed_callback();
 
 /**
  * Clear the new seed callback

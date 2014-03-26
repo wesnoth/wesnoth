@@ -68,10 +68,6 @@ public:
 	/// Modifies the most recently recorded move to indicate that it
 	/// stopped early (due to unforseen circumstances, such as an ambush).
 	void limit_movement(const map_location& early_stop);
-	void add_attack(const map_location& a, const map_location& b,
-		int att_weapon, int def_weapon, const std::string& attacker_type_id,
-		const std::string& defender_type_id, int attacker_lvl,
-		int defender_lvl, const size_t turn, const time_of_day &t);
 	void add_auto_shroud(bool turned_on);
 	void update_shroud();
 
@@ -98,26 +94,6 @@ public:
 	void add_log_data(const std::string &category, const std::string &key, const std::string &var);
 	void add_log_data(const std::string &category, const std::string &key, const config& c);
 
-	/**
-	 * Mark an expected advancement adding it to the queue
-	 */
-	void add_expected_advancement(const map_location& loc);
-
-	/**
-	 * Access to the expected advancements queue.
-	 */
-	const std::deque<map_location>& expected_advancements() const;
-
-	/**
-	 * Remove the front expected advancement from the queue
-	 */
-	void pop_expected_advancement();
-
-	/**
-	 * Adds an advancement to the replay, the following option command
-	 * determines which advancement option has been chosen
-	 */
-	void add_advancement(const map_location& loc);
 
 	void add_chat_message_location();
 	void speak(const config& cfg);
@@ -198,7 +174,7 @@ extern replay recorder;
 
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
-bool do_replay(int side_num, replay *obj = NULL);
+bool do_replay(int side_num);
 
 bool do_replay_handle(int side_num, const std::string &do_untill);
 

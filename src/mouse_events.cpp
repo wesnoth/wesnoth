@@ -37,8 +37,10 @@
 #include "play_controller.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "rng.hpp"
+#include "synced_context.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -1084,7 +1086,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 		return;
 	}
 
-	commands_disabled++;
+	events::command_disabler disabler;
 	const battle_context_unit_stats &att = bc_vector[choice].get_attacker_stats();
 	const battle_context_unit_stats &def = bc_vector[choice].get_defender_stats();
 
@@ -1101,22 +1103,25 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	gui().draw();
 
 	///@todo change ToD to be location specific for the defender
-	recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
+
+	synced_context::run_in_synced_context("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
 		attacker->type_id(), defender->type_id(), att.level,
-		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
-	rand_rng::invalidate_seed();
+		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day()));
+	/*
 	if (rand_rng::has_valid_seed()) { //means SRNG is disabled
 		perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
 	} else {
 		rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
 			this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
-	}
+	}*/
 }
 
 void mouse_handler::perform_attack(
-	map_location attacker_loc, map_location defender_loc,
-	int attacker_weapon, int defender_weapon, int seed)
+	map_location /*attacker_loc*/, map_location /*defender_loc*/,
+	int /*attacker_weapon*/, int /*defender_weapon*/, int /*seed*/)
 {
+	throw "Not supported";
+	/*
 	// this function gets it's arguments by value because the calling function
 	// object might get deleted in the clear callback call below, invalidating
 	// const ref arguments
@@ -1150,7 +1155,7 @@ void mouse_handler::perform_attack(
 	}
 
 	resources::controller->check_victory();
-	gui().draw();
+	gui().draw();*/
 }
 
 std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const
