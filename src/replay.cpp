@@ -295,10 +295,18 @@ void replay::add_seed(const char* child_name, int seed)
 	random()->child(child_name)["seed"] = seed;
 }
 
-void replay::user_input(const std::string &name, const config &input)
+void replay::user_input(const std::string &name, const config &input, int from_side)
 {
 	config* const cmd = add_command();
 	(*cmd)["dependent"] = true;
+	if(from_side == -1)
+	{
+		(*cmd)["from_side"] = "server";
+	}
+	else
+	{
+		(*cmd)["from_side"] = from_side;
+	}
 	cmd->add_child(name, input);
 }
 
@@ -1040,7 +1048,7 @@ static config get_user_choice_internal(const std::string &name, const mp_sync::u
 			DBG_REPLAY << "MP synchronization: local choice\n";
 			config cfg = uch.query_user();
 			
-			recorder.user_input(name, cfg);
+			recorder.user_input(name, cfg, side);
 			return cfg;
 
 		}
