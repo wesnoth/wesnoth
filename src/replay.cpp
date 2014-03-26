@@ -720,37 +720,6 @@ replay& get_replay_source()
 	}
 }
 
-
-/**
- * Converts a recruit index to a type_id.
- * This is a legacy support function to allow showing replays saved before 1.11.2.
- */
-static std::string type_by_index(int index, int side_num, const map_location & loc)
-{
-	if ( index < 0 ) {
-		std::stringstream errbuf;
-		errbuf << "Recruitment index is illegal: " << index
-		       << " is negative.\n";
-		replay::process_error(errbuf.str());
-		return std::string();
-	}
-
-	// Get the set of recruits.
-	std::set<std::string> recruits = actions::get_recruits(side_num, loc);
-	if ( static_cast<size_t>(index) >= recruits.size() ) {
-		std::stringstream errbuf;
-		errbuf << "Recruitment index is illegal: " << (index+1)
-		       << " is larger than the " << recruits.size()
-		       << " unit types available for recruitment.\n";
-		replay::process_error(errbuf.str());
-		return std::string();
-	}
-
-	std::set<std::string>::const_iterator itor = recruits.begin();
-	std::advance(itor, index);
-	return *itor;
-}
-
 static void check_checksums(const config &cfg)
 {
 	if(! game_config::mp_debug) {
