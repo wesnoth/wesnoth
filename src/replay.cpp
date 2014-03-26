@@ -242,31 +242,6 @@ void replay::add_start()
 	cmd->add_child("start");
 }
 
-void replay::add_recruit(const std::string& type_id, const map_location& loc, const map_location& from)
-{
-	config* const cmd = add_command();
-
-	config val;
-	val["type"] = type_id;
-	loc.write(val);
-	config& leader_position = val.add_child("from");
-	from.write(leader_position);
-
-	cmd->add_child("recruit",val);
-}
-
-void replay::add_recall(const std::string& unit_id, const map_location& loc, const map_location& from)
-{
-	config* const cmd = add_command();
-
-	config val;
-	val["value"] = unit_id;
-	loc.write(val);
-	config& leader_position = val.add_child("from");
-	from.write(leader_position);
-
-	cmd->add_child("recall",val);
-}
 
 void replay::add_disband(const std::string& unit_id)
 {
@@ -318,20 +293,6 @@ void replay::add_seed(const char* child_name, int seed)
 {
 	LOG_REPLAY << "Setting seed for child type " << child_name << ": " << seed << "\n";
 	random()->child(child_name)["seed"] = seed;
-}
-
-void replay::add_pos(const std::string& type,
-                     const map_location& a, const map_location& b)
-{
-	config* const cmd = add_command();
-
-	config move, src, dst;
-	a.write(src);
-	b.write(dst);
-
-	move.add_child("source",src);
-	move.add_child("destination",dst);
-	cmd->add_child(type,move);
 }
 
 void replay::user_input(const std::string &name, const config &input)

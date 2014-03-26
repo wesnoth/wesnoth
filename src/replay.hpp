@@ -59,8 +59,6 @@ public:
 	bool is_skipping() const;
 
 	void add_start();
-	void add_recruit(const std::string& type_id, const map_location& loc, const map_location& from);
-	void add_recall(const std::string& unit_id, const map_location& loc, const map_location& from);
 	void add_disband(const std::string& unit_id);
 	void add_countdown_update(int value,int team);
 	void add_auto_shroud(bool turned_on);

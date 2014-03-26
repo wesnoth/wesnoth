@@ -115,7 +115,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recruit, child, use_undo, show, error_handler)
 		error_handler(errbuf.str(), false);
 	}
 
-	actions::recruit_unit(*u_type, current_team_num, loc, from, show, use_undo, false);
+	actions::recruit_unit(*u_type, current_team_num, loc, from, show, use_undo);
 
 	LOG_REPLAY << "recruit: team=" << current_team_num << " '" << type_id << "' at (" << loc
 		<< ") cost=" << u_type->cost() << " from gold=" << beginning_gold << ' '
@@ -133,7 +133,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 	map_location loc(child, resources::gamedata);
 	map_location from(child.child_or_empty("from"), resources::gamedata);
 
-	if ( !actions::recall_unit(unit_id, current_team, loc, from, show, use_undo, false) ) {
+	if ( !actions::recall_unit(unit_id, current_team, loc, from, show, use_undo) ) {
 		error_handler("illegal recall: unit_id '" + unit_id + "' could not be found within the recall list.\n", true);
 		//when recall_unit returned false nothing happend so we can safety return false;
 		return false;

@@ -34,8 +34,11 @@
 #include "../pathfind/pathfind.hpp"
 #include "../random.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit_display.hpp"
 #include "../variable.hpp"
@@ -929,13 +932,8 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * Recruits a unit of the given type for the given side.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool use_undo,
-                  bool use_recorder)
+                  const map_location & from, bool show, bool use_undo)
 {
-	// Record this before actually recruiting.
-	if ( use_recorder )
-		recorder.add_recruit(u_type.id(), loc, from);
-	
 	const unit new_unit(u_type, side_num, true);
 
 
@@ -969,10 +967,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( resources::screen != NULL )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
-
-	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
 }
 
 
@@ -981,7 +975,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show, bool use_undo, bool use_recorder)
+                 bool show, bool use_undo)
 {
 	std::vector<unit> & recall_list = current_team.recall_list();
 
@@ -989,10 +983,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	std::vector<unit>::iterator recall_it = find_if_matches_id(recall_list, id);
 	if ( recall_it == recall_list.end() )
 		return false;
-
-	// Record this before actually recalling.
-	if ( use_recorder )
-		recorder.add_recall(id, loc, from);
+		
 
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);
@@ -1030,9 +1021,7 @@ bool recall_unit(const std::string & id, team & current_team,
 		// Other updates were done by place_recruit().
 
 	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
-
+	checkup_instance->unit_checksum(loc);
 	return true;
 }
 
