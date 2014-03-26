@@ -285,6 +285,12 @@ void replay::add_countdown_update(int value, int team)
 	val["team"] = team;
 	cmd->add_child("countdown_update",val);
 }
+void replay::add_synced_command(const std::string& name, const config& command)
+{
+	config* const cmd = add_command();
+	cmd->add_child(name,command);
+	LOG_REPLAY << "add_synced_command: \n" << cmd->debug() << "\n";
+}
 
 
 /**
@@ -604,6 +610,23 @@ struct async_cmd
 	config *cfg;
 	int num;
 };
+
+config& replay::get_last_real_command()
+{
+	for (int cmd_num = pos_ - 1; cmd_num >= 0; --cmd_num)
+	{
+		config &c = command(cmd_num);
+		if (c["dependent"].to_bool(false) || !c["undo"].to_bool(true) || c["async"].to_bool(false))
+		{
+			continue;
+		}
+		return c;
+	}
+	ERR_REPLAY << "replay::get_last_real_command called with not existant command.\n";
+	assert(false && "replay::get_last_real_command called with not existant command.");
+	//this code can never be reached because of the assert above so no need to return something.
+	throw "assert didnt work :o";
+}
 
 void replay::undo()
 {
