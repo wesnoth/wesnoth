@@ -74,6 +74,14 @@ public:
 		int defender_lvl, const size_t turn, const time_of_day &t);
 	void add_auto_shroud(bool turned_on);
 	void update_shroud();
+
+	void add_synced_command(const std::string& name, const config& command);
+	/*
+		returns a reference to the newest config that us not dependent or has undo =no
+	
+	*/
+	config& get_last_real_command();
+
 	void add_seed(const char* child_name, int seed);
 	void user_input(const std::string &, const config &);
 	void add_label(const terrain_label*);
