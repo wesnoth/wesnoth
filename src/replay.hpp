@@ -72,7 +72,7 @@ public:
 	config& get_last_real_command();
 
 	void add_seed(const char* child_name, int seed);
-	void user_input(const std::string &, const config &);
+	void user_input(const std::string &, const config &, int from_side);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
