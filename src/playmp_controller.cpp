@@ -252,9 +252,7 @@ void playmp_controller::play_human_turn(){
 				}
 				turn_data_->send_data();
 
-				if (!rand_rng::has_new_seed_callback()) {
-					throw end_turn_exception();
-				}
+				throw end_turn_exception();
 			}
 		}
 
@@ -426,8 +424,6 @@ void playmp_controller::finish_side_turn(){
 	//halt and cancel the countdown timer
 	reset_countdown();
 
-	// avoid callback getting called in the wrong turn
-	rand_rng::clear_new_seed_callback();
 }
 
 void playmp_controller::play_network_turn(){

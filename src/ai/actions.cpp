@@ -43,13 +43,16 @@
 #include "../game_preferences.hpp"
 #include "../log.hpp"
 #include "../scripting/lua.hpp"
+#include "../synced_context.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
 #include "../team.hpp"
+#include "../synced_context.hpp"
 
 namespace ai {
 
@@ -273,30 +276,14 @@ void attack_result::do_execute()
 
 	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
+	//to get rid of an unused member varuiable warning, FIXME: find a way to 'ask' the ai wich advancement should be chosen from synced_commands.cpp .
+	assert(&this->advancements_ != NULL);
+	synced_context::run_in_synced_context("attack", 
+		replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
+			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
+			resources::tod_manager->get_time_of_day()));
 
-	///@todo 1.9: change ToD to be location specific for the defender unit
-	recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
-		d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
-		resources::tod_manager->get_time_of_day());
-	rand_rng::invalidate_seed();
-	rand_rng::clear_new_seed_callback();
-	while (!rand_rng::has_valid_seed()) {
-		manager::raise_user_interact();
-		manager::raise_sync_network();
-		SDL_Delay(10);
-	}
-	recorder.add_seed("attack", rand_rng::get_last_seed());
-	attack_unit(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
-
-	dialogs::advance_unit(attacker_loc_, true, false, advancements_);
-
-	const unit_map::const_iterator defender = resources::units->find(defender_loc_);
-	if(defender != resources::units->end()) {
-		size_t defender_team = defender->side() - 1;
-		if(defender_team < resources::teams->size()) {
-			dialogs::advance_unit(defender_loc_ , !(*resources::teams)[defender_team].is_human());
-		}
-	}
+	
 
 	set_gamestate_changed();
 	//start of ugly hack. @todo 1.9 rework that via extended event system

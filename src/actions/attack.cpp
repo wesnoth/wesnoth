@@ -22,6 +22,7 @@
 #include "vision.hpp"
 
 #include "../attack_prediction.hpp"
+#include "../config_assign.hpp"
 #include "../game_config.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
@@ -893,15 +894,33 @@ namespace {
 			resources::gamedata->get_variable("damage_inflicted") = damage;
 		}
 
+		
 		// Make sure that if we're serializing a game here,
 		// we got the same results as the game did originally.
-		const config *ran_results = get_random_results();
-		if (ran_results)
+		const config local_results = config_of("chance", attacker.cth_)("hits", hits)("damage", damage);
+		config replay_results;
+		bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
+		if (!equals_replay)
 		{
-			int results_chance = (*ran_results)["chance"];
-			bool results_hits = (*ran_results)["hits"].to_bool();
-			int results_damage = (*ran_results)["damage"];
+			
+			int results_chance = replay_results["chance"];
+			bool results_hits = replay_results["hits"].to_bool();
+			int results_damage = replay_results["damage"];
+			/*
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump() 
+				<< " replay data differs from local calculated data:"
+				<< " chance to hit in data source: " << results_chance 
+				<< " chance to hit in calculated:  " << attacker.cth_
+				<< " chance to hit in data source: " << results_chance 
+				<< " chance to hit in calculated:  " << attacker.cth_
+				;
+			
+				attacker.cth_ = results_chance;
+				hits = results_hits;
+				damage = results_damage;
 
+				OOS_error_ = true;
+				*/
 			if (results_chance != attacker.cth_)
 			{
 				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
@@ -988,23 +1007,14 @@ namespace {
 				: statistics::attack_context::MISSES, damage_done, drains_damage);
 		}
 
-		if (!ran_results)
+		
+		replay_results.clear();
+		// there was also a attribute cfg["unit_hit"] which was never used so i deleted.
+		equals_replay = checkup_instance->local_checkup(config_of("dies", dies), replay_results);
+		if (!equals_replay)
 		{
-			log_scope2(log_engine, "setting random results");
-			config cfg;
-			cfg["hits"] = hits;
-			cfg["dies"] = dies;
-			cfg["unit_hit"] = "defender";
-			cfg["damage"] = damage;
-			cfg["chance"] = attacker.cth_;
+			bool results_dies = replay_results["dies"].to_bool();
 
-			set_random_results(cfg);
-		}
-		else
-		{
-			bool results_dies = (*ran_results)["dies"].to_bool();
-			if (results_dies != dies)
-			{
 				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 					<< ": the data source says the "
 					<< (attacker_turn ? "defender" : "attacker") << ' '
@@ -1014,10 +1024,8 @@ namespace {
 					<< " (over-riding game calculations with data source results)\n";
 				dies = results_dies;
 				// Set hitpoints to 0 so later checks don't invalidate the death.
-				// Maybe set to > 0 for the else case to avoid more errors?
 				if (results_dies) defender.get_unit().set_hitpoints(0);
 				OOS_error_ = true;
-			}
 		}
 
 		if (hits)

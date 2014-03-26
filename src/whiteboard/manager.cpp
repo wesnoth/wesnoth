@@ -41,7 +41,6 @@
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "team.hpp"
 #include "unit_display.hpp"
 
@@ -981,15 +980,6 @@ bool manager::execute_all_actions()
 	{
 		bool action_successful = sa->execute(sa->begin());
 
-		// Interrupt if an attack is waiting for a random seed from the server
-		if ( rand_rng::has_new_seed_callback())
-		{
-			//leave executing_all_actions_ to true, we'll resume once attack completes
-			finalize_executing_all_actions.clear();
-
-			events::commands_disabled++; //to be decremented by continue_execute_all()
-			return false;
-		}
 		// Interrupt on incomplete action
 		if (!action_successful)
 		{
@@ -1001,7 +991,7 @@ bool manager::execute_all_actions()
 
 void manager::continue_execute_all()
 {
-	if (executing_all_actions_ && !rand_rng::has_new_seed_callback()) {
+	if (executing_all_actions_ ) {
 		events::commands_disabled--;
 		if (execute_all_actions() && preparing_to_end_turn_) {
 			resources::controller->force_end_turn();

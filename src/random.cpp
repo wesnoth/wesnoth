@@ -128,16 +128,6 @@ int get_last_seed()
 	return last_seed;
 }
 
-void set_new_seed_callback(boost::function<void (int)> f)
-{
-	DBG_RND << "set_new_seed_callback\n";
-	new_seed_callback = f;
-}
-
-bool has_new_seed_callback()
-{
-	return new_seed_callback != NULL;
-}
 
 void clear_new_seed_callback()
 {
