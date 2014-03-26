@@ -22,6 +22,7 @@
 #include "undo.hpp"
 #include "vision.hpp"
 
+#include "../config_assign.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
@@ -33,6 +34,8 @@
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/pathfind.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
+#include "../synced_context.hpp"
 #include "../resources.hpp"
 #include "../unit_display.hpp"
 #include "../formula_string_utils.hpp"
@@ -1159,65 +1162,36 @@ namespace { // Private helpers for move_unit()
 
 }//end anonymous namespace
 
-/**
- * Moves a unit across the board.
- *
- * This function handles actual movement, checking terrain costs as well as
- * things that might interrupt movement (e.g. ambushes). If the full path
- * cannot be reached this turn, the remainder is stored as the unit's "goto"
- * instruction. (The unit itself is whatever unit is at the beginning of the
- * supplied path.)
- *
- * @param[in]  steps                The route to be traveled. The unit to be moved is at the beginning of this route.
- * @param[out] move_recorder        Will be given the route actually traveled (which might be shorter than the route specified) so it can be stored in the replay.
- * @param      undo_stack           If supplied, then either this movement will be added to the stack or the stack will be cleared.
- * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
- * @param[in]  show_move            Controls whether or not the movement is animated for the player.
- * @param[out] interrupted          If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
- * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move (and the unit's "goto" instruction will be preserved).
- * @param[in]  replay_dest          If not NULL, then this move is assumed to be a replay that expects the unit to be moved to here. Several normal considerations are ignored in a replay.
- *
- * @returns The number of hexes entered. This can safely be used as an index
- *          into @a steps to get the location where movement ended, provided
- *          @a steps is not empty (the return value is guaranteed to be less
- *          than steps.size() ).
- */
-size_t move_unit(const std::vector<map_location> &steps,
-                 replay* move_recorder, undo_list* undo_stack,
-                 bool continued_move, bool show_move,
+
+static size_t move_unit_internal(undo_list* undo_stack,
+                 bool show_move,
                  bool* interrupted,
-                 move_unit_spectator* move_spectator,
-                 const map_location* replay_dest)
+				 unit_mover& mover)
 {
 	const events::command_disabler disable_commands;
-
 	// Default return value.
 	if ( interrupted )
 		*interrupted = false;
 
-	// Avoid some silliness.
-	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
-		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
-		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
-		return 0;
-	}
-
-	// Evaluate this move.
-	unit_mover mover(steps, move_spectator, continued_move, replay_dest);
-	if ( !mover.check_expected_movement() )
-		return 0;
-	if ( move_recorder )
-		// Record the expected movement, so that replays trigger the same events.
-		// (Recorded here in case an exception occurs during movement.)
-		move_recorder->add_movement(mover.expected_path());
-
 	// Attempt moving.
 	mover.try_actual_movement(show_move);
-	if ( move_recorder  &&  mover.stopped_early() )
-		// Record the early stop.
-		move_recorder->limit_movement(mover.final_hex());
+	
+	/*
+	we could add some checkup here like this:
+	config co;
+	config cn = config_of("stopped_early", mover.stopped_early())("final_hex_x", mover.final_hex().x)("final_hex_y", mover.final_hex().y);
+	bool matches_replay = checkup_instance->local_checkup(cn,co);
+	if(!matches_replay)
+	{
+		//SHOW OOS ERROR
+		
 
+		mover.reset_final_hex(co["x"], co["y"]);
+	}
+	*/
+	
 	// Bookkeeping, etc.
+	// also fires the moveto event
 	mover.post_move(undo_stack);
 	if ( show_move )
 		mover.feedback();
@@ -1229,6 +1203,69 @@ size_t move_unit(const std::vector<map_location> &steps,
 	return mover.steps_travelled();
 }
 
+/**
+ * Moves a unit across the board.
+ *
+ * This function handles actual movement, checking terrain costs as well as
+ * things that might interrupt movement (e.g. ambushes). If the full path
+ * cannot be reached this turn, the remainder is stored as the unit's "goto"
+ * instruction. (The unit itself is whatever unit is at the beginning of the
+ * supplied path.)
+ *
+ * @param[in]  steps                The route to be traveled. The unit to be moved is at the beginning of this route.
+ * @param      undo_stack           If supplied, then either this movement will be added to the stack or the stack will be cleared.
+ * @param[in]  continued_move       If set to true, this is a continuation of an earlier move (movement is not interrupted should units be spotted).
+ * @param[in]  show_move            Controls whether or not the movement is animated for the player.
+ * @param[out] interrupted          If supplied, then this is set to true if information was uncovered that warrants interrupting a chain of actions (and set to false otherwise).
+ * @param[out] move_spectator       If supplied, this will be given the information uncovered by the move (and the unit's "goto" instruction will be preserved).
+ *
+ * @returns The number of hexes entered. This can safely be used as an index
+ *          into @a steps to get the location where movement ended, provided
+ *          @a steps is not empty (the return value is guaranteed to be less
+ *          than steps.size() ).
+ */
+size_t move_unit_and_record(const std::vector<map_location> &steps,
+                 undo_list* undo_stack,
+                 bool continued_move, bool show_move,
+                 bool* interrupted,
+                 move_unit_spectator* move_spectator)
+{
+	
+	// Avoid some silliness.
+	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
+		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
+		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
+		return 0;
+	}
+
+	// Evaluate this move.
+	unit_mover mover(steps, move_spectator, continued_move, NULL);
+	if ( !mover.check_expected_movement() )
+		return 0;
+
+
+	/*
+		enter the synced mode and do the actual movement.
+	*/
+	recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move));
+	set_scontext_synced sync;
+	return move_unit_internal(undo_stack, show_move, interrupted, mover);
+}
+
+size_t move_unit_from_replay(const std::vector<map_location> &steps,
+                 undo_list* undo_stack,
+                 bool continued_move, bool show_move)
+{
+	// Evaluate this move.
+	unit_mover mover(steps, NULL, continued_move, NULL);
+	if ( !mover.check_expected_movement() ) 
+	{
+		replay::process_error("found corrupt movement in replay.");
+		return 0;
+	}
+
+	return move_unit_internal(undo_stack, show_move, NULL, mover);
+}
 
 bool unit_can_move(const unit &u)
 {

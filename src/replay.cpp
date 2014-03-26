@@ -296,56 +296,6 @@ void replay::add_synced_command(const std::string& name, const config& command)
 
 
 /**
- * Records a move that follows the provided @a steps.
- * This should be the steps to be taken this turn, ending in an
- * apparently-unoccupied (from the moving team's perspective) hex.
- */
-void replay::add_movement(const std::vector<map_location>& steps)
-{
-	if(steps.empty()) { // no move, nothing to record
-		return;
-	}
-
-	config* const cmd = add_command();
-
-	config move;
-	write_locations(steps, move);
-
-	cmd->add_child("move",move);
-}
-
-/**
- * Modifies the most recently recorded move to indicate that it
- * stopped early (due to unforeseen circumstances, such as an ambush).
- * This will be ineffective if @a early_stop is not in the recorded path.
- */
-void replay::limit_movement(const map_location& early_stop)
-{
-	// Find the most recently recorded move.
-	for (int cmd = ncommands() - 1; cmd >= 0; --cmd)
-	{
-		config &cfg = command(cmd);
-		if ( config &child = cfg.child("move") )
-		{
-			if ( early_stop.valid() )
-			{
-				// Record this limitation.
-				child["stop_x"] = early_stop.x + 1;
-				child["stop_y"] = early_stop.y + 1;
-			}
-			// else, we could erase the current stop_x and stop_y, but
-			// doing so currently does not have a use.
-
-			// Done.
-			return;
-		}
-	}
-
-	// If we made it out of the loop, there is no move to modify.
-	ERR_REPLAY << "Trying to limit movement, but no movement recorded.";
-}
-
-/**
  * Records that the player has toggled automatic shroud updates.
  */
 void replay::add_auto_shroud(bool turned_on)

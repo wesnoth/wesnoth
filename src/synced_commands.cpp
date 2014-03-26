@@ -343,7 +343,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  /*use_undo*/, show, error_handler)
+SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 {
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
@@ -393,23 +393,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  /*use_undo*/, show, error_handler)
 
 	bool show_move = show;
 	if ( current_team.is_ai() || current_team.is_network_ai() )
+	{
 		show_move = show_move && preferences::show_ai_moves();
-	//const int num_steps =
-		//todo 
-		actions::move_unit(steps, NULL, resources::undo_stack, true,
-		show_move, NULL, NULL, NULL);
-
-	// Verify our destination.
-	/*
-	const map_location& actual_stop = steps[num_steps];
-	if ( actual_stop != early_stop ) {
-		std::stringstream errbuf;
-		errbuf << "Failed to complete movement to "
-			<< early_stop << ".\n";
-		replay::process_error(errbuf.str());
-		return;
 	}
-	*/
+	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, child["skip_sighed"].to_bool(false), show_move);
+	
 	return true;
 }
 

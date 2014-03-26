@@ -429,9 +429,8 @@ void move_result::do_execute()
 	move_spectator_.set_unit(resources::units->find(from_));
 
 	if (from_ != to_) {
-		size_t num_steps = ::actions::move_unit(
+		size_t num_steps = ::actions::move_unit_and_record(
 			/*std::vector<map_location> steps*/ route_->steps,
-			/*replay* move_recorder*/ &recorder,
 			/*::actions::undo_list* undo_stack*/ NULL,
 			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool show_move*/ preferences::show_ai_moves(),
