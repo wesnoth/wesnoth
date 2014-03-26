@@ -1416,6 +1416,10 @@ void play_controller::check_victory()
 		check_end_level();
 	}
 
+	DBG_NG << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
+	DBG_NG << "found_player: " << found_player << std::endl;
+	DBG_NG << "is_observer: " << is_observer() << std::endl;
+
 	if (!victory_when_enemies_defeated_ && (found_player || is_observer())) {
 		// This level has asked not to be ended by this condition.
 		return;
