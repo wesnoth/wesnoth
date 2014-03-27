@@ -163,10 +163,12 @@ private:
 
 	void handle_request_campaign_list(const request&);
 	void handle_request_campaign(const request&);
+	void handle_submit_gameplay_times(const request&);
 	void handle_request_terms(const request&);
 	void handle_upload(const request&);
 	void handle_delete(const request&);
 	void handle_change_passphrase(const request&);
+	void handle_rate_addon(const request&);
 
 	//
 	// Generic responses.

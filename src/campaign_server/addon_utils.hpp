@@ -18,6 +18,27 @@
 
 #include <string>
 
+
+class initialised_int
+{
+public:
+	// This class is used to check if some strings are already in the map
+	// and to count them; we can't use a std::map<std::string,int> because
+	// int would not always be initialised to 0 and we need it because std::map
+	// automatically creates new fields when they're accessed
+	int num;
+	initialised_int() : num(0) {}
+	int operator() () {
+		return num;
+	}
+	void operator+= (int added) {
+		num += added;
+	}
+	void operator= (int set) {
+		num = set;
+	}
+};
+
 class config;
 
 namespace campaignd {

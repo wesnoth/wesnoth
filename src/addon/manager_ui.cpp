@@ -398,7 +398,7 @@ struct addons_filter_state
 		: keywords()
 		, types(ADDON_TYPES_COUNT, true)
 		, status(FILTER_ALL)
-		, sort(SORT_NAMES)
+		, sort(SORT_RATING)
 		, direction(DIRECTION_ASCENDING)
 		, changed(false)
 	{}
@@ -469,6 +469,10 @@ struct addon_pointer_list_sorter
 		}
 
 		switch(sort_) {
+		case SORT_RATING:
+			// These are technically strings, but comparing will work as well.
+			// They have to be strings, because sometimes there is no rating.
+			return a->second.general_rating > b->second.general_rating;
 		case SORT_NAMES:
 			// Alphanumerical by name, case insensitive.
 			return utf8::lowercase(a->second.title) < utf8::lowercase(b->second.title);
@@ -599,7 +603,7 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 	// if its translated contents don't fit, instead of truncating other, more
 	// important columns such as Size.
 	if(!updates_only) {
-		header += sep + _("Downloads") + sep + _("Type");
+		header += sep + _("Rating") + sep + _("Type");
 	}
 	// end of list header
 
@@ -642,9 +646,16 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		const std::string& display_sep = sep;
 		const std::string& display_size = size_display_string(addon.size);
 		const std::string& display_type = addon.display_type();
-		const std::string& display_down = str_cast(addon.downloads);
 		const std::string& display_icon = addon.display_icon();
 		const std::string& display_status = describe_addon_status(tracking[addon.id]);
+
+		std::string general_rating;
+		if (addon.general_rating == 0) {
+			general_rating = "None";
+		} else {
+			general_rating = str_cast(addon.general_rating / 10.0);
+		}
+		const std::string& display_down = general_rating;
 
 		std::string display_version = addon.version.str();
 		std::string display_old_version = tracking[addon.id].installed_version;
