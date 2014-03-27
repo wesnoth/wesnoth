@@ -794,6 +794,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
 	gui/dialogs/addon/description.cpp
+	gui/dialogs/addon/addon_rate.cpp
 	gui/dialogs/addon/filter_options.cpp
 	gui/dialogs/addon/uninstall_list.cpp
 	gui/dialogs/addon_connect.cpp
