@@ -32,6 +32,14 @@
 
 #include <boost/bind.hpp>
 
+#include "gui/dialogs/addon/addon_rate.hpp"
+#include "gui/dialogs/addon/reviews_list.hpp"
+#include "gui/dialogs/addon/addon_review_write.hpp"
+#include "dialogs.hpp"
+#include "display.hpp"
+#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/transient_message.hpp"
+
 namespace
 {
 std::string format_addon_time(time_t time)
@@ -303,11 +311,12 @@ namespace gui2
 REGISTER_DIALOG(addon_description)
 
 taddon_description::taddon_description(const std::string& addon_id,
-									   const addons_list& addons_list,
-									   const addons_tracking_list& addon_states)
-	: feedback_url_()
+									   addons_list& addons_list,
+									   const addons_tracking_list& addon_states,
+									   addon_info::this_users_rating& current_users_rating)
+	: feedback_url_(), list_of_addons_(addons_list), addon_id_(addon_id), current_users_rating_(current_users_rating)
 {
-	const addon_info& addon = const_at(addon_id, addons_list);
+	const addon_info& addon = const_at(addon_id, list_of_addons_);
 	const addon_tracking_info& state = const_at(addon_id, addon_states);
 
 	const std::string& created_text = format_addon_time(addon.created);
@@ -330,9 +339,12 @@ taddon_description::taddon_description(const std::string& addon_id,
 		register_label(
 				"dependencies",
 				true,
-				make_display_dependencies(addon_id, addons_list, addon_states),
+				make_display_dependencies(addon_id_, list_of_addons_, addon_states),
 				true);
 	}
+
+	register_label("players_rating", true, str_cast(addon.user_rating/10) + "." + str_cast(addon.user_rating % 10) + "/10");
+	register_label("hours_spent_playing", true, str_cast(addon.hours_played));
 
 	feedback_url_ = addon.feedback_url;
 
@@ -373,6 +385,20 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 	tbutton& url_copy_button = find_widget<tbutton>(&window, "url_copy", false);
 	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
 
+	connect_signal_mouse_left_click(
+				find_widget<tbutton>(&window, "vote_button", false)
+				, boost::bind(
+					&gui2::taddon_description::vote_button_callback
+					, this
+					, boost::ref(window)));
+
+	connect_signal_mouse_left_click(
+				find_widget<tbutton>(&window, "view_reviews_button", false)
+				, boost::bind(
+					&gui2::taddon_description::reviews_button_callback
+					, this
+					, boost::ref(window)));
+
 	url_textbox.set_value(feedback_url_);
 	url_textbox.set_active(false);
 
@@ -404,6 +430,28 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 		// No point in displaying the button on platforms that can't do
 		// open_object().
 		url_go_button.set_visible(tcontrol::tvisible::invisible);
+	}
+}
+
+void taddon_description::vote_button_callback(twindow& window)
+{
+	if (current_users_rating_.numerical == -1) {
+		current_users_rating_.numerical = 50;
+	}
+	gui2::taddon_rate::execute(current_users_rating_.numerical,window.video());
+
+}
+
+void taddon_description::reviews_button_callback(twindow& window)
+{
+	typedef std::pair<const std::string, addon_info> reviews_button_callback_pair;
+	BOOST_FOREACH(reviews_button_callback_pair& this_addon, list_of_addons_)
+	{
+		if(this_addon.second.id == addon_id_) {
+			gui2::taddon_reviews_list addon_reviews(this_addon.second,current_users_rating_);
+			addon_reviews.show(window.video());
+			break;
+		}
 	}
 }
 

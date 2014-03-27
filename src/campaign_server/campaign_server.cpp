@@ -346,6 +346,7 @@ void server::register_handlers()
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
 	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
+	REGISTER_CAMPAIGND_HANDLER(rate_addon);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
@@ -705,6 +706,61 @@ void server::handle_change_passphrase(const server::request& req)
 
 		send_message("Passphrase changed.", req.sock);
 	}
+}
+
+void server::handle_rate_addon(const server::request& req)
+{
+	LOG_CS << "received rating of '" << req["addon_name"] << "' from " << network::ip_address(sock) << std::endl;
+	config &campaign = campaigns().find_child("campaign", "name", req["addon_name"]);
+	if (!campaign) {
+		network::send_data(construct_error("Add-on '" + req["addon_name"].str() + "' not found."), sock);
+	} else {
+		if (!req["rating"].empty()) {
+			config& new_rating = campaign.add_child("rate");
+			new_rating["num"] = req["rating"];
+			new_rating["ip"] = network::ip_address(sock);
+			new_rating["time"] = lexical_cast<std::string>(time(NULL));
+			campaign["user_rating"] = req["rating"];
+		}
+		const config& users_review = req.child_or_empty("user_review");
+		if (!users_review.empty()) {
+			config& new_review = campaign.add_child("review");
+			if (!users_review["gameplay"].empty()) {
+				new_review["gameplay"] = users_review["gameplay"];
+			}
+			if (!users_review["visuals"].empty()) {
+				new_review["visuals"] = users_review["visuals"];
+			}
+			if (!users_review["story"].empty())
+			{
+				new_review["story"] = users_review["story"];
+			}
+			if (!users_review["balance"].empty())
+			{
+				new_review["balance"] = users_review["balance"];
+			}
+			if (!users_review["overall"].empty())
+			{
+				new_review["overall"] = users_review["overall"];
+			}
+			new_review["ip"] = network::ip_address(sock);
+			new_review["time"] = lexical_cast<std::string>(time(NULL));
+			campaign["highest_review_id"] = campaign["highest_review_id"].to_int() + 1;
+			new_review["id"] = campaign["highest_review_id"];
+		}
+		BOOST_FOREACH(const config &liked_review, req.child_range("liked_review"))
+		{
+			config& review = campaign.find_child("review", "id", liked_review["number"]);
+			if (review) {
+				if (!review["likers_ips"].empty()) {
+					review["likers_ips"] = review["likers_ips"] + std::string(",") + network::ip_address(sock);
+				} else {
+					review["likers_ips"] = network::ip_address(sock);
+				}
+			}
+		}
+	}
+
 }
 
 } // end namespace campaignd

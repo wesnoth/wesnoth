@@ -262,6 +262,39 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 	return true;
 }
 
+bool addons_client::rate_addon(config& archive_cfg, addon_info::this_users_rating rating)
+{
+
+	config request_buf;
+	config& request_body = request_buf.add_child("rate_addon");
+
+	request_body["addon_name"] = rating.id;
+	if (rating.numerical != -1) {
+		request_body["rating"] = rating.numerical;
+	}
+	for (unsigned int i = 0; i < rating.liked_reviews.size(); i++) {
+		request_body.add_child("liked_review")["number"] = rating.liked_reviews[i];
+	}
+	if (rating.submitted_review == true) {
+		config& review = request_body.add_child("user_review");
+		if (!rating.custom_review.gameplay.empty())  review["gameplay"] = rating.custom_review.gameplay;
+		if (!rating.custom_review.visuals.empty())  review["visuals"] = rating.custom_review.visuals;
+		if (!rating.custom_review.story.empty())  review["story"] = rating.custom_review.story;
+		if (!rating.custom_review.balance.empty())  review["balance"] = rating.custom_review.balance;
+		if (!rating.custom_review.overall.empty())  review["overall"] = rating.custom_review.overall;
+	}
+
+	utils::string_map i18n_symbols;
+	i18n_symbols["addon_title"] = rating.id;
+
+	LOG_ADDONS << "rating add-on " << rating.id << '\n';
+
+	this->send_request(request_buf, archive_cfg);
+	//this->wait_for_transfer_done(vgettext("Sending information about your rating of the <i>$addon_title</i> add-on...", i18n_symbols));
+
+	return !this->update_last_error(archive_cfg);
+}
+
 bool addons_client::update_last_error(config& response_cfg)
 {
 	if(config const &error = response_cfg.child("error")) {

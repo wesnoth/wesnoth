@@ -26,6 +26,7 @@ namespace gui2
 class taddon_description : public tdialog
 {
 public:
+
 	/**
 	 * Constructor.
 	 *
@@ -36,24 +37,30 @@ public:
 	 *                            @a addons_list.
 	 */
 	taddon_description(const std::string& addon_id,
-					   const addons_list& addons_list,
-					   const addons_tracking_list& addon_states);
+					   addons_list& addons_list,
+					   const addons_tracking_list& addon_states,
+					   addon_info::this_users_rating& current_users_rating);
 
 	/**
 	 * The display function.
 	 *
 	 * See @ref tdialog for more information.
 	 */
-	static void display(const std::string& addon_id,
-						const addons_list& addons_list,
-						const addons_tracking_list& addon_states,
-						CVideo& video)
+	static addon_info::this_users_rating display(const std::string& addon_id, addons_list& addons_list, const addons_tracking_list& addon_states, CVideo& video)
 	{
-		taddon_description(addon_id, addons_list, addon_states).show(video);
+		addon_info::this_users_rating users_rating;
+		users_rating.numerical = -1; //Not rated yet.
+		taddon_description addon_description(addon_id, addons_list, addon_states, users_rating);
+		addon_description.show(video);
+		return addon_description.current_users_rating_;
 	}
 
 private:
 	std::string feedback_url_;
+	addons_list& list_of_addons_;
+	const std::string& addon_id_;
+
+	addon_info::this_users_rating current_users_rating_;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
@@ -63,6 +70,10 @@ private:
 
 	void browse_url_callback();
 	void copy_url_callback();
+
+	void vote_button_callback(twindow& window);
+	void reviews_button_callback(twindow& window);
+
 };
 }
 

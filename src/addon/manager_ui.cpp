@@ -346,10 +346,11 @@ class description_display_action : public gui::dialog_button_action
 	addons_list addons_;
 	addons_tracking_list tracking_;
 	gui::filter_textbox* filter_;
+	addons_client& client;
 
 public:
-	description_display_action(display& disp, const std::vector<std::string>& display_ids, const addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter)
-		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter)
+	description_display_action(display& disp, const std::vector<std::string>& display_ids, addons_list& addons, const addons_tracking_list& tracking, gui::filter_textbox* filter,  addons_client& _client)
+		: disp_(disp) , display_ids_(display_ids), addons_(addons), tracking_(tracking), filter_(filter), client(_client)
 	{}
 
 	virtual gui::dialog_button_action::RESULT button_pressed(int filter_choice)
@@ -363,7 +364,15 @@ public:
 		if(choice < display_ids_.size()) {
 			const std::string& id = display_ids_[choice];
 			assert(tracking_.find(id) != tracking_.end());
-			gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
+
+			addon_info::this_users_rating current_users_rating;
+			current_users_rating = gui2::taddon_description::display(id, addons_, tracking_, disp_.video());
+
+			if (current_users_rating.numerical != -1 || current_users_rating.liked_reviews.size() != 0 || current_users_rating.submitted_review == true) {
+				current_users_rating.id = id;
+				config archive;
+				client.rate_addon(archive,current_users_rating);
+			}
 		}
 
 		return gui::CONTINUE_DIALOG;
@@ -775,7 +784,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		filter_box->set_text(filter.keywords);
 		dlg.set_textbox(filter_box);
 
-		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box);
+		addon_info::this_users_rating current_users_rating;
+		current_users_rating.numerical = -1;
+		description_display_action description_helper(disp, option_ids, addons, tracking, filter_box, client);
+
 		gui::dialog_button* description_button = new gui::dialog_button(disp.video(),
 			_("Description"), gui::button::TYPE_PRESS, gui::CONTINUE_DIALOG, &description_helper);
 		dlg.add_button(description_button, gui::dialog::BUTTON_EXTRA);
