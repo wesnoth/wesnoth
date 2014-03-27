@@ -65,6 +65,17 @@ public:
 	bool request_addons_list(config& cfg);
 
 	/**
+	 * Uploads the player's gameplay statistics
+	 *
+	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
+	 *
+	 * @param entry       Several entries about add-ons
+	 * @param name        Add-on name.
+	 * @param time        Time he spent playing it.
+	 */
+	bool submit_gameplay_times();
+
+	/**
 	 * Request the add-ons server distribution terms message.
 	 */
 	bool request_distribution_terms(std::string& terms);

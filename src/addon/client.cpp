@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
+#include "preferences.hpp"
 
 #include "addon/client.hpp"
 
@@ -80,6 +81,28 @@ bool addons_client::request_addons_list(config& cfg)
 	this->wait_for_transfer_done(_("Downloading list of add-ons..."));
 
 	cfg = response_buf.child("campaigns");
+
+	return !this->update_last_error(response_buf);
+}
+
+bool addons_client::submit_gameplay_times()
+{
+	config response_buf;
+
+	config request;
+	config& request_body = request.add_child("submit_gameplay_times");
+	config* prefs = preferences::get_prefs();
+
+	BOOST_FOREACH(const config &entry, prefs->child_range("gameplay_times"))
+	{
+		config& added = request_body.add_child("played_addon");
+		added["name"] = entry["name"];
+		added["time"] = entry["time"];
+		std::cout << "Uploading_gameplay_times for " << entry["name"] << std::endl;
+	}
+	prefs->clear_children("gameplay_times");
+
+	this->send_request(request, response_buf);
 
 	return !this->update_last_error(response_buf);
 }

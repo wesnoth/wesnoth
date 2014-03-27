@@ -250,6 +250,8 @@ namespace preferences {
 	bool disable_auto_moves();
 	void set_disable_auto_moves(bool value);
 
+	void add_gameplay_time(std::string campaign);
+
 } // end namespace preferences
 
 #endif

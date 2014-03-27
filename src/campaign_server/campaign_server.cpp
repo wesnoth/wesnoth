@@ -342,6 +342,7 @@ void server::register_handlers()
 {
 	REGISTER_CAMPAIGND_HANDLER(request_campaign_list);
 	REGISTER_CAMPAIGND_HANDLER(request_campaign);
+	REGISTER_CAMPAIGND_HANDLER(submit_gameplay_times);
 	REGISTER_CAMPAIGND_HANDLER(request_terms);
 	REGISTER_CAMPAIGND_HANDLER(upload);
 	REGISTER_CAMPAIGND_HANDLER(delete);
@@ -462,6 +463,36 @@ void server::handle_request_campaign(const server::request& req)
 		if(req.cfg["increase_downloads"].to_bool(true)) {
 			const int downloads = campaign["downloads"].to_int() + 1;
 			campaign["downloads"] = downloads;
+		}
+	}
+}
+
+void server::handle_submit_gameplay_times(const server::request& req)
+{
+	time_t epoch = time(NULL);
+	BOOST_FOREACH(const config &entry, req.child_range("played_addon"))
+	{
+		if (entry["name"].empty() || entry["time"].empty()) continue;
+		config& campaign = campaigns().find_child("campaign", "name", entry["name"]);
+		if (!campaign) continue;
+		config& gameplay_entry = campaign.find_child("played", "ip", network::ip_address(sock) );
+		if (gameplay_entry) {
+			if (epoch - gameplay_entry["timestamp"].to_int() < entry["time"].to_int() / 30) {
+				gameplay_entry["time"] = (epoch - gameplay_entry["timestamp"].to_int()) / 30;
+				std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+			} else {
+				gameplay_entry["time"] = str_cast(gameplay_entry["time"].to_int() + entry["time"].to_int());
+			}
+			gameplay_entry["timestamp"] = lexical_cast<std::string>(epoch);
+		} else {
+			config& new_entry = campaign.add_child("played");
+			new_entry["ip"] = network::ip_address(sock);
+			if (epoch - campaign["timestamp"].to_int() < entry["time"].to_int() / 100) {
+				std::cerr << "Somebody tried to upload too many gameplay hours for add-on: " << entry["name"] << std::endl;
+			} else {
+				new_entry["time"] = entry["time"];
+			}
+			new_entry["timestamp"] = lexical_cast<std::string>(epoch);
 		}
 	}
 }
@@ -678,7 +709,6 @@ void server::handle_delete(const server::request& req)
 	send_message("Add-on deleted.", req.sock);
 
 	fire("hook_post_erase", erase["name"]);
-
 }
 
 void server::handle_change_passphrase(const server::request& req)

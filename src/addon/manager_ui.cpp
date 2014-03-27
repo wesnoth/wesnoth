@@ -82,6 +82,8 @@ bool get_addons_list(addons_client& client, addons_list& list)
 		return false;
 	}
 
+	client.submit_gameplay_times();
+
 	read_addons_list(cfg, list);
 
 	return true;
@@ -973,6 +975,9 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 								"add-ons list from the server."));
 					return need_wml_cache_refresh;
 				}
+
+				client.submit_gameplay_times();
+
 				gui2::taddon_list dlg(cfg);
 				dlg.show(disp.video());
 				return need_wml_cache_refresh;

@@ -123,6 +123,8 @@ protected:
 	bool do_autosaves_;
 	LEVEL_RESULT level_result_;
 	void linger();
+	time_t started_at_;
+	std::vector<std::string> addons_active_;
 };
 
 
