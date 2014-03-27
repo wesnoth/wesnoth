@@ -485,14 +485,15 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
         if (radius == 0) then
             loc_filter = {
                 { "and", { x = hex[1], y = hex[2], radius = radius } },
+                { "and", location_filter }
             }
         else
             loc_filter = {
                 { "and", { x = hex[1], y = hex[2], radius = radius } },
                 { "not", { x = hex[1], y = hex[2], radius = radius - 1 } },
+                { "and", location_filter }
             }
         end
-        for k,v in pairs(location_filter) do loc_filter[k] = v end
 
         local locs = wesnoth.get_locations(loc_filter)
 
