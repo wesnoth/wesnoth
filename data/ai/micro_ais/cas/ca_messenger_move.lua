@@ -6,10 +6,10 @@ local ca_messenger_move = {}
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
 function ca_messenger_move:evaluation(ai, cfg)
-    -- Move the messenger (unit with passed id) toward goal, attack adjacent unit if possible
+    -- Move the messenger toward goal, attack adjacent unit if possible
     -- without retaliation or little expected damage with high chance of killing the enemy
 
-    local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
+    local messenger = messenger_next_waypoint(cfg)
 
     if messenger then
         return cfg.ca_score
@@ -17,10 +17,8 @@ function ca_messenger_move:evaluation(ai, cfg)
     return 0
 end
 
-function ca_messenger_move:execution(ai, cfg, self)
-    local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
-
-    local x, y = messenger_next_waypoint(messenger, cfg, self)
+function ca_messenger_move:execution(ai, cfg)
+    local messenger, x, y = messenger_next_waypoint(cfg)
 
     if (messenger.x ~= x) or (messenger.y ~= y) then
         local wp = AH.get_closest_location(
@@ -100,7 +98,7 @@ function ca_messenger_move:execution(ai, cfg, self)
 
     local targets = wesnoth.get_units {
         { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
-        { "filter_adjacent", { id = cfg.id } }
+        { "filter_adjacent", { id = messenger.id } }
     }
 
     local max_rating, best_tar, best_weapon = -9e99, {}, -1
@@ -141,7 +139,7 @@ function ca_messenger_move:execution(ai, cfg, self)
             x = tonumber(waypoint_x[#waypoint_x]),
             y = tonumber(waypoint_y[#waypoint_y]),
             { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } },
-            { "filter_adjacent", { id = cfg.id } }
+            { "filter_adjacent", { id = messenger.id } }
         }[1]
 
         if target then

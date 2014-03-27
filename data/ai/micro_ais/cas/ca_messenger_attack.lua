@@ -68,10 +68,11 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y, cfg)
     --print('Finding attacks on',enemy_in_way.name,enemy_in_way.id)
 
     -- Find all units that can attack this enemy
+    local filter = cfg.filter or { id = cfg.id }
     local my_units = wesnoth.get_units {
         side = wesnoth.current.side,
         formula = '$this_unit.attacks_left > 0',
-        { "not", { id = unit.id } },
+        { "not", filter },
         { "and", cfg.filter_second }
     }
 
@@ -134,14 +135,11 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y, cfg)
 end
 
 function ca_messenger_attack:evaluation(ai, cfg, self)
-    -- Attack units in the path of the messenger
-    -- id: id of the messenger unit
+    -- Attack units in the path of the messengers
     -- goal_x, goal_y: coordinates of the goal toward which the messenger moves
 
-    local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
+    local messenger, x, y = messenger_next_waypoint(cfg)
     if (not messenger) then return 0 end
-
-    local x, y = messenger_next_waypoint(messenger, cfg, self)
 
     -- See if there's an enemy in the way that should be attacked
     local attack = messenger_find_clearing_attack(messenger, x, y, cfg)
