@@ -101,8 +101,20 @@ int synced_context::generate_random_seed()
 	return retv_c["new_seed"];
 }
 
+bool synced_context::is_simultaneously()
+{
+	return is_simultaneously_;
+}
+
+void  synced_context::reset_is_simultaneously()
+{
+	is_simultaneously_ = false;
+}
+
 void synced_context::pull_remote_user_input()
 {
+	//we sended data over the network.
+	is_simultaneously_ = true;
 	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
 	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
 	try
@@ -295,7 +307,8 @@ void set_scontext_synced::init()
 	assert(synced_context::get_syced_state() == synced_context::UNSYNCED);
 	
 	synced_context::set_syced_state(synced_context::SYNCED);
-	
+	synced_context::reset_is_simultaneously();
+
 	old_checkup_ = checkup_instance;
 	checkup_instance = & new_checkup_;
 	old_rng_ = random_new::generator;
