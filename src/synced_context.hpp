@@ -100,6 +100,14 @@ public:
 		returns a rng_deterministic if in determinsic mode otherwise a rng_synced.
 	*/
 	static boost::shared_ptr<random_new::rng> get_rng_for(const std::string& commandname);
+	/*
+		returns is_simultaneously_
+	*/
+	static bool is_simultaneously();
+	/*
+		sets is_simultaneously_ = false, called when entering the synced context.
+	*/
+	static void reset_is_simultaneously();
 private:
 	/*
 		similar to get_user_choice but asks the server instead of a user.
@@ -110,14 +118,11 @@ private:
 	*/
 	static syced_state state_;
 	/*
-		as soon as get_user_choice is used with side != current_side (for example in generate_random_seed) other sides execute the command simultaneously and is_simultaneously is set to true
-		is impossible to undo that.
+		As soon as get_user_choice is used with side != current_side (for example in generate_random_seed) other sides execute the command simultaneously and is_simultaneously is set to true.
+		It's impossible to undo data that has been sended over the network.
 		
-		also during the execution of networked turns this should always be true.
-		false = we are on a local turn and havent sended anything yet.
-		
-		this variable is currently not used, the original plan was to use it to send data as soon as possible if is_simultaneously_= true.
-		*/
+		false = we are on a local turn and haven't sended anything yet.
+	*/
 	static bool is_simultaneously_;
 	/*
 		TODO: replace ai::manager::raise_sync_network with this event because ai::manager::raise_sync_network has nothing to do with ai anymore.
