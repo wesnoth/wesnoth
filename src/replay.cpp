@@ -484,6 +484,9 @@ void replay::undo_cut(config& dst)
 	int cmd;
 	for (cmd = ncommands() - 1; cmd >= 0; --cmd)
 	{
+		//"undo"=no means speak/label/remove_label
+		//"async"=yes means rename_unit
+		//"dependent"=true means user input or unit_checksum_check
 		config &c = command(cmd);
 		if (c["dependent"].to_bool(false))
 		{
@@ -497,8 +500,9 @@ void replay::undo_cut(config& dst)
 	}
 
 	if (cmd < 0) return;
+	//we add the commands that we want to remove later to the passed cfg first.
 	dst.add_child("command", cfg_.child("command", cmd));
-	
+	//we do this in a seperate loop because we don't want to loop forward in the loop while when we remove the elements to keepo the indexes simple.
 	for(int cmd_2 = cmd + 1; cmd_2 < ncommands(); ++cmd_2)
 	{
 		if(command(cmd_2)["dependent"].to_bool(false))
@@ -507,15 +511,6 @@ void replay::undo_cut(config& dst)
 		}
 	}
 
-	/*
-	
-	cfg_.remove_child("command", index);
-	std::vector<int>::reverse_iterator loc_it;
-	for (loc_it = message_locations.rbegin(); loc_it != message_locations.rend() && index < *loc_it;++loc_it)
-	{
-		--(*loc_it);
-	}
-	*/
 	//we remove dependent commands after the actual removed command that don't make sense if they stand alone especialy user choices and checksum data.
 	for(int cmd_2 = ncommands() - 1; cmd_2 > cmd; --cmd_2)
 	{
