@@ -660,35 +660,9 @@ void replay::add_config(const config& cfg, MARK_SENT mark)
 	}
 }
 
-namespace {
-
-replay* replay_src = NULL;
-
-struct replay_source_manager
-{
-	replay_source_manager(replay* o) : old_(replay_src)
-	{
-		replay_src = o;
-	}
-
-	~replay_source_manager()
-	{
-		replay_src = old_;
-	}
-
-private:
-	replay* const old_;
-};
-
-}
-
 replay& get_replay_source()
 {
-	if(replay_src != NULL) {
-		return *replay_src;
-	} else {
-		return recorder;
-	}
+	return recorder;
 }
 
 static void check_checksums(const config &cfg)
