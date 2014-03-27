@@ -40,6 +40,13 @@ return function(cfg)
         -- For now, this is simply a "forward rating"
         local rating = wp_i - dist_wp / 1000.
 
+        -- If invert_order= key is set, we want to move the rearmost messenger first.
+        -- We still want to keep the rating value positive (mostly, this is not strict)
+        -- and of the same order of magnitude.
+        if cfg.invert_order then
+            rating = #waypoint_x - rating
+        end
+
         m.variables.wp_rating = rating
 
         -- Find the messenger with the highest rating that has MP left

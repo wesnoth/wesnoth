@@ -90,7 +90,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             H.wml_error("Messenger [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "waypoint_x", "waypoint_y" }
-        optional_keys = { "id", "enemy_death_chance", "filter", "filter_second", "messenger_death_chance" }
+        optional_keys = { "id", "enemy_death_chance", "filter", "filter_second", "invert_order", "messenger_death_chance" }
         local score = cfg.ca_score or 300000
         CA_parms = {
             { ca_id = 'mai_messenger_attack', location = CA_path .. 'ca_messenger_attack.lua', score = score },
