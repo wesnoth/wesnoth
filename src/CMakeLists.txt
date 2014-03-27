@@ -795,7 +795,9 @@ set(wesnoth-main_SRC
 	gui/auxiliary/timer.cpp
 	gui/dialogs/addon/description.cpp
 	gui/dialogs/addon/addon_rate.cpp
+	gui/dialogs/addon/addon_review_write.cpp
 	gui/dialogs/addon/filter_options.cpp
+	gui/dialogs/addon/reviews_list.cpp
 	gui/dialogs/addon/uninstall_list.cpp
 	gui/dialogs/addon_connect.cpp
 	gui/dialogs/addon_list.cpp
