@@ -102,10 +102,7 @@ function ca_coward:execution(ai, cfg)
     end
     --items.place_image(mx, my, "items/ring-gold.png")
 
-    -- (mx,my) is the position to move to
-    if (mx ~= unit.x or my ~= unit.y) then
-        AH.movefull_stopunit(ai, unit, mx, my)
-    end
+    AH.movefull_stopunit(ai, unit, mx, my)
     if (not unit) or (not unit.valid) then return end
 
     AH.checked_stopunit_all(ai, unit)
