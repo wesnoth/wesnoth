@@ -238,7 +238,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const bool have_leader = leader.valid();
 
 		if (controller == "ai"){
-			tm.make_network_ai();
+			tm.make_ai();
 			tm.set_current_player("ai" + side_drop);
 			if (have_leader) leader->rename("ai" + side_drop);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
