@@ -87,7 +87,7 @@ function ca_healer_move:evaluation(ai, cfg, self)
             -- Also, hex must be unoccupied by another unit, of course
             local unit_in_way = wesnoth.get_unit(r[1], r[2])
             if (not avoid_map:get(r[1], r[2])) then
-                if (not unit_in_way) or ((unit_in_way.x == h.x) and (unit_in_way.y == h.y)) then
+                if (not unit_in_way) or (unit_in_way == h) then
                     for k,u in ipairs(healees) do
                         if (H.distance_between(u.x, u.y, r[1], r[2]) == 1) then
                             -- !!!!!!! These ratings have to be positive or the method doesn't work !!!!!!!!!

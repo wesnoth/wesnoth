@@ -157,7 +157,7 @@ function ca_goto:execution(ai, cfg, self)
                 -- Add a small penalty for occupied hexes
                 -- (this mean occupied by an allied unit, as enemies make the hex unreachable)
                 local unit_in_way = wesnoth.get_unit(l[1], l[2])
-                if unit_in_way and ((unit_in_way.x ~= u.x) or (unit_in_way.y ~= u.y)) then
+                if unit_in_way and (unit_in_way ~= u) then
                     rating = rating - 0.01
                 end
 
