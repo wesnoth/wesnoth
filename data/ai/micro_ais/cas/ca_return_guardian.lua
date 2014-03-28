@@ -35,9 +35,7 @@ function ca_return_guardian:execution(ai, cfg)
     end
 
     local nh = AH.next_hop(unit, x, y)
-    if unit.moves~=0 then
-        AH.movefull_stopunit(ai, unit, nh)
-    end
+    AH.movefull_stopunit(ai, unit, nh)
 end
 
 return ca_return_guardian
