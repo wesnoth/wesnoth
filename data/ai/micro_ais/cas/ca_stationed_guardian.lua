@@ -4,18 +4,13 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local ca_stationed_guardian = {}
 
 function ca_stationed_guardian:evaluation(ai, cfg)
-    local unit
-    if cfg.filter then
-        unit = wesnoth.get_units({
-            side = wesnoth.current.side,
-            { "and", cfg.filter },
-            formula = '$this_unit.moves > 0' }
-        )[1]
-    else
-        unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
-    end
+    local filter = cfg.filter or { id = cfg.id }
+    local unit = wesnoth.get_units({
+        side = wesnoth.current.side,
+        { "and", filter },
+        formula = '$this_unit.moves > 0' }
+    )[1]
 
-    -- Check if unit exists as sticky BCAs are not always removed successfully
     if unit then return cfg.ca_score end
     return 0
 end
@@ -24,16 +19,12 @@ function ca_stationed_guardian:execution(ai, cfg)
     -- (s_x,s_y): coordinates where unit is stationed; tries to move here if there is nobody to attack
     -- (g_x,g_y): location that the unit guards
 
-    local unit
-    if cfg.filter then
-        unit = wesnoth.get_units({
-            side = wesnoth.current.side,
-            { "and", cfg.filter },
-            formula = '$this_unit.moves > 0' }
-        )[1]
-    else
-        unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
-    end
+    local filter = cfg.filter or { id = cfg.id }
+    local unit = wesnoth.get_units({
+        side = wesnoth.current.side,
+        { "and", filter },
+        formula = '$this_unit.moves > 0' }
+    )[1]
 
     -- find if there are enemies within 'distance'
     local enemies = wesnoth.get_units {
