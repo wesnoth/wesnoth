@@ -770,6 +770,8 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 	BOOST_FOREACH(const unit &enemy, *resources::units)
 	{
+		if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
+			continue;
 		if (!unit_team.is_enemy(enemy.side()))
 			continue;
 		const map_location &loc = enemy.get_location();
