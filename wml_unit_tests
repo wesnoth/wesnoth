@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+set -o pipefail
+./wesnoth -u unit_test_1 2> error.log
+./wesnoth --validcache -u unit_test_2 2> error.log
+./wesnoth --validcache -u unit_test_3 2> error.log
+rm error.log
