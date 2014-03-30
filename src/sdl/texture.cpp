@@ -47,15 +47,13 @@ ttexture::ttexture(SDL_Renderer& renderer,
 
 	if (img == NULL) {
 		throw texception("Failed to create SDL_Texture object.", true);
-	} else {
-		texture_ = SDL_CreateTextureFromSurface(&renderer, img);
+	}
 
-		if (texture_ == NULL) {
-			SDL_FreeSurface(img);
-			throw texception("Failed to create SDL_Texture object.", true);
-		}
+	texture_ = SDL_CreateTextureFromSurface(&renderer, img);
 
-		SDL_FreeSurface(img);
+	SDL_FreeSurface(img);
+	if (texture_ == NULL) {
+		throw texception("Failed to create SDL_Texture object.", true);
 	}
 }
 

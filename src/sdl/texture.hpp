@@ -21,11 +21,11 @@
  */
 
 #include <SDL_version.h>
-#include <string>
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
 #include <SDL_render.h>
+#include <string>
 
 namespace sdl
 {
