@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-12-06 21:08+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-03-26 21:59+0100\n"
 "Last-Translator: Filip Hiadlovský <f.hiadlovsky@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #. [campaign]: id=LOW, type=hybrid
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:61
@@ -261,14 +261,8 @@ msgstr "Strata domova"
 
 #. [scenario]: id=01_The_Uprooting
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and fight</i>"
 msgid "Chapter One: Flight and Fight"
-msgstr ""
-"Prvá kapitola\n"
-"<i>Let a boj</i>"
+msgstr "Prvá kapitola: Let a boj"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:30
@@ -281,10 +275,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:34
-#, fuzzy
-#| msgid ""
-#| "Chapter One,\n"
-#| "<i>Flight and fight</i>"
 msgid ""
 "Chapter One,\n"
 "<i>Flight and Fight</i>"
@@ -696,16 +686,12 @@ msgstr "Budete ich mať, zoženiem ich, len čo ich nájdem a vrátim sa."
 
 #. [message]: id=Landar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:503
-#, fuzzy
-#| msgid ""
-#| "Velon has fallen. He counseled weakness, but did not deserved such an "
-#| "ugly death. We shall return with swords to avenge him!"
 msgid ""
 "Velon has fallen. He counseled weakness, but did not deserve such an ugly "
 "death. We shall return with swords to avenge him!"
 msgstr ""
 "Velon padol. Aj keď radil miernosť, takúto hroznú smrť si nezaslúžil. "
-"Vrátime sa s mečom, aby sme ho pomstili!"
+"Vrátime sa s mečmi, aby sme ho pomstili!"
 
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter1/01_The_Uprooting.cfg:521
@@ -1206,14 +1192,8 @@ msgstr "Poklad elfov"
 
 #. [scenario]: id=04_The_Elvish_Treasury
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Chapter Two,\n"
-#| "<i>The Treasury</i>"
 msgid "Chapter Two: The Treasury"
-msgstr ""
-"Druhá kapitola\n"
-"<i>Pokladnica</i>"
+msgstr "Druhá kapitola: Pokladnica"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter2/04_The_Elvish_Treasury.cfg:31
@@ -2417,14 +2397,8 @@ msgstr "Žoldnieri"
 
 #. [scenario]: id=09_Bounty_Hunters
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:9
-#, fuzzy
-#| msgid ""
-#| "Chapter Three,\n"
-#| "<i>The Book of Crelanu</i>"
 msgid "Chapter Three: The Book of Crelanu"
-msgstr ""
-"Tretia kapitola\n"
-"<i>Kniha Krelanu</i>"
+msgstr "Tretia kapitola: Kniha Krelanu"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter3/09_Bounty_Hunters.cfg:30
@@ -3423,14 +3397,8 @@ msgstr "Správy z frontu"
 
 #. [scenario]: id=13_News_from_the_Front
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:13
-#, fuzzy
-#| msgid ""
-#| "Chapter Four,\n"
-#| "<i>The Alliance</i>"
 msgid "Chapter Four: The Alliance"
-msgstr ""
-"Štvrtá kapitola\n"
-"<i>Aliancia</i>"
+msgstr "Štvrtá kapitola: Aliancia"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:32
@@ -3476,10 +3444,6 @@ msgstr "Eoníhar"
 
 #. [message]: id=Eonihar
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/13_News_from_the_Front.cfg:158
-#, fuzzy
-#| msgid ""
-#| "At last I have found, you alive and well! We need you back at once! The "
-#| "orcs have attacked the humans."
 msgid ""
 "At last I have found you, alive and well! We need you back at once! The orcs "
 "have attacked the humans."
@@ -4178,13 +4142,6 @@ msgstr "neviditeľný"
 #. [hides]: id=invisible
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die_utils.cfg:17
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter4/16_The_Chief_Must_Die_utils.cfg:18
-#, fuzzy
-#| msgid ""
-#| "invisible:\n"
-#| "Enemy units cannot see this unit, except for wolf-based units who can "
-#| "smell it if close enough. Hence except for wolf-based units, enemy units "
-#| "will not initiate an attack on this unit. Defense is at 80 percent for "
-#| "every terrain except water, where it is 70 percent."
 msgid ""
 "Enemy units cannot see this unit, except for wolf-based units who can smell "
 "it if close enough. Hence except for wolf-based units, enemy units will not "
@@ -4195,7 +4152,7 @@ msgstr ""
 "Nepriateľské jednotky nedokážu túto jednotku zaregistrovať, s výnimkou "
 "vlčích jazdcov, ktorých zvery ju môžu zacítiť. Takže s výnimkou vlčích "
 "jazdcov, nepriateľské jednotky túto jednotku nenapadnú ako prvé. "
-"Obranyschopnosť tejto jednotky je 90 percent na každom type terénu okrem "
+"Obranyschopnosť tejto jednotky je 80 percent na každom type terénu okrem "
 "vody, kde je obrana na úrovni 70 percent."
 
 #. [unit]: type=Goblin Pillager, id=Odrun
@@ -4574,14 +4531,8 @@ msgstr "Drahá odplata"
 
 #. [scenario]: id=19_Costly_Revenge
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:11
-#, fuzzy
-#| msgid ""
-#| "Chapter Five,\n"
-#| "<i>Civil War</i>"
 msgid "Chapter Five: Civil War"
-msgstr ""
-"Piata kapitola\n"
-"<i>Občianska vojna</i>"
+msgstr "Piata kapitola: Občianska vojna"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/chapter5/19_Costly_Revenge.cfg:35
@@ -5352,12 +5303,12 @@ msgstr ""
 "činoch, o tých činoch, keď stál voči zlu sám, vyhľadajte príbeh o Veľkom "
 "Delfadorovi a páde podlej kráľovnej Aševiéry.\n"
 "\n"
-"(preklad Martin \"Arðarïeŀ\" Džbor, Dec 2009 a Filip Hiadlovský, 2012)"
+"(preklad Martin \"Arðarïeŀ\" Džbor, Dec 2009 a Filip Hiadlovský, Mar 2014)"
 
 #. [unit_type]: id=Elvish Horse Archer
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:13
 msgid "This is a stub!"
-msgstr ""
+msgstr "Toto je len zástupca!"
 
 #. [unit_type]: id=Elvish Horse Archer
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:18
@@ -5366,14 +5317,13 @@ msgstr "Elfský jazdec - strelec"
 
 #. [attack]: type=blade
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:22
-#, fuzzy
 msgid "sword"
-msgstr "Šľachtic"
+msgstr "meč"
 
 #. [attack]: type=pierce
 #: data/campaigns/Legend_of_Wesmere/units/Horse_Archer.cfg:31
 msgid "bow"
-msgstr ""
+msgstr "luk"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:10
@@ -5387,18 +5337,11 @@ msgstr "Povznáša Kalenza"
 
 #. [leadership]: id=elates_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:13
-#, fuzzy
-#| msgid ""
-#| "elates Kalenz:\n"
-#| "Through the special bond between Kalenz and Cleodil, she elates him to "
-#| "fight better.\n"
-#| "Adjacent to Cleodil, Kalenz will do 25% more damage in battle."
 msgid ""
 "Through the special bond between Kalenz and Cleodil, she elates him to fight "
 "better.\n"
 "Adjacent to Cleodil, Kalenz will do 25% more damage in battle."
 msgstr ""
-"povznáša Kalenza:\n"
 "Prostredníctvom špeciálneho puta medzi Kalenzom a Kleodil z neho Kleodil "
 "spravila lepšieho bojovníka.\n"
 "Pri Kleodil bude Kalenz spôsobovať v boji o 25% väčšie škody."
@@ -5415,18 +5358,11 @@ msgstr "lieči Kalenza +4"
 
 #. [heals]: id=heals_kalenz
 #: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:36
-#, fuzzy
-#| msgid ""
-#| "heals +4:\n"
-#| "If a shyde has developed a special bond to a person her healing abilities "
-#| "increase for him.  This allows Cleodil to give Kalenz extra points of "
-#| "healing at the beginning of your turn."
 msgid ""
 "If a shyde has developed a special bond to a person her healing abilities "
 "increase for him. This allows Cleodil to give Kalenz extra points of healing "
 "at the beginning of your turn."
 msgstr ""
-"lieči +4:\n"
 "Keď si víla vytvorí zvláštnu väzbu k nejakej osobe, je jej schopnosť liečiť "
 "posilnená. To dovoľuje Kleodil vyliečiť Kalenzovi na začiatku tvojho kola "
 "viac životov."

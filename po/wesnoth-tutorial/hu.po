@@ -1,21 +1,22 @@
 # translation of hu-tutorial.po to Hungarian
 #
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2011, 2012.
-# Barthalos Márton <barthalosmarton@yahoo.com>, 2008, 2009.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2011, 2012, 2014.
+# Barthalos Márton <barthalosmarton@yahoo.com>, 2008, 2009, 2014.
+# Farkas János <mail.janos.farkas@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2012-03-30 10:17+0200\n"
-"Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
+"POT-Creation-Date: 2014-03-02 18:57+0100\n"
+"PO-Revision-Date: 2014-03-29 09:21+0100\n"
+"Last-Translator: Farkas János <mail.janos.farkas@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.4\n"
+"X-Generator: Lokalize 1.5\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -805,17 +806,21 @@ msgstr ""
 "Ezek a bábuk csak akkor támadnak, ha legfeljebb egy mezőnyi távolságra vagy "
 "tőlük. Megfelelő körültekintéssel egyesével bánhatsz el velük."
 
+# A wesnoth fájlban "Küldetés vége" szerepel, egységes használat miatt ezt emelem át
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
 msgid "End Scenario"
-msgstr ""
+msgstr "Küldetés vége"
 
+# Előreugró max előugró lehet, de itt a jobb gombbal aktiválható menüre gondolnak.
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
 msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Szeretnél még gyakorolni? A jobb gombos menüben a <b>Küldetés vége</b> "
+"elemre kattintva bármikor befejezheted a pályát."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
@@ -1417,28 +1422,21 @@ msgstr ""
 msgid "Attack the orc with an Archer"
 msgstr "Támadd meg az orkot egy íjásszal"
 
+# /n maradásának oka volt?
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Ha át akarod tekinteni egy egység képességeit – beleértve az ellenséges "
 "katonákat is –, vidd az egeret fölé: egy egység összefoglaló fog megjelenni "
 "a képernyő jobb oldalán."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Egység összefoglalók</big>"
+msgstr "Egység összefoglalók"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
@@ -1480,27 +1478,18 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Hosszú távú mozgás</big>"
+msgstr "Hosszú távú mozgás"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
-"Egy egység képes több körön keresztül is megállás nélkül menni célja felé: "
-"válaszd ki az egységet, azután kattints a célra. A megjelenő szám azt "
+"Egy egység képes több körön keresztül is megállás nélkül haladni a célja "
+"felé: válaszd ki az egységet, azután kattints a célra. A megjelenő szám azt "
 "mutatja, hogy hány körig tart oda az út."
 
 #. [event]
@@ -1694,28 +1683,18 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
-"Ezután a párbeszédablak után vidd az egered jobbra, a kis térkép alatti, "
-"tájat ábrázoló képre, hogy megtekinthesd az adott napszak leírását, és hogy "
-"mikor kinek van előnye."
+"Ezután a párbeszédablak után vidd az egeret a tájat ábrázoló kis képre jobb "
+"oldalt. Ott látható a napszak leírása, hogy mikor kinek van előnye."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Napszak</big>"
+msgstr "Napszak"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
@@ -1744,21 +1723,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Tétlen egységek követése</big>"
+msgstr "Tétlen egységek követése"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1766,57 +1735,39 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Meg tudod nézni, hogy minden egységgel léptél-e már a körben: nyomd meg az "
-"<b>n</b> gombot a következő egységre ugráshoz, a <b>szóközt</b> pedig, hogy "
-"jelezd, ha ezzel a katonával már nem is szándékozol lépni (így megelőzheted, "
-"hogy később véletlenül mégis lépj vele). Amikor az </b>n</b> gombot lenyomva "
-"nem választ ki újabb egységet, befejezheted a köröd."
+"<b>n</b> billentyűt a következő egységre ugráshoz, a <b>szóközt</b> pedig, "
+"hogy jelezd, ha ezzel a katonával már nem is szándékozol lépni (így "
+"megelőzheted, hogy később véletlenül mégis lépj vele). Amikor az </b>n</b> "
+"billentyű nem választ ki újabb egységet, befejezheted a köröd."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "Ezen a pályán csak az ork vezért kell megsemmisítened a győzelemhez. Egy "
 "adott pálya célkitűzései a <b>Pálya céljai</b> opciónál tekinthetők meg a "
 "<b>Menü</b> gombra kattintva."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Győzelmi feltételek</big>"
+msgstr "Győzelmi feltételek"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Megfelelő egységek toborzása</big>"
+msgstr "Megfelelő egységek toborzása"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Ne felejts el az adott helyzetben hasznos egységeket toborozni: az íjászok "
 "kiváltképp hatásosak az ork közkatonákkal, a farkaslovasokkal és a "
 "vezérükkel szemben."
@@ -1916,29 +1867,20 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Ellenséges mozgások követése</big>"
+msgstr "Ellenséges mozgások követése"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Láthatod, hogy meddig juthat az adott ellenséges egység, ha fölé viszed az "
-"egérmutatót. Megnézheted, hogy az ellenséges egységek mindenkit beleszámítva "
-"mely területeket tudják elérni, ha a </b>Parancsok</b> menü </b>Ellenséges "
-"lépések mutatása</b> opcióját választod."
+"egeret. Megnézheted, hogy az ellenséges egységek mely területeket tudják "
+"elérni, ha a </b>Parancsok</b> menü </b>Ellenséges lépések mutatása</b> "
+"opcióját választod."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468

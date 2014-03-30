@@ -16,6 +16,7 @@
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
+#include "SDL_image.h"
 #include "sdl/exception.hpp"
 
 #include <cassert>
@@ -33,6 +34,28 @@ ttexture::ttexture(SDL_Renderer& renderer,
 {
 	if(!texture_) {
 		throw texception("Failed to create a SDL_Texture object.", true);
+	}
+}
+
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const std::string& file)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+{
+	SDL_Surface* img;
+	img = IMG_Load(file.c_str());
+
+	if (img == NULL) {
+		throw texception("Failed to create SDL_Texture object.", true);
+	} else {
+		texture_ = SDL_CreateTextureFromSurface(&renderer, img);
+
+		if (texture_ == NULL) {
+			SDL_FreeSurface(img);
+			throw texception("Failed to create SDL_Texture object.", true);
+		}
+
+		SDL_FreeSurface(img);
 	}
 }
 

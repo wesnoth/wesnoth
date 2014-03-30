@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-03-02 18:56+0100\n"
-"PO-Revision-Date: 2014-03-09 13:13+0100\n"
+"PO-Revision-Date: 2014-03-23 22:00+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -147,7 +147,7 @@ msgstr "<ref>dst='..geography' text='Zemepis'</ref>"
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:7
 msgid "Caste"
-msgstr ""
+msgstr "Kasta"
 
 #. [topic]: id=caste
 #: data/core/encyclopedia/drakes.cfg:8
@@ -156,11 +156,13 @@ msgid ""
 "Clasher' text='Clasher'</ref> or a <ref>dst='unit_Drake Fighter' text='Drake "
 "Fighter'</ref>."
 msgstr ""
+"Jedna z foriem jašterov: buď <ref>dst='unit_Drake Clasher' text='Úderník'</"
+"ref> alebo <ref>dst='unit_Drake Fighter' text='Vojak'</ref>."
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:13
 msgid "Aerie"
-msgstr ""
+msgstr "Hniezdo"
 
 #. [topic]: id=aerie
 #: data/core/encyclopedia/drakes.cfg:14
@@ -169,11 +171,14 @@ msgid ""
 "text='flight'</ref>. It contains the <ref>dst='breeding_pen' text='breeding "
 "pens'</ref>."
 msgstr ""
+"Veľká štruktúra podobná hradu, ktorá je domovom <ref>dst='flight' "
+"text='letky'</ref>. Obsahuje aj <ref>dst='breeding_pen' text='rozmnožovacie "
+"ohrady'</ref>."
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:19
 msgid "Breeding Pen"
-msgstr ""
+msgstr "Rozmnožovacia ohrada"
 
 #. [topic]: id=breeding_pen
 #: data/core/encyclopedia/drakes.cfg:20
@@ -182,11 +187,14 @@ msgid ""
 "<ref>dst='breeder' text='Breeders'</ref> live under the <ref>dst='dominant' "
 "text='Dominant'</ref>’s eye."
 msgstr ""
+"Časť <ref>dst='aerie' text='hniezda'</ref>, kde pod dozorom "
+"<ref>dst='dominant' text='Dominanta'</ref> žijú <ref>dst='breeder' "
+"text='Nosnice'</ref>."
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:25
 msgid "Breeding Cycle"
-msgstr ""
+msgstr "Rozmnožovací cyklus"
 
 #. [topic]: id=breeding_cycle
 #: data/core/encyclopedia/drakes.cfg:26
@@ -194,11 +202,13 @@ msgid ""
 "The time that passes between one <ref>dst=egg text='egg'</ref> laying to the "
 "next."
 msgstr ""
+"Čas, ktorý uplynie medzi jedným kladením <ref>dst=egg text='vajec'</ref> a "
+"ďalším."
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:31
 msgid "World Ocean"
-msgstr ""
+msgstr "Svetový oceán"
 
 #. [topic]: id=world_ocean
 #: data/core/encyclopedia/drakes.cfg:32
@@ -207,11 +217,14 @@ msgid ""
 "of <ref>dst='morogor' text='Morogor'</ref>. The drakes believe it to end at "
 "the <ref>dst='abyss' text='Abyss'</ref>, a vast and deadly waterfall."
 msgstr ""
+"Svetový oceán je názov otvoreného mora, ktoré obklopuje súostrovie "
+"<ref>dst='morogor' text='Morogor'</ref>. Jašteri veria, že končí v "
+"<ref>dst='abyss' text='Priepasti'</ref> - obrovskom smrtiacom vodopáde."
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:37
 msgid "New Continent"
-msgstr ""
+msgstr "Nový kontinent"
 
 #. [topic]: id=new_continent
 #: data/core/encyclopedia/drakes.cfg:38
@@ -219,11 +232,13 @@ msgid ""
 "The great continent to the east of <ref>dst='morogor' text='Morogor'</ref>. "
 "Its existence is unknown to the drakes until the flight of Galun."
 msgstr ""
+"Veľký kontinent na východ od <ref>dst='morogor' text='Morogoru'</ref>. Jeho "
+"existencia nebola jašterom známa až do letu Galuna."
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:43
 msgid "Abyss"
-msgstr ""
+msgstr "Priepasť"
 
 #. [topic]: id=abyss
 #: data/core/encyclopedia/drakes.cfg:44
@@ -231,11 +246,13 @@ msgid ""
 "In the cosmology of the Drakes, a vast and deadly waterfall where the ocean "
 "falls off the world-disc."
 msgstr ""
+"V svetonázore jašterov je to obrovský a smrtiaci vodopád, kde oceán padá "
+"dolu zo zemského disku."
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:49
 msgid "Spiral Path"
-msgstr ""
+msgstr "Špirálová cesta"
 
 #. [topic]: id=spiral_path
 #: data/core/encyclopedia/drakes.cfg:50
@@ -244,11 +261,14 @@ msgid ""
 "Malthusian final war. See also <ref>dst='straight_path' text='Straight "
 "Path'</ref>"
 msgstr ""
+"Polotajná organizácia medzi jaštermi zameraná na zabránenie Malthusovej "
+"poslednej vojne. Pozri tiež <ref>dst='straight_path' text='Priama cesta'</"
+"ref>"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:55
 msgid "Straight Path"
-msgstr ""
+msgstr "Priama cesta"
 
 #. [topic]: id=straight_path
 #: data/core/encyclopedia/drakes.cfg:56
@@ -257,11 +277,14 @@ msgid ""
 "mostly used by the members of the <ref>dst='spiral_path' text='Spiral Path'</"
 "ref>."
 msgstr ""
+"Jašteria tradícia opakovaného rozširovania a dobývania. Tento výraz je "
+"najčastejšie používaný príslušníkmi <ref>dst='spiral_path' text='Spiral "
+"Path'</ref>."
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:61
 msgid "Dominant"
-msgstr ""
+msgstr "Dominant"
 
 #. [topic]: id=dominant
 #: data/core/encyclopedia/drakes.cfg:62
@@ -271,11 +294,15 @@ msgid ""
 "<ref>dst='breeder' text='breeders'</ref>. Rarely, he may confer breeding "
 "privileges on others."
 msgstr ""
+"<ref>dst='aspirant' text='Uchádzač'</ref>, ktorý povstane ako vodca "
+"jašterov. Jediný jašter v kmeni, ktorý má povolené rozmnožovať sa s "
+"<ref>dst='breeder' text='nosnicami'</ref>. Výnimočne môže udeliť právo "
+"párenia aj iným."
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:67
 msgid "Vulcaniad"
-msgstr ""
+msgstr "Vulkaniáda"
 
 #. [topic]: id=vulcaniad
 #: data/core/encyclopedia/drakes.cfg:68
@@ -284,11 +311,14 @@ msgid ""
 "<ref>dst='mount_morogor' text='Mount Morogor'</ref>. The "
 "<ref>dst='long_count' text='Long Count'</ref> calendar is based upon it."
 msgstr ""
+"(Nepravidelný) cyklus medzi následnými výbuchmi <ref>dst='mount_morogor' "
+"text='Hory Morogor'</ref>. Je na ňom založený kalendár <ref>dst='long_count' "
+"text='Dlhý letopočet'</ref>."
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:73
 msgid "Recorder"
-msgstr ""
+msgstr "Zapisovateľ"
 
 #. [topic]: id=recorder
 #: data/core/encyclopedia/drakes.cfg:74
@@ -298,17 +328,21 @@ msgid ""
 "<ref>dst='caste' text='caste'</ref> of Drake not determined by biology: they "
 "recruit their members from all of the other castes."
 msgstr ""
+"Zapisovateľ je jašterím knihovníkom, ktorý ovláda jašterie "
+"<ref>dst='drakish_script' text='písmo'</ref>. Zapisovatelia sú jedinou "
+"<ref>dst='caste' text='kastou'</ref> Jašterov, ktorú neurčuje príroda: "
+"verbujú členov zo všetkých ostatných kást."
 
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:79
 msgid "Laying"
-msgstr ""
+msgstr "Kladenie"
 
 #. [topic]: id=hatching
 #. [topic]: id=laying
 #: data/core/encyclopedia/drakes.cfg:80 data/core/encyclopedia/drakes.cfg:86
 msgid "A portion of the <ref>dst='breeding_cycle' text='breeding cycle'</ref>."
-msgstr ""
+msgstr "Časť <ref>dst='breeding_cycle' text='rozmnožovacieho cyklu'</ref>."
 
 #. [topic]: id=hatching
 #: data/core/encyclopedia/drakes.cfg:85
@@ -318,7 +352,7 @@ msgstr "Liahnutie"
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:91
 msgid "Hatchling"
-msgstr ""
+msgstr "Mláďa"
 
 #. [topic]: id=hatchling
 #: data/core/encyclopedia/drakes.cfg:92
@@ -327,11 +361,13 @@ msgid ""
 "the current generation of hatchlings are the most aggressive is the behavior "
 "of the <ref>dst='flight' text='flight'</ref>."
 msgstr ""
+"Malý jašter, ktorý ešte nevidel vyliahnutie ďalšej generácie.  "
+"<ref>dst='flight' text='letky'</ref>."
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:97
 msgid "Fledgling"
-msgstr ""
+msgstr "Okrídlenec"
 
 #. [topic]: id=fledgling
 #: data/core/encyclopedia/drakes.cfg:98
@@ -340,11 +376,14 @@ msgid ""
 "<ref>dst='flight' text='flight'</ref> can afford the loss of a generation "
 "they start the <ref>dst='swarming' text='Swarming'</ref>."
 msgstr ""
+"Mladý jašter, ktorý videl vyliahnutie ďalšej generácie. Ak si "
+"<ref>dst='flight' text='letka'</ref> môže dovoliť stratiť jednu generáciu, "
+"môže spustiť <ref>dst='swarming' text='Rojenie'</ref>."
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:103
 msgid "Breeder"
-msgstr ""
+msgstr "Nosnica"
 
 #. [topic]: id=breeder
 #: data/core/encyclopedia/drakes.cfg:104
@@ -355,11 +394,16 @@ msgid ""
 "take care of their food for themselves when laying. Drake breeders become "
 "fertile after the next <ref>dst='hatching' text='hatching'</ref>."
 msgstr ""
+"Jašter ženského pohlavia. Sú vzácne, pretože o <ref>dst='egg' text='vajcia'</"
+"ref>, ktoré sa stanú nosnicami, je nutné sa mimoriadne starať. Počet nosníc "
+"je limitovaný počtom mužských jašterov v okolí, pretože nosnice si nevedia "
+"zaobstarať jedlo keď kladú vajcia. Jašterie nosnice začnú byť plodné po "
+"ďalšom <ref>dst='hatching' text='liahnutí'</ref>."
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:109
 msgid "Egg, Drake"
-msgstr ""
+msgstr "Vajce jaštera"
 
 #. [topic]: id=egg
 #: data/core/encyclopedia/drakes.cfg:110
@@ -368,11 +412,14 @@ msgid ""
 "text='Hatchling'</ref> will belongs to is determined by the time it is laid "
 "and to some extent the ambient temperature."
 msgstr ""
+"<ref>dst=caste text='Kasta'</ref> budúceho <ref>dst='hatchling' "
+"text='Mláďaťa'</ref> je určená už pri nakladení vajca a čiastočne aj "
+"okolitou teplotou."
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:115
 msgid "Flight"
-msgstr ""
+msgstr "Letka"
 
 #. [topic]: id=flight
 #: data/core/encyclopedia/drakes.cfg:116
@@ -381,11 +428,14 @@ msgid ""
 "controlling a hunting range. Each tribe has one <ref>dst='dominant' "
 "text='Dominant'</ref>, who confers mating privileges."
 msgstr ""
+"Kmeň jašterov, ktorý žije v <ref>dst='aerie' text='Hniezde'</ref> a ovláda "
+"lovnú oblasť. Každý kmeň má jedného <ref>dst='dominant' text='Dominanta'</"
+"ref>, ktorý udeľuje právo na párenie."
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:121
 msgid "Aspirant"
-msgstr ""
+msgstr "Uchádzač"
 
 #. [topic]: id=aspirant
 #: data/core/encyclopedia/drakes.cfg:122
@@ -395,22 +445,26 @@ msgid ""
 "secretion of the hormone is caused by hunt and combat actions in which the "
 "drake is involved."
 msgstr ""
+"Mužský jašter, ktorý prešiel hormonálnymi zmenami, ktoré mu umožňujú páriť "
+"sa s <ref>dst='breeder' text='nosnicami'</ref>. Vylučovanie hormónov je "
+"spôsobované lovom a bojom, ktorých sa jašter zúčastnil."
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:127
 msgid "Ascendant"
-msgstr ""
+msgstr "Praotec"
 
 #. [topic]: id=ascendant
 #: data/core/encyclopedia/drakes.cfg:128
 msgid ""
 "The drake name for a true <ref>dst='unit_Fire Dragon' text='dragon'</ref>."
 msgstr ""
+"Jašterí názov pre skutočného <ref>dst='unit_Fire Dragon' text='draka'</ref>."
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:133
 msgid "Intendant"
-msgstr ""
+msgstr "Správca"
 
 #. [topic]: id=intendant
 #: data/core/encyclopedia/drakes.cfg:134
@@ -422,11 +476,16 @@ msgid ""
 "likeliest to be granted mating privileges, especially after a notable "
 "service."
 msgstr ""
+"Jeden z <ref>dst='aspirant' text='Uchádzačov'</ref>, zástupcov "
+"<ref>dst='dominant' text='Dominanta'</ref>. Ten má tradične jedného z každej "
+"<ref>dst=caste text='kasty'</ref> inej ako jeho vlastná. Ďalší 'Správcovia' "
+"sú niekdy určení na zvláštne úlohy. Správcovia majú najväčšiu šancu získať "
+"povolenie na párenie, najmä po významnej službe."
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:139
 msgid "Swarm"
-msgstr ""
+msgstr "Roj"
 
 #. [topic]: id=swarm
 #: data/core/encyclopedia/drakes.cfg:140
@@ -434,11 +493,13 @@ msgid ""
 "The <ref>dst='swarmlings' text='Swarmlings'</ref> that have left the "
 "<ref>dst='aerie' text='aerie'</ref> to found a new one."
 msgstr ""
+"Kŕdeľ <ref>dst='swarmlings' text='rojacich sa jašterov'</ref>, ktoré "
+"opustili <ref>dst='aerie' text='hniezdo'</ref>, aby našli nové."
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:145
 msgid "Swarming"
-msgstr ""
+msgstr "Rojenie"
 
 #. [topic]: id=swarming
 #: data/core/encyclopedia/drakes.cfg:146
@@ -447,21 +508,24 @@ msgid ""
 "text='aerie'</ref> that recurs every <ref>dst='breeding_cycle' "
 "text='breeding cycle'</ref>. See <ref>dst='swarm' text='Swarm'</ref>"
 msgstr ""
+" <ref>dst='flight' text='Let'</ref> za novým jašterím <ref>dst='aerie' "
+"text='hniezdom'</ref>, ktorý sa opakuje v každom <ref>dst='breeding_cycle' "
+"text='rozmnožovacom cykle'</ref>. Pozri <ref>dst='swarm' text='Roj'</ref>"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:151
 msgid "Runners"
-msgstr ""
+msgstr "Bežci"
 
 #. [topic]: id=runners
 #: data/core/encyclopedia/drakes.cfg:152
 msgid "Drakish term for escaped slaves hunted as game."
-msgstr ""
+msgstr "Jašterí výraz pre uniknutých otrokov, ktorí slúžia ako lovná zver."
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:157
 msgid "Mount Morogor"
-msgstr ""
+msgstr "Hora Morogor"
 
 #. [topic]: id=mount_morogor
 #: data/core/encyclopedia/drakes.cfg:158
@@ -469,11 +533,13 @@ msgid ""
 "Volcanic mountain on the central island of the archipelago "
 "<ref>dst='morogor' text='Morogor'</ref>."
 msgstr ""
+"Sopečná hora na centrálnom ostrove súostrovia <ref>dst='morogor' "
+"text='Morogor'</ref>."
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:163
 msgid "Long Count"
-msgstr ""
+msgstr "Dlhý letopočet"
 
 #. [topic]: id=long_count
 #: data/core/encyclopedia/drakes.cfg:164
@@ -481,11 +547,13 @@ msgid ""
 "The drake calender based on <ref>dst='vulcaniad' text='Vulcaniad'</ref> and "
 "<ref>dst=breeding_cycle text='Breeding cycles'</ref>."
 msgstr ""
+"Jašterí kalendár založený na <ref>dst='vulcaniad' text='Vulkaniáde'</ref> a "
+"<ref>dst=breeding_cycle text='Rozmnožovacích cykloch'</ref>."
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:169
 msgid "Long Pig"
-msgstr ""
+msgstr "Dlhé prasa"
 
 #. [topic]: id=long_pig
 #: data/core/encyclopedia/drakes.cfg:170
@@ -493,11 +561,13 @@ msgid ""
 "South Seas pidgin for human meat, used to translate a Drakish word with the "
 "same meaning."
 msgstr ""
+"Výraz z lámaného jazyka južných morí pre ľudské mäso používaný na preklad "
+"jašterieho slova s rovnakým významom."
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:175
 msgid "Ceramics"
-msgstr ""
+msgstr "Keramika"
 
 #. [topic]: id=ceramic
 #: data/core/encyclopedia/drakes.cfg:176
@@ -506,11 +576,14 @@ msgid ""
 "ceramics. Only the <ref>dst='unit_Drake Burner' text='burners'</ref> can "
 "generate the amount of heat to cure the pieces to full strength."
 msgstr ""
+"Jašteri spracovávajú kovy, ale ovládajú aj remeslo výroby keramiky. Iba "
+"<ref>dst='unit_Drake Burner' text='opekači'</ref> vedia vytvoriť teplo "
+"potrebné na vytvrdnutie do plnej pevnosti."
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:181
 msgid "Drakish, script"
-msgstr ""
+msgstr "Jašterie písmo"
 
 #. [topic]: id=drakish_script
 #: data/core/encyclopedia/drakes.cfg:182
@@ -519,23 +592,26 @@ msgid ""
 "text='ceramic'</ref> tablets by members of the <ref>dst='recorder' "
 "text='Recorder'</ref> vocation."
 msgstr ""
+"Písomný jazyk jašterov. Uchováva sa na <ref>dst='ceramic' "
+"text='keramických'</ref> tabuľkách členmi s povolaním <ref>dst='recorder' "
+"text='Zapisovateľ'</ref>."
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:187
 msgid "Drakish, language"
-msgstr ""
+msgstr "Jašterí jazyk"
 
 #. [topic]: id=drakish_language
 #: data/core/encyclopedia/drakes.cfg:188
 msgid "The language spoken by the drakes."
-msgstr ""
+msgstr "Jazyk, ktorým hovoria jašteri."
 
 #. [section]: id=geography
 #. [topic]: id=..geography
 #: data/core/encyclopedia/geography.cfg:11
 #: data/core/encyclopedia/geography.cfg:18
 msgid "Geography"
-msgstr ""
+msgstr "Zemepis"
 
 #. [topic]: id=arkan_thoria
 #: data/core/encyclopedia/geography.cfg:25
@@ -597,11 +673,12 @@ msgstr "Zelený ostrov"
 msgid ""
 "A bigger island lying in the <ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Väčší ostrov ležiaci vo <ref>dst='great_ocean' text='Veľkom oceáne'</ref>."
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:51
 msgid "Old Continent"
-msgstr ""
+msgstr "Starý kontinent"
 
 #. [topic]: id=old_continent
 #: data/core/encyclopedia/geography.cfg:52
@@ -609,11 +686,13 @@ msgid ""
 "Lies to the west of <ref>dst='morogor' text='Morogor'</ref> across the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Leží na západ od <ref>dst='morogor' text='Morogoru'</ref> cez "
+"<ref>dst='great_ocean' text='Veľký oceán'</ref>."
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:57
 msgid "Great Continent"
-msgstr ""
+msgstr "Veľký kontinent"
 
 #. [topic]: id=great_continent
 #: data/core/encyclopedia/geography.cfg:58
@@ -622,11 +701,14 @@ msgid ""
 "Wesnoth'</ref> lies. Its west coast is surrounded by the "
 "<ref>dst='great_ocean' text='Great Ocean'</ref>."
 msgstr ""
+"Kontinent, na ktorom leží <ref>dst='kingdom_wesnoth' text='Kráľovstvo "
+"Wesnoth'</ref>. Jeho západné pobrežie obmýva <ref>dst='great_ocean' "
+"text='Veľký oceán'</ref>."
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:63
 msgid "Irdya"
-msgstr ""
+msgstr "Irdya"
 
 #. [topic]: id=irdya
 #: data/core/encyclopedia/geography.cfg:64
@@ -636,6 +718,10 @@ msgid ""
 "rarely used in the era depicted by the main map. People normally just say "
 "“the world” or, poetically, “the wide green world”."
 msgstr ""
+"Názov sveta, v ktorom je umiestnené kráľovstvo <ref>dst='kingdom_wesnoth' "
+"text='Wesnoth'</ref> je ‘Irdya’. Tento názov sa však v ére zobrazenej na "
+"hlavnej mape používa zriedka. Ľudia zvyčajne hovoria len “svet” alebo "
+"poeticky “šíry zelený svet”."
 
 #. [topic]: id=kingdom_wesnoth
 #: data/core/encyclopedia/geography.cfg:69
@@ -4880,6 +4966,13 @@ msgid ""
 "ocean. They are typically wary of dry land, as they are awkward and clumsy "
 "there and they struggle greatly to move over rough or forested terrain."
 msgstr ""
+"Morskí ľudia sú záhadnou rasou so spojením rybích a ľudských vlastností. "
+"Majú silné chvosty, ktoré im umožňujú rýchly pohyb vo vodnom prostredí a ich "
+"šikovné ruky a rozumné mysle umožňujú remeslá a tvorbu nástrojov. Morskí "
+"ľudia môžu dýchať ľahko vzduch aj vodu. Môžu prežiť aj na súši, ale vo vode "
+"sú rýchlejší a obratnejší, preto ich málokedy vidieť ďaleko od oceánu. "
+"Suchej zemi sa vyhýbajú, pretože sú na nej neobratní a namáhavo sa pohybujú "
+"po drsnom alebo zalesnenom povrchu."
 
 #. [race]: id=monster
 #: data/core/units.cfg:248
@@ -4939,6 +5032,18 @@ msgid ""
 "themselves at odds with merfolk when their territories overlap, but overall "
 "nagas tend to favor swamps and rivers as much as open water."
 msgstr ""
+"Hadovité tvory, hadí ľudia, sú jednou z najmenej pochopených rás na Veľkom "
+"kontinente. Je to čiastočne ich xenofóbnou povahou a čiastočne ich cudzím "
+"prostredím. Hadí ľudia sú jedna z mála rás schopných rýchlo sa pohybovať vo "
+"vode, čo im otvára priestory nedostupné suchozemcom a zároveň ich to od "
+"týchto rás viac vzďaľuje. Nie sú to však morské tvory v pravom zmysle slova, "
+"pretože nevedia dýchať pod vodou a preto sa boja hlbiny. Tak sa zdržujú skôr "
+"v pobrežných oblastiach, čo im poskytuje únikovú cestu pred obyvateľmi hlbín "
+"a zároveň pred tými, čo putujú pešo, na krídlach alebo kopytách. Sú to malé "
+"a telesne trochu krehké tvory, ale zvyčajne o dosť vrtkejšie ako súperi. "
+"Niekedy sa dostanú do sporu s morskými ľudmi, keď sa ich teritóriá "
+"prekrývajú, ale hadí ľudia môžu rovnako ako v otvorenej vode žiť aj v "
+"bažinách a riekach."
 
 #. [race]: id=ogre
 #: data/core/units.cfg:269
@@ -4973,6 +5078,18 @@ msgid ""
 "is a sign of cooperation, domestication, or simply mutual opportunism is not "
 "known."
 msgstr ""
+"Ohyzdi sú divoká a necivilizovaná rasa, ktorá obýva divočinu na Veľkom "
+"kontinente. Fyzicky pripomínajú ľudí, ale sú väčší a silnejší. Aj ich "
+"nedospelí jedinci sú vyrovnaným súperom pre väčšinu ľudí. Ohyzdom v "
+"obývaných oblastiach neveria a buď sa im vyhýbajú alebo ich rovno vyženú. "
+"Preto sa schovávajú v hornatých oblastiach na okraji civilizácie, kde hladní "
+"banditi spomedzi ohyzdov ohrozujú pocestných a karavány. Aj keď ohyzdi nie "
+"sú veľmi múdri alebo rýchli, ich odolnosť a fyzická sila ich robí vhodným "
+"vkladom do armád iných rás. Sú zvlášť hodnotní pre bezcitných veliteľov, "
+"ktorým ohyzdia brutalita neprekáža. O ich biológii a spoločnosti sa vie "
+"málo, ak vôbec nejakú majú, pretože zvyknú útočiť po boku vlkov a iných "
+"tvorov. Nie je známe, či je to znakom spolupráce, skrotenia či vzájomného "
+"prispôsobenia."
 
 #. [race]: id=orc
 #: data/core/units.cfg:280

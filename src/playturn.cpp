@@ -184,12 +184,14 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			if (controller == "human" && !tm.is_human()) {
 				tm.make_human();
+				resources::controller->on_not_observer();
 			} else if (controller == "network" && !tm.is_network_human()) {
 				tm.make_network();
 			} else if (controller == "network_ai" && !tm.is_network_ai()) {
 				tm.make_network_ai();
 			} else if (controller == "ai" && !tm.is_ai()) {
 				tm.make_ai();
+				resources::controller->on_not_observer();
 			} else if (controller == "idle" && !tm.is_idle()) {
 				tm.make_idle();
 			}
@@ -236,7 +238,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const bool have_leader = leader.valid();
 
 		if (controller == "ai"){
-			tm.make_network_ai();
+			tm.make_ai();
 			tm.set_current_player("ai" + side_drop);
 			if (have_leader) leader->rename("ai" + side_drop);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
@@ -296,6 +298,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		switch(action) {
 			case 0:
 				tm.make_ai();
+				resources::controller->on_not_observer();
 				tm.set_current_player("ai" + side_drop);
 				if (have_leader) leader->rename("ai" + side_drop);
 				change_controller(side_drop, "ai");
@@ -305,6 +308,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			case 1:
 				tm.make_human();
+				resources::controller->on_not_observer();
 				tm.set_current_player("human" + side_drop);
 				if (have_leader) leader->rename("human" + side_drop);
 				change_controller(side_drop, "human");

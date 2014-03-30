@@ -883,6 +883,8 @@
 		EC95E50918612BB600F3A9EF /* editor_edit_side.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC95E50618612BB600F3A9EF /* editor_edit_side.cpp */; };
 		ECA9E67B17F478B600F5DDC4 /* desktop_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9E67917F478B600F5DDC4 /* desktop_util.cpp */; };
 		ECA9E67E17F478D600F5DDC4 /* game_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */; };
+		ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
+		ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
 		ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
 		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
@@ -2020,6 +2022,8 @@
 		ECA9E67A17F478B600F5DDC4 /* desktop_util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = desktop_util.hpp; sourceTree = "<group>"; };
 		ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_paths.cpp; sourceTree = "<group>"; };
 		ECA9E67D17F478D600F5DDC4 /* game_paths.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_paths.hpp; sourceTree = "<group>"; };
+		ECAA3FE518E0E4EF002E8998 /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
+		ECAA3FE618E0E4EF002E8998 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
 		ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = format_time_summary.cpp; sourceTree = "<group>"; };
 		ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = format_time_summary.hpp; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wml_error.cpp; path = gui/dialogs/wml_error.cpp; sourceTree = "<group>"; };
@@ -3142,6 +3146,8 @@
 		B55999A60EC62181008DD061 /* serialization */ = {
 			isa = PBXGroup;
 			children = (
+				ECAA3FE518E0E4EF002E8998 /* unicode.cpp */,
+				ECAA3FE618E0E4EF002E8998 /* unicode.hpp */,
 				F480CD2214034F18007175D6 /* schema_validator.cpp */,
 				F480CD2A14034FB8007175D6 /* schema_validator.hpp */,
 				F449349913FF652800DF01D5 /* validator.cpp */,
@@ -4164,6 +4170,7 @@
 				B595EFE2100436C900C10B66 /* game_load.cpp in Sources */,
 				B5951A8F1013BB0800C10B66 /* resources.cpp in Sources */,
 				B5951A951013BB3400C10B66 /* game_delete.cpp in Sources */,
+				ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */,
 				B5951A9B1013BB5A00C10B66 /* callable_objects.cpp in Sources */,
 				B5951A9C1013BB5A00C10B66 /* function_table.cpp in Sources */,
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
@@ -4786,6 +4793,7 @@
 				B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */,
 				B5BB6C910F89448200444FBF /* string_utils.cpp in Sources */,
 				B5BB6C920F89448300444FBF /* tokenizer.cpp in Sources */,
+				ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */,
 				B5BB6C960F8944FB00444FBF /* loadscreen_empty.cpp in Sources */,
 				B5BB6CD90F89470B00444FBF /* server_main.m in Sources */,
 				B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */,
@@ -4871,7 +4879,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
@@ -4924,7 +4931,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
 				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -4989,13 +4995,16 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -5042,7 +5051,10 @@
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+				);
 				GCC_VERSION = 4.0;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (

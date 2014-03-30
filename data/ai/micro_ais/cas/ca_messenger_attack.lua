@@ -53,7 +53,7 @@ local function messenger_find_enemies_in_way(unit, goal_x, goal_y)
     return
 end
 
-local function messenger_find_clearing_attack(unit, goal_x, goal_y)
+local function messenger_find_clearing_attack(unit, goal_x, goal_y, cfg)
     -- Check if an enemy is in the way of the messenger
     -- If so, find attack that would "clear" that enemy out of the way
     -- unit: proxy table for the messenger unit
@@ -68,8 +68,12 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y)
     --print('Finding attacks on',enemy_in_way.name,enemy_in_way.id)
 
     -- Find all units that can attack this enemy
-    local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.attacks_left > 0',
-        { "not", { id = unit.id } }
+    local filter = cfg.filter or { id = cfg.id }
+    local my_units = wesnoth.get_units {
+        side = wesnoth.current.side,
+        formula = '$this_unit.attacks_left > 0',
+        { "not", filter },
+        { "and", cfg.filter_second }
     }
 
     -- Eliminate units without attacks
@@ -131,17 +135,14 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y)
 end
 
 function ca_messenger_attack:evaluation(ai, cfg, self)
-    -- Attack units in the path of the messenger
-    -- id: id of the messenger unit
+    -- Attack units in the path of the messengers
     -- goal_x, goal_y: coordinates of the goal toward which the messenger moves
 
-    local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
+    local messenger, x, y = messenger_next_waypoint(cfg)
     if (not messenger) then return 0 end
 
-    local x, y = messenger_next_waypoint(messenger, cfg, self)
-
     -- See if there's an enemy in the way that should be attacked
-    local attack = messenger_find_clearing_attack(messenger, x, y)
+    local attack = messenger_find_clearing_attack(messenger, x, y, cfg)
 
     if attack then
         self.data.best_attack = attack

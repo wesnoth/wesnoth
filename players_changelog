@@ -8,7 +8,7 @@ Version 1.13.0-dev:
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
 
  * Language and i18n:
-   * Updated translations: German, Greek, Scottish Gaelic, Slovak.
+   * Updated translations: German, Greek, Hungarian, Scottish Gaelic, Slovak.
 
  * Units:
    * Increased the experience requirement for the Rami from 32 to 39.
@@ -21,6 +21,8 @@ Version 1.13.0-dev:
    * Fixed halos glitching through locations that become shrouded after the
      halo is rendered for the first time.
    * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13
+   * Fix bug #3856: The turn dialog used in hotseat MP play now applies 
+     a blindfold for the duration of the dialog.
 
 
 Version 1.11.11:
