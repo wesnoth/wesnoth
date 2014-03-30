@@ -245,6 +245,11 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		if (!cmdline_opts_.test->empty())
 			test_scenario_ = *cmdline_opts_.test;
 	}
+	if (cmdline_opts_.unit_test)
+	{
+		if (!cmdline_opts_.unit_test->empty())
+			test_scenario_ = *cmdline_opts_.unit_test;
+	}
 	if (cmdline_opts_.windowed)
 		preferences::set_fullscreen(false);
 	if (cmdline_opts_.with_replay)
@@ -432,6 +437,34 @@ bool game_controller::play_test()
 	}
 
 	return false;
+}
+
+// Same as play_test except that we return the results of play_game.
+int game_controller::unit_test()
+{
+	static bool first_time_unit = true;
+
+	if(!cmdline_opts_.unit_test) {
+		return 0;
+	}
+	if(!first_time_unit)
+		return 0;
+
+	first_time_unit = false;
+
+	state_.classification().campaign_type = "test";
+	state_.carryover_sides_start["next_scenario"] = test_scenario_;
+	state_.classification().campaign_define = "TEST";
+
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
+
+	try {
+		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config());
+		return ((res == VICTORY || res == NONE) ? 0 : 1);
+	} catch (game::load_game_exception &) {
+		return 1;
+	}
 }
 
 bool game_controller::play_screenshot_mode()

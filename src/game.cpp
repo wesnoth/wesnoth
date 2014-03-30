@@ -521,6 +521,12 @@ static int do_gameloop(int argc, char** argv)
 
 		loadscreen_manager.reset();
 
+		if(cmdline_opts.unit_test) {
+			int worker_result = game->unit_test();
+			std::cout << ((worker_result == 0) ? "PASS TEST: " : "FAIL TEST: ") << *cmdline_opts.unit_test << std::endl;
+			return worker_result;
+		}
+
 		if(game->play_test() == false) {
 			return 0;
 		}

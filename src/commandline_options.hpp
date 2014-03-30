@@ -163,6 +163,8 @@ public:
 	bool strict_validation;
 	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.
 	boost::optional<std::string> test;
+	/// Non-empty if --unit was given on the command line. Goes directly into unit test mode, into a scenario, if specified.
+	boost::optional<std::string> unit_test;
 	/// True if --userconfig-path was given on the command line. Prints path to user config directory and exits.
 	bool userconfig_path;
 	/// Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one.
