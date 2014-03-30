@@ -30,7 +30,7 @@ static lg::log_domain log_display("display");
 namespace gui {
 
 textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
-	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(utils::string_to_ucs4string(text)),
+	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<ucs4::string>(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
@@ -66,14 +66,14 @@ void textbox::set_inner_location(SDL_Rect const &rect)
 
 const std::string textbox::text() const
 {
-	const std::string &ret = utils::ucs4string_to_string(text_);
+	const std::string &ret = unicode_cast<utf8::string>(text_);
 	return ret;
 }
 
 // set_text does not respect max_size_
 void textbox::set_text(const std::string& text, const SDL_Color& color)
 {
-	text_ = utils::string_to_ucs4string(text);
+	text_ = unicode_cast<ucs4::string>(text);
 	cursor_ = text_.size();
 	text_pos_ = 0;
 	selstart_ = -1;
@@ -95,7 +95,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 		return;
 	}
 	const bool is_at_bottom = get_position() == get_max_position();
-	const ucs4::string& wtext = utils::string_to_ucs4string(text);
+	const ucs4::string& wtext = unicode_cast<ucs4::string>(text);
 
 	const surface new_text = add_text_line(wtext, color);
 	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
@@ -345,7 +345,7 @@ surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
 		}
 	}
 
-	const std::string s = utils::ucs4string_to_string(wrapped_text);
+	const std::string s = unicode_cast<utf8::string>(wrapped_text);
 	const surface res(font::get_rendered_text(s, font_size_, color));
 
 	return res;
@@ -615,7 +615,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
 
-				ucs4::string s = utils::string_to_ucs4string(str);
+				ucs4::string s = unicode_cast<ucs4::string>(str);
 
 				if(text_.size() < max_size_) {
 					if(s.size() + text_.size() > max_size_) {
@@ -637,7 +637,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 						const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
 
 						ucs4::string ws(text_.begin() + beg, text_.begin() + end);
-						std::string s = utils::ucs4string_to_string(ws);
+						std::string s = unicode_cast<utf8::string>(ws);
 						copy_to_clipboard(s, false);
 					}
 				}

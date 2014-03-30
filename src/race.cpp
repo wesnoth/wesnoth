@@ -60,7 +60,7 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 	markov_prefix_map res;
 
 	for(std::vector<std::string>::const_iterator i = items.begin(); i != items.end(); ++i) {
-		add_prefixes(utils::string_to_ucs4string(*i),length,res);
+		add_prefixes(unicode_cast<ucs4::string>(*i),length,res);
 	}
 
 	return res;
@@ -203,7 +203,7 @@ unit_race::unit_race(const config& cfg) :
 std::string unit_race::generate_name(
 		unit_race::GENDER gender, rand_rng::simple_rng* rng) const
 {
-	return utils::ucs4string_to_string(
+	return unicode_cast<utf8::string>(
 		markov_generate_name(next_[gender], chain_size_, 12, rng));
 }
 

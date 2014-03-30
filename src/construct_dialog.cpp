@@ -911,7 +911,7 @@ void filter_textbox::delete_item(int selection) {
 }
 
 void filter_textbox::handle_text_changed(const ucs4::string& text) {
-	const std::vector<std::string> words = utils::split(utils::ucs4string_to_string(text),' ');
+	const std::vector<std::string> words = utils::split(unicode_cast<utf8::string>(text),' ');
 	if (words == last_words)
 		return;
 	last_words = words;

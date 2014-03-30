@@ -206,7 +206,7 @@ bool ttext::insert_unicode(const unsigned offset, ucs4::char_t unicode)
 
 unsigned ttext::insert_unicode(const unsigned offset, const ucs4::string& unicode)
 {
-	const utf8::string insert = utils::ucs4string_to_string(unicode);
+	const utf8::string insert = unicode_cast<utf8::string>(unicode);
 	return insert_text(offset, insert);
 }
 
@@ -293,8 +293,8 @@ bool ttext::set_text(const std::string& text, const bool markedup)
 	if(markedup != markedup_text_ || text != text_) {
 		assert(layout_);
 
-		const ucs4::string wide = utils::string_to_ucs4string(text);
-		const std::string narrow = utils::ucs4string_to_string(wide);
+		const ucs4::string wide = unicode_cast<ucs4::string>(text);
+		const std::string narrow = unicode_cast<utf8::string>(wide);
 		if(text != narrow) {
 			ERR_GUI_L << "ttext::" << __func__
 					<< " text '" << text
