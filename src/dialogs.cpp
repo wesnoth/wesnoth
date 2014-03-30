@@ -209,45 +209,6 @@ int advance_unit_dialog(const map_location &loc)
 	return 0;
 }
 
-void advance_unit(const map_location& loc, bool automatic, bool add_replay_event, const ai::unit_advancements_aspect& /*advancements*/)
-{
-	//this is currently only used by "unit advance=x" debug command.
-	assert(!automatic);
-	assert(!add_replay_event);
-
-	
-	unit_map::iterator u = resources::units->find(loc);
-	if(!unit_helper::will_certainly_advance(u)) {
-		return;
-	}
-
-	LOG_DP << "advance_unit: " << u->type_id() << " (advances: " << u->advances()
-		<< " XP: " <<u->experience() << '/' << u->max_experience() << ")\n";
-
-	int res = advance_unit_dialog(loc);
-
-	LOG_DP << "animating advancement...\n";
-	animate_unit_advancement(loc, size_t(res));
-
-	// In some rare cases the unit can have enough XP to advance again,
-	// so try to do that.
-	// Make sure that we don't enter an infinite level loop.
-	u = resources::units->find(loc);
-	if (u != resources::units->end()) {
-		// Level 10 unit gives 80 XP and the highest mainline is level 5
-		if (u->experience() < 81) {
-			// For all leveling up we have to add advancement to replay here because replay
-			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
-			advance_unit(loc);
-		} else {
-			ERR_CF << "Unit has too many (" << u->experience()
-				<< ") XP left; cascade leveling disabled.\n";
-		}
-	} else {
-		ERR_NG << "Unit advanced no longer exists.\n";
-	}
-}
-
 bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event, const bool animate)
 {
 	const events::command_disabler cmd_disabler;

@@ -1099,7 +1099,11 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		WRN_REPLAY << "MP synchronization called during an unsynced context.";; 
 		return uch.query_user();
 	}
-
+	//technicly we can use mp_sync in start/prestarte events, but the question is wether that makes sense 
+	//because it's unclear to decide on which side the function should be executed. 
+	//However, for advancements we can just decide on the side that owns the unit and that's in the responsibility of advance_unit_at.
+	//For [message][option] and luas sync_choice the scenario designer is responsible for that.
+	//For [get_global_variable] side is never null.
 	/*
 		side = 0 should default to the currently active side per definition.
 	*/

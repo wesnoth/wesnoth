@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
@@ -3147,10 +3148,16 @@ void console_handler::do_unit() {
 		return;
 	}
 	if (name == "advances" ){
+		if(synced_context::get_syced_state() == synced_context::SYNCED)
+		{
+			command_failed("unit advances=n doesn't work while another action is executed.");
+			return;
+		}
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
-			dialogs::advance_unit(loc);
+			
+			advance_unit_at(loc,true);
 			i = menu_handler_.units_.find(loc);
 			if (!i.valid()) {
 				break;

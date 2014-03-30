@@ -34,6 +34,7 @@
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
+#include "../play_controller.hpp"
 #include "../random.hpp"
 #include "../random_new.hpp"
 #include "../replay.hpp"
@@ -1367,8 +1368,8 @@ namespace
 	class unit_advancement_choice : public mp_sync::user_choice
 	{
 	public:
-		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect& ai_advancement)
-			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement)
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect& ai_advancement, bool force_dialog)
+			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
 		{	
 		}
 		
@@ -1380,8 +1381,18 @@ namespace
 		{
 			int res = 0;
 			team t = (*resources::teams)[side_num_ - 1];
+			//i wonder how this got included here ? 
+			bool is_mp = network::nconnections() != 0;
+			bool is_current_side = resources::controller->current_side() == side_num_;
 			//note, that the advancements for networked sides are also determined on the current playing side.
-			if(t.is_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
+			
+			//to make mp games equal we only allow selecting advancements to the current side.
+			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
+			if(force_dialog_ || (t.is_human() && (is_current_side || !is_mp)))
+			{
+				res = dialogs::advance_unit_dialog(loc_); 
+			}
+			else if(t.is_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
 			{
 				res = rand() % nb_options_;
 
@@ -1399,16 +1410,12 @@ namespace
 				}
 
 			}
-			else if (t.is_local())
-			{
-				assert(t.is_human());
-				res = rand() % nb_options_;
-				res = dialogs::advance_unit_dialog(loc_); 
-			}
 			else
 			{
-				assert(t.is_network_human());
-				res = 0;
+				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
+				//becasue it's a mp game and it's not his turn.
+				//note that it doens't matter wether we call random_new::generator->next_random() or rand().
+				res = random_new::generator->next_random() % nb_options_;
 			}
 			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
 			config retv;
@@ -1427,36 +1434,40 @@ namespace
 		int nb_options_;
 		int side_num_;
 		const ai::unit_advancements_aspect& ai_advancement_;
+		bool force_dialog_;
 	};
-	/*
-		advances the unit and stores data in the replay (or reads data from replay).
-	*/
-	void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement)
-	{
-		//i just don't want infinite loops...
-		// the 20 is picked rather randomly.
-		for(int advacment_number = 0; advacment_number < 20; advacment_number++)
-		{
-			unit_map::iterator u = resources::units->find(loc);
-			//this implies u.valid()
-			if(!unit_helper::will_certainly_advance(u)) {
-				return;
-			}
-			config selected = mp_sync::get_user_choice("choose",
-					unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement)); 
-			//calls actions::advance_unit.
-			dialogs::animate_unit_advancement(loc, selected["value"], true, true);
-			u = resources::units->find(loc);
-			// level 10 unit gives 80 XP and the highest mainline is level 5
-			if (u.valid() && u->experience() > 80) 
-			{
-				ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.\n";
-			}
-		}
-		ERR_NG << "unit at " << loc << "tried to adcance more than 20 times\n";
-	}
 }
 
+/*
+advances the unit and stores data in the replay (or reads data from replay).
+*/
+void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement, bool force_dialog)
+{
+	//i just don't want infinite loops...
+	// the 20 is picked rather randomly.
+	for(int advacment_number = 0; advacment_number < 20; advacment_number++)
+	{
+		unit_map::iterator u = resources::units->find(loc);
+		//this implies u.valid()
+		if(!unit_helper::will_certainly_advance(u)) {
+			return;
+		}
+		
+		//we don't want to let side 1 decide it during start/prestart.
+		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
+		config selected = mp_sync::get_user_choice("choose",
+			unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement, force_dialog), side_for); 
+		//calls actions::advance_unit.
+		dialogs::animate_unit_advancement(loc, selected["value"], true, true);
+		u = resources::units->find(loc);
+		// level 10 unit gives 80 XP and the highest mainline is level 5
+		if (u.valid() && u->experience() > 80) 
+		{
+			ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.\n";
+		}
+	}
+	ERR_NG << "unit at " << loc << "tried to adcance more than 20 times\n";
+}
 
 
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
