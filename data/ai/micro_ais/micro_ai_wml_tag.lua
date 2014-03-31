@@ -187,7 +187,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Micro AI Guardian -----------------------------------
     elseif (cfg.ai_type == 'stationed_guardian') then
-        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+        if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Stationed Guardian [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "distance", "station_x", "station_y", "guard_x", "guard_y" }
@@ -195,7 +195,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = { { ca_id = 'mai_stationed_guardian', location = CA_path .. 'ca_stationed_guardian.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'zone_guardian') then
-        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
             H.wml_error("Zone Guardian [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "filter_location" }
@@ -203,7 +203,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = { { ca_id = 'mai_zone_guardian', location = CA_path .. 'ca_zone_guardian.lua', score = cfg.ca_score or 300000 } }
 
     elseif (cfg.ai_type == 'return_guardian') then
-        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
             H.wml_error("Return Guardian [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "return_x", "return_y" }
@@ -211,7 +211,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         CA_parms = { { ca_id = 'mai_return_guardian', location = CA_path .. 'ca_return_guardian.lua', score = cfg.ca_score or 100010 } }
 
     elseif (cfg.ai_type == 'coward') then
-        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
             H.wml_error("Coward [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "distance" }
@@ -317,7 +317,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
 
     elseif (cfg.ai_type == 'hunter') then
-        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
             H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "home_x", "home_y" }
@@ -326,7 +326,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Patrol Micro AI ------------------------------------
     elseif (cfg.ai_type == 'patrol') then
-        if (not cfg.id) and (not H.get_child(cfg, "filter")) then
+        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
             H.wml_error("Patrol [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "waypoint_x", "waypoint_y" }
