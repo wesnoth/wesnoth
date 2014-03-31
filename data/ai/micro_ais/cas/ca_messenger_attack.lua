@@ -138,7 +138,7 @@ function ca_messenger_attack:evaluation(ai, cfg, self)
     local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
     if (not messenger) then return 0 end
 
-    local x, y = messenger_next_waypoint(messenger, cfg, self)
+    local x, y = messenger_next_waypoint(messenger, cfg)
 
     -- See if there's an enemy in the way that should be attacked
     local attack = messenger_find_clearing_attack(messenger, x, y)

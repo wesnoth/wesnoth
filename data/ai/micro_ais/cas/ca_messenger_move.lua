@@ -17,10 +17,10 @@ function ca_messenger_move:evaluation(ai, cfg)
     return 0
 end
 
-function ca_messenger_move:execution(ai, cfg, self)
+function ca_messenger_move:execution(ai, cfg)
     local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
 
-    local x, y = messenger_next_waypoint(messenger, cfg, self)
+    local x, y = messenger_next_waypoint(messenger, cfg)
 
     if (messenger.x ~= x) or (messenger.y ~= y) then
         local wp = AH.get_closest_location(
