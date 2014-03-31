@@ -38,13 +38,13 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 
 BOOST_AUTO_TEST_CASE( utils_unicode_test )
 {
-	utf8::string unicode = "\xC3\xBCnicod\xE2\x82\xAC check"; // "ünicod€ check" in UTF-8
+	utf8::string unicode = "Ã¼nicodâ‚¬ check";
 	BOOST_CHECK( utf8::size(unicode) == 13 );
 
 	int euro = utf8::index(unicode,6);
-	BOOST_CHECK( unicode.substr(euro,utf8::index(unicode,7)-euro) == "\xE2\x82\xAC" ); // € sign
+	BOOST_CHECK( unicode.substr(euro,utf8::index(unicode,7)-euro) == "â‚¬" );
 
-	BOOST_CHECK( utf8::truncate(unicode,3) == "\xC3\xBCni"); // "üni"
+	BOOST_CHECK( utf8::truncate(unicode,3) == "Ã¼ni");
 
 	utf8::string apple_u8("apple");
 	ucs4::string apple_u4 = unicode_cast<ucs4::string>(apple_u8);
