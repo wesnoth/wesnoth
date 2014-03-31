@@ -360,7 +360,7 @@ void hotkey_item::load_from_config(const config& cfg)
 		return;
 	}
 
-	ucs4::string wkey = utils::string_to_ucs4string(key);
+	ucs4::string wkey = unicode_cast<ucs4::string>(key);
 
 	// They may really want a specific key on the keyboard:
 	// we assume that any single character keyname is a character.

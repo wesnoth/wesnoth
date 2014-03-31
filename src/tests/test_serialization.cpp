@@ -38,38 +38,38 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 
 BOOST_AUTO_TEST_CASE( utils_unicode_test )
 {
-	utf8::string unicode = "\xC3\xBCnicod\xE2\x82\xAC check"; // "ünicod€ check" in UTF-8
+	utf8::string unicode = "Ã¼nicodâ‚¬ check";
 	BOOST_CHECK( utf8::size(unicode) == 13 );
 
 	int euro = utf8::index(unicode,6);
-	BOOST_CHECK( unicode.substr(euro,utf8::index(unicode,7)-euro) == "\xE2\x82\xAC" ); // € sign
+	BOOST_CHECK( unicode.substr(euro,utf8::index(unicode,7)-euro) == "â‚¬" );
 
-	BOOST_CHECK( utf8::truncate(unicode,3) == "\xC3\xBCni"); // "üni"
+	BOOST_CHECK( utf8::truncate(unicode,3) == "Ã¼ni");
 
 	utf8::string apple_u8("apple");
-	ucs4::string apple_u4 = utils::string_to_ucs4string(apple_u8);
-	utf16::string apple_u16 = utils::ucs4string_to_utf16string(apple_u4);
+	ucs4::string apple_u4 = unicode_cast<ucs4::string>(apple_u8);
+	utf16::string apple_u16 = unicode_cast<utf16::string>(apple_u4);
 
 	BOOST_CHECK( apple_u4.size() == 5 );
-	BOOST_CHECK_EQUAL( apple_u8, utils::ucs4string_to_string(apple_u4) );
+	BOOST_CHECK_EQUAL( apple_u8, unicode_cast<utf8::string>(apple_u4) );
 	BOOST_CHECK_EQUAL( apple_u8.size(), apple_u16.size() );
 
 	ucs4::string water_u4;
 	water_u4.push_back(0x6C34);
-	utf8::string water_u8 = utils::ucs4string_to_string(water_u4);
-	utf16::string water_u16 = utils::ucs4string_to_utf16string(water_u4);
+	utf8::string water_u8 = unicode_cast<utf8::string>(water_u4);
+	utf16::string water_u16 = unicode_cast<utf16::string>(water_u4);
 
 	BOOST_CHECK_EQUAL(water_u4[0], water_u16[0]);
 	BOOST_CHECK_EQUAL(water_u8, "\u6C34");
 
 	utf8::string nonbmp_u8("\U00010000");
-	ucs4::string nonbmp_u4 = utils::string_to_ucs4string(nonbmp_u8);
-	utf16::string nonbmp_u16 = utils::ucs4string_to_utf16string(nonbmp_u4);
+	ucs4::string nonbmp_u4 = unicode_cast<ucs4::string>(nonbmp_u8);
+	utf16::string nonbmp_u16 = unicode_cast<utf16::string>(nonbmp_u4);
 
 	BOOST_CHECK_EQUAL(nonbmp_u8.size(), 4);
 	BOOST_CHECK_EQUAL(nonbmp_u4[0], 0x10000);
 	BOOST_CHECK_EQUAL(nonbmp_u16[0], 0xD800);
 	BOOST_CHECK_EQUAL(nonbmp_u16[1], 0xDC00);
-	BOOST_CHECK_EQUAL(nonbmp_u8, utils::ucs4string_to_string(nonbmp_u4));
+	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u4));
 }
 

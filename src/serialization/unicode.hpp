@@ -16,6 +16,7 @@
 #ifndef SERIALIZATION_UNICODE_HPP_INCLUDED
 #define SERIALIZATION_UNICODE_HPP_INCLUDED
 
+#include <boost/static_assert.hpp>
 #include <string>
 #include <vector>
 #include <SDL_types.h>
@@ -130,5 +131,32 @@ namespace utils {
 	void ellipsis_truncate(std::string& str, const size_t size);
 
 } // end namespace utils
+
+template <typename To, typename From> inline
+To unicode_cast(const From &) {
+	BOOST_STATIC_ASSERT_MSG(sizeof(To) == 0, "Invalid types for unicode_cast");
+	return To();
+}
+
+template <> inline
+utf8::string unicode_cast<utf8::string, ucs4::string>(const ucs4::string &in) {
+	return utils::ucs4string_to_string(in);
+}
+
+template <> inline
+ucs4::string unicode_cast<ucs4::string, utf8::string>(const utf8::string &in) {
+	return utils::string_to_ucs4string(in);
+}
+
+template <> inline
+utf16::string unicode_cast<utf16::string, ucs4::string>(const ucs4::string &in) {
+	return utils::ucs4string_to_utf16string(in);
+}
+
+template <> inline
+utf16::string unicode_cast<utf16::string, utf8::string>(const utf8::string &in) {
+	const ucs4::string u4str = utils::string_to_ucs4string(in); //unicode_cast<ucs4::string>(in);
+	return utils::ucs4string_to_utf16string(u4str); //unicode_cast<utf16::string>(u4str);
+}
 
 #endif
