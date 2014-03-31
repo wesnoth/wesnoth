@@ -150,8 +150,8 @@ utf16::string unicode_cast<utf16::string, ucs4::string>(const ucs4::string &in) 
 
 template <> inline
 utf16::string unicode_cast<utf16::string, utf8::string>(const utf8::string &in) {
-	const ucs4::string u4str = utils::string_to_ucs4string(in); //unicode_cast<ucs4::string>(in);
-	return utils::ucs4string_to_utf16string(u4str); //unicode_cast<utf16::string>(u4str);
+	const ucs4::string u4str = unicode_cast<ucs4::string>(in);
+	return unicode_cast<utf16::string>(u4str);
 }
 
 #endif
