@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"
 
@@ -27,9 +28,11 @@ function ca_wolves_multipacks_wander:execution(ai, cfg)
             local wolf = wesnoth.get_unit(loc.x, loc.y)
             --print(k, i, wolf.id)
             table.insert(wolves, wolf)
+
             -- If any of the wolves in the pack has a goal set, we use that one
-            if wolf.variables.goal_x then
-                goal = { wolf.variables.goal_x, wolf.variables.goal_y }
+            local wolf_goal = MAIUV.get_mai_unit_variables(wolf, cfg.ai_id)
+            if wolf_goal.goal_x then
+                goal = { wolf_goal.goal_x, wolf_goal.goal_y }
             end
         end
 
@@ -61,7 +64,7 @@ function ca_wolves_multipacks_wander:execution(ai, cfg)
 
         -- This goal is saved with every wolf of the pack
         for i,w in ipairs(wolves) do
-            w.variables.goal_x, w.variables.goal_y = goal[1], goal[2]
+            MAIUV.insert_mai_unit_variables(w, cfg.ai_id, { goal_x = goal[1], goal_y = goal[2] })
         end
 
         -- The pack wanders with only 2 considerations

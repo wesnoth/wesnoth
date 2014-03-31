@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 local WMPF = wesnoth.require "ai/micro_ais/cas/ca_wolves_multipacks_functions.lua"
 
@@ -8,7 +9,6 @@ local ca_wolves_multipacks_attack = {}
 
 function ca_wolves_multipacks_attack:evaluation(ai, cfg)
     local unit_type = cfg.type or "Wolf"
-
     -- If wolves have attacks left, call this CA
     -- It will generally be disabled by being black-listed, so as to avoid
     -- having to do the full attack evaluation for every single move
@@ -26,7 +26,6 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
     -- and I want all wolves in a pack to move first, before going on to the next pack
     -- which makes this slightly more complicated than it would be otherwise
     for pack_number,pack in pairs(packs) do
-
         local keep_attacking_this_pack = true    -- whether there might be attacks left
         local pack_attacked = false   -- whether an attack by the pack has happened
 
@@ -97,10 +96,13 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
                     -- the same target for all wolves of the pack)
                     for x, y in H.adjacent_tiles(target.x, target.y) do
                         local adj_unit = wesnoth.get_unit(x, y)
-                        if adj_unit and (adj_unit.variables.pack == pack_number)
-                            and (adj_unit.side == wesnoth.current.side) and (adj_unit.attacks_left == 0)
-                        then
-                            rating = rating + 10 -- very strongly favors this target
+                        if adj_unit then
+                            local pack = MAIUV.get_mai_unit_variables(adj_unit, cfg.ai_id, "pack")
+                            if (pack == pack_number) and (adj_unit.side == wesnoth.current.side)
+                               and (adj_unit.attacks_left == 0)
+                            then
+                                rating = rating + 10 -- very strongly favors this target
+                            end
                         end
                     end
 

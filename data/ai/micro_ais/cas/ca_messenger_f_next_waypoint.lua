@@ -1,5 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 return function(cfg)
     -- Calculate next waypoint and rating for all messengers
@@ -26,15 +27,13 @@ return function(cfg)
     for i, m in ipairs(messengers) do
         -- To avoid code duplication and ensure consistency, we store some pieces of
         -- information in the messenger units, even though it could be calculated each time it is needed
-        local wp_i = m.variables.wp_i or 1
+        local wp_i = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_i") or 1
         local wp_x, wp_y = waypoint_x[wp_i], waypoint_y[wp_i]
 
         -- If this messenger is within 3 hexes of the next waypoint, we go on to the one after that
         -- except if that one's the last one already
         local dist_wp = H.distance_between(m.x, m.y, wp_x, wp_y)
         if (dist_wp <= 3) and (wp_i < #waypoint_x) then wp_i = wp_i + 1 end
-
-        m.variables.wp_i, m.variables.wp_x, m.variables.wp_y = wp_i, wp_x, wp_y
 
         -- Also store the rating for each messenger
         -- For now, this is simply a "forward rating"
@@ -47,7 +46,7 @@ return function(cfg)
             rating = #waypoint_x - rating
         end
 
-        m.variables.wp_rating = rating
+        MAIUV.set_mai_unit_variables(m, cfg.ai_id, { wp_i = wp_i, wp_x = wp_x, wp_y = wp_y, wp_rating = rating })
 
         -- Find the messenger with the highest rating that has MP left
         if (m.moves > 0) and (rating > max_rating) then

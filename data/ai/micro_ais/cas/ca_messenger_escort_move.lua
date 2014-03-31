@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_messenger_escort_move = {}
 
@@ -58,7 +59,8 @@ function ca_messenger_escort_move:execution(ai, cfg)
                 local max_messenger_rating = -9e99
                 for _,m in ipairs(messengers) do
                     local messenger_rating = 1. / (H.distance_between(x, y, m.x, m.y) + 2.)
-                    messenger_rating = messenger_rating * 10. * (1. + m.variables.wp_rating * 2.)
+                    local wp_rating = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_rating")
+                    messenger_rating = messenger_rating * 10. * (1. + wp_rating * 2.)
 
                     if (messenger_rating > max_messenger_rating) then
                         max_messenger_rating = messenger_rating

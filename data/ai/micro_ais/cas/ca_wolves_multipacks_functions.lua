@@ -1,5 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local wolves_multipacks_functions = {}
 
@@ -25,9 +26,10 @@ function wolves_multipacks_functions.assign_packs(cfg)
     local packs = {}
     -- Find wolves that already have a pack number assigned
     for i,w in ipairs(wolves) do
-        if w.variables.pack then
-            if (not packs[w.variables.pack]) then packs[w.variables.pack] = {} end
-            table.insert(packs[w.variables.pack], { x = w.x, y = w.y, id = w.id })
+        local pack = MAIUV.get_mai_unit_variables(w, cfg.ai_id, "pack")
+        if pack then
+            if (not packs[pack]) then packs[pack] = {} end
+            table.insert(packs[pack], { x = w.x, y = w.y, id = w.id })
         end
     end
 
@@ -37,7 +39,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
         --print(' have pack:', k, ' #members:', #p)
         if (#p == 1) then
             local wolf = wesnoth.get_unit(p[1].x, p[1].y)
-            wolf.variables.pack, wolf.variables.goal_x, wolf.variables.goal_y = nil, nil, nil
+            MAIUV.delete_mai_unit_variables(wolf, cfg.ai_id)
             packs[k] = nil
         end
     end
@@ -47,10 +49,11 @@ function wolves_multipacks_functions.assign_packs(cfg)
     -- Wolves that are not in a pack (new ones or those removed above)
     local nopack_wolves = {}
     for i,w in ipairs(wolves) do
-        if (not w.variables.pack) then
+        local pack = MAIUV.get_mai_unit_variables(w, cfg.ai_id, "pack")
+        if (not pack) then
             table.insert(nopack_wolves, w)
             -- Also erase any goal one of these might have
-            w.variables.pack, w.variables.goal_x, w.variables.goal_y = nil, nil, nil
+            MAIUV.delete_mai_unit_variables(w, cfg.ai_id)
         end
     end
     --print('#nopack_wolves:', #nopack_wolves)
@@ -70,7 +73,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
             end
             if (min_dist < 9e99) then
                 table.insert(packs[k], { x = best_wolf.x, y = best_wolf.y, id = best_wolf.id })
-                best_wolf.variables.pack = k
+                MAIUV.set_mai_unit_variables(best_wolf, cfg.ai_id, { pack = k })
                 table.remove(nopack_wolves, best_ind)
             end
         end
@@ -93,7 +96,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
             packs[new_pack] = {}
             for i,w in ipairs(nopack_wolves) do
                 table.insert(packs[new_pack], { x = w.x, y = w.y, id = w.id })
-                w.variables.pack = new_pack
+                MAIUV.set_mai_unit_variables(w, cfg.ai_id, { pack = new_pack })
             end
             break
         end
@@ -121,7 +124,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
         -- Need to count down for table.remove to work correctly
         for i = pack_size,1,-1 do
             table.insert(packs[new_pack], { x = best_wolves[i].x, y = best_wolves[i].y, id = best_wolves[i].id })
-            best_wolves[i].variables.pack = new_pack
+            MAIUV.set_mai_unit_variables(best_wolves[i], cfg.ai_id, { pack = new_pack })
         end
     end
     --print('After grouping remaining single wolves')

@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_hang_out = {}
 
@@ -23,7 +24,7 @@ function ca_hang_out:evaluation(ai, cfg, self)
         -- Need to unmark all units also
         local units = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter } }
         for i,u in ipairs(units) do
-            u.variables.mai_hangout_moved = nil
+            MAIUV.delete_mai_unit_variables(u, cfg.ai_id)
         end
 
         return 0
@@ -85,7 +86,7 @@ function ca_hang_out:execution(ai, cfg, self)
     local best_hex, best_unit, max_rating = {}, {}, -9e99
     for i,u in ipairs(units) do
         -- Only consider units that have not been marked yet
-        if (not u.variables.mai_hangout_moved) then
+        if (not MAIUV.get_mai_unit_variables(u, cfg.ai_id, "moved")) then
             local best_hex_unit, max_rating_unit = {}, -9e99
 
             -- Check out all unoccupied hexes the unit can reach
@@ -128,12 +129,14 @@ function ca_hang_out:execution(ai, cfg, self)
         for i,u in ipairs(units) do
             AH.checked_stopunit_moves(ai, u)
             -- Also remove the markers
-            if u and u.valid then u.variables.mai_hangout_moved = nil end
+            if u and u.valid then MAIUV.delete_mai_unit_variables(u, cfg.ai_id) end
         end
     else
         -- Otherwise move unit and mark as having been used
         AH.checked_move(ai, best_unit, best_hex[1], best_hex[2])
-        if best_unit and best_unit.valid then best_unit.variables.mai_hangout_moved = true end
+        if best_unit and best_unit.valid then
+            MAIUV.set_mai_unit_variables(best_unit, cfg.ai_id, { moved = true })
+        end
     end
 end
 
