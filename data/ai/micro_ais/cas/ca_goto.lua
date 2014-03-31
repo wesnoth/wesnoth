@@ -2,6 +2,7 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_goto = {}
 
@@ -64,11 +65,8 @@ function ca_goto:evaluation(ai, cfg, self)
     -- Exclude released units
     if cfg.release_unit_at_goal then
         for i_unit=#units,1,-1 do
-            for rel in H.child_range(self.data, "goto_release_unit") do
-                if (rel.id == cfg.ai_id .. '_' .. units[i_unit].id) then
-                   table.remove(units, i_unit)
-                   break
-                end
+            if MAIUV.get_mai_unit_variables(units[i_unit], cfg.ai_id, "release") then
+                table.remove(units, i_unit)
             end
         end
     end
@@ -227,7 +225,7 @@ function ca_goto:execution(ai, cfg, self)
         -- 2. Keys cannot contain certain characters -> everything potentially user-defined needs to be in values
         if unit_at_goal then
             if cfg.release_unit_at_goal then
-                table.insert(self.data, { "goto_release_unit" , { id = cfg.ai_id .. '_' .. best_unit.id } } )
+                MAIUV.set_mai_unit_variables(best_unit, cfg.ai_id, { release = true })
             end
 
             if cfg.release_all_units_at_goal then
