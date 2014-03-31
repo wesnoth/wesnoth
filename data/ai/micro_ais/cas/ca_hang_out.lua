@@ -8,8 +8,8 @@ function ca_hang_out:evaluation(ai, cfg, self)
     cfg = cfg or {}
 
     -- Return 0 if the mobilize condition has previously been met
-    for mobilze in H.child_range(self.data, "hangout_mobilize_units") do
-        if (mobilze.id == cfg.ca_id) then
+    for mobilize in H.child_range(self.data, "hangout_mobilize_units") do
+        if (mobilize.id == cfg.ai_id) then
             return 0
         end
     end
@@ -18,7 +18,7 @@ function ca_hang_out:evaluation(ai, cfg, self)
     if (cfg.mobilize_condition and wesnoth.eval_conditional(cfg.mobilize_condition))
         or (cfg.mobilize_on_gold_less_than and (wesnoth.sides[wesnoth.current.side].gold < cfg.mobilize_on_gold_less_than))
     then
-        table.insert(self.data, { "hangout_mobilize_units" , { id = cfg.ca_id } } )
+        table.insert(self.data, { "hangout_mobilize_units" , { id = cfg.ai_id } } )
 
         -- Need to unmark all units also
         local units = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter } }

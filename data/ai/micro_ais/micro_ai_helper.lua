@@ -5,40 +5,48 @@ local AH = wesnoth.require("ai/lua/ai_helper.lua")
 local micro_ai_helper = {}
 
 function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
-    -- Add the candidate actions defined in 'CA_parms' to the AI of 'side'
-    -- CA_parms is an array of tables, one for each CA to be added (CA setup parameters)
-    -- CA_cfg is a table with the parameters passed to the eval/exec functions
+    -- Add the candidate actions defined in @CA_parms to the AI of @side
+    -- @CA_parms is an array of tables, one for each CA to be added (CA setup parameters)
+    -- and also contains one key: ai_id
+    -- @CA_cfg is a table with the parameters passed to the eval/exec functions
     --
-    -- Required keys for CA_parms:
-    --  - ca_id: is used for CA id/name and the eval/exec function names
+    -- Required keys for each table of @CA_parms:
+    --  - ca_id: is used for CA id/name
+    --  - location: the path+file name for the external CA file
     --  - score: the evaluation score
 
-    for i,parms in ipairs(CA_parms) do
-        -- Make sure the id/name of each CA are unique.
-        -- We do this by seeing if a CA by that name exists already.
-        -- If not, we use the passed id in parms.ca_id
-        -- If yes, we add a number to the end of parms.ca_id until we find an id that does not exist yet
-        local ca_id, id_found = parms.ca_id, true
+    -- We need to make sure that the id/name of each CA are unique.
+    -- We do this by checking if CAs starting with ai_id exist already
+    -- If yes, we add numbers to the end of ai_id until we find an id that does not exist yet
 
-        local n = 1
-        while id_found do -- This is really just a precaution
-            id_found = false
+    local ai_id, id_found = CA_parms.ai_id, true
 
-            for ai_tag in H.child_range(wesnoth.sides[side].__cfg, 'ai') do
-                for stage in H.child_range(ai_tag, 'stage') do
-                    for ca in H.child_range(stage, 'candidate_action') do
-                        if (ca.name == ca_id) then id_found = true end
-                        --print('---> found CA:', ca.name, id_found)
+    local n = 1
+    while id_found do -- This is really just a precaution
+        id_found = false
+
+        for ai_tag in H.child_range(wesnoth.sides[side].__cfg, 'ai') do
+            for stage in H.child_range(ai_tag, 'stage') do
+                for ca in H.child_range(stage, 'candidate_action') do
+                    if string.find(ca.name, ai_id .. '_') then
+                        id_found = true
+                        --print('---> found CA:', ca.name, ai_id, id_found, string.find(ca.name, ai_id))
+                        break
                     end
                 end
             end
-
-            if (id_found) then ca_id = parms.ca_id .. n end
-            n = n+1
         end
 
-        -- Always pass the ca_id and ca_score to the eval/exec functions
-        CA_cfg.ca_id = ca_id
+        if (id_found) then ai_id = CA_parms.ai_id .. n end
+        n = n + 1
+    end
+
+    -- Now add the CAs
+    for i,parms in ipairs(CA_parms) do
+        local ca_id = ai_id .. '_' .. parms.ca_id
+
+        -- Always pass the ai_id and ca_score to the eval/exec functions
+        CA_cfg.ai_id = ai_id
         CA_cfg.ca_score = parms.score
 
         local CA = {
@@ -63,13 +71,13 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
 end
 
 function micro_ai_helper.delete_CAs(side, CA_parms)
-    -- Delete the candidate actions defined in 'CA_parms' from the AI of 'side'
-    -- CA_parms is an array of tables, one for each CA to be removed
+    -- Delete the candidate actions defined in @CA_parms from the AI of @side
+    -- @CA_parms is an array of tables, one for each CA to be removed
     -- We can simply pass the one used for add_CAs(), although only the
     -- CA_parms.ca_id field is needed
 
     for i,parms in ipairs(CA_parms) do
-        local ca_id = parms.ca_id
+        local ca_id = CA_parms.ai_id .. '_' .. parms.ca_id
 
         W.modify_ai {
             side = side,
@@ -126,15 +134,12 @@ function micro_ai_helper.delete_aspects(side, aspect_parms)
 end
 
 function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_keys)
-    -- If cfg.ca_id is set, it gets added to the ca_id= key of all CAs
+    -- If cfg.ca_id is set, it gets used as the ai_id= key
     -- This allows for selective removal of CAs
-    if cfg.ca_id then
-        for i,parms in ipairs(CA_parms) do
-            -- Need to save eval_id first though
-            parms.eval_id = parms.ca_id
-            parms.ca_id = parms.ca_id .. '_' .. cfg.ca_id
-        end
-    end
+    -- Note: the ca_id key of the [micro_ai] tag should really be renamed to ai_id,
+    -- but that would mean breaking backward compatibility, so we'll just deal with it internally instead
+
+    CA_parms.ai_id = cfg.ca_id or CA_parms.ai_id
 
     -- If action=delete, we do that and are done
     if (cfg.action == 'delete') then
