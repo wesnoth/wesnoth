@@ -71,7 +71,7 @@ private:
 	void browse_url_callback();
 	void copy_url_callback();
 
-	void vote_button_callback(twindow& window);
+	void rate_button_callback(twindow& window);
 	void reviews_button_callback(twindow& window);
 
 };

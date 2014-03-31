@@ -32,10 +32,7 @@ public:
 	 * @param addon
 	 *                        Infomation about the add-on
 	 */
-	explicit taddon_reviews_list(addon_info& _addon, addon_info::this_users_rating& current_users_rating)
-		: addon(_addon) , current_users_rating_(current_users_rating)
-	{
-	}
+	explicit taddon_reviews_list(addon_info& _addon, addon_info::this_users_rating& current_users_rating);
 
 private:
 	std::string& cut_into_more_lines(std::string& inserted, int max_length = 95);
@@ -43,6 +40,7 @@ private:
 	addon_info& addon;
 	addon_info::this_users_rating& current_users_rating_;
 
+	std::string initial_comment;
 
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;

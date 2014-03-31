@@ -386,9 +386,9 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 	ttext_box& url_textbox = find_widget<ttext_box>(&window, "url", false);
 
 	connect_signal_mouse_left_click(
-				find_widget<tbutton>(&window, "vote_button", false)
+				find_widget<tbutton>(&window, "rate_button", false)
 				, boost::bind(
-					&gui2::taddon_description::vote_button_callback
+					&gui2::taddon_description::rate_button_callback
 					, this
 					, boost::ref(window)));
 
@@ -433,7 +433,7 @@ void taddon_description::pre_show(CVideo& /*video*/, twindow& window)
 	}
 }
 
-void taddon_description::vote_button_callback(twindow& window)
+void taddon_description::rate_button_callback(twindow& window)
 {
 	if (current_users_rating_.numerical == -1) {
 		current_users_rating_.numerical = 50;

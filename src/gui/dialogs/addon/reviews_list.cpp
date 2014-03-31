@@ -89,6 +89,17 @@ std::string& taddon_reviews_list::cut_into_more_lines(std::string& inserted, int
 
 REGISTER_DIALOG(addon_reviews_list)
 
+taddon_reviews_list::taddon_reviews_list(addon_info& _addon, addon_info::this_users_rating& current_users_rating)
+	: addon(_addon) , current_users_rating_(current_users_rating)
+{
+	if (addon.reviews.empty()) {
+		initial_comment = _("There are no reviews for this add-on yet. If you know this add-on, help fellow players and add your own review!");
+	} else {
+		initial_comment = _("If you know this add-on, vote for the review that reflects your opinion the best or write your own review.");
+	}
+	register_label("initial_comment", true, initial_comment);
+}
+
 void taddon_reviews_list::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "reviews_list", false);
