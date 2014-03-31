@@ -385,17 +385,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
                 { ca_id = "move", location = CA_path .. 'ca_recruit_random.lua', score = cfg.ca_score or 180000 }
             }
 
-            -- The 'probability' tags need to be handled separately here
-            cfg.type, cfg.prob = {}, {}
-            for p in H.child_range(cfg, "probability") do
-                if (not p.type) then
-                    H.wml_error("Random Recruiting Micro AI [probability] tag is missing required type= key")
+            if (cfg.action ~= 'delete') then
+                -- The 'probability' tags need to be handled separately here
+                cfg.type, cfg.prob = {}, {}
+                for p in H.child_range(cfg, "probability") do
+                    if (not p.type) then
+                        H.wml_error("Random Recruiting Micro AI [probability] tag is missing required type= key")
+                    end
+                    if (not p.probability) then
+                        H.wml_error("Random Recruiting Micro AI [probability] tag is missing required probability= key")
+                    end
+                    table.insert(cfg.type, p.type)
+                    table.insert(cfg.prob, p.probability)
                 end
-                if (not p.probability) then
-                    H.wml_error("Random Recruiting Micro AI [probability] tag is missing required probability= key")
-                end
-                table.insert(cfg.type, p.type)
-                table.insert(cfg.prob, p.probability)
             end
         end
 
