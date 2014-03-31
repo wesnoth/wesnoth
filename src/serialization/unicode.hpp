@@ -125,11 +125,6 @@ namespace utils {
 	 */
 	void truncate_as_ucs4string(std::string& str, const size_t size);
 
-	/**
-	 * Truncates a string to a given utf-8 character count and then appends an ellipsis.
-	 */
-	void ellipsis_truncate(std::string& str, const size_t size);
-
 } // end namespace utils
 
 template <typename To, typename From> inline

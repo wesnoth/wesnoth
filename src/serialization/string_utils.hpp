@@ -305,6 +305,11 @@ bool isvalid_wildcard(const std::string &login);
 
 typedef std::map< std::string, t_string > string_map;
 
+/**
+ * Truncates a string to a given utf-8 character count and then appends an ellipsis.
+ */
+void ellipsis_truncate(std::string& str, const size_t size);
+
 } // end namespace utils
 
 #endif
