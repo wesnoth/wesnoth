@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require("ai/lua/ai_helper.lua")
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local micro_ai_helper = {}
 
@@ -84,6 +85,12 @@ function micro_ai_helper.delete_CAs(side, CA_parms)
             action = "try_delete",
             path = "stage[main_loop].candidate_action[" .. ca_id .. "]"
         }
+
+        -- Also need to delete variable stored in all units of the side, so that later MAIs can use these units
+        local units = wesnoth.get_units { side = side }
+        for i,u in ipairs(units) do
+            MAIUV.delete_mai_unit_variables(u, CA_parms.ai_id)
+        end
     end
 end
 
