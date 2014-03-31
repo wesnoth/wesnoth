@@ -22,7 +22,7 @@ function ca_goto:evaluation(ai, cfg, self)
     -- which case we do not do anything
     if cfg.release_all_units_at_goal then
         for rel in H.child_range(self.data, "goto_release_all") do
-            if (rel.id == cfg.ca_id) then
+            if (rel.id == cfg.ai_id) then
                 return 0
             end
         end
@@ -65,7 +65,7 @@ function ca_goto:evaluation(ai, cfg, self)
     if cfg.release_unit_at_goal then
         for i_unit=#units,1,-1 do
             for rel in H.child_range(self.data, "goto_release_unit") do
-                if (rel.id == cfg.ca_id .. '_' .. units[i_unit].id) then
+                if (rel.id == cfg.ai_id .. '_' .. units[i_unit].id) then
                    table.remove(units, i_unit)
                    break
                 end
@@ -227,12 +227,12 @@ function ca_goto:execution(ai, cfg, self)
         -- 2. Keys cannot contain certain characters -> everything potentially user-defined needs to be in values
         if unit_at_goal then
             if cfg.release_unit_at_goal then
-                table.insert(self.data, { "goto_release_unit" , { id = cfg.ca_id .. '_' .. best_unit.id } } )
+                table.insert(self.data, { "goto_release_unit" , { id = cfg.ai_id .. '_' .. best_unit.id } } )
             end
 
             if cfg.release_all_units_at_goal then
                 --print("Releasing all units")
-                table.insert(self.data, { "goto_release_all", { id = cfg.ca_id } } )
+                table.insert(self.data, { "goto_release_all", { id = cfg.ai_id } } )
             end
         end
     end
