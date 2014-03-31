@@ -88,10 +88,10 @@ function micro_ai_helper.delete_CAs(side, CA_parms)
 end
 
 function micro_ai_helper.add_aspects(side, aspect_parms)
-    -- Add the aspects defined in 'aspect_parms' to the AI of 'side'
-    -- aspect_parms is an array of tables, one for each aspect to be added
+    -- Add the aspects defined in @aspect_parms to the AI of @side
+    -- @aspect_parms is an array of tables, one for each aspect to be added
     --
-    -- Required keys for aspect_parms:
+    -- Required keys for @aspect_parms:
     --  - aspect: the aspect name (e.g. 'attacks' or 'aggression')
     --  - facet: A table describing the facet to be added
     --
@@ -119,8 +119,8 @@ function micro_ai_helper.add_aspects(side, aspect_parms)
 end
 
 function micro_ai_helper.delete_aspects(side, aspect_parms)
-    -- Delete the aspects defined in 'aspect_parms' from the AI of 'side'
-    -- aspect_parms is an array of tables, one for each CA to be removed
+    -- Delete the aspects defined in @aspect_parms from the AI of @side
+    -- @aspect_parms is an array of tables, one for each aspect to be removed
     -- We can simply pass the one used for add_aspects(), although only the
     -- aspect_parms.aspect_id field is needed
 
