@@ -3,7 +3,8 @@ local W = H.set_wml_action_metatable {}
 local MAIH = wesnoth.require("ai/micro_ais/micro_ai_helper.lua")
 
 function wesnoth.wml_actions.micro_ai(cfg)
-    -- Set up the [micro_ai] tag functionality for each Micro AI
+    local CA_path = 'ai/micro_ais/cas/'
+
     cfg = cfg.__parsed
 
     -- Add translation for old-syntax animal MAIs to new syntax plus deprecation message
@@ -57,7 +58,6 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     -- Set up the configuration tables for the different Micro AIs
     local required_keys, optional_keys, CA_parms = {}, {}, {}
-    local CA_path = 'ai/micro_ais/cas/'
 
     --------- Healer Support Micro AI ------------------------------------
     if (cfg.ai_type == 'healer_support') then
