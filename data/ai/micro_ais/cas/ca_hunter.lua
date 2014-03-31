@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_hunter = {}
 
@@ -64,17 +65,19 @@ function ca_hunter:execution(ai, cfg)
     )[1]
 
     -- If hunting_status is not set for the unit -> default behavior -> hunting
-    if (not unit.variables.hunting_status) then
+    local hunter_vars = MAIUV.get_mai_unit_variables(unit, cfg.ai_id)
+    if (not hunter_vars.hunting_status) then
         -- Unit gets a new goal if none exist or on any move with 10% random chance
         local r = math.random(10)
-        if (not unit.variables.goal_x) or (r <= 1) then
+        if (not hunter_vars.goal_x) or (r <= 1) then
             -- 'locs' includes border hexes, but that does not matter here
             locs = AH.get_passable_locations((cfg.filter_location or {}), unit)
             local rand = math.random(#locs)
             --print('#locs', #locs, rand)
-            unit.variables.goal_x, unit.variables.goal_y = locs[rand][1], locs[rand][2]
+            hunter_vars.goal_x, hunter_vars.goal_y = locs[rand][1], locs[rand][2]
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
         end
-        --print('Hunter goto: ', unit.variables.goal_x, unit.variables.goal_y, r)
+        --print('Hunter goto: ', hunter_vars.goal_x, hunter_vars.goal_y, r)
 
         -- Hexes the unit can reach
         local reach_map = AH.get_reachable_unocc(unit)
@@ -83,7 +86,7 @@ function ca_hunter:execution(ai, cfg)
         local max_rating, best_hex = -9e99, {}
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
-            local rating = - H.distance_between(x, y, unit.variables.goal_x, unit.variables.goal_y)
+            local rating = - H.distance_between(x, y, hunter_vars.goal_x, hunter_vars.goal_y)
 
             -- Proximity to an enemy unit is a plus
             local enemy_hp = 500
@@ -109,12 +112,14 @@ function ca_hunter:execution(ai, cfg)
         else  -- If hunter did not move, we need to stop it (also delete the goal)
             AH.checked_stopunit_moves(ai, unit)
             if (not unit) or (not unit.valid) then return end
-            unit.variables.goal_x, unit.variables.goal_y = nil, nil
+            hunter_vars.goal_x, hunter_vars.goal_y = nil, nil
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
         end
 
         -- Or if this gets the unit to the goal, we also delete the goal
-        if (unit.x == unit.variables.goal_x) and (unit.y == unit.variables.goal_y) then
-            unit.variables.goal_x, unit.variables.goal_y = nil, nil
+        if (unit.x == hunter_vars.goal_x) and (unit.y == hunter_vars.goal_y) then
+            hunter_vars.goal_x, hunter_vars.goal_y = nil, nil
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
         end
 
         -- Finally, if the unit ended up next to enemies, attack the weakest of those
@@ -122,8 +127,9 @@ function ca_hunter:execution(ai, cfg)
 
         -- If the enemy was killed, hunter returns home
         if unit.valid and (attack_status == 'killed') then
-            unit.variables.goal_x, unit.variables.goal_y = nil, nil
-            unit.variables.hunting_status = 'return'
+            hunter_vars.goal_x, hunter_vars.goal_y = nil, nil
+            hunter_vars.hunting_status = 'return'
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
             if cfg.show_messages then
                 W.message { speaker = unit.id, message = 'Now that I have eaten, I will go back home.' }
             end
@@ -134,7 +140,7 @@ function ca_hunter:execution(ai, cfg)
     end
 
     -- If we got here, this means the unit is either returning, or resting
-    if (unit.variables.hunting_status == 'return') then
+    if (hunter_vars.hunting_status == 'return') then
         goto_x, goto_y = wesnoth.find_vacant_tile(cfg.home_x, cfg.home_y)
         --print('Go home:', home_x, home_y, goto_x, goto_y)
 
@@ -163,10 +169,11 @@ function ca_hunter:execution(ai, cfg)
 
         -- If the unit got home, start the resting counter
         if (unit.x == cfg.home_x) and (unit.y == cfg.home_y) then
-            unit.variables.hunting_status = 'resting'
-            unit.variables.resting_until = wesnoth.current.turn + (cfg.rest_turns or 3)
+            hunter_vars.hunting_status = 'resting'
+            hunter_vars.resting_until = wesnoth.current.turn + (cfg.rest_turns or 3)
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
             if cfg.show_messages then
-                W.message { speaker = unit.id, message = 'I made it home - resting now until the end of Turn ' .. unit.variables.resting_until .. ' or until fully healed.' }
+                W.message { speaker = unit.id, message = 'I made it home - resting now until the end of Turn ' .. hunter_vars.resting_until .. ' or until fully healed.' }
             end
         end
 
@@ -175,7 +182,7 @@ function ca_hunter:execution(ai, cfg)
     end
 
     -- If we got here, the only remaining action is resting
-    if (unit.variables.hunting_status == 'resting') then
+    if (hunter_vars.hunting_status == 'resting') then
         -- So all we need to do is take moves away from the unit
         AH.checked_stopunit_moves(ai, unit)
         if (not unit) or (not unit.valid) then return end
@@ -185,9 +192,10 @@ function ca_hunter:execution(ai, cfg)
         if (not unit) or (not unit.valid) then return end
 
         -- If this is the last turn of resting, we also remove the status and turn variable
-        if (unit.hitpoints >= unit.max_hitpoints) and (unit.variables.resting_until <= wesnoth.current.turn) then
-            unit.variables.hunting_status = nil
-            unit.variables.resting_until = nil
+        if (unit.hitpoints >= unit.max_hitpoints) and (hunter_vars.resting_until <= wesnoth.current.turn) then
+            hunter_vars.hunting_status = nil
+            hunter_vars.resting_until = nil
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
             if cfg.show_messages then
                 W.message { speaker = unit.id, message = 'I am done resting. It is time to go hunting again next turn.' }
             end
@@ -196,7 +204,8 @@ function ca_hunter:execution(ai, cfg)
     end
 
     -- In principle we should never get here, but just in case: reset variable, so that unit goes hunting on next turn
-    unit.variables.hunting_status = nil
+    hunter_vars.hunting_status = nil
+    MAIUV.set_mai_unit_variables(unit, cfg.ai_id, hunter_vars)
 end
 
 return ca_hunter

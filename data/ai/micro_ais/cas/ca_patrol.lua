@@ -1,5 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_patrol = {}
 
@@ -28,10 +29,12 @@ function ca_patrol:execution(ai, cfg)
 
     local n_wp = #cfg.waypoint_x  -- just for convenience
 
+    local patrol_vars = MAIUV.get_mai_unit_variables(patrol, cfg.ai_id)
+
     -- Set up waypoints, taking into account whether 'reverse' is set
-    -- This works even the first time, when patrol.variables.patrol_reverse is not set yet
+    -- This works even the first time, when patrol_vars.patrol_reverse is not set yet
     local waypoints = {}
-    if patrol.variables.patrol_reverse then
+    if patrol_vars.patrol_reverse then
         for i = 1,n_wp do
             waypoints[i] = { tonumber(cfg.waypoint_x[n_wp-i+1]), tonumber(cfg.waypoint_y[n_wp-i+1]) }
         end
@@ -43,10 +46,11 @@ function ca_patrol:execution(ai, cfg)
 
     -- If not set, set next location (first move)
     -- This needs to be in WML format, so that it persists over save/load cycles
-    if (not patrol.variables.patrol_x) then
-        patrol.variables.patrol_x = waypoints[1][1]
-        patrol.variables.patrol_y = waypoints[1][2]
-        patrol.variables.patrol_reverse = false
+    if (not patrol_vars.patrol_x) then
+        patrol_vars.patrol_x = waypoints[1][1]
+        patrol_vars.patrol_y = waypoints[1][2]
+        patrol_vars.patrol_reverse = false
+        MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
     end
 
     while patrol.moves > 0 do
@@ -61,8 +65,8 @@ function ca_patrol:execution(ai, cfg)
 
         -- Also check whether we're next to any unit (enemy or ally) which is on the next waypoint
         local unit_on_wp = wesnoth.get_units {
-            x = patrol.variables.patrol_x,
-            y = patrol.variables.patrol_y,
+            x = patrol_vars.patrol_x,
+            y = patrol_vars.patrol_y,
             { "filter_adjacent", { id = patrol.id } }
         }[1]
 
@@ -75,28 +79,32 @@ function ca_patrol:execution(ai, cfg)
                     -- Move him to the first one (or reverse route), if he's on the last waypoint
                     -- Unless cfg.one_time_only is set
                     if cfg.one_time_only then
-                        patrol.variables.patrol_x = waypoints[n_wp][1]
-                        patrol.variables.patrol_y = waypoints[n_wp][2]
+                        patrol_vars.patrol_x = waypoints[n_wp][1]
+                        patrol_vars.patrol_y = waypoints[n_wp][2]
+                        MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
                     else
                         -- Go back to first WP or reverse direction
                         if cfg.out_and_back then
-                            patrol.variables.patrol_x = waypoints[n_wp-1][1]
-                            patrol.variables.patrol_y = waypoints[n_wp-1][2]
-
+                            patrol_vars.patrol_x = waypoints[n_wp-1][1]
+                            patrol_vars.patrol_y = waypoints[n_wp-1][2]
                             -- We also need to reverse the waypoints right here, as this might not be the end of the move
-                            patrol.variables.patrol_reverse = not patrol.variables.patrol_reverse
+                            patrol_vars.patrol_reverse = not patrol_vars.patrol_reverse
+                            MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
+
                             local tmp_wp = {}
                             for i,wp in ipairs(waypoints) do tmp_wp[n_wp-i+1] = wp end
                             waypoints = tmp_wp
                         else
-                            patrol.variables.patrol_x = waypoints[1][1]
-                            patrol.variables.patrol_y = waypoints[1][2]
+                            patrol_vars.patrol_x = waypoints[1][1]
+                            patrol_vars.patrol_y = waypoints[1][2]
+                            MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
                         end
                     end
                 else
                     -- ... else move him on the next waypoint
-                    patrol.variables.patrol_x = waypoints[i+1][1]
-                    patrol.variables.patrol_y = waypoints[i+1][2]
+                    patrol_vars.patrol_x = waypoints[i+1][1]
+                    patrol_vars.patrol_y = waypoints[i+1][2]
+                    MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
                 end
             end
         end
@@ -107,7 +115,7 @@ function ca_patrol:execution(ai, cfg)
         then
             AH.checked_stopunit_moves(ai, patrol)
         else  -- otherwise move toward next WP
-            local x, y = wesnoth.find_vacant_tile(patrol.variables.patrol_x, patrol.variables.patrol_y, patrol)
+            local x, y = wesnoth.find_vacant_tile(patrol_vars.patrol_x, patrol_vars.patrol_y, patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
                 AH.checked_move(ai, patrol, nh[1], nh[2])
