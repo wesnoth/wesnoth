@@ -3078,6 +3078,10 @@ Version 1.8.0:
  * User interface:
    * Worked around bug #15561: Resizing the lobby made the items in the game
      listbox too small
+   * Damage Calculations now additionally show cumulative density function
+     (the probability of having at least a certain amount of hp after a 
+     battle is now displayed in addition to the currently displayed probability
+     of the battle finishing at a particular hp
  * Miscellaneous and bug fixes:
    * Added the first draft of the gui2 design documentation
    * Defaulted log level to error again
