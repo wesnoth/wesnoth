@@ -205,7 +205,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
 
     elseif (cfg.ai_type == 'zone_guardian') then
-        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
+        if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Zone Guardian [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "filter_location" }
@@ -216,7 +216,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
 
     elseif (cfg.ai_type == 'return_guardian') then
-        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
+        if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Return Guardian [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "return_x", "return_y" }
@@ -227,7 +227,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
 
     elseif (cfg.ai_type == 'coward') then
-        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
+        if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Coward [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "distance" }
@@ -344,7 +344,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
         }
 
     elseif (cfg.ai_type == 'hunter') then
-        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
+        if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Hunter [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "home_x", "home_y" }
@@ -356,7 +356,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
     --------- Patrol Micro AI ------------------------------------
     elseif (cfg.ai_type == 'patrol') then
-        (cfg.action ~= 'delete') and (not H.get_child(cfg, "filter")) then
+        if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Patrol [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "waypoint_x", "waypoint_y" }
