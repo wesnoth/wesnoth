@@ -664,10 +664,10 @@ void show_addons_manager_dialog(display& disp, addons_client& client, addons_lis
 		// Versions are too important in upgrades mode, so don't
 		// truncate them then.
 		if(!updates_only) {
-			utils::truncate_as_ucs4string(display_version, 12);
+			utf8::truncate_as_ucs4(display_version, 12);
 
 			if(state == ADDON_INSTALLED_UPGRADABLE || state == ADDON_INSTALLED_OUTDATED) {
-				utils::truncate_as_ucs4string(display_old_version, 12);
+				utf8::truncate_as_ucs4(display_old_version, 12);
 
 				if(state == ADDON_INSTALLED_UPGRADABLE) {
 					display_version =

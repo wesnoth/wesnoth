@@ -34,7 +34,7 @@ void truncate_message(const simple_wml::string_span& str, simple_wml::node& mess
 		std::string tmp(str.begin(), str.end());
 		// The string can contain utf-8 characters so truncate as ucs4::string otherwise
 		// a corrupted utf-8 string can be returned.
-		utils::truncate_as_ucs4string(tmp, max_message_length);
+		utf8::truncate_as_ucs4(tmp, max_message_length);
 		message.set_attr_dup("message", tmp.c_str());
 	}
 }

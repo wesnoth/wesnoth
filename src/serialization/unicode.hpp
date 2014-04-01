@@ -101,6 +101,20 @@ namespace utf8 {
 	*/
 	utf8::string& truncate(utf8::string& str, const size_t size);
 
+	/**
+	 * Truncate a UTF-8 encoded string.
+	 *
+	 * If the string has more than @p size UTF-8 characters it will be truncated
+	 * to this size.
+	 * The output is guaranteed to be valid UTF-8.
+	 *
+	 * @param[in, out] str The parameter's usage is:
+	 *                     - Input: String encoded in UTF-8.
+	 *                     - Output: String encoded UTF-8 that contains at most @p size
+	 *                       codepoints.
+	 * @param size         The size to truncate at.
+	 */
+	void truncate_as_ucs4(utf8::string& str, const size_t size);
 } // end namespace utf8
 
 namespace utils {
@@ -110,20 +124,6 @@ namespace utils {
 
 	utf16::string ucs4string_to_utf16string(const ucs4::string &);
 
-	/**
-	 * Truncates a string.
-	 *
-	 * If the string send has more than size utf-8 characters it will be truncated
-	 * to this size.
-	 * No assumptions can be made about the actual size of the string.
-	 *
-	 * @param[in, out] str The parameter's usage is:
-	 *                     - Input: String which can be converted to utf-8.
-	 *                     - Output: String which contains maximal size utf-8
-	 *                       characters.
-	 * @param size         The size to truncate at.
-	 */
-	void truncate_as_ucs4string(std::string& str, const size_t size);
 
 } // end namespace utils
 

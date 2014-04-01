@@ -139,15 +139,6 @@ utf16::string ucs4string_to_utf16string(const ucs4::string &src)
 	return res;
 }
 
-void truncate_as_ucs4string(std::string& str, const size_t size)
-{
-	ucs4::string u4_str = utils::string_to_ucs4string(str);
-	if(u4_str.size() > size) {
-		u4_str.resize(size);
-		str = utils::ucs4string_to_string(u4_str);
-	}
-}
-
 } // utils namespace
 
 namespace utf8 {
@@ -332,6 +323,15 @@ utf8::string& erase(utf8::string& str, const size_t start, const size_t len)
 utf8::string& truncate(utf8::string& str, const size_t size)
 {
 	return erase(str, size);
+}
+
+void truncate_as_ucs4(utf8::string &str, const size_t size)
+{
+	ucs4::string u4_str = utils::string_to_ucs4string(str);
+	if(u4_str.size() > size) {
+		u4_str.resize(size);
+		str = utils::ucs4string_to_string(u4_str);
+	}
 }
 
 } // end namespace utf8
