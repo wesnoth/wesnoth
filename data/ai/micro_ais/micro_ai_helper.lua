@@ -38,6 +38,24 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
             end
         end
 
+        -- Ideally, we would also delete previous occurrences of [micro_ai] tags in the
+        -- AI's self.data variable. However, the MAI can be changed while it is not
+        -- the AI's turn, when this is not possible. So instead, we check for the
+        -- existence of such tags and make sure we are using a different ai_id.
+        for ai_tag in H.child_range(wesnoth.sides[side].__cfg, 'ai') do
+            for engine in H.child_range(ai_tag, 'engine') do
+                for data in H.child_range(engine, 'data') do
+                    for mai in H.child_range(data, 'micro_ai') do
+                        if (mai.ai_id == ai_id) then
+                            id_found = true
+                            print('---> found [micro_ai] tag with ai_id =', ai_id)
+                            break
+                        end
+                    end
+                end
+            end
+        end
+
         if (id_found) then ai_id = CA_parms.ai_id .. n end
         n = n + 1
     end
