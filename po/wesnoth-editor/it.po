@@ -5,13 +5,13 @@
 #
 # Automatically generated, 2004.
 # Luciano Montanaro <mikelima@cirulla.net>, 2007, 2008, 2009.
-# Antonio Rosella <arosella@yahoo.com>, 2012
+# Antonio Rosella <arosella@yahoo.com>, 2012-2014
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2013-09-26 16:46+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-03-16 00:07-0000\n"
 "Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -124,7 +124,7 @@ msgstr "speciale"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr ""
+msgstr "Nessuno"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
@@ -139,12 +139,12 @@ msgstr "Standard"
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "Estate"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "Inverno"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
@@ -159,7 +159,7 @@ msgstr "Sotterraneo profondo"
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "Interni"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
@@ -173,10 +173,8 @@ msgstr "Dopo la Caduta"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Esci dall’editor"
+msgstr "Esci dall’Editor"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:63
@@ -190,8 +188,6 @@ msgstr "Mappa"
 
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:92
-#, fuzzy
-#| msgid "Transition update"
 msgid "Transition Update"
 msgstr "Aggiornamento transizioni"
 
@@ -208,14 +204,12 @@ msgstr "Aree"
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:116
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Definisci ora locale"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:122
-#, fuzzy
-#| msgid "Assign Time Schedule"
 msgid "Assign Local Time Schedule"
-msgstr "Scegli un andamento temporale"
+msgstr "Definisci ciclo temporale locale"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:130
@@ -235,7 +229,7 @@ msgstr "unità"
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
-msgstr "Menù andamento temporale"
+msgstr "Menù ciclo temporale"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:455
@@ -249,7 +243,7 @@ msgstr "Scegli un andamento temporale"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Identificativo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
@@ -261,15 +255,15 @@ msgstr "Tipo: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Level: "
-msgstr ""
+msgstr "Livello:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Cost: "
-msgstr ""
+msgstr "Costo:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "Reclutamento: "
 
 #: src/editor/editor_controller.cpp:177
 msgid "Fatal error"
@@ -325,22 +319,16 @@ msgid "(New Map)"
 msgstr "(Nuova mappa)"
 
 #: src/editor/map/context_manager.cpp:184
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "Scegli una mappa da aprire"
+msgstr "Scegli un file da aprire"
 
 #: src/editor/map/context_manager.cpp:290
-#, fuzzy
-#| msgid "(New Side)"
 msgid "(New Scenario)"
-msgstr "(Nuova fazione)"
+msgstr "(Nuovo scenario)"
 
 #: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Area)"
 msgid "(Unnamed Area)"
-msgstr "(Nuova area)"
+msgstr "(Area senza nome)"
 
 #: src/editor/map/context_manager.cpp:345
 msgid "(New Side)"
@@ -356,13 +344,11 @@ msgstr "Errore di caricamento della maschera"
 
 #: src/editor/map/context_manager.cpp:437
 msgid "Identifier:"
-msgstr ""
+msgstr "Identificativo:"
 
 #: src/editor/map/context_manager.cpp:437
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename Area"
-msgstr "Rinomina unità"
+msgstr "Rinomina area"
 
 #: src/editor/map/context_manager.cpp:448
 msgid "Choose Target Map"
@@ -383,10 +369,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Un file con questo nome esiste già. Vuoi sovrascriverlo?"
 
 #: src/editor/map/context_manager.cpp:600
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Salva la mappa come"
+msgstr "Salva lo scenario come"
 
 #: src/editor/map/context_manager.cpp:639
 msgid "No random map generators found."
@@ -408,10 +392,8 @@ msgstr ""
 "Vuoi scartare tutte le modifiche fatte alla mappa dall’ultimo salvataggio?"
 
 #: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "La mappa è già aperta."
+msgstr "Questo scenario è già aperto."
 
 #: src/editor/map/context_manager.cpp:788
 #: src/editor/map/context_manager.cpp:843
@@ -419,10 +401,8 @@ msgid "This map is already open."
 msgstr "La mappa è già aperta."
 
 #: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Mappa salvata."
+msgstr "Scenario salvato."
 
 #: src/editor/map/context_manager.cpp:823
 msgid "Map saved."
@@ -458,10 +438,8 @@ msgid "File not found"
 msgstr "File non trovato"
 
 #: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "File di mappa vuoto"
+msgstr "File vuoto"
 
 #: src/editor/map/map_context.cpp:175
 msgid ""
@@ -472,10 +450,8 @@ msgstr ""
 "un file esistente"
 
 #: src/editor/map/map_context.cpp:508
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Impossibile salvare la mappa: $msg"
+msgstr "Impossibile salvare lo scenario: $msg"
 
 #: src/editor/map/map_context.cpp:535
 msgid "Could not save into scenario"
@@ -508,7 +484,7 @@ msgstr "SF:"
 
 #: src/gui/dialogs/editor/custom_tod.cpp:129
 msgid "Choose File"
-msgstr ""
+msgstr "Scegli il file"
 
 #: src/gui/dialogs/editor_set_starting_position.cpp:87
 msgid "player^None"
@@ -517,122 +493,3 @@ msgstr "Nessuno"
 #: src/gui/dialogs/editor_set_starting_position.cpp:100
 msgid "Player $player_number"
 msgstr "Giocatore $player_number"
-
-#, fuzzy
-#~| msgid "ID:"
-#~ msgid "ID"
-#~ msgstr "ID:"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Usa i tasti del mouse sinistro/destro per disegnare terreno di primo "
-#~ "piano/sfondo. Tieni premuto Shift per disegnare soltanto sul livello "
-#~ "base. Fai clic con Ctrl premuto per saggiare il terreno sotto il cursore."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Il tasto sinistro del mouse seleziona, il destro de-seleziona. Tieni "
-#~ "premuto Shift per una selezione intelligente di tutti gli esagoni con lo "
-#~ "stesso terreno."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Il tasto sinistro del mouse seleziona, il destro de-seleziona. I tasti "
-#~ "numerici scorrono la posizione iniziale, alt+tasti numerici impostano le "
-#~ "rispettive posizioni iniziali sotto il cursore, il tato delete le "
-#~ "cancella."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Fai clic per incollare. Fai zoom all’indietro per maggiore accurateza "
-#~ "nell’incollare aree grandi. Usa il menù Modifiche per trasformare ciò che "
-#~ "vuoi incollare (ruotarlo, immagine speculare)."
-
-#~ msgid "terrain"
-#~ msgstr "terreno"
-
-#~ msgid "Not implemented yet."
-#~ msgstr "Azione non ancora implementata."
-
-#~ msgid "ID: "
-#~ msgstr "ID: "
-
-#~ msgid "Custom setting"
-#~ msgstr "Personalizzazioni"
-
-#~ msgid "Edit"
-#~ msgstr "Modifica"
-
-#~ msgid "Group"
-#~ msgstr "Gruppo"
-
-#~ msgid ""
-#~ "Pipette Tool, Use left/right mouse button to select a terrain from the "
-#~ "map. Not implemented yet."
-#~ msgstr ""
-#~ "Contagocce, utilizza il bottone sinistro/destro per scegliere un terreno "
-#~ "dalla mappa. Non ancora implementato."
-
-#~ msgid ""
-#~ "Item Placement Tool, Left mouse button sets a new item or moves it via "
-#~ "drag and drop, right clears. Not implemented yet."
-#~ msgstr ""
-#~ "Piazzamento elementi, utilizza il bottone sinistro del mouse per piazzare "
-#~ "un nuovo elemento o muoverlo tramite «drag and drop», il tasto destro "
-#~ "annulla. Non ancora implementato."
-
-#~ msgid ""
-#~ "Left mouse button sets the village ownership to the current side, right "
-#~ "clears."
-#~ msgstr ""
-#~ "Un click con il tasto sinistro del mouse imposta assegna il possesso del "
-#~ "villaggio alla fazione selezionata, con il tasto destro la rimuove. "
-
-#~ msgid "Left mouse button sets or drags a label, right clears."
-#~ msgstr ""
-#~ "Un click con il tasto sinistro del mouse imposta o trascina un’etichetta, "
-#~ "con il destro la rimuove."
-
-#~ msgid ""
-#~ "Left mouse button sets or drags a sound source, right clears. Not "
-#~ "implemented yet."
-#~ msgstr ""
-#~ "Un click con il tasto sinistro del mouse imposta o trascina una sorgente "
-#~ "sonora, con il destro la rimuove."
-
-#~ msgid ""
-#~ "Left mouse button sets a new unit or moves a unit via drag and drop, "
-#~ "right clears."
-#~ msgstr ""
-#~ "Un click con il tasto sinistro del mouse imposta una nuova unità o la "
-#~ "muove tramite «drag and drop», con il destro la rimuove."
-
-#~ msgid "Undo"
-#~ msgstr "Annulla"
-
-#~ msgid "Can’t Undo"
-#~ msgstr "Non è possibile annullare"
-
-#~ msgid "Redo"
-#~ msgstr "Ripeti"
-
-#~ msgid "Can’t Redo"
-#~ msgstr "Non è possibile rifare"
-
-#~ msgid "Auto-update Terrain Transitions: Yes"
-#~ msgstr "Aggiornamento automatico delle transizioni del terreno: Sì"
-
-#~ msgid "Auto-update Terrain Transitions: Partial"
-#~ msgstr "Aggiornamento automatico delle transizioni del terreno: Parziale"
-
-#~ msgid "Auto-update Terrain Transitions: No"
-#~ msgstr "Aggiornamento automatico delle transizioni del terreno: No"

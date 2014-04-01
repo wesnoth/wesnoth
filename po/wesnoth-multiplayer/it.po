@@ -8,25 +8,25 @@
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
 # Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2009, 2011.
-# Antonio Rosella <arosella@yahoo.com>, 2012-2013.
+# Antonio Rosella <arosella@yahoo.com>, 2012-2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2012-09-15 00:03+0100\n"
-"Last-Translator: Antonio 'Antro' Rosella <arosella@yahoo.com>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-03-19 23:58-0000\n"
+"Last-Translator: Antonio 'Antro' Rosella <arosellayahoo.com>\n"
 "Language-Team: Italiano <wesnoth-l10n-it@cirulla.net>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -36,7 +36,7 @@ msgstr "Mappa utente"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "Custom"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -79,6 +79,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"L’era predefinita di Wesnoth per il gioco multi-giocatore. Consta di sei "
+"fazioni, piuttosto bilanciate."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -92,11 +94,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Un’era con unità di alto livello: comandanti di livello tre, che possono "
+"reclutare unità di livello uno e due. Conta di sei fazioni, non considerate "
+"bilanciate."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Era predefinita + Califfato"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -108,13 +113,18 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Un’era che propone una fazione aggiuntiva rispetto a quelle dell’era "
+"predefinita. Le unità  del Califfato non usano la magia, piuttosto si "
+"affidano ad un uso accorto del terreno e di attacchi coordinati, sferrati "
+"preferibilmente all’alba o al tramonto.\n"
+"\n"
+"Quest’era è ancora in fase di sviluppo, siete quindi pregati di notificare "
+"qualsiasi problema possiate incontrare."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Era degli eroi"
+msgstr "Era degli eroi + Califfato"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -126,6 +136,13 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Un’era che propone una fazione aggiuntiva rispetto a quelle dell’era degli "
+"eroi. Le unità  del Califfato non usano la magia, piuttosto si affidano ad "
+"un uso accorto del terreno e di attacchi coordinati, sferrati "
+"preferibilmente all’alba o al tramonto.\n"
+"\n"
+"Quest’era è ancora in fase di sviluppo, siete quindi pregati di notificare "
+"qualsiasi problema possiate incontrare."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -137,7 +154,7 @@ msgstr "Draghi"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Califfato"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -2244,10 +2261,10 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
 msgid "Random map by YAMG"
-msgstr "Mappa casuale"
+msgstr ""
+"Mappa casuale generato con YAMG (Yet Another Map Generator - Ecco un’altro "
+"generatore di mappe)"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9
