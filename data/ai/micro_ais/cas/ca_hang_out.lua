@@ -2,6 +2,7 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
+local MAISD = wesnoth.dofile "ai/micro_ais/micro_ai_self_data.lua"
 
 local ca_hang_out = {}
 
@@ -9,17 +10,15 @@ function ca_hang_out:evaluation(ai, cfg, self)
     cfg = cfg or {}
 
     -- Return 0 if the mobilize condition has previously been met
-    for mobilize in H.child_range(self.data, "hangout_mobilize_units") do
-        if (mobilize.id == cfg.ai_id) then
-            return 0
-        end
+    if MAISD.get_mai_self_data(self.data, cfg.ai_id, "mobilize_units") then
+        return 0
     end
 
     -- Otherwise check if any of the mobilize conditions are now met
     if (cfg.mobilize_condition and wesnoth.eval_conditional(cfg.mobilize_condition))
         or (cfg.mobilize_on_gold_less_than and (wesnoth.sides[wesnoth.current.side].gold < cfg.mobilize_on_gold_less_than))
     then
-        table.insert(self.data, { "hangout_mobilize_units" , { id = cfg.ai_id } } )
+        MAISD.insert_mai_self_data(self.data, cfg.ai_id, { mobilize_units = true })
 
         -- Need to unmark all units also
         local units = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter } }
