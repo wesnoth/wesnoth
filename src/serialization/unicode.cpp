@@ -24,6 +24,7 @@
 #include "serialization/unicode.hpp"
 
 #include "log.hpp"
+#include "util.hpp"
 
 #include <cassert>
 #include <limits>
@@ -151,14 +152,11 @@ static int byte_size_from_utf8_first(const unsigned char ch)
 	/* first bit set: character not in US-ASCII, multiple bytes
 	 * number of set bits at the beginning = bytes per character
 	 * e.g. 11110xxx indicates a 4-byte character */
-	if (!(ch & 0x40)) throw invalid_utf8_exception();
-	switch (ch & 0x30) {
-	case 0x30:
-		if (ch & 0x08) throw invalid_utf8_exception();
-		return 4;
-	case 0x20: return 3;
-	default: return 2;
+	int count = count_leading_ones(ch);
+	if (count == 1 || count > 6) {		// count > 4 after RFC 3629
+		throw invalid_utf8_exception(); // Stop on invalid characters
 	}
+	return count;
 }
 
 iterator::iterator(const std::string& str) :
