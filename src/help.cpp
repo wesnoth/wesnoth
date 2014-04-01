@@ -3347,7 +3347,7 @@ std::string get_first_word(const std::string &s)
 
 	ucs4::char_t firstchar = *ch;
 	if (font::is_cjk_char(firstchar)) {
-		re = utils::ucs4char_to_string(firstchar);
+		re = unicode_cast<utf8::string>(firstchar);
 	}
 	return re;
 }

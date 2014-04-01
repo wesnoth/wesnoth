@@ -313,7 +313,7 @@ surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
 		if(char(*itor) == ' ') {
 			backup_itor = itor;
 		}
-		visible_string.append(utils::ucs4char_to_string(*itor));
+		visible_string.append(unicode_cast<utf8::string>(*itor));
 
 		if(char(*itor) == '\n') {
 			backup_itor = text.end();

@@ -117,15 +117,12 @@ namespace utf8 {
 	void truncate_as_ucs4(utf8::string& str, const size_t size);
 } // end namespace utf8
 
-namespace utils {
+namespace implementation {
 	std::string ucs4string_to_string(const ucs4::string &);
 	ucs4::string string_to_ucs4string(const std::string &);
 	std::string ucs4char_to_string(const ucs4::char_t);
-
 	utf16::string ucs4string_to_utf16string(const ucs4::string &);
-
-
-} // end namespace utils
+} // end namespace implementation
 
 template <typename To, typename From> inline
 To unicode_cast(const From &) {
@@ -135,17 +132,22 @@ To unicode_cast(const From &) {
 
 template <> inline
 utf8::string unicode_cast<utf8::string, ucs4::string>(const ucs4::string &in) {
-	return utils::ucs4string_to_string(in);
+	return implementation::ucs4string_to_string(in);
 }
 
 template <> inline
 ucs4::string unicode_cast<ucs4::string, utf8::string>(const utf8::string &in) {
-	return utils::string_to_ucs4string(in);
+	return implementation::string_to_ucs4string(in);
+}
+
+template <> inline
+utf8::string unicode_cast<utf8::string, ucs4::char_t>(const ucs4::char_t &in) {
+	return implementation::ucs4char_to_string(in);
 }
 
 template <> inline
 utf16::string unicode_cast<utf16::string, ucs4::string>(const ucs4::string &in) {
-	return utils::ucs4string_to_utf16string(in);
+	return implementation::ucs4string_to_utf16string(in);
 }
 
 template <> inline

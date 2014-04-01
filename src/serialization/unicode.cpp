@@ -52,7 +52,7 @@ size_t byte_size_from_ucs4_codepoint(ucs4::char_t ch)
 }
 } // anonymous namespace
 
-namespace utils {
+namespace implementation {
 std::string ucs4string_to_string(const ucs4::string &src)
 {
 	std::string ret;
@@ -139,7 +139,7 @@ utf16::string ucs4string_to_utf16string(const ucs4::string &src)
 	return res;
 }
 
-} // utils namespace
+} // implementation namespace
 
 namespace utf8 {
 
@@ -257,7 +257,7 @@ utf8::string lowercase(const utf8::string& s)
 {
 	if(!s.empty()) {
 		utf8::iterator itor(s);
-		std::string res;
+		utf8::string res;
 
 		for(;itor != utf8::iterator::end(s); ++itor) {
 			ucs4::char_t uchar = *itor;
@@ -265,7 +265,7 @@ utf8::string lowercase(const utf8::string& s)
 			if(uchar <= static_cast<ucs4::char_t>(std::numeric_limits<wchar_t>::max()) &&
 			   uchar >= static_cast<ucs4::char_t>(std::numeric_limits<wchar_t>::min()))
 				uchar = towlower(static_cast<wchar_t>(uchar));
-			res += utils::ucs4char_to_string(uchar);
+			res += unicode_cast<utf8::string>(uchar);
 		}
 
 		res.append(itor.substr().second, s.end());
@@ -327,10 +327,10 @@ utf8::string& truncate(utf8::string& str, const size_t size)
 
 void truncate_as_ucs4(utf8::string &str, const size_t size)
 {
-	ucs4::string u4_str = utils::string_to_ucs4string(str);
+	ucs4::string u4_str = unicode_cast<ucs4::string>(str);
 	if(u4_str.size() > size) {
 		u4_str.resize(size);
-		str = utils::ucs4string_to_string(u4_str);
+		str = unicode_cast<utf8::string>(u4_str);
 	}
 }
 
