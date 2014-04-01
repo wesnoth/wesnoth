@@ -1,10 +1,10 @@
--- This is a set of functions provides a consistent way of storing Micro AI
+-- This set of functions provides a consistent way of storing Micro AI
 -- variables in units. They need to be stored inside a [micro_ai] tag in a
 -- unit's [variables] tag together with an ai_id= key, so that they can be
 -- removed when the Micro AI gets deleted. Otherwise subsequent Micro AIs used
 -- in the same scenario (or using the same units in later scenarios) might work
 -- incorrectly or not at all.
--- Note that with this method, there can only ever be one of these tags for each
+-- Note that, with this method, there can only ever be one of these tags for each
 -- ai_ca in each unit (but of course several when there are several Micro AIs
 -- with different ai_CA values affecting the same unit)
 -- For the time being, we only allow key=value style variables.
