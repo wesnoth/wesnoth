@@ -80,7 +80,7 @@ function ca_protect_unit_move:execution(ai, cfg, self)
     end)
     --AH.put_labels(GDM)
 
-    -- Configuration parameters (no option to change these enable at the moment)
+    -- Configuration parameters (no option to change these enabled at the moment)
     local enemy_weight = self.data.enemy_weight or 100.
     local my_unit_weight = self.data.my_unit_weight or 1.
     local distance_weight = self.data.distance_weight or 3.
