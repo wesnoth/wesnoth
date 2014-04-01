@@ -3,6 +3,7 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
+local MAISD = wesnoth.dofile "ai/micro_ais/micro_ai_self_data.lua"
 
 local ca_goto = {}
 
@@ -21,12 +22,8 @@ function ca_goto:evaluation(ai, cfg, self)
     -- If cfg.release_all_units_at_goal is set, check
     -- whether the goal has already been reached, in
     -- which case we do not do anything
-    if cfg.release_all_units_at_goal then
-        for rel in H.child_range(self.data, "goto_release_all") do
-            if (rel.id == cfg.ai_id) then
-                return 0
-            end
-        end
+    if MAISD.get_mai_self_data(self.data, cfg.ai_id, "release_all") then
+        return 0
     end
 
     -- For convenience, we check for locations here, and just pass that to the exec function
@@ -40,7 +37,8 @@ function ca_goto:evaluation(ai, cfg, self)
     --print('#locs org', #locs)
     if (#locs == 0) then return 0 end
 
-    -- If 'unique_goals' is set, check whether there are locations left to go to
+    -- If 'unique_goals' is set, check whether there are locations left to go to.
+    -- This does not have to be a persistent variable
     if cfg.unique_goals then
         -- First, some cleanup of previous turn data
         local str = 'goals_taken_' .. (wesnoth.current.turn - 1)
@@ -230,7 +228,7 @@ function ca_goto:execution(ai, cfg, self)
 
             if cfg.release_all_units_at_goal then
                 --print("Releasing all units")
-                table.insert(self.data, { "goto_release_all", { id = cfg.ai_id } } )
+                MAISD.insert_mai_self_data(self.data, cfg.ai_id, { release_all = true })
             end
         end
     end

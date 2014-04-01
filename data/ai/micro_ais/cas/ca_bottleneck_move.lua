@@ -2,6 +2,7 @@ local H = wesnoth.require "lua/helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
+local MAISD = wesnoth.dofile "ai/micro_ais/micro_ai_self_data.lua"
 
 local ca_bottleneck_move = {}
 
@@ -213,7 +214,9 @@ end
 
 function ca_bottleneck_move:evaluation(ai, cfg, self)
     -- Check whether the side leader should be included or not
-    if cfg.active_side_leader and (not self.data.side_leader_activated) then
+    if cfg.active_side_leader and
+        (not MAISD.get_mai_self_data(self.data, cfg.ai_id, "side_leader_activated"))
+    then
         local can_still_recruit = false  -- enough gold left for another recruit?
         local recruit_list = wesnoth.sides[wesnoth.current.side].recruit
         for i,recruit_type in ipairs(recruit_list) do
@@ -224,12 +227,14 @@ function ca_bottleneck_move:evaluation(ai, cfg, self)
                 break
             end
         end
-        if (not can_still_recruit) then self.data.side_leader_activated = true end
+        if (not can_still_recruit) then
+            MAISD.set_mai_self_data(self.data, cfg.ai_id, { side_leader_activated = true })
+        end
     end
 
     -- Now find all units, including the leader or not, depending on situation and settings
     local units = {}
-    if self.data.side_leader_activated then
+    if MAISD.get_mai_self_data(self.data, cfg.ai_id, "side_leader_activated") then
         units = wesnoth.get_units { side = wesnoth.current.side,
             formula = '$this_unit.moves > 0'
         }
@@ -481,7 +486,7 @@ end
 function ca_bottleneck_move:execution(ai, cfg, self)
     if self.data.bottleneck_moves_done then
         local units = {}
-        if self.data.side_leader_activated then
+        if MAISD.get_mai_self_data(self.data, cfg.ai_id, "side_leader_activated") then
             units = wesnoth.get_units { side = wesnoth.current.side,
                 formula = '$this_unit.moves > 0'
             }
@@ -510,7 +515,7 @@ function ca_bottleneck_move:execution(ai, cfg, self)
     end
 
     -- Now delete almost everything
-    -- Keep: self.data.is_my_territory, self.data.side_leader_activated
+    -- Keep: self.data.is_my_territory, [micro_ai]side_leader_activated=
     self.data.unit, self.data.hex = nil, nil
     self.data.lu_defender, self.data.lu_weapon = nil, nil
     self.data.bottleneck_moves_done = nil
