@@ -31,6 +31,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 				   const int h)
 	: reference_count_(new unsigned(1))
 	, texture_(SDL_CreateTexture(&renderer, format, access, w, h))
+	, source_surface_(NULL)
 {
 	if(!texture_) {
 		throw texception("Failed to create a SDL_Texture object.", true);
@@ -38,20 +39,26 @@ ttexture::ttexture(SDL_Renderer& renderer,
 }
 
 ttexture::ttexture(SDL_Renderer& renderer,
-				   const std::string& file)
+				   const std::string& file,
+				   bool keep_surface)
 	: reference_count_(new unsigned(1))
 	, texture_(NULL)
+	, source_surface_(NULL)
 {
-	SDL_Surface* img;
-	img = IMG_Load(file.c_str());
+	SDL_Surface* source_surface_;
+	source_surface_ = IMG_Load(file.c_str());
 
-	if (img == NULL) {
+	if (source_surface_ == NULL) {
 		throw texception("Failed to create SDL_Texture object.", true);
 	}
 
-	texture_ = SDL_CreateTextureFromSurface(&renderer, img);
+	texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
 
-	SDL_FreeSurface(img);
+	if (!keep_surface) {
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = NULL;
+	}
+
 	if (texture_ == NULL) {
 		throw texception("Failed to create SDL_Texture object.", true);
 	}
@@ -65,6 +72,9 @@ ttexture::~ttexture()
 	if(*reference_count_ == 0) {
 		if(texture_) {
 			SDL_DestroyTexture(texture_);
+		}
+		if (source_surface_) {
+			SDL_FreeSurface(source_surface_);
 		}
 		delete reference_count_;
 	}
@@ -88,6 +98,11 @@ ttexture& ttexture::operator=(const ttexture& texture)
 	}
 
 	return *this;
+}
+
+SDL_Surface* ttexture::source_surface() const
+{
+	return source_surface_;
 }
 
 } // namespace sdl

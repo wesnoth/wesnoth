@@ -63,8 +63,12 @@ public:
 	 *
 	 * @param renderer            The renderer the texture is associated with.
 	 * @param file                Path of the file to load the pixels from.
+	 * @param keep_surface        Whether a copy of the image should be kept in
+	 *                            an SDL_Surface.
 	 */
-	ttexture(SDL_Renderer& renderer, const std::string& file);
+	ttexture(SDL_Renderer& renderer,
+			 const std::string& file,
+			 bool keep_surface = false);
 
 	~ttexture();
 
@@ -74,6 +78,15 @@ public:
 
 
 	/***** ***** ***** Members. ***** ***** *****/
+
+	/**
+	 * Returns a pointer to the surface the texture was created from, if it was
+	 * saved.
+	 *
+	 * @return                    A pointer to the source surface, or NULL if
+	 *                            it's unavailable.
+	 */
+	SDL_Surface* source_surface() const;
 
 private:
 
@@ -87,6 +100,9 @@ private:
 
 	/** The SDL_Texture we manage. */
 	SDL_Texture* texture_;
+
+	/** The SDL_Surface source of the texture. Probably NULL. */
+	SDL_Surface* source_surface_;
 };
 
 } // namespace sdl
