@@ -101,6 +101,7 @@ public:
 		, rng_()
 		, wml_menu_items_()
 		, difficulty_(DEFAULT_DIFFICULTY)
+		, random_mode_("")
 		, next_scenario_()
 	{}
 	// Turns config from a loaded savegame into carryover_info
@@ -130,6 +131,7 @@ public:
 	const end_level_data& get_end_level() const;
 
 	const std::string& difficulty() const { return difficulty_; }
+	const std::string& random_mode() const { return random_mode_; }
 	const std::string& next_scenario() const { return next_scenario_; }
 
 	const config to_config();
@@ -140,6 +142,7 @@ private:
 	rand_rng::simple_rng rng_;
 	game_events::wmi_container wml_menu_items_;
 	std::string difficulty_; 	/**< The difficulty level the game is being played on. */
+	std::string random_mode_; 	/**< whether we generate a new randomseed for each user action. */
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 };
 
@@ -200,6 +203,7 @@ public:
 	void write_config(config_writer& out);
 
 	const std::string& difficulty() const { return difficulty_; }
+	const std::string& random_mode() const { return random_mode_; }
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
 
@@ -215,6 +219,7 @@ private:
 	PHASE phase_;
 	bool can_end_turn_;
 	std::string difficulty_; /**< The difficulty level the game is being played on. */
+	std::string random_mode_; 
 	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
 	bool is_determisic_mode_;
@@ -247,6 +252,7 @@ public:
 	std::string end_text;                            /**< end-of-campaign text */
 	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
 	std::string difficulty; /**< The difficulty level the game is being played on. */
+	std::string random_mode; 
 };
 
 class game_state

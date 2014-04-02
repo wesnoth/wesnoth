@@ -150,7 +150,14 @@ void synced_context::pull_remote_user_input()
 
 boost::shared_ptr<random_new::rng> synced_context::get_rng_for(const std::string& commandname)
 {
-	const std::string/*&*/ mode= ""; // = resources ... gamestate ... get_random_mode()
+	/*
+		i copied the code for "deterministic_mode" from the code for "difficulty".
+		i don't know why we have this information twice, i just did it because we have the information for difficulty twice too.
+	*/
+	const std::string& v1 = resources::gamedata->random_mode();
+	const std::string& v2 = resources::state_of_game->classification().random_mode;
+	assert(v1==v2);
+	const std::string& mode= v1; // = resources ... gamestate ... get_random_mode()
 	if(mode == "deterministic")
 	{
 		return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
