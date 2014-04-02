@@ -70,7 +70,18 @@ ttexture::ttexture(SDL_Renderer& renderer,
 									 SDL_TEXTUREACCESS_STREAMING,
 									 source_surface_->w, source_surface_->h);
 
+		if (texture_ == NULL) {
+			SDL_FreeSurface(source_surface_);
+			source_surface_ = NULL;
+			throw texception("Failed to create SDL_Texture object.", true);
+		}
+
 		SDL_UpdateTexture(texture_, NULL, source_surface_->pixels, source_surface_->pitch);
+
+		if (!keep_surface) {
+			SDL_FreeSurface(source_surface_);
+			source_surface_ = NULL;
+		}
 	} else {
 		throw texception("Unknown texture access mode.", false);
 	}
