@@ -46,6 +46,7 @@
 #include "../persist_var.hpp"
 #include "../play_controller.hpp"
 #include "../replay.hpp"
+#include "../random_new.hpp"
 #include "../resources.hpp"
 #include "../side_filter.hpp"
 #include "../sound.hpp"
@@ -189,7 +190,7 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
@@ -220,10 +221,10 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &rng) const
+		virtual config random_choice() const
 		{
 			config cfg;
-			cfg["value"] = rng.get_next_random() % nb_options;
+			cfg["value"] = random_new::generator->next_random() % nb_options;
 			return cfg;
 		}
 	};
@@ -1114,7 +1115,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 	else
 	{
-		config choice = mp_sync::get_user_choice("input", msg, 0, true);
+		config choice = mp_sync::get_user_choice("input", msg);
 		option_chosen = choice["value"];
 		text_input_result = choice["text"].str();
 	}
@@ -2061,10 +2062,10 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 					<< 0x3fffffff
 					<< ".\n";
 		}
-		long choice = gameinfo->rng().get_next_random();
+		long choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
 		if(num_choices >= 32768) {
 			choice <<= 15;
-			choice += gameinfo->rng().get_next_random();
+			choice += random_new::generator->next_random();//gameinfo->rng().get_next_random();
 		}
 		choice %= num_choices;
 		long tmp = 0;

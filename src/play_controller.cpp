@@ -42,7 +42,9 @@
 #include "save_blocker.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "random_new_deterministic.hpp"
 #include "soundsource.hpp"
+#include "synced_context.hpp"
 #include "tooltips.hpp"
 #include "wml_exception.hpp"
 #include "ai/manager.hpp"
@@ -121,7 +123,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),
-	init_side_done_(false),
+	init_side_done_(true),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
@@ -174,13 +176,8 @@ void play_controller::init(CVideo& video){
 	}
 
 	loadscreen::start_stage("load level");
-	// If the recorder has no event, adds an "game start" event
-	// to the recorder, whose only goal is to initialize the RNG
-	if(recorder.empty()) {
-		recorder.add_start();
-	} else {
-		recorder.pre_replay();
-	}
+	// i currently assume that no random calls take place before the "prestart" event
+	// If i am wrong, use random_new_deterministic
 	recorder.set_skip(false);
 
 	bool snapshot = level_["snapshot"].to_bool();
@@ -545,14 +542,16 @@ void play_controller::search(){
 	menu_handler_.search();
 }
 
-void play_controller::fire_prestart(bool execute)
+void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamedata_.set_phase(game_data::PRELOAD);
 	resources::lua_kernel->initialize();
 	gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
-
+}
+void play_controller::fire_prestart(bool execute)
+{
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
 	if (execute){
@@ -622,8 +621,11 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
 	}
 
 	if (!loading_game_) recorder.init_side();
-
+	LOG_NG << "set_scontext_synced sync from maybe_do_init_side";
+	set_scontext_synced sync;
 	do_init_side(team_index, is_replay);
+	LOG_NG << "set_scontext_synced sync from maybe_do_init_side end ";
+	
 }
 
 /**
@@ -631,6 +633,9 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
  */
 void play_controller::do_init_side(const unsigned int team_index, bool is_replay) {
 	log_scope("player turn");
+	//In case we might end up calling sync:network during the side turn events,
+	//and we dont want do_init_side to be called when a player drops.
+	init_side_done_ = true;
 	team& current_team = teams_[team_index];
 
 	const std::string turn_num = str_cast(turn());
@@ -705,7 +710,6 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
-	init_side_done_ = true;
 
 	resources::whiteboard->on_init_side();
 }
@@ -785,11 +789,15 @@ void play_controller::finish_side_turn(){
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
+	if(true) //RAII block
+	{
+		set_scontext_synced sync(1);
+		//random_new::set_random_determinstic deterministic(resources::gamedata->rng());
 	game_events::fire("side turn end");
 	game_events::fire("side "+ side_num + " turn end");
 	game_events::fire("side turn " + turn_num + " end");
 	game_events::fire("side " + side_num + " turn " + turn_num + " end");
-
+	}
 	// This is where we refog, after all of a side's events are done.
 	actions::recalculate_fog(player_number_);
 
@@ -807,6 +815,8 @@ void play_controller::finish_side_turn(){
 
 void play_controller::finish_turn()
 {
+	set_scontext_synced sync(2);
+	//random_new::set_random_determinstic deterministic(resources::gamedata->rng());
 	const std::string turn_num = str_cast(turn());
 	game_events::fire("turn end");
 	game_events::fire("turn " + turn_num + " end");

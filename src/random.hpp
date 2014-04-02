@@ -18,25 +18,9 @@
 #ifndef RANDOM_HPP_INCLUDED
 #define RANDOM_HPP_INCLUDED
 
-class config;
-
-int get_random();
-int get_random_nocheck();
-const config* get_random_results();
-void set_random_results(const config& cfg);
 
 namespace rand_rng
 {
-
-class rng;
-
-struct set_random_generator {
-	set_random_generator(rng* r);
-	~set_random_generator();
-private:
-	rng* old_;
-};
-
 } // ends rand_rng namespace
 
 #endif

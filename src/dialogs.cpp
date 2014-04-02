@@ -39,9 +39,11 @@
 #include "mouse_handler_base.hpp"
 #include "minimap.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "strftime.hpp"
+#include "synced_context.hpp"
 #include "thread.hpp"
 #include "unit_helper.hpp"
 #include "unit_types.hpp"
@@ -134,8 +136,9 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		assert(dismissed_unit != recall_list.end());
 
 		// Record the dismissal, then delete the unit.
-		recorder.add_disband(dismissed_unit->id());
-		recall_list.erase(dismissed_unit);
+		synced_context::run_in_synced_context("disband", replay_helper::get_disband(dismissed_unit->id()));
+		//recorder.add_disband(dismissed_unit->id());
+		//recall_list.erase(dismissed_unit);
 
 		return gui::DELETE_ITEM;
 	} else {
@@ -204,66 +207,6 @@ int advance_unit_dialog(const map_location &loc)
 		return advances.show();
 	}
 	return 0;
-}
-
-void advance_unit(const map_location &loc, bool automatic, bool add_replay_event, const ai::unit_advancements_aspect& advancements)
-{
-	unit_map::iterator u = resources::units->find(loc);
-	if(!unit_helper::will_certainly_advance(u)) {
-		return;
-	}
-
-	LOG_DP << "advance_unit: " << u->type_id() << " (advances: " << u->advances()
-		<< " XP: " <<u->experience() << '/' << u->max_experience() << ")\n";
-
-	int res;
-
-	if (automatic) {
-
-		//if the advancements are empty or don't match any option
-		//choose random instead.
-		res = rand() % unit_helper::number_of_possible_advances(*u);
-
-		const std::vector<std::string>& options = u->advances_to();
-		const std::vector<std::string>& allowed = advancements.get_advancements(u);
-
-		for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
-			if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
-				res = a - options.begin();
-				break;
-			}
-		}
-	} else {
-		res = advance_unit_dialog(loc);
-	}
-	if(add_replay_event) {
-		recorder.add_advancement(loc);
-	}
-
-	config choice_cfg;
-	choice_cfg["value"] = res;
-	recorder.user_input("choose", choice_cfg);
-
-	LOG_DP << "animating advancement...\n";
-	animate_unit_advancement(loc, size_t(res));
-
-	// In some rare cases the unit can have enough XP to advance again,
-	// so try to do that.
-	// Make sure that we don't enter an infinite level loop.
-	u = resources::units->find(loc);
-	if (u != resources::units->end()) {
-		// Level 10 unit gives 80 XP and the highest mainline is level 5
-		if (u->experience() < 81) {
-			// For all leveling up we have to add advancement to replay here because replay
-			// doesn't handle cascading advancement since it just calls animate_unit_advancement().
-			advance_unit(loc, automatic, true, advancements);
-		} else {
-			ERR_CF << "Unit has too many (" << u->experience()
-				<< ") XP left; cascade leveling disabled.\n";
-		}
-	} else {
-		ERR_NG << "Unit advanced no longer exists.\n";
-	}
 }
 
 bool animate_unit_advancement(const map_location &loc, size_t choice, const bool &fire_event, const bool animate)

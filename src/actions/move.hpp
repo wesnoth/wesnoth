@@ -99,12 +99,20 @@ private:
 bool get_village(const map_location& loc, int side, int *time_bonus = NULL);
 
 /// Moves a unit across the board.
-size_t move_unit(const std::vector<map_location> &steps,
-                 replay* move_recorder, undo_list* undo_stack,
-                 bool continued_move = false, bool show_move = true,
+/// And enters the synced context.
+size_t move_unit_and_record(const std::vector<map_location> &steps,
+                 undo_list* undo_stack,
+                 bool continued_move = false, 
+				 bool show_move = true,
                  bool* interrupted = NULL,
-                 move_unit_spectator* move_spectator = NULL,
-                 const map_location* replay_dest = NULL);
+                 move_unit_spectator* move_spectator = NULL);
+
+/// Moves a unit across the board.
+/// to be called from replay when we are already in the synced context.
+size_t move_unit_from_replay(const std::vector<map_location> &steps,
+                 undo_list* undo_stack,
+                 bool continued_move, bool skip_ally_sighted, 
+				 bool show_move = true);
 
 /**
  * Will return true iff the unit @a u has any possible moves

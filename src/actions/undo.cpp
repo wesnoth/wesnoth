@@ -26,14 +26,17 @@
 #include "../log.hpp"
 #include "../play_controller.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
 #include "../unit_display.hpp"
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
+#include "../synced_context.hpp"
 
 #include <boost/foreach.hpp>
+#include <cassert>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -464,12 +467,8 @@ void undo_list::clear()
  * This may fire events and change the game state.
  * @param[in]  is_replay  Set to true when this is called during a replay.
  */
-void undo_list::commit_vision(bool is_replay)
+void undo_list::commit_vision(bool /*is_replay*/)
 {
-	if ( !is_replay )
-		// Record this.
-		recorder.update_shroud();
-
 	// Update fog/shroud.
 	size_t erase_to = apply_shroud_changes();
 
@@ -573,7 +572,7 @@ void undo_list::undo()
 		return;
 
 	// Bookkeeping.
-	recorder.undo();
+	recorder.undo_cut(action->get_replay_data());
 	redos_.push_back(action.release());
 	resources::whiteboard->on_gamestate_change();
 
@@ -735,7 +734,7 @@ bool undo_list::auto_shroud_action::undo(int /*side*/, undo_list & undos)
 	recorder.undo();
 	undos.undo();
 	// Now keep the auto-shroud toggle at the top of the undo stack.
-	recorder.add_auto_shroud(active);
+	recorder.add_synced_command("auto_shroud", replay_helper::get_auto_shroud(active));
 	undos.add_auto_shroud(active);
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;
@@ -752,7 +751,8 @@ bool undo_list::update_shroud_action::undo(int /*side*/, undo_list & undos)
 	recorder.undo();
 	undos.undo();
 	// Now keep the shroud update at the top of the undo stack.
-	recorder.update_shroud();
+	recorder.add_synced_command("update_shroud", replay_helper::get_update_shroud());
+	
 	undos.add_update_shroud();
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;
@@ -802,8 +802,8 @@ bool undo_list::dismiss_action::redo(int side)
 			<< ", which has no recall list!\n";
 		return false;
 	}
-
-	recorder.add_disband(dismissed_unit.id());
+	recorder.redo(replay_data);
+	replay_data.clear();
 	std::vector<unit>::iterator unit_it =
 		find_if_matches_id(current_team.recall_list(), dismissed_unit.id());
 	current_team.recall_list().erase(unit_it);
@@ -838,6 +838,9 @@ bool undo_list::recall_action::redo(int side)
 
 	const std::string &msg = find_recall_location(side, loc, from, *unit_it);
 	if ( msg.empty() ) {
+		recorder.redo(replay_data);
+		replay_data.clear();
+		set_scontext_synced sco;
 		recall_unit(id, current_team, loc, from, true, false);
 
 		// Quick error check. (Abuse of [allow_undo]?)
@@ -882,7 +885,9 @@ bool undo_list::recruit_action::redo(int side)
 	if ( msg.empty() ) {
 		//MP_COUNTDOWN: restore recruitment bonus
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
-
+		recorder.redo(replay_data);
+		replay_data.clear();
+		set_scontext_synced sco;
 		recruit_unit(u_type, side, loc, from, true, false);
 
 		// Quick error check. (Abuse of [allow_undo]?)
@@ -944,7 +949,8 @@ bool undo_list::move_action::redo(int side)
 	}
 
 	gui.invalidate_unit_after_move(route.front(), route.back());
-	recorder.add_movement(route);
+	recorder.redo(replay_data);
+	replay_data.clear();
 	return true;
 }
 

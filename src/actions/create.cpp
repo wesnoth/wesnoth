@@ -24,6 +24,7 @@
 #include "vision.hpp"
 
 #include "../config.hpp"
+#include "../config_assign.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
@@ -34,8 +35,11 @@
 #include "../pathfind/pathfind.hpp"
 #include "../random.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit_display.hpp"
 #include "../variable.hpp"
@@ -767,32 +771,24 @@ namespace { // Helpers for place_recruit()
 	/**
 	 * Performs a checksum check on a newly recruited/recalled unit.
 	 */
-	void recruit_checksums(const unit &new_unit, bool wml_triggered)
+	void recruit_checksums(const unit &new_unit, bool /*wml_triggered*/)
 	{
-		const config* ran_results = get_random_results();
-		if ( ran_results != NULL ) {
-			// When recalling from WML there should be no random results, if we
-			// use random we might get the replay out of sync.
-			assert(!wml_triggered);
-			const std::string checksum = get_checksum(new_unit);
-			const std::string rc = (*ran_results)["checksum"];
-			if ( rc != checksum ) {
-				std::stringstream error_msg;
-				error_msg << "SYNC: In recruit " << new_unit.type_id() <<
-					": has checksum " << checksum <<
-					" while datasource has checksum " << rc << "\n";
-				ERR_NG << error_msg.str();
+		const std::string checksum = get_checksum(new_unit);
+		config original_checksum_config;
 
-				config cfg_unit1;
-				new_unit.write(cfg_unit1);
-				DBG_NG << cfg_unit1;
-				replay::process_error(error_msg.str());
-			}
-
-		} else if ( wml_triggered == false ) {
-			config cfg;
-			cfg["checksum"] = get_checksum(new_unit);
-			set_random_results(cfg);
+		bool checksum_equals = checkup_instance->local_checkup(config_of("checksum", checksum),original_checksum_config);
+		if(!checksum_equals)
+		{
+			const std::string old_checksum = original_checksum_config["checksum"];
+			std::stringstream error_msg;
+			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
+				": has checksum " << checksum <<
+				" while datasource has checksum " << old_checksum << "\n";
+			ERR_NG << error_msg.str();
+			config cfg_unit1;
+			new_unit.write(cfg_unit1);
+			DBG_NG << cfg_unit1;
+			replay::process_error(error_msg.str());
 		}
 	}
 
@@ -929,13 +925,8 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * Recruits a unit of the given type for the given side.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool use_undo,
-                  bool use_recorder)
+                  const map_location & from, bool show, bool use_undo)
 {
-	// Record this before actually recruiting.
-	if ( use_recorder )
-		recorder.add_recruit(u_type.id(), loc, from);
-	
 	const unit new_unit(u_type, side_num, true);
 
 
@@ -969,10 +960,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( resources::screen != NULL )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
-
-	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
 }
 
 
@@ -981,7 +968,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show, bool use_undo, bool use_recorder)
+                 bool show, bool use_undo)
 {
 	std::vector<unit> & recall_list = current_team.recall_list();
 
@@ -989,10 +976,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	std::vector<unit>::iterator recall_it = find_if_matches_id(recall_list, id);
 	if ( recall_it == recall_list.end() )
 		return false;
-
-	// Record this before actually recalling.
-	if ( use_recorder )
-		recorder.add_recall(id, loc, from);
+		
 
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);
@@ -1030,9 +1014,7 @@ bool recall_unit(const std::string & id, team & current_team,
 		// Other updates were done by place_recruit().
 
 	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
-
+	checkup_instance->unit_checksum(loc);
 	return true;
 }
 

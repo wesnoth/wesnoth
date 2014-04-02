@@ -25,7 +25,6 @@
 #include "map_label.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "whiteboard/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
@@ -93,8 +92,11 @@ void turn_info::handle_turn(
 		replay_.append(t);
 		replay_.set_skip(skip_replay);
 
-		turn_end = do_replay(team_num_, &replay_);
+		//turn_end = do_replay(team_num_, &replay_);
+		//note, that this cunfion might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 		recorder.add_config(t, replay::MARK_AS_SENT);
+		turn_end = do_replay(team_num_);
+		
 	} else {
 
 		//this turn has finished, so push the remaining moves
@@ -119,11 +121,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// the simple wesnothserver implementation in wesnoth was removed years ago. 
 	assert(network::nconnections() <= 1);
 	
-	if (const config &rnd_seed = cfg.child("random_seed")) {
-		rand_rng::set_seed(rnd_seed["seed"]);
-		//may call a callback function, see rand_rng::set_seed_callback
-	}
-
 	if (const config &msg = cfg.child("message"))
 	{
 		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],
@@ -159,8 +156,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	BOOST_FOREACH(const config &t, turns)
 	{
-		handle_turn(turn_end, t, skip_replay, backlog);
+		recorder.add_config(t, replay::MARK_AS_SENT);
 	}
+	handle_turn(turn_end, config(), skip_replay, backlog);
 
 	resources::whiteboard->process_network_data(cfg);
 
@@ -354,7 +352,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				}
 				break;
 		}
-		throw network::error("");
+		//Lua code currently catches this exception if this function was called from lua code
+		// in that case network::error doesn't end the game.
+		// but at least he sees this error message.
+		throw network::error("Network Error: A player left and you pressed Escape.");
 	}
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button

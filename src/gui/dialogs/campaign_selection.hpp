@@ -38,6 +38,11 @@ public:
 		return choice_;
 	}
 
+	bool get_deterministic() const
+	{
+		return deterministic_;
+	}
+
 private:
 	/** Called when another campaign is selected. */
 	void campaign_selected(twindow& window);
@@ -56,6 +61,9 @@ private:
 
 	/** The chosen campaign. */
 	int choice_;
+
+	/** whether zhe player checked teh "Deterministic" checkbox. */
+	bool deterministic_;
 };
 
 } // namespace gui2

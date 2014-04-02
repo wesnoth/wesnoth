@@ -37,8 +37,9 @@
 #include "play_controller.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
+#include "synced_context.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -77,7 +78,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 
 mouse_handler::~mouse_handler()
 {
-	rand_rng::clear_new_seed_callback();
 	singleton_ = NULL;
 }
 
@@ -841,7 +841,9 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	size_t moves = 0;
 	try {
-		moves = actions::move_unit(steps, &recorder, resources::undo_stack,
+		
+		LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
+		moves = actions::move_unit_and_record(steps, resources::undo_stack,
 		                           false, true, &interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
@@ -1084,7 +1086,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 		return;
 	}
 
-	commands_disabled++;
+	events::command_disabler disabler;
 	const battle_context_unit_stats &att = bc_vector[choice].get_attacker_stats();
 	const battle_context_unit_stats &def = bc_vector[choice].get_defender_stats();
 
@@ -1101,56 +1103,10 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	gui().draw();
 
 	///@todo change ToD to be location specific for the defender
-	recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
+
+	synced_context::run_in_synced_context("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
 		attacker->type_id(), defender->type_id(), att.level,
-		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
-	rand_rng::invalidate_seed();
-	if (rand_rng::has_valid_seed()) { //means SRNG is disabled
-		perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
-	} else {
-		rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
-			this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
-	}
-}
-
-void mouse_handler::perform_attack(
-	map_location attacker_loc, map_location defender_loc,
-	int attacker_weapon, int defender_weapon, int seed)
-{
-	// this function gets it's arguments by value because the calling function
-	// object might get deleted in the clear callback call below, invalidating
-	// const ref arguments
-	rand_rng::clear_new_seed_callback();
-	LOG_NG << "Performing attack with seed " << seed << "\n";
-	recorder.add_seed("attack", seed);
-	//MP_COUNTDOWN grant time bonus for attacking
-	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
-
-	try {
-		events::command_disabler disabler; // Rather than decrementing for every possible exception, use RAII
-		commands_disabled--;
-		attack_unit(attacker_loc, defender_loc, attacker_weapon, defender_weapon);
-	} catch(end_level_exception&) {
-		//if the level ends due to a unit being killed, still see if
-		//either the attacker or defender should advance
-		dialogs::advance_unit(attacker_loc);
-		unit_map::const_iterator defu = units_.find(defender_loc);
-		if (defu != units_.end()) {
-			bool defender_human = teams_[defu->side() - 1].is_human();
-			dialogs::advance_unit(defender_loc, !defender_human);
-		}
-		throw;
-	}
-
-	dialogs::advance_unit(attacker_loc);
-	unit_map::const_iterator defu = units_.find(defender_loc);
-	if (defu != units_.end()) {
-		bool defender_human = teams_[defu->side() - 1].is_human();
-		dialogs::advance_unit(defender_loc, !defender_human);
-	}
-
-	resources::controller->check_victory();
-	gui().draw();
+		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day()));
 }
 
 std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const

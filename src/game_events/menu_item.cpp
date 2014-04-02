@@ -31,7 +31,9 @@
 #include "../play_controller.hpp"
 #include "../preferences.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
+#include "../synced_context.hpp"
 #include "../terrain_filter.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -196,15 +198,16 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
 	// No new player-issued commands allowed while this is firing.
 	const events::command_disabler disable_commands;
 
-	// Should we record the preceding select event?
+	// instead of adding a second "select" event like it sdone before, we just fire the select event again, and this time in a synced context.
+	// note that there coudnt be and user choiced durign teh last "select" event because it didn't run in a synced context.
 	if ( needs_select_  &&  last_select.valid() )
-		recorder.add_event("select", last_select);
-
-	// Record and fire this item's event.
-	recorder.add_event(event_name_, event_hex);
-	if ( fire(event_name_, event_hex) )
-		// The event has mutated the gamestate
-		resources::undo_stack->clear();
+	{
+		synced_context::run_in_synced_context("fire_event",  replay_helper::get_event(event_name_, event_hex, &last_select));
+	}
+	else
+	{
+		synced_context::run_in_synced_context("fire_event",  replay_helper::get_event(event_name_, event_hex, NULL));
+	}
 }
 
 /**

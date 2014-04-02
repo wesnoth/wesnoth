@@ -22,9 +22,11 @@
 #include "log.hpp"
 #include "map_label.hpp"
 #include "replay.hpp"
+#include "random_new_deterministic.hpp"
 #include "replay_controller.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "synced_context.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -251,7 +253,9 @@ void replay_controller::reset_replay_ui()
 }
 
 
-void replay_controller::reset_replay(){
+void replay_controller::reset_replay()
+{
+	DBG_REPLAY << "replay_controller::reset_replay\n";
 
 	gui_->clear_chat_messages();
 	is_playing_ = false;
@@ -286,9 +290,20 @@ void replay_controller::reset_replay(){
 	}
 
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
-	fire_prestart(true);
-	init_gui();
-	fire_start(true);
+	fire_preload();
+	if(true){ //block for set_scontext_synced
+		config* pstart = recorder.get_next_action();
+		assert(pstart->has_child("start"));
+		/*
+			use this after recorder.add_synced_command
+			because set_scontext_synced sets the checkup to the last added command
+		*/
+		set_scontext_synced sync;
+		
+		fire_prestart(true);
+		init_gui();
+		fire_start(true);
+	}
 	// Since we did not fire the start event, it_is_a_new_turn_ has the wrong value.
 	it_is_a_new_turn_ = true;
 	update_gui();
@@ -419,20 +434,29 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 	try{
 		// If a side is empty skip over it.
+		bool has_end_turn = true;
 		if (!current_team().is_empty()) {
 			statistics::reset_turn_stats(current_team().save_id());
 
 			play_controller::init_side(player_number_ - 1, true);
 
 			DBG_REPLAY << "doing replay " << player_number_ << "\n";
-			do_replay(player_number_);
-
+			// if have reached the end we don't want to execute finish_side_turn and finish_turn
+			// becasue we might not have enough data to execute them (like advancements during turn_end for example)
+			// !has_end_turn == we reached the end of teh replay without finding and end turn tag.
+			has_end_turn = do_replay(player_number_);
+			if(!has_end_turn)
+			{
+				return;
+			}
 			finish_side_turn();
 		}
 
 		player_number_++;
 
 		if (static_cast<size_t>(player_number_) > teams_.size()) {
+			//during the orginal game player_number_ would also be teams_.size(),
+			player_number_ = teams_.size();
 			finish_turn();
 			tod_manager_.next_turn();
 			it_is_a_new_turn_ = true;

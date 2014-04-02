@@ -21,7 +21,10 @@
 
 #include "vision.hpp"
 
+#include "../ai/lua/unit_advancements_aspect.hpp"
 #include "../attack_prediction.hpp"
+#include "../config_assign.hpp"
+#include "../dialogs.hpp"
 #include "../game_config.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
@@ -31,15 +34,19 @@
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
+#include "../play_controller.hpp"
 #include "../random.hpp"
+#include "../random_new.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
 #include "../team.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
 #include "../unit_abilities.hpp"
 #include "../unit_display.hpp"
+#include "../unit_helper.hpp"
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
 #include "../wml_exception.hpp"
@@ -882,7 +889,7 @@ namespace {
 		int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 		bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
 
-		int ran_num = get_random();
+		int ran_num = random_new::generator->next_random();
 		bool hits = (ran_num % 100) < attacker.cth_;
 
 		int damage = 0;
@@ -891,15 +898,33 @@ namespace {
 			resources::gamedata->get_variable("damage_inflicted") = damage;
 		}
 
+		
 		// Make sure that if we're serializing a game here,
 		// we got the same results as the game did originally.
-		const config *ran_results = get_random_results();
-		if (ran_results)
+		const config local_results = config_of("chance", attacker.cth_)("hits", hits)("damage", damage);
+		config replay_results;
+		bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
+		if (!equals_replay)
 		{
-			int results_chance = (*ran_results)["chance"];
-			bool results_hits = (*ran_results)["hits"].to_bool();
-			int results_damage = (*ran_results)["damage"];
+			
+			int results_chance = replay_results["chance"];
+			bool results_hits = replay_results["hits"].to_bool();
+			int results_damage = replay_results["damage"];
+			/*
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump() 
+				<< " replay data differs from local calculated data:"
+				<< " chance to hit in data source: " << results_chance 
+				<< " chance to hit in calculated:  " << attacker.cth_
+				<< " chance to hit in data source: " << results_chance 
+				<< " chance to hit in calculated:  " << attacker.cth_
+				;
+			
+				attacker.cth_ = results_chance;
+				hits = results_hits;
+				damage = results_damage;
 
+				OOS_error_ = true;
+				*/
 			if (results_chance != attacker.cth_)
 			{
 				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
@@ -986,23 +1011,14 @@ namespace {
 				: statistics::attack_context::MISSES, damage_done, drains_damage);
 		}
 
-		if (!ran_results)
+		
+		replay_results.clear();
+		// there was also a attribute cfg["unit_hit"] which was never used so i deleted.
+		equals_replay = checkup_instance->local_checkup(config_of("dies", dies), replay_results);
+		if (!equals_replay)
 		{
-			log_scope2(log_engine, "setting random results");
-			config cfg;
-			cfg["hits"] = hits;
-			cfg["dies"] = dies;
-			cfg["unit_hit"] = "defender";
-			cfg["damage"] = damage;
-			cfg["chance"] = attacker.cth_;
+			bool results_dies = replay_results["dies"].to_bool();
 
-			set_random_results(cfg);
-		}
-		else
-		{
-			bool results_dies = (*ran_results)["dies"].to_bool();
-			if (results_dies != dies)
-			{
 				errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 					<< ": the data source says the "
 					<< (attacker_turn ? "defender" : "attacker") << ' '
@@ -1012,10 +1028,8 @@ namespace {
 					<< " (over-riding game calculations with data source results)\n";
 				dies = results_dies;
 				// Set hitpoints to 0 so later checks don't invalidate the death.
-				// Maybe set to > 0 for the else case to avoid more errors?
 				if (results_dies) defender.get_unit().set_hitpoints(0);
 				OOS_error_ = true;
-			}
 		}
 
 		if (hits)
@@ -1345,6 +1359,148 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 {
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
 	dummy.perform();
+}
+
+
+
+namespace
+{
+	class unit_advancement_choice : public mp_sync::user_choice
+	{
+	public:
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect& ai_advancement, bool force_dialog)
+			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
+		{	
+		}
+		
+		virtual ~unit_advancement_choice() 
+		{
+		}
+
+		virtual config query_user() const
+		{
+			int res = 0;
+			team t = (*resources::teams)[side_num_ - 1];
+			//i wonder how this got included here ? 
+			bool is_mp = network::nconnections() != 0;
+			bool is_current_side = resources::controller->current_side() == side_num_;
+			//note, that the advancements for networked sides are also determined on the current playing side.
+			
+			//to make mp games equal we only allow selecting advancements to the current side.
+			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
+			if(force_dialog_ || (t.is_human() && (is_current_side || !is_mp)))
+			{
+				res = dialogs::advance_unit_dialog(loc_); 
+			}
+			else if(t.is_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
+			{
+				res = rand() % nb_options_;
+
+				//if ai_advancement_ is the default advancement the following code will 
+				//have no effect because get_advancements returns an empty list.
+				unit_map::iterator u = resources::units->find(loc_);
+				const std::vector<std::string>& options = u->advances_to();
+				const std::vector<std::string>& allowed = ai_advancement_.get_advancements(u);
+
+				for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
+					if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
+						res = a - options.begin();
+						break;
+					}
+				}
+
+			}
+			else
+			{
+				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
+				//becasue it's a mp game and it's not his turn.
+				//note that it doens't matter wether we call random_new::generator->next_random() or rand().
+				res = random_new::generator->next_random() % nb_options_;
+			}
+			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
+			config retv;
+			retv["value"] = res;
+			return retv;
+
+		}
+		virtual config random_choice() const 
+		{
+			config retv;
+			retv["value"] = 0;
+			return retv;
+		}
+	private:
+		const map_location loc_;
+		int nb_options_;
+		int side_num_;
+		const ai::unit_advancements_aspect& ai_advancement_;
+		bool force_dialog_;
+	};
+}
+
+/*
+advances the unit and stores data in the replay (or reads data from replay).
+*/
+void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement, bool force_dialog)
+{
+	//i just don't want infinite loops...
+	// the 20 is picked rather randomly.
+	for(int advacment_number = 0; advacment_number < 20; advacment_number++)
+	{
+		unit_map::iterator u = resources::units->find(loc);
+		//this implies u.valid()
+		if(!unit_helper::will_certainly_advance(u)) {
+			return;
+		}
+		
+		//we don't want to let side 1 decide it during start/prestart.
+		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
+		config selected = mp_sync::get_user_choice("choose",
+			unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement, force_dialog), side_for); 
+		//calls actions::advance_unit.
+		dialogs::animate_unit_advancement(loc, selected["value"], true, true);
+		u = resources::units->find(loc);
+		// level 10 unit gives 80 XP and the highest mainline is level 5
+		if (u.valid() && u->experience() > 80) 
+		{
+			ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.\n";
+		}
+	}
+	ERR_NG << "unit at " << loc << "tried to adcance more than 20 times\n";
+}
+
+
+void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
+                 int attack_with, int defend_with, bool update_display, 
+				 const ai::unit_advancements_aspect& ai_advancement)
+{	try
+	{
+		attack_unit(attacker, defender, attack_with, defend_with, update_display);
+	}
+	catch(end_level_exception&)
+	{
+
+		unit_map::const_iterator atku = resources::units->find(attacker);
+		
+		if (atku != resources::units->end()) {
+			advance_unit_at(attacker, ai_advancement);
+		}
+
+		unit_map::const_iterator defu = resources::units->find(defender);
+		if (defu != resources::units->end()) {
+			advance_unit_at(defender, ai_advancement);
+		}
+		throw;
+	}
+	unit_map::const_iterator atku = resources::units->find(attacker);
+	if (atku != resources::units->end()) {
+		advance_unit_at(attacker, ai_advancement);
+	}
+
+	unit_map::const_iterator defu = resources::units->find(defender);
+	if (defu != resources::units->end()) {
+		advance_unit_at(defender, ai_advancement);
+	}
 }
 
 

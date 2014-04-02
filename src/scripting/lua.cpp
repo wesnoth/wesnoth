@@ -61,6 +61,7 @@
 #include "terrain_translation.hpp"
 #include "side_filter.hpp"
 #include "sound.hpp"
+#include "synced_context.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
 #include "version.hpp"
@@ -1430,6 +1431,15 @@ static int intf_set_village_owner(lua_State *L)
 }
 
 /**
+ * - Ret 1: bool wether is in sycned context.
+ */
+static int intf_is_synced(lua_State *L)
+{
+	lua_pushboolean(L, synced_context::get_syced_state() == synced_context::SYNCED);
+	return 1;
+}
+
+/**
  * Returns the map size.
  * - Ret 1: width.
  * - Ret 2: height.
@@ -2654,7 +2664,7 @@ namespace {
 				if ((*resources::teams)[side - 1].is_ai())
 					index = 2;
 			}
-			lua_settop(L, index);
+			lua_pushvalue(L, index);
 			if (luaW_pcall(L, 0, 1, false)) {
 				if(!luaW_toconfig(L, -1, cfg) && game_config::debug) {
 					chat_message("Lua warning", "function returned to wesnoth.synchronize_choice a table which was partially invalid");
@@ -2663,7 +2673,7 @@ namespace {
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
@@ -2674,12 +2684,38 @@ namespace {
  * Ensures a value is synchronized among all the clients.
  * - Arg 1: function to compute the value, called if the client is the master.
  * - Arg 2: optional function, called instead of the first function if the user is not human.
+ * - Arg 3: optional array of integers specifying, on which side the function should be evaluated.
  * - Ret 1: WML table returned by the function.
  */
 static int intf_synchronize_choice(lua_State *L)
 {
-	config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
-	luaW_pushconfig(L, cfg);
+	if(lua_istable(L, 3))
+	{
+		std::set<int> vals;
+		//read the third parameter
+		lua_pushnil(L); 
+		while (lua_next(L, 3) != 0) {
+			/* uses 'key' (at index -2) and 'value' (at index -1) */
+			int val = luaL_checkint(L, -1);
+			vals.insert(val);
+			/* removes 'value'; keeps 'key' for next iteration */
+			lua_pop(L, 1);
+		}
+		typedef std::map<int,config> retv_t;
+		retv_t r = mp_sync::get_user_choice_multiple_sides("input", lua_synchronize(L), vals);
+		lua_newtable(L);
+		BOOST_FOREACH(retv_t::value_type& pair, r)
+		{
+			lua_pushinteger(L, pair.first);
+			luaW_pushconfig(L, pair.second);
+			lua_settable(L, -3);
+		}
+	}
+	else
+	{
+		config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
+		luaW_pushconfig(L, cfg);
+	}
 	return 1;
 }
 
@@ -3638,6 +3674,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "have_file",                &intf_have_file                },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
+		{ "is_synced",                &intf_is_synced                },
 		{ "lock_view",                &intf_lock_view                },
 		{ "match_location",           &intf_match_location           },
 		{ "match_side",               &intf_match_side               },
