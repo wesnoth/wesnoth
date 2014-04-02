@@ -63,11 +63,13 @@ public:
 	 *
 	 * @param renderer            The renderer the texture is associated with.
 	 * @param file                Path of the file to load the pixels from.
+	 * @param access              Access mode of the texture.
 	 * @param keep_surface        Whether a copy of the image should be kept in
 	 *                            an SDL_Surface.
 	 */
 	ttexture(SDL_Renderer& renderer,
 			 const std::string& file,
+			 int access,
 			 bool keep_surface = false);
 
 	~ttexture();
