@@ -29,6 +29,7 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
@@ -262,6 +263,7 @@ void tcampaign_selection::post_show(twindow& window)
 	} else {
 		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
 						  .get_selected_row();
+		deterministic_ = find_widget<ttoggle_button>(&window,"checkbox_deterministic", false).get_value();
 	}
 }
 

@@ -597,6 +597,7 @@ bool game_controller::new_campaign()
 	}
 
 	int campaign_num = -1;
+	bool use_deterministic_mode = false;
 	// No campaign selected from command line
 	if (jump_to_campaign_.campaign_id_.empty() == true)
 	{
@@ -614,6 +615,9 @@ bool game_controller::new_campaign()
 		}
 
 		campaign_num = dlg.get_choice();
+
+		use_deterministic_mode = dlg.get_deterministic();
+
 	}
 	else
 	{
@@ -641,6 +645,10 @@ bool game_controller::new_campaign()
 	const config &campaign = campaigns[campaign_num];
 	state_.classification().campaign = campaign["id"].str();
 	state_.classification().abbrev = campaign["abbrev"].str();
+	
+	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
+	state_.carryover_sides_start["random_mode"] = random_mode;
+	state_.classification().random_mode = random_mode;
 
 	// we didn't specify in the command line the scenario to be started
 	if (jump_to_campaign_.scenario_id_.empty())
