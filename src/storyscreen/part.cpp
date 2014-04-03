@@ -268,12 +268,44 @@ void part::resolve_wml(const vconfig &cfg)
 		}
 		// [if]
 		else if(key == "if") {
-			const std::string branch_label =
-				game_events::conditional_passed(node) ?
-				"then" : "else";
-			if(node.has_child(branch_label)) {
-				const vconfig branch = node.child(branch_label);
-				resolve_wml(branch);
+			// check if the [if] tag has a [then] child;
+			// if not, raise a WML error and exit to make the mistake as much evident as possible
+			// if we try to execute a non-existing [then], we get a segfault
+			if (!node.has_child("then")) {
+				lg::wml_error << "[if] missing required [then] tag\n";
+				return;
+			}
+			else {
+				// condition passed, execute [then]
+				if (game_events::conditional_passed(node)) {
+					resolve_wml(node.child("then"));
+				}
+				// condition not passed, check [elseif] and [else]
+				else {
+					// get all [elseif] children and set a flag
+					vconfig::child_list elseif_children = node.get_children("elseif");
+					bool elseif_flag = false;
+					// for each [elseif]: test if it has a [then] child
+					// if not, raise a WML error and exit
+					// if yes, check condition; if matches, execute [then] and raise flag
+					for (vconfig::child_list::const_iterator elseif = elseif_children.begin(); elseif != elseif_children.end(); ++elseif) {
+						if (!elseif->has_child("then")) {
+							lg::wml_error << "[elseif] missing required [then] tag\n";
+							return;
+						}
+						else {
+							if (game_events::conditional_passed(*elseif)) {
+								resolve_wml(elseif->child("then"));
+								elseif_flag = true;
+								break;
+							}
+						}
+					}
+					// if we have an [else] tag and no [elseif] was successful (flag not raised), execute it
+					if (node.has_child("else") && !elseif_flag) {
+						resolve_wml(node.child("else"));
+					}
+				}
 			}
 		}
 		// [switch]
