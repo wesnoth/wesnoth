@@ -2541,6 +2541,8 @@ void server::process_data_game(const network::connection sock,
 		return;
 	} else if (data.child("start_game")) {
 		if (!g->is_owner(sock)) return;
+		//perform controller tweaks, assigning sides as human for their owners etc.
+		g->perform_controller_tweaks();
 		// Send notification of the game starting immediately.
 		// g->start_game() will send data that assumes
 		// the [start_game] message has been sent
@@ -2603,7 +2605,6 @@ void server::process_data_game(const network::connection sock,
 		if (g->describe_slots()) {
 			update_game_in_lobby(g);
 		}
-		// FIXME: Why not save it in the history_? (if successful)
 		return;
 	// If all observers should be muted. (toggles)
 	} else if (data.child("muteall")) {
