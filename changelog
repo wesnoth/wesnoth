@@ -29,6 +29,9 @@ Version 1.13.0-dev:
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
+   * Added support for [elseif] tags inside [if]
+   * Implemented checks for missing [then] inside [if], missing [do] inside
+     [while] and missing [case], variable= and value= inside [switch]
  * Miscellaneous and bug fixes:
    * Fix Fisher-Yates implemenation of Lua helper.shuffle (bug #21706)
    * Fixed issues with the ~BG() image path function not always working with
