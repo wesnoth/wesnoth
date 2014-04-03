@@ -46,7 +46,6 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, texture_(NULL)
 	, source_surface_(NULL)
 {
-	SDL_Surface* source_surface_;
 	source_surface_ = IMG_Load(file.c_str());
 
 	if (source_surface_ == NULL) {
