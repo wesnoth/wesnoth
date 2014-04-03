@@ -339,10 +339,6 @@ local function if_while_handler(max_iter, pass, fail, cfg)
 	end
 end
 
-local function while_handler(cfg)
-	if_while_handler(65536, "do", nil, cfg)
-end
-
 -- since if and while are Lua keywords, we can't create functions with such names
 -- instead, we store the following anonymous functions directly into
 -- the table, using the [] operator, rather than by using the point syntax
@@ -378,7 +374,20 @@ wml_actions["if"] = function( cfg )
 	end
 end
 
-wml_actions["while"] = while_handler
+wml_actions["while"] = function( cfg )
+	-- check if the [do] sub-tag is missing, and raise error if so
+	if not helper.get_child( cfg, "do" ) then
+		helper.wml_error "[while] missing required [do] tag"
+	end
+	-- we have at least one [do], execute them up to 65536 times
+	for i = 1, 65536 do
+		if wesnoth.eval_conditional( cfg ) then
+			for do_child in helper.child_range( cfg, "do" ) do
+				handle_event_commands( do_child )
+			end
+		else return end
+	end
+end
 
 function wml_actions.switch(cfg)
 	local value = wesnoth.get_variable(cfg.variable)
