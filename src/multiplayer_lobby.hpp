@@ -186,8 +186,7 @@ private:
 	gui::button observe_game_;
 	gui::button join_game_;
 	gui::button create_game_;
-	gui::button skip_replay_;
-	gui::button blindfold_;
+	gui::combo replay_options_;
 	gui::button game_preferences_;
 	gui::button quit_game_;
 

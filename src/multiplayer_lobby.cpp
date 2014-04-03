@@ -858,8 +858,7 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	observe_game_(disp.video(), _("Observe Game")),
 	join_game_(disp.video(), _("Join Game")),
 	create_game_(disp.video(), _("Create Game")),
-	skip_replay_(disp.video(), _("Quick replays"), gui::button::TYPE_CHECK),
-	blindfold_(disp.video(), _("Enter blindfolded"), gui::button::TYPE_CHECK),
+	replay_options_(disp, std::vector<std::string>()),
 	game_preferences_(disp.video(), _("Preferences")),
 	quit_game_(disp.video(), _("Quit")),
 	apply_filter_(disp.video(), _("Apply filter"), gui::button::TYPE_CHECK),
@@ -873,11 +872,25 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	minimaps_(),
 	search_string_(preferences::fi_text())
 {
-	skip_replay_.set_check(preferences::skip_mp_replay());
-	skip_replay_.set_help_string(_("Skip quickly to the active turn when observing"));
+	std::vector<std::string> replay_options_strings_;
+	replay_options_strings_.push_back(_("Normal"));
+	replay_options_strings_.push_back(_("Quick replays"));
+	replay_options_strings_.push_back(_("Enter blindfolded"));
 
-	blindfold_.set_check(preferences::blindfold_replay());
-	blindfold_.set_help_string(_("Do not show replay turns"));
+	replay_options_.set_items(replay_options_strings_);
+
+	std::string help_string1 = _("Skip quickly to the active turn when observing");
+	std::string help_string2 = _("Do not show replay turns");
+	replay_options_.set_help_string(help_string1 + " / " + help_string2);
+
+	replay_options_.set_selected(0);
+	if (preferences::skip_mp_replay()) {
+		replay_options_.set_selected(1);
+	}
+	
+	if (preferences::blindfold_replay()) {
+		replay_options_.set_selected(2);
+	}
 
 	apply_filter_.set_check(preferences::filter_lobby());
 	apply_filter_.set_help_string(_("Enable the games filter. If unchecked all games are shown, regardless of any filter."));
@@ -912,8 +925,7 @@ void lobby::hide_children(bool hide)
 	observe_game_.hide(hide);
 	join_game_.hide(hide);
 	create_game_.hide(hide);
-	skip_replay_.hide(hide);
-	blindfold_.hide(hide);
+	replay_options_.hide(hide);
 	game_preferences_.hide(hide);
 	quit_game_.hide(hide);
 	apply_filter_.hide(hide);
@@ -942,11 +954,10 @@ void lobby::layout_children(const SDL_Rect& rect)
 
 	// Align in the middle between the right and left buttons
 	int space = (quit_game_.location().x - create_game_.location().x - create_game_.location().w
-	             - skip_replay_.location().w - game_preferences_.location().w - btn_space) / 2;
+	             - replay_options_.location().w - game_preferences_.location().w - btn_space) / 2;
 	if (space < btn_space) space = btn_space;
-	skip_replay_.set_location(create_game_.location().x + create_game_.location().w + space, yscale(yborder));
-	blindfold_.set_location(quit_game_.location().x - game_preferences_.location().w - space , yscale(yborder));
-	game_preferences_.set_location(quit_game_.location().x - game_preferences_.location().w - space + blindfold_.location().w, yscale(yborder));
+	replay_options_.set_location(create_game_.location().x + create_game_.location().w + space, yscale(yborder));
+	game_preferences_.set_location(quit_game_.location().x - game_preferences_.location().w - space, yscale(yborder));
 
 	games_menu_.set_location(client_area().x, client_area().y + title().height());
 	games_menu_.set_measurements(client_area().w, client_area().h
@@ -985,8 +996,8 @@ void lobby::process_event()
 	const bool observe = (observe_game_.pressed() || (games_menu_.selected() && !games_menu_.selection_is_joinable())) && games_menu_.selection_is_observable();
 	const bool join = (join_game_.pressed() || games_menu_.selected()) && games_menu_.selection_is_joinable();
 	games_menu_.reset_selection();
-	preferences::set_skip_mp_replay(skip_replay_.checked());
-	preferences::set_blindfold_replay(blindfold_.checked());
+	preferences::set_skip_mp_replay(replay_options_.selected() == 1);
+	preferences::set_blindfold_replay(replay_options_.selected() == 2);
 
 	playmp_controller::set_replay_last_turn(0);
 	preferences::set_message_private(false);
