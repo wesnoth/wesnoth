@@ -55,6 +55,10 @@ Version 1.13.0-dev:
      a blindfold for the duration of the dialog.
    * Petrified units are no longer displayed in the "Damage versus" tooltip.
    * Fix bug #21759: "timer refreshed too often when time runs out"
+   * Use one combo box instead of check boxes for replay options "skip replay"
+     and "enter blindfold". This fixes the mp lobby in width <= 800 resolutions.
+     Fixes bug #21888.
+
 
 Version 1.11.11:
  * Add-ons server:

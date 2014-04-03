@@ -24,7 +24,8 @@ Version 1.13.0-dev:
    * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.13
    * Fix bug #3856: The turn dialog used in hotseat MP play now applies 
      a blindfold for the duration of the dialog.
-
+   * Use a dropdown menu for both "skip replay" and "enter blindfold". 
+     This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
 
 Version 1.11.11:
  * Campaigns:
