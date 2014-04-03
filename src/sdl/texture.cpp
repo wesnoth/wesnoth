@@ -122,7 +122,7 @@ ttexture& ttexture::operator=(const ttexture& texture)
 	return *this;
 }
 
-SDL_Surface* ttexture::source_surface() const
+surface ttexture::source_surface() const
 {
 	return source_surface_;
 }
