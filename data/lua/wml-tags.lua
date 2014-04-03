@@ -329,16 +329,6 @@ end
 
 wml_actions.command = handle_event_commands
 
-local function if_while_handler(max_iter, pass, fail, cfg)
-	for i = 1, max_iter do
-		local t = wesnoth.eval_conditional(cfg) and pass or fail
-		if not t then return end
-		for v in helper.child_range(cfg, t) do
-			handle_event_commands(v)
-		end
-	end
-end
-
 -- since if and while are Lua keywords, we can't create functions with such names
 -- instead, we store the following anonymous functions directly into
 -- the table, using the [] operator, rather than by using the point syntax
