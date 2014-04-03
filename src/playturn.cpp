@@ -93,13 +93,17 @@ void turn_info::handle_turn(
 {
 	if(turn_end == false) {
 		/** @todo FIXME: Check what commands we execute when it's our turn! */
+		//TODO: can we remove replay_ ? i think yes.
 		replay_.append(t);
 		replay_.set_skip(skip_replay);
 
+		bool was_skipping = recorder.is_skipping();
+		recorder.set_skip(skip_replay);
 		//turn_end = do_replay(team_num_, &replay_);
 		//note, that this cunfion might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 		recorder.add_config(t, replay::MARK_AS_SENT);
 		turn_end = do_replay(team_num_);
+		recorder.set_skip(was_skipping);
 		
 	} else {
 
