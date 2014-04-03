@@ -8,7 +8,8 @@ Version 1.11.12:
 
  * Miscellaneous and bug fixes:
    * Statues are no longer displayed in the "Damage versus" tooltip.
-
+   * Use a dropdown menu for both "skip replay" and "enter blindfold". 
+     This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
 
 Version 1.11.12:
  * Campaigns:
@@ -26,6 +27,7 @@ Version 1.11.12:
    * Fixed halos glitching through locations that become shrouded after the
      halo is rendered for the first time.
    * OS X user data directory is now ~/Library/Application Support/Wesnoth_1.12
+
 
 Version 1.11.11:
  * Campaigns:
