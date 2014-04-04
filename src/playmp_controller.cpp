@@ -469,10 +469,13 @@ void playmp_controller::play_network_turn(){
 			*/
 			else if(!recorder.at_end())
 			{
+				bool was_skipping = recorder.is_skipping();
+				recorder.set_skip(skip_replay_);
 				if(do_replay(current_side()))
 				{
 					break;
 				}
+				recorder.set_skip(was_skipping);
 			}
 		}
 

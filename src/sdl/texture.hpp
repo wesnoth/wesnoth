@@ -26,6 +26,7 @@
 
 #include <SDL_render.h>
 #include <string>
+#include <sdl_utils.hpp>
 
 namespace sdl
 {
@@ -88,7 +89,7 @@ public:
 	 * @return                    A pointer to the source surface, or NULL if
 	 *                            it's unavailable.
 	 */
-	SDL_Surface* source_surface() const;
+	surface source_surface() const;
 
 private:
 
@@ -104,7 +105,7 @@ private:
 	SDL_Texture* texture_;
 
 	/** The SDL_Surface source of the texture. Probably NULL. */
-	SDL_Surface* source_surface_;
+	surface source_surface_;
 };
 
 } // namespace sdl
