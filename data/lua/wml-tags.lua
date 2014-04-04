@@ -329,45 +329,88 @@ end
 
 wml_actions.command = handle_event_commands
 
-local function if_while_handler(max_iter, pass, fail, cfg)
-	for i = 1, max_iter do
-		local t = wesnoth.eval_conditional(cfg) and pass or fail
-		if not t then return end
-		for v in helper.child_range(cfg, t) do
-			handle_event_commands(v)
+-- since if and while are Lua keywords, we can't create functions with such names
+-- instead, we store the following anonymous functions directly into
+-- the table, using the [] operator, rather than by using the point syntax
+
+wml_actions["if"] = function( cfg )
+	-- raise error if [then] is missing
+	if not helper.get_child( cfg, "then" ) then
+		helper.wml_error "[if] missing required [then] tag"
+	end
+
+	if wesnoth.eval_conditional( cfg ) then -- evalutate [if] tag
+		for then_child in helper.child_range ( cfg, "then" ) do
+			handle_event_commands( then_child )
+		end
+		return -- stop after executing [then] tags
+	else
+		for elseif_child in helper.child_range ( cfg, "elseif" ) do
+			-- there's no point in executing [elseif] without [then]
+			if not helper.get_child( elseif_child, "then" ) then
+				helper.wml_error "[elseif] missing required [then] tag"
+			end
+			if wesnoth.eval_conditional( elseif_child ) then -- we'll evalutate the [elseif] tags one by one
+				for then_tag in helper.child_range( elseif_child, "then" ) do
+					handle_event_commands( then_tag )
+				end
+				return -- stop on first matched condition
+			end
+		end
+		-- no matched condition, try the [else] tags
+		for else_child in helper.child_range ( cfg, "else" ) do
+			handle_event_commands( else_child )
 		end
 	end
 end
 
-local function if_handler(cfg)
-	if_while_handler(1, "then", "else", cfg)
+wml_actions["while"] = function( cfg )
+	-- check if the [do] sub-tag is missing, and raise error if so
+	if not helper.get_child( cfg, "do" ) then
+		helper.wml_error "[while] missing required [do] tag"
+	end
+	-- we have at least one [do], execute them up to 65536 times
+	for i = 1, 65536 do
+		if wesnoth.eval_conditional( cfg ) then
+			for do_child in helper.child_range( cfg, "do" ) do
+				handle_event_commands( do_child )
+			end
+		else return end
+	end
 end
-
-local function while_handler(cfg)
-	if_while_handler(65536, "do", nil, cfg)
-end
-
-wml_actions["if"] = if_handler
-wml_actions["while"] = while_handler
 
 function wml_actions.switch(cfg)
-	local value = wesnoth.get_variable(cfg.variable)
+	-- check if variable= is missing
+	if not cfg.variable then
+		helper.wml_error "[switch] missing required variable= attribute"
+	end 
+	local variable = wesnoth.get_variable(cfg.variable)
 	local found = false
+
+	-- check if the [case] sub-tag is missing, and raise error if so
+	if not helper.get_child( cfg, "case" ) then
+		helper.wml_error "[switch] missing required [case] tag"
+	end
+
 	-- Execute all the [case]s where the value matches.
-	for v in helper.child_range(cfg, "case") do
+	for case_child in helper.child_range(cfg, "case") do
+		-- warn if value= isn't present; it may be false, so check only for nil
+		if case_child.value == nil then
+			helper.wml_error "[case] missing required value= attribute"
+		end
 		local match = false
-		for w in string.gmatch(v.value, "[^%s,][^,]*") do
-			if w == tostring(value) then match = true ; break end
+		for w in string.gmatch(case_child.value, "[^%s,][^,]*") do
+			if w == tostring(variable) then match = true ; break end
 		end
 		if match then
-			handle_event_commands(v)
+			handle_event_commands(case_child)
 			found = true
 		end
 	end
 	-- Otherwise execute [else] statements.
 	if not found then
-		for v in helper.child_range(cfg, "else") do
-			handle_event_commands(v)
+		for else_child in helper.child_range(cfg, "else") do
+			handle_event_commands(else_child)
 		end
 	end
 end
