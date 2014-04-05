@@ -372,6 +372,7 @@ add_library(wesnoth-sdl
 
 target_link_libraries(wesnoth-sdl
 	${SDL_LIBRARY}
+	${SDLIMAGE_LIBRARY}
 )
 
 # The main library is rather huge especially in debug mode, causing quite a bit

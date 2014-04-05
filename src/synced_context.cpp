@@ -371,12 +371,12 @@ set_scontext_local_choice::~set_scontext_local_choice()
 random_seed_choice::random_seed_choice()
 {
 
-};
+}
 
 random_seed_choice::~random_seed_choice()
 {
 
-};
+}
 
 config random_seed_choice::query_user() const
 {
@@ -386,7 +386,7 @@ config random_seed_choice::query_user() const
 	config retv;
 	retv["new_seed"] = rand();
 	return retv;
-};
+}
 config random_seed_choice::random_choice() const
 {
 	//it obviously doesn't make sense to call the uninitialized random generator to generatoe a seed ofr the same random generator;
