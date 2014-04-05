@@ -264,6 +264,45 @@ void playmp_controller::play_human_turn(){
 	}
 }
 
+void playmp_controller::play_idle_loop()
+{
+	LOG_NG << "playmp::play_human_turn...\n";
+
+	remove_blindfold();
+
+	command_disabled_resetter reset_commands;
+
+	while (!end_turn_)
+	{
+		try {
+			config cfg;
+			const network::connection res = network::receive_data(cfg);
+			std::deque<config> backlog;
+
+			if(res != network::null_connection) {
+				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+				{
+					throw end_turn_exception(gui_->playing_side());
+				}
+			}
+
+			play_slice();
+			check_end_level();
+		} catch(const end_level_exception&) {
+			turn_data_->send_data();
+			throw;
+		}
+
+		if (!linger_) {
+			SDL_Delay(1);
+		}
+
+		gui_->draw();
+
+		turn_data_->send_data();
+	}
+}
+
 void playmp_controller::set_end_scenario_button()
 {
 	// Modify the end-turn button
