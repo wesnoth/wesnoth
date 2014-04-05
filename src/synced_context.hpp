@@ -57,7 +57,6 @@ public:
 			it would make things easier if that was possible.
 		
 		
-		@param save_in_replay whether data should be saved in replay.
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
 		@param store_in_replay only true if called by do_replay_handle
 		@param error_handler an error handler for the case that data contains invalid data.
