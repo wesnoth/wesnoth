@@ -662,9 +662,11 @@ void playsingle_controller::play_turn(bool save)
 
 void playsingle_controller::play_idle_loop()
 {
-	play_slice();
-	gui_->draw();
-	SDL_Delay(10);
+	while(!end_turn_) {
+		play_slice();
+		gui_->draw();
+		SDL_Delay(10);
+	}
 }
 
 void playsingle_controller::play_side(const unsigned int side_number, bool save)
@@ -724,9 +726,8 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 				end_turn_enable(false);
 				do_idle_notification();
 				before_human_turn(save);
-				while(1) {
-					play_idle_loop();
-				}
+				play_idle_loop();
+				
 			} catch(end_turn_exception& end_turn) {
 				LOG_NG << "Escaped from idle state with exception!" << std::endl;
 				if (end_turn.redo == side_number) {
