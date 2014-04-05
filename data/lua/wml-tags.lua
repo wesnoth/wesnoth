@@ -335,9 +335,9 @@ wml_actions.command = handle_event_commands
 
 wml_actions["if"] = function( cfg )
 	-- raise error if [then] is missing
-	if not helper.get_child( cfg, "then" ) then
-		helper.wml_error "[if] missing required [then] tag"
-	end
+	--if not helper.get_child( cfg, "then" ) then
+	--	helper.wml_error "[if] missing required [then] tag"
+	--end
 
 	if wesnoth.eval_conditional( cfg ) then -- evalutate [if] tag
 		for then_child in helper.child_range ( cfg, "then" ) do
@@ -347,9 +347,9 @@ wml_actions["if"] = function( cfg )
 	else
 		for elseif_child in helper.child_range ( cfg, "elseif" ) do
 			-- there's no point in executing [elseif] without [then]
-			if not helper.get_child( elseif_child, "then" ) then
-				helper.wml_error "[elseif] missing required [then] tag"
-			end
+			--if not helper.get_child( elseif_child, "then" ) then
+			--	helper.wml_error "[elseif] missing required [then] tag"
+			--end
 			if wesnoth.eval_conditional( elseif_child ) then -- we'll evalutate the [elseif] tags one by one
 				for then_tag in helper.child_range( elseif_child, "then" ) do
 					handle_event_commands( then_tag )
