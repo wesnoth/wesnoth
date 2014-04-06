@@ -157,7 +157,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("strict-validation", "makes validation errors fatal")
 		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
-		("unit,u", po::value<std::string>()->implicit_value(std::string()), "runs a unit test scenario. Works like test, except that the exit code of the program reflects the victory / defeat conditions of the scenario.")
+		("unit,u", po::value<std::string>()->implicit_value(std::string()), "runs a unit test scenario. Works like test, except that the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t2 - FAIL (TIMEOUT)")
+		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. If unused there is no timeout or threading.")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
@@ -385,6 +386,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		test = vm["test"].as<std::string>();
 	if (vm.count("unit"))
 		unit_test = vm["unit"].as<std::string>();
+	if (vm.count("timeout"))
+		timeout = vm["timeout"].as<unsigned int>();
 	if (vm.count("turns"))
 		multiplayer_turns = vm["turns"].as<std::string>();
 	if (vm.count("strict-validation"))

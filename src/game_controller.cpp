@@ -247,8 +247,13 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	}
 	if (cmdline_opts_.unit_test)
 	{
-		if (!cmdline_opts_.unit_test->empty())
+		if (!cmdline_opts_.unit_test->empty()) {
 			test_scenario_ = *cmdline_opts_.unit_test;
+			if (cmdline_opts_.timeout) {
+				timeout = *cmdline_opts_.timeout;
+			}		
+		}
+			
 	}
 	if (cmdline_opts_.windowed)
 		preferences::set_fullscreen(false);
@@ -439,6 +444,14 @@ bool game_controller::play_test()
 	return false;
 }
 
+unsigned int unit_test_timeout(unsigned int, void* param)
+{
+	std::string * scen = (std::string *)param;
+	std::cerr << "Test timed out!" << std::endl;
+	std::cout << ("FAIL TEST (TIMEOUT): ") << *scen << std::endl;
+	exit(2);
+}
+
 // Same as play_test except that we return the results of play_game.
 int game_controller::unit_test()
 {
@@ -459,6 +472,11 @@ int game_controller::unit_test()
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 
+	if(cmdline_opts_.timeout && timeout > 0) {
+		std::cerr << "Adding timer for " << timeout << " ms." << std::endl;
+		SDL_AddTimer(timeout, unit_test_timeout, & test_scenario_);
+	}
+
 	try {
 		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config());
 		return ((res == VICTORY || res == NONE) ? 0 : 1);
@@ -466,6 +484,8 @@ int game_controller::unit_test()
 		return 1;
 	}
 }
+
+#undef Uint32
 
 bool game_controller::play_screenshot_mode()
 {

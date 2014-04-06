@@ -107,6 +107,7 @@ private:
 	resize_monitor resize_monitor_;
 
 	std::string test_scenario_;
+	unsigned int timeout;
 
 	std::string screenshot_map_, screenshot_filename_;
 
