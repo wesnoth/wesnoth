@@ -524,14 +524,14 @@ void set_user_data_dir(std::string path)
 		//allow absolute path override
 		user_data_dir = path;
 	} else {
-		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPTSTR, int, BOOL);
-		SHGSFPAddress SHGetSpecialFolderPath;
-		HMODULE module = LoadLibrary("shell32");
-		SHGetSpecialFolderPath = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
-		if(SHGetSpecialFolderPath) {
+		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPSTR, int, BOOL);
+		SHGSFPAddress SHGetSpecialFolderPathA;
+		HMODULE module = LoadLibraryA("shell32");
+		SHGetSpecialFolderPathA = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
+		if(SHGetSpecialFolderPathA) {
 			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
 			char my_documents_path[MAX_PATH];
-			if(SHGetSpecialFolderPath(NULL, my_documents_path, 5, 1)) {
+			if(SHGetSpecialFolderPathA(NULL, my_documents_path, 5, 1)) {
 				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
 				boost::algorithm::replace_all(mygames_path, std::string("\\"), std::string("/"));
 				create_directory_if_missing(mygames_path);
