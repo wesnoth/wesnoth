@@ -61,10 +61,10 @@ public:
 	 * Loads image data from @a file and converts it to a texture.
 	 *
 	 * @param renderer            The renderer the texture is associated with.
-	 * @param file                Path of the file to load the pixels from.
 	 * @param access              Access mode of the texture.
+	 * @param file                Path of the file to load the pixels from.
 	 */
-	ttexture(SDL_Renderer& renderer, const std::string& file, int access);
+	ttexture(SDL_Renderer& renderer, const int access, const std::string& file);
 
 	~ttexture();
 

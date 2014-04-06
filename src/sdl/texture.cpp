@@ -38,7 +38,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	}
 }
 
-ttexture::ttexture(SDL_Renderer& renderer, const std::string& file, int access)
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   const std::string& file)
 	: reference_count_(new unsigned(1))
 	, texture_(NULL)
 	, source_surface_(IMG_Load(file.c_str()))
