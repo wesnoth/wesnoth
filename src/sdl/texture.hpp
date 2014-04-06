@@ -26,7 +26,6 @@
 
 #include <SDL_render.h>
 #include <string>
-#include <sdl_utils.hpp>
 
 namespace sdl
 {
@@ -37,7 +36,6 @@ namespace sdl
 class ttexture
 {
 public:
-
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
 	/**
@@ -63,15 +61,10 @@ public:
 	 * Loads image data from @a file and converts it to a texture.
 	 *
 	 * @param renderer            The renderer the texture is associated with.
-	 * @param file                Path of the file to load the pixels from.
 	 * @param access              Access mode of the texture.
-	 * @param keep_surface        Whether a copy of the image should be kept in
-	 *                            an SDL_Surface.
+	 * @param file                Path of the file to load the pixels from.
 	 */
-	ttexture(SDL_Renderer& renderer,
-			 const std::string& file,
-			 int access,
-			 bool keep_surface = false);
+	ttexture(SDL_Renderer& renderer, const int access, const std::string& file);
 
 	~ttexture();
 
@@ -80,7 +73,7 @@ public:
 	ttexture& operator=(const ttexture& texture);
 
 
-	/***** ***** ***** Members. ***** ***** *****/
+	/***** ***** ***** Setters and getters. ***** ***** *****/
 
 	/**
 	 * Returns a pointer to the surface the texture was created from, if it was
@@ -89,10 +82,9 @@ public:
 	 * @return                    A pointer to the source surface, or NULL if
 	 *                            it's unavailable.
 	 */
-	surface source_surface() const;
+	const SDL_Surface* source_surface() const;
 
 private:
-
 	/**
 	 * The reference count of the texture.
 	 *
@@ -104,8 +96,18 @@ private:
 	/** The SDL_Texture we manage. */
 	SDL_Texture* texture_;
 
-	/** The SDL_Surface source of the texture. Probably NULL. */
-	surface source_surface_;
+	/**
+	 * The SDL_Surface source of the @ref texture_.
+	 *
+	 * The value of the field dependings on the constructor used:
+	 * - Image loading:
+	 *   Depends on the @p access_mode argument:
+	 *   * SDL_TEXTUREACCESS_STATIC @c NULL.
+	 *   * SDL_TEXTUREACCESS_STREAMING the surface of the loaded image.
+	 * - Other:
+	 *   Always @c NULL.
+	 */
+	SDL_Surface* source_surface_;
 };
 
 } // namespace sdl

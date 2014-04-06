@@ -39,47 +39,44 @@ ttexture::ttexture(SDL_Renderer& renderer,
 }
 
 ttexture::ttexture(SDL_Renderer& renderer,
-				   const std::string& file,
-				   int access,
-				   bool keep_surface)
+				   const int access,
+				   const std::string& file)
 	: reference_count_(new unsigned(1))
 	, texture_(NULL)
-	, source_surface_(NULL)
+	, source_surface_(IMG_Load(file.c_str()))
 {
-	source_surface_ = IMG_Load(file.c_str());
-
-	if (source_surface_ == NULL) {
+	if(source_surface_ == NULL) {
 		throw texception("Failed to create SDL_Texture object.", true);
 	}
 
-	if (access == SDL_TEXTUREACCESS_STATIC) {
+	if(access == SDL_TEXTUREACCESS_STATIC) {
 		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
 
-		if (!keep_surface) {
-			SDL_FreeSurface(source_surface_);
-			source_surface_ = NULL;
-		}
-
-		if (texture_ == NULL) {
+		if(texture_ == NULL) {
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
-	} else if (access == SDL_TEXTUREACCESS_STREAMING) {
+
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = NULL;
+	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
 		texture_ = SDL_CreateTexture(&renderer,
 									 source_surface_->format->format,
 									 SDL_TEXTUREACCESS_STREAMING,
-									 source_surface_->w, source_surface_->h);
+									 source_surface_->w,
+									 source_surface_->h);
 
-		if (texture_ == NULL) {
-			SDL_FreeSurface(source_surface_);
-			source_surface_ = NULL;
+		if(texture_ == NULL) {
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
 
-		SDL_UpdateTexture(texture_, NULL, source_surface_->pixels, source_surface_->pitch);
-
-		if (!keep_surface) {
-			SDL_FreeSurface(source_surface_);
-			source_surface_ = NULL;
+		const int update = SDL_UpdateTexture(texture_,
+											 NULL,
+											 source_surface_->pixels,
+											 source_surface_->pitch);
+		if(update != 0) {
+			throw texception("Failed to update the SDL_Texture object during "
+							 "its construction.",
+							 true);
 		}
 	} else {
 		throw texception("Unknown texture access mode.", false);
@@ -92,11 +89,11 @@ ttexture::~ttexture()
 
 	--(*reference_count_);
 	if(*reference_count_ == 0) {
+		if(source_surface_) {
+			SDL_FreeSurface(source_surface_);
+		}
 		if(texture_) {
 			SDL_DestroyTexture(texture_);
-		}
-		if (source_surface_) {
-			SDL_FreeSurface(source_surface_);
 		}
 		delete reference_count_;
 	}
@@ -122,7 +119,7 @@ ttexture& ttexture::operator=(const ttexture& texture)
 	return *this;
 }
 
-surface ttexture::source_surface() const
+const SDL_Surface* ttexture::source_surface() const
 {
 	return source_surface_;
 }
