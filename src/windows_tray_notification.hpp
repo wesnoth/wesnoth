@@ -18,7 +18,9 @@
 #include <SDL.h>
 #include <string>
 //forces to call Unicode winapi functions instead of ASCII (default)
+#ifndef UNICODE
 #define UNICODE
+#endif
 //defines that mingw misses
 #ifndef _WIN32_IE
     #define _WIN32_IE 0x0600 //specifying target platform to be Windows XP and higher
