@@ -89,11 +89,11 @@ ttexture::~ttexture()
 
 	--(*reference_count_);
 	if(*reference_count_ == 0) {
-		if(texture_) {
-			SDL_DestroyTexture(texture_);
-		}
 		if(source_surface_) {
 			SDL_FreeSurface(source_surface_);
+		}
+		if(texture_) {
+			SDL_DestroyTexture(texture_);
 		}
 		delete reference_count_;
 	}
