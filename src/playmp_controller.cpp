@@ -496,6 +496,11 @@ void playmp_controller::play_network_turn(){
 					}
 				}
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
+				if(player_type_changed_ == true)
+				{
+					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
+					return;
+				}
 				if (result == turn_info::PROCESS_RESTART_TURN) {
 					player_type_changed_ = true;
 					return;
@@ -567,7 +572,14 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data.send_data();
 	}
 	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
-		turn_data.sync_network();
+		turn_info::PROCESS_DATA_RESULT res = turn_data.sync_network();
+		//we should have stopped before getting end turn.
+		//for res == PROCESS_END_TURN a OOS error would be better i think.
+		assert(res == turn_info::PROCESS_CONTINUE || res == turn_info::PROCESS_RESTART_TURN);
+		if(res == turn_info::PROCESS_RESTART_TURN)
+		{
+			player_type_changed_ = true;
+		}
 	}
 	else if (name == "host_transfer"){
 		is_host_ = true;

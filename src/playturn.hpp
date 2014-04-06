@@ -29,9 +29,7 @@ public:
 
 	~turn_info();
 
-	void sync_network();
 
-	void send_data();
 
 	enum PROCESS_DATA_RESULT {
 		PROCESS_CONTINUE,
@@ -40,6 +38,10 @@ public:
 		/** When the host uploaded the next scenario this is returned. */
 		PROCESS_END_LINGER
 		};
+
+	PROCESS_DATA_RESULT sync_network();
+
+	void send_data();
 
 	//function which will process incoming network data, and act on it. If there is
 	//more data than a single turn's worth, excess data will be placed into 'backlog'.
