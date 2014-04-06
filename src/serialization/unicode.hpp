@@ -126,7 +126,7 @@ namespace implementation {
 
 template <typename To, typename From> inline
 To unicode_cast(const From &) {
-	BOOST_STATIC_ASSERT_MSG(sizeof(To) == 0, "Invalid types for unicode_cast");
+	BOOST_STATIC_ASSERT(sizeof(To) == 0);
 	return To();
 }
 
