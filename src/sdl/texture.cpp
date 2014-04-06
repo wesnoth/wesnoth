@@ -38,10 +38,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	}
 }
 
-ttexture::ttexture(SDL_Renderer& renderer,
-				   const std::string& file,
-				   int access,
-				   bool keep_surface)
+ttexture::ttexture(SDL_Renderer& renderer, const std::string& file, int access)
 	: reference_count_(new unsigned(1))
 	, texture_(NULL)
 	, source_surface_(IMG_Load(file.c_str()))
@@ -53,10 +50,8 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	if(access == SDL_TEXTUREACCESS_STATIC) {
 		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
 
-		if(!keep_surface) {
-			SDL_FreeSurface(source_surface_);
-			source_surface_ = NULL;
-		}
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = NULL;
 
 		if(texture_ == NULL) {
 			throw texception("Failed to create SDL_Texture object.", true);
@@ -79,10 +74,6 @@ ttexture::ttexture(SDL_Renderer& renderer,
 						  source_surface_->pixels,
 						  source_surface_->pitch);
 
-		if(!keep_surface) {
-			SDL_FreeSurface(source_surface_);
-			source_surface_ = NULL;
-		}
 	} else {
 		throw texception("Unknown texture access mode.", false);
 	}
