@@ -73,7 +73,7 @@ public:
 	ttexture& operator=(const ttexture& texture);
 
 
-	/***** ***** ***** Members. ***** ***** *****/
+	/***** ***** ***** Setters and getters. ***** ***** *****/
 
 	/**
 	 * Returns a pointer to the surface the texture was created from, if it was
@@ -96,7 +96,17 @@ private:
 	/** The SDL_Texture we manage. */
 	SDL_Texture* texture_;
 
-	/** The SDL_Surface source of the texture. Probably NULL. */
+	/**
+	 * The SDL_Surface source of the @ref texture_.
+	 *
+	 * The value of the field dependings on the constructor used:
+	 * - Image loading:
+	 *   Depends on the @p access_mode argument:
+	 *   * SDL_TEXTUREACCESS_STATIC @c NULL.
+	 *   * SDL_TEXTUREACCESS_STREAMING the surface of the loaded image.
+	 * - Other:
+	 *   Always @c NULL.
+	 */
 	SDL_Surface* source_surface_;
 };
 
