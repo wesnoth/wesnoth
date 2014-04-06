@@ -67,11 +67,15 @@ ttexture::ttexture(SDL_Renderer& renderer, const std::string& file, int access)
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
 
-		SDL_UpdateTexture(texture_,
-						  NULL,
-						  source_surface_->pixels,
-						  source_surface_->pitch);
-
+		const int update = SDL_UpdateTexture(texture_,
+											 NULL,
+											 source_surface_->pixels,
+											 source_surface_->pitch);
+		if(update != 0) {
+			throw texception("Failed to update the SDL_Texture object during "
+							 "its construction.",
+							 true);
+		}
 	} else {
 		throw texception("Unknown texture access mode.", false);
 	}
