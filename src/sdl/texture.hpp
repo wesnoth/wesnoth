@@ -37,7 +37,6 @@ namespace sdl
 class ttexture
 {
 public:
-
 	/***** ***** ***** Constructor and destructor. ***** ***** *****/
 
 	/**
@@ -92,7 +91,6 @@ public:
 	surface source_surface() const;
 
 private:
-
 	/**
 	 * The reference count of the texture.
 	 *
