@@ -51,25 +51,29 @@ turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
 		send_data();
 }
 
-turn_info::~turn_info(){
+turn_info::~turn_info()
+{
 }
 
-void turn_info::sync_network()
+turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 {
+	turn_info::PROCESS_DATA_RESULT retv = turn_info::PROCESS_CONTINUE;
 	if(network::nconnections() > 0) {
 
 		//receive data first, and then send data. When we sent the end of
 		//the AI's turn, we don't want there to be any chance where we
 		//could get data back pertaining to the next turn.
 		config cfg;
-		while(network::connection res = network::receive_data(cfg)) {
+		network::connection res = network::null_connection;
+		while( (retv == turn_info::PROCESS_CONTINUE) &&  (res = network::receive_data(cfg))) {
 			std::deque<config> backlog;
-			process_network_data(cfg,res,backlog,false);
+			retv = process_network_data(cfg,res,backlog,false);
 			cfg.clear();
 		}
 
 		send_data();
 	}
+	return retv;
 }
 
 void turn_info::send_data()
