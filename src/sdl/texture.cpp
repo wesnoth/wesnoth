@@ -42,10 +42,10 @@ ttexture::ttexture(SDL_Renderer& renderer,
 				   const std::string& file,
 				   int access,
 				   bool keep_surface)
-	: reference_count_(new unsigned(1)), texture_(NULL), source_surface_(NULL)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, source_surface_(IMG_Load(file.c_str()))
 {
-	source_surface_ = IMG_Load(file.c_str());
-
 	if(source_surface_ == NULL) {
 		throw texception("Failed to create SDL_Texture object.", true);
 	}
