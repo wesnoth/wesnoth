@@ -50,12 +50,12 @@ ttexture::ttexture(SDL_Renderer& renderer, const std::string& file, int access)
 	if(access == SDL_TEXTUREACCESS_STATIC) {
 		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
 
-		SDL_FreeSurface(source_surface_);
-		source_surface_ = NULL;
-
 		if(texture_ == NULL) {
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
+
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = NULL;
 	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
 		texture_ = SDL_CreateTexture(&renderer,
 									 source_surface_->format->format,
@@ -64,8 +64,6 @@ ttexture::ttexture(SDL_Renderer& renderer, const std::string& file, int access)
 									 source_surface_->h);
 
 		if(texture_ == NULL) {
-			SDL_FreeSurface(source_surface_);
-			source_surface_ = NULL;
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
 
