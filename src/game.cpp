@@ -48,6 +48,10 @@
 #include <boost/iostreams/filter/bzip2.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 
+#include <SDL.h>
+#include <SDL_thread.h>
+
+
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
 #include "vld.h"
 #endif
@@ -406,6 +410,26 @@ static void init_locale() {
 	textdomain (PACKAGE);
 }
 
+static SDL_sem * worker_sem;
+/**
+ * Function used by worker thread to perform unit test with timeout.
+ */
+static int run_unit_test (void * data){
+	std::pair<game_controller*, int*> * mydata = (std::pair<game_controller*, int*> *) data;
+	if (SDL_SemWait(worker_sem) == -1) {
+		std::cerr << "Worker failed to lock worker semaphore!" << std::endl;
+	}
+	game_controller * game = mydata->first; 
+	int * return_value = mydata->second;
+	int ret_val = game->unit_test();
+	*return_value = ret_val;
+
+	if (SDL_SemPost(worker_sem) == -1) {
+		std::cerr << "Worker failed to unlock worker semaphore after working!" << std::endl;
+	}
+	return ret_val;
+}
+
 /**
  * Setups the game environment and enters
  * the titlescreen or game loops.
@@ -522,9 +546,41 @@ static int do_gameloop(int argc, char** argv)
 		loadscreen_manager.reset();
 
 		if(cmdline_opts.unit_test) {
-			int worker_result = game->unit_test();
-			std::cout << ((worker_result == 0) ? "PASS TEST: " : "FAIL TEST: ") << *cmdline_opts.unit_test << std::endl;
-			return worker_result;
+			if(cmdline_opts.timeout && *cmdline_opts.timeout > 0) {
+				int worker_result = 2; //Default timeout return value if worker fails to return
+				worker_sem = SDL_CreateSemaphore(1);
+				if (worker_sem == NULL) {
+					std::cerr << "Failed to create a semaphore for timeout worker thread!" << std::endl;
+					std::cout << "FAIL TEST (TIMEOUT): " << *cmdline_opts.unit_test << std::endl;
+					return 2;
+				}
+
+				std::pair<game_controller *, int *> data(&(*game), &worker_result);
+				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, &data);
+
+				std::cerr << "Setting timer for " << *cmdline_opts.timeout << " ms." << std::endl;
+				int wait_result = SDL_SemWaitTimeout(worker_sem, *cmdline_opts.timeout);
+				if (wait_result == 0) {
+					SDL_SemPost(worker_sem);
+					SDL_DestroySemaphore(worker_sem);
+					return worker_result;
+				} else if (wait_result == -1) {
+					SDL_KillThread(worker); //don't want worker to keep running when game goes out of scope
+					std::cerr << "Error in SemWaitTimeout!" << std::endl;
+					std::cout << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
+					return 2;
+				} else {
+					SDL_KillThread(worker); //don't want worker to keep running when game goes out of scope
+					std::cerr << "Test timed out!" << std::endl;
+					std::cout << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
+					return 2;
+				}
+			}
+			else {
+				int worker_result = game->unit_test();
+				std::cout << ((worker_result == 0) ? "PASS TEST: " : "FAIL TEST: ") << *cmdline_opts.unit_test << std::endl;
+				return worker_result;
+			}
 		}
 
 		if(game->play_test() == false) {
