@@ -4868,8 +4868,7 @@
 		B5BB6B4D0F890FBC00444FBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -4887,6 +4886,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
@@ -4921,8 +4921,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -4949,13 +4948,14 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = macosx;
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
