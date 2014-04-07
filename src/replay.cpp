@@ -701,10 +701,10 @@ bool do_replay(int side_num)
 	}
 
 	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
-	return do_replay_handle(side_num, "");
+	return do_replay_handle(side_num);
 }
 
-bool do_replay_handle(int side_num, const std::string &do_untill)
+bool do_replay_handle(int side_num)
 {
 	
 	//team &current_team = (*resources::teams)[side_num - 1];
@@ -728,13 +728,6 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
-			return false;
-		}
-
-		// We return if caller wants it for this tag
-		if (!do_untill.empty() && cfg->child(do_untill))
-		{
-			get_replay_source().revert_action();
 			return false;
 		}
 
@@ -973,7 +966,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		/*
 			there might be speak or similar commands in the replay before the user input.
 		*/
-		do_replay_handle(current_side, name);
+		do_replay_handle(current_side);
 
 		/*
 			these value might change due to player left/reassign during pull_remote_user_input

@@ -221,7 +221,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	*/
 	while(true){
 
-		do_replay_handle(current_side, name);
+		do_replay_handle(current_side);
 		// the current_side on the server is a lie because it can happen on one client we are already executing side 2 
 		bool is_local_side = (*resources::teams)[side-1].is_local();
 		bool is_replay_end = get_replay_source().at_end();
@@ -264,7 +264,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			/* The decision has already been made, and must
 			be extracted from the replay. */
 			DBG_REPLAY << "MP synchronization: replay server choice\n";
-			do_replay_handle(resources::controller->current_side(), name);
+			do_replay_handle(resources::controller->current_side());
 			const config *action = get_replay_source().get_next_action();
 			if (!action) 
 			{
