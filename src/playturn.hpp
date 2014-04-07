@@ -48,9 +48,7 @@ public:
 	//No more than one turn's worth of data will be placed into a single backlog item,
 	//so it is safe to assume that backlog won't be touched if cfg is a member of a previous
 	//backlog.
-	//data will be forwarded to all peers other than 'from', unless 'from' is null, in
-	//which case data will not be forwarded
-	PROCESS_DATA_RESULT process_network_data(const config& cfg,network::connection from,std::deque<config>& backlog, bool skip_replay);
+	PROCESS_DATA_RESULT process_network_data(const config& cfg,std::deque<config>& backlog, bool skip_replay);
 
 	events::generic_event& host_transfer() { return host_transfer_; }
 private:
