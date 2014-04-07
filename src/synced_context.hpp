@@ -21,6 +21,7 @@
 #include "random_new.hpp"
 #include "random_new_synced.hpp"
 #include "generic_event.hpp"
+#include "mouse_handler_base.hpp"
 #include <boost/shared_ptr.hpp>
 class config;
 
@@ -151,6 +152,7 @@ private:
 	boost::shared_ptr<random_new::rng> new_rng_;
 	checkup* old_checkup_;
 	synced_checkup new_checkup_;
+	events::command_disabler disabler_;
 };
 
 /*
