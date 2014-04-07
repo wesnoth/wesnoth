@@ -48,7 +48,8 @@ const int team::default_team_gold_ = 100;
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
 const char * const team::attributes[] = {
-	"ai_config", "color", "controller", "current_player", "flag",
+	"ai_config", "color", "controller", "current_player",
+	"fight_on_without_leader", "flag",
 	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
 	"no_leader", "objectives", "objectives_changed", "persistent", "lost",
 	"recall_cost", "recruit", "save_id", "scroll_to_leader",
@@ -101,6 +102,7 @@ team::team_info::team_info() :
 	allow_player(false),
 	chose_random(false),
 	no_leader(true),
+	fight_on_without_leader(false),
 	hidden(true),
 	no_turn_confirmation(false),
 	color(),
@@ -131,6 +133,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
+	fight_on_without_leader = cfg["fight_on_without_leader"].to_bool(false);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
@@ -257,6 +260,7 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
+	cfg["fight_on_without_leader"] = fight_on_without_leader;
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
