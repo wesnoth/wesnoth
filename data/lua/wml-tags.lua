@@ -367,37 +367,23 @@ wml_actions["while"] = function( cfg )
 end
 
 function wml_actions.switch(cfg)
-	-- check if variable= is missing
-	if not cfg.variable then
-		helper.wml_error "[switch] missing required variable= attribute"
-	end 
-	local variable = wesnoth.get_variable(cfg.variable)
+	local value = wesnoth.get_variable(cfg.variable)
 	local found = false
-
-	-- check if the [case] sub-tag is missing, and raise error if so
-	if not helper.get_child( cfg, "case" ) then
-		helper.wml_error "[switch] missing required [case] tag"
-	end
-
 	-- Execute all the [case]s where the value matches.
-	for case_child in helper.child_range(cfg, "case") do
-		-- warn if value= isn't present; it may be false, so check only for nil
-		if case_child.value == nil then
-			helper.wml_error "[case] missing required value= attribute"
-		end
+	for v in helper.child_range(cfg, "case") do
 		local match = false
-		for w in string.gmatch(case_child.value, "[^%s,][^,]*") do
-			if w == tostring(variable) then match = true ; break end
+		for w in string.gmatch(v.value, "[^%s,][^,]*") do
+			if w == tostring(value) then match = true ; break end
 		end
 		if match then
-			handle_event_commands(case_child)
+			handle_event_commands(v)
 			found = true
 		end
 	end
 	-- Otherwise execute [else] statements.
 	if not found then
-		for else_child in helper.child_range(cfg, "else") do
-			handle_event_commands(else_child)
+		for v in helper.child_range(cfg, "else") do
+			handle_event_commands(v)
 		end
 	end
 end

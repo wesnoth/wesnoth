@@ -106,30 +106,12 @@ void controller::resolve_wml(const vconfig& cfg)
 		}
 		// [switch]
 		else if(key == "switch") {
-			// raise a WML error and exit if variable= is missing
-			if (!node.has_attribute("variable")) {
-				lg::wml_error << "[switch] missing required variable= attribute\n";
-				return;
-			}
 			const std::string var_name = node["variable"];
 			const std::string var_actual_value = resources::gamedata->get_variable_const(var_name);
 			bool case_not_found = true;
 
-			// check if the [switch] tag has a [case] child;
-			// if not, raise a WML error and exit to make the mistake as much evident as possible
-			if (!node.has_child("case")) {
-				lg::wml_error << "[switch] missing required [case] tag\n";
-				return;
-			}
-
 			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
 				if(j->first != "case") continue;
-				
-				// raise a WML error and exit if value= is missing
-				if (!(j->second).has_attribute("value")) {
-					lg::wml_error << "[case] missing required value= attribute\n";
-					return;
-				}
 
 				// Enter all matching cases.
 				const std::string var_expected_value = (j->second)["value"];
