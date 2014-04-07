@@ -101,7 +101,7 @@ void turn_info::handle_turn(
 		//turn_end = do_replay(team_num_, &replay_);
 		//note, that this cunfion might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 		recorder.add_config(t, replay::MARK_AS_SENT);
-		turn_end = do_replay(team_num_);
+		turn_end = do_replay(team_num_) == REPLAY_FOUND_END_TURN;
 		recorder.set_skip(was_skipping);
 		
 	} else {

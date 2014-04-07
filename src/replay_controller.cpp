@@ -444,7 +444,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			// if have reached the end we don't want to execute finish_side_turn and finish_turn
 			// becasue we might not have enough data to execute them (like advancements during turn_end for example)
 			// !has_end_turn == we reached the end of teh replay without finding and end turn tag.
-			has_end_turn = do_replay(player_number_);
+			has_end_turn = do_replay(player_number_) == REPLAY_FOUND_END_TURN;
 			if(!has_end_turn)
 			{
 				return;
