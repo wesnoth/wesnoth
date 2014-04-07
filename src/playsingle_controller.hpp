@@ -17,6 +17,7 @@
 #define PLAYSINGLE_CONTROLLER_H_INCLUDED
 
 #include "play_controller.hpp"
+#include "playturn_network_adapter.hpp"
 #include "replay.hpp"
 
 class playsingle_controller : public play_controller
@@ -92,10 +93,10 @@ protected:
 	void store_gold(bool obs = false);
 
 	const cursor::setter cursor_setter;
-	std::deque<config> data_backlog_;
 	gui::floating_textbox textbox_info_;
 
 	replay_network_sender replay_sender_;
+	playturn_network_adapter network_reader_;
 
 	bool end_turn_;
 	bool player_type_changed_;
