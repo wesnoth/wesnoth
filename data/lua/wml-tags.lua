@@ -334,11 +334,6 @@ wml_actions.command = handle_event_commands
 -- the table, using the [] operator, rather than by using the point syntax
 
 wml_actions["if"] = function( cfg )
-	-- raise error if [then] is missing
-	--if not helper.get_child( cfg, "then" ) then
-	--	helper.wml_error "[if] missing required [then] tag"
-	--end
-
 	if wesnoth.eval_conditional( cfg ) then -- evalutate [if] tag
 		for then_child in helper.child_range ( cfg, "then" ) do
 			handle_event_commands( then_child )
@@ -346,10 +341,6 @@ wml_actions["if"] = function( cfg )
 		return -- stop after executing [then] tags
 	else
 		for elseif_child in helper.child_range ( cfg, "elseif" ) do
-			-- there's no point in executing [elseif] without [then]
-			--if not helper.get_child( elseif_child, "then" ) then
-			--	helper.wml_error "[elseif] missing required [then] tag"
-			--end
 			if wesnoth.eval_conditional( elseif_child ) then -- we'll evalutate the [elseif] tags one by one
 				for then_tag in helper.child_range( elseif_child, "then" ) do
 					handle_event_commands( then_tag )
@@ -365,11 +356,7 @@ wml_actions["if"] = function( cfg )
 end
 
 wml_actions["while"] = function( cfg )
-	-- check if the [do] sub-tag is missing, and raise error if so
-	if not helper.get_child( cfg, "do" ) then
-		helper.wml_error "[while] missing required [do] tag"
-	end
-	-- we have at least one [do], execute them up to 65536 times
+	-- execute [do] up to 65536 times
 	for i = 1, 65536 do
 		if wesnoth.eval_conditional( cfg ) then
 			for do_child in helper.child_range( cfg, "do" ) do
