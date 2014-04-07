@@ -692,7 +692,7 @@ static void show_oos_error_error_function(const std::string& message, bool /*hea
 	replay::process_error(message);
 }
 
-bool do_replay(int side_num)
+REPLAY_RETURN do_replay(int side_num)
 {
 	log_scope("do replay");
 
@@ -704,7 +704,7 @@ bool do_replay(int side_num)
 	return do_replay_handle(side_num);
 }
 
-bool do_replay_handle(int side_num)
+REPLAY_RETURN do_replay_handle(int side_num)
 {
 	
 	//team &current_team = (*resources::teams)[side_num - 1];
@@ -728,7 +728,7 @@ bool do_replay_handle(int side_num)
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
-			return false;
+			return REPLAY_RETURN_AT_END;
 		}
 
 		config::all_children_itors ch_itors = cfg->all_children_range();
@@ -815,7 +815,7 @@ bool do_replay_handle(int side_num)
 				verify(*resources::units, child);
 			}
 
-			return true;
+			return REPLAY_FOUND_END_TURN;
 		}
 		else if (const config &child = cfg->child("countdown_update"))
 		{
@@ -850,7 +850,7 @@ bool do_replay_handle(int side_num)
 			std::string child_name = cfg->all_children_range().first->key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
 			get_replay_source().revert_action();
-			return false;
+			return REPLAY_FOUND_DEPENDENT;
 		}
 		else
 		{

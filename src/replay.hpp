@@ -154,11 +154,17 @@ replay& get_replay_source();
 
 extern replay recorder;
 
+enum REPLAY_RETURN 
+{
+	REPLAY_RETURN_AT_END,
+	REPLAY_FOUND_DEPENDENT,
+	REPLAY_FOUND_END_TURN
+};
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
-bool do_replay(int side_num);
+REPLAY_RETURN do_replay(int side_num);
 
-bool do_replay_handle(int side_num);
+REPLAY_RETURN do_replay_handle(int side_num);
 
 class replay_network_sender
 {
