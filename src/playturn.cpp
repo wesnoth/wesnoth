@@ -64,10 +64,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 		//the AI's turn, we don't want there to be any chance where we
 		//could get data back pertaining to the next turn.
 		config cfg;
-		network::connection res = network::null_connection;
-		while( (retv == turn_info::PROCESS_CONTINUE) &&  (res = network::receive_data(cfg))) {
+		while( (retv == turn_info::PROCESS_CONTINUE) &&  (network::receive_data(cfg) != network::null_connection)) {
 			std::deque<config> backlog;
-			retv = process_network_data(cfg,res,backlog,false);
+			retv = process_network_data(cfg,backlog,false);
 			cfg.clear();
 		}
 
@@ -123,7 +122,7 @@ void turn_info::do_save()
 }
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
-		network::connection /*from*/, std::deque<config>& backlog, bool skip_replay)
+		std::deque<config>& backlog, bool skip_replay)
 {
 	// we cannot be connected to multiple peers anymore because 
 	// the simple wesnothserver implementation in wesnoth was removed years ago. 

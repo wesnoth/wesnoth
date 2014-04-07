@@ -194,7 +194,7 @@ void playmp_controller::play_human_turn(){
 			std::deque<config> backlog;
 
 			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+				if (turn_data_->process_network_data(cfg, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
 				{
 					// Clean undo stack if turn has to be restarted (losing control)
 					if ( undo_stack_->can_undo() )
@@ -408,7 +408,7 @@ void playmp_controller::wait_for_upload()
 
 			std::deque<config> backlog;
 			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_)
+				if (turn_data_->process_network_data(cfg, backlog, skip_replay_)
 						== turn_info::PROCESS_END_LINGER) {
 					break;
 				}
@@ -478,15 +478,12 @@ void playmp_controller::play_network_turn(){
 			bool have_data = false;
 			config cfg;
 
-			network::connection from = network::null_connection;
-
 			if(data_backlog_.empty() == false) {
 				have_data = true;
 				cfg = data_backlog_.front();
 				data_backlog_.pop_front();
 			} else {
-				from = network::receive_data(cfg);
-				have_data = from != network::null_connection;
+				have_data = network::receive_data(cfg) != network::null_connection;
 			}
 
 			if(have_data) {
@@ -495,7 +492,7 @@ void playmp_controller::play_network_turn(){
 						skip_replay_ = false;
 					}
 				}
-				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
+				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, data_backlog_, skip_replay_);
 				if(player_type_changed_ == true)
 				{
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
