@@ -2057,14 +2057,6 @@
 		EC5C246318EF07EF001FA499 /* libpangocairo-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangocairo-1.0.0.dylib"; path = "lib/libpangocairo-1.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.0.dylib"; path = "lib/libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
 		EC5C246518EF07F0001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
-		EC5C246618EF07F0001FA499 /* libX11-xcb.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libX11-xcb.1.dylib"; path = "lib/libX11-xcb.1.dylib"; sourceTree = "<group>"; };
-		EC5C246718EF07F1001FA499 /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = lib/libX11.6.dylib; sourceTree = "<group>"; };
-		EC5C246818EF07F1001FA499 /* libXau.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXau.6.dylib; path = lib/libXau.6.dylib; sourceTree = "<group>"; };
-		EC5C246918EF07F1001FA499 /* libxcb-render.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libxcb-render.0.dylib"; path = "lib/libxcb-render.0.dylib"; sourceTree = "<group>"; };
-		EC5C246A18EF07F2001FA499 /* libxcb.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxcb.1.dylib; path = lib/libxcb.1.dylib; sourceTree = "<group>"; };
-		EC5C246B18EF07F2001FA499 /* libXdmcp.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXdmcp.6.dylib; path = lib/libXdmcp.6.dylib; sourceTree = "<group>"; };
-		EC5C246C18EF07F3001FA499 /* libXext.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXext.6.dylib; path = lib/libXext.6.dylib; sourceTree = "<group>"; };
-		EC5C246D18EF07F3001FA499 /* libXrender.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXrender.1.dylib; path = lib/libXrender.1.dylib; sourceTree = "<group>"; };
 		EC5C246E18EF07F3001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
 		EC6069E218EF662300CD8408 /* pangorc */ = {isa = PBXFileReference; lastKnownFileType = text; name = pangorc; path = Resources/pangorc; sourceTree = "<group>"; };
 		EC89A1061879D17D00A3B0B1 /* lapi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lapi.cpp; sourceTree = "<group>"; };
@@ -2112,7 +2104,6 @@
 		ECAA3FE618E0E4EF002E8998 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
 		ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = format_time_summary.cpp; sourceTree = "<group>"; };
 		ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = format_time_summary.hpp; sourceTree = "<group>"; };
-		ECF1642318EE00D900F84C55 /* libpng16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.dylib; path = lib/libpng16.dylib; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wml_error.cpp; path = gui/dialogs/wml_error.cpp; sourceTree = "<group>"; };
 		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = wml_error.hpp; path = gui/dialogs/wml_error.hpp; sourceTree = "<group>"; };
 		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = command_executor.cpp; path = hotkey/command_executor.cpp; sourceTree = "<group>"; };
@@ -2378,16 +2369,7 @@
 				EC5C246318EF07EF001FA499 /* libpangocairo-1.0.0.dylib */,
 				EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */,
 				EC5C246518EF07F0001FA499 /* libpng16.16.dylib */,
-				EC5C246618EF07F0001FA499 /* libX11-xcb.1.dylib */,
-				EC5C246718EF07F1001FA499 /* libX11.6.dylib */,
-				EC5C246818EF07F1001FA499 /* libXau.6.dylib */,
-				EC5C246918EF07F1001FA499 /* libxcb-render.0.dylib */,
-				EC5C246A18EF07F2001FA499 /* libxcb.1.dylib */,
-				EC5C246B18EF07F2001FA499 /* libXdmcp.6.dylib */,
-				EC5C246C18EF07F3001FA499 /* libXext.6.dylib */,
-				EC5C246D18EF07F3001FA499 /* libXrender.1.dylib */,
 				EC5C246E18EF07F3001FA499 /* libz.1.dylib */,
-				ECF1642318EE00D900F84C55 /* libpng16.dylib */,
 				B597C49D0FACD3F900CE81F5 /* tests */,
 				B5BB6B560F893DE000444FBF /* server */,
 				080E96DDFE201D6D7F000001 /* Mac-specific */,
