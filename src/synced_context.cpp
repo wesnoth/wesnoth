@@ -287,19 +287,19 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 }
 
 set_scontext_synced::set_scontext_synced(const std::string& commandname)
-	: new_rng_(synced_context::get_rng_for(commandname)), new_checkup_(recorder.get_last_real_command().child_or_add("checkup"))
+	: new_rng_(synced_context::get_rng_for(commandname)), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced()
-	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup"))
+	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced(int number)
-	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number)))
+	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
 {
 	init();
 }
