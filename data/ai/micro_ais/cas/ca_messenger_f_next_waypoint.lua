@@ -1,6 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
+local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 return function(messenger, cfg)
     -- Store which waypoint to go to next in the unit

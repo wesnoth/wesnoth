@@ -1,9 +1,9 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local ca_messenger_attack = {}
-
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
+
+local ca_messenger_attack = {}
 
 local function messenger_find_enemies_in_way(unit, goal_x, goal_y)
     -- Returns the first unit on or next to the path of the messenger

@@ -2,9 +2,9 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
-local ca_herding_sheep_move = {}
-
 local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
+
+local ca_herding_sheep_move = {}
 
 function ca_herding_sheep_move:evaluation(ai, cfg)
    -- If nothing else is to be done, the sheep do a random move
