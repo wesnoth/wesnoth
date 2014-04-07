@@ -1,9 +1,9 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local ca_herding_herd_sheep = {}
-
 local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
+
+local ca_herding_herd_sheep = {}
 
 function ca_herding_herd_sheep:evaluation(ai, cfg)
     -- If dogs have moves left, and there is a sheep with moves left outside the

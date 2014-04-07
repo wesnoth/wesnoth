@@ -1,11 +1,11 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
-local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
-
-local ca_messenger_escort_move = {}
+local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
+
+local ca_messenger_escort_move = {}
 
 function ca_messenger_escort_move:evaluation(ai, cfg)
     -- Move escort units close to messengers, and in between messengers and enemies
