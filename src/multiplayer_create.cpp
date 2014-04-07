@@ -236,6 +236,10 @@ void create::process_event()
 				engine_.prepare_for_campaign(difficulty);
 			}
 
+			if (engine_.current_level_type() == level::SCENARIO) {
+				engine_.prepare_for_scenario();
+			}
+
 			engine_.prepare_for_new_level();
 
 			set_result(CREATE);

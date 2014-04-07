@@ -806,6 +806,7 @@ game_classification::game_classification():
 	campaign_type(),
 	campaign_define(),
 	campaign_xtra_defines(),
+	scenario_define(),
 	campaign(),
 	history(),
 	abbrev(),
@@ -824,6 +825,7 @@ game_classification::game_classification(const config& cfg):
 	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"].str()),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
+	scenario_define(cfg["scenario_define"]),
 	campaign(cfg["campaign"]),
 	history(cfg["history"]),
 	abbrev(cfg["abbrev"]),
@@ -842,6 +844,7 @@ game_classification::game_classification(const game_classification& gc):
 	campaign_type(gc.campaign_type),
 	campaign_define(gc.campaign_define),
 	campaign_xtra_defines(gc.campaign_xtra_defines),
+	scenario_define(gc.scenario_define),
 	campaign(gc.campaign),
 	history(gc.history),
 	abbrev(gc.abbrev),
@@ -863,6 +866,7 @@ config game_classification::to_config() const
 	cfg["campaign_type"] = campaign_type;
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
+	cfg["scenario_define"] = scenario_define;
 	cfg["campaign"] = campaign;
 	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
@@ -1063,6 +1067,7 @@ void game_state::write_snapshot(config& cfg, game_display* gui) const
 
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
+	cfg["scenario_define"] = classification_.scenario_define;
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 
 	cfg["end_credits"] = classification_.end_credits;
