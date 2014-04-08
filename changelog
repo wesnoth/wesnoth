@@ -1,11 +1,19 @@
 Version 1.13.0-dev:
  * AI:
+   * Messenger Escort Micro AI: new optional parameters [filter],
+     [filter_second] and invert_order=
+   * Messenger Escort Micro AI: bug fix for escort units blocking messenger's
+     progress
+   * Several Micro AIs: fix a variety of rarely occurring but serious bugs, such
+     as invalid savegames or disabling the AI from working for the rest of the
+     turn or after changing the Micro AI settings.
+   * Bug fix for requiring unnecessary keys for removal of several Micro AIs
    * Fixed a bug that made it impossible to change or delete Micro AIs after a
      game had been reloaded (bug #21750). This was a general bug in the RCA AI
      mechanism and applied to other CAs as well, but it was most visible in the
      Micro AIs.
-   * Messenger Micro AI: fix rare bug in attacks by messenger
-   * Patrol Micro AI: fixed bug in the attack part of this MAI
+   * Some internal reorganization of Micro AI code to facilitate customizing
+     MAIs for UMC and adding functionality from other versions of Wesnoth
  * Campaigns:
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
@@ -54,7 +62,7 @@ Version 1.13.0-dev:
    * Fix bug #21257: Lagging animations with skip AI animations and fog/shroud.
    * Improved unicode handling on windows for characters outside the Basic
      Multilingual Plane.
-   * Fix bug #3856: The turn dialog used in hotseat MP play now applies 
+   * Fix bug #3856: The turn dialog used in hotseat MP play now applies
      a blindfold for the duration of the dialog.
    * Petrified units are no longer displayed in the "Damage versus" tooltip.
    * Fix bug #21759: "timer refreshed too often when time runs out"
@@ -63,12 +71,15 @@ Version 1.13.0-dev:
      Fixes bug #21888.
    * MP server now commits controller changes to the replay rather than updating
      as we go along. Among other things these means that players that join an
-     scenario with ai sides which has already started won't have corrupted 
-     controller types which would prevent them from successfully saving and 
-     reloading in the future. 
-     We have also moved all "controller tweaks" associated to the start of MP 
+     scenario with ai sides which has already started won't have corrupted
+     controller types which would prevent them from successfully saving and
+     reloading in the future.
+     We have also moved all "controller tweaks" associated to the start of MP
      games to server-side rather than having a mix of client and server code.
    * Fixup user-displayed strings associated to replay options, idle state
+   * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
+     performance on retina devices.
+   * Upgrade Xcode project to enable both i386 and x86_64 builds
 
 Version 1.11.11:
  * Add-ons server:
