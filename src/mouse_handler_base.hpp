@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -53,7 +53,7 @@ public:
 	bool is_dragging() const;
 
 	//minimum dragging distance to fire the drag&drop
-	virtual int drag_threshold() const {return 0;};
+	virtual int drag_threshold() const {return 0;}
 
 	void mouse_motion_event(const SDL_MouseMotionEvent& event, const bool browse);
 
@@ -79,6 +79,13 @@ public:
 	bool is_left_click(const SDL_MouseButtonEvent& event) const;
 	bool is_middle_click(const SDL_MouseButtonEvent& event) const;
 	bool is_right_click(const SDL_MouseButtonEvent& event) const;
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+	/**
+	 * Called when scrolling with the mouse wheel.
+	 */
+	virtual void mouse_wheel(int xscroll, int yscroll, bool browse);
+#endif
 
 	/**
 	 * Derived classes can override this to disable mousewheel scrolling under
@@ -134,6 +141,33 @@ public:
 	 */
 	virtual void right_mouse_up(int x, int y, const bool browse);
 
+	/**
+	 * Called when the mouse wheel is scrolled up
+	 */
+	virtual void mouse_wheel_up(int x, int y, const bool browse);
+
+	/**
+	 * Called when the mouse wheel is scrolled down
+	 */
+	virtual void mouse_wheel_down(int x, int y, const bool browse);
+
+	/**
+	 * Called when the mouse wheel is scrolled left
+	 */
+	virtual void mouse_wheel_left(int x, int y, const bool browse);
+
+	/**
+	 * Called when the mouse wheel is scrolled right
+	 */
+	virtual void mouse_wheel_right(int x, int y, const bool browse);
+
+	/**
+	 * Called when the middle click scrolling
+	 */
+	void set_scroll_start (int x, int y) { scroll_start_x_ = x; scroll_start_y_ = y; }
+	const map_location get_scroll_start () { return map_location(scroll_start_x_, scroll_start_y_); }
+	bool scroll_started() { return scroll_started_; }
+
 protected:
 	void cancel_dragging();
 	void clear_dragging(const SDL_MouseButtonEvent& event, bool browse);
@@ -161,6 +195,11 @@ protected:
 
 	/** Show context menu flag */
 	bool show_menu_;
+	
+	/** Relative to middle click scrolling */
+	int scroll_start_x_;
+	int scroll_start_y_;
+	bool scroll_started_;
 };
 
 } // end namespace events

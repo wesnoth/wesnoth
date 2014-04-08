@@ -43,7 +43,7 @@ function ca_herding_sheep_move:execution(ai, cfg)
     if herding_area:get(x, y) or (not dogs[1]) or ((x == sheep.x) and (y == sheep.y)) then
         AH.movefull_stopunit(ai, sheep, x, y)
     else
-        ai.move(sheep, x, y)
+        AH.checked_move(ai, sheep, x, y)
     end
 end
 

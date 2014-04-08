@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,25 +19,26 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/horizontal_scrollbar.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_horizontal_scrollbar::tbuilder_horizontal_scrollbar(const config& cfg)
-   : tbuilder_control(cfg)
+	: tbuilder_control(cfg)
 {
 }
 
 twidget* tbuilder_horizontal_scrollbar::build() const
 {
-	thorizontal_scrollbar *widget = new thorizontal_scrollbar();
+	thorizontal_scrollbar* widget = new thorizontal_scrollbar();
 
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder:"
-			<< " placed horizontal scrollbar '" << id
-			<< "' with definition '" << definition
-			<< "'.\n";
+			  << " placed horizontal scrollbar '" << id << "' with definition '"
+			  << definition << "'.\n";
 
 	return widget;
 }
@@ -68,4 +69,3 @@ twidget* tbuilder_horizontal_scrollbar::build() const
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * A horizontal scrollbar has no special fields.
  */
-

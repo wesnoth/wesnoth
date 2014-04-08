@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,19 +17,20 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_create_game_set_password : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
-	 * @param password [in]       The initial value for the password.
-	 * @param password [out]      The password selected by the user if the
-	 *                            dialog returns @ref twindow::OK undefined
-	 *                            otherwise.
+	 * @param [in, out] password  The parameter's usage is:
+	 *                            - Input: The initial value for the password.
+	 *                            - Output: The password selected by the user
+	 *                              if the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 */
 	explicit tmp_create_game_set_password(std::string& password);
 
@@ -40,7 +41,6 @@ public:
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };

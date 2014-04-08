@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -104,14 +104,11 @@ manager::manager() :
 		preferences::erase("mp_countdown_action_bonus");
 	}
 
-	const std::vector<std::string> v = utils::split(preferences::get("encountered_units"));
-	std::copy(v.begin(), v.end(),
-			std::inserter(encountered_units_set, encountered_units_set.begin()));
+	const std::vector<std::string> v (utils::split(preferences::get("encountered_units")));
+	encountered_units_set.insert(v.begin(), v.end());
 
-	const t_translation::t_list terrain =
-			t_translation::read_list(preferences::get("encountered_terrain_list"));
-	std::copy(terrain.begin(), terrain.end(),
-			std::inserter(encountered_terrains_set, encountered_terrains_set.begin()));
+	const t_translation::t_list terrain (t_translation::read_list(preferences::get("encountered_terrain_list")));
+	encountered_terrains_set.insert(terrain.begin(), terrain.end());
 
 	if (const config &history = preferences::get_child("history"))
 	{
@@ -135,12 +132,9 @@ manager::manager() :
 
 manager::~manager()
 {
-	std::vector<std::string> v;
-	std::copy(encountered_units_set.begin(), encountered_units_set.end(), std::back_inserter(v));
+	std::vector<std::string> v (encountered_units_set.begin(), encountered_units_set.end());
 	preferences::set("encountered_units", utils::join(v));
-	t_translation::t_list terrain;
-	std::copy(encountered_terrains_set.begin(), encountered_terrains_set.end(),
-			  std::back_inserter(terrain));
+	t_translation::t_list terrain (encountered_terrains_set.begin(), encountered_terrains_set.end());
 	preferences::set("encountered_terrain_list", t_translation::write_list(terrain));
 
 /* Structure of the history
@@ -652,6 +646,16 @@ void set_skip_mp_replay(bool value)
 	preferences::set("skip_mp_replay", value);
 }
 
+bool blindfold_replay()
+{
+	return preferences::get("blindfold_replay", false);
+}
+
+void set_blindfold_replay(bool value)
+{
+	preferences::set("blindfold_replay", value);
+}
+
 bool countdown()
 {
 	return preferences::get("mp_countdown", false);
@@ -859,7 +863,11 @@ std::string theme()
 
 	std::string res = preferences::get("theme");
 	if(res.empty()) {
+#ifndef PANDORA
 		return "Default";
+#else
+		return "Pandora";
+#endif
 	}
 
 	return res;
@@ -913,9 +921,25 @@ void set_flip_time(bool value)
 	preferences::set("flip_time", value);
 }
 
-bool compress_saves()
+compression::format save_compression_format()
 {
-	return preferences::get("compress_saves", true);
+	const std::string& choice =
+		preferences::get("compress_saves");
+
+	// "yes" was used in 1.11.7 and earlier; the compress_saves
+	// option used to be a toggle for gzip in those versions.
+	if(choice.empty() || choice == "gzip" || choice == "yes") {
+		return compression::GZIP;
+	} else if(choice == "bzip2") {
+		return compression::BZIP2;
+	} else if(choice == "none" || choice == "no") { // see above
+		return compression::NONE;
+	} /*else*/
+
+	// In case the preferences file was created by a later version
+	// supporting some algorithm we don't; although why would anyone
+	// playing a game need more algorithms, really...
+	return compression::GZIP;
 }
 
 bool startup_effect()
@@ -1023,8 +1047,7 @@ void encounter_recruitable_units(std::vector<team>& teams){
 	for (std::vector<team>::iterator help_team_it = teams.begin();
 		help_team_it != teams.end(); ++help_team_it) {
 		help_team_it->log_recruitable();
-		std::copy(help_team_it->recruits().begin(), help_team_it->recruits().end(),
-				  std::inserter(encountered_units_set, encountered_units_set.begin()));
+		encountered_units_set.insert(help_team_it->recruits().begin(), help_team_it->recruits().end());
 	}
 }
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -29,8 +29,8 @@ struct tfilter
 	/**
 	 * The functor to call for the filter.
 	 *
-	 * @param surf                The surface to apply the filter to.
-	 * @param parameters          A string with the parameters for the
+	 * @p surf                    The surface to apply the filter to.
+	 * @p parameters              A string with the parameters for the
 	 *                            functor. The code is expected to be
 	 *                            supplied on the command line. So it should
 	 *                            be validated.

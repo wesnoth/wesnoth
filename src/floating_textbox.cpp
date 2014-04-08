@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -116,7 +116,7 @@ namespace gui{
 		}
 
 
-		box_.assign(new gui::textbox(gui.video(),100,"",true,256,0.8,0.6));
+		box_.assign(new gui::textbox(gui.video(),100,"",true,256,font::SIZE_PLUS,0.8,0.6));
 
 		update_location(gui);
 	}

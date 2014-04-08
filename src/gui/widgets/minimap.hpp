@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,8 @@
 
 class config;
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * The basic minimap class.
@@ -30,10 +31,7 @@ namespace gui2 {
 class tminimap : public tcontrol
 {
 public:
-	tminimap() :
-		tcontrol(1),
-		map_data_(),
-		terrain_(NULL)
+	tminimap() : tcontrol(1), map_data_(), terrain_(NULL)
 	{
 	}
 
@@ -54,16 +52,29 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_map_data(const std::string& map_data)
-		{ if(map_data != map_data_) { map_data_ = map_data; set_is_dirty(true); } }
+	{
+		if(map_data != map_data_) {
+			map_data_ = map_data;
+			set_is_dirty(true);
+		}
+	}
 
-	std::string get_map_data() const { return map_data_; }
+	std::string get_map_data() const
+	{
+		return map_data_;
+	}
 
-	const std::string& map_data() const { return map_data_; }
+	const std::string& map_data() const
+	{
+		return map_data_;
+	}
 
-	void set_config(const ::config* terrain) { terrain_ = terrain; }
+	void set_config(const ::config* terrain)
+	{
+		terrain_ = terrain;
+	}
 
 private:
-
 	/** The map data to be used to generate the map. */
 	std::string map_data_;
 
@@ -88,10 +99,9 @@ private:
 	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_background(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -100,4 +110,3 @@ private:
 } // namespace gui2
 
 #endif
-

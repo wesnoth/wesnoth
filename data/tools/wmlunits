@@ -21,7 +21,7 @@ import unit_tree.html_output as html_output
 import unit_tree.overview
 import unit_tree.wiki_output as wiki_output
 
-TIMEOUT = 5
+TIMEOUT = 15
 
 def copy_images():
     print("Recolorizing pictures.")
@@ -67,6 +67,90 @@ def move(f, t, name):
 
     com = "mv " + f + "/" + bash(name) + " " + t + "/"
     return shell(com)
+   
+_info = {}
+def get_info(addon):
+    global _info
+    if addon in _info:
+        return _info[addon]
+    _info[addon] = None
+    try:
+        path = options.addons + "/" + addon + "/_info.cfg"
+        if os.path.exists(path):
+            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+                options.data_dir, no_preprocess = False)
+            parser.parse_file(path)
+            _info[addon] = parser
+        else:
+            print("Cannot find " + path)
+    except wmlparser2.WMLError as e:
+        print(e)
+    return _info[addon]
+
+_deps = {}
+global_addons = set()
+def get_dependencies(addon):
+    global _deps
+    global global_addons
+    if addon in _deps:
+        return _deps[addon]
+    _deps[addon] = []
+    try:
+        info = get_info(addon).get_all(tag = "info")[0]
+        row = info.get_text_val("dependencies")
+        if row:
+            deps1 = row.split(",")
+        else:
+            deps1 = []
+        for d in deps1:
+            if d in global_addons:
+                _deps[addon].append(d)
+            else:
+                print("Missing dependency for " + addon + ": " + d)
+    except Exception as e:
+        print(e)
+    return _deps[addon]
+
+def set_dependencies(addon, depends_on):
+    _deps[addon] = depends_on
+
+def get_all_dependencies(addon):
+    result = []
+    check = get_dependencies(addon)[:]
+    while check:
+        d = check.pop()
+        if d == addon: continue
+        if d in result: continue
+        result.append(d)
+        check += get_dependencies(d)
+    return result
+
+def sorted_by_dependencies(addons):
+    sorted = []
+    unsorted = addons[:]
+    while unsorted:
+        n = 0
+        for addon in unsorted:
+            for d in get_dependencies(addon):
+                if d not in sorted:
+                    break
+            else:
+                sorted.append(addon)
+                unsorted.remove(addon)
+                n += 1
+                continue
+        if n == 0:
+             print("Cannot sort dependencies for these addons: " + str(unsorted))
+             sorted += unsorted
+             break
+    return sorted
+
+def search(batchlist, name):
+    for info in batchlist:
+        if info and info["name"] == name: return info
+    batchlist.append({})
+    batchlist[-1]["name"] = name
+    return batchlist[-1]
 
 def list_contents():
     class Empty: pass
@@ -85,33 +169,41 @@ def list_contents():
             info[-1]["name"] = name
         info[-1]["units"] = "?"
         info[-1]["translations"] = {}
-        
-        info[-1]["translations"] = {}
+
         for isocode in languages:
             translation = html_output.Translation(options.transdir, isocode)
             def translate(string, domain):
                 return translation.translate(string, domain)
             if c:
-                info[-1]["translations"][isocode] = c.get_text_val("name",
-                    translation = translate)
+                t = c.get_text_val("name", translation = translate)
             else:
-                info[-1]["translations"][isocode] = translate(name, domain)
+                t = translate(name, domain)
+            if t != info[-1]["name"]:
+                info[-1]["translations"][isocode] = t
 
-    def list_eras(addon):
+    def get_dependency_eras(batchlist, addon):
+        dependency_eras = list(mainline_eras)
+        for d in get_all_dependencies(addon):
+            dinfo = search(batchlist, d)
+            for era in dinfo["eras"]:
+                dependency_eras.append(era["id"])
+        return dependency_eras
+
+    def list_eras(batchlist, addon):
         eras = local.wesnoth.parser.get_all(tag = "era")
         if addon != "mainline":
-            eras = [x for x in eras if not x.get_text_val("id") in mainline_eras]
+            dependency_eras = get_dependency_eras(batchlist, addon)
+            eras = [x for x in eras if not x.get_text_val("id") in dependency_eras]
         info = []
         for era in eras:
             eid = era.get_text_val("id")
             if addon == "mainline":
                 mainline_eras.add(eid)
             append(info, eid, "MULTIPLAYER", c = era)
-            
 
         return info
     
-    def list_campaigns(addon):
+    def list_campaigns(batchlist, addon):
         campaigns = local.wesnoth.parser.get_all(tag = "campaign")
         info = []
 
@@ -120,6 +212,9 @@ def list_contents():
             d = campaign.get_text_val("define")
             d2 = campaign.get_text_val("extra_defines")
             if d2: d += "," + d2
+            d3 = campaign.get_text_val("difficulties")
+            if d3:
+                d += "," + d3.split(",")[0]
             append(info, cid, d, c = campaign)
 
         return info
@@ -149,17 +244,14 @@ def list_contents():
         #print("local", s, local.wesnoth)
         p.join()
         if s == "e":
-            raise local.wesnoth
-    
+            remote_exception = local.wesnoth
+            raise remote_exception
+   
     def get_version(addon):
-        try:
-            parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
-                options.data_dir, no_preprocess = False)
-            parser.parse_file(options.config_dir + "/data/add-ons/" + addon + "/_info.cfg")
+        parser = get_info(addon)
+        if parser:
             for info in parser.get_all(tag = "info"):
                 return info.get_text_val("version") + "*" + info.get_text_val("uploads")
-        except wmlparser2.WMLError as e:
-            print(e)
 
     try: os.makedirs(options.output + "/mainline")
     except OSError: pass
@@ -168,35 +260,38 @@ def list_contents():
         batchlist = yaml.load(open(options.list))
     except IOError:
         batchlist = []
-    
-    def search(name):
-        for info in batchlist:
-            if info and info["name"] == name: return info
-        batchlist.append({})
-        batchlist[-1]["name"] = name
-        return batchlist[-1]
 
     print("mainline")
 
-    info = search("mainline")
+    info = search(batchlist, "mainline")
     info["version"] = "mainline"
     info["parsed"] = "false"
 
     parse("{core}{multiplayer/eras.cfg}", "SKIP_CORE")
-    info["eras"] = list_eras("mainline")
+    info["eras"] = list_eras(batchlist, "mainline")
 
     # Fake mainline campaign to have an overview of the mainline units
     info["campaigns"] = []
     append(info["campaigns"], "mainline", "", name = "Units", domain = "wesnoth-help")
         
     if not options.addons_only:
-
         parse("{core}{campaigns}", "SKIP_CORE")
-        info["campaigns"] += list_campaigns("mainline")
+        info["campaigns"] += list_campaigns(batchlist, "mainline")
 
     addons = []
     if options.addons:
         addons = os.listdir(options.addons)
+    global global_addons
+    global_addons = set(addons)
+
+    # fill in the map for all dependencies
+    for addon in addons:
+        get_dependencies(addon)
+
+    # this ensures that info about eras in dependant addons is available
+    # already
+    addons = sorted_by_dependencies(addons)
+
     for i, addon in enumerate(addons):
         if not os.path.isdir(options.addons + "/" + addon): continue
         sys.stdout.write("%4d/%4d " % (1 + i, len(addons)) + addon + " ... ")
@@ -205,19 +300,21 @@ def list_contents():
         logname = d + "/error.log"
         try: os.makedirs(d)
         except OSError: pass
+        version = get_version(addon)
         move(options.addons, options.config_dir + "/data/add-ons", addon)
+        for d in get_dependencies(addon):
+            move(options.addons, options.config_dir + "/data/add-ons", d)
         try:
-            info = search(addon)
+            info = search(batchlist, addon)
 
-            version = get_version(addon)
             if info.get("version", "") == version and info.get("parsed", False) == True:
                 sys.stdout.write("up to date\n")
                 continue
             info["parsed"] = False
-            
+            info["dependencies"] = get_dependencies(addon)
             parse("{core}{multiplayer}{~add-ons}", "MULTIPLAYER,SKIP_CORE")
-            info["eras"] = list_eras(addon)
-            info["campaigns"] = list_campaigns(addon)
+            info["eras"] = list_eras(batchlist, addon)
+            info["campaigns"] = list_campaigns(batchlist, addon)
             info["version"] = version
             sys.stdout.write("ok\n")
         except wmlparser2.WMLError as e:
@@ -234,8 +331,18 @@ def list_contents():
             ef.write("</TIMEOUT ERROR>\n")
             ef.close()
             sys.stdout.write("failed\n")
+        except Exception as e:
+            ef = open(logname, "w")
+            ef.write("<INTERNAL ERROR>\n")
+            ef.write(str(e))
+            ef.write("</INTERNAL ERROR>\n")
+            ef.close()
+            sys.stdout.write("failed\n")
+
         finally:
             move(options.config_dir + "/data/add-ons", options.addons, addon)
+            for d in get_dependencies(addon):
+                move(options.config_dir + "/data/add-ons", options.addons, d)
         
     yaml.safe_dump(batchlist, open(filename, "w"),
         encoding = "utf-8", default_flow_style = False)
@@ -311,6 +418,11 @@ def process_campaign_or_era(addon, cid, define, batchlist):
 
 def batch_process():
     batchlist = yaml.load(open(options.batch))
+
+    for addon in batchlist:
+        name = addon["name"]
+        set_dependencies(name, addon.get("dependencies", []))
+    
     for addon in batchlist:
         name = addon["name"]
         
@@ -320,6 +432,8 @@ def batch_process():
             worked = True
         else:
             worked = (move(options.addons, options.config_dir + "/data/add-ons", name) == 0)
+            for d in addon.get("dependencies", []):
+                move(options.addons, options.config_dir + "/data/add-ons", d)
         d = options.output + "/" + name
         try: os.makedirs(d)
         except OSError: pass
@@ -361,12 +475,15 @@ def batch_process():
             print("    " + name + " failed")
             ef = open(logname, "a")
             ef.write("<INTERNAL ERROR>\n")
-            ef.write("please report as bug")
+            ef.write("please report as bug\n")
+            ef.write(str(e))
             ef.write("</INTERNAL ERROR>\n")
             ef.close()
         finally:
             if name != "mainline":
                 move(options.config_dir + "/data/add-ons", options.addons, name)
+                for d in addon.get("dependencies", []):
+                    move(options.config_dir + "/data/add-ons", options.addons, d)
                 
         addon["parsed"] = True
 
@@ -465,7 +582,7 @@ if __name__ == '__main__':
 
     if not options.output and not options.wiki:
         sys.stderr.write("Need --output (or --wiki).\n")
-        op.print_help()
+        ap.print_help()
         sys.exit(-1)
 
     if options.output:

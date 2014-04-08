@@ -2,6 +2,8 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
+local MAISD = wesnoth.dofile "ai/micro_ais/micro_ai_self_data.lua"
 
 local ca_goto = {}
 
@@ -20,12 +22,8 @@ function ca_goto:evaluation(ai, cfg, self)
     -- If cfg.release_all_units_at_goal is set, check
     -- whether the goal has already been reached, in
     -- which case we do not do anything
-    if cfg.release_all_units_at_goal then
-        for rel in H.child_range(self.data, "goto_release_all") do
-            if (rel.id == cfg.ca_id) then
-                return 0
-            end
-        end
+    if MAISD.get_mai_self_data(self.data, cfg.ai_id, "release_all") then
+        return 0
     end
 
     -- For convenience, we check for locations here, and just pass that to the exec function
@@ -39,7 +37,8 @@ function ca_goto:evaluation(ai, cfg, self)
     --print('#locs org', #locs)
     if (#locs == 0) then return 0 end
 
-    -- If 'unique_goals' is set, check whether there are locations left to go to
+    -- If 'unique_goals' is set, check whether there are locations left to go to.
+    -- This does not have to be a persistent variable
     if cfg.unique_goals then
         -- First, some cleanup of previous turn data
         local str = 'goals_taken_' .. (wesnoth.current.turn - 1)
@@ -64,11 +63,8 @@ function ca_goto:evaluation(ai, cfg, self)
     -- Exclude released units
     if cfg.release_unit_at_goal then
         for i_unit=#units,1,-1 do
-            for rel in H.child_range(self.data, "goto_release_unit") do
-                if (rel.id == cfg.ca_id .. '_' .. units[i_unit].id) then
-                   table.remove(units, i_unit)
-                   break
-                end
+            if MAIUV.get_mai_unit_variables(units[i_unit], cfg.ai_id, "release") then
+                table.remove(units, i_unit)
             end
         end
     end
@@ -157,7 +153,7 @@ function ca_goto:execution(ai, cfg, self)
                 -- Add a small penalty for occupied hexes
                 -- (this mean occupied by an allied unit, as enemies make the hex unreachable)
                 local unit_in_way = wesnoth.get_unit(l[1], l[2])
-                if unit_in_way and ((unit_in_way.x ~= u.x) or (unit_in_way.y ~= u.y)) then
+                if unit_in_way and (unit_in_way ~= u) then
                     rating = rating - 0.01
                 end
 
@@ -202,10 +198,11 @@ function ca_goto:execution(ai, cfg, self)
     end
 
     if closest_hex then
-        ai.move_full(best_unit, closest_hex[1], closest_hex[2])
+        AH.checked_move_full(ai, best_unit, closest_hex[1], closest_hex[2])
     else
-        ai.stopunit_moves(best_unit)
+        AH.checked_stopunit_moves(ai, best_unit)
     end
+    if (not best_unit) or (not best_unit.valid) then return end
 
     -- If release_unit_at_goal= or release_all_units_at_goal= key is set:
     -- Check if the unit made it to one of the goal hexes
@@ -226,12 +223,12 @@ function ca_goto:execution(ai, cfg, self)
         -- 2. Keys cannot contain certain characters -> everything potentially user-defined needs to be in values
         if unit_at_goal then
             if cfg.release_unit_at_goal then
-                table.insert(self.data, { "goto_release_unit" , { id = cfg.ca_id .. '_' .. best_unit.id } } )
+                MAIUV.set_mai_unit_variables(best_unit, cfg.ai_id, { release = true })
             end
 
             if cfg.release_all_units_at_goal then
                 --print("Releasing all units")
-                table.insert(self.data, { "goto_release_all", { id = cfg.ca_id } } )
+                MAISD.insert_mai_self_data(self.data, cfg.ai_id, { release_all = true })
             end
         end
     end

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Maxim Biro <nurupo.contributions@gmail.com>
+   Copyright (C) 2013 - 2014 by Maxim Biro <nurupo.contributions@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 
 #include "gettext.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 NOTIFYICONDATA* windows_tray_notification::nid = NULL;
 bool windows_tray_notification::message_reset = false;
@@ -104,7 +105,7 @@ bool windows_tray_notification::create_tray_icon()
 		return false;
 	}
 
-	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"));
+	const std::wstring& wtip = string_to_wstring(_("The Battle for Wesnoth"), MAX_TITLE_LENGTH);
 
 	// filling notification structure
 	nid = new NOTIFYICONDATA;
@@ -132,8 +133,8 @@ bool windows_tray_notification::set_tray_message(const std::string& title, const
 	message_reset = (nid->uFlags & NIF_INFO) != 0;
 
 	nid->uFlags |= NIF_INFO;
-	lstrcpy(nid->szInfoTitle, string_to_wstring(title).c_str());
-	lstrcpy(nid->szInfo, string_to_wstring(message).c_str());
+	lstrcpy(nid->szInfoTitle, string_to_wstring(title, MAX_TITLE_LENGTH).c_str());
+	lstrcpy(nid->szInfo, string_to_wstring(message, MAX_MESSAGE_LENGTH).c_str());
 
 	// setting notification
 	return Shell_NotifyIcon(NIM_MODIFY, nid) != FALSE;
@@ -176,10 +177,16 @@ void windows_tray_notification::switch_to_wesnoth_window()
 	SetForegroundWindow(window);
 }
 
-std::wstring windows_tray_notification::string_to_wstring(const std::string& string)
+std::wstring windows_tray_notification::string_to_wstring(const std::string& string, size_t maxlength)
 {
-	const std::vector<wchar_t> wide_string = utils::string_to_wstring(string);
-	return std::wstring(wide_string.begin(), wide_string.end());
+	utf16::string u16_string = unicode_cast<utf16::string>(string);
+	if(u16_string.size() > maxlength) {
+		if((u16_string[maxlength-1] & 0xDC00) == 0xD800)
+			u16_string.resize(maxlength - 1);
+		else
+			u16_string.resize(maxlength);
+	}
+	return std::wstring(u16_string.begin(), u16_string.end());
 }
 
 bool windows_tray_notification::show(std::string title, std::string message)

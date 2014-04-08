@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2010 - 2013 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
+ Copyright (C) 2010 - 2014 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
  This program is free software; you can redistribute it and/or modify
@@ -597,8 +597,7 @@ std::deque<action_ptr> side_actions::actions_of(unit const &target)
 	typedef container::action_set::index<container::by_unit>::type::iterator unit_iterator;
 	std::pair<unit_iterator, unit_iterator> action_its = actions_.get<container::by_unit>().equal_range(target.underlying_id());
 
-	std::deque<action_ptr> actions;
-	std::copy(action_its.first, action_its.second, std::back_inserter(actions));
+	std::deque<action_ptr> actions (action_its.first, action_its.second);
 	return actions;
 }
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -20,6 +20,8 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
+#include "resources.hpp"
+#include "play_controller.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -88,14 +90,19 @@ void controller_base::handle_event(const SDL_Event& event)
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		process_keydown_event(event);
+		get_mouse_handler_base().mouse_press(event.button, browse_);
+		if (get_mouse_handler_base().get_show_menu()){
+			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
+		}
 		hotkey::mbutton_event(get_display(), event.button, this);
-		// intentionally fall-through
+		break;
 	case SDL_MOUSEBUTTONUP:
 		get_mouse_handler_base().mouse_press(event.button, browse_);
 		if (get_mouse_handler_base().get_show_menu()){
 			show_menu(get_display().get_theme().context_menu()->items(),event.button.x,event.button.y,true, get_display());
 		}
 		break;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	case SDL_ACTIVEEVENT:
 		if (event.active.state == SDL_APPMOUSEFOCUS && event.active.gain == 0) {
 			if (get_mouse_handler_base().is_dragging()) {
@@ -110,6 +117,12 @@ void controller_base::handle_event(const SDL_Event& event)
 			}
 		}
 		break;
+#endif
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+		get_mouse_handler_base().mouse_wheel(event.wheel.x, event.wheel.y, browse_);
+		break;
+#endif
 	default:
 		break;
 	}
@@ -167,18 +180,25 @@ bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse
 		dx += scroll_speed;
 	}
 	if ((mouse_flags & SDL_BUTTON_MMASK) != 0 && preferences::middle_click_scrolls()) {
-		const SDL_Rect& rect = get_display().map_outside_area();
-		if (point_in_rect(mousex, mousey,rect)) {
-			// relative distance from the center to the border
-			// NOTE: the view is a rectangle, so can be more sensible in one direction
-			// but seems intuitive to use and it's useful since you must
-			// more often scroll in the direction where the view is shorter
-			const double xdisp = ((1.0*mousex / rect.w) - 0.5);
-			const double ydisp = ((1.0*mousey / rect.h) - 0.5);
-			// 4.0 give twice the normal speed when mouse is at border (xdisp=0.5)
-			int speed = 4 * scroll_speed;
-			dx += round_double(xdisp * speed);
-			dy += round_double(ydisp * speed);
+		const map_location original_loc = get_mouse_handler_base().get_scroll_start();
+		
+		if (get_mouse_handler_base().scroll_started()) {
+			const SDL_Rect& rect = get_display().map_outside_area();
+			if (point_in_rect(mousex, mousey,rect) && 
+				get_mouse_handler_base().scroll_started()) {
+				// Scroll speed is proportional from the distance from the first
+				// middle click and scrolling speed preference.
+				const double speed = 0.04 * sqrt(static_cast<double>(scroll_speed));
+				const double snap_dist = 16; // Snap to horizontal/vertical scrolling
+				const double x_diff = (mousex - original_loc.x);
+				const double y_diff = (mousey - original_loc.y);
+				
+				if (fabs(x_diff) > snap_dist || fabs(y_diff) <= snap_dist) dx += speed * x_diff;
+				if (fabs(y_diff) > snap_dist || fabs(x_diff) <= snap_dist) dy += speed * y_diff;
+			}
+		}
+		else { // Event may fire mouse down out of order with respect to initial click
+			get_mouse_handler_base().set_scroll_start(mousex, mousey);
 		}
 	}
 
@@ -278,7 +298,7 @@ void controller_base::show_menu(const std::vector<std::string>& items_arg, int x
 	std::vector<std::string> items = items_arg;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
-		hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
 		if(!can_execute_command(command)
 			|| (context_menu && !in_context_menu(command.id))) {
 			i = items.erase(i);
@@ -297,7 +317,7 @@ void controller_base::execute_action(const std::vector<std::string>& items_arg, 
 	std::vector<std::string> items;
 	BOOST_FOREACH(const std::string& item, items_arg) {
 
-		hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
+		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(item);
 		if(can_execute_command(command))
 			items.push_back(item);
 	}
@@ -318,12 +338,20 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 {
 	if (theme_name.empty()) theme_name = preferences::theme();
 
-	if (const config &c = game_config.find_child("theme", "name", theme_name))
+	if (const config &c = game_config.find_child("theme", "id", theme_name))
 		return c;
+
+	// Themes created for version 1.11.9 and earlier use name= for
+	// untranslatable ids.
+	// TODO: remove support for this in 1.13.x (1.13.2?).
+	if (const config &c = game_config.find_child("theme", "name", theme_name)) {
+		ERR_DP << "Theme '" << theme_name << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x.\n";
+		return c;
+	}
 
 	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme.\n";
 
-	if (const config &c = game_config.find_child("theme", "name", "Default"))
+	if (const config &c = game_config.find_child("theme", "id", "Default"))
 		return c;
 
 	ERR_DP << "Default theme not found.\n";

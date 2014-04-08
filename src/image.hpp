@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -89,7 +89,7 @@ namespace image {
 		int get_center_x() const { return val_.center_x_; }
 		int get_center_y() const { return val_.center_y_; }
 		const std::string& get_modifications() const {return val_.modifications_;}
-		type get_type() const { return val_.type_; };
+		type get_type() const { return val_.type_; }
 		// const int get_index() const { return index_; };
 
 		// returns true if the locator does not correspond to any
@@ -138,6 +138,7 @@ namespace image {
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;
 	extern mini_terrain_cache_map mini_terrain_cache;
 	extern mini_terrain_cache_map mini_fogged_terrain_cache;
+	extern mini_terrain_cache_map mini_highlighted_terrain_cache;
 
 	///light_string store colors info of central and adjacent hexes.
 	///The structure is one or several 4 chars blocks (L,R,G,B)

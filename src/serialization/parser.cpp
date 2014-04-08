@@ -1,7 +1,7 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
    Copyright (C) 2005 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
-   Copyright (C) 2005 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2014 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -64,8 +64,10 @@ private:
 	void parse_element();
 	void parse_variable();
 	std::string lineno_string(utils::string_map &map, std::string const &lineno,
-		const char *error_string);
-	void error(const std::string& message);
+		const std::string &error_string,
+		const std::string &hint_string = "",
+		const std::string &debug_string = "");
+	void error(const std::string& message, const std::string& pos_format = "");
 
 	config& cfg_;
 	tokenizer *tok_;
@@ -122,7 +124,13 @@ void parser::operator()()
 			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
 			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
 			{
-				ERR_CF << "Skipping over a utf8 BOM\n";
+				utils::string_map i18n_symbols;
+				std::stringstream ss;
+				ss << tok_->get_start_line() << " " << tok_->get_file();
+				ERR_CF << lineno_string(i18n_symbols,
+										ss.str(),
+										"Skipping over a utf8 BOM at $pos")
+					   << '\n';
 			} else {
 				error(_("Unexpected characters at line start"));
 			}
@@ -142,7 +150,8 @@ void parser::operator()()
 		std::stringstream ss;
 		ss << elements.top().start_line << " " << elements.top().file;
 		error(lineno_string(i18n_symbols, ss.str(),
-				N_("Missing closing tag for tag [$tag] at $pos")));
+				_("Missing closing tag for tag [$tag]"),
+				_("expected at $pos")), _("opened at $pos"));
 	}
 }
 
@@ -205,7 +214,8 @@ void parser::parse_element()
 			std::stringstream ss;
 			ss << elements.top().start_line << " " << elements.top().file;
 			error(lineno_string(i18n_symbols, ss.str(),
-					N_("Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)")));
+					_("Found invalid closing tag [/$tag2] for tag [$tag1]"),
+					_("opened at $pos")), _("closed at $pos"));
 		}
 		if(validator_){
 			element & el= elements.top();
@@ -339,32 +349,55 @@ void parser::parse_variable()
  * This function is crap. Don't use it on a string_map with prefixes.
  */
 std::string parser::lineno_string(utils::string_map &i18n_symbols,
-	std::string const &lineno, const char *error_string)
+								  std::string const &lineno,
+								  std::string const &error_string,
+								  std::string const &hint_string,
+								  std::string const &debug_string)
 {
 	i18n_symbols["pos"] = ::lineno_string(lineno);
-	std::string result = _(error_string);
+	std::string result = error_string;
+
+	if(!hint_string.empty()) {
+		result += '\n' + hint_string;
+	}
+
+	if(!debug_string.empty()) {
+		result += '\n' + debug_string;
+	}
+
 	BOOST_FOREACH(utils::string_map::value_type& var, i18n_symbols)
 		boost::algorithm::replace_all(result, std::string("$") + var.first, std::string(var.second));
 	return result;
 }
 
-void parser::error(const std::string& error_type)
+void parser::error(const std::string& error_type, const std::string& pos_format)
 {
+	std::string hint_string = pos_format;
+
+	if(hint_string.empty()) {
+		hint_string = _("at $pos");
+	}
+
 	utils::string_map i18n_symbols;
 	i18n_symbols["error"] = error_type;
-	i18n_symbols["value"] = tok_->current_token().value;
+
 	std::stringstream ss;
 	ss << tok_->get_start_line() << " " << tok_->get_file();
+
 #ifdef DEBUG
+	i18n_symbols["value"] = tok_->current_token().value;
 	i18n_symbols["previous_value"] = tok_->previous_token().value;
-	throw config::error(
-		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error, value '$value', previous '$previous_value' at $pos")));
+
+	const std::string& tok_state =
+		_("Value: '$value' Previous: '$previous_value'");
 #else
-	throw config::error(
-		lineno_string(i18n_symbols, ss.str(),
-		              N_("$error, value '$value' at $pos")));
+	const std::string& tok_state = "";
 #endif
+
+	const std::string& message =
+		lineno_string(i18n_symbols, ss.str(), "$error", hint_string, tok_state);
+
+	throw config::error(message);
 }
 
 } // end anon namespace

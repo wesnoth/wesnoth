@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -187,7 +187,7 @@ void testing_move_to_targets_phase::execute()
 
 // structure storing the maximal possible rating of a target
 struct rated_target{
-	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {};
+	rated_target(const std::vector<target>::iterator& t, double r) : tg(t), max_rating(r) {}
 	std::vector<target>::iterator tg;
 	double max_rating;
 };

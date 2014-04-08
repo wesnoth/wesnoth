@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,6 +46,7 @@
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
+#include "game_config_manager.hpp"
 #include "log.hpp"
 #include "lua_jailbreak_exception.hpp"
 #include "map.hpp"
@@ -60,6 +61,7 @@
 #include "terrain_translation.hpp"
 #include "side_filter.hpp"
 #include "sound.hpp"
+#include "synced_context.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
 #include "version.hpp"
@@ -464,6 +466,7 @@ static int impl_unit_type_get(lua_State *L)
 	return_int_attrib("max_experience", ut.experience_needed());
 	return_int_attrib("cost", ut.cost());
 	return_int_attrib("level", ut.level());
+	return_int_attrib("recall_cost", ut.recall_cost());
 	return_cfgref_attrib("__cfg", ut.get_cfg());
 	return 0;
 }
@@ -559,6 +562,7 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
 	return_int_attrib("max_experience", u.max_experience());
+	return_int_attrib("recall_cost", u.recall_cost());
 	return_int_attrib("moves", u.movement_left());
 	return_int_attrib("max_moves", u.total_movement());
 	return_int_attrib("max_attacks", u.max_attacks());
@@ -617,6 +621,7 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_int_attrib("hitpoints", u.set_hitpoints(value));
 	modify_int_attrib("experience", u.set_experience(value));
+	modify_int_attrib("recall_cost", u.set_recall_cost(value));
 	modify_int_attrib("attacks_left", u.set_attacks(value));
 	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
@@ -1160,6 +1165,7 @@ static int impl_side_get(lua_State *L)
 	return_int_attrib("gold", t.gold());
 	return_tstring_attrib("objectives", t.objectives());
 	return_int_attrib("village_gold", t.village_gold());
+	return_int_attrib("village_support", t.village_support());
 	return_int_attrib("recall_cost", t.recall_cost());
 	return_int_attrib("base_income", t.base_income());
 	return_int_attrib("total_income", t.total_income());
@@ -1168,6 +1174,8 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("shroud", t.uses_shroud());
 	return_bool_attrib("hidden", t.hidden());
 	return_bool_attrib("scroll_to_leader", t.get_scroll_to_leader());
+	return_string_attrib("flag", t.flag());
+	return_string_attrib("flag_icon", t.flag_icon());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
 	return_string_attrib("name", t.name());
@@ -1205,9 +1213,11 @@ static int impl_side_set(lua_State *L)
 	modify_int_attrib("gold", t.set_gold(value));
 	modify_tstring_attrib("objectives", t.set_objectives(value, true));
 	modify_int_attrib("village_gold", t.set_village_gold(value));
+	modify_int_attrib("village_support", t.set_village_support(value));
 	modify_int_attrib("recall_cost", t.set_recall_cost(value));
 	modify_int_attrib("base_income", t.set_base_income(value));
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
+	modify_bool_attrib("hidden", t.set_hidden(value));
 	modify_bool_attrib("scroll_to_leader", t.set_scroll_to_leader(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
@@ -1421,6 +1431,15 @@ static int intf_set_village_owner(lua_State *L)
 }
 
 /**
+ * - Ret 1: bool wether is in sycned context.
+ */
+static int intf_is_synced(lua_State *L)
+{
+	lua_pushboolean(L, synced_context::get_syced_state() == synced_context::SYNCED);
+	return 1;
+}
+
+/**
  * Returns the map size.
  * - Ret 1: width.
  * - Ret 2: height.
@@ -1486,6 +1505,19 @@ static int intf_get_starting_location(lua_State* L)
 }
 
 /**
+ * Gets a table for an era tag.
+ * - Arg 1: userdata (ignored).
+ * - Arg 2: string containing id of the desired era
+ * - Ret 1: config for the era
+ */
+static int intf_get_era(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	luaW_pushconfig(L, resources::config_manager->game_config().find_child("era","id",m));
+	return 1;
+}
+
+/**
  * Gets some game_config data (__index metamethod).
  * - Arg 1: userdata (ignored).
  * - Arg 2: string containing the name of the property.
@@ -1508,6 +1540,23 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
+
+	const game_state & game_state_ = *resources::state_of_game; 
+	return_string_attrib("campaign_type", game_state_.classification().campaign_type);
+	if(game_state_.classification().campaign_type=="multiplayer") {
+		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
+		return_cfgref_attrib("era", resources::config_manager->game_config().find_child("era","id",game_state_.mp_settings().mp_era));
+		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.
+
+                //This code for SigurdFD, not the cleanest implementation but seems to work just fine.
+		config::const_child_itors its = resources::config_manager->game_config().child_range("era");
+		std::string eras_list((*(its.first))["id"]);
+		++its.first;
+		for(; its.first != its.second; ++its.first) {
+			eras_list = eras_list + "," + (*(its.first))["id"];
+		}
+		return_string_attrib("eras", eras_list);
+	}	 
 	return 0;
 }
 
@@ -2114,7 +2163,7 @@ static int intf_put_unit(lua_State *L)
 			if (!resources::game_map->on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
-		u = new unit(cfg, true, resources::state_of_game);
+		u = new unit(cfg, true);
 	}
 
 	resources::screen->invalidate(loc);
@@ -2156,7 +2205,7 @@ static int intf_put_recall_unit(lua_State *L)
 	else
 	{
 		config cfg = luaW_checkconfig(L, 1);
-		u = new unit(cfg, true, resources::state_of_game);
+		u = new unit(cfg, true);
 	}
 
 	if (!side) side = u->side();
@@ -2233,7 +2282,7 @@ static int intf_find_vacant_tile(lua_State *L)
 			u = static_cast<lua_unit *>(lua_touserdata(L, 3))->get();
 		} else {
 			config cfg = luaW_checkconfig(L, 3);
-			u = new unit(cfg, false, resources::state_of_game);
+			u = new unit(cfg, false);
 			fake_unit = true;
 		}
 	}
@@ -2274,7 +2323,7 @@ static int intf_float_label(lua_State *L)
 static int intf_create_unit(lua_State *L)
 {
 	config cfg = luaW_checkconfig(L, 1);
-	unit *u = new unit(cfg, true, resources::state_of_game);
+	unit *u = new unit(cfg, true);
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
 	lua_pushlightuserdata(L
 			, getunitKey);
@@ -2615,13 +2664,16 @@ namespace {
 				if ((*resources::teams)[side - 1].is_ai())
 					index = 2;
 			}
-			lua_settop(L, index);
-			if (luaW_pcall(L, 0, 1, false))
-				luaW_toconfig(L, -1, cfg);
+			lua_pushvalue(L, index);
+			if (luaW_pcall(L, 0, 1, false)) {
+				if(!luaW_toconfig(L, -1, cfg) && game_config::debug) {
+					chat_message("Lua warning", "function returned to wesnoth.synchronize_choice a table which was partially invalid");
+				}
+			}
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
@@ -2632,12 +2684,38 @@ namespace {
  * Ensures a value is synchronized among all the clients.
  * - Arg 1: function to compute the value, called if the client is the master.
  * - Arg 2: optional function, called instead of the first function if the user is not human.
+ * - Arg 3: optional array of integers specifying, on which side the function should be evaluated.
  * - Ret 1: WML table returned by the function.
  */
 static int intf_synchronize_choice(lua_State *L)
 {
-	config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
-	luaW_pushconfig(L, cfg);
+	if(lua_istable(L, 3))
+	{
+		std::set<int> vals;
+		//read the third parameter
+		lua_pushnil(L); 
+		while (lua_next(L, 3) != 0) {
+			/* uses 'key' (at index -2) and 'value' (at index -1) */
+			int val = luaL_checkint(L, -1);
+			vals.insert(val);
+			/* removes 'value'; keeps 'key' for next iteration */
+			lua_pop(L, 1);
+		}
+		typedef std::map<int,config> retv_t;
+		retv_t r = mp_sync::get_user_choice_multiple_sides("input", lua_synchronize(L), vals);
+		lua_newtable(L);
+		BOOST_FOREACH(retv_t::value_type& pair, r)
+		{
+			lua_pushinteger(L, pair.first);
+			luaW_pushconfig(L, pair.second);
+			lua_settable(L, -3);
+		}
+	}
+	else
+	{
+		config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
+		luaW_pushconfig(L, cfg);
+	}
 	return 1;
 }
 
@@ -2968,6 +3046,22 @@ static int intf_set_dialog_callback(lua_State *L)
 	lua_rawseti(L, -2, n);
 	lua_pop(L, 1);
 
+	return 0;
+}
+
+/**
+ * Enables/disables Pango markup on the label of a widget of the current dialog.
+ * - Arg 1: boolean.
+ * - Args 2..n: path of strings and integers.
+ */
+static int intf_set_dialog_markup(lua_State *L)
+{
+	bool b = lua_toboolean(L, 1);
+	gui2::twidget *w = find_widget(L, 2, true);
+	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+
+	c->set_use_markup(b);
 	return 0;
 }
 
@@ -3558,6 +3652,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "float_label",              &intf_float_label              },
 		{ "get_dialog_value",         &intf_get_dialog_value         },
 		{ "get_displayed_unit",       &intf_get_displayed_unit       },
+		{ "get_era",                  &intf_get_era                  },
 		{ "get_image_size",           &intf_get_image_size           },
 		{ "get_locations",            &intf_get_locations            },
 		{ "get_map_size",             &intf_get_map_size             },
@@ -3579,6 +3674,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "have_file",                &intf_have_file                },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
+		{ "is_synced",                &intf_is_synced                },
 		{ "lock_view",                &intf_lock_view                },
 		{ "match_location",           &intf_match_location           },
 		{ "match_side",               &intf_match_side               },
@@ -3595,6 +3691,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "set_dialog_active",        &intf_set_dialog_active        },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
 		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
+		{ "set_dialog_markup",        &intf_set_dialog_markup        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },

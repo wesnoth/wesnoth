@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -84,6 +84,10 @@ public:
 	virtual void show_statistics();
 	virtual void unit_list();
 	virtual void left_mouse_click();
+	virtual void move_action();
+	virtual void select_and_action();
+	virtual void select_hex();
+	virtual void deselect_hex();
 	virtual void right_mouse_click();
 	virtual void status_table();
 	virtual void save_game();
@@ -113,6 +117,8 @@ public:
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
 	virtual void check_end_level() = 0;
+
+	virtual void on_not_observer() = 0;
 	/**
 	 * Asks the user whether to continue on an OOS error.
 	 * @throw end_level_exception If the user wants to abort.
@@ -183,6 +189,8 @@ protected:
 	bool in_context_menu(hotkey::HOTKEY_COMMAND command) const;
 
 	void init_managers();
+	///preload events cannot be synced
+	void fire_preload();
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
 	virtual void init_gui();
@@ -278,6 +286,8 @@ private:
 	end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
+
+	hotkey::scope_changer scope_;
 
 };
 

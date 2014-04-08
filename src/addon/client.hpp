@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+                 2008 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -60,7 +60,7 @@ public:
 	 * @return @a true on success, @a false on failure. Retrieve the error message with @a get_last_server_error.
 	 *
 	 * @param cfg A config object whose contents are replaced with
-	 *            the server's list.
+	 *            the server's list if available, cleared otherwise.
 	 */
 	bool request_addons_list(config& cfg);
 

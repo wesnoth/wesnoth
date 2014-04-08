@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,10 +25,10 @@
 #include "map_label.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
 #include "whiteboard/manager.hpp"
 #include "formula_string_utils.hpp"
 #include "play_controller.hpp"
+#include "savegame.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -89,17 +89,32 @@ void turn_info::handle_turn(
 {
 	if(turn_end == false) {
 		/** @todo FIXME: Check what commands we execute when it's our turn! */
+		//TODO: can we remove replay_ ? i think yes.
 		replay_.append(t);
 		replay_.set_skip(skip_replay);
 
-		turn_end = do_replay(team_num_, &replay_);
+		bool was_skipping = recorder.is_skipping();
+		recorder.set_skip(skip_replay);
+		//turn_end = do_replay(team_num_, &replay_);
+		//note, that this cunfion might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 		recorder.add_config(t, replay::MARK_AS_SENT);
+		turn_end = do_replay(team_num_);
+		recorder.set_skip(was_skipping);
+		
 	} else {
 
 		//this turn has finished, so push the remaining moves
 		//into the backlog
 		backlog.push_back(config());
 		backlog.back().add_child("turn", t);
+	}
+}
+
+void turn_info::do_save()
+{
+	if ((resources::state_of_game != NULL) && (resources::screen != NULL) && (resources::controller != NULL)) {
+		savegame::autosave_savegame save(*resources::state_of_game, *resources::screen, resources::controller->to_config(), preferences::save_compression_format());
+		save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 }
 
@@ -110,11 +125,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	// the simple wesnothserver implementation in wesnoth was removed years ago. 
 	assert(network::nconnections() <= 1);
 	
-	if (const config &rnd_seed = cfg.child("random_seed")) {
-		rand_rng::set_seed(rnd_seed["seed"]);
-		//may call a callback function, see rand_rng::set_seed_callback
-	}
-
 	if (const config &msg = cfg.child("message"))
 	{
 		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],
@@ -150,8 +160,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	BOOST_FOREACH(const config &t, turns)
 	{
-		handle_turn(turn_end, t, skip_replay, backlog);
+		recorder.add_config(t, replay::MARK_AS_SENT);
 	}
+	handle_turn(turn_end, config(), skip_replay, backlog);
 
 	resources::whiteboard->process_network_data(cfg);
 
@@ -175,14 +186,16 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 			if (controller == "human" && !tm.is_human()) {
 				tm.make_human();
-			} else if (controller == "human_ai" && !tm.is_human_ai()) {
-				tm.make_human_ai();
+				resources::controller->on_not_observer();
 			} else if (controller == "network" && !tm.is_network_human()) {
 				tm.make_network();
 			} else if (controller == "network_ai" && !tm.is_network_ai()) {
 				tm.make_network_ai();
 			} else if (controller == "ai" && !tm.is_ai()) {
 				tm.make_ai();
+				resources::controller->on_not_observer();
+			} else if (controller == "idle" && !tm.is_idle()) {
+				tm.make_idle();
 			}
 			else
 			{
@@ -234,6 +247,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 
 		int action = 0;
+		int first_observer_option_idx = 0;
 
 		std::vector<std::string> observers;
 		std::vector<team*> allies;
@@ -244,7 +258,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			utils::string_map t_vars;
 			options.push_back(_("Replace with AI"));
 			options.push_back(_("Replace with local player"));
-			options.push_back(_("Abort game"));
+			options.push_back(_("Set side to idle"));
+			options.push_back(_("Save and abort game"));
+
+			first_observer_option_idx = options.size();
 
 			//get all observers in as options to transfer control
 			BOOST_FOREACH(const std::string &ob, resources::screen->observers())
@@ -257,7 +274,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			//get all allies in as options to transfer control
 			BOOST_FOREACH(team &t, *resources::teams)
 			{
-				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_empty()
+				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())
 				{
 					//if this is an ally of the dropping side and it is not us (choose local player
@@ -282,16 +299,18 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//an AI.
 		switch(action) {
 			case 0:
-				tm.make_human_ai();
+				tm.make_ai();
+				resources::controller->on_not_observer();
 				tm.set_current_player("ai" + side_drop);
 				if (have_leader) leader->rename("ai" + side_drop);
-				change_controller(side_drop, "human_ai");
+				change_controller(side_drop, "ai");
 				resources::controller->maybe_do_init_side(side_index);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
 				tm.make_human();
+				resources::controller->on_not_observer();
 				tm.set_current_player("human" + side_drop);
 				if (have_leader) leader->rename("human" + side_drop);
 				change_controller(side_drop, "human");
@@ -300,11 +319,19 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
+				tm.make_idle();
+				tm.set_current_player("idle" + side_drop);
+				if (have_leader) leader->rename("idle" + side_drop);
+
+				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+
+			case 3:
 				//The user pressed "end game". Don't throw a network error here or he will get
 				//thrown back to the title screen.
+				do_save();
 				throw end_level_exception(QUIT);
 			default:
-				if (action > 2) {
+				if (action > 3) {
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
@@ -313,23 +340,26 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						if (have_leader) leader->rename("human"+side_drop);
 					}
 
-					const size_t index = static_cast<size_t>(action - 3);
+					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
 					if (index < observers.size()) {
 						change_side_controller(side_drop, observers[index]);
 					} else if (index < options.size() - 1) {
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						tm.make_human_ai();
+						tm.make_ai();
 						tm.set_current_player("ai"+side_drop);
 						if (have_leader) leader->rename("ai" + side_drop);
-						change_controller(side_drop, "human_ai");
+						change_controller(side_drop, "ai");
 					}
 					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 				}
 				break;
 		}
-		throw network::error("");
+		//Lua code currently catches this exception if this function was called from lua code
+		// in that case network::error doesn't end the game.
+		// but at least he sees this error message.
+		throw network::error("Network Error: A player left and you pressed Escape.");
 	}
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -372,13 +372,14 @@ bool luaW_getglobal(lua_State *L, ...)
 		lua_rawget(L, -2);
 		lua_remove(L, -2);
 	}
-	va_end(ap);
 
 	if (lua_isnil(L, -1)) {
 		discard:
+		va_end(ap);
 		lua_pop(L, 1);
 		return false;
 	}
+	va_end(ap);
 	return true;
 }
 

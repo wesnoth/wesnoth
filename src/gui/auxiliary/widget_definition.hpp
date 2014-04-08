@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,8 @@
 #include "gui/auxiliary/canvas.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Contains the state info for a resolution.
@@ -30,15 +31,14 @@ namespace gui2 {
  */
 struct tstate_definition
 {
-	explicit tstate_definition(const config &cfg);
+	explicit tstate_definition(const config& cfg);
 
 	tcanvas canvas;
 };
 
 
 /** Base class of a resolution, contains the common keys for a resolution. */
-struct tresolution_definition_
-	: public reference_counted_object
+struct tresolution_definition_ : public reference_counted_object
 {
 	explicit tresolution_definition_(const config& cfg);
 
@@ -62,13 +62,11 @@ struct tresolution_definition_
 	std::vector<tstate_definition> state;
 };
 
-typedef
-	boost::intrusive_ptr<tresolution_definition_>
-	tresolution_definition_ptr;
+typedef boost::intrusive_ptr<tresolution_definition_>
+tresolution_definition_ptr;
 
-typedef
-	boost::intrusive_ptr<const tresolution_definition_>
-	tresolution_definition_const_ptr;
+typedef boost::intrusive_ptr<const tresolution_definition_>
+tresolution_definition_const_ptr;
 
 /**
  * Casts a tresolution_definition_const_ptr to another type.
@@ -79,25 +77,25 @@ typedef
  *
  * @returns                       A reference to type casted to.
  */
-template<class T>
+template <class T>
 const T& cast(tresolution_definition_const_ptr ptr)
 {
-	boost::intrusive_ptr<const T> conf =
-			boost::dynamic_pointer_cast<const T>(ptr);
+	boost::intrusive_ptr<const T> conf
+			= boost::dynamic_pointer_cast<const T>(ptr);
 	assert(conf);
 	return *conf;
 }
 
-struct tcontrol_definition
-	: public reference_counted_object
+struct tcontrol_definition : public reference_counted_object
 {
 	explicit tcontrol_definition(const config& cfg);
 
-	template<class T>
-	void load_resolutions(const config &cfg)
+	template <class T>
+	void load_resolutions(const config& cfg)
 	{
 		config::const_child_itors itors = cfg.child_range("resolution");
-		FOREACH(const AUTO& resolution, itors) {
+		FOREACH(const AUTO & resolution, itors)
+		{
 			resolutions.push_back(new T(resolution));
 		}
 	}
@@ -113,4 +111,3 @@ typedef boost::intrusive_ptr<tcontrol_definition> tcontrol_definition_ptr;
 } // namespace gui2
 
 #endif
-

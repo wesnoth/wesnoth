@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -268,25 +268,65 @@ void part::resolve_wml(const vconfig &cfg)
 		}
 		// [if]
 		else if(key == "if") {
-			const std::string branch_label =
-				game_events::conditional_passed(node) ?
-				"then" : "else";
-			if(node.has_child(branch_label)) {
-				const vconfig branch = node.child(branch_label);
-				resolve_wml(branch);
+			// check if the [if] tag has a [then] child;
+			// if we try to execute a non-existing [then], we get a segfault
+			if (game_events::conditional_passed(node)) {
+				if (node.has_child("then")) {
+					resolve_wml(node.child("then"));
+				}
+			}
+			// condition not passed, check [elseif] and [else]
+			else {
+				// get all [elseif] children and set a flag
+				vconfig::child_list elseif_children = node.get_children("elseif");
+				bool elseif_flag = false;
+				// for each [elseif]: test if it has a [then] child
+				// if the condition matches, execute [then] and raise flag
+				for (vconfig::child_list::const_iterator elseif = elseif_children.begin(); elseif != elseif_children.end(); ++elseif) {
+					if (game_events::conditional_passed(*elseif)) {
+						if (elseif->has_child("then")) {
+							resolve_wml(elseif->child("then"));
+						}
+						elseif_flag = true;
+						break;
+					}
+				}
+				// if we have an [else] tag and no [elseif] was successful (flag not raised), execute it
+				if (node.has_child("else") && !elseif_flag) {
+					resolve_wml(node.child("else"));
+				}
 			}
 		}
 		// [switch]
 		else if(key == "switch") {
+			// raise a WML error and exit if variable= is missing
+			if (!node.has_attribute("variable")) {
+				lg::wml_error << "[switch] missing required variable= attribute\n";
+				return;
+			}
 			const std::string var_name = node["variable"];
 			const std::string var_actual_value = resources::gamedata->get_variable_const(var_name);
 			bool case_not_found = true;
+			
+			// check if the [switch] tag has a [case] child;
+			// if not, raise a WML error and exit to make the mistake as much evident as possible
+			if (!node.has_child("case")) {
+				lg::wml_error << "[switch] missing required [case] tag\n";
+				return;
+			}
 
 			for(vconfig::all_children_iterator j = node.ordered_begin(); j != node.ordered_end(); ++j) {
 				if(j->first != "case") continue;
+				
+				// raise a WML error and exit if value= is missing
+				if (!(j->second).has_attribute("value")) {
+					lg::wml_error << "[case] missing required value= attribute\n";
+					return;
+				}
 
 				// Enter all matching cases.
 				const std::string var_expected_value = (j->second)["value"];
+
 			    if(var_actual_value == var_expected_value) {
 					case_not_found = false;
 					resolve_wml(j->second);

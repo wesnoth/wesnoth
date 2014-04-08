@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -371,9 +371,7 @@ namespace game_config {
 	{
 		if(active_map_.empty())
 		{
-			std::copy(defines_map.begin(),
-					defines_map.end(),
-					std::insert_iterator<preproc_map>(active_map_, active_map_.begin()));
+			active_map_.insert(defines_map.begin(), defines_map.end());
 			if ( get_state() == NEW)
 				state_ = ACTIVE;
 		 }

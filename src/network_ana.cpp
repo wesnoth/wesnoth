@@ -3,7 +3,7 @@
  * @file
  * @brief Network API implementation using ana.
  *
- * Copyright (C) 2010 - 2013 Guillermo Biset.
+ * Copyright (C) 2010 - 2014 Guillermo Biset.
  *
  * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
  *
@@ -48,11 +48,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>  // for TCP_NODELAY
-#ifdef __BEOS__
-#include <socket.h>
-#else
 #include <fcntl.h>
-#endif
 #define SOCKET int
 #endif
 

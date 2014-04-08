@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(toggle_panel)
 
@@ -44,42 +45,49 @@ ttoggle_panel::ttoggle_panel()
 	set_wants_mouse_left_double_click();
 
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&ttoggle_panel::signal_handler_mouse_enter, this, _2, _3));
+			&ttoggle_panel::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
+			&ttoggle_panel::signal_handler_mouse_leave, this, _2, _3));
 
+	connect_signal<event::LEFT_BUTTON_CLICK>(
+			boost::bind(&ttoggle_panel::signal_handler_pre_left_button_click,
+						this,
+						_2),
+			event::tdispatcher::back_pre_child);
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
-				  &ttoggle_panel::signal_handler_pre_left_button_click
-				, this, _2)
-			, event::tdispatcher::back_pre_child);
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
-				&ttoggle_panel::signal_handler_left_button_click
-					, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
-				  &ttoggle_panel::signal_handler_left_button_click
-				, this, _2, _3)
-			, event::tdispatcher::back_post_child);
-	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
-				  &ttoggle_panel::signal_handler_left_button_double_click
-				, this, _2, _3));
-	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
-				  &ttoggle_panel::signal_handler_left_button_double_click
-				, this, _2, _3)
-			, event::tdispatcher::back_post_child);
+			&ttoggle_panel::signal_handler_left_button_click, this, _2, _3));
+	connect_signal<event::LEFT_BUTTON_CLICK>(
+			boost::bind(&ttoggle_panel::signal_handler_left_button_click,
+						this,
+						_2,
+						_3),
+			event::tdispatcher::back_post_child);
+	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
+			boost::bind(&ttoggle_panel::signal_handler_left_button_double_click,
+						this,
+						_2,
+						_3));
+	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(
+			boost::bind(&ttoggle_panel::signal_handler_left_button_double_click,
+						this,
+						_2,
+						_3),
+			event::tdispatcher::back_post_child);
 }
 
-void ttoggle_panel::set_child_members(const std::map<std::string /* widget id */, string_map>& data)
+void ttoggle_panel::set_child_members(
+		const std::map<std::string /* widget id */, string_map>& data)
 {
-	FOREACH(const AUTO& item, data) {
+	FOREACH(const AUTO & item, data)
+	{
 		tcontrol* control = dynamic_cast<tcontrol*>(find(item.first, false));
 		if(control) {
 			control->set_members(item.second);
 		}
 	}
 }
-twidget* ttoggle_panel::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active)
+twidget* ttoggle_panel::find_at(const tpoint& coordinate,
+								const bool must_be_active)
 {
 	/**
 	 * @todo since there is no mouse event nesting (or event nesting at all)
@@ -93,9 +101,8 @@ twidget* ttoggle_panel::find_at(
 	return result ? result : tcontrol::find_at(coordinate, must_be_active);
 }
 
-const twidget* ttoggle_panel::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active) const
+const twidget* ttoggle_panel::find_at(const tpoint& coordinate,
+									  const bool must_be_active) const
 {
 	const twidget* result = tcontainer_::find_at(coordinate, must_be_active);
 	return result ? result : tcontrol::find_at(coordinate, must_be_active);
@@ -130,8 +137,9 @@ unsigned ttoggle_panel::get_state() const
 
 SDL_Rect ttoggle_panel::get_client_rect() const
 {
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
+	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
+			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+												  tresolution>(config());
 	assert(conf);
 
 	SDL_Rect result = get_rectangle();
@@ -145,12 +153,13 @@ SDL_Rect ttoggle_panel::get_client_rect() const
 
 tpoint ttoggle_panel::border_space() const
 {
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
+	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
+			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+												  tresolution>(config());
 	assert(conf);
 
 	return tpoint(conf->left_border + conf->right_border,
-		conf->top_border + conf->bottom_border);
+				  conf->top_border + conf->bottom_border);
 }
 
 void ttoggle_panel::set_value(const bool selected)
@@ -180,8 +189,9 @@ void ttoggle_panel::set_state(const tstate state)
 	state_ = state;
 	set_is_dirty(true);
 
-	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf =
-		boost::dynamic_pointer_cast<const ttoggle_panel_definition::tresolution>(config());
+	boost::intrusive_ptr<const ttoggle_panel_definition::tresolution> conf
+			= boost::dynamic_pointer_cast<const ttoggle_panel_definition::
+												  tresolution>(config());
 	assert(conf);
 }
 
@@ -192,10 +202,9 @@ void ttoggle_panel::impl_draw_background(surface& frame_buffer)
 	tcontrol::impl_draw_background(frame_buffer);
 }
 
-void ttoggle_panel::impl_draw_background(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void ttoggle_panel::impl_draw_background(surface& frame_buffer,
+										 int x_offset,
+										 int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a control. So we use the controls drawing method.
@@ -209,10 +218,9 @@ void ttoggle_panel::impl_draw_foreground(surface& frame_buffer)
 	tcontrol::impl_draw_foreground(frame_buffer);
 }
 
-void ttoggle_panel::impl_draw_foreground(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void ttoggle_panel::impl_draw_foreground(surface& frame_buffer,
+										 int x_offset,
+										 int y_offset)
 {
 	// We don't have a fore and background and need to draw depending on
 	// our state, like a control. So we use the controls drawing method.
@@ -225,8 +233,8 @@ const std::string& ttoggle_panel::get_control_type() const
 	return type;
 }
 
-void ttoggle_panel::signal_handler_mouse_enter(
-		const event::tevent event, bool& handled)
+void ttoggle_panel::signal_handler_mouse_enter(const event::tevent event,
+											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -238,8 +246,8 @@ void ttoggle_panel::signal_handler_mouse_enter(
 	handled = true;
 }
 
-void ttoggle_panel::signal_handler_mouse_leave(
-		const event::tevent event, bool& handled)
+void ttoggle_panel::signal_handler_mouse_leave(const event::tevent event,
+											   bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -251,8 +259,8 @@ void ttoggle_panel::signal_handler_mouse_leave(
 	handled = true;
 }
 
-void ttoggle_panel::signal_handler_pre_left_button_click(
-		const event::tevent event)
+void
+ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
 {
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
@@ -262,8 +270,8 @@ void ttoggle_panel::signal_handler_pre_left_button_click(
 	}
 }
 
-void ttoggle_panel::signal_handler_left_button_click(
-		const event::tevent event, bool& handled)
+void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
+													 bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -286,18 +294,17 @@ void ttoggle_panel::signal_handler_left_button_double_click(
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
-	if (retval_) {
+	if(retval_) {
 		twindow* window = get_window();
 		assert(window);
 
 		window->set_retval(retval_);
 	}
 
-	if (callback_mouse_left_double_click_) {
+	if(callback_mouse_left_double_click_) {
 		callback_mouse_left_double_click_(*this);
 	}
 	handled = true;
 }
 
 } // namespace gui2
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,8 @@
 #define LOG_SCOPE_HEADER "tviewport [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -40,13 +41,9 @@ struct tviewport_implementation
 	 *
 	 * @tparam W                  A pointer to the pane.
 	 */
-	template<class W>
+	template <class W>
 	static typename utils::tconst_clone<twidget, W>::pointer
-	find_at(
-			  W viewport
-			, tpoint coordinate
-			, const bool must_be_active
-			)
+	find_at(W viewport, tpoint coordinate, const bool must_be_active)
 	{
 
 		/*
@@ -66,13 +63,9 @@ struct tviewport_implementation
 		return viewport->widget_.find_at(coordinate, must_be_active);
 	}
 
-	template<class W>
+	template <class W>
 	static typename utils::tconst_clone<twidget, W>::pointer
-	find(
-			  W viewport
-			, const std::string& id
-			, const bool must_be_active
-			)
+	find(W viewport, const std::string& id, const bool must_be_active)
 	{
 		if(viewport->twidget::find(id, must_be_active)) {
 			return viewport;
@@ -82,16 +75,13 @@ struct tviewport_implementation
 	}
 };
 
-tviewport::tviewport(twidget& widget)
-	: widget_(widget)
-	, owns_widget_(false)
+tviewport::tviewport(twidget& widget) : widget_(widget), owns_widget_(false)
 {
 	widget_.set_parent(this);
 }
 
-tviewport::tviewport(
-		  const implementation::tbuilder_viewport& builder
-		, const tbuilder_widget::treplacements& replacements)
+tviewport::tviewport(const implementation::tbuilder_viewport& builder,
+					 const tbuilder_widget::treplacements& replacements)
 	: twidget(builder)
 	, widget_(*builder.widget->build(replacements))
 	, owns_widget_(true)
@@ -106,9 +96,8 @@ tviewport::~tviewport()
 	}
 }
 
-tviewport* tviewport::build(
-		  const implementation::tbuilder_viewport& builder
-		, const tbuilder_widget::treplacements& replacements)
+tviewport* tviewport::build(const implementation::tbuilder_viewport& builder,
+							const tbuilder_widget::treplacements& replacements)
 {
 	return new tviewport(builder, replacements);
 }
@@ -129,10 +118,8 @@ void tviewport::layout_initialise(const bool full_initialisation)
 	}
 }
 
-void tviewport::impl_draw_children(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void
+tviewport::impl_draw_children(surface& frame_buffer, int x_offset, int y_offset)
 {
 	x_offset += get_x();
 	y_offset += get_y();
@@ -145,9 +132,9 @@ void tviewport::impl_draw_children(
 	}
 }
 
-void tviewport::child_populate_dirty_list(
-		  twindow& caller
-		, const std::vector<twidget*>& call_stack)
+void
+tviewport::child_populate_dirty_list(twindow& caller,
+									 const std::vector<twidget*>& call_stack)
 {
 	std::vector<twidget*> child_call_stack = call_stack;
 	widget_.populate_dirty_list(caller, child_call_stack);
@@ -162,9 +149,8 @@ twidget* tviewport::find_at(const tpoint& coordinate, const bool must_be_active)
 	return tviewport_implementation::find_at(this, coordinate, must_be_active);
 }
 
-const twidget* tviewport::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active) const
+const twidget* tviewport::find_at(const tpoint& coordinate,
+								  const bool must_be_active) const
 {
 	return tviewport_implementation::find_at(this, coordinate, must_be_active);
 }
@@ -174,9 +160,8 @@ twidget* tviewport::find(const std::string& id, const bool must_be_active)
 	return tviewport_implementation::find(this, id, must_be_active);
 }
 
-const twidget* tviewport::find(
-		  const std::string& id
-		, const bool must_be_active) const
+const twidget* tviewport::find(const std::string& id, const bool must_be_active)
+		const
 {
 	return tviewport_implementation::find(this, id, must_be_active);
 }

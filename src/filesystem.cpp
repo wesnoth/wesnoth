@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,13 +36,6 @@
 #include <libgen.h>
 #endif /* !_WIN32 */
 
-#ifdef __BEOS__
-#include <Directory.h>
-#include <FindDirectory.h>
-#include <Path.h>
-BPath be_path;
-#endif
-
 // for getenv
 #include <cerrno>
 #include <fstream>
@@ -60,6 +53,7 @@ BPath be_path;
 #include "log.hpp"
 #include "scoped_resource.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "version.hpp"
 
 #include <boost/foreach.hpp>
@@ -99,7 +93,6 @@ void get_files_in_dir(const std::string &directory,
 	// If we have a path to find directories in,
 	// then convert relative pathnames to be rooted
 	// on the wesnoth path
-#ifndef __AMIGAOS4__
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
 		std::string dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
@@ -107,18 +100,13 @@ void get_files_in_dir(const std::string &directory,
 			return;
 		}
 	}
-#endif /* __AMIGAOS4__ */
 
 	struct stat st;
 
 	if (reorder == DO_REORDER) {
 		LOG_FS << "searching for _main.cfg in directory " << directory << '\n';
 		std::string maincfg;
-		if (directory.empty() || directory[directory.size()-1] == '/'
-#ifdef __AMIGAOS4__
-			|| (directory[directory.size()-1]==':')
-#endif /* __AMIGAOS4__ */
-		)
+		if (directory.empty() || directory[directory.size()-1] == '/')
 			maincfg = directory + maincfg_filename;
 		else
 			maincfg = (directory + "/") + maincfg_filename;
@@ -167,11 +155,7 @@ void get_files_in_dir(const std::string &directory,
 #endif /* !APPLE */
 
 		std::string fullname;
-		if (directory.empty() || directory[directory.size()-1] == '/'
-#ifdef __AMIGAOS4__
-			|| (directory[directory.size()-1]==':')
-#endif /* __AMIGAOS4__ */
-		)
+		if (directory.empty() || directory[directory.size()-1] == '/')
 			fullname = directory + basename;
 		else
 			fullname = directory + "/" + basename;
@@ -377,7 +361,7 @@ std::string get_exe_dir()
 {
 #ifndef _WIN32
 	char buf[1024];
-	size_t path_size = readlink("/proc/self/exe", buf, 1024);
+	size_t path_size = readlink("/proc/self/exe", buf, sizeof(buf)-1);
 	if(path_size == static_cast<size_t>(-1))
 		return std::string();
 	buf[path_size] = 0;
@@ -453,14 +437,14 @@ static const std::string& get_version_path_suffix()
 }
 #endif
 
-void set_preferences_dir(std::string path)
+void set_user_data_dir(std::string path)
 {
 #ifdef _WIN32
 	if(path.empty()) {
-		game_config::preferences_dir = get_cwd() + "/userdata";
+		user_data_dir = get_cwd() + "/userdata";
 	} else if (path.size() > 2 && path[1] == ':') {
 		//allow absolute path override
-		game_config::preferences_dir = path;
+		user_data_dir = path;
 	} else {
 		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPSTR, int, BOOL);
 		SHGSFPAddress SHGetSpecialFolderPathA;
@@ -473,14 +457,14 @@ void set_preferences_dir(std::string path)
 				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
 				boost::algorithm::replace_all(mygames_path, std::string("\\"), std::string("/"));
 				create_directory_if_missing(mygames_path);
-				game_config::preferences_dir = mygames_path + "/" + path;
+				user_data_dir = mygames_path + "/" + path;
 			} else {
 				WRN_FS << "SHGetSpecialFolderPath failed\n";
-				game_config::preferences_dir = get_cwd() + "/" + path;
+				user_data_dir = get_cwd() + "/" + path;
 			}
 		} else {
 			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
-			game_config::preferences_dir = get_cwd() + "/" + path;
+			user_data_dir = get_cwd() + "/" + path;
 		}
 	}
 
@@ -508,45 +492,35 @@ void set_preferences_dir(std::string path)
 		user_data_dir += "/wesnoth/";
 		user_data_dir += get_version_path_suffix();
 		create_directory_if_missing_recursive(user_data_dir);
-		game_config::preferences_dir = user_data_dir;
 	} else {
 		other:
 		std::string home = home_str ? home_str : ".";
 
 		if (path[0] == '/')
-			game_config::preferences_dir = path;
+			user_data_dir = path;
 		else
-			game_config::preferences_dir = home + "/" + path;
+			user_data_dir = home + "/" + path;
 	}
 #else
 	if (path.empty()) path = path2;
 
-#ifdef __AMIGAOS4__
-	game_config::preferences_dir = "PROGDIR:" + path;
-#elif defined(__BEOS__)
-	if (be_path.InitCheck() != B_OK) {
-		BPath tpath;
-		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {
-			be_path.Append("wesnoth");
-		} else {
-			be_path.SetTo("/boot/home/config/settings/wesnoth");
-		}
-		game_config::preferences_dir = be_path.Path();
-	}
-#else
 	const char* home_str = getenv("HOME");
 	std::string home = home_str ? home_str : ".";
 
 	if (path[0] == '/')
-		game_config::preferences_dir = path;
+		user_data_dir = path;
 	else
-		game_config::preferences_dir = home + std::string("/") + path;
-#endif
+		user_data_dir = home + std::string("/") + path;
 #endif
 
 #endif /*_WIN32*/
-	user_data_dir = game_config::preferences_dir;
 	setup_user_data_dir();
+}
+
+void set_user_config_dir(std::string path)
+{
+	user_config_dir = path;
+	create_directory_if_missing(user_config_dir);
 }
 
 static void setup_user_data_dir()
@@ -555,24 +529,11 @@ static void setup_user_data_dir()
 	_mkdir(user_data_dir.c_str());
 	_mkdir((user_data_dir + "/editor").c_str());
 	_mkdir((user_data_dir + "/editor/maps").c_str());
+	_mkdir((user_data_dir + "/editor/scenarios").c_str());
 	_mkdir((user_data_dir + "/data").c_str());
 	_mkdir((user_data_dir + "/data/add-ons").c_str());
 	_mkdir((user_data_dir + "/saves").c_str());
 	_mkdir((user_data_dir + "/persist").c_str());
-#elif defined(__BEOS__)
-	BPath tpath;
-	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
-		tpath = be_path;                       \
-		tpath.Append(subdir);                  \
-		create_directory(tpath.Path(), 0775);
-
-	BEOS_CREATE_PREFERENCES_SUBDIR("editor");
-	BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
-	BEOS_CREATE_PREFERENCES_SUBDIR("data");
-	BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
-	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
-	BEOS_CREATE_PREFERENCES_SUBDIR("persist");
-	#undef BEOS_CREATE_PREFERENCES_SUBDIR
 #else
 	const std::string& dir_path = user_data_dir;
 
@@ -588,6 +549,7 @@ static void setup_user_data_dir()
 	// Create user data and add-on directories
 	create_directory_if_missing(dir_path + "/editor");
 	create_directory_if_missing(dir_path + "/editor/maps");
+	create_directory_if_missing(dir_path + "/editor/scenarios");
 	create_directory_if_missing(dir_path + "/data");
 	create_directory_if_missing(dir_path + "/data/add-ons");
 	create_directory_if_missing(dir_path + "/saves");
@@ -602,12 +564,7 @@ std::string get_user_data_dir()
 	// if the user deletes a dir while we are running?
 	if (user_data_dir.empty())
 	{
-		if (game_config::preferences_dir.empty())
-			set_preferences_dir(std::string());
-		else {
-			user_data_dir = game_config::preferences_dir;
-			setup_user_data_dir();
-		}
+		set_user_data_dir(std::string());
 	}
 	return user_data_dir;
 }
@@ -618,17 +575,18 @@ std::string get_user_config_dir()
 	{
 #if defined(_X11) && !defined(PREFERENCES_DIR)
 		char const *xdg_config = getenv("XDG_CONFIG_HOME");
+		std::string path;
 		if (!xdg_config || xdg_config[0] == '\0') {
 			xdg_config = getenv("HOME");
 			if (!xdg_config) {
 				user_config_dir = get_user_data_dir();
 				return user_config_dir;
 			}
-			user_config_dir = xdg_config;
-			user_config_dir += "/.config";
-		} else user_config_dir = xdg_config;
-		user_config_dir += "/wesnoth";
-		create_directory_if_missing_recursive(user_config_dir);
+			path = xdg_config;
+			path += "/.config";
+		} else path = xdg_config;
+		path += "/wesnoth";
+		set_user_config_dir(path);
 #else
 		user_config_dir = get_user_data_dir();
 #endif
@@ -1109,7 +1067,7 @@ std::string get_program_invocation(const std::string& program_name) {
 #endif
 }
 
-static bool is_path_sep(char c)
+bool is_path_sep(char c)
 {
 #ifdef _WIN32
 	if (c == '/' || c == '\\') return true;

@@ -385,8 +385,8 @@ function helper.shuffle( t )
 	-- it uses the Fisher-Yates algorithm, also known as Knuth shuffle
 	assert( type( t ) == "table", string.format( "helper.shuffle expects a table as parameter, got %s instead", type( t ) ) )
 	local length = #t
-	for index, value in ipairs( t ) do
-		local random = math.random( 1, length )
+	for index = length, 2, -1 do
+		local random = math.random( 1, index )
 		t[index], t[random] = t[random], t[index]
 	end
 end

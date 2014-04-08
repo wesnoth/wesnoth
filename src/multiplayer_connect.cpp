@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013
+   Copyright (C) 2007 - 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -26,6 +26,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "wml_separators.hpp"
+#include "sound.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -69,6 +70,7 @@ connect::side::side(connect& parent, side_engine_ptr engine) :
 		std::vector<std::string>(), parent.combo_control_group_)),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
 	combo_faction_(parent.disp(), std::vector<std::string>()),
+	label_leader_name_(parent.video(), engine_->cfg()["name"], font::SIZE_SMALL),
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_gender_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), engine_->player_teams()),
@@ -129,6 +131,7 @@ connect::side::side(const side& a) :
 	combo_controller_(a.combo_controller_),
 	combo_ai_algorithm_(a.combo_ai_algorithm_),
 	combo_faction_(a.combo_faction_),
+	label_leader_name_(a.label_leader_name_),
 	combo_leader_(a.combo_leader_),
 	combo_gender_(a.combo_gender_),
 	combo_team_(a.combo_team_),
@@ -254,22 +257,34 @@ void connect::side::update_ui()
 
 void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 {
+	// Offset value to align labels in y-axis.
+	int label_y_offset = (combo_leader_.height() - label_leader_name_.height()) / 2;
+
 	pane.add_widget(&label_player_number_, 0, 5 + pos);
+
 	pane.add_widget(combo_controller_.get(), 20, 5 + pos);
 	pane.add_widget(&label_original_controller_, 20 +
 		(combo_controller_->width() - label_original_controller_.width()) / 2,
-		35 + pos + (combo_leader_.height() -
-		label_original_controller_.height()) / 2);
+		35 + pos + label_y_offset);
 	pane.add_widget(&combo_ai_algorithm_, 20, 35 + pos);
+
 	pane.add_widget(&combo_faction_, 135, 5 + pos);
-	pane.add_widget(&combo_leader_, 135, 35 + pos);
+	pane.add_widget(&label_leader_name_, 135 +
+		(combo_faction_.width() - label_leader_name_.width()) / 2,
+		35 + pos + label_y_offset);
+
+	pane.add_widget(&combo_leader_, 250, 5 + pos);
 	pane.add_widget(&combo_gender_, 250, 35 + pos);
-	pane.add_widget(&combo_team_, 250, 5 + pos);
-	pane.add_widget(&combo_color_, 365, 5 + pos);
+
+	pane.add_widget(&combo_team_, 365, 5 + pos);
+	pane.add_widget(&combo_color_, 365, 35 + pos);
+
 	pane.add_widget(&slider_gold_, 475, 5 + pos);
-	pane.add_widget(&label_gold_, 475, 35 + pos);
+	pane.add_widget(&label_gold_, 475 + 5, 35 + pos + label_y_offset);
+
 	pane.add_widget(&slider_income_, 475 + slider_gold_.width(), 5 + pos);
-	pane.add_widget(&label_income_,  475 + slider_gold_.width(), 35 + pos);
+	pane.add_widget(&label_income_, 475 + 5 + slider_gold_.width(),
+		35 + pos + label_y_offset);
 }
 
 void connect::side::update_faction_combo()
@@ -354,11 +369,11 @@ connect::connect(game_display& disp, const std::string& game_name,
 	waiting_label_(video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
-	faction_title_label_(video(), _("Faction"), font::SIZE_SMALL,
+	faction_name_title_label_(video(), _("Faction/Name"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
-	team_title_label_(video(), _("Team/Gender"), font::SIZE_SMALL,
+	leader_gender_title_label_(video(), _("Leader/Gender"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
-	color_title_label_(video(), _("Color"), font::SIZE_SMALL,
+	team_color_title_label_(video(), _("Team/Color"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
 	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL,
 		font::LOBBY_COLOR),
@@ -468,9 +483,9 @@ void connect::hide_children(bool hide)
 	waiting_label_.hide(hide);
 	scroll_pane_.hide(hide); // Scroll pane contents are automatically hidden.
 
-	faction_title_label_.hide(hide);
-	team_title_label_.hide(hide);
-	color_title_label_.hide(hide);
+	faction_name_title_label_.hide(hide);
+	leader_gender_title_label_.hide(hide);
+	team_color_title_label_.hide(hide);
 
 	if (!params().saved_game) {
 		gold_title_label_.hide(hide);
@@ -505,9 +520,9 @@ void connect::layout_children(const SDL_Rect& rect)
 		left_button->height());
 
 	type_title_label_.set_location(left + 30, top + 35);
-	faction_title_label_.set_location((left + 145), top + 35);
-	team_title_label_.set_location((left + 260), top + 35);
-	color_title_label_.set_location((left + 375), top + 35);
+	faction_name_title_label_.set_location((left + 145), top + 35);
+	leader_gender_title_label_.set_location((left + 260), top + 35);
+	team_color_title_label_.set_location((left + 375), top + 35);
 	gold_title_label_.set_location((left + 493), top + 35);
 	income_title_label_.set_location((left + 560), top + 35);
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tscroll_label_definition::tscroll_label_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -30,10 +31,6 @@ tscroll_label_definition::tscroll_label_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tscroll_label_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_scroll_label
@@ -48,7 +45,7 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * @begin{tag}{name="scroll_label_definition"}{min=0}{max=-1}{super="generic/widget_definition"}
  * @begin{tag}{name="resolution"}{min=0}{max=-1}{super="generic/widget_definition/resolution"}
  * @begin{table}{config}
- *     grid & grid & &                    A grid containing the widgets for main
+ *     grid & grid & &                 A grid containing the widgets for main
  *                                     widget. $
  * @end{table}
  * @allow{link}{name="gui/window/resolution/grid"}
@@ -56,9 +53,9 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * time we use it.
  *
  * @begin{table}{dialog_widgets}
- *     _content_grid & & grid & m &           A grid which should only contain one
+ *     _content_grid & & grid & m &    A grid which should only contain one
  *                                     label widget. $
- *     _scrollbar_grid & & grid & m &         A grid for the scrollbar
+ *     _scrollbar_grid & & grid & m &  A grid for the scrollbar
  *                                     (Merge with listbox info.) $
  * @end{table}
  * @begin{tag}{name="content_grid"}{min=0}{max=1}{super="gui/window/resolution/grid"}
@@ -76,15 +73,17 @@ tscroll_label_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="scroll_label_definition"}
  * @end{parent}{name="gui/"}
  */
+tscroll_label_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid(NULL)
+{
 	// Note the order should be the same as the enum tstate is scroll_label.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 	state.push_back(tstate_definition(cfg.child("state_disabled")));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

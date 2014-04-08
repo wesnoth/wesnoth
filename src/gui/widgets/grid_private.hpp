@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,8 @@
 
 #include <boost/foreach.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -52,12 +53,14 @@ struct tgrid_implementation
 	 *
 	 * @tparam W                  twidget or const twidget.
 	 */
-	template<class W>
+	template <class W>
 	static W* find_at(typename utils::tconst_clone<tgrid, W>::reference grid,
-			const tpoint& coordinate, const bool must_be_active)
+					  const tpoint& coordinate,
+					  const bool must_be_active)
 	{
 		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
-		BOOST_FOREACH(hack& child, grid.children_) {
+		BOOST_FOREACH(hack & child, grid.children_)
+		{
 
 			W* widget = child.widget();
 			if(!widget) {
@@ -68,7 +71,6 @@ struct tgrid_implementation
 			if(widget) {
 				return widget;
 			}
-
 		}
 
 		return 0;
@@ -81,9 +83,10 @@ struct tgrid_implementation
 	 *
 	 * @tparam W                  twidget or const twidget.
 	 */
-	template<class W>
+	template <class W>
 	static W* find(typename utils::tconst_clone<tgrid, W>::reference grid,
-				const std::string& id, const bool must_be_active)
+				   const std::string& id,
+				   const bool must_be_active)
 	{
 		// Inherited.
 		W* widget = grid.twidget::find(id, must_be_active);
@@ -92,7 +95,8 @@ struct tgrid_implementation
 		}
 
 		typedef typename utils::tconst_clone<tgrid::tchild, W>::type hack;
-		BOOST_FOREACH(hack& child, grid.children_) {
+		BOOST_FOREACH(hack & child, grid.children_)
+		{
 
 			widget = child.widget();
 			if(!widget) {
@@ -103,7 +107,6 @@ struct tgrid_implementation
 			if(widget) {
 				return widget;
 			}
-
 		}
 
 		return 0;
@@ -119,7 +122,8 @@ struct tgrid_implementation
 	 * @returns                   The required row height after resizing.
 	 */
 	static unsigned row_request_reduce_height(tgrid& grid,
-			const unsigned row, const unsigned maximum_height);
+											  const unsigned row,
+											  const unsigned maximum_height);
 
 	/**
 	 * Helper function to do the resizing of a column.
@@ -131,10 +135,10 @@ struct tgrid_implementation
 	 * @returns                   The required column width after resizing.
 	 */
 	static unsigned column_request_reduce_width(tgrid& grid,
-			const unsigned column, const unsigned maximum_width);
+												const unsigned column,
+												const unsigned maximum_width);
 
 private:
-
 	/**
 	 * Helper function to do the resizing of a widget.
 	 *
@@ -142,7 +146,7 @@ private:
 	 * @param maximum_height      The wanted maximum height.
 	 */
 	static void cell_request_reduce_height(tgrid::tchild& child,
-			const unsigned maximum_height);
+										   const unsigned maximum_height);
 
 	/**
 	 * Helper function to do the resizing of a widget.
@@ -151,7 +155,7 @@ private:
 	 * @param maximum_width      The wanted maximum width.
 	 */
 	static void cell_request_reduce_width(tgrid::tchild& child,
-			const unsigned maximum_width);
+										  const unsigned maximum_width);
 };
 
 } // namespace gui2

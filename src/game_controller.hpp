@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
-#include "hotkeys.hpp"
+#include "hotkey/hotkey_manager.hpp"
 #include "resources.hpp"
 #include "sound.hpp"
 #include "thread.hpp"

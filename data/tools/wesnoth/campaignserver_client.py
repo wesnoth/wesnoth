@@ -10,7 +10,16 @@ import wesnoth.wmlparser as wmlparser
 dumpi = 0
 class CampaignClient:
     # First port listed will be used as default.
-    portmap = (("15006", "1.11.x"), ("15002", "1.10.x"), ("15002", "1.9.x"), ("15004", "trunk"), ("15001", "1.8.x"), ("15003", "1.6.x"), ("15005", "1.4.x"))
+    portmap = (
+        ("15007", "1.12.x"),
+        ("15006", "1.11.x"),
+        ("15002", "1.10.x"),
+        ("15002", "1.9.x"),
+        ("15004", "trunk"),
+        ("15001", "1.8.x"),
+        ("15003", "1.6.x"),
+        ("15005", "1.4.x"),
+        )
 
     def __init__(self, address = None, quiet=False):
         """
@@ -305,19 +314,16 @@ class CampaignClient:
 
         return None
 
-    def put_campaign(self, name, cfgfile, directory, ign, stuff):
+    def put_campaign(self, name, cfgfile, directory, ign, pbl):
         """
-        Uploads a campaign to the server. The title, name, author, passphrase,
-        description, version and icon parameters are what would normally be
-        found in a .pbl file.
+        Uploads a campaign to the server.
 
         The cfgfile is the name of the main .cfg file of the campaign.
 
         The directory is the name of the campaign's directory.
         """
-        request = wmldata.DataSub("upload")
-        for k, v in stuff.items():
-            request.set_text_val(k, v)
+        request = pbl.copy()
+        request.name = "upload"
         request.set_text_val("name", name)
 
         data = wmldata.DataSub("data")

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ struct map_location {
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}
-	map_location(const config& cfg, const variable_set *variables);
+	map_location(const config& cfg, const variable_set *variables = NULL);
 
 	void write(config& cfg) const;
 

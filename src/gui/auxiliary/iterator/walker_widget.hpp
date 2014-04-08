@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,18 +17,19 @@
 
 #include "gui/auxiliary/iterator/walker.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
-namespace walker {
+namespace walker
+{
 
 /** A walker for a @ref gui2::tcontrol. */
-class twidget
-	: public twalker_
+class twidget : public twalker_
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -46,7 +47,6 @@ public:
 	virtual gui2::twidget* get(const tlevel level);
 
 private:
-
 	/** The control which the walker is attached to. */
 	gui2::twidget* widget_;
 };
@@ -58,4 +58,3 @@ private:
 } // namespace gui2
 
 #endif
-

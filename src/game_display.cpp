@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -64,6 +64,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		const tod_manager& tod, const std::vector<team>& t,
 		const config& theme_cfg, const config& level) :
 		display(&units, video, &map, &t, theme_cfg, level),
+		overlay_map_(),
 		fake_units_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
@@ -71,18 +72,14 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		tod_manager_(tod),
 		level_(level),
 		displayedUnitHex_(),
-//		overlays_(),
 		sidebarScaling_(1.0),
 		first_turn_(true),
 		in_game_(false),
 		observers_(),
 		chat_messages_(),
-		reach_map_(),
-		reach_map_old_(),
-		reach_map_changed_(true),
 		game_mode_(RUNNING)
 {
-
+	replace_overlay_map(&overlay_map_);
 	clear_screen();
 }
 
@@ -164,7 +161,7 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	wb::future_map future; //< Lasts for whole method.
+	wb::future_map future; /**< Lasts for whole method. */
 
 	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
@@ -191,7 +188,7 @@ void game_display::display_unit_hex(map_location hex)
 	if (!hex.valid())
 		return;
 
-	wb::future_map future; //< Lasts for whole method.
+	wb::future_map future; /**< Lasts for whole method. */
 
 	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
@@ -578,46 +575,7 @@ void game_display::unhighlight_reach()
 	reach_map_changed_ = true;
 }
 
-void game_display::process_reachmap_changes()
-{
-	if (!reach_map_changed_) return;
-	if (reach_map_.empty() != reach_map_old_.empty()) {
-		// Invalidate everything except the non-darkened tiles
-		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
 
-		rect_of_hexes hexes = get_visible_hexes();
-		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
-		for (;i != end; ++i) {
-			reach_map::iterator reach = full.find(*i);
-			if (reach == full.end()) {
-				// Location needs to be darkened or brightened
-				invalidate(*i);
-			} else if (reach->second != 1) {
-				// Number needs to be displayed or cleared
-				invalidate(*i);
-			}
-		}
-	} else if (!reach_map_.empty()) {
-		// Invalidate only changes
-		reach_map::iterator reach, reach_old;
-		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
-			reach_old = reach_map_old_.find(reach->first);
-			if (reach_old == reach_map_old_.end()) {
-				invalidate(reach->first);
-			} else {
-				if (reach_old->second != reach->second) {
-					invalidate(reach->first);
-				}
-				reach_map_old_.erase(reach_old);
-			}
-		}
-		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
-			invalidate(reach_old->first);
-		}
-	}
-	reach_map_old_ = reach_map_;
-	reach_map_changed_ = false;
-}
 
 void game_display::invalidate_route()
 {
@@ -963,19 +921,24 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 	while (i != i_end && i->owner != owner) ++i;
 
 	if (i != i_end) {
-		i->message += "\n";
-		i->message += message;
+		i->message = message + "\n" + i->message;
+		int endl_pos = -1;
+		for (int ctr = 0; ctr < 5; ctr++)
+			endl_pos = i->message.find('\n', endl_pos+1);
+
+		i->message = i->message.substr(0,endl_pos);
+
 		send_dbus_notification(connection, i->id, owner, i->message);
 		return;
+	} else {
+		uint32_t id = send_dbus_notification(connection, 0, owner, message);
+		if (!id) return;
+		wnotify visual;
+		visual.id = id;
+		visual.owner = owner;
+		visual.message = message;
+		notifications.push_back(visual);
 	}
-
-	uint32_t id = send_dbus_notification(connection, 0, owner, message);
-	if (!id) return;
-	wnotify visual;
-	visual.id = id;
-	visual.owner = owner;
-	visual.message = message;
-	notifications.push_back(visual);
 #endif
 
 #ifdef HAVE_GROWL
@@ -1099,7 +1062,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		// We've had a joker who send an invalid utf-8 message to crash clients
 		// so now catch the exception and ignore the message.
 		msg = font::word_wrap_text(msg,font::SIZE_SMALL,map_outside_area().w*3/4);
-	} catch (utils::invalid_utf8_exception&) {
+	} catch (utf8::invalid_utf8_exception&) {
 		ERR_NG << "Invalid utf-8 found, chat message is ignored.\n";
 		return;
 	}

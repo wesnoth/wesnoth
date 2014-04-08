@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,6 +28,7 @@
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 namespace {
 
@@ -498,6 +499,13 @@ void un_recruit_unit(const unit& u)
 	s.recruit_cost -= u.cost();
 }
 
+int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhaps in undo.cpp
+{					// but I'm too lazy to do it at the moment
+	stats& s = get_stats(u.side_id());
+	s.recalls[u.type_id()]--;
+	return u.recall_cost();
+}
+ 
 
 void advance_unit(const unit& u)
 {
@@ -628,7 +636,12 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 {
 	int cost = 0;
 	for (stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
-		cost += i->second * unit_types.find(i->first)->cost();
+		const unit_type *t = unit_types.find(i->first);
+		if (!t) {
+			ERR_NG << "Statistics refer to unknown unit type '" << i->first << "'. Discarding.\n";
+		} else {
+			cost += i->second * t->cost();
+		}
 	}
 
 	return cost;

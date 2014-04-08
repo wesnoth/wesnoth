@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -187,6 +187,7 @@ public:
 	virtual recall_result_ptr check_recall_action(const std::string& id, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 	virtual recruit_result_ptr check_recruit_action(const std::string& unit_name, const map_location &where = map_location::null_location, const map_location &from = map_location::null_location) = 0;
 	virtual stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
+	virtual synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location) = 0;
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
 		move_map& srcdst, move_map& dstsrc, bool enemy,
 		bool assume_full_movement=false,
@@ -444,6 +445,9 @@ public:
 	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false) = 0;
 
 
+	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location) = 0;
+
+
 	virtual team& current_team_w() = 0;
 
 
@@ -578,6 +582,11 @@ public:
 	virtual stopunit_result_ptr check_stopunit_action(const map_location &unit_location, bool remove_movement = true, bool remove_attacks = false)
 	{
 		return target_->check_stopunit_action(unit_location, remove_movement, remove_attacks);
+	}
+
+	virtual synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location)
+	{
+		return target_->check_synced_command_action(lua_code, location);
 	}
 
 	virtual void calculate_possible_moves(std::map<map_location,pathfind::paths>& possible_moves,
@@ -1073,6 +1082,12 @@ public:
 	}
 
 
+	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location)
+	{
+		return target_->execute_synced_command_action(lua_code,location);
+	}
+
+
 	virtual team& current_team_w()
 	{
 		return target_->current_team_w();
@@ -1253,6 +1268,17 @@ public:
 	 * @retval possible_result: nothing to do
 	 */
 	stopunit_result_ptr check_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+
+
+	/**
+	 * Check if it is possible to run Lua code
+	 * @param lua_code the code to be run
+	 * @param location location to be passed to the code as x1/y1
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: nothing to do
+	 */
+	synced_command_result_ptr check_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location);
 
 
 	/**
@@ -1647,6 +1673,17 @@ public:
 	 * @retval possible_result: nothing to do
 	 */
 	virtual stopunit_result_ptr execute_stopunit_action(const map_location& unit_location, bool remove_movement = true, bool remove_attacks = false);
+
+
+	/**
+	 * Ask the game to run Lua code
+	 * @param lua_code the code to be run
+	 * @param location location to be passed to the code as x1/y1
+	 * @retval possible result: ok
+	 * @retval possible_result: something wrong
+	 * @retval possible_result: nothing to do
+	 */
+	virtual synced_command_result_ptr execute_synced_command_action(const std::string& lua_code, const map_location& location = map_location::null_location);
 
 
 	/** Return a reference to the 'team' object for the AI. */

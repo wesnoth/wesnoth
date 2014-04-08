@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -30,10 +31,6 @@ tstacked_widget_definition::tstacked_widget_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tstacked_widget_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid(NULL)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_stacked_widget
@@ -54,16 +51,17 @@ tstacked_widget_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="stacked_widget_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tstacked_widget_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid(NULL)
+{
 	// Add a dummy state since every widget needs a state.
-	static config dummy ("draw");
+	static config dummy("draw");
 	state.push_back(tstate_definition(dummy));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

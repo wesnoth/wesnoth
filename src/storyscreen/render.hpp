@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -54,7 +54,6 @@ public:
 	 * @param p A storyscreen::part with the required information and parameters.
 	 * @param disp Display.
 	 * @param next_button Next button. Shouldn't be destroyed before the part_ui object.
-	 * @param skip_button Skip button. Shouldn't be destroyed before the part_ui object.
 	 */
 	part_ui(part &p, display &disp, gui::button &next_button,
 		gui::button &back_button, gui::button& play_button);

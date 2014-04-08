@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,7 +34,8 @@
  * typing not for the binary) to make maintenance easier.
  */
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Helper to implement private functions without modifying the header.
@@ -51,22 +52,23 @@ struct tscrollbar_container_implementation
 	 *
 	 * @tparam W                  twidget or const twidget.
 	 */
-	template<class W>
-	static W* find_at(
-			typename utils::tconst_clone<tscrollbar_container, W>::reference
-				scrollbar_container,
-			const tpoint& coordinate, const bool must_be_active)
+	template <class W>
+	static W*
+	find_at(typename utils::tconst_clone<tscrollbar_container, W>::reference
+					scrollbar_container,
+			const tpoint& coordinate,
+			const bool must_be_active)
 	{
 
 		assert(scrollbar_container.content_
-				&& scrollbar_container.content_grid_);
+			   && scrollbar_container.content_grid_);
 
-		W* result = scrollbar_container.tcontainer_
-				::find_at(coordinate, must_be_active);
+		W* result = scrollbar_container.tcontainer_::find_at(coordinate,
+															 must_be_active);
 
 		if(result == scrollbar_container.content_) {
-			return scrollbar_container.content_grid_->
-					find_at(coordinate, must_be_active);
+			return scrollbar_container.content_grid_->find_at(coordinate,
+															  must_be_active);
 		}
 
 		return result;
@@ -79,20 +81,20 @@ struct tscrollbar_container_implementation
 	 *
 	 * @tparam W                  twidget or const twidget.
 	 */
-	template<class W>
-	static W* find(
-			typename utils::tconst_clone<tscrollbar_container, W>::reference
-				scrollbar_container,
-			const std::string& id, const bool must_be_active)
+	template <class W>
+	static W*
+	find(typename utils::tconst_clone<tscrollbar_container, W>::reference
+				 scrollbar_container,
+		 const std::string& id,
+		 const bool must_be_active)
 	{
 		// Inherited.
-		W* result = scrollbar_container.tcontainer_
-				::find(id, must_be_active);
+		W* result = scrollbar_container.tcontainer_::find(id, must_be_active);
 
 		// Can be called before finalize so test instead of assert for the grid.
 		if(!result && scrollbar_container.content_grid_) {
-			result = scrollbar_container.
-				content_grid_->find(id, must_be_active);
+			result = scrollbar_container.content_grid_->find(id,
+															 must_be_active);
 		}
 
 		return result;
@@ -102,4 +104,3 @@ struct tscrollbar_container_implementation
 } // namespace gui2
 
 #endif
-

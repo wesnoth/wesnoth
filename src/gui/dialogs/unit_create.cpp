@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,24 +30,28 @@
 #include "unit_types.hpp"
 #include "utils/foreach.tpp"
 
-namespace {
-	static std::string last_chosen_type_id = "";
-	static unit_race::GENDER last_gender = unit_race::MALE;
+namespace
+{
+static std::string last_chosen_type_id = "";
+static unit_race::GENDER last_gender = unit_race::MALE;
 
-	/**
-	 * Helper function for updating the male/female checkboxes.
-	 * It's not a private member of class gui2::tunit_create so
-	 * we don't have to expose a forward-declaration of ttoggle_button
-	 * in the interface.
-	 */
-	void update_male_female_toggles(gui2::ttoggle_button& male, gui2::ttoggle_button& female, unit_race::GENDER choice)
-	{
-		male.set_value(choice == unit_race::MALE);
-		female.set_value(choice == unit_race::FEMALE);
-	}
+/**
+ * Helper function for updating the male/female checkboxes.
+ * It's not a private member of class gui2::tunit_create so
+ * we don't have to expose a forward-declaration of ttoggle_button
+ * in the interface.
+ */
+void update_male_female_toggles(gui2::ttoggle_button& male,
+								gui2::ttoggle_button& female,
+								unit_race::GENDER choice)
+{
+	male.set_value(choice == unit_race::MALE);
+	female.set_value(choice == unit_race::FEMALE);
+}
 }
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -80,26 +84,24 @@ namespace gui2 {
 REGISTER_DIALOG(unit_create)
 
 tunit_create::tunit_create()
-	: gender_(last_gender)
-	, choice_(last_chosen_type_id)
-	, type_ids_()
+	: gender_(last_gender), choice_(last_chosen_type_id), type_ids_()
 {
 }
 
 void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 {
-	ttoggle_button& male_toggle = find_widget<ttoggle_button>(
-			&window, "male_toggle", false);
-	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
-			&window, "female_toggle", false);
+	ttoggle_button& male_toggle
+			= find_widget<ttoggle_button>(&window, "male_toggle", false);
+	ttoggle_button& female_toggle
+			= find_widget<ttoggle_button>(&window, "female_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	male_toggle.set_callback_state_change(
-		dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>
-	);
+			dialog_callback<tunit_create,
+							&tunit_create::gender_toggle_callback>);
 	female_toggle.set_callback_state_change(
-		dialog_callback<tunit_create, &tunit_create::gender_toggle_callback>
-	);
+			dialog_callback<tunit_create,
+							&tunit_create::gender_toggle_callback>);
 	update_male_female_toggles(male_toggle, female_toggle, gender_);
 	list.clear();
 
@@ -107,9 +109,9 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	// later, so it ought to be empty before proceeding.
 	type_ids_.clear();
 
-	FOREACH(const AUTO& i, unit_types.types())
+	FOREACH(const AUTO & i, unit_types.types())
 	{
-		if (i.second.do_not_list())
+		if(i.second.do_not_list())
 			continue;
 
 		// Make sure this unit type is built with the data we need.
@@ -118,7 +120,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 		// And so we map an unit_type id to a list subscript. Ugh.
 		type_ids_.push_back(i.first);
 
-		std::map< std::string, string_map > row_data;
+		std::map<std::string, string_map> row_data;
 		string_map column;
 
 		column["label"] = i.second.type_name();
@@ -141,8 +143,8 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 
 void tunit_create::post_show(twindow& window)
 {
-	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
-			&window, "female_toggle", false);
+	ttoggle_button& female_toggle
+			= find_widget<ttoggle_button>(&window, "female_toggle", false);
 	tlistbox& list = find_widget<tlistbox>(&window, "unit_type_list", false);
 
 	choice_ = "";
@@ -154,36 +156,35 @@ void tunit_create::post_show(twindow& window)
 	const int selected_row = list.get_selected_row();
 	if(selected_row < 0) {
 		return;
-	}
-	else if(static_cast<size_t>(selected_row) >= type_ids_.size()) {
+	} else if(static_cast<size_t>(selected_row) >= type_ids_.size()) {
 		// FIXME: maybe assert?
-		ERR_GUI_G << "unit create dialog has more list items than known unit types; not good\n";
+		ERR_GUI_G << "unit create dialog has more list items than known unit "
+					 "types; not good\n";
 		return;
 	}
 
-	last_chosen_type_id = choice_ =
-		type_ids_[static_cast<size_t>(selected_row)];
-	last_gender = gender_ =
-		female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
+	last_chosen_type_id = choice_
+			= type_ids_[static_cast<size_t>(selected_row)];
+	last_gender = gender_ = female_toggle.get_value() ? unit_race::FEMALE
+													  : unit_race::MALE;
 }
 
 void tunit_create::gender_toggle_callback(twindow& window)
 {
-	ttoggle_button& male_toggle = find_widget<ttoggle_button>(
-			&window, "male_toggle", false);
-	ttoggle_button& female_toggle = find_widget<ttoggle_button>(
-			&window, "female_toggle", false);
+	ttoggle_button& male_toggle
+			= find_widget<ttoggle_button>(&window, "male_toggle", false);
+	ttoggle_button& female_toggle
+			= find_widget<ttoggle_button>(&window, "female_toggle", false);
 
 	// TODO Ye olde ugly hack for the lack of radio buttons.
 
 	if(gender_ == unit_race::MALE) {
-		gender_ = female_toggle.get_value() ? unit_race::FEMALE : unit_race::MALE;
-	}
-	else {
+		gender_ = female_toggle.get_value() ? unit_race::FEMALE
+											: unit_race::MALE;
+	} else {
 		gender_ = male_toggle.get_value() ? unit_race::MALE : unit_race::FEMALE;
 	}
 
 	update_male_female_toggles(male_toggle, female_toggle, gender_);
 }
-
 }

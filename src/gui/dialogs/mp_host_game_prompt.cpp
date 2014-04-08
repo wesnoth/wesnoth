@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2008 - 2013 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 #include "game_preferences.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -56,11 +57,10 @@ static void set_do_not_show_again(const bool do_not_show_again)
 
 tmp_host_game_prompt::tmp_host_game_prompt()
 {
-	register_bool("do_not_show_again"
-			, true
-			, &get_do_not_show_again
-			, &set_do_not_show_again);
+	register_bool("do_not_show_again",
+				  true,
+				  &get_do_not_show_again,
+				  &set_do_not_show_again);
 }
 
 } // namespace gui2
-

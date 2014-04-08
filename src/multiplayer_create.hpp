@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013
+   Copyright (C) 2007 - 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -43,6 +43,7 @@ protected:
 
 private:
 	void init_level_type_changed(size_t index);
+	void init_level_changed(size_t index);
 
 	void synchronize_selections();
 
@@ -67,6 +68,7 @@ private:
 	gui::label filter_num_players_label_;
 	gui::label map_generator_label_;
 	gui::label era_label_;
+	gui::label no_era_label_;
 	gui::label mod_label_;
 	gui::label map_size_label_;
 	gui::label num_players_label_;

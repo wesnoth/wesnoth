@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -72,6 +72,17 @@ public:
 	void select_hex(const map_location& hex, const bool browse,
 		const bool highlight = true,
 		const bool fire_event = true);
+
+	void move_action(bool browse);
+
+	void select_or_action(bool browse);
+
+	void left_mouse_up(int x, int y, const bool /*browse*/);
+	void mouse_wheel_up(int x, int y, const bool /*browse*/);
+	void mouse_wheel_down(int x, int y, const bool /*browse*/);
+	void mouse_wheel_left(int x, int y, const bool /*browse*/);
+	void mouse_wheel_right(int x, int y, const bool /*browse*/);
+
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -91,7 +102,7 @@ protected:
 	 */
 	void mouse_motion(int x, int y, const bool browse, bool update=false, map_location loc = map_location::null_location);
 	bool right_click_show_menu(int x, int y, const bool browse);
-	bool left_click(int x, int y, const bool browse);
+//	bool left_click(int x, int y, const bool browse);
 	bool move_unit_along_current_route();
 
 	void save_whiteboard_attack(const map_location& attacker_loc, const map_location& defender_loc, int weapon_choice);
@@ -104,10 +115,6 @@ protected:
 	void attack_enemy_(const map_location& attacker_loc
 			, const map_location& defender_loc
 			, int choice);
-
-	// the perform attack function called after a random seed is obtained
-	void perform_attack(map_location attacker_loc, map_location defender_loc,
-		int attacker_weapon, int defender_weapon, int seed);
 
 	void show_attack_options(const unit_map::const_iterator &u);
 	unit_map::const_iterator find_unit(const map_location& hex) const;
@@ -127,7 +134,7 @@ private:
 	map_location next_unit_;
 	pathfind::marked_route current_route_;
 	pathfind::paths current_paths_;
-	bool enemy_paths_;
+	bool unselected_paths_;
 	int path_turns_;
 	int side_num_;
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,19 +17,22 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 // copy & paste from tbuilder_text_box...
 // does it make more sense to inherit from it?
-struct tbuilder_password_box
-	: public tbuilder_control
+struct tbuilder_password_box : public tbuilder_control
 {
 public:
 	explicit tbuilder_password_box(const config& cfg);
 
-	twidget* build () const;
+	using tbuilder_control::build;
+
+	twidget* build() const;
 
 private:
 	std::string history_;
@@ -40,4 +43,3 @@ private:
 } // namespace gui2
 
 #endif
-

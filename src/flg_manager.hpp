@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,13 +53,14 @@ public:
 	void reset_leader_combo(gui::combo& combo_leader) const;
 	void reset_gender_combo(gui::combo& combo_gender) const;
 
+	bool is_random_faction();
 	void resolve_random();
 
 	// Picks the first faction with the greater amount of data
 	// matching the criteria.
 	int find_suitable_faction(const std::string& faction_id = "") const;
 
-	const std::vector<const config*> choosable_factions() const
+	const std::vector<const config*>& choosable_factions() const
 		{ return choosable_factions_; }
 	const std::vector<std::string>& choosable_leaders() const
 		{ return choosable_leaders_; }

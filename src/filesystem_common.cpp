@@ -10,6 +10,7 @@
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "util.hpp"
 
 static lg::log_domain log_filesystem("filesystem");
@@ -122,7 +123,7 @@ std::string get_screenshot_dir()
 
 bool looks_like_pbl(const std::string& file)
 {
-	return utils::wildcard_string_match(utils::lowercase(file), "*.pbl");
+	return utils::wildcard_string_match(utf8::lowercase(file), "*.pbl");
 }
 
 file_tree_checksum::file_tree_checksum()

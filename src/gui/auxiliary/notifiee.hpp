@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,9 +17,10 @@
 
 #include <cstdlib>
 
-namespace gui2 {
+namespace gui2
+{
 
-template<class T>
+template <class T>
 class tnotifier;
 
 /**
@@ -27,15 +28,14 @@ class tnotifier;
  *
  * This part manages the lifetime off the callback.
  */
-template<class FUNCTOR>
+template <class FUNCTOR>
 class tnotifiee
 {
 public:
 	typedef FUNCTOR tfunctor;
 	friend class tnotifier<tfunctor>;
 
-	tnotifiee()
-		: notifier_(NULL)
+	tnotifiee() : notifier_(NULL)
 	{
 	}
 
@@ -47,12 +47,10 @@ public:
 	}
 
 private:
-
 	/** Pointer the the tnotifier that's linked to us. */
-	tnotifier<tfunctor> *notifier_;
+	tnotifier<tfunctor>* notifier_;
 };
 
-} //namespace gui2
+} // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,15 +19,16 @@
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/auxiliary/old_markup.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
+#include "gui/widgets/list.hpp"
 #else
-	#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -55,7 +56,8 @@ namespace gui2 {
  *         Widget which shows a listbox item label, second item markup column. $
  *
  * -description & & control & m &
- *         Widget which shows a listbox item description, third item markup column. $
+ *         Widget which shows a listbox item description, third item markup
+ *         column. $
  *
  * @end{table}
  */
@@ -63,11 +65,11 @@ namespace gui2 {
 REGISTER_DIALOG(campaign_difficulty)
 
 tcampaign_difficulty::tcampaign_difficulty(
-		  const std::vector<std::string>& items)
-	: index_(-1)
-	, items_()
+		const std::vector<std::string>& items)
+	: index_(-1), items_()
 {
-	FOREACH(const AUTO& it, items) {
+	FOREACH(const AUTO & it, items)
+	{
 		items_.push_back(tlegacy_menu_item(it));
 	}
 }
@@ -79,7 +81,8 @@ void tcampaign_difficulty::pre_show(CVideo& /*video*/, twindow& window)
 
 	std::map<std::string, string_map> data;
 
-	FOREACH(const AUTO& item, items_) {
+	FOREACH(const AUTO & item, items_)
+	{
 		if(item.is_default()) {
 			index_ = list.get_item_count();
 		}
@@ -108,5 +111,4 @@ void tcampaign_difficulty::post_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	index_ = list.get_selected_row();
 }
-
 }

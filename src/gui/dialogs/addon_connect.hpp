@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,30 +19,30 @@
 
 class display;
 
-namespace gui2 {
+namespace gui2
+{
 
 /** Addon connect dialog. */
-class taddon_connect
-	: public tdialog
+class taddon_connect : public tdialog
 {
 public:
 	/**
 	 * Constructor.
 	 *
-	 * @param host_name [in]      The initial value for the host_name.
-	 * @param host_name [out]     The final value of the host_name if the
-	 *                            dialog returns @ref twindow::OK or 3
-	 *                            undefined otherwise.
+	 * @param [in, out]host_name  The parameter's usage is:
+	 *                            - Input: The initial value for the host_name.
+	 *                            - Output :The final value of the host_name if
+	 *                              the dialog returns @ref twindow::OK or 3
+	 *                              undefined otherwise.
 	 * @param allow_remove        Sets @ref allow_remove_.
 	 * @param disp                The display object used for showing the
 	 *                            in-game help when requested.
 	 */
-	taddon_connect(std::string& host_name
-			, const bool allow_remove
-			, display* disp = NULL);
+	taddon_connect(std::string& host_name,
+				   const bool allow_remove,
+				   display* disp = NULL);
 
 private:
-
 	/** Enable the addon remove button? */
 	bool allow_remove_;
 

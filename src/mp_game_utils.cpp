@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -139,8 +139,15 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 	// This will force connecting clients to be using the same version number as us.
 	level["version"] = game_config::version;
 
-	level["observer"] = params.allow_observers;
-	level["shuffle_sides"] = params.shuffle_sides;
+	// If game was reloaded, params won't contain all required information and so we
+	// need to take it from the actual level config.
+	if (params.saved_game) {
+		level["observer"] = level.child("multiplayer")["observer"];
+		level["shuffle_sides"] = level.child("multiplayer")["shuffle_sides"];
+	} else {
+		level["observer"] = params.allow_observers;
+		level["shuffle_sides"] = params.shuffle_sides;
+	}
 
 	if (level["objectives"].empty()) {
 		level["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +

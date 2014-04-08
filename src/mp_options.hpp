@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,8 +18,15 @@
 #include <string>
 #include "config.hpp"
 #include "video.hpp"
+#include "game_display.hpp"
 #include "gui/widgets/widget.hpp"
 #include "gui/widgets/window.hpp"
+#include "widgets/scrollpane.hpp"
+#include "widgets/label.hpp"
+#include "widgets/button.hpp"
+#include "widgets/textbox.hpp"
+#include "widgets/slider.hpp"
+#include "widgets/combo.hpp"
 
 namespace mp
 {
@@ -38,6 +45,101 @@ enum elem_type
 	MODIFICATION
 };
 
+class option_display
+{
+public:
+	virtual ~option_display() {}
+	virtual void layout(int& xpos, int& ypos, int border_size, gui::scrollpane* pane) = 0;
+	virtual void set_value(const config::attribute_value& val) = 0;
+	virtual config::attribute_value get_value() const = 0;
+	virtual void process_event() {}
+	virtual void hide_children(bool hide) = 0;
+};
+
+class entry_display : public option_display
+{
+public:
+	entry_display(CVideo& video, const config& cfg);
+	~entry_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &val);
+	config::attribute_value get_value() const;
+	virtual void hide_children(bool hide);
+
+private:
+	gui::textbox* entry_;
+	gui::label* label_;
+};
+
+class slider_display : public option_display
+{
+public:
+	slider_display(CVideo& video, const config& cfg);
+	~slider_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &val);
+	config::attribute_value get_value() const;
+	void process_event();
+	virtual void hide_children(bool hide);
+
+private:
+	void update_label();
+
+	gui::slider* slider_;
+	gui::label* label_;
+	int last_value_;
+	const std::string label_text_;
+};
+
+class checkbox_display : public option_display
+{
+public:
+	checkbox_display(CVideo& video, const config& cfg);
+	~checkbox_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &val);
+	config::attribute_value get_value() const;
+	virtual void hide_children(bool hide);
+private:
+	gui::button* checkbox_;
+};
+
+class combo_display : public option_display
+{
+public:
+	combo_display(game_display& display, const config& cfg);
+	~combo_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &val);
+	config::attribute_value get_value() const;
+	void hide_children(bool hide);
+
+private:
+	gui::label* label_;
+	gui::combo* combo_;
+
+	std::vector<std::string> values_;
+};
+
+class title_display : public option_display
+{
+public:
+	title_display(CVideo& video, const std::string& label);
+	~title_display();
+
+	void layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane);
+	void set_value(const config::attribute_value &/*val*/) {}
+	config::attribute_value get_value() const { return config::attribute_value(); }
+	virtual void hide_children(bool hide);
+
+private:
+	gui::label* title_;
+};
+
 class manager
 {
 public:
@@ -52,7 +154,11 @@ public:
 	 *
 	 * @param initial_values	The initial values for each option.
 	 */
-	manager(const config& gamecfg, CVideo& video, const config& initial_values);
+	//manager(const config& gamecfg, CVideo& video, const config& initial_values);
+
+	manager(const config& gamecfg, game_display& display, gui::scrollpane* pane, const config& initial_value);
+
+	~manager();
 
 	/**
 	 * Set the current values the options. This overrides ALL previously set
@@ -121,14 +227,21 @@ public:
 	 */
 	void show_dialog();
 
+	void layout_widgets(int startx, int starty);
+	void process_event();
+	void hide_children(bool hide=true);
+
 	/**
 	 * Returns the the values for each option.
 	 *
 	 * @return						A config containing the values.
 	 */
-	const config& get_values() const { return values_; }
+	const config& get_values();
+
+	void init_widgets();
 
 private:
+
 	/** Stores needed info about each element and their configuration options */
 	config options_info_;
 
@@ -136,7 +249,10 @@ private:
 	config values_;
 
 	/** The screen to display the dialog on */
-	CVideo &video_;
+	game_display &display_;
+
+	/** The scrollarea to put the widgets on */
+	gui::scrollpane* pane_;
 
 	/** The id of the selected era */
 	std::string era_;
@@ -147,6 +263,9 @@ private:
 	/** The ids of the selected modifications */
 	std::vector<std::string> modifications_;
 
+	std::map<std::string, option_display*> widgets_;
+	std::vector<option_display*> widgets_ordered_;
+
 	/**
 	 * Adds the necessary information about the specified component
 	 * to options_info_.
@@ -155,48 +274,6 @@ private:
 	 * @param key					The component's type.
 	 */
 	void init_info(const config& cfg, const std::string& key);
-
-	/**
-	 * Creates a widget layout based on an [options] section.
-	 *
-	 * @param data					The [options] section.
-	 * @param grid					The grid to create the layout in.
-	 */
-	void add_widgets(const config& data, config& grid) const;
-
-	/**
-	 * Creates a slider widget.
-	 *
-	 * @param data					A [slider] config.
-	 * @param column				The grid cell to add the widget into.
-	 */
-	void add_slider(const config& data, config& column) const;
-
-	/**
-	 * Creates a checkbox (toggle button) widget.
-	 *
-	 * @param data					A [checkbox] config.
-	 * @param column				The grid cell to add the widget into.
-	 */
-	void add_checkbox(const config& data, config& column) const;
-
-	/**
-	 * @todo Implement this function (along with a combo box widget, preferably)
-	 *
-	 * Creates a combo box widget.
-	 *
-	 * @param data					A [combobox] config.
-	 * @param column				The grid cell to add the widget into.
-	 */
-	void add_combobox(const config& data, config& column) const;
-
-	/**
-	 * Creates a text entry widget.
-	 *
-	 * @param data					An [entry] config.
-	 * @param column				The grid cell to add the widget into.
-	 */
-	void add_entry(const config& data, config& column) const;
 
 	/**
 	 * Returns the node which holds the selected value of an option. If that
@@ -266,76 +343,15 @@ private:
 	config::attribute_value get_default_value(const std::string& id) const;
 
 	/**
-	 * Gets the current value of a slider widget.
-	 *
-	 * @param id					The id of the widget.
-	 * @param win					The window to find the widget in.
-	 *
-	 * @return						The integer currently set on the slider.
-	 */
-	int get_slider_value(const std::string& id, gui2::twindow* win) const;
-
-	/**
-	 * Gets the current value of a checkbox widget.
-	 *
-	 * @param id					The id of the widget.
-	 * @param win					The window to find the widget in.
-	 *
-	 * @return						True if the box is checked, false if not.
-	 */
-	bool get_checkbox_value(const std::string& id, gui2::twindow* win) const;
-
-	/**
-	 * Gets the current value of a text_box widget.
-	 *
-	 * @param id					The id of the widget.
-	 * @param win					The window to find the widget in.
-	 *
-	 * @return						The text written in the widget.
-	 */
-	std::string get_entry_value(const std::string& id,
-								gui2::twindow* win) const;
-
-	/**
-	 * Sets the value of a checkbox widget.
-	 *
-	 * @param val					The new value.
-	 * @param id					The id of the widget.
-	 * @param win					The window which the widget is a child of.
-	 */
-	void set_slider_value(int val, const std::string& id,
-						  gui2::twindow* win) const;
-
-	/**
-	 * Sets the value of a slider widget.
-	 *
-	 * @param val					The new value.
-	 * @param id					The id of the widget.
-	 * @param win					The window which the widget is a child of.
-	 */
-	void set_checkbox_value(bool val, const std::string& id,
-							gui2::twindow* win) const;
-
-	/**
-	 * Sets the value of a text_box widget.
-	 *
-	 * @param val					The new value.
-	 * @param id					The id of the widget.
-	 * @param win					The window which the widget is a child of.
-	 */
-	void set_entry_value(const std::string& val, const std::string& id,
-						 gui2::twindow* win) const;
-
-	/**
 	 * Writes all the values for the options of a certain component from a
 	 * specified window into values_.
 	 *
 	 * @param key					The component's type.
 	 * @param id					The component's id.
-	 * @param window				The window.
 	 */
-	void extract_values(const std::string& key, const std::string& id,
-					  gui2::twindow* window);
+	void extract_values(const std::string& key, const std::string& id);
+
+	void update_values();
 
 	/**
 	 * Decides whether a config is a sane option node or not.
@@ -355,9 +371,8 @@ private:
 	 *
 	 * @param m						A pointer to the manager which generated
 	 * 								the window.
-	 * @param w						A pointer to the window itself.
 	 */
-	static void restore_defaults(manager* m, gui2::twindow* w);
+	static void restore_defaults(manager* m);
 
 	/**
 	 * Finds the widgets representing the options of a certain component in a
@@ -367,21 +382,10 @@ private:
 	 * @param comp					The config of the component.
 	 * @param m						A pointer to the manager which generated
 	 * 								the window.
-	 * @param w						A pointer to the window.
 	 */
-	static void restore_defaults_for_component(const config& comp, manager* m,
-											   gui2::twindow* w);
+	static void restore_defaults_for_component(const config& comp, manager* m);
 
-	/**
-	 * @todo 		Implement a way to initialize the checkbox via WML and then
-	 * 				remove this function altogether.
-	 *
-	 * Sets the default states for all checkbox widgets inside a window. All
-	 * required data is fetched from values_ and options_info_.
-	 *
-	 * @param window				The window.
-	 */
-	void __tmp_set_checkbox_defaults(gui2::twindow* window) const;
+	bool is_active(const std::string& id) const;
 };
 
 } // namespace options

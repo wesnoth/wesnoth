@@ -33,6 +33,7 @@ libwesnoth_core_sources = Split("""
     serialization/schema_validator.cpp
     serialization/string_utils.cpp
     serialization/tokenizer.cpp
+    serialization/unicode.cpp
     serialization/validator.cpp
     tools/schema/tag.cpp
     """)
@@ -73,12 +74,17 @@ libwesnoth_sources = Split("""
     pathfind/astarsearch.cpp
     builder.cpp
     clipboard.cpp
+	config_assign.cpp
     construct_dialog.cpp
     cursor.cpp
     display.cpp
     events.cpp
+    format_time_summary.cpp
     generic_event.cpp
-    hotkeys.cpp
+    hotkey/hotkey_item.cpp
+    hotkey/hotkey_command.cpp
+    hotkey/command_executor.cpp
+    hotkey/hotkey_manager.cpp
     image.cpp
     image_modifications.cpp
     joystick.cpp
@@ -104,7 +110,8 @@ libwesnoth_sources = Split("""
     random.cpp
     reports.cpp
     show_dialog.cpp
-    sound.cpp
+    simple_rng.cpp
+	sound.cpp
     soundsource.cpp
     sound_music_track.cpp
     terrain.cpp
@@ -146,6 +153,10 @@ libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campa
 
 libwesnoth_sdl_sources = Split("""
     sdl_utils.cpp
+    sdl/alpha.cpp
+    sdl/exception.cpp
+    sdl/texture.cpp
+    sdl/window.cpp
     tracer.cpp
     """)
 libwesnoth_sdl = client_env.Library("wesnoth_sdl", libwesnoth_sdl_sources)
@@ -269,7 +280,6 @@ wesnoth_sources = Split("""
     game_events/menu_item.cpp
     game_events/pump.cpp
     game_events/wmi_container.cpp
-    game_instance.cpp
     game_preferences.cpp
     gamestatus.cpp
     gui/auxiliary/canvas.cpp
@@ -353,6 +363,8 @@ wesnoth_sources = Split("""
     gui/dialogs/dialog.cpp
     gui/dialogs/edit_label.cpp
     gui/dialogs/editor/editor_edit_label.cpp
+    gui/dialogs/editor/editor_edit_scenario.cpp
+    gui/dialogs/editor/editor_edit_side.cpp
     gui/dialogs/editor/custom_tod.cpp
     gui/dialogs/editor_generate_map.cpp
     gui/dialogs/editor_new_map.cpp
@@ -375,7 +387,6 @@ wesnoth_sources = Split("""
     gui/dialogs/mp_change_control.cpp
     gui/dialogs/mp_connect.cpp
     gui/dialogs/mp_create_game.cpp
-    gui/dialogs/mp_create_game_choose_mods.cpp
     gui/dialogs/mp_create_game_set_password.cpp
     gui/dialogs/mp_depcheck_confirm_change.cpp
     gui/dialogs/mp_depcheck_select_new.cpp
@@ -385,12 +396,15 @@ wesnoth_sources = Split("""
     gui/dialogs/network_transmission.cpp
     gui/dialogs/popup.cpp
     gui/dialogs/edit_text.cpp
+    gui/dialogs/screenshot_notification.cpp
     gui/dialogs/simple_item_selector.cpp
+    gui/dialogs/theme_list.cpp
     gui/dialogs/tip.cpp
     gui/dialogs/title_screen.cpp
     gui/dialogs/transient_message.cpp
     gui/dialogs/unit_attack.cpp
     gui/dialogs/unit_create.cpp
+    gui/dialogs/wml_error.cpp
     gui/dialogs/wml_message.cpp
     gui/lib/types/point.cpp
     gui/widgets/button.cpp
@@ -433,6 +447,7 @@ wesnoth_sources = Split("""
     gui/widgets/window.cpp
     halo.cpp
     help.cpp
+    hotkey/hotkey_preferences_display.cpp
     intro.cpp
     leader_scroll_dialog.cpp
     lobby_preferences.cpp
@@ -465,7 +480,11 @@ wesnoth_sources = Split("""
     playsingle_controller.cpp
     playturn.cpp
     portrait.cpp
-    replay.cpp
+	random_new.cpp
+	random_new_deterministic.cpp
+	random_new_synced.cpp
+	replay.cpp
+	replay_helper.cpp
     replay_controller.cpp
     resources.cpp
     save_blocker.cpp
@@ -483,7 +502,10 @@ wesnoth_sources = Split("""
     storyscreen/interface.cpp
     storyscreen/part.cpp
     storyscreen/render.cpp
-    strftime.cpp
+    strftime.cpp	
+	synced_checkup.cpp
+	synced_context.cpp
+	synced_commands.cpp
     team.cpp
     terrain_filter.cpp
     tod_manager.cpp
@@ -519,7 +541,6 @@ if env["PLATFORM"] == "win32":
     wesnoth_sources.append("windows_tray_notification.cpp")
 
 wesnoth_sources.extend(client_env.Object("game_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
-wesnoth_sources.extend(client_env.Object("hotkey_preferences_display.cpp", EXTRA_DEFINE = env["PLATFORM"] != "win32" and "WESNOTH_PREFIX='\"$prefix\"'" or None))
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
 
@@ -549,8 +570,8 @@ def WesnothProgram(env, target, source, can_build, **kw):
 for env in [test_env, client_env, env]:
     env.AddMethod(WesnothProgram)
 
-wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth_sdl,
-                   libwesnoth, env["wesnoth_res"]]
+wesnoth_objects = ["game.cpp", libwesnoth_extras, libwesnoth_core, libwesnoth,
+                   libwesnoth_sdl, libwesnoth_extras, env["wesnoth_res"]]
 if env["host"] in ["x86_64-nacl", "i686-nacl"]:
     wesnoth_objects += [SConscript("nacl/SConscript")]
 client_env.WesnothProgram("wesnoth", wesnoth_objects, have_client_prereqs)
@@ -615,6 +636,8 @@ wesmage_sources = Split("""
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
     sdl_utils.cpp
+    sdl/alpha.cpp
+    sdl/window.cpp
     tracer.cpp
     loadscreen_empty.cpp
     """)
@@ -650,13 +673,15 @@ test_sources = Split("""
     """)
 test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 
-test = test_env.WesnothProgram("test", test_sources +  [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, libwesnoth_extras, libtest_utils], have_test_prereqs)
+test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth], have_test_prereqs)
 
 create_images_sources = Split("""
     tests/create_images.cpp
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
     sdl_utils.cpp
+    sdl/alpha.cpp
+    sdl/window.cpp
     tracer.cpp
     loadscreen_empty.cpp
 """)

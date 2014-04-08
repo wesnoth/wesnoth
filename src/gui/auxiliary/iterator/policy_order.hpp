@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,31 +22,29 @@
 
 #include <iostream>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
-namespace policy {
+namespace policy
+{
 
-namespace order {
+namespace order
+{
 
-template<
-	  bool visit_widget
-	, bool visit_grid
-	, bool visit_child
-	>
-class tbottom_up
-	: public tvisit<visit_widget, twalker_::widget>
-	, public tvisit<visit_grid, twalker_::grid>
-	, public tvisit<visit_child, twalker_::child>
+template <bool visit_widget, bool visit_grid, bool visit_child>
+class tbottom_up : public tvisit<visit_widget, twalker_::widget>,
+				   public tvisit<visit_grid, twalker_::grid>,
+				   public tvisit<visit_child, twalker_::child>
 {
 	typedef tvisit<visit_widget, twalker_::widget> tvisit_widget;
 	typedef tvisit<visit_grid, twalker_::grid> tvisit_grid;
 	typedef tvisit<visit_child, twalker_::child> tvisit_child;
+
 public:
-	explicit tbottom_up(twidget& root)
-		: root_(root.create_walker())
-		, stack_()
+	explicit tbottom_up(twidget& root) : root_(root.create_walker()), stack_()
 	{
 		TST_GUI_I << "Constructor: ";
 		while(!tvisit_child::at_end(*root_)) {
@@ -65,9 +63,9 @@ public:
 	~tbottom_up()
 	{
 		delete root_;
-		for(std::vector<iterator::twalker_*>::iterator itor = stack_.begin()
-				; itor != stack_.end()
-				; ++itor) {
+		for(std::vector<iterator::twalker_*>::iterator itor = stack_.begin();
+			itor != stack_.end();
+			++itor) {
 
 			delete *itor;
 		}
@@ -75,9 +73,8 @@ public:
 
 	bool at_end() const
 	{
-		return tvisit_widget::at_end(*root_)
-				&& tvisit_grid::at_end(*root_)
-				&& tvisit_child::at_end(*root_);
+		return tvisit_widget::at_end(*root_) && tvisit_grid::at_end(*root_)
+			   && tvisit_child::at_end(*root_);
 	}
 
 	bool next()
@@ -93,16 +90,16 @@ public:
 		TST_GUI_I << " Iterate widget:";
 		if(!tvisit_widget::at_end(*root_)) {
 			switch(tvisit_widget::next(*root_)) {
-				case twalker_::valid :
+				case twalker_::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid :
+				case twalker_::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
 				case twalker_::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of "
-							"the widget iteration range.\n";
+								 "the widget iteration range.\n";
 					throw trange_error("Tried to move beyond end of range.");
 			}
 		} else {
@@ -113,16 +110,16 @@ public:
 		TST_GUI_I << " Iterate grid:";
 		if(!tvisit_grid::at_end(*root_)) {
 			switch(tvisit_grid::next(*root_)) {
-				case twalker_::valid :
+				case twalker_::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid :
+				case twalker_::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
 				case twalker_::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of "
-							"the grid iteration range.\n";
+								 "the grid iteration range.\n";
 					throw trange_error("Tried to move beyond end of range.");
 			}
 		} else {
@@ -147,16 +144,16 @@ public:
 		TST_GUI_I << " Iterate child:";
 		if(!tvisit_child::at_end(*root_)) {
 			switch(tvisit_child::next(*root_)) {
-				case twalker_::valid :
+				case twalker_::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.";
 					break;
-				case twalker_::invalid :
+				case twalker_::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
 				case twalker_::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of "
-							"the child iteration range.\n";
+								 "the child iteration range.\n";
 					throw trange_error("Tried to move beyond end of range.");
 			}
 		} else {
@@ -166,8 +163,7 @@ public:
 		while(!tvisit_child::at_end(*root_)) {
 			stack_.push_back(root_);
 			root_ = tvisit_child::get(*root_)->create_walker();
-			TST_GUI_I << " Down widget '"
-				<< operator*().id() << "'.";
+			TST_GUI_I << " Down widget '" << operator*().id() << "'.";
 		}
 		TST_GUI_I << " Visit '" << operator*().id() << "'.\n";
 		return true;
@@ -177,7 +173,7 @@ public:
 	{
 		if(at_end()) {
 			ERR_GUI_I << "Tried to defer beyond end its "
-					"iteration range iterator.\n";
+						 "iteration range iterator.\n";
 			throw tlogic_error("Tried to defer an invalid iterator.");
 		}
 		if(!tvisit_widget::at_end(*root_)) {
@@ -190,43 +186,36 @@ public:
 			return *tvisit_child::get(*root_);
 		}
 		ERR_GUI_I << "The iterator ended in an unknown "
-				"state while deferring itself.\n";
+					 "state while deferring itself.\n";
 		throw tlogic_error("Tried to defer an invalid iterator.");
 	}
 
 private:
-
 	iterator::twalker_* root_;
 
 	std::vector<iterator::twalker_*> stack_;
 };
 
-template<
-	  bool visit_widget
-	, bool visit_grid
-	, bool visit_child
-	>
-class ttop_down
-	: public tvisit<visit_widget, twalker_::widget>
-	, public tvisit<visit_grid, twalker_::grid>
-	, public tvisit<visit_child, twalker_::child>
+template <bool visit_widget, bool visit_grid, bool visit_child>
+class ttop_down : public tvisit<visit_widget, twalker_::widget>,
+				  public tvisit<visit_grid, twalker_::grid>,
+				  public tvisit<visit_child, twalker_::child>
 {
 	typedef tvisit<visit_widget, twalker_::widget> tvisit_widget;
 	typedef tvisit<visit_grid, twalker_::grid> tvisit_grid;
 	typedef tvisit<visit_child, twalker_::child> tvisit_child;
+
 public:
-	explicit ttop_down (twidget& root)
-		: root_(root.create_walker())
-		, stack_()
+	explicit ttop_down(twidget& root) : root_(root.create_walker()), stack_()
 	{
 	}
 
 	~ttop_down()
 	{
 		delete root_;
-		for(std::vector<iterator::twalker_*>::iterator itor = stack_.begin()
-				; itor != stack_.end()
-				; ++itor) {
+		for(std::vector<iterator::twalker_*>::iterator itor = stack_.begin();
+			itor != stack_.end();
+			++itor) {
 
 			delete *itor;
 		}
@@ -234,9 +223,8 @@ public:
 
 	bool at_end() const
 	{
-		return tvisit_widget::at_end(*root_)
-				&& tvisit_grid::at_end(*root_)
-				&& tvisit_child::at_end(*root_);
+		return tvisit_widget::at_end(*root_) && tvisit_grid::at_end(*root_)
+			   && tvisit_child::at_end(*root_);
 	}
 
 	bool next()
@@ -252,16 +240,16 @@ public:
 		TST_GUI_I << " Iterate widget:";
 		if(!tvisit_widget::at_end(*root_)) {
 			switch(tvisit_widget::next(*root_)) {
-				case twalker_::valid :
+				case twalker_::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid :
+				case twalker_::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
 				case twalker_::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of the "
-							"widget iteration range.\n";
+								 "widget iteration range.\n";
 					throw trange_error("Tried to move beyond end of range.");
 			}
 		} else {
@@ -272,16 +260,16 @@ public:
 		TST_GUI_I << " Iterate grid:";
 		if(!tvisit_grid::at_end(*root_)) {
 			switch(tvisit_grid::next(*root_)) {
-				case twalker_::valid :
+				case twalker_::valid:
 					TST_GUI_I << " visit '" << operator*().id() << "'.\n";
 					return true;
-				case twalker_::invalid :
+				case twalker_::invalid:
 					TST_GUI_I << " reached the end.";
 					break;
 				case twalker_::fail:
 					TST_GUI_I << "\n";
 					ERR_GUI_E << "Tried to move beyond end of the grid "
-							"iteration range.\n";
+								 "iteration range.\n";
 					throw trange_error("Tried to move beyond end of range.");
 			}
 		} else {
@@ -316,7 +304,7 @@ public:
 	{
 		if(at_end()) {
 			ERR_GUI_I << "Tried to defer beyond end of the iteration "
-					"range iterator.\n";
+						 "range iterator.\n";
 			throw tlogic_error("Tried to defer an invalid iterator.");
 		}
 		if(!tvisit_widget::at_end(*root_)) {
@@ -329,12 +317,11 @@ public:
 			return *tvisit_child::get(*root_);
 		}
 		ERR_GUI_I << "The iterator ended in an unknown "
-				"state while deferring iteself.\n";
+					 "state while deferring iteself.\n";
 		throw tlogic_error("Tried to defer an invalid iterator.");
 	}
 
 private:
-
 	bool up()
 	{
 		while(!stack_.empty()) {
@@ -371,5 +358,3 @@ private:
 } // namespace gui2
 
 #endif
-
-

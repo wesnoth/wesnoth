@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,9 +18,11 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace event {
+namespace event
+{
 
 /***** tdispatcher class. *****/
 
@@ -51,9 +53,7 @@ void tdispatcher::connect()
 	connect_dispatcher(this);
 }
 
-bool tdispatcher::has_event(const tevent event
-		, const tevent_type event_type
-		)
+bool tdispatcher::has_event(const tevent event, const tevent_type event_type)
 {
 #if 0
 	// Debug code to test whether the event is in the right queue.
@@ -76,17 +76,23 @@ bool tdispatcher::has_event(const tevent event
 			<< ".\n";
 #endif
 
-	return find<tset_event>(event, tdispatcher_implementation
-					::thas_handler(event_type, *this))
-			|| find<tset_event_mouse>(event, tdispatcher_implementation
-					::thas_handler(event_type, *this))
-			|| find<tset_event_keyboard>(event, tdispatcher_implementation
-					::thas_handler(event_type, *this))
-			|| find<tset_event_notification>(event, tdispatcher_implementation
-					::thas_handler(event_type, *this))
-			|| find<tset_event_message>(event, tdispatcher_implementation
-					::thas_handler(event_type, *this))
-			;
+	return find<tset_event>(
+				   event,
+				   tdispatcher_implementation::thas_handler(event_type, *this))
+		   || find<tset_event_mouse>(event,
+									 tdispatcher_implementation::thas_handler(
+											 event_type, *this))
+		   || find<tset_event_keyboard>(
+					  event,
+					  tdispatcher_implementation::thas_handler(event_type,
+															   *this))
+		   || find<tset_event_notification>(
+					  event,
+					  tdispatcher_implementation::thas_handler(event_type,
+															   *this))
+		   || find<tset_event_message>(event,
+									   tdispatcher_implementation::thas_handler(
+											   event_type, *this));
 }
 
 /**
@@ -101,13 +107,12 @@ bool tdispatcher::has_event(const tevent event
 class tevent_in_set
 {
 public:
-
 	/**
 	 * If found we get executed to set the result.
 	 *
 	 * Since we need to return true if found we always return true.
 	 */
-	template<class T>
+	template <class T>
 	bool oper(tevent)
 	{
 		return true;
@@ -126,11 +131,11 @@ public:
 class ttrigger
 {
 public:
-	void operator()(tsignal_function functor
-			, tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt)
+	void operator()(tsignal_function functor,
+					tdispatcher& dispatcher,
+					const tevent event,
+					bool& handled,
+					bool& halt)
 	{
 		functor(dispatcher, event, handled, halt);
 	}
@@ -140,44 +145,33 @@ bool tdispatcher::fire(const tevent event, twidget& target)
 {
 	assert(find<tset_event>(event, tevent_in_set()));
 	switch(event) {
-		case LEFT_BUTTON_DOUBLE_CLICK :
-			return fire_event_double_click<
-					  LEFT_BUTTON_CLICK
-					, LEFT_BUTTON_DOUBLE_CLICK
-					, &tevent_executor::wants_mouse_left_double_click
-					, tsignal_function
-					>(
-					  dynamic_cast<twidget*>(this)
-					, &target
-					, ttrigger());
+		case LEFT_BUTTON_DOUBLE_CLICK:
+			return fire_event_double_click<LEFT_BUTTON_CLICK,
+										   LEFT_BUTTON_DOUBLE_CLICK,
+										   &tevent_executor::
+													wants_mouse_left_double_click,
+										   tsignal_function>(
+					dynamic_cast<twidget*>(this), &target, ttrigger());
 
-		case MIDDLE_BUTTON_DOUBLE_CLICK :
-			return fire_event_double_click<
-					  MIDDLE_BUTTON_CLICK
-					, MIDDLE_BUTTON_DOUBLE_CLICK
-					, &tevent_executor::wants_mouse_middle_double_click
-					, tsignal_function
-					>(
-					  dynamic_cast<twidget*>(this)
-					, &target
-					, ttrigger());
+		case MIDDLE_BUTTON_DOUBLE_CLICK:
+			return fire_event_double_click<MIDDLE_BUTTON_CLICK,
+										   MIDDLE_BUTTON_DOUBLE_CLICK,
+										   &tevent_executor::
+													wants_mouse_middle_double_click,
+										   tsignal_function>(
+					dynamic_cast<twidget*>(this), &target, ttrigger());
 
-		case RIGHT_BUTTON_DOUBLE_CLICK :
-			return fire_event_double_click<
-					  RIGHT_BUTTON_CLICK
-					, RIGHT_BUTTON_DOUBLE_CLICK
-					, &tevent_executor::wants_mouse_right_double_click
-					, tsignal_function
-					>(
-					  dynamic_cast<twidget*>(this)
-					, &target
-					, ttrigger());
+		case RIGHT_BUTTON_DOUBLE_CLICK:
+			return fire_event_double_click<RIGHT_BUTTON_CLICK,
+										   RIGHT_BUTTON_DOUBLE_CLICK,
+										   &tevent_executor::
+													wants_mouse_right_double_click,
+										   tsignal_function>(
+					dynamic_cast<twidget*>(this), &target, ttrigger());
 
-		default :
-			return fire_event<tsignal_function>(event
-				, dynamic_cast<twidget*>(this)
-				, &target
-				, ttrigger());
+		default:
+			return fire_event<tsignal_function>(
+					event, dynamic_cast<twidget*>(this), &target, ttrigger());
 	}
 }
 
@@ -185,17 +179,15 @@ bool tdispatcher::fire(const tevent event, twidget& target)
 class ttrigger_mouse
 {
 public:
-	ttrigger_mouse(const tpoint& coordinate)
-		: coordinate_(coordinate)
+	ttrigger_mouse(const tpoint& coordinate) : coordinate_(coordinate)
 	{
-
 	}
 
-	void operator()(tsignal_mouse_function functor
-			, tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt)
+	void operator()(tsignal_mouse_function functor,
+					tdispatcher& dispatcher,
+					const tevent event,
+					bool& handled,
+					bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, coordinate_);
 	}
@@ -204,35 +196,32 @@ private:
 	tpoint coordinate_;
 };
 
-bool tdispatcher::fire(const tevent event
-		, twidget& target
-		, const tpoint& coordinate)
+bool
+tdispatcher::fire(const tevent event, twidget& target, const tpoint& coordinate)
 {
 	assert(find<tset_event_mouse>(event, tevent_in_set()));
-	return fire_event<tsignal_mouse_function>(event
-			, dynamic_cast<twidget*>(this)
-			, &target
-			, ttrigger_mouse(coordinate));
+	return fire_event<tsignal_mouse_function>(event,
+											  dynamic_cast<twidget*>(this),
+											  &target,
+											  ttrigger_mouse(coordinate));
 }
 
 /** Helper struct to wrap the functor call. */
 class ttrigger_keyboard
 {
 public:
-	ttrigger_keyboard(const SDLKey key
-			, const SDLMod modifier
-			, const Uint16 unicode)
-		: key_(key)
-		, modifier_(modifier)
-		, unicode_(unicode)
+	ttrigger_keyboard(const SDLKey key,
+					  const SDLMod modifier,
+					  const Uint16 unicode)
+		: key_(key), modifier_(modifier), unicode_(unicode)
 	{
 	}
 
-	void operator()(tsignal_keyboard_function functor
-			, tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt)
+	void operator()(tsignal_keyboard_function functor,
+					tdispatcher& dispatcher,
+					const tevent event,
+					bool& handled,
+					bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, key_, modifier_, unicode_);
 	}
@@ -243,59 +232,57 @@ private:
 	Uint16 unicode_;
 };
 
-bool tdispatcher::fire(const tevent event
-		, twidget& target
-		, const SDLKey key
-		, const SDLMod modifier
-		, const Uint16 unicode)
+bool tdispatcher::fire(const tevent event,
+					   twidget& target,
+					   const SDLKey key,
+					   const SDLMod modifier,
+					   const Uint16 unicode)
 {
 	assert(find<tset_event_keyboard>(event, tevent_in_set()));
-	return fire_event<tsignal_keyboard_function>(event
-			, dynamic_cast<twidget*>(this)
-			, &target
-			, ttrigger_keyboard(key, modifier, unicode));
+	return fire_event<tsignal_keyboard_function>(
+			event,
+			dynamic_cast<twidget*>(this),
+			&target,
+			ttrigger_keyboard(key, modifier, unicode));
 }
 
 /** Helper struct to wrap the functor call. */
 class ttrigger_notification
 {
 public:
-
-	void operator()(tsignal_notification_function functor
-			, tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt)
+	void operator()(tsignal_notification_function functor,
+					tdispatcher& dispatcher,
+					const tevent event,
+					bool& handled,
+					bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, NULL);
 	}
 };
 
-bool tdispatcher::fire(const tevent event
-		, twidget& target
-		, void*)
+bool tdispatcher::fire(const tevent event, twidget& target, void*)
 {
 	assert(find<tset_event_notification>(event, tevent_in_set()));
-	return fire_event<tsignal_notification_function>(event
-			, dynamic_cast<twidget*>(this)
-			, &target
-			, ttrigger_notification());
+	return fire_event<tsignal_notification_function>(
+			event,
+			dynamic_cast<twidget*>(this),
+			&target,
+			ttrigger_notification());
 }
 
 /** Helper struct to wrap the functor call. */
 class ttrigger_message
 {
 public:
-	ttrigger_message(tmessage& message)
-		: message_(message)
+	ttrigger_message(tmessage& message) : message_(message)
 	{
 	}
 
-	void operator()(tsignal_message_function functor
-			, tdispatcher& dispatcher
-			, const tevent event
-			, bool& handled
-			, bool& halt)
+	void operator()(tsignal_message_function functor,
+					tdispatcher& dispatcher,
+					const tevent event,
+					bool& handled,
+					bool& halt)
 	{
 		functor(dispatcher, event, handled, halt, message_);
 	}
@@ -307,22 +294,22 @@ private:
 bool tdispatcher::fire(const tevent event, twidget& target, tmessage& message)
 {
 	assert(find<tset_event_message>(event, tevent_in_set()));
-	return fire_event<tsignal_message_function>(event
-			, dynamic_cast<twidget*>(this)
-			, &target
-			, ttrigger_message(message));
+	return fire_event<tsignal_message_function>(event,
+												dynamic_cast<twidget*>(this),
+												&target,
+												ttrigger_message(message));
 }
 
-void tdispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id
-		, const thotkey_function& function)
+void tdispatcher::register_hotkey(const hotkey::HOTKEY_COMMAND id,
+								  const thotkey_function& function)
 {
 	hotkeys_[id] = function;
 }
 
 bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
 {
-	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator
-			itor = hotkeys_.find(id);
+	std::map<hotkey::HOTKEY_COMMAND, thotkey_function>::iterator itor
+			= hotkeys_.find(id);
 
 	if(itor == hotkeys_.end()) {
 		return false;
@@ -730,4 +717,3 @@ bool tdispatcher::execute_hotkey(const hotkey::HOTKEY_COMMAND id)
  * or not, but always keep the panel selected. (That is if the panel can be
  * selected.))
  */
-

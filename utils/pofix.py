@@ -23,7 +23,20 @@
 # it can be discarded (assunming that it has in fact been used to transform
 # all incoming .po files in the meantime).
 #
-# Example usage:
+#
+# NOTE: IMPORTANT!
+# When altering this file ALWAYS use the following steps:
+# * from the checkout root call: ./utils/pofix.py po/wesnoth*/wesnoth*.pot
+# * check if any strings were changed and if only the intended strings were changed
+#   by using e.g. "normal" diff tools or git diff on the changed .pot files
+# * if everything was fine, proceed, if something went wrong revert the changed pot
+#   files, adjust pofix.py and rerun the above step
+# * run: ./utils/pofix.py po/wesnoth*/*.po
+# * commit all changed files together (pofix.py as well as the changed pot and po
+#   files)
+#
+#
+# (old) example usage:
 # utils/pofix.py po/wesnoth*/*.po*
 # find data/campaigns/ -name '*.cfg' -print0 | xargs -0 utils/pofix.py
 #
@@ -47,6 +60,16 @@
 # files!
 
 stringfixes = {
+
+"wesnoth" : (
+# conversion added in 1.11.10+dev
+("Save and Abort game", "Save and abort game"),
+),
+
+"wesnoth-editor" : (
+# conversion added in 1.11.10+dev
+("Choose file", "Choose File"),
+),
 
 "1.10-announcement" : (
 ("roleplaying", "role-playing"),

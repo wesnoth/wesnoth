@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,9 +25,11 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2{
+namespace gui2
+{
 
-namespace event {
+namespace event
+{
 
 /**
  * SDL_AddTimer() callback for the hover event.
@@ -86,8 +88,7 @@ static Uint32 popup_callback(Uint32 /*interval*/, void* /*param*/)
 class tlock
 {
 public:
-	tlock(bool& locked)
-		: locked_(locked)
+	tlock(bool& locked) : locked_(locked)
 	{
 		assert(!locked_);
 		locked_ = true;
@@ -98,6 +99,7 @@ public:
 		assert(locked_);
 		locked_ = false;
 	}
+
 private:
 	bool& locked_;
 };
@@ -107,8 +109,8 @@ private:
 
 #define LOG_HEADER "distributor mouse motion [" << owner_.id() << "]: "
 
-tmouse_motion::tmouse_motion(twidget& owner
-		, const tdispatcher::tposition queue_position)
+tmouse_motion::tmouse_motion(twidget& owner,
+							 const tdispatcher::tposition queue_position)
 	: mouse_focus_(NULL)
 	, mouse_captured_(false)
 	, owner_(owner)
@@ -119,31 +121,29 @@ tmouse_motion::tmouse_motion(twidget& owner
 	, signal_handler_sdl_mouse_motion_entered_(false)
 {
 	owner.connect_signal<event::SDL_MOUSE_MOTION>(
-		  boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion
-			  , this, _2, _3, _5)
-		, queue_position);
+			boost::bind(&tmouse_motion::signal_handler_sdl_mouse_motion,
+						this,
+						_2,
+						_3,
+						_5),
+			queue_position);
 
-	owner_.connect_signal<event::SDL_WHEEL_UP>(
-			boost::bind(
-				  &tmouse_motion::signal_handler_sdl_wheel
-				, this, _2, _3, _5));
-	owner_.connect_signal<event::SDL_WHEEL_DOWN>(
-			boost::bind(
-				  &tmouse_motion::signal_handler_sdl_wheel
-				, this, _2, _3, _5));
-	owner_.connect_signal<event::SDL_WHEEL_LEFT>(
-			boost::bind(
-				  &tmouse_motion::signal_handler_sdl_wheel
-				, this, _2, _3, _5));
-	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(
-			boost::bind(
-				  &tmouse_motion::signal_handler_sdl_wheel
-				, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_UP>(boost::bind(
+			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_DOWN>(boost::bind(
+			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_LEFT>(boost::bind(
+			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
+	owner_.connect_signal<event::SDL_WHEEL_RIGHT>(boost::bind(
+			&tmouse_motion::signal_handler_sdl_wheel, this, _2, _3, _5));
 
 	owner.connect_signal<event::SHOW_HELPTIP>(
-		  boost::bind(&tmouse_motion::signal_handler_show_helptip
-			  , this, _2, _3, _5)
-		, queue_position);
+			boost::bind(&tmouse_motion::signal_handler_show_helptip,
+						this,
+						_2,
+						_3,
+						_5),
+			queue_position);
 }
 
 tmouse_motion::~tmouse_motion()
@@ -151,17 +151,15 @@ tmouse_motion::~tmouse_motion()
 	stop_hover_timer();
 }
 
-void tmouse_motion::capture_mouse(//twidget* widget)
-			const bool capture)
+void tmouse_motion::capture_mouse(const bool capture)
 {
 	assert(mouse_focus_);
 	mouse_captured_ = capture;
 }
 
-void tmouse_motion::signal_handler_sdl_mouse_motion(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate)
+void tmouse_motion::signal_handler_sdl_mouse_motion(const event::tevent event,
+													bool& handled,
+													const tpoint& coordinate)
 {
 	if(signal_handler_sdl_mouse_motion_entered_) {
 		return;
@@ -186,7 +184,7 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(
 
 		if(!mouse_focus_ && mouse_over) {
 			mouse_enter(mouse_over);
-		} else if (mouse_focus_ && !mouse_over) {
+		} else if(mouse_focus_ && !mouse_over) {
 			mouse_leave();
 		} else if(mouse_focus_ && mouse_focus_ == mouse_over) {
 			mouse_motion(mouse_over, coordinate);
@@ -201,10 +199,9 @@ void tmouse_motion::signal_handler_sdl_mouse_motion(
 	handled = true;
 }
 
-void tmouse_motion::signal_handler_sdl_wheel(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate)
+void tmouse_motion::signal_handler_sdl_wheel(const event::tevent event,
+											 bool& handled,
+											 const tpoint& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -220,10 +217,9 @@ void tmouse_motion::signal_handler_sdl_wheel(
 	handled = true;
 }
 
-void tmouse_motion::signal_handler_show_helptip(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate)
+void tmouse_motion::signal_handler_show_helptip(const event::tevent event,
+												bool& handled,
+												const tpoint& coordinate)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -239,7 +235,6 @@ void tmouse_motion::signal_handler_show_helptip(
 			if(owner_.fire(event, *mouse_over, coordinate)) {
 				stop_hover_timer();
 			}
-
 		}
 	}
 
@@ -269,7 +264,7 @@ void tmouse_motion::mouse_motion(twidget* mouse_over, const tpoint& coordinate)
 
 	if(hover_timer_) {
 		if((abs(hover_position_.x - coordinate.x) > 5)
-				|| (abs(hover_position_.y - coordinate.y) > 5)) {
+		   || (abs(hover_position_.y - coordinate.y) > 5)) {
 
 			stop_hover_timer();
 			start_hover_timer(mouse_over, coordinate);
@@ -283,8 +278,8 @@ void tmouse_motion::show_tooltip()
 
 	if(!hover_widget_) {
 		// See tmouse_motion::stop_hover_timer.
-		ERR_GUI_E << LOG_HEADER
-				<< event::SHOW_TOOLTIP << " bailing out, no hover widget.\n";
+		ERR_GUI_E << LOG_HEADER << event::SHOW_TOOLTIP
+				  << " bailing out, no hover widget.\n";
 		return;
 	}
 
@@ -327,12 +322,11 @@ void tmouse_motion::start_hover_timer(twidget* widget, const tpoint& coordinate)
 		return;
 	}
 
-	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '"
-			<< widget->id() << "' at address " << widget << ".\n";
+	DBG_GUI_E << LOG_HEADER << "Start hover timer for widget '" << widget->id()
+			  << "' at address " << widget << ".\n";
 
-	hover_timer_ = add_timer(
-			  50
-			, boost::bind(&tmouse_motion::show_tooltip, this));
+	hover_timer_
+			= add_timer(50, boost::bind(&tmouse_motion::show_tooltip, this));
 
 	if(hover_timer_) {
 		hover_widget_ = widget;
@@ -347,8 +341,8 @@ void tmouse_motion::stop_hover_timer()
 	if(hover_timer_) {
 		assert(hover_widget_);
 		DBG_GUI_E << LOG_HEADER << "Stop hover timer for widget '"
-				<< hover_widget_->id() << "' at address "
-				<< hover_widget_ << ".\n";
+				  << hover_widget_->id() << "' at address " << hover_widget_
+				  << ".\n";
 
 		if(!remove_timer(hover_timer_)) {
 			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer.\n";
@@ -363,27 +357,24 @@ void tmouse_motion::stop_hover_timer()
 /***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
 
 #undef LOG_HEADER
-#define LOG_HEADER "distributor mouse button " \
-		<< name_ << " [" << owner_.id() << "]: "
+#define LOG_HEADER                                                             \
+	"distributor mouse button " << name_ << " [" << owner_.id() << "]: "
 
-template<
-		  tevent sdl_button_down
-		, tevent sdl_button_up
-		, tevent button_down
-		, tevent button_up
-		, tevent button_click
-		, tevent button_double_click
-> tmouse_button<
-		  sdl_button_down
-		, sdl_button_up
-		, button_down
-		, button_up
-		, button_click
-		, button_double_click
->::tmouse_button(
-			  const std::string& name_
-			, twidget& owner
-			, const tdispatcher::tposition queue_position)
+template <tevent sdl_button_down,
+		  tevent sdl_button_up,
+		  tevent button_down,
+		  tevent button_up,
+		  tevent button_click,
+		  tevent button_double_click>
+tmouse_button<sdl_button_down,
+			  sdl_button_up,
+			  button_down,
+			  button_up,
+			  button_click,
+			  button_double_click>::tmouse_button(const std::string& name_,
+												  twidget& owner,
+												  const tdispatcher::tposition
+														  queue_position)
 	: tmouse_motion(owner, queue_position)
 	, last_click_stamp_(0)
 	, last_clicked_widget_(NULL)
@@ -394,42 +385,45 @@ template<
 	, signal_handler_sdl_button_up_entered_(false)
 {
 	owner_.connect_signal<sdl_button_down>(
-			  boost::bind(&tmouse_button<
-				  sdl_button_down
-				, sdl_button_up
-				, button_down
-				, button_up
-				, button_click
-				, button_double_click
-				>::signal_handler_sdl_button_down, this, _2, _3, _5)
-			, queue_position);
+			boost::bind(&tmouse_button<sdl_button_down,
+									   sdl_button_up,
+									   button_down,
+									   button_up,
+									   button_click,
+									   button_double_click>::
+								 signal_handler_sdl_button_down,
+						this,
+						_2,
+						_3,
+						_5),
+			queue_position);
 	owner_.connect_signal<sdl_button_up>(
-			  boost::bind(&tmouse_button<
-				  sdl_button_down
-				, sdl_button_up
-				, button_down
-				, button_up
-				, button_click
-				, button_double_click
-				>::signal_handler_sdl_button_up, this, _2, _3, _5)
-			, queue_position);
+			boost::bind(&tmouse_button<sdl_button_down,
+									   sdl_button_up,
+									   button_down,
+									   button_up,
+									   button_click,
+									   button_double_click>::
+								 signal_handler_sdl_button_up,
+						this,
+						_2,
+						_3,
+						_5),
+			queue_position);
 }
 
-template<
-		  tevent sdl_button_down
-		, tevent sdl_button_up
-		, tevent button_down
-		, tevent button_up
-		, tevent button_click
-		, tevent button_double_click
-> void tmouse_button<
-		  sdl_button_down
-		, sdl_button_up
-		, button_down
-		, button_up
-		, button_click
-		, button_double_click
->::initialize_state(const bool is_down)
+template <tevent sdl_button_down,
+		  tevent sdl_button_up,
+		  tevent button_down,
+		  tevent button_up,
+		  tevent button_click,
+		  tevent button_double_click>
+void tmouse_button<sdl_button_down,
+				   sdl_button_up,
+				   button_down,
+				   button_up,
+				   button_click,
+				   button_double_click>::initialize_state(const bool is_down)
 {
 	last_click_stamp_ = 0;
 	last_clicked_widget_ = NULL;
@@ -437,24 +431,21 @@ template<
 	is_down_ = is_down;
 }
 
-template<
-		  tevent sdl_button_down
-		, tevent sdl_button_up
-		, tevent button_down
-		, tevent button_up
-		, tevent button_click
-		, tevent button_double_click
-> void tmouse_button<
-		  sdl_button_down
-		, sdl_button_up
-		, button_down
-		, button_up
-		, button_click
-		, button_double_click
->::signal_handler_sdl_button_down(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate)
+template <tevent sdl_button_down,
+		  tevent sdl_button_up,
+		  tevent button_down,
+		  tevent button_up,
+		  tevent button_click,
+		  tevent button_double_click>
+void tmouse_button<sdl_button_down,
+				   sdl_button_up,
+				   button_down,
+				   button_up,
+				   button_click,
+				   button_double_click>::
+		signal_handler_sdl_button_down(const event::tevent event,
+									   bool& handled,
+									   const tpoint& coordinate)
 {
 	if(signal_handler_sdl_button_down_entered_) {
 		return;
@@ -465,8 +456,8 @@ template<
 
 	if(is_down_) {
 		WRN_GUI_E << LOG_HEADER << event
-				<< ". The mouse button is already down, "
-				<< "we missed an event.\n";
+				  << ". The mouse button is already down, "
+				  << "we missed an event.\n";
 		return;
 	}
 	is_down_ = true;
@@ -486,9 +477,8 @@ template<
 		}
 
 		if(mouse_over != mouse_focus_) {
-			WRN_GUI_E << LOG_HEADER
-					<< ". Mouse down on non focussed widget "
-					<< "and mouse not captured, we missed events.\n";
+			WRN_GUI_E << LOG_HEADER << ". Mouse down on non focussed widget "
+					  << "and mouse not captured, we missed events.\n";
 			mouse_focus_ = mouse_over;
 		}
 
@@ -502,24 +492,21 @@ template<
 	handled = true;
 }
 
-template<
-		  tevent sdl_button_down
-		, tevent sdl_button_up
-		, tevent button_down
-		, tevent button_up
-		, tevent button_click
-		, tevent button_double_click
-> void tmouse_button<
-		  sdl_button_down
-		, sdl_button_up
-		, button_down
-		, button_up
-		, button_click
-		, button_double_click
->::signal_handler_sdl_button_up(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate)
+template <tevent sdl_button_down,
+		  tevent sdl_button_up,
+		  tevent button_down,
+		  tevent button_up,
+		  tevent button_click,
+		  tevent button_double_click>
+void tmouse_button<sdl_button_down,
+				   sdl_button_up,
+				   button_down,
+				   button_up,
+				   button_click,
+				   button_double_click>::
+		signal_handler_sdl_button_up(const event::tevent event,
+									 bool& handled,
+									 const tpoint& coordinate)
 {
 	if(signal_handler_sdl_button_up_entered_) {
 		return;
@@ -530,7 +517,7 @@ template<
 
 	if(!is_down_) {
 		WRN_GUI_E << LOG_HEADER << event
-				<< ". The mouse button is already up, we missed an event.\n";
+				  << ". The mouse button is already up, we missed an event.\n";
 		return;
 	}
 	is_down_ = false;
@@ -545,10 +532,10 @@ template<
 
 	twidget* mouse_over = owner_.find_at(coordinate, true);
 	if(mouse_captured_) {
-		const unsigned mask =
-				SDL_BUTTON_LMASK | SDL_BUTTON_MMASK | SDL_BUTTON_RMASK;
+		const unsigned mask = SDL_BUTTON_LMASK | SDL_BUTTON_MMASK
+							  | SDL_BUTTON_RMASK;
 
-		if((SDL_GetMouseState(NULL, NULL) & mask ) == 0) {
+		if((SDL_GetMouseState(NULL, NULL) & mask) == 0) {
 			mouse_captured_ = false;
 		}
 
@@ -569,28 +556,24 @@ template<
 	handled = true;
 }
 
-template<
-		  tevent sdl_button_down
-		, tevent sdl_button_up
-		, tevent button_down
-		, tevent button_up
-		, tevent button_click
-		, tevent button_double_click
-> void tmouse_button<
-		  sdl_button_down
-		, sdl_button_up
-		, button_down
-		, button_up
-		, button_click
-		, button_double_click
->::mouse_button_click(twidget* widget)
+template <tevent sdl_button_down,
+		  tevent sdl_button_up,
+		  tevent button_down,
+		  tevent button_up,
+		  tevent button_click,
+		  tevent button_double_click>
+void tmouse_button<sdl_button_down,
+				   sdl_button_up,
+				   button_down,
+				   button_up,
+				   button_click,
+				   button_double_click>::mouse_button_click(twidget* widget)
 {
 	Uint32 stamp = SDL_GetTicks();
 	if(last_click_stamp_ + settings::double_click_time >= stamp
-			&& last_clicked_widget_ == widget) {
+	   && last_clicked_widget_ == widget) {
 
-		DBG_GUI_E << LOG_HEADER << "Firing: "
-				<< button_double_click << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << button_double_click << ".\n";
 
 		owner_.fire(button_double_click, *widget);
 		last_click_stamp_ = 0;
@@ -614,18 +597,12 @@ template<
  * @todo Test whether the state is properly tracked when an input blocker is
  * used.
  */
-tdistributor::tdistributor(twidget& owner
-		, const tdispatcher::tposition queue_position)
+tdistributor::tdistributor(twidget& owner,
+						   const tdispatcher::tposition queue_position)
 	: tmouse_motion(owner, queue_position)
-	, tmouse_button_left("left"
-			, owner
-			, queue_position)
-	, tmouse_button_middle("middle"
-			, owner
-			, queue_position)
-	, tmouse_button_right("right"
-			, owner
-			, queue_position)
+	, tmouse_button_left("left", owner, queue_position)
+	, tmouse_button_middle("middle", owner, queue_position)
+	, tmouse_button_right("right", owner, queue_position)
 #if 0
 	, hover_pending_(false)
 	, hover_id_(0)
@@ -643,32 +620,22 @@ tdistributor::tdistributor(twidget& owner
 		}
 	}
 
-	owner_.connect_signal<event::SDL_KEY_DOWN>(
-			boost::bind(&tdistributor::signal_handler_sdl_key_down
-				, this, _5, _6, _7));
+	owner_.connect_signal<event::SDL_KEY_DOWN>(boost::bind(
+			&tdistributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
-	owner_.connect_signal<event::NOTIFY_REMOVAL>(
-			boost::bind(
-				  &tdistributor::signal_handler_notify_removal
-				, this
-				, _1
-				, _2));
+	owner_.connect_signal<event::NOTIFY_REMOVAL>(boost::bind(
+			&tdistributor::signal_handler_notify_removal, this, _1, _2));
 
 	initialize_state();
 }
 
 tdistributor::~tdistributor()
 {
-	owner_.disconnect_signal<event::SDL_KEY_DOWN>(
-			boost::bind(&tdistributor::signal_handler_sdl_key_down
-				, this, _5, _6, _7));
+	owner_.disconnect_signal<event::SDL_KEY_DOWN>(boost::bind(
+			&tdistributor::signal_handler_sdl_key_down, this, _5, _6, _7));
 
-	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(
-			boost::bind(
-				  &tdistributor::signal_handler_notify_removal
-				, this
-				, _1
-				, _2));
+	owner_.disconnect_signal<event::NOTIFY_REMOVAL>(boost::bind(
+			&tdistributor::signal_handler_notify_removal, this, _1, _2));
 }
 
 void tdistributor::initialize_state()
@@ -685,8 +652,8 @@ void tdistributor::initialize_state()
 void tdistributor::keyboard_capture(twidget* widget)
 {
 	if(keyboard_focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: "
-				<< event::LOSE_KEYBOARD_FOCUS << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event::LOSE_KEYBOARD_FOCUS
+				  << ".\n";
 
 		owner_.fire(event::LOSE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
 	}
@@ -694,8 +661,8 @@ void tdistributor::keyboard_capture(twidget* widget)
 	keyboard_focus_ = widget;
 
 	if(keyboard_focus_) {
-		DBG_GUI_E << LOG_HEADER << "Firing: "
-				<< event::RECEIVE_KEYBOARD_FOCUS << ".\n";
+		DBG_GUI_E << LOG_HEADER << "Firing: " << event::RECEIVE_KEYBOARD_FOCUS
+				  << ".\n";
 
 		owner_.fire(event::RECEIVE_KEYBOARD_FOCUS, *keyboard_focus_, NULL);
 	}
@@ -704,10 +671,9 @@ void tdistributor::keyboard_capture(twidget* widget)
 void tdistributor::keyboard_add_to_chain(twidget* widget)
 {
 	assert(widget);
-	assert(std::find(keyboard_focus_chain_.begin()
-				, keyboard_focus_chain_.end()
-				, widget)
-			== keyboard_focus_chain_.end());
+	assert(std::find(keyboard_focus_chain_.begin(),
+					 keyboard_focus_chain_.end(),
+					 widget) == keyboard_focus_chain_.end());
 
 	keyboard_focus_chain_.push_back(widget);
 }
@@ -716,16 +682,16 @@ void tdistributor::keyboard_remove_from_chain(twidget* widget)
 {
 	assert(widget);
 	std::vector<twidget*>::iterator itor = std::find(
-		keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget);
+			keyboard_focus_chain_.begin(), keyboard_focus_chain_.end(), widget);
 
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
 	}
 }
 
-void tdistributor::signal_handler_sdl_key_down(const SDLKey key
-		, const SDLMod modifier
-		, const Uint16 unicode)
+void tdistributor::signal_handler_sdl_key_down(const SDLKey key,
+											   const SDLMod modifier,
+											   const Uint16 unicode)
 {
 	/** @todo Test whether recursion protection is needed. */
 
@@ -737,18 +703,22 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 		// is enabled and ready to receive events.
 		tcontrol* control = dynamic_cast<tcontrol*>(keyboard_focus_);
 		if(!control || control->get_active()) {
-			DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
-			if(owner_.fire(event::SDL_KEY_DOWN
-					, *keyboard_focus_, key, modifier, unicode)) {
+			DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN
+					  << ".\n";
+			if(owner_.fire(event::SDL_KEY_DOWN,
+						   *keyboard_focus_,
+						   key,
+						   modifier,
+						   unicode)) {
 				return;
 			}
 		}
 	}
 
-	for(std::vector<twidget*>::reverse_iterator
-				ritor = keyboard_focus_chain_.rbegin()
-			; ritor != keyboard_focus_chain_.rend()
-			; ++ritor) {
+	for(std::vector<twidget*>::reverse_iterator ritor
+		= keyboard_focus_chain_.rbegin();
+		ritor != keyboard_focus_chain_.rend();
+		++ritor) {
 
 		if(*ritor == keyboard_focus_) {
 			continue;
@@ -777,16 +747,15 @@ void tdistributor::signal_handler_sdl_key_down(const SDLKey key
 		}
 
 		DBG_GUI_E << LOG_HEADER << "Firing: " << event::SDL_KEY_DOWN << ".\n";
-		if(owner_.fire(event::SDL_KEY_DOWN
-				, **ritor, key, modifier, unicode)) {
+		if(owner_.fire(event::SDL_KEY_DOWN, **ritor, key, modifier, unicode)) {
 
 			return;
 		}
 	}
 }
 
-void tdistributor::signal_handler_notify_removal(
-			tdispatcher& widget, const tevent event)
+void tdistributor::signal_handler_notify_removal(tdispatcher& widget,
+												 const tevent event)
 {
 	DBG_GUI_E << LOG_HEADER << event << ".\n";
 
@@ -829,10 +798,10 @@ void tdistributor::signal_handler_notify_removal(
 	if(keyboard_focus_ == &widget) {
 		keyboard_focus_ = NULL;
 	}
-	const std::vector<twidget*>::iterator itor = std::find(
-			  keyboard_focus_chain_.begin()
-			, keyboard_focus_chain_.end()
-			, &widget);
+	const std::vector<twidget*>::iterator itor
+			= std::find(keyboard_focus_chain_.begin(),
+						keyboard_focus_chain_.end(),
+						&widget);
 	if(itor != keyboard_focus_chain_.end()) {
 		keyboard_focus_chain_.erase(itor);
 	}
@@ -841,4 +810,3 @@ void tdistributor::signal_handler_notify_removal(
 } // namespace event
 
 } // namespace gui2
-

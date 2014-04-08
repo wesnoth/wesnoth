@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 #include "gui/dialogs/dialog.hpp"
 #include "gui/widgets/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tbutton;
 
@@ -31,23 +32,27 @@ class tbutton;
 class tmessage : public tdialog
 {
 	friend struct tmessage_implementation;
+
 public:
-	tmessage(const std::string& title, const std::string& message,
-			const bool auto_close, const bool message_use_markup)
+	tmessage(const std::string& title,
+			 const std::string& message,
+			 const bool auto_close,
+			 const bool message_use_markup)
 		: title_(title)
 		, image_()
 		, message_(message)
 		, auto_close_(auto_close)
 		, message_use_markup_(message_use_markup)
 		, buttons_(count)
-	{}
+	{
+	}
 
 	enum tbutton_id {
-		  left_1 = 0
-		, cancel
-		, ok
-		, right_1
-		, count
+		left_1 = 0,
+		cancel,
+		ok,
+		right_1,
+		count
 	};
 
 	/**
@@ -56,34 +61,49 @@ public:
 	 * These values are not directly implemented in this class but are used
 	 * by our helper functions.
 	 */
-	enum tbutton_style
-	{
-		  auto_close        /**< Enables auto close. */
-		, ok_button         /**< Shows an ok button. */
-		, close_button      /**< Shows a close button. */
-		, ok_cancel_buttons /**< Shows an ok and cancel button. */
-		, cancel_button     /**< Shows a cancel button. */
-		, yes_no_buttons    /**< Shows a yes and no button. */
+	enum tbutton_style {
+		auto_close /**< Enables auto close. */
+		,
+		ok_button /**< Shows an ok button. */
+		,
+		close_button /**< Shows a close button. */
+		,
+		ok_cancel_buttons /**< Shows an ok and cancel button. */
+		,
+		cancel_button /**< Shows a cancel button. */
+		,
+		yes_no_buttons /**< Shows a yes and no button. */
 	};
 
 	void set_button_caption(const tbutton_id button,
-			const std::string& caption);
+							const std::string& caption);
 
 	void set_button_visible(const tbutton_id button,
-			const twidget::tvisible::scoped_enum visible);
+							const twidget::tvisible::scoped_enum visible);
 
-	void set_button_retval(const tbutton_id button,
-			const int retval);
+	void set_button_retval(const tbutton_id button, const int retval);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_title(const std::string& title) {  title_ = title; }
+	void set_title(const std::string& title)
+	{
+		title_ = title;
+	}
 
-	void set_image(const std::string& image) {  image_ = image; }
+	void set_image(const std::string& image)
+	{
+		image_ = image;
+	}
 
-	void set_message(const std::string& message) {  message_ = message; }
+	void set_message(const std::string& message)
+	{
+		message_ = message;
+	}
 
-	void set_auto_close(const bool auto_close) { auto_close_ = auto_close; }
+	void set_auto_close(const bool auto_close)
+	{
+		auto_close_ = auto_close;
+	}
 
 protected:
 	/** Inherited from tdialog. */
@@ -146,9 +166,12 @@ private:
  *                            when the message doesn't need a scrollbar to
  *                            show itself.
  */
-void show_message(CVideo& video, const std::string& title,
-	const std::string& message, const std::string& button_caption = "",
-	const bool auto_close = true, const bool message_use_markup = false);
+void show_message(CVideo& video,
+				  const std::string& title,
+				  const std::string& message,
+				  const std::string& button_caption = "",
+				  const bool auto_close = true,
+				  const bool message_use_markup = false);
 
 /**
  * Shows a message to the user.
@@ -166,10 +189,12 @@ void show_message(CVideo& video, const std::string& title,
  *
  * @returns                   The retval of the dialog shown.
  */
-int show_message(CVideo& video, const std::string& title,
-	const std::string& message, const tmessage::tbutton_style button_style,
-	bool message_use_markup = false,
-	bool title_use_markup = false);
+int show_message(CVideo& video,
+				 const std::string& title,
+				 const std::string& message,
+				 const tmessage::tbutton_style button_style,
+				 bool message_use_markup = false,
+				 bool title_use_markup = false);
 
 /**
  * Shows an error message to the user.
@@ -179,10 +204,10 @@ int show_message(CVideo& video, const std::string& title,
  * @param message             The message to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  */
-void show_error_message(CVideo& video, const std::string& message,
-	bool message_use_markup = false);
+void show_error_message(CVideo& video,
+						const std::string& message,
+						bool message_use_markup = false);
 
 } // namespace gui2
 
 #endif
-

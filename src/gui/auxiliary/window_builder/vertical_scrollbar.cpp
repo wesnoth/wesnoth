@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/vertical_scrollbar.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_vertical_scrollbar::tbuilder_vertical_scrollbar(const config& cfg)
 	: tbuilder_control(cfg)
@@ -31,14 +33,13 @@ tbuilder_vertical_scrollbar::tbuilder_vertical_scrollbar(const config& cfg)
 
 twidget* tbuilder_vertical_scrollbar::build() const
 {
-	tvertical_scrollbar *widget = new tvertical_scrollbar();
+	tvertical_scrollbar* widget = new tvertical_scrollbar();
 
 	init_control(widget);
 
 	DBG_GUI_G << "Window builder:"
-			<< " placed vertical scrollbar '" << id
-			<< "' with definition '" << definition
-			<< "'.\n";
+			  << " placed vertical scrollbar '" << id << "' with definition '"
+			  << definition << "'.\n";
 
 	return widget;
 }
@@ -59,4 +60,3 @@ twidget* tbuilder_vertical_scrollbar::build() const
  * @end{tag}{name="vertical_scrollbar"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

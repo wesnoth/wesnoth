@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -134,14 +134,13 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	// LANGUAGE overrides other settings, so for now just get rid of it
 	// FIXME: add configure check for unsetenv
 #ifndef _WIN32
-#ifndef __AMIGAOS4__
 	unsetenv ("LANGUAGE"); // void so no return value to check
 #endif
-#endif
 
-#if defined(__BEOS__) || defined(__APPLE__)
-	if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1)
+#ifdef __APPLE__
+	if (category == LC_MESSAGES && setenv("LANG", locale.c_str(), 1) == -1) {
 		ERR_G << "setenv LANG failed: " << strerror(errno);
+	}
 #endif
 
 #ifdef _WIN32
@@ -196,13 +195,11 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 	}
 
 #ifndef _WIN32
-#ifndef __AMIGAOS4__
 		if(category == LC_MESSAGES) {
 			WRN_G << "Setting LANGUAGE to '" << slocale << "'.\n";
 			setenv("LANGUAGE", slocale.c_str(), 1);
 			std::setlocale(LC_MESSAGES, "");
 		}
-#endif
 #endif
 
 	done:

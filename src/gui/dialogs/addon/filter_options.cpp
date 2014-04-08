@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,9 +19,9 @@
 #include "gui/dialogs/field.hpp"
 #include "gui/widgets/button.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
+#include "gui/widgets/list.hpp"
 #else
-	#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -30,14 +30,17 @@
 
 #include <boost/bind.hpp>
 
-namespace {
-	bool unchecked_bool_field_finder(gui2::twindow& window, gui2::tfield_bool* bool_field)
-	{
-		return bool_field->get_widget_value(window) == false;
-	}
+namespace
+{
+bool unchecked_bool_field_finder(gui2::twindow& window,
+								 gui2::tfield_bool* bool_field)
+{
+	return bool_field->get_widget_value(window) == false;
+}
 }
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -125,6 +128,7 @@ taddon_filter_options::taddon_filter_options()
 
 	register_displayed_type_field("show_unknown", ADDON_UNKNOWN);
 	register_displayed_type_field("show_sp_campaigns", ADDON_SP_CAMPAIGN);
+	register_displayed_type_field("show_sp_mp_campaigns", ADDON_SP_MP_CAMPAIGN);
 	register_displayed_type_field("show_sp_scenarios", ADDON_SP_SCENARIO);
 	register_displayed_type_field("show_mp_campaigns", ADDON_MP_CAMPAIGN);
 	register_displayed_type_field("show_mp_scenarios", ADDON_MP_SCENARIO);
@@ -133,13 +137,16 @@ taddon_filter_options::taddon_filter_options()
 	register_displayed_type_field("show_mp_factions", ADDON_MP_FACTION);
 	register_displayed_type_field("show_mp_mods", ADDON_MP_MOD);
 	register_displayed_type_field("show_media", ADDON_MEDIA);
-	// FIXME: (also in WML) should this and Unknown be a single option in the UI?
+	// FIXME: (also in WML) should this and Unknown be a single option in the
+	// UI?
 	register_displayed_type_field("show_other", ADDON_OTHER);
 }
 
-void taddon_filter_options::register_displayed_type_field(const std::string& field_id, ADDON_TYPE addon_type)
+void taddon_filter_options::register_displayed_type_field(
+		const std::string& field_id, ADDON_TYPE addon_type)
 {
-	displayed_types_fields_.push_back(register_bool(field_id, true, displayed_types_[addon_type]));
+	displayed_types_fields_.push_back(
+			register_bool(field_id, true, displayed_types_[addon_type]));
 }
 
 void taddon_filter_options::read_types_vector(const std::vector<bool>& v)
@@ -150,32 +157,35 @@ void taddon_filter_options::read_types_vector(const std::vector<bool>& v)
 	}
 }
 
-void taddon_filter_options::toggle_all_displayed_types_button_callback(twindow& window)
+void taddon_filter_options::toggle_all_displayed_types_button_callback(
+		twindow& window)
 {
-	const bool have_any_unchecked = displayed_types_fields_.end() == std::find_if(
-		displayed_types_fields_.begin(),
-		displayed_types_fields_.end(),
-		boost::bind(&unchecked_bool_field_finder, boost::ref(window), _1));
+	const bool have_any_unchecked
+			= displayed_types_fields_.end()
+			  == std::find_if(displayed_types_fields_.begin(),
+							  displayed_types_fields_.end(),
+							  boost::bind(&unchecked_bool_field_finder,
+										  boost::ref(window),
+										  _1));
 
-	FOREACH(const AUTO field, displayed_types_fields_) {
+	FOREACH(const AUTO field, displayed_types_fields_)
+	{
 		field->set_widget_value(window, !have_any_unchecked);
 	}
 }
 
 void taddon_filter_options::toggle_sort_callback(ttoggle_button* active)
 {
-	FOREACH(const AUTO& e, sort_tgroup_) {
+	FOREACH(const AUTO & e, sort_tgroup_)
+	{
 		ttoggle_button* const b = e.first;
 		if(b == NULL) {
 			continue;
-		}
-		else if(b == active && !b->get_value()) {
+		} else if(b == active && !b->get_value()) {
 			b->set_value(true);
-		}
-		else if(b == active) {
+		} else if(b == active) {
 			sort_ = e.second;
-		}
-		else if(b != active && b->get_value()) {
+		} else if(b != active && b->get_value()) {
 			b->set_value(false);
 		}
 	}
@@ -183,18 +193,16 @@ void taddon_filter_options::toggle_sort_callback(ttoggle_button* active)
 
 void taddon_filter_options::toggle_dir_callback(ttoggle_button* active)
 {
-	FOREACH(const AUTO& e, dir_tgroup_) {
+	FOREACH(const AUTO & e, dir_tgroup_)
+	{
 		ttoggle_button* const b = e.first;
 		if(b == NULL) {
 			continue;
-		}
-		else if(b == active && !b->get_value()) {
+		} else if(b == active && !b->get_value()) {
 			b->set_value(true);
-		}
-		else if(b == active) {
+		} else if(b == active) {
 			dir_ = e.second;
-		}
-		else if(b != active && b->get_value()) {
+		} else if(b != active && b->get_value()) {
 			b->set_value(false);
 		}
 	}
@@ -218,8 +226,11 @@ void taddon_filter_options::pre_show(CVideo& /*video*/, twindow& window)
 	list.select_row(displayed_status_);
 
 	connect_signal_mouse_left_click(
-		find_widget<tbutton>(&window, "toggle_all_displayed_types", false),
-		boost::bind(&taddon_filter_options::toggle_all_displayed_types_button_callback, this, boost::ref(window)));
+			find_widget<tbutton>(&window, "toggle_all_displayed_types", false),
+			boost::bind(&taddon_filter_options::
+								 toggle_all_displayed_types_button_callback,
+						this,
+						boost::ref(window)));
 
 	sort_tgroup_.clear();
 	register_sort_toggle(window, "by_name", SORT_NAMES);
@@ -231,22 +242,32 @@ void taddon_filter_options::pre_show(CVideo& /*video*/, twindow& window)
 	register_dir_toggle(window, "descending", DIRECTION_DESCENDING);
 }
 
-void taddon_filter_options::register_sort_toggle(twindow& window, const std::string& toggle_id, ADDON_SORT value)
+void taddon_filter_options::register_sort_toggle(twindow& window,
+												 const std::string& toggle_id,
+												 ADDON_SORT value)
 {
-	ttoggle_button* b = &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
+	ttoggle_button* b
+			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == sort_);
-	connect_signal_mouse_left_click(*b, boost::bind(&taddon_filter_options::toggle_sort_callback, this, b));
+	connect_signal_mouse_left_click(
+			*b,
+			boost::bind(&taddon_filter_options::toggle_sort_callback, this, b));
 
 	sort_tgroup_.push_back(std::make_pair(b, value));
 }
 
-void taddon_filter_options::register_dir_toggle(twindow& window, const std::string& toggle_id, ADDON_SORT_DIRECTION value)
+void taddon_filter_options::register_dir_toggle(twindow& window,
+												const std::string& toggle_id,
+												ADDON_SORT_DIRECTION value)
 {
-	ttoggle_button* b = &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
+	ttoggle_button* b
+			= &find_widget<ttoggle_button>(&window, "sort_" + toggle_id, false);
 
 	b->set_value(value == dir_);
-	connect_signal_mouse_left_click(*b, boost::bind(&taddon_filter_options::toggle_dir_callback, this, b));
+	connect_signal_mouse_left_click(
+			*b,
+			boost::bind(&taddon_filter_options::toggle_dir_callback, this, b));
 
 	dir_tgroup_.push_back(std::make_pair(b, value));
 }
@@ -269,14 +290,14 @@ void taddon_filter_options::post_show(twindow& window)
 std::string taddon_filter_options::status_label(ADDON_STATUS_FILTER s)
 {
 	switch(s) {
-	case FILTER_NOT_INSTALLED:
-		return _("addons_view^Not Installed");
-	case FILTER_UPGRADABLE:
-		return _("addons_view^Upgradable");
-	case FILTER_INSTALLED:
-		return _("addons_view^Installed");
-	default:
-		return _("addons_view^All Add-ons");
+		case FILTER_NOT_INSTALLED:
+			return _("addons_view^Not Installed");
+		case FILTER_UPGRADABLE:
+			return _("addons_view^Upgradable");
+		case FILTER_INSTALLED:
+			return _("addons_view^Installed");
+		default:
+			return _("addons_view^All Add-ons");
 	}
 }
 

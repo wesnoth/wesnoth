@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,16 +19,15 @@
 
 class config;
 
-namespace gui2 {
+namespace gui2
+{
 
 class tmp_create_game : public tdialog
 {
 public:
-
 	explicit tmp_create_game(const config& cfg);
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -47,20 +46,11 @@ private:
 	 * manually controlled as well so add the pointers here as well.
 	 */
 
-	tfield_bool
-		*use_map_settings_,
-		*fog_,
-		*shroud_,
-		*start_time_;
+	tfield_bool* use_map_settings_, *fog_, *shroud_, *start_time_;
 
-	tfield_integer
-		*turns_,
-		*gold_,
-		*support_,
-		*experience_;
+	tfield_integer* turns_, *gold_, *support_, *experience_;
 
 public:
-
 	// another map selected
 	void update_map(twindow& window);
 
@@ -71,4 +61,3 @@ public:
 } // namespace gui2
 
 #endif
-

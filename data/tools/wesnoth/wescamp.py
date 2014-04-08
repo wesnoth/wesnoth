@@ -565,7 +565,7 @@ if __name__ == "__main__":
                 print "[ERROR github in {0}] {1}".format(e.addon, str(e.message))
                 error = True
             except libgithub.Error as e:
-                print "[ERROR github] in addon '" + k + "'" + str(e)
+                print "[ERROR github] in addon '{0}' {1}".format(k, str(e))
                 error = True
             except socket.error as e:
                 print "Socket error: " + str(e)

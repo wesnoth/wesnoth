@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2014 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -67,6 +67,33 @@ static void team_init(config& level, game_state& gamestate){
 
 		gamestate.carryover_sides = sides.to_config();
 	}
+}
+
+static void do_carryover_WML(config & level, game_state& gamestate){
+
+	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
+
+		carryover_info sides(gamestate.carryover_sides_start);
+
+		end_level_data end_level_ = sides.get_end_level();
+
+		if(!end_level_.next_scenario_settings.empty()) {
+			level.merge_with(end_level_.next_scenario_settings);
+		}
+		if(!end_level_.next_scenario_append.empty())
+		{
+			level.append_children(end_level_.next_scenario_append);
+		}
+	}
+}
+
+static void clear_carryover_WML (game_state & gamestate) {
+
+	if (gamestate.carryover_sides.has_child("end_level_data")) {
+		config & eld = gamestate.carryover_sides.child("end_level_data");
+		eld.clear_children("next_scenario_settings");
+		eld.clear_children("next_scenario_append");
+	}	
 }
 
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level){
@@ -234,7 +261,9 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
+	do_carryover_WML(init_level, state_of_game);
 	team_init(init_level, state_of_game);
+	clear_carryover_WML(state_of_game);
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(init_level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
@@ -242,8 +271,14 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
-	config& cfg_end_level = state_of_game.carryover_sides.child("end_level_data");
-	end_level.write(cfg_end_level);
+
+	if (state_of_game.carryover_sides.has_child("end_level_data")) {
+		config& cfg_end_level = state_of_game.carryover_sides.child("end_level_data");
+		end_level.write(cfg_end_level);
+	} else {
+		config& cfg_end_level = state_of_game.carryover_sides.add_child("end_level_data");
+		end_level.write(cfg_end_level);
+	}
 
 	if (res == DEFEAT) {
 		if (resources::persist != NULL)
@@ -275,21 +310,28 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 static LEVEL_RESULT playmp_scenario(const config& game_config,
 		const config* level, display& disp, game_state& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
-		io_type_t& io_type, end_level_data &end_level)
+		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
 	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
+	do_carryover_WML(init_level, state_of_game);
 	team_init(init_level, state_of_game);
+	clear_carryover_WML(state_of_game);
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
-		game_config, disp.video(), skip_replay, io_type == IO_SERVER);
+		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();
 
-	config& cfg_end_level = state_of_game.carryover_sides.child("end_level_data");
-	end_level.write(cfg_end_level);
+	if (state_of_game.carryover_sides.has_child("end_level_data")) {
+		config& cfg_end_level = state_of_game.carryover_sides.child("end_level_data");
+		end_level.write(cfg_end_level);
+	} else {
+		config& cfg_end_level = state_of_game.carryover_sides.add_child("end_level_data");
+		end_level.write(cfg_end_level);
+	}
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
@@ -333,8 +375,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 }
 
 LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
-	const config& game_config, io_type_t io_type, bool skip_replay,
-	bool network_game)
+	const config& game_config, io_type_t io_type, bool skip_replay, 
+	bool network_game, bool blindfold_replay)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -397,19 +439,11 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 	while(scenario != NULL) {
 		// If we are a multiplayer client, tweak the controllers
+		// (actually, moved to server. do we still need this starting_pos thing?)
 		if(io_type == IO_CLIENT) {
 			if(scenario != &starting_pos) {
 				starting_pos = *scenario;
 				scenario = &starting_pos;
-			}
-
-			BOOST_FOREACH(config &side, starting_pos.child_range("side"))
-			{
-				if (side["current_player"] == preferences::login()) {
-					side["controller"] = "human";
-				} else if (side["controller"] != "null") {
-					side["controller"] = "network";
-				}
 			}
 		}
 
@@ -463,7 +497,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, io_type, end_level);
+				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 				break;
 			}
 		} catch(game::load_game_failed& e) {
@@ -495,7 +529,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				savegame::clean_saves(gamestate.classification().label);
 
 			if (preferences::save_replays() && end_level.replay_save) {
-				savegame::replay_savegame save(gamestate, preferences::compress_saves());
+				savegame::replay_savegame save(gamestate, preferences::save_compression_format());
 				save.save_game_automatic(disp.video(), true);
 			}
 		}
@@ -571,6 +605,14 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// mp::connect_engine.
 				team_init(starting_pos, gamestate);
 
+				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
+				//then we have to move "allow_new_game" attribute over now.
+				bool allow_new_game_flag = (*scenario)["allow_new_game"].to_bool(true);
+
+				if (gamestate.carryover_sides_start.child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
+					allow_new_game_flag = gamestate.carryover_sides_start.child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
+				}
+
 				params.scenario_data = *scenario;
 				params.mp_scenario = (*scenario)["id"].str();
 				params.mp_scenario_name = (*scenario)["name"].str();
@@ -583,8 +625,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					connect_engine(new mp::connect_engine(disp, gamestate,
 						params, !network_game, false));
 
-				if ((*scenario)["allow_new_game"].to_bool(true) ||
-					game_config::debug) {
+				if (allow_new_game_flag || game_config::debug) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
@@ -642,7 +683,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				// starting position needs to be empty,
 				// to force a reload of the scenario config.
 
-				savegame::scenariostart_savegame save(gamestate, preferences::compress_saves());
+				savegame::scenariostart_savegame save(gamestate, preferences::save_compression_format());
 
 				save.save_game_automatic(disp.video());
 			}

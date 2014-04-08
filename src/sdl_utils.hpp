@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 
 #include "scoped_resource.hpp"
 #include "util.hpp"
+#include "sdl/compat.hpp"
 
 #include "SDL.h"
 
@@ -46,9 +47,7 @@
 #define SDL_BUTTON_WHEELRIGHT 7
 #endif
 
-namespace {
-const SDL_Rect empty_rect = { 0, 0, 0, 0 };
-}
+extern const SDL_Rect empty_rect;
 
 SDLKey sdl_keysym_from_name(std::string const &keyname);
 
@@ -412,7 +411,7 @@ SDL_Color int_to_color(const Uint32 rgb);
 SDL_Color create_color(const unsigned char red
 		, unsigned char green
 		, unsigned char blue
-		, unsigned char unused = 255);
+		, unsigned char alpha = 255);
 
 /**
  * Helper class for pinning SDL surfaces into memory.

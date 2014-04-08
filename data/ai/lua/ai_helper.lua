@@ -82,8 +82,13 @@ function ai_helper.put_labels(map, cfg)
             if cfg.keys then
                 for i,k in ipairs(cfg.keys) do data = data[k] end
             end
-            out = tonumber(data) or 'nan'
+            if (type(data) == 'string') then
+                out = data
+            else
+                out = tonumber(data) or 'nan'
+            end
         end
+
         if (type(out) == 'number') then out = out * factor end
         W.label { x = x, y = y, text = out }
     end)
@@ -119,6 +124,97 @@ function ai_helper.print_ts_delta(start_time, ...)
     print(table.unpack(arg))
 
     return ts, delta
+end
+
+----- AI execution helper functions ------
+
+function ai_helper.checked_action_error(action, error_code)
+        wesnoth.message('Lua AI error', 'If you see this message, something has gone wrong. Please report this on the Wesnoth forums, ideally with a replay and/or savegame.')
+        error(action .. ' could not be executed. Error code: ' .. error_code)
+end
+
+function ai_helper.checked_attack(ai, attacker, defender, weapon)
+    local check = ai.check_attack(attacker, defender, weapon)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.attack', check.status)
+        return
+    end
+
+    ai.attack(attacker, defender, weapon)
+end
+
+function ai_helper.checked_move_core(ai, unit, x, y, move_type)
+    local check = ai.check_move(unit, x, y)
+
+    if (not check.ok) then
+        -- The following errors are not fatal:
+        -- E_EMPTY_MOVE = 2001
+        -- E_AMBUSHED = 2005
+        -- E_NOT_REACHED_DESTINATION = 2007
+        if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
+            ai_helper.checked_action_error(move_type, check.status)
+            return
+        end
+    end
+
+    if (move_type == 'ai.move_full') then
+        ai.move_full(unit, x, y)
+    else
+        ai.move(unit, x, y)
+    end
+end
+
+function ai_helper.checked_move_full(ai, unit, x, y)
+    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move_full')
+end
+
+function ai_helper.checked_move(ai, unit, x, y)
+    ai_helper.checked_move_core(ai, unit, x, y, 'ai.move')
+end
+
+function ai_helper.checked_recruit(ai, unit_type, x, y)
+    local check = ai.check_recruit(unit_type, x, y)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.recruit', check.status)
+        return
+    end
+
+    ai.recruit(unit_type, x, y)
+end
+
+function ai_helper.checked_stopunit_all(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_all', check.status)
+        return
+    end
+
+    ai.stopunit_all(unit)
+end
+
+function ai_helper.checked_stopunit_attacks(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_attacks', check.status)
+        return
+    end
+
+    ai.stopunit_attacks(unit)
+end
+
+function ai_helper.checked_stopunit_moves(ai, unit)
+    local check = ai.check_stopunit(unit)
+
+    if (not check.ok) then
+        ai_helper.checked_action_error('ai.stopunit_moves', check.status)
+        return
+    end
+
+    ai.stopunit_moves(unit)
 end
 
 ----- General functionality and maths helper functions ------
@@ -157,16 +253,6 @@ function ai_helper.choose(input, value)
     end
 
     return best_input, max_value, best_key
-end
-
-function ai_helper.random(min, max)
-    -- Use this function as Lua's 'math.random' is not replay or MP safe
-
-    if not max then min, max = 1, min end
-    wesnoth.fire("set_variable", { name = "LUA_random", rand = string.format("%d..%d", min, max) })
-    local res = wesnoth.get_variable "LUA_random"
-    wesnoth.set_variable "LUA_random"
-    return res
 end
 
 function ai_helper.table_copy(t)
@@ -253,7 +339,7 @@ function ai_helper.LS_random_hex(set)
     -- This seems "inelegant", but I can't come up with another way without creating an extra array
     -- Return -1, -1 if set is empty
 
-    local r = ai_helper.random(set:size())
+    local r = math.random(set:size())
     local i, xr, yr = 1, -1, -1
     set:iter( function(x, y, v)
         if (i == r) then xr, yr = x, y end
@@ -264,6 +350,63 @@ function ai_helper.LS_random_hex(set)
 end
 
 --------- Location, position or hex related helper functions ----------
+
+function ai_helper.cartesian_coords(x, y)
+    -- Converts coordinates from hex geometry to cartesian coordinates,
+    -- meaning that y coordinates are offset by 0.5 every other hex
+    -- Example: (1,1) stays (1,1) and (3,1) remains (3,1), but (2,1) -> (2,1.5) etc.
+    return x, y + ((x + 1) % 2) / 2.
+end
+
+function ai_helper.get_angle(from_hex, to_hex)
+    -- Returns the angle of the direction from 'from_hex' to 'to_hex'
+    -- Angle is in radians and goes from -pi to pi.  0 is toward east.
+    -- Input hex tables can be of form { x, y } or { x = x, y = y }, which
+    -- means that it is also possible to pass a unit table
+    local x1, y1 = from_hex.x or from_hex[1], from_hex.y or from_hex[2]
+    local x2, y2 = to_hex.x or to_hex[1], to_hex.y or to_hex[2]
+
+    local _, y1cart =  ai_helper.cartesian_coords(x1, y1)
+    local _, y2cart =  ai_helper.cartesian_coords(x2, y2)
+
+    return math.atan2(y2cart - y1cart, x2 - x1)
+end
+
+function ai_helper.get_direction_index(from_hex, to_hex, n, center_on_east)
+    -- Returns an integer index for the direction from 'from_hex' to 'to_hex'
+    -- with the full circle divided into 'n' slices
+    -- 1 is always to the east, with indices increasing clockwise
+    -- Input hex tables can be of form { x, y } or { x = x, y = y }, which
+    -- means that it is also possible to pass a unit table
+    --
+    -- Optional input:
+    -- center_on_east (false): boolean.  By default, the eastern direction is the
+    -- northern border of the first slice.  If this parameter is set, east will
+    -- instead be the center direction of the first slice
+
+    local d_east = 0
+    if center_on_east then d_east = 0.5 end
+
+    local angle = ai_helper.get_angle(from_hex, to_hex)
+    local index = math.floor((angle / math.pi * n/2 + d_east) % n ) + 1
+
+    return index
+end
+
+function ai_helper.get_cardinal_directions(from_hex, to_hex)
+    local dirs = { "E", "S", "W", "N" }
+    return dirs[ai_helper.get_direction_index(from_hex, to_hex, 4, true)]
+end
+
+function ai_helper.get_intercardinal_directions(from_hex, to_hex)
+    local dirs = { "E", "SE", "S", "SW", "W", "NW", "N", "NE" }
+    return dirs[ai_helper.get_direction_index(from_hex, to_hex, 8, true)]
+end
+
+function ai_helper.get_hex_facing(from_hex, to_hex)
+    local dirs = { "se", "s", "sw", "nw", "n", "ne" }
+    return dirs[ai_helper.get_direction_index(from_hex, to_hex, 6)]
+end
 
 function ai_helper.find_opposite_hex_adjacent(hex, center_hex)
     -- Find the hex that is opposite of 'hex' w.r.t. 'center_hex'
@@ -342,14 +485,15 @@ function ai_helper.get_closest_location(hex, location_filter, unit)
         if (radius == 0) then
             loc_filter = {
                 { "and", { x = hex[1], y = hex[2], radius = radius } },
+                { "and", location_filter }
             }
         else
             loc_filter = {
                 { "and", { x = hex[1], y = hex[2], radius = radius } },
                 { "not", { x = hex[1], y = hex[2], radius = radius - 1 } },
+                { "and", location_filter }
             }
         end
-        for k,v in pairs(location_filter) do loc_filter[k] = v end
 
         local locs = wesnoth.get_locations(loc_filter)
 
@@ -908,7 +1052,7 @@ function ai_helper.find_best_move(units, rating_function, cfg)
             local rating = rating_function(x, y)
 
             -- If cfg.random is set, add some randomness (on 0.0001 - 0.0099 level)
-            if (not cfg.no_random) then rating = rating + ai_helper.random(99) / 10000. end
+            if (not cfg.no_random) then rating = rating + math.random(99) / 10000. end
             -- If cfg.labels is set: insert values for label map
             if cfg.labels then reach_map:insert(x, y, rating) end
 
@@ -954,7 +1098,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
 
     if (max_rating > -9e99) then
         --W.message { speaker = unit.id, message = 'Moving out of way' }
-        ai.move(unit, best_hex[1], best_hex[2])
+        ai_helper.checked_move(ai, unit, best_hex[1], best_hex[2])
     end
 end
 
@@ -972,9 +1116,9 @@ function ai_helper.movefull_stopunit(ai, unit, x, y)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai.move_full(unit, next_hop[1], next_hop[2])
+        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(unit)
+        ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 
@@ -1001,9 +1145,9 @@ function ai_helper.movefull_outofway_stopunit(ai, unit, x, y, cfg)
 
     local next_hop = ai_helper.next_hop(unit, x, y)
     if next_hop and ((next_hop[1] ~= unit.x) or (next_hop[2] ~= unit.y)) then
-        ai.move_full(unit, next_hop[1], next_hop[2])
+        ai_helper.checked_move_full(ai, unit, next_hop[1], next_hop[2])
     else
-        ai.stopunit_moves(unit)
+        ai_helper.checked_stopunit_moves(ai, unit)
     end
 end
 

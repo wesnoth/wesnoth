@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2013 by L.Sebilleau <l.sebilleau@free.fr>
+ Copyright (C) 2013 - 2014 by L.Sebilleau <l.sebilleau@free.fr>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
  This program is free software; you can redistribute it and/or modify

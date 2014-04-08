@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,8 @@
 #include "log.hpp"
 #include "utils/foreach.tpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_DIALOG(message)
 
@@ -45,12 +46,11 @@ struct tmessage_implementation
 	 * @param button_status       The button status to modify.
 	 * @param id                  The id of the button.
 	 */
-	static void
-	init_button(twindow& window, tmessage::tbutton_status& button_status,
-			const std::string& id)
+	static void init_button(twindow& window,
+							tmessage::tbutton_status& button_status,
+							const std::string& id)
 	{
-		button_status.button = find_widget<tbutton>(
-				&window, id, false, true);
+		button_status.button = find_widget<tbutton>(&window, id, false, true);
 		button_status.button->set_visible(button_status.visible);
 
 		if(!button_status.caption.empty()) {
@@ -66,22 +66,25 @@ struct tmessage_implementation
 void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** Validate the required buttons ***** ***** ***** *****
-	tmessage_implementation::
-			init_button(window, buttons_[left_1], "left_side");
-	tmessage_implementation::
-			init_button(window, buttons_[cancel], "cancel");
-	tmessage_implementation::
-			init_button(window, buttons_[ok] ,"ok");
-	tmessage_implementation::
-			init_button(window, buttons_[right_1], "right_side");
+	tmessage_implementation::init_button(window, buttons_[left_1], "left_side");
+	tmessage_implementation::init_button(window, buttons_[cancel], "cancel");
+	tmessage_implementation::init_button(window, buttons_[ok], "ok");
+	tmessage_implementation::init_button(
+			window, buttons_[right_1], "right_side");
 
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
+	tcontrol& title_widget = find_widget<tlabel>(&window, "title", false);
 	if(!title_.empty()) {
-		find_widget<tlabel>(&window, "title", false).set_label(title_);
+		title_widget.set_label(title_);
+	} else {
+		title_widget.set_visible(twidget::tvisible::invisible);
 	}
 
+	tcontrol& img_widget = find_widget<timage>(&window, "image", false);
 	if(!image_.empty()) {
-		find_widget<timage>(&window, "image", false).set_label(image_);
+		img_widget.set_label(image_);
+	} else {
+		img_widget.set_visible(twidget::tvisible::invisible);
 	}
 
 	tcontrol& label = find_widget<tcontrol>(&window, "label", false);
@@ -98,13 +101,14 @@ void tmessage::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmessage::post_show(twindow& /*window*/)
 {
-	FOREACH(AUTO& button_status, buttons_) {
+	FOREACH(AUTO & button_status, buttons_)
+	{
 		button_status.button = NULL;
 	}
 }
 
 void tmessage::set_button_caption(const tbutton_id button,
-		const std::string& caption)
+								  const std::string& caption)
 {
 	buttons_[button].caption = caption;
 	if(buttons_[button].button) {
@@ -113,7 +117,7 @@ void tmessage::set_button_caption(const tbutton_id button,
 }
 
 void tmessage::set_button_visible(const tbutton_id button,
-		const twidget::tvisible::scoped_enum visible)
+								  const twidget::tvisible::scoped_enum visible)
 {
 	buttons_[button].visible = visible;
 	if(buttons_[button].button) {
@@ -121,8 +125,7 @@ void tmessage::set_button_visible(const tbutton_id button,
 	}
 }
 
-void tmessage::set_button_retval(const tbutton_id button,
-		const int retval)
+void tmessage::set_button_retval(const tbutton_id button, const int retval)
 {
 	buttons_[button].retval = retval;
 	if(buttons_[button].button) {
@@ -138,43 +141,53 @@ tmessage::tbutton_status::tbutton_status()
 {
 }
 
-void show_message(CVideo& video, const std::string& title,
-	const std::string& message, const std::string& button_caption,
-	const bool auto_close, const bool message_use_markup)
+void show_message(CVideo& video,
+				  const std::string& title,
+				  const std::string& message,
+				  const std::string& button_caption,
+				  const bool auto_close,
+				  const bool message_use_markup)
 {
 	tmessage dlg(title, message, auto_close, message_use_markup);
 	dlg.set_button_caption(tmessage::ok, button_caption);
 	dlg.show(video);
 }
 
-int show_message(CVideo& video, const std::string& title,
-	const std::string& message, const tmessage::tbutton_style button_style,
-	bool message_use_markup,
-	bool /*message_title_mode*/)
+int show_message(CVideo& video,
+				 const std::string& title,
+				 const std::string& message,
+				 const tmessage::tbutton_style button_style,
+				 bool message_use_markup,
+				 bool /*message_title_mode*/)
 {
-	tmessage dlg(title, message, button_style == tmessage::auto_close, message_use_markup);
+	tmessage dlg(title,
+				 message,
+				 button_style == tmessage::auto_close,
+				 message_use_markup);
 
 	switch(button_style) {
-		case tmessage::auto_close :
+		case tmessage::auto_close:
 			break;
-		case tmessage::ok_button :
+		case tmessage::ok_button:
 			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("OK"));
 			break;
-		case tmessage::close_button :
+		case tmessage::close_button:
 			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			break;
-		case tmessage::ok_cancel_buttons :
+		case tmessage::ok_cancel_buttons:
 			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("OK"));
-			/* FALL DOWN */
-		case tmessage::cancel_button :
-			dlg.set_button_visible(tmessage::cancel, twidget::tvisible::visible);
+		/* FALL DOWN */
+		case tmessage::cancel_button:
+			dlg.set_button_visible(tmessage::cancel,
+								   twidget::tvisible::visible);
 			break;
-		case tmessage::yes_no_buttons :
+		case tmessage::yes_no_buttons:
 			dlg.set_button_visible(tmessage::ok, twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::ok, _("Yes"));
-			dlg.set_button_visible(tmessage::cancel, twidget::tvisible::visible);
+			dlg.set_button_visible(tmessage::cancel,
+								   twidget::tvisible::visible);
 			dlg.set_button_caption(tmessage::cancel, _("No"));
 			break;
 	}
@@ -183,13 +196,16 @@ int show_message(CVideo& video, const std::string& title,
 	return dlg.get_retval();
 }
 
-void show_error_message(CVideo& video, const std::string& message,
-	bool message_use_markup)
+void show_error_message(CVideo& video,
+						const std::string& message,
+						bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general) << message << '\n';
-	show_message(video, _("Error"), message,
-			tmessage::ok_button, message_use_markup);
+	show_message(video,
+				 _("Error"),
+				 message,
+				 tmessage::ok_button,
+				 message_use_markup);
 }
 
 } // namespace gui2
-

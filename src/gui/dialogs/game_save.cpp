@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,8 @@
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -53,10 +54,9 @@ tgame_save::tgame_save(std::string& filename, const std::string& title)
 
 REGISTER_DIALOG(game_save_message)
 
-tgame_save_message::tgame_save_message(
-		  std::string& filename
-		, const std::string& title
-		, const std::string& message)
+tgame_save_message::tgame_save_message(std::string& filename,
+									   const std::string& title,
+									   const std::string& message)
 {
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
@@ -65,11 +65,10 @@ tgame_save_message::tgame_save_message(
 
 REGISTER_DIALOG(game_save_oos)
 
-tgame_save_oos::tgame_save_oos(
-		  bool& ignore_all
-		, std::string& filename
-		, const std::string& title
-		, const std::string& message)
+tgame_save_oos::tgame_save_oos(bool& ignore_all,
+							   std::string& filename,
+							   const std::string& title,
+							   const std::string& message)
 {
 	register_label("lblTitle", true, title);
 	register_text("txtFilename", false, filename, true);
@@ -81,4 +80,3 @@ tgame_save_oos::tgame_save_oos(
 }
 
 } // namespace gui2
-

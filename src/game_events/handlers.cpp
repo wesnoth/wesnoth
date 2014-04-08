@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,15 +25,17 @@
 
 #include "../formula_string_utils.hpp"
 #include "../gamestatus.hpp"
-#include "../hotkeys.hpp"
+#include "../hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../reports.hpp"
 #include "../resources.hpp"
 #include "../scripting/lua.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../soundsource.hpp"
+#include "../util.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/unordered_map.hpp>
 #include <iostream>
 
 
@@ -49,24 +51,41 @@ static lg::log_domain log_event_handler("event_handler");
 // This file is in the game_events namespace.
 namespace game_events {
 
+
 namespace { // Types
 	class t_event_handlers {
+		typedef boost::unordered_map<std::string, handler_list> map_t;
+		typedef boost::unordered_map<std::string, boost::weak_ptr<event_handler> > id_map_t;
+
 	public:
 		typedef handler_vec::iterator iterator;
 		typedef handler_vec::const_iterator const_iterator;
 
 	private:
-		handler_vec active_; ///Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
+		handler_vec  active_;  /// Active event handlers. Will not have elements removed unless the t_event_handlers is clear()ed.
+		map_t        by_name_; /// Active event handlers with fixed event names, organized by event name.
+		handler_list dynamic_; /// Active event handlers with variables in their event names.
+		id_map_t     id_map_;  /// Allows quick locating of handlers by id.
 
 
 		void log_handlers();
+		/// Utility to standardize the event names used in by_name_.
+		static std::string standardize_name(const std::string & name);
 
 	public:
 		typedef handler_vec::size_type size_type;
 
 		t_event_handlers()
 			: active_()
+			, by_name_()
+			, dynamic_()
+			, id_map_()
 		{}
+
+		/// Read-only access to the handlers with varying event names.
+		const handler_list & get() const { return dynamic_; }
+		/// Read-only access to the handlers with fixed event names, by event name.
+		const handler_list & get(const std::string & name) const;
 
 		/// Adds an event handler.
 		void add_event_handler(const config & cfg, bool is_menu_item=false);
@@ -102,30 +121,85 @@ namespace { // Types
 	}
 
 	/**
+	 * Utility to standardize the event names used in by_name_.
+	 * This means stripping leading and trailing spaces, and converting internal
+	 * spaces to underscores.
+	 */
+	std::string t_event_handlers::standardize_name(const std::string & name)
+	{
+		std::string retval;
+		size_t name_index = 0;
+		size_t name_size = name.size();
+
+		// Trim trailing spaces off the name.
+		while ( name_size > 0  &&  name[name_size-1] == ' ' )
+			--name_size	;
+
+		// Trim leading spaces off the name.
+		while ( name_index < name_size  &&  name[name_index] == ' ' )
+			++name_index;
+
+		// Copy the rest, converting any remaining spaces to underscores.
+		retval.reserve(name_size - name_index);
+		while ( name_index < name_size ) {
+			char c = name[name_index++];
+			retval.push_back(c == ' ' ? '_' : c);
+		}
+
+		return retval;
+	}
+
+	/**
+	 * Read-only access to the handlers with fixed event names, by event name.
+	 */
+	const handler_list & t_event_handlers::get(const std::string & name) const
+	{
+		// Empty list for the "not found" case.
+		static const handler_list empty_list;
+
+		// Look for the name in the name map.
+		map_t::const_iterator find_it = by_name_.find(standardize_name(name));
+		return find_it == by_name_.end() ? empty_list : find_it->second;
+	}
+
+	/**
 	 * Adds an event handler.
 	 * An event with a nonempty ID will not be added if an event with that
 	 * ID already exists.
 	 */
 	void t_event_handlers::add_event_handler(const config & cfg, bool is_menu_item)
 	{
+		const std::string name = cfg["name"];
 		std::string id = cfg["id"];
+
 		if(!id.empty()) {
-			BOOST_FOREACH( handler_ptr const & eh, active_ ) {
-				if ( !eh )
-					continue;
-				config const & temp_config(eh->get_config());
-				if(id == temp_config["id"]) {
-					DBG_EH << "ignoring event handler for name=" << cfg["name"] <<
-						" with id " << id << "\n";
-					return;
-				}
+			// Ignore this handler if there is already one with this ID.
+			id_map_t::iterator find_it = id_map_.find(id);
+			if ( find_it != id_map_.end()  &&  !find_it->second.expired() ) {
+				DBG_EH << "ignoring event handler for name='" << name
+				       << "' with id '" << id << "'\n";
+				return;
 			}
 		}
-		DBG_EH << "inserting event handler for name=" << cfg["name"] <<
+
+		// Create a new handler.
+		DBG_EH << "inserting event handler for name=" << name <<
 			" with id=" << id << "\n";
-		handler_ptr new_handler(new event_handler(cfg, is_menu_item));
-		new_handler->set_index(active_.size());
+		handler_ptr new_handler(new event_handler(cfg, is_menu_item, active_.size()));
 		active_.push_back(new_handler);
+
+		// File by name.
+		if ( utils::might_contain_variables(name) )
+			dynamic_.push_back(new_handler);
+		else {
+			std::vector<std::string> name_list = utils::split(name);
+			BOOST_FOREACH( const std::string & single_name, name_list )
+				by_name_[standardize_name(single_name)].push_back(new_handler);
+		}
+		// File by ID.
+		if ( !id.empty() )
+			id_map_[id] = new_handler;
+
 		log_handlers();
 	}
 
@@ -140,21 +214,26 @@ namespace { // Types
 
 		DBG_EH << "removing event handler with id " << id << "\n";
 
-		// Loop through the active handler_vec.
-		for ( handler_vec::iterator i = active_.begin(); i != active_.end(); ++i ) {
-			if ( !*i )
-				continue;
-			// Try to match the id
-			std::string event_id = (*i)->get_config()["id"];
-			if ( event_id == id )
-				i->reset();
+		// Find the existing handler with this ID.
+		id_map_t::iterator find_it = id_map_.find(id);
+		if ( find_it != id_map_.end() ) {
+			handler_ptr handler = find_it->second.lock();
+			// Remove handler.
+			if ( handler )
+				handler->disable();
+			id_map_.erase(find_it); // Do this even if the lock failed.
+			// The index by name will self-adjust later. No need to adjust it now.
 		}
+
 		log_handlers();
 	}
 
 	void t_event_handlers::clear()
 	{
 		active_.clear();
+		by_name_.clear();
+		dynamic_.clear();
+		id_map_.clear();
 	}
 
 }// end anonymous namespace (types)
@@ -257,85 +336,147 @@ manager::~manager() {
  * An empty @a event_name will automatically match nothing.
  */
 manager::iteration::iteration(const std::string & event_name) :
+	main_list_(event_handlers.get(event_name)),
+	var_list_(event_handlers.get()),
 	event_name_(event_name),
 	end_(event_handlers.size()),
-	index_(event_name.empty() ? end_ : 0),
-	data_()
+	current_is_known_(false),
+	main_is_current_(false),
+	main_it_(main_list_.begin()),
+	var_it_(event_name.empty() ? var_list_.end() : var_list_.begin())
 {
-	// Look for the first handler that matches the provided name.
-	while ( is_name_mismatch() )
-		++index_;
-
-	// Set the pointer?
-	if ( index_ < end_ )
-		data_ = event_handlers[index_];
 }
-
 
 /**
  * Increment
+ * Incrementing guarantees that the next dereference will differ from the
+ * previous derference (unless the iteration is exhausted). However, multiple
+ * increments between dereferences are allowed to have the same effect as a
+ * single increment.
  */
 manager::iteration & manager::iteration::operator++()
 {
-	// Look for the next handler that matches our stored name.
-	do
-		++index_;
-	while ( is_name_mismatch() );
+	if ( !current_is_known_ )
+		// Either *this has never been dereferenced, or we already incremented
+		// since the last dereference. We are allowed to ignore this increment.
+		return *this;
 
-	// Set the pointer.
-	if ( index_ < end_ )
-		data_ = event_handlers[index_];
+	// Guarantee a different element next dereference.
+	if ( main_is_current_ )
+		++main_it_;
 	else
-		data_.reset();
+		++var_it_; // (We'll check for a name match when we dereference.)
+
+	// We no longer know which list is current.
+	current_is_known_ = false;
 
 	// Done.
 	return *this;
 }
 
+/**
+ * Dereference
+ * Will return a null pointer when the end of the iteration is reached.
+ */
+handler_ptr manager::iteration::operator*()
+{
+	// Get the candidate for the current element from the main list.
+	handler_ptr main_ptr = *main_it_;
+	handler_vec::size_type main_index = ptr_index(main_ptr);
+
+	// Get the candidate for the current element from the var list.
+	handler_ptr var_ptr = *var_it_;
+	// (Loop while var_ptr would be chosen over main_ptr, but the name does not match.)
+	while ( var_ptr  &&  var_ptr->index() < main_index  &&
+	        !var_ptr->matches_name(event_name_) )
+		var_ptr = *++var_it_;
+	handler_vec::size_type var_index = ptr_index(var_ptr);
+
+	// Which list? (Index ties go to the main list.)
+	current_is_known_ = main_index < end_  ||  var_index < end_;
+	main_is_current_ = main_index <= var_index;
+
+	if ( !current_is_known_ )
+		return handler_ptr(); // End of list; return a null pointer.
+	else
+		return main_is_current_ ? main_ptr : var_ptr;
+}
+
+
+/* ** handler_list::iterator ** */
 
 /**
- * Tests index_ for being skippable when looking for an event name.
+ * Dereference.
+ * If the current element has become invalid, we will increment first.
  */
-bool manager::iteration::is_name_mismatch() const
+handler_ptr handler_list::iterator::operator*()
 {
-	return index_ < end_  &&
-		       (!event_handlers[index_]  ||
-		        !event_handlers[index_]->matches_name(event_name_));
+	// Check for an available handler.
+	while ( iter_.derefable() ) {
+		// Handler still accessible?
+		if ( handler_ptr lock = iter_->lock() )
+			return lock;
+		else
+			// Remove the now-defunct entry.
+			iter_ = list_t::erase(iter_);
+	}
+
+	// End of the list.
+	return handler_ptr();
 }
 
 
 /* ** event_handler ** */
 
-event_handler::event_handler(const config &cfg, bool imi) :
+event_handler::event_handler(const config &cfg, bool imi, handler_vec::size_type index) :
 	first_time_only_(cfg["first_time_only"].to_bool(true)),
-	is_menu_item_(imi), index_(static_cast<size_t>(-1)), cfg_(cfg)
+	is_menu_item_(imi), index_(index), cfg_(cfg)
 {}
+
+/**
+ * Disables *this, removing it from the game.
+ * (Technically, the handler is only removed once no one is hanging on to a
+ * handler_ptr to *this. So be careful how long they persist.)
+ *
+ * WARNING: *this may be destroyed at the end of this call, unless
+ *          the caller maintains a handler_ptr to this.
+ */
+void event_handler::disable()
+{
+	// Handlers must have an index after they're created.
+	assert ( index_ < event_handlers.size() );
+	// Disable this handler.
+	event_handlers[index_].reset();
+}
 
 /**
  * Handles the queued event, according to our WML instructions.
  * WARNING: *this may be destroyed at the end of this call, unless
  *          the caller maintains a handler_ptr to this.
+ *
+ * @param[in]     event_info  Information about the event that needs handling.
+ * @param[in,out] handler_p   The caller's smart pointer to *this. It may be
+ *                            reset() during processing.
  */
-void event_handler::handle_event(const queued_event& event_info)
+void event_handler::handle_event(const queued_event& event_info, handler_ptr& handler_p)
 {
-	handler_ptr preservative;
-
-	if (first_time_only_)
-	{
-		// We should only be handling events if we've been added to the
-		// active handlers.
-		assert ( index_ < event_handlers.size() );
-		// Prevent self-destructing mid-function.
-		preservative = event_handlers[index_];
-		// Disable this handler.
-		event_handlers[index_].reset();
-	}
+	// We will need our config after possibly self-destructing. Make a copy now.
+	vconfig vcfg(cfg_, true);
 
 	if (is_menu_item_) {
 		DBG_NG << cfg_["name"] << " will now invoke the following command(s):\n" << cfg_;
 	}
 
-	handle_event_commands(event_info, vconfig(cfg_));
+	if (first_time_only_)
+	{
+		// Disable this handler.
+		disable();
+		// Also remove our caller's hold on us.
+		handler_p.reset();
+	}
+	// *WARNING*: At this point, dereferencing this could be a memory violation!
+
+	handle_event_commands(event_info, vcfg);
 }
 
 bool event_handler::matches_name(const std::string &name) const

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,7 +18,8 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -28,9 +29,6 @@ tprogress_bar_definition::tprogress_bar_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tprogress_bar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_progress_bar
@@ -53,10 +51,11 @@ tprogress_bar_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="progress_bar_definition"}
  * @end{parent}{name="gui/"}
  */
-
+tprogress_bar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+{
 	// Note the order should be the same as the enum tstate in progress_bar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
 }
 
 } // namespace gui2
-

@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003-2005 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2005 - 2014 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,8 @@ LEVEL_RESULT play_game(game_display& disp, game_state& state,
 		const config& game_config,
 		io_type_t io_type=IO_NONE,
 		bool skip_replay = false,
-		bool network_game = false);
+		bool network_game = false,
+		bool blindfold_replay = false);
 
 void play_replay(display& disp, game_state& state,
 		const config& game_config, CVideo& video);

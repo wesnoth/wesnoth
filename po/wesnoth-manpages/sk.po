@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "POT-Creation-Date: 2013-11-16 09:28+0100\n"
-"PO-Revision-Date: 2013-03-09 21:09+0100\n"
+"PO-Revision-Date: 2014-03-01 13:30+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -149,10 +149,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
-#, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
+#, no-wrap
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
-msgstr "B<--campaign-difficulty E<lt>obtiažnosťE<gt>>"
+msgstr "B<--campaign-difficulty [E<lt>obtiažnosťE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:57
@@ -495,25 +494,12 @@ msgstr "vypíše názov dátového adresára hry a skončí."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
-#, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
+#, no-wrap
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
-msgstr "B<--preprocess, -p[=E<lt>definícia1E<gt>,E<lt>definícia2E<gt>,...] E<lt>súbor/adresárE<gt> E<lt>cieľový adresárE<gt>>"
+msgstr "B<-p, --preprocess E<lt>zdrojový súbor/adresárE<gt> E<lt>cieľový adresárE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
-#, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -524,22 +510,19 @@ msgid ""
 "preprocessor visit: http://wiki.wesnoth.org/PreprocessorRef#Command-"
 "line_preprocessor"
 msgstr ""
-"spracuje preprocesorom zadaný súbor/adresár. Súbor(y) budú zapísané do "
-"zadaného cieľového adresára: základný cfg súbor a spracovaný cfg súbor. Ak "
-"je adresár zadaný, bude spracovaný rekurzívne podľa pravidiel preprocesora. "
-"Spoločné makrá z data/core/macros budú spracované pred zadanými "
-"prostriedkami (resources).  B<definícia1,definícia2,...> - tieto doplňujúce "
-"definície budú pridané pred spracovaním súborov. Ak je potrebné ich pridať, "
-"potom sa pred ne musí pridať znak '='.  Ak je v zozname definícií použité "
-"'SKIP_CORE', potom data/core nebude spracované.  Príklad: B<-p ~/wesnoth/"
-"data/campaigns/tutorial ~/result> alebo B<-p=MULTIPLAYER,MOJA_VYPRAVA ~/"
-"wesnoth/data/campaign/camp ~/result>"
+"spracuje preprocesorom zadaný súbor/adresár. Pre každý súbor bude do "
+"cieľového adresára zapísaný základný .cfg súbor a spracovaný .cfg súbor. Ak "
+"je zadaný adresár, bude spracovaný rekurzívne podľa pravidiel preprocesora. "
+"Spoločné makrá z adresára \"data/core/macros\" budú spracované pred zadanými "
+"zdrojmi (resources). Príklad: B<-p ~/wesnoth/data/campaigns/tutorial ~/"
+"result>. Pre detailné informácie o preprocesore navštívte http://wiki."
+"wesnoth.org/PreprocessorRef#Command-line_preprocessor"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:170
 #, no-wrap
 msgid "B<--preprocess-defines=DEFINE1,DEFINE2,etc>"
-msgstr ""
+msgstr "B<--preprocess-defines=DEFINE1,DEFINE2,atď>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:175
@@ -548,6 +531,8 @@ msgid ""
 "B<SKIP_CORE> is in the define list the \"data/core\" directory won't be "
 "preprocessed."
 msgstr ""
+"čiarkou oddelený zoznam definícié pre príkaz '--preprocess'. Ak je v zozname "
+"B<SKIP_CORE> potom nebude adresár \"data/core\" spracovaný preprocesorom."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:175
@@ -618,7 +603,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:193
 #, no-wrap
 msgid "B<--username>I<E<lt>usernameE<gt>>"
-msgstr ""
+msgstr "B<--username>I<E<lt>menoE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:196
@@ -626,12 +611,13 @@ msgid ""
 "uses E<lt>usernameE<gt> when connecting to a server, ignoring other "
 "preferences."
 msgstr ""
+"použije E<lt>menoE<gt> pri pripojení na server, bez ohľadu na predvoľby."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:196
 #, no-wrap
 msgid "B<--password>I<E<lt>passwordE<gt>>"
-msgstr ""
+msgstr "B<--password>I<E<lt>hesloE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:199
@@ -639,6 +625,8 @@ msgid ""
 "uses E<lt>passwordE<gt> when connecting to a server, ignoring other "
 "preferences. Unsafe."
 msgstr ""
+"použije E<lt>hesloE<gt> pri pripojení na server, bez ohľadu na predvoľby. "
+"Nie je bezpečné."
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:199
@@ -824,20 +812,19 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:254
 #, no-wrap
 msgid "B<--ignore-map-settings>"
-msgstr ""
+msgstr "B<--ignore-map-settings>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:257
 msgid "do not use map settings, use default values instead."
-msgstr ""
+msgstr "nepoužije nastavenia mapy, namiestno nich použije štandardné hodnoty."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:257
-#, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
+#, no-wrap
 msgid "B<--multiplayer-repeat=>I<value>"
-msgstr "B<--era=>I<hodnota>"
+msgstr "B<--multiplayer-repeat=>I<počet>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:264
@@ -845,6 +832,8 @@ msgid ""
 "repeats a multiplayer game I<value> times. Best to use with B<--nogui> for "
 "scriptable benchmarking."
 msgstr ""
+"zopakuje hru viacerých hráčov I<počet> ráz. Vhodné použiť s voľbou B<--"
+"nogui> pre testovanie výkonu."
 
 # type: TP
 #. type: TP

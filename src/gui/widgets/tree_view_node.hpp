@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,26 +19,26 @@
 
 #include <boost/ptr_container/ptr_vector.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 class tselectable_;
 class ttoggle_button;
 class ttree_view;
 
-class ttree_view_node
-	: public twidget
+class ttree_view_node : public twidget
 {
 	friend struct ttree_view_node_implementation;
 	friend class ttree_view;
 
 public:
-
 	typedef implementation::tbuilder_tree_view::tnode tnode_definition;
-	ttree_view_node(const std::string& id
-			, const std::vector<tnode_definition>& node_definitions
-			, ttree_view_node* parent_node
-			, ttree_view& parent_tree_view
-			, const std::map<std::string /* widget id */, string_map>& data);
+	ttree_view_node(
+			const std::string& id,
+			const std::vector<tnode_definition>& node_definitions,
+			ttree_view_node* parent_node,
+			ttree_view& parent_tree_view,
+			const std::map<std::string /* widget id */, string_map>& data);
 
 	~ttree_view_node();
 
@@ -57,9 +57,10 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	ttree_view_node& add_child(const std::string& id
-			, const std::map<std::string /* widget id */, string_map>& data
-			, const int index = -1);
+	ttree_view_node&
+	add_child(const std::string& id,
+			  const std::map<std::string /* widget id */, string_map>& data,
+			  const int index = -1);
 
 	/**
 	 * Adds a sibbling for a node at the end of the list.
@@ -74,8 +75,9 @@ public:
 	 *                            Having both empty and non-empty id's gives
 	 *                            undefined behavior.
 	 */
-	ttree_view_node& add_sibling(const std::string& id
-			, const std::map<std::string /* widget id */, string_map>& data)
+	ttree_view_node&
+	add_sibling(const std::string& id,
+				const std::map<std::string /* widget id */, string_map>& data)
 	{
 		assert(!is_root_node());
 		return parent_node().add_child(id, data);
@@ -88,7 +90,10 @@ public:
 	 * node. This node has no parent node and some other special features so
 	 * several code paths need to check whether they are the parent node.
 	 */
-	bool is_root_node() const { return parent_node_ == NULL; }
+	bool is_root_node() const
+	{
+		return parent_node_ == NULL;
+	}
 
 	/**
 	 * The indention level of the node.
@@ -98,7 +103,10 @@ public:
 	unsigned get_indention_level() const;
 
 	/** Does the node have children? */
-	bool empty() const { return children_.empty(); }
+	bool empty() const
+	{
+		return children_.empty();
+	}
 
 	/** Is the node folded? */
 	bool is_folded() const;
@@ -125,32 +133,35 @@ public:
 	 *
 	 * @todo Implement properly.
 	 */
-	virtual iterator::twalker_* create_walker() OVERRIDE { return NULL; }
+	virtual iterator::twalker_* create_walker() OVERRIDE
+	{
+		return NULL;
+	}
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 	/**
 	 * The "size" of the widget.
 	 *
 	 * @todo Rename this function, names to close to the size of the widget.
 	 */
-	size_t size() const { return children_.size(); }
+	size_t size() const
+	{
+		return children_.size();
+	}
 
 	/**
 	 * Removes all child items from the widget.
@@ -174,7 +185,6 @@ public:
 	const ttree_view& tree_view() const;
 
 private:
-
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
@@ -220,7 +230,7 @@ private:
 	 * This version needs to call its children, which are it's child nodes.
 	 */
 	void impl_populate_dirty_list(twindow& caller,
-			const std::vector<twidget*>& call_stack);
+								  const std::vector<twidget*>& call_stack);
 
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
@@ -228,8 +238,8 @@ private:
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
 
-	tpoint calculate_best_size(const int indention_level
-			, const unsigned indention_step_size) const;
+	tpoint calculate_best_size(const int indention_level,
+							   const unsigned indention_step_size) const;
 
 	tpoint get_current_size() const;
 	tpoint get_folded_size() const;
@@ -241,10 +251,8 @@ private:
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
-	unsigned place(
-			  const unsigned indention_step_size
-			, tpoint origin
-			, unsigned width);
+	unsigned
+	place(const unsigned indention_step_size, tpoint origin, unsigned width);
 
 	/** See @ref twidget::set_visible_rectangle. */
 	virtual void set_visible_rectangle(const SDL_Rect& rectangle) OVERRIDE;
@@ -253,22 +261,20 @@ private:
 	virtual void impl_draw_children(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE;
 
 	// FIXME rename to icon
 	void signal_handler_left_button_click(const event::tevent event);
 
-	void signal_handler_label_left_button_click(
-			  const event::tevent event
-			, bool& handled
-			, bool& halt);
+	void signal_handler_label_left_button_click(const event::tevent event,
+												bool& handled,
+												bool& halt);
 
-	void init_grid(tgrid* grid
-			, const std::map<
-				std::string /* widget id */, string_map>& data);
+	void
+	init_grid(tgrid* grid,
+			  const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
 	 * Returns the control_type of the @ref ttree_view_node.
@@ -282,5 +288,3 @@ private:
 } // namespace gui2
 
 #endif
-
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2014 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,10 +27,22 @@ progressive_string::progressive_string(const std::string & data,int duration) :
 	input_(data)
 {
 		const std::vector<std::string> first_pass = utils::square_parenthetical_split(data);
-		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
-
+		int time_chunk = std::max<int>(duration, 1);
 		std::vector<std::string>::const_iterator tmp;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
+
+		if (duration > 1 && first_pass.size() > 0) {
+			// If duration specified, divide evenly the time for items with unspecified times
+			int total_specified_time = 0;
+			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
+				std::vector<std::string> second_pass = utils::split(*tmp,':');
+				if(second_pass.size() > 1) {
+					total_specified_time += atoi(second_pass[1].c_str());
+				}
+			}
+			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
+		}
+
+		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				data_.push_back(std::pair<std::string,int>(second_pass[0],atoi(second_pass[1].c_str())));
@@ -54,10 +66,22 @@ progressive_image::progressive_image(const std::string & data,int duration) :
 	input_(data)
 {
 		const std::vector<std::string> first_pass = utils::square_parenthetical_split(data);
-		const int time_chunk = std::max<int>(duration / (first_pass.size()?first_pass.size():1),1);
-
+		int time_chunk = std::max<int>(duration, 1);
 		std::vector<std::string>::const_iterator tmp;
-		for(tmp=first_pass.begin();tmp != first_pass.end() ; ++tmp) {
+
+		if (duration > 1 && first_pass.size() > 0) {
+			// If duration specified, divide evenly the time for images with unspecified times
+			int total_specified_time = 0;
+			for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
+				std::vector<std::string> second_pass = utils::split(*tmp,':');
+				if(second_pass.size() > 1) {
+					total_specified_time += atoi(second_pass[1].c_str());
+				}
+			}
+			time_chunk = std::max<int>((duration - total_specified_time) / first_pass.size(), 1);
+		}
+
+		for(tmp=first_pass.begin(); tmp != first_pass.end(); ++tmp) {
 			std::vector<std::string> second_pass = utils::split(*tmp,':');
 			if(second_pass.size() > 1) {
 				data_.push_back(std::pair<image::locator,int>(second_pass[0],atoi(second_pass[1].c_str())));
@@ -410,8 +434,8 @@ frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 
 frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, int duration) :
 	duration_(duration ? duration :builder.duration_),
-	image_(builder.image_,duration),
-	image_diagonal_(builder.image_diagonal_,duration),
+	image_(builder.image_,duration_),
+	image_diagonal_(builder.image_diagonal_,duration_),
 	image_mod_(builder.image_mod_),
 	halo_(builder.halo_,duration_),
 	halo_x_(builder.halo_x_,duration_),

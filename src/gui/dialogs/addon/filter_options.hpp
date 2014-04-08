@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,50 +22,58 @@
 
 #include <boost/array.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 class ttoggle_button;
 
 class taddon_filter_options : public tdialog
 {
 public:
+	taddon_filter_options();
 
-    taddon_filter_options();
-
-	std::vector<bool> displayed_types() const {
-		return std::vector<bool>(displayed_types_.begin(), displayed_types_.end());
+	std::vector<bool> displayed_types() const
+	{
+		return std::vector<bool>(displayed_types_.begin(),
+								 displayed_types_.end());
 	}
 
-	void set_displayed_types(const std::vector<bool>& types) {
+	void set_displayed_types(const std::vector<bool>& types)
+	{
 		read_types_vector(types);
 	}
 
-	ADDON_STATUS_FILTER displayed_status() const {
+	ADDON_STATUS_FILTER displayed_status() const
+	{
 		return displayed_status_;
 	}
 
-	void set_displayed_status(ADDON_STATUS_FILTER status) {
+	void set_displayed_status(ADDON_STATUS_FILTER status)
+	{
 		displayed_status_ = status;
 	}
 
-	ADDON_SORT sort() const {
+	ADDON_SORT sort() const
+	{
 		return sort_;
 	}
 
-	void set_sort(ADDON_SORT sort) {
+	void set_sort(ADDON_SORT sort)
+	{
 		sort_ = sort;
 	}
 
-	ADDON_SORT_DIRECTION direction() const {
+	ADDON_SORT_DIRECTION direction() const
+	{
 		return dir_;
 	}
 
-	void set_direction(ADDON_SORT_DIRECTION direction) {
+	void set_direction(ADDON_SORT_DIRECTION direction)
+	{
 		dir_ = direction;
 	}
 
 private:
-
 	ADDON_STATUS_FILTER displayed_status_;
 	boost::array<bool, ADDON_TYPES_COUNT> displayed_types_;
 	std::vector<tfield_bool*> displayed_types_fields_;
@@ -73,21 +81,26 @@ private:
 	ADDON_SORT sort_;
 	ADDON_SORT_DIRECTION dir_;
 
-	typedef std::pair<ttoggle_button*, ADDON_SORT>           sort_toggle;
+	typedef std::pair<ttoggle_button*, ADDON_SORT> sort_toggle;
 	typedef std::pair<ttoggle_button*, ADDON_SORT_DIRECTION> dir_toggle;
 
 	// Dialog display state variables.
 	std::vector<sort_toggle> sort_tgroup_;
 	std::vector<dir_toggle> dir_tgroup_;
 
-	void register_displayed_type_field(const std::string& field_id, ADDON_TYPE addon_type);
+	void register_displayed_type_field(const std::string& field_id,
+									   ADDON_TYPE addon_type);
 
 	void read_types_vector(const std::vector<bool>& v);
 
 	void toggle_all_displayed_types_button_callback(twindow& window);
 
-	void register_sort_toggle(twindow& window, const std::string& toggle_id, ADDON_SORT value);
-	void register_dir_toggle(twindow& window, const std::string& toggle_id, ADDON_SORT_DIRECTION value);
+	void register_sort_toggle(twindow& window,
+							  const std::string& toggle_id,
+							  ADDON_SORT value);
+	void register_dir_toggle(twindow& window,
+							 const std::string& toggle_id,
+							 ADDON_SORT_DIRECTION value);
 
 	void toggle_sort_callback(ttoggle_button* active);
 	void toggle_dir_callback(ttoggle_button* active);
@@ -108,4 +121,3 @@ private:
 } // end namespace gui2
 
 #endif
-

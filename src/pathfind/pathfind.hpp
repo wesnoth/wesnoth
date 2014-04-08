@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -283,7 +283,7 @@ struct full_cost_map
 	double get_average_cost_at(int x, int y) const;
 	virtual ~full_cost_map()
 	{
-	};
+	}
 
 	// This is a vector of pairs
 	// Every hex has an entry.

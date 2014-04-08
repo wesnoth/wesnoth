@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,9 +21,11 @@
 #include <cassert>
 #include <numeric>
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tplacer_horizontal_list::tplacer_horizontal_list(const unsigned maximum_rows)
 	: maximum_rows_(maximum_rows)
@@ -51,7 +53,7 @@ void tplacer_horizontal_list::add_item(const tpoint& size)
 	}
 
 	if(size.y > rows_[row_]) {
-		rows_[row_]= size.y;
+		rows_[row_] = size.y;
 	}
 
 	++row_;
@@ -66,7 +68,7 @@ void tplacer_horizontal_list::add_item(const tpoint& size)
 
 tpoint tplacer_horizontal_list::get_size() const
 {
-	const int width =  columns_.back().first + columns_.back().second;
+	const int width = columns_.back().first + columns_.back().second;
 	const int height = std::accumulate(rows_.begin(), rows_.end(), 0);
 	return tpoint(width, height);
 }
@@ -76,9 +78,9 @@ tpoint tplacer_horizontal_list::get_origin(const unsigned index) const
 	const unsigned row = index % maximum_rows_;
 	const unsigned column = index / maximum_rows_;
 
-	const int height = row == 0
-			? 0
-			: std::accumulate(rows_.begin(), rows_.begin() + row, 0);
+	const int height
+			= row == 0 ? 0
+					   : std::accumulate(rows_.begin(), rows_.begin() + row, 0);
 
 	return tpoint(columns_[column].first, height);
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Eugen Jiresch
+   Copyright (C) 2009 - 2014 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,7 @@ namespace savegame {
 class savegame_config
 {
 public:
-	virtual ~savegame_config() {};
+	virtual ~savegame_config() {}
 	virtual config to_config() const = 0;
 };
 

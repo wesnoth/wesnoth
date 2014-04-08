@@ -28,7 +28,7 @@ do
 	-o|--old)
 		OLD=OLD:; FILE=old.log; shift ;;
 	--) shift; break ;;
-	*) echo "Unhandled option '$1'! Fix the script!"; shift ;;
+	*) echo "Unhandled option '$1'!"; shift ;;
 	esac
 done
 

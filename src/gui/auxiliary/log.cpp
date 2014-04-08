@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,15 +21,15 @@
 
 #include "gui/auxiliary/log.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-lg::log_domain log_gui_draw    ("gui/draw");
-lg::log_domain log_gui_event   ("gui/event");
-lg::log_domain log_gui_general ("gui/general");
+lg::log_domain log_gui_draw("gui/draw");
+lg::log_domain log_gui_event("gui/event");
+lg::log_domain log_gui_general("gui/general");
 lg::log_domain log_gui_iterator("gui/iterator");
 lg::log_domain log_gui_lifetime("gui/lifetime");
-lg::log_domain log_gui_layout  ("gui/layout");
-lg::log_domain log_gui_parse   ("gui/parse");
+lg::log_domain log_gui_layout("gui/layout");
+lg::log_domain log_gui_parse("gui/parse");
 
 } // namespace gui2
-

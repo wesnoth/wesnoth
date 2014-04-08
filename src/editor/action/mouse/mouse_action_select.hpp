@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -61,7 +61,7 @@ public:
 
 	virtual void set_mouse_overlay(editor_display& disp);
 
-	bool has_context_menu() const { return true; };
+	bool has_context_menu() const { return true; }
 	bool supports_brushes() { return true; }
 
 };

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -50,6 +50,7 @@ public:
 	virtual void force_end_turn() {}
 	virtual void force_end_level(LEVEL_RESULT) {}
 	virtual void check_end_level() {}
+	virtual void on_not_observer() {}
 
 	std::vector<team> teams_start_;
 

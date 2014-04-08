@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -209,14 +209,41 @@ void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 
 void slider::mouse_down(const SDL_MouseButtonEvent& event)
 {
-	if (event.button != SDL_BUTTON_LEFT || !point_in_rect(event.x, event.y, location()))
+	bool prev_change = value_change_;
+
+	if (!point_in_rect(event.x, event.y, location()))
+		return;
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
+	if (event.button == SDL_BUTTON_WHEELUP || event.button == SDL_BUTTON_WHEELRIGHT) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ + increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+	if (event.button == SDL_BUTTON_WHEELDOWN || event.button == SDL_BUTTON_WHEELLEFT) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ - increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+#endif
+
+	if (event.button != SDL_BUTTON_LEFT)
 		return;
 
 	state_ = CLICKED;
 	if (point_in_rect(event.x, event.y, slider_area())) {
 		sound::play_UI_sound(game_config::sounds::button_press);
 	} else {
-		bool prev_change = value_change_;
 		value_change_ = false;
 		set_focus(true);
 		set_slider_position(event.x);
@@ -227,6 +254,38 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 		}
 	}
 }
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+void slider::mouse_wheel(const SDL_MouseWheelEvent& event) {
+	bool prev_change = value_change_;
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+
+	if (!point_in_rect(x, y, location()))
+		return;
+
+	if (event.y > 0 || event.x > 0) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ + increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+	if (event.y < 0 || event.x < 0) {
+		value_change_ = false;
+		set_focus(true);
+		set_value(value_ - increment_);
+		if(value_change_) {
+			sound::play_UI_sound(game_config::sounds::slider_adjust);
+		} else {
+			value_change_ = prev_change;
+		}
+	}
+}
+#endif
 
 bool slider::requires_event_focus(const SDL_Event* event) const
 {
@@ -274,19 +333,26 @@ void slider::handle_event(const SDL_Event& event)
 		if (!mouse_locked())
 			mouse_motion(event.motion);
 		break;
-	case SDL_KEYDOWN:
-		if(focus(&event)) {
-			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
-			const int c = key.sym;
-			if(c == SDLK_LEFT) {
-				sound::play_UI_sound(game_config::sounds::slider_adjust);
-				set_value(value_ - increment_);
-			} else if(c == SDLK_RIGHT) {
-				sound::play_UI_sound(game_config::sounds::slider_adjust);
-				set_value(value_ + increment_);
-			}
-		}
+		//TODO enable if you know how to fix the zoom slider bug
+//	case SDL_KEYDOWN:
+//		if(focus(&event)) {
+//			const SDL_keysym& key = reinterpret_cast<const SDL_KeyboardEvent&>(event).keysym;
+//			const int c = key.sym;
+//			if(c == SDLK_LEFT) {
+//				sound::play_UI_sound(game_config::sounds::slider_adjust);
+//				set_value(value_ - increment_);
+//			} else if(c == SDLK_RIGHT) {
+//				sound::play_UI_sound(game_config::sounds::slider_adjust);
+//				set_value(value_ + increment_);
+//			}
+//		}
+//		break;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+		if (!mouse_locked())
+			mouse_wheel(event.wheel);
 		break;
+#endif
 	default:
 		return;
 	}

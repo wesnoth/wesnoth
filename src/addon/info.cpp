@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2012 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -80,8 +80,10 @@ void addon_info::read(const config& cfg)
 	}
 
 	this->depends = utils::split(cfg["dependencies"].str());
+	this->feedback_url = cfg["feedback_url"].str();
 
 	this->updated = cfg["timestamp"].to_time_t();
+	this->created = cfg["original_timestamp"].to_time_t();
 }
 
 void addon_info::write(config& cfg) const
@@ -102,8 +104,10 @@ void addon_info::write(config& cfg) const
 	}
 
 	cfg["dependencies"] = utils::join(this->depends);
+	cfg["feedback_url"] = this->feedback_url;
 
 	cfg["timestamp"] = this->updated;
+	cfg["original_timestamp"] = this->created;
 }
 
 void addon_info::write_minimal(config& cfg) const
@@ -112,6 +116,7 @@ void addon_info::write_minimal(config& cfg) const
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
 	cfg["title"] = this->title;
+	cfg["dependencies"] = utils::join(this->depends);
 }
 
 std::string addon_info::display_title() const
@@ -151,6 +156,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^Campaign");
 	case ADDON_SP_SCENARIO:
 		return _("addon_type^Scenario");
+	case ADDON_SP_MP_CAMPAIGN:
+		return _("addon_type^SP/MP Campaign");
 	case ADDON_MP_ERA:
 		return _("addon_type^MP era");
 	case ADDON_MP_FACTION:

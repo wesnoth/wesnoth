@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2013 - 2014 Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -75,7 +75,6 @@ private:
 	gui::button shroud_game_;
 	gui::button observers_game_;
 	gui::button shuffle_sides_;
-	gui::button options_;
 	gui::button cancel_game_;
 	gui::button launch_game_;
 	gui::button password_button_;
@@ -86,7 +85,8 @@ private:
 	gui::label entry_points_label_;
 	gui::combo entry_points_combo_;
 
-	gui::scrollpane options_pane_;
+	gui::scrollpane options_pane_left_;
+	gui::scrollpane options_pane_right_;
 
 	std::vector<config const*> entry_points_;
 	bool show_entry_points_;

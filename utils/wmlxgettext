@@ -164,7 +164,7 @@ sub read_wml_file {
     next LINE if not $valid_wml;
     next LINE if defined $str; # skip lookup if inside multi-line
     next LINE if m/^ *\{.*\} *$/; # skip lookup if a statement line
-    next LINE if m/=/; # skip lookup if a field line
+    next LINE if m/^[^#]*=/; # skip lookup if a field line
     while (m,\[ *([a-z/+].*?) *\],g) {
       my $nodename = $1;
       #my $ind = "  " x (@nodeinfostack + ($nodename =~ m,/, ? 0 : 1));

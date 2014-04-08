@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of thie Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include "game_display.hpp"
 #include "multiplayer_connect.hpp"
 #include "multiplayer_ui.hpp"
+#include "hotkey/hotkey_manager.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -63,6 +64,7 @@ struct mp_connect_fixture {
 		video(),
 		dummy_argv(),
 		cmdline_opts(1, dummy_argv),
+		hotkey_manager(),
 		config_manager()
 	{
 		video.make_fake();
@@ -91,6 +93,7 @@ struct mp_connect_fixture {
 	CVideo video;
 	char** dummy_argv;
 	commandline_options cmdline_opts;
+	hotkey::manager hotkey_manager;
 	boost::scoped_ptr<game_config_manager> config_manager;
 };
 

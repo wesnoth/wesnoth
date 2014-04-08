@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -61,7 +61,7 @@ public:
   * @param min Minimum color shade
   * @param rep High-contrast reference color
   */
-  color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){};
+  color_range(Uint32 mid , Uint32 max = 0x00FFFFFF , Uint32 min = 0x00000000 , Uint32 rep = 0x00808080):mid_(mid),max_(max),min_(min),rep_(rep){}
 
   /**
    * Constructor, which expects four reference RGB colors.
@@ -73,19 +73,19 @@ public:
       min_(v.size() > 2 ? v[2] : 0x00000000),
       rep_(v.size() > 3 ? v[3] : mid_)
   {
-  };
+  }
 
   /** Default constructor. */
-  color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {};
+  color_range() : mid_(0x00808080), max_(0x00FFFFFF), min_(0x00000000), rep_(0x00808080) {}
 
   /** Average color shade. */
-  Uint32 mid() const{return(mid_);};
+  Uint32 mid() const{return(mid_);}
   /** Maximum color shade. */
-  Uint32 max() const{return(max_);};
+  Uint32 max() const{return(max_);}
   /** Minimum color shade. */
-  Uint32 min() const{return(min_);};
+  Uint32 min() const{return(min_);}
   /** High-contrast shade, intended for the minimap markers. */
-  Uint32 rep() const{return(rep_);};
+  Uint32 rep() const{return(rep_);}
 
   bool operator<(const color_range& b) const
   {

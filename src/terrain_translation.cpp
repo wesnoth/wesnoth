@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2006 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -93,8 +93,6 @@ namespace t_translation {
 	 * @param terrain               The terrain number to convert.
 	 * @param start_position        The starting position, if smaller than 0
 	 *                              it's ignored else it's written.
-	 * @param min_size              Padds the results with spaces if required,
-	 *                              until the result has a length of min_size.
 	 *
 	 * @return                      The converted string, if no starting
 	 *                              position given it's padded to 4 chars else

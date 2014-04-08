@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -353,9 +353,7 @@ std::string gamemap::write() const
 
 	// Let the low level converter do the conversion
 	std::ostringstream s;
-	s << "border_size=" << border_size_ << "\nusage="
-		<< (usage_ == IS_MAP ? "map" : "mask") << "\n\n"
-		<< t_translation::write_game_map(tiles_, starting_positions)
+	s << t_translation::write_game_map(tiles_, starting_positions)
 		<< "\n";
 	return s.str();
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,42 +25,120 @@
 #define GAME_EVENTS_HANDLERS_H_INCLUDED
 
 #include "../config.hpp"
+#include "../utils/smart_list.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 
 
 namespace game_events
 {
 	struct queued_event;
+	class event_handler;  // Defined a few lines down.
+
+
+	/// Shared pointer to handler objects.
+	typedef boost::shared_ptr<event_handler> handler_ptr;
+	/// Storage of event handlers.
+	typedef std::vector<handler_ptr> handler_vec;
 
 
 	class event_handler
 	{
 		public:
-			explicit event_handler(const config &cfg, bool is_menu_item = false);
+			event_handler(const config &cfg, bool is_menu_item,
+			              handler_vec::size_type index);
 
-			/// Allows the event_handlers object to record the index of *this.
-			void set_index(size_t index) { index_ = index; }
+			/// The index of *this should only be of interest when controlling iterations.
+			handler_vec::size_type index() const { return index_; }
 
 			bool matches_name(const std::string& name) const;
 
 			bool is_menu_item() const { return is_menu_item_; }
 
-			void handle_event(const queued_event& event_info);
+			/// Disables *this, removing it from the game.
+			void disable();
+			void handle_event(const queued_event& event_info, handler_ptr& handler_p);
 
 			const config &get_config() const { return cfg_; }
 
 		private:
 			bool first_time_only_;
 			bool is_menu_item_;
-			size_t index_;
+			handler_vec::size_type index_;
 			config cfg_;
 	};
-	/// Shared pointer to handler objects.
-	typedef boost::shared_ptr<event_handler> handler_ptr;
-	/// Storage of event handlers.
-	typedef std::vector<handler_ptr> handler_vec;
+
+
+	/// This is a wrapper for a list of weak pointers to handlers. It allows forward
+	/// iterations of the list, with each element returned as a shared pointer.
+	/// (Weak pointers that fail to lock are silently removed from the list.) These
+	/// iterations can be used recursively, even when the innermost iteration might
+	/// erase arbitrary elements from the list.
+	///
+	/// The interface is not the standard list interface because that would be
+	/// inconvenient. The functionality implemented is that required by Wesnoth.
+	class  handler_list
+	{
+		/// The weak pointers that are used internally.
+		typedef boost::weak_ptr<event_handler> internal_ptr;
+		/// The underlying list.
+		typedef utils::smart_list<internal_ptr> list_t;
+		
+	public: // types
+		/// Handler list iterators are rather limited. They can be constructed
+		/// from a reference iterator (not default constructed), incremented,
+		/// and dereferenced. Consecutive dereferences are not guaranteed to
+		/// return the same element (if the list mutates between them, the next
+		/// element might be returned). An increment guarantees that the next
+		/// dereference will differ from the previous (unless at the end of the
+		/// list). The end of the list is indicated by dereferencing to a null
+		/// pointer.
+		class iterator
+		{
+			/// The current element.
+			list_t::iterator iter_;
+
+		public:
+			/// Initialized constructor (to be called by handler_list).
+			explicit iterator(const list_t::iterator & base_iter) :
+				iter_(base_iter)
+			{}
+
+			/// Increment.
+			iterator & operator++()            { ++iter_; return *this; }
+			/// Dereference.
+			handler_ptr operator*();
+		};
+		friend class iterator;
+		typedef iterator const_iterator;
+
+	public: // functions
+		/// Default constructor.
+		/// Note: This explicit definition is required (by the more pedantic
+		///       compilers) in order to declare a default-constructed, static,
+		///       and const variable in t_event_handlers::get(), in handlers.cpp.
+		handler_list() : data_() {}
+
+		const_iterator begin() const           { return iterator(const_cast<list_t &>(data_).begin()); }
+		// The above const_cast is so the iterator can remove obsolete entries.
+		const_iterator end() const             { return iterator(const_cast<list_t &>(data_).end()); }
+
+		// push_front() is probably unneeded, but I'll leave the code here, just in case.
+		// (These lists must be maintained in index order, which means pushing to the back.)
+		void push_front(const handler_ptr & p) { data_.push_front(internal_ptr(p)); }
+		void push_back(const handler_ptr & p)  { data_.push_back(internal_ptr(p)); }
+
+		void clear()                           { data_.clear(); }
+
+	private:
+		/// No implementation of operator=() since smart_list does not support it.
+		handler_list & operator=(const handler_list &);
+
+		/// The actual list.
+		list_t data_;
+	};
 
 
 	/// The game event manager loads the scenario configuration object,
@@ -77,11 +155,12 @@ namespace game_events
 	public:
 		/// This class is similar to an input iterator through event handlers,
 		/// except each instance knows its own end (determined when constructed).
-		/// Each instance remains valid and dereferencable until it is past-the-
-		/// end, regardless of what is done to the underlying structure (even if
-		/// what it points to has been removed from the structure). Thus, basic
-		/// looping is along the lines of "for ( iteration X; X.valid(); ++X )".
-		///  
+		/// Subsequent dereferences are not guaranteed to return the same element,
+		/// so it is important to assign a dereference to a variable if you want
+		/// to use it more than once. On the other hand, a dereference will not
+		/// return a null pointer until the end of the iteration is reached (and
+		/// this is how to detect the end of the iteration).
+		///
 		/// For simplicity, this class is neither assignable nor equality
 		/// comparable nor default constructable, and there is no postincrement.
 		/// Typedefs are also skipped.
@@ -91,31 +170,35 @@ namespace game_events
 			/// Event-specific constructor.
 			explicit iteration(const std::string & event_name);
 
-
 			// Increment:
 			iteration & operator++();
-
 			// Dereference:
-			event_handler & operator*()  const { return *data_; }
-			const handler_ptr & operator->() const { return  data_; }
-			/// Test for being dereferenceable.
-			bool valid() const { return bool(data_); }
+			handler_ptr operator*();
 
 		private: // functions
-			/// Tests index_ for being skippable in this iteration.
-			bool is_name_mismatch() const;
+			/// Gets the index from a pointer, capped at end_.
+			handler_vec::size_type ptr_index(const handler_ptr & ptr) const
+			{ return !bool(ptr) ? end_ : std::min(ptr->index(), end_); }
 
 		private: // data
+			/// The fixed-name event handlers for this iteration.
+			const handler_list & main_list_;
+			/// The varying-name event handlers for this iteration.
+			const handler_list & var_list_;
 			/// The event name for this iteration.
 			const std::string event_name_;
 			/// The end of this iteration. We intentionally exclude handlers
 			/// added after *this is constructed.
 			const handler_vec::size_type end_;
 
-			/// The current index.
-			handler_vec::size_type index_;
-			/// The current element.
-			handler_ptr data_;
+			/// Set to true upon dereferencing.
+			bool current_is_known_;
+			/// true if the most recent dereference was taken from main_list_.
+			bool main_is_current_;
+			/// The current (or next) element from main_list_.
+			handler_list::iterator main_it_;
+			/// The current (or next) element from var_list_.
+			handler_list::iterator var_it_;
 		};
 
 	public:

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,29 +21,13 @@
 #include "gui/widgets/slider.hpp"
 #include "gui/widgets/text_box.hpp"
 #include "gui/widgets/toggle_button.hpp"
+#include "widgets/slider.hpp"
+#include "widgets/textbox.hpp"
 #include <boost/foreach.hpp>
 #include <boost/bind.hpp>
 
 static lg::log_domain log_mp_create_options("mp/create/options");
 #define DBG_MP LOG_STREAM(debug, log_mp_create_options)
-
-namespace
-{
-
-// helper function
-config& add_column(config& parent, const std::string& halign = "left",
-					  float grow_factor = 0)
-{
-	config& result = parent.add_child("column");
-	result["horizontal_alignment"] = halign;
-	result["grow_factor"] = grow_factor;
-	result["border"] = "all";
-	result["border_size"] = 5;
-
-	return result;
-}
-
-}
 
 namespace mp
 {
@@ -94,13 +78,48 @@ void manager::init_info(const config& cfg, const std::string& key)
 	}
 }
 
-manager::manager(const config& gamecfg, CVideo& video, const config& values)
-		: options_info_()
-		, values_(values)
-		, video_(video)
-		, era_()
-		, scenario_()
-		, modifications_()
+void manager::init_widgets()
+{
+	BOOST_FOREACH(option_display* od, widgets_ordered_) {
+		delete od;
+	}
+
+	widgets_.clear();
+	widgets_ordered_.clear();
+
+	BOOST_FOREACH (const config::any_child& comp, options_info_.all_children_range()) {
+		if (comp.cfg.all_children_count() == 0 || !is_active(comp.cfg["id"])) {
+			continue;
+		}
+
+		widgets_ordered_.push_back(new title_display(display_.video(), comp.cfg["name"]));
+		BOOST_FOREACH (const config::any_child& c, comp.cfg.all_children_range()) {
+			const std::string id = c.cfg["id"];
+			if (c.key == "slider") {
+				widgets_ordered_.push_back(new slider_display(display_.video(), c.cfg));
+			} else if (c.key == "entry") {
+				widgets_ordered_.push_back(new entry_display(display_.video(), c.cfg));
+			} else if (c.key == "checkbox") {
+				widgets_ordered_.push_back(new checkbox_display(display_.video(), c.cfg));
+			} else if (c.key == "combo") {
+				widgets_ordered_.push_back(new combo_display(display_, c.cfg));
+			}
+			widgets_ordered_.back()->set_value(get_stored_value(id));
+			widgets_[id] = widgets_ordered_.back();
+		}
+	}
+}
+
+manager::manager(const config &gamecfg, game_display &display, gui::scrollpane *pane, const config &values)
+	: options_info_()
+	, values_(values)
+	, display_(display)
+	, pane_(pane)
+	, era_()
+	, scenario_()
+	, modifications_()
+	, widgets_()
+	, widgets_ordered_()
 {
 	DBG_MP << "Initializing the options manager" << std::endl;
 	init_info(gamecfg, "modification");
@@ -117,6 +136,16 @@ manager::manager(const config& gamecfg, CVideo& video, const config& values)
 				value["value"] = get_stored_value(j.cfg["id"]);
 			}
 		}
+	}
+
+	init_widgets();
+}
+
+manager::~manager()
+{
+	BOOST_FOREACH(option_display* od, widgets_ordered_)
+	{
+		delete od;
 	}
 }
 
@@ -167,200 +196,40 @@ void manager::insert_element(elem_type type, const config& data, int pos)
 	}
 }
 
-void manager::show_dialog()
+void manager::layout_widgets(int startx, int starty)
 {
-	DBG_MP << "Building the options dialog" << std::endl;
-	// Constructing the dialog
-	config dialog_cfg;
-
-	dialog_cfg.add_child("resolution");
-	dialog_cfg["definition"] = "default";
-	dialog_cfg["automatic_placement"] = true;
-	dialog_cfg["vertical_placement"] = "center";
-	dialog_cfg["horizontal_placement"] = "center";
-	dialog_cfg.add_child("helptip")["id"] = "tooltip_large";
-	dialog_cfg.add_child("tooltip")["id"] = "tooltip_large";
-
-	config& grid = dialog_cfg.add_child("grid");
-
-	// Adding widgets for available options
-	add_widgets(options_info_.find_child("era", "id", era_), grid);
-	add_widgets(options_info_.find_child("multiplayer", "id", scenario_), grid);
-
-	for (unsigned i = 0; i<modifications_.size(); i++) {
-		add_widgets(
-			options_info_.find_child("modification", "id", modifications_[i]),
-			grid);
-	}
-
-	if (grid.ordered_begin() == grid.ordered_end()) {
-		// No widgets were actually added, we've got nothing to show
-		gui2::show_transient_message(video_, "", _(
-				"None of the selected modifications, era or scenario provide " \
-				"configuration options."));
-
-		return;
-	}
-
-	// Dialog buttons
-	config& row = grid.add_child("row");
-	row["grow_factor"] = 0;
-
-	config& column = add_column(row, "", 1);
-	column["horizontal_grow"] = true;
-
-	config& widget_grid = column.add_child("grid");
-	config& widget_row = widget_grid.add_child("row");
-	widget_row["grow_factor"] = 0;
-
-	config& defaults_column = add_column(widget_row, "left", 1);
-	config& ok_column = add_column(widget_row, "right");
-	config& cancel_column = add_column(widget_row);
-
-	config& defaults_button = defaults_column.add_child("button");
-	defaults_button["definition"] = "default";
-	defaults_button["label"] = _("Defaults");
-	defaults_button["id"] = "restore_defaults";
-
-	config& ok_button = ok_column.add_child("button");
-	ok_button["definition"] = "default";
-	ok_button["label"] = _("OK");
-	ok_button["id"] = "ok";
-
-	config& cancel_button = cancel_column.add_child("button");
-	cancel_button["definition"] = "default";
-	cancel_button["label"] = _("Cancel");
-	cancel_button["id"] = "cancel";
-
-	// Building the window
-	gui2::twindow_builder::tresolution resolution(dialog_cfg);
-	gui2::twindow* window = gui2::build(video_, &resolution);
-
-	__tmp_set_checkbox_defaults(window);
-
-	gui2::tbutton* button = gui2::find_widget<gui2::tbutton>
-									(window, "restore_defaults", false, true);
-
-	// Callbacks (well, one callback)
-	button->connect_click_handler(boost::bind(restore_defaults, this, window));
-
-	// Show window
-	DBG_MP << "Showing the dialog" << std::endl;
-	if (window->show() == gui2::twindow::CANCEL) {
-		DBG_MP << "User cancelled changes" << std::endl;
-		delete window;
-
-		return;
-	}
-
-	// Saving the results
-	DBG_MP << "User accepted changes, saving values" << std::endl;
-	extract_values("era", era_, window);
-	extract_values("multiplayer", scenario_, window);
-	for (unsigned i = 0; i<modifications_.size(); i++) {
-		extract_values("modification", modifications_[i], window);
-	}
-
-	delete window;
-}
-
-void manager::add_widgets(const config& data, config& grid) const
-{
-	if (!data.has_child("entry") &&
-		!data.has_child("slider") &&
-		!data.has_child("checkbox"))
+	int ypos = starty;
+	int border_size = 3;
+	BOOST_FOREACH(option_display* od, widgets_ordered_)
 	{
-		//Don't display the title if there're no options at all
-		return;
+		od->layout(startx, ypos, border_size, pane_);
+		ypos += border_size;
 	}
+}
 
+void manager::process_event()
+{
+	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
+		 i != widgets_.end(); ++i)
 	{
-		// The title for this section
-		config& row = grid.add_child("row");
-		row["grow_factor"] = 0;
-		config& column = add_column(row, "left", 1);
-		config& caption = column.add_child("label");
-		caption["definition"] = "title";
-		caption["label"] = data["name"];
-	}
-
-	// Adding the widgets
-	BOOST_FOREACH (const config::any_child& c, data.all_children_range()) {
-		if (!is_valid_option(c.key, c.cfg))
-		{
-			continue;
-		}
-
-		config& row = grid.add_child("row");
-		row["grow_factor"] = 0;
-		config& column = add_column(row, "left", 1);
-
-		if (c.key == "entry") {
-			add_entry(c.cfg, column);
-		} else if (c.key == "slider") {
-			add_slider(c.cfg, column);
-		} else if (c.key == "checkbox") {
-			add_checkbox(c.cfg, column);
-		}
+		i->second->process_event();
 	}
 }
 
-void manager::add_entry(const config& data, config& column) const
+void manager::hide_children(bool hide)
 {
-	config& grid = column.add_child("grid");
-	config& row = grid.add_child("row");
-	row["grow_factor"] = 0;
-
-	config& label_column = add_column(row);
-	config& entry_column = add_column(row);
-
-	config& label = label_column.add_child("label");
-	label["definition"] = "default";
-	label["label"] = data["name"];
-
-	config& entry = entry_column.add_child("text_box");
-	entry["id"] = data["id"];
-	entry["definition"] = "default";
-	entry["label"] = get_stored_value(data["id"]);
-	entry["tooltip"] = data["description"];
+	for (std::map<std::string, option_display*>::iterator i = widgets_.begin();
+		 i != widgets_.end(); ++i)
+	{
+		i->second->hide_children(hide);
+	}
 }
 
-void manager::add_slider(const config& data, config& column) const
+
+const config &manager::get_values()
 {
-	config& grid = column.add_child("grid");
-	config& row = grid.add_child("row");
-	row["grow_factor"] = 0;
-
-	config& label_column = add_column(row);
-	config& slider_column = add_column(row);
-
-	config& label = label_column.add_child("label");
-	label["definition"] = "default";
-	label["label"] = data["name"];
-
-	config& slider = slider_column.add_child("slider");
-	slider["id"] = data["id"];
-	slider["definition"] = "default";
-	slider["minimum_value"] = data["min"];
-	slider["maximum_value"] = data["max"];
-	slider["step_size"] = data["step"].to_int() ? data["step"].to_int() : 1;
-	slider["value"] = get_stored_value(data["id"]);
-	slider["tooltip"] = data["description"];
-}
-
-void manager::add_checkbox(const config& data, config& column) const
-{
-	config& grid = column.add_child("grid");
-	config& row = grid.add_child("row");
-	row["grow_factor"] = 0;
-
-	config& box_column = add_column(row);
-
-	config& checkbox = box_column.add_child("toggle_button");
-	checkbox["id"] = data["id"];
-	checkbox["definition"] = "default";
-	checkbox["label"] = data["name"];
-	checkbox["tooltip"] = data["description"];
+	update_values();
+	return values_;
 }
 
 config& manager::get_value_cfg(const std::string& id)
@@ -457,61 +326,7 @@ config::attribute_value manager::get_default_value(const std::string& id) const
 	return optinfo["default"];
 }
 
-int manager::get_slider_value(const std::string& id, gui2::twindow* win) const
-{
-	gui2::tslider* widget =
-						gui2::find_widget<gui2::tslider>(win, id, false, true);
-
-	return widget->get_value();
-}
-
-bool manager::get_checkbox_value
-					(const std::string& id, gui2::twindow* win) const
-{
-	gui2::ttoggle_button* widget =
-				gui2::find_widget<gui2::ttoggle_button>(win, id, false, true);
-
-	return widget->get_value();
-}
-
-std::string manager::get_entry_value(const std::string& id,
-									 gui2::twindow* window) const
-{
-	gui2::ttext_box* widget =
-				gui2::find_widget<gui2::ttext_box>(window, id, false, true);
-
-	return widget->text();
-}
-
-void manager::set_slider_value(int val, const std::string& id,
-							   gui2::twindow* win) const
-{
-	gui2::tslider* widget =
-						gui2::find_widget<gui2::tslider>(win, id, false, true);
-
-	widget->set_value(val);
-}
-
-void manager::set_checkbox_value(bool val, const std::string& id,
-								 gui2::twindow* win) const
-{
-	gui2::ttoggle_button* widget =
-				gui2::find_widget<gui2::ttoggle_button>(win, id, false, true);
-
-	widget->set_value(val);
-}
-
-void manager::set_entry_value(const std::string& val, const std::string& id,
-							  gui2::twindow* win) const
-{
-	gui2::ttext_box* widget =
-				gui2::find_widget<gui2::ttext_box>(win, id, false, true);
-
-	widget->set_value(val);
-}
-
-void manager::extract_values(const std::string& key, const std::string& id,
-						   gui2::twindow* window)
+void manager::extract_values(const std::string& key, const std::string& id)
 {
 	BOOST_FOREACH (const config::any_child& c,
 				   options_info_.find_child(key, "id", id).all_children_range())
@@ -521,41 +336,42 @@ void manager::extract_values(const std::string& key, const std::string& id,
 		}
 
 		config& out = get_value_cfg(c.cfg["id"].str());
+		out["value"] = widgets_[c.cfg["id"]]->get_value();
+	}
+}
 
-		if (c.key == "entry") {
-			out["value"] = get_entry_value(c.cfg["id"], window);
-		} else if (c.key == "slider") {
-			out["value"] = get_slider_value(c.cfg["id"], window);
-		} else if (c.key == "checkbox") {
-			out["value"] = get_checkbox_value(c.cfg["id"], window);
-		}
+void manager::update_values()
+{
+	extract_values("era", era_);
+	extract_values("scenario", scenario_);
+	BOOST_FOREACH(const std::string& str, modifications_) {
+		extract_values("modification", str);
 	}
 }
 
 bool manager::is_valid_option(const std::string& key, const config& option)
 {
-	return (key == "slider" || key == "entry" || key == "checkbox") &&
+	return (key == "slider" || key == "entry" || key == "checkbox" || key == "combo") &&
 		   (!option["id"].empty());
 }
 
-void manager::restore_defaults(manager* m, gui2::twindow* w)
+void manager::restore_defaults(manager* m)
 {
 	const config& era = m->options_info_.find_child("era", "id", m->era_);
-	restore_defaults_for_component(era, m, w);
+	restore_defaults_for_component(era, m);
 
 	const config& scen = m->options_info_.find_child("multiplayer", "id",
 													 m->scenario_);
-	restore_defaults_for_component(scen, m, w);
+	restore_defaults_for_component(scen, m);
 
 	BOOST_FOREACH (const std::string& id, m->modifications_) {
 		const config& mod = m->options_info_.find_child("modification", "id",
 														id);
-		restore_defaults_for_component(mod, m, w);
+		restore_defaults_for_component(mod, m);
 	}
 }
 
-void manager::restore_defaults_for_component(const config& c, manager* m,
-											 gui2::twindow* w)
+void manager::restore_defaults_for_component(const config& c, manager* m)
 {
 	BOOST_FOREACH (const config::any_child& i, c.all_children_range()) {
 		if (!is_valid_option(i.key, i.cfg)) {
@@ -564,36 +380,225 @@ void manager::restore_defaults_for_component(const config& c, manager* m,
 
 		const std::string id = i.cfg["id"].str();
 
-		if (i.key == "entry") {
-			m->set_entry_value(m->get_default_value(id).str(), id, w);
-		} else if (i.key == "checkbox") {
-			m->set_checkbox_value(m->get_default_value(id).to_bool(), id, w);
-		} else if (i.key == "slider") {
-			m->set_slider_value(m->get_default_value(id).to_int(), id, w);
+		m->widgets_[id]->set_value(m->get_default_value(id));
+	}
+}
+
+bool manager::is_active(const std::string &id) const
+{
+	return (era_ == id) || (scenario_ == id) ||
+			(std::find(modifications_.begin(), modifications_.end(), id) != modifications_.end());
+}
+
+entry_display::entry_display(CVideo &video, const config &cfg) :
+	entry_(new gui::textbox(video, 150, cfg["default"])),
+	label_(new gui::label(video, cfg["name"]))
+{
+	entry_->set_help_string(cfg["description"]);
+}
+
+entry_display::~entry_display()
+{
+	delete entry_;
+	delete label_;
+}
+
+void entry_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	pane->add_widget(label_, xpos, ypos);
+	pane->add_widget(entry_, xpos + label_->width() + border_size, ypos);
+	ypos += std::max(label_->height(), entry_->height()) + border_size;
+}
+
+void entry_display::set_value(const config::attribute_value &val)
+{
+	entry_->set_text(val);
+}
+
+config::attribute_value entry_display::get_value() const
+{
+	config::attribute_value res;
+	res = entry_->text();
+	return res;
+}
+
+void entry_display::hide_children(bool hide)
+{
+	label_->hide(hide);
+	entry_->hide(hide);
+}
+
+slider_display::slider_display(CVideo &video, const config &cfg) :
+	slider_(new gui::slider(video)),
+	label_(new gui::label(video, cfg["name"], font::SIZE_SMALL)),
+	last_value_(cfg["default"].to_int()),
+	label_text_(cfg["name"])
+{
+	slider_->set_min(cfg["min"].to_int());
+	slider_->set_max(cfg["max"].to_int());
+	slider_->set_increment(cfg["step"].to_int());
+	slider_->set_width(150);
+	slider_->set_value(cfg["default"].to_int());
+
+	slider_->set_help_string(cfg["description"]);
+
+	update_label();
+}
+
+slider_display::~slider_display()
+{
+	delete slider_;
+	delete label_;
+}
+
+void slider_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	pane->add_widget(label_, xpos, ypos);
+	ypos += label_->height() + border_size;
+	pane->add_widget(slider_, xpos, ypos);
+	ypos += slider_->height() + border_size;
+}
+
+void slider_display::set_value(const config::attribute_value &val)
+{
+	slider_->set_value(val.to_int());
+}
+
+config::attribute_value slider_display::get_value() const
+{
+	config::attribute_value res;
+	res = slider_->value();
+	return res;
+}
+
+void slider_display::process_event()
+{
+	if (slider_->value() != last_value_) {
+		last_value_ = slider_->value();
+		update_label();
+	}
+}
+
+void slider_display::hide_children(bool hide)
+{
+	label_->hide(hide);
+	slider_->hide(hide);
+}
+
+void slider_display::update_label()
+{
+	std::stringstream ss;
+	ss << label_text_ << ' ' << last_value_;
+	label_->set_text(ss.str());
+}
+
+checkbox_display::checkbox_display(CVideo &video, const config &cfg) :
+	checkbox_(new gui::button(video, cfg["name"], gui::button::TYPE_CHECK))
+{
+	checkbox_->set_check(cfg["default"].to_bool());
+	checkbox_->set_help_string(cfg["description"]);
+}
+
+checkbox_display::~checkbox_display()
+{
+	delete checkbox_;
+}
+
+void checkbox_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	pane->add_widget(checkbox_, xpos, ypos);
+	ypos += checkbox_->height() + border_size;
+}
+
+void checkbox_display::set_value(const config::attribute_value &val)
+{
+	checkbox_->set_check(val.to_bool());
+}
+
+config::attribute_value checkbox_display::get_value() const
+{
+	config::attribute_value res;
+	res = checkbox_->checked();
+	return res;
+}
+
+void checkbox_display::hide_children(bool hide)
+{
+	checkbox_->hide(hide);
+}
+
+title_display::title_display(CVideo &video, const std::string &label) :
+	title_(new gui::label(video, "`~" + label, font::SIZE_PLUS, font::LOBBY_COLOR))
+{}
+
+title_display::~title_display()
+{
+	delete title_;
+}
+
+void title_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	ypos += 4*border_size;
+	pane->add_widget(title_, xpos, ypos);
+	ypos += title_->height() + 2*border_size;
+}
+
+void title_display::hide_children(bool hide)
+{
+	title_->hide(hide);
+}
+
+combo_display::combo_display(game_display &display, const config &cfg) :
+	label_(new gui::label(display.video(), cfg["name"])),
+	combo_(new gui::combo(display, std::vector<std::string>())),
+	values_()
+{
+	std::vector<std::string> items;
+	BOOST_FOREACH(const config& item, cfg.child_range("item")) {
+		items.push_back(item["name"]);
+		values_.push_back(item["value"]);
+	}
+
+	combo_->set_items(items);
+	combo_->set_help_string(cfg["description"]);
+	set_value(cfg["default"]);
+}
+
+combo_display::~combo_display()
+{
+	delete label_;
+	delete combo_;
+}
+
+void combo_display::layout(int &xpos, int &ypos, int border_size, gui::scrollpane *pane)
+{
+	pane->add_widget(label_, xpos, ypos);
+	pane->add_widget(combo_, xpos + label_->width() + border_size, ypos);
+	ypos += std::max(label_->height(), combo_->height()) + border_size;
+}
+
+void combo_display::set_value(const config::attribute_value &val)
+{
+	const std::string value = val;
+	for (size_t i = 0; i<values_.size(); i++) {
+		if (value == values_[i]) {
+			combo_->set_selected(i);
+			break;
 		}
 	}
 }
 
-void manager::__tmp_set_checkbox_defaults(gui2::twindow* window) const
+config::attribute_value combo_display::get_value() const
 {
-	BOOST_FOREACH (const config::any_child& i,
-				   options_info_.all_children_range())
-	{
-		BOOST_FOREACH (const config& j, i.cfg.child_range("checkbox"))
-		{
-			if (!is_valid_option("checkbox", j)) {
-				continue;
-			}
+	config::attribute_value res;
+	res = values_[combo_->selected()];
+	return res;
+}
 
-			gui2::ttoggle_button* button;
-			button = gui2::find_widget<gui2::ttoggle_button>
-										(window, j["id"].str(), false, false);
-
-			if (button) {
-				button->set_value(get_stored_value(j["id"]).to_bool());
-			}
-		}
-	}
+void combo_display::hide_children(bool hide)
+{
+	label_->hide(hide);
+	combo_->hide(hide);
 }
 
 }	// namespace options

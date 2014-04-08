@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,8 +39,6 @@ void copy_to_clipboard(const std::string& text, const bool mouse);
  */
 std::string copy_from_clipboard(const bool mouse);
 
-#if defined(_X11) && !defined(__APPLE__)
 void handle_system_event(const SDL_Event& ev);
-#endif
 
 #endif

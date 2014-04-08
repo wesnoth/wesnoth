@@ -4,18 +4,13 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local ca_stationed_guardian = {}
 
 function ca_stationed_guardian:evaluation(ai, cfg)
-    local unit
-    if cfg.filter then
-        unit = wesnoth.get_units({
-            side = wesnoth.current.side,
-            { "and", cfg.filter },
-            formula = '$this_unit.moves > 0' }
-        )[1]
-    else
-        unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
-    end
+    local filter = cfg.filter or { id = cfg.id }
+    local unit = wesnoth.get_units({
+        side = wesnoth.current.side,
+        { "and", filter },
+        formula = '$this_unit.moves > 0' }
+    )[1]
 
-    -- Check if unit exists as sticky BCAs are not always removed successfully
     if unit then return cfg.ca_score end
     return 0
 end
@@ -24,16 +19,12 @@ function ca_stationed_guardian:execution(ai, cfg)
     -- (s_x,s_y): coordinates where unit is stationed; tries to move here if there is nobody to attack
     -- (g_x,g_y): location that the unit guards
 
-    local unit
-    if cfg.filter then
-        unit = wesnoth.get_units({
-            side = wesnoth.current.side,
-            { "and", cfg.filter },
-            formula = '$this_unit.moves > 0' }
-        )[1]
-    else
-        unit = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
-    end
+    local filter = cfg.filter or { id = cfg.id }
+    local unit = wesnoth.get_units({
+        side = wesnoth.current.side,
+        { "and", filter },
+        formula = '$this_unit.moves > 0' }
+    )[1]
 
     -- find if there are enemies within 'distance'
     local enemies = wesnoth.get_units {
@@ -44,7 +35,7 @@ function ca_stationed_guardian:execution(ai, cfg)
     -- if no enemies are within 'distance': keep unit from doing anything and exit
     if not enemies[1] then
         --print("No enemies close -> sleeping:",unit.id)
-        ai.stopunit_moves(unit)
+        AH.checked_stopunit_moves(ai, unit)
         return
     end
 
@@ -92,9 +83,9 @@ function ca_stationed_guardian:execution(ai, cfg)
         if (best_defense ~= -9e99) then
             --print("Attack at:",attack_loc[1],attack_loc[2],best_defense)
             AH.movefull_stopunit(ai, unit, attack_loc)
-            -- There should be an ai.check_attack_action() here in case something weird is
-            -- done in a 'moveto' event.
-            ai.attack(unit, target)
+            if (not unit) or (not unit.valid) then return end
+            if (not target) or (not target.valid) then return end
+            AH.checked_attack(ai, unit, target)
         else  -- otherwise move toward that enemy
             --print("Cannot reach target, moving toward it")
             local reach = wesnoth.find_reach(unit)
@@ -125,9 +116,9 @@ function ca_stationed_guardian:execution(ai, cfg)
         AH.movefull_stopunit(ai, unit, nh)
     end
 
-    -- Get unit again, just in case something was done to it in a 'moveto' or 'attack' event
-    local unit = wesnoth.get_units{ id = cfg.id }[1]
-    if unit then ai.stopunit_moves(unit) end
+    if (not unit) or (not unit.valid) then return end
+
+    AH.checked_stopunit_moves(ai, unit)
     -- If there are attacks left and unit ended up next to an enemy, we'll leave this to RCA AI
 end
 

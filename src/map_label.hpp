@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,7 +52,7 @@ public:
 							   const bool visible_in_shroud = false,
 							   const bool immutable = false);
 
-	bool enabled() const { return enabled_; };
+	bool enabled() const { return enabled_; }
 	void enable(bool is_enabled);
 
 	void add_label(const map_location &, terrain_label *);
@@ -74,6 +74,12 @@ public:
 
 private:
 	void clear_map(label_map &, bool);
+	/// For our private use, a wrapper for get_label() that can return a pointer
+	/// to a non-const terrain_label.
+	terrain_label* get_label_private(const map_location& loc, const std::string& team_name)
+	{ return const_cast<terrain_label*>(get_label(loc, team_name)); }
+	// Note: this is not an overload of get_label() so that we do not block
+	//       outsiders from calling get_label for a non-const map_labels object.
 
 	const display& disp_;
 	const team* team_;
@@ -132,7 +138,8 @@ private:
 	const terrain_label& operator=(const terrain_label&);
 	void clear();
 	void draw();
-	bool visible() const;
+	bool hidden() const;
+	bool viewable() const;
 	std::string cfg_color() const;
 
 	int handle_;

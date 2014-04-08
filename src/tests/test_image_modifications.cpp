@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Karol Kozub <karol.alt@gmail.com>
+   Copyright (C) 2011 - 2014 by Karol Kozub <karol.alt@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -898,7 +898,11 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_no_args)
 	BOOST_CHECK_EQUAL(mod->get_color().r, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().g, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+#else
 	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+#endif
 
 	delete mod;
 }
@@ -920,7 +924,11 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_1_arg)
 	BOOST_CHECK_EQUAL(mod->get_color().r, 1);
 	BOOST_CHECK_EQUAL(mod->get_color().g, 0);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+#else
 	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+#endif
 
 	delete mod;
 }
@@ -942,7 +950,11 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_2_args)
 	BOOST_CHECK_EQUAL(mod->get_color().r, 1);
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 0);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+#else
 	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+#endif
 
 	delete mod;
 }
@@ -964,7 +976,11 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_3_args)
 	BOOST_CHECK_EQUAL(mod->get_color().r, 1);
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 3);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	BOOST_CHECK_EQUAL(mod->get_color().a, 255);
+#else
 	BOOST_CHECK_EQUAL(mod->get_color().unused, 255);
+#endif
 
 	delete mod;
 }
@@ -986,7 +1002,11 @@ BOOST_AUTO_TEST_CASE(test_bg_modification_decoding_4_args)
 	BOOST_CHECK_EQUAL(mod->get_color().r, 1);
 	BOOST_CHECK_EQUAL(mod->get_color().g, 2);
 	BOOST_CHECK_EQUAL(mod->get_color().b, 3);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	BOOST_CHECK_EQUAL(mod->get_color().a, 4);
+#else
 	BOOST_CHECK_EQUAL(mod->get_color().unused, 4);
+#endif
 
 	delete mod;
 }

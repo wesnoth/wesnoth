@@ -2,17 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
-"PO-Revision-Date: 2012-03-31 20:14+0100\n"
+"POT-Creation-Date: 2014-02-22 14:39+0100\n"
+"PO-Revision-Date: 2014-02-24 21:01+0100\n"
 "Last-Translator: Stanislav Hoferek <shoferek@gmail.com>\n"
 "Language-Team: none\n"
-"Language: \n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural= (n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Poedit-Language: Slovak\n"
-"X-Poedit-Country: SLOVAKIA\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:39
 msgid ""
@@ -268,7 +267,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:407
 msgid "Click on the quintain to attack it"
-msgstr "Klikni na panáka a zaútočíš naňho"
+msgstr "Klikni na panáka ľavým tlačidlom a záutoč na neho"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:443
@@ -797,7 +796,7 @@ msgstr ""
 #. [set_menu_item]: id=skip_item
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1134
 msgid "End Scenario"
-msgstr ""
+msgstr "Ukončiť scénu"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1147
@@ -805,6 +804,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Chceš pokračovať v tréningu? Môžeš ukončiť mapu kedykoľvek, stlačením "
+"tlačidla v pravom dolnom rohu."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1149
@@ -833,7 +834,7 @@ msgstr ""
 "Po oznámení víťazstva sa mapa sfarbí do siva na znamenie, že je vaše ťaženie "
 "ukončené. Stále však budete mať možnosť prezerať si pozície a stav svojich "
 "jednotiek i tej časti nepriateľských vojsk, ktorým sa podarilo prežiť. Keď "
-"sa rozhodnete pokračovať, stlačte na tlačidlo <b>Koniec mapy</b> a môžete "
+"sa rozhodnete pokračovať, stlačte na tlačidlo <b>Ukončiť scénu</b> a môžete "
 "pokračovať v kampani do ďalších dobrodružstiev."
 
 #. [message]: speaker=narrator
@@ -847,7 +848,7 @@ msgid ""
 "Don’t forget, you can press <b>u</b> to undo most things; useful for "
 "correcting mistakes."
 msgstr ""
-"V mnohých prípadoch môžeš stlačiť <b>u</b> a vrátiť sa; je to užitočné na "
+"V mnohých prípadoch môžeš stlačiť <b>U</b> a vrátiť sa; je to užitočné na "
 "naprávanie chýb."
 
 #. [then]
@@ -1401,26 +1402,18 @@ msgstr "Napadni orka lukostrelcom"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "To review the capabilities of any unit—including an enemy—hover the mouse "
-#| "over it, and you will see a unit summary on the right of the screen"
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Pre prezretie schopností akýchkoľvek jednotiek - vrátane nepriateľských - "
 "prejdi nad ne myšou a na pravej strane uvidíš výpis vlastností zvolenej "
 "jednotky"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-#, fuzzy
-#| msgid "<big>Unit Summaries</big>"
 msgid "Unit Summaries"
-msgstr "<big>Prehľad Jednotiek</big>"
+msgstr "Prehľad Jednotiek"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
@@ -1462,25 +1455,16 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid "<big>Long-distance Movement</big>"
 msgid "Long-distance Movement"
-msgstr "<big>Diaľkové Presúvanie</big>"
+msgstr "Diaľkové Presúvanie"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can order a unit to move for multiple turns by selecting the unit and "
-#| "clicking on the destination. A number will indicate how many turns it "
-#| "will take to get there."
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Jednotke môžeš zadať pohyb na viac kôl; označ jednotku a potom klikni na "
 "cieľ. Uvidíš číslo, napríklad (2), čo znamená, že bude trvať dve kolá prísť "
 "na stanovené miesto."
@@ -1668,28 +1652,19 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "After this dialog, hold the mouse over the landscape image below the "
-#| "minimap on the right. This brings up a description of the time of day, "
-#| "showing who has the advantage."
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "Po odklepnutí tohoto dialógu prejdi myšou ponad obraz vpravo pod mapou a "
 "uvidíš popis dennej doby. Ukáže aj to, ktoré jednotky majú práve výhodu "
 "alebo nevýhodu."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
-#, fuzzy
-#| msgid "<big>Time of Day</big>"
 msgid "Time of Day"
-msgstr "<big>Aktuálny čas</big>"
+msgstr "Aktuálny čas"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
@@ -1718,21 +1693,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid "<big>Tracking Unused Units</big>"
 msgid "Tracking Unused Units"
-msgstr "<big>Sledovanie Nepoužívaných Jednotiek</big>"
+msgstr "Sledovanie Nepoužívaných Jednotiek"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can ensure you use all your troops by pressing <b>n</b> to step from "
-#| "one unit to the next. If you press <b>space</b>, you can mark the "
-#| "currently selected unit as having finished its turn, which stops you "
-#| "moving it by accident later on. When <b>n</b> no longer selects a new "
-#| "unit, it’s safe to end your turn."
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1740,56 +1705,38 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Môžeš si overiť, že sa v tomto kole už pohli všetky tvoje jednotky. Stlač "
-"<b>n</b> pre nasledujúcu jednotku; MEDZERNÍKOM označíš, že svoj ťah už "
+"<b>N</b> pre nasledujúcu jednotku; MEDZERNÍKOM označíš, že svoj ťah už "
 "ukončila.\n"
-"Keď <b>n</b> už neoznačí žiadnu ďalšiu jednotku, môžeš ukončiť ťah. "
+"Keď <b>N</b> už neoznačí žiadnu ďalšiu jednotku, môžeš ukončiť ťah. "
 "Ukončovať ťahy môžeš aj skratkou <b>CTRL+MEDZERNÍK</b>"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "In this scenario, you only need to defeat the orc leader to win. (Victory "
-#| "conditions for a scenario are given under <b>Scenario Objectives</b> in "
-#| "the <b>Main Menu</b>)."
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "V tejto mape potrebuješ na výhru poraziť len vodcu orkov. (Podmienky "
 "víťazstva pre konkrétny scenár sa nachádzajú aj v hlavnom menu)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
-#, fuzzy
-#| msgid "<big>Victory Conditions</big>"
 msgid "Victory Conditions"
-msgstr "<big>Podmienky Víťazstva</big>"
+msgstr "Podmienky Víťazstva"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid "<big>Recruit the Right Unit Types</big>"
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Verbovanie Správnych Typov Jednotiek</big>"
+msgstr "Verbovanie Správnych Typov Jednotiek"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "Remember to recruit troops useful for the situation. Archers are "
-#| "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Pamätaj, že postupne potrebuješ verbovať ďalšie jednotky do konkrétnej "
 "situácie. Lukostrelci sú zvlášť účinní proti pešiakom, vlčím jazdcom, a ich "
 "veliteľovi."
@@ -1887,25 +1834,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid "<big>Tracking Enemy Movement</big>"
 msgid "Tracking Enemy Movement"
-msgstr "<big>Sledovanie Pohybu Nepriateľa</big>"
+msgstr "Sledovanie Pohybu Nepriateľa"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
-#, fuzzy
-#| msgid ""
-#| "\n"
-#| "You can see where an enemy can reach by moving the mouse over them. You "
-#| "can see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
-#| "command from the <b>Actions</b> menu."
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Ak prejdeš myšou ponad súperovu jednotku, vidíš, pokiaľ môže dôjsť. Všetky "
 "možné súperove ťahy uvidíš naraz, keď si z menu <b>Akcie</b> vyberieš "
 "<b>Ukáž súperove ťahy</b>."

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/widgets/text.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Class for text input history.
@@ -39,10 +40,7 @@ public:
 	 */
 	static ttext_history get_history(const std::string& id, const bool enabled);
 
-	ttext_history() :
-		history_(0),
-		pos_(0),
-		enabled_(false)
+	ttext_history() : history_(0), pos_(0), enabled_(false)
 	{
 	}
 
@@ -89,15 +87,20 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_enabled(bool enabled = true) { enabled_ = enabled; }
-	bool get_enabled() const { return enabled_; }
+	void set_enabled(bool enabled = true)
+	{
+		enabled_ = enabled;
+	}
+	bool get_enabled() const
+	{
+		return enabled_;
+	}
 
 private:
-	ttext_history(std::vector<std::string>* history, const bool enabled) :
-		history_(history),
-		pos_(history->size()),
-		enabled_(enabled)
-	{}
+	ttext_history(std::vector<std::string>* history, const bool enabled)
+		: history_(history), pos_(history->size()), enabled_(enabled)
+	{
+	}
 
 	/** The items in the history. */
 	std::vector<std::string>* history_;
@@ -116,15 +119,19 @@ public:
 	ttext_box();
 
 	/** Saves the text in the widget to the history. */
-	void save_to_history() { history_.push(get_value()); }
+	void save_to_history()
+	{
+		history_.push(get_value());
+	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_history(const std::string& id)
-		{ history_ = ttext_history::get_history(id, true); }
+	{
+		history_ = ttext_history::get_history(id, true);
+	}
 
 protected:
-
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
 
 	/** See @ref twidget::place. */
@@ -137,11 +144,15 @@ protected:
 
 	/** Inherited from ttext_. */
 	void goto_end_of_line(const bool select = false)
-		{ goto_end_of_data(select); }
+	{
+		goto_end_of_data(select);
+	}
 
 	/** Inherited from ttext_. */
 	void goto_start_of_line(const bool select = false)
-		{ goto_start_of_data(select); }
+	{
+		goto_start_of_data(select);
+	}
 
 	/** Inherited from ttext_. */
 	void delete_char(const bool before_cursor);
@@ -150,8 +161,8 @@ protected:
 	void delete_selection();
 
 	void handle_mouse_selection(tpoint mouse, const bool start_selection);
-private:
 
+private:
 	/** The history text for this widget. */
 	ttext_history history_;
 
@@ -191,7 +202,9 @@ private:
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/) {}
+	void handle_key_up_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	{
+	}
 
 	/**
 	 * Inherited from ttext_.
@@ -201,7 +214,9 @@ private:
 	 * Shift                      Ignored.
 	 * Alt                        Ignored.
 	 */
-	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/) {}
+	void handle_key_down_arrow(SDLMod /*modifier*/, bool& /*handled*/)
+	{
+	}
 
 	/**
 	 * Goes one item up in the history.
@@ -218,8 +233,10 @@ private:
 	bool history_down();
 
 	/** Inherited from ttext_. */
-	void handle_key_default(
-		bool& handled, SDLKey key, SDLMod modifier, Uint16 unicode);
+	void handle_key_default(bool& handled,
+							SDLKey key,
+							SDLMod modifier,
+							Uint16 unicode);
 
 	/** Inherited from ttext_. */
 	void handle_key_clear_line(SDLMod modifier, bool& handled);
@@ -232,20 +249,20 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_mouse_motion(
-			const event::tevent event, bool& handled, const tpoint& coordinate);
+	void signal_handler_mouse_motion(const event::tevent event,
+									 bool& handled,
+									 const tpoint& coordinate);
 
-	void signal_handler_left_button_down(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_down(const event::tevent event,
+										 bool& handled);
 
-	void signal_handler_left_button_up(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_up(const event::tevent event,
+									   bool& handled);
 
-	void signal_handler_left_button_double_click(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_double_click(const event::tevent event,
+												 bool& handled);
 };
 
-} //namespace gui2
+} // namespace gui2
 
 #endif
-

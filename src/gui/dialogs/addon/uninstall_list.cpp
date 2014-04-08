@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,9 +17,9 @@
 #include "gui/auxiliary/find_widget.tpp"
 #include "gui/widgets/grid.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
+#include "gui/widgets/list.hpp"
 #else
-	#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/toggle_button.hpp"
@@ -28,7 +28,8 @@
 
 #include <algorithm>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -61,7 +62,8 @@ void taddon_uninstall_list::pre_show(CVideo& /*video*/, twindow& window)
 
 	this->selections_.clear();
 
-	FOREACH(const AUTO& entry, titles_map_) {
+	FOREACH(const AUTO & entry, titles_map_)
+	{
 		const std::string& id = entry.first;
 		const std::string& title = entry.second;
 
@@ -90,17 +92,18 @@ void taddon_uninstall_list::post_show(twindow& window)
 
 	for(unsigned k = 0; k < rows; ++k) {
 		tgrid const* g = list.get_row_grid(k);
-		const ttoggle_button& checkbox = find_widget<const ttoggle_button>(g, "checkbox", false);
+		const ttoggle_button& checkbox
+				= find_widget<const ttoggle_button>(g, "checkbox", false);
 		this->selections_[this->ids_[k]] = checkbox.get_value();
 	}
-
 }
 
 std::vector<std::string> taddon_uninstall_list::selected_addons() const
 {
 	std::vector<std::string> retv;
 
-	FOREACH(const AUTO& entry, selections_) {
+	FOREACH(const AUTO & entry, selections_)
+	{
 		if(entry.second) {
 			retv.push_back(entry.first);
 		}

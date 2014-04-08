@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2009 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "chat_events.hpp"
 #include "gui/dialogs/lobby/lobby_info.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tbutton;
 class tlabel;
@@ -29,14 +30,18 @@ class ttext_box;
 class tlobby_player_info : public tdialog
 {
 public:
-	tlobby_player_info(events::chat_handler& chat, user_info& info, const lobby_info& li);
+	tlobby_player_info(events::chat_handler& chat,
+					   user_info& info,
+					   const lobby_info& li);
 
 	~tlobby_player_info();
 
-	bool result_open_whisper() const { return result_open_whisper_; }
+	bool result_open_whisper() const
+	{
+		return result_open_whisper_;
+	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -85,6 +90,6 @@ private:
 	const lobby_info& lobby_info_;
 };
 
-} //end namespace gui2
+} // end namespace gui2
 
 #endif

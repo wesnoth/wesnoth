@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013
+   Copyright (C) 2007 - 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,6 @@
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/campaign_difficulty.hpp"
-#include "gui/dialogs/mp_create_game_choose_mods.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
@@ -70,11 +69,13 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	filter_num_players_label_(disp.video(), _("Number of players: any"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_generator_label_(disp.video(), _("Random map options:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	era_label_(disp.video(), _("Era:"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	no_era_label_(disp.video(), _("No eras available\nfor this game."),
+		font::SIZE_SMALL, font::LOBBY_COLOR),
 	mod_label_(disp.video(), _("Modifications:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	map_size_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	num_players_label_(disp.video(), "", font::SIZE_SMALL, font::LOBBY_COLOR),
 	level_type_label_(disp.video(), "Game type:", font::SIZE_SMALL, font::LOBBY_COLOR),
-	launch_game_(disp.video(), _("OK")),
+	launch_game_(disp.video(), _("Next")),
 	cancel_game_(disp.video(), _("Cancel")),
 	regenerate_map_(disp.video(), _("Regenerate")),
 	generator_settings_(disp.video(), _("Settings...")),
@@ -83,13 +84,13 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	level_type_combo_(disp, std::vector<std::string>()),
 	filter_num_players_slider_(disp.video()),
 	description_(disp.video(), 100, "", false),
-	filter_name_(disp.video(), 100, "", true),
+	filter_name_(disp.video(), 100, "", true, 256, font::SIZE_SMALL),
 	image_restorer_(NULL),
 	image_rect_(null_rect),
 	available_level_types_(),
 	engine_(disp, state)
 {
-	filter_num_players_slider_.set_min(0);
+	filter_num_players_slider_.set_min(1);
 	filter_num_players_slider_.set_max(9);
 	filter_num_players_slider_.set_increment(1);
 
@@ -99,10 +100,11 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 
 	typedef std::pair<level::TYPE, std::string> level_type_info;
 	std::vector<level_type_info> all_level_types;
-	all_level_types.push_back(std::make_pair(level::SCENARIO, "Scenarios"));
-	all_level_types.push_back(std::make_pair(level::CAMPAIGN, "Campaigns"));
-	all_level_types.push_back(std::make_pair(level::USER_MAP, "User Maps"));
-	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, "Random Maps"));
+	all_level_types.push_back(std::make_pair(level::SCENARIO, _("Scenarios")));
+	all_level_types.push_back(std::make_pair(level::CAMPAIGN, _("Campaigns")));
+	all_level_types.push_back(std::make_pair(level::USER_MAP, _("User Maps")));
+	all_level_types.push_back(std::make_pair(level::USER_SCENARIO, _("User Scenarios")));
+	all_level_types.push_back(std::make_pair(level::RANDOM_MAP, _("Random Maps")));
 
 	if (game_config::debug) {
 		all_level_types.push_back(std::make_pair(level::SP_CAMPAIGN,
@@ -112,7 +114,7 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	std::vector<std::string> combo_level_names;
 
 	BOOST_FOREACH(level_type_info type_info, all_level_types) {
-		if (!engine_.get_levels_by_type(type_info.first).empty()) {
+		if (!engine_.get_levels_by_type_unfiltered(type_info.first).empty()) {
 			available_level_types_.push_back(type_info.first);
 			combo_level_names.push_back(type_info.second);
 		}
@@ -180,11 +182,10 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	mod_selection_ = mods_menu_.selection();
 
 	if (mod_selection_ == -1) {
-		mod_label_.set_text(_("Modifications: none found"));
+		mod_label_.set_text(_("Modifications:\nNone found."));
+	} else if (engine_.dependency_manager().is_modification_active(mod_selection_)) {
+		select_mod_.set_label(_("Deactivate"));
 	}
-
-	utils::string_map i18n_symbols;
-	i18n_symbols["login"] = preferences::login();
 
 	gamelist_updated();
 }
@@ -258,7 +259,7 @@ void create::process_event()
 	}
 
 	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();
-	if (select_mod_.pressed()) {
+	if (select_mod_.pressed() || mods_menu_.double_clicked()) {
 		int index = mods_menu_.selection();
 		engine_.set_current_mod_index(index);
 		engine_.toggle_current_mod();
@@ -288,11 +289,16 @@ void create::process_event()
 		synchronize_selections();
 	}
 
+	if (filter_name_.text() != engine_.level_name_filter()) {
+		engine_.apply_level_filter(filter_name_.text());
+		init_level_type_changed(0);
+	}
+
 	bool level_changed = level_selection_ != levels_menu_.selection();
 	level_selection_ = levels_menu_.selection();
 
-	if (level_changed) {
-		engine_.set_current_level(levels_menu_.selection());
+	if (level_changed && level_selection_ >= 0) {
+		init_level_changed(level_selection_);
 
 		synchronize_selections();
 	}
@@ -332,6 +338,7 @@ void create::process_event()
 		switch (engine_.current_level_type()) {
 		case level::SCENARIO:
 		case level::USER_MAP:
+		case level::USER_SCENARIO:
 		case level::RANDOM_MAP: {
 
 			scenario* current_scenario =
@@ -365,6 +372,19 @@ void create::process_event()
 		generator_settings_.enable(engine_.generator_assigned());
 		regenerate_map_.enable(engine_.generator_assigned());
 	}
+
+	if (filter_num_players_slider_.value() != engine_.player_num_filter()) {
+		const int val = filter_num_players_slider_.value();
+		engine_.apply_level_filter(val);
+		std::stringstream ss;
+		if (val == 1) {
+			ss << _("Number of players: any");
+		} else {
+			ss << _("Number of players: ") << val;
+		}
+		filter_num_players_label_.set_text(ss.str());
+		init_level_type_changed(0);
+	}
 }
 
 void create::init_level_type_changed(size_t index)
@@ -378,12 +398,27 @@ void create::init_level_type_changed(size_t index)
 	const std::vector<std::string>& menu_item_names =
 		engine_.levels_menu_item_names();
 
-	engine_.set_current_level((index < menu_item_names.size()) ? index : 0);
+	init_level_changed((index < menu_item_names.size()) ? index : 0);
 
 	levels_menu_.set_items(menu_item_names);
 	levels_menu_.move_selection(index);
 
 	level_selection_ = -1;
+}
+
+void create::init_level_changed(size_t index)
+{
+	engine_.set_current_level(index);
+
+	// N.B. the order of hide() calls here is important
+	// to avoid redrawing glitches.
+	if (engine_.current_level().allow_era_choice()) {
+		no_era_label_.hide(true);
+		eras_menu_.hide(false);
+	} else {
+		eras_menu_.hide(true);
+		no_era_label_.hide(false);
+	}
 }
 
 void create::synchronize_selections()
@@ -399,14 +434,30 @@ void create::synchronize_selections()
 		if (engine_.current_level().id() !=
 			engine_.dependency_manager().get_scenario()) {
 
+			// Match scenario and scenario type
+			level::TYPE level_type_at_index;
 			int index = engine_.find_level_by_id(
 				engine_.dependency_manager().get_scenario());
+			size_t type_index;
 
 			if (index == -1) {
 				return;
 			}
+			level_type_at_index = engine_.find_level_type_by_id(
+				engine_.dependency_manager().get_scenario());
+			engine_.set_current_level_type(level_type_at_index);
 
+			init_level_changed(index);
+			levels_menu_.set_items(engine_.levels_menu_item_names());
 			levels_menu_.move_selection(index);
+			type_index = 0;
+			BOOST_FOREACH(level::TYPE type, available_level_types_) {
+				if (level_type_at_index == type) {
+					level_type_combo_.set_selected(type_index);
+					break;
+				}
+				type_index++;
+			}
 		}
 
 		process_event();
@@ -462,12 +513,10 @@ std::string create::select_campaign_difficulty()
 	const std::vector<std::string> difficulties =
 		utils::split(engine_.current_level().data()["difficulties"]);
 
-	if(difficulties.empty() == false) {
+	if(!difficulties.empty()) {
 		int difficulty = 0;
 		if(difficulty_options.size() != difficulties.size()) {
-			difficulty_options.resize(difficulties.size());
-			std::copy(difficulties.begin(), difficulties.end(),
-				difficulty_options.begin());
+			difficulty_options = difficulties;
 		}
 
 		gui2::tcampaign_difficulty dlg(difficulty_options);
@@ -490,7 +539,8 @@ void create::hide_children(bool hide)
 
 	ui::hide_children(hide);
 
-	eras_menu_.hide(hide),
+	eras_menu_.hide(hide || !engine_.current_level().allow_era_choice());
+	no_era_label_.hide(hide || engine_.current_level().allow_era_choice());
 	levels_menu_.hide(hide);
 	mods_menu_.hide(hide);
 
@@ -553,7 +603,7 @@ void create::layout_children(const SDL_Rect& rect)
 	const int eras_menu_height = (ca.h / 2 - era_label_.height() -
 		2 * border_size - cancel_game_.height());
 	const int mods_menu_height = (ca.h / 2 - mod_label_.height() -
-		2 * border_size - cancel_game_.height());
+		3 * border_size - cancel_game_.height() - select_mod_.height());
 
 	// Dialog title
 	ypos += title().height() + border_size;
@@ -637,6 +687,7 @@ void create::layout_children(const SDL_Rect& rect)
 	xpos += menu_width + column_border_size;
 	era_label_.set_location(xpos, ypos);
 	ypos += era_label_.height() + border_size;
+	no_era_label_.set_location(xpos, ypos);
 	eras_menu_.set_max_width(menu_width);
 	eras_menu_.set_max_height(eras_menu_height);
 	eras_menu_.set_location(xpos, ypos);
@@ -652,8 +703,8 @@ void create::layout_children(const SDL_Rect& rect)
 	mods_menu_.set_max_width(menu_width);
 	mods_menu_.set_max_height(mods_menu_height);
 	mods_menu_.set_location(xpos, ypos);
-	ypos += mods_menu_.height() + border_size;
 	if (mods_menu_.number_of_items() > 0) {
+		ypos += mods_menu_.height() + border_size;
 		select_mod_.set_location(xpos, ypos);
 	}
 

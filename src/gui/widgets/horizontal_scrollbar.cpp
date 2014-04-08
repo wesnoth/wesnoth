@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,16 +23,16 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(horizontal_scrollbar)
 
 unsigned thorizontal_scrollbar::minimum_positioner_length() const
 {
-	boost::intrusive_ptr
-		<const thorizontal_scrollbar_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const thorizontal_scrollbar_definition::tresolution>(config());
+	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+											   tresolution>(config());
 
 	assert(conf);
 	return conf->minimum_positioner_length;
@@ -40,10 +40,9 @@ unsigned thorizontal_scrollbar::minimum_positioner_length() const
 
 unsigned thorizontal_scrollbar::maximum_positioner_length() const
 {
-	boost::intrusive_ptr
-		<const thorizontal_scrollbar_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const thorizontal_scrollbar_definition::tresolution>(config());
+	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+											   tresolution>(config());
 
 	assert(conf);
 	return conf->maximum_positioner_length;
@@ -51,10 +50,9 @@ unsigned thorizontal_scrollbar::maximum_positioner_length() const
 
 unsigned thorizontal_scrollbar::offset_before() const
 {
-	boost::intrusive_ptr
-		<const thorizontal_scrollbar_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const thorizontal_scrollbar_definition::tresolution>(config());
+	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+											   tresolution>(config());
 
 	assert(conf);
 	return conf->left_offset;
@@ -62,10 +60,9 @@ unsigned thorizontal_scrollbar::offset_before() const
 
 unsigned thorizontal_scrollbar::offset_after() const
 {
-	boost::intrusive_ptr
-		<const thorizontal_scrollbar_definition::tresolution> conf =
-		boost::dynamic_pointer_cast
-		<const thorizontal_scrollbar_definition::tresolution>(config());
+	boost::intrusive_ptr<const thorizontal_scrollbar_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const thorizontal_scrollbar_definition::
+											   tresolution>(config());
 	assert(conf);
 
 	return conf->right_offset;
@@ -75,25 +72,24 @@ bool thorizontal_scrollbar::on_positioner(const tpoint& coordinate) const
 {
 	// Note we assume the positioner is over the entire height of the widget.
 	return coordinate.x >= static_cast<int>(get_positioner_offset())
-		&& coordinate.x < static_cast<int>(get_positioner_offset()
-				+ get_positioner_length())
-		&& coordinate.y > 0
-		&& coordinate.y < static_cast<int>(get_height());
+		   && coordinate.x < static_cast<int>(get_positioner_offset()
+											  + get_positioner_length())
+		   && coordinate.y > 0 && coordinate.y < static_cast<int>(get_height());
 }
 
 int thorizontal_scrollbar::on_bar(const tpoint& coordinate) const
 {
 	// Not on the widget, leave.
 	if(static_cast<size_t>(coordinate.x) > get_width()
-			|| static_cast<size_t>(coordinate.y) > get_height()) {
+	   || static_cast<size_t>(coordinate.y) > get_height()) {
 		return 0;
 	}
 
 	// we also assume the bar is over the entire width of the widget.
 	if(static_cast<size_t>(coordinate.x) < get_positioner_offset()) {
 		return -1;
-	} else if(static_cast<size_t>(coordinate.x) >
-			get_positioner_offset() + get_positioner_length()) {
+	} else if(static_cast<size_t>(coordinate.x) > get_positioner_offset()
+												  + get_positioner_length()) {
 
 		return 1;
 	} else {
@@ -108,4 +104,3 @@ const std::string& thorizontal_scrollbar::get_control_type() const
 }
 
 } // namespace gui2
-

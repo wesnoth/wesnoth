@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,19 +24,21 @@
 #include "gui/widgets/scrollbar_panel.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
 	: tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, grid(NULL)
 {
-	const config &definition = cfg.child("definition");
+	const config& definition = cfg.child("definition");
 
 	VALIDATE(definition, _("No list defined."));
 	grid = new tbuilder_grid(definition);
@@ -45,22 +47,20 @@ tbuilder_scrollbar_panel::tbuilder_scrollbar_panel(const config& cfg)
 
 twidget* tbuilder_scrollbar_panel::build() const
 {
-	tscrollbar_panel *widget = new tscrollbar_panel();
+	tscrollbar_panel* widget = new tscrollbar_panel();
 
 	init_control(widget);
 
 	widget->set_vertical_scrollbar_mode(vertical_scrollbar_mode);
 	widget->set_horizontal_scrollbar_mode(horizontal_scrollbar_mode);
 
-	DBG_GUI_G << "Window builder: placed scrollbar_panel '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed scrollbar_panel '" << id
+			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<
-			const tscrollbar_panel_definition::tresolution> conf =
-				boost::dynamic_pointer_cast
-					<const tscrollbar_panel_definition::tresolution>
-						(widget->config());
+	boost::intrusive_ptr<const tscrollbar_panel_definition::tresolution> conf
+			= boost::dynamic_pointer_cast<const tscrollbar_panel_definition::
+												  tresolution>(
+					widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -80,16 +80,16 @@ twidget* tbuilder_scrollbar_panel::build() const
 		for(unsigned y = 0; y < cols; ++y) {
 
 			if(x == 0) {
-				content_grid->set_column_grow_factor(y
-						, grid->col_grow_factor[y]);
+				content_grid->set_column_grow_factor(y,
+													 grid->col_grow_factor[y]);
 			}
 
 			twidget* widget = grid->widgets[x * cols + y]->build();
-			content_grid->set_child(widget
-					, x
-					, y
-					, grid->flags[x * cols + y]
-					, grid->border_size[x * cols + y]);
+			content_grid->set_child(widget,
+									x,
+									y,
+									grid->flags[x * cols + y],
+									grid->border_size[x * cols + y]);
 		}
 	}
 
@@ -128,4 +128,3 @@ twidget* tbuilder_scrollbar_panel::build() const
  * @end{tag}{name="scrollbar_panel"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

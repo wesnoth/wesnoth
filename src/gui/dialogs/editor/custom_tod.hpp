@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,13 +24,15 @@
 
 #include <vector>
 
-namespace editor {
+namespace editor
+{
 
 class editor_display;
 
 } // namespace editor
 
-namespace gui2 {
+namespace gui2
+{
 
 class tlabel;
 class timage;
@@ -39,12 +41,12 @@ class ttext_box;
 class tcustom_tod : public tdialog
 {
 public:
-	tcustom_tod(editor::editor_display* display
-			, const std::vector<time_of_day>& tods);
+	tcustom_tod(editor::editor_display* display,
+				const std::vector<time_of_day>& tods);
 
-	static bool execute(editor::editor_display* display
-			, const std::vector<time_of_day>& tods
-			, CVideo& video)
+	static bool execute(editor::editor_display* display,
+						const std::vector<time_of_day>& tods,
+						CVideo& video)
 	{
 		return tcustom_tod(display, tods).show(video);
 	}
@@ -60,8 +62,11 @@ private:
 	void do_new_tod(twindow& window);
 	void do_delete_tod(twindow& window);
 	const std::vector<time_of_day>& do_save_schedule() const;
-	
-	void select_file(const std::string& filename, const std::string& dir, const std::string& vector_attrib, twindow& window);
+
+	void select_file(const std::string& filename,
+					 const std::string& dir,
+					 const std::string& vector_attrib,
+					 twindow& window);
 
 	void update_tod_display(twindow& window);
 
@@ -85,7 +90,7 @@ private:
 
 	/** Current map generator index */
 	int current_tod_;
-	
+
 	/** Text boxes for name and id*/
 	ttext_box* current_tod_name_;
 	ttext_box* current_tod_id_;
@@ -93,7 +98,7 @@ private:
 	/** Images for the current tod*/
 	timage* current_tod_image_;
 	timage* current_tod_mask_;
-	
+
 	/** Labels for the current tod*/
 	tlabel* current_tod_sound_;
 	tlabel* current_tod_number_;

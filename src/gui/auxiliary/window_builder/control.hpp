@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,22 +17,22 @@
 
 #include "gui/auxiliary/window_builder.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tcontrol;
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_control
-	: public tbuilder_widget
+struct tbuilder_control : public tbuilder_widget
 {
 public:
-
 	tbuilder_control(const config& cfg);
 
 	using tbuilder_widget::build;
 
-	twidget* build(const treplacements& replacements) const;
+	virtual twidget* build(const treplacements& replacements) const OVERRIDE;
 
 	/** @deprecated The control can initialize itself. */
 	void init_control(tcontrol* control) const;
@@ -50,4 +50,3 @@ public:
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -32,20 +32,17 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(scroll_label)
 
-tscroll_label::tscroll_label()
-	: tscrollbar_container(COUNT)
-	, state_(ENABLED)
+tscroll_label::tscroll_label() : tscrollbar_container(COUNT), state_(ENABLED)
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			  boost::bind(
-				    &tscroll_label::signal_handler_left_button_down
-				  , this
-				  , _2)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(
+					&tscroll_label::signal_handler_left_button_down, this, _2),
+			event::tdispatcher::back_pre_child);
 }
 
 void tscroll_label::set_label(const t_string& label)
@@ -54,8 +51,8 @@ void tscroll_label::set_label(const t_string& label)
 	tcontrol::set_label(label);
 
 	if(content_grid()) {
-		tlabel* widget =
-				find_widget<tlabel>(content_grid(), "_label", false, true);
+		tlabel* widget
+				= find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_label(label);
 
 		content_resize_request();
@@ -68,8 +65,8 @@ void tscroll_label::set_use_markup(bool use_markup)
 	tcontrol::set_use_markup(use_markup);
 
 	if(content_grid()) {
-		tlabel* widget =
-				find_widget<tlabel>(content_grid(), "_label", false, true);
+		tlabel* widget
+				= find_widget<tlabel>(content_grid(), "_label", false, true);
 		widget->set_use_markup(use_markup);
 	}
 }
@@ -92,8 +89,7 @@ unsigned tscroll_label::get_state() const
 void tscroll_label::finalize_subclass()
 {
 	assert(content_grid());
-	tlabel* lbl = dynamic_cast<tlabel*>(
-			content_grid()->find("_label", false));
+	tlabel* lbl = dynamic_cast<tlabel*>(content_grid()->find("_label", false));
 
 	assert(lbl);
 	lbl->set_label(label());
@@ -120,4 +116,3 @@ void tscroll_label::signal_handler_left_button_down(const event::tevent event)
 }
 
 } // namespace gui2
-

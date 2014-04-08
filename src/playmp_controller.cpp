@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -39,18 +39,22 @@ unsigned int playmp_controller::replay_last_turn_ = 0;
 playmp_controller::playmp_controller(const config& level,
 		game_state& state_of_game, const int ticks,
 		const int num_turns, const config& game_config, CVideo& video,
-		bool skip_replay, bool is_host) :
+		bool skip_replay, bool blindfold_replay_, bool is_host) :
 	playsingle_controller(level, state_of_game, ticks, num_turns,
-		game_config, video, skip_replay),
+		game_config, video, skip_replay || blindfold_replay_), //this || means that if blindfold is enabled, quick replays will be on.
 	turn_data_(NULL),
 	beep_warning_time_(0),
-	network_processing_stopped_(false)
+	network_processing_stopped_(false),
+	blindfold_(*resources::screen,blindfold_replay_)
 {
 	is_host_ = is_host;
 	// We stop quick replay if play isn't yet past turn 1
 	if ( replay_last_turn_ <= 1)
 	{
 		skip_replay_ = false;
+	} 
+	if (blindfold_replay_) { 
+		LOG_NG << "Putting on the blindfold now " << std::endl;
 	}
 }
 
@@ -106,6 +110,19 @@ void playmp_controller::before_human_turn(bool save){
 	init_turn_data();
 }
 
+void playmp_controller::on_not_observer() {
+	remove_blindfold();
+}
+
+void playmp_controller::remove_blindfold() {
+	if (resources::screen->is_blindfolded()) {
+		blindfold_.unblind();
+		LOG_NG << "Taking off the blindfold now " << std::endl;
+		resources::screen->redraw_everything();
+	}
+}
+
+
 bool playmp_controller::counting_down() {
 	return beep_warning_time_ > 0;
 }
@@ -158,6 +175,9 @@ namespace {
 
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
+
+	remove_blindfold();
+
 	command_disabled_resetter reset_commands;
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
@@ -229,19 +249,10 @@ void playmp_controller::play_human_turn(){
 					// because remote players only notice network disconnection
 					// Current solution end remaining turns automatically
 					current_team().set_countdown_time(10);
-				} else {
-					const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
-					int secs = gamestate_.mp_settings().mp_countdown_turn_bonus;
-					secs += action_increment  * current_team().action_bonus_count();
-					current_team().set_action_bonus_count(0);
-					secs = (secs > maxtime) ? maxtime : secs;
-					current_team().set_countdown_time(1000 * secs);
 				}
 				turn_data_->send_data();
 
-				if (!rand_rng::has_new_seed_callback()) {
-					throw end_turn_exception();
-				}
+				throw end_turn_exception();
 			}
 		}
 
@@ -413,8 +424,6 @@ void playmp_controller::finish_side_turn(){
 	//halt and cancel the countdown timer
 	reset_countdown();
 
-	// avoid callback getting called in the wrong turn
-	rand_rng::clear_new_seed_callback();
 }
 
 void playmp_controller::play_network_turn(){
@@ -442,8 +451,10 @@ void playmp_controller::play_network_turn(){
 			}
 
 			if(have_data) {
-				if (skip_replay_ && replay_last_turn_ <= turn()){
+				if (replay_last_turn_ <= turn()){
+					if (skip_replay_) {
 						skip_replay_ = false;
+					}
 				}
 				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
 				if (result == turn_info::PROCESS_RESTART_TURN) {
@@ -452,6 +463,19 @@ void playmp_controller::play_network_turn(){
 				} else if (result == turn_info::PROCESS_END_TURN) {
 					break;
 				}
+			}
+			/*
+				we might have data left in replay that we recieved during prestart events. (or maybe other events.)
+			*/
+			else if(!recorder.at_end())
+			{
+				bool was_skipping = recorder.is_skipping();
+				recorder.set_skip(skip_replay_);
+				if(do_replay(current_side()))
+				{
+					break;
+				}
+				recorder.set_skip(was_skipping);
 			}
 		}
 
@@ -535,7 +559,7 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case hotkey::HOTKEY_STOP_NETWORK:
 			res = is_observer();
 			break;
-		case hotkey::HOTKEY_STOP_REPLAY:
+		case hotkey::HOTKEY_REPLAY_STOP:
 			if (is_observer()){
 				network_processing_stopped_ = true;
 				LOG_NG << "network processing stopped";
@@ -545,4 +569,11 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			return playsingle_controller::can_execute_command(cmd, index);
 	}
 	return res;
+}
+
+void playmp_controller::do_idle_notification()
+{
+	resources::screen->add_chat_message(time(NULL), "", 0, 
+		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
+		events::chat_handler::MESSAGE_PUBLIC, false);	
 }

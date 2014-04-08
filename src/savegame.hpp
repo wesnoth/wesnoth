@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by Jörg Hinrichs, refactored from various
+   Copyright (C) 2003 - 2014 by Jörg Hinrichs, refactored from various
    places formerly created by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -20,6 +20,7 @@
 #include "gamestatus.hpp"
 #include "tod_manager.hpp"
 #include "show_dialog.hpp"
+#include "serialization/compression.hpp"
 
 class config_writer;
 class game_display;
@@ -64,7 +65,7 @@ std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::
 void read_save_file(const std::string& name, config& cfg, std::string* error_log);
 
 /** Returns true if there is already a savegame with that name. */
-bool save_game_exists(const std::string& name, bool compress_saves);
+bool save_game_exists(const std::string& name, compression::format compressed);
 
 /** Delete all autosaves of a certain scenario. */
 void clean_saves(const std::string& label);
@@ -141,7 +142,7 @@ class savegame
 protected:
 	/** The only constructor of savegame. The title parameter is only necessary if you
 		intend to do interactive saves. */
-	savegame(game_state& gamestate, const bool compress_saves, const std::string& title = "Save");
+	savegame(game_state& gamestate, const compression::format compress_saves, const std::string& title = "Save");
 
 public:
 	virtual ~savegame() {}
@@ -223,7 +224,7 @@ private:
 
 	bool show_confirmation_; /** Determines if a confirmation of successful saving the game is shown. */
 
-	bool compress_saves_; /** Determines, if compression is used for the savegame file */
+	compression::format compress_saves_; /** Determines, what compression format is used for the savegame file */
 };
 
 /** Class for "normal" midgame saves. The additional members are needed for creating the snapshot
@@ -232,7 +233,7 @@ class ingame_savegame : public savegame
 {
 public:
 	ingame_savegame(game_state& gamestate,
-		game_display& gui, const config& snapshot_cfg, const bool compress_saves);
+		game_display& gui, const config& snapshot_cfg, const compression::format compress_saves);
 
 private:
 	/** Create a filename for automatic saves */
@@ -251,7 +252,7 @@ protected:
 class replay_savegame : public savegame
 {
 public:
-	replay_savegame(game_state& gamestate, const bool compress_saves);
+	replay_savegame(game_state& gamestate, const compression::format compress_saves);
 
 private:
 	/** Create a filename for automatic saves */
@@ -265,7 +266,7 @@ class autosave_savegame : public ingame_savegame
 {
 public:
 	autosave_savegame(game_state &gamestate,
-					 game_display& gui, const config& snapshot_cfg, const bool compress_saves);
+					 game_display& gui, const config& snapshot_cfg, const compression::format compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
 private:
@@ -287,7 +288,7 @@ private:
 class scenariostart_savegame : public savegame
 {
 public:
-	scenariostart_savegame(game_state& gamestate, const bool compress_saves);
+	scenariostart_savegame(game_state& gamestate, const compression::format compress_saves);
 
 private:
 	void write_game(config_writer &out);

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,13 @@
 #include "generic_event.hpp"
 
 typedef struct { size_t x1,y1,x2,y2; } _rect;
+
+struct theme_info
+{
+	std::string id;
+	t_string name;
+	t_string description;
+};
 
 class theme
 {
@@ -279,7 +286,7 @@ public:
 		{ return palette_.location(screen); }
 
     static void set_known_themes(const config* cfg);
-    static std::vector<std::string> get_known_themes();
+    static std::vector<theme_info> get_known_themes();
 
 	const tborder& border() const { return border_; }
 

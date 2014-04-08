@@ -3,16 +3,16 @@
 #  Gerfried Fuchs <rhonda@deb.at>, 2008 - 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8\n"
+"Project-Id-Version: Battle for Wesnoth 1.12\n"
 "POT-Creation-Date: 2013-11-16 09:28+0100\n"
 "PO-Revision-Date: 2013-03-10 12:45+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
-"Language: \n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 # type: TH
 #. type: TH
@@ -152,7 +152,6 @@ msgstr ""
 #. type: TP
 #: ../../doc/man/wesnoth.6:54
 #, fuzzy, no-wrap
-#| msgid "B<--campaign-difficulty E<lt>difficultyE<gt>>"
 msgid "B<--campaign-difficulty [E<lt>difficultyE<gt>]>"
 msgstr "B<--campaign-difficulty E<lt>EinstufungE<gt>>"
 
@@ -508,24 +507,12 @@ msgstr "Zeigt an, wo sich das Verzeichnis mit den Spieldateien befindet."
 #. type: TP
 #: ../../doc/man/wesnoth.6:159
 #, fuzzy, no-wrap
-#| msgid "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>file/folderE<gt> E<lt>target directoryE<gt>>"
 msgid "B<-p, --preprocess E<lt>source file/folderE<gt> E<lt>target directoryE<gt>>"
 msgstr "B<--preprocess, -p[=E<lt>define1E<gt>,E<lt>define2E<gt>,...] E<lt>Datei/VerzeichnisE<gt> E<lt>ZielverzeichnisE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:169
 #, fuzzy
-#| msgid ""
-#| "preprocesses a specified file/folder. The file(s) will be written in "
-#| "specified target directory: a plain cfg file and a processed cfg file. If "
-#| "a folder is specified, it will be preprocessed recursively based on the "
-#| "known preprocessor rules. The common macroses from the data/core/macros "
-#| "will be preprocessed before the specified resources.  B<define1,"
-#| "define2,...> - the extra defines will be added before processing the "
-#| "files. If you want to add them you must add the '=' character before.  If "
-#| "'SKIP_CORE' is in the define list the data/core won't be preprocessed.  "
-#| "Example: B<-p ~/wesnoth/data/campaigns/tutorial ~/result> or B<-"
-#| "p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result>"
 msgid ""
 "preprocesses a specified file/folder. For each file(s) a plain .cfg file and "
 "a processed .cfg file will be written in specified target directory. If a "
@@ -856,7 +843,6 @@ msgstr ""
 #. type: TP
 #: ../../doc/man/wesnoth.6:257
 #, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
 msgid "B<--multiplayer-repeat=>I<value>"
 msgstr "B<--era=>I<Wert>"
 

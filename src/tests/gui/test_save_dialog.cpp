@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,6 +35,7 @@
 
 // Linker workarounds end here
 
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 namespace test {
 
 	struct save_dialog_fixture {
@@ -127,3 +128,4 @@ namespace test {
 
 	BOOST_AUTO_TEST_SUITE_END()
 }
+#endif

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Eugen Jiresch
+   Copyright (C) 2009 - 2014 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -49,7 +49,7 @@ tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	//Very bad, since we're pretending to not modify the cfg. Needed to transfer the result
 	//to the network clients in a mp game, otherwise we have OOS.
 	config& non_const_config = const_cast<config&>(scenario_cfg);
-	non_const_config["current_tod"] = currentTime_;
+	non_const_config["current_time"] = currentTime_;
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -73,7 +73,7 @@ config tod_manager::to_config() const
 	config cfg;
 	cfg["turn_at"] = turn_;
 	cfg["turns"] = num_turns_;
-	cfg["current_tod"] = currentTime_;
+	cfg["current_time"] = currentTime_;
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
@@ -92,6 +92,8 @@ config tod_manager::to_config() const
 			t->write(area.add_child("time"));
 		}
 		area["current_time"] = i->currentTime;
+		if (!i->id.empty())
+			area["id"] = i->id;
 	}
 	return cfg;
 }
@@ -99,6 +101,39 @@ config tod_manager::to_config() const
 const time_of_day& tod_manager::get_previous_time_of_day() const
 {
 	return get_time_of_day_turn(times_, turn_ - 1, currentTime_);
+}
+
+int tod_manager::get_current_area_time(int index) const {
+	assert(index < static_cast<int>(areas_.size()) );
+	return areas_[index].currentTime;
+}
+
+int tod_manager::get_current_time(const map_location& loc) const
+{
+	if ( loc != map_location::null_location ) {
+		for ( std::vector<area_time_of_day>::const_reverse_iterator
+				i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
+		{
+			if (i->hexes.find(loc) != i->hexes.end())
+				return i->currentTime;
+		}
+	}
+
+	return currentTime_;
+}
+
+const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
+{
+	if ( loc != map_location::null_location ) {
+		for ( std::vector<area_time_of_day>::const_reverse_iterator
+				i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
+		{
+			if (i->hexes.find(loc) != i->hexes.end())
+				return i->times;
+		}
+	}
+
+	return times_;
 }
 
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
@@ -196,7 +231,7 @@ void tod_manager::replace_schedule(const config& time_cfg)
 {
 	times_.clear();
 	time_of_day::parse_times(time_cfg,times_);
-	currentTime_ = 0;
+	currentTime_ = time_cfg["current_time"].to_int(0);
 }
 
 void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
@@ -205,7 +240,22 @@ void tod_manager::replace_schedule(const std::vector<time_of_day>& schedule)
 	currentTime_ = 0;
 }
 
+void tod_manager::replace_area_locations(int area_index, const std::set<map_location>& locs) {
+	assert(area_index < static_cast<int>(areas_.size()));
+	areas_[area_index].hexes = locs;
+}
 
+void tod_manager::replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index)
+{
+	assert(area_index < static_cast<int>(areas_.size()));
+	areas_[area_index].times = schedule;
+	areas_[area_index].currentTime = 0;
+}
+
+void tod_manager::set_area_id(int area_index, const std::string& id) {
+	assert(area_index < static_cast<int>(areas_.size()));
+	areas_[area_index].id = id;
+}
 
 std::vector<std::string> tod_manager::get_area_ids() const
 {
@@ -214,6 +264,15 @@ std::vector<std::string> tod_manager::get_area_ids() const
 		areas.push_back(area.id);
 	}
 	return areas;
+}
+
+const std::set<map_location>& tod_manager::get_area_by_id(const std::string& id) const
+{
+	BOOST_FOREACH(const area_time_of_day& area, areas_) {
+		if (area.id == id)
+			return area.hexes;
+	}
+	return areas_[0].hexes;
 }
 
 const std::set<map_location>& tod_manager::get_area_by_index(int index) const
@@ -229,8 +288,8 @@ void tod_manager::add_time_area(const config& cfg)
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
 	area.currentTime = cfg["current_time"].to_int(0);
-	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc, true);
-	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
+	std::vector<map_location> const& locs (parse_location_range(area.xsrc, area.ysrc, true));
+	area.hexes.insert(locs.begin(), locs.end());
 	time_of_day::parse_times(cfg, area.times);
 }
 
@@ -241,6 +300,7 @@ void tod_manager::add_time_area(const std::string& id, const std::set<map_locati
 	area_time_of_day& area = areas_.back();
 	area.id = id;
 	area.hexes = locs;
+	area.currentTime = time_cfg["current_time"].to_int(0);
 	time_of_day::parse_times(time_cfg, area.times);
 }
 
@@ -261,12 +321,18 @@ void tod_manager::remove_time_area(const std::string& area_id)
 	}
 }
 
+void tod_manager::remove_time_area(int area_index)
+{
+	assert(area_index < static_cast<int>(areas_.size()));
+	areas_.erase(areas_.begin() + area_index);
+}
+
 int tod_manager::get_start_ToD(const config &level) const
 {
-	const config::attribute_value& current_tod = level["current_tod"];
-	if (!current_tod.blank())
+	const config::attribute_value& current_time = level["current_time"];
+	if (!current_time.blank())
 	{
-		return calculate_current_time(times_.size(), turn_, current_tod.to_int(0), true);
+		return calculate_current_time(times_.size(), turn_, current_time.to_int(0), true);
 	}
 
 	const int default_result = calculate_current_time(times_.size(), turn_, currentTime_);
@@ -338,6 +404,7 @@ int tod_manager::calculate_current_time(
 	const int current_time,
 	const bool only_to_allowed_range) const
 {
+	if (number_of_times == 0) return 0;
 	int new_current_time = 0;
 	if(only_to_allowed_range) new_current_time = current_time % number_of_times;
 	else new_current_time = (current_time + for_turn_number - turn_) % number_of_times;

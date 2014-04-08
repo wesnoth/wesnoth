@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,10 +19,10 @@
 #include "gui/widgets/window.hpp"
 #include "video.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-tpopup::tpopup()
-	: window_(NULL)
+tpopup::tpopup() : window_(NULL)
 {
 }
 
@@ -31,9 +31,9 @@ tpopup::~tpopup()
 	hide();
 }
 
-void tpopup::show(CVideo& video
-		, const bool allow_interaction
-		, const unsigned /*auto_close_time*/)
+void tpopup::show(CVideo& video,
+				  const bool allow_interaction,
+				  const unsigned /*auto_close_time*/)
 {
 	if(video.faked()) {
 		return;
@@ -68,5 +68,14 @@ twindow* tpopup::build_window(CVideo& video) const
 	return build(video, window_id());
 }
 
-} // namespace gui2
+void tpopup::post_build(CVideo& /*video*/, twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
 
+void tpopup::pre_show(CVideo& /*video*/, twindow& /*window*/)
+{
+	/* DO NOTHING */
+}
+
+} // namespace gui2

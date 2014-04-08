@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -30,10 +31,6 @@ tscrollbar_panel_definition::tscrollbar_panel_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, grid()
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_scrollbar_panel
@@ -59,15 +56,17 @@ tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="scrollbar_panel_definition"}
  * @end{parent}{name="gui/"}
  */
+tscrollbar_panel_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg), grid()
+{
 	// The panel needs to know the order.
 	state.push_back(tstate_definition(cfg.child("background")));
 	state.push_back(tstate_definition(cfg.child("foreground")));
 
-	const config &child = cfg.child("grid");
+	const config& child = cfg.child("grid");
 	VALIDATE(child, _("No grid defined."));
 
 	grid = new tbuilder_grid(child);
 }
 
 } // namespace gui2
-

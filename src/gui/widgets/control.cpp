@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,16 +27,18 @@
 #include "gui/auxiliary/window_builder/control.hpp"
 #include "marked-up_text.hpp"
 #include "utils/foreach.tpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include <boost/bind.hpp>
 
 #include <iomanip>
 
-#define LOG_SCOPE_HEADER "tcontrol(" + get_control_type() + ") [" \
-		+ id() + "] " + __func__
+#define LOG_SCOPE_HEADER                                                       \
+	"tcontrol(" + get_control_type() + ") [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 tcontrol::tcontrol(const unsigned canvas_count)
 	: definition_("default")
@@ -53,30 +55,18 @@ tcontrol::tcontrol(const unsigned canvas_count)
 	, shrunken_(false)
 {
 	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
-			  &tcontrol::signal_handler_show_tooltip
-			, this
-			, _2
-			, _3
-			, _5));
+			&tcontrol::signal_handler_show_tooltip, this, _2, _3, _5));
 
 	connect_signal<event::SHOW_HELPTIP>(boost::bind(
-			  &tcontrol::signal_handler_show_helptip
-			, this
-			, _2
-			, _3
-			, _5));
+			&tcontrol::signal_handler_show_helptip, this, _2, _3, _5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
-			  &tcontrol::signal_handler_notify_remove_tooltip
-			, this
-			, _2
-			, _3));
+			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
-tcontrol::tcontrol(
-		  const implementation::tbuilder_control& builder
-		, const unsigned canvas_count
-		, const std::string& control_type)
+tcontrol::tcontrol(const implementation::tbuilder_control& builder,
+				   const unsigned canvas_count,
+				   const std::string& control_type)
 	: twidget(builder)
 	, definition_(builder.definition)
 	, label_(builder.label)
@@ -94,24 +84,13 @@ tcontrol::tcontrol(
 	definition_load_configuration(control_type);
 
 	connect_signal<event::SHOW_TOOLTIP>(boost::bind(
-			  &tcontrol::signal_handler_show_tooltip
-			, this
-			, _2
-			, _3
-			, _5));
+			&tcontrol::signal_handler_show_tooltip, this, _2, _3, _5));
 
 	connect_signal<event::SHOW_HELPTIP>(boost::bind(
-			  &tcontrol::signal_handler_show_helptip
-			, this
-			, _2
-			, _3
-			, _5));
+			&tcontrol::signal_handler_show_helptip, this, _2, _3, _5));
 
 	connect_signal<event::NOTIFY_REMOVE_TOOLTIP>(boost::bind(
-			  &tcontrol::signal_handler_notify_remove_tooltip
-			, this
-			, _2
-			, _3));
+			&tcontrol::signal_handler_notify_remove_tooltip, this, _2, _3));
 }
 
 void tcontrol::set_members(const string_map& data)
@@ -211,7 +190,7 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 	if(!label_.empty() && can_wrap()) {
 
 		tpoint size = get_best_text_size(
-				tpoint(0,0),
+				tpoint(0, 0),
 				tpoint(maximum_width - config_->text_extra_width, 0));
 
 		size.x += config_->text_extra_width;
@@ -219,16 +198,13 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 
 		set_layout_size(size);
 
-		DBG_GUI_L << LOG_HEADER
-				<< " label '" << debug_truncate(label_)
-				<< "' maximum_width " << maximum_width
-				<< " result " << size
-				<< ".\n";
+		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+				  << "' maximum_width " << maximum_width << " result " << size
+				  << ".\n";
 
 	} else {
-		DBG_GUI_L << LOG_HEADER
-				<< " label '" << debug_truncate(label_)
-				<< "' failed; either no label or wrapping not allowed.\n";
+		DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+				  << "' failed; either no label or wrapping not allowed.\n";
 	}
 }
 
@@ -248,27 +224,26 @@ tpoint tcontrol::calculate_best_size() const
 	 * and read it after calculation to get the proper result.
 	 */
 	tpoint result = get_best_text_size(minimum, maximum);
-	DBG_GUI_L << LOG_HEADER
-			<< " label '" << debug_truncate(label_)
-			<< "' result " << result
-			<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+			  << "' result " << result << ".\n";
 	return result;
 }
 
 void tcontrol::place(const tpoint& origin, const tpoint& size)
 {
 	// resize canvasses
-	FOREACH(AUTO& canvas, canvas_) {
+	FOREACH(AUTO & canvas, canvas_)
+	{
 		canvas.set_width(size.x);
 		canvas.set_height(size.y);
 	}
 
 	// Note we assume that the best size has been queried but otherwise it
 	// should return false.
-	if(renderer_.is_truncated()
-			&& use_tooltip_on_label_overflow_ && tooltip_.empty()) {
+	if(renderer_.is_truncated() && use_tooltip_on_label_overflow_
+	   && tooltip_.empty()) {
 
-		 set_tooltip(label_);
+		set_tooltip(label_);
 	}
 
 	// inherited
@@ -288,42 +263,38 @@ void tcontrol::load_config()
 	}
 }
 
-twidget* tcontrol::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active)
+twidget* tcontrol::find_at(const tpoint& coordinate, const bool must_be_active)
 {
 	return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
-				? this
-				: NULL;
+				   ? this
+				   : NULL;
 }
 
-const twidget* tcontrol::find_at(
-		  const tpoint& coordinate
-		, const bool must_be_active) const
+const twidget* tcontrol::find_at(const tpoint& coordinate,
+								 const bool must_be_active) const
 {
 	return (twidget::find_at(coordinate, must_be_active)
 			&& (!must_be_active || get_active()))
-				? this
-				: NULL;
+				   ? this
+				   : NULL;
 }
 
 twidget* tcontrol::find(const std::string& id, const bool must_be_active)
 {
 	return (twidget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
-				? this
-				: NULL;
+				   ? this
+				   : NULL;
 }
 
-const twidget* tcontrol::find(
-			  const std::string& id
-			, const bool must_be_active) const
+const twidget* tcontrol::find(const std::string& id, const bool must_be_active)
+		const
 {
 	return (twidget::find(id, must_be_active)
 			&& (!must_be_active || get_active()))
-				? this
-				: NULL;
+				   ? this
+				   : NULL;
 }
 
 void tcontrol::set_definition(const std::string& definition)
@@ -378,18 +349,19 @@ void tcontrol::update_canvas()
 	const int max_height = get_text_maximum_height();
 
 	// set label in canvases
-	FOREACH(AUTO& canvas, canvas_) {
+	FOREACH(AUTO & canvas, canvas_)
+	{
 		canvas.set_variable("text", variant(label_));
 		canvas.set_variable("text_markup", variant(use_markup_));
-		canvas.set_variable("text_alignment"
-				, variant(encode_text_alignment(text_alignment_)));
+		canvas.set_variable("text_alignment",
+							variant(encode_text_alignment(text_alignment_)));
 		canvas.set_variable("text_maximum_width", variant(max_width));
 		canvas.set_variable("text_maximum_height", variant(max_height));
-		canvas.set_variable("text_wrap_mode", variant(can_wrap()
-			? PANGO_ELLIPSIZE_NONE : PANGO_ELLIPSIZE_END));
-		canvas.set_variable(
-				  "text_characters_per_line"
-				, variant(get_characters_per_line()));
+		canvas.set_variable("text_wrap_mode",
+							variant(can_wrap() ? PANGO_ELLIPSIZE_NONE
+											   : PANGO_ELLIPSIZE_END));
+		canvas.set_variable("text_characters_per_line",
+							variant(get_characters_per_line()));
 	}
 }
 
@@ -397,9 +369,8 @@ int tcontrol::get_text_maximum_width() const
 {
 	assert(config_);
 
-	return text_maximum_width_ != 0
-		? text_maximum_width_
-		: get_width() - config_->text_extra_width;
+	return text_maximum_width_ != 0 ? text_maximum_width_
+									: get_width() - config_->text_extra_width;
 }
 
 int tcontrol::get_text_maximum_height() const
@@ -411,27 +382,21 @@ int tcontrol::get_text_maximum_height() const
 
 void tcontrol::impl_draw_background(surface& frame_buffer)
 {
-	DBG_GUI_D << LOG_HEADER
-			<< " label '" << debug_truncate(label_)
-			<< "' size " << get_rectangle()
-			<< ".\n";
+	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
+			  << get_rectangle() << ".\n";
 
 	canvas(get_state()).blit(frame_buffer, get_rectangle());
 }
 
-void tcontrol::impl_draw_background(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void tcontrol::impl_draw_background(surface& frame_buffer,
+									int x_offset,
+									int y_offset)
 {
-	DBG_GUI_D << LOG_HEADER
-			<< " label '" << debug_truncate(label_)
-			<< "' size " << get_rectangle()
-			<< ".\n";
+	DBG_GUI_D << LOG_HEADER << " label '" << debug_truncate(label_) << "' size "
+			  << get_rectangle() << ".\n";
 
-	canvas(get_state()).blit(
-			  frame_buffer
-			, calculate_blitting_rectangle(x_offset, y_offset));
+	canvas(get_state()).blit(frame_buffer,
+							 calculate_blitting_rectangle(x_offset, y_offset));
 }
 
 void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/)
@@ -439,10 +404,11 @@ void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/)
 	/* DO NOTHING */
 }
 
-void tcontrol::impl_draw_foreground(
-		  surface& /*frame_buffer*/
-		, int /*x_offset*/
-		, int /*y_offset*/)
+void tcontrol::impl_draw_foreground(surface& /*frame_buffer*/
+									,
+									int /*x_offset*/
+									,
+									int /*y_offset*/)
 {
 	/* DO NOTHING */
 }
@@ -461,9 +427,8 @@ void tcontrol::definition_load_configuration(const std::string& control_type)
 	update_canvas();
 }
 
-tpoint tcontrol::get_best_text_size(
-		  const tpoint& minimum_size
-		, const tpoint& maximum_size) const
+tpoint tcontrol::get_best_text_size(const tpoint& minimum_size,
+									const tpoint& maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -479,9 +444,8 @@ tpoint tcontrol::get_best_text_size(
 	renderer_.set_alignment(text_alignment_);
 
 	// Try with the minimum wanted size.
-	const int maximum_width = text_maximum_width_ != 0
-			? text_maximum_width_
-			: maximum_size.x;
+	const int maximum_width = text_maximum_width_ != 0 ? text_maximum_width_
+													   : maximum_size.x;
 
 	renderer_.set_maximum_width(maximum_width);
 
@@ -491,31 +455,27 @@ tpoint tcontrol::get_best_text_size(
 
 	renderer_.set_characters_per_line(get_characters_per_line());
 	if(get_characters_per_line() != 0 && !can_wrap()) {
-		WRN_GUI_L << LOG_HEADER
-				<< " Limited the number of characters per line, "
-				<< "but wrapping is not set, output may not be as expected.\n";
+		WRN_GUI_L
+		<< LOG_HEADER << " Limited the number of characters per line, "
+		<< "but wrapping is not set, output may not be as expected.\n";
 	}
 
-	DBG_GUI_L << LOG_HEADER
-			<< " label '" << debug_truncate(label_)
-			<< "' status: "
-			<< " minimum_size " << minimum_size
-			<< " maximum_size " << maximum_size
-			<< " text_maximum_width_ " << text_maximum_width_
-			<< " can_wrap " << can_wrap()
-			<< " characters_per_line " << get_characters_per_line()
-			<< " truncated " << renderer_.is_truncated()
-			<< " renderer size " << renderer_.get_size()
-			<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+			  << "' status: "
+			  << " minimum_size " << minimum_size << " maximum_size "
+			  << maximum_size << " text_maximum_width_ " << text_maximum_width_
+			  << " can_wrap " << can_wrap() << " characters_per_line "
+			  << get_characters_per_line() << " truncated "
+			  << renderer_.is_truncated() << " renderer size "
+			  << renderer_.get_size() << ".\n";
 
 	// If doesn't fit try the maximum.
 	if(renderer_.is_truncated() && !can_wrap()) {
 		// FIXME if maximum size is defined we should look at that
 		// but also we don't adjust for the extra text space yet!!!
 		const tpoint maximum_size(config_->max_width, config_->max_height);
-		renderer_.set_maximum_width(maximum_size.x
-				? maximum_size.x - border.x
-				: -1);
+		renderer_.set_maximum_width(maximum_size.x ? maximum_size.x - border.x
+												   : -1);
 	}
 
 	size = renderer_.get_size() + border;
@@ -528,17 +488,14 @@ tpoint tcontrol::get_best_text_size(
 		size.y = minimum_size.y;
 	}
 
-	DBG_GUI_L << LOG_HEADER
-			<< " label '" << debug_truncate(label_)
-			<< "' result " << size
-			<< ".\n";
+	DBG_GUI_L << LOG_HEADER << " label '" << debug_truncate(label_)
+			  << "' result " << size << ".\n";
 	return size;
 }
 
-void tcontrol::signal_handler_show_tooltip(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& location)
+void tcontrol::signal_handler_show_tooltip(const event::tevent event,
+										   bool& handled,
+										   const tpoint& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -546,12 +503,12 @@ void tcontrol::signal_handler_show_tooltip(
 		std::string tip = tooltip_;
 		if(!help_message_.empty()) {
 			utils::string_map symbols;
-			symbols["hotkey"] =
-					hotkey::get_names(hotkey::GLOBAL__HELPTIP);
+			symbols["hotkey"] = hotkey::get_names(
+					hotkey::hotkey_command::get_command_by_command(
+							hotkey::GLOBAL__HELPTIP).command);
 
 			tip = tooltip_ + utils::interpolate_variables_into_string(
-					  settings::has_helptip_message
-					, &symbols);
+									 settings::has_helptip_message, &symbols);
 		}
 
 		event::tmessage_show_tooltip message(tip, location);
@@ -559,10 +516,9 @@ void tcontrol::signal_handler_show_tooltip(
 	}
 }
 
-void tcontrol::signal_handler_show_helptip(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& location)
+void tcontrol::signal_handler_show_helptip(const event::tevent event,
+										   bool& handled,
+										   const tpoint& location)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -572,9 +528,8 @@ void tcontrol::signal_handler_show_helptip(
 	}
 }
 
-void tcontrol::signal_handler_notify_remove_tooltip(
-		  const event::tevent event
-		, bool& handled)
+void tcontrol::signal_handler_notify_remove_tooltip(const event::tevent event,
+													bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -589,4 +544,3 @@ void tcontrol::signal_handler_notify_remove_tooltip(
 }
 
 } // namespace gui2
-

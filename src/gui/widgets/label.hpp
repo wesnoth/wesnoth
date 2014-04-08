@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,13 +17,13 @@
 
 #include "gui/widgets/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /** Label showing a text. */
 class tlabel : public tcontrol
 {
 public:
-
 	tlabel()
 		: tcontrol(COUNT)
 		, state_(ENABLED)
@@ -52,18 +52,24 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_can_wrap(const bool wrap) { can_wrap_ = wrap; }
+	void set_can_wrap(const bool wrap)
+	{
+		can_wrap_ = wrap;
+	}
 
 	void set_characters_per_line(const unsigned set_characters_per_line);
 
 private:
-
 	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		COUNT
+	};
 
 	void set_state(const tstate state);
 
@@ -92,4 +98,3 @@ private:
 } // namespace gui2
 
 #endif
-

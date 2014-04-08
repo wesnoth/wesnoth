@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,11 +33,13 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(listbox)
 
-namespace {
+namespace
+{
 // in separate namespace to avoid name classes
 REGISTER_WIDGET3(tlistbox_definition, horizontal_listbox, _4)
 
@@ -48,11 +50,13 @@ void callback_list_item_clicked(twidget& caller)
 
 } // namespace
 
-tlistbox::tlistbox(const bool has_minimum, const bool has_maximum,
-		const tgenerator_::tplacement placement, const bool select)
+tlistbox::tlistbox(const bool has_minimum,
+				   const bool has_maximum,
+				   const tgenerator_::tplacement placement,
+				   const bool select)
 	: tscrollbar_container(2) // FIXME magic number
 	, generator_(
-			tgenerator_::build(has_minimum, has_maximum, placement, select))
+			  tgenerator_::build(has_minimum, has_maximum, placement, select))
 	, list_builder_(NULL)
 	, callback_value_changed_(NULL)
 	, need_layout_(false)
@@ -66,9 +70,9 @@ void tlistbox::add_row(const string_map& item, const int index)
 			index, list_builder_, item, callback_list_item_clicked);
 }
 
-void tlistbox::add_row(
-		  const std::map<std::string /* widget id */, string_map>& data
-		, const int index)
+void
+tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
+				  const int index)
 {
 	assert(generator_);
 	generator_->create_item(
@@ -123,7 +127,7 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 {
 	assert(generator_);
 
-	twindow *window = get_window();
+	twindow* window = get_window();
 	assert(window);
 
 	const int selected_row = get_selected_row();
@@ -133,8 +137,8 @@ void tlistbox::set_row_shown(const unsigned row, const bool shown)
 		twindow::tinvalidate_layout_blocker invalidate_layout_blocker(*window);
 
 		generator_->set_item_shown(row, shown);
-		generator_->place(generator_->get_origin()
-				, generator_->calculate_best_size());
+		generator_->place(generator_->get_origin(),
+						  generator_->calculate_best_size());
 		resize_needed = !content_resize_request();
 	}
 
@@ -155,7 +159,7 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 	assert(generator_);
 	assert(shown.size() == get_item_count());
 
-	twindow *window = get_window();
+	twindow* window = get_window();
 	assert(window);
 
 	const int selected_row = get_selected_row();
@@ -167,8 +171,8 @@ void tlistbox::set_row_shown(const std::vector<bool>& shown)
 		for(size_t i = 0; i < shown.size(); ++i) {
 			generator_->set_item_shown(i, shown[i]);
 		}
-		generator_->place(generator_->get_origin()
-				, generator_->calculate_best_size());
+		generator_->place(generator_->get_origin(),
+						  generator_->calculate_best_size());
 		resize_needed = !content_resize_request();
 	}
 
@@ -282,14 +286,12 @@ void tlistbox::place(const tpoint& origin, const tpoint& size)
 	}
 }
 
-void tlistbox::resize_content(
-		  const int width_modification
-		, const int height_modification)
+void tlistbox::resize_content(const int width_modification,
+							  const int height_modification)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
-			<< " width_modification " << width_modification
-			<< " height_modification " << height_modification
-			<< ".\n";
+			  << " width_modification " << width_modification
+			  << " height_modification " << height_modification << ".\n";
 
 	if(content_resize_request(width_modification, height_modification)) {
 
@@ -318,8 +320,9 @@ void tlistbox::layout_children()
 	layout_children(false);
 }
 
-void tlistbox::child_populate_dirty_list(twindow& caller,
-		const std::vector<twidget*>& call_stack)
+void
+tlistbox::child_populate_dirty_list(twindow& caller,
+									const std::vector<twidget*>& call_stack)
 {
 	// Inherited.
 	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
@@ -339,8 +342,8 @@ void tlistbox::handle_key_up_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// horizontal scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(
-				generator_->get_selected_item()).get_rectangle();
+		SDL_Rect rect = generator_->item(generator_->get_selected_item())
+								.get_rectangle();
 
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -366,8 +369,8 @@ void tlistbox::handle_key_down_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// horizontal scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(
-				generator_->get_selected_item()).get_rectangle();
+		SDL_Rect rect = generator_->item(generator_->get_selected_item())
+								.get_rectangle();
 
 		rect.x = visible.x;
 		rect.w = visible.w;
@@ -394,8 +397,8 @@ void tlistbox::handle_key_left_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// vertical scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(
-				generator_->get_selected_item()).get_rectangle();
+		SDL_Rect rect = generator_->item(generator_->get_selected_item())
+								.get_rectangle();
 
 		rect.y = visible.y;
 		rect.h = visible.h;
@@ -421,8 +424,8 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 		// When scrolling make sure the new items is visible but leave the
 		// vertical scrollbar position.
 		const SDL_Rect& visible = content_visible_area();
-		SDL_Rect rect = generator_->item(
-				generator_->get_selected_item()).get_rectangle();
+		SDL_Rect rect = generator_->item(generator_->get_selected_item())
+								.get_rectangle();
 
 		rect.y = visible.y;
 		rect.h = visible.h;
@@ -437,12 +440,15 @@ void tlistbox::handle_key_right_arrow(SDLMod modifier, bool& handled)
 	}
 }
 
-namespace {
+namespace
+{
 
 /**
  * Swaps an item in a grid for another one.*/
 void swap_grid(tgrid* grid,
-		tgrid* content_grid, twidget* widget, const std::string& id)
+			   tgrid* content_grid,
+			   twidget* widget,
+			   const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -470,10 +476,9 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tlistbox::finalize(
-		tbuilder_grid_const_ptr header,
-		tbuilder_grid_const_ptr footer,
-		const std::vector<string_map>& list_data)
+void tlistbox::finalize(tbuilder_grid_const_ptr header,
+						tbuilder_grid_const_ptr footer,
+						const std::vector<string_map>& list_data)
 {
 	// "Inherited."
 	tscrollbar_container::finalize_setup();
@@ -491,7 +496,6 @@ void tlistbox::finalize(
 	generator_->create_items(
 			-1, list_builder_, list_data, callback_list_item_clicked);
 	swap_grid(NULL, content_grid(), generator_, "_list_grid");
-
 }
 
 void tlistbox::set_content_size(const tpoint& origin, const tpoint& size)
@@ -510,9 +514,8 @@ void tlistbox::layout_children(const bool force)
 	assert(content_grid());
 
 	if(need_layout_ || force) {
-		content_grid()->place(
-				  content_grid()->get_origin()
-				, content_grid()->get_size());
+		content_grid()->place(content_grid()->get_origin(),
+							  content_grid()->get_size());
 
 		content_grid()->set_visible_rectangle(content_visible_area_);
 

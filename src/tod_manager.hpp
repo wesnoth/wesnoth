@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Eugen Jiresch
+   Copyright (C) 2009 - 2014 by Eugen Jiresch
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -33,6 +33,18 @@ class tod_manager : public savegame::savegame_config
 
 		config to_config() const;
 
+		int get_current_time(const map_location& loc = map_location::null_location) const;
+
+		void set_current_time(int time) { currentTime_ = time; }
+
+		void set_current_time(int time, int area_index) {
+			assert(area_index < static_cast<int>(areas_.size()));
+			assert(time < static_cast<int>(areas_[area_index].times.size()) );
+			areas_[area_index].currentTime = time;
+		}
+
+		void set_area_id(int area_index, const std::string& id);
+
 		/**
 		 * Returns global time of day for the passed turn.
 		 * for_turn = 0 means current turn
@@ -48,6 +60,8 @@ class tod_manager : public savegame::savegame_config
 		 */
 		const time_of_day& get_time_of_day(const map_location& loc,
 				int for_turn = 0) const;
+
+		int get_current_area_time(int index) const;
 
 		/**
 		 * Returns time of day object for the passed turn at a location.
@@ -66,6 +80,9 @@ class tod_manager : public savegame::savegame_config
 		 */
 		void replace_schedule(const config& time_cfg);
 		void replace_schedule(const std::vector<time_of_day>& schedule);
+		void replace_local_schedule(const std::vector<time_of_day>& schedule, int area_index);
+
+		void replace_area_locations(int index, const std::set<map_location>& locs);
 
 		/**
 		 * @returns the [time_area]s' ids.
@@ -76,6 +93,12 @@ class tod_manager : public savegame::savegame_config
 		 * @returns the nth area.
 		 */
 		const std::set<map_location>& get_area_by_index(int index) const;
+
+		/**
+		 * @param id The id of the area to return.
+		 * @returns The area with id @p id.
+		 */
+		const std::set<map_location>& get_area_by_id(const std::string& id) const;
 
 		/**
 		 * Adds a new local time area from config, making it follow its own
@@ -107,9 +130,17 @@ class tod_manager : public savegame::savegame_config
 		 */
 		void remove_time_area(const std::string& id);
 
-		bool has_time_area() const {return !areas_.empty();};
+		void remove_time_area(int index);
 
-		const std::vector<time_of_day> times() const {return times_;}
+
+		bool has_time_area() const {return !areas_.empty();}
+
+		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location) const;
+
+		const std::vector<time_of_day>& times(int index) const {
+			assert(index < static_cast<int>(areas_.size()));
+			return areas_[index].times;
+		}
 
 		//turn functions
 		int turn() const { return turn_; }

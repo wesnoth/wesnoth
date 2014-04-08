@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,8 +23,7 @@
 namespace gui2
 {
 
-class tmp_depcheck_select_new
-		: public tdialog
+class tmp_depcheck_select_new : public tdialog
 {
 public:
 	/**
@@ -34,7 +33,7 @@ public:
 	 * @param options 	the names of the components which can be choosed
 	 */
 	tmp_depcheck_select_new(mp::depcheck::component_type name,
-							const std::vector<std::string>&	options);
+							const std::vector<std::string>& options);
 
 	/**
 	 * Returns the selected item.
@@ -42,7 +41,10 @@ public:
 	 * @return 		the index of the selected item, or -1 if none was selected
 	 * 				(the dialog was closed with the cancel button)
 	 */
-	int result() const { return result_; }
+	int result() const
+	{
+		return result_;
+	}
 
 protected:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
@@ -61,6 +63,5 @@ private:
 	/** the index of the selected item */
 	int result_;
 };
-
 }
 #endif

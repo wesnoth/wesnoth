@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,9 +16,11 @@
 
 #include "gui/auxiliary/iterator/iterator.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
 
 } // namespace iterator
@@ -184,4 +186,3 @@ for(titerator<policy> itor(root); !itor.at_end(); ++itor) {
  *
  * [GoF] http://en.wikipedia.org/wiki/Design_Patterns_%28book%29
  */
-

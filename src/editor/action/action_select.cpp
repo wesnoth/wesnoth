@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -53,11 +53,44 @@ void editor_action_select::perform_without_undo(map_context& mc) const
 {
 	BOOST_FOREACH(const map_location& loc, area_) {
 
-		if (!mc.get_map().in_selection(loc))
-			mc.get_map().add_to_selection(loc);
-		else
-			mc.get_map().remove_from_selection(loc);
+		mc.get_map().add_to_selection(loc);
+		mc.add_changed_location(loc);
+	}
+}
 
+editor_action_deselect* editor_action_deselect::clone() const
+{
+	return new editor_action_deselect(*this);
+}
+
+void editor_action_deselect::extend(const editor_map& map, const std::set<map_location>& locs)
+{
+	BOOST_FOREACH(const map_location& loc, locs) {
+		LOG_ED << "Checking " << loc << "\n";
+		if (!map.in_selection(loc)) {
+			LOG_ED << "Extending by " << loc << "\n";
+			area_.insert(loc);
+		}
+	}
+}
+
+editor_action* editor_action_deselect::perform(map_context& mc) const
+{
+	std::set<map_location> undo_locs;
+	BOOST_FOREACH(const map_location& loc, area_) {
+		if (mc.get_map().in_selection(loc)) {
+			undo_locs.insert(loc);
+			mc.add_changed_location(loc);
+		}
+	}
+	perform_without_undo(mc);
+	return new editor_action_select(undo_locs);
+}
+
+void editor_action_deselect::perform_without_undo(map_context& mc) const
+{
+	BOOST_FOREACH(const map_location& loc, area_) {
+		mc.get_map().remove_from_selection(loc);
 		mc.add_changed_location(loc);
 	}
 }

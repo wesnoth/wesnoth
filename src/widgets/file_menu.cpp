@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -61,11 +61,11 @@ void file_menu::display_current_files() {
 	for (it = dirs_in_current_dir_.begin(); it != dirs_in_current_dir_.end(); ++it) {
 		// Add an image to show that these are directories.
 		std::stringstream ss;
-		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << *it;
+		ss << font::IMAGE << dir_picture << COLUMN_SEPARATOR << font::NULL_MARKUP << *it;
 		to_show.push_back(ss.str());
 	}
 	for (it = files_in_current_dir_.begin(); it != files_in_current_dir_.end(); ++it) {
-		const std::string display_string = COLUMN_SEPARATOR + *it;
+		const std::string display_string = COLUMN_SEPARATOR + std::string(1, font::NULL_MARKUP) + *it;
 		to_show.push_back(display_string);
 	}
 	const int menu_font_size = font::SIZE_NORMAL; // Known from menu.cpp.
@@ -197,10 +197,6 @@ std::string file_menu::get_path_up(const std::string& path, const unsigned level
 			curr_path = curr_path.substr(0, index);
 		}
 		else {
-#ifdef __AMIGAOS4__
-			index = curr_path.find_last_of(':');
-			if (index != std::string::npos) index++;
-#endif
 			break;
 		}
 	}
@@ -223,11 +219,7 @@ std::string file_menu::strip_last_delim(const std::string& path) const {
 }
 
 bool file_menu::is_root(const std::string& path) const {
-#ifdef __AMIGAOS4__
-	return path.empty() || path[path.size()-1] == ':';
-#else
 	return path.empty() || (path.size() == 1 && path[0] == path_delim);
-#endif
 }
 
 std::string file_menu::add_path(const std::string& path, const std::string& to_add) const
@@ -237,14 +229,6 @@ std::string file_menu::add_path(const std::string& path, const std::string& to_a
 		if (to_add == path_up) {
 			return get_path_up(path);
 		}
-#ifdef __AMIGAOS4__
-		else if (joined_path.empty() || joined_path[joined_path.size()-1] == ':') {
-			if (to_add[0] == path_delim)
-				joined_path += to_add.substr(1);
-			else
-				joined_path += to_add;
-		}
-#endif
 #ifdef _WIN32
 		else if (to_add.size() > 1 && to_add[1] == ':') {
 			joined_path = to_add;

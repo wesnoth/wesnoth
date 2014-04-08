@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,6 +14,7 @@
 
 #include "global.hpp"
 #include "key.hpp"
+#include "sdl/compat.hpp"
 
 CKey::CKey() :
 	key_list(SDL_GetKeyState(NULL))

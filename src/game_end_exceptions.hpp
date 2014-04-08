@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -26,7 +26,7 @@
 
 #include <string>
 
-class config;
+#include "config.hpp"
 
 enum LEVEL_RESULT {
 	NONE,
@@ -107,6 +107,9 @@ struct end_level_data
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	transient_end_level transient;
+
+	config next_scenario_settings;
+	config next_scenario_append;
 
 	void write(config& cfg) const;
 

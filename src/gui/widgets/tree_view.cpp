@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(tree_view)
 
@@ -38,25 +39,22 @@ ttree_view::ttree_view(const std::vector<tnode_definition>& node_definitions)
 	, node_definitions_(node_definitions)
 	, indention_step_size_(0)
 	, need_layout_(false)
-	, root_node_(new ttree_view_node(
-		  "root"
-		, node_definitions_
-		, NULL
-		, *this
-		, std::map<std::string, string_map>()))
+	, root_node_(new ttree_view_node("root",
+									 node_definitions_,
+									 NULL,
+									 *this,
+									 std::map<std::string, string_map>()))
 	, selected_item_(NULL)
 	, selection_change_callback_()
 {
 	connect_signal<event::LEFT_BUTTON_DOWN>(
-			  boost::bind(
-				    &ttree_view::signal_handler_left_button_down
-				  , this
-				  , _2)
-			, event::tdispatcher::back_pre_child);
+			boost::bind(&ttree_view::signal_handler_left_button_down, this, _2),
+			event::tdispatcher::back_pre_child);
 }
 
-ttree_view_node& ttree_view::add_node(const std::string& id
-		, const std::map<std::string /* widget id */, string_map>& data)
+ttree_view_node& ttree_view::add_node(
+		const std::string& id,
+		const std::map<std::string /* widget id */, string_map>& data)
 {
 	return get_root_node().add_child(id, data);
 }
@@ -66,10 +64,10 @@ void ttree_view::remove_node(ttree_view_node* node)
 	assert(node && node != root_node_ && node->parent_node_);
 	const tpoint node_size = node->get_size();
 
-	boost::ptr_vector<ttree_view_node>::iterator itor =
-				  node->parent_node_->children_.begin();
+	boost::ptr_vector<ttree_view_node>::iterator itor
+			= node->parent_node_->children_.begin();
 
-	for( ; itor != node->parent_node_->children_.end(); ++itor) {
+	for(; itor != node->parent_node_->children_.end(); ++itor) {
 		if(&*itor == node) {
 			break;
 		}
@@ -87,8 +85,9 @@ void ttree_view::remove_node(ttree_view_node* node)
 	resize_content(0, -node_size.y);
 }
 
-void ttree_view::child_populate_dirty_list(twindow& caller
-		, const std::vector<twidget*>& call_stack)
+void
+ttree_view::child_populate_dirty_list(twindow& caller,
+									  const std::vector<twidget*>& call_stack)
 {
 	// Inherited.
 	tscrollbar_container::child_populate_dirty_list(caller, call_stack);
@@ -112,14 +111,12 @@ void ttree_view::layout_children()
 	layout_children(false);
 }
 
-void ttree_view::resize_content(
-		  const int width_modification
-		, const int height_modification)
+void ttree_view::resize_content(const int width_modification,
+								const int height_modification)
 {
 	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
-			<< " width_modification " << width_modification
-			<< " height_modification " << height_modification
-			<< ".\n";
+			  << " width_modification " << width_modification
+			  << " height_modification " << height_modification << ".\n";
 
 	if(content_resize_request(width_modification, height_modification)) {
 
@@ -148,9 +145,9 @@ void ttree_view::layout_children(const bool force)
 	assert(root_node_ && content_grid());
 
 	if(need_layout_ || force) {
-		root_node_->place(indention_step_size_
-			, get_origin()
-			, content_grid()->get_size().x);
+		root_node_->place(indention_step_size_,
+						  get_origin(),
+						  content_grid()->get_size().x);
 		root_node_->set_visible_rectangle(content_visible_area_);
 
 		need_layout_ = false;
@@ -164,13 +161,12 @@ void ttree_view::finalize_setup()
 
 	assert(content_grid());
 	content_grid()->set_rows_cols(1, 1);
-	content_grid()->set_child(
-			  root_node_
-			, 0
-			, 0
-			, tgrid::VERTICAL_GROW_SEND_TO_CLIENT
-				| tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT
-			, 0);
+	content_grid()->set_child(root_node_,
+							  0,
+							  0,
+							  tgrid::VERTICAL_GROW_SEND_TO_CLIENT
+							  | tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT,
+							  0);
 }
 
 const std::string& ttree_view::get_control_type() const
@@ -187,4 +183,3 @@ void ttree_view::signal_handler_left_button_down(const event::tevent event)
 }
 
 } // namespace gui2
-

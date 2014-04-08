@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,14 +26,15 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(stacked_widget)
 
 tstacked_widget::tstacked_widget()
 	: tcontainer_(1)
 	, generator_(
-			tgenerator_::build(false, false, tgenerator_::independent, false))
+			  tgenerator_::build(false, false, tgenerator_::independent, false))
 {
 }
 
@@ -55,12 +56,15 @@ void tstacked_widget::layout_children()
 	}
 }
 
-namespace {
+namespace
+{
 
 /**
  * Swaps an item in a grid for another one.*/
 void swap_grid(tgrid* grid,
-		tgrid* content_grid, twidget* widget, const std::string& id)
+			   tgrid* content_grid,
+			   twidget* widget,
+			   const std::string& id)
 {
 	assert(content_grid);
 	assert(widget);
@@ -88,12 +92,13 @@ void swap_grid(tgrid* grid,
 
 } // namespace
 
-void tstacked_widget::finalize(
-		std::vector<tbuilder_grid_const_ptr> widget_builder)
+void
+tstacked_widget::finalize(std::vector<tbuilder_grid_const_ptr> widget_builder)
 {
 	assert(generator_);
 	string_map empty_data;
-	FOREACH(const AUTO& builder, widget_builder) {
+	FOREACH(const AUTO & builder, widget_builder)
+	{
 		generator_->create_item(-1, builder, empty_data, NULL);
 	}
 	swap_grid(NULL, &grid(), generator_, "_content_grid");
@@ -105,8 +110,8 @@ void tstacked_widget::finalize(
 
 const std::string& tstacked_widget::get_control_type() const
 {
-    static const std::string type = "stacked_widget";
-    return type;
+	static const std::string type = "stacked_widget";
+	return type;
 }
 
 void tstacked_widget::set_self_active(const bool /*active*/)
@@ -115,4 +120,3 @@ void tstacked_widget::set_self_active(const bool /*active*/)
 }
 
 } // namespace gui2
-

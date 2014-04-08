@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Jody Northup
+   Copyright (C) 2010 - 2014 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,8 @@
 #include <cctype>
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 
 REGISTER_DIALOG(data_manage)
@@ -60,20 +61,20 @@ void tdata_manage::pre_show(CVideo& /*video*/, twindow& window)
 {
 	assert(txtFilter_);
 
-	ttext_box* filter = find_widget<ttext_box>(
-			&window, "txtFilter", false, true);
+	ttext_box* filter
+			= find_widget<ttext_box>(&window, "txtFilter", false, true);
 	window.keyboard_capture(filter);
-	filter->set_text_changed_callback(boost::bind(
-			&tdata_manage::filter_text_changed, this, _1, _2));
+	filter->set_text_changed_callback(
+			boost::bind(&tdata_manage::filter_text_changed, this, _1, _2));
 
 	tlistbox& list = find_widget<tlistbox>(&window, "persist_list", false);
 	window.keyboard_capture(&list);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	connect_signal_notify_modified(list, boost::bind(
-				  &tdata_manage::list_item_clicked
-				, this
-				, boost::ref(window)));
+	connect_signal_notify_modified(list,
+								   boost::bind(&tdata_manage::list_item_clicked,
+											   this,
+											   boost::ref(window)));
 #else
 	list.set_callback_value_change(
 			dialog_callback<tdata_manage, &tdata_manage::list_item_clicked>);
@@ -86,20 +87,20 @@ void tdata_manage::pre_show(CVideo& /*video*/, twindow& window)
 	fill_game_list(window, games_);
 
 	connect_signal_mouse_left_click(
-			find_widget<tbutton>(&window, "clear", false)
-			, boost::bind(
-				  &tdata_manage::delete_button_callback
-				, this
-				, boost::ref(window)));
+			find_widget<tbutton>(&window, "clear", false),
+			boost::bind(&tdata_manage::delete_button_callback,
+						this,
+						boost::ref(window)));
 }
 
-void tdata_manage::fill_game_list(twindow& window
-		, std::vector<savegame::save_info>& games)
+void tdata_manage::fill_game_list(twindow& window,
+								  std::vector<savegame::save_info>& games)
 {
 	tlistbox& list = find_widget<tlistbox>(&window, "persist_list", false);
 	list.clear();
 
-	FOREACH(const AUTO& game, games) {
+	FOREACH(const AUTO & game, games)
+	{
 		std::map<std::string, string_map> data;
 		string_map item;
 
@@ -125,7 +126,7 @@ bool tdata_manage::filter_text_changed(ttext_* textbox, const std::string& text)
 
 	const std::vector<std::string> words = utils::split(text, ' ');
 
-	if (words == last_words_)
+	if(words == last_words_)
 		return false;
 	last_words_ = words;
 
@@ -136,18 +137,20 @@ bool tdata_manage::filter_text_changed(ttext_* textbox, const std::string& text)
 			tgrid* row = list.get_row_grid(i);
 
 			tgrid::iterator it = row->begin();
-			tlabel& filename_label =
-				find_widget<tlabel>(*it, "filename", false);
+			tlabel& filename_label
+					= find_widget<tlabel>(*it, "filename", false);
 
 			bool found = false;
-			FOREACH(const AUTO& word, words){
-				found = std::search(filename_label.label().str().begin()
-						, filename_label.label().str().end()
-						, word.begin(), word.end()
-						, chars_equal_insensitive)
-					!= filename_label.label().str().end();
+			FOREACH(const AUTO & word, words)
+			{
+				found = std::search(filename_label.label().str().begin(),
+									filename_label.label().str().end(),
+									word.begin(),
+									word.end(),
+									chars_equal_insensitive)
+						!= filename_label.label().str().end();
 
-				if (! found) {
+				if(!found) {
 					// one word doesn't match, we don't reach words.end()
 					break;
 				}
@@ -182,7 +185,6 @@ void tdata_manage::delete_button_callback(twindow& window)
 		// Remove it from the list of saves
 		games_.erase(games_.begin() + index);
 		list.remove_row(index);
-
 	}
 }
 

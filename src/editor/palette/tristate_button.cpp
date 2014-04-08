@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2013 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include "log.hpp"
 #include "marked-up_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "sdl/alpha.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
@@ -373,7 +374,7 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 		if (state_ == TOUCHED_BOTH_RIGHT) {
 			state_ = PRESSED_ACTIVE_BOTH;
 			palette_->select_fg_item(item_id_);
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
 			pressed_ = true;
 		}
@@ -381,18 +382,21 @@ void tristate_button::mouse_up(SDL_MouseButtonEvent const &event) {
 
 	if (event.button == SDL_BUTTON_RIGHT) {
 
+		pressed_ = true;
+		palette_->select_bg_item(item_id_);
+
 		if (state_ == TOUCHED_RIGHT) {
 			state_ = PRESSED_ACTIVE_RIGHT;
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
-			pressed_ = true;
+		//	pressed_ = true;
 		}
 		if (state_ == TOUCHED_BOTH_LEFT) {
 			state_ = PRESSED_ACTIVE_BOTH;
-			palette_->select_fg_item(item_id_);
-			palette_->select_bg_item(item_id_);
+		//	palette_->select_fg_item(item_id_);
+		//	palette_->select_bg_item(item_id_);
 		//	palette_->draw(true);
-			pressed_ = true;
+		//	pressed_ = true;
 		}
 	}
 

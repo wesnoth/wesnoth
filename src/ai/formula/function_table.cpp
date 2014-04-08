@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Bartosz Waresiak <dragonking@o2.pl>
+   Copyright (C) 2009 - 2014 by Bartosz Waresiak <dragonking@o2.pl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -926,7 +926,7 @@ private:
 			status.push_back(variant("Poisoned"));
 		if (bc.get_defender_combatant().slowed != 0)
 			status.push_back(variant("Slowed"));
-		if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_attacker_stats().hp)
+		if (bc.get_attacker_stats().petrifies && static_cast<unsigned int>(hitLeft[0].as_int()) != bc.get_defender_stats().hp)
 			status.push_back(variant("Stoned"));
 		if (bc.get_attacker_stats().plagues && hitLeft[0].as_int() == 0)
 			status.push_back(variant("Zombiefied"));

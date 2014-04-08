@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2010 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -278,6 +278,30 @@ static int cfun_ai_execute_stopunit_all(lua_State *L)
 static int cfun_ai_check_stopunit(lua_State *L)
 {
 	return ai_stopunit_select(L, false, true, true);
+}
+
+static int ai_synced_command(lua_State *L, bool exec)
+{
+	const char *lua_code = luaL_checkstring(L, 1);
+	int side = get_readonly_context(L).get_side();
+	map_location location;
+	if (!lua_isnoneornil(L, 2)) {
+		location.x = lua_tonumber(L, 2);
+		location.y = lua_tonumber(L, 3);
+	}
+
+	ai::synced_command_result_ptr synced_command_result = ai::actions::execute_synced_command_action(side,exec,std::string(lua_code),location);
+	return transform_ai_action(L,synced_command_result);
+}
+
+static int cfun_ai_execute_synced_command(lua_State *L)
+{
+	return ai_synced_command(L, true);
+}
+
+static int cfun_ai_check_synced_command(lua_State *L)
+{
+	return ai_synced_command(L, false);
 }
 
 static int ai_recruit(lua_State *L, bool exec)
@@ -869,10 +893,12 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			{ "stopunit_all", &cfun_ai_execute_stopunit_all },
 			{ "stopunit_attacks", &cfun_ai_execute_stopunit_attacks },
 			{ "stopunit_moves", &cfun_ai_execute_stopunit_moves },
+			{ "synced_command", &cfun_ai_execute_synced_command },
 			{ "suitable_keep", &cfun_ai_get_suitable_keep },
 			{ "check_recall", &cfun_ai_check_recall },
 			{ "check_move", &cfun_ai_check_move },
 			{ "check_stopunit", &cfun_ai_check_stopunit },
+			{ "check_synced_command", &cfun_ai_check_synced_command },
 			{ "check_attack", &cfun_ai_check_attack },
 			{ "check_recruit", &cfun_ai_check_recruit },
 			//{ "",},

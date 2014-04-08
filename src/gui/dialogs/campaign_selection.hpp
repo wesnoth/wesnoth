@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,25 +19,31 @@
 
 #include "config.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-class tcampaign_selection
-	: public tdialog
+class tcampaign_selection : public tdialog
 {
 public:
 	explicit tcampaign_selection(const std::vector<config>& campaigns)
-		: campaigns_(campaigns)
-		, choice_(-1)
+		: campaigns_(campaigns), choice_(-1)
 
 	{
 	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	int get_choice() const { return choice_; }
+	int get_choice() const
+	{
+		return choice_;
+	}
+
+	bool get_deterministic() const
+	{
+		return deterministic_;
+	}
 
 private:
-
 	/** Called when another campaign is selected. */
 	void campaign_selected(twindow& window);
 
@@ -51,10 +57,13 @@ private:
 	void post_show(twindow& window);
 
 	/** Contains the config objects for all campaigns. */
-	const std::vector<config> &campaigns_;
+	const std::vector<config>& campaigns_;
 
 	/** The chosen campaign. */
 	int choice_;
+
+	/** whether zhe player checked teh "Deterministic" checkbox. */
+	bool deterministic_;
 };
 
 } // namespace gui2

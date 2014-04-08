@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -95,6 +95,7 @@ class recruit_result;
 class move_result;
 class move_and_attack_result;
 class stopunit_result;
+class synced_command_result;
 
 typedef boost::shared_ptr<action_result> action_result_ptr;
 typedef boost::shared_ptr<attack_result> attack_result_ptr;
@@ -103,6 +104,7 @@ typedef boost::shared_ptr<recruit_result> recruit_result_ptr;
 typedef boost::shared_ptr<move_result> move_result_ptr;
 typedef boost::shared_ptr<move_and_attack_result> move_and_attack_result_ptr;
 typedef boost::shared_ptr<stopunit_result> stopunit_result_ptr;
+typedef boost::shared_ptr<synced_command_result> synced_command_result_ptr;
 
 typedef boost::shared_ptr< aspect > aspect_ptr;
 typedef boost::shared_ptr< candidate_action > candidate_action_ptr;

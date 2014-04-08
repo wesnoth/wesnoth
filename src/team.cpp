@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -60,7 +60,7 @@ const char * const team::attributes[] = {
 	"countdown_time", "disallow_observers", "faction",
 	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
 	"leader", "random_leader", "team_lock", "terrain_liked",
-	"user_description", "default_recruit", "controller_lock",
+	"user_description", "default_recruit", "controller_lock", "chose_random",
 	// Terminate the list with NULL.
 	NULL };
 
@@ -99,6 +99,7 @@ team::team_info::team_info() :
 	share_view(false),
 	disallow_observers(false),
 	allow_player(false),
+	chose_random(false),
 	no_leader(true),
 	hidden(true),
 	no_turn_confirmation(false),
@@ -128,6 +129,7 @@ void team::team_info::read(const config &cfg)
 	objectives_changed = cfg["objectives_changed"].to_bool();
 	disallow_observers = cfg["disallow_observers"].to_bool();
 	allow_player = cfg["allow_player"].to_bool(true);
+	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
@@ -186,8 +188,6 @@ void team::team_info::read(const config &cfg)
 	persistent = true;
 	if (control == "human")
 		controller = HUMAN;
-	else if (control == "human_ai")
-		controller = HUMAN_AI;
 	else if (control == "network")
 		controller = NETWORK;
 	else if (control == "network_ai")
@@ -224,9 +224,9 @@ char const *team::team_info::controller_string() const
 	switch(controller) {
 	case AI: return "ai";
 	case HUMAN: return "human";
-	case HUMAN_AI: return "human_ai";
 	case NETWORK: return "network";
 	case NETWORK_AI: return "network_ai";
+	case IDLE: return "idle";
 	case EMPTY: return "null";
 	default: assert(false); return NULL;
 	}
@@ -255,11 +255,12 @@ void team::team_info::write(config& cfg) const
 	cfg["recall_cost"] = recall_cost;
 	cfg["disallow_observers"] = disallow_observers;
 	cfg["allow_player"] = allow_player;
+	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = controller_string();
+	cfg["controller"] = (controller == IDLE ? "human" : controller_string());
 
 	std::stringstream can_recruit_str;
 	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
@@ -487,19 +488,19 @@ void team::set_share_view( bool share_view ){
 
 void team::change_controller(const std::string& controller)
 {
-	team::team_info::CONTROLLER cid;
+	team::CONTROLLER cid;
 	if (controller == "human")
-		cid = team::team_info::HUMAN;
-	else if (controller == "human_ai")
-		cid = team::team_info::HUMAN_AI;
+		cid = team::HUMAN;
 	else if (controller == "network")
-		cid = team::team_info::NETWORK;
+		cid = team::NETWORK;
 	else if (controller == "network_ai")
-		cid = team::team_info::NETWORK_AI;
+		cid = team::NETWORK_AI;
 	else if (controller == "null")
-		cid = team::team_info::EMPTY;
+		cid = team::EMPTY;
+	else if (controller == "idle")
+		cid = team::IDLE;
 	else
-		cid = team::team_info::AI;
+		cid = team::AI;
 
 	info_.controller = cid;
 }
@@ -652,7 +653,7 @@ bool is_observer()
 	}
 
 	BOOST_FOREACH(const team &t, *teams) {
-		if (t.is_human() || t.is_human_ai())
+		if (t.is_local())
 			return false;
 	}
 

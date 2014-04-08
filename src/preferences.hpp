@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -120,12 +120,43 @@ namespace preferences {
 	// Proxies for preferences_dialog
 	void load_hotkeys();
 	void save_hotkeys();
-	/// Appends a single hotkey item to the current preferences.
-	void save_hotkey(const hotkey::hotkey_item & item);
 	void clear_hotkeys();
 
 	void add_alias(const std::string& alias, const std::string& command);
 	const config &get_alias();
+
+
+	std::string allied_color();
+	void set_allied_color(const std::string& color_id);
+
+	std::string enemy_color();
+	void set_enemy_color(const std::string& color_id);
+
+	std::string unmoved_color();
+	void set_unmoved_color(const std::string& color_id);
+
+	std::string partial_color();
+	void set_partial_color(const std::string& color_id);
+
+	std::string moved_color();
+	void set_moved_color(const std::string& color_id);
+
+
+	bool show_allied_orb();
+	void set_show_allied_orb(bool show_orb);
+
+	bool show_enemy_orb();
+	void set_show_enemy_orb(bool show_orb);
+
+	bool show_moved_orb();
+	void set_show_moved_orb(bool show_orb);
+
+	bool show_unmoved_orb();
+	void set_show_unmoved_orb(bool show_orb);
+
+	bool show_partial_orb();
+	void set_show_partial_orb(bool show_orb);
+
 
 	bool use_color_cursors();
 	void _set_color_cursors(bool value);
@@ -180,7 +211,19 @@ namespace preferences {
 	void set_animate_map(bool value);
 
 	bool minimap_movement_coding();
-	void toggle_minimap_color_coding();
+	void toggle_minimap_movement_coding();
+
+	bool minimap_terrain_coding();
+	void toggle_minimap_terrain_coding();
+
+	bool minimap_draw_units();
+	void toggle_minimap_draw_units();
+
+	bool minimap_draw_villages();
+	void toggle_minimap_draw_villages();
+
+	bool minimap_draw_terrain();
+	void toggle_minimap_draw_terrain();
 
 	bool show_standing_animations();
 	void set_show_standing_animations(bool value);
@@ -198,9 +241,6 @@ namespace preferences {
 
 	bool use_twelve_hour_clock_format();
 	void set_use_twelve_hour_clock_format(bool value);
-
-	bool bzip2_savegame_compression();
-	void set_bzip2_savegame_compression(bool value);
 
 } // end namespace preferences
 

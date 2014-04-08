@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -79,32 +80,47 @@ tgame_paths::tgame_paths()
 
 void tgame_paths::pre_show(CVideo& /*video*/, twindow& window)
 {
-    FOREACH(const AUTO& path_ent, path_map_) {
+	FOREACH(const AUTO & path_ent, path_map_)
+	{
 		const std::string& path_id = path_ent.first;
 		const std::string& path_path = path_ent.second;
 
-		ttext_& path_w = find_widget<ttext_>(&window, path_wid_stem_ + path_id, false);
-		tbutton& copy_w = find_widget<tbutton>(&window, copy_wid_stem_ + path_id, false);
-		tbutton& browse_w = find_widget<tbutton>(&window, browse_wid_stem_ + path_id, false);
+		ttext_& path_w
+				= find_widget<ttext_>(&window, path_wid_stem_ + path_id, false);
+		tbutton& copy_w = find_widget<tbutton>(
+				&window, copy_wid_stem_ + path_id, false);
+		tbutton& browse_w = find_widget<tbutton>(
+				&window, browse_wid_stem_ + path_id, false);
 
 		path_w.set_value(path_path);
 		path_w.set_active(false);
 
-		connect_signal_mouse_left_click(copy_w, boost::bind(&tgame_paths::copy_to_clipboard_callback, this, path_path));
-		connect_signal_mouse_left_click(browse_w, boost::bind(&tgame_paths::browse_directory_callback, this, path_path));
+		connect_signal_mouse_left_click(
+				copy_w,
+				boost::bind(&tgame_paths::copy_to_clipboard_callback,
+							this,
+							path_path));
+		connect_signal_mouse_left_click(
+				browse_w,
+				boost::bind(&tgame_paths::browse_directory_callback,
+							this,
+							path_path));
+
+		if(!desktop::open_object_is_supported()) {
+			// No point in displaying these on platforms that can't do
+			// open_object().
+			browse_w.set_visible(tcontrol::tvisible::invisible);
+		}
 	}
 }
 
 void tgame_paths::browse_directory_callback(const std::string& path)
 {
-	desktop::open_in_file_manager(path);
+	desktop::open_object(path);
 }
 
 void tgame_paths::copy_to_clipboard_callback(const std::string& path)
 {
-	//std::cerr << "copy_to_clipboard_callback(): " << path << '\n';
 	copy_to_clipboard(path, false);
-	//std::cerr << "clipboard: " << copy_from_clipboard(false) << '\n';
 }
-
 }

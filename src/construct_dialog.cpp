@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Patrick Parker <patrick_x99@hotmail.com>
+   Copyright (C) 2006 - 2014 by Patrick Parker <patrick_x99@hotmail.com>
    wesnoth widget Copyright (C) 2003-5 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -140,7 +140,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 	try {
 		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
 		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
-	} catch(utils::invalid_utf8_exception&) {
+	} catch(utf8::invalid_utf8_exception&) {
 		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
 		throw;
 	}
@@ -910,8 +910,8 @@ void filter_textbox::delete_item(int selection) {
 	/* dialog_.set_menu_items(filtered_items_); */
 }
 
-void filter_textbox::handle_text_changed(const wide_string& text) {
-	const std::vector<std::string> words = utils::split(utils::wstring_to_string(text),' ');
+void filter_textbox::handle_text_changed(const ucs4::string& text) {
+	const std::vector<std::string> words = utils::split(unicode_cast<utf8::string>(text),' ');
 	if (words == last_words)
 		return;
 	last_words = words;

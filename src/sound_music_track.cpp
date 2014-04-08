@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
 #include "vorbis/vorbisfile.h"
 #endif
 
@@ -82,7 +82,7 @@ void music_track::resolve()
 	}
 
 
-#if !defined(_WIN32) && !defined(__APPLE__)
+#if !defined(_WIN32) && !defined(__APPLE__) && !defined(PANDORA)
 	if (title_.empty()) {
 		FILE* f;
 		f = fopen(file_path_.c_str(), "r");

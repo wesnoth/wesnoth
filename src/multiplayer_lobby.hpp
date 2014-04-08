@@ -43,7 +43,7 @@ public:
 			name(),
 			map_info(),
 			map_info_size(),
-			mod_info(),
+			era_and_mod_info(),
 			gold(),
 			xp(),
 			vision(),
@@ -60,6 +60,7 @@ public:
 			use_map_settings(false),
 			verified(false),
 			password_required(false),
+			have_scenario(false),
 			have_era(false),
 			have_all_mods(false)
 		{
@@ -71,7 +72,7 @@ public:
 		std::string name;
 		std::string map_info;
 		std::string map_info_size;
-		std::string mod_info;
+		std::string era_and_mod_info;
 		std::string gold;
 		std::string xp;
 		std::string vision;
@@ -88,6 +89,7 @@ public:
 		bool use_map_settings;
 		bool verified;
 		bool password_required;
+		bool have_scenario;
 		bool have_era;
 		bool have_all_mods;
 	};
@@ -103,9 +105,18 @@ public:
 	SDL_Rect get_item_rect(size_t index) const;
 	bool empty() const { return games_.empty(); }
 	bool selection_is_joinable() const
-	{ return empty() ? false : (games_[selected_].vacant_slots > 0 && !games_[selected_].started && games_[selected_].have_era && games_[selected_].have_all_mods); }
+	{ return empty() ? false : (games_[selected_].vacant_slots > 0 &&
+		!games_[selected_].started &&
+		games_[selected_].have_scenario &&
+		games_[selected_].have_era &&
+		games_[selected_].have_all_mods); }
 	// Moderators may observe any game.
-	bool selection_is_observable() const { return empty() ? false : (games_[selected_].observers && games_[selected_].have_era && games_[selected_].have_all_mods) || preferences::is_authenticated(); }
+	bool selection_is_observable() const
+	{ return empty() ? false : (games_[selected_].observers &&
+		games_[selected_].have_scenario &&
+		games_[selected_].have_era &&
+		games_[selected_].have_all_mods) ||
+		preferences::is_authenticated(); }
 	bool selected() const { return double_clicked_ && !empty(); }
 	void reset_selection() { double_clicked_ = false; }
 	int selection() const { return selected_; }
@@ -117,6 +128,7 @@ protected:
 private:
 	image::locator gold_icon_locator_;
 	image::locator xp_icon_locator_;
+	image::locator map_size_icon_locator_;
 	image::locator vision_icon_locator_;
 	image::locator time_limit_icon_locator_;
 	image::locator observer_icon_locator_;
@@ -129,6 +141,7 @@ private:
 	int margin_;
 	int minimap_size_;
 	int h_padding_;
+	int h_padding_image_to_text_;
 	int header_height_;
 	size_t selected_;
 	std::pair<size_t, size_t> visible_range_;
@@ -173,7 +186,7 @@ private:
 	gui::button observe_game_;
 	gui::button join_game_;
 	gui::button create_game_;
-	gui::button skip_replay_;
+	gui::combo replay_options_;
 	gui::button game_preferences_;
 	gui::button quit_game_;
 

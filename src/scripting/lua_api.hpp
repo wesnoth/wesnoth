@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2009 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -119,11 +119,6 @@ bool luaW_pcall(lua_State *L, int nArgs, int nRets, bool allow_wml_error = false
  * @return true if an element was pushed.
  */
 bool luaW_getglobal(lua_State *L, ...);
-
-/**
- * Converts a Lua value to a unit pointer.
- */
-unit *luaW_tounit(lua_State *L, int index, bool only_on_map);
 
 /**
  * Converts a Lua value to a unit pointer.

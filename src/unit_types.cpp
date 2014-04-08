@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -245,7 +245,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 		if(description != NULL) {
 			int inc_damage = lexical_cast<int>(increase_damage);
-			desc << utils::signed_value(inc_damage) << " "
+			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
 	}
@@ -256,7 +256,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 
 		if(description != NULL) {
 			int inc_attacks = lexical_cast<int>(increase_attacks);
-			desc << utils::signed_value(inc_attacks) << " "
+			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
 		}
 	}
@@ -317,28 +317,25 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 	if( !matches_filter(cfg) )
 		return false;
 
-	const std::string& increase_damage = cfg["increase_damage"];
-	const std::string& increase_attacks = cfg["increase_attacks"];
+	// Did the caller want the description?
+	if(description != NULL) {
+		const std::string& increase_damage = cfg["increase_damage"];
+		const std::string& increase_attacks = cfg["increase_attacks"];
 
-	std::stringstream desc;
+		std::stringstream desc;
 
-	if(increase_damage.empty() == false) {
-		if(description != NULL) {
+		if(increase_damage.empty() == false) {
 			int inc_damage = lexical_cast<int>(increase_damage);
-			desc << utils::signed_value(inc_damage) << " "
+			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
-	}
 
-	if(increase_attacks.empty() == false) {
-		if(description != NULL) {
+		if(increase_attacks.empty() == false) {
 			int inc_attacks = lexical_cast<int>(increase_attacks);
-			desc << utils::signed_value(inc_attacks) << " "
+			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
 		}
-	}
 
-	if(description != NULL) {
 		*description = desc.str();
 	}
 
@@ -362,6 +359,7 @@ unit_type::unit_type(const unit_type& o) :
 	hp_bar_scaling_(o.hp_bar_scaling_),
 	xp_bar_scaling_(o.xp_bar_scaling_),
 	level_(o.level_),
+	recall_cost_(o.recall_cost_),
 	movement_(o.movement_),
 	vision_(o.vision_),
 	jamming_(o.jamming_),
@@ -419,6 +417,7 @@ unit_type::unit_type(const config &cfg, const std::string & parent_id) :
 	hp_bar_scaling_(0.0),
 	xp_bar_scaling_(0.0),
 	level_(0),
+	recall_cost_(),
 	movement_(0),
 	vision_(-1),
 	jamming_(0),
@@ -570,6 +569,7 @@ void unit_type::build_help_index(const movement_type_map &mv_types,
 	description_ = cfg_["description"];
 	hitpoints_ = cfg_["hitpoints"].to_int(1);
 	level_ = cfg_["level"];
+	recall_cost_ = cfg_["recall_cost"].to_int(-1);
 	movement_ = cfg_["movement"].to_int(1);
 	vision_ = cfg_["vision"].to_int(-1);
 	jamming_ = cfg_["jamming"].to_int(0);
@@ -1072,7 +1072,7 @@ const config & unit_type::build_unit_cfg() const
 	static char const *unit_type_attrs[] = { "attacks", "base_ids", "die_sound",
 		"experience", "flies", "healed_sound", "hide_help", "hitpoints",
 		"id", "ignore_race_traits", "inherit", "movement", "movement_type",
-		"name", "num_traits", "variation_id", "variation_name" };
+		"name", "num_traits", "variation_id", "variation_name", "recall_cost" };
 	BOOST_FOREACH(const char *attr, unit_type_attrs) {
 		unit_cfg_.remove_attribute(attr);
 	}

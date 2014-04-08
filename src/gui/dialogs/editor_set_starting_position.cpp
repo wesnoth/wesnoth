@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,15 +22,16 @@
 #include "gettext.hpp"
 #include "gui/auxiliary/find_widget.tpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-	#include "gui/widgets/list.hpp"
+#include "gui/widgets/list.hpp"
 #else
-	#include "gui/widgets/listbox.hpp"
+#include "gui/widgets/listbox.hpp"
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "map_location.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -64,9 +65,9 @@ namespace gui2 {
 REGISTER_DIALOG(editor_set_starting_position)
 
 teditor_set_starting_position::teditor_set_starting_position(
-		  unsigned current_player
-		, unsigned maximum_players
-		, const std::vector<map_location>& starting_positions)
+		unsigned current_player,
+		unsigned maximum_players,
+		const std::vector<map_location>& starting_positions)
 	: selection_(std::min(current_player, maximum_players))
 	, starting_positions_(starting_positions)
 {
@@ -95,11 +96,13 @@ void teditor_set_starting_position::pre_show(CVideo& /*video*/, twindow& window)
 		utils::string_map symbols;
 		symbols["player_number"] = str_cast(i + 1);
 
-		column["label"] = utils::interpolate_variables_into_string(_("Player $player_number"), &symbols);
+		column["label"] = utils::interpolate_variables_into_string(
+				_("Player $player_number"), &symbols);
 		data.insert(std::make_pair("player", column));
 
 		if(player_pos.valid()) {
-			column["label"] = (formatter() << "(" << player_pos.x + 1 << ", " << player_pos.y + 1 << ")").str();
+			column["label"] = (formatter() << "(" << player_pos.x + 1 << ", "
+										   << player_pos.y + 1 << ")").str();
 			data.insert(std::make_pair("location", column));
 		}
 
@@ -118,5 +121,4 @@ void teditor_set_starting_position::post_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "listbox", false);
 	selection_ = list.get_selected_row();
 }
-
 }

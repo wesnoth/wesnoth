@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "gui/widgets/generator.hpp"
 #include "gui/widgets/scrollbar_container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * The list class.
@@ -28,10 +29,10 @@ namespace gui2 {
  * For now it's a generic for all kind of lists, horizontal, vertical etc.
  * Might be that there will be different types per class, not sure yet.
  */
-class tlist
-		: public tcontainer_
+class tlist : public tcontainer_
 {
 	friend class tdebug_layout_graph;
+
 public:
 	/**
 	 * Constructor.
@@ -44,11 +45,11 @@ public:
 	 * @param select              Select an item when selected, if false it
 	 *                            changes the visible state instead.
 	 */
-	tlist(const bool has_minimum
-			, const bool has_maximum
-			, const tgenerator_::tplacement placement
-			, const bool select
-			, const tbuilder_grid_const_ptr list_builder);
+	tlist(const bool has_minimum,
+		  const bool has_maximum,
+		  const tgenerator_::tplacement placement,
+		  const bool select,
+		  const tbuilder_grid_const_ptr list_builder);
 
 	/***** ***** ***** ***** Row handling. ***** ***** ****** *****/
 	/**
@@ -80,9 +81,8 @@ public:
 	 * @param index               The item before which to add the new item,
 	 *                            0 == begin, -1 == end.
 	 */
-	void add_row(
-			  const std::map<std::string /* widget id */, string_map>& data
-			, const int index = -1);
+	void add_row(const std::map<std::string /* widget id */, string_map>& data,
+				 const int index = -1);
 
 	/**
 	 * Appends several rows to the grid.
@@ -215,7 +215,11 @@ private:
 	 *
 	 * Note the order of the states must be the same as defined in settings.hpp.
 	 */
-	enum tstate { ENABLED, DISABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		DISABLED,
+		COUNT
+	};
 
 	/**
 	 * Current state of the widget.
@@ -274,20 +278,18 @@ private:
 
 	void signal_handler_left_button_down(const event::tevent event);
 
-	void signal_handler_pre_child_left_button_click(
-			  tgrid* grid
-			, const event::tevent event
-			, bool& handled
-			, bool& halt);
+	void signal_handler_pre_child_left_button_click(tgrid* grid,
+													const event::tevent event,
+													bool& handled,
+													bool& halt);
 
-	void signal_handler_left_button_click(
-			  tgrid* grid
-			, const event::tevent event);
+	void signal_handler_left_button_click(tgrid* grid,
+										  const event::tevent event);
 
-	void signal_handler_sdl_key_down(const event::tevent event
-			, bool& handled
-			, const SDLKey key
-			, SDLMod modifier);
+	void signal_handler_sdl_key_down(const event::tevent event,
+									 bool& handled,
+									 const SDLKey key,
+									 SDLMod modifier);
 };
 
 typedef tlist tlistbox;
@@ -296,4 +298,3 @@ typedef tlist tlistbox;
 
 #endif
 #endif
-

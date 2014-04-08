@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,8 @@
 #ifndef GUI_WIDGETS_INTEGER_SELECTOR_HPP_INCLUDED
 #define GUI_WIDGETS_INTEGER_SELECTOR_HPP_INCLUDED
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Small abstract helper class.
@@ -26,7 +27,9 @@ namespace gui2 {
 class tinteger_selector_
 {
 public:
-	virtual ~tinteger_selector_() {}
+	virtual ~tinteger_selector_()
+	{
+	}
 
 	/** Sets the selected value. */
 	virtual void set_value(const int value) = 0;

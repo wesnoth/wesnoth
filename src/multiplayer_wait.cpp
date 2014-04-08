@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013
+   Copyright (C) 2007 - 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
 #include "statistics.hpp"
+#include "sound.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -34,6 +35,9 @@
 static lg::log_domain log_network("network");
 #define DBG_NW LOG_STREAM(debug, log_network)
 #define LOG_NW LOG_STREAM(info, log_network)
+
+static lg::log_domain log_enginerefac("enginerefac");
+#define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 namespace {
 
@@ -394,6 +398,7 @@ void wait::start_game()
 	}
 
 	LOG_NW << "starting game\n";
+	sound::play_UI_sound(game_config::sounds::mp_game_begins);
 }
 
 void wait::layout_children(const SDL_Rect& rect)
@@ -446,6 +451,19 @@ void wait::process_network_data(const config& data, const network::connection so
 		/** @todo We should catch config::error and then leave the game. */
 		level_.apply_diff(c);
 		generate_menu();
+	} else if(const config &change = data.child("change_controller")) {
+		LOG_NW << "received change controller" << std::endl;
+		LOG_RG << "multiplayer_wait: [change_controller]" << std::endl;
+		LOG_RG << data.debug() << std::endl;
+		//const int side = lexical_cast<int>(change["side"]);
+
+		if (config & sidetochange = level_.find_child("side", "side", change["side"])) {
+			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
+			sidetochange.merge_with(change);
+			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
+		} else {
+			LOG_RG << "change_controller didn't find any side!" << std::endl;
+		}
 	} else if(data.child("side") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 		LOG_NW << "got some sides. Current number of sides = "

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,13 +18,13 @@
 #include "gui/widgets/integer_selector.hpp"
 #include "gui/widgets/scrollbar.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /** A slider. */
 class tslider : public tscrollbar_, public tinteger_selector_
 {
 public:
-
 	tslider();
 
 	/***** ***** ***** ***** layout functions ***** ***** ***** *****/
@@ -32,8 +32,8 @@ public:
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** Inherited from tinteger_selector_. */
@@ -41,35 +41,51 @@ public:
 
 	/** Inherited from tinteger_selector_. */
 	int get_value() const
-		{ return minimum_value_ + get_item_position() * get_step_size(); }
+	{
+		return minimum_value_ + get_item_position() * get_step_size();
+	}
 
 	/** Inherited from tinteger_selector_. */
 	void set_minimum_value(const int minimum_value);
 
 	/** Inherited from tinteger_selector_. */
-	int get_minimum_value() const { return minimum_value_; }
+	int get_minimum_value() const
+	{
+		return minimum_value_;
+	}
 
 	/** Inherited from tinteger_selector_. */
 	void set_maximum_value(const int maximum_value);
 
 	/** Inherited from tinteger_selector_. */
 	int get_maximum_value() const
-		// The number of items needs to include the begin and end so count - 1.
-		{ return minimum_value_ + get_item_count() - 1; }
+	// The number of items needs to include the begin and end so count - 1.
+	{
+		return minimum_value_ + get_item_count() - 1;
+	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_best_slider_length(const unsigned length)
-		{ best_slider_length_ = length; set_is_dirty(true); }
+	{
+		best_slider_length_ = length;
+		set_is_dirty(true);
+	}
 
 	void set_minimum_value_label(const t_string& minimum_value_label)
-		{ minimum_value_label_ = minimum_value_label; }
+	{
+		minimum_value_label_ = minimum_value_label;
+	}
 
 	void set_maximum_value_label(const t_string& maximum_value_label)
-		{ maximum_value_label_ = maximum_value_label; }
+	{
+		maximum_value_label_ = maximum_value_label;
+	}
 
 	void set_value_labels(const std::vector<t_string>& value_labels)
-		{ value_labels_ = value_labels; }
+	{
+		value_labels_ = value_labels;
+	}
 
 	/**
 	 * Returns the label shown for the current value.
@@ -81,12 +97,10 @@ public:
 	t_string get_value_label() const;
 
 protected:
-
 	/** Inherited from tscrollbar. */
 	void child_callback_positioner_moved();
 
 private:
-
 	/** The best size for the slider part itself, if 0 ignored. */
 	unsigned best_slider_length_;
 
@@ -99,7 +113,10 @@ private:
 	int minimum_value_;
 
 	/** Inherited from tscrollbar. */
-	unsigned get_length() const { return get_width(); }
+	unsigned get_length() const
+	{
+		return get_width();
+	}
 
 	/** Inherited from tscrollbar. */
 	unsigned minimum_positioner_length() const;
@@ -120,8 +137,11 @@ private:
 	int on_bar(const tpoint& coordinate) const;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current) const
-		{ return current.x - original.x; }
+	int get_length_difference(const tpoint& original, const tpoint& current)
+			const
+	{
+		return current.x - original.x;
+	}
 
 	/** See @ref tcontrol::update_canvas. */
 	virtual void update_canvas() OVERRIDE;
@@ -158,17 +178,16 @@ private:
 	/**
 	 * Signal handlers:
 	 */
-	void signal_handler_sdl_key_down(const event::tevent event
-			, bool& handled
-			, const SDLKey key);
+	void signal_handler_sdl_key_down(const event::tevent event,
+									 bool& handled,
+									 const SDLKey key);
 
 	// In this subclass, only used to grab keyboard focus -
 	// see tscrollbar class for more handling of this event.
-	void signal_handler_left_button_up(
-			const event::tevent event, bool& handled);
+	void signal_handler_left_button_up(const event::tevent event,
+									   bool& handled);
 };
 
 } // namespace gui2
 
 #endif
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,23 +21,9 @@
 #include "gui/widgets/helper.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
-
-tresolution_definition_::tresolution_definition_(const config& cfg)
-	: window_width(cfg["window_width"])
-	, window_height(cfg["window_height"])
-	, min_width(cfg["min_width"])
-	, min_height(cfg["min_height"])
-	, default_width(cfg["default_width"])
-	, default_height(cfg["default_height"])
-	, max_width(cfg["max_width"])
-	, max_height(cfg["max_height"])
-	, text_extra_width(cfg["text_extra_width"])
-	, text_extra_height(cfg["text_extra_height"])
-	, text_font_size(cfg["text_font_size"])
-	, text_font_style(decode_font_style(cfg["text_font_style"]))
-	, state()
+namespace gui2
 {
+
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_widget
@@ -100,15 +86,25 @@ tresolution_definition_::tresolution_definition_(const config& cfg)
  * @end{parent}{name=generic/widget_definition/}
  */
 
-	DBG_GUI_P << "Parsing resolution "
-			<< window_width << ", " << window_height << '\n';
+tresolution_definition_::tresolution_definition_(const config& cfg)
+	: window_width(cfg["window_width"])
+	, window_height(cfg["window_height"])
+	, min_width(cfg["min_width"])
+	, min_height(cfg["min_height"])
+	, default_width(cfg["default_width"])
+	, default_height(cfg["default_height"])
+	, max_width(cfg["max_width"])
+	, max_height(cfg["max_height"])
+	, text_extra_width(cfg["text_extra_width"])
+	, text_extra_height(cfg["text_extra_height"])
+	, text_font_size(cfg["text_font_size"])
+	, text_font_style(decode_font_style(cfg["text_font_style"]))
+	, state()
+{
+	DBG_GUI_P << "Parsing resolution " << window_width << ", " << window_height
+			  << '\n';
 }
 
-tcontrol_definition::tcontrol_definition(const config& cfg)
-	: id(cfg["id"])
-	, description(cfg["description"].t_str())
-	, resolutions()
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1
@@ -132,10 +128,12 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
  * @end{tag}{name=widget_definition}
  * @end{parent}{name="generic/"}
  */
-
+tcontrol_definition::tcontrol_definition(const config& cfg)
+	: id(cfg["id"]), description(cfg["description"].t_str()), resolutions()
+{
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("control", "id"));
-	VALIDATE(!description.empty()
-			, missing_mandatory_wml_key("control", "description"));
+	VALIDATE(!description.empty(),
+			 missing_mandatory_wml_key("control", "description"));
 
 	/*
 	 * Do this validation here instead of in load_resolutions so the
@@ -147,4 +145,3 @@ tcontrol_definition::tcontrol_definition(const config& cfg)
 }
 
 } // namespace gui2
-

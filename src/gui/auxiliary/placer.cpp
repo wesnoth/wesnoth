@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,9 +16,9 @@
 
 #define ENUM_ENABLE_STREAM_OPERATORS_IMPLEMENTATION
 #define ENUM_TYPE ::gui2::tplacer_
-#define ENUM_LIST                                                             \
-ENUM(horizontal,                  "horizontal");                              \
-ENUM(vertical,                    "vertical");                                \
+#define ENUM_LIST                                                              \
+	ENUM(horizontal, "horizontal");                                            \
+	ENUM(vertical, "vertical");
 
 #include "gui/auxiliary/placer.hpp"
 
@@ -27,18 +27,18 @@ ENUM(vertical,                    "vertical");                                \
 #include "gui/auxiliary/placer/vertical_list.hpp"
 
 
-namespace gui2 {
+namespace gui2
+{
 
 ENUM_DEFINE_STREAM_OPERATORS(::gui2::tplacer_::tgrow_direction)
 
-tplacer_* tplacer_::build(
-		  const tgrow_direction grow_direction
-		, const unsigned parallel_items)
+tplacer_* tplacer_::build(const tgrow_direction grow_direction,
+						  const unsigned parallel_items)
 {
 	switch(grow_direction) {
-		case horizontal :
+		case horizontal:
 			return new implementation::tplacer_horizontal_list(parallel_items);
-		case vertical :
+		case vertical:
 			return new implementation::tplacer_vertical_list(parallel_items);
 	};
 

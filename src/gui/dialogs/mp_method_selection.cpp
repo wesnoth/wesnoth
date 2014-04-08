@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,8 @@
 #include "gui/widgets/toggle_button.hpp"
 #include "multiplayer.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -56,8 +57,8 @@ REGISTER_DIALOG(mp_method_selection)
 void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	user_name_ = preferences::login();
-	ttext_box* user_widget = find_widget<ttext_box>(
-			&window, "user_name", false, true);
+	ttext_box* user_widget
+			= find_widget<ttext_box>(&window, "user_name", false, true);
 	user_widget->set_value(user_name_);
 	user_widget->set_maximum_length(mp::max_login_size);
 	window.keyboard_capture(user_widget);
@@ -70,8 +71,8 @@ void tmp_method_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tmp_method_selection::post_show(twindow& window)
 {
 	if(get_retval() == twindow::OK) {
-		ttext_box& user_widget = find_widget<ttext_box>(
-				&window, "user_name", false);
+		ttext_box& user_widget
+				= find_widget<ttext_box>(&window, "user_name", false);
 		tlistbox& list = find_widget<tlistbox>(&window, "method_list", false);
 
 		choice_ = list.get_selected_row();

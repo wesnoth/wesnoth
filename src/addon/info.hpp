@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2010 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,10 @@ struct addon_info
 	std::vector<std::string> depends;
 	// std::vector<addon_dependency> conflicts, recommends, replaces;
 
+	std::string feedback_url;
+
 	time_t updated;
+	time_t created;
 
 	// Artificial upload order index used to preserve add-ons upload order
 	// until we have actual first-upload timestamps implemented. This index
@@ -60,7 +63,10 @@ struct addon_info
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
-		, updated(), order()
+		, feedback_url()
+		, updated()
+		, created()
+		, order()
 	{}
 
 	explicit addon_info(const config& cfg)
@@ -68,7 +74,10 @@ struct addon_info
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
 		, depends()
-		, updated(), order()
+		, feedback_url()
+		, updated()
+		, created()
+		, order()
 	{
 		this->read(cfg);
 	}
@@ -87,7 +96,9 @@ struct addon_info
 			this->type = o.type;
 			this->locales = o.locales;
 			this->depends = o.depends;
+			this->feedback_url = o.feedback_url;
 			this->updated = o.updated;
+			this->created = o.created;
 			this->order = o.order;
 		}
 		return *this;

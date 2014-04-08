@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2011 - 2013 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2014 by Lukasz Dobrogowski
+   <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,15 +21,17 @@
 
 #include <boost/shared_ptr.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
-class tmp_change_control : public tdialog {
+class tmp_change_control : public tdialog
+{
 public:
 	class model;
 	class view;
 	class controller;
 
-	explicit tmp_change_control(events::menu_handler *mh);
+	explicit tmp_change_control(events::menu_handler* mh);
 	boost::shared_ptr<view> get_view();
 
 private:
@@ -39,10 +42,9 @@ private:
 	void pre_show(CVideo& video, twindow& window);
 	void post_show(twindow& window);
 
-	events::menu_handler *menu_handler_;
+	events::menu_handler* menu_handler_;
 	boost::shared_ptr<view> view_;
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_MP_CHANGE_CONTROL_HPP_INCLUDED */

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,7 +29,8 @@
 
 #include <ctime>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -78,20 +79,11 @@ REGISTER_DIALOG(debug_clock)
 void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
 {
 	hour_percentage_ = find_widget<tprogress_bar>(
-			  &window
-			, "hour_percentage"
-			, false
-			, false);
+			&window, "hour_percentage", false, false);
 	minute_percentage_ = find_widget<tprogress_bar>(
-			  &window
-			, "minute_percentage"
-			, false
-			, false);
+			&window, "minute_percentage", false, false);
 	second_percentage_ = find_widget<tprogress_bar>(
-			  &window
-			, "second_percentage"
-			, false
-			, false);
+			&window, "second_percentage", false, false);
 
 	hour_ = find_widget<tinteger_selector_>(&window, "hour", false, false);
 	if(hour_) {
@@ -113,9 +105,8 @@ void tdebug_clock::pre_show(CVideo& /*video*/, twindow& window)
 	window_ = &window;
 
 	signal_ = boost::bind(&tdebug_clock::update_time, this, false);
-	window.connect_signal<event::DRAW>(
-			  signal_
-			, event::tdispatcher::front_child);
+	window.connect_signal<event::DRAW>(signal_,
+									   event::tdispatcher::front_child);
 
 	time_.set_current_time();
 	update_time(true);
@@ -157,7 +148,8 @@ void tdebug_clock::update_time(const bool force)
 	}
 
 	if(clock_) {
-		FOREACH(AUTO& canvas, clock_->canvas()) {
+		FOREACH(AUTO & canvas, clock_->canvas())
+		{
 			canvas.set_variable("hour", variant(hour_stamp));
 			canvas.set_variable("minute", variant(minute_stamp));
 			canvas.set_variable("second", variant(second_stamp));
@@ -177,18 +169,14 @@ void tdebug_clock::update_time(const bool force)
 	}
 }
 
-tdebug_clock::ttime::ttime()
-	: hour(0)
-	, minute(0)
-	, second(0)
-	, millisecond(0)
+tdebug_clock::ttime::ttime() : hour(0), minute(0), second(0), millisecond(0)
 {
 }
 
 void tdebug_clock::ttime::set_current_time()
 {
 	time_t now = time(NULL);
-	tm *stamp = localtime(&now);
+	tm* stamp = localtime(&now);
 
 	hour = stamp->tm_hour;
 	minute = stamp->tm_min;
@@ -200,22 +188,26 @@ bool tdebug_clock::ttime::step(const unsigned milliseconds)
 {
 	millisecond += milliseconds;
 
-	if(millisecond < 1000) return false;
+	if(millisecond < 1000)
+		return false;
 
 	millisecond -= 1000;
 	++second;
 
-	if(second < 60) return true;
+	if(second < 60)
+		return true;
 
 	second -= 60;
 	++minute;
 
-	if(minute < 60) return true;
+	if(minute < 60)
+		return true;
 
 	minute -= 60;
 	++hour;
 
-	if(hour < 24) return true;
+	if(hour < 24)
+		return true;
 
 	hour -= 24;
 
@@ -223,4 +215,3 @@ bool tdebug_clock::ttime::step(const unsigned milliseconds)
 }
 
 } // namespace gui2
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2011 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -47,7 +47,8 @@ static lg::log_domain log_chat_log("chat_log");
 #define WRN_CHAT_LOG LOG_STREAM(warn, log_chat_log)
 #define ERR_CHAT_LOG LOG_STREAM(err, log_chat_log)
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -62,10 +63,12 @@ namespace gui2 {
 
 REGISTER_DIALOG(chat_log)
 
-//The model is an interface defining the data to be displayed or otherwise acted upon in the user interface.
-class tchat_log::model {
+// The model is an interface defining the data to be displayed or otherwise
+// acted upon in the user interface.
+class tchat_log::model
+{
 public:
-	model(const vconfig &c, replay *r)
+	model(const vconfig& c, replay* r)
 		: cfg(c)
 		, msg_label(NULL)
 		, chat_log_history(r->build_chat_log())
@@ -80,14 +83,14 @@ public:
 	}
 
 	vconfig cfg;
-	tcontrol *msg_label;
-	const std::vector<chat_msg> &chat_log_history;
+	tcontrol* msg_label;
+	const std::vector<chat_msg>& chat_log_history;
 	int page;
 	static const int COUNT_PER_PAGE = 100;
-	tslider *page_number;
-	tbutton *previous_page;
-	tbutton *next_page;
-	ttext_box *filter;
+	tslider* page_number;
+	tbutton* previous_page;
+	tbutton* next_page;
+	ttext_box* filter;
 
 	void clear_chat_msg_list()
 	{
@@ -97,26 +100,29 @@ public:
 	int count_of_pages()
 	{
 		int size = chat_log_history.size();
-		return (size%COUNT_PER_PAGE==0) ? (size/COUNT_PER_PAGE) : (size/COUNT_PER_PAGE)+1 ;
+		return (size % COUNT_PER_PAGE == 0) ? (size / COUNT_PER_PAGE)
+											: (size / COUNT_PER_PAGE) + 1;
 	}
 
 	void populate_chat_message_list(int first, int last)
 	{
-		const std::string& lcfilter = utils::lowercase(filter->get_value());
+		const std::string& lcfilter = utf8::lowercase(filter->get_value());
 		std::stringstream str;
-		LOG_CHAT_LOG << "entering tchat_log::model::add_row_to_chat_message_list\n";
-		if (first<last) {
-			FOREACH(const AUTO& t
-					, make_pair(
-						  chat_log_history.begin() + first
-						, chat_log_history.begin() + last)) {
+		LOG_CHAT_LOG
+		<< "entering tchat_log::model::add_row_to_chat_message_list\n";
+		if(first < last) {
+			FOREACH(const AUTO & t,
+					make_pair(chat_log_history.begin() + first,
+							  chat_log_history.begin() + last))
+			{
 
-				const std::string& timestamp = preferences::get_chat_timestamp(t.time());
+				const std::string& timestamp
+						= preferences::get_chat_timestamp(t.time());
 
-				if(lcfilter.empty() == false)
-				{
-					const std::string& lcsample =
-						utils::lowercase(timestamp) + utils::lowercase(t.nick()) + utils::lowercase(t.text());
+				if(lcfilter.empty() == false) {
+					const std::string& lcsample = utf8::lowercase(timestamp)
+												  + utf8::lowercase(t.nick())
+												  + utf8::lowercase(t.text());
 
 					if(lcsample.find(lcfilter) == std::string::npos) {
 						continue;
@@ -125,45 +131,37 @@ public:
 
 				std::string prefix("/me");
 				bool me = false;
-				if (!t.text().compare(0, prefix.size(), prefix))
-				{
+				if(!t.text().compare(0, prefix.size(), prefix)) {
 					me = true;
 				}
-				const std::string & color = t.color();
-				std::string nick_prefix = "<span color=\""+color+"\">";
-				std::string nick_suffix ="</span> ";
-				if (me) {
-					str << nick_prefix
-							<< "&lt;"
-							<< font::escape_text(timestamp)
-							<< font::escape_text(t.nick())
-							<< font::escape_text(t.text().substr(3))
-							<<"&gt;"
-							<<nick_suffix
-							<< std::endl;
+				const std::string& color = t.color();
+				std::string nick_prefix = "<span color=\"" + color + "\">";
+				std::string nick_suffix = "</span> ";
+				if(me) {
+					str << nick_prefix << "&lt;" << font::escape_text(timestamp)
+						<< font::escape_text(t.nick())
+						<< font::escape_text(t.text().substr(3)) << "&gt;"
+						<< nick_suffix << std::endl;
 				} else {
-					str << nick_prefix
-							<< "&lt;"
-							<< font::escape_text(timestamp)
-							<< font::escape_text(t.nick())
-							<< "&gt;"
-							<< nick_suffix
-							<< font::escape_text(t.text())
-							<< std::endl;
+					str << nick_prefix << "&lt;" << font::escape_text(timestamp)
+						<< font::escape_text(t.nick()) << "&gt;" << nick_suffix
+						<< font::escape_text(t.text()) << std::endl;
 				}
 			}
 		}
 		msg_label->set_label(str.str());
-		LOG_CHAT_LOG << "exited tchat_log::model::add_row_to_chat_message_list\n";
+		LOG_CHAT_LOG
+		<< "exited tchat_log::model::add_row_to_chat_message_list\n";
 	}
-
 };
 
-//The controller acts upon the model. It retrieves data from repositories, persists it, manipulates it, and determines how it will be displayed in the view.
-class tchat_log::controller {
+// The controller acts upon the model. It retrieves data from repositories,
+// persists it, manipulates it, and determines how it will be displayed in the
+// view.
+class tchat_log::controller
+{
 public:
-	controller(model &m)
-		: model_(m)
+	controller(model& m) : model_(m)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::controller" << std::endl;
 		LOG_CHAT_LOG << "Exiting tchat_log::controller" << std::endl;
@@ -171,26 +169,29 @@ public:
 
 	void next_page()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::next_page" << std::endl;
-		if (model_.page >= model_.count_of_pages()-1) {
+		LOG_CHAT_LOG << "Entering tchat_log::controller::next_page"
+					 << std::endl;
+		if(model_.page >= model_.count_of_pages() - 1) {
 			return;
 		}
 		model_.page++;
-		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
+		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
 		update_view_from_model();
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::next_page" << std::endl;
 	}
 
 	void previous_page()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::previous_page" << std::endl;
-		if (model_.page == 0) {
+		LOG_CHAT_LOG << "Entering tchat_log::controller::previous_page"
+					 << std::endl;
+		if(model_.page == 0) {
 			return;
 		}
 		model_.page--;
-		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
+		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::previous_page" << std::endl;
+		LOG_CHAT_LOG << "Exiting tchat_log::controller::previous_page"
+					 << std::endl;
 	}
 
 	void filter()
@@ -202,16 +203,21 @@ public:
 
 	void handle_page_number_changed()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::handle_page_number_changed" << std::endl;
-		model_.page = model_.page_number->get_value()-1;
-		LOG_CHAT_LOG << "Set page to " << model_.page+1 << std::endl;
+		LOG_CHAT_LOG
+		<< "Entering tchat_log::controller::handle_page_number_changed"
+		<< std::endl;
+		model_.page = model_.page_number->get_value() - 1;
+		LOG_CHAT_LOG << "Set page to " << model_.page + 1 << std::endl;
 		update_view_from_model();
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::handle_page_number_changed" << std::endl;
+		LOG_CHAT_LOG
+		<< "Exiting tchat_log::controller::handle_page_number_changed"
+		<< std::endl;
 	}
 
 	void update_view_from_model()
 	{
-		LOG_CHAT_LOG << "Entering tchat_log::controller::update_view_from_model" << std::endl;
+		LOG_CHAT_LOG << "Entering tchat_log::controller::update_view_from_model"
+					 << std::endl;
 		model_.msg_label->set_use_markup(true);
 		int size = model_.chat_log_history.size();
 		LOG_CHAT_LOG << "Number of chat messages: " << size << std::endl;
@@ -219,40 +225,45 @@ public:
 		int page = model_.page;
 		// determine count of pages
 		int count_of_pages = model_.count_of_pages();
-		if (count_of_pages==0) {
+		if(count_of_pages == 0) {
 			count_of_pages = 1;
 		}
-		LOG_CHAT_LOG << "Page: " << page+1 << " of " << count_of_pages << std::endl;
+		LOG_CHAT_LOG << "Page: " << page + 1 << " of " << count_of_pages
+					 << std::endl;
 		// determine first
-		int first = model_.page*model_.COUNT_PER_PAGE;
+		int first = model_.page * model_.COUNT_PER_PAGE;
 		// determine last
-		int last = (page<count_of_pages-1) ? first+model_.COUNT_PER_PAGE : size;
+		int last = (page < count_of_pages - 1) ? first + model_.COUNT_PER_PAGE
+											   : size;
 		LOG_CHAT_LOG << "First " << first << ", last " << last << std::endl;
 		// determine has previous, determine has next
-		bool has_next = page+1 < count_of_pages;
+		bool has_next = page + 1 < count_of_pages;
 		bool has_previous = page > 0;
 		model_.previous_page->set_active(has_previous);
 		model_.next_page->set_active(has_next);
-		model_.populate_chat_message_list(first,last);
+		model_.populate_chat_message_list(first, last);
 		model_.page_number->set_minimum_value(1);
 		model_.page_number->set_maximum_value(count_of_pages);
 		model_.page_number->set_active(count_of_pages > 1);
-		LOG_CHAT_LOG << "Maximum value of page number slider: " << count_of_pages << std::endl;
-		model_.page_number->set_value(page+1);
-		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model" << std::endl;
+		LOG_CHAT_LOG << "Maximum value of page number slider: "
+					 << count_of_pages << std::endl;
+		model_.page_number->set_value(page + 1);
+		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model"
+					 << std::endl;
 	}
 
 
 private:
-	model &model_;
+	model& model_;
 };
 
 
-//The view is an interface that displays data (the model) and routes user commands to the controller to act upon that data.
-class tchat_log::view {
+// The view is an interface that displays data (the model) and routes user
+// commands to the controller to act upon that data.
+class tchat_log::view
+{
 public:
-	view(const vconfig &cfg, replay *r)
-		: model_(cfg, r),controller_(model_)
+	view(const vconfig& cfg, replay* r) : model_(cfg, r), controller_(model_)
 	{
 	}
 
@@ -260,49 +271,58 @@ public:
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::pre_show" << std::endl;
 		controller_.update_view_from_model();
-		window.invalidate_layout();//workaround for assertion failure
+		window.invalidate_layout(); // workaround for assertion failure
 		LOG_CHAT_LOG << "Exiting tchat_log::view::pre_show" << std::endl;
 	}
 
-	void handle_page_number_changed(twindow &window)
+	void handle_page_number_changed(twindow& window)
 	{
 		controller_.handle_page_number_changed();
-		window.invalidate_layout();//workaround for assertion failure
+		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void next_page(twindow &window)
+	void next_page(twindow& window)
 	{
 		controller_.next_page();
-		window.invalidate_layout();//workaround for assertion failure
+		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void previous_page(twindow &window)
+	void previous_page(twindow& window)
 	{
 		controller_.previous_page();
-		window.invalidate_layout();//workaround for assertion failure
+		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void filter(twindow &window)
+	void filter(twindow& window)
 	{
 		controller_.filter();
-		window.invalidate_layout();//workaround for assertion failure
+		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void bind(twindow &window)
+	void bind(twindow& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
 		model_.msg_label = &find_widget<tcontrol>(&window, "msg", false);
-		model_.page_number = &find_widget<tslider>(&window, "page_number", false);
-		connect_signal_notify_modified(*model_.page_number, boost::bind(&view::handle_page_number_changed, this, boost::ref(window)));
+		model_.page_number
+				= &find_widget<tslider>(&window, "page_number", false);
+		connect_signal_notify_modified(
+				*model_.page_number,
+				boost::bind(&view::handle_page_number_changed,
+							this,
+							boost::ref(window)));
 
-		model_.previous_page = &find_widget<tbutton>(&window, "previous_page", false);
-		model_.previous_page->connect_click_handler(boost::bind(&view::previous_page, this, boost::ref(window)));
+		model_.previous_page
+				= &find_widget<tbutton>(&window, "previous_page", false);
+		model_.previous_page->connect_click_handler(
+				boost::bind(&view::previous_page, this, boost::ref(window)));
 
 		model_.next_page = &find_widget<tbutton>(&window, "next_page", false);
-		model_.next_page->connect_click_handler(boost::bind(&view::next_page, this, boost::ref(window)));
+		model_.next_page->connect_click_handler(
+				boost::bind(&view::next_page, this, boost::ref(window)));
 
 		model_.filter = &find_widget<ttext_box>(&window, "filter", false);
-		model_.filter->set_text_changed_callback(boost::bind(&view::filter, this, boost::ref(window)));
+		model_.filter->set_text_changed_callback(
+				boost::bind(&view::filter, this, boost::ref(window)));
 		window.keyboard_capture(model_.filter);
 
 		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
@@ -314,8 +334,7 @@ private:
 };
 
 
-tchat_log::tchat_log(const vconfig &cfg, replay *r)
-	: view_()
+tchat_log::tchat_log(const vconfig& cfg, replay* r) : view_()
 {
 	LOG_CHAT_LOG << "Entering tchat_log::tchat_log" << std::endl;
 	view_ = boost::shared_ptr<view>(new view(cfg, r));
@@ -336,8 +355,8 @@ void tchat_log::pre_show(CVideo& video, twindow& window)
 {
 	LOG_CHAT_LOG << "Entering tchat_log::pre_show" << std::endl;
 	view_->bind(window);
-	view_->pre_show(video,window);
+	view_->pre_show(video, window);
 	LOG_CHAT_LOG << "Exiting tchat_log::pre_show" << std::endl;
 }
 
-} //end of namespace gui2
+} // end of namespace gui2

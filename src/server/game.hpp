@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -108,6 +108,9 @@ public:
 	const user_vector all_game_users() const;
 
 	void start_game(const player_map::const_iterator starter);
+	void perform_controller_tweaks(); 			//this is performed just before starting and before [start_game] signal
+								//send scenario_diff's specific to each client so that they locally 
+								//control their human sides
 
 	void update_game();
 
@@ -192,6 +195,8 @@ public:
 	void set_termination_reason(const std::string& reason);
 
 	void allow_global(const simple_wml::document &data);
+
+	void require_random(const simple_wml::document &data, const player_map::iterator user);
 
 private:
 	//forbidden operations
@@ -290,6 +295,8 @@ private:
 
 	/** Helps debugging player and observer lists. */
 	std::string debug_player_info() const;
+	/** Helps debugging controller tweaks. */
+	std::string debug_sides_info() const;
 
 	player_map* player_info_;
 
@@ -350,7 +357,7 @@ private:
 };
 
 struct game_is_member {
-	game_is_member(network::connection sock) : sock_(sock) {};
+	game_is_member(network::connection sock) : sock_(sock) {}
 	bool operator()(const game* g) const { return g->is_owner(sock_) || g->is_member(sock_); }
 
 private:
@@ -358,7 +365,7 @@ private:
 };
 
 struct game_id_matches {
-	game_id_matches(int id) : id_(id) {};
+	game_id_matches(int id) : id_(id) {}
 	bool operator()(const game* g) const { return g->id() == id_; }
 
 private:

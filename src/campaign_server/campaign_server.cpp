@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,6 +25,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "game_config.hpp"
 #include "addon/validation.hpp"
 #include "version.hpp"
@@ -80,6 +81,85 @@ namespace {
 		return illegal_markup_chars.find(c) != std::string::npos;
 	}
 
+	typedef std::map<std::string, std::string> plain_string_map;
+
+	/**
+	 * Quick and dirty alternative to @a uitls::interpolate_variables_into_string that
+	 * doesn't require formula AI code. It is definitely NOT safe for normal
+	 * use since it doesn't do strict checks on where variable placeholders
+	 * ("$foobar") end and doesn't support pipe ("|") terminators.
+	 *
+	 * @param str     The format string.
+	 * @param symbols The symbols table.
+	 */
+	std::string fast_interpolate_variables_into_string(const std::string &str, const plain_string_map * const symbols)
+	{
+		std::string res = str;
+
+		if(symbols) {
+			BOOST_FOREACH(const plain_string_map::value_type& sym, *symbols) {
+				res = utils::replace(res, "$" + sym.first, sym.second);
+			}
+		}
+
+		return res;
+	}
+
+	/**
+	 * Format a feedback URL for an add-on.
+	 *
+	 * @param format        The format string for the URL, presumably obtained
+	 *                      from the add-ons server identification.
+	 *
+	 * @param params        The URL format parameters table.
+	 *
+	 * @return A string containing a feedback URL or an empty string if that
+	 *         is not possible (e.g. empty or invalid @a format, empty
+	 *         @a params table, or a result that is identical in content to
+	 *         the @a format suggesting that the @a params table contains
+	 *         incorrect data).
+	 */
+	std::string format_addon_feedback_url(const std::string& format, const config& params)
+	{
+		if(!format.empty() && !params.empty()) {
+#if 0
+			utils::string_map escaped;
+#else
+			plain_string_map escaped;
+#endif
+
+			config::const_attr_itors attrs = params.attribute_range();
+
+			// Percent-encode parameter values for URL interpolation. This is
+			// VERY important since otherwise people could e.g. alter query
+			// strings from the format string.
+			BOOST_FOREACH(const config::attribute& a, attrs) {
+				escaped[a.first] = utils::urlencode(a.second.str());
+			}
+
+			// FIXME: We cannot use utils::interpolate_variables_into_string
+			//        because it is implemented using a lot of formula AI junk
+			//        that really doesn't belong in campaignd.
+#if 0
+			const std::string& res =
+				utils::interpolate_variables_into_string(format, &escaped);
+#else
+			const std::string& res =
+				fast_interpolate_variables_into_string(format, &escaped);
+#endif
+
+			if(res != format) {
+				return res;
+			}
+
+			// If we get here, that means that no interpolation took place; in
+			// that case, the parameters table probably contains entries that
+			// do not match the format string expectations.
+		}
+
+		return std::string();
+	}
+
 	config construct_message(const std::string& msg)
 	{
 		config cfg;
@@ -90,7 +170,7 @@ namespace {
 	config construct_error(const std::string& msg)
 	{
 		config cfg;
-		cfg.add_child("error")["message"] = "#Error: " + msg;
+		cfg.add_child("error")["message"] = msg;
 		LOG_CS << "ERROR: "<<msg<<"\n";
 		return cfg;
 	}
@@ -112,10 +192,13 @@ namespace {
 			 * If a script is defined but can't be executed it will return false
 			 */
 			void fire(const std::string& hook, const std::string& addon);
-			void convert_binary_to_gzip();
 			int load_config(); // return the server port
 			const config &campaigns() const { return cfg_.child("campaigns"); }
 			config &campaigns() { return cfg_.child("campaigns"); }
+
+			const config& server_info() const { return cfg_.child("server_info"); }
+			config& server_info() { return cfg_.child("server_info"); }
+
 			config cfg_;
 			const std::string file_;
 			const network::manager net_manager_;
@@ -123,6 +206,10 @@ namespace {
 			input_stream* input_;
 			int compress_level_;
 			bool read_only_;
+
+			/** Feedback URL format string used for add-ons. */
+			std::string feedback_url_format_;
+
 			const network::server_manager server_manager_;
 
 	};
@@ -175,6 +262,12 @@ namespace {
 		/** Seems like compression level above 6 is waste of cpu cycle */
 		compress_level_ = cfg_["compress_level"].to_int(6);
 		cfg_["compress_level"] = compress_level_;
+
+		const config& svinfo_cfg = server_info();
+		if(svinfo_cfg) {
+			feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
+		}
+
 		return cfg_["port"].to_int(default_campaignd_port);
 	}
 
@@ -187,6 +280,7 @@ namespace {
 		input_(0),
 		compress_level_(0), // Will be properly set by load_config()
 		read_only_(false),
+		feedback_url_format_(), // Will be properly set by load_config()
 		server_manager_(load_config())
 	{
 #ifndef _MSC_VER
@@ -241,58 +335,9 @@ namespace {
 		copying["contents"] = contents;
 
 	}
-	/// @todo Check if this function has any purpose left
-	void campaign_server::convert_binary_to_gzip()
-	{
-		if (!cfg_["encoded"].to_bool())
-		{
-			// Convert all addons to gzip
-			config::const_child_itors camps = campaigns().child_range("campaign");
-			LOG_CS << "Encoding all stored addons. Number of addons: "
-				<< std::distance(camps.first, camps.second) << '\n';
-
-			BOOST_FOREACH(const config &cm, camps)
-			{
-				LOG_CS << "Encoding " << cm["name"] << '\n';
-				std::string filename = cm["filename"], newfilename = filename + ".new";
-
-				{
-					filesystem::scoped_istream in_file = filesystem::istream_file(filename);
-					boost::iostreams::filtering_stream<boost::iostreams::input> in_filter;
-					in_filter.push(boost::iostreams::gzip_decompressor());
-					in_filter.push(*in_file);
-
-					filesystem::scoped_ostream out_file = filesystem::ostream_file(newfilename);
-					boost::iostreams::filtering_stream<boost::iostreams::output> out_filter;
-					out_filter.push(boost::iostreams::gzip_compressor(boost::iostreams::gzip_params(compress_level_)));
-					out_filter.push(*out_file);
-
-					unsigned char c = in_filter.get();
-					while( in_filter.good())
-					{
-						if (needs_escaping(c) && c != '\x01')
-						{
-							out_filter.put('\x01');
-						   	out_filter.put(c+1);
-						} else {
-							out_filter.put(c);
-						}
-						c = in_filter.get();
-					}
-				}
-
-				std::remove(filename.c_str());
-				std::rename(newfilename.c_str(), filename.c_str());
-			}
-
-			cfg_["encoded"] = true;
-		}
- 	}
 
 	void campaign_server::run()
 	{
- 		convert_binary_to_gzip();
-
  		if (!cfg_["control_socket"].empty())
  			input_ = new input_stream(cfg_["control_socket"]);
 
@@ -377,10 +422,21 @@ namespace {
 							j["passphrase"] = t_string();
 							j["upload_ip"] = t_string();
 							j["email"] = t_string();
+							j["feedback_url"] = t_string();
+
+							// Build a feedback_url string attribute from the
+							// internal [feedback] data.
+							config url_params = j.child_or_empty("feedback");
+							j.clear_children("feedback");
+
+							if(!url_params.empty() && !feedback_url_format_.empty()) {
+								j["feedback_url"] = format_addon_feedback_url(feedback_url_format_, url_params);
+							}
 						}
 
 						config response;
 						response.add_child("campaigns",campaign_list);
+
 						std::cerr << " size: " << (network::send_data(response, sock)/1024) << "KiB\n";
 					}
 					else if (const config &req = data.child("request_campaign"))
@@ -388,9 +444,18 @@ namespace {
 						LOG_CS << "sending campaign '" << req["name"] << "' to " << network::ip_address(sock)  << " using gzip";
 						config &campaign = campaigns().find_child("campaign", "name", req["name"]);
 						if (!campaign) {
-							network::send_data(construct_error("Add-on '" + req["name"].str() + "'not found."), sock);
+							network::send_data(construct_error("Add-on '" + req["name"].str() + "' not found."), sock);
 						} else {
-							std::cerr << " size: " << (filesystem::file_size(campaign["filename"])/1024) << "KiB\n";
+							const int size = filesystem::file_size(campaign["filename"]);
+
+							if(size < 0) {
+								std::cerr << " size: <unknown> KiB\n";
+								LOG_CS << "File size unknown, aborting send.\n";
+								network::send_data(construct_error("Add-on '" + req["name"].str() + "' could not be read by the server."), sock);
+								continue;
+							}
+
+							std::cerr << " size: " << size/1024 << "KiB\n";
 							network::send_file(campaign["filename"], sock);
 							// Clients doing upgrades or some other specific thing shouldn't bump
 							// the downloads count. Default to true for compatibility with old
@@ -425,14 +490,11 @@ namespace {
 						std::transform(name.begin(), name.end(), lc_name.begin(), tolower);
 						config *campaign = NULL;
 						BOOST_FOREACH(config &c, campaigns().child_range("campaign")) {
-							if (utils::lowercase(c["name"]) == lc_name) {
+							if (utf8::lowercase(c["name"]) == lc_name) {
 								campaign = &c;
 								break;
 							}
 						}
-
-						// TODO: remove for next add-ons server instance.
-						bool illegal_name_upload = false;
 
 						if (read_only_) {
 							LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
@@ -440,9 +502,7 @@ namespace {
 						} else if (!data) {
 							LOG_CS << "Upload aborted - no add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), sock);
-						} else if ((illegal_name_upload = !addon_name_legal(upload["name"])) && campaign == NULL) {
-							// Only deny upload if we don't have an add-on with that id/name
-							// already. TODO: remove for next add-ons server instance.
+						} else if (!addon_name_legal(upload["name"])) {
 							LOG_CS << "Upload aborted - invalid add-on name.\n";
 							network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), sock);
 						} else if (is_text_markup_char(upload["name"].str()[0])) {
@@ -472,17 +532,12 @@ namespace {
 						} else if (!check_names_legal(data)) {
 							LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
-									" File or directory names may not contain any of the following characters: '/ \\ : ~'"), sock);
+									" File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'"), sock);
 						} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
 							LOG_CS << "Upload aborted - incorrect passphrase.\n";
 							network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), sock);
 						} else {
-							// Warn admins in the log about reuploading add-ons whose names don't
-							// pass the addon_name_legal() whitelist check above.
-
-							if(illegal_name_upload) {
-								LOG_CS << "Ignoring invalid add-on name '" << upload["name"] << "' because it already exists on the server.\n";
-							}
+							const time_t upload_ts = time(NULL);
 
 							LOG_CS << "Upload is owner upload.\n";
 							std::string message = "Add-on accepted.";
@@ -493,6 +548,7 @@ namespace {
 
 							if(campaign == NULL) {
 								campaign = &campaigns().add_child("campaign");
+								(*campaign)["original_timestamp"] = lexical_cast<std::string>(upload_ts);
 							}
 
 							(*campaign)["title"] = upload["title"];
@@ -512,10 +568,15 @@ namespace {
 							if((*campaign)["downloads"].empty()) {
 								(*campaign)["downloads"] = 0;
 							}
-							(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
+							(*campaign)["timestamp"] = lexical_cast<std::string>(upload_ts);
 
 							int uploads = (*campaign)["uploads"].to_int() + 1;
 							(*campaign)["uploads"] = uploads;
+
+							(*campaign).clear_children("feedback");
+							if(const config& url_params = upload.child("feedback")) {
+								(*campaign).add_child("feedback", url_params);
+							}
 
 							std::string filename = (*campaign)["filename"];
 							data["title"] = (*campaign)["title"];
@@ -525,6 +586,7 @@ namespace {
 							data["description"] = (*campaign)["description"];
 							data["version"] = (*campaign)["version"];
 							data["timestamp"] = (*campaign)["timestamp"];
+							data["original_timestamp"] = (*campaign)["original_timestamp"];
 							data["icon"] = (*campaign)["icon"];
 							data["type"] = (*campaign)["type"];
 							(*campaign).clear_children("translation");

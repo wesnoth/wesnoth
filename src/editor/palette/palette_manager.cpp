@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -165,7 +165,9 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		return;
 	}
 
-	const SDL_MouseButtonEvent mouse_button_event = event.button;
+	const SDL_MouseButtonEvent &mouse_button_event = event.button;
+
+#if !SDL_VERSION_ATLEAST(2,0,0)
 	if (mouse_button_event.type == SDL_MOUSEBUTTONDOWN) {
 		if (mouse_button_event.button == SDL_BUTTON_WHEELUP) {
 			scroll_up();
@@ -183,6 +185,25 @@ void palette_manager::handle_event(const SDL_Event& event) {
 		}
 		//set_dirty(true);
 	}
+#endif
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+	if (event.type == SDL_MOUSEWHEEL) {
+		if (event.wheel.y > 0) {
+			scroll_up();
+		} else if (event.wheel.y < 0) {
+			scroll_down();
+		}
+
+		if (event.wheel.x < 0) {
+			active_palette().prev_group();
+			scroll_top();
+		} else if (event.wheel.x > 0) {
+			active_palette().next_group();
+			scroll_top();
+		}
+	}
+#endif
 
 	if (mouse_button_event.type == SDL_MOUSEBUTTONUP) {
 		//set_dirty(true);

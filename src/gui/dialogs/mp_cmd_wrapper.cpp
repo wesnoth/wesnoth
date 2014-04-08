@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2009 - 2013 by Thomas Baumhauer <thomas.baumhauer@NOSPAMgmail.com>
+   Copyright (C) 2009 - 2014 by Thomas Baumhauer
+   <thomas.baumhauer@NOSPAMgmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +24,8 @@
 
 #include "game_preferences.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -75,9 +77,7 @@ namespace gui2 {
 REGISTER_DIALOG(mp_cmd_wrapper)
 
 tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
-	: message_()
-	, reason_()
-	, time_()
+	: message_(), reason_(), time_()
 {
 	register_text("message", false, message_, true);
 	register_text("reason", false, reason_);
@@ -90,8 +90,8 @@ tmp_cmd_wrapper::tmp_cmd_wrapper(const t_string& user)
 void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 {
 #if defined(_WIN32) || defined(__APPLE__)
-	ttext_box* message =
-			find_widget<ttext_box>(&window, "message", false, false);
+	ttext_box* message
+			= find_widget<ttext_box>(&window, "message", false, false);
 	if(message) {
 		/**
 		 * @todo For some reason the text wrapping fails on Windows and Mac,
@@ -148,4 +148,3 @@ void tmp_cmd_wrapper::pre_show(CVideo& /*video*/, twindow& window)
 }
 
 } // namespace gui2
-

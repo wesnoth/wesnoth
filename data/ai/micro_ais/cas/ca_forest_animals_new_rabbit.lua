@@ -38,10 +38,10 @@ function ca_forest_animals_new_rabbit:execution(ai, cfg)
                 if (holes[i].image ~= cfg.rabbit_hole_img) and (holes[i].halo ~= cfg.rabbit_hole_img) then
                     table.remove(holes, i)
                 else
-                    holes[i].random = AH.random(100)
+                    holes[i].random = math.random(100)
                 end
             else
-                holes[i].random = AH.random(100)
+                holes[i].random = math.random(100)
             end
         end
     end
@@ -64,7 +64,13 @@ function ca_forest_animals_new_rabbit:execution(ai, cfg)
         else
             x, y = wesnoth.find_vacant_tile(holes[i].x, holes[i].y)
         end
-        wesnoth.put_unit(x, y, { side = wesnoth.current.side, type = cfg.rabbit_type } )
+
+        local command =  "wesnoth.put_unit(x1, y1, { side = "
+            .. wesnoth.current.side
+            .. ", type = '"
+            ..  cfg.rabbit_type
+            .. "' } )"
+        ai.synced_command(command, x, y)
     end
 end
 

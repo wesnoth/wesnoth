@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2014 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -44,11 +44,9 @@ public:
 	boost::optional<std::string> campaign_scenario;
 	/// True if --clock was given on the command line. Enables
 	bool clock;
-	/// True if --config-path was given on the command line. Prints path to user config directory and exits.
-	bool config_path;
-	/// Non-empty if --config-dir was given on the command line. Sets the config dir to the specified one.
-	boost::optional<std::string> config_dir;
-	/// Non-empty if --config-dir was given on the command line. Sets the config dir to the specified one.
+	/// True if --data-path was given on the command line. Prints path to data directory and exits.
+	bool data_path;
+	/// Non-empty if --data-dir was given on the command line. Sets the config dir to the specified one.
 	boost::optional<std::string> data_dir;
 	/// True if --debug was given on the command line. Enables debug mode.
 	bool debug;
@@ -165,6 +163,14 @@ public:
 	bool strict_validation;
 	/// Non-empty if --test was given on the command line. Goes directly into test mode, into a scenario, if specified.
 	boost::optional<std::string> test;
+	/// True if --userconfig-path was given on the command line. Prints path to user config directory and exits.
+	bool userconfig_path;
+	/// Non-empty if --userconfig-dir was given on the command line. Sets the user config dir to the specified one.
+	boost::optional<std::string> userconfig_dir;
+	/// True if --userdata-path was given on the command line. Prints path to user data directory and exits.
+	bool userdata_path;
+	/// Non-empty if --userdata-dir was given on the command line. Sets the user data dir to the specified one.
+	boost::optional<std::string> userdata_dir;
 	/// True if --validcache was given on the command line. Makes Wesnoth assume the cache is valid.
 	bool validcache;
 	/// True if --version was given on the command line. Prints version and exits.

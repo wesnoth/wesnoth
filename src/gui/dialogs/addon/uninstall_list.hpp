@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2011 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,20 +19,24 @@
 
 #include <map>
 
-namespace gui2 {
+namespace gui2
+{
 
 class taddon_uninstall_list : public tdialog
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
-	 * @param addon_names_map Internal id <-> user-visible title mappings for
+	 * @param addon_titles_map
+	 *                        Internal id <-> user-visible title mappings for
 	 *                        the add-ons to display.
 	 */
-	explicit taddon_uninstall_list(const std::map<std::string, std::string>& addon_titles_map)
-		: titles_map_(addon_titles_map), ids_(), selections_() {}
+	explicit taddon_uninstall_list(
+			const std::map<std::string, std::string>& addon_titles_map)
+		: titles_map_(addon_titles_map), ids_(), selections_()
+	{
+	}
 
 	std::vector<std::string> selected_addons() const;
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,11 +29,13 @@
 struct surface;
 class t_string;
 
-namespace game_logic {
+namespace game_logic
+{
 class map_formula_callable;
 } // namespace game_logic
 
-namespace gui2 {
+namespace gui2
+{
 
 struct tpoint;
 
@@ -158,7 +160,7 @@ std::string debug_truncate(const std::string& text);
  *
  * @returns                       result.
  */
-template<class R, class F>
+template <class R, class F>
 R function_wrapper(const R result, const F& function)
 {
 	function();

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013
+   Copyright (C) 2007 - 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -81,6 +81,7 @@ public:
 		gui::combo_drag_ptr combo_controller_;
 		gui::combo combo_ai_algorithm_;
 		gui::combo combo_faction_;
+		gui::label label_leader_name_;
 		gui::combo combo_leader_;
 		gui::combo combo_gender_;
 		gui::combo combo_team_;
@@ -134,9 +135,9 @@ private:
 
 	gui::label waiting_label_;
 	gui::label type_title_label_;
-	gui::label faction_title_label_;
-	gui::label team_title_label_;
-	gui::label color_title_label_;
+	gui::label faction_name_title_label_;
+	gui::label leader_gender_title_label_;
+	gui::label team_color_title_label_;
 	gui::label gold_title_label_;
 	gui::label income_title_label_;
 	gui::scrollpane scroll_pane_;

@@ -86,7 +86,7 @@ function ca_recruit_random:evaluation(ai, cfg)
     -- The point is that this will blacklist the CA if an unaffordable recruit was
     -- chosen -> no cheaper recruits will be selected in subsequent calls
     if (n_recruits > 0) then
-        local rand_prob = AH.random(1e6)
+        local rand_prob = math.random(1e6)
         for typ,pr in pairs(prob) do
             if (pr.p_i <= rand_prob) and (rand_prob < pr.p_f) then
                 recruit = typ
@@ -103,7 +103,7 @@ end
 function ca_recruit_random:execution(ai, cfg)
     -- Let this function blacklist itself if the chosen recruit is too expensive
     if wesnoth.unit_types[recruit].cost <= wesnoth.sides[wesnoth.current.side].gold then
-        ai.recruit(recruit)
+        AH.checked_recruit(ai, recruit)
     end
 end
 

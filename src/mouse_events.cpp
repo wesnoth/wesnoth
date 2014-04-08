@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -37,8 +37,9 @@
 #include "play_controller.hpp"
 #include "sound.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
-#include "rng.hpp"
+#include "synced_context.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -65,7 +66,7 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	next_unit_(),
 	current_route_(),
 	current_paths_(),
-	enemy_paths_(false),
+	unselected_paths_(false),
 	path_turns_(0),
 	side_num_(1),
 	over_route_(false),
@@ -77,7 +78,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 
 mouse_handler::~mouse_handler()
 {
-	rand_rng::clear_new_seed_callback();
 	singleton_ = NULL;
 }
 
@@ -121,170 +121,196 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 		last_hex_ = new_hex;
 	}
 
-
 	if (reachmap_invalid_) update = true;
 
-	if (update) {
-		if (reachmap_invalid_) {
-			reachmap_invalid_ = false;
-			if (!current_paths_.destinations.empty() && !show_partial_move_) {
-				bool selected_hex_has_unit;
-				{ // start planned unit map scope
-					wb::future_map_if_active planned_unit_map;
-					selected_hex_has_unit = find_unit(selected_hex_) != units_.end();
-				} // end planned unit map scope
-				if(selected_hex_.valid() && selected_hex_has_unit ) {
-					// reselect the unit without firing events (updates current_paths_)
-					select_hex(selected_hex_, true);
-				}
-				// we do never deselect here, mainly because of canceled attack-move
+	if (!update) return;
+
+	if (reachmap_invalid_) {
+		reachmap_invalid_ = false;
+		if (!current_paths_.destinations.empty() && !show_partial_move_) {
+			bool selected_hex_has_unit;
+			{ // start planned unit map scope
+				wb::future_map_if_active planned_unit_map;
+				selected_hex_has_unit = find_unit(selected_hex_) != units_.end();
+			} // end planned unit map scope
+			if(selected_hex_.valid() && selected_hex_has_unit ) {
+				// reselect the unit without firing events (updates current_paths_)
+				select_hex(selected_hex_, true);
 			}
+			// we do never deselect here, mainly because of canceled attack-move
 		}
+	}
 
-		// reset current_route_ and current_paths if not valid anymore
-		// we do it before cursor selection, because it uses current_paths_
-		if( !resources::game_map->on_board(new_hex) ) {
-			current_route_.steps.clear();
-			gui().set_route(NULL);
-			resources::whiteboard->erase_temp_move();
-		}
+	// reset current_route_ and current_paths if not valid anymore
+	// we do it before cursor selection, because it uses current_paths_
+	if( !resources::game_map->on_board(new_hex) ) {
+		current_route_.steps.clear();
+		gui().set_route(NULL);
+		resources::whiteboard->erase_temp_move();
+	}
 
-		if(enemy_paths_) {
-			enemy_paths_ = false;
-			current_paths_ = pathfind::paths();
-			gui().unhighlight_reach();
-		} else if(over_route_) {
-			over_route_ = false;
-			current_route_.steps.clear();
-			gui().set_route(NULL);
-			resources::whiteboard->erase_temp_move();
-		}
+	if(unselected_paths_) {
+		unselected_paths_ = false;
+		current_paths_ = pathfind::paths();
+		gui().unhighlight_reach();
+	} else if(over_route_) {
+		over_route_ = false;
+		current_route_.steps.clear();
+		gui().set_route(NULL);
+		resources::whiteboard->erase_temp_move();
+	}
 
-		gui().highlight_hex(new_hex);
-		resources::whiteboard->on_mouseover_change(new_hex);
+	gui().highlight_hex(new_hex);
+	resources::whiteboard->on_mouseover_change(new_hex);
 
-		unit_map::iterator selected_unit;
-		unit_map::iterator mouseover_unit;
-		map_location attack_from;
+	unit_map::iterator selected_unit;
+	unit_map::iterator mouseover_unit;
+	map_location attack_from;
 
-		{ // start planned unit map scope
-			wb::future_map_if_active planned_unit_map;
-			selected_unit = find_unit(selected_hex_);
-			mouseover_unit = find_unit(new_hex);
+	{ // start planned unit map scope
+		wb::future_map_if_active planned_unit_map;
+		selected_unit = find_unit(selected_hex_);
+		mouseover_unit = find_unit(new_hex);
 
-			// we search if there is an attack possibility and where
-			attack_from = current_unit_attacks_from(new_hex);
+		// we search if there is an attack possibility and where
+		attack_from = current_unit_attacks_from(new_hex);
 
-			//see if we should show the normal cursor, the movement cursor, or
-			//the attack cursor
-			//If the cursor is on WAIT, we don't change it and let the setter
-			//of this state end it
-			if (cursor::get() != cursor::WAIT) {
-				if (selected_unit != units_.end() &&
+		//see if we should show the normal cursor, the movement cursor, or
+		//the attack cursor
+		//If the cursor is on WAIT, we don't change it and let the setter
+		//of this state end it
+		if (cursor::get() != cursor::WAIT) {
+			if (selected_unit != units_.end() &&
 					selected_unit->side() == side_num_ &&
 					!selected_unit->incapacitated() && !browse)
+			{
+				if (attack_from.valid()) {
+					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
+				}
+				else if (mouseover_unit==units_.end() &&
+						current_paths_.destinations.contains(new_hex))
 				{
-					if (attack_from.valid()) {
-						cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
-					}
-					else if (mouseover_unit==units_.end() &&
-							 current_paths_.destinations.contains(new_hex))
-					{
-						cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
-					} else {
-						// selected unit can't attack or move there
-						cursor::set(cursor::NORMAL);
-					}
+					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
 				} else {
-					// no selected unit or we can't move it
+					// selected unit can't attack or move there
+					cursor::set(cursor::NORMAL);
+				}
+			} else {
+				// no selected unit or we can't move it
+
+				if ( selected_hex_.valid() && mouseover_unit != units_.end()
+						&& mouseover_unit->side() == side_num_ ) {
+					// empty hex field selected and unit on our site under the cursor
+					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
+				} else {
 					cursor::set(cursor::NORMAL);
 				}
 			}
-		} // end planned unit map scope
+		}
+	} // end planned unit map scope
 
-		// show (or cancel) the attack direction indicator
-		if (attack_from.valid() && (!browse || resources::whiteboard->is_active())) {
-			gui().set_attack_indicator(attack_from, new_hex);
-		} else {
-			gui().clear_attack_indicator();
+	// show (or cancel) the attack direction indicator
+	if (attack_from.valid() && (!browse || resources::whiteboard->is_active())) {
+		gui().set_attack_indicator(attack_from, new_hex);
+	} else {
+		gui().clear_attack_indicator();
+	}
+
+	unit* un; //will later point to unit at mouseover_hex_
+
+	// the destination is the pointed hex or the adjacent hex
+	// used to attack it
+	map_location dest;
+	unit_map::const_iterator dest_un;
+	{ // start planned unit map scope
+		wb::future_map_if_active raii;
+		if (attack_from.valid()) {
+			dest = attack_from;
+			dest_un = find_unit(dest);
+		}	else {
+			dest = new_hex;
+			dest_un = find_unit(new_hex);
 		}
 
-		unit* un; //will later point to unit at mouseover_hex_
+		if(dest == selected_hex_ || dest_un != units_.end()) {
+			current_route_.steps.clear();
+			gui().set_route(NULL);
+			resources::whiteboard->erase_temp_move();
+		}
+		else if (!current_paths_.destinations.empty() &&
+				map_.on_board(selected_hex_) && map_.on_board(new_hex))
+		{
+			if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
+				// Show the route from selected unit to mouseover hex
+				current_route_ = get_route(&*selected_unit, dest, viewing_team());
 
-		// the destination is the pointed hex or the adjacent hex
-		// used to attack it
-		map_location dest;
-		unit_map::const_iterator dest_un;
-		{ // start planned unit map scope
-			wb::future_map_if_active raii;
-			if (attack_from.valid()) {
-				dest = attack_from;
-				dest_un = find_unit(dest);
-			}	else {
-				dest = new_hex;
-				dest_un = find_unit(new_hex);
-			}
+				resources::whiteboard->create_temp_move();
 
-			if(dest == selected_hex_ || dest_un != units_.end()) {
-				current_route_.steps.clear();
-				gui().set_route(NULL);
-				resources::whiteboard->erase_temp_move();
-			}
-			else if (!current_paths_.destinations.empty() &&
-					 map_.on_board(selected_hex_) && map_.on_board(new_hex))
-			{
-				if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
-					// Show the route from selected unit to mouseover hex
-					current_route_ = get_route(&*selected_unit, dest, viewing_team());
-
-					resources::whiteboard->create_temp_move();
-
-					if(!browse) {
-						gui().set_route(&current_route_);
-					}
+				if(!browse) {
+					gui().set_route(&current_route_);
 				}
 			}
+		}
 
-			unit_map::iterator iter = mouseover_unit;
-			if (iter != units_.end())
-				un = &*iter;
-			else
-				un = NULL;
-		} //end planned unit map scope
+		if(map_.on_board(selected_hex_)
+				&& selected_unit == units_.end()
+				&& mouseover_unit.valid()
+				&& mouseover_unit != units_.end()) {
+			// Show the route from selected hex to mouseover unit
+			current_route_ = get_route(&*mouseover_unit, selected_hex_, viewing_team());
 
-		if (un && current_paths_.destinations.empty() &&
+			resources::whiteboard->create_temp_move();
+
+			if(!browse) {
+				gui().set_route(&current_route_);
+			}
+		} else if (selected_unit == units_.end()) {
+			current_route_.steps.clear();
+			gui().set_route(NULL);
+			resources::whiteboard->erase_temp_move();
+		}
+
+		unit_map::iterator iter = mouseover_unit;
+		if (iter != units_.end())
+			un = &*iter;
+		else
+			un = NULL;
+	} //end planned unit map scope
+
+	if ( (!selected_hex_.valid()) && un && current_paths_.destinations.empty() &&
 			!gui().fogged(un->get_location()))
-		{
-			if (un->side() != side_num_) {
-				//unit under cursor is not on our team, highlight reach
-				//Note: planned unit map must be activated after this is done,
-				//since the future state includes changes to units' movement.
-				unit_movement_resetter move_reset(*un);
-
-
+	{
+		if (un->side() == side_num_) {
+			//unit is on our team, show path if the unit has one
+			const map_location go_to = un->get_goto();
+			if(map_.on_board(go_to)) {
+				pathfind::marked_route route;
 				{ // start planned unit map scope
 					wb::future_map_if_active raii;
-					current_paths_ = pathfind::paths(*un, false, true,
-					                                 viewing_team(), path_turns_);
+					route = get_route(un, go_to, current_team());
 				} // end planned unit map scope
-
-				gui().highlight_reach(current_paths_);
-				enemy_paths_ = true;
-			} else {
-				//unit is on our team, show path if the unit has one
-				const map_location go_to = un->get_goto();
-				if(map_.on_board(go_to)) {
-					pathfind::marked_route route;
-					{ // start planned unit map scope
-						wb::future_map_if_active raii;
-						route = get_route(un, go_to, current_team());
-					} // end planned unit map scope
-					gui().set_route(&route);
-				}
-				over_route_ = true;
+				gui().set_route(&route);
 			}
+			over_route_ = true;
+
+			wb::future_map_if_active raii;
+			current_paths_ = pathfind::paths(*un, false, true,
+					viewing_team(), path_turns_);
+		} else {
+			//unit under cursor is not on our team
+			//Note: planned unit map must be activated after this is done,
+			//since the future state includes changes to units' movement.
+			unit_movement_resetter move_reset(*un);
+
+			wb::future_map_if_active raii;
+			current_paths_ = pathfind::paths(*un, false, true,
+					viewing_team(), path_turns_);
 		}
+
+		unselected_paths_ = true;
+		gui().highlight_reach(current_paths_);
 	}
+
 }
 
 unit_map::iterator mouse_handler::selected_unit()
@@ -421,27 +447,69 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 	mouse_handler_base::mouse_press(event, browse);
 }
 
-bool mouse_handler::right_click_show_menu(int x, int y, const bool browse)
+bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
-	// The first right-click cancel the selection if any,
-	// the second open the context menu
-	unit_map::iterator unit;
-	{
-		wb::future_map_if_active raii;
-		unit = find_unit(selected_hex_);
-	}
-	if (selected_hex_.valid() && unit != units_.end()) {
-		select_hex(map_location(), browse);
-		return false;
-	} else {
-		return point_in_rect(x, y, gui().map_area());
-	}
+	return ( selected_hex_.valid() ? false :
+			point_in_rect(x, y, gui().map_area()) );
 }
 
-bool mouse_handler::left_click(int x, int y, const bool browse)
+void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)
 {
-	if (mouse_handler_base::left_click(x, y, browse)) return false;
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
 
+void mouse_handler::mouse_wheel_up(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::mouse_wheel_down(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::mouse_wheel_left(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::mouse_wheel_right(int /*x*/, int /*y*/, const bool /*browse*/)
+{
+	gui::slider* s = gui_->find_slider("map-zoom-slider");
+	if (s && s->value_change())
+		if (gui_->set_zoom(s->value(), true))
+			resources::controller->set_button_state(*gui_);
+}
+
+void mouse_handler::select_or_action(bool browse)
+{
+	if (!resources::game_map->on_board(last_hex_))
+		return;
+
+	unit_map::iterator clicked_u = find_unit(last_hex_);
+	unit_map::iterator selected_u = find_unit(selected_hex_);
+	if ( (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
+			|| ((selected_u == resources::units->end()) && (clicked_u != resources::units->end()))
+			|| ((selected_u != resources::units->end() && selected_u->side() != side_num_ && clicked_u != resources::units->end())) )
+		select_hex(last_hex_, false);
+	else
+		move_action(browse);
+}
+
+void mouse_handler::move_action(bool browse)
+{
 	// Lock whiteboard activation state to avoid problems due to
 	// its changing while an animation takes place.
 	wb::whiteboard_lock wb_lock = resources::whiteboard->get_activation_state_lock();
@@ -450,12 +518,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//since it's what update our global state
 	map_location hex = last_hex_;
 
-	// Clicks on border hexes mean to deselect.
-	// (Check this before doing processing that might not be needed.)
-	if ( !resources::game_map->on_board(hex) ) {
-		deselect_hex();
-		return false;
-	}
+	// TODO
+	//	// Clicks on border hexes mean to deselect.
+	//	// (Check this before doing processing that might not be needed.)
+	//	if ( !resources::game_map->on_board(hex) ) {
+	//		deselect_hex();
+	//		return false;
+	//	}
 
 	unit_map::iterator u;
 	unit_map::iterator clicked_u;
@@ -484,7 +553,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		// Ignore this command if commands are disabled.
 		if ( commands_disabled )
-			return false;
+			return;
 
 		if (((u.valid() && u->side() == side_num_) || resources::whiteboard->is_active()) && clicked_u.valid() ) {
 			if (attack_from == selected_hex_) { //no move needed
@@ -499,7 +568,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 						attack_enemy(u->get_location(), clicked_u->get_location(), choice);
 					}
 				}
-				return false;
+				return;
 			}
 			else {
 
@@ -512,7 +581,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					if(itor == current_paths_.destinations.end()) {
 						// can't reach the attacking location
 						// not supposed to happen, so abort
-						return false;
+						return;
 					}
 
 					// block where we temporary move the unit
@@ -524,7 +593,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 					if (choice < 0) {
 						// user hit cancel, don't start move+attack
-						return false;
+						return;
 					}
 				} // end planned unit map scope
 
@@ -536,22 +605,35 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				}
 				//TODO: Maybe store the attack choice so "press t to continue"
 				//      can also continue the attack?
-				return false;
+				return;
 			}
 		}
 	}
 	//otherwise we're trying to move to a hex
-	else if((!browse || resources::whiteboard->is_active()) &&
-			selected_hex_.valid() && selected_hex_ != hex &&
-	         u != units_.end() && u.valid() &&
-	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
-		     clicked_u == units_.end() &&
-		     !current_route_.steps.empty() &&
-		     current_route_.steps.front() == selected_hex_) {
+	else if (
+			// the old use case: move selected unit to mouse hex field
+			( (!browse || resources::whiteboard->is_active()) &&
+					selected_hex_.valid() && selected_hex_ != hex &&
+					u != units_.end() && u.valid() &&
+					(u->side() == side_num_ || resources::whiteboard->is_active()) &&
+					clicked_u == units_.end() &&
+					!current_route_.steps.empty() &&
+					current_route_.steps.front() == selected_hex_
+			)
+			|| // the new use case: move mouse unit to selected hex field
+			( (!browse || resources::whiteboard->is_active()) &&
+					selected_hex_.valid() && selected_hex_ != hex &&
+					clicked_u != units_.end() &&
+					!current_route_.steps.empty() &&
+					current_route_.steps.back() == selected_hex_
+					&& u == units_.end()
+					&& clicked_u->side() == side_num_
+			)
+	) {
 
 		// Ignore this command if commands are disabled.
 		if ( commands_disabled )
-			return false;
+			return;
 
 		// If the whiteboard is active, it intercepts any unit movement
 		if (resources::whiteboard->is_active()) {
@@ -571,8 +653,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		} else {
 			//Don't move if the unit already has actions
 			//from the whiteboard.
-			if (resources::whiteboard->unit_has_actions(&*u)) {
-				return false;
+			if (resources::whiteboard->unit_has_actions(
+					u != units_.end() ? &*u : &*clicked_u )) {
+				return;
 			}
 
 			move_unit_along_current_route();
@@ -583,28 +666,27 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				select_hex(selected_hex_, browse);
 			}
 		}
-		return false;
-	} else if(!commands_disabled) {
-		// we select a (maybe empty) hex
-		// we block selection during attack+move (because motion is blocked)
-		select_hex(hex, browse);
+		return;
 	}
-	return false;
-	//FIXME: clean all these "return false"
 }
 
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
-	selected_hex_ = hex;
-	gui().select_hex(hex);
+
+	if (selected_hex_ == hex)
+		selected_hex_ = map_location::null_location;
+	else
+		selected_hex_ = hex;
+
+	gui().select_hex(selected_hex_);
 	gui().clear_attack_indicator();
 	gui().set_route(NULL);
 	show_partial_move_ = false;
 
 	wb::future_map_if_active planned_unit_map; //lasts for whole method
 
-	unit_map::iterator u = find_unit(hex);
+	unit_map::iterator u = find_unit(selected_hex_);
 
-	if (hex.valid() && u != units_.end() && u.valid() && !u->get_hidden()) {
+	if (selected_hex_.valid() && u != units_.end() && u.valid() && !u->get_hidden()) {
 
 		next_unit_ = u->get_location();
 
@@ -617,7 +699,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 		}
 		// the highlight now comes from selection
 		// and not from the mouseover on an enemy
-		enemy_paths_ = false;
+		unselected_paths_ = false;
 		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
@@ -634,11 +716,41 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 				}
 			}
 		}
+		return;
+	}
 
+	if (selected_hex_.valid() && u == units_.end()) {
+		// compute unit in range of the empty selected_hex field
+
+		gui_->unhighlight_reach();
+
+		pathfind::paths reaching_unit_locations;
+
+		pathfind::paths clicked_location;
+		clicked_location.destinations.insert(hex);
+
+		for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
+			bool invisible = u->invisible(u->get_location());
+
+			if (!gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
+			{
+
+				const pathfind::paths& path = pathfind::paths(*u, false, true,
+						teams_[gui_->viewing_team()], path_turns_, false, false);
+
+				if (path.destinations.find(hex) != path.destinations.end()) {
+					reaching_unit_locations.destinations.insert(u->get_location());
+					gui_->highlight_another_reach(clicked_location);
+				}
+			}
+		}
+		gui_->highlight_another_reach(reaching_unit_locations);
 	} else {
-		gui().unhighlight_reach();
+		if (units_.find(last_hex_) == units_.end())
+			gui_->unhighlight_reach();
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
+
 		resources::whiteboard->on_deselect_hex();
 	}
 }
@@ -729,7 +841,9 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	size_t moves = 0;
 	try {
-		moves = actions::move_unit(steps, &recorder, resources::undo_stack,
+		
+		LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
+		moves = actions::move_unit_and_record(steps, resources::undo_stack,
 		                           false, true, &interrupted);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
@@ -972,7 +1086,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 		return;
 	}
 
-	commands_disabled++;
+	events::command_disabler disabler;
 	const battle_context_unit_stats &att = bc_vector[choice].get_attacker_stats();
 	const battle_context_unit_stats &def = bc_vector[choice].get_defender_stats();
 
@@ -989,56 +1103,10 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	gui().draw();
 
 	///@todo change ToD to be location specific for the defender
-	recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
+
+	synced_context::run_in_synced_context("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
 		attacker->type_id(), defender->type_id(), att.level,
-		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());
-	rand_rng::invalidate_seed();
-	if (rand_rng::has_valid_seed()) { //means SRNG is disabled
-		perform_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num, rand_rng::get_last_seed());
-	} else {
-		rand_rng::set_new_seed_callback(boost::bind(&mouse_handler::perform_attack,
-			this, attacker_loc, defender_loc, att.attack_num, def.attack_num, _1));
-	}
-}
-
-void mouse_handler::perform_attack(
-	map_location attacker_loc, map_location defender_loc,
-	int attacker_weapon, int defender_weapon, int seed)
-{
-	// this function gets it's arguments by value because the calling function
-	// object might get deleted in the clear callback call below, invalidating
-	// const ref arguments
-	rand_rng::clear_new_seed_callback();
-	LOG_NG << "Performing attack with seed " << seed << "\n";
-	recorder.add_seed("attack", seed);
-	//MP_COUNTDOWN grant time bonus for attacking
-	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
-
-	try {
-		events::command_disabler disabler; // Rather than decrementing for every possible exception, use RAII
-		commands_disabled--;
-		attack_unit(attacker_loc, defender_loc, attacker_weapon, defender_weapon);
-	} catch(end_level_exception&) {
-		//if the level ends due to a unit being killed, still see if
-		//either the attacker or defender should advance
-		dialogs::advance_unit(attacker_loc);
-		unit_map::const_iterator defu = units_.find(defender_loc);
-		if (defu != units_.end()) {
-			bool defender_human = teams_[defu->side() - 1].is_human();
-			dialogs::advance_unit(defender_loc, !defender_human);
-		}
-		throw;
-	}
-
-	dialogs::advance_unit(attacker_loc);
-	unit_map::const_iterator defu = units_.find(defender_loc);
-	if (defu != units_.end()) {
-		bool defender_human = teams_[defu->side() - 1].is_human();
-		dialogs::advance_unit(defender_loc, !defender_human);
-	}
-
-	resources::controller->check_victory();
-	gui().draw();
+		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day()));
 }
 
 std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const

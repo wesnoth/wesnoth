@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2012 - 2014 by Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -54,43 +54,41 @@ namespace gui2
 
 REGISTER_DIALOG(mp_depcheck_select_new)
 
-tmp_depcheck_select_new::tmp_depcheck_select_new
-				(	mp::depcheck::component_type	name,
-					const std::vector<std::string>&	items	)
-	: items_(items)
-	, result_(-1)
+tmp_depcheck_select_new::tmp_depcheck_select_new(
+		mp::depcheck::component_type name,
+		const std::vector<std::string>& items)
+	: items_(items), result_(-1)
 {
 
 	std::string message;
 
-	switch (name)
-	{
+	switch(name) {
 		case mp::depcheck::SCENARIO:
-			message = _(	"The currently chosen scenario " \
-							"is not compatible with your setup." \
-							"\nPlease select a compatible one.");
+			message = _("The currently chosen scenario "
+						"is not compatible with your setup."
+						"\nPlease select a compatible one.");
 			break;
 		case mp::depcheck::ERA:
-			message = _(	"The currently chosen era " \
-							"is not compatible with your setup." \
-							"\nPlease select a compatible one.");
+			message = _("The currently chosen era "
+						"is not compatible with your setup."
+						"\nPlease select a compatible one.");
 			break;
 		case mp::depcheck::MODIFICATION:
-		//currently this can't happen, but be prepared for anything...
-			message = _(	"The currently chosen modification " \
-							"is not compatible with your setup." \
-							"\nPlease select a compatible one.");
+			// currently this can't happen, but be prepared for anything...
+			message = _("The currently chosen modification "
+						"is not compatible with your setup."
+						"\nPlease select a compatible one.");
 	}
 
 	register_label("message", false, message);
-
 }
 
 void tmp_depcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
 {
 	tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 
-	FOREACH(const AUTO& item, items_) {
+	FOREACH(const AUTO & item, items_)
+	{
 		string_map current;
 		current.insert(std::make_pair("label", item));
 
@@ -102,10 +100,9 @@ void tmp_depcheck_select_new::pre_show(CVideo& /*video*/, twindow& window)
 
 void tmp_depcheck_select_new::post_show(twindow& window)
 {
-	if (get_retval() == twindow::OK) {
+	if(get_retval() == twindow::OK) {
 		tlistbox& listbox = find_widget<tlistbox>(&window, "itemlist", false);
 		result_ = listbox.get_selected_row();
 	}
 }
-
 }

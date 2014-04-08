@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2014 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -37,8 +37,8 @@ class unit_animation
 		int matches(const display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;
 
 
-		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; };
-		void add_frame(int duration, const unit_frame& value,bool force_change =false){ unit_anim_.add_frame(duration,value,force_change) ; };
+		const unit_frame& get_last_frame() const{ return unit_anim_.get_last_frame() ; }
+		void add_frame(int duration, const unit_frame& value,bool force_change =false){ unit_anim_.add_frame(duration,value,force_change) ; }
 
 		bool need_update() const;
 		bool need_minimal_update() const;
@@ -47,9 +47,9 @@ class unit_animation
 		void update_last_draw_time();
 		int get_begin_time() const;
 		int get_end_time() const;
-                int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); };
-		int get_animation_time() const{ return unit_anim_.get_animation_time() ; };
-		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; };
+                int time_to_tick(int animation_time) const { return unit_anim_.time_to_tick(animation_time); }
+		int get_animation_time() const{ return unit_anim_.get_animation_time() ; }
+		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; }
 		void start_animation(int start_time
 				, const map_location &src = map_location::null_location
 				, const map_location &dst = map_location::null_location
@@ -59,7 +59,7 @@ class unit_animation
 		void update_parameters(const map_location &src, const map_location &dst);
                 void pause_animation();
                 void restart_animation();
-		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
+		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; }
 		void redraw(frame_parameters& value);
 		void clear_haloes();
 		bool invalidate(frame_parameters& value );
@@ -72,7 +72,7 @@ class unit_animation
 
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
-	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters()) const { return unit_anim_.parameters(default_val); };
+	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters()) const { return unit_anim_.parameters(default_val); }
 	private:
 		explicit unit_animation(int start_time
 				, const unit_frame &frame
@@ -90,7 +90,7 @@ class unit_animation
 				halo_id_(0),
 				last_frame_begin_time_(0),
 				cycles_(false)
-				{};
+				{}
 			explicit particule(const config& cfg
 					, const std::string& frame_string ="frame");
 
@@ -110,7 +110,7 @@ class unit_animation
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time);
-			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); };
+			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); }
 			void clear_halo();
 			bool accelerate;
 		private:
@@ -190,7 +190,7 @@ class unit_animator
 		void start_animations();
                 void pause_animation();
                 void restart_animation();
-		void clear(){start_time_ = INT_MIN ; animated_units_.clear();};
+		void clear(){start_time_ = INT_MIN ; animated_units_.clear();}
 		void set_all_standing();
 
 

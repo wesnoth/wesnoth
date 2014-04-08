@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2012 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -109,7 +109,8 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 unit_palette::unit_palette(editor_display &gui, const config& cfg,
 								 mouse_action** active_mouse_action)
 //TODO avoid magic numbers
-	:	editor_palette<unit_type>(gui, cfg, 36, 4, active_mouse_action)
+	:	editor_palette<unit_type>(gui, cfg, 36, 4, active_mouse_action),
+	 	selected_bg_items_()
 {
 }
 
@@ -118,6 +119,19 @@ const std::string& unit_palette::get_id(const unit_type& u)
 	return u.id();
 }
 
+bool unit_palette::is_selected_bg_item(const std::string& id)
+{
+	return selected_bg_items_.count(id) != 0;
+}
+
+void unit_palette::select_bg_item(const std::string& item_id) {
+
+	if (selected_bg_items_.count(item_id) != 0)
+		selected_bg_items_.erase(item_id);
+	else selected_bg_items_.insert(item_id);
+
+	set_dirty();
+}
 
 }
 

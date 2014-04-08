@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -308,6 +308,24 @@ template size_t editor_palette<unit_type>::num_items();
 template size_t editor_palette<overlay>::num_items();
 
 template<class Item>
+bool editor_palette<Item>::is_selected_fg_item(const std::string& id)
+{
+	return selected_fg_item_ == id;
+}
+template bool editor_palette<t_translation::t_terrain>::is_selected_fg_item(const std::string& id);
+template bool editor_palette<unit_type>::is_selected_fg_item(const std::string& id);
+template bool editor_palette<overlay>::is_selected_fg_item(const std::string& id);
+
+template<class Item>
+bool editor_palette<Item>::is_selected_bg_item(const std::string& id)
+{
+	return selected_bg_item_ == id;
+}
+template bool editor_palette<t_translation::t_terrain>::is_selected_bg_item(const std::string& id);
+template bool editor_palette<unit_type>::is_selected_bg_item(const std::string& id);
+template bool editor_palette<overlay>::is_selected_bg_item(const std::string& id);
+
+template<class Item>
 void editor_palette<Item>::draw_contents()
 {
 	if (*active_mouse_action_)
@@ -379,12 +397,23 @@ void editor_palette<Item>::draw_contents()
 		tile.set_item_image(item_image);
 		tile.set_item_id(item_id);
 
-		if (get_id((*item).second) == selected_bg_item_
-				&& get_id((*item).second) == selected_fg_item_) {
+//		if (get_id((*item).second) == selected_bg_item_
+//				&& get_id((*item).second) == selected_fg_item_) {
+//			tile.set_pressed(gui::tristate_button::BOTH);
+//		} else if (get_id((*item).second) == selected_bg_item_) {
+//			tile.set_pressed(gui::tristate_button::RIGHT);
+//		} else if (get_id((*item).second) == selected_fg_item_) {
+//			tile.set_pressed(gui::tristate_button::LEFT);
+//		} else {
+//			tile.set_pressed(gui::tristate_button::NONE);
+//		}
+
+		if (is_selected_bg_item(get_id(item->second))
+				&& is_selected_fg_item(get_id(item->second))) {
 			tile.set_pressed(gui::tristate_button::BOTH);
-		} else if (get_id((*item).second) == selected_bg_item_) {
+		} else if (is_selected_bg_item(get_id(item->second))) {
 			tile.set_pressed(gui::tristate_button::RIGHT);
-		} else if (get_id((*item).second) == selected_fg_item_) {
+		} else if (is_selected_fg_item(get_id(item->second))) {
 			tile.set_pressed(gui::tristate_button::LEFT);
 		} else {
 			tile.set_pressed(gui::tristate_button::NONE);

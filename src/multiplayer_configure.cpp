@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 Boldizsár Lipka <lipkab@zoho.com>
+   Copyright (C) 2013 - 2014 Boldizsár Lipka <lipkab@zoho.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 #include "map_exception.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/mp_create_game_choose_mods.hpp"
 #include "gui/dialogs/mp_create_game_set_password.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "minimap.hpp"
@@ -79,20 +78,20 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	shroud_game_(disp.video(), _("Shroud"), gui::button::TYPE_CHECK),
 	observers_game_(disp.video(), _("Observers"), gui::button::TYPE_CHECK),
 	shuffle_sides_(disp.video(), _("Shuffle sides"), gui::button::TYPE_CHECK),
-	options_(disp.video(), _("Options...")),
-	cancel_game_(disp.video(), _("Cancel")),
+	cancel_game_(disp.video(), _("Back")),
 	launch_game_(disp.video(), _("OK")),
 	password_button_(disp.video(), _("Set Password...")),
 	vision_combo_(disp, std::vector<std::string>()),
 	name_entry_(disp.video(), 32),
 	entry_points_label_(disp.video(), _("Select an entry point:"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	entry_points_combo_(disp, std::vector<std::string>()),
-	options_pane_(disp.video()),
+	options_pane_left_(disp.video()),
+	options_pane_right_(disp.video()),
 	entry_points_(),
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
 	parameters_(params),
-	options_manager_(cfg, disp.video(), preferences::options())
+	options_manager_(cfg, disp, &options_pane_right_, preferences::options())
 {
 	// Build the list of scenarios to play
 
@@ -205,6 +204,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	options_manager_.set_era(parameters_.mp_era);
 	options_manager_.set_scenario(parameters_.mp_scenario);
 	options_manager_.set_modifications(parameters_.active_mods);
+	options_manager_.init_widgets();
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
@@ -317,10 +317,6 @@ void configure::process_event()
 		gui2::tmp_create_game_set_password::execute(
 				  parameters_.password
 				, disp_.video());
-	}
-
-	if(options_.pressed()) {
-		options_manager_.show_dialog();
 	}
 
 	if (entry_points_combo_.changed()) {
@@ -463,6 +459,8 @@ void configure::process_event()
 		fog_game_.enable(!map_settings);
 		shroud_game_.enable(!map_settings);
 	}
+
+	options_manager_.process_event();
 }
 
 void configure::hide_children(bool hide)
@@ -504,7 +502,6 @@ void configure::hide_children(bool hide)
 	shuffle_sides_.hide(hide);
 	cancel_game_.hide(hide);
 	launch_game_.hide(hide);
-	options_.hide(hide);
 
 	password_button_.hide(hide);
 	vision_combo_.hide(hide);
@@ -513,7 +510,10 @@ void configure::hide_children(bool hide)
 	entry_points_label_.hide(hide);
 	entry_points_combo_.hide(hide);
 
-	options_pane_.hide(hide);
+	options_pane_left_.hide(hide);
+	options_pane_right_.hide(hide);
+
+	options_manager_.hide_children(hide);
 }
 
 void configure::layout_children(const SDL_Rect& rect)
@@ -542,109 +542,123 @@ void configure::layout_children(const SDL_Rect& rect)
 	// Save ypos here (column top)
 	int ypos_columntop = ypos;
 
+	const int right_pane_height =
+		ca.h - (ypos_columntop - ca.y + launch_game_.height() + border_size);
+
 	// First column: non-gameplay settings
-	int slider_width = first_column_width;
+	options_pane_left_.set_location(xpos, ypos);
+	options_pane_left_.set_width(first_column_width);
+	options_pane_left_.set_height(right_pane_height - entry_points_label_.height());
+
+	int slider_width = options_pane_left_.width() - 40;
 
 #ifdef MP_VISION_OPTIONAL
 	vision_combo_.set_location(xpos, ypos);
 	ypos += vision_combo_.height() + border_size;
 #endif
 
-	ypos += 2*border_size;
-	observers_game_.set_location(xpos, ypos);
-	shuffle_sides_.set_location(ca.x + first_column_width/2, ypos);
-	ypos += shuffle_sides_.height() + border_size;
+	int xpos_left = 0;
+	int ypos_left = 0;
 
-	countdown_game_.set_location(xpos, ypos);
+	ypos_left += 2 * border_size;
+	options_pane_left_.add_widget(&observers_game_, xpos_left, ypos_left);
+	options_pane_left_.add_widget(&shuffle_sides_,
+		xpos_left + (options_pane_left_.width() - xpos_left) / 2 + border_size, ypos_left);
+	ypos_left += shuffle_sides_.height() + border_size;
+
+	options_pane_left_.add_widget(&countdown_game_, xpos_left, ypos_left);
 
 	if(!local_players_only_) {
-		password_button_.set_location(ca.x + first_column_width/2, ypos);
+		options_pane_left_.add_widget(&password_button_,
+			(ca.x + first_column_width / 2) - 40, ypos_left);
 	} else {
 		password_button_.hide(true);
 	}
 
-	ypos += countdown_game_.height() + border_size;
+	ypos_left += countdown_game_.height() + border_size;
 
-	countdown_init_time_label_.set_location(xpos, ypos);
-	ypos += countdown_init_time_label_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_init_time_label_, xpos_left, ypos_left	);
+	ypos_left += countdown_init_time_label_.height() + border_size;
 	countdown_init_time_slider_.set_width(slider_width);
-	countdown_init_time_slider_.set_location(xpos, ypos);
-	ypos += countdown_init_time_slider_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_init_time_slider_, xpos_left, ypos_left);
+	ypos_left += countdown_init_time_slider_.height() + border_size;
 
-	countdown_turn_bonus_label_.set_location(xpos, ypos);
-	ypos += countdown_turn_bonus_label_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_turn_bonus_label_, xpos_left, ypos_left);
+	ypos_left += countdown_turn_bonus_label_.height() + border_size;
 	countdown_turn_bonus_slider_.set_width(slider_width);
-	countdown_turn_bonus_slider_.set_location(xpos, ypos);
-	ypos += countdown_turn_bonus_slider_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_turn_bonus_slider_, xpos_left, ypos_left);
+	ypos_left += countdown_turn_bonus_slider_.height() + border_size;
 
-	countdown_reservoir_time_label_.set_location(xpos, ypos);
-	ypos += countdown_reservoir_time_label_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_reservoir_time_label_, xpos_left, ypos_left);
+	ypos_left += countdown_reservoir_time_label_.height() + border_size;
 	countdown_reservoir_time_slider_.set_width(slider_width);
-	countdown_reservoir_time_slider_.set_location(xpos, ypos);
-	ypos += countdown_reservoir_time_slider_.height() + border_size;
-	countdown_action_bonus_label_.set_location(xpos, ypos);
-	ypos += countdown_action_bonus_label_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_reservoir_time_slider_, xpos_left, ypos_left);
+	ypos_left += countdown_reservoir_time_slider_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_action_bonus_label_, xpos_left, ypos_left);
+	ypos_left += countdown_action_bonus_label_.height() + border_size;
 	countdown_action_bonus_slider_.set_width(slider_width);
-	countdown_action_bonus_slider_.set_location(xpos, ypos);
-	ypos += countdown_action_bonus_slider_.height() + border_size;
-
-	options_.set_location(xpos, ypos);
-	ypos += options_.height() + border_size;
+	options_pane_left_.add_widget(&countdown_action_bonus_slider_, xpos_left, ypos_left);
+	ypos_left += countdown_action_bonus_slider_.height() + border_size;
 
 	if (show_entry_points_) {
-		ypos += border_size;
-		entry_points_label_.set_location(xpos, ypos);
-		ypos += entry_points_label_.height() + border_size;
-		entry_points_combo_.set_location(xpos, ypos);
-		ypos += entry_points_combo_.height() + border_size;
+		int x = ca.x;
+		int y = ca.y + ca.h - entry_points_combo_.height();
+		entry_points_combo_.set_location(x, y);
+		y -= entry_points_label_.height() + border_size;
+		entry_points_label_.set_location(x, y);
 	}
 
 	// Second column: gameplay settings
 	xpos += first_column_width + column_border_size;
 	ypos = ypos_columntop;
 
-	options_pane_.set_location(xpos, ypos);
-	options_pane_.set_width(ca.w - (xpos - ca.x));
-	options_pane_.set_height(ca.h - (ypos - ca.y + launch_game_.height() + border_size));
+	options_pane_right_.set_location(xpos, ypos);
+	options_pane_right_.set_width(ca.w - (xpos - ca.x));
+	options_pane_right_.set_height(right_pane_height);
 
-	slider_width = options_pane_.width() - 40;
+	slider_width = options_pane_right_.width() - 40;
 
-	xpos = 0;
-	ypos = 0;
-	options_pane_.add_widget(&generic_label_, xpos, ypos);
-	ypos += generic_label_.height() + border_size;
+	int xpos_right = 0;
+	int ypos_right = 0;
+	options_pane_right_.add_widget(&generic_label_, xpos_right, ypos_right);
+	ypos_right += generic_label_.height() + border_size;
 
-	options_pane_.add_widget(&use_map_settings_, xpos, ypos);
-	options_pane_.add_widget(&fog_game_, xpos + (options_pane_.width() - xpos)/2 + 5, ypos);
-	ypos += use_map_settings_.height() + border_size;
+	options_pane_right_.add_widget(&use_map_settings_, xpos_right, ypos_right);
+	options_pane_right_.add_widget(&fog_game_,
+		xpos_right + (options_pane_right_.width() - xpos_right)/2 + 5, ypos_right);
+	ypos_right += use_map_settings_.height() + border_size;
 
-	options_pane_.add_widget(&random_start_time_, xpos, ypos);
-	options_pane_.add_widget(&shroud_game_, xpos + (options_pane_.width() - xpos)/2 + 5, ypos);
-	ypos += random_start_time_.height() + border_size;
+	options_pane_right_.add_widget(&random_start_time_, xpos_right, ypos_right);
+	options_pane_right_.add_widget(&shroud_game_,
+		xpos_right + (options_pane_right_.width() - xpos_right)/2 + 5, ypos_right);
+	ypos_right += random_start_time_.height() + border_size;
 
-	options_pane_.add_widget(&turns_label_, xpos, ypos);
-	ypos += turns_label_.height() + border_size;
+	options_pane_right_.add_widget(&turns_label_, xpos_right, ypos_right);
+	ypos_right += turns_label_.height() + border_size;
 	turns_slider_.set_width(slider_width);
-	options_pane_.add_widget(&turns_slider_, xpos, ypos);
-	ypos += turns_slider_.height() + border_size;
+	options_pane_right_.add_widget(&turns_slider_, xpos_right, ypos_right);
+	ypos_right += turns_slider_.height() + border_size;
 
-	options_pane_.add_widget(&xp_modifier_label_, xpos, ypos);
-	ypos += xp_modifier_label_.height() + border_size;
+	options_pane_right_.add_widget(&xp_modifier_label_, xpos_right, ypos_right);
+	ypos_right += xp_modifier_label_.height() + border_size;
 	xp_modifier_slider_.set_width(slider_width);
-	options_pane_.add_widget(&xp_modifier_slider_, xpos, ypos);
-	ypos += xp_modifier_slider_.height() + border_size;
+	options_pane_right_.add_widget(&xp_modifier_slider_, xpos_right, ypos_right);
+	ypos_right += xp_modifier_slider_.height() + border_size;
 
-	options_pane_.add_widget(&village_support_label_, xpos, ypos);
-	ypos += village_support_label_.height() + border_size;
+	options_pane_right_.add_widget(&village_support_label_, xpos_right, ypos_right);
+	ypos_right += village_support_label_.height() + border_size;
 	village_support_slider_.set_width(slider_width);
-	options_pane_.add_widget(&village_support_slider_, xpos, ypos);
-	ypos += village_support_slider_.height() + border_size;
+	options_pane_right_.add_widget(&village_support_slider_, xpos_right, ypos_right);
+	ypos_right += village_support_slider_.height() + border_size;
 
-	options_pane_.add_widget(&village_gold_label_, xpos, ypos);
-	ypos += village_gold_label_.height() + border_size;
+	options_pane_right_.add_widget(&village_gold_label_, xpos_right, ypos_right);
+	ypos_right += village_gold_label_.height() + border_size;
 	village_gold_slider_.set_width(slider_width);
-	options_pane_.add_widget(&village_gold_slider_, xpos, ypos);
-	ypos += village_gold_slider_.height() + 3 * border_size;
+
+	options_pane_right_.add_widget(&village_gold_slider_, xpos_right, ypos_right);
+	ypos_right += village_gold_slider_.height() + 3 * border_size;
+
+	options_manager_.layout_widgets(xpos_right, ypos_right);
 
 	// OK / Cancel buttons
 	gui::button* left_button = &launch_game_;

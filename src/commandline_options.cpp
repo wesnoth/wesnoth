@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
+   Copyright (C) 2011 - 2014 by Lukasz Dobrogowski <lukasz.dobrogowski@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,8 +48,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	campaign_difficulty(),
 	campaign_scenario(),
 	clock(false),
-	config_path(false),
-	config_dir(),
+	data_path(false),
 	data_dir(),
 	debug(false),
 	debug_lua(false),
@@ -109,6 +108,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	screenshot_output_file(),
 	strict_validation(false),
 	test(),
+	userconfig_path(false),
+	userconfig_dir(),
+	userdata_path(false),
+	userdata_dir(),
 	validcache(false),
 	version(false),
 	windowed(false),
@@ -126,9 +129,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("bunzip2", po::value<std::string>(), "decompresses a file (<arg>.bz2) in bzip2 format and stores it without the .bz2 suffix. <arg>.bz2 will be removed.")
 		("bzip2", po::value<std::string>(), "compresses a file (<arg>) in bzip2 format, stores it as <arg>.bz2 and removes <arg>.")
 		("clock", "Adds the option to show a clock for testing the drawing timer.")
-		("config-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
-		("config-path", "prints the path of the user config directory and exits.")
+		("config-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. DEPRECATED: use userdata-path and userconfig-path instead.")
+		("config-path", "prints the path of the userdata directory and exits. DEPRECATED: use userdata-path and userconfig-path instead.")
 		("data-dir", po::value<std::string>(), "overrides the data directory with the one specified.")
+		("data-path", "prints the path of the data directory and exits.")
 		("debug,d", "enables additional command mode options in-game.")
 		("debug-lua", "enables some Lua debugging mechanisms")
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -153,6 +157,10 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("strict-validation", "makes validation errors fatal")
 		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
+		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
+		("userconfig-path", "prints the path of the user config directory and exits.")
+		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
+		("userdata-path", "prints the path of the userdata directory and exits.")
 		("validcache", "assumes that the cache is valid. (dangerous)")
 		("version,v", "prints the game's version number and exits.")
 		("with-replay", "replays the file loaded with the --load option.")
@@ -253,13 +261,15 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	if (vm.count("clock"))
 		clock = true;
 	if (vm.count("config-dir"))
-		config_dir = vm["config-dir"].as<std::string>();
+		userdata_dir = vm["config-dir"].as<std::string>(); //TODO: complain and remove
 	if (vm.count("config-path"))
-		config_path = true;
+		userdata_path = true; //TODO: complain and remove
 	if (vm.count("controller"))
 		multiplayer_controller = parse_to_uint_string_tuples_(vm["controller"].as<std::vector<std::string> >());
 	if (vm.count("data-dir"))
 		data_dir = vm["data-dir"].as<std::string>();
+	if (vm.count("data-path"))
+		data_path = true;
 	if (vm.count("debug"))
 		debug = true;
 	if (vm.count("debug-lua"))
@@ -376,6 +386,14 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		multiplayer_turns = vm["turns"].as<std::string>();
 	if (vm.count("strict-validation"))
 		strict_validation = true;
+	if (vm.count("userconfig-dir"))
+		userconfig_dir = vm["userconfig-dir"].as<std::string>();
+	if (vm.count("userconfig-path"))
+		userconfig_path = true;
+	if (vm.count("userdata-dir"))
+		userdata_dir = vm["userdata-dir"].as<std::string>();
+	if (vm.count("userdata-path"))
+		userdata_path = true;
 	if (vm.count("validcache"))
 		validcache = true;
 	if (vm.count("version"))

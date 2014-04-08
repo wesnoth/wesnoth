@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,9 +23,11 @@
 #include "gui/widgets/toggle_panel.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 	: tbuilder_control(cfg)
@@ -33,7 +35,7 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 	, retval_id_(cfg["return_value_id"])
 	, retval_(cfg["return_value"])
 {
-	const config &c = cfg.child("grid");
+	const config& c = cfg.child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
@@ -48,9 +50,8 @@ twidget* tbuilder_toggle_panel::build() const
 
 	widget->set_retval(get_retval(retval_id_, retval_, id));
 
-	DBG_GUI_G << "Window builder: placed toggle panel '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed toggle panel '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	widget->init_grid(grid);
 	return widget;
@@ -87,4 +88,3 @@ twidget* tbuilder_toggle_panel::build() const
  * @end{tag}{name="toggle_panel"}
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  */
-

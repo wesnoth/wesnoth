@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -164,9 +164,18 @@ event_context::~event_context()
 	event_contexts.pop_back();
 }
 
-handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joined_(false)
+handler::handler(const bool auto_join)
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	: unicode_(1)
+#else
+	: unicode_(SDL_EnableUNICODE(1))
+#endif
+	, has_joined_(false)
 {
+
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableKeyRepeat(SDL_DEFAULT_REPEAT_DELAY,SDL_DEFAULT_REPEAT_INTERVAL);
+#endif
 	if(auto_join) {
 		assert(!event_contexts.empty());
 		event_contexts.back().add_handler(this);
@@ -177,7 +186,9 @@ handler::handler(const bool auto_join) : unicode_(SDL_EnableUNICODE(1)), has_joi
 handler::~handler()
 {
 	leave();
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 	SDL_EnableUNICODE(unicode_);
+#endif
 }
 
 void handler::join()
@@ -282,7 +293,14 @@ void pump()
 	std::vector< SDL_Event > events;
 	while(SDL_PollEvent(&temp_event)) {
 		++poll_count;
-		if(!begin_ignoring && temp_event.type == SDL_ACTIVEEVENT) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		if(!begin_ignoring && temp_event.type == SDL_WINDOWEVENT
+				&& (temp_event.window.event == SDL_WINDOWEVENT_ENTER
+						|| temp_event.window.event == SDL_WINDOWEVENT_FOCUS_GAINED))
+#else
+		if(!begin_ignoring && temp_event.type == SDL_ACTIVEEVENT)
+#endif
+		{
 			begin_ignoring = poll_count;
 		} else if(begin_ignoring > 0 && is_input(temp_event)) {
 			//ignore user input events that occurred after the window was activated
@@ -304,6 +322,31 @@ void pump()
 		SDL_Event &event = *ev_it;
 		switch(event.type) {
 
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+			case SDL_WINDOWEVENT:
+				switch(event.window.event) {
+					case SDL_WINDOWEVENT_ENTER:
+					case SDL_WINDOWEVENT_FOCUS_GAINED:
+						cursor::set_focus(1);
+						break;
+
+					case SDL_WINDOWEVENT_LEAVE:
+					case SDL_WINDOWEVENT_FOCUS_LOST:
+						cursor::set_focus(1);
+						break;
+
+					case SDL_WINDOWEVENT_EXPOSED:
+						update_whole_screen();
+						break;
+
+					case SDL_WINDOWEVENT_RESIZED: {
+						info.resize_dimensions.first = event.window.data1;
+						info.resize_dimensions.second = event.window.data2;
+						break;
+					}
+				}
+				break;
+#else
 			case SDL_ACTIVEEVENT: {
 				SDL_ActiveEvent& ae = reinterpret_cast<SDL_ActiveEvent&>(event);
 				if((ae.state & SDL_APPMOUSEFOCUS) != 0 || (ae.state & SDL_APPINPUTFOCUS) != 0) {
@@ -313,10 +356,9 @@ void pump()
 			}
 
 			//if the window must be redrawn, update the entire screen
-			case SDL_VIDEOEXPOSE: {
+			case SDL_VIDEOEXPOSE:
 				update_whole_screen();
 				break;
-			}
 
 			case SDL_VIDEORESIZE: {
 				const SDL_ResizeEvent* const resize = reinterpret_cast<SDL_ResizeEvent*>(&event);
@@ -324,6 +366,7 @@ void pump()
 				info.resize_dimensions.second = resize->h;
 				break;
 			}
+#endif
 
 			case SDL_MOUSEMOTION: {
 				//always make sure a cursor is displayed if the

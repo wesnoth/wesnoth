@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -471,43 +471,6 @@ std::string copy_from_clipboard(const bool)
 	return str;
 }
 
-#endif
-
-#ifdef __BEOS__
-#include <Clipboard.h>
-#define CLIPBOARD_FUNCS_DEFINED
-
-void copy_to_clipboard(const std::string& text, const bool)
-{
-	if (be_clipboard->Lock())
-	{
-		be_clipboard->Clear();
-
-		BMessage *clip;
-		if ((clip = be_clipboard->Data()))
-		{
-			clip->AddData("text/plain", B_MIME_TYPE, text.c_str(), text.size()+1);
-			be_clipboard->Commit();
-		}
-		be_clipboard->Unlock();
-	}
-}
-
-std::string copy_from_clipboard(const bool)
-{
-	const char* data;
-	ssize_t size;
-	BMessage *clip = NULL;
-	if (be_clipboard->Lock())
-	{
-		clip = be_clipboard->Data();
-		be_clipboard->Unlock();
-	}
-	if (clip != NULL && clip->FindData("text/plain", B_MIME_TYPE, (const void**)&data, &size) == B_OK)
-		return (const char*)data;
-	else
-		return "";
-}
 #endif
 
 #ifdef __APPLE__

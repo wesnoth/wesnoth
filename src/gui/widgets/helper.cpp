@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,13 +23,16 @@
 
 #include "SDL_ttf.h"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace {
-	static bool initialized_ = false;
+namespace
+{
+static bool initialized_ = false;
 }
 
-bool init() {
+bool init()
+{
 	if(initialized_) {
 		return true;
 	}
@@ -68,7 +71,8 @@ Uint32 decode_color(const std::string& color)
 	std::vector<std::string> fields = utils::split(color);
 
 	// make sure we have four fields
-	while(fields.size() < 4) fields.push_back("0");
+	while(fields.size() < 4)
+		fields.push_back("0");
 
 	Uint32 result = 0;
 	for(int i = 0; i < 4; ++i) {
@@ -89,8 +93,8 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 		return PANGO_ALIGN_RIGHT;
 	} else {
 		if(!alignment.empty() && alignment != "left") {
-			ERR_GUI_E << "Invalid text alignment '"
-					<< alignment << "' falling back to 'left'.\n";
+			ERR_GUI_E << "Invalid text alignment '" << alignment
+					  << "' falling back to 'left'.\n";
 		}
 		return PANGO_ALIGN_LEFT;
 	}
@@ -99,12 +103,16 @@ PangoAlignment decode_text_alignment(const std::string& alignment)
 std::string encode_text_alignment(const PangoAlignment alignment)
 {
 	switch(alignment) {
-		case PANGO_ALIGN_LEFT:   return "left";
-		case PANGO_ALIGN_RIGHT:  return "right";
-		case PANGO_ALIGN_CENTER: return "center";
+		case PANGO_ALIGN_LEFT:
+			return "left";
+		case PANGO_ALIGN_RIGHT:
+			return "right";
+		case PANGO_ALIGN_CENTER:
+			return "center";
 	}
 	assert(false);
-	//FIXME: without this "control reaches end of non-void function" in release mode
+	// FIXME: without this "control reaches end of non-void function" in release
+	// mode
 	throw "Control should not reach this point.";
 }
 
@@ -113,7 +121,8 @@ t_string missing_widget(const std::string& id)
 	utils::string_map symbols;
 	symbols["id"] = id;
 
-	return t_string(vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
+	return t_string(
+			vgettext("Mandatory widget '$id' hasn't been defined.", symbols));
 }
 
 void get_screen_size_variables(game_logic::map_formula_callable& variable)
@@ -147,4 +156,3 @@ std::string debug_truncate(const std::string& text)
 }
 
 } // namespace gui2
-

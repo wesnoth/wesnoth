@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2006 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -45,7 +45,7 @@ namespace t_translation {
 	struct t_terrain {
 		t_terrain(const std::string& b, const std::string& o);
 		t_terrain(const std::string& b, t_layer o = NO_LAYER);
-		t_terrain(t_layer b, t_layer o) : base(b), overlay(o) {};
+		t_terrain(t_layer b, t_layer o) : base(b), overlay(o) {}
 		t_terrain() : base(0), overlay(NO_LAYER) {}
 
 		t_layer base;

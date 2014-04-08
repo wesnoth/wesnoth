@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -166,12 +166,9 @@ async_operation::RESULT async_operation::execute(async_operation_ptr this_ptr, w
 			if(res == condition::WAIT_OK || finishedVar_) {
 				completed = true;
 				break;
-			}
-#ifndef __BEOS__
-			else if(res == condition::WAIT_ERROR) {
+			} else if(res == condition::WAIT_ERROR) {
 				break;
 			}
-#endif
 		}
 
 		if(!completed) {

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,13 +26,14 @@
 #include "../actions/undo.hpp"
 #include "../game_config.hpp"
 #include "../gamestatus.hpp"
-#include "../hotkeys.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../play_controller.hpp"
 #include "../preferences.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
+#include "../synced_context.hpp"
 #include "../terrain_filter.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -72,6 +73,7 @@ namespace { // Some helpers for construction.
 /**
  * Constructor for when read from a saved config.
  * This is the reverse of to_config() and corresponds to reading [menu_item].
+ * Handlers are not initialized.
  */
 wml_menu_item::wml_menu_item(const std::string& id, const config & cfg) :
 		item_id_(id),
@@ -110,6 +112,10 @@ wml_menu_item::wml_menu_item(const std::string& id, const vconfig & definition) 
 		use_hotkey_(true),
 		use_wml_menu_(true)
 {
+	// On the off-chance that update() doesn't do it, add the hotkey here.
+	// (Update can always modify it.)
+	hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+
 	// Apply WML.
 	update(definition);
 }
@@ -192,15 +198,16 @@ void wml_menu_item::fire_event(const map_location & event_hex) const
 	// No new player-issued commands allowed while this is firing.
 	const events::command_disabler disable_commands;
 
-	// Should we record the preceding select event?
+	// instead of adding a second "select" event like it sdone before, we just fire the select event again, and this time in a synced context.
+	// note that there coudnt be and user choiced durign teh last "select" event because it didn't run in a synced context.
 	if ( needs_select_  &&  last_select.valid() )
-		recorder.add_event("select", last_select);
-
-	// Record and fire this item's event.
-	recorder.add_event(event_name_, event_hex);
-	if ( fire(event_name_, event_hex) )
-		// The event has mutated the gamestate
-		resources::undo_stack->clear();
+	{
+		synced_context::run_in_synced_context("fire_event",  replay_helper::get_event(event_name_, event_hex, &last_select));
+	}
+	else
+	{
+		synced_context::run_in_synced_context("fire_event",  replay_helper::get_event(event_name_, event_hex, NULL));
+	}
 }
 
 /**
@@ -270,11 +277,17 @@ void wml_menu_item::to_config(config & cfg) const
  */
 void wml_menu_item::update(const vconfig & vcfg)
 {
+	const bool old_use_hotkey = use_hotkey_;
+	// Tracks whether or not the hotkey has been updated.
+	bool hotkey_updated = false;
+
 	if ( vcfg.has_attribute("image") )
 		image_ = vcfg["image"].str();
 
-	if ( vcfg.has_attribute("description") )
+	if ( vcfg.has_attribute("description") ) {
 		description_ = vcfg["description"].t_str();
+		hotkey_updated = true;
+	}
 
 	if ( vcfg.has_attribute("needs_select") )
 		needs_select_ = vcfg["needs_select"].to_bool();
@@ -291,6 +304,7 @@ void wml_menu_item::update(const vconfig & vcfg)
 
 	if ( const vconfig & child = vcfg.child("default_hotkey") ) {
 		default_hotkey_ = child.get_parsed_config();
+		hotkey_updated = true;
 	}
 
 	if ( vcfg.has_attribute("use_hotkey") ) {
@@ -304,6 +318,21 @@ void wml_menu_item::update(const vconfig & vcfg)
 		const bool delayed = cmd["delayed_variable_substitution"].to_bool(true);
 		update_command(delayed ? cmd.get_config() : cmd.get_parsed_config());
 	}
+
+
+	// Update the registered hotkey?
+
+	if ( use_hotkey_ && !old_use_hotkey )
+		// The hotkey needs to be enabled.
+		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+
+	else if ( use_hotkey_ && hotkey_updated )
+		// The hotkey needs to be updated.
+		hotkey::add_wml_hotkey(hotkey_id_, description_, default_hotkey_);
+
+	else if ( !use_hotkey_ && old_use_hotkey )
+		// The hotkey needs to be disabled.
+		hotkey::remove_wml_hotkey(hotkey_id_);
 }
 
 /**
@@ -313,11 +342,13 @@ void wml_menu_item::update_command(const config & new_command)
 {
 	// If there is an old command, remove it from the event handlers.
 	if ( !command_.empty() ) {
-		for ( manager::iteration hand(event_name_); hand.valid(); ++hand ) {
+		manager::iteration iter(event_name_);
+		while ( handler_ptr hand = *iter ) {
 			if ( hand->is_menu_item() ) {
 				LOG_NG << "Removing command for " << event_name_ << ".\n";
 				remove_event_handler(command_["id"].str());
 			}
+			++iter;
 		}
 	}
 
@@ -337,7 +368,7 @@ void wml_menu_item::update_command(const config & new_command)
 
 		// Register the event.
 		LOG_NG << "Setting command for " << event_name_ << " to:\n" << command_;
-		init_handler();
+		add_event_handler(command_, true);
 	}
 }
 

@@ -1,8 +1,5 @@
 #!/bin/sh
-die() {
-	echo >&2 "$@"
-	exit 1
-}
+die() {	echo >&2 "$@"; exit 1; }
 dietail() {
 	echo >&2 "$@"
 	echo >&2 "tail $LOG:"
@@ -16,7 +13,7 @@ shift
 PARAMETERS="$@"
 
 case $VERSION in
-1.4|1.6)
+1.9|1.12)
 	THREADS=4
 	;;
 *)
@@ -28,8 +25,9 @@ SERVERBASE=$HOME/campaignd/$VERSION
 
 [ -d "$SERVERBASE" ] || die "Server '$VERSION' not found."
 [ -r "$SERVERBASE"/COPYING.txt ] || die "GPL file (COPYING.txt) is missing."
-[ -d "$SERVERBASE/data" ] || die "Server '$VERSION' has no data/ dir."
-[ -d "$SERVERBASE/logs" ] || mkdir $SERVERBASE/logs
+[ -r "$SERVERBASE"/server.cfg  ] || die "server.cfg is missing, is the server correctly configured? Aborting..."
+[ -d "$SERVERBASE/data" ] || mkdir "$SERVERBASE/data"
+[ -d "$SERVERBASE/logs" ] || mkdir "$SERVERBASE/logs"
 
 ulimit -c unlimited
 
@@ -40,6 +38,8 @@ do
 	DATE=$(date +"%Y%m%d-%H%M%S")
 	COMMAND="$HOME/bin/campaignd-$VERSION $THREADS $PARAMETERS"
 	LOG="$SERVERBASE/logs/campaignd.$DATE.log"
+	mv "$SERVERBASE/current.log" "$SERVERBASE/old.log" > /dev/null 2>&1
+	ln -s "$LOG" "$SERVERBASE/current.log"
 	echo "started $VERSION campaignd with command: '$COMMAND' logging to: $LOG"
 	$COMMAND > $LOG 2>&1
 	EXIT_CODE="$?"
@@ -47,6 +47,6 @@ do
 	mv gmon.out gmon.$DATE.out > /dev/null 2>&1
 	case $EXIT_CODE in
 		0)	exit ;;
-		1|2|3|127)	dietail ;; #"File I/O error." #"Could not parse config file." #"Could not bind to port." #cannot open shared object file
+		1|2|127)	dietail ;; #"File I/O error." #"Could not parse config file." #cannot open shared object file
 	esac
 done

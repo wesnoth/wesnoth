@@ -1,6 +1,7 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_big_animals = {}
 
@@ -33,15 +34,18 @@ function ca_big_animals:execution(ai, cfg)
     --AH.put_labels(avoid)
 
     for i,unit in ipairs(units) do
+        local goal = MAIUV.get_mai_unit_variables(unit, cfg.ai_id)
+
         -- Unit gets a new goal if none exist or on any move with 10% random chance
-        local r = AH.random(10)
-        if (not unit.variables.goal_x) or (r == 1) then
+        local r = math.random(10)
+        if (not goal.goal_x) or (r == 1) then
             local locs = AH.get_passable_locations(cfg.filter_location or {})
-            local rand = AH.random(#locs)
+            local rand = math.random(#locs)
             --print(type, ': #locs', #locs, rand)
-            unit.variables.goal_x, unit.variables.goal_y = locs[rand][1], locs[rand][2]
+            goal.goal_x, goal.goal_y = locs[rand][1], locs[rand][2]
+            MAIUV.set_mai_unit_variables(unit, cfg.ai_id, goal)
         end
-        --print('Big animal goto: ', type, unit.variables.goal_x, unit.variables.goal_y, r)
+        --print('Big animal goto: ', unit.id, goal.goal_x, goal.goal_y, r)
 
         -- hexes the unit can reach
         local reach_map = AH.get_reachable_unocc(unit)
@@ -57,7 +61,7 @@ function ca_big_animals:execution(ai, cfg)
         local max_rating, best_hex = -9e99, {}
         reach_map:iter( function(x, y, v)
             -- Distance from goal is first rating
-            local rating = - H.distance_between(x, y, unit.variables.goal_x, unit.variables.goal_y)
+            local rating = - H.distance_between(x, y, goal.goal_x, goal.goal_y)
 
             -- Proximity to an enemy unit is a plus
             local enemy_hp = 500
@@ -82,17 +86,17 @@ function ca_big_animals:execution(ai, cfg)
         --AH.put_labels(reach_map)
 
         if (best_hex[1] ~= unit.x) or (best_hex[2] ~= unit.y) then
-            ai.move(unit, best_hex[1], best_hex[2])  -- partial move only
+            AH.checked_move(ai, unit, best_hex[1], best_hex[2])  -- partial move only
+            if (not unit) or (not unit.valid) then return end
         else  -- If animal did not move, we need to stop it (also delete the goal)
-            ai.stopunit_moves(unit)
-            unit.variables.goal_x = nil
-            unit.variables.goal_y = nil
+            AH.checked_stopunit_moves(ai, unit)
+            if (not unit) or (not unit.valid) then return end
+            MAIUV.delete_mai_unit_variables(unit, cfg.ai_id)
         end
 
         -- Or if this gets the unit to the goal, we also delete the goal
-        if (unit.x == unit.variables.goal_x) and (unit.y == unit.variables.goal_y) then
-            unit.variables.goal_x = nil
-            unit.variables.goal_y = nil
+        if (unit.x == goal.goal_x) and (unit.y == goal.goal_y) then
+            MAIUV.delete_mai_unit_variables(unit, cfg.ai_id)
         end
 
         -- Finally, if the unit ended up next to enemies, attack the weakest of those
@@ -106,9 +110,8 @@ function ca_big_animals:execution(ai, cfg)
             end
         end
         if target.id then
-            ai.attack(unit, target)
+            AH.checked_attack(ai, unit, target)
         end
-
     end
 end
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,9 +30,9 @@ class level
 {
 public:
 	level(const config& data);
-	virtual ~level() {};
+	virtual ~level() {}
 
-	enum TYPE { SCENARIO, USER_MAP, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
+	enum TYPE { SCENARIO, USER_MAP, USER_SCENARIO, RANDOM_MAP, CAMPAIGN, SP_CAMPAIGN};
 
 	virtual bool can_launch_game() const = 0;
 
@@ -43,6 +43,7 @@ public:
 	virtual std::string name() const;
 	virtual std::string description() const;
 	virtual std::string id() const;
+	virtual bool allow_era_choice() const;
 
 	void set_data(const config& data);
 	const config& data() const;
@@ -59,7 +60,7 @@ class scenario : public level
 {
 public:
 	scenario(const config& data);
-	~scenario();
+	virtual ~scenario();
 
 	bool can_launch_game() const;
 
@@ -86,7 +87,7 @@ class user_map : public scenario
 {
 public:
 	user_map(const config& data, const std::string& name, gamemap* map);
-	~user_map();
+	virtual ~user_map();
 
 	void set_metadata();
 
@@ -105,7 +106,7 @@ class random_map : public scenario
 {
 public:
 	random_map(const config& generator_data);
-	~random_map();
+	virtual ~random_map();
 
 	const config& generator_data() const;
 
@@ -124,7 +125,7 @@ class campaign : public level
 {
 public:
 	campaign(const config& data);
-	~campaign();
+	virtual ~campaign();
 
 	bool can_launch_game() const;
 
@@ -134,6 +135,8 @@ public:
 
 	std::string id() const;
 
+	bool allow_era_choice() const;
+
 	int min_players() const;
 	int max_players() const;
 
@@ -142,6 +145,7 @@ private:
 	void operator=(const campaign&);
 
 	std::string id_;
+	bool allow_era_choice_;
 	std::string image_label_;
 	int min_players_;
 	int max_players_;
@@ -176,6 +180,14 @@ public:
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();
 
+	void apply_level_filter(const std::string& name);
+	void apply_level_filter(int players);
+	void reset_level_filters();
+
+	const std::string& level_name_filter() const;
+	int player_num_filter() const;
+
+	std::vector<level_ptr> get_levels_by_type_unfiltered(level::TYPE type) const;
 	std::vector<level_ptr> get_levels_by_type(level::TYPE type) const;
 
 	std::vector<std::string> levels_menu_item_names() const;
@@ -199,6 +211,7 @@ public:
 
 	int find_level_by_id(const std::string& id) const;
 	int find_extra_by_id(const MP_EXTRA extra_type, const std::string& id) const;
+	level::TYPE find_level_type_by_id(const std::string& id) const;
 
 	const depcheck::manager& dependency_manager() const;
 
@@ -213,11 +226,14 @@ private:
 
 	void init_all_levels();
 	void init_extras(const MP_EXTRA extra_type);
+	void apply_level_filters();
 
 	const std::vector<extras_metadata_ptr>&
 		get_const_extras_by_type(const MP_EXTRA extra_type) const;
 	std::vector<extras_metadata_ptr>&
 		get_extras_by_type(const MP_EXTRA extra_type);
+
+	size_t map_level_index(size_t index) const;
 
 	level::TYPE current_level_type_;
 	size_t current_level_index_;
@@ -225,13 +241,25 @@ private:
 	size_t current_era_index_;
 	size_t current_mod_index_;
 
+	std::string level_name_filter_;
+	int player_count_filter_;
+
 	std::vector<scenario_ptr> scenarios_;
 	std::vector<user_map_ptr> user_maps_;
+	std::vector<scenario_ptr> user_scenarios_;
 	std::vector<campaign_ptr> campaigns_;
 	std::vector<campaign_ptr> sp_campaigns_;
 	std::vector<random_map_ptr> random_maps_;
 
+	std::vector<size_t> scenarios_filtered_;
+	std::vector<size_t> user_maps_filtered_;
+	std::vector<size_t> user_scenarios_filtered_;
+	std::vector<size_t> campaigns_filtered_;
+	std::vector<size_t> sp_campaigns_filtered_;
+	std::vector<size_t> random_maps_filtered_;
+
 	std::vector<std::string> user_map_names_;
+	std::vector<std::string> user_scenario_names_;
 
 	std::vector<extras_metadata_ptr> eras_;
 	std::vector<extras_metadata_ptr> mods_;

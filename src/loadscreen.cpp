@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2005 - 2013 by Joeri Melis <joeri_melis@hotmail.com>
+   Copyright (C) 2005 - 2014 by Joeri Melis <joeri_melis@hotmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -110,7 +110,14 @@ void loadscreen::draw_screen(const std::string &text)
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
 	SDL_Event ev;
 	while(SDL_PollEvent(&ev)) {
-		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		if(ev.type == SDL_WINDOWEVENT
+				&& (ev.window.event == SDL_WINDOWEVENT_RESIZED
+					|| ev.window.event == SDL_WINDOWEVENT_EXPOSED))
+#else
+		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
+#endif
+		{
 			logo_drawn_ = false;
 		}
 	}
@@ -189,8 +196,8 @@ void loadscreen::draw_screen(const std::string &text)
 
 void loadscreen::clear_screen()
 {
-	int scrx = screen_.getx();                     //< Screen width.
-	int scry = screen_.gety();                     //< Screen height.
+	int scrx = screen_.getx();                     // Screen width.
+	int scry = screen_.gety();                     // Screen height.
 	SDL_Rect area = create_rect(0, 0, scrx, scry); // Screen area.
 	surface disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
@@ -219,23 +226,23 @@ static int const nb_stages = 19;
  */
 static load_stage const stages[nb_stages] =
 {
-	{ "init gui", N_("Initializing user interface"), 0, 17210 },
-	{ "load config", N_("Loading game configuration"), 20, 0 },
-	{ "verify cache", N_("Verifying cache"), 20, 164 },
-	{ "create cache", N_("Reading files and creating cache"), 21, 80287 },
-	{ "load unit types", N_("Reading unit files"), 94, 467 },
-	{ "init fonts", N_("Reinitialize fonts for the current language"), 98, 17 },
+	{ "init gui", N_("Initializing user interface"), 0, 27089 },
+	{ "load config", N_("Loading game configuration"), 46, 0 },
+	{ "verify cache", N_("Verifying cache"), 46, 179 },
+	{ "create cache", N_("Reading files and creating cache"), 47, 60317 },
+	{ "load unit types", N_("Reading unit files"), 85, 531 },
+	{ "init fonts", N_("Reinitialize fonts for the current language"), 96, 21 },
 	{ "refresh addons", N_("Searching for installed add-ons"), 99, 0 },
 	{ "titlescreen", N_("Loading title screen"), 100, 0 },
 	{ "load data", N_("Loading data files"), 0, 0 },
 	{ "verify cache", N_("Verifying cache"), 0, 0 },
-	{ "create cache", N_("Reading files and creating cache"), 0, 152109 },
-	{ "load unit types", N_("Reading unit files"), 74, 488 },
-	{ "load level", N_("Loading level"), 75, 0 },
-	{ "init teams", N_("Initializing teams"), 75, 0 },
-	{ "load units", N_("Loading units"), 77, 0 },
-	{ "init theme", N_("Initializing display"), 77, 0 },
-	{ "build terrain", N_("Building terrain rules"), 77, 1240 },
+	{ "create cache", N_("Reading files and creating cache"), 0, 152852 },
+	{ "load unit types", N_("Reading unit files"), 38, 553 },
+	{ "load level", N_("Loading level"), 41, 0 },
+	{ "init teams", N_("Initializing teams"), 41, 0 },
+	{ "load units", N_("Loading units"), 43, 0 },
+	{ "init theme", N_("Initializing display"), 43, 0 },
+	{ "build terrain", N_("Building terrain rules"), 43, 1545 },
 	{ "init display", N_("Initializing display"), 99, 0 },
 	{ "start game", N_("Starting game"), 100, 0 },
 };

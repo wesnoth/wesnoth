@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
+   Copyright (C) 2006 - 2014 by Jeremy Rosen <jeremy.rosen@enst-bretagne.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -154,17 +154,17 @@ struct animation_cursor
 			bool value_match = (previously_value_set && s_branch_value != s_cfg_value);
 			bool value_2nd_match = (previously_value_2nd_set && s_branch_value_2nd != s_cfg_value_2nd);
 			if ( (!previously_hits_set || hits_match) &&
-			     (!previously_direction_set || direction_match) && 
-			     (!previously_terrain_set || terrain_match) && 
-			     (!previously_value_set || value_match) && 
-			     (!previously_value_2nd_set || value_2nd_match) && 
+			     (!previously_direction_set || direction_match) &&
+			     (!previously_terrain_set || terrain_match) &&
+			     (!previously_value_set || value_match) &&
+			     (!previously_value_2nd_set || value_2nd_match) &&
 			     (hits_match || direction_match || terrain_match || value_match || value_2nd_match) )
 			{
 				branches.erase(bi++);
 			}
 			else {
 				(*bi).attributes.merge_attributes(cfg);
-				bi++;
+				++bi;
 			}
 		}
 		// Then we prune all parent branches with similar matches as they
@@ -183,15 +183,15 @@ struct animation_cursor
 			bool value_match = (previously_value_set && s_branch_value == s_cfg_value);
 			bool value_2nd_match = (previously_value_2nd_set && s_branch_value_2nd == s_cfg_value_2nd);
 			if ( (!previously_hits_set || hits_match) &&
-			     (!previously_direction_set || direction_match) && 
-			     (!previously_terrain_set || terrain_match) && 
-			     (!previously_value_set || value_match) && 
-			     (!previously_value_2nd_set || value_2nd_match) && 
+			     (!previously_direction_set || direction_match) &&
+			     (!previously_terrain_set || terrain_match) &&
+			     (!previously_value_set || value_match) &&
+			     (!previously_value_2nd_set || value_2nd_match) &&
 			     (hits_match || direction_match || terrain_match || value_match || value_2nd_match) )
 			{
 				parent->branches.erase(bi++);
 			}
-			else bi++;
+			else ++bi;
 		}
 	}
 };
@@ -200,7 +200,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 {
 	/* The anim_cursor holds the current parsing through the config and the
 	   branches hold the data that will be interpreted as the actual animation.
-	   The branches store the config attributes for each block and the 
+	   The branches store the config attributes for each block and the
 	   children of those branches make up all the 'frame', 'missile_frame', etc.
 	   individually (so 2 instances of 'frame' would be stored as 2 children) */
 	std::list<animation_cursor> anim_cursors;
@@ -208,7 +208,7 @@ static void prepare_single_animation(const config &anim_cfg, animation_branches 
 	while (!anim_cursors.empty())
 	{
 		animation_cursor &ac = anim_cursors.back();
-		
+
 		// Reached end of sub-tag config block
 		if (ac.itors.first == ac.itors.second) {
 			if (!ac.parent) break;
@@ -578,8 +578,8 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 			healed_sound = "heal.wav";
 		} else {
 			healed_sound = cfg["healed_sound"].str();
-		}	
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);	
+		}
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);
 
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("poisoned");
@@ -669,8 +669,8 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			healed_sound = "heal.wav";
 		} else {
 			healed_sound = cfg["healed_sound"].str();
-		}	
-		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);	
+		}
+		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound(healed_sound),true);
 	}
 
 	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "poison_anim"))
@@ -771,7 +771,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 		image::locator image_loc = animations.back().get_last_frame().end_parameters().image;
-		
+
 		animations.back().add_frame(600,frame_builder()
 									.image(image_loc.get_filename()+image_loc.get_modifications())
 									.duration(600)
@@ -1082,7 +1082,7 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		std::cout << event;
 	}
 	std::cout << "]\n";
-	
+
 	std::cout << "\tstart_time=" << u_animation.get_begin_time() << '\n';
 
 	if (u_animation.hits_.size() > 0) {
@@ -1163,11 +1163,11 @@ std::ostream& operator << (std::ostream& outstream, const unit_animation& u_anim
 		}
 		std::cout << "\t[/frame]\n";
 	}
-	
+
 	std::pair<std::string, unit_animation::particule> p;
 	BOOST_FOREACH (p, u_animation.sub_anims_) {
 		for (size_t i=0; i<p.second.get_frames_count(); i++) {
-			std::string sub_frame_name = p.first; 
+			std::string sub_frame_name = p.first;
 			size_t pos = sub_frame_name.find("_frame");
 			if (pos != std::string::npos) sub_frame_name = sub_frame_name.substr(0,pos);
 			std::cout << "\t" << sub_frame_name << "_start_time=" << p.second.get_begin_time() << '\n';
@@ -1195,16 +1195,16 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 	const unit_frame& current_frame= get_current_frame();
 	const int animation_time = get_animation_time();
 	const frame_parameters default_val = parameters_.parameters(animation_time -get_begin_time());
-	
+
 	// everything is relative to the first frame in an attack/defense/etc. block.
 	// so we need to check if this particular frame is due to be shown at this time
 	bool in_scope_of_frame = (animation_time >= get_current_frame_begin_time() ? true: false);
 	if (animation_time > get_current_frame_end_time()) in_scope_of_frame = false;
-	
+
 	// sometimes even if the frame is not due to be shown, a frame image still must be shown.
 	// i.e. in a defense animation that is shorter than an attack animation.
 	// the halos should not persist though and use the 'in_scope_of_frame' variable.
-	
+
 	// for sound frames we want the first time variable set only after the frame has started.
 	if(get_current_frame_begin_time() != last_frame_begin_time_ && animation_time >= get_current_frame_begin_time()) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
@@ -1378,13 +1378,50 @@ void unit_animator::wait_until(int animation_time) const
 	new_animation_frame();
 }
 
+namespace {
+class reentry_preventer {
+public:
+	class entry {
+	public:
+		bool valid() {
+			return valid_;
+		}
+		operator bool() {
+			return valid();
+		}
+		~entry() {
+			--parent_->depth;
+		}
+	private:
+		entry(reentry_preventer *p) : parent_(p), valid_(++p->depth == 1) {}
+		reentry_preventer *parent_;
+		bool valid_;
+		friend class reentry_preventer;
+	};
+
+	reentry_preventer() : depth(0) {}
+	entry enter() {
+		return entry(this);
+	}
+private:
+	unsigned depth;
+};
+}
+
 void unit_animator::wait_for_end() const
 {
 	if (game_config::no_delay) return;
+	static reentry_preventer rp;
+	reentry_preventer::entry rpe = rp.enter();
+	assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches reentry
 	bool finished = false;
 	display*disp = display::get_singleton();
 	while(!finished) {
 		resources::controller->play_slice(false);
+		// Replacing the below assert with a conditional break will fix the local segfault,
+		// but this just exposes a different one.
+		// It's also unnecessary given the one a few lines up.
+		assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches a past reentry
 		disp->delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {

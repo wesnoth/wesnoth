@@ -1,46 +1,40 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
+local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local ca_patrol = {}
 
 function ca_patrol:evaluation(ai, cfg)
-    local patrol
-    if cfg.filter then
-        patrol = wesnoth.get_units({
-            side = wesnoth.current.side,
-            { "and", cfg.filter },
-            formula = '$this_unit.moves > 0' }
-        )[1]
-    else
-        patrol = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
-    end
+    local filter = cfg.filter or { id = cfg.id }
+    local patrol = wesnoth.get_units({
+        side = wesnoth.current.side,
+        { "and", filter },
+        formula = '$this_unit.moves > 0' }
+    )[1]
 
-    -- Check if unit exists as sticky BCAs are not always removed successfully
     if patrol then return cfg.ca_score end
     return 0
 end
 
-function ca_patrol:execution(ai, cfg, self)
-    local patrol
-    if cfg.filter then
-        patrol = wesnoth.get_units({
-            side = wesnoth.current.side,
-            { "and", cfg.filter },
-            formula = '$this_unit.moves > 0' }
-        )[1]
-    else
-        patrol = wesnoth.get_units({ id = cfg.id, formula = '$this_unit.moves > 0' })[1]
-    end
+function ca_patrol:execution(ai, cfg)
+    local filter = cfg.filter or { id = cfg.id }
+    local patrol = wesnoth.get_units({
+        side = wesnoth.current.side,
+        { "and", filter },
+        formula = '$this_unit.moves > 0' }
+    )[1]
 
     cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
     cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
 
     local n_wp = #cfg.waypoint_x  -- just for convenience
 
+    local patrol_vars = MAIUV.get_mai_unit_variables(patrol, cfg.ai_id)
+
     -- Set up waypoints, taking into account whether 'reverse' is set
-    -- This works even the first time, when self.data.id_reverse is not set yet
+    -- This works even the first time, when patrol_vars.patrol_reverse is not set yet
     local waypoints = {}
-    if self.data[patrol.id..'_reverse'] then
+    if patrol_vars.patrol_reverse then
         for i = 1,n_wp do
             waypoints[i] = { tonumber(cfg.waypoint_x[n_wp-i+1]), tonumber(cfg.waypoint_y[n_wp-i+1]) }
         end
@@ -50,12 +44,13 @@ function ca_patrol:execution(ai, cfg, self)
         end
     end
 
-    -- if not set, set next location (first move)
+    -- If not set, set next location (first move)
     -- This needs to be in WML format, so that it persists over save/load cycles
-    if (not self.data[patrol.id..'_x']) then
-        self.data[patrol.id..'_x'] = waypoints[1][1]
-        self.data[patrol.id..'_y'] = waypoints[1][2]
-        self.data[patrol.id..'_reverse'] = false
+    if (not patrol_vars.patrol_x) then
+        patrol_vars.patrol_x = waypoints[1][1]
+        patrol_vars.patrol_y = waypoints[1][2]
+        patrol_vars.patrol_reverse = false
+        MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
     end
 
     while patrol.moves > 0 do
@@ -63,16 +58,16 @@ function ca_patrol:execution(ai, cfg, self)
         -- If so, don't move, but attack that enemy
         local enemies = wesnoth.get_units {
             id = cfg.attack,
-            { "filter_adjacent", { id = cfg.id } },
+            { "filter_adjacent", { id = patrol.id } },
             { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
         }
         if next(enemies) then break end
 
         -- Also check whether we're next to any unit (enemy or ally) which is on the next waypoint
         local unit_on_wp = wesnoth.get_units {
-            x = self.data[patrol.id..'_x'],
-            y = self.data[patrol.id..'_y'],
-            { "filter_adjacent", { id = cfg.id } }
+            x = patrol_vars.patrol_x,
+            y = patrol_vars.patrol_y,
+            { "filter_adjacent", { id = patrol.id } }
         }[1]
 
         for i,wp in ipairs(waypoints) do
@@ -84,28 +79,32 @@ function ca_patrol:execution(ai, cfg, self)
                     -- Move him to the first one (or reverse route), if he's on the last waypoint
                     -- Unless cfg.one_time_only is set
                     if cfg.one_time_only then
-                        self.data[patrol.id..'_x'] = waypoints[n_wp][1]
-                        self.data[patrol.id..'_y'] = waypoints[n_wp][2]
+                        patrol_vars.patrol_x = waypoints[n_wp][1]
+                        patrol_vars.patrol_y = waypoints[n_wp][2]
+                        MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
                     else
                         -- Go back to first WP or reverse direction
                         if cfg.out_and_back then
-                            self.data[patrol.id..'_x'] = waypoints[n_wp-1][1]
-                            self.data[patrol.id..'_y'] = waypoints[n_wp-1][2]
-
+                            patrol_vars.patrol_x = waypoints[n_wp-1][1]
+                            patrol_vars.patrol_y = waypoints[n_wp-1][2]
                             -- We also need to reverse the waypoints right here, as this might not be the end of the move
-                            self.data[patrol.id..'_reverse'] = not self.data[patrol.id..'_reverse']
+                            patrol_vars.patrol_reverse = not patrol_vars.patrol_reverse
+                            MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
+
                             local tmp_wp = {}
                             for i,wp in ipairs(waypoints) do tmp_wp[n_wp-i+1] = wp end
                             waypoints = tmp_wp
                         else
-                            self.data[patrol.id..'_x'] = waypoints[1][1]
-                            self.data[patrol.id..'_y'] = waypoints[1][2]
+                            patrol_vars.patrol_x = waypoints[1][1]
+                            patrol_vars.patrol_y = waypoints[1][2]
+                            MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
                         end
                     end
                 else
                     -- ... else move him on the next waypoint
-                    self.data[patrol.id..'_x'] = waypoints[i+1][1]
-                    self.data[patrol.id..'_y'] = waypoints[i+1][2]
+                    patrol_vars.patrol_x = waypoints[i+1][1]
+                    patrol_vars.patrol_y = waypoints[i+1][2]
+                    MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
                 end
             end
         end
@@ -114,16 +113,17 @@ function ca_patrol:execution(ai, cfg, self)
         if cfg.one_time_only and
             (patrol.x == waypoints[n_wp][1]) and (patrol.y == waypoints[n_wp][2])
         then
-            ai.stopunit_moves(patrol)
+            AH.checked_stopunit_moves(ai, patrol)
         else  -- otherwise move toward next WP
-            local x, y = wesnoth.find_vacant_tile(self.data[patrol.id..'_x'], self.data[patrol.id..'_y'], patrol)
+            local x, y = wesnoth.find_vacant_tile(patrol_vars.patrol_x, patrol_vars.patrol_y, patrol)
             local nh = AH.next_hop(patrol, x, y)
             if nh and ((nh[1] ~= patrol.x) or (nh[2] ~= patrol.y)) then
-                ai.move(patrol, nh[1], nh[2])
+                AH.checked_move(ai, patrol, nh[1], nh[2])
             else
-                ai.stopunit_moves(patrol)
+                AH.checked_stopunit_moves(ai, patrol)
             end
         end
+        if (not patrol) or (not patrol.valid) then return end
     end
 
     -- Attack unit on the last waypoint under all circumstances if cfg.one_time_only is set
@@ -132,7 +132,7 @@ function ca_patrol:execution(ai, cfg, self)
         enemies = wesnoth.get_units{
             x = waypoints[n_wp][1],
             y = waypoints[n_wp][2],
-            { "filter_adjacent", { id = cfg.id } },
+            { "filter_adjacent", { id = patrol.id } },
             { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
         }
     end
@@ -141,20 +141,20 @@ function ca_patrol:execution(ai, cfg, self)
     if (not next(enemies)) then
         enemies = wesnoth.get_units{
             id = cfg.attack,
-            { "filter_adjacent", { id = cfg.id } },
+            { "filter_adjacent", { id = patrol.id } },
             { "filter_side", {{ "enemy_of", { side = wesnoth.current.side } }} }
         }
     end
 
     if next(enemies) then
         for i,v in ipairs(enemies) do
-            ai.attack(patrol, v)
+            AH.checked_attack(ai, patrol, v)
             break
         end
     end
+    if (not patrol) or (not patrol.valid) then return end
 
-    -- Check that patrol is not killed
-    if patrol and patrol.valid then ai.stopunit_all(patrol) end
+    AH.checked_stopunit_all(ai, patrol)
 end
 
 return ca_patrol

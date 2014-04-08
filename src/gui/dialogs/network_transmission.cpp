@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 Sergey Popov <loonycyborg@gmail.com>
+   Copyright (C) 2011 - 2014 Sergey Popov <loonycyborg@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,14 +27,16 @@
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_DIALOG(network_transmission)
 
 void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 {
 	connection_.poll();
-	if(!window_) return;
+	if(!window_)
+		return;
 	if(connection_.done()) {
 		window_.get().set_retval(twindow::OK);
 	} else {
@@ -48,11 +50,10 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 		}
 		if(total) {
 			find_widget<tprogress_bar>(&(window_.get()), "progress", false)
-				.set_percentage((completed*100.)/total);
+					.set_percentage((completed * 100.) / total);
 
 			std::stringstream ss;
-			ss << utils::si_string(completed, true, _("unit_byte^B"))
-			   << "/"
+			ss << utils::si_string(completed, true, _("unit_byte^B")) << "/"
 			   << utils::si_string(total, true, _("unit_byte^B"));
 
 			find_widget<tlabel>(&(window_.get()), "numeric_progress", false)
@@ -63,9 +64,9 @@ void tnetwork_transmission::pump_monitor::process(events::pump_info&)
 }
 
 tnetwork_transmission::tnetwork_transmission(
-		  network_asio::connection& connection
-		, const std::string& title
-		, const std::string& subtitle)
+		network_asio::connection& connection,
+		const std::string& title,
+		const std::string& subtitle)
 	: connection_(connection)
 	, track_upload_(false)
 	, pump_monitor_(connection, track_upload_)
@@ -83,13 +84,13 @@ void tnetwork_transmission::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// ***** ***** ***** ***** Set up the widgets ***** ***** ***** *****
 	if(!subtitle_.empty()) {
-		tlabel& subtitle_label = find_widget<tlabel>(&window, "subtitle", false);
+		tlabel& subtitle_label
+				= find_widget<tlabel>(&window, "subtitle", false);
 		subtitle_label.set_label(subtitle_);
 		subtitle_label.set_use_markup(true);
 	}
 
 	pump_monitor_.window_ = window;
-
 }
 
 void tnetwork_transmission::post_show(twindow& /*window*/)
@@ -99,4 +100,3 @@ void tnetwork_transmission::post_show(twindow& /*window*/)
 }
 
 } // namespace gui2
-

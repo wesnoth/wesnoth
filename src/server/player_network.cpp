@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 
 #include "player_network.hpp"
 #include "../log.hpp"
-#include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 
 static lg::log_domain log_config("config");
 #define WRN_CONFIG LOG_STREAM(warn, log_config)
@@ -29,12 +29,12 @@ const size_t max_message_length = 256;
 void truncate_message(const simple_wml::string_span& str, simple_wml::node& message)
 {
 	// testing for msg.size() is not sufficient but we're not getting false negatives
-	// and it's cheaper than always converting to wstring.
+	// and it's cheaper than always converting to ucs4::string.
 	if(str.size() > static_cast<int>(chat_message::max_message_length)) {
 		std::string tmp(str.begin(), str.end());
-		// The string can contain utf-8 characters so truncate as wide_string otherwise
+		// The string can contain utf-8 characters so truncate as ucs4::string otherwise
 		// a corrupted utf-8 string can be returned.
-		utils::truncate_as_wstring(tmp, max_message_length);
+		utf8::truncate_as_ucs4(tmp, max_message_length);
 		message.set_attr_dup("message", tmp.c_str());
 	}
 }

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,6 +46,7 @@
 #include "../persist_var.hpp"
 #include "../play_controller.hpp"
 #include "../replay.hpp"
+#include "../random_new.hpp"
 #include "../resources.hpp"
 #include "../side_filter.hpp"
 #include "../sound.hpp"
@@ -165,7 +166,7 @@ namespace { // Types
 				input_max_size = 256;
 			}
 
-			int option_chosen;
+			int option_chosen = -1;
 			int dlg_result = gui2::show_wml_message(left_side,
 				resources::screen->video(), caption, cfg["message"],
 				image, false, has_text_input, text_input_label,
@@ -189,7 +190,7 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
@@ -220,10 +221,10 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &rng) const
+		virtual config random_choice() const
 		{
 			config cfg;
-			cfg["value"] = rng.get_next_random() % nb_options;
+			cfg["value"] = random_new::generator->next_random() % nb_options;
 			return cfg;
 		}
 	};
@@ -725,6 +726,15 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	std::string next_scenario = cfg["next_scenario"];
 	if (!next_scenario.empty()) {
 		resources::gamedata->set_next_scenario(next_scenario);
+
+		const config next_scenario_settings_cfg = cfg.get_parsed_config().child_or_empty("next_scenario_settings");
+		if (!next_scenario_settings_cfg.empty()) {
+			data.next_scenario_settings = next_scenario_settings_cfg;
+		}
+		const config next_scenario_append_cfg = cfg.get_parsed_config().child_or_empty("next_scenario_append");
+		if (!next_scenario_append_cfg.empty()) {
+			data.next_scenario_append = next_scenario_append_cfg;
+		}
 	}
 
 	std::string end_of_campaign_text = cfg["end_text"];
@@ -1105,7 +1115,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 	else
 	{
-		config choice = mp_sync::get_user_choice("input", msg, 0, true);
+		config choice = mp_sync::get_user_choice("input", msg);
 		option_chosen = choice["value"];
 		text_input_result = choice["text"].str();
 	}
@@ -1260,6 +1270,21 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		if(!color.empty()) {
 			teams[team_index].set_color(color);
 			invalidate_screen = true;
+		}
+		// Change flag imageset
+		config::attribute_value flag = cfg["flag"];
+		if(!flag.empty()) {
+			teams[team_index].set_flag(flag);
+			resources::screen->reinit_flags_for_side(team_index);
+			// Needed especially when map isn't animated.
+			invalidate_screen = true;
+		}
+		// Change flag icon
+		config::attribute_value flag_icon = cfg["flag_icon"];
+		if(!flag_icon.empty()) {
+			teams[team_index].set_flag_icon(flag_icon);
+			// Not needed.
+			//invalidate_screen = true;
 		}
 		// Add shared view to current team
 		config::attribute_value share_view = cfg["share_view"];
@@ -1469,7 +1494,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 		try {
 			gui2::show_transient_message(resources::screen->video(), caption, text, image, true);
-		} catch(utils::invalid_utf8_exception&) {
+		} catch(utf8::invalid_utf8_exception&) {
 			// we already had a warning so do nothing.
 		}
 	}
@@ -2037,10 +2062,10 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 					<< 0x3fffffff
 					<< ".\n";
 		}
-		long choice = gameinfo->rng().get_next_random();
+		long choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
 		if(num_choices >= 32768) {
 			choice <<= 15;
-			choice += gameinfo->rng().get_next_random();
+			choice += random_new::generator->next_random();//gameinfo->rng().get_next_random();
 		}
 		choice %= num_choices;
 		long tmp = 0;
@@ -2401,7 +2426,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	if (!to_variable.blank())
 	{
 		parsed_cfg.remove_attribute("to_variable");
-		unit new_unit(parsed_cfg, true, resources::state_of_game);
+		unit new_unit(parsed_cfg, true);
 		config &var = resources::gamedata->get_variable_cfg(to_variable);
 		var.clear();
 		new_unit.write(var);

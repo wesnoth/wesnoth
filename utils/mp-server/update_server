@@ -1,26 +1,26 @@
 #!/bin/sh
-# FIXME-GIT: this file will need to be updated
-
 die() { echo >&2 "$@"; exit 1; }
 [ $# -gt 0 ] && [ $# -lt 4 ] || die "Syntax: $(basename $0) [-c] <server version> [<revision>]"
 set -o errexit
 
-VERSION="$1"
-case "$VERSION" in
+case "$1" in
 -c)    shift
        BASE=campaignd
        TYPE=campaignd ;;
 *)     BASE=servers # should be moved to wesnothd at some point. (several other scripts depend on the position though!)
        TYPE=wesnothd ;;
 esac
-echo "building $TYPE..."
 
+VERSION=$(readlink "$HOME/$BASE/$1" || true)
+VERSION="${VERSION:=$1}"
 SERVERBASE="$HOME/$BASE/$VERSION"
+echo "building $TYPE-$VERSION..."
+
 SOCKET="$SERVERBASE/build/var/run/socket"
 SOURCE="$HOME/source"
 
 [ -d "$SERVERBASE" ] || die "Server base dir '$SERVERBASE' not found!"
-[ -d "$SOURCE" ]     || die "Source dir '$SOURCE' not found!"
+[ -d "$SOURCE"     ] || die "Source dir '$SOURCE' not found!"
 
 SCONS=yes
 CXXFLAGS="$CXXFLAGS"
@@ -32,31 +32,41 @@ case "$VERSION" in
 1.4)   CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
        SCONS=no
        cd "$SOURCE"/1.4 ;;
-1.6)   CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-       cd "$SOURCE"/1.6 ;;
-trunk) CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
-       cd "$SOURCE"/trunk ;;
+1.6|1.8|1.10|1.12)
+       CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+       cd "$SOURCE"/$VERSION ;;
+1.9)
+       [ "$TYPE" = "campaignd" ] || die "1.9 is currently a special case for the 1.10 campaignd only"
+       CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+       cd "$SOURCE"/1.10 ;;
+trunk|master)
+       CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
+       cd "$SOURCE"/master ;;
 *)     CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
-       cd "$SOURCE"/trunk ;;
+       cd "$SOURCE"/master ;;
 esac
 
 if [ $TYPE = campaignd ]; then
-	CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
-	LDFLAGS="$LDFLAGS -pg"
-	[ "$VERSION" = "1.4" ] && SCONS=no
+	case "$VERSION" in
+	1.4)
+		SCONS=no ;;
+	1.8|trunk)
+		CXXFLAGS="$CXXFLAGS -ggdb3 -pg"
+		LDFLAGS="$LDFLAGS -pg" ;;
+	esac
 fi
 set -o nounset
 
-printf 'svn update... '
-REVISION="${2:+-r $2}"
-svn up $REVISION > /dev/null
-REVISION=$(svnversion -cn src/ | cut -d: -f2)
-echo "to $REVISION"
-[ "$REVISION" != "" ] || die "No revision information found. Odd, exiting..."
+printf 'Updating git working tree... '
+COMMIT="${2:+-r $2}"
+git checkout -f $COMMIT > /dev/null
+COMMIT=$(git describe --long)
+echo "to $COMMIT"
+[ "$COMMIT" != "" ] || die "No revision information found. Odd, exiting..."
 
 # reminder for local changes
-#svn status
-BUILD="builds/$TYPE-svn-${REVISION}_$VERSION"
+#git status
+BUILD="builds/$TYPE-$VERSION-git-${COMMIT}"
 BUILD_DIR="$HOME/$BUILD"
 
 set -x
@@ -73,7 +83,7 @@ if [ $SCONS = yes ]; then
 	fi
 	mkdir -p "$BUILD_DIR"/var/run
 	# need to remove .scons-option-cache when parameters get removed!
-	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix="$BUILD_DIR" program_suffix=-"$VERSION" $BUILD_FLAGS profile=0 fribidi=0 python=0 localedir= prefsdir= > "$BUILD_DIR"/scons.log
+	CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" scons install-$TYPE prefix="$BUILD_DIR" program_suffix=-"$VERSION" $BUILD_FLAGS use_network_ana=false profile=0 fribidi=0 python=0 localedir= prefsdir= > "$BUILD_DIR"/scons.log
 else
 	if [ $TYPE = wesnothd ]; then
 		BUILD_FLAGS="--enable-server --enable-raw-sockets --with-fifodir=$BUILD_DIR/var/run --with-boost=$HOME/tools"
@@ -94,6 +104,8 @@ fi
 rm -rf "$BUILD_DIR"/share/
 
 cd "$SERVERBASE"
+
+test -L build &&
 if [ -p "$SOCKET" ] || [ $TYPE = campaignd ]; then
 	rm -f oldbuild
 	mv build oldbuild

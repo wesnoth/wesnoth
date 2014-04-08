@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2008 - 2014 by Jörg Hinrichs <joerg.hinrichs@alice-dsl.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,23 +18,21 @@
 #include "gui/dialogs/dialog.hpp"
 #include "tstring.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tgame_save : public tdialog
 {
 public:
-
 	tgame_save(std::string& filename, const std::string& title);
 
-	static bool execute(std::string& filename
-			, const std::string& title
-			, CVideo& video)
+	static bool
+	execute(std::string& filename, const std::string& title, CVideo& video)
 	{
 		return tgame_save(filename, title).show(video);
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -42,22 +40,19 @@ private:
 class tgame_save_message : public tdialog
 {
 public:
-	tgame_save_message(
-			  std::string& filename
-			, const std::string& title
-			, const std::string& message);
+	tgame_save_message(std::string& filename,
+					   const std::string& title,
+					   const std::string& message);
 
-	static bool execute(
-			  std::string& filename
-			, const std::string& title
-			, const std::string& message
-			, CVideo& video)
+	static bool execute(std::string& filename,
+						const std::string& title,
+						const std::string& message,
+						CVideo& video)
 	{
 		return tgame_save_message(filename, title, message).show(video);
 	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 };
@@ -65,28 +60,24 @@ private:
 class tgame_save_oos : public tdialog
 {
 public:
-	tgame_save_oos(
-			  bool& ignore_all
-			, std::string& filename
-			, const std::string& title
-			, const std::string& message);
+	tgame_save_oos(bool& ignore_all,
+				   std::string& filename,
+				   const std::string& title,
+				   const std::string& message);
 
-	static bool execute(
-			  bool& ignore_all
-			, std::string& filename
-			, const std::string& title
-			, const std::string& message
-			, CVideo& video)
+	static bool execute(bool& ignore_all,
+						std::string& filename,
+						const std::string& title,
+						const std::string& message,
+						CVideo& video)
 	{
 		return tgame_save_oos(ignore_all, filename, title, message).show(video);
 	}
+
 private:
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
-
 };
-
 }
 
 #endif
-

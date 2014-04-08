@@ -1,6 +1,6 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
-   Copyright (C) 2009 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+   Copyright (C) 2009 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -600,7 +600,7 @@ part_ui::RESULT part_ui::show()
 	try {
 		render_story_box();
 	}
-	catch(utils::invalid_utf8_exception const&) {
+	catch(utf8::invalid_utf8_exception const&) {
 		ERR_NG << "invalid UTF-8 sequence in story text, skipping part...\n";
 	}
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,14 +18,14 @@
 
 #include "asserts.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace iterator {
+namespace iterator
+{
 
 tgrid::tgrid(gui2::tgrid& grid)
-	: grid_(grid)
-	, widget_(&grid)
-	, itor_(grid.begin())
+	: grid_(grid), widget_(&grid), itor_(grid.begin())
 {
 }
 
@@ -41,7 +41,7 @@ twalker_::tstate tgrid::next(const tlevel level)
 				widget_ = NULL;
 				return invalid;
 			} else {
-				 /* FALL DOWN */
+				/* FALL DOWN */
 			}
 		case grid:
 			assert(false);
@@ -96,5 +96,3 @@ gui2::twidget* tgrid::get(const tlevel level)
 } // namespace iterator
 
 } // namespace gui2
-
-

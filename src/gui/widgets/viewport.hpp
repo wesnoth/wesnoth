@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,34 +18,31 @@
 #include "gui/auxiliary/window_builder.hpp"
 #include "gui/widgets/widget.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 struct tbuilder_viewport;
 } // namespace implementation
 
 class tgrid;
 
-class tviewport
-	: public twidget
+class tviewport : public twidget
 {
 	friend struct tviewport_implementation;
-public:
 
+public:
 	/** @deprecated use the second overload. */
 	explicit tviewport(twidget& widget);
 
 private:
-
-	tviewport(
-			  const implementation::tbuilder_viewport& builder
-			, const tbuilder_widget::treplacements& replacements);
+	tviewport(const implementation::tbuilder_viewport& builder,
+			  const tbuilder_widget::treplacements& replacements);
 
 public:
-
-	static tviewport* build(
-			  const implementation::tbuilder_viewport& builder
-			, const tbuilder_widget::treplacements& replacements);
+	static tviewport* build(const implementation::tbuilder_viewport& builder,
+							const tbuilder_widget::treplacements& replacements);
 
 	~tviewport();
 
@@ -56,43 +53,38 @@ public:
 	virtual void layout_initialise(const bool full_initialisation) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_children. */
-	virtual void impl_draw_children(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_children(surface& frame_buffer,
+									int x_offset,
+									int y_offset) OVERRIDE;
 
 	/** See @ref twidget::child_populate_dirty_list. */
-	virtual void child_populate_dirty_list(
-			  twindow& caller
-			, const std::vector<twidget*>& call_stack) OVERRIDE;
+	virtual void
+	child_populate_dirty_list(twindow& caller,
+							  const std::vector<twidget*>& call_stack) OVERRIDE;
 
 	/** See @ref twidget::request_reduce_width. */
 	virtual void request_reduce_width(const unsigned maximum_width) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
 
 public:
-
 	/** See @ref twidget::disable_click_dismiss. */
 	bool disable_click_dismiss() const OVERRIDE;
 
@@ -100,11 +92,9 @@ public:
 	virtual iterator::twalker_* create_walker() OVERRIDE;
 
 private:
-
 	twidget& widget_;
 
 	bool owns_widget_;
-
 };
 
 } // namespace gui2

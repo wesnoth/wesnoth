@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,6 +24,7 @@
 #include "vision.hpp"
 
 #include "../config.hpp"
+#include "../config_assign.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
@@ -34,8 +35,11 @@
 #include "../pathfind/pathfind.hpp"
 #include "../random.hpp"
 #include "../replay.hpp"
+#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
+#include "../synced_checkup.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit_display.hpp"
 #include "../variable.hpp"
@@ -135,9 +139,8 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 	placements.push_back("map");
 	placements.push_back("recall");
 
-	BOOST_FOREACH(std::string place, placements) {
+	BOOST_FOREACH(const std::string& place, placements) {
 		map_location loc;
-		bool pass((place == "leader_passable") || (place == "map_passable"));
 
 		if ( place == "recall" ) {
 			return map_location::null_location;
@@ -159,6 +162,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		}
 
 		if(loc.valid() && resources::game_map->on_board(loc)) {
+			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : NULL);
@@ -190,7 +194,7 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 
 	if ( recall_list_element == recall_list.end() ) {
 		//make a temporary unit
-		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, resources::state_of_game, vcfg));
+		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
 		if ( loc.valid() ) {
 			unit *new_unit = temp_unit.get();
@@ -767,32 +771,24 @@ namespace { // Helpers for place_recruit()
 	/**
 	 * Performs a checksum check on a newly recruited/recalled unit.
 	 */
-	void recruit_checksums(const unit &new_unit, bool wml_triggered)
+	void recruit_checksums(const unit &new_unit, bool /*wml_triggered*/)
 	{
-		const config* ran_results = get_random_results();
-		if ( ran_results != NULL ) {
-			// When recalling from WML there should be no random results, if we
-			// use random we might get the replay out of sync.
-			assert(!wml_triggered);
-			const std::string checksum = get_checksum(new_unit);
-			const std::string rc = (*ran_results)["checksum"];
-			if ( rc != checksum ) {
-				std::stringstream error_msg;
-				error_msg << "SYNC: In recruit " << new_unit.type_id() <<
-					": has checksum " << checksum <<
-					" while datasource has checksum " << rc << "\n";
-				ERR_NG << error_msg.str();
+		const std::string checksum = get_checksum(new_unit);
+		config original_checksum_config;
 
-				config cfg_unit1;
-				new_unit.write(cfg_unit1);
-				DBG_NG << cfg_unit1;
-				replay::process_error(error_msg.str());
-			}
-
-		} else if ( wml_triggered == false ) {
-			config cfg;
-			cfg["checksum"] = get_checksum(new_unit);
-			set_random_results(cfg);
+		bool checksum_equals = checkup_instance->local_checkup(config_of("checksum", checksum),original_checksum_config);
+		if(!checksum_equals)
+		{
+			const std::string old_checksum = original_checksum_config["checksum"];
+			std::stringstream error_msg;
+			error_msg << "SYNC: In recruit " << new_unit.type_id() <<
+				": has checksum " << checksum <<
+				" while datasource has checksum " << old_checksum << "\n";
+			ERR_NG << error_msg.str();
+			config cfg_unit1;
+			new_unit.write(cfg_unit1);
+			DBG_NG << cfg_unit1;
+			replay::process_error(error_msg.str());
 		}
 	}
 
@@ -929,17 +925,13 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
  * Recruits a unit of the given type for the given side.
  */
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
-                  const map_location & from, bool show, bool use_undo,
-                  bool use_recorder)
+                  const map_location & from, bool show, bool use_undo)
 {
 	const unit new_unit(u_type, side_num, true);
 
-	// Record this before actually recruiting.
-	if ( use_recorder )
-		recorder.add_recruit(u_type.id(), loc, from);
 
 	// Place the recruit.
-	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
+	/*bool mutated = */place_recruit(new_unit, loc, from, u_type.cost(), false, show);
 	statistics::recruit_unit(new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
@@ -948,8 +940,18 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( use_undo ) {
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
-		if ( mutated  ||  u_type.genders().size() > 1  ||
-		     new_unit.type().has_random_traits() ) {
+		
+		// undoing unit recruits currently ends in oos in most cases
+		// because the random generator is called during unit creation for names.
+		// This is not impossible to fix, ofc we could just enable it for nameless units 
+		// but i'm not 100% sure wether units with no names call the random generator for random names or not.
+		// also names normaly don't have any influence on the game (same for genders maybe?)
+		// so there is no reason not to be able to undo it from a players point of view.
+		// we also cannot store the random state in undo_stack->add_recruit, because the unit creation happens before that.
+		
+		//if ( mutated  ||  u_type.genders().size() > 1  ||
+		//     new_unit.type().has_random_traits() ) {
+		if ( true ) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -958,10 +960,6 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( resources::screen != NULL )
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
-
-	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
 }
 
 
@@ -970,7 +968,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
  */
 bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
-                 bool show, bool use_undo, bool use_recorder)
+                 bool show, bool use_undo)
 {
 	std::vector<unit> & recall_list = current_team.recall_list();
 
@@ -978,10 +976,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	std::vector<unit>::iterator recall_it = find_if_matches_id(recall_list, id);
 	if ( recall_it == recall_list.end() )
 		return false;
-
-	// Record this before actually recalling.
-	if ( use_recorder )
-		recorder.add_recall(id, loc, from);
+		
 
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);
@@ -990,8 +985,17 @@ bool recall_unit(const std::string & id, team & current_team,
 	// (Use recall.id() instead, if needed.)
 
 	// Place the recall.
-	bool mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
+	// We also check to see if a custom unit level recall has been set if not,
+	// we use the team's recall cost otherwise the unit's.
+	bool mutated;
+	if (recall.recall_cost() < 0) {
+		mutated = place_recruit(recall, loc, from, current_team.recall_cost(),
 	                             true, show);
+	}
+	else {
+		mutated = place_recruit(recall, loc, from, recall.recall_cost(),
+	                             true, show);
+	}
 	statistics::recall_unit(recall);
 
 	// To speed things a bit, don't bother with the undo stack during
@@ -1010,9 +1014,7 @@ bool recall_unit(const std::string & id, team & current_team,
 		// Other updates were done by place_recruit().
 
 	// Record a checksum so the replay can be verified.
-	if ( use_recorder )
-		recorder.add_checksum_check(loc);
-
+	checkup_instance->unit_checksum(loc);
 	return true;
 }
 

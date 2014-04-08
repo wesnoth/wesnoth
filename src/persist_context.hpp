@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Jody Northup
+   Copyright (C) 2010 - 2014 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -109,14 +109,14 @@ protected:
 		, namespace_()
 		, valid_(false)
 		, in_transaction_(false)
-	{};
+	{}
 
 	persist_context(const std::string &name_space)
 		: cfg_()
 		, namespace_(name_space,true)
 		, valid_(namespace_.valid())
 		, in_transaction_(false)
-	{};
+	{}
 
 	config *get_node(config &cfg, name_space &ns, bool force = false) {
 		name_space next = ns.next();
@@ -153,10 +153,10 @@ public:
 	virtual bool cancel_transaction () = 0;
 	std::string get_node() const;
 	void set_node(const std::string &);
-	bool valid() const { return valid_; };
+	bool valid() const { return valid_; }
 	bool dirty() const {
 		return true;
-	};
+	}
 	operator bool() const { return valid_; }
 };
 

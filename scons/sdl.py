@@ -3,7 +3,7 @@ import os
 from SCons.Script import *
 from config_check_utils import *
 
-def CheckSDL(context, sdl_lib = "SDL", require_version = None):
+def CheckSDL(context, sdl_lib = "SDL", require_version = None, header_file = None):
     if require_version:
         version = require_version.split(".", 2)
         major_version = int(version[0])
@@ -13,6 +13,11 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         except (ValueError, IndexError):
             patch_level = 0
 
+    if header_file:
+        sdl_header = header_file
+    else:
+        sdl_header = sdl_lib
+
     backup = backup_env(context.env, ["CPPPATH", "LIBPATH", "LIBS"])
 
     sdldir = context.env.get("sdldir", "")
@@ -21,13 +26,25 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
             context.Message("Checking for Simple DirectMedia Layer library version >= %d.%d.%d... " % (major_version, minor_version, patchlevel))
         else:
             context.Message("Checking for Simple DirectMedia Layer library... ")
+        if major_version == 2:
+            sdl_config_name = "sdl2-config"
+            sdl_include_dir = "include/SDL2"
+            sdl_lib_name = "SDL2"
+            sdl_lib_name_pkgconfig = "sdl2"
+            sdlmain_name = "SDL2main"
+        else:
+            sdl_config_name = "sdl-config"
+            sdl_include_dir = "include/SDL"
+            sdl_lib_name = "SDL"
+            sdl_lib_name_pkgconfig = "sdl"
+            sdlmain_name = "SDLmain"
         env = context.env
         if sdldir:
-            env.AppendUnique(CPPPATH = [os.path.join(sdldir, "include/SDL")], LIBPATH = [os.path.join(sdldir, "lib")])
+            env.AppendUnique(CPPPATH = [os.path.join(sdldir, sdl_include_dir)], LIBPATH = [os.path.join(sdldir, "lib")])
         else:
             for foo_config in [
-                "pkg-config --cflags --libs sdl",
-                "sdl-config --cflags --libs"
+                "pkg-config --cflags --libs %s" % sdl_lib_name_pkgconfig,
+                "%s --cflags --libs" % sdl_config_name
                 ]:
                 try:
                     env.ParseConfig(foo_config)
@@ -37,7 +54,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
                     break
         if env["PLATFORM"] == "win32":
             env.AppendUnique(CCFLAGS = ["-D_GNU_SOURCE"])
-            env.AppendUnique(LIBS = Split("mingw32 SDLmain SDL"))
+            env.AppendUnique(LIBS = Split("mingw32 %s %s" % (sdlmain_name, sdl_lib_name)))
             env.AppendUnique(LINKFLAGS = ["-mwindows"])
     else:
         if require_version:
@@ -47,7 +64,7 @@ def CheckSDL(context, sdl_lib = "SDL", require_version = None):
         context.env.AppendUnique(LIBS = [sdl_lib])
     test_program = """
         #include <%s.h> 
-        \n""" % sdl_lib
+        \n""" % sdl_header
     if require_version:
         test_program += "#if SDL_VERSIONNUM(%s, %s, %s) < SDL_VERSIONNUM(%d, %d, %d)\n#error Library is too old!\n#endif\n" % \
             (sdl_lib.upper() + "_MAJOR_VERSION", \

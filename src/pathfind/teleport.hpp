@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2010 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -102,7 +102,7 @@ public:
 	 * Constructs an empty teleport map.
 	 */
 	teleport_map() :
-		teleport_map_(), sources_(), targets_() {};
+		teleport_map_(), sources_(), targets_() {}
 
 	/*
 	 * @param adjacents		used to return the adjacent hexes

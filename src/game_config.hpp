@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -58,7 +58,6 @@ namespace game_config
 	extern int cache_compression_level;
 
 	extern std::string path;
-	extern std::string preferences_dir;
 	extern std::string default_preferences_path;
 
 	struct server_info {
@@ -73,16 +72,21 @@ namespace game_config
 			default_victory_music,
 			default_defeat_music;
 
+	namespace colors {
+	extern std::string unmoved_orb_color,
+			partial_orb_color,
+			enemy_orb_color,
+			ally_orb_color,
+			moved_orb_color;
+	} // colors
+
+	extern bool show_ally_orb, show_enemy_orb, show_moved_orb, show_partial_orb, show_unmoved_orb;
+
 	namespace images {
 	extern std::string game_title,
             game_title_background,
 			// orbs and hp/xp bar
             orb,
-			unmoved_orb_color,
-			partmoved_orb_color,
-			enemy_orb_color,
-			ally_orb_color,
-			moved_orb_color,
 			energy,
 			// flags
 			flag,
@@ -142,7 +146,8 @@ namespace game_config
 		extern const std::string turn_bell, timer_bell, receive_message,
 				receive_message_highlight, receive_message_friend,
 				receive_message_server, user_arrive, user_leave,
-				game_user_arrive, game_user_leave;
+				game_user_arrive, game_user_leave, party_full_bell,
+				mp_game_begins;
 		extern const std::string button_press, checkbox_release, slider_adjust,
 				menu_expand, menu_contract, menu_select;
 	}
@@ -165,7 +170,7 @@ namespace game_config
 
 	extern const version_info wesnoth_version;
 	extern const version_info min_savegame_version;
-	extern const std::string  test_version;
+	extern const version_info test_version;
 }
 
 #endif

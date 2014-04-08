@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+                 2008 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,13 +19,13 @@
 
 #include <boost/foreach.hpp>
 
-const unsigned short default_campaignd_port = 15006;
+const unsigned short default_campaignd_port = 15007;
 
 namespace {
 	const std::string addon_type_strings[] = {
-		"unknown", "campaign", "scenario", "campaign_mp", "scenario_mp",
-		"map_pack", "era", "faction", "mod_mp", /*"gui", */ "media", "other",
-		""
+		"unknown", "campaign", "scenario", "campaign_sp_mp" ,"campaign_mp",
+		"scenario_mp", "map_pack", "era", "faction", "mod_mp", /*"gui", */ "media",
+		"other", ""
 	};
 
 	struct addon_name_char_illegal
@@ -61,7 +61,7 @@ bool addon_name_legal(const std::string& name)
 bool addon_filename_legal(const std::string& name)
 {
 	if(name.empty() || name == "." ||
-	   name.find_first_of("/:\\~") != std::string::npos ||
+	   name.find_first_of("/:\\~ \r\n\v\t") != std::string::npos ||
 	   name.find("..") != std::string::npos) {
 		return false;
 	} else {

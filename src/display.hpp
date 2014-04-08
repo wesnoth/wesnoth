@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -66,7 +66,7 @@ public:
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
-	bool show_everything() const { return !viewpoint_; }
+	bool show_everything() const { return !viewpoint_ && !is_blindfolded(); }
 
 	const std::vector<team>& get_teams() const {return *teams_;}
 
@@ -293,13 +293,13 @@ public:
 		/**  very simple iterator to walk into the rect_of_hexes */
 		struct iterator {
 			iterator(const map_location &loc, const rect_of_hexes &rect)
-				: loc_(loc), rect_(rect){};
+				: loc_(loc), rect_(rect){}
 
 			/** increment y first, then when reaching bottom, increment x */
 			iterator& operator++();
 			bool operator==(const iterator &that) const { return that.loc_ == loc_; }
 			bool operator!=(const iterator &that) const { return that.loc_ != loc_; }
-			const map_location& operator*() const {return loc_;};
+			const map_location& operator*() const {return loc_;}
 
 			typedef std::forward_iterator_tag iterator_category;
 			typedef map_location value_type;
@@ -321,15 +321,15 @@ public:
 	const rect_of_hexes hexes_under_rect(const SDL_Rect& r) const;
 
 	/** Returns the rectangular area of visible hexes */
-	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());};
+	const rect_of_hexes get_visible_hexes() const {return hexes_under_rect(map_area());}
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const {
-		return viewpoint_ && viewpoint_->shrouded(loc);
+		return is_blindfolded() || (viewpoint_ && viewpoint_->shrouded(loc));
 	}
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const {
-		return viewpoint_ && viewpoint_->fogged(loc);
+		return is_blindfolded() || (viewpoint_ && viewpoint_->fogged(loc));
 	}
 
 	/**
@@ -449,7 +449,7 @@ public:
 	 */
 	static void toggle_debug_foreground();
 
-	terrain_builder& get_builder() {return *builder_;};
+	terrain_builder& get_builder() {return *builder_;}
 
 	void flip();
 
@@ -517,7 +517,7 @@ public:
 	bool view_locked() const { return view_locked_; }
 
 	/** Sets whether the map view is locked (e.g. so the user can't scroll away) */
-	void set_view_locked(bool value) { view_locked_ = value; };
+	void set_view_locked(bool value) { view_locked_ = value; }
 
 	enum SCROLL_TYPE { SCROLL, WARP, ONSCREEN, ONSCREEN_WARP };
 
@@ -587,7 +587,7 @@ public:
 	 * Schedule the minimap for recalculation.
 	 * Useful if any terrain in the map has changed.
 	 */
-	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; };
+	void recalculate_minimap() {minimap_ = NULL; redrawMinimap_ = true; }
 
 	/**
 	 * Schedule the minimap to be redrawn.
@@ -597,7 +597,10 @@ public:
 
 	virtual const time_of_day& get_time_of_day(const map_location& loc = map_location::null_location) const;
 
-	virtual bool has_time_area() const {return false;};
+	virtual bool has_time_area() const {return false;}
+
+	void blindfold(bool flag);
+	bool is_blindfolded() const;
 
 	void write(config& cfg) const;
 private:
@@ -607,7 +610,12 @@ public:
 	/** Init the flag list and the team colors used by ~TC */
 	void init_flags();
 
+	/** Rebuild the flag list (not team colors) for a single side. */
+	void reinit_flags_for_side(size_t side);
+
 private:
+	void init_flags_for_side_internal(size_t side, const std::string& side_color);
+
 	/**
 	 * Finds the start and end rows on the energy bar image.
 	 *
@@ -615,6 +623,7 @@ private:
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf);
 
+	int blindfold_ctr_;
 
 protected:
 	//TODO sort
@@ -676,7 +685,7 @@ protected:
 	 * Called near the end of a draw operation, derived classes can use this
 	 * to render a specific sidebar. Very similar to post_commit.
 	 */
-	virtual void draw_sidebar() {};
+	virtual void draw_sidebar() {}
 
 	/**
 	 * Draws the border tile overlay.
@@ -957,7 +966,6 @@ public:
 	 * @param layer              The layer to draw on.
 	 * @param loc                The hex the image belongs to, needed for the
 	 *                           drawing order.
-	 * @param blit               The structure to blit.
 	 */
 	void drawing_buffer_add(const tdrawing_layer layer,
 			const map_location& loc, int x, int y, const surface& surf,
@@ -1000,11 +1008,21 @@ public: //operations for the arrow framework
 	/** Called by arrow objects when they change. You should not need to call this directly. */
 	void update_arrow(arrow & a);
 
-private:
+protected:
+
+	// Tiles lit for showing where unit(s) can reach
+	typedef std::map<map_location,unsigned int> reach_map;
+	reach_map reach_map_;
+	reach_map reach_map_old_;
+	bool reach_map_changed_;
+	void process_reachmap_changes();
 
 	typedef std::multimap<map_location, overlay> overlay_map;
 
-	overlay_map overlays_;
+private:
+
+
+	overlay_map* overlays_;
 
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
@@ -1036,9 +1054,37 @@ private:
 	bool do_reverse_memcpy_workaround_;
 #endif
 
+public:
+	void replace_overlay_map(overlay_map* overlays) { overlays_ = overlays; }
+
 protected:
 	static display * singleton_;
 };
+
+struct blindfold
+{
+	blindfold(display& d, bool lock=true) : display_(d), blind(lock) {
+		if(blind) {
+			display_.blindfold(true);
+		}
+	}
+
+	~blindfold() {
+		unblind();
+	}
+
+	void unblind() {
+		if(blind) {
+			display_.blindfold(false);
+			blind = false;
+		}
+	}
+
+private:
+	display& display_;
+	bool blind;
+};
+
 
 #endif
 

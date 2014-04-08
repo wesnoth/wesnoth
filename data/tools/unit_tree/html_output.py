@@ -1,9 +1,10 @@
 #encoding: utf8
 
 import os, gettext, time, copy, sys, re
-
+import traceback
 import unit_tree.helpers as helpers
 import wesnoth.wmlparser2 as wmlparser2
+
 
 pics_location = "../../pics"
 
@@ -34,7 +35,7 @@ html_footer = '''
 <div id="footer">
 <p>%(generation_note)s</p>
 <p><a href="http://wiki.wesnoth.org/Site_Map">Site map</a></p>
-<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2013 The Battle for Wesnoth</p>
+<p><a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2014 The Battle for Wesnoth</p>
 <p>Supported by <a href="http://www.jexiste.fr/">Jexiste</a></p>
 </div>
 </div>
@@ -774,6 +775,8 @@ class HTMLOutput:
         hp = uval("hitpoints")
         mp = uval("movement")
         xp = uval("experience")
+        vision = uval("vision")
+        jamming = uval("jamming")
         level = uval("level")
         alignment = uval("alignment")
 
@@ -820,14 +823,17 @@ class HTMLOutput:
             ("cost", _("Cost: ", "wesnoth-help")),
             ("hitpoints", _("HP: ")),
             ("movement", _("Movement", "wesnoth-help") + ": "),
+            ("vision", _("Vision", "wesnoth-help") + ": "),
+            ("jamming", _("Jamming", "wesnoth-help") + ":"),
             ("experience", _("XP: ")),
             ("level", _("Level") + ": "),
             ("alignment", _("Alignment: ")),
             ("id", "ID")]:
+            x = uval(val)
+            if not x and val in ("jamming", "vision"): continue
+            if val == "alignment": x = _(x)
             write("<tr>\n")
             write("<td>%s</td>" % text)
-            x = uval(val)
-            if val == "alignment": x = _(x)
             write("<td class=\"val\">%s</td>" % x)
             write("</tr>\n")
 
@@ -977,12 +983,32 @@ class HTMLOutput:
             already[tid] = 1
             name = T(t, "name")
             ticon = t.get_text_val("symbol_image")
-            if tid == "flat": ticon = "grass/green-symbol"
-            elif tid == "frozen": ticon = "frozen/ice"
-            elif tid == "unwalkable": ticon = "unwalkable/lava"
-            elif tid == "village": ticon = "village/human-tile"
+            if not ticon:
+                ticon = t.get_text_val("icon_image")
+
+            # Use nice images for known mainline terrain types
+            if tid == "fungus": ticon = "forest/mushrooms-tile"
+            elif tid == "cave": ticon = "cave/floor6"
+            elif tid == "sand": ticon = "sand/beach"
+            elif tid == "reef": ticon = "water/reef-tropical-tile"
+            elif tid == "hills": ticon = "hills/regular"
+            elif tid == "swamp_water": ticon = "swamp/water-tile"
+            elif tid == "shallow_water": ticon = "water/coast-tile"
+            elif tid == "castle": ticon = "castle/castle-tile"
+            elif tid == "mountains": ticon = "mountains/snow-tile"
+            elif tid == "deep_water": ticon = "water/ocean-tile"
+            elif tid == "flat": ticon = "grass/green-symbol"
             elif tid == "forest": ticon = "forest/pine-tile"
-            terrainlist.append((name, tid, ticon))
+            elif tid == "frozen": ticon = "frozen/ice"
+            elif tid == "village": ticon = "village/human-tile"
+            elif tid == "impassable": ticon = "void/void"
+            elif tid == "unwalkable": ticon = "unwalkable/lava"
+            elif tid == "rails": ticon = "misc/rails-ne-sw"
+            
+            if ticon:
+                terrainlist.append((name, tid, ticon))
+            else:
+                error_message("Terrain " + tid + " has no symbol_image\n")
         terrainlist.sort()
 
         for tname, tid, ticon in terrainlist:
@@ -1088,14 +1114,22 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
     for uid, unit in wesnoth.unit_lookup.items():
         if unit.hidden: continue
         if "mainline" in unit.campaigns and addon != "mainline": continue
-        filename = os.path.join(path, "%s.html" % uid)
+        
+        try:
+            htmlname = u"%s.html" % uid
+            filename = os.path.join(path, htmlname).encode("utf8")
 
-        # We probably can come up with something better.
-        if os.path.exists(filename):
-            age = time.time() - os.path.getmtime(filename)
-            # was modified in the last 12 hours - we should be ok
-            if age < 3600 * 12: continue
-
+            # We probably can come up with something better.
+            if os.path.exists(filename):
+                age = time.time() - os.path.getmtime(filename)
+                # was modified in the last 12 hours - we should be ok
+                if age < 3600 * 12: continue
+        except (UnicodeDecodeError, UnicodeEncodeError) as e:
+            traceback.print_exc()
+            error_message("Unicode problem: " + repr(path) + " + " + repr(uid) + "\n")
+            error_message(str(e) + "\n")
+            continue
+        
         output = MyFile(filename, "w")
         html.target = "%s.html" % uid
         html.write_unit_report(output, unit)
@@ -1103,7 +1137,7 @@ def generate_single_unit_reports(addon, isocode, wesnoth):
         
 def html_postprocess_file(filename, isocode, batchlist):
 
-    print("postprocessing " + filename)
+    print(u"postprocessing " + repr(filename))
     
     chtml = u""
     ehtml = u""
@@ -1148,7 +1182,6 @@ def html_postprocess_file(filename, isocode, batchlist):
                 eids[0].append(e)
             else:
                 eids[1].append(e)
-            
             
     for i in xrange(2):
         eras = eids[i]

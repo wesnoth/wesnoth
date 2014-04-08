@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,8 @@
 class config;
 class variant;
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * A simple canvas which can be drawn upon.
@@ -43,7 +44,6 @@ namespace gui2 {
 class tcanvas
 {
 public:
-
 	/**
 	 * Abstract base class for all other shapes.
 	 *
@@ -53,7 +53,9 @@ public:
 	class tshape : public reference_counted_object
 	{
 	public:
-		virtual ~tshape() {}
+		virtual ~tshape()
+		{
+		}
 
 		/**
 		 * Draws the canvas.
@@ -64,8 +66,9 @@ public:
 		 *                        definition, this parameter contains the values
 		 *                        for these formulas.
 		 */
-		virtual void draw(surface& canvas
-				, const game_logic::map_formula_callable& variables) = 0;
+		virtual void draw(surface& canvas,
+						  const game_logic::map_formula_callable& variables)
+				= 0;
 	};
 
 	typedef boost::intrusive_ptr<tshape> tshape_ptr;
@@ -99,17 +102,37 @@ public:
 	 *                            http://www.wesnoth.org/wiki/GUICanvasWML for
 	 *                            more information.
 	 */
-	void set_cfg(const config& cfg) { parse_cfg(cfg); }
+	void set_cfg(const config& cfg)
+	{
+		parse_cfg(cfg);
+	}
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_width(const unsigned width) { w_ = width; set_is_dirty(true); }
-	unsigned get_width() const { return w_; }
+	void set_width(const unsigned width)
+	{
+		w_ = width;
+		set_is_dirty(true);
+	}
+	unsigned get_width() const
+	{
+		return w_;
+	}
 
-	void set_height(const unsigned height) { h_ = height; set_is_dirty(true); }
-	unsigned get_height() const { return h_; }
+	void set_height(const unsigned height)
+	{
+		h_ = height;
+		set_is_dirty(true);
+	}
+	unsigned get_height() const
+	{
+		return h_;
+	}
 
-	surface& surf() { return canvas_; }
+	surface& surf()
+	{
+		return canvas_;
+	}
 
 	void set_variable(const std::string& key, const variant& value)
 	{
@@ -146,7 +169,10 @@ private:
 	/** The dirty state of the canvas. */
 	bool is_dirty_;
 
-	void set_is_dirty(const bool is_dirty) { is_dirty_ = is_dirty; }
+	void set_is_dirty(const bool is_dirty)
+	{
+		is_dirty_ = is_dirty;
+	}
 
 	/**
 	 * Parses a config object.
@@ -164,4 +190,3 @@ private:
 } // namespace gui2
 
 #endif
-

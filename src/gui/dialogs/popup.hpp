@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2011 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2011 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,8 @@
 
 class CVideo;
 
-namespace gui2 {
+namespace gui2
+{
 
 class twindow;
 
@@ -66,9 +67,9 @@ public:
 	 *                            there's no guarantee about how fast it closes
 	 *                            after the minimum.
 	 */
-	void show(CVideo& video
-			, const bool allow_interaction = false
-			, const unsigned auto_close_time = 0);
+	void show(CVideo& video,
+			  const bool allow_interaction = false,
+			  const unsigned auto_close_time = 0);
 
 
 	/**
@@ -80,7 +81,6 @@ public:
 	void hide();
 
 private:
-
 	/** The window, used in show. */
 	twindow* window_;
 
@@ -106,7 +106,7 @@ private:
 	 *                            upon.
 	 * @param window              The window just created.
 	 */
-	virtual void post_build(CVideo& /*video*/, twindow& /*window*/) {}
+	virtual void post_build(CVideo& video, twindow& window);
 
 	/**
 	 * Actions to be taken before showing the window.
@@ -115,10 +115,9 @@ private:
 	 *                            upon.
 	 * @param window              The window to be shown.
 	 */
-	virtual void pre_show(CVideo& /*video*/, twindow& /*window*/) {}
+	virtual void pre_show(CVideo& video, twindow& window);
 };
 
 } // namespace gui2
 
 #endif
-

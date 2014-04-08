@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -98,6 +98,11 @@ namespace game_events
 	/// Helper function which determines whether a wml_message text can
 	/// really be pushed into the wml_messages_stream, and does it.
 	void put_wml_message(const std::string& logger, const std::string& message);
+
+	/**
+	 * Directly runs the lua command(s) @a lua_code
+	 */
+	void run_lua_commands(char const *lua_code);
 
 	/**
 	 * Runs the action handler associated to the command sequence @a cfg.

@@ -106,7 +106,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				OpenMP="true"
@@ -232,7 +232,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
+				PreprocessorDefinitions="WIN32;_LIB;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
 				OpenMP="true"
@@ -278,7 +278,7 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="..\..\src\lua\lapi.c"
+				RelativePath="..\..\src\lua\lapi.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -318,7 +318,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lauxlib.c"
+				RelativePath="..\..\src\lua\lauxlib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -358,7 +358,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lbaselib.c"
+				RelativePath="..\..\src\lua\lbaselib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -398,7 +398,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lbitlib.c"
+				RelativePath="..\..\src\lua\lbitlib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -438,7 +438,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lcode.c"
+				RelativePath="..\..\src\lua\lcode.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -478,7 +478,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lcorolib.c"
+				RelativePath="..\..\src\lua\lcorolib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -518,7 +518,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lctype.c"
+				RelativePath="..\..\src\lua\lctype.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -558,7 +558,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ldblib.c"
+				RelativePath="..\..\src\lua\ldblib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -598,7 +598,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ldebug.c"
+				RelativePath="..\..\src\lua\ldebug.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -638,7 +638,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ldo.c"
+				RelativePath="..\..\src\lua\ldo.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -678,7 +678,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ldump.c"
+				RelativePath="..\..\src\lua\ldump.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -718,7 +718,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lfunc.c"
+				RelativePath="..\..\src\lua\lfunc.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -758,7 +758,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lgc.c"
+				RelativePath="..\..\src\lua\lgc.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -798,7 +798,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\linit.c"
+				RelativePath="..\..\src\lua\linit.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -838,7 +838,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\liolib.c"
+				RelativePath="..\..\src\lua\liolib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -878,7 +878,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\llex.c"
+				RelativePath="..\..\src\lua\llex.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -918,7 +918,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lmathlib.c"
+				RelativePath="..\..\src\lua\lmathlib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -958,7 +958,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lmem.c"
+				RelativePath="..\..\src\lua\lmem.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -998,7 +998,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\loadlib.c"
+				RelativePath="..\..\src\lua\loadlib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1038,7 +1038,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lobject.c"
+				RelativePath="..\..\src\lua\lobject.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1078,7 +1078,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lopcodes.c"
+				RelativePath="..\..\src\lua\lopcodes.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1118,7 +1118,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\loslib.c"
+				RelativePath="..\..\src\lua\loslib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1158,7 +1158,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lparser.c"
+				RelativePath="..\..\src\lua\lparser.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1198,7 +1198,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lstate.c"
+				RelativePath="..\..\src\lua\lstate.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1238,7 +1238,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lstring.c"
+				RelativePath="..\..\src\lua\lstring.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1278,7 +1278,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lstrlib.c"
+				RelativePath="..\..\src\lua\lstrlib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1318,7 +1318,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ltable.c"
+				RelativePath="..\..\src\lua\ltable.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1358,7 +1358,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ltablib.c"
+				RelativePath="..\..\src\lua\ltablib.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1398,7 +1398,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\ltm.c"
+				RelativePath="..\..\src\lua\ltm.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1438,7 +1438,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lua.c"
+				RelativePath="..\..\src\lua\lua.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1478,7 +1478,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\luac.c"
+				RelativePath="..\..\src\lua\luac.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1518,7 +1518,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lundump.c"
+				RelativePath="..\..\src\lua\lundump.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1558,7 +1558,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lvm.c"
+				RelativePath="..\..\src\lua\lvm.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1598,7 +1598,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="..\..\src\lua\lzio.c"
+				RelativePath="..\..\src\lua\lzio.cpp"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"

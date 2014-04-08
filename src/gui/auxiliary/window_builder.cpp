@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,13 +48,14 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >&
 builder_widget_lookup()
 {
 	static std::map<std::string, boost::function<tbuilder_widget_ptr(config)> >
-			result;
+	result;
 	return result;
 }
 
@@ -71,46 +72,47 @@ builder_widget_lookup()
  * be tuned. This page will describe what can be tuned.
  *
  */
-twindow *build(CVideo &video, const twindow_builder::tresolution *definition)
+twindow* build(CVideo& video, const twindow_builder::tresolution* definition)
 {
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
-	twindow* window = new twindow(video
-			, definition->x
-			, definition->y
-			, definition->width
-			, definition->height
-			, definition->automatic_placement
-			, definition->horizontal_placement
-			, definition->vertical_placement
-			, definition->maximum_width
-			, definition->maximum_height
-			, definition->definition
-			, definition->tooltip
-			, definition->helptip);
+	twindow* window = new twindow(video,
+								  definition->x,
+								  definition->y,
+								  definition->width,
+								  definition->height,
+								  definition->reevaluate_best_size,
+								  definition->functions,
+								  definition->automatic_placement,
+								  definition->horizontal_placement,
+								  definition->vertical_placement,
+								  definition->maximum_width,
+								  definition->maximum_height,
+								  definition->definition,
+								  definition->tooltip,
+								  definition->helptip);
 	assert(window);
 
-	FOREACH(const AUTO& lg, definition->linked_groups) {
+	FOREACH(const AUTO & lg, definition->linked_groups)
+	{
 
 		if(window->has_linked_size_group(lg.id)) {
 			utils::string_map symbols;
 			symbols["id"] = lg.id;
 			t_string msg = vgettext(
-					  "Linked '$id' group has multiple definitions."
-					, symbols);
+					"Linked '$id' group has multiple definitions.", symbols);
 
 			VALIDATE(false, msg);
 		}
 
-		window->init_linked_size_group(
-				lg.id, lg.fixed_width, lg.fixed_height);
+		window->init_linked_size_group(lg.id, lg.fixed_width, lg.fixed_height);
 	}
 
 	window->set_click_dismiss(definition->click_dismiss);
 
-	boost::intrusive_ptr<const twindow_definition::tresolution> conf =
-			boost::dynamic_pointer_cast<
-				const twindow_definition::tresolution>(window->config());
+	boost::intrusive_ptr<const twindow_definition::tresolution>
+	conf = boost::dynamic_pointer_cast<const twindow_definition::tresolution>(
+			window->config());
 	assert(conf);
 
 	if(conf->grid) {
@@ -125,11 +127,11 @@ twindow *build(CVideo &video, const twindow_builder::tresolution *definition)
 	return window;
 }
 
-twindow *build(CVideo &video, const std::string &type)
+twindow* build(CVideo& video, const std::string& type)
 {
-	std::vector<twindow_builder::tresolution>::const_iterator
-		definition = get_window_builder(type);
-	twindow *window = build(video, &*definition);
+	std::vector<twindow_builder::tresolution>::const_iterator definition
+			= get_window_builder(type);
+	twindow* window = build(video, &*definition);
 	window->set_id(type);
 	return window;
 }
@@ -144,8 +146,9 @@ tbuilder_widget::tbuilder_widget(const config& cfg)
 {
 }
 
-void register_builder_widget(const std::string& id
-		, boost::function<tbuilder_widget_ptr(config)> functor)
+void
+register_builder_widget(const std::string& id,
+						boost::function<tbuilder_widget_ptr(config)> functor)
 {
 	builder_widget_lookup().insert(std::make_pair(id, functor));
 }
@@ -156,20 +159,21 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	size_t nb_children = std::distance(children.first, children.second);
 	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
 
-	FOREACH(const AUTO& item, builder_widget_lookup()) {
+	FOREACH(const AUTO & item, builder_widget_lookup())
+	{
 		if(item.first == "window" || item.first == "tooltip") {
 			continue;
 		}
-		if(const config &c = cfg.child(item.first)) {
+		if(const config& c = cfg.child(item.first)) {
 			return item.second(c);
 		}
 	}
 
-	if(const config &c = cfg.child("grid")) {
+	if(const config& c = cfg.child("grid")) {
 		return new tbuilder_grid(c);
 	}
 
-	if(const config &instance = cfg.child("instance")) {
+	if(const config& instance = cfg.child("instance")) {
 		return new implementation::tbuilder_instance(instance);
 	}
 
@@ -192,13 +196,13 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
  * If this code is executed, which it will cause an assertion failure.
  */
 #if 1
-#define TRY(name)                                                          \
-	do {                                                                   \
-		if(const config &c = cfg.child(#name)) {                           \
-			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);\
-			assert(false);                                                 \
-		}                                                                  \
-	} while (0)
+#define TRY(name)                                                              \
+	do {                                                                       \
+		if(const config& c = cfg.child(#name)) {                               \
+			tbuilder_widget_ptr p = new implementation::tbuilder_##name(c);    \
+			assert(false);                                                     \
+		}                                                                      \
+	} while(0)
 
 	TRY(stacked_widget);
 	TRY(scrollbar_panel);
@@ -222,8 +226,6 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 	ERROR_LOG(false);
 }
 
-const std::string& twindow_builder::read(const config& cfg)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window
@@ -234,10 +236,11 @@ const std::string& twindow_builder::read(const config& cfg)
  * A window defines how a window looks in the game.
  *
  * @begin{table}{config}
- *     id & string & &                  Unique id for this window. $
- *     description & t_string & &       Unique translatable name for this window. $
+ *     id & string & &               Unique id for this window. $
+ *     description & t_string & &    Unique translatable name for this
+ *                                   window. $
  *
- *     resolution & section & &        The definitions of the window in various
+ *     resolution & section & &      The definitions of the window in various
  *                                   resolutions. $
  * @end{table}
  * @end{tag}{name="window"}
@@ -245,45 +248,27 @@ const std::string& twindow_builder::read(const config& cfg)
  *
  *
  */
-
+const std::string& twindow_builder::read(const config& cfg)
+{
 	id_ = cfg["id"].str();
 	description_ = cfg["description"].str();
 
 	VALIDATE(!id_.empty(), missing_mandatory_wml_key("window", "id"));
-	VALIDATE(!description_.empty(), missing_mandatory_wml_key("window", "description"));
+	VALIDATE(!description_.empty(),
+			 missing_mandatory_wml_key("window", "description"));
 
 	DBG_GUI_P << "Window builder: reading data for window " << id_ << ".\n";
 
 	config::const_child_itors cfgs = cfg.child_range("resolution");
 	VALIDATE(cfgs.first != cfgs.second, _("No resolution defined."));
-	FOREACH(const AUTO& i, cfgs) {
+	FOREACH(const AUTO & i, cfgs)
+	{
 		resolutions.push_back(tresolution(i));
 	}
 
 	return id_;
 }
 
-twindow_builder::tresolution::tresolution(const config& cfg) :
-	window_width(cfg["window_width"]),
-	window_height(cfg["window_height"]),
-	automatic_placement(cfg["automatic_placement"].to_bool(true)),
-	x(cfg["x"]),
-	y(cfg["y"]),
-	width(cfg["width"]),
-	height(cfg["height"]),
-	vertical_placement(
-			implementation::get_v_align(cfg["vertical_placement"])),
-	horizontal_placement(
-			implementation::get_h_align(cfg["horizontal_placement"])),
-	maximum_width(cfg["maximum_width"]),
-	maximum_height(cfg["maximum_height"]),
-	click_dismiss(cfg["click_dismiss"].to_bool()),
-	definition(cfg["definition"]),
-	linked_groups(),
-	tooltip(cfg.child_or_empty("tooltip")),
-	helptip(cfg.child_or_empty("helptip")),
-	grid(0)
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 1_window
@@ -307,6 +292,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * width & f_unsigned & 0 &        Width of the window to show. $
  * height & f_unsigned & 0 &       Height of the window to show. $
  *
+ * reevaluate_best_size & f_bool & false &
+ *     The foo $
+ *
+ * functions & function & "" &
+ *     The function definitions s available for the formula fields in window. $
  *
  * vertical_placement & v_align & "" &
  *     The vertical placement of the window. $
@@ -356,11 +346,11 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @begin{tag}{name="linked_group"}{min=0}{max=-1}
  * A linked_group section has the following fields:
  * @begin{table}{config}
- *     id & string & &                   The unique id of the group (unique in this
+ *     id & string & &               The unique id of the group (unique in this
  *                                   window). $
- *     fixed_width & bool & false &    Should widget in this group have the same
+ *     fixed_width & bool & false &  Should widget in this group have the same
  *                                   width. $
- *     fixed_height & bool & false &   Should widget in this group have the same
+ *     fixed_height & bool & false & Should widget in this group have the same
  *                                   height. $
  * @end{table}
  * @end{tag}{name="linked_group"}
@@ -383,8 +373,33 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
  * @end{tag}{name="helptip"}
  * @end{parent}{name=gui/window/resolution/}
  */
+twindow_builder::tresolution::tresolution(const config& cfg)
+	: window_width(cfg["window_width"])
+	, window_height(cfg["window_height"])
+	, automatic_placement(cfg["automatic_placement"].to_bool(true))
+	, x(cfg["x"])
+	, y(cfg["y"])
+	, width(cfg["width"])
+	, height(cfg["height"])
+	, reevaluate_best_size(cfg["reevaluate_best_size"])
+	, functions()
+	, vertical_placement(implementation::get_v_align(cfg["vertical_placement"]))
+	, horizontal_placement(
+			  implementation::get_h_align(cfg["horizontal_placement"]))
+	, maximum_width(cfg["maximum_width"])
+	, maximum_height(cfg["maximum_height"])
+	, click_dismiss(cfg["click_dismiss"].to_bool())
+	, definition(cfg["definition"])
+	, linked_groups()
+	, tooltip(cfg.child_or_empty("tooltip"))
+	, helptip(cfg.child_or_empty("helptip"))
+	, grid(0)
+{
+	if(!cfg["functions"].empty()) {
+		game_logic::formula(cfg["functions"], &functions).evaluate();
+	}
 
-	const config &c = cfg.child("grid");
+	const config& c = cfg.child("grid");
 
 	VALIDATE(c, _("No grid defined."));
 
@@ -392,34 +407,35 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 
 	if(!automatic_placement) {
 		VALIDATE(width.has_formula() || width(),
-			missing_mandatory_wml_key("resolution", "width"));
+				 missing_mandatory_wml_key("resolution", "width"));
 		VALIDATE(height.has_formula() || height(),
-			missing_mandatory_wml_key("resolution", "height"));
+				 missing_mandatory_wml_key("resolution", "height"));
 	}
 
-	DBG_GUI_P << "Window builder: parsing resolution "
-		<< window_width << ',' << window_height << '\n';
+	DBG_GUI_P << "Window builder: parsing resolution " << window_width << ','
+			  << window_height << '\n';
 
 	if(definition.empty()) {
 		definition = "default";
 	}
 
-	FOREACH(const AUTO& lg, cfg.child_range("linked_group")) {
+	FOREACH(const AUTO & lg, cfg.child_range("linked_group"))
+	{
 		tlinked_group linked_group;
 		linked_group.id = lg["id"].str();
 		linked_group.fixed_width = lg["fixed_width"].to_bool();
 		linked_group.fixed_height = lg["fixed_height"].to_bool();
 
-		VALIDATE(!linked_group.id.empty()
-				, missing_mandatory_wml_key("linked_group", "id"));
+		VALIDATE(!linked_group.id.empty(),
+				 missing_mandatory_wml_key("linked_group", "id"));
 
 		if(!(linked_group.fixed_width || linked_group.fixed_height)) {
 			utils::string_map symbols;
 			symbols["id"] = linked_group.id;
-			t_string msg = vgettext(
-					  "Linked '$id' group needs a 'fixed_width' or "
-						"'fixed_height' key."
-					, symbols);
+			t_string msg
+					= vgettext("Linked '$id' group needs a 'fixed_width' or "
+							   "'fixed_height' key.",
+							   symbols);
 
 			VALIDATE(false, msg);
 		}
@@ -428,23 +444,12 @@ twindow_builder::tresolution::tresolution(const config& cfg) :
 	}
 }
 
-twindow_builder::tresolution::ttip::ttip(const config& cfg)
-	: id(cfg["id"])
+twindow_builder::tresolution::ttip::ttip(const config& cfg) : id(cfg["id"])
 {
-	VALIDATE(!id.empty()
-			, missing_mandatory_wml_key("[window][resolution][tip]", "id"));
+	VALIDATE(!id.empty(),
+			 missing_mandatory_wml_key("[window][resolution][tip]", "id"));
 }
 
-tbuilder_grid::tbuilder_grid(const config& cfg) :
-	tbuilder_widget(cfg),
-	rows(0),
-	cols(0),
-	row_grow_factor(),
-	col_grow_factor(),
-	flags(),
-	border_size(),
-	widgets()
-{
 /*WIKI
  * @page = GUIToolkitWML
  * @order = 2_cell
@@ -474,11 +479,11 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * @allow{link}{name="gui/window/resolution/grid"}
  * For every column the following variables are available:
  * @begin{table}{config}
- *     grow_factor & unsigned & 0 &      The grow factor for a column, this value
- *                                     is only read for the first row. $
+ *     grow_factor & unsigned & 0 &    The grow factor for a column, this
+ *                                     value is only read for the first row. $
  *
- *     border_size & unsigned & 0 &      The border size for this grid cell. $
- *     border & border & "" &            Where to place the border in this grid
+ *     border_size & unsigned & 0 &    The border size for this grid cell. $
+ *     border & border & "" &          Where to place the border in this grid
  *                                     cell. $
  *
  *     vertical_alignment & v_align & "" &
@@ -507,14 +512,26 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
  * @end{parent}{name="gui/window/resolution/"}
  *
  */
+tbuilder_grid::tbuilder_grid(const config& cfg)
+	: tbuilder_widget(cfg)
+	, rows(0)
+	, cols(0)
+	, row_grow_factor()
+	, col_grow_factor()
+	, flags()
+	, border_size()
+	, widgets()
+{
 	log_scope2(log_gui_parse, "Window builder: parsing a grid");
 
-	FOREACH(const AUTO& row, cfg.child_range("row")) {
+	FOREACH(const AUTO & row, cfg.child_range("row"))
+	{
 		unsigned col = 0;
 
 		row_grow_factor.push_back(row["grow_factor"]);
 
-		FOREACH(const AUTO& c, row.child_range("column")) {
+		FOREACH(const AUTO & c, row.child_range("column"))
+		{
 			flags.push_back(implementation::read_flags(c));
 			border_size.push_back(c["border_size"]);
 			if(rows == 0) {
@@ -527,17 +544,16 @@ tbuilder_grid::tbuilder_grid(const config& cfg) :
 		}
 
 		++rows;
-		if (rows == 1) {
+		if(rows == 1) {
 			cols = col;
 		} else {
 			VALIDATE(col, _("A row must have a column."));
 			VALIDATE(col == cols, _("Number of columns differ."));
 		}
-
 	}
 
-	DBG_GUI_P << "Window builder: grid has "
-		<< rows << " rows and " << cols << " columns.\n";
+	DBG_GUI_P << "Window builder: grid has " << rows << " rows and " << cols
+			  << " columns.\n";
 }
 
 tgrid* tbuilder_grid::build() const
@@ -552,7 +568,7 @@ twidget* tbuilder_grid::build(const treplacements& replacements) const
 	return result;
 }
 
-tgrid* tbuilder_grid::build (tgrid* grid) const
+tgrid* tbuilder_grid::build(tgrid* grid) const
 {
 	grid->set_id(id);
 	grid->set_linked_group(linked_group);
@@ -560,9 +576,8 @@ tgrid* tbuilder_grid::build (tgrid* grid) const
 
 	log_scope2(log_gui_general, "Window builder: building grid");
 
-	DBG_GUI_G << "Window builder: grid '" << id
-		<< "' has " << rows << " rows and "
-		<< cols << " columns.\n";
+	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows
+			  << " rows and " << cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {
 		grid->set_row_grow_factor(x, row_grow_factor[x]);
@@ -572,10 +587,15 @@ tgrid* tbuilder_grid::build (tgrid* grid) const
 				grid->set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y << ".\n";
+			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y
+					  << ".\n";
 
 			twidget* widget = widgets[x * cols + y]->build();
-			grid->set_child(widget, x, y, flags[x * cols + y],  border_size[x * cols + y]);
+			grid->set_child(widget,
+							x,
+							y,
+							flags[x * cols + y],
+							border_size[x * cols + y]);
 		}
 	}
 
@@ -590,9 +610,8 @@ void tbuilder_grid::build(tgrid& grid, const treplacements& replacements) const
 
 	log_scope2(log_gui_general, "Window builder: building grid");
 
-	DBG_GUI_G << "Window builder: grid '" << id
-		<< "' has " << rows << " rows and "
-		<< cols << " columns.\n";
+	DBG_GUI_G << "Window builder: grid '" << id << "' has " << rows
+			  << " rows and " << cols << " columns.\n";
 
 	for(unsigned x = 0; x < rows; ++x) {
 		grid.set_row_grow_factor(x, row_grow_factor[x]);
@@ -602,20 +621,20 @@ void tbuilder_grid::build(tgrid& grid, const treplacements& replacements) const
 				grid.set_column_grow_factor(y, col_grow_factor[y]);
 			}
 
-			DBG_GUI_G << "Window builder: adding child at "
-					<< x << ',' << y << ".\n";
+			DBG_GUI_G << "Window builder: adding child at " << x << ',' << y
+					  << ".\n";
 
-			grid.set_child(
-					  widgets[x * cols + y]->build(replacements)
-					, x
-					, y
-					, flags[x * cols + y]
-					, border_size[x * cols + y]);
+			grid.set_child(widgets[x * cols + y]->build(replacements),
+						   x,
+						   y,
+						   flags[x * cols + y],
+						   border_size[x * cols + y]);
 		}
 	}
 }
 
 } // namespace gui2
+
 /*WIKI
  * @page = GUIToolkitWML
  * @order = ZZZZZZ_footer
@@ -632,4 +651,3 @@ void tbuilder_grid::build(tgrid& grid, const treplacements& replacements) const
  * [[Category: GUI WML Reference]]
  *
  */
-

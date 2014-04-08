@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013
+   Copyright (C) 2007 - 2014
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -59,7 +59,7 @@ class network_game_manager
 {
 public:
 	// Add a constructor to avoid stupid warnings with some versions of GCC
-	network_game_manager() {};
+	network_game_manager() {}
 
 	~network_game_manager()
 	{
@@ -70,7 +70,7 @@ public:
 			network::send_data(cfg, 0);
 			LOG_NW << "sent leave_game\n";
 		}
-	};
+	}
 };
 
 }
@@ -436,7 +436,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 
 	gamelist.clear();
 	statistics::fresh_stats();
-	n_unit::id_manager::instance().clear(); //< reset the unit underlying_id counter back to zero
+	n_unit::id_manager::instance().clear(); /* reset the unit underlying_id counter back to zero */
 
 	{
 		mp::wait ui(disp, game_config, state, gamechat, gamelist);
@@ -459,7 +459,7 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 	switch (res) {
 	case mp::ui::PLAY:
 		play_game(disp, state, game_config, IO_CLIENT,
-			preferences::skip_mp_replay() && observe, true);
+			preferences::skip_mp_replay() && observe, true, preferences::blindfold_replay() && observe);
 		recorder.clear();
 
 		break;
@@ -741,7 +741,6 @@ void start_local_game(game_display& disp, const config& game_config,
 	game_state& state)
 {
 	DBG_MP << "starting local game" << std::endl;
-	const rand_rng::set_random_generator generator_setter(&recorder);
 	gamechat.clear_history();
 	gamelist.clear();
 	playmp_controller::set_replay_last_turn(0);
@@ -757,7 +756,6 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// The setup is done equivalently to lobby MP games using as much of existing
 	// code as possible.  This means that some things are set up that are not
 	// needed in commandline mode, but they are required by the functions called.
-	const rand_rng::set_random_generator generator_setter(&recorder);
 	gamechat.clear_history();
 	gamelist.clear();
 	playmp_controller::set_replay_last_turn(0);
@@ -882,7 +880,6 @@ void start_client(game_display& disp, const config& game_config,
 	game_state& state, const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
-	const rand_rng::set_random_generator generator_setter(&recorder);
 	const network::manager net_manager(1,1);
 
 	gamechat.clear_history();

@@ -268,7 +268,7 @@
 		B552D92F108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B552D92A108694BB002D8F86 /* ca_testing_move_to_targets.cpp */; };
 		B553B6BA12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
 		B553B6BB12189C5900CC8C58 /* utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B553B6B812189C5900CC8C58 /* utility.cpp */; };
-		B559986C0EC616B3008DD061 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.m */; };
+		B559986C0EC616B3008DD061 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = B559986B0EC616B3008DD061 /* SDLMain.m */; settings = {COMPILER_FLAGS = "-w"; }; };
 		B55998F80EC61EA5008DD061 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55998F70EC61EA5008DD061 /* SDL.framework */; };
 		B55999250EC61F59008DD061 /* SDL_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999220EC61F59008DD061 /* SDL_image.framework */; };
 		B55999260EC61F59008DD061 /* SDL_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55999230EC61F59008DD061 /* SDL_net.framework */; };
@@ -359,7 +359,6 @@
 		B5599B340EC62181008DD061 /* key.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0B0EC62181008DD061 /* key.cpp */; };
 		B5599B350EC62181008DD061 /* intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0D0EC62181008DD061 /* intro.cpp */; };
 		B5599B360EC62181008DD061 /* image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A0F0EC62181008DD061 /* image.cpp */; };
-		B5599B370EC62181008DD061 /* hotkeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A110EC62181008DD061 /* hotkeys.cpp */; };
 		B5599B380EC62181008DD061 /* help.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A130EC62181008DD061 /* help.cpp */; };
 		B5599B390EC62181008DD061 /* halo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A150EC62181008DD061 /* halo.cpp */; };
 		B5599B630EC62181008DD061 /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A710EC62181008DD061 /* gettext.cpp */; };
@@ -375,7 +374,7 @@
 		B5599B700EC62181008DD061 /* formula.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A8C0EC62181008DD061 /* formula.cpp */; };
 		B5599B710EC62181008DD061 /* font.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A900EC62181008DD061 /* font.cpp */; };
 		B5599B720EC62181008DD061 /* floating_textbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A920EC62181008DD061 /* floating_textbox.cpp */; };
-		B5599B730EC62181008DD061 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A940EC62181008DD061 /* filesystem.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.11\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
+		B5599B730EC62181008DD061 /* filesystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A940EC62181008DD061 /* filesystem.cpp */; settings = {COMPILER_FLAGS = "-DPREFERENCES_DIR='\"Library/Application Support/Wesnoth_1.13\"' -DHAS_RELATIVE_LOCALEDIR"; }; };
 		B5599B740EC62181008DD061 /* filechooser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A950EC62181008DD061 /* filechooser.cpp */; };
 		B5599B750EC62181008DD061 /* events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A970EC62181008DD061 /* events.cpp */; };
 		B5599B760EC62181008DD061 /* display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A990EC62181008DD061 /* display.cpp */; };
@@ -625,7 +624,6 @@
 		B597C5D90FACD6CA00CE81F5 /* text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998F0EC62181008DD061 /* text.cpp */; };
 		B597C5DA0FACD6CA00CE81F5 /* filechooser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A950EC62181008DD061 /* filechooser.cpp */; };
 		B597C5DB0FACD6CA00CE81F5 /* mp_method_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCC70ECA805A002BE442 /* mp_method_selection.cpp */; };
-		B597C5DC0FACD6CA00CE81F5 /* hotkeys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A110EC62181008DD061 /* hotkeys.cpp */; };
 		B597C5DD0FACD6CA00CE81F5 /* statistics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559999B0EC62181008DD061 /* statistics.cpp */; };
 		B597C5DE0FACD6CA00CE81F5 /* terrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999950EC62181008DD061 /* terrain.cpp */; };
 		B597C5E00FACD6CA00CE81F5 /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C40EC62181008DD061 /* preferences.cpp */; };
@@ -698,66 +696,6 @@
 		B59F96EE1034796700A57C1A /* lobby_player_info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F96EB1034796700A57C1A /* lobby_player_info.cpp */; };
 		B59F9733103716E400A57C1A /* unit_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F9731103716E400A57C1A /* unit_create.cpp */; };
 		B59F9734103716E400A57C1A /* unit_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B59F9731103716E400A57C1A /* unit_create.cpp */; };
-		B5A5E3EA12132C790047782D /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3AF12132C790047782D /* lapi.c */; };
-		B5A5E3EB12132C790047782D /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B112132C790047782D /* lauxlib.c */; };
-		B5A5E3EC12132C790047782D /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B312132C790047782D /* lbaselib.c */; };
-		B5A5E3ED12132C790047782D /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B412132C790047782D /* lcode.c */; };
-		B5A5E3EE12132C790047782D /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B612132C790047782D /* ldblib.c */; };
-		B5A5E3EF12132C790047782D /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B712132C790047782D /* ldebug.c */; };
-		B5A5E3F012132C790047782D /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B912132C790047782D /* ldo.c */; };
-		B5A5E3F112132C790047782D /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3BB12132C790047782D /* ldump.c */; };
-		B5A5E3F212132C790047782D /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3BC12132C790047782D /* lfunc.c */; };
-		B5A5E3F312132C790047782D /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3BE12132C790047782D /* lgc.c */; };
-		B5A5E3F412132C790047782D /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C012132C790047782D /* linit.c */; };
-		B5A5E3F512132C790047782D /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C112132C790047782D /* liolib.c */; };
-		B5A5E3F612132C790047782D /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C212132C790047782D /* llex.c */; };
-		B5A5E3F712132C790047782D /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C512132C790047782D /* lmathlib.c */; };
-		B5A5E3F812132C790047782D /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C612132C790047782D /* lmem.c */; };
-		B5A5E3F912132C790047782D /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C812132C790047782D /* loadlib.c */; };
-		B5A5E3FA12132C790047782D /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C912132C790047782D /* lobject.c */; };
-		B5A5E3FB12132C790047782D /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3CB12132C790047782D /* lopcodes.c */; };
-		B5A5E3FC12132C790047782D /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3CD12132C790047782D /* loslib.c */; };
-		B5A5E3FD12132C790047782D /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3CE12132C790047782D /* lparser.c */; };
-		B5A5E3FE12132C790047782D /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D012132C790047782D /* lstate.c */; };
-		B5A5E3FF12132C790047782D /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D212132C790047782D /* lstring.c */; };
-		B5A5E40012132C790047782D /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D412132C790047782D /* lstrlib.c */; };
-		B5A5E40112132C790047782D /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D512132C790047782D /* ltable.c */; };
-		B5A5E40212132C790047782D /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D712132C790047782D /* ltablib.c */; };
-		B5A5E40312132C790047782D /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D812132C790047782D /* ltm.c */; };
-		B5A5E40612132C790047782D /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3DF12132C790047782D /* lundump.c */; };
-		B5A5E40712132C790047782D /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3E112132C790047782D /* lvm.c */; };
-		B5A5E40812132C790047782D /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3E312132C790047782D /* lzio.c */; };
-		B5A5E40D12132C790047782D /* lapi.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3AF12132C790047782D /* lapi.c */; };
-		B5A5E40E12132C790047782D /* lauxlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B112132C790047782D /* lauxlib.c */; };
-		B5A5E40F12132C790047782D /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B312132C790047782D /* lbaselib.c */; };
-		B5A5E41012132C790047782D /* lcode.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B412132C790047782D /* lcode.c */; };
-		B5A5E41112132C790047782D /* ldblib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B612132C790047782D /* ldblib.c */; };
-		B5A5E41212132C790047782D /* ldebug.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B712132C790047782D /* ldebug.c */; };
-		B5A5E41312132C790047782D /* ldo.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3B912132C790047782D /* ldo.c */; };
-		B5A5E41412132C790047782D /* ldump.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3BB12132C790047782D /* ldump.c */; };
-		B5A5E41512132C790047782D /* lfunc.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3BC12132C790047782D /* lfunc.c */; };
-		B5A5E41612132C790047782D /* lgc.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3BE12132C790047782D /* lgc.c */; };
-		B5A5E41712132C790047782D /* linit.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C012132C790047782D /* linit.c */; };
-		B5A5E41812132C790047782D /* liolib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C112132C790047782D /* liolib.c */; };
-		B5A5E41912132C790047782D /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C212132C790047782D /* llex.c */; };
-		B5A5E41A12132C790047782D /* lmathlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C512132C790047782D /* lmathlib.c */; };
-		B5A5E41B12132C790047782D /* lmem.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C612132C790047782D /* lmem.c */; };
-		B5A5E41C12132C790047782D /* loadlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C812132C790047782D /* loadlib.c */; };
-		B5A5E41D12132C790047782D /* lobject.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3C912132C790047782D /* lobject.c */; };
-		B5A5E41E12132C790047782D /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3CB12132C790047782D /* lopcodes.c */; };
-		B5A5E41F12132C790047782D /* loslib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3CD12132C790047782D /* loslib.c */; };
-		B5A5E42012132C790047782D /* lparser.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3CE12132C790047782D /* lparser.c */; };
-		B5A5E42112132C790047782D /* lstate.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D012132C790047782D /* lstate.c */; };
-		B5A5E42212132C790047782D /* lstring.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D212132C790047782D /* lstring.c */; };
-		B5A5E42312132C790047782D /* lstrlib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D412132C790047782D /* lstrlib.c */; };
-		B5A5E42412132C790047782D /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D512132C790047782D /* ltable.c */; };
-		B5A5E42512132C790047782D /* ltablib.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D712132C790047782D /* ltablib.c */; };
-		B5A5E42612132C790047782D /* ltm.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3D812132C790047782D /* ltm.c */; };
-		B5A5E42712132C790047782D /* lua.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3DA12132C790047782D /* lua.c */; };
-		B5A5E42812132C790047782D /* luac.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3DC12132C790047782D /* luac.c */; };
-		B5A5E42912132C790047782D /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3DF12132C790047782D /* lundump.c */; };
-		B5A5E42A12132C790047782D /* lvm.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3E112132C790047782D /* lvm.c */; };
-		B5A5E42B12132C790047782D /* lzio.c in Sources */ = {isa = PBXBuildFile; fileRef = B5A5E3E312132C790047782D /* lzio.c */; };
 		B5A9B2290ECA4074002BE442 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = B5A9914A0ECA4064002BE442 /* fonts */; };
 		B5A9B22A0ECA4074002BE442 /* data in Resources */ = {isa = PBXBuildFile; fileRef = B5A991500ECA4064002BE442 /* data */; };
 		B5A9B22B0ECA4074002BE442 /* images in Resources */ = {isa = PBXBuildFile; fileRef = B5A9B0780ECA4074002BE442 /* images */; };
@@ -898,6 +836,8 @@
 		B5FCE9371104C2A50081F1DF /* toggle_panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE9091104C2A50081F1DF /* toggle_panel.cpp */; };
 		B5FCE9391104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90D1104C2A50081F1DF /* vertical_scrollbar.cpp */; };
 		B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90F1104C2A50081F1DF /* window.cpp */; };
+		EC19E6F018B7F24B003B4B81 /* screenshot_notification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */; };
+		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
 		EC44E382181DDAF90037A62F /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
 		EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_container.cpp */; };
 		EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D74B17F3148300DE80BF /* recruitment.cpp */; };
@@ -907,20 +847,61 @@
 		EC48D75B17F318DA00DE80BF /* multiplayer_connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75417F318DA00DE80BF /* multiplayer_connect_engine.cpp */; };
 		EC48D75C17F318DA00DE80BF /* multiplayer_create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75617F318DA00DE80BF /* multiplayer_create_engine.cpp */; };
 		EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4D40AD17FCCF14002E7C81 /* strftime.cpp */; };
+		EC89A1291879D17D00A3B0B1 /* lapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1061879D17D00A3B0B1 /* lapi.cpp */; };
+		EC89A12A1879D17D00A3B0B1 /* lauxlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */; };
+		EC89A12B1879D17D00A3B0B1 /* lbaselib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */; };
+		EC89A12C1879D17D00A3B0B1 /* lbitlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1091879D17D00A3B0B1 /* lbitlib.cpp */; };
+		EC89A12D1879D17D00A3B0B1 /* lcode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A10A1879D17D00A3B0B1 /* lcode.cpp */; };
+		EC89A12E1879D17D00A3B0B1 /* lcorolib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A10B1879D17D00A3B0B1 /* lcorolib.cpp */; };
+		EC89A12F1879D17D00A3B0B1 /* lctype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A10C1879D17D00A3B0B1 /* lctype.cpp */; };
+		EC89A1301879D17D00A3B0B1 /* ldblib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A10D1879D17D00A3B0B1 /* ldblib.cpp */; };
+		EC89A1311879D17D00A3B0B1 /* ldebug.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A10E1879D17D00A3B0B1 /* ldebug.cpp */; };
+		EC89A1321879D17D00A3B0B1 /* ldo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A10F1879D17D00A3B0B1 /* ldo.cpp */; };
+		EC89A1331879D17D00A3B0B1 /* ldump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1101879D17D00A3B0B1 /* ldump.cpp */; };
+		EC89A1341879D17D00A3B0B1 /* lfunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1111879D17D00A3B0B1 /* lfunc.cpp */; };
+		EC89A1351879D17D00A3B0B1 /* lgc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1121879D17D00A3B0B1 /* lgc.cpp */; };
+		EC89A1361879D17D00A3B0B1 /* linit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1131879D17D00A3B0B1 /* linit.cpp */; };
+		EC89A1371879D17D00A3B0B1 /* liolib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1141879D17D00A3B0B1 /* liolib.cpp */; };
+		EC89A1381879D17D00A3B0B1 /* llex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1151879D17D00A3B0B1 /* llex.cpp */; };
+		EC89A1391879D17D00A3B0B1 /* lmathlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1161879D17D00A3B0B1 /* lmathlib.cpp */; };
+		EC89A13A1879D17D00A3B0B1 /* lmem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1171879D17D00A3B0B1 /* lmem.cpp */; };
+		EC89A13B1879D17D00A3B0B1 /* loadlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1181879D17D00A3B0B1 /* loadlib.cpp */; };
+		EC89A13C1879D17D00A3B0B1 /* lobject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1191879D17D00A3B0B1 /* lobject.cpp */; };
+		EC89A13D1879D17D00A3B0B1 /* lopcodes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A11A1879D17D00A3B0B1 /* lopcodes.cpp */; };
+		EC89A13E1879D17D00A3B0B1 /* loslib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A11B1879D17D00A3B0B1 /* loslib.cpp */; };
+		EC89A13F1879D17D00A3B0B1 /* lparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A11C1879D17D00A3B0B1 /* lparser.cpp */; };
+		EC89A1401879D17D00A3B0B1 /* lstate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A11D1879D17D00A3B0B1 /* lstate.cpp */; };
+		EC89A1411879D17D00A3B0B1 /* lstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A11E1879D17D00A3B0B1 /* lstring.cpp */; };
+		EC89A1421879D17D00A3B0B1 /* lstrlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A11F1879D17D00A3B0B1 /* lstrlib.cpp */; };
+		EC89A1431879D17D00A3B0B1 /* ltable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1201879D17D00A3B0B1 /* ltable.cpp */; };
+		EC89A1441879D17D00A3B0B1 /* ltablib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1211879D17D00A3B0B1 /* ltablib.cpp */; };
+		EC89A1451879D17D00A3B0B1 /* ltm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1221879D17D00A3B0B1 /* ltm.cpp */; };
+		EC89A1481879D17D00A3B0B1 /* lundump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1261879D17D00A3B0B1 /* lundump.cpp */; };
+		EC89A1491879D17D00A3B0B1 /* lvm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1271879D17D00A3B0B1 /* lvm.cpp */; };
+		EC89A14A1879D17D00A3B0B1 /* lzio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1281879D17D00A3B0B1 /* lzio.cpp */; };
+		EC95E50818612BB600F3A9EF /* editor_edit_scenario.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC95E50418612BB600F3A9EF /* editor_edit_scenario.cpp */; };
+		EC95E50918612BB600F3A9EF /* editor_edit_side.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC95E50618612BB600F3A9EF /* editor_edit_side.cpp */; };
 		ECA9E67B17F478B600F5DDC4 /* desktop_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9E67917F478B600F5DDC4 /* desktop_util.cpp */; };
 		ECA9E67E17F478D600F5DDC4 /* game_paths.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */; };
+		ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
+		ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECAA3FE518E0E4EF002E8998 /* unicode.cpp */; };
+		ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */; };
+		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
+		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
+		ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DC184E59F3006782FB /* hotkey_command.cpp */; };
+		ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DE184E59F3006782FB /* hotkey_item.cpp */; };
+		ECFA82E6184E59F3006782FB /* hotkey_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */; };
+		ECFA82E7184E59F3006782FB /* hotkey_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */; };
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
 		F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A31014F8868A002F9ADC /* manager_ui.cpp */; };
 		F4448F3C13C547FF003B6442 /* libpng12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
-		F44490B613C5483F003B6442 /* game_instance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4448F4113C5483D003B6442 /* game_instance.cpp */; };
 		F444914013C5483F003B6442 /* joystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444907513C5483E003B6442 /* joystick.cpp */; };
 		F444916613C5483F003B6442 /* network_asio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F44490B413C5483F003B6442 /* network_asio.cpp */; };
 		F444917713C5562C003B6442 /* folder_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444917513C5562C003B6442 /* folder_create.cpp */; };
 		F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
 		F449349C13FF652800DF01D5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F449349913FF652800DF01D5 /* validator.cpp */; };
 		F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F468E6AC16DF872200A31A5A /* movetype.cpp */; };
-		F469F29B160F9FB2008B209B /* hotkey_preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */; };
 		F46C5DCC13A5074C00DD0816 /* game_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC513A5074C00DD0816 /* game_controller.cpp */; };
 		F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DCB13A5074C00DD0816 /* commandline_options.cpp */; };
 		F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DD313A5089100DD0816 /* lua_object.cpp */; };
@@ -940,13 +921,9 @@
 		F4D043D116167BB9007566E8 /* mp_depcheck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D016167BB9007566E8 /* mp_depcheck.cpp */; };
 		F4D043DA16167BF6007566E8 /* mp_depcheck_select_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */; };
 		F4D043DB16167BF6007566E8 /* mp_depcheck_confirm_change.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D716167BF6007566E8 /* mp_depcheck_confirm_change.cpp */; };
-		F4D043DC16167BF6007566E8 /* mp_create_game_choose_mods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D043D916167BF6007566E8 /* mp_create_game_choose_mods.cpp */; };
 		F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */; };
 		F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DECA14DCA1D000CAFF31 /* client.cpp */; };
-		F4D2DEDF14DED86800CAFF31 /* lbitlib.c in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DEDB14DED86800CAFF31 /* lbitlib.c */; };
-		F4D2DEE014DED86800CAFF31 /* lcorolib.c in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DEDC14DED86800CAFF31 /* lcorolib.c */; };
-		F4D2DEE114DED86800CAFF31 /* lctype.c in Sources */ = {isa = PBXBuildFile; fileRef = F4D2DEDD14DED86800CAFF31 /* lctype.c */; };
 		F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419E44413354E620031448A /* lua_jailbreak_exception.cpp */; };
 		F4D5AFEC1571208B0062EAFC /* placer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5AFEA1571208B0062EAFC /* placer.cpp */; };
 		F4D5AFF4157120B30062EAFC /* horizontal_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F4D5AFF0157120B30062EAFC /* horizontal_list.cpp */; };
@@ -1570,8 +1547,6 @@
 		B5599A0D0EC62181008DD061 /* intro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = intro.cpp; path = ../src/intro.cpp; sourceTree = "<group>"; };
 		B5599A0E0EC62181008DD061 /* image.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = image.hpp; path = ../src/image.hpp; sourceTree = "<group>"; };
 		B5599A0F0EC62181008DD061 /* image.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = image.cpp; path = ../src/image.cpp; sourceTree = "<group>"; };
-		B5599A100EC62181008DD061 /* hotkeys.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkeys.hpp; path = ../src/hotkeys.hpp; sourceTree = "<group>"; };
-		B5599A110EC62181008DD061 /* hotkeys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkeys.cpp; path = ../src/hotkeys.cpp; sourceTree = "<group>"; };
 		B5599A120EC62181008DD061 /* help.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = help.hpp; path = ../src/help.hpp; sourceTree = "<group>"; };
 		B5599A130EC62181008DD061 /* help.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = help.cpp; path = ../src/help.cpp; sourceTree = "<group>"; };
 		B5599A140EC62181008DD061 /* halo.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = halo.hpp; path = ../src/halo.hpp; sourceTree = "<group>"; };
@@ -1791,59 +1766,28 @@
 		B59F96EC1034796700A57C1A /* lobby_player_info.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lobby_player_info.hpp; sourceTree = "<group>"; };
 		B59F9731103716E400A57C1A /* unit_create.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_create.cpp; sourceTree = "<group>"; };
 		B59F9732103716E400A57C1A /* unit_create.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_create.hpp; sourceTree = "<group>"; };
-		B5A5E3AF12132C790047782D /* lapi.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lapi.c; sourceTree = "<group>"; };
 		B5A5E3B012132C790047782D /* lapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lapi.h; sourceTree = "<group>"; };
-		B5A5E3B112132C790047782D /* lauxlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lauxlib.c; sourceTree = "<group>"; };
 		B5A5E3B212132C790047782D /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
-		B5A5E3B312132C790047782D /* lbaselib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lbaselib.c; sourceTree = "<group>"; };
-		B5A5E3B412132C790047782D /* lcode.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lcode.c; sourceTree = "<group>"; };
 		B5A5E3B512132C790047782D /* lcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcode.h; sourceTree = "<group>"; };
-		B5A5E3B612132C790047782D /* ldblib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ldblib.c; sourceTree = "<group>"; };
-		B5A5E3B712132C790047782D /* ldebug.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ldebug.c; sourceTree = "<group>"; };
 		B5A5E3B812132C790047782D /* ldebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldebug.h; sourceTree = "<group>"; };
-		B5A5E3B912132C790047782D /* ldo.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ldo.c; sourceTree = "<group>"; };
 		B5A5E3BA12132C790047782D /* ldo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ldo.h; sourceTree = "<group>"; };
-		B5A5E3BB12132C790047782D /* ldump.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ldump.c; sourceTree = "<group>"; };
-		B5A5E3BC12132C790047782D /* lfunc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lfunc.c; sourceTree = "<group>"; };
 		B5A5E3BD12132C790047782D /* lfunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfunc.h; sourceTree = "<group>"; };
-		B5A5E3BE12132C790047782D /* lgc.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lgc.c; sourceTree = "<group>"; };
 		B5A5E3BF12132C790047782D /* lgc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lgc.h; sourceTree = "<group>"; };
-		B5A5E3C012132C790047782D /* linit.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = linit.c; sourceTree = "<group>"; };
-		B5A5E3C112132C790047782D /* liolib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = liolib.c; sourceTree = "<group>"; };
-		B5A5E3C212132C790047782D /* llex.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = llex.c; sourceTree = "<group>"; };
 		B5A5E3C312132C790047782D /* llex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llex.h; sourceTree = "<group>"; };
 		B5A5E3C412132C790047782D /* llimits.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = llimits.h; sourceTree = "<group>"; };
-		B5A5E3C512132C790047782D /* lmathlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lmathlib.c; sourceTree = "<group>"; };
-		B5A5E3C612132C790047782D /* lmem.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lmem.c; sourceTree = "<group>"; };
 		B5A5E3C712132C790047782D /* lmem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lmem.h; sourceTree = "<group>"; };
-		B5A5E3C812132C790047782D /* loadlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = loadlib.c; sourceTree = "<group>"; };
-		B5A5E3C912132C790047782D /* lobject.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lobject.c; sourceTree = "<group>"; };
 		B5A5E3CA12132C790047782D /* lobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lobject.h; sourceTree = "<group>"; };
-		B5A5E3CB12132C790047782D /* lopcodes.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lopcodes.c; sourceTree = "<group>"; };
 		B5A5E3CC12132C790047782D /* lopcodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lopcodes.h; sourceTree = "<group>"; };
-		B5A5E3CD12132C790047782D /* loslib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = loslib.c; sourceTree = "<group>"; };
-		B5A5E3CE12132C790047782D /* lparser.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lparser.c; sourceTree = "<group>"; };
 		B5A5E3CF12132C790047782D /* lparser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lparser.h; sourceTree = "<group>"; };
-		B5A5E3D012132C790047782D /* lstate.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lstate.c; sourceTree = "<group>"; };
 		B5A5E3D112132C790047782D /* lstate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstate.h; sourceTree = "<group>"; };
-		B5A5E3D212132C790047782D /* lstring.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lstring.c; sourceTree = "<group>"; };
 		B5A5E3D312132C790047782D /* lstring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lstring.h; sourceTree = "<group>"; };
-		B5A5E3D412132C790047782D /* lstrlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lstrlib.c; sourceTree = "<group>"; };
-		B5A5E3D512132C790047782D /* ltable.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ltable.c; sourceTree = "<group>"; };
 		B5A5E3D612132C790047782D /* ltable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltable.h; sourceTree = "<group>"; };
-		B5A5E3D712132C790047782D /* ltablib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ltablib.c; sourceTree = "<group>"; };
-		B5A5E3D812132C790047782D /* ltm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = ltm.c; sourceTree = "<group>"; };
 		B5A5E3D912132C790047782D /* ltm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ltm.h; sourceTree = "<group>"; };
-		B5A5E3DA12132C790047782D /* lua.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lua.c; sourceTree = "<group>"; };
 		B5A5E3DB12132C790047782D /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
-		B5A5E3DC12132C790047782D /* luac.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = luac.c; sourceTree = "<group>"; };
 		B5A5E3DD12132C790047782D /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
 		B5A5E3DE12132C790047782D /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
-		B5A5E3DF12132C790047782D /* lundump.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lundump.c; sourceTree = "<group>"; };
 		B5A5E3E012132C790047782D /* lundump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lundump.h; sourceTree = "<group>"; };
-		B5A5E3E112132C790047782D /* lvm.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lvm.c; sourceTree = "<group>"; };
 		B5A5E3E212132C790047782D /* lvm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lvm.h; sourceTree = "<group>"; };
-		B5A5E3E312132C790047782D /* lzio.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lzio.c; sourceTree = "<group>"; };
 		B5A5E3E412132C790047782D /* lzio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lzio.h; sourceTree = "<group>"; };
 		B5A5E45012132DE30047782D /* lua_api.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_api.hpp; sourceTree = "<group>"; };
 		B5A9914A0ECA4064002BE442 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../fonts; sourceTree = SOURCE_ROOT; };
@@ -2015,6 +1959,10 @@
 		B5FCE90E1104C2A50081F1DF /* vertical_scrollbar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vertical_scrollbar.hpp; sourceTree = "<group>"; };
 		B5FCE90F1104C2A50081F1DF /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		B5FCE9101104C2A50081F1DF /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
+		EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = screenshot_notification.cpp; path = dialogs/screenshot_notification.cpp; sourceTree = "<group>"; };
+		EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = screenshot_notification.hpp; path = dialogs/screenshot_notification.hpp; sourceTree = "<group>"; };
+		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = theme_list.cpp; path = ../gui/dialogs/theme_list.cpp; sourceTree = "<group>"; };
+		EC3381C618B520120020DD6F /* theme_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = theme_list.hpp; path = ../gui/dialogs/theme_list.hpp; sourceTree = "<group>"; };
 		EC44E37E181DDAF90037A62F /* menu_item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = menu_item.cpp; path = game_events/menu_item.cpp; sourceTree = "<group>"; };
 		EC44E37F181DDAF90037A62F /* menu_item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = menu_item.hpp; path = game_events/menu_item.hpp; sourceTree = "<group>"; };
 		EC44E380181DDAF90037A62F /* wmi_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wmi_container.cpp; path = game_events/wmi_container.cpp; sourceTree = "<group>"; };
@@ -2033,10 +1981,62 @@
 		EC48D75717F318DA00DE80BF /* multiplayer_create_engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = multiplayer_create_engine.hpp; sourceTree = "<group>"; };
 		EC4D40AD17FCCF14002E7C81 /* strftime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strftime.cpp; sourceTree = "<group>"; };
 		EC4D40AE17FCCF14002E7C81 /* strftime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strftime.hpp; sourceTree = "<group>"; };
+		EC89A1061879D17D00A3B0B1 /* lapi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lapi.cpp; sourceTree = "<group>"; };
+		EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lauxlib.cpp; sourceTree = "<group>"; };
+		EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lbaselib.cpp; sourceTree = "<group>"; };
+		EC89A1091879D17D00A3B0B1 /* lbitlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lbitlib.cpp; sourceTree = "<group>"; };
+		EC89A10A1879D17D00A3B0B1 /* lcode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lcode.cpp; sourceTree = "<group>"; };
+		EC89A10B1879D17D00A3B0B1 /* lcorolib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lcorolib.cpp; sourceTree = "<group>"; };
+		EC89A10C1879D17D00A3B0B1 /* lctype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lctype.cpp; sourceTree = "<group>"; };
+		EC89A10D1879D17D00A3B0B1 /* ldblib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ldblib.cpp; sourceTree = "<group>"; };
+		EC89A10E1879D17D00A3B0B1 /* ldebug.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ldebug.cpp; sourceTree = "<group>"; };
+		EC89A10F1879D17D00A3B0B1 /* ldo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ldo.cpp; sourceTree = "<group>"; };
+		EC89A1101879D17D00A3B0B1 /* ldump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ldump.cpp; sourceTree = "<group>"; };
+		EC89A1111879D17D00A3B0B1 /* lfunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lfunc.cpp; sourceTree = "<group>"; };
+		EC89A1121879D17D00A3B0B1 /* lgc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lgc.cpp; sourceTree = "<group>"; };
+		EC89A1131879D17D00A3B0B1 /* linit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linit.cpp; sourceTree = "<group>"; };
+		EC89A1141879D17D00A3B0B1 /* liolib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = liolib.cpp; sourceTree = "<group>"; };
+		EC89A1151879D17D00A3B0B1 /* llex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = llex.cpp; sourceTree = "<group>"; };
+		EC89A1161879D17D00A3B0B1 /* lmathlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lmathlib.cpp; sourceTree = "<group>"; };
+		EC89A1171879D17D00A3B0B1 /* lmem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lmem.cpp; sourceTree = "<group>"; };
+		EC89A1181879D17D00A3B0B1 /* loadlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loadlib.cpp; sourceTree = "<group>"; };
+		EC89A1191879D17D00A3B0B1 /* lobject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lobject.cpp; sourceTree = "<group>"; };
+		EC89A11A1879D17D00A3B0B1 /* lopcodes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lopcodes.cpp; sourceTree = "<group>"; };
+		EC89A11B1879D17D00A3B0B1 /* loslib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = loslib.cpp; sourceTree = "<group>"; };
+		EC89A11C1879D17D00A3B0B1 /* lparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lparser.cpp; sourceTree = "<group>"; };
+		EC89A11D1879D17D00A3B0B1 /* lstate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lstate.cpp; sourceTree = "<group>"; };
+		EC89A11E1879D17D00A3B0B1 /* lstring.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lstring.cpp; sourceTree = "<group>"; };
+		EC89A11F1879D17D00A3B0B1 /* lstrlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lstrlib.cpp; sourceTree = "<group>"; };
+		EC89A1201879D17D00A3B0B1 /* ltable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ltable.cpp; sourceTree = "<group>"; };
+		EC89A1211879D17D00A3B0B1 /* ltablib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ltablib.cpp; sourceTree = "<group>"; };
+		EC89A1221879D17D00A3B0B1 /* ltm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ltm.cpp; sourceTree = "<group>"; };
+		EC89A1241879D17D00A3B0B1 /* lua.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua.hpp; sourceTree = "<group>"; };
+		EC89A1261879D17D00A3B0B1 /* lundump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lundump.cpp; sourceTree = "<group>"; };
+		EC89A1271879D17D00A3B0B1 /* lvm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lvm.cpp; sourceTree = "<group>"; };
+		EC89A1281879D17D00A3B0B1 /* lzio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lzio.cpp; sourceTree = "<group>"; };
+		EC95E50418612BB600F3A9EF /* editor_edit_scenario.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = editor_edit_scenario.cpp; path = gui/dialogs/editor/editor_edit_scenario.cpp; sourceTree = "<group>"; };
+		EC95E50518612BB600F3A9EF /* editor_edit_scenario.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = editor_edit_scenario.hpp; path = gui/dialogs/editor/editor_edit_scenario.hpp; sourceTree = "<group>"; };
+		EC95E50618612BB600F3A9EF /* editor_edit_side.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = editor_edit_side.cpp; path = gui/dialogs/editor/editor_edit_side.cpp; sourceTree = "<group>"; };
+		EC95E50718612BB600F3A9EF /* editor_edit_side.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = editor_edit_side.hpp; path = gui/dialogs/editor/editor_edit_side.hpp; sourceTree = "<group>"; };
 		ECA9E67917F478B600F5DDC4 /* desktop_util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = desktop_util.cpp; sourceTree = "<group>"; };
 		ECA9E67A17F478B600F5DDC4 /* desktop_util.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = desktop_util.hpp; sourceTree = "<group>"; };
 		ECA9E67C17F478D600F5DDC4 /* game_paths.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_paths.cpp; sourceTree = "<group>"; };
 		ECA9E67D17F478D600F5DDC4 /* game_paths.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_paths.hpp; sourceTree = "<group>"; };
+		ECAA3FE518E0E4EF002E8998 /* unicode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode.cpp; sourceTree = "<group>"; };
+		ECAA3FE618E0E4EF002E8998 /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
+		ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = format_time_summary.cpp; sourceTree = "<group>"; };
+		ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = format_time_summary.hpp; sourceTree = "<group>"; };
+		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wml_error.cpp; path = gui/dialogs/wml_error.cpp; sourceTree = "<group>"; };
+		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = wml_error.hpp; path = gui/dialogs/wml_error.hpp; sourceTree = "<group>"; };
+		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = command_executor.cpp; path = hotkey/command_executor.cpp; sourceTree = "<group>"; };
+		ECFA82DB184E59F3006782FB /* command_executor.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = command_executor.hpp; path = hotkey/command_executor.hpp; sourceTree = "<group>"; };
+		ECFA82DC184E59F3006782FB /* hotkey_command.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_command.cpp; path = hotkey/hotkey_command.cpp; sourceTree = "<group>"; };
+		ECFA82DD184E59F3006782FB /* hotkey_command.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkey_command.hpp; path = hotkey/hotkey_command.hpp; sourceTree = "<group>"; };
+		ECFA82DE184E59F3006782FB /* hotkey_item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_item.cpp; path = hotkey/hotkey_item.cpp; sourceTree = "<group>"; };
+		ECFA82DF184E59F3006782FB /* hotkey_item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkey_item.hpp; path = hotkey/hotkey_item.hpp; sourceTree = "<group>"; };
+		ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_manager.cpp; path = hotkey/hotkey_manager.cpp; sourceTree = "<group>"; };
+		ECFA82E1184E59F3006782FB /* hotkey_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = hotkey_manager.hpp; path = hotkey/hotkey_manager.hpp; sourceTree = "<group>"; };
+		ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hotkey_preferences_display.cpp; path = hotkey/hotkey_preferences_display.cpp; sourceTree = "<group>"; };
 		F40C04821706613100B4DA68 /* tip.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = tip.hpp; sourceTree = "<group>"; };
 		F40C04831706613100B4DA68 /* popup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = popup.hpp; sourceTree = "<group>"; };
 		F40C04841706613100B4DA68 /* mp_login.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_login.hpp; sourceTree = "<group>"; };
@@ -2059,8 +2059,6 @@
 		F419E48A133551170031448A /* drawing.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = drawing.hpp; sourceTree = "<group>"; };
 		F43248A4134571BF00036F1D /* game_errors.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_errors.cpp; sourceTree = "<group>"; };
 		F4448F3B13C547FF003B6442 /* libpng12.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng12.0.dylib; path = lib/libpng12.0.dylib; sourceTree = "<group>"; };
-		F4448F4113C5483D003B6442 /* game_instance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_instance.cpp; sourceTree = "<group>"; };
-		F4448F4213C5483D003B6442 /* game_instance.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_instance.hpp; sourceTree = "<group>"; };
 		F444907513C5483E003B6442 /* joystick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = joystick.cpp; sourceTree = "<group>"; };
 		F444907613C5483E003B6442 /* joystick.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = joystick.hpp; sourceTree = "<group>"; };
 		F44490B413C5483F003B6442 /* network_asio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = network_asio.cpp; sourceTree = "<group>"; };
@@ -2071,7 +2069,6 @@
 		F449349A13FF652800DF01D5 /* validator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = validator.hpp; sourceTree = "<group>"; };
 		F468E6AB16DF872200A31A5A /* movetype.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = movetype.hpp; sourceTree = "<group>"; };
 		F468E6AC16DF872200A31A5A /* movetype.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = movetype.cpp; sourceTree = "<group>"; };
-		F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hotkey_preferences_display.cpp; sourceTree = "<group>"; };
 		F46C5DC413A5074C00DD0816 /* game_controller.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = game_controller.hpp; sourceTree = "<group>"; };
 		F46C5DC513A5074C00DD0816 /* game_controller.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game_controller.cpp; sourceTree = "<group>"; };
 		F46C5DCA13A5074C00DD0816 /* commandline_options.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = commandline_options.hpp; sourceTree = "<group>"; };
@@ -2107,13 +2104,8 @@
 		F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_depcheck_select_new.cpp; sourceTree = "<group>"; };
 		F4D043D616167BF6007566E8 /* mp_depcheck_confirm_change.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_depcheck_confirm_change.hpp; sourceTree = "<group>"; };
 		F4D043D716167BF6007566E8 /* mp_depcheck_confirm_change.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_depcheck_confirm_change.cpp; sourceTree = "<group>"; };
-		F4D043D816167BF6007566E8 /* mp_create_game_choose_mods.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mp_create_game_choose_mods.hpp; sourceTree = "<group>"; };
-		F4D043D916167BF6007566E8 /* mp_create_game_choose_mods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mp_create_game_choose_mods.cpp; sourceTree = "<group>"; };
 		F4D2A99514DAED0E00CAFF31 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		F4D2DECA14DCA1D000CAFF31 /* client.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
-		F4D2DEDB14DED86800CAFF31 /* lbitlib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lbitlib.c; sourceTree = "<group>"; };
-		F4D2DEDC14DED86800CAFF31 /* lcorolib.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lcorolib.c; sourceTree = "<group>"; };
-		F4D2DEDD14DED86800CAFF31 /* lctype.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; path = lctype.c; sourceTree = "<group>"; };
 		F4D2DEDE14DED86800CAFF31 /* lctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lctype.h; sourceTree = "<group>"; };
 		F4D5AFEA1571208B0062EAFC /* placer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = placer.cpp; sourceTree = "<group>"; };
 		F4D5AFEB1571208B0062EAFC /* placer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = placer.hpp; sourceTree = "<group>"; };
@@ -2282,6 +2274,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ECF3A0B118AD3E8700DD643A /* wml_error.cpp */,
+				ECF3A0B218AD3E8800DD643A /* wml_error.hpp */,
 				EC4D40AD17FCCF14002E7C81 /* strftime.cpp */,
 				EC4D40AE17FCCF14002E7C81 /* strftime.hpp */,
 				EC44E37E181DDAF90037A62F /* menu_item.cpp */,
@@ -2298,14 +2292,20 @@
 				F468E6AC16DF872200A31A5A /* movetype.cpp */,
 				F4D043D216167BD1007566E8 /* mp_options.hpp */,
 				F4D043D316167BD1007566E8 /* mp_depcheck.hpp */,
+				ECFA82DA184E59F3006782FB /* command_executor.cpp */,
+				ECFA82DB184E59F3006782FB /* command_executor.hpp */,
+				ECFA82DC184E59F3006782FB /* hotkey_command.cpp */,
+				ECFA82DD184E59F3006782FB /* hotkey_command.hpp */,
+				ECFA82DE184E59F3006782FB /* hotkey_item.cpp */,
+				ECFA82DF184E59F3006782FB /* hotkey_item.hpp */,
+				ECFA82E0184E59F3006782FB /* hotkey_manager.cpp */,
+				ECFA82E1184E59F3006782FB /* hotkey_manager.hpp */,
+				ECFA82E2184E59F3006782FB /* hotkey_preferences_display.cpp */,
 				F4D043D016167BB9007566E8 /* mp_depcheck.cpp */,
 				F4D043CE16167B98007566E8 /* mp_options.cpp */,
-				F469F29A160F9FB2008B209B /* hotkey_preferences_display.cpp */,
 				620A386115E9364E00A4F513 /* actions */,
 				F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */,
 				F480CD2D14035038007175D6 /* tools */,
-				F4448F4113C5483D003B6442 /* game_instance.cpp */,
-				F4448F4213C5483D003B6442 /* game_instance.hpp */,
 				F444907513C5483E003B6442 /* joystick.cpp */,
 				F444907613C5483E003B6442 /* joystick.hpp */,
 				F44490B413C5483F003B6442 /* network_asio.cpp */,
@@ -2358,9 +2358,15 @@
 				B52EE8BF121359A600CFBDAB /* save_blocker.cpp */,
 				B52EE8C0121359A600CFBDAB /* save_blocker.hpp */,
 				B52EE8C2121359A600CFBDAB /* savegame.cpp */,
+				EC95E50418612BB600F3A9EF /* editor_edit_scenario.cpp */,
+				EC95E50518612BB600F3A9EF /* editor_edit_scenario.hpp */,
+				EC95E50618612BB600F3A9EF /* editor_edit_side.cpp */,
+				EC95E50718612BB600F3A9EF /* editor_edit_side.hpp */,
 				EC48D74E17F318DA00DE80BF /* flg_manager.cpp */,
 				EC48D74F17F318DA00DE80BF /* flg_manager.hpp */,
 				EC48D75017F318DA00DE80BF /* mp_game_utils.cpp */,
+				ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */,
+				ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */,
 				EC48D75117F318DA00DE80BF /* mp_game_utils.hpp */,
 				EC48D75217F318DA00DE80BF /* multiplayer_configure.cpp */,
 				EC48D75317F318DA00DE80BF /* multiplayer_configure.hpp */,
@@ -2536,8 +2542,6 @@
 				B5599A0D0EC62181008DD061 /* intro.cpp */,
 				B5599A0E0EC62181008DD061 /* image.hpp */,
 				B5599A0F0EC62181008DD061 /* image.cpp */,
-				B5599A100EC62181008DD061 /* hotkeys.hpp */,
-				B5599A110EC62181008DD061 /* hotkeys.cpp */,
 				B5599A120EC62181008DD061 /* help.hpp */,
 				B5599A130EC62181008DD061 /* help.cpp */,
 				B5599A140EC62181008DD061 /* halo.hpp */,
@@ -2773,6 +2777,8 @@
 		62CC8E6917B9063D00C16B75 /* game_events */ = {
 			isa = PBXGroup;
 			children = (
+				EC3381C518B520120020DD6F /* theme_list.cpp */,
+				EC3381C618B520120020DD6F /* theme_list.hpp */,
 				62CC8E6A17B9063D00C16B75 /* action_wml.cpp */,
 				62CC8E6B17B9063D00C16B75 /* action_wml.hpp */,
 				62CC8E6C17B9063D00C16B75 /* conditional_wml.cpp */,
@@ -3140,6 +3146,8 @@
 		B55999A60EC62181008DD061 /* serialization */ = {
 			isa = PBXGroup;
 			children = (
+				ECAA3FE518E0E4EF002E8998 /* unicode.cpp */,
+				ECAA3FE618E0E4EF002E8998 /* unicode.hpp */,
 				F480CD2214034F18007175D6 /* schema_validator.cpp */,
 				F480CD2A14034FB8007175D6 /* schema_validator.hpp */,
 				F449349913FF652800DF01D5 /* validator.cpp */,
@@ -3364,63 +3372,62 @@
 		B5A5E3AD12132C790047782D /* lua */ = {
 			isa = PBXGroup;
 			children = (
-				F4D2DEDB14DED86800CAFF31 /* lbitlib.c */,
-				F4D2DEDC14DED86800CAFF31 /* lcorolib.c */,
-				F4D2DEDD14DED86800CAFF31 /* lctype.c */,
+				EC89A1061879D17D00A3B0B1 /* lapi.cpp */,
+				EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */,
+				EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */,
+				EC89A1091879D17D00A3B0B1 /* lbitlib.cpp */,
+				EC89A10A1879D17D00A3B0B1 /* lcode.cpp */,
+				EC89A10B1879D17D00A3B0B1 /* lcorolib.cpp */,
+				EC89A10C1879D17D00A3B0B1 /* lctype.cpp */,
+				EC89A10D1879D17D00A3B0B1 /* ldblib.cpp */,
+				EC89A10E1879D17D00A3B0B1 /* ldebug.cpp */,
+				EC89A10F1879D17D00A3B0B1 /* ldo.cpp */,
+				EC89A1101879D17D00A3B0B1 /* ldump.cpp */,
+				EC89A1111879D17D00A3B0B1 /* lfunc.cpp */,
+				EC89A1121879D17D00A3B0B1 /* lgc.cpp */,
+				EC89A1131879D17D00A3B0B1 /* linit.cpp */,
+				EC89A1141879D17D00A3B0B1 /* liolib.cpp */,
+				EC89A1151879D17D00A3B0B1 /* llex.cpp */,
+				EC89A1161879D17D00A3B0B1 /* lmathlib.cpp */,
+				EC89A1171879D17D00A3B0B1 /* lmem.cpp */,
+				EC89A1181879D17D00A3B0B1 /* loadlib.cpp */,
+				EC89A1191879D17D00A3B0B1 /* lobject.cpp */,
+				EC89A11A1879D17D00A3B0B1 /* lopcodes.cpp */,
+				EC89A11B1879D17D00A3B0B1 /* loslib.cpp */,
+				EC89A11C1879D17D00A3B0B1 /* lparser.cpp */,
+				EC89A11D1879D17D00A3B0B1 /* lstate.cpp */,
+				EC89A11E1879D17D00A3B0B1 /* lstring.cpp */,
+				EC89A11F1879D17D00A3B0B1 /* lstrlib.cpp */,
+				EC89A1201879D17D00A3B0B1 /* ltable.cpp */,
+				EC89A1211879D17D00A3B0B1 /* ltablib.cpp */,
+				EC89A1221879D17D00A3B0B1 /* ltm.cpp */,
+				EC89A1241879D17D00A3B0B1 /* lua.hpp */,
+				EC89A1261879D17D00A3B0B1 /* lundump.cpp */,
+				EC89A1271879D17D00A3B0B1 /* lvm.cpp */,
+				EC89A1281879D17D00A3B0B1 /* lzio.cpp */,
 				F4D2DEDE14DED86800CAFF31 /* lctype.h */,
-				B5A5E3AF12132C790047782D /* lapi.c */,
 				B5A5E3B012132C790047782D /* lapi.h */,
-				B5A5E3B112132C790047782D /* lauxlib.c */,
 				B5A5E3B212132C790047782D /* lauxlib.h */,
-				B5A5E3B312132C790047782D /* lbaselib.c */,
-				B5A5E3B412132C790047782D /* lcode.c */,
 				B5A5E3B512132C790047782D /* lcode.h */,
-				B5A5E3B612132C790047782D /* ldblib.c */,
-				B5A5E3B712132C790047782D /* ldebug.c */,
 				B5A5E3B812132C790047782D /* ldebug.h */,
-				B5A5E3B912132C790047782D /* ldo.c */,
 				B5A5E3BA12132C790047782D /* ldo.h */,
-				B5A5E3BB12132C790047782D /* ldump.c */,
-				B5A5E3BC12132C790047782D /* lfunc.c */,
 				B5A5E3BD12132C790047782D /* lfunc.h */,
-				B5A5E3BE12132C790047782D /* lgc.c */,
 				B5A5E3BF12132C790047782D /* lgc.h */,
-				B5A5E3C012132C790047782D /* linit.c */,
-				B5A5E3C112132C790047782D /* liolib.c */,
-				B5A5E3C212132C790047782D /* llex.c */,
 				B5A5E3C312132C790047782D /* llex.h */,
 				B5A5E3C412132C790047782D /* llimits.h */,
-				B5A5E3C512132C790047782D /* lmathlib.c */,
-				B5A5E3C612132C790047782D /* lmem.c */,
 				B5A5E3C712132C790047782D /* lmem.h */,
-				B5A5E3C812132C790047782D /* loadlib.c */,
-				B5A5E3C912132C790047782D /* lobject.c */,
 				B5A5E3CA12132C790047782D /* lobject.h */,
-				B5A5E3CB12132C790047782D /* lopcodes.c */,
 				B5A5E3CC12132C790047782D /* lopcodes.h */,
-				B5A5E3CD12132C790047782D /* loslib.c */,
-				B5A5E3CE12132C790047782D /* lparser.c */,
 				B5A5E3CF12132C790047782D /* lparser.h */,
-				B5A5E3D012132C790047782D /* lstate.c */,
 				B5A5E3D112132C790047782D /* lstate.h */,
-				B5A5E3D212132C790047782D /* lstring.c */,
 				B5A5E3D312132C790047782D /* lstring.h */,
-				B5A5E3D412132C790047782D /* lstrlib.c */,
-				B5A5E3D512132C790047782D /* ltable.c */,
 				B5A5E3D612132C790047782D /* ltable.h */,
-				B5A5E3D712132C790047782D /* ltablib.c */,
-				B5A5E3D812132C790047782D /* ltm.c */,
 				B5A5E3D912132C790047782D /* ltm.h */,
-				B5A5E3DA12132C790047782D /* lua.c */,
 				B5A5E3DB12132C790047782D /* lua.h */,
-				B5A5E3DC12132C790047782D /* luac.c */,
 				B5A5E3DD12132C790047782D /* luaconf.h */,
 				B5A5E3DE12132C790047782D /* lualib.h */,
-				B5A5E3DF12132C790047782D /* lundump.c */,
 				B5A5E3E012132C790047782D /* lundump.h */,
-				B5A5E3E112132C790047782D /* lvm.c */,
 				B5A5E3E212132C790047782D /* lvm.h */,
-				B5A5E3E312132C790047782D /* lzio.c */,
 				B5A5E3E412132C790047782D /* lzio.h */,
 			);
 			path = lua;
@@ -3429,6 +3436,8 @@
 		B5A9BCA10ECA805A002BE442 /* gui */ = {
 			isa = PBXGroup;
 			children = (
+				EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */,
+				EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */,
 				F4C5DD64158CFD5E0044F754 /* lib */,
 				B597EC500FC08E0100CE81F5 /* auxiliary */,
 				B5A9BCA20ECA805A002BE442 /* dialogs */,
@@ -3451,8 +3460,6 @@
 				F4D043D516167BF6007566E8 /* mp_depcheck_select_new.cpp */,
 				F4D043D616167BF6007566E8 /* mp_depcheck_confirm_change.hpp */,
 				F4D043D716167BF6007566E8 /* mp_depcheck_confirm_change.cpp */,
-				F4D043D816167BF6007566E8 /* mp_create_game_choose_mods.hpp */,
-				F4D043D916167BF6007566E8 /* mp_create_game_choose_mods.cpp */,
 				F49F134715BC627C00B64B0B /* editor */,
 				1EF6CE8014D9846D00ECBE58 /* mp_host_game_prompt.cpp */,
 				1EF6CE8114D9846D00ECBE58 /* mp_host_game_prompt.hpp */,
@@ -3928,6 +3935,7 @@
 				B5599ADB0EC62181008DD061 /* menu_style.cpp in Sources */,
 				B5599ADC0EC62181008DD061 /* progressbar.cpp in Sources */,
 				B5599ADD0EC62181008DD061 /* scrollarea.cpp in Sources */,
+				ECFA82E7184E59F3006782FB /* hotkey_preferences_display.cpp in Sources */,
 				B5599ADE0EC62181008DD061 /* scrollbar.cpp in Sources */,
 				B5599ADF0EC62181008DD061 /* scrollpane.cpp in Sources */,
 				B5599AE00EC62181008DD061 /* slider.cpp in Sources */,
@@ -3939,6 +3947,7 @@
 				B5599AE50EC62181008DD061 /* variant.cpp in Sources */,
 				B5599AE60EC62181008DD061 /* variable.cpp in Sources */,
 				B5599AE70EC62181008DD061 /* util.cpp in Sources */,
+				EC89A1391879D17D00A3B0B1 /* lmathlib.cpp in Sources */,
 				B5599AE90EC62181008DD061 /* unit_types.cpp in Sources */,
 				B5599AEA0EC62181008DD061 /* unit_map.cpp in Sources */,
 				B5599AEB0EC62181008DD061 /* unit_id.cpp in Sources */,
@@ -3968,6 +3977,7 @@
 				B5599B040EC62181008DD061 /* binary_or_text.cpp in Sources */,
 				B5599B060EC62181008DD061 /* parser.cpp in Sources */,
 				B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */,
+				EC89A1381879D17D00A3B0B1 /* llex.cpp in Sources */,
 				B5599B080EC62181008DD061 /* string_utils.cpp in Sources */,
 				B5599B090EC62181008DD061 /* tokenizer.cpp in Sources */,
 				B5599B0A0EC62181008DD061 /* sdl_utils.cpp in Sources */,
@@ -4005,7 +4015,6 @@
 				B5599B340EC62181008DD061 /* key.cpp in Sources */,
 				B5599B350EC62181008DD061 /* intro.cpp in Sources */,
 				B5599B360EC62181008DD061 /* image.cpp in Sources */,
-				B5599B370EC62181008DD061 /* hotkeys.cpp in Sources */,
 				B5599B380EC62181008DD061 /* help.cpp in Sources */,
 				B5599B390EC62181008DD061 /* halo.cpp in Sources */,
 				B5599B630EC62181008DD061 /* gettext.cpp in Sources */,
@@ -4020,6 +4029,8 @@
 				B5599B6D0EC62181008DD061 /* formula_tokenizer.cpp in Sources */,
 				B5599B6E0EC62181008DD061 /* formula_function.cpp in Sources */,
 				B5599B700EC62181008DD061 /* formula.cpp in Sources */,
+				EC89A13D1879D17D00A3B0B1 /* lopcodes.cpp in Sources */,
+				EC89A1331879D17D00A3B0B1 /* ldump.cpp in Sources */,
 				B5599B710EC62181008DD061 /* font.cpp in Sources */,
 				B5599B720EC62181008DD061 /* floating_textbox.cpp in Sources */,
 				B5599B730EC62181008DD061 /* filesystem.cpp in Sources */,
@@ -4040,6 +4051,7 @@
 				B5599B8C0EC62181008DD061 /* builder.cpp in Sources */,
 				B5599B8E0EC62181008DD061 /* attack_prediction_display.cpp in Sources */,
 				B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */,
+				EC89A13B1879D17D00A3B0B1 /* loadlib.cpp in Sources */,
 				B559A0130EC8FE2E008DD061 /* editor_controller.cpp in Sources */,
 				B559A0140EC8FE2E008DD061 /* editor_display.cpp in Sources */,
 				B559A0160EC8FE2E008DD061 /* editor_main.cpp in Sources */,
@@ -4051,11 +4063,15 @@
 				B5A9BD380ECA805A002BE442 /* language_selection.cpp in Sources */,
 				B5A9BD390ECA805A002BE442 /* message.cpp in Sources */,
 				B5A9BD3A0ECA805A002BE442 /* mp_connect.cpp in Sources */,
+				EC95E50918612BB600F3A9EF /* editor_edit_side.cpp in Sources */,
+				EC89A1481879D17D00A3B0B1 /* lundump.cpp in Sources */,
 				B5A9BD3B0ECA805A002BE442 /* mp_create_game.cpp in Sources */,
+				EC19E6F018B7F24B003B4B81 /* screenshot_notification.cpp in Sources */,
 				B5A9BD3C0ECA805A002BE442 /* mp_method_selection.cpp in Sources */,
 				B5A9BD3D0ECA805A002BE442 /* title_screen.cpp in Sources */,
 				B5A9BD5B0ECA805A002BE442 /* button.cpp in Sources */,
 				B5A9BD5D0ECA805A002BE442 /* container.cpp in Sources */,
+				ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */,
 				B5A9BD5E0ECA805A002BE442 /* control.cpp in Sources */,
 				B5A9BD610ECA805A002BE442 /* grid.cpp in Sources */,
 				B5A9BD620ECA805A002BE442 /* helper.cpp in Sources */,
@@ -4068,16 +4084,19 @@
 				B5A9BD6A0ECA805A002BE442 /* scrollbar.cpp in Sources */,
 				B5A9BD6B0ECA805A002BE442 /* settings.cpp in Sources */,
 				B5A9BD6C0ECA805A002BE442 /* slider.cpp in Sources */,
+				ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */,
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
 				B5A9BD6E0ECA805A002BE442 /* text.cpp in Sources */,
 				EC48D75817F318DA00DE80BF /* flg_manager.cpp in Sources */,
 				B5A9BD6F0ECA805A002BE442 /* text_box.cpp in Sources */,
 				B5A9BD700ECA805A002BE442 /* toggle_button.cpp in Sources */,
 				B5A9BD710ECA805A002BE442 /* toggle_panel.cpp in Sources */,
+				EC89A12C1879D17D00A3B0B1 /* lbitlib.cpp in Sources */,
 				B5A9BD730ECA805A002BE442 /* vertical_scrollbar.cpp in Sources */,
 				B5A9BD750ECA805A002BE442 /* widget.cpp in Sources */,
 				B5A9BD760ECA805A002BE442 /* window.cpp in Sources */,
 				B55A80540EDF3DFB00C9D97A /* wml_message.cpp in Sources */,
+				EC89A14A1879D17D00A3B0B1 /* lzio.cpp in Sources */,
 				B5795A680F05858100EB190E /* horizontal_scrollbar.cpp in Sources */,
 				B5795A690F05858100EB190E /* scrollbar_container.cpp in Sources */,
 				B5795A6A0F05858100EB190E /* generator.cpp in Sources */,
@@ -4092,6 +4111,7 @@
 				B597EC140FC0835900CE81F5 /* controller.cpp in Sources */,
 				B597EC150FC0835900CE81F5 /* interface.cpp in Sources */,
 				B597EC160FC0835900CE81F5 /* part.cpp in Sources */,
+				EC89A12E1879D17D00A3B0B1 /* lcorolib.cpp in Sources */,
 				B597EC170FC0835900CE81F5 /* render.cpp in Sources */,
 				B597EC5A0FC08E0100CE81F5 /* canvas.cpp in Sources */,
 				B597EC5B0FC08E0100CE81F5 /* log.cpp in Sources */,
@@ -4108,8 +4128,11 @@
 				B54AC6DA0FEA9EB5006F6FBD /* engine.cpp in Sources */,
 				B54AC6DB0FEA9EB5006F6FBD /* engine_default.cpp in Sources */,
 				B54AC6DC0FEA9EB5006F6FBD /* rca.cpp in Sources */,
+				EC89A1371879D17D00A3B0B1 /* liolib.cpp in Sources */,
+				EC89A1421879D17D00A3B0B1 /* lstrlib.cpp in Sources */,
 				B54AC6DD0FEA9EB5006F6FBD /* stage.cpp in Sources */,
 				B54AC6DE0FEA9EB5006F6FBD /* ai.cpp in Sources */,
+				EC89A1321879D17D00A3B0B1 /* ldo.cpp in Sources */,
 				B54AC6DF0FEA9EB5006F6FBD /* attack.cpp in Sources */,
 				B54AC6E00FEA9EB5006F6FBD /* contexts.cpp in Sources */,
 				B54AC6E40FEA9EB5006F6FBD /* ai.cpp in Sources */,
@@ -4141,11 +4164,13 @@
 				B508D201100155F300B12852 /* slider.cpp in Sources */,
 				B508D202100155F300B12852 /* stacked_widget.cpp in Sources */,
 				B508D203100155F300B12852 /* toggle_button.cpp in Sources */,
+				EC89A1441879D17D00A3B0B1 /* ltablib.cpp in Sources */,
 				B508D204100155F300B12852 /* vertical_scrollbar.cpp in Sources */,
 				B508D2161001560100B12852 /* stacked_widget.cpp in Sources */,
 				B595EFE2100436C900C10B66 /* game_load.cpp in Sources */,
 				B5951A8F1013BB0800C10B66 /* resources.cpp in Sources */,
 				B5951A951013BB3400C10B66 /* game_delete.cpp in Sources */,
+				ECAA3FE718E0E4EF002E8998 /* unicode.cpp in Sources */,
 				B5951A9B1013BB5A00C10B66 /* callable_objects.cpp in Sources */,
 				B5951A9C1013BB5A00C10B66 /* function_table.cpp in Sources */,
 				B59F96D5103478C900A57C1A /* aspect.cpp in Sources */,
@@ -4162,12 +4187,14 @@
 				B5B469241071185800327599 /* mp_game_settings.cpp in Sources */,
 				B5B4692C1071189700327599 /* gamestate_inspector.cpp in Sources */,
 				B5B46930107118B200327599 /* widget_definition.cpp in Sources */,
+				EC89A1291879D17D00A3B0B1 /* lapi.cpp in Sources */,
 				B5B46938107118C400327599 /* dispatcher.cpp in Sources */,
 				B5B46939107118C400327599 /* handler.cpp in Sources */,
 				B552D92410869477002D8F86 /* distributor.cpp in Sources */,
 				B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */,
 				B5CF7BBC10D55F5A00A8BEB5 /* timer.cpp in Sources */,
 				EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */,
+				EC3381C718B520120020DD6F /* theme_list.cpp in Sources */,
 				B59271F710E956D600A13911 /* repeating_button.cpp in Sources */,
 				B59271FB10E9577800A13911 /* repeating_button.cpp in Sources */,
 				B5FCE9111104C2A50081F1DF /* button.cpp in Sources */,
@@ -4182,11 +4209,13 @@
 				B5FCE91B1104C2A50081F1DF /* scroll_label.cpp in Sources */,
 				B5FCE91C1104C2A50081F1DF /* scrollbar_panel.cpp in Sources */,
 				B5FCE91D1104C2A50081F1DF /* slider.cpp in Sources */,
+				ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */,
 				B5FCE91E1104C2A50081F1DF /* spacer.cpp in Sources */,
 				B5FCE91F1104C2A50081F1DF /* stacked_widget.cpp in Sources */,
 				B5FCE9201104C2A50081F1DF /* text_box.cpp in Sources */,
 				B5FCE9211104C2A50081F1DF /* toggle_button.cpp in Sources */,
 				B5FCE9221104C2A50081F1DF /* toggle_panel.cpp in Sources */,
+				EC89A1311879D17D00A3B0B1 /* ldebug.cpp in Sources */,
 				B5FCE9241104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */,
 				B5FCE9251104C2A50081F1DF /* window.cpp in Sources */,
 				B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */,
@@ -4196,53 +4225,32 @@
 				B55BE04B11234B1A00154E6C /* lobby_data.cpp in Sources */,
 				B55BE04C11234B1A00154E6C /* lobby_info.cpp in Sources */,
 				B55BE05311234B3300154E6C /* tree_view_node.cpp in Sources */,
+				EC89A1451879D17D00A3B0B1 /* ltm.cpp in Sources */,
 				B55BE05411234B3300154E6C /* tree_view.cpp in Sources */,
 				B55BE05911234B5600154E6C /* tree_view.cpp in Sources */,
 				B55BE05D11234B6B00154E6C /* tree_view.cpp in Sources */,
-				B5A5E3EA12132C790047782D /* lapi.c in Sources */,
-				B5A5E3EB12132C790047782D /* lauxlib.c in Sources */,
-				B5A5E3EC12132C790047782D /* lbaselib.c in Sources */,
-				B5A5E3ED12132C790047782D /* lcode.c in Sources */,
-				B5A5E3EE12132C790047782D /* ldblib.c in Sources */,
-				B5A5E3EF12132C790047782D /* ldebug.c in Sources */,
-				B5A5E3F012132C790047782D /* ldo.c in Sources */,
-				B5A5E3F112132C790047782D /* ldump.c in Sources */,
-				B5A5E3F212132C790047782D /* lfunc.c in Sources */,
-				B5A5E3F312132C790047782D /* lgc.c in Sources */,
-				B5A5E3F412132C790047782D /* linit.c in Sources */,
-				B5A5E3F512132C790047782D /* liolib.c in Sources */,
-				B5A5E3F612132C790047782D /* llex.c in Sources */,
-				B5A5E3F712132C790047782D /* lmathlib.c in Sources */,
-				B5A5E3F812132C790047782D /* lmem.c in Sources */,
-				B5A5E3F912132C790047782D /* loadlib.c in Sources */,
-				B5A5E3FA12132C790047782D /* lobject.c in Sources */,
-				B5A5E3FB12132C790047782D /* lopcodes.c in Sources */,
-				B5A5E3FC12132C790047782D /* loslib.c in Sources */,
-				B5A5E3FD12132C790047782D /* lparser.c in Sources */,
-				B5A5E3FE12132C790047782D /* lstate.c in Sources */,
-				B5A5E3FF12132C790047782D /* lstring.c in Sources */,
-				B5A5E40012132C790047782D /* lstrlib.c in Sources */,
-				B5A5E40112132C790047782D /* ltable.c in Sources */,
-				B5A5E40212132C790047782D /* ltablib.c in Sources */,
-				B5A5E40312132C790047782D /* ltm.c in Sources */,
-				B5A5E40612132C790047782D /* lundump.c in Sources */,
-				B5A5E40712132C790047782D /* lvm.c in Sources */,
-				B5A5E40812132C790047782D /* lzio.c in Sources */,
+				EC89A1491879D17D00A3B0B1 /* lvm.cpp in Sources */,
+				EC89A1361879D17D00A3B0B1 /* linit.cpp in Sources */,
+				EC89A13C1879D17D00A3B0B1 /* lobject.cpp in Sources */,
 				B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */,
 				B52EE88B1213589100CFBDAB /* data_manage.cpp in Sources */,
 				B52EE88C1213589100CFBDAB /* unit_attack.cpp in Sources */,
 				B52EE893121358E100CFBDAB /* progress_bar.cpp in Sources */,
 				EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */,
+				EC89A1341879D17D00A3B0B1 /* lfunc.cpp in Sources */,
 				EC48D75917F318DA00DE80BF /* mp_game_utils.cpp in Sources */,
 				B52EE897121358EF00CFBDAB /* progress_bar.cpp in Sources */,
 				B52EE89D1213590500CFBDAB /* list.cpp in Sources */,
+				EC89A1431879D17D00A3B0B1 /* ltable.cpp in Sources */,
 				B52EE89E1213590500CFBDAB /* progress_bar.cpp in Sources */,
 				B52EE8CB121359A600CFBDAB /* arrow.cpp in Sources */,
 				B52EE8CD121359A600CFBDAB /* formula_debugger_fwd.cpp in Sources */,
 				B52EE8CE121359A600CFBDAB /* formula_debugger.cpp in Sources */,
 				B52EE8CF121359A600CFBDAB /* formula_string_utils.cpp in Sources */,
+				EC89A12F1879D17D00A3B0B1 /* lctype.cpp in Sources */,
 				B52EE8D0121359A600CFBDAB /* hash.cpp in Sources */,
 				B52EE8D2121359A600CFBDAB /* lobby_preferences.cpp in Sources */,
+				EC95E50818612BB600F3A9EF /* editor_edit_scenario.cpp in Sources */,
 				B52EE8D6121359A600CFBDAB /* persist_context.cpp in Sources */,
 				B52EE8D7121359A600CFBDAB /* persist_manager.cpp in Sources */,
 				B52EE8D8121359A600CFBDAB /* persist_var.cpp in Sources */,
@@ -4253,6 +4261,7 @@
 				EC48D75A17F318DA00DE80BF /* multiplayer_configure.cpp in Sources */,
 				B52EE91512135AC300CFBDAB /* action.cpp in Sources */,
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
+				EC89A13F1879D17D00A3B0B1 /* lparser.cpp in Sources */,
 				B52EE91812135AC300CFBDAB /* manager.cpp in Sources */,
 				B52EE91A12135AC300CFBDAB /* move.cpp in Sources */,
 				B52EE91B12135AC300CFBDAB /* recall.cpp in Sources */,
@@ -4268,7 +4277,9 @@
 				B5CE46FD12A041CE00D665EE /* ca_testing_recruitment.cpp in Sources */,
 				B5CE470512A041EF00D665EE /* campaign_difficulty.cpp in Sources */,
 				B5CE470612A041EF00D665EE /* edit_label.cpp in Sources */,
+				EC89A1411879D17D00A3B0B1 /* lstring.cpp in Sources */,
 				B5CE470712A041EF00D665EE /* simple_item_selector.cpp in Sources */,
+				ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */,
 				B5CE470D12A0422800D665EE /* old_markup.cpp in Sources */,
 				B5DBABF312AFF7F200B5B8DC /* mp_create_game_set_password.cpp in Sources */,
 				4944F4071354FB410027E614 /* game_errors.cpp in Sources */,
@@ -4277,6 +4288,7 @@
 				4944F40D1354FB760027E614 /* drawing.cpp in Sources */,
 				4944F4121354FB970027E614 /* debug_clock.cpp in Sources */,
 				4944F4131354FB970027E614 /* mp_login.cpp in Sources */,
+				ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */,
 				4944F4141354FB970027E614 /* popup.cpp in Sources */,
 				4944F4151354FB970027E614 /* tip.cpp in Sources */,
 				4944F4171354FBB20027E614 /* description.cpp in Sources */,
@@ -4293,10 +4305,10 @@
 				F46C5DCF13A5074C00DD0816 /* commandline_options.cpp in Sources */,
 				F46C5DD413A5089100DD0816 /* lua_object.cpp in Sources */,
 				F4EF0D7413AD52EA003C701D /* network_transmission.cpp in Sources */,
-				F44490B613C5483F003B6442 /* game_instance.cpp in Sources */,
 				F444914013C5483F003B6442 /* joystick.cpp in Sources */,
 				F444916613C5483F003B6442 /* network_asio.cpp in Sources */,
 				F444917713C5562C003B6442 /* folder_create.cpp in Sources */,
+				EC89A12D1879D17D00A3B0B1 /* lcode.cpp in Sources */,
 				F4FE7FA613DCFF660054F220 /* network.cpp in Sources */,
 				F449349C13FF652800DF01D5 /* validator.cpp in Sources */,
 				F480CD1F14034E6D007175D6 /* mapbuilder.cpp in Sources */,
@@ -4309,9 +4321,6 @@
 				F4D5DF39149CE9B500294046 /* chat_log.cpp in Sources */,
 				1EF6CE8214D9846D00ECBE58 /* mp_host_game_prompt.cpp in Sources */,
 				F4D2DECB14DCA1D000CAFF31 /* client.cpp in Sources */,
-				F4D2DEDF14DED86800CAFF31 /* lbitlib.c in Sources */,
-				F4D2DEE014DED86800CAFF31 /* lcorolib.c in Sources */,
-				F4D2DEE114DED86800CAFF31 /* lctype.c in Sources */,
 				F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */,
 				F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */,
 				F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */,
@@ -4319,6 +4328,7 @@
 				6295C3B5150FC95C0077D8C5 /* action.cpp in Sources */,
 				6295C3B6150FC95C0077D8C5 /* action_label.cpp in Sources */,
 				6295C3B7150FC95C0077D8C5 /* action_unit.cpp in Sources */,
+				EC89A1351879D17D00A3B0B1 /* lgc.cpp in Sources */,
 				6295C3B8150FC95C0077D8C5 /* mouse_action.cpp in Sources */,
 				6295C3B9150FC95C0077D8C5 /* mouse_action_map_label.cpp in Sources */,
 				6295C3BA150FC95C0077D8C5 /* mouse_action_unit.cpp in Sources */,
@@ -4327,8 +4337,10 @@
 				6295C3C4150FC9750077D8C5 /* map_fragment.cpp in Sources */,
 				6295C3D6150FC9EB0077D8C5 /* editor_palettes.cpp in Sources */,
 				6295C3D8150FC9EB0077D8C5 /* terrain_palettes.cpp in Sources */,
+				EC89A13E1879D17D00A3B0B1 /* loslib.cpp in Sources */,
 				6295C3D9150FC9EB0077D8C5 /* unit_palette.cpp in Sources */,
 				F4D5483E15198D060058C8A7 /* lua_jailbreak_exception.cpp in Sources */,
+				EC89A12A1879D17D00A3B0B1 /* lauxlib.cpp in Sources */,
 				62D24F2D1519982500350848 /* brush.cpp in Sources */,
 				62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */,
 				62D24F321519987400350848 /* context_manager.cpp in Sources */,
@@ -4339,7 +4351,9 @@
 				F4D5AFEC1571208B0062EAFC /* placer.cpp in Sources */,
 				F4D5AFF4157120B30062EAFC /* horizontal_list.cpp in Sources */,
 				F4D5AFF5157120B30062EAFC /* vertical_list.cpp in Sources */,
+				ECFA82E6184E59F3006782FB /* hotkey_manager.cpp in Sources */,
 				F4D5AFFA157120E60062EAFC /* viewport.cpp in Sources */,
+				EC89A1401879D17D00A3B0B1 /* lstate.cpp in Sources */,
 				62579C771573E682003089D5 /* matrix.cpp in Sources */,
 				62579C7E1573E70C003089D5 /* instance.cpp in Sources */,
 				62579C7F1573E70C003089D5 /* matrix.cpp in Sources */,
@@ -4359,12 +4373,10 @@
 				620A387115E9364F00A4F513 /* move.cpp in Sources */,
 				620A387215E9364F00A4F513 /* undo.cpp in Sources */,
 				620A387315E9364F00A4F513 /* vision.cpp in Sources */,
-				F469F29B160F9FB2008B209B /* hotkey_preferences_display.cpp in Sources */,
 				F4D043CF16167B98007566E8 /* mp_options.cpp in Sources */,
 				F4D043D116167BB9007566E8 /* mp_depcheck.cpp in Sources */,
 				F4D043DA16167BF6007566E8 /* mp_depcheck_select_new.cpp in Sources */,
 				F4D043DB16167BF6007566E8 /* mp_depcheck_confirm_change.cpp in Sources */,
-				F4D043DC16167BF6007566E8 /* mp_create_game_choose_mods.cpp in Sources */,
 				F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */,
 				49478714172FF6F8002B7ABA /* tristate_button.cpp in Sources */,
 				49E84DC217384EF800A4F376 /* leader_scroll_dialog.cpp in Sources */,
@@ -4375,12 +4387,15 @@
 				627F1EDB175AF35C000042E0 /* unit_advancements_aspect.cpp in Sources */,
 				49B4B8AB175E9F1300DB8C9B /* custom_tod.cpp in Sources */,
 				62CC8E4C1771E7E100C16B75 /* game_config_manager.cpp in Sources */,
+				EC89A13A1879D17D00A3B0B1 /* lmem.cpp in Sources */,
 				62CC8E501774C4E800C16B75 /* action_select.cpp in Sources */,
 				62CC8E531774C4F800C16B75 /* mouse_action_select.cpp in Sources */,
 				62CC8E7417B9063E00C16B75 /* action_wml.cpp in Sources */,
 				62CC8E7517B9063E00C16B75 /* conditional_wml.cpp in Sources */,
 				62CC8E7617B9063E00C16B75 /* entity_location.cpp in Sources */,
+				EC89A12B1879D17D00A3B0B1 /* lbaselib.cpp in Sources */,
 				62CC8E7717B9063E00C16B75 /* handlers.cpp in Sources */,
+				EC89A1301879D17D00A3B0B1 /* ldblib.cpp in Sources */,
 				62CC8E7817B9063E00C16B75 /* pump.cpp in Sources */,
 				62CC8E8C17B9064D00C16B75 /* cavegen.cpp in Sources */,
 				62CC8E8D17B9064D00C16B75 /* map_create.cpp in Sources */,
@@ -4547,7 +4562,6 @@
 				B597C5D90FACD6CA00CE81F5 /* text.cpp in Sources */,
 				B597C5DA0FACD6CA00CE81F5 /* filechooser.cpp in Sources */,
 				B597C5DB0FACD6CA00CE81F5 /* mp_method_selection.cpp in Sources */,
-				B597C5DC0FACD6CA00CE81F5 /* hotkeys.cpp in Sources */,
 				B597C5DD0FACD6CA00CE81F5 /* statistics.cpp in Sources */,
 				B597C5DE0FACD6CA00CE81F5 /* terrain.cpp in Sources */,
 				B597C5E00FACD6CA00CE81F5 /* preferences.cpp in Sources */,
@@ -4694,37 +4708,6 @@
 				B55BE05611234B3300154E6C /* tree_view.cpp in Sources */,
 				B55BE05A11234B5600154E6C /* tree_view.cpp in Sources */,
 				B55BE05E11234B6B00154E6C /* tree_view.cpp in Sources */,
-				B5A5E40D12132C790047782D /* lapi.c in Sources */,
-				B5A5E40E12132C790047782D /* lauxlib.c in Sources */,
-				B5A5E40F12132C790047782D /* lbaselib.c in Sources */,
-				B5A5E41012132C790047782D /* lcode.c in Sources */,
-				B5A5E41112132C790047782D /* ldblib.c in Sources */,
-				B5A5E41212132C790047782D /* ldebug.c in Sources */,
-				B5A5E41312132C790047782D /* ldo.c in Sources */,
-				B5A5E41412132C790047782D /* ldump.c in Sources */,
-				B5A5E41512132C790047782D /* lfunc.c in Sources */,
-				B5A5E41612132C790047782D /* lgc.c in Sources */,
-				B5A5E41712132C790047782D /* linit.c in Sources */,
-				B5A5E41812132C790047782D /* liolib.c in Sources */,
-				B5A5E41912132C790047782D /* llex.c in Sources */,
-				B5A5E41A12132C790047782D /* lmathlib.c in Sources */,
-				B5A5E41B12132C790047782D /* lmem.c in Sources */,
-				B5A5E41C12132C790047782D /* loadlib.c in Sources */,
-				B5A5E41D12132C790047782D /* lobject.c in Sources */,
-				B5A5E41E12132C790047782D /* lopcodes.c in Sources */,
-				B5A5E41F12132C790047782D /* loslib.c in Sources */,
-				B5A5E42012132C790047782D /* lparser.c in Sources */,
-				B5A5E42112132C790047782D /* lstate.c in Sources */,
-				B5A5E42212132C790047782D /* lstring.c in Sources */,
-				B5A5E42312132C790047782D /* lstrlib.c in Sources */,
-				B5A5E42412132C790047782D /* ltable.c in Sources */,
-				B5A5E42512132C790047782D /* ltablib.c in Sources */,
-				B5A5E42612132C790047782D /* ltm.c in Sources */,
-				B5A5E42712132C790047782D /* lua.c in Sources */,
-				B5A5E42812132C790047782D /* luac.c in Sources */,
-				B5A5E42912132C790047782D /* lundump.c in Sources */,
-				B5A5E42A12132C790047782D /* lvm.c in Sources */,
-				B5A5E42B12132C790047782D /* lzio.c in Sources */,
 				B52EE8851213585300CFBDAB /* tod_manager.cpp in Sources */,
 				B52EE88D1213589100CFBDAB /* data_manage.cpp in Sources */,
 				B52EE88E1213589100CFBDAB /* unit_attack.cpp in Sources */,
@@ -4810,6 +4793,7 @@
 				B5BB6C900F89448100444FBF /* preprocessor.cpp in Sources */,
 				B5BB6C910F89448200444FBF /* string_utils.cpp in Sources */,
 				B5BB6C920F89448300444FBF /* tokenizer.cpp in Sources */,
+				ECAA3FE818E0E4EF002E8998 /* unicode.cpp in Sources */,
 				B5BB6C960F8944FB00444FBF /* loadscreen_empty.cpp in Sources */,
 				B5BB6CD90F89470B00444FBF /* server_main.m in Sources */,
 				B54AC6800FEA9C4A006F6FBD /* player_network.cpp in Sources */,
@@ -4892,17 +4876,28 @@
 		B5BB6B4D0F890FBC00444FBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_OPENMP_SUPPORT = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"FIFODIR=\\\"/var/run/wesnothd\\\"",
+				);
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-isystem",
+					./Headers,
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
@@ -4914,6 +4909,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"FIFODIR=\\\"/var/run/wesnothd\\\"",
+				);
+				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4928,8 +4928,9 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
 				COPY_PHASE_STRIP = NO;
-				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -4940,7 +4941,8 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Mac Sources/Wesnoth_Prefix.pch";
+				GCC_PREFIX_HEADER = "";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -4948,6 +4950,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-isystem",
+					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
 				SDKROOT = macosx;
@@ -4965,7 +4972,8 @@
 				);
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Mac Sources/Wesnoth_Prefix.pch";
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = "";
 				GCC_WARN_UNUSED_VARIABLE = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -4973,6 +4981,11 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+				);
+				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
+					"$(OTHER_CFLAGS)",
+					"-isystem",
+					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
 				WRAPPER_EXTENSION = app;
@@ -4982,13 +4995,16 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_OPENMP_SUPPORT = NO;
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+				);
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -5035,7 +5051,10 @@
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LOCALEDIR=\\\"translations\\\"",
+					"LUA_USE_MACOSX=1",
+				);
 				GCC_VERSION = 4.0;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (

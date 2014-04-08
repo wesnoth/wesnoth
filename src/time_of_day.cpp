@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -61,16 +61,16 @@ void time_of_day::write(config& cfg) const
 	cfg["sound"] = sounds;
 }
 
-void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& normal_times)
+void time_of_day::parse_times(const config& cfg, std::vector<time_of_day>& times)
 {
 	BOOST_FOREACH(const config &t, cfg.child_range("time")) {
-		normal_times.push_back(time_of_day(t));
+		times.push_back(time_of_day(t));
 	}
 
-	if(normal_times.empty())
+	if(times.empty())
 	{
 		// Make sure we have at least default time
-		normal_times.push_back(time_of_day());
+		times.push_back(time_of_day());
 	}
 }
 

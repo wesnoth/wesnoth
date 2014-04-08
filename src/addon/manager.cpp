@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 - 2008 by David White <dave@whitevine.net>
-                 2008 - 2013 by Ignacio R. Morelle <shadowm2006@gmail.com>
+                 2008 - 2014 by Ignacio R. Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -112,8 +112,15 @@ bool have_addon_install_info(const std::string& addon_name)
 
 void get_addon_install_info(const std::string& addon_name, config& cfg)
 {
-	filesystem::scoped_istream stream = filesystem::istream_file(get_info_file_path(addon_name));
-	read(cfg, *stream);
+	const std::string& info_path = get_info_file_path(addon_name);
+	filesystem::scoped_istream stream = filesystem::istream_file(info_path);
+	try {
+		read(cfg, *stream);
+	} catch(const config::error& e) {
+		ERR_CFG << "Failed to read add-on installation information for '"
+				<< addon_name << "' from " << info_path << ":\n"
+				<< e.message << '\n';
+	}
 }
 
 bool remove_local_addon(const std::string& addon)

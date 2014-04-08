@@ -27,7 +27,22 @@
    fun:_ZN6config15attribute_valueaSERKSs
 }
 
+# Also don't complain when strtod is called from luaO_str2d
 
+{
+   strtod_does_not_require_initilization_of_eptr
+   Memcheck:Value8
+   fun:__GI___strncasecmp_l
+   fun:____strtod_l_internal
+   fun:_Z10luaO_str2dPKcmPd
+}
+{
+   strtod_does_not_require_initilization_of_eptr
+   Memcheck:Addr8
+   fun:__GI___strncasecmp_l
+   fun:____strtod_l_internal
+   fun:_Z10luaO_str2dPKcmPd
+}
 
 
 #SECTION: Static Pointers Initialized with new to force proper order of initialization

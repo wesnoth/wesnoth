@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,10 +19,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-thorizontal_scrollbar_definition::
-		thorizontal_scrollbar_definition(const config& cfg)
+thorizontal_scrollbar_definition::thorizontal_scrollbar_definition(
+		const config& cfg)
 	: tcontrol_definition(cfg)
 {
 	DBG_GUI_P << "Parsing horizontal scrollbar " << id << '\n';
@@ -30,13 +31,6 @@ thorizontal_scrollbar_definition::
 	load_resolutions<tresolution>(cfg);
 }
 
-thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, minimum_positioner_length(cfg["minimum_positioner_length"])
-	, maximum_positioner_length(cfg["maximum_positioner_length"])
-	, left_offset(cfg["left_offset"])
-	, right_offset(cfg["right_offset"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_vertical_scrollbar
@@ -85,12 +79,16 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="horizontal_scrollbar_definition"}
  * @end{parent}{name="gui/"}
  */
-
-	VALIDATE(
-			  minimum_positioner_length
-			, missing_mandatory_wml_key(
-				  "resolution"
-				, "minimum_positioner_length"));
+thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, left_offset(cfg["left_offset"])
+	, right_offset(cfg["right_offset"])
+{
+	VALIDATE(minimum_positioner_length,
+			 missing_mandatory_wml_key("resolution",
+									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is scrollbar.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -100,4 +98,3 @@ thorizontal_scrollbar_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

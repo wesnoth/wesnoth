@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,6 +30,7 @@
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "sdl/exception.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/validator.hpp"
@@ -51,11 +52,6 @@
 #include "vld.h"
 #endif
 
-// Minimum stack cookie to prevent stack overflow on AmigaOS4
-#ifdef __amigaos4__
-const char __attribute__((used)) stackcookie[] = "\0$STACK: 16000000";
-#endif
-
 static lg::log_domain log_config("config");
 #define LOG_CONFIG LOG_STREAM(info, log_config)
 
@@ -70,9 +66,6 @@ static lg::log_domain log_preprocessor("preprocessor");
 static void safe_exit(int res) {
 
 	LOG_GENERAL << "exiting with code " << res << "\n";
-#ifdef OS2 /* required to correctly shutdown SDL on OS/2 */
-        SDL_Quit();
-#endif
 	exit(res);
 }
 
@@ -142,7 +135,6 @@ static void bzip2_decode(const std::string & input_file, const std::string & out
 
 static void handle_preprocess_command(const commandline_options& cmdline_opts)
 {
-	std::string output_macros_file;
 	preproc_map input_macros;
 
 	if( cmdline_opts.preprocess_input_macros ) {
@@ -232,12 +224,6 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 	std::cerr << "acquired " << (defines_map.size() - input_macros.size())
 		<< " total defines.\n";
 
-	if( cmdline_opts.preprocess_output_macros &&
-		!cmdline_opts.preprocess_output_macros->empty()) {
-
-			output_macros_file = *cmdline_opts.preprocess_output_macros;
-	}
-
 	if ( cmdline_opts.preprocess_output_macros )
 	{
 		std::string outputFileName = "_MACROS_.cfg";
@@ -273,10 +259,17 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 
 	// Options that don't change behavior based on any others should be checked alphabetically below.
 
-	if(cmdline_opts.config_dir) {
-		filesystem::set_preferences_dir(*cmdline_opts.config_dir);
+	if(cmdline_opts.userconfig_dir) {
+		filesystem::set_user_config_dir(*cmdline_opts.userconfig_dir);
 	}
-	if(cmdline_opts.config_path) {
+	if(cmdline_opts.userconfig_path) {
+		std::cout << filesystem::get_user_config_dir() << '\n';
+		return 0;
+	}
+	if(cmdline_opts.userdata_dir) {
+		filesystem::set_user_data_dir(*cmdline_opts.userdata_dir);
+	}
+	if(cmdline_opts.userdata_path) {
 		std::cout << filesystem::get_user_data_dir() << '\n';
 		return 0;
 	}
@@ -300,6 +293,10 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		}
 	// don't update font as we already updating it in game ctor
 	//font_manager_.update_font_path();
+	}
+	if(cmdline_opts.data_path) {
+		std::cout << game_config::path << '\n';
+		return 0;
 	}
 	if(cmdline_opts.debug_lua) {
 		game_config::debug_lua = true;
@@ -362,8 +359,12 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 		srand(*cmdline_opts.rng_seed);
 	}
 	if(cmdline_opts.screenshot) {
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		SDL_setenv("SDL_VIDEODRIVER", "dummy", 1);
+#else
 		static char opt[] = "SDL_VIDEODRIVER=dummy";
 		SDL_putenv(opt);
+#endif
 	}
 	if(cmdline_opts.strict_validation) {
 		strict_validation_enabled = true;
@@ -420,9 +421,6 @@ static int do_gameloop(int argc, char** argv)
 		return finished;
 	}
 
-	//ensure recorder has an actually random seed instead of what it got during
-	//static initialization (before any srand() call)
-	recorder.set_seed(rand());
 	boost::scoped_ptr<game_controller> game(
 		new game_controller(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
@@ -462,6 +460,10 @@ static int do_gameloop(int argc, char** argv)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
+#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
+	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
+#endif
+
 	loadscreen::global_loadscreen_manager loadscreen_manager(game->disp().video());
 
 	loadscreen::start_stage("init gui");
@@ -487,10 +489,6 @@ static int do_gameloop(int argc, char** argv)
 
 	loadscreen::start_stage("refresh addons");
 	refresh_addon_version_info_cache();
-
-#if (defined(_X11) && !defined(__APPLE__)) || defined(_WIN32)
-	SDL_EventState(SDL_SYSWMEVENT, SDL_ENABLE);
-#endif
 
 	config tips_of_day;
 
@@ -720,6 +718,9 @@ int main(int argc, char** argv)
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
+		return 1;
+	} catch(const sdl::texception& e) {
+		std::cerr << e.what();
 		return 1;
 	} catch(game::error &) {
 		// A message has already been displayed.

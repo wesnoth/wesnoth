@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,6 @@
 
    See the COPYING file for more details.
 */
-//TODO uncomment or remove
-//#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "mouse_action_village.hpp"
 #include "../action_village.hpp"

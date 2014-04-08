@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/widgets/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * A widget to draw upon.
@@ -25,13 +26,10 @@ namespace gui2 {
  * This widget has a fixed size like the spacer, but allows the user to
  * manual draw items. The widget is display only.
  */
-class tdrawing
-	: public tcontrol
+class tdrawing : public tcontrol
 {
 public:
-	tdrawing()
-		: tcontrol(COUNT)
-		, best_size_(0, 0)
+	tdrawing() : tcontrol(COUNT), best_size_(0, 0)
 	{
 	}
 
@@ -40,8 +38,8 @@ public:
 private:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 	/** See @ref tcontrol::set_active. */
@@ -58,17 +56,22 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	void set_best_size(const tpoint& best_size) { best_size_ = best_size; }
+	void set_best_size(const tpoint& best_size)
+	{
+		best_size_ = best_size;
+	}
 
 private:
-
 	/**
 	 * Possible states of the widget.
 	 *
 	 * Note the order of the states must be the same as defined in
 	 * settings.hpp.
 	 */
-	enum tstate { ENABLED, COUNT };
+	enum tstate {
+		ENABLED,
+		COUNT
+	};
 
 	/** When we're used as a fixed size item, this holds the best size. */
 	tpoint best_size_;
@@ -81,5 +84,3 @@ private:
 } // namespace gui2
 
 #endif
-
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,8 @@
 #include "utils/const_clone.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Returns the first parent of a widget with a certain type.
@@ -30,7 +31,8 @@ namespace gui2 {
  *
  * @returns                       The parent widget.
  */
-template<class T> T& get_parent(twidget& widget)
+template <class T>
+T& get_parent(twidget& widget)
 {
 	T* result;
 	twidget* w = &widget;
@@ -38,7 +40,7 @@ template<class T> T& get_parent(twidget& widget)
 		w = w->parent();
 		result = dynamic_cast<T*>(w);
 
-	} while (w && !result);
+	} while(w && !result);
 
 	assert(result);
 	return *result;
@@ -63,14 +65,13 @@ template<class T> T& get_parent(twidget& widget)
  *
  * @returns                   The widget with the id.
  */
-template<class T>
-T* find_widget(typename utils::tconst_clone<twidget, T>::pointer widget
-		, const std::string& id
-		, const bool must_be_active
-		, const bool must_exist)
+template <class T>
+T* find_widget(typename utils::tconst_clone<twidget, T>::pointer widget,
+			   const std::string& id,
+			   const bool must_be_active,
+			   const bool must_exist)
 {
-	T* result =
-		dynamic_cast<T*>(widget->find(id, must_be_active));
+	T* result = dynamic_cast<T*>(widget->find(id, must_be_active));
 	VALIDATE(!must_exist || result, missing_widget(id));
 
 	return result;
@@ -91,10 +92,10 @@ T* find_widget(typename utils::tconst_clone<twidget, T>::pointer widget
  *
  * @returns                   The widget with the id.
  */
-template<class T>
-T& find_widget(typename utils::tconst_clone<twidget, T>::pointer widget
-		, const std::string& id
-		, const bool must_be_active)
+template <class T>
+T& find_widget(typename utils::tconst_clone<twidget, T>::pointer widget,
+			   const std::string& id,
+			   const bool must_be_active)
 {
 	return *find_widget<T>(widget, id, must_be_active, true);
 }

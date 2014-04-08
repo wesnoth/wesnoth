@@ -1,5 +1,5 @@
 /*
- Copyright (C) 2013 by L.Sebilleau <l.sebilleau@free.fr>
+ Copyright (C) 2013 - 2014 by L.Sebilleau <l.sebilleau@free.fr>
  Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
  This program is free software; you can redistribute it and/or modify
@@ -789,12 +789,11 @@ void ya_mapgen::set_base_terrains(int /*range*/)
 	unsigned int lev;
 	const char **base;
 	unsigned int i, j, k;
-	char c;
 	yamg_hex *h;
 
 	//--- we get the landscape type to build the terrain table and ratios
 	// p(olar) t(empered) m(editerranean) d(esert) e(quatorial)
-	switch (c = parms_->type) {
+	switch (parms_->type) {
 	case 'p':
 		base = base_polar;
 		break;

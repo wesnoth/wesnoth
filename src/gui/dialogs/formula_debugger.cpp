@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -67,19 +68,20 @@ REGISTER_DIALOG(formula_debugger)
 void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 {
 	// stack label
-	tcontrol* stack_label = find_widget<tcontrol>(
-			&window, "stack", false, true);
+	tcontrol* stack_label
+			= find_widget<tcontrol>(&window, "stack", false, true);
 
 	std::stringstream stack_text;
 	std::string indent = "  ";
 	int c = 0;
-	FOREACH(const AUTO& i, fdb_.get_call_stack()) {
+	FOREACH(const AUTO & i, fdb_.get_call_stack())
+	{
 		for(int d = 0; d < c; ++d) {
 			stack_text << indent;
 		}
 		stack_text << "#<span color=\"green\">" << i.counter()
-				<<"</span>: \"<span color=\"green\">"<< i.name()
-				<< "</span>\": '" << i.str() << "' " << std::endl;
+				   << "</span>: \"<span color=\"green\">" << i.name()
+				   << "</span>\": '" << i.str() << "' " << std::endl;
 		++c;
 	}
 
@@ -88,25 +90,26 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 	window.keyboard_capture(stack_label);
 
 	// execution trace label
-	tcontrol* execution_label = find_widget<tcontrol>(
-			&window, "execution", false, true);
+	tcontrol* execution_label
+			= find_widget<tcontrol>(&window, "execution", false, true);
 
 	std::stringstream execution_text;
-	FOREACH(const AUTO& i, fdb_.get_execution_trace()) {
+	FOREACH(const AUTO & i, fdb_.get_execution_trace())
+	{
 		for(int d = 0; d < i.level(); ++d) {
 			execution_text << indent;
 		}
 		if(!i.evaluated()) {
 			execution_text << "#<span color=\"green\">" << i.counter()
-					<< "</span>: \"<span color=\"green\">" << i.name()
-					<< "</span>\": '" << i.str() << "' " << std::endl;
+						   << "</span>: \"<span color=\"green\">" << i.name()
+						   << "</span>\": '" << i.str() << "' " << std::endl;
 		} else {
 			execution_text << "#<span color=\"yellow\">" << i.counter()
-					<< "</span>: \"<span color=\"yellow\">" << i.name()
-					<< "</span>\": '" << i.str() << "' = "
-					<< "<span color=\"red\">"
-					<< i.value().to_debug_string(NULL,false)
-					<<"</span>" << std::endl;
+						   << "</span>: \"<span color=\"yellow\">" << i.name()
+						   << "</span>\": '" << i.str() << "' = "
+						   << "<span color=\"red\">"
+						   << i.value().to_debug_string(NULL, false)
+						   << "</span>" << std::endl;
 		}
 	}
 
@@ -120,7 +123,7 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 		state_str = "";
 	} else {
 		state_str = fdb_.get_current_breakpoint()->name();
-	        if(state_str=="End") {
+		if(state_str == "End") {
 			is_end = true;
 		}
 	}
@@ -129,28 +132,32 @@ void tformula_debugger::pre_show(CVideo& /*video*/, twindow& window)
 
 	// callbacks
 	tbutton& step_button = find_widget<tbutton>(&window, "step", false);
-	connect_signal_mouse_left_click(step_button, boost::bind(
-			  &tformula_debugger::callback_step_button
-			, this
-			, boost::ref(window)));
+	connect_signal_mouse_left_click(
+			step_button,
+			boost::bind(&tformula_debugger::callback_step_button,
+						this,
+						boost::ref(window)));
 
 	tbutton& stepout_button = find_widget<tbutton>(&window, "stepout", false);
-	connect_signal_mouse_left_click(stepout_button, boost::bind(
-			  &tformula_debugger::callback_stepout_button
-			, this
-			, boost::ref(window)));
+	connect_signal_mouse_left_click(
+			stepout_button,
+			boost::bind(&tformula_debugger::callback_stepout_button,
+						this,
+						boost::ref(window)));
 
 	tbutton& next_button = find_widget<tbutton>(&window, "next", false);
-	connect_signal_mouse_left_click(next_button, boost::bind(
-			  &tformula_debugger::callback_next_button
-			, this
-			, boost::ref(window)));
+	connect_signal_mouse_left_click(
+			next_button,
+			boost::bind(&tformula_debugger::callback_next_button,
+						this,
+						boost::ref(window)));
 
 	tbutton& continue_button = find_widget<tbutton>(&window, "continue", false);
-	connect_signal_mouse_left_click(continue_button, boost::bind(
-			  &tformula_debugger::callback_continue_button
-			, this
-			, boost::ref(window)));
+	connect_signal_mouse_left_click(
+			continue_button,
+			boost::bind(&tformula_debugger::callback_continue_button,
+						this,
+						boost::ref(window)));
 
 	if(is_end) {
 		step_button.set_active(false);
@@ -184,4 +191,4 @@ void tformula_debugger::callback_stepout_button(twindow& window)
 	window.set_retval(twindow::OK);
 }
 
-} //end of namespace gui2
+} // end of namespace gui2

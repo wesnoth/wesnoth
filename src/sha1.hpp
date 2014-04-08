@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Benoit Timbert <benoit.timbert@free.fr>
+   Copyright (C) 2007 - 2014 by Benoit Timbert <benoit.timbert@free.fr>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 #define SHA1_H_INCLUDED
 
 #include <string>
-#include "SDL_types.h"
+#include <SDL_types.h>
 
 class sha1_hash
 {

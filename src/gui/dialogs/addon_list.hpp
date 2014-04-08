@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,23 +22,21 @@
 class config;
 #include "config.hpp" // needed for config::const_child_itors
 
-namespace gui2 {
+namespace gui2
+{
 
 class pane;
 
 /** Shows the list of addons on the server. */
-class taddon_list
-	: public tdialog
+class taddon_list : public tdialog
 {
 public:
 	explicit taddon_list(const config& cfg)
-		: cfg_(cfg)
-		, cfg_iterators_(cfg_.child_range("campaign"))
+		: cfg_(cfg), cfg_iterators_(cfg_.child_range("campaign"))
 	{
 	}
 
 private:
-
 	/**
 	 * Collapses the description of an addon.
 	 *
@@ -89,4 +87,3 @@ private:
 } // namespace gui2
 
 #endif
-

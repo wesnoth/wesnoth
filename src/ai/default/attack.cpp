@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -308,7 +308,7 @@ double attack_analysis::rating(double aggression, const readonly_context& ai_obj
                }
         }
 
-	if(!leader_threat && vulnerability*terrain_quality > 0.0) {
+	if(!leader_threat && vulnerability*terrain_quality > 0.0  && !is_surrounded) {
 		value *= support/(vulnerability*terrain_quality);
 	}
 

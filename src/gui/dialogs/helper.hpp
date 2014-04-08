@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,11 +17,13 @@
 
 #include "gui/widgets/window.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Template for dialog callbacks. Example usage:
- * widget->set_callback(dialog_callback<my_dialog_class, &my_dialog_class::member_function>);
+ * widget->set_callback(dialog_callback<my_dialog_class,
+ * &my_dialog_class::member_function>);
  */
 template <class D, void (D::*fptr)(twindow&)>
 void dialog_callback(twidget& caller)
@@ -36,4 +38,3 @@ void dialog_callback(twidget& caller)
 } // namespace gui2
 
 #endif
-

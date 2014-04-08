@@ -64,17 +64,11 @@ aparecería un diálogo de escolla da dificultade da campaña.
 O identificador do escenario da campaña indicada. De omitirse o parámetro,
 empregarase o primeiro escenario.
 .TP 
-\fB\-\-config\-dir\fP\fI\ nome\fP
-Define \fInome\fP coma o nome do cartafol da configuración do usuario no seu
-directorio persoal («$HOME») ou «Os meus documentos\eOs meus xogos» en
-Windows. Tamén podes indicar unha ruta absoluta para o directorio da
-configuración fóra dos antes mencionados.
-.TP 
-\fB\-\-config\-path\fP
-Devolve a ruta do directorio da configuración do usuario.
-.TP 
 \fB\-\-data\-dir <directorio>\fP
 Substitúe o directorio dos datos polo directorio indicado.
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 Activa opcións adicionais no modo de ordes do xogo. Consulta o wiki en
@@ -191,6 +185,24 @@ Os erros de corrección trátanse coma erros graves.
 \fB\-t, \-\-test\fP
 Executa o xogo nun pequeno escenario de proba.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+Devolve a ruta do directorio da configuración do usuario.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 Asume que a caché está ben (perigoso).
 .TP 
@@ -235,9 +247,10 @@ emprega para probas de rendemento automatizadas mediante scripts.
 \fB\-\-ignore\-map\-settings\fP
 Non usar a configuración do mapa, senón os valores predeterminados.
 .TP 
-\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
-repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
-scriptable benchmarking.
+\fB\-\-multiplayer\-repeat=\fP\fIvalor\fP
+Repite unha partida de varios xogadores \fIvalor\fP veces. Recoméndase usar
+esta opción xunto con \fB\-\-nogui\fP para probas de rendemento executadas con
+scripts.
 .TP 
 \fB\-\-nogui\fP
 Executa o xogo sen interface gráfica. Debe aparecer antes de

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -144,7 +144,6 @@ private:
 	/**
 	 * Upgrade side config from version 1.7.2 to version 1.7.3
 	 * @param[in] cfg the config to be read
-	 * @param[out] parsed_cfg parsed config
 	 * @return was all ok?
 	 * @retval true success, cfg is guaranteed to be valid
 	 * @retval false failure

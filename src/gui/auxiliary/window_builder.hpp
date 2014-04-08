@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,7 +24,8 @@
 class config;
 class CVideo;
 
-namespace gui2 {
+namespace gui2
+{
 
 class twindow;
 
@@ -38,11 +39,9 @@ class twindow;
 twindow* build(CVideo& video, const std::string& type);
 
 /** Contains the info needed to instantiate a widget. */
-struct tbuilder_widget
-	: public reference_counted_object
+struct tbuilder_widget : public reference_counted_object
 {
 public:
-
 	/**
 	 * The replacements type is used to define replacement types.
 	 *
@@ -51,14 +50,14 @@ public:
 	 * using and `[instance]' widget this decision can be postponed until
 	 * instantiation.
 	 */
-	typedef std::map<
-		  std::string
-		, boost::intrusive_ptr<tbuilder_widget>
-		> treplacements;
+	typedef std::map<std::string, boost::intrusive_ptr<tbuilder_widget> >
+	treplacements;
 
 	explicit tbuilder_widget(const config& cfg);
 
-	virtual ~tbuilder_widget() {}
+	virtual ~tbuilder_widget()
+	{
+	}
 
 	virtual twidget* build() const = 0;
 
@@ -86,8 +85,9 @@ typedef boost::intrusive_ptr<const tbuilder_widget> const_tbuilder_widget_ptr;
  * @param id                      The id of the widget as used in WML.
  * @param functor                 The functor to create the widget.
  */
-void register_builder_widget(const std::string& id
-		, boost::function<tbuilder_widget_ptr(config)> functor);
+void
+register_builder_widget(const std::string& id,
+						boost::function<tbuilder_widget_ptr(config)> functor);
 
 
 /**
@@ -112,14 +112,13 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg);
  *
  * @returns                       A generic widget builder pointer.
  */
-template<class T>
+template <class T>
 tbuilder_widget_ptr build_widget(const config& cfg)
 {
 	return new T(cfg);
 }
 
-struct tbuilder_grid
-	: public tbuilder_widget
+struct tbuilder_grid : public tbuilder_widget
 {
 public:
 	explicit tbuilder_grid(const config& cfg);
@@ -154,11 +153,7 @@ typedef boost::intrusive_ptr<const tbuilder_grid> tbuilder_grid_const_ptr;
 class twindow_builder
 {
 public:
-
-	twindow_builder()
-		: resolutions()
-		, id_()
-		, description_()
+	twindow_builder() : resolutions(), id_(), description_()
 	{
 	}
 
@@ -178,6 +173,9 @@ public:
 		tformula<unsigned> y;
 		tformula<unsigned> width;
 		tformula<unsigned> height;
+		tformula<bool> reevaluate_best_size;
+
+		game_logic::function_symbol_table functions;
 
 		unsigned vertical_placement;
 		unsigned horizontal_placement;
@@ -191,10 +189,7 @@ public:
 
 		struct tlinked_group
 		{
-			tlinked_group()
-				: id()
-				, fixed_width(false)
-				, fixed_height(false)
+			tlinked_group() : id(), fixed_width(false), fixed_height(false)
 			{
 			}
 
@@ -229,9 +224,8 @@ private:
 /**
  * Builds a window.
  */
-twindow *build(CVideo &video, const twindow_builder::tresolution *res);
+twindow* build(CVideo& video, const twindow_builder::tresolution* res);
 
 } // namespace gui2
 
 #endif
-

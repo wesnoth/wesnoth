@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #ifndef GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
 #define GAME_EVENTS_WMI_CONTAINER_HPP_INCLUDED
 
-#include "iterator.hpp"
+#include "../utils/iterator.hpp"
 
 #include <boost/shared_ptr.hpp>
 

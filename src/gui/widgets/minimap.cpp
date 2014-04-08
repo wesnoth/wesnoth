@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -38,7 +38,8 @@ static lg::log_domain log_config("config");
 // Define this to enable debug output for the minimap cache.
 //#define DEBUG_MINIMAP_CACHE
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(minimap)
 
@@ -61,9 +62,7 @@ unsigned tminimap::get_state() const
 struct tkey
 {
 	tkey(const int w, const int h, const std::string& map_data)
-		: w(w)
-		, h(h)
-		, map_data(map_data)
+		: w(w), h(h), map_data(map_data)
 	{
 	}
 
@@ -79,17 +78,16 @@ struct tkey
 
 static bool operator<(const tkey& lhs, const tkey& rhs)
 {
-	return lhs.w < rhs.w || (lhs.w == rhs.w
-			&& (lhs.h < rhs.h || (lhs.h == rhs.h
-				&& lhs.map_data < rhs.map_data)));
+	return lhs.w < rhs.w
+		   || (lhs.w == rhs.w
+			   && (lhs.h < rhs.h
+				   || (lhs.h == rhs.h && lhs.map_data < rhs.map_data)));
 }
 
 /** Value type for the cache. */
 struct tvalue
 {
-	tvalue(const surface& surf)
-		: surf(surf)
-		, age(1)
+	tvalue(const surface& surf) : surf(surf), age(1)
 	{
 	}
 
@@ -108,36 +106,36 @@ struct tvalue
 };
 
 #ifdef LOW_MEM
-	/**
-	 * Maximum number of items in the cache (multiple of 4).
-	 *
-	 * As small as possible for low mem.
-	 */
-	static const size_t cache_max_size = 4;
+/**
+ * Maximum number of items in the cache (multiple of 4).
+ *
+ * As small as possible for low mem.
+ */
+static const size_t cache_max_size = 4;
 #else
-	/**
-	 * Maximum number of items in the cache (multiple of 4).
-	 *
-	 * No testing on the optimal number is done, just seems a nice number.
-	 */
-	static const size_t cache_max_size = 100;
+/**
+ * Maximum number of items in the cache (multiple of 4).
+ *
+ * No testing on the optimal number is done, just seems a nice number.
+ */
+static const size_t cache_max_size = 100;
 #endif
 
-	/**
-	 * The terrain used to create the cache.
-	 *
-	 * If another terrain config is used the cache needs to be cleared, this
-	 * normally doesn't happen a lot so the clearing of the cache is rather
-	 * unusual.
-	 */
-	static const ::config* terrain = NULL;
+/**
+ * The terrain used to create the cache.
+ *
+ * If another terrain config is used the cache needs to be cleared, this
+ * normally doesn't happen a lot so the clearing of the cache is rather
+ * unusual.
+ */
+static const ::config* terrain = NULL;
 
-	/** The cache. */
-	typedef std::map<tkey, tvalue> tcache;
-	static tcache cache;
+/** The cache. */
+typedef std::map<tkey, tvalue> tcache;
+static tcache cache;
 
-static bool compare(const std::pair<unsigned, tcache::iterator>& lhs
-		, const std::pair<unsigned, tcache::iterator>& rhs)
+static bool compare(const std::pair<unsigned, tcache::iterator>& lhs,
+					const std::pair<unsigned, tcache::iterator>& rhs)
 {
 	return lhs.first < rhs.first;
 }
@@ -157,15 +155,15 @@ static void shrink_cache()
 		items.push_back(std::make_pair(itor->second.age, itor));
 	}
 
-	std::partial_sort(items.begin()
-			, items.begin() + cache_max_size / 4
-			, items.end()
-			, compare);
+	std::partial_sort(items.begin(),
+					  items.begin() + cache_max_size / 4,
+					  items.end(),
+					  compare);
 
-	for(std::vector<std::pair<unsigned, tcache::iterator> >::iterator
-			  vitor = items.begin()
-			; vitor < items.begin() + cache_max_size / 4
-			; ++vitor) {
+	for(std::vector<std::pair<unsigned, tcache::iterator> >::iterator vitor
+		= items.begin();
+		vitor < items.begin() + cache_max_size / 4;
+		++vitor) {
 
 		cache.erase(vitor->second);
 	}
@@ -194,7 +192,6 @@ const surface tminimap::get_image(const int w, const int h) const
 #endif
 		terrain = terrain_;
 		cache.clear();
-
 	}
 
 	const tkey key(w, h, map_data_);
@@ -212,7 +209,8 @@ const surface tminimap::get_image(const int w, const int h) const
 		shrink_cache();
 	}
 
-	try {
+	try
+	{
 		const gamemap map(*terrain_, map_data_);
 		const surface surf = image::getMinimap(w, h, map, NULL);
 		cache.insert(std::make_pair(key, tvalue(surf)));
@@ -220,8 +218,9 @@ const surface tminimap::get_image(const int w, const int h) const
 		std::cerr << '-';
 #endif
 		return surf;
-
-	} catch (incorrect_map_format_error& e) {
+	}
+	catch(incorrect_map_format_error& e)
+	{
 		ERR_CF << "Error while loading the map: " << e.message << '\n';
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << 'X';
@@ -232,12 +231,11 @@ const surface tminimap::get_image(const int w, const int h) const
 
 void tminimap::impl_draw_background(surface& frame_buffer)
 {
-	if (!terrain_) return;
+	if(!terrain_)
+		return;
 	assert(terrain_);
 
-	DBG_GUI_D << LOG_HEADER
-			<< " size " << get_rectangle()
-			<< ".\n";
+	DBG_GUI_D << LOG_HEADER << " size " << get_rectangle() << ".\n";
 
 	if(map_data_.empty()) {
 		return;
@@ -252,17 +250,16 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 	}
 }
 
-void tminimap::impl_draw_background(
-		  surface& frame_buffer
-		, int x_offset
-		, int y_offset)
+void tminimap::impl_draw_background(surface& frame_buffer,
+									int x_offset,
+									int y_offset)
 {
-	if (!terrain_) return;
+	if(!terrain_)
+		return;
 	assert(terrain_);
 
-	DBG_GUI_D << LOG_HEADER
-			<< " size " << calculate_blitting_rectangle(x_offset, y_offset)
-			<< ".\n";
+	DBG_GUI_D << LOG_HEADER << " size "
+			  << calculate_blitting_rectangle(x_offset, y_offset) << ".\n";
 
 	if(map_data_.empty()) {
 		return;
@@ -284,4 +281,3 @@ const std::string& tminimap::get_control_type() const
 }
 
 } // namespace gui2
-

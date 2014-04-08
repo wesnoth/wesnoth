@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 #define TEXT_HPP_INCLUDED
 
 #include "sdl_utils.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -101,7 +102,7 @@ public:
 	 *
 	 * @returns                   True upon success, false otherwise.
 	 */
-	bool insert_unicode(const unsigned offset, const wchar_t unicode);
+	bool insert_unicode(const unsigned offset, ucs4::char_t unicode);
 
 	/**
 	 * Inserts unicode text.
@@ -112,7 +113,7 @@ public:
 	 * @returns                   The number of characters inserted.
 	 */
 	unsigned insert_unicode(
-		const unsigned offset, const std::vector<wchar_t>& unicode);
+		const unsigned offset, const ucs4::string& unicode);
 
 	/***** ***** ***** ***** Font flags ***** ***** ***** *****/
 
@@ -228,7 +229,7 @@ private:
 	 * Values less or equal to 0 mean no maximum and are internally stored as
 	 * -1, since that's the value pango uses for it.
 	 *
-	 * @see @ref characters_per_line_.
+	 * See @ref characters_per_line_.
 	 */
 	int maximum_width_;
 

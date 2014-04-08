@@ -37,7 +37,7 @@ function ca_wolves_wander:execution(ai, cfg)
 
     local max_rating, goal_hex = -9e99, {}
     reach_map:iter( function (x, y, v)
-        local rating = v + AH.random(99)/100.
+        local rating = v + math.random(99)/100.
         if avoid:get(x, y) then rating = rating - 1000 end
 
         if (rating > max_rating) then

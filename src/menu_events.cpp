@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playturn Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include "actions/attack.hpp"
 #include "actions/create.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
@@ -57,10 +58,12 @@
 #include "play_controller.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
+#include "synced_context.hpp"
 #include "unit_display.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -238,19 +241,23 @@ void menu_handler::status_table(int selected)
 			// show only a random leader image.
 			if (!fogged || known || game_config::debug) {
 				str << IMAGE_PREFIX << leader->absolute_image();
+#ifndef LOW_MEM
+				str << leader->image_mods();
+#endif
 				leader_bools.push_back(true);
 				leader_name = leader->name();
 			} else {
 				str << IMAGE_PREFIX << std::string("units/unknown-unit.png");
+#ifndef LOW_MEM
+				str << "~RC(magenta>" << teams_[n].color() << ")";
+#endif
 				leader_bools.push_back(false);
 				leader_name = "Unknown";
 			}
-		if (gamestate_.classification().campaign_type == "multiplayer")
+
+			if (gamestate_.classification().campaign_type == "multiplayer")
 				leader_name = teams_[n].current_player();
 
-#ifndef LOW_MEM
-			str << leader->image_mods();
-#endif
 		} else {
 			leader_bools.push_back(false);
 		}
@@ -415,7 +422,7 @@ void menu_handler::save_map()
 	int res = 0;
 	int overwrite = 1;
 	do {
-		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"));
+		res = dialogs::show_file_chooser_dialog_save(*gui_, input_name, _("Save the Map As"), ".map");
 		if (res == 0) {
 
 			if (filesystem::file_exists(input_name)) {
@@ -625,7 +632,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	map_location loc = last_hex;
 	map_location recruited_from = map_location::null_location;
 	std::string msg;
-	{ wb::future_map_if_active future; //< start planned unit map scope if in planning mode
+	{ wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
 		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
 	} // end planned unit map scope
 	if (!msg.empty()) {
@@ -638,7 +645,8 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
-		actions::recruit_unit(*u_type, side_num, loc, recruited_from);
+		
+		synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
 		return true;
 	}
 	return false;
@@ -684,17 +692,27 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 
-	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num));
-	if (res < 0) return;
+	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
+	int unit_cost = current_team.recall_cost();
+	if (res < 0) { 
+		return;
+	}
+	// we need to check if unit has a specific recall cost
+	// if it does we use it elsewise we use the team.recall_cost()
+	// the magic number -1 is what it gets set to if the unit doesn't
+	// have a special recall_cost of its own.
+	else if(recall_list_team[res]->recall_cost() > -1) {
+		unit_cost = recall_list_team[res]->recall_cost();
+	}
 
 	int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
-	if (current_team.gold() - wb_gold < current_team.recall_cost()) {
+	if (current_team.gold() - wb_gold < unit_cost) {
 		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
+		i18n_symbols["cost"] = lexical_cast<std::string>(unit_cost);
 		std::string msg = vngettext(
 			"You must have at least 1 gold piece to recall a unit",
-			"You must have at least $cost gold pieces to recall a unit",
-			current_team.recall_cost(), i18n_symbols);
+			"You must have at least $cost gold pieces to recall this unit",
+			unit_cost, i18n_symbols);
 		gui2::show_transient_message(gui_->video(), "", msg);
 		return;
 	}
@@ -714,8 +732,15 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
-		if ( !actions::recall_unit(recall_list_team[res]->id(), teams_[side_num-1],
-		                           recall_location, recall_from) ) {
+		bool success = synced_context::run_in_synced_context("recall", 
+			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
+			true,
+			true,
+			true,
+			synced_context::ignore_error_function);
+
+		if(!success)
+		{
 			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
 		}
 	}
@@ -753,14 +778,13 @@ void menu_handler::toggle_shroud_updates(int side_num)
 	if (!auto_shroud) update_shroud_now(side_num);
 
 	// Toggle the setting and record this.
-	recorder.add_auto_shroud(!auto_shroud);
-	current_team.set_auto_shroud_updates(!auto_shroud);
+	synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(!auto_shroud));
 	resources::undo_stack->add_auto_shroud(!auto_shroud);
 }
 
 void menu_handler::update_shroud_now(int /* side_num */)
 {
-	resources::undo_stack->commit_vision();
+	synced_context::run_in_synced_context("update_shroud", replay_helper::get_update_shroud());
 }
 
 
@@ -1164,12 +1188,6 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
-		const std::string& old_team_name = old_label ? old_label->team_name() : "";
-		// remove the old label if we changed the team_name
-		if (team_only == (old_team_name == "")) {
-			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, color);
-			if (old) recorder.add_label(old);
-		}
 		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
 		if (res)
 			recorder.add_label(res);
@@ -1212,7 +1230,10 @@ void menu_handler::move_unit_to_loc(const unit_map::iterator &ui,
 
 	gui_->set_route(&route);
 	gui_->unhighlight_reach();
-	actions::move_unit(route.steps, &recorder, resources::undo_stack, continue_move);
+	{
+		LOG_NG << "move_unit_to_loc " << route.steps.front() << " to " << route.steps.back() << "\n";
+		actions::move_unit_and_record(route.steps, resources::undo_stack, continue_move);
+	}
 	gui_->set_route(NULL);
 	gui_->invalidate_game_status();
 }
@@ -1281,8 +1302,12 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			}
 
 			gui_->set_route(&route);
-			int moves = actions::move_unit(route.steps, &recorder, resources::undo_stack);
-			change = moves > 0;
+
+			{
+				LOG_NG << "execute goto from " << route.steps.front() << " to " << route.steps.back() << "\n";
+				int moves = actions::move_unit_and_record(route.steps, resources::undo_stack);
+				change = moves > 0;
+			}
 
 			if (change) {
 				// something changed, resume waiting blocker (maybe one can move now)
@@ -1919,7 +1944,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		using chmap::get_commands_list;
 
 	protected:
-		//chat_command_handler's init_map() and hanlers will end up calling these.
+		//chat_command_handler's init_map() and handlers will end up calling these.
 		//this makes sure the commands end up in our map
 		virtual void register_command(const std::string& cmd,
 			chat_command_handler::command_handler h, const std::string& help="",
@@ -1958,8 +1983,10 @@ class console_handler : public map_command_handler<console_handler>, private cha
 
 		void do_refresh();
 		void do_droid();
+		void do_idle();
 		void do_theme();
 		void do_control();
+		void do_controller();
 		void do_clear();
 		void do_sunset();
 		void do_foreground();
@@ -2037,9 +2064,13 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Refresh gui."));
 			register_command("droid", &console_handler::do_droid,
 				_("Switch a side to/from AI control."), _("do not translate the on/off^[<side> [on/off]]"));
+			register_command("idle", &console_handler::do_idle,
+				_("Switch a side to/from idle state."), _("do not translate the on/off^[<side> [on/off]]"));
 			register_command("theme", &console_handler::do_theme);
 			register_command("control", &console_handler::do_control,
 				_("Assign control of a side to a different player or observer."), _("<side> <nickname>"), "N");
+			register_command("controller", &console_handler::do_controller,
+				_("Query the controller status of a side."), _("<side>"));
 			register_command("clear", &console_handler::do_clear,
 				_("Clear chat history."));
 			register_command("sunset", &console_handler::do_sunset,
@@ -2609,9 +2640,9 @@ void menu_handler::do_search(const std::string& new_search)
 		//Not found, inform the player
 		utils::string_map symbols;
 		symbols["search"] = last_search_;
-		const std::string msg = vgettext("Couldn't find label or unit "
-				"containing the string '$search'.", symbols);
-		gui::dialog(*gui_,"",msg).show();
+		const std::string msg = vgettext("Could not find label or unit "
+				"containing the string ‘$search’.", symbols);
+		gui2::show_message(gui_->video(), "", msg, gui2::tmessage::auto_close);
 	}
 }
 
@@ -2655,10 +2686,10 @@ void console_handler::do_droid() {
 		symbols["side"] = lexical_cast<std::string>(side);
 		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
 		return;
-	} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
+	} else if ((menu_handler_.teams_[side - 1].is_human() || menu_handler_.teams_[side - 1].is_idle()) && action != " off") {
 		//this is our side, so give it to AI
-		menu_handler_.teams_[side - 1].make_human_ai();
-		menu_handler_.change_controller(lexical_cast<std::string>(side),"human_ai");
+		menu_handler_.teams_[side - 1].make_ai();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"ai");
 		if(team_num_ == side) {
 			//if it is our turn at the moment, we have to indicate to the
 			//play_controller, that we are no longer in control
@@ -2667,6 +2698,49 @@ void console_handler::do_droid() {
 	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " on") {
 		menu_handler_.teams_[side - 1].make_human();
 		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+	}
+	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
+}
+
+void console_handler::do_idle() {
+	// :idle [<side> [on/off]]
+	const std::string side_s = get_arg(1);
+	const std::string action = get_arg(2);
+	// default to the current side if empty
+	const unsigned int side = side_s.empty() ?
+		team_num_ : lexical_cast_default<unsigned int>(side_s);
+
+	if (side < 1 || side > menu_handler_.teams_.size()) {
+		utils::string_map symbols;
+		symbols["side"] = side_s;
+		command_failed(vgettext("Can't idle invalid side: '$side'.", symbols));
+		return;
+	} else if (menu_handler_.teams_[side - 1].is_network()) {
+		utils::string_map symbols;
+		symbols["side"] = lexical_cast<std::string>(side);
+		command_failed(vgettext("Can't droid networked side: '$side'.", symbols));
+		return;
+	} else if (menu_handler_.teams_[side - 1].is_human() && action != " off") {
+		//this is our side, so give it to idle
+		menu_handler_.teams_[side - 1].make_idle();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"idle");
+		if(team_num_ == side) {
+			//if it is our turn at the moment, we have to indicate to the
+			//play_controller, that we are no longer in control
+			throw end_turn_exception(side);
+		}
+	} else if (menu_handler_.teams_[side - 1].is_ai() && action != " off") {
+		//this is our side, so give it to idle, without end turn exception. tell network it is human
+		menu_handler_.teams_[side - 1].make_idle();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+	} else if (menu_handler_.teams_[side - 1].is_idle() && action != " on") {
+		menu_handler_.teams_[side - 1].make_human();
+		menu_handler_.change_controller(lexical_cast<std::string>(side),"human");
+		if(team_num_ == side) {
+			//if it is our turn at the moment, we have to indicate to the
+			//play_controller, that idle should no longer be in control
+			throw end_turn_exception(side);
+		}
 	}
 	menu_handler_.textbox_info_.close(*menu_handler_.gui_);
 }
@@ -2703,6 +2777,27 @@ void console_handler::do_control() {
 	menu_handler_.request_control_change(side_num,player);
 	menu_handler_.textbox_info_.close(*(menu_handler_.gui_));
 }
+void console_handler::do_controller()
+{
+	const std::string side = get_arg(1);
+	unsigned int side_num;
+	try {
+		side_num = lexical_cast<unsigned int>(side);
+	} catch(bad_lexical_cast&) {
+		utils::string_map symbols;
+		symbols["side"] = side;
+		command_failed(vgettext("Can't query control of invalid side: '$side'.", symbols));
+		return;
+	}
+	if (side_num < 1 || side_num > menu_handler_.teams_.size()) {
+		utils::string_map symbols;
+		symbols["side"] = side;
+		command_failed(vgettext("Can't query control of out-of-bounds side: '$side'.",	symbols));
+		return;
+	}
+	print(get_cmd(), menu_handler_.teams_[side_num - 1].controller_string());
+}
+
 void console_handler::do_clear() {
 	menu_handler_.gui_->clear_chat_messages();
 }
@@ -2825,7 +2920,7 @@ void console_handler::do_benchmark() {
 void console_handler::do_save() {
 	savegame::ingame_savegame save(menu_handler_.gamestate_, *menu_handler_.gui_,
 	                               resources::controller->to_config(),
-	                               preferences::compress_saves());
+	                               preferences::save_compression_format());
 	save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
 }
 void console_handler::do_save_quit() {
@@ -3053,10 +3148,16 @@ void console_handler::do_unit() {
 		return;
 	}
 	if (name == "advances" ){
+		if(synced_context::get_syced_state() == synced_context::SYNCED)
+		{
+			command_failed("unit advances=n doesn't work while another action is executed.");
+			return;
+		}
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
-			dialogs::advance_unit(loc);
+			
+			advance_unit_at(loc,true);
 			i = menu_handler_.units_.find(loc);
 			if (!i.valid()) {
 				break;
@@ -3198,6 +3299,18 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 		if (player == preferences::login())
 			return;
 		change_side_controller(side,player);
+	} else if (teams_[side_num - 1].is_idle()) { //if this is our side and it is idle, make human and throw an end turn exception
+		LOG_NG << " *** Got an idle side with requested control change " << std::endl;
+		teams_[side_num - 1].make_human();
+		change_controller(lexical_cast<std::string>(side_num),"human");
+
+		if (player == preferences::login()) {
+			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
+		} else {
+			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
+			change_side_controller(side,player);		 
+		}
+		throw end_turn_exception(side_num);
 	} else {
 		//it is not our side, the server will decide if we can change the
 		//controller (that is if we are host of the game)

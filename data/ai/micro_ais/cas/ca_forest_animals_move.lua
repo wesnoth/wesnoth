@@ -95,10 +95,10 @@ function ca_forest_animals_move:execution(ai, cfg)
 
             -- Choose one of the possible locations at random
             if reachable_terrain[1] then
-                local rand = AH.random(#reachable_terrain)
+                local rand = math.random(#reachable_terrain)
                 -- This is not a full move, as running away might happen next
                 if (unit.x ~= reachable_terrain[rand][1]) or (unit.y ~= reachable_terrain[rand][2]) then
-                    ai.move(unit, reachable_terrain[rand][1], reachable_terrain[rand][2])
+                    AH.checked_move(ai, unit, reachable_terrain[rand][1], reachable_terrain[rand][2])
                 end
             else  -- or if no close reachable terrain was found, move toward the closest
                 local locs = wesnoth.get_locations(wander_terrain)
@@ -114,7 +114,7 @@ function ca_forest_animals_move:execution(ai, cfg)
                     local next_hop = AH.next_hop(unit, x, y)
                     --print(next_hop[1], next_hop[2])
                     if (unit.x ~= next_hop[1]) or (unit.y ~= next_hop[2]) then
-                        ai.move(unit, next_hop[1], next_hop[2])
+                        AH.checked_move(ai, unit, next_hop[1], next_hop[2])
                     end
                 end
             end
@@ -122,9 +122,14 @@ function ca_forest_animals_move:execution(ai, cfg)
 
         -- Now we check for close enemies again, as we might just have moved within reach of some
         local close_enemies = {}
-        for j,e in ipairs(enemies) do
-            if (H.distance_between(unit.x, unit.y, e.x, e.y) <= unit.max_moves+1) then
-                table.insert(close_enemies, e)
+
+        -- We use a trick here to exclude the case when the unit might have been
+        -- removed in an event above
+        if unit and unit.valid then
+            for j,e in ipairs(enemies) do
+                if (H.distance_between(unit.x, unit.y, e.x, e.y) <= unit.max_moves+1) then
+                    table.insert(close_enemies, e)
+                end
             end
         end
         --print('  #close_enemies after move', #close_enemies, #enemies, unit.id)
@@ -155,14 +160,14 @@ function ca_forest_animals_move:execution(ai, cfg)
             AH.movefull_stopunit(ai, unit, farthest_hex)
             -- If this is a rabbit ending on a hole -> disappears
             if (unit.type == rabbit_type) and hole_map:get(farthest_hex[1], farthest_hex[2]) then
-                wesnoth.put_unit(farthest_hex[1], farthest_hex[2])
+                local command =  "wesnoth.put_unit(x1, y1)"
+                ai.synced_command(command, farthest_hex[1], farthest_hex[2])
             end
         end
 
         -- Finally, take moves away, as only partial move might have been done
         -- Also attacks, as these units never attack
-        if unit and unit.valid then ai.stopunit_all(unit) end
-        -- Need this ^ test here because bunnies might have disappeared
+        if unit and unit.valid then AH.checked_stopunit_all(ai, unit) end
     end
 end
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -25,7 +25,7 @@ class playmp_controller : public playsingle_controller, public events::pump_moni
 public:
 	playmp_controller(const config& level, game_state& state_of_game,
 		const int ticks, const int num_turns, const config& game_config, CVideo& video,
-		bool skip_replay, bool is_host);
+		bool skip_replay, bool blindfold_replay, bool is_host);
 	virtual ~playmp_controller();
 
 	bool is_host() const { return is_host_; }
@@ -58,12 +58,18 @@ protected:
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
 	virtual void play_network_turn();
+	virtual void do_idle_notification();
 	void init_turn_data();
 
 	turn_info* turn_data_;
 
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;
+
+	virtual void on_not_observer();
+	void remove_blindfold();
+
+	blindfold blindfold_;
 private:
 	void set_end_scenario_button();
 	void reset_end_scenario_button();

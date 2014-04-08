@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -43,7 +43,7 @@ public:
 	 * empty, indicating a new map.
 	 * Marked "explicit" to avoid automatic conversions.
 	 */
-	explicit map_context(const editor_map& map, const display& disp);
+	explicit map_context(const editor_map& map, const display& disp, bool pure_map, const config& schedule);
 
 	/**
 	 * Create map_context from a map file. If the map cannot be loaded, an
@@ -69,7 +69,7 @@ public:
 	/**
 	 * Map accessor
 	 */
-	editor_map& get_map() { return map_; };
+	editor_map& get_map() { return map_; }
 
 	/**
 	 * Map accessor - const version
@@ -81,7 +81,26 @@ public:
 		team t;
 		t.set_hidden(false);
     	teams_.push_back(t);
+    	actions_since_save_++;
     }
+
+	/** removes the last side from the scenario */
+	void remove_side() {
+		teams_.pop_back();
+		actions_since_save_++;
+	}
+
+	void save_area(const std::set<map_location>& area) {
+		tod_manager_->replace_area_locations(active_area_, area);
+	}
+
+	void new_area(const std::set<map_location>& area) {
+		tod_manager_->add_time_area("", area, config());
+		active_area_ = tod_manager_->get_area_ids().size() -1;
+		actions_since_save_++;
+	}
+
+	void remove_area(int index);
 
 	/** Get the team from the current map context object */
 	std::vector<team>& get_teams() {
@@ -101,6 +120,26 @@ public:
 		return units_;
 	}
 
+	void replace_schedule(const std::vector<time_of_day>& schedule);
+	
+	/**
+	 * Replace the [time]s of the currently active area.
+	 */
+	void replace_local_schedule(const std::vector<time_of_day>& schedule);
+
+	/**
+	 * TODO
+	 */
+	void set_starting_time(int time);
+
+	/**
+	 * TODO
+	 */
+	void set_local_starting_time(int time) {
+		tod_manager_->set_current_time(time, active_area_);
+		actions_since_save_++;
+	}
+
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
 	}
@@ -109,8 +148,16 @@ public:
 		return state_;
 	}
 
-	int get_active_area() {
+	/**
+	 * 
+ 	 * @return the index of the currently active area.
+ 	 */
+	int get_active_area() const {
 		return active_area_;
+	}
+
+	void set_active_area(int index) {
+		active_area_ = index;
 	}
 
 	bool is_in_playlist(std::string track_id) {
@@ -166,6 +213,20 @@ public:
 	void set_needs_terrain_rebuild(bool value=true) { needs_terrain_rebuild_ = value; }
 
 	/**
+	 * TODO
+	 */
+	void set_scenario_setup(const std::string& id, const std::string& name, const std::string& description,
+			int turns, int xp_mod, bool victory_defeated, bool random_time);
+
+	/**
+	 * TODO
+	 */
+	void set_side_setup(int side, const std::string& id, const std::string& name,
+			int gold, int income, int village_gold, int village_support,
+			bool fog, bool share_view, bool shroud, bool share_maps,
+			team::CONTROLLER controller, bool hidden, bool no_leader);
+
+	/**
 	 * Getter for the labels reset flag. Set when the labels need to be refreshed.
 	 */
 	bool needs_labels_reset() const { return needs_labels_reset_; }
@@ -196,7 +257,18 @@ public:
 
 	const std::string& get_map_data_key() const { return map_data_key_; }
 
+	const std::string& get_id() const { return scenario_id_; }
+	const std::string& get_description() const { return scenario_description_; }
+	const std::string& get_name() const { return scenario_name_; }
+
+	int get_xp_mod() const { return xp_mod_; }
+
+	bool random_start_time() const { return random_time_; }
+	bool victory_defeated() const { return victory_defeated_; }
+
 	bool is_embedded() const { return embedded_; }
+
+	bool is_pure_map() const { return pure_map_; }
 
 	void set_embedded(bool v) { embedded_ = v; }
 
@@ -204,7 +276,18 @@ public:
 	 * Saves the map under the current filename. Filename must be valid.
 	 * May throw an exception on failure.
 	 */
-	bool save();
+	bool save_map();
+
+	/**
+	 * Saves the scenario under the current filename. Filename must be valid.
+	 * May throw an exception on failure.
+	 */
+	bool save_scenario();
+
+
+	void load_scenario(const config& game_config);
+
+	config to_config();
 
 	void set_map(const editor_map& map);
 
@@ -282,6 +365,11 @@ protected:
 	 * This distinction is important in order to avoid overwriting the scenario.
 	 */
 	bool embedded_;
+
+	/**
+	 * Whether the map context refers to a file containing only the pure map data.
+	 */
+	bool pure_map_;
 
 	/**
 	 * The map object of this map_context.
@@ -362,6 +450,11 @@ protected:
 
 private:
 
+	std::string scenario_id_, scenario_name_, scenario_description_;
+
+	int xp_mod_;
+	bool victory_defeated_, random_time_;
+
 	int active_area_;
 
 	map_labels labels_;
@@ -373,8 +466,12 @@ private:
 	typedef std::map<std::string, sound::music_track> music_map;
 	music_map music_tracks_;
 
-	typedef std::map<map_location, std::vector<overlay> > overlay_map;
+	typedef std::multimap<map_location, overlay> overlay_map;
 	overlay_map overlays_;
+
+public:
+
+	overlay_map& get_overlays() { return overlays_; }
 
 };
 

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include <boost/function.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 class twidget;
 
@@ -30,7 +31,9 @@ class twidget;
 class tselectable_
 {
 public:
-	virtual ~tselectable_() {}
+	virtual ~tselectable_()
+	{
+	}
 
 	/** Is the control selected? */
 	virtual bool get_value() const = 0;
@@ -43,7 +46,7 @@ public:
 	 * fired. Most of the time it will be a left click on the widget.
 	 */
 	virtual void
-	set_callback_state_change(boost::function<void (twidget&)> callback) = 0;
+	set_callback_state_change(boost::function<void(twidget&)> callback) = 0;
 };
 
 } // namespace gui2

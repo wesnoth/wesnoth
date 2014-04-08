@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,15 +52,15 @@ public:
 		, buttons_()
 		, help_handle_(-1)
 	{
-	};
+	}
 
 
 
 	virtual handler_vector handler_members();
 
-	void set_start_item(size_t index) { items_start_ = index; };
+	void set_start_item(size_t index) { items_start_ = index; }
 
-	size_t start_num(void) { return items_start_; };
+	size_t start_num(void) { return items_start_; }
 
 	/** Menu expanding for palette group list */
 	void expand_palette_groups_menu(std::vector< std::pair<std::string, std::string> >& items);
@@ -69,19 +69,19 @@ public:
 	void set_group(size_t index);
 //	int active_group();
 
-	const std::vector<item_group>& get_groups() const { return groups_; };
+	const std::vector<item_group>& get_groups() const { return groups_; }
 
 	virtual void draw() {
 		widget::draw();
-	};
+	}
 	virtual void draw_contents();
 
 	void next_group() {
 		set_group( (active_group_index() +1) % (groups_.size()) );
-	};
+	}
 	void prev_group() {
 		set_group( (active_group_index() -1) % (groups_.size()) );
-	};
+	}
 
 	/**
 	 * Update the size of this widget.
@@ -102,8 +102,8 @@ public:
 	virtual std::string get_help_string() = 0;
 
 	/** Return the currently selected foreground/background item. */
-	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; };
-	const Item& selected_bg_item() const { return item_map_.find(selected_bg_item_)->second; };
+	const Item& selected_fg_item() const { return item_map_.find(selected_fg_item_)->second; }
+	const Item& selected_bg_item() const { return item_map_.find(selected_bg_item_)->second; }
 
 private:
 
@@ -122,7 +122,10 @@ private:
 	/** Setup the internal data structure. */
 	virtual void setup(const config& cfg) = 0;
 
-	virtual const std::string& active_group_id() {return active_group_;};
+	virtual const std::string& active_group_id() {return active_group_;}
+
+	virtual bool is_selected_fg_item(const std::string& id);
+	virtual bool is_selected_bg_item(const std::string& id);
 
 	/** Return the number of items in the palette. */
 	size_t num_items();
@@ -145,7 +148,7 @@ protected:
 	 * selected items.
 	 */
 	virtual void set_group(const std::string& id);
-	const std::vector<std::string>& active_group() { return group_map_[active_group_]; };
+	const std::vector<std::string>& active_group() { return group_map_[active_group_]; }
 
 	/** Select a foreground item. */
 	virtual void select_fg_item(const std::string& item_id);

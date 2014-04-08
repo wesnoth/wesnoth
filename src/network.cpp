@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -51,11 +51,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netinet/tcp.h>  // for TCP_NODELAY
-#ifdef __BEOS__
-#include <socket.h>
-#else
 #include <fcntl.h>
-#endif
 #define SOCKET int
 #endif
 
@@ -427,7 +423,7 @@ void connect_operation::run()
 		unsigned long mode = 1;
 		ioctlsocket (raw_sock->channel, FIONBIO, &mode);
 	}
-#elif !defined(__BEOS__)
+#else
 	int flags;
 	flags = fcntl(raw_sock->channel, F_GETFL, 0);
 #if defined(O_NONBLOCK)
@@ -441,21 +437,6 @@ void connect_operation::run()
 		error_ = "Could not make socket non-blocking: " + std::string(strerror(errno));
 		SDLNet_TCP_Close(sock);
 		return;
-	}
-#else
-	int on = 1;
-	if (setsockopt(raw_sock->channel, SOL_SOCKET, SO_NONBLOCK, &on, sizeof(int)) < 0) {
-		error_ = "Could not make socket non-blocking: " + std::string(strerror(errno));
-		SDLNet_TCP_Close(sock);
-		return;
-	}
-
-	int fd_flags = fcntl(raw_sock->channel, F_GETFD, 0);
-	fd_flags |= FD_CLOEXEC;
-	if (fcntl(raw_sock->channel, F_SETFD, fd_flags) == -1) {
-		WRN_NW << "could not make socket " << sock << " close-on-exec: " << strerror(errno);
-	} else {
-		DBG_NW << "made socket " << sock << " close-on-exec\n";
 	}
 #endif
 
@@ -1098,8 +1079,15 @@ void send_file(const std::string& filename, connection connection_num, const std
 		return;
 	}
 
+	const int size = filesystem::file_size(filename);
+
+	if(size < 0) {
+		ERR_NW << "Could not determine size of file " << filename << ", not sending.\n";
+		return;
+	}
+
 	const int packet_headers = 4;
-	add_bandwidth_out(packet_type, filesystem::file_size(filename) + packet_headers);
+	add_bandwidth_out(packet_type, size + packet_headers);
 	network_worker_pool::queue_file(info->second.sock, filename);
 
 }

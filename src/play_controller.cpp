@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -42,13 +42,16 @@
 #include "save_blocker.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
+#include "random_new_deterministic.hpp"
 #include "soundsource.hpp"
+#include "synced_context.hpp"
 #include "tooltips.hpp"
 #include "wml_exception.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "whiteboard/manager.hpp"
 #include "scripting/lua.hpp"
+#include "hotkey/hotkey_item.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -120,14 +123,15 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),
-	init_side_done_(false),
+	init_side_done_(true),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
 	remove_from_carryover_on_leaders_loss_(true),
 	end_level_data_(),
 	victory_music_(),
-	defeat_music_()
+	defeat_music_(),
+	scope_()
 {
 	resources::controller = this;
 	resources::gamedata = &gamedata_;
@@ -172,13 +176,8 @@ void play_controller::init(CVideo& video){
 	}
 
 	loadscreen::start_stage("load level");
-	// If the recorder has no event, adds an "game start" event
-	// to the recorder, whose only goal is to initialize the RNG
-	if(recorder.empty()) {
-		recorder.add_start();
-	} else {
-		recorder.pre_replay();
-	}
+	// i currently assume that no random calls take place before the "prestart" event
+	// If i am wrong, use random_new_deterministic
 	recorder.set_skip(false);
 
 	bool snapshot = level_["snapshot"].to_bool();
@@ -408,7 +407,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::compress_saves());
+		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -418,7 +417,7 @@ void play_controller::save_game(){
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(gamestate_, preferences::compress_saves());
+		savegame::replay_savegame save(gamestate_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
@@ -456,6 +455,21 @@ void play_controller::left_mouse_click(){
 	event.state = SDL_PRESSED;
 
 	mouse_handler_.mouse_press(event, false);
+}
+
+void play_controller::select_and_action() {
+	mouse_handler_.select_or_action(browse_);
+}
+
+void play_controller::move_action(){
+	mouse_handler_.move_action(browse_);
+}
+
+void play_controller::deselect_hex(){
+	mouse_handler_.deselect_hex();
+}
+void play_controller::select_hex(){
+	mouse_handler_.select_hex(gui_->mouseover_hex(), false);
 }
 
 void play_controller::right_mouse_click(){
@@ -528,14 +542,16 @@ void play_controller::search(){
 	menu_handler_.search();
 }
 
-void play_controller::fire_prestart(bool execute)
+void play_controller::fire_preload()
 {
 	// Run initialization scripts, even if loading from a snapshot.
 	gamedata_.set_phase(game_data::PRELOAD);
 	resources::lua_kernel->initialize();
 	gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
-
+}
+void play_controller::fire_prestart(bool execute)
+{
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
 	if (execute){
@@ -605,8 +621,11 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
 	}
 
 	if (!loading_game_) recorder.init_side();
-
+	LOG_NG << "set_scontext_synced sync from maybe_do_init_side";
+	set_scontext_synced sync;
 	do_init_side(team_index, is_replay);
+	LOG_NG << "set_scontext_synced sync from maybe_do_init_side end ";
+	
 }
 
 /**
@@ -614,6 +633,9 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
  */
 void play_controller::do_init_side(const unsigned int team_index, bool is_replay) {
 	log_scope("player turn");
+	//In case we might end up calling sync:network during the side turn events,
+	//and we dont want do_init_side to be called when a player drops.
+	init_side_done_ = true;
 	team& current_team = teams_[team_index];
 
 	const std::string turn_num = str_cast(turn());
@@ -688,7 +710,6 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
-	init_side_done_ = true;
 
 	resources::whiteboard->on_init_side();
 }
@@ -768,11 +789,15 @@ void play_controller::finish_side_turn(){
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
+	if(true) //RAII block
+	{
+		set_scontext_synced sync(1);
+		//random_new::set_random_determinstic deterministic(resources::gamedata->rng());
 	game_events::fire("side turn end");
 	game_events::fire("side "+ side_num + " turn end");
 	game_events::fire("side turn " + turn_num + " end");
 	game_events::fire("side " + side_num + " turn " + turn_num + " end");
-
+	}
 	// This is where we refog, after all of a side's events are done.
 	actions::recalculate_fog(player_number_);
 
@@ -790,6 +815,8 @@ void play_controller::finish_side_turn(){
 
 void play_controller::finish_turn()
 {
+	set_scontext_synced sync(2);
+	//random_new::set_random_determinstic deterministic(resources::gamedata->rng());
 	const std::string turn_num = str_cast(turn());
 	game_events::fire("turn end");
 	game_events::fire("turn " + turn_num + " end");
@@ -875,9 +902,16 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_CUSTOM_CMD:
 	case hotkey::HOTKEY_AI_FORMULA:
 	case hotkey::HOTKEY_CLEAR_MSG:
-	case hotkey::HOTKEY_LEFT_MOUSE_CLICK:
-	case hotkey::HOTKEY_RIGHT_MOUSE_CLICK:
-	case hotkey::HOTKEY_MINIMAP_COLOR_CODING:
+	case hotkey::HOTKEY_SELECT_HEX:
+	case hotkey::HOTKEY_DESELECT_HEX:
+	case hotkey::HOTKEY_MOVE_ACTION:
+	case hotkey::HOTKEY_SELECT_AND_ACTION:
+	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
+	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
+	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
+	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
+	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
+	case hotkey::HOTKEY_NULL:
 		return true;
 
 	// Commands that have some preconditions:
@@ -1137,6 +1171,9 @@ static void trim_items(std::vector<std::string>& newitems) {
 
 void play_controller::expand_autosaves(std::vector<std::string>& items)
 {
+	const compression::format comp_format =
+		preferences::save_compression_format();
+
 	savenames_.clear();
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "AUTOSAVES") {
@@ -1145,23 +1182,17 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = this->turn(); turn != 0; turn--) {
 				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
-				if (savegame::save_game_exists(name, preferences::compress_saves())) {
-					if(preferences::compress_saves()) {
-						newsaves.push_back(name + (preferences::bzip2_savegame_compression() ? ".bz2" : ".gz"));
-					} else {
-						newsaves.push_back(name);
-					}
+				if (savegame::save_game_exists(name, comp_format)) {
+					newsaves.push_back(
+						name + compression::format_extension(comp_format));
 					newitems.push_back(_("Back to Turn ") + lexical_cast<std::string>(turn));
 				}
 			}
 
 			const std::string& start_name = gamestate_.classification().label;
-			if(savegame::save_game_exists(start_name, preferences::compress_saves())) {
-				if(preferences::compress_saves()) {
-					newsaves.push_back(start_name + (preferences::bzip2_savegame_compression() ? ".bz2" : ".gz"));
-				} else {
-					newsaves.push_back(start_name);
-				}
+			if(savegame::save_game_exists(start_name, comp_format)) {
+				newsaves.push_back(
+					start_name + compression::format_extension(comp_format));
 				newitems.push_back(_("Back to Start"));
 			}
 
@@ -1202,7 +1233,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 void play_controller::show_menu(const std::vector<std::string>& items_arg, int xloc, int yloc, bool context_menu, display& disp)
 {
 	std::vector<std::string> items = items_arg;
-	hotkey::hotkey_command* cmd;
+	const hotkey::hotkey_command* cmd;
 	std::vector<std::string>::iterator i = items.begin();
 	while(i != items.end()) {
 		if (*i == "AUTOSAVES") {
@@ -1255,7 +1286,7 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 		     !resources::game_map->is_castle(last_hex) )
 			return false;
 
-		wb::future_map future; //< lasts until method returns.
+		wb::future_map future; /* lasts until method returns. */
 
 		unit_map::const_iterator leader = units_.find(last_hex);
 		if ( leader != units_.end() )
@@ -1290,6 +1321,19 @@ std::string play_controller::get_action_image(hotkey::HOTKEY_COMMAND command, in
 hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int /*index*/) const
 {
 	switch(command) {
+
+	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
+		return (preferences::minimap_draw_villages()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_CODING_UNIT:
+		return (preferences::minimap_movement_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_CODING_TERRAIN:
+		return (preferences::minimap_terrain_coding()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_DRAW_UNITS:
+		return (preferences::minimap_draw_units()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
+		return (preferences::minimap_draw_terrain()) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	case hotkey::HOTKEY_ZOOM_DEFAULT:
+		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
 		return teams_[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
@@ -1414,7 +1458,7 @@ void play_controller::process_oos(const std::string& msg) const
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
-//this should be at the end of the file but it caused merging probmes there.
+//this should be at the end of the file but it caused merging problems there.
 const std::string play_controller::wml_menu_hotkey_prefix = "wml_menu:";
 
 
@@ -1433,7 +1477,7 @@ void play_controller::toggle_accelerated_speed()
 	if (preferences::turbo())
 	{
 		utils::string_map symbols;
-		symbols["hk"] = hotkey::get_names(hotkey::HOTKEY_ACCELERATED);
+		symbols["hk"] = hotkey::get_names(hotkey::hotkey_command::get_command_by_command(hotkey::HOTKEY_ACCELERATED).command);
 		gui_->announce(_("Accelerated speed enabled!"), font::NORMAL_COLOR);
 		gui_->announce("\n" + vgettext("(press $hk to disable)", symbols), font::NORMAL_COLOR);
 	}

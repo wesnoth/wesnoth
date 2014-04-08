@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
-   Copyright (C) 2010 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -328,8 +328,7 @@ std::vector<unit_map::unit_iterator> unit_map::find_leaders(int side) {
 }
 std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const{
 	const std::vector<unit_map::unit_iterator> &leaders = const_cast<unit_map*>(this)->find_leaders(side);
-	std::vector<unit_map::const_unit_iterator> const_leaders;
-	std::copy(leaders.begin(), leaders.end(), std::back_inserter(const_leaders));
+	std::vector<unit_map::const_unit_iterator> const_leaders (leaders.begin(), leaders.end());
 	return const_leaders;
 }
 

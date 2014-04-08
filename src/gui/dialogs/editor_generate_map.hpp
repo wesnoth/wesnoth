@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,13 +20,13 @@
 class map_generator;
 class display;
 
-namespace gui2 {
+namespace gui2
+{
 
 class tlabel;
 
 /** The dialog for selecting which random generator to use in the editor. */
-class teditor_generate_map
-	: public tdialog
+class teditor_generate_map : public tdialog
 {
 public:
 	teditor_generate_map();
@@ -42,17 +42,25 @@ public:
 		map_generators_ = mg;
 	}
 
-	std::vector<map_generator*> get_map_generators() { return map_generators_; }
+	std::vector<map_generator*> get_map_generators()
+	{
+		return map_generators_;
+	}
 
 	map_generator* get_selected_map_generator();
 
 	void update_current_generator_label(twindow& window);
 
-	void set_gui(display* d) { gui_ = d; }
-	display* get_gui() { return gui_; }
+	void set_gui(display* d)
+	{
+		gui_ = d;
+	}
+	display* get_gui()
+	{
+		return gui_;
+	}
 
 private:
-
 	/** Inherited from tdialog, implemented by REGISTER_DIALOG. */
 	virtual const std::string& window_id() const;
 
@@ -75,4 +83,3 @@ private:
 } // namespace gui2
 
 #endif
-

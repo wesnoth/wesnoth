@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,7 +27,8 @@
 
 #define ERR_ED LOG_STREAM_INDENT(err, editor)
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -65,7 +66,7 @@ teditor_generate_map::teditor_generate_map()
 void teditor_generate_map::do_settings(twindow& /*window*/)
 {
 	map_generator* mg = get_selected_map_generator();
-	if (mg->allow_user_config()) {
+	if(mg->allow_user_config()) {
 		mg->user_config(*gui_);
 	}
 }
@@ -79,17 +80,18 @@ void teditor_generate_map::do_next_generator(twindow& window)
 
 map_generator* teditor_generate_map::get_selected_map_generator()
 {
-	assert(static_cast<size_t>(current_map_generator_) < map_generators_.size());
+	assert(static_cast<size_t>(current_map_generator_)
+		   < map_generators_.size());
 	return map_generators_[current_map_generator_];
 }
 
 void teditor_generate_map::update_current_generator_label(twindow& window)
 {
 	std::stringstream ss;
-	ss << lexical_cast<std::string>(current_map_generator_ + 1)
-			<< "/" << lexical_cast<std::string>(map_generators_.size())
-			<< ": " << get_selected_map_generator()->name()
-			<< ", " << get_selected_map_generator()->config_name();
+	ss << lexical_cast<std::string>(current_map_generator_ + 1) << "/"
+	   << lexical_cast<std::string>(map_generators_.size()) << ": "
+	   << get_selected_map_generator()->name() << ", "
+	   << get_selected_map_generator()->config_name();
 
 	current_generator_label_->set_label(ss.str());
 
@@ -101,25 +103,25 @@ void teditor_generate_map::pre_show(CVideo& /*video*/, twindow& window)
 	assert(!map_generators_.empty());
 	assert(gui_);
 
-	current_generator_label_ =
-			&find_widget<tlabel>(&window, "current_generator", false);
+	current_generator_label_
+			= &find_widget<tlabel>(&window, "current_generator", false);
 
-	tbutton& settings_button =
-			find_widget<tbutton>(&window, "settings", false);
-	connect_signal_mouse_left_click(settings_button, boost::bind(
-			  &teditor_generate_map::do_settings
-			, this
-			, boost::ref(window)));
+	tbutton& settings_button = find_widget<tbutton>(&window, "settings", false);
+	connect_signal_mouse_left_click(
+			settings_button,
+			boost::bind(&teditor_generate_map::do_settings,
+						this,
+						boost::ref(window)));
 
-	tbutton& next_generator_button =
-			find_widget<tbutton>(&window, "next_generator", false);
-	connect_signal_mouse_left_click(next_generator_button, boost::bind(
-			  &teditor_generate_map::do_next_generator
-			, this
-			, boost::ref(window)));
+	tbutton& next_generator_button
+			= find_widget<tbutton>(&window, "next_generator", false);
+	connect_signal_mouse_left_click(
+			next_generator_button,
+			boost::bind(&teditor_generate_map::do_next_generator,
+						this,
+						boost::ref(window)));
 
 	update_current_generator_label(window);
 }
 
 } // namespace gui2
-

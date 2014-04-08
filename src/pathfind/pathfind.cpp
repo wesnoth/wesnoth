@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -914,8 +914,7 @@ void full_cost_map::add_unit(const map_location& origin, const unit_type* const 
 /**
  * Accessor for the cost/reach-amount pairs.
  * Read comment in pathfind.hpp to cost_map.
- * @param x
- * @param y
+ *
  * @return the entry of the cost_map at (x, y)
  *         or (-1, 0) if value is not set or (x, y) is invalid.
  */
@@ -933,8 +932,7 @@ std::pair<int, int> full_cost_map::get_pair_at(int x, int y) const
 
 /**
  * Accessor for the costs.
- * @param x
- * @param y
+ *
  * @return the value of the cost_map at (x, y)
  *         or -1 if value is not set or (x, y) is invalid.
  */
@@ -945,8 +943,7 @@ int full_cost_map::get_cost_at(int x, int y) const
 
 /**
  * Accessor for the costs.
- * @param x
- * @param y
+ *
  * @return The average cost of all added units for this hex
  *         or -1 if no unit can reach the hex.
  */

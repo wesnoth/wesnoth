@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,12 +20,14 @@
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/message.hpp"
+#include "gui/dialogs/wml_error.hpp"
 #include "language.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
+#include "hotkey/hotkey_item.hpp"
+#include "hotkey/hotkey_command.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -77,7 +79,7 @@ bool game_config_manager::init_game_config(FORCE_RELOAD_CONFIG force_reload)
 
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
-	hotkey::set_scope_active(hotkey::SCOPE_GAME);
+	hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 
 	hotkey::load_hotkeys(game_config(), true);
 	::init_textdomains(game_config());
@@ -141,6 +143,8 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				const config& campaign = game_config().find_child("campaign",
 					"define", classification->campaign_define);
 				const std::string& campaign_id = campaign["id"];
+				const bool require_campaign =
+					campaign["require_campaign"].to_bool(true);
 
 				const config::const_child_itors &ci =
 					game_config().child_range("scenario");
@@ -150,6 +154,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 
 				BOOST_FOREACH(config& cfg, scenarios) {
 					cfg["campaign_id"] = campaign_id;
+					cfg["require_scenario"] = require_campaign;
 					game_config_.add_child("multiplayer", cfg);
 				}
 			}
@@ -170,10 +175,10 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		::init_strings(game_config());
 		theme::set_known_themes(&game_config());
 	} catch(game::error& e) {
-		ERR_CONFIG << "Error loading game configuration files\n";
-		gui2::show_error_message(disp_.video(),
-			_("Error loading game configuration files: '") +
-			e.message + _("' (The game will now exit)"));
+		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
+		gui2::twml_error::display(
+			_("Error loading game configuration files. The game will now exit."),
+			e.message, disp_.video());
 		throw;
 	}
 
@@ -194,7 +199,8 @@ void game_config_manager::load_addons_cfg()
 
 	filesystem::get_files_in_dir(user_campaign_dir, &user_files, &user_dirs,
 		filesystem::ENTIRE_FILE_PATH);
-	std::stringstream user_error_log;
+
+	std::vector<std::string> error_log;
 
 	// Append the $user_campaign_dir/*.cfg files to addons_to_load.
 	BOOST_FOREACH(const std::string& uc, user_files) {
@@ -225,11 +231,11 @@ void game_config_manager::load_addons_cfg()
 				ERR_CONFIG << "error reading usermade add-on '"
 					<< file << "'\n";
 				error_addons.push_back(file);
-				user_error_log << "The format '~" << file.substr(userdata_loc)
-					<< "' is only for single-file add-ons, use '~"
-					<< file.substr(userdata_loc,
+				error_log.push_back("The format '~" + file.substr(userdata_loc)
+					+ "' is only for single-file add-ons, use '~"
+					+ file.substr(userdata_loc,
 						size_minus_extension - userdata_loc)
-					<< "/_main.cfg' instead.\n";
+					+ "/_main.cfg' instead.");
 			}
 			else {
 				addons_to_load.push_back(file);
@@ -254,29 +260,34 @@ void game_config_manager::load_addons_cfg()
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
-			user_error_log << err.message << "\n";
+			error_log.push_back(err.message);
 		} catch(preproc_config::error& err) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
-			user_error_log << err.message << "\n";
+			error_log.push_back(err.message);
 		} catch(filesystem::io_exception&) {
 			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
 			error_addons.push_back(uc);
 		}
 	}
 	if(error_addons.empty() == false) {
-		std::stringstream msg;
-		msg << _n("The following add-on had errors and could not be loaded:",
-			"The following add-ons had errors and could not be loaded:",
-				error_addons.size());
-		BOOST_FOREACH(const std::string& error_addon, error_addons) {
-			msg << "\n" << error_addon;
-		}
+		const size_t n = error_addons.size();
+		const std::string& msg1 =
+			_n("The following add-on had errors and could not be loaded:",
+			   "The following add-ons had errors and could not be loaded:",
+			   n);
+		const std::string& msg2 =
+			_n("Please report this to the author or maintainer of this add-on.",
+			   "Please report this to the respective authors or maintainers of these add-ons.",
+			   n);
 
-		msg << '\n' << _("ERROR DETAILS:") << '\n' << user_error_log.str();
+		const std::string& report = utils::join(error_log, "\n\n");
 
-		gui2::show_error_message(disp_.video(),msg.str());
+		gui2::twml_error::display(msg1, msg2, error_addons, report,
+								  disp_.video());
 	}
 }
 

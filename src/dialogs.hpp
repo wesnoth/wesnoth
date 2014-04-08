@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,26 +30,6 @@ class terrain_type;
 
 namespace dialogs {
 
-/**
- * Function to handle an advancing unit. If there is only one choice to advance
- * to, the unit will be automatically advanced.
-
- * If 'automatic' is true,
- * a unit will be selected at by given 'advancements' or at random when
- * 'advancements' is empty or don't match any possible advancement options.
- *
- * If 'automatic' is false,
- * a dialog will be displayed asking the user what to advance to.
- *
- * Note that 'loc' is not a reference, because deleting an item from the units
- * map (when replacing the unit that is being advanced) will possibly
- * invalidate the reference.
- *
- * The game only expects an advancement to be triggered by a fight, if the
- * cause for advancement is different (eg unstore_unit) this routine
- * should _not_ be used.
- */
-void advance_unit(const map_location &loc, bool automatic = false, bool add_replay_event = false, const ai::unit_advancements_aspect& advancements = ai::unit_advancements_aspect());
 
 /**
  * Lets the user to select a unit advancement. This should always be used
@@ -79,7 +59,7 @@ std::string load_game_dialog(display& disp, const config& terrain_config, bool* 
 
 int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
 
-int recall_dialog(display& disp, std::vector<const unit*>& units, int side, const std::string& title_suffix);
+int recall_dialog(display& disp, std::vector<const unit*>& units, int side, const std::string& title_suffix, const int team_recall_cost);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane
@@ -99,6 +79,7 @@ public:
 		std::string hp_color, xp_color;
 		int movement_left, total_movement;
 		std::vector<attack_type> attacks;
+		std::vector<std::string> overlays;
 	};
 
 	unit_preview_pane(const gui::filter_textbox *filter = NULL,

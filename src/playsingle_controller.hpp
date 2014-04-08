@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2006 - 2013 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
+   Copyright (C) 2006 - 2014 by Joerg Hinrichs <joerg.hinrichs@alice-dsl.de>
    wesnoth playlevel Copyright (C) 2003 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
@@ -68,6 +68,7 @@ public:
 	void report_victory(std::ostringstream &report, int player_gold,
 			int remaining_gold, int finishing_bonus_per_turn,
 			int turns_left, int finishing_bonus);
+	virtual void on_not_observer() {}
 
 protected:
 	virtual void play_turn(bool save);
@@ -82,6 +83,8 @@ protected:
 	void end_turn_enable(bool enable);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	void play_ai_turn();
+	void play_idle_loop();
+	virtual void do_idle_notification();
 	virtual void play_network_turn();
 	virtual void init_gui();
 	void check_time_over();
@@ -91,6 +94,7 @@ protected:
 	const cursor::setter cursor_setter;
 	std::deque<config> data_backlog_;
 	gui::floating_textbox textbox_info_;
+
 	replay_network_sender replay_sender_;
 
 	bool end_turn_;

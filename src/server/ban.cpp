@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Pauli Nieminen <paniemin@cc.hut.fi>
+   Copyright (C) 2008 - 2014 by Pauli Nieminen <paniemin@cc.hut.fi>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #include "serialization/parser.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/unicode.hpp"
 #include "util.hpp"
 
 #include "ban.hpp"
@@ -371,7 +372,7 @@ static lg::log_domain log_server("server");
 			return true;
 		}
 		default_ban_times::const_iterator time_itor = ban_times_.find(duration);
-		if (utils::lowercase(duration) == "permanent" || duration == "0") {
+		if (utf8::lowercase(duration) == "permanent" || duration == "0") {
 			*time = 0;
 		} else if (ban_times_.find(duration) != ban_times_.end()) {
 			*time += time_itor->second;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Tomasz Sniatowski <kailoran@gmail.com>
+   Copyright (C) 2008 - 2014 by Tomasz Sniatowski <kailoran@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,11 +39,6 @@ namespace font {
 struct floating_label_context;
 }
 
-namespace rand_rng {
-class rng;
-struct set_random_generator;
-}
-
 namespace preferences {
 	struct display_manager;
 } // namespace preferences
@@ -64,7 +59,9 @@ enum menu_type {
 	AREA,
 	SIDE,
 	TIME,
+	LOCAL_TIME,
 	SCHEDULE,
+	LOCAL_SCHEDULE,
 	MUSIC
 };
 
@@ -104,7 +101,7 @@ class editor_controller : public controller_base,
 		void custom_tods_dialog();
 
 		/** Save the map, open dialog if not named yet. */
-		void save_map() {context_manager_->save_map();};
+		void save_map() {context_manager_->save_map();}
 
 		/** command_executor override */
 		bool can_execute_command(const hotkey::hotkey_command& command, int index = -1) const;
@@ -144,6 +141,12 @@ class editor_controller : public controller_base,
 
 		void update_mouse_action_highlights();
 
+		/** Save the current selection to the active area. */
+		void save_area();
+
+		/** Add a new area to the current context, filled with the selection if any. */
+		void add_area();
+
 		/* mouse_handler_base overrides */
 		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location);
 		editor_display& gui() { return *gui_; }
@@ -161,8 +164,8 @@ class editor_controller : public controller_base,
 	protected:
 		/* controller_base overrides */
 		void process_keyup_event(const SDL_Event& event);
-		mouse_handler_base& get_mouse_handler_base() { return *this; };
-		editor_display& get_display() {return *gui_;};
+		mouse_handler_base& get_mouse_handler_base() { return *this; }
+		editor_display& get_display() {return *gui_;}
 
 		/** Get the current mouse action */
 		mouse_action* get_mouse_action();
@@ -214,9 +217,6 @@ class editor_controller : public controller_base,
 
 		editor::menu_type active_menu_;
 
-		boost::scoped_ptr<rand_rng::rng> rng_;
-
-		boost::scoped_ptr<rand_rng::set_random_generator> rng_setter_;
 
 		/** The display object used and owned by the editor. */
 		boost::scoped_ptr<editor_display> gui_;

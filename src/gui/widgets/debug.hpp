@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,8 @@
 #include <iosfwd>
 #include <string>
 
-namespace gui2 {
+namespace gui2
+{
 
 class twidget;
 class twindow;
@@ -45,7 +46,6 @@ class twindow;
 class tdebug_layout_graph
 {
 public:
-
 	/**
 	 * Constructor.
 	 *
@@ -58,18 +58,18 @@ public:
 
 	// domain flags
 	static const unsigned MANUAL = 0 << 0; /**<
-	                                        * Shows the info when the F12 is
-	                                        * pressed. The value 0 makes sure
-	                                        * the domain is always valid.
-	                                        */
-	static const unsigned SHOW   = 1 << 0; /**<
-	                                        * Shows the info when the dialog
-	                                        * is shown.
-	                                        */
+											* Shows the info when the F12 is
+											* pressed. The value 0 makes sure
+											* the domain is always valid.
+											*/
+	static const unsigned SHOW = 1 << 0; /**<
+										  * Shows the info when the dialog
+										  * is shown.
+										  */
 	static const unsigned LAYOUT = 1 << 1; /**<
-	                                        * Shows the info in all layout
-	                                        * phases.
-	                                        */
+											* Shows the info in all layout
+											* phases.
+											*/
 	/**
 	 * Sets the level of wanted information.
 	 *
@@ -95,11 +95,9 @@ public:
 	 *
 	 * @param generator           The location where the name was generated.
 	 */
-	void generate_dot_file(
-			const std::string& generator, const unsigned domain);
+	void generate_dot_file(const std::string& generator, const unsigned domain);
 
 private:
-
 	/** The window whose info will be shown. */
 	const twindow* window_;
 
@@ -120,8 +118,10 @@ private:
 	 * @param embedded            Is the grid embedded in a container eg parent
 	 *                            inherits from tcontainer_.
 	 */
-	void widget_generate_info(std::ostream& out, const twidget* widget,
-			const std::string& id, const bool embedded = false) const;
+	void widget_generate_info(std::ostream& out,
+							  const twidget* widget,
+							  const std::string& id,
+							  const bool embedded = false) const;
 
 	/**
 	 * Generates the basic info about a widget.
@@ -129,8 +129,8 @@ private:
 	 * @param out                 The stream to write the info to.
 	 * @param widget              The widget to write the info about.
 	 */
-	void widget_generate_basic_info(
-			std::ostream& out, const twidget* widget) const;
+	void widget_generate_basic_info(std::ostream& out,
+									const twidget* widget) const;
 
 	/**
 	 * Generates the info about the state of the widget.
@@ -138,8 +138,8 @@ private:
 	 * @param out                 The stream to write the info to.
 	 * @param widget              The widget to write the info about.
 	 */
-	void widget_generate_state_info(
-			std::ostream& out, const twidget* widget) const;
+	void widget_generate_state_info(std::ostream& out,
+									const twidget* widget) const;
 
 	/**
 	 * Generates the info about the size and layout of the widget.
@@ -147,8 +147,8 @@ private:
 	 * @param out                 The stream to write the info to.
 	 * @param widget              The widget to write the info about.
 	 */
-	void widget_generate_size_info(
-			std::ostream& out, const twidget* widget) const;
+	void widget_generate_size_info(std::ostream& out,
+								   const twidget* widget) const;
 
 	/***** ***** Grid ***** *****/
 
@@ -159,8 +159,9 @@ private:
 	 * @param grid                The grid to write the info about.
 	 * @param parent_id           The dot-file-id of the parent of the widget.
 	 */
-	void grid_generate_info(std::ostream& out, const tgrid* grid,
-			const std::string& parent_id) const;
+	void grid_generate_info(std::ostream& out,
+							const tgrid* grid,
+							const std::string& parent_id) const;
 
 	/**
 	 * Generates the info about a grid cell.
@@ -170,7 +171,8 @@ private:
 	 * @param id                  The dof-file-id of the child.
 	 */
 	void child_generate_info(std::ostream& out,
-			const tgrid::tchild& child, const std::string& id) const;
+							 const tgrid::tchild& child,
+							 const std::string& id) const;
 
 	/***** ***** Helper ***** *****/
 
@@ -188,11 +190,9 @@ private:
 	 *                            'grid', otherwise 'unknown' will be returned.
 	 */
 	std::string get_type(const twidget* widget) const;
-
 };
 
 } // namespace gui2
 
 #endif
 #endif
-

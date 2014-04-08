@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-                 2004 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+                 2004 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -62,6 +62,9 @@ scrollbar::scrollbar(CVideo &video)
 	, full_height_(0)
 	, scroll_rate_(1)
 {
+	uparrow_.enable(false);
+	downarrow_.enable(false);
+
 	static const surface img(image::get_image(scrollbar_mid));
 
 	if (img != NULL) {
@@ -340,11 +343,14 @@ void scrollbar::handle_event(const SDL_Event& event)
 		SDL_MouseButtonEvent const &e = event.button;
 		bool on_grip = point_in_rect(e.x, e.y, grip);
 		bool on_groove = point_in_rect(e.x, e.y, groove);
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		if (on_groove && e.button == SDL_BUTTON_WHEELDOWN) {
 			move_position(scroll_rate_);
 		} else if (on_groove && e.button == SDL_BUTTON_WHEELUP) {
 			move_position(-scroll_rate_);
-		} else if (on_grip && e.button == SDL_BUTTON_LEFT) {
+		} else
+#endif
+		if (on_grip && e.button == SDL_BUTTON_LEFT) {
 			mousey_on_grip_ = e.y - grip.y;
 			new_state = DRAGGED;
 		} else if (on_groove && e.button == SDL_BUTTON_LEFT && groove.h != grip.h) {
@@ -372,6 +378,21 @@ void scrollbar::handle_event(const SDL_Event& event)
 		}
 		break;
 	}
+#if SDL_VERSION_ATLEAST(2,0,0)
+	case SDL_MOUSEWHEEL:
+	{
+		const SDL_MouseWheelEvent& e = event.wheel;
+		int x, y;
+		SDL_GetMouseState(&x, &y);
+		bool on_groove = point_in_rect(x, y, groove);
+		if (on_groove && e.y < 0) {
+			move_position(scroll_rate_);
+		} else if (on_groove && e.y > 0) {
+			move_position(-scroll_rate_);
+		}
+		break;
+	}
+#endif
 	default:
 		break;
 	}

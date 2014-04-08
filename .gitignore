@@ -1,6 +1,7 @@
 .settings
 .project
 .cproject
+.pydevproject
 revision.h
 *.swp
 .DS_Store
@@ -23,7 +24,7 @@ configure
 .sconf_temp
 CMakeFiles
 CMakeLists.txt.user
-CMakeLists.txt.user.1.3
+CMakeLists.txt.user.*
 cmake_install.cmake
 CPackConfig.cmake
 CPackSourceConfig.cmake
@@ -67,5 +68,7 @@ uninstall.vcproj
 Project.ncb
 Project.suo
 *.vcproj.*.user
-projectfiles/VC10
+projectfiles/VC1*
+projectfiles/VC201*
 *Neuer Ordner*
+Thumbs.db

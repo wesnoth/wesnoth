@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2014 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -41,7 +41,7 @@ class animated
 public:
 
 	animated(int start_time=0);
-	virtual ~animated(){};
+	virtual ~animated(){}
 
 
 	typedef  std::pair<int,T> frame_description;
@@ -59,8 +59,8 @@ public:
 	 * using a start_time different to 0.
 	 */
 	void start_animation(int start_time, bool cycles=false);
-	void pause_animation(){ started_ =false;};
-	void restart_animation(){if(start_tick_) started_ = true;};
+	void pause_animation(){ started_ =false;}
+	void restart_animation(){if(start_tick_) started_ = true;}
 
 	int get_begin_time() const;
 	int get_end_time() const;
@@ -72,7 +72,7 @@ public:
 	void update_last_draw_time(double acceleration = 0);
 	bool need_update() const;
 
-	bool cycles() const {return cycles_;};
+	bool cycles() const {return cycles_;}
 
 	/** Returns true if the current animation was finished. */
 	bool animation_finished() const;
@@ -108,10 +108,10 @@ private:
 
 		frame(int duration , const T& value,int start_time) :
 			duration_(duration),value_(value),start_time_(start_time)
-		{};
+		{}
 		frame():
 			duration_(0),value_(void_value_),start_time_(0)
-		{};
+		{}
 
 		// Represents the timestamp of the frame start
 		int duration_;

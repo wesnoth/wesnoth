@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -42,18 +42,19 @@
 #include "gui/widgets/event_executor.hpp"
 #include "gui/lib/types/point.hpp"
 
-namespace gui2{
+namespace gui2
+{
 
 class twidget;
 
-namespace event {
+namespace event
+{
 
 /***** ***** ***** ***** tmouse_motion ***** ***** ***** ***** *****/
 
 class tmouse_motion
 {
 public:
-
 	tmouse_motion(twidget& owner, const tdispatcher::tposition queue_position);
 
 	~tmouse_motion();
@@ -65,11 +66,11 @@ public:
 	 *
 	 * @param capture             Set or release the capturing.
 	 */
-	void capture_mouse(//twidget* widget);
+	void capture_mouse( // twidget* widget);
 			const bool capture = true);
-protected:
 
-    /** The widget that currently has the mouse focus_. */
+protected:
+	/** The widget that currently has the mouse focus_. */
 	twidget* mouse_focus_;
 
 	/** Did the current widget capture the focus_? */
@@ -118,7 +119,6 @@ protected:
 	void mouse_leave();
 
 private:
-
 	/**
 	 * Called when the mouse moves over a widget.
 	 *
@@ -131,41 +131,33 @@ private:
 	void show_tooltip();
 
 	bool signal_handler_sdl_mouse_motion_entered_;
-	void signal_handler_sdl_mouse_motion(
-			  const event::tevent event
-			, bool& handled
-			, const tpoint& coordinate);
+	void signal_handler_sdl_mouse_motion(const event::tevent event,
+										 bool& handled,
+										 const tpoint& coordinate);
 
-	void signal_handler_sdl_wheel(
-			  const event::tevent event
-			, bool& handled
-			, const tpoint& coordinate);
+	void signal_handler_sdl_wheel(const event::tevent event,
+								  bool& handled,
+								  const tpoint& coordinate);
 
-	void signal_handler_show_helptip(
-			  const event::tevent event
-			, bool& handled
-			, const tpoint& coordinate);
+	void signal_handler_show_helptip(const event::tevent event,
+									 bool& handled,
+									 const tpoint& coordinate);
 };
 
 /***** ***** ***** ***** tmouse_button ***** ***** ***** ***** *****/
 
-template<
-		  tevent sdl_button_down
-		, tevent sdl_button_up
-		, tevent button_down
-		, tevent button_up
-		, tevent button_click
-		, tevent button_double_click
->
-class tmouse_button
-	: public virtual tmouse_motion
+template <tevent sdl_button_down,
+		  tevent sdl_button_up,
+		  tevent button_down,
+		  tevent button_up,
+		  tevent button_click,
+		  tevent button_double_click>
+class tmouse_button : public virtual tmouse_motion
 {
 public:
-	tmouse_button(
-			  const std::string& name_
-			, twidget& owner
-			, const tdispatcher::tposition queue_position
-			);
+	tmouse_button(const std::string& name_,
+				  twidget& owner,
+				  const tdispatcher::tposition queue_position);
 
 	/**
 	 * Initializes the state of the button.
@@ -197,16 +189,14 @@ private:
 	bool is_down_;
 
 	bool signal_handler_sdl_button_down_entered_;
-	void signal_handler_sdl_button_down(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate);
+	void signal_handler_sdl_button_down(const event::tevent event,
+										bool& handled,
+										const tpoint& coordinate);
 
 	bool signal_handler_sdl_button_up_entered_;
-	void signal_handler_sdl_button_up(
-		  const event::tevent event
-		, bool& handled
-		, const tpoint& coordinate);
+	void signal_handler_sdl_button_up(const event::tevent event,
+									  bool& handled,
+									  const tpoint& coordinate);
 
 
 	void mouse_button_click(twidget* widget);
@@ -214,43 +204,35 @@ private:
 
 /***** ***** ***** ***** tdistributor ***** ***** ***** ***** *****/
 
-typedef	tmouse_button<
-		  SDL_LEFT_BUTTON_DOWN
-		, SDL_LEFT_BUTTON_UP
-		, LEFT_BUTTON_DOWN
-		, LEFT_BUTTON_UP
-		, LEFT_BUTTON_CLICK
-		, LEFT_BUTTON_DOUBLE_CLICK
-		> tmouse_button_left;
+typedef tmouse_button<SDL_LEFT_BUTTON_DOWN,
+					  SDL_LEFT_BUTTON_UP,
+					  LEFT_BUTTON_DOWN,
+					  LEFT_BUTTON_UP,
+					  LEFT_BUTTON_CLICK,
+					  LEFT_BUTTON_DOUBLE_CLICK> tmouse_button_left;
 
-typedef	tmouse_button<
-		  SDL_MIDDLE_BUTTON_DOWN
-		, SDL_MIDDLE_BUTTON_UP
-		, MIDDLE_BUTTON_DOWN
-		, MIDDLE_BUTTON_UP
-		, MIDDLE_BUTTON_CLICK
-		, MIDDLE_BUTTON_DOUBLE_CLICK
-		> tmouse_button_middle;
+typedef tmouse_button<SDL_MIDDLE_BUTTON_DOWN,
+					  SDL_MIDDLE_BUTTON_UP,
+					  MIDDLE_BUTTON_DOWN,
+					  MIDDLE_BUTTON_UP,
+					  MIDDLE_BUTTON_CLICK,
+					  MIDDLE_BUTTON_DOUBLE_CLICK> tmouse_button_middle;
 
-typedef	tmouse_button<
-		  SDL_RIGHT_BUTTON_DOWN
-		, SDL_RIGHT_BUTTON_UP
-		, RIGHT_BUTTON_DOWN
-		, RIGHT_BUTTON_UP
-		, RIGHT_BUTTON_CLICK
-		, RIGHT_BUTTON_DOUBLE_CLICK
-		> tmouse_button_right;
+typedef tmouse_button<SDL_RIGHT_BUTTON_DOWN,
+					  SDL_RIGHT_BUTTON_UP,
+					  RIGHT_BUTTON_DOWN,
+					  RIGHT_BUTTON_UP,
+					  RIGHT_BUTTON_CLICK,
+					  RIGHT_BUTTON_DOUBLE_CLICK> tmouse_button_right;
 
 
 /** The event handler class for the widget library. */
-class tdistributor
-	: public tmouse_button_left
-	, public tmouse_button_middle
-	, public tmouse_button_right
+class tdistributor : public tmouse_button_left,
+					 public tmouse_button_middle,
+					 public tmouse_button_right
 {
 public:
-	tdistributor(twidget& owner
-			, const tdispatcher::tposition queue_position);
+	tdistributor(twidget& owner, const tdispatcher::tposition queue_position);
 
 	~tdistributor();
 
@@ -324,9 +306,9 @@ private:
 	 * widget. These functions are called by the SDL event handling functions.
 	 */
 
-	void signal_handler_sdl_key_down(const SDLKey key
-			, const SDLMod modifier
-			, const Uint16 unicode);
+	void signal_handler_sdl_key_down(const SDLKey key,
+									 const SDLMod modifier,
+									 const Uint16 unicode);
 
 	void signal_handler_notify_removal(tdispatcher& widget, const tevent event);
 };

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,6 +19,8 @@
 #include "widgets/textbox.hpp"
 #include "clipboard.hpp"
 #include "log.hpp"
+#include "sdl/alpha.hpp"
+#include "serialization/string_utils.hpp"
 #include "video.hpp"
 
 static lg::log_domain log_display("display");
@@ -27,10 +29,8 @@ static lg::log_domain log_display("display");
 
 namespace gui {
 
-const int font_size = font::SIZE_PLUS;
-
-textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, double alpha, double alpha_focus, const bool auto_join)
-	   : scrollarea(video, auto_join), max_size_(max_size), text_(utils::string_to_wstring(text)),
+textbox::textbox(CVideo &video, int width, const std::string& text, bool editable, size_t max_size, int font_size, double alpha, double alpha_focus, const bool auto_join)
+	   : scrollarea(video, auto_join), max_size_(max_size), font_size_(font_size), text_(unicode_cast<ucs4::string>(text)),
 	     cursor_(text_.size()), selstart_(-1), selend_(-1),
 	     grabmouse_(false), text_pos_(0), editable_(editable),
 	     show_cursor_(true), show_cursor_at_(0), text_image_(NULL),
@@ -40,13 +40,20 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 {
 	// static const SDL_Rect area = d.screen_area();
 	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
-	set_measurements(width, font::get_max_height(font_size));
-	set_scroll_rate(font::get_max_height(font_size) / 2);
+	set_measurements(width, font::get_max_height(font_size_));
+	set_scroll_rate(font::get_max_height(font_size_) / 2);
 	update_text_cache(true);
 }
 
 textbox::~textbox()
 {
+}
+
+void textbox::update_location(SDL_Rect const &rect)
+{
+	scrollarea::update_location(rect);
+	update_text_cache(true);
+	set_dirty(true);
 }
 
 void textbox::set_inner_location(SDL_Rect const &rect)
@@ -59,14 +66,14 @@ void textbox::set_inner_location(SDL_Rect const &rect)
 
 const std::string textbox::text() const
 {
-	const std::string &ret = utils::wstring_to_string(text_);
+	const std::string &ret = unicode_cast<utf8::string>(text_);
 	return ret;
 }
 
 // set_text does not respect max_size_
 void textbox::set_text(const std::string& text, const SDL_Color& color)
 {
-	text_ = utils::string_to_wstring(text);
+	text_ = unicode_cast<ucs4::string>(text);
 	cursor_ = text_.size();
 	text_pos_ = 0;
 	selstart_ = -1;
@@ -88,7 +95,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 		return;
 	}
 	const bool is_at_bottom = get_position() == get_max_position();
-	const wide_string& wtext = utils::string_to_wstring(text);
+	const ucs4::string& wtext = unicode_cast<ucs4::string>(text);
 
 	const surface new_text = add_text_line(wtext, color);
 	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
@@ -106,8 +113,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 	sdl_blit(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
-	text_.resize(text_.size() + wtext.size());
-	std::copy(wtext.begin(),wtext.end(),text_.end()-wtext.size());
+	text_.insert(text_.end(), wtext.begin(), wtext.end());
 
 	set_dirty(true);
 	update_text_cache(false);
@@ -126,6 +132,36 @@ void textbox::clear()
 	set_dirty(true);
 	update_text_cache(true);
 	handle_text_changed(text_);
+}
+
+void textbox::set_selection(const int selstart, const int selend)
+{
+	if (!editable_) {
+		return;
+	}
+	if (selstart < 0 || selend < 0 || size_t(selstart) > text_.size() ||
+		size_t(selend) > text_.size()) {
+		WRN_DP << "out-of-boundary selection\n";
+		return;
+	}
+	selstart_= selstart;
+	selend_ = selend;
+	set_dirty(true);
+}
+
+void textbox::set_cursor_pos(const int cursor_pos)
+{
+	if (!editable_) {
+		return;
+	}
+	if (cursor_pos < 0 || size_t(cursor_pos) > text_.size()) {
+		WRN_DP << "out-of-boundary selection\n";
+		return;
+	}
+
+	cursor_ = cursor_pos;
+	update_text_cache(false);
+	set_dirty(true);
 }
 
 void textbox::draw_cursor(int pos, CVideo &video) const
@@ -220,6 +256,16 @@ bool textbox::editable() const
 	return editable_;
 }
 
+int textbox::font_size() const
+{
+	return font_size_;
+}
+
+void textbox::set_font_size(int fs)
+{
+	font_size_ = fs;
+}
+
 void textbox::scroll_to_bottom()
 {
 	set_position(get_max_position());
@@ -240,9 +286,9 @@ void textbox::scroll(unsigned int pos)
 	set_dirty(true);
 }
 
-surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
+surface textbox::add_text_line(const ucs4::string& text, const SDL_Color& color)
 {
-	line_height_ = font::get_max_height(font_size);
+	line_height_ = font::get_max_height(font_size_);
 
 	if(char_y_.empty()) {
 		char_y_.push_back(0);
@@ -257,24 +303,24 @@ surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 	// some more complex scripts (that is, RTL languages). This part of the work should
 	// actually be done by the font-rendering system.
 	std::string visible_string;
-	wide_string wrapped_text;
+	ucs4::string wrapped_text;
 
-	wide_string::const_iterator backup_itor = text.end();
+	ucs4::string::const_iterator backup_itor = text.end();
 
-	wide_string::const_iterator itor = text.begin();
+	ucs4::string::const_iterator itor = text.begin();
 	while(itor != text.end()) {
 		//If this is a space, save copies of the current state so we can roll back
 		if(char(*itor) == ' ') {
 			backup_itor = itor;
 		}
-		visible_string.append(utils::wchar_to_string(*itor));
+		visible_string.append(unicode_cast<utf8::string>(*itor));
 
 		if(char(*itor) == '\n') {
 			backup_itor = text.end();
 			visible_string = "";
 		}
 
-		int w = font::line_width(visible_string, font_size);
+		int w = font::line_width(visible_string, font_size_);
 
 		if(wrap_ && w >= inner_location().w) {
 			if(backup_itor != text.end()) {
@@ -287,7 +333,7 @@ surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 				}
 			}
 			backup_itor = text.end();
-			wrapped_text.push_back(wchar_t('\n'));
+			wrapped_text.push_back(ucs4::char_t('\n'));
 			char_x_.push_back(0);
 			char_y_.push_back(char_y_.back() + line_height_);
 			visible_string = "";
@@ -299,8 +345,8 @@ surface textbox::add_text_line(const wide_string& text, const SDL_Color& color)
 		}
 	}
 
-	const std::string s = utils::wstring_to_string(wrapped_text);
-	const surface res(font::get_rendered_text(s, font_size, color));
+	const std::string s = unicode_cast<utf8::string>(wrapped_text);
+	const surface res(font::get_rendered_text(s, font_size_, color));
 
 	return res;
 }
@@ -340,7 +386,7 @@ void textbox::erase_selection()
 	if(!is_selection())
 		return;
 
-	wide_string::iterator itor = text_.begin() + std::min(selstart_, selend_);
+	ucs4::string::iterator itor = text_.begin() + std::min(selstart_, selend_);
 	text_.erase(itor, itor + abs(selend_ - selstart_));
 	cursor_ = std::min(selstart_, selend_);
 	selstart_ = selend_ = -1;
@@ -533,7 +579,11 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 		pass_event_to_target(event);
 	}
 
-	wchar_t character = key.unicode;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	ucs4::char_t character = key.scancode;
+#else
+	ucs4::char_t character = key.unicode;
+#endif
 
 	//movement characters may have a "Unicode" field on some platforms, so ignore it.
 	if(!(c == SDLK_UP || c == SDLK_DOWN || c == SDLK_LEFT || c == SDLK_RIGHT ||
@@ -565,7 +615,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 				//cut off anything after the first newline
 				str.erase(std::find_if(str.begin(),str.end(),utils::isnewline),str.end());
 
-				wide_string s = utils::string_to_wstring(str);
+				ucs4::string s = unicode_cast<ucs4::string>(str);
 
 				if(text_.size() < max_size_) {
 					if(s.size() + text_.size() > max_size_) {
@@ -586,8 +636,8 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 						const size_t beg = std::min<size_t>(size_t(selstart_),size_t(selend_));
 						const size_t end = std::max<size_t>(size_t(selstart_),size_t(selend_));
 
-						wide_string ws = wide_string(text_.begin() + beg, text_.begin() + end);
-						std::string s = utils::wstring_to_string(ws);
+						ucs4::string ws(text_.begin() + beg, text_.begin() + end);
+						std::string s = unicode_cast<utf8::string>(ws);
 						copy_to_clipboard(s, false);
 					}
 				}

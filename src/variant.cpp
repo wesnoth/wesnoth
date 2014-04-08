@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -908,6 +908,7 @@ void variant::serialize_to_string(std::string& str) const
 	switch(type_) {
 	case TYPE_NULL:
 		str += "null()";
+		break;
 	case TYPE_INT:
 		str += boost::lexical_cast<std::string>(int_value_);
 		break;
@@ -1079,6 +1080,7 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 	switch(type_) {
 	case TYPE_NULL:
 		s << "(null)";
+		break;
 	case TYPE_INT:
 		s << int_value_;
 		break;
@@ -1086,6 +1088,9 @@ std::string variant::to_debug_string(std::vector<const game_logic::formula_calla
 		int fractional = decimal_value_ % 1000;
 		int integer = (decimal_value_ - fractional) / 1000;
 
+		// Make sure we get the sign on small negative values.
+		if ( integer == 0  &&  decimal_value_ < 0 )
+			s << '-';
 		s << integer << ".";
 
 		fractional = abs(fractional);

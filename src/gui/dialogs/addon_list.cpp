@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,8 @@
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -104,76 +105,54 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		tpane& pane = find_widget<tpane>(&window, "addons", false);
 
 
-		tpane::tcompare_functor ascending_name_functor =
-				boost::bind(&sort<std::string>, _1, _2, "name", true);
+		tpane::tcompare_functor ascending_name_functor
+				= boost::bind(&sort<std::string>, _1, _2, "name", true);
 
-		tpane::tcompare_functor descending_name_functor =
-				boost::bind(&sort<std::string>, _1, _2, "name", false);
+		tpane::tcompare_functor descending_name_functor
+				= boost::bind(&sort<std::string>, _1, _2, "name", false);
 
-		tpane::tcompare_functor ascending_size_functor =
-				boost::bind(&sort<int>, _1, _2, "size", true);
+		tpane::tcompare_functor ascending_size_functor
+				= boost::bind(&sort<int>, _1, _2, "size", true);
 
-		tpane::tcompare_functor descending_size_functor =
-				boost::bind(&sort<int>, _1, _2, "size", false);
+		tpane::tcompare_functor descending_size_functor
+				= boost::bind(&sort<int>, _1, _2, "size", false);
 
-
-		connect_signal_mouse_left_click(
-				  find_widget<tbutton>(&window, "sort_name_ascending", false)
-				, boost::bind(
-					  &tpane::sort
-					, &pane
-					, ascending_name_functor));
 
 		connect_signal_mouse_left_click(
-				  find_widget<tbutton>(&window, "sort_name_descending", false)
-				, boost::bind(
-					  &tpane::sort
-					, &pane
-					, descending_name_functor));
+				find_widget<tbutton>(&window, "sort_name_ascending", false),
+				boost::bind(&tpane::sort, &pane, ascending_name_functor));
 
 		connect_signal_mouse_left_click(
-				  find_widget<tbutton>(&window, "sort_size_ascending", false)
-				, boost::bind(
-					  &tpane::sort
-					, &pane
-					, ascending_size_functor));
+				find_widget<tbutton>(&window, "sort_name_descending", false),
+				boost::bind(&tpane::sort, &pane, descending_name_functor));
 
 		connect_signal_mouse_left_click(
-				  find_widget<tbutton>(&window, "sort_size_descending", false)
-				, boost::bind(
-					  &tpane::sort
-					, &pane
-					, descending_size_functor));
+				find_widget<tbutton>(&window, "sort_size_ascending", false),
+				boost::bind(&tpane::sort, &pane, ascending_size_functor));
+
+		connect_signal_mouse_left_click(
+				find_widget<tbutton>(&window, "sort_size_descending", false),
+				boost::bind(&tpane::sort, &pane, descending_size_functor));
 
 		/***** ***** Init the filter text box. ***** *****/
 
-		ttext_box& filter_box =
-				find_widget<ttext_box>(&window, "filter", false);
+		ttext_box& filter_box
+				= find_widget<ttext_box>(&window, "filter", false);
 
-		tpane::tfilter_functor filter_functor =
-				boost::bind(&contains, _1, "filter", boost::cref(filter_box));
+		tpane::tfilter_functor filter_functor
+				= boost::bind(&contains, _1, "filter", boost::cref(filter_box));
 
 		connect_signal_notify_modified(
-				  filter_box
-				, boost::bind(
-					  &tpane::filter
-					, &pane
-					, filter_functor));
+				filter_box, boost::bind(&tpane::filter, &pane, filter_functor));
 
 		/***** ***** Fill the listbox. ***** *****/
 
-		tbutton* load_button = find_widget<tbutton>(
-				  &window
-				, "load_campaign"
-				, false
-				, false);
+		tbutton* load_button
+				= find_widget<tbutton>(&window, "load_campaign", false, false);
 		if(load_button) {
 			connect_signal_mouse_left_click(
-					  *load_button
-					, boost::bind(
-						  &taddon_list::load
-						, this
-						, boost::ref(pane)));
+					*load_button,
+					boost::bind(&taddon_list::load, this, boost::ref(pane)));
 			load(pane);
 		} else {
 			while(cfg_iterators_.first != cfg_iterators_.second) {
@@ -189,26 +168,24 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 		 * @todo do we really want to keep the length limit for the various
 		 * items?
 		 */
-		FOREACH(const AUTO& c, cfg_.child_range("campaign")) {
+		FOREACH(const AUTO & c, cfg_.child_range("campaign"))
+		{
 			std::map<std::string, string_map> data;
 			string_map item;
 
 			item["label"] = c["icon"];
 			data.insert(std::make_pair("icon", item));
 
-			std::string tmp = c["name"];
-			utils::truncate_as_wstring(tmp, 20);
-			item["label"] = tmp;
+			utf8::string tmp = c["name"];
+			item["label"] = utf8::truncate(tmp, 20);
 			data.insert(std::make_pair("name", item));
 
 			tmp = c["version"].str();
-			utils::truncate_as_wstring(tmp, 12);
-			item["label"] = tmp;
+			item["label"] = utf8::truncate(tmp, 12);
 			data.insert(std::make_pair("version", item));
 
 			tmp = c["author"].str();
-			utils::truncate_as_wstring(tmp, 16);
-			item["label"] = tmp;
+			item["label"] = utf8::truncate(tmp, 16);
 			data.insert(std::make_pair("author", item));
 
 			item["label"] = c["downloads"];
@@ -224,88 +201,70 @@ void taddon_list::pre_show(CVideo& /*video*/, twindow& window)
 
 void taddon_list::create_campaign(tpane& pane, const config& campaign)
 {
-			/***** Determine the data for the widgets. *****/
+	/***** Determine the data for the widgets. *****/
 
-			std::map<std::string, string_map> data;
-			string_map item;
+	std::map<std::string, string_map> data;
+	string_map item;
 
-			item["label"] = campaign["icon"];
-			data.insert(std::make_pair("icon", item));
+	item["label"] = campaign["icon"];
+	data.insert(std::make_pair("icon", item));
 
-			std::string tmp = campaign["name"];
-			utils::truncate_as_wstring(tmp, 20);
-			item["label"] = tmp;
-			data.insert(std::make_pair("name", item));
+	utf8::string tmp = campaign["name"];
+	item["label"] = utf8::truncate(tmp, 20);
+	data.insert(std::make_pair("name", item));
 
-			tmp = campaign["version"].str();
-			utils::truncate_as_wstring(tmp, 12);
-			item["label"] = tmp;
-			data.insert(std::make_pair("version", item));
+	tmp = campaign["version"].str();
+	item["label"] = utf8::truncate(tmp, 12);
+	data.insert(std::make_pair("version", item));
 
-			tmp = campaign["author"].str();
-			utils::truncate_as_wstring(tmp, 16);
-			item["label"] = tmp;
-			data.insert(std::make_pair("author", item));
+	tmp = campaign["author"].str();
+	item["label"] = utf8::truncate(tmp, 16);
+	data.insert(std::make_pair("author", item));
 
-			item["label"] = campaign["downloads"];
-			data.insert(std::make_pair("downloads", item));
+	item["label"] = campaign["downloads"];
+	data.insert(std::make_pair("downloads", item));
 
-			item["label"] = utils::si_string(
-					  campaign["size"]
-					, true
-					, _("unit_byte^B"));
+	item["label"] = utils::si_string(campaign["size"], true, _("unit_byte^B"));
 
-			data.insert(std::make_pair("size", item));
+	data.insert(std::make_pair("size", item));
 
-			item["label"] = campaign["description"];
-			data.insert(std::make_pair("description", item));
+	item["label"] = campaign["description"];
+	data.insert(std::make_pair("description", item));
 
-			/***** Determine the tags for the campaign. *****/
+	/***** Determine the tags for the campaign. *****/
 
-			std::map<std::string, std::string> tags;
-			tags.insert(std::make_pair("name", campaign["name"]));
-			tags.insert(std::make_pair("size", campaign["size"]));
+	std::map<std::string, std::string> tags;
+	tags.insert(std::make_pair("name", campaign["name"]));
+	tags.insert(std::make_pair("size", campaign["size"]));
 
-			std::stringstream filter;
-			filter << campaign["version"] << '\n'
-					<< campaign["author"] << '\n'
-					<< campaign["type"] << '\n'
-					<< campaign["description"];
+	std::stringstream filter;
+	filter << campaign["version"] << '\n' << campaign["author"] << '\n'
+		   << campaign["type"] << '\n' << campaign["description"];
 
-			tags.insert(std::make_pair(
-					  "filter"
-					, utils::lowercase(filter.str())));
+	tags.insert(std::make_pair("filter", utf8::lowercase(filter.str())));
 
-			/***** Add the campaign. *****/
+	/***** Add the campaign. *****/
 
-			const unsigned id = pane.create_item(data, tags);
+	const unsigned id = pane.create_item(data, tags);
 
-			tgrid* grid = pane.grid(id);
-			assert(grid);
+	tgrid* grid = pane.grid(id);
+	assert(grid);
 
-			ttoggle_button* collapse = find_widget<ttoggle_button>(
-					  grid
-					, "collapse"
-					, false
-					, false);
+	ttoggle_button* collapse
+			= find_widget<ttoggle_button>(grid, "collapse", false, false);
 
-			if(collapse) {
-				collapse->set_visible(twidget::tvisible::invisible);
-				collapse->set_callback_state_change(boost::bind(
-						  &taddon_list::collapse
-						, this
-						, boost::ref(*grid)));
+	if(collapse) {
+		collapse->set_visible(twidget::tvisible::invisible);
+		collapse->set_callback_state_change(
+				boost::bind(&taddon_list::collapse, this, boost::ref(*grid)));
 
-				find_widget<ttoggle_button>(grid, "expand", false)
-						.set_callback_state_change(boost::bind(
-							  &taddon_list::expand
-							, this
-							, boost::ref(*grid)));
+		find_widget<ttoggle_button>(grid, "expand", false)
+				.set_callback_state_change(boost::bind(
+						 &taddon_list::expand, this, boost::ref(*grid)));
 
-				find_widget<tlabel>(grid, "description", false)
-						.set_visible(twidget::tvisible::invisible);
-			}
-
+		find_widget<tlabel>(grid, "description", false)
+				.set_visible(twidget::tvisible::invisible);
+	}
 }
 
 void taddon_list::load(tpane& pane)
@@ -320,4 +279,3 @@ void taddon_list::load(tpane& pane)
 }
 
 } // namespace gui2
-

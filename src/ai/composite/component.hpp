@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -66,7 +66,7 @@ public:
 	virtual std::string get_id() const = 0;
 	virtual std::string get_name() const = 0;
 	virtual std::string get_engine() const = 0;
-	virtual ~component() {};
+	virtual ~component() {}
 	virtual component* get_child(const path_element &child);
 	virtual std::vector<component*> get_children(const std::string &type);
 	virtual std::vector<std::string> get_children_types();

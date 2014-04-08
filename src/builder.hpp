@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2004 - 2013 by Philippe Plantier <ayin@anathas.org>
+   Copyright (C) 2004 - 2014 by Philippe Plantier <ayin@anathas.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -156,7 +156,7 @@ public:
 			images(),
 			tods(),
 			random_start(random_start)
-			{};
+			{}
 
 		/** Constructor for true [variant] cases */
 		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start = true);
@@ -250,7 +250,7 @@ public:
 			no_flag(),
 			has_flag(),
 			images()
-			{};
+			{}
 
 		terrain_constraint(map_location loc) :
 			loc(loc),
@@ -259,7 +259,7 @@ public:
 			no_flag(),
 			has_flag(),
 			images()
-			{};
+			{}
 
 		map_location loc;
 		t_translation::t_match terrain_types_match;

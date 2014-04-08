@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,22 +17,23 @@
 
 #include "gui/widgets/scrollbar.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /** A horizontal scrollbar. */
 class thorizontal_scrollbar : public tscrollbar_
 {
 public:
-
-	thorizontal_scrollbar() :
-		tscrollbar_()
+	thorizontal_scrollbar() : tscrollbar_()
 	{
 	}
 
 private:
-
 	/** Inherited from tscrollbar. */
-	unsigned get_length() const { return get_width(); }
+	unsigned get_length() const
+	{
+		return get_width();
+	}
 
 	/** Inherited from tscrollbar. */
 	unsigned minimum_positioner_length() const;
@@ -53,8 +54,11 @@ private:
 	int on_bar(const tpoint& coordinate) const;
 
 	/** Inherited from tscrollbar. */
-	int get_length_difference(const tpoint& original, const tpoint& current) const
-		{ return current.x - original.x; }
+	int get_length_difference(const tpoint& original, const tpoint& current)
+			const
+	{
+		return current.x - original.x;
+	}
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -63,4 +67,3 @@ private:
 } // namespace gui2
 
 #endif
-

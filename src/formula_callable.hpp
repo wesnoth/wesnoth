@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2008 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -61,7 +61,7 @@ public:
 		return do_compare(other) < 0;
 	}
 
-	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {};
+	virtual void get_inputs(std::vector<formula_input>* /*inputs*/) const {}
 
         //note: this function should NOT overwrite str, but append text to it!
 	void serialize(std::string& str) const {

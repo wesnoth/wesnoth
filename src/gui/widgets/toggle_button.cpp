@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,8 @@
 #define LOG_SCOPE_HEADER get_control_type() + " [" + id() + "] " + __func__
 #define LOG_HEADER LOG_SCOPE_HEADER + ':'
 
-namespace gui2 {
+namespace gui2
+{
 
 REGISTER_WIDGET(toggle_button)
 
@@ -42,16 +43,17 @@ ttoggle_button::ttoggle_button()
 	, icon_name_()
 {
 	connect_signal<event::MOUSE_ENTER>(boost::bind(
-				&ttoggle_button::signal_handler_mouse_enter, this, _2, _3));
+			&ttoggle_button::signal_handler_mouse_enter, this, _2, _3));
 	connect_signal<event::MOUSE_LEAVE>(boost::bind(
-				&ttoggle_button::signal_handler_mouse_leave, this, _2, _3));
+			&ttoggle_button::signal_handler_mouse_leave, this, _2, _3));
 
 	connect_signal<event::LEFT_BUTTON_CLICK>(boost::bind(
-				&ttoggle_button::signal_handler_left_button_click
-					, this, _2, _3));
+			&ttoggle_button::signal_handler_left_button_click, this, _2, _3));
 	connect_signal<event::LEFT_BUTTON_DOUBLE_CLICK>(boost::bind(
-				&ttoggle_button::signal_handler_left_button_double_click
-					, this, _2, _3));
+			&ttoggle_button::signal_handler_left_button_double_click,
+			this,
+			_2,
+			_3));
 }
 
 void ttoggle_button::set_members(const string_map& data)
@@ -99,7 +101,8 @@ void ttoggle_button::update_canvas()
 
 	// set icon in canvases
 	std::vector<tcanvas>& canvases = tcontrol::canvas();
-	FOREACH(AUTO& canvas, canvases) {
+	FOREACH(AUTO & canvas, canvases)
+	{
 		canvas.set_variable("icon", variant(icon_name_));
 	}
 
@@ -143,8 +146,8 @@ const std::string& ttoggle_button::get_control_type() const
 	return type;
 }
 
-void ttoggle_button::signal_handler_mouse_enter(
-		const event::tevent event, bool& handled)
+void ttoggle_button::signal_handler_mouse_enter(const event::tevent event,
+												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -156,8 +159,8 @@ void ttoggle_button::signal_handler_mouse_enter(
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_mouse_leave(
-		const event::tevent event, bool& handled)
+void ttoggle_button::signal_handler_mouse_leave(const event::tevent event,
+												bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -169,8 +172,8 @@ void ttoggle_button::signal_handler_mouse_leave(
 	handled = true;
 }
 
-void ttoggle_button::signal_handler_left_button_click(
-		const event::tevent event, bool& handled)
+void ttoggle_button::signal_handler_left_button_click(const event::tevent event,
+													  bool& handled)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
 
@@ -205,4 +208,3 @@ void ttoggle_button::signal_handler_left_button_double_click(
 	handled = true;
 }
 } // namespace gui2
-

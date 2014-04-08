@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,16 +17,19 @@
 
 #include "gui/auxiliary/window_builder/control.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
-struct tbuilder_vertical_scrollbar
-	: public tbuilder_control
+struct tbuilder_vertical_scrollbar : public tbuilder_control
 {
 	explicit tbuilder_vertical_scrollbar(const config& cfg);
 
-	twidget* build () const;
+	using tbuilder_control::build;
+
+	twidget* build() const;
 };
 
 } // namespace implementation
@@ -34,4 +37,3 @@ struct tbuilder_vertical_scrollbar
 } // namespace gui2
 
 #endif
-

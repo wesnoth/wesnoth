@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -54,6 +54,8 @@ typedef std::map<std::string, int> t_file_number_map;
 static t_file_number_map file_number_map;
 
 static bool encode_filename = true;
+
+static std::string preprocessor_error_detail_prefix = "\n    ";
 
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code){
@@ -326,7 +328,8 @@ std::string lineno_string(const std::string &lineno)
 {
 	std::vector< std::string > pos = utils::quoted_split(lineno, ' ');
 	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
-	std::string included_from = " included from ";
+	std::string included_from =
+		preprocessor_error_detail_prefix + "included from ";
 	std::string res;
 	while (i != end) {
 		std::string const &line = *(i++);
@@ -348,7 +351,8 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	std::ostringstream pos;
 	pos << l << ' ' << location_;
 	position = lineno_string(pos.str());
-	error = error_type + " at " + position;
+	error = error_type + '\n';
+	error += "at " + position;
 	ERR_CF << error << '\n';
 	throw preproc_config::error(error);
 }
@@ -401,7 +405,7 @@ class preprocessor_file: preprocessor
 	std::vector< std::string > files_;
 	std::vector< std::string >::const_iterator pos_, end_;
 public:
-	preprocessor_file(preprocessor_streambuf &, std::string const &);
+	preprocessor_file(preprocessor_streambuf &, std::string const &, size_t);
 	virtual bool get_chunk();
 };
 
@@ -505,14 +509,27 @@ bool operator==(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs){ return
 bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE rhs, char lhs){ return !(lhs == rhs); }
 bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs){ return rhs != lhs; }
 
-preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name) :
+preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name, size_t symbol_index=-1) :
 	preprocessor(t),
 	files_(),
 	pos_(),
 	end_()
 {
-	if (filesystem::is_directory(name))
+	if (filesystem::is_directory(name)) {
+
 		filesystem::get_files_in_dir(name, &files_, NULL, filesystem::ENTIRE_FILE_PATH, filesystem::SKIP_MEDIA_DIR, filesystem::DO_REORDER);
+
+		BOOST_FOREACH(std::string fname, files_) {
+			size_t cpos = fname.rfind(" ");
+			if (cpos != std::string::npos && cpos >= symbol_index) {
+				std::stringstream ss;
+				ss << "Found filename containing whitespace: '" << filesystem::base_name(fname) << "' in included directory '" << name << "'.\nThe included symbol probably looks similar to '"
+				 << filesystem::directory_name(fname.substr(symbol_index)) << "'";
+				// TODO: find a real linenumber
+				target_.error(ss.str(), -1);
+			}
+		}
+	}
 	else {
 		std::istream * file_stream = filesystem::istream_file(name);
 		if (!file_stream->good()) {
@@ -1026,8 +1043,8 @@ bool preprocessor_data::get_chunk()
 				if (strings_.size() - token.stack_pos != 1)
 				{
 					std::ostringstream error;
-					error << "macro argument '" << symbol
-					      << "' does not expect any argument";
+					error << "Macro argument '" << symbol
+					      << "' does not expect any arguments";
 					target_.error(error.str(), linenum_);
 				}
 				std::ostringstream v;
@@ -1043,7 +1060,7 @@ bool preprocessor_data::get_chunk()
 				if (nb_arg != val.arguments.size())
 				{
 					std::ostringstream error;
-					error << "preprocessor symbol '" << symbol << "' expects "
+					error << "Preprocessor symbol '" << symbol << "' expects "
 					      << val.arguments.size() << " arguments, but has "
 					      << nb_arg << " arguments";
 					target_.error(error.str(), linenum_);
@@ -1079,13 +1096,15 @@ bool preprocessor_data::get_chunk()
 				if (!nfname.empty())
 				{
 					if (!slowpath_)
-						new preprocessor_file(target_, nfname);
+						// nfname.size() - symbol.size() gives you an index into nfname
+						// This does not necessarily match the symbol though, as it can start with ~ or ./
+						new preprocessor_file(target_, nfname, nfname.size() - symbol.size());
 					else {
 						std::ostringstream res;
 						preprocessor_streambuf *buf =
 							new preprocessor_streambuf(target_);
 						{	std::istream in(buf);
-							new preprocessor_file(*buf, nfname);
+							new preprocessor_file(*buf, nfname, nfname.size() - symbol.size());
 							res << in.rdbuf(); }
 						delete buf;
 						put(res.str());

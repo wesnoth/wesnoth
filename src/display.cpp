@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -23,7 +23,6 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
-#include "hotkeys.hpp"
 #include "language.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
@@ -80,7 +79,7 @@ void display::parse_team_overlays()
 {
 	const team& curr_team = (*teams_)[playing_team()];
 	const team& prev_team = (*teams_)[playing_team()-1 < teams_->size() ? playing_team()-1 : teams_->size()-1];
-	BOOST_FOREACH(const game_display::overlay_map::value_type i, overlays_) {
+	BOOST_FOREACH(const game_display::overlay_map::value_type i, *overlays_) {
 		const overlay& ov = i.second;
 		if (!ov.team_name.empty() &&
 			((ov.team_name.find(curr_team.team_name()) + 1) != 0) !=
@@ -98,19 +97,19 @@ void display::add_overlay(const map_location& loc, const std::string& img, const
 			get_location_y(loc) + hex_size() / 2, halo, loc);
 
 	const overlay item(img, halo, halo_handle, team_name, visible_under_fog);
-	overlays_.insert(overlay_map::value_type(loc,item));
+	overlays_->insert(overlay_map::value_type(loc,item));
 }
 
 void display::remove_overlay(const map_location& loc)
 {
 	typedef overlay_map::const_iterator Itor;
-	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
+	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
 	while(itors.first != itors.second) {
 		halo::remove(itors.first->second.halo_handle);
 		++itors.first;
 	}
 
-	overlays_.erase(loc);
+	overlays_->erase(loc);
 }
 
 void display::remove_single_overlay(const map_location& loc, const std::string& toDelete)
@@ -118,14 +117,14 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 	//Iterate through the values with key of loc
 	typedef overlay_map::iterator Itor;
 	overlay_map::iterator iteratorCopy;
-	std::pair<Itor,Itor> itors = overlays_.equal_range(loc);
+	std::pair<Itor,Itor> itors = overlays_->equal_range(loc);
 	while(itors.first != itors.second) {
 		//If image or halo of overlay struct matches toDelete, remove the overlay
 		if(itors.first->second.image == toDelete || itors.first->second.halo == toDelete) {
 			iteratorCopy = itors.first;
 			++itors.first;
 			halo::remove(iteratorCopy->second.halo_handle);
-			overlays_.erase(iteratorCopy);
+			overlays_->erase(iteratorCopy);
 		}
 		else {
 			++itors.first;
@@ -188,6 +187,10 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 	activeTeam_(0),
 	drawing_buffer_(),
 	map_screenshot_(false),
+	reach_map_(),
+	reach_map_old_(),
+	reach_map_changed_(true),
+	overlays_(NULL),
 	fps_handle_(0),
 	invalidated_hexes_(0),
 	drawn_hexes_(0),
@@ -204,6 +207,8 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 #endif
 {
 	singleton_ = this;
+
+	blindfold_ctr_ = 0;
 
 	read(level.child_or_empty("display"));
 
@@ -247,7 +252,7 @@ void display::init_flags() {
 
 	flags_.clear();
 	if (!teams_) return;
-	flags_.reserve(teams_->size());
+	flags_.resize(teams_->size());
 
 	std::vector<std::string> side_colors;
 	side_colors.reserve(teams_->size());
@@ -255,45 +260,65 @@ void display::init_flags() {
 	for(size_t i = 0; i != teams_->size(); ++i) {
 		std::string side_color = team::get_side_color_index(i+1);
 		side_colors.push_back(side_color);
-		std::string flag = (*teams_)[i].flag();
-		std::string old_rgb = game_config::flag_rgb;
-		std::string new_rgb = side_color;
-
-		if(flag.empty()) {
-			flag = game_config::images::flag;
-		}
-
-		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
-
-		// Must recolor flag image
-		animated<image::locator> temp_anim;
-
-		std::vector<std::string> items = utils::square_parenthetical_split(flag);
-		std::vector<std::string>::const_iterator itor = items.begin();
-		for(; itor != items.end(); ++itor) {
-			const std::vector<std::string>& items = utils::split(*itor, ':');
-			std::string str;
-			int time;
-
-			if(items.size() > 1) {
-				str = items.front();
-				time = atoi(items.back().c_str());
-			} else {
-				str = *itor;
-				time = 100;
-			}
-			std::stringstream temp;
-			temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
-			image::locator flag_image(temp.str());
-			temp_anim.add_frame(time, flag_image);
-		}
-		flags_.push_back(temp_anim);
-
-		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
+		init_flags_for_side_internal(i, side_color);
 	}
 	image::set_team_colors(&side_colors);
 }
 
+void display::reinit_flags_for_side(size_t side)
+{
+	if (!teams_ || side >= teams_->size()) {
+		ERR_DP << "Cannot rebuild flags for inexistent or unconfigured side " << side << '\n';
+		return;
+	}
+
+	init_flags_for_side_internal(side, team::get_side_color_index(side + 1));
+}
+
+void display::init_flags_for_side_internal(size_t n, const std::string& side_color)
+{
+	assert(teams_ != NULL);
+	assert(n < teams_->size());
+	assert(n < flags_.size());
+
+	std::string flag = (*teams_)[n].flag();
+	std::string old_rgb = game_config::flag_rgb;
+	std::string new_rgb = side_color;
+
+	if(flag.empty()) {
+		flag = game_config::images::flag;
+	}
+
+	LOG_DP << "Adding flag for team " << n << " from animation " << flag << "\n";
+
+	// Must recolor flag image
+	animated<image::locator> temp_anim;
+
+	std::vector<std::string> items = utils::square_parenthetical_split(flag);
+	std::vector<std::string>::const_iterator itor = items.begin();
+	for(; itor != items.end(); ++itor) {
+		const std::vector<std::string>& items = utils::split(*itor, ':');
+		std::string str;
+		int time;
+
+		if(items.size() > 1) {
+			str = items.front();
+			time = atoi(items.back().c_str());
+		} else {
+			str = *itor;
+			time = 100;
+		}
+		std::stringstream temp;
+		temp << str << "~RC(" << old_rgb << ">"<< new_rgb << ")";
+		image::locator flag_image(temp.str());
+		temp_anim.add_frame(time, flag_image);
+	}
+
+	animated<image::locator>& f = flags_[n];
+
+	f = temp_anim;
+	f.start_animation(rand() % f.get_end_time(), true);
+}
 
 struct is_energy_color {
 	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
@@ -551,6 +576,19 @@ void display::change_units(unit_map* umap)
 void display::change_teams(const std::vector<team>* teams)
 {
 	teams_ = teams;
+}
+
+void display::blindfold(bool value)
+{
+	if(value == true)
+		++blindfold_ctr_;
+	else
+		--blindfold_ctr_;
+}
+
+bool display::is_blindfolded() const
+{
+	return blindfold_ctr_ > 0;
 }
 
 
@@ -912,7 +950,7 @@ void display::create_buttons()
 
 		if (!i->is_button()) continue;
 
-		gui::button b(screen_, i->title(), gui::button::TYPE_TURBO, i->image(),
+		gui::button b(screen_, i->title(), gui::button::TYPE_PRESS, i->image(),
 				gui::button::DEFAULT_SPACE, true, i->overlay());
 		DBG_DP << "drawing button " << i->get_id() << "\n";
 		b.set_id(i->get_id());
@@ -1008,17 +1046,27 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 		}
 
 		if(start == 6) {
+			// Completely surrounded by fog or shroud. This might have
+			// a special graphic.
+			const std::string name = *image_prefix[v] + "-all.png";
+			if ( image::exists(name) ) {
+				names.push_back(name);
+				// Proceed to the next visibility (fog -> shroud -> clear).
+				continue;
+			}
+			// No special graphic found. We'll just combine some other images
+			// and hope it works out.
 			start = 0;
 		}
 
 		// Find all the directions overlap occurs from
-		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
+		for (int i = (start+1)%6, cap1 = 0;  i != start && cap1 != 6;  ++cap1) {
 			if(tiles[i] == v) {
 				std::ostringstream stream;
 				std::string name;
 				stream << *image_prefix[v];
 
-				for(int n = 0; v == tiles[i] && n != 6; i = (i+1)%6, ++n) {
+				for (int cap2 = 0;  v == tiles[i] && cap2 != 6;  i = (i+1)%6, ++cap2) {
 					stream << get_direction(i);
 
 					if(!image::exists(stream.str() + ".png")) {
@@ -1107,7 +1155,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 	if(terrains != NULL) {
 		// Cache the offmap name.
-		// Since it is themeabel it can change,
+		// Since it is themeable it can change,
 		// so don't make it static.
 		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
 		for(std::vector<animated<image::locator> >::const_iterator it =
@@ -1431,6 +1479,12 @@ void display::draw_all_panels()
 {
 	const surface& screen(screen_.getSurface());
 
+	/*
+	 * The minimap is also a panel, force it to update its contents.
+	 * This is required when the size of the minimap has been modified.
+	 */
+	recalculate_minimap();
+
 	const std::vector<theme::panel>& panels = theme_.panels();
 	for(std::vector<theme::panel>::const_iterator p = panels.begin(); p != panels.end(); ++p) {
 		draw_panel(video(), *p, menu_buttons_);
@@ -1564,6 +1618,7 @@ void display::select_hex(map_location hex)
 	invalidate(selectedHex_);
 	selectedHex_ = hex;
 	invalidate(selectedHex_);
+	recalculate_minimap();
 }
 
 void display::highlight_hex(map_location hex)
@@ -1711,8 +1766,7 @@ void display::enable_menu(const std::string& item, bool enable)
 		if(hasitem != menu->items().end()) {
 			const size_t index = menu - theme_.menus().begin();
 			if(index >= menu_buttons_.size()) {
-				assert(false);
-				return;
+				continue;
 			}
 			menu_buttons_[index].enable(enable);
 		}
@@ -1803,7 +1857,7 @@ void display::draw_minimap()
 	}
 
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_);
+		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_, (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
 		if(minimap_ == NULL) {
 			return;
 		}
@@ -1851,6 +1905,8 @@ void display::draw_minimap()
 
 void display::draw_minimap_units()
 {
+	if (!preferences::minimap_draw_units() || is_blindfolded()) return;
+
 	double xscaling = 1.0 * minimap_location_.w / get_map().w();
 	double yscaling = 1.0 * minimap_location_.h / get_map().h();
 
@@ -1868,25 +1924,20 @@ void display::draw_minimap_units()
 		if (preferences::minimap_movement_coding()) {
 
 			if ((*teams_)[currentTeam_].is_enemy(side)) {
-				col = team::get_minimap_color(5);
+				col = int_to_color(game_config::color_info(preferences::enemy_color()).rep());
 			} else {
 
 				if (currentTeam_ +1 == static_cast<unsigned>(side)) {
 
-					if (u->movement_left() == u->total_movement()) {
-						col = team::get_minimap_color(3);
-					} else {
+					if (u->movement_left() == u->total_movement())
+						col = int_to_color(game_config::color_info(preferences::unmoved_color()).rep());
+					else if (u->movement_left() == 0)
+						col = int_to_color(game_config::color_info(preferences::moved_color()).rep());
+					else
+						col = int_to_color(game_config::color_info(preferences::partial_color()).rep());
 
-						if (u->movement_left() == 0) {
-							col = team::get_minimap_color(1);
-						} else {
-							col = team::get_minimap_color(7);
-						}
-					}
-
-				} else {
-					col = team::get_minimap_color(2);
-				}
+				} else
+					col = int_to_color(game_config::color_info(preferences::allied_color()).rep());
 			}
 		}
 
@@ -2541,7 +2592,7 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		typedef overlay_map::const_iterator Itor;
-		std::pair<Itor,Itor> overlays = overlays_.equal_range(loc);
+		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
 					overlays.first->second.team_name.find((*teams_)[playing_team()].team_name()) != std::string::npos)
@@ -2775,7 +2826,10 @@ void display::refresh_report(std::string const &report_name, const config * new_
 			// Draw a text element.
 			font::ttext text;
 			if (item->font_rgb_set()) {
-				text.set_foreground_color(item->font_rgb());
+				// font_rgb() has no alpha channel and uses a 0x00RRGGBB
+				// layout instead of 0xRRGGBBAA which is what ttext expects,
+				// so shift the value to the left and add fully-opaque alpha.
+				text.set_foreground_color((item->font_rgb() << 8) + 0xFF);
 			}
 			bool eol = false;
 			if (t[t.size() - 1] == '\n') {
@@ -3054,7 +3108,7 @@ void display::write(config& cfg) const
 	cfg["view_locked"] = view_locked_;
 	cfg["color_adjust_red"] = color_adjust_.r;
 	cfg["color_adjust_green"] = color_adjust_.g;
-	cfg["color_adjust_blue_"] = color_adjust_.b;
+	cfg["color_adjust_blue"] = color_adjust_.b;
 }
 
 void display::read(const config& cfg)
@@ -3062,7 +3116,48 @@ void display::read(const config& cfg)
 	view_locked_ = cfg["view_locked"].to_bool(false);
 	color_adjust_.r = cfg["color_adjust_red"].to_int(0);
 	color_adjust_.g = cfg["color_adjust_green"].to_int(0);
-	color_adjust_.b = cfg["color_adjust_blue_"].to_int(0);
+	color_adjust_.b = cfg["color_adjust_blue"].to_int(0);
+}
+
+void display::process_reachmap_changes()
+{
+	if (!reach_map_changed_) return;
+	if (reach_map_.empty() != reach_map_old_.empty()) {
+		// Invalidate everything except the non-darkened tiles
+		reach_map &full = reach_map_.empty() ? reach_map_old_ : reach_map_;
+
+		rect_of_hexes hexes = get_visible_hexes();
+		rect_of_hexes::iterator i = hexes.begin(), end = hexes.end();
+		for (;i != end; ++i) {
+			reach_map::iterator reach = full.find(*i);
+			if (reach == full.end()) {
+				// Location needs to be darkened or brightened
+				invalidate(*i);
+			} else if (reach->second != 1) {
+				// Number needs to be displayed or cleared
+				invalidate(*i);
+			}
+		}
+	} else if (!reach_map_.empty()) {
+		// Invalidate only changes
+		reach_map::iterator reach, reach_old;
+		for (reach = reach_map_.begin(); reach != reach_map_.end(); ++reach) {
+			reach_old = reach_map_old_.find(reach->first);
+			if (reach_old == reach_map_old_.end()) {
+				invalidate(reach->first);
+			} else {
+				if (reach_old->second != reach->second) {
+					invalidate(reach->first);
+				}
+				reach_map_old_.erase(reach_old);
+			}
+		}
+		for (reach_old = reach_map_old_.begin(); reach_old != reach_map_old_.end(); ++reach_old) {
+			invalidate(reach_old->first);
+		}
+	}
+	reach_map_old_ = reach_map_;
+	reach_map_changed_ = false;
 }
 
 display *display::singleton_ = NULL;

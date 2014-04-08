@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -296,14 +296,10 @@ bool game_controller::init_joystick()
 
 	SDL_JoystickEventState(SDL_ENABLE);
 
-	SDL_Joystick* joystick;
-
 	bool joystick_found = false;
 	for (int i = 0; i<joysticks; i++)  {
 
-		joystick = SDL_JoystickOpen(i);
-
-		if (joystick)
+		if (SDL_JoystickOpen(i))
 			joystick_found = true;
 	}
 	return joystick_found;
@@ -332,12 +328,6 @@ bool game_controller::init_language()
 	}
 	::set_language(locale);
 
-	if(!cmdline_opts_.nogui) {
-		std::string wm_title_string = _("The Battle for Wesnoth");
-		wm_title_string += " - " + game_config::revision;
-		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-	}
-
 	return true;
 }
 
@@ -353,11 +343,19 @@ bool game_controller::init_video()
 		return true;
 	}
 
+	std::string wm_title_string = _("The Battle for Wesnoth");
+	wm_title_string += " - " + game_config::revision;
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
+	SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
+
 #if !(defined(__APPLE__))
 	surface icon(image::get_image("game-icon.png", image::UNSCALED));
 	if(icon != NULL) {
 		///must be called after SDL_Init() and before setting video mode
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 		SDL_WM_SetIcon(icon,NULL);
+#endif
 	}
 #endif
 
@@ -373,17 +371,18 @@ bool game_controller::init_video()
 		bpp = 32;
 	}
 
+	if(!found_matching && (video_flags & FULL_SCREEN)) {
+		video_flags ^= FULL_SCREEN;
+		found_matching = preferences::detect_video_settings(video_, resolution, bpp, video_flags);
+		if (found_matching) {
+			std::cerr << "Failed to set " << resolution.first << 'x' << resolution.second << 'x' << bpp << " in fullscreen mode. Using windowed instead.\n";
+		}
+	}
+
 	if(!found_matching) {
 		std::cerr << "Video mode " << resolution.first << 'x'
 			<< resolution.second << 'x' << bpp
 			<< " is not supported.\n";
-
-		if ((video_flags & FULL_SCREEN)) {
-			std::cerr << "Try running the program with the --windowed option "
-				<< "using a " << bpp << "bpp setting for your display adapter.\n";
-		} else {
-			std::cerr << "Try running the program with the --fullscreen option.\n";
-		}
 
 		return false;
 	}
@@ -396,7 +395,14 @@ bool game_controller::init_video()
 		          << resolution.second << "x" << bpp << " is not supported\n";
 		return false;
 	}
-
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+	CVideo::set_window_title(wm_title_string);
+#if !(defined(__APPLE__))
+	if(icon != NULL) {
+		CVideo::set_window_icon(icon);
+	}
+#endif
+#endif
 	return true;
 }
 
@@ -532,8 +538,9 @@ bool game_controller::load_game()
 			if (side["controller"] == "network")
 				side["controller"] = "human";
 			if (side["controller"] == "network_ai")
-				side["controller"] = "human_ai";
+				side["controller"] = "ai";
 		}
+		gui2::show_message(disp().video(), _("Warning") , _("This is a multiplayer scenario. Some parts of it may not work properly in single-player. It is recommended to load this scenario through the Multiplayer -> Load Game dialog instead."));
 	}
 
 	if (load.cancel_orders()) {
@@ -590,6 +597,7 @@ bool game_controller::new_campaign()
 	}
 
 	int campaign_num = -1;
+	bool use_deterministic_mode = false;
 	// No campaign selected from command line
 	if (jump_to_campaign_.campaign_id_.empty() == true)
 	{
@@ -607,6 +615,9 @@ bool game_controller::new_campaign()
 		}
 
 		campaign_num = dlg.get_choice();
+
+		use_deterministic_mode = dlg.get_deterministic();
+
 	}
 	else
 	{
@@ -634,6 +645,10 @@ bool game_controller::new_campaign()
 	const config &campaign = campaigns[campaign_num];
 	state_.classification().campaign = campaign["id"].str();
 	state_.classification().abbrev = campaign["abbrev"].str();
+	
+	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
+	state_.carryover_sides_start["random_mode"] = random_mode;
+	state_.classification().random_mode = random_mode;
 
 	// we didn't specify in the command line the scenario to be started
 	if (jump_to_campaign_.scenario_id_.empty())
@@ -922,7 +937,11 @@ bool game_controller::change_language()
 	if (!cmdline_opts_.nogui) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
+#if SDL_VERSION_ATLEAST(2, 0, 0)
+		CVideo::set_window_title(wm_title_string);
+#else
 		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
+#endif
 	}
 
 	return true;

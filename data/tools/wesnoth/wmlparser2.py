@@ -58,8 +58,9 @@ class AttributeNode:
             id=Elfish Archer
         [/unit]
     """
-    def __init__(self, name):
+    def __init__(self, name, location=None):
         self.name = name
+        self.location = location
         self.value = [] # List of StringNode
 
     def debug(self):
@@ -83,8 +84,9 @@ class TagNode:
             id=Elfish Archer
         [/unit]
     """
-    def __init__(self, name):
+    def __init__(self, name, location=None):
         self.name = name
+        self.location = location
         # List of child elements, which are either of type TagNode or
         # AttributeNode.
         self.data = []
@@ -207,6 +209,8 @@ class Parser:
 
         self.last_wml_line = "?"
         self.parser_line = 0
+        self.line_in_file = 42424242
+        self.chunk_start = "?"
 
     def parse_file(self, path, defines=""):
         self.path = path
@@ -268,6 +272,13 @@ class Parser:
         this.
         """
         if not line: return
+
+        if line.strip():
+            self.skip_newlines_after_plus = False
+
+        if self.in_tag:
+            self.handle_tag(line)
+            return
 
         if self.in_arrows:
             arrows = line.find('>>')
@@ -347,24 +358,34 @@ class Parser:
         else:
             for i, segment in enumerate(line.split("+")):
                 segment = segment.lstrip(" ")
+
+                if i > 0:
+                    # If the last segment is empty (there was a plus sign
+                    # at the end) we need to skip newlines.
+                    self.skip_newlines_after_plus = not segment.strip()
+
                 if not segment: continue
 
                 if segment[0] == "_":
                     self.translatable = True
                     segment = segment[1:].lstrip(" ")
                     if not segment: continue
+                self.handle_value(segment)
 
-                self.handle_value(segment, i == 0)
 
     def handle_tag(self, line):
         end = line.find("]")
-        if end <= 0:
-            raise WMLError(self, "Expected closing bracket.")
-        tag = line[1:end]
+        if end < 0:
+            if line.endswith("\n"):
+                raise WMLError(self, "Expected closing bracket.")
+            self.in_tag += line
+            return
+        tag = (self.in_tag + line[:end])[1:]
+        self.in_tag = ""
         if tag[0] == "/":
             self.parent_node = self.parent_node[:-1]
         else:
-            node = TagNode(tag)
+            node = TagNode(tag, location=(self.line_in_file, self.chunk_start))
             if self.parent_node:
                 self.parent_node[-1].append(node)
             self.parent_node.append(node)
@@ -381,7 +402,7 @@ class Parser:
         self.temp_key_nodes = []
         for att in line.split(","):
             att = att.strip()
-            node = AttributeNode(att)
+            node = AttributeNode(att, location=(self.line_in_file, self.chunk_start))
             self.temp_key_nodes.append(node)
             if self.parent_node:
                 self.parent_node[-1].append(node)
@@ -389,9 +410,10 @@ class Parser:
         if remainder:
             self.parse_outside_strings(remainder)
 
-    def handle_value(self, segment, is_first):
-
+    def handle_value(self, segment):
         def add_text(segment):
+            segment = segment.rstrip()
+            if not segment: return
             n = len(self.temp_key_nodes)
             maxsplit = n - self.commas - 1
             if maxsplit < 0: maxsplit = 0
@@ -406,15 +428,9 @@ class Parser:
 
         # Finish assignment on newline, except if there is a
         # plus sign before the newline.
-        if segment[-1] == "\n":
-            segment = segment.rstrip()
-            if segment:
-                add_text(segment)
-                self.temp_key_nodes = []
-            elif is_first:
-                self.temp_key_nodes = []
-        else:
-            add_text(segment)
+        add_text(segment)
+        if segment[-1] == "\n" and not self.skip_newlines_after_plus:
+            self.temp_key_nodes = []
 
     def parse(self):
         """
@@ -432,6 +448,8 @@ class Parser:
         self.translatable = False
         self.root = RootNode()
         self.parent_node = [self.root]
+        self.skip_newlines_after_plus = False
+        self.in_tag = ""
 
         command_marker_byte = chr(254)
 
@@ -439,9 +457,11 @@ class Parser:
         if not input: input = self.path
 
         for rawline in open(input, "rb"):
+            compos = rawline.find(command_marker_byte)
             self.parser_line += 1
             # Everything from chr(254) to newline is the command.
-            compos = rawline.find(command_marker_byte)
+            if compos != 0:
+                self.line_in_file += 1
             if compos >= 0:
                 self.parse_line_without_commands(rawline[:compos])
                 self.handle_command(rawline[compos + 1:-1])
@@ -456,6 +476,9 @@ class Parser:
     def handle_command(self, com):
         if com.startswith("line "):
             self.last_wml_line = com[5:]
+            _ = self.last_wml_line.split(" ")
+            self.chunk_start = [(_[i+1], int(_[i])) for i in range(0, len(_), 2)]
+            self.line_in_file = self.chunk_start[0][1]
         elif com.startswith("textdomain "):
             self.textdomain = com[11:]
         else:
@@ -566,6 +589,9 @@ if __name__ == "__main__":
         print("Running tests")
         p = Parser(args.wesnoth, args.config_dir,
             args.data_dir, args.no_preprocess)
+        if args.keep_temp:
+            p.keep_temp_dir = args.keep_temp
+        if args.verbose: p.verbose = True
 
         only = None
         def test2(input, expected, note, function):
@@ -681,6 +707,62 @@ code = <<
     code='\\n    "quotes" here\\n    ""blah""\\n'
 [/test]
 """, "quoted2")
+
+        test(
+"""
+foo="bar"+
+
+
+
+"baz"
+""",
+"""
+foo='bar' .. 'baz'
+""", "multi line string")
+
+        test(
+"""
+#define baz
+
+"baz"
+#enddef
+foo="bar"+{baz}
+""",
+"""
+foo='bar' .. 'baz'
+""", "defined multi line string")
+
+        test(
+"""
+foo="bar" + "baz" # blah
+""",
+"""
+foo='bar' .. 'baz'
+""", "comment after +")
+
+        test(
+"""
+#define baz
+"baz"
+#enddef
+foo="bar" {baz}
+""",
+"""
+foo='bar' .. 'baz'
+""", "defined string concatenation")
+
+        test(
+"""
+#define A BLOCK
+[{BLOCK}]
+[/{BLOCK}]
+#enddef
+{A blah}
+""",
+"""
+[blah]
+[/blah]
+""", "defined tag")
 
         test2(
 """

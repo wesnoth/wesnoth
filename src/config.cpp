@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2005 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -437,10 +437,8 @@ config& config::operator=(const config& cfg)
 	if(this == &cfg) {
 		return *this;
 	}
-
-	clear();
-	append_children(cfg);
-	values.insert(cfg.values.begin(), cfg.values.end());
+	config tmp(cfg);
+	swap(tmp);
 	return *this;
 }
 
@@ -573,6 +571,11 @@ unsigned config::child_count(const std::string &key) const
 		return i->second.size();
 	}
 	return 0;
+}
+
+unsigned config::all_children_count() const
+{
+	return ordered_children.size();
 }
 
 bool config::has_child(const std::string &key) const
@@ -1252,12 +1255,13 @@ void config::merge_with(const config& c)
 		if (j != c.children.end()) {
 			unsigned &visits = visitations[tag];
 			if(visits < j->second.size()) {
+				// Get a const config so we do not add attributes.
+				const config & merge_child = *j->second[visits++];
 
-				if ((*j->second[visits])["__remove"].to_bool()) {
-					visits++;
+				if ( merge_child["__remove"].to_bool() ) {
 					to_remove.push_back(*i);
 				} else
-					(i->pos->second[i->index])->merge_with(*j->second[visits++]);
+					(i->pos->second[i->index])->merge_with(merge_child);
 			}
 		}
 	}

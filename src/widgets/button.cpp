@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,7 +48,8 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	  overlayImage_(NULL), overlayPressedImage_(NULL), overlayActiveImage_(NULL),
 	  state_(NORMAL), pressed_(false),
 	  spacing_(spacing), base_height_(0), base_width_(0),
-	  button_image_name_(), button_overlay_image_name_(overlay_image)
+	  button_image_name_(), button_overlay_image_name_(overlay_image),
+	  button_image_path_suffix_()
 {
 	if (button_image_name.empty()) {
 
@@ -93,36 +94,36 @@ void button::load_images() {
 			break;
 	}
 
-	surface button_image(image::get_image(button_image_name_ + ".png"));
-	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"));
-	surface active_image(image::get_image(button_image_name_ + "-active.png"));
+	surface button_image(image::get_image(button_image_name_ + ".png" + button_image_path_suffix_));
+	surface pressed_image(image::get_image(button_image_name_ + "-pressed.png"+ button_image_path_suffix_));
+	surface active_image(image::get_image(button_image_name_ + "-active.png"+ button_image_path_suffix_));
 	surface disabled_image;
-	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"))
-		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png")));
+	if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + "-disabled.png"+ button_image_path_suffix_))
+		disabled_image.assign((image::get_image(button_image_name_ + "-disabled.png"+ button_image_path_suffix_)));
 	surface pressed_disabled_image, pressed_active_image, touched_image;
 
 	if (!button_overlay_image_name_.empty()) {
-		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"));
-		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"));
+		overlayImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + ".png"+ button_image_path_suffix_));
+		overlayPressedImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png"+ button_image_path_suffix_));
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"))
-			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"));
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_))
+			overlayActiveImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-active.png"+ button_image_path_suffix_));
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"))
-			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"));
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_))
+			overlayDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled.png"+ button_image_path_suffix_));
 		if (overlayDisabledImage_.null())
-			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png~GS()");
+			overlayDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + ".png~GS()" + button_image_path_suffix_);
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"))
-			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"));
+		if (filesystem::file_exists(game_config::path + "/images/" + button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
+			overlayPressedDisabledImage_.assign(image::get_image(button_overlay_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_));
 		if (overlayPressedDisabledImage_.null())
-			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()");
+			overlayPressedDisabledImage_ = image::get_image(button_overlay_image_name_ + size_postfix + "-pressed.png~GS()"+ button_image_path_suffix_);
 	} else {
 		overlayImage_.assign(NULL);
 	}
 
 	if (disabled_image == NULL) {
-		disabled_image = image::get_image(button_image_name_ + ".png~GS()");
+		disabled_image = image::get_image(button_image_name_ + ".png~GS()" + button_image_path_suffix_);
 	}
 
 	if (pressed_image.null())
@@ -132,18 +133,18 @@ void button::load_images() {
 		active_image.assign(button_image);
 
 	if (type_ == TYPE_CHECK || type_ == TYPE_RADIO) {
-		touched_image.assign(image::get_image(button_image_name_ + "-touched.png"));
+		touched_image.assign(image::get_image(button_image_name_ + "-touched.png"+ button_image_path_suffix_));
 		if (touched_image.null())
 			touched_image.assign(pressed_image);
 
-		pressed_active_image.assign(image::get_image(button_image_name_ + "-active-pressed.png"));
+		pressed_active_image.assign(image::get_image(button_image_name_ + "-active-pressed.png"+ button_image_path_suffix_));
 		if (pressed_active_image.null())
 			pressed_active_image.assign(pressed_image);
 
-		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"))
-			pressed_disabled_image.assign(image::get_image(button_image_name_ + "-disabled-pressed.png"));
+		if (filesystem::file_exists(game_config::path + "/images/" + button_image_name_ + size_postfix + "-disabled-pressed.png"+ button_image_path_suffix_))
+			pressed_disabled_image.assign(image::get_image(button_image_name_ + "-disabled-pressed.png"+ button_image_path_suffix_));
 		if (pressed_disabled_image.null())
-			pressed_disabled_image = image::get_image(button_image_name_ + "-pressed.png~GS()");
+			pressed_disabled_image = image::get_image(button_image_name_ + "-pressed.png~GS()"+ button_image_path_suffix_);
 	}
 
 	if (button_image.null()) {
@@ -238,7 +239,7 @@ void button::calculate_size()
 
 void button::set_check(bool check)
 {
-	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO)
+	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
 		return;
 	STATE new_state;
 
@@ -314,7 +315,7 @@ void button::draw_contents()
 	const int texty = loc.y + loc.h / 2 - textRect_.h / 2 + offset;
 	int textx;
 
-	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO)
+	if (type_ != TYPE_CHECK && type_ != TYPE_RADIO && type_ != TYPE_IMAGE)
 		textx = loc.x + image->w / 2 - textRect_.w / 2 + offset;
 	else {
 		clipArea.w += image_w + checkbox_horizontal_padding;

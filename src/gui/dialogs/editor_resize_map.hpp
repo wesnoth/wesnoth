@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class ttoggle_button;
 
@@ -39,49 +40,49 @@ public:
 	/**
 	 * Constructor.
 	 *
-	 * @param width [in]          The initial width of the map.
-	 * @param width [out]         The selected width of the map if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
+	 * @param [in, out] width     The parameter's usage is:
+	 *                            - Input: The initial width of the map.
+	 *                            - Output: The selected width of the map if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 *
-	 * @param height [in]         The initial height of the map.
-	 * @param height [out]        The selected height of the map if the dialog
-	 *                            returns @ref twindow::OK undefined otherwise.
+	 * @param [in, out] height    The parameter's usage is:
+	 *                            - Input: The initial height of the map.
+	 *                            - Output: The selected height of the map if
+	 *                              the dialog returns @ref twindow::OK
+	 *                              undefined otherwise.
 	 *
-	 * @param expand_direction [out]
+	 * @param [out] expand_direction
 	 *                            The selected expand direction if the dialog
 	 *                            returns  @ref twindow::OK undefined
 	 *                            otherwise.
 	 *
-	 * @param copy_edge_terrain [in]
-	 *                            The initial value of the copy edge toggle.
-	 * @param copy_edge_terrain [out]
-	 *                            The final value of the copy edge toggle if
-	 *                            the dialog returns  @ref twindow::OK
-	 *                            undefined otherwise.
+	 * @param [in, out] copy_edge_terrain
+	 *                            The parameter's usage is:
+	 *                            - Input: The initial value of the copy edge
+	 *                              toggle.
+	 *                            - Output: The final value of the copy edge
+	 *                              toggle if the dialog returns @ref
+	 *                              twindow::OK undefined otherwise.
 	 */
-	teditor_resize_map(
-			  int& width
-			, int& height
-			, EXPAND_DIRECTION& expand_direction
-			, bool& copy_edge_terrain);
+	teditor_resize_map(int& width,
+					   int& height,
+					   EXPAND_DIRECTION& expand_direction,
+					   bool& copy_edge_terrain);
 
 	/** The execute function see @ref tdialog for more information. */
-	static bool execute(
-			  int& width
-			, int& height
-			, EXPAND_DIRECTION& expand_direction
-			, bool& copy_edge_terrain
-			, CVideo& video)
+	static bool execute(int& width,
+						int& height,
+						EXPAND_DIRECTION& expand_direction,
+						bool& copy_edge_terrain,
+						CVideo& video)
 	{
 		return teditor_resize_map(
-				  width
-				, height
-				, expand_direction
-				, copy_edge_terrain).show(video);
+					   width, height, expand_direction, copy_edge_terrain)
+				.show(video);
 	}
 
 private:
-
 	/** The currently selected width. */
 	tfield_integer* width_;
 
@@ -119,4 +120,3 @@ private:
 } // namespace gui2
 
 #endif
-

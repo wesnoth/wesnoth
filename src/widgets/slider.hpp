@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -55,6 +55,9 @@ protected:
 private:
 	void mouse_motion(const SDL_MouseMotionEvent& event);
 	void mouse_down(const SDL_MouseButtonEvent& event);
+#if SDL_VERSION_ATLEAST(2,0,0)
+	void mouse_wheel(const SDL_MouseWheelEvent& event);
+#endif
 	void set_slider_position(int x);
 	SDL_Rect slider_area() const;
 	surface image_, pressedImage_, activeImage_, disabledImage_;

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -11,8 +11,6 @@
 
    See the COPYING file for more details.
 */
-//TODO uncomment or remove
-//#define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "mouse_action_select.hpp"
 #include "../action_select.hpp"
@@ -42,7 +40,10 @@ editor_action* mouse_action_select::key_event(
 editor_action* mouse_action_select::click_perform_left(
 		editor_display& /*disp*/, const std::set<map_location>& hexes)
 {
-	return new editor_action_chain(new editor_action_select(hexes));
+	if (has_ctrl_modifier())
+		return new editor_action_chain(new editor_action_deselect(hexes));
+	else
+		return new editor_action_chain(new editor_action_select(hexes));
 }
 
 editor_action* mouse_action_select::click_perform_right(

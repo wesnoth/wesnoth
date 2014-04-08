@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -104,6 +104,11 @@ namespace {
 
 bool terrain_filter::match_internal(const map_location& loc, const bool ignore_xy) const
 {
+	//Filter Areas
+	if (cfg_.has_attribute("area") &&
+		resources::tod_manager->get_area_by_id(cfg_["area"]).count(loc) == 0)
+		return false;
+
 	if(cfg_.has_attribute("terrain")) {
 		if(cache_.parsed_terrain == NULL) {
 			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
@@ -376,57 +381,160 @@ bool terrain_filter::match(const map_location& loc) const
 
 void terrain_filter::get_locations(std::set<map_location>& locs, bool with_border) const
 {
-	std::vector<map_location> xy_vector =
-		parse_location_range(cfg_["x"], cfg_["y"], with_border);
-	std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
-	if (!cfg_.has_attribute("x") && !cfg_.has_attribute("y")) {
-		if(cfg_.has_attribute("find_in")) {
-			//use content of find_in as starting set
-			variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
-			if(!vi.is_valid) {
-				xy_set.clear();
-			} else if(vi.explicit_index) {
+	std::set<map_location> match_set;
+
+	// None of the generators provided
+	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
+			&& !cfg_.has_attribute("find_in")
+			&& !cfg_.has_attribute("area") ) {
+
+		//consider all locations on the map
+		int bs = resources::game_map->border_size();
+		int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
+		int h = with_border ? resources::game_map->h() + bs : resources::game_map->h();
+		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
+			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
+				match_set.insert(map_location(x,y));
+			}
+		}
+	} else
+
+	// Only the x,y attributes found
+	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
+			&& !cfg_.has_attribute("find_in")
+			&& !cfg_.has_attribute("area") ) {
+
+		std::vector<map_location> xy_vector;
+		xy_vector = parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		match_set.insert(xy_vector.begin(), xy_vector.end());
+	} else
+
+	// Only find_in provided
+	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
+			&& cfg_.has_attribute("find_in")
+			&& !cfg_.has_attribute("area") ) {
+
+		//use content of find_in as starting set
+		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		if(vi.is_valid) {
+			if(vi.explicit_index) {
 				map_location test_loc(vi.as_container(),NULL);
-				xy_set.insert(test_loc);
+				match_set.insert(test_loc);
 			} else {
 				BOOST_FOREACH(const config &cfg, vi.as_array()) {
 					map_location test_loc(cfg, NULL);
-					xy_set.insert(test_loc);
-				}
-			}
-		} else {
-			//consider all locations on the map
-			int bs = resources::game_map->border_size();
-			int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
-			int h = with_border ? resources::game_map->h() + bs : resources::game_map->h();
-			for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
-				for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
-					xy_set.insert(map_location(x,y));
+					match_set.insert(test_loc);
 				}
 			}
 		}
-	} else if(cfg_.has_attribute("find_in")) {
-		//remove any locations not found in the specified variable
+	} else
+
+	// Only area provided
+	if ( !cfg_.has_attribute("x") && !cfg_.has_attribute("y")
+			&& !cfg_.has_attribute("find_in")
+			&& cfg_.has_attribute("area") ) {
+
+		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+		match_set.insert(area.begin(), area.end());
+	} else
+
+	// find_in + xy
+	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
+			&& cfg_.has_attribute("find_in")
+			&& !cfg_.has_attribute("area") ) {
+
+		std::vector<map_location> xy_vector;
+		xy_vector = parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		match_set.insert(xy_vector.begin(), xy_vector.end());
+
+		// remove any locations not found in the specified variable
 		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) {
-			xy_set.clear();
+			match_set.clear();
 		} else if(vi.explicit_index) {
 			map_location test_loc(vi.as_container(),NULL);
-			if(xy_set.count(test_loc)) {
-				xy_set.clear();
-				xy_set.insert(test_loc);
+			if(match_set.count(test_loc)) {
+				match_set.clear();
+				match_set.insert(test_loc);
 			} else {
-				xy_set.clear();
+				match_set.clear();
 			}
 		} else {
 			std::set<map_location> findin_locs;
 			BOOST_FOREACH(const config &cfg, vi.as_array()) {
 				map_location test_loc(cfg, NULL);
-				if (xy_set.count(test_loc)) {
+				if (match_set.count(test_loc)) {
 					findin_locs.insert(test_loc);
 				}
 			}
-			xy_set.swap(findin_locs);
+			match_set.swap(findin_locs);
+		}
+	} else
+
+	// xy + area
+	if ( (cfg_.has_attribute("x") || cfg_.has_attribute("y"))
+			&& !cfg_.has_attribute("find_in")
+			&& cfg_.has_attribute("area") ) {
+
+		std::vector<map_location> xy_vector;
+		xy_vector = parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+
+		BOOST_FOREACH(const map_location& loc, xy_vector) {
+			if (area.count(loc) != 0)
+				match_set.insert(loc);
+		}
+	} else
+
+	// area + find_in
+	if ( !(cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+			&& cfg_.has_attribute("find_in")
+			&& cfg_.has_attribute("area") ) {
+
+		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+
+		//use content of find_in as starting set
+		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		if(!vi.is_valid) {
+			match_set.clear(); //TODO not needed
+		} else if(vi.explicit_index) {
+			map_location test_loc(vi.as_container(),NULL);
+			if (area.count(test_loc) != 0)
+				match_set.insert(test_loc);
+		} else {
+			BOOST_FOREACH(const config &cfg, vi.as_array()) {
+				map_location test_loc(cfg, NULL);
+				if (area.count(test_loc) != 0)
+					match_set.insert(test_loc);
+			}
+		}
+	} else
+
+	// area + find_in + xy
+	if ( (cfg_.has_attribute("x") && cfg_.has_attribute("y"))
+			&& cfg_.has_attribute("find_in")
+			&& cfg_.has_attribute("area") ) {
+
+		const std::vector<map_location>& xy_vector =
+				parse_location_range(cfg_["x"], cfg_["y"], with_border);
+		std::set<map_location> xy_set(xy_vector.begin(), xy_vector.end());
+
+		const std::set<map_location>& area = resources::tod_manager->get_area_by_id(cfg_["area"]);
+
+		//use content of find_in as starting set
+		variable_info vi(cfg_["find_in"], false, variable_info::TYPE_CONTAINER);
+		if(vi.is_valid) {
+			if(vi.explicit_index) {
+				map_location test_loc(vi.as_container(),NULL);
+				if (area.count(test_loc) != 0 && xy_set.count(test_loc) != 0)
+					match_set.insert(test_loc);
+			} else {
+				BOOST_FOREACH(const config &cfg, vi.as_array()) {
+					map_location test_loc(cfg, NULL);
+					if (area.count(test_loc) != 0 && xy_set.count(test_loc) != 0)
+						match_set.insert(test_loc);
+				}
+			}
 		}
 	}
 
@@ -448,12 +556,12 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			}
 		}
 	}
-	std::set<map_location>::iterator loc_itor = xy_set.begin();
-	while(loc_itor != xy_set.end()) {
+	std::set<map_location>::iterator loc_itor = match_set.begin();
+	while(loc_itor != match_set.end()) {
 		if(match_internal(*loc_itor, true)) {
 			++loc_itor;
 		} else {
-			xy_set.erase(loc_itor++);
+			match_set.erase(loc_itor++);
 		}
 	}
 
@@ -464,7 +572,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 	while(cond != cond_end)
 	{
 		//if there are no locations or [or] conditions left, go ahead and return empty
-		if(xy_set.empty() && ors_left <= 0) {
+		if(match_set.empty() && ors_left <= 0) {
 			return;
 		}
 
@@ -475,10 +583,10 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		if(cond_name == "and") {
 			std::set<map_location> intersect_hexes;
 			terrain_filter(cond_cfg, *this).get_locations(intersect_hexes, with_border);
-			std::set<map_location>::iterator intersect_itor = xy_set.begin();
-			while(intersect_itor != xy_set.end()) {
+			std::set<map_location>::iterator intersect_itor = match_set.begin();
+			while(intersect_itor != match_set.end()) {
 				if(intersect_hexes.find(*intersect_itor) == intersect_hexes.end()) {
-					xy_set.erase(*intersect_itor++);
+					match_set.erase(*intersect_itor++);
 				} else {
 					++intersect_itor;
 				}
@@ -488,10 +596,10 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		else if(cond_name == "or") {
 			std::set<map_location> union_hexes;
 			terrain_filter(cond_cfg, *this).get_locations(union_hexes, with_border);
-			//xy_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
+			//match_set.insert(union_hexes.begin(), union_hexes.end()); //doesn't compile on MSVC
 			std::set<map_location>::iterator insert_itor = union_hexes.begin();
 			while(insert_itor != union_hexes.end()) {
-				xy_set.insert(*insert_itor++);
+				match_set.insert(*insert_itor++);
 			}
 			--ors_left;
 		}
@@ -501,12 +609,12 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			terrain_filter(cond_cfg, *this).get_locations(removal_hexes, with_border);
 			std::set<map_location>::iterator erase_itor = removal_hexes.begin();
 			while(erase_itor != removal_hexes.end()) {
-				xy_set.erase(*erase_itor++);
+				match_set.erase(*erase_itor++);
 			}
 		}
 		++cond;
 	}
-	if(xy_set.empty()) {
+	if(match_set.empty()) {
 		return;
 	}
 
@@ -518,8 +626,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 		radius = max_loop_;
 	}
 	if(radius > 0) {
-		xy_vector.clear();
-		std::copy(xy_set.begin(),xy_set.end(),std::inserter(xy_vector,xy_vector.end()));
+		std::vector<map_location> xy_vector (match_set.begin(), match_set.end());
 		if(cfg_.has_child("filter_radius")) {
 			terrain_filter r_filter(cfg_.child("filter_radius"), *this);
 			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border, r_filter);
@@ -527,7 +634,7 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			get_tiles_radius(*resources::game_map, xy_vector, radius, locs, with_border);
 		}
 	} else {
-		std::copy(xy_set.begin(),xy_set.end(),std::inserter(locs,locs.end()));
+		locs.insert(match_set.begin(), match_set.end());
 	}
 }
 

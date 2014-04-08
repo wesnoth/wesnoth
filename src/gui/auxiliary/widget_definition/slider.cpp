@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -19,7 +19,8 @@
 #include "gui/auxiliary/log.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 tslider_definition::tslider_definition(const config& cfg)
 	: tcontrol_definition(cfg)
@@ -29,13 +30,6 @@ tslider_definition::tslider_definition(const config& cfg)
 	load_resolutions<tresolution>(cfg);
 }
 
-tslider_definition::tresolution::tresolution(const config& cfg)
-	: tresolution_definition_(cfg)
-	, minimum_positioner_length(cfg["minimum_positioner_length"])
-	, maximum_positioner_length(cfg["maximum_positioner_length"])
-	, left_offset(cfg["left_offset"])
-	, right_offset(cfg["right_offset"])
-{
 /*WIKI
  * @page = GUIWidgetDefinitionWML
  * @order = 1_slider
@@ -83,10 +77,16 @@ tslider_definition::tresolution::tresolution(const config& cfg)
  * @end{tag}{name="slider_definition"}
  * @end{parent}{name="gui/"}
  */
-	VALIDATE(minimum_positioner_length
-			, missing_mandatory_wml_key(
-				  "resolution"
-				, "minimum_positioner_length"));
+tslider_definition::tresolution::tresolution(const config& cfg)
+	: tresolution_definition_(cfg)
+	, minimum_positioner_length(cfg["minimum_positioner_length"])
+	, maximum_positioner_length(cfg["maximum_positioner_length"])
+	, left_offset(cfg["left_offset"])
+	, right_offset(cfg["right_offset"])
+{
+	VALIDATE(minimum_positioner_length,
+			 missing_mandatory_wml_key("resolution",
+									   "minimum_positioner_length"));
 
 	// Note the order should be the same as the enum tstate is slider.hpp.
 	state.push_back(tstate_definition(cfg.child("state_enabled")));
@@ -96,4 +96,3 @@ tslider_definition::tresolution::tresolution(const config& cfg)
 }
 
 } // namespace gui2
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -29,13 +29,15 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/tree_view.hpp"
 #include "gui/widgets/tree_view_node.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
 #include "serialization/string_utils.hpp"
 
 #include <boost/bind.hpp>
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -80,28 +82,27 @@ REGISTER_DIALOG(campaign_selection)
 void tcampaign_selection::campaign_selected(twindow& window)
 {
 	if(new_widgets && false) {
-		ttree_view& tree = find_widget<ttree_view>(&window
-				, "campaign_tree"
-				, false);
+		ttree_view& tree
+				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
 		if(tree.empty()) {
 			return;
 		}
 
 		assert(tree.selected_item());
-		const unsigned choice =
-				lexical_cast<unsigned>(tree.selected_item()->id());
+		const unsigned choice
+				= lexical_cast<unsigned>(tree.selected_item()->id());
 
-		tmulti_page& multi_page = find_widget<tmulti_page>(
-				&window, "campaign_details", false);
+		tmulti_page& multi_page
+				= find_widget<tmulti_page>(&window, "campaign_details", false);
 		multi_page.select_page(choice);
 	} else {
-		const int selected_row =
-				find_widget<tlistbox>(&window, "campaign_list", false)
-					.get_selected_row();
+		const int selected_row
+				= find_widget<tlistbox>(&window, "campaign_list", false)
+						  .get_selected_row();
 
-		tmulti_page& multi_page = find_widget<tmulti_page>(
-				&window, "campaign_details", false);
+		tmulti_page& multi_page
+				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		multi_page.select_page(selected_row);
 	}
@@ -111,14 +112,13 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(new_widgets && false) {
 		/***** Setup campaign tree. *****/
-		ttree_view& tree = find_widget<ttree_view>(&window
-				, "campaign_tree"
-				, false);
+		ttree_view& tree
+				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
-		tree.set_selection_change_callback(boost::bind(
-				  &tcampaign_selection::campaign_selected
-				, this
-				, boost::ref(window)));
+		tree.set_selection_change_callback(
+				boost::bind(&tcampaign_selection::campaign_selected,
+							this,
+							boost::ref(window)));
 
 		window.keyboard_capture(&tree);
 
@@ -127,20 +127,21 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 		tree_group_field["label"] = "Campaigns won";
 		tree_group_item["tree_view_node_label"] = tree_group_field;
-		ttree_view_node& completed =
-				tree.add_node("campaign_group", tree_group_item);
+		ttree_view_node& completed
+				= tree.add_node("campaign_group", tree_group_item);
 
 		tree_group_field["label"] = "Campaigns to conquer";
 		tree_group_item["tree_view_node_label"] = tree_group_field;
-		ttree_view_node& not_completed =
-				tree.add_node("campaign_group", tree_group_item);
+		ttree_view_node& not_completed
+				= tree.add_node("campaign_group", tree_group_item);
 
 		/***** Setup campaign details. *****/
-		tmulti_page& multi_page = find_widget<tmulti_page>(
-				&window, "campaign_details", false);
+		tmulti_page& multi_page
+				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
 		unsigned id = 0;
-		FOREACH(const AUTO& campaign, campaigns_) {
+		FOREACH(const AUTO & campaign, campaigns_)
+		{
 
 			/*** Add tree item ***/
 			tree_group_field["label"] = campaign["icon"];
@@ -149,7 +150,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			tree_group_field["label"] = campaign["name"];
 			tree_group_item["name"] = tree_group_field;
 
-			if (campaign["completed"].to_bool()) {
+			if(campaign["completed"].to_bool()) {
 				completed.add_child("campaign", tree_group_item)
 						.set_id(lexical_cast<std::string>(id++));
 			} else {
@@ -181,32 +182,33 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 
 	} else {
 		/***** Hide the tree view. *****/
-		if(ttree_view* tree = find_widget<ttree_view>(
-				&window, "campaign_tree", false, false)) {
+		if(ttree_view* tree
+		   = find_widget<ttree_view>(&window, "campaign_tree", false, false)) {
 
 			tree->set_visible(twidget::tvisible::invisible);
 		}
 
 		/***** Setup campaign list. *****/
-		tlistbox& list =
-				find_widget<tlistbox>(&window, "campaign_list", false);
+		tlistbox& list = find_widget<tlistbox>(&window, "campaign_list", false);
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
-		connect_signal_notify_modified(list, boost::bind(
-				  &tcampaign_selection::campaign_selected
-				, this
-				, boost::ref(window)));
+		connect_signal_notify_modified(
+				list,
+				boost::bind(&tcampaign_selection::campaign_selected,
+							this,
+							boost::ref(window)));
 #else
-		list.set_callback_value_change(dialog_callback
-				<tcampaign_selection
-				, &tcampaign_selection::campaign_selected>);
+		list.set_callback_value_change(
+				dialog_callback<tcampaign_selection,
+								&tcampaign_selection::campaign_selected>);
 #endif
-			window.keyboard_capture(&list);
+		window.keyboard_capture(&list);
 
 		/***** Setup campaign details. *****/
-		tmulti_page& multi_page = find_widget<tmulti_page>(
-				&window, "campaign_details", false);
+		tmulti_page& multi_page
+				= find_widget<tmulti_page>(&window, "campaign_details", false);
 
-		FOREACH(const AUTO& campaign, campaigns_) {
+		FOREACH(const AUTO & campaign, campaigns_)
+		{
 
 			/*** Add list item ***/
 			string_map list_item;
@@ -224,7 +226,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			assert(grid);
 
 			twidget* widget = grid->find("victory", false);
-			if (widget && !campaign["completed"].to_bool()) {
+			if(widget && !campaign["completed"].to_bool()) {
 				widget->set_visible(twidget::tvisible::hidden);
 			}
 
@@ -248,9 +250,8 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tcampaign_selection::post_show(twindow& window)
 {
 	if(new_widgets && false) {
-		ttree_view& tree = find_widget<ttree_view>(&window
-				, "campaign_tree"
-				, false);
+		ttree_view& tree
+				= find_widget<ttree_view>(&window, "campaign_tree", false);
 
 		if(tree.empty()) {
 			return;
@@ -260,10 +261,10 @@ void tcampaign_selection::post_show(twindow& window)
 		choice_ = lexical_cast<unsigned>(tree.selected_item()->id());
 
 	} else {
-		choice_ = find_widget<tlistbox>(
-				&window, "campaign_list", false).get_selected_row();
+		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
+						  .get_selected_row();
+		deterministic_ = find_widget<ttoggle_button>(&window,"checkbox_deterministic", false).get_value();
 	}
 }
 
 } // namespace gui2
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -24,21 +24,24 @@
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 	: tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, indention_step_size(cfg["indention_step_size"])
 	, nodes()
 {
 
-	FOREACH(const AUTO& node, cfg.child_range("node")) {
+	FOREACH(const AUTO & node, cfg.child_range("node"))
+	{
 		nodes.push_back(tnode(node));
 	}
 
@@ -51,7 +54,7 @@ twidget* tbuilder_tree_view::build() const
 	 *  TODO see how much we can move in the constructor instead of
 	 *  building in several steps.
 	 */
-	ttree_view *widget = new ttree_view(nodes);
+	ttree_view* widget = new ttree_view(nodes);
 
 	init_control(widget);
 
@@ -60,13 +63,13 @@ twidget* tbuilder_tree_view::build() const
 
 	widget->set_indention_step_size(indention_step_size);
 
-	DBG_GUI_G << "Window builder: placed tree_view '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed tree_view '" << id
+			  << "' with definition '" << definition << "'.\n";
 
-	boost::intrusive_ptr<const ttree_view_definition::tresolution> conf =
-			boost::dynamic_pointer_cast
-				<const ttree_view_definition::tresolution>(widget->config());
+	boost::intrusive_ptr<const ttree_view_definition::tresolution>
+	conf = boost::
+			dynamic_pointer_cast<const ttree_view_definition::tresolution>(
+					widget->config());
 	assert(conf);
 
 	widget->init_grid(conf->grid);
@@ -76,13 +79,12 @@ twidget* tbuilder_tree_view::build() const
 }
 
 tbuilder_tree_view::tnode::tnode(const config& cfg)
-	: id(cfg["id"])
-	, builder(NULL)
+	: id(cfg["id"]), builder(NULL)
 {
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
-	VALIDATE(id != "root"
-			, _("[node]id 'root' is reserved for the implementation."));
+	VALIDATE(id != "root",
+			 _("[node]id 'root' is reserved for the implementation."));
 
 	const config& node_definition = cfg.child("node_definition");
 
@@ -147,4 +149,3 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
  * @end{parent}{name="gui/window/resolution/grid/row/column/"}
  * NOTE more documentation and examples are needed.
  */ // TODO annotate node
-

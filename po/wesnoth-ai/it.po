@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2013-11-16 09:29+0100\n"
+"POT-Creation-Date: 2014-02-22 14:39+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -806,8 +806,8 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:603
 msgid ""
-"$unit.type $unit.name from Lieutenant Gadoc's squadron reporting for duty, "
-"sir."
+"$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
+"for duty, sir."
 msgstr ""
 
 #. [message]: speaker=fort_commander
@@ -823,8 +823,8 @@ msgstr ""
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:631
 msgid ""
-"Very good, $unit.type. Now go help your comrade get rid of that saurian "
-"infestation in the swamps."
+"Very good, $unit.language_name. Now go help your comrade get rid of that "
+"saurian infestation in the swamps."
 msgstr ""
 
 #. [message]: speaker=fort_commander
@@ -2298,12 +2298,12 @@ msgid "Uralt"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:118
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:122
 msgid "General Grospur, what do we do?  These undead will surely wipe us out."
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:119
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:123
 msgid ""
 "Don't be such a chicken, Sergeant!  I have placed units with lots of "
 "experience around the perimeter. The undead will not dare to attack them. "
@@ -2312,40 +2312,40 @@ msgid ""
 "\n"
 "<i>In other words, the Wesnoth AI does generally not attack units one XP "
 "from leveling if there is no chance of killing the unit with a single "
-"attack. However, some of the attacks by the undead are handle by the Simple "
+"attack. However, some of the attacks by the undead are handled by the Simple "
 "Attack Micro AI in this scenario. General Grospur might be in for a surprise."
 "</i>"
 msgstr ""
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:124
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:128
 msgid "Watch the undead take care of business"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:126
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:130
 msgid "Don't even try. You can't reach the Lich."
 msgstr ""
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:130
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:134
 msgid "Death of the last of Grospur's units"
 msgstr ""
 
 #. [note]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:134
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:138
 msgid "When your leader dies, side leadership passes on to another unit"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:159
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:163
 msgid ""
 "What the ... ?!?  They are not supposed to attack me. That just doesn't "
 "happen in Wesnoth!"
 msgstr ""
 
 #. [event]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:160
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:164
 msgid ""
 "Hahahahaha !! I have given special instruction to my Soulless to attack all "
 "you almost-advanced units first. Also watch how those same Soulless will "
@@ -2362,12 +2362,12 @@ msgid ""
 msgstr ""
 
 #. [then]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:176
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:180
 msgid "Rise, minions!"
 msgstr ""
 
 #. [else]
-#: data/ai/micro_ais/scenarios/simple_attack.cfg:219
+#: data/ai/micro_ais/scenarios/simple_attack.cfg:223
 msgid "And that's how the undead AI executes total annihilation ..."
 msgstr ""
 
@@ -2764,7 +2764,39 @@ msgstr ""
 #. [side]: id=leader3, type=Mage of Light
 #: data/ai/scenarios/scenario-test_move_to_targets.cfg:60
 msgid "Idle AI"
-msgstr ""
+msgstr "AI inattivo"
+
+#~ msgid "Experimental Recruitment AI"
+#~ msgstr "IA sperimentale di reclutamento"
+
+#~ msgid "Default AI with poisoning formula"
+#~ msgstr "AI di default con formula di avvelenamento"
+
+#~ msgid ""
+#~ "Enemy unit weight: The (negative) weight given to each enemy unit that "
+#~ "can reach a potential target location. Default: 100"
+#~ msgstr ""
+#~ "Peso dell'unità nemica: Il peso (negativo) dato a ciascuna unità "
+#~ "nemicache può raggiungere una locazione di bersaglio potenziale. Default: "
+#~ "100"
+
+#~ msgid ""
+#~ "My unit weight: The (positive) weight given to each of the AI's units "
+#~ "that can reach a potential target location. Default: 1"
+#~ msgstr ""
+#~ "Peso della mia unità: Il peso (positivo) dato a ciascun delle unitàAI che "
+#~ "possono raggiungere una locazione di bersaglio potenziale. Default: 1"
+
+#~ msgid ""
+#~ "Goal distance weight: The (negative) weight for each step the unit is "
+#~ "away from its goal location.\n"
+#~ "Default: 3 -- thus, by default, being a step closer to the goal is as "
+#~ "important as being in reach of 3 of AI's units."
+#~ msgstr ""
+#~ "Peso della distanza obiettivo: Il peso (negativo) per ciascun passo che "
+#~ "l'unitàdeve percorrere dalla sua locazione obiettivo. \n"
+#~ "Default: 3 -- perciò di default, essere un passo più vicino all'obiettivo "
+#~ "é imporante come poter raggiungere 3 delle unità AI."
 
 #~ msgid "End scenario"
 #~ msgstr "Fine scenario"

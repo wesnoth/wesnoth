@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2013 by Andrius Silinskas <silinskas.andrius@gmail.com>
+   Copyright (C) 2013 - 2014 by Andrius Silinskas <silinskas.andrius@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -192,8 +192,13 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender) const
 	combo_gender.set_selected(current_gender_index());
 }
 
+bool flg_manager::is_random_faction()
+{ 
+	return (*current_faction_)["random_faction"].to_bool(); 
+}
+
 void flg_manager::resolve_random() {
-	if ((*current_faction_)["random_faction"].to_bool()) {
+	if (is_random_faction()) {
 		std::vector<std::string> faction_choices, faction_excepts;
 
 		faction_choices = utils::split((*current_faction_)["choices"]);

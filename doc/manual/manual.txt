@@ -94,7 +94,7 @@ your language; then click the "Tutorial" button to run the tutorial;
 and then play the campaign, "A Tale of Two Brothers" by clicking the "Campaign"
 button and selecting it from the list provided.
 
-image:images/main-menu-1.9.4.jpg["Main Menu"]
+image:images/main-menu-1.11.9.jpg["Main Menu"]
 
 Tutorial::
  The tutorial is a real, but basic, game which teaches you some of
@@ -220,7 +220,7 @@ possible only within the scenario.
 There are several possible options you are provided with when clicking on the
 "Multiplayer" button:
 
-image:images/multiplayer-1.9.4.jpg["Multiplayer dialog"]
+image:images/multiplayer-1.11.9.jpg["Multiplayer dialog"]
 
 Login
 +++++
@@ -289,7 +289,7 @@ a game with a friend against an AI opponent.
 The Game Screen
 ^^^^^^^^^^^^^^^
 
-image:images/game-screen-1.9.4.jpg["Game Screen"]
+image:images/game-screen-1.11.9.jpg["Game Screen"]
 
 Regardless of whether you are playing a scenario or a campaign, the
 basic layout of the game screen is the same. The majority of the screen
@@ -297,7 +297,7 @@ is filled with a map which shows all of the action that takes place
 in the game. Around the map are various elements which provide useful
 information about the game and are described in more detail below.
 
-image:images/top_pane-1.9.4.jpg["Top Panel"]
+image:images/top_pane-1.11.9.jpg["Top Panel"]
 
 Across the top of the screen from left to right are the following items:
 
@@ -310,19 +310,19 @@ Across the top of the screen from left to right are the following items:
   7. Your upkeep
   8. Your income
   9. Current time or time left (in timed multiplayer games)
- 10. Current hex position (x-coordinate, y-coordinate)
- 11. Defense and movement of the currently selected unit on the marked hex
- 12. Current hex type
 
-image:images/right_pane-1.9.4.jpg["Right Panel"]
+image:images/right_pane-1.11.9.jpg["Right Panel"]
 
 Down the right of the screen from top to bottom are:
 
   1. Full map, scaled
-  2. Time of day indicator
-  3. Unit profile for last selected unit
-  4. End Turn button
-
+  2. Current hex position (x-coordinate, y-coordinate), defense and movement of
+     the currently selected unit on the marked hex
+  3. Current hex type
+  4. Time of day indicator
+  5. Unit profile for last selected unit
+  6. End Turn button
+ 
 Recruit and Recall
 ^^^^^^^^^^^^^^^^^^
 
@@ -551,7 +551,7 @@ displayed as part of the scenario objectives.
 Recruiting and Recalling
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-image:images/recruit-1.9.4.jpg["Recruit dialog"]
+image:images/recruit-1.11.9.jpg["Recruit dialog"]
 
 The major use for gold is to build your army by recruiting new units
 or recalling units from previous scenarios in a campaign. Units may be
@@ -695,19 +695,31 @@ Dextrous::
   their uncanny grace, and their great facility with the bow. Some, however,
   are gifted with natural talent that exceeds their brethren. These elves
   inflict an additional point of damage with each arrow.
+Fearless::
+  Does not suffer from a negative attack bonus during its unfavorable
+  time of day (Heavy Infantry, Necrophage, Trolls, Walking Corpses).
 Healthy::
   Renowned for their vitality, some dwarves are sturdier than others and can
   rest heal even when traveling or fighting.
   Healthy units have 1 HP plus 1 HP per level more than usual and rest heal the
   usual 2 HP after each turn regardless.
-Fearless::
-  Does not suffer from a negative attack bonus during its unfavorable
-  time of day (Heavy Infantry, Necrophage, Trolls, Walking Corpses).
 
 There are also some traits that are not assigned randomly.
 These traits can either be assigned by the scenario designer or are always
 assigned based on the unit type:
 
+Aged::
+  The oldest units may have the Aged trait, receiving an 8 points HP decrease and 
+  having -1 movement and melee damage.
+Dim::
+  Units with the Dim trait require 20% more experience to advance.
+Elemental::
+  Elemental units aren't alive and thus are immune to poison, and drain and
+  plague don't work on them.
+  Elemental units generally have 'Elemental' as their only trait.
+Feral::
+  Units with the Feral trait only receive 50% defense in villages regardless of
+  the base terrain the village is on.
 Loyal::
   Loyal units don't incur upkeep. Most units incur an upkeep cost at the end
   of every turn, which is equal to their level. Loyal units do not incur this
@@ -718,16 +730,21 @@ Loyal::
   make them invaluable during a long campaign, when gold is in short supply.
   This trait is never given to recruited units, so it may be unwise to dismiss
   such units or to send them to a foolish death.
+Mechanical::
+  Mechanical units aren't alive and thus are immune to poison, and drain and
+  plague don't work on them.
+  Mechanical units generally have 'Mechanical' as their only trait.
+Slow::
+  Large, unwieldy units with the Slow trait have -1 movement and 5% more hitpoints.
 Undead::
   Undead units are immune to poison, also drain and plague doesn't work on them.
   Undead units generally have 'Undead' as their only trait. Since Undead units
   are the bodies of the dead, risen to fight again, poison has no effect upon
   them. This can make them invaluable in dealing with foes who use poison in
   conjunction with their attacks.
-Mechanical::
-  Mechanical units aren't alive and thus are immune to poison, also drain and
-  plague doesn't work on them.
-  Mechanical units generally have 'Mechanical' as their only trait.
+Weak::
+  Units may have the Weak trait, receiving a -1 increment in hitpoints and
+  melee damage.
 
 Unit Specialties
 ^^^^^^^^^^^^^^^^
@@ -798,6 +815,9 @@ Concealment::
 Cures::
   A unit which can cure an ally of poison, although the ally will receive no
   additional healing on the turn it is cured of the poison.
+Feeding::
+  This unit gains 1 hitpoint added to its maximum whenever it kills a unit,
+  except units that are immune to plague.
 Heals +4::
   Allows the unit to heal adjacent friendly units at the beginning of each
   turn.
@@ -846,6 +866,9 @@ Submerge::
 Teleport::
   This unit may teleport between any two friendly villages using one of its
   moves.
+Unpoison::
+  A curer can cure a unit of poison, although that unit will receive no additional
+  healing on the turn it is cured of the poison.
 
 Experience
 ^^^^^^^^^^
@@ -944,13 +967,13 @@ Yellow image:images/orb-yellow.jpg["Yellow orb"]  If you control the unit and \
                                                   it has moved this turn, but \
                                                   could still move further or \
                                                   attack
-Red    image:images/orb-red.jpg["Red orb"]        If you control the unit, but \
+Black  image:images/orb-red.jpg["Black orb"]      If you control the unit, but \
                                                   it can no longer move or \
                                                   attack, or the user ended \
                                                   the unit's turn
 Blue   image:images/orb-blue.jpg["Blue orb"]      If the unit is an ally you \
                                                   do not control
--      image:images/orb-none.jpg["No orb"]        Enemy units have no orb on \
+Red    image:images/orb-none.jpg["Red orb"]       Enemy units have a red orb on \
                                                   the top of their energy bar
 --------------------------------------------------------------------------------
 

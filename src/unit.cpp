@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -25,7 +25,6 @@
 #include "game_display.hpp"
 #include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
-#include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -34,6 +33,7 @@
 #include "unit_abilities.hpp"
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
+#include "random_new.hpp"
 #include "scripting/lua.hpp"
 #include "side_filter.hpp"
 #include "play_controller.hpp"
@@ -68,6 +68,8 @@ namespace {
 	 * always valid.
 	 */
 	static std::vector<const unit *> units_with_cache;
+
+	const std::string leader_crown_path = "misc/leader-crown.png";
 }
 
 /**
@@ -84,27 +86,36 @@ static const unit_type &get_unit_type(const std::string &type_id)
 	return *i;
 }
 
-static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender, rand_rng::simple_rng* rng)
+static unit_race::GENDER generate_gender(const unit_type & type, bool random_gender)
 {
 	const std::vector<unit_race::GENDER>& genders = type.genders();
+	assert( genders.size() > 0 );
 
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
-		int random = rng ? rng->get_next_random() : get_random_nocheck();
+		int random = random_new::generator->next_random();
 		return genders[random % genders.size()];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
+		// Note: Whoever wrote this code, you should have used an assertion, to save others hours of work...
+		// If the assertion size>0 is failing for you, one possible cause is that you are constructing a unit
+		// from a unit type which has not been ``built'' using the unit_type_data methods.
 	}
 }
 
-static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg, rand_rng::simple_rng* rng)
+static unit_race::GENDER generate_gender(const unit_type & u_type, const config &cfg)
 {
 	const std::string& gender = cfg["gender"];
 	if(!gender.empty())
 		return string_gender(gender);
 
-	return generate_gender(u_type, cfg["random_gender"].to_bool(), rng);
+	return generate_gender(u_type, cfg["random_gender"].to_bool());
+}
+
+const std::string& unit::leader_crown()
+{
+	return leader_crown_path;
 }
 
 // Copy constructor
@@ -126,6 +137,7 @@ unit::unit(const unit& o):
            experience_(o.experience_),
            max_experience_(o.max_experience_),
            level_(o.level_),
+           recall_cost_(o.recall_cost_),
            canrecruit_(o.canrecruit_),
            recruit_list_(o.recruit_list_),
            alignment_(o.alignment_),
@@ -197,7 +209,7 @@ unit::unit(const unit& o):
 {
 }
 
-unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vconfig* vcfg) :
+unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
@@ -214,6 +226,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vcon
 	experience_(0),
 	max_experience_(0),
 	level_(0),
+	recall_cost_(-1),
 	canrecruit_(cfg["canrecruit"].to_bool()),
 	recruit_list_(),
 	alignment_(),
@@ -221,7 +234,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vcon
 	image_mods_(),
 	unrenamable_(false),
 	side_(0),
-	gender_(generate_gender(*type_, cfg, &resources::gamedata->rng())),
+	gender_(generate_gender(*type_, cfg)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
@@ -452,6 +465,12 @@ unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vcon
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
 
+	/* We need to check to make sure that the cfg is not blank and if it
+	isn't pull that value otherwise it goes with the default of -1.  */
+	if(!cfg["recall_cost"].blank()) {
+		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
+	}
+
 	const std::string& align = cfg["alignment"];
 	if(align == "lawful") {
 		alignment_ = unit_type::LAWFUL;
@@ -461,11 +480,11 @@ unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vcon
 		alignment_ = unit_type::CHAOTIC;
 	} else if(align == "liminal") {
 		alignment_ = unit_type::LIMINAL;
-	} else if(align.empty()==false){
+	} else if(align.empty()==false) {
 		alignment_ = unit_type::NEUTRAL;
 	}
 
-	generate_name(resources::gamedata ? &(resources::gamedata->rng()) : 0);
+	generate_name();
 
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
@@ -482,7 +501,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* /*state*/, const vcon
 	static char const *internalized_attrs[] = { "type", "id", "name",
 		"gender", "random_gender", "variation", "role", "ai_special",
 		"side", "underlying_id", "overlays", "facing", "race",
-		"level", "undead_variation", "max_attacks",
+		"level", "recall_cost", "undead_variation", "max_attacks",
 		"attacks_left", "alpha", "zoc", "flying", "cost",
 		"max_hitpoints", "max_moves", "vision", "jamming", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
@@ -542,6 +561,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	experience_(0),
 	max_experience_(0),
 	level_(0),
+	recall_cost_(-1),
 	canrecruit_(false),
 	recruit_list_(),
 	alignment_(),
@@ -550,11 +570,11 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unrenamable_(false),
 	side_(side),
 	gender_(gender != unit_race::NUM_GENDERS ?
-		gender : generate_gender(u_type, real_unit, resources::gamedata ? &(resources::gamedata->rng()) : NULL)),
+		gender : generate_gender(u_type, real_unit)),
 	alpha_(),
 	unit_formula_(),
 	unit_loop_formula_(),
-    unit_priority_formula_(),
+	unit_priority_formula_(),
 	formula_vars_(),
 	movement_(0),
 	max_movement_(0),
@@ -567,7 +587,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	attacks_left_(0),
 	max_attacks_(0),
 	states_(),
-	known_boolean_states_(known_boolean_state_names_.size(),false),
+	known_boolean_states_( get_known_boolean_state_names().size(),false),
 	variables_(),
 	events_(),
 	filter_recall_(),
@@ -603,7 +623,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	advance_to(u_type, real_unit);
 
 	if(real_unit) {
-		generate_name(resources::gamedata ? &(resources::gamedata->rng()) : NULL);
+		generate_name();
 	}
 	set_underlying_id();
 
@@ -650,11 +670,11 @@ unit& unit::operator=(const unit& u)
 }
 
 
-void unit::generate_name(rand_rng::simple_rng* rng)
+void unit::generate_name()
 {
 	if (!name_.empty() || !cfg_["generate_name"].to_bool(true)) return;
 
-	name_ = race_->generate_name(gender_, rng);
+	name_ = race_->generate_name(gender_);
 	cfg_["generate_name"] = false;
 }
 
@@ -718,8 +738,7 @@ void unit::generate_traits(bool musthaveonly)
 	int max_traits = u_type.num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = (resources::gamedata ? resources::gamedata->rng().get_next_random() : get_random_nocheck())
-		          % candidate_traits.size();
+		int num = random_new::generator->next_random() % candidate_traits.size();
 		modifications_.add_child("trait", candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}
@@ -807,6 +826,13 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	undead_variation_ = new_type.undead_variation();
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
+	recall_cost_ = new_type.recall_cost();
+	/* Need to add a check to see if the unit's old cost is equal 
+	to the unit's old unit_type cost first.  If it is change the cost
+	otherwise keep the old cost. */
+	if(old_type.recall_cost() == recall_cost_) {
+		recall_cost_ = new_type.recall_cost();
+	}
 	alignment_ = new_type.alignment();
 	alpha_ = new_type.alpha();
 	max_hit_points_ = new_type.hitpoints();
@@ -1406,6 +1432,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			const std::vector<std::string>& variation_types = utils::split(var_ids);
 			// If this unit is a variation itself then search in the base unit's variations.
 			const unit_type* const type = this_var.empty() ? type_ : unit_types.find(type_->base_id());
+			assert(type);
 
 			BOOST_FOREACH(const std::string& variation_id, variation_types) {
 				if (type->has_variation(variation_id)) {
@@ -1500,7 +1527,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if (!cfg_canrecruit.blank() && cfg_canrecruit.to_bool() != can_recruit()) {
 		return false;
 	}
-
+	
+	config::attribute_value cfg_recall_cost = cfg["recall_cost"];
+	if (!cfg_recall_cost.blank() && cfg_recall_cost.to_int(-1) != recall_cost_) {
+		return false;
+	}
+	
 	config::attribute_value cfg_level = cfg["level"];
 	if (!cfg_level.blank() && cfg_level.to_int(-1) != level_) {
 		return false;
@@ -1559,11 +1591,10 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			}
 			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
 			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
-				bool not_fogged = !teams_manager::get_teams()[*viewer - 1].fogged(loc);
-				bool not_hiding = !this->invisible(loc/*, false(?) */);
-				if (visible != not_fogged && not_hiding) {
-					return false;
-				}
+				bool fogged = teams_manager::get_teams()[*viewer - 1].fogged(loc);
+				bool hiding = this->invisible(loc/*, false(?) */);
+				bool unit_hidden = fogged || hiding;
+				if (visible == unit_hidden) return false;
 			}
 		}
 	}
@@ -1653,7 +1684,8 @@ void unit::write(config& cfg) const
 
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
-
+	cfg["recall_cost"] = recall_cost_;
+	
 	cfg["side"] = side_;
 
 	cfg["type"] = type_id();
@@ -2009,19 +2041,21 @@ void unit::redraw_unit()
 			ellipse="misc/ellipse";
 		}
 
-		// check if the unit has a ZoC or can recruit
-		const char* const nozoc = emit_zoc_ ? "" : "nozoc-";
-		const char* const leader = can_recruit() ? "leader-" : "";
-		const char* const selected = disp.selected_hex() == loc_ ? "selected-" : "";
+		if(ellipse != "none") {
+			// check if the unit has a ZoC or can recruit
+			const char* const nozoc = emit_zoc_ ? "" : "nozoc-";
+			const char* const leader = can_recruit() ? "leader-" : "";
+			const char* const selected = disp.selected_hex() == loc_ ? "selected-" : "";
 
-		// Load the ellipse parts recolored to match team color
-		char buf[100];
-		std::string tc=team::get_side_color_index(side_);
+			// Load the ellipse parts recolored to match team color
+			char buf[100];
+			std::string tc=team::get_side_color_index(side_);
 
-		snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
-		ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
-		snprintf(buf,sizeof(buf),"%s-%s%s%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
-		ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
+			snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
+			ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
+			snprintf(buf,sizeof(buf),"%s-%s%s%sbottom.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
+			ellipse_front.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
+		}
 	}
 
 	if (ellipse_back != NULL) {
@@ -2037,40 +2071,51 @@ void unit::redraw_unit()
 	}
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
-		static const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
-						game_config::images::partmoved_orb_color + ")"  );
-		static const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
-						game_config::images::moved_orb_color + ")"  );
-		static const image::locator ally_orb(game_config::images::orb + "~RC(magenta>" +
-				game_config::images::ally_orb_color + ")"  );
-		static const image::locator enemy_orb(game_config::images::orb + "~RC(magenta>" +
-				game_config::images::enemy_orb_color + ")"  );
-		static const image::locator unmoved_orb(game_config::images::orb + "~RC(magenta>" +
-					game_config::images::unmoved_orb_color + ")"  );
+		/*static*/ const image::locator partmoved_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::partial_color() + ")"  );
+		/*static*/ const image::locator moved_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::moved_color() + ")"  );
+		/*static*/ const image::locator ally_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::allied_color() + ")"  );
+		/*static*/ const image::locator enemy_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::enemy_color() + ")"  );
+		/*static*/ const image::locator unmoved_orb(game_config::images::orb + "~RC(magenta>" +
+						preferences::unmoved_color() + ")"  );
 
 		const std::string* energy_file = &game_config::images::energy;
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
 			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				orb_img = &enemy_orb;
+				if (preferences::show_enemy_orb())
+					orb_img = &enemy_orb;
+				else
+					orb_img = NULL;
 			} else {
-				orb_img = &ally_orb;
+				if (preferences::show_allied_orb())
+					orb_img = &ally_orb;
+				else orb_img = NULL;
 			}
 		} else {
-			orb_img = &moved_orb;
+			if (preferences::show_moved_orb())
+				orb_img = &moved_orb;
+			else orb_img = NULL;
+
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
-					orb_img = &unmoved_orb;
+					if (preferences::show_unmoved_orb())
+						orb_img = &unmoved_orb;
+					else orb_img = NULL;
 				} else if ( actions::unit_can_move(*this) ) {
-					orb_img = &partmoved_orb;
+					if (preferences::show_partial_orb())
+						orb_img = &partmoved_orb;
+					else orb_img = NULL;
 				}
 			}
 		}
 
-		assert(orb_img != NULL);
-		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
-		if (orb != NULL) {
+		if (orb_img != NULL) {
+			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 				loc_, xsrc, ysrc +adjusted_params.y, orb);
 		}
@@ -2098,7 +2143,7 @@ void unit::redraw_unit()
 		}
 
 		if (can_recruit()) {
-			surface crown(image::get_image("misc/leader-crown.png",image::SCALED_TO_ZOOM));
+			surface crown(image::get_image(leader_crown(),image::SCALED_TO_ZOOM));
 			if(!crown.null()) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
@@ -2275,7 +2320,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
 std::vector<std::pair<std::string,std::string> > unit::amla_icons() const
 {
 	std::vector<std::pair<std::string,std::string> > temp;
-	std::pair<std::string,std::string> icon; //<image,tooltip>
+	std::pair<std::string,std::string> icon; // <image,tooltip>
 
 	BOOST_FOREACH(const config &adv, get_modification_advances())
 	{
@@ -2342,11 +2387,16 @@ size_t unit::modification_count(const std::string& mod_type, const std::string& 
 
 void unit::add_modification(const std::string& mod_type, const config& mod, bool no_add)
 {
+	bool generate_description = true;
+
 	//some trait activate specific flags
 	if ( mod_type == "trait" ) {
 		const std::string& id = mod["id"];
 		is_fearless_ = is_fearless_ || id == "fearless";
 		is_healthy_ = is_healthy_ || id == "healthy";
+		if (!mod["generate_description"].empty()) {
+			generate_description = mod["generate_description"];
+		}
 	}
 
 	config *new_child = NULL;
@@ -2718,7 +2768,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 
 	// Punctuation should be translatable: not all languages use Latin punctuation.
 	// (However, there maybe is a better way to do it)
-	if(effects_description.empty() == false) {
+	if(effects_description.empty() == false && generate_description == true) {
 		for(std::vector<t_string>::const_iterator i = effects_description.begin();
 				i != effects_description.end(); ++i) {
 			description += *i;
@@ -2858,6 +2908,8 @@ bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap cons
 		return false;
 	if (see_all)
 		return true;
+	if (resources::screen->is_blindfolded())
+		return false;
 	if (team.is_enemy(side()) && invisible(loc))
 		return false;
 	if (team.is_enemy(side()) && team.fogged(loc))
@@ -3198,6 +3250,7 @@ std::string get_checksum(const unit& u) {
 		"ignore_race_traits",
 		"ignore_global_traits",
 		"level",
+		"recall_cost",
 		"max_attacks",
 		"max_experience",
 		"max_hitpoints",

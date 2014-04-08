@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2011 by Fabian Mueller <fabianmueller5@gmx.de>
+   Copyright (C) 2008 - 2014 by Fabian Mueller <fabianmueller5@gmx.de>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -46,6 +46,22 @@ class editor_action_select : public editor_action_area
 		editor_action* perform(map_context& mc) const;
 		void perform_without_undo(map_context& mc) const;
 		const char* get_name() const { return "select"; }
+};
+
+/**
+ * Deselect the given locations
+ */
+class editor_action_deselect : public editor_action_area
+{
+public:
+	editor_action_deselect(const std::set<map_location>& area) :
+		editor_action_area(area) {}
+
+	editor_action_deselect* clone() const;
+	void extend(const editor_map& map, const std::set<map_location>& locs);
+	editor_action* perform(map_context& mc) const;
+	void perform_without_undo(map_context& mc) const;
+	const char* get_name() const { return "deselect"; }
 };
 
 /**

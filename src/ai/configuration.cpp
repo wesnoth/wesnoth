@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -47,7 +47,7 @@ public:
 	{
 	}
 
-	virtual ~well_known_aspect() {};
+	virtual ~well_known_aspect() {}
 
 	std::string name_;
 	bool was_an_attribute_;
@@ -402,7 +402,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 
 		BOOST_FOREACH(const config &aitarget, aiparam.child_range("target")) {
-			lg::wml_error << deprecate_wml_key_warning("target", "1.12.0") << "\n";
+			lg::wml_error << deprecate_wml_key_warning("target", "1.13.0") << "\n";
 			config aigoal;
 			transfer_turns_and_time_of_day_data(aiparam,aigoal);
 
@@ -421,7 +421,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 
 		BOOST_FOREACH(config &ai_protect_unit, aiparam.child_range("protect_unit")) {
-			lg::wml_error << deprecate_wml_key_warning("protect_unit", "1.12.0") << "\n";
+			lg::wml_error << deprecate_wml_key_warning("protect_unit", "1.13.0") << "\n";
 			transfer_turns_and_time_of_day_data(aiparam,ai_protect_unit);
 			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_unit,parsed_cfg,true);
 		}
@@ -429,7 +429,7 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 
 		BOOST_FOREACH(config &ai_protect_location, aiparam.child_range("protect_location")) {
-			lg::wml_error << deprecate_wml_key_warning("protect_location", "1.12.0") << "\n";
+			lg::wml_error << deprecate_wml_key_warning("protect_location", "1.13.0") << "\n";
 			transfer_turns_and_time_of_day_data(aiparam,ai_protect_location);
 			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_location,parsed_cfg,false);
 		}
@@ -438,14 +438,14 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 
 		if (const config::attribute_value *v = aiparam.get("protect_leader"))
 		{
-			lg::wml_error << deprecate_wml_key_warning("protect_leader", "1.12.0") << "\n";
+			lg::wml_error << deprecate_wml_key_warning("protect_leader", "1.13.0") << "\n";
 			config c;
 			c["value"] = *v;
 			c["canrecruit"] = true;
 			c["side_number"] = side;
 			transfer_turns_and_time_of_day_data(aiparam,c);
 			if (const config::attribute_value *v = aiparam.get("protect_leader_radius")) {
-				lg::wml_error << deprecate_wml_key_warning("protect_leader_radius", "1.12.0") << "\n";
+				lg::wml_error << deprecate_wml_key_warning("protect_leader_radius", "1.13.0") << "\n";
 				c["radius"] = *v;
 			}
 

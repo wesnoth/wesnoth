@@ -55,7 +55,8 @@
 # Note: You can shut wmllint up about custom terrains by having a comment
 # on the same line that includes the string "wmllint: ignore" or
 # "wmllint: noconvert". The same magic comments will also disable checking
-# of translation marks.
+# of translation marks, which may alternatively be toggled for line blocks
+# with "wmllint: markcheck off" and "wmllint: markcheck on".
 #
 # You can also prevent description insertions with "wmllint: no-icon".
 #
@@ -65,32 +66,34 @@
 # who should be recognized in descriptions.  This will be useful,
 # for example, if your scenario follows a continue so there are
 # characters present who were not explicitly recalled.  It may
-# also be useful if you have wrapped unit-creation or recall markup in macros
-# and wmllint cannot recognize it.
+# also be useful if you have wrapped unit-creation or recall markup in
+# non-core macros and wmllint cannot recognize it.
+#
+# If you use custom macros to create (or recall) a named unit, you can tell
+# wmllint which field contains the id with the string, "wmllint: whofield
+# <macro> <number>".  After the macro's last use, *make sure* to remove it
+# with "wmllint: whofield clear <macro>"; if "clear" is not followed by a
+# macro name, all macros will be cleared from the list.  (If the <number>
+# string was not a non-zero number, wmllint will also attempt to remove the
+# specified macro.)
 #
 # For macros used in multiple scenarios to field characters, you can tell
 # wmllint to recognize them with another magic comment:
 #     wmllint: who <macro> is <character(s)>
-# <Macro> should be a text string sufficient to distinguish the macro from
-# any other; <character(s)> would be the ids of the recalled (or created)
-# characters, comma-separated if there were more than one.  (Enclosing <macro>
-# in quotes is possible, if a space is needed at the end; for example, if a
-# campaign had a "{GARARD_I $x $y}" macro and also a "GARARD_II" macro,
-# "who '{GARARD_I '" would distinguish I from II.)
-#
-# If more characters attach to a macro in later scenarios, they can be appended
-# with additional "who" magic comments (though this requires scenarios to
-# be numbered or otherwise sorted to work properly, as wmllint traverses files
-# in alphabetical order).  If there is a character that drops out, preceding that
-# person's entry with a double-minus will cause that character to be removed,
-# e.g., "-- Garak".
+# <Macro> should be the macro name; <character(s)> would be the ids of the
+# recalled (or created) characters, comma-separated if there were more than
+# one.  If more characters attach to a macro in later scenarios, they can be
+# appended with additional "who" magic comments (though this requires scenarios
+# to be numbered or otherwise sorted to work properly, as wmllint traverses
+# files in alphabetical order).  If there is a character that drops out,
+# preceding that person's entry with a double-minus will cause that character
+# to be removed, e.g., "-- Garak".
 #
 # At the end of the campaign, *make sure* you use:
 #     wmllint: unwho ALL
 # This will clear the list of "who" magic comments and tell wmllint to stop
 # checking for them in later files and directories.  If a specific macro is
-# not used in subsequent scenarios, put "unwho <macro>" in its last scenario,
-# where <macro> should be the string you originally used for "wmllint: who".
+# not used in subsequent scenarios, put "unwho <macro>" in its last scenario.
 #
 # Similarly, it is possible to explicitly declare a unit's usage class
 # with a magic comment that looks like this:
@@ -98,6 +101,13 @@
 # Note that <unit> must be a string wrapped in ASCII doublequotes.  This
 # declaration will be useful if you are declaring units with macros that
 # include a substitutable formal in the unit name; there are examples in UtBS.
+#
+# If a mismatch between a recruit list and recruitment pattern involves a
+# usage type outside the five core types, the warning message will include a
+# note that a non-standard usage class is involved.  If you are using custom
+# usage classes and would like wmllint to be aware of them, you can insert
+# the magic comment, "wmllint: usagetype <class>".  This comment will take a
+# comma-separated list, and can also be pluralized to "usagetypes".
 #
 # You can disable stack-based malformation checks with a comment
 # containing "wmllint: validate-off" and re-enable with "wmllint: validate-on".
@@ -173,11 +183,29 @@ mapchanges = (
     ("Qv,",  "Mv"),
     )
 
+# Base terrain aliasing changes.
+aliaschanges = (
+    # 1.11.8:
+    ("Ch",   "Ct"),
+    ("Ds",   "Dt"),
+    ("Hh",   "Ht"),
+    ("Mm",   "Mt"),
+    ("Ss",   "St"),
+    ("Uu",   "Ut"),
+    ("Ww",   "Wst"),
+    ("Wo",   "Wdt"),
+    ("Wwr",  "Wrt"),
+    ("^Uf",  "Uft"),
+    # Vi -> Vit in 1.11.8, Vit -> Vt in 1.11.9.
+    ("Vit",  "Vt"),
+    # 1.11.9:
+    ("Vi",   "Vt"),
+    )
+
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
 linechanges = (
         ("canrecruit=1", "canrecruit=yes"),
         ("canrecruit=0", "canrecruit=no"),
-        ("generate_description", "generate_name"),
         # Fix a common typo
         ("agression=", "aggression="),
         # These changed just after 1.5.0
@@ -558,6 +586,21 @@ linechanges = (
         # Changed before 1.11.5 to incorporate 1.9.0 portraits
         ("portraits/orcs/warlord2.png","portraits/orcs/transparent/grunt-5.png"),
         ("portraits/orcs/warlord4.png","portraits/orcs/transparent/grunt-6.png"),
+
+        # Changed before 1.11.8
+        ("misc/schedule-dawn.png","misc/time-schedules/default/schedule-dawn.png"),
+        ("misc/schedule-morning.png","misc/time-schedules/default/schedule-morning.png"),
+        ("misc/schedule-afternoon.png","misc/time-schedules/default/schedule-afternoon.png"),
+        ("misc/schedule-dusk.png","misc/time-schedules/default/schedule-dusk.png"),
+        ("misc/schedule-firstwatch.png","misc/time-schedules/default/schedule-firstwatch.png"),
+        ("misc/schedule-secondwatch.png","misc/time-schedules/default/schedule-secondwatch.png"),
+
+        ("misc/schedule-indoors.png","misc/time-schedules/schedule-indoors.png"),
+        ("misc/schedule-underground.png","misc/time-schedules/schedule-underground.png"),
+        ("misc/schedule-underground-illum.png","misc/time-schedules/schedule-underground-illum.png"),
+
+        ("misc/tod-schedule-24hrs.png","misc/time-schedules/tod-schedule-24hrs.png")
+
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
@@ -585,6 +628,17 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if closer == "unit" and attributes.get("id") is not None and attributes.get("type") is not None and attributes.get("side") is None and not "side" in ancestors:
         print '"%s", line %d: unit declaration without side attribute' % \
               (filename, lineno)
+    if closer == "theme" and "id" not in attributes:
+        if "name" in attributes:
+            print '"%s", line %d: using [theme]name= instead of [theme]id= is deprecated' % (filename, lineno)
+        else:
+            print '"%s", line %d: [theme] needs an id attribute' % (filename, lineno)
+    # Check for user-visible themes that lack a UI name or description.
+    if closer == "theme" and ("hidden" not in attributes or attributes["hidden"] not in ("yes", "true")):
+        for attr in ("name", "description"):
+            if attr not in attributes:
+                print '"%s", line %d: [theme] needs a %s attribute unless hidden=yes' % \
+                      (filename, lineno, attr)
     if closer == "filter_side":
         ancestor = False
         if "gold" in ancestors:
@@ -682,6 +736,17 @@ notepairs = [
 # but must be populated by the magic comment, "#wmllint: who ... is ...".
 whopairs = {}
 
+# This dictionary pairs macros with the id field of the characters they recall
+# or create, and is populated by the comment, "wmllint: whofield <macro> <#>."
+whomacros = {}
+
+# This dictionary pairs the ids of stored units with their variable name.
+storedids = {}
+
+# This list of the standard recruitable usage types can be appended with the
+# magic comment, "#wmllint: usagetype[s]".
+usage_types = ["scout", "fighter", "mixed fighter", "archer", "healer"]
+
 # These are accumulated by sanity_check() and examined by consistency_check()
 unit_types = []
 derived_units = []
@@ -709,6 +774,7 @@ translatables = re.compile( \
                "^difficulty_descriptions$|" \
                "^female_name_inactive$|" \
                "^female_names$|" \
+               "^help_topic_text$|" \
                "^label$|" \
                "^male_names$|" \
                "^message$|" \
@@ -764,7 +830,9 @@ spellcheck_these = (\
     "caption=",
     "description=",
     "description_inactive=",
+    "editor_name=",
     "end_text=",
+    "help_topic_text=",
     "message=",
     "note=",
     "story=",
@@ -913,14 +981,19 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
         if m and not m.group(1):
             print errlead + 'translatability mark before non-string'
     # Most tags are not allowed with [part]
-    if "[part]" in ancestors and parent not in ("[part]", "[image]", "[insert_tag]", "[if]", "[then]", "[else]", "[switch]", "[case]", "[variable]", "[deprecated_message]") and not parent.startswith("#"):
-        print errlead + '%s not permitted within [part] tag' % parent
+    if ("[part]" in ancestors or parent == "[part]") and isOpener(nav.element) and \
+                    nav.element not in ("[part]", "[image]", "[insert_tag]",
+                    "[if]", "[then]", "[else]", "[switch]", "[case]",
+                    "[variable]", "[deprecated_message]"):
+        print errlead + '%s not permitted within [part] tag' % nav.element
     # Most tags are not permitted inside [if]
-    if len(ancestors) >= 2 and ancestors[-1] == "[if]":
-        if parent not in ("[and]", "[else]", "[frame]", "[have_location]",
+    if (len(ancestors) >= 1 and parent == "[if]") or \
+       (len(ancestors) >= 2 and parent == "#ifdef" and ancestors[-1] == "[if]"):
+        if isOpener(nav.element) and nav.element not in ("[and]",
+                           "[else]", "[frame]", "[have_location]",
                            "[have_unit]", "[not]", "[or]", "[then]",
-                           "[variable]") and not parent.endswith("_frame]"):
-            print errlead + 'illegal child of [if]'
+                           "[variable]") and not nav.element.endswith("_frame]") and not nav.element.startswith("[filter"):
+            print errlead + 'illegal child of [if]:', nav.element
     # Check for fluky credit parts
     if parent == "[entry]":
         if key == "email" and " " in value:
@@ -1255,6 +1328,11 @@ def global_sanity_check(filename, lines):
         if m:
             usage[m.group(1)] = m.group(2).strip()
             unit_types.append(m.group(1))
+        # Magic comment for adding non-standard usage types
+        m = re.search('# *wmllint: usagetypes? +(.*)', lines[i])
+        if m:
+            for newusage in m.group(1).split(","):
+                usage_types.append(newusage.strip())
         # Accumulate global spelling exceptions
         words = re.search("wmllint: general spellings? (.*)", lines[i])
         if words:
@@ -1293,6 +1371,12 @@ def global_sanity_check(filename, lines):
     #in case some [filter]id= comes in this [event]
     directly_in_event = []
     in_time_area = False
+    in_store = False
+    in_unstore = False
+    in_not = False
+    in_clear = False
+    storeid = None
+    storevar = None
     ignoreable = False
     preamble_seen = False
     sentence_end = re.compile("(?<=[.!?;:])  +")
@@ -1394,15 +1478,34 @@ def global_sanity_check(filename, lines):
             continue
         elif "[/side]" in lines[i] or "[/unit]" in lines[i] or "[/recall]" in lines[i]:
             in_person = False
+        elif "[store_unit]" in lines[i]:
+            in_store = True
+        elif "[/store_unit]" in lines[i]:
+            if storeid and storevar:
+                storedids.update({storevar: storeid})
+            in_store = False
+            storeid = storevar = None
+        elif "[unstore_unit]" in lines[i]:
+            in_unstore = True
+        elif "[/unstore_unit]" in lines[i]:
+            in_unstore = False
+        elif "[not]" in lines[i]:
+            in_not = True
+        elif "[/not]" in lines[i]:
+            in_not = False
+        elif "[clear_variable]" in lines[i]:
+            in_clear = True
+        elif "[/clear_variable]" in lines[i]:
+            in_clear = False
         if "wmllint: markcheck off" in lines[i]:
             markcheck = False
-        if "wmllint: markcheck on" in lines[i]:
+        elif "wmllint: markcheck on" in lines[i]:
             markcheck = True
-        if 'wmllint: who ' in lines[i]:
+        elif 'wmllint: who ' in lines[i]:
             try:
                 fields = lines[i].split("wmllint: who ", 1)[1].split(" is ", 1)
                 if len(fields) == 2:
-                    mac = string_strip(fields[0].strip())
+                    mac = string_strip(fields[0].strip()).strip('{}')
                     if whopairs.has_key(mac):
                         whopairs[mac] = whopairs[mac] + ", " + fields[1].strip()
                     else:
@@ -1415,23 +1518,75 @@ def global_sanity_check(filename, lines):
                 whopairs.clear()
             else:
                 try:
-                    del whopairs[string_strip(unmac)]
+                    del whopairs[string_strip(unmac).strip('{}')]
                 except KeyError:
                     print >>sys.stderr, '%s, line %s: magic comment "unwho %s" does not match any current keys: %s' \
                                          % (filename, i+1, unmac, str(whopairs.keys())[1:-1])
-        if lines[i].lstrip().startswith('{'):
+        elif 'wmllint: whofield' in lines[i]:
+            fields = re.search(r'wmllint: whofield\s+([^\s]+)(\s+is)?\s*([^\s]*)', lines[i])
+            if fields:
+                if fields.group(1).startswith('clear'):
+                    if fields.group(3) in whomacros.keys():
+                        del whomacros[fields.group(3)]
+                    else:
+                        whomacros.clear()
+                elif re.match(r'[1-9][0-9]*$', fields.group(3)):
+                    whomacros.update({fields.group(1): int(fields.group(3))})
+                else:
+                    try:
+                        del whomacros[fields.group(1)]
+                    except KeyError:
+                        print >>sys.stderr, '%s, line %s: magic comment "whofield %s" should be followed by a number: %s' \
+                                         % (filename, i+1, unmac, fields.group(3))
+        # Parse recruit/recall macros to recognize characters.  This section
+        # assumes that such a macro is the first item on a line.
+        leadmac = re.match(r'{[^}\s]+.', lines[i].lstrip())
+        if leadmac:
+            macname = leadmac.group()[1:-1]
             # Recognize macro pairings from "wmllint: who" magic
             # comments.
-            for mac in whopairs.keys():
-                if mac in lines[i]:
-                    for who in whopairs[mac].split(","):
-                        if who.strip().startswith("--"):
-                            try:
-                                present.remove(who.replace('--', '', 1).strip())
-                            except:
-                                ValueError
-                        else:
-                            present.append(who.strip())
+            if macname in whopairs.keys():
+                for who in whopairs[macname].split(","):
+                    if who.strip().startswith("--"):
+                        try:
+                            present.remove(who.replace('--', '', 1).strip())
+                        except:
+                            ValueError
+                    else:
+                        present.append(who.strip())
+            elif not leadmac.group().endswith('}'):
+                # Update 1.4's {LOYAL_UNIT} macro to {NAMED_LOYAL_UNIT}.  Do
+                # this here rather than hack_syntax so the character can be
+                # recognized.
+                if macname == 'LOYAL_UNIT':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) == 7:
+                        lines[i] = lines[i].replace('{LOYAL_UNIT', '{NAMED_LOYAL_UNIT', 1)
+                # Auto-recognize the people in the {NAMED_*UNIT} macros.
+                if re.match(r'NAMED_[A-Z_]*UNIT$', macname):
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) >= 7 and \
+                       re.match(r'([0-9]+|[^\s]*\$[^\s]*side[^\s]*|{[^\s]*SIDE[^\s]*})$', args[1]) and \
+                       re.match(r'([0-9]+|[^\s]*\$[^\s]*x[^\s]*|{[^\s]*X[^\s]*})$', args[3]) and \
+                       re.match(r'([0-9]+|[^\s]*\$[^\s]*y[^\s]*|{[^\s]*Y[^\s]*})$', args[4]) and \
+                       len(args[5]) > 0:
+                        present.append(args[5])
+                elif macname == 'RECALL':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) == 2 and brack == 0:
+                        present.append(args[1])
+                elif macname == 'RECALL_XY':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    if len(args) == 4:
+                        present.append(args[1])
+                elif macname == 'CLEAR_VARIABLE':
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    for arg in [x.lstrip() for x in args[1].split(',')]:
+                        if arg in storedids.keys():
+                            del storedids[arg]
+                elif macname in whomacros.keys():
+                    (args, brack, paren) = parse_macroref(0, leadmac.string)
+                    present.append(args[whomacros[macname]])
         m = re.search("# *wmllint: recognize +(.*)", lines[i])
         if m:
             present.append(string_strip(m.group(1)).strip())
@@ -1446,6 +1601,27 @@ def global_sanity_check(filename, lines):
         if parseable:
             if "wmllint: ignore" in comment:
                 continue
+            # Recognize units when unstored
+            if (in_scenario or in_multiplayer) and in_store:
+                if key == 'id' and not in_not:
+                    if not storeid == None:
+                        storeid == storeid + ',' + value
+                    else:
+                        storeid = value
+                elif key == 'variable' and '{' not in value:
+                    storevar = value
+            elif in_unstore:
+                if key == 'variable':
+                    value = value.split("[$")[0]
+                    if value in storedids.keys():
+                        for unit_id in storedids[value].split(','):
+                            present.append(unit_id.lstrip())
+                        del storedids[value]
+            elif key == 'name' and in_clear:
+                for val in value.split(','):
+                    val = val.lstrip()
+                    if val in storedids.keys():
+                        del storedids[val]
             has_tr_mark = translation_mark.search(value)
             if key == 'role':
                 present.append(value)
@@ -1495,22 +1671,26 @@ def global_sanity_check(filename, lines):
                         present.append(value)
                     elif value and value[0] in ("$", "{"):
                         continue
-                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not directly_in_event[-1] and not in_time_area:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not in_clear_menu_item and not directly_in_event[-1] and not in_time_area:
                         ids = value.split(",")
                         for j in xrange(len(ids)):
                             # removal of leading whitespace of items in comma-separated lists
                             # is usually supported in the mainline wesnoth lua scripts
                             # not sure about trailing one
                             # also, do not complain about ids if they're referred to a menu item being cleared
-                            if ids[j].lstrip() not in present and not in_clear_menu_item:
+                            if ids[j].lstrip() not in present:
                                 print '"%s", line %d: unknown \'%s\' referred to by id' \
                                     % (filename, i+1, ids[j])
+                if (in_scenario or in_multiplayer) and key == "speaker":
+                    if value not in present and value not in ("narrator", "unit", "second_unit") and value[0] not in ("$", "{"):
+                        print '"%s", line %d: unknown speaker \'%s\' of [message]' \
+                              % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
                     print '"%s", line %d: %s should not have a translation mark' \
                               % (filename, i+1, key)
                     lines[i] = prefix + value.replace("_", "", 1) + comment + '\n'
     # Now that we know who's present, register all these names as spellings
-    declared_spellings[filename] = [x.lower() for x in present]
+    declared_spellings[filename] = [x.lower() for x in present if len(x) > 0]
     # Check for textdomain strings; should be exactly one, on line 1
     textdomains = []
     no_text = False
@@ -1586,10 +1766,13 @@ def consistency_check():
                             rshow = ''
                             if rdifficulty is not None:
                                 rshow = 'At ' + rdifficulty + ', '
+                            ushow = ''
+                            if utype not in usage_types:
+                                ushow = ', a non-standard usage class'
                             pshow = ''
                             if pdifficulty is not None:
                                 pshow = ' ' + pdifficulty
-                            print '"%s", line %d: %s%s (%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, pshow, ", ".join(recruit_pattern))
+                            print '"%s", line %d: %s%s (%s%s) doesn\'t match the%s recruitment pattern (%s) for its side' % (filename, rl, rshow, rtype, utype, ushow, pshow, ", ".join(recruit_pattern))
             # We have a list of all the usage types recruited at this difficulty
             # in utypes.  Use it to check the matching pattern, if any. Suppress
             # this check if the recruit line is a macroexpansion.
@@ -1601,7 +1784,10 @@ def consistency_check():
                                 rshow = '.'
                                 if rdifficulty is not None:
                                     rshow = ' at difficulty ' + rdifficulty + '.'
-                                print '"%s", line %d: no %s units recruitable%s' % (filename, pl, utype, rshow)
+                                ushow = ''
+                                if utype not in usage_types:
+                                    ushow = ' (a non-standard usage class)'
+                                print '"%s", line %d: no %s%s units recruitable%s' % (filename, pl, utype, ushow, rshow)
     if movetypes:
         for (unit_id, filename, line, movetype) in unit_movetypes:
             if movetype not in movetypes:
@@ -1631,6 +1817,9 @@ def consistency_check():
         if value not in scenario_to_filename:
             print '"%s", line %d: unresolved scenario reference %s' % \
                   (filename, lineno, value)
+    # Report stored units never unstored or cleared
+    for store in storedids.keys():
+        print 'wmllint: stored unit "%s" not unstored or cleared from "%s"' % (storedids[store], store)
 
 # Syntax transformations
 
@@ -2151,7 +2340,8 @@ def translator(filename, mapxforms, textxform):
                 (key, prefix, value, comment) = parse_attribute(nav.text)
                 local_sanity_check(filename, nav, key, prefix, value, comment)
             except TypeError:
-                pass
+                key = prefix = value = comment = None
+                local_sanity_check(filename, nav, key, prefix, value, comment)
         # Perform file-global semantic sanity checks
         newdata = global_sanity_check(filename, newdata)
         # OK, now perform WML rewrites
@@ -2331,7 +2521,7 @@ def spellcheck(fn, d):
                         d.add_to_session(word)
                         local_spellings.append(word)
                     else:
-                        nav.printError(" %s already declared" % word)
+                        nav.printError("spelling '%s' already declared" % word)
     #if local_spellings:
     #    print "%s: with this file's local spellings: %s" % (fn,local_spellings)
 
@@ -2366,7 +2556,7 @@ def spellcheck(fn, d):
         except AttributeError:
             print "Caught AttributeError when trying to remove %s from dict" % word
 
-vctypes = (".svn", ".git")
+vctypes = (".svn", ".git", ".hg")
 
 def interesting(fn):
     "Is a file interesting for conversion purposes?"
@@ -2498,6 +2688,15 @@ if __name__ == '__main__':
         if "wmllint: noconvert" not in original:
             for (old, new) in linechanges + mapchanges:
                 line = line.replace(old, new)
+            # Perform any base terrain string conversions needed in
+            # [terrain_type] aliasof=, mvt_alias=, and def_alias= attributes.
+            if under("terrain_type"):
+                match = re.search(r"\b(?:aliasof|mvt_alias|def_alias)\s*=(.*)$", line)
+                if match:
+                    aliases = match.group()
+                    for (old, new) in aliaschanges:
+                        aliases = aliases.replace(old, new)
+                    line = line.replace(match.group(), aliases)
         # Perform tag renaming for 1.5.  Note: this has to happen before
         # the sanity check, which assumes [unit] has already been
         # mapped to [unit_type].  Also, beware that this test will fail to
@@ -2525,6 +2724,8 @@ if __name__ == '__main__':
                 line = re.sub(r"\bdescription\s*=", "id=", line)
             if "name" not in tagstack[-1][1]:
                 line = re.sub(r"user_description\s*=", "name=", line)
+            if "generate_name" not in tagstack[-1][1]:
+                line = re.sub(r"generate_description\s*=", "generate_name=", line)
         # Now, inside objects...
         if under("object") and "description" not in tagstack[-1][1]:
             line = re.sub(r"user_description\s*=", "description=", line)

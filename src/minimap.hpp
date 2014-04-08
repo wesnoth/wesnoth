@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -15,15 +15,17 @@
 #define MINIMAP_HPP_INCLUDED
 
 #include <cstddef>
+#include <map.hpp>
 
 class gamemap;
 struct surface;
 class team;
+struct map_location;
 
 namespace image {
 	///function to create the minimap for a given map
 	///the surface returned must be freed by the user
-	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = NULL);
+	surface getMinimap(int w, int h, const gamemap &map_, const team *vm = NULL, const std::map<map_location,unsigned int> *reach_map = NULL);
 }
 
 #endif

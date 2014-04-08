@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2006 - 2009 by Rusty Russell <rusty@rustcorp.com.au>
-   Copyright (C) 2010 - 2013 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
+   Copyright (C) 2010 - 2014 by Guillaume Melquiond <guillaume.melquiond@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -187,7 +187,7 @@ public:
 			iterator_type new_i(i_);
 			do{
 				++new_i;
-			}while ((new_i->second.unit == NULL) && (new_i != the_map().end() )) ;
+			}while ((new_i != the_map().end()) && (new_i->second.unit == NULL)) ;
 			dec();
 			i_ = new_i;
 			inc();
@@ -375,8 +375,9 @@ public:
 	bool self_check() const
 #ifndef DEBUG
 	{ return true; }
-#endif
+#else
 	;
+#endif
 
 	/**
 	 * Is the unit in the map?

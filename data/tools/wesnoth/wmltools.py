@@ -139,6 +139,52 @@ def isresource(filename):
     (root, ext) = os.path.splitext(filename)
     return ext and ext[1:] in resource_extensions
 
+def parse_macroref(start, line):
+    brackdepth = parendepth = 0
+    instring = False
+    args = []
+    arg = ""
+    for i in xrange(start, len(line)):
+        if instring:
+            if line[i] == '"':
+                instring = False
+            arg += line[i]
+        elif line[i] == '"':
+            instring = not instring
+            arg += line[i]
+        elif line[i] == "{":
+            if brackdepth > 0:
+                arg += line[i]
+            brackdepth += 1
+        elif line[i] == "}":
+            brackdepth -= 1
+            if brackdepth == 0:
+                if not line[i-1].isspace():
+                    arg = arg.strip()
+                    if arg.startswith('"') and arg.endswith('"'):
+                        arg = arg[1:-1].strip()
+                    args.append(arg)
+                    arg = ""
+                break
+            else:
+                arg += line[i]
+        elif line[i] == "(":
+            parendepth += 1
+        elif line[i] == ")":
+            parendepth -= 1
+        elif not line[i-1].isspace() and \
+             line[i].isspace() and \
+             brackdepth == 1 and \
+             parendepth == 0:
+            arg = arg.strip()
+            if arg.startswith('"') and arg.endswith('"'):
+                arg = arg[1:-1].strip()
+            args.append(arg)
+            arg = ""
+        elif not line[i].isspace() or parendepth > 0:
+            arg += line[i]
+    return (args, brackdepth, parendepth)
+
 def formaltype(f):
     # Deduce the expected type of the formal
     if f.startswith("_"):
@@ -570,43 +616,7 @@ class CrossRef:
                             # Count the number of actual arguments.
                             # Set args to None if the call doesn't
                             # close on this line
-                            brackdepth = parendepth = 0
-                            instring = False
-                            args = []
-                            arg = ""
-                            for i in xrange(match.start(0), len(line)):
-                                if instring:
-                                    if line[i] == '"':
-                                        instring = False
-                                    else:
-                                        arg += line[i]
-                                elif line[i] == '"':
-                                    instring = not instring
-                                elif line[i] == "{":
-                                    if brackdepth > 0:
-                                        arg += line[i]
-                                    brackdepth += 1
-                                elif line[i] == "}":
-                                    brackdepth -= 1
-                                    if brackdepth == 0:
-                                        if not line[i-1].isspace():
-                                            args.append(arg)
-                                            arg = ""
-                                        break
-                                    else:
-                                        arg += line[i]
-                                elif line[i] == "(":
-                                    parendepth += 1
-                                elif line[i] == ")":
-                                    parendepth -= 1
-                                elif not line[i-1].isspace() and \
-                                     line[i].isspace() and \
-                                     brackdepth == 1 and \
-                                     parendepth == 0:
-                                    args.append(arg)
-                                    arg = ""
-                                elif not line[i].isspace():
-                                    arg += line[i]
+                            (args, brackdepth, parendepth) = parse_macroref(match.start(0), line)
                             if brackdepth > 0 or parendepth > 0:
                                 args = None
                             else:

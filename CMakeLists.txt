@@ -82,6 +82,7 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 option(ENABLE_OMP "Enables OpenMP, and has additional dependencies" OFF)
+option(ENABLE_PANDORA "Add support for the OpenPandora by deactivating libvorbis support" OFF)
 
 if(NOT DEFINED ENABLE_DISPLAY_REVISION)
 	# Test whether the code is used in a repository if not autorevision will
@@ -293,7 +294,7 @@ check_compiler_has_flag(
 
 if(NOT CMAKE_COMPILER_IS_GNUCXX)
 	# Silences warnings about overloaded virtuals.
-	# (GCC doesn't complain Clang does.)
+	# (GCC doesn't complain Clang 3.2 does. Clang 3.4 no longer does.)
 	check_compiler_has_flag(
 		CXX_FLAGS_STRICT_COMPILATION
 		"-Woverloaded-virtual"
@@ -301,6 +302,12 @@ if(NOT CMAKE_COMPILER_IS_GNUCXX)
 		"-Wno-overloaded-virtual"
 	)
 endif(NOT CMAKE_COMPILER_IS_GNUCXX)
+
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wold-style-cast"
+	HAS_COMPILER_FLAG_WOLD_STYLE_CAST
+)
 
 check_compiler_has_flag(
 	CXX_FLAGS_STRICT_COMPILATION
@@ -391,6 +398,24 @@ check_compiler_has_flag(
 	HAS_COMPILER_FLAG_WDOCUMENTATION
 )
 
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wdocumentation-deprecated-sync"
+	HAS_COMPILER_FLAG_WDOCUMENTATION
+	"-Wno-documentation-deprecated-sync"
+)
+
+check_compiler_has_flag(
+	CXX_FLAGS_PEDANTIC_COMPILATION
+	"-Wextra-semi"
+	HAS_COMPILER_FLAG_WEXTRA_SEMI
+)
+
+check_compiler_has_flag(
+	CXX_FLAGS_STRICT_COMPILATION
+	"-Wconditional-uninitialized"
+	HAS_COMPILER_FLAG_WCONDITIONAL_INITIALIZED
+)
 
 ### Set the final compiler flags.
 
@@ -435,6 +460,40 @@ endif(X11_FOUND)
 
 add_definitions(-DLOCALEDIR=\\\"${LOCALEDIR}\\\")
 
+# -NDEBUG is automatically added to all release build types, so manually remove
+# this define from the related variables
+MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELEASE")
+separate_arguments(CMAKE_CXX_FLAGS_RELEASE)
+list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELEASE "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_RELEASE")
+separate_arguments(CMAKE_C_FLAGS_RELEASE)
+list(REMOVE_ITEM CMAKE_C_FLAGS_RELEASE "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_RELWITHDEBINFO")
+separate_arguments(CMAKE_CXX_FLAGS_RELWITHDEBINFO)
+list(REMOVE_ITEM CMAKE_CXX_FLAGS_RELWITHDEBINFO "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_RELWITHDEBINFO")
+separate_arguments(CMAKE_C_FLAGS_RELWITHDEBINFO)
+list(REMOVE_ITEM CMAKE_C_FLAGS_RELWITHDEBINFO "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "${CMAKE_C_FLAGS_RELWITHDEBINFO}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_CXX_FLAGS_MINSIZEREL")
+separate_arguments(CMAKE_CXX_FLAGS_MINSIZEREL)
+list(REMOVE_ITEM CMAKE_CXX_FLAGS_MINSIZEREL "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}")
+set(CMAKE_CXX_FLAGS_MINSIZEREL "${CMAKE_CXX_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
+MESSAGE ("removing NDEBUG flag from CMAKE_C_FLAGS_MINSIZEREL")
+separate_arguments(CMAKE_C_FLAGS_MINSIZEREL)
+list(REMOVE_ITEM CMAKE_C_FLAGS_MINSIZEREL "-DNDEBUG")
+string(REPLACE ";" " " CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}")
+set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL}" CACHE STRING "removed NDEBUG flag" FORCE)
+
+
 # When the path starts with a / on a Unix system it's an absolute path.
 # This means that on Windows the path used is always relative.
 if(LOCALEDIR MATCHES "^/")
@@ -463,6 +522,10 @@ endif(DEFAULT_PREFS_FILE)
 if(ENABLE_LOW_MEM)
 	add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
+
+if(ENABLE_PANDORA)
+	add_definitions(-DPANDORA)
+endif(ENABLE_PANDORA)
 
 if(ENABLE_OMP)
 	find_package(OpenMP REQUIRED)

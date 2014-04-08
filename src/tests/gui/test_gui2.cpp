@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2009 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -52,6 +52,7 @@
 #include "gui/dialogs/mp_login.hpp"
 #include "gui/dialogs/mp_method_selection.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
+#include "gui/dialogs/screenshot_notification.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #include "gui/dialogs/tip.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -375,6 +376,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tlanguage_selection>();
 	test<gui2::tmessage>();
 	test<gui2::tsimple_item_selector>();
+	test<gui2::tscreenshot_notification>();
 	test<gui2::tmp_change_control>();
 	test<gui2::tmp_cmd_wrapper>();
 	test<gui2::tmp_connect>();
@@ -646,6 +648,16 @@ struct twrapper<gui2::tsimple_item_selector>
 				, std::vector<std::string>()
 				, false
 				, false);
+	}
+};
+
+template<>
+struct twrapper<gui2::tscreenshot_notification>
+{
+	static gui2::tscreenshot_notification* create()
+	{
+		return new gui2::tscreenshot_notification("path"
+				, 0);
 	}
 };
 

@@ -64,16 +64,11 @@ especificada, terás de escolher uma em jogo.
 \fB\-\-campaign\-scenario <nome do cenário>\fP
 A ID do cenário da campanha escolhida. Por predefinição o primeiro cenário.
 .TP 
-\fB\-\-config\-dir\fP\fI\ name\fP
-define o directório \fInome\fP do utilizador em $HOME ou “Os meus Documentos\Os
-Meus Jogos” em Windows.  Também podes especificar o caminho absoluto para as
-configurações fora de $HOME ou “Os meus Documentos\Os Meus Jogos”.
-.TP 
-\fB\-\-config\-path\fP
-imprime o caminho da pasta de configurações de usuário e sai.
-.TP 
 \fB\-\-data\-dir <directório>\fP
 substituirá o directório de dados com o especificado
+.TP 
+\fB\-\-data\-path\fP
+path the path of the data directory and exits.
 .TP 
 \fB\-d, \-\-debug\fP
 possibilita opções de comando adicionais de modo em\-jogo (veja a página wiki
@@ -189,6 +184,24 @@ erros de validação são tratados como fatais.
 \fB\-t, \-\-test\fP
 inicia o jogo com um pequeno cenário de teste.
 .TP 
+\fB\-\-userconfig\-dir\fP\fI\ name\fP
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games".
+Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/.config/wesnoth, on
+other systems to the userdata path.
+.TP 
+\fB\-\-userconfig\-path\fP
+imprime o caminho da pasta de configurações de usuário e sai.
+.TP 
+\fB\-\-userdata\-dir\fP\fI\ name\fP
+sets the userdata directory to \fIname\fP under $HOME or "My Documents\eMy
+Games" for windows.  You can also specify an absolute path for the userdata
+directory outside the $HOME or "My Documents\eMy Games".
+.TP 
+\fB\-\-userdata\-path\fP
+prints the path of the userdata directory and exits.
+.TP 
 \fB\-\-validcache\fP
 assume que a cache é válida. (perigoso)
 .TP 
@@ -231,11 +244,11 @@ requer a interacção do usuário. Também é usado para benchmarking
 preconfigurado.
 .TP 
 \fB\-\-ignore\-map\-settings\fP
-do not use map settings, use default values instead.
+não usar definições do mapa, ao invés usar valores personalizados
 .TP 
-\fB\-\-multiplayer\-repeat=\fP\fIvalue\fP
-repeats a multiplayer game \fIvalue\fP times. Best to use with \fB\-\-nogui\fP for
-scriptable benchmarking.
+\fB\-\-multiplayer\-repeat=\fP\fIvalor\fP
+Repete um jogo em rede \fIvalor\fP vezes. Melhor usado em conjunto com
+\fB\-\-nogui\fP para scripts e benchmarking.
 .TP 
 \fB\-\-nogui\fP
 inicia o jogo sem uma IGU. Tem de aparecer antes de \fB\-\-multiplayer\fP para

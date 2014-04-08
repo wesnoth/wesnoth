@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2007 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2007 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -34,45 +34,46 @@
 
 class CVideo;
 
-namespace gui2{
+namespace gui2
+{
 
 class tdialog;
 class tdebug_layout_graph;
 class tpane;
 
-namespace event {
-	class tdistributor;
+namespace event
+{
+class tdistributor;
 } // namespace event
 
 /**
  * base class of top level items, the only item
  * which needs to store the final canvases to draw on
  */
-class twindow
-	: public tpanel
-	, public cursor::setter
+class twindow : public tpanel, public cursor::setter
 {
 	friend class tdebug_layout_graph;
-	friend twindow *build(CVideo &, const twindow_builder::tresolution *);
+	friend twindow* build(CVideo&, const twindow_builder::tresolution*);
 	friend struct twindow_implementation;
 	friend class tinvalidate_layout_blocker;
 	friend class tpane;
 
 public:
-
 	twindow(CVideo& video,
-		tformula<unsigned>x,
-		tformula<unsigned>y,
-		tformula<unsigned>w,
-		tformula<unsigned>h,
-		const bool automatic_placement,
-		const unsigned horizontal_placement,
-		const unsigned vertical_placement,
-		const unsigned maximum_width,
-		const unsigned maximum_height,
-		const std::string& definition,
-		const twindow_builder::tresolution::ttip& tooltip,
-		const twindow_builder::tresolution::ttip& helptip);
+			tformula<unsigned> x,
+			tformula<unsigned> y,
+			tformula<unsigned> w,
+			tformula<unsigned> h,
+			tformula<bool> reevaluate_best_size,
+			const game_logic::function_symbol_table& functions,
+			const bool automatic_placement,
+			const unsigned horizontal_placement,
+			const unsigned vertical_placement,
+			const unsigned maximum_width,
+			const unsigned maximum_height,
+			const std::string& definition,
+			const twindow_builder::tresolution::ttip& tooltip,
+			const twindow_builder::tresolution::ttip& helptip);
 
 	~twindow();
 
@@ -107,22 +108,22 @@ public:
 	 * callers.
 	 */
 	enum tretval {
-		NONE = 0,                      /**<
-										* Dialog is closed with no return
-										* value, should be rare but eg a
-										* message popup can do it.
-										*/
-		OK = -1,                       /**< Dialog is closed with ok button. */
-		CANCEL = -2,                   /**<
-										* Dialog is closed with the cancel
-										* button.
-										*/
-		AUTO_CLOSE = -3                /**<
-		                                * The dialog is closed automatically
-		                                * since it's timeout has been
-		                                * triggered.
-		                                */
-		};
+		NONE = 0, /**<
+				   * Dialog is closed with no return
+				   * value, should be rare but eg a
+				   * message popup can do it.
+				   */
+		OK = -1,	 /**< Dialog is closed with ok button. */
+		CANCEL = -2, /**<
+					  * Dialog is closed with the cancel
+					  * button.
+					  */
+		AUTO_CLOSE = -3 /**<
+						 * The dialog is closed automatically
+						 * since it's timeout has been
+						 * triggered.
+						 */
+	};
 
 	/** Gets the retval for the default buttons. */
 	static tretval get_retval_by_id(const std::string& id);
@@ -147,8 +148,7 @@ public:
 	 * @returns                   The close code of the window, predefined
 	 *                            values are listed in tretval.
 	 */
-	int show(const bool restore = true,
-			const unsigned auto_close_timeout = 0);
+	int show(const bool restore = true, const unsigned auto_close_timeout = 0);
 
 	/**
 	 * Shows the window as a tooltip.
@@ -157,7 +157,7 @@ public:
 	 *
 	 * @todo implement @p auto_close_timeout.
 	 *
-	 * @param auto_close_timeout  The time in ms after which the window will
+	 * @p     auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no guarantee about how fast it closes
@@ -172,7 +172,7 @@ public:
 	 *
 	 * @todo implement @p auto_close_timeout.
 	 *
-	 * @param auto_close_timeout  The time in ms after which the window will
+	 * @p     auto_close_timeout  The time in ms after which the window will
 	 *                            automatically close, if 0 it doesn't close.
 	 *                            @note the timeout is a minimum time and
 	 *                            there's no guarantee about how fast it closes
@@ -207,15 +207,15 @@ public:
 	}
 
 	/** The status of the window. */
-	enum tstatus{
-		NEW,                      /**< The window is new and not yet shown. */
-		SHOWING,                  /**< The window is being shown. */
-		REQUEST_CLOSE,            /**< The window has been requested to be
-		                           *   closed but still needs to evaluate the
-								   *   request.
-								   */
-		CLOSED                    /**< The window has been closed. */
-		};
+	enum tstatus {
+		NEW,		   /**< The window is new and not yet shown. */
+		SHOWING,	   /**< The window is being shown. */
+		REQUEST_CLOSE, /**< The window has been requested to be
+						*   closed but still needs to evaluate the
+						*   request.
+						*/
+		CLOSED /**< The window has been closed. */
+	};
 
 	/**
 	 * Requests to close the window.
@@ -223,7 +223,10 @@ public:
 	 * At the moment the request is always honored but that might change in the
 	 * future.
 	 */
-	void close() { status_ = REQUEST_CLOSE; }
+	void close()
+	{
+		status_ = REQUEST_CLOSE;
+	}
 
 	/**
 	 * Helper class to block invalidate_layout.
@@ -240,6 +243,7 @@ public:
 	public:
 		tinvalidate_layout_blocker(twindow& window);
 		~tinvalidate_layout_blocker();
+
 	private:
 		twindow& window_;
 	};
@@ -254,31 +258,37 @@ public:
 	void invalidate_layout();
 
 	/** Inherited from tevent_handler. */
-	twindow& get_window() { return *this; }
+	twindow& get_window()
+	{
+		return *this;
+	}
 
 	/** Inherited from tevent_handler. */
-	const twindow& get_window() const { return *this; }
+	const twindow& get_window() const
+	{
+		return *this;
+	}
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** Inherited from twidget. */
-	tdialog* dialog() { return owner_; }
+	tdialog* dialog()
+	{
+		return owner_;
+	}
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 #if 0
 	/** @todo Implement these functions. */
@@ -324,7 +334,9 @@ public:
 	 * that has been added.
 	 */
 	void set_enter_disabled(const bool enter_disabled)
-		{ enter_disabled_ = enter_disabled; }
+	{
+		enter_disabled_ = enter_disabled;
+	}
 
 	/**
 	 * Disable the escape key.
@@ -335,7 +347,9 @@ public:
 	 * that has been added.
 	 */
 	void set_escape_disabled(const bool escape_disabled)
-		{ escape_disabled_ = escape_disabled; }
+	{
+		escape_disabled_ = escape_disabled;
+	}
 
 	/**
 	 * Initializes a linked size group.
@@ -347,7 +361,8 @@ public:
 	 * @param fixed_height        Does the group have a fixed height?
 	 */
 	void init_linked_size_group(const std::string& id,
-			const bool fixed_width, const bool fixed_height);
+								const bool fixed_width,
+								const bool fixed_height);
 
 	/**
 	 * Is the linked size group defined for this window?
@@ -384,7 +399,10 @@ public:
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
-	CVideo& video() { return video_; }
+	CVideo& video()
+	{
+		return video_;
+	}
 
 	/**
 	 * Sets there return value of the window.
@@ -393,9 +411,16 @@ public:
 	 * @param close_window        Close the window after setting the value.
 	 */
 	void set_retval(const int retval, const bool close_window = true)
-		{ retval_ = retval; if(close_window) close(); }
+	{
+		retval_ = retval;
+		if(close_window)
+			close();
+	}
 
-	void set_owner(tdialog* owner) { owner_ = owner; }
+	void set_owner(tdialog* owner)
+	{
+		owner_ = owner;
+	}
 
 	void set_click_dismiss(const bool click_dismiss)
 	{
@@ -403,9 +428,14 @@ public:
 	}
 
 	static void set_sunset(const unsigned interval)
-		{ sunset_ = interval ? interval : 5; }
+	{
+		sunset_ = interval ? interval : 5;
+	}
 
-	bool get_need_layout() const { return need_layout_; }
+	bool get_need_layout() const
+	{
+		return need_layout_;
+	}
 
 	void set_variable(const std::string& key, const variant& value)
 	{
@@ -414,7 +444,6 @@ public:
 	}
 
 private:
-
 	/** Needed so we can change what's drawn on the screen. */
 	CVideo& video_;
 
@@ -422,9 +451,9 @@ private:
 	tstatus status_;
 
 	enum tshow_mode {
-		  none
-		, modal
-		, tooltip
+		none,
+		modal,
+		tooltip
 	};
 
 	/**
@@ -486,16 +515,22 @@ private:
 	unsigned maximum_height_;
 
 	/** The formula to calulate the x value of the dialog. */
-	tformula<unsigned>x_;
+	tformula<unsigned> x_;
 
 	/** The formula to calulate the y value of the dialog. */
-	tformula<unsigned>y_;
+	tformula<unsigned> y_;
 
 	/** The formula to calulate the width of the dialog. */
-	tformula<unsigned>w_;
+	tformula<unsigned> w_;
 
 	/** The formula to calulate the height of the dialog. */
-	tformula<unsigned>h_;
+	tformula<unsigned> h_;
+
+	/** The formula to determine whether the size is good. */
+	tformula<bool> reevaluate_best_size_;
+
+	/** The formula definitions available for the calulation formulas. */
+	game_logic::function_symbol_table functions_;
 
 	/** The settings for the tooltip. */
 	twindow_builder::tresolution::ttip tooltip_;
@@ -547,9 +582,7 @@ private:
 	struct tlinked_size
 	{
 		tlinked_size(const bool width = false, const bool height = false)
-			: widgets()
-			, width(width)
-			, height(height)
+			: widgets(), width(width), height(height)
 		{
 		}
 
@@ -572,14 +605,14 @@ private:
 	 * This part does the pre and post processing for the actual layout
 	 * algorithm.
 	 *
-	 * @see layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 */
 	void layout();
 
 	/**
 	 * Layouts the linked widgets.
 	 *
-	 * @see layout_algorithm for more information.
+	 * See @ref layout_algorithm for more information.
 	 */
 	void layout_linked_widgets();
 
@@ -621,8 +654,9 @@ private:
 	 *
 	 * Don't call this function it's only asserts.
 	 */
-	void draw(surface& surface, const bool force = false,
-			const bool invalidate_background = false);
+	void draw(surface& surface,
+			  const bool force = false,
+			  const bool invalidate_background = false);
 
 	/**
 	 * The list with dirty items in the window.
@@ -643,15 +677,14 @@ private:
 	tdebug_layout_graph* debug_layout_;
 
 public:
-
 	/** wrapper for tdebug_layout_graph::generate_dot_file. */
-	void generate_dot_file(
-			const std::string& generator, const unsigned domain);
-private:
+	void generate_dot_file(const std::string& generator, const unsigned domain);
 
+private:
 #else
-	void generate_dot_file(const std::string&,
-			const unsigned) {}
+	void generate_dot_file(const std::string&, const unsigned)
+	{
+	}
 #endif
 
 	event::tdistributor* event_distributor_;
@@ -682,11 +715,11 @@ public:
 	void remove_from_keyboard_chain(twidget* widget);
 
 private:
-
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_sdl_video_resize(
-			const event::tevent event, bool& handled, const tpoint& new_size);
+	void signal_handler_sdl_video_resize(const event::tevent event,
+										 bool& handled,
+										 const tpoint& new_size);
 
 	/**
 	 * The handler for the click dismiss mouse 'event'.
@@ -696,28 +729,25 @@ private:
 	 * @param halt                See @ref event::tdispatcher::fire.
 	 * @param mouse_button_mask   Forwared to @ref click_dismiss.
 	 */
-	void signal_handler_click_dismiss(
-			  const event::tevent event
-			, bool& handled
-			, bool& halt
-			, const Uint8 mouse_button_mask);
+	void signal_handler_click_dismiss(const event::tevent event,
+									  bool& handled,
+									  bool& halt,
+									  const Uint8 mouse_button_mask);
 
-	void signal_handler_sdl_key_down(
-			const event::tevent event, bool& handled, const SDLKey key);
+	void signal_handler_sdl_key_down(const event::tevent event,
+									 bool& handled,
+									 const SDLKey key);
 
-	void signal_handler_message_show_tooltip(
-			  const event::tevent event
-			, bool& handled
-			, event::tmessage& message);
+	void signal_handler_message_show_tooltip(const event::tevent event,
+											 bool& handled,
+											 event::tmessage& message);
 
-	void signal_handler_message_show_helptip(
-			  const event::tevent event
-			, bool& handled
-			, event::tmessage& message);
+	void signal_handler_message_show_helptip(const event::tevent event,
+											 bool& handled,
+											 event::tmessage& message);
 
-	void signal_handler_request_placement(
-			  const event::tevent event
-			, bool& handled);
+	void signal_handler_request_placement(const event::tevent event,
+										  bool& handled);
 };
 
 } // namespace gui2

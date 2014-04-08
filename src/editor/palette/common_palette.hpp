@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -30,7 +30,7 @@ struct item_group
 {
 	item_group(const config& cfg):
 		id(cfg["id"]), name(cfg["name"].t_str()),
-		icon(cfg["icon"]), core(cfg["core"].to_bool()) {};
+		icon(cfg["icon"]), core(cfg["core"].to_bool()) {}
 
 	std::string id;
 	t_string name;
@@ -49,7 +49,7 @@ public:
 
 	//event handling
 
-	virtual handler_vector handler_members() { return handler_vector(); };
+	virtual handler_vector handler_members() { return handler_vector(); }
 	
 	virtual void select_fg_item(const std::string& item_id) = 0;
 	virtual void select_bg_item(const std::string& item_id) = 0;

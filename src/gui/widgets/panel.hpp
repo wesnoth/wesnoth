@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,8 @@
 
 #include "gui/widgets/container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /**
  * Visible container to hold multiple widgets.
@@ -29,14 +30,12 @@ class tpanel : public tcontainer_
 {
 
 public:
-
 	/**
 	 * Constructor.
 	 *
 	 * @param canvas_count        The canvas count for tcontrol.
 	 */
-	explicit tpanel(const unsigned canvas_count = 2) :
-		tcontainer_(canvas_count)
+	explicit tpanel(const unsigned canvas_count = 2) : tcontainer_(canvas_count)
 	{
 	}
 
@@ -50,24 +49,21 @@ public:
 	virtual unsigned get_state() const OVERRIDE;
 
 private:
-
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_background(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_foreground(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -82,5 +78,3 @@ private:
 } // namespace gui2
 
 #endif
-
-

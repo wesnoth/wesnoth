@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -28,7 +28,6 @@
 #include "unit_map.hpp"
 
 class display;
-class game_state;
 class vconfig;
 class team;
 
@@ -80,10 +79,18 @@ public:
 	 */
 	static void clear_status_caches();
 
+	/** The path to the leader crown overlay. */
+	static const std::string& leader_crown();
+
 	// Copy constructor
 	unit(const unit& u);
+
 	/** Initializes a unit from a config */
-	unit(const config& cfg, bool use_traits = false, game_state *state = NULL, const vconfig* vcfg = NULL);
+	explicit unit(
+			  const config& cfg
+			, bool use_traits = false
+			, const vconfig* vcfg = NULL);
+
 	/**
 	  * Initializes a unit from a unit type
 	  * only real_unit may have random traits, name and gender
@@ -140,7 +147,9 @@ public:
 	int experience() const { return experience_; }
 	int max_experience() const { return max_experience_; }
 	void set_experience(int xp) { experience_ = xp; }
+	void set_recall_cost(int recall_cost) { recall_cost_ = recall_cost; }
 	int level() const { return level_; }
+	int recall_cost() const { return recall_cost_; }
 	void remove_movement_ai();
 	void remove_attacks_ai();
 
@@ -251,8 +260,8 @@ public:
 
 	void set_idling();
 	void set_selecting();
-	unit_animation* get_animation() {  return anim_.get();};
-	const unit_animation* get_animation() const {  return anim_.get();};
+	unit_animation* get_animation() {  return anim_.get();}
+	const unit_animation* get_animation() const {  return anim_.get();}
 	void set_facing(map_location::DIRECTION dir);
 	map_location::DIRECTION facing() const { return facing_; }
 
@@ -375,7 +384,7 @@ public:
 	void backup_state();
 	void apply_modifications();
 	void generate_traits(bool musthaveonly=false);
-	void generate_name(rand_rng::simple_rng *rng = 0);
+	void generate_name();
 
 	// Only see_all=true use caching
 	bool invisible(const map_location& loc, bool see_all=true) const;
@@ -443,6 +452,7 @@ private:
 	int experience_;
 	int max_experience_;
 	int level_;
+	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
 	unit_type::ALIGNMENT alignment_;

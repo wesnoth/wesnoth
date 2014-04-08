@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,23 +18,23 @@
 
 #include "gui/widgets/container.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_multi_page;
+namespace implementation
+{
+struct tbuilder_multi_page;
 }
 
 class tgenerator_;
 
 /** The multi page class. */
-class tmulti_page
-		: public tcontainer_
+class tmulti_page : public tcontainer_
 {
 	friend struct implementation::tbuilder_multi_page;
 	friend class tdebug_layout_graph;
 
 public:
-
 	tmulti_page();
 
 	/***** ***** ***** ***** Page handling. ***** ***** ****** *****/
@@ -64,8 +64,8 @@ public:
 	 *                            members. Having both empty and non-empty
 	 *                            id's gives undefined behavior.
 	 */
-	void add_page(const std::map<std::string /* widget id */,
-			string_map>& data);
+	void
+	add_page(const std::map<std::string /* widget id */, string_map>& data);
 
 	/**
 	 * Removes a page in the multi page.
@@ -130,10 +130,11 @@ public:
 	/***** ***** ***** setters / getters for members ***** ****** *****/
 
 	void set_page_builder(tbuilder_grid_ptr page_builder)
-		{ page_builder_ = page_builder; }
+	{
+		page_builder_ = page_builder;
+	}
 
 private:
-
 	/**
 	 * Finishes the building initialization of the widget.
 	 *
@@ -157,10 +158,9 @@ private:
 	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_background(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref tcontrol::get_control_type. */
 	virtual const std::string& get_control_type() const OVERRIDE;
@@ -172,5 +172,3 @@ private:
 } // namespace gui2
 
 #endif
-
-

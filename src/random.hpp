@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2003 by David White <dave@whitevine.net>
-   Copyright (C) 2005 - 2013 by Yann Dirson <ydirson@altern.org>
+   Copyright (C) 2005 - 2014 by Yann Dirson <ydirson@altern.org>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -18,25 +18,9 @@
 #ifndef RANDOM_HPP_INCLUDED
 #define RANDOM_HPP_INCLUDED
 
-class config;
-
-int get_random();
-int get_random_nocheck();
-const config* get_random_results();
-void set_random_results(const config& cfg);
 
 namespace rand_rng
 {
-
-class rng;
-
-struct set_random_generator {
-	set_random_generator(rng* r);
-	~set_random_generator();
-private:
-	rng* old_;
-};
-
 } // ends rand_rng namespace
 
 #endif

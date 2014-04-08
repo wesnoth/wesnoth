@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,6 +20,8 @@ class team;
 class unit_map;
 
 #include "preferences.hpp"
+
+#include "serialization/compression.hpp"
 
 #include <set>
 #include <vector>
@@ -149,6 +151,9 @@ class acquaintance;
 	bool skip_mp_replay();
 	void set_skip_mp_replay(bool value);
 
+	bool blindfold_replay();
+	void set_blindfold_replay(bool value);
+
 	bool countdown();
 	void set_countdown(bool value);
 	int countdown_init_time();
@@ -230,7 +235,7 @@ class acquaintance;
 	bool show_all_units_in_help();
 	void set_show_all_units_in_help(bool value);
 
-	bool compress_saves();
+	compression::format save_compression_format();
 
 	bool startup_effect();
 
@@ -289,9 +294,9 @@ public:
 
 	void load_from_config(const config& cfg);
 
-	const std::string& get_nick() const { return nick_; };
-	const std::string& get_status() const { return status_; };
-	const std::string& get_notes() const { return notes_; };
+	const std::string& get_nick() const { return nick_; }
+	const std::string& get_status() const { return status_; }
+	const std::string& get_notes() const { return notes_; }
 
 	void save(config& cfg);
 

@@ -336,7 +336,7 @@ static void setup_user_data_dir()
 	create_directory_if_missing(user_data_dir / "saves");
 	create_directory_if_missing(user_data_dir / "persist");
 }
-void set_preferences_dir(std::string newprefdir)
+void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
 	if(newprefdir.empty()) {
@@ -348,21 +348,21 @@ void set_preferences_dir(std::string newprefdir)
 		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPSTR, int, BOOL);
 		SHGSFPAddress SHGetSpecialFolderPathA;
 		HMODULE module = LoadLibraryA("shell32");
-		SHGetSpecialFolderPathA = (BOOL (*)(HWND, LPTSTR, int, BOOL))GetProcAddress(module, "SHGetSpecialFolderPathA");
+		SHGetSpecialFolderPathA = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
 		if(SHGetSpecialFolderPathA) {
 			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
 			char my_documents_path[MAX_PATH];
 			if(SHGetSpecialFolderPathA(NULL, my_documents_path, 5, 1)) {
 				path mygames_path = path(my_documents_path) / "My Games";
 				create_directory_if_missing(mygames_path);
-				game_config::preferences_dir = (mygames_path / newprefdir).generic_string();
+				user_data_dir = mygames_path / newprefdir;
 			} else {
 				WRN_FS << "SHGetSpecialFolderPath failed\n";
-				game_config::preferences_dir = (path(get_cwd()) / newprefdir).generic_string();
+				user_data_dir = path(get_cwd()) / newprefdir;
 			}
 		} else {
 			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
-			game_config::preferences_dir = (path(get_cwd()) / newprefdir).generic_string();
+			user_data_dir = path(get_cwd()) / newprefdir;
 		}
 	}
 
@@ -390,58 +390,49 @@ void set_preferences_dir(std::string newprefdir)
 		user_data_dir /= "wesnoth";
 		user_data_dir /= get_version_path_suffix();
 		create_directory_if_missing_recursive(user_data_dir);
-		game_config::preferences_dir = user_data_dir.string();
 	} else {
 		other:
 		path home = home_str ? home_str : ".";
 
 		if (newprefdir[0] == '/')
-			game_config::preferences_dir = newprefdir;
+			user_data_dir = newprefdir;
 		else
-			game_config::preferences_dir = (home / newprefdir).string();
+			user_data_dir = home / newprefdir;
 	}
 #else
 	if (newprefdir.empty()) newprefdir = backupprefdir;
 
-#ifdef __AMIGAOS4__
-	game_config::preferences_dir = "PROGDIR:" + newprefdir;
-#elif defined(__BEOS__)
-	if (be_path.InitCheck() != B_OK) {
-		BPath tpath;
-		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {
-			be_path.Append("wesnoth");
-		} else {
-			be_path.SetTo("/boot/home/config/settings/wesnoth");
-		}
-		game_config::preferences_dir = be_path.Path();
-	}
-#else
 	const char* home_str = getenv("HOME");
 	path home = home_str ? home_str : ".";
 
 	if (newprefdir[0] == '/')
-		game_config::preferences_dir = newprefdir;
+		user_data_dir = newprefdir;
 	else
-		game_config::preferences_dir = (home / newprefdir).string();
-#endif
+		user_data_dir = home / newprefdir;
 #endif
 
 #endif /*_WIN32*/
-	user_data_dir = game_config::preferences_dir;
 	setup_user_data_dir();
 }
+
+static void set_user_config_path(path newconfig)
+{
+	user_config_dir = newconfig;
+	create_directory_if_missing(user_config_dir);
+}
+
+void set_user_config_dir(std::string newconfigdir)
+{
+	set_user_config_path(newconfigdir);
+}
+
 static const path &get_user_data_path()
 {
 	// TODO:
 	// This function is called frequently. The file_exists call may slow things down a lot.
 	if (user_data_dir.empty() || !file_exists(user_data_dir))
 	{
-		if (game_config::preferences_dir.empty())
-			set_preferences_dir(std::string());
-		else {
-			user_data_dir = game_config::preferences_dir;
-			setup_user_data_dir();
-		}
+		set_user_data_dir(std::string());
 	}
 	return user_data_dir;
 }
@@ -461,7 +452,7 @@ std::string get_user_config_dir()
 			user_config_dir /= ".config";
 		} else user_config_dir = xdg_config;
 		user_config_dir /= "wesnoth";
-		create_directory_if_missing_recursive(user_config_dir);
+		set_user_config_path(user_config_dir);
 #else
 		user_config_dir = get_user_data_path();
 #endif
@@ -690,7 +681,12 @@ std::string directory_name(const std::string& file)
 {
 	return path(file).parent_path().string();
 }
-
+bool is_path_sep(char c)
+{
+	static const path sep = path("/").make_preferred();
+	const std::string s = std::string(1, c);
+	return sep == path(s).make_preferred();
+}
 std::string normalize_path(const std::string &fpath)
 {
 	return bfs::absolute(fpath).string();

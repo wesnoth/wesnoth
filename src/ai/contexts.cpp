@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2009 - 2013 by Yurii Chernyi <terraninfo@terraninfo.net>
+   Copyright (C) 2009 - 2014 by Yurii Chernyi <terraninfo@terraninfo.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -140,6 +140,16 @@ stopunit_result_ptr readwrite_context_impl::execute_stopunit_action(const map_lo
 
 stopunit_result_ptr readonly_context_impl::check_stopunit_action(const map_location& unit_location, bool remove_movement, bool remove_attacks){
 	return actions::execute_stopunit_action(get_side(),false,unit_location,remove_movement,remove_attacks);
+}
+
+
+synced_command_result_ptr readwrite_context_impl::execute_synced_command_action(const std::string& lua_code, const map_location& location){
+	return actions::execute_synced_command_action(get_side(),true,lua_code,location);
+}
+
+
+synced_command_result_ptr readonly_context_impl::check_synced_command_action(const std::string& lua_code, const map_location& location){
+	return actions::execute_synced_command_action(get_side(),false,lua_code,location);
 }
 
 

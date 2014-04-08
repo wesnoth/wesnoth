@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2012 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2012 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -27,16 +27,18 @@
 #include "gui/widgets/settings.hpp"
 #include "wml_exception.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_matrix::tbuilder_matrix(const config& cfg)
 	: tbuilder_control(cfg)
 	, vertical_scrollbar_mode(
-			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
-			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
+			  get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
 	, builder_top(NULL)
 	, builder_bottom(NULL)
 	, builder_left(NULL)
@@ -62,7 +64,7 @@ tbuilder_matrix::tbuilder_matrix(const config& cfg)
 
 twidget* tbuilder_matrix::build() const
 {
-	return  tmatrix::build(*this);
+	return tmatrix::build(*this);
 }
 
 } // namespace implementation

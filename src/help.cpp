@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -999,11 +999,10 @@ void parse_config_internal(const config *help_cfg, const config *section_cfg,
 			  ,std::back_inserter(sec.topics),title_less());
 		}
 		else {
-			std::copy(topics.begin(), topics.end(),
-			  std::back_inserter(sec.topics));
-			std::copy(generated_topics.begin(),
-			  generated_topics.end(),
-			  std::back_inserter(sec.topics));
+			sec.topics.insert(sec.topics.end(),
+				topics.begin(), topics.end());
+			sec.topics.insert(sec.topics.end(),
+				generated_topics.begin(), generated_topics.end());
 		}
 	}
 }
@@ -1133,7 +1132,9 @@ std::vector<topic> generate_weapon_special_topics(const bool sort_generated)
 				if (!type.hide_help()) {
 					//add a link in the list of units having this special
 					std::string type_name = type.type_name();
-					std::string ref_id = unit_prefix + type.id();
+					//check for variations (walking corpse/soulless etc)
+					const std::string section_prefix = type.variations().empty() ? "" : "..";
+					std::string ref_id = section_prefix + unit_prefix + type.id();
 					//we put the translated name at the beginning of the hyperlink,
 					//so the automatic alphabetic sorting of std::set can use it
 					std::string link = make_link(type_name, ref_id);
@@ -1309,9 +1310,14 @@ public:
 
 		std::stringstream ss;
 
-		ss << "<img>src='" << type_.editor_image() << "'</img> ";
+		if (!type_.icon_image().empty())
+		ss << "<img>src='images/buttons/icon-base-32.png~RC(magenta>" << type_.id()
+				<< ")~BLIT("<< "terrain/" << type_.icon_image() << "_30.png)" << "'</img> ";
 
-		ss << type_.description().str() << "\n";
+		if (!type_.editor_image().empty())
+			ss << "<img>src='" << type_.editor_image() << "'</img> ";
+
+		ss << type_.help_topic_text().str() << "\n";
 
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
@@ -1472,6 +1478,10 @@ public:
 		bool first = true;
 		BOOST_FOREACH(const std::string &var_id, parent->variations()) {
 			const unit_type &type = parent->get_variation(var_id);
+
+			if(type.hide_help()) {
+				continue;
+			}
 
 			if (first) {
 				ss << _("Variations: ");
@@ -1687,8 +1697,16 @@ public:
 					const int moves = movement_type.movement_cost(terrain);
 					const int views = movement_type.vision_cost(terrain);
 					const int jams  = movement_type.jamming_cost(terrain);
-					row.push_back(std::make_pair(make_link(name, "terrain_" + id),
-							font::line_width(name, normal_font_size)));
+
+					bool high_res = false;
+					const std::string tc_base = high_res ? "images/buttons/icon-base-32.png" : "images/buttons/icon-base-16.png";
+					const std::string terrain_image = "icons/terrain/terrain_type_" + id + (high_res ? "_30.png" : ".png");
+
+					const std::string final_image = tc_base + "~RC(magenta>" + id + ")~BLIT(" + terrain_image + ")";
+
+					row.push_back(std::make_pair( "<img>src='" + final_image + "'</img> " +
+							make_link(name, "..terrain_" + id),
+							font::line_width(name, normal_font_size) + (high_res ? 32 : 16) ));
 
 					//defense  -  range: +10 % .. +70 %
 					const int defense =
@@ -1921,7 +1939,7 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		}
 	}
 
-	for (std::map<std::string, section>::const_iterator it = base_map.begin(); it != base_map.end(); it++) {
+	for (std::map<std::string, section>::const_iterator it = base_map.begin(); it != base_map.end(); ++it) {
 		sec.add_section(it->second);
 	}
 }
@@ -2032,7 +2050,8 @@ std::vector<topic> generate_unit_topics(const bool sort_generated, const std::st
 
 UNIT_DESCRIPTION_TYPE description_type(const unit_type &type)
 {
-	if (game_config::debug || preferences::show_all_units_in_help()) {
+	if (game_config::debug || preferences::show_all_units_in_help()	||
+			hotkey::is_scope_active(hotkey::SCOPE_EDITOR) ) {
 		return FULL_DESCRIPTION;
 	}
 
@@ -2099,7 +2118,7 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 		section_list::const_iterator s;
 		for (s = sec.sections.begin(); s != sec.sections.end(); ++s) {
 			if (is_visible_id((*s)->id)) {
-				std::string link = make_link((*s)->title, (*s)->id);
+				std::string link = make_link((*s)->title, ".."+(*s)->id);
 				res << link << "\n";
 			}
 		}
@@ -2111,7 +2130,6 @@ std::string generate_contents_links(const section &sec, const std::vector<topic>
 				res << link << "\n";
 			}
 		}
-
 		return res.str();
 }
 
@@ -2146,7 +2164,7 @@ section& section::operator=(const section &sec)
 	title = sec.title;
 	id = sec.id;
 	level = sec.level;
-	std::copy(sec.topics.begin(), sec.topics.end(), std::back_inserter(topics));
+	topics.insert(topics.end(), sec.topics.begin(), sec.topics.end());
 	std::transform(sec.sections.begin(), sec.sections.end(),
 				   std::back_inserter(sections), create_section());
 	return *this;
@@ -3292,7 +3310,7 @@ std::vector<std::string> split_in_width(const std::string &s, const int font_siz
 		res.push_back(s.substr(first_line.size()));
 	}
 	}
-	catch (utils::invalid_utf8_exception&)
+	catch (utf8::invalid_utf8_exception&)
 	{
 		throw parse_error (_("corrupted original file"));
 	}
@@ -3323,13 +3341,13 @@ std::string get_first_word(const std::string &s)
 	//if no gap(' ' or '\n') found, test if it is CJK character
 	std::string re = s.substr(0, first_word_end);
 
-	utils::utf8_iterator ch(re);
-	if (ch == utils::utf8_iterator::end(re))
+	utf8::iterator ch(re);
+	if (ch == utf8::iterator::end(re))
 		return re;
 
-	wchar_t firstchar = *ch;
+	ucs4::char_t firstchar = *ch;
 	if (font::is_cjk_char(firstchar)) {
-		re = utils::wchar_to_string(firstchar);
+		re = unicode_cast<utf8::string>(firstchar);
 	}
 	return re;
 }

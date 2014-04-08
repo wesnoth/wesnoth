@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2010 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2010 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -20,9 +20,11 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/drawing.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
+namespace implementation
+{
 
 tbuilder_drawing::tbuilder_drawing(const config& cfg)
 	: tbuilder_control(cfg)
@@ -39,8 +41,7 @@ twidget* tbuilder_drawing::build() const
 
 	init_control(widget);
 
-	const game_logic::map_formula_callable& size =
-			get_screen_size_variables();
+	const game_logic::map_formula_callable& size = get_screen_size_variables();
 
 	const unsigned w = width(size);
 	const unsigned h = height(size);
@@ -51,9 +52,8 @@ twidget* tbuilder_drawing::build() const
 
 	widget->canvas().front().set_cfg(draw);
 
-	DBG_GUI_G << "Window builder: placed drawing '"
-			<< id << "' with definition '"
-			<< definition << "'.\n";
+	DBG_GUI_G << "Window builder: placed drawing '" << id
+			  << "' with definition '" << definition << "'.\n";
 
 	return widget;
 }
@@ -70,7 +70,6 @@ twidget* tbuilder_drawing::build() const
  *        display only widgets.
  * @end{macro}
  */
-
 
 /*WIKI
  * @page = GUIWidgetInstanceWML
@@ -96,4 +95,3 @@ twidget* tbuilder_drawing::build() const
  * http://www.wesnoth.org/wiki/GUIToolkitWML#Resolution_2 for the list of
  * items.
  */
-

@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -39,8 +39,8 @@ const t_translation::t_terrain& get_selected_fg_terrain() {
 	return fg_terrain;
 }
 
-const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; };
-const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; };
+const t_translation::t_terrain& terrain_palette::selected_fg_item() const { return fg_terrain; }
+const t_translation::t_terrain& terrain_palette::selected_bg_item() const { return bg_terrain; }
 
 
 static bool is_valid_terrain(const t_translation::t_terrain & c) {
@@ -143,7 +143,7 @@ void terrain_palette::setup(const config& cfg)
 	}
 
 	// Set the default terrain
-	select_fg_item("mountains");
+	select_fg_item("regular_mountains");
 	select_bg_item("grassland");
 
 	// Set the default group
@@ -152,8 +152,6 @@ void terrain_palette::setup(const config& cfg)
 	if(active_group().empty()) {
 		ERR_ED << "No items found.\n";
 	}
-
-//	update_report();
 }
 
 void terrain_palette::draw_item(const t_translation::t_terrain& terrain,

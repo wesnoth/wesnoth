@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2008 - 2013 by Mark de Wever <koraq@xs4all.nl>
+   Copyright (C) 2008 - 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -21,19 +21,20 @@
 
 typedef std::map<std::string, t_string> string_map;
 
-namespace gui2 {
+namespace gui2
+{
 
-namespace implementation {
-	struct tbuilder_control;
+namespace implementation
+{
+struct tbuilder_control;
 } // namespace implementation
 
 /** Base class for all visible items. */
-class tcontrol
-	: public twidget
+class tcontrol : public twidget
 {
 	friend class tdebug_layout_graph;
-public:
 
+public:
 	/** @deprecated Used the second overload. */
 	explicit tcontrol(const unsigned canvas_count);
 
@@ -45,10 +46,9 @@ public:
 	 *
 	 * @param canvas_count        The number of canvasses in the control.
 	 */
-	tcontrol(
-			  const implementation::tbuilder_control& builder
-			, const unsigned canvas_count
-			, const std::string& control_type);
+	tcontrol(const implementation::tbuilder_control& builder,
+			 const unsigned canvas_count,
+			 const std::string& control_type);
 
 	/**
 	 * Sets the members of the control.
@@ -88,7 +88,6 @@ protected:
 	virtual unsigned get_state() const = 0;
 
 public:
-
 	/***** ***** ***** ***** Easy close handling ***** ***** ***** *****/
 
 	/**
@@ -156,15 +155,14 @@ public:
 protected:
 	/** See @ref twidget::calculate_best_size. */
 	virtual tpoint calculate_best_size() const OVERRIDE;
-public:
 
+public:
 	/** See @ref twidget::place. */
 	virtual void place(const tpoint& origin, const tpoint& size) OVERRIDE;
 
 	/***** ***** ***** ***** Inherited ***** ***** ***** *****/
 
 private:
-
 	/**
 	 * Loads the configuration of the widget.
 	 *
@@ -187,24 +185,20 @@ private:
 	friend class twindow;
 
 public:
+	/** See @ref twidget::find_at. */
+	virtual twidget* find_at(const tpoint& coordinate,
+							 const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find_at. */
-	virtual twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) OVERRIDE;
-
-	/** See @ref twidget::find_at. */
-	virtual const twidget* find_at(
-			  const tpoint& coordinate
-			, const bool must_be_active) const OVERRIDE;
+	virtual const twidget* find_at(const tpoint& coordinate,
+								   const bool must_be_active) const OVERRIDE;
 
 	/** See @ref twidget::find. */
 	twidget* find(const std::string& id, const bool must_be_active) OVERRIDE;
 
 	/** See @ref twidget::find. */
-	const twidget* find(
-			  const std::string& id
-			, const bool must_be_active) const OVERRIDE;
+	const twidget* find(const std::string& id,
+						const bool must_be_active) const OVERRIDE;
 
 	/**
 	 * Sets the definition.
@@ -218,29 +212,58 @@ public:
 	void set_definition(const std::string& definition);
 
 	/***** ***** ***** setters / getters for members ***** ****** *****/
-	bool get_use_tooltip_on_label_overflow() const { return use_tooltip_on_label_overflow_; }
+	bool get_use_tooltip_on_label_overflow() const
+	{
+		return use_tooltip_on_label_overflow_;
+	}
 	void set_use_tooltip_on_label_overflow(const bool use_tooltip = true)
-		{ use_tooltip_on_label_overflow_ = use_tooltip; }
+	{
+		use_tooltip_on_label_overflow_ = use_tooltip;
+	}
 
-	const t_string& label() const { return label_; }
+	const t_string& label() const
+	{
+		return label_;
+	}
 	virtual void set_label(const t_string& label);
 
 	virtual void set_use_markup(bool use_markup);
-	bool get_use_markup() const { return use_markup_; }
+	bool get_use_markup() const
+	{
+		return use_markup_;
+	}
 
-	const t_string& tooltip() const { return tooltip_; }
+	const t_string& tooltip() const
+	{
+		return tooltip_;
+	}
 	// Note setting the tooltip_ doesn't dirty an object.
 	void set_tooltip(const t_string& tooltip)
-		{ tooltip_ = tooltip; set_wants_mouse_hover(!tooltip_.empty()); }
+	{
+		tooltip_ = tooltip;
+		set_wants_mouse_hover(!tooltip_.empty());
+	}
 
-	const t_string& help_message() const { return help_message_; }
+	const t_string& help_message() const
+	{
+		return help_message_;
+	}
 	// Note setting the help_message_ doesn't dirty an object.
-	void set_help_message(const t_string& help_message) { help_message_ = help_message; }
+	void set_help_message(const t_string& help_message)
+	{
+		help_message_ = help_message;
+	}
 
 	// const versions will be added when needed
-	std::vector<tcanvas>& canvas() { return canvas_; }
+	std::vector<tcanvas>& canvas()
+	{
+		return canvas_;
+	}
 	tcanvas& canvas(const unsigned index)
-		{ assert(index < canvas_.size()); return canvas_[index]; }
+	{
+		assert(index < canvas_.size());
+		return canvas_[index];
+	}
 
 	void set_text_alignment(const PangoAlignment text_alignment);
 	PangoAlignment get_text_alignment() const
@@ -249,10 +272,19 @@ public:
 	}
 
 protected:
-	tresolution_definition_ptr config() { return config_; }
-	tresolution_definition_const_ptr config() const { return config_; }
+	tresolution_definition_ptr config()
+	{
+		return config_;
+	}
+	tresolution_definition_const_ptr config() const
+	{
+		return config_;
+	}
 
-	void set_config(tresolution_definition_ptr config) { config_ = config; }
+	void set_config(tresolution_definition_ptr config)
+	{
+		config_ = config;
+	}
 
 	/***** ***** ***** ***** miscellaneous ***** ***** ***** *****/
 
@@ -346,7 +378,9 @@ private:
 	 * load_config will call this method after loading the config, by default it
 	 * does nothing but classes can override it to implement custom behavior.
 	 */
-	virtual void load_config_extra() {}
+	virtual void load_config_extra()
+	{
+	}
 
 	/**
 	 * Loads the configuration of the widget.
@@ -371,27 +405,23 @@ public:
 	virtual const std::string& get_control_type() const = 0;
 
 protected:
-
 	/** See @ref twidget::impl_draw_background. */
 	virtual void impl_draw_background(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_background. */
-	virtual void impl_draw_background(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_background(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
 	virtual void impl_draw_foreground(surface& frame_buffer) OVERRIDE;
 
 	/** See @ref twidget::impl_draw_foreground. */
-	virtual void impl_draw_foreground(
-			  surface& frame_buffer
-			, int x_offset
-			, int y_offset) OVERRIDE;
+	virtual void impl_draw_foreground(surface& frame_buffer,
+									  int x_offset,
+									  int y_offset) OVERRIDE;
 
 private:
-
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	/**
 	 * Initializes the control.
@@ -400,7 +430,9 @@ private:
 	 * can't be used. So after construction this function needs to be called and
 	 * only once, this happens when set_definition is called.
 	 */
-	virtual void init() {}
+	virtual void init()
+	{
+	}
 #endif
 
 	/**
@@ -414,7 +446,7 @@ private:
 	 * @returns                   The best size.
 	 */
 	tpoint get_best_text_size(const tpoint& minimum_size,
-		const tpoint& maximum_size = tpoint(0,0)) const;
+							  const tpoint& maximum_size = tpoint(0, 0)) const;
 
 	/**
 	 * Contains a helper cache for the rendering.
@@ -440,22 +472,18 @@ private:
 
 	/***** ***** ***** signal handlers ***** ****** *****/
 
-	void signal_handler_show_tooltip(
-			  const event::tevent event
-			, bool& handled
-			, const tpoint& location);
+	void signal_handler_show_tooltip(const event::tevent event,
+									 bool& handled,
+									 const tpoint& location);
 
-	void signal_handler_show_helptip(
-			  const event::tevent event
-			, bool& handled
-			, const tpoint& location);
+	void signal_handler_show_helptip(const event::tevent event,
+									 bool& handled,
+									 const tpoint& location);
 
-	void signal_handler_notify_remove_tooltip(
-			  const event::tevent event
-			, bool& handled);
+	void signal_handler_notify_remove_tooltip(const event::tevent event,
+											  bool& handled);
 };
 
 } // namespace gui2
 
 #endif
-

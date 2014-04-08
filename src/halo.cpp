@@ -1,5 +1,5 @@
 /*
-   Copyright (C) 2003 - 2013 by David White <dave@whitevine.net>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -212,6 +212,15 @@ bool effect::render()
 void effect::unrender()
 {
 	if (!surf_ || !buffer_) {
+		return;
+	}
+
+	// Shrouded haloes are never rendered unless shroud has been re-placed; in
+	// that case, unrendering causes the hidden terrain (and previous halo
+	// frame, when dealing with animated halos) to glitch through shroud. We
+	// don't need to unrender them because shroud paints over the underlying
+	// area anyway.
+	if (loc_.x != -1 && loc_.y != -1 && disp->shrouded(loc_)) {
 		return;
 	}
 
