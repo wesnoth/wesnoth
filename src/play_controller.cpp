@@ -1378,13 +1378,16 @@ void play_controller::check_victory()
 {
 	check_end_level();
 
-	std::vector<unsigned> seen_leaders;
+	std::set<unsigned> not_defeated;
 	for (unit_map::const_iterator i = units_.begin(),
 	     i_end = units_.end(); i != i_end; ++i)
 	{
 		if (i->can_recruit()) {
 			DBG_NG << "seen leader for side " << i->side() << "\n";
-			seen_leaders.push_back(i->side());
+			not_defeated.insert(i->side());
+		} else if (teams_[i->side()-1].fight_on_without_leader()) {
+			DBG_NG << "side doesn't require leader " << i->side() << "\n";
+			not_defeated.insert(i->side());
 		}
 	}
 
@@ -1393,13 +1396,13 @@ void play_controller::check_victory()
 	for (std::vector<team>::iterator tm_beg = teams_.begin(), tm = tm_beg,
 	     tm_end = teams_.end(); tm != tm_end; ++tm)
 	{
-		if (std::find(seen_leaders.begin(), seen_leaders.end(), tm - tm_beg + 1) == seen_leaders.end()) {
+		if (not_defeated.find(tm - tm_beg + 1) == not_defeated.end()) {
 			tm->clear_villages();
 			// invalidate_all() is overkill and expensive but this code is
 			// run rarely so do it the expensive way.
 			gui_->invalidate_all();
 
-			if (!tm->no_leader() && remove_from_carryover_on_leaders_loss_) {
+			if (!tm->fight_on_without_leader() && remove_from_carryover_on_leaders_loss_) {
 				tm->set_lost();
 			}
 		}
@@ -1407,11 +1410,12 @@ void play_controller::check_victory()
 
 	bool found_player = false;
 
-	for (size_t n = 0; n != seen_leaders.size(); ++n) {
-		size_t side = seen_leaders[n] - 1;
+	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
+		size_t side = *n - 1;
 
-		for (size_t m = n +1 ; m != seen_leaders.size(); ++m) {
-			if (teams_[side].is_enemy(seen_leaders[m])) {
+		std::set<unsigned>::iterator m(n);
+		for (++m; m != not_defeated.end(); ++m) {
+			if (teams_[side].is_enemy(*m)) {
 				return;
 			}
 		}
@@ -1426,6 +1430,10 @@ void play_controller::check_victory()
 		check_end_level();
 	}
 
+	DBG_NG << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
+	DBG_NG << "found_player: " << found_player << std::endl;
+	DBG_NG << "is_observer: " << is_observer() << std::endl;
+
 	if (!victory_when_enemies_defeated_ && (found_player || is_observer())) {
 		// This level has asked not to be ended by this condition.
 		return;
@@ -1433,13 +1441,13 @@ void play_controller::check_victory()
 
 	if (non_interactive()) {
 		std::cout << "winner: ";
-		BOOST_FOREACH(unsigned l, seen_leaders) {
+		BOOST_FOREACH(unsigned l, not_defeated) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
 			if (ai.empty()) ai = "default ai";
 			std::cout << l << " (using " << ai << ") ";
 		}
 		std::cout << '\n';
-		ai_testing::log_victory(seen_leaders);
+		ai_testing::log_victory(not_defeated);
 	}
 
 	DBG_NG << "throwing end level exception...\n";
