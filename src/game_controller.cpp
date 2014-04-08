@@ -463,10 +463,50 @@ int game_controller::unit_test()
 
 	try {
 		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config());
-		return ((res == VICTORY || res == NONE) ? 0 : 1);
+		if (!(res == VICTORY || res == NONE)) {
+			return 1;
+		}
 	} catch (game::load_game_exception &) {
+		std::cerr << "Load_game_exception encountered while loading the unit test!" << std::endl;
+		return 1; //failed to load the unit test scenario
+	} catch(twml_exception& e) {
+		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl; //e.show(disp());
 		return 1;
 	}
+
+	savegame::clean_saves(state_.classification().label);
+	
+	if (cmdline_opts_.noreplaycheck)
+		return 0; //we passed, huzzah!
+
+	savegame::replay_savegame save(state_, compression::NONE);
+	save.save_game_automatic(disp().video(), false, "unit_test_replay"); //false means don't check for overwrite
+
+	//game::load_game_exception::game = *cmdline_opts_.load
+	game::load_game_exception::game = "unit_test_replay";
+	//	game::load_game_exception::game = "Unit_test_" + test_scenario_ + "_replay";
+
+	game::load_game_exception::show_replay = true;
+	game::load_game_exception::cancel_orders = true;
+
+	if (!load_game()) {
+		std::cerr << "Failed to load the replay!" << std::endl;
+		return 3; //failed to load replay
+	}
+
+	try {
+		play_game(disp(), state_, resources::config_manager->game_config());
+		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
+		    video_);*/
+	} catch (game::load_game_exception &) {
+		std::cerr << "Load_game_exception encountered during play_replay!" << std::endl;
+		return 3; //failed to load replay
+	} catch(twml_exception& e) {
+		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl; //e.show(disp());
+		return 4; //failed with an error during the replay
+	}
+
+	return 0; //we passed, huzzah!
 }
 
 bool game_controller::play_screenshot_mode()

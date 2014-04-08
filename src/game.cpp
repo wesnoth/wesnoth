@@ -563,6 +563,10 @@ static int do_gameloop(int argc, char** argv)
 				if (wait_result == 0) {
 					SDL_SemPost(worker_sem);
 					SDL_DestroySemaphore(worker_sem);
+					std::cout << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
+						<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
+						<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
+						<< ": "<<*cmdline_opts.unit_test << std::endl;
 					return worker_result;
 				} else if (wait_result == -1) {
 					SDL_KillThread(worker); //don't want worker to keep running when game goes out of scope
@@ -578,7 +582,10 @@ static int do_gameloop(int argc, char** argv)
 			}
 			else {
 				int worker_result = game->unit_test();
-				std::cout << ((worker_result == 0) ? "PASS TEST: " : "FAIL TEST: ") << *cmdline_opts.unit_test << std::endl;
+				std::cout << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
+					<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
+					<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
+					<< ": "<<*cmdline_opts.unit_test << std::endl;
 				return worker_result;
 			}
 		}
