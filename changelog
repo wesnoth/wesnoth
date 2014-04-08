@@ -1,4 +1,13 @@
 Version 1.11.12+dev:
+ * AI:
+   * Messenger Escort Micro AI: bug fix for escort units blocking messenger's
+     progress
+   * Several Micro AIs: fix a variety of rarely occurring but serious bugs, such
+     as invalid savegames or disabling the AI from working for the rest of the
+     turn or after changing the Micro AI settings.
+   * Bug fix for requiring unnecessary keys for removal of several Micro AIs
+   * Some internal reorganization of Micro AI code to facilitate customizing
+     them for UMC and adding functionality from other versions of Wesnoth
  * Language and i18n:
    * Updated translations: Hungarian, Italian, Slovak
  * Miscellaneous and bug fixes:
@@ -7,6 +16,8 @@ Version 1.11.12+dev:
    * Use one combo box instead of check boxes for replay options "skip replay"
      and "enter blindfold". This fixes the mp lobby in width <= 800 resolutions.
      Fixes bug #21888.
+   * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
+     performance on retina devices.
 
 Version 1.11.12:
  * AI:
@@ -59,7 +70,6 @@ Version 1.11.12:
    * Fix bug #21257: Lagging animations with skip AI animations and fog/shroud.
    * Improved unicode handling on windows for characters outside the Basic
      Multilingual Plane.
-
 
 Version 1.11.11:
  * Add-ons server:

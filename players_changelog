@@ -3,13 +3,18 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: https://github.com/wesnoth/wesnoth/blob/1.12/changelog
 
 Version 1.11.12:
+ * AI:
+   * Micro AIs: fixes for a variety of rarely occurring but serious bugs
+
  * Language and i18n:
    * Updated translations: Hungarian, Italian, Slovak.
 
  * Miscellaneous and bug fixes:
    * Statues are no longer displayed in the "Damage versus" tooltip.
-   * Use a dropdown menu for both "skip replay" and "enter blindfold". 
+   * Use a dropdown menu for both "skip replay" and "enter blindfold".
      This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
+   * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
+     performance on retina devices.
 
 Version 1.11.12:
  * Campaigns:
