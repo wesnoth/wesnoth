@@ -66,16 +66,21 @@ static void push_if_exists(std::vector<std::string> *vec, const path &file, bool
 	}
 }
 
-static bool is_directory_internal(const path &fpath)
+static inline bool error_except_not_found(const error_code &ec)
 {
-	error_code ec;
-	bool is_dir = bfs::is_directory(fpath, ec);
-	if (ec
+	return (ec
 		&& ec.value() != boost::system::errc::no_such_file_or_directory
 #ifdef _WIN32
 		&& ec.value() != boost::system::windows_error::path_not_found
 #endif /*_WIN32*/
-	) {
+		);
+}
+
+static bool is_directory_internal(const path &fpath)
+{
+	error_code ec;
+	bool is_dir = bfs::is_directory(fpath, ec);
+	if (error_except_not_found(ec)) {
 		ERR_FS << "Failed to check if " << fpath.string() << " is a directory: " << ec.message() << '\n';
 	}
 	return is_dir;
@@ -85,12 +90,7 @@ static bool file_exists(const path &fpath)
 {
 	error_code ec;
 	bool exists = bfs::exists(fpath, ec);
-	if (ec
-		&& ec.value() != boost::system::errc::no_such_file_or_directory
-#ifdef _WIN32
-		&& ec.value() != boost::system::windows_error::path_not_found
-#endif /*_WIN32*/
-	) {
+	if (error_except_not_found(ec)) {
 		ERR_FS << "Failed to check existence of file " << fpath.string() << ": " << ec.message() << '\n';
 	}
 	return exists;
@@ -118,12 +118,7 @@ static bool create_directory_if_missing(const path &dirpath)
 {
 	error_code ec;
 	bfs::file_status fs = bfs::status(dirpath, ec);
-	if (ec
-		&& ec.value() != boost::system::errc::no_such_file_or_directory
-#ifdef _WIN32
-		&& ec.value() != boost::system::windows_error::path_not_found
-#endif /*_WIN32*/
-	) {
+	if (error_except_not_found(ec)) {
 		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
 		return false;
 	} else if (bfs::is_directory(fs)) {
@@ -148,12 +143,7 @@ static bool create_directory_if_missing_recursive(const path& dirpath)
 		return false;
 	error_code ec;
 	bfs::file_status fs = bfs::status(dirpath);
-	if (ec
-		&& ec.value() != boost::system::errc::no_such_file_or_directory
-#ifdef _WIN32
-		&& ec.value() != boost::system::windows_error::path_not_found
-#endif /*_WIN32*/
-	) {
+	if (error_except_not_found(ec)) {
 		ERR_FS << "Failed to retrieve file status for " << dirpath.string() << ": " << ec.message() << '\n';
 		return false;
 	} else if (bfs::is_directory(fs)) {
@@ -242,12 +232,7 @@ void get_files_in_dir(const std::string &dir,
 
 			const path inner_main(di->path() / maincfg_filename);
 			bfs::file_status main_st = bfs::status(inner_main, ec);
-			if (ec
-				&& ec.value() != boost::system::errc::no_such_file_or_directory
-#ifdef _WIN32
-				&& ec.value() != boost::system::windows_error::path_not_found
-#endif /*_WIN32*/
-			) {
+			if (error_except_not_found(ec)) {
 				ERR_FS << "Failed to get file status of " << inner_main.string() << ": " << ec.message() << '\n';
 			} else if (reorder == DO_REORDER && main_st.type() == bfs::regular_file) {
 				LOG_FS << "_main.cfg found : " << (mode == ENTIRE_FILE_PATH ? inner_main.string() : inner_main.filename().string()) << '\n';
