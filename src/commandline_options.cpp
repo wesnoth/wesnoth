@@ -161,11 +161,6 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("username", po::value<std::string>(), "uses <username> when connecting to a server, ignoring other preferences.")
 		("password", po::value<std::string>(), "uses <password> when connecting to a server, ignoring other preferences.")
 		("strict-validation", "makes validation errors fatal")
-		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
-		("unit,u", po::value<std::string>()->implicit_value(std::string()), "runs a unit test scenario. Works like test, except that the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t2 - FAIL (TIMEOUT)\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)")
-		("showgui", "don't run headlessly (for debugging a failing test)")
-		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. If unused there is no timeout or threading.")
-		("noreplaycheck", "don't try to validate replay of unit test")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
 		("userconfig-path", "prints the path of the user config directory and exits.")
 		("userdata-dir", po::value<std::string>(), "sets the path of the userdata directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory.")
@@ -221,6 +216,15 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("turns", po::value<std::string>(), "sets the number of turns. The default is \"50\".")
 		;
 
+	po::options_description testing_opts("Testing options");
+	testing_opts.add_options()
+		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
+		("unit,u", po::value<std::string>()->implicit_value(std::string()), "runs a unit test scenario. Works like test, except that the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t2 - FAIL (TIMEOUT)\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)")
+		("showgui", "don't run headlessly (for debugging a failing test)")
+		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. If unused there is no timeout or threading.")
+		("noreplaycheck", "don't try to validate replay of unit test")
+		;
+
 	po::options_description preprocessor_opts("Preprocessor mode options");
 	preprocessor_opts.add_options()
 		("preprocess,p", po::value<two_strings>()->multitoken(), "requires two arguments: <file/folder> <target directory>. Preprocesses a specified file/folder. The preprocessed file(s) will be written in the specified target directory: a plain cfg file and a processed cfg file.")
@@ -241,7 +245,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	//hidden_.add_options()
 	//	("example-hidden-option", "")
 	//	;
-	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(preprocessor_opts).add(proxy_opts);
+	visible_.add(general_opts).add(campaign_opts).add(display_opts).add(logging_opts).add(multiplayer_opts).add(testing_opts).add(preprocessor_opts).add(proxy_opts);
 
 	all_.add(visible_).add(hidden_);
 
