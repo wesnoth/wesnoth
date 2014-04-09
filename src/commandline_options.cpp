@@ -62,6 +62,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	fullscreen(false),
 	gunzip(),
 	gzip(),
+	headless_unit_test(false),
 	help(),
 	language(),
 	log(),
@@ -162,6 +163,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("strict-validation", "makes validation errors fatal")
 		("test,t", po::value<std::string>()->implicit_value(std::string()), "runs the game in a small test scenario. If specified, scenario <arg> will be used instead.")
 		("unit,u", po::value<std::string>()->implicit_value(std::string()), "runs a unit test scenario. Works like test, except that the exit code of the program reflects the victory / defeat conditions of the scenario.\n\t0 - PASS\n\t1 - FAIL\n\t2 - FAIL (TIMEOUT)\n\t3 - FAIL (INVALID REPLAY)\n\t4 - FAIL (ERRORED REPLAY)")
+		("showgui", "don't run headlessly (for debugging a failing test)")
 		("timeout", po::value<unsigned int>(), "sets a timeout (milliseconds) for the unit test. If unused there is no timeout or threading.")
 		("noreplaycheck", "don't try to validate replay of unit test")
 		("userconfig-dir", po::value<std::string>(), "sets the path of the user config directory to $HOME/<arg> or My Documents\\My Games\\<arg> for Windows. You can specify also an absolute path outside the $HOME or My Documents\\My Games directory. Defaults to $HOME/.config/wesnoth on X11 and to the userdata-dir on other systems.")
@@ -395,7 +397,12 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	if (vm.count("test"))
 		test = vm["test"].as<std::string>();
 	if (vm.count("unit"))
+	{
 		unit_test = vm["unit"].as<std::string>();
+		headless_unit_test = true;
+	}
+	if (vm.count("showgui"))
+		headless_unit_test = false;
 	if (vm.count("timeout"))
 		timeout = vm["timeout"].as<unsigned int>();
 	if (vm.count("noreplaycheck"))

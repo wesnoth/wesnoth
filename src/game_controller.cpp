@@ -167,7 +167,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		}
 		preferences::set_draw_delay(fps);
 	}
-	if (cmdline_opts_.nogui || cmdline_opts_.unit_test) {
+	if (cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
 		no_sound = true;
 		preferences::disable_preferences_save();
 	}
@@ -340,8 +340,8 @@ bool game_controller::init_language()
 
 bool game_controller::init_video()
 {
-	if(cmdline_opts_.nogui || cmdline_opts_.unit_test) {
-		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.unit_test) ) {
+	if(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test) {
+		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.headless_unit_test) ) {
 			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
 			return false;
 		}
@@ -1009,7 +1009,7 @@ bool game_controller::change_language()
 	dlg.show(disp().video());
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
-	if (!(cmdline_opts_.nogui || cmdline_opts_.unit_test)) {
+	if (!(cmdline_opts_.nogui || cmdline_opts_.headless_unit_test)) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
 #if SDL_VERSION_ATLEAST(2, 0, 0)
