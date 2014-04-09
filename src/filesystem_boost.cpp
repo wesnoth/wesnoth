@@ -323,7 +323,7 @@ static const std::string& get_version_path_suffix()
 static void setup_user_data_dir()
 {
 	if (!create_directory_if_missing_recursive(user_data_dir)) {
-		ERR_FS << "could not open or create preferences directory at " << user_data_dir.string() << '\n';
+		ERR_FS << "could not open or create user data directory at " << user_data_dir.string() << '\n';
 		return;
 	}
 	// TODO: this may not print the error message if the directory exists but we don't have the proper permissions
@@ -418,7 +418,9 @@ void set_user_data_dir(std::string newprefdir)
 static void set_user_config_path(path newconfig)
 {
 	user_config_dir = newconfig;
-	create_directory_if_missing(user_config_dir);
+	if (!create_directory_if_missing_recursive(user_config_dir)) {
+		ERR_FS << "could not open or create user config directory at " << user_config_dir.string() << '\n';
+	}
 }
 
 void set_user_config_dir(std::string newconfigdir)
