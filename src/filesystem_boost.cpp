@@ -330,6 +330,7 @@ static void setup_user_data_dir()
 	// Create user data and add-on directories
 	create_directory_if_missing(user_data_dir / "editor");
 	create_directory_if_missing(user_data_dir / "editor" / "maps");
+	create_directory_if_missing(user_data_dir / "editor" / "scenarios");
 	create_directory_if_missing(user_data_dir / "data");
 	create_directory_if_missing(user_data_dir / "data" / "add-ons");
 	create_directory_if_missing(user_data_dir / "saves");
