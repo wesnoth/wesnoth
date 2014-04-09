@@ -389,7 +389,6 @@ void set_user_data_dir(std::string newprefdir)
 		} else user_data_dir = xdg_data;
 		user_data_dir /= "wesnoth";
 		user_data_dir /= get_version_path_suffix();
-		create_directory_if_missing_recursive(user_data_dir);
 	} else {
 		other:
 		path home = home_str ? home_str : ".";
