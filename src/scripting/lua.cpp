@@ -2660,7 +2660,7 @@ namespace {
 			return cfg;
 		}
 
-		virtual config random_choice(rand_rng::simple_rng &) const
+		virtual config random_choice() const
 		{
 			return config();
 		}
