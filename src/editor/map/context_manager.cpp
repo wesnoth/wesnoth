@@ -562,7 +562,7 @@ void context_manager::save_map_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
-		input_name = default_dir_ + "/maps";
+		input_name = get_dir(default_dir_ + "/maps");
 	}
 	const std::string old_input_name = input_name;
 	
@@ -590,7 +590,7 @@ void context_manager::save_scenario_as_dialog()
 {
 	std::string input_name = get_map_context().get_filename();
 	if (input_name.empty()) {
-		input_name = default_dir_ + "/scenarios";
+		input_name = get_dir(default_dir_ + "/scenarios");
 	}
 	const std::string old_input_name = input_name;
 
