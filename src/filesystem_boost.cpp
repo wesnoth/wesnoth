@@ -339,10 +339,10 @@ void set_user_data_dir(std::string newprefdir)
 {
 #ifdef _WIN32
 	if(newprefdir.empty()) {
-		game_config::preferences_dir = (path(get_cwd()) / "userdata").generic_string();
+		user_data_dir = path(get_cwd()) / "userdata";
 	} else if (newprefdir.size() > 2 && newprefdir[1] == ':') {
 		//allow absolute path override
-		game_config::preferences_dir = newprefdir;
+		user_data_dir = newprefdir;
 	} else {
 		typedef BOOL (WINAPI *SHGSFPAddress)(HWND, LPSTR, int, BOOL);
 		SHGSFPAddress SHGetSpecialFolderPathA;
