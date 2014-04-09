@@ -2,8 +2,8 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
-local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
-local MAISD = wesnoth.dofile "ai/micro_ais/micro_ai_self_data.lua"
+local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
+local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 
 local ca_goto = {}
 

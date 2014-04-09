@@ -1,9 +1,9 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local ca_messenger_move = {}
-
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
+
+local ca_messenger_move = {}
 
 function ca_messenger_move:evaluation(ai, cfg)
     -- Move the messenger toward goal, attack adjacent unit if possible

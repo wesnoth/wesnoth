@@ -335,9 +335,9 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-						tm.make_human();
-						tm.set_current_player("human"+side_drop);
-						if (have_leader) leader->rename("human"+side_drop);
+						tm.make_idle();
+						tm.set_current_player("idle"+side_drop);
+						if (have_leader) leader->rename("idle"+side_drop);
 					}
 
 					const size_t index = static_cast<size_t>(action - first_observer_option_idx);

@@ -59,6 +59,7 @@ protected:
 	virtual void finish_side_turn();
 	virtual void play_network_turn();
 	virtual void do_idle_notification();
+	virtual void play_idle_loop();
 	void init_turn_data();
 
 	turn_info* turn_data_;

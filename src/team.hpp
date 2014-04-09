@@ -104,6 +104,7 @@ private:
 		bool allow_player;
 		bool chose_random;
 		bool no_leader;
+		bool fight_on_without_leader;
 		bool hidden;
 		bool no_turn_confirmation;  // Can suppress confirmations when ending a turn.
 
@@ -264,6 +265,7 @@ public:
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; }
 	bool no_leader() const { return info_.no_leader; }
+	bool fight_on_without_leader() const { return info_.fight_on_without_leader; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
