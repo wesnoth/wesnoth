@@ -64,8 +64,8 @@ Compiling Wesnoth on Windows using CodeBlocks
     time, making the overall build process very slow even with fast hardware.
     If you have a multi-core processor, you may make better use of its power by
     increasing the value of the option "Number of processes for parallel
-    builds" in the Build options tab. It is recommended to set this to at least
-    the number of CPU cores your system has.
+    builds" in the Build options tab. It is recommended to set this to the
+    number of CPU cores your system has.
 
 10. Close the settings dialog.
 

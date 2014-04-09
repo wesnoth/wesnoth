@@ -1,6 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local W = H.set_wml_action_metatable {}
-local MAIUV = wesnoth.dofile "ai/micro_ais/micro_ai_unit_variables.lua"
+local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local wolves_multipacks_functions = {}
 

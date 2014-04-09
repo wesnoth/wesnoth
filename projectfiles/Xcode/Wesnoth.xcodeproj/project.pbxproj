@@ -112,13 +112,10 @@
 		B508D20E100155F300B12852 /* vertical_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D1F9100155F300B12852 /* vertical_scrollbar.cpp */; };
 		B508D2161001560100B12852 /* stacked_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D2141001560100B12852 /* stacked_widget.cpp */; };
 		B508D2171001560100B12852 /* stacked_widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B508D2141001560100B12852 /* stacked_widget.cpp */; };
-		B513B1E40ED345EB0006E551 /* pango.aliases in Resources */ = {isa = PBXBuildFile; fileRef = B513B1C50ED345EA0006E551 /* pango.aliases */; };
 		B513B1E70ED345EB0006E551 /* pango.modules in Resources */ = {isa = PBXBuildFile; fileRef = B513B1C80ED345EA0006E551 /* pango.modules */; };
 		B513B21E0ED346090006E551 /* pango in Resources */ = {isa = PBXBuildFile; fileRef = B513B2000ED346090006E551 /* pango */; };
 		B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; };
-		B513B22A0ED36BFB0006E551 /* libpixman-1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */; };
 		B513B22C0ED36D300006E551 /* libcairo.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B513B2270ED36BFB0006E551 /* libcairo.2.dylib */; };
-		B513B22D0ED36D300006E551 /* libpixman-1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */; };
 		B513B2790ED372210006E551 /* SDL_ttf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599E9B0EC68BF2008DD061 /* SDL_ttf.framework */; };
 		B514C70B0F5450CC00E273F0 /* addon_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B514C7090F5450CC00E273F0 /* addon_list.cpp */; };
 		B52EE8841213585300CFBDAB /* tod_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8821213585300CFBDAB /* tod_manager.cpp */; };
@@ -392,26 +389,16 @@
 		B5599B8C0EC62181008DD061 /* builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AC70EC62181008DD061 /* builder.cpp */; };
 		B5599B8E0EC62181008DD061 /* attack_prediction_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599ACA0EC62181008DD061 /* attack_prediction_display.cpp */; };
 		B5599B910EC62181008DD061 /* attack_prediction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AD00EC62181008DD061 /* attack_prediction.cpp */; };
-		B5599E370EC64BC4008DD061 /* libintl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599E340EC64BC4008DD061 /* libintl.framework */; };
-		B5599E380EC64BC4008DD061 /* libglib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599E350EC64BC4008DD061 /* libglib.framework */; };
-		B5599E390EC64BC4008DD061 /* libgobject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599E360EC64BC4008DD061 /* libgobject.framework */; };
-		B5599E880EC64CF2008DD061 /* libintl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599E340EC64BC4008DD061 /* libintl.framework */; };
-		B5599E890EC64CF2008DD061 /* libglib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599E350EC64BC4008DD061 /* libglib.framework */; };
-		B5599E8A0EC64CF2008DD061 /* libgobject.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599E360EC64BC4008DD061 /* libgobject.framework */; };
 		B5599E8B0EC64CF2008DD061 /* SDL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55998F70EC61EA5008DD061 /* SDL.framework */; };
 		B5599E8C0EC64CF2008DD061 /* SDL_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55999220EC61F59008DD061 /* SDL_image.framework */; };
 		B5599E8D0EC64CF2008DD061 /* SDL_net.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55999230EC61F59008DD061 /* SDL_net.framework */; };
 		B5599E8E0EC64CF2008DD061 /* SDL_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B55999240EC61F59008DD061 /* SDL_mixer.framework */; };
 		B5599E9C0EC68BF2008DD061 /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599E9B0EC68BF2008DD061 /* SDL_ttf.framework */; };
-		B5599ECC0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599ECA0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib */; };
-		B5599FBF0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599FBA0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib */; };
 		B5599FCB0EC8FBCB008DD061 /* libfreetype.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */; };
 		B559A0130EC8FE2E008DD061 /* editor_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599FFD0EC8FE2E008DD061 /* editor_controller.cpp */; };
 		B559A0140EC8FE2E008DD061 /* editor_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599FFF0EC8FE2E008DD061 /* editor_display.cpp */; };
 		B559A0160EC8FE2E008DD061 /* editor_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559A0030EC8FE2E008DD061 /* editor_main.cpp */; };
 		B559A0200EC8FEA3008DD061 /* libfreetype.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599FC90EC8FBCB008DD061 /* libfreetype.6.dylib */; };
-		B559A0220EC8FEA3008DD061 /* libpangocairo-1.0.0.2101.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599FBA0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib */; };
-		B559A0260EC8FEA3008DD061 /* libpango-1.0.0.2101.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = B5599ECA0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib */; };
 		B55A80540EDF3DFB00C9D97A /* wml_message.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55A80520EDF3DFB00C9D97A /* wml_message.cpp */; };
 		B55BE03211234AAB00154E6C /* astarsearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE02D11234AAB00154E6C /* astarsearch.cpp */; };
 		B55BE03311234AAB00154E6C /* pathfind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55BE02E11234AAB00154E6C /* pathfind.cpp */; };
@@ -443,8 +430,6 @@
 		B561F392104B11F7001369F5 /* editor_preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B561F38F104B11F7001369F5 /* editor_preferences.cpp */; };
 		B566BB36123D5C80005979F7 /* multiplayer_lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B566BB34123D5C80005979F7 /* multiplayer_lobby.cpp */; };
 		B566BB37123D5C80005979F7 /* multiplayer_lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B566BB34123D5C80005979F7 /* multiplayer_lobby.cpp */; };
-		B578E1A50ED5BEF600DE80D6 /* libgmodule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B578E1A40ED5BEF600DE80D6 /* libgmodule.framework */; };
-		B578E1AE0ED5BF0800DE80D6 /* libgmodule.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B578E1A40ED5BEF600DE80D6 /* libgmodule.framework */; };
 		B5795A680F05858100EB190E /* horizontal_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A610F05858100EB190E /* horizontal_scrollbar.cpp */; };
 		B5795A690F05858100EB190E /* scrollbar_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A640F05858100EB190E /* scrollbar_container.cpp */; };
 		B5795A6A0F05858100EB190E /* generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5795A670F05858100EB190E /* generator.cpp */; };
@@ -764,7 +749,6 @@
 		B5BB6C670F8940FF00444FBF /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998B0EC62181008DD061 /* thread.cpp */; };
 		B5BB6C6F0F8941CD00444FBF /* game_config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A800EC62181008DD061 /* game_config.cpp */; };
 		B5BB6C710F8941F000444FBF /* tstring.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999810EC62181008DD061 /* tstring.cpp */; };
-		B5BB6C740F89420600444FBF /* libintl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5599E340EC64BC4008DD061 /* libintl.framework */; };
 		B5BB6C790F89426400444FBF /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999670EC62181008DD061 /* version.cpp */; };
 		B5BB6C7B0F89427C00444FBF /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A710EC62181008DD061 /* gettext.cpp */; };
 		B5BB6C800F89435300444FBF /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
@@ -837,6 +821,10 @@
 		B5FCE9391104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90D1104C2A50081F1DF /* vertical_scrollbar.cpp */; };
 		B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90F1104C2A50081F1DF /* window.cpp */; };
 		EC19E6F018B7F24B003B4B81 /* screenshot_notification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */; };
+		EC1D88DB18EF413100E66AC1 /* libpixman-1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */; };
+		EC1D88DD18EF414400E66AC1 /* libpixman-1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */; };
+		EC1D88DF18EF448400E66AC1 /* fonts.conf in Resources */ = {isa = PBXBuildFile; fileRef = EC1D88DE18EF448400E66AC1 /* fonts.conf */; };
+		EC225C9718EF0ABC00025EC4 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242D18EF07B4001FA499 /* libintl.8.dylib */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
 		EC44E382181DDAF90037A62F /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
 		EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_container.cpp */; };
@@ -847,6 +835,51 @@
 		EC48D75B17F318DA00DE80BF /* multiplayer_connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75417F318DA00DE80BF /* multiplayer_connect_engine.cpp */; };
 		EC48D75C17F318DA00DE80BF /* multiplayer_create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75617F318DA00DE80BF /* multiplayer_create_engine.cpp */; };
 		EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4D40AD17FCCF14002E7C81 /* strftime.cpp */; };
+		EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */; };
+		EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.1.dylib */; };
+		EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; };
+		EC5C243E18EF07B4001FA499 /* libfontconfig.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */; };
+		EC5C243F18EF07B4001FA499 /* libglib-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */; };
+		EC5C244018EF07B4001FA499 /* libgmodule-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */; };
+		EC5C244118EF07B4001FA499 /* libgobject-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */; };
+		EC5C244218EF07B4001FA499 /* libgraphite2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */; };
+		EC5C244318EF07B4001FA499 /* libgthread-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */; };
+		EC5C244418EF07B4001FA499 /* libharfbuzz.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */; };
+		EC5C244518EF07B4001FA499 /* libiconv.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242C18EF07B4001FA499 /* libiconv.2.dylib */; };
+		EC5C244618EF07B4001FA499 /* libintl.8.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242D18EF07B4001FA499 /* libintl.8.dylib */; };
+		EC5C244718EF07B4001FA499 /* libpango-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */; };
+		EC5C244818EF07B4001FA499 /* libpangocairo-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */; };
+		EC5C244918EF07B4001FA499 /* libpangoft2-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243018EF07B4001FA499 /* libpangoft2-1.0.0.dylib */; };
+		EC5C244A18EF07B4001FA499 /* libpng16.16.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243118EF07B4001FA499 /* libpng16.16.dylib */; };
+		EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C243A18EF07B4001FA499 /* libz.1.dylib */; };
+		EC5C246F18EF07F4001FA499 /* libbz2.1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245418EF07EA001FA499 /* libbz2.1.0.dylib */; };
+		EC5C247018EF07F4001FA499 /* libexpat.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245618EF07EB001FA499 /* libexpat.1.dylib */; };
+		EC5C247118EF07F4001FA499 /* libffi.6.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245718EF07EB001FA499 /* libffi.6.dylib */; };
+		EC5C247218EF07F4001FA499 /* libfontconfig.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245818EF07EB001FA499 /* libfontconfig.1.dylib */; };
+		EC5C247318EF07F4001FA499 /* libglib-2.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245A18EF07EC001FA499 /* libglib-2.0.0.dylib */; };
+		EC5C247418EF07F4001FA499 /* libgmodule-2.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245B18EF07EC001FA499 /* libgmodule-2.0.0.dylib */; };
+		EC5C247518EF07F4001FA499 /* libgobject-2.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245C18EF07ED001FA499 /* libgobject-2.0.0.dylib */; };
+		EC5C247618EF07F4001FA499 /* libgraphite2.3.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245D18EF07ED001FA499 /* libgraphite2.3.dylib */; };
+		EC5C247718EF07F4001FA499 /* libgthread-2.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245E18EF07ED001FA499 /* libgthread-2.0.0.dylib */; };
+		EC5C247818EF07F4001FA499 /* libharfbuzz.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C245F18EF07EE001FA499 /* libharfbuzz.0.dylib */; };
+		EC5C247918EF07F4001FA499 /* libiconv.2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246018EF07EE001FA499 /* libiconv.2.dylib */; };
+		EC5C247A18EF07F4001FA499 /* libintl.8.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246118EF07EF001FA499 /* libintl.8.dylib */; };
+		EC5C247B18EF07F4001FA499 /* libpango-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246218EF07EF001FA499 /* libpango-1.0.0.dylib */; };
+		EC5C247C18EF07F4001FA499 /* libpangocairo-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246318EF07EF001FA499 /* libpangocairo-1.0.0.dylib */; };
+		EC5C247D18EF07F4001FA499 /* libpangoft2-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */; };
+		EC5C247E18EF07F4001FA499 /* libpng16.16.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246518EF07F0001FA499 /* libpng16.16.dylib */; };
+		EC5C248718EF07F4001FA499 /* libz.1.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC5C246E18EF07F3001FA499 /* libz.1.dylib */; };
+		EC6069E318EF662300CD8408 /* pangorc in Resources */ = {isa = PBXBuildFile; fileRef = EC6069E218EF662300CD8408 /* pangorc */; };
+		EC84246618F30D9100FC1EEF /* config_assign.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245518F30D9000FC1EEF /* config_assign.cpp */; };
+		EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */; };
+		EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245918F30D9000FC1EEF /* random_new_synced.cpp */; };
+		EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245B18F30D9100FC1EEF /* random_new.cpp */; };
+		EC84246A18F30D9100FC1EEF /* replay_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245D18F30D9100FC1EEF /* replay_helper.cpp */; };
+		EC84246B18F30D9100FC1EEF /* simple_rng.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84245F18F30D9100FC1EEF /* simple_rng.cpp */; };
+		EC84246C18F30D9100FC1EEF /* synced_checkup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246018F30D9100FC1EEF /* synced_checkup.cpp */; };
+		EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246218F30D9100FC1EEF /* synced_commands.cpp */; };
+		EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246418F30D9100FC1EEF /* synced_context.cpp */; };
+		EC84247118F30DB700FC1EEF /* exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC84246F18F30DB700FC1EEF /* exception.cpp */; };
 		EC89A1291879D17D00A3B0B1 /* lapi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1061879D17D00A3B0B1 /* lapi.cpp */; };
 		EC89A12A1879D17D00A3B0B1 /* lauxlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */; };
 		EC89A12B1879D17D00A3B0B1 /* lbaselib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */; };
@@ -895,11 +928,9 @@
 		F419A1F414E21246002F9ADC /* game_end_exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A1F314E21246002F9ADC /* game_end_exceptions.cpp */; };
 		F419A2C314F5BCFE002F9ADC /* info.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A2C114F5BCFE002F9ADC /* info.cpp */; };
 		F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F419A31014F8868A002F9ADC /* manager_ui.cpp */; };
-		F4448F3C13C547FF003B6442 /* libpng12.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
 		F444914013C5483F003B6442 /* joystick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444907513C5483E003B6442 /* joystick.cpp */; };
 		F444916613C5483F003B6442 /* network_asio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F44490B413C5483F003B6442 /* network_asio.cpp */; };
 		F444917713C5562C003B6442 /* folder_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F444917513C5562C003B6442 /* folder_create.cpp */; };
-		F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = F4448F3B13C547FF003B6442 /* libpng12.0.dylib */; };
 		F449349C13FF652800DF01D5 /* validator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F449349913FF652800DF01D5 /* validator.cpp */; };
 		F468E6AD16DF872200A31A5A /* movetype.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F468E6AC16DF872200A31A5A /* movetype.cpp */; };
 		F46C5DCC13A5074C00DD0816 /* game_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F46C5DC513A5074C00DD0816 /* game_controller.cpp */; };
@@ -964,22 +995,32 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F444918813C55729003B6442 /* libpng12.0.dylib in CopyFiles */,
+				EC1D88DD18EF414400E66AC1 /* libpixman-1.0.dylib in CopyFiles */,
+				EC5C246F18EF07F4001FA499 /* libbz2.1.0.dylib in CopyFiles */,
+				B513B22C0ED36D300006E551 /* libcairo.2.dylib in CopyFiles */,
+				EC5C247018EF07F4001FA499 /* libexpat.1.dylib in CopyFiles */,
+				EC5C247118EF07F4001FA499 /* libffi.6.dylib in CopyFiles */,
+				EC5C247218EF07F4001FA499 /* libfontconfig.1.dylib in CopyFiles */,
+				B559A0200EC8FEA3008DD061 /* libfreetype.6.dylib in CopyFiles */,
+				EC5C247318EF07F4001FA499 /* libglib-2.0.0.dylib in CopyFiles */,
+				EC5C247418EF07F4001FA499 /* libgmodule-2.0.0.dylib in CopyFiles */,
+				EC5C247518EF07F4001FA499 /* libgobject-2.0.0.dylib in CopyFiles */,
+				EC5C247618EF07F4001FA499 /* libgraphite2.3.dylib in CopyFiles */,
+				EC5C247718EF07F4001FA499 /* libgthread-2.0.0.dylib in CopyFiles */,
+				EC5C247818EF07F4001FA499 /* libharfbuzz.0.dylib in CopyFiles */,
+				EC5C247918EF07F4001FA499 /* libiconv.2.dylib in CopyFiles */,
+				EC5C247A18EF07F4001FA499 /* libintl.8.dylib in CopyFiles */,
+				EC5C247B18EF07F4001FA499 /* libpango-1.0.0.dylib in CopyFiles */,
+				EC5C247C18EF07F4001FA499 /* libpangocairo-1.0.0.dylib in CopyFiles */,
+				EC5C247D18EF07F4001FA499 /* libpangoft2-1.0.0.dylib in CopyFiles */,
+				EC5C247E18EF07F4001FA499 /* libpng16.16.dylib in CopyFiles */,
+				EC5C248718EF07F4001FA499 /* libz.1.dylib in CopyFiles */,
 				F4EF0D8B13AD5635003C701D /* libboost_program_optionsw.dylib in CopyFiles */,
 				F4EF0D8C13AD5635003C701D /* libboost_threadw.dylib in CopyFiles */,
 				F4EF0D8D13AD5635003C701D /* libboost_regexw.dylib in CopyFiles */,
 				F4EF0D8E13AD5635003C701D /* libboost_systemw.dylib in CopyFiles */,
 				F4EF0D7B13AD5376003C701D /* libboost_iostreamsw.dylib in CopyFiles */,
 				B508D15F10013F8100B12852 /* Growl.framework in CopyFiles */,
-				B578E1AE0ED5BF0800DE80D6 /* libgmodule.framework in CopyFiles */,
-				B513B22C0ED36D300006E551 /* libcairo.2.dylib in CopyFiles */,
-				B513B22D0ED36D300006E551 /* libpixman-1.0.dylib in CopyFiles */,
-				B559A0200EC8FEA3008DD061 /* libfreetype.6.dylib in CopyFiles */,
-				B559A0220EC8FEA3008DD061 /* libpangocairo-1.0.0.2101.2.dylib in CopyFiles */,
-				B559A0260EC8FEA3008DD061 /* libpango-1.0.0.2101.2.dylib in CopyFiles */,
-				B5599E880EC64CF2008DD061 /* libintl.framework in CopyFiles */,
-				B5599E890EC64CF2008DD061 /* libglib.framework in CopyFiles */,
-				B5599E8A0EC64CF2008DD061 /* libgobject.framework in CopyFiles */,
 				B5599E8B0EC64CF2008DD061 /* SDL.framework in CopyFiles */,
 				B5599E8C0EC64CF2008DD061 /* SDL_image.framework in CopyFiles */,
 				B5599E8D0EC64CF2008DD061 /* SDL_net.framework in CopyFiles */,
@@ -1686,7 +1727,6 @@
 		B5951A831013BB0800C10B66 /* multiplayer_error_codes.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = multiplayer_error_codes.hpp; path = ../src/multiplayer_error_codes.hpp; sourceTree = "<group>"; };
 		B5951A841013BB0800C10B66 /* resources.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = resources.cpp; path = ../src/resources.cpp; sourceTree = "<group>"; };
 		B5951A851013BB0800C10B66 /* resources.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = resources.hpp; path = ../src/resources.hpp; sourceTree = "<group>"; };
-		B5951A861013BB0800C10B66 /* rng.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rng.hpp; path = ../src/rng.hpp; sourceTree = "<group>"; };
 		B5951A871013BB0800C10B66 /* savegame_config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = savegame_config.hpp; path = ../src/savegame_config.hpp; sourceTree = "<group>"; };
 		B5951A881013BB0800C10B66 /* shared_object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = shared_object.hpp; path = ../src/shared_object.hpp; sourceTree = "<group>"; };
 		B5951A8A1013BB0800C10B66 /* simple_rng.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = simple_rng.hpp; path = ../src/simple_rng.hpp; sourceTree = "<group>"; };
@@ -1961,6 +2001,8 @@
 		B5FCE9101104C2A50081F1DF /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
 		EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = screenshot_notification.cpp; path = dialogs/screenshot_notification.cpp; sourceTree = "<group>"; };
 		EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = screenshot_notification.hpp; path = dialogs/screenshot_notification.hpp; sourceTree = "<group>"; };
+		EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpixman-1.0.dylib"; path = "lib/libpixman-1.0.dylib"; sourceTree = "<group>"; };
+		EC1D88DE18EF448400E66AC1 /* fonts.conf */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = fonts.conf; path = Resources/fonts.conf; sourceTree = "<group>"; };
 		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = theme_list.cpp; path = ../gui/dialogs/theme_list.cpp; sourceTree = "<group>"; };
 		EC3381C618B520120020DD6F /* theme_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = theme_list.hpp; path = ../gui/dialogs/theme_list.hpp; sourceTree = "<group>"; };
 		EC44E37E181DDAF90037A62F /* menu_item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = menu_item.cpp; path = game_events/menu_item.cpp; sourceTree = "<group>"; };
@@ -1981,6 +2023,70 @@
 		EC48D75717F318DA00DE80BF /* multiplayer_create_engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = multiplayer_create_engine.hpp; sourceTree = "<group>"; };
 		EC4D40AD17FCCF14002E7C81 /* strftime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strftime.cpp; sourceTree = "<group>"; };
 		EC4D40AE17FCCF14002E7C81 /* strftime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strftime.hpp; sourceTree = "<group>"; };
+		EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
+		EC5C242318EF07B4001FA499 /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
+		EC5C242418EF07B4001FA499 /* libffi.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.6.dylib; path = lib/libffi.6.dylib; sourceTree = "<group>"; };
+		EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = lib/libfontconfig.1.dylib; sourceTree = "<group>"; };
+		EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgmodule-2.0.0.dylib"; path = "lib/libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgobject-2.0.0.dylib"; path = "lib/libgobject-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgraphite2.3.dylib; path = lib/libgraphite2.3.dylib; sourceTree = "<group>"; };
+		EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgthread-2.0.0.dylib"; path = "lib/libgthread-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libharfbuzz.0.dylib; path = lib/libharfbuzz.0.dylib; sourceTree = "<group>"; };
+		EC5C242C18EF07B4001FA499 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		EC5C242D18EF07B4001FA499 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = lib/libintl.8.dylib; sourceTree = "<group>"; };
+		EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpango-1.0.0.dylib"; path = "lib/libpango-1.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangocairo-1.0.0.dylib"; path = "lib/libpangocairo-1.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C243018EF07B4001FA499 /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.0.dylib"; path = "lib/libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C243118EF07B4001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
+		EC5C243218EF07B4001FA499 /* libX11-xcb.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libX11-xcb.1.dylib"; path = "lib/libX11-xcb.1.dylib"; sourceTree = "<group>"; };
+		EC5C243318EF07B4001FA499 /* libX11.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libX11.6.dylib; path = lib/libX11.6.dylib; sourceTree = "<group>"; };
+		EC5C243418EF07B4001FA499 /* libXau.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXau.6.dylib; path = lib/libXau.6.dylib; sourceTree = "<group>"; };
+		EC5C243518EF07B4001FA499 /* libxcb-render.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libxcb-render.0.dylib"; path = "lib/libxcb-render.0.dylib"; sourceTree = "<group>"; };
+		EC5C243618EF07B4001FA499 /* libxcb.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxcb.1.dylib; path = lib/libxcb.1.dylib; sourceTree = "<group>"; };
+		EC5C243718EF07B4001FA499 /* libXdmcp.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXdmcp.6.dylib; path = lib/libXdmcp.6.dylib; sourceTree = "<group>"; };
+		EC5C243818EF07B4001FA499 /* libXext.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXext.6.dylib; path = lib/libXext.6.dylib; sourceTree = "<group>"; };
+		EC5C243918EF07B4001FA499 /* libXrender.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libXrender.1.dylib; path = lib/libXrender.1.dylib; sourceTree = "<group>"; };
+		EC5C243A18EF07B4001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
+		EC5C245418EF07EA001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
+		EC5C245518EF07EA001FA499 /* libcairo.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcairo.2.dylib; path = lib/libcairo.2.dylib; sourceTree = "<group>"; };
+		EC5C245618EF07EB001FA499 /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
+		EC5C245718EF07EB001FA499 /* libffi.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.6.dylib; path = lib/libffi.6.dylib; sourceTree = "<group>"; };
+		EC5C245818EF07EB001FA499 /* libfontconfig.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfontconfig.1.dylib; path = lib/libfontconfig.1.dylib; sourceTree = "<group>"; };
+		EC5C245918EF07EC001FA499 /* libfreetype.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libfreetype.6.dylib; path = lib/libfreetype.6.dylib; sourceTree = "<group>"; };
+		EC5C245A18EF07EC001FA499 /* libglib-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libglib-2.0.0.dylib"; path = "lib/libglib-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C245B18EF07EC001FA499 /* libgmodule-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgmodule-2.0.0.dylib"; path = "lib/libgmodule-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C245C18EF07ED001FA499 /* libgobject-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgobject-2.0.0.dylib"; path = "lib/libgobject-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C245D18EF07ED001FA499 /* libgraphite2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libgraphite2.3.dylib; path = lib/libgraphite2.3.dylib; sourceTree = "<group>"; };
+		EC5C245E18EF07ED001FA499 /* libgthread-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libgthread-2.0.0.dylib"; path = "lib/libgthread-2.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C245F18EF07EE001FA499 /* libharfbuzz.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libharfbuzz.0.dylib; path = lib/libharfbuzz.0.dylib; sourceTree = "<group>"; };
+		EC5C246018EF07EE001FA499 /* libiconv.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.2.dylib; path = lib/libiconv.2.dylib; sourceTree = "<group>"; };
+		EC5C246118EF07EF001FA499 /* libintl.8.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libintl.8.dylib; path = lib/libintl.8.dylib; sourceTree = "<group>"; };
+		EC5C246218EF07EF001FA499 /* libpango-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpango-1.0.0.dylib"; path = "lib/libpango-1.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C246318EF07EF001FA499 /* libpangocairo-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangocairo-1.0.0.dylib"; path = "lib/libpangocairo-1.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpangoft2-1.0.0.dylib"; path = "lib/libpangoft2-1.0.0.dylib"; sourceTree = "<group>"; };
+		EC5C246518EF07F0001FA499 /* libpng16.16.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libpng16.16.dylib; path = lib/libpng16.16.dylib; sourceTree = "<group>"; };
+		EC5C246E18EF07F3001FA499 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = lib/libz.1.dylib; sourceTree = "<group>"; };
+		EC6069E218EF662300CD8408 /* pangorc */ = {isa = PBXFileReference; lastKnownFileType = text; name = pangorc; path = Resources/pangorc; sourceTree = "<group>"; };
+		EC84245518F30D9000FC1EEF /* config_assign.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_assign.cpp; sourceTree = "<group>"; };
+		EC84245618F30D9000FC1EEF /* config_assign.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_assign.hpp; sourceTree = "<group>"; };
+		EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new_deterministic.cpp; sourceTree = "<group>"; };
+		EC84245818F30D9000FC1EEF /* random_new_deterministic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new_deterministic.hpp; sourceTree = "<group>"; };
+		EC84245918F30D9000FC1EEF /* random_new_synced.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new_synced.cpp; sourceTree = "<group>"; };
+		EC84245A18F30D9000FC1EEF /* random_new_synced.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new_synced.hpp; sourceTree = "<group>"; };
+		EC84245B18F30D9100FC1EEF /* random_new.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = random_new.cpp; sourceTree = "<group>"; };
+		EC84245C18F30D9100FC1EEF /* random_new.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = random_new.hpp; sourceTree = "<group>"; };
+		EC84245D18F30D9100FC1EEF /* replay_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = replay_helper.cpp; sourceTree = "<group>"; };
+		EC84245E18F30D9100FC1EEF /* replay_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = replay_helper.hpp; sourceTree = "<group>"; };
+		EC84245F18F30D9100FC1EEF /* simple_rng.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_rng.cpp; sourceTree = "<group>"; };
+		EC84246018F30D9100FC1EEF /* synced_checkup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_checkup.cpp; sourceTree = "<group>"; };
+		EC84246118F30D9100FC1EEF /* synced_checkup.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_checkup.hpp; sourceTree = "<group>"; };
+		EC84246218F30D9100FC1EEF /* synced_commands.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_commands.cpp; sourceTree = "<group>"; };
+		EC84246318F30D9100FC1EEF /* synced_commands.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_commands.hpp; sourceTree = "<group>"; };
+		EC84246418F30D9100FC1EEF /* synced_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = synced_context.cpp; sourceTree = "<group>"; };
+		EC84246518F30D9100FC1EEF /* synced_context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = synced_context.hpp; sourceTree = "<group>"; };
+		EC84246F18F30DB700FC1EEF /* exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = exception.cpp; path = sdl/exception.cpp; sourceTree = "<group>"; };
+		EC84247018F30DB700FC1EEF /* exception.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exception.hpp; path = sdl/exception.hpp; sourceTree = "<group>"; };
 		EC89A1061879D17D00A3B0B1 /* lapi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lapi.cpp; sourceTree = "<group>"; };
 		EC89A1071879D17D00A3B0B1 /* lauxlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lauxlib.cpp; sourceTree = "<group>"; };
 		EC89A1081879D17D00A3B0B1 /* lbaselib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lbaselib.cpp; sourceTree = "<group>"; };
@@ -2136,28 +2242,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1D88DB18EF413100E66AC1 /* libpixman-1.0.dylib in Frameworks */,
+				EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */,
+				EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */,
+				EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */,
+				EC5C243E18EF07B4001FA499 /* libfontconfig.1.dylib in Frameworks */,
+				EC5C243F18EF07B4001FA499 /* libglib-2.0.0.dylib in Frameworks */,
+				EC5C244018EF07B4001FA499 /* libgmodule-2.0.0.dylib in Frameworks */,
+				EC5C244118EF07B4001FA499 /* libgobject-2.0.0.dylib in Frameworks */,
+				EC5C244218EF07B4001FA499 /* libgraphite2.3.dylib in Frameworks */,
+				EC5C244318EF07B4001FA499 /* libgthread-2.0.0.dylib in Frameworks */,
+				EC5C244418EF07B4001FA499 /* libharfbuzz.0.dylib in Frameworks */,
+				EC5C244518EF07B4001FA499 /* libiconv.2.dylib in Frameworks */,
+				EC5C244618EF07B4001FA499 /* libintl.8.dylib in Frameworks */,
+				EC5C244718EF07B4001FA499 /* libpango-1.0.0.dylib in Frameworks */,
+				EC5C244818EF07B4001FA499 /* libpangocairo-1.0.0.dylib in Frameworks */,
+				EC5C244918EF07B4001FA499 /* libpangoft2-1.0.0.dylib in Frameworks */,
+				EC5C244A18EF07B4001FA499 /* libpng16.16.dylib in Frameworks */,
+				EC5C245318EF07B4001FA499 /* libz.1.dylib in Frameworks */,
+				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
+				B5599FCB0EC8FBCB008DD061 /* libfreetype.6.dylib in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B55998F80EC61EA5008DD061 /* SDL.framework in Frameworks */,
 				B55999250EC61F59008DD061 /* SDL_image.framework in Frameworks */,
 				B55999260EC61F59008DD061 /* SDL_net.framework in Frameworks */,
 				B55999270EC61F59008DD061 /* SDL_mixer.framework in Frameworks */,
-				B5599E370EC64BC4008DD061 /* libintl.framework in Frameworks */,
-				B5599E380EC64BC4008DD061 /* libglib.framework in Frameworks */,
-				B5599E390EC64BC4008DD061 /* libgobject.framework in Frameworks */,
 				B5599E9C0EC68BF2008DD061 /* SDL_ttf.framework in Frameworks */,
-				B5599ECC0EC74DDD008DD061 /* libpango-1.0.0.2101.2.dylib in Frameworks */,
-				B5599FBF0EC8F748008DD061 /* libpangocairo-1.0.0.2101.2.dylib in Frameworks */,
-				B5599FCB0EC8FBCB008DD061 /* libfreetype.6.dylib in Frameworks */,
-				B513B2290ED36BFB0006E551 /* libcairo.2.dylib in Frameworks */,
-				B513B22A0ED36BFB0006E551 /* libpixman-1.0.dylib in Frameworks */,
-				B578E1A50ED5BEF600DE80D6 /* libgmodule.framework in Frameworks */,
 				B508D13F10013BF900B12852 /* Growl.framework in Frameworks */,
 				F4EF0D4C13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
 				F4755E2C1458C192009F13BD /* libboost_program_optionsw.dylib in Frameworks */,
 				F4EF0D5613AD4E35003C701D /* libboost_regexw.dylib in Frameworks */,
 				F4EF0D5713AD4E35003C701D /* libboost_systemw.dylib in Frameworks */,
 				F4EF0D5C13AD4E6D003C701D /* libboost_threadw.dylib in Frameworks */,
-				F4448F3C13C547FF003B6442 /* libpng12.0.dylib in Frameworks */,
 				F4D2A99614DAED0E00CAFF31 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2188,10 +2304,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC225C9718EF0ABC00025EC4 /* libintl.8.dylib in Frameworks */,
 				F4D2A9D514DAED4200CAFF31 /* CoreFoundation.framework in Frameworks */,
 				B5BB6BC80F89407D00444FBF /* SDL.framework in Frameworks */,
 				B5BB6BCB0F89408500444FBF /* SDL_net.framework in Frameworks */,
-				B5BB6C740F89420600444FBF /* libintl.framework in Frameworks */,
 				F4EF0D4D13AD4D53003C701D /* libboost_iostreamsw.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2260,6 +2376,28 @@
 		29B97314FDCFA39411CA2CEA /* Wesnoth */ = {
 			isa = PBXGroup;
 			children = (
+				EC6069E218EF662300CD8408 /* pangorc */,
+				EC1D88DE18EF448400E66AC1 /* fonts.conf */,
+				EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */,
+				EC5C245418EF07EA001FA499 /* libbz2.1.0.dylib */,
+				EC5C245518EF07EA001FA499 /* libcairo.2.dylib */,
+				EC5C245618EF07EB001FA499 /* libexpat.1.dylib */,
+				EC5C245718EF07EB001FA499 /* libffi.6.dylib */,
+				EC5C245818EF07EB001FA499 /* libfontconfig.1.dylib */,
+				EC5C245918EF07EC001FA499 /* libfreetype.6.dylib */,
+				EC5C245A18EF07EC001FA499 /* libglib-2.0.0.dylib */,
+				EC5C245B18EF07EC001FA499 /* libgmodule-2.0.0.dylib */,
+				EC5C245C18EF07ED001FA499 /* libgobject-2.0.0.dylib */,
+				EC5C245D18EF07ED001FA499 /* libgraphite2.3.dylib */,
+				EC5C245E18EF07ED001FA499 /* libgthread-2.0.0.dylib */,
+				EC5C245F18EF07EE001FA499 /* libharfbuzz.0.dylib */,
+				EC5C246018EF07EE001FA499 /* libiconv.2.dylib */,
+				EC5C246118EF07EF001FA499 /* libintl.8.dylib */,
+				EC5C246218EF07EF001FA499 /* libpango-1.0.0.dylib */,
+				EC5C246318EF07EF001FA499 /* libpangocairo-1.0.0.dylib */,
+				EC5C246418EF07F0001FA499 /* libpangoft2-1.0.0.dylib */,
+				EC5C246518EF07F0001FA499 /* libpng16.16.dylib */,
+				EC5C246E18EF07F3001FA499 /* libz.1.dylib */,
 				B597C49D0FACD3F900CE81F5 /* tests */,
 				B5BB6B560F893DE000444FBF /* server */,
 				080E96DDFE201D6D7F000001 /* Mac-specific */,
@@ -2274,6 +2412,25 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC84246F18F30DB700FC1EEF /* exception.cpp */,
+				EC84247018F30DB700FC1EEF /* exception.hpp */,
+				EC84245518F30D9000FC1EEF /* config_assign.cpp */,
+				EC84245618F30D9000FC1EEF /* config_assign.hpp */,
+				EC84245718F30D9000FC1EEF /* random_new_deterministic.cpp */,
+				EC84245818F30D9000FC1EEF /* random_new_deterministic.hpp */,
+				EC84245918F30D9000FC1EEF /* random_new_synced.cpp */,
+				EC84245A18F30D9000FC1EEF /* random_new_synced.hpp */,
+				EC84245B18F30D9100FC1EEF /* random_new.cpp */,
+				EC84245C18F30D9100FC1EEF /* random_new.hpp */,
+				EC84245D18F30D9100FC1EEF /* replay_helper.cpp */,
+				EC84245E18F30D9100FC1EEF /* replay_helper.hpp */,
+				EC84245F18F30D9100FC1EEF /* simple_rng.cpp */,
+				EC84246018F30D9100FC1EEF /* synced_checkup.cpp */,
+				EC84246118F30D9100FC1EEF /* synced_checkup.hpp */,
+				EC84246218F30D9100FC1EEF /* synced_commands.cpp */,
+				EC84246318F30D9100FC1EEF /* synced_commands.hpp */,
+				EC84246418F30D9100FC1EEF /* synced_context.cpp */,
+				EC84246518F30D9100FC1EEF /* synced_context.hpp */,
 				ECF3A0B118AD3E8700DD643A /* wml_error.cpp */,
 				ECF3A0B218AD3E8800DD643A /* wml_error.hpp */,
 				EC4D40AD17FCCF14002E7C81 /* strftime.cpp */,
@@ -2390,7 +2547,6 @@
 				B5951A831013BB0800C10B66 /* multiplayer_error_codes.hpp */,
 				B5951A841013BB0800C10B66 /* resources.cpp */,
 				B5951A851013BB0800C10B66 /* resources.hpp */,
-				B5951A861013BB0800C10B66 /* rng.hpp */,
 				B5951A871013BB0800C10B66 /* savegame_config.hpp */,
 				B5951A881013BB0800C10B66 /* shared_object.hpp */,
 				B5951A8A1013BB0800C10B66 /* simple_rng.hpp */,
@@ -2643,6 +2799,31 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */,
+				EC5C242318EF07B4001FA499 /* libexpat.1.dylib */,
+				EC5C242418EF07B4001FA499 /* libffi.6.dylib */,
+				EC5C242518EF07B4001FA499 /* libfontconfig.1.dylib */,
+				EC5C242618EF07B4001FA499 /* libglib-2.0.0.dylib */,
+				EC5C242718EF07B4001FA499 /* libgmodule-2.0.0.dylib */,
+				EC5C242818EF07B4001FA499 /* libgobject-2.0.0.dylib */,
+				EC5C242918EF07B4001FA499 /* libgraphite2.3.dylib */,
+				EC5C242A18EF07B4001FA499 /* libgthread-2.0.0.dylib */,
+				EC5C242B18EF07B4001FA499 /* libharfbuzz.0.dylib */,
+				EC5C242C18EF07B4001FA499 /* libiconv.2.dylib */,
+				EC5C242D18EF07B4001FA499 /* libintl.8.dylib */,
+				EC5C242E18EF07B4001FA499 /* libpango-1.0.0.dylib */,
+				EC5C242F18EF07B4001FA499 /* libpangocairo-1.0.0.dylib */,
+				EC5C243018EF07B4001FA499 /* libpangoft2-1.0.0.dylib */,
+				EC5C243118EF07B4001FA499 /* libpng16.16.dylib */,
+				EC5C243218EF07B4001FA499 /* libX11-xcb.1.dylib */,
+				EC5C243318EF07B4001FA499 /* libX11.6.dylib */,
+				EC5C243418EF07B4001FA499 /* libXau.6.dylib */,
+				EC5C243518EF07B4001FA499 /* libxcb-render.0.dylib */,
+				EC5C243618EF07B4001FA499 /* libxcb.1.dylib */,
+				EC5C243718EF07B4001FA499 /* libXdmcp.6.dylib */,
+				EC5C243818EF07B4001FA499 /* libXext.6.dylib */,
+				EC5C243918EF07B4001FA499 /* libXrender.1.dylib */,
+				EC5C243A18EF07B4001FA499 /* libz.1.dylib */,
 				1058C7A0FEA54F0111CA2CBB /* Linked System Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Included Frameworks */,
 			);
@@ -3902,12 +4083,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6069E318EF662300CD8408 /* pangorc in Resources */,
+				EC1D88DF18EF448400E66AC1 /* fonts.conf in Resources */,
 				B5A9B2290ECA4074002BE442 /* fonts in Resources */,
 				B5A9B22A0ECA4074002BE442 /* data in Resources */,
 				B5A9B22B0ECA4074002BE442 /* images in Resources */,
 				B5A9B22C0ECA4074002BE442 /* sounds in Resources */,
 				B5A9BE2A0ECE927C002BE442 /* icon.icns in Resources */,
-				B513B1E40ED345EB0006E551 /* pango.aliases in Resources */,
 				B513B1E70ED345EB0006E551 /* pango.modules in Resources */,
 				B513B21E0ED346090006E551 /* pango in Resources */,
 				B5BB6EFE0F93B83500444FBF /* SDLMain.nib in Resources */,
@@ -3956,6 +4138,7 @@
 				B5599AEE0EC62181008DD061 /* unit_animation.cpp in Sources */,
 				B5599AEF0EC62181008DD061 /* unit_abilities.cpp in Sources */,
 				B5599AF00EC62181008DD061 /* unit.cpp in Sources */,
+				EC84246B18F30D9100FC1EEF /* simple_rng.cpp in Sources */,
 				B5599AF10EC62181008DD061 /* tstring.cpp in Sources */,
 				B5599AF20EC62181008DD061 /* tooltips.cpp in Sources */,
 				B5599AF40EC62181008DD061 /* time_of_day.cpp in Sources */,
@@ -4004,6 +4187,7 @@
 				B5599B240EC62181008DD061 /* mouse_events.cpp in Sources */,
 				B5599B250EC62181008DD061 /* minimap.cpp in Sources */,
 				B5599B260EC62181008DD061 /* menu_events.cpp in Sources */,
+				EC84246C18F30D9100FC1EEF /* synced_checkup.cpp in Sources */,
 				B5599B270EC62181008DD061 /* md5.cpp in Sources */,
 				B5599B280EC62181008DD061 /* marked-up_text.cpp in Sources */,
 				B5599B2B0EC62181008DD061 /* map_location.cpp in Sources */,
@@ -4038,10 +4222,12 @@
 				B5599B750EC62181008DD061 /* events.cpp in Sources */,
 				B5599B760EC62181008DD061 /* display.cpp in Sources */,
 				B5599B770EC62181008DD061 /* dialogs.cpp in Sources */,
+				EC84246818F30D9100FC1EEF /* random_new_synced.cpp in Sources */,
 				B5599B780EC62181008DD061 /* cursor.cpp in Sources */,
 				B5599B790EC62181008DD061 /* controller_base.cpp in Sources */,
 				B5599B7A0EC62181008DD061 /* construct_dialog.cpp in Sources */,
 				B5599B7B0EC62181008DD061 /* config_cache.cpp in Sources */,
+				EC84246A18F30D9100FC1EEF /* replay_helper.cpp in Sources */,
 				B5599B7D0EC62181008DD061 /* config.cpp in Sources */,
 				B5599B7E0EC62181008DD061 /* color_range.cpp in Sources */,
 				B5599B7F0EC62181008DD061 /* clipboard.cpp in Sources */,
@@ -4086,10 +4272,12 @@
 				B5A9BD6C0ECA805A002BE442 /* slider.cpp in Sources */,
 				ECFA82E5184E59F3006782FB /* hotkey_item.cpp in Sources */,
 				B5A9BD6D0ECA805A002BE442 /* spacer.cpp in Sources */,
+				EC84246D18F30D9100FC1EEF /* synced_commands.cpp in Sources */,
 				B5A9BD6E0ECA805A002BE442 /* text.cpp in Sources */,
 				EC48D75817F318DA00DE80BF /* flg_manager.cpp in Sources */,
 				B5A9BD6F0ECA805A002BE442 /* text_box.cpp in Sources */,
 				B5A9BD700ECA805A002BE442 /* toggle_button.cpp in Sources */,
+				EC84246E18F30D9100FC1EEF /* synced_context.cpp in Sources */,
 				B5A9BD710ECA805A002BE442 /* toggle_panel.cpp in Sources */,
 				EC89A12C1879D17D00A3B0B1 /* lbitlib.cpp in Sources */,
 				B5A9BD730ECA805A002BE442 /* vertical_scrollbar.cpp in Sources */,
@@ -4143,6 +4331,7 @@
 				B54AC6EE0FEA9F7A006F6FBD /* control.cpp in Sources */,
 				B54AC6F50FEA9F92006F6FBD /* lobby_main.cpp in Sources */,
 				B54AC6F60FEA9F92006F6FBD /* transient_message.cpp in Sources */,
+				EC84246718F30D9100FC1EEF /* random_new_deterministic.cpp in Sources */,
 				B54AC7000FEA9FA5006F6FBD /* multi_page.cpp in Sources */,
 				B54AC7010FEA9FA5006F6FBD /* scrollbar_panel.cpp in Sources */,
 				B54AC7540FEC3CF9006F6FBD /* button.cpp in Sources */,
@@ -4185,11 +4374,13 @@
 				B561F374104B11D4001369F5 /* horizontal_listbox.cpp in Sources */,
 				B561F391104B11F7001369F5 /* editor_preferences.cpp in Sources */,
 				B5B469241071185800327599 /* mp_game_settings.cpp in Sources */,
+				EC84247118F30DB700FC1EEF /* exception.cpp in Sources */,
 				B5B4692C1071189700327599 /* gamestate_inspector.cpp in Sources */,
 				B5B46930107118B200327599 /* widget_definition.cpp in Sources */,
 				EC89A1291879D17D00A3B0B1 /* lapi.cpp in Sources */,
 				B5B46938107118C400327599 /* dispatcher.cpp in Sources */,
 				B5B46939107118C400327599 /* handler.cpp in Sources */,
+				EC84246618F30D9100FC1EEF /* config_assign.cpp in Sources */,
 				B552D92410869477002D8F86 /* distributor.cpp in Sources */,
 				B552D92D108694BB002D8F86 /* ca_testing_move_to_targets.cpp in Sources */,
 				B5CF7BBC10D55F5A00A8BEB5 /* timer.cpp in Sources */,
@@ -4209,6 +4400,7 @@
 				B5FCE91B1104C2A50081F1DF /* scroll_label.cpp in Sources */,
 				B5FCE91C1104C2A50081F1DF /* scrollbar_panel.cpp in Sources */,
 				B5FCE91D1104C2A50081F1DF /* slider.cpp in Sources */,
+				EC84246918F30D9100FC1EEF /* random_new.cpp in Sources */,
 				ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */,
 				B5FCE91E1104C2A50081F1DF /* spacer.cpp in Sources */,
 				B5FCE91F1104C2A50081F1DF /* stacked_widget.cpp in Sources */,
@@ -4876,8 +5068,7 @@
 		B5BB6B4D0F890FBC00444FBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
@@ -4888,12 +5079,14 @@
 					"FIFODIR=\\\"/var/run/wesnothd\\\"",
 				);
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = "";
 				INSTALL_PATH = /usr/local/bin;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"$(PROJECT_DIR)/lib",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
@@ -4918,6 +5111,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"$(PROJECT_DIR)/lib",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = wesnothd;
@@ -4928,8 +5122,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4942,7 +5135,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				GCC_VERSION = "";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Info.plist;
@@ -4950,14 +5143,16 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"$(PROJECT_DIR)/lib",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-isystem",
 					./Headers,
 				);
 				PRODUCT_NAME = Wesnoth;
-				SDKROOT = macosx;
+				SDKROOT = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4981,6 +5176,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/lib\"",
+					"$(PROJECT_DIR)/lib",
 				);
 				"OTHER_CPLUSPLUSFLAGS[arch=*]" = (
 					"$(OTHER_CFLAGS)",
@@ -4995,12 +5191,12 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_INPUT_FILETYPE = automatic;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = "LOCALEDIR=\\\"translations\\\"";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
@@ -5031,6 +5227,7 @@
 					./lib/SDL_mixer.framework/Headers,
 					./lib/SDL_net.framework/Headers,
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ./lib;
 				OTHER_LDFLAGS = (
 					"-lz",
@@ -5044,10 +5241,7 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					ppc,
-				);
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				FRAMEWORK_SEARCH_PATHS = ./lib;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_MODEL_TUNING = G5;
@@ -5055,7 +5249,7 @@
 					"LOCALEDIR=\\\"translations\\\"",
 					"LUA_USE_MACOSX=1",
 				);
-				GCC_VERSION = 4.0;
+				GCC_VERSION = "";
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
 					../..,
@@ -5070,6 +5264,7 @@
 					./lib/SDL_mixer.framework/Headers,
 					./lib/SDL_net.framework/Headers,
 				);
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				LIBRARY_SEARCH_PATHS = ./lib;
 				OTHER_LDFLAGS = (
 					"-lz",

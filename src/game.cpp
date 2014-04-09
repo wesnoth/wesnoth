@@ -504,11 +504,11 @@ static int do_gameloop(int argc, char** argv)
 
 		statistics::fresh_stats();
 
-        if (!game->is_loading()) {
+		if (!game->is_loading()) {
 			const config &cfg =
 			    config_manager.game_config().child("titlescreen_music");
 			if (cfg) {
-	            sound::play_music_repeatedly(game_config::title_music);
+				sound::play_music_repeatedly(game_config::title_music);
 				BOOST_FOREACH(const config &i, cfg.child_range("music")) {
 					sound::play_music_config(i);
 				}
@@ -517,7 +517,7 @@ static int do_gameloop(int argc, char** argv)
 				sound::empty_playlist();
 				sound::stop_music();
 			}
-        }
+		}
 
 		loadscreen_manager.reset();
 
