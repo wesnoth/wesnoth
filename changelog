@@ -18,6 +18,10 @@ Version 1.11.12+dev:
      Fixes bug #21888.
    * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
      performance on retina devices.
+   * Fixed problems with idle controller type in networked mp.
+   * Fix bug 21459 by making dropped sides default to idle.
+   * Fix bug 21882 by introducing "fight_on_without_leader" boolean attribute
+     of [side] tags and refactoring check_victory to use this.
 
 Version 1.11.12:
  * AI:
