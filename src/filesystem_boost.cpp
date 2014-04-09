@@ -282,7 +282,6 @@ std::string get_dir(const std::string &dir)
 std::string get_next_filename(const std::string& name, const std::string& extension)
 {
 	std::string next_filename;
-	error_code ec;
 	int counter = 0;
 
 	do {
