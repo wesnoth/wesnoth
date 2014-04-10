@@ -20,8 +20,7 @@ function ca_messenger_escort_move:evaluation(ai, cfg)
     -- Move escort units close to messengers, and in between messengers and enemies
     -- The messengers have moved at this time, so we don't need to exclude them,
     -- but we check that there are messengers left
-    local escort = get_escorts(cfg)[1]
-    if (not escort) then return 0 end
+    if (not get_escorts(cfg)[1]) then return 0 end
 
     local _, _, _, messengers = messenger_next_waypoint(cfg)
     if (not messengers) or (not messengers[1]) then return 0 end
