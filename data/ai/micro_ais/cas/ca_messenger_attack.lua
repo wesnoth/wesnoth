@@ -68,16 +68,10 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y)
     --print('Finding attacks on',enemy_in_way.name,enemy_in_way.id)
 
     -- Find all units that can attack this enemy
-    local all_units = wesnoth.get_units{ side = wesnoth.current.side, { "not", { id = unit.id } } }
-
-    -- Only keep units that have attacks and have attacks left
-    local units = {}
-    for _, unit in ipairs(all_units) do
-        if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
-            table.insert(units, unit)
-        end
-    end
-
+    local units = AH.get_units_with_attacks {
+        side = wesnoth.current.side,
+        { "not", { id = unit.id } }
+    }
     if (not units[1]) then return end
 
     local attacks = AH.get_attacks(units, { simulate_combat = true })

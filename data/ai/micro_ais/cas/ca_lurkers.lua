@@ -2,8 +2,9 @@ local LS = wesnoth.require "lua/location_set.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_lurker(cfg)
-    local lurker = wesnoth.get_units { side = wesnoth.current.side,
-        { "and", cfg.filter }, formula = '$this_unit.moves > 0'
+    local lurker = AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        { "and", cfg.filter }
     }[1]
     return lurker
 end

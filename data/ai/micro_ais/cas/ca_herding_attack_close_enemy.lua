@@ -10,10 +10,9 @@ local function get_sheep(cfg)
 end
 
 local function get_dogs(cfg)
-    local dogs = wesnoth.get_units {
+    local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter },
-        formula = '$this_unit.moves > 0'
+        { "and", cfg.filter }
     }
     return dogs
 end

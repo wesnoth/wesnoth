@@ -5,10 +5,9 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 
 local function get_hang_out_units(cfg)
-    local units = wesnoth.get_units {
+    local units = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter },
-        formula = '$this_unit.moves > 0'
+        { "and", cfg.filter }
     }
     return units
 end

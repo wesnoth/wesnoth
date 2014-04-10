@@ -11,7 +11,7 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
 
     local units = {}
     for i,id in ipairs(cfg.id) do
-        table.insert(units, wesnoth.get_units{ id = id, formula = '$this_unit.attacks_left > 0' }[1])
+        table.insert(units, AH.get_units_with_attacks { id = id }[1])
     end
     if (not units[1]) then return 0 end
 

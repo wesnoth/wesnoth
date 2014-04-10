@@ -9,7 +9,7 @@ function ca_messenger_move:evaluation(ai, cfg)
     -- Move the messenger (unit with passed id) toward goal, attack adjacent unit if possible
     -- without retaliation or little expected damage with high chance of killing the enemy
 
-    local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
+    local messenger = AH.get_units_with_moves { id = cfg.id }[1]
 
     if messenger then
         return cfg.ca_score
@@ -18,7 +18,7 @@ function ca_messenger_move:evaluation(ai, cfg)
 end
 
 function ca_messenger_move:execution(ai, cfg)
-    local messenger = wesnoth.get_units{ id = cfg.id, formula = '$this_unit.moves > 0' }[1]
+    local messenger = AH.get_units_with_moves { id = cfg.id }[1]
 
     local x, y = messenger_next_waypoint(messenger, cfg)
 

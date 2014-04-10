@@ -57,8 +57,9 @@ function ca_goto:evaluation(ai, cfg, self)
     if (not locs[1]) then return 0 end
 
     -- Find the goto units
-    local all_units = wesnoth.get_units { side = wesnoth.current.side,
-        { "and", cfg.filter }, formula = '$this_unit.moves > 0'
+    local all_units = AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        { "and", cfg.filter }
     }
 
     -- Exclude released units

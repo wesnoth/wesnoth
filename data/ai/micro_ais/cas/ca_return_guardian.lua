@@ -2,11 +2,10 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_guardian(cfg)
     local filter = cfg.filter or { id = cfg.id }
-    local guardian = wesnoth.get_units({
+    local guardian = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", filter },
-        formula = '$this_unit.moves > 0' }
-    )[1]
+        { "and", filter }
+    }[1]
     return guardian
 end
 

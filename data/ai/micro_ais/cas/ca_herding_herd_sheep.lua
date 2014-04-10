@@ -4,10 +4,9 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
 local function get_dogs(cfg)
-    local dogs = wesnoth.get_units {
+    local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", cfg.filter },
-        formula = '$this_unit.moves > 0'
+        { "and", cfg.filter }
     }
     return dogs
 end

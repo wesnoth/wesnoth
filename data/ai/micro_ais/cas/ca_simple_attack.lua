@@ -6,14 +6,10 @@ local LS = wesnoth.require "lua/location_set.lua"
 local ca_simple_attack = {}
 
 function ca_simple_attack:evaluation(ai, cfg, self)
-    local all_units = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter } }
-    -- Only keep units that have attacks and have attacks left
-    local units = {}
-    for _, unit in ipairs(all_units) do
-        if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
-            table.insert(units, unit)
-        end
-    end
+    local units = AH.get_units_with_attacks {
+        side = wesnoth.current.side,
+        { "and", cfg.filter }
+    }
     if (not units[1]) then return 0 end
 
     -- Get all possible attacks

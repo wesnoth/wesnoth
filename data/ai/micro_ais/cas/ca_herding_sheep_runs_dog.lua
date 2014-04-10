@@ -2,9 +2,10 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_next_sheep(cfg)
-    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-        formula = '$this_unit.moves > 0',
-        { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } }
+    local sheep = AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        { "and", cfg.filter_second },
+        { "filter_adjacent", { side = wesnoth.current.side, { "and", cfg.filter } } }
     }
     return sheep[1]
 end

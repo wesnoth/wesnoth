@@ -3,11 +3,10 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
 local function get_dog(cfg)
-    local dogs = wesnoth.get_units {
+    local dogs = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", cfg.filter },
-        formula = '$this_unit.moves > 0',
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter_second} } } } }
+        { "not", { { "filter_adjacent", { side = wesnoth.current.side, { "and", cfg.filter_second } } } } }
     }
     return dogs[1]
 end

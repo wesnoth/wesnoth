@@ -12,7 +12,10 @@ function ca_wolves_multipacks_attack:evaluation(ai, cfg)
     -- If wolves have attacks left, call this CA
     -- It will generally be disabled by being black-listed, so as to avoid
     -- having to do the full attack evaluation for every single move
-    local wolves = wesnoth.get_units { side = wesnoth.current.side, type = unit_type, formula = '$this_unit.attacks_left > 0' }
+    local wolves = AH.get_units_with_attacks {
+        side = wesnoth.current.side,
+        type = unit_type
+    }
 
     if wolves[1] then return cfg.ca_score end
     return 0

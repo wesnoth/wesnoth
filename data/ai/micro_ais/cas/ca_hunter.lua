@@ -39,11 +39,10 @@ end
 
 local function get_hunter(cfg)
     local filter = cfg.filter or { id = cfg.id }
-    local hunter = wesnoth.get_units({
+    local hunter = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and", filter },
-        formula = '$this_unit.moves > 0' }
-    )[1]
+        { "and", filter }
+    }[1]
     return hunter
 end
 

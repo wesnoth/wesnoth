@@ -6,8 +6,8 @@ local ca_bottleneck_attack = {}
 function ca_bottleneck_attack:evaluation(ai, cfg, self)
     -- All units with attacks_left and enemies next to them
     -- This will be much easier once the 'attacks' variable is implemented
-    local attackers = wesnoth.get_units {
-        side = wesnoth.current.side, formula = "$this_unit.attacks_left > 0",
+    local attackers = AH.get_units_with_attacks {
+        side = wesnoth.current.side,
         { "filter_adjacent", {
             { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } }
         } }
@@ -70,7 +70,7 @@ end
 
 function ca_bottleneck_attack:execution(ai, cfg, self)
     if self.data.bottleneck_attacks_done then
-        local units = wesnoth.get_units { side = wesnoth.current.side, formula = '$this_unit.attacks_left > 0' }
+        local units = AH.get_units_with_attacks { side = wesnoth.current.side }
         for i,u in ipairs(units) do
             AH.checked_stopunit_attacks(ai, u)
         end

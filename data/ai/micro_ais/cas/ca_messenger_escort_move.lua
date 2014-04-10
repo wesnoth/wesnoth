@@ -2,9 +2,8 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
 local function get_escort(cfg)
-    local escorts = wesnoth.get_units {
+    local escorts = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0',
         { "and", cfg.filter_second }
     }
     return escorts[1]

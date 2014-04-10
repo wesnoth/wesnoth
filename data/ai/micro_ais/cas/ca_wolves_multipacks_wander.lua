@@ -11,7 +11,10 @@ function ca_wolves_multipacks_wander:evaluation(ai, cfg)
     local unit_type = cfg.type or "Wolf"
 
     -- When there's nothing to attack, the wolves wander and regroup into their packs
-    local wolves = wesnoth.get_units { side = wesnoth.current.side, type = unit_type, formula = '$this_unit.moves > 0' }
+    local wolves = AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        type = unit_type
+    }
 
     if wolves[1] then return cfg.ca_score end
     return 0

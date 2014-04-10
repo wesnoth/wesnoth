@@ -2,10 +2,9 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_tusklets(cfg)
-    local tusklets = wesnoth.get_units {
+    local tusklets = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        type = cfg.tusklet_type,
-        formula = '$this_unit.moves > 0'
+        type = cfg.tusklet_type
     }
     return tusklets
 end
