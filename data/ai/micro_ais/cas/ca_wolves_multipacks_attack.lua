@@ -43,20 +43,18 @@ function ca_wolves_multipacks_attack:execution(ai, cfg)
 
             -- ... and check if any targets are in reach
             local attacks = {}
-            if wolves[1] then attacks = AH.get_attacks(wolves, { simulate_combat = true }) end
-            --print('pack, wolves, attacks:', pack_number, #wolves, #attacks)
+            if wolves[1] then all_attacks = AH.get_attacks(wolves, { simulate_combat = true }) end
+            --print('pack, wolves, attacks:', pack_number, #wolves, #all_attacks)
 
             -- Eliminate targets that would split up the wolves by more than 3 hexes
             -- This also takes care of wolves joining as a pack rather than attacking individually
-            for i=#attacks,1,-1 do
-                --print(i, attacks[i].x, attacks[i].y)
+            local attacks = {}
+            for _, attack in ipairs(all_attacks) do
                 for j,w in ipairs(wolves) do
-                    local nh = AH.next_hop(w, attacks[i].dst.x, attacks[i].dst.y)
-                    local d = H.distance_between(nh[1], nh[2], attacks[i].dst.x, attacks[i].dst.y)
-                    --print('  ', i, w.x, w.y, d)
-                    if d > 3 then
-                        table.remove(attacks, i)
-                        --print('Removing attack')
+                    local nh = AH.next_hop(w, attack.dst.x, attack.dst.y)
+                    local d = H.distance_between(nh[1], nh[2], attack.dst.x, attack.dst.y)
+                    if d <= 3 then
+                        table.insert(attacks, attack)
                         break
                     end
                 end

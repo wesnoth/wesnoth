@@ -19,33 +19,30 @@ function ca_forest_animals_new_rabbit:execution(ai, cfg)
 
     -- Get the locations of all items on that map (which could be rabbit holes)
     W.store_items { variable = 'holes_wml' }
-    local holes = H.get_variable_array('holes_wml')
+    local all_items = H.get_variable_array('holes_wml')
     W.clear_variable { name = 'holes_wml' }
 
     -- Eliminate all holes that have an enemy within 'rabbit_enemy_distance' hexes
     -- We also add a random number to the ones we keep, for selection of the holes later
-    --print('before:', #holes)
-    for i = #holes,1,-1 do
+    local holes = {}
+    for _, item in ipairs(all_items) do
         local enemies = wesnoth.get_units {
             { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
-            { "filter_location", { x = holes[i].x, y = holes[i].y, radius = rabbit_enemy_distance } }
+            { "filter_location", { x = item.x, y = item.y, radius = rabbit_enemy_distance } }
         }
-        if enemies[1] then
-            table.remove(holes, i)
-        else
+        if (not enemies[1]) then
             -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
             if cfg.rabbit_hole_img then
-                if (holes[i].image ~= cfg.rabbit_hole_img) and (holes[i].halo ~= cfg.rabbit_hole_img) then
-                    table.remove(holes, i)
-                else
-                    holes[i].random = math.random(100)
+                if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then
+                    item.random = math.random(100)
+                    table.insert(holes, item)
                 end
             else
-                holes[i].random = math.random(100)
+                item.random = math.random(100)
+                table.insert(holes, item)
             end
         end
     end
-    --print('after:', #holes)
     table.sort(holes, function(a, b) return a.random > b.random end)
 
     local rabbits = wesnoth.get_units { side = wesnoth.current.side, type = cfg.rabbit_type }

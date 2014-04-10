@@ -32,10 +32,8 @@ function swarm_move:execution(ai, cfg)
     }
     --print('#units, #units_no_moves, #enemies', #units, #units_no_moves, #enemies)
 
-    -- pick a random unit and remove it from 'units'
-    local rand = math.random(#units)
-    local unit = units[rand]
-    table.remove(units, rand)
+    -- pick one unit at random
+    local unit = units[math.random(#units)]
 
     -- Find best place for that unit to move to
     local best_hex = AH.find_best_move(unit, function(x, y)
