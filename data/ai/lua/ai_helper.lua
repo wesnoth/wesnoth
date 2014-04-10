@@ -761,7 +761,7 @@ function ai_helper.get_units_with_attacks(filter)
 
     local units = {}
     for _, unit in ipairs(all_units) do
-        if (unit.attacks_left > 0) and (H.get_schild(unit.__cfg, 'attack')) then
+        if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
             table.insert(units, unit)
         end
     end
