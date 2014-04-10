@@ -46,13 +46,18 @@ function ca_forest_animals_move:execution(ai, cfg)
 
     -- Get the locations of all the rabbit holes
     W.store_items { variable = 'holes_wml' }
-    local holes = H.get_variable_array('holes_wml')
+    local all_items = H.get_variable_array('holes_wml')
     W.clear_variable { name = 'holes_wml' }
 
     -- If cfg.rabbit_hole_img is set, only items with that image or halo count as holes
-    if cfg.rabbit_hole_img then
-        if (holes[i].image ~= cfg.rabbit_hole_img) and (holes[i].halo ~= cfg.rabbit_hole_img) then
-            table.remove(holes, i)
+    local holes = {}
+    for _, item in ipairs(all_items) do
+        if cfg.rabbit_hole_img then
+            if (item.image == cfg.rabbit_hole_img) or (item.halo == cfg.rabbit_hole_img) then
+                table.insert(holes, item)
+            end
+        else
+            table.insert(holes, item)
         end
     end
 

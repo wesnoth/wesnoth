@@ -121,8 +121,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
         end
         -- Now insert the best pack into that 'packs' array
         packs[new_pack] = {}
-        -- Need to count down for table.remove to work correctly
-        for i = pack_size,1,-1 do
+        for i = 1,pack_size do
             table.insert(packs[new_pack], { x = best_wolves[i].x, y = best_wolves[i].y, id = best_wolves[i].id })
             MAIUV.set_mai_unit_variables(best_wolves[i], cfg.ai_id, { pack = new_pack })
         end

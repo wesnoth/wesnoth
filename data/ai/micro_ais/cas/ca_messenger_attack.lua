@@ -16,26 +16,26 @@ local function messenger_find_enemies_in_way(unit, goal_x, goal_y)
     -- If unit cannot get there:
     if cost >= 42424242 then return end
 
-    -- Exclude the hex the unit is currently on
-    table.remove(path, 1)
-    if (not path[1]) then return end
+    -- The second path hex is the first that is important for the following analysis
+    if (not path[2]) then return end
 
-    -- Is there an enemy unit on the first path hex itself?
+    -- Is there an enemy unit on the second path hex?
     -- This would be caught by the adjacent hex check later, but not in the right order
-    local enemy = wesnoth.get_units { x = path[1][1], y = path[1][2],
+    local enemy = wesnoth.get_units { x = path[2][1], y = path[2][2],
         { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } }
     }[1]
     if enemy then
-        --print('  enemy on first path hex:',enemy.id)
+        --print('  enemy on second path hex:',enemy.id)
         return enemy
     end
 
     -- After that, go through adjacent hexes of all the other path hexes
-    for i, p in ipairs(path) do
-        local sub_path, sub_cost = wesnoth.find_path( unit, p[1], p[2], { ignore_units = true })
+    for i = 2, #path do
+        local path_hex = path[i]
+        local sub_path, sub_cost = wesnoth.find_path( unit, path_hex[1], path_hex[2], { ignore_units = true })
         if sub_cost <= unit.moves then
             -- Check for enemy units on one of the adjacent hexes (which includes 2 hexes on path)
-            for x, y in H.adjacent_tiles(p[1], p[2]) do
+            for x, y in H.adjacent_tiles(path_hex[1], path_hex[2]) do
                 local enemy = wesnoth.get_units { x = x, y = y,
                     { "filter_side", { {"enemy_of", {side = wesnoth.current.side} } } }
                 }[1]
@@ -69,26 +69,25 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y, cfg)
 
     -- Find all units that can attack this enemy
     local filter = cfg.filter or { id = cfg.id }
-    local my_units = wesnoth.get_units {
+    local all_units = wesnoth.get_units {
         side = wesnoth.current.side,
-        formula = '$this_unit.attacks_left > 0',
         { "not", filter },
         { "and", cfg.filter_second }
     }
 
-    -- Eliminate units without attacks
-    for i = #my_units,1,-1 do
-        if (not H.get_child(my_units[i].__cfg, 'attack')) then
-            table.remove(my_units, i)
+    -- Only keep units that have attacks and have attacks left
+    local units = {}
+    for _, unit in ipairs(all_units) do
+        if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
+            table.insert(units, unit)
         end
     end
-    --print('#my_units', #my_units)
 
-    if (not my_units[1]) then return end
+    if (not units[1]) then return end
 
-    local my_attacks = AH.get_attacks(my_units, { simulate_combat = true })
+    local attacks = AH.get_attacks(units, { simulate_combat = true })
 
-    for i, att in ipairs(my_attacks) do
+    for i, att in ipairs(attacks) do
         if (att.target.x == enemy_in_way.x) and (att.target.y == enemy_in_way.y) then
 
             -- Rating: expected HP of attacker and defender
@@ -108,7 +107,7 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y, cfg)
     -- If we got here, that means there's an enemy in the way, but none of the units can reach it
     --> try to fight our way to that enemy
     --print('Find different attack to get to enemy in way')
-    for i, att in ipairs(my_attacks) do
+    for i, att in ipairs(attacks) do
 
         -- Rating: expected HP of attacker and defender
         local rating = att.att_stats.average_hp - 2 * att.def_stats.average_hp
