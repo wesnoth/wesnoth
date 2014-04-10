@@ -1958,6 +1958,11 @@ simple_move_and_targeting_phase::~simple_move_and_targeting_phase()
 
 double simple_move_and_targeting_phase::evaluate()
 {
+    // Pick first enemy leader, move all units as close to 
+    // enemy leader as possible.
+    // Own leader should not be moved.
+    // Code does not support multiple leaders per side.
+    // Do it fast even if there is a lot of units present.
 	unit_map &units_ = *resources::units;
 
 	unit_map::const_iterator leader = units_.find_leader(get_side());
@@ -1980,15 +1985,13 @@ double simple_move_and_targeting_phase::evaluate()
 	std::pair<map_location,map_location> closest_move;
 
 	for(move_map::const_iterator i = get_dstsrc().begin(); i != get_dstsrc().end(); ++i) {
-		if(my_leader_loc == i->first && get_passive_leader()){//passive_leader
+		if(my_leader_loc == i->second){// Do not move leaders.
 			continue;
 		}
-		int distance = distance_between(i->first, leader->get_location());
+		const int distance = distance_between(i->first, leader->get_location());
 		if(closest_distance == -1 || distance < closest_distance) {
-			if ((i->second!=my_leader_loc) && (i->second!=i->first)) {
-				closest_distance = distance;
-				closest_move = *i;
-			}
+			closest_distance = distance;
+			closest_move = *i;
 		}
 	}
 
