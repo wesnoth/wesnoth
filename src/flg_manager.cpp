@@ -58,6 +58,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	current_leader_("null"),
 	current_gender_("null"),
 	default_leader_type_(side_["type"]),
+	default_leader_gender_(side_["gender"]),
 	default_leader_cfg_(NULL)
 {
 	const std::string& leader_id = side_["id"];
@@ -66,6 +67,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 		default_leader_cfg_ = &side_.find_child("unit", "id", leader_id);
 		if (*default_leader_cfg_) {
 			default_leader_type_ = (*default_leader_cfg_)["type"].str();
+			default_leader_gender_ = (*default_leader_cfg_)["gender"].str();
 		} else {
 			default_leader_cfg_ = NULL;
 		}
@@ -74,6 +76,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 		BOOST_FOREACH(const config& side_unit, side_.child_range("unit")) {
 			if (side_unit["canrecruit"].to_bool()) {
 				default_leader_type_ = side_unit["type"].str();
+				default_leader_gender_ = side_unit["gender"].str();
 				default_leader_cfg_ = &side_unit;
 				break;
 			}
@@ -83,6 +86,7 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 		const unit_type* unit = unit_types.find(default_leader_type_);
 		if (unit == NULL) {
 			default_leader_type_.clear();
+			default_leader_gender_.clear();
 			default_leader_cfg_ = NULL;
 		}
 	}
@@ -309,7 +313,12 @@ void flg_manager::update_available_factions()
 			continue;
 		}
 
-		available_factions_.push_back(faction);
+		// Add default faction to the top of the list.
+		if (side_["faction"] == (*faction)["id"]) {
+			available_factions_.insert(available_factions_.begin(), faction);
+		} else {
+			available_factions_.push_back(faction);
+		}
 	}
 
 	assert(!available_factions_.empty());
@@ -393,10 +402,19 @@ void flg_manager::update_available_genders()
 			}
 
 			BOOST_FOREACH(unit_race::GENDER gender, unit->genders()) {
+				std::string gender_str;
 				if (gender == unit_race::FEMALE) {
-					available_genders_.push_back(unit_race::s_female);
+					gender_str = unit_race::s_female;
 				} else {
-					available_genders_.push_back(unit_race::s_male);
+					gender_str = unit_race::s_male;
+				}
+
+				// Add default gender to the top of the list.
+				if (default_leader_gender_ == gender_str) {
+					available_genders_.insert(available_genders_.begin(),
+						gender_str);
+				} else {
+					available_genders_.push_back(gender_str);
 				}
 			}
 		}
@@ -448,14 +466,9 @@ void flg_manager::update_choosable_genders()
 	choosable_genders_ = available_genders_;
 
 	if (lock_settings_) {
-		std::string default_gender = side_["gender"];
-		if (default_gender.empty() && !default_leader_type_.empty()) {
-			const unit_type* unit = unit_types.find(current_leader_);
-			if (unit) {
-				default_gender = gender_string(unit->genders().front());
-			} else {
-				return;
-			}
+		std::string default_gender = default_leader_gender_;
+		if (default_gender.empty()) {
+			default_gender = choosable_genders_.front();
 		}
 
 		if (std::find(available_genders_.begin(), available_genders_.end(),
