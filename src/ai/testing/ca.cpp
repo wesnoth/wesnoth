@@ -1741,7 +1741,7 @@ double get_healing_phase::evaluate()
 			while(it.first != it.second) {
 				const map_location& dst = it.first->second;
 				if (resources::game_map->gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
-					const double vuln = power_projection(it.first->first, get_enemy_dstsrc());
+					const double vuln = power_projection(dst, get_enemy_dstsrc());
 					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability) {
 						best_vulnerability = vuln;
