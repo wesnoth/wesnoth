@@ -6,9 +6,8 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
 local function get_escorts(cfg)
-    local escorts = wesnoth.get_units {
+    local escorts = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0',
         { "and", cfg.filter_second }
     }
     return escorts
@@ -33,7 +32,7 @@ function ca_messenger_escort_move:execution(ai, cfg)
     local _, _, _, messengers = messenger_next_waypoint(cfg)
 
     local enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
     }
 
     local base_rating_map = LS.create()

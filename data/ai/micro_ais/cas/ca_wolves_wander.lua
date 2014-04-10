@@ -4,8 +4,9 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
 local function get_wolves(cfg)
-    local wolves = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0', { "and", cfg.filter }
+    local wolves = AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        { "and", cfg.filter }
     }
     return wolves
 end

@@ -6,7 +6,7 @@ local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local function get_protected_units(cfg)
     local units = {}
     for i,id in ipairs(cfg.id) do
-        table.insert(units, wesnoth.get_units { id = id, formula = '$this_unit.moves > 0' }[1])
+        table.insert(units, AH.get_units_with_moves { id = id }[1])
     end
     return units
 end

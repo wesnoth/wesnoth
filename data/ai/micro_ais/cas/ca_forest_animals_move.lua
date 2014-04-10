@@ -7,10 +7,9 @@ local function get_forest_animals(cfg)
     -- We want the deer/rabbits to move first, tuskers later
     local deer_type = cfg.deer_type or "no_unit_of_this_type"
     local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
-    local forest_animals = wesnoth.get_units {
+    local forest_animals = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        type = deer_type .. ',' .. rabbit_type,
-        formula = '$this_unit.moves > 0'
+        type = deer_type .. ',' .. rabbit_type
     }
 
     local tusker_type = cfg.tusker_type or "no_unit_of_this_type"

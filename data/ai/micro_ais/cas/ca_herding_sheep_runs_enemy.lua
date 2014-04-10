@@ -2,11 +2,12 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_next_sheep(cfg)
-    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-        formula = '$this_unit.moves > 0',
+    local sheep = AH.get_units_with_moves {
+        side = wesnoth.current.side,
+        { "and", cfg.filter_second },
         { "filter_location",
             {
-                { "filter", { { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
+                { "filter", { { "filter_side", { { "enemy_of", {side = wesnoth.current.side} } } } }
                 },
                 radius = (cfg.attention_distance or 8)
             }

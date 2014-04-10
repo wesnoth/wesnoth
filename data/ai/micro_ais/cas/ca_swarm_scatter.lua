@@ -13,12 +13,7 @@ local function get_enemies(cfg)
 end
 
 local function get_swarm_units(cfg)
-    local units = {}
-    local all_units = wesnoth.get_units { side = wesnoth.current.side }
-    for i,u in ipairs(all_units) do
-        if (u.moves > 0) then table.insert(units, u) end
-    end
-    return units
+    return AH.get_units_with_moves { side = wesnoth.current.side }
 end
 
 local swarm_scatter = {}

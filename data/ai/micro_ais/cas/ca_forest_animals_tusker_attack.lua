@@ -2,10 +2,9 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local function get_tuskers(cfg)
-    local tuskers = wesnoth.get_units {
+    local tuskers = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        type = cfg.tusker_type,
-        formula = '$this_unit.moves > 0'
+        type = cfg.tusker_type
     }
     return tuskers
 end

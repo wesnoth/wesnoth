@@ -17,17 +17,26 @@ function ca_healer_move:evaluation(ai, cfg, self)
 
     cfg = cfg or {}
 
-    local healers = wesnoth.get_units { side = wesnoth.current.side, ability = "healing",
-        formula = '$this_unit.moves > 0', { "and", cfg.filter }
+    local all_healers = wesnoth.get_units {
+        side = wesnoth.current.side,
+        ability = "healing",
+        { "and", cfg.filter }
     }
+
+    local healers, healers_noMP = {}, {}
+    for _, healer in ipairs(all_healers) do
+        if (healer.moves > 0) then
+            table.insert(healers, healer)
+        else
+            table.insert(healers_noMP, healer)
+        end
+    end
+
     if (not healers[1]) then return 0 end
 
-    local healers_noMP = wesnoth.get_units { side = wesnoth.current.side, ability = "healing",
-        formula = '$this_unit.moves = 0', { "and", cfg.filter }
-    }
-
-    local all_units = wesnoth.get_units{ side = wesnoth.current.side,
-        {"and", cfg.filter_second}
+    local all_units = wesnoth.get_units {
+        side = wesnoth.current.side,
+        { "and", cfg.filter_second }
     }
 
     local healees, units_MP = {}, {}

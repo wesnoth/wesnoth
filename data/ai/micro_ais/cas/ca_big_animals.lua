@@ -4,10 +4,9 @@ local LS = wesnoth.require "lua/location_set.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local function get_big_animals(cfg)
-    local big_animals = wesnoth.get_units {
+    local big_animals = AH.get_units_with_moves {
         side = wesnoth.current.side,
-        { "and" , cfg.filter },
-        formula = '$this_unit.moves > 0'
+        { "and" , cfg.filter }
     }
     return big_animals
 end
