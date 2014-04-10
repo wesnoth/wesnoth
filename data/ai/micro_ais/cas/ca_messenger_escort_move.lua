@@ -1,32 +1,37 @@
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
+local function get_escort(cfg)
+    local escorts = wesnoth.get_units {
+        side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0',
+        { "and", cfg.filter_second }
+    }
+    return escorts[1]
+end
+
+local function get_messenger(cfg)
+    local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
+    return messenger
+end
+
 local ca_messenger_escort_move = {}
 
 function ca_messenger_escort_move:evaluation(ai, cfg)
     -- Move escort units close to messenger, and in between messenger and enemies
     -- The messenger has moved at this time, so we don't need to exclude him
     -- But we check that he exist (not for this scenario, but for others)
-    local messenger = wesnoth.get_units{ side = wesnoth.current.side, id = cfg.id }[1]
-    if (not messenger) then return 0 end
-
-    local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
-
-    if my_units[1] then
-        return cfg.ca_score
-    end
-    return 0
+    if (not get_escort(cfg)) then return 0 end
+    if (not get_messenger(cfg)) then return 0 end
+    return cfg.ca_score
 end
 
 function ca_messenger_escort_move:execution(ai, cfg)
-    local messenger = wesnoth.get_units{ id = cfg.id }[1]
-    local my_units = wesnoth.get_units{ side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
-
-    -- Simply move units one at a time
-    local next_unit = my_units[1]
-    local reach = LS.of_pairs(wesnoth.find_reach(next_unit))
+    local escort = get_escort(cfg)
+    local messenger = get_messenger(cfg)
 
     -- Distance from messenger for each hex the unit can reach
+    local reach = LS.of_pairs(wesnoth.find_reach(escort))
     local dist_messenger = AH.distance_map({messenger}, reach)
 
     local enemies = wesnoth.get_units {
@@ -49,13 +54,13 @@ function ca_messenger_escort_move:execution(ai, cfg)
     -- Now find hex with minimum value that is unoccupied
     min_rating, best_hex = 9e99, {}
     rating:iter(function(x, y, r)
-        local unit_in_way = wesnoth.get_units{ x = x, y = y, { "not", { id = next_unit.id } } }[1]
+        local unit_in_way = wesnoth.get_units{ x = x, y = y, { "not", { id = escort.id } } }[1]
         if (not unit_in_way) and (r < min_rating) then
            min_rating, best_hex = r, { x, y }
         end
     end)
     -- and move the unit there
-    AH.movefull_stopunit(ai, next_unit, best_hex)
+    AH.movefull_stopunit(ai, escort, best_hex)
 end
 
 return ca_messenger_escort_move

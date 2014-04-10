@@ -1,6 +1,23 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
+local function get_tuskers(cfg)
+    local tuskers = wesnoth.get_units {
+        side = wesnoth.current.side,
+        type = cfg.tusker_type,
+        formula = '$this_unit.moves > 0'
+    }
+    return tuskers
+end
+
+local function get_adjacent_enemies(cfg)
+    local adjacent_enemies = wesnoth.get_units {
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+        { "filter_adjacent", { side = wesnoth.current.side, type = cfg.tusklet_type } }
+    }
+    return adjacent_enemies
+end
+
 local ca_forest_animals_tusker_attack = {}
 
 function ca_forest_animals_tusker_attack:evaluation(ai, cfg)
@@ -9,28 +26,19 @@ function ca_forest_animals_tusker_attack:evaluation(ai, cfg)
     -- Both cfg.tusker_type and cfg.tusklet_type need to be set for this to kick in
     if (not cfg.tusker_type) or (not cfg.tusklet_type) then return 0 end
 
-    local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type, formula = '$this_unit.moves > 0' }
-    local adj_enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
-        { "filter_adjacent", { side = wesnoth.current.side, type = cfg.tusklet_type } }
-    }
-    --print('#tuskers, #adj_enemies', #tuskers, #adj_enemies)
-
-    if tuskers[1] and adj_enemies[1] then return cfg.ca_score end
-    return 0
+    if (not get_tuskers(cfg)[1]) then return 0 end
+    if (not get_adjacent_enemies(cfg)[1]) then return 0 end
+    return cfg.ca_score
 end
 
 function ca_forest_animals_tusker_attack:execution(ai, cfg)
-    local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = cfg.tusker_type, formula = '$this_unit.moves > 0' }
-    local adj_enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
-        { "filter_adjacent", { side = wesnoth.current.side, type = cfg.tusklet_type } }
-    }
+    local tuskers = get_tuskers(cfg)
+    local adjacent_enemies = get_adjacent_enemies(cfg)
 
     -- Find the closest enemy to any tusker
     local min_dist, attacker, target = 9e99, {}, {}
     for i,t in ipairs(tuskers) do
-        for j,e in ipairs(adj_enemies) do
+        for j,e in ipairs(adjacent_enemies) do
             local dist = H.distance_between(t.x, t.y, e.x, e.y)
             if (dist < min_dist) then
                 min_dist, attacker, target = dist, t, e

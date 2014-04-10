@@ -3,16 +3,19 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
-local ca_big_animals = {}
-
-function ca_big_animals:evaluation(ai, cfg)
-    local units = wesnoth.get_units {
+local function get_big_animals(cfg)
+    local big_animals = wesnoth.get_units {
         side = wesnoth.current.side,
         { "and" , cfg.filter },
         formula = '$this_unit.moves > 0'
     }
+    return big_animals
+end
 
-    if units[1] then return cfg.ca_score end
+local ca_big_animals = {}
+
+function ca_big_animals:evaluation(ai, cfg)
+    if get_big_animals(cfg)[1] then return cfg.ca_score end
     return 0
 end
 
@@ -21,11 +24,7 @@ function ca_big_animals:execution(ai, cfg)
     -- Avoid the other big animals (bears, yetis, spiders) and the dogs, otherwise attack whatever is in their range
     -- The only difference in behavior is the area in which the units move
 
-    local units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        { "and" , cfg.filter },
-        formula = '$this_unit.moves > 0'
-    }
+    local big_animals = get_big_animals(cfg)
     local avoid = LS.of_pairs(wesnoth.get_locations { radius = 1,
         { "filter", { { "and", cfg.avoid_unit },
             { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
@@ -33,7 +32,7 @@ function ca_big_animals:execution(ai, cfg)
     })
     --AH.put_labels(avoid)
 
-    for i,unit in ipairs(units) do
+    for i,unit in ipairs(big_animals) do
         local goal = MAIUV.get_mai_unit_variables(unit, cfg.ai_id)
 
         -- Unit gets a new goal if none exist or on any move with 10% random chance

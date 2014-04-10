@@ -1,39 +1,32 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
+local function get_next_sheep(cfg)
+    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
+        formula = '$this_unit.moves > 0',
+        { "filter_location",
+            {
+                { "filter", { { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
+                },
+                radius = (cfg.attention_distance or 8)
+            }
+        }
+    }
+    return sheep[1]
+end
+
 local ca_herding_sheep_runs_enemy = {}
 
 function ca_herding_sheep_runs_enemy:evaluation(ai, cfg)
     -- Sheep runs from any enemy within attention_distance hexes (after the dogs have moved in)
-    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-        formula = '$this_unit.moves > 0',
-        { "filter_location",
-            {
-                { "filter", { { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
-                },
-                radius = (cfg.attention_distance or 8)
-            }
-        }
-    }
-
-    if sheep[1] then return cfg.ca_score end
+    if get_next_sheep(cfg) then return cfg.ca_score end
     return 0
 end
 
 function ca_herding_sheep_runs_enemy:execution(ai, cfg)
-    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-        formula = '$this_unit.moves > 0',
-        { "filter_location",
-            {
-                { "filter", { { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
-                },
-                radius = (cfg.attention_distance or 8)
-            }
-        }
-    }
+    -- Simply start with the first of the sheep, order does not matter
+    local sheep = get_next_sheep(cfg)
 
-    -- Simply start with the first of these sheep
-    sheep = sheep[1]
     -- And find the close enemies
     local enemies = wesnoth.get_units {
         { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
