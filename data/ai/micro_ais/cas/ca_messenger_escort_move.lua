@@ -5,19 +5,23 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
+local function get_escorts(cfg)
+    local escorts = wesnoth.get_units {
+        side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0',
+        { "and", cfg.filter_second }
+    }
+    return escorts
+end
+
 local ca_messenger_escort_move = {}
 
 function ca_messenger_escort_move:evaluation(ai, cfg)
     -- Move escort units close to messengers, and in between messengers and enemies
     -- The messengers have moved at this time, so we don't need to exclude them,
     -- but we check that there are messengers left
-
-    local my_units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0',
-        { "and", cfg.filter_second }
-    }
-    if (not my_units[1]) then return 0 end
+    local escort = get_escorts(cfg)[1]
+    if (not escort) then return 0 end
 
     local _, _, _, messengers = messenger_next_waypoint(cfg)
     if (not messengers) or (not messengers[1]) then return 0 end
@@ -26,12 +30,7 @@ function ca_messenger_escort_move:evaluation(ai, cfg)
 end
 
 function ca_messenger_escort_move:execution(ai, cfg)
-    local my_units = wesnoth.get_units {
-        side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0',
-        { "and", cfg.filter_second }
-    }
-
+    local escorts = get_escorts(cfg)
     local _, _, _, messengers = messenger_next_waypoint(cfg)
 
     local enemies = wesnoth.get_units {
@@ -40,7 +39,7 @@ function ca_messenger_escort_move:execution(ai, cfg)
 
     local base_rating_map = LS.create()
     local max_rating, best_unit, best_hex = -9e99
-    for _,unit in ipairs(my_units) do
+    for _,unit in ipairs(escorts) do
         -- Only considering hexes unoccupied by other units is good enough for this
         local reach_map = AH.get_reachable_unocc(unit)
 

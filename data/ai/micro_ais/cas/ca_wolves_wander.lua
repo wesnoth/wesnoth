@@ -3,22 +3,23 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
+local function get_wolves(cfg)
+    local wolves = wesnoth.get_units { side = wesnoth.current.side,
+        formula = '$this_unit.moves > 0', { "and", cfg.filter }
+    }
+    return wolves
+end
+
 local ca_wolves_wander = {}
 
 function ca_wolves_wander:evaluation(ai, cfg)
     -- When there's no prey left, the wolves wander and regroup
-    local wolves = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0', { "and", cfg.filter }
-    }
-
-    if wolves[1] then return cfg.ca_score end
+    if get_wolves(cfg)[1] then return cfg.ca_score end
     return 0
 end
 
 function ca_wolves_wander:execution(ai, cfg)
-    local wolves = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0', { "and", cfg.filter }
-    }
+    local wolves = get_wolves(cfg)
 
     -- Number of wolves that can reach each hex
     local reach_map = LS.create()

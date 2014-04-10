@@ -4,11 +4,18 @@ local LS = wesnoth.require "lua/location_set.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 
+local function get_hang_out_units(cfg)
+    local units = wesnoth.get_units {
+        side = wesnoth.current.side,
+        { "and", cfg.filter },
+        formula = '$this_unit.moves > 0'
+    }
+    return units
+end
+
 local ca_hang_out = {}
 
 function ca_hang_out:evaluation(ai, cfg, self)
-    cfg = cfg or {}
-
     -- Return 0 if the mobilize condition has previously been met
     if MAISD.get_mai_self_data(self.data, cfg.ai_id, "mobilize_units") then
         return 0
@@ -29,22 +36,12 @@ function ca_hang_out:evaluation(ai, cfg, self)
         return 0
     end
 
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        { "and", cfg.filter }, formula = '$this_unit.moves > 0'
-    }
-    if units[1] then
-        return cfg.ca_score
-    end
+    if get_hang_out_units(cfg)[1] then return cfg.ca_score end
     return 0
 end
 
 function ca_hang_out:execution(ai, cfg, self)
-    cfg = cfg or {}
-
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        { "and", cfg.filter }, formula = '$this_unit.moves > 0'
-    }
-    --print('#unit', #units)
+    local units = get_hang_out_units(cfg)
 
     -- Get the locations close to which the units should hang out
     -- cfg.filter_location defaults to the location of the side leader(s)

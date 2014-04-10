@@ -1,26 +1,27 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local ca_herding_sheep_runs_dog = {}
-
-function ca_herding_sheep_runs_dog:evaluation(ai, cfg)
-    -- Any sheep with moves left next to a dog runs aways
+local function get_next_sheep(cfg)
     local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
         formula = '$this_unit.moves > 0',
         { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } }
     }
+    return sheep[1]
+end
 
-    if sheep[1] then return cfg.ca_score end
+local ca_herding_sheep_runs_dog = {}
+
+function ca_herding_sheep_runs_dog:evaluation(ai, cfg)
+    -- Any sheep with moves left next to a dog runs away
+    if get_next_sheep(cfg) then return cfg.ca_score end
     return 0
 end
 
 function ca_herding_sheep_runs_dog:execution(ai, cfg)
-    -- simply get the first sheep
-    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-        formula = '$this_unit.moves > 0',
-        { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } }
-    }[1]
-    -- and the first dog it is adjacent to
+    -- Simply get the first sheep, order does not matter
+    local sheep = get_next_sheep(cfg)
+
+    -- Get the first dog it is adjacent to
     local dog = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
         { "filter_adjacent", { x = sheep.x, y = sheep.y } }
     }[1]

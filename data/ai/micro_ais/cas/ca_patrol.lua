@@ -2,28 +2,25 @@ local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 
-local ca_patrol = {}
-
-function ca_patrol:evaluation(ai, cfg)
+local function get_patrol(cfg)
     local filter = cfg.filter or { id = cfg.id }
     local patrol = wesnoth.get_units({
         side = wesnoth.current.side,
         { "and", filter },
         formula = '$this_unit.moves > 0' }
     )[1]
+    return patrol
+end
 
-    if patrol then return cfg.ca_score end
+local ca_patrol = {}
+
+function ca_patrol:evaluation(ai, cfg)
+    if get_patrol(cfg) then return cfg.ca_score end
     return 0
 end
 
 function ca_patrol:execution(ai, cfg)
-    local filter = cfg.filter or { id = cfg.id }
-    local patrol = wesnoth.get_units({
-        side = wesnoth.current.side,
-        { "and", filter },
-        formula = '$this_unit.moves > 0' }
-    )[1]
-
+    local patrol = get_patrol(cfg)
     cfg.waypoint_x = AH.split(cfg.waypoint_x, ",")
     cfg.waypoint_y = AH.split(cfg.waypoint_y, ",")
 

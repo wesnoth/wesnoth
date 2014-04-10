@@ -3,48 +3,46 @@ local W = H.set_wml_action_metatable {}
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
+local function get_forest_animals(cfg)
+    -- We want the deer/rabbits to move first, tuskers later
+    local deer_type = cfg.deer_type or "no_unit_of_this_type"
+    local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
+    local forest_animals = wesnoth.get_units {
+        side = wesnoth.current.side,
+        type = deer_type .. ',' .. rabbit_type,
+        formula = '$this_unit.moves > 0'
+    }
+
+    local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
+    local all_tuskers = wesnoth.get_units { side = wesnoth.current.side, type = tusker_type }
+    for i,t in ipairs(all_tuskers) do
+        if (t.moves > 0) then table.insert(forest_animals, t) end
+    end
+
+    -- Tusklets get moved by this CA if there are no tuskers left
+    if not all_tuskers[1] then
+        local tusklet_type = cfg.tusklet_type or "no_unit_of_this_type"
+        local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = tusklet_type }
+        for i,t in ipairs(tusklets) do
+            if (t.moves > 0) then table.insert(forest_animals, t) end
+        end
+    end
+
+    return forest_animals
+end
+
 local ca_forest_animals_move = {}
 
 function ca_forest_animals_move:evaluation(ai, cfg)
-    local deer_type = cfg.deer_type or "no_unit_of_this_type"
-    local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
-    local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
-    local tusklet_type = cfg.tusklet_type or "no_unit_of_this_type"
-
-    local units = wesnoth.get_units { side = wesnoth.current.side,
-        type = deer_type .. ',' .. rabbit_type .. ',' .. tusker_type, formula = '$this_unit.moves > 0' }
-    local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = tusklet_type, formula = '$this_unit.moves > 0' }
-    local all_tuskers = wesnoth.get_units { side = wesnoth.current.side, type = tusker_type }
-
-    -- If there are deer, rabbits or tuskers with moves left -> good
-    if units[1] then return cfg.ca_score end
-    -- Or, we move tusklets with this CA, if no tuskers are left (counting those without moves also)
-    if (not all_tuskers[1]) and tusklets[1] then return cfg.ca_score end
+    if get_forest_animals(cfg)[1] then return cfg.ca_score end
     return 0
 end
 
 function ca_forest_animals_move:execution(ai, cfg)
-    local deer_type = cfg.deer_type or "no_unit_of_this_type"
-    local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
-    local tusker_type = cfg.tusker_type or "no_unit_of_this_type"
-    local tusklet_type = cfg.tusklet_type or "no_unit_of_this_type"
-    local wander_terrain = cfg.filter_location or {}
-
-    -- We want the deer/rabbits to move first, tuskers later
-    local units = wesnoth.get_units { side = wesnoth.current.side, type = deer_type .. ',' .. rabbit_type, formula = '$this_unit.moves > 0' }
-    local tuskers = wesnoth.get_units { side = wesnoth.current.side, type = tusker_type, formula = '$this_unit.moves > 0' }
-    for i,t in ipairs(tuskers) do table.insert(units, t) end
-
-    -- Also add tusklets if there are no tuskers left
-    local all_tuskers = wesnoth.get_units { side = wesnoth.current.side, type = tusker_type }
-    if not all_tuskers[1] then
-        local tusklets = wesnoth.get_units { side = wesnoth.current.side, type = tusklet_type, formula = '$this_unit.moves > 0' }
-        for i,t in ipairs(tusklets) do table.insert(units, t) end
-    end
+    local forest_animals = get_forest_animals(cfg)
 
     -- These animals run from any enemy
     local enemies = wesnoth.get_units {  { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
-    --print('#units, enemies', #units, #enemies)
 
     -- Get the locations of all the rabbit holes
     W.store_items { variable = 'holes_wml' }
@@ -63,7 +61,7 @@ function ca_forest_animals_move:execution(ai, cfg)
     --AH.put_labels(hole_map)
 
     -- Each unit moves independently
-    for i,unit in ipairs(units) do
+    for i,unit in ipairs(forest_animals) do
         --print('Unit', i, unit.x, unit.y)
         -- Behavior is different depending on whether a predator is close or not
         local close_enemies = {}
@@ -75,6 +73,7 @@ function ca_forest_animals_move:execution(ai, cfg)
         --print('  #close_enemies', #close_enemies)
 
         -- If no close enemies, do a random move
+        local wander_terrain = cfg.filter_location or {}
         if (not close_enemies[1]) then
             -- All hexes the unit can reach that are unoccupied
             local reach = AH.get_reachable_unocc(unit)
@@ -135,6 +134,7 @@ function ca_forest_animals_move:execution(ai, cfg)
         --print('  #close_enemies after move', #close_enemies, #enemies, unit.id)
 
         -- If there are close enemies, run away (and rabbits disappear into holes)
+        local rabbit_type = cfg.rabbit_type or "no_unit_of_this_type"
         if close_enemies[1] then
             -- Calculate the hex that maximizes distance of unit from enemies
             -- Returns nil if the only hex that can be reached is the one the unit is on

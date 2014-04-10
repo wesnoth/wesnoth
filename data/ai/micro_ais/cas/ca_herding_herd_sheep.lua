@@ -3,46 +3,44 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
+local function get_dogs(cfg)
+    local dogs = wesnoth.get_units {
+        side = wesnoth.current.side,
+        { "and", cfg.filter },
+        formula = '$this_unit.moves > 0'
+    }
+    return dogs
+end
+
+local function get_sheep_to_herd(cfg)
+    local all_sheep = wesnoth.get_units {
+        side = wesnoth.current.side,
+        { "and", cfg.filter_second },
+        { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
+    }
+    local sheep_to_herd = {}
+    local herding_area = herding_area(cfg)
+    for i,s in ipairs(all_sheep) do
+        if (not herding_area:get(s.x, s.y)) then table.insert(sheep_to_herd, s) end
+    end
+    return sheep_to_herd
+end
+
 local ca_herding_herd_sheep = {}
 
 function ca_herding_herd_sheep:evaluation(ai, cfg)
     -- If dogs have moves left, and there is a sheep with moves left outside the
     -- herding area, chase it back
-    -- We'll do a bunch of nested if's, to speed things up
-    local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter}, formula = '$this_unit.moves > 0' }
-    if dogs[1] then
-        local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-            { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
-        }
-        if sheep[1] then
-            local herding_area = herding_area(cfg)
-            for i,s in ipairs(sheep) do
-                -- If a sheep is found outside the herding area, we want to chase it back
-                if (not herding_area:get(s.x, s.y)) then return cfg.ca_score end
-            end
-        end
+    if get_dogs(cfg)[1] then
+        if get_sheep_to_herd(cfg)[1] then return cfg.ca_score end
     end
-
-    -- If we got here, no valid dog/sheep combos were found
     return 0
 end
 
 function ca_herding_herd_sheep:execution(ai, cfg)
-    local dogs = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter}, formula = '$this_unit.moves > 0' }
-    local sheep = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter_second},
-        { "not", { { "filter_adjacent", { side = wesnoth.current.side, {"and", cfg.filter} } } } }
-    }
-    local herding_area = herding_area(cfg)
-    local sheep_to_herd = {}
-    for i,s in ipairs(sheep) do
-        -- If a sheep is found outside the herding area, we want to chase it back
-        if (not herding_area:get(s.x, s.y)) then table.insert(sheep_to_herd, s) end
-    end
-    sheep = nil
+    local dogs = get_dogs(cfg)
+    local sheep_to_herd = get_sheep_to_herd(cfg)
 
-    -- Find the farthest out sheep that the dogs can get to (and that has moves left)
-
-    -- Find all sheep that have stepped out of bound
     local max_rating, best_dog, best_hex = -9e99, {}, {}
     local c_x, c_y = cfg.herd_x, cfg.herd_y
     for i,s in ipairs(sheep_to_herd) do

@@ -3,25 +3,24 @@ local LS = wesnoth.require "lua/location_set.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 
+local function get_protected_units(cfg)
+    local units = {}
+    for i,id in ipairs(cfg.id) do
+        table.insert(units, wesnoth.get_units { id = id, formula = '$this_unit.moves > 0' }[1])
+    end
+    return units
+end
+
 local ca_protect_unit_move = {}
 
 function ca_protect_unit_move:evaluation(ai, cfg, self)
-    -- Always 94999 if one of the units can still move
-    local units = {}
-    for i,id in ipairs(cfg.id) do
-        table.insert(units, wesnoth.get_units{ id = id, formula = '$this_unit.moves > 0' }[1])
-    end
-
-    if units[1] then return 94999 end
+    if get_protected_units(cfg)[1] then return 94999 end
     return 0
 end
 
 function ca_protect_unit_move:execution(ai, cfg, self)
     -- Find and execute best (safest) move toward goal
-    local units = {}
-    for i,id in ipairs(cfg.id) do
-        table.insert(units, wesnoth.get_units{ id = id, formula = '$this_unit.moves > 0' }[1])
-    end
+    local units = get_protected_units(cfg)
 
     -- Need to take the units off the map, as they don't count into the map scores
     -- (as long as they can still move)

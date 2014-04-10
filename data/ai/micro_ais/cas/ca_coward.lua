@@ -1,41 +1,38 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local ca_coward = {}
-
-function ca_coward:evaluation(ai, cfg)
+local function get_coward(cfg)
     local filter = cfg.filter or { id = cfg.id }
-    local unit = wesnoth.get_units({
+    local coward = wesnoth.get_units({
         side = wesnoth.current.side,
         { "and", filter },
         formula = '$this_unit.moves > 0' }
     )[1]
+    return coward
+end
 
-    if unit then return cfg.ca_score end
+local ca_coward = {}
+
+function ca_coward:evaluation(ai, cfg)
+    if get_coward(cfg) then return cfg.ca_score end
     return 0
 end
 
 -- cfg parameters: id, distance, seek_x, seek_y, avoid_x, avoid_y
 function ca_coward:execution(ai, cfg)
-    local filter = cfg.filter or { id = cfg.id }
-    local unit = wesnoth.get_units({
-        side = wesnoth.current.side,
-        { "and", filter },
-        formula = '$this_unit.moves > 0' }
-    )[1]
-
-    local reach = wesnoth.find_reach(unit)
+    local coward = get_coward(cfg)
+    local reach = wesnoth.find_reach(coward)
 
     -- enemy units within reach
     local filter_second = cfg.filter_second or { { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} } }
     local enemies = wesnoth.get_units {
         { "and", filter_second },
-        { "filter_location", {x = unit.x, y = unit.y, radius = cfg.distance} }
+        { "filter_location", {x = coward.x, y = coward.y, radius = cfg.distance} }
     }
 
     -- if no enemies are within reach: keep unit from doing anything and exit
     if not enemies[1] then
-        AH.checked_stopunit_all(ai, unit)
+        AH.checked_stopunit_all(ai, coward)
         return
     end
 
@@ -43,7 +40,7 @@ function ca_coward:execution(ai, cfg)
     for i,r in ipairs(reach) do
 
         -- only consider unoccupied hexes
-        local occ_hex = wesnoth.get_units { x=r[1], y=r[2], { "not", { id = unit.id } } }[1]
+        local occ_hex = wesnoth.get_units { x=r[1], y=r[2], { "not", { id = coward.id } } }[1]
         if not occ_hex then
             -- Find combined distance weighting of all enemy units within distance
             local value = 0
@@ -102,10 +99,10 @@ function ca_coward:execution(ai, cfg)
     end
     --items.place_image(mx, my, "items/ring-gold.png")
 
-    AH.movefull_stopunit(ai, unit, mx, my)
-    if (not unit) or (not unit.valid) then return end
+    AH.movefull_stopunit(ai, coward, mx, my)
+    if (not coward) or (not coward.valid) then return end
 
-    AH.checked_stopunit_all(ai, unit)
+    AH.checked_stopunit_all(ai, coward)
 end
 
 return ca_coward

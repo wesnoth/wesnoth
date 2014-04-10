@@ -3,30 +3,34 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local LS = wesnoth.require "lua/location_set.lua"
 
+local function get_wolves(cfg)
+    local wolves = wesnoth.get_units {
+        side = wesnoth.current.side,
+        { "and", cfg.filter },
+        formula = '$this_unit.moves > 0'
+    }
+    return wolves
+end
+
+local function get_prey(cfg)
+    local prey = wesnoth.get_units {
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
+        { "and", cfg.filter_second }
+    }
+    return prey
+end
+
 local ca_wolves_move = {}
 
 function ca_wolves_move:evaluation(ai, cfg)
-    local wolves = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0', { "and", cfg.filter }
-    }
-    local prey = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
-        { "and", cfg.filter_second }
-    }
-
-    if wolves[1] and prey[1] then return cfg.ca_score end
-    return 0
+    if (not get_wolves(cfg)[1]) then return 0 end
+    if (not get_prey(cfg)[1]) then return 0 end
+    return cfg.ca_score
 end
 
 function ca_wolves_move:execution(ai, cfg)
-    local wolves = wesnoth.get_units { side = wesnoth.current.side,
-        formula = '$this_unit.moves > 0', { "and", cfg.filter }
-    }
-    local prey = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
-        { "and", cfg.filter_second }
-    }
-    --print('#wolves, prey', #wolves, #prey)
+    local wolves = get_wolves(cfg)
+    local prey = get_prey(cfg)
 
     -- When wandering (later) they avoid dogs, but not here
     local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
