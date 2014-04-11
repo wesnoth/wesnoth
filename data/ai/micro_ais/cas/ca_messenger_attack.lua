@@ -3,8 +3,6 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
-local ca_messenger_attack = {}
-
 local function messenger_find_enemies_in_way(unit, goal_x, goal_y)
     -- Returns the first unit on or next to the path of the messenger
     -- unit: proxy table for the messenger unit
@@ -123,6 +121,8 @@ local function messenger_find_clearing_attack(unit, goal_x, goal_y, cfg)
         return
     end
 end
+
+local ca_messenger_attack = {}
 
 function ca_messenger_attack:evaluation(ai, cfg, self)
     -- Attack units in the path of the messengers

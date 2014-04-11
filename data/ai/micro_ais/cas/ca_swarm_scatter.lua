@@ -16,15 +16,15 @@ local function get_swarm_units(cfg)
     return AH.get_units_with_moves { side = wesnoth.current.side }
 end
 
-local swarm_scatter = {}
+local ca_swarm_scatter = {}
 
-function swarm_scatter:evaluation(ai, cfg)
+function ca_swarm_scatter:evaluation(ai, cfg)
     if (not get_enemies(cfg)[1]) then return 0 end
     if (not get_swarm_units(cfg)[1]) then return 0 end
     return cfg.ca_score
 end
 
-function swarm_scatter:execution(ai, cfg)
+function ca_swarm_scatter:execution(ai, cfg)
     local enemies = get_enemies(cfg)
     local units = get_swarm_units(cfg)
     local vision_distance = cfg.vision_distance or 12
@@ -53,4 +53,4 @@ function swarm_scatter:execution(ai, cfg)
     end
 end
 
-return swarm_scatter
+return ca_swarm_scatter

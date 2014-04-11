@@ -5,8 +5,6 @@ local LS = wesnoth.require "lua/location_set.lua"
 local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 
-local ca_goto = {}
-
 local function custom_cost(x, y, u, enemy_map, enemy_attack_map, multiplier)
     local terrain = wesnoth.get_terrain(x, y)
     local move_cost = wesnoth.unit_movement_cost(u, terrain)
@@ -16,6 +14,8 @@ local function custom_cost(x, y, u, enemy_map, enemy_attack_map, multiplier)
 
     return move_cost
 end
+
+local ca_goto = {}
 
 function ca_goto:evaluation(ai, cfg, self)
 

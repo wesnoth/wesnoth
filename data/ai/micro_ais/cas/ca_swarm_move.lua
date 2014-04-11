@@ -1,9 +1,9 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 
-local swarm_move = {}
+local ca_swarm_move = {}
 
-function swarm_move:evaluation(ai, cfg)
+function ca_swarm_move:evaluation(ai, cfg)
     local units = wesnoth.get_units { side = wesnoth.current.side }
     for i,u in ipairs(units) do
         if (u.moves > 0) then return cfg.ca_score end
@@ -12,7 +12,7 @@ function swarm_move:evaluation(ai, cfg)
     return 0
 end
 
-function swarm_move:execution(ai, cfg)
+function ca_swarm_move:execution(ai, cfg)
     local enemy_distance = cfg.enemy_distance or 5
     local vision_distance = cfg.vision_distance or 12
 
@@ -71,4 +71,4 @@ function swarm_move:execution(ai, cfg)
     AH.movefull_stopunit(ai, unit, best_hex)
 end
 
-return swarm_move
+return ca_swarm_move
