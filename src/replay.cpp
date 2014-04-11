@@ -1094,14 +1094,12 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		WRN_REPLAY << "MP synchronization called during an unsynced context.";; 
 		return uch.query_user();
 	}
-	if(is_too_early)
+	if(is_too_early && uch.is_visible())
 	{
 		//We are in a prestart event or even earlier.
 		//Although we are able to sync them, we cannot use query_user,
 		//because we cannot (or shouldn't) put things on the screen inside a prestart event, this is true for SP and MP games.
 		//Quotation form event wiki: "For things displayed on-screen such as character dialog, use start instead"
-		//Note, that there are also user choices that don't require on-screen dialogs like [get_global_variable]
-		//TODO: find a solution in these cases.
 		return uch.random_choice();
 	}
 	//in start events it's unclear to decide on which side the function should be executed (default= side1 still). 

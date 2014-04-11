@@ -50,6 +50,7 @@ struct persist_choice: mp_sync::user_choice {
 	virtual config random_choice() const {
 		return config();
 	}
+	virtual bool is_visible() const { return false; }
 };
 
 static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
