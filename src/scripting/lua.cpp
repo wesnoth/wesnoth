@@ -2655,17 +2655,17 @@ namespace {
 		lua_State *L;
 		lua_synchronize(lua_State *l): L(l) {}
 
-		virtual config query_user() const
+		virtual config query_user(int side) const
 		{
 			config cfg;
 			int index = 1;
 			if (!lua_isnoneornil(L, 2)) {
-				int side = resources::controller->current_side();
 				if ((*resources::teams)[side - 1].is_ai())
 					index = 2;
 			}
 			lua_pushvalue(L, index);
-			if (luaW_pcall(L, 0, 1, false)) {
+			lua_pushnumber(L, side);
+			if (luaW_pcall(L, 1, 1, false)) {
 				if(!luaW_toconfig(L, -1, cfg) && game_config::debug) {
 					chat_message("Lua warning", "function returned to wesnoth.synchronize_choice a table which was partially invalid");
 				}
@@ -2673,7 +2673,7 @@ namespace {
 			return cfg;
 		}
 
-		virtual config random_choice() const
+		virtual config random_choice(int /*side*/) const
 		{
 			return config();
 		}

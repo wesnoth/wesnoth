@@ -998,7 +998,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			/* At least one of the decisions is ours, and it will be inserted
 			   into the replay. */
 			DBG_REPLAY << "MP synchronization: local choice\n";
-			config cfg = uch.query_user();
+			config cfg = uch.query_user(local_side);
 			
 			recorder.user_input(name, cfg, local_side);
 			retv[local_side]= cfg;
@@ -1098,7 +1098,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	
 	BOOST_FOREACH(int side, empty_sides)
 	{
-		retv[side] = uch.random_choice();
+		retv[side] = uch.random_choice(side);
 	}
 	return retv;
 
@@ -1123,7 +1123,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//This doesn't cause problems and someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice which could be useful, 
 		//so just give a warning.
 		WRN_REPLAY << "MP synchronization called during an unsynced context.";; 
-		return uch.query_user();
+		return uch.query_user(side);
 	}
 	if(is_too_early && uch.is_visible())
 	{
@@ -1131,7 +1131,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 		//Although we are able to sync them, we cannot use query_user,
 		//because we cannot (or shouldn't) put things on the screen inside a prestart event, this is true for SP and MP games.
 		//Quotation form event wiki: "For things displayed on-screen such as character dialog, use start instead"
-		return uch.random_choice();
+		return uch.random_choice(side);
 	}
 	//in start events it's unclear to decide on which side the function should be executed (default= side1 still). 
 	//But for advancements we can just decide on the side that owns the unit and that's in the responsibility of advance_unit_at.

@@ -188,8 +188,8 @@ namespace mp_sync {
 struct user_choice
 {
 	virtual ~user_choice() {}
-	virtual config query_user() const = 0;
-	virtual config random_choice() const = 0;
+	virtual config query_user(int side) const = 0;
+	virtual config random_choice(int side) const = 0;
 	///whether the choice is visible for the user like an advacement choice
 	///a non-visible choice is for example get_global_variable
 	virtual bool is_visible() const { return true; }

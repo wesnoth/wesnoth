@@ -231,7 +231,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			/* The decision is ours, and it will be inserted
 			into the replay. */
 			DBG_REPLAY << "MP synchronization: local server choice\n";
-			config cfg = uch.query_user();
+			config cfg = uch.query_user(-1);
 			//-1 for "server" todo: change that.
 			recorder.user_input(name, cfg, -1);
 			return cfg;
@@ -378,7 +378,7 @@ random_seed_choice::~random_seed_choice()
 
 }
 
-config random_seed_choice::query_user() const
+config random_seed_choice::query_user(int /*side*/) const
 {
 	//getting here means we are in a sp game
 
@@ -387,7 +387,7 @@ config random_seed_choice::query_user() const
 	retv["new_seed"] = rand();
 	return retv;
 }
-config random_seed_choice::random_choice() const
+config random_seed_choice::random_choice(int /*side*/) const
 {
 	//it obviously doesn't make sense to call the uninitialized random generator to generatoe a seed ofr the same random generator;
 	//this shoud never happen

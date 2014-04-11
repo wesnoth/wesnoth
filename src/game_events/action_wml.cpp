@@ -145,7 +145,7 @@ namespace { // Types
 			, has_text_input(ht), options(o)
 		{}
 
-		virtual config query_user() const
+		virtual config query_user(int /*side*/) const
 		{
 			std::string image = get_image(cfg, speaker);
 			std::string caption = get_caption(cfg, speaker);
@@ -190,7 +190,7 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice() const
+		virtual config random_choice(int /*side*/) const
 		{
 			return config();
 		}
@@ -206,7 +206,7 @@ namespace { // Types
 			: nb_options(o), loc(l), use_dialog(d)
 		{}
 
-		virtual config query_user() const
+		virtual config query_user(int /*side*/) const
 		{
 			int selected;
 			if (use_dialog) {
@@ -221,7 +221,7 @@ namespace { // Types
 			return cfg;
 		}
 
-		virtual config random_choice() const
+		virtual config random_choice(int /*side*/) const
 		{
 			config cfg;
 			cfg["value"] = random_new::generator->next_random() % nb_options;
@@ -1111,7 +1111,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	{
 		/* Always show the dialog if it has no input, whether we are
 		   replaying or not. */
-		msg.query_user();
+		msg.query_user(resources::controller->current_side());
 	}
 	else
 	{

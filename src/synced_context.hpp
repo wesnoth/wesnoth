@@ -175,8 +175,8 @@ class random_seed_choice : public mp_sync::user_choice
 public: 
 	random_seed_choice();
 	virtual ~random_seed_choice();
-	virtual config query_user() const;
-	virtual config random_choice() const;
+	virtual config query_user(int /*side*/) const;
+	virtual config random_choice(int /*side*/) const;
 };
 
 
