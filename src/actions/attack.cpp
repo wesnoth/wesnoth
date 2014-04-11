@@ -1377,8 +1377,9 @@ namespace
 		{
 		}
 
-		virtual config query_user() const
+		virtual config query_user(int /*side*/) const
 		{
+			//the 'side' parameter might differ from side_num_- 
 			int res = 0;
 			team t = (*resources::teams)[side_num_ - 1];
 			//i wonder how this got included here ? 
@@ -1423,7 +1424,7 @@ namespace
 			return retv;
 
 		}
-		virtual config random_choice() const 
+		virtual config random_choice(int /*side*/) const 
 		{
 			config retv;
 			retv["value"] = 0;

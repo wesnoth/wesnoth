@@ -63,9 +63,9 @@ playsingle_controller::playsingle_controller(const config& level,
 		const config& game_config, CVideo& video, bool skip_replay) :
 	play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay),
 	cursor_setter(cursor::NORMAL),
-	data_backlog_(),
 	textbox_info_(),
 	replay_sender_(recorder),
+	network_reader_(),
 	end_turn_(false),
 	player_type_changed_(false),
 	replaying_(false),
@@ -609,7 +609,7 @@ void playsingle_controller::play_turn(bool save)
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
-				turn_info turn_data(player_number_, replay_sender_);
+				turn_info turn_data(player_number_, replay_sender_,network_reader_);
 				recorder.end_turn();
 				turn_data.sync_network();
 			}
@@ -618,7 +618,7 @@ void playsingle_controller::play_turn(bool save)
 
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
-			replaying_ = ::do_replay(player_number_);
+			replaying_ = ::do_replay(player_number_) == REPLAY_FOUND_END_TURN;
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			// If a side is dead end the turn, but play at least side=1's
@@ -626,7 +626,7 @@ void playsingle_controller::play_turn(bool save)
 			if (current_team().is_human() && side_units(player_number_) == 0
 				&& (resources::units->size() != 0 || player_number_ != 1))
 			{
-				turn_info turn_data(player_number_, replay_sender_);
+				turn_info turn_data(player_number_, replay_sender_, network_reader_);
 				recorder.end_turn();
 				turn_data.sync_network();
 				continue;
@@ -926,7 +926,7 @@ void playsingle_controller::play_ai_turn(){
 		synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(true));
 	}
 
-	turn_info turn_data(player_number_, replay_sender_);
+	turn_info turn_data(player_number_, replay_sender_, network_reader_);
 
 	try {
 		ai::manager::play_turn(player_number_);

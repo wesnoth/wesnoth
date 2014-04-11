@@ -190,11 +190,9 @@ void playmp_controller::play_human_turn(){
 
 		try {
 			config cfg;
-			const network::connection res = network::receive_data(cfg);
-			std::deque<config> backlog;
 
-			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+			if(network_reader_.read(cfg)) {
+				if (turn_data_->process_network_data(cfg, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
 				{
 					// Clean undo stack if turn has to be restarted (losing control)
 					if ( undo_stack_->can_undo() )
@@ -274,11 +272,8 @@ void playmp_controller::play_idle_loop()
 	{
 		try {
 			config cfg;
-			const network::connection res = network::receive_data(cfg);
-			std::deque<config> backlog;
-
-			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+			if(network_reader_.read(cfg)) {
+				if (turn_data_->process_network_data(cfg, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
 				{
 					throw end_turn_exception(gui_->playing_side());
 				}
@@ -400,26 +395,26 @@ void playmp_controller::wait_for_upload()
 		init_turn_data();
 	}
 
+	config cfg;
+	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
 		try {
-			config cfg;
 			const network::connection res = dialogs::network_receive_dialog(
 				*gui_, _("Waiting for next scenario..."), cfg);
 
-			std::deque<config> backlog;
 			if(res != network::null_connection) {
-				if (turn_data_->process_network_data(cfg, res, backlog, skip_replay_)
-						== turn_info::PROCESS_END_LINGER) {
+				if (turn_data_->process_network_data_from_reader(skip_replay_) == turn_info::PROCESS_END_LINGER) {
 					break;
 				}
 			}
 
 		} catch(const end_level_exception&) {
+			network_reader_.set_source(playturn_network_adapter::read_network);
 			turn_data_->send_data();
 			throw;
 		}
 	}
-
+	network_reader_.set_source(playturn_network_adapter::read_network);
 	if(set_turn_data) {
 		delete turn_data_;
 		turn_data_ = NULL;
@@ -469,33 +464,25 @@ void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	end_turn_enable(false);
-	turn_info turn_data(player_number_, replay_sender_);
+	turn_info turn_data(player_number_, replay_sender_, network_reader_);
 	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {
 
 		if (!network_processing_stopped_){
-			bool have_data = false;
 			config cfg;
-
-			network::connection from = network::null_connection;
-
-			if(data_backlog_.empty() == false) {
-				have_data = true;
-				cfg = data_backlog_.front();
-				data_backlog_.pop_front();
-			} else {
-				from = network::receive_data(cfg);
-				have_data = from != network::null_connection;
-			}
-
-			if(have_data) {
+			if(network_reader_.read(cfg)) {
 				if (replay_last_turn_ <= turn()){
 					if (skip_replay_) {
 						skip_replay_ = false;
 					}
 				}
-				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, from, data_backlog_, skip_replay_);
+				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, skip_replay_);
+				if(player_type_changed_ == true)
+				{
+					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
+					return;
+				}
 				if (result == turn_info::PROCESS_RESTART_TURN) {
 					player_type_changed_ = true;
 					return;
@@ -510,7 +497,7 @@ void playmp_controller::play_network_turn(){
 			{
 				bool was_skipping = recorder.is_skipping();
 				recorder.set_skip(skip_replay_);
-				if(do_replay(current_side()))
+				if(do_replay(current_side()) == REPLAY_FOUND_END_TURN)
 				{
 					break;
 				}
@@ -534,7 +521,7 @@ void playmp_controller::play_network_turn(){
 }
 
 void playmp_controller::init_turn_data() {
-	turn_data_ = new turn_info(player_number_, replay_sender_);
+	turn_data_ = new turn_info(player_number_, replay_sender_,network_reader_);
 	turn_data_->host_transfer().attach_handler(this);
 }
 
@@ -563,14 +550,19 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
-	turn_info turn_data(player_number_, replay_sender_);
+	turn_info turn_data(player_number_, replay_sender_, network_reader_);
 
 	if (name == "ai_user_interact"){
 		playsingle_controller::handle_generic_event(name);
 		turn_data.send_data();
 	}
 	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
-		turn_data.sync_network();
+		turn_info::PROCESS_DATA_RESULT res = turn_data.sync_network();
+		assert(res == turn_info::PROCESS_CONTINUE || res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_FOUND_DEPENDENT);
+		if(res == turn_info::PROCESS_RESTART_TURN)
+		{
+			player_type_changed_ = true;
+		}
 	}
 	else if (name == "host_transfer"){
 		is_host_ = true;

@@ -692,7 +692,7 @@ static void show_oos_error_error_function(const std::string& message, bool /*hea
 	replay::process_error(message);
 }
 
-bool do_replay(int side_num)
+REPLAY_RETURN do_replay(int side_num)
 {
 	log_scope("do replay");
 
@@ -701,10 +701,10 @@ bool do_replay(int side_num)
 	}
 
 	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
-	return do_replay_handle(side_num, "");
+	return do_replay_handle(side_num);
 }
 
-bool do_replay_handle(int side_num, const std::string &do_untill)
+REPLAY_RETURN do_replay_handle(int side_num)
 {
 	
 	//team &current_team = (*resources::teams)[side_num - 1];
@@ -728,14 +728,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		//if there is nothing more in the records
 		if(cfg == NULL) {
 			//replayer.set_skip(false);
-			return false;
-		}
-
-		// We return if caller wants it for this tag
-		if (!do_untill.empty() && cfg->child(do_untill))
-		{
-			get_replay_source().revert_action();
-			return false;
+			return REPLAY_RETURN_AT_END;
 		}
 
 		config::all_children_itors ch_itors = cfg->all_children_range();
@@ -822,7 +815,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				verify(*resources::units, child);
 			}
 
-			return true;
+			return REPLAY_FOUND_END_TURN;
 		}
 		else if (const config &change = cfg->child("record_change_controller"))
 		{
@@ -888,7 +881,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			std::string child_name = cfg->all_children_range().first->key;
 			DBG_REPLAY << "got an dependent action name = " << child_name <<"\n";
 			get_replay_source().revert_action();
-			return false;
+			return REPLAY_FOUND_DEPENDENT;
 		}
 		else
 		{
@@ -973,7 +966,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		/*
 			there might be speak or similar commands in the replay before the user input.
 		*/
-		do_replay_handle(current_side, name);
+		do_replay_handle(current_side);
 
 		/*
 			these value might change due to player left/reassign during pull_remote_user_input
@@ -1005,7 +998,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			/* At least one of the decisions is ours, and it will be inserted
 			   into the replay. */
 			DBG_REPLAY << "MP synchronization: local choice\n";
-			config cfg = uch.query_user();
+			config cfg = uch.query_user(local_side);
 			
 			recorder.user_input(name, cfg, local_side);
 			retv[local_side]= cfg;
@@ -1071,10 +1064,11 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &name, const mp_sync::user_choice &uch,
 	std::set<int> sides)
 {	
-	//pass sides by copy becasue we need a copy.
-	bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
+	//pass sides by copy because we need a copy.
+	const bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
 	const int max_side  = static_cast<int>(resources::teams->size());
-
+	//we currently don't check for too early because luas sync choice doesn't necessarily show screen dialogs.
+	//It (currently) in the responsibility of the user of sync choice to not use dialogs during prestart events..
 	if(!is_synced)
 	{
 		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
@@ -1083,7 +1077,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	}
 
 	/*
-		for empty sides we want to use reandom choice instead.
+		for empty sides we want to use random choice instead.
 	*/
 	std::set<int> empty_sides;
 	BOOST_FOREACH(int side, sides)
@@ -1104,7 +1098,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	
 	BOOST_FOREACH(int side, empty_sides)
 	{
-		retv[side] = uch.random_choice();
+		retv[side] = uch.random_choice(side);
 	}
 	return retv;
 
@@ -1116,25 +1110,34 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_choice &uch,
 	int side)
 {
-	bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
-	bool is_mp_game = network::nconnections() != 0;
-	bool is_side_null_controlled;
+	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
+	const bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
+	const bool is_mp_game = network::nconnections() != 0;//Only used in debugging output below
 	const int max_side  = static_cast<int>(resources::teams->size());
-	int current_side = resources::controller->current_side();
-
+	const int current_side = resources::controller->current_side();
+	bool is_side_null_controlled;
+	
 	if(!is_synced)
 	{
-		//we got called from inside luas wesnoth.synchronize_choice or from a select event.
-		//This doesn't cause problems but someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice wich could be useful, 
+		//we got called from inside luas wesnoth.synchronize_choice or from a select event (or maybe a preload event?).
+		//This doesn't cause problems and someone could use it for example to use a [message][option] inside a wesnoth.synchronize_choice which could be useful, 
 		//so just give a warning.
 		WRN_REPLAY << "MP synchronization called during an unsynced context.";; 
-		return uch.query_user();
+		return uch.query_user(side);
 	}
-	//technicly we can use mp_sync in start/prestarte events, but the question is wether that makes sense 
-	//because it's unclear to decide on which side the function should be executed. 
-	//However, for advancements we can just decide on the side that owns the unit and that's in the responsibility of advance_unit_at.
+	if(is_too_early && uch.is_visible())
+	{
+		//We are in a prestart event or even earlier.
+		//Although we are able to sync them, we cannot use query_user,
+		//because we cannot (or shouldn't) put things on the screen inside a prestart event, this is true for SP and MP games.
+		//Quotation form event wiki: "For things displayed on-screen such as character dialog, use start instead"
+		return uch.random_choice(side);
+	}
+	//in start events it's unclear to decide on which side the function should be executed (default= side1 still). 
+	//But for advancements we can just decide on the side that owns the unit and that's in the responsibility of advance_unit_at.
 	//For [message][option] and luas sync_choice the scenario designer is responsible for that.
 	//For [get_global_variable] side is never null.
+	
 	/*
 		side = 0 should default to the currently active side per definition.
 	*/
@@ -1158,7 +1161,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	if (is_side_null_controlled)
 	{
 		DBG_REPLAY << "MP synchronization: side 1 being null-controlled in get_user_choice.\n";
-		//most likeley we are in a start event with an empty side 1 
+		//most likely we are in a start event with an empty side 1 
 		//but calling [set_global_variable] to an empty side might also cause this.
 		//i think in that case we should better use uch.random_choice(), 
 		//which could return something like config_of("invalid", true);

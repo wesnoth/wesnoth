@@ -27,7 +27,7 @@
 #include "util.hpp"
 #include "variable.hpp"
 
-
+#include <cassert>
 
 //TODO: remove LOG_PERSIST, ERR_PERSIST from persist_context.hpp to .cpp files.
 #define DBG_PERSIST LOG_STREAM(debug, log_persist)
@@ -41,15 +41,17 @@ struct persist_choice: mp_sync::user_choice {
 		, var_name(name)
 		, side(side_num) {
 	}
-	virtual config query_user() const {
+	virtual config query_user(int side_for) const {
+		assert(side == side_for);
 		config ret;
 		ret["side"] = side;
 		ret.add_child("variables",ctx.get_var(var_name));
 		return ret;
 	}
-	virtual config random_choice() const {
+	virtual config random_choice(int /*side_for*/) const {
 		return config();
 	}
+	virtual bool is_visible() const { return false; }
 };
 
 static void get_global_variable(persist_context &ctx, const vconfig &pcfg)

@@ -221,7 +221,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	*/
 	while(true){
 
-		do_replay_handle(current_side, name);
+		do_replay_handle(current_side);
 		// the current_side on the server is a lie because it can happen on one client we are already executing side 2 
 		bool is_local_side = (*resources::teams)[side-1].is_local();
 		bool is_replay_end = get_replay_source().at_end();
@@ -231,7 +231,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			/* The decision is ours, and it will be inserted
 			into the replay. */
 			DBG_REPLAY << "MP synchronization: local server choice\n";
-			config cfg = uch.query_user();
+			config cfg = uch.query_user(-1);
 			//-1 for "server" todo: change that.
 			recorder.user_input(name, cfg, -1);
 			return cfg;
@@ -264,7 +264,7 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			/* The decision has already been made, and must
 			be extracted from the replay. */
 			DBG_REPLAY << "MP synchronization: replay server choice\n";
-			do_replay_handle(resources::controller->current_side(), name);
+			do_replay_handle(resources::controller->current_side());
 			const config *action = get_replay_source().get_next_action();
 			if (!action) 
 			{
@@ -287,19 +287,19 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 }
 
 set_scontext_synced::set_scontext_synced(const std::string& commandname)
-	: new_rng_(synced_context::get_rng_for(commandname)), new_checkup_(recorder.get_last_real_command().child_or_add("checkup"))
+	: new_rng_(synced_context::get_rng_for(commandname)), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced()
-	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup"))
+	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced(int number)
-	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number)))
+	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
 {
 	init();
 }
@@ -378,7 +378,7 @@ random_seed_choice::~random_seed_choice()
 
 }
 
-config random_seed_choice::query_user() const
+config random_seed_choice::query_user(int /*side*/) const
 {
 	//getting here means we are in a sp game
 
@@ -387,7 +387,7 @@ config random_seed_choice::query_user() const
 	retv["new_seed"] = rand();
 	return retv;
 }
-config random_seed_choice::random_choice() const
+config random_seed_choice::random_choice(int /*side*/) const
 {
 	//it obviously doesn't make sense to call the uninitialized random generator to generatoe a seed ofr the same random generator;
 	//this shoud never happen

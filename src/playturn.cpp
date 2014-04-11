@@ -38,38 +38,43 @@
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
-turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
+turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender,playturn_network_adapter &network_reader) :
 	team_num_(team_num),
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"),
-	replay_()
+	network_reader_(network_reader)
 {
 	/**
 	 * We do network sync so [init_side] is transferred to network hosts
+	 * TODO: i think it is unintiutive that creating this object automatictly sends data over the network.
+	 * For example it means that playmp_controller::handle_generic_event("ai_user_interact") casues send_data, 
+	 * Idk whether that is intended, but an explicit call would be better.
 	 */
 	if(network::nconnections() > 0)
 		send_data();
 }
 
-turn_info::~turn_info(){
+turn_info::~turn_info()
+{
 }
 
-void turn_info::sync_network()
+turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 {
+	//there should be nothing left on the replay and we should get turn_info::PROCESS_CONTINUE back.
+	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay(team_num_));
 	if(network::nconnections() > 0) {
 
 		//receive data first, and then send data. When we sent the end of
 		//the AI's turn, we don't want there to be any chance where we
 		//could get data back pertaining to the next turn.
 		config cfg;
-		while(network::connection res = network::receive_data(cfg)) {
-			std::deque<config> backlog;
-			process_network_data(cfg,res,backlog,false);
+		while( (retv == turn_info::PROCESS_CONTINUE) &&  network_reader_.read(cfg)) {
+			retv = process_network_data(cfg,false);
 			cfg.clear();
 		}
-
 		send_data();
 	}
+	return retv;
 }
 
 void turn_info::send_data()
@@ -81,33 +86,21 @@ void turn_info::send_data()
 	}
 }
 
-void turn_info::handle_turn(
-	bool& turn_end,
+turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(
 	const config& t,
-	const bool skip_replay,
-	std::deque<config>& backlog)
+	const bool skip_replay)
 {
-	if(turn_end == false) {
-		/** @todo FIXME: Check what commands we execute when it's our turn! */
-		//TODO: can we remove replay_ ? i think yes.
-		replay_.append(t);
-		replay_.set_skip(skip_replay);
+	//t can contain a [command] or a [upload_log]
+	assert(t.all_children_count() == 1);
+	/** @todo FIXME: Check what commands we execute when it's our turn! */
 
-		bool was_skipping = recorder.is_skipping();
-		recorder.set_skip(skip_replay);
-		//turn_end = do_replay(team_num_, &replay_);
-		//note, that this cunfion might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
-		recorder.add_config(t, replay::MARK_AS_SENT);
-		turn_end = do_replay(team_num_);
-		recorder.set_skip(was_skipping);
-		
-	} else {
-
-		//this turn has finished, so push the remaining moves
-		//into the backlog
-		backlog.push_back(config());
-		backlog.back().add_child("turn", t);
-	}
+	bool was_skipping = recorder.is_skipping();
+	recorder.set_skip(skip_replay);
+	//note, that this function might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
+	recorder.add_config(t, replay::MARK_AS_SENT);
+	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay(team_num_));
+	recorder.set_skip(was_skipping);
+	return retv;
 }
 
 void turn_info::do_save()
@@ -118,56 +111,69 @@ void turn_info::do_save()
 	}
 }
 
-turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg,
-		network::connection /*from*/, std::deque<config>& backlog, bool skip_replay)
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader(bool skip_replay)
+{
+	config cfg;
+	while(this->network_reader_.read(cfg))
+	{
+		PROCESS_DATA_RESULT res = process_network_data(cfg, skip_replay);
+		if(res != PROCESS_CONTINUE)
+		{
+			return res;
+		}
+	}
+	return PROCESS_CONTINUE;
+}
+
+turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, bool skip_replay)
 {
 	// we cannot be connected to multiple peers anymore because 
 	// the simple wesnothserver implementation in wesnoth was removed years ago. 
 	assert(network::nconnections() <= 1);
-	
+	assert(cfg.all_children_count() == 1);
+	assert(cfg.attribute_range().first == cfg.attribute_range().second);
+	if(!recorder.at_end())
+	{
+		ERR_NW << "processing network data while still having data on the replay.\n";
+	}
+
 	if (const config &msg = cfg.child("message"))
 	{
 		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],
 				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
-
-	if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
+	else if (const config &msg = cfg.child("whisper") /*&& is_observer()*/)
 	{
 		resources::screen->add_chat_message(time(NULL), "whisper: " + msg["sender"].str(), 0,
 				msg["message"], events::chat_handler::MESSAGE_PRIVATE,
 				preferences::message_bell());
 	}
-
-	BOOST_FOREACH(const config &ob, cfg.child_range("observer")) {
+	else if (const config &ob = cfg.child("observer") )
+	{
 		resources::screen->add_observer(ob["name"]);
 	}
-
-	BOOST_FOREACH(const config &ob, cfg.child_range("observer_quit")) {
+	else if (const config &ob = cfg.child("observer_quit"))
+	{
 		resources::screen->remove_observer(ob["name"]);
 	}
-
-	if (cfg.child("leave_game")) {
+	else if (cfg.child("leave_game")) {
 		throw network::error("");
 	}
-
-	bool turn_end = false;
-
-	config::const_child_itors turns = cfg.child_range("turn");
-
-	const config& change = cfg.child_or_empty("change_controller");
-	const std::string& side_drop = cfg["side_drop"].str();
-
-	BOOST_FOREACH(const config &t, turns)
+	else if (const config &turn = cfg.child("turn"))
 	{
-		recorder.add_config(t, replay::MARK_AS_SENT);
+		return handle_turn(turn, skip_replay);
 	}
-	handle_turn(turn_end, config(), skip_replay, backlog);
-
-	resources::whiteboard->process_network_data(cfg);
-
-	if (!change.empty())
+	else if (cfg.has_child("whiteboard"))
 	{
+		resources::whiteboard->process_network_data(cfg);
+	}
+	else if (const config &change = cfg.child("change_controller"))
+	{
+		if(change.empty())
+		{
+			return PROCESS_CONTINUE;
+		}
 		//don't use lexical_cast_default it's "safer" to end on error
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = static_cast<size_t>(side-1);
@@ -221,10 +227,12 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
 		}
 	}
-
-	//if a side has dropped out of the game.
-	if(!side_drop.empty()) {
-		const std::string controller = cfg["controller"];
+	
+	else if (const config &side_drop_c = cfg.child("side_drop"))
+	{
+		const std::string& side_drop = side_drop_c["side_num"].str();
+		const std::string controller = side_drop_c["controller"];
+		//if a side has dropped out of the game.
 		int side = atoi(side_drop.c_str());
 		const size_t side_index = side-1;
 
@@ -364,7 +372,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	// The host has ended linger mode in a campaign -> enable the "End scenario" button
 	// and tell we did get the notification.
-	if (cfg.child("notify_next_scenario")) {
+	else if (cfg.child("notify_next_scenario")) {
 		gui::button* btn_end = resources::screen->find_action_button("button-endturn");
 		if(btn_end) {
 			btn_end->enable(true);
@@ -373,13 +381,17 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 
 	//If this client becomes the new host, notify the play_controller object about it
-	if (const config &cfg_host_transfer = cfg.child("host_transfer")){
+	else if (const config &cfg_host_transfer = cfg.child("host_transfer")){
 		if (cfg_host_transfer["value"] == "1") {
 			host_transfer_.notify_observers();
 		}
 	}
+	else
+	{
+		ERR_NW << "found unknown command:\n" << cfg.debug() << "\n";
+	}
 
-	return turn_end ? PROCESS_END_TURN : PROCESS_CONTINUE;
+	return PROCESS_CONTINUE;
 }
 
 void turn_info::change_controller(const std::string& side, const std::string& controller)
@@ -400,6 +412,22 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 	change["side"] = side;
 	change["player"] = player;
 	network::send_data(cfg, 0);
+}
+
+turn_info::PROCESS_DATA_RESULT turn_info::replay_to_process_data_result(REPLAY_RETURN replayreturn)
+{
+	switch(replayreturn)
+	{
+	case REPLAY_RETURN_AT_END:
+		return PROCESS_CONTINUE;
+	case REPLAY_FOUND_DEPENDENT:
+		return PROCESS_FOUND_DEPENDENT;
+	case REPLAY_FOUND_END_TURN:
+		return PROCESS_END_TURN;
+	default:
+		assert(false);
+		throw "found invalid REPLAY_RETURN";
+	}
 }
 
 #if 0

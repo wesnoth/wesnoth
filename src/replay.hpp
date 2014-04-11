@@ -154,11 +154,17 @@ replay& get_replay_source();
 
 extern replay recorder;
 
+enum REPLAY_RETURN 
+{
+	REPLAY_RETURN_AT_END,
+	REPLAY_FOUND_DEPENDENT,
+	REPLAY_FOUND_END_TURN
+};
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
-bool do_replay(int side_num);
+REPLAY_RETURN do_replay(int side_num);
 
-bool do_replay_handle(int side_num, const std::string &do_untill);
+REPLAY_RETURN do_replay_handle(int side_num);
 
 class replay_network_sender
 {
@@ -182,8 +188,11 @@ namespace mp_sync {
 struct user_choice
 {
 	virtual ~user_choice() {}
-	virtual config query_user() const = 0;
-	virtual config random_choice() const = 0;
+	virtual config query_user(int side) const = 0;
+	virtual config random_choice(int side) const = 0;
+	///whether the choice is visible for the user like an advacement choice
+	///a non-visible choice is for example get_global_variable
+	virtual bool is_visible() const { return true; }
 };
 
 /**

@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
+#include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "random_new_deterministic.hpp"
 #include "replay_controller.hpp"
@@ -444,7 +445,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			// if have reached the end we don't want to execute finish_side_turn and finish_turn
 			// becasue we might not have enough data to execute them (like advancements during turn_end for example)
 			// !has_end_turn == we reached the end of teh replay without finding and end turn tag.
-			has_end_turn = do_replay(player_number_);
+			has_end_turn = do_replay(player_number_) == REPLAY_FOUND_END_TURN;
 			if(!has_end_turn)
 			{
 				return;
@@ -548,16 +549,13 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		return true;
 
 	//commands we only can do before the end of the replay
-	case hotkey::HOTKEY_REPLAY_PLAY:
 	case hotkey::HOTKEY_REPLAY_STOP:
+		return !recorder.at_end();
+	case hotkey::HOTKEY_REPLAY_PLAY:
 	case hotkey::HOTKEY_REPLAY_NEXT_TURN:
 	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
-		if(recorder.at_end()) {
-			return false;
-		} else {
-			return true;
-		}
-
+		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
+		return (events::commands_disabled <= 1 ) && !recorder.at_end();
 	default:
 		return result;
 	}
