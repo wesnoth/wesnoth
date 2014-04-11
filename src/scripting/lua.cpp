@@ -2677,6 +2677,10 @@ namespace {
 		{
 			return config();
 		}
+		//Although luas sync_choice can show a dialog, (and will in most cases)
+		//we return false to enable other possible things that do not contain UI things.
+		//it's in the responsbility of the umc dev to not show dialogs durign prestart events.
+		virtual bool is_visible() const { return false; }
 	};
 }//unnamed namespace for lua_synchronize
 
