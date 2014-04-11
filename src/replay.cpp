@@ -453,7 +453,8 @@ config& replay::get_last_real_command()
 	for (int cmd_num = pos_ - 1; cmd_num >= 0; --cmd_num)
 	{
 		config &c = command(cmd_num);
-		if (c["dependent"].to_bool(false) || !c["undo"].to_bool(true) || c["async"].to_bool(false))
+		const config &cc = c;
+		if (cc["dependent"].to_bool(false) || !cc["undo"].to_bool(true) || cc["async"].to_bool(false))
 		{
 			continue;
 		}
@@ -488,12 +489,13 @@ void replay::undo_cut(config& dst)
 		//"async"=yes means rename_unit
 		//"dependent"=true means user input or unit_checksum_check
 		config &c = command(cmd);
-		if (c["dependent"].to_bool(false))
+		const config &cc = c;
+		if (cc["dependent"].to_bool(false))
 		{
 			continue;
 		}
-		if (c["undo"] != "no" && c["async"] != "yes" && c["sent"] != "yes") break;
-		if (c["async"] == "yes") {
+		if (cc["undo"] != "no" && cc["async"] != "yes" && cc["sent"] != "yes") break;
+		if (cc["async"] == "yes") {
 			async_cmd ac = { &c, cmd };
 			async_cmds.push_back(ac);
 		}
