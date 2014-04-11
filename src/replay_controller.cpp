@@ -21,6 +21,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map_label.hpp"
+#include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "random_new_deterministic.hpp"
 #include "replay_controller.hpp"
@@ -548,16 +549,13 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		return true;
 
 	//commands we only can do before the end of the replay
-	case hotkey::HOTKEY_REPLAY_PLAY:
 	case hotkey::HOTKEY_REPLAY_STOP:
+		return !recorder.at_end();
+	case hotkey::HOTKEY_REPLAY_PLAY:
 	case hotkey::HOTKEY_REPLAY_NEXT_TURN:
 	case hotkey::HOTKEY_REPLAY_NEXT_SIDE:
-		if(recorder.at_end()) {
-			return false;
-		} else {
-			return true;
-		}
-
+		//we have one events_disabler when starting the replay_controller and a second when entering the synced context.
+		return (events::commands_disabled <= 1 ) && !recorder.at_end();
 	default:
 		return result;
 	}
