@@ -4,8 +4,6 @@ local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
 local MAISD = wesnoth.require "ai/micro_ais/micro_ai_self_data.lua"
 
-local ca_bottleneck_move = {}
-
 local function bottleneck_is_my_territory(map, enemy_map)
     -- Create map that contains 'true' for all hexes that are
     -- on the AI's side of the map
@@ -211,6 +209,8 @@ local function bottleneck_move_out_of_way(unit, self)
 
    if best_reach > -1 then return best_hex end
 end
+
+local ca_bottleneck_move = {}
 
 function ca_bottleneck_move:evaluation(ai, cfg, self)
     -- Check whether the side leader should be included or not

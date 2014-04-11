@@ -1,8 +1,8 @@
 local AH = wesnoth.require("ai/lua/ai_helper.lua")
 
-local ca_recruit_random = {}
-
 local recruit
+
+local ca_recruit_random = {}
 
 function ca_recruit_random:evaluation(ai, cfg)
     -- Random recruiting from all the units the side has
