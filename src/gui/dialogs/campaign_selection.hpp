@@ -26,7 +26,7 @@ class tcampaign_selection : public tdialog
 {
 public:
 	explicit tcampaign_selection(const std::vector<config>& campaigns)
-		: campaigns_(campaigns), choice_(-1)
+		: campaigns_(campaigns), choice_(-1), deterministic_(false)
 
 	{
 	}
