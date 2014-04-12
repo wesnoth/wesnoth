@@ -835,6 +835,7 @@
 		EC48D75B17F318DA00DE80BF /* multiplayer_connect_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75417F318DA00DE80BF /* multiplayer_connect_engine.cpp */; };
 		EC48D75C17F318DA00DE80BF /* multiplayer_create_engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D75617F318DA00DE80BF /* multiplayer_create_engine.cpp */; };
 		EC4D40AF17FCCF14002E7C81 /* strftime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC4D40AD17FCCF14002E7C81 /* strftime.cpp */; };
+		EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */; };
 		EC5C243B18EF07B4001FA499 /* libbz2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */; };
 		EC5C243C18EF07B4001FA499 /* libexpat.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242318EF07B4001FA499 /* libexpat.1.dylib */; };
 		EC5C243D18EF07B4001FA499 /* libffi.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EC5C242418EF07B4001FA499 /* libffi.6.dylib */; };
@@ -2023,6 +2024,8 @@
 		EC48D75717F318DA00DE80BF /* multiplayer_create_engine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = multiplayer_create_engine.hpp; sourceTree = "<group>"; };
 		EC4D40AD17FCCF14002E7C81 /* strftime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strftime.cpp; sourceTree = "<group>"; };
 		EC4D40AE17FCCF14002E7C81 /* strftime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = strftime.hpp; sourceTree = "<group>"; };
+		EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = playturn_network_adapter.cpp; sourceTree = "<group>"; };
+		EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = playturn_network_adapter.hpp; sourceTree = "<group>"; };
 		EC5C242218EF07B4001FA499 /* libbz2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbz2.1.0.dylib; path = lib/libbz2.1.0.dylib; sourceTree = "<group>"; };
 		EC5C242318EF07B4001FA499 /* libexpat.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexpat.1.dylib; path = lib/libexpat.1.dylib; sourceTree = "<group>"; };
 		EC5C242418EF07B4001FA499 /* libffi.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libffi.6.dylib; path = lib/libffi.6.dylib; sourceTree = "<group>"; };
@@ -2412,6 +2415,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC51DB7618F8BFA4004621D9 /* playturn_network_adapter.cpp */,
+				EC51DB7718F8BFA4004621D9 /* playturn_network_adapter.hpp */,
 				EC84246F18F30DB700FC1EEF /* exception.cpp */,
 				EC84247018F30DB700FC1EEF /* exception.hpp */,
 				EC84245518F30D9000FC1EEF /* config_assign.cpp */,
@@ -4351,6 +4356,7 @@
 				B508D1FF100155F300B12852 /* scroll_label.cpp in Sources */,
 				B508D200100155F300B12852 /* scrollbar_panel.cpp in Sources */,
 				B508D201100155F300B12852 /* slider.cpp in Sources */,
+				EC51DB7818F8BFA4004621D9 /* playturn_network_adapter.cpp in Sources */,
 				B508D202100155F300B12852 /* stacked_widget.cpp in Sources */,
 				B508D203100155F300B12852 /* toggle_button.cpp in Sources */,
 				EC89A1441879D17D00A3B0B1 /* ltablib.cpp in Sources */,
