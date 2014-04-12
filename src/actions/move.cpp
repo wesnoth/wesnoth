@@ -1077,7 +1077,7 @@ namespace { // Private helpers for move_unit()
 			}
 
 			if ( !mover_valid  ||  undo_blocked()  ||
-			    (resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) )
+				(resources::whiteboard->is_active() && resources::whiteboard->should_clear_undo()) || !synced_context::can_undo())
 			{
 				undo_stack->clear();
 			}

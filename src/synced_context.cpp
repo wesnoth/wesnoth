@@ -111,6 +111,14 @@ void  synced_context::reset_is_simultaneously()
 	is_simultaneously_ = false;
 }
 
+bool synced_context::can_undo()
+{
+	//this method should only works in a synced context.
+	assert(get_syced_state() == SYNCED);
+	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
+	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
+}
+
 void synced_context::pull_remote_user_input()
 {
 	//we sended data over the network.
