@@ -86,7 +86,7 @@ bool playturn_network_adapter::read(config& dst)
 		config& childchild = child.add_child(itor->key);
 		childchild.swap(childchild_old);
 		
-		next_command_num_++;
+		++next_command_num_;
 		if(next_->cfg.all_children_count() == next_command_num_)
 		{
 			next_command_num_ = 0;
