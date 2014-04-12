@@ -90,7 +90,7 @@ bool playturn_network_adapter::read(config& dst)
 		if(next_->cfg.all_children_count() == next_command_num_)
 		{
 			next_command_num_ = 0;
-			next_++;
+			++next_;
 		}
 		return true;
 	}
