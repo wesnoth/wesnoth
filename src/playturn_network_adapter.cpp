@@ -97,7 +97,7 @@ bool playturn_network_adapter::read(config& dst)
 	else
 	{
 		child.swap(child_old);
-		next_++;
+		++next_;
 		return true;
 	}
 }
