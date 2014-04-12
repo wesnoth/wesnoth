@@ -53,10 +53,6 @@ public:
 		TODO: move_unit currently ignores when the unit moves further than it can, 
 			it would be good to give an oos in this case.
 		
-		TODO: undos are currently recorded AFTER the action takes place, 
-			that means you cannot disallow undoing an action during it's execution by calling undo_stack->clear();
-			it would make things easier if that was possible.
-		
 		
 		@param save_in_replay whether data should be saved in replay.
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
@@ -109,6 +105,10 @@ public:
 		sets is_simultaneously_ = false, called when entering the synced context.
 	*/
 	static void reset_is_simultaneously();
+	/*
+		whether there were recently no methods called that prevent undoing.
+	*/
+	static bool can_undo();
 private:
 	/*
 		similar to get_user_choice but asks the server instead of a user.

@@ -35,7 +35,6 @@
 #include "../pathfind/pathfind.hpp"
 #include "../random.hpp"
 #include "../replay.hpp"
-#include "../random_new.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
@@ -942,7 +941,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
 		
-		if ( mutated  || (random_new::generator->get_random_calls() != 0)) {
+		if ( mutated  || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -985,7 +984,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from);
-		if ( mutated || (random_new::generator->get_random_calls() != 0)) {
+		if ( mutated || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
 	}
