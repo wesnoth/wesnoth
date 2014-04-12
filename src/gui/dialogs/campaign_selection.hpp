@@ -62,7 +62,7 @@ private:
 	/** The chosen campaign. */
 	int choice_;
 
-	/** whether zhe player checked teh "Deterministic" checkbox. */
+	/** whether the player checked the "Deterministic" checkbox. */
 	bool deterministic_;
 };
 
