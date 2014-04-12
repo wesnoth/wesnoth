@@ -217,7 +217,6 @@ private:
 	std::string difficulty_; /**< The difficulty level the game is being played on. */
 	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
-	bool is_determisic_mode_;
 };
 
 //meta information of the game
