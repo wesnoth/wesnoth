@@ -35,6 +35,7 @@
 #include "../pathfind/pathfind.hpp"
 #include "../random.hpp"
 #include "../replay.hpp"
+#include "../random_new.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
@@ -931,7 +932,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 
 
 	// Place the recruit.
-	/*bool mutated = */place_recruit(new_unit, loc, from, u_type.cost(), false, show);
+	bool mutated = place_recruit(new_unit, loc, from, u_type.cost(), false, show);
 	statistics::recruit_unit(new_unit);
 
 	// To speed things a bit, don't bother with the undo stack during
@@ -941,17 +942,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
 		
-		// undoing unit recruits currently ends in oos in most cases
-		// because the random generator is called during unit creation for names.
-		// This is not impossible to fix, ofc we could just enable it for nameless units 
-		// but i'm not 100% sure wether units with no names call the random generator for random names or not.
-		// also names normaly don't have any influence on the game (same for genders maybe?)
-		// so there is no reason not to be able to undo it from a players point of view.
-		// we also cannot store the random state in undo_stack->add_recruit, because the unit creation happens before that.
-		
-		//if ( mutated  ||  u_type.genders().size() > 1  ||
-		//     new_unit.type().has_random_traits() ) {
-		if ( true ) {
+		if ( mutated  || (random_new::generator->get_random_calls() != 0)) {
 			resources::undo_stack->clear();
 		}
 	}
@@ -1003,7 +994,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	// (Undo stack processing is also suppressed when redoing a recall.)
 	if ( use_undo ) {
 		resources::undo_stack->add_recall(recall, loc, from);
-		if ( mutated ) {
+		if ( mutated || (random_new::generator->get_random_calls() != 0)) {
 			resources::undo_stack->clear();
 		}
 	}
