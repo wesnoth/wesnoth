@@ -67,8 +67,9 @@ static markov_prefix_map markov_prefixes(const std::vector<std::string>& items, 
 static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	size_t chain_size, size_t max_len)
 {
-	if(chain_size == 0)
+	if(prefixes.empty() || chain_size == 0) {
 		return ucs4::string();
+	}
 
 	ucs4::string prefix, res;
 

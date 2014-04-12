@@ -83,6 +83,7 @@ Version 1.13.0-dev:
    * Fix bug 21459 by making dropped sides default to idle.
    * Fix bug 21882 by introducing "fight_on_without_leader" boolean attribute
      of [side] tags and refactoring check_victory to use this.
+   * Changed: Don't use the random generator for units with no names.
 
 Version 1.11.11:
  * Add-ons server:
