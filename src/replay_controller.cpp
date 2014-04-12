@@ -435,7 +435,6 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 
 	try{
 		// If a side is empty skip over it.
-		bool has_end_turn = true;
 		if (!current_team().is_empty()) {
 			statistics::reset_turn_stats(current_team().save_id());
 
@@ -444,10 +443,8 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 			DBG_REPLAY << "doing replay " << player_number_ << "\n";
 			// if have reached the end we don't want to execute finish_side_turn and finish_turn
 			// becasue we might not have enough data to execute them (like advancements during turn_end for example)
-			// !has_end_turn == we reached the end of teh replay without finding and end turn tag.
-			has_end_turn = do_replay(player_number_) == REPLAY_FOUND_END_TURN;
-			if(!has_end_turn)
-			{
+			if(do_replay(player_number_) != REPLAY_FOUND_END_TURN) {
+				// We reached the end of teh replay without finding and end turn tag.
 				return;
 			}
 			finish_side_turn();

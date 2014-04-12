@@ -60,11 +60,8 @@ map_labels::~map_labels()
 map_labels& map_labels::operator=(const map_labels& other)
 {
 	if(this != &other) {
-		team_ = other.team_;
-
-		config cfg;
-		other.write(cfg);
-		read(cfg);
+		this->~map_labels();
+		new (this) map_labels(other);
 	}
 	return *this;
 }
