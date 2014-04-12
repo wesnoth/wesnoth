@@ -30,8 +30,6 @@ class synced_context
 {
 public:
 	enum syced_state {UNSYNCED, SYNCED, LOCAL_CHOICE};
-
-	typedef boost::function1<void, config&> ftype;
 	/**
 		
 		Sets the context to 'synced', initialises random context, and calls the given function.
