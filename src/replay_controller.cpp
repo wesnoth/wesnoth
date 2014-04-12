@@ -538,7 +538,6 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	switch(command) {
 
 	//commands we can always do
-	case hotkey::HOTKEY_REPLAY_RESET:
 	case hotkey::HOTKEY_REPLAY_SHOW_EVERYTHING:
 	case hotkey::HOTKEY_REPLAY_SHOW_EACH:
 	case hotkey::HOTKEY_REPLAY_SHOW_TEAM1:
@@ -547,6 +546,9 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	case hotkey::HOTKEY_SAVE_REPLAY:
 	case hotkey::HOTKEY_CHAT_LOG:
 		return true;
+
+	case hotkey::HOTKEY_REPLAY_RESET:
+		return events::commands_disabled <= 1;
 
 	//commands we only can do before the end of the replay
 	case hotkey::HOTKEY_REPLAY_STOP:
