@@ -80,7 +80,7 @@ bool playturn_network_adapter::read(config& dst)
 		assert(next_->cfg.all_children_count() > next_command_num_);
 		config::all_children_iterator itor = child_old.ordered_begin();
 		//TODO: implement operator + (all_children_iterator, int ) properly
-		for(unsigned int i = 0; i < next_command_num_; i++) {itor++;}
+		std::advance(itor, next_command_num_);
 		//TODO: implement a non const version of ordered children
 		config& childchild_old = const_cast<config&>(itor->cfg);
 		config& childchild = child.add_child(itor->key);
