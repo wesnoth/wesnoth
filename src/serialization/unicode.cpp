@@ -276,9 +276,9 @@ size_t index(const utf8::string& str, const size_t index)
 {
 	// chr counts characters, i is the codepoint index
 	// remark: several functions rely on the fallback to str.length()
-	unsigned int chr, i = 0, len = str.size();
+	unsigned int i = 0, len = str.size();
 	try {
-		for (chr=0; chr<index && i<len; ++chr) {
+		for (unsigned int chr=0; chr<index && i<len; ++chr) {
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(invalid_utf8_exception&) {
