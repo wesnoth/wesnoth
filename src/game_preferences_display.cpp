@@ -308,7 +308,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 
 	const std::map<std::string, t_string>& colors = game_config::team_rgb_name;
 	std::map<std::string, t_string>::const_iterator colors_it;
-	for (colors_it = colors.begin(); colors_it != colors.end(); colors_it++) {
+	for (colors_it = colors.begin(); colors_it != colors.end(); ++colors_it) {
 
 		const std::string& color_id = colors_it->first;
 		const t_string& color_name  = colors_it->second;
