@@ -119,9 +119,8 @@ static ucs4::string markov_generate_name(const markov_prefix_map& prefixes,
 	// markov prefix map. If no valid ending is found, use the
 	// originally generated name.
 	ucs4::string originalRes = res;
-	int prefixLen;
 	while(!res.empty()) {
-		prefixLen = chain_size < res.size() ? chain_size : res.size();
+		const int prefixLen = chain_size < res.size() ? chain_size : res.size();
 		prefix = ucs4::string(res.end() - prefixLen, res.end());
 
 		const markov_prefix_map::const_iterator i = prefixes.find(prefix);
