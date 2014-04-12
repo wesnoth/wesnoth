@@ -382,9 +382,12 @@ void game::update_side_data() {
 					side_controllers_[side_num] = "ai"; //on server this field should only contain "ai" for ais. (there are no ais local to server)
 					sides_[side_num] = owner_;
 					side_found = true;					
+				} else {
+					// "null"
+					side_controllers_[side_num] = (**side)["controller"].to_string();
 				}
 			} else {
-				// "null", "reserved"
+				// "reserved"
 				side_controllers_[side_num] = (**side)["controller"].to_string();
 			}
 		}
