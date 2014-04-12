@@ -1693,7 +1693,7 @@ public:
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;
 					const std::string& name = info.name();
-					const std::string id = info.id();
+					const std::string& id = info.id();
 					const int moves = movement_type.movement_cost(terrain);
 					const int views = movement_type.vision_cost(terrain);
 					const int jams  = movement_type.jamming_cost(terrain);
