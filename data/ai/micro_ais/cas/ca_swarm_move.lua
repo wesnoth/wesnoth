@@ -5,7 +5,7 @@ local ca_swarm_move = {}
 
 function ca_swarm_move:evaluation(ai, cfg)
     local units = wesnoth.get_units { side = wesnoth.current.side }
-    for i,u in ipairs(units) do
+    for _,u in ipairs(units) do
         if (u.moves > 0) then return cfg.ca_score end
     end
 
@@ -19,7 +19,7 @@ function ca_swarm_move:execution(ai, cfg)
     -- If no close enemies, swarm will move semi-randomly, staying close together, but away from enemies
     local all_units = wesnoth.get_units { side = wesnoth.current.side }
     local units, units_no_moves = {}, {}
-    for i,u in ipairs(all_units) do
+    for _,u in ipairs(all_units) do
         if (u.moves > 0) then
             table.insert(units, u)
         else
@@ -28,11 +28,10 @@ function ca_swarm_move:execution(ai, cfg)
     end
 
     local enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
+        { "filter_side", { { "enemy_of", {side = wesnoth.current.side } } } }
     }
-    --print('#units, #units_no_moves, #enemies', #units, #units_no_moves, #enemies)
 
-    -- pick one unit at random
+    -- Pick one unit at random, swarm does not move systematically
     local unit = units[math.random(#units)]
 
     -- Find best place for that unit to move to
@@ -41,7 +40,7 @@ function ca_swarm_move:execution(ai, cfg)
 
         -- Only units within 'vision_distance' count for rejoining
         local close_units_no_moves = {}
-        for i,u in ipairs(units_no_moves) do
+        for _,u in ipairs(units_no_moves) do
             if (H.distance_between(unit.x, unit.y, u.x, u.y) <= vision_distance) then
                 table.insert(close_units_no_moves, u)
             end
@@ -50,16 +49,15 @@ function ca_swarm_move:execution(ai, cfg)
         -- If all units on the side have moves left, simply go to a hex far away
         if (not close_units_no_moves[1]) then
             rating = rating + H.distance_between(x, y, unit.x, unit.y)
-        else  -- otherwise, minimize distance from units that have already moved
-            for i,u in ipairs(close_units_no_moves) do
+        else  -- Otherwise, minimize distance from units that have already moved
+            for _,u in ipairs(close_units_no_moves) do
                 rating = rating - H.distance_between(x, y, u.x, u.y)
             end
         end
 
         -- We also try to stay out of attack range of any enemy
-        for i,e in ipairs(enemies) do
+        for _,e in ipairs(enemies) do
             local dist = H.distance_between(x, y, e.x, e.y)
-            -- If enemy is within attack range, avoid those hexes
             if (dist < enemy_distance) then
                 rating = rating - (enemy_distance - dist) * 10.
             end
