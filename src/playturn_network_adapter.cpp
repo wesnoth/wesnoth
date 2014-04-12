@@ -48,7 +48,7 @@ void playturn_network_adapter::read_from_network()
 
 bool playturn_network_adapter::is_at_end()
 {
-	assert(data_.size() > 0);
+	assert(!data_.empty());
 	return this->next_ == data_.back().ordered_end();
 }
 
