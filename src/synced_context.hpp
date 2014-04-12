@@ -46,12 +46,6 @@ public:
 		redoing does normaly not take place in a synced context, because we saved the dependent=true replaycommands in the replaystack data. 
 			also there are no events of similar fired when redoing an action (in most cases).
 		
-		TODO: implement the optional "Deterministic Mode" for MP to lower network traffic.
-		
-		TODO: move_unit currently ignores when the unit moves further than it can, 
-			it would be good to give an oos in this case.
-		
-		
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
 		@param store_in_replay only true if called by do_replay_handle
 		@param error_handler an error handler for the case that data contains invalid data.
