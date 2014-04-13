@@ -6,6 +6,7 @@ def setup_cross_compile(env):
         env["PLATFORM"] = "win32"
         env["PROGSUFFIX"] = ".exe"
         env.Tool("mingw")
+        env.Append(LINKFLAGS = ["-static-libgcc", "-static-libstdc++"])
     else:
         env.Tool("default")
 
