@@ -87,7 +87,7 @@ public:
 	/*
 		returns a rng_deterministic if in determinsic mode otherwise a rng_synced.
 	*/
-	static boost::shared_ptr<random_new::rng> get_rng_for(const std::string& commandname);
+	static boost::shared_ptr<random_new::rng> get_rng_for_action();
 	/*
 		returns is_simultaneously_
 	*/
@@ -128,7 +128,6 @@ private:
 class set_scontext_synced
 {
 public:
-	set_scontext_synced(const std::string& commanname);
 	set_scontext_synced();
 	/*
 		use this if you have multiple synced_context but only one replay entry.

@@ -44,7 +44,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 		use this after recorder.add_synced_command
 		because set_scontext_synced sets the checkup to the last added command
 	*/
-	set_scontext_synced sco(commandname);
+	set_scontext_synced sco;
 	synced_command::map::iterator it = synced_command::registry().find(commandname);
 	if(it == synced_command::registry().end())
 	{
@@ -156,7 +156,7 @@ void synced_context::pull_remote_user_input()
 }
 
 
-boost::shared_ptr<random_new::rng> synced_context::get_rng_for(const std::string& commandname)
+boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 {
 	/*
 		i copied the code for "deterministic_mode" from the code for "difficulty".
@@ -169,21 +169,6 @@ boost::shared_ptr<random_new::rng> synced_context::get_rng_for(const std::string
 	if(mode == "deterministic")
 	{
 		return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
-	}
-	else if (mode == "only_attacks")
-	{
-		/*
-			this is how is was before, it does make sense because random calculation in non attack actions 
-			might be not important enough to pay the lag you get with asking the server for a new sed.
-		*/
-		if(commandname == "attack")
-		{
-			return boost::shared_ptr<random_new::rng>(new random_new::synced_rng(generate_random_seed));
-		}
-		else
-		{
-			return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));
-		}
 	}
 	else
 	{
@@ -294,20 +279,14 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 	}
 }
 
-set_scontext_synced::set_scontext_synced(const std::string& commandname)
-	: new_rng_(synced_context::get_rng_for(commandname)), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
-{
-	init();
-}
-
 set_scontext_synced::set_scontext_synced()
-	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
+	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup")), disabler_()
 {
 	init();
 }
 
 set_scontext_synced::set_scontext_synced(int number)
-	: new_rng_(synced_context::get_rng_for("")), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
+	: new_rng_(synced_context::get_rng_for_action()), new_checkup_(recorder.get_last_real_command().child_or_add("checkup" + boost::lexical_cast<std::string>(number))), disabler_()
 {
 	init();
 }
