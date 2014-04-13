@@ -21,7 +21,6 @@
 #include "map.hpp"
 #include "multiplayer_ui.hpp"
 #include "mp_game_utils.hpp"
-#include "sound.hpp"
 #include "tod_manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -713,14 +712,8 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 	if (const config& change_faction = data.child("change_faction")) {
 		int side_taken = find_user_side_index_by_id(change_faction["name"]);
 		if (side_taken != -1 || !first_scenario_) {
-			bool was_waiting_for_faction = side_engines_[side_taken]->waiting_to_choose_faction();
 			import_user(change_faction, false, side_taken);
-
 			update_and_send_diff();
-			if (was_waiting_for_faction && can_start_game()) {
-				DBG_MP << "play party full sound" << std::endl;
-				sound::play_UI_sound(game_config::sounds::party_full_bell);
-			}
 		}
 	}
 
