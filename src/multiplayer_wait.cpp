@@ -399,6 +399,7 @@ void wait::start_game()
 
 	LOG_NW << "starting game\n";
 	sound::play_UI_sound(game_config::sounds::mp_game_begins);
+	game_display::get_singleton()->send_notification(_("Wesnoth"), _ ("Game has begun!"));
 }
 
 void wait::layout_children(const SDL_Rect& rect)
