@@ -109,7 +109,7 @@ bool windows_tray_notification::create_tray_icon()
 
 	// filling notification structure
 	nid = new NOTIFYICONDATA;
-	memset(nid, 0, sizeof(&nid));
+	memset(nid, 0, sizeof(*nid));
 	nid->cbSize = NOTIFYICONDATA_V2_SIZE;
 	nid->hWnd = window;
 	nid->uFlags = NIF_ICON | NIF_TIP | NIF_MESSAGE;
