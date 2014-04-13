@@ -192,7 +192,9 @@ void playmp_controller::play_human_turn(){
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
-				if (turn_data_->process_network_data(cfg, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+				turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
+				//PROCESS_RESTART_TURN_TEMPORARY_LOCAL should be impossible because that's means the currently active side (that's us) left.
+				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 				{
 					// Clean undo stack if turn has to be restarted (losing control)
 					if ( undo_stack_->can_undo() )
@@ -273,7 +275,9 @@ void playmp_controller::play_idle_loop()
 		try {
 			config cfg;
 			if(network_reader_.read(cfg)) {
-				if (turn_data_->process_network_data(cfg, skip_replay_) == turn_info::PROCESS_RESTART_TURN)
+				turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
+				
+				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 				{
 					throw end_turn_exception(gui_->playing_side());
 				}
@@ -483,7 +487,7 @@ void playmp_controller::play_network_turn(){
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
 					return;
 				}
-				if (result == turn_info::PROCESS_RESTART_TURN) {
+				if (result == turn_info::PROCESS_RESTART_TURN || result == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL) {
 					player_type_changed_ = true;
 					return;
 				} else if (result == turn_info::PROCESS_END_TURN) {
@@ -557,12 +561,40 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data.send_data();
 	}
 	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
+		int expected_controller_changes = 0;
 		turn_info::PROCESS_DATA_RESULT res = turn_data.sync_network();
-		assert(res == turn_info::PROCESS_CONTINUE || res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_FOUND_DEPENDENT);
-		if(res == turn_info::PROCESS_RESTART_TURN)
+		assert(res != turn_info::PROCESS_END_LINGER);
+		assert(res != turn_info::PROCESS_END_TURN);
+		if(res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL )
 		{
 			player_type_changed_ = true;
 		}
+		if(res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL || res == turn_info::PROCESS_SIDE_TEMPORARY_LOCAL)
+		{
+			expected_controller_changes++;
+		}
+		//If we still expect controler changes we cannot return. 
+		//Becasue we might get into the situation that we want to do a decision that has already been name on another client.
+		//FIXME: if the server failed to process a transfer_side this is an infinite loop.
+		//as a temporary fix we abort the loop if it runs too long.
+		time_t time_start = time(NULL);
+		while((expected_controller_changes != 0) && (difftime(time(NULL), time_start) < 20))
+		{
+			playsingle_controller::handle_generic_event("ai_user_interact");
+			res = turn_data.sync_network();
+			assert(res != turn_info::PROCESS_END_LINGER);
+			assert(res != turn_info::PROCESS_END_TURN);
+			if(res == turn_info::PROCESS_RESTART_TURN)
+			{
+				expected_controller_changes--;
+			}
+			else if(res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL || res == turn_info::PROCESS_SIDE_TEMPORARY_LOCAL)
+			{
+				expected_controller_changes++;
+			}
+			SDL_Delay(10);
+		}	
+		turn_data.send_data();
 	}
 	else if (name == "host_transfer"){
 		is_host_ = true;
