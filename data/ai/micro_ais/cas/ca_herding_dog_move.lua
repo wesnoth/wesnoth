@@ -30,7 +30,6 @@ function ca_herding_dog_move:execution(ai, cfg)
         av_dist = av_dist + H.distance_between(x, y, cfg.herd_x, cfg.herd_y)
     end)
     av_dist = av_dist / herding_perimeter:size()
-    --print('Average distance:', av_dist)
 
     local best_hex = AH.find_best_move(dog, function(x, y)
         -- Prefer hexes on herding_perimeter, or close to it
@@ -39,13 +38,14 @@ function ca_herding_dog_move:execution(ai, cfg)
         if herding_perimeter:get(x, y) then
             rating = rating + 1000 + math.random(99) / 100.
         else
-            rating = rating - math.abs(H.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist) + math.random(99) / 100.
+            rating = rating
+                - math.abs(H.distance_between(x, y, cfg.herd_x, cfg.herd_y) - av_dist)
+                + math.random(99) / 100.
         end
 
         return rating
     end)
 
-    --print('Dog wandering')
     AH.movefull_stopunit(ai, dog, best_hex)
 end
 
