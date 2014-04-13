@@ -1,6 +1,5 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
-local LS = wesnoth.require "lua/location_set.lua"
 
 local herding_area = wesnoth.require "ai/micro_ais/cas/ca_herding_f_herding_area.lua"
 
@@ -34,13 +33,11 @@ function ca_herding_sheep_move:execution(ai, cfg)
             end
         end
     end)
-    --AH.put_labels(reach_map)
 
     -- Choose one of the possible locations  at random (or the current location, if no move possible)
     local x, y = sheep.x, sheep.y
     if (reach_map:size() > 0) then
         x, y = AH.LS_random_hex(reach_map)
-        --print('Sheep -> :', x, y)
     end
 
     -- If this move remains within herding area or dogs have no moves left, or sheep doesn't move

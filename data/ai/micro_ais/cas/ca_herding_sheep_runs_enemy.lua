@@ -25,20 +25,20 @@ function ca_herding_sheep_runs_enemy:evaluation(ai, cfg)
 end
 
 function ca_herding_sheep_runs_enemy:execution(ai, cfg)
-    -- Simply start with the first of the sheep, order does not matter
+    -- Simply start with the first sheep, order does not matter
     local sheep = get_next_sheep(cfg)
 
-    -- And find the close enemies
     local enemies = wesnoth.get_units {
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} },
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
         { "filter_location", { x = sheep.x, y = sheep.y , radius = (cfg.attention_distance or 8) } }
     }
-    --print('#enemies', #enemies)
 
     -- Maximize distance between sheep and enemies
     local best_hex = AH.find_best_move(sheep, function(x, y)
         local rating = 0
-        for i,e in ipairs(enemies) do rating = rating + H.distance_between(x, y, e.x, e.y) end
+        for _,enemy in ipairs(enemies) do
+            rating = rating + H.distance_between(x, y, enemy.x, enemy.y)
+        end
         return rating
     end)
 
