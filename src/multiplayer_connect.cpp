@@ -559,6 +559,7 @@ void connect::process_network_data(const config& data,
 	if (!was_able_to_start && engine_.can_start_game()) {
 		DBG_MP << "play party full sound" << std::endl;
 		sound::play_UI_sound(game_config::sounds::party_full_bell);
+		game_display::get_singleton()->send_notification(_("Wesnoth"), _ ("Ready to start!"));
 	}
 }
 
