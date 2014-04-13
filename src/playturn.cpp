@@ -360,7 +360,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						if (have_leader) leader->rename("ai" + side_drop);
 						change_controller(side_drop, "ai");
 					}
-					return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
+					return restart ? PROCESS_RESTART_TURN_TEMPORARY_LOCAL : PROCESS_SIDE_TEMPORARY_LOCAL;
 				}
 				break;
 		}
