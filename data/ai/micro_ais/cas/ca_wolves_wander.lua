@@ -24,8 +24,8 @@ function ca_wolves_wander:execution(ai, cfg)
 
     -- Number of wolves that can reach each hex
     local reach_map = LS.create()
-    for _,w in ipairs(wolves) do
-        local r = AH.get_reachable_unocc(w)
+    for _,wolf in ipairs(wolves) do
+        local r = AH.get_reachable_unocc(wolf)
         reach_map:union_merge(r, function(x, y, v1, v2) return (v1 or 0) + (v2 or 0) end)
     end
 
@@ -46,15 +46,15 @@ function ca_wolves_wander:execution(ai, cfg)
         reach_map:insert(x, y, rating)
     end)
 
-    for _,w in ipairs(wolves) do
+    for _,wolf in ipairs(wolves) do
         -- For each wolf, we need to check that goal hex is reachable, and out of harm's way
-        local best_hex = AH.find_best_move(w, function(x, y)
+        local best_hex = AH.find_best_move(wolf, function(x, y)
             local rating = - H.distance_between(x, y, goal_hex[1], goal_hex[2])
             if avoid_map:get(x, y) then rating = rating - 1000 end
             return rating
         end)
 
-        AH.movefull_stopunit(ai, w, best_hex)
+        AH.movefull_stopunit(ai, wolf, best_hex)
     end
 end
 

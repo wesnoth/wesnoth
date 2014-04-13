@@ -37,13 +37,13 @@ function ca_wolves_move:execution(ai, cfg)
 
     -- Find prey that is closest to the wolves
     local target, min_dist = {}, 9e99
-    for _,p in ipairs(prey) do
+    for _,prey_unit in ipairs(prey) do
         local dist = 0
-        for _,w in ipairs(wolves) do
-            dist = dist + H.distance_between(w.x, w.y, p.x, p.y)
+        for _,wolf in ipairs(wolves) do
+            dist = dist + H.distance_between(wolf.x, wolf.y, prey_unit.x, prey_unit.y)
         end
         if (dist < min_dist) then
-            min_dist, target = dist, p
+            min_dist, target = dist, prey_unit
         end
     end
 
