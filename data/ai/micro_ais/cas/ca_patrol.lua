@@ -83,7 +83,7 @@ function ca_patrol:execution(ai, cfg)
                             MAIUV.set_mai_unit_variables(patrol, cfg.ai_id, patrol_vars)
 
                             local tmp_wp = {}
-                            for j,wp in ipairs(waypoints) do tmp_wp[n_wp-j+1] = wp end
+                            for j,wp2 in ipairs(waypoints) do tmp_wp[n_wp-j+1] = wp2 end
                             waypoints = tmp_wp
                         else
                             patrol_vars.patrol_x = waypoints[1][1]

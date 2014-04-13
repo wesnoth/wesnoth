@@ -29,10 +29,10 @@ function ca_zone_guardian:execution(ai, cfg)
         }
     if enemies[1] then
         local target, min_dist = {}, 9e99
-        for _,e in ipairs(enemies) do
-            local dist = H.distance_between(guardian.x, guardian.y, e.x, e.y)
+        for _,enemy in ipairs(enemies) do
+            local dist = H.distance_between(guardian.x, guardian.y, enemy.x, enemy.y)
             if (dist < min_dist) then
-                target, min_dist = e, dist
+                target, min_dist = enemy, dist
             end
         end
 
@@ -41,15 +41,15 @@ function ca_zone_guardian:execution(ai, cfg)
             -- Find tiles adjacent to the target
             -- Save the one with the highest defense rating that guardian can reach
             local best_defense, attack_loc = -9e99, {}
-            for x,y in H.adjacent_tiles(target.x, target.y) do
+            for xa,ya in H.adjacent_tiles(target.x, target.y) do
                 -- Only consider unoccupied hexes
-                local occ_hex = wesnoth.get_units { x = x, y = y, { "not", { id = guardian.id } } }[1]
+                local occ_hex = wesnoth.get_units { x = xa, y = ya, { "not", { id = guardian.id } } }[1]
                 if not occ_hex then
-                    local defense = 100 - wesnoth.unit_defense(guardian, wesnoth.get_terrain(x, y))
-                    local nh = AH.next_hop(guardian, x, y)
+                    local defense = 100 - wesnoth.unit_defense(guardian, wesnoth.get_terrain(xa, ya))
+                    local nh = AH.next_hop(guardian, xa, ya)
                     if nh then
-                        if (nh[1] == x) and (nh[2] == y) and (defense > best_defense) then
-                            best_defense, attack_loc = defense, { x, y }
+                        if (nh[1] == xa) and (nh[2] == ya) and (defense > best_defense) then
+                            best_defense, attack_loc = defense, { xa, ya }
                         end
                     end
                 end
@@ -68,13 +68,13 @@ function ca_zone_guardian:execution(ai, cfg)
                 -- Go through all hexes the guardian can reach, find closest to target
                 -- Cannot use next_hop here since target hex is occupied by enemy
                 local nh, min_dist = {}, 9e99
-                for _,r in ipairs(reach) do
+                for _,hex in ipairs(reach) do
                     -- Only consider unoccupied hexes
-                    local occ_hex = wesnoth.get_units { x = r[1], y = r[2], { "not", { id = guardian.id } } }[1]
+                    local occ_hex = wesnoth.get_units { x = hex[1], y = hex[2], { "not", { id = guardian.id } } }[1]
                     if not occ_hex then
-                        local dist = H.distance_between(r[1], r[2], target.x, target.y)
+                        local dist = H.distance_between(hex[1], hex[2], target.x, target.y)
                         if (dist < min_dist) then
-                            min_dist, nh = dist, { r[1], r[2] }
+                            min_dist, nh = dist, { hex[1], hex[2] }
                         end
                     end
                 end
