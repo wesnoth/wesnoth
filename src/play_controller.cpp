@@ -576,6 +576,18 @@ void play_controller::fire_start(bool execute){
 	} else {
 		it_is_a_new_turn_ = false;
 	}
+	if((gamedata_.random_mode() != "" || gamestate_.classification().random_mode != "") && (network::nconnections() != 0))
+	{
+		std::string mes = _("MP game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.");
+		resources::screen->add_chat_message(
+			time(NULL),
+			"game_engine",
+			0,
+			mes, 
+			events::chat_handler::MESSAGE_PUBLIC,
+			preferences::message_bell());
+		replay::process_error(mes);
+	}	
 	gamedata_.set_phase(game_data::PLAY);
 }
 
