@@ -6,6 +6,7 @@ local function get_guardian(cfg)
         side = wesnoth.current.side,
         { "and", filter }
     }[1]
+
     return guardian
 end
 
@@ -14,12 +15,13 @@ local ca_return_guardian = {}
 function ca_return_guardian:evaluation(ai, cfg)
     local guardian = get_guardian(cfg)
     if guardian then
-        if ((guardian.x ~= cfg.return_x) or (guardian.y ~= cfg.return_y)) then
-            return cfg.ca_score
-        else
+        if (guardian.x == cfg.return_x) and (guardian.y == cfg.return_y) then
             return cfg.ca_score - 20
+        else
+            return cfg.ca_score
         end
     end
+
     return 0
 end
 
