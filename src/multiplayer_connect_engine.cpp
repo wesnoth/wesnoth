@@ -692,12 +692,11 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			LOG_CF << "client has taken a valid position\n";
 
-			bool was_reserved = (side_engines_[side_taken]->controller() == CNTR_RESERVED);
 			import_user(data, false, side_taken);
-			side_engines_[side_taken]->set_waiting_to_choose_status(!was_reserved);
-
 			update_and_send_diff();
 
+			side_engines_[side_taken]->set_waiting_to_choose_status(side_engines_[side_taken]->allow_changes()); //wait for them to choose faction if allowed
+			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes() << std::endl;
 			result.second = false;
 
 			LOG_NW << "sent player data\n";
@@ -851,7 +850,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_player_(cfg["current_player"]),
 	player_id_(cfg["player_id"]),
 	ai_algorithm_(),
-	waiting_to_choose_faction_(allow_changes_ && allow_player_),
+	waiting_to_choose_faction_(allow_changes_),
 	chose_random_(cfg["chose_random"].to_bool(false)),
 	flg_(parent_.era_factions_, cfg_, parent_.force_lock_settings_,
 		parent_.params_.saved_game, color_)
