@@ -15,6 +15,10 @@ Version 1.11.12:
      This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
    * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
      performance on retina devices.
+   * Fix bug which caused timer to be refreshed twice when time runs out
+   * Use one combo box instead of check boxes for replay options in lobby
+   * Dropped sides now default to idle rather than human control, this fixes an
+     issue with the host immediately getting vision of dropped sides in some cases
 
 Version 1.11.12:
  * Campaigns:
