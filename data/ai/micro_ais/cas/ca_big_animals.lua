@@ -65,7 +65,7 @@ function ca_big_animals:execution(ai, cfg)
             local enemy_hp = 500
             for xa, ya in H.adjacent_tiles(x, y) do
                 local enemy = wesnoth.get_unit(xa, ya)
-                if enemy and (enemy.side ~= wesnoth.current.side) then
+                if enemy and wesnoth.is_enemy(enemy.side, wesnoth.current.side) then
                     if (enemy.hitpoints < enemy_hp) then enemy_hp = enemy.hitpoints end
                 end
             end
@@ -101,7 +101,7 @@ function ca_big_animals:execution(ai, cfg)
         local min_hp, target = 9e99, {}
         for x, y in H.adjacent_tiles(unit.x, unit.y) do
             local enemy = wesnoth.get_unit(x, y)
-            if enemy and (enemy.side ~= wesnoth.current.side) then
+            if enemy and wesnoth.is_enemy(enemy.side, wesnoth.current.side) then
                 if (enemy.hitpoints < min_hp) then
                     min_hp, target = enemy.hitpoints, enemy
                 end
