@@ -895,10 +895,12 @@ static uint32_t send_dbus_notification(DBusConnection *connection, uint32_t repl
 
 #if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
 void game_display::send_notification(const std::string& owner, const std::string& message)
+{
+	if (preferences::get("disable_notifications", false)) { return; }
 #else
 void game_display::send_notification(const std::string& /*owner*/, const std::string& /*message*/)
-#endif
 {
+#endif
 #if defined(HAVE_LIBDBUS) || defined(HAVE_GROWL) || defined(_WIN32)
 	Uint8 app_state = SDL_GetAppState();
 
