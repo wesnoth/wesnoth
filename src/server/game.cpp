@@ -212,9 +212,10 @@ void game::perform_controller_tweaks() {
 
 void game::start_game(const player_map::const_iterator starter) {
 	const simple_wml::node::child_list & sides = level_.root().children("side");
-	DBG_GAME << "****\n Starting game. sides = " << std::endl; 
-	DBG_GAME << debug_sides_info() << std::endl;
-	DBG_GAME << "****" << std::endl;
+	LOG_GAME << "****\n Starting game. sides = " << std::endl; 
+	LOG_GAME << debug_sides_info() << std::endl;
+	DBG_GAME << "**** level = " << std::endl << level_.output() << std::endl;
+	LOG_GAME << "****" << std::endl;
 
 
 	started_ = true;

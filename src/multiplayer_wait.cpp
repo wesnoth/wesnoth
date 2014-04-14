@@ -287,6 +287,8 @@ void wait::join_game(bool observe)
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
+		LOG_RG << "multiplayer_wait: allow_changes = " << allow_changes << std::endl;
+
 		if(allow_changes) {
 			events::event_context context;
 
