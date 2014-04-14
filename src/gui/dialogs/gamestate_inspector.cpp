@@ -229,7 +229,7 @@ public:
 		}
 
 		int i = 0; ///@todo replace with precached data
-		const config& vars = resources::state_of_game
+		const config& vars = resources::gamedata
 									 ? resources::gamedata->get_variables()
 									 : config();
 
