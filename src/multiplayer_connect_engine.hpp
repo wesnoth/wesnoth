@@ -193,6 +193,7 @@ public:
 	void set_ai_algorithm(const std::string& ai_algorithm)
 		{ ai_algorithm_ = ai_algorithm; }
 	bool allow_player() const { return allow_player_; }
+	bool allow_changes() const { return allow_changes_; }
 	bool waiting_to_choose_faction() const { return waiting_to_choose_faction_; }
 	void set_waiting_to_choose_status(bool status) { waiting_to_choose_faction_ = status;}
 	bool chose_random() const { return chose_random_;}
