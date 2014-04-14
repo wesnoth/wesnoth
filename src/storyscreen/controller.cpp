@@ -53,7 +53,7 @@ controller::controller(display& disp, const vconfig& data, const std::string& sc
 	, segment_index_(segment_index)
 	, parts_()
 {
-	ASSERT_LOG(resources::state_of_game != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
+	ASSERT_LOG(resources::gamedata != NULL, "Ouch: gamedata is NULL when initializing storyscreen controller");
 	resolve_wml(data);
 }
 
