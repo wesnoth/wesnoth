@@ -36,6 +36,10 @@ public:
 	{
 		PROCESS_CONTINUE,
 		PROCESS_RESTART_TURN,
+		/** we wanted to reassign the currently active side to a side, and wait for the server to do so.*/
+		PROCESS_RESTART_TURN_TEMPORARY_LOCAL,
+		/** we wanted to reassign a non currently active side to a side, and wait for the server to do so.*/
+		PROCESS_SIDE_TEMPORARY_LOCAL,
 		PROCESS_END_TURN,
 		/** When the host uploaded the next scenario this is returned. */
 		PROCESS_END_LINGER,
