@@ -28,6 +28,9 @@ Version 1.13.0-dev:
      This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
    * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
      performance on retina devices.
+   * Corrected behavior of "game is ready" bell. (this fixes #21910)
+   * Deliver desktop notifications in tandem with "game is ready" bell and 
+     also the "game has begun" bell.
 
 Version 1.11.11:
  * Campaigns:
