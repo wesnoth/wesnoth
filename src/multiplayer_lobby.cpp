@@ -875,12 +875,12 @@ lobby::lobby(game_display& disp, const config& cfg, chat& c, config& gamelist) :
 	std::vector<std::string> replay_options_strings_;
 	replay_options_strings_.push_back(_("Normal replays"));
 	replay_options_strings_.push_back(_("Quick replays"));
-	replay_options_strings_.push_back(_("Blindfolded replays"));
+	replay_options_strings_.push_back(_("Enter game blindfolded"));
 
 	replay_options_.set_items(replay_options_strings_);
 
 	std::string help_string1 = _("Skip quickly to the active turn when observing");
-	std::string help_string2 = _("Do not show replay turns until given control of a side");
+	std::string help_string2 = _("Do not show the map until given control of a side");
 	replay_options_.set_help_string(help_string1 + " / " + help_string2);
 
 	replay_options_.set_selected(0);
