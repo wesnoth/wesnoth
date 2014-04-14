@@ -44,8 +44,11 @@ flg_manager::flg_manager(const std::vector<const config*>& era_factions,
 	side_(side),
 	lock_settings_(lock_settings),
 	saved_game_(saved_game),
-	has_no_recruits_((side_.has_attribute("default_recruit") ?
-		side_["default_recruit"].empty() : side_["recruit"].empty()) &&
+	has_no_recruits_(
+		((side_.has_attribute("default_recruit") ?
+			side_["default_recruit"].empty() :
+			side_["recruit"].empty()) ||
+		side_["no_recruit"].to_bool()) &&
 		side_["previous_recruits"].empty() && side_["extra_recruit"].empty()),
 	color_(color),
 	available_factions_(),
