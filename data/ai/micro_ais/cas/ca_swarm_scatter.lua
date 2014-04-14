@@ -33,17 +33,17 @@ function ca_swarm_scatter:execution(ai, cfg)
     -- but only for units that are within 'vision_distance' of one of those enemies
     for _,unit in ipairs(units) do
         local unit_enemies = {}
-        for _,e in ipairs(enemies) do
-            if (H.distance_between(unit.x, unit.y, e.x, e.y) <= vision_distance) then
-                table.insert(unit_enemies, e)
+        for _,enemy in ipairs(enemies) do
+            if (H.distance_between(unit.x, unit.y, enemy.x, enemy.y) <= vision_distance) then
+                table.insert(unit_enemies, enemy)
             end
         end
 
         if unit_enemies[1] then
             local best_hex = AH.find_best_move(unit, function(x, y)
                 local rating = 0
-                for _,e in ipairs(unit_enemies) do
-                    rating = rating + H.distance_between(x, y, e.x, e.y)
+                for _,enemy in ipairs(unit_enemies) do
+                    rating = rating + H.distance_between(x, y, enemy.x, enemy.y)
                 end
                 return rating
             end)

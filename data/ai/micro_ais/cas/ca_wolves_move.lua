@@ -1,7 +1,6 @@
 local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require "ai/lua/ai_helper.lua"
 local BC = wesnoth.require "ai/lua/battle_calcs.lua"
-local LS = wesnoth.require "lua/location_set.lua"
 
 local function get_wolves(cfg)
     local wolves = AH.get_units_with_moves {
@@ -31,50 +30,44 @@ function ca_wolves_move:execution(ai, cfg)
     local wolves = get_wolves(cfg)
     local prey = get_prey(cfg)
 
-    -- When wandering (later) they avoid dogs, but not here
     local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
     }
-    --print('#avoid_units', #avoid_units)
-    -- negative hit for hexes these types of units can attack
-    local avoid = BC.get_attack_map(avoid_units).units  -- max_moves=true is always set for enemy units
+    local avoid_map = BC.get_attack_map(avoid_units).units
 
-    -- Find prey that is closest to all 3 wolves
-    local target, min_dist = {}, 9999
-    for i,p in ipairs(prey) do
+    -- Find prey that is closest to the wolves
+    local target, min_dist = {}, 9e99
+    for _,prey_unit in ipairs(prey) do
         local dist = 0
-        for j,w in ipairs(wolves) do
-            dist = dist + H.distance_between(w.x, w.y, p.x, p.y)
+        for _,wolf in ipairs(wolves) do
+            dist = dist + H.distance_between(wolf.x, wolf.y, prey_unit.x, prey_unit.y)
         end
         if (dist < min_dist) then
-            min_dist, target = dist, p
+            min_dist, target = dist, prey_unit
         end
     end
-    --print('target:', target.x, target.y, target.id)
 
-    -- Now sort wolf from furthest to closest
+    -- Now sort wolf from farthest to closest
     table.sort(wolves, function(a, b)
         return H.distance_between(a.x, a.y, target.x, target.y) > H.distance_between(b.x, b.y, target.x, target.y)
     end)
 
     -- First wolf moves toward target, but tries to stay away from map edges
-    local w,h,b = wesnoth.get_map_size()
+    local width, height = wesnoth.get_map_size()
     local wolf1 = AH.find_best_move(wolves[1], function(x, y)
-        local d_1t = H.distance_between(x, y, target.x, target.y)
-        local rating = -d_1t
-        if x <= 5 then rating = rating - (6 - x) / 1.4 end
-        if y <= 5 then rating = rating - (6 - y) / 1.4 end
-        if (w - x) <= 5 then rating = rating - (6 - (w - x)) / 1.4 end
-        if (h - y) <= 5 then rating = rating - (6 - (h - y)) / 1.4 end
+        local dist_1t = H.distance_between(x, y, target.x, target.y)
+        local rating = - dist_1t
+        if (x <= 5) then rating = rating - (6 - x) / 1.4 end
+        if (y <= 5) then rating = rating - (6 - y) / 1.4 end
+        if (width - x <= 5) then rating = rating - (6 - (width - x)) / 1.4 end
+        if (height - y <= 5) then rating = rating - (6 - (height - y)) / 1.4 end
 
-       -- Hexes that avoid_type units can reach get a massive negative hit
-       -- meaning that they will only ever be chosen if there's no way around them
-       if avoid:get(x, y) then rating = rating - 1000 end
+       -- Hexes that avoid_type units can reach get a massive penalty
+       if avoid_map:get(x, y) then rating = rating - 1000 end
 
        return rating
     end)
-    --print('wolf 1 ->', wolves[1].x, wolves[1].y, wolf1[1], wolf1[2])
-    --W.message { speaker = wolves[1].id, message = "Me first"}
+
     AH.movefull_stopunit(ai, wolves[1], wolf1)
 
     for i = 2,#wolves do
@@ -89,13 +82,12 @@ function ca_wolves_move:execution(ai, cfg)
             end
 
             -- Same distance from Wolf 1 and target for all the wolves
-            local dst_t = H.distance_between(x, y, target.x, target.y)
-            local dst_1t = H.distance_between(wolf1[1], wolf1[2], target.x, target.y)
-            rating = rating - (dst_t - dst_1t)^2
+            local dist_t = H.distance_between(x, y, target.x, target.y)
+            local dist_1t = H.distance_between(wolf1[1], wolf1[2], target.x, target.y)
+            rating = rating - (dist_t - dist_1t)^2
 
-            -- Hexes that avoid_type units can reach get a massive negative hit
-            -- meaning that they will only ever be chosen if there's no way around them
-            if avoid:get(x, y) then rating = rating - 1000 end
+            -- Hexes that avoid_type units can reach get a massive penalty
+            if avoid_map:get(x, y) then rating = rating - 1000 end
 
             return rating
         end)

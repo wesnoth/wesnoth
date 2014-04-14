@@ -45,7 +45,7 @@ namespace
 	 * @todo FIXME: the variable repository should be
 	 * a class of variable.hpp, and not the game_state.
 	 */
-	#define repos (resources::state_of_game)
+	#define repos (resources::gamedata)
 }
 
 

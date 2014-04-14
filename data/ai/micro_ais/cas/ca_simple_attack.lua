@@ -22,7 +22,7 @@ function ca_simple_attack:evaluation(ai, cfg, self)
         if (not enemies[1]) then return 0 end
 
         enemy_map = LS.create()
-        for _,e in ipairs(enemies) do enemy_map:insert(e.x, e.y) end
+        for _,enemy in ipairs(enemies) do enemy_map:insert(enemy.x, enemy.y) end
     end
 
     -- Now find the best of the possible attacks

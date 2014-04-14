@@ -22,8 +22,8 @@ function ca_herding_sheep_runs_dog:execution(ai, cfg)
     -- Simply get the first sheep, order does not matter
     local sheep = get_next_sheep(cfg)
 
-    -- Get the first dog it is adjacent to
-    local dog = wesnoth.get_units { side = wesnoth.current.side, {"and", cfg.filter},
+    -- Get the first dog that the sheep is adjacent to
+    local dog = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter },
         { "filter_adjacent", { x = sheep.x, y = sheep.y } }
     }[1]
 

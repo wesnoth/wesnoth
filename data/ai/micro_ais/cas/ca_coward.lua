@@ -36,13 +36,13 @@ function ca_coward:execution(ai, cfg)
         return
     end
 
-    for i,r in ipairs(reach) do
+    for i,hex in ipairs(reach) do
         -- Only consider unoccupied hexes
-        local occ_hex = wesnoth.get_units { x = r[1], y = r[2], { "not", { id = coward.id } } }[1]
+        local occ_hex = wesnoth.get_units { x = hex[1], y = hex[2], { "not", { id = coward.id } } }[1]
         if not occ_hex then
             local rating = 0
-            for _,e in ipairs(enemies) do
-                local dist = H.distance_between(r[1], r[2], e.x, e.y)
+            for _,enemy in ipairs(enemies) do
+                local dist = H.distance_between(hex[1], hex[2], enemy.x, enemy.y)
                 rating = rating - 1 / dist^2
             end
 
@@ -58,10 +58,10 @@ function ca_coward:execution(ai, cfg)
     local best_pos = AH.filter(reach, function(tmp) return tmp[3] > reach[1][3] * 2 end)
 
     -- Now take 'seek' and 'avoid' into account
-    for i,b in ipairs(best_pos) do
+    for i,pos in ipairs(best_pos) do
         -- Weighting based on distance from 'seek' and 'avoid'
-        local dist_seek = AH.generalized_distance(b[1], b[2], cfg.seek_x, cfg.seek_y)
-        local dist_avoid = AH.generalized_distance(b[1], b[2], cfg.avoid_x, cfg.avoid_y)
+        local dist_seek = AH.generalized_distance(pos[1], pos[2], cfg.seek_x, cfg.seek_y)
+        local dist_avoid = AH.generalized_distance(pos[1], pos[2], cfg.avoid_x, cfg.avoid_y)
         local rating = 1 / (dist_seek + 1) - 1 / (dist_avoid + 1)^2 * 0.75
 
         best_pos[i][4] = rating
@@ -74,9 +74,9 @@ function ca_coward:execution(ai, cfg)
     -- As final step, if there are more than one remaining locations,
     -- we take the one with the minimum score in the distance-from-enemy criterion
     local max_rating, best_hex = -9e99
-    for _,b in ipairs(best_overall) do
-        if (b[3] > max_rating) then
-            max_rating, best_hex = b[3], b
+    for _,pos in ipairs(best_overall) do
+        if (pos[3] > max_rating) then
+            max_rating, best_hex = pos[3], pos
         end
     end
 

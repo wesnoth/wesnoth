@@ -24,23 +24,20 @@ function ca_wolves_wander:execution(ai, cfg)
 
     -- Number of wolves that can reach each hex
     local reach_map = LS.create()
-    for i,w in ipairs(wolves) do
-        local r = AH.get_reachable_unocc(w)
+    for _,wolf in ipairs(wolves) do
+        local r = AH.get_reachable_unocc(wolf)
         reach_map:union_merge(r, function(x, y, v1, v2) return (v1 or 0) + (v2 or 0) end)
     end
 
-    -- Add a random rating; avoid avoid_type units
     local avoid_units = wesnoth.get_units { type = cfg.avoid_type,
-        { "filter_side", {{"enemy_of", {side = wesnoth.current.side} }} }
+        { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } }
     }
-    --print('#avoid_units', #avoid_units)
-    -- negative hit for hexes these units can attack
-    local avoid = BC.get_attack_map(avoid_units).units
+    local avoid_map = BC.get_attack_map(avoid_units).units
 
     local max_rating, goal_hex = -9e99, {}
     reach_map:iter( function (x, y, v)
         local rating = v + math.random(99)/100.
-        if avoid:get(x, y) then rating = rating - 1000 end
+        if avoid_map:get(x, y) then rating = rating - 1000 end
 
         if (rating > max_rating) then
             max_rating, goal_hex = rating, { x, y }
@@ -48,17 +45,16 @@ function ca_wolves_wander:execution(ai, cfg)
 
         reach_map:insert(x, y, rating)
     end)
-    --AH.put_labels(reach_map)
-    --W.message { speaker = 'narrator', message = "Wolves random wander"}
 
-    for i,w in ipairs(wolves) do
+    for _,wolf in ipairs(wolves) do
         -- For each wolf, we need to check that goal hex is reachable, and out of harm's way
-        local best_hex = AH.find_best_move(w, function(x, y)
+        local best_hex = AH.find_best_move(wolf, function(x, y)
             local rating = - H.distance_between(x, y, goal_hex[1], goal_hex[2])
-            if avoid:get(x, y) then rating = rating - 1000 end
+            if avoid_map:get(x, y) then rating = rating - 1000 end
             return rating
         end)
-        AH.movefull_stopunit(ai, w, best_hex)
+
+        AH.movefull_stopunit(ai, wolf, best_hex)
     end
 end
 
