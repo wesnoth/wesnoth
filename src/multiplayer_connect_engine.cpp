@@ -49,6 +49,8 @@ const std::string controller_names[] = {
 
 const std::string attributes_to_trim[] = {
 	"side",
+	"type",
+	"gender",
 	"recruit",
 	"extra_recruit",
 	"previous_recruits",
@@ -919,7 +921,11 @@ config side_engine::new_config() const
 
 	// Save default "recruit" so that correct faction lists would be
 	// initialized by flg_manager when the new side config is sent over network.
+	// In case recruit list was empty, set a flag to indicate that.
 	res["default_recruit"] = cfg_["recruit"];
+	if (res["default_recruit"].empty()) {
+		res["no_recruit"] = true;
+	}
 
 	// If the user is allowed to change type, faction, leader etc,
 	// then import their new values in the config.
