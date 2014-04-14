@@ -543,6 +543,8 @@ void connect::process_network_data(const config& data,
 	const network::connection sock)
 {
 	ui::process_network_data(data, sock);
+
+	bool was_able_to_start = engine_.can_start_game();
 	std::pair<bool, bool> result = engine_.process_network_data(data, sock);
 
 	if (result.first) {
@@ -553,7 +555,12 @@ void connect::process_network_data(const config& data,
 		s.update_ui();
 	}
 
-	update_playerlist_state(result.second);
+	update_playerlist_state(result.second); //result.second is the silent flag
+	if (!was_able_to_start && engine_.can_start_game()) {
+		DBG_MP << "play party full sound" << std::endl;
+		sound::play_UI_sound(game_config::sounds::party_full_bell);
+		game_display::get_singleton()->send_notification(_("Wesnoth"), _ ("Ready to start!"));
+	}
 }
 
 void connect::process_network_error(network::error& error)
