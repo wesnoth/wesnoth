@@ -1121,8 +1121,11 @@ bool game::add_player(const network::connection player, bool observer) {
 		<< ". (socket: " << player << ")\n";
 	user->second.mark_available(id_, name_);
 	user->second.set_status((observer) ? player::OBSERVING : player::PLAYING);
+	DBG_GAME << "**** A player has joined" << std::endl;
 	DBG_GAME << debug_player_info();
 	// Send the user the game data.
+	DBG_GAME << "**** level = " << std::endl << level_.output() << std::endl;
+	DBG_GAME << "****" << std::endl;
 	if (!wesnothd::send_to_one(level_, player)) return false;
 
 	if(started_) {
