@@ -26,10 +26,10 @@ function ca_hang_out:evaluation(ai, cfg, self)
     then
         MAISD.insert_mai_self_data(self.data, cfg.ai_id, { mobilize_units = true })
 
-        -- Need to unmark all units also
+        -- Need to unmark all units also (all units, with and without moves)
         local units = wesnoth.get_units { side = wesnoth.current.side, { "and", cfg.filter } }
-        for i,u in ipairs(units) do
-            MAIUV.delete_mai_unit_variables(u, cfg.ai_id)
+        for _,unit in ipairs(units) do
+            MAIUV.delete_mai_unit_variables(unit, cfg.ai_id)
         end
 
         return 0
@@ -47,13 +47,13 @@ function ca_hang_out:execution(ai, cfg, self)
     local filter_location = cfg.filter_location or {
         { "filter", { side = wesnoth.current.side, canrecruit = "yes" } }
     }
+
     local width, height = wesnoth.get_map_size()
     local locs = wesnoth.get_locations {
         x = '1-' .. width,
         y = '1-' .. height,
         { "and", filter_location }
     }
-    --print('#locs', #locs)
 
     -- Get map of locations to be avoided.
     -- Use [micro_ai][avoid] tag with priority over [ai][avoid].
@@ -78,26 +78,26 @@ function ca_hang_out:execution(ai, cfg, self)
     end
     local avoid_map = LS.of_pairs(wesnoth.get_locations(avoid_tag))
 
-    local best_hex, best_unit, max_rating = {}, {}, -9e99
-    for i,u in ipairs(units) do
+    local max_rating, best_hex, best_unit = -9e99
+    for _,unit in ipairs(units) do
         -- Only consider units that have not been marked yet
-        if (not MAIUV.get_mai_unit_variables(u, cfg.ai_id, "moved")) then
-            local best_hex_unit, max_rating_unit = {}, -9e99
+        if (not MAIUV.get_mai_unit_variables(unit, cfg.ai_id, "moved")) then
+            local max_rating_unit, best_hex_unit = -9e99
 
             -- Check out all unoccupied hexes the unit can reach
-            local reach_map = AH.get_reachable_unocc(u)
+            local reach_map = AH.get_reachable_unocc(unit)
             reach_map:iter( function(x, y, v)
                 if (not avoid_map:get(x, y)) then
-                    for k,l in ipairs(locs) do
+                    for _,loc in ipairs(locs) do
                         -- Main rating is the distance from any of the goal hexes
-                        local rating = -H.distance_between(x, y, l[1], l[2])
+                        local rating = -H.distance_between(x, y, loc[1], loc[2])
 
                         -- Fastest unit moves first
-                        rating = rating + u.max_moves / 100.
+                        rating = rating + unit.max_moves / 100.
 
                         -- Minor penalty for distance from current position of unit
                         -- so that there's not too much shuffling around
-                        local rating = rating - H.distance_between(x, y, u.x, u.y) / 1000.
+                        local rating = rating - H.distance_between(x, y, unit.x, unit.y) / 1000.
 
                         if (rating > max_rating_unit) then
                             max_rating_unit = rating
@@ -108,27 +108,28 @@ function ca_hang_out:execution(ai, cfg, self)
             end)
 
             -- Only consider a unit if the best hex found for it is not its current location
-            if (best_hex_unit[1] ~= u.x) or (best_hex_unit[2] ~= u.y) then
+            if (best_hex_unit[1] ~= unit.x) or (best_hex_unit[2] ~= unit.y) then
                 if (max_rating_unit > max_rating) then
                     max_rating = max_rating_unit
-                    best_hex, best_unit = best_hex_unit, u
+                    best_hex, best_unit = best_hex_unit, unit
                 end
             end
         end
     end
-    --print(best_unit.id, best_unit.x, best_unit.y, best_hex[1], best_hex[2], max_rating)
 
     -- If no valid locations/units were found or all units are in their
     -- respective best locations already, we take moves away from all units
     if (max_rating == -9e99) then
-        for i,u in ipairs(units) do
-            AH.checked_stopunit_moves(ai, u)
+        for _,unit in ipairs(units) do
+            AH.checked_stopunit_moves(ai, unit)
+
             -- Also remove the markers
-            if u and u.valid then MAIUV.delete_mai_unit_variables(u, cfg.ai_id) end
+            if unit and unit.valid then MAIUV.delete_mai_unit_variables(unit, cfg.ai_id) end
         end
     else
-        -- Otherwise move unit and mark as having been used
+        -- Otherwise move unit (partial move only) and mark as having been used
         AH.checked_move(ai, best_unit, best_hex[1], best_hex[2])
+
         if best_unit and best_unit.valid then
             MAIUV.set_mai_unit_variables(best_unit, cfg.ai_id, { moved = true })
         end
