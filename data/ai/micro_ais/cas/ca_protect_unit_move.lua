@@ -80,11 +80,11 @@ function ca_protect_unit_move:execution(ai, cfg, self)
     --AH.put_labels(GDM)
 
     -- Configuration parameters (no option to change these enabled at the moment)
-    local enemy_weight = self.data.enemy_weight or 100.
-    local my_unit_weight = self.data.my_unit_weight or 1.
-    local distance_weight = self.data.distance_weight or 3.
-    local terrain_weight = self.data.terrain_weight or 0.1
-    local bearing = self.data.bearing or 1
+    local enemy_weight = self.data.PU_enemy_weight or 100.
+    local my_unit_weight = self.data.PU_my_unit_weight or 1.
+    local distance_weight = self.data.PU_distance_weight or 3.
+    local terrain_weight = self.data.PU_terrain_weight or 0.1
+    local bearing = self.data.PU_bearing or 1
 
     -- If there are no enemies left, only distance to goal matters
     -- This is to avoid rare situations where moving toward goal is canceled by moving away from own units

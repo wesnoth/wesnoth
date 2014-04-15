@@ -135,7 +135,7 @@ function ca_messenger_attack:evaluation(ai, cfg, self)
     local attack = messenger_find_clearing_attack(messenger, x, y, cfg)
 
     if attack then
-        self.data.best_attack = attack
+        self.data.ME_best_attack = attack
         return cfg.ca_score
     end
 
@@ -143,15 +143,15 @@ function ca_messenger_attack:evaluation(ai, cfg, self)
 end
 
 function ca_messenger_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.best_attack.src.x, self.data.best_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.best_attack.target.x, self.data.best_attack.target.y)
+    local attacker = wesnoth.get_unit(self.data.ME_best_attack.src.x, self.data.ME_best_attack.src.y)
+    local defender = wesnoth.get_unit(self.data.ME_best_attack.target.x, self.data.ME_best_attack.target.y)
 
-    AH.movefull_stopunit(ai, attacker, self.data.best_attack.dst.x, self.data.best_attack.dst.y)
+    AH.movefull_stopunit(ai, attacker, self.data.ME_best_attack.dst.x, self.data.ME_best_attack.dst.y)
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
 
     AH.checked_attack(ai, attacker, defender)
-    self.data.best_attack = nil
+    self.data.ME_best_attack = nil
 end
 
 return ca_messenger_attack

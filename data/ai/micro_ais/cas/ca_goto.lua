@@ -41,11 +41,11 @@ function ca_goto:evaluation(ai, cfg, self)
     local locs = {}
     if cfg.unique_goals then
         -- First, some cleanup of previous turn data
-        local str = 'goals_taken_' .. (wesnoth.current.turn - 1)
+        local str = 'GO_goals_taken_' .. (wesnoth.current.turn - 1)
         self.data[str] = nil
 
         -- Now on to the current turn
-        local str = 'goals_taken_' .. wesnoth.current.turn
+        local str = 'GO_goals_taken_' .. wesnoth.current.turn
         for _, loc in ipairs(all_locs) do
             if (not self.data[str]) or (not self.data[str]:get(loc[1], loc[2])) then
                 table.insert(locs, loc)
@@ -76,13 +76,13 @@ function ca_goto:evaluation(ai, cfg, self)
     if (not units[1]) then return 0 end
 
     -- Now store units and locs in self.data, so that we don't need to duplicate this in the exec function
-    self.data.units, self.data.locs = units, locs
+    self.data.GO_units, self.data.GO_locs = units, locs
 
     return cfg.ca_score
 end
 
 function ca_goto:execution(ai, cfg, self)
-    local units, locs = self.data.units, self.data.locs  -- simply for convenience
+    local units, locs = self.data.GO_units, self.data.GO_locs  -- simply for convenience
 
     -- Need the enemy map and enemy attack map if avoid_enemies is set
     local enemy_map, enemy_attack_map
@@ -174,7 +174,7 @@ function ca_goto:execution(ai, cfg, self)
 
     -- If 'unique_goals' is set, mark this location as being taken
     if cfg.unique_goals then
-        local str = 'goals_taken_' .. wesnoth.current.turn
+        local str = 'GO_goals_taken_' .. wesnoth.current.turn
         if (not self.data[str]) then self.data[str] = LS.create() end
         self.data[str]:insert(closest_hex[1], closest_hex[2])
     end
@@ -239,7 +239,7 @@ function ca_goto:execution(ai, cfg, self)
     end
 
     -- And some cleanup
-    self.data.units, self.data.locs = nil, nil
+    self.data.GO_units, self.data.GO_locs = nil, nil
 end
 
 return ca_goto

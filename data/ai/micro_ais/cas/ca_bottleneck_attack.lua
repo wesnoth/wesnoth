@@ -58,28 +58,28 @@ function ca_bottleneck_attack:evaluation(ai, cfg, self)
     if max_rating == 0 then
         -- In this case we take attacks away from all units
         -- This is done so that the RCA AI CAs can be kept in place
-        self.data.bottleneck_attacks_done = true
+        self.data.BD_bottleneck_attacks_done = true
     else
-        self.data.bottleneck_attacks_done = false
-        self.data.attacker = best_att
-        self.data.target = best_tar
-        self.data.weapon = best_weapon
+        self.data.BD_bottleneck_attacks_done = false
+        self.data.BD_attacker = best_att
+        self.data.BD_target = best_tar
+        self.data.BD_weapon = best_weapon
     end
     return cfg.ca_score
 end
 
 function ca_bottleneck_attack:execution(ai, cfg, self)
-    if self.data.bottleneck_attacks_done then
+    if self.data.BD_bottleneck_attacks_done then
         local units = AH.get_units_with_attacks { side = wesnoth.current.side }
         for i,u in ipairs(units) do
             AH.checked_stopunit_attacks(ai, u)
         end
     else
-        AH.checked_attack(ai, self.data.attacker, self.data.target, self.data.weapon)
+        AH.checked_attack(ai, self.data.BD_attacker, self.data.BD_target, self.data.BD_weapon)
     end
 
-    self.data.attacker, self.data.target, self.data.weapon = nil, nil, nil
-    self.data.bottleneck_attacks_done = nil
+    self.data.BD_attacker, self.data.BD_target, self.data.BD_weapon = nil, nil, nil
+    self.data.BD_bottleneck_attacks_done = nil
 end
 
 return ca_bottleneck_attack

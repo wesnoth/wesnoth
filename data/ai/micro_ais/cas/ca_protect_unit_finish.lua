@@ -9,8 +9,8 @@ function ca_protect_unit_finish:evaluation(ai, cfg, self)
         if unit then
             local path, cost = wesnoth.find_path(unit, cfg.goal_x[i], cfg.goal_y[i])
             if (cost <= unit.moves) and ((unit.x ~= cfg.goal_x[i]) or (unit.y ~= cfg.goal_y[i])) then
-                self.data.unit = unit
-                self.data.goal = { cfg.goal_x[i], cfg.goal_y[i] }
+                self.data.PU_unit = unit
+                self.data.PU_goal = { cfg.goal_x[i], cfg.goal_y[i] }
                 return 300000
             end
         end
@@ -19,9 +19,9 @@ function ca_protect_unit_finish:evaluation(ai, cfg, self)
 end
 
 function ca_protect_unit_finish:execution(ai, cfg, self)
-    AH.movefull_stopunit(ai, self.data.unit, self.data.goal)
-    self.data.unit = nil
-    self.data.goal = nil
+    AH.movefull_stopunit(ai, self.data.PU_unit, self.data.PU_goal)
+    self.data.PU_unit = nil
+    self.data.PU_goal = nil
 end
 
 return ca_protect_unit_finish

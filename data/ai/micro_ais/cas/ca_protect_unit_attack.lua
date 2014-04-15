@@ -116,22 +116,22 @@ function ca_protect_unit_attack:evaluation(ai, cfg, self)
     --print('Max_rating:', max_rating)
 
     if (max_rating > -9e99) then
-        self.data.best_attack = best_attack
+        self.data.PU_best_attack = best_attack
         return 95000
     end
     return 0
 end
 
 function ca_protect_unit_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.best_attack.src.x, self.data.best_attack.src.y)
-    local defender = wesnoth.get_unit(self.data.best_attack.target.x, self.data.best_attack.target.y)
+    local attacker = wesnoth.get_unit(self.data.PU_best_attack.src.x, self.data.PU_best_attack.src.y)
+    local defender = wesnoth.get_unit(self.data.PU_best_attack.target.x, self.data.PU_best_attack.target.y)
 
-    AH.movefull_stopunit(ai, attacker, self.data.best_attack.dst.x, self.data.best_attack.dst.y)
+    AH.movefull_stopunit(ai, attacker, self.data.PU_best_attack.dst.x, self.data.PU_best_attack.dst.y)
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
 
     AH.checked_attack(ai, attacker, defender)
-    self.data.best_attack = nil
+    self.data.PU_best_attack = nil
 end
 
 return ca_protect_unit_attack
