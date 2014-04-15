@@ -125,15 +125,20 @@ void synced_context::pull_remote_user_input()
 	is_simultaneously_ = true;
 	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
 	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
-	try
+
+	if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
 	{
-		ai::manager::raise_user_interact();
+		//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
+		//because that might result in crashs if someone clicks anywhere during screenlock.
+		try
+		{
+			ai::manager::raise_user_interact();
+		}
+		catch(end_turn_exception&)
+		{
+			//ignore, since it will be thwown throw again.
+		}
 	}
-	catch(end_turn_exception&)
-	{
-		//ignore, since it will be thwown throw again.
-	}
-	
 	try
 	{
 		ai::manager::raise_sync_network();
@@ -245,6 +250,18 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 				config data;
 				data.add_child("require_random");
 				network::send_data(data,0);
+				did_require = true;
+			}
+			else if (!did_require)
+			{
+				if(resources::gamedata->phase() != game_data::PLAY && resources::gamedata->phase() != game_data::START)
+				{
+					//this is needed becasue sometimes a package gets stuck on the server 
+					//and in this case sending any package can free that package
+					//especialy when this function is called from prestart events where the screen is locked, we don't want to make the user wait.
+					//I currently can only reproduce this bug on local wesnothd (windows 7x64, msvc 32 bit release build), not on the offical server
+					network::send_data(config_of("give_me_a_package", "now"));
+				}
 				did_require = true;
 			}
 			SDL_Delay(10);
