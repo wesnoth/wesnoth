@@ -51,7 +51,7 @@ function ca_simple_attack:evaluation(ai, cfg, self)
     end
 
     if (max_rating > -9e99) then
-        self.data.attack = best_attack
+        self.data.SA_attack = best_attack
         return cfg.ca_score
     end
 
@@ -59,15 +59,15 @@ function ca_simple_attack:evaluation(ai, cfg, self)
 end
 
 function ca_simple_attack:execution(ai, cfg, self)
-    local attacker = wesnoth.get_unit(self.data.attack.src.x, self.data.attack.src.y)
-    local defender = wesnoth.get_unit(self.data.attack.target.x, self.data.attack.target.y)
+    local attacker = wesnoth.get_unit(self.data.SA_attack.src.x, self.data.SA_attack.src.y)
+    local defender = wesnoth.get_unit(self.data.SA_attack.target.x, self.data.SA_attack.target.y)
 
-    AH.movefull_outofway_stopunit(ai, attacker, self.data.attack.dst.x, self.data.attack.dst.y)
+    AH.movefull_outofway_stopunit(ai, attacker, self.data.SA_attack.dst.x, self.data.SA_attack.dst.y)
     if (not attacker) or (not attacker.valid) then return end
     if (not defender) or (not defender.valid) then return end
 
     AH.checked_attack(ai, attacker, defender, (cfg.weapon or -1))
-    self.data.attack = nil
+    self.data.SA_attack = nil
 end
 
 return ca_simple_attack
