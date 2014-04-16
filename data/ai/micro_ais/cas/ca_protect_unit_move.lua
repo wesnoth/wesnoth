@@ -51,7 +51,7 @@ function ca_protect_unit_move:execution(ai, cfg, self)
     -- Also need the goal for this unit
     local goal = {}
     for i,id in ipairs(cfg.id) do
-        if (unit.id == id) then goal = { cfg.goal_x[1], cfg.goal_y[i] } end
+        if (unit.id == id) then goal = { cfg.goal_x[i], cfg.goal_y[i] } end
     end
     --print("Goal:",goal[1],goal[2])
 
