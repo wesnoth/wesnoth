@@ -20,8 +20,7 @@ end
 
 function ca_protect_unit_finish:execution(ai, cfg, self)
     AH.movefull_stopunit(ai, self.data.PU_unit, self.data.PU_goal)
-    self.data.PU_unit = nil
-    self.data.PU_goal = nil
+    self.data.PU_unit, self.data.PU_goal = nil, nil
 end
 
 return ca_protect_unit_finish
