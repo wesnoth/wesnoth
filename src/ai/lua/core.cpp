@@ -37,6 +37,7 @@
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../pathfind/pathfind.hpp"
+#include "../../pathfind/teleport.hpp"
 #include "../../play_controller.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_translation.hpp"
@@ -840,6 +841,117 @@ static int cfun_ai_recalculate_move_maps_enemy(lua_State *L)
 	return 1;
 }
 
+
+/**
+ * Finds a path between two locations and return getNoPathValue to [avoid] locations.
+ * - Args 1,2: source location. (Or Arg 1: unit.)
+ * - Args 3,4: destination.
+ * - Arg 5: optional cost function or
+ *          table (optional fields: ignore_units, ignore_teleport, max_cost, viewing_side).
+ * - Ret 1: array of pairs containing path steps.
+ * - Ret 2: path cost.
+ */
+static int cfun_find_path_obey_avoid(lua_State *L)
+{
+	int arg = 1;
+	map_location src, dst;
+	unit_map &units = *resources::units;
+	const terrain_filter &avoid = get_readonly_context(L).get_avoid(); 
+	const unit *u = NULL;
+
+	if (lua_isuserdata(L, arg))
+	{
+		u = luaW_checkunit(L, 1);
+		src = u->get_location();
+		++arg;
+	}
+	else
+	{
+		src.x = luaL_checkinteger(L, arg) - 1;
+		++arg;
+		src.y = luaL_checkinteger(L, arg) - 1;
+		unit_map::const_unit_iterator ui = units.find(src);
+		if (ui.valid()) u = &*ui;
+		++arg;
+	}
+
+	dst.x = luaL_checkinteger(L, arg) - 1;
+	++arg;
+	dst.y = luaL_checkinteger(L, arg) - 1;
+	++arg;
+
+	if (!resources::game_map->on_board(src))
+		return luaL_argerror(L, 1, "invalid location");
+	if (!resources::game_map->on_board(dst))
+		return luaL_argerror(L, arg - 2, "invalid location");
+
+	std::vector<team> &teams = *resources::teams;
+	gamemap &map = *resources::game_map;
+	int viewing_side = 0;
+	bool ignore_units = false, see_all = false, ignore_teleport = false;
+	double stop_at = 10000;
+	pathfind::cost_calculator *calc = NULL;
+
+	if (lua_istable(L, arg))
+	{
+		lua_pushstring(L, "ignore_units");
+		lua_rawget(L, arg);
+		ignore_units = lua_toboolean(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "ignore_teleport");
+		lua_rawget(L, arg);
+		ignore_teleport = lua_toboolean(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "max_cost");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1))
+			stop_at = luaL_checknumber(L, -1);
+		lua_pop(L, 1);
+
+		lua_pushstring(L, "viewing_side");
+		lua_rawget(L, arg);
+		if (!lua_isnil(L, -1)) {
+			int i = luaL_checkinteger(L, -1);
+			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
+			else see_all = true;
+		}
+		lua_pop(L, 1);
+	}
+
+	pathfind::teleport_map teleport_locations;
+
+	if (!u) return luaL_argerror(L, 1, "unit not found");
+
+	team &viewing_team = teams[(viewing_side ? viewing_side : u->side()) - 1];
+	if (!ignore_teleport) {
+		teleport_locations = pathfind::get_teleport_locations(
+			*u, viewing_team, see_all, ignore_units);
+	}
+	calc = new pathfind::shortest_path_calculator_obey_avoid(*u, viewing_team,
+		teams, map, avoid, ignore_units, false, see_all);
+
+	pathfind::plain_route res = pathfind::a_star_search(src, dst, stop_at, calc, map.w(), map.h(),
+		&teleport_locations);
+	delete calc;
+
+	int nb = res.steps.size();
+	lua_createtable(L, nb, 0);
+	for (int i = 0; i < nb; ++i)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, res.steps[i].x + 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, res.steps[i].y + 1);
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i + 1);
+	}
+	lua_pushinteger(L, res.move_cost);
+
+	return 2;
+}
+
 static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 	//push data table here
 	lua_newtable(L);
@@ -902,6 +1014,9 @@ static void generate_and_push_ai_table(lua_State* L, ai::engine_lua* engine) {
 			{ "check_synced_command", &cfun_ai_check_synced_command },
 			{ "check_attack", &cfun_ai_check_attack },
 			{ "check_recruit", &cfun_ai_check_recruit },
+			//Find_path
+			{ "find_path_obey_avoid" , &cfun_find_path_obey_avoid },
+			//End of find_path
 			//{ "",},
 			//{ "",},
 			{ NULL, NULL } };
