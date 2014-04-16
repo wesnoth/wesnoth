@@ -26,6 +26,7 @@ class unit;
 class unit_type;
 
 #include "map_location.hpp"
+#include "terrain_filter.hpp"
 #include "movetype.hpp"
 
 #include <vector>
@@ -219,6 +220,28 @@ private:
 	bool const ignore_defense_;
 	bool see_all_;
 };
+
+struct shortest_path_calculator_obey_avoid : cost_calculator
+{
+	shortest_path_calculator_with_avoid(const unit& u, const team& t,
+		const std::vector<team> &teams, const gamemap &map,
+		const terrain_filter &avoid, bool ignore_unit = false, 
+		bool ignore_defense_ = false, bool see_all = false);
+	virtual double cost(const map_location& loc, const double so_far) const;
+
+private:
+	unit const &unit_;
+	team const &viewing_team_;
+	std::vector<team> const &teams_;
+	gamemap const &map_;
+	terrain_filter const &avoid_;
+	int const movement_left_;
+	int const total_movement_;
+	bool const ignore_unit_;
+	bool const ignore_defense_;
+	bool see_all_;
+};
+
 
 struct move_type_path_calculator : cost_calculator
 {
