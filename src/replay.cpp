@@ -692,9 +692,9 @@ bool replay::add_start_if_not_there_yet()
 {
 	//this method would confuse the value of 'pos' otherwise
 	assert(pos_ == 0);
-	if(!cfg_.has_child("command") || !cfg_.child("command").has_child("start"))
+	if(at_end() || !cfg_.child("command", pos_).has_child("start"))
 	{
-		cfg_.add_child_at("command",config_of("start", config()),0);
+		cfg_.add_child_at("command",config_of("start", config()),pos_);
 		return true;
 	}
 	else
