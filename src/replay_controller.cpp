@@ -37,6 +37,7 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
+#define ERR_REPLAY LOG_STREAM(err, log_replay)
 
 LEVEL_RESULT play_replay_level(const config& game_config,
 		const config* level, CVideo& video, game_state& state_of_game)
@@ -293,6 +294,10 @@ void replay_controller::reset_replay()
 	// Scenario initialization. (c.f. playsingle_controller::play_scenario())
 	fire_preload();
 	if(true){ //block for set_scontext_synced
+		if(recorder.add_start_if_not_there_yet())
+		{
+			ERR_REPLAY << "inserted missing [start]\n";
+		}
 		config* pstart = recorder.get_next_action();
 		assert(pstart->has_child("start"));
 		/*
