@@ -72,8 +72,10 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 		// Convert options to events
 		level.add_child_at("event", options::to_event(params.options.find_child(
 			"multiplayer", "id", params.mp_scenario)), 0);
-
-		level["next_underlying_unit_id"] = 0;
+		if(!level.has_attribute("next_underlying_unit_id"))
+		{
+			level["next_underlying_unit_id"] = 0;
+		}
 		n_unit::id_manager::instance().clear();
 
 		if (params.random_start_time)
