@@ -363,6 +363,33 @@ set_scontext_local_choice::~set_scontext_local_choice()
 	random_new::generator = old_rng_;
 }
 
+set_scontext_leave_for_draw::set_scontext_leave_for_draw()
+	: previous_state_(synced_context::get_syced_state())
+{
+	if(previous_state_ != synced_context::SYNCED)
+	{
+		return;
+	}
+	synced_context::set_syced_state(synced_context::LOCAL_CHOICE);
+
+	
+	old_rng_ = random_new::generator;
+	//calling the synced rng form inside a local_choice would cause oos.
+	//TODO use a member variable instead if new/delete
+	random_new::generator = new random_new::rng();
+}
+set_scontext_leave_for_draw::~set_scontext_leave_for_draw()
+{
+	if(previous_state_ != synced_context::SYNCED)
+	{
+		return;
+	}
+	assert(synced_context::get_syced_state() == synced_context::LOCAL_CHOICE);
+	synced_context::set_syced_state(synced_context::SYNCED);
+	delete random_new::generator;
+	random_new::generator = old_rng_;
+}
+
 
 
 random_seed_choice::random_seed_choice()
