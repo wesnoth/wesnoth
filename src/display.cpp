@@ -38,6 +38,7 @@
 #include "resources.hpp"
 #include "whiteboard/manager.hpp"
 #include "overlay.hpp"
+#include "synced_context.hpp"
 
 #include "SDL_image.h"
 
@@ -2465,7 +2466,7 @@ void display::draw(bool update,bool force) {
 	if (screen_.update_locked()) {
 		return;
 	}
-
+	set_scontext_leave_for_draw leave_synced_context;
 	local_tod_light_ = has_time_area() && preferences::get("local_tod_lighting", true);
 
 	draw_init();

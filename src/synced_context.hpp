@@ -159,6 +159,22 @@ private:
 };
 
 /*
+	an object to leave the synced context during draw when we dont know whether we are in a synced context or not.
+	if we are in a sanced context we leave the synced context otherwise it has no effect.
+	we need this because we might call lua's wesnoth.theme_items during draw and we dont want to have that an effect on the gamestate in this case.
+*/
+
+class set_scontext_leave_for_draw
+{
+public:
+	set_scontext_leave_for_draw();
+	~set_scontext_leave_for_draw();
+private:
+	random_new::rng* old_rng_;
+	synced_context::syced_state previous_state_;
+};
+
+/*
 	a helper object to server random seed generation.
 */
 class random_seed_choice : public mp_sync::user_choice
