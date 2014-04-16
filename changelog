@@ -12,6 +12,14 @@ Version 1.11.12+dev:
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
        carryover gold.
+ * Engine
+   * MP server now commits controller changes to the replay rather than updating
+     as we go along. Among other things these means that players that join an
+     scenario with ai sides which has already started won't have corrupted 
+     controller types which would prevent them from successfully saving and 
+     reloading in the future. 
+     We have also moved all "controller tweaks" associated to the start of MP 
+     games to server-side rather than having a mix of client and server code.
  * Language and i18n:
    * Updated translations: Hungarian, Italian, Slovak
    * Added missing translation mark for mp-related idle notification string
