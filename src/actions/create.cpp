@@ -998,8 +998,6 @@ bool recall_unit(const std::string & id, team & current_team,
 		resources::screen->invalidate_game_status();
 		// Other updates were done by place_recruit().
 
-	// Record a checksum so the replay can be verified.
-	checkup_instance->unit_checksum(loc);
 	return true;
 }
 
