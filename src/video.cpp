@@ -611,10 +611,15 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 		std::cerr << "No modes supported\n";
 		return result;
 	}
-
-	result.push_back(std::make_pair(getSurface()->w, getSurface()->h));
+	
+	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
+	
+	if (getSurface()->w >= min_res.first && getSurface()->h >= min_res.second)
+		result.push_back(std::make_pair(getSurface()->w, getSurface()->h));
+	
 	for(int i = 0; modes[i] != NULL; ++i) {
-		result.push_back(std::make_pair(modes[i]->w,modes[i]->h));
+		if (modes[i]->w >= min_res.first && modes[i]->h >= min_res.second)
+			result.push_back(std::make_pair(modes[i]->w,modes[i]->h));
 	}
 
 	std::sort(result.begin(), result.end());

@@ -283,9 +283,6 @@ bool show_video_mode_dialog(display& disp)
 
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
-		if(res.first < min_allowed_width() || res.second < min_allowed_height()) {
-			continue;
-		}
 
 		if (res == current_res)
 			current_choice = static_cast<unsigned>(k);
@@ -293,8 +290,9 @@ bool show_video_mode_dialog(display& disp)
 		std::ostringstream option;
 		option << res.first << utils::unicode_multiplication_sign << res.second;
 		const int div = boost::math::gcd(res.first, res.second);
-		if (div >= 10)
-			option << " (" << res.first/div << ':' << res.second/div << ')';
+		const int ratio[2] = {res.first/div, res.second/div};
+		if (ratio[0] <= 10 || ratio[1] <= 10)
+			option << " (" << ratio[0] << ':' << ratio[1] << ')';
 		options.push_back(option.str());
 	}
 
