@@ -460,10 +460,9 @@ config& replay::get_last_real_command()
 		}
 		return c;
 	}
-	ERR_REPLAY << "replay::get_last_real_command called with not existant command.\n";
-	assert(false && "replay::get_last_real_command called with not existant command.");
-	//this code can never be reached because of the assert above so no need to return something.
-	throw "assert didnt work :o";
+	ERR_REPLAY << "replay::get_last_real_command called with no existent command.\n";
+	assert(false && "replay::get_last_real_command called with no existent command.");
+	throw "replay::get_last_real_command called with no existent command.";
 }
 
 
