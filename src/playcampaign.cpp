@@ -40,6 +40,7 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
+#include "unit_id.hpp"
 #include "formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
@@ -629,6 +630,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				}
 
 				params.scenario_data = *scenario;
+				params.scenario_data["next_underlying_unit_id"] = n_unit::id_manager::instance().get_save_id();
 				params.mp_scenario = (*scenario)["id"].str();
 				params.mp_scenario_name = (*scenario)["name"].str();
 				params.num_turns = (*scenario)["turns"].to_int(-1);
