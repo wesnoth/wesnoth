@@ -26,6 +26,7 @@
 #include "actions/create.hpp"
 #include "actions/move.hpp"
 #include "actions/undo.hpp"
+#include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
@@ -687,7 +688,20 @@ static void check_checksums(const config &cfg)
 	}
 }
 
-
+bool replay::add_start_if_not_there_yet()
+{
+	//this method would confuse the value of 'pos' otherwise
+	assert(pos_ == 0);
+	if(!cfg_.has_child("command") || !cfg_.child("command").has_child("start"))
+	{
+		cfg_.add_child_at("command",config_of("start", config()),0);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 static void show_oos_error_error_function(const std::string& message, bool /*heavy*/)
 {
