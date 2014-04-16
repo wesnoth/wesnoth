@@ -283,9 +283,6 @@ bool show_video_mode_dialog(display& disp)
 
 	for(size_t k = 0; k < resolutions.size(); ++k) {
 		std::pair<int, int> const& res = resolutions[k];
-		if(res.first < min_allowed_width() || res.second < min_allowed_height()) {
-			continue;
-		}
 
 		if (res == current_res)
 			current_choice = static_cast<unsigned>(k);
