@@ -100,7 +100,8 @@
 #    wmllint: usage of <unit> is <class>
 # Note that <unit> must be a string wrapped in ASCII doublequotes.  This
 # declaration will be useful if you are declaring units with macros that
-# include a substitutable formal in the unit name; there are examples in UtBS.
+# include a substitutable formal in the unit name; there were examples in
+# UtBS, but they have since been converted to use the [base_unit] tag.
 #
 # If a mismatch between a recruit list and recruitment pattern involves a
 # usage type outside the five core types, the warning message will include a
@@ -1324,10 +1325,10 @@ def global_sanity_check(filename, lines):
     # Interpret various magic comments
     for i in xrange(len(lines)):
         # Interpret magic comments for setting the usage pattern of units.
-        # This copes with some wacky UtBS units that are defined with
+        # This coped with some wacky UtBS units that were defined with
         # variant-spawning macros.  The prototype comment looks like this:
         #wmllint: usage of "Desert Fighter" is fighter
-        m = re.match('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
+        m = re.search('# *wmllint: usage of "([^"]*)" is +(.*)', lines[i])
         if m:
             usage[m.group(1)] = m.group(2).strip()
             unit_types.append(m.group(1))
