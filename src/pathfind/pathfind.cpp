@@ -778,6 +778,100 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
 }
 
+
+shortest_path_calculator_obey_avoid::shortest_path_calculator_obey_avoid(unit const &u, team const &t,
+		std::vector<team> const &teams, gamemap const &map, terrain_filter const &avoid,
+		bool ignore_unit, bool ignore_defense, bool see_all)
+	: unit_(u), viewing_team_(t), teams_(teams), map_(map), avoid_(avoid),
+	  movement_left_(unit_.movement_left()),
+	  total_movement_(unit_.total_movement()),
+	  ignore_unit_(ignore_unit), ignore_defense_(ignore_defense),
+	  see_all_(see_all)
+{}
+
+double shortest_path_calculator_obey_avoid::cost(const map_location& loc, const double so_far) const
+{
+	assert(map_.on_board(loc));
+
+	// loc is shrouded, consider it impassable
+	// NOTE: This is why AI must avoid to use shroud
+	if (!see_all_ && viewing_team_.shrouded(loc))
+		return getNoPathValue();
+
+	if(avoid_.match(loc))
+		return getNoPathValue();
+
+	const t_translation::t_terrain terrain = map_[loc];
+	int const terrain_cost = unit_.movement_cost(terrain);
+	// Pathfinding heuristic: the cost must be at least 1
+	VALIDATE(terrain_cost >= 1, _("Terrain with a movement cost less than 1 encountered."));
+
+	// total MP is not enough to move on this terrain: impassable
+	if (total_movement_ < terrain_cost)
+		return getNoPathValue();
+
+	int other_unit_subcost = 0;
+	if (!ignore_unit_) {
+		const unit *other_unit =
+			get_visible_unit(loc, viewing_team_, see_all_);
+
+		// We can't traverse visible enemy and we also prefer empty hexes
+		// (less blocking in multi-turn moves and better when exploring fog,
+		// because we can't stop on a friend)
+
+		if (other_unit)
+		{
+			if (teams_[unit_.side() - 1].is_enemy(other_unit->side()))
+				return getNoPathValue();
+			else
+				// This value will be used with the defense_subcost (see below)
+				// The 1 here means: consider occupied hex as a -1% defense
+				// (less important than 10% defense because friends may move)
+				other_unit_subcost = 1;
+		}
+	}
+
+	// Compute how many movement points are left in the game turn
+	// needed to reach the previous hex.
+	// total_movement_ is not zero, thanks to the pathfinding heuristic
+	int remaining_movement = movement_left_ - static_cast<int>(so_far);
+	if (remaining_movement < 0)
+		remaining_movement = total_movement_ - (-remaining_movement) % total_movement_;
+
+	// this will sum all different costs of this move
+	int move_cost = 0;
+
+	// Suppose that we have only 2 remaining MP and want to move onto a hex
+	// costing 3 MP. We don't have enough MP now, so we must end our turn here,
+	// thus spend our remaining MP by waiting (next turn, with full MP, we will
+	// be able to move on that hex)
+	if (remaining_movement < terrain_cost) {
+		move_cost += remaining_movement;
+		remaining_movement = total_movement_; // we consider having full MP now
+	}
+
+	// check ZoC
+	if (!ignore_unit_ && remaining_movement != terrain_cost
+	    && enemy_zoc(teams_[unit_.side()-1], loc, viewing_team_, see_all_)
+			&& !unit_.get_ability_bool("skirmisher", loc)) {
+		// entering ZoC cost all remaining MP
+		move_cost += remaining_movement;
+	} else {
+		// empty hex, pay only the terrain cost
+		move_cost += terrain_cost;
+	}
+
+	// We will add a tiny cost based on terrain defense, so the pathfinding
+	// will prefer good terrains between 2 with the same MP cost
+	// Keep in mind that defense_modifier is inverted (= 100 - defense%)
+	const int defense_subcost = ignore_defense_ ? 0 : unit_.defense_modifier(terrain);
+
+	// We divide subcosts by 100 * 100, because defense is 100-based and
+	// we don't want any impact on move cost for less then 100-steps path
+	// (even ~200 since mean defense is around ~50%)
+	return move_cost + (defense_subcost + other_unit_subcost) / 10000.0;
+}
+
 move_type_path_calculator::move_type_path_calculator(const movetype& mt, int movement_left, int total_movement, team const &t, gamemap const &map)
 	: movement_type_(mt), movement_left_(movement_left),
 	  total_movement_(total_movement), viewing_team_(t), map_(map)

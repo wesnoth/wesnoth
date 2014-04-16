@@ -14,6 +14,13 @@ Version 1.13.0-dev:
      Micro AIs.
    * Some internal reorganization of Micro AI code to facilitate customizing
      MAIs for UMC and adding functionality from other versions of Wesnoth
+   * For ai-context Lua API added find_path_obey_avoid (cfun_find_path_obey_avoid) 
+     function which returns cost of path and shortest path  
+     from one location to another represented as lua-table. 
+     find_path_obey_avoid take in account avoidable locations from [ai][avoid] tag. 
+     This locations represented as variable of terrain_filter type 
+     and this variable transmits to cost_calculator (shortest_path_calculator_obey_avoid) 
+     which find shortest_path(or not) without locations which match to our varibale.
  * Campaigns:
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
@@ -42,6 +49,13 @@ Version 1.13.0-dev:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
    * Added support for [elseif] tags inside [if]
+ * Pathfind:
+   * In pathfind added structure (shortest_path_calculator_obey_avoid) 
+     which is inherited from cost_calculator structure.
+     shortest_path_calculator_obey_avoid is similar to shortest_path_calculator. 
+     But new structure has member of terrain_filter type. 
+     And cost_function of shortest_path_calculator_obey_avoid returns NoGetPathValue() 
+     if necessary location match to member of terrain_filter.
  * Miscellaneous and bug fixes:
    * Fix Fisher-Yates implemenation of Lua helper.shuffle (bug #21706)
    * Fixed issues with the ~BG() image path function not always working with
