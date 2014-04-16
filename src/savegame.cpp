@@ -582,9 +582,12 @@ void loadgame::load_game(
 	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
 	gamestate_.classification().version = load_config_["version"].str();
-	std::string load_config_difficulty =
-		load_config_.child("carryover_sides_start")["difficulty"];
-	gamestate_.classification().difficulty = load_config_difficulty;
+	if (config & carryover_sides_start = load_config_.child("carryover_sides_start")) {
+		std::string load_config_difficulty = carryover_sides_start["difficulty"];
+		gamestate_.classification().difficulty = load_config_difficulty;
+	} else {
+		gamestate_.classification().difficulty = difficulty_;
+	}
 
 	check_version_compatibility();
 
