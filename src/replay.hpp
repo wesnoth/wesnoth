@@ -127,7 +127,11 @@ public:
 	int ncommands() const;
 
 	static void process_error(const std::string& msg);
-
+	/*
+		adds a [start] at the begnning of the replay if there is none.
+		returns true if a [start] was added.
+	*/
+	bool add_start_if_not_there_yet();
 private:
 
 	void add_chat_log_entry(const config &speak, std::back_insert_iterator< std::vector<chat_msg> > &i) const;
