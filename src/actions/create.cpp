@@ -771,8 +771,12 @@ namespace { // Helpers for place_recruit()
 	/**
 	 * Performs a checksum check on a newly recruited/recalled unit.
 	 */
-	void recruit_checksums(const unit &new_unit, bool /*wml_triggered*/)
+	void recruit_checksums(const unit &new_unit, bool wml_triggered)
 	{
+		if(wml_triggered)
+		{
+			return;
+		}
 		const std::string checksum = get_checksum(new_unit);
 		config original_checksum_config;
 
