@@ -40,6 +40,9 @@ Version 1.11.12+dev:
    * Disable notifications should now work for other desktops besides KDE.
    * Fix bug in blindfold which could cause OOS.
    * Fix bug #21914: allow drake walking corpse variation to move on unwalkable
+   * Fix unnecessary "Mandatory WML Child not found" error when replay file 
+     doesn't have a [carryover_sides_start] tag
+   * Server now generates PR 121 compliant replay files.
 
 Version 1.11.12:
  * AI:
