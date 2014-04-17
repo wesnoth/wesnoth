@@ -839,7 +839,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	current_controller_index_(0),
 	controller_options_(),
 	allow_player_(cfg["allow_player"].to_bool(true)),
-	allow_changes_(cfg["allow_changes"].to_bool(true)),
+	allow_changes_(!parent_.params_.saved_game && cfg["allow_changes"].to_bool(true)),
 	controller_lock_(cfg["controller_lock"].to_bool(
 		parent_.force_lock_settings_)),
 	index_(index),
@@ -1017,7 +1017,7 @@ config side_engine::new_config() const
 	}
 
 	res["name"] = res["user_description"];
-	res["allow_changes"] = !parent_.params_.saved_game && allow_changes_;
+	res["allow_changes"] = allow_changes_;
 	res["chose_random"] = chose_random_;
 
 	if (!parent_.params_.saved_game) {
