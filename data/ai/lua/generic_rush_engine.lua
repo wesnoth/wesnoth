@@ -508,7 +508,7 @@ return {
         ------- Place Healers CA --------------
 
         function generic_rush:place_healers_eval()
-            if HS:evaluation(ai, nil, self) > 0 then
+            if HS:evaluation(ai, {}, self) > 0 then
                 return 95000
             end
             return 0
