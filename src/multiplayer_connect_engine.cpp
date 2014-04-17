@@ -31,8 +31,8 @@ static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
 static lg::log_domain log_mp_connect_engine("mp/connect/engine");
-#define DBG_MP LOG_STREAM(debug, log_mp_connect_engine)
 #define LOG_MP LOG_STREAM(info, log_mp_connect_engine)
+#define DBG_MP LOG_MP
 
 static lg::log_domain log_network("network");
 #define LOG_NW LOG_STREAM(info, log_network)
@@ -860,6 +860,8 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	if (side_cntr != -1) {
 		current_player_ = lexical_cast<std::string>(side_cntr);
 	}
+
+	LOG_MP << "Made a side engine: side_cntr = " << side_cntr << " allow_changes = " << allow_changes_ << std::endl;
 
 	update_controller_options();
 
