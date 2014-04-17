@@ -20,6 +20,9 @@ Version 1.11.12:
    * Dropped sides now default to idle rather than human control, this fixes an
      issue with the host immediately getting vision of dropped sides in some cases
    * Disable notifications should now work for other desktops besides KDE.
+   * The replay viewer now proceeds through sides with empty controllers when
+     using the "play_side" button, thus matching the behavior of the rest of
+     wesnoth. Bug fix #21025.
 
 Version 1.11.12:
  * Campaigns:
