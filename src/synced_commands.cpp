@@ -298,16 +298,16 @@ SYNCED_COMMAND_HANDLER_FUNCTION(fire_event, child,  /*use_undo*/, /*show*/, /*er
 	}
 	bool undoable = true;
 
-	if(const config &source = child.child("source"))
+	if(const config &last_select = child.child("last_select"))
 	{
-		//the select event cannot clear he undo stack.
-		game_events::fire("select", map_location(source, resources::gamedata));
+		//the select event cannot clear the undo stack.
+		game_events::fire("select", map_location(last_select, resources::gamedata));
 	}
-	const std::string &event = child["raise"];
+	const std::string &event_name = child["raise"];
 	if (const config &source = child.child("source")) {
-		undoable = undoable & !game_events::fire(event, map_location(source, resources::gamedata));
+		undoable = undoable & !game_events::fire(event_name, map_location(source, resources::gamedata));
 	} else {
-		undoable = undoable & !game_events::fire(event);
+		undoable = undoable & !game_events::fire(event_name);
 	}
 	if ( !undoable)
 		resources::undo_stack->clear();
