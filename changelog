@@ -20,6 +20,14 @@ Version 1.11.12+dev:
      reloading in the future. 
      We have also moved all "controller tweaks" associated to the start of MP 
      games to server-side rather than having a mix of client and server code.
+   * When players leave while they have to do an advancement choice, 
+     the advancement isn't aborted. Instead the next player has to do the
+     advancement choice immediately after gaining control over that side.
+   * All random generation now behaves like the rng for attacks used to behave. 
+     That means the server will generate a new seed for every user action that used rng.
+     Especially units traits now differ when you reload a game, this prevents a
+     cheat where players could see what traits would get when they recruit units
+     in a mp game.
  * Language and i18n:
    * Updated translations: Czech, French, Hungarian, Italian, Slovak
    * Added missing translation mark for mp-related idle notification string
@@ -48,6 +56,12 @@ Version 1.11.12+dev:
    * Fix bug #21025: replay controller doesn't execute play_next_side properly
    * Fix bug #21916: ready blocked at inappropriate times
    * Fix GUI2 borders around selected elements
+ * WML engine:
+   * [get_global_variable] now works properly when side != current_side.
+   * Fix bug #20871: Attack related events are now mpsave.
+   * Start and prestart events are now mpsave.
+     (but UI things like [message][option] don't work during prestart event)
+   * Invoking the rng will now always make undoing impossible.
 
 Version 1.11.12:
  * AI:
