@@ -4140,8 +4140,12 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	if (!ui.valid()) return false;
 
 	// Get the user filter by name.
-	luaW_getglobal(L, name, NULL);
-
+	if(!luaW_getglobal(L, name, NULL))
+	{
+		chat_message("Lua SUF Error", std::string() + "function " + name + " not found");
+		//we pushed nothing and can safeley return.
+		return false;
+	}
 	// Pass the unit as argument.
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
 	lua_pushlightuserdata(L
