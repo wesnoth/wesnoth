@@ -334,6 +334,9 @@ void replay_controller::replay_next_side(){
 	replay_ui_playback_should_start();
 
 	play_side(player_number_ - 1, false);
+	while (current_team().is_empty()) {
+		play_side(player_number_ - 1, false);
+	}
 
 	if (!skip_replay_ || !is_playing_) {
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
