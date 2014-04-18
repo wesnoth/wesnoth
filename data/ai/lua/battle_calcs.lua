@@ -1131,8 +1131,10 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
     -- MP left off the map (for enemy pathfinding)
     local units_MP = {}
     if (unit.side ~= wesnoth.current.side) then
-        units_MP = wesnoth.get_units { side = wesnoth.current.side, formula = '$this_unit.moves > 0' }
-        for _,uMP in ipairs(units_MP) do wesnoth.extract_unit(uMP) end
+        local all_units = wesnoth.get_units { side = wesnoth.current.side }
+        for _,unit in ipairs(all_units) do
+            if (unit.moves > 0) then table.insert(units_MP, unit) end
+        end
     end
 
     -- Find hexes the unit can reach
