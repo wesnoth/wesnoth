@@ -124,10 +124,10 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	linger_(false),
 	it_is_a_new_turn_(true),
 	init_side_done_(true),
+	remove_from_carryover_on_leaders_loss_(true),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
-	remove_from_carryover_on_leaders_loss_(true),
 	end_level_data_(),
 	victory_music_(),
 	defeat_music_(),
@@ -1386,13 +1386,10 @@ void play_controller::set_defeat_music_list(const std::string& list)
 		defeat_music_ = utils::split(game_config::default_defeat_music);
 }
 
-void play_controller::check_victory()
-{
-	check_end_level();
-
+std::set<unsigned> play_controller::get_undefeated_sides() const {
 	std::set<unsigned> not_defeated;
 	for (unit_map::const_iterator i = units_.begin(),
-	     i_end = units_.end(); i != i_end; ++i)
+	i_end = units_.end(); i != i_end; ++i)
 	{
 		if (i->can_recruit()) {
 			DBG_NG << "seen leader for side " << i->side() << "\n";
@@ -1403,22 +1400,14 @@ void play_controller::check_victory()
 		}
 	}
 
-	// Clear villages for teams that have no leader and
-	// mark side as lost if it should be removed from carryover.
-	for (std::vector<team>::iterator tm_beg = teams_.begin(), tm = tm_beg,
-	     tm_end = teams_.end(); tm != tm_end; ++tm)
-	{
-		if (not_defeated.find(tm - tm_beg + 1) == not_defeated.end()) {
-			tm->clear_villages();
-			// invalidate_all() is overkill and expensive but this code is
-			// run rarely so do it the expensive way.
-			gui_->invalidate_all();
+	return not_defeated;
+}
 
-			if (!tm->fight_on_without_leader() && remove_from_carryover_on_leaders_loss_) {
-				tm->set_lost();
-			}
-		}
-	}
+void play_controller::check_victory()
+{
+	check_end_level();
+
+	std::set<unsigned> not_defeated = get_undefeated_sides();
 
 	bool found_player = false;
 

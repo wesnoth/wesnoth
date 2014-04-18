@@ -151,6 +151,11 @@ public:
 	 */
 	void check_victory();
 
+	/**
+	 * Return the currently undefeated sides as set.
+	 */
+	std::set<unsigned> get_undefeated_sides() const;
+
 	size_t turn() const {return tod_manager_.turn();}
 
 	/** Returns the number of the side whose turn it is. Numbering starts at one. */
@@ -256,6 +261,7 @@ protected:
 	bool linger_;
 	bool it_is_a_new_turn_;
 	bool init_side_done_;
+	bool remove_from_carryover_on_leaders_loss_;
 
 	const std::string& select_victory_music() const;
 	const std::string& select_defeat_music()  const;
@@ -282,7 +288,6 @@ private:
 	std::vector<const_item_ptr> wml_commands_;
 
 	bool victory_when_enemies_defeated_;
-	bool remove_from_carryover_on_leaders_loss_;
 	end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
