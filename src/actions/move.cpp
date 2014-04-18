@@ -36,6 +36,7 @@
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../synced_context.hpp"
+#include "../play_controller.hpp"
 #include "../resources.hpp"
 #include "../unit_display.hpp"
 #include "../formula_string_utils.hpp"
@@ -1254,7 +1255,9 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	*/
 	recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
 	set_scontext_synced sync;
-	return move_unit_internal(undo_stack, show_move, interrupted, mover);
+	bool r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
+	resources::controller->check_victory();
+	return r;
 }
 
 size_t move_unit_from_replay(const std::vector<map_location> &steps,
