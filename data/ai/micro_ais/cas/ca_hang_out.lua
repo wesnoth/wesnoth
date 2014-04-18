@@ -119,7 +119,7 @@ function ca_hang_out:execution(ai, cfg, self)
 
     -- If no valid locations/units were found or all units are in their
     -- respective best locations already, we take moves away from all units
-    if (max_rating == -9e99) then
+    if (not best_unit) then
         for _,unit in ipairs(units) do
             AH.checked_stopunit_moves(ai, unit)
 

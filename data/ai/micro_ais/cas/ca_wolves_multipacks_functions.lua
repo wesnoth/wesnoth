@@ -67,7 +67,7 @@ function wolves_multipacks_functions.assign_packs(cfg)
                     best_wolf, best_ind = wolf, ind
                 end
             end
-            if (min_dist < 9e99) then
+            if best_wolf then
                 table.insert(packs[pack_number], { x = best_wolf.x, y = best_wolf.y, id = best_wolf.id })
                 MAIUV.set_mai_unit_variables(best_wolf, cfg.ai_id, { pack_number = pack_number })
                 table.remove(nopack_wolves, best_ind)

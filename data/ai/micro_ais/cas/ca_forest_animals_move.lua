@@ -94,7 +94,7 @@ function ca_forest_animals_move:execution(ai, cfg)
                     AH.checked_move(ai, unit, reachable_wander_terrain[rand][1], reachable_wander_terrain[rand][2])
                 end
             else  -- Or if no close reachable terrain was found, move toward the closest
-                local best_hex, min_dist = {}, 9e99
+                local min_dist, best_hex = 9e99
                 for _,loc in ipairs(wander_locs) do
                     local dist = H.distance_between(loc[1], loc[2], unit.x, unit.y)
                     if dist < min_dist then
@@ -102,7 +102,7 @@ function ca_forest_animals_move:execution(ai, cfg)
                     end
                 end
 
-                if (best_hex[1]) then
+                if (best_hex) then
                     local x,y = wesnoth.find_vacant_tile(best_hex[1], best_hex[2], unit)
                     local next_hop = AH.next_hop(unit, x, y)
 

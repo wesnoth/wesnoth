@@ -37,7 +37,7 @@ function ca_stationed_guardian:execution(ai, cfg)
     -- Otherwise, guardian will either attack or move toward station
     -- Enemies must be within cfg.distance of guardian, (s_x, s_y) *and* (g_x, g_y)
     -- simultaneously for guardian to attack
-    local target, min_dist = {}, 9e99
+    local min_dist, target = 9e99
     for _,enemy in ipairs(enemies) do
         local dist_s = H.distance_between(cfg.station_x, cfg.station_y, enemy.x, enemy.y)
         local dist_g = H.distance_between(cfg.guard_x, cfg.guard_y, enemy.x, enemy.y)
@@ -49,10 +49,10 @@ function ca_stationed_guardian:execution(ai, cfg)
     end
 
     -- If a valid target was found, guardian attacks this target, or moves toward it
-    if (min_dist < 9e99) then
+    if target then
         -- Find tiles adjacent to the target
         -- Save the one with the highest defense rating that guardian can reach
-        local best_defense, attack_loc = -9e99, {}
+        local best_defense, attack_loc = -9e99
         for xa,ya in H.adjacent_tiles(target.x, target.y) do
             -- Only consider unoccupied hexes
             local occ_hex = wesnoth.get_units { x = xa, y = ya, { "not", { id = guardian.id } } }[1]
@@ -68,7 +68,7 @@ function ca_stationed_guardian:execution(ai, cfg)
         end
 
         -- If a valid hex was found: move there and attack
-        if (best_defense ~= -9e99) then
+        if attack_loc then
             AH.movefull_stopunit(ai, guardian, attack_loc)
             if (not guardian) or (not guardian.valid) then return end
             if (not target) or (not target.valid) then return end
@@ -79,7 +79,7 @@ function ca_stationed_guardian:execution(ai, cfg)
 
             -- Go through all hexes the guardian can reach, find closest to target
             -- Cannot use next_hop here since target hex is occupied by enemy
-            local nh, min_dist = {}, 9e99
+            local min_dist, nh = 9e99
             for _,hex in ipairs(reach) do
                 -- Only consider unoccupied hexes
                 local occ_hex = wesnoth.get_units { x = hex[1], y = hex[2], { "not", { id = guardian.id } } }[1]
