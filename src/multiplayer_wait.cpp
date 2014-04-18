@@ -38,6 +38,7 @@ static lg::log_domain log_network("network");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
+#define DBG_RG LOG_STREAM(debug, log_enginerefac)
 
 namespace {
 
@@ -225,6 +226,10 @@ void wait::join_game(bool observe)
 		return;
 	}
 
+	DBG_RG << "*** wait::join_game: downloaded level data, here it is: " << std::endl;
+	DBG_RG << level_.debug() << std::endl;
+	DBG_RG << "***" << std::endl;
+
 	if (first_scenario_) {
 		state_ = game_state();
 		state_.classification().campaign_type = "multiplayer";
@@ -258,6 +263,10 @@ void wait::join_game(bool observe)
 		int side_num = -1, nb_sides = 0;
 		BOOST_FOREACH(const config &sd, level_.child_range("side"))
 		{
+			DBG_RG << "wait::join_game: considering a side: " << std::endl;
+			DBG_RG << "***" << std::endl;
+			DBG_RG << sd.debug() << std::endl;
+			DBG_RG << "***" << std::endl;
 			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
 			{
 				side_choice = &sd;
@@ -287,6 +296,8 @@ void wait::join_game(bool observe)
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
+		LOG_RG << "multiplayer_wait: allow_changes = " << allow_changes << std::endl;
+
 		if(allow_changes) {
 			events::event_context context;
 
