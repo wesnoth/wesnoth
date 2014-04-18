@@ -1226,10 +1226,10 @@ function ai_helper.get_attacks(units, cfg)
             -- If there's no unit of another side on this hex, include it
             -- as possible attack location (this includes hexes occupied
             -- by own units at this time)
-            if (not other_unit_map:get(xa, xa)) then
-                local target_table = attack_hex_map:get(xa, xa) or {}
+            if (not other_unit_map:get(xa, ya)) then
+                local target_table = attack_hex_map:get(xa, ya) or {}
                 table.insert(target_table, { x = e_x, y = e_y, i = i })
-                attack_hex_map:insert(xa, xa, target_table)
+                attack_hex_map:insert(xa, ya, target_table)
             end
         end
     end)
