@@ -7,7 +7,7 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Release">
+			<Target title="release">
 				<Option output="../../wesnoth" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../" />
 				<Option object_output=".objs-release" />
@@ -22,7 +22,7 @@
 					<SilentBuild command="scons -C ../.. build=$target wesnoth" />
 				</MakeCommands>
 			</Target>
-			<Target title="Debug">
+			<Target title="debug">
 				<Option output="../../wesnoth-debug" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="../../" />
 				<Option object_output=".objs-debug" />
