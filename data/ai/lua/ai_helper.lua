@@ -1365,12 +1365,13 @@ function ai_helper.get_attack_combos_full(units, enemy)
     -- Return value:
     --   1. Attack combinations in form { dst = src }
 
-    local attacks = ai_helper.get_attacks(units)
+    local all_attacks = ai_helper.get_attacks(units)
 
     -- Eliminate those that are not on @enemy
-    for i = #attacks,1,-1 do
-        if (attacks[i].target.x ~= enemy.x) or (attacks[i].target.y ~= enemy.y) then
-            table.remove(attacks, i)
+    local attacks = {}
+    for _,attack in ipairs(all_attacks) do
+        if (attack.target.x == enemy.x) and (attack.target.y == enemy.y) then
+            table.insert(attacks, attack)
         end
     end
     if (not attacks[1]) then return {} end
@@ -1515,6 +1516,7 @@ function ai_helper.get_attack_combos(units, enemy, cfg)
     end
 
     -- This last step eliminates the "empty attack combo" (the one with all zeros)
+    -- Since this is only one, it's okay to use table.remove (even though it's slow)
     table.remove(attack_array, i_empty)
 
     return attack_array
