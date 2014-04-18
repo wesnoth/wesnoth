@@ -151,6 +151,25 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_end_level()
 {
+	std::set<unsigned> not_defeated = get_undefeated_sides();
+
+	// Clear villages for teams that have no leader and
+	// mark side as lost if it should be removed from carryover.
+	for (std::vector<team>::iterator tm_beg = teams_.begin(), tm = tm_beg,
+		 tm_end = teams_.end(); tm != tm_end; ++tm)
+	{
+		if (not_defeated.find(tm - tm_beg + 1) == not_defeated.end()) {
+			tm->clear_villages();
+			// invalidate_all() is overkill and expensive but this code is
+			// run rarely so do it the expensive way.
+			gui_->invalidate_all();
+
+			if (!tm->fight_on_without_leader() && remove_from_carryover_on_leaders_loss_) {
+				tm->set_lost();
+			}
+		}
+	}
+
 	if (level_result_ == NONE || linger_)
 	{
 		team &t = teams_[gui_->viewing_team()];
