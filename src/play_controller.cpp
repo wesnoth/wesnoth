@@ -924,11 +924,11 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 	case hotkey::HOTKEY_MINIMAP_DRAW_TERRAIN:
 	case hotkey::HOTKEY_MINIMAP_DRAW_VILLAGES:
 	case hotkey::HOTKEY_NULL:
+	case hotkey::HOTKEY_SAVE_REPLAY:
 		return true;
 
 	// Commands that have some preconditions:
 	case hotkey::HOTKEY_SAVE_GAME:
-	case hotkey::HOTKEY_SAVE_REPLAY:
 		return !events::commands_disabled;
 
 	case hotkey::HOTKEY_SHOW_ENEMY_MOVES:
