@@ -792,7 +792,7 @@ void playsingle_controller::play_human_turn() {
 	end_turn_enable(true);
 	while(!end_turn_) {
 		play_slice();
-		check_end_level();
+		check_victory();
 		gui_->draw();
 	}
 }
@@ -989,7 +989,7 @@ void playsingle_controller::check_time_over(){
 			ai_testing::log_draw();
 		}
 
-		check_end_level();
+		check_victory();
 		throw end_level_exception(DEFEAT);
 	}
 }

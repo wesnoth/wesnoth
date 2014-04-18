@@ -569,7 +569,7 @@ void play_controller::fire_start(bool execute){
 	if(execute) {
 		gamedata_.set_phase(game_data::START);
 		game_events::fire("start");
-		check_end_level();
+		check_victory();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
 		gamedata_.get_variable("turn_number") = int(start_turn_);
@@ -1376,8 +1376,6 @@ void play_controller::set_defeat_music_list(const std::string& list)
 
 void play_controller::check_victory()
 {
-	check_end_level();
-
 	std::set<unsigned> not_defeated;
 	for (unit_map::const_iterator i = units_.begin(),
 	     i_end = units_.end(); i != i_end; ++i)
@@ -1407,6 +1405,8 @@ void play_controller::check_victory()
 			}
 		}
 	}
+
+	check_end_level();
 
 	bool found_player = false;
 
