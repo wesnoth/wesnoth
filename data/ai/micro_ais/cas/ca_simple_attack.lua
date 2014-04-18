@@ -29,7 +29,7 @@ function ca_simple_attack:evaluation(ai, cfg, self)
     local attacks = AH.get_attacks(units, { include_occupied = true })
     if (not attacks[1]) then return 0 end
 
-    local max_rating, best_attack = -9e99, {}
+    local max_rating, best_attack = -9e99
     for _, att in ipairs(attacks) do
         local valid_target = true
         if cfg.filter_second and (not enemy_map:get(att.target.x, att.target.y)) then
@@ -44,13 +44,12 @@ function ca_simple_attack:evaluation(ai, cfg, self)
             local rating = BC.attack_rating(attacker, enemy, dst)
 
             if (rating > max_rating) then
-                max_rating = rating
-                best_attack = att
+                max_rating, best_attack = rating, att
             end
         end
     end
 
-    if (max_rating > -9e99) then
+    if best_attack then
         self.data.SA_attack = best_attack
         return cfg.ca_score
     end

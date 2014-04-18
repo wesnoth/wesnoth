@@ -65,7 +65,7 @@ function ca_healer_move:evaluation(ai, cfg, self)
 
     local avoid_map = LS.of_pairs(ai.get_avoid())
 
-    local max_rating, best_hex = -9e99
+    local max_rating, best_healer, best_hex = -9e99
     for _,healer in ipairs(healers) do
         local reach = wesnoth.find_reach(healer)
 
@@ -118,7 +118,7 @@ function ca_healer_move:evaluation(ai, cfg, self)
         end
     end
 
-    if (max_rating > -9e99) then
+    if best_healer then
         self.data.HS_unit, self.data.HS_hex = best_healer, best_hex
         return score
     end

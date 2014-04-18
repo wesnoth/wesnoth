@@ -36,7 +36,7 @@ function ca_wolves_move:execution(ai, cfg)
     local avoid_map = BC.get_attack_map(avoid_units).units
 
     -- Find prey that is closest to the wolves
-    local target, min_dist = {}, 9e99
+    local min_dist, target = 9e99
     for _,prey_unit in ipairs(prey) do
         local dist = 0
         for _,wolf in ipairs(wolves) do

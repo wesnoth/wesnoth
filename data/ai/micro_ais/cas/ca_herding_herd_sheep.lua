@@ -42,7 +42,7 @@ function ca_herding_herd_sheep:execution(ai, cfg)
     local dogs = get_dogs(cfg)
     local sheep_to_herd = get_sheep_to_herd(cfg)
 
-    local max_rating, best_dog, best_hex = -9e99, {}, {}
+    local max_rating, best_dog, best_hex = -9e99
     local c_x, c_y = cfg.herd_x, cfg.herd_y
     for _,single_sheep in ipairs(sheep_to_herd) do
         -- Farthest sheep goes first
