@@ -30,7 +30,12 @@
 
 class config;
 
+//TODO: will this compile for msvc <= 2010 which has a bug when it comes to forward declaring return values?
+struct SDL_RWops;
+
 namespace filesystem {
+	
+SDL_RWops* load_RWops(const std::string &path);
 
 /** An exception object used when an IO error occurs */
 struct io_exception : public game::error {
