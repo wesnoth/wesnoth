@@ -599,8 +599,11 @@ linechanges = (
         ("misc/schedule-underground.png","misc/time-schedules/schedule-underground.png"),
         ("misc/schedule-underground-illum.png","misc/time-schedules/schedule-underground-illum.png"),
 
-        ("misc/tod-schedule-24hrs.png","misc/time-schedules/tod-schedule-24hrs.png")
-
+        ("misc/tod-schedule-24hrs.png","misc/time-schedules/tod-schedule-24hrs.png"),
+        
+        # Changed before 1.13.0 to fix frames for ragged flags
+        ('FLAG_VARIANT ragged','FLAG_VARIANT6 ragged'),
+        ('FLAG_VARIANT "ragged"','FLAG_VARIANT6 ragged')
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
