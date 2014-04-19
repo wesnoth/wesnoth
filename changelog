@@ -35,6 +35,9 @@ Version 1.11.12+dev:
      Especially units traits now differ when you reload a game, this prevents a
      cheat where players could see what traits would get when they recruit units
      in a mp game.
+   * Fix bug #21933: "team._info.lost not properly set when ending with [endlevel]"
+   * Fix a bug where a scenario didn't end when units were killed during moveto 
+     or wml menu events and the side had no leader left.
  * Language and i18n:
    * Updated translations: Czech, French, Hungarian, Italian, Slovak
    * Added missing translation mark for mp-related idle notification string
