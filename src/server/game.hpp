@@ -115,7 +115,8 @@ public:
 	void update_game();
 
 	/** A user (player only?) asks for the next scenario to advance to. */
-	void load_next_scenario(const player_map::const_iterator user) const;
+	void load_next_scenario(const player_map::const_iterator user); //const
+	// iceiceice: I unmarked this const because I want to send and record server messages when I fail to tweak sides properly
 
 	/** Resets the side configuration according to the scenario data. */
 	void update_side_data();

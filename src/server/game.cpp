@@ -1257,10 +1257,54 @@ void game::send_user_list(const network::connection exclude) const {
 	send_data(cfg, exclude);
 }
 
-void game::load_next_scenario(const player_map::const_iterator user) const {
+void game::load_next_scenario(const player_map::const_iterator user) {
 	send_server_message_to_all(user->second.name() + " advances to the next scenario", user->first);
 	simple_wml::document cfg_scenario;
-	level_.root().copy_into(cfg_scenario.root().add_child("next_scenario"));
+	simple_wml::node & next_scen = cfg_scenario.root().add_child("next_scenario");
+	level_.root().copy_into(next_scen);
+
+	const simple_wml::node::child_list & sides = next_scen.children("side");
+
+	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl; 
+	DBG_GAME << debug_sides_info() << std::endl;
+	DBG_GAME << "****" << std::endl;
+
+	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
+		if ((**s)["controller"] != "null") {
+			int side_num = (**s)["side"].to_int() - 1;
+			
+			if (sides_[side_num] == 0) {
+				sides_[side_num] = owner_;
+				std::stringstream msg;
+				msg << "Side "  << side_num + 1 << " had no controller while a client was loading next scenario! The host was assigned control.";
+				LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
+				send_and_record_server_message(msg.str());
+			} else if (sides_[side_num] == user->first) {
+				if (side_controllers_[side_num] == "human") {
+					(*s)->set_attr("controller", "human");
+				} else if (side_controllers_[side_num] == "ai") {
+					(*s)->set_attr("controller", "ai");
+				} else {
+					std::stringstream msg;
+					msg << "Side " << side_num + 1 << " had unexpected side_controller = " << side_controllers_[side_num] << " on server side.";
+					LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
+					send_and_record_server_message(msg.str());
+				}
+			} else {
+				if (side_controllers_[side_num] == "human") {
+					(*s)->set_attr("controller", "network");
+				} else if (side_controllers_[side_num] == "ai") {
+					(*s)->set_attr("controller", "network_ai");
+				} else {
+					std::stringstream msg;
+					msg << "Side " << side_num + 1 << " had unexpected side_controller = " << side_controllers_[side_num] << " on server side.";
+					LOG_GAME << msg.str() << " (game id: " << id_ << ")\n";
+					send_and_record_server_message(msg.str());
+				}
+			}
+		}
+	}
+
 	if (!wesnothd::send_to_one(cfg_scenario, user->first)) return;
 	// Send the player the history of the game to-date.
 	send_history(user->first);
