@@ -6,7 +6,7 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
 local function get_escorts(cfg)
-    local escorts = AH.get_units_with_movesssss {
+    local escorts = AH.get_units_with_moves {
         side = wesnoth.current.side,
         { "and", cfg.filter_second }
     }
