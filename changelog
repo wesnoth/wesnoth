@@ -7,23 +7,30 @@ Version 1.11.12+dev:
      turn or after changing the Micro AI settings.
    * Bug fix for requiring unnecessary keys for removal of several Micro AIs
    * Some internal reorganization of Micro AI code to facilitate customizing
-     them for UMC and adding functionality from other versions of Wesnoth
+     them for UMC and adding functionality from other versions of Wesnoth. Some
+     code cleanup for consistency, readability and speed, as well as fixing of
+     some minor and subtle bugs.
  * Campaigns:
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
        carryover gold.
+   * Son of the Black Eye: some minor changes
+     * S2: adjusted starting villages; scenario now ends if Kapou'e is already
+       on the signpost when the messenger comes back
+     * S3: make objectives consistent between before and after trolls appear
+     * S6: remove AI controller.  It doesn't work with sides without a leader
  * Engine
    * MP server now commits controller changes to the replay rather than updating
      as we go along. Among other things these means that players that join an
-     scenario with ai sides which has already started won't have corrupted 
-     controller types which would prevent them from successfully saving and 
-     reloading in the future. 
-     We have also moved all "controller tweaks" associated to the start of MP 
+     scenario with ai sides which has already started won't have corrupted
+     controller types which would prevent them from successfully saving and
+     reloading in the future.
+     We have also moved all "controller tweaks" associated to the start of MP
      games to server-side rather than having a mix of client and server code.
-   * When players leave while they have to do an advancement choice, 
+   * When players leave while they have to do an advancement choice,
      the advancement isn't aborted. Instead the next player has to do the
      advancement choice immediately after gaining control over that side.
-   * All random generation now behaves like the rng for attacks used to behave. 
+   * All random generation now behaves like the rng for attacks used to behave.
      That means the server will generate a new seed for every user action that used rng.
      Especially units traits now differ when you reload a game, this prevents a
      cheat where players could see what traits would get when they recruit units
@@ -50,7 +57,7 @@ Version 1.11.12+dev:
    * Disable notifications should now work for other desktops besides KDE.
    * Fix bug in blindfold which could cause OOS.
    * Fix bug #21914: allow drake walking corpse variation to move on unwalkable
-   * Fix unnecessary "Mandatory WML Child not found" error when replay file 
+   * Fix unnecessary "Mandatory WML Child not found" error when replay file
      doesn't have a [carryover_sides_start] tag
    * Server now generates PR 121 compliant replay files.
    * Fix bug #21025: replay controller doesn't execute play_next_side properly
