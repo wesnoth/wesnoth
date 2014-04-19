@@ -13,11 +13,18 @@ Version 1.13.0-dev:
      mechanism and applied to other CAs as well, but it was most visible in the
      Micro AIs.
    * Some internal reorganization of Micro AI code to facilitate customizing
-     MAIs for UMC and adding functionality from other versions of Wesnoth
+     them for UMC and adding functionality from other versions of Wesnoth. Some
+     code cleanup for consistency, readability and speed, as well as fixing of
+     some minor and subtle bugs.
  * Campaigns:
    * Eastern Invasion:
      * In 'Captured', stolen gold won't be mentioned if the player had no
        carryover gold.
+   * Son of the Black Eye: some minor changes
+     * S2: adjusted starting villages; scenario now ends if Kapou'e is already
+       on the signpost when the messenger comes back
+     * S3: make objectives consistent between before and after trolls appear
+     * S6: remove AI controller.  It doesn't work with sides without a leader
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
@@ -90,12 +97,12 @@ Version 1.13.0-dev:
    * Changed: Don't use the random generator for units with no names.
    * Fix bug #21910: code for game is ready bell is corrected, simplified, and
      moved to mp_connect::process_network_data.
-   * Deliver desktop notifications in tandem with "game is ready" bell and 
+   * Deliver desktop notifications in tandem with "game is ready" bell and
      also the "game has begun" bell.
    * Disable notifications preference now works in all platforms, not just DBUS.
    * Fix bug in which blindfold could cause OOS.
    * Fix bug #21914: allow drake walking corpse variation to move on unwalkable
-   * Fix unnecessary "Mandatory WML Child not found" error when replay file 
+   * Fix unnecessary "Mandatory WML Child not found" error when replay file
      doesn't have a [carryover_sides_start] tag
    * Server now generates PR 121 compliant replay files.
    * Fix bug #21025: replay controller doesn't execute play_next_side properly
