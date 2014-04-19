@@ -538,7 +538,7 @@ void game::change_controller(const size_t side_num,
 	send_data(response, sock);
 	if (started_) { //this is added instead of the if (started_) {...} below
 		simple_wml::document *record = new simple_wml::document;
-		simple_wml::node& recchg = record->root().add_child("record_change_controller");
+		simple_wml::node& recchg = record->root().add_child("change_controller");
 		recchg.set_attr_dup("side", side.c_str());
 		recchg.set_attr_dup("player", player_name.c_str());
 		recchg.set_attr_dup("controller", (side_controllers_[side_num] == "ai" ? "network_ai" : "network"));
