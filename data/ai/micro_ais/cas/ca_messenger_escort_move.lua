@@ -6,7 +6,7 @@ local MAIUV = wesnoth.require "ai/micro_ais/micro_ai_unit_variables.lua"
 local messenger_next_waypoint = wesnoth.require "ai/micro_ais/cas/ca_messenger_f_next_waypoint.lua"
 
 local function get_escorts(cfg)
-    local escorts = AH.get_units_with_moves {
+    local escorts = AH.get_units_with_movesssss {
         side = wesnoth.current.side,
         { "and", cfg.filter_second }
     }
@@ -19,6 +19,7 @@ function ca_messenger_escort_move:evaluation(ai, cfg)
     -- Move escort units close to messengers, and in between messengers and enemies
     -- The messengers have moved at this time, so we don't need to exclude them,
     -- but we check that there are messengers left
+
     if (not get_escorts(cfg)[1]) then return 0 end
 
     local _, _, _, messengers = messenger_next_waypoint(cfg)
@@ -45,14 +46,13 @@ function ca_messenger_escort_move:execution(ai, cfg)
         local unit_rating = unit.max_moves / 100. + unit.hitpoints / 1000.
 
         reach_map:iter( function(x, y, v)
-            -- base rating only needs to be calculated once for each hex
             local base_rating = base_rating_map:get(x, y)
 
             if (not base_rating) then
                 base_rating = 0
 
                 -- Distance from messenger is most important; only closest messenger counts for this
-                -- Give somewhat of a bonus for the messenger that has moved the most through the waypoints
+                -- Give somewhat of a bonus for the messenger that has moved the farthest through the waypoints
                 local max_messenger_rating = -9e99
                 for _,m in ipairs(messengers) do
                     local messenger_rating = 1. / (H.distance_between(x, y, m.x, m.y) + 2.)
@@ -63,6 +63,7 @@ function ca_messenger_escort_move:execution(ai, cfg)
                         max_messenger_rating = messenger_rating
                     end
                 end
+
                 base_rating = base_rating + max_messenger_rating
 
                 -- Distance from (sum of) enemies is important too
@@ -82,7 +83,6 @@ function ca_messenger_escort_move:execution(ai, cfg)
             end
         end)
     end
-    --AH.put_labels(base_rating_map)
 
     -- This will always find at least the hex the unit is on -> no check necessary
     AH.movefull_stopunit(ai, best_unit, best_hex)

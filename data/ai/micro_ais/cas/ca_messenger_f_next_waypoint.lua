@@ -16,7 +16,7 @@ return function(cfg)
 
     local waypoint_x = AH.split(cfg.waypoint_x, ",")
     local waypoint_y = AH.split(cfg.waypoint_y, ",")
-    for i,w in ipairs(waypoint_x) do
+    for i,_ in ipairs(waypoint_x) do
         waypoint_x[i] = tonumber(waypoint_x[i])
         waypoint_y[i] = tonumber(waypoint_y[i])
     end
@@ -24,15 +24,15 @@ return function(cfg)
     -- Set the next waypoint for all messengers
     -- Also find those with MP left and return the one to next move, together with the WP to move toward
     local max_rating, best_messenger, x, y = -9e99
-    for i, m in ipairs(messengers) do
+    for _,messenger in ipairs(messengers) do
         -- To avoid code duplication and ensure consistency, we store some pieces of
         -- information in the messenger units, even though it could be calculated each time it is needed
-        local wp_i = MAIUV.get_mai_unit_variables(m, cfg.ai_id, "wp_i") or 1
+        local wp_i = MAIUV.get_mai_unit_variables(messenger, cfg.ai_id, "wp_i") or 1
         local wp_x, wp_y = waypoint_x[wp_i], waypoint_y[wp_i]
 
         -- If this messenger is within 3 hexes of the next waypoint, we go on to the one after that
-        -- except if that one's the last one already
-        local dist_wp = H.distance_between(m.x, m.y, wp_x, wp_y)
+        -- except if it's the last one
+        local dist_wp = H.distance_between(messenger.x, messenger.y, wp_x, wp_y)
         if (dist_wp <= 3) and (wp_i < #waypoint_x) then wp_i = wp_i + 1 end
 
         -- Also store the rating for each messenger
@@ -40,17 +40,12 @@ return function(cfg)
         local rating = wp_i - dist_wp / 1000.
 
         -- If invert_order= key is set, we want to move the rearmost messenger first.
-        -- We still want to keep the rating value positive (mostly, this is not strict)
-        -- and of the same order of magnitude.
-        if cfg.invert_order then
-            rating = #waypoint_x - rating
-        end
+        if cfg.invert_order then rating = - rating end
 
-        MAIUV.set_mai_unit_variables(m, cfg.ai_id, { wp_i = wp_i, wp_x = wp_x, wp_y = wp_y, wp_rating = rating })
+        MAIUV.set_mai_unit_variables(messenger, cfg.ai_id, { wp_i = wp_i, wp_x = wp_x, wp_y = wp_y, wp_rating = rating })
 
-        -- Find the messenger with the highest rating that has MP left
-        if (m.moves > 0) and (rating > max_rating) then
-            best_messenger, max_rating = m, rating
+        if (messenger.moves > 0) and (rating > max_rating) then
+            best_messenger, max_rating = messenger, rating
             x, y = wp_x, wp_y
         end
     end
