@@ -818,37 +818,6 @@ REPLAY_RETURN do_replay_handle(int side_num)
 
 			return REPLAY_FOUND_END_TURN;
 		}
-		else if (const config &change = cfg->child("record_change_controller"))
-		{
-			//During the original game, a control change occurred. We want to note the change but
-			//not restart the turn in replay, so this tag is recorded instead of [change_controller].
-			//This code adapted from [change_controller] handler in playturn.cpp
-
-			//don't use lexical_cast_default it's "safer" to end on error
-			const int side = lexical_cast<int>(change["side"]);
-			const size_t index = static_cast<size_t>(side-1);
-
-			const std::string &controller = change["controller"];
-			const std::string &player = change["player"];
-
-			DBG_REPLAY << "Record change controller:" << std::endl << cfg->debug() << std::endl;
-
-			if(index < resources::teams->size()) {
-				team &tm = (*resources::teams)[index];
-				if (!player.empty()) {
-					tm.set_current_player(player);
-				}
-				unit_map::iterator leader = resources::units->find_leader(side);
-				if (!player.empty() && leader.valid()) {
-					leader->rename(player);
-				}
-
-				tm.change_controller(controller);
-			} else {
-				WRN_REPLAY << "Recorded nonsensical controller change... side = " << side << " > #teams = " << resources::teams->size() << std::endl;
-			}
-
-		}
 		else if (const config &child = cfg->child("countdown_update"))
 		{
 			int val = child["value"];
