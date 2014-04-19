@@ -285,4 +285,10 @@ public:
 	~scoped_ostream();
 };
 
+struct SDL_RWops;
+
+namespace filesystem {
+	SDL_RWops* load_RWops(const std::string &path);
+}
+
 #endif

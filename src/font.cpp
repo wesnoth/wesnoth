@@ -226,7 +226,8 @@ static TTF_Font* open_font(const std::string& fname, int size)
 		}
 	}
 
-	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
+	SDL_RWops *rwops = filesystem::load_RWops(name);
+	TTF_Font* font = TTF_OpenFontRW(rwops, true, size); // SDL takes ownership of rwops
 	if(font == NULL) {
 		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << "\n";
 		return NULL;
