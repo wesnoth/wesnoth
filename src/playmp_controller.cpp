@@ -411,6 +411,10 @@ void playmp_controller::wait_for_upload()
 					break;
 				}
 			}
+			else
+			{
+				throw end_level_exception(QUIT);
+			}
 
 		} catch(const end_level_exception&) {
 			network_reader_.set_source(playturn_network_adapter::read_network);
