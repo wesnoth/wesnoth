@@ -205,7 +205,13 @@ void replay::append(const config& cfg)
 {
 	cfg_.append(cfg);
 }
+/*
+	TODO: there should be different types of OOS messages:
+		1)the normal OOS message
+		2) the 'is guarenteed you'll get an assertion error after this and therefore you cannot continur' OOS message
+		3) the 'do you want to overwrite calculated data with the data stored in replay' OOS error message.
 
+*/
 void replay::process_error(const std::string& msg)
 {
 	ERR_REPLAY << msg;
@@ -857,6 +863,8 @@ REPLAY_RETURN do_replay_handle(int side_num)
 			if(!is_synced)
 			{
 				replay::process_error("found dependent command in replay while is_synced=false\n" );
+				//ignore this command
+				continue;
 			}
 			//this means user choice.
 			// it never makes sense to try to execute a user choice.
@@ -876,9 +884,15 @@ REPLAY_RETURN do_replay_handle(int side_num)
 			if(is_synced)
 			{
 				replay::process_error("found " + commandname + " command in replay while is_synced=true\n" );
+				get_replay_source().revert_action();
+				//fits better than the other options, and should have the desired effect.
+				return REPLAY_FOUND_DEPENDENT;
 			}
-			LOG_REPLAY << "found commandname " << commandname << "in replay";
-			synced_context::run_in_synced_context(commandname, data, false, !get_replay_source().is_skipping(), false,show_oos_error_error_function);
+			else
+			{
+				LOG_REPLAY << "found commandname " << commandname << "in replay";
+				synced_context::run_in_synced_context(commandname, data, false, !get_replay_source().is_skipping(), false,show_oos_error_error_function);
+			}
 		}
 
 		if (const config &child = cfg->child("verify")) {
@@ -1022,6 +1036,16 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			else if( !action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found\n. found instead:\n" + action->debug());
+				//We save this action for later
+				get_replay_source().revert_action();
+				//and let the user try to get the intended result.
+				BOOST_FOREACH(int side, sides)
+				{
+					if(retv.find(side) == retv.end())
+					{
+						retv[side] = uch.query_user();
+					}
+				}
 				return retv;
 			}
 			int from_side = (*action)["from_side"].to_int(0);
