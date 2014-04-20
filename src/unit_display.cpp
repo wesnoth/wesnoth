@@ -395,20 +395,6 @@ void unit_mover::wait_for_anims()
 		animator_.wait_until(wait_until_);
 		// debug code, see unit_frame::redraw()
 		// std::cout << "   end\n";
-
-		/// @todo Are these invalidations really (or still) necessary?
-		/// A quick check suggested they are not needed, but that was
-		/// not comprehensive.
-		if ( disp_ ) { // Should always be true if we get here.
-			// Invalidate the hexes around the move that prompted this wait.
-			map_location arr[6];
-			get_adjacent_tiles(path_[current_-1], arr);
-			for ( unsigned i = 0; i < 6; ++i )
-				disp_->invalidate(arr[i]);
-			get_adjacent_tiles(path_[current_], arr);
-			for ( unsigned i = 0; i < 6; ++i )
-				disp_->invalidate(arr[i]);
-		}
 	}
 
 	// Reset data.
