@@ -27,7 +27,7 @@ public:
 	bool is_at_end();
 	void set_source(source_type source);
 	//returns a function to be passed to set_source.
-	static source_type get_source_from_config(config* src);
+	static source_type get_source_from_config(config& src);
 	//a function to be passed to set_source.
 	static bool read_network(config& dst);
 private:

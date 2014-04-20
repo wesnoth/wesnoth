@@ -5,6 +5,7 @@
 
 #include <boost/assign.hpp>
 #include <boost/bind.hpp>
+#include <boost/ref.hpp>
 #include <iostream>
 #include <cassert>
 
@@ -124,12 +125,13 @@ void playturn_network_adapter::set_source(source_type source)
 	network_reader_ = source;
 }
 
-static bool read_config(config* src, config& dst)
+
+static bool read_config(config& src, config& dst)
 {
 	assert(dst.empty());
-	if(!src->empty())
+	if(!src.empty())
 	{
-		src->swap(dst);
+		src.swap(dst);
 		return true;
 	}
 	else
@@ -138,9 +140,9 @@ static bool read_config(config* src, config& dst)
 	}
 }
 
-playturn_network_adapter::source_type playturn_network_adapter::get_source_from_config(config* cfg)
+playturn_network_adapter::source_type playturn_network_adapter::get_source_from_config(config& cfg)
 {
-	return boost::bind(read_config, cfg, _1);
+	return boost::bind(read_config, boost::ref(cfg), _1);
 }
 
 bool playturn_network_adapter::read_network(config& cfg)
