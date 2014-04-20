@@ -19,22 +19,34 @@
 class config_of
 {
 public:
-	config_of(const std::string& attrname, int value);
-	config_of(const std::string& attrname, unsigned int value);
-	config_of(const std::string& attrname, bool value);
-	config_of(const std::string& attrname, double value);
-	config_of(const std::string& attrname, const std::string& value);
-	config_of(const std::string& attrname, config::attribute_value value);
-	config_of(const std::string& tagname, const config& child);
+	template <typename AT>
+	config_of(const std::string& attrname, AT value)
+	{
+		this->operator()(attrname, value);
+	}
+
+	config_of(const std::string& tagname, const config& child)
+	{
+		this->operator()(tagname, child);
+	}
 	
-	config_of& operator()(const std::string& attrname, int value);
-	config_of& operator()(const std::string& attrname, unsigned int value);
-	config_of& operator()(const std::string& attrname, bool value);
-	config_of& operator()(const std::string& attrname, double value);
-	config_of& operator()(const std::string& attrname, const std::string& value);
-	config_of& operator()(const std::string& attrname, config::attribute_value value);
-	config_of& operator()(const std::string& tagname, const config& child);
-	operator config() const;
+	template <typename AT>
+	config_of& operator()(const std::string& attrname, AT value)
+	{
+		data_[attrname] = value;
+		return *this;
+	}
+
+	config_of& operator()(const std::string& tagname, const config& child)
+	{
+		data_.add_child(tagname, child);
+		return *this;
+	}
+
+	operator config() const
+	{
+		return data_;
+	}
 private:
 	config data_;
 };
