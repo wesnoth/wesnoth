@@ -400,7 +400,7 @@ void playmp_controller::wait_for_upload()
 	}
 
 	config cfg;
-	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
+	network_reader_.set_source(playturn_network_adapter::get_source_from_config(&cfg));
 	while(true) {
 		try {
 			const network::connection res = dialogs::network_receive_dialog(
