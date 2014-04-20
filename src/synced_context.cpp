@@ -15,6 +15,7 @@
 #include "gamestatus.hpp"
 #include "network.hpp"
 #include "log.hpp"
+#include "lua_jailbreak_exception.hpp"
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
@@ -118,44 +119,60 @@ bool synced_context::can_undo()
 	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
 	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
 }
-
+namespace
+{
+	class lua_network_error : public network::error , public tlua_jailbreak_exception
+	{
+	public:
+		lua_network_error(network::error base)
+			: network::error(base), tlua_jailbreak_exception()
+		{}
+	private:
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error);
+	};
+}
 void synced_context::pull_remote_user_input()
 {
 	//we sended data over the network.
 	is_simultaneously_ = true;
 	//code copied form persist_var, feels strange to call ai::.. functions for something where the ai isn't involved....
 	//note that ai::manager::raise_sync_network isn't called by the ai at all anymore (one more reason to put it somehwere else)
-
-	if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
-	{
-		//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
-		//because that might result in crashs if someone clicks anywhere during screenlock.
+	try{
+		if(resources::gamedata->phase() == game_data::PLAY || resources::gamedata->phase() == game_data::START)
+		{
+			//during the prestart/preload event the screen is locked and we shouldn't call user_interact.
+			//because that might result in crashs if someone clicks anywhere during screenlock.
+			try
+			{
+				ai::manager::raise_user_interact();
+			}
+			catch(end_turn_exception&)
+			{
+				//ignore, since it will be thwown throw again.
+			}
+		}
 		try
 		{
-			ai::manager::raise_user_interact();
+			ai::manager::raise_sync_network();
 		}
 		catch(end_turn_exception&)
 		{
-			//ignore, since it will be thwown throw again.
+			//ignore, since it will be thwown again.
+		}
+
+		try
+		{
+			// in some cases network::receive_data only returns the wanted result on the second try.
+			ai::manager::raise_sync_network();
+		}
+		catch(end_turn_exception&)
+		{
+			//ignore, since it will throw again.
 		}
 	}
-	try
+	catch(network::error& err)
 	{
-		ai::manager::raise_sync_network();
-	}
-	catch(end_turn_exception&)
-	{
-		//ignore, since it will be thwown again.
-	}
-
-	try
-	{
-		// in some cases network::receive_data only returns the wanted result on the second try.
-		ai::manager::raise_sync_network();
-	}
-	catch(end_turn_exception&)
-	{
-		//ignore, since it will throw again.
+		throw lua_network_error(err);
 	}
 
 }
