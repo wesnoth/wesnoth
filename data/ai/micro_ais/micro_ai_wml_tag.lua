@@ -124,19 +124,19 @@ function wesnoth.wml_actions.micro_ai(cfg)
         -- [unit] tags need to be dealt with separately
         cfg.id, cfg.goal_x, cfg.goal_y = {}, {}, {}
         if (cfg.action ~= 'delete') then
-            for u in H.child_range(cfg, "unit") do
-                if (not u.id) then
+            for unit in H.child_range(cfg, "unit") do
+                if (not unit.id) then
                     H.wml_error("Protect Unit Micro AI [unit] tag is missing required id= key")
                 end
-                if (not u.goal_x) then
+                if (not unit.goal_x) then
                     H.wml_error("Protect Unit Micro AI [unit] tag is missing required goal_x= key")
                 end
-                if (not u.goal_y) then
+                if (not unit.goal_y) then
                     H.wml_error("Protect Unit Micro AI [unit] tag is missing required goal_y= key")
                 end
-                table.insert(cfg.id, u.id)
-                table.insert(cfg.goal_x, u.goal_x)
-                table.insert(cfg.goal_y, u.goal_y)
+                table.insert(cfg.id, unit.id)
+                table.insert(cfg.goal_x, unit.goal_x)
+                table.insert(cfg.goal_y, unit.goal_y)
             end
 
             if (not cfg.id[1]) then
@@ -156,7 +156,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
 
         -- attacks aspects also needs to be set separately
         local unit_ids_str = 'dummy'
-        for i,id in ipairs(cfg.id) do
+        for _,id in ipairs(cfg.id) do
             unit_ids_str = unit_ids_str .. ',' .. id
         end
         local aspect_parms = {
@@ -388,15 +388,15 @@ function wesnoth.wml_actions.micro_ai(cfg)
             if (cfg.action ~= 'delete') then
                 -- The 'probability' tags need to be handled separately here
                 cfg.type, cfg.prob = {}, {}
-                for p in H.child_range(cfg, "probability") do
-                    if (not p.type) then
+                for probability in H.child_range(cfg, "probability") do
+                    if (not probability.type) then
                         H.wml_error("Random Recruiting Micro AI [probability] tag is missing required type= key")
                     end
-                    if (not p.probability) then
+                    if (not probability.probability) then
                         H.wml_error("Random Recruiting Micro AI [probability] tag is missing required probability= key")
                     end
-                    table.insert(cfg.type, p.type)
-                    table.insert(cfg.prob, p.probability)
+                    table.insert(cfg.type, probability.type)
+                    table.insert(cfg.prob, probability.probability)
                 end
             end
         end
