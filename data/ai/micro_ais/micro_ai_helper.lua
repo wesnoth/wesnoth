@@ -31,7 +31,6 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
                 for ca in H.child_range(stage, 'candidate_action') do
                     if string.find(ca.name, ai_id .. '_') then
                         id_found = true
-                        --print('---> found CA:', ca.name, ai_id, id_found, string.find(ca.name, ai_id))
                         break
                     end
                 end
@@ -48,7 +47,6 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
                     for mai in H.child_range(data, 'micro_ai') do
                         if (mai.ai_id == ai_id) then
                             id_found = true
-                            print('---> found [micro_ai] tag with ai_id =', ai_id)
                             break
                         end
                     end
@@ -61,7 +59,7 @@ function micro_ai_helper.add_CAs(side, CA_parms, CA_cfg)
     end
 
     -- Now add the CAs
-    for i,parms in ipairs(CA_parms) do
+    for _,parms in ipairs(CA_parms) do
         local ca_id = ai_id .. '_' .. parms.ca_id
 
         -- Always pass the ai_id and ca_score to the eval/exec functions
@@ -95,7 +93,7 @@ function micro_ai_helper.delete_CAs(side, CA_parms)
     -- We can simply pass the one used for add_CAs(), although only the
     -- CA_parms.ca_id field is needed
 
-    for i,parms in ipairs(CA_parms) do
+    for _,parms in ipairs(CA_parms) do
         local ca_id = CA_parms.ai_id .. '_' .. parms.ca_id
 
         W.modify_ai {
@@ -106,8 +104,8 @@ function micro_ai_helper.delete_CAs(side, CA_parms)
 
         -- Also need to delete variable stored in all units of the side, so that later MAIs can use these units
         local units = wesnoth.get_units { side = side }
-        for i,u in ipairs(units) do
-            MAIUV.delete_mai_unit_variables(u, CA_parms.ai_id)
+        for _,unit in ipairs(units) do
+            MAIUV.delete_mai_unit_variables(unit, CA_parms.ai_id)
         end
     end
 end
@@ -133,7 +131,7 @@ function micro_ai_helper.add_aspects(side, aspect_parms)
     --      } }
     --  }
 
-    for i,parms in ipairs(aspect_parms) do
+    for _,parms in ipairs(aspect_parms) do
         W.modify_ai {
             side = side,
             action = "add",
@@ -149,7 +147,7 @@ function micro_ai_helper.delete_aspects(side, aspect_parms)
     -- We can simply pass the one used for add_aspects(), although only the
     -- aspect_parms.aspect_id field is needed
 
-    for i,parms in ipairs(aspect_parms) do
+    for _,parms in ipairs(aspect_parms) do
         W.modify_ai {
             side = side,
             action = "try_delete",
@@ -176,7 +174,7 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     local CA_cfg = {}
 
     -- Required keys
-    for k, v in pairs(required_keys) do
+    for _,v in pairs(required_keys) do
         local child = H.get_child(cfg, v)
         if (not cfg[v]) and (not child) then
             H.wml_error("[micro_ai] tag (" .. cfg.ai_type .. ") is missing required parameter: " .. v)
@@ -186,7 +184,7 @@ function micro_ai_helper.micro_ai_setup(cfg, CA_parms, required_keys, optional_k
     end
 
     -- Optional keys
-    for k, v in pairs(optional_keys) do
+    for _,v in pairs(optional_keys) do
         CA_cfg[v] = cfg[v]
         local child = H.get_child(cfg, v)
         if child then CA_cfg[v] = child end
