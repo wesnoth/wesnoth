@@ -569,7 +569,7 @@ void play_controller::fire_start(bool execute){
 	if(execute) {
 		gamedata_.set_phase(game_data::START);
 		game_events::fire("start");
-		check_victory();
+		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
 		gamedata_.get_variable("turn_number") = int(start_turn_);
