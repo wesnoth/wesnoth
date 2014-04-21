@@ -73,6 +73,7 @@ src/campaign_server/campaign_server.cpp
 src/clipboard.cpp
 src/color_range.cpp
 src/commandline_options.cpp
+src/config_assign.cpp
 src/config.cpp
 src/controller_base.cpp
 src/cursor.cpp
@@ -213,11 +214,16 @@ src/play_controller.cpp
 src/playmp_controller.cpp
 src/playsingle_controller.cpp
 src/playturn.cpp
+src/playturn_network_adapter.cpp
 src/portrait.cpp
 src/race.cpp
 src/random.cpp
+src/random_new.cpp
+src/random_new_deterministic.cpp
+src/random_new_synced.cpp
 src/replay_controller.cpp
 src/replay.cpp
+src/replay_helper.cpp
 src/reports.cpp
 src/resources.cpp
 src/save_blocker.cpp
@@ -250,6 +256,7 @@ src/server/simple_wml.cpp
 src/server/user_handler.cpp
 src/settings.cpp
 src/sha1.cpp
+src/simple_rng.cpp
 src/sound.cpp
 src/sound_music_track.cpp
 src/soundsource.cpp
@@ -260,6 +267,9 @@ src/storyscreen/interface.cpp
 src/storyscreen/part.cpp
 src/storyscreen/render.cpp
 src/strftime.cpp
+src/synced_checkup.cpp
+src/synced_commands.cpp
+src/synced_context.cpp
 src/team.cpp
 src/terrain.cpp
 src/tests/create_images.cpp

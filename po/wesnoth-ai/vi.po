@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
+"POT-Creation-Date: 2014-04-21 20:19+0200\n"
 "PO-Revision-Date: 2013-08-23 02:25+0800\n"
 "Last-Translator: Pham Thanh Nam <phamthanhnam.ptn@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -368,36 +368,36 @@ msgid "Humans"
 msgstr "Con người"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/animals.cfg:61
+#: data/ai/micro_ais/scenarios/animals.cfg:62
 msgid "Forest Creatures"
 msgstr "Sinh vật trong rừng"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/animals.cfg:74
+#: data/ai/micro_ais/scenarios/animals.cfg:76
 msgid "Ghasts"
 msgstr "Ma đoạt xác"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/animals.cfg:87
+#: data/ai/micro_ais/scenarios/animals.cfg:90
 msgid "Spiders"
 msgstr "Nhện"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/animals.cfg:100
+#: data/ai/micro_ais/scenarios/animals.cfg:104
 msgid "Yetis"
 msgstr "Người tuyết"
 
 #. [event]
 #. [side]
 #. [test]: id=wolves
-#: data/ai/micro_ais/scenarios/animals.cfg:113
+#: data/ai/micro_ais/scenarios/animals.cfg:118
 #: data/ai/micro_ais/scenarios/scenario_micro_ai.cfg:47
 #: data/ai/micro_ais/scenarios/wolves.cfg:5
 msgid "Wolves"
 msgstr "Chó sói"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/animals.cfg:126
+#: data/ai/micro_ais/scenarios/animals.cfg:132
 msgid "Whelps"
 msgstr "Bé con"
 
@@ -406,32 +406,32 @@ msgstr "Bé con"
 #. [set_menu_item]: id=m01_end_swarm
 #. [set_menu_item]: id=m01_end_wolves
 #. [set_menu_item]: id=m04_end_animals
-#: data/ai/micro_ais/scenarios/animals.cfg:202
+#: data/ai/micro_ais/scenarios/animals.cfg:208
 #: data/ai/micro_ais/scenarios/dragon.cfg:47
 #: data/ai/micro_ais/scenarios/goto.cfg:377
 #: data/ai/micro_ais/scenarios/guardians.cfg:84
 #: data/ai/micro_ais/scenarios/lurkers.cfg:365
 #: data/ai/micro_ais/scenarios/patrols.cfg:178
 #: data/ai/micro_ais/scenarios/swarm.cfg:65
-#: data/ai/micro_ais/scenarios/wolves.cfg:92
+#: data/ai/micro_ais/scenarios/wolves.cfg:94
 msgid "End Scenario"
 msgstr "Kết thúc màn"
 
 #. [command]
 #. [then]
-#: data/ai/micro_ais/scenarios/animals.cfg:214
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:182
+#: data/ai/micro_ais/scenarios/animals.cfg:220
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:183
 #: data/ai/micro_ais/scenarios/goto.cfg:389
 #: data/ai/micro_ais/scenarios/recruiting.cfg:107
 #: data/ai/micro_ais/scenarios/swarm.cfg:71
 #: data/ai/micro_ais/scenarios/swarm.cfg:176
-#: data/ai/micro_ais/scenarios/wolves.cfg:98
-#: data/ai/micro_ais/scenarios/wolves.cfg:254
+#: data/ai/micro_ais/scenarios/wolves.cfg:100
+#: data/ai/micro_ais/scenarios/wolves.cfg:256
 msgid "Well, that was that."
 msgstr "Hừ, thế là xong."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/animals.cfg:331
+#: data/ai/micro_ais/scenarios/animals.cfg:337
 #, fuzzy
 #| msgid ""
 #| "<span color='#A00000'>Important:</span> The animal Micro AIs in this "
@@ -456,7 +456,7 @@ msgstr ""
 "đổi trí tuệ nhân tạo'."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/animals.cfg:334
+#: data/ai/micro_ais/scenarios/animals.cfg:340
 msgid ""
 "This is a fun little scenario with a bunch of different animal AIs, mostly "
 "for watching only. The animal AIs behave as follows:\n"
@@ -468,15 +468,15 @@ msgstr ""
 "\n"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/animals.cfg:342
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:96
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:134
-#: data/ai/micro_ais/scenarios/wolves.cfg:193
+#: data/ai/micro_ais/scenarios/animals.cfg:348
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:97
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:135
+#: data/ai/micro_ais/scenarios/wolves.cfg:195
 msgid "Question for the Player"
 msgstr "Câu hỏi cho người chơi"
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/animals.cfg:346
+#: data/ai/micro_ais/scenarios/animals.cfg:352
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or to mess with things in debug "
@@ -510,45 +510,45 @@ msgstr ""
 "wesnoth.org/Micro_AIs để biết thêm thông tin."
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/animals.cfg:354
+#: data/ai/micro_ais/scenarios/animals.cfg:360
 msgid "<span font='16'>I'll just watch the animals.</span>"
 msgstr "<span font='16'>Tôi sẽ chỉ xem các động vật.</span>"
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/animals.cfg:367
-#: data/ai/micro_ais/scenarios/wolves.cfg:216
+#: data/ai/micro_ais/scenarios/animals.cfg:373
+#: data/ai/micro_ais/scenarios/wolves.cfg:218
 msgid "<span font='16'>I want to have control of Side 1.</span>"
 msgstr "<span font='16'>Tôi muốn điều khiển phe 1.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/animals.cfg:373
+#: data/ai/micro_ais/scenarios/animals.cfg:379
 msgid "Watch the animals do their things"
 msgstr "Xem các động vật hành động"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/animals.cfg:375
+#: data/ai/micro_ais/scenarios/animals.cfg:381
 #: data/ai/micro_ais/scenarios/goto.cfg:419
 #: data/ai/micro_ais/scenarios/swarm.cfg:151
-#: data/ai/micro_ais/scenarios/wolves.cfg:228
+#: data/ai/micro_ais/scenarios/wolves.cfg:230
 msgid "Use right-click option"
 msgstr "Sử dụng tùy chọn chuột phải"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/animals.cfg:379
-#: data/ai/micro_ais/scenarios/wolves.cfg:232
+#: data/ai/micro_ais/scenarios/animals.cfg:385
+#: data/ai/micro_ais/scenarios/wolves.cfg:234
 msgid "Death of Rutburt"
 msgstr "Rutburt chết"
 
 #. [note]
-#: data/ai/micro_ais/scenarios/animals.cfg:383
+#: data/ai/micro_ais/scenarios/animals.cfg:389
 #: data/ai/micro_ais/scenarios/goto.cfg:427
 #: data/ai/micro_ais/scenarios/swarm.cfg:159
-#: data/ai/micro_ais/scenarios/wolves.cfg:236
+#: data/ai/micro_ais/scenarios/wolves.cfg:238
 msgid "Check out the right-click menu options for additional actions"
 msgstr "Kiểm tra các tùy chọn trình đơn chuột phải để có các hành động bổ sung"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/animals.cfg:401
+#: data/ai/micro_ais/scenarios/animals.cfg:407
 msgid ""
 "Yowl!\n"
 "Translation: Those Ogres are mean!  We better stay away from them and their "
@@ -564,26 +564,26 @@ msgid "Bottleneck Defense"
 msgstr "Phòng thủ thắt cổ chai"
 
 #. [side]: type=Orcish Leader, id=Big Bad Orc
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:36
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:37
 msgid "Big Bad Orc"
 msgstr "Đại ca người thú"
 
 #. [event]: (id=Big Bad Orc) profile profile}
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:83
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:84
 msgid "All right, chaps. Those orcs need to be stopped."
 msgstr "Được rồi, bọn bay. Lũ người thú đó phải bị ngăn chặn."
 
 #. [event]: (id=Big Bad Orc) profile profile}
 #. [event]: id=Kraa profile profile}
 #. [event]: id=Vanak profile profile}
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:85
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:86
 #: data/ai/micro_ais/scenarios/guardians.cfg:510
 #: data/ai/micro_ais/scenarios/messenger_escort.cfg:134
 msgid "They there!  We them get!"
 msgstr "Chúng kìa! Thanh toán chúng!"
 
 #. [event]: (id=Big Bad Orc) profile profile}
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:88
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:89
 msgid ""
 "We need to hold that pass for as long as we can. Let's put our strongest "
 "fighters on the front line and bring injured units to the back for healing. "
@@ -607,7 +607,7 @@ msgstr ""
 "wiki.wesnoth.org/Micro_AIs để biết thêm thông tin."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:98
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:99
 msgid ""
 "In this scenario, the AI playing the humans in the east is instructed to "
 "form a defensive line at the pass and hold off the orcs for as long as "
@@ -620,37 +620,37 @@ msgstr ""
 "làm điều đó?"
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:100
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:101
 msgid "<span font='16'>I'll watch the two AIs fight it out.</span>"
 msgstr "<span font='16'>Tôi sẽ xem trận đấu của hai trí tuệ nhân tạo.</span>"
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:103
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:104
 msgid "<span font='16'>I'll play the orcs.</span>"
 msgstr "<span font='16'>Tôi sẽ điều khiển người thú.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:114
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:115
 msgid "Take the pass"
 msgstr "Chiếm lối ra vào"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:116
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:117
 msgid "Defeat all humans"
 msgstr "Đánh bại tất cả các con người"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:120
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:121
 msgid "Death of Big Bad Orc"
 msgstr "Đại ca người thú chết"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:124
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:125
 msgid "Only one orc remains"
 msgstr "Chỉ còn lại một người thú"
 
 #. [then]
-#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:149
+#: data/ai/micro_ais/scenarios/bottleneck_defense.cfg:150
 msgid ""
 "I may have fallen, but we will continue to defend the pass to the last man!"
 msgstr ""
@@ -822,7 +822,7 @@ msgstr "Đặt kẻ cướp cạn cho phe 1"
 #. [set_menu_item]: id=m05_kill_unit
 #: data/ai/micro_ais/scenarios/goto.cfg:348
 #: data/ai/micro_ais/scenarios/swarm.cfg:112
-#: data/ai/micro_ais/scenarios/wolves.cfg:150
+#: data/ai/micro_ais/scenarios/wolves.cfg:152
 msgid "Kill Unit under Cursor"
 msgstr "Giết đơn vị dưới con trỏ"
 
@@ -995,10 +995,11 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/ai/micro_ais/scenarios/goto.cfg:603
 msgid ""
-"$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting for duty, "
-"sir."
+"$unit.language_name $unit.name from Lieutenant Gadoc's squadron reporting "
+"for duty, sir."
 msgstr ""
-"$unit.language_name $unit.name từ đội của trung úy Gadoc báo cáo nhiệm vụ, thưa ngài."
+"$unit.language_name $unit.name từ đội của trung úy Gadoc báo cáo nhiệm vụ, "
+"thưa ngài."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:619
@@ -1013,11 +1014,11 @@ msgstr "Rồi, thưa ngài."
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:631
 msgid ""
-"Very good, $unit.language_name. Now go help your comrade get rid of that saurian "
-"infestation in the swamps."
+"Very good, $unit.language_name. Now go help your comrade get rid of that "
+"saurian infestation in the swamps."
 msgstr ""
-"Tốt lắm, $unit.language_name. Giờ mau đi giúp đồng đội của anh trừ khử bọn thằn lằn "
-"trong đầm lầy."
+"Tốt lắm, $unit.language_name. Giờ mau đi giúp đồng đội của anh trừ khử bọn "
+"thằn lằn trong đầm lầy."
 
 #. [message]: speaker=fort_commander
 #: data/ai/micro_ais/scenarios/goto.cfg:639
@@ -2240,23 +2241,23 @@ msgid "Koorzhar"
 msgstr "Koorzhar"
 
 #. [side]: id=Koorzhar, type=Lieutenant
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:38
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:39
 #: data/ai/micro_ais/scenarios/recruiting.cfg:38
 msgid "team_name^Koorzhar"
 msgstr "Koorzhar"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:119
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:120
 msgid "Move Rossauba here"
 msgstr "Di chuyển Rossauba đến đây"
 
 #. [event]: id=Koorzhar profile profile}
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:126
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:127
 msgid "There's that traitor wizard. Let's get him."
 msgstr "Đó là tên phù thủy phản bội. Thanh toán hắn."
 
 #. [event]: id=Koorzhar profile profile}
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:128
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:129
 msgid ""
 "Men, you know the deal. We must protect Rossauba under all circumstances. "
 "Even my survival is not as important."
@@ -2265,12 +2266,12 @@ msgstr ""
 "tình huống. Kể cả sự sống sót của tôi cũng không quan trọng bằng."
 
 #. [event]: id=Koorzhar profile profile}
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:129
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:130
 msgid "That's very kind of you, but ..."
 msgstr "Anh thật là tốt, nhưng..."
 
 #. [event]: id=Koorzhar profile profile}
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:130
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:131
 msgid ""
 "No buts!  You stay behind the lines and do not engage in battle unless there "
 "is no risk to your life, is that understood?  And get to that signpost in "
@@ -2281,7 +2282,7 @@ msgstr ""
 "nếu an toàn."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:137
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:138
 msgid ""
 "In this scenario, the AI playing the humans in the east (Langzhar) is "
 "instructed to protect the wizard Rossauba, while moving him safely to the "
@@ -2307,12 +2308,12 @@ msgstr ""
 "wesnoth.org/Micro_AIs để biết thêm thông tin."
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:142
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:143
 msgid "<span font='16'>I'll watch the two AIs fight it out</span>"
 msgstr "<span font='16'>Tôi sẽ xem trận đấu của hai trí tuệ nhân tạo</span>"
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:145
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:146
 msgid ""
 "<span font='16'>I'll play Langzhar's side (to see how Koorzhar's units "
 "target Rossauba)</span>"
@@ -2321,7 +2322,7 @@ msgstr ""
 "Koorzhar nhắm vào Rossauba)</span>"
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:154
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:155
 msgid ""
 "<span font='16'>I'll play Koorzhar's side (to see how Langzhar's units "
 "protect Rossauba)</span>"
@@ -2330,49 +2331,49 @@ msgstr ""
 "Langzhar bảo vệ Rossauba)</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:166
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:167
 msgid "Protect Rossauba while moving him to the signpost"
 msgstr "Bảo vệ Rossauba đồng thời di chuyển anh ta đến biển chỉ đường"
 
 #. [objective]: condition=lose
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:168
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:188
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:169
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:189
 msgid "Rossauba makes it to the signpost"
 msgstr "Rossauba đến được biển chỉ đường"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:172
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:173
 msgid "Death of Rossauba"
 msgstr "Rossauba chết"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:176
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:177
 msgid "Death of Langzhar"
 msgstr "Langzhar chết"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:182
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:183
 msgid "Get rid of that traitor wizard Rossauba"
 msgstr "Trừ khử tên phù thủy phản bội Rossauba đó"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:184
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:185
 msgid "Defeat Rossauba"
 msgstr "Đánh bại Rossauba"
 
 #. [objective]: condition=lose
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:192
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:193
 msgid "Death of Koorzhar"
 msgstr "Koorzhar chết"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:215
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:216
 msgid "I held out for as long as I could."
 msgstr "Tôi đã cầm cự lâu hết mức có thể."
 
 #. [event]
-#: data/ai/micro_ais/scenarios/protect_unit.cfg:229
+#: data/ai/micro_ais/scenarios/protect_unit.cfg:230
 msgid "I made it"
 msgstr "Tôi đã làm được"
 
@@ -2986,32 +2987,32 @@ msgid "Death of all gryphons"
 msgstr "Sư tử đầu chim chết hết"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/wolves.cfg:40
+#: data/ai/micro_ais/scenarios/wolves.cfg:41
 msgid "team_name^Wolves"
 msgstr "Chó sói"
 
 #. [side]
-#: data/ai/micro_ais/scenarios/wolves.cfg:53
+#: data/ai/micro_ais/scenarios/wolves.cfg:55
 msgid "More Wolves"
 msgstr "Nhiều chó sói hơn"
 
 #. [set_menu_item]: id=m02_new_peasant
-#: data/ai/micro_ais/scenarios/wolves.cfg:117
+#: data/ai/micro_ais/scenarios/wolves.cfg:119
 msgid "Place Side 1 Peasant"
 msgstr "Đặt nông dân cho phe 1"
 
 #. [set_menu_item]: id=m03_new_wolf2
-#: data/ai/micro_ais/scenarios/wolves.cfg:128
+#: data/ai/micro_ais/scenarios/wolves.cfg:130
 msgid "Place Side 2 Wolf"
 msgstr "Đặt chó sói cho phe 2"
 
 #. [set_menu_item]: id=m04_new_wolf3
-#: data/ai/micro_ais/scenarios/wolves.cfg:139
+#: data/ai/micro_ais/scenarios/wolves.cfg:141
 msgid "Place Side 3 Wolf"
 msgstr "Đặt chó sói cho phe 3"
 
 #. [event]
-#: data/ai/micro_ais/scenarios/wolves.cfg:185
+#: data/ai/micro_ais/scenarios/wolves.cfg:187
 msgid ""
 "This scenario features a different kind of wolf behavior from 'Animals'. "
 "First, there can be an arbitrary number of wolf packs and the pack size on "
@@ -3056,7 +3057,7 @@ msgstr ""
 "một phe lần đầu tiên."
 
 #. [message]: speaker=narrator
-#: data/ai/micro_ais/scenarios/wolves.cfg:196
+#: data/ai/micro_ais/scenarios/wolves.cfg:198
 msgid ""
 "It is possible to include a human-controlled Side 1, so that the action "
 "stops once every turn for looking around (or for messing with things in "
@@ -3094,17 +3095,17 @@ msgstr ""
 "wesnoth.org/Micro_AIs để biết thêm thông tin."
 
 #. [option]: speaker=narrator
-#: data/ai/micro_ais/scenarios/wolves.cfg:203
+#: data/ai/micro_ais/scenarios/wolves.cfg:205
 msgid "<span font='16'>I'll just watch the two wolf sides.</span>"
 msgstr "<span font='16'>Tôi sẽ chỉ xem hai phe chó sói.</span>"
 
 #. [objectives]
-#: data/ai/micro_ais/scenarios/wolves.cfg:222
+#: data/ai/micro_ais/scenarios/wolves.cfg:224
 msgid "Watch the wolves move around and fight each other"
 msgstr "Xem bọn chó sói di chuyển và đánh lẫn nhau"
 
 #. [objective]: condition=win
-#: data/ai/micro_ais/scenarios/wolves.cfg:224
+#: data/ai/micro_ais/scenarios/wolves.cfg:226
 msgid "No wolves left on one side"
 msgstr "Một phe không còn con chó sói nào"
 
