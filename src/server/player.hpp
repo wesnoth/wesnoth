@@ -70,6 +70,8 @@ public:
 
 	void set_moderator(bool moderator) { moderator_ = moderator; }
 	bool is_moderator() const { return moderator_; }
+	bool has_updated_level() const { return has_updated_level_; }
+	void set_updated_level(bool temp) { has_updated_level_ = temp; }
 
 private:
 	const std::string name_;
@@ -84,6 +86,7 @@ private:
 	const time_t TimePeriod;
 	STATUS status_;
 	bool moderator_;
+	bool has_updated_level_; // this is keep track of which users have transitioned to the next level when the host updates.
 };
 
 } //namespace wesnothd

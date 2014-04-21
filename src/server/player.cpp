@@ -32,6 +32,7 @@ wesnothd::player::player(const std::string& n, simple_wml::node& cfg,
   , TimePeriod(time_period)
   , status_(LOBBY)
   , moderator_(moderator)
+  , has_updated_level(true)
 {
 	cfg_.set_attr_dup("name", n.c_str());
 	cfg_.set_attr("registered", registered ? "yes" : "no");
