@@ -1,11 +1,11 @@
 # Copyright (C) Wesnoth development team, 2007-2012.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -95,7 +95,7 @@ msgstr "urvas"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:80
 msgid "obstacle"
-msgstr "klūtis"
+msgstr "kliūtis"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:87
@@ -120,7 +120,7 @@ msgstr "specialios"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr ""
+msgstr "Nėra"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
@@ -170,7 +170,7 @@ msgstr "Po Kritimo"
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
 msgid "theme^Editor"
-msgstr ""
+msgstr "theme^Redaktorius"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:63
@@ -200,14 +200,12 @@ msgstr "Vietovės"
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:116
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Priskirti vietinį laiką"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:122
-#, fuzzy
-#| msgid "Assign Time Schedule"
 msgid "Assign Local Time Schedule"
-msgstr "Priskirti paros laiką"
+msgstr "Priskirti vietinį paros laiką"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:130
@@ -241,7 +239,7 @@ msgstr "Priskirti paros laiką"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifikatorius: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
@@ -261,7 +259,7 @@ msgstr "Kaina: "
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "Samdyti:"
 
 #: src/editor/editor_controller.cpp:177
 msgid "Fatal error"
@@ -317,22 +315,16 @@ msgid "(New Map)"
 msgstr "(Naujas žemėlapis)"
 
 #: src/editor/map/context_manager.cpp:184
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "Pasirinkite atveriamą žemėlapį"
+msgstr "Pasirinkite atveriamą failą"
 
 #: src/editor/map/context_manager.cpp:290
-#, fuzzy
-#| msgid "(New Side)"
 msgid "(New Scenario)"
-msgstr "(Nauja pusė)"
+msgstr "(Naujas scenarijus)"
 
 #: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Area)"
 msgid "(Unnamed Area)"
-msgstr "(Naujas vietovė)"
+msgstr "(Nepavadinta vietovė)"
 
 #: src/editor/map/context_manager.cpp:345
 msgid "(New Side)"
@@ -348,13 +340,11 @@ msgstr "Klaida, įkeliant kaukę"
 
 #: src/editor/map/context_manager.cpp:437
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifikatorius: "
 
 #: src/editor/map/context_manager.cpp:437
-#, fuzzy
-#| msgid "Rename Unit"
 msgid "Rename Area"
-msgstr "Pervadinti karį"
+msgstr "Pervadinti vietovę"
 
 #: src/editor/map/context_manager.cpp:448
 msgid "Choose Target Map"
@@ -375,10 +365,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Failas jau egzistuoja. Ar norite jį perrašyti?"
 
 #: src/editor/map/context_manager.cpp:600
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Išsaugoti žemėlapį kaip"
+msgstr "Išsaugoti scenarijų kaip"
 
 #: src/editor/map/context_manager.cpp:639
 msgid "No random map generators found."
@@ -401,10 +389,8 @@ msgstr ""
 "išsaugojimo?"
 
 #: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Šis žemėlapis jau atvertas."
+msgstr "Šis scenarijus jau atvertas."
 
 #: src/editor/map/context_manager.cpp:788
 #: src/editor/map/context_manager.cpp:843
@@ -412,10 +398,8 @@ msgid "This map is already open."
 msgstr "Šis žemėlapis jau atvertas."
 
 #: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Žemėlapis išsaugotas."
+msgstr "Scenarijus išsaugotas."
 
 #: src/editor/map/context_manager.cpp:823
 msgid "Map saved."
@@ -451,10 +435,8 @@ msgid "File not found"
 msgstr "Failas nerastas"
 
 #: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Tuščias žemėlapio failas"
+msgstr "Tuščias failas"
 
 #: src/editor/map/map_context.cpp:175
 msgid ""
@@ -465,10 +447,8 @@ msgstr ""
 "egzistuojantį failą"
 
 #: src/editor/map/map_context.cpp:508
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Nepavyksta išsaugoti žemėlapio: $msg"
+msgstr "Nepavyksta išsaugoti scenarijaus: $msg"
 
 #: src/editor/map/map_context.cpp:535
 msgid "Could not save into scenario"
@@ -511,48 +491,5 @@ msgstr "Joks"
 msgid "Player $player_number"
 msgstr "Žaidėjas $player_number"
 
-#, fuzzy
-#~| msgid "ID:"
 #~ msgid "ID"
-#~ msgstr "ID:"
-
-#~ msgid ""
-#~ "Use left/right mouse button to draw fore-/background terrain. Hold Shift "
-#~ "to paint base layer only. Ctrl+click to sample terrain under cursor."
-#~ msgstr ""
-#~ "Naudokite kairįjį/dešinįjį pelės klavišą priešakinio plano/fono vietovės "
-#~ "piešimui. Laikykite Shift, kad pieštumėte tik bazinį sluoksnį. Ctrl"
-#~ "+spragtelėjimas pasiima vietovę po žymekliu."
-
-#~ msgid ""
-#~ "Left mouse button selects, right deselects. Hold Shift for magic-wand "
-#~ "selection of tiles with same terrain."
-#~ msgstr ""
-#~ "Kairys pelės klavišas pažymi, dešinys atžymi. Laikykite nuspaustą Shift, "
-#~ "kad pažymėti to paties landšafto bloką."
-
-#~ msgid ""
-#~ "Left mouse button displays player selection, right clears. Number keys "
-#~ "scroll to the starting position, alt+number sets respective starting "
-#~ "position under cursor, delete clears."
-#~ msgstr ""
-#~ "Kairysis pelės mygtukas rodo žaidėjo pažymėjimą, dešinysis – išvalo. "
-#~ "Skaičių klavišais pereinama į pradžios poziciją, alt + skaičius nustato "
-#~ "atitinkamo žaidėjo pradžios poziciją po žymeklių, delete – išvalo."
-
-#~ msgid ""
-#~ "Click to paste, zoom out for more accuracy when pasting large areas. Use "
-#~ "the edit menu to transform the clipboard (rotate, mirror)."
-#~ msgstr ""
-#~ "Spragtelėkite, kad įklijuotumėte, susimažinkite vaizdą, kad pasiektumėte "
-#~ "didesnį tikslumą, kai įklijuojate didelius plotus. Naudokite redagavimo "
-#~ "meniu iškarpinės transformavimui (pasukimui, atspindėjimui)."
-
-#~ msgid "terrain"
-#~ msgstr "vietovė"
-
-#~ msgid "Not implemented yet."
-#~ msgstr "Dar nesuprogramuota."
-
-#~ msgid "ID: "
-#~ msgstr "ID: "
+#~ msgstr "ID"

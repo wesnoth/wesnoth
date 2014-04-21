@@ -1,11 +1,11 @@
 # Copyright (C) Wesnoth development team, 2007-2012.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -15,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10>=2 && (n%100<10 || n"
 "%100>=20) ? 1 : n%10==0 || (n%100>10 && n%100<20) ? 2 : 3);\n"
+"X-Generator: Poedit 1.5.5\n"
 
 #. [time]: id=underground
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:531
@@ -61,19 +62,15 @@ msgstr ""
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:687
 #: data/core/macros/abilities.cfg:686
-#, fuzzy
 msgid "first strike"
-msgstr "pirmenybė"
+msgstr "pirmas smūgis"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:689
 #: data/core/macros/abilities.cfg:687
-#, fuzzy
 msgid ""
 "This unit always strikes first with this attack, even if they are defending."
-msgstr ""
-"Smūgio pirmenybė:\n"
-"Su šia ataka dalinys visuomet turės pirmenybę atakuoti, net kai ginasi."
+msgstr "Su šia ataka karys visuomet turės pirmenybę atakuoti, net kai ginasi."
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
@@ -90,7 +87,6 @@ msgstr "gydo +4"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:18
 #: data/core/macros/abilities.cfg:12
-#, fuzzy
 msgid ""
 "Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
 "\n"
@@ -99,8 +95,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Gydo +4:\n"
-"Leidžia daliniui pagydyti gretimą draugišką dalinį mūsų ėjimo pradžioje.\n"
+"Leidžia daliniui pagydyti gretimus draugiškus karius mūsų ėjimo pradžioje.\n"
 "\n"
 "Gydomasis dalinys gali pagyti ne daugiau, nei 4 GT per ėjimą, arba tą ėjimą "
 "išvengti nuodų poveikio.\n"
@@ -1262,7 +1257,6 @@ msgstr " mėlynas, jei dalinys yra draugas, kurio jūs nevaldote."
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
 #, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have a red orb on top of their energy bar."
 msgstr " Priešo daliniai neturi rutulio virš jų energijos juostos."
 
@@ -2559,10 +2553,6 @@ msgstr ""
 #. [topic]: id=..terrains_section
 #: data/core/help.cfg:493
 #, fuzzy
-#| msgid ""
-#| "Game maps feature a variety of terrains that affect both unit movement "
-#| "and a unit’s defensive capability in combat.\n"
-#| "\n"
 msgid ""
 "Game maps feature a variety of terrains that affect both unit movement and a "
 "unit’s defensive capability in combat."
@@ -3588,9 +3578,8 @@ msgstr "Vidurnaktis"
 
 #. [time]: id=indoors
 #: data/core/macros/schedules.cfg:91
-#, fuzzy
 msgid "Indoors"
-msgstr "Netinkama spalva"
+msgstr "Viduje"
 
 #. [time]: id=deep_underground
 #: data/core/macros/schedules.cfg:111
@@ -3699,97 +3688,78 @@ msgstr "Pirmoji sargyba — Ketvirtoji valanda"
 
 #. [time]: id=dawn1
 #: data/core/macros/schedules.cfg:478
-#, fuzzy
-#| msgid "First Watch"
 msgid "First Dawn"
-msgstr "Pirmoji sargyba"
+msgstr "Pirmoji aušra"
 
 #. [time]: id=dawn2
 #: data/core/macros/schedules.cfg:488
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dawn"
-msgstr "Antroji sargyba"
+msgstr "Antroji aušra"
 
 #. [time]: id=morning1
 #: data/core/macros/schedules.cfg:498
-#, fuzzy
-#| msgid "Morning"
 msgid "First Morning"
-msgstr "Rytas"
+msgstr "Pirmasis rytas"
 
 #. [time]: id=morning2
 #: data/core/macros/schedules.cfg:507
-#, fuzzy
-#| msgid "Morning"
 msgid "Second Morning"
-msgstr "Rytas"
+msgstr "Antrasis rytas"
 
 #. [time]: id=midday1
 #: data/core/macros/schedules.cfg:516
-#, fuzzy
-#| msgid "Midday"
 msgid "First Midday"
-msgstr "Vidurdienis"
+msgstr "Pirmasis vidurdienis"
 
 #. [time]: id=midday2
 #: data/core/macros/schedules.cfg:525
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Midday"
-msgstr "Antroji sargyba"
+msgstr "Antrasis vidurdienis"
 
 #. [time]: id=afternoon1
 #: data/core/macros/schedules.cfg:534
-#, fuzzy
-#| msgid "Afternoon"
 msgid "First Afternoon"
-msgstr "Popietė"
+msgstr "Pirmoji popietė"
 
 #. [time]: id=afternoon2
 #: data/core/macros/schedules.cfg:543
-#, fuzzy
-#| msgid "Afternoon"
 msgid "Second Afternoon"
-msgstr "Popietė"
+msgstr "Antroji popietė"
 
 #. [time]: id=dusk1
 #: data/core/macros/schedules.cfg:552
-#, fuzzy
 msgid "First Dusk"
-msgstr "pirmenybė"
+msgstr "Pirmoji prieblanda"
 
 #. [time]: id=dusk2
 #: data/core/macros/schedules.cfg:562
-#, fuzzy
-#| msgid "Second Watch"
 msgid "Second Dusk"
-msgstr "Antroji sargyba"
+msgstr "Antroji prieblanda"
 
 #. [time]: id=short_dark
 #: data/core/macros/schedules.cfg:572
 msgid "The Short Dark"
-msgstr ""
+msgstr "Trumpoji tamsa"
 
 #. [time]: id=long_dark1
 #: data/core/macros/schedules.cfg:584
 msgid "The Long Dark (1)"
-msgstr ""
+msgstr "Ilgoji tamsa (1)"
 
 #. [time]: id=long_dark2
 #: data/core/macros/schedules.cfg:596
 msgid "The Long Dark (2)"
-msgstr ""
+msgstr "Ilgoji tamsa (2)"
 
 #. [time]: id=long_dark3
 #: data/core/macros/schedules.cfg:610
 msgid "The Long Dark (3)"
-msgstr ""
+msgstr "Ilgoji tamsa (3)"
 
 #. [time]: id=long_dark4
 #: data/core/macros/schedules.cfg:622
 msgid "The Long Dark (4)"
-msgstr ""
+msgstr "Ilgoji tamsa (4)"
 
 #: data/core/macros/special-notes.cfg:3
 msgid ""
@@ -4228,74 +4198,6 @@ msgstr "Slibinai"
 #. [race]: id=drake
 #: data/core/units.cfg:58
 #, fuzzy
-#| msgid ""
-#| "Drakes are large, winged and fire-breathing creatures, reminiscent of "
-#| "true dragons. On average, an adult drake stands around three meters tall "
-#| "and easily weighs more than a man and a horse combined. Their skin is "
-#| "made up of hard scales, resistant to most physical strikes except "
-#| "piercing and cold damage. Most drakes are capable of true flight and can "
-#| "travel long distances quickly. However, their sheer weight and bulk "
-#| "limits their flight ability somewhat, making them ungainly in the air. "
-#| "Where possible, they make use of terrain features such as hills, "
-#| "mountains and trees as launch points in order to gain greater height and "
-#| "speed. Fortunately for their enemies, they are still quite clumsy "
-#| "creatures and surprisingly slow in combat. This, combined with their "
-#| "large size, renders them easy targets for those who dare attack them.\n"
-#| "\n"
-#| "Drakes are inherently magical creatures, with a mysterious internal fire "
-#| "fueling their very lives. This can easily be witnessed when one of their "
-#| "kind perishes in combat; its internal fire is released, burning their "
-#| "remains in to ashes. Their internal fire is also their greatest weakness; "
-#| "it makes them extremely vulnerable to cold attacks. Despite their magical "
-#| "nature, drakes are incapable of channeling magic in a controlled manner. "
-#| "While the magic imbued within a drake’s body enables it to spit fire and "
-#| "gives it life, they have no willful control over its functions of this "
-#| "magic.\n"
-#| "\n"
-#| "<header>text='Society'</header>\n"
-#| "Drakes are a relatively warlike race and their societies can be best "
-#| "described as cultured martial societies. The core of a drake tribe is a "
-#| "small group of veteran warriors headed by a mutually respected — or "
-#| "simply feared — <ref>dst='dominant' text='dominant'</ref> who rules the "
-#| "society with an iron fist. Every drake is expected to earn their place in "
-#| "the strict hierarchy, to obey their superiors and command their "
-#| "inferiors. Entry to the ruling elite is only possible through challenging "
-#| "and defeating a superior in single combat, which is the way the hierarchy "
-#| "within the elite itself is established. The use of deception of any kind "
-#| "towards any fellow drake is, without exception, seen as cowardly and "
-#| "unacceptable.\n"
-#| "\n"
-#| "While their warlike nature and sense of territory drives them to defend "
-#| "their territories savagely, drakes rarely invade or trespass on areas "
-#| "already occupied by the other major races. Instead, they settle in "
-#| "unpopulated areas to establish their own territory there. They primarily "
-#| "feed on large game they hunt in the lowlands around their homes, but "
-#| "hatchlings and lower caste drakes are known to feed also on certain of "
-#| "moss and fungi they cultivate deep in their caverns. The only technology "
-#| "drakes value is armor- and weapon-smithing, and neither know or need "
-#| "other science and culture besides this. However the few implements they "
-#| "do fashion are almost unrivaled in quality, only matched by those "
-#| "produced in the finest Dwarvish foundries.\n"
-#| "\n"
-#| "Drakes are hatched from eggs and usually live naturally between 20 to 30 "
-#| "years. Death in battle is the most preferred way for a drake to leave "
-#| "this world. Unlike the elder members of other races, drakes naturally "
-#| "grow more aggressive and reckless towards the ends of their natural "
-#| "lives, perhaps to help ensure their place in the heroic legends of their "
-#| "kind.\n"
-#| "\n"
-#| "<header>text='Geography'</header>\n"
-#| "Drakes originated from an archipelago of volcanic islands called "
-#| "<ref>dst='morogor' text='Morogor'</ref> in the <ref>dst='great_ocean' "
-#| "text='Great Ocean'</ref>. A combination of population pressure and the "
-#| "subsidence of many of their home islands has caused colonies of drakes to "
-#| "spread to the <ref>dst='great_continent' text='Great Continent'</ref>. "
-#| "Drakes tend to make their homes in mountain caverns near volcanoes to "
-#| "protect their eggs, hatchings and forges. While drakes naturally prefer "
-#| "warmth, their internal fire is more than capable of sustaining them even "
-#| "in a relatively cold climate, a feature which has allowed them to "
-#| "populate even some of the mountains of the far north of the Great "
-#| "Continent."
 msgid ""
 "Drakes are large, winged and fire-breathing creatures, reminiscent of true "
 "dragons. On average, an adult drake stands around three meters tall and "
@@ -4612,24 +4514,18 @@ msgstr ""
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:132
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Falcon"
-msgstr "Žmogus"
+msgstr "Sakalas"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:133
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Falcon"
-msgstr "Žmogus"
+msgstr "Sakalė"
 
 #. [race]: id=falcon, description=
 #: data/core/units.cfg:134
-#, fuzzy
-#| msgid "race^Humans"
 msgid "race^Falcons"
-msgstr "Žmonės"
+msgstr "Sakalai"
 
 #. [race]: id=goblin
 #: data/core/units.cfg:145
@@ -4791,24 +4687,18 @@ msgstr ""
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:199
-#, fuzzy
-#| msgid "race^Human"
 msgid "race^Khalifate Human"
-msgstr "Žmogus"
+msgstr "Kalifato vyras"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:200
-#, fuzzy
-#| msgid "race+female^Human"
 msgid "race+female^Khalifate Human"
-msgstr "Žmogus"
+msgstr "Kalifato moteris"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:201
-#, fuzzy
-#| msgid "race+plural^Mechanical"
 msgid "race+plural^Khalifate"
-msgstr "Mechanizmai"
+msgstr "Kalifatas"
 
 #. [race]: id=khalifate
 #: data/core/units.cfg:202
@@ -4978,21 +4868,6 @@ msgstr "Žmogėdros"
 #. [race]: id=ogre
 #: data/core/units.cfg:272
 #, fuzzy
-#| msgid ""
-#| "Ogres are a wild and uncivilized race who dwell mainly in the wilderness "
-#| "of the Great Continent. Physically, they resemble humans and orcs but are "
-#| "larger and stronger. Even their adolescents are more than a match for "
-#| "most men. Ogres are distrusted in many populated areas and usually either "
-#| "avoid them or are driven out by force. Instead, they lurk the mountainous "
-#| "areas on the edges of civilization, where hungry ogre bandits provide a "
-#| "constant threat to travelers and caravans. While ogres are not "
-#| "particularly intelligent or quick, their toughness and physical strength "
-#| "make them a valuable asset in the armies of other races. They are "
-#| "especially valued by more ruthless commanders who don't mind the ogres' "
-#| "brutality. Little is known about their biology or society, if they can "
-#| "truly be said to have one, but they are said to attack alongside wolves "
-#| "and other beasts. Whether this is a sign of cooperation, domestication, "
-#| "or simply mutual opportunism is not known."
 msgid ""
 "Ogres are a wild and uncivilized race who dwell mainly in the wilderness of "
 "the Great Continent. Physically, they resemble humans and orcs but are "
@@ -5332,7 +5207,6 @@ msgstr "Frakcijos naudojamos tik daugelio žaidėjų žaidime"
 
 #: src/help.cpp:1327
 #, fuzzy
-#| msgid "Terrain"
 msgid "Base Terrain: "
 msgstr "Vietovė"
 
@@ -5350,16 +5224,16 @@ msgstr "Tobulėja į: "
 
 #: src/help.cpp:1465
 msgid "Base unit: "
-msgstr ""
+msgstr "Bazinis dalinys: "
 
 #: src/help.cpp:1470
+#, fuzzy
 msgid "Base units: "
-msgstr ""
+msgstr "Bazinis dalinys: "
 
 #: src/help.cpp:1488
-#, fuzzy
 msgid "Variations: "
-msgstr "Frakcijos:"
+msgstr "Variantai:"
 
 #: src/help.cpp:1512 src/help.cpp:1889 src/help.cpp:2033
 msgid "race^Miscellaneous"
@@ -5387,7 +5261,7 @@ msgstr "Žingsniai: "
 
 #: src/help.cpp:1555
 msgid "Vision: "
-msgstr ""
+msgstr "Regėjimas: "
 
 #: src/help.cpp:1557
 msgid "Jamming: "
@@ -5459,7 +5333,7 @@ msgstr "Judėjimo kaina"
 
 #: src/help.cpp:1677
 msgid "Vision Cost"
-msgstr ""
+msgstr "Regėjimo kaina"
 
 #: src/help.cpp:1680
 msgid "Jamming Cost"
@@ -5496,510 +5370,3 @@ msgstr "Mūšio dėl Vesnoto pagalba"
 #: src/help.cpp:3486
 msgid "Parse error when parsing help text: "
 msgstr "Nagrinėjimo klaida nagrinėjant pagalbos tekstą: "
-
-#~ msgid "Flat"
-#~ msgstr "Plokščia"
-
-#~ msgid ""
-#~ "<italic>text='Grassland'</italic> represents open plains, whether "
-#~ "cultivated, cut back for grazing, or wild. Being open ground, grassland "
-#~ "is both very easy to move across, but is also difficult to defend oneself "
-#~ "in. Typically, those units that perform best on grassland are either "
-#~ "cavalry, or very agile units which take advantage of the open space.\n"
-#~ "\n"
-#~ "Most units have defense of 30 to 40% on grassland."
-#~ msgstr ""
-#~ "<italic>text='Pievos'</italic>, nesvarbu ar naudojamos kaip dirbama žemė, "
-#~ "ar kaip ganyklos, ar laukinės, yra sutapatinamos su atvira lyguma. Judėti "
-#~ "per pievą yra lengva, tačiau joje sunku apsiginti. Pievose efektyviausi "
-#~ "daliniai yra raiteliai arba labai judrūs daliniai, galintys išnaudoti "
-#~ "atvirą erdvę.\n"
-#~ "\n"
-#~ "Dauguma dalinių pievose turi nuo 30 iki 40% gynybos rodiklį."
-
-#~ msgid "Road"
-#~ msgstr "Kelias"
-
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Roads'</italic> are beaten paths of dirt, formed by many "
-#~ "travelers passing over them. As far as gameplay is concerned, roads "
-#~ "behave as <ref>dst='terrain_flat' text='flat'</ref> terrain.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Savanos yra lygumos su aukšta žole, randamos šiltesnio klimato pasaulio "
-#~ "dalyse. Žaidime jos yra identiškos <ref>dst=terrain_grassland "
-#~ "text=pievoms</ref>."
-
-#~ msgid "Forest"
-#~ msgstr "Miškas"
-
-#~ msgid ""
-#~ "<italic>text='Forests'</italic> represent any woodland with significant "
-#~ "undergrowth, enough to hinder passage. Though they slow nearly everyone "
-#~ "down, forests do offer better defense to most units than open ground. "
-#~ "Cavalry, however, have so much trouble navigating them that any benefit "
-#~ "gained by stealth is negated. Elves are an exception to this general rule "
-#~ "for forests. Not only do they possess full movement in forests, but they "
-#~ "also gain a considerable defensive bonus. Dwarves are another exception "
-#~ "to this rule; though they are able to plow through the forests without "
-#~ "much loss of speed, their utter unfamiliarity with the terrain causes "
-#~ "them to receive no defensive bonus.\n"
-#~ "\n"
-#~ "Most units have 50% defense in forests, but cavalry are limited to 30%. "
-#~ "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted "
-#~ "units. Dwarves generally receive only 30% defense in forests.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "<italic>text='Miškai'</italic>, tai pakankamai medžių ir augmenijos "
-#~ "turinti vietovė trukdanti praeiti. Nors jie sulėtina beveik visus, miške "
-#~ "daugumai dalinių galimybė apsiginti yra didesnė negu atviroje vietovėje. "
-#~ "Tačiau raiteliams keliauti mišku taip sunku, kad jie praranda bet kokį "
-#~ "pranašumą atsirandantį dėl slaptumo. Elfai yra išimtis šiai miškų "
-#~ "taisyklei. Miškas jų ne tik kad nesulėtina, bet jie įgyja dar ir "
-#~ "apčiuopiamą gynybinį pranašumą. Kita išimtis yra dvarfai, kurie miške "
-#~ "greičio beveik nepraranda, tačiau neišmanydami vietovės jie gynybinio "
-#~ "pranašumo neįgauna.\n"
-#~ "\n"
-#~ "Dauguma dalinių miške turi 50% gynybinį rodiklį, bet raiteliai teturi "
-#~ "30%. Kita vertus, elfų rodiklis siekia 60–70%, įskaitant ir jų raituosius "
-#~ "dalinius. Dvarfai paprastai miške turi 30% gynybos rodiklį.\n"
-#~ "\n"
-
-#~ msgid "Hills"
-#~ msgstr "Kalvos"
-
-#~ msgid ""
-#~ "<italic>text='Hills'</italic> represent any reasonably rough terrain, "
-#~ "with enough dips and rises in the ground to provide some cover. Hills are "
-#~ "difficult for most troops to navigate. Dwarves, trolls, and orcs have "
-#~ "enough familiarity with the terrain that they can pass through it without "
-#~ "being slowed down. Cavalry have enough trouble navigating the terrain "
-#~ "that any defensive aid lent by cover is negated.\n"
-#~ "\n"
-#~ "Most units have about 50% defense in hills, whereas cavalry are limited "
-#~ "to 40%. Dwarves enjoy 60% defense in hills.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "<italic>text='Kalvos'</italic> yra pakankamai nelygi vietovė, kur yra "
-#~ "pakankamai pasislėpimui tinkamų daubų ir iškilimų. Daugumai karių judėti "
-#~ "kalvose yra sunku. Dvarfai, troliai ir orkai kalnuose yra pakankamai "
-#~ "susipažinę su vietove, todėl gali ją įveikti be pristabdymo. Raiteliai "
-#~ "gana sunkiai juda kalvota vietove, todėl jiems neturi kalvų teikiamo "
-#~ "gynybinio pranašumas.\n"
-#~ "\n"
-#~ "Dauguma karių kalvose turi 50% gynybinį rodiklį, o raiteliai apribojami "
-#~ "40%. Dvarfų gynybinis rodiklis kalvose yra net 60%.\n"
-#~ "\n"
-
-#~ msgid "Mountains"
-#~ msgstr "Kalnai"
-
-#~ msgid ""
-#~ "<italic>text='Mountains'</italic> are steep enough that units often have "
-#~ "to climb over obstacles to move. By this nature, they provide a "
-#~ "considerable defensive bonus for most troops, but they also severely "
-#~ "impede any passage through them. Most cavalry simply cannot enter "
-#~ "mountainous terrain; however, elvish cavalry is an exception to this, as "
-#~ "are the goblin wolf riders. Both dwarves and trolls are native to "
-#~ "mountainous terrain, and have a very easy time getting around.\n"
-#~ "\n"
-#~ "Most units receive about 60% defense in mountains, whereas Dwarves enjoy "
-#~ "70%."
-#~ msgstr ""
-#~ "<italic>text='Kalnai'</italic> yra gan statūs, tad daliniai dažnai turi "
-#~ "įveikinėti kliūtis lipdami. Daugumai karių tai suteikia papildomą "
-#~ "apsaugą, bet labai apsunkina praeinamumą. Dauguma raiteliu negali net "
-#~ "įjoti į kalnuotą vietovę, tačiau elfų raiteliai, kaip ir vilkais jojantys "
-#~ "goblinai, yra išimtis. Ir dvarfai, ir troliai yra kalnų būtybės ir jiems "
-#~ "įveikti kalnus yra vieni niekai.\n"
-#~ "\n"
-#~ "Dauguma karių kalnuose turi 60% gynybinį rodiklį, tuo tarpu dvarfai "
-#~ "mėgaujasi 70%."
-
-#~ msgid "Swamp"
-#~ msgstr "Pelkė"
-
-#~ msgid ""
-#~ "<italic>text='Swamps'</italic> represent any sort of wetlands. Swamps "
-#~ "slow down nearly everyone, and inhibit their ability to defend "
-#~ "themselves. An exception to this is any race bodily skilled in navigating "
-#~ "water; these receive both full movement and a defensive bonus. Those that "
-#~ "make their living in the wetlands are also adept at using this terrain "
-#~ "for cover.\n"
-#~ "\n"
-#~ "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
-#~ "all generally enjoy 60%."
-#~ msgstr ""
-#~ "<italic>text='Pelkės'</italic> atvaizduoja bet kokias pelkėtas vietoves. "
-#~ "Pelkės sulėtina beveik visus ir mažina galimybę apsiginti, išskyrus tuos, "
-#~ "kurių kūnai yra pritaikyti keliauti vandeniu; pelkė tokių karių "
-#~ "nepristabdo, maža to, jie įgyja ir gynybinį pranašumą. Pelkių gyventojai "
-#~ "puikiai išnaudoja šią vietovę priedangai.\n"
-#~ "\n"
-#~ "Dauguma dalinių pelkėje teturi 30% gynybinį rodiklį. Vandenių, nágų ir "
-#~ "roplių gynybinis rodiklis paprastai yra 60%."
-
-#~ msgid "Shallow Water"
-#~ msgstr "Seklus vanduo"
-
-#~ msgid ""
-#~ "<italic>text='Shallow water'</italic> represents any body of water deep "
-#~ "enough to come up to roughly a man’s waist. This is enough to slow down "
-#~ "nearly anyone and leave them wide open to attack. Dwarves, given that the "
-#~ "water reaches up almost to their heads, have an extremely hard time of "
-#~ "this. The exception is any race whose bodies naturally lend themselves to "
-#~ "swimming, for which they receive a considerable defensive bonus and full "
-#~ "movement.\n"
-#~ "\n"
-#~ "Most units make do with 20 to 30% defense in shallow water, whereas both "
-#~ "naga and mermen enjoy 60%."
-#~ msgstr ""
-#~ "<italic>text='Seklus vanduo'</italic> vaizduoja bet kokį vandens telkinį, "
-#~ "kurio gilumas yra iki žmogaus juosmens. Šis gilumas užtektinas sulėtinti "
-#~ "kiekvieną ir palikti juos plačiai atvertus puolimams. Dvarfams apsiginti "
-#~ "ypač sunku, nes vanduo beveik siekia jų galvas. Būtybės, kurių kūnai "
-#~ "skirti plaukimui, yra viena išimtis, jos gauna pastebimą gynybinį "
-#~ "pranašumą ir juda visu greičiu.\n"
-#~ "\n"
-#~ "Dauguma dalinių turi nuo 20 iki 30% gynybą sekliame vandenyje, tačiau "
-#~ "nágai ir vandeniai mėgaujasi 60%."
-
-#~ msgid "Deep Water"
-#~ msgstr "Gilus vanduo"
-
-#~ msgid ""
-#~ "<italic>text='Deep water'</italic> represents any body of water deep "
-#~ "enough to cover a man’s head. Most units cannot enter deep water: it is "
-#~ "the domain of units which can either fly, or are exceptionally strong "
-#~ "swimmers.\n"
-#~ "\n"
-#~ "Mermen and naga both receive 50% defense in deep water, with full "
-#~ "movement."
-#~ msgstr ""
-#~ "<italic>text='Gilus vanduo'</italic> vaizduoja vandens telkinį, kuriame "
-#~ "vanduo padengia žmogaus galvą. Dauguma dalinių negali įplaukti į gilų "
-#~ "vandenį: tai įmanoma tik daliniams, kurie yra gali skristi arba yra ypač "
-#~ "geri plaukikai.\n"
-#~ "\n"
-#~ "Vandeniai ir nágai turi 50% gynybą giliame vandenyje ir juda visu greičiu."
-
-#~ msgid "Frozen"
-#~ msgstr "Užšalusi"
-
-#~ msgid ""
-#~ "<italic>text='Frozen'</italic> terrain represents any flat area that is "
-#~ "covered by snow or ice. Most units are slowed down on it, and have a "
-#~ "harder time defending themselves. Note that swimming units, even those "
-#~ "who can breathe underwater, cannot swim underneath ice.\n"
-#~ "\n"
-#~ "Most units have 20 to 40% defense in frozen terrain."
-#~ msgstr ""
-#~ "<italic>text='Užšalusi'</italic> vietovė vaizduoja bet kokią lygumą, "
-#~ "apklotą sniegu ir ledu. Dauguma dalinių joje juda lėčiau ir turi sunkumų "
-#~ "ginantis. Plaukiojantys daliniai, netgi tie, kurie gali kvėpuoti po "
-#~ "vandeniu, po ledu plaukti negali.\n"
-#~ "\n"
-#~ "Dauguma dalinių turi nuo 20 iki 40% gynybinį rodiklį užšalusioje lygumoje."
-
-#~ msgid "Castle"
-#~ msgstr "Pilis"
-
-#~ msgid ""
-#~ "<italic>text='Castles'</italic> are any sort of permanent fortification. "
-#~ "Nearly all units receive a considerable bonus to their defense by being "
-#~ "stationed in a castle, and most units receive full movement in a castle. "
-#~ "Stationing units in a castle represents its defensive capability. Without "
-#~ "a unit in each wall hex, an enemy can simply sneak into the castle "
-#~ "unchallenged, gaining the same defensive bonus as everyone inside.\n"
-#~ "\n"
-#~ "Most units have about 60% defense in a castle.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "<italic>text='Pilys'</italic> yra bet kokie nuolatiniai apsauginiai "
-#~ "įtvirtinimai. Beveik visų pilyje dislokuotų dalinių galimybė apsiginti "
-#~ "pastebimai išauga ir dauguma dalinių pilyje gali judėti visu greičiu. "
-#~ "Pilyje dislokuoti daliniai parodo jos gynybinę galią. Jeigu daliniai nėra "
-#~ "užpildę visų pilies pasienyje esančių langelių, priešas gali tiesiog "
-#~ "prasmukti vidun be pasipriešinimo ir įgyti tokias pačias gynybines "
-#~ "galias, kaip ir kiti pilyje esantys daliniai.\n"
-#~ "\n"
-#~ "Dauguma dalinių pilyje turi apie 60% gynybinį rodiklį.\n"
-
-#~ msgid "Sand"
-#~ msgstr "Smėlis"
-
-#~ msgid ""
-#~ "The instability of <italic>text='sand'</italic> makes it harder for most "
-#~ "units to cross, and leaves them wide open to attack. In contrast, the "
-#~ "wide feet or snakelike bodies of the reptilian races make sand much "
-#~ "easier for them to navigate.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in sand."
-#~ msgstr ""
-#~ "<italic>text='Smėlio'</italic> klampumas apsunkina daugumos dalinių "
-#~ "judėjimą ir nesudaro priedangos priešo atakos atveju. Tačiau "
-#~ "plačiapadžiams arba gyvačių formos kūnus turintiems roplių rasių "
-#~ "daliniams smėlis kaip tik palengvina judėjimą.\n"
-#~ "\n"
-#~ "Dauguma dalinių smėlynuose turi  nuo 20 iki 40% gynybinį rodiklį."
-
-#~ msgid "Desert"
-#~ msgstr "Dykuma"
-
-#~ msgid ""
-#~ "<italic>text='Deserts'</italic> have a somewhat different composition "
-#~ "than small sand pits or beaches, however for gameplay purposes they are "
-#~ "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
-#~ msgstr ""
-#~ "<italic>text='Dykumos'</italic> turi kiek kitokią sudėtį, negu mažos "
-#~ "smėlio duobutės ar paplūdimiai, tačiau žaidime jų savybės vienodos. "
-#~ "Žiūrėkite <ref>dst='terrain_sand' text='smėlį'</ref>."
-
-#~ msgid "Cave"
-#~ msgstr "Urvas"
-
-#, fuzzy
-#~ msgid ""
-#~ "<italic>text='Cave'</italic> terrain represents any underground cavern "
-#~ "with enough room for a unit to pass. Most units are wholly unfamiliar "
-#~ "with the terrain, and thus are both slowed down and hindered in defense. "
-#~ "Dwarves and trolls, who make their homes in caves, both have a relatively "
-#~ "easy time navigating this terrain, especially dwarves, who by dint of "
-#~ "their small size can navigate many obstacles that other races cannot. "
-#~ "Occasionally caves are <ref>dst='terrain_illuminated_cave' "
-#~ "text='illuminated'</ref>.\n"
-#~ "\n"
-#~ "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
-#~ msgstr "Uolos tai bet kokia viršžeminė "
-
-#~ msgid "Rockbound Cave"
-#~ msgstr "Uolėtas urvas"
-
-#~ msgid ""
-#~ "<italic>text='Rockbound cave'</italic> terrain is formed by the action of "
-#~ "water and wind, carrying erosive particles that carve the rock. It "
-#~ "resembles a scraggy underground cavern which reduces efficiency of most "
-#~ "units, but shoulders defense. Dwarves and trolls, who are main settlers "
-#~ "of caves, have a relatively easy time navigating this terrain. Dwarves, "
-#~ "who by dint of their small size have the full advantage of navigation in "
-#~ "such topography. Occasionally caves are "
-#~ "<ref>dst='terrain_illuminated_cave' text='illuminated'</ref>\n"
-#~ "\n"
-#~ "Most units have about 50% defense in rocky caves, whereas cavalry are "
-#~ "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
-#~ msgstr ""
-#~ "<italic>text='Uolėtas urvas'</italic> yra suformuotas vėjyje ir vandenyje "
-#~ "esančių erozinių dalelių, kurios išėda uolienas. Siauras požeminis urvas "
-#~ "sumažina daugumos dalinių efektyvumą, bet sustiprina gynybinį pajėgumą. "
-#~ "Dvarfai ir troliai yra urvų gyventojai, todėl jiems šioje aplinkoje "
-#~ "judėti pakankamai lengva. Dvarfai dėl savo mažo ūgio urvuose turi visišką "
-#~ "pranašumą. Vietomis urvai yra <ref>dst='terrain_illuminated_cave' "
-#~ "text='apšviesti'</ref> \n"
-#~ "\n"
-#~ "Dauguma dalinių turi apie 50% gynybinį rodiklį uolėtuose urvuose, tuo "
-#~ "tarpu raiteliai teturi 40%. Dvarfų gynybinis rodiklis uolėtuose urvuose "
-#~ "net 60%. "
-
-#~ msgid "Illuminated Cave"
-#~ msgstr "Apšviestas urvas"
-
-#~ msgid ""
-#~ "Rare patches of the underground world are illuminated by light from the "
-#~ "surface shining down into the gloomy darkness. This provides an attack "
-#~ "bonus for lawful units and removes the attack bonus from chaotic units. "
-#~ "In all other regards this terrain is functionally identical to normal "
-#~ "<ref>dst='terrain_cave' text='cave terrains'</ref>."
-#~ msgstr ""
-#~ "Tik retose požeminio pasaulio vietose išorės šviesa pasiekia "
-#~ "apsiblaususias tamsumas. Tai suteikia geresnį puolimą šviesos daliniams "
-#~ "ir pablogina chaotiškiems daliniams. Visais kitais atžvilgiais ši aplinka "
-#~ "identiška kitiems <ref>dst='terrain_cave' text='urvams'</ref>urvams."
-
-#~ msgid "Mushroom Grove"
-#~ msgstr "Grybų giraitė"
-
-#~ msgid ""
-#~ "<italic>text='Mushroom groves'</italic> are vast underground forests of "
-#~ "giant mushrooms, which thrive in the damp darkness. Most units have "
-#~ "trouble negotiating the spongy floor of smaller fungi, but they have "
-#~ "plenty of cover behind the larger stalks. Mounted units, however, become "
-#~ "completely mired and lack proper freedom of movement in combat. Undead "
-#~ "units have a natural affinity for decay and function quite well in "
-#~ "mushroom forests.\n"
-#~ "\n"
-#~ "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
-#~ "receive only 20%."
-#~ msgstr ""
-#~ "<italic>text='Grybų giraitės'</italic> yra didelė milžiniškų grybų "
-#~ "požeminė karalystė, paskandinta nuolatinėje tamsoje. Dauguma karių turi "
-#~ "sunkumų judėdami samanotu paviršiumi, tačiau nesunkiai gali pasislėpti už "
-#~ "storų kotų. Tačiau raiti kariai dažnai įklimpsta ir mūšio metu yra "
-#~ "nejudrūs. Nemirėliai grybų giraitėje jaučiasi neblogai dėl savo polinkio "
-#~ "į irimą.\n"
-#~ "\n"
-#~ "Grybų giraitėje dauguma dalinių turi nuo 50 iki 60% gynybinį rodiklį, o "
-#~ "raiteliai turi tik 20%."
-
-#~ msgid "Village"
-#~ msgstr "Kaimas"
-
-#~ msgid ""
-#~ "<italic>text='Villages'</italic> represent any group of buildings, human "
-#~ "or otherwise. Almost all units, even cavalry, have an easy time "
-#~ "navigating villages, and most units gain a defensive bonus from being "
-#~ "stationed in a village. Villages allow units the resources to clean and "
-#~ "tend to their wounds, which allows any unit stationed therein to heal "
-#~ "eight hitpoints each turn, or to be cured of poison.\n"
-#~ "\n"
-#~ "Most units have 50 to 60% defense in villages, whereas cavalry receive "
-#~ "only 40%.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "<italic>text='Kaimus'</italic> sudaro pastatai, žmonės ir visa kita. "
-#~ "Beveik visi daliniai, netgi raiteliai, neturi jokių problemų judėti kaimo "
-#~ "vietovėje ir beveik visi įgauna didesnę gynybinę galią. Kaimai suteikia "
-#~ "galimybę išsigydyti žaizdas, todėl kiekvieno ėjimo metu daliniai gauna 8 "
-#~ "gyvybės taškus arba yra išgydomas nuo nuodų.\n"
-#~ "\n"
-#~ "Kaimuose dauguma dalinių turi nuo 50 iki 60% gynybinį rodiklį, o "
-#~ "raiteliai turi tik 40%.\n"
-#~ "\n"
-
-#~ msgid "Submerged Village"
-#~ msgstr "Užtvindytas kaimas"
-
-#~ msgid ""
-#~ "<italic>text='Submerged villages'</italic> are the homes of merfolk and "
-#~ "nagas. While water-dwelling creatures are at home here, land-dwellers "
-#~ "have a hard time navigating and defending these villages. However, like "
-#~ "any village, the facilites are available to all creatures which allow "
-#~ "units to tend to their wounds. Any unit stationed in a village can heal "
-#~ "eight hitpoints each turn, or be cured of poison.\n"
-#~ "\n"
-#~ "Merfolk and nagas have 60% defense in submerged villages, whereas land "
-#~ "based units usually have a low defense."
-#~ msgstr ""
-#~ "<italic>text='Povandeniniai kaimai'</italic> yra vandenių ir nágų "
-#~ "gyvenamoji vieta. Nors vandens padarams tai natūrali aplinka, žemės "
-#~ "padarams yra sunku judėti ir gintis povandeniniuose kaimuose. Tačiau kaip "
-#~ "ir kituose kaimuose, čia galima išsigydyti savo žaizdas. Bet koks dalinys "
-#~ "kiekvieno ėjimo metu gauna 8 gyvybės taškus arba yra išgydomas nuo "
-#~ "nuodų.\n"
-#~ "\n"
-#~ "Povandeniniuose kaimuose vandeniai ir nágai turi 60% gynybinį rodiklį, o "
-#~ "žemės padarai paprastai turi žemą gynybinį rodiklį. "
-
-#~ msgid "Unwalkable"
-#~ msgstr "Nevaikštoma"
-
-#~ msgid ""
-#~ "<italic>text='Unwalkable terrain'</italic> covers any chasm or gorge "
-#~ "which, as the name implies, cannot be crossed simply by walking. Chasms "
-#~ "are noted for sheer walls which would take days to traverse. As far as "
-#~ "gameplay is concerned, only units capable of flying can cross this "
-#~ "terrain."
-#~ msgstr ""
-#~ "<italic>text='Nepraeinamos vietovės'</italic>, kaip ir sako pavadinimas, "
-#~ "yra nepraeinamos tiesiog einant. Įveikti stačias sienas turinčias "
-#~ "bedugnes prireiktų kelių dienų. Pagal ši žaidimą tik skraidyti galintys "
-#~ "daliniai gali įveikti šią vietovę. "
-
-#~ msgid "Lava"
-#~ msgstr "Lava"
-
-#~ msgid ""
-#~ "The dangers inherent in trying to walk on <italic>text='lava'</italic> "
-#~ "are fairly obvious. As far as movement is concerned, lava is equivalent "
-#~ "to <ref>dst='terrain_unwalkable' text='unwalkable'</ref> terrain, and can "
-#~ "only be crossed by those units capable of flying a considerable distance "
-#~ "above it. The molten magma also produces a substantial glow, illuminating "
-#~ "the area immediately above it. This provides an attack bonus for lawful "
-#~ "units and removes the attack bonus from chaotic units."
-#~ msgstr ""
-#~ "Bandymas eiti <italic>text='lava'</italic>, be abejo, yra pavojingas. Kai "
-#~ "reikia pereiti lavą, kaip ir <ref>dst='terrain_unwalkable' "
-#~ "text='nepereinamos'</ref>vietovės atveju, tik aukštai skraidantys "
-#~ "daliniai gali skristi virš jos. Išsilydžiusi magma švyti apšviesdama "
-#~ "erdvę virš jos. Šviesos daliniams tai suteikia puolimo pranašumą, o "
-#~ "chaotiškiems daliniams – pablogina."
-
-#~ msgid "River Ford"
-#~ msgstr "Upės brasta"
-
-#~ msgid ""
-#~ "When a river happens to be extremely shallow, passing over it is a "
-#~ "trivial matter for land based units. Moreover, any creature best adapted "
-#~ "to swimming has full mobility even at such places in the river. As far as "
-#~ "gameplay is concerned, a river ford is treated as either grassland or "
-#~ "shallow water, choosing whichever one offers the best defensive and "
-#~ "movement bonuses for the unit on it."
-#~ msgstr ""
-#~ "Kai upė labai sekli sausumos daliniams ją pereiti nėra jokių kliūčių. "
-#~ "Negana to, vandens padarai net ir esant tokiam upės seklumui nepraranda "
-#~ "savo judrumo. Šiame žaidime upės brasta prilyginama pievai ar sekliems "
-#~ "vandenims, pasirenkant kuri aplinka daliniui duotų geriausią gynybą ir "
-#~ "nevaržytų judėjimo."
-
-#~ msgid "Coastal Reef"
-#~ msgstr "Pakrantės uolynai"
-
-#~ msgid ""
-#~ "<italic>text='Coastal reefs'</italic> are shallows formed by stone, coral "
-#~ "and sand. This provides most land units with a more steady footing and "
-#~ "defensive positions than wading in shallow water normally would and also "
-#~ "grants most water-dwelling races an exceptionally high defense.\n"
-#~ "\n"
-#~ "Mermen and Naga both receive 70% defense on coastal reefs."
-#~ msgstr ""
-#~ "<italic>text='Pakrantės uolynai'</italic> suformuoti iš akmenų, smėlio ir "
-#~ "koralų. Tai suteikia daugumai žemės dalinių geresnę galimybę lengvai "
-#~ "judėti ir apsiginti nei sekliuose vandenyse. Pakrantė taip pat suteikia "
-#~ "vandens gyventojams išskirtinai didelę gynybinę galią.\n"
-#~ "\n"
-#~ "Vandeniai ir nágai pakrantės uolynuose gauna 70% gynybinį rodiklį."
-
-#~ msgid "Bridge"
-#~ msgstr "Tiltas"
-
-#~ msgid ""
-#~ "To those capable of building one, the ability to lay a "
-#~ "<italic>text='bridge'</italic> offers a liberation from the fickle nature "
-#~ "of waterways, whose fords come and go with the rise and fall of the "
-#~ "waterline. This is to say nothing of the luxury of dry feet, the loss of "
-#~ "which is no laughing matter in the cold months of the year.\n"
-#~ "\n"
-#~ "For those who go by land or sea, a bridge is the best of both worlds — "
-#~ "for gameplay purposes, it is treated either as grassland or the "
-#~ "underlying water, whichever offers the best movement and defensive "
-#~ "bonuses for the unit occupying the bridge hex. Note that a swimming unit "
-#~ "and a land unit are not capable of occupying a bridge hex at the same "
-#~ "time."
-#~ msgstr ""
-#~ "Tiems, kurie turi statybos įgūdžių, <italic>text='tiltų'</italic> "
-#~ "pastatymas leidžia išvengti bridimo nepastoviais vandens keliais, kurie "
-#~ "atsiranda ir pradingsta kintant vandens lygiui. Jau nekalbant apie "
-#~ "prabangą išsaugoti sausas kojas, kas yra visai nejuojinga šaltuoju metų "
-#~ "laiku.\n"
-#~ "\n"
-#~ "Ir tiems kurie vaikšto žeme, ir tiems kurie plaukia jūra, tiltas žaidime "
-#~ "naudojamas pasirinktinai kaip pieva arba po tiltu esantis vanduo, "
-#~ "priklausomai nuo to kuri vietovė suteiktų geriausią judėjimo ir gynybos "
-#~ "galią ant tilto esančiam daliniui. Turėkite omeny, kad tuo pačiu metu ant "
-#~ "tilto negali būti ir žemės, ir vandens padarai."
-
-#~ msgid "Impassable"
-#~ msgstr "Nepraeinama"
-
-#~ msgid ""
-#~ "Obstacles that not even the most determined traveler may overcome include "
-#~ "solid walls of stone and mountains so tall and steep that they are "
-#~ "constantly wreathed in cloud. Even flying creatures cannot navigate the "
-#~ "jagged peaks at such rarified heights, and not even the fiercest troll "
-#~ "can smash through thick walls of stone."
-#~ msgstr ""
-#~ "Kliūtys, kurių net labai pasiryžęs keliautojas negali įveikti, yra storos "
-#~ "akmeninės sienos ir aukšti kalnai, tokie aukšti, kad juos nuolat gaubia "
-#~ "debesys. Netgi skraidantys padarai negali orientuotis tarp dantytų "
-#~ "viršūnių tokiame dideliame aukštyje ir netgi smarkiausias trolis negali "
-#~ "prasibrauti pro storas akmenines sienas."

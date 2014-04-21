@@ -1,6 +1,6 @@
 # Copyright (C) Wesnoth development team, 2007-2012.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2012.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
@@ -173,13 +173,14 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<--config-dir>I<\\ name>"
 msgstr "B<--config-dir>I<\\ pavadinimas>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
+#, fuzzy
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -194,7 +195,7 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
 msgid "B<--config-path>"
 msgstr "B<--config-path>"
 
@@ -797,7 +798,6 @@ msgstr "nenaudoti žemėlapio nustatymų, vietoj to naudoti numatytus nustatymus
 #. type: TP
 #: ../../doc/man/wesnoth.6:257
 #, fuzzy, no-wrap
-#| msgid "B<--era=>I<value>"
 msgid "B<--multiplayer-repeat=>I<value>"
 msgstr "B<--era=>I<vertė>"
 
@@ -1831,3 +1831,42 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: TP
+#, fuzzy
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#, fuzzy
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "atspausdina žaidimo duomenų aplanko pavadinimą ir išeina."
+
+# type: Plain text
+#, fuzzy
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "nustato naudotojo konfigūracijos aplanką į I<name> esantį $HOME arba „My "
+#~ "Documents\\eMy Games“ Windows sistemoje. Taip pat galite nurodyti pilną "
+#~ "kelią iki konfigūracijos aplanko, jeigu jis nėra $HOME ar „My Documents"
+#~ "\\eMy Games“ aplankuose"
+
+# type: TP
+#, fuzzy
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--config-dir>I<\\ pavadinimas>"
+
+# type: TP
+#, fuzzy
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--path>"
+
+# type: Plain text
+#, fuzzy
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr "išveda naudotojo konfigūracijos aplanko kelią ir išeina."

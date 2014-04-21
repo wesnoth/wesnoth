@@ -1,11 +1,11 @@
 # Copyright (C) Wesnoth development team, 2007-2013.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2013.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -99,7 +99,6 @@ msgstr "Pilki pakrantės uolynai"
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
 #, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
 msgstr "Pakrantės uolynai"
 
@@ -119,7 +118,6 @@ msgstr "Pelkė"
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
 #, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
 msgstr "Užpelkėjusios žmonių pilies bokštas"
 
@@ -348,7 +346,7 @@ msgstr "Žydinti vandens lelija"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:471
 msgid "Trash"
-msgstr ""
+msgstr "Šiukšliadėžė"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:480
@@ -420,7 +418,7 @@ msgstr "Palmių giraitė"
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:566
 msgid "Savanna"
-msgstr ""
+msgstr "Savana"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:578
@@ -519,7 +517,6 @@ msgstr "Kalnai"
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
 #, fuzzy
-#| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
 msgstr "Paprasti nepereinami kalnai"
 
@@ -1010,7 +1007,6 @@ msgstr "Apsnigta žmonių pilis"
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
 #, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
 msgstr "Elfų pilies bokštas"
 
@@ -1282,7 +1278,7 @@ msgstr "Rūkas"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2227 data/core/terrain.cfg:2228
 msgid "Fungus"
-msgstr ""
+msgstr "Grybai"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2231
@@ -1322,10 +1318,8 @@ msgstr ""
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2256
-#, fuzzy
-#| msgid "Sand"
 msgid "Sands"
-msgstr "Smėlis"
+msgstr "Smėlynai"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2273
@@ -1521,7 +1515,7 @@ msgstr ""
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2438 data/core/terrain.cfg:2439
 msgid "Rails"
-msgstr ""
+msgstr "Bėgiai"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2441
@@ -1687,31 +1681,28 @@ msgstr "Nėra jokio aprašymo."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
-msgstr ""
+msgstr "Svetainė:"
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
-msgstr ""
+msgstr "Nėra"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
 msgstr "Kopijuoti"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
 #, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
 msgstr "Pasirinkite norimą užkrauti žaidimą"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
-msgstr ""
+msgstr "Eiti"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:450
@@ -1721,12 +1712,12 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
-msgstr ""
+msgstr "Priklausomybės:"
 
 #. [scroll_label]: id=dependencies
 #: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
-msgstr ""
+msgstr "Nėra"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:510
@@ -1761,7 +1752,6 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
 #, fuzzy
-#| msgid "addons_of_type^MP campaigns"
 msgid "addons_of_type^SP/MP Campaigns"
 msgstr "DŽ kampanijos"
 
@@ -1803,7 +1793,6 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
 #, fuzzy
-#| msgid "Actions"
 msgid "Options"
 msgstr "Veiksmai"
 
@@ -1851,12 +1840,12 @@ msgstr ""
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "Didėjančiai"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "Mažėjančiai"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1955,7 +1944,6 @@ msgstr "Ankstesnis"
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:87
 #, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
 msgstr "Ankstesnis"
 
@@ -1971,7 +1959,6 @@ msgstr "Kitas"
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:95
 #, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
 msgstr "Kita pusė"
 
@@ -2005,12 +1992,12 @@ msgstr "ID:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
-msgstr ""
+msgstr "Metaduomenys:"
 
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "Paveikslėlis"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
@@ -2020,7 +2007,7 @@ msgstr ""
 #. [button]: id=sound_button
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
-msgstr ""
+msgstr "Garsas"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
@@ -2138,38 +2125,34 @@ msgstr "Nepereinama"
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "Matomas rūke"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "Matomas užsklandoje"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
 #, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Edit Scenario Settings"
 msgstr "Scenarijaus tikslas"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifikatorius:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
 #, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
 msgstr "Patirties modifikatorius"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "Ėjimas"
+msgstr "Ėjimai:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
@@ -2179,21 +2162,18 @@ msgstr ""
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
 #, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Atsitiktinis pradžios laikas"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
 #, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
 msgstr "Pusė $side"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
 #, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
 msgstr "Kalvų skaičius:"
 
@@ -2204,22 +2184,17 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
-msgstr "Tik komandai"
+msgstr "Komandos pavadinimas:"
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
-msgstr "Animuoti žemėlapį"
+msgstr "Dalintis žemėlapiu"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
 #, fuzzy
-#| msgid "Leader"
 msgid "No leader"
 msgstr "Vadas"
 
@@ -2237,31 +2212,27 @@ msgstr ""
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
 #, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
 msgstr "Būsenos lentelė"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "Auksas:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Auksas kaimui"
+msgstr "Auksas kaimui:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "Pajamos:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
 #, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
 msgstr "Auksas kaimui"
 
@@ -2559,10 +2530,8 @@ msgstr ""
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "Pasirinkite norimą užkrauti žaidimą"
+msgstr "Šį kelią kopijuoti į iškarpinę"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
@@ -2576,46 +2545,38 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "Urvo takas"
+msgstr "Žaidimo keliai"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
 msgid "Game data:"
-msgstr ""
+msgstr "Žaidimo duomenys:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
-#, fuzzy
-#| msgid "Confirmation requested"
 msgid "Configuration:"
-msgstr "Paprašytas patvirtinimas"
+msgstr "Konfigūracija:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
 msgid "User data:"
-msgstr ""
+msgstr "Naudotojo duomenys:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
-msgstr "Išsaugoti žaidimą"
+msgstr "Įrašyti žaidimai:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
-msgstr "Priedai"
+msgstr "Priedai:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "Podėlis:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2663,7 +2624,7 @@ msgstr "Tipas"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:164
 msgid "Items"
-msgstr ""
+msgstr "Daiktai"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:223
@@ -3073,7 +3034,7 @@ msgstr "Slaptažodis:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Patvirtinti"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
@@ -3198,7 +3159,7 @@ msgstr "Pasirinkti"
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
-msgstr ""
+msgstr "Atverti"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
@@ -3207,17 +3168,13 @@ msgstr ""
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
-msgstr "Ekranvaizdis padarytas"
+msgstr ""
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Ekranvaizdis"
+msgstr "Ekranvaizdžiai..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
@@ -3232,7 +3189,6 @@ msgstr "Pasirinkite temą"
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
 #, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
 msgstr "Nauja tema įsigalios kitam naujam ar įkeltam žaidimui."
 
@@ -3382,19 +3338,18 @@ msgstr "Klaida"
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 msgid "Details:"
-msgstr ""
+msgstr "Detalės:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "Kopijuoti"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
 #, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
-msgstr "Pasirinkite norimą užkrauti žaidimą"
+msgstr "Šį kelią kopijuoti į iškarpinę"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3543,7 +3498,7 @@ msgstr "Spartieji klavišai"
 
 #: src/game_preferences_display.cpp:206
 msgid "Paths"
-msgstr ""
+msgstr "Keliai"
 
 #: src/game_preferences_display.cpp:208
 msgid "Sound effects"
@@ -3929,9 +3884,8 @@ msgid "Roads between castles"
 msgstr "Keliai tarp pilių"
 
 #: src/generators/mapgen_dialog.cpp:256
-#, fuzzy
 msgid "Show labels"
-msgstr "Rodyti nuplaukiančius užrašus"
+msgstr "Rodyti žymes"
 
 #: src/generators/mapgen_dialog.cpp:314
 msgid "/1000 tiles"
@@ -4060,7 +4014,7 @@ msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:109
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "Neįdiegtas"
 
 #: src/gui/dialogs/addon/description.cpp:111
 msgid "addon_state^Published, not installed"
@@ -4108,19 +4062,19 @@ msgstr ""
 
 #: src/gui/dialogs/addon/description.cpp:156
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "Nežinoma"
 
 #: src/gui/dialogs/addon/filter_options.cpp:294
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "Neįdiegtas"
 
 #: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "Yra atnaujinimas"
 
 #: src/gui/dialogs/addon/filter_options.cpp:298
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "Įdiegtas"
 
 #: src/gui/dialogs/addon/filter_options.cpp:300
 msgid "addons_view^All Add-ons"
@@ -4284,26 +4238,21 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
-msgstr "Atšaukti"
+msgstr "atšaukti"
 
 #: src/hotkey/hotkey_command.cpp:39
 #, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Nieko nežymėti"
+msgstr "Pasirinkti"
 
 #: src/hotkey/hotkey_command.cpp:40
 #, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Nieko nežymėti"
+msgstr "Dykumos bokštas"
 
 #: src/hotkey/hotkey_command.cpp:41
 #, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
 msgstr "Pulti"
 
@@ -4317,11 +4266,11 @@ msgstr "Animuoti žemėlapį"
 
 #: src/hotkey/hotkey_command.cpp:44
 msgid "Next Unit"
-msgstr "Kitas dalinys"
+msgstr "Kitas karys"
 
 #: src/hotkey/hotkey_command.cpp:45
 msgid "Previous Unit"
-msgstr "Ankstesnis dalinys"
+msgstr "Ankstesnis karys"
 
 #: src/hotkey/hotkey_command.cpp:46
 msgid "Hold Position"
@@ -4329,37 +4278,37 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:47
 msgid "End Unit Turn"
-msgstr "Baigti dalinio ėjimą"
+msgstr "Baigti kario ėjimą"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
 msgstr "Vadas"
 
 #: src/hotkey/hotkey_command.cpp:49
 msgid "Undo"
-msgstr "Atšaukti"
+msgstr "Atstatyti"
 
 #: src/hotkey/hotkey_command.cpp:50
 msgid "Redo"
-msgstr "Atstatyti"
+msgstr "Pakartoti"
 
 #: src/hotkey/hotkey_command.cpp:51
 msgid "Zoom In"
-msgstr "Padidinti"
+msgstr "Priartinti"
 
 #: src/hotkey/hotkey_command.cpp:52
 msgid "Zoom Out"
-msgstr "Sumažinti"
+msgstr "Nutolinti"
 
 #: src/hotkey/hotkey_command.cpp:53
+#, fuzzy
 msgid "Default Zoom"
-msgstr "Numatytas didinimas"
+msgstr "Numatyta"
 
 #: src/hotkey/hotkey_command.cpp:54
+#, fuzzy
 msgid "Toggle Full Screen"
-msgstr "Perjungti visą ekraną"
+msgstr "Visas ekranas"
 
 #: src/hotkey/hotkey_command.cpp:55
 msgid "Screenshot"
@@ -4374,31 +4323,28 @@ msgid "Accelerated"
 msgstr "Pagreitinta"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Dalinio aprašymas"
+msgstr "Vietovės aprašymas"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
-msgstr "Dalinio aprašymas"
+msgstr "Kario aprašymas"
 
 #: src/hotkey/hotkey_command.cpp:60
 msgid "Rename Unit"
-msgstr "Pervadinti dalinį"
+msgstr "Pervadinti karį"
 
 #: src/hotkey/hotkey_command.cpp:61
-#, fuzzy
 msgid "Delete Unit"
-msgstr "Trinti failą"
+msgstr "Trinti karį"
 
 #: src/hotkey/hotkey_command.cpp:64
 msgid "Save Replay"
-msgstr "Išsaugoti peržaidimą"
+msgstr "Įrašyti peržaidimą"
 
 #: src/hotkey/hotkey_command.cpp:65 src/hotkey/hotkey_command.cpp:133
 msgid "Save Map"
-msgstr "Išsaugoti žemėlapį"
+msgstr "Įrašyti žemėlapį"
 
 #: src/hotkey/hotkey_command.cpp:67
 msgid "Recruit"
@@ -4406,7 +4352,7 @@ msgstr "Samdyti"
 
 #: src/hotkey/hotkey_command.cpp:68
 msgid "Repeat Recruit"
-msgstr "Pakartoti samdymą"
+msgstr "Kartoti samdymą"
 
 #: src/hotkey/hotkey_command.cpp:69
 msgid "Recall"
@@ -4417,22 +4363,22 @@ msgid "End Turn"
 msgstr "Baigti ėjimą"
 
 #: src/hotkey/hotkey_command.cpp:71
+#, fuzzy
 msgid "Toggle Ellipses"
 msgstr "Perjungti elipses"
 
 #: src/hotkey/hotkey_command.cpp:72
+#, fuzzy
 msgid "Toggle Grid"
-msgstr "Perjungti tinklelį"
+msgstr "Perjungti elipses"
 
 #: src/hotkey/hotkey_command.cpp:73
 msgid "Mouse Scrolling"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Būsena"
+msgstr "Būsenos lentelė"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4443,42 +4389,43 @@ msgid "Speak"
 msgstr "Kalbėti"
 
 #: src/hotkey/hotkey_command.cpp:78
+#, fuzzy
 msgid "Change Side (Debug!)"
-msgstr "Keisti pusę (Derinimas!)"
+msgstr "Sukurti dalinį (Derinimas!)"
 
 #: src/hotkey/hotkey_command.cpp:79
+#, fuzzy
 msgid "Kill Unit (Debug!)"
-msgstr "Užmušti karį (Derinimas!)"
+msgstr "Sukurti dalinį (Derinimas!)"
 
 #: src/hotkey/hotkey_command.cpp:81
-#, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Scenario Objectives"
-msgstr "Scenarijaus tikslas"
+msgstr "Scenarijaus tikslai"
 
 #: src/hotkey/hotkey_command.cpp:82
 msgid "Unit List"
-msgstr "Dalinių sąrašas"
+msgstr "Karių sąrašas"
 
 #: src/hotkey/hotkey_command.cpp:83
 msgid "Statistics"
 msgstr "Statistika"
 
 #: src/hotkey/hotkey_command.cpp:84
+#, fuzzy
 msgid "Pause Network Game"
-msgstr "Pristabdyti tinklo žaidimą"
+msgstr "Sukurti tinklo žaitimą"
 
 #: src/hotkey/hotkey_command.cpp:85
 msgid "Continue Network Game"
-msgstr "Tęsti tinklo žaidimą"
+msgstr "Tęsti tinklo žaitimą"
 
 #: src/hotkey/hotkey_command.cpp:87
 msgid "Quit Editor"
-msgstr "Išeiti iš redaktoriaus"
+msgstr "Išjungti redaktorių"
 
 #: src/hotkey/hotkey_command.cpp:88
 msgid "Set Team Label"
-msgstr "Nustatyti komandos žymę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:89
 msgid "Set Label"
@@ -4486,7 +4433,7 @@ msgstr "Nustatyti žymę"
 
 #: src/hotkey/hotkey_command.cpp:90
 msgid "Clear Labels"
-msgstr "Išvalyti žymes"
+msgstr "Valyti žymes"
 
 #: src/hotkey/hotkey_command.cpp:91
 msgid "Show Enemy Moves"
@@ -4494,19 +4441,22 @@ msgstr "Rodyti priešų ėjimus"
 
 #: src/hotkey/hotkey_command.cpp:92
 msgid "Best Possible Enemy Moves"
-msgstr "Geriausi įmanomi priešų ėjimai"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:94
+#, fuzzy
 msgid "Play Replay"
-msgstr "Leisti peržaidimą"
+msgstr "Peržaidimas"
 
 #: src/hotkey/hotkey_command.cpp:95
+#, fuzzy
 msgid "Reset Replay"
-msgstr "Perleisti peržaidimą"
+msgstr "Peržaidimas"
 
 #: src/hotkey/hotkey_command.cpp:96
+#, fuzzy
 msgid "Stop Replay"
-msgstr "Stabdyti peržaidimą"
+msgstr "Parodyti peržaidimą"
 
 #: src/hotkey/hotkey_command.cpp:97
 msgid "Next Turn"
@@ -4522,7 +4472,7 @@ msgstr "Visas žemėlapis"
 
 #: src/hotkey/hotkey_command.cpp:100
 msgid "Each Team"
-msgstr "Kiekviena komanda"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:101
 msgid "Team 1"
@@ -4535,37 +4485,37 @@ msgstr "Praleisti animaciją"
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:105
 msgid "whiteboard^Planning Mode"
-msgstr "Planavimo režimas"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:107
 msgid "whiteboard^Execute Action"
-msgstr "Vykdyti veiksmus"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:109
 msgid "whiteboard^Execute All Actions"
-msgstr "Vykdyti visus veiksmus"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:111
 msgid "whiteboard^Delete Action"
-msgstr "Pašalinti veiksmus"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:113
 msgid "whiteboard^Move Action Up"
-msgstr "Paslinkti veiksmą į viršų"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:115
 msgid "whiteboard^Move Action Down"
-msgstr "Paslinkti veiksmą į apačią"
+msgstr ""
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:117
 msgid "whiteboard^Suppose Dead"
-msgstr "Laikyti mirusiu"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Quit to Desktop"
@@ -4576,13 +4526,12 @@ msgid "Close Map"
 msgstr "Užverti žemėlapį"
 
 #: src/hotkey/hotkey_command.cpp:124
-#, fuzzy
 msgid "Switch Time of Day"
-msgstr "Keisti žemėlapį"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Switch Map"
-msgstr "Keisti žemėlapį"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Assign Local Time"
@@ -4597,10 +4546,8 @@ msgid "Partial Undo"
 msgstr "Dalinis atstatymas"
 
 #: src/hotkey/hotkey_command.cpp:131
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Testinis scenarijus"
+msgstr "Naujas scenarijus"
 
 #: src/hotkey/hotkey_command.cpp:132
 msgid "Load Map"
@@ -4608,21 +4555,19 @@ msgstr "Įkelti žemėlapį"
 
 #: src/hotkey/hotkey_command.cpp:134
 msgid "Save Map As"
-msgstr "Išsaugoti žemėlapį kaip"
+msgstr "Įrašyti žemėlapį kaip"
 
 #: src/hotkey/hotkey_command.cpp:135
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Scenarijaus pradžia"
+msgstr "rašyti scenarijų kaip"
 
 #: src/hotkey/hotkey_command.cpp:136
 msgid "Save All Maps"
-msgstr "Išsaugoti visus žemėlapius"
+msgstr "Įrašyti visus žemėlapius"
 
 #: src/hotkey/hotkey_command.cpp:137
 msgid "Revert All Changes"
-msgstr "Atstatyti visus pakeitimus"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:138
 msgid "Map Information"
@@ -4630,14 +4575,12 @@ msgstr "Žemėlapio informacija"
 
 #: src/hotkey/hotkey_command.cpp:140
 #, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
 msgstr "Pasirinktas žaidimas"
 
 #: src/hotkey/hotkey_command.cpp:141
-#, fuzzy
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Sukeisti priekinio plano ir fono vietoves"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Change Palette Group"
@@ -4653,7 +4596,7 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:146
 msgid "Add New Side"
-msgstr "Pridėti pusę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:148
 msgid "Next Tool"
@@ -4692,12 +4635,12 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:153
 msgid "Starting Positions Tool"
-msgstr "Pradžios pozicijos nustatymo įrankis"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:154
 #, fuzzy
 msgid "Label Tool"
-msgstr "Užpildymo įrankis"
+msgstr "Žymė:"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Left mouse button sets or drags a label, right clears."
@@ -4710,14 +4653,12 @@ msgid ""
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:155
-#, fuzzy
 msgid "Unit Tool"
-msgstr "Piešimo įrankis"
+msgstr "Karių įrankis"
 
 #: src/hotkey/hotkey_command.cpp:156
-#, fuzzy
 msgid "Item Tool"
-msgstr "Kitas įrankis"
+msgstr "Objektų įrankis"
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid ""
@@ -4747,17 +4688,14 @@ msgid "Village Tool"
 msgstr "Kaimo auksas"
 
 #: src/hotkey/hotkey_command.cpp:160
-#, fuzzy
 msgid "Can Recruit"
-msgstr "Samdyti"
+msgstr "Gali samdyti"
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Toggle the recruit attribute of a unit."
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:161
-#, fuzzy
-#| msgid "Can be renamed"
 msgid "Can be Renamed"
 msgstr "Gali būti pervadintas"
 
@@ -4774,8 +4712,9 @@ msgid "Assign the selected unit set as recruit list to the unit."
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:164
+#, fuzzy
 msgid "Change Unit ID"
-msgstr "Keisti kario ID"
+msgstr "Pakeisti valdymą"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Loyal"
@@ -4798,17 +4737,17 @@ msgid "Toggle Minimap Village Drawing"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:172
-#, fuzzy
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Atnaujinti vietovių perėjimus"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Next Brush"
-msgstr "Kitas teptukas"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:175
+#, fuzzy
 msgid "Default Brush"
-msgstr "Numatytas teptukas"
+msgstr "Numatyta"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Single Tile"
@@ -4835,8 +4774,6 @@ msgid "Cut"
 msgstr "Iškirpti"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Copy"
 msgid "Copy"
 msgstr "Kopijuoti"
 
@@ -4847,200 +4784,200 @@ msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Paste"
-msgstr "Padėti"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:185
 msgid "Export Selected Coordinates to System Clipboard"
-msgstr "Eksportuoti pažymėtas koordinates į sistemos iškarpinę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:186
 msgid "Select All"
 msgstr "Pažymėti viską"
 
 #: src/hotkey/hotkey_command.cpp:187
+#, fuzzy
 msgid "Select Inverse"
-msgstr "Invertuoti pažymėjimą"
+msgstr "Pasirinkti"
 
 #: src/hotkey/hotkey_command.cpp:188
+#, fuzzy
 msgid "Select None"
-msgstr "Nieko nežymėti"
+msgstr "Pasirinkti"
 
 #: src/hotkey/hotkey_command.cpp:189
 msgid "Rotate Clipboard Clockwise"
-msgstr "Pasukti iškarpinę pagal laikrodžio rodyklę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:190
 msgid "Rotate Clipboard Counter-Clockwise"
-msgstr "Pasukti iškarpinę prieš laikrodžio rodyklę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:191
 msgid "Flip Clipboard Horizontally"
-msgstr "Apsukti iškarpinę horizontaliai"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:192
 msgid "Flip Clipboard Vertically"
-msgstr "Apsukti iškarpinę vertikaliai"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:193
 msgid "Rotate Selection"
-msgstr "Sukti pažymėjimą"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:194
+#, fuzzy
 msgid "Flip Selection"
-msgstr "Apversti pažymėjimą"
+msgstr "Pasirinkti"
 
 #: src/hotkey/hotkey_command.cpp:195
+#, fuzzy
 msgid "Fill Selection"
-msgstr "Užpildyti pažymėjimą"
+msgstr "Pasirinkti"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Generate Tiles in Selection"
-msgstr "Sukti pažymėjimą"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:197
 msgid "Randomize Tiles in Selection"
 msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:199
+#, fuzzy
 msgid "Rotate Map"
-msgstr "Sukti žemėlapį"
+msgstr "Keisti žemėlapio dydį"
 
 #: src/hotkey/hotkey_command.cpp:200
+#, fuzzy
 msgid "Generate Map"
-msgstr "Generuoti žemėlapį"
+msgstr "Generuoti"
 
 #: src/hotkey/hotkey_command.cpp:201
 msgid "Apply a Mask"
-msgstr "Pritaikyti kaukę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:202
+#, fuzzy
 msgid "Create Mask"
-msgstr "Sukurti kaukę"
+msgstr "Sukurti žaidimą"
 
 #: src/hotkey/hotkey_command.cpp:203
+#, fuzzy
 msgid "Refresh Display"
-msgstr "Atnaujinti vaizdą"
+msgstr "Atnaujinti"
 
 #: src/hotkey/hotkey_command.cpp:205
 msgid "Update Terrain Transitions"
-msgstr "Atnaujinti vietovių perėjimus"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:208
-#, fuzzy
 msgid "Toggle Terrain Transition Update"
-msgstr "Atnaujinti vietovių perėjimus"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:210
 msgid "Auto-update Terrain Transitions"
-msgstr "Automatiškai atnaujinti vietovių perėjimus"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:211
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Automatiškai atnaujinti vietovių perėjimus: ne "
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:212
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Automatiškai atnaujinti vietovių perėjimus: dalinai"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
-msgstr "Atnaujinti paveikslėlių podėlį"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:215
 msgid "Draw Hex Coordinates"
-msgstr "Rodyti langelių koordinates"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:216
 msgid "Draw Terrain Codes"
-msgstr "Piešti vietovių kodus"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:218
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Sukti pažymėjimą"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:219
 #, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
 msgstr "Pasirinktas žaidimas"
 
 #: src/hotkey/hotkey_command.cpp:220
 #, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
 msgstr "Pasirinktas žaidimas"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Add New Side"
 msgid "Add New Area"
-msgstr "Pridėti pusę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:223
 #, fuzzy
-#| msgid "Scenario Objectives"
 msgid "Edit Scenario"
 msgstr "Scenarijaus tikslas"
 
 #: src/hotkey/hotkey_command.cpp:224
 #, fuzzy
-#| msgid "Switch Side"
 msgid "Edit Side"
-msgstr "Keisti pusę"
+msgstr "Pusė"
 
 #: src/hotkey/hotkey_command.cpp:225
 #, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
 msgstr "Pašalinti"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
-msgstr "Atidėti uždangos atnaujinimą"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:228
 msgid "Update Shroud Now"
-msgstr "Dabar atnaujinti uždangą"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:229
+#, fuzzy
 msgid "Continue Move"
-msgstr "Tęsti judėjimą"
+msgstr "Tęsti"
 
 #: src/hotkey/hotkey_command.cpp:230
 msgid "Find Label or Unit"
-msgstr "Rasti žymę arba dalinį"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:231
 msgid "Speak to Ally"
-msgstr "Kalbėti draugui"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:232
 msgid "Speak to All"
-msgstr "Kalbėti visiems"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:234
+#, fuzzy
 msgid "View Chat Log"
-msgstr "Žiūrėti pokalbių žurnalą"
+msgstr "Pokalbių žurnalas"
 
 #: src/hotkey/hotkey_command.cpp:235
 msgid "Enter User Command"
-msgstr "Įveskite naudotojo komandą"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:236
+#, fuzzy
 msgid "Custom Command"
-msgstr "Pasirinkta komanda"
+msgstr "Pasirinktinai"
 
 #: src/hotkey/hotkey_command.cpp:237
 msgid "Run Formula"
-msgstr "Paleisti formulę"
+msgstr ""
 
 #: src/hotkey/hotkey_command.cpp:238
+#, fuzzy
 msgid "Clear Messages"
-msgstr "Išvalyti žinutes"
+msgstr "Žinutė:"
 
 #: src/hotkey/hotkey_command.cpp:240
 msgid "Change Language"
@@ -5051,12 +4988,14 @@ msgid "Refresh WML"
 msgstr "Atnaujinti WML"
 
 #: src/hotkey/hotkey_command.cpp:242
+#, fuzzy
 msgid "Next Tip of the Day"
-msgstr "Kitas dienos patarimas"
+msgstr "Rodyti kitą dienos patarimą"
 
 #: src/hotkey/hotkey_command.cpp:243
+#, fuzzy
 msgid "Previous Tip of the Day"
-msgstr "Ankstesnis dienos patarimas"
+msgstr "Rodyti ankstesnį dienos patarimą"
 
 #: src/hotkey/hotkey_command.cpp:244
 msgid "Start Tutorial"
@@ -5068,11 +5007,12 @@ msgstr "Pradėti kampaniją"
 
 #: src/hotkey/hotkey_command.cpp:246
 msgid "Start Multiplayer Game"
-msgstr "Pradėti daugelio žaidėjų žaidimą"
+msgstr "Paleisti daugelio žaidėjų žaidimą"
 
 #: src/hotkey/hotkey_command.cpp:247
+#, fuzzy
 msgid "Manage Add-ons"
-msgstr "Tvarkyti priedus"
+msgstr "Priedai"
 
 #: src/hotkey/hotkey_command.cpp:248
 msgid "Start Editor"
@@ -5085,11 +5025,11 @@ msgstr "Rodyti autorius"
 #: src/hotkey/hotkey_command.cpp:251
 #, fuzzy
 msgid "Show Helptip"
-msgstr "Rodyti autorius"
+msgstr "Parodyti peržaidimą"
 
 #: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Neatpažinta komanda"
 
 #: src/hotkey/hotkey_item.cpp:402 src/hotkey/hotkey_item.cpp:405
 msgid "Button"
@@ -5109,19 +5049,19 @@ msgstr ""
 
 #: src/hotkey/hotkey_item.cpp:414
 msgid "Up"
-msgstr ""
+msgstr "Viršun"
 
 #: src/hotkey/hotkey_item.cpp:417
 msgid "Right"
-msgstr ""
+msgstr "Dešinėn"
 
 #: src/hotkey/hotkey_item.cpp:420
 msgid "Down"
-msgstr ""
+msgstr "Žemyn"
 
 #: src/hotkey/hotkey_item.cpp:423
 msgid "Left"
-msgstr ""
+msgstr "Kairėn"
 
 #: src/hotkey/hotkey_item.cpp:426
 msgid "RightUp"
@@ -5140,9 +5080,8 @@ msgid "LeftDown"
 msgstr ""
 
 #: src/hotkey/hotkey_item.cpp:438
-#, fuzzy
 msgid "Unknown"
-msgstr "Nežinoma era"
+msgstr "Nežinoma"
 
 #: src/hotkey/hotkey_item.cpp:441
 msgid "Hat"
@@ -5171,7 +5110,6 @@ msgstr ""
 
 #: src/hotkey/hotkey_preferences_display.cpp:218
 #, fuzzy
-#| msgid "Prefs section^Editor"
 msgid "Prefs section^Title Screen"
 msgstr "Redaktorius"
 
@@ -5292,96 +5230,3 @@ msgid ""
 "The key '$deprecated_key' has been renamed to '$key'. Support for "
 "'$deprecated_key' will be removed in version $removal_version."
 msgstr ""
-
-#~ msgid "Elvish Castle"
-#~ msgstr "Elfų pilis"
-
-#~ msgid "Forested Hills"
-#~ msgstr "Miškingos kalvos"
-
-#~ msgid "Forested Snow Hills"
-#~ msgstr "Apsnigtos miškingos kalvos"
-
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Vasaros mišrių miškų kalvos"
-
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Rudens lapuočių miškų kalvos"
-
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Žiemos lapuočių miškų kalvos"
-
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Apsnigtos lapuočių miškų kalvos"
-
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Vasaros mišrių miškų kalvos"
-
-#~ msgid "Fall Mixed Forested Hills"
-#~ msgstr "Rudens mišrių miškų kalvos"
-
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Žiemos mišrių miškų kalvos"
-
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Apsnigtos mišrių miškų kalvos"
-
-#~ msgid "Tropical Forested Hills"
-#~ msgstr "Tropinių miškų kalvos"
-
-#~ msgid "Palm Forested Hills"
-#~ msgstr "Palmėmis apaugusios kalvos"
-
-#, fuzzy
-#~ msgid "Dense Palm Forested Hills"
-#~ msgstr "Palmėmis apaugusios kalvos"
-
-#, fuzzy
-#~ msgid "Savanna Forested Hills"
-#~ msgstr "Palmėmis apaugusios kalvos"
-
-#~ msgid "Confirmation requested"
-#~ msgstr "Paprašytas patvirtinimas"
-
-#~ msgid "Show color cursors"
-#~ msgstr "Rodyti spalvotus žymeklius"
-
-#~ msgid "Use colored mouse cursors (may be slower)"
-#~ msgstr "Naudoti spalvotus pelės žymeklius (gali būti lėčiau)"
-
-#~ msgid "Warning"
-#~ msgstr "Įspėjimas"
-
-#~ msgid "Left Mouse Click"
-#~ msgstr "Kairysis pelės spragtelėjimas"
-
-#~ msgid "Right Mouse Click"
-#~ msgstr "Dešinysis pelės spragtelėjimas"
-
-#, fuzzy
-#~ msgid "Switch Area"
-#~ msgstr "Keisti žemėlapį"
-
-#~ msgid "Do you really want to quit?"
-#~ msgstr "Ar tikrai norite išjungti?"
-
-#~ msgid "Map-Screenshot"
-#~ msgstr "Žemėlapio ekranvaizdis"
-
-#~ msgid " (widescreen)"
-#~ msgstr " (plačiaekranis)"
-
-#, fuzzy
-#~ msgid "Filter Options"
-#~ msgstr "Daugelio žaidėjų nustatymai"
-
-#~ msgid "Uninstall Add-ons"
-#~ msgstr "Trinti priedus"
-
-#, fuzzy
-#~ msgid "Scroll Viewport Horizontally"
-#~ msgstr "Apsukti iškarpinę horizontaliai"
-
-#, fuzzy
-#~ msgid "Scroll Viewport Vertically"
-#~ msgstr "Apsukti iškarpinę vertikaliai"

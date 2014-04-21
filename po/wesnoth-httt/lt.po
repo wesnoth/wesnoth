@@ -1,11 +1,11 @@
 # Copyright (C) Wesnoth development team, 2007-2011.
 # Translators:
-#  Andrius Štikonas <stikonas@gmail.com>, 2007-2011.
+#  Andrius Štikonas <andrius@stikonas.eu>, 2007-2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.11\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -4796,6 +4796,8 @@ msgstr "Paimkite ugnies skeptrą su Konradu arba Li’sar"
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
 msgstr ""
+"Kai Delfadoras ilsisi, jis gali sukaupti dėmesį į ugnies skeptro buvimo "
+"vietą."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:164
@@ -4875,11 +4877,12 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
+"Manau... Man atrodo, jei kažkiek susikaupčiau, galėčiau pasakyti kur jis yra."
 
 #. [floating_text]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:275
 msgid "Concentrating"
-msgstr ""
+msgstr "Kaupiasi"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:299
@@ -4887,46 +4890,48 @@ msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
 msgstr ""
+"Jaučiu, kad esam visai netoli skeptro; išties, netrukus turėtume jį "
+"išvysti..."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:362
 msgid "I sense the path to the sceptre is to the east of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į rytus."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:363
 msgid "I sense the path to the sceptre is to the south-east of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į pietryčius."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:364
 msgid "I sense the path to the sceptre is to the south of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į pietus."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:365
 msgid "I sense the path to the sceptre is to the south-west of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į pietvakarius."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:366
 msgid "I sense the path to the sceptre is to the west of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į vakarus."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:367
 msgid "I sense the path to the sceptre is to the north-west of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į šiaurės vakarus."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
 msgid "I sense the path to the sceptre is to the north of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į šiaurę."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:369
 msgid "I sense the path to the sceptre is to the north-east of me."
-msgstr ""
+msgstr "Jaučiu, kad kelias iki skeptro eina į šiaurės rytus."
 
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
@@ -8266,7 +8271,7 @@ msgstr "nagai"
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:9
 msgid "initiative"
-msgstr ""
+msgstr "iniciatyva"
 
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:10
@@ -8274,12 +8279,16 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"Visi gretimi draugiški daliniai suduos pirmąjį smūgį artimoje kovoje, netgi "
+"kai ginsis."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
 msgid ""
 "This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
+"Gilus šio dalinio artimos kovos taktikos supratimas leidžia gretimiems "
+"bendražygiams suduoti pirmąjį smūgį netgi kai ginasi."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9
