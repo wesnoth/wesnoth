@@ -625,7 +625,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 					connect_engine(new mp::connect_engine(disp, gamestate,
 						params, !network_game, false));
 
-				if (allow_new_game_flag || game_config::debug) {
+				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
