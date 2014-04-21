@@ -16,14 +16,16 @@ Version 1.11.12:
      This fixes the mp lobby in width <= 800 resolutions. (Fix #21888.)
    * OS X: mark Wesnoth as not high-resolution capable. This greatly improves
      performance on retina devices.
-   * Fix bug which caused timer to be refreshed twice when time runs out
-   * Use one combo box instead of check boxes for replay options in lobby
+   * Fix bug which caused timer to be refreshed twice when time runs out.
+   * Use one combo box instead of check boxes for replay options in lobby.
    * Dropped sides now default to idle rather than human control, this fixes an
-     issue with the host immediately getting vision of dropped sides in some cases
+     issue with the host immediately getting vision of dropped sides in some
+     cases.
    * Disable notifications should now work for other desktops besides KDE.
    * The replay viewer now proceeds through sides with empty controllers when
      using the "play_side" button, thus matching the behavior of the rest of
      wesnoth. Bug fix #21025.
+
 
 Version 1.11.12:
  * Campaigns:

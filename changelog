@@ -31,11 +31,12 @@ Version 1.11.12+dev:
      the advancement isn't aborted. Instead the next player has to do the
      advancement choice immediately after gaining control over that side.
    * All random generation now behaves like the rng for attacks used to behave.
-     That means the server will generate a new seed for every user action that used rng.
-     Especially units traits now differ when you reload a game, this prevents a
-     cheat where players could see what traits would get when they recruit units
-     in a mp game.
-   * Fix bug #21933: "team._info.lost not properly set when ending with [endlevel]"
+     That means the server will generate a new seed for every user action that
+     used rng. Especially units traits now differ when you reload a game, this
+     prevents a cheat where players could see what traits would get when they
+     recruit units in a mp game.
+   * Fix bug #21933: "team._info.lost not properly set when ending with
+     [endlevel]"
    * Fix a bug where a scenario didn't end when units were killed during moveto 
      or wml menu events and the side had no leader left.
  * Language and i18n:
