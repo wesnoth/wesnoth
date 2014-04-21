@@ -9,14 +9,15 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Jan Dědič <jan.dedic@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-01-19 16:26+0100\n"
-"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-04-16 23:12+0100\n"
+"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +25,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #. [terrain_type]: id=deep_water
 #. [terrain_type]: id=deep_water_gray
@@ -90,6 +90,10 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
+"V místech, kde je řeka hodně mělká není problém ji překonat. Navíc všechna "
+"stvoření adaptovaná na plavání tu neztrácejí nic ze své pohyblivosti. Pro "
+"potřeby hry je brod považován jednak za travnatou plochu, jednak za vodu. "
+"Vybrán je povrch, který je pro danou jednotku výhodnější."
 
 #. [terrain_type]: id=gray_reef
 #. [terrain_type]: id=medium_reef
@@ -108,10 +112,8 @@ msgstr "Šedý pobřežní útes"
 
 #. [terrain_type]: id=medium_reef
 #: data/core/terrain.cfg:108
-#, fuzzy
-#| msgid "Coastal Reef"
 msgid "Medium Coastal Reef"
-msgstr "Pobřežní útes"
+msgstr "Střední Pobřežní útes"
 
 #. [terrain_type]: id=tropical_reef
 #: data/core/terrain.cfg:119
@@ -128,10 +130,8 @@ msgstr "Mokřina"
 
 #. [terrain_type]: id=swamp_water_reed
 #: data/core/terrain.cfg:132
-#, fuzzy
-#| msgid "Swamp Human Castle Keep"
 msgid "Swamp Water Reed"
-msgstr "Mokřinná lidská tvrz"
+msgstr "Mokřinný porost"
 
 #. [terrain_type]: id=quagmire
 #: data/core/terrain.cfg:143
@@ -213,6 +213,8 @@ msgid ""
 "travelers passing over them. As far as gameplay is concerned, roads behave "
 "as flat terrain."
 msgstr ""
+"<italic>text='Cesta'</italic> je vyšlapaná, špinavá pěšina, kterou už "
+"procházelo mnoho poutníků. Pro potřeby hraní je považována za rovný povrch."
 
 #. [terrain_type]: id=road_clean
 #: data/core/terrain.cfg:246
@@ -251,6 +253,9 @@ msgid ""
 "small sand pits or beaches, however for gameplay purposes they are "
 "identical. See <ref>dst='terrain_sand' text='sand'</ref>."
 msgstr ""
+"<italic>text='Pouště'</italic>mají poněkud odlišné složení než malé jámy s "
+"pískem nebo pláže, hru ale ovlivňují obdobně. Podívejte se na "
+"<ref>dst='terrain_sand' text='Písek'</ref>"
 
 #. [terrain_type]: id=sand
 #. [terrain_type]: id=sand_beach
@@ -274,6 +279,12 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in sand."
 msgstr ""
+"Nestabilita <italic>text='písku'</italic> jej činí pro většinu jednotek "
+"obtížně překonatelným a nechává je tak nechráněné vůči útoku. Zcela jinak "
+"jsou na tom ještěří jednotky s širokými chodidly či hadími těly, pro ně je "
+"pohyb v písku mnohem jednodušší.\n"
+"\n"
+"Většina jednotek získává v písku 20 až 40% obranný bonus."
 
 #. [terrain_type]: id=oasis
 #: data/core/terrain.cfg:315
@@ -332,10 +343,8 @@ msgstr "Větrný mlýn"
 
 #. [terrain_type]: id=campfire
 #: data/core/terrain.cfg:423
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campfire"
-msgstr "Tažení"
+msgstr "Táborák"
 
 #. [terrain_type]: id=fence
 #: data/core/terrain.cfg:432
@@ -360,12 +369,12 @@ msgstr "Lekníny, kvetoucí"
 #. [terrain_type]: id=detritus_trash
 #: data/core/terrain.cfg:471
 msgid "Trash"
-msgstr ""
+msgstr "Smetí"
 
 #. [terrain_type]: id=detritus_bones
 #: data/core/terrain.cfg:480
 msgid "Remains"
-msgstr ""
+msgstr "Zbytky"
 
 #. [terrain_type]: id=great_tree
 #. [terrain_type]: id=great_tree_dead
@@ -414,29 +423,23 @@ msgstr "Tropický prales"
 
 #. [terrain_type]: id=rainforest
 #: data/core/terrain.cfg:530
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Rainforest"
-msgstr "Borový les"
+msgstr "Prales"
 
 #. [terrain_type]: id=palm_desert_forest
 #: data/core/terrain.cfg:542
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Palm Forest"
-msgstr "Borový les"
+msgstr "Palmový les"
 
 #. [terrain_type]: id=palm_forest
 #: data/core/terrain.cfg:554
-#, fuzzy
-#| msgid "Pine Forest"
 msgid "Dense Palm Forest"
-msgstr "Borový les"
+msgstr "Hustý palmový les"
 
 #. [terrain_type]: id=savanna_forest
 #: data/core/terrain.cfg:566
 msgid "Savanna"
-msgstr ""
+msgstr "Savana"
 
 #. [terrain_type]: id=pine_forest
 #: data/core/terrain.cfg:578
@@ -534,10 +537,8 @@ msgstr "Hory"
 
 #. [terrain_type]: id=regular_mountains
 #: data/core/terrain.cfg:747
-#, fuzzy
-#| msgid "Regular Impassable Mountains"
 msgid "Regular Mountains"
-msgstr "Běžné neschůdné hory"
+msgstr "Běžné hory"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:757
@@ -630,6 +631,15 @@ msgid ""
 "Most units have about 50% defense in rocky caves, whereas cavalry are "
 "limited to 40%. Dwarves enjoy 60% defense in rockbound caves."
 msgstr ""
+"<italic>text='Skalnatá jeskyně'</italic> je terén utvářený erozivní činností "
+"vody a větru ve skále. Připomíná rozeklanou podzemní dutinu, která snižuje "
+"efektivitu většiny jednotek a zvyšuje obranné možnosti. Trpaslíci a trollové "
+"žijící v jeskyních nemají s pohybem v tomto terénu problémy, zvláště "
+"trpaslíci díky jejich malému vzrůstu. Někdy jsou jeskyně "
+"<ref>dst='terrain_illuminated_cave' text='osvětlené'</ref>\n"
+"\n"
+"Většina jednotek má ve skalnatých jeskyních obranný bonus okolo 50%, jízda "
+"pouze 40% a trpaslíci 60%."
 
 #. [terrain_type]: id=mine_rails
 #. [terrain_type]: id=mine_railsdiag1
@@ -684,6 +694,12 @@ msgid ""
 "immediately above it. This provides an attack bonus for lawful units and "
 "removes the attack bonus from chaotic units."
 msgstr ""
+"Nebezpečí vyplývající z pokusu o přechod <italic>text='lávy'</italic> je "
+"zřejmé. Tento terén může být překonán pouze jednotkami schopnými létat ve "
+"značné vzdálenosti nad ní. Ve věci pohybu je tedy láva identická s "
+"<ref>dst='terrain_unwalkable' text='neschůdným'</ref> terénem. Žhavá láva "
+"také vytváří svit, osvětlující oblasti přímo nad ní. Tím poskytuje výhodu "
+"při útoku všem zákonným jednotkám a odnímá ji chaotickým."
 
 #. [terrain_type]: id=volcano
 #: data/core/terrain.cfg:986
@@ -752,8 +768,6 @@ msgstr "Neprůchozí překryv"
 
 #. [terrain_type]: id=unwalkable_overlay
 #: data/core/terrain.cfg:1112
-#, fuzzy
-#| msgid "Impassable Overlay"
 msgid "Unwalkable Overlay"
 msgstr "Neprůchozí překryv"
 
@@ -968,6 +982,14 @@ msgid ""
 "Merfolk and nagas have 60% defense in submerged villages, whereas land based "
 "units usually have a low defense."
 msgstr ""
+"<italic>text='Ponořené vesnice'</italic> jsou domovem Mořského lidu a Nág. "
+"Zatímco vodní tvorové se zde cítí doma, suchozemci mají s užíváním a obranou "
+"těchto vesnic problémy. I tak se zde nachází vše potřebné pro léčení zranění "
+"jakýchkoliv tvorů. Jednotka umístěná ve vesnici může být každé kolo buď "
+"uzdravena o osm životů nebo vyléčena z otravy jedem.\n"
+"\n"
+"Mořský lid a nágy se v ponořených vesnicích těší obrannému bonusu 60%, "
+"zatímco pozemní jednotky obvykle nezískávají příliš velký bonus."
 
 #. [terrain_type]: id=village_overlay
 #: data/core/terrain.cfg:1520
@@ -1025,8 +1047,6 @@ msgstr "Zasněžený lidský hrad"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1608
-#, fuzzy
-#| msgid "Elven Castle Keep"
 msgid "Elven Castle"
 msgstr "Elfská tvrz"
 
@@ -1220,6 +1240,17 @@ msgid ""
 "occupying the bridge hex. Note that a swimming unit and a land unit are not "
 "capable of occupying a bridge hex at the same time."
 msgstr ""
+"Těm, kteří je jsou schopni postavit, nabízí schopnost vztyčit "
+"<italic>text='most'</italic> osvobození od vrtkavé povahy vodních toků, "
+"jejichž brody vznikají a zase mizí s kolísáním hladiny. To však není ničím "
+"oproti luxusu suchých nohou, který zvláště v chladných obdobích není "
+"zanedbatelný.\n"
+"\n"
+"Pro ty, kteří se pohybují po zemi nebo vodou, znamená most to lepší z obou "
+"prostředí — pro účely hry se chová buď jako louka nebo voda pod ním, podle "
+"toho, co jednotce nabízí lepší obraný bonus a dovoluje rychlejší pohyb. "
+"Pamatujte, že jednotky schopné plavat a ty pozemní nejsou schopné zabrat "
+"most v témže okamžiku."
 
 #. [terrain_type]: id=rotbridge
 #. [terrain_type]: id=rotbridgediag1
@@ -1250,30 +1281,24 @@ msgstr "Most přes jeskynní rokli"
 #. [terrain_type]: id=hangingbridgediag2
 #: data/core/terrain.cfg:2072 data/core/terrain.cfg:2084
 #: data/core/terrain.cfg:2096
-#, fuzzy
-#| msgid "Rotting Bridge"
 msgid "Hanging Bridge"
-msgstr "Dřevěný hnijící most"
+msgstr "Visutý most"
 
 #. [terrain_type]: id=stonechasmbridge
 #. [terrain_type]: id=stonechasmbridgediag1
 #. [terrain_type]: id=stonechasmbridgediag2
 #: data/core/terrain.cfg:2109 data/core/terrain.cfg:2120
 #: data/core/terrain.cfg:2131
-#, fuzzy
-#| msgid "Cave Chasm Bridge"
 msgid "Stone Chasm Bridge"
-msgstr "Most přes jeskynní rokli"
+msgstr "Kamenný most přes propast"
 
 #. [terrain_type]: id=plankbridge
 #. [terrain_type]: id=plankbridgediag1
 #. [terrain_type]: id=plankbridgediag2
 #: data/core/terrain.cfg:2143 data/core/terrain.cfg:2154
 #: data/core/terrain.cfg:2165
-#, fuzzy
-#| msgid "Bridge"
 msgid "Plank Bridge"
-msgstr "Most"
+msgstr "Dřevený most"
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:2181
@@ -1300,7 +1325,7 @@ msgstr "Mlha"
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2227 data/core/terrain.cfg:2228
 msgid "Fungus"
-msgstr ""
+msgstr "Houby"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:2231
@@ -1316,6 +1341,14 @@ msgid ""
 "Most units receive 50% to 60% defense in mushroom groves, whereas cavalry "
 "receive only 20%."
 msgstr ""
+"<italic>text='Houbové háje'</italic> jsou rozlehlé podzemní porosty obřích "
+"hub, kterým se ve vlhké temnotě dobře daří. Většina jednotek má problémy s "
+"chůzi po měkkém povrchu nejmenších plodnic, ale na druhou stranu vzrostlejší "
+"kousky poskytují dobrý úkryt. Jízda ke své smůle nemá potřebnou volnost "
+"pohybu k boji. Nemrtví mají přirozenou zálibu v rozkladu a proto mají "
+"\"houbové háje v oblibě.\n"
+"\n"
+"Většina jednotek získává obranný bonus 50% nebo 60%, jízda pouze 20%."
 
 #. [terrain_type]: id=cave
 #: data/core/terrain.cfg:2243
@@ -1337,13 +1370,20 @@ msgid ""
 "\n"
 "Most units receive 20 to 40% defense in caves, whereas dwarves have 50%."
 msgstr ""
+"<italic>text='Jeskyně'</italic> představuje jakákoliv podzemní sluj s "
+"dostatkem místa pro pohyb. Většina jednotek se v tomto terénu neumí "
+"pohybovat a tak jsou zpomaleny a překáží jim to v obraně. Trpaslíci a "
+"Trollové, kteří zde bydlí, tu jsou jako doma, a to zejména trpaslíci, kteří "
+"se zde mohou díky své malé velikosti snadno pohybovat a překonávat překážky. "
+"To jiným činí problémy. Někdy jsou jeskyně "
+"<ref>dst='terrain_illuminated_cave' text='osvětlené'</ref>\n"
+"\n"
+"Většina jednotek zde získá 20 až 40% obranný bonus, zatímco trpaslíci 50%."
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:2256
-#, fuzzy
-#| msgid "Sand"
 msgid "Sands"
-msgstr "Písek"
+msgstr "Pláž"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:2273
@@ -1356,6 +1396,12 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
+"<italic>text='Pobřežní útesy'</italic> se nachází ve mělké vodě a skládají z "
+"kamene, korálů a písku. Suchozemským jednotkám tak poskytují poněkud lepší "
+"povrch a obranu než brodění v mělké vodě. Krom toho zde získávají vodní "
+"tvorové výjimečně vysoké obranné schopnosti.\n"
+"\n"
+"Mořský lid a nágy v tomto terénu získávají obranný bonus 70%."
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:2287
@@ -1370,6 +1416,16 @@ msgid ""
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
 "40%. Dwarves enjoy 60% defense in hills."
 msgstr ""
+"<italic>text='Kopce'</italic> představují docela obtížný terén s dostatečným "
+"počtem údolí a skalních stěn, které poskytují určitý stupeň krytí. Kopce "
+"jsou obtížným terénem pro většinu jednotek a to zejména pro jejich "
+"orientaci. Trpaslíci, Trollové i Obři jsou s tímto terénem dostatečně "
+"obeznámeni, takže se v něm mohou pohybovat bez ztráty rychlosti. Jízda má v "
+"tomto terénu potíže s pohybem, takže je jakákoliv pomoc poskytnutá krytím "
+"zmařena.\n"
+"\n"
+"Většina jednotek v kopcích získá okolo 50% obranného bonusu, zatímco jízda "
+"je omezena 40%. Trpaslíci se v kopcích těší 60% obrannému bonusu."
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:2302
@@ -1384,6 +1440,15 @@ msgid ""
 "Most units make do with 30% defense in swamps. Mermen, naga, and saurians "
 "all generally enjoy 60%."
 msgstr ""
+"<italic>text='Mokřiny'</italic> představují všechny druhy mokřad. Mokřiny "
+"zpomalí téměř každého a maří jejich schopnosti ubránit sami sebe. Výjimku "
+"tvoří jednotky, které jsou uzpůsobeny pohybu ve vodě; ty jsou schopny "
+"dosáhnout nejvyšší rychlosti a získávají obranný bonus. Ti, kteří bydlí v "
+"mokřadech, jsou také uzpůsobeni tomuto terénu a umí ho použít pro svou "
+"ochranu.\n"
+"\n"
+"Většina jednotek v mokřinách získává 30% obranný bonus. Vodní lidé, Nagy a "
+"Ještěráci se obvykle těší 60% bonusu."
 
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:2315
@@ -1399,6 +1464,15 @@ msgid ""
 "Most units make do with 20 to 30% defense in shallow water, whereas both "
 "naga and mermen enjoy 60%."
 msgstr ""
+"<italic>text='Mělkou vodou'</italic> si představíme jakoukoliv vodní plochu, "
+"která při přechodu zasahuje zhruba až po pás. To stačí na zpomalení téměř "
+"každého a zanechá ho v nevýhodě v případě útoku. Trpaslíkům dosahuje voda až "
+"skoro k hlavě a tak se pro ně stává obtížnou překážkou. Výjimku tvoří "
+"jednotky, které jsou přirozeně přizpůsobeny plavání, ty získají významný "
+"obranný bonus a plnou schopnost pohybu.\n"
+"\n"
+"Většina jednotek získá v mělké vodě 20 až 30% obranný bonus, zatímco Nagy a "
+"Vodní lidé se těší bonusu 60%."
 
 #. [terrain_type]: id=castle
 #: data/core/terrain.cfg:2330
@@ -1412,6 +1486,14 @@ msgid ""
 "\n"
 "Most units have about 60% defense in a castle."
 msgstr ""
+"<italic>text='Hradem'</italic> je jakýkoliv druh stálého opevnění.\n"
+"Téměř všechny jednotky umístěné ve hradě získávají důležitý obranný bonus a "
+"většina jednotek tu je schopna maximálního pohybu. Umístění jednotek na hrad "
+"reprezentuje obranné schopnosti opevnění. Pokud nejsou na hradbách umístěny "
+"jednotky, do hradu se mohou bez boje vplížit i nepřátelé, čímž získají "
+"stejný obranný bonus jako kdokoliv uvnitř.\n"
+"\n"
+"Většina jednotek získává 60% obranný bonus."
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:2344
@@ -1426,6 +1508,16 @@ msgid ""
 "\n"
 "Most units receive about 60% defense in mountains, whereas Dwarves enjoy 70%."
 msgstr ""
+"<italic>text='Hory'</italic> jsou strmé, takže jednotky musí při pohybu "
+"často překonávat překážky. V tomto prostředí získávají důležitý obranný "
+"bonus proti většině jednotek, zároveň se ale často zdržují při zdolávání "
+"terénu. Většina jezdectva jednoduše nemůže vstoupit do horského terénu; "
+"samozřejmě, že elfí jízda je toho výjimkou, stejně tak vlčí jezdci goblinů. "
+"Trpaslíci i Trollové jsou v horách jako doma a je pro ně velmi snadné se tu "
+"pohybovat.\n"
+"\n"
+"Většina jednotek v horách získává okolo 60% obranného bonusu, zatímco "
+"trpaslíci se těší 70%."
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:2356
@@ -1437,6 +1529,12 @@ msgid ""
 "\n"
 "Mermen and naga both receive 50% defense in deep water, with full movement."
 msgstr ""
+"<italic>text='Hlubokou vodu'</italic> poznáme tak, že dosahuje jednotkám až "
+"nad hlavu. Většina jednotek nemůže do tak hluboké vody vstoupit. Je tedy "
+"doménou jednotek, které mohou buď létat nebo jsou výbornými plavci.\n"
+"\n"
+"Vodní lidé a Nagy získávají v hluboké vodě 50% obranný bonus a maximální "
+"schopnost pohybu."
 
 # pseudoterén
 #. [terrain_type]: id=flat
@@ -1456,6 +1554,13 @@ msgid ""
 "\n"
 "Most units have defense of 30 to 40% on grassland."
 msgstr ""
+"<italic>text='Louka'</italic> představuje otevřenou rovinu — ať už "
+"kultivovanou, upravenou pro pastevectví, nebo divokou. Je to otevřená "
+"krajina, velmi vhodná pro pohyb, ale je zde těžké se bránit. Typickou "
+"jednotkou, pro kterou je tato krajina nejlepší, představuje jezdectvo, nebo "
+"velmi hbité jednotky, které dávají přednost otevřenému prostranství.\n"
+"\n"
+"Většina jednotek má na louce defenzivní bonus od 30 do 40%."
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:2382
@@ -1475,6 +1580,20 @@ msgid ""
 "Elves, on the other hand, enjoy 60 to 70% defense, even their mounted units. "
 "Dwarves generally receive only 30% defense in forests."
 msgstr ""
+"<italic>text='Lesy'</italic> představuje každý lesík s příslušným porostem, "
+"který je dostatečný pro zpomalení pochodu. I když zpomalí téměř každého, "
+"nabízí les pro většinu jednotek lepší defenzivní pozici než otevřené "
+"prostranství. Jízda má samozřejmě spoustu problémů při pohybu v tomto "
+"terénu, takže jakýkoliv prospěch, získaný ze skrytí se v lese, je tímto "
+"potlačen. Elfové jsou výjimkou oproti všeobecně platnému pravidlu pro lesy. "
+"Nejen že jsou schopni postupu lesem beze zpomalení, ale také získávají "
+"značný obranný bonus. Trpaslíci jsou také výjimkou; i když jsou schopni se "
+"pohybovat lesem bez výrazné ztráty rychlosti, jejich neobeznámenost s "
+"terénem způsobuje, že nezískávají žádný obranný bonus.\n"
+"\n"
+"Většina jednotek získá jako obranný bonus 50%, ale jízda je omezena na 30%. "
+"Elfové naproti tomu získávají obranný bonus od 60% do 70%, a to i když jedou "
+"na koních. Trpaslíci obvykle získají v lese pouze 30% obrany."
 
 # pseudoterén
 #. [terrain_type]: id=frozen
@@ -1493,6 +1612,11 @@ msgid ""
 "\n"
 "Most units have 20 to 40% defense in frozen terrain."
 msgstr ""
+"<italic>text='Zmrzlý'</italic> povrch představuje jakákoliv zamrzlá rovná "
+"plocha pokrytá sněhem nebo ledem. Většina jednotek je tímto zpomalena a je "
+"pro ně obtížnější se bránit. Plavecké jednotky rovněž nemohou pod led.\n"
+"\n"
+"Většina jednotek ve sněhu získá 20 až 40% obranný bonus."
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:2408
@@ -1508,6 +1632,14 @@ msgid ""
 "Most units have 50 to 60% defense in villages, whereas cavalry receive only "
 "40%."
 msgstr ""
+"<italic>text='Vesnice'</italic> představují skupinu stavení, lidských či "
+"jiného původu. Téměř všechny jednotky, včetně jízdy, se ve vesnici snadno "
+"pohybují a většina z nich, pokud je zde umístěna, také získává obranný "
+"bonus. Vesnice jim tak poskytuje místo pro vyčištění a ošetření jejich "
+"zranění. Zde umístěné jednotky jsou každý tah ošetřovány o 8 hp či zbavovány "
+"otravy.\n"
+"\n"
+"Většina jednotek zde získá 50 až 60% obranný bonus, jízda pouze 40%."
 
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:2418 data/core/terrain.cfg:2419
@@ -1523,6 +1655,10 @@ msgid ""
 "jagged peaks at such rarefied heights, and not even the fiercest troll can "
 "smash through thick walls of stone."
 msgstr ""
+"Nepřekonatelné překážky, jež nepokoří ani nejodhodlanější cestovatel, "
+"zahrnují například pevné kamenné zdi či hory tak vysoké a příkré, že se "
+"ztrácejí v oblacích. Ani létající tvorové se nedokáží dostat skrze rozeklané "
+"špičky v tak ohromné výši, a ani trollové se neprobijí skrz."
 
 # pseudoterén
 #. [terrain_type]: id=unwalkable
@@ -1538,17 +1674,23 @@ msgid ""
 "for sheer walls which would take days to traverse. As far as gameplay is "
 "concerned, only units capable of flying can cross this terrain."
 msgstr ""
+"<italic>text='Neschůdný terén'</italic> zahrnuje rokliny a průrvy v zemi, "
+"vedoucí do neznámé hloubky. Nemohou tak být překročeny pěšky. Jsou známé pro "
+"příkré svahy, jejichž překonání může trvat dny. Co se týká herních "
+"vlastností, mohou být překonány pouze jednotkami schopnými létat."
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2438 data/core/terrain.cfg:2439
 msgid "Rails"
-msgstr ""
+msgstr "Koleje"
 
 #. [terrain_type]: id=rails
 #: data/core/terrain.cfg:2441
 msgid ""
 "<italic>text='Rails'</italic> are used to transport ore. By Dwarfs. Mostly."
 msgstr ""
+"<italic>text='Koleje'</italic> se používají pro převážení rudy. Trpaslíky. "
+"Většinou."
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1655,17 +1797,13 @@ msgstr "Zrušit"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:88
-#, fuzzy
-#| msgid "Type"
 msgid "Type:"
-msgstr "Typ"
+msgstr "Typ:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:115
-#, fuzzy
-#| msgid "Status"
 msgid "Status:"
-msgstr "Stav"
+msgstr "Stav:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:146
@@ -1686,17 +1824,17 @@ msgstr "Autor:"
 #. [label]
 #: data/gui/default/window/addon_description.cfg:228
 msgid "Downloads:"
-msgstr ""
+msgstr "Ke stažení:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:258
 msgid "date^Last updated:"
-msgstr ""
+msgstr "date^Naposledy aktualizováno:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:284
 msgid "date^First uploaded:"
-msgstr ""
+msgstr "data^Poprvé nahrané:"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:329
@@ -1712,46 +1850,42 @@ msgstr "Popis není dostupný."
 #. [label]
 #: data/gui/default/window/addon_description.cfg:376
 msgid "Website:"
-msgstr ""
+msgstr "Webové stránky:"
 
 #. [label]: id=url_none
 #: data/gui/default/window/addon_description.cfg:400
 msgid "url^None"
-msgstr ""
+msgstr "url^Žádná"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:435
-#, fuzzy
-#| msgid "Copy"
 msgid "url^Copy"
-msgstr "Kopíruj"
+msgstr "url^Kopíruj"
 
 #. [button]: id=url_copy
 #: data/gui/default/window/addon_description.cfg:436
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this URL to clipboard"
-msgstr "Vyber si hru pro nahrání"
+msgstr "Zkopíruj adresu do schránky"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:449
 msgid "url^Go"
-msgstr ""
+msgstr "url^Přejít"
 
 #. [button]: id=url_go
 #: data/gui/default/window/addon_description.cfg:450
 msgid "Visit this URL with a web browser"
-msgstr ""
+msgstr "Navštivte tuto adresu ve webovém prohlížeči"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:478
 msgid "Dependencies:"
-msgstr ""
+msgstr "Závislosti:"
 
 #. [scroll_label]: id=dependencies
 #: data/gui/default/window/addon_description.cfg:492
 msgid "addon_dependencies^None"
-msgstr ""
+msgstr "addon_dependencies^Žádné"
 
 #. [label]
 #: data/gui/default/window/addon_description.cfg:510
@@ -1766,125 +1900,118 @@ msgstr "žádné"
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:49
 msgid "addons_of_type^Campaigns"
-msgstr ""
+msgstr "addons_of_type^Kampaň"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:50
 msgid "addons_of_type^MP eras"
-msgstr ""
+msgstr "addons_of_type^Éra pro hru více hráčů"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:53
 msgid "addons_of_type^Scenarios"
-msgstr ""
+msgstr "addons_of_type^Scénář"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:54
 msgid "addons_of_type^MP factions"
-msgstr ""
+msgstr "addons_of_type^Věky pro hru více hráčů"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:57
 msgid "addons_of_type^SP/MP Campaigns"
-msgstr ""
+msgstr "addons_of_type^Kampaň pro jednoho nebo více hráčů"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:58
 msgid "addons_of_type^MP campaigns"
-msgstr ""
+msgstr "addons_of_type^Kampaň pro hru více hráčů"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:61
 msgid "addons_of_type^Resources"
-msgstr ""
+msgstr "addons_of_type^Zdroje"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:62
 msgid "addons_of_type^MP scenarios"
-msgstr ""
+msgstr "addons_of_type^Scénáře pro hru více hráčů"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:66
 msgid "addons_of_type^Other"
-msgstr ""
+msgstr "addons_of_type^Ostatní"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:67
 msgid "addons_of_type^MP map-packs"
-msgstr ""
+msgstr "addons_of_type^Sady map"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:70
 msgid "addons_of_type^Unknown"
-msgstr ""
+msgstr "addons_of_type^Neznámé"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:71
 msgid "addons_of_type^MP modifications"
-msgstr ""
+msgstr "addons_of_type^Modifikace pro hru více hráčů"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:170
-#, fuzzy
-#| msgid "Actions"
 msgid "Options"
-msgstr "Akce"
+msgstr "Nastavení"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:184
 msgid "Add-ons matching the following criteria will be displayed."
-msgstr ""
+msgstr "Budou zobrazena rozšíření odpovídající zadaným kritériím."
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:221
-#, fuzzy
-#| msgid "Translations:"
 msgid "Installation status:"
-msgstr "Překlady:"
+msgstr "Stav instalace:"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:264
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-on types:"
-msgstr "Rozšíření"
+msgstr "Druhy rozšíření:"
 
 #. [button]: id=toggle_all_displayed_types
 #: data/gui/default/window/addon_filter_options.cfg:277
-#, fuzzy
-#| msgid "Toggle Ellipses"
 msgid "Toggle All"
-msgstr "Zapni/vypni elipsy"
+msgstr "Zapni/vypni vše"
 
 #. [label]
 #: data/gui/default/window/addon_filter_options.cfg:321
 msgid "Add-ons will be sorted as follows when no column is selected:"
 msgstr ""
+"Pokud zvolíte tento sloupec, rozšíření budou seřazena následujícím způsobem:"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:351
 msgid "sort^By name"
-msgstr ""
+msgstr "sort^Podle jména"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:356
 msgid "sort^By last updated"
-msgstr ""
+msgstr "sort^Naposledy aktualizováno"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:361
 msgid "sort^By first upload"
-msgstr ""
+msgstr "sort^Poprvé nahráno"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:377
 msgid "sort^Ascending"
-msgstr ""
+msgstr "sort^Vzestupně"
 
 #. [row]
 #: data/gui/default/window/addon_filter_options.cfg:382
 msgid "sort^Descending"
-msgstr ""
+msgstr "sort^Sestupně"
 
 #. [scroll_label]
 #: data/gui/default/window/addon_uninstall_list.cfg:70
@@ -1902,8 +2029,6 @@ msgstr "Odstraň"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:55
-#, fuzzy
-#| msgid "Play a campaign"
 msgid "Play a Campaign"
 msgstr "Hraj tažení"
 
@@ -1984,10 +2109,8 @@ msgstr "Předchozí"
 
 #. [button]: id=previous_page
 #: data/gui/default/window/chat_log.cfg:87
-#, fuzzy
-#| msgid "Previous"
 msgid "Previous page"
-msgstr "Předchozí"
+msgstr "Předchozí strana"
 
 #. [button]: id=next_page
 #. [button]: id=next_tip
@@ -2000,8 +2123,6 @@ msgstr "Další"
 
 #. [button]: id=next_page
 #: data/gui/default/window/chat_log.cfg:95
-#, fuzzy
-#| msgid "Next Side"
 msgid "Next page"
 msgstr "Další strana"
 
@@ -2014,7 +2135,7 @@ msgstr "Filtr:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:45
 msgid "Custom Time of Day Schedule"
-msgstr ""
+msgstr "Volitelné nastavení rozvržení dne"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:67
@@ -2030,37 +2151,37 @@ msgstr "Jméno:"
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:100
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:133
 msgid "Metadata:"
-msgstr ""
+msgstr "Metadata:"
 
 #. [button]: id=image_button
 #: data/gui/default/window/custom_tod.cfg:147
 msgid "Image"
-msgstr ""
+msgstr "Obrázek"
 
 #. [button]: id=mask_button
 #: data/gui/default/window/custom_tod.cfg:157
 msgid "Mask"
-msgstr ""
+msgstr "Maska"
 
 #. [button]: id=sound_button
 #: data/gui/default/window/custom_tod.cfg:167
 msgid "Sound"
-msgstr ""
+msgstr "Zvuk"
 
 #. [label]: id=current_sound
 #: data/gui/default/window/custom_tod.cfg:180
 msgid "long size text"
-msgstr ""
+msgstr "dlouhý text"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:201
 msgid "Lawful Bonus:"
-msgstr ""
+msgstr "Zákonný bonus:"
 
 #. [label]
 #: data/gui/default/window/custom_tod.cfg:228
@@ -2080,19 +2201,17 @@ msgstr "Modrá:"
 #. [label]: id=tod_number
 #: data/gui/default/window/custom_tod.cfg:337
 msgid "100/100"
-msgstr ""
+msgstr "100/100"
 
 #. [button]: id=new
 #: data/gui/default/window/custom_tod.cfg:359
 msgid "New ToD"
-msgstr ""
+msgstr "Nový ToD"
 
 #. [button]: id=delete
 #: data/gui/default/window/custom_tod.cfg:369
-#, fuzzy
-#| msgid "Delete"
 msgid "Delete ToD"
-msgstr "Smazat"
+msgstr "Smazat ToD"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:50
@@ -2162,98 +2281,78 @@ msgstr "Pouze pro tým"
 
 #. [toggle_button]: id=immutable_toggle
 #: data/gui/default/window/editor_edit_label.cfg:112
-#, fuzzy
-#| msgid "Impassable"
 msgid "Immutable"
-msgstr "Neprůchozí"
+msgstr "Neměnný"
 
 #. [toggle_button]: id=visible_fog_toggle
 #: data/gui/default/window/editor_edit_label.cfg:130
 msgid "Visible in fog"
-msgstr ""
+msgstr "Viditelnost v mlze"
 
 #. [toggle_button]: id=visible_shroud_toggle
 #: data/gui/default/window/editor_edit_label.cfg:148
 msgid "Visible in shroud"
-msgstr ""
+msgstr "Viditelnost v rubáši"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_scenario.cfg:42
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario Settings"
-msgstr "Nastavení editoru"
+msgstr "Upravit nastavení scénáře"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:72
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifikátor:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:173
-#, fuzzy
-#| msgid "Experience modifier"
 msgid "Experience modifier:"
-msgstr "Modifikátor zkušenostních bodů"
+msgstr "Modifikátor zkušenostních bodů:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_scenario.cfg:204
-#, fuzzy
-#| msgid "Turn"
 msgid "Turns:"
-msgstr "Kolo"
+msgstr "Počet kol:"
 
 #. [toggle_button]: id=victory_when_enemies_defeated
 #: data/gui/default/window/editor_edit_scenario.cfg:244
 msgid "Declare victory once all enemies are defeated"
-msgstr ""
+msgstr "Vítěztví po poražení všech nepřátel"
 
 #. [toggle_button]: id=random_start_time
 #: data/gui/default/window/editor_edit_scenario.cfg:262
-#, fuzzy
-#| msgid "Random start time"
 msgid "Random starting time"
 msgstr "Náhodná počáteční doba"
 
 #. [label]: id=title
 #: data/gui/default/window/editor_edit_side.cfg:54
-#, fuzzy
-#| msgid "Side $side"
 msgid "Side Setup"
-msgstr "Strana $side"
+msgstr "Výběr strany"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:77
-#, fuzzy
-#| msgid "Number of hills:"
 msgid "Number:"
-msgstr "Počet kopců:"
+msgstr "Počet:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:105
 msgid "Team identifier:"
-msgstr ""
+msgstr "Identifikátor týmu:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:133
-#, fuzzy
-#| msgid "Team only"
 msgid "Team name:"
-msgstr "Pouze pro tým"
+msgstr "Jméno týmu:"
 
 #. [toggle_button]: id=share_maps
 #: data/gui/default/window/editor_edit_side.cfg:188
-#, fuzzy
-#| msgid "Animate map"
 msgid "Share map"
-msgstr "Animovat mapu"
+msgstr "Sdílet mapu"
 
 #. [toggle_button]: id=no_leader
 #: data/gui/default/window/editor_edit_side.cfg:200
-#, fuzzy
-#| msgid "Leader"
 msgid "No leader"
-msgstr "Vůdce"
+msgstr "Bez vůdce"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/editor_edit_side.cfg:216
@@ -2264,68 +2363,64 @@ msgstr "Mlha pro skrytí nepřátelských pohybů"
 #. [toggle_button]: id=share_view
 #: data/gui/default/window/editor_edit_side.cfg:228
 msgid "Share view"
-msgstr ""
+msgstr "Sdílet pohled"
 
 #. [toggle_button]: id=hidden
 #: data/gui/default/window/editor_edit_side.cfg:240
-#, fuzzy
-#| msgid "Status Table"
 msgid "Hide in status table"
-msgstr "Přehledová tabulka"
+msgstr "Schovat v přehledové tabulce"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:269
 msgid "Gold:"
-msgstr ""
+msgstr "Zlato:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:297
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Gold per village:"
-msgstr "Zlaté na vesnici"
+msgstr "Příjem za vesnici:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:325
 msgid "Income:"
-msgstr ""
+msgstr "Příjem:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:353
-#, fuzzy
-#| msgid "Gold per village"
 msgid "Support per village:"
-msgstr "Zlaté na vesnici"
+msgstr "Zlaté na vesnici:"
 
 #. [label]
 #: data/gui/default/window/editor_edit_side.cfg:383
 msgid "Controller:"
-msgstr ""
+msgstr "Ovládá:"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:400
 msgid "controller^Human"
-msgstr ""
+msgstr "controller^Člověk"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:402
+#, fuzzy
+#| msgid "controller^Human"
 msgid "controller^Human/AI"
-msgstr ""
+msgstr "controller^Člověk"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:404
 msgid "controller^AI only"
-msgstr ""
+msgstr "controller^Pouze umělá inteligence"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:406
 msgid "controller^None"
-msgstr ""
+msgstr "controller^Nikdo"
 
 #. [row]
 #: data/gui/default/window/editor_edit_side.cfg:423
 msgid "controller^Player number:"
-msgstr ""
+msgstr "controller^Číslo hráče"
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:35
@@ -2372,10 +2467,8 @@ msgstr "Výška:"
 
 #. [button]: id=ok
 #: data/gui/default/window/editor_new_map.cfg:115
-#, fuzzy
-#| msgid "Create Game"
 msgid "Create"
-msgstr "Vytvoř hru"
+msgstr "Vytvoř"
 
 # v editoru map; kontext - v menu "mapa"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -2407,10 +2500,8 @@ msgstr "Stará výška:"
 
 #. [label]
 #: data/gui/default/window/editor_resize_map.cfg:154
-#, fuzzy
-#| msgid "Expand / shrink direction"
 msgid "Expand/shrink direction:"
-msgstr "Směr expanze / smrštění"
+msgstr "Směr expanze / smrštění:"
 
 #. [toggle_button]: id=copy_edge_terrain
 #: data/gui/default/window/editor_resize_map.cfg:253
@@ -2420,8 +2511,6 @@ msgstr "Kopírovat terén na okraji"
 # v editoru map; kontext - v menu "mapa"
 #. [button]: id=ok
 #: data/gui/default/window/editor_resize_map.cfg:274
-#, fuzzy
-#| msgid "Resize Map"
 msgid "Resize"
 msgstr "Změň velikost"
 
@@ -2517,10 +2606,8 @@ msgstr "Skutečně chceš smazat tuto hru?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:80
 #: data/gui/default/window/mp_host_game_prompt.cfg:79
-#, fuzzy
-#| msgid "Do not show lobby joins"
 msgid "Do not show again"
-msgstr "Neukazuj připojení uživatelů"
+msgstr "Už nezobrazuj"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -2565,15 +2652,13 @@ msgstr "Smazat"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:383
-#, fuzzy
-#| msgid "Difficulty"
 msgid "Change difficulty"
-msgstr "Obtížnost"
+msgstr "Změnit obtížnost"
 
 #. [toggle_button]: id=change_difficulty
 #: data/gui/default/window/game_load.cfg:384
 msgid "Change campaign difficulty before loading"
-msgstr ""
+msgstr "Změnit obtížnost kampaně před nahráním"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:403
@@ -2583,7 +2668,7 @@ msgstr "Přehrát záznam"
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:404
 msgid "Play the embedded replay from the saved game if applicable"
-msgstr ""
+msgstr "Přehrát vložený záznam z uložené hry, pokud je to možné"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:422
@@ -2593,74 +2678,66 @@ msgstr "Zrušit příkazy"
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:423
 msgid "Cancel any pending unit movements in the saved game"
-msgstr ""
+msgstr "Všechny nevyhodnocené pohyby jednotek v uložené hře zrušit"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:47
 #: data/gui/default/window/screenshot_notification.cfg:34
 msgid "filesystem^Copy"
-msgstr ""
+msgstr "filesystem^Kopírovat"
 
 #. [button]: id=copy
 #. [button]: id=copy_
 #: data/gui/default/window/game_paths.cfg:48
 #: data/gui/default/window/screenshot_notification.cfg:35
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this path to clipboard"
-msgstr "Vyber si hru pro nahrání"
+msgstr "Zkopíruj cestu do schránky"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:63
 msgid "filesystem^Browse"
-msgstr ""
+msgstr "filesystem^Procházet"
 
 #. [button]: id=browse_
 #: data/gui/default/window/game_paths.cfg:64
 msgid "Browse this location using a file manager"
-msgstr ""
+msgstr "Procházet umístění ve správci souborů"
 
 #. [label]: id=title
 #: data/gui/default/window/game_paths.cfg:105
-#, fuzzy
-#| msgid "Cave Path"
 msgid "Game Paths"
-msgstr "Jeskynní stezka"
+msgstr "Adresáře s hrou"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:127
 msgid "Game data:"
-msgstr ""
+msgstr "Herní údaje:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:129
 msgid "Configuration:"
-msgstr ""
+msgstr "Nastavení:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:131
 msgid "User data:"
-msgstr ""
+msgstr "Uživatelská data:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:133
-#, fuzzy
-#| msgid "Save Game"
 msgid "Saved games:"
-msgstr "Ulož hru"
+msgstr "Uložené hry:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:135
-#, fuzzy
-#| msgid "Add-ons"
 msgid "Add-ons:"
-msgstr "Rozšíření"
+msgstr "Rozšíření:"
 
 #. [grid]
 #: data/gui/default/window/game_paths.cfg:137
 msgid "Cache:"
-msgstr ""
+msgstr "Cache:"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
@@ -2708,12 +2785,10 @@ msgstr "Typ"
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:164
 msgid "Items"
-msgstr ""
+msgstr "Věci"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:223
-#, fuzzy
-#| msgid "Content"
 msgid "Contents"
 msgstr "Obsah"
 
@@ -3093,15 +3168,13 @@ msgstr "Náhodná počáteční doba"
 
 #. [label]
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:54
-#, fuzzy
-#| msgid "Choose Resolution"
 msgid "Choose Modifications"
-msgstr "Vyber si rozlišení"
+msgstr "Vyber si rozšíření"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_create_game_choose_mods.cfg:73
 msgid "Enable the modifications you want to be active during the game."
-msgstr ""
+msgstr "Povolte rozšíření, která chcete aktivovat během hry."
 
 #. [scroll_label]: id=message
 #: data/gui/default/window/mp_create_game_set_password.cfg:61
@@ -3118,26 +3191,22 @@ msgstr "Heslo:"
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:40
 msgid "Confirm"
-msgstr ""
+msgstr "Potvrdit"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_confirm_change.cfg:98
 msgid "Would you like to apply the changes?"
-msgstr ""
+msgstr "Chcete skutečně uložit provedené změny?"
 
 #. [label]
 #: data/gui/default/window/mp_depcheck_select_new.cfg:40
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User Interaction Required"
-msgstr "Zvuky uživatelského rozhraní"
+msgstr "Spolupráce uživatele vyžadována"
 
 #. [label]: id=message
 #: data/gui/default/window/mp_depcheck_select_new.cfg:59
-#, fuzzy
-#| msgid "User interface sounds"
 msgid "User interaction required"
-msgstr "Zvuky uživatelského rozhraní"
+msgstr "Spolupráce uživatele vyžadována"
 
 #. [column]
 #. [label]
@@ -3153,6 +3222,8 @@ msgid ""
 "The server will run as a background process until all users have "
 "disconnected. Do you wish to continue?"
 msgstr ""
+"Pokud chcete hostovat síťovou hru, musíte spustit instanci serveru. Server "
+"poběží na pozadí dokud se všichni uživatelé neodpojí. Přejete si pokračovat?"
 
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
@@ -3251,31 +3322,27 @@ msgstr "Vybrat"
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:50
 msgid "filesystem^Open"
-msgstr ""
+msgstr "filesystem^Otevřít"
 
 #. [button]: id=open
 #: data/gui/default/window/screenshot_notification.cfg:51
 msgid "Open this file with an external application"
-msgstr ""
+msgstr "Otevřít soubor v externí aplikaci"
 
 #. [label]: id=title
 #: data/gui/default/window/screenshot_notification.cfg:95
-#, fuzzy
-#| msgid "Screenshot done"
 msgid "Screenshot Saved"
-msgstr "Screenshot dokončen"
+msgstr "Screenshot uložen"
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:185
-#, fuzzy
-#| msgid "Screenshot"
 msgid "Screenshots..."
-msgstr "Screenshot (kopie obrazovky)"
+msgstr "Screenshoty (kopie obrazovky)..."
 
 #. [button]: id=browse_dir
 #: data/gui/default/window/screenshot_notification.cfg:187
 msgid "Browse the screenshots folder using a file manager"
-msgstr ""
+msgstr "Procházet screenshoty ve správci souborů"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:51
@@ -3284,10 +3351,8 @@ msgstr "Vyber téma"
 
 #. [label]
 #: data/gui/default/window/theme_list.cfg:67
-#, fuzzy
-#| msgid "New theme will take effect on next new or loaded game."
 msgid "The new theme will take effect after loading or starting a new game."
-msgstr "Nové téma se projeví na další nové, nebo načtené hře."
+msgstr "Nové téma se projeví po načítání nebo spuštění nové hy."
 
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:180
@@ -3438,19 +3503,17 @@ msgstr "Chyba"
 #. [label]: id=details_heading
 #: data/gui/default/window/wml_error.cfg:112 src/gui/dialogs/wml_error.cpp:192
 msgid "Details:"
-msgstr ""
+msgstr "Podrobnosti:"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:124
 msgid "clipboard^Copy"
-msgstr ""
+msgstr "clipboard^Kopírovat"
 
 #. [button]: id=copy
 #: data/gui/default/window/wml_error.cfg:125
-#, fuzzy
-#| msgid "Choose the game to load"
 msgid "Copy this report to clipboard"
-msgstr "Vyber si hru pro nahrání"
+msgstr "Zkopíruj toto hlášení do schránky"
 
 #: src/filechooser.cpp:80
 msgid "File: "
@@ -3508,11 +3571,11 @@ msgstr "Zobrazuj mřížku"
 
 #: src/game_preferences_display.cpp:182
 msgid "Save replays at the end of scenarios"
-msgstr ""
+msgstr "Uložit záznam na konci scénáře"
 
 #: src/game_preferences_display.cpp:183
 msgid "Delete auto-saves at the end of scenarios"
-msgstr ""
+msgstr "Na konci scénáře smazat všechna automatická uložení"
 
 #: src/game_preferences_display.cpp:184
 msgid "Do not show lobby joins"
@@ -3603,7 +3666,7 @@ msgstr "Klávesové zkratky"
 
 #: src/game_preferences_display.cpp:206
 msgid "Paths"
-msgstr ""
+msgstr "Cesta"
 
 #: src/game_preferences_display.cpp:208
 msgid "Sound effects"
@@ -3767,15 +3830,15 @@ msgstr "Přeruší pohyb jednotek při spatření spřátelené jednotky"
 #: src/game_preferences_display.cpp:374
 msgid ""
 "Saves replays of games on victory in all modes and defeat in multiplayer"
-msgstr ""
+msgstr "Ukládá záznamy vítězných her a z prohraných při hře více hráčů"
 
 # !!!! délka
 #: src/game_preferences_display.cpp:377
-#, fuzzy
-#| msgid "Delete auto-saves on SP/MP victory or MP defeat"
 msgid ""
 "Deletes previous auto-saves on victory in all modes and defeat in multiplayer"
-msgstr "Maž uložené pozice při prohře ve hře více hráčů a každém vítězství"
+msgstr ""
+"Maž uložené pozice při prohře ve hře více hráčů a každém vítězství při hře "
+"více hráčů"
 
 #: src/game_preferences_display.cpp:379
 msgid "Overlay a grid onto the map"
@@ -3786,16 +3849,12 @@ msgid "Sort the player list in the lobby by player groups"
 msgstr "Seřaď seznam hráčů v čekárně podle skupin"
 
 #: src/game_preferences_display.cpp:385
-#, fuzzy
-#| msgid "Show icons in front of the player names in the lobby."
 msgid "Show icons in front of the player names in the lobby"
 msgstr "Ukazuj ikony před jmény hráčů v čekárně"
 
 #: src/game_preferences_display.cpp:388
-#, fuzzy
-#| msgid "Uncheck to delete the saved password (on exit)."
 msgid "Uncheck to delete the saved password (on exit)"
-msgstr "Vypněte pro smazání uložených hesel (při ukončení programu)."
+msgstr "Odklikněte pro smazání uložených hesel (při ukončení programu)."
 
 #: src/game_preferences_display.cpp:392
 msgid "Do not show messages about players joining the multiplayer lobby"
@@ -3810,8 +3869,6 @@ msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Ukazuj zprávy o všech hráčích, kteří se připojili k serveru"
 
 #: src/game_preferences_display.cpp:398
-#, fuzzy
-#| msgid "Find and set path to MP server to host LAN games."
 msgid "Find and set path to MP server to host LAN games"
 msgstr "Najdi a nastav cestu k serveru hry více hráčů pro hostování her na LAN"
 
@@ -3829,12 +3886,16 @@ msgid ""
 "Add this username to your friends list (add optional notes, e.g., "
 "'player_name notes on friend')"
 msgstr ""
+"Přidat toto uživatelské jméno do seznamu přátel (volitelně, např. 'jméno "
+"hráče zaznamenáno jako přítel')"
 
 #: src/game_preferences_display.cpp:402
 msgid ""
 "Add this username to your ignores list (add optional reason, e.g., "
 "'player_name reason ignored')"
 msgstr ""
+"Přidat toto uživatelské jméno do seznamu ignorovaných (volitelně, např. "
+"'jméno hráče důvod ignorování')"
 
 #: src/game_preferences_display.cpp:403
 msgid "Remove this username from your list"
@@ -3889,7 +3950,7 @@ msgstr "Zobraz a nastav klávesové zkratky"
 
 #: src/game_preferences_display.cpp:434
 msgid "View game file paths"
-msgstr ""
+msgstr "Zobrazit cesty ke zdrojovým souborům"
 
 #: src/game_preferences_display.cpp:764
 msgid "Speed: "
@@ -3993,8 +4054,6 @@ msgid "Roads between castles"
 msgstr "Cesty mezi hrady"
 
 #: src/generators/mapgen_dialog.cpp:256
-#, fuzzy
-#| msgid "Show floating labels"
 msgid "Show labels"
 msgstr "Zobrazuj plovoucí popisky"
 
@@ -4103,7 +4162,7 @@ msgstr "Není definována žádná stránka."
 
 #: src/gui/auxiliary/window_builder/pane.cpp:37
 msgid "Need at least 1 parallel item."
-msgstr ""
+msgstr "Je třeba alespoň jedna souběžná věc."
 
 #: src/gui/auxiliary/window_builder/slider.cpp:68
 msgid "The number of value_labels and values don't match."
@@ -4128,73 +4187,73 @@ msgstr "Není definován žádný uzel."
 
 #: src/gui/dialogs/addon/description.cpp:109
 msgid "addon_state^Not installed"
-msgstr ""
+msgstr "addon_state^Nenainstalované"
 
 #: src/gui/dialogs/addon/description.cpp:111
 msgid "addon_state^Published, not installed"
-msgstr ""
+msgstr "addon_state^Uveřejněné, nenainstalované"
 
 #: src/gui/dialogs/addon/description.cpp:116
 msgid "addon_state^Installed"
-msgstr ""
+msgstr "addon_state^Nainstalované"
 
 #: src/gui/dialogs/addon/description.cpp:118
 msgid "addon_state^Published"
-msgstr ""
+msgstr "addon_state^Uveřejněné"
 
 #: src/gui/dialogs/addon/description.cpp:123
 msgid "addon_state^Installed, not tracking local version"
-msgstr ""
+msgstr "addon_state^Nainstalované, nesleduje místní verzi"
 
 #: src/gui/dialogs/addon/description.cpp:127
 msgid "addon_state^Published, not tracking local version"
-msgstr ""
+msgstr "addon_state^Uveřejněné, nesleduje místní verzi"
 
 #: src/gui/dialogs/addon/description.cpp:133
 msgid "addon_state^Installed ($local_version|), upgradable"
-msgstr ""
+msgstr "addon_state^Nainstalované ($local_version|), dostupná nová verze"
 
 #: src/gui/dialogs/addon/description.cpp:135
 msgid "addon_state^Published ($local_version| installed), upgradable"
 msgstr ""
+"addon_state^Uveřejněné ($local_version| installed), dostupná nová verze"
 
 #: src/gui/dialogs/addon/description.cpp:142
 msgid "addon_state^Installed ($local_version|), outdated on server"
-msgstr ""
+msgstr "addon_state^Nainstalované ($local_version|), na serveru zastaralé"
 
 #: src/gui/dialogs/addon/description.cpp:144
 msgid "addon_state^Published ($local_version| installed), outdated on server"
 msgstr ""
+"addon_state^Uveřejněné ($local_version| nainstalované) na serveru zastaralé"
 
 #: src/gui/dialogs/addon/description.cpp:150
 msgid "addon_state^Installed, broken"
-msgstr ""
+msgstr "addon_state^Nainstalované, poškozené"
 
 #: src/gui/dialogs/addon/description.cpp:152
 msgid "addon_state^Published, broken"
-msgstr ""
+msgstr "addon_state^Uveřejněné, poškozené"
 
 #: src/gui/dialogs/addon/description.cpp:156
 msgid "addon_state^Unknown"
-msgstr ""
+msgstr "addon_state^Neznámý"
 
 #: src/gui/dialogs/addon/filter_options.cpp:294
 msgid "addons_view^Not Installed"
-msgstr ""
+msgstr "addons_view^Nenainstalované"
 
 #: src/gui/dialogs/addon/filter_options.cpp:296
 msgid "addons_view^Upgradable"
-msgstr ""
+msgstr "addons_view^Dostupná nová verze"
 
 #: src/gui/dialogs/addon/filter_options.cpp:298
 msgid "addons_view^Installed"
-msgstr ""
+msgstr "addons_view^Nainstalované"
 
 #: src/gui/dialogs/addon/filter_options.cpp:300
-#, fuzzy
-#| msgid "Uninstall Add-ons"
 msgid "addons_view^All Add-ons"
-msgstr "Odinstalace rozšíření"
+msgstr "addons_view^Odinstalace rozšíření"
 
 #: src/gui/dialogs/addon_list.cpp:233
 #: src/gui/dialogs/network_transmission.cpp:56
@@ -4294,29 +4353,35 @@ msgstr "Načti hru..."
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:64
 msgid "$requester requires the following modifications to be enabled:"
-msgstr ""
+msgstr "$requester vyžaduje povolení následujících modifikací:"
 
 #: src/gui/dialogs/mp_depcheck_confirm_change.cpp:68
 msgid "$requester requires the following modifications to be disabled:"
-msgstr ""
+msgstr "$requester vyžaduje zákaz následujících modifikací:"
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:67
 msgid ""
 "The currently chosen scenario is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Vybraný scénář není slučitelný s vaším nastavením.\n"
+"Prosím vyberte nějaké slučitelné."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:72
 msgid ""
 "The currently chosen era is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Vybraný věk není slučitelný s vaším nastavením.\n"
+"Prosím vyberte nějaké slučitelné."
 
 #: src/gui/dialogs/mp_depcheck_select_new.cpp:78
 msgid ""
 "The currently chosen modification is not compatible with your setup.\n"
 "Please select a compatible one."
 msgstr ""
+"Vybraná modifikace není slučitelný s vaším nastavením.\n"
+"Prosím vyberte nějaké slučitelné."
 
 #: src/gui/dialogs/title_screen.cpp:293
 msgid "Version "
@@ -4359,32 +4424,24 @@ msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Nebyl zobrazen dialog, který se nevejde na obrazovku."
 
 #: src/hotkey/hotkey_command.cpp:38
-#, fuzzy
-#| msgid "Cancel"
 msgid "cancel"
 msgstr "Zrušit"
 
 #: src/hotkey/hotkey_command.cpp:39
-#, fuzzy
-#| msgid "Select None"
 msgid "Select Hex"
-msgstr "Vyber nic"
+msgstr "Vyber políčko"
 
 #: src/hotkey/hotkey_command.cpp:40
-#, fuzzy
-#| msgid "Select None"
 msgid "Deselect Hex"
-msgstr "Vyber nic"
+msgstr "Zruš výběr políčka"
 
 #: src/hotkey/hotkey_command.cpp:41
-#, fuzzy
-#| msgid "Attack"
 msgid "Move/Attack"
-msgstr "Útok!"
+msgstr "Pohyb/Útok"
 
 #: src/hotkey/hotkey_command.cpp:42
 msgid "Select/Move/Attack"
-msgstr ""
+msgstr "Vybrat/Pohnout/Zaútočit"
 
 #: src/hotkey/hotkey_command.cpp:43
 msgid "Animate Map"
@@ -4407,8 +4464,6 @@ msgid "End Unit Turn"
 msgstr "Ukončit kolo jednotky"
 
 #: src/hotkey/hotkey_command.cpp:48
-#, fuzzy
-#| msgid "Leader"
 msgid "Leader"
 msgstr "Vůdce"
 
@@ -4449,10 +4504,8 @@ msgid "Accelerated"
 msgstr "Zrychlit"
 
 #: src/hotkey/hotkey_command.cpp:58
-#, fuzzy
-#| msgid "Unit Description"
 msgid "Terrain Description"
-msgstr "Popis jednotky"
+msgstr "Popis terénu"
 
 #: src/hotkey/hotkey_command.cpp:59
 msgid "Unit Description"
@@ -4463,10 +4516,8 @@ msgid "Rename Unit"
 msgstr "Přejmenuj"
 
 #: src/hotkey/hotkey_command.cpp:61
-#, fuzzy
-#| msgid "Delete File"
 msgid "Delete Unit"
-msgstr "Smaž soubor"
+msgstr "Smaž jednotku"
 
 #: src/hotkey/hotkey_command.cpp:64
 msgid "Save Replay"
@@ -4505,10 +4556,8 @@ msgid "Mouse Scrolling"
 msgstr "Posouvat pomocí myši"
 
 #: src/hotkey/hotkey_command.cpp:74
-#, fuzzy
-#| msgid "Status"
 msgid "Status Table"
-msgstr "Stav"
+msgstr "Stavová tabulka"
 
 #: src/hotkey/hotkey_command.cpp:75
 msgid "Mute"
@@ -4523,10 +4572,8 @@ msgid "Change Side (Debug!)"
 msgstr "Změň stranu (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:79
-#, fuzzy
-#| msgid "Create Unit (Debug!)"
 msgid "Kill Unit (Debug!)"
-msgstr "Vytvoř jednotku (Debug!)"
+msgstr "Zabij jednotku (Debug!)"
 
 #: src/hotkey/hotkey_command.cpp:81
 msgid "Scenario Objectives"
@@ -4549,10 +4596,8 @@ msgid "Continue Network Game"
 msgstr "pokračuj v síťové hře"
 
 #: src/hotkey/hotkey_command.cpp:87
-#, fuzzy
-#| msgid "Start Editor"
 msgid "Quit Editor"
-msgstr "Spusť editor map"
+msgstr "Opusť editor"
 
 #: src/hotkey/hotkey_command.cpp:88
 msgid "Set Team Label"
@@ -4612,52 +4657,38 @@ msgstr "Přeskočit animaci"
 
 #. TRANSLATORS: whiteboard menu entry: toggle planning mode
 #: src/hotkey/hotkey_command.cpp:105
-#, fuzzy
-#| msgid "Toggle Planning Mode"
 msgid "whiteboard^Planning Mode"
-msgstr "Přepnout plánovací mód"
+msgstr "whiteboard^Přepnout plánovací mód"
 
 #. TRANSLATORS: whiteboard menu entry: execute planned action
 #: src/hotkey/hotkey_command.cpp:107
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute Action"
-msgstr "Provede všechny akce"
+msgstr "whiteboard^Provede všechny akce"
 
 #. TRANSLATORS: whiteboard menu entry: execute all planned actions
 #: src/hotkey/hotkey_command.cpp:109
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Execute All Actions"
-msgstr "Provede všechny akce"
+msgstr "whiteboard^Provede všechny akce"
 
 #. TRANSLATORS: whiteboard menu entry: delete planned action
 #: src/hotkey/hotkey_command.cpp:111
-#, fuzzy
-#| msgid "Execute All Actions"
 msgid "whiteboard^Delete Action"
-msgstr "Provede všechny akce"
+msgstr "whiteboard^Smaž akci"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action up queue
 #: src/hotkey/hotkey_command.cpp:113
-#, fuzzy
-#| msgid "Move Action Up Queue"
 msgid "whiteboard^Move Action Up"
-msgstr "Posunout akci ve frontě nahoru"
+msgstr "whiteboard^Posunout akci ve frontě nahoru"
 
 #. TRANSLATORS: whiteboard menu entry: move planned action down queue
 #: src/hotkey/hotkey_command.cpp:115
-#, fuzzy
-#| msgid "Move Action Down Queue"
 msgid "whiteboard^Move Action Down"
-msgstr "Posunout akci ve frontě dolů"
+msgstr "whiteboard^Posunout akci ve frontě dolů"
 
 #. TRANSLATORS: whiteboard menu entry: plan as though the chosen unit were dead
 #: src/hotkey/hotkey_command.cpp:117
-#, fuzzy
-#| msgid "Suppose Dead"
 msgid "whiteboard^Suppose Dead"
-msgstr "Předpokládat smrt"
+msgstr "whiteboard^Předpokládat smrt"
 
 #: src/hotkey/hotkey_command.cpp:119
 msgid "Quit to Desktop"
@@ -4668,10 +4699,8 @@ msgid "Close Map"
 msgstr "Zavřít mapu"
 
 #: src/hotkey/hotkey_command.cpp:124
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Switch Time of Day"
-msgstr "Přepnout mapu"
+msgstr "Přepnout denní dobu"
 
 #: src/hotkey/hotkey_command.cpp:125
 msgid "Switch Map"
@@ -4679,21 +4708,19 @@ msgstr "Přepnout mapu"
 
 #: src/hotkey/hotkey_command.cpp:126
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Přiřadit místní čas"
 
 #: src/hotkey/hotkey_command.cpp:128
 msgid "Custom Time of Day Creator"
-msgstr ""
+msgstr "Vytvoření vlastní denní doby"
 
 #: src/hotkey/hotkey_command.cpp:129
 msgid "Partial Undo"
 msgstr "Částečné vrácení"
 
 #: src/hotkey/hotkey_command.cpp:131
-#, fuzzy
-#| msgid "Test scenario"
 msgid "New Scenario"
-msgstr "Testovací scénář"
+msgstr "Nový scénář"
 
 #: src/hotkey/hotkey_command.cpp:132
 msgid "Load Map"
@@ -4704,10 +4731,8 @@ msgid "Save Map As"
 msgstr "Ulož mapu jako"
 
 #: src/hotkey/hotkey_command.cpp:135
-#, fuzzy
-#| msgid "Scenario start"
 msgid "Save Scenario As"
-msgstr "Začátek scénáře"
+msgstr "Uložit scénář jako"
 
 #: src/hotkey/hotkey_command.cpp:136
 msgid "Save All Maps"
@@ -4722,34 +4747,28 @@ msgid "Map Information"
 msgstr "Informace o mapě"
 
 #: src/hotkey/hotkey_command.cpp:140
-#, fuzzy
-#| msgid "Selected game"
 msgid "Clear Selected Item Set"
-msgstr "Vybraná hra"
+msgstr "Zruš  vybranou sadu"
 
 #: src/hotkey/hotkey_command.cpp:141
-#, fuzzy
-#| msgid "Swap Foreground/Background Terrains"
 msgid "Swap Foreground/Background Palette Item"
-msgstr "Prohodit terény pro popředí a pozadí"
+msgstr "Prohodit na paletě terény pro popředí a pozadí"
 
 #: src/hotkey/hotkey_command.cpp:142
 msgid "Change Palette Group"
-msgstr ""
+msgstr "Změnit paletu"
 
 #: src/hotkey/hotkey_command.cpp:143
 msgid "Scroll Palette Left"
-msgstr ""
+msgstr "Posunout paletu vlevo"
 
 #: src/hotkey/hotkey_command.cpp:144
 msgid "Scroll Palette Right"
-msgstr ""
+msgstr "Posunout paletu vpravo"
 
 #: src/hotkey/hotkey_command.cpp:146
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Side"
-msgstr "Další strana"
+msgstr "Přidat Další stranu"
 
 #: src/hotkey/hotkey_command.cpp:148
 msgid "Next Tool"
@@ -4764,6 +4783,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
+"Použijte levé/pravé tlačítko myši k vykreslení popředí/pozadí povrchu. "
+"Podržte Shift pro kreslení pouze základních vrstev. Ctrl+klinutí pro výběr "
+"terénu pod kurzorem."
 
 #: src/hotkey/hotkey_command.cpp:151
 msgid "Fill Tool"
@@ -4774,6 +4796,9 @@ msgid ""
 "Left mouse button selects or deselects with Ctrl, right brings up a context "
 "menu. Hold Shift for magic-wand selection of tiles with same terrain."
 msgstr ""
+"Levým tlačítkem myči vybírá nebo odebírá s Ctrl, pravé vyvolá kontextové "
+"menu. Podržte Shift pro výběr shodných polířek se stejným terénem pomocí "
+"magické hůlky."
 
 #: src/hotkey/hotkey_command.cpp:152
 msgid "Selection Tool"
@@ -4785,126 +4810,121 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
+"Levým tlačítkem myši zobrazíte výběr hráčů, pravým vymažete. Tlačítka čísel "
+"posunují k výchozí pozici, alt+čísla nastavují výchozí pozice na pozice "
+"kurzoru, pomocí delete se mažou."
 
 #: src/hotkey/hotkey_command.cpp:153
-#, fuzzy
-#| msgid "Set Starting Positions Tool"
 msgid "Starting Positions Tool"
-msgstr "Nastavení startovních pozic hráčů"
+msgstr "Nastavení startovních pozic"
 
 #: src/hotkey/hotkey_command.cpp:154
-#, fuzzy
-#| msgid "Fill Tool"
 msgid "Label Tool"
-msgstr "Vyplňovací nástroj"
+msgstr "Nástroj pro popisky"
 
 #: src/hotkey/hotkey_command.cpp:154
 msgid "Left mouse button sets or drags a label, right clears."
-msgstr ""
+msgstr "Levé tlačítko myši nastavuje nebo přesunuje popisek, pravé ho maže."
 
 #: src/hotkey/hotkey_command.cpp:155
 msgid ""
 "Left mouse button sets a new unit or moves a unit via drag and drop, right "
 "brings up a context menu. Needs a defined side."
 msgstr ""
+"Levým tlačítkem myši nastavíte novou jednotku nebo ji tažením přesunete, "
+"pravým vyvoláte kontextové menu. Musí být vybrána strana."
 
 #: src/hotkey/hotkey_command.cpp:155
-#, fuzzy
-#| msgid "Paint Tool"
 msgid "Unit Tool"
-msgstr "Kreslící nástroj"
+msgstr "Nástroj pro jednotky"
 
 #: src/hotkey/hotkey_command.cpp:156
-#, fuzzy
-#| msgid "Next Tool"
 msgid "Item Tool"
-msgstr "Další nástroj"
+msgstr "Nástroj pro předměty"
 
 #: src/hotkey/hotkey_command.cpp:156
 msgid ""
 "Left mouse button sets a new item or moves it via drag and drop, right "
 "clears. Not implemented yet."
 msgstr ""
+"Levým tlačítkem myši nastavíte nový předmět nebo tažením přesunete, pravým "
+"ho vymažete. Zatím není implementováno."
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid ""
 "Left mouse button sets or drags a sound source, right clears. Not "
 "implemented yet."
 msgstr ""
+"Levým tlačítkem myši nastavíte nebo přesunete zdroj zvuku, pravým ho "
+"smažete. Zatím není implementováno."
 
 #: src/hotkey/hotkey_command.cpp:157
 msgid "Sound Source Tool"
-msgstr ""
+msgstr "Nástroj pro zvuk"
 
 #: src/hotkey/hotkey_command.cpp:158
 msgid ""
 "Left mouse button sets the village ownership to the current side, right "
 "clears. Needs a defined side."
 msgstr ""
+"Levým tlačítkem myši nastavíte vlastnění vesnice vybrané straně, pravým "
+"vymažete. Musí být vybrána strana."
 
 #: src/hotkey/hotkey_command.cpp:158
-#, fuzzy
-#| msgid "Village gold"
 msgid "Village Tool"
-msgstr "Zlato/Vesnice"
+msgstr "Nástroj pro vesnice"
 
 #: src/hotkey/hotkey_command.cpp:160
-#, fuzzy
-#| msgid "Recruit"
 msgid "Can Recruit"
-msgstr "Naverbuj"
+msgstr "Může verbovat"
 
 #: src/hotkey/hotkey_command.cpp:160
 msgid "Toggle the recruit attribute of a unit."
-msgstr ""
+msgstr "Povolí u verbování jednotky"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Can be Renamed"
-msgstr ""
+msgstr "Může být přejmenována"
 
 #: src/hotkey/hotkey_command.cpp:161
 msgid "Toggle the unit being renameable."
-msgstr ""
+msgstr "Povolí přejmenování jednotky."
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign Recruit List"
-msgstr ""
+msgstr "Přiřadí seznam verbování"
 
 #: src/hotkey/hotkey_command.cpp:162
 msgid "Assign the selected unit set as recruit list to the unit."
-msgstr ""
+msgstr "Přiřadí vybranou jednotku do seznamu verbování jiné jednotce."
 
 #: src/hotkey/hotkey_command.cpp:164
-#, fuzzy
-#| msgid "Change Control"
 msgid "Change Unit ID"
-msgstr "Změň"
+msgstr "Změň ID jednotky"
 
 #: src/hotkey/hotkey_command.cpp:165
 msgid "Loyal"
-msgstr ""
+msgstr "Věrný"
 
 #: src/hotkey/hotkey_command.cpp:167
 msgid "Toggle Minimap Unit Coding"
-msgstr ""
+msgstr "Aktivovat zobrazení jednotek na minimapě"
 
 #: src/hotkey/hotkey_command.cpp:168
 msgid "Toggle Minimap Terrain Coding"
-msgstr ""
+msgstr "Aktivovat rozlišování povrchu na minimapě"
 
 #: src/hotkey/hotkey_command.cpp:170
 msgid "Toggle Minimap Unit Drawing"
-msgstr ""
+msgstr "Aktivovat zobrazení jednotek na minimapě"
 
 #: src/hotkey/hotkey_command.cpp:171
 msgid "Toggle Minimap Village Drawing"
-msgstr ""
+msgstr "Aktivovat zobrazení vesnic na minimapě"
 
 #: src/hotkey/hotkey_command.cpp:172
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Minimap Terrain Drawing"
-msgstr "Obnovit přechody terénu"
+msgstr "Aktivovat zobrazení povrchu na minimapě"
 
 #: src/hotkey/hotkey_command.cpp:174
 msgid "Next Brush"
@@ -4916,38 +4936,36 @@ msgstr "Výchozí štětec"
 
 #: src/hotkey/hotkey_command.cpp:176
 msgid "Single Tile"
-msgstr ""
+msgstr "Vlastní buňka"
 
 #: src/hotkey/hotkey_command.cpp:177
 msgid "Radius One"
-msgstr ""
+msgstr "Rozsah jedna"
 
 #: src/hotkey/hotkey_command.cpp:178
 msgid "Radius Two"
-msgstr ""
+msgstr "Rozsah dva"
 
 #: src/hotkey/hotkey_command.cpp:179
 msgid "Brush NW-SE"
-msgstr ""
+msgstr "Štětec SZ-JV"
 
 #: src/hotkey/hotkey_command.cpp:180
 msgid "Brush SW-NE"
-msgstr ""
+msgstr "Štětec JZ-SV"
 
 #: src/hotkey/hotkey_command.cpp:182
 msgid "Cut"
 msgstr "Vyřízni"
 
 #: src/hotkey/hotkey_command.cpp:183
-#, fuzzy
-#| msgid "Copy"
 msgid "Copy"
-msgstr "Kopíruj"
+msgstr "Kopírovat"
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid ""
 "Left mouse button pastes from the clipboard, right brings up a context menu."
-msgstr ""
+msgstr "Levým tlačítkem vložíte ze schránky, pravým vyvoláte kontextové menu."
 
 #: src/hotkey/hotkey_command.cpp:184
 msgid "Paste"
@@ -4998,14 +5016,10 @@ msgid "Fill Selection"
 msgstr "Vyplň výběr"
 
 #: src/hotkey/hotkey_command.cpp:196
-#, fuzzy
-#| msgid "Generate Tiles In Selection"
 msgid "Generate Tiles in Selection"
 msgstr "Generovat políčka ve výběru"
 
 #: src/hotkey/hotkey_command.cpp:197
-#, fuzzy
-#| msgid "Randomize Tiles In Selection"
 msgid "Randomize Tiles in Selection"
 msgstr "Náhodně nastavit políčka ve výběru"
 
@@ -5034,8 +5048,6 @@ msgid "Update Terrain Transitions"
 msgstr "Obnovit přechody terénu"
 
 #: src/hotkey/hotkey_command.cpp:208
-#, fuzzy
-#| msgid "Update Terrain Transitions"
 msgid "Toggle Terrain Transition Update"
 msgstr "Obnovit přechody terénu"
 
@@ -5044,16 +5056,12 @@ msgid "Auto-update Terrain Transitions"
 msgstr "Obnovovat přechody terénu automaticky"
 
 #: src/hotkey/hotkey_command.cpp:211
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Obnovovat přechody terénu automaticky"
+msgstr "Obnovovat přechody terénu automaticky: Ne"
 
 #: src/hotkey/hotkey_command.cpp:212
-#, fuzzy
-#| msgid "Auto-update Terrain Transitions"
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Obnovovat přechody terénu automaticky"
+msgstr "Obnovovat přechody terénu automaticky: Částečně"
 
 #: src/hotkey/hotkey_command.cpp:214
 msgid "Refresh Image Cache"
@@ -5068,46 +5076,32 @@ msgid "Draw Terrain Codes"
 msgstr "Zobrazuj kódy terénu"
 
 #: src/hotkey/hotkey_command.cpp:218
-#, fuzzy
-#| msgid "Rotate Selection"
 msgid "Save Selection to Area"
-msgstr "Otoč výběr"
+msgstr "Ulož výběr do oblasti"
 
 #: src/hotkey/hotkey_command.cpp:219
-#, fuzzy
-#| msgid "Selected game"
 msgid "Rename Selected Area"
-msgstr "Vybraná hra"
+msgstr "Přejmenuj vybranou oblast"
 
 #: src/hotkey/hotkey_command.cpp:220
-#, fuzzy
-#| msgid "Selected game"
 msgid "Remove Selected Area"
-msgstr "Vybraná hra"
+msgstr "Odeber vybranou oblast"
 
 #: src/hotkey/hotkey_command.cpp:221
-#, fuzzy
-#| msgid "Next Side"
 msgid "Add New Area"
-msgstr "Další strana"
+msgstr "Přidej novou oblast"
 
 #: src/hotkey/hotkey_command.cpp:223
-#, fuzzy
-#| msgid "Editor Settings"
 msgid "Edit Scenario"
-msgstr "Nastavení editoru"
+msgstr "Uprav scénář"
 
 #: src/hotkey/hotkey_command.cpp:224
-#, fuzzy
-#| msgid "Switch Map"
 msgid "Edit Side"
-msgstr "Přepnout mapu"
+msgstr "Upravit stranu"
 
 #: src/hotkey/hotkey_command.cpp:225
-#, fuzzy
-#| msgid "Remove"
 msgid "Remove Side"
-msgstr "Odstraň"
+msgstr "Odebrat stranu"
 
 #: src/hotkey/hotkey_command.cpp:227
 msgid "Delay Shroud Updates"
@@ -5200,117 +5194,99 @@ msgstr "Zobrazovat bublinovou nápovědu"
 
 #: src/hotkey/hotkey_command.cpp:254
 msgid "Unrecognized Command"
-msgstr ""
+msgstr "Neznámý příkaz"
 
 #: src/hotkey/hotkey_item.cpp:402 src/hotkey/hotkey_item.cpp:405
 msgid "Button"
-msgstr ""
+msgstr "Tlačítko"
 
 #: src/hotkey/hotkey_item.cpp:402
 msgid "Mouse"
-msgstr ""
+msgstr "Myš"
 
 #: src/hotkey/hotkey_item.cpp:405 src/hotkey/hotkey_item.cpp:441
 msgid "Joystick"
-msgstr ""
+msgstr "Joystick"
 
 #: src/hotkey/hotkey_item.cpp:411
 msgid "Centered"
-msgstr ""
+msgstr "Vystředěný"
 
 #: src/hotkey/hotkey_item.cpp:414
 msgid "Up"
-msgstr ""
+msgstr "Nahoru"
 
 #: src/hotkey/hotkey_item.cpp:417
-#, fuzzy
-#| msgid "Height:"
 msgid "Right"
-msgstr "Výška:"
+msgstr "Vpravo"
 
 #: src/hotkey/hotkey_item.cpp:420
 msgid "Down"
-msgstr ""
+msgstr "Dolů"
 
 #: src/hotkey/hotkey_item.cpp:423
 msgid "Left"
-msgstr ""
+msgstr "Vlevo"
 
 #: src/hotkey/hotkey_item.cpp:426
 msgid "RightUp"
-msgstr ""
+msgstr "Doprava nahoru"
 
 #: src/hotkey/hotkey_item.cpp:429
 msgid "RightDown"
-msgstr ""
+msgstr "Doprava dolů"
 
 #: src/hotkey/hotkey_item.cpp:432
 msgid "LeftUp"
-msgstr ""
+msgstr "Doleva nahoru"
 
 #: src/hotkey/hotkey_item.cpp:435
 msgid "LeftDown"
-msgstr ""
+msgstr "Doleva dolů"
 
 #: src/hotkey/hotkey_item.cpp:438
-#, fuzzy
-#| msgid "Unknown era"
 msgid "Unknown"
-msgstr "Neznámý věk"
+msgstr "Neznámý"
 
 #: src/hotkey/hotkey_item.cpp:441
-#, fuzzy
-#| msgid "Hut"
 msgid "Hat"
-msgstr "Chatrč"
+msgstr "Čepice"
 
 #: src/hotkey/hotkey_preferences_display.cpp:149
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Hotkeys Reset"
-msgstr "Klávesové zkratky"
+msgstr "Reset klávesových zkratek"
 
 #: src/hotkey/hotkey_preferences_display.cpp:150
 msgid "All hotkeys have been reset to their default values."
-msgstr ""
+msgstr "Všechny zkratky byly nastaveny na své výchozí hodnoty"
 
 #: src/hotkey/hotkey_preferences_display.cpp:166
 msgid "Hotkey Settings"
 msgstr "Nastavení klávesových zkratek"
 
 #: src/hotkey/hotkey_preferences_display.cpp:171
-#, fuzzy
-#| msgid "Default"
 msgid "Defaults"
 msgstr "Výchozí"
 
 #: src/hotkey/hotkey_preferences_display.cpp:174
 msgid "Reset all bindings to the default values"
-msgstr ""
+msgstr "Nastavit všechny zkratky na výchozí hodnoty"
 
 #: src/hotkey/hotkey_preferences_display.cpp:218
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Title Screen"
-msgstr "Zvuky"
+msgstr "Prefs section^Hlavní strana"
 
 #: src/hotkey/hotkey_preferences_display.cpp:220
-#, fuzzy
-#| msgid "Prefs section^General"
 msgid "Prefs section^Game"
-msgstr "Obecné"
+msgstr "Prefs section^Hra"
 
 #: src/hotkey/hotkey_preferences_display.cpp:222
-#, fuzzy
-#| msgid "Prefs section^Sound"
 msgid "Prefs section^Editor"
-msgstr "Zvuky"
+msgstr "Prefs section^Editor"
 
 #: src/hotkey/hotkey_preferences_display.cpp:249
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Add Hotkey"
-msgstr "Klávesové zkratky"
+msgstr "Přidat Klávesovou zkratku"
 
 #: src/hotkey/hotkey_preferences_display.cpp:250
 msgid "Clear Hotkey"
@@ -5333,12 +5309,12 @@ msgid ""
 "\"$hotkey_sequence|\" is in use by \"$old_hotkey_action|\". Do you wish to "
 "reassign it to \"$new_hotkey_action|\"?"
 msgstr ""
+"\"$hotkey_sequence|\" je používán \"$old_hotkey_action|\". Přejete si ji "
+"přiřadit k \"$new_hotkey_action|\"?"
 
 #: src/hotkey/hotkey_preferences_display.cpp:697
-#, fuzzy
-#| msgid "Hotkeys"
 msgid "Reassign Hotkey"
-msgstr "Klávesové zkratky"
+msgstr "Znovupřiřadit klávesovou zkratku"
 
 # TODO: cs,sk?
 #. TRANSLATORS: This is the language code which will be used
@@ -5606,21 +5582,3 @@ msgstr ""
 
 #~ msgid "Create game"
 #~ msgstr "Vytvoř hru"
-
-# !!!! délka
-#~ msgid "Save replay on SP/MP victory or MP defeat"
-#~ msgstr "Ukládej záznamy při prohře ve hře více hráčů a každém vítězství"
-
-# !!!! délka
-#~ msgid "Save Replay on SP/MP Victory or MP Defeat"
-#~ msgstr "Ukládej záznamy při prohře ve hře více hráčů a každém vítězství"
-
-# !!!! délka
-#~ msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-#~ msgstr "Maž uložené pozice při prohře ve hře více hráčů a každém vítězství"
-
-#~ msgid "Execute Planned Action"
-#~ msgstr "Proveď naplánovanou akci"
-
-#~ msgid "Delete Planned Action"
-#~ msgstr "Smazat plánované akce"

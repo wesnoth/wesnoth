@@ -9,38 +9,38 @@
 # Yeti <yeti@physics.muni.cz> et al, 2004.
 # Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2005 - 2007.
 # Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2011.
+# Jan Dědič <jan.dedic@gmail.com>, 2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2011-11-22 20:09+0100\n"
-"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-04-16 23:12+0100\n"
+"Last-Translator: Jan Dědič <jan.dedic@gmail.com>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Poedit-Language: Czech\n"
-"X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
+"X-Generator: Poedit 1.6.4\n"
 
 #. [brush]: id=brush-1
 #: data/core/editor/brushes.cfg:6
 msgid "Single Hex"
-msgstr "Jediný hex"
+msgstr "Aktuální políčko"
 
 #. [brush]: id=brush-2
 #: data/core/editor/brushes.cfg:16
 msgid "Radius 1 Hex"
-msgstr "Poloměr jeden hex"
+msgstr "Poloměr jedno políčko"
 
 #. [brush]: id=brush-3
 #: data/core/editor/brushes.cfg:26
 msgid "Radius 2 Hex"
-msgstr "Poloměr dva hexy"
+msgstr "Poloměr dvě políčka"
 
 #. [brush]: id=brush-nw-se
 #: data/core/editor/brushes.cfg:47
@@ -49,10 +49,8 @@ msgstr "Linie hexů SZ-JV"
 
 #. [brush]: id=brush-sw-ne
 #: data/core/editor/brushes.cfg:63
-#, fuzzy
-#| msgid "Hex Line NW-SE"
 msgid "Hex Line SE-NW"
-msgstr "Linie hexů SZ-JV"
+msgstr "Linie šestiúhelníků SZ-JV"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:11
@@ -87,7 +85,7 @@ msgstr "lesy"
 #. [editor_group]: id=fall
 #: data/core/editor/terrain-groups.cfg:52
 msgid "fall"
-msgstr ""
+msgstr "podzim"
 
 #. [editor_group]: id=frozen
 #: data/core/editor/terrain-groups.cfg:59
@@ -132,59 +130,57 @@ msgstr "zvláštnosti"
 #. [editor_times]: id=empty
 #: data/core/editor/time-of-day.cfg:5
 msgid "None"
-msgstr ""
+msgstr "Žádný"
 
 #. [editor_times]: id=test
 #: data/core/editor/time-of-day.cfg:10
 msgid "Test"
-msgstr ""
+msgstr "Test"
 
 #. [editor_times]: id=default
 #: data/core/editor/time-of-day.cfg:21
 msgid "Default"
-msgstr ""
+msgstr "Výchozí"
 
 #. [editor_times]: id=summer
 #: data/core/editor/time-of-day.cfg:27
 msgid "Summer"
-msgstr ""
+msgstr "Léto"
 
 #. [editor_times]: id=winter
 #: data/core/editor/time-of-day.cfg:33
 msgid "Winter"
-msgstr ""
+msgstr "Zima"
 
 #. [editor_times]: id=underground
 #: data/core/editor/time-of-day.cfg:39
 msgid "Underground"
-msgstr ""
+msgstr "Podzemí"
 
 #. [editor_times]: id=deep_underground
 #: data/core/editor/time-of-day.cfg:45
 msgid "Deep Underground"
-msgstr ""
+msgstr "Hluboko pod zemí"
 
 #. [editor_times]: id=indoors
 #: data/core/editor/time-of-day.cfg:51
 msgid "Indoors"
-msgstr ""
+msgstr "Uvnitř"
 
 #. [editor_times]: id=24
 #: data/core/editor/time-of-day.cfg:57
 msgid "24 Hour Schedule"
-msgstr ""
+msgstr "24hodinový režim"
 
 #. [editor_times]: id=after_the_fall
 #: data/core/editor/time-of-day.cfg:63
 msgid "After the Fall"
-msgstr ""
+msgstr "Po podzimu"
 
 #. [theme]: id=editor
 #: data/themes/editor.cfg:11
-#, fuzzy
-#| msgid "Quit Editor"
 msgid "theme^Editor"
-msgstr "Ukončení editoru"
+msgstr "theme^Editor"
 
 #. [menu]: id=menu-editor-file, type=turbo
 #: data/themes/editor.cfg:63
@@ -199,7 +195,7 @@ msgstr "Mapa"
 #. [menu]: id=menu-editor-transitions
 #: data/themes/editor.cfg:92
 msgid "Transition Update"
-msgstr ""
+msgstr "Přechodná aktualizace"
 
 #. [menu]: id=menu-editor-window
 #: data/themes/editor.cfg:99
@@ -209,22 +205,22 @@ msgstr "Okno"
 #. [menu]: id=menu-editor-areas
 #: data/themes/editor.cfg:108
 msgid "Areas"
-msgstr ""
+msgstr "Oblasti"
 
 #. [menu]: id=menu-editor-local-time
 #: data/themes/editor.cfg:116
 msgid "Assign Local Time"
-msgstr ""
+msgstr "Přiřadit místní čas"
 
 #. [menu]: id=menu-editor-local-schedule
 #: data/themes/editor.cfg:122
 msgid "Assign Local Time Schedule"
-msgstr ""
+msgstr "Přiřadit místní časové nastavení"
 
 #. [menu]: id=menu-editor-side
 #: data/themes/editor.cfg:130
 msgid "Side"
-msgstr ""
+msgstr "Strana"
 
 #. [label]: id=villages-icon
 #: data/themes/editor.cfg:148
@@ -234,46 +230,46 @@ msgstr "vesnic"
 #. [label]: id=units-icon
 #: data/themes/editor.cfg:165
 msgid "units"
-msgstr ""
+msgstr "jednotky"
 
 #. [menu]: id=switch_time
 #: data/themes/editor.cfg:444
 msgid "Time Schedule Menu"
-msgstr ""
+msgstr "Nastavení času"
 
 #. [menu]: id=menu-playlist
 #: data/themes/editor.cfg:455
 msgid "Playlist"
-msgstr ""
+msgstr "Playlist"
 
 #. [menu]: id=menu-editor-schedule
 #: data/themes/editor.cfg:461
 msgid "Assign Time Schedule"
-msgstr ""
+msgstr "Přiřadit nastavení času"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:58
 msgid "Identifier: "
-msgstr ""
+msgstr "Identifikátor:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:59
 msgid "Name: "
-msgstr ""
+msgstr "Jméno:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:60
 msgid "Type: "
-msgstr ""
+msgstr "Typ:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:61
 msgid "Level: "
-msgstr ""
+msgstr "Level:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:62
 msgid "Cost: "
-msgstr ""
+msgstr "Cena:"
 
 #: src/editor/action/mouse/mouse_action_unit.cpp:63
 msgid "Recruit: "
-msgstr ""
+msgstr "Naverbovat:"
 
 #: src/editor/editor_controller.cpp:177
 msgid "Fatal error"
@@ -308,19 +304,19 @@ msgstr "Nenalezena žádná denní doba pro editor."
 
 #: src/editor/editor_controller.cpp:1070
 msgid "Change Unit ID"
-msgstr ""
+msgstr "Změnit ID jednotky"
 
 #: src/editor/editor_controller.cpp:1071
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
 #: src/editor/editor_controller.cpp:1087
 msgid "Rename Unit"
-msgstr ""
+msgstr "Přejmenovat jednotku"
 
 #: src/editor/editor_controller.cpp:1088
 msgid "Name:"
-msgstr ""
+msgstr "Jméno:"
 
 #: src/editor/map/context_manager.cpp:127
 #: src/editor/map/context_manager.cpp:288
@@ -328,28 +324,20 @@ msgid "(New Map)"
 msgstr "(Nová mapa)"
 
 #: src/editor/map/context_manager.cpp:184
-#, fuzzy
-#| msgid "Choose a Map to Open"
 msgid "Choose a File to Open"
-msgstr "Vyber mapu k načtení"
+msgstr "Vyber soubor k načtení"
 
 #: src/editor/map/context_manager.cpp:290
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Scenario)"
-msgstr "(Nová mapa)"
+msgstr "(Nový scénář)"
 
 #: src/editor/map/context_manager.cpp:322
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(Unnamed Area)"
-msgstr "(Nová mapa)"
+msgstr "(Nepojmenovaná oblast)"
 
 #: src/editor/map/context_manager.cpp:345
-#, fuzzy
-#| msgid "(New Map)"
 msgid "(New Side)"
-msgstr "(Nová mapa)"
+msgstr "(Nová strana)"
 
 # co je zase toto?
 #: src/editor/map/context_manager.cpp:411
@@ -362,11 +350,11 @@ msgstr "Chyba při načítání masky"
 
 #: src/editor/map/context_manager.cpp:437
 msgid "Identifier:"
-msgstr ""
+msgstr "Identifikátor:"
 
 #: src/editor/map/context_manager.cpp:437
 msgid "Rename Area"
-msgstr ""
+msgstr "Přejmenovat oblast"
 
 #: src/editor/map/context_manager.cpp:448
 msgid "Choose Target Map"
@@ -387,10 +375,8 @@ msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Mapa už existuje. Přeješ si ji přepsat?"
 
 #: src/editor/map/context_manager.cpp:600
-#, fuzzy
-#| msgid "Save the Map As"
 msgid "Save the Scenario As"
-msgstr "Ulož mapu jako"
+msgstr "Ulož scénář jako"
 
 #: src/editor/map/context_manager.cpp:639
 msgid "No random map generators found."
@@ -411,10 +397,8 @@ msgid ""
 msgstr "Opravdu si přeješ zahodit všechny změny v mapě od posledního uložení?"
 
 #: src/editor/map/context_manager.cpp:766
-#, fuzzy
-#| msgid "This map is already open."
 msgid "This scenario is already open."
-msgstr "Tato mapa již je otevřena."
+msgstr "Tento scénář již je otevřen."
 
 #: src/editor/map/context_manager.cpp:788
 #: src/editor/map/context_manager.cpp:843
@@ -422,10 +406,8 @@ msgid "This map is already open."
 msgstr "Tato mapa již je otevřena."
 
 #: src/editor/map/context_manager.cpp:809
-#, fuzzy
-#| msgid "Map saved."
 msgid "Scenario saved."
-msgstr "Mapa byla uložena."
+msgstr "Scénář uložen."
 
 #: src/editor/map/context_manager.cpp:823
 msgid "Map saved."
@@ -461,10 +443,8 @@ msgid "File not found"
 msgstr "Soubor nebyl nalezen"
 
 #: src/editor/map/map_context.cpp:133
-#, fuzzy
-#| msgid "Empty map file"
 msgid "Empty file"
-msgstr "Prázdný soubor mapy"
+msgstr "Prázdný soubor"
 
 #: src/editor/map/map_context.cpp:175
 msgid ""
@@ -475,10 +455,8 @@ msgstr ""
 "existující soubor"
 
 #: src/editor/map/map_context.cpp:508
-#, fuzzy
-#| msgid "Could not save the map: $msg"
 msgid "Could not save the scenario: $msg"
-msgstr "Nepodařilo se uložit mapu: $msg"
+msgstr "Nepodařilo se uložit scénář: $msg"
 
 #: src/editor/map/map_context.cpp:535
 msgid "Could not save into scenario"
@@ -491,7 +469,7 @@ msgstr "Nepodařilo se uložit mapu: $msg"
 #: src/editor/palette/editor_palettes.cpp:59
 #: src/editor/palette/editor_palettes.cpp:114
 msgid "(Unknown Group)"
-msgstr ""
+msgstr "(Neznámá skupina)"
 
 #: src/editor/palette/editor_palettes.cpp:383
 msgid "(non-core)"
@@ -511,7 +489,7 @@ msgstr "Pozadí: "
 
 #: src/gui/dialogs/editor/custom_tod.cpp:129
 msgid "Choose File"
-msgstr ""
+msgstr "Vybrat soubor"
 
 # | msgid "(Player)^None"
 #: src/gui/dialogs/editor_set_starting_position.cpp:87
