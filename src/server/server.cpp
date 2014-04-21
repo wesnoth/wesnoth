@@ -2552,6 +2552,7 @@ void server::process_data_game(const network::connection sock,
 		update_game_in_lobby(g);
 		return;
 	} else if (data.child("update_game")) {
+		if (!g->is_owner(sock)) return; // i add this just the same as for the signal that causes create game, only the host should be allowed to specify transition
 		g->update_game();
 		update_game_in_lobby(g);
 		return;
