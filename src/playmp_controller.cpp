@@ -215,6 +215,16 @@ void playmp_controller::play_human_turn(){
 						undo_stack_->undo();
 					throw end_turn_exception(gui_->playing_side());
 				}
+				else if(res == turn_info::PROCESS_END_LINGER)
+				{
+					if(!linger_)
+						replay::process_error("Received unexpected next_scenario durign the game");
+					else
+					{
+						//we end the turn immidiately to prevent receiving data of the next scenario while we are not playing it.
+						end_turn();
+					}
+				}
 			}
 
 			play_slice();
@@ -617,6 +627,15 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	hotkey::HOTKEY_COMMAND command = cmd.id;
 	bool res = true;
 	switch (command){
+		case hotkey::HOTKEY_ENDTURN:
+			if  (linger_)
+			{
+				return is_host_;
+			}
+			else
+			{
+				return playsingle_controller::can_execute_command(cmd, index);
+			}
 		case hotkey::HOTKEY_SPEAK:
 		case hotkey::HOTKEY_SPEAK_ALLY:
 		case hotkey::HOTKEY_SPEAK_ALL:
