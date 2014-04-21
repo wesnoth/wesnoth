@@ -659,7 +659,7 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 
 void playmp_controller::do_idle_notification()
 {
-	resources::screen->add_chat_message(time(NULL), "", 0, 
-		_ ("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
+	resources::screen->add_chat_message(time(NULL), "Wesnoth", 0, 
+		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);	
 }
