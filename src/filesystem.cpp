@@ -58,7 +58,7 @@
 #include "version.hpp"
 
 #include <boost/foreach.hpp>
-#include <SDL/SDL_rwops.h>
+#include <SDL_rwops.h>
 
 static lg::log_domain log_filesystem("filesystem");
 #define DBG_FS LOG_STREAM(debug, log_filesystem)
