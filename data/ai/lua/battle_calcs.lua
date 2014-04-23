@@ -998,7 +998,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             -- If attacker has attack with 'slow' special, it should always go first
             -- Almost, bonus should not be quite as high as a really high CTK
             -- This isn't quite true in reality, but can be refined later
-            if AH.has_weapon_special(a, "slow") then
+            if AH.has_weapon_special(attacker, "slow") then
                 rating = rating + wesnoth.unit_types[defender.type].cost / 2.
             end
 
