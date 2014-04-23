@@ -813,12 +813,19 @@ REPLAY_RETURN do_replay_handle(int side_num)
 
 		else if (cfg->child("init_side"))
 		{
+			
 			if(is_synced)
 			{
 				replay::process_error("found init_side in replay while is_synced=true\n" );
+				get_replay_source().revert_action();
+				//fits better than the other options, and should have the desired effect.
+				return REPLAY_FOUND_DEPENDENT;
 			}
-			set_scontext_synced sync;
-			resources::controller->do_init_side(side_num - 1, true);
+			else
+			{
+				set_scontext_synced sync;
+				resources::controller->do_init_side(side_num - 1, true);
+			}
 		}
 
 		//if there is an end turn directive
@@ -827,16 +834,22 @@ REPLAY_RETURN do_replay_handle(int side_num)
 			if(is_synced)
 			{
 				replay::process_error("found end_turn in replay while is_synced=true\n" );
+				get_replay_source().revert_action();
+				//fits better than the other options, and should have the desired effect.
+				return REPLAY_FOUND_DEPENDENT;
 			}
-			// During the original game, the undo stack would have been
-			// committed at this point.
-			resources::undo_stack->clear();
+			else
+			{
+				// During the original game, the undo stack would have been
+				// committed at this point.
+				resources::undo_stack->clear();
 
-			if (const config &child = cfg->child("verify")) {
-				verify(*resources::units, child);
+				if (const config &child = cfg->child("verify")) {
+					verify(*resources::units, child);
+				}
+
+				return REPLAY_FOUND_END_TURN;
 			}
-
-			return REPLAY_FOUND_END_TURN;
 		}
 		else if (const config &child = cfg->child("countdown_update"))
 		{
