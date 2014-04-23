@@ -49,6 +49,13 @@ Version 1.11.13:
    * Added missing translation mark for mp-related idle notification string
  * Units:
    * Fix sound timings for drake fire animation macros
+ * WML engine:
+   * [get_global_variable] now works properly when side != current_side.
+   * Fix bug #20871: Attack related events are now MP-safe.
+   * WML turn end events are now MP-safe (bug #21652).
+   * WML prestart and start events are now MP-safe. However, UI commands like
+     [message][option] do not work during prestart.
+   * Invoking the rng will now always make undoing impossible.
  * Miscellaneous and bug fixes:
    * Petrified units are no longer displayed in the "Damage versus" tooltip.
    * Fix bug #21759: "timer refreshed too often when time runs out"
@@ -63,7 +70,7 @@ Version 1.11.13:
      of [side] tags and refactoring check_victory to use this.
    * Fix bug #21910 by correcting, simplifying, and moving "game is ready" bell
      code to mp_connect::process_network_data
-   * Disable notifications should now work for other desktops besides KDE.
+   * Disable notifications should now work for other platforms besides D-Bus.
    * Fix bug in blindfold which could cause OOS.
    * Fix bug #21914: allow drake walking corpse variation to move on unwalkable
    * Fix unnecessary "Mandatory WML Child not found" error when replay file
@@ -75,12 +82,6 @@ Version 1.11.13:
    * Fix bug #21931: controllers bugged in (basic campaign) when networked
    * Fix bug #21883: make sure movement animations don't cycle with fog on
    * Fix bug #21316: make subframes within standing animations cycle by default
- * WML engine:
-   * [get_global_variable] now works properly when side != current_side.
-   * Fix bug #20871: Attack related events are now mpsave.
-   * Start and prestart events are now mpsave.
-     (but UI things like [message][option] don't work during prestart event)
-   * Invoking the rng will now always make undoing impossible.
 
 Version 1.11.12:
  * AI:
