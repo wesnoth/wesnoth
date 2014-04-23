@@ -154,8 +154,6 @@ public:
 	 *
 	 * @param initial_values	The initial values for each option.
 	 */
-	//manager(const config& gamecfg, CVideo& video, const config& initial_values);
-
 	manager(const config& gamecfg, game_display& display, gui::scrollpane* pane, const config& initial_value);
 
 	~manager();
