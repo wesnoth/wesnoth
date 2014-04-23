@@ -49,7 +49,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	synced_command::map::iterator it = synced_command::registry().find(commandname);
 	if(it == synced_command::registry().end())
 	{
-		error_handler("commandname not found", true);
+		error_handler("commandname [" +commandname +"] not found", true);
 	}
 	else
 	{
