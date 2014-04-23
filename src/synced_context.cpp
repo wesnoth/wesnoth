@@ -326,12 +326,15 @@ config synced_context::ask_server(const std::string &name, const mp_sync::user_c
 			if (!action) 
 			{
 				replay::process_error("[" + name + "] expected but none found\n");
-				return config();
+				get_replay_source().revert_action();
+				return uch.query_user(-1);
 			}
-			if (!action->has_child(name)) 
+			if (!action->has_child(name))
 			{
 				replay::process_error("[" + name + "] expected but none found, found instead:\n " + action->debug() + "\n");
-				return config();
+				
+				get_replay_source().revert_action();
+				return uch.query_user(-1);
 			}
 			if((*action)["from_side"].str() != "server" || (*action)["side_invalid"].to_bool(false) )
 			{
