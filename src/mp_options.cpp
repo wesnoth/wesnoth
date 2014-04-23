@@ -343,7 +343,7 @@ void manager::extract_values(const std::string& key, const std::string& id)
 void manager::update_values()
 {
 	extract_values("era", era_);
-	extract_values("scenario", scenario_);
+	extract_values("multiplayer", scenario_);
 	BOOST_FOREACH(const std::string& str, modifications_) {
 		extract_values("modification", str);
 	}
