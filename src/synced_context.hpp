@@ -57,6 +57,11 @@ public:
 	 */
 	static bool run_in_synced_context(const std::string& commandname,const config& data, bool use_undo = true, bool show = true ,  bool store_in_replay = true , synced_command::error_handler_function error_handler = default_error_function);
 	/*
+		checks whether we are currently running in a synced context, and if not we enter it.
+		this is nevery called from so_replay_handle.
+	*/
+	static bool run_in_synced_context_if_not_already(const std::string& commandname,const config& data, bool use_undo = true, bool show = true , synced_command::error_handler_function error_handler = default_error_function);
+	/*
 		Returns whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	*/
 	static syced_state get_syced_state();

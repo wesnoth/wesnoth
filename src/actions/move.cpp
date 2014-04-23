@@ -1249,15 +1249,22 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted, NULL);
 	if ( !mover.check_expected_movement() )
 		return 0;
-
-	/*
-		enter the synced mode and do the actual movement.
-	*/
-	recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
-	set_scontext_synced sync;
-	bool r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
-	resources::controller->check_victory();
-	return r;
+	if(synced_context::get_syced_state() != synced_context::SYNCED)
+	{
+		/*
+			enter the synced mode and do the actual movement.
+		*/
+		recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
+		set_scontext_synced sync;
+		bool r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
+		resources::controller->check_victory();
+		return r;
+	}
+	else
+	{
+		//we are already in synced mode ad dont need to reenter it again.
+		return  move_unit_internal(undo_stack, show_move, interrupted, mover);
+	}
 }
 
 size_t move_unit_from_replay(const std::vector<map_location> &steps,
