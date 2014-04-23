@@ -69,6 +69,36 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	return true;
 }
 
+
+bool synced_context::run_in_synced_context_if_not_already(const std::string& commandname,const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
+{
+	switch(synced_context::get_syced_state())
+	{
+	case(synced_context::UNSYNCED):
+		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
+	case(synced_context::LOCAL_CHOICE):
+		ERR_REPLAY << "trying to execute action while being in a local_choice\n";
+		//we reject it because such actions usually change the gamestate badly which is not intented during a local_choice.
+		return false;
+	case(synced_context::SYNCED):
+	{
+		synced_command::map::iterator it = synced_command::registry().find(commandname);
+		if(it == synced_command::registry().end())
+		{
+			error_handler("commandname [" +commandname +"]not found", true);
+			return false;
+		}
+		else
+		{
+			return it->second(data, use_undo, show, error_handler);
+		}
+	}
+	default:
+		assert(false && "found unknown synced_context::syced_state");
+		return false;
+	}
+}
+
 void synced_context::default_error_function(const std::string& message, bool /*heavy*/)
 {
 	ERR_REPLAY << "Very strange Error during synced execution " << message;

@@ -277,13 +277,17 @@ void attack_result::do_execute()
 	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
 	//to get rid of an unused member varuiable warning, FIXME: find a way to 'ask' the ai wich advancement should be chosen from synced_commands.cpp .
-	if(true) //RAII block for set_scontext_synced
+	if(synced_context::get_syced_state() != synced_context::SYNCED) //RAII block for set_scontext_synced
 	{
 		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
 		recorder.add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
 			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
 			resources::tod_manager->get_time_of_day()));
 		set_scontext_synced sync;
+		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
+	}
+	else
+	{
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
 	}
 	
@@ -607,11 +611,10 @@ void recall_result::do_execute()
 	// Do the actual recalling.
 	//we ignore possible erros (=unit doesnt exist on the recall list)
 	//becasue that was the previous behaviour.
-	synced_context::run_in_synced_context("recall", 
+	synced_context::run_in_synced_context_if_not_already("recall", 
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
 		false, 
 		preferences::show_ai_moves(),
-		true,
 		synced_context::ignore_error_function);
 
 	set_gamestate_changed();
@@ -750,7 +753,7 @@ void recruit_result::do_execute()
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
 	
-	synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
+	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
 	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
 	//                        preferences::show_ai_moves(), false);
@@ -901,7 +904,7 @@ void synced_command_result::do_execute()
 	}
 	s << lua_code_;
 	
-	synced_context::run_in_synced_context("lua_ai", replay_helper::get_lua_ai(s.str()));
+	synced_context::run_in_synced_context_if_not_already("lua_ai", replay_helper::get_lua_ai(s.str()));
 	
 	try {
 		set_gamestate_changed();
