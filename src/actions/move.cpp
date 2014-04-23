@@ -1256,7 +1256,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		*/
 		recorder.add_synced_command("move",replay_helper::get_movement(steps, continued_move, skip_ally_sighted));
 		set_scontext_synced sync;
-		bool r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
+		size_t r =  move_unit_internal(undo_stack, show_move, interrupted, mover);
 		resources::controller->check_victory();
 		return r;
 	}
