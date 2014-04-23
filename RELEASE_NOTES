@@ -18,28 +18,6 @@ CHANGES
 Example contents.
 [/section]
 
-[section="Updated OS X user data directory"]
-The OS X user data directory is now ~/Library/Application Support/Wesnoth_1.12, in preparation for the upcoming stable release, Wesnoth 1.12.0. This means that preferences and add-ons need to be either reset/reloaded or be copied/linked from ~/Library/Application Support/Wesnoth_1.11.
-[/section]
-
-[section="Some improved MP lobby notifications"]
-[list][*] The "Disable notifications" preference should now work for other desktops besides KDE.
-[*] The "game is ready" bell should now work properly.
-[*] Gwren1 has offered to make for us a sound to be played when an MP game begins, as well as some other sounds, please provide feedback in his thread: http://forums.wesnoth.org/viewtopic.php?f=14&t=40268
-[/list]
-[/section]
-[section="Incompabilities with 1.11.12"]
-Due to changes to the random generator the 1.11.13 version will be incompatible to 1.11.12. The results are:
-[list]
-[*] In 1.11.13 you won't be able to play mpgames with people who are using 1.11.12.
-[*] You can still reload "scenario start" saves.
-[*] You can also load other saves from 1.11.12 but you wont get a valid replay then.
-[*] You won't be able to replay games from older versions. 
-[*] You shouldn't undo moves done in a 1.11.12 save when you reload it in 1.11.13.
-[/list]
-
-[/section]
-
 ==========
 KNOWN BUGS
 ==========
