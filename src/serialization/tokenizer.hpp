@@ -132,6 +132,7 @@ private:
 
 	enum
 	{
+		TOK_NONE = 0,
 		TOK_SPACE = 1,
 		TOK_NUMERIC = 2,
 		TOK_ALPHA = 4
@@ -144,17 +145,17 @@ private:
 
 	bool is_space(int c) const
 	{
-		return char_type(c) & TOK_SPACE;
+		return (char_type(c) & TOK_SPACE) == TOK_SPACE;
 	}
 
 	bool is_num(int c) const
 	{
-		return char_type(c) & TOK_NUMERIC;
+		return (char_type(c) & TOK_NUMERIC) == TOK_NUMERIC;
 	}
 
 	bool is_alnum(int c) const
 	{
-		return char_type(c) & (TOK_ALPHA | TOK_NUMERIC);
+		return (char_type(c) & (TOK_ALPHA | TOK_NUMERIC)) != TOK_NONE;
 	}
 
 	void skip_comment();

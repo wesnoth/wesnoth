@@ -55,7 +55,7 @@ static const char* name(
 
 static bool attached(const std::vector<SDL_Joystick*>&, const size_t index)
 {
-	return SDL_JoystickOpened(index);
+	return SDL_JoystickOpened(index) == 1;
 }
 
 static const char* name(const std::vector<SDL_Joystick*>&, const size_t index)

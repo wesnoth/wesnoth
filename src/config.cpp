@@ -344,7 +344,7 @@ t_string config::attribute_value::t_str() const
  */
 bool config::attribute_value::blank() const
 {
-	return boost::get<const boost::blank>(&value_);
+	return boost::get<const boost::blank>(&value_) != NULL;
 }
 
 /**

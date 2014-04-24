@@ -2396,7 +2396,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 		is_fearless_ = is_fearless_ || id == "fearless";
 		is_healthy_ = is_healthy_ || id == "healthy";
 		if (!mod["generate_description"].empty()) {
-			generate_description = mod["generate_description"];
+			generate_description = mod["generate_description"].to_bool();
 		}
 	}
 

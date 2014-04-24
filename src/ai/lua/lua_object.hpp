@@ -93,16 +93,7 @@ inline boost::shared_ptr<std::string> lua_object<std::string>::to_type(lua_State
 template <>
 inline boost::shared_ptr<bool> lua_object<bool>::to_type(lua_State *L, int n)
 {
-#ifdef _MSC_VER
-#pragma warning (push)
-#pragma warning (disable : 4800)
-#endif
-
-	return boost::shared_ptr<bool>(new bool(lua_toboolean(L, n)));
-
-#ifdef _MSC_VER
-#pragma warning (pop)
-#endif
+	return boost::shared_ptr<bool>(new bool(luaW_toboolean(L, n)));
 }
 
 template <>

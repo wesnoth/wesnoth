@@ -422,7 +422,7 @@ static int impl_vconfig_collect(lua_State *L)
 
 #define modify_bool_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		bool value = lua_toboolean(L, 3); \
+		bool value = luaW_toboolean(L, 3); \
 		accessor; \
 		return 0; \
 	}
@@ -673,7 +673,7 @@ static int impl_unit_status_set(lua_State *L)
 	unit *u = luaW_tounit(L, -1);
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
-	u->set_state(m, lua_toboolean(L, 3));
+	u->set_state(m, luaW_toboolean(L, 3));
 	return 0;
 }
 
@@ -720,7 +720,7 @@ static int impl_unit_variables_set(lua_State *L)
 			u->variables().remove_attribute(m);
 			break;
 		case LUA_TBOOLEAN:
-			v = bool(lua_toboolean(L, 3));
+			v = bool(luaW_toboolean(L, 3));
 			break;
 		case LUA_TNUMBER:
 			v = lua_tonumber(L, 3);
@@ -980,7 +980,7 @@ static int intf_set_variable(lua_State *L)
 	variable_info v(m);
 	switch (lua_type(L, 2)) {
 		case LUA_TBOOLEAN:
-			v.as_scalar() = bool(lua_toboolean(L, 2));
+			v.as_scalar() = luaW_toboolean(L, 2);
 			break;
 		case LUA_TNUMBER:
 			v.as_scalar() = lua_tonumber(L, 2);
@@ -1143,7 +1143,7 @@ static int intf_view_locked(lua_State *L)
  */
 static int intf_lock_view(lua_State *L)
 {
-	bool lock = lua_toboolean(L, 1);
+	bool lock = luaW_toboolean(L, 1);
 	resources::screen->set_view_locked(lock);
 	return 0;
 }
@@ -1279,7 +1279,7 @@ static int intf_set_terrain(lua_State *L)
 		}
 
 		if(!lua_isnoneornil(L, 5)) {
-			replace_if_failed = lua_toboolean(L, 5);
+			replace_if_failed = luaW_toboolean(L, 5);
 		}
 	}
 
@@ -1352,7 +1352,7 @@ static int intf_get_time_of_day(lua_State *L)
 		lua_pop(L, 2);
 
 		lua_rawgeti(L, arg, 3);
-		consider_illuminates = lua_toboolean(L, -1);
+		consider_illuminates = luaW_toboolean(L, -1);
 		lua_pop(L, 1);
 	}
 
@@ -1426,7 +1426,7 @@ static int intf_set_village_owner(lua_State *L)
 		return 0;
 
 	if (old_side) teams[old_side - 1].lose_village(loc);
-	if (new_side) teams[new_side - 1].get_village(loc, old_side, lua_toboolean(L, 4));
+	if (new_side) teams[new_side - 1].get_village(loc, old_side, luaW_toboolean(L, 4));
 	return 0;
 }
 
@@ -1762,12 +1762,12 @@ static int intf_find_path(lua_State *L)
 	{
 		lua_pushstring(L, "ignore_units");
 		lua_rawget(L, arg);
-		ignore_units = lua_toboolean(L, -1);
+		ignore_units = luaW_toboolean(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushstring(L, "ignore_teleport");
 		lua_rawget(L, arg);
-		ignore_teleport = lua_toboolean(L, -1);
+		ignore_teleport = luaW_toboolean(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushstring(L, "max_cost");
@@ -1862,12 +1862,12 @@ static int intf_find_reach(lua_State *L)
 	{
 		lua_pushstring(L, "ignore_units");
 		lua_rawget(L, arg);
-		ignore_units = lua_toboolean(L, -1);
+		ignore_units = luaW_toboolean(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushstring(L, "ignore_teleport");
 		lua_rawget(L, arg);
-		ignore_teleport = lua_toboolean(L, -1);
+		ignore_teleport = luaW_toboolean(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushstring(L, "additional_turns");
@@ -2004,7 +2004,7 @@ static int intf_find_cost_map(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1))
 		{
-			ignore_units = lua_toboolean(L, -1);
+			ignore_units = luaW_toboolean(L, -1);
 		}
 		lua_pop(L, 1);
 
@@ -2012,7 +2012,7 @@ static int intf_find_cost_map(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1))
 		{
-			ignore_teleport = lua_toboolean(L, -1);
+			ignore_teleport = luaW_toboolean(L, -1);
 		}
 		lua_pop(L, 1);
 
@@ -2032,7 +2032,7 @@ static int intf_find_cost_map(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1))
 		{
-			debug = lua_toboolean(L, -1);
+			debug = luaW_toboolean(L, -1);
 		}
 		lua_pop(L, 1);
 
@@ -2040,7 +2040,7 @@ static int intf_find_cost_map(lua_State *L)
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1))
 		{
-			use_max_moves = lua_toboolean(L, -1);
+			use_max_moves = luaW_toboolean(L, -1);
 		}
 		lua_pop(L, 1);
 		++arg;
@@ -2360,7 +2360,7 @@ static int intf_unit_resistance(lua_State *L)
 {
 	unit const *u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-	bool a = lua_toboolean(L, 3);
+	bool a = luaW_toboolean(L, 3);
 
 	map_location loc = u->get_location();
 	if (!lua_isnoneornil(L, 4)) {
@@ -2598,8 +2598,8 @@ static int intf_scroll_to_tile(lua_State *L)
 {
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
-	bool check_fogged = lua_toboolean(L, 3);
-	bool immediate = lua_toboolean(L, 4);
+	bool check_fogged = luaW_toboolean(L, 3);
+	bool immediate = luaW_toboolean(L, 4);
 	resources::screen->scroll_to_tile(map_location(x, y),
 		immediate ? game_display::WARP : game_display::SCROLL, check_fogged);
 	return 0;
@@ -2640,8 +2640,8 @@ static int intf_select_hex(lua_State *L)
 	if(!resources::game_map->on_board(loc)) return luaL_argerror(L, 1, "not on board");
 	bool highlight = true;
 	if(!lua_isnoneornil(L, 3))
-		highlight = lua_toboolean(L, 3);
-	const bool fire_event = lua_toboolean(L, 4);
+		highlight = luaW_toboolean(L, 3);
+	const bool fire_event = luaW_toboolean(L, 4);
 	resources::controller->get_mouse_handler_base().select_hex(
 		loc, false, highlight, fire_event);
 	if(highlight)
@@ -2893,7 +2893,7 @@ static int intf_set_dialog_value(lua_State *L)
 	}
 	else if (gui2::tselectable_ *s = dynamic_cast<gui2::tselectable_ *>(w))
 	{
-		s->set_value(lua_toboolean(L, 1));
+		s->set_value(luaW_toboolean(L, 1));
 	}
 	else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w))
 	{
@@ -3060,7 +3060,7 @@ static int intf_set_dialog_callback(lua_State *L)
  */
 static int intf_set_dialog_markup(lua_State *L)
 {
-	bool b = lua_toboolean(L, 1);
+	bool b = luaW_toboolean(L, 1);
 	gui2::twidget *w = find_widget(L, 2, true);
 	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -3098,7 +3098,7 @@ static int intf_set_dialog_canvas(lua_State *L)
  */
 static int intf_set_dialog_active(lua_State *L)
 {
-	const bool b = lua_toboolean(L, 1);
+	const bool b = luaW_toboolean(L, 1);
 	gui2::twidget *w = find_widget(L, 2, true);
 	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
 	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
@@ -3398,7 +3398,7 @@ static int intf_modify_ai(lua_State *L)
 
 static int cfun_exec_candidate_action(lua_State *L)
 {
-	bool exec = lua_toboolean(L, -1);
+	bool exec = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 
 	lua_getfield(L, -1, "ca_ptr");
@@ -4195,7 +4195,7 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 
 	if (!luaW_pcall(L, 1, 1)) return false;
 
-	bool b = lua_toboolean(L, -1);
+	bool b = luaW_toboolean(L, -1);
 	lua_pop(L, 1);
 	return b;
 }

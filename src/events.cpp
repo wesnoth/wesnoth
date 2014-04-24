@@ -541,7 +541,7 @@ void discard_input()
 
 bool is_input(const SDL_Event& event)
 {
-	return SDL_EVENTMASK(event.type) & INPUT_MASK;
+	return (SDL_EVENTMASK(event.type) & INPUT_MASK) != 0;
 }
 
 static void discard(Uint32 event_mask)
