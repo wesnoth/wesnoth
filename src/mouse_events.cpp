@@ -1102,7 +1102,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	gui().unhighlight_reach();
 	gui().draw();
 
-	current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+	current_team().set_action_bonus_count(1 + current_team().action_bonus_count());
 	///@todo change ToD to be location specific for the defender
 
 	synced_context::run_in_synced_context("attack", replay_helper::get_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
