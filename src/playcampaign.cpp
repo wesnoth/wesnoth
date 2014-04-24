@@ -630,6 +630,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
+					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
 						*connect_engine, game_config, params.name);
 					if (connect_res == mp::ui::QUIT) {
