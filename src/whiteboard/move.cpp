@@ -111,7 +111,10 @@ move::move(config const& cfg, bool hidden)
 	}
 	BOOST_FOREACH(config const& mark_cfg, route_cfg.child_range("mark")) {
 		route_->marks[map_location(mark_cfg["x"],mark_cfg["y"])]
-				= pathfind::marked_route::mark(mark_cfg["turns"],mark_cfg["zoc"],mark_cfg["capture"],mark_cfg["invisible"]);
+			= pathfind::marked_route::mark(mark_cfg["turns"],
+				mark_cfg["zoc"].to_bool(),
+				mark_cfg["capture"].to_bool(),
+				mark_cfg["invisible"].to_bool());
 	}
 
 	// Validate route_ some more

@@ -642,9 +642,9 @@ void tdistributor::initialize_state()
 {
 	const Uint8 button_state = SDL_GetMouseState(NULL, NULL);
 
-	tmouse_button_left::initialize_state(button_state & SDL_BUTTON(1));
-	tmouse_button_middle::initialize_state(button_state & SDL_BUTTON(2));
-	tmouse_button_right::initialize_state(button_state & SDL_BUTTON(3));
+	tmouse_button_left::initialize_state((button_state & SDL_BUTTON(1)) != 0);
+	tmouse_button_middle::initialize_state((button_state & SDL_BUTTON(2)) != 0);
+	tmouse_button_right::initialize_state((button_state & SDL_BUTTON(3)) != 0);
 
 	init_mouse_location();
 }

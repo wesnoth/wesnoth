@@ -176,7 +176,7 @@ static int ai_move(lua_State *L, bool exec, bool remove_movement)
 	if (!to_map_location(L, index, to)) goto error_call_destructors;
 	bool unreach_is_ok = false;
 	if (lua_isboolean(L, index)) {
-		unreach_is_ok = lua_toboolean(L, index);
+		unreach_is_ok = luaW_toboolean(L, index);
 	}
 	ai::move_result_ptr move_result = ai::actions::execute_move_action(side,exec,from,to,remove_movement, unreach_is_ok);
 	return transform_ai_action(L,move_result);

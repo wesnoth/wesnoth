@@ -27,7 +27,7 @@ struct overlay
 	overlay(const config& cfg) :
 		image(cfg["image"]), halo(cfg["halo"]), team_name(cfg["team_name"]),
 		name(cfg["name"].t_str()), id(cfg["id"]),
-		halo_handle(-1), visible_in_fog(cfg["visible_in_fog"].to_int())
+		halo_handle(-1), visible_in_fog(cfg["visible_in_fog"].to_bool())
 	{
 	}
 

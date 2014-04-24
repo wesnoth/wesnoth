@@ -204,6 +204,21 @@ return data_.empty() ||
 template class progressive_<int>;
 template class progressive_<double>;
 
+bool tristate_to_bool(tristate tri, bool def)
+{
+	switch(tri)
+	{
+	case(t_false):
+		return false;
+	case(t_true):
+		return true;
+	case(t_unset):
+		return def;
+	default:
+		throw "found unexpected tristate";
+	}
+}
+
 frame_parameters::frame_parameters() :
 	duration(0),
 	image(),
@@ -860,7 +875,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.primary_frame = engine_val.primary_frame;
 	if(animation_val.primary_frame != t_unset) result.primary_frame = animation_val.primary_frame;
 	if(current_val.primary_frame != t_unset) result.primary_frame = current_val.primary_frame;
-	const bool primary = result.primary_frame;
+	const bool primary = tristate_to_bool(result.primary_frame, true);
 
 	/** engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;

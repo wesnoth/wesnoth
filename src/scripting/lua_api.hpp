@@ -125,6 +125,7 @@ bool luaW_getglobal(lua_State *L, ...);
  */
 unit *luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
 
+bool luaW_toboolean(lua_State *L, int n);
 /**
  * Storage for a unit, either owned by the Lua code (#ptr != 0), on a
  * recall list (#side != 0), or on the map. Shared units are represented
