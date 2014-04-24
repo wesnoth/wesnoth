@@ -47,6 +47,7 @@ static std::ostream null_ostream(new null_streambuf);
 static int indent = 0;
 static bool timestamp = true;
 static bool precise_timestamp = false;
+
 static boost::posix_time::time_facet facet("%Y%m%d %H:%M:%S%F ");
 static std::ostream *output_stream = NULL;
 
@@ -74,6 +75,7 @@ tredirect_output_setter::~tredirect_output_setter()
 typedef std::map<std::string, int> domain_map;
 static domain_map *domains;
 void timestamps(bool t) { timestamp = t; }
+void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
 logger err("error", 0), warn("warning", 1), info("info", 2), debug("debug", 3);
 log_domain general("general");
