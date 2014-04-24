@@ -1133,7 +1133,10 @@ function battle_calcs.get_attack_map_unit(unit, cfg)
     if (unit.side ~= wesnoth.current.side) then
         local all_units = wesnoth.get_units { side = wesnoth.current.side }
         for _,unit in ipairs(all_units) do
-            if (unit.moves > 0) then table.insert(units_MP, unit) end
+            if (unit.moves > 0) then
+                table.insert(units_MP, unit)
+                wesnoth.extract_unit(unit)
+            end
         end
     end
 
