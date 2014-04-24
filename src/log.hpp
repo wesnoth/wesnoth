@@ -92,6 +92,7 @@ public:
 };
 
 void timestamps(bool);
+void precise_timestamps(bool);
 std::string get_timestamp(const time_t& t, const std::string& format="%Y%m%d %H:%M:%S ");
 std::string get_timespan(const time_t& t);
 
