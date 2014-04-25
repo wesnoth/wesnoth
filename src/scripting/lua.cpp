@@ -2171,9 +2171,17 @@ static int intf_put_unit(lua_State *L)
 	if (!u) return 0;
 
 	if (lu) {
-		resources::units->add(loc, *u);
+		u->set_location(loc);
+		resources::units->insert(u);
 		size_t uid = u->underlying_id();
-		lu->lua_unit::~lua_unit();
+		// There are 3 types of content for lua_unit:
+		// -Recall list: the unit is copied and erased from the recall list earlier in this function
+		// -On map: this code isn't reached
+		// -Pointer: we need to take ownership of the pointer
+		// If we run lua_unit's destructor, any pointers get deleted.
+		// So we don't run the destructor, and just overwrite the memory with a new object
+		// The reason for this is that the using resources::units->add constructs unneccessary copies
+		// Inserting pointers instead improves wesnoth.put_unit's speed by over 2 orders of magnitude from lua's perspective.
 		new(lu) lua_unit(uid);
 	} else {
 		u->set_location(loc);
