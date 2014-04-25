@@ -485,13 +485,6 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 			sound::empty_playlist();
 
-			//add the variables to the starting_pos unless they are already there
-			const config &wmlvars = gamestate.replay_start().child("variables");
-			if (!wmlvars || wmlvars.empty()){
-				gamestate.replay_start().clear_children("variables");
-				gamestate.replay_start().add_child("variables", gamestate.carryover_sides_start.child_or_empty("variables"));
-			}
-
 			switch (io_type){
 			case IO_NONE:
 				res = playsingle_scenario(game_config, scenario, disp, gamestate, story, skip_replay, end_level);
