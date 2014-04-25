@@ -755,8 +755,9 @@ std::vector<std::string> unit::get_traits_list() const
 	BOOST_FOREACH(const config &mod, modifications_.child_range("trait"))
 	{
 			std::string const &id = mod["id"];
-			if (!id.empty())
-				res.push_back(id);
+			// Make sure to return empty id trait strings as otherwise
+			// names will not match in length (Bug #21967)
+			res.push_back(id);
 	}
 	return res;
 }
