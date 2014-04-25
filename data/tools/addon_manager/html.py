@@ -1,5 +1,5 @@
 # encoding: utf8
-import time, os, glob, sys
+import time, os, glob, sys, re
 from subprocess import Popen
 
 def output(path, url, data):
