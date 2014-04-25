@@ -1,5 +1,5 @@
 # encoding: utf8
-import time, os, glob, sys
+import time, os, glob, sys, re
 from subprocess import Popen
 
 def output(path, url, data):
@@ -134,8 +134,21 @@ unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
         else: w(('<td>%s</td>') % type)
         w(('<td><img alt="%s" src="%s" width="72px" height="72px"/>'
             ) % (icon, imgurl))
+        described = v("description", "(no description)")
+        if described != "(no description)":
+            shift = 0
+            for urlref in re.finditer(r'(?<![">])http://[\w./?&=%~-]+', described):
+                described = described[:urlref.start()+shift] + '<a href="' + urlref.group(0) + '">' + urlref.group(0) + "</a>" + described[urlref.end()+shift:]
+                shift += 15 + len(urlref.group(0))
+            shift = 0
+            for wesurl in re.finditer(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org/[\w./?&=%~-]+', described):
+                described = described[:wesurl.start()+shift] + '<a href="http://' + wesurl.group(0) + '">' + wesurl.group(0) + "</a>" + described[wesurl.end()+shift:]
+                shift += 22 + len(wesurl.group(0))
+            described = re.sub(r"\n", "\n<br/>", described)
+            if sys.platform != "win32":
+                described = re.sub(r"\r(?!\n)", r"\r<br/>", described)
         w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (
-            name, v("description", "(no description)")))
+            name, described))
         w("<td><b>%s</b><br/>" % name)
         w("Version: %s<br/>" % v("version", "unknown"))
         w("Author: %s</td>" % v("author", "unknown"))
