@@ -292,26 +292,22 @@ void replay::user_input(const std::string &name, const config &input, int from_s
 void replay::add_label(const terrain_label* label)
 {
 	assert(label);
-	config* const cmd = add_command();
-
-	(*cmd)["undo"] = false;
-
+	config& cmd = add_nonundoable_command();
 	config val;
 
 	label->write(val);
 
-	cmd->add_child("label",val);
+	cmd.add_child("label",val);
 }
 
 void replay::clear_labels(const std::string& team_name, bool force)
 {
-	config* const cmd = add_command();
+	config& cmd = add_nonundoable_command();
 
-	(*cmd)["undo"] = false;
 	config val;
 	val["team_name"] = team_name;
 	val["force"] = force;
-	cmd->add_child("clear_labels",val);
+	cmd.add_child("clear_labels",val);
 }
 
 void replay::add_rename(const std::string& name, const map_location& loc)
@@ -369,12 +365,9 @@ void replay::add_chat_message_location()
 
 void replay::speak(const config& cfg)
 {
-	config* const cmd = add_command();
-	if(cmd != NULL) {
-		cmd->add_child("speak",cfg);
-		(*cmd)["undo"] = false;
-		add_chat_message_location();
-	}
+	config& cmd = add_nonundoable_command();
+	cmd.add_child("speak",cfg);
+	add_chat_message_location();
 }
 
 void replay::add_chat_log_entry(const config &cfg, std::back_insert_iterator<std::vector<chat_msg> > &i) const
@@ -603,6 +596,14 @@ config* replay::add_command()
 	assert(pos_ == ncommands());
 	pos_ = ncommands()+1;
 	return &cfg_.add_child("command");
+}
+
+config& replay::add_nonundoable_command()
+{
+	config& r = cfg_.add_child_at("command",config(), pos_);
+	r["undo"] = false;
+	++pos_;
+	return r;
 }
 
 void replay::start_replay()

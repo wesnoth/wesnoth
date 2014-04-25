@@ -138,11 +138,17 @@ private:
 
 	config &command(int);
 	void remove_command(int);
-	/** Adds a new empty command to the command list.
+	/** Adds a new empty command to the command list at the end.
 	 *
 	 * @return a pointer to the added command
 	 */
 	config* add_command();
+	/** 
+	 * adds a new command to the command list at the current position.
+	 *
+	 * @return a reference to the added command
+	 */
+	config& add_nonundoable_command();
 	config cfg_;
 	int pos_;
 
