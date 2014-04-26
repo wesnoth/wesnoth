@@ -229,12 +229,12 @@ bool replay::is_skipping() const
 	return skip_;
 }
 
-void replay::add_unit_checksum(const map_location& loc,config* const cfg)
+void replay::add_unit_checksum(const map_location& loc,config& cfg)
 {
 	if(! game_config::mp_debug) {
 		return;
 	}
-	config& cc = cfg->add_child("checksum");
+	config& cc = cfg.add_child("checksum");
 	loc.write(cc);
 	unit_map::const_iterator u = resources::units->find(loc);
 	assert(u.valid());
@@ -244,49 +244,49 @@ void replay::add_unit_checksum(const map_location& loc,config* const cfg)
 
 void replay::init_side()
 {
-	config* const cmd = add_command();
+	config& cmd = add_command();
 	config init_side;
 	init_side["side_number"] = resources::controller->current_side();
-	cmd->add_child("init_side", init_side);
+	cmd.add_child("init_side", init_side);
 }
 
 void replay::add_start()
 {
-	config* const cmd = add_command();
-	(*cmd)["sent"] = true;
-	cmd->add_child("start");
+	config& cmd = add_command();
+	cmd["sent"] = true;
+	cmd.add_child("start");
 }
 
 void replay::add_countdown_update(int value, int team)
 {
-	config* const cmd = add_command();
+	config& cmd = add_command();
 	config val;
 	val["value"] = value;
 	val["team"] = team;
-	cmd->add_child("countdown_update",val);
+	cmd.add_child("countdown_update",val);
 }
 void replay::add_synced_command(const std::string& name, const config& command)
 {
-	config* const cmd = add_command();
-	cmd->add_child(name,command);
-	LOG_REPLAY << "add_synced_command: \n" << cmd->debug() << "\n";
+	config& cmd = add_command();
+	cmd.add_child(name,command);
+	LOG_REPLAY << "add_synced_command: \n" << cmd.debug() << "\n";
 }
 
 
 
 void replay::user_input(const std::string &name, const config &input, int from_side)
 {
-	config* const cmd = add_command();
-	(*cmd)["dependent"] = true;
+	config& cmd = add_command();
+	cmd["dependent"] = true;
 	if(from_side == -1)
 	{
-		(*cmd)["from_side"] = "server";
+		cmd["from_side"] = "server";
 	}
 	else
 	{
-		(*cmd)["from_side"] = from_side;
+		cmd["from_side"] = from_side;
 	}
-	cmd->add_child(name, input);
+	cmd.add_child(name, input);
 }
 
 void replay::add_label(const terrain_label* label)
@@ -312,19 +312,19 @@ void replay::clear_labels(const std::string& team_name, bool force)
 
 void replay::add_rename(const std::string& name, const map_location& loc)
 {
-	config* const cmd = add_command();
-	(*cmd)["async"] = true; // Not undoable, but depends on moves/recruits that are
+	config& cmd = add_command();
+	cmd["async"] = true; // Not undoable, but depends on moves/recruits that are
 	config val;
 	loc.write(val);
 	val["name"] = name;
-	cmd->add_child("rename", val);
+	cmd.add_child("rename", val);
 }
 
 
 void replay::end_turn()
 {
-	config* const cmd = add_command();
-	cmd->add_child("end_turn");
+	config& cmd = add_command();
+	cmd.add_child("end_turn");
 }
 
 
@@ -353,8 +353,8 @@ void replay::add_checksum_check(const map_location& loc)
 	if(! game_config::mp_debug || ! (resources::units->find(loc).valid()) ) {
 		return;
 	}
-	config* const cmd = add_command();
-	(*cmd)["dependent"] = true;
+	config& cmd = add_command();
+	cmd["dependent"] = true;
 	add_unit_checksum(loc,cmd);
 }
 
@@ -418,7 +418,7 @@ config replay::get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type)
 	for (int cmd = cmd_start; cmd < cmd_end; ++cmd)
 	{
 		config &c = command(cmd);
-		if ((data_type == ALL_DATA || c["undo"] == "no") && c["sent"] != "yes")
+		if ((data_type == ALL_DATA || !c["undo"].to_bool(true)) && !c["sent"].to_bool(false))
 		{
 			res.add_child("command", c);
 			if (data_type == NON_UNDO_DATA) c["sent"] = true;
@@ -485,7 +485,7 @@ void replay::undo_cut(config& dst)
 	int cmd;
 	for (cmd = ncommands() - 1; cmd >= 0; --cmd)
 	{
-		//"undo"=no means speak/label/remove_label
+		//"undo"=no means speak/label/remove_label, especialy attack, recruits etc. have "undo"=yes
 		//"async"=yes means rename_unit
 		//"dependent"=true means user input or unit_checksum_check
 		config &c = command(cmd);
@@ -494,8 +494,8 @@ void replay::undo_cut(config& dst)
 		{
 			continue;
 		}
-		if (cc["undo"] != "no" && cc["async"] != "yes" && cc["sent"] != "yes") break;
-		if (cc["async"] == "yes") {
+		if (cc["undo"].to_bool(true) && !cc["async"].to_bool(false) && !cc["sent"].to_bool(false)) break;
+		if (cc["async"].to_bool(false)) {
 			async_cmd ac = { &c, cmd };
 			async_cmds.push_back(ac);
 		}
@@ -590,12 +590,12 @@ int replay::ncommands() const
 	return cfg_.child_count("command");
 }
 
-config* replay::add_command()
+config& replay::add_command()
 {
 	//pos_ != ncommands() means that there is a command on the replay which would be skipped.
 	assert(pos_ == ncommands());
 	pos_ = ncommands()+1;
-	return &cfg_.add_child("command");
+	return cfg_.add_child("command");
 }
 
 config& replay::add_nonundoable_command()
@@ -735,29 +735,28 @@ REPLAY_RETURN do_replay_handle(int side_num)
 
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
-		bool is_synced = (synced_context::get_syced_state() == synced_context::SYNCED);
+		const bool is_synced = (synced_context::get_syced_state() == synced_context::SYNCED);
+				
+		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
 
-		if (cfg)
+		if (cfg != NULL)
 		{
 			DBG_REPLAY << "Replay data:\n" << *cfg << "\n";
 		}
 		else
 		{
 			DBG_REPLAY << "Replay data at end\n";
-		}
-
-		LOG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
-
-		//if there is nothing more in the records
-		if(cfg == NULL) {
-			//replayer.set_skip(false);
 			return REPLAY_RETURN_AT_END;
 		}
 
-		config::all_children_itors ch_itors = cfg->all_children_range();
+
+		const config::all_children_itors ch_itors = cfg->all_children_range();
 		//if there is an empty command tag or a start tag
 		if (ch_itors.first == ch_itors.second || cfg->has_child("start"))
 		{
+			//this shouldn't happen anymore becasue replaycontroller now moves over the [start] with get_next_action
+			//also we removed the the "add empty replay entry at scenario reload" behaviour.
+			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay\n";
 			//do nothing
 		}
 		else if (const config &child = cfg->child("speak"))
@@ -892,6 +891,7 @@ REPLAY_RETURN do_replay_handle(int side_num)
 		}
 		else
 		{
+			//we checked for empty commands at the beginning.
 			const std::string & commandname = cfg->ordered_begin()->key;
 			config data = cfg->ordered_begin()->cfg;
 			
@@ -967,8 +967,8 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 
 
 	//this should never change during the execution of this function.
-	int current_side = resources::controller->current_side();
-	bool is_mp_game = network::nconnections() != 0;
+	const int current_side = resources::controller->current_side();
+	const bool is_mp_game = network::nconnections() != 0;
 	
 	std::map<int,config> retv;
 	/*
