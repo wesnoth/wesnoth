@@ -1195,7 +1195,7 @@ function ai_helper.get_attacks(units, cfg)
 
     -- Note: the remainder is optimized for speed, so we only get_units once,
     -- do not use WML filters, etc.
-    local all_units = wesnoth.get_units {}
+    local all_units = wesnoth.get_units()
 
     local enemy_map, my_unit_map, other_unit_map = LS.create(), LS.create(), LS.create()
     for i,unit in ipairs(all_units) do

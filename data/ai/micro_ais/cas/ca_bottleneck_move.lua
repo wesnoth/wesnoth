@@ -185,7 +185,7 @@ local function bottleneck_move_out_of_way(unit_in_way, self)
 
    local reach = wesnoth.find_reach(unit_in_way)
 
-   local all_units = wesnoth.get_units { }
+   local all_units = wesnoth.get_units()
    local occ_hexes = LS:create()
    for _,unit in ipairs(all_units) do
        occ_hexes:insert(unit.x, unit.y)
