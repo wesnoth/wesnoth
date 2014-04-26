@@ -717,22 +717,14 @@ end
 function ai_helper.get_live_units(filter)
     -- Same as wesnoth.get_units(), except that it only returns non-petrified units
 
-    filter = filter or {}
+    local all_units = wesnoth.get_units(filter)
 
-    -- So that @filter in calling function is not modified (if it's a variable):
-    local live_filter = ai_helper.table_copy(filter)
+    local units = {}
+    for _,unit in ipairs(all_units) do
+        if (not unit.status.petrified) then table.insert(units, unit) end
+    end
 
-    local filter_not_petrified = { "not", {
-        { "filter_wml", {
-            { "status", { petrified = "yes" } }
-        } }
-    } }
-
-    -- Combine the two filters. Doing it this way around is much easier (always works, no ifs required),
-    -- but it means we need to make a copy of the filter above, so that the original does not get changed
-    table.insert(live_filter, filter_not_petrified)
-
-    return wesnoth.get_units(live_filter)
+    return units
 end
 
 function ai_helper.get_units_with_moves(filter)
