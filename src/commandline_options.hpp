@@ -79,6 +79,8 @@ public:
 	boost::optional<std::string> load;
 	/// Non-empty if --logdomains was given on the command line. Prints possible logdomains filtered by given string and exits.
 	boost::optional<std::string> logdomains;
+	/// True if --log-precise was given on the command line. Shows timestamps in log with more precision.
+	bool log_precise_timestamps;
 	/// True if --multiplayer was given on the command line. Goes directly into multiplayer mode.
 	bool multiplayer;
 	/// Non-empty if --ai-config was given on the command line. Vector of pairs (side number, value). Dependent on --multiplayer.
