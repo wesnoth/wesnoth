@@ -66,6 +66,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	log(),
 	load(),
 	logdomains(),
+	log_precise_timestamps(false),
 	multiplayer(false),
 	multiplayer_ai_config(),
 	multiplayer_algorithm(),
@@ -191,6 +192,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("log-warning", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'warning'. Similar to --log-error.")
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
+		("log-precise", "shows the timestamps in the logfile with more precision")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -316,6 +318,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		 parse_log_domains_(vm["log-debug"].as<std::string>(),3);
 	if (vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
+	if (vm.count("log-precise"))
+		log_precise_timestamps = true;
 	if (vm.count("max-fps"))
 		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("multiplayer"))

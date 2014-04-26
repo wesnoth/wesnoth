@@ -27,6 +27,7 @@
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "loadscreen.hpp"
+#include "log.hpp"
 #include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
@@ -354,6 +355,9 @@ static int process_command_args(const commandline_options& cmdline_opts) {
 	if(cmdline_opts.path) {
 		std::cout <<  game_config::path << "\n";
 		return 0;
+	}
+	if(cmdline_opts.log_precise_timestamps) {
+		lg::precise_timestamps(true);
 	}
 	if(cmdline_opts.rng_seed) {
 		srand(*cmdline_opts.rng_seed);
