@@ -1242,7 +1242,13 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
 		return 0;
 	}
-	
+	//if we have no fog activatd we always skipsighed
+	if(resources::units->find(steps.front()) != resources::units->end())
+	{
+		const team &current_team = (*resources::teams)[
+			resources::units->find(steps.front())->side() - 1];
+		continued_move |= !current_team.fog_or_shroud();
+	}
 	const bool skip_ally_sighted = !preferences::interrupt_when_ally_sighted();
 
 	// Evaluate this move.
