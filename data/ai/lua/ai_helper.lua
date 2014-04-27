@@ -45,14 +45,6 @@ function ai_helper.done_eval_messages(start_time, ca_name)
     if ai_helper.print_eval() then
         ai_helper.print_ts_delta(start_time, '       - Done evaluating ' .. ca_name .. ':')
     end
-
-    if (dt >= 10) then
-        W.message{
-            speaker = 'narrator',
-            caption = 'Evaluation of candidate action ' .. ca_name .. ' took ' .. dt .. ' seconds',
-            message = 'This took a really long time (which it should not). If you can, would you mind sending us a screen grab of this situation?  Thanks!'
-        }
-    end
 end
 
 function ai_helper.clear_labels()
