@@ -2123,17 +2123,8 @@ static int intf_put_unit(lua_State *L)
 		lu = static_cast<lua_unit *>(lua_touserdata(L, unit_arg));
 		u = lu->get();
 		if (!u) return luaL_argerror(L, unit_arg, "unit not found");
-		if (lu->on_map()) {
-			if (unit_arg == 1 || u->get_location() == loc) return 0;
-			resources::units->erase(loc);
-			resources::units->move(u->get_location(), loc);
+		if (lu->on_map() && (unit_arg == 1 || u->get_location() == loc)) {
 			return 0;
-		} else if (int side = lu->on_recall_list()) {
-			team &t = (*resources::teams)[side - 1];
-			unit *v = new unit(*u);
-			std::vector<unit> &rl = t.recall_list();
-			rl.erase(rl.begin() + (u - &rl[0]));
-			u = v;
 		}
 		if (unit_arg == 1) {
 			loc = u->get_location();
@@ -2154,23 +2145,12 @@ static int intf_put_unit(lua_State *L)
 	}
 
 	resources::screen->invalidate(loc);
-	resources::units->erase(loc);
 	if (!u) return 0;
 
 	if (lu) {
-		u->set_location(loc);
-		resources::units->insert(u);
-		size_t uid = u->underlying_id();
-		// There are 3 types of content for lua_unit:
-		// -Recall list: the unit is copied and erased from the recall list earlier in this function
-		// -On map: this code isn't reached
-		// -Pointer: we need to take ownership of the pointer
-		// If we run lua_unit's destructor, any pointers get deleted.
-		// So we don't run the destructor, and just overwrite the memory with a new object
-		// The reason for this is that the using resources::units->add constructs unneccessary copies
-		// Inserting pointers instead improves wesnoth.put_unit's speed by over 2 orders of magnitude from lua's perspective.
-		new(lu) lua_unit(uid);
+		lu->put_map(loc);
 	} else {
+		resources::units->erase(loc);
 		u->set_location(loc);
 		resources::units->insert(u);
 	}

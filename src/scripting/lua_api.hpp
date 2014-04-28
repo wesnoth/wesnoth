@@ -125,6 +125,8 @@ bool luaW_getglobal(lua_State *L, ...);
  */
 unit *luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
 
+struct map_location;
+
 /**
  * Storage for a unit, either owned by the Lua code (#ptr != 0), on a
  * recall list (#side != 0), or on the map. Shared units are represented
@@ -145,6 +147,9 @@ public:
 	bool on_map() const { return !ptr && side == 0; }
 	int on_recall_list() const { return side; }
 	unit *get();
+
+	// Clobbers loc
+	bool put_map(const map_location &loc);
 };
 
 #endif
