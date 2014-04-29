@@ -6,6 +6,8 @@ Version 1.11.13+dev:
  * Miscellaneous and bug fixes:
    * Fix bug #21961, Units are not attacking if the attack was issued from 
      more than one hex away.
+   * Fix implementation bug in random number generator: rand_pool_ is now an
+     unsigned long rather than an unsigned int.
 
 Version 1.11.13:
  * AI:
