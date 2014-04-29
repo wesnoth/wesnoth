@@ -56,7 +56,7 @@ private:
 	int random_seed_;
 
 	/** State for the random pool (modulo arithmetic). */
-	unsigned random_pool_;
+	unsigned long random_pool_;
 
 	/** Number of time a random number is generated. */
 	unsigned random_calls_;
