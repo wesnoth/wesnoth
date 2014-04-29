@@ -899,6 +899,8 @@ Version 1.11.5:
    * Several wmllint additions: remove backslashes and userdata/ from paths, convert
      data/campaigns/ to data/add-ons/, give more detailed message for color spec to
      Pango fix-up, delete files on Windows before rename.
+   * Fix implementation bug in random number generator: rand_pool_ is now an
+     unsigned long rather than an unsigned int.
 
 Version 1.11.4:
  * AI:
