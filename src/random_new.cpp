@@ -17,6 +17,7 @@
 
 
 #include <stdlib.h>
+
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
 #define LOG_RND LOG_STREAM(info, log_random)
@@ -43,16 +44,16 @@ namespace random_new
 		return random_calls_;
 	}
 
-	int rng::next_random()
+	uint32_t rng::next_random()
 	{
 		random_calls_++;
 		return next_random_impl();
 	}
 
-	int rng::next_random_impl()
+	uint32_t rng::next_random_impl()
 	{
 		//getting here means random was called form outsiude a synced context.
-		int retv = rand();
+		uint32_t retv = rand();
 		
 		LOG_RND << "random_new::rng::next_random returned " << retv;
 		return retv;

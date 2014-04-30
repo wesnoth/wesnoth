@@ -29,7 +29,7 @@ namespace random_new
 		rng_deterministic(rand_rng::mt_rng& gen);
 		virtual ~rng_deterministic();
 	protected:
-		virtual int next_random_impl();
+		virtual uint32_t next_random_impl();
 	private:
 		rand_rng::mt_rng& generator_;
 	};

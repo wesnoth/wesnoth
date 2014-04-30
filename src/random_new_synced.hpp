@@ -33,7 +33,7 @@ namespace random_new
 		synced_rng(boost::function0<int> seed_generator);
 		virtual ~synced_rng();
 	protected:
-		virtual int next_random_impl();
+		virtual uint32_t next_random_impl();
 	private:
 		void initialize();
 		bool has_valid_seed_;

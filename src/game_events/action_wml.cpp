@@ -2103,13 +2103,13 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 					<< 0x3fffffff
 					<< ".\n";
 		}
-		long choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
+		uint32_t choice = random_new::generator->next_random();// gameinfo->rng().get_next_random();
 		if(num_choices >= 32768) {
 			choice <<= 15;
 			choice += random_new::generator->next_random();//gameinfo->rng().get_next_random();
 		}
 		choice %= num_choices;
-		long tmp = 0;
+		uint32_t tmp = 0;
 		for(size_t i = 0; i < ranges.size(); ++i) {
 			tmp += (ranges[i].second - ranges[i].first) + 1;
 			if (tmp > choice) {

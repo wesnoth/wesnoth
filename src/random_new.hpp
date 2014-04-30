@@ -13,6 +13,8 @@
 #ifndef RANDOM_NEW_H_INCLUDED
 #define RANDOM_NEW_H_INCLUDED
 
+#include <stdint.h>
+
 namespace random_new
 {
 	//this class does NOT give synced random results.
@@ -20,11 +22,11 @@ namespace random_new
 	{
 	public:
 		rng();
-		int next_random();
+		uint32_t next_random();
 		virtual ~rng();
 		unsigned int get_random_calls();
 	protected:
-		virtual int next_random_impl();
+		virtual uint32_t next_random_impl();
 		unsigned int random_calls_;
 	};
 

@@ -889,8 +889,8 @@ namespace {
 		int &abs_n = *(attacker_turn ? &abs_n_attack_ : &abs_n_defend_);
 		bool &update_fog = *(attacker_turn ? &update_def_fog_ : &update_att_fog_);
 
-		int ran_num = random_new::generator->next_random();
-		bool hits = (ran_num % 100) < attacker.cth_;
+		uint32_t ran_num = random_new::generator->next_random();
+		bool hits = (int)(ran_num % 100) < attacker.cth_;
 
 		int damage = 0;
 		if (hits) {
@@ -1416,7 +1416,8 @@ namespace
 				//we are in the situation, that the unit is owned by a human, but he's not allowed to do this decision.
 				//becasue it's a mp game and it's not his turn.
 				//note that it doens't matter wether we call random_new::generator->next_random() or rand().
-				res = random_new::generator->next_random() % nb_options_;
+				uint32_t tmp = random_new::generator->next_random() % nb_options_;
+				res = tmp; //make sure cast happens after calculation
 			}
 			LOG_NG << "unit at position " << loc_ << "choose advancement number " << res << "\n";
 			config retv;

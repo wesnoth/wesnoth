@@ -27,7 +27,7 @@ namespace random_new
 
 	}
 
-	int rng_deterministic::next_random_impl()
+	uint32_t rng_deterministic::next_random_impl()
 	{
 		return generator_.get_next_random();
 	}
