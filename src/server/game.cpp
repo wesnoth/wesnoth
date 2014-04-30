@@ -67,7 +67,8 @@ game::game(player_map& players, const network::connection host,
 	termination_(),
 	save_replays_(save_replays),
 	replay_save_path_(replay_save_path),
-	global_wait_side_(0)
+	global_wait_side_(0),
+	rng_()
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -948,7 +949,7 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	}
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (simple_wml::node* attack = (**command).child("attack")) {
-			int seed = rand() & 0x7FFFFFFF;
+			int seed = rng_.get_next_random();
 			attack->set_attr_int("seed", seed);
 			simple_wml::document doc;
 			simple_wml::node& rs = doc.root().add_child("random_seed");
@@ -1012,7 +1013,7 @@ void game::require_random(const simple_wml::document &/*data*/, const player_map
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 	
-	int seed = rand() & 0x7FFFFFFF;
+	int seed = rng_.get_next_random();
 	simple_wml::document* mdata = new simple_wml::document;
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
