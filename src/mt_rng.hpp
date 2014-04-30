@@ -31,6 +31,7 @@
 #define MT_RNG_USE_BOOST_RANDOM_DEVICE
 // #endif
 
+#include "util.hpp"
 #include <boost/random/mersenne_twister.hpp>
 
 #ifdef MT_RNG_USE_BOOST_RANDOM_DEVICE

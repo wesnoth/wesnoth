@@ -72,7 +72,7 @@ public:
 	/*
 		Generates a new seed for a synced event, by asking the 'server'
 	*/
-	static int generate_random_seed();
+	static uint32_t generate_random_seed();
 	/*
 		called from get_user_choice; 
 	*/

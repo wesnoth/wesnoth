@@ -273,7 +273,7 @@ void carryover_info::transfer_to(config& level){
 		level.add_child("variables", variables_);
 	}
 
-	config::attribute_value & seed_value = level["random_seed"];
+	config::attribute_value & seed_value = level["random_seed"]; //don't need to static cast this, it's just a check for whether it's empty or not
 	if ( seed_value.empty() ) {
 		seed_value = rng_.get_random_seed();
 		level["random_calls"] = rng_.get_random_calls();
@@ -308,7 +308,7 @@ const config carryover_info::to_config()
 	config& end_level = cfg.add_child("end_level_data");
 	end_level_.write(end_level);
 
-	cfg["random_seed"] = rng_.get_random_seed();
+	cfg["random_seed"] = lexical_cast<std::string> (rng_.get_random_seed());
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);
@@ -746,7 +746,7 @@ void game_data::write_snapshot(config& cfg){
 
 	cfg["can_end_turn"] = can_end_turn_;
 
-	cfg["random_seed"] = rng_.get_random_seed();
+	cfg["random_seed"] = lexical_cast<std::string> (rng_.get_random_seed());
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);

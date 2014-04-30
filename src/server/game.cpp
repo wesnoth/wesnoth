@@ -949,11 +949,17 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	}
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (simple_wml::node* attack = (**command).child("attack")) {
-			int seed = rng_.get_next_random();
-			attack->set_attr_int("seed", seed);
+			uint32_t seed = rng_.get_next_random();
+			std::string seed_str("0xb4d533d");
+			try {
+				seed_str = lexical_cast<std::string>(seed);
+			} catch (bad_lexical_cast &) {
+				ERR_GAME << "Bad lexical cast when generating random seed! (socket: " << user->first << " )" << std::endl;
+			}
+			attack->set_attr_dup("seed", seed_str.c_str());
 			simple_wml::document doc;
 			simple_wml::node& rs = doc.root().add_child("random_seed");
-			rs.set_attr_int("seed", seed);
+			rs.set_attr_dup("seed", seed_str.c_str());
 			wesnothd::send_to_one(doc, user->first, "game replay");
 		}
 	}
@@ -1009,16 +1015,22 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	return turn_ended;
 }
 
-void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator /*user*/)
+void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator user)
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 	
-	int seed = rng_.get_next_random();
+	uint32_t seed = rng_.get_next_random();
+	std::string seed_str("0xb4d533d");
+	try {
+		seed_str = lexical_cast<std::string>(seed);
+	} catch (bad_lexical_cast &) {
+		ERR_GAME << "Bad lexical cast when generating random seed! (socket: " << user->first << " )" << std::endl;
+	}
 	simple_wml::document* mdata = new simple_wml::document;
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& random_seed = command.add_child("random_seed");
-	random_seed.set_attr_int("new_seed",seed);
+	random_seed.set_attr_dup("new_seed",seed_str.c_str());
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
 

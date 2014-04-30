@@ -125,11 +125,11 @@ void synced_context::set_synced_state(synced_state newstate)
 	state_ = newstate;
 }
 
-int synced_context::generate_random_seed()
+uint32_t synced_context::generate_random_seed()
 {
 	random_seed_choice cho;
 	config retv_c = synced_context::ask_server("random_seed", cho);
-	return retv_c["new_seed"];
+	return lexical_cast<uint32_t> (retv_c["new_seed"]);
 }
 
 bool synced_context::is_simultaneously()
@@ -465,7 +465,7 @@ config random_seed_choice::query_user(int /*side*/) const
 
 	
 	config retv;
-	retv["new_seed"] = rand();
+	retv["new_seed"] = lexical_cast<std::string> (rand());
 	return retv;
 }
 config random_seed_choice::random_choice(int /*side*/) const
@@ -475,6 +475,6 @@ config random_seed_choice::random_choice(int /*side*/) const
 	assert(false && "random_seed_choice::random_choice called");
 
 	config retv;
-	retv["new_seed"] = 0;
+	retv["new_seed"] = "0xb4d533d";
 	return retv;
 }

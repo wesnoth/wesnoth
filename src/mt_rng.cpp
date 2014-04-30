@@ -43,13 +43,32 @@ mt_rng::mt_rng() :
 }
 #endif
 
+/* Initial attempt... any way to fix this up? Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory. 
+   But this is premature optimization if the consequence is crash with bad_lexical_cast when we load a corrupted file.
 mt_rng::mt_rng(const config& cfg) :
-	random_seed_(cfg["random_seed"]),
+	random_seed_(lexical_cast<uint32_t> (cfg["random_seed"])), //NOTE! This means that mt_rng can throw a bad_lexical_cast when being constructed from a config. 
 	mt_(random_seed_),
 	random_calls_(cfg["random_calls"].to_int(0))
 {
 	discard(random_calls_); //mt_.discard(random_calls_);
-}
+} */
+
+
+mt_rng::mt_rng(const config& cfg) :
+	random_seed_(42),
+	random_calls_(cfg["random_calls"].to_int(0))
+{
+	try { 
+		random_seed_ = lexical_cast<uint32_t> (cfg["random_seed"]);
+	} catch (bad_lexical_cast &) {
+		ERR_RND << "Bad lexical cast when parsing random_seed from config: string is " << cfg["random_seed"] << std::endl;
+		ERR_RND << "Now using seed: random_seed_ = " << random_seed_ << std::endl;
+	}
+
+	mt_ = boost::mt19937(random_seed_);
+
+	discard(random_calls_); //mt_.discard(random_calls_);
+} 
 
 uint32_t mt_rng::get_next_random()
 {
@@ -57,7 +76,7 @@ uint32_t mt_rng::get_next_random()
 	++random_calls_;
 	DBG_RND << "pulled user random " << result
 		<< " for call " << random_calls_
-		<< " with seed " << random_seed_ << '\n';
+		<< " with seed " << std::hex << random_seed_ << '\n';
 
 	return result;
 }
@@ -72,7 +91,7 @@ void mt_rng::seed_random(const uint32_t seed, const unsigned int call_count)
 	random_seed_ = seed;
 	mt_.seed(random_seed_);
 	discard(call_count); //mt_.discard(call_count);
-	DBG_RND << "Seeded random with " << random_seed_ << " with "
+	DBG_RND << "Seeded random with " << std::hex << random_seed_ << " with "
 		<< random_calls_ << " calls." << std::endl;
 }
 
