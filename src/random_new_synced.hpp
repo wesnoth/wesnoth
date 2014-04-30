@@ -17,7 +17,7 @@
 
 
 #include "random_new.hpp"
-#include "simple_rng.hpp"
+#include "mt_rng.hpp"
 
 #include <boost/function.hpp>
 
@@ -39,7 +39,7 @@ namespace random_new
 		bool has_valid_seed_;
 		boost::function0<int> seed_generator_; 
 		//TODO: replayce this by boost::random::mt19937 or similar
-		rand_rng::simple_rng gen_;
+		rand_rng::mt_rng gen_;
 	};
 }
 #endif

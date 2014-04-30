@@ -22,7 +22,7 @@
 #include "game_events/wmi_container.hpp"
 #include "map_location.hpp"
 #include "mp_game_settings.hpp"
-#include "simple_rng.hpp"
+#include "mt_rng.hpp"
 
 #include <boost/shared_ptr.hpp>
 
@@ -125,8 +125,8 @@ public:
 
 	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
-	const rand_rng::simple_rng& rng() const { return rng_; }
-	rand_rng::simple_rng& rng() { return rng_; }
+	const rand_rng::mt_rng& rng() const { return rng_; }
+	rand_rng::mt_rng& rng() { return rng_; }
 
 	const end_level_data& get_end_level() const;
 
@@ -139,7 +139,7 @@ private:
 	std::vector<carryover> carryover_sides_;
 	end_level_data end_level_;
 	config variables_;
-	rand_rng::simple_rng rng_;
+	rand_rng::mt_rng rng_;
 	game_events::wmi_container wml_menu_items_;
 	std::string difficulty_; 	/**< The difficulty level the game is being played on. */
 	std::string random_mode_; 	/**< whether we generate a new randomseed for each user action. */
@@ -169,8 +169,8 @@ public:
 
 	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
-	const rand_rng::simple_rng& rng() const { return rng_; }
-	rand_rng::simple_rng& rng() { return rng_; }
+	const rand_rng::mt_rng& rng() const { return rng_; }
+	rand_rng::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
 		INITIAL,
@@ -212,7 +212,7 @@ public:
 
 private:
 	game_events::wmi_container wml_menu_items_;
-	rand_rng::simple_rng rng_;
+	rand_rng::mt_rng rng_;
 	config variables_;
 	mutable config temporaries_; // lengths of arrays, etc.
 	friend struct variable_info;

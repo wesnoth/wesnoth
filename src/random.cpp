@@ -41,6 +41,7 @@
 
 #include "config.hpp"
 #include "log.hpp"
+#include "mt_rng.hpp"
 #include "network.hpp"
 #include "random.hpp"
 #include "serialization/string_utils.hpp"
