@@ -18,7 +18,7 @@
 
 
 #include "random_new.hpp"
-#include "simple_rng.hpp"
+#include "mt_rng.hpp"
 
 #include "utils/boost_function_guarded.hpp"
 
@@ -31,16 +31,16 @@ namespace random_new
 	class synced_rng : public random_new::rng
 	{
 	public:
-		synced_rng(boost::function0<int> seed_generator);
+		synced_rng(boost::function0<std::string> seed_generator);
 		virtual ~synced_rng();
+
 	protected:
-		virtual int next_random_impl();
+		virtual uint32_t next_random_impl();
 	private:
 		void initialize();
 		bool has_valid_seed_;
-		boost::function0<int> seed_generator_;
-		//TODO: replayce this by boost::random::mt19937 or similar
-		rand_rng::simple_rng gen_;
+		boost::function0<std::string> seed_generator_; 
+		rand_rng::mt_rng gen_;
 	};
 }
 #endif

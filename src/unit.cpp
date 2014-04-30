@@ -148,8 +148,7 @@ static unit_race::GENDER generate_gender(const unit_type & type, bool random_gen
 	if ( random_gender == false  ||  genders.size() == 1 ) {
 		return genders.front();
 	} else {
-		int random = random_new::generator->next_random();
-		return genders[random % genders.size()];
+		return genders[random_new::generator->get_random_int(0,genders.size()-1)];
 		// Note: genders is guaranteed to be non-empty, so this is not a
 		// potential division by zero.
 		// Note: Whoever wrote this code, you should have used an assertion, to save others hours of work...
@@ -758,7 +757,7 @@ void unit::generate_traits(bool musthaveonly)
 	int max_traits = u_type.num_traits();
 	for (; nb_traits < max_traits && !candidate_traits.empty(); ++nb_traits)
 	{
-		int num = random_new::generator->next_random() % candidate_traits.size();
+		int num = random_new::generator->get_random_int(0,candidate_traits.size()-1);
 		modifications_.add_child("trait", candidate_traits[num]);
 		candidate_traits.erase(candidate_traits.begin() + num);
 	}

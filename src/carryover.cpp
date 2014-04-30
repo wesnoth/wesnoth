@@ -269,7 +269,7 @@ void carryover_info::transfer_to(config& level){
 
 	config::attribute_value & seed_value = level["random_seed"];
 	if ( seed_value.empty() ) {
-		seed_value = rng_.get_random_seed();
+		seed_value = rng_.get_random_seed_str();
 		level["random_calls"] = rng_.get_random_calls();
 	}
 
@@ -293,7 +293,7 @@ const config carryover_info::to_config()
 	config& end_level = cfg.add_child("end_level_data");
 	end_level_.write(end_level);
 
-	cfg["random_seed"] = rng_.get_random_seed();
+	cfg["random_seed"] = rng_.get_random_seed_str();
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);

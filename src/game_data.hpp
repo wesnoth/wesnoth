@@ -21,7 +21,7 @@
 #include "game_end_exceptions.hpp"
 #include "game_events/wmi_container.hpp"
 #include "map_location.hpp"
-#include "simple_rng.hpp"
+#include "mt_rng.hpp"
 #include "variable_info.hpp"
 #include <boost/shared_ptr.hpp>
 
@@ -81,8 +81,8 @@ public:
 
 	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
-	const rand_rng::simple_rng& rng() const { return rng_; }
-	rand_rng::simple_rng& rng() { return rng_; }
+	const rand_rng::mt_rng& rng() const { return rng_; }
+	rand_rng::mt_rng& rng() { return rng_; }
 
 	enum PHASE {
 		INITIAL,
@@ -130,7 +130,7 @@ private:
 	}
 
 	game_events::wmi_container wml_menu_items_;
-	rand_rng::simple_rng rng_;
+	rand_rng::mt_rng rng_;
 	config variables_;
 	PHASE phase_;
 	bool can_end_turn_;

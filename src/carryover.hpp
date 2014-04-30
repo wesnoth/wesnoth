@@ -11,7 +11,7 @@ class game_data;
 
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
-#include "simple_rng.hpp"
+#include "mt_rng.hpp"
 #include "game_events/wmi_container.hpp"
 
 class carryover{
@@ -87,8 +87,8 @@ public:
 
 	game_events::wmi_container& get_wml_menu_items() { return wml_menu_items_; }
 
-	const rand_rng::simple_rng& rng() const { return rng_; }
-	rand_rng::simple_rng& rng() { return rng_; }
+	const rand_rng::mt_rng& rng() const { return rng_; }
+	rand_rng::mt_rng& rng() { return rng_; }
 
 	const end_level_data& get_end_level() const;
 
@@ -101,7 +101,7 @@ private:
 	std::vector<carryover> carryover_sides_;
 	end_level_data end_level_;
 	config variables_;
-	rand_rng::simple_rng rng_;
+	rand_rng::mt_rng rng_;
 	game_events::wmi_container wml_menu_items_;
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 	int next_underlying_unit_id_;

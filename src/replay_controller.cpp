@@ -334,7 +334,8 @@ void replay_controller::reset_replay()
 
 	gui_->labels().read(level_);
 
-	resources::gamedata->rng().seed_random(level_["random_seed"], level_["random_calls"]);
+	config::attribute_value random_seed = level_["random_seed"];
+	resources::gamedata->rng().seed_random(random_seed.str(), level_["random_calls"]);
 	statistics::fresh_stats();
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 

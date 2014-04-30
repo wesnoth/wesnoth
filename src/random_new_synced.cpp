@@ -22,18 +22,18 @@ static lg::log_domain log_random("random");
 
 namespace random_new
 {
-	synced_rng::synced_rng(boost::function0<int> seed_generator)
+	synced_rng::synced_rng(boost::function0<std::string> seed_generator)
 		: has_valid_seed_(false), seed_generator_(seed_generator), gen_()
 	{
 	}
-	int synced_rng::next_random_impl()
+	uint32_t synced_rng::next_random_impl()
 	{
 		if(!has_valid_seed_)
 		{
 			initialize();
 		}
 		//getting here means random was called form inside a synced context.
-		int retv = gen_.get_next_random();
+		uint32_t retv = gen_.get_next_random();
 
 		LOG_RND << "random_new::rng::next_random_impl returned " << retv;
 		return retv;
@@ -41,7 +41,7 @@ namespace random_new
 
 	void synced_rng::initialize()
 	{
-		int new_seed = seed_generator_();
+		std::string new_seed = seed_generator_();
 		gen_.seed_random(new_seed, 0);
 		has_valid_seed_ = true;
 	}

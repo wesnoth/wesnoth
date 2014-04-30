@@ -33,12 +33,15 @@
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
+#include "seed_rng.hpp"
 #include "syncmp_handler.hpp"
 
 #include <boost/lexical_cast.hpp>
 
 #include <cassert>
 #include <stdlib.h>
+#include <sstream>
+#include <iomanip>
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
@@ -150,11 +153,13 @@ void synced_context::set_synced_state(synced_state newstate)
 	state_ = newstate;
 }
 
-int synced_context::generate_random_seed()
+std::string synced_context::generate_random_seed()
 {
 	random_seed_choice cho;
 	config retv_c = synced_context::ask_server("random_seed", cho);
-	return retv_c["new_seed"];
+	config::attribute_value seed_val = retv_c["new_seed"];
+
+	return seed_val.str();
 }
 
 bool synced_context::is_simultaneously()
@@ -475,7 +480,8 @@ config random_seed_choice::query_user(int /*side*/) const
 
 
 	config retv;
-	retv["new_seed"] = rand();
+
+	retv["new_seed"] = seed_rng::next_seed_str();
 	return retv;
 }
 config random_seed_choice::random_choice(int /*side*/) const
@@ -485,6 +491,6 @@ config random_seed_choice::random_choice(int /*side*/) const
 	assert(false && "random_seed_choice::random_choice called");
 
 	config retv;
-	retv["new_seed"] = 0;
+	retv["new_seed"] = "deadbeef";
 	return retv;
 }
