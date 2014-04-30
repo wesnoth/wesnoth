@@ -207,6 +207,7 @@ set(libwesnoth-core_STAT_SRC
 	hash.cpp
 	log.cpp
 	md5.cpp
+	mt_rng.cpp
 	thread.cpp
 	tstring.cpp
 	util.cpp
