@@ -216,7 +216,7 @@ void recruitment::execute() {
 		}
 		int cheapest_unit_cost = get_cheapest_unit_cost_for_leader(leader);
 		if (current_team().gold() < cheapest_unit_cost && cheapest_unit_cost > 0) {
-			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " recruits are to expensive. \n";
+			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " recruits are too expensive. \n";
 			continue;
 		}
 
