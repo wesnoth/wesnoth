@@ -327,15 +327,16 @@ SYNCED_COMMAND_HANDLER_FUNCTION(lua_ai, child,  /*use_undo*/, /*show*/, /*error_
 	return true;
 }
 
-SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  /*use_undo*/, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  use_undo, /*show*/, /*error_handler*/)
 {
+	assert(use_undo);
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
 	bool active = child["active"].to_bool();
 	// Turning on automatic shroud causes vision to be updated.
 	if ( active )
-		resources::undo_stack->commit_vision(true);
+		resources::undo_stack->commit_vision();
 
 	current_team.set_auto_shroud_updates(active);
 	return true;
@@ -350,8 +351,9 @@ SYNCED_COMMAND_HANDLER_FUNCTION(auto_shroud, child,  /*use_undo*/, /*show*/, /*e
  * this means it ia synced command liek any other.
  */
 
-SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  /*use_undo*/, /*show*/, /*error_handler*/)
+SYNCED_COMMAND_HANDLER_FUNCTION(update_shroud, /*child*/,  use_undo, /*show*/, /*error_handler*/)
 {
-	resources::undo_stack->commit_vision(true);
+	assert(use_undo);
+	resources::undo_stack->commit_vision();
 	return true;
 }
