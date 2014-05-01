@@ -403,6 +403,57 @@ unit *lua_unit::get()
 	return &*ui;
 }
 
+// Having this function here not only simplifies other code, it allows us to move
+// pointers around from one structure to another.
+// This makes bare pointer->map in particular about 2 orders of magnitude faster,
+// as benchmarked from Lua code.
+bool lua_unit::put_map(const map_location &loc)
+{
+	if (ptr) {
+		ptr->set_location(loc);
+		resources::units->erase(loc);
+		std::pair<unit_map::unit_iterator, bool> res = resources::units->insert(ptr);
+		if (res.second) {
+			ptr = NULL;
+			uid = res.first->underlying_id();
+		} else {
+			ERR_LUA << "Could not move unit " << ptr->underlying_id() << " onto map location " << loc << '\n';
+			return false;
+		}
+	} else if (side) { // recall list
+		std::vector<unit> &recall_list = (*resources::teams)[side - 1].recall_list();
+		std::vector<unit>::iterator it = recall_list.begin();
+		for(; it != recall_list.end(); ++it) {
+			if (it->underlying_id() == uid) {
+				break;
+			}
+		}
+		if (it != recall_list.end()) {
+			side = 0;
+			// uid may be changed by unit_map on insertion
+			uid = resources::units->replace(loc, *it).first->underlying_id();
+			recall_list.erase(it);
+		} else {
+			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
+			return false;
+		}
+	} else { // on map
+		unit_map::unit_iterator ui = resources::units->find(uid);
+		if (ui != resources::units->end()) {
+			map_location from = ui->get_location();
+			if (from != loc) { // This check is redundant in current usage
+				resources::units->erase(loc);
+				resources::units->move(from, loc);
+			}
+			// No need to change our contents
+		} else {
+			ERR_LUA << "Could not find unit " << uid << " on the map\n";
+			return false;
+		}
+	}
+	return true;
+}
+
 unit *luaW_tounit(lua_State *L, int index, bool only_on_map)
 {
 	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
