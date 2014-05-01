@@ -308,7 +308,7 @@ const config carryover_info::to_config()
 	config& end_level = cfg.add_child("end_level_data");
 	end_level_.write(end_level);
 
-	cfg["random_seed"] = lexical_cast<std::string> (rng_.get_random_seed());
+	cfg["random_seed"] = rng_.get_random_seed_str();
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);
@@ -746,7 +746,7 @@ void game_data::write_snapshot(config& cfg){
 
 	cfg["can_end_turn"] = can_end_turn_;
 
-	cfg["random_seed"] = lexical_cast<std::string> (rng_.get_random_seed());
+	cfg["random_seed"] = rng_.get_random_seed_str();
 	cfg["random_calls"] = rng_.get_random_calls();
 
 	cfg.add_child("variables", variables_);
@@ -760,7 +760,7 @@ void game_data::write_config(config_writer& out){
 	out.write_key_val("scenario", scenario_);
 	out.write_key_val("next_scenario", next_scenario_);
 
-	out.write_key_val("random_seed", lexical_cast<std::string>(rng_.get_random_seed()));
+	out.write_key_val("random_seed", rng_.get_random_seed_str());
 	out.write_key_val("random_calls", lexical_cast<std::string>(rng_.get_random_calls()));
 	out.write_child("variables", variables_);
 

@@ -19,10 +19,13 @@
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
+#include "seed_rng.hpp"
 #include <boost/lexical_cast.hpp>
 
 #include <cassert>
 #include <stdlib.h>
+#include <sstream>
+#include <iomanip>
 static lg::log_domain log_replay("replay");
 #define DBG_REPLAY LOG_STREAM(debug, log_replay)
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
@@ -129,7 +132,13 @@ uint32_t synced_context::generate_random_seed()
 {
 	random_seed_choice cho;
 	config retv_c = synced_context::ask_server("random_seed", cho);
-	return lexical_cast<uint32_t> (retv_c["new_seed"]);
+	config::attribute_value seed_val = retv_c["new_seed"];
+	
+	uint32_t new_seed; //we should be able to just return the seed_str, and leave this detail in the rng class.
+	std::istringstream s(seed_val.str()); //but other parts of sync code wants seed to be ints so we'll do this
+	s >> std::hex >> new_seed;
+
+	return new_seed;
 }
 
 bool synced_context::is_simultaneously()
@@ -462,10 +471,15 @@ random_seed_choice::~random_seed_choice()
 config random_seed_choice::query_user(int /*side*/) const
 {
 	//getting here means we are in a sp game
-
 	
 	config retv;
-	retv["new_seed"] = lexical_cast<std::string> (rand());
+
+	uint32_t random_seed_ = seed_rng::next_seed();
+
+	std::stringstream stream;
+	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << random_seed_;
+
+	retv["new_seed"] = stream.str();
 	return retv;
 }
 config random_seed_choice::random_choice(int /*side*/) const
@@ -475,6 +489,6 @@ config random_seed_choice::random_choice(int /*side*/) const
 	assert(false && "random_seed_choice::random_choice called");
 
 	config retv;
-	retv["new_seed"] = "0xb4d533d";
+	retv["new_seed"] = "deadbeef";
 	return retv;
 }

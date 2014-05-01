@@ -43,7 +43,7 @@ public:
 	uint32_t get_next_random();
 
 	/**
-	 *  Seeds the random pool.
+	 *  Seeds the random pool. This is the old version, I would like to mark this private.
 	 *
 	 *  @param seed         The initial value for the random engine.
 	 *  @param call_count   Upon loading we need to restore the state at saving

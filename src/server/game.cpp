@@ -24,6 +24,8 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 
+#include <sstream>
+#include <iomanip>
 #include <boost/bind.hpp>
 
 static lg::log_domain log_server("server");
@@ -950,16 +952,14 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	for (command = commands.begin(); command != commands.end(); ++command) {
 		if (simple_wml::node* attack = (**command).child("attack")) {
 			uint32_t seed = rng_.get_next_random();
-			std::string seed_str("0xb4d533d");
-			try {
-				seed_str = lexical_cast<std::string>(seed);
-			} catch (bad_lexical_cast &) {
-				ERR_GAME << "Bad lexical cast when generating random seed! (socket: " << user->first << " )" << std::endl;
-			}
-			attack->set_attr_dup("seed", seed_str.c_str());
+
+			std::stringstream stream;
+			stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed;
+
+			attack->set_attr_dup("seed", stream.str().c_str());
 			simple_wml::document doc;
 			simple_wml::node& rs = doc.root().add_child("random_seed");
-			rs.set_attr_dup("seed", seed_str.c_str());
+			rs.set_attr_dup("seed", stream.str().c_str());
 			wesnothd::send_to_one(doc, user->first, "game replay");
 		}
 	}
@@ -1015,22 +1015,20 @@ bool game::process_turn(simple_wml::document& data, const player_map::const_iter
 	return turn_ended;
 }
 
-void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator user)
+void game::require_random(const simple_wml::document &/*data*/, const player_map::iterator /*user*/)
 {
 	// note, that during end turn events, it's side=1 for the server but side= side_count() on the clients.
 	
 	uint32_t seed = rng_.get_next_random();
-	std::string seed_str("0xb4d533d");
-	try {
-		seed_str = lexical_cast<std::string>(seed);
-	} catch (bad_lexical_cast &) {
-		ERR_GAME << "Bad lexical cast when generating random seed! (socket: " << user->first << " )" << std::endl;
-	}
+
+	std::stringstream stream;
+	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << seed;
+
 	simple_wml::document* mdata = new simple_wml::document;
 	simple_wml::node& turn = mdata->root().add_child("turn");
 	simple_wml::node& command = turn.add_child("command");
 	simple_wml::node& random_seed = command.add_child("random_seed");
-	random_seed.set_attr_dup("new_seed",seed_str.c_str());
+	random_seed.set_attr_dup("new_seed",stream.str().c_str());
 	command.set_attr("from_side", "server");
 	command.set_attr("dependent", "yes");
 

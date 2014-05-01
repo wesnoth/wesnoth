@@ -185,7 +185,7 @@ void level_to_gamestate(config& level, game_state& state)
 	const config::attribute_value& seed = level["random_seed"];
 	if (!seed.empty()) {
 		const unsigned calls = level["random_calls"].to_unsigned();
-		sides.rng().seed_random(seed.to_int(42), calls);
+		sides.rng().seed_random(seed.str(), calls);
 	} else {
 		ERR_NG << "No random seed found, random "
 			"events will probably be out of sync.\n";

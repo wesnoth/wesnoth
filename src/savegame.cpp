@@ -656,24 +656,10 @@ void loadgame::set_gamestate()
 	// For a replay we need to restore the start only, the replaying gets at
 	// proper location.
 	// For normal loading also restore the call count.
-	std::string cfg_str = load_config_["random_seed"];
-	uint32_t seed = 42;
-	try {
-		seed = lexical_cast<uint32_t> (cfg_str);
-	} catch (bad_lexical_cast &) {
-		ERR_SAVE << "Bad lexical cast when reading random_seed found in save game file: " << cfg_str << std::endl;
-		config cfg = load_config_.child_or_empty("carryover_sides_start"); //is this a good idea??
-		std::string cfg_str2 = cfg["random_seed"];
-		try {
-			seed = lexical_cast<uint32_t> (cfg_str2);
-		}
-		catch (bad_lexical_cast &) {
-			ERR_SAVE << "Bad lexical cast when reading random_seed found in save game file, carryover_start: " << cfg_str2 << std::endl;
-		}
-	}
+	config::attribute_value random_seed = load_config_["random_seed"];
 	unsigned calls = show_replay_ ? 0 : gamestate_.snapshot["random_calls"].to_int();
 	carryover_info sides(gamestate_.carryover_sides_start);
-	sides.rng().seed_random(seed, calls);
+	sides.rng().seed_random(random_seed.str(), calls);
 	gamestate_.carryover_sides_start = sides.to_config();
 }
 
