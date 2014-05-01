@@ -15,20 +15,27 @@
 /* This file selects a seed source -- "nondeterministic" random number
    generator in boost documentation. It should be a wrapper for 
    boost::random_device on platforms where this is available, otherwise
-   it should most likely be the system time. On versions of boost after
-   1.43.0, windows has an available boost random_device. Before that,
-   we should put "ifdef WIN32" in the preprocessor guard below, for
-   example.
+   it should most likely be the system time.
 */
 
 #include "seed_rng.hpp"
 
-// #ifdef WE_ARE_ON_A_SYSTEM_WITH_NO_BOOST_RANDOM_DEVICE
-// #undef SEED_RNG_USE_BOOST_RANDOM_DEVICE
-// #else
-#define SEED_RNG_USE_BOOST_RANDOM_DEVICE
-// #endif
+/*****
+  Use preprocessor tests to decide whether to try to include and
+  use boost random device, or fallback to system time.
+ *****/
 
+#define SEED_RNG_USE_BOOST_RANDOM_DEVICE
+
+//Boost does not support random device on windows before v 1.43.0
+//http://www.boost.org/users/history/version_1_43_0.html
+#if (defined(_WIN32) && (BOOST_VERSION < 104300))
+#undef SEED_RNG_USE_BOOST_RANDOM_DEVICE
+#endif
+
+/*****
+  End preprocessor checks
+ *****/
 
 #ifdef SEED_RNG_USE_BOOST_RANDOM_DEVICE
 #include <boost/nondet_random.hpp>
