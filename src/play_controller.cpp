@@ -1392,6 +1392,10 @@ void play_controller::set_defeat_music_list(const std::string& list)
 
 void play_controller::check_victory()
 {
+	if(linger_)
+	{
+		return;
+	}
 	std::set<unsigned> not_defeated;
 	for (unit_map::const_iterator i = units_.begin(),
 	     i_end = units_.end(); i != i_end; ++i)
