@@ -129,4 +129,108 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_config_seed_manip )
 	BOOST_CHECK (seed_str != seed_str3);
 }
 
+BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility )
+{
+	config cfg;
+	cfg["random_seed"] = "5eedf00d";
+	cfg["random_calls"] = 0;
+
+	rand_rng::mt_rng rng1(cfg);
+	rand_rng::mt_rng rng2(cfg);
+
+	BOOST_CHECK(rng1 == rng2);
+	for (int i = 0; i < 10 ; i++) {
+		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
+	}	
+}
+
+BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility2 )
+{
+	config cfg;
+	cfg["random_seed"] = "18da5eed";
+	cfg["random_calls"] = 9999;
+
+	rand_rng::mt_rng rng1(cfg);
+	rand_rng::mt_rng rng2(cfg);
+
+	BOOST_CHECK(rng1 == rng2);
+	for (int i = 0; i < 10 ; i++) {
+		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
+	}	
+}
+
+BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility3 )
+{
+	rand_rng::mt_rng rng1;
+	config cfg;
+	cfg["random_seed"] = rng1.get_random_seed_str();
+	cfg["random_calls"] = rng1.get_random_calls();
+	
+	rand_rng::mt_rng rng2(cfg);
+
+	BOOST_CHECK(rng1 == rng2);
+	for (int i = 0; i < 10 ; i++) {
+		BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
+	}	
+}
+
+BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility4 )
+{
+	rand_rng::mt_rng rng1;
+
+	for (int i = 0; i < 5; i++) {
+		rng1.get_next_random();
+	}
+
+	config cfg;
+	cfg["random_seed"] = rng1.get_random_seed_str();
+	cfg["random_calls"] = rng1.get_random_calls();
+	
+	rand_rng::mt_rng rng2(cfg);
+
+	BOOST_CHECK(rng1 == rng2);
+	BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
+}
+
+BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
+{
+	config cfg;
+	cfg["random_seed"] = "5eedc0de";
+	cfg["random_calls"] = 0;
+
+	rand_rng::mt_rng rng(cfg);
+
+	for (int i = 0; i < 9999 ; i++) {
+		rng.get_next_random();
+	}
+
+	config cfg2;
+	cfg2["random_seed"] = rng.get_random_seed_str();
+	cfg2["random_calls"] = rng.get_random_calls();
+
+	rand_rng::mt_rng rng2(cfg2);
+
+	uint32_t result1 = rng.get_next_random();
+	uint32_t result2 = rng2.get_next_random();
+
+	BOOST_CHECK (rng == rng2);
+	BOOST_CHECK (rng.get_random_seed_str() == rng2.get_random_seed_str());
+	BOOST_CHECK (rng.get_random_calls() == rng2.get_random_calls());
+	BOOST_CHECK (result1 == result2);
+
+	config cfg_save;
+	cfg_save["random_seed"] = rng.get_random_seed_str();
+	cfg_save["random_calls"] = rng.get_random_calls();
+
+	uint32_t result3 = rng.get_next_random();
+	
+	rand_rng::mt_rng rng3(cfg_save);
+	uint32_t result4 = rng3.get_next_random();
+
+	BOOST_CHECK (rng == rng3);
+	BOOST_CHECK (rng.get_random_seed_str() == rng3.get_random_seed_str());
+	BOOST_CHECK (rng.get_random_calls() == rng3.get_random_calls());
+	BOOST_CHECK (result3 == result4);
+}
+
 BOOST_AUTO_TEST_SUITE_END();

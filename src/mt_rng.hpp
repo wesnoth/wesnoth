@@ -61,6 +61,11 @@ public:
 	std::string get_random_seed_str() const;
 	unsigned int get_random_calls() const { return random_calls_; }
 
+	//Comparisons, mainly used for testing
+	bool operator== (const mt_rng &other) const;
+	bool operator!= (const mt_rng &other) const
+	{ return !operator==(other); }
+
 private:
 	/** Initial seed for the pool. */
 	uint32_t random_seed_;

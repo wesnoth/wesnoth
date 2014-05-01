@@ -37,14 +37,18 @@ mt_rng::mt_rng() :
 
 mt_rng::mt_rng(const config& cfg) :
 	random_seed_(42),
-	mt_(), //we don't have the seed at construction time, we have to seed after construction in this case. Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory. 
-	random_calls_(cfg["random_calls"].to_int(0))
+	mt_(random_seed_), //we don't have the seed at construction time, we have to seed after construction in this case. Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory. 
+	random_calls_(0)
 {
 	config::attribute_value seed = cfg["random_seed"];
-	seed_random(seed.str(), random_calls_);
-
-	discard(random_calls_); //mt_.discard(random_calls_);
+	seed_random(seed.str(), cfg["random_calls"].to_int(0));
 } 
+
+bool mt_rng::operator== (const mt_rng & other) const {
+	return random_seed_ == other.random_seed_  
+	    && random_calls_ == other.random_calls_
+	    && mt_ == other.mt_;
+}
 
 uint32_t mt_rng::get_next_random()
 {
@@ -88,7 +92,7 @@ std::string mt_rng::get_random_seed_str() const {
 void mt_rng::discard(const unsigned int call_count)
 {
 	for(unsigned int i = 0; i < call_count; ++i) {
-		mt_();
+		get_next_random();
 	}
 }
 
