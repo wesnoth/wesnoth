@@ -67,6 +67,7 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/assign/list_of.hpp>
 
+
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -227,7 +228,7 @@ namespace { // Types
 		virtual config random_choice(int /*side*/) const
 		{
 			config cfg;
-			cfg["value"] = random_new::generator->next_random() % nb_options;
+			cfg["value"] = random_new::generator->get_random_int(0,nb_options-1);
 			return cfg;
 		}
 	};

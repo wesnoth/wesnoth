@@ -32,6 +32,7 @@ namespace random_new
 	public:
 		synced_rng(boost::function0<std::string> seed_generator);
 		virtual ~synced_rng();
+
 	protected:
 		virtual uint32_t next_random_impl();
 	private:

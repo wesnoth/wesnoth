@@ -12,16 +12,6 @@
    See the COPYING file for more details.
 */
 
-/*
-   This class provides an interface, similar to simple_rng, to the 
-   boost mt19937 generator. This was suggested on irc to replace the
-   linear congruential generator implementation we were using, in 
-   conversation with mordante and aquileia. 
-   http://www.wesnoth.org/irclogs/2014/04/%23wesnoth-dev.2014-04-29.log
-
-   -iceiceice 
-*/
-
 #ifndef MT_RNG_HPP_INCLUDED
 #define MT_RNG_HPP_INCLUDED
 
@@ -32,6 +22,15 @@ class config;
 namespace rand_rng
 {
 
+/*
+   This class provides an interface, similar to simple_rng, to the 
+   boost mt19937 generator. This was suggested on irc to replace the
+   linear congruential generator implementation we were using, in 
+   conversation with mordante and aquileia. 
+   http://www.wesnoth.org/irclogs/2014/04/%23wesnoth-dev.2014-04-29.log
+
+   -iceiceice 
+*/
 
 class mt_rng
 {
