@@ -104,6 +104,11 @@ public:
 	virtual bool left_click(int x, int y, const bool browse);
 
 	/**
+	 * Overridden in derived class. Called on drag+drop movements.
+	 */
+	virtual void move_action(bool browse);
+	
+	/**
 	 * Called whenever the left mouse drag has "ended".
 	 */
 	virtual void left_drag_end(int x, int y, const bool browse);
