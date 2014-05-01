@@ -712,8 +712,7 @@ function battle_calcs.simulate_combat_fake()
     -- It doesn't need any arguments -> can be called with the arguments of other simulate_combat functions
     local att_stats, def_stats = { hp_chance = {} }, { hp_chance = {} }
 
-    for i = 0,38 do att_stats.hp_chance[i], def_stats.hp_chance[i] = 0, 0 end
-
+    att_stats.hp_chance[0] = 0
     att_stats.hp_chance[21], att_stats.hp_chance[23], att_stats.hp_chance[25], att_stats.hp_chance[27] = 0.125, 0.375, 0.375, 0.125
     att_stats.poisoned, att_stats.slowed, att_stats.average_hp = 0.875, 0, 24
 
