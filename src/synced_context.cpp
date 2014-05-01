@@ -133,12 +133,8 @@ std::string synced_context::generate_random_seed()
 	random_seed_choice cho;
 	config retv_c = synced_context::ask_server("random_seed", cho);
 	config::attribute_value seed_val = retv_c["new_seed"];
-	
-/*	uint32_t new_seed; //we should be able to just return the seed_str, and leave this detail in the rng class.
-	std::istringstream s(seed_val.str()); //but other parts of sync code wants seed to be ints so we'll do this
-	s >> std::hex >> new_seed;*/
 
-	return seed_val.str();//new_seed;
+	return seed_val.str();
 }
 
 bool synced_context::is_simultaneously()
@@ -474,12 +470,7 @@ config random_seed_choice::query_user(int /*side*/) const
 	
 	config retv;
 
-	uint32_t random_seed_ = seed_rng::next_seed();
-
-	std::stringstream stream;
-	stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << random_seed_;
-
-	retv["new_seed"] = stream.str();
+	retv["new_seed"] = seed_rng::next_seed_str();
 	return retv;
 }
 config random_seed_choice::random_choice(int /*side*/) const

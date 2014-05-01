@@ -43,6 +43,9 @@
 #include <ctime>
 #endif
 
+#include <sstream>
+#include <iomanip>
+
 namespace seed_rng {
 
 	#ifdef SEED_RNG_USE_BOOST_RANDOM_DEVICE
@@ -55,5 +58,13 @@ namespace seed_rng {
 		return static_cast<uint32_t> (std::time(0));
 	}
 	#endif
+
+	std::string next_seed_str() {
+		uint32_t random_seed_ = next_seed();
+		std::stringstream stream;
+		stream << std::setfill('0') << std::setw(sizeof(uint32_t)*2) << std::hex << random_seed_;
+
+		return stream.str();
+	}
 
 } //ends seed_rng namespace
