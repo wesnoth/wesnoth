@@ -233,4 +233,45 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 	BOOST_CHECK (result3 == result4);
 }
 
+void validate_seed_string(std::string seed_str)
+{
+	config cfg;
+	cfg["random_seed"] = seed_str;
+	cfg["random_calls"] = 0;
+
+	rand_rng::mt_rng rng1(cfg);
+
+	for (int i = 0; i < 9999 ; i++) {
+		rng1.get_next_random();
+	}
+
+	config cfg2;
+	cfg2["random_seed"] = rng1.get_random_seed_str();
+	cfg2["random_calls"] = rng1.get_random_calls();
+	
+	rand_rng::mt_rng rng2(cfg2);
+
+	for (int i = 0; i < 9999 ; i++) {
+		rng1.get_next_random();
+		rng2.get_next_random();
+	}
+
+	BOOST_CHECK(rng1 == rng2);
+	BOOST_CHECK(rng1.get_next_random() == rng2.get_next_random());
+
+}
+
+BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility_coverage )
+{
+	validate_seed_string("0000badd");
+	validate_seed_string("00001234");
+	validate_seed_string("deadbeef");
+	validate_seed_string("12345678");
+	validate_seed_string("00009999");
+	validate_seed_string("ffffaaaa");
+	validate_seed_string("11110000");
+	validate_seed_string("10101010");
+	validate_seed_string("aaaa0000");
+}
+
 BOOST_AUTO_TEST_SUITE_END();
