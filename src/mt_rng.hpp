@@ -25,19 +25,7 @@
 #ifndef MT_RNG_HPP_INCLUDED
 #define MT_RNG_HPP_INCLUDED
 
-// #ifdef WE_ARE_ON_A_SYSTEM_WITH_NO_BOOST_RANDOM_DEVICE
-// #undef MT_RNG_USE_BOOST_RANDOM_DEVICE
-// #else
-#define MT_RNG_USE_BOOST_RANDOM_DEVICE
-// #endif
-
 #include <boost/random/mersenne_twister.hpp>
-
-#ifdef MT_RNG_USE_BOOST_RANDOM_DEVICE
-#include <boost/nondet_random.hpp>
-#else
-#include <ctime>
-#endif
 
 class config;
 
@@ -76,10 +64,6 @@ public:
 	unsigned int get_random_calls() const { return random_calls_; }
 
 private:
-	#ifdef MT_RNG_USE_BOOST_RANDOM_DEVICE
-	static boost::random_device rnd_; //used to generate rng seeds in some cases
-	#endif
-
 	/** Initial seed for the pool. */
 	uint32_t random_seed_;
 

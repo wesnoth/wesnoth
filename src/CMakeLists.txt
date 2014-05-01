@@ -208,6 +208,7 @@ set(libwesnoth-core_STAT_SRC
 	log.cpp
 	md5.cpp
 	mt_rng.cpp
+	seed_rng.cpp
 	thread.cpp
 	tstring.cpp
 	util.cpp

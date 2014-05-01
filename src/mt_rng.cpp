@@ -13,6 +13,7 @@
 */
 
 #include "mt_rng.hpp"
+#include "seed_rng.hpp"
 #include "config.hpp"
 #include "log.hpp"
 #include <boost/lexical_cast.hpp>
@@ -25,23 +26,13 @@ static lg::log_domain log_random("random");
 
 namespace rand_rng
 {
-#ifdef MT_RNG_USE_BOOST_RANDOM_DEVICE
-boost::random_device mt_rng::rnd_; 
 
 mt_rng::mt_rng() :
-	random_seed_(mt_rng::rnd_()), //TODO: Is this the proper way to get the seed in this scenario?
+	random_seed_(seed_rng::next_seed()),
 	mt_(random_seed_),
 	random_calls_(0)
 {
 }
-#else
-mt_rng::mt_rng() :
-	random_seed_(static_cast<unsigned int>(std::time(0))),
-	mt_(random_seed_),
-	random_calls_(0)
-{
-}
-#endif
 
 /* Initial attempt... any way to fix this up? Constructing an mt19937 is somewhat expensive, apparently has about 2kb of private memory. 
    But this is premature optimization if the consequence is crash with bad_lexical_cast when we load a corrupted file.
