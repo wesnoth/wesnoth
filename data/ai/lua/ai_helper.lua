@@ -135,7 +135,7 @@ function ai_helper.checked_attack(ai, attacker, defender, weapon)
     local check = ai.check_attack(attacker, defender, weapon)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.attack', check.status)
+        ai_helper.checked_action_error('ai.attack from ' .. attacker.x .. ',' .. attacker.y .. ' to ' .. defender.x .. ',' .. defender.y, check.status)
         return
     end
 
@@ -151,7 +151,7 @@ function ai_helper.checked_move_core(ai, unit, x, y, move_type)
         -- E_AMBUSHED = 2005
         -- E_NOT_REACHED_DESTINATION = 2007
         if (check.status ~= 2001) and (check.status ~= 2005) and (check.status ~= 2007) then
-            ai_helper.checked_action_error(move_type, check.status)
+            ai_helper.checked_action_error(move_type .. ' from ' .. unit.x .. ',' .. unit.y .. ' to ' .. x .. ',' .. y, check.status)
             return
         end
     end
@@ -175,7 +175,7 @@ function ai_helper.checked_recruit(ai, unit_type, x, y)
     local check = ai.check_recruit(unit_type, x, y)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.recruit', check.status)
+        ai_helper.checked_action_error('ai.recruit of ' .. unit_type, check.status)
         return
     end
 
@@ -186,7 +186,7 @@ function ai_helper.checked_stopunit_all(ai, unit)
     local check = ai.check_stopunit(unit)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.stopunit_all', check.status)
+        ai_helper.checked_action_error('ai.stopunit_all of ' .. unit.x .. ',' .. unit.y, check.status)
         return
     end
 
@@ -197,7 +197,7 @@ function ai_helper.checked_stopunit_attacks(ai, unit)
     local check = ai.check_stopunit(unit)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.stopunit_attacks', check.status)
+        ai_helper.checked_action_error('ai.stopunit_attacks of ' .. unit.x .. ',' .. unit.y, check.status)
         return
     end
 
@@ -208,7 +208,7 @@ function ai_helper.checked_stopunit_moves(ai, unit)
     local check = ai.check_stopunit(unit)
 
     if (not check.ok) then
-        ai_helper.checked_action_error('ai.stopunit_moves', check.status)
+        ai_helper.checked_action_error('ai.stopunit_moves of ' .. unit.x .. ',' .. unit.y, check.status)
         return
     end
 
