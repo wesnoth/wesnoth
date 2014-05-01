@@ -101,14 +101,14 @@ function ca_hang_out:execution(ai, cfg, self)
 
                         if (rating > max_rating_unit) then
                             max_rating_unit = rating
-                            best_hex_unit = {x, y}
+                            best_hex_unit = { x, y }
                         end
                     end
                 end
             end)
 
             -- Only consider a unit if the best hex found for it is not its current location
-            if (best_hex_unit[1] ~= unit.x) or (best_hex_unit[2] ~= unit.y) then
+            if best_hex_unit and ((best_hex_unit[1] ~= unit.x) or (best_hex_unit[2] ~= unit.y)) then
                 if (max_rating_unit > max_rating) then
                     max_rating = max_rating_unit
                     best_hex, best_unit = best_hex_unit, unit
