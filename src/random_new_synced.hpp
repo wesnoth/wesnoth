@@ -30,14 +30,14 @@ namespace random_new
 	class synced_rng : public random_new::rng
 	{
 	public:
-		synced_rng(boost::function0<uint32_t> seed_generator);
+		synced_rng(boost::function0<std::string> seed_generator);
 		virtual ~synced_rng();
 	protected:
 		virtual uint32_t next_random_impl();
 	private:
 		void initialize();
 		bool has_valid_seed_;
-		boost::function0<uint32_t> seed_generator_; 
+		boost::function0<std::string> seed_generator_; 
 		rand_rng::mt_rng gen_;
 	};
 }

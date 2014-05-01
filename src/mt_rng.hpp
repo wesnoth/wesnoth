@@ -43,17 +43,6 @@ public:
 	uint32_t get_next_random();
 
 	/**
-	 *  Seeds the random pool. This is the old version, I would like to mark this private.
-	 *
-	 *  @param seed         The initial value for the random engine.
-	 *  @param call_count   Upon loading we need to restore the state at saving
-	 *                      so set the number of times a random number is
-	 *                      generated for replays the orginal value is
-	 *                      required.
-	 */
-	void seed_random(const uint32_t seed, const unsigned int call_count = 0);
-
-	/**
 	 *  Same as uint32_t version, but uses a stringstream to convert given
          *  hex string. 
          *  @param seed         A hex string. Should not have 0x leading. 
@@ -87,6 +76,17 @@ private:
 	following description here: http://www.boost.org/doc/libs/1_51_0/doc/html/boost/random/mersenne_twister_engine.html#id1408119-bb 
 	*/
 	void discard(const unsigned int call_count);
+
+	/**
+	 *  Seeds the random pool. This is the old version, I would like to mark this private.
+	 *
+	 *  @param seed         The initial value for the random engine.
+	 *  @param call_count   Upon loading we need to restore the state at saving
+	 *                      so set the number of times a random number is
+	 *                      generated for replays the orginal value is
+	 *                      required.
+	 */
+	void seed_random(const uint32_t seed, const unsigned int call_count = 0);
 };
 
 } // ends rand_rng namespace

@@ -128,17 +128,17 @@ void synced_context::set_synced_state(synced_state newstate)
 	state_ = newstate;
 }
 
-uint32_t synced_context::generate_random_seed()
+std::string synced_context::generate_random_seed()
 {
 	random_seed_choice cho;
 	config retv_c = synced_context::ask_server("random_seed", cho);
 	config::attribute_value seed_val = retv_c["new_seed"];
 	
-	uint32_t new_seed; //we should be able to just return the seed_str, and leave this detail in the rng class.
+/*	uint32_t new_seed; //we should be able to just return the seed_str, and leave this detail in the rng class.
 	std::istringstream s(seed_val.str()); //but other parts of sync code wants seed to be ints so we'll do this
-	s >> std::hex >> new_seed;
+	s >> std::hex >> new_seed;*/
 
-	return new_seed;
+	return seed_val.str();//new_seed;
 }
 
 bool synced_context::is_simultaneously()
