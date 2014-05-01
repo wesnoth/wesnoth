@@ -467,7 +467,7 @@ void undo_list::clear()
  * This may fire events and change the game state.
  * @param[in]  is_replay  Set to true when this is called during a replay.
  */
-void undo_list::commit_vision(bool /*is_replay*/)
+void undo_list::commit_vision()
 {
 	// Update fog/shroud.
 	size_t erase_to = apply_shroud_changes();
