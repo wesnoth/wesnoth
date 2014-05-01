@@ -54,6 +54,14 @@ public:
 	void seed_random(const uint32_t seed, const unsigned int call_count = 0);
 
 	/**
+	 *  Same as uint32_t version, but uses a stringstream to convert given
+         *  hex string. 
+         *  @param seed         A hex string. Should not have 0x leading. 
+         *  @param call_count   Value to set internal call counter to after seeding.
+         */ 
+	void seed_random(const std::string & seed, const unsigned int call_count = 0);
+
+	/**
 	 * Resets the random to the 0 calls and the seed to the random
 	 *  this way we stay in the same sequence but don't have a lot
 	 *  calls. Used when moving to the next scenario.
@@ -61,6 +69,7 @@ public:
 	void rotate_random();
 
 	uint32_t get_random_seed() const { return random_seed_; }
+	std::string get_random_seed_str() const;
 	unsigned int get_random_calls() const { return random_calls_; }
 
 private:
