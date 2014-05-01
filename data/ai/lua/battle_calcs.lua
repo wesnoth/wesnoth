@@ -975,24 +975,26 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
 
             -- But for combos, also want units with highest attack outcome uncertainties to go early
             -- So that we can change our mind in case of unfavorable outcome
-            local outcome_variance = 0
-            local av = tmp_def_stats[i].average_hp
-            local n_outcomes = 0
+            --local outcome_variance = 0
+            --local av = tmp_def_stats[i].average_hp
+            --local n_outcomes = 0
 
-            for hp,prob in pairs(tmp_def_stats[i].hp_chance) do
-                if (prob > 0) then
-                    local dhp_norm = (hp - av) / defender.max_hitpoints * wesnoth.unit_types[defender.type].cost
-                    local dvar = prob * dhp_norm^2
-                    outcome_variance = outcome_variance + dvar
-                    n_outcomes = n_outcomes + 1
-                end
-            end
-            outcome_variance = outcome_variance / n_outcomes
+            --for hp,p in pairs(tmp_def_stats[i].hp_chance) do
+            --    if (p > 0) then
+            --        local dhp_norm = (hp - av) / defender.max_hitpoints * wesnoth.unit_types[defender.type].cost
+            --        local dvar = p * dhp_norm^2
+                    --print(hp,p,av, dvar)
+            --        outcome_variance = outcome_variance + dvar
+            --        n_outcomes = n_outcomes + 1
+            --    end
+            --end
+            --outcome_variance = outcome_variance / n_outcomes
+            --print('outcome_variance', outcome_variance)
 
             -- Note that this is a variance, not a standard deviations (as in, it's squared),
             -- so it does not matter much for low-variance attacks, but takes on large values for
             -- high variance attacks. I think that is what we want.
-            local rating = base_rating + outcome_variance
+            local rating = base_rating --+ outcome_variance
 
             -- If attacker has attack with 'slow' special, it should always go first
             -- Almost, bonus should not be quite as high as a really high CTK
