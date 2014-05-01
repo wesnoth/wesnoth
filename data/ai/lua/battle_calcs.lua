@@ -958,9 +958,9 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
     -- We first simulate and rate the individual attacks
     local ratings, tmp_attacker_ratings = {}, {}
     local tmp_att_stats, tmp_def_stats = {}, {}
+    local defender_ind = defender.x * 1000 + defender.y
     for i,attacker in ipairs(tmp_attackers) do
         -- Initialize or use the 'cache_this_move' table
-        local defender_ind = defender.x * 1000 + defender.y
         local att_ind = attacker.x * 1000 + attacker.y
         local dst_ind = tmp_dsts[i][1] * 1000 + tmp_dsts[i][2]
         if (not cache_this_move[defender_ind]) then cache_this_move[defender_ind] = {} end
@@ -1040,6 +1040,7 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
     for i = 2,#attackers do
         att_stats[i] = { hp_chance = {} }
         def_stats[i] = { hp_chance = {} }
+        local dst_ind = dsts[i][1] * 1000 + dsts[i][2]
 
         for hp1,prob1 in pairs(def_stats[i-1].hp_chance) do -- Note: need pairs(), not ipairs() !!
             if (hp1 == 0) then
@@ -1049,7 +1050,17 @@ function battle_calcs.attack_combo_stats(tmp_attackers, tmp_dsts, defender, cach
             else
                 local org_hp = defender.hitpoints
                 defender.hitpoints = hp1
-                local ast, dst = battle_calcs.battle_outcome(attackers[i], defender, { dst = dsts[i] } , cache)
+                local ast, dst
+                local att_ind_i = attackers[i].x * 1000 + attackers[i].y
+
+                if (not cache_this_move[defender_ind][att_ind_i][dst_ind][hp1]) then
+                    ast, dst = battle_calcs.battle_outcome(attackers[i], defender, { dst = dsts[i] } , cache)
+                    cache_this_move[defender_ind][att_ind_i][dst_ind][hp1] = { ast = ast, dst = dst }
+                else
+                    ast = cache_this_move[defender_ind][att_ind_i][dst_ind][hp1].ast
+                    dst = cache_this_move[defender_ind][att_ind_i][dst_ind][hp1].dst
+                end
+
                 defender.hitpoints = org_hp
 
                 for hp2,prob2 in pairs(ast.hp_chance) do
