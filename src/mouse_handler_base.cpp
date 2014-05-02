@@ -265,8 +265,7 @@ bool mouse_handler_base::left_click(int x, int y, const bool /*browse*/)
 	return false;
 }
 
-
-void mouse_handler_base::move_action(const bool browse)
+void mouse_handler_base::move_action(const bool /*browse*/)
 {
 	// Overridden with unit move code elsewhere
 }
