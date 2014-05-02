@@ -167,7 +167,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		}
 		preferences::set_draw_delay(fps);
 	}
-	if (cmdline_opts_.nogui) {
+	if (cmdline_opts_.nogui || cmdline_opts_.unit_test) {
 		no_sound = true;
 		preferences::disable_preferences_save();
 	}
@@ -244,6 +244,13 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 	{
 		if (!cmdline_opts_.test->empty())
 			test_scenario_ = *cmdline_opts_.test;
+	}
+	if (cmdline_opts_.unit_test)
+	{
+		if (!cmdline_opts_.unit_test->empty()) {
+			test_scenario_ = *cmdline_opts_.unit_test;
+		}
+			
 	}
 	if (cmdline_opts_.windowed)
 		preferences::set_fullscreen(false);
@@ -333,8 +340,8 @@ bool game_controller::init_language()
 
 bool game_controller::init_video()
 {
-	if(cmdline_opts_.nogui) {
-		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot) ) {
+	if(cmdline_opts_.nogui || cmdline_opts_.unit_test) {
+		if( !(cmdline_opts_.multiplayer || cmdline_opts_.screenshot || cmdline_opts_.unit_test) ) {
 			std::cerr << "--nogui flag is only valid with --multiplayer flag or --screenshot flag\n";
 			return false;
 		}
@@ -432,6 +439,74 @@ bool game_controller::play_test()
 	}
 
 	return false;
+}
+
+// Same as play_test except that we return the results of play_game.
+int game_controller::unit_test()
+{
+	static bool first_time_unit = true;
+
+	if(!cmdline_opts_.unit_test) {
+		return 0;
+	}
+	if(!first_time_unit)
+		return 0;
+
+	first_time_unit = false;
+
+	state_.classification().campaign_type = "test";
+	state_.carryover_sides_start["next_scenario"] = test_scenario_;
+	state_.classification().campaign_define = "TEST";
+
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
+
+	try {
+		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config());
+		if (!(res == VICTORY || res == NONE)) {
+			return 1;
+		}
+	} catch (game::load_game_exception &) {
+		std::cerr << "Load_game_exception encountered while loading the unit test!" << std::endl;
+		return 1; //failed to load the unit test scenario
+	} catch(twml_exception& e) {
+		std::cerr << "Caught WML Exception:" << e.dev_message << std::endl; //e.show(disp());
+		return 1;
+	}
+
+	savegame::clean_saves(state_.classification().label);
+	
+	if (cmdline_opts_.noreplaycheck)
+		return 0; //we passed, huzzah!
+
+	savegame::replay_savegame save(state_, compression::NONE);
+	save.save_game_automatic(disp().video(), false, "unit_test_replay"); //false means don't check for overwrite
+
+	//game::load_game_exception::game = *cmdline_opts_.load
+	game::load_game_exception::game = "unit_test_replay";
+	//	game::load_game_exception::game = "Unit_test_" + test_scenario_ + "_replay";
+
+	game::load_game_exception::show_replay = true;
+	game::load_game_exception::cancel_orders = true;
+
+	if (!load_game()) {
+		std::cerr << "Failed to load the replay!" << std::endl;
+		return 3; //failed to load replay
+	}
+
+	try {
+		play_game(disp(), state_, resources::config_manager->game_config());
+		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
+		    video_);*/
+	} catch (game::load_game_exception &) {
+		std::cerr << "Load_game_exception encountered during play_replay!" << std::endl;
+		return 3; //failed to load replay
+	} catch(twml_exception& e) {
+		std::cerr << "WML Exception while playing replay: " << e.dev_message << std::endl; //e.show(disp());
+		return 4; //failed with an error during the replay
+	}
+
+	return 0; //we passed, huzzah!
 }
 
 bool game_controller::play_screenshot_mode()
@@ -934,7 +1009,7 @@ bool game_controller::change_language()
 	dlg.show(disp().video());
 	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
-	if (!cmdline_opts_.nogui) {
+	if (!(cmdline_opts_.nogui || cmdline_opts_.unit_test)) {
 		std::string wm_title_string = _("The Battle for Wesnoth");
 		wm_title_string += " - " + game_config::revision;
 #if SDL_VERSION_ATLEAST(2, 0, 0)

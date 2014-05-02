@@ -54,6 +54,7 @@ public:
 
 	bool play_test();
 	bool play_screenshot_mode();
+	int unit_test();
 
 	bool is_loading() const;
 	void clear_loaded_game() { game::load_game_exception::game.clear(); }
