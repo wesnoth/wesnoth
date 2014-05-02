@@ -15,7 +15,7 @@
 #include "mt_rng.hpp"
 #include "config.hpp"
 #include "log.hpp"
-#include <stdlib.h>
+#include <boost/lexical_cast.hpp>
 static lg::log_domain log_random("random");
 #define DBG_RND LOG_STREAM(debug, log_random)
 #define LOG_RND LOG_STREAM(info, log_random)
@@ -59,8 +59,8 @@ mt_rng::mt_rng(const config& cfg) :
 	random_calls_(cfg["random_calls"].to_int(0))
 {
 	try { 
-		random_seed_ = lexical_cast<uint32_t> (cfg["random_seed"]);
-	} catch (bad_lexical_cast &) {
+		random_seed_ = boost::lexical_cast<uint32_t> (cfg["random_seed"]);
+	} catch (boost::bad_lexical_cast &) {
 		ERR_RND << "Bad lexical cast when parsing random_seed from config: string is " << cfg["random_seed"] << std::endl;
 		ERR_RND << "Now using seed: random_seed_ = " << random_seed_ << std::endl;
 	}
