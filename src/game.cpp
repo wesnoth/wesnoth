@@ -419,7 +419,7 @@ static SDL_sem * worker_sem;
  * Function used by worker thread to perform unit test with timeout.
  */
 static int run_unit_test (void * data){
-	std::pair<game_controller*, int*> * mydata = (std::pair<game_controller*, int*> *) data;
+	std::pair<game_controller*, int*> * mydata = static_cast<std::pair<game_controller*, int*> *>(data);
 	if (SDL_SemWait(worker_sem) == -1) {
 		std::cerr << "Worker failed to lock worker semaphore!" << std::endl;
 	}
