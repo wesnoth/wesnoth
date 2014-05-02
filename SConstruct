@@ -110,7 +110,12 @@ opts.AddVariables(
 # Setup
 #
 
-toolpath = ["scons"] + map(lambda x : x.abspath + "/scons", Dir(".").repositories)
+toolpath = ["scons"]
+for repo in Dir(".").repositories:
+  # SCons repositories are additional dirs to look for source and lib files.
+  # It is possible to make out of tree builds by running SCons outside of this
+  # source code root and supplying this path with -Y option.
+  toolpath.append(repo.abspath + "/scons")
 sys.path = toolpath + sys.path
 env = Environment(tools=["tar", "gettext", "install", "python_devel", "scanreplace"], options = opts, toolpath = toolpath)
 
