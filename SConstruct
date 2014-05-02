@@ -347,7 +347,7 @@ if env["prereqs"]:
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoostIostreamsBZip2() and \
         conf.CheckBoost("smart_ptr", header_only = True) or \
-            Warning("ERROR: Base prerequisites are not met")
+            Warning("WARN: Base prerequisites are not met")
 
     env = conf.Finish()
     client_env = env.Clone()
@@ -359,7 +359,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version="1.35.0") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckLib("vorbisfile") and \
-        conf.CheckOgg() or Warning("ERROR: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
+        conf.CheckOgg() or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
     if have_client_prereqs:
@@ -388,7 +388,7 @@ if env["prereqs"]:
     conf = test_env.Configure(**configure_args)
 
     have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework') \
-                            or Warning("ERROR: Unit tests are disabled because their prerequisites are not met")
+                            or Warning("WARN: Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
