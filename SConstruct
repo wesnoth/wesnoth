@@ -264,13 +264,16 @@ if sys.platform == 'win32':
 #
 # Check some preconditions
 #
+print "---[checking prerequisites]---"
 
 def Warning(message):
     print message
     return False
 
 from metasconf import init_metasconf
-configure_args = dict(custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]), config_h = "$build_dir/config.h",
+configure_args = dict(
+    custom_tests = init_metasconf(env, ["cplusplus", "python_devel", "sdl", "boost", "pango", "pkgconfig", "gettext", "lua"]),
+    config_h = "$build_dir/config.h",
     log_file="$build_dir/config.log", conf_dir="$build_dir/sconf_temp")
 
 env.MergeFlags(env["extra_flags_config"])
@@ -343,7 +346,8 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = "1.34.1") and \
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoostIostreamsBZip2() and \
-        conf.CheckBoost("smart_ptr", header_only = True) or Warning("Base prerequisites are not met.")
+        conf.CheckBoost("smart_ptr", header_only = True) or \
+            Warning("WARN: Base prerequisites are not met")
 
     env = conf.Finish()
     client_env = env.Clone()
@@ -355,7 +359,7 @@ if env["prereqs"]:
         conf.CheckBoost("program_options", require_version="1.35.0") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckLib("vorbisfile") and \
-        conf.CheckOgg() or Warning("Client prerequisites are not met. wesnoth, cutter and exploder cannot be built.")
+        conf.CheckOgg() or Warning("WARN: Client prerequisites are not met. wesnoth, cutter and exploder cannot be built")
 
     have_X = False
     if have_client_prereqs:
@@ -383,13 +387,14 @@ if env["prereqs"]:
     test_env = client_env.Clone()
     conf = test_env.Configure(**configure_args)
 
-    have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework') or Warning("Unit tests are disabled because their prerequisites are not met.")
+    have_test_prereqs = have_client_prereqs and have_server_prereqs and conf.CheckBoost('unit_test_framework') \
+                            or Warning("WARN: Unit tests are disabled because their prerequisites are not met")
     test_env = conf.Finish()
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
 
-    print env.subst("If any config checks fail, look in $build_dir/config.log for details")
-    print "If a check fails spuriously due to caching, use --config=force to force its rerun"
+    print "  " + env.subst("If any config checks fail, look in $build_dir/config.log for details")
+    print "  If a check fails spuriously due to caching, use --config=force to force its rerun"
 
 else:
     have_client_prereqs = True
@@ -417,6 +422,7 @@ if not env['nls']:
 #
 # Implement configuration switches
 #
+print "---[applying configuration]---"
 
 for env in [test_env, client_env, env]:
     build_root="#/"
