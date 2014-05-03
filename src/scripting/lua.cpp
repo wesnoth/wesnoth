@@ -720,7 +720,7 @@ static int impl_unit_variables_set(lua_State *L)
 			u->variables().remove_attribute(m);
 			break;
 		case LUA_TBOOLEAN:
-			v = bool(luaW_toboolean(L, 3));
+			v = luaW_toboolean(L, 3);
 			break;
 		case LUA_TNUMBER:
 			v = lua_tonumber(L, 3);
