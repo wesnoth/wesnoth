@@ -269,7 +269,7 @@ BOOST_AUTO_TEST_CASE(test_gui2_iterator)
 	cache.add_define("EDITOR");
 	cache.add_define("MULTIPLAYER");
 
-	lg::set_log_domain_severity("gui/iterator", 3); // FIXME get_severity or something like it
+	lg::set_log_domain_severity("gui/iterator", lg::debug);
 	lg::timestamps(false);
 
 	std::stringstream sstr;

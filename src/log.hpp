@@ -75,6 +75,7 @@ public:
 };
 
 bool set_log_domain_severity(std::string const &name, int severity);
+bool set_log_domain_severity(std::string const &name, const logger &lg);
 std::string list_logdomains(const std::string& filter);
 
 class logger {
@@ -88,6 +89,11 @@ public:
 	bool dont_log(log_domain const &domain) const
 	{
 		return severity_ > domain.domain_->second;
+	}
+
+	int get_severity() const
+	{
+		return severity_;
 	}
 };
 

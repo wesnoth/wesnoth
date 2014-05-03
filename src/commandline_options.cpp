@@ -16,6 +16,7 @@
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
 #include "lua/llimits.h"
+#include "log.hpp"
 
 #include <boost/version.hpp>
 #include <boost/foreach.hpp>
@@ -314,13 +315,13 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 	if (vm.count("load"))
 		load = vm["load"].as<std::string>();
 	if (vm.count("log-error"))
-		 parse_log_domains_(vm["log-error"].as<std::string>(),0);
+		 parse_log_domains_(vm["log-error"].as<std::string>(),lg::err.get_severity());
 	if (vm.count("log-warning"))
-		 parse_log_domains_(vm["log-warning"].as<std::string>(),1);
+		 parse_log_domains_(vm["log-warning"].as<std::string>(),lg::warn.get_severity());
 	if (vm.count("log-info"))
-		 parse_log_domains_(vm["log-info"].as<std::string>(),2);
+		 parse_log_domains_(vm["log-info"].as<std::string>(),lg::info.get_severity());
 	if (vm.count("log-debug"))
-		 parse_log_domains_(vm["log-debug"].as<std::string>(),3);
+		 parse_log_domains_(vm["log-debug"].as<std::string>(),lg::debug.get_severity());
 	if (vm.count("logdomains"))
 		logdomains = vm["logdomains"].as<std::string>();
 	if (vm.count("log-precise"))

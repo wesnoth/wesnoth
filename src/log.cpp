@@ -108,6 +108,9 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	}
 	return true;
 }
+bool set_log_domain_severity(std::string const &name, const logger &lg) {
+	return set_log_domain_severity(name, lg.get_severity());
+}
 
 std::string list_logdomains(const std::string& filter)
 {

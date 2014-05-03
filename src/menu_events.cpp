@@ -2195,10 +2195,10 @@ void chat_handler::change_logging(const std::string& data) {
 	const std::string level(data.begin(),j);
 	const std::string domain(j+1,data.end());
 	int severity;
-	if (level == "error") severity = 0;
-	else if (level == "warning") severity = 1;
-	else if (level == "info") severity = 2;
-	else if (level == "debug") severity = 3;
+	if (level == "error") severity = lg::err.get_severity();
+	else if (level == "warning") severity = lg::warn.get_severity();
+	else if (level == "info") severity = lg::info.get_severity();
+	else if (level == "debug") severity = lg::debug.get_severity();
 	else {
 		utils::string_map symbols;
 		symbols["level"] = level;
