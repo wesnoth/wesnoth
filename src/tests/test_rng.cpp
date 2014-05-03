@@ -15,7 +15,8 @@
 #define GETTEXT_DOMAIN "wesnoth-test"
 
 #include <boost/test/unit_test.hpp>
-#include "mt_rng.hpp"
+#include "random_new_synced.hpp"
+#include "random_new_deterministic.hpp"
 #include "config.hpp"
 #include <sstream>
 #include <iomanip>
@@ -32,8 +33,7 @@ BOOST_AUTO_TEST_CASE( validate_mt19937 )
 		rng();
 	}
 	unsigned long val = rng();
-	bool result = ( val == 4123659995U );
-	BOOST_CHECK(result);
+	BOOST_CHECK_EQUAL( val , 4123659995U );
 }
 
 /* this test checks the soundness of mt_rng string manipulations */
@@ -273,5 +273,51 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility_coverage )
 	validate_seed_string("10101010");
 	validate_seed_string("aaaa0000");
 }
+
+std::string validate_get_random_int_seed_generator()
+{
+	return "dada5eed";
+}
+
+#define validation_get_random_int_num_draws 19999
+
+#define validation_get_random_int_max 32000
+
+#define validation_get_random_int_correct_answer 10885
+
+/**
+ *  This test and the next validate that we are getting the correct values
+ *  from the get_random_int function, in the class random_new.
+ *  We test both subclasses of random_new.
+ *  If these tests fail but the seed manipulation tests all pass,
+ *  and validate_mt19937 passes, then it suggests that the implementation 
+ *  of get_random_int may not be working properly on your platform.
+ */
+BOOST_AUTO_TEST_CASE( validate_get_random_int )
+{
+	config cfg;
+	cfg["random_seed"] = validate_get_random_int_seed_generator();
+	cfg["random_calls"] = validation_get_random_int_num_draws;
+
+	rand_rng::mt_rng mt_(cfg);
+
+	boost::shared_ptr<random_new::rng> gen_ (new random_new::rng_deterministic(mt_));
+
+	int val = gen_->get_random_int(0, validation_get_random_int_max);
+	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
+}
+
+BOOST_AUTO_TEST_CASE( validate_get_random_int2 )
+{
+	boost::shared_ptr<random_new::rng> gen_ (new random_new::synced_rng(validate_get_random_int_seed_generator));
+
+	for (int i = 0; i < validation_get_random_int_num_draws; i++) {
+		gen_->next_random();
+	}
+
+	int val = gen_->get_random_int(0,validation_get_random_int_max);
+	BOOST_CHECK_EQUAL ( val , validation_get_random_int_correct_answer );
+}
+
 
 BOOST_AUTO_TEST_SUITE_END();
