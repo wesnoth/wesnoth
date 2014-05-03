@@ -927,13 +927,17 @@ function ai_helper.next_hop(unit, x, y, cfg)
         local sub_path, sub_cost = wesnoth.find_path( unit, path[i][1], path[i][2], cfg)
 
         if sub_cost <= unit.moves then
-            local unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
+            -- Check for unit in way only if cfg.ignore_units is not set
+            local unit_in_way
+            if (not cfg) or (not cfg.ignore_units) then
+                unit_in_way = wesnoth.get_unit(path[i][1], path[i][2])
 
-            -- If ignore_own_units is set, ignore own side units that can move out of the way
-            if cfg and cfg.ignore_own_units then
-                if unit_in_way and (unit_in_way.side == unit.side) then
-                    local reach = ai_helper.get_reachable_unocc(unit_in_way)
-                    if (reach:size() > 1) then unit_in_way = nil end
+                -- If ignore_own_units is set, ignore own side units that can move out of the way
+                if cfg and cfg.ignore_own_units then
+                    if unit_in_way and (unit_in_way.side == unit.side) then
+                        local reach = ai_helper.get_reachable_unocc(unit_in_way)
+                        if (reach:size() > 1) then unit_in_way = nil end
+                    end
                 end
             end
 
