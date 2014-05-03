@@ -158,7 +158,7 @@ namespace
 			: network::error(base), tlua_jailbreak_exception()
 		{}
 	private:
-		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error);
+		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error)
 	};
 }
 void synced_context::pull_remote_user_input()
