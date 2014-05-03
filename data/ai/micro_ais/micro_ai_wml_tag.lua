@@ -453,6 +453,115 @@ function wesnoth.wml_actions.micro_ai(cfg)
             { ca_id = 'move', location = CA_path .. 'ca_simple_attack.lua', score = cfg.ca_score or 110000 }
         }
 
+    elseif (cfg.ai_type == 'fast_ai') then
+        optional_keys = {
+            "include_occupied_attack_hexes", "move_cost_factor",
+            "weak_units_first", "skip_combat_ca", "skip_move_ca"
+        }
+        CA_parms = {
+            ai_id = 'mai_fast',
+            { ca_id = 'combat', location = CA_path .. 'ca_fast_combat.lua', score = 100000 },
+            { ca_id = 'move', location = CA_path .. 'ca_fast_move.lua', score = 20000 }
+        }
+
+        -- Also need to delete/add some default CAs
+        if (cfg.action == 'delete') then
+            -- This can be done independently of whether these were removed earlier
+            W.modify_ai {
+                side = cfg.side,
+                action = "add",
+                path = "stage[main_loop].candidate_action",
+                { "candidate_action", {
+                    id="combat",
+                    engine="cpp",
+                    name="ai_default_rca::combat_phase",
+                    max_score=100000,
+                    score=100000
+                } }
+            }
+
+            W.modify_ai {
+                side = cfg.side,
+                action = "add",
+                path = "stage[main_loop].candidate_action",
+                { "candidate_action", {
+                    id="villages",
+                    engine="cpp",
+                    name="ai_default_rca::get_villages_phase",
+                    max_score=60000,
+                    score=60000
+                } }
+            }
+
+            W.modify_ai {
+                side = cfg.side,
+                action = "add",
+                path = "stage[main_loop].candidate_action",
+                { "candidate_action", {
+                    id="retreat",
+                    engine="cpp",
+                    name="ai_default_rca::retreat_phase",
+                    max_score=40000,
+                    score=40000
+                } }
+            }
+
+            W.modify_ai {
+                side = cfg.side,
+                action = "add",
+                path = "stage[main_loop].candidate_action",
+                { "candidate_action", {
+                    id="move_to_targets",
+                    engine="cpp",
+                    name="ai_default_rca::move_to_targets_phase",
+                    max_score=20000,
+                    score=20000
+                } }
+            }
+        else
+            if (not cfg.skip_combat_ca) then
+                W.modify_ai {
+                    side = cfg.side,
+                    action = "try_delete",
+                    path = "stage[main_loop].candidate_action[combat]"
+                }
+            else
+                for i,parm in ipairs(CA_parms) do
+                    if (parm.ca_id == 'combat') then
+                        table.remove(CA_parms, i)
+                        break
+                    end
+                end
+            end
+
+            if (not cfg.skip_move_ca) then
+                W.modify_ai {
+                    side = cfg.side,
+                    action = "try_delete",
+                    path = "stage[main_loop].candidate_action[villages]"
+                }
+
+                W.modify_ai {
+                    side = cfg.side,
+                    action = "try_delete",
+                    path = "stage[main_loop].candidate_action[retreat]"
+                }
+
+                W.modify_ai {
+                    side = cfg.side,
+                    action = "try_delete",
+                    path = "stage[main_loop].candidate_action[move_to_targets]"
+                }
+            else
+                for i,parm in ipairs(CA_parms) do
+                    if (parm.ca_id == 'move') then
+                        table.remove(CA_parms, i)
+                        break
+                    end
+                end
+            end
+        end
+
     -- If we got here, none of the valid ai_types was specified
     else
         H.wml_error("unknown value for ai_type= in [micro_ai]")
