@@ -389,7 +389,7 @@ public:
 		if(offset < 0) {
 			offset += result.size();
 			if(offset < 0) {
-				WRN_SF << "[concatenate] Offset '"
+				WRN_SF << "[substring] Offset '"
 						<< args()[1]->evaluate(variables, fdb).as_int()
 						<< "' results in a negative start in string '"
 						<< result
@@ -399,7 +399,7 @@ public:
 			}
 		} else {
 			if(static_cast<size_t>(offset) >= result.size()) {
-				WRN_SF << "[concatenate] Offset '" << offset
+				WRN_SF << "[substring] Offset '" << offset
 						<< "' is larger than the size of '" << result
 						<< "' and results in an empty string.\n";
 
@@ -410,7 +410,7 @@ public:
 		if(args().size() > 2) {
 			const int size = args()[2]->evaluate(variables, fdb).as_int();
 			if(size < 0) {
-				ERR_SF << "[concatenate] Size is negative an "
+				ERR_SF << "[substring] Size is negative an "
 						<< "empty string is returned.\n";
 
 				return variant(std::string());
