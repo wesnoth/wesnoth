@@ -500,12 +500,16 @@ void mouse_handler::select_or_action(bool browse)
 
 	unit_map::iterator clicked_u = find_unit(last_hex_);
 	unit_map::iterator selected_u = find_unit(selected_hex_);
-	if ( (clicked_u != resources::units->end() && clicked_u->side() == side_num_)
-			|| ((selected_u == resources::units->end()) && (clicked_u != resources::units->end()))
-			|| ((selected_u != resources::units->end() && selected_u->side() != side_num_ && clicked_u != resources::units->end())) )
+	if ( clicked_u != resources::units->end() &&
+		 ((selected_u == resources::units->end()) ||
+		  (selected_u != resources::units->end() && selected_u->side() != side_num_)) )
+	{
 		select_hex(last_hex_, false);
+	}
 	else
+	{
 		move_action(browse);
+	}
 }
 
 void mouse_handler::move_action(bool browse)
