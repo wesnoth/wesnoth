@@ -2145,12 +2145,12 @@ static int intf_put_unit(lua_State *L)
 	}
 
 	resources::screen->invalidate(loc);
+	resources::units->erase(loc);
 	if (!u) return 0;
 
 	if (lu) {
 		lu->put_map(loc);
 	} else {
-		resources::units->erase(loc);
 		u->set_location(loc);
 		resources::units->insert(u);
 	}
