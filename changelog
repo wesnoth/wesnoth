@@ -3,14 +3,16 @@ Version 1.11.13+dev:
    * Updated translations:
  * Miscellaneous and bug fixes:
    * Fix bug #21967: fix crash when unit modification to traits has empty id
-   * Fix bug #19258, 21962: WML variables spuriously copied to replay_start 
-   * Fix bug #21961, Units are not attacking if the attack was issued from 
+   * Fix bug #19258, 21962: WML variables spuriously copied to replay_start
+   * Fix bug #21961, Units are not attacking if the attack was issued from
      more than one hex away.
    * Fix implementation bug in random number generator: rand_pool_ is now an
      unsigned long rather than an unsigned int.
    * Fix bug #21491: fix drag+drop for unit movements
    * Fix bug #21448: make premoved units selection like in Wesnoth 1.10
    * Fix bug #21372: fix unit move continuation if enemy discovered
+   * Micro AIs: a few more fixes of subtle or rarely occurring bugs in Hang Out
+     MAI and AI helper libraries
 
 Version 1.11.13:
  * AI:
@@ -51,7 +53,7 @@ Version 1.11.13:
      recruit units in a mp game.
    * Fix bug #21933: "team._info.lost not properly set when ending with
      [endlevel]"
-   * Fix a bug where a scenario didn't end when units were killed during moveto 
+   * Fix a bug where a scenario didn't end when units were killed during moveto
      or wml menu events and the side had no leader left.
  * Language and i18n:
    * Updated translations: Czech, French, Hungarian, Italian, Lithuanian,
