@@ -1,5 +1,6 @@
 Version 1.13.0-dev:
  * AI:
+   * New Micro AI: Fast AI
    * Messenger Escort Micro AI: new optional parameters [filter],
      [filter_second] and invert_order=
    * Messenger Escort Micro AI: bug fix for escort units blocking messenger's
@@ -113,11 +114,12 @@ Version 1.13.0-dev:
    * Fix bug #21883: make sure movement animations don't cycle with fog on
    * Fix bug #21316: make subframes within standing animations cycle by default
    * Fix bug #21967: fix crash when unit modification to traits has empty id
-   * Fix bug #19258, 21962: WML variables spuriously copied to replay_start 
+   * Fix bug #19258, 21962: WML variables spuriously copied to replay_start
    * Fix implementation bug in random number generator: rand_pool_ is now an
      unsigned long rather than an unsigned int.
    * Fix bug #21491: fix drag+drop for unit movements
    * Fix bug #21448: make premoved units selection like in Wesnoth 1.10
+   * Fix bug #21372: fix unit move continuation if enemy discovered
 
 Version 1.11.11:
  * Add-ons server:
