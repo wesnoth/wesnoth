@@ -161,10 +161,13 @@ function ca_fast_move:execution(ai, cfg, self)
 
             -- Finally find the best move for this unit
             local reach = wesnoth.find_reach(unit)
+
+            local pre_ratings = {}
             local max_rating, best_hex = -9e99
             for _,loc in ipairs(reach) do
                 local rating = - H.distance_between(loc[1], loc[2], next_hop[1], next_hop[2])
-                rating = rating - H.distance_between(loc[1], loc[2], goal.x, goal.y) / 2.
+                local other_rating = - H.distance_between(loc[1], loc[2], goal.x, goal.y) / 10.
+                rating = rating + other_rating
 
                 local unit_in_way
                 if (rating > max_rating) then
@@ -176,17 +179,56 @@ function ca_fast_move:execution(ai, cfg, self)
                         if (reach:size() > 1) then
                             unit_in_way = nil
                             rating = rating - 0.01
+                            other_rating = other_rating - 0.01
                         end
                     end
                 end
 
-                if (rating > max_rating) and (not unit_in_way) then
-                    max_rating, best_hex = rating, { loc[1], loc[2] }
+                if (not unit_in_way) then
+                    if cfg.dungeon_mode then
+                        table.insert(pre_ratings, {
+                            rating = rating,
+                            other_rating = other_rating,
+                            x = loc[1], y = loc[2]
+                        })
+                    else
+                        if (rating > max_rating) then
+                            max_rating, best_hex = rating, { loc[1], loc[2] }
+                        end
+                    end
                 end
             end
 
-            if best_hex then
+            -- If this is dungeon mode, we need another level of analysis, calculating
+            -- the move cost from the target hex to the next hop hex, not just the distance
+            if cfg.dungeon_mode then
+                table.sort(pre_ratings, function(a,b) return (a.rating > b.rating) end)
 
+                wesnoth.extract_unit(unit)
+                local old_x, old_y = unit.x, unit.y
+
+                local max_rating = -9e99
+                for _,pre_rating in ipairs(pre_ratings) do
+                    -- If pre_rating is worse than the full rating, we are done because the
+                    -- move cost can never be less than the distance, so we cannot possibly do
+                    -- better than the pre-rating
+                    if (pre_rating.rating <= max_rating) then break end
+
+                    unit.x, unit.y = pre_rating.x, pre_rating.y
+                    local _,cost = wesnoth.find_path(unit, next_hop[1], next_hop[2])
+
+                    local rating = - cost + pre_rating.other_rating
+
+                    if (rating > max_rating) then
+                        max_rating, best_hex = rating, { pre_rating.x, pre_rating.y }
+                    end
+                end
+
+                unit.x, unit.y = old_x, old_y
+                wesnoth.put_unit(unit)
+            end
+
+            if best_hex then
                 local dx, dy = goal.x - best_hex[1], goal.y - best_hex[2]
                 local r = math.sqrt(dx * dx + dy * dy)
                 dx, dy = dx / r, dy / r
