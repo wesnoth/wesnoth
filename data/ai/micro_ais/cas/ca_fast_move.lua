@@ -160,8 +160,29 @@ function ca_fast_move:execution(ai, cfg, self)
         if best_unit_info then
             local unit = units[best_unit_info.i_unit]
 
-            -- Next hop if there weren't any other units around
-            local next_hop = AH.next_hop(unit, goal.x, goal.y, { ignore_units = true })
+            -- We now want the hex that is 2 steps beyond the next hop for the unit
+            -- on its way toward the goal, ignoring any unit along the way
+            local path = wesnoth.find_path(unit, goal.x, goal.y, { ignore_units = true })
+
+            -- Use current unit position as default
+            local short_goal, index = { unit.x, unit.y }, 1
+
+            for i = 2,#path do
+                local _, sub_cost = wesnoth.find_path(unit, path[i][1], path[i][2], { ignore_units = true })
+
+                if (sub_cost <= unit.moves) then
+                    short_goal, index = path[i], i
+                else
+                    break
+                end
+            end
+
+            -- Now go two hexes past that, if possible
+            if path[index + 2] then
+                short_goal = path[index + 2]
+            elseif path[index + 1] then
+                short_goal = path[index + 1]
+            end
 
             -- Finally find the best move for this unit
             local reach = wesnoth.find_reach(unit)
@@ -169,7 +190,7 @@ function ca_fast_move:execution(ai, cfg, self)
             local pre_ratings = {}
             local max_rating, best_hex = -9e99
             for _,loc in ipairs(reach) do
-                local rating = - H.distance_between(loc[1], loc[2], next_hop[1], next_hop[2])
+                local rating = - H.distance_between(loc[1], loc[2], short_goal[1], short_goal[2])
                 local other_rating = - H.distance_between(loc[1], loc[2], goal.x, goal.y) / 10.
                 rating = rating + other_rating
 
@@ -204,7 +225,7 @@ function ca_fast_move:execution(ai, cfg, self)
             end
 
             -- If this is dungeon mode, we need another level of analysis, calculating
-            -- the move cost from the target hex to the next hop hex, not just the distance
+            -- the move cost from the target hex to the short goal hex, not just the distance
             if cfg.dungeon_mode then
                 table.sort(pre_ratings, function(a,b) return (a.rating > b.rating) end)
 
@@ -219,7 +240,7 @@ function ca_fast_move:execution(ai, cfg, self)
                     if (pre_rating.rating <= max_rating) then break end
 
                     unit.x, unit.y = pre_rating.x, pre_rating.y
-                    local _,cost = wesnoth.find_path(unit, next_hop[1], next_hop[2])
+                    local _,cost = wesnoth.find_path(unit, short_goal[1], short_goal[2])
 
                     local rating = - cost + pre_rating.other_rating
 
