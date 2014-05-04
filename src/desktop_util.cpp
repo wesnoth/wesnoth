@@ -106,6 +106,7 @@ bool open_object(const std::string& path_or_url)
 
 #else
 
+	(void)(path_or_url); // silence gcc's -Wunused-parameter
 	ERR_DU << "open_object(): unsupported platform\n";
 	return false;
 
