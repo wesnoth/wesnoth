@@ -10,7 +10,6 @@ function ca_fast_combat:evaluation(ai, cfg, self)
     end
 
     if (not self.data.fast_combat_units) or (not self.data.fast_combat_units[1]) then
-        --print('Reusing unit table')
         self.data.fast_combat_units = wesnoth.get_units { side = wesnoth.current.side }
         if (not self.data.fast_combat_units[1]) then return 0 end
 
@@ -24,11 +23,9 @@ function ca_fast_combat:evaluation(ai, cfg, self)
 
     local aggression = ai.get_aggression()
     if (aggression > 1) then aggression = 1 end
-    --print('aggression', aggression)
 
     for i = #self.data.fast_combat_units,1,-1 do
         local unit = self.data.fast_combat_units[i]
-        --print('Considering unit ' .. i .. ': ' .. unit.id)
 
         if (unit.attacks_left > 0) and (H.get_child(unit.__cfg, 'attack')) then
             local attacks = AH.get_attacks({ unit }, { include_occupied = cfg.include_occupied_attack_hexes })
@@ -42,7 +39,6 @@ function ca_fast_combat:evaluation(ai, cfg, self)
                         { own_value_weight = 1.0 - aggression },
                         self.data.fast_cache
                     )
-                    --print(unit.id, target.id, rating)
 
                     if (rating > 0) and (rating > max_rating) then
                         max_rating, best_target, best_dst = rating, target, attack.dst

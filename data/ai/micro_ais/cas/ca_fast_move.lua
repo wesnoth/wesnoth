@@ -28,7 +28,6 @@ function ca_fast_move:execution(ai, cfg, self)
     local village_value = ai.get_village_value()
     if (village_value > 0) then
         local villages = wesnoth.get_villages()
-        --print('#villages', #villages)
 
         -- Eliminate villages owned by a side that is not an enemy
         for i = #villages,1,-1 do
@@ -37,7 +36,6 @@ function ca_fast_move:execution(ai, cfg, self)
                 table.remove(villages, i)
             end
         end
-        --print('#villages up for grabs', #villages)
 
         -- Add rating that is sum of inverse distances from all other villages
         for i = 1,#villages-1 do
@@ -66,10 +64,8 @@ function ca_fast_move:execution(ai, cfg, self)
 
         -- Now we figure out how many villages we want to go for
         local max_villages = math.floor(#units / 4. * village_value)
-        --print('max_villages', max_villages)
 
         local villages_to_get = math.min(max_villages, #villages)
-        --print('villages_to_get', villages_to_get)
 
         for _ = 1,villages_to_get do
             -- Sort villages by rating (highest rating last, because that makes table.remove faster)
@@ -91,7 +87,6 @@ function ca_fast_move:execution(ai, cfg, self)
             end
         end
     end
-    --print('Time after setting up village goals:', wesnoth.get_time_stamp() - start_time)
 
     -- Now add enemy leaders to the goals
     local enemy_leaders =
@@ -99,7 +94,6 @@ function ca_fast_move:execution(ai, cfg, self)
             { "filter_side", { { "enemy_of", { side = wesnoth.current.side } } } },
             canrecruit = 'yes'
         }
-    --print('#enemy_leaders', #enemy_leaders)
 
     -- Sort enemy leaders by distance to AI leader
     if leader then
@@ -114,7 +108,6 @@ function ca_fast_move:execution(ai, cfg, self)
         local goal = { x = enemy_leader.x, y = enemy_leader.y }
         table.insert(goals, goal)
     end
-    --print('Time after setting up enemy leader goals:', wesnoth.get_time_stamp() - start_time)
 
     -- Putting information about all the units into the goals
     -- This is a one-time expense up front, but generally not too bad
@@ -126,7 +119,6 @@ function ca_fast_move:execution(ai, cfg, self)
         end
         table.sort(goal, function(a, b) return (a.dist < b.dist) end)
     end
-    --print('Time after adding unit info into goals:', wesnoth.get_time_stamp() - start_time)
 
     local keep_moving, next_goal = true, 0
     while keep_moving do
@@ -150,12 +142,10 @@ function ca_fast_move:execution(ai, cfg, self)
             end
 
             if (unit_info.cost < unit_info.dist * move_cost_factor) then
-                --print('Efficient move found:', units[unit_info.i_unit].x, units[unit_info.i_unit].y, goal.x, goal.y)
 
                 best_unit_info = unit_info
                 break
             elseif (unit_info.cost < 1000) then
-                --print('No efficient move found:', units[unit_info.i_unit].x, units[unit_info.i_unit].y, goal.x, goal.y)
                 local rating = - unit_info.cost
                 if (rating > max_rating) then
                     max_rating, best_unit_info = rating, unit_info
@@ -196,7 +186,6 @@ function ca_fast_move:execution(ai, cfg, self)
             end
 
             if best_hex then
-                --print('Doing move:', unit.x, unit.y, best_hex[1], best_hex[2], goal.x, goal.y)
 
                 local dx, dy = goal.x - best_hex[1], goal.y - best_hex[2]
                 local r = math.sqrt(dx * dx + dy * dy)
@@ -216,12 +205,10 @@ function ca_fast_move:execution(ai, cfg, self)
 
             -- Finally, if this was a village, remove the goal (we only do one unit per village
             if goal.is_village then
-                --print('Removing goal (only one unit per village):', goal.x, goal.y)
                 table.remove(goals, next_goal)
                 next_goal = next_goal - 1
             end
         else
-            --print('Removing goal (no more unit can get there):', goal.x, goal.y)
             table.remove(goals, next_goal)
             next_goal = next_goal - 1
         end
@@ -233,7 +220,6 @@ function ca_fast_move:execution(ai, cfg, self)
             end
         end
     end
-    --print('Overall time:', wesnoth.get_time_stamp() - start_time)
 end
 
 return ca_fast_move
