@@ -79,7 +79,7 @@ namespace test_utils {
 			gui2::init();
 			load_language_list();
 			game_config::config_cache::instance().add_define("TEST");
-			game_config::config_cache::instance().get_config(game_config::path + "/data/test/", cfg_);
+			game_config::config_cache::instance().get_config(game_config::path + "/data/", cfg_);
 			::init_textdomains(cfg_);
 			const std::vector<language_def>& languages = get_languages();
 			std::vector<language_def>::const_iterator English = std::find_if(languages.begin(),
