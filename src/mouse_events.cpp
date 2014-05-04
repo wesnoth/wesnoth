@@ -569,6 +569,10 @@ void mouse_handler::move_action(bool browse)
 					if (resources::whiteboard->is_active()) {
 						save_whiteboard_attack(attack_from, clicked_u->get_location(), choice);
 					} else {
+						// clear current unit selection so that any other unit selected
+						// triggers a new selection
+						selected_hex_ = map_location();
+						
 						attack_enemy(u->get_location(), clicked_u->get_location(), choice);
 					}
 				}
@@ -605,6 +609,10 @@ void mouse_handler::move_action(bool browse)
 					save_whiteboard_attack(attack_from, hex, choice);
 				}
 				else if ( move_unit_along_current_route() ) {
+					// clear current unit selection so that any other unit selected
+					// triggers a new selection
+					selected_hex_ = map_location();
+
 					attack_enemy(attack_from, hex, choice); // Fight !!
 				}
 				//TODO: Maybe store the attack choice so "press t to continue"
