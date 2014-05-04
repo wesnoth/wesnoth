@@ -1421,6 +1421,7 @@ void play_controller::check_victory()
 	check_end_level();
 
 	bool found_player = false;
+	bool found_human_or_network = false;
 
 	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
 		size_t side = *n - 1;
@@ -1435,6 +1436,10 @@ void play_controller::check_victory()
 		if (teams_[side].is_human()) {
 			found_player = true;
 		}
+
+		if (teams_[side].is_human() || teams_[side].is_network()){
+			found_human_or_network = true;
+		}
 	}
 
 	if (found_player) {
@@ -1444,9 +1449,9 @@ void play_controller::check_victory()
 
 	DBG_NG << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
 	DBG_NG << "found_player: " << found_player << std::endl;
-	DBG_NG << "is_observer: " << is_observer() << std::endl;
+	DBG_NG << "found_human_or_network: " << found_human_or_network << std::endl;
 
-	if (!victory_when_enemies_defeated_ && (found_player || is_observer())) {
+	if (!victory_when_enemies_defeated_ && found_human_or_network) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
