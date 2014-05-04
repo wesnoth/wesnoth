@@ -14,7 +14,12 @@ function ca_fast_move:execution(ai, cfg, self)
     local move_cost_factor = cfg.move_cost_factor or 2.0
     if (move_cost_factor < 1.1) then move_cost_factor = 1.1 end
 
-    local units = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
+    local all_units_MP = AH.get_units_with_moves { side = wesnoth.current.side, canrecruit = 'no' }
+    local units = {}
+    for _,unit in ipairs(all_units_MP) do
+        if (not unit.status.guardian) then table.insert(units, unit) end
+    end
+
     local leader = wesnoth.get_units { side = wesnoth.current.side, canrecruit = 'yes' }[1]
 
     local goals = {}
