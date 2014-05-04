@@ -676,10 +676,7 @@ void mouse_handler::move_action(bool browse)
 
 void mouse_handler::select_hex(const map_location& hex, const bool browse, const bool highlight, const bool fire_event) {
 
-	if (selected_hex_ == hex)
-		selected_hex_ = map_location::null_location;
-	else
-		selected_hex_ = hex;
+	selected_hex_ = hex;
 
 	gui().select_hex(selected_hex_);
 	gui().clear_attack_indicator();
