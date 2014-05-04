@@ -115,9 +115,14 @@ function ca_fast_move:execution(ai, cfg, self)
         -- Insert information about the units
         for i_u,unit in ipairs(units) do
             local dist = H.distance_between(unit.x, unit.y, goal.x, goal.y)
-            goal[i_u] = { dist = dist / unit.max_moves, i_unit = i_u }
+
+            goal[i_u] = {
+                dist = dist / unit.max_moves,
+                rating = - math.ceil(dist / unit.max_moves) - dist / 10.,  -- Combination of fastest and closest unit
+                i_unit = i_u
+            }
         end
-        table.sort(goal, function(a, b) return (a.dist < b.dist) end)
+        table.sort(goal, function(a, b) return (a.rating > b.rating) end)
     end
 
     local keep_moving, next_goal = true, 0
@@ -142,7 +147,6 @@ function ca_fast_move:execution(ai, cfg, self)
             end
 
             if (unit_info.cost < unit_info.dist * move_cost_factor) then
-
                 best_unit_info = unit_info
                 break
             elseif (unit_info.cost < 1000) then
