@@ -30,9 +30,14 @@ function ca_fast_move:execution(ai, cfg, self)
         local villages = wesnoth.get_villages()
 
         -- Eliminate villages owned by a side that is not an enemy
+        -- Also remove unowned villages if the AI has no leader
         for i = #villages,1,-1 do
             local owner = wesnoth.get_village_owner(villages[i][1], villages[i][2])
             if owner and (not wesnoth.is_enemy(owner, wesnoth.current.side)) then
+                table.remove(villages, i)
+            end
+
+            if (not leader) and (not owner) then
                 table.remove(villages, i)
             end
         end
