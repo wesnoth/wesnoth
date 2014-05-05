@@ -7,21 +7,21 @@
 # Automatically generated, 2004.
 # Széll Tamás <tomi@digiflex.hu>, 2005.
 # Barthalos Márton <barthalosmarton@yahoo.com>, 2007, 2008, 2009.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2010, 2012.
-# Németi Barna <greeneyelink@gmx.com>, 2012.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2009, 2010, 2012, 2014.
+# Németi Barna <greeneyelink@gmx.com>, 2012, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2012-01-03 13:36+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-04-30 14:49+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: American English <kde-i18n-doc@kde.org>\n"
-"Language: \n"
+"Language-Team: American English <kde-l10n-hu@kde.org>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.5\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #. [campaign]: id=Heir_To_The_Throne
@@ -375,22 +375,16 @@ msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:305
-#, fuzzy
-#| msgid ""
-#| "We will go north. Perhaps we can reach the Isle of Alduin. If we can make "
-#| "it there, surely we will be safe. Konrad, we must recruit some elves to "
-#| "help us, and then you must make it to the sign post in the north-west. I "
-#| "will protect you!"
 msgid ""
 "We will go north. Perhaps we can reach the Isle of Alduin. If we can make it "
 "there, surely we will be safe. Konrad, we must recruit some elves to help "
 "us, and then you must make it to the sign post in the northwest. I will "
 "protect you!"
 msgstr ""
-"Észak felé megyünk, és talán eljutunk Alduin szigetére. Ha oda megérkezünk, "
-"akkor biztonságban leszünk. Konrad, toboroznunk kell néhány tündét, hogy "
-"fedezzenek minket, utána pedig el kell indulnod északnyugatra, az útjelző "
-"táblához. Vigyázni fogok rád!"
+"Észak felé indulunk. Talán elérjük Alduin szigetét. Ha odáig eljutunk,  "
+"biztonságban leszünk. Konrad, tündéket kell toboroznunk, hogy segítsenek, "
+"utána pedig el kell érned az útjelző táblát északnyugaton.\n"
+"Megvédelek!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:309
@@ -4910,7 +4904,7 @@ msgstr "Megszerzed a Tűz Jogarát Konraddal vagy Li’sarral"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:251
 msgid ""
 "If Delfador rests, he can concentrate on the location of the Sceptre of Fire."
-msgstr ""
+msgstr "Delfador pihenés közben képes a Tűz Jogarának helyét megérezni."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:164
@@ -4991,11 +4985,13 @@ msgid ""
 "I think... I think if I were to concentrate a bit I could tell you where it "
 "is."
 msgstr ""
+"Azt hiszem... azt hiszem, ha még egy kicsit koncentrálok a Jogarra, meg "
+"tudom mondani, merre van."
 
 #. [floating_text]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:275
 msgid "Concentrating"
-msgstr ""
+msgstr "Koncentrál"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:299
@@ -5003,46 +4999,48 @@ msgid ""
 "I sense we are quite near the Sceptre; in fact, we should be able to see it "
 "right about now..."
 msgstr ""
+"Úgy érzem, egészen közel vagyunk a Jogarhoz; gyakorlatilag látnunk is "
+"kellene már..."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:362
 msgid "I sense the path to the sceptre is to the east of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem keletre van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:363
 msgid "I sense the path to the sceptre is to the south-east of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem délkeletre van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:364
 msgid "I sense the path to the sceptre is to the south of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem délre van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:365
 msgid "I sense the path to the sceptre is to the south-west of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem délnyugatra van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:366
 msgid "I sense the path to the sceptre is to the west of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem nyugatra van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:367
 msgid "I sense the path to the sceptre is to the north-west of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem északnyugatra van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:368
 msgid "I sense the path to the sceptre is to the north of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem északra van."
 
 #. [lua]: speaker='Delfador', message= dirs[ai_helper.get_direction_index(delf, goal, 8, true)]}
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:369
 msgid "I sense the path to the sceptre is to the north-east of me."
-msgstr ""
+msgstr "Érzem, hogy a Jogar tőlem északkeletre van."
 
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
@@ -7066,16 +7064,12 @@ msgstr ""
 
 #. [message]: speaker=Parandra
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:155
-#, fuzzy
-#| msgid ""
-#| "Princess, when Delfador the Great speaks of the Queen Mother, Asheviere, "
-#| "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgid ""
 "Princess, when Delfador the Great speaks of the Queen Dowager, Asheviere, "
 "ordering the princes of Wesnoth to be put to death, he speaks the truth."
 msgstr ""
-"Hercegnő, a Nagy Delfador igazat beszél. Asheviere, a királynő, annak idején "
-"valóban elrendelte, hogy végezzék ki Wesnoth hercegeit."
+"Hercegnő, ha a Nagy Delfador azt mondja, hogy Asheviere, az özvegy királynő "
+"elrendelte, hogy végezzék ki Wesnoth hercegeit, akkor az úgy is van."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:159
@@ -7096,21 +7090,15 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:173
-#, fuzzy
-#| msgid ""
-#| "Well, that is why I must take the Sceptre. I will return, and people will "
-#| "accept me as Queen. I will rule justly and fairly. My mother is only "
-#| "Queen Mother. The throne is rightfully mine, and with the Sceptre I can "
-#| "prove it."
 msgid ""
 "Well, that is why I must take the Sceptre. I will return, and people will "
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
 "Dowager. The throne is rightfully mine, and with the Sceptre I can prove it."
 msgstr ""
-"Nos, ezért kell megszereznem a jogart. Vissza fogok térni, és az emberek el "
-"fognak fogadni királynőjükként. Igazságos és jóságos uralkodó leszek. Anyám "
-"csak az anyakirálynő. A trón jog szerint engem illet, és a jogarral ezt be "
-"is tudom bizonyítani."
+"Nos, éppen ezért kell nekem megszereznem a Jogart. Visszatérek, és a nép "
+"királynőjeként fogad majd. Igazságos és jóságos uralkodó leszek. Anyám csak "
+"a király özvegye. A trón jog szerint engem illet, és a Jogarral ezt be is "
+"tudom bizonyítani."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:178
@@ -7123,22 +7111,15 @@ msgstr ""
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:184
-#, fuzzy
-#| msgid ""
-#| "Well, I have the Sceptre! I will return and the people will accept me as "
-#| "Queen! My mother is only Queen Mother. The Throne is rightfully mine, and "
-#| "I will rule from it with justice and fairness. I may even accept you as "
-#| "my adviser and counselor, Delfador."
 msgid ""
 "Well, I have the Sceptre! I will return and the people will accept me as "
 "Queen! My mother is only Queen Dowager. The Throne is rightfully mine, and I "
 "will rule from it with justice and fairness. I may even accept you as my "
 "adviser and counselor, Delfador."
 msgstr ""
-"Nos, a jogar a birtokomban van! Vissza fogok térni, és az emberek el fognak "
-"fogadni királynőjükként. Anyám csak az anyakirálynő. A trón jog szerint "
-"engem illet, igazságos és jóságos uralkodó leszek. Még az is lehet, "
-"Delfador, hogy kinevezlek tanácsosomnak."
+"Nos, Jogar az enyém! Visszatérek, és a nép királynőként fogad majd. Anyám "
+"csak a király özvegye. A trón jog szerint az enyém és én igazságos és "
+"jóságos uralkodó leszek. Még talán a tanácsosommá is kinevezlek, Delfador."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:189
@@ -8366,19 +8347,14 @@ msgstr "Sötét királynő"
 
 #. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:19
-#, fuzzy
-#| msgid ""
-#| "The evil queen mother Asheviere has terrorized Wesnoth for many years. "
-#| "Her knowledge of magic makes her a worthy foe in combat, although her "
-#| "power is mostly derived from those she commands."
 msgid ""
 "The evil queen Asheviere has terrorized Wesnoth for many years. Her "
 "knowledge of magic makes her a worthy foe in combat, although her power is "
 "mostly derived from those she commands."
 msgstr ""
-"Az ördögi Asheviere anyakirálynő éveken át rettegésben tartotta Wesnothot. "
-"Varázstudománya méltó ellenféllé teszi a harcban, bár hatalmát főként az "
-"alárendeltjeinek adott parancsok által gyakorolja."
+"A gonosz Asheviere királynő éveken át rettegésben tartotta Wesnothot. "
+"Varázstudománya méltó ellenféllé teszi a harcban, de hatalma főleg az "
+"alárendeltjei erejéből ered."
 
 #. [attack]: type=impact
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:24
@@ -8438,24 +8414,16 @@ msgstr "Hercegnő"
 #. [variation]: id=Princess, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:33
 #: data/campaigns/Heir_To_The_Throne/units/Princess.cfg:93
-#, fuzzy
-#| msgid ""
-#| "A noble by birth, the Princess has learnt swordplay with the greatest "
-#| "generals and battle tactics with the greatest sages, making her both a "
-#| "great combatant and leader. The units of lower level around the Princess "
-#| "will fight better due to her presence. The Princess is also nimble and "
-#| "dextrous, having skills like that of a thief."
 msgid ""
 "A noble by birth, the Princess has learnt swordplay with the greatest "
 "generals and battle tactics with the greatest sages, making her both a great "
 "combatant and leader. The units of lower level around the Princess will "
 "fight better due to her presence."
 msgstr ""
-"Nemesi származásánál fogva a legjobb katonáktól tanulhatott vívni, a legjobb "
-"bölcsektől hadat vezetni, s így egyaránt kiváló harcos és hadvezér. A "
-"körülötte levő alacsonyabb szintű egységek jobban harcolnak jelenlétének "
-"köszönhetően. Kecsességének és ügyességének köszönhetően a tolvajok "
-"legelőnyösebb tulajdonságaival is rendelkezik."
+"Nemesnek született, így a Hercegnő a kardforgatást a legnagyobb "
+"hadvezérektől, a hadvezetést a legnagyobb bölcsektől tanulta el, ezáltal "
+"egyaránt kiváló harcossá és vezetővé vált. A körülötte levő alacsonyabb "
+"szintű egységek jobban harcolnak jelenlétének köszönhetően. "
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
@@ -8495,7 +8463,7 @@ msgstr "karmok"
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:9
 msgid "initiative"
-msgstr ""
+msgstr "kezdeményezés"
 
 #. [dummy]: id=initiative
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:10
@@ -8503,12 +8471,17 @@ msgid ""
 "All adjacent friendly units will strike first in melee combat, even when "
 "defending."
 msgstr ""
+"Minden szomszédos szövetséges egység először támad a közelharcban, még "
+"védekezéskor is."
 
 #: data/campaigns/Heir_To_The_Throne/utils/abilities.cfg:15
 msgid ""
 "This unit's grasp of melee tactics allows adjacent allies to strike the "
 "first blow even when defending."
 msgstr ""
+"Ennek az egységnek a közelharci tudása lehetővé teszi a szomszédos "
+"szövetséges egységek számára, hogy először támadhassanak, még védekezéskor "
+"is. "
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/utils/deaths.cfg:9
