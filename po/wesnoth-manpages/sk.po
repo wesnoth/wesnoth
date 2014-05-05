@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-dev\n"
 "POT-Creation-Date: 2013-11-16 09:28+0100\n"
-"PO-Revision-Date: 2014-03-01 13:30+0100\n"
+"PO-Revision-Date: 2014-04-27 23:52+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -178,29 +178,36 @@ msgstr "Identifikátor scény vo zvolenej výprave. Predvolená je prvá scéna.
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:60
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--userconfig-dir>I<\\ name>"
 msgid "B<--config-dir>I<\\ name>"
-msgstr "B<--config-dir>I<\\ názov>"
+msgstr "B<--userconfig-dir>I<\\ názov>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
+#, fuzzy
+#| msgid ""
+#| "sets the userdata directory to I<name> under $HOME or \"My Documents\\eMy "
+#| "Games\" for windows.  You can also specify an absolute path for the "
+#| "userdata directory outside the $HOME or \"My Documents\\eMy Games\"."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
 "for the configuration directory outside the $HOME or \"My Documents\\eMy "
 "Games\""
 msgstr ""
-"nastaví adresár s používateľskými nastaveniami na I<meno> pod $HOME alebo "
-"\"My Documents\\eMy Games\" vo Windows. Je možné zadať aj absolútnu cestu "
-"pre adresáre mimo $HOME alebo \"My Documents\\eMy Games\""
+"nastaví adresár s používateľskými údajmi na I<meno> pod $HOME alebo \"My "
+"Documents\\eMy Games\" vo Windows. Je možné zadať aj absolútnu cestu pre "
+"adresáre mimo $HOME alebo \"My Documents\\eMy Games\"."
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:67
-#, no-wrap
+#, fuzzy, no-wrap
+#| msgid "B<--userconfig-path>"
 msgid "B<--config-path>"
-msgstr "B<--config-path>"
+msgstr "B<--userconfig-path>"
 
 # type: Plain text
 #. type: Plain text
@@ -1906,6 +1913,50 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:286
 msgid "B<wesnoth>(6)."
 msgstr "B<wesnoth>(6)."
+
+# type: TP
+#~| msgid "B<--path>"
+#~ msgid "B<--data-path>"
+#~ msgstr "B<--data-path>"
+
+# type: Plain text
+#~| msgid "prints the name of the game data directory and exits."
+#~ msgid "path the path of the data directory and exits."
+#~ msgstr "vypíše cestu k dátovému adresáru hry a skončí."
+
+# type: Plain text
+#~| msgid ""
+#~| "sets the user configuration directory to I<name> under $HOME or \"My "
+#~| "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~| "path for the configuration directory outside the $HOME or \"My Documents"
+#~| "\\eMy Games\""
+#~ msgid ""
+#~ "sets the user configuration directory to I<name> under $HOME or \"My "
+#~ "Documents\\eMy Games\" for windows.  You can also specify an absolute "
+#~ "path for the configuration directory outside the $HOME or \"My Documents"
+#~ "\\eMy Games\".  Under X11 this defaults to $XDG_CONFIG_HOME or $HOME/."
+#~ "config/wesnoth, on other systems to the userdata path."
+#~ msgstr ""
+#~ "nastaví adresár s používateľskými nastaveniami na I<meno> pod $HOME alebo "
+#~ "\"My Documents\\eMy Games\" vo Windows. Je možné zadať aj absolútnu cestu "
+#~ "pre adresáre mimo $HOME alebo \"My Documents\\eMy Games\". V systéme X11 "
+#~ "je predvolenou cestou $XDG_CONFIG_HOME alebo $HOME/.config/wesnoth, na "
+#~ "iných systémoch je to cesta nastavená cez \"userdata-path\"."
+
+# type: TP
+#~| msgid "B<--config-dir>I<\\ name>"
+#~ msgid "B<--userdata-dir>I<\\ name>"
+#~ msgstr "B<--userdata-dir>I<\\ názov>"
+
+# type: TP
+#~| msgid "B<--path>"
+#~ msgid "B<--userdata-path>"
+#~ msgstr "B<--userdata-path>"
+
+# type: Plain text
+#~| msgid "prints the path of the user configuration directory and exits."
+#~ msgid "prints the path of the userdata directory and exits."
+#~ msgstr "vypíše cestu k adresáru s používateľskými údajmi a skončí."
 
 #~ msgid "2011"
 #~ msgstr "2011"
