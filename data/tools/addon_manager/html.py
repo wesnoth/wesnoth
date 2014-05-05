@@ -136,17 +136,10 @@ unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
             ) % (icon, imgurl))
         described = v("description", "(no description)")
         if described != "(no description)":
-            shift = 0
-            for urlref in re.finditer(r'(?<![">])http://[\w./?&=%~-]+', described):
-                described = described[:urlref.start()+shift] + '<a href="' + urlref.group(0) + '">' + urlref.group(0) + "</a>" + described[urlref.end()+shift:]
-                shift += 15 + len(urlref.group(0))
-            shift = 0
-            for wesurl in re.finditer(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org/[\w./?&=%~-]+', described):
-                described = described[:wesurl.start()+shift] + '<a href="http://' + wesurl.group(0) + '">' + wesurl.group(0) + "</a>" + described[wesurl.end()+shift:]
-                shift += 22 + len(wesurl.group(0))
-            described = re.sub(r"\n", "\n<br/>", described)
-            if sys.platform != "win32":
-                described = re.sub(r"\r(?!\n)", r"\r<br/>", described)
+            described = re.sub(r'(?<![">])http://[\w./?&=%~-]+', r'<a href="\g<0>">\g<0></a>', described)
+            described = re.sub(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org[\w./?&=%~-]+', r'<a href="http://\g<0>">\g<0>"</a>"', described)
+            if "\n" in described:
+                described = "<pre>" + described + "</pre>"
         w('<div class="desc"><b>%s</b><br/>%s</div></td>' % (
             name, described))
         w("<td><b>%s</b><br/>" % name)
