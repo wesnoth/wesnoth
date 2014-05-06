@@ -548,7 +548,7 @@ static int do_gameloop(int argc, char** argv)
 		}
 
 		loadscreen_manager.reset();
-
+#if !SDL_VERSION_ATLEAST(2,0,0)
 		if(cmdline_opts.unit_test) {
 			if(cmdline_opts.timeout && *cmdline_opts.timeout > 0) {
 				int worker_result = 2; //Default timeout return value if worker fails to return
@@ -593,6 +593,7 @@ static int do_gameloop(int argc, char** argv)
 				return worker_result;
 			}
 		}
+#endif
 
 		if(game->play_test() == false) {
 			return 0;
