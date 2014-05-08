@@ -45,6 +45,10 @@ namespace ai {
 
 namespace testing_ai_default {
 
+static lg::log_domain log_aitesting("aitesting");
+#define LOG_AIT LOG_STREAM(info, log_aitesting)
+//If necessary, this define can be replaced with `#define LOG_AIT std::cout` to restore previous behavior
+
 static lg::log_domain log_ai_ca_testing_recruitment("ai/ca/testing_recruitment");
 #define DBG_AI LOG_STREAM(debug, log_ai_ca_testing_recruitment)
 #define LOG_AI LOG_STREAM(info, log_ai_ca_testing_recruitment)
@@ -764,14 +768,14 @@ static void get_recruit_quality(potential_recruit &rec, fake_team &t, std::vecto
             double tmpscore =(compare_unit_types(defender, pair->enemy) / ((defender_enemies != 0) ? defender_enemies : 1 ));
             if(tmpscore > 0){
                pair->score += tmpscore;
-               std::cout << defender->type_name() << " resistance against " << pair->enemy->type_name() << " is: " << tmpscore << ", new score = " << pair->score << std::endl;
+               LOG_AIT << defender->type_name() << " resistance against " << pair->enemy->type_name() << " is: " << tmpscore << ", new score = " << pair->score << std::endl;
             }
          }
          if(pair->score > max_score)
             max_score = pair->score;
          if(pair->score < min_score)
             min_score = pair->score;
-         std::cout << pair->enemy->id << " resistance = " << pair->score << std::endl;
+         LOG_AIT << pair->enemy->id << " resistance = " << pair->score << std::endl;
       //}
    }
    double score = 0;
@@ -1086,11 +1090,11 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
       std::vector<potential_recruit> recruit_result = ai_choose_best_recruits(*ai_t, 1, quality_factor,false);
       if(recruit_result.empty())
       {
-         std::cout << "recruit_result = empty" << std::endl;
+         LOG_AIT << "recruit_result = empty" << std::endl;
          break;
       }
       const potential_recruit &recruit_unit = recruit_result[0];
-      std::cout << "recruit: " << recruit_unit.id() << std::endl;
+      LOG_AIT << "recruit: " << recruit_unit.id() << std::endl;
       if(ai_t->gold() >= recruit_unit.cost())
       {
          recruit_result_ptr recruit_action = check_recruit_action(recruit_unit.id());
@@ -1106,7 +1110,7 @@ void testing_recruitment_phase::do_recruit(int max_units_to_recruit, double qual
       }
       else
       {
-         std::cout << "gold not ok" << std::endl;
+         LOG_AIT << "gold not ok" << std::endl;
       }
    }
 }
@@ -1136,7 +1140,7 @@ return 0;
 
 void testing_recruitment_phase::execute()
 {
-   std::cout << "execute floris' recruitment algorithm" << std::endl;
+   LOG_AIT << "execute floris' recruitment algorithm" << std::endl;
    int max_units_to_recruit = 1;
    double quality_factor = 1.0;
    do_recruit(max_units_to_recruit, quality_factor);

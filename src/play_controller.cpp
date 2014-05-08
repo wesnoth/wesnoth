@@ -55,6 +55,10 @@
 
 #include <boost/foreach.hpp>
 
+static lg::log_domain log_aitesting("aitesting");
+#define LOG_AIT LOG_STREAM(info, log_aitesting)
+//If necessary, this define can be replaced with `#define LOG_AIT std::cout` to restore previous behavior
+
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -1452,13 +1456,13 @@ void play_controller::check_victory()
 	}
 
 	if (non_interactive()) {
-		std::cout << "winner: ";
+		LOG_AIT << "winner: ";
 		BOOST_FOREACH(unsigned l, not_defeated) {
 			std::string ai = ai::manager::get_active_ai_identifier_for_side(l);
 			if (ai.empty()) ai = "default ai";
-			std::cout << l << " (using " << ai << ") ";
+			LOG_AIT << l << " (using " << ai << ") ";
 		}
-		std::cout << '\n';
+		LOG_AIT << '\n';
 		ai_testing::log_victory(not_defeated);
 	}
 

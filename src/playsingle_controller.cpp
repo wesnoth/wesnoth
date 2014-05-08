@@ -51,6 +51,10 @@
 
 #include <boost/foreach.hpp>
 
+static lg::log_domain log_aitesting("aitesting");
+#define LOG_AIT LOG_STREAM(info, log_aitesting)
+//If necessary, this define can be replaced with `#define LOG_AIT std::cout` to restore previous behavior
+
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -597,7 +601,7 @@ void playsingle_controller::play_turn(bool save)
 	LOG_NG << "turn: " << turn() << "\n";
 
 	if(non_interactive())
-		std::cout << "Turn " << turn() << ":" << std::endl;
+		LOG_AIT << "Turn " << turn() << ":" << std::endl;
 
 
 	for (player_number_ = first_player_; player_number_ <= int(teams_.size()); ++player_number_)
@@ -638,7 +642,7 @@ void playsingle_controller::play_turn(bool save)
 		finish_side_turn();
 
 		if(non_interactive()) {
-			std::cout << " Player " << player_number_ << ": " <<
+			LOG_AIT << " Player " << player_number_ << ": " <<
 				current_team().villages().size() << " Villages" <<
 				std::endl;
 			ai_testing::log_turn_end(player_number_);
@@ -987,7 +991,7 @@ void playsingle_controller::check_time_over(){
 		}
 
 		if(non_interactive()) {
-			std::cout << "time over (draw)\n";
+			LOG_AIT << "time over (draw)\n";
 			ai_testing::log_draw();
 		}
 
