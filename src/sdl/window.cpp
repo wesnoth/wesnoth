@@ -54,6 +54,8 @@ twindow::twindow(const std::string& title,
 	}
 
 	pixel_format_ = info.texture_formats[0];
+
+	clear();
 }
 
 twindow::~twindow()
@@ -71,6 +73,14 @@ void twindow::set_size(const int w, const int h)
 void twindow::full_screen()
 {
 	/** @todo Implement. */
+}
+
+void twindow::clear()
+{
+	if(SDL_RenderClear(*this) != 0) {
+		throw texception("Failed to clear the SDL_Renderer object.",
+						 true);
+	}
 }
 
 void twindow::render()

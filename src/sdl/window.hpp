@@ -98,6 +98,9 @@ public:
 	 */
 	void full_screen();
 
+	/** Clears the contents of the window. */
+	void clear();
+
 	/** Renders the contents of the window. */
 	void render();
 
