@@ -18,6 +18,7 @@
 
 #include "SDL_image.h"
 #include "sdl/exception.hpp"
+#include "sdl_utils.hpp"
 
 #include <cassert>
 
@@ -58,6 +59,23 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	: reference_count_(new unsigned(1))
 	, texture_(NULL)
 	, source_surface_(source_surface__)
+{
+	if(source_surface_ == NULL) {
+		throw texception("Invalid source_surface__ argument passed, failed to "
+						 "create SDL_Texture object.",
+						 false);
+	}
+
+	initialise_from_surface(renderer, access);
+}
+
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   const surface& surface)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, source_surface_(
+			  SDL_ConvertSurface(surface, surface->format, surface->flags))
 {
 	if(source_surface_ == NULL) {
 		throw texception("Invalid source_surface__ argument passed, failed to "

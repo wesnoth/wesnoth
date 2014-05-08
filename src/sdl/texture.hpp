@@ -27,6 +27,8 @@
 #include <SDL_render.h>
 #include <string>
 
+struct surface;
+
 namespace sdl
 {
 
@@ -82,6 +84,20 @@ public:
 	ttexture(SDL_Renderer& renderer,
 			 const int access,
 			 SDL_Surface* source_surface__);
+
+	/**
+	 * Constructor.
+	 *
+	 * Loads data from a surface.
+	 *
+	 * @pre                       @p access == SDL_TEXTUREACCESS_STATIC
+	 *                            || @p access == SDL_TEXTUREACCESS_STREAMING.
+	 *
+	 * @param renderer            The renderer the texture is associated with.
+	 * @param access              Access mode of the texture.
+	 * @param surface             Contains the surface data to copy.
+	 */
+	ttexture(SDL_Renderer& renderer, const int access, const surface& surface);
 
 	~ttexture();
 

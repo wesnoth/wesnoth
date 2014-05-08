@@ -32,6 +32,7 @@
 
 #include <string>
 
+struct surface;
 struct SDL_Renderer;
 
 namespace sdl
@@ -142,6 +143,19 @@ public:
 	 * @param source_surface__    Forwarded to @ref texture::ttexture.
 	 */
 	ttexture create_texture(const int access, SDL_Surface* source_surface__);
+
+	/**
+	 * Creates a texture for the renderer.
+	 *
+	 * This is a helper function forwarded to the constructor of the
+	 * @ref ttexture class.
+	 *
+	 * See @ref texture::ttexture.
+	 *
+	 * @param access              Forwarded to @ref texture::ttexture.
+	 * @param surface             Forwarded to @ref texture::ttexture.
+	 */
+	ttexture create_texture(const int access, const surface& surface);
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
