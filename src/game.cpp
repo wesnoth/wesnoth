@@ -414,12 +414,26 @@ static void init_locale() {
 	textdomain (PACKAGE);
 }
 
+/**
+ * SDL Semaphore which the main thread waits on, while the worker does it's job.
+ * We mainly only need this so we can use the SDL_SemWaitTimeout function to do the timer stuff for us.
+ */
 static SDL_sem * worker_sem;
+
+/**
+ * Structure used to pass data to the worker thread. The int* is used to pass the worker result back out.
+ * This is not, strictly speaking, good practice with threads, but it is fine for a single thread with
+ * a timeout, that only sets the variable once.
+ * 
+ * If for some reason you want to run many worker threads at once then don't use this code. 
+ */
+typedef std::pair<boost::shared_ptr<game_controller>, int*> thread_data;
+
 /**
  * Function used by worker thread to perform unit test with timeout.
  */
 static int run_unit_test (void * data){
-	std::pair<boost::shared_ptr<game_controller>, int*> * mydata = static_cast<std::pair<boost::shared_ptr<game_controller>, int*> *>(data);
+	thread_data * mydata = static_cast<thread_data *>(data);
 	if (SDL_SemWait(worker_sem) == -1) {
 		std::cerr << "Worker failed to lock worker semaphore!" << std::endl;
 	}
@@ -565,7 +579,7 @@ static int do_gameloop(int argc, char** argv)
 					return 2;
 				}
 
-				std::pair<boost::shared_ptr<game_controller>, int *> data(game, &worker_result);
+				thread_data data(game, &worker_result);
 				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, &data);
 
 				std::cerr << "Setting timer for " << *cmdline_opts.timeout << " ms." << std::endl;
