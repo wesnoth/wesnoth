@@ -106,6 +106,22 @@ public:
 	ttexture& operator=(const ttexture& texture);
 
 
+	/***** ***** ***** Draw function overloads. ***** ***** *****/
+
+	/**
+	 * Draw a texture on a renderer.
+	 *
+	 * The function calls @ref SDL_RenderCopy.
+	 *
+	 * The function draws the image unscaled at coordinates @p x, @p y.
+	 *
+	 * @param renderer            Used as renderer for @ref SDL_RenderCopy.
+	 * @param x                   The x-coordinate where to draw the texture.
+	 * @param y                   The y-coordinate where to draw the texture.
+	 */
+	void draw(SDL_Renderer& renderer, const int x, const int y);
+
+
 	/***** ***** ***** Setters and getters. ***** ***** *****/
 
 	/**

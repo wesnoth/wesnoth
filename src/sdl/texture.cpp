@@ -122,6 +122,17 @@ ttexture& ttexture::operator=(const ttexture& texture)
 	return *this;
 }
 
+void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
+{
+	SDL_Rect rect = { x, y, 0, 0 };
+
+	if(SDL_QueryTexture(texture_, NULL, NULL, &rect.w, &rect.h) != 0) {
+		throw texception("Failed to query a SDL_Texture object", true);
+	}
+
+	SDL_RenderCopy(&renderer, texture_, NULL, &rect);
+}
+
 const SDL_Surface* ttexture::source_surface() const
 {
 	return source_surface_;

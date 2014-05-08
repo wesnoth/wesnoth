@@ -157,6 +157,21 @@ public:
 	 */
 	ttexture create_texture(const int access, const surface& surface);
 
+
+	/***** ***** ***** Draw function overloads. ***** ***** *****/
+
+	/**
+	 * Draw a texture on the window's renderer.
+	 *
+	 * The function is forwareded to @ref ttexture::draw.
+	 *
+	 * @param texture             The texture whose draw function to call.
+	 * @param x                   Forwarded to @ref ttexture::draw.
+	 * @param y                   Forwarded to @ref ttexture::draw.
+	 */
+	void draw(ttexture& texture, const int x, const int y);
+
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**
