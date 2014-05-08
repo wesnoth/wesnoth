@@ -130,6 +130,19 @@ public:
 	 */
 	ttexture create_texture(const int access, const int w, const int h);
 
+	/**
+	 * Creates a texture for the renderer.
+	 *
+	 * This is a helper function forwarded to the constructor of the
+	 * @ref ttexture class.
+	 *
+	 * See @ref texture::ttexture.
+	 *
+	 * @param access              Forwarded to @ref texture::ttexture.
+	 * @param source_surface__    Forwarded to @ref texture::ttexture.
+	 */
+	ttexture create_texture(const int access, SDL_Surface* source_surface__);
+
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 
 	/**

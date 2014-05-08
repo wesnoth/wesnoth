@@ -93,6 +93,12 @@ ttexture twindow::create_texture(const int access, const int w, const int h)
 	return ttexture(*SDL_GetRenderer(window_), pixel_format_, access, w, h);
 }
 
+ttexture twindow::create_texture(const int access,
+								 SDL_Surface* source_surface__)
+{
+	return ttexture(*SDL_GetRenderer(window_), access, source_surface__);
+}
+
 twindow::operator SDL_Window*()
 {
 	return window_;

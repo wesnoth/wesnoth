@@ -66,6 +66,23 @@ public:
 	 */
 	ttexture(SDL_Renderer& renderer, const int access, const std::string& file);
 
+	/**
+	 * Constructor.
+	 *
+	 * Loads data from and takes ownership of a SDL_surface.
+	 *
+	 * @pre                       @p source_surface__ points to a valid surface.
+	 * @pre                       @p access == SDL_TEXTUREACCESS_STATIC
+	 *                            || @p access == SDL_TEXTUREACCESS_STREAMING.
+	 *
+	 * @param renderer            The renderer the texture is associated with.
+	 * @param access              Access mode of the texture.
+	 * @param source_surface__    Forwarded to @ref source_surface_.
+	 */
+	ttexture(SDL_Renderer& renderer,
+			 const int access,
+			 SDL_Surface* source_surface__);
+
 	~ttexture();
 
 	ttexture(const ttexture& texture);

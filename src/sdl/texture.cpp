@@ -52,6 +52,22 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	initialise_from_surface(renderer, access);
 }
 
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   SDL_Surface* source_surface__)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, source_surface_(source_surface__)
+{
+	if(source_surface_ == NULL) {
+		throw texception("Invalid source_surface__ argument passed, failed to "
+						 "create SDL_Texture object.",
+						 false);
+	}
+
+	initialise_from_surface(renderer, access);
+}
+
 ttexture::~ttexture()
 {
 	assert(reference_count_);
