@@ -495,7 +495,11 @@ int game_controller::unit_test()
 	}
 
 	try {
-		play_game(disp(), state_, resources::config_manager->game_config());
+		LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config());
+		if (!(res == VICTORY || res == NONE)) {
+			std::cerr << "Observed failure on replay" << std::endl;
+			return 4; 
+		}
 		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
 		    video_);*/
 	} catch (game::load_game_exception &) {
