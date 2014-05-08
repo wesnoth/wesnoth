@@ -108,6 +108,17 @@ private:
 	 *   Always @c NULL.
 	 */
 	SDL_Surface* source_surface_;
+
+	/**
+	 * Creates the @ref texture_ from the @ref source_surface_.
+	 *
+	 * This is used in the constructor to create the texture when only a
+	 * surface is available.
+	 *
+	 * @param renderer            The renderer argument of the constructor.
+	 * @param access              The access argument of the constructor.
+	 */
+	void initialise_from_surface(SDL_Renderer& renderer, const int access);
 };
 
 } // namespace sdl

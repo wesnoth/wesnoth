@@ -49,38 +49,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 		throw texception("Failed to create SDL_Texture object.", true);
 	}
 
-	if(access == SDL_TEXTUREACCESS_STATIC) {
-		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
-
-		if(texture_ == NULL) {
-			throw texception("Failed to create SDL_Texture object.", true);
-		}
-
-		SDL_FreeSurface(source_surface_);
-		source_surface_ = NULL;
-	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
-		texture_ = SDL_CreateTexture(&renderer,
-									 source_surface_->format->format,
-									 SDL_TEXTUREACCESS_STREAMING,
-									 source_surface_->w,
-									 source_surface_->h);
-
-		if(texture_ == NULL) {
-			throw texception("Failed to create SDL_Texture object.", true);
-		}
-
-		const int update = SDL_UpdateTexture(texture_,
-											 NULL,
-											 source_surface_->pixels,
-											 source_surface_->pitch);
-		if(update != 0) {
-			throw texception("Failed to update the SDL_Texture object during "
-							 "its construction.",
-							 true);
-		}
-	} else {
-		throw texception("Unknown texture access mode.", false);
-	}
+	initialise_from_surface(renderer, access);
 }
 
 ttexture::~ttexture()
@@ -122,6 +91,42 @@ ttexture& ttexture::operator=(const ttexture& texture)
 const SDL_Surface* ttexture::source_surface() const
 {
 	return source_surface_;
+}
+
+void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
+{
+	if(access == SDL_TEXTUREACCESS_STATIC) {
+		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
+
+		if(texture_ == NULL) {
+			throw texception("Failed to create SDL_Texture object.", true);
+		}
+
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = NULL;
+	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
+		texture_ = SDL_CreateTexture(&renderer,
+									 source_surface_->format->format,
+									 SDL_TEXTUREACCESS_STREAMING,
+									 source_surface_->w,
+									 source_surface_->h);
+
+		if(texture_ == NULL) {
+			throw texception("Failed to create SDL_Texture object.", true);
+		}
+
+		const int update = SDL_UpdateTexture(texture_,
+											 NULL,
+											 source_surface_->pixels,
+											 source_surface_->pitch);
+		if(update != 0) {
+			throw texception("Failed to update the SDL_Texture object during "
+							 "its construction.",
+							 true);
+		}
+	} else {
+		throw texception("Unknown texture access mode.", false);
+	}
 }
 
 } // namespace sdl
