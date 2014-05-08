@@ -419,14 +419,12 @@ static SDL_sem * worker_sem;
  * Function used by worker thread to perform unit test with timeout.
  */
 static int run_unit_test (void * data){
-	std::pair<game_controller*, int*> * mydata = static_cast<std::pair<game_controller*, int*> *>(data);
+	std::pair<boost::shared_ptr<game_controller>, int*> * mydata = static_cast<std::pair<boost::shared_ptr<game_controller>, int*> *>(data);
 	if (SDL_SemWait(worker_sem) == -1) {
 		std::cerr << "Worker failed to lock worker semaphore!" << std::endl;
 	}
-	game_controller * game = mydata->first; 
-	int * return_value = mydata->second;
-	int ret_val = game->unit_test();
-	*return_value = ret_val;
+	int ret_val = mydata->first->unit_test();
+	*mydata->second = ret_val;
 
 	if (SDL_SemPost(worker_sem) == -1) {
 		std::cerr << "Worker failed to unlock worker semaphore after working!" << std::endl;
@@ -449,7 +447,7 @@ static int do_gameloop(int argc, char** argv)
 		return finished;
 	}
 
-	boost::scoped_ptr<game_controller> game(
+	boost::shared_ptr<game_controller> game(
 		new game_controller(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
 
@@ -548,8 +546,16 @@ static int do_gameloop(int argc, char** argv)
 		}
 
 		loadscreen_manager.reset();
-#if !SDL_VERSION_ATLEAST(2,0,0)
+
 		if(cmdline_opts.unit_test) {
+#if SDL_VERSION_ATLEAST(2,0,0) && !SDL_VERSION_ATLEAST(2,0,2)
+			if(cmdline_opts.timeout) {
+				std::cerr << "SDL Version number: " << SDL_COMPILEDVERSION << std::endl;
+				std::cerr << "Your SDL version is between 2.0.0 and 2.0.2..." << std::endl
+					<< " I don't know how to handle timedout threads. Disabling timeout." << std::endl;
+				*cmdline_opts.timeout = 0;
+			}
+#endif
 			if(cmdline_opts.timeout && *cmdline_opts.timeout > 0) {
 				int worker_result = 2; //Default timeout return value if worker fails to return
 				worker_sem = SDL_CreateSemaphore(1);
@@ -559,7 +565,7 @@ static int do_gameloop(int argc, char** argv)
 					return 2;
 				}
 
-				std::pair<game_controller *, int *> data(&(*game), &worker_result);
+				std::pair<boost::shared_ptr<game_controller>, int *> data(game, &worker_result);
 				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, &data);
 
 				std::cerr << "Setting timer for " << *cmdline_opts.timeout << " ms." << std::endl;
@@ -572,19 +578,23 @@ static int do_gameloop(int argc, char** argv)
 						<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
 						<< ": "<<*cmdline_opts.unit_test << std::endl;
 					return worker_result;
-				} else if (wait_result == -1) {
-					SDL_KillThread(worker); //don't want worker to keep running when game goes out of scope
-					std::cerr << "Error in SemWaitTimeout!" << std::endl;
-					std::cout << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
-					return 2;
 				} else {
-					SDL_KillThread(worker); //don't want worker to keep running when game goes out of scope
-					std::cerr << "Test timed out!" << std::endl;
+#if SDL_VERSION_ATLEAST(2,0,2) 
+					SDL_DetachThread(worker);
+#else
+#if !SDL_VERSION_ATLEAST(2,0,0)
+					SDL_KillThread(worker);
+#endif
+#endif
+					if (wait_result == -1) {
+						std::cerr << "Error in SemWaitTimeout!" << std::endl;
+					} else {
+						std::cerr << "Test timed out!" << std::endl;
+					}
 					std::cout << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
 					return 2;
 				}
-			}
-			else {
+			} else {
 				int worker_result = game->unit_test();
 				std::cout << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
 					<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
@@ -593,7 +603,6 @@ static int do_gameloop(int argc, char** argv)
 				return worker_result;
 			}
 		}
-#endif
 
 		if(game->play_test() == false) {
 			return 0;
