@@ -124,6 +124,14 @@ Version 1.13.0-dev:
    * Fix bug #21372: fix unit move continuation if enemy discovered
    * Added a Python/Tkinter based GUI to allow running wmllint, wmlscope and
      wmlindent in an easier way
+   * Some commandline output which was helpful for noninteractive ai testing
+     is redirected from std::cout to a logdomain "aitesting".
+   * Added WML unit test capabilities, accessible from commandline using -u
+     switch. These are useful for unit testing the WML / lua api.
+   * Added WML tags [issue_attack_command] and [issue_move_command]. These
+     commands can be used to script a scenario and use the same code path
+     as if a human / ai ordered the command. These are intended to facilitate
+     making some kinds of noninteractive unit tests.
 
 Version 1.11.11:
  * Add-ons server:
