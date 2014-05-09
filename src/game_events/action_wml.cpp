@@ -892,11 +892,17 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
  */
 WML_HANDLER_FUNCTION(issue_attack_command, /*event_info*/, cfg)
 {
+	LOG_WML << "Called issue_attack_command" << std::endl;
 	const config& parsed = cfg.get_parsed_config();
 
 	//FIXME: Use a filter / one of the support functions above to get locations from config.
 	map_location attacker_loc_(parsed["x1"].to_int(-999)-1, parsed["y1"].to_int(-999)-1);
 	map_location defender_loc_(parsed["x2"].to_int(-999)-1, parsed["y2"].to_int(-999)-1);
+
+	if (attacker_loc_ == defender_loc_ ) { 
+		ERR_WML << "[issue_attack_command] attacker location == defender location! aborting." << std::endl;
+		return ;
+	}
 
 	int attacker_weapon = parsed["attacker_weapon"].to_int(0);
 	int defender_weapon = parsed["defender_weapon"].to_int(0);
