@@ -6,9 +6,7 @@ install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 script: scons cxxtool=$CXX strict=True wesnoth wesnothd campaignd test
-after_script:
-    - ./test
-    - ./wml_unit_tests
+after_script: ./test
 notifications:
     email: false
     irc:
