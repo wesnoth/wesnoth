@@ -1397,10 +1397,10 @@ void play_controller::check_victory()
 	     i_end = units_.end(); i != i_end; ++i)
 	{
 		if (i->can_recruit()) {
-			DBG_NG << "seen leader for side " << i->side() << "\n";
+			//DBG_NG << "seen leader for side " << i->side() << "\n";
 			not_defeated.insert(i->side());
 		} else if (teams_[i->side()-1].fight_on_without_leader()) {
-			DBG_NG << "side doesn't require leader " << i->side() << "\n";
+			//DBG_NG << "side doesn't require leader " << i->side() << "\n";
 			not_defeated.insert(i->side());
 		}
 	}
