@@ -44,7 +44,7 @@ static void add_widget(gui2::tgrid& grid
 template<class T>
 static void test_control()
 {
-	std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
+	//std::cerr << __func__ << ": " << typeid(T).name() << ".\n";
 
 	T control;
 	boost::scoped_ptr<gui2::iterator::twalker_> visitor(control.create_walker());
@@ -92,7 +92,7 @@ static void test_grid()
 	/* An empty grid behaves the same as a control so test here. */
 	test_control<gui2::tgrid>();
 
-	std::cerr << __func__ << ": Detailed test.\n";
+	//std::cerr << __func__ << ": Detailed test.\n";
 
 	/* Test the child part here. */
 	gui2::tgrid grid(2 ,2);
