@@ -17,8 +17,11 @@
  * Tool to test SDL 2 functions.
  */
 
+#include "tools/sdl2/sdl2.hpp"
+
 #include "sdl/texture.hpp"
 #include "sdl/window.hpp"
+#include "tools/sdl2/window.hpp"
 #include "text.hpp"
 
 #include <SDL.h>
@@ -27,6 +30,8 @@
 
 #include <iostream>
 #include <deque>
+
+std::vector<sdl::twindow*> windows;
 
 struct texit
 {
@@ -97,6 +102,40 @@ static void draw_command_history(sdl::twindow& window,
 	}
 }
 
+static bool execute_command(std::string& command_line)
+{
+	std::string::const_iterator begin = command_line.begin();
+	const std::string command = get_token(command_line, begin, ' ');
+
+	if(command == "quit") {
+
+		utf8::insert(command_line, utf8::size(command_line), " -> Ok");
+		return false;
+	} else if(command == "window") {
+
+		execute_window(command_line, begin);
+	}
+
+	return true;
+}
+
+std::string get_token(const std::string& string,
+					  std::string::const_iterator& begin,
+					  const char separator)
+{
+	const std::string::const_iterator end
+			= std::find(begin, string.end(), separator);
+
+	std::string result = std::string(begin, end);
+
+	begin = end;
+	if(begin != string.end()) {
+		++begin;
+	}
+
+	return result;
+}
+
 int main()
 {
 	try
@@ -120,7 +159,8 @@ int main()
 		SDL_SetTextInputRect(&rect);
 		const ttext_input text_input;
 
-		while(true) {
+		bool run = true;
+		while(run) {
 			if(dirty) {
 				window.clear();
 				draw_command_line(window, line);
@@ -128,6 +168,12 @@ int main()
 				dirty = false;
 			}
 			window.render();
+			BOOST_FOREACH(sdl::twindow * window, windows)
+			{
+				if(window) {
+					window->render();
+				}
+			}
 			if(SDL_WaitEvent(&event) == 0) {
 				return EXIT_FAILURE;
 			}
@@ -154,12 +200,14 @@ int main()
 
 				case SDL_KEYUP:
 					if(event.key.keysym.sym == SDLK_RETURN) {
+						run = execute_command(line);
 						history.push_back(line);
 						if(history.size() > 22) {
 							history.pop_front();
 						}
 						line.clear();
 						dirty = true;
+						SDL_RaiseWindow(window);
 					}
 					break;
 

@@ -1210,6 +1210,7 @@ if(ENABLE_SDL2_TOOLS)
 
 	add_executable(sdl2
 		tools/sdl2/sdl2.cpp
+		tools/sdl2/window.cpp
 	)
 
 	target_link_libraries(sdl2
