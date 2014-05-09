@@ -245,6 +245,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::TITLE_SCREEN__CAMPAIGN, "title_screen__campaign", N_("Start Campaign"), false	, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__MULTIPLAYER, "title_screen__multiplayer", N_("Start Multiplayer Game"), false, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__ADDONS, "title_screen__addons", N_("Manage Add-ons"), false	, hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__CORES, "title_screen__cores", N_("Manage Cores"), false	, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__EDITOR, "title_screen__editor", N_("Start Editor"), false, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__CREDITS, "title_screen__credits", N_("Show Credits"), false	, hotkey::SCOPE_MAIN_MENU, "" },
 

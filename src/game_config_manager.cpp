@@ -24,6 +24,7 @@
 #include "language.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
+#include "preferences.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "hotkey/hotkey_item.hpp"
@@ -122,7 +123,12 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// Start transaction so macros are shared.
 		game_config::config_cache_transaction main_transaction;
 
-		cache_.get_config(game_config::path +"/data", game_config_);
+		// Load the selected core
+		cache_.get_config(get_wml_location(preferences::wml_tree_root()), game_config_);
+        // Load the mainline core definitions to make sure switching back is always possible.
+		config default_core_cfg;
+		cache_.get_config(game_config::path, default_core_cfg);
+		game_config_.append(default_core_cfg);
 
 		main_transaction.lock();
 
@@ -176,10 +182,20 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		theme::set_known_themes(&game_config());
 	} catch(game::error& e) {
 		ERR_CONFIG << "Error loading game configuration files\n" << e.message << '\n';
-		gui2::twml_error::display(
-			_("Error loading game configuration files. The game will now exit."),
-			e.message, disp_.video());
-		throw;
+
+		if (preferences::wml_tree_root() != "/"){
+			gui2::twml_error::display(
+					_("Error loading custom game configuration files. The game will fallback to the default files."),
+					e.message, disp_.video());
+			preferences::set_wml_tree_root("/");
+			preferences::set_core_id("default");
+			load_game_config(force_reload, classification);
+		} else {
+			gui2::twml_error::display(
+					_("Error loading default game configuration files. The game will now exit."),
+					e.message, disp_.video());
+			throw;
+		}
 	}
 
 	old_defines_map_ = cache_.get_preproc_map();
@@ -245,6 +261,22 @@ void game_config_manager::load_addons_cfg()
 
 	// Append the $user_campaign_dir/*/_main.cfg files to addons_to_load.
 	BOOST_FOREACH(const std::string& uc, user_dirs) {
+
+		const std::string info_cfg = uc + "/_info.cfg";
+		if (file_exists(info_cfg)) {
+		
+			config info;
+			cache_.get_config(info_cfg, info);
+			const config info_tag = info.child_or_empty("info");
+			std::string core = info_tag["core"];
+			if (core.empty()) core = "default";
+			if ( !info_tag.empty() && // Don't skip addons which have no [info], they are most likely manually installed.
+					info_tag["type"] != "core" && // Don't skip cores, we want them selectable at all times.
+					core != preferences::core_id() // Don't skip addons matching our current core.
+			)
+				continue; // Skip add-ons not matching our current core.
+		}
+
 		const std::string main_cfg = uc + "/_main.cfg";
 		if(file_exists(main_cfg)) {
 			addons_to_load.push_back(main_cfg);

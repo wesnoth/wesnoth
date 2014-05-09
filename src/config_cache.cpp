@@ -219,7 +219,7 @@ namespace game_config {
 					} catch(io_exception&) {
 						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files\n";
 					} catch (boost::iostreams::gzip_error& e) {
-						//read_file -> ... -> read_gz can throw this exeption.
+						//read_file -> ... -> read_gz can throw this exception.
 						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << "\n";
 					}
 				}
