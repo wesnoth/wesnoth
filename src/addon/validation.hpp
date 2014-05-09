@@ -48,7 +48,7 @@ enum ADDON_TYPE {
 	ADDON_MP_MAPS,		/**< Multiplayer plain (no WML) map pack. */
 	ADDON_MP_ERA,		/**< Multiplayer era. */
 	ADDON_MP_FACTION,	/**< Multiplayer faction. */
-	ADDON_CORE,         /**< Total Conversion Core. */
+	ADDON_CORE,			/**< Total Conversion Core. */
 	// NOTE: following two still require proper engine support
 	ADDON_MP_MOD,		/**< Modification of the game for MP. */
 	//ADDON_GUI,			// GUI add-ons/themes.
