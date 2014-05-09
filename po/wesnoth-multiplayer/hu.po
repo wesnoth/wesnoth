@@ -5,13 +5,13 @@
 #
 # Széll Tamás <tomi@digiflex.hu>, 2005.
 # Máthé katalin <katkadu@gmail.com>, 2008.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008., 2009, 2010, 2011.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008., 2009, 2010, 2011, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-01-04 20:07+0100\n"
-"PO-Revision-Date: 2011-12-17 14:46+0100\n"
+"POT-Creation-Date: 2014-03-02 18:56+0100\n"
+"PO-Revision-Date: 2014-05-09 00:09+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.2\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. [generic_multiplayer]: id=user_map
 #: data/multiplayer/_main.cfg:8
@@ -29,7 +29,7 @@ msgstr "Felhasználói térkép"
 #. [multiplayer_side]: id=Custom
 #: data/multiplayer/eras.cfg:5
 msgid "Custom"
-msgstr ""
+msgstr "Tetszőleges"
 
 #. [multiplayer_side]: id=Random
 #: data/multiplayer/eras.cfg:13
@@ -40,6 +40,7 @@ msgstr "Véletlenszerű"
 #: data/multiplayer/eras.cfg:125
 msgid "<span strikethrough='true' foreground='#%02x%02x%02x'>Side %d</span>"
 msgstr ""
+"<span strikethrough='true' foreground='#%02x%02x%02x'>%d. csapat</span>"
 
 #. [lua]: id=unit.id }), speaker=narrator, speaker=narrator
 #: data/multiplayer/eras.cfg:141
@@ -71,6 +72,8 @@ msgid ""
 "The standard era for Wesnoth multiplayer. Consists of six factions and is "
 "generally balanced."
 msgstr ""
+"A többjátékos mérkőzésekhez leginkább elfogadott korszak. Hat szövetségből "
+"áll, és általában jól kiegyensúlyozott."
 
 #. [era]: id=era_heroes
 #: data/multiplayer/eras.cfg:197
@@ -84,11 +87,14 @@ msgid ""
 "units available for recruit. Consists of six factions. Not considered "
 "balanced."
 msgstr ""
+"Egy korszak, amelyben magasabb szintű egységek is elérhetők: a vezérek "
+"hármas szintűek, toborozni egyes és kettes szintű egységeket lehet. Hat "
+"szövetségből áll. Nem kellően kiegyensúlyozott."
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:205
 msgid "Default + Khalifate"
-msgstr ""
+msgstr "Alapértelmezett + Kalifátus"
 
 #. [era]: id=era_khalifate
 #: data/multiplayer/eras.cfg:206
@@ -100,13 +106,18 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Egy korszak, amelyben az alapértelmezett kor hat szövetsége mellett egy "
+"további is megtalálható. A Kalifátus egységei nem használnak mágiát, hanem a "
+"terep, valamint a hajnali és alkonyati hadműveletek aprólékos "
+"megválasztására támaszkodnak.\n"
+"\n"
+"Ez a korszak még mindig fejlesztés alatt áll, ezért kérünk, jelents minden "
+"felmerülő problémát."
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:216
-#, fuzzy
-#| msgid "Age of Heroes"
 msgid "Age of Heroes + Khalifate"
-msgstr "Hősök kora"
+msgstr "Hősök kora + Kalifátus"
 
 #. [era]: id=era_khalifate_heroes
 #: data/multiplayer/eras.cfg:217
@@ -118,6 +129,13 @@ msgid ""
 "This era is still under development, so please be sure to report any "
 "problems that arise."
 msgstr ""
+"Egy korszak, amelyben a hősök korának hat szövetsége mellett egy további is "
+"megtalálható. A Kalifátus egységei nem használnak mágiát, hanem a terep, "
+"valamint a hajnali és alkonyati hadműveletek aprólékos megválasztására "
+"támaszkodnak.\n"
+"\n"
+"Ez a korszak még mindig fejlesztés alatt áll, ezért kérünk, jelents minden "
+"felmerülő problémát."
 
 #. [multiplayer_side]: id=Drakes, type=random
 #: data/multiplayer/factions/drakes-aoh.cfg:4
@@ -129,7 +147,7 @@ msgstr "Perzsekények"
 #: data/multiplayer/factions/khalifate-aoh.cfg:4
 #: data/multiplayer/factions/khalifate-default.cfg:4
 msgid "Khalifate"
-msgstr ""
+msgstr "Kalifátus"
 
 #. [multiplayer_side]: id=Knalgan Alliance, type=random
 #: data/multiplayer/factions/knalgans-aoh.cfg:4
@@ -2264,10 +2282,8 @@ msgstr ""
 
 #. [multiplayer]: id=multiplayer_Random_YAMG_Map
 #: data/multiplayer/scenarios/Random_YAMG_Scenario.cfg:6
-#, fuzzy
-#| msgid "Random map"
 msgid "Random map by YAMG"
-msgstr "Véletlenszerű pályakialakítás"
+msgstr "Véletlenszerű pályakialakítás (YAMG)"
 
 #. [multiplayer]: id=wesbench_ai
 #: data/multiplayer/scenarios/Wesbench_AI.cfg:9

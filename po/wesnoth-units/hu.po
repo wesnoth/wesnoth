@@ -6,15 +6,16 @@
 #
 # Széll Tamás <tomi@digiflex.hu>, 2005.
 # Gabor Udvari <gabor.udvari@gmail.com>, 2008.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2010, 2011, 2012.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2008, 2009, 2010, 2011, 2012, 2014.
+# Farkas János <mail.janos.farkas@gmail.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-02-22 14:15+0100\n"
-"PO-Revision-Date: 2012-11-02 15:43+0100\n"
+"POT-Creation-Date: 2014-03-02 18:57+0100\n"
+"PO-Revision-Date: 2014-05-08 23:48+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
-"Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -3522,10 +3523,11 @@ msgstr ""
 "Vadászó tehetségük nagyon hasznos a csatában, és különösen alkalmassá teszi "
 "őket éjszaka, erdőkben és mocsarakban való bevetésre."
 
+# mivel nem angol szó, szerintem nem kell/lehet fordítani
 #. [unit_type]: id=Arif, race=khalifate
 #: data/core/units/khalifate/Arif.cfg:4
 msgid "Arif"
-msgstr ""
+msgstr "Arif"
 
 #. [unit_type]: id=Arif, race=khalifate
 #: data/core/units/khalifate/Arif.cfg:17
@@ -3537,7 +3539,14 @@ msgid ""
 "troops to exploit. The sight of Arif on the march, shields high, has caused "
 "many a defender to worry about the strength of their walls."
 msgstr ""
+"Az arifok képezik a kalifátusi gyalogság gerincét. Sokan közülük nemes, vagy "
+"harcos családból származnak, és életük nagy részében a harcot gyakorolták. "
+"Különleges kardvívó képességük miatt gyakran küldik őket megerősített "
+"ellenséges állások ellen, hogy rést üssenek a sereg többi része számára. "
+"Menetelő, pajzsos arifok láttán már sok védő kezdett kételkedni a várfalak "
+"erejében."
 
+# a pallos a broad swor lenne
 #. [attack]: type=blade
 #: data/core/units/khalifate/Arif.cfg:22
 #: data/core/units/khalifate/Ghazi.cfg:22
@@ -3545,15 +3554,14 @@ msgstr ""
 #: data/core/units/khalifate/Mighwar.cfg:26
 #: data/core/units/khalifate/Monawish.cfg:25
 #: data/core/units/khalifate/Shuja.cfg:22
-#, fuzzy
-#| msgid "longsword"
 msgid "long sword"
-msgstr "pallos"
+msgstr "hosszúkard"
 
+# mint az Arif: muszlim név, de nem találtam jelentést sem.
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:4
 msgid "Batal"
-msgstr ""
+msgstr "Batal"
 
 #. [unit_type]: id=Batal, race=khalifate
 #: data/core/units/khalifate/Batal.cfg:18
@@ -3565,6 +3573,12 @@ msgid ""
 "taking on only the most daring missions, Batal are often heroes to the "
 "common troopers, an image they do not try to dissuade."
 msgstr ""
+"A batalok a muharibok krémje, akik az ellenséggel folyamatosan üss-és-fuss "
+"taktikával harcolnak. Fürgék, mint a kecske, és erősek, mint a kos: "
+"egyszerre több módon szeretnek támadni: megfutamítják az ellenséget a "
+"nyilaikkal, aztán levágják őket a bárdjaikkal. Mivel előszeretettel "
+"vállalkoznak vakmerő küldetésekre, a batalok gyakran hősök a többi katona "
+"szemében, és e hírnevüket a világért sem tennék tönkre."
 
 #. [attack]: type=pierce
 #: data/core/units/khalifate/Batal.cfg:31
@@ -3574,14 +3588,12 @@ msgstr ""
 #: data/core/units/khalifate/Rami.cfg:31
 #: data/core/units/khalifate/Saree.cfg:31
 msgid "composite bow"
-msgstr ""
+msgstr "Reflexíj"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:4
-#, fuzzy
-#| msgid "Elder Mage"
 msgid "Elder Falcon"
-msgstr "Vén mágus"
+msgstr "Vén sólyom"
 
 #. [unit_type]: id=Elder Falcon, race=falcon
 #: data/core/units/khalifate/Elder_Falcon.cfg:19
@@ -3591,17 +3603,22 @@ msgid ""
 "Stronger and faster than their younger kin, they are rumored to hit with "
 "enough force to remove an enemy's head. "
 msgstr ""
+"A vén sólymok magukon viselik a veterán harcosok sebeit, melyeket uraik "
+"védelmében szereztek. Testük a bizonyíték, hogy újra meg újra alámerülnek az "
+"örvénylő közelharcba. Erősebbek és gyorsabbak fiatalabb testvéreiknél: azt "
+"beszélik, elég erejük van ahhoz, hogy egy csapással lefejezzék az "
+"ellenfelüket."
 
 #. [attack]: type=pierce
 #: data/core/units/khalifate/Elder_Falcon.cfg:36
 #: data/core/units/khalifate/Falcon.cfg:35
 msgid "beak"
-msgstr ""
+msgstr "csőr"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:4
 msgid "Falcon"
-msgstr ""
+msgstr "Sólyom"
 
 #. [unit_type]: id=Falcon, race=falcon
 #: data/core/units/khalifate/Falcon.cfg:18
@@ -3611,11 +3628,15 @@ msgid ""
 "the enemies of the Khalifate, and their great speed is a boon to scouting "
 "out the land."
 msgstr ""
+"A nemesség státuszszimbólumaként a sólymokat általában drága sportokra "
+"használják. A képességeik akkor is jól jönnek, ha a Kalifátus ellenségeinek "
+"széthasítása, szétszaggatása a cél, vagy a vidéket kell villámgyorsan "
+"földeríteni. "
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:4
 msgid "Faris"
-msgstr ""
+msgstr "Faris"
 
 #. [unit_type]: id=Faris, race=khalifate
 #: data/core/units/khalifate/Faris.cfg:17
@@ -3626,11 +3647,17 @@ msgid ""
 "rest of the Khalifate cavalry. Consummate horsemen, the Faris have long "
 "claimed they need only a single lance strike to kill a man."
 msgstr ""
+"Azon khaiyalok számára, akik kitűntek a csatában, megadatik a lehetőség, "
+"hogy bizonyíthassanak és faris-szá váljanak. Akik megfelelnek a próbán, azok "
+"lovára hagyományos lóvértet adnak, hogy így különböztessék meg őket a "
+"kalifátusi lovasság többi részétől. A tökéletes lovasként számon tartott "
+"farisok régóta állítják, hogy számukra csak egyetlen kopjaszúrásra van "
+"szükség egy ember ledöféséhez."
 
 #. [unit_type]: id=Ghazi, race=khalifate
 #: data/core/units/khalifate/Ghazi.cfg:4
 msgid "Ghazi"
-msgstr ""
+msgstr "Ghazi"
 
 #. [unit_type]: id=Ghazi, race=khalifate
 #: data/core/units/khalifate/Ghazi.cfg:17
@@ -3641,18 +3668,23 @@ msgid ""
 "in number, their presence can be decisive in dislodging even the most "
 "hardened redoubt."
 msgstr ""
+"A karddal, pajzzsal és hittel felfegyverkezett ghazik hírneves harcosok a "
+"kalifátusi csapatok között. Tovább mélyítették a harcművészetüket, "
+"kiegészítve azt erős pajzsos ütéssel, mellyel fellökik gyanútlan "
+"ellenfeleiket. Bár kevesen vannak, jelenlétük döntő lehet a legkeményebb "
+"akadályok legyőzésében is."
 
 #. [attack]: type=impact
 #: data/core/units/khalifate/Ghazi.cfg:34
 #: data/core/units/khalifate/Khalid.cfg:35
 #: data/core/units/khalifate/Shuja.cfg:34
 msgid "shield bash"
-msgstr ""
+msgstr "pajzsos ütés"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:4
 msgid "Hadaf"
-msgstr ""
+msgstr "Hadaf"
 
 #. [unit_type]: id=Hadaf, race=khalifate
 #: data/core/units/khalifate/Hadaf.cfg:18
@@ -3663,11 +3695,16 @@ msgid ""
 "a time, returning to camp only for supplies and to pass on news of their "
 "exploits."
 msgstr ""
+"Azokból a qanasokból képezik a hadafokat, akik kiváltképp rátermettek. "
+"Leginkább portyázni szoktak, fő feladatuk az ellenséges raktárak és városok "
+"kifosztása. Ez a nagyfokú önállóság gyakran azt jelenti, hogy e lovasok "
+"hetekre eltűnnek, és csak utánpótlásért, illetve a hírek továbbításáért "
+"térnek vissza a táborba."
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:4
 msgid "Hakim"
-msgstr ""
+msgstr "Hakim"
 
 #. [unit_type]: id=Hakim, race=khalifate
 #: data/core/units/khalifate/Hakim.cfg:21
@@ -3680,11 +3717,18 @@ msgid ""
 "possess a potent clutch of medicines and herbs, which allows them to quickly "
 "heal even the most gravely wounded allies."
 msgstr ""
+"A hakimok olyan tanult polgárok, akik feladták városi életüket azért, hogy a "
+"Kalifátus seregét segítsék a küldetések során. E döntésüknek számos "
+"mozgatórugója van: néhányan a kalandot vagy a biztos megélhetést keresik, "
+"míg mások a hitüket szolgálják. Mindenesetre a hakimokat mindenki tiszteli. "
+"Képzett gyógyítók, akik egyaránt használják a fejlett orvosi módszereket, "
+"valamint az erős gyógyszereket és gyógyfüveket. Ez a tudás teszi lehetővé "
+"számukra a gyors gyógyítást még a legsúlyosabb sebesülések esetében is."
 
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:4
 msgid "Jawal"
-msgstr ""
+msgstr "Jawal"
 
 #. [unit_type]: id=Jawal, race=khalifate
 #: data/core/units/khalifate/Jawal.cfg:19
@@ -3696,11 +3740,17 @@ msgid ""
 "with great speed through the lines of battle to rain arrows down upon the "
 "enemy."
 msgstr ""
+"A sareek legjobbjaiból lesznek a jawalok: lovasíjászok olyan gyorsasággal és "
+"pontossággal, hogy állandó pletykák keringenek arról, hogy tünde vér folyik "
+"az ereikben. Ők persze csak bosszankodnak az efféle misztikus kitalációkon. "
+"A jawalok gyakran mutatják be rátermettségüket a harcok sűrűjében: "
+"átszáguldanak az arcvonalakon, és onnan árasztják el az ellenséget "
+"nyilaikkal."
 
 #. [unit_type]: id=Jundi, race=khalifate
 #: data/core/units/khalifate/Jundi.cfg:4
 msgid "Jundi"
-msgstr ""
+msgstr "Jundi"
 
 #. [unit_type]: id=Jundi, race=khalifate
 #: data/core/units/khalifate/Jundi.cfg:17
@@ -3712,11 +3762,17 @@ msgid ""
 "fight best at dawn or dusk, corresponding to the time when desert "
 "temperatures are the most reasonable."
 msgstr ""
+"A jundi több szempontból is az ideális kalifátusi egységet testesíti meg: "
+"rugalmas, mozgékony, egyaránt hatékony védekezéskor és támadáskor, "
+"kézitusában és távolsági harcban. Legkényelmesebben a számukra ismerős "
+"terepen mozognak, mint például a déli sivatagjaik és hegyeik. Ráadásul "
+"legjobban hajnalban és alkonyatkor harcolnak, mint ahogy a sivatagban is "
+"ekkor a leginkább elviselhető a hőmérséklet."
 
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:4
 msgid "Khaiyal"
-msgstr ""
+msgstr "Khaiyal"
 
 #. [unit_type]: id=Khaiyal, race=khalifate
 #: data/core/units/khalifate/Khaiyal.cfg:26
@@ -3728,11 +3784,18 @@ msgid ""
 "Khaiyal ride into the resulting melee with their maces in hand, trusting "
 "their armor to keep them safe."
 msgstr ""
+"A khaiyalok megértették a vágtázó csatamén pszichológiai hatását, amelyet "
+"nehéz páncélba öltözve erősítenek még tovább. Már nyugalomban is fenséges "
+"látványt nyújtanak, rohamozás közben pedig – kopjával a kézben – egy khaiyal "
+"gyakran elég lendülettel rendelkezik a sorok áttöréséhez. Azon ritka "
+"alkalmakkor, mikor a roham megakad és ez a fenséges lovas nem gázolja le az "
+"ellenfelét, a khaiyalok a kialakuló kézitusában a buzogányukkal osztják az "
+"ütéseket, bízva abban, hogy a páncéljuk megvédi őket."
 
 #. [unit_type]: id=Khalid, race=khalifate
 #: data/core/units/khalifate/Khalid.cfg:4
 msgid "Khalid"
-msgstr ""
+msgstr "Khalid"
 
 #. [unit_type]: id=Khalid, race=khalifate
 #: data/core/units/khalifate/Khalid.cfg:18
@@ -3744,11 +3807,17 @@ msgid ""
 "endlessly around the campfire with the reverent tones of those that speak of "
 "living legends."
 msgstr ""
+"Minden korban akad egy harcos, aki toronymagasan kitűnik társai és "
+"ellenfelei közül: már-már úgy tűnik, hogy egymaga képes megváltoztatni a "
+"világ sorsát. A khalidok, akik nevüket a régiek egyik legendás vezetője után "
+"kapták, gyakran ismertek a kegyességükről és kiválóságukról. Utazásaik és "
+"megpróbáltatásaik meséit a tábortüzek mellett mesélik vég nélkül, "
+"tiszteletteljesen szólva róluk, mint élő legendákról."
 
 #. [unit_type]: id=Mighwar, race=khalifate
 #: data/core/units/khalifate/Mighwar.cfg:4
 msgid "Mighwar"
-msgstr ""
+msgstr "Mighwar"
 
 #. [unit_type]: id=Mighwar, race=khalifate
 #: data/core/units/khalifate/Mighwar.cfg:21
@@ -3759,11 +3828,16 @@ msgid ""
 "through the ranks of the enemy, swords ripping and tearing at those around "
 "them. "
 msgstr ""
+"A mighwarok magasabb követelményekhez tartják magukat, mint a monawishok, "
+"akik közül előléptek.Nem elégednek meg az ellenség kicsalogatásával, hanem "
+"sebességüket olyan agresszivitással párosítják, amellyel keresztültáncolnak "
+"az ellenséges vonalakon. Ilyenkor a kardjukkal szétkaszabolják az ellent "
+"maguk körül."
 
 #. [unit_type]: id=Monawish, race=khalifate
 #: data/core/units/khalifate/Monawish.cfg:4
 msgid "Monawish"
-msgstr ""
+msgstr "Monawish"
 
 #. [unit_type]: id=Monawish, race=khalifate
 #: data/core/units/khalifate/Monawish.cfg:20
@@ -3774,11 +3848,17 @@ msgid ""
 "used to harry the flanks of opposing forces, and it is said to be easier to "
 "catch the wind in your hand than to catch a Monawish."
 msgstr ""
+"Azok a jundik, akik elég gyakorlottak a felderítésben, a monawishok soraiba "
+"nyernek felvételt. A monawishok lemondanak az íjról, helyette a lábuk "
+"gyorsaságára helyezik a hangsúlyt, ami lehetővé teszi számukra, hogy gyorsan "
+"csatába szálljanak vagy elinaljanak. Gyakran alkalmazzák őket a ellenfél "
+"szárnyainak zavarására, és azt mondják, könnyebb a szelet a kezeddel "
+"elkapni, mint egy monawisht megfogni."
 
 #. [unit_type]: id=Mudafi, race=khalifate
 #: data/core/units/khalifate/Mudafi.cfg:4
 msgid "Mudafi"
-msgstr ""
+msgstr "Mudafi"
 
 #. [unit_type]: id=Mudafi, race=khalifate
 #: data/core/units/khalifate/Mudafi.cfg:17
@@ -3789,11 +3869,16 @@ msgid ""
 "preferred strategy is to gradually wear down enemies, until they can be "
 "defeated in a vicious counter stroke."
 msgstr ""
+"Habár a Kalifátus seregei a megdöbbentő mozgékonyságukról és vad "
+"támadásaikról ismertek, ügyes védők is akadnak köztük. A mudafik az állásaik "
+"tartásában jeleskednek, ellenfelüket hosszú, borotvaéles lándzsáikkal "
+"tartják sakkban. Kedvelt stratégiájuk, hogy fokozatosan kimerítik az "
+"ellenfeleiket, amíg egyetlen ellencsapással nem győzedelmeskednek felettük."
 
 #. [unit_type]: id=Mufariq, race=khalifate
 #: data/core/units/khalifate/Mufariq.cfg:4
 msgid "Mufariq"
-msgstr ""
+msgstr "Mufariq"
 
 #. [unit_type]: id=Mufariq, race=khalifate
 #: data/core/units/khalifate/Mufariq.cfg:19
@@ -3805,11 +3890,17 @@ msgid ""
 "riders in the slightest, and the displaced air of a descending mace is the "
 "last sound they hear."
 msgstr ""
+"A mufariqok kitűnő lovasok, akik olyan címeket és elismeréseket halmoznak "
+"fel, amelyek ugyanúgy kitüntetik őket, mint a páncéljuk díszítése. Kopjás "
+"harci tudományukat hosszú évek csatáiban tökéletesítve megállíthatatlan "
+"elemi csapássá váltak. A menekülő ellenség hamar felismeri, hogy a dombok "
+"egy picit sem lassítják le ezeket a lovasokat, és a lesújtó buzogány "
+"süvítése az utolsó hang, amit valaha hallanak."
 
 #. [unit_type]: id=Muharib, race=khalifate
 #: data/core/units/khalifate/Muharib.cfg:4
 msgid "Muharib"
-msgstr ""
+msgstr "Muharib"
 
 #. [unit_type]: id=Muharib, race=khalifate
 #: data/core/units/khalifate/Muharib.cfg:17
@@ -3820,11 +3911,17 @@ msgid ""
 "issue pilfering these supplies, and so they tend to be more well-equipped "
 "than most."
 msgstr ""
+"A muharibokat gyakran csatázó felderítőként használják, akik már nemcsak "
+"próbálgatják az ellenfél erejét, hanem őrjáratokat iktatnak ki, vagy "
+"portyákat vezetnek az utánpótlási vonalak ellen. Gyakran hosszú időre vannak "
+"távol a fő seregtől, ám mivel nincsenek aggályaik a megszerzett zsákmány "
+"megcsapolásával kapcsolatban, ezért jobb a felszerelésük, mint a "
+"legtöbbeknek."
 
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:4
 msgid "Naffat"
-msgstr ""
+msgstr "Naffat"
 
 #. [unit_type]: id=Naffat, race=khalifate
 #: data/core/units/khalifate/Naffat.cfg:22
@@ -3834,27 +3931,29 @@ msgid ""
 "the use of fire in warfare is not a novel concept, the flames of the Naffat "
 "have proven disturbingly difficult for their enemies to extinguish."
 msgstr ""
+"A naffatok a szükséges rosszat képviselik a Kalifátus seregében, akik az "
+"ellenség erődítményeit tűzzel perzselik fel, csapataiba pedig rémületet "
+"plántálnak. Habár a tűz háborús felhasználása nem újdonság, a naffatok által "
+"gyújtott lángok kioltása mégis aggasztóan nehéz az ellenfelek számára."
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:27
 #: data/core/units/khalifate/Qatif-al-nar.cfg:27
 #: data/core/units/khalifate/Tineen.cfg:27
 msgid "naphtha attack"
-msgstr ""
+msgstr "nafta koktél"
 
 #. [attack]: type=fire
 #: data/core/units/khalifate/Naffat.cfg:36
 #: data/core/units/khalifate/Qatif-al-nar.cfg:36
 #: data/core/units/khalifate/Tineen.cfg:36
-#, fuzzy
-#| msgid "fire claws"
 msgid "fire arrow"
-msgstr "lángnyelvek"
+msgstr "tüzes nyíl"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:4
 msgid "Qanas"
-msgstr ""
+msgstr "Qanas"
 
 #. [unit_type]: id=Qanas, race=khalifate
 #: data/core/units/khalifate/Qanas.cfg:17
@@ -3866,11 +3965,17 @@ msgid ""
 "needed. Qanas are often used to draw enemies into a position where they will "
 "be surrounded and crushed by Faris."
 msgstr ""
+"Azon lovasokból lesznek a qanasok, akik nem elég ügyesek farisnak, vagy nem "
+"bánnak elég gyorsan az íjjal, hogy saree-vá válhassanak. Ennek ellenére "
+"qanasnak lenni közel sem a bukás jele: ők a muharibok lovas megfelelői, akik "
+"igény szerint a gyalogságot buzogánnyal vagy íjjal támogatják. A qanasokat "
+"gyakran használják megtévesztésre, hogy olyan helyre csalják az ellenséget, "
+"ahol bekerítik és szétzúzzák őket a farisok."
 
 #. [unit_type]: id=Qatif_al_nar, race=khalifate
 #: data/core/units/khalifate/Qatif-al-nar.cfg:5
 msgid "Qatif-al-nar"
-msgstr ""
+msgstr "Qatif-al-nar"
 
 #. [unit_type]: id=Qatif_al_nar, race=khalifate
 #: data/core/units/khalifate/Qatif-al-nar.cfg:22
@@ -3880,11 +3985,16 @@ msgid ""
 "troops, Qatif-al-nar can be easily located in battle by the cleared charred "
 "area around them, a testament to the success of their experiments."
 msgstr ""
+"A qatif-al-nar katonák olyan sokat kísérleteznek a fegyvereikkel, hogy "
+"állandóan hamutól és lángtól büdösek. Ezen tulajdonságuk miatt csapattársaik "
+"is elismerő óvatossággal tekintenek rájuk. A qatif-al-nar katonák könnyen "
+"megtalálhatók a csatamezőn az őket körülvevő elszenesedett üres terület "
+"közepén, ez pedig kísérleteik sikerének bizonyítéka."
 
 #. [unit_type]: id=Rami, race=khalifate
 #: data/core/units/khalifate/Rami.cfg:4
 msgid "Rami"
-msgstr ""
+msgstr "Rami"
 
 #. [unit_type]: id=Rami, race=khalifate
 #: data/core/units/khalifate/Rami.cfg:18
@@ -3894,11 +4004,15 @@ msgid ""
 "superior speed and agility to circle and harass their foes, whittling down "
 "their numbers with relentless arrows."
 msgstr ""
+"A ramik kitűnő lovasok, akik jobban lőnek lóhátról, mint a legtöbb ember "
+"gyalogosan. Megvetik a vérteket, inkább gyorsaságukat és ügyességüket "
+"használják ki a ellenfelek zaklatására és bekerítésére, akiket aztán "
+"könyörtelen nyilaikkal mészárolnak le."
 
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:4
 msgid "Rasikh"
-msgstr ""
+msgstr "Rasikh"
 
 #. [unit_type]: id=Rasikh, race=khalifate
 #: data/core/units/khalifate/Rasikh.cfg:18
@@ -3910,11 +4024,17 @@ msgid ""
 "they can be trusted to hold any position or line, long after lesser soldiers "
 "and men have fled in terror."
 msgstr ""
+"Körbetekintve a Kalifátus területén, a karavánok és a helyiek csak magányos "
+"tornyokban és erődökben találnak menedéket a banditák és szörnyetegek elől. "
+"Ezeket az erődítményeket a katonák legeltökéltebbjei védik, akik gyakran "
+"küzdenek minimális eséllyel, csak hogy visszaszoríthassák a támadókat. "
+"Csatában olyan pontok vagy vonalak megtartására is képesek, ahol a kevésbé "
+"rátermett katonák és emberek már rég megfutamodtak volna a rémülettől."
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:4
 msgid "Saree"
-msgstr ""
+msgstr "Saree"
 
 #. [unit_type]: id=Saree, race=khalifate
 #: data/core/units/khalifate/Saree.cfg:18
@@ -3924,11 +4044,15 @@ msgid ""
 "This has made them the fastest riders in the Khalifate armies, and a wise "
 "Khalid uses to this advantage."
 msgstr ""
+"Azon ramikat, akik különösen jól használják az íjukat, saree-vá képezik. "
+"Naponta több órán keresztül gyakorolnak, hogy minél jobban eggyé "
+"kovácsolódjanak harci ménükkel. Ők a Kalifátus seregének leggyorsabb "
+"lovasai, és egy bölcs khalid ki is használja ezt az előnyt."
 
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Shuja.cfg:4
 msgid "Shuja"
-msgstr ""
+msgstr "Shuja"
 
 #. [unit_type]: id=Shuja, race=khalifate
 #: data/core/units/khalifate/Shuja.cfg:17
@@ -3938,11 +4062,16 @@ msgid ""
 "soldiers to fight for their cause. Despite this, they are often found "
 "leading from the front, taking down their foes with sword and shield."
 msgstr ""
+"Kiváló bátorságuk és képességeik miatt a shuják a Kalifátus seregének "
+"vezetői. Hőstetteik jól ismertek csapataik előtt, és fűtik katonáikat, hogy "
+"az ügyükért harcoljanak. Ennek ellenére gyakran személyesen vezetik a "
+"támadást, az ellenséget kardjukkal és pajzsukkal a földre tiporva."
 
+# máltai nyelven orvost jelent (éljen a nyelvfelismerés), de szerintem felesleges megkeverni az arabos hangzásvilágot ilyesmivel
 #. [unit_type]: id=Tabib, race=khalifate
 #: data/core/units/khalifate/Tabib.cfg:4
 msgid "Tabib"
-msgstr ""
+msgstr "Tabib"
 
 #. [unit_type]: id=Tabib, race=khalifate
 #: data/core/units/khalifate/Tabib.cfg:23
@@ -3953,11 +4082,16 @@ msgid ""
 "well, often to the disbelief of the injured. Hardened by years of travels, "
 "many are able to treat themselves."
 msgstr ""
+"Akadnak, akik olyannyira kitűnnek az orvostudományukkal, mint mások a karjuk "
+"irtózatos erejével; a tabibok tudásának nincs párja a Kalifátuson kívül. "
+"Gyógyszereik nemcsak a sebeket gyógyítják, de megszüntetik a fertőzést és a "
+"mérgezést is, sokszor a sérültek legnagyobb meglepetésére. Hosszú évek "
+"vándorlásai edzették meg őket, sokan közülük magukat is tudják gyógyítani."
 
 #. [unit_type]: id=Tineen, race=khalifate
 #: data/core/units/khalifate/Tineen.cfg:4
 msgid "Tineen"
-msgstr ""
+msgstr "Tineen"
 
 #. [unit_type]: id=Tineen, race=khalifate
 #: data/core/units/khalifate/Tineen.cfg:22
@@ -3967,6 +4101,11 @@ msgid ""
 "of the value of life, Tineen are caught up in the power of their caged fire "
 "and likely to test their latest naphtha jar at the first opportunity."
 msgstr ""
+"Azok a qatif-al-narok, akik elzárkóztak a világtól a kísérleteik kedvéért, "
+"megkapják a megtisztelő tineen nevet, elismertségből és félelemből egyaránt. "
+"Többé nincsenek tekintettel az élet értékére, csupán a foglyul ejtett tüzük "
+"erejének rabjai, és valószínűleg az utolsó nafta üvegcséjüket is letesztelik "
+"az első adódó alkalommal."
 
 #. [unit_type]: id=Mermaid Diviner, race=merman
 #: data/core/units/merfolk/Diviner.cfg:4
@@ -5417,18 +5556,6 @@ msgstr "Árnyak tanítványa"
 
 #. [unit_type]: id=Dark Adept, race=human
 #: data/core/units/undead/Necro_Dark_Adept.cfg:23
-#, fuzzy
-#| msgid ""
-#| "To attract any practitioners, the lure of black magic must be a great "
-#| "prize indeed, for anyone caught practicing the art in the civilized world "
-#| "is subject to a death sentence. And yet there are those who pursue this "
-#| "art, for the prize offered is nothing less than immortality. Hidden away "
-#| "in secret cults, or initiated into the dark orders of the underworld, the "
-#| "training which these fanatics must endure often drives them to exhaustion "
-#| "and enfeeblement.\n"
-#| "\n"
-#| "In such condition, their only weapon is the craft they have so committed "
-#| "themselves to learning."
 msgid ""
 "To attract any practitioners, the lure of black magic must be a great prize "
 "indeed, for anyone caught practicing the art in the civilized world is "
@@ -5443,10 +5570,10 @@ msgid ""
 msgstr ""
 "A fekete mágia jutalma nagyon nagy lehet, ha követőket tud szerezni, ugyanis "
 "bárkit, akit rajtakapnak a művelésén a civilizált világban, halálbüntetés "
-"sújt. És mégis vannak olyanok, akik űzik ezt a mágiát, mert a jutalom amit "
+"sújt. És mégis vannak olyanok, akik űzik ezt a mágiát, mert a jutalom, amit "
 "kínál, nem kisebb, mint a halhatatlanság. Elrejtett szektákban vagy "
-"beavatott földalatti sötét rendekben a fanatikusok néha a teljes kimerülésig "
-"és lecsontosodásig kell bírnia a kiképzést.\n"
+"beavatott alvilági sötét rendekben a fanatikusoknak néha a teljes "
+"kimerülésig és lecsontosodásig kell bírnia a kiképzést.\n"
 "\n"
 "Ilyen állapotban egyetlen fegyverük csak az a mágia, amelynek tanulására "
 "feláldozták magukat."
