@@ -376,8 +376,6 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tgamestate_inspector>();
 	test<gui2::tlanguage_selection>();
 	test<gui2::tmessage>();
-	test<gui2::tsimple_item_selector>();
-	test<gui2::tscreenshot_notification>();
 	test<gui2::tmp_change_control>();
 	test<gui2::tmp_cmd_wrapper>();
 	test<gui2::tmp_connect>();
@@ -385,6 +383,8 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::tmp_login>();
 	test<gui2::tmp_method_selection>();
 	test<gui2::tmp_server_list>();
+	test<gui2::tsimple_item_selector>();
+	test<gui2::tscreenshot_notification>();
 	test<gui2::ttitle_screen>();
 	test<gui2::ttransient_message>();
 //	test<gui2::tunit_attack>(); /** @todo ENABLE */
