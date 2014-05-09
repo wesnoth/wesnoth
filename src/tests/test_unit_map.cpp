@@ -54,7 +54,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	t_uresult uresult1 = unit_map.add(map_location(1,1), orc1_side0_real);
 
 	BOOST_CHECK_MESSAGE(uresult1.second == true, "Good Add");
-	BOOST_CHECK(unit_map.size() == 1);
+	BOOST_CHECK_EQUAL(unit_map.size(), 1);
 
 	unit_map::unit_iterator ui = unit_map.find(map_location(1,1));
 	BOOST_CHECK_MESSAGE(uresult1.first == ui, "Good Add");
@@ -72,7 +72,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	uresult1 = unit_map.add(map_location(1,1), orc1_side0_real);
 	lg::set_log_domain_severity("unit", lg::warn);
 	lg::set_log_domain_severity("engine", lg::info);
-	BOOST_CHECK(unit_map.size() == 1);
+	BOOST_CHECK_EQUAL(unit_map.size(), 1);
 	BOOST_CHECK_MESSAGE(uresult1.second == false, "Didn't Add at occupied location.");
 	BOOST_CHECK_MESSAGE(uresult1.first == unit_map.end(), "Didn't Add at occupied location.");
 
@@ -80,7 +80,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	// If the location is invalid, the unit never needs to be cloned, so no warning is emitted in the unit domain
 	uresult1 = unit_map.add(map_location(-1,1), orc1_side0_real);
 	lg::set_log_domain_severity("engine", lg::info);
-	BOOST_CHECK(unit_map.size() == 1);
+	BOOST_CHECK_EQUAL(unit_map.size(), 1);
 	BOOST_CHECK_MESSAGE(uresult1.second == false, "Didn't Add at invalid location.");
 	BOOST_CHECK_MESSAGE(uresult1.first == unit_map.end(), "Didn't Add at invalid location.");
 
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	uresult1 = unit_map.add(map_location(1,2), orc1_side0_real);
 	lg::set_log_domain_severity("unit", lg::warn);
 	lg::set_log_domain_severity("engine", lg::info);
-	BOOST_CHECK(unit_map.size() == 2);
+	BOOST_CHECK_EQUAL(unit_map.size(), 2);
 	BOOST_CHECK_MESSAGE(uresult1.second == true, "Added in face of id collision.");
 	BOOST_CHECK_MESSAGE(uresult1.first != unit_map.end(), "Added in face of id collision.");
 	BOOST_CHECK_MESSAGE(uresult1.first->underlying_id() != orc1_side0_real.underlying_id(), "Found Orc1");
