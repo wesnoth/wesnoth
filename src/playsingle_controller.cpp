@@ -600,9 +600,9 @@ void playsingle_controller::play_turn(bool save)
 
 	LOG_NG << "turn: " << turn() << "\n";
 
-	if(non_interactive())
+	if(non_interactive()) {
 		LOG_AIT << "Turn " << turn() << ":" << std::endl;
-
+	}
 
 	for (player_number_ = first_player_; player_number_ <= int(teams_.size()); ++player_number_)
 	{
