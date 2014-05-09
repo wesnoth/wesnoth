@@ -45,6 +45,8 @@ struct addon_info
 
 	std::vector<std::string> locales;
 
+	std::string core;
+
 	std::vector<std::string> depends;
 	// std::vector<addon_dependency> conflicts, recommends, replaces;
 

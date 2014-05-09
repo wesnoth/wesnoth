@@ -72,6 +72,7 @@ void addon_info::read(const config& cfg)
 	this->downloads = cfg["downloads"];
 	this->uploads = cfg["uploads"];
 	this->type = get_addon_type(cfg["type"].str());
+	this->core = cfg["core"].str();
 
 	const config::const_child_itors& locales = cfg.child_range("translation");
 
@@ -98,6 +99,7 @@ void addon_info::write(config& cfg) const
 	cfg["downloads"] = this->downloads;
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
+	cfg["core"] = this->core;
 
 	BOOST_FOREACH(const std::string& locale_id, this->locales) {
 		cfg.add_child("translation")["language"] = locale_id;
@@ -117,6 +119,7 @@ void addon_info::write_minimal(config& cfg) const
 	cfg["type"] = get_addon_type_string(this->type);
 	cfg["title"] = this->title;
 	cfg["dependencies"] = utils::join(this->depends);
+	cfg["core"] = this->core;
 }
 
 std::string addon_info::display_title() const
@@ -170,6 +173,8 @@ std::string addon_info::display_type() const
 		return _("addon_type^MP campaign");
 	case ADDON_MP_MOD:
 		return _("addon_type^MP modification");
+	case ADDON_CORE:
+		return _("addon_type^Core");
 	case ADDON_MEDIA:
 		return _("addon_type^Resources");
 	case ADDON_OTHER:
