@@ -231,10 +231,11 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
 
 	unit_map.insert(extracted_unit);
 
-	BOOST_CHECK_MESSAGE(unit_iterator.valid() == false, "Iterator should be invalid after extraction and reinsertion.");
+	BOOST_CHECK_MESSAGE(unit_iterator.valid(), "Iterator should be valid after extraction and reinsertion.");
 
-	unit_iterator = unit_map.find(hex);
-	BOOST_CHECK(unit_iterator.valid());
+	unit_map::unit_iterator unit_iterator2 = unit_map.find(hex);
+	BOOST_CHECK(unit_iterator2.valid());
+	BOOST_CHECK(unit_iterator == unit_iterator2);
 }
 
 BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
@@ -267,10 +268,11 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
 
 	unit_map.insert(extracted_unit);
 
-	BOOST_CHECK_MESSAGE(unit_iterator.valid() == false, "Iterator should be invalid after extraction and reinsertion.");
+	BOOST_CHECK_MESSAGE(unit_iterator.valid(), "Iterator should be valid after extraction and reinsertion.");
 
-	unit_iterator = unit_map.find(hex);
-	BOOST_CHECK(unit_iterator.valid());
+	unit_map::unit_iterator unit_iterator2 = unit_map.find(hex);
+	BOOST_CHECK(unit_iterator2.valid());
+	BOOST_CHECK(unit_iterator == unit_iterator2);
 }
 
 /* vim: set ts=4 sw=4: */
