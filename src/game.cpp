@@ -20,6 +20,7 @@
 #include "commandline_options.hpp"
 #include "game_config_manager.hpp"
 #include "game_controller.hpp"
+#include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
@@ -619,6 +620,27 @@ static int do_gameloop(int argc, char** argv)
 			// section in the game help!
 			help::help_manager help_manager(&config_manager.game_config());
 			if(manage_addons(game->disp())) {
+				config_manager.reload_changed_game_config();
+			}
+			continue;
+		} else if(res == gui2::ttitle_screen::CORES) {
+
+			int current = 0;
+			std::vector<config> cores;
+			BOOST_FOREACH(const config& core,
+					resources::config_manager->game_config().child_range("core")) {
+				cores.push_back(core);
+				if (core["id"] == preferences::core_id())
+					current = cores.size() -1;
+			}
+
+			gui2::tcore_selection core_dlg(cores, current);
+			if (core_dlg.show(game->disp().video())) {
+				int core_index = core_dlg.get_choice();
+				const std::string& wml_tree_root = cores[core_index]["path"];
+				const std::string& core_id = cores[core_index]["id"];
+				preferences::set_wml_tree_root(wml_tree_root);
+				preferences::set_core_id(core_id);
 				config_manager.reload_changed_game_config();
 			}
 			continue;

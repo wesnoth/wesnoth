@@ -77,6 +77,9 @@ namespace gui2
  * addons & & button & m &
  *         The button to start managing the addons. $
  *
+ * cores & & button & m &
+ *         The button to start managing the cores. $
+ *
  * language & & button & m &
  *         The button to select the game language. $
  *
@@ -241,6 +244,10 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__ADDONS,
 			boost::bind(&hotkey, boost::ref(window), GET_ADDONS));
+
+	window.register_hotkey(
+			hotkey::TITLE_SCREEN__CORES,
+			boost::bind(&hotkey, boost::ref(window), CORES));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__EDITOR,

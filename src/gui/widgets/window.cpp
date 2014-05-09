@@ -505,6 +505,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 		return static_cast<tretval>(ttitle_screen::LOAD_GAME);
 	} else if(id == "addons") {
 		return static_cast<tretval>(ttitle_screen::GET_ADDONS);
+	} else if(id == "cores") {
+		return static_cast<tretval>(ttitle_screen::CORES);
 	} else if(id == "language") {
 		return static_cast<tretval>(ttitle_screen::CHANGE_LANGUAGE);
 	} else if(id == "preferences") {
