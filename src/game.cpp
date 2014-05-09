@@ -580,7 +580,11 @@ static int do_gameloop(int argc, char** argv)
 				}
 
 				thread_data data(game, &worker_result);
+#if SDL_VERSION_ATLEAST(2,0,0)
+				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, "worker", &data);
+#else
 				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, &data);
+#endif
 
 				std::cerr << "Setting timer for " << *cmdline_opts.timeout << " ms." << std::endl;
 				int wait_result = SDL_SemWaitTimeout(worker_sem, *cmdline_opts.timeout);
