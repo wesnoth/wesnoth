@@ -5,4 +5,6 @@ set -o pipefail
 ./wesnoth --validcache -u unit_test_2 --timeout 10000 2> error.log
 ./wesnoth --validcache -u unit_test_3 --timeout 10000 2> error.log
 ./wesnoth --validcache -u unit_test_4 --timeout 10000 2> error.log
+./wesnoth --validcache -u unit_test_5 --timeout 10000 2> error.log
+./wesnoth --validcache -u unit_test_6 --timeout 10000 2> error.log
 rm error.log
