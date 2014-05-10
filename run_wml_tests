@@ -5,6 +5,10 @@
 #The script will ignore comments, beginning with #
 #
 #The script has options for "verbose" mode -v, and "debug" mode -d.
+#
+#The -u option uses "unix timeouts", through the timeout command, instead of 
+#wesnoth's built-in timeout mechanism. The built-in one is somewhat unreliable 
+#at time of writing, so if you are on unix then you may prefer that.
 
 get_code_string()
 {
@@ -24,9 +28,6 @@ get_code_string()
   4)
     CodeString="FAIL (ERRORED REPLAY)"
     ;;
-  134)
-    CodeString="FAIL + 'Terminate called without active exception' "
-    ;;
   *)
     CodeString="? ? ?"
     ;;
@@ -38,11 +39,25 @@ check_errs()
   # Argument 1 is the name of the test.
   # Argument 2 is the wesnoth error code for the test. 
   # Argument 3 is the expected error code.
-  if [ "${2}" -eq 134 -a "${3}" -eq 2 ]; then
+  if [ "${2}" -eq 134 -a "${3}" -eq 2 -a $UnixTimeout -eq 0 ]; then
     if [ $Verbose -ge 2 ]; then
-      echo "Caught \'terminate called without an active exception\' return code"
+      echo "Caught \'terminate called without an active exception\' return code 134"
       echo "This means wesnoth tried to kill the thread but SDL threw an error..."
       echo "(This happens occasionally when running the empty_test with a timeout.)"
+      echo "Since we expected timeout, the test passes."
+    fi
+    return 0
+  elif [ "${2}" -eq 124 -a "${3}" -eq 2 -a $UnixTimeout -eq 1 ]; then
+    if [ $Verbose -ge 2 ]; then
+      echo "Caught return code 124 from timeout"
+      echo "This signal means that the unix timeout utility killed wesnoth with TERM."
+      echo "Since we expected timeout, the test passes."
+    fi
+    return 0
+  elif [ "${2}" -eq 137 -a "${3}" -eq 2 -a $UnixTimeout -eq 1 ]; then
+    if [ $Verbose -ge 2 ]; then
+      echo "Caught return code 137 from timeout"
+      echo "This signal means that the unix timeout utility killed wesnoth with KILL."
       echo "Since we expected timeout, the test passes."
     fi
     return 0
@@ -82,11 +97,37 @@ run_test()
   fi
 }
 
+#This doesn't use the wesnoth timeout mechanism, and uses the unix core "timeout" function instead
+run_test_unix_timeout()
+{
+  # Argument 1 is the expected error code
+  # Argument 2 is the name of the test scenario
+  if [ "$FirstTest" -eq 1 ]; then
+    opts=""
+    timer=20
+    FirstTest=0
+  else
+    opts="--validcache"
+    timer=10
+  fi
+  if [ "$Verbose" -ge 1 ]; then
+    echo "timeout" $timer "wesnoth -u" $2 $opts
+  fi
+  timeout $timer wesnoth -u $2 $opts 2> error.log
+  if check_errs $2 $? $1; then 
+    return 0
+  else
+    return 1
+  fi
+}
+
+
 ### Main Script Starts Here ###
 
 Verbose=0
+UnixTimeout=0
 
-while getopts ":vd" Option
+while getopts ":vduh" Option
 do
   case $Option in
     v ) 
@@ -99,6 +140,23 @@ do
         Verbose=2
       fi
       ;;
+    u )
+      UnixTimeout=1
+      ;;
+    h )
+      echo $0 "[OPTIONS]"
+      echo
+      echo -e "\t-h\tShows this help."
+      echo -e "\t-v\tVerbose mode."
+      echo -e "\t-d\tDebug mode."
+      echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
+      echo
+      echo "The script executes tests found in the file 'wml_test_schedule'."
+      echo "Each line should be formatted:"
+      echo -e "\n\t<expected return code> <name of unit test scenario>.\n"
+      echo "Lines beginning # are ignored."
+      echo
+      exit 0;
   esac
 done
 shift $(($OPTIND - 1))
@@ -132,12 +190,22 @@ do
         echo "comment:" $line
       fi
     else
-      if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
-        if [ $Verbose -ge 2 ]; then
-          echo "good"
+      if [ $UnixTimeout -eq 1 ]; then 
+        if run_test_unix_timeout $line; then 
+          if [ $Verbose -ge 2 ]; then
+            echo "good"
+          fi
+        else
+          AllPassed=0
         fi
       else
-        AllPassed=0
+        if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
+          if [ $Verbose -ge 2 ]; then
+            echo "good"
+          fi
+        else
+          AllPassed=0
+        fi
       fi
     fi
 done
