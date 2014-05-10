@@ -1203,6 +1203,36 @@ set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BI
 install(TARGETS wesmage DESTINATION ${BINDIR})
 
 endif(ENABLE_TOOLS)
+
+
+########### SDL2 test tool  ###############
+
+if(ENABLE_SDL2_TOOLS)
+
+	add_executable(sdl2
+		tools/sdl2/sdl2.cpp
+		tools/sdl2/window.cpp
+	)
+
+	target_link_libraries(sdl2
+		wesnoth-sdl
+		wesnoth-core
+		wesnoth-game
+		wesnoth-gui_types
+		wesnoth-gui_event
+		wesnoth-gui_iterator
+		wesnoth-gui_placer
+		wesnoth-gui_tooltip
+		wesnoth-gui_widget
+		wesnoth-gui_widget_definition
+		wesnoth-gui1_widgets
+		wesnoth-schema_validator
+		wesnoth-lua
+		${game-external-libs}
+	)
+
+endif()
+
 ########### Unit tests ###############
 
 if(ENABLE_TESTS)

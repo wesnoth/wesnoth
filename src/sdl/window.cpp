@@ -54,6 +54,8 @@ twindow::twindow(const std::string& title,
 	}
 
 	pixel_format_ = info.texture_formats[0];
+
+	clear();
 }
 
 twindow::~twindow()
@@ -71,6 +73,14 @@ void twindow::set_size(const int w, const int h)
 void twindow::full_screen()
 {
 	/** @todo Implement. */
+}
+
+void twindow::clear()
+{
+	if(SDL_RenderClear(*this) != 0) {
+		throw texception("Failed to clear the SDL_Renderer object.",
+						 true);
+	}
 }
 
 void twindow::render()
@@ -91,6 +101,22 @@ void twindow::set_icon(const surface& icon)
 ttexture twindow::create_texture(const int access, const int w, const int h)
 {
 	return ttexture(*SDL_GetRenderer(window_), pixel_format_, access, w, h);
+}
+
+ttexture twindow::create_texture(const int access,
+								 SDL_Surface* source_surface__)
+{
+	return ttexture(*SDL_GetRenderer(window_), access, source_surface__);
+}
+
+ttexture twindow::create_texture(const int access, const surface& surface)
+{
+	return ttexture(*SDL_GetRenderer(window_), access, surface);
+}
+
+void twindow::draw(ttexture& texture, const int x, const int y)
+{
+	texture.draw(*SDL_GetRenderer(window_), x, y);
 }
 
 twindow::operator SDL_Window*()

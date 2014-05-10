@@ -27,6 +27,8 @@
 #include <SDL_render.h>
 #include <string>
 
+struct surface;
+
 namespace sdl
 {
 
@@ -66,11 +68,58 @@ public:
 	 */
 	ttexture(SDL_Renderer& renderer, const int access, const std::string& file);
 
+	/**
+	 * Constructor.
+	 *
+	 * Loads data from and takes ownership of a SDL_surface.
+	 *
+	 * @pre                       @p source_surface__ points to a valid surface.
+	 * @pre                       @p access == SDL_TEXTUREACCESS_STATIC
+	 *                            || @p access == SDL_TEXTUREACCESS_STREAMING.
+	 *
+	 * @param renderer            The renderer the texture is associated with.
+	 * @param access              Access mode of the texture.
+	 * @param source_surface__    Forwarded to @ref source_surface_.
+	 */
+	ttexture(SDL_Renderer& renderer,
+			 const int access,
+			 SDL_Surface* source_surface__);
+
+	/**
+	 * Constructor.
+	 *
+	 * Loads data from a surface.
+	 *
+	 * @pre                       @p access == SDL_TEXTUREACCESS_STATIC
+	 *                            || @p access == SDL_TEXTUREACCESS_STREAMING.
+	 *
+	 * @param renderer            The renderer the texture is associated with.
+	 * @param access              Access mode of the texture.
+	 * @param surface             Contains the surface data to copy.
+	 */
+	ttexture(SDL_Renderer& renderer, const int access, const surface& surface);
+
 	~ttexture();
 
 	ttexture(const ttexture& texture);
 
 	ttexture& operator=(const ttexture& texture);
+
+
+	/***** ***** ***** Draw function overloads. ***** ***** *****/
+
+	/**
+	 * Draw a texture on a renderer.
+	 *
+	 * The function calls @ref SDL_RenderCopy.
+	 *
+	 * The function draws the image unscaled at coordinates @p x, @p y.
+	 *
+	 * @param renderer            Used as renderer for @ref SDL_RenderCopy.
+	 * @param x                   The x-coordinate where to draw the texture.
+	 * @param y                   The y-coordinate where to draw the texture.
+	 */
+	void draw(SDL_Renderer& renderer, const int x, const int y);
 
 
 	/***** ***** ***** Setters and getters. ***** ***** *****/
@@ -108,6 +157,17 @@ private:
 	 *   Always @c NULL.
 	 */
 	SDL_Surface* source_surface_;
+
+	/**
+	 * Creates the @ref texture_ from the @ref source_surface_.
+	 *
+	 * This is used in the constructor to create the texture when only a
+	 * surface is available.
+	 *
+	 * @param renderer            The renderer argument of the constructor.
+	 * @param access              The access argument of the constructor.
+	 */
+	void initialise_from_surface(SDL_Renderer& renderer, const int access);
 };
 
 } // namespace sdl
