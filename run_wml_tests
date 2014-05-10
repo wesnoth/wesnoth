@@ -1,14 +1,6 @@
 #!/bin/bash
 #This script runs a sequence of unit tests, found in the file wml_test_schedule
-#Format: <expected return code> <unit test scenario name>
-#
-#The script will ignore comments, beginning with #
-#
-#The script has options for "verbose" mode -v, and "debug" mode -d.
-#
-#The -u option uses "unix timeouts", through the timeout command, instead of 
-#wesnoth's built-in timeout mechanism. The built-in one is somewhat unreliable 
-#at time of writing, so if you are on unix then you may prefer that.
+#Use -h to get help with usage.
 
 get_code_string()
 {
@@ -105,7 +97,6 @@ run_test_unix_timeout()
   if [ "$FirstTest" -eq 1 ]; then
     opts=""
     timer=20
-    FirstTest=0
   else
     opts="--validcache"
     timer=10
@@ -116,6 +107,7 @@ run_test_unix_timeout()
   fi
   timeout "--kill-after=$timer1" $timer wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
+    FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
     return 0
   else
     return 1
@@ -156,8 +148,7 @@ do
       echo "The script executes tests found in the file 'wml_test_schedule'."
       echo "Each line should be formatted:"
       echo -e "\n\t<expected return code> <name of unit test scenario>.\n"
-      echo "Lines beginning # are ignored."
-      echo
+      echo "Lines beginning # are treated as comments."
       exit 0;
   esac
 done
