@@ -108,8 +108,16 @@ run_test()
   wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
+    rm error.log
     return 0
   else
+    if [ -f "errors.log" ]; then
+      echo -e "\n--- next unit test ---\n" >> errors.log
+      cat error.log >> errors.log
+    else
+      cp error.log errors.log
+    fi
+    rm error.log
     return 1
   fi
 }
@@ -133,8 +141,16 @@ run_test_unix_timeout()
   timeout "--kill-after=$timer1" $timer wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
+    rm error.log
     return 0
   else
+    if [ -f "errors.log" ]; then
+      echo -e "\n--- next unit test ---\n" >> errors.log
+      cat error.log >> errors.log
+    else
+      cp error.log errors.log
+    fi
+    rm error.log
     return 1
   fi
 }
@@ -194,6 +210,10 @@ done
 
 echo "Running" $TESTS "test scenarios."
 
+if [ -f "errors.log" ]; then
+  rm errors.log
+fi
+
 AllPassed=1
 FirstTest=1
 
@@ -226,6 +246,7 @@ done
 
 if [ $AllPassed -eq 0 ]; then
   echo "Not all tests gave the correct result."
+  echo "Check errors.log for error reports."
   exit 1
 else
   echo "All tests gave the correct result."
