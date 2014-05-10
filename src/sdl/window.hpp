@@ -32,6 +32,7 @@
 
 #include <string>
 
+struct surface;
 struct SDL_Renderer;
 
 namespace sdl
@@ -97,6 +98,9 @@ public:
 	 */
 	void full_screen();
 
+	/** Clears the contents of the window. */
+	void clear();
+
 	/** Renders the contents of the window. */
 	void render();
 
@@ -129,6 +133,47 @@ public:
 	 * @param h                   Used as x for @ref SDL_CreateTexture.
 	 */
 	ttexture create_texture(const int access, const int w, const int h);
+
+	/**
+	 * Creates a texture for the renderer.
+	 *
+	 * This is a helper function forwarded to the constructor of the
+	 * @ref ttexture class.
+	 *
+	 * See @ref texture::ttexture.
+	 *
+	 * @param access              Forwarded to @ref texture::ttexture.
+	 * @param source_surface__    Forwarded to @ref texture::ttexture.
+	 */
+	ttexture create_texture(const int access, SDL_Surface* source_surface__);
+
+	/**
+	 * Creates a texture for the renderer.
+	 *
+	 * This is a helper function forwarded to the constructor of the
+	 * @ref ttexture class.
+	 *
+	 * See @ref texture::ttexture.
+	 *
+	 * @param access              Forwarded to @ref texture::ttexture.
+	 * @param surface             Forwarded to @ref texture::ttexture.
+	 */
+	ttexture create_texture(const int access, const surface& surface);
+
+
+	/***** ***** ***** Draw function overloads. ***** ***** *****/
+
+	/**
+	 * Draw a texture on the window's renderer.
+	 *
+	 * The function is forwareded to @ref ttexture::draw.
+	 *
+	 * @param texture             The texture whose draw function to call.
+	 * @param x                   Forwarded to @ref ttexture::draw.
+	 * @param y                   Forwarded to @ref ttexture::draw.
+	 */
+	void draw(ttexture& texture, const int x, const int y);
+
 
 	/***** ***** ***** Conversion operators. ***** ***** *****/
 

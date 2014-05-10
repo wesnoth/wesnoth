@@ -18,6 +18,7 @@
 
 #include "SDL_image.h"
 #include "sdl/exception.hpp"
+#include "sdl_utils.hpp"
 
 #include <cassert>
 
@@ -49,38 +50,40 @@ ttexture::ttexture(SDL_Renderer& renderer,
 		throw texception("Failed to create SDL_Texture object.", true);
 	}
 
-	if(access == SDL_TEXTUREACCESS_STATIC) {
-		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
+	initialise_from_surface(renderer, access);
+}
 
-		if(texture_ == NULL) {
-			throw texception("Failed to create SDL_Texture object.", true);
-		}
-
-		SDL_FreeSurface(source_surface_);
-		source_surface_ = NULL;
-	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
-		texture_ = SDL_CreateTexture(&renderer,
-									 source_surface_->format->format,
-									 SDL_TEXTUREACCESS_STREAMING,
-									 source_surface_->w,
-									 source_surface_->h);
-
-		if(texture_ == NULL) {
-			throw texception("Failed to create SDL_Texture object.", true);
-		}
-
-		const int update = SDL_UpdateTexture(texture_,
-											 NULL,
-											 source_surface_->pixels,
-											 source_surface_->pitch);
-		if(update != 0) {
-			throw texception("Failed to update the SDL_Texture object during "
-							 "its construction.",
-							 true);
-		}
-	} else {
-		throw texception("Unknown texture access mode.", false);
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   SDL_Surface* source_surface__)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, source_surface_(source_surface__)
+{
+	if(source_surface_ == NULL) {
+		throw texception("Invalid source_surface__ argument passed, failed to "
+						 "create SDL_Texture object.",
+						 false);
 	}
+
+	initialise_from_surface(renderer, access);
+}
+
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   const surface& surface)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, source_surface_(
+			  SDL_ConvertSurface(surface, surface->format, surface->flags))
+{
+	if(source_surface_ == NULL) {
+		throw texception("Invalid source_surface__ argument passed, failed to "
+						 "create SDL_Texture object.",
+						 false);
+	}
+
+	initialise_from_surface(renderer, access);
 }
 
 ttexture::~ttexture()
@@ -119,9 +122,56 @@ ttexture& ttexture::operator=(const ttexture& texture)
 	return *this;
 }
 
+void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
+{
+	SDL_Rect rect = { x, y, 0, 0 };
+
+	if(SDL_QueryTexture(texture_, NULL, NULL, &rect.w, &rect.h) != 0) {
+		throw texception("Failed to query a SDL_Texture object", true);
+	}
+
+	SDL_RenderCopy(&renderer, texture_, NULL, &rect);
+}
+
 const SDL_Surface* ttexture::source_surface() const
 {
 	return source_surface_;
+}
+
+void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
+{
+	if(access == SDL_TEXTUREACCESS_STATIC) {
+		texture_ = SDL_CreateTextureFromSurface(&renderer, source_surface_);
+
+		if(texture_ == NULL) {
+			throw texception("Failed to create SDL_Texture object.", true);
+		}
+
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = NULL;
+	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
+		texture_ = SDL_CreateTexture(&renderer,
+									 source_surface_->format->format,
+									 SDL_TEXTUREACCESS_STREAMING,
+									 source_surface_->w,
+									 source_surface_->h);
+
+		if(texture_ == NULL) {
+			throw texception("Failed to create SDL_Texture object.", true);
+		}
+
+		const int update = SDL_UpdateTexture(texture_,
+											 NULL,
+											 source_surface_->pixels,
+											 source_surface_->pitch);
+		if(update != 0) {
+			throw texception("Failed to update the SDL_Texture object during "
+							 "its construction.",
+							 true);
+		}
+	} else {
+		throw texception("Unknown texture access mode.", false);
+	}
 }
 
 } // namespace sdl

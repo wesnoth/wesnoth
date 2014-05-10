@@ -1,6 +1,6 @@
 /*
    Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
-   Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+   Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -12,24 +12,17 @@
    See the COPYING file for more details.
 */
 
-#ifndef SDL_ALPHA_HPP_INCLUDED
-#define SDL_ALPHA_HPP_INCLUDED
+#ifndef TOOLS_SDL2_WINDOW_HPP_INCLUDED
+#define TOOLS_SDL2_WINDOW_HPP_INCLUDED
+
+#include <string>
 
 /**
- * @file
- * Compatibility layer for using SDL 1.2 and 2.0.
+ * Executes a window command.
  *
- * Emulates SDL_SetAlpha.
+ * @param command                The command to be executed.
+ * @param begin                  The beginning of the command's arguments.
  */
-
-#include <SDL.h>
-
-#if SDL_VERSION_ATLEAST(2, 0, 0)
-
-#define SDL_SRCALPHA 0x00010000
-
-int SDL_SetAlpha(SDL_Surface* surface, Uint32 flag, Uint8 alpha);
-
-#endif
+void execute_window(std::string& command, std::string::const_iterator begin);
 
 #endif
