@@ -959,6 +959,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 	}
 
+	std::vector<int> disable_items_skip;
+
 	std::vector<std::string> items;
 	{
 		const config tmp_config;
@@ -974,8 +976,10 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 			// Don't show iff the weapon has at least one active "disable" special.
 			// TODO also skip disabled weapons in the gui2 dialog.
-			if (attw.get_special_bool("disable"))
+			if (attw.get_special_bool("disable")) {
+				disable_items_skip.push_back(i);
 				continue;
+			}
 
 			// if missing, add dummy special, to be sure to have
 			// big enough minimum width (weapon's name can be very short)
@@ -1057,6 +1061,10 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	}
 	cursor::set(cursor::NORMAL);
 
+	BOOST_FOREACH(int i, disable_items_skip) {
+		if (i<=res) res++;
+	}
+	
 	return res;
 }
 
