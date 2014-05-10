@@ -8,7 +8,7 @@ install:
 script: scons cxxtool=$CXX strict=True wesnoth wesnothd campaignd test
 after_script:
     - ./test
-    - ./wml_unit_tests
+    - ./run_wml_tests
 notifications:
     email: false
     irc:

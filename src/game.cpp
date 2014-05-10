@@ -576,7 +576,7 @@ static int do_gameloop(int argc, char** argv)
 				worker_sem = SDL_CreateSemaphore(1);
 				if (worker_sem == NULL) {
 					std::cerr << "Failed to create a semaphore for timeout worker thread!" << std::endl;
-					std::cout << "FAIL TEST (TIMEOUT): " << *cmdline_opts.unit_test << std::endl;
+					std::cerr << "FAIL TEST (TIMEOUT): " << *cmdline_opts.unit_test << std::endl;
 					return 2;
 				}
 
@@ -592,7 +592,7 @@ static int do_gameloop(int argc, char** argv)
 				if (wait_result == 0) {
 					SDL_SemPost(worker_sem);
 					SDL_DestroySemaphore(worker_sem);
-					std::cout << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
+					std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
 						<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
 						<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
 						<< ": "<<*cmdline_opts.unit_test << std::endl;
@@ -610,12 +610,12 @@ static int do_gameloop(int argc, char** argv)
 					} else {
 						std::cerr << "Test timed out!" << std::endl;
 					}
-					std::cout << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
+					std::cerr << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
 					return 2;
 				}
 			} else {
 				int worker_result = game->unit_test();
-				std::cout << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
+				std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
 					<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
 					<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
 					<< ": "<<*cmdline_opts.unit_test << std::endl;

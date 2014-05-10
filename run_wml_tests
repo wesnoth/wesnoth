@@ -1,0 +1,151 @@
+#!/bin/bash
+#This script runs a sequence of unit tests, found in the file wml_test_schedule
+#Format: <expected return code> <unit test scenario name>
+#
+#The script will ignore comments, beginning with #
+#
+#The script has options for "verbose" mode -v, and "debug" mode -d.
+
+get_code_string()
+{
+  case ${1} in
+  0)
+    CodeString="PASS"
+    ;;
+  1) 
+    CodeString="FAIL"
+    ;;
+  2)
+    CodeString="FAIL (TIMEOUT)"
+    ;;
+  3)
+    CodeString="FAIL (INVALID REPLAY)"
+    ;;
+  4)
+    CodeString="FAIL (ERRORED REPLAY)"
+    ;;
+  134)
+    CodeString="FAIL + 'Terminate called without active exception' "
+    ;;
+  *)
+    CodeString="? ? ?"
+    ;;
+  esac
+}
+
+check_errs()
+{
+  # Argument 1 is the name of the test.
+  # Argument 2 is the wesnoth error code for the test. 
+  # Argument 3 is the expected error code.
+  if [ "${2}" -eq 134 -a "${3}" -eq 2 ]; then
+    if [ $Verbose -ge 2 ]; then
+      echo "Caught \'terminate called without an active exception\' return code"
+      echo "This means wesnoth tried to kill the thread but SDL threw an error..."
+      echo "(This happens occasionally when running the empty_test with a timeout.)"
+      echo "Since we expected timeout, the test passes."
+    fi
+    return 0
+  elif [ "${2}" -ne "${3}" ]; then 
+    get_code_string ${2}
+    echo ${1} ":" ${2} "-" $CodeString
+    get_code_string ${3}
+    echo "Expected result :" ${3} "-" $CodeString
+    if [ -f "error.log" ]; then
+      echo ""
+      echo "Found error.log:"
+      cat error.log
+    fi
+    return 1
+  fi
+  return 0
+}
+
+run_test()
+{
+  # Argument 1 is the expected error code
+  # Argument 2 is the name of the test scenario
+  if [ "$FirstTest" -eq 1 ]; then
+    opts="--timeout 20000"
+    FirstTest=0
+  else
+    opts="--validcache --timeout 10000"
+  fi
+  if [ "$Verbose" -ge 1 ]; then
+    echo "wesnoth -u" $2 $opts
+  fi
+  wesnoth -u $2 $opts 2> error.log
+  if check_errs $2 $? $1; then 
+    return 0
+  else
+    return 1
+  fi
+}
+
+### Main Script Starts Here ###
+
+Verbose=0
+
+while getopts ":vd" Option
+do
+  case $Option in
+    v ) 
+      if [ $Verbose -lt 1 ]; then 
+        Verbose=1
+      fi
+      ;;
+    d )
+      if [ $Verbose -lt 2 ]; then 
+        Verbose=2
+      fi
+      ;;
+  esac
+done
+shift $(($OPTIND - 1))
+
+old_IFS=$IFS
+IFS=$'\n'
+schedule=($(cat wml_test_schedule)) # array
+IFS=$old_IFS
+
+TESTS=0
+COMMENTS=0
+
+for line in "${schedule[@]}"
+do
+    if [[ "$line" =~ \#.* ]]; then
+      COMMENTS=$((COMMENTS+1))
+    else
+      TESTS=$((TESTS+1))
+    fi
+done
+
+echo "Running" $TESTS "test scenarios."
+
+AllPassed=1
+FirstTest=1
+
+for line in "${schedule[@]}"
+do
+    if [[ "$line" =~ \#.* ]]; then
+      if [ $Verbose -ge 2 ]; then
+        echo "comment:" $line
+      fi
+    else
+      if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
+        if [ $Verbose -ge 2 ]; then
+          echo "good"
+        fi
+      else
+        AllPassed=0
+      fi
+    fi
+done
+
+if [ $AllPassed -eq 0 ]; then
+  echo "Not all tests gave the correct result."
+  exit 1
+else
+  echo "All tests gave the correct result."
+  exit 0
+fi
