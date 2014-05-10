@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-04-21 20:20+0200\n"
+"POT-Creation-Date: 2014-05-10 20:17+0200\n"
 "PO-Revision-Date: 2012-04-05 14:54-0500\n"
 "Last-Translator: Steven Panek (Espreon) <Majora700@gmail.com>\n"
 "Language-Team: Spanish <http://wiki.wesnoth.org/SpanishTranslation>\n"
@@ -46,21 +46,21 @@ msgstr "Tutorial de Wesnoth parte I"
 #. [option]: speaker=narrator
 #. [side]: type=Fighter, id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:182
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:184
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:205
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:207
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:356
 msgid "Konrad"
 msgstr "Konrad"
 
 #. [event]
 #. [unit]: id=Delfador, type=Elder Mage
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:147
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:154
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:148
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:177
 msgid "Delfador"
 msgstr "Delfador"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:158
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:181
 msgid ""
 "You will learn the basics of:\n"
 "Movement\n"
@@ -75,38 +75,38 @@ msgstr ""
 "Reclutamiento"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:164
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:187
 msgid "Destroy a fierce enemy"
 msgstr "Destruye a un enemigo feroz"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:168
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
 msgid "Get yourself killed"
 msgstr "Conseguir que te maten"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:180
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:203
 msgid "Who would you like to play?"
 msgstr "¿Con qué personaje te gustaría jugar?"
 
 #. [command]
 #. [option]: speaker=narrator
 #. [unit]: type=Fighteress, id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:227
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
 msgid "Li’sar"
 msgstr "Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:226
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:243
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:249
 msgid "Welcome to Wesnoth!"
 msgstr "¡Bienvenido a Wesnoth!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:244
 msgid ""
 "For this tutorial, you are playing Konrad.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
@@ -116,7 +116,7 @@ msgstr ""
 "Estás ocupando el torreón, y tu mentor Delfador está en el lado este del río."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:227
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
 msgid ""
 "For this tutorial, you are playing Li’sar.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
@@ -128,23 +128,23 @@ msgstr ""
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:232
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:418
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:255
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:572
 msgid "Left click on Konrad"
 msgstr "Pulsa el botón izquierdo sobre Konrad"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:233
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:419
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:541
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:256
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:451
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:573
 msgid "Left click on Li’sar"
 msgstr "Pulsa el botón izquierdo sobre Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:251
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:274
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
@@ -153,7 +153,7 @@ msgstr ""
 "Los lugares adonde puede moverse están iluminados."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:258
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:281
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
 "The places she can move to are highlighted."
@@ -162,13 +162,13 @@ msgstr ""
 "Los lugares adonde puede moverse están iluminados."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:264
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:287
 msgid "Here"
 msgstr "Aquí"
 
 # Creo que casilla es la mejor traducción de "tile"
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:270
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:293
 msgid ""
 "Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
@@ -176,7 +176,7 @@ msgstr ""
 "<b>Aquí</b>."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:274
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:297
 msgid ""
 "Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr ""
@@ -184,19 +184,19 @@ msgstr ""
 "<b>Aquí</b>."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:279
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:302
 msgid "Left click on tile labeled <b>Here</b>"
 msgstr "Pulsa con el botón izquierdo en la casilla marcada con <b>Aquí</b>"
 
 # Esto puede ser un tanto conflictivo pues cada país tiene sus propias exclamaciones onomatopéyicas. Escojo la recogida por la RAE:
 # ¡Epa!: Exclamación usada tras haber hecho algo con torpeza.
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:304
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:327
 msgid "Oops!"
 msgstr "¡Epa!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:306
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:329
 msgid ""
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
@@ -205,53 +205,53 @@ msgstr ""
 "tecla <b>u</b> para «Deshacer», luego puedes intentarlo de nuevo."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:328
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:351
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "¡Buenos días, Delfador! ¿Ya es hora de atacar cosas?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:332
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:355
 msgid "Um, well..."
 msgstr "Uhm, bueno..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:336
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:359
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Has encontrado un orco para que luche con él, ¿eh? ¿Un troll?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:340
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:363
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "¡Calla! Invocaré un enemigo para ti..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Estafermo"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:372
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
 msgid "... this quintain!"
 msgstr "... ¡este estafermo!"
 
 # Estafermo o o muñeco giratorio, esa es la cuestión
 # Prefiero muñeco giratorio por ser más comunmente usado aunque el significado difiera más
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:376
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:408
 msgid "A quintain? You want me to fight a dummy?"
 msgstr "¿Un estafermo? ¿Pretendes que luche contra un muñeco?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:383
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:415
 msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
 msgstr ""
 "Jovencito, tienes 32 puntos de vida y una espada. Estoy bastante seguro de "
 "que ganarás."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:420
 msgid ""
 "female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
 "win."
@@ -260,13 +260,13 @@ msgstr ""
 "que ganarás."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:396
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:402
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:428
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:434
 msgid "Attacking"
 msgstr "Atacando"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:398
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:430
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -277,7 +277,7 @@ msgstr ""
 "Cuando pulses <b>Aceptar</b>, Konrad atacará."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:403
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:435
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
 "(the quintain). You will see an attack description. When you click <b>OK</"
@@ -288,39 +288,39 @@ msgstr ""
 "Cuando pulses <b>Aceptar</b>, Li’sar atacará."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:414
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:446
 msgid "Click on the quintain to attack it"
 msgstr "Pulsa en el estafermo para atacarle"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:450
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:482
 msgid "Hey! This quintain fights back!"
 msgstr "¡Eh! ¡Este estafermo se defiende!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:486
 msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Umm, tal vez deberíamos haber empezado con una muñeca."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:490
 msgid "Should I retreat?"
 msgstr "¿Debería retirarme?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:494
 msgid "Good idea!"
 msgstr "¡Buena idea!"
 
 # Interpreto el significado más obvio a falta de saber su uso exacto.
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:467
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:471
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:499
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:503
 msgid "Crowns"
 msgstr "Coronas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:500
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Konrad) is killed."
@@ -329,7 +329,7 @@ msgstr ""
 "si él muere. También perderás la partida si tu líder (Konrad) muere."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:504
 msgid ""
 "The tiny metal crown above Delfador means you will lose the game if he is "
 "killed. You will also lose the game if your leader (Li’sar) is killed."
@@ -338,7 +338,7 @@ msgstr ""
 "si él muere. También perderás la partida si tu líder (Li’sar) muere."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:484
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:516
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
 "now gets to attack."
@@ -347,7 +347,7 @@ msgstr ""
 "estafermo atacará."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:489
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:521
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
 "quintain now gets to attack."
@@ -356,12 +356,12 @@ msgstr ""
 "estafermo atacará."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:495
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "¿El <i>muñeco</i> tendrá un turno?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:500
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:532
 msgid ""
 "Yes. It’s a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
@@ -374,26 +374,26 @@ msgstr ""
 "$future_hp puntos de vida. ¡Prepárate!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:504
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:536
 msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
 msgstr ""
 "Pulsa en el botón <b>Finalizar turno</b> en la parte inferior derecha de la "
 "pantalla"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:525
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:557
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "¡Ay! ¡Necesito sanarme! ¡Sólo me quedan $student_hp puntos de vida!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:510
 msgid "Village"
 msgstr "Aldea"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:532
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:564
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
@@ -403,7 +403,7 @@ msgstr ""
 "aldea!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:537
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -413,22 +413,22 @@ msgstr ""
 "aldea!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:550
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:582
 msgid "Click on the village to move Konrad"
 msgstr "Pulsa en la aldea para mover a Konrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:551
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:583
 msgid "Click on the village to move Li’sar"
 msgstr "Pulsa en la aldea para mover a Li’sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:569
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:601
 msgid "Villages"
 msgstr "Aldeas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:571
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
 msgid ""
 "You have captured a village! It now flies your flag and has been added to "
 "your total village count. (The house icon at the top of the screen shows how "
@@ -445,16 +445,16 @@ msgstr ""
 #. [else]
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:575
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:707
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:740
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:880
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:932
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:607
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:772
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:912
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
 msgid "Click on the <b>End Turn</b> button"
 msgstr "Pulsa en el botón de <b>Finalizar turno</b>"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:611
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:643
 msgid ""
 "You’re about to be healed by $hp_difference hitpoints, but it’s time to "
 "summon some help against that quintain."
@@ -463,7 +463,7 @@ msgstr ""
 "ayuda contra ese estatafermo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:616
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:648
 msgid ""
 "female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
 "to summon some help against that quintain."
@@ -472,19 +472,19 @@ msgstr ""
 "alguna ayuda contra ese estatafermo."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:622
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:654
 msgid "I’ll recruit some elves!"
 msgstr "¡Reclutaré algunos elfos!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:624
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
 msgid "Keep"
 msgstr "Torreón"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:629
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:661
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
@@ -493,7 +493,7 @@ msgstr ""
 "Tienes oro suficiente para ello."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:666
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -502,22 +502,22 @@ msgstr ""
 "Tienes oro suficiente para ello."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:640
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:672
 msgid "Move Konrad to the keep"
 msgstr "Mueve a Konrad al torreón"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:641
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:673
 msgid "Move Li’sar to the keep"
 msgstr "Mueve a Li’sar al torreón"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:658
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:690
 msgid "Recruiting"
 msgstr "Reclutando"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:660
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:692
 msgid ""
 "Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
 "tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
@@ -529,21 +529,21 @@ msgstr ""
 "luchador elfo."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:664
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:696
 msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr ""
 "Pulsa con el botón derecho en una casilla del castillo y selecciona "
 "<b>Reclutar</b>."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:698
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:731
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:730
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 msgid "New Recruits"
 msgstr "Nuevos reclutas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:733
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:732
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
 msgid ""
 "New units cannot act in the turn they appear; you will gain control of them "
 "next turn.\n"
@@ -556,15 +556,15 @@ msgstr ""
 "descripción de la misma a la derecha de la pantalla."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:712
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:744
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:777
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr ""
 "Pulsa con el botón derecho del ratón en la otra casilla del castillo y "
 "recluta otra unidad"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
 msgstr ""
@@ -572,13 +572,13 @@ msgstr ""
 "lo ataque cuanto antes!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:771
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:803
 msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 "Sí, si una unidad no hace nada durante un turno, se sanará un lentamente."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:777
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:809
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
@@ -587,7 +587,7 @@ msgstr ""
 "golpe. Sí, si una unidad no hace nada durante un turno, se sanará un poco."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:791
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:823
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
@@ -596,12 +596,12 @@ msgstr ""
 "tienen dos tipos de ataque..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:795
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:827
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "¡Les diré que usen el que haga más daño!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:799
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:831
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
 "find out..."
@@ -610,17 +610,17 @@ msgstr ""
 "descubrirás..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:801
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:833
 msgid "Left click on an Elvish Fighter"
 msgstr "Pulsa con el botón izquierdo sobre un luchador elfo"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:802
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:834
 msgid "End your turn and attack again."
 msgstr "Termina tu turno y después ataca de nuevo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:820
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:852
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -630,20 +630,20 @@ msgstr ""
 "Usa a los luchadores que reclutaste primero; serán de gran ayuda."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:832
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:864
 msgid "Left click on the quintain to attack it."
 msgstr "Pulsa con el botón izquierdo sobre el estafermo para atacarlo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:876
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:908
 msgid " The ranged attack would have been safer."
 msgstr "El ataque a distancia hubiera sido más seguro."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:869
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:876
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:888
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:901
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:908
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
 "attack. The quintain defended with its melee attack (3–5)."
@@ -653,8 +653,8 @@ msgstr ""
 "cuerpo (3-5)."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:876
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:908
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
 msgid ""
 "\n"
 "End your turn, then attack again."
@@ -663,7 +663,7 @@ msgstr ""
 "Termina tu turno y después ataca de nuevo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:888
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:920
 msgid ""
 "\n"
 "You should tell the other elf to use the bow."
@@ -672,15 +672,15 @@ msgstr ""
 "Deberías decirle al otro elfo que utilize el arco."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:892
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:941
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:924
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:973
 msgid "Attack with the other elf"
 msgstr "Ataca con el otro elfo"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:921
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:939
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:953
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
 msgid ""
 "Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
@@ -691,22 +691,22 @@ msgstr ""
 "cuerpo, así que no pudo defenderse."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:992
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "¡Sigue atacando con los elfos hasta que el estafermo esté acabado!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:974
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
 msgid "Maybe you should recruit another elf?"
 msgstr "¿Tal vez deberías reclutar otro elfo?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:978
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1010
 msgid "Unit Descriptions"
 msgstr "Descripciones de las unidades"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:980
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1012
 msgid ""
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
@@ -714,12 +714,12 @@ msgstr ""
 "una <b>Descripción de unidad</b> detallada."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1001
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1033
 msgid "Protect Your Troops"
 msgstr "Protege tus tropas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1003
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1035
 msgid ""
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points "
@@ -730,12 +730,12 @@ msgstr ""
 "experiencia (PX); así podrán ganar niveles y hacerse más poderosas."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1020
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
 msgid "Support"
 msgstr "Mantenimiento"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1022
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
 msgid ""
 "Each village you control will <i>support</i> one unit for free. After that, "
 "each unit costs you one gold per turn."
@@ -745,12 +745,12 @@ msgstr ""
 "concepto de mantenimiento."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1069
 msgid "Advancement"
 msgstr "Avance"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1039
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1071
 msgid ""
 "When a unit gains enough experience points (the <i>experience bar</i>, if "
 "present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
@@ -766,12 +766,12 @@ msgstr ""
 "1."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1086
 msgid "Defenses"
 msgstr "Defensas"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1057
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1089
 msgid ""
 "Whenever one of your units is selected, you’ll see varying percentages as "
 "you move the mouse over the map. The higher the percentage, the more "
@@ -788,12 +788,12 @@ msgstr ""
 "posibilidades de impactar sin importar que terreno ocupe su objetivo."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1082
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1114
 msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "El estafermo está destruido, ¡y he ganado más experiencia!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1088
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1120
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -806,7 +806,7 @@ msgstr ""
 "Después de ello, tenemos trabajo de verdad que hacer."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1092
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1124
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you’ll become more powerful.\n"
@@ -819,12 +819,12 @@ msgstr ""
 "Después de ello, tenemos trabajo de verdad que hacer."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1131
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1192
 msgid "Note"
 msgstr "Nota"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1133
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1194
 msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
@@ -833,34 +833,34 @@ msgstr ""
 "de cuidado, deberías ser capaz de acabar con ellos de a uno en uno."
 
 #. [set_menu_item]: id=skip_item
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1141
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1202
 msgid "End Scenario"
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1154
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1215
 msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1156
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1217
 msgid "Yes, I’m still figuring it out."
 msgstr "Sí, todavía me estoy haciendo una idea."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1159
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1220
 msgid "No, I think I’ve got it."
 msgstr "No, creo que ya lo entiendo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1200
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1261
 msgid "Victory"
 msgstr "Victoria"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1201
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1262
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will still be able to examine the final positions "

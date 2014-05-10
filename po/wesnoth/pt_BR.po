@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-04-21 20:19+0200\n"
+"POT-Creation-Date: 2014-05-10 20:17+0200\n"
 "PO-Revision-Date: 2012-10-29 18:41-0300\n"
 "Last-Translator: gilberto dos santos alves <gsavix@gmail.com>\n"
 "Language-Team: Portuguese - Brasil\n"
@@ -542,8 +542,8 @@ msgstr "Controle: Deadzone do Acelerador (Thruster)"
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:360
-#: data/lua/wml-tags.lua:11911 src/actions/attack.cpp:983
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_The_Desert_of_Death.cfg:366
+#: data/lua/wml-tags.lua:11936 src/actions/attack.cpp:983
 msgid "poisoned"
 msgstr "envenenado"
 
@@ -554,7 +554,7 @@ msgstr "envenenado"
 #. [lua]: generate_objectives
 #. [objectives]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:201
-#: data/lua/wml/objectives.lua:12393
+#: data/lua/wml/objectives.lua:12418
 msgid "Gold carryover:"
 msgstr "Transferência de ouro:"
 
@@ -565,7 +565,7 @@ msgstr "Transferência de ouro:"
 #. [lua]: generate_objectives
 #. [note]
 #: data/campaigns/The_Rise_Of_Wesnoth/scenarios/15_A_New_Land.cfg:212
-#: data/lua/wml/objectives.lua:12394
+#: data/lua/wml/objectives.lua:12419
 msgid "Notes:"
 msgstr "Notas:"
 
@@ -3564,7 +3564,7 @@ msgstr "Turnos acabarem"
 # File: data/core/macros/objective-utils.cfg, line: 14
 # File: data/lua/wml/objectives.lua, line: 1537
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12455
+#: data/core/macros/objective-utils.cfg:14 data/lua/wml/objectives.lua:12480
 msgid "Early finish bonus."
 msgstr "Bônus por fim prematuro."
 
@@ -3576,7 +3576,7 @@ msgstr "Bônus por fim prematuro."
 # File: data/core/macros/objective-utils.cfg, line: 17
 # File: data/lua/wml/objectives.lua, line: 1539
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12457
+#: data/core/macros/objective-utils.cfg:17 data/lua/wml/objectives.lua:12482
 msgid "No early finish bonus."
 msgstr "Sem bônus por fim prematuro."
 
@@ -3604,7 +3604,7 @@ msgstr "(bônus por fim antecipado)"
 # File: data/core/macros/objective-utils.cfg, line: 29
 # File: data/lua/wml/objectives.lua, line: 1547
 #. [lua]: generate_objectives
-#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12465
+#: data/core/macros/objective-utils.cfg:29 data/lua/wml/objectives.lua:12490
 msgid "No gold carried over to the next scenario."
 msgstr "Nenhum ouro transferido ao próximo cenário."
 
@@ -4416,7 +4416,7 @@ msgstr "DejaVu Sans,Andagii,Droid Sans Japanese,Droid Sans Fallback,Junicode"
 # File: src/actions/attack.cpp, line: 800
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11911 src/actions/attack.cpp:983
+#: data/lua/wml-tags.lua:11936 src/actions/attack.cpp:983
 msgid "female^poisoned"
 msgstr "envenenada"
 
@@ -4429,7 +4429,7 @@ msgstr "envenenada"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11913 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11938 src/actions/attack.cpp:988
 msgid "female^slowed"
 msgstr "lenta"
 
@@ -4442,7 +4442,7 @@ msgstr "lenta"
 # File: src/actions/attack.cpp, line: 805
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11913 src/actions/attack.cpp:988
+#: data/lua/wml-tags.lua:11938 src/actions/attack.cpp:988
 msgid "slowed"
 msgstr "lento"
 
@@ -4455,7 +4455,7 @@ msgstr "lento"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11914 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11939 src/actions/attack.cpp:993
 msgid "female^petrified"
 msgstr "petrificada"
 
@@ -4468,7 +4468,7 @@ msgstr "petrificada"
 # File: src/actions/attack.cpp, line: 810
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11914 src/actions/attack.cpp:993
+#: data/lua/wml-tags.lua:11939 src/actions/attack.cpp:993
 msgid "petrified"
 msgstr "petrificado"
 
@@ -4477,7 +4477,7 @@ msgstr "petrificado"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11915
+#: data/lua/wml-tags.lua:11940
 msgid "female^unhealable"
 msgstr "incurável"
 
@@ -4486,7 +4486,7 @@ msgstr "incurável"
 # File: data/lua/wml-tags.lua, line: 1120
 # File: data/lua/wml-tags.lua, line: 1120
 #. [lua]: set_status
-#: data/lua/wml-tags.lua:11915
+#: data/lua/wml-tags.lua:11940
 msgid "unhealable"
 msgstr "incurável"
 
@@ -4499,7 +4499,7 @@ msgstr "incurável"
 # File: src/multiplayer_connect.cpp, line: 1855
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12391 src/mp_game_utils.cpp:155
+#: data/lua/wml/objectives.lua:12416 src/mp_game_utils.cpp:155
 msgid "Victory:"
 msgstr "Vitória:"
 
@@ -4508,7 +4508,7 @@ msgstr "Vitória:"
 # File: data/lua/wml/objectives.lua, line: 1474
 # File: data/lua/wml/objectives.lua, line: 1474
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12392
+#: data/lua/wml/objectives.lua:12417
 msgid "Defeat:"
 msgstr "Derrota:"
 
@@ -4517,7 +4517,7 @@ msgstr "Derrota:"
 # File: data/lua/wml/objectives.lua, line: 1494
 # File: data/lua/wml/objectives.lua, line: 1494
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12412
+#: data/lua/wml/objectives.lua:12437
 msgid "(%d turns left)"
 msgstr "(%d turnos restando)"
 
@@ -4526,7 +4526,7 @@ msgstr "(%d turnos restando)"
 # File: data/lua/wml/objectives.lua, line: 1496
 # File: data/lua/wml/objectives.lua, line: 1496
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12414
+#: data/lua/wml/objectives.lua:12439
 msgid "(this turn left)"
 msgstr "(resta um turno)"
 
@@ -4535,7 +4535,7 @@ msgstr "(resta um turno)"
 # File: data/lua/wml/objectives.lua, line: 1549
 # File: data/lua/wml/objectives.lua, line: 1549
 #. [lua]: generate_objectives
-#: data/lua/wml/objectives.lua:12467
+#: data/lua/wml/objectives.lua:12492
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "%d%% de ouro transferido ao próximo cenário."
 
@@ -4737,7 +4737,7 @@ msgstr "Terminar o Cenário"
 #. [label]: id=selected-label-hp
 #: data/themes/default.cfg:134 data/themes/unit_box.cfg:375
 #: data/themes/widescreen.cfg:239 data/themes/widescreen.cfg:259
-#: src/dialogs.cpp:280 src/unit.cpp:2469 src/unit.cpp:2669
+#: src/dialogs.cpp:280 src/unit.cpp:2470 src/unit.cpp:2670
 msgid "HP"
 msgstr "HP"
 
@@ -7631,7 +7631,7 @@ msgstr "Dano total"
 # File: src/mouse_events.cpp, line: 842
 # File: src/attack_prediction_display.cpp, line: 260
 # File: src/mouse_events.cpp, line: 842
-#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1021
+#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1040
 msgid "No usable weapon"
 msgstr "Nenhuma arma possível"
 
@@ -7650,7 +7650,7 @@ msgstr "Chance de sair sem danos"
 # File: src/mouse_events.cpp, line: 911
 # File: src/attack_prediction_display.cpp, line: 544
 # File: src/mouse_events.cpp, line: 911
-#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1030
+#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1049
 msgid "Damage Calculations"
 msgstr "Cálculo de Danos"
 
@@ -8348,7 +8348,7 @@ msgstr "Erro ao iniciar o server: "
 # File: src/playcampaign.cpp, line: 214
 # File: src/playcampaign.cpp, line: 503
 #: src/game_controller.cpp:860 src/playcampaign.cpp:246
-#: src/playcampaign.cpp:505
+#: src/playcampaign.cpp:498
 msgid "The game could not be loaded: "
 msgstr "O jogo não pôde ser carregado: "
 
@@ -8363,7 +8363,7 @@ msgstr "O jogo não pôde ser carregado: "
 # File: src/playcampaign.cpp, line: 216
 # File: src/playcampaign.cpp, line: 506
 #: src/game_controller.cpp:862 src/playcampaign.cpp:248
-#: src/playcampaign.cpp:508
+#: src/playcampaign.cpp:501
 msgid "Error while playing the game: "
 msgstr "Erro durante o jogo: "
 
@@ -8378,7 +8378,7 @@ msgstr "Erro durante o jogo: "
 # File: src/playcampaign.cpp, line: 218
 # File: src/playcampaign.cpp, line: 509
 #: src/game_controller.cpp:880 src/playcampaign.cpp:250
-#: src/playcampaign.cpp:511
+#: src/playcampaign.cpp:504
 msgid "The game map could not be loaded: "
 msgstr "O mapa do jogo não pôde ser carregado: "
 
@@ -10325,7 +10325,7 @@ msgstr "sussurro: $sender"
 # File: src/menu_events.cpp, line: 2310
 # File: src/multiplayer_connect.cpp, line: 666
 #: src/menu_events.cpp:2390 src/menu_events.cpp:2408
-#: src/multiplayer_connect_engine.cpp:1002
+#: src/multiplayer_connect_engine.cpp:1006
 msgid "(empty)"
 msgstr "(vazio)"
 
@@ -10709,7 +10709,7 @@ msgstr "Comando:"
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
 # File: src/mouse_events.cpp, line: 725
-#: src/mouse_events.cpp:837
+#: src/mouse_events.cpp:852
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -10725,7 +10725,7 @@ msgstr ""
 # File: src/mouse_events.cpp, line: 921
 # File: src/mouse_events.cpp, line: 841
 # File: src/mouse_events.cpp, line: 921
-#: src/mouse_events.cpp:1020 src/mouse_events.cpp:1038
+#: src/mouse_events.cpp:1039 src/mouse_events.cpp:1057
 msgid "Attack Enemy"
 msgstr "Atacar Inimigo"
 
@@ -10733,7 +10733,7 @@ msgstr "Atacar Inimigo"
 # File: src/mouse_events.cpp, line: 922
 # File: src/mouse_events.cpp, line: 922
 # File: src/mouse_events.cpp, line: 922
-#: src/mouse_events.cpp:1039
+#: src/mouse_events.cpp:1058
 msgid "Choose weapon:"
 msgstr "Escolha a arma:"
 
@@ -11498,7 +11498,7 @@ msgstr "Esperando jogadores escolherem facções..."
 # File: src/multiplayer_connect.cpp, line: 626
 # File: src/multiplayer_connect.cpp, line: 626
 # File: src/multiplayer_connect.cpp, line: 626
-#: src/multiplayer_connect_engine.cpp:953
+#: src/multiplayer_connect_engine.cpp:957
 msgid "(Vacant slot)"
 msgstr "(Espaço vago)"
 
@@ -11506,7 +11506,7 @@ msgstr "(Espaço vago)"
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
 # File: src/multiplayer_connect.cpp, line: 634
-#: src/multiplayer_connect_engine.cpp:963
+#: src/multiplayer_connect_engine.cpp:967
 msgid "Anonymous local player"
 msgstr "Jogador local anônimo"
 
@@ -11517,8 +11517,8 @@ msgstr "Jogador local anônimo"
 # File: src/multiplayer_connect.cpp, line: 1658
 # File: src/multiplayer_connect.cpp, line: 647
 # File: src/multiplayer_connect.cpp, line: 1658
-#: src/multiplayer_connect_engine.cpp:980
-#: src/multiplayer_connect_engine.cpp:1229
+#: src/multiplayer_connect_engine.cpp:984
+#: src/multiplayer_connect_engine.cpp:1233
 msgid "Computer Player"
 msgstr "Computador"
 
@@ -11526,7 +11526,7 @@ msgstr "Computador"
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
 # File: src/multiplayer_connect.cpp, line: 650
-#: src/multiplayer_connect_engine.cpp:984
+#: src/multiplayer_connect_engine.cpp:988
 msgid "$playername $side"
 msgstr "$playername $side"
 
@@ -11534,7 +11534,7 @@ msgstr "$playername $side"
 # File: src/multiplayer_connect.cpp, line: 654
 # File: src/multiplayer_connect.cpp, line: 654
 # File: src/multiplayer_connect.cpp, line: 654
-#: src/multiplayer_connect_engine.cpp:989
+#: src/multiplayer_connect_engine.cpp:993
 msgid "(Empty slot)"
 msgstr "(Espaço vazio)"
 
@@ -11542,7 +11542,7 @@ msgstr "(Espaço vazio)"
 # File: src/multiplayer_connect.cpp, line: 661
 # File: src/multiplayer_connect.cpp, line: 661
 # File: src/multiplayer_connect.cpp, line: 661
-#: src/multiplayer_connect_engine.cpp:996
+#: src/multiplayer_connect_engine.cpp:1000
 msgid "(Reserved for $playername)"
 msgstr "(Reservado para $playername)"
 
@@ -11550,7 +11550,7 @@ msgstr "(Reservado para $playername)"
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
 # File: src/multiplayer_connect.cpp, line: 1655
-#: src/multiplayer_connect_engine.cpp:1226
+#: src/multiplayer_connect_engine.cpp:1230
 msgid "Network Player"
 msgstr "Jogador Remoto"
 
@@ -11558,7 +11558,7 @@ msgstr "Jogador Remoto"
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
 # File: src/multiplayer_connect.cpp, line: 1657
-#: src/multiplayer_connect_engine.cpp:1228
+#: src/multiplayer_connect_engine.cpp:1232
 msgid "Local Player"
 msgstr "Jogador Local"
 
@@ -11566,7 +11566,7 @@ msgstr "Jogador Local"
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
 # File: src/multiplayer_connect.cpp, line: 1659
-#: src/multiplayer_connect_engine.cpp:1230
+#: src/multiplayer_connect_engine.cpp:1234
 msgid "Empty"
 msgstr "Vazio"
 
@@ -11574,7 +11574,7 @@ msgstr "Vazio"
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
 # File: src/multiplayer_connect.cpp, line: 763
-#: src/multiplayer_connect_engine.cpp:1233
+#: src/multiplayer_connect_engine.cpp:1237
 msgid "Reserved"
 msgstr "Reservado"
 
@@ -11582,7 +11582,7 @@ msgstr "Reservado"
 # File: src/multiplayer_connect.cpp, line: 764
 # File: src/multiplayer_connect.cpp, line: 764
 # File: src/multiplayer_connect.cpp, line: 764
-#: src/multiplayer_connect_engine.cpp:1237
+#: src/multiplayer_connect_engine.cpp:1241
 msgid "--give--"
 msgstr "--ceder--"
 
@@ -12357,7 +12357,7 @@ msgstr "Voltar ao turno "
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
 # File: src/play_controller.cpp, line: 1414
-#: src/play_controller.cpp:1462
+#: src/play_controller.cpp:1466
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
@@ -12372,11 +12372,11 @@ msgstr ""
 # File: src/replay_controller.cpp, line: 334
 # File: src/play_controller.cpp, line: 1415
 # File: src/replay_controller.cpp, line: 334
-#: src/play_controller.cpp:1463 src/replay_controller.cpp:359
+#: src/play_controller.cpp:1467 src/replay_controller.cpp:359
 msgid "Error details:"
 msgstr "Detalhes do erro:"
 
-#: src/play_controller.cpp:1489
+#: src/play_controller.cpp:1493
 msgid "Accelerated speed enabled!"
 msgstr ""
 
@@ -12384,12 +12384,12 @@ msgstr ""
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
 # File: src/playsingle_controller.cpp, line: 222
-#: src/play_controller.cpp:1490
+#: src/play_controller.cpp:1494
 #, fuzzy
 msgid "(press $hk to disable)"
 msgstr "(aperte $hotkey para continuar o movimento)"
 
-#: src/play_controller.cpp:1494
+#: src/play_controller.cpp:1498
 msgid "Accelerated speed disabled!"
 msgstr ""
 
@@ -12443,7 +12443,7 @@ msgstr "Você foi derrotado!"
 # File: src/playcampaign.cpp, line: 513
 # File: src/playcampaign.cpp, line: 513
 # File: src/playcampaign.cpp, line: 513
-#: src/playcampaign.cpp:515
+#: src/playcampaign.cpp:508
 msgid "Error while reading the WML: "
 msgstr "Erro na leitura do WML: "
 
@@ -12454,7 +12454,7 @@ msgstr "Erro na leitura do WML: "
 # File: src/playsingle_controller.cpp, line: 462
 # File: src/playcampaign.cpp, line: 549
 # File: src/playsingle_controller.cpp, line: 462
-#: src/playcampaign.cpp:550 src/playsingle_controller.cpp:497
+#: src/playcampaign.cpp:543 src/playsingle_controller.cpp:497
 msgid "Game Over"
 msgstr "Fim do Jogo"
 
@@ -12462,7 +12462,7 @@ msgstr "Fim do Jogo"
 # File: src/playcampaign.cpp, line: 550
 # File: src/playcampaign.cpp, line: 550
 # File: src/playcampaign.cpp, line: 550
-#: src/playcampaign.cpp:551
+#: src/playcampaign.cpp:544
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Este cenário terminou. Você quer continuar a campanha?"
 
@@ -12470,7 +12470,7 @@ msgstr "Este cenário terminou. Você quer continuar a campanha?"
 # File: src/playcampaign.cpp, line: 734
 # File: src/playcampaign.cpp, line: 734
 # File: src/playcampaign.cpp, line: 734
-#: src/playcampaign.cpp:698
+#: src/playcampaign.cpp:692
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Cenário desconhecido: '$scenario|'"
 
@@ -14114,7 +14114,7 @@ msgstr "Período do dia"
 # File: src/unit.cpp, line: 2368
 # File: src/unit.cpp, line: 2598
 # File: src/unit.cpp, line: 2679
-#: src/unit.cpp:2428 src/unit.cpp:2658 src/unit.cpp:2739
+#: src/unit.cpp:2429 src/unit.cpp:2659 src/unit.cpp:2740
 msgid " and "
 msgstr " e "
 
@@ -14122,7 +14122,7 @@ msgstr " e "
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
 # File: src/unit.cpp, line: 2379
-#: src/unit.cpp:2439
+#: src/unit.cpp:2440
 msgid "$attack_list|: $effect_description"
 msgstr "$attack_list|: $effect_description"
 
@@ -14130,7 +14130,7 @@ msgstr "$attack_list|: $effect_description"
 # File: src/unit.cpp, line: 2440
 # File: src/unit.cpp, line: 2440
 # File: src/unit.cpp, line: 2440
-#: src/unit.cpp:2500
+#: src/unit.cpp:2501
 #, fuzzy
 msgid "moves"
 msgstr "Movimento"
@@ -14142,7 +14142,7 @@ msgstr "Movimento"
 # File: src/unit.cpp, line: 2622
 # File: src/unit.cpp, line: 2470
 # File: src/unit.cpp, line: 2622
-#: src/unit.cpp:2530 src/unit.cpp:2682
+#: src/unit.cpp:2531 src/unit.cpp:2683
 msgid "XP to advance"
 msgstr "XP para avançar"
 
@@ -14150,7 +14150,7 @@ msgstr "XP para avançar"
 # File: src/unit.cpp, line: 2615
 # File: src/unit.cpp, line: 2615
 # File: src/unit.cpp, line: 2615
-#: src/unit.cpp:2675
+#: src/unit.cpp:2676
 msgid " move"
 msgstr " movimento"
 
@@ -14158,7 +14158,7 @@ msgstr " movimento"
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
 # File: src/unit.cpp, line: 2630
-#: src/unit.cpp:2690
+#: src/unit.cpp:2691
 msgid "$effect_description per level"
 msgstr "$effect_description por nível"
 
