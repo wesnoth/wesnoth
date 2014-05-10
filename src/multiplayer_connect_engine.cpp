@@ -859,6 +859,10 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	const int side_cntr = cfg_["controller"].to_int(-1);
 	if (side_cntr != -1) {
 		current_player_ = lexical_cast<std::string>(side_cntr);
+
+		// Remove this attribute to avoid locking side
+		// to non-existing controller type.
+		cfg_.remove_attribute("controller");
 	}
 
 	update_controller_options();
