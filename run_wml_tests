@@ -1,6 +1,31 @@
 #!/bin/bash
-#This script runs a sequence of unit tests, found in the file wml_test_schedule
+#This script runs a sequence of wml unit test scenarios.
 #Use -h to get help with usage.
+
+usage()
+{
+  echo "Usage:" $0 "[OPTIONS]"
+  echo "Executes a series of wml unit test scenarios found in a file."
+  echo
+  echo -e "Options:"
+  echo -e "\t-h\tShows this help."
+  echo -e "\t-v\tVerbose mode."
+  echo -e "\t-d\tDebug mode."
+  echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
+  echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
+  echo -e "\t-l arg\tLoads list of tests from the given file."
+  echo -e "\t  \tBy default, the file is wml_test_schedule."
+  echo
+  echo "Each line in the list of tests should be formatted:"
+  echo -e "\n\t<expected return code> <name of unit test scenario>\n"
+  echo "Lines beginning # are treated as comments."
+  echo "Expected return codes:"
+  for i in `seq 0 4`;
+  do
+    get_code_string $i
+    echo -e "\t" $i "-" $CodeString
+  done
+}
 
 get_code_string()
 {
@@ -119,6 +144,7 @@ run_test_unix_timeout()
 
 Verbose=0
 UnixTimeout=0
+LoadFile=wml_test_schedule
 
 while getopts ":vduh" Option
 do
@@ -136,27 +162,22 @@ do
     u )
       UnixTimeout=1
       ;;
+    l )
+      LoadFile=$OPTARG
+      ;;
     h )
-      echo $0 "[OPTIONS]"
-      echo
-      echo -e "\t-h\tShows this help."
-      echo -e "\t-v\tVerbose mode."
-      echo -e "\t-d\tDebug mode."
-      echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
-      echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
-      echo
-      echo "The script executes tests found in the file 'wml_test_schedule'."
-      echo "Each line should be formatted:"
-      echo -e "\n\t<expected return code> <name of unit test scenario>.\n"
-      echo "Lines beginning # are treated as comments."
+      usage
       exit 0;
+      ;;
   esac
 done
 shift $(($OPTIND - 1))
 
+echo "Getting tests from" $LoadFile "..."
+
 old_IFS=$IFS
 IFS=$'\n'
-schedule=($(cat wml_test_schedule)) # array
+schedule=($(cat $LoadFile)) # array
 IFS=$old_IFS
 
 TESTS=0
