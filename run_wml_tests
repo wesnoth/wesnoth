@@ -63,9 +63,9 @@ check_errs()
     return 0
   elif [ "${2}" -ne "${3}" ]; then 
     get_code_string ${2}
-    echo ${1} ":" ${2} "-" $CodeString
+    echo -e ${1} ":   \t" ${2} "-" $CodeString
     get_code_string ${3}
-    echo "Expected result :" ${3} "-" $CodeString
+    echo -e "Expected result :\t" ${3} "-" $CodeString
     if [ -f "error.log" ]; then
       echo ""
       echo "Found error.log:"
@@ -82,15 +82,15 @@ run_test()
   # Argument 2 is the name of the test scenario
   if [ "$FirstTest" -eq 1 ]; then
     opts="--timeout 20000"
-    FirstTest=0
   else
     opts="--validcache --timeout 10000"
   fi
   if [ "$Verbose" -ge 1 ]; then
-    echo "wesnoth -u" $2 $opts
+    echo "wesnoth -u" $2 $opts "2> error.log"
   fi
   wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
+    FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
     return 0
   else
     return 1
@@ -110,10 +110,11 @@ run_test_unix_timeout()
     opts="--validcache"
     timer=10
   fi
+  timer1=$((timer+1))
   if [ "$Verbose" -ge 1 ]; then
-    echo "timeout" $timer "wesnoth -u" $2 $opts
+    echo "timeout" "--kill-after=$timer1" $timer "wesnoth -u" $2 $opts "2> error.log"
   fi
-  timeout $timer wesnoth -u $2 $opts 2> error.log
+  timeout "--kill-after=$timer1" $timer wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     return 0
   else
@@ -150,6 +151,7 @@ do
       echo -e "\t-v\tVerbose mode."
       echo -e "\t-d\tDebug mode."
       echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
+      echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
       echo
       echo "The script executes tests found in the file 'wml_test_schedule'."
       echo "Each line should be formatted:"
