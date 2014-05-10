@@ -40,6 +40,7 @@ extern const unsigned short default_campaignd_port;
  */
 enum ADDON_TYPE {
 	ADDON_UNKNOWN,		/**< a.k.a. anything. */
+	ADDON_CORE,			/**< Total Conversion Core. */
 	ADDON_SP_CAMPAIGN,	/**< Single-player campaign. */
 	ADDON_SP_SCENARIO,	/**< Single-player scenario. */
 	ADDON_SP_MP_CAMPAIGN, /**< Hybrid campaign. */
@@ -48,7 +49,6 @@ enum ADDON_TYPE {
 	ADDON_MP_MAPS,		/**< Multiplayer plain (no WML) map pack. */
 	ADDON_MP_ERA,		/**< Multiplayer era. */
 	ADDON_MP_FACTION,	/**< Multiplayer faction. */
-	ADDON_CORE,			/**< Total Conversion Core. */
 	// NOTE: following two still require proper engine support
 	ADDON_MP_MOD,		/**< Modification of the game for MP. */
 	//ADDON_GUI,			// GUI add-ons/themes.

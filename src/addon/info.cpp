@@ -72,7 +72,6 @@ void addon_info::read(const config& cfg)
 	this->downloads = cfg["downloads"];
 	this->uploads = cfg["uploads"];
 	this->type = get_addon_type(cfg["type"].str());
-	this->core = cfg["core"].str();
 
 	const config::const_child_itors& locales = cfg.child_range("translation");
 
@@ -80,6 +79,7 @@ void addon_info::read(const config& cfg)
 		this->locales.push_back(locale["language"].str());
 	}
 
+	this->core = cfg["core"].str();
 	this->depends = utils::split(cfg["dependencies"].str());
 	this->feedback_url = cfg["feedback_url"].str();
 
@@ -99,12 +99,12 @@ void addon_info::write(config& cfg) const
 	cfg["downloads"] = this->downloads;
 	cfg["uploads"] = this->uploads;
 	cfg["type"] = get_addon_type_string(this->type);
-	cfg["core"] = this->core;
 
 	BOOST_FOREACH(const std::string& locale_id, this->locales) {
 		cfg.add_child("translation")["language"] = locale_id;
 	}
 
+	cfg["core"] = this->core;
 	cfg["dependencies"] = utils::join(this->depends);
 	cfg["feedback_url"] = this->feedback_url;
 

@@ -64,6 +64,7 @@ struct addon_info
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
+		, core()
 		, depends()
 		, feedback_url()
 		, updated()
@@ -75,6 +76,7 @@ struct addon_info
 		: id(), title(), description(), icon()
 		, version(), author(), size(), downloads()
 		, uploads(), type(), locales()
+		, core()
 		, depends()
 		, feedback_url()
 		, updated()
@@ -97,6 +99,7 @@ struct addon_info
 			this->uploads = o.uploads;
 			this->type = o.type;
 			this->locales = o.locales;
+			this->core = o.core;
 			this->depends = o.depends;
 			this->feedback_url = o.feedback_url;
 			this->updated = o.updated;
