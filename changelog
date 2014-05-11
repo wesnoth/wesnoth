@@ -136,7 +136,11 @@ Version 1.13.0-dev:
    * Fix bug #22030: correct index of weapon special disable in attack GUI
    * Fix bug #21964: assertion failure when using "controller" attribute with
      a number.
-
+   * Add [do_command], remove [issue_attack_command] and [issue_move_command], 
+     which are superceded by [do_command]. [do_command] takes the body of a 
+     [command] tag from ReplayWML, (some possibilities not allowed), and 
+     executes the corresponding action. It is replay safe and triggers WML 
+     events as appropriate. 
 Version 1.11.11:
  * Add-ons server:
    * Filenames with whitespace in them are no longer allowed.
