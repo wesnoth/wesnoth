@@ -707,6 +707,8 @@ static void on_replay_error(const std::string& message, bool /*b*/)
 	ERR_NG << message << std::endl;
 }
 
+// This tag exposes part of the code path used to handle [command]'s in replays
+// This allows to perform scripting in WML that will use the same code path as player actions, for example.
 WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
 {
 	static const std::set<std::string> allowed_tags = boost::assign::list_of("attack")("move")("recruit")("recall")("disband")("fire_event")("lua_ai");
@@ -918,75 +920,6 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 	gui2::tgamestate_inspector inspect_dialog(cfg);
 	inspect_dialog.show(resources::screen->video());
 }
-
-/**
- * This code path is more or less copied from src/ai/actions.cpp, to provide a WML
- * way to simulate user / ai issued attack commands in a noninteractive test
- * scenario, without having to coerce an ai.
- *
- * This is more or less a raw interface to attack_unit_and_advance, in src/actions/attack.?pp
- */
-WML_HANDLER_FUNCTION(issue_attack_command, /*event_info*/, cfg)
-{
-	LOG_WML << "Called issue_attack_command" << std::endl;
-	const config& parsed = cfg.get_parsed_config();
-
-	//FIXME: Use a filter / one of the support functions above to get locations from config.
-	map_location attacker_loc_(parsed["x1"].to_int(-999)-1, parsed["y1"].to_int(-999)-1);
-	map_location defender_loc_(parsed["x2"].to_int(-999)-1, parsed["y2"].to_int(-999)-1);
-
-	if (attacker_loc_ == defender_loc_ ) { 
-		ERR_WML << "[issue_attack_command] attacker location == defender location! aborting." << std::endl;
-		return ;
-	}
-
-	int attacker_weapon = parsed["attacker_weapon"].to_int(0);
-	int defender_weapon = parsed["defender_weapon"].to_int(0);
-
-	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
-	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
-	//to get rid of an unused member varuiable warning, FIXME: find a way to 'ask' the ai wich advancement should be chosen from synced_commands.cpp .
-	if(synced_context::get_syced_state() != synced_context::SYNCED) //RAII block for set_scontext_synced
-	{
-		//we don't use synced_context::run_in_synced_context because that wouldn't allow us to pass advancements_
-		recorder.add_synced_command("attack", replay_helper::get_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
-			d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
-			resources::tod_manager->get_time_of_day()));
-		set_scontext_synced sync;
-		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
-	}
-	else
-	{
-		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon);
-	}
-}
-
-/**
- * This code path is more or less copied from src/ai/actions.cpp, to provide a WML
- * way to simulate user / ai issued attack commands in a noninteractive test
- * scenario, without having to coerce an ai.
- *
- * This is more or less a raw interface to actions::move_unit_and_record.
- */
-WML_HANDLER_FUNCTION(issue_move_command, /*event_info*/, cfg)
-{
-	const config& parsed = cfg.get_parsed_config();
-
-	const std::string x = parsed["x"];
-	const std::string y = parsed["y"];
-
-	const std::vector<std::string> xvals = utils::split(x);
-	const std::vector<std::string> yvals = utils::split(y);
-
-	std::vector<map_location> path;
-	for (int i = 0; i < std::min<int>(xvals.size(), yvals.size()); ++i) {
-		path.push_back(map_location(atoi(xvals[i].c_str())-1, atoi(yvals[i].c_str())-1));
-	}
-
-	actions::move_unit_and_record(path, NULL);
-}
-
-//TODO: Add handlers for issue_recruit_command, issue_recall_command?
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
