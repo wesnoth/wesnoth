@@ -160,7 +160,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	int def_weapon_num = child["defender_weapon"].to_int(-2);
 	if (def_weapon_num == -2) {
 		// Let's not gratuitously destroy backwards compatibility.
-		WRN_REPLAY << "Old data, having to guess weapon\n";
+		LOG_REPLAY << "Old data, having to guess weapon\n";
 		def_weapon_num = -1;
 	}
 
