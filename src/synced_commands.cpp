@@ -141,13 +141,17 @@ SYNCED_COMMAND_HANDLER_FUNCTION(recall, child, use_undo, show, error_handler)
 
 SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler)
 {
-
 	const config &destination = child.child("destination");
 	const config &source = child.child("source");
 	//check_checksums(*cfg);
 
-	if (!destination || !source) {
-		error_handler("no destination/source found in attack\n", true);
+	if (!destination) {
+		error_handler("no destination found in attack\n", true);
+		return false;
+	}
+
+	if (!source) {
+		error_handler("no source found in attack \n", true);
 		return false;
 	}
 
@@ -170,9 +174,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		return false;
 	}
 
-	const std::string &att_type_id = child["attacker_type"];
-	if (u->type_id() != att_type_id) {
-		WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")\n";
+	if (child.has_attribute("attacker_type")) {
+		const std::string &att_type_id = child["attacker_type"];
+		if (u->type_id() != att_type_id) {
+			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")\n";
+		}
 	}
 
 	if (size_t(weapon_num) >= u->attacks().size()) {
@@ -189,9 +195,11 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 		return false;
 	}
 
-	const std::string &def_type_id = child["defender_type"];
-	if (tgt->type_id() != def_type_id) {
-		WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")\n";
+	if (child.has_attribute("defender_type")) {
+		const std::string &def_type_id = child["defender_type"];
+		if (tgt->type_id() != def_type_id) {
+			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")\n";
+		}
 	}
 
 	if (def_weapon_num >= static_cast<int>(tgt->attacks().size())) {
@@ -201,8 +209,6 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	}
 
 	DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
-
-	
 	
 	resources::undo_stack->clear();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
