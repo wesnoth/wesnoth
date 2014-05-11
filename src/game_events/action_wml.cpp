@@ -65,7 +65,7 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>
-
+#include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -699,6 +699,42 @@ WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(disallow_end_turn, /*event_info*/, /*cfg*/)
 {
 	resources::gamedata->set_allow_end_turn(false);
+}
+
+static void on_replay_error(const std::string& message, bool /*b*/)
+{
+	ERR_NG << "Error via [do_command]:" << std::endl;
+	ERR_NG << message << std::endl;
+}
+
+WML_HANDLER_FUNCTION(do_command, /*event_info*/, cfg)
+{
+	static const std::set<std::string> allowed_tags = boost::assign::list_of("attack")("move")("recruit")("recall")("disband")("fire_event")("lua_ai");
+
+	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
+	if(is_too_early)
+	{
+		ERR_NG << "[do_command] called too early, only allowed at START or later" << std::endl;
+		return;
+	}
+	for(vconfig::all_children_iterator i = cfg.ordered_begin(); i != cfg.ordered_end(); ++i)
+	{
+		if(allowed_tags.find( i.get_key()) == allowed_tags.end()) {
+			ERR_NG << "unsupported tag [" << i.get_key() << "] in [do_command]" << std::endl;
+			std::stringstream o;
+			std::copy(allowed_tags.begin(), allowed_tags.end(), std::ostream_iterator<std::string>(o, " "));
+			ERR_NG << "allowed tags: " << o.str() << std::endl;
+			continue;
+		}
+		//Note that this fires related events and everthing else that also happen normally.
+		//have to watch out with the undo stack, therefore forbid [auto_shroud] and [update_shroud] here...
+		synced_context::run_in_synced_context_if_not_already(
+			/*commandname*/ i.get_key(),
+			/*data*/ i.get_child().get_parsed_config(),
+			/*use_undo*/ true,
+			/*show*/ true,
+			/*error_handler*/ &on_replay_error);
+        }
 }
 
 WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
