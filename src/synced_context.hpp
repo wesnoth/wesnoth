@@ -29,7 +29,7 @@ class config;
 class synced_context
 {
 public:
-	enum syced_state {UNSYNCED, SYNCED, LOCAL_CHOICE};
+	enum synced_state {UNSYNCED, SYNCED, LOCAL_CHOICE};
 	/**
 		
 		Sets the context to 'synced', initialises random context, and calls the given function.
@@ -64,11 +64,11 @@ public:
 	/*
 		Returns whether we are currently executing a synced action like recruit, start, recall, disband, movement, attack, init_side, end_turn, fire_event, lua_ai, auto_shroud or similar.
 	*/
-	static syced_state get_syced_state();
+	static synced_state get_synced_state();
 	/*
 		should only be called form set_scontext_synced, set_scontext_local_choice
 	*/
-	static void set_syced_state(syced_state newstate);
+	static void set_synced_state(synced_state newstate);
 	/*
 		Generates a new seed for a synced event, by asking the 'server'
 	*/
@@ -113,7 +113,7 @@ private:
 	/*
 		weather we are in a synced move, in a user_choice, or none of them
 	*/
-	static syced_state state_;
+	static synced_state state_;
 	/*
 		As soon as get_user_choice is used with side != current_side (for example in generate_random_seed) other sides execute the command simultaneously and is_simultaneously is set to true.
 		It's impossible to undo data that has been sended over the network.
@@ -176,7 +176,7 @@ public:
 	~set_scontext_leave_for_draw();
 private:
 	random_new::rng* old_rng_;
-	synced_context::syced_state previous_state_;
+	synced_context::synced_state previous_state_;
 };
 
 /*

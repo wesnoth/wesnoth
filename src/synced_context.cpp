@@ -30,7 +30,7 @@ static lg::log_domain log_replay("replay");
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
 
-synced_context::syced_state synced_context::state_ = synced_context::UNSYNCED;
+synced_context::synced_state synced_context::state_ = synced_context::UNSYNCED;
 bool synced_context::is_simultaneously_ = false;
 
 bool synced_context::run_in_synced_context(const std::string& commandname, const config& data, bool use_undo, bool show,  bool store_in_replay, synced_command::error_handler_function error_handler)
@@ -72,7 +72,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 
 bool synced_context::run_in_synced_context_if_not_already(const std::string& commandname,const config& data, bool use_undo, bool show, synced_command::error_handler_function error_handler)
 {
-	switch(synced_context::get_syced_state())
+	switch(synced_context::get_synced_state())
 	{
 	case(synced_context::UNSYNCED):
 		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
@@ -94,7 +94,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 		}
 	}
 	default:
-		assert(false && "found unknown synced_context::syced_state");
+		assert(false && "found unknown synced_context::synced_state");
 		return false;
 	}
 }
@@ -115,12 +115,12 @@ void synced_context::ignore_error_function(const std::string& message, bool /*he
 	DBG_REPLAY << "Ignored during synced execution: "  << message; 
 }
 
-synced_context::syced_state synced_context::get_syced_state()
+synced_context::synced_state synced_context::get_synced_state()
 {
 	return state_;
 }
 
-void synced_context::set_syced_state(syced_state newstate)
+void synced_context::set_synced_state(synced_state newstate)
 {
 	state_ = newstate;
 }
@@ -145,7 +145,7 @@ void  synced_context::reset_is_simultaneously()
 bool synced_context::can_undo()
 {
 	//this method should only works in a synced context.
-	assert(get_syced_state() == SYNCED);
+	assert(get_synced_state() == SYNCED);
 	//if we called the rng or if we sended data of this action over the network already, undoing is impossible.
 	return (!is_simultaneously_) && (random_new::generator->get_random_calls() == 0);
 }
@@ -230,7 +230,7 @@ boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 
 config synced_context::ask_server(const std::string &name, const mp_sync::user_choice &uch)
 {
-	assert(get_syced_state() == synced_context::SYNCED);
+	assert(get_synced_state() == synced_context::SYNCED);
 	
 	int current_side = resources::controller->current_side();
 	int side = current_side;
@@ -365,9 +365,9 @@ void set_scontext_synced::init()
 {
 	
 	LOG_REPLAY << "set_scontext_synced::set_scontext_synced\n";
-	assert(synced_context::get_syced_state() == synced_context::UNSYNCED);
+	assert(synced_context::get_synced_state() == synced_context::UNSYNCED);
 	
-	synced_context::set_syced_state(synced_context::SYNCED);
+	synced_context::set_synced_state(synced_context::SYNCED);
 	synced_context::reset_is_simultaneously();
 
 	old_checkup_ = checkup_instance;
@@ -378,7 +378,7 @@ void set_scontext_synced::init()
 set_scontext_synced::~set_scontext_synced()
 {
 	LOG_REPLAY << "set_scontext_synced:: destructor\n";
-	assert(synced_context::get_syced_state() == synced_context::SYNCED);
+	assert(synced_context::get_synced_state() == synced_context::SYNCED);
 	assert(checkup_instance == &new_checkup_);
 	config co;
 	if(!checkup_instance->local_checkup(config_of("random_calls", new_rng_->get_random_calls()), co))
@@ -389,7 +389,7 @@ set_scontext_synced::~set_scontext_synced()
 	}
 
 	random_new::generator = old_rng_;
-	synced_context::set_syced_state(synced_context::UNSYNCED);
+	synced_context::set_synced_state(synced_context::UNSYNCED);
 	
 	checkup_instance = old_checkup_;
 }
@@ -403,8 +403,8 @@ int set_scontext_synced::get_random_calls()
 set_scontext_local_choice::set_scontext_local_choice()
 {
 	
-	assert(synced_context::get_syced_state() == synced_context::SYNCED);
-	synced_context::set_syced_state(synced_context::LOCAL_CHOICE);
+	assert(synced_context::get_synced_state() == synced_context::SYNCED);
+	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
 	
 	old_rng_ = random_new::generator;
@@ -414,20 +414,20 @@ set_scontext_local_choice::set_scontext_local_choice()
 }
 set_scontext_local_choice::~set_scontext_local_choice()
 {
-	assert(synced_context::get_syced_state() == synced_context::LOCAL_CHOICE);
-	synced_context::set_syced_state(synced_context::SYNCED);
+	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
+	synced_context::set_synced_state(synced_context::SYNCED);
 	delete random_new::generator;
 	random_new::generator = old_rng_;
 }
 
 set_scontext_leave_for_draw::set_scontext_leave_for_draw()
-	: previous_state_(synced_context::get_syced_state())
+	: previous_state_(synced_context::get_synced_state())
 {
 	if(previous_state_ != synced_context::SYNCED)
 	{
 		return;
 	}
-	synced_context::set_syced_state(synced_context::LOCAL_CHOICE);
+	synced_context::set_synced_state(synced_context::LOCAL_CHOICE);
 
 	
 	old_rng_ = random_new::generator;
@@ -441,8 +441,8 @@ set_scontext_leave_for_draw::~set_scontext_leave_for_draw()
 	{
 		return;
 	}
-	assert(synced_context::get_syced_state() == synced_context::LOCAL_CHOICE);
-	synced_context::set_syced_state(synced_context::SYNCED);
+	assert(synced_context::get_synced_state() == synced_context::LOCAL_CHOICE);
+	synced_context::set_synced_state(synced_context::SYNCED);
 	delete random_new::generator;
 	random_new::generator = old_rng_;
 }

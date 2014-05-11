@@ -734,7 +734,7 @@ REPLAY_RETURN do_replay_handle(int side_num)
 
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
-		const bool is_synced = (synced_context::get_syced_state() == synced_context::SYNCED);
+		const bool is_synced = (synced_context::get_synced_state() == synced_context::SYNCED);
 				
 		DBG_REPLAY << "in do replay with is_synced=" << is_synced << "\n";
 
@@ -1087,7 +1087,7 @@ std::map<int,config> mp_sync::get_user_choice_multiple_sides(const std::string &
 	std::set<int> sides)
 {	
 	//pass sides by copy because we need a copy.
-	const bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
+	const bool is_synced = synced_context::get_synced_state() == synced_context::SYNCED;
 	const int max_side  = static_cast<int>(resources::teams->size());
 	//we currently don't check for too early because luas sync choice doesn't necessarily show screen dialogs.
 	//It (currently) in the responsibility of the user of sync choice to not use dialogs during prestart events..
@@ -1133,7 +1133,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	int side)
 {
 	const bool is_too_early = resources::gamedata->phase() != game_data::START && resources::gamedata->phase() != game_data::PLAY;
-	const bool is_synced = synced_context::get_syced_state() == synced_context::SYNCED;
+	const bool is_synced = synced_context::get_synced_state() == synced_context::SYNCED;
 	const bool is_mp_game = network::nconnections() != 0;//Only used in debugging output below
 	const int max_side  = static_cast<int>(resources::teams->size());
 	const int current_side = resources::controller->current_side();

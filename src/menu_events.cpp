@@ -3148,7 +3148,7 @@ void console_handler::do_unit() {
 		return;
 	}
 	if (name == "advances" ){
-		if(synced_context::get_syced_state() == synced_context::SYNCED)
+		if(synced_context::get_synced_state() == synced_context::SYNCED)
 		{
 			command_failed("unit advances=n doesn't work while another action is executed.");
 			return;

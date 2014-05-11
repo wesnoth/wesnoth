@@ -1435,7 +1435,7 @@ static int intf_set_village_owner(lua_State *L)
  */
 static int intf_is_synced(lua_State *L)
 {
-	lua_pushboolean(L, synced_context::get_syced_state() == synced_context::SYNCED);
+	lua_pushboolean(L, synced_context::get_synced_state() == synced_context::SYNCED);
 	return 1;
 }
 
