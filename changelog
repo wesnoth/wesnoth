@@ -140,7 +140,9 @@ Version 1.13.0-dev:
      which are superceded by [do_command]. [do_command] takes the body of a 
      [command] tag from ReplayWML, (some possibilities not allowed), and 
      executes the corresponding action. It is replay safe and triggers WML 
-     events as appropriate. 
+     events as appropriate.
+   * Reallow selection of another unit on same side without deselect first
+
 Version 1.11.11:
  * Add-ons server:
    * Filenames with whitespace in them are no longer allowed.
