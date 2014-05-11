@@ -1255,7 +1255,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	unit_mover mover(steps, move_spectator, continued_move, skip_ally_sighted, NULL);
 	if ( !mover.check_expected_movement() )
 		return 0;
-	if(synced_context::get_syced_state() != synced_context::SYNCED)
+	if(synced_context::get_synced_state() != synced_context::SYNCED)
 	{
 		/*
 			enter the synced mode and do the actual movement.
