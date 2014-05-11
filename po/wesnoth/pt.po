@@ -212,13 +212,10 @@ msgstr ""
 msgid "Use 12-hour clock format"
 msgstr "Usa relógio de formato de 12 horas"
 
-#
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:170
-#, fuzzy
-#| msgid "Confirm loading of saves from a different version"
 msgid "Confirm loading saves from a different version"
-msgstr "Confirmar ao carregar uma partida gravada de outra versão"
+msgstr "Confirmar ao carregar uma partida gravada de uma versão diferente"
 
 #
 #. [advanced_preference]: type=boolean
@@ -267,116 +264,98 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:204
 msgid "Joystick support"
-msgstr ""
+msgstr "Suporte de joystick"
 
-#
 # a gamer more versatile in joysticks has to translate this...
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:211
 msgid "Joystick: number of the scroll X-axis joystick"
-msgstr ""
+msgstr "Joystick: número de deslocamento do áxis X do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:221
 msgid "Joystick: number of the scroll X-axis"
-msgstr ""
+msgstr "Joystick: número de deslocamento do áxis X"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:231
 msgid "Joystick: number of the scroll Y-axis joystick"
-msgstr ""
+msgstr "Joystick: número de deslocamento do áxis Y do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:241
 msgid "Joystick: number of the scroll Y-axis"
-msgstr ""
+msgstr "Joystick: número de deslocamento do áxis Y"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:251
 msgid "Joystick: deadzone of the scrolling stick"
-msgstr ""
+msgstr "Joystick: zona morta do deslocamento da alavanca do comando"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:261
 msgid "Joystick: number of the cursor X-axis joystick"
-msgstr ""
+msgstr "Joystick: número do cursor do áxis X do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:271
 msgid "Joystick: number of the cursor X-axis"
-msgstr ""
+msgstr "Joystick: número do cursor do áxis X"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:281
 msgid "Joystick: number of the cursor Y-axis joystick"
-msgstr ""
+msgstr "Joystick: número do cursor do áxis Y do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:291
 msgid "Joystick: number of the cursor Y-axis"
-msgstr ""
+msgstr "Joystick: número do cursor do áxis Y"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:301
 msgid "Joystick: deadzone of the cursor stick"
-msgstr ""
+msgstr "Joystick: zona morta do cursor da alavanca do comando"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:311
 msgid "Joystick: number of the mouse X-axis joystick"
-msgstr ""
+msgstr "Joystick: número do rato do áxis X do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:321
 msgid "Joystick: number of the mouse X-axis"
-msgstr ""
+msgstr "Joystick: número do rato do áxis X"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:331
 msgid "Joystick: number of the mouse Y-axis joystick"
-msgstr ""
+msgstr "Joystick: número do rato do áxis Y do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:341
 msgid "Joystick: number of the mouse Y-axis"
-msgstr ""
+msgstr "Joystick: número do rato do áxis Y"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:351
 msgid "Joystick: deadzone of the mouse stick"
-msgstr ""
+msgstr "Joystick: zona morta do rato da alavanca do comando"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:361
 msgid "Joystick: number of the thrust axis joystick"
-msgstr ""
+msgstr "Joystick: número do impulso do áxis do joystick"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:371
 msgid "Joystick: number of the thrust axis"
-msgstr ""
+msgstr "Joystick: número do impulso do áxis"
 
-#
 #. [advanced_preference]: type=int
 #: data/advanced_preferences.cfg:381
 msgid "Joystick: deadzone of the thruster"
-msgstr ""
+msgstr "Joystick: zona morta da impulsão"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -1487,17 +1466,14 @@ msgstr ""
 "foca-te em derrotar $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 
-#
 #. [else]
 #. [then]
 #: data/core/macros/ai_controller.cfg:244
 #: data/core/macros/ai_controller.cfg:248
 #: data/core/macros/ai_controller.cfg:379
 #: data/core/macros/ai_controller.cfg:383
-#, fuzzy
-#| msgid "side $temp_i"
 msgid "Side $temp_i"
-msgstr "side $temp_i"
+msgstr "Equipa $temp_i"
 
 #
 #. [else]
@@ -1506,14 +1482,11 @@ msgstr "side $temp_i"
 msgid "side $temp_i"
 msgstr "side $temp_i"
 
-#
 #. [command]
 #: data/core/macros/ai_controller.cfg:262
 #: data/core/macros/ai_controller.cfg:397
-#, fuzzy
-#| msgid "$side_i_leader.name (side $temp_i|)"
 msgid "side $temp_i ($side_i_leader.name|)"
-msgstr "$side_i_leader.name (side $temp_i|)"
+msgstr "Equipa $temp_i ($side_i_leader.name|)"
 
 #
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
@@ -3555,14 +3528,12 @@ msgstr "eléctrico"
 #. [theme]: id=Default
 #: data/themes/default.cfg:34
 msgid "theme^Default"
-msgstr ""
+msgstr "Predefinição"
 
 #. [theme]: id=Default
 #: data/themes/default.cfg:35
-#, fuzzy
-#| msgid "Default Zoom"
 msgid "Default theme."
-msgstr "Ampliação normal"
+msgstr "Tema por predefinação"
 
 #
 #. [menu]: id=menu-main
@@ -3571,13 +3542,10 @@ msgstr "Ampliação normal"
 msgid "Menu"
 msgstr "Menu"
 
-#
 #. [menu]: id=menu-autosaves
 #: data/themes/default.cfg:92
-#, fuzzy
-#| msgid "Back to Turn "
 msgid "Back to..."
-msgstr "Voltar ao turno "
+msgstr "Voltar ao turno …"
 
 #
 #. [menu]: id=actions-menu
@@ -3752,15 +3720,16 @@ msgstr "Ponto de vista"
 msgid "Skip animation"
 msgstr "Saltar animação"
 
+# Pandora é uma consola de jogos
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:22
 msgid "theme^Pandora"
-msgstr ""
+msgstr "Tema para Pandora"
 
 #. [theme]: id=Pandora
 #: data/themes/pandora.cfg:23
 msgid "800x480 theme optimized for Pandora devices."
-msgstr ""
+msgstr "Tema optimizado para os dispositivos 800×600 Pandora."
 
 #. [action]: id=end-turn
 #: data/themes/pandora.cfg:153
@@ -3774,12 +3743,14 @@ msgstr ""
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:11
 msgid "theme^UnitBox"
-msgstr ""
+msgstr "Caixa da Unidade"
 
 #. [theme]: id=UnitBox
 #: data/themes/unit_box.cfg:12
 msgid "Experimental work-in-progress replacement for the default theme."
 msgstr ""
+"Um tema experimental ainda em fase de desenvolvimento, para substituir o "
+"tema por padrão."
 
 #
 #. [action]: id=flip_map_button_editor, type=checkbox
@@ -3790,12 +3761,12 @@ msgstr "Ainda não implementado."
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:11
 msgid "theme^Widescreen"
-msgstr ""
+msgstr "Ecrã largo"
 
 #. [theme]: id=Widescreen
 #: data/themes/widescreen.cfg:12
 msgid "Experimental theme optimized for widescreen resolutions."
-msgstr ""
+msgstr "Um tema experimental optimizado para ecrãs largos."
 
 #
 #. [selected_unit_level]: id=selected-unit-level
@@ -5664,24 +5635,20 @@ msgstr "%A, %I:%M %p"
 msgid "%b %d"
 msgstr "%b %d"
 
-#
 #: src/format_time_summary.cpp:65
-#, fuzzy
-#| msgid "%b %d %y"
 msgid "%b %d %Y"
-msgstr "%b %d %y"
+msgstr "%d, %b %Y"
 
 #
 #: src/game_config.cpp:354
 msgid "Invalid color range: "
 msgstr "Faixa de cor inválida: "
 
-#
 #: src/game_config_manager.cpp:180
-#, fuzzy
-#| msgid "Error loading game configuration files: '"
 msgid "Error loading game configuration files. The game will now exit."
-msgstr "Erro ao carregar ficheiro de configuração do jogo: '"
+msgstr ""
+"Erro ao carregar ficheiro de configuração do jogo. O Programa irá terminar "
+"agora."
 
 #
 #: src/game_config_manager.cpp:279
@@ -5694,8 +5661,8 @@ msgstr[1] "O seguintes extras tiveram erros e não podem ser carregados:"
 msgid "Please report this to the author or maintainer of this add-on."
 msgid_plural ""
 "Please report this to the respective authors or maintainers of these add-ons."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Por favor reporta isto ao responsável por este extra."
+msgstr[1] "Por favor reporta isto aos responsáveis por estes extras."
 
 #
 #: src/game_controller.cpp:332 src/game_controller.cpp:921
@@ -5730,6 +5697,8 @@ msgid ""
 "single-player. It is recommended to load this scenario through the "
 "Multiplayer -> Load Game dialog instead."
 msgstr ""
+"Este é um cenário para ser jogado em rede, como tal para um melhor "
+"funcionamento deve ser carregado via “Jogo em Rede” > “Retomar Partida”."
 
 #
 #: src/game_controller.cpp:534 src/multiplayer.cpp:262
@@ -6591,12 +6560,9 @@ msgstr "Muda o lado de/para controlo IA."
 msgid "do not translate the on/off^[<side> [on/off]]"
 msgstr "[<equipa> [on/off]]"
 
-#
 #: src/menu_events.cpp:2060
-#, fuzzy
-#| msgid "Switch a side to/from AI control."
 msgid "Switch a side to/from idle state."
-msgstr "Muda o lado de/para controlo IA."
+msgstr "Tira o controlo de uma equipa ou repõe-o."
 
 #
 #: src/menu_events.cpp:2063
@@ -6611,11 +6577,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2065
 msgid "<side>"
-msgstr ""
+msgstr "<equipa>"
 
 #: src/menu_events.cpp:2065
 msgid "Query the controller status of a side."
-msgstr ""
+msgstr "Indica o controlador actual da equipa em questão."
 
 #
 #: src/menu_events.cpp:2067
@@ -6974,12 +6940,9 @@ msgstr "Não é possível automatizar equipa: '$side| é inválido."
 msgid "Can't droid networked side: '$side'."
 msgstr "Não é possível automatizar equipa em rede: '$side| é inválido."
 
-#
 #: src/menu_events.cpp:2708
-#, fuzzy
-#| msgid "Can't droid invalid side: '$side'."
 msgid "Can't idle invalid side: '$side'."
-msgstr "Não é possível automatizar equipa: '$side| é inválido."
+msgstr "Não foi possível tirar o controlo da equipa: '$side'."
 
 #
 #: src/menu_events.cpp:2760
@@ -6993,21 +6956,14 @@ msgstr ""
 "Não é possível alterar o controlo da equipa fora dos limites: '$side' é "
 "invalido."
 
-#
 #: src/menu_events.cpp:2781
-#, fuzzy
-#| msgid "Can't change control of invalid side: '$side'."
 msgid "Can't query control of invalid side: '$side'."
-msgstr "Não é possível alterar o controlo da equipa: '$side' é invalido."
+msgstr "Não foi possível verificar o controlo da equipa: '$side'."
 
-#
 #: src/menu_events.cpp:2787
-#, fuzzy
-#| msgid "Can't change control of out-of-bounds side: '$side'."
 msgid "Can't query control of out-of-bounds side: '$side'."
 msgstr ""
-"Não é possível alterar o controlo da equipa fora dos limites: '$side' é "
-"invalido."
+"Não foi possível verificar o controlo da equipa fora dos limites: '$side'."
 
 #
 #: src/menu_events.cpp:2901
@@ -7680,38 +7636,25 @@ msgstr "Carregar Partida..."
 msgid "Activate"
 msgstr "Activar"
 
-#
 #: src/multiplayer_create.cpp:103
-#, fuzzy
-#| msgid "Scenario"
 msgid "Scenarios"
-msgstr "Cenário"
+msgstr "Cenários"
 
-#
 #: src/multiplayer_create.cpp:104
-#, fuzzy
-#| msgid "Campaign"
 msgid "Campaigns"
-msgstr "Campanha"
+msgstr "Campanhas"
 
 #: src/multiplayer_create.cpp:105
-#, fuzzy
-#| msgid "Close Map"
 msgid "User Maps"
-msgstr "Fechar Mapa"
+msgstr "Mapas da comunidade"
 
 #: src/multiplayer_create.cpp:106
-#, fuzzy
-#| msgid "New Scenario"
 msgid "User Scenarios"
-msgstr "Novo cenário"
+msgstr "Cenários da comunidade"
 
-#
 #: src/multiplayer_create.cpp:107
-#, fuzzy
-#| msgid "Random"
 msgid "Random Maps"
-msgstr "Aleatório"
+msgstr "Mapas Aleatórios"
 
 #
 #: src/multiplayer_create.cpp:124 src/multiplayer_create.cpp:125
@@ -7870,7 +7813,7 @@ msgstr "Revisões Rápidas"
 
 #: src/multiplayer_lobby.cpp:878
 msgid "Enter blindfolded"
-msgstr ""
+msgstr "Revisão Cega"
 
 #
 #: src/multiplayer_lobby.cpp:882
@@ -7879,7 +7822,7 @@ msgstr "Saltar rapidamente para o turno activo quando observares"
 
 #: src/multiplayer_lobby.cpp:883
 msgid "Do not show replay turns"
-msgstr ""
+msgstr "Não Mostrar Turnos da Revisão"
 
 #
 #: src/multiplayer_lobby.cpp:896
@@ -8273,14 +8216,11 @@ msgstr "Trocar por um jogador local"
 
 #: src/playturn.cpp:269
 msgid "Set side to idle"
-msgstr ""
+msgstr "Tira o controlo da equipa"
 
-#
 #: src/playturn.cpp:270
-#, fuzzy
-#| msgid "Abort game"
 msgid "Save and abort game"
-msgstr "Sair da Partida"
+msgstr "Guardar e sair da partida"
 
 #
 #: src/playturn.cpp:278 src/playturn.cpp:292
@@ -8619,12 +8559,9 @@ msgstr ""
 "Esta partida guardada é duma versão ($version_number|) diferente do jogo. "
 "Queres tentar carregá-la?"
 
-#
 #: src/savegame.cpp:696
-#, fuzzy
-#| msgid "This is not a multiplayer save"
 msgid "This is not a multiplayer save."
-msgstr "Esta não é uma partida guardado em rede"
+msgstr "Isto não é uma partida guardada do jogo em rede"
 
 #
 #: src/savegame.cpp:763
@@ -8654,12 +8591,9 @@ msgstr ""
 msgid "Saved"
 msgstr "Guardado"
 
-#
 #: src/savegame.cpp:922
-#, fuzzy
-#| msgid "The game has been saved"
 msgid "The game has been saved."
-msgstr "A partida foi gravada"
+msgstr "A partida foi guardada."
 
 #
 #: src/savegame.cpp:953 src/savegame.cpp:974
@@ -8693,20 +8627,17 @@ msgstr "Guardar a Partida"
 msgid "Unexpected characters at line start"
 msgstr "Caracteres inesperados no começo da linha"
 
-#
 #: src/serialization/parser.cpp:153
-#, fuzzy
-#| msgid "Missing closing tag for tag [$tag] at $pos"
 msgid "Missing closing tag for tag [$tag]"
-msgstr "Falta fechar a tag [$tag] na posição $pos"
+msgstr "Tag de clausura não fechada [$tag]"
 
 #: src/serialization/parser.cpp:154
 msgid "expected at $pos"
-msgstr ""
+msgstr "esperado em $pos"
 
 #: src/serialization/parser.cpp:154 src/serialization/parser.cpp:218
 msgid "opened at $pos"
-msgstr ""
+msgstr "aberto em $pos"
 
 #
 #: src/serialization/parser.cpp:167
@@ -8738,20 +8669,13 @@ msgstr "Tag de clausura não terminada"
 msgid "Unexpected closing tag"
 msgstr "Tag de clausura inesperada"
 
-#
 #: src/serialization/parser.cpp:217
-#, fuzzy
-#| msgid "Found invalid closing tag [/$tag2] for tag [$tag1] (opened at $pos)"
 msgid "Found invalid closing tag [/$tag2] for tag [$tag1]"
-msgstr ""
-"Encontrado tag de clausura [/$tag2] inválida para a tag [$tag1] (aberta na "
-"posição $pos)"
+msgstr "Encontrado tag de clausura [/$tag2] inválida para a tag [$tag1]"
 
 #: src/serialization/parser.cpp:218
-#, fuzzy
-#| msgid "Closed Trapdoor"
 msgid "closed at $pos"
-msgstr "Alçapão fechado"
+msgstr "Fechada em $pos"
 
 #
 #: src/serialization/parser.cpp:247 src/serialization/parser.cpp:259
@@ -8770,14 +8694,11 @@ msgstr "Texto entre aspas não terminado"
 
 #: src/serialization/parser.cpp:378
 msgid "at $pos"
-msgstr ""
+msgstr "situando-se em $pos"
 
-#
 #: src/serialization/parser.cpp:392
-#, fuzzy
-#| msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgid "Value: '$value' Previous: '$previous_value'"
-msgstr "$error, value '$value', antes '$previous_value' em $pos"
+msgstr "Valor: '$value' Antes: '$previous_value'"
 
 #
 #: src/serialization/string_utils.cpp:570

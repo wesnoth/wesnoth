@@ -1,10 +1,13 @@
-# trewe <sjrs456@yahoo.fr>, 2013.
+# European Portuguese translations for Battle for Wesnoth
+# Copyright (C) 2005-2014 Wesnoth development team
+# This file is distributed under the same license as the Battle for Wesnoth package.
+# trewe <sjrs456@yahoo.fr>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-03-02 10:23+0100\n"
-"PO-Revision-Date: 2014-01-06 12:02+0100\n"
+"POT-Creation-Date: 2014-04-21 20:19+0200\n"
+"PO-Revision-Date: 2014-02-22 14:59+0100\n"
 "Last-Translator: trewe <sjrs456@yandex.com>\n"
 "Language-Team: wesn-pt-trans <wesn-pt-trans-users@lists.sourceforge.net>\n"
 "Language: pt\n"
@@ -1659,14 +1662,10 @@ msgstr ""
 #
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
-#, fuzzy
-#| msgid ""
-#| " red if it can no longer move or attack, or the user ended the unit’s "
-#| "turn."
 msgid ""
 " black if it can no longer move or attack, or the user ended the unit’s turn."
 msgstr ""
-" vermelha se já não se pode nem mover nem atacar, ou o utilizador terminou o "
+" negra se já não se pode nem mover nem atacar, ou o utilizador terminou o "
 "seu turno."
 
 #
@@ -1678,10 +1677,9 @@ msgstr " azul se a unidade é de um aliado que não controlas."
 #
 #. [topic]: id=orbs
 #: data/core/help.cfg:194
-#, fuzzy
-#| msgid " Enemy units have no orb on top of their energy bar."
 msgid " Enemy units have a red orb on top of their energy bar."
-msgstr " Unidades inimigas não têm esferas no topo das suas barras de energia."
+msgstr ""
+" Unidades inimigas têm esferas vermelhas por cima das suas barras de energia."
 
 #
 #. [topic]: id=hitpoints
@@ -3441,6 +3439,9 @@ msgid ""
 "Display the controller status of a side.\n"
 "\n"
 msgstr ""
+"\n"
+"Mostra como é controlado a equipa.\n"
+"\n"
 
 #
 #. [topic]: id=general_commands
@@ -3576,6 +3577,9 @@ msgid ""
 "sides.\n"
 "\n"
 msgstr ""
+"\n"
+"Abre um diálogo que permite alterar o controlo das equipas.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:627
@@ -3585,6 +3589,10 @@ msgid ""
 "network disconnection.\n"
 "\n"
 msgstr ""
+"\n"
+"Alterna o estado ocioso da equipa. O anfitrião poderá mudar uma equipa para "
+"ser controlado por ninguém após uma desconexão de rede.\n"
+"\n"
 
 #
 #. [topic]: id=mp_commands
