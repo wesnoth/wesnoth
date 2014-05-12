@@ -904,7 +904,10 @@ REPLAY_RETURN do_replay_handle(int side_num)
 			else
 			{
 				LOG_REPLAY << "found commandname " << commandname << "in replay";
-				synced_context::run_in_synced_context(commandname, data, false, !get_replay_source().is_skipping(), false,show_oos_error_error_function);
+				/*
+					we need to use the undo stack during replays in order to make delayed shroud updated work.
+				*/
+				synced_context::run_in_synced_context(commandname, data, true, !get_replay_source().is_skipping(), false,show_oos_error_error_function);
 			}
 		}
 

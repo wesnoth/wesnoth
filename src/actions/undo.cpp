@@ -231,13 +231,13 @@ undo_list::undo_action *
 undo_list::undo_action::create(const config & cfg, const std::string & tag)
 {
 	const std::string str = cfg["type"];
-
+	undo_list::undo_action * res = NULL;
 	// The general division of labor in this function is that the various
 	// constructors will parse the "unit" child config, while this function
 	// parses everything else.
 
 	if ( str == "move" )
-		return new move_action(cfg.child("unit", tag), cfg,
+		res = new move_action(cfg.child("unit", tag), cfg,
 		                       cfg["starting_moves"],
 		                       cfg["time_bonus"],
 		                       cfg["village_owner"],
@@ -254,28 +254,32 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 			       << child["type"] << "' was not found.\n";
 			return NULL;
 		}
-		return new recruit_action(child, *u_type,
+		res = new recruit_action(child, *u_type,
 		                          map_location(cfg, NULL),
 		                          map_location(cfg.child_or_empty("leader"), NULL));
 	}
 
-	if ( str == "recall" )
-		return new recall_action(cfg.child("unit", tag),
+	else if ( str == "recall" )
+		res =  new recall_action(cfg.child("unit", tag),
 		                         map_location(cfg, NULL),
 		                         map_location(cfg.child_or_empty("leader"), NULL));
 
-	if ( str == "dismiss" )
-		return new dismiss_action(cfg.child("unit", tag));
+	else if ( str == "dismiss" )
+		res =  new dismiss_action(cfg.child("unit", tag));
 
-	if ( str == "auto_shroud" )
-		return new auto_shroud_action(cfg["active"].to_bool());
+	else if ( str == "auto_shroud" )
+		res =  new auto_shroud_action(cfg["active"].to_bool());
 
-	if ( str == "update_shroud" )
-		return new update_shroud_action;
-
-	// Unrecognized type.
-	ERR_NG << "Unrecognized undo action type: " << str << ".\n";
-	return NULL;
+	else if ( str == "update_shroud" )
+		res =  new update_shroud_action;
+	else
+	{
+		// Unrecognized type.
+		ERR_NG << "Unrecognized undo action type: " << str << ".\n";
+		return NULL;
+	}
+	res->replay_data = cfg.child_or_empty("replay_data");
+	return res;
 }
 
 
@@ -284,6 +288,7 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
  */
 void undo_list::dismiss_action::write(config & cfg) const
 {
+	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "dismiss";
 	dismissed_unit.write(cfg.add_child("unit"));
 }
@@ -293,6 +298,7 @@ void undo_list::dismiss_action::write(config & cfg) const
  */
 void undo_list::recall_action::write(config & cfg) const
 {
+	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "recall";
 	route.front().write(cfg);
 	recall_from.write(cfg.add_child("leader"));
@@ -307,6 +313,7 @@ void undo_list::recall_action::write(config & cfg) const
  */
 void undo_list::recruit_action::write(config & cfg) const
 {
+	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "recruit";
 	route.front().write(cfg);
 	recruit_from.write(cfg.add_child("leader"));
@@ -321,6 +328,7 @@ void undo_list::recruit_action::write(config & cfg) const
  */
 void undo_list::move_action::write(config & cfg) const
 {
+	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "move";
 	cfg["starting_direction"] = map_location::write_direction(starting_dir);
 	cfg["starting_moves"] = starting_moves;
@@ -339,6 +347,7 @@ void undo_list::move_action::write(config & cfg) const
  */
 void undo_list::auto_shroud_action::write(config & cfg) const
 {
+	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "auto_shroud";
 	cfg["active"] = active;
 }
@@ -348,6 +357,7 @@ void undo_list::auto_shroud_action::write(config & cfg) const
  */
 void undo_list::update_shroud_action::write(config & cfg) const
 {
+	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "update_shroud";
 }
 
@@ -467,7 +477,7 @@ void undo_list::clear()
  * This may fire events and change the game state.
  * @param[in]  is_replay  Set to true when this is called during a replay.
  */
-void undo_list::commit_vision(bool /*is_replay*/)
+void undo_list::commit_vision()
 {
 	// Update fog/shroud.
 	size_t erase_to = apply_shroud_changes();

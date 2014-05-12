@@ -629,8 +629,10 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	switch (command){
 		case hotkey::HOTKEY_ENDTURN:
 			if  (linger_)
-			{
-				return is_host_;
+			{	
+				bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
+					resources::gamedata->next_scenario() != "null";
+				return is_host_ || !has_next_scenario;
 			}
 			else
 			{
