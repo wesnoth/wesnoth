@@ -93,6 +93,22 @@ check_errs()
   return 0
 }
 
+handle_error_log()
+{
+  if [ -f "error.log" ]; then
+    if [ "$1" -ne 0 ]; then
+      if [ -f "errors.log" ]; then
+        echo -e "\n--- next unit test ---\n" >> errors.log
+        cat error.log >> errors.log
+      else
+        cp error.log errors.log
+      fi
+    fi
+
+    rm error.log
+  fi
+}
+
 run_test()
 {
   # Argument 1 is the expected error code
@@ -108,16 +124,10 @@ run_test()
   wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
-    rm error.log
+    handle_error_log 0
     return 0
   else
-    if [ -f "errors.log" ]; then
-      echo -e "\n--- next unit test ---\n" >> errors.log
-      cat error.log >> errors.log
-    else
-      cp error.log errors.log
-    fi
-    rm error.log
+    handle_error_log 1
     return 1
   fi
 }
@@ -141,16 +151,10 @@ run_test_unix_timeout()
   timeout "--kill-after=$timer1" $timer wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
-    rm error.log
+    handle_error_log 0
     return 0
   else
-    if [ -f "errors.log" ]; then
-      echo -e "\n--- next unit test ---\n" >> errors.log
-      cat error.log >> errors.log
-    else
-      cp error.log errors.log
-    fi
-    rm error.log
+    handle_error_log 1
     return 1
   fi
 }
