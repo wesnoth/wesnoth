@@ -774,6 +774,12 @@ bool game_controller::new_campaign()
 					difficulties.size() << "].\n";
 				return false;
 			}
+			else if (jump_to_campaign_.difficulty_ < 1)
+			{
+				std::cerr << "incorrect difficulty number: [" <<
+					jump_to_campaign_.difficulty_ << "]. minimum is [1].\n";
+				return false;
+			}
 			else
 			{
 				difficulty = jump_to_campaign_.difficulty_ - 1;
