@@ -482,6 +482,8 @@ int game_controller::unit_test()
 	savegame::replay_savegame save(state_, compression::NONE);
 	save.save_game_automatic(disp().video(), false, "unit_test_replay"); //false means don't check for overwrite
 
+	clear_loaded_game();
+
 	//game::load_game_exception::game = *cmdline_opts_.load
 	game::load_game_exception::game = "unit_test_replay";
 	//	game::load_game_exception::game = "Unit_test_" + test_scenario_ + "_replay";
@@ -495,13 +497,15 @@ int game_controller::unit_test()
 	}
 
 	try {
-		LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config());
-		if (!(res == VICTORY || res == NONE)) {
+		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_NONE, false,false,false,true);
+		::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);		
+		/*if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4; 
-		}
+		}*/
 		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
 		    video_);*/
+		clear_loaded_game();
 	} catch (game::load_game_exception &) {
 		std::cerr << "Load_game_exception encountered during play_replay!" << std::endl;
 		return 3; //failed to load replay

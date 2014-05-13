@@ -54,6 +54,8 @@ public:
 
 	std::vector<team> teams_start_;
 
+	bool manage_noninteractively();
+
 protected:
 	virtual void init_gui();
 
@@ -98,6 +100,6 @@ private:
 
 LEVEL_RESULT play_replay_level(const config& terrain_config,
 		const config* level, CVideo& video,
-		game_state& state_of_game);
+		game_state& state_of_game, bool is_unit_test = false);
 
 #endif

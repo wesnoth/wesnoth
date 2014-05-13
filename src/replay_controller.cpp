@@ -40,7 +40,7 @@ static lg::log_domain log_replay("replay");
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
 LEVEL_RESULT play_replay_level(const config& game_config,
-		const config* level, CVideo& video, game_state& state_of_game)
+		const config* level, CVideo& video, game_state& state_of_game, bool is_unit_test)
 {
 	try{
 		const int ticks = SDL_GetTicks();
@@ -59,6 +59,11 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 		//replay event-loop
 		for (;;){
 			replaycontroller.play_slice();
+			if (is_unit_test) { 
+				if (replaycontroller.manage_noninteractively()) {
+					return VICTORY;
+				}
+			}
 		}
 	}
 	catch(end_level_exception&){
@@ -565,5 +570,16 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		return (events::commands_disabled <= 1 ) && !recorder.at_end();
 	default:
 		return result;
+	}
+}
+
+bool replay_controller::manage_noninteractively() {
+	if (recorder.at_end()) {
+		return true;
+	} else {
+		if (!is_playing_) {
+			play_replay();
+		}
+		return false;
 	}
 }

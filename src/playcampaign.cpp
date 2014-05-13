@@ -207,7 +207,7 @@ static void generate_map(config const*& scenario)
 }
 
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
-		CVideo& video)
+		CVideo& video, bool is_unit_test)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -236,7 +236,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
-		play_replay_level(game_config, &starting_pos, video, gamestate);
+		play_replay_level(game_config, &starting_pos, video, gamestate, is_unit_test);
 
 		gamestate.snapshot = config();
 		recorder.clear();
