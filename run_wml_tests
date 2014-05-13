@@ -45,8 +45,14 @@ get_code_string()
   4)
     CodeString="FAIL (ERRORED REPLAY)"
     ;;
+  134)
+    CodeString="FAIL (ASSERTION FAILURE ? ? ?)"
+    ;;
+  139)
+    CodeString="FAIL (SEGFAULT ? ? ?)"
+    ;;
   *)
-    CodeString="? ? ?"
+    CodeString="FAIL (? ? ?)"
     ;;
   esac
 }
@@ -62,6 +68,8 @@ check_errs()
       echo "This means wesnoth tried to kill the thread but SDL threw an error..."
       echo "(This happens occasionally when running the empty_test with a timeout.)"
       echo "Since we expected timeout, the test passes."
+      echo ""
+      echo "*However*, review the logs, because it may also mean an assertion failure..."
     fi
     return 0
   elif [ "${2}" -eq 124 -a "${3}" -eq 2 -a $UnixTimeout -eq 1 ]; then
