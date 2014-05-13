@@ -233,6 +233,8 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility5 )
 	BOOST_CHECK (result3 == result4);
 }
 
+namespace {
+
 void validate_seed_string(std::string seed_str)
 {
 	config cfg;
@@ -261,6 +263,8 @@ void validate_seed_string(std::string seed_str)
 
 }
 
+}
+
 BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility_coverage )
 {
 	validate_seed_string("0000badd");
@@ -274,9 +278,13 @@ BOOST_AUTO_TEST_CASE( test_mt_rng_reproducibility_coverage )
 	validate_seed_string("aaaa0000");
 }
 
+namespace {
+
 std::string validate_get_random_int_seed_generator()
 {
 	return "dada5eed";
+}
+
 }
 
 #define validation_get_random_int_num_draws 19999
