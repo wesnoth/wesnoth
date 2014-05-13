@@ -2163,6 +2163,7 @@ static int intf_put_unit(lua_State *L)
 
 	if (lu) {
 		lu->put_map(loc);
+		lu->get()->set_standing();
 	} else {
 		u->set_location(loc);
 		resources::units->insert(u);
