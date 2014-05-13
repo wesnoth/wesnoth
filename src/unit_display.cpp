@@ -315,6 +315,7 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 	// If no animation then hide unit until end of movement
 	if (!animate_)
 	{
+		was_hidden_ = u.get_hidden();
 		u.set_hidden(true);
 		return;
 	}
