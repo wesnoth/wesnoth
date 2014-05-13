@@ -659,6 +659,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
         if attributes.get("unit_gender") is not None:
             print '"%s", line %d: use [effect][filter]gender= instead of [effect]unit_gender=' % \
                 (filename, lineno)
+    if closer in ["set_recruit", "allow_recruit", "disallow_recruit", "store_gold"] and "side" not in attributes:
+        print '"%s", line %d: %s without "side" attribute is now applied to all sides' % \
+              (filename, lineno, closer)
 
 def within(tag):
     "Did the specified tag lead one of our enclosing contexts?"
