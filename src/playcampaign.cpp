@@ -206,7 +206,7 @@ static void generate_map(config const*& scenario)
 	scenario = &new_scenario;
 }
 
-void play_replay(display& disp, game_state& gamestate, const config& game_config,
+LEVEL_RESULT play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video, bool is_unit_test)
 {
 	std::string type = gamestate.classification().campaign_type;
@@ -236,21 +236,44 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
-		play_replay_level(game_config, &starting_pos, video, gamestate, is_unit_test);
+		LEVEL_RESULT res = play_replay_level(game_config, &starting_pos, video, gamestate, is_unit_test);
 
 		gamestate.snapshot = config();
 		recorder.clear();
 		gamestate.replay_data.clear();
 
+		return res;
 	} catch(game::load_game_failed& e) {
-		gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
+		if (is_unit_test) {
+			std::cerr << std::string(_("The game could not be loaded: ")) + " (game::load_game_failed) " + e.message << std::endl;
+			return DEFEAT;
+		} else {
+			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
+		}
 	} catch(game::game_error& e) {
-		gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);
+		if (is_unit_test) {
+			std::cerr << std::string(_("Error while playing the game: ")) + " (game::game_error) " + e.message << std::endl;
+			return DEFEAT;
+		} else {
+			gui2::show_error_message(disp.video(), std::string(_("Error while playing the game: ")) + e.message);
+		}
 	} catch(incorrect_map_format_error& e) {
-		gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
+		if (is_unit_test) {
+			std::cerr << std::string(_("The game map could not be loaded: ")) + " (incorrect_map_format_error) " + e.message << std::endl;
+			return DEFEAT;
+		} else {
+			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
+		}
 	} catch(twml_exception& e) {
-		e.show(disp);
+		if (is_unit_test) {
+			std::cerr << std::string("WML Exception: ") + e.user_message << std::endl;
+			std::cerr << std::string("Dev Message: ") + e.dev_message << std::endl;
+			return DEFEAT;
+		} else {
+			e.show(disp);
+		}
 	}
+	return NONE;
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,

@@ -357,14 +357,20 @@ void replay_controller::replay_next_side(){
 
 void replay_controller::process_oos(const std::string& msg) const
 {
-	if (game_config::ignore_replay_errors) return;
+	if (game_config::ignore_replay_errors) {
+		return;
+	}
 
 	std::stringstream message;
 	message << _("The replay is corrupt/out of sync. It might not make much sense to continue. Do you want to save the game?");
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
-	savegame::oos_savegame save(to_config());
-	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+	if (non_interactive()) {
+		throw game::game_error(message.str()); //throw end_level_exception(DEFEAT);
+	} else {
+		savegame::oos_savegame save(to_config());
+		save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+	}
 }
 
 void replay_controller::replay_show_everything(){

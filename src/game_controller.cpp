@@ -498,11 +498,11 @@ int game_controller::unit_test()
 
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_NONE, false,false,false,true);
-		::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);		
-		/*if (!(res == VICTORY || res == NONE)) {
+		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);		
+		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
 			return 4; 
-		}*/
+		}
 		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
 		    video_);*/
 		clear_loaded_game();

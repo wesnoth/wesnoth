@@ -39,7 +39,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& state,
 		bool blindfold_replay = false,
 		bool is_unit_test = false);
 
-void play_replay(display& disp, game_state& state,
+LEVEL_RESULT play_replay(display& disp, game_state& state,
 		const config& game_config, CVideo& video,
 		bool is_unit_test = false);
 
