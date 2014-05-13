@@ -462,7 +462,7 @@ int game_controller::unit_test()
 		load_game_config_for_game(state_.classification());
 
 	try {
-		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config());
+		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), IO_NONE, false, false, false, true);
 		if (!(res == VICTORY || res == NONE)) {
 			return 1;
 		}

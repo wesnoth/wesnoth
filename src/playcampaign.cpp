@@ -377,7 +377,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay, 
-	bool network_game, bool blindfold_replay)
+	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
 	std::string type = gamestate.classification().campaign_type;
 	if(type.empty())
@@ -510,6 +510,10 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		} catch(twml_exception& e) {
 			e.show(disp);
 			return QUIT;
+		}
+
+		if (is_unit_test) {
+			return res;
 		}
 
 		// Save-management options fire on game end.
