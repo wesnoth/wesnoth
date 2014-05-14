@@ -123,7 +123,7 @@ public:
 
 	/// Stores the attributes recognized by [side]. These should be stripped
 	/// from a side's config before using it to create the side's leader.
-	static const char * const attributes[];
+	static const std::set<std::string> attributes;
 
 	void build(const config &cfg, const gamemap &map, int gold = default_team_gold_);
 

@@ -28,6 +28,7 @@
 #include "whiteboard/side_actions.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/assign/list_of.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -47,23 +48,20 @@ const int team::default_team_gold_ = 100;
 
 // Update this list of attributes if you change what is used to define a side
 // (excluding those attributes used to define the side's leader).
-const char * const team::attributes[] = {
-	"ai_config", "color", "controller", "current_player",
-	"fight_on_without_leader", "flag",
-	"flag_icon", "fog", "fog_data", "gold", "hidden", "income",
-	"no_leader", "objectives", "objectives_changed", "persistent", "lost",
-	"recall_cost", "recruit", "save_id", "scroll_to_leader",
-	"share_maps", "share_view", "shroud", "shroud_data", "start_gold",
-	"suppress_end_turn_confirmation",
-	"team_name", "user_team_name", "village_gold", "village_support",
+const std::set<std::string> team::attributes = boost::assign::list_of("ai_config")
+	("color")("controller")("current_player")("fight_on_without_leader")("flag")
+	("flag_icon")("fog")("fog_data")("gold")("hidden")("income")
+	("no_leader")("objectives")("objectives_changed")("persistent")("lost")
+	("recall_cost")("recruit")("save_id")("scroll_to_leader")
+	("share_maps")("share_view")("shroud")("shroud_data")("start_gold")
+	("suppress_end_turn_confirmation")
+	("team_name")("user_team_name")("village_gold")("village_support")
 	// Multiplayer attributes.
-	"action_bonus_count", "allow_changes", "allow_player", "color_lock",
-	"countdown_time", "disallow_observers", "faction",
-	"faction_from_recruit", "faction_name", "gold_lock", "income_lock",
-	"leader", "random_leader", "team_lock", "terrain_liked",
-	"user_description", "default_recruit", "controller_lock", "chose_random",
-	// Terminate the list with NULL.
-	NULL };
+	("action_bonus_count")("allow_changes")("allow_player")("color_lock")
+	("countdown_time")("disallow_observers")("faction")
+	("faction_from_recruit")("faction_name")("gold_lock")("income_lock")
+	("leader")("random_leader")("team_lock")("terrain_liked")
+	("user_description")("default_recruit")("controller_lock")("chose_random");
 
 
 const std::vector<team>& teams_manager::get_teams()

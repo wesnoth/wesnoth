@@ -537,8 +537,8 @@ protected:
 		config & stored = leader_configs_.back();
 
 		// Remove the attributes used to define a side.
-		for ( size_t i = 0; team::attributes[i] != NULL; ++i ) {
-			stored.remove_attribute(team::attributes[i]);
+		BOOST_FOREACH( const std::string & attr , team::attributes) {
+			stored.remove_attribute(attr);
 		}
 
 		// Provide some default values, if not specified.
