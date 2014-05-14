@@ -4176,7 +4176,9 @@ bool LuaKernel::run_filter(char const *name, unit const &u)
 	// Get the user filter by name.
 	if(!luaW_getglobal(L, name, NULL))
 	{
-		chat_message("Lua SUF Error", std::string() + "function " + name + " not found");
+		std::string message = std::string() + "function " + name + " not found";
+		chat_message("Lua SUF Error", message);
+		ERR_LUA << "Lua SUF Error: " << message << std::endl;
 		//we pushed nothing and can safeley return.
 		return false;
 	}
