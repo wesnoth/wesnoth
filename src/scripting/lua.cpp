@@ -92,6 +92,7 @@
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
+#define WRN_LUA LOG_STREAM(warn, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
 static std::vector<config> preload_scripts;
@@ -2655,8 +2656,12 @@ namespace {
 			lua_pushvalue(L, index);
 			lua_pushnumber(L, side);
 			if (luaW_pcall(L, 1, 1, false)) {
-				if(!luaW_toconfig(L, -1, cfg) && game_config::debug) {
-					chat_message("Lua warning", "function returned to wesnoth.synchronize_choice a table which was partially invalid");
+				if(!luaW_toconfig(L, -1, cfg)) {
+					std::string message = "function returned to wesnoth.synchronize_choice a table which was partially invalid";
+					if (game_config::debug) {
+						chat_message("Lua warning", message);
+					}
+					WRN_LUA << message << std::endl;
 				}
 			}
 			return cfg;
