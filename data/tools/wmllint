@@ -2049,6 +2049,49 @@ def hack_syntax(filename, lines):
                     lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons' + lines[i][tilde.end():]
                     print '"%s", line %d: %s -> data/add-ons -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
                           % (filename, i+1, tilde.group(3))
+    # some tags do no longer support default side=1 attribute but may use [filter_side]
+    # with a SSF instead
+    # (since 1.9.5, 1.9.6)
+    side_one_tags_allowing_filter_side = (
+        ("remove_shroud"),
+        ("place_shroud"),
+        ("gold"),
+        ("modify_side"),
+        ("modify_ai")
+        )
+    outside_of_theme_wml = True # theme wml contains a [gold] tag - exclude that case
+    in_side_one_tag = False
+    side_one_tag_needs_side_one = True
+    for i in range(len(lines)):
+        if "no-syntax-rewrite" in lines[i]:
+            break
+        precomment = lines[i].split("#")[0]
+        if outside_of_theme_wml:
+            if "[theme]" in precomment:
+                outside_of_theme_wml = False
+        else:
+            if "[/theme]" in precomment:
+                outside_of_theme_wml = True
+        if outside_of_theme_wml:
+            if not in_side_one_tag:
+                for j in range(len(side_one_tags_allowing_filter_side)):
+                    if "[" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
+                        in_side_one_tag = True
+            else:
+                if side_one_tag_needs_side_one:
+                    if "side=" in precomment:
+                        side_one_tag_needs_side_one = False
+                    if "[filter_side]" in precomment:
+                        side_one_tag_needs_side_one = False
+                for j in range(len(side_one_tags_allowing_filter_side)):
+                    if "[/" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
+                        if side_one_tag_needs_side_one:
+                            if verbose:
+                                print '"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, side_one_tags_allowing_filter_side[j])
+                            #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
+                        in_side_one_tag = False
+                        side_one_tag_needs_side_one = True
+                        break
     # More syntax transformations would go here.
     return lines
 
