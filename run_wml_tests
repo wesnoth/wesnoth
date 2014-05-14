@@ -127,9 +127,9 @@ run_test()
     opts="--validcache --timeout 10000"
   fi
   if [ "$Verbose" -ge 1 ]; then
-    echo "wesnoth -u" $2 $opts "2> error.log"
+    echo "./wesnoth -u" $2 $opts "2> error.log"
   fi
-  wesnoth -u $2 $opts 2> error.log
+  ./wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
     handle_error_log 0
@@ -154,9 +154,9 @@ run_test_unix_timeout()
   fi
   timer1=$((timer+1))
   if [ "$Verbose" -ge 1 ]; then
-    echo "timeout" "--kill-after=$timer1" $timer "wesnoth -u" $2 $opts "2> error.log"
+    echo "timeout" "--kill-after=$timer1" $timer "./wesnoth -u" $2 $opts "2> error.log"
   fi
-  timeout "--kill-after=$timer1" $timer wesnoth -u $2 $opts 2> error.log
+  timeout "--kill-after=$timer1" $timer ./wesnoth -u $2 $opts 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
     handle_error_log 0
