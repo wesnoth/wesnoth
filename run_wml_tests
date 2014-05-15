@@ -66,8 +66,8 @@ check_errs()
   # Argument 1 is the name of the test.
   # Argument 2 is the wesnoth error code for the test. 
   # Argument 3 is the expected error code.
-  if [ "${2}" -eq 134 -a "${3}" -eq 2 -a $UnixTimeout -eq 0 ]; then
-    if [ $Verbose -ge 2 ]; then
+  if [ "${2}" -eq 134 -a "${3}" -eq 2 -a "$UnixTimeout" -eq 0 ]; then
+    if [ "$Verbose" -ge 2 ]; then
       echo "Caught \'terminate called without an active exception\' return code 134"
       echo "This means wesnoth tried to kill the thread but SDL threw an error..."
       echo "(This happens occasionally when running the empty_test with a timeout.)"
@@ -76,26 +76,27 @@ check_errs()
       echo "*However*, review the logs, because it may also mean an assertion failure..."
     fi
     return 0
-  elif [ "${2}" -eq 124 -a "${3}" -eq 2 -a $UnixTimeout -eq 1 ]; then
-    if [ $Verbose -ge 2 ]; then
+  elif [ "${2}" -eq 124 -a "${3}" -eq 2 -a "$UnixTimeout" -eq 1 ]; then
+    if [ "$Verbose" -ge 2 ]; then
       echo "Caught return code 124 from timeout"
       echo "This signal means that the unix timeout utility killed wesnoth with TERM."
       echo "Since we expected timeout, the test passes."
     fi
     return 0
-  elif [ "${2}" -eq 137 -a "${3}" -eq 2 -a $UnixTimeout -eq 1 ]; then
-    if [ $Verbose -ge 2 ]; then
+  elif [ "${2}" -eq 137 -a "${3}" -eq 2 -a "$UnixTimeout" -eq 1 ]; then
+    if [ "$Verbose" -ge 2 ]; then
       echo "Caught return code 137 from timeout"
       echo "This signal means that the unix timeout utility killed wesnoth with KILL."
       echo "Since we expected timeout, the test passes."
     fi
     return 0
-  elif [ "${2}" -ne "${3}" ]; then 
+  elif [ "${2}" -ne "${3}" ]; then
+    echo "${1}" ":" 
     get_code_string ${2}
-    echo -e ${1} ":   \t" ${2} "-" $CodeString
+    printf '%-55s %3d - %s\n' "  Observed result :" "${2}" "$CodeString"
     get_code_string ${3}
-    echo -e "Expected result :\t" ${3} "-" $CodeString
-    if [ -f "error.log" ]; then
+    printf '%-55s %3d - %s\n' "  Expected result :" "${3}" "$CodeString"
+    if [ $Verbose -ge 2 -a -f "error.log" ]; then
       echo ""
       echo "Found error.log:"
       cat error.log
@@ -108,7 +109,7 @@ check_errs()
 handle_error_log()
 {
   if [ -f "error.log" ]; then
-    if [ "$1" -ne 0 ]; then
+    if [ "${1}" -ne 0 ]; then
       if [ -f "errors.log" ]; then
         echo -e "\n--- next unit test ---\n" >> errors.log
         cat error.log >> errors.log
@@ -138,7 +139,7 @@ run_test()
   # Add a timeout
   if [ "$UnixTimeout" -eq 1 ]; then
     timer1=$((timer+1))
-    preopts="timeout --kill-after=$timer1 $timer "
+    preopts+="timeout --kill-after=$timer1 $timer "
   else
     timerms=$((timer*1000))
     opts+="--timeout $timerms "
@@ -147,6 +148,7 @@ run_test()
   if [ "$StrictMode" -eq 1 ]; then
     opts+="--log-strict=warning "
   fi
+  # Assemble command
   command=$preopts
   command+=$binary
   command+=$opts
@@ -158,7 +160,7 @@ run_test()
   fi
   $command 2> error.log
   if check_errs $2 $? $1; then 
-    FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
+    FirstTest=0 #Only start using validcache flag when at least one test has passed without error
     handle_error_log 0
     return 0
   else
@@ -179,12 +181,12 @@ while getopts ":vdusl:h" Option
 do
   case $Option in
     v ) 
-      if [ $Verbose -lt 1 ]; then 
+      if [ "$Verbose" -lt 1 ]; then 
         Verbose=1
       fi
       ;;
     d )
-      if [ $Verbose -lt 2 ]; then 
+      if [ "$Verbose" -lt 2 ]; then 
         Verbose=2
       fi
       ;;
@@ -207,7 +209,7 @@ shift $(($OPTIND - 1))
 
 extra_opts="$*"
 
-if [ $Verbose -ge 2 ]; then
+if [ "$Verbose" -ge 2 ]; then
   if [ "${#extra_opts}" -ge 0 ]; then
     echo "Found additional arguments to wesnoth: " $extra_opts 
   fi
@@ -220,19 +222,19 @@ IFS=$'\n'
 schedule=($(cat $LoadFile)) # array
 IFS=$old_IFS
 
-TESTS=0
-COMMENTS=0
+NumTests=0
+NumComments=0
 
 for line in "${schedule[@]}"
 do
     if [[ "$line" =~ \#.* ]]; then
-      COMMENTS=$((COMMENTS+1))
+      NumComments=$((NumComments+1))
     else
-      TESTS=$((TESTS+1))
+      NumTests=$((NumTests+1))
     fi
 done
 
-echo "Running" $TESTS "test scenarios."
+echo "Running" $NumTests "test scenarios."
 
 if [ -f "errors.log" ]; then
   rm errors.log
@@ -245,12 +247,12 @@ TotalPassed=0
 for line in "${schedule[@]}"
 do
     if [[ "$line" =~ \#.* ]]; then
-      if [ $Verbose -ge 2 ]; then
+      if [ "$Verbose" -ge 2 ]; then
         echo "comment:" $line
       fi
     else
       if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
-        if [ $Verbose -ge 2 ]; then
+        if [ "$Verbose" -ge 2 ]; then
           echo "good"
         fi
         TotalPassed=$((TotalPassed+1))
@@ -260,8 +262,8 @@ do
     fi
 done
 
-if [ $AllPassed -eq 0 ]; then
-  echo "$TotalPassed" "out of" $TESTS "tests were correct."
+if [ "$AllPassed" -eq 0 ]; then
+  echo "$TotalPassed" "out of" "$NumTests" "tests were correct."
   echo "Not all tests gave the correct result."
   echo "Check errors.log for error reports."
   exit 1
