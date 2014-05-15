@@ -4,7 +4,7 @@
 
 usage()
 {
-  echo "Usage:" $0 "[OPTIONS]"
+  echo "Usage:" $0 "[OPTIONS] [EXTRA-ARGS]"
   echo "Executes a series of wml unit test scenarios found in a file."
   echo
   echo -e "Options:"
@@ -27,6 +27,8 @@ usage()
     get_code_string $i
     echo -e "\t" $i "-" $CodeString
   done
+  echo
+  echo "Extra arguments besides these options are saved and passed on to wesnoth."
 }
 
 get_code_string()
@@ -147,7 +149,8 @@ run_test()
   fi
   command=$preopts
   command+=$binary
-  command+=$opts 
+  command+=$opts
+  command+=$extra_opts 
   if [ "$Verbose" -eq 1 ]; then
     echo "$command"
   elif [ "$Verbose" -eq 2 ]; then
@@ -201,6 +204,14 @@ do
   esac
 done
 shift $(($OPTIND - 1))
+
+extra_opts="$*"
+
+if [ $Verbose -ge 2 ]; then
+  if [ "${#extra_opts}" -ge 0 ]; then
+    echo "Found additional arguments to wesnoth: " $extra_opts 
+  fi
+fi
 
 echo "Getting tests from" $LoadFile "..."
 
