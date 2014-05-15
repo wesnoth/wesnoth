@@ -2654,7 +2654,6 @@ if __name__ == '__main__':
             clean = True
         elif switch in ('-d', '--dryrun'):
             dryrun = True
-            verbose = max(1, verbose)
         elif switch in ('-D', '--diffs'):
             diffs = True
         elif switch in ('-f', '--future'):
@@ -2673,6 +2672,8 @@ if __name__ == '__main__':
             dospellcheck = False
         elif switch in ('-K', '--known'):
             inconsistency = True
+    if dryrun:
+        verbose = max(1, verbose)
     if clean and revert:
         sys.stderr.write("wmllint: can't do clean and revert together.\n")
         sys.exit(1)
