@@ -196,6 +196,7 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		("log-info", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'info'. Similar to --log-error.")
 		("log-debug", po::value<std::string>(), "sets the severity level of the specified log domain(s) to 'debug'. Similar to --log-error.")
 		("log-precise", "shows the timestamps in the logfile with more precision")
+		("log-strict", po::value<std::string>(), "sets the strict level of the logger. messages to log domains of this level or more severe generate an in-game exception.")
 		;
 
 	po::options_description multiplayer_opts("Multiplayer options");
@@ -332,6 +333,8 @@ commandline_options::commandline_options ( int argc, char** argv ) :
 		logdomains = vm["logdomains"].as<std::string>();
 	if (vm.count("log-precise"))
 		log_precise_timestamps = true;
+	if (vm.count("log-strict"))
+		parse_log_strictness(vm["log-strict"].as<std::string>());
 	if (vm.count("max-fps"))
 		max_fps = vm["max-fps"].as<int>();
 	if (vm.count("multiplayer"))
@@ -442,6 +445,18 @@ void commandline_options::parse_log_domains_(const std::string &domains_string, 
 			log = std::vector<boost::tuple<int, std::string> >();
 		log->push_back(boost::tuple<int, std::string>(severity,domain));
 	}
+}
+
+void commandline_options::parse_log_strictness (const std::string & severity ) {
+	static lg::logger const *loggers[] = { &lg::err, &lg::warn, &lg::info, &lg::debug };
+	BOOST_FOREACH (const lg::logger * l, loggers ) {
+		if (severity == l->get_name()) {
+			lg::set_strict_severity(*l);
+			return ;
+		}
+	}
+	std::cerr << "Unrecognized argument to --log-strict : " << severity << " . \nDisabling strict mode logging." << std::endl;
+	lg::set_strict_severity(-1);
 }
 
 void commandline_options::parse_resolution_ ( const std::string& resolution_string )

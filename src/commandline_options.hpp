@@ -75,6 +75,8 @@ public:
 	/// Contains parsed arguments of --log-* (e.g. --log-debug).
 	/// Vector of pairs (severity, log domain).
 	boost::optional<std::vector<boost::tuple<int, std::string> > > log;
+	/// Non-empty if --log-strict was given
+	boost::optional<int> log_strict_level;
 	/// Non-empty if --load was given on the command line. Savegame specified to load after start.
 	boost::optional<std::string> load;
 	/// Non-empty if --logdomains was given on the command line. Prints possible logdomains filtered by given string and exits.
@@ -191,6 +193,7 @@ public:
 	bool with_replay;
 private:
 	void parse_log_domains_(const std::string &domains_string, const int severity);
+	void parse_log_strictness (const std::string &severity);
 	void parse_resolution_ (const std::string &resolution_string);
 	/// A helper function splitting vector of strings of format unsigned int:string to vector of tuples (unsigned int,string)
 	std::vector<boost::tuple<unsigned int,std::string> > parse_to_uint_string_tuples_(const std::vector<std::string> &strings, char separator = ':');
