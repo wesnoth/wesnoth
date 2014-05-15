@@ -13,6 +13,8 @@ usage()
   echo -e "\t-d\tDebug mode."
   echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
   echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
+  echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
+  echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
   echo -e "\t-l arg\tLoads list of tests from the given file."
   echo -e "\t  \tBy default, the file is wml_test_schedule."
   echo
@@ -126,6 +128,9 @@ run_test()
   else
     opts="--validcache --timeout 10000"
   fi
+  if [ "$StrictMode" -eq 1 ]; then
+    opts+=" --log-strict=warning"
+  fi
   if [ "$Verbose" -ge 1 ]; then
     echo "./wesnoth -u" $2 $opts "2> error.log"
   fi
@@ -152,6 +157,9 @@ run_test_unix_timeout()
     opts="--validcache"
     timer=10
   fi
+  if [ "$StrictMode" -eq 1 ]; then
+    opts+=" --log-strict=warning"
+  fi
   timer1=$((timer+1))
   if [ "$Verbose" -ge 1 ]; then
     echo "timeout" "--kill-after=$timer1" $timer "./wesnoth -u" $2 $opts "2> error.log"
@@ -173,8 +181,9 @@ run_test_unix_timeout()
 Verbose=0
 UnixTimeout=0
 LoadFile=wml_test_schedule
+StrictMode=1
 
-while getopts ":vduh" Option
+while getopts ":vdush" Option
 do
   case $Option in
     v ) 
@@ -189,6 +198,9 @@ do
       ;;
     u )
       UnixTimeout=1
+      ;;
+    s )
+      StrictMode=0
       ;;
     l )
       LoadFile=$OPTARG
