@@ -142,6 +142,10 @@ Version 1.13.0-dev:
      executes the corresponding action. It is replay safe and triggers WML 
      events as appropriate.
    * Reallow selection of another unit on same side without deselect first
+   * Add "strict mode". Using --log-strict=[severity] causes wesnoth to throw
+     a game_error exception when anything is written to a log as severe as 
+     that. For example --log-strict=warning causes both warnings and errors
+     to generate runtime exceptions. This is intended for unit tests.
 
 Version 1.11.11:
  * Add-ons server:
