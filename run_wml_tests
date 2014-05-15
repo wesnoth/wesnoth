@@ -123,48 +123,37 @@ run_test()
 {
   # Argument 1 is the expected error code
   # Argument 2 is the name of the test scenario
+  preopts=""
+  binary="./wesnoth "
+  opts="-u $2 "
+  # Use validcache on tests that aren't the first test.
   if [ "$FirstTest" -eq 1 ]; then
-    opts="--timeout 20000"
-  else
-    opts="--validcache --timeout 10000"
-  fi
-  if [ "$StrictMode" -eq 1 ]; then
-    opts+=" --log-strict=warning"
-  fi
-  if [ "$Verbose" -ge 1 ]; then
-    echo "./wesnoth -u" $2 $opts "2> error.log"
-  fi
-  ./wesnoth -u $2 $opts 2> error.log
-  if check_errs $2 $? $1; then 
-    FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
-    handle_error_log 0
-    return 0
-  else
-    handle_error_log 1
-    return 1
-  fi
-}
-
-#This doesn't use the wesnoth timeout mechanism, and uses the unix core "timeout" function instead
-run_test_unix_timeout()
-{
-  # Argument 1 is the expected error code
-  # Argument 2 is the name of the test scenario
-  if [ "$FirstTest" -eq 1 ]; then
-    opts=""
     timer=20
   else
-    opts="--validcache"
     timer=10
+    opts+="--validcache "
   fi
+  # Add a timeout
+  if [ "$UnixTimeout" -eq 1 ]; then
+    timer1=$((timer+1))
+    preopts="timeout --kill-after=$timer1 $timer "
+  else
+    timerms=$((timer*1000))
+    opts+="--timeout $timerms "
+  fi
+  # If running strict, then set strict level to "warning"
   if [ "$StrictMode" -eq 1 ]; then
-    opts+=" --log-strict=warning"
+    opts+="--log-strict=warning "
   fi
-  timer1=$((timer+1))
-  if [ "$Verbose" -ge 1 ]; then
-    echo "timeout" "--kill-after=$timer1" $timer "./wesnoth -u" $2 $opts "2> error.log"
+  command=$preopts
+  command+=$binary
+  command+=$opts 
+  if [ "$Verbose" -eq 1 ]; then
+    echo "$command"
+  elif [ "$Verbose" -eq 2 ]; then
+    echo "$command" "2> error.log"
   fi
-  timeout "--kill-after=$timer1" $timer ./wesnoth -u $2 $opts 2> error.log
+  $command 2> error.log
   if check_errs $2 $? $1; then 
     FirstTest=0 #Don't start using validcache flag until at least one test has passed without error
     handle_error_log 0
@@ -249,24 +238,13 @@ do
         echo "comment:" $line
       fi
     else
-      if [ $UnixTimeout -eq 1 ]; then 
-        if run_test_unix_timeout $line; then 
-          if [ $Verbose -ge 2 ]; then
-            echo "good"
-          fi
-          TotalPassed=$((TotalPassed+1))
-        else
-          AllPassed=0
+      if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
+        if [ $Verbose -ge 2 ]; then
+          echo "good"
         fi
+        TotalPassed=$((TotalPassed+1))
       else
-        if run_test $line; then #note: don't put run_test inside a pipe implicitly by using ! or something, this will cause the FirstTest variable not to work properly
-          if [ $Verbose -ge 2 ]; then
-            echo "good"
-          fi
-          TotalPassed=$((TotalPassed+1))
-        else
-          AllPassed=0
-        fi
+        AllPassed=0
       fi
     fi
 done
