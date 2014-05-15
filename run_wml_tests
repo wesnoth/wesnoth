@@ -10,11 +10,13 @@ usage()
   echo -e "Options:"
   echo -e "\t-h\tShows this help."
   echo -e "\t-v\tVerbose mode."
-  echo -e "\t-d\tDebug mode."
+  echo -e "\t-w\tVery verbose mode. (Debug script.)"
   echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
   echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
   echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
   echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
+  echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
+  echo -e "\t-p arg\tPath to wesnoth binary. By default assume it is with this script."
   echo -e "\t-l arg\tLoads list of tests from the given file."
   echo -e "\t  \tBy default, the file is wml_test_schedule."
   echo
@@ -96,7 +98,7 @@ check_errs()
     printf '%-55s %3d - %s\n' "  Observed result :" "${2}" "$CodeString"
     get_code_string ${3}
     printf '%-55s %3d - %s\n' "  Expected result :" "${3}" "$CodeString"
-    if [ $Verbose -ge 2 -a -f "error.log" ]; then
+    if [ "$Verbose" -ge 2 -a -f "error.log" ]; then
       echo ""
       echo "Found error.log:"
       cat error.log
@@ -127,8 +129,15 @@ run_test()
   # Argument 1 is the expected error code
   # Argument 2 is the name of the test scenario
   preopts=""
-  binary="./wesnoth "
+  binary="$BinPath"
   opts="-u $2 "
+
+  if [ "$DebugMode" -eq 1 ]; then
+    binary+="wesnoth-debug "
+  else
+    binary+="wesnoth "
+  fi
+  
   # Use validcache on tests that aren't the first test.
   if [ "$FirstTest" -eq 1 ]; then
     timer=20
@@ -149,10 +158,10 @@ run_test()
     opts+="--log-strict=warning "
   fi
   # Assemble command
-  command=$preopts
-  command+=$binary
-  command+=$opts
-  command+=$extra_opts 
+  command="$preopts"
+  command+="$binary"
+  command+="$opts"
+  command+="$extra_opts" 
   if [ "$Verbose" -eq 1 ]; then
     echo "$command"
   elif [ "$Verbose" -eq 2 ]; then
@@ -174,18 +183,24 @@ run_test()
 
 Verbose=0
 UnixTimeout=0
-LoadFile=wml_test_schedule
+LoadFile="wml_test_schedule"
+BinPath="./"
 StrictMode=1
+DebugMode=0
 
-while getopts ":vdusl:h" Option
+while getopts ":hvwusdp:l:" Option
 do
   case $Option in
+    h )
+      usage
+      exit 0;
+      ;;
     v ) 
       if [ "$Verbose" -lt 1 ]; then 
         Verbose=1
       fi
       ;;
-    d )
+    w )
       if [ "$Verbose" -lt 2 ]; then 
         Verbose=2
       fi
@@ -196,12 +211,14 @@ do
     s )
       StrictMode=0
       ;;
+    d )
+      DebugMode=1
+      ;;
+    p )
+      BinPath=$OPTARG
+      ;;
     l )
       LoadFile=$OPTARG
-      ;;
-    h )
-      usage
-      exit 0;
       ;;
   esac
 done
