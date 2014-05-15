@@ -183,7 +183,7 @@ UnixTimeout=0
 LoadFile=wml_test_schedule
 StrictMode=1
 
-while getopts ":vdush" Option
+while getopts ":vdusl:h" Option
 do
   case $Option in
     v ) 
