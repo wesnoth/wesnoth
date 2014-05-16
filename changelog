@@ -26,6 +26,7 @@ Version 1.10.7+dev:
      color codes as the start of a comment.
    * Fixed: Compilation with CLang 3.2 and libc++.
    * Fixed bug #20876: A segfault in cut_surface.
+   * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
 
 Version 1.10.7:
  * Add-ons server:
