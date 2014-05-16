@@ -137,8 +137,8 @@ Unit packs, terrain packs, music packs, etc. Usually a (perhaps optional) depend
             ) % (icon, imgurl))
         described = v("description", "(no description)")
         if described != "(no description)":
-            described = re.sub(r'(?<![">])http://[\w./?&=%~-]+', r'<a href="\g<0>">\g<0></a>', described)
-            described = re.sub(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org[\w./?&=%~-]+', r'<a href="http://\g<0>">\g<0>"</a>"', described)
+            described = re.sub(r'(?<![">])http://([\w/=%~-]|[.?&]\w)+', r'<a href="\g<0>">\g<0></a>', described)
+            described = re.sub(r'(?<![\w>"/])(forums?|r|R|wiki)\.wesnoth\.org([\w/=%~-]|[.?&]\w)*', r'<a href="http://\g<0>">\g<0></a>', described)
         w('<div class="desc"><b>%s</b><pre>%s</pre></div></td>' % (
             name, described))
         w("<td><b>%s</b><br/>" % name)
