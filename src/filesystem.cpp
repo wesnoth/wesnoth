@@ -1113,6 +1113,8 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 {
 	DBG_FS << "Looking for '" << filename << "'.\n";
 
+	assert(game_config::path.empty() == false);
+
 	std::string result;
 
 	if (filename.empty()) {
