@@ -225,10 +225,13 @@ void play_controller::init(CVideo& video){
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
 	}
-
-	BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
 	{
-		gamedata_.build_team_stage_two(tb_ptr);
+		//sync traits of start units
+		random_new::set_random_determinstic deterministic(gamedata_.rng());
+		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
+		{
+			gamedata_.build_team_stage_two(tb_ptr);
+		}
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
