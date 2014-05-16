@@ -146,6 +146,7 @@ Version 1.13.0-dev:
      a game_error exception when anything is written to a log as severe as 
      that. For example --log-strict=warning causes both warnings and errors
      to generate runtime exceptions. This is intended for unit tests.
+   * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
 
 Version 1.11.11:
  * Add-ons server:
