@@ -656,7 +656,7 @@ def validate_on_pop(tagstack, closer, filename, lineno):
         if attributes.get("unit_gender") is not None:
             print '"%s", line %d: use [effect][filter]gender= instead of [effect]unit_gender=' % \
                 (filename, lineno)
-    if closer in ["set_recruit", "allow_recruit", "disallow_recruit", "store_gold"] and "side" not in attributes:
+    if missingside and closer in ["set_recruit", "allow_recruit", "disallow_recruit", "store_gold"] and "side" not in attributes:
         print '"%s", line %d: %s without "side" attribute is now applied to all sides' % \
               (filename, lineno, closer)
 
@@ -2049,46 +2049,47 @@ def hack_syntax(filename, lines):
     # some tags do no longer support default side=1 attribute but may use [filter_side]
     # with a SSF instead
     # (since 1.9.5, 1.9.6)
-    side_one_tags_allowing_filter_side = (
-        ("remove_shroud"),
-        ("place_shroud"),
-        ("gold"),
-        ("modify_side"),
-        ("modify_ai")
-        )
-    outside_of_theme_wml = True # theme wml contains a [gold] tag - exclude that case
-    in_side_one_tag = False
-    side_one_tag_needs_side_one = True
-    for i in range(len(lines)):
-        if "no-syntax-rewrite" in lines[i]:
-            break
-        precomment = lines[i].split("#")[0]
-        if outside_of_theme_wml:
-            if "[theme]" in precomment:
-                outside_of_theme_wml = False
-        else:
-            if "[/theme]" in precomment:
-                outside_of_theme_wml = True
-        if outside_of_theme_wml:
-            if not in_side_one_tag:
-                for j in range(len(side_one_tags_allowing_filter_side)):
-                    if "[" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
-                        in_side_one_tag = True
+    if missingside:
+        side_one_tags_allowing_filter_side = (
+            ("remove_shroud"),
+            ("place_shroud"),
+            ("gold"),
+            ("modify_side"),
+            ("modify_ai")
+            )
+        outside_of_theme_wml = True # theme wml contains a [gold] tag - exclude that case
+        in_side_one_tag = False
+        side_one_tag_needs_side_one = True
+        for i in range(len(lines)):
+            if "no-syntax-rewrite" in lines[i]:
+                break
+            precomment = lines[i].split("#")[0]
+            if outside_of_theme_wml:
+                if "[theme]" in precomment:
+                    outside_of_theme_wml = False
             else:
-                if side_one_tag_needs_side_one:
-                    if "side=" in precomment:
-                        side_one_tag_needs_side_one = False
-                    if "[filter_side]" in precomment:
-                        side_one_tag_needs_side_one = False
-                for j in range(len(side_one_tags_allowing_filter_side)):
-                    if "[/" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
-                        if side_one_tag_needs_side_one:
-                            if verbose:
-                                print '"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, side_one_tags_allowing_filter_side[j])
-                            #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
-                        in_side_one_tag = False
-                        side_one_tag_needs_side_one = True
-                        break
+                if "[/theme]" in precomment:
+                    outside_of_theme_wml = True
+            if outside_of_theme_wml:
+                if not in_side_one_tag:
+                    for j in range(len(side_one_tags_allowing_filter_side)):
+                        if "[" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
+                            in_side_one_tag = True
+                else:
+                    if side_one_tag_needs_side_one:
+                        if "side=" in precomment:
+                            side_one_tag_needs_side_one = False
+                        if "[filter_side]" in precomment:
+                            side_one_tag_needs_side_one = False
+                    for j in range(len(side_one_tags_allowing_filter_side)):
+                        if "[/" + side_one_tags_allowing_filter_side[j] + "]" in precomment:
+                            if side_one_tag_needs_side_one:
+                                if verbose:
+                                    print '"%s", line %d: [%s] without "side" attribute is now applied to all sides'%(filename, i+1, side_one_tags_allowing_filter_side[j])
+                                #lines.insert(i, leader(precomment) + baseindent + "side=1\n")
+                            in_side_one_tag = False
+                            side_one_tag_needs_side_one = True
+                            break
     # More syntax transformations would go here.
     return lines
 
@@ -2646,6 +2647,8 @@ Usage: wmllint [options] [dir]
     -D, --diff                 Display diffs between converted and unconverted
                                files.
     -r, --revert               Revert the conversion from the -bak files.
+    -m, --missing              Don't warn about tags without side= keys now
+                               applying to all sides.
     -s, --stripcr              Convert DOS-style CR/LF to Unix-style LF.
     -p, --progress             Names each file before processing (like -v -v).
     -f, --future               Enable experimental WML conversions.
@@ -2660,12 +2663,13 @@ file itself.  See also: http://wiki.wesnoth.org/Maintenance_tools.
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnprsvKSZ", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhmnprsvKSZ", [
             "clean",
             "diffs",
             "dryrun",
             "future",
             "help",
+            "missing",
             "progress",
             "revert",
             "stripcr",
@@ -2682,6 +2686,7 @@ if __name__ == '__main__':
     diffs = False
     dryrun = False
     future = False
+    missingside = True
     revert = False
     stringfreeze = False
     stripcr = False
@@ -2701,6 +2706,8 @@ if __name__ == '__main__':
             diffs = True
         elif switch in ('-f', '--future'):
             future = True
+        elif switch in ('-m', '--missing'):
+            missingside = False
         elif switch in ('-p', '--progress'):
             progress = True
         elif switch in ('-r', '--revert'):
