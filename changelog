@@ -147,6 +147,8 @@ Version 1.13.0-dev:
      that. For example --log-strict=warning causes both warnings and errors
      to generate runtime exceptions. This is intended for unit tests.
    * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
+   * Fix bug #21867: team flag colors not refreshed after making use of
+     [modify_side] color= unless a new flag set is also provided.
 
 Version 1.11.11:
  * Add-ons server:
