@@ -270,7 +270,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	}
 	bool skip_sighted = false;
 	bool skip_ally_sighted = false;
-	if(child["skip_sighed"] == "all")
+	if(child["skip_sighted"] == "all")
 	{
 		skip_sighted = true;
 	}
