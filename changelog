@@ -6,6 +6,8 @@ Version 1.11.14+dev:
    * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
    * Fix bug #21867: team flag colors not refreshed after making use of
      [modify_side] color= unless a new flag set is also provided.
+   * Fix a bug where in movement records, "skip_sighted" was sometimes
+     spelled as "skip_sighed".
 
 Version 1.11.14:
  * Campaigns:
