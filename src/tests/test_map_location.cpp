@@ -48,7 +48,11 @@ static void characterization_distance_direction (const std::vector<map_location>
 			//TODO: Investigate why this is not a valid assertion.
 			//BOOST_CHECK_EQUAL( map_location::get_opposite_dir(expected_dir), b.get_relative_dir(a) );
 			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
-			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
+			map_location temp1 = a;
+			temp1.vector_difference_assign(b);
+			map_location temp2 = b;
+			temp2.vector_difference_assign(a);
+			BOOST_CHECK_EQUAL( temp1, temp2.vector_negation());
 			BOOST_CHECK_EQUAL( a, a.vector_negation().vector_negation());
 #endif
 		}
