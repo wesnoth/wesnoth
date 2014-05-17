@@ -1254,6 +1254,7 @@ if(ENABLE_TESTS)
 		tests/test_image_modifications.cpp
 		tests/test_lexical_cast.cpp
 		tests/test_network_worker.cpp
+		tests/test_map_location.cpp
 		tests/test_mp_connect.cpp
 		tests/test_team.cpp
 		tests/test_unit_map.cpp
