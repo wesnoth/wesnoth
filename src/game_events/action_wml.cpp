@@ -2247,8 +2247,15 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
-	soundsource::sourcespec spec(cfg.get_parsed_config());
-	resources::soundsources->add(spec);
+	config parsed = cfg.get_parsed_config();
+	try {
+		soundsource::sourcespec spec(parsed);
+		resources::soundsources->add(spec);
+	} catch (bad_lexical_cast &) {
+		ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
+		ERR_NG << "sound_source config was: " << parsed.debug() << std::endl;
+		ERR_NG << "Skipping this sound source..." << std::endl;
+	}
 }
 
 /// Store time of day config in a WML variable. This is useful for those who

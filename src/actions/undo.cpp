@@ -236,12 +236,13 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 	// constructors will parse the "unit" child config, while this function
 	// parses everything else.
 
-	if ( str == "move" )
+	if ( str == "move" ) {
 		res = new move_action(cfg.child("unit", tag), cfg,
 		                       cfg["starting_moves"],
 		                       cfg["time_bonus"],
 		                       cfg["village_owner"],
 		                       map_location::parse_direction(cfg["starting_direction"]));
+	}
 
 	if ( str == "recruit" ) {
 		// Validate the unit type.
@@ -532,16 +533,30 @@ void undo_list::read(const config & cfg)
 
 	// Build the undo stack.
 	BOOST_FOREACH( const config & child, cfg.child_range("undo") ) {
-		undo_action * action = undo_action::create(child, "[undo]");
-		if ( action )
-			undos_.push_back(action);
+		try {
+			undo_action * action = undo_action::create(child, "[undo]");
+			if ( action ) {
+				undos_.push_back(action);
+			}
+		} catch (bad_lexical_cast &) {
+			ERR_NG << "Error when parsing undo list from config: bad lexical cast." << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this undo action..." << std::endl;
+		}
 	}
 
 	// Build the redo stack.
 	BOOST_FOREACH( const config & child, cfg.child_range("redo") ) {
-		undo_action * action = undo_action::create(child, "[redo]");
-		if ( action )
-			redos_.push_back(action);
+		try {
+			undo_action * action = undo_action::create(child, "[redo]");
+			if ( action ) {
+				redos_.push_back(action);
+			}
+		} catch (bad_lexical_cast &) {
+			ERR_NG << "Error when parsing redo list from config: bad lexical cast." << std::endl;
+			ERR_NG << "config was: " << child.debug() << std::endl;
+			ERR_NG << "Skipping this redo action..." << std::endl;
+		}
 	}
 }
 
