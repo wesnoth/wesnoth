@@ -16,19 +16,19 @@
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "ai/configuration.hpp"
-#include "builder.hpp"
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/wml_error.hpp"
+#include "hotkey/hotkey_item.hpp"
+#include "hotkey/hotkey_command.hpp"
 #include "language.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "preferences.hpp"
 #include "resources.hpp"
 #include "scripting/lua.hpp"
-#include "hotkey/hotkey_item.hpp"
-#include "hotkey/hotkey_command.hpp"
+#include "terrain_builder.hpp"
 
 #include <boost/foreach.hpp>
 

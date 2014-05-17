@@ -17,8 +17,8 @@
  * Definitions for the terrain builder.
  */
 
-#ifndef BUILDER_H_INCLUDED
-#define BUILDER_H_INCLUDED
+#ifndef TERRAIN_BUILDER_H_INCLUDED
+#define TERRAIN_BUILDER_H_INCLUDED
 
 #include "animated.hpp"
 #include "map_location.hpp"

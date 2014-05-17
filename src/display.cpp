@@ -17,7 +17,6 @@
  * Routines to set up the display, scroll and zoom the map.
  */
 
-#include "builder.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "game_preferences.hpp"
@@ -30,6 +29,7 @@
 #include "map_label.hpp"
 #include "minimap.hpp"
 #include "reports.hpp"
+#include "terrain_builder.hpp"
 #include "text.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
