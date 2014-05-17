@@ -250,17 +250,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		return false;
 	}
 
-	std::vector<map_location> steps;// = parse_location_range(x,y);
+	std::vector<map_location> steps;
 
-        for (unsigned i = 0; i < xvals.size(); ++i) {
-		try {
-			int xi = lexical_cast<int> (xvals[i]);
-			int yi = lexical_cast<int> (yvals[i]);
-			steps.push_back(map_location(xi-1, yi-1));
-		} catch (bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to an integer:" << "\n x = " << x << "\n y = " << y << std::endl;
-			return false;
-		}
+	try {
+		read_locations(child,steps);
+	} catch (bad_lexical_cast &) {
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to an integer:" << "\n x = " << x << "\n y = " << y << std::endl;
+		return false;
 	}
 
 	if(steps.empty()) 
