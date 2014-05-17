@@ -767,7 +767,7 @@ class MainFrame(Frame):
                                 image=ICONS['exit'],
                                 compound=LEFT,
                                 command=parent.destroy)
-        self.exit_button.pack(side=LEFT,
+        self.exit_button.pack(side=RIGHT,
                               padx=5,
                               pady=5)
         self.dir_variable=StringVar()
