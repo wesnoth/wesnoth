@@ -1013,8 +1013,9 @@ Part of The Battle for Wesnoth project and released under the GNU GPL v2 license
 
 Icons are taken from the Tango project, and are released in the Public Domain""")
 
+root=Tk()
+
 if is_wesnoth_tools_path(APP_DIR):
-    root=Tk()
     # a dictionary with all the icons
     # they're saved in GIF format (the only one supported by Tkinter)
     # and then encoded in base64
@@ -1219,5 +1220,6 @@ BqseHx64ArqXErMAHiDBpQEfz9AAH9LPWT8IR9kCCT9BADs=''')
     root.mainloop()
     sys.exit(0)
 else:
+    root.withdraw() # avoid showing a blank Tk window
     showerror("Error","This application must be placed into the wesnoth/data/tools directory")
     sys.exit(1)
