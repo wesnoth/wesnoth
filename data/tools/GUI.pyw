@@ -229,9 +229,9 @@ class SelectDirectory(LabelFrame):
         """A subclass of LabelFrame sporting a readonly Entry and a Button with a folder icon.
 It comes complete with a context menu and a directory selection screen"""
         if sys.version_info.major>=3:
-            super().__init__(parent,text="Select a directory",**kwargs)
+            super().__init__(parent,text="Directory",**kwargs)
         else:
-            LabelFrame.__init__(self,parent,text="Select a directory",**kwargs)
+            LabelFrame.__init__(self,parent,text="Directory",**kwargs)
         self.textvariable=textvariable
         self.dir_entry=EntryContext(self,
                                     width=40,
@@ -796,7 +796,7 @@ class MainFrame(Frame):
                           text="wmlindent",
                           sticky=N+E+S+W)
         self.output_frame=LabelFrame(self,
-                                     text="Maintenance tools output")
+                                     text="Output")
         self.output_frame.grid(row=3,
                                column=0,
                                sticky=N+E+S+W)
