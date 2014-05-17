@@ -346,7 +346,7 @@ class WmllintTab(Frame):
                                   sticky=N+E+S+W)
         self.verbosity_variable=IntVar(0)
         self.radio_v0=Radiobutton(self.verbosity_frame,
-                                  text="Normal",
+                                  text="Terse",
                                   variable=self.verbosity_variable,
                                   value=0)
         self.radio_v0.grid(row=0,
