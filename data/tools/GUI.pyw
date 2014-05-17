@@ -295,7 +295,7 @@ class WmllintTab(Frame):
             Frame.__init__(self,parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
-                                   text="Select wmllint mode")
+                                   text="wmllint mode")
         self.mode_frame.grid(row=0,
                              column=0,
                              sticky=N+E+S+W)
@@ -378,7 +378,7 @@ class WmllintTab(Frame):
                            sticky=W,
                            padx=10)
         self.options_frame=LabelFrame(self,
-                                      text="Set wmllint options")
+                                      text="wmllint options")
         self.options_frame.grid(row=0,
                                 column=2,
                                 sticky=N+E+S+W)
@@ -441,7 +441,7 @@ class WmlscopeTab(Frame):
         else:
             Frame.__init__(self,parent)
         self.options_frame=LabelFrame(self,
-                                      text="Set wmlscope options")
+                                      text="wmlscope options")
         self.options_frame.grid(row=0,
                                 column=0,
                                 sticky=N+E+S+W)
@@ -647,7 +647,7 @@ class WmlindentTab(Frame):
             Frame.__init__(self,parent)
         self.mode_variable=IntVar()
         self.mode_frame=LabelFrame(self,
-                                   text="Select wmlindent mode")
+                                   text="wmlindent mode")
         self.mode_frame.grid(row=0,
                              column=0,
                              sticky=N+E+S+W)
@@ -668,7 +668,7 @@ class WmlindentTab(Frame):
                                sticky=W,
                                padx=10)
         self.options_frame=LabelFrame(self,
-                                      text="Set wmlindent options")
+                                      text="wmlindent options")
         self.options_frame.grid(row=0,
                                 column=1,
                                 sticky=N+E+S+W)
