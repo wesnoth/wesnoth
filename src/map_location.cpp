@@ -173,7 +173,7 @@ map_location map_location::vector_sum(const map_location& a) const
 
 map_location& map_location::vector_sum_assign(const map_location &a)
 {
-	y += (x & 1) * (a.x & 1); //add one if both x coords are odd
+	y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
 	x += a.x;
 	y += a.y;
 	return *this;
