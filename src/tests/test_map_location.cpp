@@ -45,7 +45,7 @@ static void characterization_distance_direction (const std::vector<map_location>
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(a,b) );
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(b,a) );
 			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b) );			
-			//TODO: Investigate why this is not a valid assertion.
+			//Note: This is not a valid assertion. get_relative_dir has much symmetry but not radial.
 			//BOOST_CHECK_EQUAL( map_location::get_opposite_dir(expected_dir), b.get_relative_dir(a) );
 			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
 			map_location temp1 = a;
@@ -81,7 +81,7 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 
 	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
 (std::make_pair(6,	"s"))
-(std::make_pair(6,	"n"))
+(std::make_pair(6,	"nw"))
 (std::make_pair(12,	"n"))
 (std::make_pair(16,	"s"))
 (std::make_pair(9,	"n"))
@@ -105,8 +105,6 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 	std::vector<map_location::DIRECTION> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
-
-	//ans2 = map_location::parse_directions("se,s,n,n,s,n,ne,se,nw,nw,s,n,ne,n,n,se,n,ne,n,s,n,se,s,se,se,n,ne,se");
 
 	characterization_distance_direction(locs, ans2, ans1);
 }
