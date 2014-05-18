@@ -1435,14 +1435,6 @@ static int intf_set_village_owner(lua_State *L)
 	return 0;
 }
 
-/**
- * - Ret 1: bool wether is in sycned context.
- */
-static int intf_is_synced(lua_State *L)
-{
-	lua_pushboolean(L, synced_context::get_synced_state() == synced_context::SYNCED);
-	return 1;
-}
 
 /**
  * Returns the map size.
@@ -1588,6 +1580,30 @@ static int impl_game_config_set(lua_State *L)
 }
 
 /**
+	converts synced_context::get_synced_state() to a string.
+*/
+static std::string synced_state()
+{
+	//maybe return "initial" for game_data::INITIAL? 
+	if(resources::gamedata->phase() == game_data::PRELOAD || resources::gamedata->phase() == game_data::INITIAL)
+	{
+		return "preload";
+	}
+	switch(synced_context::get_synced_state())
+	{
+	case synced_context::LOCAL_CHOICE:
+		return "local_choice";
+	case synced_context::SYNCED:
+		return "synced";
+	case synced_context::UNSYNCED:
+		return "unsynced";
+	default:
+		throw game::game_error("Found corrupt synced_context::synced_state");
+	}
+}
+
+
+/**
  * Gets some data about current point of game (__index metamethod).
  * - Arg 1: userdata (ignored).
  * - Arg 2: string containing the name of the property.
@@ -1600,6 +1616,7 @@ static int impl_current_get(lua_State *L)
 	// Find the corresponding attribute.
 	return_int_attrib("side", resources::controller->current_side());
 	return_int_attrib("turn", resources::controller->turn());
+	return_string_attrib("synced_state", synced_state());
 
 	if (strcmp(m, "event_context") == 0)
 	{
@@ -3676,7 +3693,6 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "have_file",                &intf_have_file                },
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
-		{ "is_synced",                &intf_is_synced                },
 		{ "lock_view",                &intf_lock_view                },
 		{ "match_location",           &intf_match_location           },
 		{ "match_side",               &intf_match_side               },
