@@ -111,6 +111,56 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 	characterization_distance_direction(locs, ans2, ans1);
 }
 
+static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::DIRECTION d)
+{
+	p.first = p.first.get_direction(d);
+	p.second = p.second.get_direction(map_location::get_opposite_dir(d));
+	return p;
+}
+
+BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
+{
+	map_location::DIRECTION n = map_location::NORTH;
+	map_location::DIRECTION ne = map_location::NORTH_EAST;
+	map_location::DIRECTION nw = map_location::NORTH_WEST;
+	map_location::DIRECTION s = map_location::SOUTH;
+	map_location::DIRECTION se = map_location::SOUTH_EAST;
+	map_location::DIRECTION sw = map_location::SOUTH_WEST;
+
+	map_location z(0,0);
+
+	std::pair<map_location, map_location> p(z,z);
+
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, ne);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, nw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, s);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, nw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, se);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+
+}
+
+
 static std::string dir_to_terrain (const map_location::DIRECTION dir) 
 {
 	switch(dir) {
