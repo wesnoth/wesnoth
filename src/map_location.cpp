@@ -438,6 +438,11 @@ void write_location_range(const std::set<map_location>& locs, config& cfg)
 	cfg["y"] = y.str();
 }
 
+map_location read_locations_helper(const std::string & xi, const std::string & yi) 
+{
+	return map_location(lexical_cast<int>(xi)-1, lexical_cast<int>(yi)-1);
+}
+
 void read_locations(const config& cfg, std::vector<map_location>& locs)
 {
 	const std::vector<std::string> xvals = utils::split(cfg["x"]);
@@ -447,12 +452,7 @@ void read_locations(const config& cfg, std::vector<map_location>& locs)
 		throw bad_lexical_cast();
 	}
 
-	for (unsigned i = 0; i < xvals.size(); ++i)
-	{
-		int x = lexical_cast<int>(xvals[i])-1;
-		int y = lexical_cast<int>(yvals[i])-1;
-		locs.push_back(map_location(x,y));
-	}
+	std::transform(xvals.begin(), xvals.end(), yvals.begin(), std::back_inserter(locs), &read_locations_helper);
 }
 
 void write_locations(const std::vector<map_location>& locs, config& cfg)
