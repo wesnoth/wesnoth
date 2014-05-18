@@ -3368,9 +3368,10 @@ void show_help(display &disp, const std::string& show_topic, int xloc, int yloc)
  *
  * If show_topic is the empty string, the default topic will be shown.
  */
-void show_unit_help(display &disp, const std::string& show_topic, bool hidden, int xloc, int yloc)
+void show_unit_help(display &disp, const std::string& show_topic, bool has_variations, bool hidden, int xloc, int yloc)
 {
-	show_help(disp, toplevel, hidden_symbol(hidden) + unit_prefix + show_topic, xloc, yloc);
+	show_help(disp, toplevel,
+			  hidden_symbol(hidden) + (has_variations ? ".." : "") + unit_prefix + show_topic, xloc, yloc);
 }
 
 /**
