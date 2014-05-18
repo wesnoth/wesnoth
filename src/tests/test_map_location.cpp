@@ -160,6 +160,45 @@ BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
 
 }
 
+static void reality_check_get_direction_helper(const map_location & loc, const map_location::DIRECTION d)
+{
+	map_location z(0,0);
+	map_location lz(z.get_direction(d));
+
+	map_location temp(loc.vector_sum(lz));
+	BOOST_CHECK_EQUAL(temp, loc.get_direction(d));
+	BOOST_CHECK(tiles_adjacent(loc,temp));
+	BOOST_CHECK(tiles_adjacent(temp,loc));
+	BOOST_CHECK_EQUAL(distance_between(loc,temp), 1);
+}
+
+BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
+{
+	map_location::DIRECTION n = map_location::NORTH;
+	map_location::DIRECTION ne = map_location::NORTH_EAST;
+	map_location::DIRECTION nw = map_location::NORTH_WEST;
+	map_location::DIRECTION s = map_location::SOUTH;
+	map_location::DIRECTION se = map_location::SOUTH_EAST;
+	map_location::DIRECTION sw = map_location::SOUTH_WEST;
+
+	map_location a(3,4);
+	map_location b(6,5);
+
+	reality_check_get_direction_helper(a,n);
+	reality_check_get_direction_helper(a,nw);
+	reality_check_get_direction_helper(a,ne);
+	reality_check_get_direction_helper(a,s);
+	reality_check_get_direction_helper(a,sw);
+	reality_check_get_direction_helper(a,se);
+
+	reality_check_get_direction_helper(b,n);
+	reality_check_get_direction_helper(b,nw);
+	reality_check_get_direction_helper(b,ne);
+	reality_check_get_direction_helper(b,s);
+	reality_check_get_direction_helper(b,sw);
+	reality_check_get_direction_helper(b,se);
+}
+
 
 static std::string dir_to_terrain (const map_location::DIRECTION dir) 
 {
