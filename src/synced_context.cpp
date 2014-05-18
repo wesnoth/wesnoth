@@ -90,7 +90,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 		}
 		else
 		{
-			return it->second(data, use_undo, show, error_handler);
+			return it->second(data, /*use_undo*/ false, show, error_handler);
 		}
 	}
 	default:
