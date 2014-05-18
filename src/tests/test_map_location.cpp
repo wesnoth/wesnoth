@@ -109,4 +109,137 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 	characterization_distance_direction(locs, ans2, ans1);
 }
 
+static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::DIRECTION d)
+{
+	p.first = p.first.get_direction(d);
+	p.second = p.second.get_direction(map_location::get_opposite_dir(d));
+	return p;
+}
+
+BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
+{
+	map_location::DIRECTION n = map_location::NORTH;
+	map_location::DIRECTION ne = map_location::NORTH_EAST;
+	map_location::DIRECTION nw = map_location::NORTH_WEST;
+	map_location::DIRECTION s = map_location::SOUTH;
+	map_location::DIRECTION se = map_location::SOUTH_EAST;
+	map_location::DIRECTION sw = map_location::SOUTH_WEST;
+
+	map_location z(0,0);
+
+	std::pair<map_location, map_location> p(z,z);
+
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, ne);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, nw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, s);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, nw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, se);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, n);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+	p = mirror_walk(p, sw);
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
+
+}
+
+static void reality_check_get_direction_helper(const map_location & loc, const map_location::DIRECTION d)
+{
+	map_location z(0,0);
+	map_location lz(z.get_direction(d));
+
+	map_location temp(loc.vector_sum(lz));
+	BOOST_CHECK_EQUAL(temp, loc.get_direction(d));
+	BOOST_CHECK(tiles_adjacent(loc,temp));
+	BOOST_CHECK(tiles_adjacent(temp,loc));
+	BOOST_CHECK_EQUAL(distance_between(loc,temp), 1);
+}
+
+BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
+{
+	map_location::DIRECTION n = map_location::NORTH;
+	map_location::DIRECTION ne = map_location::NORTH_EAST;
+	map_location::DIRECTION nw = map_location::NORTH_WEST;
+	map_location::DIRECTION s = map_location::SOUTH;
+	map_location::DIRECTION se = map_location::SOUTH_EAST;
+	map_location::DIRECTION sw = map_location::SOUTH_WEST;
+
+	map_location a(3,4);
+	map_location b(6,5);
+
+	reality_check_get_direction_helper(a,n);
+	reality_check_get_direction_helper(a,nw);
+	reality_check_get_direction_helper(a,ne);
+	reality_check_get_direction_helper(a,s);
+	reality_check_get_direction_helper(a,sw);
+	reality_check_get_direction_helper(a,se);
+
+	reality_check_get_direction_helper(b,n);
+	reality_check_get_direction_helper(b,nw);
+	reality_check_get_direction_helper(b,ne);
+	reality_check_get_direction_helper(b,s);
+	reality_check_get_direction_helper(b,sw);
+	reality_check_get_direction_helper(b,se);
+}
+
+
+static std::string dir_to_terrain (const map_location::DIRECTION dir) 
+{
+	switch(dir) {
+		case map_location::NORTH:      return "Gg";
+		case map_location::SOUTH:      return "Ai";
+		case map_location::SOUTH_EAST: return "Gs^Fp";
+		case map_location::SOUTH_WEST: return "Ss";
+		case map_location::NORTH_EAST: return "Hd";
+		case map_location::NORTH_WEST: return "Md";
+		default: return "Xv";
+	}
+}
+
+static std::string visualize_helper ( int x , int y, const map_location & c )
+{
+	map_location temp(x,y);
+	return dir_to_terrain(c.get_relative_dir(temp));
+}
+
+BOOST_AUTO_TEST_CASE ( visualize_get_relative_dir )
+{
+	map_location c7(7,8), c8(8,8);
+
+	std::cout << "***" << std::endl;
+	int x;
+	int y;
+	for (y = 0; y < 16; y++) {
+		for (x = 0; x < 15; x++) {
+			std::cout << visualize_helper(x,y,c7) << ", ";
+		}
+		std::cout << visualize_helper(x,y,c7) << std::endl;
+	}
+
+	std::cout << "***" << std::endl;
+	for (y = 0; y < 16; y++) {
+		for (x = 0; x < 15; x++) {
+			std::cout << visualize_helper(x,y,c8) << ", ";
+		}
+		std::cout << visualize_helper(x,y,c8) << std::endl;
+	}
+
+	std::cout << "***" << std::endl;
+}
+
 BOOST_AUTO_TEST_SUITE_END()
