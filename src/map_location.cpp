@@ -204,23 +204,35 @@ map_location map_location::get_direction(
 	}
 }
 
-map_location::DIRECTION map_location::get_relative_dir(map_location loc) const {
-	map_location diff = loc.legacy_difference(*this);
-	if(diff == map_location(0,0)) return NDIRECTIONS;
-	if( diff.y < 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return NORTH_EAST;
-	if( diff.y < 0 && diff.x <  0 && abs(diff.x) >= abs(diff.y)) return NORTH_WEST;
-	if( diff.y < 0 && abs(diff.x) < abs(diff.y)) return NORTH;
+map_location::DIRECTION map_location::get_relative_dir(map_location loc) const
+{
+	map_location::DIRECTION dir = NDIRECTIONS;
+	
+	int dx = loc.x - x;
+	int dy = loc.y - y;
+	if (loc.x%2==1 && x%2==0) dy--;
+	
+	if (dx==0 && dy==0) return NDIRECTIONS;
 
-	if( diff.y >= 0 && diff.x >= 0 && abs(diff.x) >= abs(diff.y)) return SOUTH_EAST;
-	if( diff.y >= 0 && diff.x <  0 && abs(diff.x) >= abs(diff.y)) return SOUTH_WEST;
-	if( diff.y >= 0 && abs(diff.x) < abs(diff.y)) return SOUTH;
-
-	// Impossible
-	assert(false);
-	return NDIRECTIONS;
-
-
+	int dist = abs(dx);                                   // Distance from north-south line
+	int dist_diag_SW_NE = abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
+	int dist_diag_SE_NW = abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
+	
+	if (dy > 0) dir = SOUTH;
+	else        dir = NORTH;
+		
+	if (dist_diag_SE_NW < dist) {
+		if (dx>0) dir = SOUTH_EAST;
+		else      dir = NORTH_WEST;
+		dist = dist_diag_SE_NW;
+	}
+	if (dist_diag_SW_NE < dist) {
+		if (dx>0) dir = NORTH_EAST;
+		else      dir = SOUTH_WEST;
+	}
+	return dir;
 }
+
 map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
 	switch (d) {
 		case NORTH:
