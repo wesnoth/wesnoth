@@ -266,6 +266,7 @@ public:
 	bool get_disallow_observers() const {return info_.disallow_observers; }
 	bool no_leader() const { return info_.no_leader; }
 	bool fight_on_without_leader() const { return info_.fight_on_without_leader; }
+	void set_fight_on_without_leader(bool value) { info_.fight_on_without_leader = value; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
