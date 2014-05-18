@@ -41,8 +41,8 @@ void show_help(display &disp, const section &toplevel, const std::string& show_t
 void show_help(display &disp, const std::string& show_topic="", int xloc=-1, int yloc=-1);
 
 /// wrapper to add unit prefix and hiding symbol
-void show_unit_help(display &disp, const std::string& unit_id, bool hidden = false,
-				int xloc=-1, int yloc=-1);
+void show_unit_help(display &disp, const std::string& unit_id, bool has_variations=false,
+				bool hidden = false, int xloc=-1, int yloc=-1);
 
 /// wrapper to add variation prefix and hiding symbol
 void show_variation_help(display &disp, const std::string &unit_id, const std::string &variation,
