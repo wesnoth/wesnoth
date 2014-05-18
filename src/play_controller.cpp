@@ -1390,25 +1390,29 @@ void play_controller::check_victory()
 		if (i->can_recruit()) {
 			DBG_NG << "seen leader for side " << i->side() << "\n";
 			not_defeated.insert(i->side());
-		} else if (teams_[i->side()-1].fight_on_without_leader()) {
+		} else if (teams_[i->side()-1].defeat_condition() == team::NO_UNITS) {
 			DBG_NG << "side doesn't require leader " << i->side() << "\n";
 			not_defeated.insert(i->side());
 		}
 	}
-
-	// Clear villages for teams that have no leader and
-	// mark side as lost if it should be removed from carryover.
-	for (std::vector<team>::iterator tm_beg = teams_.begin(), tm = tm_beg,
-	     tm_end = teams_.end(); tm != tm_end; ++tm)
+	BOOST_FOREACH(team& tm, this->teams_)
 	{
-		if (not_defeated.find(tm - tm_beg + 1) == not_defeated.end()) {
-			tm->clear_villages();
+		if(tm.defeat_condition() == team::NEVER)
+		{
+			not_defeated.insert(tm.side());
+		}
+		// Clear villages for teams that have no leader and
+		// mark side as lost if it should be removed from carryover.
+		if (not_defeated.find(tm.side()) == not_defeated.end()) 
+		{
+			tm.clear_villages();
 			// invalidate_all() is overkill and expensive but this code is
 			// run rarely so do it the expensive way.
 			gui_->invalidate_all();
-
-			if (!tm->fight_on_without_leader() && remove_from_carryover_on_leaders_loss_) {
-				tm->set_lost();
+			
+			if (remove_from_carryover_on_leaders_loss_) 
+			{
+				tm.set_lost();
 			}
 		}
 	}
