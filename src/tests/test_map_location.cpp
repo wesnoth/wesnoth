@@ -111,4 +111,48 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 	characterization_distance_direction(locs, ans2, ans1);
 }
 
+static std::string dir_to_terrain (const map_location::DIRECTION dir) 
+{
+	switch(dir) {
+		case map_location::NORTH:      return "Gg";
+		case map_location::SOUTH:      return "Ai";
+		case map_location::SOUTH_EAST: return "Gs^Fp";
+		case map_location::SOUTH_WEST: return "Ss";
+		case map_location::NORTH_EAST: return "Hd";
+		case map_location::NORTH_WEST: return "Md";
+		default: return "Xv";
+	}
+}
+
+static std::string visualize_helper ( int x , int y, const map_location & c )
+{
+	map_location temp(x,y);
+	return dir_to_terrain(c.get_relative_dir(temp));
+}
+
+BOOST_AUTO_TEST_CASE ( visualize_get_relative_dir )
+{
+	map_location c7(7,8), c8(8,8);
+
+	std::cout << "***" << std::endl;
+	int x;
+	int y;
+	for (y = 0; y < 16; y++) {
+		for (x = 0; x < 15; x++) {
+			std::cout << visualize_helper(x,y,c7) << ", ";
+		}
+		std::cout << visualize_helper(x,y,c7) << std::endl;
+	}
+
+	std::cout << "***" << std::endl;
+	for (y = 0; y < 16; y++) {
+		for (x = 0; x < 15; x++) {
+			std::cout << visualize_helper(x,y,c8) << ", ";
+		}
+		std::cout << visualize_helper(x,y,c8) << std::endl;
+	}
+
+	std::cout << "***" << std::endl;
+}
+
 BOOST_AUTO_TEST_SUITE_END()
