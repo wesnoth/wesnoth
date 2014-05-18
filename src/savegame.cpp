@@ -656,14 +656,10 @@ void loadgame::set_gamestate()
 	// For a replay we need to restore the start only, the replaying gets at
 	// proper location.
 	// For normal loading also restore the call count.
-	int seed = load_config_["random_seed"].to_int(42);
-	if(seed == 42){
-		config cfg = load_config_.child_or_empty("carryover_sides_start");
-		seed = cfg["random_seed"].to_int(42);
-	}
+	config::attribute_value random_seed = load_config_["random_seed"];
 	unsigned calls = show_replay_ ? 0 : gamestate_.snapshot["random_calls"].to_int();
 	carryover_info sides(gamestate_.carryover_sides_start);
-	sides.rng().seed_random(seed, calls);
+	sides.rng().seed_random(random_seed.str(), calls);
 	gamestate_.carryover_sides_start = sides.to_config();
 }
 

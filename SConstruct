@@ -351,6 +351,7 @@ if env["prereqs"]:
         conf.CheckBoost("iostreams", require_version = "1.34.1") and \
         conf.CheckBoostIostreamsGZip() and \
         conf.CheckBoostIostreamsBZip2() and \
+        conf.CheckBoost("random",require_version = "1.40.0") and \
         conf.CheckBoost("smart_ptr", header_only = True) or \
             Warning("WARN: Base prerequisites are not met")
 

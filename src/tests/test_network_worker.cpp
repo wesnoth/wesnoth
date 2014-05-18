@@ -111,6 +111,46 @@ BOOST_AUTO_TEST_CASE( test_send_client )
 
 }
 
+void try_send_random_seed ( const std::string seed_str, const unsigned int random_calls)
+{
+	config cfg_send;
+	config& child = cfg_send.add_child("command");
+
+	child["random_seed"] = seed_str;
+	child["random_calls"] = random_calls;
+
+	network::send_data(cfg_send, client_client1);
+
+	network::connection receive_from;
+	config received;
+
+	receive_from = receive(received);
+
+	BOOST_CHECK_MESSAGE( receive_from == server_client1, "Received data is not from test client 1" );
+
+	BOOST_CHECK_EQUAL(cfg_send, received);
+
+	config rec_command = received.child("command");
+
+	std::string rec_seed_str = rec_command["random_seed"].str();
+	unsigned int rec_calls = rec_command["random_calls"];
+
+	BOOST_CHECK_EQUAL(seed_str, rec_seed_str);
+	BOOST_CHECK_EQUAL(random_calls, rec_calls);
+}
+
+BOOST_AUTO_TEST_CASE( test_send_random_seed )
+{
+	try_send_random_seed("0000badd",0);
+	try_send_random_seed("00001234",1);
+	try_send_random_seed("deadbeef",2);
+	try_send_random_seed("12345678",3);
+	try_send_random_seed("00009999",4);
+	try_send_random_seed("ffffaaaa",5);
+	try_send_random_seed("11110000",6);
+	try_send_random_seed("10101010",7);
+	try_send_random_seed("aaaa0000",8);
+}
 
 class connect_aborter : public threading::waiter
 {
