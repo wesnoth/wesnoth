@@ -197,7 +197,13 @@ BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
 	reality_check_get_direction_helper(b,se);
 }
 
+/**
+ * This commented block was used to visualize the output of get_relative_dir
+ * and to help derive the implementation in commit 
+ * 829b74c2beaa18eda42710c364b12c987f9caed5
+ */
 
+/*
 static std::string dir_to_terrain (const map_location::DIRECTION dir) 
 {
 	switch(dir) {
@@ -240,6 +246,6 @@ BOOST_AUTO_TEST_CASE ( visualize_get_relative_dir )
 	}
 
 	std::cout << "***" << std::endl;
-}
+}*/
 
 BOOST_AUTO_TEST_SUITE_END()
