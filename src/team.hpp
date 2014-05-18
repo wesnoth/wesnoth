@@ -33,7 +33,9 @@ class team : public savegame::savegame_config
 {
 public:
 	enum CONTROLLER { HUMAN, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
-
+	enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER};
+	static DEFEAT_CONDITION parse_defeat_condition(const std::string& cond, team::DEFEAT_CONDITION def);
+	static std::string defeat_condition_to_string(DEFEAT_CONDITION  cond);
 private:
 	class shroud_map {
 	public:
@@ -104,7 +106,7 @@ private:
 		bool allow_player;
 		bool chose_random;
 		bool no_leader;
-		bool fight_on_without_leader;
+		DEFEAT_CONDITION defeat_condition;
 		bool hidden;
 		bool no_turn_confirmation;  // Can suppress confirmations when ending a turn.
 
@@ -265,8 +267,10 @@ public:
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; }
 	bool no_leader() const { return info_.no_leader; }
-	bool fight_on_without_leader() const { return info_.fight_on_without_leader; }
-	void set_fight_on_without_leader(bool value) { info_.fight_on_without_leader = value; }
+	DEFEAT_CONDITION defeat_condition() const { return info_.defeat_condition; }
+	void set_defeat_condition(DEFEAT_CONDITION value) { info_.defeat_condition = value; }
+	///sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes.
+	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition = parse_defeat_condition(value, info_.defeat_condition); }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
