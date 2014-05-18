@@ -386,7 +386,7 @@ surface create_compatible_surface(const surface &surf, int width = -1, int heigh
  * The rectangles are const and will not be modified.
  *
  * @pre @p src contains a valid canvas.
- * @pre @p dst contains a valid canvas.
+ * @pre @p dst contains a valid neutral canvas.
  * @pre The caller must make sure the @p src fits on the @p dst.
  *
  * @param src          The surface to blit.

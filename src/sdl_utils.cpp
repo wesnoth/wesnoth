@@ -1908,11 +1908,14 @@ surface create_compatible_surface(const surface &surf, int width, int height)
 	return s;
 }
 
-void blit_surface(const surface& src,
+void blit_surface(const surface& surf,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect)
 {
-	assert(src);
+	assert(surf);
 	assert(dst);
+	assert(is_neutral(dst));
+
+	const surface& src = is_neutral(surf) ? surf : make_neutral_surface(surf);
 
 	// Get the areas to blit
 	SDL_Rect dst_rect = create_rect(0, 0, dst->w, dst->h);
