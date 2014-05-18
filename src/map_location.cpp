@@ -133,34 +133,6 @@ void map_location::write(config& cfg) const
 	cfg["y"] = y + 1;
 }
 
-map_location map_location::legacy_negation() const
-{
-	return map_location(-x, -y);
-}
-
-map_location map_location::legacy_sum(const map_location& a) const
-{
-	return map_location(*this).legacy_sum_assign(a);
-}
-
-map_location& map_location::legacy_sum_assign(const map_location &a)
-{
-	bool parity = (x & 1) != 0;
-	x += a.x;
-	y += a.y;
-	if((a.x > 0) && (a.x % 2) && parity)
-		y++;
-	if((a.x < 0) && (a.x % 2) && !parity)
-		y--;
-
-	return *this;
-}
-
-map_location map_location::legacy_difference(const map_location &a) const
-{
-	return legacy_sum(a.legacy_negation());
-}
-
 map_location map_location::vector_negation() const
 {
 	return map_location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate

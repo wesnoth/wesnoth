@@ -31,6 +31,60 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
+/**
+ *
+ * These legacy map_location functions moved here from map_location.?pp.
+ * We have refactored them out of everything but this class. Hopefully
+ * the end is near...
+ *
+	// Adds an absolute location to a "delta" location
+	// This is not the mathematically correct behavior, it is neither
+	// commutative nor associative. Negative coordinates may give strange
+	// results. It is retained because terrain builder code relies in this
+	// broken behavior. Best avoid.
+	map_location legacy_negation() const;
+	map_location legacy_sum(const map_location &a) const;
+	map_location& legacy_sum_assign(const map_location &a);
+	map_location legacy_difference(const map_location &a) const;
+ *
+ */
+
+static map_location legacy_negation(const map_location & me)
+{
+	return map_location(-me.x, -me.y);
+}
+
+static map_location& legacy_sum_assign(map_location & me, const map_location &a)
+{
+	bool parity = (me.x & 1) != 0;
+	me.x += a.x;
+	me.y += a.y;
+	if((a.x > 0) && (a.x % 2) && parity)
+		me.y++;
+	if((a.x < 0) && (a.x % 2) && !parity)
+		me.y--;
+
+	return me;
+}
+
+static map_location legacy_sum(const map_location & me, const map_location& a)
+{
+	map_location ret(me);
+	legacy_sum_assign(ret,a);
+	return ret;
+}
+
+static map_location legacy_difference(const map_location & me, const map_location &a)
+{
+	return legacy_sum(me,legacy_negation(a));
+}
+
+/**
+ *
+ * This file holds the terrain_builder implementation.
+ *
+ */
+
 terrain_builder::building_ruleset terrain_builder::building_rules_;
 const config* terrain_builder::rules_cfg_ = NULL;
 
@@ -562,7 +616,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 		miny -= 2;
 
 	BOOST_FOREACH(terrain_constraint &cons, ret.constraints) {
-		cons.loc.legacy_sum_assign(map_location(-minx, -((miny - 1) / 2)));
+		legacy_sum_assign(cons.loc,map_location(-minx, -((miny - 1) / 2)));
 	}
 
 	replace_rotate_tokens(ret, angle, rot);
@@ -930,7 +984,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	BOOST_FOREACH(const terrain_constraint &cons, rule.constraints)
 	{
 		// Translated location
-		const map_location tloc = loc.legacy_sum(cons.loc);
+		const map_location tloc = legacy_sum(loc,cons.loc);
 
 		if(!tile_map_.on_map(tloc)) {
 			return false;
@@ -968,7 +1022,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 	BOOST_FOREACH(const terrain_constraint &constraint, rule.constraints)
 	{
-		const map_location tloc = loc.legacy_sum(constraint.loc);
+		const map_location tloc = legacy_sum(loc,constraint.loc);
 		if(!tile_map_.on_map(tloc)) {
 			return;
 		}
@@ -1082,7 +1136,7 @@ void terrain_builder::build_terrains()
 
 			for(std::vector<map_location>::const_iterator itor = locations->begin();
 					itor != locations->end(); ++itor) {
-				const map_location loc = itor->legacy_difference(min_constraint->loc);
+				const map_location loc = legacy_difference(*itor,min_constraint->loc);
 
 				if(rule_matches(rule, loc, min_constraint)) {
 					apply_rule(rule, loc);
