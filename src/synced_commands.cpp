@@ -239,23 +239,12 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
-	const std::string& x = child["x"];
-	const std::string& y = child["y"];
-
-	const std::vector<std::string> xvals = utils::split(x);
-	const std::vector<std::string> yvals = utils::split(y);
-
-	if (xvals.size() != yvals.size()) {
-		WRN_REPLAY << "Warning: Path data x,y are mismatched in size:" << "\n x = " << x << "\n y = " << y << std::endl;
-		return false;
-	}
-
 	std::vector<map_location> steps;
 
 	try {
 		read_locations(child,steps);
 	} catch (bad_lexical_cast &) {
-		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to an integer:" << "\n x = " << x << "\n y = " << y << std::endl;
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
 		return false;
 	}
 
