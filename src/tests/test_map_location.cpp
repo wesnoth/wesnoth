@@ -21,9 +21,52 @@
 #include "log.hpp"
 #include "map_location.hpp"
 
+static std::vector<map_location> preset_locs;
+static map_location va,vb,vc,vz,vt1,vt2,vt3;
+static map_location::DIRECTION n = map_location::NORTH;
+static map_location::DIRECTION ne = map_location::NORTH_EAST;
+static map_location::DIRECTION nw = map_location::NORTH_WEST;
+static map_location::DIRECTION s = map_location::SOUTH;
+static map_location::DIRECTION se = map_location::SOUTH_EAST;
+static map_location::DIRECTION sw = map_location::SOUTH_WEST;
+
+
+struct MLFixture 
+{
+	MLFixture()
+	{
+		va = map_location(3,4);
+		vb = map_location(10,8);
+		vc = map_location(0,9);
+		vz = map_location(0,0);
+		vt1 = map_location(va.vector_negation());
+		vt2 = map_location(vb.vector_sum(vc));
+		vt3 = map_location(va.vector_sum(vc.vector_negation()));
+		
+		preset_locs.push_back(va);
+		preset_locs.push_back(vb);
+		preset_locs.push_back(vc);
+		preset_locs.push_back(vz);
+		preset_locs.push_back(vt1);
+		preset_locs.push_back(vt2);
+		preset_locs.push_back(vt3);
+	}
+
+	~MLFixture() {}
+};
+
+BOOST_GLOBAL_FIXTURE ( MLFixture )
+
 BOOST_AUTO_TEST_SUITE ( test_map_location )
 
 //#define MAP_LOCATION_GET_OUTPUT
+
+static map_location vector_difference(const map_location & v1, const map_location & v2)
+{
+	map_location ret(v1);
+	ret.vector_difference_assign(v2);
+	return ret;
+}
 
 static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<size_t> & int_answers)
 {
@@ -54,6 +97,15 @@ static void characterization_distance_direction (const std::vector<map_location>
 			temp2.vector_difference_assign(a);
 			BOOST_CHECK_EQUAL( temp1, temp2.vector_negation());
 			BOOST_CHECK_EQUAL( a, a.vector_negation().vector_negation());
+
+			for (std::vector<map_location>::const_iterator it_c = it_b + 1; it_c != locs.end(); ++it_c) {
+				const map_location & c = *it_c;
+				BOOST_CHECK_EQUAL(a.vector_sum(b.vector_sum(c)) , a.vector_sum(b).vector_sum(c));
+				BOOST_CHECK_EQUAL(a.vector_sum(vector_difference(b,c)) , vector_difference(a.vector_sum(b),c));
+				BOOST_CHECK_EQUAL(vector_difference(a,b.vector_sum(c)) , vector_difference(vector_difference(a,b),c));
+				//TODO: Investigate why this doesn't work
+				//BOOST_CHECK_EQUAL(expected_dir, (a.vector_sum(c)).get_relative_dir(b.vector_sum(c)));
+			}
 #endif
 		}
 	}
@@ -65,20 +117,8 @@ static void characterization_distance_direction (const std::vector<map_location>
 static size_t get_first (std::pair<size_t, std::string> arg) {return arg.first; }
 static map_location::DIRECTION get_second (std::pair<size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
 
-
 BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 {
-	map_location a(3,4), b(10,8), c(0,9),z(0,0);
-	map_location t1(a.vector_negation()), t2(b.vector_sum(c)), t3(a.vector_sum(c.vector_negation()));
-	std::vector<map_location> locs;
-	locs.push_back(a);
-	locs.push_back(b);
-	locs.push_back(c);
-	locs.push_back(z);
-	locs.push_back(t1);
-	locs.push_back(t2);
-	locs.push_back(t3);
-
 	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
 (std::make_pair(6,	"s"))
 (std::make_pair(6,	"nw"))
@@ -106,62 +146,39 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
 
-	characterization_distance_direction(locs, ans2, ans1);
+	characterization_distance_direction(preset_locs, ans2, ans1);
 }
 
 static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::DIRECTION d)
 {
 	p.first = p.first.get_direction(d);
 	p.second = p.second.get_direction(map_location::get_opposite_dir(d));
+	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	return p;
 }
 
 BOOST_AUTO_TEST_CASE ( reality_check_vector_negation )
 {
-	map_location::DIRECTION n = map_location::NORTH;
-	map_location::DIRECTION ne = map_location::NORTH_EAST;
-	map_location::DIRECTION nw = map_location::NORTH_WEST;
-	map_location::DIRECTION s = map_location::SOUTH;
-	map_location::DIRECTION se = map_location::SOUTH_EAST;
-	map_location::DIRECTION sw = map_location::SOUTH_WEST;
-
-	map_location z(0,0);
-
-	std::pair<map_location, map_location> p(z,z);
+	std::pair<map_location, map_location> p(vz,vz);
 
 	p = mirror_walk(p, n);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, n);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, ne);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, nw);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, s);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, nw);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, se);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, sw);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, n);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, n);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, sw);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, sw);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
 	p = mirror_walk(p, sw);
-	BOOST_CHECK_EQUAL(p.first, p.second.vector_negation());
-
 }
 
 static void reality_check_get_direction_helper(const map_location & loc, const map_location::DIRECTION d)
 {
-	map_location z(0,0);
-	map_location lz(z.get_direction(d));
+	map_location lz(vz.get_direction(d));
 
 	map_location temp(loc.vector_sum(lz));
 	BOOST_CHECK_EQUAL(temp, loc.get_direction(d));
@@ -172,13 +189,6 @@ static void reality_check_get_direction_helper(const map_location & loc, const m
 
 BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
 {
-	map_location::DIRECTION n = map_location::NORTH;
-	map_location::DIRECTION ne = map_location::NORTH_EAST;
-	map_location::DIRECTION nw = map_location::NORTH_WEST;
-	map_location::DIRECTION s = map_location::SOUTH;
-	map_location::DIRECTION se = map_location::SOUTH_EAST;
-	map_location::DIRECTION sw = map_location::SOUTH_WEST;
-
 	map_location a(3,4);
 	map_location b(6,5);
 
