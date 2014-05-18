@@ -1917,13 +1917,6 @@ void unit::redraw_unit()
 	display &disp = *display::get_singleton();
 	const gamemap &map = disp.get_map();
 
-	const map_location dst = loc_.get_direction(facing_);
-	const int xsrc = disp.get_location_x(loc_);
-	const int ysrc = disp.get_location_y(loc_);
-	const int xdst = disp.get_location_x(dst);
-	const int ydst = disp.get_location_y(dst);
-	int d2 = disp.hex_size() / 2;
-
 	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],disp.show_everything(),map) )
 	{
 		clear_haloes();
@@ -1945,8 +1938,6 @@ void unit::redraw_unit()
 	frame_parameters params;
 	const t_translation::t_terrain terrain = map.get_terrain(loc_);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
-	const t_translation::t_terrain terrain_dst = map.get_terrain(dst);
-	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
 
 	// do not set to 0 so we can distinguish the flying from the "not on submerge terrain"
 	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
@@ -1960,11 +1951,7 @@ void unit::redraw_unit()
 		params.highlight_ratio = 1.5;
 	}
 	
-	// Todo: calculate unit offset without processing the whole get_current_params
-	double offset = anim_->get_current_params(params).offset;
-	int height_adjust = static_cast<int>((terrain_info.unit_height_adjust() * (1.0 - offset) +
-										  terrain_dst_info.unit_height_adjust() * offset) *
-										  disp.get_zoom_factor());
+	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 	if (is_flying() && height_adjust < 0) {
 		height_adjust = 0;
 	}
@@ -2002,11 +1989,18 @@ void unit::redraw_unit()
 	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
 	params.primary_frame = t_true;
 
+
 	const frame_parameters adjusted_params = anim_->get_current_params(params);
+
+	const map_location dst = loc_.get_direction(facing_);
+	const int xsrc = disp.get_location_x(loc_);
+	const int ysrc = disp.get_location_y(loc_);
+	const int xdst = disp.get_location_x(dst);
+	const int ydst = disp.get_location_y(dst);
+	int d2 = disp.hex_size() / 2;
 
 	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + d2;
 	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + d2;
-
 
 	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
 		unit_halo_ = halo::add(0, 0, image_halo()+TC_image_mods(), map_location(-1, -1));
@@ -2166,6 +2160,21 @@ void unit::redraw_unit()
 		}
 	}
 
+	// Smooth unit movements from terrain of different elevation.
+	// Do this separately from above so that the health bar doesn't go up and down.
+	
+	const t_translation::t_terrain terrain_dst = map.get_terrain(dst);
+	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
+
+	int height_adjust_unit = static_cast<int>((terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
+											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset) *
+											  disp.get_zoom_factor());
+	if (is_flying() && height_adjust_unit < 0) {
+		height_adjust_unit = 0;
+	}
+	params.y -= height_adjust_unit - height_adjust;
+	params.halo_y -= height_adjust_unit - height_adjust;
+	
 	anim_->redraw(params);
 	refreshing_ = false;
 }
