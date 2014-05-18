@@ -239,28 +239,13 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
-	const std::string& x = child["x"];
-	const std::string& y = child["y"];
+	std::vector<map_location> steps;
 
-	const std::vector<std::string> xvals = utils::split(x);
-	const std::vector<std::string> yvals = utils::split(y);
-
-	if (xvals.size() != yvals.size()) {
-		WRN_REPLAY << "Warning: Path data x,y are mismatched in size:" << "\n x = " << x << "\n y = " << y << std::endl;
+	try {
+		read_locations(child,steps);
+	} catch (bad_lexical_cast &) {
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
 		return false;
-	}
-
-	std::vector<map_location> steps;// = parse_location_range(x,y);
-
-        for (unsigned i = 0; i < xvals.size(); ++i) {
-		try {
-			int xi = lexical_cast<int> (xvals[i]);
-			int yi = lexical_cast<int> (yvals[i]);
-			steps.push_back(map_location(xi-1, yi-1));
-		} catch (bad_lexical_cast &) {
-			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to an integer:" << "\n x = " << x << "\n y = " << y << std::endl;
-			return false;
-		}
 	}
 
 	if(steps.empty()) 

@@ -76,7 +76,6 @@ tredirect_output_setter::~tredirect_output_setter()
 typedef std::map<std::string, int> domain_map;
 static domain_map *domains;
 static int strict_level_ = -1;
-static bool strict_threw_ = false;
 void timestamps(bool t) { timestamp = t; }
 void precise_timestamps(bool pt) { precise_timestamp = pt; }
 
@@ -169,6 +168,8 @@ static void print_precise_timestamp(std::ostream & out)
 
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
 {
+	static bool strict_threw_ = false;
+
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
 	} else if (!strict_threw_ && (severity_ <= strict_level_)) {
@@ -176,10 +177,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 		ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
 		std::cerr << ss.str() << std::endl;
 		//TODO: Would be nice to actually get whatever message they were going to log... 
-		//perhaps could pass back a & to a stringstream with a custom destructor that
-		//throws this game::error when it goes out of scope, after capturing their message?
-		//TODO: The flag strict_threw_ makes sure that we only do this once, and don't block
-		//subsequent error logging. Does this need to be more robust?
+		//this would likely require refactor to pass back a wrapper instead of ostream & though.
 		strict_threw_ = true;
 		throw game::game_error(ss.str());
 	} else {

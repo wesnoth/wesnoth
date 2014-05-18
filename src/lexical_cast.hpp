@@ -95,7 +95,7 @@ inline To lexical_cast(From value)
 }
 
 /** Thrown when a lexical_cast fails. */
-struct bad_lexical_cast {};
+struct bad_lexical_cast : std::exception {};
 
 namespace implementation {
 

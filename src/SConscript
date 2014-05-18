@@ -70,8 +70,6 @@ libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources)]
 
 libwesnoth_sources = Split("""
     arrow.cpp
-    pathfind/astarsearch.cpp
-    builder.cpp
     clipboard.cpp
     config_assign.cpp
     construct_dialog.cpp
@@ -102,6 +100,7 @@ libwesnoth_sources = Split("""
     map_label.cpp
     marked-up_text.cpp
     minimap.cpp
+    pathfind/astarsearch.cpp
     pathutils.cpp
     preferences.cpp
     preferences_display.cpp
@@ -114,6 +113,7 @@ libwesnoth_sources = Split("""
     soundsource.cpp
     sound_music_track.cpp
     terrain.cpp
+    terrain_builder.cpp
     terrain_translation.cpp
     text.cpp
     time_of_day.cpp
@@ -656,6 +656,7 @@ test_sources = Split("""
     tests/test_image_modifications.cpp
     tests/test_lexical_cast.cpp
     tests/test_network_worker.cpp
+    tests/test_map_location.cpp
     tests/test_mp_connect.cpp
     tests/test_team.cpp
     tests/test_unit_map.cpp

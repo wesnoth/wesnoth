@@ -17,13 +17,13 @@
  * Terrain builder.
  */
 
-#include "builder.hpp"
+#include "terrain_builder.hpp"
 
+#include "image.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "serialization/string_utils.hpp"
-#include "image.hpp"
 
 #include <boost/foreach.hpp>
 

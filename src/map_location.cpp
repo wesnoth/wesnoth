@@ -173,7 +173,7 @@ map_location map_location::vector_sum(const map_location& a) const
 
 map_location& map_location::vector_sum_assign(const map_location &a)
 {
-	y += (x & 1) * (a.x & 1); //add one if both x coords are odd
+	y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
 	x += a.x;
 	y += a.y;
 	return *this;
@@ -442,7 +442,12 @@ void read_locations(const config& cfg, std::vector<map_location>& locs)
 {
 	const std::vector<std::string> xvals = utils::split(cfg["x"]);
 	const std::vector<std::string> yvals = utils::split(cfg["y"]);
-	for (unsigned i = 0; i < xvals.size() || i < yvals.size(); ++i)
+
+	if (xvals.size() != yvals.size()) {
+		throw bad_lexical_cast();
+	}
+
+	for (unsigned i = 0; i < xvals.size(); ++i)
 	{
 		int x = lexical_cast<int>(xvals[i])-1;
 		int y = lexical_cast<int>(yvals[i])-1;

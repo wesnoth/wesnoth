@@ -14,8 +14,8 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 #include "editor_display.hpp"
-#include "builder.hpp"
 #include "reports.hpp"
+#include "terrain_builder.hpp"
 
 namespace editor {
 

@@ -908,7 +908,6 @@ set(wesnoth-main_SRC
 
 set(libwesnoth-game_STAT_SRC
 	arrow.cpp
-	builder.cpp
 	clipboard.cpp
 	construct_dialog.cpp
 	cursor.cpp
@@ -953,6 +952,7 @@ set(libwesnoth-game_STAT_SRC
 	soundsource.cpp
 	sound_music_track.cpp
 	terrain.cpp
+	terrain_builder.cpp
 	terrain_translation.cpp
 	text.cpp
 	time_of_day.cpp
@@ -1254,6 +1254,7 @@ if(ENABLE_TESTS)
 		tests/test_image_modifications.cpp
 		tests/test_lexical_cast.cpp
 		tests/test_network_worker.cpp
+		tests/test_map_location.cpp
 		tests/test_mp_connect.cpp
 		tests/test_team.cpp
 		tests/test_unit_map.cpp
