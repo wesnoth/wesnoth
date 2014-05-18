@@ -1182,6 +1182,8 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("name", t.name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller_string());
+	return_bool_attrib("fight_on_without_leader", t.fight_on_without_leader());
+	return_bool_attrib("lost", t.lost());
 
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
@@ -1224,6 +1226,8 @@ static int impl_side_set(lua_State *L)
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 	modify_string_attrib("controller", t.change_controller(value));
 	modify_string_attrib("color", t.set_color(value));
+	modify_bool_attrib("fight_on_without_leader", t.set_fight_on_without_leader(value));
+	modify_bool_attrib("lost", t.set_lost(value));
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());
