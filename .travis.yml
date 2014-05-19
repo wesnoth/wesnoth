@@ -10,7 +10,7 @@ after_script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - ./test
-    - ./run_wml_tests -u -w -s
+    - ./travis_wml_unit_tests.sh
 notifications:
     email: false
     irc:
