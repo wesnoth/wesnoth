@@ -22,7 +22,7 @@
 #include "map_location.hpp"
 
 static std::vector<map_location> preset_locs;
-static map_location va,vb,vc,vz,vt1,vt2,vt3;
+static map_location va,vb,vc,vz,vt1,vt2,vt3,vs1,vs2,vs3,vs4;
 static map_location::DIRECTION n = map_location::NORTH;
 static map_location::DIRECTION ne = map_location::NORTH_EAST;
 static map_location::DIRECTION nw = map_location::NORTH_WEST;
@@ -42,6 +42,11 @@ struct MLFixture
 		vt1 = map_location(va.vector_negation());
 		vt2 = map_location(vb.vector_sum(vc));
 		vt3 = map_location(va.vector_sum(vc.vector_negation()));
+
+		vs1 = map_location(vz.get_direction(nw));
+		vs2 = map_location(vz.get_direction(n).get_direction(ne));
+		vs3 = map_location(vz.get_direction(s).get_direction(se));
+		vs4 = map_location(vz.get_direction(sw).get_direction(se));
 		
 		preset_locs.push_back(va);
 		preset_locs.push_back(vb);
@@ -50,6 +55,10 @@ struct MLFixture
 		preset_locs.push_back(vt1);
 		preset_locs.push_back(vt2);
 		preset_locs.push_back(vt3);
+		preset_locs.push_back(vs1);
+		preset_locs.push_back(vs2);
+		preset_locs.push_back(vs3);
+		preset_locs.push_back(vs4);
 	}
 
 	~MLFixture() {}
@@ -61,14 +70,16 @@ BOOST_AUTO_TEST_SUITE ( test_map_location )
 
 //#define MAP_LOCATION_GET_OUTPUT
 
+#ifndef MAP_LOCATION_GET_OUTPUT
 static map_location vector_difference(const map_location & v1, const map_location & v2)
 {
 	map_location ret(v1);
 	ret.vector_difference_assign(v2);
 	return ret;
 }
+#endif
 
-static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<size_t> & int_answers)
+static void characterization_distance_direction (const std::vector<map_location> & locs, const std::vector<map_location::DIRECTION> & dir_answers, const std::vector<size_t> & int_answers, map_location::RELATIVE_DIR_MODE mode)
 {
 	BOOST_CHECK_EQUAL(dir_answers.size(), int_answers.size());
 
@@ -81,15 +92,17 @@ static void characterization_distance_direction (const std::vector<map_location>
 			const map_location & b = *it_b;
 #ifdef MAP_LOCATION_GET_OUTPUT
 			std::cout << "(std::make_pair(" << distance_between(a,b) << ",\t\"" 
-				<< map_location::write_direction( a.get_relative_dir(b)) << "\"))" << std::endl;
+				<< map_location::write_direction( a.get_relative_dir(b,mode)) << "\"))" << std::endl;
 #else
 			int expected_dist = *(int_it++);
 			map_location::DIRECTION expected_dir = *(dir_it++);
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(a,b) );
 			BOOST_CHECK_EQUAL( expected_dist, distance_between(b,a) );
-			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b) );			
+			BOOST_CHECK_EQUAL( expected_dir, a.get_relative_dir(b, mode) );			
 			//Note: This is not a valid assertion. get_relative_dir has much symmetry but not radial.
-			//BOOST_CHECK_EQUAL( map_location::get_opposite_dir(expected_dir), b.get_relative_dir(a) );
+			if (mode == map_location::RADIAL_SYMMETRY) {
+				BOOST_CHECK_EQUAL( map_location::get_opposite_dir(expected_dir), b.get_relative_dir(a,mode) );
+			}
 			BOOST_CHECK_EQUAL( a.vector_sum(b), b.vector_sum(a));
 			map_location temp1 = a;
 			temp1.vector_difference_assign(b);
@@ -104,7 +117,9 @@ static void characterization_distance_direction (const std::vector<map_location>
 				BOOST_CHECK_EQUAL(a.vector_sum(vector_difference(b,c)) , vector_difference(a.vector_sum(b),c));
 				BOOST_CHECK_EQUAL(vector_difference(a,b.vector_sum(c)) , vector_difference(vector_difference(a,b),c));
 				//TODO: Investigate why this doesn't work
-				//BOOST_CHECK_EQUAL(expected_dir, (a.vector_sum(c)).get_relative_dir(b.vector_sum(c)));
+				if (mode == map_location::RADIAL_SYMMETRY) {
+					BOOST_CHECK_EQUAL(expected_dir, (a.vector_sum(c)).get_relative_dir(b.vector_sum(c),mode));
+				}
 			}
 #endif
 		}
@@ -117,7 +132,7 @@ static void characterization_distance_direction (const std::vector<map_location>
 static size_t get_first (std::pair<size_t, std::string> arg) {return arg.first; }
 static map_location::DIRECTION get_second (std::pair<size_t, std::string> arg) {return map_location::parse_direction(arg.second); }
 
-BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
+BOOST_AUTO_TEST_CASE ( map_location_characterization_test_default_mode )
 {
 	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
 (std::make_pair(6,	"s"))
@@ -125,28 +140,128 @@ BOOST_AUTO_TEST_CASE ( map_location_characterization_test )
 (std::make_pair(12,	"n"))
 (std::make_pair(16,	"s"))
 (std::make_pair(9,	"n"))
+(std::make_pair(7,	"nw"))
+(std::make_pair(7,	"n"))
+(std::make_pair(4,	"n"))
+(std::make_pair(5,	"nw"))
 (std::make_pair(10,	"sw"))
 (std::make_pair(13,	"nw"))
 (std::make_pair(19,	"nw"))
 (std::make_pair(9,	"s"))
 (std::make_pair(16,	"n"))
+(std::make_pair(14,	"nw"))
+(std::make_pair(14,	"nw"))
+(std::make_pair(11,	"nw"))
+(std::make_pair(12,	"nw"))
 (std::make_pair(9,	"n"))
 (std::make_pair(15,	"n"))
 (std::make_pair(13,	"se"))
 (std::make_pair(15,	"n"))
+(std::make_pair(10,	"n"))
+(std::make_pair(11,	"n"))
+(std::make_pair(8,	"n"))
+(std::make_pair(8,	"n"))
 (std::make_pair(6,	"n"))
 (std::make_pair(22,	"s"))
 (std::make_pair(6,	"n"))
+(std::make_pair(1,	"nw"))
+(std::make_pair(2,	"n"))
+(std::make_pair(2,	"se"))
+(std::make_pair(1,	"s"))
 (std::make_pair(28,	"s"))
 (std::make_pair(6,	"se"))
-(std::make_pair(25,	"n")).to_container(generated_answers);
+(std::make_pair(5,	"s"))
+(std::make_pair(5,	"se"))
+(std::make_pair(8,	"s"))
+(std::make_pair(7,	"s"))
+(std::make_pair(25,	"n"))
+(std::make_pair(23,	"n"))
+(std::make_pair(23,	"n"))
+(std::make_pair(20,	"n"))
+(std::make_pair(21,	"n"))
+(std::make_pair(6,	"sw"))
+(std::make_pair(4,	"s"))
+(std::make_pair(7,	"s"))
+(std::make_pair(7,	"s"))
+(std::make_pair(2,	"ne"))
+(std::make_pair(3,	"se"))
+(std::make_pair(2,	"s"))
+(std::make_pair(3,	"s"))
+(std::make_pair(3,	"s"))
+(std::make_pair(1,	"sw")).to_container(generated_answers);
 
 	std::vector<size_t> ans1;
 	std::vector<map_location::DIRECTION> ans2;
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
 	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
 
-	characterization_distance_direction(preset_locs, ans2, ans1);
+	characterization_distance_direction(preset_locs, ans2, ans1, map_location::DEFAULT);
+}
+
+BOOST_AUTO_TEST_CASE ( map_location_characterization_test_radial_mode )
+{
+	std::vector<std::pair<size_t, std::string> > generated_answers = boost::assign::list_of(std::make_pair(7,	"se"))
+(std::make_pair(6,	"sw"))
+(std::make_pair(6,	"n"))
+(std::make_pair(12,	"n"))
+(std::make_pair(16,	"s"))
+(std::make_pair(9,	"n"))
+(std::make_pair(7,	"nw"))
+(std::make_pair(7,	"n"))
+(std::make_pair(4,	"n"))
+(std::make_pair(5,	"nw"))
+(std::make_pair(10,	"sw"))
+(std::make_pair(13,	"nw"))
+(std::make_pair(19,	"nw"))
+(std::make_pair(9,	"s"))
+(std::make_pair(16,	"n"))
+(std::make_pair(14,	"nw"))
+(std::make_pair(14,	"nw"))
+(std::make_pair(11,	"nw"))
+(std::make_pair(12,	"nw"))
+(std::make_pair(9,	"n"))
+(std::make_pair(15,	"n"))
+(std::make_pair(13,	"se"))
+(std::make_pair(15,	"n"))
+(std::make_pair(10,	"n"))
+(std::make_pair(11,	"n"))
+(std::make_pair(8,	"n"))
+(std::make_pair(8,	"n"))
+(std::make_pair(6,	"n"))
+(std::make_pair(22,	"s"))
+(std::make_pair(6,	"ne"))
+(std::make_pair(1,	"nw"))
+(std::make_pair(2,	"ne"))
+(std::make_pair(2,	"s"))
+(std::make_pair(1,	"s"))
+(std::make_pair(28,	"s"))
+(std::make_pair(6,	"se"))
+(std::make_pair(5,	"s"))
+(std::make_pair(5,	"se"))
+(std::make_pair(8,	"s"))
+(std::make_pair(7,	"s"))
+(std::make_pair(25,	"n"))
+(std::make_pair(23,	"n"))
+(std::make_pair(23,	"n"))
+(std::make_pair(20,	"n"))
+(std::make_pair(21,	"n"))
+(std::make_pair(6,	"sw"))
+(std::make_pair(4,	"sw"))
+(std::make_pair(7,	"s"))
+(std::make_pair(7,	"s"))
+(std::make_pair(2,	"ne"))
+(std::make_pair(3,	"se"))
+(std::make_pair(2,	"s"))
+(std::make_pair(3,	"s"))
+(std::make_pair(3,	"s"))
+(std::make_pair(1,	"nw")).to_container(generated_answers);
+
+	std::vector<size_t> ans1;
+	std::vector<map_location::DIRECTION> ans2;
+	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans1), &get_first);
+	std::transform(generated_answers.begin(), generated_answers.end(), back_inserter(ans2), &get_second);
+
+	characterization_distance_direction(preset_locs, ans2, ans1, map_location::RADIAL_SYMMETRY);
 }
 
 static std::pair<map_location , map_location> mirror_walk( std::pair<map_location,map_location> p, map_location::DIRECTION d)
