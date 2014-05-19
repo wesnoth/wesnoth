@@ -2299,6 +2299,35 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 	}
 }
 
+/// Store the relative direction from one hex to antoher in a WML variable.
+/// This is mainly useful as a diagnostic tool, but could be useful 
+/// for some kind of scenario.
+WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
+{
+	if (!cfg.child("source")) {
+		WRN_NG << "No source in [store_relative_dir]" << std::endl;
+		return;
+	}
+	if (!cfg.child("destination")) {
+		WRN_NG << "No destination in [store_relative_dir]" << std::endl;
+		return;
+	}
+	if (!cfg.has_attribute("variable")) {
+		WRN_NG << "No variable in [store_relative_dir]" << std::endl;
+		return;
+	}
+
+	const map_location src = cfg_to_loc(cfg.child("source"));
+	const map_location dst = cfg_to_loc(cfg.child("destination"));
+
+	std::string variable = cfg["variable"];
+	map_location::RELATIVE_DIR_MODE mode = static_cast<map_location::RELATIVE_DIR_MODE> (cfg["mode"].to_int(0));
+
+	variable_info store(variable, true, variable_info::TYPE_SCALAR );
+
+	store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
+}
+
 /// Store time of day config in a WML variable. This is useful for those who
 /// are too lazy to calculate the corresponding time of day for a given turn,
 /// or if the turn / time-of-day sequence mutates in a scenario.
