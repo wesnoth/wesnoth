@@ -78,6 +78,8 @@ team::DEFEAT_CONDITION team::parse_defeat_condition(const std::string& cond, tea
 		return team::NO_UNITS;
 	else if (cond == "never")
 		return team::NEVER;
+	else if (cond == "always")
+		return team::ALWAYS;
 	else
 		return def;
 	//throw game::game_error("Cannot parse string " + cond +" to a DEFEAT_CONDITION");
@@ -92,6 +94,8 @@ std::string team::defeat_condition_to_string(DEFEAT_CONDITION  cond)
 		return "no_unit";
 	case team::NEVER:
 		return "never";
+	case team::ALWAYS:
+		return "always";
 	default:
 		throw game::game_error("Found corrupted DEFEAT_CONDITION");
 	}
