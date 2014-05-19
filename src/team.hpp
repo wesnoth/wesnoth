@@ -33,7 +33,7 @@ class team : public savegame::savegame_config
 {
 public:
 	enum CONTROLLER { HUMAN, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
-	enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER};
+	enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER, ALWAYS};
 	static DEFEAT_CONDITION parse_defeat_condition(const std::string& cond, team::DEFEAT_CONDITION def);
 	static std::string defeat_condition_to_string(DEFEAT_CONDITION  cond);
 private:

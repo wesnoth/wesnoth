@@ -1387,10 +1387,11 @@ void play_controller::check_victory()
 	for (unit_map::const_iterator i = units_.begin(),
 	     i_end = units_.end(); i != i_end; ++i)
 	{
-		if (i->can_recruit()) {
+		const team& tm = teams_[i->side()-1];
+		if (i->can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
 			DBG_NG << "seen leader for side " << i->side() << "\n";
 			not_defeated.insert(i->side());
-		} else if (teams_[i->side()-1].defeat_condition() == team::NO_UNITS) {
+		} else if (tm.defeat_condition() == team::NO_UNITS) {
 			DBG_NG << "side doesn't require leader " << i->side() << "\n";
 			not_defeated.insert(i->side());
 		}
