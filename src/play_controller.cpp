@@ -131,7 +131,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
-	remove_from_carryover_on_leaders_loss_(true),
+	remove_from_carryover_on_defeat_(true),
 	end_level_data_(),
 	victory_music_(),
 	defeat_music_(),
@@ -1427,7 +1427,7 @@ void play_controller::check_victory()
 			// run rarely so do it the expensive way.
 			gui_->invalidate_all();
 			
-			if (remove_from_carryover_on_leaders_loss_) 
+			if (remove_from_carryover_on_defeat_) 
 			{
 				tm.set_lost();
 			}
