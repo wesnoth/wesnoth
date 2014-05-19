@@ -265,7 +265,10 @@ void clear_hotkeys()
 void load_hotkeys(const config& cfg, bool set_as_default)
 {
 	BOOST_FOREACH(const config &hk, cfg.child_range("hotkey")) {
-		add_hotkey(hotkey_item(hk, set_as_default));
+		hotkey_item item = hotkey_item(hk, set_as_default);
+		if(!item.null()){
+			add_hotkey(item);
+		}
 	}
 
 	if (set_as_default) {
