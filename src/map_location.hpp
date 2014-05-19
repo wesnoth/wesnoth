@@ -94,7 +94,9 @@ struct map_location {
 
 	// Do n step in the direction d
 	map_location get_direction(DIRECTION d, int n = 1) const;
-	DIRECTION get_relative_dir(const map_location & loc) const;
+
+	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
+	DIRECTION get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode = map_location::DEFAULT ) const;
 
 	// Express as a vector in the basis N, NE. N, and NE may be obtained by zero.get_direction(NORTH), ...(NORTH_EAST), respectively.
 	std::pair<int,int> get_in_basis_N_NE() const;

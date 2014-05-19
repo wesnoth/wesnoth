@@ -176,33 +176,69 @@ map_location map_location::get_direction(
 	}
 }
 
-map_location::DIRECTION map_location::get_relative_dir(const map_location & loc) const
+map_location::DIRECTION map_location::get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE opt) const
 {
-	map_location::DIRECTION dir = NDIRECTIONS;
+	if (opt == map_location::DEFAULT) {
+		map_location::DIRECTION dir = NDIRECTIONS;
 	
-	int dx = loc.x - x;
-	int dy = loc.y - y;
-	if (loc.x%2==1 && x%2==0) dy--;
-	
-	if (dx==0 && dy==0) return NDIRECTIONS;
+		int dx = loc.x - x;
+		int dy = loc.y - y;
+		if (loc.x%2==1 && x%2==0) dy--;
 
-	int dist = abs(dx);                                   // Distance from north-south line
-	int dist_diag_SW_NE = abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
-	int dist_diag_SE_NW = abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
+		if (dx==0 && dy==0) return NDIRECTIONS;
+
+		int dist = abs(dx);                                   // Distance from north-south line
+		int dist_diag_SW_NE = abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
+		int dist_diag_SE_NW = abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
 	
-	if (dy > 0) dir = SOUTH;
-	else        dir = NORTH;
-		
-	if (dist_diag_SE_NW < dist) {
+		if (dy > 0) dir = SOUTH;
+		else        dir = NORTH;
+
+		if (dist_diag_SE_NW < dist) {
 		if (dx>0) dir = SOUTH_EAST;
 		else      dir = NORTH_WEST;
 		dist = dist_diag_SE_NW;
+		}
+		if (dist_diag_SW_NE < dist) {
+			if (dx>0) dir = NORTH_EAST;
+			else      dir = SOUTH_WEST;
+		}
+		return dir;
+	} else {
+		map_location diff(loc);
+		diff.vector_difference_assign(*this);
+
+		const static map_location z(0,0);
+		map_location temp;
+
+		if (diff.y < 0) {
+			temp = diff.rotate_right_around_center(z,1);
+			if (diff.y >= 0) {
+				return map_location::NORTH_EAST;
+			}
+			temp = temp.rotate_right_around_center(z,1);
+			if (diff.y >= 0) {
+				return map_location::NORTH;
+			}
+			return map_location::NORTH_WEST;
+		} else if (diff.y > 0) {
+			temp = diff.rotate_right_around_center(z,1);
+			if (diff.y <= 0) {
+				return map_location::SOUTH_WEST;
+			}
+			temp = temp.rotate_right_around_center(z,1);
+			if (diff.y <= 0) {
+				return map_location::SOUTH;
+			}
+			return map_location::SOUTH_EAST;
+		} else if (diff.x > 0) {
+			return map_location::NORTH_EAST;
+		} else if (diff.x < 0) {
+			return map_location::SOUTH_WEST;
+		} else {
+			return map_location::NDIRECTIONS;
+		}
 	}
-	if (dist_diag_SW_NE < dist) {
-		if (dx>0) dir = NORTH_EAST;
-		else      dir = SOUTH_WEST;
-	}
-	return dir;
 }
 
 /*map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
