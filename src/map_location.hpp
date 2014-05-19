@@ -40,10 +40,10 @@ struct map_location {
 
 
 	static inline DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u) {
-		return static_cast<map_location::DIRECTION> ((d == NDIRECTIONS) ? NDIRECTIONS : ((d + (k%6u)) % 6u));
+		return (d == NDIRECTIONS) ? NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
 	}
 	static inline DIRECTION rotate_right(DIRECTION d, signed int k) {
-		return static_cast<map_location::DIRECTION> ((k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u) );
+		return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
 	}
 
 	static inline DIRECTION get_opposite_dir(DIRECTION d) {
