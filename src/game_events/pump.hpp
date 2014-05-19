@@ -97,8 +97,7 @@ namespace game_events
 
 	/// Helper function which determines whether a wml_message text can
 	/// really be pushed into the wml_messages_stream, and does it.
-	/// @param type: "console" for logging into console, "chat" for logging into chat, every other value for loggign into both.
-	void put_wml_message(const std::string& logger, const std::string& message, const std::string& type = "both");
+	void put_wml_message(const std::string& logger, const std::string& message, bool in_chat);
 
 	/**
 	 * Directly runs the lua command(s) @a lua_code
