@@ -2328,6 +2328,37 @@ WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 	store.as_scalar() = map_location::write_direction(src.get_relative_dir(dst,mode));
 }
 
+/// Store the rotation of one hex around another in a WML variable.
+/// In increments of 60 degrees, clockwise.
+/// This is mainly useful as a diagnostic tool, but could be useful 
+/// for some kind of scenario.
+WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
+{
+	if (!cfg.child("source")) {
+		WRN_NG << "No source in [store_relative_dir]" << std::endl;
+		return;
+	}
+	if (!cfg.child("destination")) {
+		WRN_NG << "No destination in [store_relative_dir]" << std::endl;
+		return;
+	}
+	if (!cfg.has_attribute("variable")) {
+		WRN_NG << "No variable in [store_relative_dir]" << std::endl;
+		return;
+	}
+
+	const map_location src = cfg_to_loc(cfg.child("source"));
+	const map_location dst = cfg_to_loc(cfg.child("destination"));
+
+	std::string variable = cfg["variable"];
+	int angle = cfg["angle"].to_int(1);
+
+	variable_info store(variable, true, variable_info::TYPE_CONTAINER );
+
+	dst.rotate_right_around_center(src,angle).write(store.as_container());
+}
+
+
 /// Store time of day config in a WML variable. This is useful for those who
 /// are too lazy to calculate the corresponding time of day for a given turn,
 /// or if the turn / time-of-day sequence mutates in a scenario.
