@@ -176,7 +176,7 @@ map_location map_location::get_direction(
 	}
 }
 
-map_location::DIRECTION map_location::get_relative_dir(map_location loc) const
+map_location::DIRECTION map_location::get_relative_dir(const map_location & loc) const
 {
 	map_location::DIRECTION dir = NDIRECTIONS;
 	
