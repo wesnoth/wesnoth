@@ -593,8 +593,9 @@ void handle_wml_log_message(const config& cfg)
 {
 	const std::string& logger = cfg["logger"];
 	const std::string& msg = cfg["message"];
+	const std::string& type = cfg["write_to"];
 
-	put_wml_message(logger,msg);
+	put_wml_message(logger,msg,type);
 }
 
 
