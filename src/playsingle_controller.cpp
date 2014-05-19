@@ -370,7 +370,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	}
 
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
-	set_remove_from_carryover_on_leaders_loss(level_["remove_from_carryover_on_leaders_loss"].to_bool(true));
+	set_remove_from_carryover_on_defeat(level_["remove_from_carryover_on_defeat"].to_bool(true));
 	end_level_data &end_level = get_end_level_data();
 	end_level.carryover_percentage = level_["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	end_level.carryover_add = level_["carryover_add"].to_bool();

@@ -59,6 +59,9 @@ Version 1.13.0-dev:
      using the new recall_cost attribute in [unit_type] and [unit].
    * Added support for [elseif] tags inside [if]
  * Miscellaneous and bug fixes:
+   * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
+     no_units/always/never which allows the wml developer to decide when a side 
+     is considered defeated
    * Fix Fisher-Yates implemenation of Lua helper.shuffle (bug #21706)
    * Fixed issues with the ~BG() image path function not always working with
      cached images.
