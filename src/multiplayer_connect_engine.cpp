@@ -153,7 +153,7 @@ connect_engine::connect_engine(game_display& disp, game_state& state,
 				side_str);
 			user_team_names_.push_back(user_team_name.t_str().to_serialized());
 
-			if (side["allow_player"].to_bool(true)) {
+			if (side["allow_player"].to_bool(true) || game_config::debug) {
 				player_teams_.push_back(user_team_name.str());
 			}
 		}
