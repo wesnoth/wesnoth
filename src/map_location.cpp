@@ -182,7 +182,7 @@ static bool is_vertically_higher_than ( const map_location & m1, const map_locat
 
 map_location::DIRECTION map_location::get_relative_dir(const map_location & loc) const
 {
-	return get_relative_dir(loc, map_location::DEFAULT);
+	return get_relative_dir(loc, map_location::RADIAL_SYMMETRY);
 }
 
 map_location::DIRECTION map_location::get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE opt) const
