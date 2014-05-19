@@ -695,8 +695,12 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 			import_user(data, false, side_taken);
 			update_and_send_diff();
 
-			side_engines_[side_taken]->set_waiting_to_choose_status(side_engines_[side_taken]->allow_changes()); //wait for them to choose faction if allowed
-			LOG_MP << "waiting to choose status = " << side_engines_[side_taken]->allow_changes() << std::endl;
+			// Wait for them to choose faction if allowed.
+			side_engines_[side_taken]->
+				set_waiting_to_choose_status(side_engines_[side_taken]->
+					allow_changes());
+			LOG_MP << "waiting to choose status = " <<
+				side_engines_[side_taken]->allow_changes() << std::endl;
 			result.second = false;
 
 			LOG_NW << "sent player data\n";
@@ -1110,11 +1114,16 @@ bool side_engine::ready_for_start() const
 		return true;
 	}
 
-	if (available_for_user()) return false; //if controller_ == CNTR_NETWORK and player_id_.empty(), this line will return false.
+	if (available_for_user()) {
+		// If controller_ == CNTR_NETWORK and player_id_.empty().
+		return false;
+	}
 
 	if (controller_ == CNTR_NETWORK) {
 		if (player_id_ == preferences::login() || !waiting_to_choose_faction_ || !allow_changes_) {
-			return true;//the host is ready. a network player, who got a chance to choose faction if allowed, is also ready
+			// The host is ready. A network player, who got a chance
+			// to choose faction if allowed, is also ready.
+			return true;
 		}
 	}
 
