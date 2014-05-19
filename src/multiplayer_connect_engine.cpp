@@ -1217,8 +1217,9 @@ void side_engine::place_user(const config& data, bool contains_selection)
 		flg_.set_current_faction(data["faction"].str());
 		flg_.set_current_leader(data["leader"].str());
 		flg_.set_current_gender(data["gender"].str());
-		waiting_to_choose_faction_ = false;
 	}
+
+	waiting_to_choose_faction_ = false;
 }
 
 void side_engine::update_controller_options()
