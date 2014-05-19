@@ -35,8 +35,20 @@ class variable_set;
 /** Represents a location on the map. */
 struct map_location {
 	/** Valid directions which can be moved in our hexagonal world. */
-	enum DIRECTION { NORTH, NORTH_EAST, SOUTH_EAST, SOUTH,
-					 SOUTH_WEST, NORTH_WEST, NDIRECTIONS };
+	enum DIRECTION { NORTH=0, NORTH_EAST=1, SOUTH_EAST=2, SOUTH=3,
+					 SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
+
+
+	static inline DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u) {
+		return static_cast<map_location::DIRECTION> ((d == NDIRECTIONS) ? NDIRECTIONS : ((d + (k%6u)) % 6u));
+	}
+	static inline DIRECTION rotate_right(DIRECTION d, signed int k) {
+		return static_cast<map_location::DIRECTION> ((k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u) );
+	}
+
+	static inline DIRECTION get_opposite_dir(DIRECTION d) {
+		return rotate_right(d,3u);
+	}
 
 	static DIRECTION parse_direction(const std::string& str);
 
@@ -83,7 +95,12 @@ struct map_location {
 	// Do n step in the direction d
 	map_location get_direction(DIRECTION d, int n = 1) const;
 	DIRECTION get_relative_dir(map_location loc) const;
-	static DIRECTION get_opposite_dir(DIRECTION d);
+
+	// Express as a vector in the basis N, NE. N, and NE may be obtained by zero.get_direction(NORTH), ...(NORTH_EAST), respectively.
+	std::pair<int,int> get_in_basis_N_NE() const;
+
+	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
+	map_location rotate_right_around_center(const map_location & center, int k) const;
 
 	static const map_location null_location;
 

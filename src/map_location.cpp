@@ -205,7 +205,7 @@ map_location::DIRECTION map_location::get_relative_dir(map_location loc) const
 	return dir;
 }
 
-map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
+/*map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
 	switch (d) {
 		case NORTH:
 			return SOUTH;
@@ -223,6 +223,36 @@ map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d
 		default:
 			return NDIRECTIONS;
 	}
+}*/
+
+std::pair<int,int> map_location::get_in_basis_N_NE() const {
+	map_location temp(*this);
+	std::pair<int, int> ret;
+
+	ret.second = temp.x;
+	temp = temp.get_direction(SOUTH_WEST,temp.x);
+	assert(temp.x == 0);
+	
+	ret.first = -temp.y;
+	temp = temp.get_direction(NORTH,temp.y);
+	assert(temp.y == 0);
+
+	temp = temp.get_direction(NORTH, ret.first);
+	temp = temp.get_direction(NORTH_EAST, ret.second);
+	assert(temp == *this);
+
+	return ret;
+}
+
+map_location map_location::rotate_right_around_center(const map_location & center, int k) const {
+	map_location temp(*this);
+	temp.vector_difference_assign(center);
+
+	std::pair<int,int> coords = temp.get_in_basis_N_NE();
+	map_location::DIRECTION d1 = map_location::rotate_right(NORTH, k);
+	map_location::DIRECTION d2 = map_location::rotate_right(NORTH_EAST, k);
+
+	return center.get_direction(d1, coords.first).get_direction(d2, coords.second);
 }
 
 bool map_location::matches_range(const std::string& xloc, const std::string &yloc) const
