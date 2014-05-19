@@ -176,6 +176,10 @@ map_location map_location::get_direction(
 	}
 }
 
+static bool is_vertically_higher_than ( const map_location & m1, const map_location & m2 ) {
+	return (is_even(m1.x) && is_odd(m2.x)) ? (m1.y <= m2.y) : (m1.y < m2.y);
+}
+
 map_location::DIRECTION map_location::get_relative_dir(const map_location & loc) const
 {
 	return get_relative_dir(loc, map_location::DEFAULT);
@@ -210,36 +214,32 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 		}
 		return dir;
 	} else {
-		map_location diff(loc);
-		diff.vector_difference_assign(*this);
+		map_location temp(loc);
 
-		const static map_location z(0,0);
-		map_location temp;
-
-		if (diff.y < 0) {
-			temp = diff.rotate_right_around_center(z,1);
-			if (diff.y >= 0) {
+		if (is_vertically_higher_than(temp,*this)) {
+			temp = temp.rotate_right_around_center(*this,1u);
+			if (!is_vertically_higher_than(temp,*this)) {
 				return map_location::NORTH_EAST;
 			}
-			temp = temp.rotate_right_around_center(z,1);
-			if (diff.y >= 0) {
+			temp = temp.rotate_right_around_center(*this,1u);
+			if (!is_vertically_higher_than(temp,*this)) {
 				return map_location::NORTH;
 			}
 			return map_location::NORTH_WEST;
-		} else if (diff.y > 0) {
-			temp = diff.rotate_right_around_center(z,1);
-			if (diff.y <= 0) {
+		} else if (is_vertically_higher_than(*this,temp)) {
+			temp = temp.rotate_right_around_center(*this,1u);
+			if (!is_vertically_higher_than(*this,temp)) {
 				return map_location::SOUTH_WEST;
 			}
-			temp = temp.rotate_right_around_center(z,1);
-			if (diff.y <= 0) {
+			temp = temp.rotate_right_around_center(*this,1u);
+			if (!is_vertically_higher_than(*this,temp)) {
 				return map_location::SOUTH;
 			}
 			return map_location::SOUTH_EAST;
-		} else if (diff.x > 0) {
-			return map_location::NORTH_EAST;
-		} else if (diff.x < 0) {
-			return map_location::SOUTH_WEST;
+		} else if (temp.x > x) {
+			return map_location::SOUTH_EAST;
+		} else if (temp.x < x) {
+			return map_location::NORTH_WEST;
 		} else {
 			return map_location::NDIRECTIONS;
 		}
