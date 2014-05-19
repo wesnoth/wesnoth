@@ -233,13 +233,18 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
-	const std::string& x = child["x"];
-	const std::string& y = child["y"];
-	const std::vector<map_location> steps = parse_location_range(x,y);
+	std::vector<map_location> steps;
+
+	try {
+		read_locations(child,steps);
+	} catch (bad_lexical_cast &) {
+		WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+		return false;
+	}
 
 	if(steps.empty()) 
 	{
-		WRN_REPLAY << "Warning: Missing path data found in [move]\n";
+		WRN_REPLAY << "Warning: Missing path data found in [move]" << std::endl;
 		return false;
 	}
 
@@ -247,7 +252,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	const map_location& dst = steps.back();
 
 	if (src == dst) {
-		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping...\n";
+		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping..." << std::endl;
 		return false;
 	}
 	
@@ -270,7 +275,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	}
 	bool skip_sighted = false;
 	bool skip_ally_sighted = false;
-	if(child["skip_sighed"] == "all")
+	if(child["skip_sighted"] == "all")
 	{
 		skip_sighted = true;
 	}

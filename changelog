@@ -1,8 +1,18 @@
 Version 1.11.14+dev:
+ * Graphics:
+   * Fixed bug #22045: Only blit neutral surfaces.
  * Language and i18n:
    * Updated translations: Portuguese
  * Miscellaneous and bug fixes:
    * Reallow selection of another unit on same side without deselect first
+   * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
+   * Fix bug #21867: team flag colors not refreshed after making use of
+     [modify_side] color= unless a new flag set is also provided.
+   * Fix a bug where in movement records, "skip_sighted" was sometimes
+     spelled as "skip_sighed".
+   * Remove 'allow_new_game=no' entries from random map new game list
+   * Fix bug #22020: make base units with variations help entry clickable
+     from the 'Unit Description' menu entry or from side pane.
 
 Version 1.11.14:
  * Campaigns:

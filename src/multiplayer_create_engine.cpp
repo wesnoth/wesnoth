@@ -845,11 +845,14 @@ void create_engine::init_all_levels()
 	BOOST_FOREACH(const config &data,
 		resources::config_manager->game_config().child_range("multiplayer"))
 	{
+		if (!data["allow_new_game"].to_bool(true))
+			continue;
+			
 		if (!data["map_generation"].empty()) {
 			random_map_ptr new_random_map(new random_map(data));
 			random_maps_.push_back(new_random_map);
 			random_maps_.back()->set_metadata();
-		} else if (data["allow_new_game"].to_bool(true)) {
+		} else {
 			scenario_ptr new_scenario(new scenario(data));
 			scenarios_.push_back(new_scenario);
 			scenarios_.back()->set_metadata();

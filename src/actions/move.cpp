@@ -1242,7 +1242,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
 		return 0;
 	}
-	//if we have no fog activatd we always skipsighed
+	//if we have no fog activated then we always skip sighted
 	if(resources::units->find(steps.front()) != resources::units->end())
 	{
 		const team &current_team = (*resources::teams)[

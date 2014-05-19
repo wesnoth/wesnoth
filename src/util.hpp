@@ -73,7 +73,14 @@ inline double round_portable(double d) {
 	return (d >= 0.0) ? std::floor(d + 0.5) : std::ceil(d - 0.5);
 }
 
-struct bad_lexical_cast {};
+struct bad_lexical_cast : std::exception
+{
+public:
+	const char *what() const throw()
+	{
+		return "bad_lexical_cast";
+	}
+};
 
 template<typename To, typename From>
 To lexical_cast(From a)

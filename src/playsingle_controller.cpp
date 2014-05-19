@@ -355,8 +355,14 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	// Read sound sources
 	assert(soundsources_manager_ != NULL);
 	BOOST_FOREACH(const config &s, level_.child_range("sound_source")) {
-		soundsource::sourcespec spec(s);
-		soundsources_manager_->add(spec);
+		try {
+			soundsource::sourcespec spec(s);
+			soundsources_manager_->add(spec);
+		} catch (bad_lexical_cast &) {
+			ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
+			ERR_NG << "sound_source config was: " << s.debug() << std::endl;
+			ERR_NG << "Skipping this sound source..." << std::endl;
+		}
 	}
 
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));

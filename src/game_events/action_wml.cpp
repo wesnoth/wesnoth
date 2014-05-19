@@ -1275,9 +1275,14 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		config::attribute_value flag = cfg["flag"];
 		if(!flag.empty()) {
 			teams[team_index].set_flag(flag);
-			resources::screen->reinit_flags_for_side(team_index);
 			// Needed especially when map isn't animated.
 			invalidate_screen = true;
+		}
+		// If either the flag set or the team color changed, we need to
+		// rebuild the team's flag cache to reflect the changes. Note that
+		// this is not required for flag icons (used by the theme UI only).
+		if(!color.empty() || !flag.empty()) {
+			resources::screen->reinit_flags_for_side(team_index);
 		}
 		// Change flag icon
 		config::attribute_value flag_icon = cfg["flag_icon"];
@@ -2242,8 +2247,15 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
-	soundsource::sourcespec spec(cfg.get_parsed_config());
-	resources::soundsources->add(spec);
+	config parsed = cfg.get_parsed_config();
+	try {
+		soundsource::sourcespec spec(parsed);
+		resources::soundsources->add(spec);
+	} catch (bad_lexical_cast &) {
+		ERR_NG << "Error when parsing sound_source config: bad lexical cast." << std::endl;
+		ERR_NG << "sound_source config was: " << parsed.debug() << std::endl;
+		ERR_NG << "Skipping this sound source..." << std::endl;
+	}
 }
 
 /// Store time of day config in a WML variable. This is useful for those who
