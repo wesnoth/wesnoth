@@ -207,6 +207,85 @@ BOOST_AUTO_TEST_CASE ( reality_check_get_direction )
 	reality_check_get_direction_helper(b,se);
 }
 
+static map_location::DIRECTION legacy_get_opposite_dir(map_location::DIRECTION d) 
+{
+	switch (d) {
+		case map_location::NORTH:
+			return map_location::SOUTH;
+		case map_location::NORTH_EAST:
+			return map_location::SOUTH_WEST;
+		case map_location::SOUTH_EAST:
+			return map_location::NORTH_WEST;
+		case map_location::SOUTH:
+			return map_location::NORTH;
+		case map_location::SOUTH_WEST:
+			return map_location::NORTH_EAST;
+		case map_location::NORTH_WEST:
+			return map_location::SOUTH_EAST;
+		case map_location::NDIRECTIONS:
+		default:
+			return map_location::NDIRECTIONS;
+	}
+}
+
+BOOST_AUTO_TEST_CASE ( check_get_opposite_dir_refactor )
+{
+	for (unsigned int i = 0; i < 7; i++ ) {
+		map_location::DIRECTION d = static_cast<map_location::DIRECTION> (i);
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_dir(d), legacy_get_opposite_dir(d) );
+	}
+}
+
+BOOST_AUTO_TEST_CASE ( check_rotate )
+{
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH) , map_location::NORTH_EAST );
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_EAST,-1) , map_location::NORTH);
+
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_EAST) , map_location::SOUTH_EAST );
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_EAST,-1) , map_location::NORTH_EAST );
+
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_EAST) , map_location::SOUTH );
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH, -1) , map_location::SOUTH_EAST );
+
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH), map_location::SOUTH_WEST);
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_WEST,-1) , map_location::SOUTH );
+
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::SOUTH_WEST), map_location::NORTH_WEST);
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_WEST,-1) , map_location::SOUTH_WEST );
+
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH_WEST), map_location::NORTH);
+	BOOST_CHECK_EQUAL ( map_location::rotate_right(map_location::NORTH,-1) , map_location::NORTH_WEST );
+
+
+	for (unsigned int i = 0; i < 7; i++ ) {
+		map_location::DIRECTION d = static_cast<map_location::DIRECTION> (i);
+		BOOST_CHECK_EQUAL ( map_location::get_opposite_dir(d), map_location::rotate_right(d,3) );
+		BOOST_CHECK_EQUAL ( map_location::rotate_right(d,-2), map_location::rotate_right(d,4) );
+	}
+}
+
+static void rotate_around_centers ( const std::vector<map_location> & locs )
+{
+	for (std::vector<map_location>::const_iterator it_a = locs.begin(); it_a != locs.end(); ++it_a) {
+		for (std::vector<map_location>::const_iterator it_b = it_a + 1; it_b != locs.end(); ++it_b) {
+			const map_location & a = *it_a;
+			const map_location & b = *it_b;
+
+			a.rotate_right_around_center(b,1);
+			a.rotate_right_around_center(b,-1);
+			a.rotate_right_around_center(b,2);
+			a.rotate_right_around_center(b,-2);
+			a.rotate_right_around_center(b,3);
+			a.rotate_right_around_center(b,0);
+		}
+	}
+}
+
+BOOST_AUTO_TEST_CASE ( check_rotate_around_center )
+{
+	rotate_around_centers(preset_locs);
+}
+
 /**
  * This commented block was used to visualize the output of get_relative_dir
  * and to help derive the implementation in commit 
@@ -258,4 +337,4 @@ BOOST_AUTO_TEST_CASE ( visualize_get_relative_dir )
 	std::cout << "***" << std::endl;
 }*/
 
-BOOST_AUTO_TEST_SUITE_END()
+BOOST_AUTO_TEST_SUITE_END() 
