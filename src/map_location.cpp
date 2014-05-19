@@ -176,6 +176,11 @@ map_location map_location::get_direction(
 	}
 }
 
+map_location::DIRECTION map_location::get_relative_dir(const map_location & loc) const
+{
+	return get_relative_dir(loc, map_location::DEFAULT);
+}
+
 map_location::DIRECTION map_location::get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE opt) const
 {
 	if (opt == map_location::DEFAULT) {
