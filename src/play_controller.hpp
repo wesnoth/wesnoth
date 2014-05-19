@@ -127,8 +127,8 @@ public:
 
 	void set_victory_when_enemies_defeated(bool e)
 		{ victory_when_enemies_defeated_ = e; }
-	void set_remove_from_carryover_on_leaders_loss(bool e)
-		{ remove_from_carryover_on_leaders_loss_ = e; }
+	void set_remove_from_carryover_on_defeat(bool e)
+		{ remove_from_carryover_on_defeat_= e; }
 	end_level_data& get_end_level_data() {
 		return end_level_data_;
 	}
@@ -282,7 +282,7 @@ private:
 	std::vector<const_item_ptr> wml_commands_;
 
 	bool victory_when_enemies_defeated_;
-	bool remove_from_carryover_on_leaders_loss_;
+	bool remove_from_carryover_on_defeat_;
 	end_level_data end_level_data_;
 	std::vector<std::string> victory_music_;
 	std::vector<std::string> defeat_music_;
