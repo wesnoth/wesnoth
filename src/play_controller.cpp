@@ -187,7 +187,7 @@ void play_controller::init(CVideo& video){
 	bool snapshot = level_["snapshot"].to_bool();
 
 	if (level_["modify_placing"].to_bool()) {
-		LOG_NG << "modifying placing...\n";
+		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations();
 	}
 
@@ -195,7 +195,7 @@ void play_controller::init(CVideo& video){
 		tod_manager_.add_time_area(t);
 	}
 
-	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init teams");
 
 	resources::teams->resize(level_.child_count("side"));
@@ -241,7 +241,7 @@ void play_controller::init(CVideo& video){
 	// mouse_handler expects at least one team for linger mode to work.
 	if (teams_.empty()) end_level_data_.transient.linger_mode = false;
 
-	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
 	preferences::encounter_recruitable_units(teams_);
 	preferences::encounter_start_units(units_);
@@ -249,11 +249,11 @@ void play_controller::init(CVideo& video){
 	preferences::encounter_map_terrain(map_);
 
 
-	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << '\n';
+	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init theme");
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
 
-	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << '\n';
+	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
 	gui_.reset(new game_display(units_, video, map_, tod_manager_, teams_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
@@ -268,7 +268,7 @@ void play_controller::init(CVideo& video){
 	menu_handler_.set_gui(gui_.get());
 	resources::screen = gui_.get();
 
-	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "done initializing display... " << (SDL_GetTicks() - ticks_) << std::endl;
 
 	if(first_human_team_ != -1) {
 		gui_->set_team(first_human_team_);
@@ -310,7 +310,7 @@ void play_controller::init(CVideo& video){
 }
 
 void play_controller::init_managers(){
-	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
@@ -322,7 +322,7 @@ void play_controller::init_managers(){
 	resources::whiteboard = whiteboard_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
-	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";
+	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;
 }
 
 static int placing_score(const config& side, const gamemap& map, const map_location& pos)
@@ -390,7 +390,7 @@ void play_controller::place_sides_in_preferred_locations()
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
 			map_.set_starting_position(i->side,i->pos);
-			LOG_NG << "placing side " << i->side << " at " << i->pos << '\n';
+			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
 }
@@ -640,10 +640,10 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
 	}
 
 	if (!loading_game_) recorder.init_side();
-	LOG_NG << "set_scontext_synced sync from maybe_do_init_side";
+	LOG_NG << "set_scontext_synced sync from maybe_do_init_side" << std::endl;
 	set_scontext_synced sync;
 	do_init_side(team_index, is_replay);
-	LOG_NG << "set_scontext_synced sync from maybe_do_init_side end ";
+	LOG_NG << "set_scontext_synced sync from maybe_do_init_side end " << std::endl;
 	
 }
 
@@ -1000,7 +1000,7 @@ void play_controller::enter_textbox()
 		break;
 	default:
 		menu_handler_.get_textbox().close(*gui_);
-		ERR_DP << "unknown textbox mode\n";
+		ERR_DP << "unknown textbox mode" << std::endl;
 	}
 
 }
@@ -1487,11 +1487,11 @@ void play_controller::check_victory()
 			if (ai.empty()) ai = "default ai";
 			LOG_AIT << l << " (using " << ai << ") ";
 		}
-		LOG_AIT << '\n';
+		LOG_AIT << std::endl;
 		ai_testing::log_victory(not_defeated);
 	}
 
-	DBG_NG << "throwing end level exception...\n";
+	DBG_NG << "throwing end level exception..." << std::endl;
 	throw end_level_exception(found_player ? VICTORY : DEFEAT);
 }
 
