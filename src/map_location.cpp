@@ -29,7 +29,6 @@
 #include "resources.hpp"
 #include "util.hpp"
 
-
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 #define DBG_G LOG_STREAM(debug, general)

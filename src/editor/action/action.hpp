@@ -224,7 +224,7 @@ class editor_action_area : public editor_action_extendable
 class editor_action_paste : public editor_action_extendable
 {
 	public:
-		editor_action_paste(const map_fragment& paste, const map_location& offset = map_location(0,0))
+		editor_action_paste(const map_fragment& paste, const map_location& offset = map_location::ZERO())
 		: offset_(offset), paste_(paste)
 		{
 		}

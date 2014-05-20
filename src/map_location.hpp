@@ -24,6 +24,7 @@ class variable_set;
 #include <vector>
 #include <set>
 #include <boost/unordered_map.hpp>
+#include <boost/assign/list_of.hpp>
 
 /**
  * Encapsulates the map of the game.
@@ -38,6 +39,15 @@ struct map_location {
 	enum DIRECTION { NORTH=0, NORTH_EAST=1, SOUTH_EAST=2, SOUTH=3,
 					 SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
 
+	static const std::vector<DIRECTION> & default_dirs() {
+		static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
+		return dirs;
+	}
+
+	static const map_location & ZERO() {
+		static const map_location z(0,0);
+		return z;
+	}
 
 	static inline DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u) {
 		return (d == NDIRECTIONS) ? NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
@@ -105,7 +115,7 @@ struct map_location {
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
 	map_location rotate_right_around_center(const map_location & center, int k) const;
 
-	static const map_location null_location;
+	static const map_location null_location;	
 
 	friend std::size_t hash_value(map_location const &a);
 };

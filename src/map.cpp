@@ -645,7 +645,7 @@ const std::map<t_translation::t_terrain, size_t>& gamemap::get_weighted_terrain_
 
 	const map_location center(w()/2,h()/2);
 
-	const size_t furthest_distance = distance_between(map_location(0,0),center);
+	const size_t furthest_distance = distance_between(map_location::ZERO(),center);
 
 	const size_t weight_at_edge = 100;
 	const size_t additional_weight_at_center = 200;

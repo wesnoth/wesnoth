@@ -175,7 +175,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 		}
 	}
 
-	double corner_distance = distance_between(map_location(0,0), map_location(map_.w(),map_.h()));
+	double corner_distance = distance_between(map_location::ZERO(), map_location(map_.w(),map_.h()));
 	double village_value = get_village_value();
 	if(has_leader && village_value > 0.0) {
 		std::map<map_location,pathfind::paths> friends_possible_moves;

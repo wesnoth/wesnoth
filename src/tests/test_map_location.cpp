@@ -38,7 +38,7 @@ struct MLFixture
 		va = map_location(3,4);
 		vb = map_location(10,8);
 		vc = map_location(0,9);
-		vz = map_location(0,0);
+		vz = map_location::ZERO();
 		vt1 = map_location(va.vector_negation());
 		vt2 = map_location(vb.vector_sum(vc));
 		vt3 = map_location(va.vector_sum(vc.vector_negation()));

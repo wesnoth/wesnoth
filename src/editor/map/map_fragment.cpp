@@ -103,7 +103,7 @@ void map_fragment::rotate_60_cw()
 {
 	area_.clear();
 	BOOST_FOREACH(tile_info& ti, items_) {
-		map_location l(0,0);
+		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
 		// rotate the X-Y axes to SOUTH/SOUTH_EAST - SOUTH_WEST axes
@@ -123,7 +123,7 @@ void map_fragment::rotate_60_ccw()
 {
 	area_.clear();
 	BOOST_FOREACH(tile_info& ti, items_) {
-		map_location l(0,0);
+		map_location l = map_location::ZERO();
 		int x = ti.offset.x;
 		int y = ti.offset.y;
 		// rotate the X-Y axes to NORTH/NORTH_EAST - SOUTH_EAST axes'

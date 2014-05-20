@@ -1609,11 +1609,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		const vconfig::child_list& adj_filt = cfg.get_children("filter_adjacent");
 		for (i = adj_filt.begin(), i_end = adj_filt.end(); i != i_end; ++i) {
 			int match_count=0;
-			static std::vector<map_location::DIRECTION> default_dirs
-				= map_location::parse_directions("n,ne,se,s,sw,nw");
 			config::attribute_value i_adjacent = (*i)["adjacent"];
 			std::vector<map_location::DIRECTION> dirs = !i_adjacent.blank() ?
-				map_location::parse_directions(i_adjacent) : default_dirs;
+				map_location::parse_directions(i_adjacent) : map_location::default_dirs();
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
