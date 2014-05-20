@@ -215,12 +215,12 @@ namespace game_config {
 						}
 						return;
 					} catch(config::error& e) {
-						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<<"" << std::endl;
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<< std::endl;
 					} catch(io_exception&) {
 						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
 					} catch (boost::iostreams::gzip_error& e) {
 						//read_file -> ... -> read_gz can throw this exception.
-						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << "" << std::endl;
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << std::endl;
 					}
 				}
 

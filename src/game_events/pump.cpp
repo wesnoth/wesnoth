@@ -444,7 +444,7 @@ void handle_event_command(const std::string &cmd,
 
 	if (!resources::lua_kernel->run_wml_action(cmd, cfg, event_info))
 	{
-		ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"" << std::endl;
+		ERR_NG << "Couldn't find function for wml tag: "<< cmd << std::endl;
 	}
 
 	DBG_NG << "done handling command...\n";

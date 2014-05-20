@@ -341,14 +341,14 @@ bool unit_map::self_check() const {
 	for(; uit != umap_.end(); ++uit){
 		if(uit->second.ref_count < 0){
 			good=false;
-			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<<"" << std::endl;
+			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<< std::endl;
 		}
 		if(uit->second.unit != NULL){
 			uit->second.unit->id(); //crash if bad pointer
 		}
 		if(uit->first <= 0){
 			good=false;
-			ERR_NG << "unit_map umap uid <=0 is " << uit->first <<"" << std::endl;
+			ERR_NG << "unit_map umap uid <=0 is " << uit->first << std::endl;
 		}
 		if(uit->second.unit == NULL && uit->second.ref_count == 0 ){
 			good=false;
@@ -363,11 +363,11 @@ bool unit_map::self_check() const {
 	for(; locit != lmap_.end(); ++locit){
 		if(locit->second == umap_.end() ){
 			good=false;
-			ERR_NG << "unit_map lmap element == umap_.end() "<<"" << std::endl;
+			ERR_NG << "unit_map lmap element == umap_.end() "<< std::endl;
 		}
 		if(locit->first != locit->second->second.unit->get_location()){
 			good=false;
-			ERR_NG << "unit_map lmap location != unit->get_location() " <<"" << std::endl;
+			ERR_NG << "unit_map lmap location != unit->get_location() " << std::endl;
 		}
 	}
 	//assert(good);

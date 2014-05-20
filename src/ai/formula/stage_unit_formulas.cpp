@@ -79,7 +79,7 @@ bool stage_unit_formulas::do_play_stage()
 						priority = 0;
 					} catch(type_error& e) {
 						priority = 0;
-						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << "" << std::endl;
+						ERR_AI << "formula type error while evaluating unit priority formula  " << e.message << std::endl;
 					}
 				}
 

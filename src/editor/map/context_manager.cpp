@@ -935,7 +935,7 @@ void context_manager::reload_map()
 void context_manager::switch_context(const int index)
 {
 	if (index < 0 || static_cast<size_t>(index) >= map_contexts_.size()) {
-		WRN_ED << "Invalid index in switch map context: " << index << "" << std::endl;
+		WRN_ED << "Invalid index in switch map context: " << index << std::endl;
 		return;
 	}
 	map_context_refresher mcr(*this, *map_contexts_[index]);

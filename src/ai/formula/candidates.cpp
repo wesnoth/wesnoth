@@ -56,7 +56,7 @@ candidate_action_ptr candidate_action_manager::load_candidate_action_from_config
 		} else if( type == "attack") {
 			new_ca = candidate_action_ptr(new attack_candidate_action(name, type, rc_action, function_table ));
 		} else {
-			ERR_AI << "Unknown candidate action type: " << type << "" << std::endl;
+			ERR_AI << "Unknown candidate action type: " << type << std::endl;
 		}
 	} catch(formula_error& e) {
 		ai->handle_exception(e, "Error while registering candidate action '" + name + "'");
@@ -102,7 +102,7 @@ int base_candidate_action::execute_formula(const const_formula_ptr& formula,
 		res = 0;
 	} catch(type_error& e) {
 		res = 0;
-		ERR_AI << "formula type error while evaluating candidate action: " << e.message << "" << std::endl;
+		ERR_AI << "formula type error while evaluating candidate action: " << e.message << std::endl;
 	}
 
 	return res;

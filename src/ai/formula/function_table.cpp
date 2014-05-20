@@ -1310,7 +1310,7 @@ private:
 		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"attack:dst")))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
 		if(resources::units->count(move_from) == 0 || resources::units->count(dst) == 0) {
-			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "" << std::endl;
+			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << std::endl;
 			return variant();
 		}
 		return variant(new attack_callable(move_from, src, dst, weapon));

@@ -143,7 +143,7 @@ void connection::cancel()
 		boost::system::error_code ec;
 		socket_.cancel(ec);
 		if(ec) {
-			WRN_NW << "Failed to cancel network operations: " << ec.message() << "" << std::endl;
+			WRN_NW << "Failed to cancel network operations: " << ec.message() << std::endl;
 		}
 	}
 }

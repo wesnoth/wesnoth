@@ -73,7 +73,7 @@ void editor_action_item_delete::perform_without_undo(map_context& /*mc*/) const
 {
 //	item_map& items = mc.get_items();
 //	if (!items.erase(loc_)) {
-//		ERR_ED << "Could not delete item on " << loc_.x << "/" << loc_.y << "" << std::endl;
+//		ERR_ED << "Could not delete item on " << loc_.x << "/" << loc_.y << std::endl;
 //	} else {
 //		mc.add_changed_location(loc_);
 //	}

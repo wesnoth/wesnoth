@@ -104,7 +104,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	//call function
 	if(lua_pcall(L_, 2, 1, 0) != 0)
 	{
-		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1) << "" << std::endl;
+		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1) << std::endl;
 		return std::vector<std::string>();
 	}
 	if (!lua_isstring(L_, -1))

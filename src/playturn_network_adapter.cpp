@@ -43,7 +43,7 @@ void playturn_network_adapter::read_from_network()
 
 	if(back.attribute_range().first != back.attribute_range().second )
 	{
-		ERR_NW << "found unexpected attribute:" <<back.debug() << "" << std::endl;
+		ERR_NW << "found unexpected attribute:" <<back.debug() << std::endl;
 	}
 }
 

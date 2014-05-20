@@ -229,7 +229,7 @@ static TTF_Font* open_font(const std::string& fname, int size)
 
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 	if(font == NULL) {
-		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << "" << std::endl;
+		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << std::endl;
 		return NULL;
 	}
 

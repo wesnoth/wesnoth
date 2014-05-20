@@ -551,7 +551,7 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	const int res = SDLNet_TCP_AddSocket(socket_set,psock);
 	if(res == -1) {
-		ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "" << std::endl;
+		ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << std::endl;
 		SDLNet_TCP_Close(psock);
 
 		throw network::error(_("Could not add socket to socket set"));
@@ -619,7 +619,7 @@ connection accept_connection()
 				pending_sockets.push_back(sock);
 			} else {
 				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection" << std::endl;
-				ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "" << std::endl;
+				ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << std::endl;
 
 				SDLNet_TCP_Close(sock);
 			}

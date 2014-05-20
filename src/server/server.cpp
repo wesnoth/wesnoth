@@ -802,7 +802,7 @@ void server::run() {
 			metrics_.no_requests();
 
 		} catch(simple_wml::error& e) {
-			WRN_CONFIG << "Warning: error in received data: " << e.message << "" << std::endl;
+			WRN_CONFIG << "Warning: error in received data: " << e.message << std::endl;
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
 				LOG_SERVER << "Try to disconnect all users...\n";
@@ -815,7 +815,7 @@ void server::run() {
 				break;
 			}
 			if (!e.socket) {
-				ERR_SERVER << "network error: " << e.message << "" << std::endl;
+				ERR_SERVER << "network error: " << e.message << std::endl;
 				continue;
 			}
 			DBG_SERVER << "socket closed: " << e.message << "\n";
@@ -902,7 +902,7 @@ void server::run() {
 		// all user_handler exceptions are caught correctly
 		// this can removed.
 		} catch (user_handler::error& e) {
-			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "" << std::endl;
+			ERR_SERVER << "Uncaught user_handler exception: " << e.message << std::endl;
 		}
 	}
 }
@@ -1269,7 +1269,7 @@ void server::process_query(const network::connection sock,
                            simple_wml::node& query) {
 	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "" << std::endl;
+		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << std::endl;
 		return;
 	}
 	const std::string command(query["type"].to_string());
@@ -1349,7 +1349,7 @@ void server::start_new_server() {
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
 	if (std::system(restart_command.c_str())) {
-		ERR_SERVER << "Failed to start new server with command: " << restart_command << "" << std::endl;
+		ERR_SERVER << "Failed to start new server with command: " << restart_command << std::endl;
 	} else {
 		LOG_SERVER << "New server started with command: " << restart_command << "\n";
 	}
@@ -2016,7 +2016,7 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 void server::process_nickserv(const network::connection sock, simple_wml::node& data) {
 	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "" << std::endl;
+		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << std::endl;
 		return;
 	}
 
@@ -2871,7 +2871,7 @@ int main(int argc, char** argv) {
 		} else if(val == "--request_sample_frequency" && arg+1 != argc) {
 			request_sample_frequency = atoi(argv[++arg]);
 		} else {
-			ERR_SERVER << "unknown option: " << val << "" << std::endl;
+			ERR_SERVER << "unknown option: " << val << std::endl;
 			return 2;
 		}
 	}

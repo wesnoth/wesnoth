@@ -30,7 +30,7 @@ namespace editor {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
 {
-	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "" << std::endl;
+	WRN_ED << type << " error in load map " << filename << ": " << e_msg << std::endl;
 	utils::string_map symbols;
 	symbols["type"] = type;
 	const char* error_msg = "There was an error ($type) while loading the file:";
@@ -89,30 +89,30 @@ void editor_map::sanity_check()
 {
 	int errors = 0;
 	if (total_width() != static_cast<int>(tiles_.size())) {
-		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.size() << "" << std::endl;
+		ERR_ED << "total_width is " << total_width() << " but tiles_.size() is " << tiles_.size() << std::endl;
 		++errors;
 	}
 	if (total_height() != static_cast<int>(tiles_[0].size())) {
-		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.size() << "" << std::endl;
+		ERR_ED << "total_height is " << total_height() << " but tiles_[0].size() is " << tiles_.size() << std::endl;
 		++errors;
 	}
 	if (w() + 2 * border_size() != total_width()) {
-		ERR_ED << "h is " << h_ << " and border_size is " << border_size() << " but total_width is " << total_width() << "" << std::endl;
+		ERR_ED << "h is " << h_ << " and border_size is " << border_size() << " but total_width is " << total_width() << std::endl;
 		++errors;
 	}
 	if (h() + 2 * border_size() != total_height()) {
-		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << "" << std::endl;
+		ERR_ED << "w is " << w_ << " and border_size is " << border_size() << " but total_height is " << total_height() << std::endl;
 		++errors;
 	}
 	for (size_t i = 1; i < tiles_.size(); ++i) {
 		if (tiles_[i].size() != tiles_[0].size()) {
-			ERR_ED << "tiles_[ " << i << "] has size() " << tiles_[i].size() << " but tiles[0] has size() " << tiles_[0].size() << "" << std::endl;
+			ERR_ED << "tiles_[ " << i << "] has size() " << tiles_[i].size() << " but tiles[0] has size() " << tiles_[0].size() << std::endl;
 			++errors;
 		}
 	}
 	BOOST_FOREACH(const map_location& loc, selection_) {
 		if (!on_board_with_border(loc)) {
-			ERR_ED << "Off-map tile in selection: " << loc << "" << std::endl;
+			ERR_ED << "Off-map tile in selection: " << loc << std::endl;
 		}
 	}
 	if (errors) {

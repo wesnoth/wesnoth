@@ -519,7 +519,7 @@ static lg::log_domain log_server("server");
 		try {
 			ban = bans_.find(banned::create_dummy(ip));
 		} catch (banned::error& e) {
-			ERR_SERVER << e.message << "" << std::endl;
+			ERR_SERVER << e.message << std::endl;
 			os << e.message;
 			return;
 		}

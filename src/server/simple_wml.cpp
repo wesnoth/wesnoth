@@ -277,7 +277,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 		default: {
 			const char* end = strchr(s, '=');
 			if(end == NULL) {
-				ERR_SWML << "attribute: " << s << "" << std::endl;
+				ERR_SWML << "attribute: " << s << std::endl;
 				throw error("did not find '=' after attribute");
 			}
 

@@ -705,7 +705,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			LOG_NW << "sent player data\n";
 		} else {
-			ERR_CF << "tried to take illegal side: " << side_taken << "" << std::endl;
+			ERR_CF << "tried to take illegal side: " << side_taken << std::endl;
 
 			config response;
 			response["failed"] = true;

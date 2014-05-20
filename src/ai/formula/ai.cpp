@@ -501,7 +501,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		} else {
 			//this information is unneded when evaluating formulas form commandline
 			if (!commandline) {
-				ERR_AI << "UNRECOGNIZED MOVE: " << action.to_debug_string() << "" << std::endl;
+				ERR_AI << "UNRECOGNIZED MOVE: " << action.to_debug_string() << std::endl;
 			}
 		}
 

@@ -2950,7 +2950,7 @@ unit& unit::clone(bool is_temporary)
 		if(pos != std::string::npos && pos+1 < id_.size()
 		&& id_.find_first_not_of("0123456789", pos+1) == std::string::npos) {
 			// this appears to be a duplicate of a generic unit, so give it a new id
-			WRN_UT << "assigning new id to clone of generic unit " << id_ << "" << std::endl;
+			WRN_UT << "assigning new id to clone of generic unit " << id_ << std::endl;
 			id_.clear();
 			set_underlying_id();
 		}

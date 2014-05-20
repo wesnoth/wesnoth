@@ -332,7 +332,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << "" << std::endl;
+					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << std::endl;
 					throw error("Map not a rectangle.");
 				}
 				if (y > max_map_size()) {

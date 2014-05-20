@@ -388,7 +388,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else
 	{
-		ERR_NW << "found unknown command:\n" << cfg.debug() << "" << std::endl;
+		ERR_NW << "found unknown command:\n" << cfg.debug() << std::endl;
 	}
 
 	return PROCESS_CONTINUE;

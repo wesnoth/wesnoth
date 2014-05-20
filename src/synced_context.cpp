@@ -385,7 +385,7 @@ set_scontext_synced::~set_scontext_synced()
 	{
 		//if we really get -999 we have a very serious OOS.
 		ERR_REPLAY << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int(-99) << " times." << std::endl;
-		ERR_REPLAY << co.debug() << "" << std::endl;
+		ERR_REPLAY << co.debug() << std::endl;
 	}
 
 	random_new::generator = old_rng_;

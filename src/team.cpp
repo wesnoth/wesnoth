@@ -377,7 +377,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 		if (map.is_village(loc)) {
 			villages_.insert(loc);
 		} else {
-			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << "" << std::endl;
+			WRN_NG << "[side] " << name() << " [village] points to a non-village location " << loc << std::endl;
 		}
 	}
 

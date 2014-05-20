@@ -51,7 +51,7 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 			e = editor.main_loop();
 		}
 	} catch (editor_exception& e) {
-		ERR_ED << "Editor exception in editor::start: " << e.what() << "" << std::endl;
+		ERR_ED << "Editor exception in editor::start: " << e.what() << std::endl;
 		throw;
 	}
 	if (editor_action::get_instance_count() != 0) {

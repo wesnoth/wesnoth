@@ -968,7 +968,7 @@ bool game_controller::play_multiplayer()
 		gui2::show_error_message(disp().video(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
 		if(e.message != "") {
-			ERR_NET << "caught network::error: " << e.message << "" << std::endl;
+			ERR_NET << "caught network::error: " << e.message << std::endl;
 			gui2::show_transient_message(disp().video()
 					, ""
 					, gettext(e.message.c_str()));
@@ -977,7 +977,7 @@ bool game_controller::play_multiplayer()
 		}
 	} catch(config::error& e) {
 		if(e.message != "") {
-			ERR_CONFIG << "caught config::error: " << e.message << "" << std::endl;
+			ERR_CONFIG << "caught config::error: " << e.message << std::endl;
 			gui2::show_transient_message(disp().video(), "", e.message);
 		} else {
 			ERR_CONFIG << "caught config::error" << std::endl;

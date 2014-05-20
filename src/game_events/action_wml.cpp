@@ -1970,7 +1970,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	config::attribute_value divide = cfg["divide"];
 	if (!divide.empty()) {
 		if (divide.to_double() == 0) {
-			ERR_NG << "division by zero on variable " << name << "" << std::endl;
+			ERR_NG << "division by zero on variable " << name << std::endl;
 			return;
 		}
 		var = var.to_double() / divide.to_double();
@@ -1979,7 +1979,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	config::attribute_value modulo = cfg["modulo"];
 	if (!modulo.empty()) {
 		if (modulo.to_double() == 0) {
-			ERR_NG << "division by zero on variable " << name << "" << std::endl;
+			ERR_NG << "division by zero on variable " << name << std::endl;
 			return;
 		}
 		var = std::fmod(var.to_double(), modulo.to_double());

@@ -171,7 +171,7 @@ namespace {
 	{
 		config cfg;
 		cfg.add_child("error")["message"] = msg;
-		LOG_CS << "ERROR: "<<msg<<"" << std::endl;
+		LOG_CS << "ERROR: "<<msg<< std::endl;
 		return cfg;
 	}
 
@@ -229,7 +229,7 @@ namespace {
 		pid_t childpid;
 
 		if((childpid = fork()) == -1) {
-			LOG_CS << "ERROR: fork failed while updating campaign " << addon << "" << std::endl;
+			LOG_CS << "ERROR: fork failed while updating campaign " << addon << std::endl;
 			return;
 		}
 

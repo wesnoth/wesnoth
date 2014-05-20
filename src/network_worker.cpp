@@ -538,7 +538,7 @@ static SOCKET_STATE send_file(buffer* buf)
 	SOCKET_STATE result = send_buffer(buf->sock, buf->raw_buffer, 4);
 
 	if (!file_stream->good()) {
-		ERR_NW << "send_file: Couldn't open file " << buf->config_error << "" << std::endl;
+		ERR_NW << "send_file: Couldn't open file " << buf->config_error << std::endl;
 	}
 	if (result != SOCKET_READY)
 	{

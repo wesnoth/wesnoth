@@ -303,7 +303,7 @@ bool init_sound() {
 	if(!mix_ok) {
 		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "" << std::endl;
+			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << std::endl;
 			return false;
 		}
 
@@ -356,7 +356,7 @@ void close_sound() {
 
 		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
 		if(numtimesopened == 0) {
-			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << "" << std::endl;
+			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << std::endl;
 		}
 		while (numtimesopened) {
 			Mix_CloseAudio();
@@ -378,7 +378,7 @@ void reset_sound() {
 	if (music || sound || bell || UI_sound) {
 		sound::close_sound();
 		if (!sound::init_sound()) {
-			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << "" << std::endl;
+			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << std::endl;
 		}
 		if (!music)
 			sound::stop_music();
@@ -781,7 +781,7 @@ void play_sound_internal(const std::string& files, channel_group group, unsigned
 	}
 
 	if(res < 0) {
-		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "" << std::endl;
+		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << std::endl;
 		//still keep it in the sound cache, in case we want to try again later
 		return;
 	}

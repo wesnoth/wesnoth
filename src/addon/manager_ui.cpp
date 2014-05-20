@@ -984,7 +984,7 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
-		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << "" << std::endl;
+		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << std::endl;
 
 		utils::string_map symbols;
 		symbols["path"] = e.path;

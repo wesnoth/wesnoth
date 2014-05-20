@@ -509,7 +509,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 
 void ui::process_network_error(network::error& error)
 {
-	ERR_NW << "Caught networking error: " << error.message << "" << std::endl;
+	ERR_NW << "Caught networking error: " << error.message << std::endl;
 
 	// Default behavior is to re-throw the error. May be overridden.
 	throw error;

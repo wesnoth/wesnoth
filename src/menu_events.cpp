@@ -2204,7 +2204,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["level"] = level;
 		const std::string& msg =
 				vgettext("Unknown debug level: '$level'.", symbols);
-		ERR_NG << msg << "" << std::endl;
+		ERR_NG << msg << std::endl;
 		add_chat_message(time(NULL), _("error"), 0, msg);
 		return;
 	}
@@ -2213,7 +2213,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["domain"] = domain;
 		const std::string& msg =
 				vgettext("Unknown debug domain: '$domain'.", symbols);
-		ERR_NG << msg << "" << std::endl;
+		ERR_NG << msg << std::endl;
 		add_chat_message(time(NULL), _("error"), 0, msg);
 		return;
 	} else {

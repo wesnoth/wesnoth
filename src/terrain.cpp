@@ -348,7 +348,7 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 					<< "and [" << curr.editor_group() << "]\n";
 				}
 			} else {
-				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << "" << std::endl;
+				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << std::endl;
 				ERR_G << "Failed to add terrain "
 					<< terrain.id() << " (" << terrain.name() << ") "
 					<< "[" << terrain.editor_group() << "]" << "\n";

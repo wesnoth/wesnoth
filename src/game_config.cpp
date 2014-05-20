@@ -262,7 +262,7 @@ namespace game_config
 
 		std::string color_string = v["red_green_scale"].str();
 		if(!string2rgb(color_string, red_green_scale)) {
-			ERR_NG << "can't parse color string red_green_scale, ignoring: " << color_string << "" << std::endl;
+			ERR_NG << "can't parse color string red_green_scale, ignoring: " << color_string << std::endl;
 		}
 		if (red_green_scale.empty()) {
 			red_green_scale.push_back(0x00FFFF00);
@@ -270,7 +270,7 @@ namespace game_config
 
 		color_string = v["red_green_scale_text"].str();
 		if(!string2rgb(color_string, red_green_scale_text)) {
-			ERR_NG << "can't parse color string red_green_scale_text, ignoring: " << color_string << "" << std::endl;
+			ERR_NG << "can't parse color string red_green_scale_text, ignoring: " << color_string << std::endl;
 		}
 		if (red_green_scale_text.empty()) {
 			red_green_scale_text.push_back(0x00FFFF00);
@@ -278,7 +278,7 @@ namespace game_config
 
 		color_string = v["blue_white_scale"].str();
 		if(!string2rgb(color_string, blue_white_scale)) {
-			ERR_NG << "can't parse color string blue_white_scale, ignoring: " << color_string << "" << std::endl;
+			ERR_NG << "can't parse color string blue_white_scale, ignoring: " << color_string << std::endl;
 		}
 		if (blue_white_scale.empty()) {
 			blue_white_scale.push_back(0x00FFFFFF);
@@ -286,7 +286,7 @@ namespace game_config
 
 		color_string = v["blue_white_scale_text"].str();
 		if(!string2rgb(color_string, blue_white_scale_text)) {
-			ERR_NG << "can't parse color string blue_white_scale_text, ignoring: " << color_string << "" << std::endl;
+			ERR_NG << "can't parse color string blue_white_scale_text, ignoring: " << color_string << std::endl;
 		}
 		if (blue_white_scale_text.empty()) {
 			blue_white_scale_text.push_back(0x00FFFFFF);
@@ -352,7 +352,7 @@ namespace game_config
 			{
 				std::vector<Uint32> temp;
 				if(!string2rgb(rgb.second, temp)) {
-					ERR_NG << "Invalid color palette: " << rgb.second << "" << std::endl;
+					ERR_NG << "Invalid color palette: " << rgb.second << std::endl;
 				}
 				team_rgb_colors.insert(std::make_pair(rgb.first, temp));
 			}
@@ -380,7 +380,7 @@ namespace game_config
 			std::vector<Uint32> temp;
 			if(!string2rgb(name, temp)) {
 				static std::vector<Uint32> stv;
-				ERR_NG << "Invalid color palette: " << name << "" << std::endl;
+				ERR_NG << "Invalid color palette: " << name << std::endl;
 				return stv;
 			}
 			team_rgb_colors.insert(std::make_pair(name,temp));
