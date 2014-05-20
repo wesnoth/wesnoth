@@ -201,7 +201,7 @@ void get_files_in_dir(const std::string &directory,
 					}
 					} else {
 					// Show what I consider strange
-						LOG_FS << fullname << "/" << maincfg_filename << " not used now but skip the directory \n";
+						LOG_FS << fullname << "/" << maincfg_filename << " not used now but skip the directory " << std::endl;
 					}
 				} else if (dirs != NULL) {
 					if (mode == ENTIRE_FILE_PATH)
@@ -353,7 +353,7 @@ std::string get_dir(const std::string& dir_path)
 		if(res == 0) {
 			dir = opendir(dir_path.c_str());
 		} else {
-			ERR_FS << "could not open or create directory: " << dir_path << '\n';
+			ERR_FS << "could not open or create directory: " << dir_path << std::endl;
 		}
 	}
 
@@ -389,7 +389,7 @@ bool delete_directory(const std::string& path, const bool keep_pbl)
 		for(std::vector<std::string>::const_iterator i = files.begin(); i != files.end(); ++i) {
 			errno = 0;
 			if(remove((*i).c_str()) != 0) {
-				LOG_FS << "remove(" << (*i) << "): " << strerror(errno) << "\n";
+				LOG_FS << "remove(" << (*i) << "): " << strerror(errno) << std::endl;
 				ret = false;
 			}
 		}
@@ -412,7 +412,7 @@ bool delete_directory(const std::string& path, const bool keep_pbl)
 		remove = ::remove;
 #endif
 	if(remove(path.c_str()) != 0) {
-		LOG_FS << "remove(" << path << "): " << strerror(errno) << "\n";
+		LOG_FS << "remove(" << path << "): " << strerror(errno) << std::endl;
 		ret = false;
 	}
 	return ret;
@@ -452,10 +452,10 @@ std::string get_exe_dir()
 bool create_directory_if_missing(const std::string& dirname)
 {
 	if(is_directory(dirname)) {
-		DBG_FS << "directory " << dirname << " exists, not creating\n";
+		DBG_FS << "directory " << dirname << " exists, not creating" << std::endl;
 		return true;
 	} else if(file_exists(dirname)) {
-		ERR_FS << "cannot create directory " << dirname << "; file exists\n";
+		ERR_FS << "cannot create directory " << dirname << "; file exists" << std::endl;
 		return false;
 	}
 	DBG_FS << "creating missing directory " << dirname << '\n';
@@ -529,7 +529,7 @@ void set_user_data_dir(std::string path)
 		HMODULE module = LoadLibraryA("shell32");
 		SHGetSpecialFolderPathA = reinterpret_cast<SHGSFPAddress>(GetProcAddress(module, "SHGetSpecialFolderPathA"));
 		if(SHGetSpecialFolderPathA) {
-			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents\n";
+			LOG_FS << "Using SHGetSpecialFolderPath to find My Documents" << std::endl;
 			char my_documents_path[MAX_PATH];
 			if(SHGetSpecialFolderPathA(NULL, my_documents_path, 5, 1)) {
 				std::string mygames_path = std::string(my_documents_path) + "/" + "My Games";
@@ -537,11 +537,11 @@ void set_user_data_dir(std::string path)
 				create_directory_if_missing(mygames_path);
 				user_data_dir = mygames_path + "/" + path;
 			} else {
-				WRN_FS << "SHGetSpecialFolderPath failed\n";
+				WRN_FS << "SHGetSpecialFolderPath failed" << std::endl;
 				user_data_dir = get_cwd() + "/" + path;
 			}
 		} else {
-			LOG_FS << "Failed to load SHGetSpecialFolderPath function\n";
+			LOG_FS << "Failed to load SHGetSpecialFolderPath function" << std::endl;
 			user_data_dir = get_cwd() + "/" + path;
 		}
 	}
@@ -619,7 +619,7 @@ static void setup_user_data_dir()
 	// probe read permissions (if we could make the directory)
 	DIR* const dir = res ? opendir(dir_path.c_str()) : NULL;
 	if(dir == NULL) {
-		ERR_FS << "could not open or create preferences directory at " << dir_path << '\n';
+		ERR_FS << "could not open or create preferences directory at " << dir_path << std::endl;
 		return;
 	}
 	closedir(dir);
@@ -735,7 +735,7 @@ std::string read_file(const std::string &fname)
 
 std::ostream *ostream_file(std::string const &fname)
 {
-	LOG_FS << "streaming " << fname << " for writing.\n";
+	LOG_FS << "streaming " << fname << " for writing." << std::endl;
 	return new std::ofstream(fname.c_str(), std::ios_base::binary);
 }
 
@@ -899,7 +899,7 @@ const file_tree_checksum& data_tree_checksum(bool reset)
 		get_file_tree_checksum_internal(get_user_data_dir() + "/data/",checksum);
 		LOG_FS << "calculated data tree checksum: "
 			   << checksum.nfiles << " files; "
-			   << checksum.sum_size << " bytes\n";
+			   << checksum.sum_size << " bytes" << std::endl;
 	}
 
 	return checksum;
@@ -988,7 +988,7 @@ void binary_paths_manager::set_paths(const config& cfg)
 	{
 		std::string path = bp["path"].str();
 		if (path.find("..") != std::string::npos) {
-			ERR_FS << "Invalid binary path '" << path << "'\n";
+			ERR_FS << "Invalid binary path '" << path << "'" << std::endl;
 			continue;
 		}
 		if (!path.empty() && path[path.size()-1] != '/') path += "/";
@@ -1022,7 +1022,7 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 	if (type.find("..") != std::string::npos) {
 		// Not an assertion, as language.cpp is passing user data as type.
-		ERR_FS << "Invalid WML type '" << type << "' for binary paths\n";
+		ERR_FS << "Invalid WML type '" << type << "' for binary paths" << std::endl;
 		static std::vector<std::string> dummy;
 		return dummy;
 	}
@@ -1051,10 +1051,10 @@ const std::vector<std::string>& get_binary_paths(const std::string& type)
 
 std::string get_binary_file_location(const std::string& type, const std::string& filename)
 {
-	DBG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename << "'." << std::endl;
 
 	if (filename.empty()) {
-		LOG_FS << "  invalid filename (type: " << type <<")\n";
+		LOG_FS << "  invalid filename (type: " << type <<")" << std::endl;
 		return std::string();
 	}
 
@@ -1063,72 +1063,72 @@ std::string get_binary_file_location(const std::string& type, const std::string&
 	std::string::size_type pos = filename.rfind("../");
 	if (pos != std::string::npos) {
 		std::string nf = filename.substr(pos + 3);
-		LOG_FS << "Illegal path '" << filename << "' replaced by '" << nf << "'\n";
+		LOG_FS << "Illegal path '" << filename << "' replaced by '" << nf << "'" << std::endl;
 		return get_binary_file_location(type, nf);
 	}
 
 	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
+		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed)." << std::endl;
 		return std::string();
 	}
 
 	BOOST_FOREACH(const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
-		DBG_FS << "  checking '" << path << "'\n";
+		DBG_FS << "  checking '" << path << "'" << std::endl;
 		if(file_exists(file)) {
-			DBG_FS << "  found at '" << file << "'\n";
+			DBG_FS << "  found at '" << file << "'" << std::endl;
 			return file;
 		}
 	}
 
-	DBG_FS << "  not found\n";
+	DBG_FS << "  not found" << std::endl;
 	return std::string();
 }
 
 std::string get_binary_dir_location(const std::string &type, const std::string &filename)
 {
-	DBG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename << "'." << std::endl;
 
 	if (filename.empty()) {
-		LOG_FS << "  invalid filename (type: " << type <<")\n";
+		LOG_FS << "  invalid filename (type: " << type <<")" << std::endl;
 		return std::string();
 	}
 
 	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
+		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed)." << std::endl;
 		return std::string();
 	}
 
 	BOOST_FOREACH(const std::string &path, get_binary_paths(type))
 	{
 		const std::string file = path + filename;
-		DBG_FS << "  checking '" << path << "'\n";
+		DBG_FS << "  checking '" << path << "'" << std::endl;
 		if (is_directory(file)) {
-			DBG_FS << "  found at '" << file << "'\n";
+			DBG_FS << "  found at '" << file << "'" << std::endl;
 			return file;
 		}
 	}
 
-	DBG_FS << "  not found\n";
+	DBG_FS << "  not found" << std::endl;
 	return std::string();
 }
 
 std::string get_wml_location(const std::string &filename, const std::string &current_dir)
 {
-	DBG_FS << "Looking for '" << filename << "'.\n";
+	DBG_FS << "Looking for '" << filename << "'." << std::endl;
 
 	assert(game_config::path.empty() == false);
 
 	std::string result;
 
 	if (filename.empty()) {
-		LOG_FS << "  invalid filename\n";
+		LOG_FS << "  invalid filename" << std::endl;
 		return result;
 	}
 
 	if (filename.find("..") != std::string::npos) {
-		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed).\n";
+		ERR_FS << "Illegal path '" << filename << "' (\"..\" not allowed)." << std::endl;
 		return result;
 	}
 
@@ -1138,7 +1138,7 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	{
 		// If the filename starts with '~', look in the user data directory.
 		result = get_user_data_dir() + "/data/" + filename.substr(1);
-		DBG_FS << "  trying '" << result << "'\n";
+		DBG_FS << "  trying '" << result << "'" << std::endl;
 
 		already_found = file_exists(result) || is_directory(result);
 	}
@@ -1161,16 +1161,16 @@ std::string get_wml_location(const std::string &filename, const std::string &cur
 	else if (!game_config::path.empty())
 		result = game_config::path + "/data/" + filename;
 
-	DBG_FS << "  trying '" << result << "'\n";
+	DBG_FS << "  trying '" << result << "'" << std::endl;
 
 	if (result.empty() ||
 	    (!already_found && !file_exists(result) && !is_directory(result)))
 	{
-		DBG_FS << "  not found\n";
+		DBG_FS << "  not found" << std::endl;
 		result.clear();
 	}
 	else
-		DBG_FS << "  found: '" << result << "'\n";
+		DBG_FS << "  found: '" << result << "'" << std::endl;
 
 	return result;
 }
@@ -1300,7 +1300,7 @@ std::string normalize_path(const std::string &p1)
 		p4 << '/' << s;
 	}
 
-	DBG_FS << "Normalizing '" << p2 << "' to '" << p4.str() << "'\n";
+	DBG_FS << "Normalizing '" << p2 << "' to '" << p4.str() << "'" << std::endl;
 
 	return p4.str();
 }

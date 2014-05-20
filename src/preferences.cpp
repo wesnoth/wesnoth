@@ -101,7 +101,7 @@ void write_preferences()
 		scoped_ostream prefs_file = ostream_file(get_prefs_file());
 		write(*prefs_file, prefs);
 	} catch(io_exception&) {
-		ERR_FS << "error writing to preferences file '" << get_prefs_file() << "'\n";
+		ERR_FS << "error writing to preferences file '" << get_prefs_file() << "'" << std::endl;
 	}
 
 
@@ -110,7 +110,7 @@ void write_preferences()
     if(!prefs_file_existed) {
 
         if(chmod(get_prefs_file().c_str(), 0600) == -1) {
-			ERR_FS << "error setting permissions of preferences file '" << get_prefs_file() << "'\n";
+			ERR_FS << "error setting permissions of preferences file '" << get_prefs_file() << "'" << std::endl;
         }
 
     }
