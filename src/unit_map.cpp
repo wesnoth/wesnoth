@@ -341,33 +341,33 @@ bool unit_map::self_check() const {
 	for(; uit != umap_.end(); ++uit){
 		if(uit->second.ref_count < 0){
 			good=false;
-			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<<"\n";
+			ERR_NG << "unit_map pod ref_count <0 is " << uit->second.ref_count<<"" << std::endl;
 		}
 		if(uit->second.unit != NULL){
 			uit->second.unit->id(); //crash if bad pointer
 		}
 		if(uit->first <= 0){
 			good=false;
-			ERR_NG << "unit_map umap uid <=0 is " << uit->first <<"\n";
+			ERR_NG << "unit_map umap uid <=0 is " << uit->first <<"" << std::endl;
 		}
 		if(uit->second.unit == NULL && uit->second.ref_count == 0 ){
 			good=false;
-			ERR_NG << "unit_map umap unit==NULL when refcount == 0\n";
+			ERR_NG << "unit_map umap unit==NULL when refcount == 0" << std::endl;
 		}
 		if(uit->second.unit && uit->second.unit->underlying_id() != uit->first){
 			good=false;
-			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second.unit->underlying_id()<< "]\n";
+			ERR_NG << "unit_map umap uid("<<uit->first<<") != underlying_id()["<< uit->second.unit->underlying_id()<< "]" << std::endl;
 		}
 	}
 	t_lmap::const_iterator locit(lmap_.begin());
 	for(; locit != lmap_.end(); ++locit){
 		if(locit->second == umap_.end() ){
 			good=false;
-			ERR_NG << "unit_map lmap element == umap_.end() "<<"\n";
+			ERR_NG << "unit_map lmap element == umap_.end() "<<"" << std::endl;
 		}
 		if(locit->first != locit->second->second.unit->get_location()){
 			good=false;
-			ERR_NG << "unit_map lmap location != unit->get_location() " <<"\n";
+			ERR_NG << "unit_map lmap location != unit->get_location() " <<"" << std::endl;
 		}
 	}
 	//assert(good);

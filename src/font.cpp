@@ -210,7 +210,7 @@ static TTF_Font* open_font(const std::string& fname, int size)
 			if(!file_exists(name)) {
 				name = fname;
 				if(!file_exists(name)) {
-					ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+					ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
 					return NULL;
 				}
 			}
@@ -220,7 +220,7 @@ static TTF_Font* open_font(const std::string& fname, int size)
 		name = "fonts/" + fname;
 		if(!file_exists(name)) {
 			if(!file_exists(fname)) {
-				ERR_FT << "Failed opening font: '" << name << "': No such file or directory\n";
+				ERR_FT << "Failed opening font: '" << name << "': No such file or directory" << std::endl;
 				return NULL;
 			}
 			name = fname;
@@ -229,7 +229,7 @@ static TTF_Font* open_font(const std::string& fname, int size)
 
 	TTF_Font* font = TTF_OpenFont(name.c_str(),size);
 	if(font == NULL) {
-		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << "\n";
+		ERR_FT << "Failed opening font: TTF_OpenFont: " << TTF_GetError() << "" << std::endl;
 		return NULL;
 	}
 
@@ -321,7 +321,7 @@ manager::manager()
 {
 	const int res = TTF_Init();
 	if(res == -1) {
-		ERR_FT << "Could not initialize true type fonts\n";
+		ERR_FT << "Could not initialize true type fonts" << std::endl;
 		throw error();
 	} else {
 		LOG_FT << "Initialized true type fonts\n";
@@ -350,7 +350,7 @@ void manager::init() const
 	if (!FcConfigAppFontAddDir(FcConfigGetCurrent(),
 		reinterpret_cast<const FcChar8 *>((game_config::path + "/fonts").c_str())))
 	{
-		ERR_FT << "Could not load the true type fonts\n";
+		ERR_FT << "Could not load the true type fonts" << std::endl;
 		throw error();
 	}
 #endif

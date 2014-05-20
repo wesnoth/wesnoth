@@ -970,7 +970,7 @@ void playsingle_controller::do_idle_notification()
 void playsingle_controller::play_network_turn()
 {
 	// There should be no networked sides in single-player.
-	ERR_NG << "Networked team encountered by playsingle_controller.\n";
+	ERR_NG << "Networked team encountered by playsingle_controller." << std::endl;
 }
 
 

@@ -252,7 +252,7 @@ manager::manager(size_t min_threads, size_t max_threads) : free_(true)
 	}
 
 	if(SDLNet_Init() == -1) {
-		ERR_NW << "could not initialize SDLNet; throwing error...\n";
+		ERR_NW << "could not initialize SDLNet; throwing error..." << std::endl;
 		throw error(SDL_GetError());
 	}
 
@@ -551,7 +551,7 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	const int res = SDLNet_TCP_AddSocket(socket_set,psock);
 	if(res == -1) {
-		ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "\n";
+		ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "" << std::endl;
 		SDLNet_TCP_Close(psock);
 
 		throw network::error(_("Could not add socket to socket set"));
@@ -618,13 +618,13 @@ connection accept_connection()
 			if (res != -1) {
 				pending_sockets.push_back(sock);
 			} else {
-				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection\n";
-				ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "\n";
+				ERR_NW << "Pending socket set is full! Disconnecting " << sock << " connection" << std::endl;
+				ERR_NW << "SDLNet_GetError(): " << SDLNet_GetError() << "" << std::endl;
 
 				SDLNet_TCP_Close(sock);
 			}
 		} else {
-			ERR_NW << "Error in SDLNet_AllocSocketSet\n";
+			ERR_NW << "Error in SDLNet_AllocSocketSet" << std::endl;
 		}
 	}
 
@@ -816,7 +816,7 @@ connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr
 	int set_res = SDLNet_TCP_AddSocket(socket_set,sock);
 	if (set_res == -1)
 	{
-		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection\n";
+		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection" << std::endl;
 		SDLNet_TCP_Close(sock);
 		return 0;
 	}
@@ -920,7 +920,7 @@ connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
 
 	if (set_res == -1)
 	{
-		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection\n";
+		ERR_NW << "Socket set is full! Disconnecting " << sock << " connection" << std::endl;
 		SDLNet_TCP_Close(sock);
 		return 0;
 	}
@@ -1082,7 +1082,7 @@ void send_file(const std::string& filename, connection connection_num, const std
 	const int size = file_size(filename);
 
 	if(size < 0) {
-		ERR_NW << "Could not determine size of file " << filename << ", not sending.\n";
+		ERR_NW << "Could not determine size of file " << filename << ", not sending." << std::endl;
 		return;
 	}
 

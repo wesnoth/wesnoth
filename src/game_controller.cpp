@@ -968,19 +968,19 @@ bool game_controller::play_multiplayer()
 		gui2::show_error_message(disp().video(), _("Error while playing the game: ") + e.message);
 	} catch(network::error& e) {
 		if(e.message != "") {
-			ERR_NET << "caught network::error: " << e.message << "\n";
+			ERR_NET << "caught network::error: " << e.message << "" << std::endl;
 			gui2::show_transient_message(disp().video()
 					, ""
 					, gettext(e.message.c_str()));
 		} else {
-			ERR_NET << "caught network::error\n";
+			ERR_NET << "caught network::error" << std::endl;
 		}
 	} catch(config::error& e) {
 		if(e.message != "") {
-			ERR_CONFIG << "caught config::error: " << e.message << "\n";
+			ERR_CONFIG << "caught config::error: " << e.message << "" << std::endl;
 			gui2::show_transient_message(disp().video(), "", e.message);
 		} else {
-			ERR_CONFIG << "caught config::error\n";
+			ERR_CONFIG << "caught config::error" << std::endl;
 		}
 	} catch(incorrect_map_format_error& e) {
 		gui2::show_error_message(disp().video(), std::string(_("The game map could not be loaded: ")) + e.message);

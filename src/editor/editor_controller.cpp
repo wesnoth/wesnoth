@@ -109,7 +109,7 @@ void editor_controller::init_tods(const config& game_config)
 		const std::string& schedule_id = schedule["id"];
 		const std::string& schedule_name = schedule["name"];
 		if (schedule_id.empty()) {
-			ERR_ED << "Missing ID attribute in a TOD Schedule.\n";
+			ERR_ED << "Missing ID attribute in a TOD Schedule." << std::endl;
 			continue;
 		}
 
@@ -120,7 +120,7 @@ void editor_controller::init_tods(const config& game_config)
 			(schedule_id, std::pair<std::string, std::vector<time_of_day> >(schedule_name, std::vector<time_of_day>())) );
 			times = new_times.first;
 		} else {
-			ERR_ED << "Duplicate TOD Schedule identifiers.\n";
+			ERR_ED << "Duplicate TOD Schedule identifiers." << std::endl;
 			continue;
 		}
 
@@ -131,7 +131,7 @@ void editor_controller::init_tods(const config& game_config)
 	}
 
 	if (tods_.empty()) {
-		ERR_ED << "No editor time-of-day defined\n";
+		ERR_ED << "No editor time-of-day defined" << std::endl;
 	}
 }
 
@@ -139,7 +139,7 @@ void editor_controller::init_music(const config& game_config)
 {
 	const std::string tag_name = "editor_music";
 	if (!game_config.has_child(tag_name))
-		ERR_ED << "No editor music defined\n";
+		ERR_ED << "No editor music defined" << std::endl;
 	else {
 		BOOST_FOREACH(const config& editor_music, game_config.child_range(tag_name)) {
 			BOOST_FOREACH(const config& music, editor_music.child_range("music")) {

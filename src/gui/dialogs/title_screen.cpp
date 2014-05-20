@@ -352,14 +352,14 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 						false));
 
 	if(game_config::images::game_title.empty()) {
-		ERR_CF << "No title image defined\n";
+		ERR_CF << "No title image defined" << std::endl;
 	} else {
 		window.canvas()[0].set_variable(
 				"title_image", variant(game_config::images::game_title));
 	}
 
 	if(game_config::images::game_title_background.empty()) {
-		ERR_CF << "No title background image defined\n";
+		ERR_CF << "No title background image defined" << std::endl;
 	} else {
 		window.canvas()[0].set_variable(
 				"background_image",

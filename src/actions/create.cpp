@@ -626,7 +626,7 @@ std::string find_recall_location(const int side, map_location& recall_location, 
 
 	// We should never get down to here. But just in case someone decides to
 	// mess with the enum without updating this function:
-	ERR_NG << "Unrecognized enum in find_recall_location()\n";
+	ERR_NG << "Unrecognized enum in find_recall_location()" << std::endl;
 	return _("An unrecognized error has occurred.");
 }
 
@@ -762,7 +762,7 @@ std::string find_recruit_location(const int side, map_location& recruit_location
 
 	// We should never get down to here. But just in case someone decides to
 	// mess with the enum without updating this function:
-	ERR_NG << "Unrecognized enum in find_recruit_location()\n";
+	ERR_NG << "Unrecognized enum in find_recruit_location()" << std::endl;
 	return _("An unrecognized error has occurred.");
 }
 

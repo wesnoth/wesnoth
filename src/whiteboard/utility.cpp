@@ -94,7 +94,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 	future_map planned_unit_map;
 	if(!resources::whiteboard->has_planned_unit_map())
 	{
-		ERR_WB << "future_visible_unit cannot find unit, future unit map failed to build.\n";
+		ERR_WB << "future_visible_unit cannot find unit, future unit map failed to build." << std::endl;
 		return NULL;
 	}
 	//use global method get_visible_unit

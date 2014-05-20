@@ -1583,7 +1583,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 	}
 
 	if(surf == NULL) {
-		ERR_DP << "surface lost...\n";
+		ERR_DP << "surface lost..." << std::endl;
 		return;
 	}
 
@@ -2197,7 +2197,7 @@ void display::scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_ty
 void display::scroll_to_tile(const map_location& loc, SCROLL_TYPE scroll_type, bool check_fogged, bool force)
 {
 	if(get_map().on_board(loc) == false) {
-		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile.\n";
+		ERR_DP << "Tile at " << loc << " isn't on the map, can't scroll to the tile." << std::endl;
 		return;
 	}
 
@@ -2338,7 +2338,7 @@ void display::scroll_to_tiles(const std::vector<map_location>::const_iterator & 
 			if (target_x < r.x) target_x = r.x;
 			if (target_x > r.x+r.w-1) target_x = r.x+r.w-1;
 		} else {
-			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all...\n";
+			ERR_DP << "Bug in the scrolling code? Looks like we would not need to scroll after all..." << std::endl;
 			// keep the target at the center
 		}
 	}
@@ -2778,7 +2778,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		if (rect.w > 0 && rect.h > 0) {
 			surf.assign(get_surface_portion(screen_.getSurface(), rect));
 			if (reportSurfaces_[report_name] == NULL) {
-				ERR_DP << "Could not backup background for report!\n";
+				ERR_DP << "Could not backup background for report!" << std::endl;
 			}
 		}
 		update_rect(rect);
@@ -2885,7 +2885,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 			surface img(image::get_image(t));
 
 			if (!img) {
-				ERR_DP << "could not find image for report: '" << t << "'\n";
+				ERR_DP << "could not find image for report: '" << t << "'" << std::endl;
 				continue;
 			}
 

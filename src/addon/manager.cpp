@@ -136,12 +136,12 @@ bool remove_local_addon(const std::string& addon)
 	}
 
 	if(file_exists(addon_dir + ".cfg") && !delete_directory(addon_dir + ".cfg", true)) {
-		ERR_CFG << "Failed to delete directory/file: " << addon_dir << ".cfg\n";
+		ERR_CFG << "Failed to delete directory/file: " << addon_dir << ".cfg" << std::endl;
 		ret = false;
 	}
 
 	if(!ret) {
-		ERR_CFG << "removal of add-on " << addon << " failed!\n";
+		ERR_CFG << "removal of add-on " << addon << " failed!" << std::endl;
 	}
 
 	return ret;

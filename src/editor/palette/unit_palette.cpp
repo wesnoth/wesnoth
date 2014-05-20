@@ -75,7 +75,7 @@ void unit_palette::setup(const config& /*cfg*/)
 	set_group(groups_[0].id);
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found.\n";
+		ERR_ED << "No items found." << std::endl;
 	}
 }
 
@@ -90,10 +90,10 @@ void unit_palette::draw_item(const unit_type& u, surface& image, std::stringstre
 	image = image::get_image(filename.str());
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for unit type: '" << filename.str() << "' not found\n";
+		ERR_ED << "image for unit type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
 		if (image == NULL) {
-			ERR_ED << "Placeholder image not found\n";
+			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}

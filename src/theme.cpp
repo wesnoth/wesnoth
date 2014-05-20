@@ -254,13 +254,13 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 		// override default reference rect with "ref" parameter if any
 		if (!cfg["ref"].empty()) {
 			if (resol_cfg == NULL) {
-				ERR_DP << "Use of ref= outside a [resolution] block\n";
+				ERR_DP << "Use of ref= outside a [resolution] block" << std::endl;
 			} else {
 				//DBG_DP << ">> Looking for " << cfg["ref"] << "\n";
 				const config& ref = find_ref (cfg["ref"], *resol_cfg);
 
 				if (ref["id"].empty()) {
-					ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"\n";
+					ERR_DP << "Reference to non-existent rect id \"" << cfg["ref"] << "\"" << std::endl;
 				} else if (ref["rect"].empty()) {
 					ERR_DP << "Reference to id \"" << cfg["ref"] <<
 						"\" which does not have a \"rect\"\n";
@@ -655,7 +655,7 @@ bool theme::set_resolution(const SDL_Rect& screen)
 
 	if (!current) {
 		if (cfg_.child_count("resolution")) {
-			ERR_DP << "No valid resolution found\n";
+			ERR_DP << "No valid resolution found" << std::endl;
 		}
 		return false;
 	}
@@ -919,7 +919,7 @@ void theme::set_known_themes(const config* cfg)
 
 		if (thm_id.empty() && thm.has_attribute("name")) {
 			thm_id = thm["name"].str();
-			ERR_DP << "Theme '" << thm_id << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x.\n";
+			ERR_DP << "Theme '" << thm_id << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x." << std::endl;
 		}
 
 		if (!thm["hidden"].to_bool(false)) {

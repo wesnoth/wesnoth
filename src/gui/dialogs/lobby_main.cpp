@@ -1456,7 +1456,7 @@ void tlobby_main::process_gamelist_diff(const config& data)
 		DBG_LB << "Received gamelist diff\n";
 		gamelist_dirty_ = true;
 	} else {
-		ERR_LB << "process_gamelist_diff failed!\n";
+		ERR_LB << "process_gamelist_diff failed!" << std::endl;
 	}
 	int joined = data.child_count("insert_child");
 	int left = data.child_count("remove_child");
@@ -1629,12 +1629,12 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	const game_info& game = *lobby_info_.games()[idx];
 	if(observe) {
 		if(!game.can_observe()) {
-			ERR_LB << "Requested observe of a game with observers disabled\n";
+			ERR_LB << "Requested observe of a game with observers disabled" << std::endl;
 			return false;
 		}
 	} else {
 		if(!game.can_join()) {
-			ERR_LB << "Requested join to a game with no vacant slots\n";
+			ERR_LB << "Requested join to a game with no vacant slots" << std::endl;
 			return false;
 		}
 	}

@@ -61,7 +61,7 @@ unsigned decode_font_style(const std::string& style)
 		return TTF_STYLE_NORMAL;
 	}
 
-	ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead.\n";
+	ERR_GUI_G << "Unknown style '" << style << "' using 'normal' instead." << std::endl;
 
 	return TTF_STYLE_NORMAL;
 }

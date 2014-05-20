@@ -593,7 +593,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	const std::vector<std::string> &rot)
 {
 	if (rot.size() != 6) {
-		ERR_NG << "invalid rotations\n";
+		ERR_NG << "invalid rotations" << std::endl;
 		return;
 	}
 
@@ -771,7 +771,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 			} else if (terrain.base == t_translation::TB_STAR) {
 				add_constraints(br.constraints, map_location(x, y), t_translation::STAR, global_images);
 			} else {
-					ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map\n";
+					ERR_NG << "Invalid terrain (" << t_translation::write_terrain_code(terrain) << ") in builder map" << std::endl;
 					assert(false);
 					return;
 			}

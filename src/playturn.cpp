@@ -134,7 +134,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	assert(cfg.attribute_range().first == cfg.attribute_range().second);
 	if(!recorder.at_end())
 	{
-		ERR_NW << "processing network data while still having data on the replay.\n";
+		ERR_NW << "processing network data while still having data on the replay." << std::endl;
 	}
 
 	if (const config &msg = cfg.child("message"))
@@ -239,7 +239,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		bool restart = side == resources::screen->playing_side();
 
 		if (side_index >= resources::teams->size()) {
-			ERR_NW << "unknown side " << side_index << " is dropping game\n";
+			ERR_NW << "unknown side " << side_index << " is dropping game" << std::endl;
 			throw network::error("");
 		}
 
@@ -388,7 +388,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	}
 	else
 	{
-		ERR_NW << "found unknown command:\n" << cfg.debug() << "\n";
+		ERR_NW << "found unknown command:\n" << cfg.debug() << "" << std::endl;
 	}
 
 	return PROCESS_CONTINUE;

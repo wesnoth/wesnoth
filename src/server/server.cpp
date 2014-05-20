@@ -710,7 +710,7 @@ void server::run() {
 						if (i != players_.end()) {
 							DBG_SERVER << "Pinging " << i->second.name() << "(" << i->first << ").\n";
 						} else {
-							ERR_SERVER << "Player " << sock << " is in ghost_players_ but not in players_.\n";
+							ERR_SERVER << "Player " << sock << " is in ghost_players_ but not in players_." << std::endl;
 						}
 					}
 					network::send_raw_data(s.begin(), s.size(), sock, "ping") ;
@@ -815,7 +815,7 @@ void server::run() {
 				break;
 			}
 			if (!e.socket) {
-				ERR_SERVER << "network error: " << e.message << "\n";
+				ERR_SERVER << "network error: " << e.message << "" << std::endl;
 				continue;
 			}
 			DBG_SERVER << "socket closed: " << e.message << "\n";
@@ -902,7 +902,7 @@ void server::run() {
 		// all user_handler exceptions are caught correctly
 		// this can removed.
 		} catch (user_handler::error& e) {
-			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "\n";
+			ERR_SERVER << "Uncaught user_handler exception: " << e.message << "" << std::endl;
 		}
 	}
 }
@@ -1019,7 +1019,7 @@ void server::process_login(const network::connection sock,
 
 		if (accepted_versions_.empty()) {
 			// This cannot happen with the current way accepted_versions_ is populated
-			ERR_SERVER << "ERROR: This server doesn't accept any versions at all.\n";
+			ERR_SERVER << "ERROR: This server doesn't accept any versions at all." << std::endl;
 		}
 		network::send_data(response, sock, "error");
 		return;
@@ -1269,7 +1269,7 @@ void server::process_query(const network::connection sock,
                            simple_wml::node& query) {
 	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "\n";
+		DBG_SERVER << "ERROR: process_query(): Could not find player with socket: " << sock << "" << std::endl;
 		return;
 	}
 	const std::string command(query["type"].to_string());
@@ -1349,7 +1349,7 @@ void server::start_new_server() {
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
 	if (std::system(restart_command.c_str())) {
-		ERR_SERVER << "Failed to start new server with command: " << restart_command << "\n";
+		ERR_SERVER << "Failed to start new server with command: " << restart_command << "" << std::endl;
 	} else {
 		LOG_SERVER << "New server started with command: " << restart_command << "\n";
 	}
@@ -2016,7 +2016,7 @@ void server::dul_handler(const std::string& /*issuer_name*/, const std::string& 
 void server::process_nickserv(const network::connection sock, simple_wml::node& data) {
 	const wesnothd::player_map::iterator pl = players_.find(sock);
 	if (pl == players_.end()) {
-		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "\n";
+		DBG_SERVER << "ERROR: Could not find player with socket: " << sock << "" << std::endl;
 		return;
 	}
 
@@ -2846,12 +2846,12 @@ int main(int argc, char** argv) {
 			return 0;
 		} else if (val == "--daemon" || val == "-d") {
 #ifdef _WIN32
-			ERR_SERVER << "Running as a daemon is not supported on this platform\n";
+			ERR_SERVER << "Running as a daemon is not supported on this platform" << std::endl;
 			return -1;
 #else
 			const pid_t pid = fork();
 			if (pid < 0) {
-				ERR_SERVER << "Could not fork and run as a daemon\n";
+				ERR_SERVER << "Could not fork and run as a daemon" << std::endl;
 				return -1;
 			} else if (pid > 0) {
 				std::cout << "Started wesnothd as a daemon with process id "
@@ -2871,7 +2871,7 @@ int main(int argc, char** argv) {
 		} else if(val == "--request_sample_frequency" && arg+1 != argc) {
 			request_sample_frequency = atoi(argv[++arg]);
 		} else {
-			ERR_SERVER << "unknown option: " << val << "\n";
+			ERR_SERVER << "unknown option: " << val << "" << std::endl;
 			return 2;
 		}
 	}

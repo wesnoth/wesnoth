@@ -278,7 +278,7 @@ void addons_client::check_connected() const
 {
 	assert(conn_ != NULL);
 	if(conn_ == NULL) {
-		ERR_ADDONS << "not connected to server\n";
+		ERR_ADDONS << "not connected to server" << std::endl;
 		throw not_connected_to_server();
 	}
 }

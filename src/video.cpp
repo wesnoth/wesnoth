@@ -335,7 +335,7 @@ void CVideo::initSDL()
 	const int res = SDL_InitSubSystem(SDL_INIT_VIDEO | SDL_INIT_NOPARACHUTE);
 
 	if(res < 0) {
-		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << "\n";
+		ERR_DP << "Could not initialize SDL_video: " << SDL_GetError() << "" << std::endl;
 		throw CVideo::error();
 	}
 }

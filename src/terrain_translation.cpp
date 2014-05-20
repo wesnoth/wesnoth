@@ -332,11 +332,11 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 				width = x + 1;
 			} else {
 				if((x + 1) != width ) {
-					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << "\n";
+					ERR_G << "Map not a rectangle error occurred at line offset " << y << " position offset " << x << "" << std::endl;
 					throw error("Map not a rectangle.");
 				}
 				if (y > max_map_size()) {
-					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")\n";
+					ERR_G << "Map size exceeds limit (y > " << max_map_size() << ")" << std::endl;
 					throw error("Map height limit exceeded.");
 				}
 			}
@@ -362,7 +362,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 			++x;
 			offset = pos_separator + 1;
 			if (x > max_map_size()) {
-				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")\n";
+				ERR_G << "Map size exceeds limit (x > " << max_map_size() << ")" << std::endl;
 				throw error("Map width limit exceeded.");
 			}
 		}
@@ -370,7 +370,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 	}
 
 	if(x != 0 && (x + 1) != width) {
-		ERR_G << "Map not a rectangle error occurred at the end\n";
+		ERR_G << "Map not a rectangle error occurred at the end" << std::endl;
 		throw error("Map not a rectangle.");
 	}
 

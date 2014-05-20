@@ -921,7 +921,7 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		//If replay_start and replay_data couldn't be loaded
 		if(!load_replay(cfg)){
 			//TODO: notify user of failure
-			ERR_NG<<"Could not load as replay \n";
+			ERR_NG<<"Could not load as replay " << std::endl;
 		}
 	} else {
 		if(const config& snapshot = cfg.child("snapshot")){

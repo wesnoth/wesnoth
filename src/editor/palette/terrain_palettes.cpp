@@ -150,7 +150,7 @@ void terrain_palette::setup(const config& cfg)
 	set_group("all");
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found.\n";
+		ERR_ED << "No items found." << std::endl;
 	}
 }
 
@@ -167,10 +167,10 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 
 		if(base_image == NULL) {
 			tooltip_text << "BASE IMAGE NOT FOUND\n";
-			ERR_ED << "image for terrain : '" << base_filename << "' not found\n";
+			ERR_ED << "image for terrain : '" << base_filename << "' not found" << std::endl;
 			base_image = image::get_image(game_config::images::missing);
 			if (base_image == NULL) {
-				ERR_ED << "Placeholder image not found\n";
+				ERR_ED << "Placeholder image not found" << std::endl;
 				return;
 			}
 		}
@@ -185,10 +185,10 @@ void terrain_palette::draw_item(const t_translation::t_terrain& terrain,
 	image = image::get_image(filename);
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for terrain: '" << filename << "' not found\n";
+		ERR_ED << "image for terrain: '" << filename << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
 		if (image == NULL) {
-			ERR_ED << "Placeholder image not found\n";
+			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}

@@ -77,7 +77,7 @@ bool synced_context::run_in_synced_context_if_not_already(const std::string& com
 	case(synced_context::UNSYNCED):
 		return run_in_synced_context(commandname, data, use_undo, show, true, error_handler);
 	case(synced_context::LOCAL_CHOICE):
-		ERR_REPLAY << "trying to execute action while being in a local_choice\n";
+		ERR_REPLAY << "trying to execute action while being in a local_choice" << std::endl;
 		//we reject it because such actions usually change the gamestate badly which is not intented during a local_choice.
 		return false;
 	case(synced_context::SYNCED):
@@ -384,8 +384,8 @@ set_scontext_synced::~set_scontext_synced()
 	if(!checkup_instance->local_checkup(config_of("random_calls", new_rng_->get_random_calls()), co))
 	{
 		//if we really get -999 we have a very serious OOS.
-		ERR_REPLAY << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int(-99) << " times.\n";
-		ERR_REPLAY << co.debug() << "\n";
+		ERR_REPLAY << "We called random " << new_rng_->get_random_calls() << " times, but the original game called random " << co["random_calls"].to_int(-99) << " times." << std::endl;
+		ERR_REPLAY << co.debug() << "" << std::endl;
 	}
 
 	random_new::generator = old_rng_;

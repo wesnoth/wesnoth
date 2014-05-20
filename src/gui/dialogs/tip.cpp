@@ -158,7 +158,7 @@ void show(CVideo& video,
 		}
 		catch(twindow_builder_invalid_id&)
 		{
-			ERR_CFG << "Default tooltip doesn't exist, no message shown.\n";
+			ERR_CFG << "Default tooltip doesn't exist, no message shown." << std::endl;
 		}
 	}
 }

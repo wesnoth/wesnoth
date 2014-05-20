@@ -289,7 +289,7 @@ void reset_default_hotkeys()
 	if(!default_hotkey_cfg_.empty()) {
 		load_hotkeys(default_hotkey_cfg_, true);
 	} else {
-		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!\n";
+		ERR_G << "no default hotkeys set yet; all hotkeys are now unassigned!" << std::endl;
 	}
 }
 
@@ -372,7 +372,7 @@ void hotkey_item::load_from_config(const config& cfg)
 		keycode_ = sdl_keysym_from_name(key);
 		if (keycode_ == SDLK_UNKNOWN) {
 			if (tolower(key[0]) != 'f') {
-				ERR_CF << "hotkey key '" << key << "' invalid\n";
+				ERR_CF << "hotkey key '" << key << "' invalid" << std::endl;
 			} else {
 				int num = lexical_cast_default<int>(key.c_str() + 1);
 				keycode_ = num + SDLK_F1 - 1;

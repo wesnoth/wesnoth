@@ -345,16 +345,16 @@ const config& controller_base::get_theme(const config& game_config, std::string 
 	// untranslatable ids.
 	// TODO: remove support for this in 1.13.x (1.13.2?).
 	if (const config &c = game_config.find_child("theme", "name", theme_name)) {
-		ERR_DP << "Theme '" << theme_name << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x.\n";
+		ERR_DP << "Theme '" << theme_name << "' uses [theme] name= instead of id= to specify its id; this usage is deprecated and will be removed in version 1.13.x." << std::endl;
 		return c;
 	}
 
-	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme.\n";
+	ERR_DP << "Theme '" << theme_name << "' not found. Trying the default theme." << std::endl;
 
 	if (const config &c = game_config.find_child("theme", "id", "Default"))
 		return c;
 
-	ERR_DP << "Default theme not found.\n";
+	ERR_DP << "Default theme not found." << std::endl;
 
 	static config empty;
 	return empty;

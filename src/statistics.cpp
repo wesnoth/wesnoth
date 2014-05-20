@@ -638,7 +638,7 @@ int sum_cost_str_int_map(const stats::str_int_map &m)
 	for (stats::str_int_map::const_iterator i = m.begin(); i != m.end(); ++i) {
 		const unit_type *t = unit_types.find(i->first);
 		if (!t) {
-			ERR_NG << "Statistics refer to unknown unit type '" << i->first << "'. Discarding.\n";
+			ERR_NG << "Statistics refer to unknown unit type '" << i->first << "'. Discarding." << std::endl;
 		} else {
 			cost += i->second * t->cost();
 		}

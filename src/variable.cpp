@@ -405,7 +405,7 @@ void scoped_xy_unit::activate()
 		tmp_cfg["y"] = y_ + 1;
 		LOG_NG << "auto-storing $" << name() << " at (" << loc << ")\n";
 	} else {
-		ERR_NG << "failed to auto-store $" << name() << " at (" << loc << ")\n";
+		ERR_NG << "failed to auto-store $" << name() << " at (" << loc << ")" << std::endl;
 	}
 }
 

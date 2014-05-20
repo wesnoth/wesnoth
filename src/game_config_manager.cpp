@@ -291,17 +291,17 @@ void game_config_manager::load_addons_cfg()
 			cache_.get_config(toplevel, umc_cfg);
 			game_config_.append(umc_cfg);
 		} catch(config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
 			error_log.push_back(err.message);
 		} catch(preproc_config::error& err) {
-			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
 			ERR_CONFIG << err.message << '\n';
 			error_addons.push_back(uc);
 			error_log.push_back(err.message);
 		} catch(io_exception&) {
-			ERR_CONFIG << "error reading usermade add-on '" << uc << "'\n";
+			ERR_CONFIG << "error reading usermade add-on '" << uc << "'" << std::endl;
 			error_addons.push_back(uc);
 		}
 	}

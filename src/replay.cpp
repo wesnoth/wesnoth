@@ -460,7 +460,7 @@ config& replay::get_last_real_command()
 		}
 		return c;
 	}
-	ERR_REPLAY << "replay::get_last_real_command called with no existent command.\n";
+	ERR_REPLAY << "replay::get_last_real_command called with no existent command." << std::endl;
 	assert(false && "replay::get_last_real_command called with no existent command.");
 	throw "replay::get_last_real_command called with no existent command.";
 }
@@ -755,7 +755,7 @@ REPLAY_RETURN do_replay_handle(int side_num)
 		{
 			//this shouldn't happen anymore becasue replaycontroller now moves over the [start] with get_next_action
 			//also we removed the the "add empty replay entry at scenario reload" behaviour.
-			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay\n";
+			ERR_REPLAY << "found "<<  cfg->debug() <<" in replay" << std::endl;
 			//do nothing
 		}
 		else if (const config &child = cfg->child("speak"))
@@ -1170,7 +1170,7 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	{
 		if(side != 0)
 		{
-			ERR_REPLAY << "Invalid parameter for side in get_user_choice.\n";
+			ERR_REPLAY << "Invalid parameter for side in get_user_choice." << std::endl;
 		}
 		side = resources::controller->current_side();
 		LOG_REPLAY << " side changed to " << side << "\n";

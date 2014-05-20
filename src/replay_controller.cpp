@@ -301,7 +301,7 @@ void replay_controller::reset_replay()
 	if(true){ //block for set_scontext_synced
 		if(recorder.add_start_if_not_there_yet())
 		{
-			ERR_REPLAY << "inserted missing [start]\n";
+			ERR_REPLAY << "inserted missing [start]" << std::endl;
 		}
 		config* pstart = recorder.get_next_action();
 		assert(pstart->has_child("start"));

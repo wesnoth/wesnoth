@@ -238,7 +238,7 @@ game_info::game_info(const config& game, const config& game_config)
 		}
 		catch(incorrect_map_format_error& e)
 		{
-			ERR_CF << "illegal map: " << e.message << "\n";
+			ERR_CF << "illegal map: " << e.message << "" << std::endl;
 			verified = false;
 		}
 		catch(twml_exception& e)

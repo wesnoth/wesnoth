@@ -84,7 +84,7 @@ std::string ucs4string_to_string(const ucs4::string &src)
 		return ret;
 	}
 	catch(utf8::invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UCS-4 character string\n";
+		ERR_GENERAL << "Invalid UCS-4 character string" << std::endl;
 		return ret;
 	}
 }
@@ -111,7 +111,7 @@ ucs4::string string_to_ucs4string(const std::string &src)
 		}
 	}
 	catch(utf8::invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"\n";
+		ERR_GENERAL << "Invalid UTF-8 string: \"" << src << "\"" << std::endl;
 		return res;
 	}
 
@@ -282,7 +282,7 @@ size_t index(const utf8::string& str, const size_t index)
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string.\n";
+		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
 	}
 	return i;
 }
@@ -295,7 +295,7 @@ size_t size(const utf8::string& str)
 			i += byte_size_from_utf8_first(str[i]);
 		}
 	} catch(invalid_utf8_exception&) {
-		ERR_GENERAL << "Invalid UTF-8 string.\n";
+		ERR_GENERAL << "Invalid UTF-8 string." << std::endl;
 	}
 	return chr;
 }

@@ -278,7 +278,7 @@ void arrow::update_symbols()
 		image::locator image = image::locator(image_filename, mods);
 		if (!image.file_exists())
 		{
-			ERR_ARR << "Image " << image_filename << " not found.\n";
+			ERR_ARR << "Image " << image_filename << " not found." << std::endl;
 			image = image::locator(game_config::images::missing);
 		}
 		symbols_map_[*hex] = image;

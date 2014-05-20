@@ -497,7 +497,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 		alignment_ = LIMINAL;
 	else {
 		if ( !align.empty() ) {
-			ERR_CF << "Invalid alignment found for " << log_id() << ": '" << align << "'\n";
+			ERR_CF << "Invalid alignment found for " << log_id() << ": '" << align << "'" << std::endl;
 		}
 		alignment_ = NEUTRAL;
 	}
@@ -743,7 +743,7 @@ void unit_type::build(BUILD_STATUS status, const movement_type_map &movement_typ
 		return;
 
 	default:
-		ERR_UT << "Build of unit_type to unrecognized status (" << status << ") requested.\n";
+		ERR_UT << "Build of unit_type to unrecognized status (" << status << ") requested." << std::endl;
 		// Build as much as possible.
 		build_full(movement_types, races, traits);
 		return;
@@ -1182,8 +1182,8 @@ namespace { // Helpers for set_config()
 			return cfg;
 
 		// Bad WML!
-		ERR_CF << "unit type not found: " << key << "\n";
-		ERR_CF << all_types << "\n";
+		ERR_CF << "unit type not found: " << key << "" << std::endl;
+		ERR_CF << all_types << "" << std::endl;
 		throw config::error("unit type not found: " + key);
 	}
 
@@ -1335,7 +1335,7 @@ void unit_type_data::set_config(config &cfg)
 		if ( insert(std::make_pair(id, unit_type(ut))).second ) {
 			LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 		} else {
-			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered.\n";
+			ERR_CF << "Multiple [unit_type]s with id=" << id << " encountered." << std::endl;
 		}
 
 		loadscreen::increment_progress();

@@ -137,7 +137,7 @@ void tunit_create::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	if(type_ids_.empty()) {
-		ERR_GUI_G << "no unit types found for unit create dialog; not good\n";
+		ERR_GUI_G << "no unit types found for unit create dialog; not good" << std::endl;
 	}
 }
 

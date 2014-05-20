@@ -177,7 +177,7 @@ bool side_filter::match_internal(const team &t) const
 	if (!cfg_controller.blank())
 	{
 		if (network::nconnections() > 0)
-			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors\n";
+			ERR_NG << "ignoring controller= in SSF due to danger of OOS errors" << std::endl;
 		else
 		{
 			const std::string& controller = cfg_controller;

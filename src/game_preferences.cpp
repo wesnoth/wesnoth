@@ -72,7 +72,7 @@ std::string parse_wrapped_credentials_field(const std::string& raw)
 		return raw;
 	} else if(raw.length() < 2 || raw[0] != WRAP_CHAR || raw[raw.length() - 1] != WRAP_CHAR ) {
 		// malformed/not wrapped (shouldn't happen)
-		ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)\n";
+		ERR_CFG << "malformed user credentials (did you manually edit the preferences file?)" << std::endl;
 		return raw;
 	}
 

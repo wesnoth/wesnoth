@@ -80,7 +80,7 @@ public:
 	bool next()
 	{
 		if(at_end()) {
-			ERR_GUI_I << "Tried to move beyond end of the iteration range.\n";
+			ERR_GUI_I << "Tried to move beyond end of the iteration range." << std::endl;
 			throw trange_error("Tried to move beyond end of range.");
 		}
 
@@ -230,7 +230,7 @@ public:
 	bool next()
 	{
 		if(at_end()) {
-			ERR_GUI_I << "Tried to move beyond end of the iteration range.\n";
+			ERR_GUI_I << "Tried to move beyond end of the iteration range." << std::endl;
 			throw trange_error("Tried to move beyond end of range.");
 		}
 

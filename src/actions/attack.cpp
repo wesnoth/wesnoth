@@ -1464,10 +1464,10 @@ void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80) 
 		{
-			ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still.\n";
+			ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
 		}
 	}
-	ERR_NG << "unit at " << loc << "tried to adcance more than 20 times\n";
+	ERR_NG << "unit at " << loc << "tried to adcance more than 20 times" << std::endl;
 }
 
 

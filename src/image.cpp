@@ -475,7 +475,7 @@ surface locator::load_image_file() const
 	}
 
 	if (res.null() && !val_.filename_.empty()) {
-		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
+		ERR_DP << "could not open image '" << val_.filename_ << "'" << std::endl;
 		if (game_config::debug && val_.filename_ != game_config::images::missing)
 			return get_image(game_config::images::missing, UNSCALED);
 	}

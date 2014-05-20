@@ -798,7 +798,7 @@ void game::unban_user(const simple_wml::node& unban,
 
 void game::process_message(simple_wml::document& data, const player_map::iterator user) {
 	if (owner_ == 0) {
-		ERR_GAME << "No owner in game::process_message\n";
+		ERR_GAME << "No owner in game::process_message" << std::endl;
 	}
 
 	simple_wml::node* const message = data.root().child("message");
@@ -1481,7 +1481,7 @@ void game::save_replay() {
 		(*os) << replay.output_compressed(true);
 
 		if (!os->good()) {
-			ERR_GAME << "Could not save replay! (" << filename << ")\n";
+			ERR_GAME << "Could not save replay! (" << filename << ")" << std::endl;
 		}
 	} catch (simple_wml::error& e) {
 		WRN_CONFIG << __func__ << ": simple_wml error: " << e.message << std::endl;

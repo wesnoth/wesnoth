@@ -111,7 +111,7 @@ editor_action* mouse_action_unit::up_left(editor_display& disp, int x, int y)
 	const unit_type *new_unit_type = unit_types.find(type_id);
 	if (!new_unit_type) {
 		//TODO rewrite the error message.
-		ERR_ED << "create unit dialog returned inexistent or unusable unit_type id '" << type_id << "'\n";
+		ERR_ED << "create unit dialog returned inexistent or unusable unit_type id '" << type_id << "'" << std::endl;
 		return NULL;
 	}
 

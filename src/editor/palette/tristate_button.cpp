@@ -86,7 +86,7 @@ tristate_button::tristate_button(CVideo& video,
 
 	//TODO
 //	if (button_image.null()) {
-//		ERR_DP<< "error initializing button!\n";
+//		ERR_DP<< "error initializing button!" << std::endl;
 //		throw error();
 //	}
 

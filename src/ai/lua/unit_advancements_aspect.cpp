@@ -90,7 +90,7 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 
 	if(!lua_isfunction(L_, -1))
 	{
-		ERR_LUA << "Can't evaluate advancement aspect: Value is neither a string nor a function.\n";
+		ERR_LUA << "Can't evaluate advancement aspect: Value is neither a string nor a function." << std::endl;
 		return std::vector<std::string>();
 	}
 
@@ -104,12 +104,12 @@ const std::vector<std::string> unit_advancements_aspect::get_advancements(const 
 	//call function
 	if(lua_pcall(L_, 2, 1, 0) != 0)
 	{
-		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1) << "\n";
+		ERR_LUA << "LUA Error while evaluating advancements_aspect: " << lua_tostring(L_, -1) << "" << std::endl;
 		return std::vector<std::string>();
 	}
 	if (!lua_isstring(L_, -1))
 	{
-		ERR_LUA << "LUA Error while evaluating advancements_aspect: Function must return String \n";
+		ERR_LUA << "LUA Error while evaluating advancements_aspect: Function must return String " << std::endl;
 		return std::vector<std::string>();
 	}
 

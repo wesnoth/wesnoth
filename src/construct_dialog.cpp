@@ -141,7 +141,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
 		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
 	} catch(utf8::invalid_utf8_exception&) {
-		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
+		ERR_DP << "Problem handling utf8 in message '" << message << "'" << std::endl;
 		throw;
 	}
 
@@ -283,7 +283,7 @@ int dialog::show()
     if (disp_.video().faked()) return CLOSE_DIALOG;
 
 	if(disp_.video().update_locked()) {
-		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'\n";
+		ERR_DP << "display locked ignoring dialog '" << title_ << "' '" << message_->get_text() << "'" << std::endl;
 		return CLOSE_DIALOG;
 	}
 

@@ -971,7 +971,7 @@ bool manager::execute_all_actions()
 
 	if (resources::whiteboard->has_planned_unit_map())
 	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	//LOG_WB << "Before executing all actions, " << *sa << "\n";

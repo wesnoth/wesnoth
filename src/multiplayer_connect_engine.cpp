@@ -632,7 +632,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 			response["failed"] = true;
 			network::send_data(response, sock);
 
-			ERR_CF << "ERROR: No username provided with the side.\n";
+			ERR_CF << "ERROR: No username provided with the side." << std::endl;
 
 			return result;
 		}
@@ -705,7 +705,7 @@ std::pair<bool, bool> connect_engine::process_network_data(const config& data,
 
 			LOG_NW << "sent player data\n";
 		} else {
-			ERR_CF << "tried to take illegal side: " << side_taken << "\n";
+			ERR_CF << "tried to take illegal side: " << side_taken << "" << std::endl;
 
 			config response;
 			response["failed"] = true;

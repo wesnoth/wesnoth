@@ -82,7 +82,7 @@ void connection::handle_connect(
 			ec.message() << '\n';
 		socket_.close();
 		if(++iterator == resolver::iterator()) {
-			ERR_NW << "Tried all IPs. Giving up\n";
+			ERR_NW << "Tried all IPs. Giving up" << std::endl;
 			throw system_error(ec);
 		} else
 			connect(iterator);

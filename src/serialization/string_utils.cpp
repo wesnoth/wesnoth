@@ -174,12 +174,12 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	if (i1 == val.end()) return res;
 
 	if (!separator) {
-		ERR_GENERAL << "Separator must be specified for square bracket split funtion.\n";
+		ERR_GENERAL << "Separator must be specified for square bracket split funtion." << std::endl;
 		return res;
 	}
 
 	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length" << std::endl;
 		return res;
 	}
 
@@ -240,7 +240,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 				}
 				if (i*square_expansion.size() != (i+1)*size_square_exp ) {
 					std::string tmp(i1, i2);
-					ERR_GENERAL << "Square bracket lengths do not match up: "+tmp+"\n";
+					ERR_GENERAL << "Square bracket lengths do not match up: "+tmp+"" << std::endl;
 					return res;
 				}
 				size_square_exp = square_expansion.size();
@@ -310,7 +310,7 @@ std::vector< std::string > square_parenthetical_split(std::string const &val,
 	}
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"\n";;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"" << std::endl;;
 	}
 
 	return res;
@@ -367,7 +367,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 	i2=i1;
 
 	if(left.size()!=right.size()){
-		ERR_GENERAL << "Left and Right Parenthesis lists not same length\n";
+		ERR_GENERAL << "Left and Right Parenthesis lists not same length" << std::endl;
 		return res;
 	}
 
@@ -433,7 +433,7 @@ std::vector< std::string > parenthetical_split(std::string const &val,
 		res.push_back(new_val);
 
 	if(!part.empty()){
-			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"\n";;
+			ERR_GENERAL << "Mismatched parenthesis:\n"<<val<<"" << std::endl;;
 	}
 
 	return res;

@@ -284,7 +284,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 			if ( !move_result->is_ok() ) {
 				if( move ) {
-					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n\n";
+					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move' formula function\n" << std::endl;
 
 					if(safe_call) {
 						//safe_call was called, prepare error information
@@ -292,7 +292,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 									move_result->get_status(), move_result->get_unit_location()));
 					}
 				} else {
-					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n\n";
+					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'move_partial' formula function\n" << std::endl;
 
 					if(safe_call) {
 						//safe_call was called, prepare error information
@@ -314,7 +314,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 				if (!move_result->is_ok()) {
 					//move part failed
-					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n\n";
+					LOG_AI << "ERROR #" << move_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
 
 					if(safe_call) {
 						//safe_call was called, prepare error information
@@ -331,7 +331,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				if (!attack_result->is_ok()) {
 					//attack failed
 
-					LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n\n";
+					LOG_AI << "ERROR #" << attack_result->get_status() << " while executing 'attack' formula function\n" << std::endl;
 
 					if(safe_call) {
 						//safe_call was called, prepare error information
@@ -435,7 +435,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				made_moves.push_back(action);
 			} else {
 				//too many calls in a row - possible infinite loop
-				ERR_AI << "ERROR #" << 5001 << " while executing 'set_var' formula function\n";
+				ERR_AI << "ERROR #" << 5001 << " while executing 'set_var' formula function" << std::endl;
 
 				if( safe_call )
 					error = variant(new safe_call_result(set_var_command, 5001));
@@ -457,7 +457,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				unit->add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				made_moves.push_back(action);
 			} else {
-				ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function\n";
+				ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;
 				if(safe_call)
 				    error = variant(new safe_call_result(set_unit_var_command,
 									status));
@@ -475,7 +475,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 				made_moves.push_back(action);
 			} else {
 				//too many calls in a row - possible infinite loop
-				ERR_AI << "ERROR #" << 5001 << " while executing 'continue' formula keyword\n";
+				ERR_AI << "ERROR #" << 5001 << " while executing 'continue' formula keyword" << std::endl;
 
 				if( safe_call )
 					error = variant(new safe_call_result(NULL, 5001));
@@ -501,7 +501,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 		} else {
 			//this information is unneded when evaluating formulas form commandline
 			if (!commandline) {
-				ERR_AI << "UNRECOGNIZED MOVE: " << action.to_debug_string() << "\n";
+				ERR_AI << "UNRECOGNIZED MOVE: " << action.to_debug_string() << "" << std::endl;
 			}
 		}
 

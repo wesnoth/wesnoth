@@ -291,7 +291,7 @@ void menu_handler::status_table(int selected)
 		items.push_back(str.str());
 	}
 	if (total_villages > map_.villages().size()) {
-		ERR_NG << "Logic error: map has " << map_.villages().size() << " villages but status table shows " << total_villages << " owned in total\n";
+		ERR_NG << "Logic error: map has " << map_.villages().size() << " villages but status table shows " << total_villages << " owned in total" << std::endl;
 	}
 
 	if (status_table_empty)
@@ -561,7 +561,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	for(std::set<std::string>::const_iterator it = recruits.begin(); it != recruits.end(); ++it) {
 		const unit_type *type = unit_types.find(*it);
 		if (!type) {
-			ERR_NG << "could not find unit '" << *it << "'\n";
+			ERR_NG << "could not find unit '" << *it << "'" << std::endl;
 			return;
 		}
 
@@ -741,7 +741,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 		if(!success)
 		{
-			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list.\n";
+			ERR_NG << "menu_handler::recall(): Unit does not exist in the recall list." << std::endl;
 		}
 	}
 }
@@ -971,7 +971,7 @@ namespace { // Helpers for create_unit()
 		const std::string& ut_id = create_dlg.choice();
 		const unit_type *utp = unit_types.find(ut_id);
 		if (!utp) {
-			ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'.\n";
+			ERR_NG << "Create unit dialog returned nonexistent or unusable unit_type id '" << ut_id << "'." << std::endl;
 			return type_and_gender(static_cast<const unit_type *>(NULL), unit_race::NUM_GENDERS);
 		}
 		const unit_type &ut = *utp;
@@ -2204,7 +2204,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["level"] = level;
 		const std::string& msg =
 				vgettext("Unknown debug level: '$level'.", symbols);
-		ERR_NG << msg << "\n";
+		ERR_NG << msg << "" << std::endl;
 		add_chat_message(time(NULL), _("error"), 0, msg);
 		return;
 	}
@@ -2213,7 +2213,7 @@ void chat_handler::change_logging(const std::string& data) {
 		symbols["domain"] = domain;
 		const std::string& msg =
 				vgettext("Unknown debug domain: '$domain'.", symbols);
-		ERR_NG << msg << "\n";
+		ERR_NG << msg << "" << std::endl;
 		add_chat_message(time(NULL), _("error"), 0, msg);
 		return;
 	} else {

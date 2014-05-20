@@ -54,7 +54,7 @@ void item_palette::setup(const config& cfg)
 	set_group("items");
 
 	if(active_group().empty()) {
-		ERR_ED << "No items found.\n";
+		ERR_ED << "No items found." << std::endl;
 	}
 }
 
@@ -70,10 +70,10 @@ void item_palette::draw_item(const overlay& item, surface& image, std::stringstr
 	image = image::get_image(filename.str());
 	if(image == NULL) {
 		tooltip_text << "IMAGE NOT FOUND\n";
-		ERR_ED << "image for item type: '" << filename.str() << "' not found\n";
+		ERR_ED << "image for item type: '" << filename.str() << "' not found" << std::endl;
 		image = image::get_image(game_config::images::missing);
 		if (image == NULL) {
-			ERR_ED << "Placeholder image not found\n";
+			ERR_ED << "Placeholder image not found" << std::endl;
 			return;
 		}
 	}

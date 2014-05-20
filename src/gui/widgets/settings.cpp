@@ -504,11 +504,11 @@ void load_settings()
 	catch(config::error& e)
 	{
 		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'.\n";
+		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'." << std::endl;
 	}
 	catch(const abstract_validator::error& e)
 	{
-		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'.\n";
+		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'." << std::endl;
 		ERR_GUI_P << e.message;
 	}
 	// Parse guis

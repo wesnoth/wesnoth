@@ -190,7 +190,7 @@ public:
 				write(*stream, data());
 			}
 		} catch(io_exception& e) {
-			ERR_SAVE << "error writing to save index file: '" << e.what() << "'\n";
+			ERR_SAVE << "error writing to save index file: '" << e.what() << "'" << std::endl;
 		}
 	}
 
@@ -223,9 +223,9 @@ private:
 					read(data_, *stream);
 				}
 			} catch(io_exception& e) {
-				ERR_SAVE << "error reading save index: '" << e.what() << "'\n";
+				ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
 			} catch(config::error&) {
-				ERR_SAVE << "error parsing save index config file\n";
+				ERR_SAVE << "error parsing save index config file" << std::endl;
 				data_.clear();
 			}
 			loaded_ = true;

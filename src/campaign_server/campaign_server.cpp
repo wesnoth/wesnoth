@@ -171,7 +171,7 @@ namespace {
 	{
 		config cfg;
 		cfg.add_child("error")["message"] = msg;
-		LOG_CS << "ERROR: "<<msg<<"\n";
+		LOG_CS << "ERROR: "<<msg<<"" << std::endl;
 		return cfg;
 	}
 
@@ -223,13 +223,13 @@ namespace {
 		if(script == "") return;
 
 #if (defined(_WIN32))
-		LOG_CS << "ERROR: Tried to execute a script on an unsupported platform\n";
+		LOG_CS << "ERROR: Tried to execute a script on an unsupported platform" << std::endl;
 		return;
 #else
 		pid_t childpid;
 
 		if((childpid = fork()) == -1) {
-			LOG_CS << "ERROR: fork failed while updating campaign " << addon << "\n";
+			LOG_CS << "ERROR: fork failed while updating campaign " << addon << "" << std::endl;
 			return;
 		}
 

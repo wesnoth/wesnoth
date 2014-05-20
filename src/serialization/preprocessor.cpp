@@ -533,7 +533,7 @@ preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string cons
 	else {
 		std::istream * file_stream = istream_file(name);
 		if (!file_stream->good()) {
-			ERR_CF << "Could not open file " << name << "\n";
+			ERR_CF << "Could not open file " << name << "" << std::endl;
 			delete file_stream;
 		}
 		else

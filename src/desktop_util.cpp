@@ -66,13 +66,13 @@ bool open_object(const std::string& path_or_url)
 	const pid_t child = fork();
 
 	if(child == -1) {
-		ERR_DU << "open_object(): fork() failed\n";
+		ERR_DU << "open_object(): fork() failed" << std::endl;
 		return false;
 	} else if(child == 0) {
 		execlp(launcher, launcher, path_or_url.c_str(), reinterpret_cast<char*>(NULL));
 		_exit(1); // This shouldn't happen.
 	} else if(waitpid(child, &child_status, 0) == -1) {
-		ERR_DU << "open_object(): waitpid() failed\n";
+		ERR_DU << "open_object(): waitpid() failed" << std::endl;
 		return false;
 	}
 
@@ -81,7 +81,7 @@ bool open_object(const std::string& path_or_url)
 			ERR_DU << "open_object(): " << launcher << " returned "
 			       << WEXITSTATUS(child_status) << '\n';
 		} else {
-			ERR_DU << "open_object(): " << launcher << " failed\n";
+			ERR_DU << "open_object(): " << launcher << " failed" << std::endl;
 		}
 
 		return false;
@@ -98,7 +98,7 @@ bool open_object(const std::string& path_or_url)
 
 	const ptrdiff_t res = reinterpret_cast<ptrdiff_t>(ShellExecute(NULL, L"open", &u16path.front(), NULL, NULL, SW_SHOW));
 	if(res <= 32) {
-		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")\n";
+		ERR_DU << "open_object(): ShellExecute() failed (" << res << ")" << std::endl;
 		return false;
 	}
 
@@ -107,7 +107,7 @@ bool open_object(const std::string& path_or_url)
 #else
 
 	(void)(path_or_url); // silence gcc's -Wunused-parameter
-	ERR_DU << "open_object(): unsupported platform\n";
+	ERR_DU << "open_object(): unsupported platform" << std::endl;
 	return false;
 
 #endif

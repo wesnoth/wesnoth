@@ -163,7 +163,7 @@ namespace game_config {
 				// it should be safe to rely on caches containing it.
 				if(i->first != "WESNOTH_VERSION") {
 					is_valid = false;
-					ERR_CACHE << "Preprocessor define not valid\n";
+					ERR_CACHE << "Preprocessor define not valid" << std::endl;
 					break;
 				}
 			}
@@ -193,9 +193,9 @@ namespace game_config {
 							dir_checksum = file_tree_checksum(checksum_cfg);
 						}
 					} catch(config::error&) {
-						ERR_CACHE << "cache checksum is corrupt\n";
+						ERR_CACHE << "cache checksum is corrupt" << std::endl;
 					} catch(io_exception&) {
-						ERR_CACHE << "error reading cache checksum\n";
+						ERR_CACHE << "error reading cache checksum" << std::endl;
 					}
 				}
 
@@ -215,12 +215,12 @@ namespace game_config {
 						}
 						return;
 					} catch(config::error& e) {
-						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<<"\n";
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Loading from files: "<< e.message<<"" << std::endl;
 					} catch(io_exception&) {
-						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files\n";
+						ERR_CACHE << "error reading cache " << fname << extension << ". Loading from files" << std::endl;
 					} catch (boost::iostreams::gzip_error& e) {
 						//read_file -> ... -> read_gz can throw this exception.
-						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << "\n";
+						ERR_CACHE << "cache " << fname << extension << " is corrupt. Error code: " << e.error() << "" << std::endl;
 					}
 				}
 
@@ -241,7 +241,7 @@ namespace game_config {
 					data_tree_checksum().write(checksum_cfg);
 					write_file(fname_checksum, checksum_cfg);
 				} catch(io_exception&) {
-					ERR_CACHE << "could not write to cache '" << fname << "'\n";
+					ERR_CACHE << "could not write to cache '" << fname << "'" << std::endl;
 				}
 				return;
 			}

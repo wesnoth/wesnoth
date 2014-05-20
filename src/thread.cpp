@@ -115,7 +115,7 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 		case 0: return WAIT_OK;
 		case SDL_MUTEX_TIMEDOUT: return WAIT_TIMED_OUT;
 		default:
-			ERR_G << "SDL_CondWaitTimeout: " << SDL_GetError() << "\n";
+			ERR_G << "SDL_CondWaitTimeout: " << SDL_GetError() << "" << std::endl;
 			return WAIT_ERROR;
 	}
 }
@@ -123,7 +123,7 @@ condition::WAIT_TIMEOUT_RESULT condition::wait_timeout(const mutex& m, unsigned 
 bool condition::notify_one()
 {
 	if(SDL_CondSignal(cond_) < 0) {
-		ERR_G << "SDL_CondSignal: " << SDL_GetError() << "\n";
+		ERR_G << "SDL_CondSignal: " << SDL_GetError() << "" << std::endl;
 		return false;
 	}
 
@@ -133,7 +133,7 @@ bool condition::notify_one()
 bool condition::notify_all()
 {
 	if(SDL_CondBroadcast(cond_) < 0) {
-		ERR_G << "SDL_CondBroadcast: " << SDL_GetError() << "\n";
+		ERR_G << "SDL_CondBroadcast: " << SDL_GetError() << "" << std::endl;
 		return false;
 	}
 	return true;

@@ -276,7 +276,7 @@ undo_list::undo_action::create(const config & cfg, const std::string & tag)
 	else
 	{
 		// Unrecognized type.
-		ERR_NG << "Unrecognized undo action type: " << str << ".\n";
+		ERR_NG << "Unrecognized undo action type: " << str << "." << std::endl;
 		return NULL;
 	}
 	res->replay_data = cfg.child_or_empty("replay_data");
@@ -503,13 +503,13 @@ void undo_list::new_side_turn(int side)
 {
 	// Error checks.
 	if ( !undos_.empty() ) {
-		ERR_NG << "Undo stack not empty in new_side_turn().\n";
+		ERR_NG << "Undo stack not empty in new_side_turn()." << std::endl;
 		// At worst, someone missed some sighted events, so try to recover.
 		undos_.clear();
 		redos_.clear();
 	}
 	else if ( !redos_.empty() ) {
-		ERR_NG << "Redo stack not empty in new_side_turn().\n";
+		ERR_NG << "Redo stack not empty in new_side_turn()." << std::endl;
 		// Sloppy tracking somewhere, but not critically so.
 		redos_.clear();
 	}
@@ -716,7 +716,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 	const unit_map::iterator u_end = units.find(rev_route.back());
 	if ( u == units.end()  ||  u_end != units.end() ) {
 		//this can actually happen if the scenario designer has abused the [allow_undo] command
-		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?\n";
+		ERR_NG << "Illegal 'undo' found. Possible abuse of [allow_undo]?" << std::endl;
 		return false;
 	}
 
@@ -944,7 +944,7 @@ bool undo_list::move_action::redo(int side)
 	// Check units.
 	unit_map::iterator u = units.find(route.front());
 	if ( u == units.end() ) {
-		ERR_NG << "Illegal movement 'redo'.\n";
+		ERR_NG << "Illegal movement 'redo'." << std::endl;
 		assert(false);
 		return false;
 	}
@@ -986,7 +986,7 @@ bool undo_list::move_action::redo(int side)
 bool undo_list::auto_shroud_action::redo(int /*side*/)
 {
 	// This should never happen.
-	ERR_NG << "Attempt to redo an auto shroud toggle.\n";
+	ERR_NG << "Attempt to redo an auto shroud toggle." << std::endl;
 	assert(false);
 	return false;
 }
@@ -998,7 +998,7 @@ bool undo_list::auto_shroud_action::redo(int /*side*/)
 bool undo_list::update_shroud_action::redo(int /*side*/)
 {
 	// This should never happen.
-	ERR_NG << "Attempt to redo a shroud update.\n";
+	ERR_NG << "Attempt to redo a shroud update." << std::endl;
 	assert(false);
 	return false;
 }

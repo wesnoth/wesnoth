@@ -48,7 +48,7 @@ std::string random_generate_map(const std::string& parms, const config &cfg)
 	std::vector<std::string> parameters = utils::split(parms, ' ');
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
-		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
+		ERR_CF << "could not find map generator '" << parameters.front() << "'" << std::endl;
 		return std::string();
 	}
 
@@ -63,7 +63,7 @@ config random_generate_scenario(const std::string& parms, const config &cfg)
 	std::vector<std::string> parameters = utils::split(parms, ' ');
 	util::scoped_ptr<map_generator> generator(create_map_generator(parameters.front(),cfg));
 	if(generator == NULL) {
-		ERR_CF << "could not find map generator '" << parameters.front() << "'\n";
+		ERR_CF << "could not find map generator '" << parameters.front() << "'" << std::endl;
 		return config();
 	}
 

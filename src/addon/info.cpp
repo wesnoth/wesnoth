@@ -136,11 +136,11 @@ std::string addon_info::display_icon() const
 	std::string ret = icon;
 
 	if(ret.empty()) {
-		ERR_AC << "add-on '" << id << "' doesn't have an icon path set\n";
+		ERR_AC << "add-on '" << id << "' doesn't have an icon path set" << std::endl;
 		ret = fallback_addon_icon;
 	}
 	else if(!image::exists(ret)) {
-		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'\n";
+		ERR_AC << "add-on '" << id << "' has an icon which cannot be found: '" << ret << "'" << std::endl;
 		ret = game_config::debug ? game_config::images::missing : fallback_addon_icon;
 	}
 	else if(ret.find("units/") != std::string::npos && ret.find_first_of('~') == std::string::npos) {
@@ -208,7 +208,7 @@ void read_addons_list(const config& cfg, addons_list& dest)
 	BOOST_FOREACH(const config& addon_cfg, addon_cfgs) {
 		const std::string& id = addon_cfg["name"].str();
 		if(dest.find(id) != dest.end()) {
-			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them\n";
+			ERR_AC << "add-ons list has multiple entries for '" << id << "', not good; ignoring them" << std::endl;
 			continue;
 		}
 		dest[id].read(addon_cfg);

@@ -197,7 +197,7 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 			}
 			else if (define == "NO_TERRAIN_GFX")
 			{
-				std::cerr << "'NO_TERRAIN_GFX' defined.\n";
+				std::cerr << "'NO_TERRAIN_GFX' defined." << std::endl;
 				skipTerrainGFX = true;
 			}
 		}

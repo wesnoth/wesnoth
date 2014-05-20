@@ -27,7 +27,7 @@ namespace game_logic
 
 void formula_callable::set_value(const std::string& key, const variant& /*value*/)
 {
-	std::cerr << "ERROR: cannot set key '" << key << "' on object\n";
+	std::cerr << "ERROR: cannot set key '" << key << "' on object" << std::endl;
 }
 
 

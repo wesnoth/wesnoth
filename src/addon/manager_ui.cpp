@@ -972,19 +972,19 @@ bool addons_manager_ui(display& disp, const std::string& remote_address)
 			}
 		} while(stay_in_manager_ui);
 	} catch(const config::error& e) {
-		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
+		ERR_CFG << "config::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("Network communication error."));
 	} catch(const network::error& e) {
-		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"\n";
+		ERR_NET << "network::error thrown during transaction with add-on server; \""<< e.message << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
 	} catch(const network_asio::error& e) {
-		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"\n";
+		ERR_NET << "network_asio::error thrown during transaction with add-on server; \""<< e.what() << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("Remote host disconnected."));
 	} catch(const io_exception& e) {
-		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"\n";
+		ERR_FS << "io_exception thrown while installing an addon; \"" << e.what() << "\"" << std::endl;
 		gui2::show_error_message(disp.video(), _("A problem occurred when trying to create the files necessary to install this add-on."));
 	} catch(const invalid_pbl_exception& e) {
-		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << "\n";
+		ERR_CFG << "could not read .pbl file " << e.path << ": " << e.message << "" << std::endl;
 
 		utils::string_map symbols;
 		symbols["path"] = e.path;

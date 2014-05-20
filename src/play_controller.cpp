@@ -1046,7 +1046,7 @@ void play_controller::tab()
 	}
 
 	default:
-		ERR_DP << "unknown textbox mode\n";
+		ERR_DP << "unknown textbox mode" << std::endl;
 	} //switch(mode)
 
 	menu_handler_.get_textbox().tab(dictionary);

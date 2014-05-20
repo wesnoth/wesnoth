@@ -973,7 +973,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 							{
 								fire_event = false;
 
-								ERR_NG << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!\n";
+								ERR_NG << "tried to fire 'die' or 'last breath' event on primary_unit inside its own 'die' or 'last breath' event with 'first_time_only' set to false!" << std::endl;
 							}
 					}
 			}
@@ -1193,7 +1193,7 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 		// TODO: since 1.11.0-dev it seems
 		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF\n";
 		if(!cfg["side"].str().empty()) {
-			ERR_NG << "duplicate side information in [modify_ai]\n";
+			ERR_NG << "duplicate side information in [modify_ai]" << std::endl;
 			return;
 		}
 		side_filter ssf(filter_side);
@@ -1386,7 +1386,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 		int new_turn_number = current.to_int(current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 		if(new_turn_number_u < 1 || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
-			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")\n";
+			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ")" << std::endl;
 		} else if(new_turn_number_u != current_turn_number) {
 			tod_man.set_turn(new_turn_number_u);
 			resources::screen->new_turn();
@@ -1793,7 +1793,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 {
 	if(cfg.get_children("time").empty()) {
-		ERR_NG << "attempted to to replace ToD schedule with empty schedule\n";
+		ERR_NG << "attempted to to replace ToD schedule with empty schedule" << std::endl;
 	} else {
 		resources::tod_manager->replace_schedule(cfg.get_parsed_config());
 		resources::screen->new_turn();
@@ -1970,7 +1970,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	config::attribute_value divide = cfg["divide"];
 	if (!divide.empty()) {
 		if (divide.to_double() == 0) {
-			ERR_NG << "division by zero on variable " << name << "\n";
+			ERR_NG << "division by zero on variable " << name << "" << std::endl;
 			return;
 		}
 		var = var.to_double() / divide.to_double();
@@ -1979,7 +1979,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	config::attribute_value modulo = cfg["modulo"];
 	if (!modulo.empty()) {
 		if (modulo.to_double() == 0) {
-			ERR_NG << "division by zero on variable " << name << "\n";
+			ERR_NG << "division by zero on variable " << name << "" << std::endl;
 			return;
 		}
 		var = std::fmod(var.to_double(), modulo.to_double());
@@ -2075,7 +2075,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 				long low, high;
 				ss << first + " " + second;
 				if ( !(ss >> low)  ||  !(ss >> high) ) {
-					ERR_NG << "Malformed range: rand = \"" << rand << "\"\n";
+					ERR_NG << "Malformed range: rand = \"" << rand << "\"" << std::endl;
 					// Treat this element as a string?
 					ranges.push_back(std::pair<long, long>(0,0));
 					num_choices += 1;
@@ -2463,7 +2463,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 	try {
 		mask_map.read(mask, false, border_size, usage);
 	} catch(incorrect_map_format_error&) {
-		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied\n";
+		ERR_NG << "terrain mask is in the incorrect format, and couldn't be applied" << std::endl;
 		return;
 	} catch(twml_exception& e) {
 		e.show(*resources::screen);
@@ -2494,7 +2494,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 		std::string id;
 		if(ids.find(',') != std::string::npos) {
 			id = utils::split(ids,',',utils::STRIP_SPACES | utils::REMOVE_EMPTY).front();
-			ERR_NG << "multiple ids for inserting a new time_area; will use only the first\n";
+			ERR_NG << "multiple ids for inserting a new time_area; will use only the first" << std::endl;
 		} else {
 			id = ids;
 		}
@@ -2686,7 +2686,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 		}
 
 	} catch (game::game_error &e) {
-		ERR_NG << "could not de-serialize unit: '" << e.message << "'\n";
+		ERR_NG << "could not de-serialize unit: '" << e.message << "'" << std::endl;
 	}
 }
 

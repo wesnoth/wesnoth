@@ -310,7 +310,7 @@ bool side_actions::execute_next()
 bool side_actions::execute(side_actions::iterator position)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	if(actions_.empty() || position == actions_.end()) {
@@ -395,7 +395,7 @@ void side_actions::show()
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 	iterator valid_position = synced_insert(position, action);
 	LOG_WB << "Inserted into turn #" << get_turn(valid_position) << " at position #"
@@ -407,7 +407,7 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 side_actions::iterator side_actions::queue_action(size_t turn_num, action_ptr action)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 	iterator result = synced_enqueue(turn_num, action);
 	LOG_WB << "Queue into turn #" << turn_num << " : " << action <<"\n";
@@ -473,7 +473,7 @@ namespace
 side_actions::iterator side_actions::bump_earlier(side_actions::iterator position)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	assert(position <= end());
@@ -537,7 +537,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 side_actions::iterator side_actions::remove_action(side_actions::iterator position, bool validate_after_delete)
 {
 	if(resources::whiteboard->has_planned_unit_map()) {
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!" << std::endl;
 	}
 
 	assert(position < end());
@@ -704,13 +704,13 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.child("action"), hidden_);
 		if(!act) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid action data!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
 			return;
 		}
 
 		iterator itor = safe_insert(turn, pos, act);
 		if(itor >= end()) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid insertion position!" << std::endl;
 			return;
 		}
 
@@ -726,18 +726,18 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		size_t pos = cmd["pos"].to_int();
 		action_ptr act = action::from_config(cmd.child("action"), hidden_);
 		if(!act) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid action data!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid action data!" << std::endl;
 			return;
 		}
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
 			return;
 		}
 
 		if(!actions_.replace(itor, act)){
-			ERR_WB << "side_actions::execute_network_command(): replace failed!\n";
+			ERR_WB << "side_actions::execute_network_command(): replace failed!" << std::endl;
 			return;
 		}
 
@@ -748,7 +748,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
 			return;
 		}
 
@@ -766,7 +766,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 
 		iterator itor = turn_begin(turn) + pos;
 		if(itor+1 >= end() || get_turn(itor) != turn) {
-			ERR_WB << "side_actions::execute_network_command(): received invalid pos!\n";
+			ERR_WB << "side_actions::execute_network_command(): received invalid pos!" << std::endl;
 			return;
 		}
 
@@ -788,7 +788,7 @@ void side_actions::execute_net_cmd(net_cmd const& cmd)
 		BOOST_FOREACH(net_cmd const& sub_cmd, cmd.child_range("net_cmd"))
 			execute_net_cmd(sub_cmd);
 	} else {
-		ERR_WB << "side_actions::execute_network_command(): received invalid type!\n";
+		ERR_WB << "side_actions::execute_network_command(): received invalid type!" << std::endl;
 		return;
 	}
 

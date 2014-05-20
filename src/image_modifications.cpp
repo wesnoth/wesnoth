@@ -210,11 +210,11 @@ surface crop_modification::operator()(const surface& src) const
 		area.h = src->h;
 	}
 	if(area.x < 0) {
-		ERR_DP << "start X coordinate of CROP modification is negative - truncating to zero\n";
+		ERR_DP << "start X coordinate of CROP modification is negative - truncating to zero" << std::endl;
 		area.x = 0;
 	}
 	if(area.y < 0) {
-		ERR_DP << "start Y coordinate of CROP modification is negative - truncating to zero\n";
+		ERR_DP << "start Y coordinate of CROP modification is negative - truncating to zero" << std::endl;
 		area.y = 0;
 	}
 
@@ -347,13 +347,13 @@ surface scale_modification::operator()(const surface& src) const
 
 	if(w <= 0) {
 		if(w < 0) {
-			ERR_DP << "width of SCALE is negative - resetting to original width\n";
+			ERR_DP << "width of SCALE is negative - resetting to original width" << std::endl;
 		}
 		w = old_w;
 	}
 	if(h <= 0) {
 		if(h < 0) {
-			ERR_DP << "height of SCALE is negative - resetting to original height\n";
+			ERR_DP << "height of SCALE is negative - resetting to original height" << std::endl;
 		}
 		h = old_h;
 	}
@@ -507,7 +507,7 @@ REGISTER_MOD_PARSER(TC, args)
 	std::vector<std::string> params = utils::split(args,',');
 
 	if(params.size() < 2) {
-		ERR_DP << "too few arguments passed to the ~TC() function\n";
+		ERR_DP << "too few arguments passed to the ~TC() function" << std::endl;
 
 		return NULL;
 	}
@@ -527,7 +527,7 @@ REGISTER_MOD_PARSER(TC, args)
 		try {
 			team_color = lexical_cast<std::string>(side_n);
 		} catch(bad_lexical_cast const&) {
-			ERR_DP << "bad things happen\n";
+			ERR_DP << "bad things happen" << std::endl;
 
 			return NULL;
 		}
@@ -694,7 +694,7 @@ REGISTER_MOD_PARSER(CS, args)
 	const size_t s = factors.size();
 
 	if(s == 0) {
-		ERR_DP << "no arguments passed to the ~CS() function\n";
+		ERR_DP << "no arguments passed to the ~CS() function" << std::endl;
 		return NULL;
 	}
 
@@ -718,7 +718,7 @@ REGISTER_MOD_PARSER(BLEND, args)
 	const std::vector<std::string>& params = utils::split(args, ',');
 
 	if(params.size() != 4) {
-		ERR_DP << "~BLEND() requires exactly 4 arguments\n";
+		ERR_DP << "~BLEND() requires exactly 4 arguments" << std::endl;
 		return NULL;
 	}
 
@@ -749,7 +749,7 @@ REGISTER_MOD_PARSER(CROP, args)
 	const size_t s = slice_params.size();
 
 	if(s == 0 || (s == 1 && slice_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~CROP() function\n";
+		ERR_DP << "no arguments passed to the ~CROP() function" << std::endl;
 		return NULL;
 	}
 
@@ -785,7 +785,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	const size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
-		ERR_DP << "no arguments passed to the ~BLIT() function\n";
+		ERR_DP << "no arguments passed to the ~BLIT() function" << std::endl;
 		return NULL;
 	}
 
@@ -797,7 +797,7 @@ REGISTER_MOD_PARSER(BLIT, args)
 	}
 
 	if(x < 0 || y < 0) { //required by blit_surface
-		ERR_DP << "negative position arguments in ~BLIT() function\n";
+		ERR_DP << "negative position arguments in ~BLIT() function" << std::endl;
 		return NULL;
 	}
 
@@ -818,7 +818,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	const size_t s = param.size();
 
 	if(s == 0 || (s == 1 && param[0].empty())){
-		ERR_DP << "no arguments passed to the ~MASK() function\n";
+		ERR_DP << "no arguments passed to the ~MASK() function" << std::endl;
 		return NULL;
 	}
 
@@ -830,7 +830,7 @@ REGISTER_MOD_PARSER(MASK, args)
 	}
 
 	if(x < 0 || y < 0) { //required by blit_surface
-		ERR_DP << "negative position arguments in ~MASK() function\n";
+		ERR_DP << "negative position arguments in ~MASK() function" << std::endl;
 		return NULL;
 	}
 
@@ -848,7 +848,7 @@ REGISTER_MOD_PARSER(MASK, args)
 REGISTER_MOD_PARSER(L, args)
 {
 	if(args.empty()){
-		ERR_DP << "no arguments passed to the ~L() function\n";
+		ERR_DP << "no arguments passed to the ~L() function" << std::endl;
 		return NULL;
 	}
 
@@ -864,7 +864,7 @@ REGISTER_MOD_PARSER(SCALE, args)
 	const size_t s = scale_params.size();
 
 	if(s == 0 || (s == 1 && scale_params[0].empty())) {
-		ERR_DP << "no arguments passed to the ~SCALE() function\n";
+		ERR_DP << "no arguments passed to the ~SCALE() function" << std::endl;
 		return NULL;
 	}
 

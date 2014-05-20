@@ -411,7 +411,7 @@ int recruitment_phase::average_resistance_against(const unit_type& a, const unit
 	if(weighting_sum != 0) {
 		defense /= weighting_sum;
 	} else {
-		ERR_AI_TESTING_AI_DEFAULT << "The weighting sum is 0 and is ignored.\n";
+		ERR_AI_TESTING_AI_DEFAULT << "The weighting sum is 0 and is ignored." << std::endl;
 	}
 
 	LOG_AI_TESTING_AI_DEFAULT << "average defense of '" << a.id() << "': " << defense << "\n";

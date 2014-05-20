@@ -148,7 +148,7 @@ void button::load_images() {
 	}
 
 	if (button_image.null()) {
-		ERR_DP << "error initializing button!\n";
+		ERR_DP << "error initializing button!" << std::endl;
 		throw error();
 	}
 

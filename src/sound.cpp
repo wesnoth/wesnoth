@@ -303,7 +303,7 @@ bool init_sound() {
 	if(!mix_ok) {
 		if(Mix_OpenAudio(preferences::sample_rate(), MIX_DEFAULT_FORMAT, 2, preferences::sound_buffer_size()) == -1) {
 			mix_ok = false;
-			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Could not initialize audio: " << Mix_GetError() << "" << std::endl;
 			return false;
 		}
 
@@ -356,7 +356,7 @@ void close_sound() {
 
 		int numtimesopened = Mix_QuerySpec(&frequency, &format, &channels);
 		if(numtimesopened == 0) {
-			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Error closing audio device: " << Mix_GetError() << "" << std::endl;
 		}
 		while (numtimesopened) {
 			Mix_CloseAudio();
@@ -378,7 +378,7 @@ void reset_sound() {
 	if (music || sound || bell || UI_sound) {
 		sound::close_sound();
 		if (!sound::init_sound()) {
-			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << "\n";
+			ERR_AUDIO << "Error initializing audio device: " << Mix_GetError() << "" << std::endl;
 		}
 		if (!music)
 			sound::stop_music();
@@ -507,7 +507,7 @@ static void play_new_music()
 	const int res = Mix_FadeInMusic(itor->second, 1, fading_time);
 	if(res < 0)
 	{
-		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename <<" \n";
+		ERR_AUDIO << "Could not play music: " << Mix_GetError() << " " << filename <<" " << std::endl;
 	}
 
 	want_new_music=false;
@@ -534,7 +534,7 @@ void play_music_config(const config &music_node)
 	music_track track( music_node );
 
 	if (!track.valid() && !track.id().empty()) {
-		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist.\n";
+		ERR_AUDIO << "cannot open track '" << track.id() << "'; disabled in this playlist." << std::endl;
 	}
 
 	// If they say play once, we don't alter playlist.
@@ -562,7 +562,7 @@ void play_music_config(const config &music_node)
 		if(itor == current_track_list.end()) {
 			current_track_list.push_back(track);
 		} else {
-			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'\n";
+			ERR_AUDIO << "tried to add duplicate track '" << track.file_path() << "'" << std::endl;
 		}
 	}
 
@@ -711,7 +711,7 @@ static Mix_Chunk* load_chunk(const std::string& file, channel_group group)
 		if (!filename.empty()) {
 			temp_chunk.set_data(Mix_LoadWAV(filename.c_str()));
 		} else {
-			ERR_AUDIO << "Could not load sound file '" << file << "'.\n";
+			ERR_AUDIO << "Could not load sound file '" << file << "'." << std::endl;
 			throw chunk_load_exception();
 		}
 
@@ -781,7 +781,7 @@ void play_sound_internal(const std::string& files, channel_group group, unsigned
 	}
 
 	if(res < 0) {
-		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "\n";
+		ERR_AUDIO << "error playing sound effect: " << Mix_GetError() << "" << std::endl;
 		//still keep it in the sound cache, in case we want to try again later
 		return;
 	}

@@ -149,7 +149,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 	surface image_bg(image::get_image(disp.get_map().get_terrain_info(bg).editor_image()));
 
 	if (image_fg == NULL || image_bg == NULL) {
-		ERR_ED << "Missing terrain icon\n";
+		ERR_ED << "Missing terrain icon" << std::endl;
 		disp.set_mouseover_hex_overlay(NULL);
 		return;
 	}

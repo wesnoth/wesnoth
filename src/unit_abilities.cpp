@@ -692,7 +692,7 @@ void attack_type::modified_attacks(bool is_backstab, unsigned & min_attacks,
 	int attacks_value = attacks_effect.get_composite_value();
 	if ( attacks_value < 0 ) {
 		attacks_value = num_attacks();
-		ERR_NG << "negative number of strikes after applying weapon specials\n";
+		ERR_NG << "negative number of strikes after applying weapon specials" << std::endl;
 	}
 
 	// Apply [swarm].
@@ -999,7 +999,7 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		}
 		if (const config::attribute_value *v = cfg.get("divide")) {
 			if (*v == 0) {
-				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << "\n";
+				ERR_NG << "division by zero with divide= in ability/weapon special " << effect_id << "" << std::endl;
 			}
 			else {
 				int divide = int(v->to_double() * 100);

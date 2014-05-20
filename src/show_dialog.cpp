@@ -269,7 +269,7 @@ void dialog_frame::draw_background()
 	}
 
 	if(bg_ == NULL) {
-		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'\n";
+		ERR_DP << "could not find dialog background '" << dialog_style_.panel << "'" << std::endl;
 		return;
 	}
 	for(int i = 0; i < dim_.interior.w; i += bg_->w) {

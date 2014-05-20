@@ -303,7 +303,7 @@ void part_ui::render_title_box()
 	surface txtsurf = t.render();
 
 	if(txtsurf.null()) {
-		ERR_NG << "storyscreen titlebox rendering resulted in a null surface\n";
+		ERR_NG << "storyscreen titlebox rendering resulted in a null surface" << std::endl;
 		return;
 	}
 
@@ -425,7 +425,7 @@ void part_ui::render_story_box()
 	surface txtsurf = t.render();
 
 	if(txtsurf.null()) {
-		ERR_NG << "storyscreen text area rendering resulted in a null surface\n";
+		ERR_NG << "storyscreen text area rendering resulted in a null surface" << std::endl;
 		return;
 	}
 
@@ -601,7 +601,7 @@ part_ui::RESULT part_ui::show()
 		render_story_box();
 	}
 	catch(utf8::invalid_utf8_exception const&) {
-		ERR_NG << "invalid UTF-8 sequence in story text, skipping part...\n";
+		ERR_NG << "invalid UTF-8 sequence in story text, skipping part..." << std::endl;
 	}
 
 	return ret_;

@@ -894,7 +894,7 @@ void context_manager::revert_map()
 	if (!confirm_discard()) return;
 	std::string filename = get_map_context().get_filename();
 	if (filename.empty()) {
-		ERR_ED << "Empty filename in map revert\n";
+		ERR_ED << "Empty filename in map revert" << std::endl;
 		return;
 	}
 	load_map(filename, false);
