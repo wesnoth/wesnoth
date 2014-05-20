@@ -132,6 +132,12 @@ void set_strict_severity(const logger &lg) {
 	set_strict_severity(lg.get_severity());
 }
 
+static bool strict_threw_ = false;
+
+bool broke_strict() {
+	return strict_threw_;
+}
+
 std::string get_timestamp(const time_t& t, const std::string& format) {
 	char buf[100] = {0};
 	tm* lt = localtime(&t);
@@ -168,19 +174,15 @@ static void print_precise_timestamp(std::ostream & out)
 
 std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool do_indent) const
 {
-	static bool strict_threw_ = false;
-
 	if (severity_ > domain.domain_->second) {
 		return null_ostream;
-	} else if (!strict_threw_ && (severity_ <= strict_level_)) {
-		std::stringstream ss;
-		ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
-		std::cerr << ss.str() << std::endl;
-		//TODO: Would be nice to actually get whatever message they were going to log... 
-		//this would likely require refactor to pass back a wrapper instead of ostream & though.
-		strict_threw_ = true;
-		throw game::game_error(ss.str());
 	} else {
+		if (!strict_threw_ && (severity_ <= strict_level_)) {
+			std::stringstream ss;
+			ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
+			std::cerr << ss.str() << std::endl;
+			strict_threw_ = true;
+		} 
 		std::ostream& stream = output();
 		if(do_indent) {
 			for(int i = 0; i != indent; ++i)

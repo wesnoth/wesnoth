@@ -80,6 +80,7 @@ std::string list_logdomains(const std::string& filter);
 
 void set_strict_severity(int severity);
 void set_strict_severity(const logger &lg);
+bool broke_strict();
 
 class logger {
 	char const *name_;

@@ -463,7 +463,7 @@ int game_controller::unit_test()
 
 	try {
 		LEVEL_RESULT res = play_game(disp(),state_,resources::config_manager->game_config(), IO_NONE, false, false, false, true);
-		if (!(res == VICTORY || res == NONE)) {
+		if (!(res == VICTORY || res == NONE) || lg::broke_strict()) {
 			return 1;
 		}
 	} catch (game::load_game_exception &) {
