@@ -96,7 +96,7 @@ bool looks_like_pbl(const std::string& file);
  * to the game path (true) or to the current directory from which Wesnoth was run (false).
  */
 std::string read_file(const std::string &fname);
-std::istream *istream_file(const std::string &fname);
+std::istream *istream_file(const std::string &fname, bool treat_failure_as_error = true);
 std::ostream *ostream_file(std::string const &fname);
 /** Throws io_exception if an error occurs. */
 void write_file(const std::string& fname, const std::string& data);

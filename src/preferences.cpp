@@ -60,7 +60,7 @@ base_manager::base_manager()
 {
 	try{
 #ifdef DEFAULT_PREFS_PATH
-		scoped_istream stream = istream_file(get_default_prefs_file());
+		scoped_istream stream = istream_file(get_default_prefs_file(),false);
 		read(prefs, *stream);
 
 		config user_prefs;
@@ -69,13 +69,13 @@ base_manager::base_manager()
 
 		prefs.merge_with(user_prefs);
 #else
-		scoped_istream stream = istream_file(get_prefs_file());
+		scoped_istream stream = istream_file(get_prefs_file(),false);
 		read(prefs, *stream);
 #endif
 	} catch(const config::error& e) {
 		ERR_CFG << "Error loading preference, message: "
 				<< e.what()
-				<< '\n';
+				<< std::endl;
 	}
 }
 
