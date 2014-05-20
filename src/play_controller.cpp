@@ -1400,6 +1400,7 @@ void play_controller::check_victory()
 		return;
 	}
 	std::set<unsigned> not_defeated;
+
 	for (unit_map::const_iterator i = units_.begin(),
 	     i_end = units_.end(); i != i_end; ++i)
 	{
@@ -1412,6 +1413,8 @@ void play_controller::check_victory()
 			not_defeated.insert(i->side());
 		}
 	}
+
+	bool there_is_a_local_human = false;
 	BOOST_FOREACH(team& tm, this->teams_)
 	{
 		if(tm.defeat_condition() == team::NEVER)
@@ -1432,11 +1435,16 @@ void play_controller::check_victory()
 				tm.set_lost();
 			}
 		}
+
+		if (tm.is_human()) {
+			there_is_a_local_human = true;
+		}
 	}
 
 	check_end_level();
 
 	bool found_player = false;
+	bool found_network_player = false;
 
 	for (std::set<unsigned>::iterator n = not_defeated.begin(); n != not_defeated.end(); ++n) {
 		size_t side = *n - 1;
@@ -1451,6 +1459,10 @@ void play_controller::check_victory()
 		if (teams_[side].is_human()) {
 			found_player = true;
 		}
+
+		if (teams_[side].is_network()) {
+			found_network_player = true;
+		}
 	}
 
 	if (found_player) {
@@ -1460,9 +1472,10 @@ void play_controller::check_victory()
 
 	DBG_NG << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
 	DBG_NG << "found_player: " << found_player << std::endl;
-	DBG_NG << "is_observer: " << is_observer() << std::endl;
+	DBG_NG << "found_network_player: " << found_network_player << std::endl;
+	DBG_NG << "there_is_a_local_human: " << there_is_a_local_human << std::endl;
 
-	if (!victory_when_enemies_defeated_ && (found_player || is_observer())) {
+	if (!victory_when_enemies_defeated_ && (found_player || (!there_is_a_local_human && found_network_player))) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
