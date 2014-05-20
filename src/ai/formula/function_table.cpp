@@ -720,7 +720,7 @@ private:
 		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"close_enemies:location")))->loc();
 		int range_s = args()[1]->evaluate(variables,add_debug_info(fdb,1,"close_enemies:distance")).as_int();
 		if (range_s < 0) {
-			WRN_AI << "close_enemies_function: range is negative (" << range_s << ")\n";
+			WRN_AI << "close_enemies_function: range is negative (" << range_s << ")" << std::endl;
 			range_s = 0;
 		}
 		size_t range = static_cast<size_t>(range_s);

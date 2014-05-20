@@ -299,7 +299,7 @@ t_map read_game_map(const std::string& str,	std::map<int, coordinate>& starting_
 		if(starting_position != -1) {
 			if(starting_positions.find(starting_position) != starting_positions.end()) {
 				// Redefine existion position
-				WRN_G << "Starting position " << starting_position << " is redefined.\n";
+				WRN_G << "Starting position " << starting_position << " is redefined." << std::endl;
 				starting_positions[starting_position].x = x;
 				starting_positions[starting_position].y = y;
 			} else {

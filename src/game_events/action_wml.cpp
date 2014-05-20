@@ -319,7 +319,7 @@ namespace { // Support functions
 				game_map->w(), game_map->h());
 
 			if (route.steps.empty()) {
-				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities\n";
+				WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring complexities" << std::endl;
 				pathfind::emergency_path_calculator calc(fake_unit, *game_map);
 
 				route = pathfind::a_star_search(src, dst, 10000, &calc,
@@ -328,7 +328,7 @@ namespace { // Support functions
 					// This would occur when trying to do a MUF of a unit
 					// over locations which are unreachable to it (infinite movement
 					// costs). This really cannot fail.
-					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain\n";
+					WRN_NG << "Could not find move_unit_fake route from " << src << " to " << dst << ": ignoring terrain" << std::endl;
 					pathfind::dummy_path_calculator calc(fake_unit, *game_map);
 					route = a_star_search(src, dst, 10000, &calc, game_map->w(), game_map->h());
 					assert(!route.steps.empty());
@@ -398,7 +398,7 @@ namespace { // Support functions
 		const vconfig &ssf = cfg.child("filter_side");
 
 		if (!ssf.null()) {
-			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)\n"; }
+			if(!sides.empty()) { WRN_NG << "ignoring duplicate side filter information (inline side=)" << std::endl; }
 			side_filter filter(ssf);
 			return filter.get_teams();
 		}
@@ -675,7 +675,7 @@ WML_HANDLER_FUNCTION(clear_menu_item, /*event_info*/, cfg)
 	const std::string ids = cfg["id"].str();
 	BOOST_FOREACH(const std::string& id, utils::split(ids, ',', utils::STRIP_SPACES)) {
 		if(id.empty()) {
-			WRN_NG << "[clear_menu_item] has been given an empty id=, ignoring\n";
+			WRN_NG << "[clear_menu_item] has been given an empty id=, ignoring" << std::endl;
 			continue;
 		}
 
@@ -744,7 +744,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 {
 	end_level_data &data = resources::controller->get_end_level_data();
 	if(data.transient.disabled) {
-		WRN_NG << "repeated [endlevel] execution, ignoring\n";
+		WRN_NG << "repeated [endlevel] execution, ignoring" << std::endl;
 		return;
 	}
 	data.transient.disabled = true;
@@ -939,7 +939,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 				}
 		}
 		if(!secondary_unit) {
-			WRN_NG << "failed to match [secondary_unit] in [kill] with a single on-board unit\n";
+			WRN_NG << "failed to match [secondary_unit] in [kill] with a single on-board unit" << std::endl;
 		}
 	}
 
@@ -1107,7 +1107,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	if (speaker == resources::units->end() && cfg["speaker"] != "narrator") {
 		// No matching unit found, so the dialog can't come up.
 		// Continue onto the next message.
-		WRN_NG << "cannot show message\n";
+		WRN_NG << "cannot show message" << std::endl;
 		return;
 	}
 
@@ -1191,7 +1191,7 @@ WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 	std::vector<int> sides;
 	if(!filter_side.null()) {
 		// TODO: since 1.11.0-dev it seems
-		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF\n";
+		WRN_NG << "[modify_ai][filter_side] is deprecated, use only an inline SSF" << std::endl;
 		if(!cfg["side"].str().empty()) {
 			ERR_NG << "duplicate side information in [modify_ai]" << std::endl;
 			return;
@@ -2623,7 +2623,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 		} else {
 			if(advance && u.advances()) {
-				WRN_NG << "Cannot advance units when unstoring to the recall list.\n";
+				WRN_NG << "Cannot advance units when unstoring to the recall list." << std::endl;
 			}
 
 			team& t = (*resources::teams)[u.side()-1];

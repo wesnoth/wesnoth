@@ -348,7 +348,7 @@ bool mouse_handler_base::right_click(int x, int y, const bool browse)
 		if (m != NULL) {
 			show_menu_ = true;
 		} else {
-			WRN_DP << "no context menu found...\n";
+			WRN_DP << "no context menu found..." << std::endl;
 		}
 		return true;
 	}

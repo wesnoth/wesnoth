@@ -188,7 +188,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 		++i;
 	}
 
-	WRN_G << "setlocale() failed for '" << slocale << "'.\n";
+	WRN_G << "setlocale() failed for '" << slocale << "'." << std::endl;
 
 	if (category == LC_TIME) {
 		time_locale_correct() = false;
@@ -196,7 +196,7 @@ static void wesnoth_setlocale(int category, std::string const &slocale,
 
 #ifndef _WIN32
 		if(category == LC_MESSAGES) {
-			WRN_G << "Setting LANGUAGE to '" << slocale << "'.\n";
+			WRN_G << "Setting LANGUAGE to '" << slocale << "'." << std::endl;
 			setenv("LANGUAGE", slocale.c_str(), 1);
 			std::setlocale(LC_MESSAGES, "");
 		}

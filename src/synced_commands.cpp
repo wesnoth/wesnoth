@@ -177,7 +177,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("attacker_type")) {
 		const std::string &att_type_id = child["attacker_type"];
 		if (u->type_id() != att_type_id) {
-			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")\n";
+			WRN_REPLAY << "unexpected attacker type: " << att_type_id << "(game_state gives: " << u->type_id() << ")" << std::endl;
 		}
 	}
 
@@ -198,7 +198,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	if (child.has_attribute("defender_type")) {
 		const std::string &def_type_id = child["defender_type"];
 		if (tgt->type_id() != def_type_id) {
-			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")\n";
+			WRN_REPLAY << "unexpected defender type: " << def_type_id << "(game_state gives: " << tgt->type_id() << ")" << std::endl;
 		}
 	}
 
@@ -265,7 +265,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
-		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied.\n";
+		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied." << std::endl;
 		// We'll still proceed with this movement, though, since
 		// an event might intervene.
 		// 'event' doesnt mean wml event but rather it means 'hidden' units form the movers point of view.

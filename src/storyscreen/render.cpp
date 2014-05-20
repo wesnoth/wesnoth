@@ -369,7 +369,7 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 
 		if(border_top.null() != true) {
 			if((border_top = scale_surface(border_top, screen_area().w, border_top->h)).null()) {
-				WARN_NG << "storyscreen got a null top border surface after rescaling\n";
+				WARN_NG << "storyscreen got a null top border surface after rescaling" << std::endl;
 			}
 			else {
 				update_area.y -= border_top->h;
@@ -381,7 +381,7 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 
 		if(border_bottom.null() != true) {
 			if((border_bottom = scale_surface(border_bottom, screen_area().w, border_bottom->h)).null()) {
-				WARN_NG << "storyscreen got a null bottom border surface after rescaling\n";
+				WARN_NG << "storyscreen got a null bottom border surface after rescaling" << std::endl;
 			}
 			else {
 				blur_area(video_, update_area.h, border_bottom->h);

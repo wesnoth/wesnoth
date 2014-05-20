@@ -414,7 +414,7 @@ void refresh_addon_version_info_cache()
 			version_info_cache[addon] = version;
 		} else if (!have_addon_pbl_info(addon) && !have_addon_in_vcs_tree(addon)) {
 			// Don't print the warning if the user is clearly the author
-			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info\n";
+			WRN_CFG << "add-on '" << addon << "' has no _info.cfg; cannot read version info" << std::endl;
 		}
 	}
 }

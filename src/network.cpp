@@ -540,7 +540,7 @@ connection accept_connection_pending(std::vector<TCPsocket>& pending_sockets,
 
 	const int len = SDLNet_TCP_Recv(psock,&buf,4);
 	if(len != 4) {
-		WRN_NW << "pending socket disconnected\n";
+		WRN_NW << "pending socket disconnected" << std::endl;
 		SDLNet_TCP_Close(psock);
 		return 0;
 	}

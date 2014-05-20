@@ -30,7 +30,7 @@ namespace editor {
 
 editor_map_load_exception wrap_exc(const char* type, const std::string& e_msg, const std::string& filename)
 {
-	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "\n";
+	WRN_ED << type << " error in load map " << filename << ": " << e_msg << "" << std::endl;
 	utils::string_map symbols;
 	symbols["type"] = type;
 	const char* error_msg = "There was an error ($type) while loading the file:";

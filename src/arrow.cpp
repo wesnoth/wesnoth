@@ -159,7 +159,7 @@ void arrow::update_symbols()
 {
 	if (!valid_path(path_))
 	{
-		WRN_ARR << "arrow::update_symbols called with invalid path\n";
+		WRN_ARR << "arrow::update_symbols called with invalid path" << std::endl;
 		return;
 	}
 

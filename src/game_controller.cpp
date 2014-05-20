@@ -610,7 +610,7 @@ bool game_controller::load_game()
 			LOG_CONFIG << "setting replay to end...\n";
 			recorder.set_to_end();
 			if(!recorder.at_end()) {
-				WRN_CONFIG << "recorder is not at the end!!!\n";
+				WRN_CONFIG << "recorder is not at the end!!!" << std::endl;
 			}
 		}
 	}
@@ -873,7 +873,7 @@ void game_controller::start_wesnothd()
 	preferences::set_mp_server_program_name("");
 
 	// Couldn't start server so throw error
-	WRN_GENERAL << "Failed to run server start script\n";
+	WRN_GENERAL << "Failed to run server start script" << std::endl;
 	throw game::mp_server_error("Starting MP server failed!");
 }
 

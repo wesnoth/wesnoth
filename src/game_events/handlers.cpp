@@ -549,7 +549,7 @@ void add_events(const config::const_child_itors &cfgs, const std::string& type)
 	BOOST_FOREACH(const config &new_ev, cfgs) {
 		if(type.empty() && new_ev["id"].empty())
 		{
-			WRN_NG << "attempt to add an [event] with empty id=, ignoring \n";
+			WRN_NG << "attempt to add an [event] with empty id=, ignoring " << std::endl;
 			continue;
 		}
 		add_event_handler(new_ev);

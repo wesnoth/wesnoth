@@ -637,7 +637,7 @@ void map_context::undo()
 		perform_action_between_stacks(undo_stack_, redo_stack_);
 		actions_since_save_--;
 	} else {
-		WRN_ED << "undo() called with an empty undo stack\n";
+		WRN_ED << "undo() called with an empty undo stack" << std::endl;
 	}
 	LOG_ED << "undo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
 }
@@ -649,7 +649,7 @@ void map_context::redo()
 		perform_action_between_stacks(redo_stack_, undo_stack_);
 		actions_since_save_++;
 	} else {
-		WRN_ED << "redo() called with an empty redo stack\n";
+		WRN_ED << "redo() called with an empty redo stack" << std::endl;
 	}
 	LOG_ED << "redo() end, undo stack is " << undo_stack_.size() << ", redo stack " << redo_stack_.size() << "\n";
 }

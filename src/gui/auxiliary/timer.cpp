@@ -127,7 +127,7 @@ size_t add_timer(const Uint32 interval,
 	timer.sdl_id = SDL_AddTimer(
 			interval, timer_callback, reinterpret_cast<void*>(id));
 	if(timer.sdl_id == 0) {
-		WRN_GUI_E << "Failed to create an sdl timer.\n";
+		WRN_GUI_E << "Failed to create an sdl timer." << std::endl;
 		return 0;
 	}
 

@@ -145,7 +145,7 @@ void editor_controller::init_music(const config& game_config)
 			BOOST_FOREACH(const config& music, editor_music.child_range("music")) {
 				sound::music_track track(music);
 				if (track.file_path().empty())
-					WRN_ED << "Music track " << track.id() << " not found.\n";
+					WRN_ED << "Music track " << track.id() << " not found." << std::endl;
 				else
 					music_tracks_.push_back(sound::music_track(music));
 			}

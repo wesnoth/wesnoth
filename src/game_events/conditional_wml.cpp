@@ -236,7 +236,7 @@ bool conditional_passed(const vconfig& cond, bool backwards_compat)
 bool matches_special_filter(const config &cfg, const vconfig& filter)
 {
 	if (!cfg) {
-		WRN_NG << "attempt to filter attack for an event with no attack data.\n";
+		WRN_NG << "attempt to filter attack for an event with no attack data." << std::endl;
 		// better to not execute the event (so the problem is more obvious)
 		return false;
 	}

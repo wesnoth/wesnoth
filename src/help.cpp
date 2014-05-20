@@ -2736,7 +2736,7 @@ void help_text_area::add_img_item(const std::string& path, const std::string& al
 		return;
 	ALIGNMENT align = str_to_align(alignment);
 	if (align == HERE && floating) {
-		WRN_DP << "Floating image with align HERE, aligning left.\n";
+		WRN_DP << "Floating image with align HERE, aligning left." << std::endl;
 		align = LEFT;
 	}
 	const int width = surf->w + (box ? box_width * 2 : 0);

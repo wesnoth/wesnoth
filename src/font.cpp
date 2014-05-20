@@ -195,7 +195,7 @@ static std::vector<text_chunk> split_text(std::string const & utf8_text) {
 		}
 	}
 	catch(utf8::invalid_utf8_exception&) {
-		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"\n";
+		WRN_FT << "Invalid UTF-8 string: \"" << utf8_text << "\"" << std::endl;
 	}
 	return chunks;
 }
@@ -410,7 +410,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 			if(!file_exists(game_config::path + "/fonts/" + itor->name)) {
 				if(!file_exists("fonts/" + itor->name)) {
 					if(!file_exists(itor->name)) {
-					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
+					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory" << std::endl;
 					continue;
 					}
 				}
@@ -418,7 +418,7 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 		} else {
 			if(!file_exists("fonts/" + itor->name)) {
 				if(!file_exists(itor->name)) {
-					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory\n";
+					WRN_FT << "Failed opening font file '" << itor->name << "': No such file or directory" << std::endl;
 					continue;
 				}
 			}

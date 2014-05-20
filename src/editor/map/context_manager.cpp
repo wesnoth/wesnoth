@@ -530,7 +530,7 @@ void context_manager::resize_map_dialog()
 					break;
 				default:
 					y_offset = 0;
-					WRN_ED << "Unknown resize expand direction\n";
+					WRN_ED << "Unknown resize expand direction" << std::endl;
 					break;
 			}
 			switch (dir) {
@@ -935,7 +935,7 @@ void context_manager::reload_map()
 void context_manager::switch_context(const int index)
 {
 	if (index < 0 || static_cast<size_t>(index) >= map_contexts_.size()) {
-		WRN_ED << "Invalid index in switch map context: " << index << "\n";
+		WRN_ED << "Invalid index in switch map context: " << index << "" << std::endl;
 		return;
 	}
 	map_context_refresher mcr(*this, *map_contexts_[index]);

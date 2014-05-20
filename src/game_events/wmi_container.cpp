@@ -62,7 +62,7 @@ wmi_container::size_type wmi_container::erase(const std::string & id)
 	const map_t::iterator iter = wml_menu_items_.find(id);
 
 	if ( iter == wml_menu_items_.end() ) {
-		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring.\n";
+		WRN_NG << "Trying to remove non-existent menu item '" << id << "'; ignoring." << std::endl;
 		// No such item.
 		return 0;
 	}
@@ -211,7 +211,7 @@ void wmi_container::set_menu_items(const config& cfg)
 		if ( !mref ) {
 			mref.reset(new wml_menu_item(id, item));
 		} else {
-			WRN_NG << "duplicate menu item (" << id << ") while loading from config\n";
+			WRN_NG << "duplicate menu item (" << id << ") while loading from config" << std::endl;
 		}
 	}
 }

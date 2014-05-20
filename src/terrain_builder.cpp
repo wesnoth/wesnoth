@@ -868,7 +868,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			if (const config::attribute_value *v = tc.get("pos")) {
 				int pos = *v;
 				if(anchors.find(pos) == anchors.end()) {
-					WRN_NG << "Invalid anchor!\n";
+					WRN_NG << "Invalid anchor!" << std::endl;
 					continue;
 				}
 

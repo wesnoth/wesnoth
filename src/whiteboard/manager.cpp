@@ -260,7 +260,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	//Look for another leader on another keep in the same castle
 	{ wb::future_map future; // start planned unit map scope
 		if(!has_planned_unit_map()) {
-			WRN_WB << "Unable to build future map to determine whether leader's allowed to move.\n";
+			WRN_WB << "Unable to build future map to determine whether leader's allowed to move." << std::endl;
 		}
 		if(find_backup_leader(leader))
 			return true;
@@ -1143,7 +1143,7 @@ void manager::set_planned_unit_map()
 		return;
 	}
 	if (planned_unit_map_active_) {
-		WRN_WB << "Not building planned unit map: already set.\n";
+		WRN_WB << "Not building planned unit map: already set." << std::endl;
 		return;
 	}
 

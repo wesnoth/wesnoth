@@ -111,7 +111,7 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 			throw config::error(vgettext("Cannot find era $era", i18n_symbols));
 		}
 		// FIXME: @todo We should tell user about missing era but still load game
-		WRN_CF << "Missing era in MP load game " << era << "\n";
+		WRN_CF << "Missing era in MP load game " << era << "" << std::endl;
 	}
 	else
 	{

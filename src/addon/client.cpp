@@ -253,7 +253,7 @@ bool addons_client::install_addon(config& archive_cfg, const addon_info& info)
 
 	// Remove any previously installed versions
 	if(!remove_local_addon(info.id)) {
-		WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!\n";
+		WRN_ADDONS << "failed to uninstall previous version of " << info.id << "; the add-on may not work properly!" << std::endl;
 	}
 
 	unarchive_addon(archive_cfg);

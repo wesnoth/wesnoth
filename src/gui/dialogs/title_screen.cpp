@@ -315,7 +315,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	std::vector<ttip> tips(settings::get_tips());
 	if(tips.empty()) {
-		WRN_CF << "There are not tips of day available.\n";
+		WRN_CF << "There are not tips of day available." << std::endl;
 	}
 
 	FOREACH(const AUTO & tip, tips)

@@ -85,7 +85,7 @@ brush::brush(const config& cfg)
 		add_relative_location(x, y);
 	}
 	if (relative_tiles_.empty()) {
-		WRN_ED << "Empty brush definition, name=" << name_ << "\n";
+		WRN_ED << "Empty brush definition, name=" << name_ << "" << std::endl;
 	}
 }
 

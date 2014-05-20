@@ -141,7 +141,7 @@ void textbox::set_selection(const int selstart, const int selend)
 	}
 	if (selstart < 0 || selend < 0 || size_t(selstart) > text_.size() ||
 		size_t(selend) > text_.size()) {
-		WRN_DP << "out-of-boundary selection\n";
+		WRN_DP << "out-of-boundary selection" << std::endl;
 		return;
 	}
 	selstart_= selstart;
@@ -155,7 +155,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 		return;
 	}
 	if (cursor_pos < 0 || size_t(cursor_pos) > text_.size()) {
-		WRN_DP << "out-of-boundary selection\n";
+		WRN_DP << "out-of-boundary selection" << std::endl;
 		return;
 	}
 
@@ -452,7 +452,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	//Sanity check: verify that selection start and end are within text
 	//boundaries
 	if(is_selection() && !(size_t(selstart_) <= text_.size() && size_t(selend_) <= text_.size())) {
-		WRN_DP << "out-of-boundary selection\n";
+		WRN_DP << "out-of-boundary selection" << std::endl;
 		selstart_ = selend_ = -1;
 	}
 

@@ -31,7 +31,7 @@ static tportrait::tside get_side(const std::string& side)
 	} else if(side == "left") {
 		return tportrait::LEFT;
 	} else {
-		WRN_CF << "Unknown portrait side '" << side << "' defaulting to left.\n";
+		WRN_CF << "Unknown portrait side '" << side << "' defaulting to left." << std::endl;
 		return tportrait::LEFT;
 	}
 }

@@ -756,7 +756,7 @@ void server::run() {
 				metrics_.service_request();
 
 				if(buf.empty()) {
-					WRN_SERVER << "received empty packet\n";
+					WRN_SERVER << "received empty packet" << std::endl;
 					continue;
 				}
 
@@ -802,7 +802,7 @@ void server::run() {
 			metrics_.no_requests();
 
 		} catch(simple_wml::error& e) {
-			WRN_CONFIG << "Warning: error in received data: " << e.message << "\n";
+			WRN_CONFIG << "Warning: error in received data: " << e.message << "" << std::endl;
 		} catch(network::error& e) {
 			if (e.message == "shut down") {
 				LOG_SERVER << "Try to disconnect all users...\n";
@@ -835,7 +835,7 @@ void server::run() {
 					DBG_SERVER << ip << "\tNot logged in user disconnected.\n";
 					not_logged_in_.erase(i);
 				} else {
-					WRN_SERVER << ip << "\tWarning: User disconnected right after the connection was accepted.\n";
+					WRN_SERVER << ip << "\tWarning: User disconnected right after the connection was accepted." << std::endl;
 				}
 				e.disconnect();
 				DBG_SERVER << "done closing socket...\n";

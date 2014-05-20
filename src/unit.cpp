@@ -524,7 +524,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 
 	BOOST_FOREACH(const config::attribute &attr, input_cfg.attribute_range()) {
 		if (attr.first == "do_not_list") continue;
-		WRN_UT << "Unknown attribute '" << attr.first << "' discarded.\n";
+		WRN_UT << "Unknown attribute '" << attr.first << "' discarded." << std::endl;
 	}
 
 	//debug unit animations for units as they appear in game
@@ -2761,7 +2761,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					heal_all();
 				}
 			} else {
-				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring\n";
+				WRN_UT << "unknown type= in [effect]apply_to=type, ignoring" << std::endl;
 			}
 		}
 		if ( set_poisoned )
@@ -2950,7 +2950,7 @@ unit& unit::clone(bool is_temporary)
 		if(pos != std::string::npos && pos+1 < id_.size()
 		&& id_.find_first_not_of("0123456789", pos+1) == std::string::npos) {
 			// this appears to be a duplicate of a generic unit, so give it a new id
-			WRN_UT << "assigning new id to clone of generic unit " << id_ << "\n";
+			WRN_UT << "assigning new id to clone of generic unit " << id_ << "" << std::endl;
 			id_.clear();
 			set_underlying_id();
 		}

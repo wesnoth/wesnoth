@@ -923,7 +923,7 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 	for(int gender=0; gender<=1; ++gender) {
 		if(gender_types_[gender] == NULL) continue;
 		if(to_unit.gender_types_[gender] == NULL) {
-			WRN_CF << to_unit.log_id() << " does not support gender " << gender << "\n";
+			WRN_CF << to_unit.log_id() << " does not support gender " << gender << "" << std::endl;
 			continue;
 		}
 		LOG_CONFIG << "gendered advancement " << gender << ": ";

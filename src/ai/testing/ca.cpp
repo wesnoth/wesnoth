@@ -668,7 +668,7 @@ double move_leader_to_goals_phase::evaluate()
 
 	const unit_map::iterator leader = resources::units->find_leader(get_side());
 	if (!leader.valid() || leader->incapacitated()) {
-		WRN_AI_TESTING_AI_DEFAULT << "Leader not found\n";
+		WRN_AI_TESTING_AI_DEFAULT << "Leader not found" << std::endl;
 		return BAD_SCORE;
 	}
 
