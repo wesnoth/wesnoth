@@ -83,8 +83,10 @@ map_location map_fragment::center_of_mass() const
 	BOOST_FOREACH(const tile_info& ti, items_) {
 		sum.vector_sum_assign(ti.offset);
 	}
-	sum.x /= static_cast<int>(items_.size());
-	sum.y /= static_cast<int>(items_.size());
+	if (items_.size() > 0) {
+		sum.x /= static_cast<int>(items_.size());
+		sum.y /= static_cast<int>(items_.size());
+	}
 	return sum;
 }
 
