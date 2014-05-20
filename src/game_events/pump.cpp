@@ -373,6 +373,16 @@ namespace { // Support functions
 		show_wml_messages(wml_messages_stream, caption, false);
 	}
 
+	void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
+	{
+		logger(log_wml) << message << "\n";
+		if (in_chat)
+		{
+			wml_messages_stream << prefix << message << "\n";
+		}
+	}
+
+
 } // end anonymous namespace (support functions)
 
 
@@ -401,20 +411,16 @@ context::scoped::~scoped()
  * Helper function which determines whether a wml_message text can
  * really be pushed into the wml_messages_stream, and does it.
  */
-void put_wml_message(const std::string& logger, const std::string& message)
+void put_wml_message(const std::string& logger, const std::string& message, bool in_chat)
 {
 	if (logger == "err" || logger == "error") {
-		ERR_WML << message << "\n";
-		wml_messages_stream << _("Error: ") << message << "\n";
+		put_wml_message(lg::err, _("Error: "), message, in_chat );
 	} else if (logger == "warn" || logger == "wrn" || logger == "warning") {
-		WRN_WML << message << "\n";
-		wml_messages_stream << _("Warning: ") << message << "\n";
+		put_wml_message(lg::warn, _("Warning: "), message, in_chat );
 	} else if ((logger == "debug" || logger == "dbg") && !lg::debug.dont_log(log_wml)) {
-		DBG_WML << message << "\n";
-		wml_messages_stream << _("Debug: ") << message << "\n";
+		put_wml_message(lg::debug, _("Debug: "), message, in_chat );
 	} else if (!lg::info.dont_log(log_wml)) {
-		LOG_WML << message << "\n";
-		wml_messages_stream << _("Info: ") << message << "\n";
+		put_wml_message(lg::info, _("Info: "), message, in_chat );
 	}
 }
 
