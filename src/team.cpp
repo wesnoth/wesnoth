@@ -74,9 +74,9 @@ const std::vector<team>& teams_manager::get_teams()
 
 team::DEFEAT_CONDITION team::parse_defeat_condition(const std::string& cond, team::DEFEAT_CONDITION def)
 {
-	if(cond == "no_leader")
+	if(cond == "no_leader_left")
 		return team::NO_LEADER;
-	else if (cond == "no_unit")
+	else if (cond == "no_units_left")
 		return team::NO_UNITS;
 	else if (cond == "never")
 		return team::NEVER;
@@ -91,9 +91,9 @@ std::string team::defeat_condition_to_string(DEFEAT_CONDITION  cond)
 	switch(cond)
 	{
 	case team::NO_LEADER:
-		return "no_leader";
+		return "no_leader_left";
 	case team::NO_UNITS:
-		return "no_unit";
+		return "no_units_left";
 	case team::NEVER:
 		return "never";
 	case team::ALWAYS:
