@@ -110,7 +110,7 @@ namespace { // Helpers for get_tiles_radius() without a radius filter.
 		const int radius_i = static_cast<int>(radius);
 
 		BOOST_FOREACH (const map_location &loc, locs)
-			if ( loc != map_location::null_location )
+			if ( loc != map_location::null_location() )
 			{
 				// Calculate the circle of hexes around this one.
 				size_t height = radius;

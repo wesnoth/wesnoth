@@ -633,7 +633,7 @@ protected:
 
 game_data::game_data()
 		: scoped_variables()
-		, last_selected(map_location::null_location)
+		, last_selected(map_location::null_location())
 		, wml_menu_items_()
 		, rng_()
 		, variables_()
@@ -648,7 +648,7 @@ game_data::game_data()
 
 game_data::game_data(const config& level)
 		: scoped_variables()
-		, last_selected(map_location::null_location)
+		, last_selected(map_location::null_location())
 		, wml_menu_items_()
 		, rng_(level)
 		, variables_(level.child_or_empty("variables"))

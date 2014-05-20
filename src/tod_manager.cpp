@@ -110,7 +110,7 @@ int tod_manager::get_current_area_time(int index) const {
 
 int tod_manager::get_current_time(const map_location& loc) const
 {
-	if ( loc != map_location::null_location ) {
+	if ( loc != map_location::null_location() ) {
 		for ( std::vector<area_time_of_day>::const_reverse_iterator
 				i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
 		{
@@ -124,7 +124,7 @@ int tod_manager::get_current_time(const map_location& loc) const
 
 const std::vector<time_of_day>& tod_manager::times(const map_location& loc) const
 {
-	if ( loc != map_location::null_location ) {
+	if ( loc != map_location::null_location() ) {
 		for ( std::vector<area_time_of_day>::const_reverse_iterator
 				i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )
 		{
@@ -141,7 +141,7 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 	if(n_turn == 0)
 		n_turn = turn_;
 
-	if ( loc != map_location::null_location )
+	if ( loc != map_location::null_location() )
 	{
 		for ( std::vector<area_time_of_day>::const_reverse_iterator
 		      i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i )

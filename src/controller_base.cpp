@@ -253,7 +253,7 @@ void controller_base::play_slice(bool is_delay_enabled)
 	/* TODO fendrin enable when the relative cursor movement is implemented well enough
 	const map_location& selected_hex = get_display().selected_hex();
 
-	if (selected_hex != map_location::null_location) {
+	if (selected_hex != map_location::null_location()) {
 		if (joystick_manager_.next_highlighted_hex(highlighted_hex, selected_hex)) {
 			get_mouse_handler_base().mouse_motion(0,0, true, true, highlighted_hex);
 			get_display().scroll_to_tile(highlighted_hex, display::ONSCREEN_WARP, false, true);

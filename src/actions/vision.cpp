@@ -433,7 +433,7 @@ bool shroud_clearer::clear_unit(const map_location &view_loc, team &view_team,
 	// Locate the unit in question.
 	unit_map::const_iterator find_it = resources::units->find(viewer.underlying_id);
 	const map_location & real_loc = find_it == resources::units->end() ?
-		                                map_location::null_location :
+		                                map_location::null_location() :
 		                                find_it->get_location();
 
 	return clear_unit(view_loc, view_team, viewer.underlying_id,
@@ -559,7 +559,7 @@ bool shroud_clearer::fire_events()
 		// Try to locate the sighting unit.
 		unit_map::const_iterator find_it = units.find(event.sighter_id);
 		const map_location & sight_loc =
-			find_it == units.end() ? map_location::null_location :
+			find_it == units.end() ? map_location::null_location() :
 			                         find_it->get_location();
 
 		{	// Raise the event based on the latest data.

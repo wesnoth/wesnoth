@@ -250,9 +250,9 @@ battle_context_unit_stats::battle_context_unit_stats(const unit_type* u_type,
 
 	// Get the weapon characteristics, if any.
 	if (weapon) {
-		weapon->set_specials_context(map_location::null_location, attacking);
+		weapon->set_specials_context(map_location::null_location(), attacking);
 		if (opp_weapon) {
-			opp_weapon->set_specials_context(map_location::null_location, !attacking);
+			opp_weapon->set_specials_context(map_location::null_location(), !attacking);
 		}
 		slows = weapon->get_special_bool("slow");
 		drains = !opp_type->musthave_status("undrainable") && weapon->get_special_bool("drains");
@@ -1604,7 +1604,7 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
 {
 	const unit_map::const_iterator un = units.find(loc);
 	if(un == units.end()) {
-		return map_location::null_location;
+		return map_location::null_location();
 	}
 	unit_ability_list abil = un->get_abilities("leadership");
 	if(bonus) {

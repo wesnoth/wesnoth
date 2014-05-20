@@ -51,8 +51,8 @@ class unit_animation
 		int get_animation_time() const{ return unit_anim_.get_animation_time() ; }
 		int get_animation_time_potential() const{ return unit_anim_.get_animation_time_potential() ; }
 		void start_animation(int start_time
-				, const map_location &src = map_location::null_location
-				, const map_location &dst = map_location::null_location
+				, const map_location &src = map_location::null_location()
+				, const map_location &dst = map_location::null_location()
 				, const std::string& text = ""
 				, const Uint32 text_color = 0
 				, const bool accelerate = true);
@@ -157,14 +157,14 @@ class unit_animator
 
 		void add_animation(unit* animated_unit
 				, const unit_animation * animation
-				, const map_location &src = map_location::null_location
+				, const map_location &src = map_location::null_location()
 				, bool with_bars = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0);
 		void add_animation(unit* animated_unit
 				, const std::string& event
-				, const map_location &src = map_location::null_location
-				, const map_location &dst = map_location::null_location
+				, const map_location &src = map_location::null_location()
+				, const map_location &dst = map_location::null_location()
 				, const int value = 0
 				, bool with_bars = false
 				, const std::string& text = ""
@@ -176,8 +176,8 @@ class unit_animator
 				, int value2 = 0);
 		void replace_anim_if_invalid(unit* animated_unit
 				, const std::string& event
-				, const map_location &src = map_location::null_location
-				, const map_location &dst = map_location::null_location
+				, const map_location &src = map_location::null_location()
+				, const map_location &dst = map_location::null_location()
 				, const int value = 0
 				, bool with_bars = false
 				, const std::string& text = ""

@@ -483,7 +483,7 @@ t_translation::t_terrain gamemap::get_terrain(const map_location& loc) const
 		return tiles_[loc.x + border_size_][loc.y + border_size_];
 	}
 
-	if ( loc == map_location::null_location ) {
+	if ( loc == map_location::null_location() ) {
 		return t_translation::NONE_TERRAIN;
 	}
 

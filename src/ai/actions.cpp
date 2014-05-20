@@ -587,7 +587,7 @@ std::string recall_result::do_describe() const
 	s << "recall by side ";
 	s << get_side();
 	s << " of unit id ["<<unit_id_;
-	if (where_ != map_location::null_location){
+	if (where_ != map_location::null_location()){
 		s << "] on location "<<where_;
 	} else {
 		s << "] on any suitable location";
@@ -731,7 +731,7 @@ std::string recruit_result::do_describe() const
 	s << "recruitment by side ";
 	s << get_side();
 	s << " of unit type ["<<unit_name_;
-	if (where_ != map_location::null_location){
+	if (where_ != map_location::null_location()){
 		s << "] on location "<<where_;
 	} else {
 		s << "] on any suitable location";
@@ -899,7 +899,7 @@ void synced_command_result::do_execute()
 	assert(is_success());
 
 	std::stringstream s;
-	if (location_ != map_location::null_location){
+	if (location_ != map_location::null_location()){
 		s << "local x1 = " << location_.x << " local y1 = " << location_.y << " ";
 	}
 	s << lua_code_;

@@ -224,7 +224,7 @@ namespace { // Private helpers for move_unit()
 
 	private: // functions
 		/// Returns whether or not movement was blocked by a non-ambushing enemy.
-		bool blocked() const { return blocked_loc_ != map_location::null_location; }
+		bool blocked() const { return blocked_loc_ != map_location::null_location(); }
 		/// Checks the expected route for hidden units.
 		void cache_hidden_units(const route_iterator & start,
 		                        const route_iterator & stop);
@@ -371,9 +371,9 @@ namespace { // Private helpers for move_unit()
 		move_loc_(begin_),
 		do_move_track_(game_events::wml_tracking()),
 		// The remaining fields are set to some sort of "zero state".
-		zoc_stop_(map_location::null_location),
-		ambush_stop_(map_location::null_location),
-		blocked_loc_(map_location::null_location),
+		zoc_stop_(map_location::null_location()),
+		ambush_stop_(map_location::null_location()),
+		blocked_loc_(map_location::null_location()),
 		ambushed_(false),
 		show_ambush_alert_(false),
 		event_mutated_(false),
@@ -393,7 +393,7 @@ namespace { // Private helpers for move_unit()
 		if ( !is_ai_move() )
 			// Clear the "goto" instruction during movement.
 			// (It will be reset in the destructor if needed.)
-			move_it_->set_goto(map_location::null_location);
+			move_it_->set_goto(map_location::null_location());
 	}
 
 
@@ -401,7 +401,7 @@ namespace { // Private helpers for move_unit()
 	{
 		// Set the "goto" order? (Not if WML set it.)
 		if ( !is_ai_move()  &&  move_it_.valid()  &&
-		     move_it_->get_goto() == map_location::null_location )
+		     move_it_->get_goto() == map_location::null_location() )
 		{
 			// Only set the goto if movement was not complete and was not
 			// interrupted.
@@ -634,7 +634,7 @@ namespace { // Private helpers for move_unit()
 	{
 		// Clear the old cache.
 		obstructed_ = full_end_;
-		blocked_loc_ = map_location::null_location;
+		blocked_loc_ = map_location::null_location();
 		teleport_failed_ = false;
 		// The ambush cache needs special treatment since we cannot re-detect
 		// an ambush if we are already at the ambushed location.
@@ -644,7 +644,7 @@ namespace { // Private helpers for move_unit()
 			ambushed_ = !ambushers_.empty();
 		}
 		if ( !ambushed_ ) {
-			ambush_stop_ = map_location::null_location;
+			ambush_stop_ = map_location::null_location();
 			ambushers_.clear();
 		}
 
@@ -730,7 +730,7 @@ namespace { // Private helpers for move_unit()
 
 
 		int remaining_moves = move_it_->movement_left();
-		zoc_stop_ = map_location::null_location;
+		zoc_stop_ = map_location::null_location();
 		moves_left_.clear();
 
 		if ( start != begin_ ) {
@@ -746,7 +746,7 @@ namespace { // Private helpers for move_unit()
 		for ( ; end != stop; ++end )
 		{
 			// Break out of the loop if we cannot leave the previous hex.
-			if ( zoc_stop_ != map_location::null_location  &&  !is_replay_ )
+			if ( zoc_stop_ != map_location::null_location()  &&  !is_replay_ )
 				break;
 			remaining_moves -= move_it_->movement_cost(map[*end]);
 			if ( remaining_moves < 0 ) {
@@ -1012,7 +1012,7 @@ namespace { // Private helpers for move_unit()
 		// Update those to reflect whether or not we got to them.
 		ambushed_ = ambushed_ && real_end_ == ambush_limit_;
 		if ( !obstructed_stop )
-			blocked_loc_ = map_location::null_location;
+			blocked_loc_ = map_location::null_location();
 		teleport_failed_ = teleport_failed_ && obstructed_stop;
 		// event_mutated_ does not get unset, regardless of other reasons
 		// for stopping, but we do save its current value.
@@ -1043,7 +1043,7 @@ namespace { // Private helpers for move_unit()
 			move_it_->set_interrupted_move(
 				sighted_stop_ && !resources::whiteboard->is_executing_actions() ?
 					*(full_end_-1) :
-					map_location::null_location);
+					map_location::null_location());
 			if ( ambushed_ || final_loc == zoc_stop_ )
 				move_it_->set_movement(0, true);
 
@@ -1239,7 +1239,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
 	// Avoid some silliness.
 	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
-		          ( steps.empty() ? map_location::null_location : steps.front() ) << ".\n";
+		          ( steps.empty() ? map_location::null_location() : steps.front() ) << ".\n";
 		return 0;
 	}
 	//if we have no fog activated then we always skip sighted

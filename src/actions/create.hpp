@@ -41,7 +41,7 @@ public:
 
 	/**
 	 * finds a suitable location for unit
-	 * @retval map_location::null_location if unit is to be put into recall list
+	 * @retval map_location::null_location() if unit is to be put into recall list
 	 * @retval valid on-board map location otherwise
 	 */
 	map_location find_location(const config &cfg, const unit* pass_check=NULL);

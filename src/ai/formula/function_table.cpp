@@ -1204,7 +1204,7 @@ private:
 			return variant();
                 }
 
-		map_location loc = map_location::null_location;
+		map_location loc = map_location::null_location();
 		const ai::moves_map &possible_moves = ai_.get_possible_moves();
 		const ai::moves_map::const_iterator& p_it = possible_moves.find(unit_loc);
 		if (p_it==possible_moves.end() ) {
@@ -1219,7 +1219,7 @@ private:
 				break;
 			}
                 }
-		if (loc==map_location::null_location) {
+		if (loc==map_location::null_location()) {
 			return variant();
 		}
 		return variant(new location_callable(loc));

@@ -798,7 +798,7 @@ double move_leader_to_keep_phase::evaluate()
 		const pathfind::paths leader_paths = p_it->second;
 
 		const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
-		if (keep == map_location::null_location || keep == leader->get_location()) {
+		if (keep == map_location::null_location() || keep == leader->get_location()) {
 			continue;
 		}
 
@@ -846,7 +846,7 @@ double move_leader_to_keep_phase::evaluate()
 	route = pathfind::a_star_search(leader->get_location(), keep, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
 
 	// find next hop
-	map_location next_hop = map_location::null_location;
+	map_location next_hop = map_location::null_location();
 	int next_hop_cost = 0;
 	BOOST_FOREACH(const map_location& step, route.steps) {
 		if (leader_paths.destinations.contains(step)) {
@@ -856,7 +856,7 @@ double move_leader_to_keep_phase::evaluate()
 			break;
 		}
 	}
-	if (next_hop == map_location::null_location) {
+	if (next_hop == map_location::null_location()) {
 		return BAD_SCORE;
 	}
 	//define the next hop to have the lowest cost (0)
@@ -980,13 +980,13 @@ void get_villages_phase::get_villages(
 	DBG_AI_TESTING_AI_DEFAULT << "deciding which villages we want...\n";
 	unit_map &units_ = *resources::units;
 	const int ticks = SDL_GetTicks();
-	best_leader_loc_ = map_location::null_location;
+	best_leader_loc_ = map_location::null_location();
 	if(leader != units_.end()) {
 		keep_loc_ = nearest_keep(leader->get_location());
 		leader_loc_ = leader->get_location();
 	} else {
-		keep_loc_ = map_location::null_location;
-		leader_loc_ = map_location::null_location;
+		keep_loc_ = map_location::null_location();
+		leader_loc_ = map_location::null_location();
 	}
 
 	debug_ = !lg::debug.dont_log(log_ai_testing_ai_default);
@@ -1096,7 +1096,7 @@ void get_villages_phase::find_villages(
 
 		// If it is a neutral village, and we have no leader,
 		// then the village is of no use to us, and we don't want it.
-		if(!owned && leader_loc_ == map_location::null_location) {
+		if(!owned && leader_loc_ == map_location::null_location()) {
 			continue;
 		}
 
@@ -1331,7 +1331,7 @@ get_villages_phase::treachmap::iterator get_villages_phase::remove_unit(
 {
 	assert(unit->second.empty());
 
-	if(unit->first == leader_loc_ && best_leader_loc_ != map_location::null_location) {
+	if(unit->first == leader_loc_ && best_leader_loc_ != map_location::null_location()) {
 		DBG_AI_TESTING_AI_DEFAULT << "Dispatch leader at " << leader_loc_ << " closer to the keep at "
 			<< best_leader_loc_ << '\n';
 
@@ -1966,7 +1966,7 @@ double simple_move_and_targeting_phase::evaluate()
 	unit_map &units_ = *resources::units;
 
 	unit_map::const_iterator leader = units_.find_leader(get_side());
-	map_location my_leader_loc = map_location::null_location;
+	map_location my_leader_loc = map_location::null_location();
 	if (leader.valid()) {
 		my_leader_loc = leader->get_location();
 	}

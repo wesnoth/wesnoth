@@ -148,7 +148,7 @@ class editor_controller : public controller_base,
 		void add_area();
 
 		/* mouse_handler_base overrides */
-		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location);
+		void mouse_motion(int x, int y, const bool browse, bool update, map_location new_loc = map_location::null_location());
 		editor_display& gui() { return *gui_; }
 		const editor_display& gui() const { return *gui_; }
 		bool allow_mouse_wheel_scroll(int x, int y);

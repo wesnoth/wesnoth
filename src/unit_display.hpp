@@ -83,13 +83,13 @@ void move_unit(const std::vector<map_location>& path, unit& u,
  * Play a pre-fight animation
  * First unit is the attacker, second unit the defender
  */
-void unit_draw_weapon( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location, unit * defender=NULL);
+void unit_draw_weapon( const map_location& loc, unit& u, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location(), unit * defender=NULL);
 
 /**
  * Play a post-fight animation
  * Both unit can be set to null, only valid units will play their animation
  */
-void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location, unit * defender=NULL);
+void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_type* attack=NULL, const attack_type*secondary_attack=NULL,const map_location& defender_loc = map_location::null_location(), unit * defender=NULL);
 
 /**
  * Show a unit fading out.
@@ -98,7 +98,7 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  */
  void unit_die( const map_location& loc, unit& u,
  	const attack_type* attack=NULL, const attack_type* secondary_attack=NULL,
- 	const map_location& winner_loc=map_location::null_location,
+ 	const map_location& winner_loc=map_location::null_location(),
  	unit* winner=NULL);
 
 
@@ -117,7 +117,7 @@ void unit_attack(const map_location& a, const map_location& b, int damage,
 
 
 void unit_recruited(const map_location& loc,
-	const map_location& leader_loc=map_location::null_location);
+	const map_location& leader_loc=map_location::null_location());
 
 /**
  * This will use a poisoning anim if healing<0.
@@ -134,7 +134,7 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
  * other wml-described animations are needed.
  */
 void wml_animation(const vconfig &cfg,
-	const map_location& default_location=map_location::null_location);
+	const map_location& default_location=map_location::null_location());
 
 }
 

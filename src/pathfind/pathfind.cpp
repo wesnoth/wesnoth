@@ -317,7 +317,7 @@ static void find_routes(
 	// Record the starting location.
 	assert(index(origin) >= 0);
 	nodes[index(origin)] = findroute_node(moves_left, turns_left,
-	                                      map_location::null_location,
+	                                      map_location::null_location(),
 	                                      search_counter);
 	// Begin the search at the starting location.
 	std::vector<int> hexes_to_process(1, index(origin));  // Will be maintained as a heap.

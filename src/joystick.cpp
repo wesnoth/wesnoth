@@ -400,7 +400,7 @@ double joystick_manager::get_angle() {
 
 const map_location joystick_manager::get_next_hex(int x_axis, int y_axis, map_location loc)  {
 
-	map_location new_loc = map_location::null_location;
+	map_location new_loc = map_location::null_location();
 
 	if (x_axis == 0) return (y_axis > 0) ? get_direction(loc, SOUTH) : get_direction(loc, NORTH);
 	if (y_axis == 0) return (x_axis > 0) ? get_direction(loc, EAST) : get_direction(loc, WEST);

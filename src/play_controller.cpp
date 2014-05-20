@@ -621,7 +621,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gui_->set_playing_team(size_t(team_index));
 
 	gamedata_.get_variable("side_number") = player_number_;
-	gamedata_.last_selected = map_location::null_location;
+	gamedata_.last_selected = map_location::null_location();
 
 	maybe_do_init_side(team_index, is_replay);
 }

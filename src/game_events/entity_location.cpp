@@ -27,7 +27,7 @@
 // This file is in the game_events namespace.
 namespace game_events {
 
-const entity_location entity_location::null_entity(map_location::null_location);
+const entity_location entity_location::null_entity(map_location::null_location());
 
 /**
  * Constructor for when an event has a location but not necessarily a unit.

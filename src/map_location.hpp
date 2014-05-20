@@ -49,6 +49,11 @@ struct map_location {
 		return z;
 	}
 
+	static const map_location & null_location() {
+		static const map_location l;
+		return l;
+	}
+
 	static inline DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u) {
 		return (d == NDIRECTIONS) ? NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
 	}
@@ -114,8 +119,6 @@ struct map_location {
 
 	// Rotates the map_location clockwise in 60 degree increments around a center point. Negative numbers of steps are permitted.
 	map_location rotate_right_around_center(const map_location & center, int k) const;
-
-	static const map_location null_location;	
 
 	friend std::size_t hash_value(map_location const &a);
 };

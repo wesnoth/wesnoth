@@ -1080,7 +1080,7 @@ const map_location& readonly_context_impl::nearest_keep(const map_location& loc)
 	if (res) {
 		return *res;
 	} else {
-		return map_location::null_location;
+		return map_location::null_location();
 	}
 }
 
@@ -1263,10 +1263,10 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 		return leader_location; //if leader already on keep, then return leader_location
 	}
 
-	map_location const* best_free_keep = &map_location::null_location;
+	map_location const* best_free_keep = &map_location::null_location();
 	double move_left_at_best_free_keep = 0.0;
 
-	map_location const* best_occupied_keep = &map_location::null_location;
+	map_location const* best_occupied_keep = &map_location::null_location();
 	double move_left_at_best_occupied_keep = 0.0;
 
 	BOOST_FOREACH(const pathfind::paths::step &dest, leader_paths.destinations)
@@ -1276,12 +1276,12 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 
 			const int move_left_at_loc = dest.move_left;
 			if (resources::units->count(loc) == 0) {
-				if ((*best_free_keep==map_location::null_location)||(move_left_at_loc>move_left_at_best_free_keep)){
+				if ((*best_free_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
 					move_left_at_best_free_keep = move_left_at_loc;
 				}
 			} else {
-				if ((*best_occupied_keep==map_location::null_location)||(move_left_at_loc>move_left_at_best_occupied_keep)){
+				if ((*best_occupied_keep==map_location::null_location())||(move_left_at_loc>move_left_at_best_occupied_keep)){
 					best_occupied_keep = &loc;
 				        move_left_at_best_occupied_keep = move_left_at_loc;
 				}
@@ -1289,11 +1289,11 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 		}
 	}
 
-	if (*best_free_keep != map_location::null_location){
+	if (*best_free_keep != map_location::null_location()){
 		return *best_free_keep; // if there is a free keep reachable during current turn, return it
 	}
 
-	if (*best_occupied_keep != map_location::null_location){
+	if (*best_occupied_keep != map_location::null_location()){
 		return *best_occupied_keep; // if there is an occupied keep reachable during current turn, return it
 	}
 

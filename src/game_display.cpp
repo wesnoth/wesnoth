@@ -742,7 +742,7 @@ void game_display::set_attack_indicator(const map_location& src, const map_locat
 
 void game_display::clear_attack_indicator()
 {
-	set_attack_indicator(map_location::null_location, map_location::null_location);
+	set_attack_indicator(map_location::null_location(), map_location::null_location());
 }
 
 

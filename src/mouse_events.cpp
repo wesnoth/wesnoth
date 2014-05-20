@@ -102,7 +102,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update, m
 
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
 
-	if (new_hex == map_location::null_location)
+	if (new_hex == map_location::null_location())
 		new_hex = gui().hex_clicked_on(x,y);
 
 	if(new_hex != last_hex_) {

@@ -1104,7 +1104,7 @@ int unit_type::resistance_against(const std::string& damage_name, bool attacker)
 			if (!resistance_filter_matches(cfg, attacker, damage_name, 100 - resistance)) {
 				continue;
 			}
-			resistance_abilities.push_back(unit_ability(&cfg, map_location::null_location));
+			resistance_abilities.push_back(unit_ability(&cfg, map_location::null_location()));
 		}
 	}
 	if (!resistance_abilities.empty()) {

@@ -45,8 +45,6 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
 	return s;
 }
 
-const map_location map_location::null_location;
-
 map_location::DIRECTION map_location::parse_direction(const std::string& str)
 {
 	if(!str.empty()) {

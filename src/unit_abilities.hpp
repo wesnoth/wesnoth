@@ -30,7 +30,7 @@ enum value_modifier {NOT_USED,SET,ADD,MUL,DIV};
 struct individual_effect
 {
 	individual_effect() : type(NOT_USED), value(0), ability(NULL),
-		loc(map_location::null_location) {}
+		loc(map_location::null_location()) {}
 	void set(value_modifier t, int val, const config *abil,const map_location &l);
 	value_modifier type;
 	int value;

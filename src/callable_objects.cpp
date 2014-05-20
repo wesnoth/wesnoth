@@ -139,19 +139,19 @@ int attack_type_callable::do_compare(const formula_callable* callable) const
 variant unit_callable::get_value(const std::string& key) const
 {
 	if(key == "x") {
-		if (loc_==map_location::null_location) {
+		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
 			return variant(loc_.x+1);
 		}
 	} else if(key == "y") {
-		if (loc_==map_location::null_location) {
+		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
 			return variant(loc_.y+1);
 		}
 	} else if(key == "loc") {
-		if (loc_==map_location::null_location) {
+		if (loc_==map_location::null_location()) {
 			return variant();
 		} else {
 			return variant(new location_callable(loc_));

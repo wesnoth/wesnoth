@@ -143,7 +143,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		map_location loc;
 
 		if ( place == "recall" ) {
-			return map_location::null_location;
+			return map_location::null_location();
 		}
 
 		else if ( place == "leader"  ||  place == "leader_passable" ) {
@@ -173,7 +173,7 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 		}
 	}
 
-	return map_location::null_location;
+	return map_location::null_location();
 
 }
 
@@ -283,7 +283,7 @@ bool can_recruit_from(const map_location& leader_loc, int side)
 
 	return pathfind::find_vacant_tile(leader_loc, pathfind::VACANT_CASTLE, NULL,
 	                                  &(*resources::teams)[side-1])
-	       != map_location::null_location;
+	       != map_location::null_location();
 }
 
 /**
@@ -419,7 +419,7 @@ namespace { // Helpers for get_recalls()
 				// Only units that match the leader's recall filter are valid.
 				scoped_recall_unit this_unit("this_unit", save_id, &recall_unit - &recall_list[0]);
 
-				if ( recall_unit.matches_filter(vconfig(leader.recall_filter()), map_location::null_location) )
+				if ( recall_unit.matches_filter(vconfig(leader.recall_filter()), map_location::null_location()) )
 				{
 					result.push_back(&recall_unit);
 					if ( already_added != NULL )
@@ -519,7 +519,7 @@ namespace { // Helpers for check_recall_location()
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
 		                             &recall_unit - &recall_team.recall_list()[0]);
 		if ( !recall_unit.matches_filter(vconfig(recaller.recall_filter()),
-		                                 map_location::null_location) )
+		                                 map_location::null_location()) )
 			return RECRUIT_NO_ABLE_LEADER;
 
 		// Make sure the unit is on a keep.
@@ -555,7 +555,7 @@ RECRUIT_CHECK check_recall_location(const int side, map_location& recall_locatio
 
 	// If the specified location is occupied, proceed as if no location was specified.
 	if ( resources::units->count(recall_location) != 0 )
-		check_location = map_location::null_location;
+		check_location = map_location::null_location();
 
 	// If the check location is not valid, we will never get an "OK" result.
 	RECRUIT_CHECK const goal_result = check_location.valid() ? RECRUIT_OK :
@@ -686,7 +686,7 @@ RECRUIT_CHECK check_recruit_location(const int side, map_location &recruit_locat
 
 	// If the specified location is occupied, proceed as if no location was specified.
 	if ( resources::units->count(recruit_location) != 0 )
-		check_location = map_location::null_location;
+		check_location = map_location::null_location();
 
 	// If the specified unit type is in the team's recruit list, there is no
 	// need to check each leader's list.
@@ -818,7 +818,7 @@ namespace { // Helpers for place_recruit()
 				return leader->get_location();
 
 		// No usable leader found.
-		return map_location::null_location;
+		return map_location::null_location();
 	}
 
 	/**
@@ -859,7 +859,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	new_unit.set_hidden(true);
 
 	// Get the leader location before adding the unit to the board.
-	const map_location leader_loc = !show ? map_location::null_location :
+	const map_location leader_loc = !show ? map_location::null_location() :
 			find_recruit_leader(new_unit.side(), recruit_location, recruited_from);
 
 	// Add the unit to the board.

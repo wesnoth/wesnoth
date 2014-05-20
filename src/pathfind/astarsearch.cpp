@@ -173,7 +173,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	comp node_comp(nodes);
 
 	nodes[index(dst)].g = stop_at + 1;
-	nodes[index(src)] = node(0, src, map_location::null_location, dst, true, teleports);
+	nodes[index(src)] = node(0, src, map_location::null_location(), dst, true, teleports);
 
 	std::vector<int> pq;
 	pq.push_back(index(src));
@@ -229,7 +229,7 @@ plain_route a_star_search(const map_location& src, const map_location& dst,
 	if (nodes[index(dst)].g <= stop_at) {
 		DBG_PF << "found solution; calculating it...\n";
 		route.move_cost = static_cast<int>(nodes[index(dst)].g);
-		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location; curr = nodes[index(curr.prev)]) {
+		for (node curr = nodes[index(dst)]; curr.prev != map_location::null_location(); curr = nodes[index(curr.prev)]) {
 			route.steps.push_back(curr.curr);
 		}
 		route.steps.push_back(src);

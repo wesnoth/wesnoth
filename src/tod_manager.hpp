@@ -33,7 +33,7 @@ class tod_manager : public savegame::savegame_config
 
 		config to_config() const;
 
-		int get_current_time(const map_location& loc = map_location::null_location) const;
+		int get_current_time(const map_location& loc = map_location::null_location()) const;
 
 		void set_current_time(int time) { currentTime_ = time; }
 
@@ -135,7 +135,7 @@ class tod_manager : public savegame::savegame_config
 
 		bool has_time_area() const {return !areas_.empty();}
 
-		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location) const;
+		const std::vector<time_of_day>& times(const map_location& loc = map_location::null_location()) const;
 
 		const std::vector<time_of_day>& times(int index) const {
 			assert(index < static_cast<int>(areas_.size()));

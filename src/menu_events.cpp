@@ -630,7 +630,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 	const events::command_disabler disable_commands;
 
 	map_location loc = last_hex;
-	map_location recruited_from = map_location::null_location;
+	map_location recruited_from = map_location::null_location();
 	std::string msg;
 	{ wb::future_map_if_active future; /* start planned unit map scope if in planning mode */
 		msg = actions::find_recruit_location(side_num, loc, recruited_from, name);
@@ -721,7 +721,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	const events::command_disabler disable_commands;
 
 	map_location recall_location = last_hex;
-	map_location recall_from = map_location::null_location;
+	map_location recall_from = map_location::null_location();
 	std::string err;
 	{ wb::future_map_if_active future; // future unit map removes invisible units from map, don't do this outside of planning mode
 		err = actions::find_recall_location(side_num, recall_location, recall_from, *(recall_list_team[res]));

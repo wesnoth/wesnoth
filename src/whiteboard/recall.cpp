@@ -123,7 +123,7 @@ void recall::execute(bool& success, bool& complete)
 	}
 	current_team.get_side_actions()->change_gold_spent_by(-cost);
 	bool const result = synced_context::run_in_synced_context("recall", 
-		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location),
+		replay_helper::get_recall(temp_unit_->id(), recall_hex_, map_location::null_location()),
 		true, 
 		true,
 		true,

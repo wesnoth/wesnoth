@@ -178,7 +178,7 @@ double recruitment::evaluate() {
 
 		const map_location& loc = leader->get_location();
 		if (resources::game_map->is_keep(loc) &&
-				pathfind::find_vacant_castle(*leader) != map_location::null_location) {
+				pathfind::find_vacant_castle(*leader) != map_location::null_location()) {
 			return get_score();
 		}
 	}
@@ -210,7 +210,7 @@ void recruitment::execute() {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not on keep. \n";
 			continue;
 		}
-		if (pathfind::find_vacant_castle(*leader) == map_location::null_location) {
+		if (pathfind::find_vacant_castle(*leader) == map_location::null_location()) {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " has no free hexes \n";
 			continue;
 		}
@@ -250,7 +250,7 @@ void recruitment::execute() {
 		BOOST_FOREACH(const unit& recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
 			vconfig filter = vconfig(leader->recall_filter());
-			if (!recall.matches_filter(filter, map_location::null_location)) {
+			if (!recall.matches_filter(filter, map_location::null_location())) {
 				continue;
 			}
 			data.recruits.insert(recall.type_id());
@@ -433,7 +433,7 @@ void recruitment::execute() {
  */
 action_result_ptr recruitment::execute_recall(const std::string& id, data& leader_data) {
 	recall_result_ptr recall_result;
-	recall_result = check_recall_action(id, map_location::null_location,
+	recall_result = check_recall_action(id, map_location::null_location(),
 			leader_data.leader->get_location());
 	if (recall_result->is_ok()) {
 		recall_result->execute();
@@ -447,7 +447,7 @@ action_result_ptr recruitment::execute_recall(const std::string& id, data& leade
  */
 action_result_ptr recruitment::execute_recruit(const std::string& type, data& leader_data) {
 	recruit_result_ptr recruit_result;
-	recruit_result = check_recruit_action(type, map_location::null_location,
+	recruit_result = check_recruit_action(type, map_location::null_location(),
 			leader_data.leader->get_location());
 
 	if (recruit_result->is_ok()) {
@@ -475,7 +475,7 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		}
 		// Check if this leader is allowed to recall this unit.
 		vconfig filter = vconfig(leader_data.leader->recall_filter());
-		if (!recall_unit.matches_filter(filter, map_location::null_location)) {
+		if (!recall_unit.matches_filter(filter, map_location::null_location())) {
 			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit.id() << "\n";
 			continue;
 		}

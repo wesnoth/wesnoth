@@ -575,7 +575,7 @@ void unit_attack(
 		return;
 	}
 	unit_map& units = disp->get_units();
-	disp->select_hex(map_location::null_location);
+	disp->select_hex(map_location::null_location());
 
 	// scroll such that there is at least half a hex spacing around fighters
 	disp->scroll_to_tiles(a,b,game_display::ONSCREEN,true,0.5,false);
@@ -697,7 +697,7 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 	u->set_hidden(true);
 
 	unit_animator animator;
-	if(leader_loc != map_location::null_location) {
+	if(leader_loc != map_location::null_location()) {
 		unit_map::iterator leader = disp->get_units().find(leader_loc);
 		if(leader == disp->get_units().end()) return;
 		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
@@ -736,17 +736,17 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 
 	if (healing < 0) {
 		animator.add_animation(&healed, "poisoned", healed_loc,
-		                       map_location::null_location, -healing, false,
+		                       map_location::null_location(), -healing, false,
 		                       number_and_text(-healing, extra_text),
 		                       display::rgb(255,0,0));
 	} else if ( healing > 0 ) {
 		animator.add_animation(&healed, "healed", healed_loc,
-		                       map_location::null_location, healing, false,
+		                       map_location::null_location(), healing, false,
 		                       number_and_text(healing, extra_text),
 		                       display::rgb(0,255,0));
 	} else {
 		animator.add_animation(&healed, "healed", healed_loc,
-		                       map_location::null_location, 0, false,
+		                       map_location::null_location(), 0, false,
 		                       extra_text, display::rgb(0,255,0));
 	}
 	animator.start_animations();
@@ -754,7 +754,7 @@ void unit_healing(unit &healed, const std::vector<unit *> &healers, int healing,
 	animator.set_all_standing();
 }
 
-void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location);
+void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const map_location &default_location = map_location::null_location());
 
 void wml_animation(const vconfig &cfg, const map_location &default_location)
 {
@@ -827,7 +827,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
 		vconfig t_filter = cfg.child("facing");
-		map_location secondary_loc = map_location::null_location;
+		map_location secondary_loc = map_location::null_location();
 		if(!t_filter.empty()) {
 			terrain_filter filter(t_filter, *resources::units);
 			std::set<map_location> locs;

@@ -242,7 +242,7 @@ namespace { // Support functions
 	/**
 	 * Converts a vconfig to a location (based on x,y=).
 	 * The default parameter values cause the default return value (if neither
-	 * x nor y is specified) to equal map_location::null_location.
+	 * x nor y is specified) to equal map_location::null_location().
 	 */
 	map_location cfg_to_loc(const vconfig& cfg, int defaultx = -999, int defaulty = -999)
 	{
@@ -446,7 +446,7 @@ namespace { // Support functions
 			screen.highlight_hex(spl);
 		} else if(speaker_str == "narrator") {
 			LOG_NG << "no speaker\n";
-			screen.highlight_hex(map_location::null_location);
+			screen.highlight_hex(map_location::null_location());
 		} else {
 			return speaker;
 		}
@@ -1658,7 +1658,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					if (resources::game_map->on_board(loc)) {
 						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-						map_location null_location = map_location::null_location;
+						map_location null_location = map_location::null_location();
 						actions::place_recruit(to_recruit, loc, null_location, 0, true, cfg["show"].to_bool(true),
 						                       cfg["fire_event"].to_bool(false), true, true);
 						return;

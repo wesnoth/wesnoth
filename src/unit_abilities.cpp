@@ -670,7 +670,7 @@ void attack_type::set_specials_context(const map_location& unit_loc,
 void attack_type::set_specials_context(const map_location& loc, bool attacking) const
 {
 	self_loc_ = loc;
-	other_loc_ = map_location::null_location;
+	other_loc_ = map_location::null_location();
 	is_attacker_ = attacking;
 	other_attack_ = NULL;
 }

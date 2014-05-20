@@ -237,7 +237,7 @@ void advance_unit(map_location loc, const std::string &advance_to,
  * function which tests if the unit at loc is currently affected by leadership.
  * (i.e. has a higher-level 'leadership' unit next to it).
  * If it does, then the location of the leader unit will be returned,
- * Otherwise map_location::null_location will be returned.
+ * Otherwise map_location::null_location() will be returned.
  * If 'bonus' is not NULL, the % bonus will be stored in it.
  */
 map_location under_leadership(const unit_map& units, const map_location& loc,
