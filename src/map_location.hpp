@@ -289,10 +289,39 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 	// or if x and y are each different by 1,
 	// and the x value of the hex with the greater y value is even.
 
+	switch (a.y - b.y) {
+		case 1 : 
+			switch (a.x - b.x) {
+				case 1:
+				case -1:
+					return is_even(a.x);
+				case 0:
+					return true;
+				default:
+					return false;
+			}
+		case -1 : 
+			switch (a.x - b.x) {
+				case 1:
+				case -1:
+					return is_even(b.x);
+				case 0:
+					return true;
+				default:
+					return false;
+			}
+		case 0 :
+			return (a.x == b.x + 1) || (a.x == b.x - 1);
+		default:
+			return false;
+	}
+
+	/*
 	const int xdiff = abs(a.x - b.x);
 	const int ydiff = abs(a.y - b.y);
 	return (ydiff == 1 && a.x == b.x) || (xdiff == 1 && a.y == b.y) ||
 	       (xdiff == 1 && ydiff == 1 && (a.y > b.y ? is_even(a.x) : is_even(b.x)));
+	*/
 }
 
 inline size_t distance_between(const map_location& a, const map_location& b)
