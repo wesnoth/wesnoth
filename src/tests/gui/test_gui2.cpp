@@ -75,6 +75,7 @@
 #include "video.hpp"
 #include "wml_exception.hpp"
 
+#include <boost/assign/list_of.hpp>
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
@@ -495,7 +496,7 @@ struct twrapper<gui2::tcampaign_selection>
 {
 	static gui2::tcampaign_selection* create()
 	{
-		const config::const_child_itors &ci =
+		static const config::const_child_itors &ci =
 				main_config.child_range("campaign");
 		static std::vector<config> campaigns(ci.first, ci.second);
 
@@ -656,7 +657,7 @@ struct twrapper<gui2::tlobby_player_info>
 {
 	static gui2::tlobby_player_info* create()
 	{
-		config c;
+		static config c;
 		static fake_chat_handler ch;
 		static user_info ui(c);
 		static lobby_info li(c);
@@ -715,10 +716,7 @@ struct twrapper<gui2::tmp_depcheck_confirm_change>
 {
 	static gui2::tmp_depcheck_confirm_change* create()
 	{
-		std::vector<std::string> mods;
-		mods.push_back("mod one");
-		mods.push_back("some other");
-		mods.push_back("more");
+		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
 		return new gui2::tmp_depcheck_confirm_change(true, mods, "requester");
 	}
 };
@@ -728,10 +726,7 @@ struct twrapper<gui2::tmp_depcheck_select_new>
 {
 	static gui2::tmp_depcheck_select_new* create()
 	{
-		std::vector<std::string> mods;
-		mods.push_back("mod one");
-		mods.push_back("some other");
-		mods.push_back("more");
+		static std::vector<std::string> mods = boost::assign::list_of("mod_one")("some other")("more");
 		return new gui2::tmp_depcheck_select_new(mp::depcheck::MODIFICATION, mods);
 	}
 };
@@ -781,11 +776,8 @@ struct twrapper<gui2::ttheme_list>
 	}
 	static gui2::ttheme_list* create()
 	{
-		std::vector<theme_info> themes;
-		themes.push_back(make_theme("classic"));
-		themes.push_back(make_theme("new"));
-		themes.push_back(make_theme("more"));
-		themes.push_back(make_theme("themes"));
+		static std::vector<theme_info> themes = boost::assign::list_of(make_theme("classic"))
+		(make_theme("new"))(make_theme("more"))(make_theme("themes"));
 		return new gui2::ttheme_list(themes, 0);
 	}
 };
@@ -890,10 +882,7 @@ struct twrapper<gui2::twml_error>
 {
 	static gui2::twml_error* create()
 	{
-		std::vector<std::string> files;
-		files.push_back("some");
-		files.push_back("files");
-		files.push_back("here");
+		static std::vector<std::string> files = boost::assign::list_of("some")("files")("here");
 		return new gui2::twml_error("Summary", "Post summary", files, "Details");
 	}
 };
