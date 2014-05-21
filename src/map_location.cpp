@@ -27,7 +27,6 @@
 #include "formula_string_utils.hpp"
 #include "map.hpp"
 #include "resources.hpp"
-#include "util.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
@@ -130,49 +129,6 @@ void map_location::write(config& cfg) const
 	cfg["y"] = y + 1;
 }
 
-map_location map_location::vector_negation() const
-{
-	return map_location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate
-}
-
-map_location map_location::vector_sum(const map_location& a) const
-{
-	return map_location(*this).vector_sum_assign(a);
-}
-
-map_location& map_location::vector_sum_assign(const map_location &a)
-{
-	y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
-	x += a.x;
-	y += a.y;
-	return *this;
-}
-
-map_location& map_location::vector_difference_assign(const map_location &a)
-{
-	return vector_sum_assign(a.vector_negation());
-}
-
-map_location map_location::get_direction(
-			map_location::DIRECTION dir, int n) const
-{
-	if (n < 0 ) {
-		dir = get_opposite_dir(dir);
-		n = -n;
-	}
-	switch(dir) {
-		case NORTH:      return map_location(x, y - n);
-		case SOUTH:      return map_location(x, y + n);
-		case SOUTH_EAST: return map_location(x + n, y + (n+is_odd(x))/2 );
-		case SOUTH_WEST: return map_location(x - n, y + (n+is_odd(x))/2 );
-		case NORTH_EAST: return map_location(x + n, y - (n+is_even(x))/2 );
-		case NORTH_WEST: return map_location(x - n, y - (n+is_even(x))/2 );
-		default:
-			assert(false);
-			return map_location();
-	}
-}
-
 static bool is_vertically_higher_than ( const map_location & m1, const map_location & m2 ) {
 	return (is_even(m1.x) && is_odd(m2.x)) ? (m1.y <= m2.y) : (m1.y < m2.y);
 }
@@ -242,26 +198,6 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 		}
 	}
 }
-
-/*map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
-	switch (d) {
-		case NORTH:
-			return SOUTH;
-		case NORTH_EAST:
-			return SOUTH_WEST;
-		case SOUTH_EAST:
-			return NORTH_WEST;
-		case SOUTH:
-			return NORTH;
-		case SOUTH_WEST:
-			return NORTH_EAST;
-		case NORTH_WEST:
-			return SOUTH_EAST;
-		case NDIRECTIONS:
-		default:
-			return NDIRECTIONS;
-	}
-}*/
 
 std::pair<int,int> map_location::get_in_basis_N_NE() const {
 	map_location temp(*this);

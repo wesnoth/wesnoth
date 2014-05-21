@@ -20,6 +20,8 @@
 class config;
 class variable_set;
 
+#include "util.hpp"
+
 #include <string>
 #include <vector>
 #include <set>
@@ -39,31 +41,12 @@ struct map_location {
 	enum DIRECTION { NORTH=0, NORTH_EAST=1, SOUTH_EAST=2, SOUTH=3,
 					 SOUTH_WEST=4, NORTH_WEST=5, NDIRECTIONS=6 };
 
-	static const std::vector<DIRECTION> & default_dirs() {
-		static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
-		return dirs;
-	}
+	static const std::vector<DIRECTION> & default_dirs();
 
-	static const map_location & ZERO() {
-		static const map_location z(0,0);
-		return z;
-	}
+	static DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u);
+	static DIRECTION rotate_right(DIRECTION d, signed int k);
 
-	static const map_location & null_location() {
-		static const map_location l;
-		return l;
-	}
-
-	static inline DIRECTION rotate_right(DIRECTION d, unsigned int k = 1u) {
-		return (d == NDIRECTIONS) ? NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
-	}
-	static inline DIRECTION rotate_right(DIRECTION d, signed int k) {
-		return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
-	}
-
-	static inline DIRECTION get_opposite_dir(DIRECTION d) {
-		return rotate_right(d,3u);
-	}
+	static DIRECTION get_opposite_dir(DIRECTION d);
 
 	static DIRECTION parse_direction(const std::string& str);
 
@@ -78,14 +61,15 @@ struct map_location {
 	map_location(int x, int y) : x(x), y(y) {}
 	map_location(const config& cfg, const variable_set *variables = NULL);
 
+	static const map_location & ZERO();
+	static const map_location & null_location();
+
 	void write(config& cfg) const;
 
 	inline bool valid() const { return x >= 0 && y >= 0; }
 
 	inline bool valid(const int parWidth, const int parHeight) const
-	{
-		return ((x >= 0) && (y >= 0) && (x < parWidth) && (y < parHeight));
-	}
+	{ return ((x >= 0) && (y >= 0) && (x < parWidth) && (y < parHeight)); }
 
 	int x, y;
 	bool matches_range(const std::string& xloc, const std::string& yloc) const;
@@ -108,7 +92,8 @@ struct map_location {
 	map_location& vector_difference_assign(const map_location &a);
 
 	// Do n step in the direction d
-	map_location get_direction(DIRECTION d, int n = 1) const;
+	map_location get_direction(DIRECTION d, unsigned int n = 1u) const;
+	map_location get_direction(DIRECTION d, signed int n) const;
 
 	enum RELATIVE_DIR_MODE { DEFAULT , RADIAL_SYMMETRY };
 	DIRECTION get_relative_dir(const map_location & loc, map_location::RELATIVE_DIR_MODE mode /*= map_location::RADIAL_SYMMETRY*/ ) const;
@@ -170,5 +155,108 @@ inline std::size_t hash_value(map_location  const & a){
 	boost::hash<size_t> h;
 	return h( (a.x << 16) ^ a.y );
 }
+
+/** Inline list of directions **/
+inline const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
+	static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)
+				(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)
+				(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
+	return dirs;
+}
+
+/** Inline direction manipulators **/
+inline map_location::DIRECTION map_location::rotate_right(map_location::DIRECTION d, unsigned int k) {
+	return (d == map_location::NDIRECTIONS) ? map_location::NDIRECTIONS : static_cast<map_location::DIRECTION>((d + (k%6u)) % 6u);
+}
+
+inline map_location::DIRECTION map_location::rotate_right(map_location::DIRECTION d, signed int k) {
+	return (k>=0) ? rotate_right(d, static_cast<unsigned int> (k)) : rotate_right(d, (static_cast<unsigned int>(-k) % 6u) * 5u);
+}
+
+inline map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
+	return rotate_right(d,3u);
+}
+
+/** Old implementation: **/
+/*map_location::DIRECTION map_location::get_opposite_dir(map_location::DIRECTION d) {
+	switch (d) {
+		case NORTH:
+			return SOUTH;
+		case NORTH_EAST:
+			return SOUTH_WEST;
+		case SOUTH_EAST:
+			return NORTH_WEST;
+		case SOUTH:
+			return NORTH;
+		case SOUTH_WEST:
+			return NORTH_EAST;
+		case NORTH_WEST:
+			return SOUTH_EAST;
+		case NDIRECTIONS:
+		default:
+			return NDIRECTIONS;
+	}
+}*/
+
+
+/** Inline constant map_location defns **/
+inline const map_location & map_location::ZERO() {
+	static const map_location z(0,0);
+	return z;
+}
+
+inline const map_location & map_location::null_location() {
+	static const map_location l;
+	return l;
+}
+
+/** Inline vector ops **/
+inline map_location map_location::vector_negation() const
+{
+	return map_location(-x, -y - (x & 1)); //subtract one if we're on an odd x coordinate
+}
+
+inline map_location map_location::vector_sum(const map_location& a) const
+{
+	return map_location(*this).vector_sum_assign(a);
+}
+
+inline map_location& map_location::vector_sum_assign(const map_location &a)
+{
+	y += ((x & 1) && (a.x & 1)); //add one if both x coords are odd
+	x += a.x;
+	y += a.y;
+	return *this;
+}
+
+inline map_location& map_location::vector_difference_assign(const map_location &a)
+{
+	return vector_sum_assign(a.vector_negation());
+}
+
+/** Get Direction function **/
+
+inline map_location map_location::get_direction(
+			map_location::DIRECTION dir, signed int n) const
+{
+	return (n >= 0) ? get_direction(dir, static_cast<unsigned int> (n)) : get_direction(get_opposite_dir(dir), static_cast<unsigned int> (-n));
+}
+
+inline map_location map_location::get_direction(
+			map_location::DIRECTION dir, unsigned int n) const
+{
+	switch(dir) {
+		case NORTH:      return map_location(x, y - n);
+		case SOUTH:      return map_location(x, y + n);
+		case SOUTH_EAST: return map_location(x + n, y + (n+is_odd(x))/2 );
+		case SOUTH_WEST: return map_location(x - n, y + (n+is_odd(x))/2 );
+		case NORTH_EAST: return map_location(x + n, y - (n+is_even(x))/2 );
+		case NORTH_WEST: return map_location(x - n, y - (n+is_even(x))/2 );
+		default:
+			assert(false);
+			return map_location::null_location();
+	}
+}
+
 
 #endif
