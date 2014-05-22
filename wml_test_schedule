@@ -9,10 +9,37 @@
 2 empty_test
 4 break_replay_with_lua_random
 0 fixed_lua_random_replay_with_sync_choice
+0 test_end_turn
+#
+# Test Check Victory (If this isn't working other tests may have dubious value)
+#
+2 check_victory_basic_timeout
+1 check_victory_basic_macro_check
+0 check_victory_basic
+1 check_victory_basic_fail
+0 check_victory_basic_two
+0 check_victory_basic_ai
+1 check_victory_basic_ai_fail
+0 check_victory_basic_ai_two
+1 check_victory_one_no_units_fail_one
+1 check_victory_one_no_units_fail_two
+0 check_victory_one_no_units
+1 check_victory_two_no_units_fail_one
+1 check_victory_two_no_units_fail_two
+0 check_victory_two_no_units
+0 check_victory_always_one
+0 check_victory_always_two
+1 check_victory_always_no_units_fail
+0 check_victory_always_no_units
+1 check_victory_always_fail
+1 check_victory_never_fail_one
+1 check_victory_never_fail_two
+1 check_victory_never_fail_three
+0 check_victory_never_pass
+1 check_victory_never_ai_fail
 #
 # WML API tests
 #
-0 test_end_turn
 0 two_plus_two
 1 two_plus_two_fail
 0 order_of_nested_events
