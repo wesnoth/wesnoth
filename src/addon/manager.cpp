@@ -119,7 +119,7 @@ void get_addon_install_info(const std::string& addon_name, config& cfg)
 	} catch(const config::error& e) {
 		ERR_CFG << "Failed to read add-on installation information for '"
 				<< addon_name << "' from " << info_path << ":\n"
-				<< e.message << '\n';
+				<< e.message << std::endl;
 	}
 }
 

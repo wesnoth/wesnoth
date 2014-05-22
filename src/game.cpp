@@ -155,8 +155,13 @@ static void handle_preprocess_command(const commandline_options& cmdline_opts)
 		std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
 
 		config cfg;
-		scoped_istream stream = istream_file( file );
-		read( cfg, *stream );
+
+		try {
+			scoped_istream stream = istream_file( file );
+			read( cfg, *stream );
+		} catch (config::error & e) {
+			std::cerr << "Caught a config error while parsing file '" << file << "':\n" << e.message << std::endl;
+		}
 
 		int read = 0;
 
