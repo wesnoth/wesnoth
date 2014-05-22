@@ -224,8 +224,8 @@ private:
 				}
 			} catch(io_exception& e) {
 				ERR_SAVE << "error reading save index: '" << e.what() << "'" << std::endl;
-			} catch(config::error&) {
-				ERR_SAVE << "error parsing save index config file" << std::endl;
+			} catch(config::error& e) {
+				ERR_SAVE << "error parsing save index config file:\n" << e.message << std::endl;
 				data_.clear();
 			}
 			loaded_ = true;
@@ -904,7 +904,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		} else {
 			gamestate_.classification().parent = parent;
 		}
-		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.classification().parent << "\n";
+		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.classification().parent << std::endl;
 
 		write_game_to_disk(filename_);
 		if (resources::persist != NULL) {
@@ -916,13 +916,13 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		parent = filename_;
 
 		end = SDL_GetTicks();
-		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << "\n";
+		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
 
 		if (video != NULL && show_confirmation_)
 			gui2::show_transient_message(*video, _("Saved"), _("The game has been saved."));
 		return true;
 	} catch(game::save_game_failed& e) {
-		ERR_SAVE << error_message_ << e.message;
+		ERR_SAVE << error_message_ << e.message << std::endl;
 		if (video != NULL){
 			gui2::show_error_message(*video, error_message_ + e.message);
 			//do not bother retrying, since the user can just try to save the game again
@@ -935,7 +935,7 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 
 void savegame::write_game_to_disk(const std::string& filename)
 {
-	LOG_SAVE << "savegame::save_game";
+	LOG_SAVE << "savegame::save_game" << std::endl;
 
 	filename_ = filename;
 	filename_ += compression::format_extension(compress_saves_);

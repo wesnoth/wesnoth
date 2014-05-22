@@ -57,7 +57,7 @@ namespace game_config {
 	struct output {
 		void operator()(const preproc_map::value_type& def)
 		{
-			DBG_CACHE << "key: " << def.first << " " << def.second << "\n";
+			DBG_CACHE << "key: " << def.first << " " << def.second << std::endl;
 		}
 	};
 	const preproc_map& config_cache::get_preproc_map() const
@@ -67,7 +67,7 @@ namespace game_config {
 
 	void config_cache::clear_defines()
 	{
-		LOG_CACHE << "Clearing defines map!\n";
+		LOG_CACHE << "Clearing defines map!" << std::endl;
 		defines_map_.clear();
 		// set-up default defines map
 
@@ -146,9 +146,13 @@ namespace game_config {
 
 	void config_cache::read_configs(const std::string& path, config& cfg, preproc_map& defines_map)
 	{
-		//read the file and then write to the cache
-		scoped_istream stream = preprocess_file(path, &defines_map);
-		read(cfg, *stream);
+		try {
+			//read the file and then write to the cache
+			scoped_istream stream = preprocess_file(path, &defines_map);
+			read(cfg, *stream);
+		} catch (config::error & e) {
+			ERR_CACHE << "error parsing configs in '" << path << "', got config::error\n" << e.message << std::endl;
+		}
 	}
 
 	void config_cache::read_cache(const std::string& path, config& cfg)
