@@ -1241,34 +1241,35 @@ if(ENABLE_TESTS)
 
 	set(test_SRC
 		tests/floating_point_emulation.cpp
+		tests/gui/iterator.cpp
+		tests/gui/fire_event.cpp
+		tests/gui/test_drop_target.cpp
+		tests/gui/test_gui2.cpp
+		tests/gui/test_save_dialog.cpp
+		tests/gui/visitor.cpp
 		tests/main.cpp
-		tests/utils/fake_display.cpp
-		tests/utils/fake_event_source.cpp
-		tests/utils/game_config_manager.cpp
-		tests/utils/play_scenario.cpp
 		tests/test_addons.cpp
 		tests/test_commandline_options.cpp
+		tests/test_config.cpp
 		tests/test_config_cache.cpp
 		tests/test_formula_ai.cpp
 		tests/test_formula_function.cpp
 		tests/test_image_modifications.cpp
 		tests/test_lexical_cast.cpp
-		tests/test_network_worker.cpp
 		tests/test_map_location.cpp
 		tests/test_mp_connect.cpp
+		tests/test_network_worker.cpp
+		tests/test_sdl_utils.cpp
+		tests/test_serialization.cpp
 		tests/test_team.cpp
 		tests/test_unit_map.cpp
 		tests/test_util.cpp
-		tests/test_sdl_utils.cpp
-		tests/test_serialization.cpp
 		tests/test_version.cpp
 		tests/test_whiteboard_side_actions.cpp
-		tests/gui/iterator.cpp
-		tests/gui/fire_event.cpp
-		tests/gui/test_drop_target.cpp
-		tests/gui/test_gui2.cpp
-		tests/gui/visitor.cpp
-		tests/gui/test_save_dialog.cpp
+		tests/utils/fake_display.cpp
+		tests/utils/fake_event_source.cpp
+		tests/utils/game_config_manager.cpp
+		tests/utils/play_scenario.cpp
 	)
 	if(ENABLE_GAME)
 		set(test_LIB
