@@ -824,7 +824,13 @@ void create_engine::init_all_levels()
 		for(size_t i = 0; i < user_scenario_names_.size(); i++)
 		{
 			config data;
-			read(data, *(preprocess_file(get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i])));
+			try {
+				read(data, *(preprocess_file(get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i])));
+			} catch (config::error & e) {
+				ERR_CF << "Caught a config error while parsing user made (editor) scenarios:\n" << e.message << std::endl;
+				ERR_CF << "Skipping file: " << (get_user_data_dir() + "/editor/scenarios/" + user_scenario_names_[i]) << std::endl;
+				continue;
+			}
 
 			scenario_ptr new_scenario(new scenario(data));
 			if (new_scenario->id().empty()) continue;
