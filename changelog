@@ -15,6 +15,16 @@ Version 1.11.14+dev:
      from the 'Unit Description' menu entry or from side pane.
    * Fix bug #21977: ready blocked on scenario transition, when
      allow_new_game=yes
+   * Fix minor issue mentioned in #21800: team names not displayed properly
+     in debug mode.
+   * Fixup to bug fix 21882: fight_on_without_leader replaced with 
+     "defeat_condition" flag of team. remove_from_carryover_on_leaders_loss
+     renamed to "remove_from_carryover_on_defeat". The WML developer now has
+     much more control: Instead of 'fight_on_without_leader'=yes/no, they have
+     have 'defeat_condition'=no_leader/no_units/always/never
+   * As part of the fixup to bug fix 21882, victory_when_enemies_defeated
+     was fixed up so that it will always behave properly even in corner
+     cases in mp. It no longer uses the "is_observer" function of team.
 
 Version 1.11.14:
  * Campaigns:
