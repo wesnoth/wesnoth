@@ -1182,7 +1182,7 @@ static int impl_side_get(lua_State *L)
 	return_string_attrib("name", t.name());
 	return_string_attrib("color", t.color());
 	return_cstring_attrib("controller", t.controller_string());
-	return_string_attrib("defeat_condition", team::defeat_condition_to_string(t.defeat_condition()));
+	return_string_attrib("defeat_condition", lexical_cast<std::string>(t.defeat_condition()));
 	return_bool_attrib("lost", t.lost());
 	
 	if (strcmp(m, "recruit") == 0) {

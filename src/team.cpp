@@ -70,36 +70,6 @@ const std::vector<team>& teams_manager::get_teams()
 	return *teams;
 }
 
-team::DEFEAT_CONDITION team::parse_defeat_condition(const std::string& cond, team::DEFEAT_CONDITION def)
-{
-	if(cond == "no_leader_left")
-		return team::NO_LEADER;
-	else if (cond == "no_units_left")
-		return team::NO_UNITS;
-	else if (cond == "never")
-		return team::NEVER;
-	else if (cond == "always")
-		return team::ALWAYS;
-	else
-		return def;
-	//throw game::game_error("Cannot parse string " + cond +" to a DEFEAT_CONDITION");
-}
-std::string team::defeat_condition_to_string(DEFEAT_CONDITION  cond)
-{
-	switch(cond)
-	{
-	case team::NO_LEADER:
-		return "no_leader_left";
-	case team::NO_UNITS:
-		return "no_units_left";
-	case team::NEVER:
-		return "never";
-	case team::ALWAYS:
-		return "always";
-	default:
-		throw game::game_error("Found corrupted DEFEAT_CONDITION");
-	}
-}
 team::team_info::team_info() :
 	name(),
 	gold(0),
@@ -161,7 +131,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = team::parse_defeat_condition(cfg["defeat_condition"], team::NO_LEADER);
+	defeat_condition = team::string_to_DEFEAT_CONDITION_default(cfg["defeat_condition"], team::NO_LEADER);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
@@ -288,7 +258,7 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = team::defeat_condition_to_string(defeat_condition);
+	cfg["defeat_condition"] = team::DEFEAT_CONDITION_to_string(defeat_condition);
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;

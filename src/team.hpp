@@ -16,6 +16,7 @@
 
 #include "color_range.hpp"
 #include "game_config.hpp"
+#include "make_enum.hpp"
 #include "savegame_config.hpp"
 #include "unit.hpp"
 
@@ -33,9 +34,15 @@ class team : public savegame::savegame_config
 {
 public:
 	enum CONTROLLER { HUMAN, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
-	enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER, ALWAYS};
-	static DEFEAT_CONDITION parse_defeat_condition(const std::string& cond, team::DEFEAT_CONDITION def);
-	static std::string defeat_condition_to_string(DEFEAT_CONDITION  cond);
+	//enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER, ALWAYS};
+
+	MAKE_ENUM(DEFEAT_CONDITION,
+		(NO_LEADER, "no_leader_left")
+		(NO_UNITS, "no_units_left")
+		(NEVER, "never")
+		(ALWAYS, "always")
+	)
+
 private:
 	class shroud_map {
 	public:
@@ -270,7 +277,7 @@ public:
 	DEFEAT_CONDITION defeat_condition() const { return info_.defeat_condition; }
 	void set_defeat_condition(DEFEAT_CONDITION value) { info_.defeat_condition = value; }
 	///sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes.
-	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition = parse_defeat_condition(value, info_.defeat_condition); }
+	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition = string_to_DEFEAT_CONDITION_default(value, info_.defeat_condition); }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
@@ -343,6 +350,8 @@ private:
 	 */
 	boost::shared_ptr<wb::side_actions> planned_actions_;
 };
+
+MAKE_ENUM_STREAM_OPS2(team, DEFEAT_CONDITION)
 
 namespace teams_manager {
 	const std::vector<team> &get_teams();
