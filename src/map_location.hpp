@@ -20,8 +20,6 @@
 class config;
 class variable_set;
 
-#include "util.hpp"
-
 #include <string>
 #include <vector>
 #include <set>
@@ -245,6 +243,30 @@ inline map_location map_location::get_direction(
 inline map_location map_location::get_direction(
 			map_location::DIRECTION dir, unsigned int n) const
 {
+	if (dir == map_location::NDIRECTIONS) {
+		return map_location::null_location();
+	}
+
+	if (dir == NORTH) {
+		return map_location(x,y-n);
+	}
+
+	if (dir == SOUTH) {
+		return map_location(x,y+n);
+	}
+
+	int x_factor = (dir <= 2u) ? 1 : -1; //whether we go east + or west -
+
+	unsigned int tmp_y = dir - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
+	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -	
+
+	if (tmp_y <= 2u) {
+		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 1)) / 2));
+	} else {
+		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 0)) / 2));
+	}
+
+/*
 	switch(dir) {
 		case NORTH:      return map_location(x, y - n);
 		case SOUTH:      return map_location(x, y + n);
@@ -255,13 +277,31 @@ inline map_location map_location::get_direction(
 		default:
 			assert(false);
 			return map_location::null_location();
-	}
+	}*/
 }
 
 /** inline get_adjacent, and get_distance functions **/
 
 inline void get_adjacent_tiles(const map_location& a, map_location* res)
 {
+	res->x = a.x;
+	res->y = a.y-1;
+	++res;
+	res->x = a.x+1;
+	res->y = a.y - (((a.x & 1)==0) ? 1:0);
+	++res;
+	res->x = a.x+1;
+	res->y = a.y + (((a.x & 1)==1) ? 1:0);
+	++res;
+	res->x = a.x;
+	res->y = a.y+1;
+	++res;
+	res->x = a.x-1;
+	res->y = a.y + (((a.x & 1)==1) ? 1:0);
+	++res;
+	res->x = a.x-1;
+	res->y = a.y - (((a.x & 1)==0) ? 1:0);
+/* Changed this when I inlined it to eliminate util.hpp dependency.
 	res->x = a.x;
 	res->y = a.y-1;
 	++res;
@@ -279,6 +319,7 @@ inline void get_adjacent_tiles(const map_location& a, map_location* res)
 	++res;
 	res->x = a.x-1;
 	res->y = a.y - (is_even(a.x) ? 1:0);
+*/
 }
 
 inline bool tiles_adjacent(const map_location& a, const map_location& b)
@@ -294,7 +335,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 			switch (a.x - b.x) {
 				case 1:
 				case -1:
-					return is_even(a.x);
+					return (a.x & 1) == 0;
 				case 0:
 					return true;
 				default:
@@ -304,14 +345,14 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 			switch (a.x - b.x) {
 				case 1:
 				case -1:
-					return is_even(b.x);
+					return (b.x & 1) == 0;
 				case 0:
 					return true;
 				default:
 					return false;
 			}
 		case 0 :
-			return (a.x == b.x + 1) || (a.x == b.x - 1);
+			return ((a.x - b.x) == 1) || ((a.x - b.x) == - 1);
 		default:
 			return false;
 	}
@@ -328,9 +369,13 @@ inline size_t distance_between(const map_location& a, const map_location& b)
 {
 	const size_t hdistance = abs(a.x - b.x);
 
+	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
+		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
+
+/* Don't want to include util.hpp in this header
 	const size_t vpenalty = ( (is_even(a.x) && is_odd(b.x) && (a.y < b.y))
 		|| (is_even(b.x) && is_odd(a.x) && (b.y < a.y)) ) ? 1 : 0;
-
+*/
 	// For any non-negative integer i, i - i/2 - i%2 == i/2
 	// previously returned (hdistance + vdistance - vsavings)
 	// = hdistance + vdistance - minimum(vdistance,hdistance/2+hdistance%2)
