@@ -16556,6 +16556,62 @@
 				</FileConfiguration>
 			</File>
 			<File
+				RelativePath="..\..\src\tests\test_make_enum.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\Tests\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
 				RelativePath="..\..\src\tests\test_map_location.cpp"
 				>
 				<FileConfiguration
@@ -20180,6 +20236,10 @@
 		</File>
 		<File
 			RelativePath="..\..\src\lua_jailbreak_exception.hpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\make_enum.hpp"
 			>
 		</File>
 		<File
