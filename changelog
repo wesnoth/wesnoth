@@ -25,6 +25,9 @@ Version 1.11.14+dev:
    * As part of the fixup to bug fix 21882, victory_when_enemies_defeated
      was fixed up so that it will always behave properly even in corner
      cases in mp. It no longer uses the "is_observer" function of team.
+   * Preemptively fix various problems with uncaught exceptions from the
+     parser (config::error), notably with editor, -p commandline option,
+     and mp_create_engine.
 
 Version 1.11.14:
  * Campaigns:
