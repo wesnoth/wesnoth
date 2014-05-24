@@ -24,12 +24,14 @@
 
 /*
 
+#include "make_enum.hpp"
+
 namespace foo {
  
 	MAKE_ENUM(enumname,
-	        (con1, name1)
-	        (con2, name2)
-	        (con3, name3)
+	        (val1, "name1")
+	        (val2, "name2")
+	        (val3, "name3")
 	)
 
 	MAKE_ENUM_STREAM_OPS1(enumname)
@@ -43,9 +45,9 @@ class bar {
 	public: 
 
 	MAKE_ENUM(another,
-	        (val1, name1)
-	        (val2, name2)
-	        (val3, name3)
+	        (val1, "name1")
+	        (val2, "name2")
+	        (val3, "name3")
 	)
 
 };
@@ -74,6 +76,7 @@ MAKE_ENUM_STREAM_OPS2(bar , another)
  * This means that lexical_casts will throw a bad_lexical_cast,
  * in the similar scenario.
  *
+ * To get lexical_cast, you must separately include util.hpp
  *
  * 
  *
@@ -84,8 +87,15 @@ MAKE_ENUM_STREAM_OPS2(bar , another)
 #ifndef MAKE_ENUM_HPP
 #define MAKE_ENUM_HPP
 
+#include "global.hpp"
+
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/seq/for_each.hpp>
+#include <cassert>
+#include <cstddef>
+#include <exception>
+#include <iostream>
+#include <string>
 
 class bad_enum_cast : public std::exception
 {
@@ -154,7 +164,7 @@ PREFIX NAME CAT2(string_to_,NAME) (const std::string& str) \
 PREFIX std::string CAT2(NAME,_to_string) (NAME val) \
 { \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONREV,  , MAKEPAIRS(CONTENT)) \
-        assert(false); \
+        assert(false && "Corrupted enum found with identifier NAME"); \
 }
 
 
