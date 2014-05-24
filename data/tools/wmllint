@@ -604,7 +604,13 @@ linechanges = (
         
         # Changed before 1.13.0 to fix frames for ragged flags
         ('FLAG_VARIANT ragged','FLAG_VARIANT6 ragged'),
-        ('FLAG_VARIANT "ragged"','FLAG_VARIANT6 ragged')
+        ('FLAG_VARIANT "ragged"','FLAG_VARIANT6 ragged'),
+
+	# Changed in 1.11.15.
+        ("fight_on_without_leader=yes","defeat_condition=no_units_left"),
+        ("fight_on_without_leader=no","defeat_condition=no_leader_left"),
+        ("remove_from_carryover_on_leaders_loss=yes","remove_from_carryover_on_defeat=yes"),
+        ("remove_from_carryover_on_leaders_loss=no","remove_from_carryover_on_defeat=no")
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
