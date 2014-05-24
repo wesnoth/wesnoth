@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.0-dev\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-05-10 20:17+0200\n"
+"POT-Creation-Date: 2014-05-24 20:08+0200\n"
 "PO-Revision-Date: 2009-06-15 15:08-0000\n"
 "Last-Translator: Gabríel A. Pétursson <gabrielp@simnet.is>\n"
 "Language-Team: \n"
@@ -603,82 +603,82 @@ msgid "Portuguese Translation"
 msgstr "Portúgölsk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2572
+#: data/core/about.cfg:2576
 msgid "Portuguese (Brazil) Translation"
 msgstr "Portúgölsk (Brazil) þýðing"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2630
 msgid "Romanian Translation"
 msgstr "Rúmensk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2634
+#: data/core/about.cfg:2638
 msgid "Russian Translation"
 msgstr "Rússnesk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2723
+#: data/core/about.cfg:2727
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "Galisísk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2732
+#: data/core/about.cfg:2736
 msgid "Serbian Translation"
 msgstr "Serbísk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2751
+#: data/core/about.cfg:2755
 msgid "Slovak Translation"
 msgstr "Slóvakísk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2780
+#: data/core/about.cfg:2784
 msgid "Slovenian Translation"
 msgstr "Slóvensk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2796
+#: data/core/about.cfg:2800
 msgid "Spanish Translation"
 msgstr "Spænsk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2878
+#: data/core/about.cfg:2882
 msgid "Swedish Translation"
 msgstr "Sænsk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2919
+#: data/core/about.cfg:2923
 msgid "Turkish Translation"
 msgstr "Tyrknesk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2941
+#: data/core/about.cfg:2945
 #, fuzzy
 #| msgid "Romanian Translation"
 msgid "Ukrainian Translation"
 msgstr "Rúmensk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2954
+#: data/core/about.cfg:2958
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Valensísk (suður Katalónsk) þýðing"
 
 #. [about]
-#: data/core/about.cfg:2967
+#: data/core/about.cfg:2971
 #, fuzzy
 msgid "Vietnamese Translation"
 msgstr "Kínverk þýðing"
 
 #. [about]
-#: data/core/about.cfg:2986
+#: data/core/about.cfg:2990
 msgid "RACV’s Translation"
 msgstr "RACV þýðing"
 
 #. [about]
-#: data/core/about.cfg:2993
+#: data/core/about.cfg:2997
 msgid "Bots"
 msgstr "Þjarkar"
 
@@ -2677,7 +2677,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:784
+#: data/core/macros/utils.cfg:789
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -4859,11 +4859,11 @@ msgstr " viðkvæmi gagnvart "
 msgid "Slowed"
 msgstr "Hægður"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:928
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:929
 msgid "Total damage"
 msgstr "Samtals meiðsl"
 
-#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1040
+#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1042
 msgid "No usable weapon"
 msgstr "Engin nothæf vopn"
 
@@ -4871,7 +4871,7 @@ msgstr "Engin nothæf vopn"
 msgid "Chance of being unscathed"
 msgstr "Líkur á að vera ómeiddur"
 
-#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1049
+#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1051
 msgid "Damage Calculations"
 msgstr "Útrekningar meiðsla"
 
@@ -5104,11 +5104,11 @@ msgstr "Gat ekki fundið tegunt leiðtoga fyrir klíkuna $faction"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/format_time_summary.cpp:46 src/reports.cpp:1539
+#: src/format_time_summary.cpp:46 src/reports.cpp:1540
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:49 src/reports.cpp:1539
+#: src/format_time_summary.cpp:49 src/reports.cpp:1540
 msgid "%I:%M %p"
 msgstr ""
 
@@ -5155,7 +5155,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_controller.cpp:332 src/game_controller.cpp:921
+#: src/game_controller.cpp:332 src/game_controller.cpp:927
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "Bardaginn um Wesnoth"
@@ -5195,21 +5195,21 @@ msgstr "Viðvörun: "
 msgid "No campaigns are available.\n"
 msgstr "Engar herferðir eru til boða.\n"
 
-#: src/game_controller.cpp:858
+#: src/game_controller.cpp:864
 msgid "Error while starting server: "
 msgstr "Villa við ræsingu miðlara: "
 
-#: src/game_controller.cpp:860 src/playcampaign.cpp:246
+#: src/game_controller.cpp:866 src/playcampaign.cpp:246
 #: src/playcampaign.cpp:498
 msgid "The game could not be loaded: "
 msgstr "Leikurinn gat ekki hlaðst: "
 
-#: src/game_controller.cpp:862 src/playcampaign.cpp:248
+#: src/game_controller.cpp:868 src/playcampaign.cpp:248
 #: src/playcampaign.cpp:501
 msgid "Error while playing the game: "
 msgstr "Villa við spilun leiks: "
 
-#: src/game_controller.cpp:880 src/playcampaign.cpp:250
+#: src/game_controller.cpp:886 src/playcampaign.cpp:250
 #: src/playcampaign.cpp:504
 msgid "The game map could not be loaded: "
 msgstr "Kortið gat ekki hlaðst: "
@@ -5232,23 +5232,23 @@ msgstr ""
 msgid "Turn changed"
 msgstr "langdræg"
 
-#: src/game_events/action_wml.cpp:759
+#: src/game_events/action_wml.cpp:760
 msgid "Invalid value in the result key for [end_level]"
 msgstr ""
 
-#: src/game_events/pump.cpp:408
+#: src/game_events/pump.cpp:417
 msgid "Error: "
 msgstr "Villa: "
 
-#: src/game_events/pump.cpp:411
+#: src/game_events/pump.cpp:419
 msgid "Warning: "
 msgstr "Viðvörun: "
 
-#: src/game_events/pump.cpp:414
+#: src/game_events/pump.cpp:421
 msgid "Debug: "
 msgstr "Aflúsun: "
 
-#: src/game_events/pump.cpp:417
+#: src/game_events/pump.cpp:423
 msgid "Info: "
 msgstr "Upplýsingar: "
 
@@ -6162,7 +6162,7 @@ msgid "whisper: $sender"
 msgstr ""
 
 #: src/menu_events.cpp:2390 src/menu_events.cpp:2408
-#: src/multiplayer_connect_engine.cpp:1006
+#: src/multiplayer_connect_engine.cpp:1010
 #, fuzzy
 msgid "(empty)"
 msgstr "Autt"
@@ -6350,7 +6350,7 @@ msgstr "gervigreind"
 msgid "prompt^Command:"
 msgstr "Skipun:"
 
-#: src/mouse_events.cpp:852
+#: src/mouse_events.cpp:854
 #, fuzzy
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
@@ -6358,11 +6358,11 @@ msgid ""
 msgstr ""
 "Þú verður að hafa leiðtoga í hásætinu til að ráða eða endurkalla einingar."
 
-#: src/mouse_events.cpp:1039 src/mouse_events.cpp:1057
+#: src/mouse_events.cpp:1041 src/mouse_events.cpp:1059
 msgid "Attack Enemy"
 msgstr ""
 
-#: src/mouse_events.cpp:1058
+#: src/mouse_events.cpp:1060
 msgid "Choose weapon:"
 msgstr "Veldu vopn:"
 
@@ -6768,48 +6768,48 @@ msgstr "Bíð eftir spilurum..."
 msgid "Waiting for players to choose factions..."
 msgstr "Bíð eftir spilurum..."
 
-#: src/multiplayer_connect_engine.cpp:957
+#: src/multiplayer_connect_engine.cpp:961
 msgid "(Vacant slot)"
 msgstr "(Laust pláss)"
 
-#: src/multiplayer_connect_engine.cpp:967
+#: src/multiplayer_connect_engine.cpp:971
 msgid "Anonymous local player"
 msgstr "Ónafngreindur staðalspilari"
 
-#: src/multiplayer_connect_engine.cpp:984
-#: src/multiplayer_connect_engine.cpp:1233
+#: src/multiplayer_connect_engine.cpp:988
+#: src/multiplayer_connect_engine.cpp:1243
 msgid "Computer Player"
 msgstr "Gervigreind"
 
-#: src/multiplayer_connect_engine.cpp:988
+#: src/multiplayer_connect_engine.cpp:992
 msgid "$playername $side"
 msgstr ""
 
-#: src/multiplayer_connect_engine.cpp:993
+#: src/multiplayer_connect_engine.cpp:997
 msgid "(Empty slot)"
 msgstr "(Laust hólf)"
 
-#: src/multiplayer_connect_engine.cpp:1000
+#: src/multiplayer_connect_engine.cpp:1004
 msgid "(Reserved for $playername)"
 msgstr "(Frátekið fyrir $playername)"
 
-#: src/multiplayer_connect_engine.cpp:1230
+#: src/multiplayer_connect_engine.cpp:1240
 msgid "Network Player"
 msgstr "Netspilari"
 
-#: src/multiplayer_connect_engine.cpp:1232
+#: src/multiplayer_connect_engine.cpp:1242
 msgid "Local Player"
 msgstr "Staðarspilari"
 
-#: src/multiplayer_connect_engine.cpp:1234
+#: src/multiplayer_connect_engine.cpp:1244
 msgid "Empty"
 msgstr "Autt"
 
-#: src/multiplayer_connect_engine.cpp:1237
+#: src/multiplayer_connect_engine.cpp:1247
 msgid "Reserved"
 msgstr "Frátekið"
 
-#: src/multiplayer_connect_engine.cpp:1241
+#: src/multiplayer_connect_engine.cpp:1251
 msgid "--give--"
 msgstr "--gefa--"
 
@@ -7168,53 +7168,53 @@ msgstr "Gat ekki tengst miðlara."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Fann jörð með kostnað hreyfingar minni en 1."
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:257
 msgid "time left for current turn"
 msgstr ""
 
-#: src/play_controller.cpp:256 src/replay_controller.cpp:146
+#: src/play_controller.cpp:259 src/replay_controller.cpp:146
 msgid "current local time"
 msgstr ""
 
-#: src/play_controller.cpp:1184 src/savegame.cpp:406 src/savegame.cpp:418
+#: src/play_controller.cpp:1187 src/savegame.cpp:406 src/savegame.cpp:418
 #: src/savegame.cpp:1052 src/savegame.cpp:1054
 msgid "Auto-Save"
 msgstr "Sjálf-vistun"
 
-#: src/play_controller.cpp:1188
+#: src/play_controller.cpp:1191
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "Hoppa yfir í lotu "
 
-#: src/play_controller.cpp:1196
+#: src/play_controller.cpp:1199
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "Hoppa yfir í lotu "
 
-#: src/play_controller.cpp:1466
+#: src/play_controller.cpp:1487
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr ""
 
-#: src/play_controller.cpp:1467 src/replay_controller.cpp:359
+#: src/play_controller.cpp:1488 src/replay_controller.cpp:359
 #, fuzzy
 msgid "Error details:"
 msgstr "Villa: "
 
-#: src/play_controller.cpp:1493
+#: src/play_controller.cpp:1514
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/play_controller.cpp:1494
+#: src/play_controller.cpp:1515
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "($hotkey til að halda áfram)"
 
-#: src/play_controller.cpp:1498
+#: src/play_controller.cpp:1519
 msgid "Accelerated speed disabled!"
 msgstr ""
 
@@ -7242,7 +7242,7 @@ msgstr "Þú hefur verið sigraður!"
 msgid "Error while reading the WML: "
 msgstr "Villa við lesningu WML: "
 
-#: src/playcampaign.cpp:543 src/playsingle_controller.cpp:497
+#: src/playcampaign.cpp:543 src/playsingle_controller.cpp:503
 msgid "Game Over"
 msgstr "Leik lokið"
 
@@ -7359,11 +7359,11 @@ msgstr[1] ""
 "­Þú munt byrja næstu atburðarás með $gold eða lágmarks gull fyrir þá "
 "atburðarás, hvort sem er hærra."
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:504
 msgid "The game is over."
 msgstr "Leik lokið."
 
-#: src/playsingle_controller.cpp:579
+#: src/playsingle_controller.cpp:585
 #, fuzzy
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
@@ -7372,7 +7372,7 @@ msgstr ""
 "Tenging hefur dottið niður og leikurinn getur ekki haldið áfram. Viltu vista "
 "leikin?"
 
-#: src/playsingle_controller.cpp:776
+#: src/playsingle_controller.cpp:782
 msgid "It is now $name|’s turn"
 msgstr "Nú er lota $name|"
 
@@ -7415,50 +7415,50 @@ msgstr ""
 msgid "Name: "
 msgstr "Nafn: "
 
-#: src/reports.cpp:179
+#: src/reports.cpp:180
 #, fuzzy
 msgid "Type: "
 msgstr "Tegund"
 
-#: src/reports.cpp:199
+#: src/reports.cpp:200
 msgid "Race: "
 msgstr "Ætt: "
 
-#: src/reports.cpp:249
+#: src/reports.cpp:250
 #, fuzzy
 msgid "Level: "
 msgstr "eflingarstig"
 
-#: src/reports.cpp:252
+#: src/reports.cpp:253
 #, fuzzy
 msgid "No advancement"
 msgstr "Eflingar"
 
-#: src/reports.cpp:254
+#: src/reports.cpp:255
 #, fuzzy
 msgid "Advances to:"
 msgstr "Eflist í: "
 
-#: src/reports.cpp:294
+#: src/reports.cpp:295
 #, fuzzy
 msgid "Trait: "
 msgstr "Einkenni"
 
-#: src/reports.cpp:317
+#: src/reports.cpp:318
 msgid "invisible: "
 msgstr "ósýnilegar: "
 
-#: src/reports.cpp:318
+#: src/reports.cpp:319
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr ""
 "Þessi eining er ósýnileg. Hún getur ekki verið séð eða gert árás á af "
 "óvinaeiningum."
 
-#: src/reports.cpp:321
+#: src/reports.cpp:322
 msgid "slowed: "
 msgstr "hægðar: "
 
-#: src/reports.cpp:322
+#: src/reports.cpp:323
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
@@ -7466,11 +7466,11 @@ msgstr ""
 "Þessi eining hefur verið hægð. Hún mun nú eingöngu olla helming venjulegra "
 "meiðsla og kostnað heryfinga hefur tvöfaldast."
 
-#: src/reports.cpp:325
+#: src/reports.cpp:326
 msgid "poisoned: "
 msgstr "eitraðar: "
 
-#: src/reports.cpp:326
+#: src/reports.cpp:327
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7486,190 +7486,190 @@ msgstr ""
 "Einingar geta ekki drepist af eitrinu einu. Eitur mun ekki draga "
 "lífspunktana fyrir neðan 1."
 
-#: src/reports.cpp:329
+#: src/reports.cpp:330
 msgid "petrified: "
 msgstr ""
 
-#: src/reports.cpp:330
+#: src/reports.cpp:331
 #, fuzzy
 msgid "This unit has been petrified. It may not move or attack."
 msgstr ""
 "Þessari einingu hefur verið breytt í stein. Hún getur ekki hreyft sig né "
 "hafið árás."
 
-#: src/reports.cpp:361
+#: src/reports.cpp:362
 msgid "Alignment: "
 msgstr "Stilling: "
 
-#: src/reports.cpp:402
+#: src/reports.cpp:403
 #, fuzzy
 msgid "Ability: "
 msgstr "Hæfileikar: "
 
-#: src/reports.cpp:404 src/reports.cpp:830
+#: src/reports.cpp:405 src/reports.cpp:831
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:456
+#: src/reports.cpp:457
 msgid "Resistances: "
 msgstr "Mótstöður: "
 
-#: src/reports.cpp:458
+#: src/reports.cpp:459
 msgid "(Att / Def)"
 msgstr "(Árs / Vör)"
 
-#: src/reports.cpp:484
+#: src/reports.cpp:485
 #, fuzzy
 #| msgid "Experience modifier: "
 msgid "Experience Modifier: "
 msgstr "Margföldunarbreyta reynslu: "
 
-#: src/reports.cpp:535
+#: src/reports.cpp:536
 #, fuzzy
 msgid "Terrain: "
 msgstr "Jörð"
 
-#: src/reports.cpp:552
+#: src/reports.cpp:553
 msgid "maximum^max."
 msgstr ""
 
-#: src/reports.cpp:552
+#: src/reports.cpp:553
 msgid "minimum^min."
 msgstr ""
 
-#: src/reports.cpp:557
+#: src/reports.cpp:558
 #, fuzzy
 msgid "Defense: "
 msgstr "Vörn"
 
-#: src/reports.cpp:580
+#: src/reports.cpp:581
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "Útgáfa: "
 
-#: src/reports.cpp:608
+#: src/reports.cpp:609
 #, fuzzy
 #| msgid "Movement Cost"
 msgid "Movement Costs:"
 msgstr "Kostnaður Hreyfingar"
 
-#: src/reports.cpp:698 src/reports.cpp:915 src/reports.cpp:927
+#: src/reports.cpp:699 src/reports.cpp:916 src/reports.cpp:928
 #, fuzzy
 msgid "Weapon: "
 msgstr "Drægi vopns: "
 
-#: src/reports.cpp:699 src/reports.cpp:916
+#: src/reports.cpp:700 src/reports.cpp:917
 #, fuzzy
 msgid "Damage: "
 msgstr "Meiðsl"
 
-#: src/reports.cpp:703
+#: src/reports.cpp:704
 #, fuzzy
 msgid "Base damage: "
 msgstr "Samtals meiðsl"
 
-#: src/reports.cpp:705 src/reports.cpp:739 src/reports.cpp:749
+#: src/reports.cpp:706 src/reports.cpp:740 src/reports.cpp:750
 #, fuzzy
 msgid "With specials: "
 msgstr "Sérhæfileikar vopna"
 
-#: src/reports.cpp:708
+#: src/reports.cpp:709
 #, fuzzy
 msgid "Time of day: "
 msgstr "Tími dags"
 
-#: src/reports.cpp:712
+#: src/reports.cpp:713
 #, fuzzy
 msgid "Leadership: "
 msgstr "Leiðtogi"
 
-#: src/reports.cpp:716
+#: src/reports.cpp:717
 #, fuzzy
 msgid "Slowed: "
 msgstr "hægðar: "
 
-#: src/reports.cpp:720
+#: src/reports.cpp:721
 #, fuzzy
 msgid "Attacks: "
 msgstr "Árásaraðili"
 
-#: src/reports.cpp:724
+#: src/reports.cpp:725
 msgid "Max swarm bonus: "
 msgstr ""
 
-#: src/reports.cpp:725 src/reports.cpp:744
+#: src/reports.cpp:726 src/reports.cpp:745
 #, fuzzy
 msgid "Swarm: "
 msgstr "svarmur"
 
-#: src/reports.cpp:726 src/reports.cpp:737 src/reports.cpp:748
+#: src/reports.cpp:727 src/reports.cpp:738 src/reports.cpp:749
 msgid "Base attacks: "
 msgstr ""
 
-#: src/reports.cpp:732
+#: src/reports.cpp:733
 #, fuzzy
 #| msgid "Special"
 msgid "Specials: "
 msgstr "Sérstakt"
 
-#: src/reports.cpp:742
+#: src/reports.cpp:743
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:761
+#: src/reports.cpp:762
 #, fuzzy
 msgid "Weapon range: "
 msgstr "Drægi vopns: "
 
-#: src/reports.cpp:762
+#: src/reports.cpp:763
 #, fuzzy
 msgid "Damage type: "
 msgstr "tegund meiðsls: "
 
-#: src/reports.cpp:763
+#: src/reports.cpp:764
 #, fuzzy
 msgid "Damage versus: "
 msgstr "tegund meiðsls: "
 
-#: src/reports.cpp:804
+#: src/reports.cpp:805
 #, fuzzy
 msgid "Accuracy:"
 msgstr "% nákvæmni"
 
-#: src/reports.cpp:809
+#: src/reports.cpp:810
 msgid "Parry:"
 msgstr ""
 
-#: src/reports.cpp:828
+#: src/reports.cpp:829
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Sérhæfileikar vopna"
 
-#: src/reports.cpp:899
+#: src/reports.cpp:900
 msgid "None"
 msgstr ""
 
-#: src/reports.cpp:1133 src/reports.cpp:1183
+#: src/reports.cpp:1134 src/reports.cpp:1184
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "Réttmætar einingar: "
 
-#: src/reports.cpp:1135 src/reports.cpp:1185
+#: src/reports.cpp:1136 src/reports.cpp:1186
 msgid "Neutral units: "
 msgstr "Náttúrulegar einingar: "
 
-#: src/reports.cpp:1136 src/reports.cpp:1186
+#: src/reports.cpp:1137 src/reports.cpp:1187
 msgid "Chaotic units: "
 msgstr "Ringulreiðar einingar: "
 
-#: src/reports.cpp:1138 src/reports.cpp:1188
+#: src/reports.cpp:1139 src/reports.cpp:1189
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Réttmætar einingar: "
 
-#: src/reports.cpp:1503
+#: src/reports.cpp:1504
 msgid "Observers:"
 msgstr "Áhorfendur"
 

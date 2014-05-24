@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-05-10 20:17+0200\n"
+"POT-Creation-Date: 2014-05-24 20:08+0200\n"
 "PO-Revision-Date: 2010-10-03 13:25+0100\n"
 "Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
@@ -91,7 +91,6 @@ msgstr "Koga želite igrati?"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:227
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
 msgid "Li’sar"
 msgstr "Li’sar"
 
@@ -395,7 +394,7 @@ msgstr ""
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:559
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:510
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:486
 msgid "Village"
 msgstr "Vas"
 
@@ -492,7 +491,7 @@ msgstr "Vpoklical bom nekaj vilinov!"
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:656
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1034
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1010
 msgid "Keep"
 msgstr "Trdnjava"
 
@@ -1027,28 +1026,27 @@ msgstr "Thrag"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:399
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:437
 #, fuzzy
 msgid "Defeat the Orc Leader"
 msgstr "Premagaj voditelja Orkov"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:403
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:409
 msgid "Death of Konrad"
 msgstr "Smrt Konrada"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:441
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:419
 msgid "Death of Li’sar"
 msgstr "Smrt Li'sar"
 
 #. [unit]: id=Galdrad, type=Elvish Captain
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:452
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
 msgid "Galdrad"
 msgstr "Galdrad"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:479
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:455
 #, fuzzy
 msgid ""
 "Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
@@ -1058,13 +1056,13 @@ msgstr ""
 "Mogoče trop strašil?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:481
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:457
 msgid "This is no game, Konrad! "
 msgstr "To ni igra, Konrad! "
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:482
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:483
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:459
 #, fuzzy
 msgid ""
 "Orcs have encamped across the river. This is elven country; they are fools "
@@ -1077,17 +1075,17 @@ msgstr ""
 "moraš njihovega vodjo, da nas ne bodo nikoli več težili.  Svetoval ti bom."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:482
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:458
 msgid "This is no game, Li’sar! "
 msgstr "To ni igra, Li'sar! "
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:485
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:461
 msgid "What should I do?"
 msgstr "Kaj naj naredim?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:466
 #, fuzzy
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
@@ -1097,7 +1095,7 @@ msgstr ""
 "malica."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:491
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:467
 #, fuzzy
 msgid ""
 "By then, their leader will have recruited more units to send against us and "
@@ -1105,23 +1103,23 @@ msgid ""
 msgstr "Do takrat bo njihov vodja vpoklical več enot in pravi boj se bo začel."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:492
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:493
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:494
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:495
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:496
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:468
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:469
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:470
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:471
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:472
 msgid "Shallow"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:497
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:498
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:499
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:473
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:474
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:475
 msgid "Deep water"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:501
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:477
 #, fuzzy
 msgid ""
 "See this dark blue water? It’s too deep for either side to cross. The orcs "
@@ -1135,7 +1133,7 @@ msgstr ""
 "mi pa bi bili na varnem v gozdu. "
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:511
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:487
 #, fuzzy
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
@@ -1146,7 +1144,7 @@ msgstr ""
 "zdravljenje poškodovanih enot ter gozd v katerem se tako dobro bojujemo."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:514
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:490
 #, fuzzy
 msgid ""
 "To start, we will need some units:\n"
@@ -1160,7 +1158,7 @@ msgstr ""
 "eno vilinsko vračarko."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:592
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:568
 #, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
@@ -1173,7 +1171,7 @@ msgstr ""
 "rekrutirate nove enote."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:595
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:571
 #, fuzzy
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
@@ -1186,7 +1184,7 @@ msgstr ""
 "rekrutirate nove enote."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:601
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:577
 #, fuzzy
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
@@ -1198,12 +1196,12 @@ msgstr ""
 "enoto(kar je ceneje od ponovne uporabe enote)."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:604
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:580
 msgid "RECALL $recall_name1"
 msgstr "PRIKLIČITE $recall_name1|a"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:605
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:581
 #, fuzzy
 msgid ""
 "Right click on the tile north-east of you and <i>recall</i> $recall_name1"
@@ -1212,7 +1210,7 @@ msgstr ""
 "prikličite $recall_name1|a"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:590
 #, fuzzy
 msgid ""
 "If any Elvish Fighters from your last battle had experience, we would "
@@ -1225,7 +1223,7 @@ msgstr ""
 "enote. Rekrutirajte Vilinskega Bojevnika."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:617
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:593
 #, fuzzy
 msgid ""
 "If you had any experienced units alive from your last battle we would "
@@ -1235,27 +1233,27 @@ msgstr ""
 "ampak ker je ni moramo rekrutirati novega Vilinskega Bojevnika."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:620
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:873
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:915
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:596
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:849
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:891
 msgid "Elvish Fighter"
 msgstr "Vilinski bojevnik"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:621
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:597
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
 "Z desnim miškinim gumbom kliknite na polje severovzhodno od vas in "
 "vpokličite vilinskega bojevnika"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
 #, fuzzy
 msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
 msgstr "Ne! Rekel sem, da vpokliči vilinsko VRAČARKO! Poskusi znova ..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:646
 #, fuzzy
 msgid ""
 "The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
@@ -1267,12 +1265,12 @@ msgstr ""
 "jo naredijo."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:671
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:647
 msgid "So, should I end my turn now?"
 msgstr "Naj končam svojo potezo?"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:673
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
 #, fuzzy
 msgid ""
 "While none of your recruited units can move, you still can. Your five units "
@@ -1284,81 +1282,81 @@ msgstr ""
 "prihodkov."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:675
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:651
 msgid "Move Konrad to capture a village"
 msgstr "Premaknite Konrada v vas, da jo zavzame"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:652
 msgid "Move Li’sar to capture a village"
 msgstr "Premaknite Li'sar v vas, da jo zavzame"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:693
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:731
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:669
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:707
 #, fuzzy
 msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
 msgstr "Ne! Rekel sem, da vpokliči vilinsko VRAČARKO! Poskusi znova ..."
 
 #. [else]
 #. [unit]: id=Eowynial, type=Elvish Archer
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:699
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:675
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:686
 msgid "Eowynial"
 msgstr "Eowynial"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:714
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:690
 msgid "Shaman"
 msgstr "Vračarka"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:715
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:691
 msgid "Recruit an Elvish Shaman to your north"
 msgstr ""
 
 #. [else]
 #. [unit]: id=Elriend, type=Elvish Archer
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:737
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:747
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:713
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:723
 msgid "Elriend"
 msgstr "Elriend"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:770
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:746
 #, fuzzy
 msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
 msgstr "Ne! Rekel sem, da PRIKLIČI $recall_name2|a! Poskusi znova ..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:779
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:755
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:791
 msgid "Archer #1"
 msgstr "Lokostrelec št. 1"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:780
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:816
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:756
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:792
 msgid "Archer #2"
 msgstr "Lokostrelec št. 2"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:782
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:818
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:758
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:794
 #, fuzzy
 msgid "Recruit two Elvish Archers in the tiles to your west"
 msgstr "Na polji zahodno od vas vpokličite dva vilinska lokostrelca"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:795
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:771
 #, fuzzy
 msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
 msgstr "Ne! Rekel sem, da vpokliči vilinskega BOJEVNIKA! Poskusi znova ..."
 
 #. [else]
 #. [unit]: id=Golir, type=Elvish Fighter
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:801
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:777
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:787
 msgid "Golir"
 msgstr "Golir"
 
@@ -1366,7 +1364,7 @@ msgstr "Golir"
 # Ime ali enota?
 # Brez "pa"?
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:849
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:825
 #, fuzzy
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
@@ -1374,7 +1372,7 @@ msgstr ""
 "znova ..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:853
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:829
 #, fuzzy
 msgid ""
 "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
@@ -1384,20 +1382,20 @@ msgstr ""
 "rekrutiraj $recruit.type|!  Poizkusi ponovno..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:869
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
 "Z desnim miškinim gumbom kliknite na polje vzhodno od vas in prikličite "
 "$recall_name2|a"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:870
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:846
 msgid "RECALL $recall_name2"
 msgstr "PRIKLIČITE $recall_name2|a"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:874
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:916
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:850
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:892
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr ""
 "Z desnim gumbom kliknite na polje vzhodno od vas in vpokličite vilinskega "
@@ -1405,7 +1403,7 @@ msgstr ""
 
 # Brez "da"?
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:897
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:873
 #, fuzzy
 msgid ""
 "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
@@ -1416,19 +1414,19 @@ msgstr ""
 
 #. [else]
 #. [unit]: id=Elindel, type=Elvish Fighter
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:904
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:914
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:880
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:890
 msgid "Elindel"
 msgstr "Elindel"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:943
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:919
 msgid "You’ve learned well, Konrad! "
 msgstr "Dobro si se naučil, Konrad! "
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:920
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:922
 #, fuzzy
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
@@ -1438,20 +1436,20 @@ msgstr ""
 "zlato na potezo"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
 msgid "You’ve learned well, Li’sar! "
 msgstr "Dobro si se naučila, Li'sar! "
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:948
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:924
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1052
 msgid "End your turn"
 msgstr "Končajte potezo"
 
 # Spol!
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:930
 #, fuzzy
 msgid ""
 "You’ve captured all the villages around the keep, but stay near so you can "
@@ -1461,7 +1459,7 @@ msgstr ""
 "nove enote."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:969
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:945
 #, fuzzy
 msgid ""
 "You should leave the villages near your keep for Konrad to capture. He needs "
@@ -1469,7 +1467,7 @@ msgid ""
 msgstr "Vasi okrog vas bi morali obdražati za kasnejše novačenje."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:970
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:946
 #, fuzzy
 msgid ""
 "You should leave the villages near your keep for Li’sar to capture. She "
@@ -1477,31 +1475,31 @@ msgid ""
 msgstr "Vasi okrog vas bi morali obdražati za kasnejše novačenje."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:952
 #, fuzzy
 msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr "Orki nimajo napada z razdalje, zato jih lahko napadete z lokostrelci. "
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1103
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1079
 msgid "Attack the orc with an Archer"
 msgstr "Napadite orka z lokostrelcem"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
 msgid "Unit Summaries"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:987
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:963
 #, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
@@ -1511,7 +1509,7 @@ msgstr ""
 "lokostrelca v gozdu, je samo 30%."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:996
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:972
 #, fuzzy
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
@@ -1522,19 +1520,19 @@ msgstr ""
 "imela 80% možnost da jo zadane Orkov proti napad. Prekličite potezo!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1002
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
 #, fuzzy
 msgid "Attack the orc with the other Archer"
 msgstr "Napadite orka z drugim lokostrelcem"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1014
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:990
 #, fuzzy
 msgid "Fighter to HERE"
 msgstr "Bojevnika k Tukaj"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1015
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:991
 #, fuzzy
 msgid ""
 "Your other units cannot reach the orc this turn. Send a Fighter to the "
@@ -1544,12 +1542,12 @@ msgstr ""
 "na vzhodu: to bo trajalo 2 potezi."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
 msgid "Long-distance Movement"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1016
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
 #, fuzzy
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
@@ -1561,13 +1559,13 @@ msgstr ""
 "ta enota doseže cilj."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1017
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:993
 #, fuzzy
 msgid "Tell a Fighter to move to the far east village"
 msgstr "Zaukažite Bojevniku da naj se premakne v vas na daljnem vzhodu"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1035
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1011
 #, fuzzy
 msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
@@ -1577,50 +1575,50 @@ msgstr ""
 "naslednjo potezo, nato se vrnite in rekrutirajte še več enot!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1012
 #, fuzzy
 msgid "Move your Fighter and Shaman south, then return Konrad to the keep"
 msgstr ""
 "Premaknite Bojevnika in Šamana južno, nato vrnite Konrada nazaj na utrdbo"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1037
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1013
 #, fuzzy
 msgid "Move your Fighter and Shaman south, then return Li’sar to the keep"
 msgstr ""
 "Premaknite Bojevnika in Šamana južno, nato vrnite Li'sarja nazaj na utrdbo"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1047
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1023
 msgid "Recruit another Archer and a Fighter"
 msgstr "Vpokličite še enega lokostrelca in bojevnika"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1062
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1038
 #, fuzzy
 msgid "I have no more money to recruit!"
 msgstr "Zmanjkalo mi je denarja za vpoklic enot!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1063
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1039
 #, fuzzy
 msgid "That is often a problem, which is why owning villages is important."
 msgstr "Denar je pogosto problem, zato je pomembno, da si lastiš vasi."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1064
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1040
 #, fuzzy
 msgid "Move Konrad to another (unowned) village"
 msgstr "Premaknite Konrada v drugo (nezavzeto) vas"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1065
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
 #, fuzzy
 msgid "Move Li’sar to another (unowned) village"
 msgstr "Premaknite Li'sar v drugo (nezavzeto) vas"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1090
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1066
 #, fuzzy
 msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
@@ -1629,24 +1627,24 @@ msgstr ""
 "Ork blokira most!  Okupirati moramo otok preden ga dosežejo volčji jezdeci."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1091
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1067
 #, fuzzy
 msgid "Can’t our units just move around him?"
 msgstr "Ali ga naše enote ne morejo preprosto obiti?"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1094
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1095
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1096
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1097
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1098
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1099
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1070
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1071
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1072
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1073
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1074
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1075
 #, fuzzy
 msgid "ZoC"
 msgstr "PK"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1101
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
 #, fuzzy
 msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
@@ -1661,15 +1659,15 @@ msgstr ""
 
 #. [event]
 #. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1109
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1133
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1157
 #, fuzzy
 msgid "Advance other units and capture villages, then <b>End Turn</b>"
 msgstr "Z drugumi enotami zavzemite vasi, nato Končajte Potezo"
 
 #. [then]
 #. The unit with unit type $unit.language_name is male.
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1143
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1119
 #, fuzzy
 msgid ""
 "No other units can reach that orc. I hope my $unit.language_name survives "
@@ -1682,7 +1680,7 @@ msgstr ""
 
 #. [else]
 #. The unit with unit type $unit.language_name is female.
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1123
 #, fuzzy
 msgid ""
 "female^No other units can reach that orc. I hope my $unit.language_name "
@@ -1694,7 +1692,7 @@ msgstr ""
 "naslednjo potezo."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1150
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1126
 #, fuzzy
 msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, she will "
@@ -1704,13 +1702,13 @@ msgstr ""
 "naslednje poteze."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1151
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1127
 #, fuzzy
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
 msgstr "Premaknite Šamana na most za enoto na mostu"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1197
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
 #, fuzzy
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
@@ -1720,7 +1718,7 @@ msgstr ""
 "smeri!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1210
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1186
 #, fuzzy
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
@@ -1731,7 +1729,7 @@ msgstr ""
 "imela 80% možnost da jo zadanejo!  Prekličite in počakajte, da vas napadejo!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1220
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1196
 #, fuzzy
 msgid ""
 "Don’t forget about your Fighter in the east; you can move him south to that "
@@ -1741,7 +1739,7 @@ msgstr ""
 "jugu blizu kanala."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1225
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1201
 #, fuzzy
 msgid ""
 "We need to occupy that village, otherwise they will take it next turn! Move "
@@ -1753,7 +1751,7 @@ msgstr ""
 "nato pa ubijte Orka!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1237
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1213
 #, fuzzy
 msgid ""
 "Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
@@ -1767,7 +1765,7 @@ msgstr ""
 "smo nevtralni: smo nespremenjeni ponoči in podnevi."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
 #, fuzzy
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
@@ -1778,13 +1776,13 @@ msgstr ""
 "videli boste opis časa."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1238
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
 #, fuzzy
 msgid "Time of Day"
 msgstr "<big>Dobrodošli v Wesnoth!</big>"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1221
 #, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
@@ -1795,13 +1793,13 @@ msgstr ""
 "4 HP naenkrat, vasi lahko 8 (maksimim za vse enote)."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1252
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1228
 #, fuzzy
 msgid "Defend here"
 msgstr "Branite tukaj"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1229
 #, fuzzy
 msgid ""
 "Beware of those orcs crossing the river! If they get into the forest they’ll "
@@ -1811,12 +1809,12 @@ msgstr ""
 "pregnati!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
 msgid "Tracking Unused Units"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1259
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
 #, fuzzy
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
@@ -1831,7 +1829,7 @@ msgstr ""
 "Ko 'n' ne izbere nove enote lahko zaključite potezo."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
@@ -1839,17 +1837,17 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1264
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
 msgid "Victory Conditions"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
 msgid "Recruit the Right Unit Types"
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1269
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
 #, fuzzy
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
@@ -1859,7 +1857,7 @@ msgstr ""
 "zeli učinkoviti proti Pešakom, Volčjim Konjenikom in njihovim vodjo."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1287
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1263
 #, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
@@ -1869,7 +1867,7 @@ msgstr ""
 "jo bo Orkovski vodja pustil uporabljati!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1301
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1277
 #, fuzzy
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
@@ -1879,7 +1877,7 @@ msgstr ""
 "potezo ga zdravi in mu da dobro obrambo."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1312
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1288
 #, fuzzy
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
@@ -1889,7 +1887,7 @@ msgstr ""
 "dobro obrambo."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1324
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1300
 #, fuzzy
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
@@ -1899,8 +1897,8 @@ msgstr ""
 "razdalje, ampak upam da imaš načrt če zgrešim!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1360
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1376
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1336
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1352
 #, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
@@ -1911,7 +1909,7 @@ msgstr ""
 "točk ker je stopnja 2. Enoto izberite premišljeno!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1425
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1401
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
@@ -1921,7 +1919,7 @@ msgstr ""
 "točk, kar pomeni da bi kmalu napredoval v stopnjo 2."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1428
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1404
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
@@ -1931,7 +1929,7 @@ msgstr ""
 "izkušenjskih točk, kar pomeni da bi kmalu napredoval v stopnjo 2."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1445
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least he was not one of our experienced "
@@ -1941,7 +1939,7 @@ msgstr ""
 "kakšna enota z več izkušenj!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1448
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1424
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name|, but at least she was not one of our experienced "
@@ -1952,19 +1950,19 @@ msgstr ""
 
 # Škoduje?
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1463
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1439
 #, fuzzy
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr "Izguba zdravilca škodi vsem enotam."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
 msgid "Tracking Enemy Movement"
 msgstr ""
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1464
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
 #, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
@@ -1977,7 +1975,7 @@ msgstr ""
 
 # Enote stopnje 2?
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1468
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1444
 #, fuzzy
 msgid ""
 "Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
@@ -1986,7 +1984,7 @@ msgstr ""
 "Enote 2. stopnje so močne, vendar niso nesmrtne! Nasvidenje, $deadguy.name|."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1483
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1459
 #, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
@@ -1996,7 +1994,7 @@ msgstr ""
 "enotami!"
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1503
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1479
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2008,7 +2006,7 @@ msgstr ""
 "štirih napadov. Uporabi me za onesposobljanje težko zadenljivih enot."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1512
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1488
 #, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
@@ -2020,7 +2018,7 @@ msgstr ""
 "štirih napadov. Uporabi me za onesposobljanje težko zadenljivih enot."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1528
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1504
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2034,7 +2032,7 @@ msgstr ""
 "ob meni."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1542
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1518
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2048,7 +2046,7 @@ msgstr ""
 "premišljeno."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1557
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1533
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -2058,13 +2056,13 @@ msgstr ""
 "Zelo dober sem v rokovanju z mečem: štirje napadi, vsak napad 8 škode."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1726
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1702
 #, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr "Predolgo je trajalo, nikoli se ne bomo znebili teh Orkov!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1749
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1725
 msgid ""
 "You have beaten the orcs! You may want to try some novice-level campaigns "
 "next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2014-05-10 20:17+0200\n"
+"POT-Creation-Date: 2014-05-24 20:08+0200\n"
 "PO-Revision-Date: 2012-04-04 18:49+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese Simplified <http://code.google.com/p/wesnoth-"
@@ -601,79 +601,79 @@ msgid "Portuguese Translation"
 msgstr "葡萄牙文翻译"
 
 #. [about]
-#: data/core/about.cfg:2572
+#: data/core/about.cfg:2576
 msgid "Portuguese (Brazil) Translation"
 msgstr "葡萄牙文（巴西）翻译"
 
 #. [about]
-#: data/core/about.cfg:2626
+#: data/core/about.cfg:2630
 msgid "Romanian Translation"
 msgstr "罗马尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2634
+#: data/core/about.cfg:2638
 msgid "Russian Translation"
 msgstr "俄文翻译"
 
 #. [about]
-#: data/core/about.cfg:2723
+#: data/core/about.cfg:2727
 #, fuzzy
 #| msgid "Galician Translation"
 msgid "Scottish Gaelic Translation"
 msgstr "巴伦西亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2732
+#: data/core/about.cfg:2736
 msgid "Serbian Translation"
 msgstr "塞尔维亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2751
+#: data/core/about.cfg:2755
 msgid "Slovak Translation"
 msgstr "斯洛伐克文翻译"
 
 #. [about]
-#: data/core/about.cfg:2780
+#: data/core/about.cfg:2784
 msgid "Slovenian Translation"
 msgstr "斯洛文尼亚文翻译"
 
 #. [about]
-#: data/core/about.cfg:2796
+#: data/core/about.cfg:2800
 msgid "Spanish Translation"
 msgstr "西班牙文翻译"
 
 #. [about]
-#: data/core/about.cfg:2878
+#: data/core/about.cfg:2882
 msgid "Swedish Translation"
 msgstr "瑞典文翻译"
 
 #. [about]
-#: data/core/about.cfg:2919
+#: data/core/about.cfg:2923
 msgid "Turkish Translation"
 msgstr "土耳其文翻译"
 
 #. [about]
-#: data/core/about.cfg:2941
+#: data/core/about.cfg:2945
 msgid "Ukrainian Translation"
 msgstr "乌克兰文翻译"
 
 #. [about]
-#: data/core/about.cfg:2954
+#: data/core/about.cfg:2958
 msgid "Valencian (southern Catalan) Translation"
 msgstr "瓦伦西亚文（南加泰罗尼亚）翻译"
 
 #. [about]
-#: data/core/about.cfg:2967
+#: data/core/about.cfg:2971
 msgid "Vietnamese Translation"
 msgstr "越南文翻译"
 
 #. [about]
-#: data/core/about.cfg:2986
+#: data/core/about.cfg:2990
 msgid "RACV’s Translation"
 msgstr "RACV的翻译"
 
 #. [about]
-#: data/core/about.cfg:2993
+#: data/core/about.cfg:2997
 msgid "Bots"
 msgstr "机器人"
 
@@ -2733,7 +2733,7 @@ msgstr ""
 "类玩家设计的。"
 
 #. [message]: speaker=narrator
-#: data/core/macros/utils.cfg:784
+#: data/core/macros/utils.cfg:789
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr ""
 
@@ -4823,11 +4823,11 @@ msgstr "弱点"
 msgid "Slowed"
 msgstr "减速"
 
-#: src/attack_prediction_display.cpp:253 src/reports.cpp:928
+#: src/attack_prediction_display.cpp:253 src/reports.cpp:929
 msgid "Total damage"
 msgstr "总伤害输出"
 
-#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1040
+#: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:1042
 msgid "No usable weapon"
 msgstr "无可用武器"
 
@@ -4835,7 +4835,7 @@ msgstr "无可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受伤的几率"
 
-#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1049
+#: src/attack_prediction_display.cpp:544 src/mouse_events.cpp:1051
 msgid "Damage Calculations"
 msgstr "伤害计算"
 
@@ -5064,11 +5064,11 @@ msgstr "无法找到$faction派系的可用领袖类型"
 msgid "Cannot obtain genders for invalid leader $leader"
 msgstr ""
 
-#: src/format_time_summary.cpp:46 src/reports.cpp:1539
+#: src/format_time_summary.cpp:46 src/reports.cpp:1540
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/format_time_summary.cpp:49 src/reports.cpp:1539
+#: src/format_time_summary.cpp:49 src/reports.cpp:1540
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
@@ -5113,7 +5113,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/game_controller.cpp:332 src/game_controller.cpp:921
+#: src/game_controller.cpp:332 src/game_controller.cpp:927
 #: src/windows_tray_notification.cpp:107
 msgid "The Battle for Wesnoth"
 msgstr "韦诺之战"
@@ -5150,21 +5150,21 @@ msgstr "警告"
 msgid "No campaigns are available.\n"
 msgstr "无可用战役。\n"
 
-#: src/game_controller.cpp:858
+#: src/game_controller.cpp:864
 msgid "Error while starting server: "
 msgstr "启动服务器时发生错误： "
 
-#: src/game_controller.cpp:860 src/playcampaign.cpp:246
+#: src/game_controller.cpp:866 src/playcampaign.cpp:246
 #: src/playcampaign.cpp:498
 msgid "The game could not be loaded: "
 msgstr "无法读取游戏： "
 
-#: src/game_controller.cpp:862 src/playcampaign.cpp:248
+#: src/game_controller.cpp:868 src/playcampaign.cpp:248
 #: src/playcampaign.cpp:501
 msgid "Error while playing the game: "
 msgstr "进行游戏时发生错误："
 
-#: src/game_controller.cpp:880 src/playcampaign.cpp:250
+#: src/game_controller.cpp:886 src/playcampaign.cpp:250
 #: src/playcampaign.cpp:504
 msgid "The game map could not be loaded: "
 msgstr "无法读取游戏地图： "
@@ -5180,23 +5180,23 @@ msgstr "聊天信息过期设置"
 msgid "Turn changed"
 msgstr "回合改变了"
 
-#: src/game_events/action_wml.cpp:759
+#: src/game_events/action_wml.cpp:760
 msgid "Invalid value in the result key for [end_level]"
 msgstr "[end_level]的结果键值无效"
 
-#: src/game_events/pump.cpp:408
+#: src/game_events/pump.cpp:417
 msgid "Error: "
 msgstr "错误："
 
-#: src/game_events/pump.cpp:411
+#: src/game_events/pump.cpp:419
 msgid "Warning: "
 msgstr "警告："
 
-#: src/game_events/pump.cpp:414
+#: src/game_events/pump.cpp:421
 msgid "Debug: "
 msgstr "调试："
 
-#: src/game_events/pump.cpp:417
+#: src/game_events/pump.cpp:423
 msgid "Info: "
 msgstr "信息："
 
@@ -6072,7 +6072,7 @@ msgid "whisper: $sender"
 msgstr "悄悄话：$sender"
 
 #: src/menu_events.cpp:2390 src/menu_events.cpp:2408
-#: src/multiplayer_connect_engine.cpp:1006
+#: src/multiplayer_connect_engine.cpp:1010
 msgid "(empty)"
 msgstr "（空置）"
 
@@ -6254,17 +6254,17 @@ msgstr "ai"
 msgid "prompt^Command:"
 msgstr "命令："
 
-#: src/mouse_events.cpp:852
+#: src/mouse_events.cpp:854
 msgid ""
 "You cannot move your leader away from the keep with some planned recruits or "
 "recalls left."
 msgstr "在有剩余的征募或者召回计划时，您不能将领袖移动到主楼之外。"
 
-#: src/mouse_events.cpp:1039 src/mouse_events.cpp:1057
+#: src/mouse_events.cpp:1041 src/mouse_events.cpp:1059
 msgid "Attack Enemy"
 msgstr "攻击敌人"
 
-#: src/mouse_events.cpp:1058
+#: src/mouse_events.cpp:1060
 msgid "Choose weapon:"
 msgstr "选择武器："
 
@@ -6638,48 +6638,48 @@ msgstr "正在等待玩家加入……"
 msgid "Waiting for players to choose factions..."
 msgstr "正在等待玩家选择阵营"
 
-#: src/multiplayer_connect_engine.cpp:957
+#: src/multiplayer_connect_engine.cpp:961
 msgid "(Vacant slot)"
 msgstr "（空闲槽位）"
 
-#: src/multiplayer_connect_engine.cpp:967
+#: src/multiplayer_connect_engine.cpp:971
 msgid "Anonymous local player"
 msgstr "本地匿名玩家"
 
-#: src/multiplayer_connect_engine.cpp:984
-#: src/multiplayer_connect_engine.cpp:1233
+#: src/multiplayer_connect_engine.cpp:988
+#: src/multiplayer_connect_engine.cpp:1243
 msgid "Computer Player"
 msgstr "电脑玩家"
 
-#: src/multiplayer_connect_engine.cpp:988
+#: src/multiplayer_connect_engine.cpp:992
 msgid "$playername $side"
 msgstr "$playername $side"
 
-#: src/multiplayer_connect_engine.cpp:993
+#: src/multiplayer_connect_engine.cpp:997
 msgid "(Empty slot)"
 msgstr "（空置槽位）"
 
-#: src/multiplayer_connect_engine.cpp:1000
+#: src/multiplayer_connect_engine.cpp:1004
 msgid "(Reserved for $playername)"
 msgstr "（预留给$playername）"
 
-#: src/multiplayer_connect_engine.cpp:1230
+#: src/multiplayer_connect_engine.cpp:1240
 msgid "Network Player"
 msgstr "网络玩家"
 
-#: src/multiplayer_connect_engine.cpp:1232
+#: src/multiplayer_connect_engine.cpp:1242
 msgid "Local Player"
 msgstr "本地玩家"
 
-#: src/multiplayer_connect_engine.cpp:1234
+#: src/multiplayer_connect_engine.cpp:1244
 msgid "Empty"
 msgstr "空位"
 
-#: src/multiplayer_connect_engine.cpp:1237
+#: src/multiplayer_connect_engine.cpp:1247
 msgid "Reserved"
 msgstr "保留"
 
-#: src/multiplayer_connect_engine.cpp:1241
+#: src/multiplayer_connect_engine.cpp:1251
 msgid "--give--"
 msgstr "--给予--"
 
@@ -7042,52 +7042,52 @@ msgstr "无法连接到主机"
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "遇到了移动力消耗小于1的地形。"
 
-#: src/play_controller.cpp:254
+#: src/play_controller.cpp:257
 msgid "time left for current turn"
 msgstr "本回合剩余时间"
 
-#: src/play_controller.cpp:256 src/replay_controller.cpp:146
+#: src/play_controller.cpp:259 src/replay_controller.cpp:146
 msgid "current local time"
 msgstr "当前本地时间"
 
-#: src/play_controller.cpp:1184 src/savegame.cpp:406 src/savegame.cpp:418
+#: src/play_controller.cpp:1187 src/savegame.cpp:406 src/savegame.cpp:418
 #: src/savegame.cpp:1052 src/savegame.cpp:1054
 msgid "Auto-Save"
 msgstr "自动存档"
 
-#: src/play_controller.cpp:1188
+#: src/play_controller.cpp:1191
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Turn "
 msgstr "回到回合"
 
-#: src/play_controller.cpp:1196
+#: src/play_controller.cpp:1199
 #, fuzzy
 #| msgid "Back to turn "
 msgid "Back to Start"
 msgstr "回到回合"
 
-#: src/play_controller.cpp:1466
+#: src/play_controller.cpp:1487
 msgid ""
 "The game is out of sync. It might not make much sense to continue. Do you "
 "want to save your game?"
 msgstr "游戏失去了同步。继续游戏似乎没有多少意义了。您想保存游戏吗？"
 
-#: src/play_controller.cpp:1467 src/replay_controller.cpp:359
+#: src/play_controller.cpp:1488 src/replay_controller.cpp:359
 msgid "Error details:"
 msgstr "错误细节："
 
-#: src/play_controller.cpp:1493
+#: src/play_controller.cpp:1514
 msgid "Accelerated speed enabled!"
 msgstr ""
 
-#: src/play_controller.cpp:1494
+#: src/play_controller.cpp:1515
 #, fuzzy
 #| msgid "(press $hotkey to keep moving)"
 msgid "(press $hk to disable)"
 msgstr "（按$hotkey键继续移动）"
 
-#: src/play_controller.cpp:1498
+#: src/play_controller.cpp:1519
 msgid "Accelerated speed disabled!"
 msgstr ""
 
@@ -7115,7 +7115,7 @@ msgstr "您被击败了！"
 msgid "Error while reading the WML: "
 msgstr "读取WML文件时出错： "
 
-#: src/playcampaign.cpp:543 src/playsingle_controller.cpp:497
+#: src/playcampaign.cpp:543 src/playsingle_controller.cpp:503
 msgid "Game Over"
 msgstr "游戏结束"
 
@@ -7224,17 +7224,17 @@ msgid_plural ""
 msgstr[0] "您将会以$gold金币或者所规定的最小起始资金中较高者来开始下一个场景。"
 msgstr[1] "您将会以$gold金币或者所规定的最小起始资金中较高者来开始下一个场景。"
 
-#: src/playsingle_controller.cpp:498
+#: src/playsingle_controller.cpp:504
 msgid "The game is over."
 msgstr "游戏结束了。"
 
-#: src/playsingle_controller.cpp:579
+#: src/playsingle_controller.cpp:585
 msgid ""
 "A network disconnection has occurred, and the game cannot continue. Do you "
 "want to save the game?"
 msgstr "网络连接已断开，游戏无法继续进行。您想保存游戏吗？"
 
-#: src/playsingle_controller.cpp:776
+#: src/playsingle_controller.cpp:782
 msgid "It is now $name|’s turn"
 msgstr "现在是$name|的回合"
 
@@ -7275,53 +7275,53 @@ msgstr ""
 msgid "Name: "
 msgstr "名称："
 
-#: src/reports.cpp:179
+#: src/reports.cpp:180
 msgid "Type: "
 msgstr "类型："
 
-#: src/reports.cpp:199
+#: src/reports.cpp:200
 msgid "Race: "
 msgstr "种族："
 
-#: src/reports.cpp:249
+#: src/reports.cpp:250
 msgid "Level: "
 msgstr "等级："
 
-#: src/reports.cpp:252
+#: src/reports.cpp:253
 msgid "No advancement"
 msgstr "没有升级"
 
-#: src/reports.cpp:254
+#: src/reports.cpp:255
 msgid "Advances to:"
 msgstr "升级为："
 
-#: src/reports.cpp:294
+#: src/reports.cpp:295
 msgid "Trait: "
 msgstr "特质："
 
-#: src/reports.cpp:317
+#: src/reports.cpp:318
 msgid "invisible: "
 msgstr "隐形： "
 
-#: src/reports.cpp:318
+#: src/reports.cpp:319
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "本单位隐形了。敌人看不见它，也不能攻击它。"
 
-#: src/reports.cpp:321
+#: src/reports.cpp:322
 msgid "slowed: "
 msgstr "减速： "
 
-#: src/reports.cpp:322
+#: src/reports.cpp:323
 msgid ""
 "This unit has been slowed. It will only deal half its normal damage when "
 "attacking and its movement cost is doubled."
 msgstr "本单位被减速了，它只能输出正常情况下一半的伤害，且移动消耗也加倍了。"
 
-#: src/reports.cpp:325
+#: src/reports.cpp:326
 msgid "poisoned: "
 msgstr "中毒： "
 
-#: src/reports.cpp:326
+#: src/reports.cpp:327
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the ‘cures’ "
@@ -7335,169 +7335,169 @@ msgstr ""
 "\n"
 "单位不会仅仅因为中毒而死。毒素不会使单位的生命值降到1以下。"
 
-#: src/reports.cpp:329
+#: src/reports.cpp:330
 msgid "petrified: "
 msgstr "石化："
 
-#: src/reports.cpp:330
+#: src/reports.cpp:331
 msgid "This unit has been petrified. It may not move or attack."
 msgstr "本单位被石化了，它不能移动或者攻击。"
 
-#: src/reports.cpp:361
+#: src/reports.cpp:362
 msgid "Alignment: "
 msgstr "立场："
 
-#: src/reports.cpp:402
+#: src/reports.cpp:403
 msgid "Ability: "
 msgstr "技能："
 
-#: src/reports.cpp:404 src/reports.cpp:830
+#: src/reports.cpp:405 src/reports.cpp:831
 msgid " (inactive)"
 msgstr ""
 
-#: src/reports.cpp:456
+#: src/reports.cpp:457
 msgid "Resistances: "
 msgstr "抗性："
 
-#: src/reports.cpp:458
+#: src/reports.cpp:459
 msgid "(Att / Def)"
 msgstr "（攻击/防御）"
 
-#: src/reports.cpp:484
+#: src/reports.cpp:485
 msgid "Experience Modifier: "
 msgstr "经验值修正： "
 
-#: src/reports.cpp:535
+#: src/reports.cpp:536
 msgid "Terrain: "
 msgstr "地形："
 
-#: src/reports.cpp:552
+#: src/reports.cpp:553
 msgid "maximum^max."
 msgstr "最大："
 
-#: src/reports.cpp:552
+#: src/reports.cpp:553
 msgid "minimum^min."
 msgstr "最小："
 
-#: src/reports.cpp:557
+#: src/reports.cpp:558
 msgid "Defense: "
 msgstr "闪避率："
 
-#: src/reports.cpp:580
+#: src/reports.cpp:581
 #, fuzzy
 #| msgid "Version: "
 msgid "vision: "
 msgstr "版本："
 
-#: src/reports.cpp:608
+#: src/reports.cpp:609
 msgid "Movement Costs:"
 msgstr ""
 
-#: src/reports.cpp:698 src/reports.cpp:915 src/reports.cpp:927
+#: src/reports.cpp:699 src/reports.cpp:916 src/reports.cpp:928
 msgid "Weapon: "
 msgstr "武器："
 
-#: src/reports.cpp:699 src/reports.cpp:916
+#: src/reports.cpp:700 src/reports.cpp:917
 msgid "Damage: "
 msgstr "伤害："
 
-#: src/reports.cpp:703
+#: src/reports.cpp:704
 msgid "Base damage: "
 msgstr "基本伤害："
 
-#: src/reports.cpp:705 src/reports.cpp:739 src/reports.cpp:749
+#: src/reports.cpp:706 src/reports.cpp:740 src/reports.cpp:750
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "With specials: "
 msgstr "武器特性"
 
-#: src/reports.cpp:708
+#: src/reports.cpp:709
 msgid "Time of day: "
 msgstr "时段："
 
-#: src/reports.cpp:712
+#: src/reports.cpp:713
 msgid "Leadership: "
 msgstr "领导技能："
 
-#: src/reports.cpp:716
+#: src/reports.cpp:717
 msgid "Slowed: "
 msgstr "减速： "
 
-#: src/reports.cpp:720
+#: src/reports.cpp:721
 msgid "Attacks: "
 msgstr "进攻方："
 
-#: src/reports.cpp:724
+#: src/reports.cpp:725
 #, fuzzy
 #| msgid "Turn bonus: "
 msgid "Max swarm bonus: "
 msgstr "回合奖励："
 
-#: src/reports.cpp:725 src/reports.cpp:744
+#: src/reports.cpp:726 src/reports.cpp:745
 msgid "Swarm: "
 msgstr "群击："
 
-#: src/reports.cpp:726 src/reports.cpp:737 src/reports.cpp:748
+#: src/reports.cpp:727 src/reports.cpp:738 src/reports.cpp:749
 msgid "Base attacks: "
 msgstr "基本攻击："
 
-#: src/reports.cpp:732
+#: src/reports.cpp:733
 #, fuzzy
 #| msgid "Weapon special: "
 msgid "Specials: "
 msgstr "武器特性"
 
-#: src/reports.cpp:742
+#: src/reports.cpp:743
 msgid "Subject to swarm: "
 msgstr ""
 
-#: src/reports.cpp:761
+#: src/reports.cpp:762
 msgid "Weapon range: "
 msgstr "武器攻击范围："
 
-#: src/reports.cpp:762
+#: src/reports.cpp:763
 msgid "Damage type: "
 msgstr "伤害类型："
 
-#: src/reports.cpp:763
+#: src/reports.cpp:764
 msgid "Damage versus: "
 msgstr "伤害目标："
 
-#: src/reports.cpp:804
+#: src/reports.cpp:805
 msgid "Accuracy:"
 msgstr "精确度："
 
-#: src/reports.cpp:809
+#: src/reports.cpp:810
 msgid "Parry:"
 msgstr "闪避："
 
-#: src/reports.cpp:828
+#: src/reports.cpp:829
 msgid "Weapon special: "
 msgstr "武器特性"
 
-#: src/reports.cpp:899
+#: src/reports.cpp:900
 msgid "None"
 msgstr "无"
 
-#: src/reports.cpp:1133 src/reports.cpp:1183
+#: src/reports.cpp:1134 src/reports.cpp:1184
 #, fuzzy
 #| msgid "Lawful units: "
 msgid "Lawful units: "
 msgstr "守序单位："
 
-#: src/reports.cpp:1135 src/reports.cpp:1185
+#: src/reports.cpp:1136 src/reports.cpp:1186
 msgid "Neutral units: "
 msgstr "中立单位："
 
-#: src/reports.cpp:1136 src/reports.cpp:1186
+#: src/reports.cpp:1137 src/reports.cpp:1187
 msgid "Chaotic units: "
 msgstr "混沌单位："
 
-#: src/reports.cpp:1138 src/reports.cpp:1188
+#: src/reports.cpp:1139 src/reports.cpp:1189
 msgid "Liminal units: "
 msgstr "边缘单位："
 
-#: src/reports.cpp:1503
+#: src/reports.cpp:1504
 msgid "Observers:"
 msgstr "观察者："
 
