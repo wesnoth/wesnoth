@@ -93,10 +93,9 @@ void action_result::execute()
 	init_for_execution();
 	check_before();
 	if (is_success()){
-		do_execute();
 		try {
-			resources::controller->check_victory();
-		} catch (...) {
+			do_execute();
+		} catch (end_level_exception&) {
 			is_ok(); //Silences "unchecked result" warning
 			throw;
 		}
@@ -285,6 +284,7 @@ void attack_result::do_execute()
 			resources::tod_manager->get_time_of_day()));
 		set_scontext_synced sync;
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
+		resources::controller->check_victory();
 	}
 	else
 	{

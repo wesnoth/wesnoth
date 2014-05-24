@@ -935,6 +935,9 @@ void playsingle_controller::play_ai_turn(){
 	try {
 		ai::manager::play_turn(player_number_);
 	} catch (end_turn_exception&) {
+	} catch (end_level_exception&) {
+		turn_data.sync_network();
+		throw;
 	}
 	recorder.end_turn();
 	turn_data.sync_network();
