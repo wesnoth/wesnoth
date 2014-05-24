@@ -76,7 +76,7 @@ inline double round_portable(double d) {
 	return (d >= 0.0) ? std::floor(d + 0.5) : std::ceil(d - 0.5);
 }
 
-struct bad_lexical_cast : std::exception
+struct bad_lexical_cast : public std::exception
 {
 	const char *what() const throw()
 	{
