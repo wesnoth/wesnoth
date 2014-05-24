@@ -806,7 +806,7 @@ void playsingle_controller::play_human_turn() {
 	end_turn_enable(true);
 	while(!end_turn_) {
 		play_slice();
-		check_victory();
+		check_end_level();
 		gui_->draw();
 	}
 }
