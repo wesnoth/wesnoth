@@ -88,7 +88,7 @@ struct bad_lexical_cast : public std::exception
 template<typename To, typename From>
 To lexical_cast(From a)
 {
-	To res;
+	To res = To();
 	std::stringstream str;
 
 	if(str << a && str >> res) {
@@ -101,7 +101,7 @@ To lexical_cast(From a)
 template<typename To, typename From>
 To lexical_cast_default(From a, To def=To())
 {
-	To res;
+	To res = To();
 	std::stringstream str;
 
 	if(str << a && str >> res) {
