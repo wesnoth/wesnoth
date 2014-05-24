@@ -15,9 +15,9 @@ CHANGES
 =======
 
 [section="Victory Conditions"]
-Following developer discussions and discussions with UMC developers who had concerns about changes in 1.12 regarding the frequency with which the engine checks the victory conditions of a scenario, we decided to revamp our solution to this issue. The [tt] "fight_on_without_leader"=yes/no[/tt] attribute of [tt][side][/tt] has been replaced with [tt]"defeat_condition"=always/no_leader_left/no_units_left/never[/tt]. The default value is no_leader_left, preserving backwards compatibility. For gramatical cohesion, the [tt] "remove_from_carryover_on_leaders_loss" [/tt] attribute has been renamed [tt] "remove_from_carryover_on_defeat" [/tt].
+Following developer discussions and discussions with UMC developers who had concerns about changes in 1.12 regarding the frequency with which the engine checks the victory conditions of a scenario, we decided to revamp our solution to this issue. The [tt] "fight_on_without_leader"=yes/no[/tt] attribute of [tt][side][/tt] has been replaced with [tt]"defeat_condition"=always/no_leader_left/no_units_left/never[/tt]. The default value is no_leader_left, preserving backwards compatibility. For gramatical cohesion, the [tt] "remove_from_carryover_on_leaders_loss" [/tt] attribute introduced in 1.11.13 has been renamed [tt] "remove_from_carryover_on_defeat" [/tt].
 
-In 1.11.15 and forward, wesnoth checks for victory / defeat of sides more or less at the end of any "(synced) user action". So, not only at the end of a turn or the beginning of a turn, but also at the end of moveto events and similar. It won't interrupt an attack to end the game, and I it won't check in between two events invoked by the same user action (= recruit/attack/move/menu item click/...). But you should assume it will check more frequently.
+In 1.11.15 and forward, wesnoth checks for victory / defeat of sides more or less at the end of any "(synced) user action". So, not only at the end of a turn or the beginning of a turn, but also at the end of moveto events and similar. It won't interrupt an attack to end the game, and it won't check in between two events invoked by the same user action (= recruit/attack/move/menu item click/...). But you should assume it will check more frequently.
 
 The victory check process is simple: for each nonempty side (controller is not empty) wesnoth will check its defeat condition according to the units currently on the map. Then, if any two non-defeated sides are enemies, the game will proceed. Also, in the case that victory when enemies defeated is false, and there is a not-defeated human-controlled side, the game will proceed. Otherwise, the game will end.
 
@@ -27,7 +27,6 @@ The majority of campaigns will work exactly the same as before, and in many very
 ==========
 KNOWN BUGS
 ==========
-
 [list][*] The mp server has trouble with "Local" player types in campaigns. We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of wesnoth. https://gna.org/bugs/?21965
-[*] Start of scenario saves from multiplayer campaigns are currently bugged. This also affects start of scenario saves from multiplayer scenarios that have transitioned using [endlevel] to other mp scenarios, even if they aren't defined as MP campaigns proper in the new 1.11 mechanism.
+[*] Start of scenario saves from multiplayer campaigns are currently bugged and cannot be loaded. This also affects start of scenario saves from multiplayer scenarios that have transitioned using [endlevel] to other mp scenarios, even if they aren't defined as MP campaigns proper in the new 1.11 mechanism. https://gna.org/bugs/index.php?22068
 [/list]
