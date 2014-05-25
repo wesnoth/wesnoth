@@ -806,7 +806,7 @@ void playsingle_controller::play_human_turn() {
 	end_turn_enable(true);
 	while(!end_turn_) {
 		play_slice();
-		check_victory();
+		check_end_level();
 		gui_->draw();
 	}
 }
@@ -943,6 +943,9 @@ void playsingle_controller::play_ai_turn(){
 	try {
 		ai::manager::play_turn(player_number_);
 	} catch (end_turn_exception&) {
+	} catch (end_level_exception&) {
+		turn_data.sync_network();
+		throw;
 	}
 	recorder.end_turn();
 	turn_data.sync_network();
