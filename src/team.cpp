@@ -94,13 +94,13 @@ team::team_info::team_info() :
 	objectives(),
 	objectives_changed(false),
 	controller(),
+	defeat_condition(team::NO_LEADER),
 	share_maps(false),
 	share_view(false),
 	disallow_observers(false),
 	allow_player(false),
 	chose_random(false),
 	no_leader(true),
-	defeat_condition(team::NO_LEADER),
 	hidden(true),
 	no_turn_confirmation(false),
 	color(),
@@ -184,27 +184,15 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	std::string control = cfg["controller"];
+	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"], team::AI);
 	//by default, persistence of a team is set depending on the controller
-	persistent = true;
-	if (control == "human")
-		controller = HUMAN;
-	else if (control == "network")
-		controller = NETWORK;
-	else if (control == "network_ai")
-		controller = NETWORK_AI;
-	else if (control == "null")
-	{
-		disallow_observers = cfg["disallow_observers"].to_bool(true);
-		controller = EMPTY;
-		persistent = false;
-	}
-	else
-	{
-		controller = AI;
-		persistent = false;
-	}
+	//TODO: Why is network_ai marked persistent?
+	//TODO: Why do we read disallow observers differently when controller is empty?
+	persistent = !(controller == EMPTY || controller == AI);
 
+	if (controller == EMPTY) {
+		disallow_observers = cfg["disallow_observers"].to_bool(true);
+	}
 	//override persistence flag if it is explicitly defined in the config
 	persistent = cfg["persistent"].to_bool(persistent);
 
@@ -218,19 +206,6 @@ void team::team_info::read(const config &cfg)
 
 	LOG_NG << "team_info::team_info(...): team_name: " << team_name
 	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
-}
-
-char const *team::team_info::controller_string() const
-{
-	switch(controller) {
-	case AI: return "ai";
-	case HUMAN: return "human";
-	case NETWORK: return "network";
-	case NETWORK_AI: return "network_ai";
-	case IDLE: return "idle";
-	case EMPTY: return "null";
-	default: assert(false); return NULL;
-	}
 }
 
 void team::team_info::write(config& cfg) const
@@ -258,11 +233,11 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = lexical_cast<std::string>(defeat_condition);
+	cfg["defeat_condition"] = DEFEAT_CONDITION_to_string(defeat_condition);
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-	cfg["controller"] = (controller == IDLE ? "human" : controller_string());
+	cfg["controller"] = (controller == IDLE ? std::string("human") : CONTROLLER_to_string (controller));
 
 	std::stringstream can_recruit_str;
 	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
@@ -486,25 +461,6 @@ void team::set_share_maps( bool share_maps ){
 
 void team::set_share_view( bool share_view ){
 	info_.share_view = share_view;
-}
-
-void team::change_controller(const std::string& controller)
-{
-	team::CONTROLLER cid;
-	if (controller == "human")
-		cid = team::HUMAN;
-	else if (controller == "network")
-		cid = team::NETWORK;
-	else if (controller == "network_ai")
-		cid = team::NETWORK_AI;
-	else if (controller == "null")
-		cid = team::EMPTY;
-	else if (controller == "idle")
-		cid = team::IDLE;
-	else
-		cid = team::AI;
-
-	info_.controller = cid;
 }
 
 void team::change_team(const std::string &name, const t_string &user_name)

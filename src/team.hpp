@@ -33,9 +33,17 @@ namespace wb {
 class team : public savegame::savegame_config
 {
 public:
-	enum CONTROLLER { HUMAN, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
+	//enum CONTROLLER { HUMAN, AI, NETWORK, NETWORK_AI, IDLE, EMPTY };
 	//enum DEFEAT_CONDITION {NO_LEADER, NO_UNITS, NEVER, ALWAYS};
 
+	MAKE_ENUM(CONTROLLER,
+		(HUMAN, 	"human")
+		(AI, 		"ai")
+		(NETWORK, 	"network")
+		(NETWORK_AI, 	"network_ai")
+		(IDLE,		"idle")
+		(EMPTY,		"null")
+	)
 	MAKE_ENUM(DEFEAT_CONDITION,
 		(NO_LEADER, "no_leader_left")
 		(NO_UNITS, "no_units_left")
@@ -106,14 +114,13 @@ private:
 		bool objectives_changed;
 
 		CONTROLLER controller;
-		char const *controller_string() const;
+		DEFEAT_CONDITION defeat_condition;
 
 		bool share_maps, share_view;
 		bool disallow_observers;
 		bool allow_player;
 		bool chose_random;
 		bool no_leader;
-		DEFEAT_CONDITION defeat_condition;
 		bool hidden;
 		bool no_turn_confirmation;  // Can suppress confirmations when ending a turn.
 
@@ -213,7 +220,6 @@ public:
 	}
 
 	CONTROLLER controller() const { return info_.controller; }
-	char const *controller_string() const { return info_.controller_string(); }
 	const std::string& color() const { return info_.color; }
 	void set_color(const std::string& color) { info_.color = color; }
 	bool is_human() const { return info_.controller == HUMAN; }
@@ -231,7 +237,9 @@ public:
 	void make_network_ai() { info_.controller = NETWORK_AI; }
 	void make_ai() { info_.controller = AI; }
 	void make_idle() { info_.controller = IDLE; }
-	void change_controller(const std::string& controller);
+	void change_controller(const std::string& new_controller) {
+		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);	
+	}
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
 
 	const std::string& team_name() const { return info_.team_name; }
@@ -351,6 +359,7 @@ private:
 	boost::shared_ptr<wb::side_actions> planned_actions_;
 };
 
+MAKE_ENUM_STREAM_OPS2(team, CONTROLLER)
 MAKE_ENUM_STREAM_OPS2(team, DEFEAT_CONDITION)
 
 namespace teams_manager {

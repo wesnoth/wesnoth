@@ -455,7 +455,7 @@ config map_context::to_config()
 		side["side"] = side_num;
 		side["hidden"] = t->hidden();
 
-		side["controller"] = t->controller_string();
+		side["controller"] = team::CONTROLLER_to_string (t->controller());
 		side["no_leader"] = t->no_leader();
 
 		side["team_name"] = t->team_name();

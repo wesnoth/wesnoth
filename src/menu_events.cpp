@@ -2795,7 +2795,7 @@ void console_handler::do_controller()
 		command_failed(vgettext("Can't query control of out-of-bounds side: '$side'.",	symbols));
 		return;
 	}
-	print(get_cmd(), menu_handler_.teams_[side_num - 1].controller_string());
+	print(get_cmd(), team::CONTROLLER_to_string (menu_handler_.teams_[side_num - 1].controller()));
 }
 
 void console_handler::do_clear() {

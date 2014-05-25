@@ -1152,7 +1152,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 		{
 			BOOST_FOREACH(const config &side, snapshot.child_range("side"))
 			{
-				if (side["controller"] != "human") {
+				if (side["controller"] != team::CONTROLLER_to_string(team::HUMAN)) {
 					continue;
 				}
 
