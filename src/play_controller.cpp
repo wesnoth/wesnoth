@@ -127,7 +127,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),
-	init_side_done_(true),
+	init_side_done_(level["init_side_done"].to_bool(true)),
 	savenames_(),
 	wml_commands_(),
 	victory_when_enemies_defeated_(true),
@@ -738,6 +738,7 @@ config play_controller::to_config() const
 {
 	config cfg;
 
+	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
 
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
