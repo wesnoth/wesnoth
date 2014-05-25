@@ -163,6 +163,8 @@ Version 1.13.0-dev:
    * Fix bug #21977: ready blocked on scenario transition, when
      allow_new_game=yes
    * Add "MAKE_ENUM" macro to simplify parsing of WML options.
+   * "MAKE_ENUM" macro signals WML parsing errors when the game is run
+     in debug mode, and an illegal value for an attribute is encountered.
 
 Version 1.11.11:
  * Add-ons server:
