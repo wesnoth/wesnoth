@@ -131,7 +131,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = team::string_to_DEFEAT_CONDITION_default(cfg["defeat_condition"], team::NO_LEADER);
+	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"], team::NO_LEADER);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
@@ -258,7 +258,7 @@ void team::team_info::write(config& cfg) const
 	cfg["allow_player"] = allow_player;
 	cfg["chose_random"] = chose_random;
 	cfg["no_leader"] = no_leader;
-	cfg["defeat_condition"] = team::DEFEAT_CONDITION_to_string(defeat_condition);
+	cfg["defeat_condition"] = lexical_cast<std::string>(defeat_condition);
 	cfg["hidden"] = hidden;
 	cfg["suppress_end_turn_confirmation"] = no_turn_confirmation;
 	cfg["scroll_to_leader"] = scroll_to_leader;

@@ -68,13 +68,25 @@ MAKE_ENUM_STREAM_OPS2(bar , another)
  * foo::enumname_to_string(foo::enumname);                      //no throw
  * 
  * The stream ops define
- * std::ostream & operator<< (std::ostream &, foo::enumname)
- * std::istream & operator>> (std::istream &, foo::enumname &)
+ * std::ostream & operator<< (std::ostream &, foo::enumname)    //no throw. asserts false if enum has an illegal value.
+ * std::istream & operator>> (std::istream &, foo::enumname &)  //throws twml_exception including line number and arguments, IF game_config::debug is true.
+ * 								//doesn't throw except in that case, and correctly sets istream state to failing always.
+ *								//this is generally a recoverable exception that only shows a temporary dialog box,
+ *								//and is caught at many places in the gui code. you may safely catch it and ignore it,
+ *								//and then proceeding, or use a wrapper like lexical_cast_default which will assign the
+ *								//default value and proceed after the dialog passes.
  *
  * In case of a bad string -> enum conversion from istream output, 
  * the istream will have its fail bit set.
  * This means that lexical_casts will throw a bad_lexical_cast,
- * in the similar scenario.
+ * in the similar scenario. (but, that exception won't have any
+ * details about the error.)
+ *
+ * It is recommended to use this type either the built-in wesnoth
+ * lexical_cast or lexical_cast default. 
+ *
+ * HOWEVER, if you DON'T want twml_exceptions to be thrown in any
+ * circumstance, then use the string_to_enumname functions instead.
  *
  * To get lexical_cast, you must separately include util.hpp
  *
@@ -87,7 +99,9 @@ MAKE_ENUM_STREAM_OPS2(bar , another)
 #ifndef MAKE_ENUM_HPP
 #define MAKE_ENUM_HPP
 
+#include "game_config.hpp"
 #include "global.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/preprocessor/cat.hpp>
 #include <boost/preprocessor/seq/for_each.hpp>
@@ -189,6 +203,9 @@ inline std::istream& operator>> (std::istream & is, NAME & val) \
 		val = CAT2(string_to_, NAME) ( temp ); \
 	} catch (bad_enum_cast & e) { \
 		is.setstate(std::ios::failbit); \
+		if (game_config::debug) { \
+			FAIL( e.what() ); \
+		} \
 	} \
 	return is; \
 } \
@@ -210,6 +227,9 @@ inline std::istream& operator>> (std::istream & is, NAMESPACE::NAME & val) \
 		val = CAT2(NAMESPACE::string_to_,NAME) ( temp ); \
 	} catch (bad_enum_cast & e) {\
 		is.setstate(std::ios::failbit); \
+		if (game_config::debug) { \
+			FAIL( e.what() ); \
+		} \
 	} \
 	return is; \
 } \

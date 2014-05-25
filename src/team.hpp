@@ -277,7 +277,7 @@ public:
 	DEFEAT_CONDITION defeat_condition() const { return info_.defeat_condition; }
 	void set_defeat_condition(DEFEAT_CONDITION value) { info_.defeat_condition = value; }
 	///sets the defeat condition if @param value is a valid defeat condition, otherwise nothing happes.
-	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition = string_to_DEFEAT_CONDITION_default(value, info_.defeat_condition); }
+	void set_defeat_condition_string(const std::string& value) { info_.defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(value, info_.defeat_condition); }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
 	void set_hidden(bool value) { info_.hidden=value; }
