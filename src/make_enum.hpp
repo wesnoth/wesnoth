@@ -203,7 +203,7 @@ inline std::istream& operator>> (std::istream & is, NAME & val) \
 		val = CAT2(string_to_, NAME) ( temp ); \
 	} catch (bad_enum_cast & e) { \
 		is.setstate(std::ios::failbit); \
-		if (game_config::debug) { \
+		if (!temp.empty() && game_config::debug) { \
 			FAIL( e.what() ); \
 		} \
 	} \
@@ -227,7 +227,7 @@ inline std::istream& operator>> (std::istream & is, NAMESPACE::NAME & val) \
 		val = CAT2(NAMESPACE::string_to_,NAME) ( temp ); \
 	} catch (bad_enum_cast & e) {\
 		is.setstate(std::ios::failbit); \
-		if (game_config::debug) { \
+		if (!temp.empty() && game_config::debug) { \
 			FAIL( e.what() ); \
 		} \
 	} \
