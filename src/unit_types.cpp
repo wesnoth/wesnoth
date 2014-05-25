@@ -22,7 +22,7 @@
 #include "unit_types.hpp"
 
 #include "game_config.hpp"
-#include "gettext.hpp"
+//#include "gettext.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
 #include "portrait.hpp"
@@ -486,21 +486,7 @@ void unit_type::build_full(const movement_type_map &mv_types,
 			gender_types_[i]->build_full(mv_types, races, traits);
 	}
 
-	const std::string& align = cfg_["alignment"];
-	if(align == "lawful")
-		alignment_ = LAWFUL;
-	else if(align == "chaotic")
-		alignment_ = CHAOTIC;
-	else if(align == "neutral")
-		alignment_ = NEUTRAL;
-	else if(align == "liminal")
-		alignment_ = LIMINAL;
-	else {
-		if ( !align.empty() ) {
-			ERR_CF << "Invalid alignment found for " << log_id() << ": '" << align << "'" << std::endl;
-		}
-		alignment_ = NEUTRAL;
-	}
+	alignment_ = lexical_cast_default<unit_type::ALIGNMENT>(cfg_["alignment"], unit_type::NEUTRAL);
 
 	if ( race_ != &unit_race::null_race )
 	{
@@ -835,7 +821,7 @@ int unit_type::experience_needed(bool with_acceleration) const
 	}
 	return experience_needed_;
 }
-
+/*
 const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_race::GENDER gender)
 {
 	static const char* aligns[] = { N_("lawful"), N_("neutral"), N_("chaotic"), N_("liminal") };
@@ -843,13 +829,7 @@ const char* unit_type::alignment_description(unit_type::ALIGNMENT align, unit_ra
 	const char** tlist = (gender == unit_race::MALE ? aligns : aligns_female);
 
 	return (sgettext(tlist[align]));
-}
-
-const char* unit_type::alignment_id(unit_type::ALIGNMENT align)
-{
-	static const char* aligns[] = { "lawful", "neutral", "chaotic", "liminal" };
-	return (aligns[align]);
-}
+}*/
 
 bool unit_type::has_ability_by_id(const std::string& ability) const
 {

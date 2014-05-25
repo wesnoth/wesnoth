@@ -14,12 +14,18 @@
 #ifndef UNIT_TYPES_H_INCLUDED
 #define UNIT_TYPES_H_INCLUDED
 
+#include "gettext.hpp"
+#include "make_enum.hpp"
 #include "map_location.hpp"
 #include "movetype.hpp"
 #include "race.hpp"
 #include "util.hpp"
 
 #include <boost/noncopyable.hpp>
+#include <map>
+#include <set>
+#include <string>
+#include <vector>
 
 struct tportrait;
 class unit_ability_list;
@@ -222,11 +228,32 @@ public:
 		int old_value_;
 	};
 
-	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC, LIMINAL };
+	//enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC, LIMINAL };
+	MAKE_ENUM (ALIGNMENT,
+		(LAWFUL, N_("lawful"))
+		(NEUTRAL, N_("neutral"))
+		(CHAOTIC, N_("chaotic"))
+		(LIMINAL, N_("liminal"))
+	)
+	MAKE_ENUM (ALIGNMENT_FEMALE_VARIATION,
+		(FEMALE_LAWFUL, N_("female^lawful"))
+		(FEMALE_NEUTRAL, N_("female^neutral"))
+		(FEMALE_CHAOTIC, N_("female^chaotic"))
+		(FEMALE_LIMINAL, N_("female^liminal"))
+	)
 
 	ALIGNMENT alignment() const { return alignment_; }
-	static const char* alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);
-	static const char* alignment_id(ALIGNMENT align);
+	inline static const char* alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE)
+	{
+		std::string str = std::string();
+		if (gender == unit_race::FEMALE) {
+			ALIGNMENT_FEMALE_VARIATION fem = static_cast<ALIGNMENT_FEMALE_VARIATION> (align);
+			str = lexical_cast<std::string>(fem);
+		} else {
+			str = lexical_cast<std::string>(align);
+		}
+		return sgettext(str.c_str());
+	}
 
 	fixed_t alpha() const { return alpha_; }
 
@@ -356,6 +383,9 @@ private:
 	/** List with the portraits available for the unit. */
 	std::vector<tportrait> portraits_;
 };
+
+MAKE_ENUM_STREAM_OPS2(unit_type, ALIGNMENT)
+MAKE_ENUM_STREAM_OPS2(unit_type, ALIGNMENT_FEMALE_VARIATION)
 
 class unit_type_data
 	: private boost::noncopyable

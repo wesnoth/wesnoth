@@ -280,7 +280,7 @@ variant unit_type_callable::get_value(const std::string& key) const
 	} else if(key == "type") {
 		return variant(u_.type_name());
 	} else if(key == "alignment") {
-		return variant(u_.alignment_id(u_.alignment()));
+		return variant(lexical_cast<std::string>(u_.alignment()));
 	} else if(key == "abilities") {
 		std::vector<std::string> abilities = u_.get_ability_list();
 		std::vector<variant> res;
