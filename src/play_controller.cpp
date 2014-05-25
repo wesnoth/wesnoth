@@ -730,6 +730,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	}
 	loading_game_ = false;
 
+	check_victory();
 	resources::whiteboard->on_init_side();
 }
 
