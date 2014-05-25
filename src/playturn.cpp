@@ -178,7 +178,6 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const int side = lexical_cast<int>(change["side"]);
 		const size_t index = static_cast<size_t>(side-1);
 
-		const std::string &controller = change["controller"];
 		const std::string &player = change["player"];
 
 		if(index < resources::teams->size()) {
@@ -190,29 +189,23 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			if (!player.empty() && leader.valid())
 				leader->rename(player);
 
-			if (controller == "human" && !tm.is_human()) {
-				tm.make_human();
-				resources::controller->on_not_observer();
-			} else if (controller == "network" && !tm.is_network_human()) {
-				tm.make_network();
-			} else if (controller == "network_ai" && !tm.is_network_ai()) {
-				tm.make_network_ai();
-			} else if (controller == "ai" && !tm.is_ai()) {
-				tm.make_ai();
-				resources::controller->on_not_observer();
-			} else if (controller == "idle" && !tm.is_idle()) {
-				tm.make_idle();
-			}
-			else
-			{
+			try {
+				bool was_local = tm.is_local();
+				const team::CONTROLLER old_controller = tm.controller();
+				const team::CONTROLLER new_controller = lexical_cast<team::CONTROLLER> (change["controller"]);
+				tm.change_controller(new_controller);
+				if (old_controller != new_controller && !was_local && tm.is_local()) {
+					resources::controller->on_not_observer();
+				}
+			} catch (bad_lexical_cast &) {
 				restart = false;
-			}
+			}		
 
 			if (is_observer() || (*resources::teams)[resources::screen->playing_team()].is_human()) {
 				resources::screen->set_team(resources::screen->playing_team());
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
-			} else if (controller == "human") {
+			} else if (tm.is_human()) {
 				resources::screen->set_team(index);
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
