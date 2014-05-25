@@ -165,6 +165,8 @@ Version 1.13.0-dev:
    * Add "MAKE_ENUM" macro to simplify parsing of WML options.
    * "MAKE_ENUM" macro signals WML parsing errors when the game is run
      in debug mode, and an illegal value for an attribute is encountered.
+   * Fix bug #21397 Reloading may cause a side's turn is not initalized.
+     This bug affected only networked mp, at least since version 1.8.
 
 Version 1.11.11:
  * Add-ons server:
