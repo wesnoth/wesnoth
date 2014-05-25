@@ -670,6 +670,8 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
+	maybe_do_init_side(side_number, save);
+
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
