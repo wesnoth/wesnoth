@@ -989,16 +989,6 @@ bool manager::execute_all_actions()
 	return true;
 }
 
-void manager::continue_execute_all()
-{
-	if (executing_all_actions_ ) {
-		events::commands_disabled--;
-		if (execute_all_actions() && preparing_to_end_turn_) {
-			resources::controller->force_end_turn();
-		}
-	}
-}
-
 void manager::contextual_delete()
 {
 	validate_viewer_actions();
