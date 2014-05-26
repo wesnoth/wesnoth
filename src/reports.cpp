@@ -347,8 +347,8 @@ static config unit_alignment(const unit* u)
 {
 	if (!u) return report();
 	std::ostringstream str, tooltip;
-	std::string align = unit_type::alignment_description(u->alignment(), u->gender());
-	std::string align_id = lexical_cast<std::string>(u->alignment());
+	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
+	const std::string align_id = lexical_cast<std::string>(u->alignment());
 	int cm = combat_modifier(resources::screen->displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 
