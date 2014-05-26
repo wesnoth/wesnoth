@@ -14,19 +14,18 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
-[section="Victory Conditions"]
-Following developer discussions and discussions with UMC developers who had concerns about changes in 1.12 regarding the frequency with which the engine checks the victory conditions of a scenario, we decided to revamp our solution to this issue. The [tt] "fight_on_without_leader"=yes/no[/tt] attribute of [tt][side][/tt] has been replaced with [tt]"defeat_condition"=always/no_leader_left/no_units_left/never[/tt]. The default value is no_leader_left, preserving backwards compatibility. For gramatical cohesion, the [tt] "remove_from_carryover_on_leaders_loss" [/tt] attribute introduced in 1.11.13 has been renamed [tt] "remove_from_carryover_on_defeat" [/tt].
+[section="Example section 1"]
+Example contents 1.
+[/section]
 
-In 1.11.15 and forward, wesnoth checks for victory / defeat of sides more or less at the end of any "(synced) user action". So, not only at the end of a turn or the beginning of a turn, but also at the end of moveto events and similar. It won't interrupt an attack to end the game, and it won't check in between two events invoked by the same user action (= recruit/attack/move/menu item click/...). But you should assume it will check more frequently.
-
-The victory check process is simple: for each nonempty side (controller is not empty) wesnoth will check its defeat condition according to the units currently on the map. Then, if any two non-defeated sides are enemies, the game will proceed. Also, in the case that victory when enemies defeated is false, and there is a not-defeated human-controlled side, the game will proceed. Otherwise, the game will end.
-
-The majority of campaigns will work exactly the same as before, and in many very simple cases the engine now works better than before. However, if some scene in your campaign doens't work properly anymore, because you were removing all the units, or expecting that they wouldn't be removed from carryover when their side was defeated, we expect that you now have all the tools you need to make it work, by settings sides to be "never defeated" before removing all their units, or toggling "remove_from_carry_over_on_defeat", etc.
+[section="Example section 2"]
+Example contents 2.
 [/section]
 
 ==========
 KNOWN BUGS
 ==========
-[list][*] The mp server has trouble with "Local" player types in campaigns. We have decided to postpone dealing with this. In the meantime, you might try assigning such sides to the host, or running multiple instances of wesnoth. https://gna.org/bugs/?21965
-[*] Start of scenario saves from multiplayer campaigns are currently bugged and cannot be loaded. This also affects start of scenario saves from multiplayer scenarios that have transitioned using [endlevel] to other mp scenarios, even if they aren't defined as MP campaigns proper in the new 1.11 mechanism. https://gna.org/bugs/index.php?22068
+
+[list][*]Example issue 1 (bug [bug]12345[/bug]).
+[*]Example issue 2 (bug [bug]98765[/bug]).
 [/list]
