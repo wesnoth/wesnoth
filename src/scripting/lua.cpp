@@ -1539,8 +1539,8 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("mp_debug", game_config::mp_debug);
 
 	const game_state & game_state_ = *resources::state_of_game; 
-	return_string_attrib("campaign_type", game_state_.classification().campaign_type);
-	if(game_state_.classification().campaign_type=="multiplayer") {
+	return_string_attrib("campaign_type", lexical_cast<std::string>(game_state_.classification().campaign_type));
+	if(game_state_.classification().campaign_type==game_classification::MULTIPLAYER) {
 		return_cfgref_attrib("mp_settings", game_state_.mp_settings().to_config());
 		return_cfgref_attrib("era", resources::config_manager->game_config().find_child("era","id",game_state_.mp_settings().mp_era));
 		//^ finds the era with name matching mp_era, and creates a lua reference from the config of that era.

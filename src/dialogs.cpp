@@ -803,36 +803,47 @@ void save_preview_pane::draw_contents()
 	const std::string& campaign_type = summary["campaign_type"];
 	if (summary["corrupt"].to_bool()) {
 		str << "\n" << _("#(Invalid)");
-	} else if (!campaign_type.empty()) {
+	} else {
 		str << "\n";
 
-		if(campaign_type == "scenario") {
-			const std::string campaign_id = summary["campaign"];
-			const config *campaign = NULL;
-			if (!campaign_id.empty()) {
-				if (const config &c = game_config_->find_child("campaign", "id", campaign_id))
-					campaign = &c;
-			}
-			utils::string_map symbols;
-			if (campaign != NULL) {
-				symbols["campaign_name"] = (*campaign)["name"];
-			} else {
-				// Fallback to nontranslatable campaign id.
-				symbols["campaign_name"] = "(" + campaign_id + ")";
-			}
-			str << vgettext("Campaign: $campaign_name", symbols);
+		try {
+			game_classification::CAMPAIGN_TYPE ct = lexical_cast<game_classification::CAMPAIGN_TYPE> (campaign_type);
 
-			// Display internal id for debug purposes if we didn't above
-			if (game_config::debug && (campaign != NULL)) {
-				str << '\n' << "(" << campaign_id << ")";
-			}
-		} else if(campaign_type == "multiplayer") {
-			str << _("Multiplayer");
-		} else if(campaign_type == "tutorial") {
-			str << _("Tutorial");
-		} else if(campaign_type == "test") {
-			str << _("Test scenario");
-		} else {
+			switch (ct) {
+				case game_classification::SCENARIO:
+				{
+					const std::string campaign_id = summary["campaign"];
+					const config *campaign = NULL;
+					if (!campaign_id.empty()) {
+						if (const config &c = game_config_->find_child("campaign", "id", campaign_id))
+						campaign = &c;
+					}
+					utils::string_map symbols;
+					if (campaign != NULL) {
+						symbols["campaign_name"] = (*campaign)["name"];
+					} else {
+						// Fallback to nontranslatable campaign id.
+						symbols["campaign_name"] = "(" + campaign_id + ")";
+					}
+					str << vgettext("Campaign: $campaign_name", symbols);
+
+					// Display internal id for debug purposes if we didn't above
+					if (game_config::debug && (campaign != NULL)) {
+						str << '\n' << "(" << campaign_id << ")";
+					}
+					break;
+				}
+				case game_classification::MULTIPLAYER:
+					str << _("Multiplayer");
+					break;
+				case game_classification::TUTORIAL:
+					str << _("Tutorial");
+					break;
+				case game_classification::TEST:
+					str << _("Test scenario");
+					break;
+			}			
+		} catch (bad_lexical_cast &) {
 			str << campaign_type;
 		}
 

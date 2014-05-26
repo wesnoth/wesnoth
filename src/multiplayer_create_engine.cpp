@@ -350,7 +350,7 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 
 	// Restore game config for multiplayer.
 	state_ = game_state();
-	state_.classification().campaign_type = "multiplayer";
+	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
 
@@ -432,7 +432,8 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		load_game_config_for_game(state_.classification());
 
 	current_level().set_data(
-		resources::config_manager->game_config().find_child("multiplayer",
+		resources::config_manager->game_config().find_child(
+		lexical_cast<std::string> (game_classification::MULTIPLAYER),
 		"id", current_level().data()["first_scenario"]));
 
 	parameters_.mp_campaign = current_level().id();
@@ -849,7 +850,8 @@ void create_engine::init_all_levels()
 
 	// Stand-alone scenarios.
 	BOOST_FOREACH(const config &data,
-		resources::config_manager->game_config().child_range("multiplayer"))
+		resources::config_manager->game_config().child_range(
+		lexical_cast<std::string> (game_classification::MULTIPLAYER)))
 	{
 		if (!data["allow_new_game"].to_bool(true))
 			continue;

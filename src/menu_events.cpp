@@ -255,7 +255,7 @@ void menu_handler::status_table(int selected)
 				leader_name = "Unknown";
 			}
 
-			if (gamestate_.classification().campaign_type == "multiplayer")
+			if (gamestate_.classification().campaign_type == game_classification::MULTIPLAYER)
 				leader_name = teams_[n].current_player();
 
 		} else {

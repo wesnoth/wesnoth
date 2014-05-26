@@ -830,7 +830,7 @@ game_classification::game_classification(const config& cfg):
 	label(cfg["label"]),
 	parent(cfg["parent"]),
 	version(cfg["version"]),
-	campaign_type(cfg["campaign_type"].empty() ? "scenario" : cfg["campaign_type"].str()),
+	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"], game_classification::SCENARIO)),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	campaign(cfg["campaign"]),
@@ -869,7 +869,7 @@ config game_classification::to_config() const
 	cfg["label"] = label;
 	cfg["parent"] = parent;
 	cfg["version"] = game_config::version;
-	cfg["campaign_type"] = campaign_type;
+	cfg["campaign_type"] = lexical_cast<std::string> (campaign_type);
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["campaign"] = campaign;
@@ -1068,7 +1068,7 @@ void game_state::write_snapshot(config& cfg, game_display* gui) const
 	cfg["completion"] = classification_.completion;
 
 	cfg["campaign"] = classification_.campaign;
-	cfg["campaign_type"] = classification_.campaign_type;
+	cfg["campaign_type"] = lexical_cast<std::string> (classification_.campaign_type);
 
 	cfg["campaign_define"] = classification_.campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
@@ -1217,7 +1217,8 @@ game_state& game_state::operator=(const game_state& state)
 void game_state::write_config(config_writer& out) const
 {
 	out.write(classification_.to_config());
-	if (classification_.campaign_type == "multiplayer")
-		out.write_child("multiplayer", mp_settings_.to_config());
+	if (classification_.campaign_type == game_classification::MULTIPLAYER) {
+		out.write_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), mp_settings_.to_config());
+	}
 }
 

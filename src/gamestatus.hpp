@@ -20,6 +20,7 @@
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/wmi_container.hpp"
+#include "make_enum.hpp"
 #include "map_location.hpp"
 #include "mp_game_settings.hpp"
 #include "simple_rng.hpp"
@@ -237,7 +238,13 @@ public:
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
 	std::string parent;                              /**< Parent of the game (for save-threading purposes). */
 	std::string version;                             /**< Version game was created with. */
-	std::string campaign_type;                       /**< Type of the game - campaign, multiplayer etc. */
+	MAKE_ENUM (CAMPAIGN_TYPE,			 /**< Type of the game - campaign, multiplayer etc. */
+		(SCENARIO, 	"scenario")
+		(MULTIPLAYER, 	"multiplayer")
+		(TEST,		"test")
+		(TUTORIAL,	"tutorial")
+	)
+	CAMPAIGN_TYPE campaign_type;
 	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
 	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
 
@@ -253,6 +260,7 @@ public:
 	std::string difficulty; /**< The difficulty level the game is being played on. */
 	std::string random_mode; 
 };
+MAKE_ENUM_STREAM_OPS2(game_classification, CAMPAIGN_TYPE)
 
 class game_state
 {

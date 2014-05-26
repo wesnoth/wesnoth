@@ -201,7 +201,7 @@ wait::~wait()
 {
 	if (get_result() == QUIT) {
 		state_ = game_state();
-		state_.classification().campaign_type = "multiplayer";
+		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 		resources::config_manager->
 			load_game_config_for_game(state_.classification());
@@ -227,14 +227,14 @@ void wait::join_game(bool observe)
 
 	if (first_scenario_) {
 		state_ = game_state();
-		state_.classification().campaign_type = "multiplayer";
+		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 		const config* campaign = &resources::config_manager->
 			game_config().find_child("campaign", "id",
-				level_.child("multiplayer")["mp_campaign"]);
+				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["mp_campaign"]);
 		if (*campaign) {
 			state_.classification().difficulty =
-				level_.child("multiplayer")["difficulty_define"].str();
+				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["difficulty_define"].str();
 			state_.classification().campaign_define =
 				(*campaign)["define"].str();
 			state_.classification().campaign_xtra_defines =

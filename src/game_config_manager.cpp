@@ -143,7 +143,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		// become [multiplayer] tags and campaign's id should be added to them
 		// to allow to recognize which scenarios belongs to a loaded campaign.
 		if (classification != NULL) {
-			if (classification->campaign_type == "multiplayer" &&
+			if (classification->campaign_type == game_classification::MULTIPLAYER &&
 				!classification->campaign_define.empty()) {
 
 				const config& campaign = game_config().find_child("campaign",
@@ -161,7 +161,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 				BOOST_FOREACH(config& cfg, scenarios) {
 					cfg["campaign_id"] = campaign_id;
 					cfg["require_scenario"] = require_campaign;
-					game_config_.add_child("multiplayer", cfg);
+					game_config_.add_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), cfg);
 				}
 			}
 		}
@@ -374,7 +374,7 @@ void game_config_manager::load_game_config_for_game(
 	game_config::scoped_preproc_define campaign(classification.campaign_define,
 		!classification.campaign_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
-		classification.campaign_type == "multiplayer");
+		classification.campaign_type == game_classification::MULTIPLAYER);
 
 	typedef boost::shared_ptr<game_config::scoped_preproc_define> define;
 	std::deque<define> extra_defines;

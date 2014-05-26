@@ -75,7 +75,7 @@ struct mp_connect_fixture {
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
 		state.reset(new game_state());
-		state->classification().campaign_type = "multiplayer";
+		state->classification().campaign_type = game_classification::MULTIPLAYER;
 		config_manager->load_game_config_for_game(state->classification());
 
 		params.reset(new mp_game_settings());
@@ -85,7 +85,7 @@ struct mp_connect_fixture {
 		params->saved_game = false;
 		params->num_turns = params->scenario_data["turns"];
 		params->scenario_data = config_manager->
-			game_config().find_child("multiplayer", "id", params->name);
+			game_config().find_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), "id", params->name);
 	}
 	~mp_connect_fixture()
 	{

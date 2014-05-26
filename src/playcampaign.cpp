@@ -131,7 +131,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 	}
 
 	if (persistent_teams > 0 && (has_next_scenario ||
-			gamestate.classification().campaign_type == "test"))
+			gamestate.classification().campaign_type == game_classification::TEST))
 	{
 		gamemap map = playcontroller.get_map_const();
 		int finishing_bonus_per_turn =
@@ -209,16 +209,14 @@ static void generate_map(config const*& scenario)
 LEVEL_RESULT play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video, bool is_unit_test)
 {
-	std::string type = gamestate.classification().campaign_type;
-	if(type.empty())
-		type = "scenario";
+	const std::string campaign_type_str = lexical_cast<std::string> (gamestate.classification().campaign_type);
 
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
 	if (gamestate.replay_start().empty()){
 		// Backwards compatibility code for 1.2 and 1.2.1
-		const config &scenario = game_config.find_child(type,"id",gamestate.carryover_sides_start["next_scenario"]);
+		const config &scenario = game_config.find_child(campaign_type_str,"id",gamestate.carryover_sides_start["next_scenario"]);
 		assert(scenario);
 		gamestate.replay_start() = scenario;
 	}
@@ -402,9 +400,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay, 
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
-	std::string type = gamestate.classification().campaign_type;
-	if(type.empty())
-		type = "scenario";
+	const std::string campaign_type_str = lexical_cast_default<std::string> (gamestate.classification().campaign_type);
 
 	config const* scenario = NULL;
 
@@ -434,7 +430,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		} else {
 			//reload of the scenario, as starting_pos contains carryover information only
 			LOG_G << "loading scenario: '" << sides.next_scenario() << "'\n";
-			scenario = &game_config.find_child(type, "id", sides.next_scenario());
+			scenario = &game_config.find_child(campaign_type_str, "id", sides.next_scenario());
 
 			if(!*scenario){
 				scenario = NULL;
@@ -606,7 +602,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			gamestate.carryover_sides_start = sides.to_config();
 		} else {
 			// Retrieve next scenario data.
-			scenario = &game_config.find_child(type, "id",
+			scenario = &game_config.find_child(campaign_type_str, "id",
 				gamestate.carryover_sides_start["next_scenario"]);
 			if (!*scenario) {
 				scenario = NULL;
@@ -724,9 +720,10 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		return QUIT;
 	}
 
-	if (gamestate.classification().campaign_type == "scenario"){
-		if (preferences::delete_saves())
+	if (gamestate.classification().campaign_type == game_classification::SCENARIO){
+		if (preferences::delete_saves()) {
 			savegame::clean_saves(gamestate.classification().label);
+		}
 	}
 	return VICTORY;
 }

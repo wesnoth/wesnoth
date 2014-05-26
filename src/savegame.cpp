@@ -579,7 +579,7 @@ void loadgame::load_game(
 	}
 
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
-	gamestate_.classification().campaign_type = load_config_["campaign_type"].str();
+	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"], game_classification::SCENARIO);
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
 	gamestate_.classification().version = load_config_["version"].str();
 	if (config & carryover_sides_start = load_config_.child("carryover_sides_start")) {
@@ -692,7 +692,7 @@ void loadgame::load_multiplayer_game()
 		throw load_game_cancelled_exception();
 	}
 
-	if(gamestate_.classification().campaign_type != "multiplayer") {
+	if(gamestate_.classification().campaign_type != game_classification::MULTIPLAYER) {
 		gui2::show_transient_error_message(gui_.video(), _("This is not a multiplayer save."));
 		throw load_game_cancelled_exception();
 	}

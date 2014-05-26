@@ -84,7 +84,7 @@ replay_controller::replay_controller(const config& level,
 	current_turn_(1),
 	is_playing_(false),
 	show_everything_(false),
-	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
+	show_team_(state_of_game.classification().campaign_type == game_classification::MULTIPLAYER ? 0 : 1)
 {
 	tod_manager_start_ = tod_manager_;
 

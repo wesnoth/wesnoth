@@ -202,8 +202,8 @@ void level_to_gamestate(config& level, game_state& state)
 	// all needed information here already).
 	state.replay_start() = level.child("replay_start");
 
-	level["campaign_type"] = "multiplayer";
-	state.classification().campaign_type = "multiplayer";
+	level["campaign_type"] = lexical_cast<std::string> (game_classification::MULTIPLAYER);
+	state.classification().campaign_type = game_classification::MULTIPLAYER;
 	state.classification().completion = level["completion"].str();
 	state.classification().version = level["version"].str();
 

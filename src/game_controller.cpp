@@ -425,7 +425,7 @@ bool game_controller::play_test()
 
 	first_time = false;
 
-	state_.classification().campaign_type = "test";
+	state_.classification().campaign_type = game_classification::TEST;
 	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
 
@@ -454,7 +454,7 @@ int game_controller::unit_test()
 
 	first_time_unit = false;
 
-	state_.classification().campaign_type = "test";
+	state_.classification().campaign_type = game_classification::TEST;
 	state_.carryover_sides_start["next_scenario"] = test_scenario_;
 	state_.classification().campaign_define = "TEST";
 
@@ -615,7 +615,7 @@ bool game_controller::load_game()
 		}
 	}
 
-	if(state_.classification().campaign_type == "multiplayer") {
+	if(state_.classification().campaign_type == game_classification::MULTIPLAYER) {
 		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
 		{
 			if (side["controller"] == "network")
@@ -644,7 +644,7 @@ bool game_controller::load_game()
 void game_controller::set_tutorial()
 {
 	state_ = game_state();
-	state_.classification().campaign_type = "tutorial";
+	state_.classification().campaign_type = game_classification::TUTORIAL;
 	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
 }
@@ -659,7 +659,7 @@ void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
 bool game_controller::new_campaign()
 {
 	state_ = game_state();
-	state_.classification().campaign_type = "scenario";
+	state_.classification().campaign_type = game_classification::SCENARIO;
 
 	std::vector<config> campaigns;
 	BOOST_FOREACH(const config& campaign,
@@ -882,7 +882,7 @@ bool game_controller::play_multiplayer()
 	int res;
 
 	state_ = game_state();
-	state_.classification().campaign_type = "multiplayer";
+	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 	//Print Gui only if the user hasn't specified any server
 	if( multiplayer_server_.empty() ){
@@ -1003,7 +1003,7 @@ bool game_controller::play_multiplayer_commandline()
 
 	// These are all the relevant lines taken literally from play_multiplayer() above
 	state_ = game_state();
-	state_.classification().campaign_type = "multiplayer";
+	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
@@ -1063,7 +1063,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 		    resources::config_manager->game_config());
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
-		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
+		if(result == VICTORY && state_.classification().campaign_type != game_classification::MULTIPLAYER) {
 			preferences::add_completed_campaign(state_.classification().campaign);
 			the_end(disp(), state_.classification().end_text, state_.classification().end_text_duration);
 			if(state_.classification().end_credits) {
