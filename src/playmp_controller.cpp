@@ -175,8 +175,7 @@ void playmp_controller::play_human_turn(){
 		end_turn_enable(true);
 	}
 	while(!end_turn_) {
-
-		try {
+		turn_info_send send_safe(*turn_data_);
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
@@ -217,11 +216,7 @@ void playmp_controller::play_human_turn(){
 
 			play_slice();
 			check_end_level();
-		} catch(const end_level_exception&) {
-			turn_data_->send_data();
-			throw;
-		}
-
+		
 		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
 			SDL_Delay(1);
 			const int ticks = SDL_GetTicks();
@@ -246,15 +241,12 @@ void playmp_controller::play_human_turn(){
 					// Current solution end remaining turns automatically
 					current_team().set_countdown_time(10);
 				}
-				turn_data_->send_data();
-
+				
 				throw end_turn_exception();
 			}
 		}
 
 		gui_->draw();
-
-		turn_data_->send_data();
 	}
 }
 
@@ -266,31 +258,25 @@ void playmp_controller::play_idle_loop()
 
 	while (!end_turn_)
 	{
-		try {
-			config cfg;
-			if(network_reader_.read(cfg)) {
-				turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
-				
-				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
-				{
-					throw end_turn_exception(gui_->playing_side());
-				}
+		turn_info_send send_safe(*turn_data_);
+		config cfg;
+		if(network_reader_.read(cfg)) {
+			turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
+			
+			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
+			{
+				throw end_turn_exception(gui_->playing_side());
 			}
-
-			play_slice();
-			check_end_level();
-		} catch(const end_level_exception&) {
-			turn_data_->send_data();
-			throw;
 		}
+
+		play_slice();
+		check_end_level();
 
 		if (!linger_) {
 			SDL_Delay(1);
 		}
 
 		gui_->draw();
-
-		turn_data_->send_data();
 	}
 }
 
