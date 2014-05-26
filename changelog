@@ -1,6 +1,8 @@
 Version 1.11.15+dev:
  * Language and i18n:
    * Updated translations:
+ * Miscellaneous and bug fixes:
+   * Backported Elvish_Hunter's wmltools GUI from master
 
 Version 1.11.15:
  * Graphics:
@@ -22,7 +24,7 @@ Version 1.11.15:
    * Fix minor issue mentioned in #21800: team names not displayed properly
      in debug mode.
    * Fixup to bug fix 21882: fight_on_without_leader replaced with 
-     "defeat_condition" flag of team. remove_from_carryover_on_leaders_loss
+     "defeat_condition" flag  of team. remove_from_carryover_on_leaders_loss
      renamed to "remove_from_carryover_on_defeat". The WML developer now has
      much more control: Instead of 'fight_on_without_leader'=yes/no, they have
      have 'defeat_condition'=no_leader/no_units/always/never
