@@ -714,7 +714,7 @@ static void show_oos_error_error_function(const std::string& message, bool /*hea
 	replay::process_error(message);
 }
 
-REPLAY_RETURN do_replay(int side_num)
+REPLAY_RETURN do_replay()
 {
 	log_scope("do replay");
 
@@ -723,15 +723,15 @@ REPLAY_RETURN do_replay(int side_num)
 	}
 
 	update_locker lock_update(resources::screen->video(),get_replay_source().is_skipping());
-	return do_replay_handle(side_num);
+	return do_replay_handle();
 }
 
-REPLAY_RETURN do_replay_handle(int side_num)
+REPLAY_RETURN do_replay_handle()
 {
 	
 	//team &current_team = (*resources::teams)[side_num - 1];
 
-
+	const int side_num = resources::controller->current_side();
 	for(;;) {
 		const config *cfg = get_replay_source().get_next_action();
 		const bool is_synced = (synced_context::get_synced_state() == synced_context::SYNCED);
@@ -981,7 +981,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 		/*
 			there might be speak or similar commands in the replay before the user input.
 		*/
-		do_replay_handle(current_side);
+		do_replay_handle();
 
 		/*
 			these value might change due to player left/reassign during pull_remote_user_input

@@ -628,7 +628,7 @@ void playsingle_controller::play_turn(bool save)
 
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
-			replaying_ = ::do_replay(player_number_) == REPLAY_FOUND_END_TURN;
+			replaying_ = ::do_replay() == REPLAY_FOUND_END_TURN;
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			// If a side is dead end the turn, but play at least side=1's

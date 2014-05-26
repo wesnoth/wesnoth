@@ -61,7 +61,7 @@ turn_info::~turn_info()
 turn_info::PROCESS_DATA_RESULT turn_info::sync_network()
 {
 	//there should be nothing left on the replay and we should get turn_info::PROCESS_CONTINUE back.
-	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay(team_num_));
+	turn_info::PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
 	if(network::nconnections() > 0) {
 
 		//receive data first, and then send data. When we sent the end of
@@ -98,7 +98,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::handle_turn(
 	recorder.set_skip(skip_replay);
 	//note, that this function might call itself recursively: do_replay -> ... -> persist_var -> ... -> handle_generic_event -> sync_network -> handle_turn
 	recorder.add_config(t, replay::MARK_AS_SENT);
-	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay(team_num_));
+	PROCESS_DATA_RESULT retv = replay_to_process_data_result(do_replay());
 	recorder.set_skip(was_skipping);
 	return retv;
 }

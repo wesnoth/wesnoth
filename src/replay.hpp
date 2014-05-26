@@ -169,9 +169,9 @@ enum REPLAY_RETURN
 };
 //replays up to one turn from the recorder object
 //returns true if it got to the end of the turn without data running out
-REPLAY_RETURN do_replay(int side_num);
+REPLAY_RETURN do_replay();
 
-REPLAY_RETURN do_replay_handle(int side_num);
+REPLAY_RETURN do_replay_handle();
 
 class replay_network_sender
 {
