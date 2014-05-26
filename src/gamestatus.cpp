@@ -816,7 +816,6 @@ game_classification::game_classification():
 	campaign_define(),
 	campaign_xtra_defines(),
 	campaign(),
-	history(),
 	abbrev(),
 	completion(),
 	end_credits(true),
@@ -835,7 +834,6 @@ game_classification::game_classification(const config& cfg):
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	campaign(cfg["campaign"]),
-	history(cfg["history"]),
 	abbrev(cfg["abbrev"]),
 	completion(cfg["completion"]),
 	end_credits(cfg["end_credits"].to_bool(true)),
@@ -854,7 +852,6 @@ game_classification::game_classification(const game_classification& gc):
 	campaign_define(gc.campaign_define),
 	campaign_xtra_defines(gc.campaign_xtra_defines),
 	campaign(gc.campaign),
-	history(gc.history),
 	abbrev(gc.abbrev),
 	completion(gc.completion),
 	end_credits(gc.end_credits),
@@ -876,7 +873,6 @@ config game_classification::to_config() const
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["campaign"] = campaign;
-	cfg["history"] = history;
 	cfg["abbrev"] = abbrev;
 	cfg["completion"] = completion;
 	cfg["end_credits"] = end_credits;
@@ -1066,7 +1062,6 @@ void game_state::write_snapshot(config& cfg, game_display* gui) const
 	}
 
 	cfg["label"] = classification_.label;
-	cfg["history"] = classification_.history;
 	cfg["abbrev"] = classification_.abbrev;
 	cfg["version"] = game_config::version;
 

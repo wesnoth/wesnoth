@@ -242,10 +242,7 @@ public:
 	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
 
 	std::string campaign;                            /**< the campaign being played */
-	//'history' is currently not referenced outside of gamestatus.cpp
-	//also in every savefile i saw is history=""
-	//TODO: can we delete it ?
-	std::string history;                             /**< ancestral IDs */
+
 	std::string abbrev;                              /**< the campaign abbreviation */
 //	std::string scenario;                            /**< the scenario being played */
 //	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
@@ -273,7 +270,7 @@ public:
 	void write_config(config_writer& out) const;
 
 	game_classification& classification() { return classification_; }
-	const game_classification& classification() const { return classification_; } //FIXME: const getter to allow use from const gamestatus::sog() (see ai.cpp:344) - remove after merge?
+	const game_classification& classification() const { return classification_; }
 
 	/** Multiplayer parameters for this game */
 	mp_game_settings& mp_settings() { return mp_settings_; }
