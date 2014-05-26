@@ -77,4 +77,24 @@ private:
 	playturn_network_adapter& network_reader_;
 };
 
+/**
+	class that sends data on destruction 
+	to make sure data is sended in any case. 
+*/
+class turn_info_send
+{
+public:
+	turn_info_send(turn_info& sender)
+		: sender_(sender)
+	{
+
+	}
+	~turn_info_send()
+	{
+		sender_.send_data();
+	}
+private:
+	turn_info& sender_;
+};
+
 #endif
