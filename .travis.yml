@@ -9,7 +9,7 @@ script:
     - scons cxxtool=$CXX strict=True wesnoth wesnothd campaignd test
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - ./test
+    - ./test_wrapper.sh
     - ./run_wml_tests -u -t 15
 after_failure:
     - ./travis_after_failure.sh
