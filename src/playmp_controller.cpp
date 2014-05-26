@@ -163,22 +163,10 @@ void playmp_controller::think_about_countdown(int ticks) {
 	}
 }
 
-namespace {
-	struct command_disabled_resetter
-	{
-		command_disabled_resetter() : val_(events::commands_disabled) {}
-		~command_disabled_resetter() { events::commands_disabled = val_; }
-	private:
-		int val_;
-	};
-}
-
 void playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
-
-	command_disabled_resetter reset_commands;
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
 	execute_gotos();
@@ -275,8 +263,6 @@ void playmp_controller::play_idle_loop()
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
-
-	command_disabled_resetter reset_commands;
 
 	while (!end_turn_)
 	{
