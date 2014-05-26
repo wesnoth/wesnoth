@@ -179,6 +179,7 @@ PREFIX std::string CAT2(NAME,_to_string) (NAME val) \
 { \
         BOOST_PP_SEQ_FOR_EACH(EXPANDENUMFUNCTIONREV,  , MAKEPAIRS(CONTENT)) \
         assert(false && "Corrupted enum found with identifier NAME"); \
+        throw 42; \
 }
 
 
