@@ -243,7 +243,7 @@ public:
 	)
 
 	ALIGNMENT alignment() const { return alignment_; }
-	inline static const std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE)
+	inline static std::string alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE)
 	{
 		std::string str = std::string();
 		if (gender == unit_race::FEMALE) {
