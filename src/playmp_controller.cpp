@@ -258,31 +258,25 @@ void playmp_controller::play_idle_loop()
 
 	while (!end_turn_)
 	{
-		try {
-			config cfg;
-			if(network_reader_.read(cfg)) {
-				turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
-				
-				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
-				{
-					throw end_turn_exception(gui_->playing_side());
-				}
+		turn_info_send send_safe(*turn_data_);
+		config cfg;
+		if(network_reader_.read(cfg)) {
+			turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
+			
+			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
+			{
+				throw end_turn_exception(gui_->playing_side());
 			}
-
-			play_slice();
-			check_end_level();
-		} catch(const end_level_exception&) {
-			turn_data_->send_data();
-			throw;
 		}
+
+		play_slice();
+		check_end_level();
 
 		if (!linger_) {
 			SDL_Delay(1);
 		}
 
 		gui_->draw();
-
-		turn_data_->send_data();
 	}
 }
 
