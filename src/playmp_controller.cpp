@@ -229,8 +229,6 @@ void playmp_controller::play_human_turn(){
 
 			play_slice();
 			check_end_level();
-			// give a chance to the whiteboard to continue an execute_all_actions
-			resources::whiteboard->continue_execute_all();
 		} catch(const end_level_exception&) {
 			turn_data_->send_data();
 			throw;

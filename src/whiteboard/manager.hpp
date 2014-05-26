@@ -157,9 +157,6 @@ public:
 	/** Executes all actions for the current turn in sequence
 	 *  @return true if the there are no more actions left for this turn when the method returns */
 	bool execute_all_actions();
-	/** Called by the game controller to let the whiteboard continue executing all actions
-	 *  if it stopped to wait for an attack to complete on reception of its random seed from server */
-	void continue_execute_all();
 	/** Deletes last action in the queue for current side */
 	void contextual_delete();
 	/** Moves the action determined by the UI toward the beginning of the queue  */
