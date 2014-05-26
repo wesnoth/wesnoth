@@ -13,6 +13,8 @@ usage()
   echo -e "\t-w\tVery verbose mode. (Debug script.)"
   echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
   echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
+  echo -e "\t-a arg\tAdditional arguments to go to wesnoth."
+  echo -e "\t-t arg\tNew timer value to use, instead of 10s as default."
   echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
   echo -e "\t  \t'--log-strict=warning' to ensure errors result in a failed test."
   echo -e "\t-d\tRun wesnoth-debug binary instead of wesnoth."
@@ -138,11 +140,11 @@ run_test()
     binary+="wesnoth "
   fi
   
+  timer=$basetimer
   # Use validcache on tests that aren't the first test.
   if [ "$FirstTest" -eq 1 ]; then
-    timer=20
+    ((timer *= 2))
   else
-    timer=10
     opts+="--validcache "
   fi
   # Add a timeout
@@ -161,7 +163,7 @@ run_test()
   command="$preopts"
   command+="$binary"
   command+="$opts"
-  command+="$extra_opts" 
+  command+="$extra_opts"
   if [ "$Verbose" -eq 1 ]; then
     echo "$command"
   elif [ "$Verbose" -eq 2 ]; then
@@ -187,8 +189,10 @@ LoadFile="wml_test_schedule"
 BinPath="./"
 StrictMode=1
 DebugMode=0
+extra_opts=""
+basetimer=10
 
-while getopts ":hvwusdp:l:" Option
+while getopts ":hvwusdp:l:a:t:" Option
 do
   case $Option in
     h )
@@ -215,24 +219,31 @@ do
       DebugMode=1
       ;;
     p )
-      BinPath=$OPTARG
+      BinPath="$OPTARG"
       ;;
     l )
-      LoadFile=$OPTARG
+      LoadFile="$OPTARG"
+      ;;
+    a )
+      extra_opts+="$OPTARG"
+      ;;
+    t )
+      echo "Replacing default timer of 10s with " "$OPTARG"
+      basetimer="$OPTARG"
       ;;
   esac
 done
 shift $(($OPTIND - 1))
 
-extra_opts="$*"
+extra_opts+="$*"
 
 if [ "$Verbose" -ge 2 ]; then
   if [ "${#extra_opts}" -ge 0 ]; then
-    echo "Found additional arguments to wesnoth: " $extra_opts 
+    echo "Found additional arguments to wesnoth: " "$extra_opts" 
   fi
 fi
 
-echo "Getting tests from" $LoadFile "..."
+echo "Getting tests from" "$LoadFile" "..."
 
 old_IFS=$IFS
 IFS=$'\n'
