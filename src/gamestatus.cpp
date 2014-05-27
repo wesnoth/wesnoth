@@ -830,7 +830,7 @@ game_classification::game_classification(const config& cfg):
 	label(cfg["label"]),
 	parent(cfg["parent"]),
 	version(cfg["version"]),
-	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"], game_classification::SCENARIO)),
+	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"].str(), game_classification::SCENARIO)),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	campaign(cfg["campaign"]),

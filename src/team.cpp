@@ -131,7 +131,7 @@ void team::team_info::read(const config &cfg)
 	allow_player = cfg["allow_player"].to_bool(true);
 	chose_random = cfg["chose_random"].to_bool(false);
 	no_leader = cfg["no_leader"].to_bool();
-	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"], team::NO_LEADER);
+	defeat_condition = lexical_cast_default<team::DEFEAT_CONDITION>(cfg["defeat_condition"].str(), team::NO_LEADER);
 	hidden = cfg["hidden"].to_bool();
 	no_turn_confirmation = cfg["suppress_end_turn_confirmation"].to_bool();
 	side = cfg["side"].to_int(1);
@@ -184,7 +184,7 @@ void team::team_info::read(const config &cfg)
 	else
 		support_per_village = lexical_cast_default<int>(village_support, game_config::village_support);
 
-	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"], team::AI);
+	controller = lexical_cast_default<team::CONTROLLER> (cfg["controller"].str(), team::AI);
 	//by default, persistence of a team is set depending on the controller
 	//TODO: Why is network_ai marked persistent?
 	//TODO: Why do we read disallow observers differently when controller is empty?

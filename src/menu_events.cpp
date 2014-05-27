@@ -3140,12 +3140,17 @@ void console_handler::do_unit() {
 	// But someday the code ought to be
 	// changed to allow general string
 	// alignments for UMC.
-	if (name == "alignment" && (value != "lawful" && value != "neutral" && value != "chaotic" && value != "liminal")) {
-		utils::string_map symbols;
-		symbols["alignment"] = get_arg(1);
-		command_failed(VGETTEXT("Invalid alignment: '$alignment',"
-			" needs to be one of lawful, neutral, chaotic, or liminal.", symbols));
-		return;
+	if (name == "alignment") { // && (value != "lawful" && value != "neutral" && value != "chaotic" && value != "liminal")) {
+		std::stringstream ss(value);
+		unit_type::ALIGNMENT alignment = unit_type::ALIGNMENT();
+		ss >> alignment;
+		if (!ss) {
+			utils::string_map symbols;
+			symbols["alignment"] = get_arg(1);
+			command_failed(VGETTEXT("Invalid alignment: '$alignment',"
+				" needs to be one of lawful, neutral, chaotic, or liminal.", symbols));
+			return;
+		}
 	}
 	if (name == "advances" ){
 		if(synced_context::get_synced_state() == synced_context::SYNCED)

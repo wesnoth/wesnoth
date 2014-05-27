@@ -229,7 +229,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	recall_cost_(-1),
 	canrecruit_(cfg["canrecruit"].to_bool()),
 	recruit_list_(),
-	alignment_(),
+	alignment_(lexical_cast_default<unit_type::ALIGNMENT> (cfg["alignment"].str(), unit_type::NEUTRAL)),
 	flag_rgb_(),
 	image_mods_(),
 	unrenamable_(false),
@@ -469,19 +469,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	isn't pull that value otherwise it goes with the default of -1.  */
 	if(!cfg["recall_cost"].blank()) {
 		recall_cost_ = cfg["recall_cost"].to_int(recall_cost_);
-	}
-
-	const std::string& align = cfg["alignment"];
-	if(align == "lawful") {
-		alignment_ = unit_type::LAWFUL;
-	} else if(align == "neutral") {
-		alignment_ = unit_type::NEUTRAL;
-	} else if(align == "chaotic") {
-		alignment_ = unit_type::CHAOTIC;
-	} else if(align == "liminal") {
-		alignment_ = unit_type::LIMINAL;
-	} else if(align.empty()==false) {
-		alignment_ = unit_type::NEUTRAL;
 	}
 
 	generate_name();
@@ -1772,22 +1759,7 @@ void unit::write(config& cfg) const
 	cfg["language_name"] = type_name_;
 	cfg["undead_variation"] = undead_variation_;
 	cfg["level"] = level_;
-	switch(alignment_) {
-		case unit_type::LAWFUL:
-			cfg["alignment"] = "lawful";
-			break;
-		case unit_type::NEUTRAL:
-			cfg["alignment"] = "neutral";
-			break;
-		case unit_type::CHAOTIC:
-			cfg["alignment"] = "chaotic";
-			break;
-		case unit_type::LIMINAL:
-			cfg["alignment"] = "liminal";
-			break;
-		default:
-			cfg["alignment"] = "neutral";
-	}
+	cfg["alignment"] = lexical_cast<std::string> (alignment_);
 	cfg["flag_rgb"] = flag_rgb_;
 	cfg["unrenamable"] = unrenamable_;
 	cfg["alpha"] = str_cast(alpha_);
