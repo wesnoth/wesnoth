@@ -46,9 +46,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 	DBG_DP << "creating minimap " << int(map.w()*scale*0.75) << "," << map.h()*scale << "\n";
 
-	bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
-	bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
-	bool preferences_minimap_draw_villages = preferences::minimap_draw_villages();
+	const bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
+	const bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
+	const bool preferences_minimap_draw_villages = preferences::minimap_draw_villages();
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
@@ -56,6 +56,14 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 		return surface(NULL);
 	}
 
+	if(!preferences_minimap_draw_villages && !preferences_minimap_draw_terrain)
+	{
+		//return if there is nothing to draw.
+		//(optimisation)
+		double ratio = std::min<double>( w*1.0 / map_width, h*1.0 / map_height);
+		return create_neutral_surface(map_width * ratio, map_height * ratio);
+	}
+	
 	surface minimap(create_neutral_surface(map_width, map_height));
 	if(minimap == NULL)
 		return surface(NULL);
