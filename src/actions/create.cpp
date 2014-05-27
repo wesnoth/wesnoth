@@ -839,6 +839,39 @@ namespace { // Helpers for place_recruit()
 		current_loc = un_it->get_location();
 		return true;
 	}
+
+	void set_recruit_facing(unit_map::iterator &new_unit_itor, const unit &new_unit,
+		const map_location &recruit_loc, const map_location &leader_loc)
+	{
+		// Find closest enemy and turn towards it (level 2s count more than level 1s, etc.)
+		const gamemap *map = resources::game_map;
+		const unit_map & units = *resources::units;
+		unit_map::const_iterator unit_itor;
+		map_location min_loc;
+		int min_dist = INT_MAX;
+
+		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
+			if ((*resources::teams)[unit_itor->side()-1].is_enemy(new_unit.side()) &&
+				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], false)) {
+				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
+				if (dist < min_dist) {
+					min_dist = dist;
+					min_loc = unit_itor->get_location();
+				}
+			}
+		}
+		if (min_dist < INT_MAX) {
+			// Face towards closest enemy
+			new_unit_itor->set_facing(recruit_loc.get_relative_dir(min_loc));
+		} else if (leader_loc != map_location::null_location()) {
+			// Face away from leader
+			new_unit_itor->set_facing(map_location::get_opposite_dir(recruit_loc.get_relative_dir(leader_loc)));
+		} else {
+			// Face towards center of map
+			const map_location center(map->w()/2, map->h()/2);
+			new_unit_itor->set_facing(recruit_loc.get_relative_dir(center));
+		}
+	}
 }// anonymous namespace
 
 bool place_recruit(const unit &u, const map_location &recruit_location, const map_location& recruited_from,
@@ -868,6 +901,8 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	assert(add_result.second);
 	unit_map::iterator & new_unit_itor = add_result.first;
 	map_location current_loc = recruit_location;
+
+	set_recruit_facing(new_unit_itor, new_unit, recruit_location, leader_loc);
 
 	// Do some bookkeeping.
 	recruit_checksums(new_unit, wml_triggered);
