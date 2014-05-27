@@ -157,6 +157,12 @@ bool attack_type::matches_filter(const config& filter) const
 	return matches;
 }
 
+namespace {
+	void add_and(std::stringstream &ss) {
+		if(ss.tellp() > 0)
+			ss << t_string(N_(" and "), "wesnoth");
+	}
+}
 
 /**
  * Modifies *this using the specifications in @a cfg, but only if *this matches
@@ -244,6 +250,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["damage"] = damage_;
 
 		if(description != NULL) {
+			add_and(desc);
 			int inc_damage = lexical_cast<int>(increase_damage);
 			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
@@ -255,6 +262,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["number"] = num_attacks_;
 
 		if(description != NULL) {
+			add_and(desc);
 			int inc_attacks = lexical_cast<int>(increase_attacks);
 			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
@@ -266,6 +274,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["accuracy"] = accuracy_;
 
 		if(description != NULL) {
+			add_and(desc);
 			int inc_acc = lexical_cast<int>(increase_accuracy);
 			// Help xgettext with a directive to recognize the string as a non C printf-like string
 			// xgettext:no-c-format
@@ -278,6 +287,7 @@ bool attack_type::apply_modification(const config& cfg,std::string* description)
 		cfg_["parry"] = parry_;
 
 		if(description != NULL) {
+			add_and(desc);
 			int inc_parry = lexical_cast<int>(increase_parry);
 			// xgettext:no-c-format
 			desc << utils::signed_value(inc_parry) << _("% parry");
@@ -325,12 +335,14 @@ bool attack_type::describe_modification(const config& cfg,std::string* descripti
 		std::stringstream desc;
 
 		if(increase_damage.empty() == false) {
+			add_and(desc);
 			int inc_damage = lexical_cast<int>(increase_damage);
 			desc << utils::print_modifier(increase_damage) << " "
 				 << _n("damage","damage", inc_damage);
 		}
 
 		if(increase_attacks.empty() == false) {
+			add_and(desc);
 			int inc_attacks = lexical_cast<int>(increase_attacks);
 			desc << utils::print_modifier(increase_attacks) << " "
 				 << _n("strike", "strikes", inc_attacks);
