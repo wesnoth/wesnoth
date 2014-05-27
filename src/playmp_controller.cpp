@@ -485,7 +485,7 @@ void playmp_controller::play_network_turn(){
 			{
 				bool was_skipping = recorder.is_skipping();
 				recorder.set_skip(skip_replay_);
-				if(do_replay(current_side()) == REPLAY_FOUND_END_TURN)
+				if(do_replay() == REPLAY_FOUND_END_TURN)
 				{
 					break;
 				}
