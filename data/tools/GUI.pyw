@@ -613,6 +613,11 @@ class WmlscopeTab(Frame):
         self.options_frame.columnconfigure(0,weight=1)
         self.options_frame.columnconfigure(2,weight=1)
         self.options_with_regexp.columnconfigure(1,weight=1)
+        # uniform= makes the options in the options_with_regexp frame evenly sized
+        # please note that "regexp" is an ID of the widget group, not a special value
+        # you can replace "regexp" with "bacon" and it still works...
+        for row in range(5):
+            self.options_with_regexp.rowconfigure(row,uniform="regexp")
     def exclude_callback(self):
         if self.exclude_variable.get():
             self.exclude_entry.configure(state=NORMAL)
