@@ -810,14 +810,13 @@ void play_controller::finish_side_turn(){
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
-	if(true) //RAII block
-	{
+	
+	{ //Block for set_scontext_synced
 		set_scontext_synced sync(1);
-		//random_new::set_random_determinstic deterministic(resources::gamedata->rng());
-	game_events::fire("side turn end");
-	game_events::fire("side "+ side_num + " turn end");
-	game_events::fire("side turn " + turn_num + " end");
-	game_events::fire("side " + side_num + " turn " + turn_num + " end");
+		game_events::fire("side turn end");
+		game_events::fire("side "+ side_num + " turn end");
+		game_events::fire("side turn " + turn_num + " end");
+		game_events::fire("side " + side_num + " turn " + turn_num + " end");
 	}
 	// This is where we refog, after all of a side's events are done.
 	actions::recalculate_fog(player_number_);
@@ -837,7 +836,6 @@ void play_controller::finish_side_turn(){
 void play_controller::finish_turn()
 {
 	set_scontext_synced sync(2);
-	//random_new::set_random_determinstic deterministic(resources::gamedata->rng());
 	const std::string turn_num = str_cast(turn());
 	game_events::fire("turn end");
 	game_events::fire("turn " + turn_num + " end");
