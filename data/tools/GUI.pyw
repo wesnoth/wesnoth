@@ -911,9 +911,9 @@ wmllint will be run only on the Wesnoth core directory""")
         if self.wmlscope_tab.progress_variable.get():
             wmlscope_command_string.append("--progress")
         if self.wmlscope_tab.exclude_variable.get():
-            wmlscope_command_string.append('--exclude=r"{0}"'.format(self.wmlscope_tab.exclude_regexp.get()))
+            wmlscope_command_string.append('--exclude="{0}"'.format(self.wmlscope_tab.exclude_regexp.get()))
         if self.wmlscope_tab.from_variable.get():
-            wmlscope_command_string.append('--from=r"{0}"'.format(self.wmlscope_tab.from_regexp.get()))
+            wmlscope_command_string.append('--from="{0}"'.format(self.wmlscope_tab.from_regexp.get()))
         if self.wmlscope_tab.refcount_variable.get():
             try:
                 wmlscope_command_string.append("--refcount=" + str(self.wmlscope_tab.refcount_number.get()))
@@ -923,9 +923,9 @@ wmllint will be run only on the Wesnoth core directory""")
                 showerror("Error","""You typed an invalid value. Value must be an integer in the range 0-999""")
                 return
         if self.wmlscope_tab.typelist_variable.get():
-            wmlscope_command_string.append('--typelist=r"{0}"'.format(self.wmlscope_tab.typelist_string.get()))
+            wmlscope_command_string.append('--typelist="{0}"'.format(self.wmlscope_tab.typelist_string.get()))
         if self.wmlscope_tab.force_variable.get():
-            wmlscope_command_string.append('--force-used=r"{0}"'.format(self.wmlscope_tab.force_regexp.get()))
+            wmlscope_command_string.append('--force-used="{0}"'.format(self.wmlscope_tab.force_regexp.get()))
         wmlscope_command_string.append(WESNOTH_CORE_DIR)
         umc_dir=self.dir_variable.get()
         if os.path.exists(umc_dir): # add-on exists
@@ -956,8 +956,7 @@ wmlscope will be run only on the Wesnoth core directory""")
         if self.wmlindent_tab.verbose_variable.get():
             wmlindent_command_string.append("-v -v")
         if self.wmlindent_tab.exclude_variable.get():
-            # the r before double quotes marks the regexp as a raw string
-            wmlindent_command_string.append('exclude=r"{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
+            wmlindent_command_string.append('--exclude="{0}"'.format(self.wmlindent_tab.regexp_variable.get()))
         if self.wmlindent_tab.quiet_variable.get():
             wmlindent_command_string.append("--quiet")
         umc_dir=self.dir_variable.get()
