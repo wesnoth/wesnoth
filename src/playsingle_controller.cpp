@@ -627,16 +627,6 @@ void playsingle_controller::play_turn(bool save)
 			replaying_ = ::do_replay(player_number_) == REPLAY_FOUND_END_TURN;
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
-			// If a side is dead end the turn, but play at least side=1's
-			// turn in case all sides are dead
-			if (current_team().is_human() && side_units(player_number_) == 0
-				&& (resources::units->size() != 0 || player_number_ != 1))
-			{
-				turn_info turn_data(player_number_, replay_sender_, network_reader_);
-				recorder.end_turn();
-				turn_data.sync_network();
-				continue;
-			}
 			ai_testing::log_turn_start(player_number_);
 			play_side(player_number_, save);
 		}
@@ -694,8 +684,14 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 			LOG_NG << "is human...\n";
 			temporary_human = false;
 			try{
-				before_human_turn(save);
-				play_human_turn();
+				// If a side is dead end the turn, but play at least side=1's
+				// turn in case all sides are dead
+				if (side_units(player_number_) != 0
+					|| (resources::units->size() == 0 && player_number_ == 1))
+				{
+					before_human_turn(save);
+					play_human_turn();
+				}
 			} catch(end_turn_exception& end_turn) {
 				if (end_turn.redo == side_number) {
 					player_type_changed_ = true;
