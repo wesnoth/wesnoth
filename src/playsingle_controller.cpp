@@ -619,7 +619,7 @@ void playsingle_controller::play_turn(bool save)
 			init_side(player_number_ - 1);
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
-				turn_info turn_data(player_number_, replay_sender_,network_reader_);
+				turn_info turn_data( replay_sender_,network_reader_);
 				recorder.end_turn();
 				turn_data.sync_network();
 			}
@@ -636,7 +636,7 @@ void playsingle_controller::play_turn(bool save)
 			if (current_team().is_human() && side_units(player_number_) == 0
 				&& (resources::units->size() != 0 || player_number_ != 1))
 			{
-				turn_info turn_data(player_number_, replay_sender_, network_reader_);
+				turn_info turn_data( replay_sender_, network_reader_);
 				recorder.end_turn();
 				turn_data.sync_network();
 				continue;
@@ -938,7 +938,7 @@ void playsingle_controller::play_ai_turn(){
 		synced_context::run_in_synced_context("auto_shroud", replay_helper::get_auto_shroud(true));
 	}
 
-	turn_info turn_data(player_number_, replay_sender_, network_reader_);
+	turn_info turn_data(replay_sender_, network_reader_);
 
 	try {
 		ai::manager::play_turn(player_number_);

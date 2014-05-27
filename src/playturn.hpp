@@ -26,7 +26,7 @@ class replay_network_sender;
 class turn_info
 {
 public:
-	turn_info(unsigned team_num, replay_network_sender &network_sender, playturn_network_adapter &network_reader);
+	turn_info(replay_network_sender &network_sender, playturn_network_adapter &network_reader);
 
 	~turn_info();
 
@@ -67,8 +67,6 @@ private:
 		const bool skip_replay);
 
 	void do_save();
-
-	unsigned int team_num_;
 
 	replay_network_sender& replay_sender_;
 

@@ -452,7 +452,7 @@ void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	end_turn_enable(false);
-	turn_info turn_data(player_number_, replay_sender_, network_reader_);
+	turn_info turn_data(replay_sender_, network_reader_);
 	turn_data.host_transfer().attach_handler(this);
 
 	for(;;) {
@@ -509,7 +509,7 @@ void playmp_controller::play_network_turn(){
 }
 
 void playmp_controller::init_turn_data() {
-	turn_data_ = new turn_info(player_number_, replay_sender_,network_reader_);
+	turn_data_ = new turn_info(replay_sender_,network_reader_);
 	turn_data_->host_transfer().attach_handler(this);
 }
 
@@ -538,7 +538,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
-	turn_info turn_data(player_number_, replay_sender_, network_reader_);
+	turn_info turn_data(replay_sender_, network_reader_);
 
 	if (name == "ai_user_interact"){
 		playsingle_controller::handle_generic_event(name);
