@@ -60,9 +60,6 @@ protected:
 	virtual void play_network_turn();
 	virtual void do_idle_notification();
 	virtual void play_idle_loop();
-	void init_turn_data();
-
-	turn_info* turn_data_;
 
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;

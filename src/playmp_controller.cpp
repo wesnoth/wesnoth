@@ -42,12 +42,12 @@ playmp_controller::playmp_controller(const config& level,
 		bool skip_replay, bool blindfold_replay_, bool is_host) :
 	playsingle_controller(level, state_of_game, ticks, num_turns,
 		game_config, video, skip_replay || blindfold_replay_), //this || means that if blindfold is enabled, quick replays will be on.
-	turn_data_(NULL),
 	beep_warning_time_(0),
 	network_processing_stopped_(false),
 	blindfold_(*resources::screen,blindfold_replay_)
 {
 	is_host_ = is_host;
+	turn_data_.host_transfer().attach_handler(this);
 	// We stop quick replay if play isn't yet past turn 1
 	if ( replay_last_turn_ <= 1)
 	{
@@ -63,6 +63,8 @@ playmp_controller::~playmp_controller() {
 	if(beep_warning_time_ < 0) {
 		sound::stop_bell();
 	}
+	
+	turn_data_.host_transfer().detach_handler(this);
 }
 
 void playmp_controller::set_replay_last_turn(unsigned int turn){
@@ -106,8 +108,8 @@ void playmp_controller::play_side(const unsigned int side_number, bool save)
 void playmp_controller::before_human_turn(bool save){
 	LOG_NG << "playmp::before_human_turn...\n";
 	playsingle_controller::before_human_turn(save);
+	turn_data_.send_data();
 
-	init_turn_data();
 }
 
 void playmp_controller::on_not_observer() {
@@ -121,7 +123,6 @@ void playmp_controller::remove_blindfold() {
 		resources::screen->redraw_everything();
 	}
 }
-
 
 bool playmp_controller::counting_down() {
 	return beep_warning_time_ > 0;
@@ -149,7 +150,6 @@ void playmp_controller::reset_countdown()
 	beep_warning_time_ = 0;
 }
 
-
 //check if it is time to start playing the timer warning
 void playmp_controller::think_about_countdown(int ticks) {
 	if(ticks >= beep_warning_time_) {
@@ -175,11 +175,11 @@ void playmp_controller::play_human_turn(){
 		end_turn_enable(true);
 	}
 	while(!end_turn_) {
-		turn_info_send send_safe(*turn_data_);
+		turn_info_send send_safe(turn_data_);
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
-				turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
+				turn_info::PROCESS_DATA_RESULT res = turn_data_.process_network_data(cfg, skip_replay_);
 				//PROCESS_RESTART_TURN_TEMPORARY_LOCAL should be impossible because that's means the currently active side (that's us) left.
 				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 				{
@@ -258,10 +258,10 @@ void playmp_controller::play_idle_loop()
 
 	while (!end_turn_)
 	{
-		turn_info_send send_safe(*turn_data_);
+		turn_info_send send_safe(turn_data_);
 		config cfg;
 		if(network_reader_.read(cfg)) {
-			turn_info::PROCESS_DATA_RESULT res = turn_data_->process_network_data(cfg, skip_replay_);
+			turn_info::PROCESS_DATA_RESULT res = turn_data_.process_network_data(cfg, skip_replay_);
 			
 			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 			{
@@ -334,8 +334,7 @@ void playmp_controller::linger()
 		try {
 			// reimplement parts of play_side()
 			player_number_ = first_player_;
-			init_turn_data();
-
+			turn_data_.send_data();
 			end_turn_ = false;
 			play_human_turn();
 			turn_over_ = true;  // We don't want to linger mode to add end_turn to replay
@@ -374,11 +373,6 @@ void playmp_controller::wait_for_upload()
 	// upload the next scenario.
 	assert(!is_host_);
 
-	const bool set_turn_data = (turn_data_ == NULL);
-	if(set_turn_data) {
-		init_turn_data();
-	}
-
 	config cfg;
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
 	while(true) {
@@ -387,7 +381,7 @@ void playmp_controller::wait_for_upload()
 				*gui_, _("Waiting for next scenario..."), cfg);
 
 			if(res != network::null_connection) {
-				if (turn_data_->process_network_data_from_reader(skip_replay_) == turn_info::PROCESS_END_LINGER) {
+				if (turn_data_.process_network_data_from_reader(skip_replay_) == turn_info::PROCESS_END_LINGER) {
 					break;
 				}
 			}
@@ -398,15 +392,11 @@ void playmp_controller::wait_for_upload()
 
 		} catch(const end_level_exception&) {
 			network_reader_.set_source(playturn_network_adapter::read_network);
-			turn_data_->send_data();
+			turn_data_.send_data();
 			throw;
 		}
 	}
 	network_reader_.set_source(playturn_network_adapter::read_network);
-	if(set_turn_data) {
-		delete turn_data_;
-		turn_data_ = NULL;
-	}
 }
 
 void playmp_controller::after_human_turn(){
@@ -422,27 +412,19 @@ void playmp_controller::after_human_turn(){
 	}
 	LOG_NG << "playmp::after_human_turn...\n";
 
-	//ensure that turn_data_ is constructed before it is used.
-	if (turn_data_ == NULL) init_turn_data();
+
 
 	// Normal post-processing for human turns (clear undos, end the turn, etc.)
 	playsingle_controller::after_human_turn();
 	//send one more time to make sure network is up-to-date.
-	turn_data_->send_data();
+	turn_data_.send_data();
 
-	// Release turn_data_.
-	turn_data_->host_transfer().detach_handler(this);
-	delete turn_data_;
-	turn_data_ = NULL;
 }
 
 void playmp_controller::finish_side_turn(){
 	play_controller::finish_side_turn();
 
-	//just in case due to an exception turn_data_ has not been deleted in after_human_turn
-	delete turn_data_;
-	turn_data_ = NULL;
-
+	
 	//halt and cancel the countdown timer
 	reset_countdown();
 
@@ -452,9 +434,8 @@ void playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	end_turn_enable(false);
-	turn_info turn_data(replay_sender_, network_reader_);
-	turn_data.host_transfer().attach_handler(this);
-
+	turn_data_.send_data();
+	
 	for(;;) {
 
 		if (!network_processing_stopped_){
@@ -465,7 +446,7 @@ void playmp_controller::play_network_turn(){
 						skip_replay_ = false;
 					}
 				}
-				const turn_info::PROCESS_DATA_RESULT result = turn_data.process_network_data(cfg, skip_replay_);
+				const turn_info::PROCESS_DATA_RESULT result = turn_data_.process_network_data(cfg, skip_replay_);
 				if(player_type_changed_ == true)
 				{
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
@@ -497,21 +478,16 @@ void playmp_controller::play_network_turn(){
 		check_end_level();
 
 		if (!network_processing_stopped_){
-			turn_data.send_data();
+			turn_data_.send_data();
 		}
 
 		gui_->draw();
 	}
 
-	turn_data.host_transfer().detach_handler(this);
 	LOG_NG << "finished networked...\n";
 	return;
 }
 
-void playmp_controller::init_turn_data() {
-	turn_data_ = new turn_info(replay_sender_,network_reader_);
-	turn_data_->host_transfer().attach_handler(this);
-}
 
 void playmp_controller::process_oos(const std::string& err_msg) const {
 	// Notify the server of the oos error.
@@ -538,15 +514,15 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 }
 
 void playmp_controller::handle_generic_event(const std::string& name){
-	turn_info turn_data(replay_sender_, network_reader_);
+	turn_data_.send_data();
 
 	if (name == "ai_user_interact"){
 		playsingle_controller::handle_generic_event(name);
-		turn_data.send_data();
+		turn_data_.send_data();
 	}
 	else if ((name == "ai_gamestate_changed") || (name == "ai_sync_network")){
 		int expected_controller_changes = 0;
-		turn_info::PROCESS_DATA_RESULT res = turn_data.sync_network();
+		turn_info::PROCESS_DATA_RESULT res = turn_data_.sync_network();
 		assert(res != turn_info::PROCESS_END_LINGER);
 		assert(res != turn_info::PROCESS_END_TURN);
 		if(res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL )
@@ -565,7 +541,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		while((expected_controller_changes != 0) && (difftime(time(NULL), time_start) < 20))
 		{
 			playsingle_controller::handle_generic_event("ai_user_interact");
-			res = turn_data.sync_network();
+			res = turn_data_.sync_network();
 			assert(res != turn_info::PROCESS_END_LINGER);
 			assert(res != turn_info::PROCESS_END_TURN);
 			if(res == turn_info::PROCESS_RESTART_TURN)
@@ -578,7 +554,7 @@ void playmp_controller::handle_generic_event(const std::string& name){
 			}
 			SDL_Delay(10);
 		}	
-		turn_data.send_data();
+		turn_data_.send_data();
 	}
 	else if (name == "host_transfer"){
 		is_host_ = true;

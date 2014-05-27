@@ -95,4 +95,24 @@ private:
 	turn_info& sender_;
 };
 
+/**
+	class that syncs data on destruction 
+	to make sure data is synced in any case. 
+*/
+class turn_info_sync
+{
+public:
+	turn_info_sync(turn_info& sender)
+		: sender_(sender)
+	{
+
+	}
+	~turn_info_sync()
+	{
+		sender_.sync_network();
+	}
+private:
+	turn_info& sender_;
+};
+
 #endif
