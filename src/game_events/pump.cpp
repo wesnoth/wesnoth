@@ -375,10 +375,10 @@ namespace { // Support functions
 
 	void put_wml_message(lg::logger& logger, const std::string& prefix, const std::string& message, bool in_chat)
 	{
-		logger(log_wml) << message << "\n";
+		logger(log_wml) << message << std::endl;
 		if (in_chat)
 		{
-			wml_messages_stream << prefix << message << "\n";
+			wml_messages_stream << prefix << message << std::endl;
 		}
 	}
 
