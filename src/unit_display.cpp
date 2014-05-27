@@ -244,8 +244,14 @@ void unit_mover::update_shown_unit()
 void unit_mover::start(unit& u)
 {
 	// Nothing to do here if there is nothing to animate.
-	if ( !can_draw_  || !animate_ )
+	if ( !can_draw_ )
 		return;
+	// If no animation then hide unit until end of movement
+	if ( !animate_ ) {
+		was_hidden_ = u.get_hidden();
+		u.set_hidden(true);
+		return;
+	}
 
 	// This normally does nothing, but just in case...
 	wait_for_anims();
@@ -309,16 +315,8 @@ void unit_mover::start(unit& u)
 void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 {
 	// Nothing to do here if animations cannot be shown.
-	if ( !can_draw_ )
+	if ( !can_draw_ || !animate_ )
 		return;
-
-	// If no animation then hide unit until end of movement
-	if (!animate_)
-	{
-		was_hidden_ = u.get_hidden();
-		u.set_hidden(true);
-		return;
-	}
 
 	// Handle pending visibility issues before introducing new ones.
 	wait_for_anims();
