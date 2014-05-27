@@ -48,6 +48,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 	bool preferences_minimap_draw_terrain = preferences::minimap_draw_terrain();
 	bool preferences_minimap_terrain_coding = preferences::minimap_terrain_coding();
+	bool preferences_minimap_draw_villages = preferences::minimap_draw_villages();
 
 	const size_t map_width = map.w()*scale*3/4;
 	const size_t map_height = map.h()*scale;
@@ -221,7 +222,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				}
 			}
 
-			if (terrain_info.is_village() && preferences::minimap_draw_villages()) {
+			if (terrain_info.is_village() && preferences_minimap_draw_villages) {
 
 				int side = village_owner(loc);
 
