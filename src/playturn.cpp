@@ -38,8 +38,7 @@
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
-turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender,playturn_network_adapter &network_reader) :
-	team_num_(team_num),
+turn_info::turn_info(replay_network_sender &replay_sender,playturn_network_adapter &network_reader) :
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"),
 	network_reader_(network_reader)

@@ -26,7 +26,7 @@ class replay_network_sender;
 class turn_info
 {
 public:
-	turn_info(unsigned team_num, replay_network_sender &network_sender, playturn_network_adapter &network_reader);
+	turn_info(replay_network_sender &network_sender, playturn_network_adapter &network_reader);
 
 	~turn_info();
 
@@ -68,8 +68,6 @@ private:
 
 	void do_save();
 
-	unsigned int team_num_;
-
 	replay_network_sender& replay_sender_;
 
 	events::generic_event host_transfer_;
@@ -92,6 +90,26 @@ public:
 	~turn_info_send()
 	{
 		sender_.send_data();
+	}
+private:
+	turn_info& sender_;
+};
+
+/**
+	class that syncs data on destruction 
+	to make sure data is synced in any case. 
+*/
+class turn_info_sync
+{
+public:
+	turn_info_sync(turn_info& sender)
+		: sender_(sender)
+	{
+
+	}
+	~turn_info_sync()
+	{
+		sender_.sync_network();
 	}
 private:
 	turn_info& sender_;

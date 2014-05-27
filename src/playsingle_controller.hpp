@@ -18,6 +18,7 @@
 
 #include "play_controller.hpp"
 #include "playturn_network_adapter.hpp"
+#include "playturn.hpp"
 #include "replay.hpp"
 
 class playsingle_controller : public play_controller
@@ -97,7 +98,7 @@ protected:
 
 	replay_network_sender replay_sender_;
 	playturn_network_adapter network_reader_;
-
+	turn_info turn_data_;
 	bool end_turn_;
 	bool player_type_changed_;
 	bool replaying_;
