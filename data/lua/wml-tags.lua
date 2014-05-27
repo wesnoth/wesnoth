@@ -335,11 +335,21 @@ wml_actions.command = handle_event_commands
 
 wml_actions["if"] = function( cfg )
 	if wesnoth.eval_conditional( cfg ) then -- evalutate [if] tag
+		local found_something = 0
 		for then_child in helper.child_range ( cfg, "then" ) do
 			handle_event_commands( then_child )
+			found_something = 1
+		end
+		if found_something == 0 then
+			if not helper.get_child( cfg, "else", nil ) then
+				if not helper.get_child( cfg, "elseif", nil ) then
+					wesnoth.message("WML warning","[if] didn't find any [then], [elseif], or [else] children. Check your {IF_VAR}!")
+				end
+			end
 		end
 		return -- stop after executing [then] tags
 	else
+		local found_something = 0
 		for elseif_child in helper.child_range ( cfg, "elseif" ) do
 			if wesnoth.eval_conditional( elseif_child ) then -- we'll evalutate the [elseif] tags one by one
 				for then_tag in helper.child_range( elseif_child, "then" ) do
@@ -347,10 +357,17 @@ wml_actions["if"] = function( cfg )
 				end
 				return -- stop on first matched condition
 			end
+			found_something = 1
 		end
 		-- no matched condition, try the [else] tags
 		for else_child in helper.child_range ( cfg, "else" ) do
 			handle_event_commands( else_child )
+			found_something = 1
+		end
+		if found_something == 0 then
+			if not helper.get_child( cfg, "then", nil ) then
+				wesnoth.message("WML warning","[if] didn't find any [then], [elseif], or [else] children. Check your {IF_VAR}!")
+			end
 		end
 	end
 end
