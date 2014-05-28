@@ -34,13 +34,9 @@ tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
 	currentTime_(0),
 	times_(),
 	areas_(),
-	turn_(1),
+	turn_(scenario_cfg["turn_at"].to_int(1)),
 	num_turns_(num_turns)
 {
-	const config::attribute_value& turn_at = scenario_cfg["turn_at"];
-	if(!turn_at.blank()) {
-		turn_ = turn_at.to_int(1);
-	}
 
 	time_of_day::parse_times(scenario_cfg,times_);
 
