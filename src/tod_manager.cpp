@@ -29,13 +29,13 @@
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 
-tod_manager::tod_manager(const config& scenario_cfg, const int num_turns):
+tod_manager::tod_manager(const config& scenario_cfg):
 	savegame_config(),
 	currentTime_(0),
 	times_(),
 	areas_(),
 	turn_(scenario_cfg["turn_at"].to_int(1)),
-	num_turns_(num_turns)
+	num_turns_(scenario_cfg["turns"].to_int(-1))
 {
 
 	time_of_day::parse_times(scenario_cfg,times_);

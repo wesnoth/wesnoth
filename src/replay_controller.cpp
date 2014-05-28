@@ -44,7 +44,6 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 {
 	try{
 		const int ticks = SDL_GetTicks();
-		int num_turns = (*level)["turns"].to_int(-1);
 
 		config init_level = *level;
 		carryover_info sides(state_of_game.carryover_sides);
@@ -52,7 +51,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 		state_of_game.carryover_sides = sides.to_config();
 
 		DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-		replay_controller replaycontroller(init_level, state_of_game, ticks, num_turns, game_config, video);
+		replay_controller replaycontroller(init_level, state_of_game, ticks, game_config, video);
 		DBG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
 		const events::command_disabler disable_commands;
 
@@ -74,13 +73,13 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 }
 
 replay_controller::replay_controller(const config& level,
-		game_state& state_of_game, const int ticks, const int num_turns,
+		game_state& state_of_game, const int ticks,
 		const config& game_config, CVideo& video) :
-	play_controller(level, state_of_game, ticks, num_turns, game_config, video, false),
+	play_controller(level, state_of_game, ticks, game_config, video, false),
 	teams_start_(teams_),
 	gamestate_start_(gamestate_),
 	units_start_(units_),
-	tod_manager_start_(level, num_turns),
+	tod_manager_start_(level),
 	current_turn_(1),
 	is_playing_(false),
 	show_everything_(false),

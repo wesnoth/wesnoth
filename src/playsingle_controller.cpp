@@ -63,9 +63,9 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level,
-		game_state& state_of_game, const int ticks, const int num_turns,
+		game_state& state_of_game, const int ticks,
 		const config& game_config, CVideo& video, bool skip_replay) :
-	play_controller(level, state_of_game, ticks, num_turns, game_config, video, skip_replay),
+	play_controller(level, state_of_game, ticks, game_config, video, skip_replay),
 	cursor_setter(cursor::NORMAL),
 	textbox_info_(),
 	replay_sender_(recorder),

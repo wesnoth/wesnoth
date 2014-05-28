@@ -88,7 +88,7 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static unit_map dummy_umap;
 	static config dummy_cfg;
 	static gamemap dummy_map(dummy_cfg, "");
-	static tod_manager dummy_tod(dummy_cfg, 0);
+	static tod_manager dummy_tod(dummy_cfg);
 	static std::vector<team> dummy_teams;
 	return new game_display(dummy_umap, video, dummy_map, dummy_tod,
 			dummy_teams, dummy_cfg, dummy_cfg);

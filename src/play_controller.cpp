@@ -89,7 +89,7 @@ static void clear_resources()
 
 
 play_controller::play_controller(const config& level, game_state& state_of_game,
-		const int ticks, const int num_turns, const config& game_config,
+		const int ticks, const config& game_config,
 		CVideo& video, bool skip_replay) :
 	controller_base(ticks, game_config, video),
 	observer(),
@@ -104,7 +104,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	mouse_handler_(NULL, teams_, units_, map_),
 	menu_handler_(NULL, units_, teams_, level, map_, game_config, state_of_game),
 	soundsources_manager_(),
-	tod_manager_(level, num_turns),
+	tod_manager_(level),
 	pathfind_manager_(),
 	persist_(),
 	gui_(),

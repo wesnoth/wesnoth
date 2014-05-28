@@ -280,7 +280,6 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		bool skip_replay, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
 	do_carryover_WML(init_level, state_of_game);
@@ -288,7 +287,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	clear_carryover_WML(state_of_game);
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-	playsingle_controller playcontroller(init_level, state_of_game, ticks, num_turns, game_config, disp.video(), skip_replay);
+	playsingle_controller playcontroller(init_level, state_of_game, ticks, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
@@ -335,14 +334,13 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	int num_turns = (*level)["turns"].to_int(-1);
 
 	config init_level = *level;
 	do_carryover_WML(init_level, state_of_game);
 	team_init(init_level, state_of_game);
 	clear_carryover_WML(state_of_game);
 
-	playmp_controller playcontroller(init_level, state_of_game, ticks, num_turns,
+	playmp_controller playcontroller(init_level, state_of_game, ticks,
 		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 	end_level = playcontroller.get_end_level_data_const();

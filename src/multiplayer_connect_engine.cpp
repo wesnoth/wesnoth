@@ -325,7 +325,7 @@ void connect_engine::update_and_send_diff(bool update_time_of_day)
 
 	if (update_time_of_day) {
 		// Set random start ToD.
-		tod_manager tod_mng(level_, level_["turns"]);
+		tod_manager tod_mng(level_);
 	}
 
 	config diff = level_.get_diff(old_level);

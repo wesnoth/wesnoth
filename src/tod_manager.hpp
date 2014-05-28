@@ -27,7 +27,7 @@ class unit_map;
 class tod_manager : public savegame::savegame_config
 {
 	public:
-	explicit tod_manager(const config& scenario_cfg = config(), const int num_turns = -1);
+	explicit tod_manager(const config& scenario_cfg = config());
 		~tod_manager() {}
 		tod_manager& operator=(const tod_manager& manager);
 

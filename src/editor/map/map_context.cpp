@@ -277,7 +277,7 @@ void map_context::load_scenario(const config& game_config)
 
 	labels_.read(scenario);
 
-	tod_manager_.reset(new tod_manager(scenario, scenario["turns"].to_int(-1)));
+	tod_manager_.reset(new tod_manager(scenario));
 	BOOST_FOREACH(const config &time_area, scenario.child_range("time_area")) {
 		tod_manager_->add_time_area(time_area);
 	}
