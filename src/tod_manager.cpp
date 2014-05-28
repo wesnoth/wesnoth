@@ -20,11 +20,17 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "play_controller.hpp"
+#include "random_new.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/range/adaptors.hpp>
+#include <boost/range/algorithm.hpp>
+#include <boost/lambda/bind.hpp>
+#include <boost/lambda/lambda.hpp>
+#include <boost/bind.hpp>
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -37,15 +43,15 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	turn_(scenario_cfg["turn_at"].to_int(1)),
 	num_turns_(scenario_cfg["turns"].to_int(-1))
 {
+	// ? : operator doesn't work in this case.
+	if (scenario_cfg["current_time"].to_int(-17403) == -17403) 
+		random_tod_ = scenario_cfg["random_start_time"];
+	else
+		random_tod_ = false;
 
+	currentTime_ = calculate_current_time(times_.size(), turn_, scenario_cfg["current_time"].to_int(0), true);
+	
 	time_of_day::parse_times(scenario_cfg,times_);
-
-	currentTime_ = get_start_ToD(scenario_cfg);
-	//TODO:
-	//Very bad, since we're pretending to not modify the cfg. Needed to transfer the result
-	//to the network clients in a mp game, otherwise we have OOS.
-	config& non_const_config = const_cast<config&>(scenario_cfg);
-	non_const_config["current_time"] = currentTime_;
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -64,12 +70,47 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 	return *this;
 }
 
+template <typename T>
+struct greater
+{
+	greater(T val) : value (val) {}
+	bool operator () (T v2)
+	{
+		return value < v2;
+	}
+
+	T value;
+};
+
+void tod_manager::resolve_random(random_new::rng& r)
+{
+	//process the random_start_time string, which can be boolean yes/no true/false or a
+	//comma-separated string of integers >= 1 referring to the times_ array indices
+	std::vector<int> output;
+	boost::copy( utils::split(random_tod_.str()) 
+		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
+		| boost::adaptors::filtered(greater<int>(0))
+		, std::back_inserter(output) );
+
+	if(!output.empty())
+	{
+		int chosen = output[r.next_random() % output.size()]; 
+		currentTime_ = calculate_current_time(times_.size(), turn_, chosen, true);
+		r.next_random();
+	}
+	else if (random_tod_.to_bool(false))
+	{
+		currentTime_ = calculate_current_time(times_.size(), turn_, r.next_random(), true);
+	}
+	random_tod_ = false;
+}
 config tod_manager::to_config() const
 {
 	config cfg;
 	cfg["turn_at"] = turn_;
 	cfg["turns"] = num_turns_;
 	cfg["current_time"] = currentTime_;
+	cfg["random_start_time"] = random_tod_;
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
@@ -321,36 +362,6 @@ void tod_manager::remove_time_area(int area_index)
 {
 	assert(area_index < static_cast<int>(areas_.size()));
 	areas_.erase(areas_.begin() + area_index);
-}
-
-int tod_manager::get_start_ToD(const config &level) const
-{
-	const config::attribute_value& current_time = level["current_time"];
-	if (!current_time.blank())
-	{
-		return calculate_current_time(times_.size(), turn_, current_time.to_int(0), true);
-	}
-
-	const int default_result = calculate_current_time(times_.size(), turn_, currentTime_);
-
-	const config::attribute_value& cfg_random_start_time = level["random_start_time"];
-	if(!cfg_random_start_time.blank()) {
-		const std::string& random_start_time = cfg_random_start_time.str();
-		//TODO:
-		//Here there is danger of OOS (bug #15948)
-		//But this randomization is needed on the other hand to make the "random start time" option
-		//in the mp game selection screen work.
-
-		//process the random_start_time string, which can be boolean yes/no true/false or a
-		//comma-separated string of integers >= 1 referring to the times_ array indices
-		const std::vector<std::string>& random_start_time_strings = utils::split(random_start_time);
-		const int random_index = calculate_current_time(random_start_time_strings.size(), turn_, rand(), true);
-		const int given_current_time = lexical_cast_default<int, std::string>(random_start_time_strings[random_index], 0) - 1;
-		if(given_current_time >= 0) return calculate_current_time(times_.size(), turn_, given_current_time, true);
-		if(cfg_random_start_time.to_bool(false)) return calculate_current_time(times_.size(), turn_, rand(), true);
-	}
-
-	return default_result;
 }
 
 const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn, const int current_time) const
