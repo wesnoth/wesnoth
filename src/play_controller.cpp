@@ -1465,7 +1465,7 @@ void play_controller::check_victory()
 		}
 	}
 
-	if (found_player) {
+	if (found_player || found_network_player) {
 		game_events::fire("enemies defeated");
 		check_end_level();
 	}
@@ -1475,7 +1475,7 @@ void play_controller::check_victory()
 	DBG_NG << "found_network_player: " << found_network_player << std::endl;
 	DBG_NG << "there_is_a_local_human: " << there_is_a_local_human << std::endl;
 
-	if (!victory_when_enemies_defeated_ && (found_player || (!there_is_a_local_human && found_network_player))) {
+	if (!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
 		return;
 	}
