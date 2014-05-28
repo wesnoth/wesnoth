@@ -1770,6 +1770,7 @@ def consistency_check():
                 if not base in usage:
                     print '"%s", line %d: %s has unknown base %s' % \
                               (filename, rl, rtype, base)
+                    continue
                 else:
                     utype = usage[base]
                 utypes.append(utype)
