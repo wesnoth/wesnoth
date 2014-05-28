@@ -60,7 +60,7 @@ bool windows_tray_notification::create_tray_icon()
 		return false;
 	}
 
-	const HRSRC group_icon_info = FindResource(wesnoth_exe, L"WESNOTH_ICON", RT_GROUP_ICON);
+	const HRSRC group_icon_info = FindResource(wesnoth_exe, TEXT("WESNOTH_ICON"), RT_GROUP_ICON);
 	if (group_icon_info == NULL) {
 		return false;
 	}
@@ -121,7 +121,7 @@ bool windows_tray_notification::create_tray_icon()
 #if _WIN32_WINNT >= 0x600
 	nid->hBalloonIcon = icon;
 #endif
-	lstrcpy(nid->szTip, wtip.c_str());
+	lstrcpyW(nid->szTip, wtip.c_str());
 
 	// creating icon notification
 	return Shell_NotifyIcon(NIM_ADD, nid) != FALSE;
@@ -133,8 +133,8 @@ bool windows_tray_notification::set_tray_message(const std::string& title, const
 	message_reset = (nid->uFlags & NIF_INFO) != 0;
 
 	nid->uFlags |= NIF_INFO;
-	lstrcpy(nid->szInfoTitle, string_to_wstring(title, MAX_TITLE_LENGTH).c_str());
-	lstrcpy(nid->szInfo, string_to_wstring(message, MAX_MESSAGE_LENGTH).c_str());
+	lstrcpyW(nid->szInfoTitle, string_to_wstring(title, MAX_TITLE_LENGTH).c_str());
+	lstrcpyW(nid->szInfo, string_to_wstring(message, MAX_MESSAGE_LENGTH).c_str());
 
 	// setting notification
 	return Shell_NotifyIcon(NIM_MODIFY, nid) != FALSE;
