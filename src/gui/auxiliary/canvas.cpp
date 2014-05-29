@@ -1092,7 +1092,8 @@ void timage::draw(surface& canvas,
 	surface tmp(image::get_image(image::locator(name)));
 
 	if(!tmp) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn."
+				  << std::endl;
 		return;
 	}
 

@@ -270,22 +270,24 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 {
 
 	const std::string& campaign_type = cfg_summary["campaign_type"];
-	if (cfg_summary["corrupt"].to_bool()) {
+	if(cfg_summary["corrupt"].to_bool()) {
 		str << "\n" << _("#(Invalid)");
 	} else {
 		str << "\n";
 
-		try {
-			game_classification::CAMPAIGN_TYPE ct = lexical_cast<game_classification::CAMPAIGN_TYPE> (campaign_type);
+		try
+		{
+			game_classification::CAMPAIGN_TYPE ct
+					= lexical_cast<game_classification::CAMPAIGN_TYPE>(
+							campaign_type);
 
-			switch (ct) {
-				case game_classification::SCENARIO:
-				{
+			switch(ct) {
+				case game_classification::SCENARIO: {
 					const std::string campaign_id = cfg_summary["campaign"];
 					const config* campaign = NULL;
 					if(!campaign_id.empty()) {
-						if(const config& c
-						   = cache_config_.find_child("campaign", "id", campaign_id)) {
+						if(const config& c = cache_config_.find_child(
+								   "campaign", "id", campaign_id)) {
 
 							campaign = &c;
 						}
@@ -314,8 +316,10 @@ void tgame_load::evaluate_summary_string(std::stringstream& str,
 				case game_classification::TEST:
 					str << _("Test scenario");
 					break;
-			}			
-		} catch (bad_lexical_cast &) {
+			}
+		}
+		catch(bad_lexical_cast&)
+		{
 			str << campaign_type;
 		}
 

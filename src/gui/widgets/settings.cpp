@@ -208,7 +208,8 @@ private:
  * Minimap &                      @macro = minimap_description $
  * Multi_page &                   @macro = multi_page_description $
  * Panel &                        @macro = panel_description $
- * Password_box &                 A text box masking it's content by asterisks. $
+ * Password_box &                 A text box masking it's content by asterisks.
+ *                                $
  * Repeating_button &             @macro = repeating_button_description $
  * Scroll_label &                 @macro = scroll_label_description $
  * Slider &                       @macro = slider_description $
@@ -504,11 +505,13 @@ void load_settings()
 	catch(config::error& e)
 	{
 		ERR_GUI_P << e.what() << '\n';
-		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'." << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/gui/default.cfg'."
+				  << std::endl;
 	}
 	catch(const abstract_validator::error& e)
 	{
-		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'." << std::endl;
+		ERR_GUI_P << "Setting: could not read file 'data/gui/schema.cfg'."
+				  << std::endl;
 		ERR_GUI_P << e.message;
 	}
 	// Parse guis

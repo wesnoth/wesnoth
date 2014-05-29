@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 class tscreenshot_notification : public tdialog
 {
@@ -50,7 +51,6 @@ private:
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
 };
-
 }
 
 #endif /* ! GUI_DIALOGS_SCREENSHOT_NOTIFICATION_HPP_INCLUDED */

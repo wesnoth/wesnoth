@@ -142,20 +142,22 @@ void ttext_::insert_char(const Uint16 unicode)
 
 void ttext_::copy_selection(const bool mouse)
 {
-	if(selection_length_ == 0) return;
-	
-	unsigned end,start = selection_start_;
+	if(selection_length_ == 0) {
+		return;
+	}
+
+	unsigned end, start = selection_start_;
 	const utf8::string txt = text_.text();
-	
-	if(selection_length_  > 0) {
-		end   = utf8::index(txt,start+selection_length_);
-		start = utf8::index(txt,start);
+
+	if(selection_length_ > 0) {
+		end = utf8::index(txt, start + selection_length_);
+		start = utf8::index(txt, start);
 	} else {
 		// inverse selection: selection_start_ is in fact the end
-		end   = utf8::index(txt,start);
-		start = utf8::index(txt,start+selection_length_);
+		end = utf8::index(txt, start);
+		start = utf8::index(txt, start + selection_length_);
 	}
-	copy_to_clipboard(txt.substr(start,end-start), mouse);
+	copy_to_clipboard(txt.substr(start, end - start), mouse);
 }
 
 void ttext_::paste_selection(const bool mouse)

@@ -345,7 +345,8 @@ void tmouse_motion::stop_hover_timer()
 				  << ".\n";
 
 		if(!remove_timer(hover_timer_)) {
-			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer." << std::endl;
+			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer."
+					  << std::endl;
 		}
 
 		hover_timer_ = 0;

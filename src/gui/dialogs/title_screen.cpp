@@ -245,9 +245,8 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 			hotkey::TITLE_SCREEN__ADDONS,
 			boost::bind(&hotkey, boost::ref(window), GET_ADDONS));
 
-	window.register_hotkey(
-			hotkey::TITLE_SCREEN__CORES,
-			boost::bind(&hotkey, boost::ref(window), CORES));
+	window.register_hotkey(hotkey::TITLE_SCREEN__CORES,
+						   boost::bind(&hotkey, boost::ref(window), CORES));
 
 	window.register_hotkey(
 			hotkey::TITLE_SCREEN__EDITOR,

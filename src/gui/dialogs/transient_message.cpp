@@ -33,8 +33,7 @@ ttransient_message::ttransient_message(const std::string& title,
 									   const std::string& message,
 									   const bool message_use_markup,
 									   const std::string& image)
-	: hide_title_(title.empty())
-	, hide_image_(image.empty())
+	: hide_title_(title.empty()), hide_image_(image.empty())
 {
 	register_label("title", true, title, title_use_markup);
 	register_label("message", true, message, message_use_markup);

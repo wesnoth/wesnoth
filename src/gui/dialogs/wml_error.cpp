@@ -49,7 +49,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 	const std::string& addons_path = get_addon_campaigns_dir();
 	std::vector<std::string> files(files_original);
 
-	BOOST_FOREACH(std::string& file, files)
+	BOOST_FOREACH(std::string & file, files)
 	{
 		std::string base;
 		std::string filename = file_name(file);
@@ -127,7 +127,6 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 	return utils::bullet_list(files);
 }
-
 }
 
 namespace gui2
@@ -203,14 +202,14 @@ twml_error::twml_error(const std::string& summary,
 
 void twml_error::pre_show(CVideo& /*video*/, twindow& window)
 {
-    if(!have_files_) {
+	if(!have_files_) {
 		tcontrol& filelist = find_widget<tcontrol>(&window, "files", false);
 		filelist.set_visible(tcontrol::tvisible::invisible);
 	}
 
 	if(!have_post_summary_) {
-		tcontrol& post_summary = find_widget<tcontrol>(&window,
-													   "post_summary", false);
+		tcontrol& post_summary
+				= find_widget<tcontrol>(&window, "post_summary", false);
 		post_summary.set_visible(tcontrol::tvisible::invisible);
 	}
 
