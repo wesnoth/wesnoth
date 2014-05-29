@@ -714,7 +714,7 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 		key_down(event.keysym.sym,
 				 static_cast<const SDL_Keymod>(event.keysym.mod),
-				 static_cast<const Uint16>(event.keysym.scancode));
+				 0);
 #else
 		key_down(event.keysym.sym, event.keysym.mod, event.keysym.unicode);
 #endif
