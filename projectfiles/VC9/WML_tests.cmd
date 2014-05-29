@@ -4,11 +4,14 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set LoadFile=wml_test_schedule
+:: save file paths and command line arguments
+set LoadFile=%~p0..\..\wml_test_schedule
 set binary=wesnoth.exe
 set opt=--log-strict=warning
+:: OutDir is necessary for VC debug configuration, defaults to wesnoth\
+if "%1"=="" ( set "OutDir=..\..\") else ( set "OutDir=%~p1")
 
-cd ..\..\
+cd %OutDir%
 echo running WML tests:
 
 :: ignore lines beginning with #
