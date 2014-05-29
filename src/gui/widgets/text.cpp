@@ -127,11 +127,11 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 	}
 }
 
-void ttext_::insert_char(const Uint16 unicode)
+void ttext_::insert_char(const utf8::string& unicode)
 {
 	delete_selection();
 
-	if(text_.insert_unicode(selection_start_, unicode)) {
+	if(text_.insert_text(selection_start_, unicode)) {
 
 		// Update status
 		set_cursor(selection_start_ + 1, false);
@@ -277,15 +277,15 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 void ttext_::handle_key_default(bool& handled,
 								SDLKey /*key*/,
 								SDLMod /*modifier*/,
-								Uint16 unicode)
+								const utf8::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
-	if(unicode >= 32 && unicode != 127) {
-		handled = true;
-		insert_char(unicode);
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
-	}
+	//	if(unicode >= 32 && unicode != 127) {
+	handled = true;
+	insert_char(unicode);
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
+	//	}
 }
 
 void ttext_::signal_handler_middle_button_click(const event::tevent event,
@@ -302,7 +302,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event,
 										 bool& handled,
 										 const SDLKey key,
 										 SDLMod modifier,
-										 const Uint16 unicode)
+										 const utf8::string& unicode)
 {
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

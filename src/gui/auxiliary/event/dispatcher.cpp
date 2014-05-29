@@ -212,7 +212,7 @@ class ttrigger_keyboard
 public:
 	ttrigger_keyboard(const SDLKey key,
 					  const SDLMod modifier,
-					  const Uint16 unicode)
+					  const utf8::string& unicode)
 		: key_(key), modifier_(modifier), unicode_(unicode)
 	{
 	}
@@ -229,14 +229,14 @@ public:
 private:
 	SDLKey key_;
 	SDLMod modifier_;
-	Uint16 unicode_;
+	utf8::string unicode_;
 };
 
 bool tdispatcher::fire(const tevent event,
 					   twidget& target,
 					   const SDLKey key,
 					   const SDLMod modifier,
-					   const Uint16 unicode)
+					   const utf8::string& unicode)
 {
 	assert(find<tset_event_keyboard>(event, tevent_in_set()));
 	return fire_event<tsignal_keyboard_function>(

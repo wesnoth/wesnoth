@@ -52,7 +52,7 @@ void tpassword_box::set_value(const std::string& text)
 	ttext_box::set_value(std::string(get_text_length(real_value_), '*'));
 }
 
-void tpassword_box::insert_char(const Uint16 unicode)
+void tpassword_box::insert_char(const utf8::string& unicode)
 {
 	pre_function();
 	ttext_box::insert_char(unicode);

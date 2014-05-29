@@ -254,8 +254,9 @@ private:
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
 	 */
-	void
-	key_down(const SDLKey key, const SDLMod modifier, const Uint16 unicode);
+	void key_down(const SDLKey key,
+				  const SDLMod modifier,
+				  const utf8::string& unicode);
 
 	/**
 	 * Fires a keyboard event which has no parameters.
@@ -714,9 +715,11 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 		key_down(event.keysym.sym,
 				 static_cast<const SDL_Keymod>(event.keysym.mod),
-				 0);
+				 "");
 #else
-		key_down(event.keysym.sym, event.keysym.mod, event.keysym.unicode);
+		key_down(event.keysym.sym,
+				 event.keysym.mod,
+				 ::implementation::ucs4char_to_string(event.keysym.unicode));
 #endif
 	}
 }
@@ -734,7 +737,7 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
 
 void thandler::key_down(const SDLKey key,
 						const SDLMod modifier,
-						const Uint16 unicode)
+						const utf8::string& unicode)
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
 

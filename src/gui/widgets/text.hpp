@@ -155,7 +155,7 @@ protected:
 	 *
 	 * @param unicode             The unicode value of the character to insert.
 	 */
-	virtual void insert_char(const Uint16 unicode);
+	virtual void insert_char(const utf8::string& unicode);
 
 	/**
 	 * Deletes the character.
@@ -423,7 +423,7 @@ protected:
 	virtual void handle_key_default(bool& handled,
 									SDLKey key,
 									SDLMod modifier,
-									Uint16 unicode);
+									const utf8::string& unicode);
 
 private:
 	/**
@@ -446,7 +446,7 @@ private:
 									 bool& handled,
 									 const SDLKey key,
 									 SDLMod modifier,
-									 const Uint16 unicode);
+									 const utf8::string& unicode);
 
 	void signal_handler_receive_keyboard_focus(const event::tevent event);
 	void signal_handler_lose_keyboard_focus(const event::tevent event);

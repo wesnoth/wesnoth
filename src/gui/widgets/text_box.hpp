@@ -236,7 +236,7 @@ private:
 	void handle_key_default(bool& handled,
 							SDLKey key,
 							SDLMod modifier,
-							Uint16 unicode);
+							const utf8::string& unicode);
 
 	/** Inherited from ttext_. */
 	void handle_key_clear_line(SDLMod modifier, bool& handled);

@@ -65,7 +65,7 @@ public:
 
 
 protected:
-	void insert_char(const Uint16 unicode);
+	void insert_char(const utf8::string& unicode);
 	void delete_char(const bool before_cursor);
 
 	void paste_selection(const bool mouse);

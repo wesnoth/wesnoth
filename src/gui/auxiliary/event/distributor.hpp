@@ -308,7 +308,7 @@ private:
 
 	void signal_handler_sdl_key_down(const SDLKey key,
 									 const SDLMod modifier,
-									 const Uint16 unicode);
+									 const utf8::string& unicode);
 
 	void signal_handler_notify_removal(tdispatcher& widget, const tevent event);
 };
