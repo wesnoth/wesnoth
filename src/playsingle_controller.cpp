@@ -1082,3 +1082,8 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 	}
 	return res;
 }
+
+bool playsingle_controller::is_host() const 
+{
+	return turn_data_.is_host();
+}

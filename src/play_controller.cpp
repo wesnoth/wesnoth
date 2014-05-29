@@ -123,7 +123,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	player_number_(1),
 	first_player_(level_["playing_team"].to_int() + 1),
 	start_turn_(tod_manager_.turn()), // tod_manager_ constructed above
-	is_host_(true),
 	skip_replay_(skip_replay),
 	linger_(false),
 	it_is_a_new_turn_(true),

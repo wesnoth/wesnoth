@@ -23,6 +23,9 @@ class replay_network_sender;
 #include "playturn_network_adapter.hpp"
 #include "replay.hpp"
 
+/**
+	TODO: rename this class since it isn't that much related to turns.
+*/
 class turn_info
 {
 public:
@@ -58,6 +61,10 @@ public:
 	PROCESS_DATA_RESULT process_network_data_from_reader(bool skip_replay);
 
 	events::generic_event& host_transfer() { return host_transfer_; }
+
+
+	bool is_host() const { return is_host_; }
+	void set_host(bool val) { is_host_ = val; }
 private:
 	static void change_controller(const std::string& side, const std::string& controller);
 	static void change_side_controller(const std::string& side, const std::string& player);
@@ -73,6 +80,8 @@ private:
 	events::generic_event host_transfer_;
 
 	playturn_network_adapter& network_reader_;
+
+	bool is_host_;
 };
 
 /**

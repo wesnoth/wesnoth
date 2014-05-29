@@ -45,7 +45,7 @@ playmp_controller::playmp_controller(const config& level,
 	network_processing_stopped_(false),
 	blindfold_(*resources::screen,blindfold_replay_)
 {
-	is_host_ = is_host;
+	turn_data_.set_host(is_host);
 	turn_data_.host_transfer().attach_handler(this);
 	// We stop quick replay if play isn't yet past turn 1
 	if ( replay_last_turn_ <= 1)
@@ -170,7 +170,7 @@ void playmp_controller::play_human_turn(){
 	show_turn_dialog();
 	execute_gotos();
 
-	if (!linger_ || is_host_) {
+	if (!linger_ || is_host()) {
 		end_turn_enable(true);
 	}
 	while(!end_turn_) {
@@ -282,7 +282,7 @@ void playmp_controller::play_idle_loop()
 void playmp_controller::set_end_scenario_button()
 {
 	// Modify the end-turn button
-	if (! is_host_) {
+	if (! is_host()) {
 		gui::button* btn_end = gui_->find_action_button("button-endturn");
 		btn_end->enable(false);
 	}
@@ -370,7 +370,7 @@ void playmp_controller::wait_for_upload()
 {
 	// If the host is here we'll never leave since we wait for the host to
 	// upload the next scenario.
-	assert(!is_host_);
+	assert(!is_host());
 
 	config cfg;
 	network_reader_.set_source(playturn_network_adapter::get_source_from_config(cfg));
@@ -556,7 +556,6 @@ void playmp_controller::handle_generic_event(const std::string& name){
 		turn_data_.send_data();
 	}
 	else if (name == "host_transfer"){
-		is_host_ = true;
 		if (linger_){
 			end_turn_enable(true);
 			gui_->invalidate_theme();
@@ -577,7 +576,7 @@ bool playmp_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 			{	
 				bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 					resources::gamedata->next_scenario() != "null";
-				return is_host_ || !has_next_scenario;
+				return is_host() || !has_next_scenario;
 			}
 			else
 			{

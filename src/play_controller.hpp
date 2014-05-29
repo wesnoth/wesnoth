@@ -251,7 +251,6 @@ protected:
 	int player_number_;
 	int first_player_;
 	unsigned int start_turn_;
-	bool is_host_;
 	bool skip_replay_;
 	bool linger_;
 	bool it_is_a_new_turn_;

@@ -28,8 +28,6 @@ public:
 		bool skip_replay, bool blindfold_replay, bool is_host);
 	virtual ~playmp_controller();
 
-	bool is_host() const { return is_host_; }
-
 	static unsigned int replay_last_turn() { return replay_last_turn_; }
 	static void set_replay_last_turn(unsigned int turn);
 

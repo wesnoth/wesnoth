@@ -71,6 +71,7 @@ public:
 			int remaining_gold, int finishing_bonus_per_turn,
 			int turns_left, int finishing_bonus);
 	virtual void on_not_observer() {}
+	bool is_host() const ;
 
 protected:
 	virtual void play_turn(bool save);
