@@ -376,7 +376,7 @@ bool unit_map::self_check() const {
 
 #endif
 
-bool unit_map::has_unit(const unit * const u)
+bool unit_map::has_unit(const unit * const u) const
 {
 	assert(u);
 
