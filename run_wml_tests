@@ -11,8 +11,6 @@ usage()
   echo -e "\t-h\tShows this help."
   echo -e "\t-v\tVerbose mode."
   echo -e "\t-w\tVery verbose mode. (Debug script.)"
-  echo -e "\t-u\tUse unix timeout instead of wesnoth --timeout argument."
-  echo -e "\t  \tUnix timeout will send a TERM signal, followed by KILL."
   echo -e "\t-a arg\tAdditional arguments to go to wesnoth."
   echo -e "\t-t arg\tNew timer value to use, instead of 10s as default."
   echo -e "\t-s\tDisable strict mode. By default, we run wesnoth with option"
@@ -53,6 +51,12 @@ get_code_string()
   4)
     CodeString="FAIL (ERRORED REPLAY)"
     ;;
+  124)
+    CodeString="FAIL (TIMEOUT, by TERM signal)"
+    ;;
+  137)
+    CodeString="FAIL (TIMEOUT, by KILL signal)"
+    ;;
   134)
     CodeString="FAIL (ASSERTION FAILURE ? ? ?)"
     ;;
@@ -70,24 +74,14 @@ check_errs()
   # Argument 1 is the name of the test.
   # Argument 2 is the wesnoth error code for the test. 
   # Argument 3 is the expected error code.
-  if [ "${2}" -eq 134 -a "${3}" -eq 2 -a "$UnixTimeout" -eq 0 ]; then
-    if [ "$Verbose" -ge 2 ]; then
-      echo "Caught \'terminate called without an active exception\' return code 134"
-      echo "This means wesnoth tried to kill the thread but SDL threw an error..."
-      echo "(This happens occasionally when running the empty_test with a timeout.)"
-      echo "Since we expected timeout, the test passes."
-      echo ""
-      echo "*However*, review the logs, because it may also mean an assertion failure..."
-    fi
-    return 0
-  elif [ "${2}" -eq 124 -a "${3}" -eq 2 -a "$UnixTimeout" -eq 1 ]; then
+  if [ "${2}" -eq 124 -a "${3}" -eq 2 ]; then
     if [ "$Verbose" -ge 2 ]; then
       echo "Caught return code 124 from timeout"
       echo "This signal means that the unix timeout utility killed wesnoth with TERM."
       echo "Since we expected timeout, the test passes."
     fi
     return 0
-  elif [ "${2}" -eq 137 -a "${3}" -eq 2 -a "$UnixTimeout" -eq 1 ]; then
+  elif [ "${2}" -eq 137 -a "${3}" -eq 2 ]; then
     if [ "$Verbose" -ge 2 ]; then
       echo "Caught return code 137 from timeout"
       echo "This signal means that the unix timeout utility killed wesnoth with KILL."
@@ -130,9 +124,12 @@ run_test()
 {
   # Argument 1 is the expected error code
   # Argument 2 is the name of the test scenario
+
   preopts=""
   binary="$BinPath"
   opts="-u $2 "
+
+  timer=$basetimer
 
   if [ "$DebugMode" -eq 1 ]; then
     binary+="wesnoth-debug "
@@ -140,25 +137,22 @@ run_test()
     binary+="wesnoth "
   fi
   
-  timer=$basetimer
   # Use validcache on tests that aren't the first test.
   if [ "$FirstTest" -eq 1 ]; then
     ((timer *= 2))
   else
     opts+="--validcache "
   fi
-  # Add a timeout
-  if [ "$UnixTimeout" -eq 1 ]; then
-    timer1=$((timer+1))
-    preopts+="timeout --kill-after=$timer1 $timer "
-  else
-    timerms=$((timer*1000))
-    opts+="--timeout $timerms "
-  fi
+
+  # Add a timeout using unix timeout utility
+  timer1=$((timer+1))
+  preopts+="timeout --kill-after=$timer1 $timer "
+
   # If running strict, then set strict level to "warning"
   if [ "$StrictMode" -eq 1 ]; then
     opts+="--log-strict=warning "
   fi
+
   # Assemble command
   command="$preopts"
   command+="$binary"
@@ -240,6 +234,9 @@ extra_opts+="$*"
 if [ "$Verbose" -ge 2 ]; then
   if [ "${#extra_opts}" -ge 0 ]; then
     echo "Found additional arguments to wesnoth: " "$extra_opts" 
+  fi
+  if [ "$UnixTimeout" -eq 1 ]; then
+    echo "Wesnoth built-in timeout was disabled. This script was updated, and -u is now unnecessary and has no effect."
   fi
 fi
 

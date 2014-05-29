@@ -10,7 +10,7 @@ script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - ./test_wrapper.sh
-    - ./run_wml_tests -u -t 15
+    - ./run_wml_tests -t 15
 after_failure:
     - ./travis_after_failure.sh
 notifications:

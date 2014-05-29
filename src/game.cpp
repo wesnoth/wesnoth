@@ -421,38 +421,6 @@ static void init_locale() {
 }
 
 /**
- * SDL Semaphore which the main thread waits on, while the worker does it's job.
- * We mainly only need this so we can use the SDL_SemWaitTimeout function to do the timer stuff for us.
- */
-static SDL_sem * worker_sem;
-
-/**
- * Structure used to pass data to the worker thread. The int* is used to pass the worker result back out.
- * This is not, strictly speaking, good practice with threads, but it is fine for a single thread with
- * a timeout, that only sets the variable once.
- * 
- * If for some reason you want to run many worker threads at once then don't use this code. 
- */
-typedef std::pair<boost::shared_ptr<game_controller>, int*> thread_data;
-
-/**
- * Function used by worker thread to perform unit test with timeout.
- */
-static int run_unit_test (void * data){
-	thread_data * mydata = static_cast<thread_data *>(data);
-	if (SDL_SemWait(worker_sem) == -1) {
-		std::cerr << "Worker failed to lock worker semaphore!" << std::endl;
-	}
-	int ret_val = mydata->first->unit_test();
-	*mydata->second = ret_val;
-
-	if (SDL_SemPost(worker_sem) == -1) {
-		std::cerr << "Worker failed to unlock worker semaphore after working!" << std::endl;
-	}
-	return ret_val;
-}
-
-/**
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
@@ -568,64 +536,18 @@ static int do_gameloop(int argc, char** argv)
 		loadscreen_manager.reset();
 
 		if(cmdline_opts.unit_test) {
-#if SDL_VERSION_ATLEAST(2,0,0) && !SDL_VERSION_ATLEAST(2,0,2)
 			if(cmdline_opts.timeout) {
-				std::cerr << "SDL Version number: " << SDL_COMPILEDVERSION << std::endl;
-				std::cerr << "Your SDL version is between 2.0.0 and 2.0.2..." << std::endl
-					<< " I don't know how to handle timedout threads. Disabling timeout." << std::endl;
-				*cmdline_opts.timeout = 0;
+				std::cerr << "The wesnoth built-in timeout feature has been removed.\n" << std::endl;
+				std::cerr << "Please use a platform-specific script which will kill the overtime process instead.\n" << std::endl;
+				std::cerr << "For examples in bash, or in windows cmd, see the forums, or the wesnoth repository." << std::endl;
+				std::cerr << "The bash script is called `run_wml_tests`, the windows script is part of the VC project.\n" << std::endl;
 			}
-#endif
-			if(cmdline_opts.timeout && *cmdline_opts.timeout > 0) {
-				int worker_result = 2; //Default timeout return value if worker fails to return
-				worker_sem = SDL_CreateSemaphore(1);
-				if (worker_sem == NULL) {
-					std::cerr << "Failed to create a semaphore for timeout worker thread!" << std::endl;
-					std::cerr << "FAIL TEST (TIMEOUT): " << *cmdline_opts.unit_test << std::endl;
-					return 2;
-				}
-
-				thread_data data(game, &worker_result);
-#if SDL_VERSION_ATLEAST(2,0,0)
-				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, "worker", &data);
-#else
-				SDL_Thread *worker = SDL_CreateThread(&run_unit_test, &data);
-#endif
-
-				std::cerr << "Setting timer for " << *cmdline_opts.timeout << " ms." << std::endl;
-				int wait_result = SDL_SemWaitTimeout(worker_sem, *cmdline_opts.timeout);
-				if (wait_result == 0) {
-					SDL_SemPost(worker_sem);
-					SDL_DestroySemaphore(worker_sem);
-					std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
-						<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
-						<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
-						<< ": "<<*cmdline_opts.unit_test << std::endl;
-					return worker_result;
-				} else {
-#if SDL_VERSION_ATLEAST(2,0,2) 
-					SDL_DetachThread(worker);
-#else
-#if !SDL_VERSION_ATLEAST(2,0,0)
-					SDL_KillThread(worker);
-#endif
-#endif
-					if (wait_result == -1) {
-						std::cerr << "Error in SemWaitTimeout!" << std::endl;
-					} else {
-						std::cerr << "Test timed out!" << std::endl;
-					}
-					std::cerr << ("FAIL TEST (TIMEOUT): ") << *cmdline_opts.unit_test << std::endl;
-					return 2;
-				}
-			} else {
-				int worker_result = game->unit_test();
-				std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
-					<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
-					<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
-					<< ": "<<*cmdline_opts.unit_test << std::endl;
-				return worker_result;
-			}
+			int worker_result = game->unit_test();
+			std::cerr << ((worker_result == 0) ? "PASS TEST " : "FAIL TEST ")
+				<< ((worker_result == 3) ? "(INVALID REPLAY)" : "")
+				<< ((worker_result == 4) ? "(ERRORED REPLAY)" : "")
+				<< ": "<<*cmdline_opts.unit_test << std::endl;
+			return worker_result;
 		}
 
 		if(game->play_test() == false) {
