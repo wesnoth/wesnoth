@@ -66,6 +66,8 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	initialise_from_surface(renderer, access);
 }
 
+
+
 ttexture::~ttexture()
 {
 	assert(reference_count_);
@@ -98,6 +100,51 @@ ttexture::ttexture(const ttexture& texture)
 
 	/* In the unlikely case the reference count wraps, we die. */
 	assert(*reference_count_ != 0);
+}
+
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   SDL_Surface* source_surface__)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, smooth_scaling_(false)
+	, flip_(SDL_FLIP_NONE)
+	, clip_()
+	, source_surface_(source_surface__)
+{
+	if(source_surface_ == NULL) {
+		throw texception("Invalid source_surface__ argument passed, failed to "
+						 "create SDL_Texture object.",
+						 false);
+	}
+
+	initialise_from_surface(renderer, access);
+}
+
+ttexture::ttexture(SDL_Renderer& renderer,
+				   const int access,
+				   const surface& surface)
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, smooth_scaling_(false)
+	, flip_(SDL_FLIP_NONE)
+	, clip_()
+	, source_surface_(
+			SDL_ConvertSurface(surface, surface->format, surface->flags))
+{
+	if(source_surface_ == NULL) {
+		throw texception("Invalid source_surface__ argument passed, failed to "
+						 "create SDL_Texture object.",
+						 false);
+	}
+
+	initialise_from_surface(renderer, access);
 }
 
 ttexture& ttexture::operator=(const ttexture& texture)
