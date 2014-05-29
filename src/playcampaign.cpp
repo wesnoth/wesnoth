@@ -292,6 +292,10 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
+	end_level = playcontroller.get_end_level_data_const();
+	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
+	end_level.write(cfg_end_level);
+
 	if (res == DEFEAT) {
 		if (resources::persist != NULL)
 			resources::persist->end_transaction();
@@ -315,10 +319,6 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		}
 	}
 
-	end_level = playcontroller.get_end_level_data_const();
-	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
-	end_level.write(cfg_end_level);
-
 	return res;
 }
 
@@ -338,6 +338,10 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	playmp_controller playcontroller(init_level, state_of_game, ticks,
 		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
+
+	end_level = playcontroller.get_end_level_data_const();
+	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
+	end_level.write(cfg_end_level);
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())
@@ -367,10 +371,6 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 			}
 		}
 	}
-
-	end_level = playcontroller.get_end_level_data_const();
-	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
-	end_level.write(cfg_end_level);
 
 	return res;
 }
