@@ -1413,7 +1413,6 @@ void play_controller::check_victory()
 		}
 	}
 
-	bool there_is_a_local_human = false;
 	BOOST_FOREACH(team& tm, this->teams_)
 	{
 		if(tm.defeat_condition() == team::NEVER)
@@ -1433,10 +1432,6 @@ void play_controller::check_victory()
 			{
 				tm.set_lost();
 			}
-		}
-
-		if (tm.is_human()) {
-			there_is_a_local_human = true;
 		}
 	}
 
@@ -1472,7 +1467,6 @@ void play_controller::check_victory()
 	DBG_NG << "victory_when_enemies_defeated: " << victory_when_enemies_defeated_ << std::endl;
 	DBG_NG << "found_player: " << found_player << std::endl;
 	DBG_NG << "found_network_player: " << found_network_player << std::endl;
-	DBG_NG << "there_is_a_local_human: " << there_is_a_local_human << std::endl;
 
 	if (!victory_when_enemies_defeated_ && (found_player || found_network_player)) {
 		// This level has asked not to be ended by this condition.
