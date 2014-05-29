@@ -94,6 +94,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description="WML unit tests for Wesnoth"
+				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -182,6 +184,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description="WML unit tests for Wesnoth"
+				CommandLine="WML_tests.cmd"
 			/>
 		</Configuration>
 		<Configuration
@@ -261,6 +265,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description="WML unit tests for Wesnoth"
+				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -341,7 +347,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine=""
+				Description="WML unit tests for Wesnoth"
+				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -431,7 +438,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine=""
+				Description="WML unit tests for Wesnoth"
+				CommandLine="WML_tests.cmd $(OutDir)"
 			/>
 		</Configuration>
 		<Configuration
@@ -520,6 +528,8 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				Description="WML unit tests for Wesnoth"
+				CommandLine="WML_tests.cmd"
 			/>
 		</Configuration>
 	</Configurations>
