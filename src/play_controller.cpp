@@ -594,8 +594,8 @@ void play_controller::init_gui(){
 
 void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	log_scope("player turn");
+	bool only_visual = loading_game_ && init_side_done_;
 	init_side_done_ = false;
-
 	mouse_handler_.set_side(team_index + 1);
 
 	// If we are observers we move to watch next team if it is allowed
@@ -607,13 +607,15 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gamedata_.get_variable("side_number") = player_number_;
 	gamedata_.last_selected = map_location::null_location;
 
-	maybe_do_init_side(team_index, is_replay);
+	maybe_do_init_side(team_index, is_replay, only_visual);
+	
+	loading_game_ = false;
 }
 
 /**
  * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
  */
-void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_replay) {
+void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_replay, bool only_visual) {
 	/**
 	 * We do side init only if not done yet for a local side when we are not replaying.
 	 * For all other sides it is recorded in replay and replay handler has to handle
@@ -623,18 +625,21 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
 		return;
 	}
 
-	if (!loading_game_) recorder.init_side();
-	LOG_NG << "set_scontext_synced sync from maybe_do_init_side";
-	set_scontext_synced sync;
-	do_init_side(team_index, is_replay);
-	LOG_NG << "set_scontext_synced sync from maybe_do_init_side end ";
-	
+	if(!only_visual){
+		recorder.init_side();
+		set_scontext_synced sync;
+		do_init_side(team_index, is_replay);
+	}
+	else
+	{
+		do_init_side(team_index, is_replay, true);
+	}
 }
 
 /**
  * Called by replay handler or init_side() to do actual work for turn change.
  */
-void play_controller::do_init_side(const unsigned int team_index, bool is_replay) {
+void play_controller::do_init_side(const unsigned int team_index, bool is_replay, bool only_visual) {
 	log_scope("player turn");
 	//In case we might end up calling sync:network during the side turn events,
 	//and we dont want do_init_side to be called when a player drops.
@@ -645,7 +650,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	const std::string side_num = str_cast(team_index + 1);
 
 	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
-	if (!loading_game_) {
+	if (!only_visual) {
 		if(it_is_a_new_turn_)
 		{
 			game_events::fire("turn " + turn_num);
@@ -666,7 +671,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
-	if (!loading_game_ && turn() > 1) {
+	if (!only_visual && turn() > 1) {
 		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
 			if (i->side() == player_number_) {
 				i->new_turn();
@@ -687,7 +692,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		calculate_healing(player_number_, !skip_replay_);
 	}
 
-	if (!loading_game_) {
+	if (!only_visual) {
 		// Prepare the undo stack.
 		undo_stack_->new_side_turn(player_number_);
 
