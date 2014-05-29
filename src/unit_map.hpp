@@ -388,7 +388,7 @@ public:
 	 *
 	 * @returns                   True if found, false otherwise.
 	 */
-	bool has_unit(const unit * const u);
+	bool has_unit(const unit * const u) const ;
 
 private:
 	t_umap::iterator begin_core() const ;
