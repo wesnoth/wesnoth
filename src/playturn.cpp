@@ -44,14 +44,6 @@ turn_info::turn_info(replay_network_sender &replay_sender,playturn_network_adapt
 	network_reader_(network_reader),
 	is_host_(true)
 {
-	/**
-	 * We do network sync so [init_side] is transferred to network hosts
-	 * TODO: i think it is unintiutive that creating this object automatictly sends data over the network.
-	 * For example it means that playmp_controller::handle_generic_event("ai_user_interact") casues send_data, 
-	 * Idk whether that is intended, but an explicit call would be better.
-	 */
-	if(network::nconnections() > 0)
-		send_data();
 }
 
 turn_info::~turn_info()
