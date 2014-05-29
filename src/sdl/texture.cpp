@@ -1,3 +1,4 @@
+
 /*
    Copyright (C) 2014 by Mark de Wever <koraq@xs4all.nl>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -32,6 +33,12 @@ ttexture::ttexture(SDL_Renderer& renderer,
 				   const int h)
 	: reference_count_(new unsigned(1))
 	, texture_(SDL_CreateTexture(&renderer, format, access, w, h))
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, smooth_scaling_(false)
+	, flip_(SDL_FLIP_NONE)
+	, clip_(create_rect(0, 0, w, h))
 	, source_surface_(NULL)
 {
 	if(!texture_) {
@@ -44,43 +51,16 @@ ttexture::ttexture(SDL_Renderer& renderer,
 				   const std::string& file)
 	: reference_count_(new unsigned(1))
 	, texture_(NULL)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, smooth_scaling_(false)
+	, flip_(SDL_FLIP_NONE)
+	, clip_()
 	, source_surface_(IMG_Load(file.c_str()))
 {
 	if(source_surface_ == NULL) {
 		throw texception("Failed to create SDL_Texture object.", true);
-	}
-
-	initialise_from_surface(renderer, access);
-}
-
-ttexture::ttexture(SDL_Renderer& renderer,
-				   const int access,
-				   SDL_Surface* source_surface__)
-	: reference_count_(new unsigned(1))
-	, texture_(NULL)
-	, source_surface_(source_surface__)
-{
-	if(source_surface_ == NULL) {
-		throw texception("Invalid source_surface__ argument passed, failed to "
-						 "create SDL_Texture object.",
-						 false);
-	}
-
-	initialise_from_surface(renderer, access);
-}
-
-ttexture::ttexture(SDL_Renderer& renderer,
-				   const int access,
-				   const surface& surface)
-	: reference_count_(new unsigned(1))
-	, texture_(NULL)
-	, source_surface_(
-			  SDL_ConvertSurface(surface, surface->format, surface->flags))
-{
-	if(source_surface_ == NULL) {
-		throw texception("Invalid source_surface__ argument passed, failed to "
-						 "create SDL_Texture object.",
-						 false);
 	}
 
 	initialise_from_surface(renderer, access);
@@ -103,7 +83,15 @@ ttexture::~ttexture()
 }
 
 ttexture::ttexture(const ttexture& texture)
-	: reference_count_(texture.reference_count_), texture_(texture.texture_)
+	: reference_count_(texture.reference_count_)
+	, texture_(texture.texture_)
+	, rotation_(texture.rotation_)
+	, hscale_(texture.hscale_)
+	, vscale_(texture.vscale_)
+	, smooth_scaling_(texture.smooth_scaling_)
+	, flip_(texture.flip_)
+	, clip_(texture.clip_)
+	, source_surface_(texture.source_surface_)
 {
 	assert(reference_count_);
 	++(*reference_count_);
@@ -124,18 +112,176 @@ ttexture& ttexture::operator=(const ttexture& texture)
 
 void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
 {
-	SDL_Rect rect = { x, y, 0, 0 };
+	SDL_Rect dstrect = create_rect(x, y, clip_.w * hscale_, clip_.h * vscale_);
 
-	if(SDL_QueryTexture(texture_, NULL, NULL, &rect.w, &rect.h) != 0) {
-		throw texception("Failed to query a SDL_Texture object", true);
-	}
-
-	SDL_RenderCopy(&renderer, texture_, NULL, &rect);
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, smooth_scaling_ ? "linear" : "nearest");
+	SDL_RenderCopyEx(&renderer, texture_, &clip_, &dstrect,
+					 rotation_, NULL, flip_);
 }
 
 const SDL_Surface* ttexture::source_surface() const
 {
 	return source_surface_;
+}
+
+void ttexture::set_rotation(double rotation)
+{
+	rotation_ = rotation;
+}
+
+double ttexture::rotation() const
+{
+	return rotation_;
+}
+
+void ttexture::set_hscale(float factor)
+{
+	hscale_ = factor;
+}
+
+void ttexture::set_vscale(float factor)
+{
+	vscale_ = factor;
+}
+
+void ttexture::set_scale(float hfactor, float vfactor)
+{
+	hscale_ = hfactor;
+	vscale_ = vfactor;
+}
+
+float ttexture::hscale() const
+{
+	return hscale_;
+}
+
+float ttexture::vscale() const
+{
+	return vscale_;
+}
+
+void ttexture::set_smooth_scaling(bool use_smooth)
+{
+	smooth_scaling_ = use_smooth;
+}
+
+bool ttexture::smooth_scaling() const
+{
+	return smooth_scaling_;
+}
+
+void ttexture::set_flip(bool flip)
+{
+	if (flip) {
+		flip_ = SDL_RendererFlip(flip_ | SDL_FLIP_HORIZONTAL);
+	} else {
+		flip_ = SDL_RendererFlip(flip_ & ~SDL_FLIP_HORIZONTAL);
+	}
+}
+
+void ttexture::set_flop(bool flop)
+{
+	if (flop) {
+		flip_ = SDL_RendererFlip(flip_ | SDL_FLIP_VERTICAL);
+	} else {
+		flip_ = SDL_RendererFlip(flip_ & ~SDL_FLIP_VERTICAL);
+	}
+}
+
+bool ttexture::flipped() const
+{
+	return flip_ & SDL_FLIP_HORIZONTAL;
+}
+
+bool ttexture::flopped() const
+{
+	return flip_ & SDL_FLIP_VERTICAL;
+}
+
+unsigned ttexture::width() const
+{
+	int w;
+	SDL_QueryTexture(texture_,NULL, NULL, &w, NULL);
+
+	return w;
+}
+
+unsigned ttexture::height() const
+{
+	int h;
+	SDL_QueryTexture(texture_,NULL, NULL, NULL, &h);
+
+	return h;
+}
+
+SDL_Rect ttexture::dimensions() const
+{
+	SDL_Rect dim;
+	dim.x = 0;
+	dim.y = 0;
+	SDL_QueryTexture(texture_, NULL, NULL, &dim.w, &dim.h);
+
+	return dim;
+}
+
+void ttexture::set_clip(const SDL_Rect &rect)
+{
+	clip_ = rect;
+}
+
+const SDL_Rect &ttexture::clip() const
+{
+	return clip_;
+}
+
+Uint32 ttexture::format() const
+{
+	Uint32 f;
+	SDL_QueryTexture(texture_, &f, NULL, NULL, NULL);
+
+	return f;
+}
+
+void ttexture::set_alpha(Uint8 alpha)
+{
+	SDL_SetTextureAlphaMod(texture_, alpha);
+}
+
+Uint8 ttexture::alpha() const
+{
+	Uint8 res;
+	SDL_GetTextureAlphaMod(texture_, &res);
+	return res;
+}
+
+void ttexture::set_blend_mode(SDL_BlendMode mode)
+{
+	SDL_SetTextureBlendMode(texture_, mode);
+}
+
+SDL_BlendMode ttexture::blend_mode() const
+{
+	SDL_BlendMode res;
+	SDL_GetTextureBlendMode(texture_, &res);
+	return res;
+}
+
+void ttexture::update_pixels(SDL_Surface *surf)
+{
+	const int retcode = SDL_UpdateTexture(texture_,
+										  NULL,
+										  surf->pixels,
+										  surf->pitch);
+
+	if (retcode != 0) {
+		throw texception("Failed to update SDL_Texture object.", true);
+	}
+
+	if (source_surface_ != NULL) {
+		SDL_FreeSurface(source_surface_);
+		source_surface_ = surf;
+
+	}
 }
 
 void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
@@ -147,6 +293,7 @@ void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
 
+		clip_ = create_rect(0, 0, source_surface_->w, source_surface_->h);
 		SDL_FreeSurface(source_surface_);
 		source_surface_ = NULL;
 	} else if(access == SDL_TEXTUREACCESS_STREAMING) {
@@ -160,6 +307,7 @@ void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
 			throw texception("Failed to create SDL_Texture object.", true);
 		}
 
+		clip_ = create_rect(0, 0, source_surface_->w, source_surface_->h);
 		const int update = SDL_UpdateTexture(texture_,
 											 NULL,
 											 source_surface_->pixels,

@@ -133,6 +133,152 @@ public:
 	 */
 	const SDL_Surface* source_surface() const;
 
+	/**
+	 * Sets the angle of the texture.
+	 *
+	 * @param rotation            The angle the texture should be rotated by.
+	 */
+	void set_rotation(double rotation);
+
+	/**
+	 * Returns the current angle.
+	 */
+	double rotation() const;
+
+	/**
+	 * Sets the horizontal scaling factor.
+	 *
+	 * @param factor              The scaling factor.
+	 */
+	void set_hscale(float factor);
+
+	/**
+	 * Sets the vertical scaling factor.
+	 *
+	 * @param factor              The scaling factor.
+	 */
+	void set_vscale(float factor);
+
+	/**
+	 * Sets both scaling factors.
+	 *
+	 * @param hfactor             Horizontal scaling factor.
+	 * @param vfactor             Vertical scaling factor.
+	 */
+	void set_scale(float hfactor, float vfactor);
+
+	/**
+	 * Returns the current horizontal scaling factor.
+	 */
+	float hscale() const;
+
+	/**
+	 * Returns the current vertical scaling factor.
+	 */
+	float vscale() const;
+
+	/**
+	 * Sets whether a smooth algorithm should be used when scaling the texture.
+	 *
+	 * @param use_smooth          true if smooth scaling should be used.
+	 */
+	void set_smooth_scaling(bool use_smooth);
+
+	/**
+	 * Tells whether smooth scaling is enabled for the texture.
+	 */
+	bool smooth_scaling() const;
+
+	/**
+	 * Sets whether the texture should be flipped horizontally.
+	 *
+	 * @param flip                true if yes.
+	 */
+	void set_flip(bool flip);
+
+	/**
+	 * Sets whether the texture should be flipped vertically.
+	 *
+	 * @param flop                true if yes.
+	 */
+	void set_flop(bool flop);
+
+	/**
+	 * Tells whether the texture is flipped horizontally.
+	 */
+	bool flipped() const;
+
+	/**
+	 * Tells whether the texture is flipped vertically.
+	 */
+	bool flopped() const;
+
+	/**
+	 * Returns the width of the texture.
+	 */
+	unsigned width() const;
+
+	/**
+	 * Returns the height of the texture.
+	 */
+	unsigned height() const;
+
+	/**
+	 * Returns the frame of the texture.
+	 */
+	SDL_Rect dimensions() const;
+
+	/**
+	 * Only display the specified area of the texture when rendering.
+	 *
+	 * @param rect                The rectangle which should be displayed.
+	 */
+	void set_clip(const SDL_Rect& rect);
+
+	/**
+	 * Returns the currently displayed area of the texture.
+	 */
+	const SDL_Rect& clip() const;
+
+	/**
+	 * Returns the format of the texture.
+	 */
+	Uint32 format() const;
+
+	/**
+	 * Sets the alpha for the texture.
+	 *
+	 * @param alpha               The alpha modifier.
+	 */
+	void set_alpha(Uint8 alpha);
+
+	/**
+	 * Returns the alpha of the texture.
+	 */
+	Uint8 alpha() const;
+
+	/**
+	 * Sets the blend mode of the texture.
+	 *
+	 * @param mode                One of the values enumerated in SDL_BlendMode.
+	 */
+	 void set_blend_mode(SDL_BlendMode mode);
+
+	 /**
+	  * Returns the blend mode of the texture.
+	  */
+	 SDL_BlendMode blend_mode() const;
+
+	/***** ***** ***** Other. ***** ***** *****/
+
+	/**
+	 * Updates the pixels of the texture.
+	 *
+	 * @param surf                The surface the current data should be
+	 *                            replaced with.
+	 */
+	 void update_pixels(SDL_Surface* surf);
+
 private:
 	/**
 	 * The reference count of the texture.
@@ -144,6 +290,24 @@ private:
 
 	/** The SDL_Texture we manage. */
 	SDL_Texture* texture_;
+
+	/** The angle the texture should be rotated by when rendering. */
+	double rotation_;
+
+	/** Horizontal scaling factor. */
+	float hscale_;
+
+	/** Vertical scaling factor. */
+	float vscale_;
+
+	/** Whether a smooth scaling algorithm should be used. */
+	bool smooth_scaling_;
+
+	/** Flip/flop. */
+	SDL_RendererFlip flip_;
+
+	/** What should actually be displayed of the texture. */
+	SDL_Rect clip_;
 
 	/**
 	 * The SDL_Surface source of the @ref texture_.
