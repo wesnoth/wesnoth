@@ -313,10 +313,10 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		store_carryover(state_of_game, playcontroller, disp, end_level);
 	}
 
-	if (!disp.video().faked() && res != QUIT && end_level.transient.linger_mode)
+	if (!disp.video().faked() && res != QUIT)
 	{
 		try {
-			playcontroller.linger();
+			playcontroller.maybe_linger();
 		} catch(end_level_exception& e) {
 			if (e.result == QUIT) {
 				return QUIT;
@@ -374,16 +374,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 	if (!disp.video().faked() && res != QUIT) {
 		try {
-			if (!end_level.transient.linger_mode) {
-				if(!playcontroller.is_host()) {
-					// If we continue without lingering we need to
-					// make sure the host uploads the next scenario
-					// before we attempt to download it.
-					playcontroller.wait_for_upload();
-				}
-			} else {
-				playcontroller.linger();
-			}
+			playcontroller.maybe_linger();
 		} catch(end_level_exception& e) {
 			if (e.result == QUIT) {
 				return QUIT;

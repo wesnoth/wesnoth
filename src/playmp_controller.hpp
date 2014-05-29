@@ -35,9 +35,7 @@ public:
 	void reset_countdown();
 	void think_about_countdown(int ticks);
 	void process(events::pump_info &info);
-	void linger();
-	/** Wait for the host to upload the next scenario. */
-	void wait_for_upload();
+	void maybe_linger();
 	void process_oos(const std::string& err_msg) const;
 
 protected:
@@ -58,6 +56,10 @@ protected:
 	virtual void play_network_turn();
 	virtual void do_idle_notification();
 	virtual void play_idle_loop();
+	
+	void linger();
+	/** Wait for the host to upload the next scenario. */
+	void wait_for_upload();
 
 	int beep_warning_time_;
 	mutable bool network_processing_stopped_;

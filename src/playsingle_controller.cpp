@@ -1087,3 +1087,10 @@ bool playsingle_controller::is_host() const
 {
 	return turn_data_.is_host();
 }
+
+void playsingle_controller::maybe_linger() 
+{
+	if (get_end_level_data_const().transient.linger_mode) {
+		linger();
+	}
+}

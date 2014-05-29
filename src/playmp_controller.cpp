@@ -609,3 +609,17 @@ void playmp_controller::do_idle_notification()
 		_("This side is in an idle state. To proceed with the game, it must be assigned to another controller. You may use :droid, :control or :give_control for example."),
 		events::chat_handler::MESSAGE_PUBLIC, false);	
 }
+
+void playmp_controller::maybe_linger() 
+{
+	if (!get_end_level_data_const().transient.linger_mode) {
+		if(!is_host()) {
+			// If we continue without lingering we need to
+			// make sure the host uploads the next scenario
+			// before we attempt to download it.
+			wait_for_upload();
+		}
+	} else {
+		linger();
+	}
+}

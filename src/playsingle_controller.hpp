@@ -62,7 +62,6 @@ public:
 	virtual void whiteboard_bump_up_action();
 	virtual void whiteboard_bump_down_action();
 	virtual void whiteboard_suppose_dead();
-	void linger();
 
 	virtual void force_end_level(LEVEL_RESULT res)
 	{ level_result_ = res; }
@@ -72,6 +71,7 @@ public:
 			int turns_left, int finishing_bonus);
 	virtual void on_not_observer() {}
 	bool is_host() const ;
+	virtual void maybe_linger();
 
 protected:
 	virtual void play_turn(bool save);
@@ -106,6 +106,7 @@ protected:
 	bool turn_over_;
 	bool skip_next_turn_;
 	LEVEL_RESULT level_result_;
+	void linger();
 };
 
 
