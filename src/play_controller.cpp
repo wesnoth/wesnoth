@@ -749,7 +749,7 @@ config play_controller::to_config() const
 		side["no_leader"] = true;
 		side["side"] = str_cast(side_num);
 
-		if (!linger_){
+		{
 			//current visible units
 			for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 				if (i->side() == side_num) {
