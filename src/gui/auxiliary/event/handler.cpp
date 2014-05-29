@@ -259,6 +259,13 @@ private:
 				  const utf8::string& unicode);
 
 	/**
+	 * Fires a text input event.
+	 *
+	 * @param unicode                The unicode value for the text entered.
+	 */
+	void text_input(const std::string& unicode);
+
+	/**
 	 * Fires a keyboard event which has no parameters.
 	 *
 	 * This can happen for example when the mouse wheel is used.
@@ -400,6 +407,10 @@ void thandler::handle_event(const SDL_Event& event)
 					break;
 			}
 
+			break;
+
+		case SDL_TEXTINPUT:
+			text_input(event.text.text);
 			break;
 #else
 		case SDL_VIDEOEXPOSE:
@@ -722,6 +733,11 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 				 ::implementation::ucs4char_to_string(event.keysym.unicode));
 #endif
 	}
+}
+
+void thandler::text_input(const std::string& unicode)
+{
+	key_down(static_cast<SDLKey>(0), static_cast<SDLMod>(0), unicode);
 }
 
 bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
