@@ -726,6 +726,10 @@ void playsingle_controller::play_side()
 				player_type_changed_ = true;
 				temporary_human = true;
 			}
+			if(!player_type_changed_)
+			{
+				recorder.end_turn();
+			}
 
 		} else if(current_team().is_network()) {
 			play_network_turn();
@@ -941,8 +945,6 @@ void playsingle_controller::play_ai_turn(){
 		ai::manager::play_turn(player_number_);
 	} catch (end_turn_exception&) {
 	}
-	recorder.end_turn();
-	
 	gui_->recalculate_minimap();
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
