@@ -621,6 +621,7 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
+	assert(team_index == player_number_ - 1);
 	if (is_replay || init_side_done_ || !current_team().is_local()) {
 		return;
 	}
@@ -640,6 +641,7 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
  * Called by replay handler or init_side() to do actual work for turn change.
  */
 void play_controller::do_init_side(const unsigned int team_index, bool is_replay, bool only_visual) {
+	assert(team_index == player_number_ - 1);
 	log_scope("player turn");
 	//In case we might end up calling sync:network during the side turn events,
 	//and we dont want do_init_side to be called when a player drops.
