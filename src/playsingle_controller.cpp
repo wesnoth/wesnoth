@@ -700,7 +700,7 @@ void playsingle_controller::play_side(bool save)
 					play_human_turn();
 				}
 			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == player_number_) {
+				if (int(end_turn.redo) == player_number_) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
@@ -739,7 +739,7 @@ void playsingle_controller::play_side(bool save)
 				
 			} catch(end_turn_exception& end_turn) {
 				LOG_NG << "Escaped from idle state with exception!" << std::endl;
-				if (end_turn.redo == player_number_) {
+				if (int(end_turn.redo) == player_number_) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
