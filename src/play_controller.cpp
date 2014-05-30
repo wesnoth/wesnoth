@@ -607,22 +607,22 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(const unsigned int team_index, bool is_replay){
+void play_controller::init_side(bool is_replay){
 	log_scope("player turn");
 	bool only_visual = loading_game_ && init_side_done_;
 	init_side_done_ = false;
-	mouse_handler_.set_side(team_index + 1);
+	mouse_handler_.set_side(player_number_);
 
 	// If we are observers we move to watch next team if it is allowed
 	if (is_observer() && !current_team().get_disallow_observers()) {
-		gui_->set_team(size_t(team_index));
+		gui_->set_team(size_t(player_number_ - 1));
 	}
-	gui_->set_playing_team(size_t(team_index));
+	gui_->set_playing_team(size_t(player_number_ - 1));
 
 	gamedata_.get_variable("side_number") = player_number_;
 	gamedata_.last_selected = map_location::null_location();
 
-	maybe_do_init_side(team_index, is_replay, only_visual);
+	maybe_do_init_side(is_replay, only_visual);
 	
 	loading_game_ = false;
 }
@@ -630,13 +630,12 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 /**
  * Called by turn_info::process_network_data() or init_side() to call do_init_side() if necessary.
  */
-void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_replay, bool only_visual) {
+void play_controller::maybe_do_init_side(bool is_replay, bool only_visual) {
 	/**
 	 * We do side init only if not done yet for a local side when we are not replaying.
 	 * For all other sides it is recorded in replay and replay handler has to handle
 	 * calling do_init_side() functions.
 	 **/
-	assert(team_index == player_number_ - 1);
 	if (is_replay || init_side_done_ || !current_team().is_local()) {
 		return;
 	}
@@ -644,27 +643,25 @@ void play_controller::maybe_do_init_side(const unsigned int team_index, bool is_
 	if(!only_visual){
 		recorder.init_side();
 		set_scontext_synced sync;
-		do_init_side(team_index, is_replay);
+		do_init_side(is_replay);
 	}
 	else
 	{
-		do_init_side(team_index, is_replay, true);
+		do_init_side(is_replay, true);
 	}
 }
 
 /**
  * Called by replay handler or init_side() to do actual work for turn change.
  */
-void play_controller::do_init_side(const unsigned int team_index, bool is_replay, bool only_visual) {
-	assert(team_index == player_number_ - 1);
+void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	log_scope("player turn");
 	//In case we might end up calling sync:network during the side turn events,
 	//and we dont want do_init_side to be called when a player drops.
 	init_side_done_ = true;
-	team& current_team = teams_[team_index];
 
 	const std::string turn_num = str_cast(turn());
-	const std::string side_num = str_cast(team_index + 1);
+	const std::string side_num = str_cast(player_number_);
 
 	// If this is right after loading a game we don't need to fire events and such. It was already done before saving.
 	if (!only_visual) {
@@ -681,7 +678,7 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 		game_events::fire("side " + side_num + " turn " + turn_num);
 	}
 
-	if(current_team.is_human() && !is_replay) {
+	if(current_team().is_human() && !is_replay) {
 		update_gui_to_player(player_number_ - 1);
 	}
 	// We want to work out if units for this player should get healed,
@@ -695,15 +692,15 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 			}
 		}
 
-		current_team.new_turn();
+		current_team().new_turn();
 
 		// If the expense is less than the number of villages owned
 		// times the village support capacity,
 		// then we don't have to pay anything at all
 		int expense = side_upkeep(player_number_) -
-			current_team.support();
+			current_team().support();
 		if(expense > 0) {
-			current_team.spend_gold(expense);
+			current_team().spend_gold(expense);
 		}
 
 		calculate_healing(player_number_, !skip_replay_);
@@ -724,14 +721,14 @@ void play_controller::do_init_side(const unsigned int team_index, bool is_replay
 
 	const time_of_day &tod = tod_manager_.get_time_of_day();
 
-	if (int(team_index) + 1 == first_player_)
+	if (player_number_ == first_player_)
 		sound::play_sound(tod.sounds, sound::SOUND_SOURCES);
 
 	if (!recorder.is_skipping()){
 		gui_->invalidate_all();
 	}
 
-	if (!recorder.is_skipping() && !skip_replay_ && current_team.get_scroll_to_leader()){
+	if (!recorder.is_skipping() && !skip_replay_ && current_team().get_scroll_to_leader()){
 		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;

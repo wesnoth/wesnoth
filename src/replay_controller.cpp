@@ -456,7 +456,7 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 		if (!current_team().is_empty()) {
 			statistics::reset_turn_stats(current_team().save_id());
 
-			play_controller::init_side(player_number_ - 1, true);
+			play_controller::init_side(true);
 
 			DBG_REPLAY << "doing replay " << player_number_ << "\n";
 			// if have reached the end we don't want to execute finish_side_turn and finish_turn

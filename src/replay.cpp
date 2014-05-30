@@ -824,7 +824,7 @@ REPLAY_RETURN do_replay_handle()
 			else
 			{
 				set_scontext_synced sync;
-				resources::controller->do_init_side(side_num - 1, true);
+				resources::controller->do_init_side(true);
 			}
 		}
 

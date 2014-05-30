@@ -110,8 +110,8 @@ public:
 	virtual void search();
 	virtual void toggle_accelerated_speed();
 
-	void maybe_do_init_side(const unsigned int team_index, bool is_replay = false, bool only_visual = false);
-	void do_init_side(const unsigned int team_index, bool is_replay = false, bool only_visual = false);
+	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
+	void do_init_side(bool is_replay = false, bool only_visual = false);
 	virtual void play_side(const unsigned int side_number, bool save) = 0;
 
 	virtual void force_end_turn() = 0;
@@ -194,7 +194,7 @@ protected:
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
 	virtual void init_gui();
-	virtual void init_side(const unsigned int team_index, bool is_replay = false);
+	void init_side(bool is_replay = false);
 	void place_sides_in_preferred_locations();
 	virtual void finish_side_turn();
 	void finish_turn();
