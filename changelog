@@ -167,6 +167,7 @@ Version 1.13.0-dev:
      in debug mode, and an illegal value for an attribute is encountered.
    * Fix bug #21397 Reloading may cause a side's turn is not initalized.
      This bug affected only networked mp, at least since version 1.8.
+   * [modify_side] may now alter the value of [side] defeat_condition.
 
 Version 1.11.11:
  * Add-ons server:
