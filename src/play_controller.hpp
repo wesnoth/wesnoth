@@ -112,7 +112,7 @@ public:
 
 	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
 	void do_init_side(bool is_replay = false, bool only_visual = false);
-	virtual void play_side(const unsigned int side_number, bool save) = 0;
+	virtual void play_side(bool save) = 0;
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;

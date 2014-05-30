@@ -75,7 +75,7 @@ public:
 
 protected:
 	virtual void play_turn(bool save);
-	virtual void play_side(const unsigned int side_number, bool save);
+	virtual void play_side(bool save);
 	virtual void before_human_turn(bool save);
 	void show_turn_dialog();
 	void execute_gotos();

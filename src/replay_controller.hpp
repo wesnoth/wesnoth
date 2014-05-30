@@ -62,7 +62,7 @@ protected:
 private:
 	void init();
 	virtual void play_turn();
-	virtual void play_side(const unsigned int team_index, bool save);
+	virtual void play_side(bool save);
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
