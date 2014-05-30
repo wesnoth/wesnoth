@@ -628,7 +628,7 @@ void playsingle_controller::play_turn(bool save)
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			ai_testing::log_turn_start(player_number_);
-			play_side(player_number_, save);
+			play_side(save);
 		}
 
 		finish_side_turn();
@@ -665,9 +665,8 @@ void playsingle_controller::play_idle_loop()
 	}
 }
 
-void playsingle_controller::play_side(const unsigned int side_number, bool save)
+void playsingle_controller::play_side(bool save)
 {
-	assert(static_cast<int>(side_number) == player_number_);
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
@@ -681,7 +680,7 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 		if (!skip_next_turn_)
 			end_turn_ = false;
 
-		statistics::reset_turn_stats(teams_[side_number - 1].save_id());
+		statistics::reset_turn_stats(teams_[player_number_ - 1].save_id());
 
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
@@ -696,13 +695,13 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 					play_human_turn();
 				}
 			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == side_number) {
+				if (end_turn.redo == player_number_) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
-					if (!teams_[side_number-1].is_human()) {
+					if (!teams_[player_number_-1].is_human()) {
 						browse_ = true;
-						int s = find_human_team_before(side_number);
+						int s = find_human_team_before(player_number_);
 						if (s <= 0)
 							s = gui_->playing_side();
 						update_gui_to_player(s-1);
@@ -735,13 +734,13 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 				
 			} catch(end_turn_exception& end_turn) {
 				LOG_NG << "Escaped from idle state with exception!" << std::endl;
-				if (end_turn.redo == side_number) {
+				if (end_turn.redo == player_number_) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
-					if (!teams_[side_number-1].is_human()) {
+					if (!teams_[player_number_-1].is_human()) {
 						browse_ = true;
-						int s = find_human_team_before(side_number);
+						int s = find_human_team_before(player_number_);
 						if (s <= 0)
 							s = gui_->playing_side();
 						update_gui_to_player(s-1);
