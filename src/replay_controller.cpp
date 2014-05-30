@@ -338,9 +338,9 @@ void replay_controller::replay_next_side(){
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 
-	play_side(false);
+	play_side();
 	while (current_team().is_empty()) {
-		play_side( false);
+		play_side();
 	}
 
 	if (!skip_replay_ || !is_playing_) {
@@ -429,13 +429,13 @@ void replay_controller::play_turn(){
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
 		last_team = static_cast<size_t>(player_number_) == teams_.size();
-		play_side(false);
+		play_side();
 		play_slice();
 	}
 }
 
 //make only one side move
-void replay_controller::play_side(bool){
+void replay_controller::play_side(){
 
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";

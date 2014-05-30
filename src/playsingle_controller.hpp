@@ -72,9 +72,9 @@ public:
 	virtual void on_not_observer() {}
 
 protected:
-	virtual void play_turn(bool save);
-	virtual void play_side(bool save);
-	virtual void before_human_turn(bool save);
+	virtual void play_turn();
+	virtual void play_side();
+	virtual void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
 	virtual void play_human_turn();
@@ -103,6 +103,7 @@ protected:
 	bool replaying_;
 	bool turn_over_;
 	bool skip_next_turn_;
+	bool do_autosaves_;
 	LEVEL_RESULT level_result_;
 };
 
