@@ -3,6 +3,8 @@ Version 1.11.15+dev:
    * Updated translations:
  * Miscellaneous and bug fixes:
    * Backported Elvish_Hunter's wmltools GUI from master
+   * [modify_side] may now alter the value of [side] defeat_condition.
+     In 1.11.15 we had the lua hooks, but missed the WML ones.
 
 Version 1.11.15:
  * Graphics:
