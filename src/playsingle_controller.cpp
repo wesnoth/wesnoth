@@ -674,8 +674,6 @@ void playsingle_controller::play_side()
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	maybe_do_init_side(do_autosaves_);
-
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
 	do {
