@@ -1217,6 +1217,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	std::string team_name = cfg["team_name"];
 	std::string user_team_name = cfg["user_team_name"];
 	std::string controller = cfg["controller"];
+	std::string defeat_condition = cfg["defeat_condition"];
 	std::string recruit_str = cfg["recruit"];
 	std::string shroud_data = cfg["shroud_data"];
 	std::string village_support = cfg["village_support"];
@@ -1257,6 +1258,10 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 		// Set controller
 		if (!controller.empty()) {
 			teams[team_index].change_controller(controller);
+		}
+		// Set defeat_condition
+		if (!defeat_condition.empty()) {
+			teams[team_index].set_defeat_condition_string(defeat_condition);
 		}
 		// Set shroud
 		config::attribute_value shroud = cfg["shroud"];
