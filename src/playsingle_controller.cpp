@@ -612,7 +612,7 @@ void playsingle_controller::play_turn(bool save)
 		if (current_team().is_empty()) continue;
 		try {
 			save_blocker blocker;
-			init_side(player_number_ - 1);
+			init_side();
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
 				turn_info turn_data(player_number_, replay_sender_,network_reader_);
@@ -667,10 +667,11 @@ void playsingle_controller::play_idle_loop()
 
 void playsingle_controller::play_side(const unsigned int side_number, bool save)
 {
+	assert(static_cast<int>(side_number) == player_number_);
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	maybe_do_init_side(side_number, save);
+	maybe_do_init_side(save);
 
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
