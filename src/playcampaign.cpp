@@ -391,7 +391,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 	// Do we have any snapshot data?
 	// yes => this must be a savegame
 	// no  => we are starting a fresh scenario
-	if (!gamestate.snapshot.child("side") || !recorder.at_end())
+	if (!gamestate.snapshot.child("side"))
 	{
 		gamestate.classification().completion = "running";
 		// Campaign or Multiplayer?
