@@ -448,13 +448,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
-		bool save = !loading_game_;
+		do_autosaves_ = !loading_game_;
 		ai_testing::log_game_start();
 		for(; ; first_player_ = 1) {
-			play_turn(save);
-			save = true;
+			play_turn();
+			do_autosaves_ = true;
 		} //end for loop
-
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		//
@@ -598,7 +597,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	return QUIT;
 }
 
-void playsingle_controller::play_turn(bool save)
+void playsingle_controller::play_turn()
 {
 	resources::whiteboard->on_gamestate_change();
 	gui_->new_turn();
@@ -633,7 +632,7 @@ void playsingle_controller::play_turn(bool save)
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			ai_testing::log_turn_start(player_number_);
-			play_side(save);
+			play_side();
 		}
 
 		finish_side_turn();
@@ -670,12 +669,12 @@ void playsingle_controller::play_idle_loop()
 	}
 }
 
-void playsingle_controller::play_side(bool save)
+void playsingle_controller::play_side()
 {
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	maybe_do_init_side(save);
+	maybe_do_init_side(do_autosaves_);
 
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
@@ -696,7 +695,7 @@ void playsingle_controller::play_side(bool save)
 				if (side_units(player_number_) != 0
 					|| (resources::units->size() == 0 && player_number_ == 1))
 				{
-					before_human_turn(save);
+					before_human_turn();
 					play_human_turn();
 				}
 			} catch(end_turn_exception& end_turn) {
@@ -734,7 +733,7 @@ void playsingle_controller::play_side(bool save)
 			try{
 				end_turn_enable(false);
 				do_idle_notification();
-				before_human_turn(save);
+				before_human_turn();
 				play_idle_loop();
 				
 			} catch(end_turn_exception& end_turn) {
@@ -762,7 +761,7 @@ void playsingle_controller::play_side(bool save)
 	skip_next_turn_ = false;
 }
 
-void playsingle_controller::before_human_turn(bool save)
+void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
 	browse_ = false;
@@ -770,7 +769,7 @@ void playsingle_controller::before_human_turn(bool save)
 
 	ai::manager::raise_turn_started();
 
-	if(save && level_result_ == NONE) {
+	if(do_autosaves_ && level_result_ == NONE) {
 		savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}

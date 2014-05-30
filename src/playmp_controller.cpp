@@ -92,7 +92,7 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side(bool save)
+void playmp_controller::play_side()
 {
 	utils::string_map player;
 	player["name"] = current_team().current_player();
@@ -101,12 +101,12 @@ void playmp_controller::play_side(bool save)
 	gui_->send_notification(_("Turn changed"), turn_notification_msg);
 
 	// Proceed with the parent function.
-	playsingle_controller::play_side(save);
+	playsingle_controller::play_side();
 }
 
-void playmp_controller::before_human_turn(bool save){
+void playmp_controller::before_human_turn(){
 	LOG_NG << "playmp::before_human_turn...\n";
-	playsingle_controller::before_human_turn(save);
+	playsingle_controller::before_human_turn();
 	turn_data_.send_data();
 
 }
