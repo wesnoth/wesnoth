@@ -23,6 +23,11 @@ class game_state;
 class gamemap;
 class unit_map;
 
+namespace random_new
+{
+	class rng;
+}
+
 //time of day and turn functionality
 class tod_manager : public savegame::savegame_config
 {
@@ -32,7 +37,10 @@ class tod_manager : public savegame::savegame_config
 		tod_manager& operator=(const tod_manager& manager);
 
 		config to_config() const;
-
+		/**
+			handles random_start_time, should be called before the game starts.
+		*/
+		void resolve_random(random_new::rng& r);
 		int get_current_time(const map_location& loc = map_location::null_location()) const;
 
 		void set_current_time(int time) { currentTime_ = time; }
@@ -165,7 +173,6 @@ class tod_manager : public savegame::savegame_config
 		 */
 		bool is_time_left();
 	private:
-		int get_start_ToD(const config& level) const;
 
 		/**
 		 * Returns time of day object in the turn "nturn".
@@ -219,5 +226,7 @@ class tod_manager : public savegame::savegame_config
 		int turn_;
 		//turn limit
 		int num_turns_;
+		//
+		config::attribute_value random_tod_;
 };
 #endif
