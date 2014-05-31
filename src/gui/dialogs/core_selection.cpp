@@ -76,8 +76,7 @@ REGISTER_DIALOG(core_selection)
 void tcore_selection::core_selected(twindow& window)
 {
 	if(new_widgets && false) {
-		ttree_view& tree
-				= find_widget<ttree_view>(&window, "core_tree", false);
+		ttree_view& tree = find_widget<ttree_view>(&window, "core_tree", false);
 
 		if(tree.empty()) {
 			return;
@@ -106,13 +105,10 @@ void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
 {
 	if(new_widgets && false) {
 		/***** Setup core tree. *****/
-		ttree_view& tree
-				= find_widget<ttree_view>(&window, "core_tree", false);
+		ttree_view& tree = find_widget<ttree_view>(&window, "core_tree", false);
 
-		tree.set_selection_change_callback(
-				boost::bind(&tcore_selection::core_selected,
-							this,
-							boost::ref(window)));
+		tree.set_selection_change_callback(boost::bind(
+				&tcore_selection::core_selected, this, boost::ref(window)));
 
 		window.keyboard_capture(&tree);
 
@@ -125,7 +121,7 @@ void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
 		tmulti_page& multi_page
 				= find_widget<tmulti_page>(&window, "core_details", false);
 
-	//	unsigned id = 0;
+		//	unsigned id = 0;
 		FOREACH(const AUTO & core, cores_)
 		{
 
@@ -216,8 +212,7 @@ void tcore_selection::pre_show(CVideo& /*video*/, twindow& window)
 void tcore_selection::post_show(twindow& window)
 {
 	if(new_widgets && false) {
-		ttree_view& tree
-				= find_widget<ttree_view>(&window, "core_tree", false);
+		ttree_view& tree = find_widget<ttree_view>(&window, "core_tree", false);
 
 		if(tree.empty()) {
 			return;

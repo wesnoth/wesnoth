@@ -263,7 +263,9 @@ void tcampaign_selection::post_show(twindow& window)
 	} else {
 		choice_ = find_widget<tlistbox>(&window, "campaign_list", false)
 						  .get_selected_row();
-		deterministic_ = find_widget<ttoggle_button>(&window,"checkbox_deterministic", false).get_value();
+		deterministic_ = find_widget<ttoggle_button>(&window,
+													 "checkbox_deterministic",
+													 false).get_value();
 	}
 }
 

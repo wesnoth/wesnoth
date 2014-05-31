@@ -17,7 +17,8 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /** WML preprocessor/parser error report dialog. */
 class twml_error : public tdialog
@@ -32,7 +33,7 @@ public:
 	 * @param files        List of WML files on which errors were detected.
 	 * @param details      Detailed WML preprocessor/parser error report.
 	 */
-    twml_error(const std::string& summary,
+	twml_error(const std::string& summary,
 			   const std::string& post_summary,
 			   const std::vector<std::string>& files,
 			   const std::string& details);
@@ -69,6 +70,6 @@ private:
 	void copy_report_callback();
 };
 
-}  // end namespace gui2
+} // end namespace gui2
 
 #endif

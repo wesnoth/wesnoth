@@ -1629,12 +1629,14 @@ bool tlobby_main::do_game_join(int idx, bool observe)
 	const game_info& game = *lobby_info_.games()[idx];
 	if(observe) {
 		if(!game.can_observe()) {
-			ERR_LB << "Requested observe of a game with observers disabled" << std::endl;
+			ERR_LB << "Requested observe of a game with observers disabled"
+				   << std::endl;
 			return false;
 		}
 	} else {
 		if(!game.can_join()) {
-			ERR_LB << "Requested join to a game with no vacant slots" << std::endl;
+			ERR_LB << "Requested join to a game with no vacant slots"
+				   << std::endl;
 			return false;
 		}
 	}

@@ -57,7 +57,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 };
-
 }
 
 #endif

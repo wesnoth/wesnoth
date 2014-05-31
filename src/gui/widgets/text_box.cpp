@@ -298,7 +298,7 @@ bool ttext_box::history_down()
 void ttext_box::handle_key_default(bool& handled,
 								   SDLKey key,
 								   SDLMod modifier,
-								   Uint16 unicode)
+								   const utf8::string& unicode)
 {
 	if(key == SDLK_TAB && (modifier & KMOD_CTRL)) {
 		if(!(modifier & KMOD_SHIFT)) {

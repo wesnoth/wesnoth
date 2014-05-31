@@ -29,7 +29,8 @@
 
 #include "gettext.hpp"
 
-namespace gui2 {
+namespace gui2
+{
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -64,8 +65,7 @@ REGISTER_DIALOG(screenshot_notification)
 
 tscreenshot_notification::tscreenshot_notification(const std::string& path,
 												   int filesize)
-	: path_(path)
-	, screenshots_dir_path_(get_screenshot_dir())
+	: path_(path), screenshots_dir_path_(get_screenshot_dir())
 {
 	register_label("filesize",
 				   false,
@@ -80,20 +80,17 @@ void tscreenshot_notification::pre_show(CVideo& /*video*/, twindow& window)
 	path_box.set_active(false);
 
 	tbutton& copy_b = find_widget<tbutton>(&window, "copy", false);
-	connect_signal_mouse_left_click(copy_b,
-									boost::bind(&copy_to_clipboard,
-												boost::ref(path_),
-												false));
+	connect_signal_mouse_left_click(
+			copy_b, boost::bind(&copy_to_clipboard, boost::ref(path_), false));
 
 	tbutton& open_b = find_widget<tbutton>(&window, "open", false);
-	connect_signal_mouse_left_click(open_b,
-									boost::bind(&desktop::open_object,
-												boost::ref(path_)));
+	connect_signal_mouse_left_click(
+			open_b, boost::bind(&desktop::open_object, boost::ref(path_)));
 
 	tbutton& bdir_b = find_widget<tbutton>(&window, "browse_dir", false);
-	connect_signal_mouse_left_click(bdir_b,
-									boost::bind(&desktop::open_object,
-												boost::ref(screenshots_dir_path_)));
+	connect_signal_mouse_left_click(
+			bdir_b,
+			boost::bind(&desktop::open_object,
+						boost::ref(screenshots_dir_path_)));
 }
-
 }

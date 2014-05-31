@@ -345,7 +345,8 @@ void tmouse_motion::stop_hover_timer()
 				  << ".\n";
 
 		if(!remove_timer(hover_timer_)) {
-			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer." << std::endl;
+			ERR_GUI_E << LOG_HEADER << "Failed to remove hover timer."
+					  << std::endl;
 		}
 
 		hover_timer_ = 0;
@@ -691,7 +692,7 @@ void tdistributor::keyboard_remove_from_chain(twidget* widget)
 
 void tdistributor::signal_handler_sdl_key_down(const SDLKey key,
 											   const SDLMod modifier,
-											   const Uint16 unicode)
+											   const utf8::string& unicode)
 {
 	/** @todo Test whether recursion protection is needed. */
 

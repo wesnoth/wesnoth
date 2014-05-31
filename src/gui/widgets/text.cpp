@@ -127,11 +127,11 @@ void ttext_::set_cursor(const size_t offset, const bool select)
 	}
 }
 
-void ttext_::insert_char(const Uint16 unicode)
+void ttext_::insert_char(const utf8::string& unicode)
 {
 	delete_selection();
 
-	if(text_.insert_unicode(selection_start_, unicode)) {
+	if(text_.insert_text(selection_start_, unicode)) {
 
 		// Update status
 		set_cursor(selection_start_ + 1, false);
@@ -142,20 +142,22 @@ void ttext_::insert_char(const Uint16 unicode)
 
 void ttext_::copy_selection(const bool mouse)
 {
-	if(selection_length_ == 0) return;
-	
-	unsigned end,start = selection_start_;
+	if(selection_length_ == 0) {
+		return;
+	}
+
+	unsigned end, start = selection_start_;
 	const utf8::string txt = text_.text();
-	
-	if(selection_length_  > 0) {
-		end   = utf8::index(txt,start+selection_length_);
-		start = utf8::index(txt,start);
+
+	if(selection_length_ > 0) {
+		end = utf8::index(txt, start + selection_length_);
+		start = utf8::index(txt, start);
 	} else {
 		// inverse selection: selection_start_ is in fact the end
-		end   = utf8::index(txt,start);
-		start = utf8::index(txt,start+selection_length_);
+		end = utf8::index(txt, start);
+		start = utf8::index(txt, start + selection_length_);
 	}
-	copy_to_clipboard(txt.substr(start,end-start), mouse);
+	copy_to_clipboard(txt.substr(start, end - start), mouse);
 }
 
 void ttext_::paste_selection(const bool mouse)
@@ -275,15 +277,15 @@ void ttext_::handle_key_delete(SDLMod /*modifier*/, bool& handled)
 void ttext_::handle_key_default(bool& handled,
 								SDLKey /*key*/,
 								SDLMod /*modifier*/,
-								Uint16 unicode)
+								const utf8::string& unicode)
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
-	if(unicode >= 32 && unicode != 127) {
-		handled = true;
-		insert_char(unicode);
-		fire(event::NOTIFY_MODIFIED, *this, NULL);
-	}
+	//	if(unicode >= 32 && unicode != 127) {
+	handled = true;
+	insert_char(unicode);
+	fire(event::NOTIFY_MODIFIED, *this, NULL);
+	//	}
 }
 
 void ttext_::signal_handler_middle_button_click(const event::tevent event,
@@ -300,7 +302,7 @@ void ttext_::signal_handler_sdl_key_down(const event::tevent event,
 										 bool& handled,
 										 const SDLKey key,
 										 SDLMod modifier,
-										 const Uint16 unicode)
+										 const utf8::string& unicode)
 {
 
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";

@@ -18,6 +18,7 @@
 #include "gui/auxiliary/event/handler.hpp"
 #include "hotkey/hotkey_command.hpp"
 #include "sdl/compat.hpp"
+#include "serialization/unicode.hpp"
 
 #include <boost/function.hpp>
 #include <boost/mpl/int.hpp>
@@ -70,7 +71,8 @@ typedef boost::function<void(tdispatcher& dispatcher,
 							 bool& halt,
 							 const SDLKey key,
 							 const SDLMod modifier,
-							 const Uint16 unicode)> tsignal_keyboard_function;
+							 const utf8::string& unicode)>
+tsignal_keyboard_function;
 
 /**
  * Callback function signature.
@@ -181,7 +183,7 @@ public:
 			  twidget& target,
 			  const SDLKey key,
 			  const SDLMod modifier,
-			  const Uint16 unicode);
+			  const utf8::string& unicode);
 
 	/**
 	 * Fires an event which takes notification parameters.

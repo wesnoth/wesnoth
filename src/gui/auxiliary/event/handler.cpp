@@ -254,8 +254,16 @@ private:
 	 * @param modifier               The SDL key modifiers used.
 	 * @param unicode                The unicode value for the key pressed.
 	 */
-	void
-	key_down(const SDLKey key, const SDLMod modifier, const Uint16 unicode);
+	void key_down(const SDLKey key,
+				  const SDLMod modifier,
+				  const utf8::string& unicode);
+
+	/**
+	 * Fires a text input event.
+	 *
+	 * @param unicode                The unicode value for the text entered.
+	 */
+	void text_input(const std::string& unicode);
 
 	/**
 	 * Fires a keyboard event which has no parameters.
@@ -331,7 +339,7 @@ void thandler::handle_event(const SDL_Event& event)
 							event.button.button);
 			break;
 
-#if SDL_VERSION_ATLEAST(2,0,0)
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 		case SDL_MOUSEWHEEL:
 			mouse_wheel(get_mouse_position(), event.wheel.x, event.wheel.y);
 			break;
@@ -388,16 +396,21 @@ void thandler::handle_event(const SDL_Event& event)
 					draw(true);
 					break;
 
-			case SDL_WINDOWEVENT_RESIZED:
-				video_resize(tpoint(event.window.data1, event.window.data2));
-				break;
+				case SDL_WINDOWEVENT_RESIZED:
+					video_resize(
+							tpoint(event.window.data1, event.window.data2));
+					break;
 
-			case SDL_WINDOWEVENT_ENTER:
-			case SDL_WINDOWEVENT_FOCUS_GAINED:
-				activate();
-				break;
+				case SDL_WINDOWEVENT_ENTER:
+				case SDL_WINDOWEVENT_FOCUS_GAINED:
+					activate();
+					break;
 			}
 
+			break;
+
+		case SDL_TEXTINPUT:
+			text_input(event.text.text);
 			break;
 #else
 		case SDL_VIDEOEXPOSE:
@@ -590,7 +603,7 @@ void thandler::mouse_button_up(const tpoint& position, const Uint8 button)
 			mouse(SDL_RIGHT_BUTTON_UP, position);
 			break;
 
-#if !SDL_VERSION_ATLEAST(2,0,0)
+#if !SDL_VERSION_ATLEAST(2, 0, 0)
 		case SDL_BUTTON_WHEELLEFT:
 			mouse(SDL_WHEEL_LEFT, get_mouse_position());
 			break;
@@ -640,18 +653,18 @@ void thandler::mouse_button_down(const tpoint& position, const Uint8 button)
 	}
 }
 
-#if SDL_VERSION_ATLEAST(2,0,0)
+#if SDL_VERSION_ATLEAST(2, 0, 0)
 void thandler::mouse_wheel(const tpoint& position, int x, int y)
 {
-	if (x > 0) {
+	if(x > 0) {
 		mouse(SDL_WHEEL_RIGHT, position);
-	} else if (x < 0) {
+	} else if(x < 0) {
 		mouse(SDL_WHEEL_LEFT, position);
 	}
 
-	if (y < 0) {
+	if(y < 0) {
 		mouse(SDL_WHEEL_DOWN, position);
-	} else if (y > 0){
+	} else if(y > 0) {
 		mouse(SDL_WHEEL_UP, position);
 	}
 }
@@ -711,14 +724,20 @@ void thandler::key_down(const SDL_KeyboardEvent& event)
 	}
 	if(!done) {
 #if SDL_VERSION_ATLEAST(2, 0, 0)
-		key_down(
-				  event.keysym.sym
-				, static_cast<const SDL_Keymod>(event.keysym.mod)
-				, static_cast<const Uint16>(event.keysym.scancode));
+		key_down(event.keysym.sym,
+				 static_cast<const SDL_Keymod>(event.keysym.mod),
+				 "");
 #else
-		key_down(event.keysym.sym, event.keysym.mod, event.keysym.unicode);
+		key_down(event.keysym.sym,
+				 event.keysym.mod,
+				 ::implementation::ucs4char_to_string(event.keysym.unicode));
 #endif
 	}
+}
+
+void thandler::text_input(const std::string& unicode)
+{
+	key_down(static_cast<SDLKey>(0), static_cast<SDLMod>(0), unicode);
 }
 
 bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
@@ -734,7 +753,7 @@ bool thandler::hotkey_pressed(const hotkey::hotkey_item& key)
 
 void thandler::key_down(const SDLKey key,
 						const SDLMod modifier,
-						const Uint16 unicode)
+						const utf8::string& unicode)
 {
 	DBG_GUI_E << "Firing: " << SDL_KEY_DOWN << ".\n";
 

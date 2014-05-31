@@ -52,10 +52,8 @@ namespace gui2
 
 REGISTER_DIALOG(theme_list)
 
-ttheme_list::ttheme_list(const std::vector<theme_info>& themes,
-						 int selection)
-	: index_(selection)
-	, themes_(themes)
+ttheme_list::ttheme_list(const std::vector<theme_info>& themes, int selection)
+	: index_(selection), themes_(themes)
 {
 }
 
@@ -98,5 +96,4 @@ void ttheme_list::post_show(twindow& window)
 	tlistbox& list = find_widget<tlistbox>(&window, "themes", false);
 	index_ = list.get_selected_row();
 }
-
 }
