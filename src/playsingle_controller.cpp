@@ -550,13 +550,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 			// Add all the units that survived the scenario.
 			LOG_NG << "Add units that survived the scenario to the recall list.\n";
-			for(unit_map::iterator un = gameboard_.units_.begin(); un != gameboard_.units_.end(); ++un) {
-
-				if (gameboard_.teams_[un->side() - 1].persistent()) {
-					LOG_NG << "Added unit " << un->id() << ", " << un->name() << "\n";
-					un->new_turn();
-					un->new_scenario();
-					gameboard_.teams_[un->side() - 1].recall_list().push_back(*un);
+			BOOST_FOREACH (unit & un, gameboard_.units_) {
+				if (gameboard_.teams_[un.side() - 1].persistent()) {
+					LOG_NG << "Added unit " << un.id() << ", " << un.name() << "\n";
+					un.new_turn();
+					un.new_scenario();
+					gameboard_.teams_[un.side() - 1].recall_list().push_back(un);
 				}
 			}
 			gamestate_.snapshot = config();
@@ -845,8 +844,8 @@ void playsingle_controller::linger()
 	gui_->redraw_everything();
 
 	// End all unit moves
-	for (unit_map::iterator u = gameboard_.units_.begin(); u != gameboard_.units_.end(); ++u) {
-		u->set_user_end_turn(true);
+	BOOST_FOREACH (unit & u, gameboard_.units_) {
+		u.set_user_end_turn(true);
 	}
 	try {
 		// Same logic as single-player human turn, but

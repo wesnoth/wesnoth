@@ -684,9 +684,9 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
 	if (!only_visual && turn() > 1) {
-		for(unit_map::iterator i = gameboard_.units_.begin(); i != gameboard_.units_.end(); ++i) {
-			if (i->side() == player_number_) {
-				i->new_turn();
+		BOOST_FOREACH(unit & i, gameboard_.units_)  {
+			if (i.side() == player_number_) {
+				i.new_turn();
 			}
 		}
 
@@ -753,20 +753,19 @@ config play_controller::to_config() const
 
 		{
 			//current visible units
-			for(unit_map::const_iterator i = gameboard_.units_.begin(); i != gameboard_.units_.end(); ++i) {
-				if (i->side() == side_num) {
+			BOOST_FOREACH(const unit & i, gameboard_.units_) {
+				if (i.side() == side_num) {
 					config& u = side.add_child("unit");
-					i->get_location().write(u);
-					i->write(u);
+					i.get_location().write(u);
+					i.write(u);
 				}
 			}
 		}
 		//recall list
 		{
-			for(std::vector<unit>::const_iterator j = t->recall_list().begin();
-				j != t->recall_list().end(); ++j) {
-					config& u = side.add_child("unit");
-					j->write(u);
+			BOOST_FOREACH(const unit & j, t->recall_list()) {
+				config& u = side.add_child("unit");
+				j.write(u);
 			}
 		}
 	}
@@ -802,9 +801,10 @@ void play_controller::finish_side_turn(){
 
 	resources::whiteboard->on_finish_side_turn(player_number_);
 
-	for(unit_map::iterator uit = gameboard_.units_.begin(); uit != gameboard_.units_.end(); ++uit) {
-		if (uit->side() == player_number_)
-			uit->end_turn();
+	BOOST_FOREACH(unit & uit, gameboard_.units_) {
+		if (uit.side() == player_number_) {
+			uit.end_turn();
+		}
 	}
 	// Clear shroud, in case units had been slowed for the turn.
 	actions::clear_shroud(player_number_);
@@ -849,9 +849,11 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	for(unit_map::const_iterator u = gameboard_.units_.begin(); u != gameboard_.units_.end(); ++u)
-		if (current_team().is_enemy(u->side()) && !gui_->fogged(u->get_location()))
+	BOOST_FOREACH(const unit & u, gameboard_.units_) {
+		if (current_team().is_enemy(u.side()) && !gui_->fogged(u.get_location())) {
 			return true;
+		}
+	}
 
 	return false;
 }
@@ -1399,20 +1401,17 @@ void play_controller::check_victory()
 	}
 	std::set<unsigned> not_defeated;
 
-	for (unit_map::const_iterator i = gameboard_.units_.begin(),
-	     i_end = gameboard_.units_.end(); i != i_end; ++i)
+	BOOST_FOREACH( const unit & i , gameboard_.units_)
 	{
-		const team& tm = gameboard_.teams_[i->side()-1];
-		if (i->can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
-			//DBG_NG << "seen leader for side " << i->side() << "\n";
-			not_defeated.insert(i->side());
+		const team& tm = gameboard_.teams_[i.side()-1];
+		if (i.can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
+			not_defeated.insert(i.side());
 		} else if (tm.defeat_condition() == team::NO_UNITS) {
-			//DBG_NG << "side doesn't require leader " << i->side() << "\n";
-			not_defeated.insert(i->side());
+			not_defeated.insert(i.side());
 		}
 	}
 
-	BOOST_FOREACH(team& tm, this->gameboard_.teams_)
+	BOOST_FOREACH(team& tm, gameboard_.teams_)
 	{
 		if(tm.defeat_condition() == team::NEVER)
 		{

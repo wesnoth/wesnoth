@@ -124,8 +124,8 @@ void replay_controller::init_gui(){
 
 	gui_->scroll_to_leader(gameboard_.units_, player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
-	for(std::vector<team>::iterator t = gameboard_.teams_.begin(); t != gameboard_.teams_.end(); ++t) {
-		t->reset_objectives_changed();
+	BOOST_FOREACH(team & t, gameboard_.teams_) {
+		t.reset_objectives_changed();
 	}
 
 	update_replay_ui();
