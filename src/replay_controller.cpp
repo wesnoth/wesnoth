@@ -76,9 +76,9 @@ replay_controller::replay_controller(const config& level,
 		game_state& state_of_game, const int ticks,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, game_config, video, false),
-	teams_start_(teams_),
+	teams_start_(gameboard_.teams_),
 	gamestate_start_(gamestate_),
-	units_start_(units_),
+	units_start_(gameboard_.units_),
 	tod_manager_start_(level),
 	current_turn_(1),
 	is_playing_(false),
@@ -122,9 +122,9 @@ void replay_controller::init_gui(){
 	else
 		gui_->set_team(0, show_everything_);
 
-	gui_->scroll_to_leader(units_, player_number_, display::WARP);
+	gui_->scroll_to_leader(gameboard_.units_, player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
-	for(std::vector<team>::iterator t = teams_.begin(); t != teams_.end(); ++t) {
+	for(std::vector<team>::iterator t = gameboard_.teams_.begin(); t != gameboard_.teams_.end(); ++t) {
 		t->reset_objectives_changed();
 	}
 
@@ -272,9 +272,9 @@ void replay_controller::reset_replay()
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	recorder.set_skip(false);
-	units_ = units_start_;
+	gameboard_.units_ = units_start_;
 	gamestate_ = gamestate_start_;
-	teams_ = teams_start_;
+	gameboard_.teams_ = teams_start_;
 	if (events_manager_ ){
 		// NOTE: this double reset is required so that the new
 		// instance of game_events::manager isn't created before the
@@ -332,7 +332,7 @@ void replay_controller::replay_next_turn(){
 	play_turn();
 
  	if (!skip_replay_ || !is_playing_){
-		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
@@ -348,7 +348,7 @@ void replay_controller::replay_next_side(){
 	}
 
 	if (!skip_replay_ || !is_playing_) {
-		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
@@ -416,7 +416,7 @@ void replay_controller::play_replay(){
 		}
 
 		if (!is_playing_) {
-			gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
+			gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
 		}
 	}
 	catch(end_level_exception& e){
@@ -438,7 +438,7 @@ void replay_controller::play_turn(){
 	bool last_team = false;
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
-		last_team = static_cast<size_t>(player_number_) == teams_.size();
+		last_team = static_cast<size_t>(player_number_) == gameboard_.teams_.size();
 		play_side();
 		play_slice();
 	}
@@ -470,9 +470,9 @@ void replay_controller::play_side(){
 
 		player_number_++;
 
-		if (static_cast<size_t>(player_number_) > teams_.size()) {
-			//during the orginal game player_number_ would also be teams_.size(),
-			player_number_ = teams_.size();
+		if (static_cast<size_t>(player_number_) > gameboard_.teams_.size()) {
+			//during the orginal game player_number_ would also be gameboard_.teams_.size(),
+			player_number_ = gameboard_.teams_.size();
 			finish_turn();
 			tod_manager_.next_turn();
 			it_is_a_new_turn_ = true;
@@ -482,7 +482,7 @@ void replay_controller::play_side(){
 		}
 
 		// This is necessary for replays in order to show possible movements.
-		BOOST_FOREACH(unit &u, units_) {
+		BOOST_FOREACH(unit &u, gameboard_.units_) {
 			if (u.side() == player_number_) {
 				u.new_turn();
 			}
@@ -500,7 +500,7 @@ void replay_controller::play_side(){
 void replay_controller::update_teams(){
 
 	int next_team = player_number_;
-	if(static_cast<size_t>(next_team) > teams_.size()) {
+	if(static_cast<size_t>(next_team) > gameboard_.teams_.size()) {
 		next_team = 1;
 	}
 

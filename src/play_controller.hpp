@@ -67,6 +67,18 @@ namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
 
+
+// This should eventually be moved to it's own header but the simplest way to begin refactor is right here
+struct game_board {
+	game_board(const config & game_config, const config & level) : teams_(), map_(game_config, level), units_() {}
+
+	std::vector<team> teams_;
+
+	gamemap map_;
+	unit_map units_;
+};
+
+
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
@@ -136,10 +148,10 @@ public:
 		return end_level_data_;
 	}
 	const std::vector<team>& get_teams_const() const {
-		return teams_;
+		return gameboard_.teams_;
 	}
 	const gamemap& get_map_const() const{
-		return map_;
+		return gameboard_.map_;
 	}
 	const tod_manager& get_tod_manager_const() const{
 			return tod_manager_;
@@ -229,11 +241,9 @@ protected:
 	boost::scoped_ptr<game_display> gui_;
 	const statistics::scenario_context statistics_context_;
 	const config& level_;
-	std::vector<team> teams_;
 	game_state& gamestate_;
 	game_data gamedata_;
-	gamemap map_;
-	unit_map units_;
+	game_board gameboard_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).

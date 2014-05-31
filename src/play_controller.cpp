@@ -101,8 +101,8 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	halo_manager_(),
 	labels_manager_(),
 	help_manager_(&game_config),
-	mouse_handler_(NULL, teams_, units_, map_),
-	menu_handler_(NULL, units_, teams_, level, map_, game_config, state_of_game),
+	mouse_handler_(NULL, gameboard_.teams_, gameboard_.units_, gameboard_.map_),
+	menu_handler_(NULL, gameboard_.units_, gameboard_.teams_, level, gameboard_.map_, game_config, state_of_game),
 	soundsources_manager_(),
 	tod_manager_(level),
 	pathfind_manager_(),
@@ -110,11 +110,9 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	gui_(),
 	statistics_context_(level["name"]),
 	level_(level),
-	teams_(),
 	gamestate_(state_of_game),
 	gamedata_(level),
-	map_(game_config, level),
-	units_(),
+	gameboard_(game_config, level),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	whiteboard_manager_(),
 	xp_mod_(level["experience_modifier"].to_int(100)),
@@ -138,13 +136,13 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 {
 	resources::controller = this;
 	resources::gamedata = &gamedata_;
-	resources::game_map = &map_;
+	resources::game_map = &gameboard_.map_;
 	resources::persist = &persist_;
 	resources::state_of_game = &gamestate_;
-	resources::teams = &teams_;
+	resources::teams = &gameboard_.teams_;
 	resources::tod_manager = &tod_manager_;
 	resources::undo_stack = undo_stack_.get();
-	resources::units = &units_;
+	resources::units = &gameboard_.units_;
 
 	persist_.start_transaction();
 
@@ -223,7 +221,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, teams_, level_, map_, units_, snapshot, gamestate_.replay_start());
+			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, snapshot, gamestate_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -238,14 +236,14 @@ void play_controller::init(CVideo& video){
 	}
 
 	// mouse_handler expects at least one team for linger mode to work.
-	if (teams_.empty()) end_level_data_.transient.linger_mode = false;
+	if (gameboard_.teams_.empty()) end_level_data_.transient.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
-	preferences::encounter_recruitable_units(teams_);
-	preferences::encounter_start_units(units_);
-	preferences::encounter_recallable_units(teams_);
-	preferences::encounter_map_terrain(map_);
+	preferences::encounter_recruitable_units(gameboard_.teams_);
+	preferences::encounter_start_units(gameboard_.units_);
+	preferences::encounter_recallable_units(gameboard_.teams_);
+	preferences::encounter_map_terrain(gameboard_.map_);
 
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
@@ -254,7 +252,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(units_, video, map_, tod_manager_, teams_, theme_cfg, level_));
+	gui_.reset(new game_display(gameboard_.units_, video, gameboard_.map_, tod_manager_, gameboard_.teams_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (gamestate_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -278,9 +276,9 @@ void play_controller::init(CVideo& video){
 		// If not set here observer would be without fog until
 		// the first turn of observable side
 		size_t i;
-		for (i=0;i < teams_.size();++i)
+		for (i=0;i < gameboard_.teams_.size();++i)
 		{
-			if (!teams_[i].get_disallow_observers())
+			if (!gameboard_.teams_[i].get_disallow_observers())
 			{
 				gui_->set_team(i);
 			}
@@ -363,14 +361,14 @@ void play_controller::place_sides_in_preferred_locations()
 {
 	std::vector<placing_info> placings;
 
-	int num_pos = map_.num_valid_starting_positions();
+	int num_pos = gameboard_.map_.num_valid_starting_positions();
 
 	int side_num = 1;
 	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
-			const map_location& pos = map_.starting_position(p);
-			int score = placing_score(side, map_, pos);
+			const map_location& pos = gameboard_.map_.starting_position(p);
+			int score = placing_score(side, gameboard_.map_, pos);
 			placing_info obj;
 			obj.side = side_num;
 			obj.score = score;
@@ -388,7 +386,7 @@ void play_controller::place_sides_in_preferred_locations()
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			map_.set_starting_position(i->side,i->pos);
+			gameboard_.map_.set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
@@ -602,7 +600,7 @@ void play_controller::init_gui(){
 	gui_->update_tod();
 
 	if ( !loading_game_ ) {
-		for ( int side = teams_.size(); side != 0; --side )
+		for ( int side = gameboard_.teams_.size(); side != 0; --side )
 			actions::clear_shroud(side, false, false);
 	}
 }
@@ -686,7 +684,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
 	if (!only_visual && turn() > 1) {
-		for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
+		for(unit_map::iterator i = gameboard_.units_.begin(); i != gameboard_.units_.end(); ++i) {
 			if (i->side() == player_number_) {
 				i->new_turn();
 			}
@@ -729,7 +727,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	}
 
 	if (!recorder.is_skipping() && !skip_replay_ && current_team().get_scroll_to_leader()){
-		gui_->scroll_to_leader(units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
 
@@ -745,8 +743,8 @@ config play_controller::to_config() const
 	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
 
-	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
-		int side_num = t - teams_.begin() + 1;
+	for(std::vector<team>::const_iterator t = gameboard_.teams_.begin(); t != gameboard_.teams_.end(); ++t) {
+		int side_num = t - gameboard_.teams_.begin() + 1;
 
 		config& side = cfg.add_child("side");
 		t->write(side);
@@ -755,7 +753,7 @@ config play_controller::to_config() const
 
 		{
 			//current visible units
-			for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
+			for(unit_map::const_iterator i = gameboard_.units_.begin(); i != gameboard_.units_.end(); ++i) {
 				if (i->side() == side_num) {
 					config& u = side.add_child("unit");
 					i->get_location().write(u);
@@ -787,7 +785,7 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-	cfg["map_data"] = map_.write();
+	cfg["map_data"] = gameboard_.map_.write();
 	cfg.merge_with(pathfind_manager_->to_config());
 
 	config display;
@@ -804,7 +802,7 @@ void play_controller::finish_side_turn(){
 
 	resources::whiteboard->on_finish_side_turn(player_number_);
 
-	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
+	for(unit_map::iterator uit = gameboard_.units_.begin(); uit != gameboard_.units_.end(); ++uit) {
 		if (uit->side() == player_number_)
 			uit->end_turn();
 	}
@@ -851,7 +849,7 @@ bool play_controller::enemies_visible() const
 		return true;
 
 	// See if any enemies are visible
-	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u)
+	for(unit_map::const_iterator u = gameboard_.units_.begin(); u != gameboard_.units_.end(); ++u)
 		if (current_team().is_enemy(u->side()) && !gui_->fogged(u->get_location()))
 			return true;
 
@@ -957,17 +955,17 @@ bool play_controller::can_execute_command(const hotkey::hotkey_command& cmd, int
 		return !linger_ && undo_stack_->can_undo() && !events::commands_disabled && !browse_;
 
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
-		return menu_handler_.current_unit() != units_.end();
+		return menu_handler_.current_unit() != gameboard_.units_.end();
 
 	case hotkey::HOTKEY_TERRAIN_DESCRIPTION:
 		return mouse_handler_.get_last_hex().valid();
 
 	case hotkey::HOTKEY_RENAME_UNIT:
 		return !events::commands_disabled &&
-			menu_handler_.current_unit() != units_.end() &&
+			menu_handler_.current_unit() != gameboard_.units_.end() &&
 			!(menu_handler_.current_unit()->unrenamable()) &&
 			menu_handler_.current_unit()->side() == gui_->viewing_side() &&
-			teams_[menu_handler_.current_unit()->side() - 1].is_human();
+			gameboard_.teams_[menu_handler_.current_unit()->side() - 1].is_human();
 
 	default:
 		return false;
@@ -1016,10 +1014,10 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_SEARCH:
 	{
-		BOOST_FOREACH(const unit &u, units_){
+		BOOST_FOREACH(const unit &u, gameboard_.units_){
 			const map_location& loc = u.get_location();
 			if(!gui_->fogged(loc) &&
-					!(teams_[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+					!(gameboard_.teams_[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
 				dictionary.insert(u.name());
 		}
 		//TODO List map labels
@@ -1033,7 +1031,7 @@ void play_controller::tab()
 	}
 	case gui::TEXTBOX_MESSAGE:
 	{
-		BOOST_FOREACH(const team& t, teams_) {
+		BOOST_FOREACH(const team& t, gameboard_.teams_) {
 			if(!t.is_empty())
 				dictionary.insert(t.current_player());
 		}
@@ -1078,29 +1076,29 @@ std::string play_controller::get_unique_saveid(const config& cfg, std::set<std::
 
 team& play_controller::current_team()
 {
-	assert(player_number_ > 0 && player_number_ <= int(teams_.size()));
-	return teams_[player_number_-1];
+	assert(player_number_ > 0 && player_number_ <= int(gameboard_.teams_.size()));
+	return gameboard_.teams_[player_number_-1];
 }
 
 const team& play_controller::current_team() const
 {
-	assert(player_number_ > 0 && player_number_ <= int(teams_.size()));
-	return teams_[player_number_-1];
+	assert(player_number_ > 0 && player_number_ <= int(gameboard_.teams_.size()));
+	return gameboard_.teams_[player_number_-1];
 }
 
 int play_controller::find_human_team_before_current_player() const
 {
-	if (player_number_ > int(teams_.size()))
+	if (player_number_ > int(gameboard_.teams_.size()))
 		return -2;
 
 	for (int i = player_number_-2; i >= 0; --i) {
-		if (teams_[i].is_human()) {
+		if (gameboard_.teams_[i].is_human()) {
 			return i+1;
 		}
 	}
 
-	for (int i = teams_.size()-1; i > player_number_-1; --i) {
-		if (teams_[i].is_human()) {
+	for (int i = gameboard_.teams_.size()-1; i > player_number_-1; --i) {
+		if (gameboard_.teams_[i].is_human()) {
 			return i+1;
 		}
 	}
@@ -1154,12 +1152,12 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 
 			const unit_map::iterator u = mouse_handler_.selected_unit();
 
-			if(u != units_.end()) {
+			if(u != gameboard_.units_.end()) {
 				// if it's not the unit's turn, we reset its moves
 				unit_movement_resetter move_reset(*u, u->side() != player_number_);
 
 				mouse_handler_.set_current_paths(pathfind::paths(*u, false,
-				                       true, teams_[gui_->viewing_team()],
+				                       true, gameboard_.teams_[gui_->viewing_team()],
 				                       mouse_handler_.get_path_turns()));
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
@@ -1264,7 +1262,7 @@ void play_controller::show_menu(const std::vector<std::string>& items_arg, int x
 		// Remove WML commands if they would not be allowed here
 		if(*i == "wml") {
 			if(!context_menu || gui_->viewing_team() != gui_->playing_team()
-			|| events::commands_disabled || !teams_[gui_->viewing_team()].is_human()
+			|| events::commands_disabled || !gameboard_.teams_[gui_->viewing_team()].is_human()
 			|| (linger_ && !game_config::debug)){
 				i = items.erase(i);
 				continue;
@@ -1307,13 +1305,13 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 
 		wb::future_map future; /* lasts until method returns. */
 
-		unit_map::const_iterator leader = units_.find(last_hex);
-		if ( leader != units_.end() )
+		unit_map::const_iterator leader = gameboard_.units_.find(last_hex);
+		if ( leader != gameboard_.units_.end() )
 			return leader->can_recruit()  &&  leader->side() == viewing_side  &&
 			       can_recruit_from(*leader);
 		else
 			// Look for a leader who can recruit on last_hex.
-			for ( leader = units_.begin(); leader != units_.end(); ++leader) {
+			for ( leader = gameboard_.units_.begin(); leader != gameboard_.units_.end(); ++leader) {
 				if ( leader->can_recruit()  &&  leader->side() == viewing_side  &&
 				     can_recruit_on(*leader, last_hex) )
 					return true;
@@ -1354,7 +1352,7 @@ hotkey::ACTION_STATE play_controller::get_action_state(hotkey::HOTKEY_COMMAND co
 	case hotkey::HOTKEY_ZOOM_DEFAULT:
 		return (gui_->get_zoom_factor() == 1.0) ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
 	case hotkey::HOTKEY_DELAY_SHROUD:
-		return teams_[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
+		return gameboard_.teams_[gui_->viewing_team()].auto_shroud_updates() ? hotkey::ACTION_OFF : hotkey::ACTION_ON;
 	default:
 		return hotkey::ACTION_STATELESS;
 	}
@@ -1401,10 +1399,10 @@ void play_controller::check_victory()
 	}
 	std::set<unsigned> not_defeated;
 
-	for (unit_map::const_iterator i = units_.begin(),
-	     i_end = units_.end(); i != i_end; ++i)
+	for (unit_map::const_iterator i = gameboard_.units_.begin(),
+	     i_end = gameboard_.units_.end(); i != i_end; ++i)
 	{
-		const team& tm = teams_[i->side()-1];
+		const team& tm = gameboard_.teams_[i->side()-1];
 		if (i->can_recruit() && tm.defeat_condition() == team::NO_LEADER) {
 			//DBG_NG << "seen leader for side " << i->side() << "\n";
 			not_defeated.insert(i->side());
@@ -1414,7 +1412,7 @@ void play_controller::check_victory()
 		}
 	}
 
-	BOOST_FOREACH(team& tm, this->teams_)
+	BOOST_FOREACH(team& tm, this->gameboard_.teams_)
 	{
 		if(tm.defeat_condition() == team::NEVER)
 		{
@@ -1446,16 +1444,16 @@ void play_controller::check_victory()
 
 		std::set<unsigned>::iterator m(n);
 		for (++m; m != not_defeated.end(); ++m) {
-			if (teams_[side].is_enemy(*m)) {
+			if (gameboard_.teams_[side].is_enemy(*m)) {
 				return;
 			}
 		}
 
-		if (teams_[side].is_human()) {
+		if (gameboard_.teams_[side].is_human()) {
 			found_player = true;
 		}
 
-		if (teams_[side].is_network()) {
+		if (gameboard_.teams_[side].is_network()) {
 			found_network_player = true;
 		}
 	}
