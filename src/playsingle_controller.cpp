@@ -74,7 +74,6 @@ playsingle_controller::playsingle_controller(const config& level,
 	end_turn_(false),
 	player_type_changed_(false),
 	replaying_(false),
-	turn_over_(false),
 	skip_next_turn_(false),
 	level_result_(NONE)
 {
@@ -898,11 +897,10 @@ void playsingle_controller::after_human_turn()
 {
 	// Mark the turn as done.
 	browse_ = true;
-	if (!turn_over_)
+	if (!linger_)
 	{
 		recorder.end_turn();
 	}
-	turn_over_ = false;
 
 	// Clear moves from the GUI.
 	gui_->set_route(NULL);

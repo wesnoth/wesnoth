@@ -336,7 +336,6 @@ void playmp_controller::linger()
 			turn_data_.send_data();
 			end_turn_ = false;
 			play_human_turn();
-			turn_over_ = true;  // We don't want to linger mode to add end_turn to replay
 			after_human_turn();
 			LOG_NG << "finished human turn" << std::endl;
 		} catch (game::load_game_exception&) {

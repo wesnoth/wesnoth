@@ -101,7 +101,6 @@ protected:
 	bool end_turn_;
 	bool player_type_changed_;
 	bool replaying_;
-	bool turn_over_;
 	bool skip_next_turn_;
 	bool do_autosaves_;
 	LEVEL_RESULT level_result_;
