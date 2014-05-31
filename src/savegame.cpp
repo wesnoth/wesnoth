@@ -705,16 +705,35 @@ void loadgame::fill_mplevel_config(config& level){
 
 	// If we have a start of scenario MP campaign scenario the snapshot
 	// is empty the starting position contains the wanted info.
-	const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.replay_start();
+	const config* temp;
+	if (!gamestate_.snapshot.empty()) {
+		temp = &gamestate_.snapshot;
+	} else if (!gamestate_.replay_start().empty()) {
+		temp = &gamestate_.replay_start();
+	} else {
+		temp = &game_config_.find_child("multiplayer", "id",
+			gamestate_.carryover_sides_start["next_scenario"]);
+	}
+
+	const config& start_data = *temp;
 
 	level["map_data"] = start_data["map_data"];
 	level["id"] = start_data["id"];
 	level["name"] = start_data["name"];
 	level["completion"] = start_data["completion"];
-	level["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
 	// Probably not needed.
 	level["turn"] = start_data["turn_at"];
 	level["turn_at"] = start_data["turn_at"];
+
+	if (gamestate_.snapshot.empty() && gamestate_.replay_start().empty()) {
+		level["next_underlying_unit_id"] = load_config_["next_underlying_unit_id"];
+		level["random_seed"] = gamestate_.carryover_sides_start["random_seed"];
+		level["random_calls"] = gamestate_.carryover_sides_start["random_calls"];
+	} else {
+		level["next_underlying_unit_id"] = start_data["next_underlying_unit_id"];
+		level["random_seed"] = start_data["random_seed"];
+		level["random_calls"] = start_data["random_calls"];
+	}
 
 	level.add_child("multiplayer", gamestate_.mp_settings().to_config());
 
@@ -726,14 +745,21 @@ void loadgame::fill_mplevel_config(config& level){
 			c.merge_with(start_data);
 		} else {
 			level.add_child("replay_start") = start_data;
+
+			BOOST_FOREACH(const config& start_side_cfg,
+					gamestate_.carryover_sides_start.child_range("side")) {
+				BOOST_FOREACH(config& side_cfg, level.child("replay_start").child_range("side")) {
+					if (side_cfg["save_id"] == start_side_cfg["save_id"]) {
+						side_cfg.merge_with(start_side_cfg);
+					}
+				}
+			}
 		}
 		level.add_child("snapshot") = config();
 	} else {
 		level.add_child("snapshot") = start_data;
 		level.add_child("replay_start") = gamestate_.replay_start();
 	}
-	level["random_seed"] = start_data["random_seed"];
-	level["random_calls"] = start_data["random_calls"];
 
 	// Adds the replay data, and the replay start, to the level,
 	// so clients can receive it.

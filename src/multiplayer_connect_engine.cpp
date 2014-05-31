@@ -219,7 +219,7 @@ config* connect_engine::current_config() {
 	} else if (!level_.child("side")) {
 		// Start-of-scenario save,
 		// the info has to be taken from the starting_pos.
-		cfg_level = &state_.replay_start();
+		cfg_level = &level_.child("replay_start");
 	} else {
 		// Fresh game, no snapshot available.
 		cfg_level = &level_;
