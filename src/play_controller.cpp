@@ -1093,22 +1093,19 @@ int play_controller::find_human_team_before_current_player() const
 	if (player_number_ > int(teams_.size()))
 		return -2;
 
-	int human_side = -2;
 	for (int i = player_number_-2; i >= 0; --i) {
 		if (teams_[i].is_human()) {
-			human_side = i;
-			break;
+			return i+1;
 		}
 	}
-	if (human_side == -2) {
-		for (int i = teams_.size()-1; i > player_number_-1; --i) {
-			if (teams_[i].is_human()) {
-				human_side = i;
-				break;
-			}
+
+	for (int i = teams_.size()-1; i > player_number_-1; --i) {
+		if (teams_[i].is_human()) {
+			return i+1;
 		}
 	}
-	return human_side+1;
+
+	return -1;
 }
 
 void play_controller::slice_before_scroll() {
