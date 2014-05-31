@@ -574,21 +574,22 @@ void loadgame::load_game(
 	}
 
 	if (!difficulty_.empty()){
-		if ( config & carryover = load_config_.child("carryover_sides_start") )
-			carryover["difficulty"] = difficulty_;
+		load_config_["difficulty"] = difficulty_;
 	}
 
 	gamestate_.classification().campaign_define = load_config_["campaign_define"].str();
 	gamestate_.classification().campaign_type = lexical_cast_default<game_classification::CAMPAIGN_TYPE> (load_config_["campaign_type"].str(), game_classification::SCENARIO);
 	gamestate_.classification().campaign_xtra_defines = utils::split(load_config_["campaign_extra_defines"]);
 	gamestate_.classification().version = load_config_["version"].str();
+	gamestate_.classification().difficulty = load_config_["difficulty"].str();
+	/*
 	if (config & carryover_sides_start = load_config_.child("carryover_sides_start")) {
 		std::string load_config_difficulty = carryover_sides_start["difficulty"];
 		gamestate_.classification().difficulty = load_config_difficulty;
 	} else {
 		gamestate_.classification().difficulty = difficulty_;
 	}
-
+	*/
 	check_version_compatibility();
 
 }

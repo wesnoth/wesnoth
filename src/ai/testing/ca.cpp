@@ -361,7 +361,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 		//FIXME: This message should be suppressed when WML author
 		//chooses the default recruitment pattern.
 		const std::string warning = "At difficulty level " +
-			resources::gamedata->difficulty() + ", trying to recruit a:" +
+			resources::state_of_game->classification().difficulty + ", trying to recruit a:" +
 			usage + " but no unit of that type (usage=) is"
 			" available. Check the recruit and [ai]"
 			" recruitment_pattern keys for team '" +

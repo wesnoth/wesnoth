@@ -101,7 +101,6 @@ public:
 		, variables_()
 		, rng_()
 		, wml_menu_items_()
-		, difficulty_(DEFAULT_DIFFICULTY)
 		, random_mode_("")
 		, next_scenario_()
 	{}
@@ -131,7 +130,6 @@ public:
 
 	const end_level_data& get_end_level() const;
 
-	const std::string& difficulty() const { return difficulty_; }
 	const std::string& random_mode() const { return random_mode_; }
 	const std::string& next_scenario() const { return next_scenario_; }
 
@@ -142,7 +140,6 @@ private:
 	config variables_;
 	rand_rng::simple_rng rng_;
 	game_events::wmi_container wml_menu_items_;
-	std::string difficulty_; 	/**< The difficulty level the game is being played on. */
 	std::string random_mode_; 	/**< whether we generate a new randomseed for each user action. */
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
 };
@@ -203,7 +200,6 @@ public:
 	void write_snapshot(config& cfg);
 	void write_config(config_writer& out);
 
-	const std::string& difficulty() const { return difficulty_; }
 	const std::string& random_mode() const { return random_mode_; }
 	const std::string& next_scenario() const { return next_scenario_; }
 	void set_next_scenario(const std::string& next_scenario) { next_scenario_ = next_scenario; }
@@ -219,7 +215,6 @@ private:
 	friend struct variable_info;
 	PHASE phase_;
 	bool can_end_turn_;
-	std::string difficulty_; /**< The difficulty level the game is being played on. */
 	std::string random_mode_; 
 	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
