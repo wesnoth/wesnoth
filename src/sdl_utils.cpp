@@ -1652,8 +1652,8 @@ surface rotate_any_surface(const surface& surf, float angle, int zoom, int offse
 		min_y = std::min(0.0F, std::min(point_1y, std::min(point_2y, point_3y)));
 		max_x = (angle >  90 && angle < 180) ? 0 : std::max(point_1x, std::max(point_2x, point_3x));
 		max_y = (angle > 180 && angle < 270) ? 0 : std::max(point_1y, std::max(point_2y, point_3y));
-		dst_w = static_cast<int>(ceil(abs(max_x) - min_x)) / zoom;
-		dst_h = static_cast<int>(ceil(abs(max_y) - min_y)) / zoom;
+		dst_w = static_cast<int>(ceil(std::abs(max_x) - min_x)) / zoom;
+		dst_h = static_cast<int>(ceil(std::abs(max_y) - min_y)) / zoom;
 	}
 	surface dst(create_neutral_surface(dst_w, dst_h));
 	{
