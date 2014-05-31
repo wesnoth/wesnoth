@@ -133,7 +133,7 @@ BOOST_AUTO_TEST_CASE ( test_config_attribute_value )
 	x_int = c["x"].to_int(); 
 		BOOST_CHECK_EQUAL(x_int, 1);
 	x_dbl = c["x"].to_long_long(); 
-		BOOST_CHECK(abs(x_dbl - 1.499) < 1e-6);
+		BOOST_CHECK(std::abs(x_dbl - 1.499) < 1e-6);
 
 
 	c["x"] = 123456789123ll;

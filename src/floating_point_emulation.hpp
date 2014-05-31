@@ -434,7 +434,7 @@ tidiv<T, 8>::idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs)
 	 * value is also quite likely to happen, so the case is optimized.
 	 */
 
-	Uint32 lhs_value = abs(lhs.value_);
+	Uint32 lhs_value = std::abs(lhs.value_);
 	if(LIKELY(lhs_value <= 0x007FFFFFu)) {
 		FLOATING_POINT_EMULATION_TRACER_COUNT("lhs_value <= 0x007FFFFFu");
 		sal(lhs.value_, 8);
@@ -508,7 +508,7 @@ tidiv<T, 8>::idiv(tfloat<T, 8>& lhs, tfloat<T, 8> rhs)
 		 * number of positions.
 		 */
 
-		Uint32 rhs_value = abs(rhs.value_);
+		Uint32 rhs_value = std::abs(rhs.value_);
 
 		/*
 		 * Will contain the offset from bit 0 of the LSB set. Since we're only
