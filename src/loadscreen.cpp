@@ -24,6 +24,7 @@
 #include "marked-up_text.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
 #include "image.hpp"
 
@@ -199,7 +200,7 @@ void loadscreen::clear_screen()
 {
 	int scrx = screen_.getx();                     // Screen width.
 	int scry = screen_.gety();                     // Screen height.
-	SDL_Rect area = create_rect(0, 0, scrx, scry); // Screen area.
+	SDL_Rect area = sdl::create_rect(0, 0, scrx, scry); // Screen area.
 	surface disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
 	sdl_fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));

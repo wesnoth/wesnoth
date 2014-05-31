@@ -56,13 +56,6 @@ bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
 SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
 SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
 
-/**
- *  Creates an empty SDL_Rect.
- *
- *  Since SDL_Rect doesn't have a constructor it's not possible to create it as
- *  a temporary for a function parameter. This functions overcomes this limit.
- */
-SDL_Rect create_rect(const int x, const int y, const int w, const int h);
 
 struct surface
 {

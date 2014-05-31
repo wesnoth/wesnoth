@@ -696,7 +696,7 @@ void save_preview_pane::draw_contents()
 	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = create_rect(loc.x + save_preview_border
+	const SDL_Rect area = sdl::create_rect(loc.x + save_preview_border
 			, loc.y + save_preview_border
 			, loc.w - save_preview_border * 2
 			, loc.h - save_preview_border * 2);
@@ -724,7 +724,7 @@ void save_preview_pane::draw_contents()
 		have_leader_image = !image.null();
 
 		if(have_leader_image) {
-			SDL_Rect image_rect = create_rect(area.x, area.y, image->w, image->h);
+			SDL_Rect image_rect = sdl::create_rect(area.x, area.y, image->w, image->h);
 			ypos += image_rect.h + save_preview_border;
 
 			sdl_blit(image,NULL,screen,&image_rect);
@@ -772,7 +772,7 @@ void save_preview_pane::draw_contents()
 	if(map_surf != NULL) {
 		// Align the map to the left when the leader image is missing.
 		const int map_x = have_leader_image ? area.x + area.w - map_surf->w : area.x;
-		SDL_Rect map_rect = create_rect(map_x
+		SDL_Rect map_rect = sdl::create_rect(map_x
 				, area.y
 				, map_surf->w
 				, map_surf->h);
@@ -1060,7 +1060,7 @@ void unit_preview_pane::draw_contents()
 	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = create_rect(loc.x + unit_preview_border
+	const SDL_Rect area = sdl::create_rect(loc.x + unit_preview_border
 			, loc.y + unit_preview_border
 			, loc.w - unit_preview_border * 2
 			, loc.h - unit_preview_border * 2);
@@ -1071,10 +1071,10 @@ void unit_preview_pane::draw_contents()
 	if (!left_)
 		unit_image = image::reverse_image(unit_image);
 
-	SDL_Rect image_rect = create_rect(area.x, area.y, 0, 0);
+	SDL_Rect image_rect = sdl::create_rect(area.x, area.y, 0, 0);
 
 	if(unit_image != NULL) {
-		SDL_Rect rect = create_rect(
+		SDL_Rect rect = sdl::create_rect(
 				  right_align
 					? area.x
 					: area.x + area.w - unit_image->w
@@ -1103,7 +1103,7 @@ void unit_preview_pane::draw_contents()
 	}
 
 	// Place the 'unit profile' button
-	const SDL_Rect button_loc = create_rect(
+	const SDL_Rect button_loc = sdl::create_rect(
 			  right_align
 				? area.x
 				: area.x + area.w - details_button_.location().w
@@ -1112,7 +1112,7 @@ void unit_preview_pane::draw_contents()
 			, details_button_.location().h);
 	details_button_.set_location(button_loc);
 
-	SDL_Rect description_rect = create_rect(image_rect.x
+	SDL_Rect description_rect = sdl::create_rect(image_rect.x
 			, image_rect.y + image_rect.h + details_button_.location().h
 			, 0
 			, 0);
@@ -1429,7 +1429,7 @@ static network::connection network_data_dialog(display& disp, const std::string&
 	frame.layout(centered_layout);
 	frame.draw();
 
-	const SDL_Rect progress_rect = create_rect(centered_layout.x + border
+	const SDL_Rect progress_rect = sdl::create_rect(centered_layout.x + border
 			, centered_layout.y + border
 			, centered_layout.w - border * 2
 			, centered_layout.h - border * 2);

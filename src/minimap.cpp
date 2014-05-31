@@ -96,7 +96,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			// also do 1-pixel shift because the scaling
 			// function seems to do it with its rounding
-			SDL_Rect maprect = create_rect(
+			SDL_Rect maprect = sdl::create_rect(
 					x * scale * 3 / 4 - 1
 					, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - 1
 					, 0
@@ -146,7 +146,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 							if(overlay != NULL && overlay != tile) {
 								surface combined = create_neutral_surface(tile->w, tile->h);
-								SDL_Rect r = create_rect(0,0,0,0);
+								SDL_Rect r = sdl::create_rect(0,0,0,0);
 								sdl_blit(tile, NULL, combined, &r);
 								r.x = std::max(0, (tile->w - overlay->w)/2);
 								r.y = std::max(0, (tile->h - overlay->h)/2);
@@ -224,7 +224,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 							col.b = col.b - (col.b - tmp.b)/2;
 						}
 					}
-					SDL_Rect fillrect = create_rect(maprect.x, maprect.y, scale * 3/4, scale);
+					SDL_Rect fillrect = sdl::create_rect(maprect.x, maprect.y, scale * 3/4, scale);
 					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
 					sdl_fill_rect(minimap, &fillrect, mapped_col);
 				}
@@ -253,7 +253,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					}
 				}
 
-				SDL_Rect fillrect = create_rect(
+				SDL_Rect fillrect = sdl::create_rect(
 						maprect.x
 						, maprect.y
 						, scale * 3/4

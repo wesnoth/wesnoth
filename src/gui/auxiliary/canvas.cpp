@@ -28,6 +28,7 @@
 #include "gui/auxiliary/formula.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/helper.hpp"
+#include "sdl/rect.hpp"
 #include "../../text.hpp"
 #include "utils/foreach.tpp"
 #include "video.hpp"
@@ -1092,13 +1093,14 @@ void timage::draw(surface& canvas,
 	surface tmp(image::get_image(image::locator(name)));
 
 	if(!tmp) {
-		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn." << std::endl;
+		ERR_GUI_D << "Image: '" << name << "' not found and won't be drawn."
+				  << std::endl;
 		return;
 	}
 
 	image_.assign(make_neutral_surface(tmp));
 	assert(image_);
-	src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
+	src_clip_ = sdl::create_rect(0, 0, image_->w, image_->h);
 
 	game_logic::map_formula_callable local_variables(variables);
 	local_variables.add("image_original_width", variant(image_->w));
@@ -1137,7 +1139,7 @@ void timage::draw(surface& canvas,
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
-	SDL_Rect dst_clip = ::create_rect(x, y, 0, 0);
+	SDL_Rect dst_clip = sdl::create_rect(x, y, 0, 0);
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.
@@ -1179,7 +1181,7 @@ void timage::draw(surface& canvas,
 
 				for(int x = 0; x < columns; ++x) {
 					for(int y = 0; y < rows; ++y) {
-						const SDL_Rect dest = ::create_rect(
+						const SDL_Rect dest = sdl::create_rect(
 								x * image_->w, y * image_->h, 0, 0);
 						blit_surface(image_, NULL, surf, &dest);
 					}
@@ -1422,7 +1424,7 @@ void ttext::draw(surface& canvas,
 					 "canvas and will be clipped.\n";
 	}
 
-	SDL_Rect dst = ::create_rect(x, y, canvas->w, canvas->h);
+	SDL_Rect dst = sdl::create_rect(x, y, canvas->w, canvas->h);
 	blit_surface(surf, 0, canvas, &dst);
 }
 

@@ -21,6 +21,7 @@
 
 #include "sdl_utils.hpp"
 #include "sdl/alpha.hpp"
+#include "sdl/rect.hpp"
 
 #include "floating_point_emulation.hpp"
 #include "neon.hpp"
@@ -151,16 +152,6 @@ SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	res.w = std::max<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
 	res.h = std::max<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
 	return res;
-}
-
-SDL_Rect create_rect(const int x, const int y, const int w, const int h)
-{
-	SDL_Rect rect;
-	rect.x = x;
-	rect.y = y;
-	rect.w = w;
-	rect.h = h;
-	return rect;
 }
 
 bool operator<(const surface& a, const surface& b)
@@ -1257,7 +1248,7 @@ surface blur_surface(const surface &surf, int depth, bool optimize)
 		return NULL;
 	}
 
-	SDL_Rect rect = create_rect(0, 0, surf->w, surf->h);
+	SDL_Rect rect = sdl::create_rect(0, 0, surf->w, surf->h);
 	blur_surface(res, rect, depth);
 
 	return optimize ? create_optimized_surface(res) : res;
@@ -1918,7 +1909,7 @@ void blit_surface(const surface& surf,
 	const surface& src = is_neutral(surf) ? surf : make_neutral_surface(surf);
 
 	// Get the areas to blit
-	SDL_Rect dst_rect = create_rect(0, 0, dst->w, dst->h);
+	SDL_Rect dst_rect = sdl::create_rect(0, 0, dst->w, dst->h);
 	if(dstrect) {
 		dst_rect.x = dstrect->x;
 		dst_rect.w -= dstrect->x;
@@ -1928,7 +1919,7 @@ void blit_surface(const surface& surf,
 
 	}
 
-	SDL_Rect src_rect = create_rect(0, 0, src->w, src->h);
+	SDL_Rect src_rect = sdl::create_rect(0, 0, src->w, src->h);
 	if(srcrect && srcrect->w && srcrect->h) {
 		src_rect.x = srcrect->x;
 		src_rect.y = srcrect->y;
@@ -2280,10 +2271,10 @@ void surface_restorer::cancel()
 void draw_rectangle(int x, int y, int w, int h, Uint32 color,surface target)
 {
 
-	SDL_Rect top = create_rect(x, y, w, 1);
-	SDL_Rect bot = create_rect(x, y + h - 1, w, 1);
-	SDL_Rect left = create_rect(x, y, 1, h);
-	SDL_Rect right = create_rect(x + w - 1, y, 1, h);
+	SDL_Rect top = sdl::create_rect(x, y, w, 1);
+	SDL_Rect bot = sdl::create_rect(x, y + h - 1, w, 1);
+	SDL_Rect left = sdl::create_rect(x, y, 1, h);
+	SDL_Rect right = sdl::create_rect(x + w - 1, y, 1, h);
 
 	sdl_fill_rect(target,&top,color);
 	sdl_fill_rect(target,&bot,color);
@@ -2296,7 +2287,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  double alpha, surface target)
 {
 
-	SDL_Rect rect = create_rect(x, y, w, h);
+	SDL_Rect rect = sdl::create_rect(x, y, w, h);
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 

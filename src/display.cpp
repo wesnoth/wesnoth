@@ -407,7 +407,7 @@ const SDL_Rect& display::calculate_energy_bar(surface surf)
 		}
 	}
 
-	const SDL_Rect res = create_rect(first_col
+	const SDL_Rect res = sdl::create_rect(first_col
 			, first_row
 			, last_col-first_col
 			, last_row+1-first_row);
@@ -445,7 +445,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos,
 	else {
 	  const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
 	  const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
-	  const SDL_Rect scaled_bar_loc = create_rect(
+	  const SDL_Rect scaled_bar_loc = sdl::create_rect(
 			    fxptoi(unscaled_bar_loc. x * xratio)
 			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
 			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
@@ -466,8 +466,8 @@ void display::draw_bar(const std::string& image, int xpos, int ypos,
 
 	const size_t skip_rows = bar_loc.h - height;
 
-	SDL_Rect top = create_rect(0, 0, surf->w, bar_loc.y);
-	SDL_Rect bot = create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
+	SDL_Rect top = sdl::create_rect(0, 0, surf->w, bar_loc.y);
+	SDL_Rect bot = sdl::create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
 	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
@@ -478,7 +478,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos,
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
-		SDL_Rect filled_area = create_rect(0, 0, bar_loc.w, height-unfilled);
+		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
 		sdl_fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
@@ -1298,7 +1298,7 @@ void display::drawing_buffer_commit()
 			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
 			// to pass to each call to sdl_blit.
-			SDL_Rect dstrect = create_rect(blit.x(), blit.y(), 0, 0);
+			SDL_Rect dstrect = sdl::create_rect(blit.x(), blit.y(), 0, 0);
 			SDL_Rect srcrect = blit.clip();
 			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
 				? &srcrect : NULL;
@@ -1513,7 +1513,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			SDL_Rect clip = create_rect(w_off, h_off, 0, 0);
+			SDL_Rect clip = sdl::create_rect(w_off, h_off, 0, 0);
 			sdl_blit(background, NULL, screen, &clip);
 		}
 	}
@@ -1553,7 +1553,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 	if (image==NULL)
 		return;
 
-	SDL_Rect image_rect = create_rect(x, y, image->w, image->h);
+	SDL_Rect image_rect = sdl::create_rect(x, y, image->w, image->h);
 	SDL_Rect clip_rect = map_area();
 	if (!rects_overlap(image_rect, clip_rect))
 		return;
@@ -1591,7 +1591,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		// divide the surface into 2 parts
 		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
 		const int depth = surf->h - submerge_height;
-		SDL_Rect srcrect = create_rect(0, 0, surf->w, submerge_height);
+		SDL_Rect srcrect = sdl::create_rect(0, 0, surf->w, submerge_height);
 		drawing_buffer_add(drawing_layer, loc, x, y, surf, srcrect);
 
 		if(submerge_height != surf->h) {
@@ -1950,7 +1950,7 @@ void display::draw_minimap_units()
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
 
-		SDL_Rect r = create_rect(minimap_location_.x + round_double(u_x)
+		SDL_Rect r = sdl::create_rect(minimap_location_.x + round_double(u_x)
 				, minimap_location_.y + round_double(u_y)
 				, round_double(u_w)
 				, round_double(u_h));
@@ -2540,7 +2540,7 @@ void display::draw_invalidated() {
 		update_rect(xpos, ypos, zoom_, zoom_);
 
 		const bool on_map = get_map().on_board(loc);
-		SDL_Rect hex_rect = create_rect(xpos, ypos, zoom_, zoom_);
+		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
 		if(!rects_overlap(hex_rect,clip_rect)) {
 			continue;
 		}
@@ -2654,7 +2654,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
+			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
 			sdl_fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (draw_terrain_codes_) {
@@ -2670,7 +2670,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
+			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
 			sdl_fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (!draw_coordinates_) {
@@ -2816,7 +2816,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	for (config::const_child_itors elements = report.child_range("element");
 	     elements.first != elements.second; ++elements.first)
 	{
-		SDL_Rect area = create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
+		SDL_Rect area = sdl::create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;
 
 		std::string t = (*elements.first)["text"];

@@ -612,7 +612,7 @@ void create::layout_children(const SDL_Rect& rect)
 	int ypos_columntop = ypos;
 
 	// First column: image & random map options
-	image_rect_ = create_rect(xpos, ypos, image_width, image_width);
+	image_rect_ = sdl::create_rect(xpos, ypos, image_width, image_width);
 	ypos += image_width + border_size;
 
 	num_players_label_.set_location(xpos, ypos);

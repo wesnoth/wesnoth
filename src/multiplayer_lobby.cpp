@@ -95,7 +95,7 @@ SDL_Rect gamebrowser::get_item_rect(size_t index) const {
 		return res;
 	}
 	const SDL_Rect& loc = inner_location();
-	return create_rect(
+	return sdl::create_rect(
 			  loc.x
 			, loc.y + (index - visible_range_.first) * row_height()
 			, loc.w

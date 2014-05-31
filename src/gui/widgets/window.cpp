@@ -757,7 +757,7 @@ void twindow::draw()
 				/** @todo should probably be moved to event::thandler::draw. */
 				static unsigned i = 0;
 				if(++i % sunset_ == 0) {
-					SDL_Rect r = ::create_rect(
+					SDL_Rect r = sdl::create_rect(
 							0, 0, frame_buffer->w, frame_buffer->h);
 					const Uint32 color
 							= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, 255);

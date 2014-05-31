@@ -114,7 +114,7 @@ void default_map_generator::user_config(display& disp)
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 
-	SDL_Rect dialog_rect = create_rect(xpos, ypos, width, height);
+	SDL_Rect dialog_rect = sdl::create_rect(xpos, ypos, width, height);
 	surface_restorer dialog_restorer(&screen,dialog_rect);
 
 	const std::string& players_label = _("Players:");
@@ -163,7 +163,7 @@ void default_map_generator::user_config(display& disp)
 
 	const int slider_left = text_right + 10;
 	const int slider_right = xpos + width - horz_margin - right_space;
-	SDL_Rect slider_rect = create_rect(slider_left
+	SDL_Rect slider_rect = sdl::create_rect(slider_left
 			, players_rect.y
 			, slider_right - slider_left
 			, players_rect.h);

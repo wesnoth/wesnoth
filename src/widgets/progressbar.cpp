@@ -20,6 +20,7 @@
 
 #include "font.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
 
 namespace gui {
@@ -51,7 +52,7 @@ void progress_bar::draw_contents()
 		int	lightning_thickness = 2;
 		static const SDL_Color selected_text_color = {0xCC,0xCC,0xCC,0};
 
-		SDL_Rect inner_area = create_rect(area.x + 1
+		SDL_Rect inner_area = sdl::create_rect(area.x + 1
 				, area.y + 1
 				, area.w - 2
 				, area.h - 2);

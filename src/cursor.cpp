@@ -22,6 +22,7 @@
 #include "game_preferences.hpp"
 #include "image.hpp"
 #include "preferences_display.hpp"
+#include "sdl/rect.hpp"
 #include "video.hpp"
 
 #include <iostream>
@@ -267,7 +268,7 @@ void draw(surface screen)
 	cursor_y = new_cursor_y;
 
 	// Save the screen area where the cursor is being drawn onto the back buffer
-	SDL_Rect area = create_rect(cursor_x - shift_x[current_cursor]
+	SDL_Rect area = sdl::create_rect(cursor_x - shift_x[current_cursor]
 			, cursor_y - shift_y[current_cursor]
 			, surf->w
 			, surf->h);
@@ -291,7 +292,7 @@ void undraw(surface screen)
 		return;
 	}
 
-	SDL_Rect area = create_rect(cursor_x - shift_x[current_cursor]
+	SDL_Rect area = sdl::create_rect(cursor_x - shift_x[current_cursor]
 			, cursor_y - shift_y[current_cursor]
 			, cursor_buf->w
 			, cursor_buf->h);

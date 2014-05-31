@@ -43,6 +43,7 @@ class arrow;
 #include "key.hpp"
 #include "team.hpp"
 #include "time_of_day.hpp"
+#include "sdl/rect.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
@@ -205,7 +206,7 @@ public:
 		{ return theme_.unit_image_location(screen_area()); }
 
 	SDL_Rect screen_area() const
-		{ return create_rect(0, 0, w(), h()); }
+		{ return sdl::create_rect(0, 0, w(), h()); }
 
 	/**
 	 * Returns the maximum area used for the map

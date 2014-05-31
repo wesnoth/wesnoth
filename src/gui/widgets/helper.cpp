@@ -18,6 +18,7 @@
 
 #include "gui/auxiliary/log.hpp"
 #include "gui/widgets/settings.hpp"
+#include "sdl/rect.hpp"
 
 #include "formula_string_utils.hpp"
 
@@ -46,7 +47,7 @@ bool init()
 
 SDL_Rect create_rect(const tpoint& origin, const tpoint& size)
 {
-	return ::create_rect(origin.x, origin.y, size.x, size.y);
+	return sdl::create_rect(origin.x, origin.y, size.x, size.y);
 }
 
 unsigned decode_font_style(const std::string& style)

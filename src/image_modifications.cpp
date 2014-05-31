@@ -276,7 +276,7 @@ surface blit_modification::operator()(const surface& src) const
 	//blit_surface want neutral surfaces
 	surface nsrc = make_neutral_surface(src);
 	surface nsurf = make_neutral_surface(surf_);
-	SDL_Rect r = create_rect(x_, y_, 0, 0);
+	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
 	blit_surface(nsurf, NULL, nsrc, &r);
 	return nsrc;
 }
@@ -300,7 +300,7 @@ surface mask_modification::operator()(const surface& src) const
 {
 	if(src->w == mask_->w &&  src->h == mask_->h && x_ == 0 && y_ == 0)
 		return mask_surface(src, mask_);
-	SDL_Rect r = create_rect(x_, y_, 0, 0);
+	SDL_Rect r = sdl::create_rect(x_, y_, 0, 0);
 	surface new_mask = create_neutral_surface(src->w, src->h);
 	blit_surface(mask_, NULL, new_mask, &r);
 	return mask_surface(src, new_mask);

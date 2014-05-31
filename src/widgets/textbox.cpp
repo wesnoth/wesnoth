@@ -20,6 +20,7 @@
 #include "clipboard.hpp"
 #include "log.hpp"
 #include "sdl/alpha.hpp"
+#include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
 #include "video.hpp"
 
@@ -105,7 +106,7 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 
 	sdl_blit(text_image_,NULL,new_surface,NULL);
 
-	SDL_Rect target = create_rect(0
+	SDL_Rect target = sdl::create_rect(0
 			, text_image_->h
 			, new_text->w
 			, new_text->h);
@@ -167,7 +168,7 @@ void textbox::set_cursor_pos(const int cursor_pos)
 void textbox::draw_cursor(int pos, CVideo &video) const
 {
 	if(show_cursor_ && editable_ && enabled()) {
-		SDL_Rect rect = create_rect(location().x + pos
+		SDL_Rect rect = sdl::create_rect(location().x + pos
 				, location().y
 				, 1
 				, location().h);
@@ -215,7 +216,7 @@ void textbox::draw_contents()
 					break;
 				}
 
-				SDL_Rect rect = create_rect(loc.x + startx
+				SDL_Rect rect = sdl::create_rect(loc.x + startx
 						, loc.y + starty - src.y
 						, right - startx
 						, line_height_);

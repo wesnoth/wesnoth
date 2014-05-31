@@ -564,14 +564,14 @@ void hotkey_preferences_dialog::show_binding_dialog(
 
 	const std::string text = _("Press desired hotkey (Esc cancels)");
 
-	SDL_Rect clip_rect = create_rect(0, 0, disp_.w(), disp_.h());
+	SDL_Rect clip_rect = sdl::create_rect(0, 0, disp_.w(), disp_.h());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
 			font::NORMAL_COLOR, text, 0, 0);
 
 	const int centerx = disp_.w() / 2;
 	const int centery = disp_.h() / 2;
 
-	SDL_Rect dlgr = create_rect(centerx - text_size.w / 2 - 30,
+	SDL_Rect dlgr = sdl::create_rect(centerx - text_size.w / 2 - 30,
 			centery - text_size.h / 2 - 16, text_size.w + 60,
 			text_size.h + 32);
 

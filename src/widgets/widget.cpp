@@ -19,6 +19,7 @@
 
 #include "widgets/widget.hpp"
 #include "video.hpp"
+#include "sdl/rect.hpp"
 #include "tooltips.hpp"
 
 #include <cassert>
@@ -112,22 +113,22 @@ void widget::bg_register(SDL_Rect const &rect)
 
 void widget::set_location(int x, int y)
 {
-	set_location(create_rect(x, y, rect_.w, rect_.h));
+	set_location(sdl::create_rect(x, y, rect_.w, rect_.h));
 }
 
 void widget::set_width(unsigned w)
 {
-	set_location(create_rect(rect_.x, rect_.y, w, rect_.h));
+	set_location(sdl::create_rect(rect_.x, rect_.y, w, rect_.h));
 }
 
 void widget::set_height(unsigned h)
 {
-	set_location(create_rect(rect_.x, rect_.y, rect_.w, h));
+	set_location(sdl::create_rect(rect_.x, rect_.y, rect_.w, h));
 }
 
 void widget::set_measurements(unsigned w, unsigned h)
 {
-	set_location(create_rect(rect_.x, rect_.y, w, h));
+	set_location(sdl::create_rect(rect_.x, rect_.y, w, h));
 }
 
 unsigned widget::width() const

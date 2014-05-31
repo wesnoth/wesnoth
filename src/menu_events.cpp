@@ -2852,14 +2852,14 @@ void console_handler::do_layers() {
 		std::ostringstream str;
 
 		int tz = image::tile_size;
-		SDL_Rect r = create_rect(0,0,tz,tz);
+		SDL_Rect r = sdl::create_rect(0,0,tz,tz);
 
 		surface surf = image::get_image(img.get_filename());
 
 		// calculate which part of the image the terrain engine uses
 		if(loc_cut.valid()) {
 			// copied from image.cpp : load_image_sub_file()
-			r = create_rect(
+			r = sdl::create_rect(
 					((tz*3) / 4) * loc_cut.x
 					, tz * loc_cut.y + (tz / 2) * (loc_cut.x % 2)
 					, tz, tz);
@@ -2876,7 +2876,7 @@ void console_handler::do_layers() {
 
 		// cut and mask the image
 		// ~CROP and ~BLIT have limitations, we do some math to avoid them
-		SDL_Rect r2 = intersect_rects(r, create_rect(0,0,surf->w,surf->h));
+		SDL_Rect r2 = intersect_rects(r, sdl::create_rect(0,0,surf->w,surf->h));
 		if(r2.w > 0 && r2.h > 0) {
 			str << "~BLIT("
 					<< name << "~CROP("

@@ -20,6 +20,7 @@
 #include "game_config.hpp"
 #include "font.hpp"
 #include "image.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 
@@ -132,7 +133,7 @@ SDL_Rect slider::slider_area() const
 		return default_value;
 
 	int xpos = loc.x + (value_ - min_) * (loc.w - image_->w) / (max_ - min_);
-	return create_rect(xpos, loc.y, image_->w, image_->h);
+	return sdl::create_rect(xpos, loc.y, image_->w, image_->h);
 }
 
 void slider::draw_contents()
@@ -165,7 +166,7 @@ void slider::draw_contents()
 
 	surface screen = video().getSurface();
 
-	SDL_Rect line_rect = create_rect(loc.x + image->w / 2
+	SDL_Rect line_rect = sdl::create_rect(loc.x + image->w / 2
 			, loc.y + loc.h / 2
 			, loc.w - image->w
 			, 1);

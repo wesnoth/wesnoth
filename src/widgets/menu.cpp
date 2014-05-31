@@ -23,6 +23,7 @@
 #include "language.hpp"
 #include "image.hpp"
 #include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
 #include "sound.hpp"
 #include "video.hpp"
 #include "wml_separators.hpp"
@@ -1138,7 +1139,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 		y = prev.y + prev.h;
 	}
 
-	SDL_Rect res = create_rect(loc.x, y, loc.w, get_item_height(item));
+	SDL_Rect res = sdl::create_rect(loc.x, y, loc.w, get_item_height(item));
 
 	SDL_Rect const &screen_area = ::screen_area();
 

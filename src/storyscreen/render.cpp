@@ -67,7 +67,7 @@ namespace {
 
 	void blur_area(CVideo& video, int y, int h)
 	{
-		SDL_Rect blur_rect = create_rect(0, y, screen_area().w, h);
+		SDL_Rect blur_rect = sdl::create_rect(0, y, screen_area().w, h);
 		surface blur = get_surface_portion(video.getSurface(), blur_rect);
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
@@ -149,12 +149,12 @@ void part_ui::prepare_background()
 
 		layer = tile_surface(layer, tilew, tileh, false);
 
-		SDL_Rect drect = create_rect(
+		SDL_Rect drect = sdl::create_rect(
 				  (background_->w - layer->w) / 2
 				, (background_->h - layer->h) / 2
 				, layer->w
 				, layer->h);
-		SDL_Rect srect = create_rect(
+		SDL_Rect srect = sdl::create_rect(
 				  0
 				, 0
 				, layer->w
@@ -449,7 +449,7 @@ void part_ui::render_story_box()
 		break;
 	}
 
-	SDL_Rect update_area = create_rect(0
+	SDL_Rect update_area = sdl::create_rect(0
 			, fix_text_y
 			, screen_area().w
 			, fix_text_h);
@@ -489,8 +489,8 @@ void part_ui::render_story_box()
 
 	// Time to do some fucking visual effect.
 	const int scan_height = 1, scan_width = txtsurf->w;
-	SDL_Rect scan = create_rect(0, 0, scan_width, scan_height);
-	SDL_Rect dstrect = create_rect(text_x_, 0, scan_width, scan_height);
+	SDL_Rect scan = sdl::create_rect(0, 0, scan_width, scan_height);
+	SDL_Rect dstrect = sdl::create_rect(text_x_, 0, scan_width, scan_height);
 	surface scan_dst = video_.getSurface();
 	bool scan_finished = false;
 	while(true) {

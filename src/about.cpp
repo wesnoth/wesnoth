@@ -199,7 +199,7 @@ void show_about(display &disp, const std::string &campaign)
 	// get slight scrolling glitches in the credits screen.
 	std::vector<std::string> text = about::get_text(campaign, true);
 
-	SDL_Rect screen_rect = create_rect(0, 0, screen->w, screen->h);
+	SDL_Rect screen_rect = sdl::create_rect(0, 0, screen->w, screen->h);
 
 	const surface_restorer restorer(&video, screen_rect);
 
@@ -305,11 +305,11 @@ void show_about(display &disp, const std::string &campaign)
 		if (update_dimensions) {
 			// rescale the background
 			map_image_scaled = scale_surface(map_image, screen->w, screen->h);
-			screen_rect = create_rect(0, 0, screen->w, screen->h);
+			screen_rect = sdl::create_rect(0, 0, screen->w, screen->h);
 			redraw_mapimage = true;
 
 			// update the frame
-			frame_area = create_rect(
+			frame_area = sdl::create_rect(
 						  screen->w * 3 / 32
 						, top_margin
 						, screen->w * 13 / 16
@@ -345,7 +345,7 @@ void show_about(display &disp, const std::string &campaign)
 		} else {
 			// redraw the saved part of the dialog where text scrolled
 			// thus erasing all text
-			SDL_Rect modified = create_rect(0, 0, max_text_width, text_rect.h);
+			SDL_Rect modified = sdl::create_rect(0, 0, max_text_width, text_rect.h);
 			sdl_blit(text_surf, &modified, screen, &text_rect_blit);
 			update_rect(text_rect);
 		}

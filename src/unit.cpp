@@ -1988,7 +1988,7 @@ void unit::redraw_unit()
 	bool draw_bars = draw_bars_ ;
 	if (draw_bars) {
 		const int d = disp.hex_size();
-		SDL_Rect unit_rect = create_rect(xsrc, ysrc +adjusted_params.y, d, d);
+		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, d, d);
 		draw_bars = rects_overlap(unit_rect, disp.map_outside_area());
 	}
 

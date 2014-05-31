@@ -19,6 +19,7 @@
 
 #include "SDL_image.h"
 #include "sdl/exception.hpp"
+#include "sdl/rect.hpp"
 #include "sdl_utils.hpp"
 
 #include <cassert>

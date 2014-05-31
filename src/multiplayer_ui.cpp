@@ -186,7 +186,7 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	gamelist_refresh_(false),
 	lobby_clock_(0)
 {
-	const SDL_Rect area = create_rect(0
+	const SDL_Rect area = sdl::create_rect(0
 			, 0
 			, disp.video().getx()
 			, disp.video().gety());

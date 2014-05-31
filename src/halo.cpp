@@ -170,7 +170,7 @@ bool effect::render()
 	const int xpos = x_ + screenx - surf_->w/2;
 	const int ypos = y_ + screeny - surf_->h/2;
 
-	SDL_Rect rect = create_rect(xpos, ypos, surf_->w, surf_->h);
+	SDL_Rect rect = sdl::create_rect(xpos, ypos, surf_->w, surf_->h);
 	rect_ = rect;
 	SDL_Rect clip_rect = disp->map_outside_area();
 
@@ -235,7 +235,7 @@ void effect::unrender()
 	const int xpos = x_ + screenx - surf_->w/2;
 	const int ypos = y_ + screeny - surf_->h/2;
 
-	SDL_Rect rect = create_rect(xpos, ypos, surf_->w, surf_->h);
+	SDL_Rect rect = sdl::create_rect(xpos, ypos, surf_->w, surf_->h);
 	sdl_blit(buffer_,NULL,screen,&rect);
 	update_rect(rect);
 }
