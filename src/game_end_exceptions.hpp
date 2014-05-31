@@ -91,6 +91,7 @@ struct transient_end_level{
 	std::string custom_endlevel_music; /**< Custom short music played at the end. */
 	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
 	bool disabled;                     /**< Limits execution of tag [endlevel] to a single time > */
+	bool proceed_to_next_level;        /**< whether to proceed to the next scenario, equals (res == VICTORY) in sp. > */
 };
 
 /**

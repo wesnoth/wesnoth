@@ -165,6 +165,7 @@ void playsingle_controller::check_end_level()
 		}
 		return;
 	}
+	get_end_level_data().transient.proceed_to_next_level = (level_result_ == VICTORY);	
 	throw end_level_exception(level_result_);
 }
 
@@ -524,6 +525,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				if(defeat_music.empty() != true)
 					sound::play_music_once(defeat_music);
 
+				persist_.end_transaction();
 				return DEFEAT;
 			} else {
 				return QUIT;
@@ -1001,6 +1003,8 @@ void playsingle_controller::check_time_over(){
 		}
 
 		check_victory();
+		
+		get_end_level_data().transient.proceed_to_next_level = false;
 		throw end_level_exception(DEFEAT);
 	}
 }

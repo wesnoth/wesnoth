@@ -97,10 +97,10 @@ static void clear_carryover_WML (game_state & gamestate) {
 	}	
 }
 
-static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level){
+static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
-
+	//explain me: when could this be the case??
 	if(resources::teams->size() < 1){
 		gamestate.carryover_sides_start["next_scenario"] = resources::gamedata->next_scenario();
 		return;
@@ -117,9 +117,12 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 
 	if (obs) {
 		title = _("Scenario Report");
-	} else {
+	} else if (res == VICTORY) {
 		title = _("Victory");
 		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
+	} else {
+		title = _("Defeat");
+		report <<  _("You have been defeated!") << "\n";
 	}
 
 	std::vector<team> teams = playcontroller.get_teams_const();
@@ -130,7 +133,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 		}
 	}
 
-	if (persistent_teams > 0 && (has_next_scenario ||
+	if (persistent_teams > 0 && ((has_next_scenario && end_level.transient.proceed_to_next_level)||
 			gamestate.classification().campaign_type == game_classification::TEST))
 	{
 		gamemap map = playcontroller.get_map_const();
@@ -296,25 +299,17 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
 	end_level.write(cfg_end_level);
 
-	if (res == DEFEAT) {
-		if (resources::persist != NULL)
-			resources::persist->end_transaction();
-		gui2::show_transient_message(disp.video(),
-				    _("Defeat"),
-				    _("You have been defeated!")
-				    );
-	}
-	else if(res == VICTORY){
-		store_carryover(state_of_game, playcontroller, disp, end_level);
-	}
-
-	if (!disp.video().faked() && res != QUIT)
+	if (res != QUIT)
 	{
-		try {
-			playcontroller.maybe_linger();
-		} catch(end_level_exception& e) {
-			if (e.result == QUIT) {
-				return QUIT;
+		store_carryover(state_of_game, playcontroller, disp, end_level, res);
+		if(!disp.video().faked())
+		{
+			try {
+				playcontroller.maybe_linger();
+			} catch(end_level_exception& e) {
+				if (e.result == QUIT) {
+					return QUIT;
+				}
 			}
 		}
 	}
@@ -347,27 +342,26 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	if (io_type == IO_CLIENT && playcontroller.is_host())
 		io_type = IO_SERVER;
 
-	if (res == DEFEAT) {
-		if (resources::persist != NULL)
-			resources::persist->end_transaction();
-		gui2::show_transient_message(disp.video(),
-				    _("Defeat"),
-				    _("You have been defeated!")
-				    );
-	}
-	else if(res == VICTORY){
-		store_carryover(state_of_game, playcontroller, disp, end_level);
-	}
-	else if(res == OBSERVER_END){
-		state_of_game.carryover_sides_start["next_scenario"] = resources::gamedata->next_scenario();
-	}
-
-	if (!disp.video().faked() && res != QUIT) {
-		try {
-			playcontroller.maybe_linger();
-		} catch(end_level_exception& e) {
-			if (e.result == QUIT) {
-				return QUIT;
+	if (res != QUIT)
+	{
+		if(res != OBSERVER_END)
+		{
+			//We need to call this before linger because it also prints the defeated/victory message.
+			//(we want to see that message before entering the linger mode)
+			store_carryover(state_of_game, playcontroller, disp, end_level, res);
+		}
+		else
+		{
+			state_of_game.carryover_sides_start["next_scenario"] = resources::gamedata->next_scenario();
+		}
+		if(!disp.video().faked())
+		{
+			try {
+				playcontroller.maybe_linger();
+			} catch(end_level_exception& e) {
+				if (e.result == QUIT) {
+					return QUIT;
+				}
 			}
 		}
 	}
@@ -535,13 +529,16 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		gamestate.replay_start().clear();
 
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
-		if (res != VICTORY)
+		//if(res == QUIT || ((res != VICTORY) && gamestate.carryover_sides_start["next_scenario"].empty()))
+		
+		//If there is no next scenario we're done now.
+		if(res == QUIT || !end_level.transient.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
 		{
-			if (res != OBSERVER_END || gamestate.carryover_sides_start["next_scenario"].empty()) {
-				gamestate.snapshot = config();
-				return res;
-			}
-
+			gamestate.snapshot = config();
+			return res;
+		}
+		else if(res == OBSERVER_END)
+		{
 			const int dlg_res = gui2::show_message(disp.video(), _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);
