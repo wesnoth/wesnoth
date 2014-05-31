@@ -877,20 +877,6 @@ void playsingle_controller::linger()
 	LOG_NG << "ending end-of-scenario linger\n";
 }
 
-void playsingle_controller::end_turn_record()
-{
-	if (!turn_over_)
-	{
-		turn_over_ = true;
-		recorder.end_turn();
-	}
-}
-
-void playsingle_controller::end_turn_record_unlock()
-{
-	turn_over_ = false;
-}
-
 void playsingle_controller::end_turn_enable(bool enable)
 {
 	gui_->enable_menu("endturn", enable);
@@ -912,8 +898,11 @@ void playsingle_controller::after_human_turn()
 {
 	// Mark the turn as done.
 	browse_ = true;
-	end_turn_record();
-	end_turn_record_unlock();
+	if (!turn_over_)
+	{
+		recorder.end_turn();
+	}
+	turn_over_ = false;
 
 	// Clear moves from the GUI.
 	gui_->set_route(NULL);

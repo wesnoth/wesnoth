@@ -81,8 +81,6 @@ protected:
 	void execute_gotos();
 	virtual void play_human_turn();
 	virtual void after_human_turn();
-	void end_turn_record();
-	void end_turn_record_unlock();
 	void end_turn_enable(bool enable);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	void play_ai_turn();
