@@ -24,6 +24,7 @@ transient_end_level::transient_end_level()
 	, custom_endlevel_music()
 	, reveal_map(true)
 	, disabled(false)
+	, proceed_to_next_level(false)
 {}
 
 end_level_data::end_level_data()

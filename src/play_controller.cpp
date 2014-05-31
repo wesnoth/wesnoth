@@ -1486,6 +1486,8 @@ void play_controller::check_victory()
 	}
 
 	DBG_NG << "throwing end level exception..." << std::endl;
+	//Also proceed to the next scenario when another player survived.
+	end_level_data_.transient.proceed_to_next_level = found_player || found_network_player;
 	throw end_level_exception(found_player ? VICTORY : DEFEAT);
 }
 
