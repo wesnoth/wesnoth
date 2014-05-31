@@ -229,8 +229,11 @@ void play_controller::init(CVideo& video){
 		team_builders.push_back(tb_ptr);
 	}
 	{
-		//sync traits of start units
+		//sync traits of start units and the random start time.
 		random_new::set_random_determinstic deterministic(gamedata_.rng());
+
+		tod_manager_.resolve_random(*random_new::generator);
+
 		BOOST_FOREACH(team_builder_ptr tb_ptr, team_builders)
 		{
 			gamedata_.build_team_stage_two(tb_ptr);
@@ -1486,6 +1489,8 @@ void play_controller::check_victory()
 	}
 
 	DBG_NG << "throwing end level exception..." << std::endl;
+	//Also proceed to the next scenario when another player survived.
+	end_level_data_.transient.proceed_to_next_level = found_player || found_network_player;
 	throw end_level_exception(found_player ? VICTORY : DEFEAT);
 }
 

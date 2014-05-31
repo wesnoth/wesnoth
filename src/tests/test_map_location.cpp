@@ -39,14 +39,14 @@ struct MLFixture
 		vb = map_location(10,8);
 		vc = map_location(0,9);
 		vz = map_location::ZERO();
-		vt1 = map_location(va.vector_negation());
-		vt2 = map_location(vb.vector_sum(vc));
-		vt3 = map_location(va.vector_sum(vc.vector_negation()));
+		vt1 = va.vector_negation();
+		vt2 = vb.vector_sum(vc);
+		vt3 = va.vector_sum(vc.vector_negation());
 
-		vs1 = map_location(vz.get_direction(nw));
-		vs2 = map_location(vz.get_direction(n).get_direction(ne));
-		vs3 = map_location(vz.get_direction(s).get_direction(se));
-		vs4 = map_location(vz.get_direction(sw).get_direction(se));
+		vs1 = vz.get_direction(nw);
+		vs2 = vz.get_direction(n).get_direction(ne);
+		vs3 = vz.get_direction(s).get_direction(se);
+		vs4 = vz.get_direction(sw).get_direction(se);
 		
 		preset_locs.push_back(va);
 		preset_locs.push_back(vb);
