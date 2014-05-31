@@ -337,7 +337,6 @@ public:
 		, leader_configs_()
 		, level_(level)
 		, map_(map)
-		, player_cfg_(NULL)
 		, player_exists_(false)
 		, save_id_(save_id)
 		, seen_ids_()
@@ -394,7 +393,6 @@ protected:
 	std::deque<config> leader_configs_;
 	const config &level_;
 	gamemap &map_;
-	const config *player_cfg_;
 	bool player_exists_;
 	const std::string save_id_;
 	std::set<std::string> seen_ids_;
@@ -433,7 +431,6 @@ protected:
 
 		log_step("init");
 
-		player_cfg_ = NULL;
 		//track whether a [player] tag with persistence information exists (in addition to the [side] tag)
 		player_exists_ = false;
 
@@ -449,11 +446,6 @@ protected:
 
 	}
 
-
-	bool use_player_cfg() const
-	{
-		return (player_cfg_ != NULL) && (!snapshot_);
-	}
 
 	void gold()
 	{
@@ -585,23 +577,15 @@ protected:
 
 	void prepare_units()
 	{
-		log_step("prepare units");
-		if (use_player_cfg()) {
-			//units in [replay_start][side] merged with [side]
-			//only relevant in start-of-scenario saves, that's why !shapshot
-			//units that are in '[scenario][side]' are 'first'
-			//for create-or-recall semantics to work: for each unit with non-empty
-			//id, unconditionally put OTHER, later, units with same id directly to
-			//recall list, not including them in unit_configs_
-			BOOST_FOREACH(const config &u, (*player_cfg_).child_range("unit")) {
-				handle_unit(u,"player_cfg");
-			}
-
-		} else {
-			//units in [side]
-			BOOST_FOREACH(const config &su, side_cfg_.child_range("unit")) {
-				handle_unit(su, "side_cfg");
-			}
+		//if this is a start-of-scenario save then  playcampaign.cpp merged
+		//units in [replay_start][side] merged with [side] already
+		//units that are in '[scenario][side]' are 'first'
+		
+		//for create-or-recall semantics to work: for each unit with non-empty
+		//id, unconditionally put OTHER, later, units with same id directly to
+		//recall list, not including them in unit_configs_
+		BOOST_FOREACH(const config &su, side_cfg_.child_range("unit")) {
+			handle_unit(su, "side_cfg");
 		}
 	}
 
