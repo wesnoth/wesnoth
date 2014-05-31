@@ -208,8 +208,8 @@ protected:
 	team& current_team();
 	const team& current_team() const;
 
-	/** Find a human team (ie one we own) starting backwards from 'team_num'. */
-	int find_human_team_before(const size_t team) const;
+	/** Find a human team (ie one we own) starting backwards from current player. */
+	int find_human_team_before_current_player() const;
 
 	//managers
 	boost::scoped_ptr<preferences::display_manager> prefs_disp_manager_;

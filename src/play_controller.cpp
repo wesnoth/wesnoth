@@ -1088,20 +1088,20 @@ const team& play_controller::current_team() const
 	return teams_[player_number_-1];
 }
 
-int play_controller::find_human_team_before(const size_t team_num) const
+int play_controller::find_human_team_before_current_player() const
 {
-	if (team_num > teams_.size())
+	if (player_number_ > int(teams_.size()))
 		return -2;
 
 	int human_side = -2;
-	for (int i = team_num-2; i > -1; --i) {
+	for (int i = player_number_-2; i >= 0; --i) {
 		if (teams_[i].is_human()) {
 			human_side = i;
 			break;
 		}
 	}
 	if (human_side == -2) {
-		for (size_t i = teams_.size()-1; i > team_num-1; --i) {
+		for (int i = teams_.size()-1; i > player_number_-1; --i) {
 			if (teams_[i].is_human()) {
 				human_side = i;
 				break;

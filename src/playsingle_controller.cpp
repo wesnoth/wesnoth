@@ -704,7 +704,7 @@ void playsingle_controller::play_side()
 					// reset gui to prev human one
 					if (!teams_[player_number_-1].is_human()) {
 						browse_ = true;
-						int s = find_human_team_before(player_number_);
+						int s = find_human_team_before_current_player();
 						if (s <= 0)
 							s = gui_->playing_side();
 						update_gui_to_player(s-1);
@@ -747,7 +747,7 @@ void playsingle_controller::play_side()
 					// reset gui to prev human one
 					if (!teams_[player_number_-1].is_human()) {
 						browse_ = true;
-						int s = find_human_team_before(player_number_);
+						int s = find_human_team_before_current_player();
 						if (s <= 0)
 							s = gui_->playing_side();
 						update_gui_to_player(s-1);
