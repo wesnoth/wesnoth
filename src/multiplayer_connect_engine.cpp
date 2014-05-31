@@ -325,6 +325,8 @@ void connect_engine::update_and_send_diff(bool update_time_of_day)
 
 	if (update_time_of_day) {
 		// Set random start ToD.
+		// This doesn't do anything since the "const" parameter is now really a const.
+		// We currently resolve the random tod on all clients seperately with the synced rng.
 		tod_manager tod_mng(level_);
 	}
 
