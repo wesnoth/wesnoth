@@ -18,6 +18,7 @@
 
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_board.hpp"
 #include "help.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
@@ -66,23 +67,6 @@ namespace tooltips {
 namespace wb {
 	class manager; // whiteboard manager
 } // namespace wb
-
-
-// This should eventually be moved to it's own header but the simplest way to begin refactor is right here
-struct game_board {
-	game_board(const config & game_config, const config & level) : teams_(), map_(game_config, level), units_() {}
-
-	std::vector<team> teams_;
-
-	gamemap map_;
-	unit_map units_;
-
-	void new_turn(int pnum);
-	void end_turn(int pnum);
-	void set_all_units_user_end_turn();
-
-	void write_config(config & cfg) const;
-};
 
 
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
