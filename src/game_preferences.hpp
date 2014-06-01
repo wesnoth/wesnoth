@@ -14,6 +14,7 @@
 #ifndef GAME_PREFERENCES_HPP_INCLUDED
 #define GAME_PREFERENCES_HPP_INCLUDED
 
+struct game_board;
 class gamemap;
 class game_state;
 class team;
@@ -260,15 +261,18 @@ class acquaintance;
 
 	// Add all recruitable units as encountered so that information
 	// about them are displayed to the user in the help system.
-	void encounter_recruitable_units(std::vector<team>& teams);
+	void encounter_recruitable_units(const std::vector<team>& teams);
 	// Add all units that exist at the start to the encountered units so
 	// that information about them are displayed to the user in the help
 	// system.
-	void encounter_start_units(unit_map& units);
+	void encounter_start_units(const unit_map& units);
 	// Add all units that are recallable as encountered units.
 	void encounter_recallable_units(std::vector<team>& teams);
 	// Add all terrains on the map as encountered terrains.
-	void encounter_map_terrain(gamemap& map);
+	void encounter_map_terrain(const gamemap& map);
+
+	// Calls all of the above functions on the current game board
+	void encounter_all_content(const game_board & gb);
 
 class acquaintance {
 public:

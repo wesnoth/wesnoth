@@ -240,11 +240,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("load units");
-	preferences::encounter_recruitable_units(gameboard_.teams_);
-	preferences::encounter_start_units(gameboard_.units_);
-	preferences::encounter_recallable_units(gameboard_.teams_);
-	preferences::encounter_map_terrain(gameboard_.map_);
-
+	preferences::encounter_all_content(gameboard_);
 
 	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("init theme");
