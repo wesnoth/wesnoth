@@ -211,6 +211,11 @@ Version 1.11.11:
    * Linux dbus notifications: Only last 5 messages are remembered, and they
      are displayed with the most recent ones first.
    * Fixed bug #21736: MP create screen always defaulting to top entry.
+   * Fix bug #21397: "Saving and loading may cause a side's turn is not 
+     initialized".
+   * Fix bug which caused no units to be displayed when reloading an end of 
+     scenario save, by stripping them from the save file. However, this does 
+     not fix bug #15545, which was the reason that this behavior was introduced. 
 
 Version 1.11.10:
  * Add-ons client:
