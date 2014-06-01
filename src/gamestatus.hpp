@@ -226,7 +226,6 @@ public:
 	config to_config() const;
 
 	std::string label;                               /**< Name of the game (e.g. name of save file). */
-	std::string parent;                              /**< Parent of the game (for save-threading purposes). */
 	std::string version;                             /**< Version game was created with. */
 	MAKE_ENUM (CAMPAIGN_TYPE,			 /**< Type of the game - campaign, multiplayer etc. */
 		(SCENARIO, 	"scenario")

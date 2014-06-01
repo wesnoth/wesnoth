@@ -771,7 +771,6 @@ game_data* game_data::operator=(const game_data* info)
 game_classification::game_classification():
 	savegame_config(),
 	label(),
-	parent(),
 	version(),
 	campaign_type(),
 	campaign_define(),
@@ -789,7 +788,6 @@ game_classification::game_classification():
 game_classification::game_classification(const config& cfg):
 	savegame_config(),
 	label(cfg["label"]),
-	parent(cfg["parent"]),
 	version(cfg["version"]),
 	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"].str(), game_classification::SCENARIO)),
 	campaign_define(cfg["campaign_define"]),
@@ -807,7 +805,6 @@ game_classification::game_classification(const config& cfg):
 game_classification::game_classification(const game_classification& gc):
 	savegame_config(),
 	label(gc.label),
-	parent(gc.parent),
 	version(gc.version),
 	campaign_type(gc.campaign_type),
 	campaign_define(gc.campaign_define),
@@ -828,7 +825,6 @@ config game_classification::to_config() const
 	config cfg;
 
 	cfg["label"] = label;
-	cfg["parent"] = parent;
 	cfg["version"] = game_config::version;
 	cfg["campaign_type"] = lexical_cast<std::string> (campaign_type);
 	cfg["campaign_define"] = campaign_define;
@@ -1064,7 +1060,6 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	cfg_summary["snapshot"] = has_snapshot;
 
 	cfg_summary["label"] = cfg_save["label"];
-	cfg_summary["parent"] = cfg_save["parent"];
 	cfg_summary["campaign_type"] = cfg_save["campaign_type"];
 
 	if(cfg_save.has_child("carryover_sides_start")){

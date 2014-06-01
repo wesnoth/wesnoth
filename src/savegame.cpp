@@ -883,7 +883,6 @@ void savegame::before_save()
 
 bool savegame::save_game(CVideo* video, const std::string& filename)
 {
-	static std::string parent, grandparent;
 
 	try {
 		Uint32 start, end;
@@ -894,27 +893,11 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 
 		before_save();
 
-		// The magic moment that does save threading; after
-		// each save, the filename of the save file becomes
-		// the parent for the next. *Unless* the parent file
-		// has the same name as the savefile, in which case we
-		// use the grandparent name. When user loads a savegame,
-		// we load its correct parent link along with it.
-		if (filename_ == parent) {
-			gamestate_.classification().parent = grandparent;
-		} else {
-			gamestate_.classification().parent = parent;
-		}
-		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.classification().parent << std::endl;
-
 		write_game_to_disk(filename_);
 		if (resources::persist != NULL) {
 			resources::persist->end_transaction();
 			resources::persist ->start_transaction();
 		}
-
-		grandparent = parent;
-		parent = filename_;
 
 		end = SDL_GetTicks();
 		LOG_SAVE << "Milliseconds to save " << filename_ << ": " << end - start << std::endl;
