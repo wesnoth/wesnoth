@@ -13,6 +13,7 @@
 */
 #include "mp_game_utils.hpp"
 
+#include "carryover.hpp"
 #include "config.hpp"
 #include "dialogs.hpp"
 #include "formula_string_utils.hpp"

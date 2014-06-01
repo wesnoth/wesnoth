@@ -15,6 +15,9 @@
 
 #include "global.hpp"
 
+#include "replay_controller.hpp"
+
+#include "carryover.hpp"
 #include "actions/vision.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/handlers.hpp"
@@ -24,7 +27,6 @@
 #include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "random_new_deterministic.hpp"
-#include "replay_controller.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "synced_context.hpp"

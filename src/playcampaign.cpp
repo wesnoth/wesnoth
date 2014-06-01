@@ -20,12 +20,14 @@
 
 #include "global.hpp"
 
+#include "playcampaign.hpp"
+
+#include "carryover.hpp"
 #include "game_preferences.hpp"
 #include "generators/map_create.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/window.hpp"
-#include "playcampaign.hpp"
 #include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "replay_controller.hpp"

@@ -20,6 +20,7 @@
 
 #include "game_end_exceptions.hpp"
 
+class display;
 class game_display;
 class game_state;
 class config;
