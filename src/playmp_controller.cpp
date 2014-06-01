@@ -311,7 +311,7 @@ void playmp_controller::linger()
 
 	// this is actually for after linger mode is over -- we don't want to
 	// stay stuck in linger state when the *next* scenario is over.
-	gamestate_.classification().completion = "running";
+	set_completion setter(gamestate_,"running");
 	// End all unit moves
 	BOOST_FOREACH(unit &u, units_) {
 		u.set_user_end_turn(true);

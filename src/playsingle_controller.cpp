@@ -811,20 +811,6 @@ void playsingle_controller::play_human_turn() {
 		gui_->draw();
 	}
 }
-struct set_completion
-{
-	set_completion(game_state& state, const std::string& completion) :
-		state_(state), completion_(completion)
-	{
-	}
-	~set_completion()
-	{
-		state_.classification().completion = completion_;
-	}
-	private:
-	game_state& state_;
-	const std::string completion_;
-};
 
 void playsingle_controller::linger()
 {
