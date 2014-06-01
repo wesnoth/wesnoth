@@ -505,7 +505,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		temp_buf << " \n";
 	}
 
-	savegame::oos_savegame save(to_config());
+	savegame::oos_savegame save(gamestate_, *gui_, to_config());
 	save.save_game_interactive(resources::screen->video(), temp_buf.str(), gui::YES_NO);
 }
 

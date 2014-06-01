@@ -383,7 +383,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// At the beginning of the scenario, save a snapshot as replay_start
 		if(gamestate_.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
 			gamestate_.replay_start() = to_config();
-			gamestate_.write_snapshot(gamestate_.replay_start(), gui_.get());
+			gamestate_.write_snapshot(gamestate_.replay_start());
 		}
 		fire_preload();
 		

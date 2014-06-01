@@ -749,7 +749,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	}
 	data.transient.disabled = true;
 
-	game_state *state_of_game = resources::state_of_game;
+	game_classification &classification = *resources::classification;
 	unit_map *units = resources::units;
 
 	// Remove 0-hp units from the unit map to avoid the following problem:
@@ -781,17 +781,17 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 
 	std::string end_of_campaign_text = cfg["end_text"];
 	if (!end_of_campaign_text.empty()) {
-		state_of_game->classification().end_text = end_of_campaign_text;
+		classification.end_text = end_of_campaign_text;
 	}
 
 	config::attribute_value end_of_campaign_text_delay = cfg["end_text_duration"];
 	if (!end_of_campaign_text_delay.empty()) {
-		state_of_game->classification().end_text_duration =
-			end_of_campaign_text_delay.to_int(state_of_game->classification().end_text_duration);
+		classification.end_text_duration =
+			end_of_campaign_text_delay.to_int(classification.end_text_duration);
 	}
 
 	if(cfg.has_attribute("end_credits")) {
-		state_of_game->classification().end_credits = cfg["end_credits"].to_bool(true);
+		classification.end_credits = cfg["end_credits"].to_bool(true);
 	}
 
 

@@ -210,7 +210,7 @@ void synced_context::pull_remote_user_input()
 
 boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 {
-	const std::string& mode = resources::state_of_game->classification().random_mode;
+	const std::string& mode = resources::classification->random_mode;
 	if(mode == "deterministic")
 	{
 		return boost::shared_ptr<random_new::rng>(new random_new::rng_deterministic(resources::gamedata->rng()));

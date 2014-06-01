@@ -695,6 +695,7 @@ set(wesnoth-main_SRC
 	attack_prediction_display.cpp
 	callable_objects.cpp
 	commandline_options.cpp
+	carryover.cpp
 	config_cache.cpp
 	config_assign.cpp
 	controller_base.cpp
