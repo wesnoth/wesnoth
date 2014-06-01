@@ -76,9 +76,8 @@ replay_controller::replay_controller(const config& level,
 		game_state& state_of_game, const int ticks,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, game_config, video, false),
-	teams_start_(gameboard_.teams_),
 	gamestate_start_(gamestate_),
-	units_start_(gameboard_.units_),
+	gameboard_start_(gameboard_),
 	tod_manager_start_(level),
 	current_turn_(1),
 	is_playing_(false),
@@ -272,9 +271,8 @@ void replay_controller::reset_replay()
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	recorder.set_skip(false);
-	gameboard_.units_ = units_start_;
 	gamestate_ = gamestate_start_;
-	gameboard_.teams_ = teams_start_;
+	gameboard_ = gameboard_start_;
 	if (events_manager_ ){
 		// NOTE: this double reset is required so that the new
 		// instance of game_events::manager isn't created before the
