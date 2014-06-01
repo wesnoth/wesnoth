@@ -1069,13 +1069,14 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	if(cfg_save.has_child("carryover_sides_start")){
 		cfg_summary["scenario"] = cfg_save.child("carryover_sides_start")["next_scenario"];
-		cfg_summary["difficulty"] = cfg_save.child("carryover_sides_start")["difficulty"];
-		cfg_summary["random_mode"] = cfg_save.child("carryover_sides_start")["random_mode"];
 	} else {
 		cfg_summary["scenario"] = cfg_save["scenario"];
-		cfg_summary["difficulty"] = cfg_save["difficulty"];
-		cfg_summary["random_mode"] = cfg_save["random_mode"];
 	}
+	
+	cfg_summary["difficulty"] = cfg_save["difficulty"];
+	cfg_summary["random_mode"] = cfg_save["random_mode"];
+
+
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
