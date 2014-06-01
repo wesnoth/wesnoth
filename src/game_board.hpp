@@ -63,6 +63,11 @@ class game_board {
 	void end_turn(int pnum);
 	void set_all_units_user_end_turn();
 
+	// Manipulator from playturn
+
+	void side_drop_to (int side_num, team::CONTROLLER ctrl);
+	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string pname = "");
+
 	// Global accessor from unit.hpp
 
 	unit_map::iterator find_visible_unit(const map_location &loc, const team& current_team, bool see_all = false);

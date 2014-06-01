@@ -374,7 +374,7 @@ void manager::on_viewer_change(size_t team_index)
 		update_plan_hiding(team_index);
 }
 
-void manager::on_change_controller(int side, team& t)
+void manager::on_change_controller(int side, const team& t)
 {
 	wb::side_actions& sa = *t.get_side_actions();
 	if(t.is_human()) // we own this side now

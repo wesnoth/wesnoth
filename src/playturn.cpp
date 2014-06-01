@@ -168,37 +168,39 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		}
 		//don't use lexical_cast_default it's "safer" to end on error
 		const int side = lexical_cast<int>(change["side"]);
-		const size_t index = static_cast<size_t>(side-1);
+		const size_t index = side - 1;
 
 		const std::string &player = change["player"];
 
-		if(index < resources::teams->size()) {
-			team &tm = (*resources::teams)[index];
-			if (!player.empty())
-				tm.set_current_player(player);
-			unit_map::iterator leader = resources::units->find_leader(side);
+		if(index < resources::gameboard->teams().size()) {
+			const team & tm = resources::gameboard->teams()[index];
+
 			bool restart = resources::screen->playing_side() == side;
-			if (!player.empty() && leader.valid())
-				leader->rename(player);
+
+			team::CONTROLLER new_controller = team::CONTROLLER();
 
 			try {
-				bool was_local = tm.is_local();
-				const team::CONTROLLER old_controller = tm.controller();
-				const team::CONTROLLER new_controller = lexical_cast<team::CONTROLLER> (change["controller"]);
-				tm.change_controller(new_controller);
-				if (old_controller != new_controller && !was_local && tm.is_local()) {
-					resources::controller->on_not_observer();
-				}
-			} catch (bad_lexical_cast &) {
-				restart = false;
+				new_controller = team::string_to_CONTROLLER (change["controller"].str());
+			} catch (bad_enum_cast & e) {
+				ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
+				return PROCESS_CONTINUE;
 			}		
 
-			if (is_observer() || (*resources::teams)[resources::screen->playing_team()].is_human()) {
+			bool was_local = tm.is_local();
+			const team::CONTROLLER old_controller = tm.controller();
+
+			resources::gameboard->side_change_controller(side, new_controller, player);
+
+			if (old_controller != new_controller && !was_local && tm.is_local()) {
+				resources::controller->on_not_observer();
+			}
+
+			if (is_observer() || (resources::gameboard->teams())[resources::screen->playing_team()].is_human()) {
 				resources::screen->set_team(resources::screen->playing_team());
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
 			} else if (tm.is_human()) {
-				resources::screen->set_team(index);
+				resources::screen->set_team(side - 1);
 				resources::screen->redraw_everything();
 				resources::screen->recalculate_minimap();
 			}
@@ -210,6 +212,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			resources::screen->labels().recalculate_labels();
 
 			return restart ? PROCESS_RESTART_TURN : PROCESS_CONTINUE;
+		} else {
+			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 		}
 	}
 	
@@ -219,23 +223,25 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		const std::string controller = side_drop_c["controller"];
 		//if a side has dropped out of the game.
 		int side = atoi(side_drop.c_str());
-		const size_t side_index = side-1;
+		size_t index = side -1;
 
 		bool restart = side == resources::screen->playing_side();
 
-		if (side_index >= resources::teams->size()) {
-			ERR_NW << "unknown side " << side_index << " is dropping game" << std::endl;
+		if (index >= resources::teams->size()) {
+			ERR_NW << "unknown side " << side << " is dropping game" << std::endl;
 			throw network::error("");
 		}
 
-		team &tm = (*resources::teams)[side_index];
-		unit_map::iterator leader = resources::units->find_leader(side);
-		const bool have_leader = leader.valid();
+		team::CONTROLLER ctrl = team::CONTROLLER();
+		try {
+			ctrl = team::string_to_CONTROLLER(controller);
+		} catch (bad_enum_cast & e) {
+			ERR_NW << "unknown controller type issued from server on side drop: " << e.what() << std::endl;
+			throw network::error("");
+		}
 
-		if (controller == "ai"){
-			tm.make_ai();
-			tm.set_current_player("ai" + side_drop);
-			if (have_leader) leader->rename("ai" + side_drop);
+		if (ctrl == team::AI){
+			resources::gameboard->side_drop_to(side, ctrl);
 			return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 		}
 
@@ -243,7 +249,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		int first_observer_option_idx = 0;
 
 		std::vector<std::string> observers;
-		std::vector<team*> allies;
+		std::vector<const team *> allies;
 		std::vector<std::string> options;
 
 		// We want to give host chance to decide what to do for side
@@ -264,8 +270,10 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				observers.push_back(ob);
 			}
 
+			const team &tm = resources::gameboard->teams()[index];
+
 			//get all allies in as options to transfer control
-			BOOST_FOREACH(team &t, *resources::teams)
+			BOOST_FOREACH(const team &t, resources::gameboard->teams())
 			{
 				if (!t.is_enemy(side) && !t.is_human() && !t.is_ai() && !t.is_network_ai() && !t.is_empty()
 					&& t.current_player() != tm.current_player())
@@ -292,29 +300,24 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		//an AI.
 		switch(action) {
 			case 0:
-				tm.make_ai();
 				resources::controller->on_not_observer();
-				tm.set_current_player("ai" + side_drop);
-				if (have_leader) leader->rename("ai" + side_drop);
-				change_controller(side_drop, "ai");
+				resources::gameboard->side_drop_to(side, team::AI);
+				change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
+
 				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
 			case 1:
-				tm.make_human();
 				resources::controller->on_not_observer();
-				tm.set_current_player("human" + side_drop);
-				if (have_leader) leader->rename("human" + side_drop);
-				change_controller(side_drop, "human");
+				resources::gameboard->side_drop_to(side, team::HUMAN);
+				change_controller(side_drop, team::CONTROLLER_to_string(team::HUMAN));
 
 				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:
-				tm.make_idle();
-				tm.set_current_player("idle" + side_drop);
-				if (have_leader) leader->rename("idle" + side_drop);
+				resources::gameboard->side_drop_to(side, team::IDLE);
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -328,9 +331,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 					{
 						// Server thinks this side is ours now so in case of error transferring side we have to make local state to same as what server thinks it is.
-						tm.make_idle();
-						tm.set_current_player("idle"+side_drop);
-						if (have_leader) leader->rename("idle"+side_drop);
+						resources::gameboard->side_drop_to(side, team::IDLE);
 					}
 
 					const size_t index = static_cast<size_t>(action - first_observer_option_idx);
@@ -340,10 +341,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 						size_t i = index - observers.size();
 						change_side_controller(side_drop, allies[i]->current_player());
 					} else {
-						tm.make_ai();
-						tm.set_current_player("ai"+side_drop);
-						if (have_leader) leader->rename("ai" + side_drop);
-						change_controller(side_drop, "ai");
+						resources::gameboard->side_drop_to(side, team::AI);
+						change_controller(side_drop, team::CONTROLLER_to_string(team::AI));
 					}
 					return restart ? PROCESS_RESTART_TURN_TEMPORARY_LOCAL : PROCESS_SIDE_TEMPORARY_LOCAL;
 				}
@@ -415,14 +414,3 @@ turn_info::PROCESS_DATA_RESULT turn_info::replay_to_process_data_result(REPLAY_R
 		throw "found invalid REPLAY_RETURN";
 	}
 }
-
-#if 0
-void turn_info::take_side(const std::string& side, const std::string& controller)
-{
-	config cfg;
-	cfg["side"] = side;
-	cfg["controller"] = controller;
-	cfg["name"] = controller+side;
-	network::send_data(cfg, 0, true);
-}
-#endif

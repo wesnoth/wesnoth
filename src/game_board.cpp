@@ -59,6 +59,35 @@ unit* game_board::get_visible_unit(const map_location &loc,
 	return &*ui;
 }
 
+void game_board::side_drop_to(int side_num, team::CONTROLLER ctrl) {
+	team &tm = teams_[side_num-1];
+
+	tm.change_controller(ctrl);
+
+	tm.set_current_player(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+
+	unit_map::iterator leader = units_.find_leader(side_num);
+	if (leader.valid()) leader->rename(lexical_cast<std::string> (ctrl) + lexical_cast<std::string> (side_num));
+}
+
+void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, const std::string pname) {
+	team &tm = teams_[side_num-1];
+
+	tm.change_controller(ctrl);
+
+	if (pname.empty()) {
+		return ;
+	}
+
+	tm.set_current_player(pname);
+
+	unit_map::iterator leader = units_.find_leader(side_num);
+	if (leader.valid()) {
+		leader->rename(pname);
+	}
+}
+
+
 void game_board::write_config(config & cfg) const {
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		int side_num = t - teams_.begin() + 1;

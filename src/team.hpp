@@ -319,7 +319,7 @@ public:
 	static void clear_caches();
 
 	/** get the whiteboard planned actions for this team */
-	boost::shared_ptr<wb::side_actions> get_side_actions() { return planned_actions_; }
+	boost::shared_ptr<wb::side_actions> get_side_actions() const { return planned_actions_; }
 
 	config to_config() const;
 
