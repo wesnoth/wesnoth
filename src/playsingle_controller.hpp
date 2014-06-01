@@ -20,6 +20,21 @@
 #include "playturn_network_adapter.hpp"
 #include "replay.hpp"
 
+struct set_completion
+{
+	set_completion(game_state& state, const std::string& completion) :
+		state_(state), completion_(completion)
+	{
+	}
+	~set_completion()
+	{
+		state_.classification().completion = completion_;
+	}
+	private:
+	game_state& state_;
+	const std::string completion_;
+};
+
 class playsingle_controller : public play_controller
 {
 public:
