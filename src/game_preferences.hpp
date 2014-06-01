@@ -14,7 +14,7 @@
 #ifndef GAME_PREFERENCES_HPP_INCLUDED
 #define GAME_PREFERENCES_HPP_INCLUDED
 
-struct game_board;
+class game_board;
 class gamemap;
 class game_state;
 class team;

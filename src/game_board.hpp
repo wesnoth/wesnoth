@@ -25,19 +25,39 @@
 
 class config;
 
-struct game_board {
-	game_board(const config & game_config, const config & level) : teams_(), map_(game_config, level), units_() {}
+class game_board {
 
 	std::vector<team> teams_;
 
 	gamemap map_;
 	unit_map units_;
 
+	//TODO: Remove these when we have refactored enough to make it possible.
+	friend class play_controller;
+	friend class replay_controller;
+	friend class playsingle_controller;
+	friend class playmp_controller;
+	
+	public:
+
+	// Constructors and const accessors
+
+	game_board(const config & game_config, const config & level) : teams_(), map_(game_config, level), units_() {}
+
+	const std::vector<team> & teams() const { return teams_; }
+	const gamemap & map() const { return map_; }
+	const unit_map & units() const { return units_; }
+
+	// Saving
+
+	void write_config(config & cfg) const;
+
+	// Manipulators from play_controller
+
 	void new_turn(int pnum);
 	void end_turn(int pnum);
 	void set_all_units_user_end_turn();
 
-	void write_config(config & cfg) const;
 };
 
 #endif

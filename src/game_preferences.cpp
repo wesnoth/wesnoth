@@ -1081,10 +1081,10 @@ void encounter_map_terrain(const gamemap& map){
 }
 
 void encounter_all_content(const game_board & gameboard_) {
-	preferences::encounter_recruitable_units(gameboard_.teams_);
-	preferences::encounter_start_units(gameboard_.units_);
-	preferences::encounter_recallable_units(gameboard_.teams_);
-	preferences::encounter_map_terrain(gameboard_.map_);
+	preferences::encounter_recruitable_units(gameboard_.teams());
+	preferences::encounter_start_units(gameboard_.units());
+	preferences::encounter_recallable_units(gameboard_.teams());
+	preferences::encounter_map_terrain(gameboard_.map());
 }
 
 void acquaintance::load_from_config(const config& cfg)
