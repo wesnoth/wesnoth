@@ -133,7 +133,7 @@ static void store_carryover(game_state& gamestate, playsingle_controller& playco
 		}
 	}
 
-	if (persistent_teams > 0 && ((has_next_scenario && end_level.transient.proceed_to_next_level)||
+	if (persistent_teams > 0 && ((has_next_scenario && end_level.proceed_to_next_level)||
 			gamestate.classification().campaign_type == game_classification::TEST))
 	{
 		gamemap map = playcontroller.get_map_const();
@@ -301,7 +301,11 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	if (res != QUIT)
 	{
-		store_carryover(state_of_game, playcontroller, disp, end_level, res);
+		//if we are loading from linger mode then we already did this.
+		if(res != SKIP_TO_LINGER)
+		{
+			store_carryover(state_of_game, playcontroller, disp, end_level, res);
+		}
 		if(!disp.video().faked())
 		{
 			try {
@@ -344,7 +348,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 
 	if (res != QUIT)
 	{
-		if(res != OBSERVER_END)
+		if(res != OBSERVER_END && res != SKIP_TO_LINGER)
 		{
 			//We need to call this before linger because it also prints the defeated/victory message.
 			//(we want to see that message before entering the linger mode)
@@ -532,7 +536,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 		//if(res == QUIT || ((res != VICTORY) && gamestate.carryover_sides_start["next_scenario"].empty()))
 		
 		//If there is no next scenario we're done now.
-		if(res == QUIT || !end_level.transient.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
+		if(res == QUIT || !end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
 		{
 			gamestate.snapshot = config();
 			return res;

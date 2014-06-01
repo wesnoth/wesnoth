@@ -164,7 +164,7 @@ void playsingle_controller::check_end_level()
 		}
 		return;
 	}
-	get_end_level_data().transient.proceed_to_next_level = (level_result_ == VICTORY);	
+	get_end_level_data().proceed_to_next_level = (level_result_ == VICTORY);	
 	throw end_level_exception(level_result_);
 }
 
@@ -992,7 +992,7 @@ void playsingle_controller::check_time_over(){
 
 		check_victory();
 		
-		get_end_level_data().transient.proceed_to_next_level = false;
+		get_end_level_data().proceed_to_next_level = false;
 		throw end_level_exception(DEFEAT);
 	}
 }

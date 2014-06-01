@@ -24,7 +24,6 @@ transient_end_level::transient_end_level()
 	, custom_endlevel_music()
 	, reveal_map(true)
 	, disabled(false)
-	, proceed_to_next_level(false)
 {}
 
 end_level_data::end_level_data()
@@ -33,6 +32,7 @@ end_level_data::end_level_data()
 	, gold_bonus(true)
 	, carryover_percentage(game_config::gold_carryover_percentage)
 	, carryover_add(false)
+	, proceed_to_next_level(false)
 	, transient()
 	, next_scenario_settings()
 	, next_scenario_append()
@@ -46,6 +46,7 @@ void end_level_data::write(config& cfg) const
 	cfg["bonus"] = gold_bonus;
 	cfg["carryover_percentage"] = carryover_percentage;
 	cfg["carryover_add"] = carryover_add;
+	cfg["proceed_to_next_level"] = proceed_to_next_level;
 	if (!next_scenario_settings.empty()) {
 		cfg.add_child("next_scenario_settings", next_scenario_settings);
 	}
@@ -62,6 +63,7 @@ void end_level_data::read(const config& cfg)
 	gold_bonus = cfg["bonus"].to_bool(true);
 	carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
 	carryover_add = cfg["carryover_add"].to_bool(false);
+	proceed_to_next_level = cfg["proceed_to_next_level"].to_bool(true);
 	const config & next_scenario_settings_cfg = cfg.child_or_empty("next_scenario_settings");
 	if (!next_scenario_settings_cfg.empty()) {
 		next_scenario_settings = next_scenario_settings_cfg;
