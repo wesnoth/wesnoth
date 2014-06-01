@@ -183,8 +183,6 @@ void play_controller::init(CVideo& video){
 	// If i am wrong, use random_new_deterministic
 	recorder.set_skip(false);
 
-	bool snapshot = level_["snapshot"].to_bool();
-
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
 		place_sides_in_preferred_locations();
@@ -223,7 +221,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, snapshot, gamestate_.replay_start());
+			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);

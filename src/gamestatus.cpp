@@ -79,7 +79,7 @@ public:
 	team_builder(const config& side_cfg,
 		     const std::string &save_id, std::vector<team>& teams,
 		     const config& level, gamemap& map, unit_map& units,
-		     bool snapshot, const config &starting_pos)
+		     const config &starting_pos)
 		: gold_info_ngold_(0)
 		, leader_configs_()
 		, level_(level)
@@ -89,7 +89,6 @@ public:
 		, seen_ids_()
 		, side_(0)
 		, side_cfg_(side_cfg)
-		, snapshot_(snapshot)
 		, starting_pos_(starting_pos)
 		, t_(NULL)
 		, teams_(teams)
@@ -145,7 +144,6 @@ protected:
 	std::set<std::string> seen_ids_;
 	int side_;
 	const config &side_cfg_;
-	bool snapshot_;
 	const config &starting_pos_;
 	team *t_;
 	std::vector<team> &teams_;
@@ -493,9 +491,9 @@ void game_data::write_config(config_writer& out){
 team_builder_ptr game_data::create_team_builder(const config& side_cfg,
 					 std::string save_id, std::vector<team>& teams,
 					 const config& level, gamemap& map, unit_map& units,
-					 bool snapshot, const config& starting_pos)
+					 const config& starting_pos)
 {
-	return team_builder_ptr(new team_builder(side_cfg,save_id,teams,level,map,units,snapshot,starting_pos));
+	return team_builder_ptr(new team_builder(side_cfg, save_id, teams, level, map, units, starting_pos));
 }
 
 void game_data::build_team_stage_one(team_builder_ptr tb_ptr)
