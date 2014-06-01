@@ -844,9 +844,7 @@ void playsingle_controller::linger()
 	gui_->redraw_everything();
 
 	// End all unit moves
-	BOOST_FOREACH (unit & u, gameboard_.units_) {
-		u.set_user_end_turn(true);
-	}
+	gameboard_.set_all_units_user_end_turn();
 	try {
 		// Same logic as single-player human turn, but
 		// *not* the same as multiplayer human turn.

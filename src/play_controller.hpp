@@ -76,6 +76,10 @@ struct game_board {
 
 	gamemap map_;
 	unit_map units_;
+
+	void new_turn(int pnum);
+	void end_turn(int pnum);
+	void set_all_units_user_end_turn();
 };
 
 

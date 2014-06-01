@@ -684,12 +684,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	// Healing/income happen if it's not the first turn of processing,
 	// or if we are loading a game.
 	if (!only_visual && turn() > 1) {
-		BOOST_FOREACH(unit & i, gameboard_.units_)  {
-			if (i.side() == player_number_) {
-				i.new_turn();
-			}
-		}
-
+		gameboard_.new_turn(player_number_);
 		current_team().new_turn();
 
 		// If the expense is less than the number of villages owned
@@ -1526,3 +1521,26 @@ void play_controller::toggle_accelerated_speed()
 		gui_->announce(_("Accelerated speed disabled!"), font::NORMAL_COLOR);
 	}
 }
+
+void game_board::new_turn(int player_num) {
+	BOOST_FOREACH (unit & i, units_) {
+		if (i.side() == player_num) {
+			i.new_turn();
+		}
+	}
+}
+
+void game_board::end_turn(int player_num) {
+	BOOST_FOREACH (unit & i, units_) {
+		if (i.side() == player_num) {
+			i.end_turn();
+		}
+	}
+}
+
+void game_board::set_all_units_user_end_turn() {
+	BOOST_FOREACH (unit & i, units_) {
+		i.set_user_end_turn(true);
+	}
+}
+

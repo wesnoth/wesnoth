@@ -482,11 +482,7 @@ void replay_controller::play_side(){
 		}
 
 		// This is necessary for replays in order to show possible movements.
-		BOOST_FOREACH(unit &u, gameboard_.units_) {
-			if (u.side() == player_number_) {
-				u.new_turn();
-			}
-		}
+		gameboard_.new_turn(player_number_);
 
 		update_teams();
 		update_gui();
