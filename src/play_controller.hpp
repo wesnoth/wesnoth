@@ -80,6 +80,8 @@ struct game_board {
 	void new_turn(int pnum);
 	void end_turn(int pnum);
 	void set_all_units_user_end_turn();
+
+	void write_config(config & cfg) const;
 };
 
 

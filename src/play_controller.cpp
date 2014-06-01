@@ -738,32 +738,7 @@ config play_controller::to_config() const
 	cfg["init_side_done"] = init_side_done_;
 	cfg.merge_attributes(level_);
 
-	for(std::vector<team>::const_iterator t = gameboard_.teams_.begin(); t != gameboard_.teams_.end(); ++t) {
-		int side_num = t - gameboard_.teams_.begin() + 1;
-
-		config& side = cfg.add_child("side");
-		t->write(side);
-		side["no_leader"] = true;
-		side["side"] = str_cast(side_num);
-
-		{
-			//current visible units
-			BOOST_FOREACH(const unit & i, gameboard_.units_) {
-				if (i.side() == side_num) {
-					config& u = side.add_child("unit");
-					i.get_location().write(u);
-					i.write(u);
-				}
-			}
-		}
-		//recall list
-		{
-			BOOST_FOREACH(const unit & j, t->recall_list()) {
-				config& u = side.add_child("unit");
-				j.write(u);
-			}
-		}
-	}
+	gameboard_.write_config(cfg);
 
 	cfg.merge_with(tod_manager_.to_config());
 
@@ -779,7 +754,6 @@ config play_controller::to_config() const
 	}
 
 	//write out the current state of the map
-	cfg["map_data"] = gameboard_.map_.write();
 	cfg.merge_with(pathfind_manager_->to_config());
 
 	config display;
@@ -1544,3 +1518,34 @@ void game_board::set_all_units_user_end_turn() {
 	}
 }
 
+void game_board::write_config(config & cfg) const {
+	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
+		int side_num = t - teams_.begin() + 1;
+
+		config& side = cfg.add_child("side");
+		t->write(side);
+		side["no_leader"] = true;
+		side["side"] = str_cast(side_num);
+
+		//current units
+		{
+			BOOST_FOREACH(const unit & i, units_) {
+				if (i.side() == side_num) {
+					config& u = side.add_child("unit");
+					i.get_location().write(u);
+					i.write(u);
+				}
+			}
+		}
+		//recall list
+		{
+			BOOST_FOREACH(const unit & j, t->recall_list()) {
+				config& u = side.add_child("unit");
+				j.write(u);
+			}
+		}
+	}
+
+	//write the map
+	cfg["map_data"] = map_.write();
+}
