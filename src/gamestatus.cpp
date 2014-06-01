@@ -26,7 +26,6 @@
 #include "filesystem.hpp"
 #include "formula_string_utils.hpp"
 #include "game_config.hpp"
-#include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -764,44 +763,18 @@ void convert_old_saves(config& cfg){
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
 
-void game_state::write_snapshot(config& cfg, game_display* gui) const
+void game_state::write_snapshot(config& cfg) const
 {
 	log_scope("write_game");
-	if(gui != NULL){
-		cfg["playing_team"] = str_cast(gui->playing_team());
+	cfg.merge_attributes(classification_.to_config());
 
-		game_events::write_events(cfg);
-
-		sound::write_music_play_list(cfg);
-	}
-
-	cfg["label"] = classification_.label;
-	cfg["abbrev"] = classification_.abbrev;
-	cfg["version"] = game_config::version;
-
-	cfg["completion"] = classification_.completion;
-
-	cfg["campaign"] = classification_.campaign;
-	cfg["campaign_type"] = lexical_cast<std::string> (classification_.campaign_type);
-
-	cfg["campaign_define"] = classification_.campaign_define;
-	cfg["campaign_extra_defines"] = utils::join(classification_.campaign_xtra_defines);
+	//TODO: move id_manager handling to play_controller
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 
-	cfg["end_credits"] = classification_.end_credits;
-	cfg["end_text"] = classification_.end_text;
-	cfg["end_text_duration"] = str_cast<unsigned int>(classification_.end_text_duration);
-
-	cfg["difficulty"] = classification_.difficulty;
-	cfg["random_mode"] = classification_.random_mode;
-	
 	if(resources::gamedata != NULL){
 		resources::gamedata->write_snapshot(cfg);
 	}
 
-	if(gui != NULL){
-		gui->labels().write(cfg);
-	}
 }
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)

@@ -33,4 +33,6 @@ namespace resources
 	actions::undo_list   *undo_stack = NULL;
 	unit_map             *units = NULL;
 	wb::manager          *whiteboard = NULL;
+	game_classification  *classification = NULL;
+	const mp_game_settings *mp_settings = NULL;
 }

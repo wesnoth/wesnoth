@@ -1041,8 +1041,8 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(const config& snapshot_cfg)
-	: ingame_savegame(*resources::state_of_game, *resources::screen, snapshot_cfg, preferences::save_compression_format())
+oos_savegame::oos_savegame(game_state& gamestate, game_display& gui, const config& snapshot_cfg)
+	: ingame_savegame(gamestate, gui, snapshot_cfg, preferences::save_compression_format())
 {}
 
 int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, const gui::DIALOG_TYPE /*dialog_type*/)
@@ -1085,7 +1085,7 @@ void ingame_savegame::create_filename()
 void ingame_savegame::before_save()
 {
 	savegame::before_save();
-	gamestate().write_snapshot(snapshot(), &gui_);
+	gamestate().write_snapshot(snapshot());
 }
 
 void ingame_savegame::write_game(config_writer &out) {

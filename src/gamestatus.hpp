@@ -174,7 +174,7 @@ public:
 	game_state& operator=(const game_state& state);
 
 	//write the gamestate into a config object
-	void write_snapshot(config& cfg, game_display* gui = NULL) const;
+	void write_snapshot(config& cfg) const;
 	//write the config information into a stream (file)
 	void write_config(config_writer& out) const;
 

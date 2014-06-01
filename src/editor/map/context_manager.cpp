@@ -86,8 +86,10 @@ public:
 		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
 
 		resources::teams = &context_manager_.get_map_context().get_teams();
+		
+		resources::classification = &context_manager_.get_map_context().get_game_state().classification();
+		resources::mp_settings = &context_manager_.get_map_context().get_game_state().mp_settings();
 
-		resources::state_of_game = &context_manager_.get_map_context().get_game_state();
 		context_manager_.gui().init_flags();
 
 		context_manager_.reload_map();

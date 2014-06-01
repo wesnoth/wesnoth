@@ -367,7 +367,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	if (non_interactive()) {
 		throw game::game_error(message.str()); //throw end_level_exception(DEFEAT);
 	} else {
-		savegame::oos_savegame save(to_config());
+		savegame::oos_savegame save(gamestate_, *gui_, to_config());
 		save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 	}
 }
