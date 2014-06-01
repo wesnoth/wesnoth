@@ -25,6 +25,7 @@
 
 #include "../config.hpp"
 #include "../config_assign.hpp"
+#include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
@@ -315,7 +316,7 @@ bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_
 	if ( view_team.shrouded(recruit_loc) )
 		return false;
 
-	if ( get_visible_unit(recruit_loc, view_team) != NULL )
+	if ( resources::gameboard->get_visible_unit(recruit_loc, view_team) != NULL )
 		return false;
 
 	castle_cost_calculator calc(map, view_team);

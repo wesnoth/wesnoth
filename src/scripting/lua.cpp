@@ -779,7 +779,7 @@ static int intf_get_unit(lua_State *L)
  */
 static int intf_get_displayed_unit(lua_State *L)
 {
-	unit_map::const_iterator ui = find_visible_unit(
+	unit_map::const_iterator ui = resources::gameboard->find_visible_unit(
 		resources::screen->displayed_unit_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
 		resources::screen->show_everything());

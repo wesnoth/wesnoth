@@ -308,7 +308,7 @@ public:
 	static std::string get_side_highlight(int side);
 	static std::string get_side_highlight_pango(int side);
 
-	void log_recruitable();
+	void log_recruitable() const;
 
 	/**set the share maps attribute */
 	void set_share_maps( bool share_maps );

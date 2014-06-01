@@ -119,18 +119,22 @@ struct report_generator_helper
 
 static char const *naps = "</span>";
 
+namespace reports {
+
 static const unit *get_visible_unit()
 {
-	return get_visible_unit(resources::screen->displayed_unit_hex(),
+	return resources::gameboard->get_visible_unit(resources::screen->displayed_unit_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
 static const unit *get_selected_unit()
 {
-	return get_visible_unit(resources::screen->selected_hex(),
+	return resources::gameboard->get_visible_unit(resources::screen->selected_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
 		resources::screen->show_everything());
+}
+
 }
 
 static config gray_inactive(const std::string &str)
@@ -162,12 +166,12 @@ static config unit_name(const unit *u)
 
 REPORT_GENERATOR(unit_name)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_name(u);
 }
 REPORT_GENERATOR(selected_unit_name)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_name(u);
 }
 
@@ -183,12 +187,12 @@ static config unit_type(const unit* u)
 }
 REPORT_GENERATOR(unit_type)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_type(u);
 }
 REPORT_GENERATOR(selected_unit_type)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_type(u);
 }
 
@@ -202,12 +206,12 @@ static config unit_race(const unit* u)
 }
 REPORT_GENERATOR(unit_race)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_race(u);
 }
 REPORT_GENERATOR(selected_unit_race)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_race(u);
 }
 
@@ -233,12 +237,12 @@ static config unit_side(const unit* u)
 }
 REPORT_GENERATOR(unit_side)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_side(u);
 }
 REPORT_GENERATOR(selected_unit_side)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_side(u);
 }
 
@@ -258,18 +262,18 @@ static config unit_level(const unit* u)
 }
 REPORT_GENERATOR(unit_level)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_level(u);
 }
 REPORT_GENERATOR(selected_unit_level)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_level(u);
 }
 
 REPORT_GENERATOR(unit_amla)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	if (!u) return report();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
@@ -300,12 +304,12 @@ static config unit_traits(const unit* u)
 }
 REPORT_GENERATOR(unit_traits)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_traits(u);
 }
 REPORT_GENERATOR(selected_unit_traits)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_traits(u);
 }
 
@@ -334,12 +338,12 @@ static config unit_status(const unit* u)
 }
 REPORT_GENERATOR(unit_status)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_status(u);
 }
 REPORT_GENERATOR(selected_unit_status)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_status(u);
 }
 
@@ -366,12 +370,12 @@ static config unit_alignment(const unit* u)
 }
 REPORT_GENERATOR(unit_alignment)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_alignment(u);
 }
 REPORT_GENERATOR(selected_unit_alignment)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_alignment(u);
 }
 
@@ -411,12 +415,12 @@ static config unit_abilities(const unit* u)
 }
 REPORT_GENERATOR(unit_abilities)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_abilities(u);
 }
 REPORT_GENERATOR(selected_unit_abilities)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_abilities(u);
 }
 
@@ -465,12 +469,12 @@ static config unit_hp(const unit* u)
 }
 REPORT_GENERATOR(unit_hp)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_hp(u);
 }
 REPORT_GENERATOR(selected_unit_hp)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_hp(u);
 }
 
@@ -487,12 +491,12 @@ static config unit_xp(const unit* u)
 }
 REPORT_GENERATOR(unit_xp)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_xp(u);
 }
 REPORT_GENERATOR(selected_unit_xp)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_xp(u);
 }
 
@@ -508,12 +512,12 @@ static config unit_advancement_options(const unit* u)
 }
 REPORT_GENERATOR(unit_advancement_options)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_advancement_options(u);
 }
 REPORT_GENERATOR(selected_unit_advancement_options)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_advancement_options(u);
 }
 
@@ -560,13 +564,13 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 }
 REPORT_GENERATOR(unit_defense)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	const map_location& displayed_unit_hex = resources::screen->displayed_unit_hex();
 	return unit_defense(u, displayed_unit_hex);
 }
 REPORT_GENERATOR(selected_unit_defense)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	const map_location& selected_hex = resources::screen->selected_hex();
 	return unit_defense(u, selected_hex);
 }
@@ -583,12 +587,12 @@ static config unit_vision(const unit* u)
 }
 REPORT_GENERATOR(unit_vision)
 {
-	const unit* u = get_visible_unit();
+	const unit* u = reports::get_visible_unit();
 	return unit_vision(u);
 }
 REPORT_GENERATOR(selected_unit_vision)
 {
-	const unit* u = get_selected_unit();
+	const unit* u = reports::get_selected_unit();
 	return unit_vision(u);
 }
 
@@ -650,12 +654,12 @@ static config unit_moves(const unit* u)
 }
 REPORT_GENERATOR(unit_moves)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	return unit_moves(u);
 }
 REPORT_GENERATOR(selected_unit_moves)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	return unit_moves(u);
 }
 
@@ -1011,15 +1015,15 @@ static config unit_weapons(const unit *u)
 }
 REPORT_GENERATOR(unit_weapons)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	if (!u) return config();
 
 	return unit_weapons(u);
 }
 REPORT_GENERATOR(highlighted_unit_weapons)
 {
-	const unit *u = get_selected_unit();
-	const unit *sec_u = get_visible_unit();
+	const unit *u = reports::get_selected_unit();
+	const unit *sec_u = reports::get_visible_unit();
 
 	if (!u) return config();
 	if (!sec_u || u == sec_u) return unit_weapons(sec_u);
@@ -1035,8 +1039,8 @@ REPORT_GENERATOR(highlighted_unit_weapons)
 }
 REPORT_GENERATOR(selected_unit_weapons)
 {
-	const unit *u = get_selected_unit();
-	const unit *sec_u = get_visible_unit();
+	const unit *u = reports::get_selected_unit();
+	const unit *sec_u = reports::get_visible_unit();
 
 	if (!u) return config();
 	if (!sec_u || u == sec_u) return unit_weapons(u);
@@ -1053,26 +1057,26 @@ REPORT_GENERATOR(selected_unit_weapons)
 
 REPORT_GENERATOR(unit_image)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 REPORT_GENERATOR(selected_unit_image)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	if (!u) return report();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 
 REPORT_GENERATOR(selected_unit_profile)
 {
-	const unit *u = get_selected_unit();
+	const unit *u = reports::get_selected_unit();
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
 REPORT_GENERATOR(unit_profile)
 {
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	if (!u) return report();
 	return image_report(u->small_profile());
 }
@@ -1219,7 +1223,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 
 	bg_terrain_image = bg_terrain_image + "~CS(" + color.str() + ")";
 
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	std::string unit_image;
 	if (u)
 		unit_image = "~BLIT(" + u->absolute_image() + u->image_mods() + ",35,22)";
@@ -1462,7 +1466,7 @@ REPORT_GENERATOR(position)
 	std::ostringstream str;
 	str << mouseover_hex;
 
-	const unit *u = get_visible_unit();
+	const unit *u = reports::get_visible_unit();
 	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 	if (!u ||
 	    (displayed_unit_hex != mouseover_hex &&

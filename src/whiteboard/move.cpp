@@ -459,7 +459,7 @@ action::error move::check_validity() const
 	}
 
 	//If the path has at least two hexes (it can have less with the attack subclass), ensure destination hex is free
-	if(get_route().steps.size() >= 2 && get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
+	if(get_route().steps.size() >= 2 && resources::gameboard->get_visible_unit(get_dest_hex(),resources::teams->at(viewer_team())) != NULL) {
 		return LOCATION_OCCUPIED;
 	}
 

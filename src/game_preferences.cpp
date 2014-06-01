@@ -16,6 +16,7 @@
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
@@ -1043,22 +1044,22 @@ bool confirm_no_moves()
 }
 
 
-void encounter_recruitable_units(std::vector<team>& teams){
-	for (std::vector<team>::iterator help_team_it = teams.begin();
+void encounter_recruitable_units(const std::vector<team>& teams){
+	for (std::vector<team>::const_iterator help_team_it = teams.begin();
 		help_team_it != teams.end(); ++help_team_it) {
 		help_team_it->log_recruitable();
 		encountered_units_set.insert(help_team_it->recruits().begin(), help_team_it->recruits().end());
 	}
 }
 
-void encounter_start_units(unit_map& units){
+void encounter_start_units(const unit_map& units){
 	for (unit_map::const_iterator help_unit_it = units.begin();
 		 help_unit_it != units.end(); ++help_unit_it) {
 		encountered_units_set.insert(help_unit_it->type_id());
 	}
 }
 
-void encounter_recallable_units(std::vector<team>& teams){
+void encounter_recallable_units(const std::vector<team>& teams){
 	BOOST_FOREACH(const team& t, teams) {
 		BOOST_FOREACH(const unit& u, t.recall_list()) {
 			encountered_units_set.insert(u.type_id());
@@ -1066,7 +1067,7 @@ void encounter_recallable_units(std::vector<team>& teams){
 	}
 }
 
-void encounter_map_terrain(gamemap& map){
+void encounter_map_terrain(const gamemap& map){
 	for (int map_x = 0; map_x < map.w(); ++map_x) {
 		for (int map_y = 0; map_y < map.h(); ++map_y) {
 			const t_translation::t_terrain t = map.get_terrain(map_location(map_x, map_y));
@@ -1077,6 +1078,13 @@ void encounter_map_terrain(gamemap& map){
 			};
 		}
 	}
+}
+
+void encounter_all_content(const game_board & gameboard_) {
+	preferences::encounter_recruitable_units(gameboard_.teams());
+	preferences::encounter_start_units(gameboard_.units());
+	preferences::encounter_recallable_units(gameboard_.teams());
+	preferences::encounter_map_terrain(gameboard_.map());
 }
 
 void acquaintance::load_from_config(const config& cfg)

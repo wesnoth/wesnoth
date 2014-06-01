@@ -284,7 +284,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
 	// Check for units?
 	if ( result  &&  check_units  &&  loc != event_non_loc ) {
 		// Uncovered a unit?
-		unit_map::const_iterator sight_it = find_visible_unit(loc, tm);
+		unit_map::const_iterator sight_it = resources::gameboard->find_visible_unit(loc, tm);
 		if ( sight_it.valid() ) {
 			record_sighting(*sight_it, loc, viewer_id, view_loc);
 

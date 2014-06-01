@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "wesconfig.h"
@@ -163,12 +164,12 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = get_visible_unit(mouseoverHex_, (*teams_)[viewing_team()], !viewpoint_);
+		u = resources::gameboard->get_visible_unit(mouseoverHex_, (*teams_)[viewing_team()], !viewpoint_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
 			if (units_->count(selectedHex_)) {
@@ -190,7 +191,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -277,7 +278,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
-		const unit *u = get_visible_unit(loc, (*teams_)[viewing_team()] );
+		const unit *u = resources::gameboard->get_visible_unit(loc, (*teams_)[viewing_team()] );
 		if( u != NULL ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
@@ -459,8 +460,8 @@ void game_display::draw_movement_info(const map_location& loc)
 	// When out-of-turn, it's still interesting to check out the terrain defs of the selected unit
 	else if (selectedHex_.valid() && loc == mouseoverHex_)
 	{
-		const unit_map::const_iterator selectedUnit = find_visible_unit(selectedHex_,resources::teams->at(currentTeam_));
-		const unit_map::const_iterator mouseoveredUnit = find_visible_unit(mouseoverHex_,resources::teams->at(currentTeam_));
+		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,resources::teams->at(currentTeam_));
+		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,resources::teams->at(currentTeam_));
 		if(selectedUnit != units_->end() && mouseoveredUnit == units_->end()) {
 			// Display the def% of this terrain
 			int def =  100 - selectedUnit->defense_modifier(get_map().get_terrain(loc));

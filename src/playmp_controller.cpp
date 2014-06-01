@@ -313,9 +313,7 @@ void playmp_controller::linger()
 	// stay stuck in linger state when the *next* scenario is over.
 	set_completion setter(gamestate_,"running");
 	// End all unit moves
-	BOOST_FOREACH(unit &u, units_) {
-		u.set_user_end_turn(true);
-	}
+	gameboard_.set_all_units_user_end_turn();
 	//current_team().set_countdown_time(0);
 	//halt and cancel the countdown timer
 	reset_countdown();

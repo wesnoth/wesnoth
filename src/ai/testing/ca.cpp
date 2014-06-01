@@ -23,6 +23,7 @@
 #include "../composite/engine.hpp"
 #include "../composite/rca.hpp"
 #include "../composite/stage.hpp"
+#include "../../game_board.hpp"
 #include "../../gamestatus.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
@@ -935,7 +936,7 @@ void get_villages_phase::execute()
 		if(leader != units_.end() && leader->get_location() == i->second) {
 			leader_move = *i;
 		} else {
-			if (find_visible_unit(i->first, current_team()) == units_.end()) {
+			if (resources::gameboard->find_visible_unit(i->first, current_team()) == units_.end()) {
 				move_result_ptr move_res = execute_move_action(i->second,i->first,true);
 				if (!move_res->is_ok()) {
 					return;
@@ -961,7 +962,7 @@ void get_villages_phase::execute()
 	}
 
 	if(leader_move.second.valid()) {
-		if((find_visible_unit(leader_move.first , current_team()) == units_.end())
+		if((resources::gameboard->find_visible_unit(leader_move.first , current_team()) == units_.end())
 		   && resources::game_map->is_village(leader_move.first)) {
 			move_result_ptr move_res = execute_move_action(leader_move.second,leader_move.first,true);
 			if (!move_res->is_ok()) {

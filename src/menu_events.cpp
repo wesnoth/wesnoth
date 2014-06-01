@@ -930,12 +930,12 @@ unit_map::iterator menu_handler::current_unit()
 {
 	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
 
-	unit_map::iterator res = find_visible_unit(mousehandler.get_last_hex(),
+	unit_map::iterator res = resources::gameboard->find_visible_unit(mousehandler.get_last_hex(),
 		teams_[gui_->viewing_team()]);
 	if(res != units_.end()) {
 		return res;
 	} else {
-		return find_visible_unit(mousehandler.get_selected_hex(),
+		return resources::gameboard->find_visible_unit(mousehandler.get_selected_hex(),
 			teams_[gui_->viewing_team()]);
 	}
 }

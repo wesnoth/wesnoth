@@ -52,8 +52,6 @@ public:
 	virtual void check_end_level() {}
 	virtual void on_not_observer() {}
 
-	std::vector<team> teams_start_;
-
 	bool manage_noninteractively();
 
 protected:
@@ -87,7 +85,7 @@ private:
 	}
 
 	game_state gamestate_start_;
-	unit_map units_start_;
+	game_board gameboard_start_;
 	tod_manager tod_manager_start_;
 
 	unsigned int current_turn_;

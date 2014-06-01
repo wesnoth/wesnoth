@@ -25,7 +25,7 @@ namespace events{
 
 class mouse_handler : public mouse_handler_base {
 public:
-	mouse_handler(game_display* gui, std::vector<team>& teams, unit_map& units, gamemap& map);
+	mouse_handler(game_display* gui, game_board & board);
 	~mouse_handler();
 	static mouse_handler* get_singleton() { return singleton_ ;}
 	void set_side(int side_number);
@@ -92,10 +92,6 @@ protected:
 	/** Const version */
 	const game_display& gui() const { return *gui_; }
 
-	team& viewing_team() { return teams_[gui().viewing_team()]; }
-	const team& viewing_team() const { return teams_[gui().viewing_team()]; }
-	team &current_team() { return teams_[side_num_ - 1]; }
-
 	int drag_threshold() const;
 	/**
 	 * Use update to force an update of the mouse state.
@@ -121,10 +117,12 @@ protected:
 	unit_map::iterator find_unit(const map_location& hex);
 	bool unit_in_cycle(unit_map::const_iterator it);
 private:
-	gamemap& map_;
+	team& viewing_team();
+	const team& viewing_team() const;
+	team &current_team();
+
 	game_display* gui_;
-	std::vector<team>& teams_;
-	unit_map& units_;
+	game_board & board_;
 
 	// previous highlighted hexes
 	// the hex of the selected unit and empty hex are "free"

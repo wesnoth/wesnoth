@@ -98,7 +98,7 @@ unit* future_visible_unit(map_location hex, int viewer_side)
 		return NULL;
 	}
 	//use global method get_visible_unit
-	return get_visible_unit(hex, resources::teams->at(viewer_side - 1), false);
+	return resources::gameboard->get_visible_unit(hex, resources::teams->at(viewer_side - 1), false);
 }
 
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side)

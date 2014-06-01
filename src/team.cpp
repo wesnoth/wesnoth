@@ -823,7 +823,7 @@ std::string team::get_side_highlight_pango(int side)
 	return rgb2highlight_pango(get_side_color_range(side+1).mid());
 }
 
-void team::log_recruitable(){
+void team::log_recruitable() const {
 	LOG_NG << "Adding recruitable units: \n";
 	for (std::set<std::string>::const_iterator it = info_.can_recruit.begin();
 		 it != info_.can_recruit.end(); ++it) {
