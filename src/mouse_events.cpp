@@ -610,21 +610,26 @@ void mouse_handler::move_action(bool browse)
 				if (resources::whiteboard->is_active()) {
 					save_whiteboard_attack(attack_from, hex, choice);
 				}
-				else if ( move_unit_along_current_route() ) {
+				else {
+					bool not_interrupted = move_unit_along_current_route();
 					bool alt_unit_selected = (selected_hex_ != src);
 					src = selected_hex_;
 					// clear current unit selection so that any other unit selected
 					// triggers a new selection
 					selected_hex_ = map_location();
 					
-					attack_enemy(attack_from, hex, choice); // Fight !!
+					if (not_interrupted)
+						attack_enemy(attack_from, hex, choice); // Fight !!
+						
+					//TODO: Maybe store the attack choice so "press t to continue"
+					//      can also continue the attack?
+					
 					if (alt_unit_selected && !selected_hex_.valid()) {
 						//reselect other unit if selected during movement animation
 						select_hex(src, browse);
 					}
 				}
-				//TODO: Maybe store the attack choice so "press t to continue"
-				//      can also continue the attack?
+				
 				return;
 			}
 		}
