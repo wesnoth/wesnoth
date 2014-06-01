@@ -25,6 +25,10 @@
 
 class config;
 
+namespace events {
+	class mouse_handler;
+}
+
 class game_board {
 
 	std::vector<team> teams_;
@@ -37,6 +41,7 @@ class game_board {
 	friend class replay_controller;
 	friend class playsingle_controller;
 	friend class playmp_controller;
+	friend class events::mouse_handler;
 	
 	public:
 
