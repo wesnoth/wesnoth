@@ -98,7 +98,7 @@ BOOST_AUTO_TEST_CASE( test_1 ) {
 	BOOST_CHECK_MESSAGE(uresult1.first != unit_map.end(), "Added in face of id collision.");
 	BOOST_CHECK_MESSAGE(uresult1.first->underlying_id() != orc1_side0_real.underlying_id(), "Found Orc1");
 
-
+	BOOST_CHECK_MESSAGE(!unit_map.end().valid(), "Hmm, unit_map.end() is valid for dereference...");
 	//To check that the collisions will cut off change the cutoff in unit_map.cpp from 1e6 to less than the guard value below
 	// unit_map.add(map_location(1,3), orc2_side0_fake);
 	// unit_map.add(map_location(1,3), orc2_side0_fake);
