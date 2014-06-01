@@ -159,7 +159,9 @@ editor_controller::~editor_controller()
 	resources::units = NULL;
 	resources::tod_manager = NULL;
 	resources::teams = NULL;
-	resources::state_of_game = NULL;
+	
+	resources::classification = NULL;
+	resources::mp_settings = NULL;
 }
 
 EXIT_STATUS editor_controller::main_loop()

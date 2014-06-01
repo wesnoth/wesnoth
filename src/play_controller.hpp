@@ -163,6 +163,8 @@ public:
 	bool is_skipping_replay() const { return skip_replay_;}
 	bool is_linger_mode() const { return linger_; }
 
+	void do_autosave();
+
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 

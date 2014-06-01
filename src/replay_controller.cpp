@@ -15,6 +15,9 @@
 
 #include "global.hpp"
 
+#include "replay_controller.hpp"
+
+#include "carryover.hpp"
 #include "actions/vision.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/handlers.hpp"
@@ -24,7 +27,6 @@
 #include "mouse_handler_base.hpp"
 #include "replay.hpp"
 #include "random_new_deterministic.hpp"
-#include "replay_controller.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "synced_context.hpp"
@@ -365,7 +367,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	if (non_interactive()) {
 		throw game::game_error(message.str()); //throw end_level_exception(DEFEAT);
 	} else {
-		savegame::oos_savegame save(to_config());
+		savegame::oos_savegame save(gamestate_, *gui_, to_config());
 		save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 	}
 }

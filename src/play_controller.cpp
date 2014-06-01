@@ -30,6 +30,7 @@
 #include "game_events/menu_item.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
+#include "map_label.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "loadscreen.hpp"
@@ -78,13 +79,17 @@ static void clear_resources()
 	resources::persist = NULL;
 	resources::screen = NULL;
 	resources::soundsources = NULL;
-	resources::state_of_game = NULL;
 	resources::teams = NULL;
 	resources::tod_manager = NULL;
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
 	resources::units = NULL;
 	resources::whiteboard = NULL;
+
+	
+	resources::classification = NULL;
+	resources::mp_settings = NULL;
+
 }
 
 
@@ -140,11 +145,14 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::gamedata = &gamedata_;
 	resources::game_map = &gameboard_.map_;
 	resources::persist = &persist_;
-	resources::state_of_game = &gamestate_;
 	resources::teams = &gameboard_.teams_;
 	resources::tod_manager = &tod_manager_;
 	resources::undo_stack = undo_stack_.get();
 	resources::units = &gameboard_.units_;
+
+	
+	resources::classification = &gamestate_.classification();
+	resources::mp_settings = &gamestate_.mp_settings();
 
 	persist_.start_transaction();
 
@@ -182,8 +190,6 @@ void play_controller::init(CVideo& video){
 	// i currently assume that no random calls take place before the "prestart" event
 	// If i am wrong, use random_new_deterministic
 	recorder.set_skip(false);
-
-	bool snapshot = level_["snapshot"].to_bool();
 
 	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing..." << std::endl;
@@ -223,7 +229,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, snapshot, gamestate_.replay_start());
+			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -764,6 +770,15 @@ config play_controller::to_config() const
 	// Preserve the undo stack so that fog/shroud clearing is kept accurate.
 	undo_stack_->write(cfg.add_child("undo_stack"));
 
+	//Write the game events.
+	game_events::write_events(cfg);
+
+	
+	if(gui_.get() != NULL){
+		cfg["playing_team"] = str_cast(gui_->playing_team());
+		gui_->labels().write(cfg);
+		sound::write_music_play_list(cfg);
+	}
 	return cfg;
 }
 
@@ -1466,7 +1481,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << _("The game is out of sync. It might not make much sense to continue. Do you want to save your game?");
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
-	savegame::oos_savegame save(to_config());
+	savegame::oos_savegame save(gamestate_, *gui_, to_config());
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
@@ -1498,3 +1513,11 @@ void play_controller::toggle_accelerated_speed()
 		gui_->announce(_("Accelerated speed disabled!"), font::NORMAL_COLOR);
 	}
 }
+
+void play_controller::do_autosave()
+{
+	savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
+	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+}
+
+

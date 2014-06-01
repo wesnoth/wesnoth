@@ -280,7 +280,7 @@ private:
 class oos_savegame : public ingame_savegame
 {
 public:
-	oos_savegame(const config& snapshot_cfg);
+	oos_savegame(game_state& gamestate, game_display& gui, const config& snapshot_cfg);
 
 private:
 	/** Display the save game dialog. */
