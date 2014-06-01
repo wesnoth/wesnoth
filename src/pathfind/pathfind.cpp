@@ -23,6 +23,7 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -140,7 +141,7 @@ bool enemy_zoc(team const &current_team, map_location const &loc,
 	get_adjacent_tiles(loc,locs);
 	for (int i = 0; i != 6; ++i)
 	{
-		const unit *u = get_visible_unit(locs[i], viewing_team, see_all);
+		const unit *u = resources::gameboard->get_visible_unit(locs[i], viewing_team, see_all);
 		if ( u  &&  current_team.is_enemy(u->side())  &&  u->emits_zoc() )
 			return true;
 	}
@@ -388,7 +389,7 @@ static void find_routes(
 
 			if ( current_team ) {
 				// Account for enemy units.
-				const unit *v = get_visible_unit(next_hex, *viewing_team, see_all);
+				const unit *v = resources::gameboard->get_visible_unit(next_hex, *viewing_team, see_all);
 				if ( v && current_team->is_enemy(v->side()) ) {
 					// Cannot enter enemy hexes.
 					if ( edges != NULL )
@@ -719,7 +720,7 @@ double shortest_path_calculator::cost(const map_location& loc, const double so_f
 	int other_unit_subcost = 0;
 	if (!ignore_unit_) {
 		const unit *other_unit =
-			get_visible_unit(loc, viewing_team_, see_all_);
+			resources::gameboard->get_visible_unit(loc, viewing_team_, see_all_);
 
 		// We can't traverse visible enemy and we also prefer empty hexes
 		// (less blocking in multi-turn moves and better when exploring fog,

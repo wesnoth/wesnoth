@@ -263,7 +263,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 	}
 	
 	// The nominal destination should appear to be unoccupied.
-	unit_map::iterator u = find_visible_unit(dst, current_team);
+	unit_map::iterator u = resources::gameboard->find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
 		WRN_REPLAY << "Warning: Move destination " << dst << " appears occupied." << std::endl;
 		// We'll still proceed with this movement, though, since

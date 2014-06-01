@@ -17,6 +17,7 @@
 
 namespace resources
 {
+	game_board           *gameboard = NULL;
 	game_config_manager  *config_manager = NULL;
 	play_controller      *controller = NULL;
 	game_data            *gamedata = NULL;

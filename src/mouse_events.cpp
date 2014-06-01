@@ -325,7 +325,7 @@ unit_map::iterator mouse_handler::selected_unit()
 
 unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 {
-	unit_map::iterator it = find_visible_unit(hex, viewing_team());
+	unit_map::iterator it = resources::gameboard->find_visible_unit(hex, viewing_team());
 	if (it.valid())
 		return it;
 	else
@@ -334,7 +334,7 @@ unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 
 unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 {
-	return find_visible_unit(hex, viewing_team());
+	return resources::gameboard->find_visible_unit(hex, viewing_team());
 }
 
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc) const

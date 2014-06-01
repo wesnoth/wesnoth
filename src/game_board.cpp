@@ -41,6 +41,24 @@ void game_board::set_all_units_user_end_turn() {
 	}
 }
 
+unit_map::iterator game_board::find_visible_unit(const map_location &loc,
+	const team& current_team, bool see_all)
+{
+	if (!map_.on_board(loc)) return units_.end();
+	unit_map::iterator u = units_.find(loc);
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all))
+		return units_.end();
+	return u;
+}
+
+unit* game_board::get_visible_unit(const map_location &loc,
+	const team &current_team, bool see_all)
+{
+	unit_map::iterator ui = find_visible_unit(loc, current_team, see_all);
+	if (ui == units_.end()) return NULL;
+	return &*ui;
+}
+
 void game_board::write_config(config & cfg) const {
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {
 		int side_num = t - teams_.begin() + 1;

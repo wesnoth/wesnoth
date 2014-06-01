@@ -72,6 +72,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 static void clear_resources()
 {
 	resources::controller = NULL;
+	resources::gameboard = NULL;
 	resources::gamedata = NULL;
 	resources::game_map = NULL;
 	resources::persist = NULL;
@@ -135,6 +136,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	scope_()
 {
 	resources::controller = this;
+	resources::gameboard = &gameboard_;
 	resources::gamedata = &gamedata_;
 	resources::game_map = &gameboard_.map_;
 	resources::persist = &persist_;

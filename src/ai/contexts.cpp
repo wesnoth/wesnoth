@@ -32,6 +32,7 @@
 #include "../formula.hpp"
 #include "../formula_function.hpp"
 #include "../formula_fwd.hpp"
+#include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
@@ -430,7 +431,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 				continue;
 			}
 
-			if(src != dst && (find_visible_unit(dst, current_team()) == resources::units->end()) ) {
+			if(src != dst && (resources::gameboard->find_visible_unit(dst, current_team()) == resources::units->end()) ) {
 				srcdst.insert(std::pair<map_location,map_location>(src,dst));
 				dstsrc.insert(std::pair<map_location,map_location>(dst,src));
 			}
