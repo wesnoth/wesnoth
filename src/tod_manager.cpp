@@ -49,9 +49,10 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	else
 		random_tod_ = false;
 
+	time_of_day::parse_times(scenario_cfg,times_);
+	//We need to call parse_times before calculate_current_time because otherwise the first parameter will always be 0.
 	currentTime_ = calculate_current_time(times_.size(), turn_, scenario_cfg["current_time"].to_int(0), true);
 	
-	time_of_day::parse_times(scenario_cfg,times_);
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
