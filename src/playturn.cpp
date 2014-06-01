@@ -218,7 +218,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				resources::screen->recalculate_minimap();
 			}
 
-			resources::controller->maybe_do_init_side(index);
+			resources::controller->maybe_do_init_side();
 
 			resources::whiteboard->on_change_controller(side,tm);
 
@@ -312,7 +312,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				tm.set_current_player("ai" + side_drop);
 				if (have_leader) leader->rename("ai" + side_drop);
 				change_controller(side_drop, "ai");
-				resources::controller->maybe_do_init_side(side_index);
+				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 
@@ -323,7 +323,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 				if (have_leader) leader->rename("human" + side_drop);
 				change_controller(side_drop, "human");
 
-				resources::controller->maybe_do_init_side(side_index);
+				resources::controller->maybe_do_init_side();
 
 				return restart?PROCESS_RESTART_TURN:PROCESS_CONTINUE;
 			case 2:

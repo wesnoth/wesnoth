@@ -443,13 +443,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 		// Avoid autosaving after loading, but still
 		// allow the first turn to have an autosave.
-		bool save = !loading_game_;
+		do_autosaves_ = !loading_game_;
 		ai_testing::log_game_start();
 		for(; ; first_player_ = 1) {
-			play_turn(save);
-			save = true;
+			play_turn();
+			do_autosaves_ = true;
 		} //end for loop
-
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		//
@@ -593,7 +592,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	return QUIT;
 }
 
-void playsingle_controller::play_turn(bool save)
+void playsingle_controller::play_turn()
 {
 	resources::whiteboard->on_gamestate_change();
 	gui_->new_turn();
@@ -612,7 +611,7 @@ void playsingle_controller::play_turn(bool save)
 		if (current_team().is_empty()) continue;
 		try {
 			save_blocker blocker;
-			init_side(player_number_ - 1);
+			init_side();
 		} catch (end_turn_exception) {
 			if (current_team().is_network() == false) {
 				turn_info turn_data(player_number_, replay_sender_,network_reader_);
@@ -627,18 +626,8 @@ void playsingle_controller::play_turn(bool save)
 			replaying_ = ::do_replay(player_number_) == REPLAY_FOUND_END_TURN;
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
-			// If a side is dead end the turn, but play at least side=1's
-			// turn in case all sides are dead
-			if (current_team().is_human() && side_units(player_number_) == 0
-				&& (resources::units->size() != 0 || player_number_ != 1))
-			{
-				turn_info turn_data(player_number_, replay_sender_, network_reader_);
-				recorder.end_turn();
-				turn_data.sync_network();
-				continue;
-			}
 			ai_testing::log_turn_start(player_number_);
-			play_side(player_number_, save);
+			play_side();
 		}
 
 		finish_side_turn();
@@ -675,10 +664,12 @@ void playsingle_controller::play_idle_loop()
 	}
 }
 
-void playsingle_controller::play_side(const unsigned int side_number, bool save)
+void playsingle_controller::play_side()
 {
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
+
+	maybe_do_init_side(false);
 
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
@@ -688,22 +679,28 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 		if (!skip_next_turn_)
 			end_turn_ = false;
 
-		statistics::reset_turn_stats(teams_[side_number - 1].save_id());
+		statistics::reset_turn_stats(teams_[player_number_ - 1].save_id());
 
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
 			temporary_human = false;
 			try{
-				before_human_turn(save);
-				play_human_turn();
+				// If a side is dead end the turn, but play at least side=1's
+				// turn in case all sides are dead
+				if (side_units(player_number_) != 0
+					|| (resources::units->size() == 0 && player_number_ == 1))
+				{
+					before_human_turn();
+					play_human_turn();
+				}
 			} catch(end_turn_exception& end_turn) {
-				if (end_turn.redo == side_number) {
+				if (int(end_turn.redo) == player_number_) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
-					if (!teams_[side_number-1].is_human()) {
+					if (!teams_[player_number_-1].is_human()) {
 						browse_ = true;
-						int s = find_human_team_before(side_number);
+						int s = find_human_team_before(player_number_);
 						if (s <= 0)
 							s = gui_->playing_side();
 						update_gui_to_player(s-1);
@@ -724,6 +721,10 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 				player_type_changed_ = true;
 				temporary_human = true;
 			}
+			if(!player_type_changed_)
+			{
+				recorder.end_turn();
+			}
 
 		} else if(current_team().is_network()) {
 			play_network_turn();
@@ -731,18 +732,18 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 			try{
 				end_turn_enable(false);
 				do_idle_notification();
-				before_human_turn(save);
+				before_human_turn();
 				play_idle_loop();
 				
 			} catch(end_turn_exception& end_turn) {
 				LOG_NG << "Escaped from idle state with exception!" << std::endl;
-				if (end_turn.redo == side_number) {
+				if (int(end_turn.redo) == player_number_) {
 					player_type_changed_ = true;
 					// If new controller is not human,
 					// reset gui to prev human one
-					if (!teams_[side_number-1].is_human()) {
+					if (!teams_[player_number_-1].is_human()) {
 						browse_ = true;
-						int s = find_human_team_before(side_number);
+						int s = find_human_team_before(player_number_);
 						if (s <= 0)
 							s = gui_->playing_side();
 						update_gui_to_player(s-1);
@@ -759,7 +760,7 @@ void playsingle_controller::play_side(const unsigned int side_number, bool save)
 	skip_next_turn_ = false;
 }
 
-void playsingle_controller::before_human_turn(bool save)
+void playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
 	browse_ = false;
@@ -767,7 +768,7 @@ void playsingle_controller::before_human_turn(bool save)
 
 	ai::manager::raise_turn_started();
 
-	if(save && level_result_ == NONE) {
+	if(do_autosaves_ && level_result_ == NONE) {
 		savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
@@ -802,20 +803,6 @@ void playsingle_controller::play_human_turn() {
 		gui_->draw();
 	}
 }
-struct set_completion
-{
-	set_completion(game_state& state, const std::string& completion) :
-		state_(state), completion_(completion)
-	{
-	}
-	~set_completion()
-	{
-		state_.classification().completion = completion_;
-	}
-	private:
-	game_state& state_;
-	const std::string completion_;
-};
 
 void playsingle_controller::linger()
 {
@@ -939,7 +926,6 @@ void playsingle_controller::play_ai_turn(){
 		turn_data.sync_network();
 		throw;
 	}
-	recorder.end_turn();
 	turn_data.sync_network();
 
 	gui_->recalculate_minimap();

@@ -20,6 +20,21 @@
 #include "playturn_network_adapter.hpp"
 #include "replay.hpp"
 
+struct set_completion
+{
+	set_completion(game_state& state, const std::string& completion) :
+		state_(state), completion_(completion)
+	{
+	}
+	~set_completion()
+	{
+		state_.classification().completion = completion_;
+	}
+	private:
+	game_state& state_;
+	const std::string completion_;
+};
+
 class playsingle_controller : public play_controller
 {
 public:
@@ -72,9 +87,9 @@ public:
 	virtual void on_not_observer() {}
 
 protected:
-	virtual void play_turn(bool save);
-	virtual void play_side(const unsigned int side_number, bool save);
-	virtual void before_human_turn(bool save);
+	virtual void play_turn();
+	virtual void play_side();
+	virtual void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
 	virtual void play_human_turn();
@@ -103,6 +118,7 @@ protected:
 	bool replaying_;
 	bool turn_over_;
 	bool skip_next_turn_;
+	bool do_autosaves_;
 	LEVEL_RESULT level_result_;
 };
 

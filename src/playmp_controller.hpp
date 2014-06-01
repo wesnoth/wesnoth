@@ -52,8 +52,8 @@ protected:
 	virtual void stop_network();
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
 
-	virtual void play_side(const unsigned int side_number, bool save);
-	virtual void before_human_turn(bool save);
+	virtual void play_side();
+	virtual void before_human_turn();
 	virtual void play_human_turn();
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
