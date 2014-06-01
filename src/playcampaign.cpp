@@ -72,33 +72,6 @@ static void team_init(config& level, game_state& gamestate){
 	}
 }
 
-static void do_carryover_WML(config & level, game_state& gamestate){
-
-	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
-
-		carryover_info sides(gamestate.carryover_sides_start);
-
-		end_level_data end_level_ = sides.get_end_level();
-
-		if(!end_level_.next_scenario_settings.empty()) {
-			level.merge_with(end_level_.next_scenario_settings);
-		}
-		if(!end_level_.next_scenario_append.empty())
-		{
-			level.append_children(end_level_.next_scenario_append);
-		}
-	}
-}
-
-static void clear_carryover_WML (game_state & gamestate) {
-
-	if (gamestate.carryover_sides.has_child("end_level_data")) {
-		config & eld = gamestate.carryover_sides.child("end_level_data");
-		eld.clear_children("next_scenario_settings");
-		eld.clear_children("next_scenario_append");
-	}	
-}
-
 static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
@@ -287,9 +260,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 
 	config init_level = *level;
-	do_carryover_WML(init_level, state_of_game);
 	team_init(init_level, state_of_game);
-	clear_carryover_WML(state_of_game);
 
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(init_level, state_of_game, ticks, game_config, disp.video(), skip_replay);
@@ -332,9 +303,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	const int ticks = SDL_GetTicks();
 
 	config init_level = *level;
-	do_carryover_WML(init_level, state_of_game);
 	team_init(init_level, state_of_game);
-	clear_carryover_WML(state_of_game);
 
 	playmp_controller playcontroller(init_level, state_of_game, ticks,
 		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
