@@ -768,7 +768,6 @@ void game_state::write_snapshot(config& cfg, game_display* gui) const
 {
 	log_scope("write_game");
 	if(gui != NULL){
-		cfg["snapshot"] = true;
 		cfg["playing_team"] = str_cast(gui->playing_team());
 
 		game_events::write_events(cfg);
