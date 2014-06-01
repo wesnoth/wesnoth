@@ -193,8 +193,6 @@ carryover_info::carryover_info(const config& cfg)
 	, variables_(cfg.child_or_empty("variables"))
 	, rng_(cfg)
 	, wml_menu_items_()
-	, difficulty_(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str())
-	, random_mode_(cfg["random_mode"].str())
 	, next_scenario_(cfg["next_scenario"])
 {
 	end_level_.read(cfg.child_or_empty("end_level_data"));
@@ -262,8 +260,6 @@ void carryover_info::transfer_from(game_data& gamedata){
 	variables_ = gamedata.get_variables();
 	wml_menu_items_ = gamedata.get_wml_menu_items();
 	rng_ = gamedata.rng();
-	difficulty_ = gamedata.difficulty();
-	random_mode_ = gamedata.random_mode();
 	next_scenario_ = gamedata.next_scenario();
 }
 
@@ -283,13 +279,6 @@ void carryover_info::transfer_to(config& level){
 		wml_menu_items_.to_config(level);
 	}
 
-	if(level["difficulty"].empty()){
-		level["difficulty"] = difficulty_;
-	}
-	if(level["random_mode"].empty()){
-		level["random_mode"] = random_mode_;
-	}
-	difficulty_ = "";
 	next_scenario_ = "";
 
 }
@@ -298,8 +287,6 @@ const config carryover_info::to_config()
 {
 	config cfg;
 
-	cfg["difficulty"] = difficulty_;
-	cfg["random_mode"] = random_mode_;
 	cfg["next_scenario"] = next_scenario_;
 
 	BOOST_FOREACH(carryover& c, carryover_sides_){
@@ -624,8 +611,6 @@ game_data::game_data()
 		, temporaries_()
 		, phase_(INITIAL)
 		, can_end_turn_(true)
-		, difficulty_(DEFAULT_DIFFICULTY)
-		, random_mode_("")
 		, scenario_()
 		, next_scenario_()
 		{}
@@ -639,8 +624,6 @@ game_data::game_data(const config& level)
 		, temporaries_()
 		, phase_(INITIAL)
 		, can_end_turn_(level["can_end_turn"].to_bool(true))
-		, difficulty_(level["difficulty"].empty() ? DEFAULT_DIFFICULTY : level["difficulty"].str())
-		, random_mode_(level["random_mode"].str())
 		, scenario_(level["id"])
 		, next_scenario_(level["next_scenario"])
 {
@@ -657,8 +640,6 @@ game_data::game_data(const game_data& data)
 		, temporaries_()
 		, phase_(data.phase_)
 		, can_end_turn_(data.can_end_turn_)
-		, difficulty_(data.difficulty_)
-		, random_mode_(data.random_mode_)
 		, scenario_(data.scenario_)
 		, next_scenario_(data.next_scenario_)
 {}
@@ -723,8 +704,6 @@ void game_data::clear_variable(const std::string& varname)
 }
 
 void game_data::write_snapshot(config& cfg){
-	cfg["difficulty"] = difficulty_;
-	cfg["random_mode"] = random_mode_;
 	cfg["scenario"] = scenario_;
 	cfg["next_scenario"] = next_scenario_;
 
@@ -739,8 +718,6 @@ void game_data::write_snapshot(config& cfg){
 }
 
 void game_data::write_config(config_writer& out){
-	out.write_key_val("difficulty", difficulty_);
-	out.write_key_val("random_mode", random_mode_);
 	out.write_key_val("scenario", scenario_);
 	out.write_key_val("next_scenario", next_scenario_);
 
@@ -823,7 +800,7 @@ game_classification::game_classification(const config& cfg):
 	end_credits(cfg["end_credits"].to_bool(true)),
 	end_text(cfg["end_text"]),
 	end_text_duration(cfg["end_text_duration"]),
-	difficulty(cfg["difficulty"]),
+	difficulty(cfg["difficulty"].empty() ? DEFAULT_DIFFICULTY : cfg["difficulty"].str()),
 	random_mode(cfg["random_mode"])
 	{}
 
@@ -1092,13 +1069,14 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 
 	if(cfg_save.has_child("carryover_sides_start")){
 		cfg_summary["scenario"] = cfg_save.child("carryover_sides_start")["next_scenario"];
-		cfg_summary["difficulty"] = cfg_save.child("carryover_sides_start")["difficulty"];
-		cfg_summary["random_mode"] = cfg_save.child("carryover_sides_start")["random_mode"];
 	} else {
 		cfg_summary["scenario"] = cfg_save["scenario"];
-		cfg_summary["difficulty"] = cfg_save["difficulty"];
-		cfg_summary["random_mode"] = cfg_save["random_mode"];
 	}
+	
+	cfg_summary["difficulty"] = cfg_save["difficulty"];
+	cfg_summary["random_mode"] = cfg_save["random_mode"];
+
+
 	cfg_summary["campaign"] = cfg_save["campaign"];
 	cfg_summary["version"] = cfg_save["version"];
 	cfg_summary["corrupt"] = "";
