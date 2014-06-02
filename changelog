@@ -175,6 +175,7 @@ Version 1.13.0-dev:
    * Fix bug which caused no units to be displayed when reloading an end of 
      scenario save, by stripping them from the save file. However, this does 
      not fix bug #15545, which was the reason that this behavior was introduced. 
+   * Fix bug #22123 "Replays don't reset map when reset button is pressed, causing OOS"
 
 Version 1.11.11:
  * Add-ons server:
