@@ -75,6 +75,7 @@ replay_controller::replay_controller(const config& level,
 	teams_start_(teams_),
 	gamestate_start_(gamestate_),
 	units_start_(units_),
+	gamemap_start_(map_),
 	tod_manager_start_(level, num_turns),
 	current_turn_(1),
 	is_playing_(false),
@@ -269,8 +270,14 @@ void replay_controller::reset_replay()
 	recorder.start_replay();
 	recorder.set_skip(false);
 	units_ = units_start_;
+	map_ = gamemap_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = teams_start_;
+
+	resources::screen->recalculate_minimap();
+	resources::screen->invalidate_all();
+	resources::screen->rebuild_all();
+
 	if (events_manager_ ){
 		// NOTE: this double reset is required so that the new
 		// instance of game_events::manager isn't created before the
