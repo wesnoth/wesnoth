@@ -64,7 +64,7 @@ double goto_phase::evaluate()
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<map_location> gotos;
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = *resources::game_map;
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if (ui->get_goto() == ui->get_location()) {
@@ -222,9 +222,9 @@ void recruitment_phase::execute()
 	unit_combat_scores_.clear();
 	unit_movement_scores_.clear();
 
-	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
-	std::vector<team> &teams_ = *resources::teams;
+	const unit_map &units_ = *resources::units;
+	const gamemap &map_ = *resources::game_map;
+	const std::vector<team> &teams_ = *resources::teams;
 
 	map_location start_pos = units_.find_leader(get_side())->get_location();
 
@@ -1046,7 +1046,7 @@ void get_villages_phase::find_villages(
 	const bool passive_leader = get_passive_leader();
 
 	size_t min_distance = 100000;
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = *resources::game_map;
 	std::vector<team> &teams_ = *resources::teams;
 
 	// When a unit is dispatched we need to make sure we don't

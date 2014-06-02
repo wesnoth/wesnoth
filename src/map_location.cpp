@@ -295,7 +295,7 @@ std::vector<map_location> parse_location_range(const std::string &x, const std::
 	std::vector<map_location> res;
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
-	gamemap *map = resources::game_map;
+	const gamemap *map = resources::game_map;
 	assert(map);
 	int xmin = 1, xmax = map->w(), ymin = 1, ymax = map->h();
 	if (with_border) {

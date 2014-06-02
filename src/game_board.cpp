@@ -14,9 +14,19 @@
 
 #include "config.hpp"
 #include "game_board.hpp"
+#include "game_preferences.hpp"
+#include "log.hpp"
 #include "unit.hpp"
 
+#include "utils/foreach.tpp"
+
 #include <boost/foreach.hpp>
+
+static lg::log_domain log_engine("enginerefac");
+#define DBG_RG LOG_STREAM(debug, log_engine)
+#define LOG_RG LOG_STREAM(info, log_engine)
+#define WRN_RG LOG_STREAM(warn, log_engine)
+#define ERR_RG LOG_STREAM(err, log_engine)
 
 
 void game_board::new_turn(int player_num) {
@@ -87,6 +97,91 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 	}
 }
 
+bool game_board::try_add_unit_to_recall_list(const map_location& loc, const unit& u)
+{
+	if(teams_[u.side()-1].persistent()) {
+		teams_[u.side()-1].recall_list().push_back(u);
+		return true;
+	} else {
+		ERR_RG << "unit with id " << u.id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
+			<< u.side() << " has no recall list.\n";
+		return false;
+	}
+}
+
+
+boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
+	boost::optional<std::string> ret = boost::optional<std::string> ();
+
+	/* Remember the locations where a village is owned by a side. */
+	std::map<map_location, int> villages;
+	FOREACH(const AUTO& village, map_.villages()) {
+		const int owner = village_owner(village);
+		if(owner != -1) {
+			villages[village] = owner;
+		}
+	}
+
+	for (unit_map::iterator itor = units_.begin(); itor != units_.end(); ) {
+		if (!newmap.on_board(itor->get_location())) {
+			if (!try_add_unit_to_recall_list(itor->get_location(), *itor)) {
+				*ret = std::string("replace_map: Cannot add a unit that would become off-map to the recall list\n");
+			}
+			units_.erase(itor++);
+		} else {
+			++itor;
+		}
+	}
+
+	/* Disown villages that are no longer villages. */
+	FOREACH(const AUTO& village, villages) {
+		if(!newmap.is_village(village.first)) {
+			teams_[village.second].lose_village(village.first);
+		}
+	}
+
+	map_ = newmap;
+	return ret;
+}
+
+
+
+void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc, bool border) {
+	map_.overlay(mask_map, cfg, loc.x, loc.y, border);
+}
+
+bool game_board::change_terrain(const map_location &loc, const t_translation::t_terrain &t,
+                    gamemap::tmerge_mode mode, bool replace_if_failed)
+{
+	/*
+	 * When a hex changes from a village terrain to a non-village terrain, and
+	 * a team owned that village it loses that village. When a hex changes from
+	 * a non-village terrain to a village terrain and there is a unit on that
+	 * hex it does not automatically capture the village. The reason for not
+	 * capturing villages it that there are too many choices to make; should a
+	 * unit loose its movement points, should capture events be fired. It is
+	 * easier to do this as wanted by the author in WML.
+	 */
+
+	t_translation::t_terrain
+		old_t = map_.get_terrain(loc),
+		new_t = map_.merge_terrains(old_t, t, mode, replace_if_failed);
+	if (new_t == t_translation::NONE_TERRAIN) return false;
+	preferences::encountered_terrains().insert(new_t);
+
+	if (map_.is_village(old_t) && !map_.is_village(new_t)) {
+		int owner = village_owner(loc);
+		if (owner != -1)
+			teams_[owner].lose_village(loc);
+	}
+
+	map_.set_terrain(loc, new_t);
+
+	BOOST_FOREACH(const t_translation::t_terrain &ut, map_.underlying_union_terrain(loc)) {
+		preferences::encountered_terrains().insert(ut);
+	}
+	return true;
+}
 
 void game_board::write_config(config & cfg) const {
 	for(std::vector<team>::const_iterator t = teams_.begin(); t != teams_.end(); ++t) {

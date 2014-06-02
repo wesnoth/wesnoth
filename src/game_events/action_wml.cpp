@@ -288,7 +288,7 @@ namespace { // Support functions
 
 	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
 	{
-		gamemap *game_map = resources::game_map;
+		const gamemap *game_map = resources::game_map;
 		std::vector<map_location> path;
 		map_location src;
 		map_location dst;
@@ -532,55 +532,7 @@ namespace { // Support functions
 		resources::screen->invalidate_all();
 	}
 
-	bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
-	{
-		if((*resources::teams)[u.side()-1].persistent()) {
-			(*resources::teams)[u.side()-1].recall_list().push_back(u);
-			return true;
-		} else {
-			ERR_NG << "unit with id " << u.id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
-				<< u.side() << " has no recall list.\n";
-			return false;
-		}
-	}
-
 } // end anonymous namespace (support functions)
-
-
-void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
-                    gamemap::tmerge_mode mode, bool replace_if_failed)
-{
-	/*
-	 * When a hex changes from a village terrain to a non-village terrain, and
-	 * a team owned that village it loses that village. When a hex changes from
-	 * a non-village terrain to a village terrain and there is a unit on that
-	 * hex it does not automatically capture the village. The reason for not
-	 * capturing villages it that there are too many choices to make; should a
-	 * unit loose its movement points, should capture events be fired. It is
-	 * easier to do this as wanted by the author in WML.
-	 */
-
-	gamemap *game_map = resources::game_map;
-
-	t_translation::t_terrain
-		old_t = game_map->get_terrain(loc),
-		new_t = game_map->merge_terrains(old_t, t, mode, replace_if_failed);
-	if (new_t == t_translation::NONE_TERRAIN) return;
-	preferences::encountered_terrains().insert(new_t);
-
-	if (game_map->is_village(old_t) && !game_map->is_village(new_t)) {
-		int owner = village_owner(loc);
-		if (owner != -1)
-			(*resources::teams)[owner].lose_village(loc);
-	}
-
-	game_map->set_terrain(loc, new_t);
-	context::screen_needs_rebuild(true);
-
-	BOOST_FOREACH(const t_translation::t_terrain &ut, game_map->underlying_union_terrain(loc)) {
-		preferences::encountered_terrains().insert(ut);
-	}
-}
 
 void handle_deprecated_message(const config& cfg)
 {
@@ -1728,18 +1680,8 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	 * easier to do this as wanted by the author in WML.
 	 */
 
-	gamemap *game_map = resources::game_map;
-
+	const gamemap * game_map = resources::game_map;
 	gamemap map(*game_map);
-
-	/* Remember the locations where a village is owned by a side. */
-	std::map<map_location, int> villages;
-	FOREACH(const AUTO& village, map.villages()) {
-		const int owner = village_owner(village);
-		if(owner != -1) {
-			villages[village] = owner;
-		}
-	}
 
 	try {
 		if (cfg["map"].empty()) {
@@ -1748,7 +1690,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 		}
 		else map.read(cfg["map"], false);
 	} catch(incorrect_map_format_error&) {
-		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << "\n";
+		lg::wml_error << "replace_map: Unable to load map " << cfg["map"] << std::endl;
 		return;
 	} catch(twml_exception& e) {
 		e.show(*resources::screen);
@@ -1757,38 +1699,24 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
 		if (!cfg["expand"].to_bool()) {
-			lg::wml_error << "replace_map: Map dimension(s) increase but expand is not set\n";
+			lg::wml_error << "replace_map: Map dimension(s) increase but expand is not set" << std::endl;
 			return;
 		}
 	}
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
 		if (!cfg["shrink"].to_bool()) {
-			lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set\n";
+			lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set" << std::endl;
 			return;
 		}
-		unit_map *units = resources::units;
-		unit_map::iterator itor;
-		for (itor = units->begin(); itor != units->end(); ) {
-			if (!map.on_board(itor->get_location())) {
-				if (!try_add_unit_to_recall_list(itor->get_location(), *itor)) {
-					lg::wml_error << "replace_map: Cannot add a unit that would become off-map to the recall list\n";
-				}
-				units->erase(itor++);
-			} else {
-				++itor;
-			}
-		}
 	}
 
-	/* Disown villages that are no longer villages. */
-	FOREACH(const AUTO& village, villages) {
-		if(!map.is_village(village.first)) {
-			(*resources::teams)[village.second].lose_village(village.first);
-		}
+	boost::optional<std::string> errmsg = resources::gameboard->replace_map(map);
+
+	if (errmsg) {
+		lg::wml_error << *errmsg << std::endl;
 	}
 
-	*game_map = map;
 	resources::screen->reload_map();
 	context::screen_needs_rebuild(true);
 	ai::manager::raise_map_changed();
@@ -2475,7 +2403,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		return;
 	}
 	bool border = cfg["border"].to_bool();
-	resources::game_map->overlay(mask_map, cfg.get_parsed_config(), loc.x, loc.y, border);
+	resources::gameboard->overlay_map(mask_map, cfg.get_parsed_config(), loc, border);
 	context::screen_needs_rebuild(true);
 }
 
