@@ -795,35 +795,32 @@ int display::get_location_y(const map_location& loc) const
 
 map_location display::minimap_location_on(int x, int y)
 {
-	if(!view_locked_ || force) {
+	//TODO: don't return location for this,
+	// instead directly scroll to the clicked pixel position
 
-		//TODO: don't return location for this,
-		// instead directly scroll to the clicked pixel position
-
-		if (!point_in_rect(x, y, minimap_area())) {
-			return map_location();
-		}
-
-		// we transform the coordinates from minimap to the full map image
-		// probably more adjustments to do (border, minimap shift...)
-		// but the mouse and human capacity to evaluate the rectangle center
-		// is not pixel precise.
-		int px = (x - minimap_location_.x) * get_map().w()*hex_width() / minimap_location_.w;
-		int py = (y - minimap_location_.y) * get_map().h()*hex_size() / minimap_location_.h;
-
-		map_location loc = pixel_position_to_hex(px, py);
-		if (loc.x < 0)
-			loc.x = 0;
-		else if (loc.x >= get_map().w())
-			loc.x = get_map().w() - 1;
-
-		if (loc.y < 0)
-			loc.y = 0;
-		else if (loc.y >= get_map().h())
-			loc.y = get_map().h() - 1;
-
-		return loc;
+	if (!point_in_rect(x, y, minimap_area())) {
+		return map_location();
 	}
+
+	// we transform the coordinates from minimap to the full map image
+	// probably more adjustments to do (border, minimap shift...)
+	// but the mouse and human capacity to evaluate the rectangle center
+	// is not pixel precise.
+	int px = (x - minimap_location_.x) * get_map().w()*hex_width() / minimap_location_.w;
+	int py = (y - minimap_location_.y) * get_map().h()*hex_size() / minimap_location_.h;
+
+	map_location loc = pixel_position_to_hex(px, py);
+	if (loc.x < 0)
+		loc.x = 0;
+	else if (loc.x >= get_map().w())
+		loc.x = get_map().w() - 1;
+
+	if (loc.y < 0)
+		loc.y = 0;
+	else if (loc.y >= get_map().h())
+		loc.y = get_map().h() - 1;
+
+	return loc;
 }
 
 int display::screenshot(std::string filename, bool map_screenshot)
