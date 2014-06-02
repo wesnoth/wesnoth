@@ -136,7 +136,7 @@ void aspect_attacks::do_attack_analysis(
 		//std::cerr << "ANALYSIS " << cur_analysis.movements.size() << " >= " << get_attack_depth() << "\n";
 		return;
 	}
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = *resources::game_map;
 	unit_map &units_ = *resources::units;
 	std::vector<team> &teams_ = *resources::teams;
 
@@ -359,7 +359,7 @@ void aspect_attacks::do_attack_analysis(
 
 int aspect_attacks::rate_terrain(const unit& u, const map_location& loc)
 {
-	gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = *resources::game_map;
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;

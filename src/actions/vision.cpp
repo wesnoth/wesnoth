@@ -230,7 +230,7 @@ bool shroud_clearer::clear_loc(team &tm, const map_location &loc,
                                size_t &enemy_count, size_t &friend_count,
                                move_unit_spectator * spectator)
 {
-	gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	// This counts as clearing a tile for the return value if it is on the
 	// board and currently fogged under shared vision. (No need to explicitly
 	// check for shrouded since shrouded implies fogged.)

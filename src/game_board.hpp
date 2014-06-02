@@ -21,6 +21,7 @@
 #include "team.hpp"
 #include "unit_map.hpp"
 
+#include <boost/optional.hpp>
 #include <vector>
 
 class config;
@@ -28,6 +29,7 @@ class config;
 namespace events {
 	class mouse_handler;
 }
+
 
 class game_board {
 
@@ -67,6 +69,15 @@ class game_board {
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl);
 	void side_change_controller (int side_num, team::CONTROLLER ctrl, const std::string pname = "");
+
+	// Manipulator from actionwml
+
+	bool try_add_unit_to_recall_list(const map_location& loc, const unit& u);
+	boost::optional<std::string> replace_map (const gamemap & r);
+	void overlay_map (const gamemap & o, const config & cfg, map_location loc, bool border);
+
+	bool change_terrain(const map_location &loc, const t_translation::t_terrain &t,
+                    gamemap::tmerge_mode mode, bool replace_if_failed); //used only by lua
 
 	// Global accessor from unit.hpp
 

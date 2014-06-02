@@ -530,8 +530,8 @@ ai_default_recruitment_stage::~ai_default_recruitment_stage()
 
 void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 {
-	unit_map &units_ = *resources::units;
-	gamemap &map_ = *resources::game_map;
+	const unit_map &units_ = *resources::units;
+	const gamemap &map_ = *resources::game_map;
 
 	if(unit_movement_scores_.empty() == false ||
 			get_recruitment_ignore_bad_movement()) {

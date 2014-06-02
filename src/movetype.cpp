@@ -281,7 +281,7 @@ int movetype::terrain_info::data::calc_value(
 		return params_.default_value;
 	}
 	assert(resources::game_map);
-	gamemap & map = *resources::game_map;
+	const gamemap & map = *resources::game_map;
 
 	// Get a list of underlying terrains.
 	const t_translation::t_list & underlying = params_.use_move ?

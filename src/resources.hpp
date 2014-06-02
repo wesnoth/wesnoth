@@ -45,7 +45,7 @@ namespace resources
 	extern play_controller        *controller;
 	extern game_board             *gameboard;
 	extern game_data              *gamedata;
-	extern gamemap                *game_map;
+	extern const gamemap          *game_map;
 	extern LuaKernel              *lua_kernel;     // Set by game_events::manager.
 	extern persist_manager        *persist;
 	extern game_classification    *classification;

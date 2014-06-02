@@ -1288,7 +1288,12 @@ static int intf_set_terrain(lua_State *L)
 		}
 	}
 
-	game_events::change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
+	bool result = resources::gameboard->change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
+	if (result) {
+		resources::screen->recalculate_minimap();
+		resources::screen->invalidate_all();
+		resources::screen->rebuild_all();
+	}
 	return 0;
 }
 
@@ -1776,7 +1781,7 @@ static int intf_find_path(lua_State *L)
 		return luaL_argerror(L, arg - 2, "invalid location");
 
 	std::vector<team> &teams = *resources::teams;
-	gamemap &map = *resources::game_map;
+	const gamemap &map = *resources::game_map;
 	int viewing_side = 0;
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;

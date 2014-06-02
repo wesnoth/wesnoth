@@ -242,7 +242,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("support_villages",support_villages_);
 		add_known_aspect("village_value",village_value_);
 		add_known_aspect("villages_per_scout",villages_per_scout_);
-		keeps_.init(*resources::game_map);
+		keeps_.init(resources::gameboard->map());
 
 	}
 
@@ -1002,7 +1002,7 @@ void keeps_cache::clear()
 }
 
 
-void keeps_cache::init(gamemap &map)
+void keeps_cache::init(const gamemap &map)
 {
 	map_ = &map;
 }
@@ -1095,7 +1095,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	map_location locs[6];
 	get_adjacent_tiles(loc,locs);
 
-	gamemap& map_ = *resources::game_map;
+	const gamemap& map_ = resources::gameboard->map();
 	unit_map& units_ = *resources::units;
 
 	int res = 0;

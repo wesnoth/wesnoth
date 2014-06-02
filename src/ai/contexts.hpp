@@ -115,9 +115,9 @@ public:
 	void handle_generic_event(const std::string& event_name);
 	void clear();
 	const std::set<map_location>& get();
-	void init(gamemap &map);
+	void init(const gamemap &map);
 private:
-	gamemap *map_;
+	const gamemap *map_;
 	std::set<map_location> keeps_;
 };
 
