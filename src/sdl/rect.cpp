@@ -14,7 +14,7 @@
 
 #include "sdl/rect.hpp"
 #include "sdl/alpha.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 namespace sdl
 {

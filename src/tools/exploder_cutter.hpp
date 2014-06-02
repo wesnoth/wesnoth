@@ -15,9 +15,8 @@
 #ifndef EXPLODER_CUTTER_HPP_INCLUDED
 #define EXPLODER_CUTTER_HPP_INCLUDED
 
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 #include "../config.hpp"
-#include "../sdl_utils.hpp"
 #include "exploder_utils.hpp"
 
 class cutter

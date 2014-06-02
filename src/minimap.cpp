@@ -21,7 +21,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "map.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include "team.hpp"
 #include "wml_exception.hpp"

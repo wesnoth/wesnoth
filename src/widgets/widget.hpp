@@ -16,7 +16,7 @@
 #define WIDGET_HPP_INCLUDED
 
 #include "../events.hpp"
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 
 class CVideo;
 

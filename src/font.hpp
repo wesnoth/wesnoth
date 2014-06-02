@@ -16,7 +16,7 @@
 
 #include "exceptions.hpp"
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include <SDL_ttf.h>
 

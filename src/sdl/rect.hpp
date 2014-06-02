@@ -21,7 +21,7 @@
  */
 
 #include <SDL_version.h>
-#include <sdl_utils.hpp>
+#include "utils.hpp"
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 #include <SDL_rect.h>

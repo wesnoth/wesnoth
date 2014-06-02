@@ -19,7 +19,7 @@
 
 #include "global.hpp"
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 #include "sdl/alpha.hpp"
 #include "sdl/rect.hpp"
 

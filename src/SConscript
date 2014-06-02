@@ -151,7 +151,7 @@ libcampaignd_sources = Split("""
 libcampaignd = env.Library("campaignd", libcampaignd_sources, OBJPREFIX = "campaignd_")
 
 libwesnoth_sdl_sources = Split("""
-    sdl_utils.cpp
+    sdl/utils.cpp
     sdl/alpha.cpp
     sdl/exception.cpp
     sdl/rect.cpp
@@ -639,7 +639,7 @@ wesmage_sources = Split("""
     wesmage/options.cpp
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
-    sdl_utils.cpp
+    sdl/utils.cpp
     sdl/alpha.cpp
     sdl/window.cpp
     tracer.cpp
@@ -686,7 +686,7 @@ create_images_sources = Split("""
     tests/create_images.cpp
     tools/dummy_video.cpp
     tools/exploder_utils.cpp
-    sdl_utils.cpp
+    sdl/utils.cpp
     sdl/alpha.cpp
     sdl/window.cpp
     tracer.cpp

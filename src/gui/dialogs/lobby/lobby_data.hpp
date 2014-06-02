@@ -15,7 +15,7 @@
 #ifndef INC_LOBBY_DATA
 #define INC_LOBBY_DATA
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include <set>
 #include <deque>

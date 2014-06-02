@@ -24,7 +24,7 @@
 #include <utility>
 #include <vector>
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 class config;
 class vconfig;

@@ -19,7 +19,7 @@
 #include <boost/bind.hpp>
 
 #include "sdl/rect.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 #include "widgets/drop_target.hpp"
 
 BOOST_AUTO_TEST_SUITE( test_drop_target )
