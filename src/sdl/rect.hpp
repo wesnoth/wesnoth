@@ -17,7 +17,7 @@
 
 /**
  * @file
- * Constains the SDL_Rect helper code.
+ * Contains the SDL_Rect helper code.
  */
 
 #include <SDL_version.h>
