@@ -66,9 +66,9 @@ dialog_textbox::~dialog_textbox()
 dialog::dimension_measurements::dimension_measurements() :
 	x(-1),
 	y(-1),
-	interior(empty_rect),
-	message(empty_rect),
-	textbox(empty_rect),
+	interior(sdl::empty_rect),
+	message(sdl::empty_rect),
+	textbox(sdl::empty_rect),
 	menu_width(0),
 	panes(),
 	label_x(-1),
@@ -288,7 +288,7 @@ int dialog::show()
 	}
 
 	LOG_DP << "showing dialog '" << title_ << "' '" << message_->get_text() << "'\n";
-	if(dim_.interior == empty_rect) { layout(); }
+	if(dim_.interior == sdl::empty_rect) { layout(); }
 
 	//create the event context, remember to instruct any passed-in widgets to join it
 	const events::event_context dialog_events_context;
@@ -771,7 +771,7 @@ int dialog::process(dialog_process_info &info)
 
 	//left-clicking outside of a drop-down or context-menu should close it
 	if (info.new_left_button && !info.left_button) {
-		if (standard_buttons_.empty() && !point_in_rect(mousex,mousey, menu_->location())) {
+		if (standard_buttons_.empty() && !sdl::point_in_rect(mousex,mousey, menu_->location())) {
 			if (use_menu)
 				sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;
@@ -783,7 +783,7 @@ int dialog::process(dialog_process_info &info)
 	//      but that may be changed to allow right-click selection instead.
 	if (info.new_right_button && !info.right_button) {
 		if( standard_buttons_.empty()
-		|| (!point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
+		|| (!sdl::point_in_rect(mousex,mousey,get_frame().get_layout().exterior)
 		&& type_ != YES_NO && !(type_ == OK_ONLY && has_input))) {
 			sound::play_UI_sound(game_config::sounds::button_press);
 			return CLOSE_DIALOG;

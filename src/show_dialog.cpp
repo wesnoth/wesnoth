@@ -104,7 +104,7 @@ dialog_frame::~dialog_frame()
 }
 
 dialog_frame::dimension_measurements::dimension_measurements() :
-	interior(empty_rect), exterior(empty_rect), title(empty_rect), button_row(empty_rect)
+	interior(sdl::empty_rect), exterior(sdl::empty_rect), title(sdl::empty_rect), button_row(sdl::empty_rect)
 {}
 
 dialog_frame::dimension_measurements dialog_frame::layout(SDL_Rect const& rect) {

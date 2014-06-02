@@ -231,7 +231,7 @@ void part_ui::prepare_floating_images()
 
 void part_ui::render_background()
 {
-	draw_solid_tinted_rectangle(
+	sdl::draw_solid_tinted_rectangle(
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 		video_.getSurface()
 	);
@@ -321,7 +321,7 @@ void part_ui::render_title_box()
 		break; // already set before
 	}
 
-	draw_solid_tinted_rectangle(
+	sdl::draw_solid_tinted_rectangle(
 		base_rect_.x + titlebox_x - titleshadow_padding,
 		base_rect_.y + titlebox_y - titleshadow_padding,
 		titlebox_w + 2*titleshadow_padding,
@@ -467,7 +467,7 @@ void part_ui::render_story_box()
 		blur_area(video_, fix_text_y, fix_text_h);
 #endif
 
-		draw_solid_tinted_rectangle(
+		sdl::draw_solid_tinted_rectangle(
 			0, fix_text_y, screen_area().w, fix_text_h,
 			storyshadow_r, storyshadow_g, storyshadow_b,
 			storyshadow_opacity,
@@ -516,7 +516,7 @@ void part_ui::render_story_box()
 		}
 	}
 
-	draw_solid_tinted_rectangle(
+	sdl::draw_solid_tinted_rectangle(
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0,
 		1.0, video_.getSurface()
 	);

@@ -21,6 +21,7 @@
  */
 
 #include <SDL_version.h>
+#include <sdl_utils.hpp>
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 #include <SDL_rect.h>
@@ -28,8 +29,12 @@
 #include <SDL_video.h>
 #endif
 
+
+
 namespace sdl
 {
+
+extern const SDL_Rect empty_rect;
 
 /**
  * Creates an empty SDL_Rect.
@@ -39,6 +44,21 @@ namespace sdl
  */
 SDL_Rect create_rect(const int x, const int y, const int w, const int h);
 
+bool point_in_rect(int x, int y, const SDL_Rect& rect);
+bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
+SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
+SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
+
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target);
+
+void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface tg);
+
+void draw_solid_tinted_rectangle(int x, int y, int w, int h,
+								 int r, int g, int b,
+								 double alpha, surface target);
 } // namespace sdl
+
+bool operator==(const SDL_Rect& a, const SDL_Rect& b);
+bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 
 #endif

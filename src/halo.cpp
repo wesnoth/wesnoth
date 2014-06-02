@@ -105,7 +105,7 @@ effect::effect(int xpos, int ypos, const animated<image::locator>::anim_descript
 	y_(ypos),
 	surf_(NULL),
 	buffer_(NULL),
-	rect_(empty_rect),
+	rect_(sdl::empty_rect),
 	loc_(loc),
 	overlayed_hexes_()
 {
@@ -184,7 +184,7 @@ bool effect::render()
 		}
 	}
 
-	if(rects_overlap(rect,clip_rect) == false) {
+	if(sdl::rects_overlap(rect,clip_rect) == false) {
 		buffer_.assign(NULL);
 		return false;
 	}

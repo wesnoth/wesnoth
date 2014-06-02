@@ -193,7 +193,7 @@ void slider::set_slider_position(int x)
 void slider::mouse_motion(const SDL_MouseMotionEvent& event)
 {
 	if (state_ == NORMAL || state_ == ACTIVE) {
-		bool on = point_in_rect(event.x, event.y, location());
+		bool on = sdl::point_in_rect(event.x, event.y, location());
 		state_ = on ? ACTIVE : NORMAL;
 	} else if (state_ == CLICKED || state_ == DRAGGED) {
 		state_ = DRAGGED;
@@ -212,7 +212,7 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 {
 	bool prev_change = value_change_;
 
-	if (!point_in_rect(event.x, event.y, location()))
+	if (!sdl::point_in_rect(event.x, event.y, location()))
 		return;
 
 #if !SDL_VERSION_ATLEAST(2,0,0)
@@ -242,7 +242,7 @@ void slider::mouse_down(const SDL_MouseButtonEvent& event)
 		return;
 
 	state_ = CLICKED;
-	if (point_in_rect(event.x, event.y, slider_area())) {
+	if (sdl::point_in_rect(event.x, event.y, slider_area())) {
 		sound::play_UI_sound(game_config::sounds::button_press);
 	} else {
 		value_change_ = false;
@@ -262,7 +262,7 @@ void slider::mouse_wheel(const SDL_MouseWheelEvent& event) {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
 
-	if (!point_in_rect(x, y, location()))
+	if (!sdl::point_in_rect(x, y, location()))
 		return;
 
 	if (event.y > 0 || event.x > 0) {
@@ -322,7 +322,7 @@ void slider::handle_event(const SDL_Event& event)
 	switch(event.type) {
 	case SDL_MOUSEBUTTONUP:
 		if (!mouse_locked()) {
-			bool on = point_in_rect(event.button.x, event.button.y, slider_area());
+			bool on = sdl::point_in_rect(event.button.x, event.button.y, slider_area());
 			state_ = on ? ACTIVE : NORMAL;
 		}
 		break;

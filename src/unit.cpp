@@ -1989,7 +1989,7 @@ void unit::redraw_unit()
 	if (draw_bars) {
 		const int d = disp.hex_size();
 		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, d, d);
-		draw_bars = rects_overlap(unit_rect, disp.map_outside_area());
+		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
 
 	surface ellipse_front(NULL);

@@ -1135,7 +1135,7 @@ SDL_Rect get_floating_label_rect(int handle)
 		}
 	}
 
-	return empty_rect;
+	return sdl::empty_rect;
 }
 
 floating_label_context::floating_label_context()

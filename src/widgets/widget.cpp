@@ -198,7 +198,7 @@ void widget::set_clip_rect(const SDL_Rect& rect)
 bool widget::hidden() const
 {
 	return (state_ == HIDDEN || hidden_override_ || state_ == UNINIT
-		|| (clip_ && !rects_overlap(clip_rect_, rect_)));
+		|| (clip_ && !sdl::rects_overlap(clip_rect_, rect_)));
 }
 
 void widget::enable(bool new_val)
@@ -323,7 +323,7 @@ void widget::set_tooltip_string(const std::string& str)
 
 void widget::process_help_string(int mousex, int mousey)
 {
-	if (!hidden() && point_in_rect(mousex, mousey, rect_)) {
+	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if(help_string_ == 0 && help_text_ != "") {
 			//std::cerr << "setting help string to '" << help_text_ << "'\n";
 			help_string_ = video().set_help_string(help_text_);
@@ -336,7 +336,7 @@ void widget::process_help_string(int mousex, int mousey)
 
 void widget::process_tooltip_string(int mousex, int mousey)
 {
-	if (!hidden() && point_in_rect(mousex, mousey, rect_)) {
+	if (!hidden() && sdl::point_in_rect(mousex, mousey, rect_)) {
 		if (!tooltip_text_.empty())
 			tooltips::add_tooltip(rect_, tooltip_text_ );
 	}

@@ -18,6 +18,7 @@
 #include "gui/widgets/window.hpp"
 #include "gui/auxiliary/event/message.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "sdl/rect.hpp"
 
 namespace gui2
 {
@@ -451,11 +452,11 @@ SDL_Rect twidget::get_dirty_rectangle() const
 
 void twidget::set_visible_rectangle(const SDL_Rect& rectangle)
 {
-	clipping_rectangle_ = intersect_rects(rectangle, get_rectangle());
+	clipping_rectangle_ = sdl::intersect_rects(rectangle, get_rectangle());
 
 	if(clipping_rectangle_ == get_rectangle()) {
 		redraw_action_ = tredraw_action::full;
-	} else if(clipping_rectangle_ == empty_rect) {
+	} else if(clipping_rectangle_ == sdl::empty_rect) {
 		redraw_action_ = tredraw_action::none;
 	} else {
 		redraw_action_ = tredraw_action::partly;
@@ -531,7 +532,7 @@ void twidget::draw_debug_border(surface& frame_buffer)
 			/* DO NOTHING */
 			break;
 		case 1:
-			draw_rectangle(
+			sdl::draw_rectangle(
 					r.x, r.y, r.w, r.h, debug_border_colour_, frame_buffer);
 			break;
 
@@ -557,7 +558,7 @@ twidget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 			break;
 
 		case 1:
-			draw_rectangle(
+			sdl::draw_rectangle(
 					r.x, r.y, r.w, r.h, debug_border_colour_, frame_buffer);
 			break;
 

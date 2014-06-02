@@ -396,11 +396,11 @@ void gamebrowser::handle_event(const SDL_Event& event)
 		}
 		const SDL_Rect& loc = inner_location();
 
-		if(!games_.empty() && point_in_rect(x, y, loc)) {
+		if(!games_.empty() && sdl::point_in_rect(x, y, loc)) {
 			for(size_t i = visible_range_.first; i != visible_range_.second; ++i) {
 				const SDL_Rect& item_rect = get_item_rect(i);
 
-				if(point_in_rect(x, y, item_rect)) {
+				if(sdl::point_in_rect(x, y, item_rect)) {
 					set_focus(true);
 					selected_ = i;
 					break;

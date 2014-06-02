@@ -152,7 +152,7 @@ display::display(unit_map* units, CVideo& video, const gamemap* map, const std::
 	zoom_(DefaultZoom),
 	builder_(new terrain_builder(level, map, theme_.border().tile_image)),
 	minimap_(NULL),
-	minimap_location_(empty_rect),
+	minimap_location_(sdl::empty_rect),
 	redrawMinimap_(false),
 	redraw_background_(true),
 	invalidateAll_(true),
@@ -650,7 +650,7 @@ bool display::outside_area(const SDL_Rect& area, const int x, const int y) const
 const map_location display::hex_clicked_on(int xclick, int yclick) const
 {
 	const SDL_Rect& rect = map_area();
-	if(point_in_rect(xclick,yclick,rect) == false) {
+	if(sdl::point_in_rect(xclick,yclick,rect) == false) {
 		return map_location();
 	}
 
@@ -798,7 +798,7 @@ map_location display::minimap_location_on(int x, int y)
 	//TODO: don't return location for this,
 	// instead directly scroll to the clicked pixel position
 
-	if (!point_in_rect(x, y, minimap_area())) {
+	if (!sdl::point_in_rect(x, y, minimap_area())) {
 		return map_location();
 	}
 
@@ -930,7 +930,7 @@ void display::create_buttons()
 		if (!i->tooltip().empty()){
 			s.set_tooltip_string(i->tooltip());
 		}
-		if(rects_overlap(s.location(),map_outside_area())) {
+		if(sdl::rects_overlap(s.location(),map_outside_area())) {
 			s.set_volatile(true);
 		}
 
@@ -960,7 +960,7 @@ void display::create_buttons()
 		if (!i->tooltip().empty()){
 			b.set_tooltip_string(i->tooltip());
 		}
-		if(rects_overlap(b.location(),map_outside_area())) {
+		if(sdl::rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);
 		}
 
@@ -982,7 +982,7 @@ void display::create_buttons()
 		if (!i->tooltip(0).empty()){
 			b.set_tooltip_string(i->tooltip(0));
 		}
-		if(rects_overlap(b.location(),map_outside_area())) {
+		if(sdl::rects_overlap(b.location(),map_outside_area())) {
 			b.set_volatile(true);
 		}
 
@@ -1345,7 +1345,7 @@ void display::flip()
 		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
 		const Uint32 color =  SDL_MapRGBA(video().getSurface()->format,0,0,0,255);
 		// Adjust the alpha if you want to balance cpu-cost / smooth sunset
-		fill_rect_alpha(r, color, 1, frameBuffer);
+		sdl::fill_rect_alpha(r, color, 1, frameBuffer);
 		update_rect(r);
 	}
 
@@ -1555,7 +1555,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 
 	SDL_Rect image_rect = sdl::create_rect(x, y, image->w, image->h);
 	SDL_Rect clip_rect = map_area();
-	if (!rects_overlap(image_rect, clip_rect))
+	if (!sdl::rects_overlap(image_rect, clip_rect))
 		return;
 
 	surface surf(image);
@@ -1898,7 +1898,7 @@ void display::draw_minimap()
 	int view_h = static_cast<int>(map_out_rect.h * yscaling);
 
 	const Uint32 box_color = SDL_MapRGB(minimap_->format,0xFF,0xFF,0xFF);
-	draw_rectangle(minimap_location_.x + view_x - 1,
+	sdl::draw_rectangle(minimap_location_.x + view_x - 1,
                    minimap_location_.y + view_y - 1,
                    view_w + 2, view_h + 2,
                    box_color, screen);
@@ -1984,7 +1984,7 @@ bool display::scroll(int xmove, int ymove, bool force)
 	SDL_Rect dstrect = map_area();
 	dstrect.x += dx;
 	dstrect.y += dy;
-	dstrect = intersect_rects(dstrect, map_area());
+	dstrect = sdl::intersect_rects(dstrect, map_area());
 
 	SDL_Rect srcrect = dstrect;
 	srcrect.x -= dx;
@@ -2541,7 +2541,7 @@ void display::draw_invalidated() {
 
 		const bool on_map = get_map().on_board(loc);
 		SDL_Rect hex_rect = sdl::create_rect(xpos, ypos, zoom_, zoom_);
-		if(!rects_overlap(hex_rect,clip_rect)) {
+		if(!sdl::rects_overlap(hex_rect,clip_rect)) {
 			continue;
 		}
 		draw_hex(loc);
@@ -3008,7 +3008,7 @@ bool display::propagate_invalidation(const std::set<map_location>& locs)
 
 bool display::invalidate_visible_locations_in_rect(const SDL_Rect& rect)
 {
-	return invalidate_locations_in_rect(intersect_rects(map_area(),rect));
+	return invalidate_locations_in_rect(sdl::intersect_rects(map_area(),rect));
 }
 
 bool display::invalidate_locations_in_rect(const SDL_Rect& rect)

@@ -34,8 +34,6 @@
 
 #include <boost/math/constants/constants.hpp>
 
-const SDL_Rect empty_rect = { 0, 0, 0, 0 };
-
 surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
 {
 	if (SDL_MUSTLOCK(surface_))
@@ -116,42 +114,6 @@ SDLKey sdl_keysym_from_name(std::string const &keyname)
 	else
 		return SDLK_UNKNOWN;
 #endif
-}
-
-bool point_in_rect(int x, int y, const SDL_Rect& rect)
-{
-	return x >= rect.x && y >= rect.y && x < rect.x + rect.w && y < rect.y + rect.h;
-}
-
-bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2)
-{
-	return (rect1.x < rect2.x+rect2.w && rect2.x < rect1.x+rect1.w &&
-			rect1.y < rect2.y+rect2.h && rect2.y < rect1.y+rect1.h);
-}
-
-SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
-{
-	SDL_Rect res;
-	res.x = std::max<int>(rect1.x, rect2.x);
-	res.y = std::max<int>(rect1.y, rect2.y);
-	int w = std::min<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
-	int h = std::min<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
-	if (w <= 0 || h <= 0) return empty_rect;
-	res.w = w;
-	res.h = h;
-	return res;
-}
-
-SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
-{
-	if (rect1.w == 0 || rect1.h == 0) return rect2;
-	if (rect2.w == 0 || rect2.h == 0) return rect1;
-	SDL_Rect res;
-	res.x = std::min<int>(rect1.x, rect2.x);
-	res.y = std::min<int>(rect1.y, rect2.y);
-	res.w = std::max<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
-	res.h = std::max<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
-	return res;
 }
 
 bool operator<(const surface& a, const surface& b)
@@ -2049,28 +2011,6 @@ void blit_surface(const surface& surf,
 	}
 }
 
-
-
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface &target)
-{
-	if(alpha == SDL_ALPHA_OPAQUE) {
-		sdl_fill_rect(target,&rect,color);
-		return;
-	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
-		return;
-	}
-
-	surface tmp(create_compatible_surface(target,rect.w,rect.h));
-	if(tmp == NULL) {
-		return;
-	}
-
-	SDL_Rect r = {0,0,rect.w,rect.h};
-	sdl_fill_rect(tmp,&r,color);
-	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
-	sdl_blit(tmp,NULL,target,&rect);
-}
-
 surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_format)
 {
 	if (src == NULL) {
@@ -2186,16 +2126,6 @@ SDL_Rect get_non_transparent_portion(const surface &surf)
 	return res;
 }
 
-bool operator==(const SDL_Rect& a, const SDL_Rect& b)
-{
-	return a.x == b.x && a.y == b.y && a.w == b.w && a.h == b.h;
-}
-
-bool operator!=(const SDL_Rect& a, const SDL_Rect& b)
-{
-	return !operator==(a,b);
-}
-
 bool operator==(const SDL_Color& a, const SDL_Color& b) {
 	return a.r == b.r && a.g == b.g && a.b == b.b;
 }
@@ -2217,7 +2147,7 @@ SDL_Color inverse(const SDL_Color& color) {
 	return inverse;
 }
 
-surface_restorer::surface_restorer() : target_(NULL), rect_(empty_rect), surface_(NULL)
+surface_restorer::surface_restorer() : target_(NULL), rect_(sdl::empty_rect), surface_(NULL)
 {
 }
 
@@ -2236,7 +2166,7 @@ void surface_restorer::restore(SDL_Rect const &dst) const
 {
 	if (surface_.null())
 		return;
-	SDL_Rect dst2 = intersect_rects(dst, rect_);
+	SDL_Rect dst2 = sdl::intersect_rects(dst, rect_);
 	if (dst2.w == 0 || dst2.h == 0)
 		return;
 	SDL_Rect src = dst2;
@@ -2266,29 +2196,6 @@ void surface_restorer::update()
 void surface_restorer::cancel()
 {
 	surface_.assign(NULL);
-}
-
-void draw_rectangle(int x, int y, int w, int h, Uint32 color,surface target)
-{
-
-	SDL_Rect top = sdl::create_rect(x, y, w, 1);
-	SDL_Rect bot = sdl::create_rect(x, y + h - 1, w, 1);
-	SDL_Rect left = sdl::create_rect(x, y, 1, h);
-	SDL_Rect right = sdl::create_rect(x + w - 1, y, 1, h);
-
-	sdl_fill_rect(target,&top,color);
-	sdl_fill_rect(target,&bot,color);
-	sdl_fill_rect(target,&left,color);
-	sdl_fill_rect(target,&right,color);
-}
-
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-                                 int r, int g, int b,
-                                 double alpha, surface target)
-{
-
-	SDL_Rect rect = sdl::create_rect(x, y, w, h);
-	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
 void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_Color& color, surface target)

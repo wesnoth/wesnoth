@@ -47,14 +47,7 @@
 #define SDL_BUTTON_WHEELRIGHT 7
 #endif
 
-extern const SDL_Rect empty_rect;
-
 SDLKey sdl_keysym_from_name(std::string const &keyname);
-
-bool point_in_rect(int x, int y, const SDL_Rect& rect);
-bool rects_overlap(const SDL_Rect& rect1, const SDL_Rect& rect2);
-SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2);
-SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
 
 
 struct surface
@@ -120,6 +113,7 @@ inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_R
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
+// and this
 inline void sdl_fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color){
 	SDL_FillRect(dst, dst_rect, color);
 }
@@ -390,12 +384,8 @@ surface create_compatible_surface(const surface &surf, int width = -1, int heigh
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface &target);
-
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
-bool operator==(const SDL_Rect& a, const SDL_Rect& b);
-bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
 SDL_Color inverse(const SDL_Color& color);
@@ -485,13 +475,6 @@ private:
 	SDL_Rect rect_;
 	const bool operate_;
 };
-
-
-void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface tg);
-
-void draw_solid_tinted_rectangle(int x, int y, int w, int h,
-                                 int r, int g, int b,
-				 double alpha, surface target);
 
 // blit the image on the center of the rectangle
 // and a add a colored background

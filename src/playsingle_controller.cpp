@@ -463,7 +463,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		throw;
 	} catch (end_level_exception &end_level_exn) {
 		if(!past_prestart) {
-			draw_solid_tinted_rectangle(
+			sdl::draw_solid_tinted_rectangle(
 				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
 				gui_->video().getSurface()
 			);

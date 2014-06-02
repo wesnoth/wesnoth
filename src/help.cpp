@@ -2895,7 +2895,7 @@ void help_text_area::draw_contents()
 			dst.y += loc.y;
 			if (it->box) {
 				for (int i = 0; i < box_width; ++i) {
-					draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
+					sdl::draw_rectangle(dst.x, dst.y, it->rect.w - i * 2, it->rect.h - i * 2,
 					                    0, screen);
 					++dst.x;
 					++dst.y;
@@ -2916,7 +2916,7 @@ void help_text_area::scroll(unsigned int)
 }
 
 bool help_text_area::item_at::operator()(const item& item) const {
-	return point_in_rect(x_, y_, item.rect);
+	return sdl::point_in_rect(x_, y_, item.rect);
 }
 
 std::string help_text_area::ref_at(const int x, const int y)
@@ -3008,7 +3008,7 @@ void help_browser::process_event()
 	SDL_GetMouseState(&mousex,&mousey);
 
 	/// Fake focus functionality for the menu, only process it if it has focus.
-	if (point_in_rect(mousex, mousey, menu_.location())) {
+	if (sdl::point_in_rect(mousex, mousey, menu_.location())) {
 		menu_.process();
 		const topic *chosen_topic = menu_.chosen_topic();
 		if (chosen_topic != NULL && chosen_topic != shown_topic_) {
