@@ -1,5 +1,5 @@
 # vi: syntax=python:et:ts=4
-from config_check_utils import *
+from config_check_utils import find_include
 from os.path import join, dirname, basename
 from glob import glob
 import re

@@ -1,6 +1,6 @@
 # vi: syntax=python:et:ts=4
 import sys, os
-from config_check_utils import *
+from config_check_utils import backup_env, restore_env
 import distutils.sysconfig
 
 def exists():
