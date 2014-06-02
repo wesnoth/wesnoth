@@ -19,7 +19,6 @@
 #include "time_of_day.hpp"
 #include "savegame_config.hpp"
 
-class game_state;
 class gamemap;
 class unit_map;
 

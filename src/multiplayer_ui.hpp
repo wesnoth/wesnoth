@@ -28,7 +28,6 @@
 class display;
 class game_display;
 class config;
-class game_state;
 
 namespace mp {
 

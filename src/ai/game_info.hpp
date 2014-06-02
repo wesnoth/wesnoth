@@ -29,7 +29,6 @@ namespace pathfind {
 #include <map>
 
 class game_display;
-class game_state;
 class gamemap;
 class unit_map;
 class team;
