@@ -779,6 +779,14 @@ config play_controller::to_config() const
 		gui_->labels().write(cfg);
 		sound::write_music_play_list(cfg);
 	}
+
+		//TODO: move id_manager handling to play_controller
+	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
+
+	
+	gamedata_.write_snapshot(cfg);
+	
+	cfg.merge_attributes(gamestate_.classification().to_config());
 	return cfg;
 }
 

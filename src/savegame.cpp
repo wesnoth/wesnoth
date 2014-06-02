@@ -1082,11 +1082,6 @@ void ingame_savegame::create_filename()
 	set_filename(stream.str());
 }
 
-void ingame_savegame::before_save()
-{
-	savegame::before_save();
-	gamestate().write_snapshot(snapshot());
-}
 
 void ingame_savegame::write_game(config_writer &out) {
 	log_scope("write_game");

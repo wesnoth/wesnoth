@@ -186,7 +186,7 @@ protected:
 	config& snapshot() { return snapshot_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
-	virtual void before_save();
+	void before_save();
 
 	/** Writing the savegame config to a file. */
 	virtual void write_game(config_writer &out);
@@ -242,8 +242,6 @@ private:
 	/** Create a filename for automatic saves */
 	virtual void create_filename();
 
-	/** Builds the snapshot config. */
-	virtual void before_save();
 
 	void write_game(config_writer &out);
 
