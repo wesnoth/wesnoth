@@ -110,6 +110,23 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
+
+#if SDL_VERSION_ATLEAST(2,0,0)
+void fill_rect(SDL_Renderer *rnd, SDL_Rect *rect, Uint8 r, Uint8 g, Uint8 b,
+			   Uint8 a)
+{
+	SDL_SetRenderDrawColor(rnd, r, g, b, a);
+	SDL_RenderFillRect(rnd, rect);
+}
+
+void draw_rect(SDL_Renderer *rnd, SDL_Rect *rect, Uint8 r, Uint8 g, Uint8 b,
+			   Uint8 a)
+{
+	SDL_SetRenderDrawColor(rnd, r, g, b, a);
+	SDL_RenderDrawRect(rnd, rect);
+}
+#endif
+
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b)
