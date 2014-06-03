@@ -188,7 +188,7 @@ void loadscreen::draw_screen(const std::string &text)
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
 		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOR,text,textarea_.x,textarea_.y);
-		SDL_Rect refresh = union_rects(oldarea, textarea_);
+		SDL_Rect refresh = sdl::union_rects(oldarea, textarea_);
 		update_rect(refresh.x, refresh.y, refresh.w, refresh.h);
 	}
 	// Update the rectangle.

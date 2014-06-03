@@ -25,6 +25,7 @@
 #include "theme.hpp"
 #include "utils/foreach.tpp"
 #include "wml_exception.hpp"
+#include "sdl/rect.hpp"
 
 static lg::log_domain log_display("display");
 #define DBG_DP LOG_STREAM(debug, log_display)
@@ -278,9 +279,9 @@ static void do_resolve_rects(const config& cfg, config& resolved_config, config*
 theme::object::object() :
 	location_modified_(false),
 	id_(),
-	loc_(empty_rect),
-	relative_loc_(empty_rect),
-	last_screen_(empty_rect),
+	loc_(sdl::empty_rect),
+	relative_loc_(sdl::empty_rect),
+	last_screen_(sdl::empty_rect),
 	xanchor_(object::FIXED),
 	yanchor_(object::FIXED)
 {
@@ -288,7 +289,7 @@ theme::object::object() :
 
 theme::object::object(const config& cfg) :
 		location_modified_(false), id_(cfg["id"]), loc_(read_sdl_rect(cfg)),
-		relative_loc_(empty_rect), last_screen_(empty_rect),
+		relative_loc_(sdl::empty_rect), last_screen_(sdl::empty_rect),
 		xanchor_(read_anchor(cfg["xanchor"])), yanchor_(read_anchor(cfg["yanchor"]))
 {
 }

@@ -16,7 +16,7 @@
 
 #include "SDL.h"
 
-#include "../sdl_utils.hpp"
+#include "../sdl/utils.hpp"
 
 #include "widget.hpp"
 

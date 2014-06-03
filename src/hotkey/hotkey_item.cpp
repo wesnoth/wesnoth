@@ -20,7 +20,7 @@
 
 #include "gettext.hpp"
 #include "serialization/unicode.hpp"
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include "boost/foreach.hpp"
 #include <boost/algorithm/string/join.hpp>

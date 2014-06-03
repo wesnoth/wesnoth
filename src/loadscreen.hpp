@@ -19,7 +19,7 @@
 
 class CVideo;
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 class loadscreen {
 	public:

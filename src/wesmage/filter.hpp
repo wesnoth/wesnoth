@@ -20,7 +20,7 @@
 #ifndef WESMAGE_FILTER_HPP_INCLUDED
 #define WESMAGE_FILTER_HPP_INCLUDED
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include <string>
 #include <vector>

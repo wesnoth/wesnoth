@@ -48,7 +48,7 @@ namespace {
 		user_menu_style() : gui::menu::imgsel_style("dialogs/selection", false,
 										   0x000000, 0x4a4440, 0x999999,
 										   0.0, 0.2, 0.2),
-										   item_size_(empty_rect)
+										   item_size_(sdl::empty_rect)
 		{}
 		virtual void init();
 		virtual SDL_Rect item_size(const std::string& /*item*/) const { return item_size_; }

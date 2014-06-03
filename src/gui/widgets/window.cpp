@@ -762,7 +762,7 @@ void twindow::draw()
 					const Uint32 color
 							= SDL_MapRGBA(frame_buffer->format, 0, 0, 0, 255);
 
-					fill_rect_alpha(r, color, 1, frame_buffer);
+					sdl::fill_rect_alpha(r, color, 1, frame_buffer);
 					update_rect(r);
 				}
 			}

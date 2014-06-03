@@ -447,7 +447,7 @@ void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool br
 bool mouse_handler::right_click_show_menu(int x, int y, const bool /*browse*/)
 {
 	return ( selected_hex_.valid() ? false :
-			point_in_rect(x, y, gui().map_area()) );
+			sdl::point_in_rect(x, y, gui().map_area()) );
 }
 
 void mouse_handler::left_mouse_up(int /*x*/, int /*y*/, const bool /*browse*/)

@@ -24,7 +24,7 @@
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
 
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 
 #include <boost/noncopyable.hpp>
 
@@ -109,7 +109,7 @@ public:
 	 *
 	 * This is a wrapper for @ref SDL_SetWindowTitle.
 	 *
-	 * @param title               The new title for the window.
+	 * @param title               The new title for the window.
 	 */
 	void set_title(const std::string& title);
 
@@ -121,7 +121,7 @@ public:
 	 * @note The @p icon is a @ref SDL_Surface and not a @ref SDL_Texture, this
 	 * is part of the SDL 2 API.
 	 *
-	 * @param icon                The new icon for the window.
+	 * @param icon                The new icon for the window.
 	 */
 	void set_icon(const surface& icon);
 

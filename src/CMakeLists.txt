@@ -363,6 +363,7 @@ set(wesnoth-sdl_SRC
 	sdl/rect.cpp
 	sdl/texture.cpp
 	sdl/window.cpp
+	sdl/utils.cpp
 )
 
 add_library(wesnoth-sdl
@@ -948,7 +949,6 @@ set(libwesnoth-game_STAT_SRC
 	race.cpp
 	random.cpp
 	reports.cpp
-	sdl_utils.cpp
 	show_dialog.cpp
 	simple_rng.cpp
 	sound.cpp
@@ -1127,7 +1127,7 @@ set(exploder_SRC
 	tools/exploder_cutter.cpp
 	tools/exploder_composer.cpp
 	tools/dummy_video.cpp
-	sdl_utils.cpp
+	sdl/utils.cpp
 	tracer.cpp
 	loadscreen_empty.cpp
 )
@@ -1143,7 +1143,7 @@ set(cutter_SRC
 	tools/exploder_utils.cpp
 	tools/exploder_cutter.cpp
 	tools/dummy_video.cpp
-	sdl_utils.cpp
+	sdl/utils.cpp
 	tracer.cpp
 	loadscreen_empty.cpp
 )
@@ -1194,7 +1194,7 @@ set(wesmage_SRC
 	wesmage/options.cpp
 	tools/dummy_video.cpp
 	tools/exploder_utils.cpp
-	sdl_utils.cpp
+	sdl/utils.cpp
 	tracer.cpp
 	loadscreen_empty.cpp
 )
@@ -1330,7 +1330,7 @@ if(ENABLE_TESTS)
 			tests/create_images.cpp
 			tools/dummy_video.cpp
 			tools/exploder_utils.cpp
-			sdl_utils.cpp
+			sdl/utils.cpp
 			tracer.cpp
 			loadscreen_empty.cpp
 		)

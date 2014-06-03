@@ -183,7 +183,7 @@ void textbox::draw_contents()
 	SDL_Rect const &loc = inner_location();
 
 	surface surf = video().getSurface();
-	draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
+	sdl::draw_solid_tinted_rectangle(loc.x,loc.y,loc.w,loc.h,0,0,0,
 				    focus(NULL) ? alpha_focus_ : alpha_, surf);
 
 	SDL_Rect src;
@@ -224,7 +224,7 @@ void textbox::draw_contents()
 				const clip_rect_setter clipper(surf, &loc);
 
 				Uint32 color = SDL_MapRGB(surf->format, 0, 0, 160);
-				fill_rect_alpha(rect, color, 140, surf);
+				sdl::fill_rect_alpha(rect, color, 140, surf);
 
 				starty += int(line_height_);
 				startx = 0;
@@ -466,7 +466,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	SDL_Rect const &loc = inner_location();
 	bool clicked_inside = !mouse_locked() && (event.type == SDL_MOUSEBUTTONDOWN
 					   && (mousebuttons & SDL_BUTTON(1))
-					   && point_in_rect(mousex, mousey, loc));
+					   && sdl::point_in_rect(mousex, mousey, loc));
 	if(clicked_inside) {
 		set_focus(true);
 	}
@@ -509,7 +509,7 @@ void textbox::handle_event(const SDL_Event& event, bool was_forwarded)
 	//if we don't have the focus, then see if we gain the focus,
 	//otherwise return
 	if(!was_forwarded && focus(&event) == false) {
-		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && point_in_rect(mousex, mousey, loc))
+		if (!mouse_locked() && event.type == SDL_MOUSEMOTION && sdl::point_in_rect(mousex, mousey, loc))
 			events::focus_handler(this);
 
 		return;

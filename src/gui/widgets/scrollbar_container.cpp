@@ -23,6 +23,7 @@
 #include "gui/widgets/spacer.hpp"
 #include "gui/widgets/window.hpp"
 #include "utils/foreach.tpp"
+#include "sdl/rect.hpp"
 
 #include <boost/bind.hpp>
 
@@ -416,7 +417,7 @@ void tscrollbar_container::set_visible_rectangle(const SDL_Rect& rectangle)
 
 	// Now get the visible part of the content.
 	content_visible_area_
-			= intersect_rects(rectangle, content_->get_rectangle());
+			= sdl::intersect_rects(rectangle, content_->get_rectangle());
 
 	content_grid_->set_visible_rectangle(content_visible_area_);
 }

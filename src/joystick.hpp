@@ -13,7 +13,7 @@
 */
 
 #include <vector>
-#include "sdl_utils.hpp"
+#include "sdl/utils.hpp"
 #include "map.hpp"
 
 #ifndef JOYSTICK_HPP_

@@ -127,7 +127,7 @@ void clear_tooltips()
 void clear_tooltips(const SDL_Rect& rect)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ) {
-		if(rects_overlap(i->rect,rect)) {
+		if(sdl::rects_overlap(i->rect,rect)) {
 			if (i==current_tooltip) {
 				clear_tooltip();
 			}
@@ -142,7 +142,7 @@ void clear_tooltips(const SDL_Rect& rect)
 void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action, bool use_markup)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
-		if(rects_overlap(i->rect,rect)) {
+		if(sdl::rects_overlap(i->rect,rect)) {
 			*i = tooltip(rect, message, action, use_markup);
 			return;
 		}
@@ -173,7 +173,7 @@ void process(int mousex, int mousey)
 bool click(int mousex, int mousey)
 {
 	BOOST_FOREACH(tooltip tip, tips) {
-		if(!tip.action.empty() && point_in_rect(mousex, mousey, tip.rect)) {
+		if(!tip.action.empty() && sdl::point_in_rect(mousex, mousey, tip.rect)) {
 			display* disp = resources::screen;
 			help::show_help(*disp, tip.action);
 			return true;

@@ -851,7 +851,7 @@ void menu::style::draw_row_bg(menu& menu_ref, const size_t /*row_index*/, const 
 		break;
 	}
 
-	draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
+	sdl::draw_solid_tinted_rectangle(rect.x, rect.y, rect.w, rect.h,
 				    (rgb&0xff0000) >> 16,(rgb&0xff00) >> 8,rgb&0xff,alpha,
 				    menu_ref.video().getSurface());
 }
@@ -936,9 +936,9 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 			xpos -= widths[i];
 		if(type == HEADING_ROW) {
 			if(highlight_heading_ == int(i)) {
-				draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
+				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.3,video().getSurface());
 			} else if(sortby_ == int(i)) {
-				draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.1,video().getSurface());
+				sdl::draw_solid_tinted_rectangle(xpos,rect.y,widths[i],rect.h,255,255,255,0.1,video().getSurface());
 			}
 		}
 
@@ -1124,7 +1124,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	unsigned int first_item_on_screen = get_position();
 	if (item < first_item_on_screen ||
 	    item >= first_item_on_screen + max_items_onscreen()) {
-		return empty_rect;
+		return sdl::empty_rect;
 	}
 
 	const std::map<int,SDL_Rect>::const_iterator i = itemRects_.find(item);
@@ -1144,13 +1144,13 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 	SDL_Rect const &screen_area = ::screen_area();
 
 	if(res.x > screen_area.w) {
-		return empty_rect;
+		return sdl::empty_rect;
 	} else if(res.x + res.w > screen_area.w) {
 		res.w = screen_area.w - res.x;
 	}
 
 	if(res.y > screen_area.h) {
-		return empty_rect;
+		return sdl::empty_rect;
 	} else if(res.y + res.h > screen_area.h) {
 		res.h = screen_area.h - res.y;
 	}
