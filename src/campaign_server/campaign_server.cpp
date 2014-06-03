@@ -482,7 +482,9 @@ namespace {
 					}
 					else if (config &upload = data.child("upload"))
 					{
-						LOG_CS << "uploading campaign '" << upload["name"] << "' from " << network::ip_address(sock) << ".\n";
+						const std::string& addr = network::ip_address(sock);
+
+						LOG_CS << "uploading campaign '" << upload["name"] << "' from " << addr << ".\n";
 						config &data = upload.child("data");
 						const std::string& name = upload["name"];
 						std::string lc_name(name.size(), ' ');
@@ -560,7 +562,7 @@ namespace {
 							(*campaign)["icon"] = upload["icon"];
 							(*campaign)["translate"] = upload["translate"];
 							(*campaign)["dependencies"] = upload["dependencies"];
-							(*campaign)["upload_ip"] = network::ip_address(sock);
+							(*campaign)["upload_ip"] = addr;
 							(*campaign)["type"] = upload["type"];
 							(*campaign)["email"] = upload["email"];
 
