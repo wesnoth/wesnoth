@@ -40,6 +40,7 @@ static lg::log_domain log_whiteboard("whiteboard");
 #include "game_display.hpp"
 
 class arrow;
+class game_board;
 struct map_location; //not used in the typedefs, saves a few forward declarations
 class unit;
 class unit_map; //not used in the typedefs, saves a few forward declarations

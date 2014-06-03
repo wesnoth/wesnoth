@@ -23,6 +23,7 @@
 #include "side_actions.hpp"
 #include "utility.hpp"
 
+#include "game_board.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"

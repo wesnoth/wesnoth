@@ -26,6 +26,8 @@
 
 struct unit_movement_resetter;
 
+struct temporary_unit_remover;
+
 namespace wb
 {
 
