@@ -108,7 +108,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	labels_manager_(),
 	help_manager_(&game_config),
 	mouse_handler_(NULL, gameboard_),
-	menu_handler_(NULL, gameboard_.units_, gameboard_.teams_, level, gameboard_.map_, game_config, state_of_game),
+	menu_handler_(NULL, gameboard_.units_, gameboard_.teams_, level, *gameboard_.map_, game_config, state_of_game),
 	soundsources_manager_(),
 	tod_manager_(level),
 	pathfind_manager_(),
@@ -143,7 +143,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::controller = this;
 	resources::gameboard = &gameboard_;
 	resources::gamedata = &gamedata_;
-	resources::game_map = &gameboard_.map_;
+	resources::game_map = &gameboard_.map();
 	resources::persist = &persist_;
 	resources::teams = &gameboard_.teams_;
 	resources::tod_manager = &tod_manager_;
@@ -229,7 +229,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
+			save_id, gameboard_.teams_, level_, *gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -259,7 +259,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gameboard_.units_, video, gameboard_.map_, tod_manager_, gameboard_.teams_, theme_cfg, level_));
+	gui_.reset(new game_display(gameboard_.units_, video, *gameboard_.map_, tod_manager_, gameboard_.teams_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (gamestate_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -368,14 +368,14 @@ void play_controller::place_sides_in_preferred_locations()
 {
 	std::vector<placing_info> placings;
 
-	int num_pos = gameboard_.map_.num_valid_starting_positions();
+	int num_pos = gameboard_.map().num_valid_starting_positions();
 
 	int side_num = 1;
 	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
-			const map_location& pos = gameboard_.map_.starting_position(p);
-			int score = placing_score(side, gameboard_.map_, pos);
+			const map_location& pos = gameboard_.map().starting_position(p);
+			int score = placing_score(side, gameboard_.map(), pos);
 			placing_info obj;
 			obj.side = side_num;
 			obj.score = score;
@@ -393,7 +393,7 @@ void play_controller::place_sides_in_preferred_locations()
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			gameboard_.map_.set_starting_position(i->side,i->pos);
+			gameboard_.map_->set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}
