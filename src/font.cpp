@@ -982,7 +982,7 @@ surface floating_label::create_surface()
 			}
 
 			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
-			sdl::sdl_fill_rect(background,NULL, color);
+			sdl::fill_rect(background,NULL, color);
 
 			// we make the text less transparent, because the blitting on the
 			// dark background will darken the anti-aliased part.
@@ -1003,7 +1003,7 @@ surface floating_label::create_surface()
 			// background is blurred shadow of the text
 			surface background = create_neutral_surface
 				(foreground->w + 4, foreground->h + 4);
-			sdl::sdl_fill_rect(background, NULL, 0);
+			sdl::fill_rect(background, NULL, 0);
 			SDL_Rect r = { 2, 2, 0, 0 };
 			blit_surface(foreground, NULL, background, &r);
 			background = shadow_image(background, false);

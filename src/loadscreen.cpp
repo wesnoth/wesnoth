@@ -148,42 +148,42 @@ void loadscreen::draw_screen(const std::string &text)
 	// Draw top border.
 	area.x = pbx; area.y = pby;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	sdl::sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw bottom border.
 	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
 	area.w = pbw + 2*(bw+bispw); area.h = bw;
-	sdl::sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw left border.
 	area.x = pbx; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	sdl::sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw right border.
 	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
 	area.w = bw; area.h = pbh + 2*bispw;
-	sdl::sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,bcr,bcg,bcb));
 	// Draw the finished bar area.
 	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
 	area.w = (prcnt_ * pbw) / 100; area.h = pbh;
-	sdl::sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,fcr,fcg,fcb));
 
 	SDL_Rect lightning = area;
 	lightning.h = lightning_thickness;
 	//we add 25% of white to the color of the bar to simulate a light effect
-	sdl::sdl_fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
+	sdl::fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4));
 	lightning.y = area.y+area.h-lightning.h;
 	//remove 50% of color to simulate a shadow effect
-	sdl::sdl_fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,fcr/2,fcg/2,fcb/2));
+	sdl::fill_rect(gdis,&lightning,SDL_MapRGB(gdis->format,fcr/2,fcg/2,fcb/2));
 
 	// Draw the leftover bar area.
 	area.x = pbx + bw + bispw + (prcnt_ * pbw) / 100; area.y = pby + bw + bispw;
 	area.w = ((100 - prcnt_) * pbw) / 100; area.h = pbh;
-	sdl::sdl_fill_rect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
+	sdl::fill_rect(gdis,&area,SDL_MapRGB(gdis->format,lcr,lcg,lcb));
 
 	// Clear the last text and draw new if text is provided.
 	if (!text.empty())
 	{
 		SDL_Rect oldarea = textarea_;
-		sdl::sdl_fill_rect(gdis,&textarea_,SDL_MapRGB(gdis->format,0,0,0));
+		sdl::fill_rect(gdis,&textarea_,SDL_MapRGB(gdis->format,0,0,0));
 		textarea_ = font::line_size(text, font::SIZE_NORMAL);
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
@@ -203,7 +203,7 @@ void loadscreen::clear_screen()
 	SDL_Rect area = sdl::create_rect(0, 0, scrx, scry); // Screen area.
 	surface disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
-	sdl::sdl_fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
+	sdl::fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	update_whole_screen();
 	screen_.flip();
 }

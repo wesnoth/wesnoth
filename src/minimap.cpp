@@ -226,7 +226,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 					}
 					SDL_Rect fillrect = sdl::create_rect(maprect.x, maprect.y, scale * 3/4, scale);
 					const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-					sdl::sdl_fill_rect(minimap, &fillrect, mapped_col);
+					sdl::fill_rect(minimap, &fillrect, mapped_col);
 				}
 			}
 
@@ -261,7 +261,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 				);
 
 				const Uint32 mapped_col = SDL_MapRGB(minimap->format,col.r,col.g,col.b);
-				sdl::sdl_fill_rect(minimap, &fillrect, mapped_col);
+				sdl::fill_rect(minimap, &fillrect, mapped_col);
 
 			}
 

@@ -70,7 +70,7 @@ SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
-		sdl::sdl_fill_rect(target,&rect,color);
+		sdl::fill_rect(target,&rect,color);
 		return;
 	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
 		return;
@@ -82,7 +82,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface target)
 	}
 
 	SDL_Rect r = {0,0,rect.w,rect.h};
-	sdl::sdl_fill_rect(tmp,&r,color);
+	sdl::fill_rect(tmp,&r,color);
 	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
 	sdl_blit(tmp,NULL,target,&rect);
 }
@@ -95,10 +95,10 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface target)
 	SDL_Rect left = create_rect(x, y, 1, h);
 	SDL_Rect right = create_rect(x + w - 1, y, 1, h);
 
-	sdl::sdl_fill_rect(target,&top,color);
-	sdl::sdl_fill_rect(target,&bot,color);
-	sdl::sdl_fill_rect(target,&left,color);
-	sdl::sdl_fill_rect(target,&right,color);
+	sdl::fill_rect(target,&top,color);
+	sdl::fill_rect(target,&bot,color);
+	sdl::fill_rect(target,&left,color);
+	sdl::fill_rect(target,&right,color);
 }
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,

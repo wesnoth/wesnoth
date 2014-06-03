@@ -2209,7 +2209,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_C
 #endif
 	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
-	sdl::sdl_fill_rect(target, &r, col);
+	sdl::fill_rect(target, &r, col);
 
 	if (surf != NULL) {
 		r.x = rect.x + (rect.w-surf->w)/2;

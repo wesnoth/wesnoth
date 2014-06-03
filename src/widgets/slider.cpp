@@ -171,7 +171,7 @@ void slider::draw_contents()
 			, loc.w - image->w
 			, 1);
 
-	sdl::sdl_fill_rect(screen, &line_rect, SDL_MapRGB(screen->format,
+	sdl::fill_rect(screen, &line_rect, SDL_MapRGB(screen->format,
 		line_color.r, line_color.g, line_color.b));
 
 	SDL_Rect const &slider = slider_area();

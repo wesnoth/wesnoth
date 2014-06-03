@@ -479,7 +479,7 @@ void display::draw_bar(const std::string& image, int xpos, int ypos,
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = sdl::create_rect(0, 0, bar_loc.w, height-unfilled);
-		sdl::sdl_fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+		sdl::fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
 }
@@ -1955,7 +1955,7 @@ void display::draw_minimap_units()
 				, round_double(u_w)
 				, round_double(u_h));
 
-		sdl::sdl_fill_rect(video().getSurface(), &r, mapped_col);
+		sdl::fill_rect(video().getSurface(), &r, mapped_col);
 	}
 }
 
@@ -2520,7 +2520,7 @@ void display::clear_screen()
 {
 	surface disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
-	sdl::sdl_fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
+	sdl::fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }
 
 const SDL_Rect& display::get_clip_rect()
@@ -2655,7 +2655,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
-			sdl::sdl_fill_rect(bg, &bg_rect, 0xaa000000);
+			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (draw_terrain_codes_) {
 				off_y -= text->h;
@@ -2671,7 +2671,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = sdl::create_rect(0, 0, text->w, text->h);
-			sdl::sdl_fill_rect(bg, &bg_rect, 0xaa000000);
+			sdl::fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (!draw_coordinates_) {
 				off_y -= text->h / 2;
