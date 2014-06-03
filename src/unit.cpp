@@ -2062,7 +2062,11 @@ void unit::redraw_unit()
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
 			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				orb_img = &enemy_orb;
+				if (!get_state(STATE_PETRIFIED)) {
+					orb_img = &enemy_orb;
+				} else {
+					orb_img = NULL;
+				}
 			} else {
 				orb_img = &ally_orb;
 			}
@@ -2077,11 +2081,12 @@ void unit::redraw_unit()
 			}
 		}
 
-		assert(orb_img != NULL);
-		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
-		if (orb != NULL) {
-			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc_, xsrc, ysrc +adjusted_params.y, orb);
+		if (orb_img != NULL) {
+			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
+			if (orb != NULL) {
+				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
+					loc_, xsrc, ysrc +adjusted_params.y, orb);
+			}
 		}
 
 		double unit_energy = 0.0;
