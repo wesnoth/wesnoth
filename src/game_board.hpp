@@ -30,6 +30,20 @@ namespace events {
 	class mouse_handler;
 }
 
+/**
+ *
+ * Game board class.
+ *
+ * The purpose of this class is to encapsulate some of the core game logic, including the unit map,
+ * the list of teams, and the game map.
+ *
+ * This should eventually become part of the game state object IMO, which should be a child of play_controller.
+ *
+ * I also intend to move the pathfinding module to be housed within this class -- this way, we can implement a
+ * sound pathfinding data structure to speed up path computations for AI, without having to make "update event"
+ * code at all points in the engine which modify the relevant data.
+ *
+ **/
 
 class game_board {
 
@@ -44,6 +58,24 @@ class game_board {
 	friend class playsingle_controller;
 	friend class playmp_controller;
 	friend class events::mouse_handler;
+
+	/** 
+	 * Temporary unit move structs:
+	 *
+	 * Probably don't remove these friends, this is actually fairly useful. These structs are used by:
+	 *  - AI
+	 *  - Whiteboard
+	 *  - I think certain wml actions
+	 * For AI, the ai wants to move two units next to eachother so it can ask for attack calculations. This should not trigger
+	 * pathfinding modifications, so the version that directly changes the unit map is probably preferable, although it should be
+	 * refactored.
+	 * For whiteboard and wml actions, we generally do want pathfinding to be updated, so use the game_board constructors which I 
+	 * have added to these structs instead.
+	 *
+	 **/
+	friend struct temporary_unit_placer;
+	friend struct temporary_unit_mover;
+	friend struct temporary_unit_remover;
 	
 	public:
 
@@ -84,5 +116,70 @@ class game_board {
 	unit_map::iterator find_visible_unit(const map_location &loc, const team& current_team, bool see_all = false);
 	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
 };
+
+/**
+ * This object is used to temporary place a unit in the unit map, swapping out
+ * any unit that is already there.  On destruction, it restores the unit map to
+ * its original.
+ */
+struct temporary_unit_placer
+{
+	temporary_unit_placer(unit_map& m, const map_location& loc, unit& u);
+	temporary_unit_placer(game_board& m, const map_location& loc, unit& u);
+	virtual  ~temporary_unit_placer();
+
+private:
+	unit_map& m_;
+	const map_location loc_;
+	unit *temp_;
+};
+
+// Begin Temporary Unit Move Structs
+// TODO: Fix up the implementations which use game_board
+
+/**
+ * This object is used to temporary remove a unit from the unit map.
+ * On destruction, it restores the unit map to its original.
+ * unit_map iterators to this unit must not be accessed while the unit is temporarily
+ * removed, otherwise a collision will happen when trying to reinsert the unit.
+ */
+struct temporary_unit_remover
+{
+	temporary_unit_remover(unit_map& m, const map_location& loc);
+	temporary_unit_remover(game_board& m, const map_location& loc);
+	virtual  ~temporary_unit_remover();
+
+private:
+	unit_map& m_;
+	const map_location loc_;
+	unit *temp_;
+};
+
+
+/**
+ * This object is used to temporary move a unit in the unit map, swapping out
+ * any unit that is already there.  On destruction, it restores the unit map to
+ * its original.
+ */
+struct temporary_unit_mover
+{
+	temporary_unit_mover(unit_map& m, const map_location& src,
+	                     const map_location& dst, int new_moves);
+	temporary_unit_mover(unit_map& m, const map_location& src,
+	                     const map_location& dst);
+	temporary_unit_mover(game_board& b, const map_location& src,
+	                     const map_location& dst, int new_moves);
+	temporary_unit_mover(game_board& b, const map_location& src,
+	                     const map_location& dst);
+	virtual  ~temporary_unit_mover();
+
+private:
+	unit_map& m_;
+	const map_location src_;
+	const map_location dst_;
+	int old_moves_;
+	unit *temp_;
+};
+
 
 #endif

@@ -25,6 +25,7 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
+#include "game_board.hpp"
 #include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
@@ -186,6 +187,8 @@ void move::init()
 		arrow_texture_ = ARROW_TEXTURE_INVALID;
 	}
 }
+
+move::~move(){}
 
 void move::accept(visitor& v)
 {

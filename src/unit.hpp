@@ -597,61 +597,6 @@ struct team_data
 team_data calculate_team_data(const class team& tm, int side);
 
 /**
- * This object is used to temporary place a unit in the unit map, swapping out
- * any unit that is already there.  On destruction, it restores the unit map to
- * its original.
- */
-struct temporary_unit_placer
-{
-	temporary_unit_placer(unit_map& m, const map_location& loc, unit& u);
-	virtual  ~temporary_unit_placer();
-
-private:
-	unit_map& m_;
-	const map_location loc_;
-	unit *temp_;
-};
-
-/**
- * This object is used to temporary remove a unit from the unit map.
- * On destruction, it restores the unit map to its original.
- * unit_map iterators to this unit must not be accessed while the unit is temporarily
- * removed, otherwise a collision will happen when trying to reinsert the unit.
- */
-struct temporary_unit_remover
-{
-	temporary_unit_remover(unit_map& m, const map_location& loc);
-	virtual  ~temporary_unit_remover();
-
-private:
-	unit_map& m_;
-	const map_location loc_;
-	unit *temp_;
-};
-
-
-/**
- * This object is used to temporary move a unit in the unit map, swapping out
- * any unit that is already there.  On destruction, it restores the unit map to
- * its original.
- */
-struct temporary_unit_mover
-{
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst, int new_moves);
-	temporary_unit_mover(unit_map& m, const map_location& src,
-	                     const map_location& dst);
-	virtual  ~temporary_unit_mover();
-
-private:
-	unit_map& m_;
-	const map_location src_;
-	const map_location dst_;
-	int old_moves_;
-	unit *temp_;
-};
-
-/**
  * Gets a checksum for a unit.
  *
  * In MP games the descriptions are locally generated and might differ, so it

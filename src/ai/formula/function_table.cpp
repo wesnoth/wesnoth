@@ -24,6 +24,7 @@
 
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
+#include "../../game_board.hpp"
 #include "../../game_display.hpp"
 #include "../../log.hpp"
 #include "../../map_label.hpp"

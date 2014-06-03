@@ -214,3 +214,113 @@ void game_board::write_config(config & cfg) const {
 	//write the map
 	cfg["map_data"] = map_.write();
 }
+
+temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
+	: m_(m), loc_(loc), temp_(m_.extract(loc))
+{
+	u.clone();
+	m_.add(loc, u);
+}
+
+temporary_unit_placer::temporary_unit_placer(game_board& b, const map_location& loc, unit& u)
+	: m_(b.units_), loc_(loc), temp_(m_.extract(loc))
+{
+	u.clone();
+	m_.add(loc, u);
+}
+
+temporary_unit_placer::~temporary_unit_placer()
+{
+	m_.erase(loc_);
+	if(temp_) {
+		m_.insert(temp_);
+	}
+}
+
+temporary_unit_remover::temporary_unit_remover(unit_map& m, const map_location& loc)
+	: m_(m), loc_(loc), temp_(m_.extract(loc))
+{
+}
+
+temporary_unit_remover::temporary_unit_remover(game_board& b, const map_location& loc)
+	: m_(b.units_), loc_(loc), temp_(m_.extract(loc))
+{
+}
+
+temporary_unit_remover::~temporary_unit_remover()
+{
+	if(temp_) {
+		m_.insert(temp_);
+	}
+}
+
+/**
+ * Constructor
+ * This version will change the unit's current movement to @a new_moves while
+ * the unit is moved (and restored to its previous value upon this object's
+ * destruction).
+ */
+temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
+                                           const map_location& dst, int new_moves)
+	: m_(m), src_(src), dst_(dst), old_moves_(-1),
+	  temp_(src == dst ? NULL : m_.extract(dst))
+{
+	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
+
+	// Set the movement.
+	if ( move_result.second )
+	{
+		old_moves_ = move_result.first->movement_left(true);
+		move_result.first->set_movement(new_moves);
+	}
+}
+
+temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
+                                           const map_location& dst, int new_moves)
+	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
+	  temp_(src == dst ? NULL : m_.extract(dst))
+{
+	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
+
+	// Set the movement.
+	if ( move_result.second )
+	{
+		old_moves_ = move_result.first->movement_left(true);
+		move_result.first->set_movement(new_moves);
+	}
+}
+
+/**
+ * Constructor
+ * This version does not change (nor restore) the unit's movement.
+ */
+temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
+                                           const map_location& dst)
+	: m_(m), src_(src), dst_(dst), old_moves_(-1),
+	  temp_(src == dst ? NULL : m_.extract(dst))
+{
+	m_.move(src_, dst_);
+}
+
+temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
+                                           const map_location& dst)
+	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
+	  temp_(src == dst ? NULL : m_.extract(dst))
+{
+	m_.move(src_, dst_);
+}
+
+temporary_unit_mover::~temporary_unit_mover()
+{
+	std::pair<unit_map::iterator, bool> move_result = m_.move(dst_, src_);
+
+	// Restore the movement?
+	if ( move_result.second  &&  old_moves_ >= 0 )
+		move_result.first->set_movement(old_moves_);
+
+	// Restore the extracted unit?
+	if(temp_) {
+		m_.insert(temp_);
+	}
+}
+

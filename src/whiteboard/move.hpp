@@ -35,7 +35,7 @@ public:
 	move(size_t team_index, bool hidden, unit& mover, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	move(config const&, bool hidden); // For deserialization
-	virtual ~move(){}
+	virtual ~move();
 
 	virtual std::ostream& print(std::ostream& s) const;
 
