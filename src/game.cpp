@@ -51,7 +51,6 @@
 #include <boost/iostreams/filter/gzip.hpp>
 
 #include <SDL.h>
-#include <SDL_thread.h>
 
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR
@@ -435,7 +434,7 @@ static int do_gameloop(int argc, char** argv)
 		return finished;
 	}
 
-	boost::shared_ptr<game_controller> game(
+	boost::scoped_ptr<game_controller> game(
 		new game_controller(cmdline_opts,argv[0]));
 	const int start_ticks = SDL_GetTicks();
 
