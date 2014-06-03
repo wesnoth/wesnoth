@@ -100,9 +100,9 @@ void playsingle_controller::init_gui(){
 	play_controller::init_gui();
 
 	if(first_human_team_ != -1) {
-		gui_->scroll_to_tile(gameboard_.map_.starting_position(first_human_team_ + 1), game_display::WARP);
+		gui_->scroll_to_tile(gameboard_.map().starting_position(first_human_team_ + 1), game_display::WARP);
 	}
-	gui_->scroll_to_tile(gameboard_.map_.starting_position(1), game_display::WARP);
+	gui_->scroll_to_tile(gameboard_.map().starting_position(1), game_display::WARP);
 
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
 	events::raise_draw_event();
@@ -1072,7 +1072,7 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 		case hotkey::HOTKEY_CREATE_UNIT:
 		case hotkey::HOTKEY_CHANGE_SIDE:
 		case hotkey::HOTKEY_KILL_UNIT:
-			return !events::commands_disabled && game_config::debug && gameboard_.map_.on_board(mouse_handler_.get_last_hex());
+			return !events::commands_disabled && game_config::debug && gameboard_.map().on_board(mouse_handler_.get_last_hex());
 
 		case hotkey::HOTKEY_CLEAR_LABELS:
 			res = !is_observer();
@@ -1080,7 +1080,7 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
 		case hotkey::HOTKEY_LABEL_TERRAIN: {
 			const terrain_label *label = resources::screen->labels().get_label(mouse_handler_.get_last_hex());
-			res = !events::commands_disabled && gameboard_.map_.on_board(mouse_handler_.get_last_hex())
+			res = !events::commands_disabled && gameboard_.map().on_board(mouse_handler_.get_last_hex())
 				&& !gui_->shrouded(mouse_handler_.get_last_hex())
 				&& !is_observer()
 				&& (!label || !label->immutable());

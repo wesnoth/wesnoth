@@ -140,7 +140,7 @@ public:
 		return gameboard_.teams_;
 	}
 	const gamemap& get_map_const() const{
-		return gameboard_.map_;
+		return gameboard_.map();
 	}
 	const tod_manager& get_tod_manager_const() const{
 			return tod_manager_;
