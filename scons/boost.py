@@ -6,7 +6,8 @@ import re
 
 def find_boost(env):
     prefixes = [env["prefix"], "C:\\Boost"]
-    include = find_include(prefixes, "boost/config.hpp", "", not env["host"])
+    crosscompile = env["host"]
+    include = find_include(prefixes, "boost/config.hpp", default_prefixes=not crosscompile)
     if include:
         prefix, includefile = include[0]
         env["boostdir"] = join(prefix, "include")
@@ -20,7 +21,8 @@ def find_boost(env):
             else:
                 env["boost_suffix"] = ""
         return
-    includes = find_include(prefixes, "boost/config.hpp", "boost-*")
+
+    includes = find_include(prefixes, "boost/config.hpp", include_subdir="include/boost-*")
     if includes:
         versions = []
         for prefix, includefile in includes:
