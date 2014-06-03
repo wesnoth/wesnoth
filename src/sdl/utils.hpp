@@ -113,11 +113,6 @@ inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_R
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
-// and this
-inline void sdl_fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color){
-	SDL_FillRect(dst, dst_rect, color);
-}
-
 /**
  * Check that the surface is neutral bpp 32.
  *

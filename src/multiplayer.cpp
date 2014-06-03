@@ -658,7 +658,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 				, 0
 				, 255);
 
-		sdl_fill_rect(disp.video().getSurface(), NULL, color);
+		sdl::sdl_fill_rect(disp.video().getSurface(), NULL, color);
 
 		if(preferences::new_lobby()) {
 			gui2::tlobby_main dlg(game_config, li, disp);

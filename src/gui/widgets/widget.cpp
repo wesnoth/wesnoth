@@ -537,7 +537,7 @@ void twidget::draw_debug_border(surface& frame_buffer)
 			break;
 
 		case 2:
-			sdl_fill_rect(frame_buffer, &r, debug_border_colour_);
+			sdl::sdl_fill_rect(frame_buffer, &r, debug_border_colour_);
 			break;
 
 		default:
@@ -563,7 +563,7 @@ twidget::draw_debug_border(surface& frame_buffer, int x_offset, int y_offset)
 			break;
 
 		case 2:
-			sdl_fill_rect(frame_buffer, &r, debug_border_colour_);
+			sdl::sdl_fill_rect(frame_buffer, &r, debug_border_colour_);
 			break;
 
 		default:

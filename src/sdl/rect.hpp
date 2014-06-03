@@ -128,6 +128,18 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface tg);
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
 								 int r, int g, int b,
 								 double alpha, surface target);
+
+/**
+ * Fill a rectangle on a given surface. Alias for SDL_FillRect.
+ *
+ * @param dst                     The surface to operate on.
+ * @param dst_rect                The rectangle to fill.
+ * @param color                   Color of the rectangle.
+ */
+inline void sdl_fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color)
+{
+	SDL_FillRect(dst, dst_rect, color);
+}
 } // namespace sdl
 
 bool operator==(const SDL_Rect& a, const SDL_Rect& b);

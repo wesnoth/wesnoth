@@ -478,7 +478,7 @@ void create::draw_level_image()
 			video().getSurface());
 	} else {
 		surface display(disp_.get_screen_surface());
-		sdl_fill_rect(display, &image_rect_,
+		sdl::sdl_fill_rect(display, &image_rect_,
 			SDL_MapRGB(display->format, 0, 0, 0));
 		update_rect(image_rect_);
 

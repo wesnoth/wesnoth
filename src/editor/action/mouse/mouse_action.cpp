@@ -156,7 +156,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, const t_trans
 
 	// Create a transparent surface of the right size.
 	surface image = create_compatible_surface(image_fg, image_fg->w, image_fg->h);
-	sdl_fill_rect(image,NULL,SDL_MapRGBA(image->format,0,0,0, 0));
+	sdl::sdl_fill_rect(image,NULL,SDL_MapRGBA(image->format,0,0,0, 0));
 
 	// For efficiency the size of the tile is cached.
 	// We assume all tiles are of the same size.
