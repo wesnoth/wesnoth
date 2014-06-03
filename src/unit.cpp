@@ -2055,7 +2055,7 @@ void unit::redraw_unit()
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
 			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				if (preferences::show_enemy_orb())
+				if (preferences::show_enemy_orb() && !get_state(STATE_PETRIFIED))
 					orb_img = &enemy_orb;
 				else
 					orb_img = NULL;
