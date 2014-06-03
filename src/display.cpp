@@ -2596,7 +2596,7 @@ void display::draw_hex(const map_location& loc) {
 		std::pair<Itor,Itor> overlays = overlays_->equal_range(loc);
 		for( ; overlays.first != overlays.second; ++overlays.first) {
 			if ((overlays.first->second.team_name == "" ||
-					overlays.first->second.team_name.find((*teams_)[playing_team()].team_name()) != std::string::npos)
+					overlays.first->second.team_name.find((*teams_)[viewing_team()].team_name()) != std::string::npos)
 					&& !(fogged(loc) && !overlays.first->second.visible_in_fog))
 			{
 				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos,
