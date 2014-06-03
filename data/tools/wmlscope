@@ -341,20 +341,20 @@ class CrossRefLister(CrossRef):
 if __name__ == "__main__":
     def help():
         sys.stderr.write("""\
-Usage: macroscope [options] dirpath
+Usage: wmlscope [options] dirpath
     Options may be any of these:
     -h, --help                   Emit this help message and quit
     -c, --crossreference         Report resolved macro references (implies -w 1)
     -C, --collisions             Report duplicate resource files
-    -d, --deflist                Make definition list
+    -d, --definitions            Make definition list
     -e regexp, --exclude regexp  Ignore files matching the specified regular expression
     -f regexp, --from regexp     Report only on things defined in files matching regexp
     -l, --listfiles              List files that will be processed
     -r ddd, --refcount=ddd       Report only on macros w/references in ddd files
-    -t fname, --typecheck fname  List actual & formal argtypes for calls in fname
+    -t fname, --typelist fname   List actual & formal argtypes for calls in fname
     -u, --unresolved             Report unresolved macro references
     -w, --warnlevel              Set to 1 to warn of duplicate macro definitions
-    --forced-used regexp         Ignore refcount 0 on names matching regexp
+    --force-used regexp          Ignore refcount 0 on names matching regexp
     --extracthelp                Extract help from macro definition comments.
     --unchecked                  Report all macros with untyped formals.
    Options may be followed by any number of directiories to check.  If no
@@ -412,7 +412,7 @@ Usage: macroscope [options] dirpath
                 forceused.append(val)
             elif switch in ('-l', '--listfiles'):
                 listfiles = True
-            elif switch in ('-d', '--progress'):
+            elif switch in ('-p', '--progress'):
                 progress = True
             elif switch in ('-r', '--refcount'):
                 refcount_restrict = int(val)
@@ -483,7 +483,7 @@ Usage: macroscope [options] dirpath
                 return True
             if crossreference:
                 if xref.noxref:
-                    print >>sys.stderr, "macroscope: can't make cross-reference, input included a definitions file."
+                    print >>sys.stderr, "wmlscope: can't make cross-reference, input included a definitions file."
                 else:
                     xref.xrefdump(predicate)
             if definitions:
