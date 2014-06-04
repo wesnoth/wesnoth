@@ -20,6 +20,8 @@
 #include "serialization/unicode.hpp"
 #include <boost/test/auto_unit_test.hpp>
 
+BOOST_AUTO_TEST_SUITE ( test_serialization_utils_and_unicode )
+
 BOOST_AUTO_TEST_CASE( utils_join_test )
 {
 	std::vector<std::string> fruit;
@@ -73,3 +75,12 @@ BOOST_AUTO_TEST_CASE( utils_unicode_test )
 	BOOST_CHECK_EQUAL(nonbmp_u8, unicode_cast<utf8::string>(nonbmp_u4));
 }
 
+BOOST_AUTO_TEST_CASE( test_lowercase )
+{
+	BOOST_CHECK_EQUAL ( utf8::lowercase("FOO") , "foo" );
+	BOOST_CHECK_EQUAL ( utf8::lowercase("foo") , "foo" );
+	BOOST_CHECK_EQUAL ( utf8::lowercase("FoO") , "foo" );
+	BOOST_CHECK_EQUAL ( utf8::lowercase("fO0") , "fo0" );
+}
+
+BOOST_AUTO_TEST_SUITE_END()

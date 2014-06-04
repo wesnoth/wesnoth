@@ -18,8 +18,6 @@
 
 #include "util.hpp"
 
-#include "serialization/unicode.hpp"
-
 #include <boost/cstdint.hpp>
 
 BOOST_AUTO_TEST_SUITE( util )
@@ -140,11 +138,6 @@ BOOST_AUTO_TEST_CASE( test_count_leading_ones )
 		== 64 );
 	BOOST_CHECK( count_leading_ones(static_cast<boost::uint8_t>(0xF8)) == 5 );
 	BOOST_CHECK( count_leading_ones(static_cast<boost::uint16_t>(54321)) == 2 );
-}
-
-BOOST_AUTO_TEST_CASE( test_lowercase )
-{
-	BOOST_CHECK_EQUAL ( utf8::lowercase("FOO") , "foo" );
 }
 
 /* vim: set ts=4 sw=4: */
