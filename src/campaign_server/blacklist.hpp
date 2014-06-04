@@ -22,6 +22,25 @@
 namespace campaignd
 {
 
+/**
+ * Add-on blacklist table.
+ *
+ * A path to a blacklist WML file may be provided in the campaignd
+ * configuration. The file's contents are used to maintain a blacklist to
+ * check certain add-on metadata fields against it every time a new or
+ * existing add-on is uploaded ([upload] request).
+ *
+ * Blacklist entries are glob patterns accepting the '*' and '?' wildcards for
+ * matching any number of characters and a single character, respectively. The
+ * lists are expected to be comma-delimited.
+ *
+ *     ip = (net address masks)
+ *     email = (email address patterns)
+ *     name = (add-on id/dirname patterns)
+ *     title = (add-on title patterns)
+ *     author = (add-on author patterns)
+ *     description = (add-on description patterns)
+ */
 class blacklist : private boost::noncopyable
 {
 public:
