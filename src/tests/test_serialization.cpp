@@ -107,6 +107,14 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 	superfluous_mask = std::string(str.length(), '*');
 	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
 	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '*'));
+
+	BOOST_CHECK(utils::wildcard_string_match("", ""));
+	BOOST_CHECK(!utils::wildcard_string_match(str, ""));
+
+	BOOST_CHECK(utils::wildcard_string_match("", "*"));
+	BOOST_CHECK(utils::wildcard_string_match("", "***?**"));
+	BOOST_CHECK(!utils::wildcard_string_match("", "?"));
+	BOOST_CHECK(!utils::wildcard_string_match("", "???"));
 }
 
 BOOST_AUTO_TEST_SUITE_END()
