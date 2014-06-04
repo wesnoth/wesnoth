@@ -3096,7 +3096,7 @@ void console_handler::do_set_var() {
 	}
 }
 void console_handler::do_show_var() {
-	gui2::show_transient_message((*menu_handler_.gui_).video(),"",resources::gamedata->get_variable(get_data()));
+	gui2::show_transient_message((*menu_handler_.gui_).video(),"",resources::gamedata->get_variable_const(get_data()));
 }
 
 
