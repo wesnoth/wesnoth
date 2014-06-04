@@ -16,6 +16,7 @@
 
 #include <boost/test/unit_test.hpp>
 
+#include "serialization/string_utils.hpp"
 #include "util.hpp"
 
 BOOST_AUTO_TEST_SUITE( util )
@@ -72,6 +73,11 @@ BOOST_AUTO_TEST_CASE( test_lexical_cast_default )
 
 	double result6 = lexical_cast_default<double, const std::string&>(std::string(), 0.5);
 	BOOST_CHECK( result6 >= 0.499 && result6 <= 0.511 );
+}
+
+BOOST_AUTO_TEST_CASE( test_lowercase )
+{
+	BOOST_CHECK_EQUAL ( utils::lowercase("FOO") , "foo" );
 }
 
 /* vim: set ts=4 sw=4: */

@@ -1065,8 +1065,7 @@ utf8_string lowercase(const utf8_string& s)
 		for(;itor != utf8_iterator::end(s); ++itor) {
 			ucs4char uchar = *itor;
 			// If wchar_t is less than 32 bits wide, we cannot apply towlower() to all codepoints
-			if(uchar <= static_cast<ucs4char>(std::numeric_limits<wchar_t>::max()) &&
-			   uchar >= static_cast<ucs4char>(std::numeric_limits<wchar_t>::min()))
+			if(uchar <= static_cast<ucs4char>(std::numeric_limits<wchar_t>::max()))
 				uchar = towlower(static_cast<wchar_t>(uchar));
 			res += utils::ucs4char_to_string(uchar);
 		}
