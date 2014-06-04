@@ -43,3 +43,28 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 	BOOST_CHECK( utils::u8truncate(unicode,3) == "\xC3\xBCni"); // "üni"
 }
 
+BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
+{
+	const std::string str = "foo bar baz";
+
+	BOOST_CHECK(utils::wildcard_string_match(str, "*bar*"));
+
+	BOOST_CHECK(!utils::wildcard_string_match(str, "*BAR*"));
+	BOOST_CHECK(!utils::wildcard_string_match(str, "bar"));
+
+	BOOST_CHECK(utils::wildcard_string_match(str, "*ba? b*"));
+	BOOST_CHECK(utils::wildcard_string_match(str, "*?a?*"));
+
+	BOOST_CHECK(!utils::wildcard_string_match(str, "foo? "));
+	BOOST_CHECK(!utils::wildcard_string_match(str, "?foo"));
+
+	std::string superfluous_mask;
+
+	superfluous_mask = std::string(str.length(), '?');
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '?'));
+
+	superfluous_mask = std::string(str.length(), '*');
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask));
+	BOOST_CHECK(utils::wildcard_string_match(str, superfluous_mask + '*'));
+}
