@@ -16,7 +16,6 @@
 #include "map_create.hpp"
 
 #include "generators/cavegen.hpp"
-#include "generators/yamg/ya_mapgen.hpp"
 #include "log.hpp"
 #include "mapgen_dialog.hpp"
 #include "scoped_resource.hpp"
@@ -32,8 +31,6 @@ map_generator* create_map_generator(const std::string& name, const config &cfg)
 		return new default_map_generator(cfg);
 	} else if(name == "cave") {
 		return new cave_map_generator(cfg);
-	} else if(name == "yamg") {
-		return new ya_mapgen(cfg);
 	} else {
 		return NULL;
 	}
