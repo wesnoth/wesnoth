@@ -373,7 +373,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		past_prestart = true;
 		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
-		HANDLE_END_PLAY_SIGNAL( events::raise_draw_event() );
+		events::raise_draw_event();
 		HANDLE_END_PLAY_SIGNAL( fire_start(true) );
 		gui_->recalculate_minimap();
 	}
@@ -381,7 +381,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 	{
 		init_gui();
 		past_prestart = true;
-		HANDLE_END_PLAY_SIGNAL( events::raise_draw_event() );
+		events::raise_draw_event();
 		HANDLE_END_PLAY_SIGNAL( fire_start(false) );
 		gui_->recalculate_minimap();
 	}
@@ -626,7 +626,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 	resources::whiteboard->on_gamestate_change();
 	gui_->new_turn();
 	gui_->invalidate_game_status();
-	HANDLE_END_PLAY_SIGNAL ( events::raise_draw_event() );
+	events::raise_draw_event();
 
 	LOG_NG << "turn: " << turn() << "\n";
 
