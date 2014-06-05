@@ -26,6 +26,8 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include "clipboard.hpp"
 #include "serialization/parser.hpp" // for write()
 #include "utils/foreach.tpp"
 
@@ -71,6 +73,9 @@ namespace gui2
  *
  * inspect & & control & m &
  *         The state of the variable or event. $
+ *
+ * copy & & button & m &
+ *         A button to copy the state to clipboard. $
  *
  * @end{table}
  */
@@ -118,6 +123,7 @@ public:
 		, stuff_types_list()
 		, inspect()
 		, inspector_name()
+		, copy_button()
 	{
 		name = cfg["name"].str();
 	}
@@ -129,6 +135,7 @@ public:
 	tlistbox* stuff_types_list;
 	tcontrol* inspect;
 	tcontrol* inspector_name;
+	tbutton* copy_button;
 
 
 	void clear_stuff_list()
@@ -572,6 +579,11 @@ public:
 		c->update_view_from_model(); // TODO: 'activate'
 	}
 
+	void handle_copy_button_clicked()
+	{
+		copy_to_clipboard(model_.inspect->label(), false);
+	}
+
 
 private:
 	model& model_;
@@ -605,6 +617,11 @@ public:
 		controller_.handle_stuff_types_list_item_clicked();
 	}
 
+	void handle_copy_button_clicked(twindow& /*window*/)
+	{
+		controller_.handle_copy_button_clicked();
+	}
+
 
 	void bind(twindow& window)
 	{
@@ -615,6 +632,8 @@ public:
 		model_.inspect = find_widget<tcontrol>(&window, "inspect", false, true);
 		model_.inspector_name
 				= &find_widget<tcontrol>(&window, "inspector_name", false);
+		model_.copy_button
+				= &find_widget<tbutton>(&window, "copy", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
@@ -642,6 +661,12 @@ public:
 									 &tgamestate_inspector::view::
 											  handle_stuff_types_list_item_clicked>);
 #endif
+
+		connect_signal_mouse_left_click(
+				*model_.copy_button,
+				boost::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
+							this,
+							boost::ref(window)));
 	}
 
 private:
