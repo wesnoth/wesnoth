@@ -103,7 +103,7 @@ protected:
 	void play_ai_turn();
 	virtual void play_idle_loop();
 	virtual void do_idle_notification();
-	virtual void play_network_turn();
+	virtual possible_end_play_signal play_network_turn();
 	virtual void init_gui();
 	possible_end_play_signal check_time_over();
 	void store_recalls();

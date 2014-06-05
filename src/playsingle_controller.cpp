@@ -772,13 +772,7 @@ possible_end_play_signal playsingle_controller::play_side()
 			}
 
 		} else if(current_team().is_network()) {
-			try {
-				play_network_turn();
-			} catch (end_level_exception & e) { //Don't know at the moment if these two are possible but can't hurt to add
-				return possible_end_play_signal(e.to_struct());
-			} catch (end_turn_exception & e) {
-				return possible_end_play_signal(e.to_struct());
-			}
+			PROPOGATE_END_PLAY_SIGNAL( play_network_turn() );
 		} else if(current_team().is_idle()) {
 			try{
 				end_turn_enable(false);
@@ -988,10 +982,11 @@ void playsingle_controller::do_idle_notification()
 /**
  * Will handle networked turns in descendent classes.
  */
-void playsingle_controller::play_network_turn()
+possible_end_play_signal playsingle_controller::play_network_turn()
 {
 	// There should be no networked sides in single-player.
 	ERR_NG << "Networked team encountered by playsingle_controller." << std::endl;
+	return boost::none;
 }
 
 

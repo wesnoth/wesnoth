@@ -426,7 +426,7 @@ void playmp_controller::finish_side_turn(){
 
 }
 
-void playmp_controller::play_network_turn(){
+possible_end_play_signal playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	end_turn_enable(false);
@@ -442,15 +442,16 @@ void playmp_controller::play_network_turn(){
 						skip_replay_ = false;
 					}
 				}
-				const turn_info::PROCESS_DATA_RESULT result = turn_data_.process_network_data(cfg, skip_replay_);
+				turn_info::PROCESS_DATA_RESULT result;
+				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg, skip_replay_) );
 				if(player_type_changed_ == true)
 				{
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
-					return;
+					return boost::none;
 				}
 				if (result == turn_info::PROCESS_RESTART_TURN || result == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL) {
 					player_type_changed_ = true;
-					return;
+					return boost::none;
 				} else if (result == turn_info::PROCESS_END_TURN) {
 					break;
 				}
@@ -470,8 +471,8 @@ void playmp_controller::play_network_turn(){
 			}
 		}
 
-		play_slice();
-		check_end_level();
+		HANDLE_END_PLAY_SIGNAL( play_slice() );
+		HANDLE_END_PLAY_SIGNAL( check_end_level() );
 
 		if (!network_processing_stopped_){
 			turn_data_.send_data();
@@ -481,7 +482,7 @@ void playmp_controller::play_network_turn(){
 	}
 
 	LOG_NG << "finished networked...\n";
-	return;
+	return boost::none;
 }
 
 
