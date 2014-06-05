@@ -123,11 +123,7 @@ namespace {
 	std::string format_addon_feedback_url(const std::string& format, const config& params)
 	{
 		if(!format.empty() && !params.empty()) {
-#if 0
-			utils::string_map escaped;
-#else
 			plain_string_map escaped;
-#endif
 
 			config::const_attr_itors attrs = params.attribute_range();
 
@@ -141,13 +137,8 @@ namespace {
 			// FIXME: We cannot use utils::interpolate_variables_into_string
 			//        because it is implemented using a lot of formula AI junk
 			//        that really doesn't belong in campaignd.
-#if 0
-			const std::string& res =
-				utils::interpolate_variables_into_string(format, &escaped);
-#else
 			const std::string& res =
 				fast_interpolate_variables_into_string(format, &escaped);
-#endif
 
 			if(res != format) {
 				return res;
@@ -649,7 +640,6 @@ namespace {
 								config_writer writer(*campaign_file, true, compress_level_);
 								writer.write(data);
 							}
-//							write_compressed(*campaign_file, *data);
 
 							(*campaign)["size"] = lexical_cast<std::string>(
 									file_size(filename));
