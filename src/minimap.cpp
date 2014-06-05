@@ -104,7 +104,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 
 			if (preferences_minimap_draw_terrain) {
 
-				if (!preferences_minimap_terrain_coding) {
+				if (preferences_minimap_terrain_coding) {
 
 					surface surf(NULL);
 
