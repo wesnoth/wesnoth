@@ -1922,7 +1922,7 @@ void display::draw_minimap_units()
 		int side = u->side();
 		SDL_Color col = team::get_minimap_color(side);
 
-		if (preferences::minimap_movement_coding()) {
+		if (!preferences::minimap_movement_coding()) {
 
 			if ((*teams_)[currentTeam_].is_enemy(side)) {
 				col = int_to_color(game_config::color_info(game_config::images::enemy_orb_color).rep());
