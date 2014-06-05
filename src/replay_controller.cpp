@@ -439,31 +439,45 @@ void replay_controller::replay_skip_animation(){
 }
 
 //move all sides till stop/end
-void replay_controller::play_replay(){
+possible_end_play_signal replay_controller::play_replay(){
 
 	if (recorder.at_end()){
 		//shouldn't actually happen
-		return;
+		return boost::none;
 	}
 
-	try{
-		is_playing_ = true;
-		replay_ui_playback_should_start();
+	is_playing_ = true;
+	replay_ui_playback_should_start();
 
-		DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-		for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
-			play_turn();
+	possible_end_play_signal signal = play_replay_main_loop();
+
+	if(signal) {
+		switch ( boost::apply_visitor(get_signal_type(), *signal)) {
+			case END_TURN:
+				return signal;
+			case END_LEVEL:
+				if ( boost::apply_visitor(get_result(), *signal) == QUIT) {
+					return signal;
+				}
 		}
 
-		if (!is_playing_) {
-			gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
-		}
 	}
-	catch(end_level_exception& e){
-		if (e.result == QUIT) throw;
+
+	if (!is_playing_) {
+		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
+
+	return boost::none;
+}
+
+possible_end_play_signal replay_controller::play_replay_main_loop() {
+	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
+	for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
+		HANDLE_END_PLAY_SIGNAL ( play_turn() );
+	}
+	return boost::none;
 }
 
 //make all sides move, then stop

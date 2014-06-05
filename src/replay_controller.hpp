@@ -36,7 +36,7 @@ public:
 	//event handlers
 	virtual void preferences();
 	virtual void show_statistics();
-	void play_replay();
+	possible_end_play_signal play_replay();
 	void reset_replay();
 	void stop_replay();
 	void replay_next_turn();
@@ -66,6 +66,8 @@ private:
 	void init_replay_display();
 	void rebuild_replay_theme();
 	void handle_generic_event(const std::string& /*name*/);
+
+	possible_end_play_signal play_replay_main_loop();
 
 	void reset_replay_ui();
 	void update_replay_ui();
