@@ -178,6 +178,8 @@ Version 1.13.0-dev:
      scenario save, by stripping them from the save file. However, this does 
      not fix bug #15545, which was the reason that this behavior was introduced. 
    * Fix bug #22123 "Replays don't reset map when reset button is pressed, causing OOS"
+   * Wesnoth reports an error if it evalutes [if] and finds no [then], [else], [elseif]
+     children, as a chat message from lua.
 
 Version 1.11.11:
  * Add-ons server:
