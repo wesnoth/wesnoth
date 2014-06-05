@@ -99,6 +99,8 @@ public:
 	 */
 	ttexture(SDL_Renderer& renderer, const int access, const surface& surface);
 
+	ttexture();
+
 	~ttexture();
 
 	ttexture(const ttexture& texture);

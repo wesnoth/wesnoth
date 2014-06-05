@@ -68,6 +68,17 @@ ttexture::ttexture(SDL_Renderer& renderer,
 }
 
 
+ttexture::ttexture()
+	: reference_count_(new unsigned(1))
+	, texture_(NULL)
+	, rotation_(0)
+	, hscale_(1)
+	, vscale_(1)
+	, smooth_scaling_(false)
+	, flip_(SDL_FLIP_NONE)
+	, clip_()
+	, source_surface_(NULL)
+{}
 
 ttexture::~ttexture()
 {
