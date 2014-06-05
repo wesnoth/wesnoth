@@ -365,17 +365,18 @@ void replay_controller::stop_replay(){
 	is_playing_ = false;
 }
 
-void replay_controller::replay_next_turn(){
+possible_end_play_signal replay_controller::replay_next_turn(){
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 
-	play_turn();
+	HANDLE_END_PLAY_SIGNAL( play_turn() );
 
  	if (!skip_replay_ || !is_playing_){
 		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
+	return boost::none;
 }
 
 void replay_controller::replay_next_side(){

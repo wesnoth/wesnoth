@@ -39,7 +39,7 @@ public:
 	possible_end_play_signal play_replay();
 	void reset_replay();
 	void stop_replay();
-	void replay_next_turn();
+	possible_end_play_signal replay_next_turn();
 	void replay_next_side();
 	void process_oos(const std::string& msg) const;
 	void replay_show_everything();

@@ -82,7 +82,7 @@ public:
 	virtual possible_end_play_signal play_replay() { return boost::none; }
 	virtual void reset_replay() {}
 	virtual void stop_replay() {}
-	virtual void replay_next_turn() {}
+	virtual possible_end_play_signal replay_next_turn() { return boost::none; }
 	virtual void replay_next_side() {}
 	virtual void replay_show_everything() {}
 	virtual void replay_show_each() {}
