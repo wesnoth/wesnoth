@@ -495,14 +495,14 @@ possible_end_play_signal replay_controller::play_turn(){
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
 		last_team = static_cast<size_t>(player_number_) == gameboard_.teams_.size();
-		HANDLE_END_PLAY_SIGNAL( play_side() );
+		PROPOGATE_END_PLAY_SIGNAL( play_side() );
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
 	}
 	return boost::none;
 }
 
 //make only one side move
-void replay_controller::play_side(){
+possible_end_play_signal replay_controller::play_side(){
 
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
@@ -520,7 +520,7 @@ void replay_controller::play_side(){
 			// becasue we might not have enough data to execute them (like advancements during turn_end for example)
 			if(do_replay() != REPLAY_FOUND_END_TURN) {
 				// We reached the end of teh replay without finding and end turn tag.
-				return;
+				return boost::none;
 			}
 			finish_side_turn();
 		}
@@ -543,11 +543,16 @@ void replay_controller::play_side(){
 
 		update_teams();
 		update_gui();
-	}
-	catch(end_level_exception& e){
+	} catch(end_level_exception& e){
 		//VICTORY/DEFEAT end_level_exception shall not return to title screen
-		if (e.result != VICTORY && e.result != DEFEAT) throw;
+		if (e.result != VICTORY && e.result != DEFEAT) {
+			return possible_end_play_signal(e.to_struct());
+		}
+	} catch (end_turn_exception & e) {
+		return possible_end_play_signal(e.to_struct());
 	}
+
+	return boost::none;
 }
 
 void replay_controller::update_teams(){

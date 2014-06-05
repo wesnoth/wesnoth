@@ -60,7 +60,7 @@ protected:
 private:
 	void init();
 	possible_end_play_signal play_turn();
-	virtual void play_side();
+	possible_end_play_signal play_side();
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
