@@ -91,7 +91,7 @@ public:
 	virtual void maybe_linger();
 
 protected:
-	virtual void play_turn();
+	possible_end_play_signal play_turn();
 	virtual void play_side();
 	virtual void before_human_turn();
 	void show_turn_dialog();

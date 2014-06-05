@@ -415,7 +415,7 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 	do_autosaves_ = !loading_game_;
 	ai_testing::log_game_start();
 	for(; ; first_player_ = 1) {
-		HANDLE_END_PLAY_SIGNAL( play_turn() );
+		PROPOGATE_END_PLAY_SIGNAL( play_turn() );
 		do_autosaves_ = true;
 	} //end for loop
 	return boost::none;
@@ -621,12 +621,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	return QUIT;
 }
 
-void playsingle_controller::play_turn()
+possible_end_play_signal playsingle_controller::play_turn()
 {
 	resources::whiteboard->on_gamestate_change();
 	gui_->new_turn();
 	gui_->invalidate_game_status();
-	events::raise_draw_event();
+	HANDLE_END_PLAY_SIGNAL ( events::raise_draw_event() );
 
 	LOG_NG << "turn: " << turn() << "\n";
 
@@ -648,18 +648,20 @@ void playsingle_controller::play_turn()
 				turn_data_.sync_network();
 			}
 			continue;
+		} catch (end_level_exception & ele) {
+			return possible_end_play_signal(ele.to_struct());
 		}
 
 		if (replaying_) {
 			LOG_NG << "doing replay " << player_number_ << "\n";
-			replaying_ = ::do_replay() == REPLAY_FOUND_END_TURN;
+			HANDLE_END_PLAY_SIGNAL ( replaying_ = ::do_replay() == REPLAY_FOUND_END_TURN );
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			ai_testing::log_turn_start(player_number_);
-			play_side();
+			HANDLE_END_PLAY_SIGNAL ( play_side() );
 		}
 
-		finish_side_turn();
+		HANDLE_END_PLAY_SIGNAL( finish_side_turn() );
 
 		if(non_interactive()) {
 			LOG_AIT << " Player " << player_number_ << ": " <<
@@ -668,7 +670,7 @@ void playsingle_controller::play_turn()
 			ai_testing::log_turn_end(player_number_);
 		}
 
-		check_victory();
+		HANDLE_END_PLAY_SIGNAL ( check_victory() );
 
 		//if loading a savegame, network turns might not have reset this yet
 		loading_game_ = false;
@@ -678,10 +680,11 @@ void playsingle_controller::play_turn()
 	if(player_number_ > static_cast<int>(gameboard_.teams_.size()))
 		player_number_ = gameboard_.teams_.size();
 
-	finish_turn();
+	HANDLE_END_PLAY_SIGNAL ( finish_turn() );
 
 	// Time has run out
-	check_time_over();
+	HANDLE_END_PLAY_SIGNAL ( check_time_over() );
+	return boost::none;
 }
 
 void playsingle_controller::play_idle_loop()
