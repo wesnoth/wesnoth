@@ -114,7 +114,6 @@ public:
 
 	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
 	void do_init_side(bool is_replay = false, bool only_visual = false);
-	virtual void play_side() = 0;
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
