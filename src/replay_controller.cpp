@@ -502,55 +502,68 @@ possible_end_play_signal replay_controller::play_turn(){
 }
 
 //make only one side move
-possible_end_play_signal replay_controller::play_side(){
+possible_end_play_signal replay_controller::play_side() {
 
 	DBG_REPLAY << "Status turn number: " << turn() << "\n";
 	DBG_REPLAY << "Replay_Controller turn number: " << current_turn_ << "\n";
 	DBG_REPLAY << "Player number: " << player_number_ << "\n";
 
-	try{
-		// If a side is empty skip over it.
-		if (!current_team().is_empty()) {
-			statistics::reset_turn_stats(current_team().save_id());
+	// If a side is empty skip over it.
+	if (!current_team().is_empty()) {
+		statistics::reset_turn_stats(current_team().save_id());
 
-			play_controller::init_side(true);
+		possible_end_play_signal signal = play_controller::init_side(true);
 
-			DBG_REPLAY << "doing replay " << player_number_ << "\n";
-			// if have reached the end we don't want to execute finish_side_turn and finish_turn
-			// becasue we might not have enough data to execute them (like advancements during turn_end for example)
+		if (signal) {
+			switch (boost::apply_visitor(get_signal_type(), *signal) ) {
+				case END_TURN:
+					return signal;
+				case END_LEVEL:
+					//VICTORY/DEFEAT end_level_exception shall not return to title screen
+					LEVEL_RESULT res = boost::apply_visitor(get_result(), *signal);
+					if ( res != VICTORY && res != DEFEAT ) return signal;
+			}
+		}
+
+		DBG_REPLAY << "doing replay " << player_number_ << "\n";
+		// if have reached the end we don't want to execute finish_side_turn and finish_turn
+		// becasue we might not have enough data to execute them (like advancements during turn_end for example)
+
+		try {
 			if(do_replay() != REPLAY_FOUND_END_TURN) {
 				// We reached the end of teh replay without finding and end turn tag.
 				return boost::none;
 			}
-			finish_side_turn();
-		}
-
-		player_number_++;
-
-		if (static_cast<size_t>(player_number_) > gameboard_.teams_.size()) {
-			//during the orginal game player_number_ would also be gameboard_.teams_.size(),
-			player_number_ = gameboard_.teams_.size();
-			finish_turn();
-			tod_manager_.next_turn();
-			it_is_a_new_turn_ = true;
-			player_number_ = 1;
-			current_turn_++;
-			gui_->new_turn();
-		}
-
-		// This is necessary for replays in order to show possible movements.
-		gameboard_.new_turn(player_number_);
-
-		update_teams();
-		update_gui();
-	} catch(end_level_exception& e){
-		//VICTORY/DEFEAT end_level_exception shall not return to title screen
-		if (e.result != VICTORY && e.result != DEFEAT) {
+		} catch(end_level_exception& e){
+			//VICTORY/DEFEAT end_level_exception shall not return to title screen
+			if (e.result != VICTORY && e.result != DEFEAT) {
+				return possible_end_play_signal(e.to_struct());
+			}
+		} catch (end_turn_exception & e) {
 			return possible_end_play_signal(e.to_struct());
 		}
-	} catch (end_turn_exception & e) {
-		return possible_end_play_signal(e.to_struct());
+
+		finish_side_turn();
 	}
+
+	player_number_++;
+
+	if (static_cast<size_t>(player_number_) > gameboard_.teams_.size()) {
+		//during the orginal game player_number_ would also be gameboard_.teams_.size(),
+		player_number_ = gameboard_.teams_.size();
+		finish_turn();
+		tod_manager_.next_turn();
+		it_is_a_new_turn_ = true;
+		player_number_ = 1;
+		current_turn_++;
+		gui_->new_turn();
+	}
+
+	// This is necessary for replays in order to show possible movements.
+	gameboard_.new_turn(player_number_);
+
+	update_teams();
+	update_gui();
 
 	return boost::none;
 }

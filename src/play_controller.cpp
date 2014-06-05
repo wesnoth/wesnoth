@@ -612,7 +612,7 @@ void play_controller::init_gui(){
 	}
 }
 
-void play_controller::init_side(bool is_replay){
+possible_end_play_signal play_controller::init_side(bool is_replay){
 	log_scope("player turn");
 	bool only_visual = loading_game_ && init_side_done_;
 	init_side_done_ = false;
@@ -627,9 +627,11 @@ void play_controller::init_side(bool is_replay){
 	gamedata_.get_variable("side_number") = player_number_;
 	gamedata_.last_selected = map_location::null_location();
 
-	maybe_do_init_side(is_replay, only_visual);
+	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(is_replay, only_visual) );
 	
 	loading_game_ = false;
+
+	return boost::none;
 }
 
 /**

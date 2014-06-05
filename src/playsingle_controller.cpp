@@ -638,18 +638,25 @@ possible_end_play_signal playsingle_controller::play_turn()
 	{
 		// If a side is empty skip over it.
 		if (current_team().is_empty()) continue;
-		try {
+
+		possible_end_play_signal signal;
+		{
 			save_blocker blocker;
-			init_side();
-		} catch (end_turn_exception) {
-			if (current_team().is_network() == false) {
-				turn_data_.send_data();
-				recorder.end_turn();
-				turn_data_.sync_network();
+			signal = init_side();
+		}
+
+		if (signal) {
+			switch (boost::apply_visitor(get_signal_type(), *signal)) {
+				case END_TURN:
+					if (current_team().is_network() == false) {
+						turn_data_.send_data();
+						recorder.end_turn();
+						turn_data_.sync_network();
+					}
+					continue;
+				case END_LEVEL:
+					return signal;
 			}
-			continue;
-		} catch (end_level_exception & ele) {
-			return possible_end_play_signal(ele.to_struct());
 		}
 
 		if (replaying_) {
