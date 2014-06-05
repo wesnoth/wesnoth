@@ -683,7 +683,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 	HANDLE_END_PLAY_SIGNAL ( finish_turn() );
 
 	// Time has run out
-	HANDLE_END_PLAY_SIGNAL ( check_time_over() );
+	PROPOGATE_END_PLAY_SIGNAL ( check_time_over() );
 	return boost::none;
 }
 
@@ -982,7 +982,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 	}
 }
 
-void playsingle_controller::check_time_over(){
+possible_end_play_signal playsingle_controller::check_time_over(){
 	bool b = tod_manager_.next_turn();
 	it_is_a_new_turn_ = true;
 	if(!b) {
@@ -992,7 +992,7 @@ void playsingle_controller::check_time_over(){
 		LOG_NG << "done firing time over event...\n";
 		//if turns are added while handling 'time over' event
 		if (tod_manager_.is_time_left()) {
-			return;
+			return boost::none;
 		}
 
 		if(non_interactive()) {
@@ -1000,11 +1000,15 @@ void playsingle_controller::check_time_over(){
 			ai_testing::log_draw();
 		}
 
-		check_victory();
+		HANDLE_END_PLAY_SIGNAL( check_victory() );
 		
 		get_end_level_data().proceed_to_next_level = false;
-		throw end_level_exception(DEFEAT);
+
+		end_level_struct els = {DEFEAT};
+		return possible_end_play_signal (els);
+		//throw end_level_exception(DEFEAT);
 	}
+	return boost::none;
 }
 
 bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cmd, int index) const

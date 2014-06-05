@@ -105,7 +105,7 @@ protected:
 	virtual void do_idle_notification();
 	virtual void play_network_turn();
 	virtual void init_gui();
-	void check_time_over();
+	possible_end_play_signal check_time_over();
 	void store_recalls();
 	void store_gold(bool obs = false);
 
