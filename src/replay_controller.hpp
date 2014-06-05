@@ -40,7 +40,7 @@ public:
 	void reset_replay();
 	void stop_replay();
 	possible_end_play_signal replay_next_turn();
-	void replay_next_side();
+	possible_end_play_signal replay_next_side();
 	void process_oos(const std::string& msg) const;
 	void replay_show_everything();
 	void replay_show_each();

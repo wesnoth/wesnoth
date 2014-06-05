@@ -379,13 +379,13 @@ possible_end_play_signal replay_controller::replay_next_turn(){
 	return boost::none;
 }
 
-void replay_controller::replay_next_side(){
+possible_end_play_signal replay_controller::replay_next_side(){
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 
-	play_side();
+	HANDLE_END_PLAY_SIGNAL( play_side() );
 	while (current_team().is_empty()) {
-		play_side();
+		HANDLE_END_PLAY_SIGNAL( play_side() );
 	}
 
 	if (!skip_replay_ || !is_playing_) {
@@ -393,6 +393,7 @@ void replay_controller::replay_next_side(){
 	}
 
 	replay_ui_playback_should_stop();
+	return boost::none;
 }
 
 void replay_controller::process_oos(const std::string& msg) const
