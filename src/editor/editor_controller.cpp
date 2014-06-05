@@ -257,7 +257,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 						return true;
 				}
 			}
-			return false;
+			return true;
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
