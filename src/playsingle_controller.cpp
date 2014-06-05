@@ -658,7 +658,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			ai_testing::log_turn_start(player_number_);
-			HANDLE_END_PLAY_SIGNAL ( play_side() );
+			PROPOGATE_END_PLAY_SIGNAL ( play_side() );
 		}
 
 		finish_side_turn();
@@ -696,12 +696,12 @@ void playsingle_controller::play_idle_loop()
 	}
 }
 
-void playsingle_controller::play_side()
+possible_end_play_signal playsingle_controller::play_side()
 {
 	//check for team-specific items in the scenario
 	gui_->parse_team_overlays();
 
-	maybe_do_init_side(false);
+	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(false) );
 
 	//flag used when we fallback from ai and give temporarily control to human
 	bool temporary_human = false;
@@ -738,6 +738,8 @@ void playsingle_controller::play_side()
 						update_gui_to_player(s-1);
 					}
 				}
+			} catch (end_level_exception & e) {
+				return possible_end_play_signal(e.to_struct());
 			}
 			// Ending the turn commits all moves.
 			undo_stack_->clear();
@@ -752,6 +754,10 @@ void playsingle_controller::play_side()
 				// Give control to a human for this turn.
 				player_type_changed_ = true;
 				temporary_human = true;
+			} catch (end_level_exception & e) { //Don't know at the moment if these two are possible but can't hurt to add
+				return possible_end_play_signal(e.to_struct());
+			} catch (end_turn_exception & e) {
+				return possible_end_play_signal(e.to_struct());
 			}
 			if(!player_type_changed_)
 			{
@@ -759,7 +765,13 @@ void playsingle_controller::play_side()
 			}
 
 		} else if(current_team().is_network()) {
-			play_network_turn();
+			try {
+				play_network_turn();
+			} catch (end_level_exception & e) { //Don't know at the moment if these two are possible but can't hurt to add
+				return possible_end_play_signal(e.to_struct());
+			} catch (end_turn_exception & e) {
+				return possible_end_play_signal(e.to_struct());
+			}
 		} else if(current_team().is_idle()) {
 			try{
 				end_turn_enable(false);
@@ -781,6 +793,8 @@ void playsingle_controller::play_side()
 						update_gui_to_player(s-1);
 					}
 				}
+			} catch (end_level_exception  e) { //this shouldn't really be possible, but in case it is somehow this will prevent a crash.
+				return possible_end_play_signal(e.to_struct());
 			}
 		}
 
@@ -790,6 +804,7 @@ void playsingle_controller::play_side()
 	// Keep looping if the type of a team (human/ai/networked)
 	// has changed mid-turn
 	skip_next_turn_ = false;
+	return boost::none;
 }
 
 void playsingle_controller::before_human_turn()

@@ -92,7 +92,7 @@ public:
 
 protected:
 	possible_end_play_signal play_turn();
-	virtual void play_side();
+	virtual possible_end_play_signal play_side();
 	virtual void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();

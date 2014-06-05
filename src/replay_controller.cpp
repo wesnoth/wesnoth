@@ -104,7 +104,7 @@ possible_end_play_signal replay_controller::try_run_to_completion() {
 			return boost::none;
 		} else {
 			if (!is_playing_) {
-				HANDLE_END_PLAY_SIGNAL( play_replay() );
+				PROPOGATE_END_PLAY_SIGNAL( play_replay() );
 			}
 		}
 	}
