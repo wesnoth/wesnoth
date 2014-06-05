@@ -511,9 +511,10 @@ namespace {
 
 						LOG_CS << "uploading campaign '" << upload["name"] << "' from " << addr << ".\n";
 						config &data = upload.child("data");
+
 						const std::string& name = upload["name"];
-						std::string lc_name(name.size(), ' ');
-						std::transform(name.begin(), name.end(), lc_name.begin(), tolower);
+						const std::string& lc_name = utils::lowercase(name);
+
 						config *campaign = NULL;
 						BOOST_FOREACH(config &c, campaigns().child_range("campaign")) {
 							if (utils::lowercase(c["name"]) == lc_name) {
