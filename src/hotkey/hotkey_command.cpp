@@ -238,7 +238,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear Messages"), false, hotkey::SCOPE_GAME, "" },
 
 	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change Language"), false, hotkey::SCOPE_MAIN_MENU, "" },
-	{ hotkey::TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true ,hotkey::SCOPE_MAIN_MENU, "" },
+	{ hotkey::TITLE_SCREEN__RELOAD_WML, "title_screen__reload_wml", N_("Refresh WML"), true ,hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::TITLE_SCREEN__NEXT_TIP, "title_screen__next_tip", N_("Next Tip of the Day"), false, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__PREVIOUS_TIP, "title_screen__previous_tip", N_("Previous Tip of the Day"), false, hotkey::SCOPE_MAIN_MENU, "" },
 	{ hotkey::TITLE_SCREEN__TUTORIAL, "title_screen__tutorial", N_("Start Tutorial"), false	, hotkey::SCOPE_MAIN_MENU, "" },
