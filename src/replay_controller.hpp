@@ -52,7 +52,7 @@ public:
 	virtual void check_end_level() {}
 	virtual void on_not_observer() {}
 
-	bool manage_noninteractively();
+	possible_end_play_signal try_run_to_completion();
 
 protected:
 	virtual void init_gui();

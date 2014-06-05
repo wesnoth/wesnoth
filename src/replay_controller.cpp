@@ -32,6 +32,7 @@
 #include "synced_context.hpp"
 
 #include <boost/foreach.hpp>
+#include <boost/scoped_ptr.hpp>
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -41,37 +42,72 @@ static lg::log_domain log_replay("replay");
 #define LOG_REPLAY LOG_STREAM(info, log_replay)
 #define ERR_REPLAY LOG_STREAM(err, log_replay)
 
+possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
+
 LEVEL_RESULT play_replay_level(const config& game_config,
 		const config* level, CVideo& video, game_state& state_of_game, bool is_unit_test)
 {
-	try{
-		const int ticks = SDL_GetTicks();
+	const int ticks = SDL_GetTicks();
 
-		config init_level = *level;
-		carryover_info sides(state_of_game.carryover_sides);
-		sides.transfer_to(init_level);
-		state_of_game.carryover_sides = sides.to_config();
+	config init_level = *level;
+	carryover_info sides(state_of_game.carryover_sides);
+	sides.transfer_to(init_level);
+	state_of_game.carryover_sides = sides.to_config();
 
-		DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-		replay_controller replaycontroller(init_level, state_of_game, ticks, game_config, video);
-		DBG_NG << "created objects... " << (SDL_GetTicks() - replaycontroller.get_ticks()) << "\n";
-		const events::command_disabler disable_commands;
+	DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << std::endl;
 
-		//replay event-loop
-		for (;;){
-			replaycontroller.play_slice();
-			if (is_unit_test) { 
-				if (replaycontroller.manage_noninteractively()) {
-					return VICTORY;
-				}
-			}
-		}
+	boost::scoped_ptr<replay_controller> rc;
+
+	try {
+		rc.reset(new replay_controller(init_level, state_of_game, ticks, game_config, video));
+	} catch (end_level_exception & e){
+		return e.result;
+	} catch (end_turn_exception & e) {
+		throw; //this should never happen? It would likely have crashed the program before, so in refactor I won't change but we should fix it later.
 	}
-	catch(end_level_exception&){
-		DBG_NG << "play_replay_level: end_level_exception\n";
+	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
+
+	const events::command_disabler disable_commands;
+
+	//replay event-loop
+	possible_end_play_signal signal = play_replay_level_main_loop(*rc, is_unit_test);
+
+	if (signal) {
+		switch( boost::apply_visitor( get_signal_type(), *signal ) ) {
+			case END_LEVEL:
+				DBG_NG << "play_replay_level: end_level_exception" << std::endl;
+				break;
+			case END_TURN:
+				DBG_NG << "Unchecked end_turn_exception signal propogated to replay controller play_replay_level! Terminating." << std::endl;
+				assert(false && "unchecked end turn exception in replay controller");
+				throw 42;
+		}
 	}
 
 	return VICTORY;
+}
+
+possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test) {
+	if (is_unit_test) {
+		return replaycontroller.try_run_to_completion();
+	}
+
+	for (;;){
+		HANDLE_END_PLAY_SIGNAL( replaycontroller.play_slice() );
+	}
+}
+
+possible_end_play_signal replay_controller::try_run_to_completion() {
+	for (;;) {
+		HANDLE_END_PLAY_SIGNAL( play_slice() );
+		if (recorder.at_end()) {
+			return boost::none;
+		} else {
+			if (!is_playing_) {
+				HANDLE_END_PLAY_SIGNAL( play_replay() );
+			}
+		}
+	}
 }
 
 replay_controller::replay_controller(const config& level,
@@ -578,13 +614,3 @@ bool replay_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 	}
 }
 
-bool replay_controller::manage_noninteractively() {
-	if (recorder.at_end()) {
-		return true;
-	} else {
-		if (!is_playing_) {
-			play_replay();
-		}
-		return false;
-	}
-}
