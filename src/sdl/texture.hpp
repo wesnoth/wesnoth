@@ -281,6 +281,13 @@ public:
 	 */
 	 void update_pixels(SDL_Surface* surf);
 
+	 /**
+	  * Tells whether the instance really handles an SDL_Texture object.
+	  *
+	  * @return                   True if the handled pointer is NULL.
+	  */
+	 bool null() const;
+
 private:
 	/**
 	 * The reference count of the texture.

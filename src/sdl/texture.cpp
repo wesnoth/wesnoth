@@ -343,6 +343,11 @@ void ttexture::update_pixels(SDL_Surface *surf)
 	}
 }
 
+bool ttexture::null() const
+{
+	return texture_ == NULL;
+}
+
 void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
 {
 	if(access == SDL_TEXTUREACCESS_STATIC) {
