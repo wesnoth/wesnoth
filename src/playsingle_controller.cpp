@@ -661,7 +661,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 			HANDLE_END_PLAY_SIGNAL ( play_side() );
 		}
 
-		HANDLE_END_PLAY_SIGNAL( finish_side_turn() );
+		finish_side_turn();
 
 		if(non_interactive()) {
 			LOG_AIT << " Player " << player_number_ << ": " <<
