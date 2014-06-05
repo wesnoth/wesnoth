@@ -340,6 +340,87 @@ void playsingle_controller::report_victory(
 	report << '\n' << goldmsg;
 }
 
+possible_end_play_signal playsingle_controller::play_scenario_init(end_level_data & /*eld*/, bool & past_prestart) {
+	// At the beginning of the scenario, save a snapshot as replay_start
+	if(gamestate_.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
+		gamestate_.replay_start() = to_config();
+	}
+	HANDLE_END_PLAY_SIGNAL( fire_preload() );
+		
+	replaying_ = (recorder.at_end() == false);
+
+	if(!loading_game_ )
+	{
+		if(replaying_)
+		{
+			//can this codepath be reached ?
+			//note this when we are entering an mp game and see the 'replay' of the game 
+			//this path is not reached because we receive the replay later
+			config* pstart = recorder.get_next_action();
+			assert(pstart->has_child("start"));
+		}
+		else
+		{
+			assert(recorder.empty());
+			recorder.add_start();
+			recorder.get_next_action();
+		}
+		//we can only use a set_scontext_synced with a non empty recorder.
+		set_scontext_synced sync;
+			
+		HANDLE_END_PLAY_SIGNAL( fire_prestart(true) );
+		init_gui();
+		past_prestart = true;
+		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
+
+		HANDLE_END_PLAY_SIGNAL( events::raise_draw_event() );
+		HANDLE_END_PLAY_SIGNAL( fire_start(true) );
+		gui_->recalculate_minimap();
+	}
+	else
+	{
+		init_gui();
+		past_prestart = true;
+		HANDLE_END_PLAY_SIGNAL( events::raise_draw_event() );
+		HANDLE_END_PLAY_SIGNAL( fire_start(false) );
+		gui_->recalculate_minimap();
+	}
+	return boost::none;
+}
+
+possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_level_data & end_level, bool & /*past_prestart*/) {
+	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
+
+	// Initialize countdown clock.
+	std::vector<team>::iterator t;
+	for(t = gameboard_.teams_.begin(); t != gameboard_.teams_.end(); ++t) {
+		if (gamestate_.mp_settings().mp_countdown && !loading_game_ ){
+			t->set_countdown_time(1000 * gamestate_.mp_settings().mp_countdown_init_time);
+		}
+	}
+
+	// if we loaded a save file in linger mode, skip to it.
+	if (linger_) {
+		//determine the bonus gold handling for this scenario
+		end_level.read(level_.child_or_empty("endlevel"));
+		end_level.transient.carryover_report = false;
+		end_level.transient.disabled = true;
+		end_level_struct els = { SKIP_TO_LINGER };
+		return possible_end_play_signal ( els );
+		//throw end_level_exception(SKIP_TO_LINGER);
+	}
+
+	// Avoid autosaving after loading, but still
+	// allow the first turn to have an autosave.
+	do_autosaves_ = !loading_game_;
+	ai_testing::log_game_start();
+	for(; ; first_player_ = 1) {
+		HANDLE_END_PLAY_SIGNAL( play_turn() );
+		do_autosaves_ = true;
+	} //end for loop
+	return boost::none;
+}
+
 LEVEL_RESULT playsingle_controller::play_scenario(
 	const config::const_child_itors &story,
 	bool skip_replay)
@@ -380,79 +461,140 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
-		// At the beginning of the scenario, save a snapshot as replay_start
-		if(gamestate_.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
-			gamestate_.replay_start() = to_config();
-		}
-		fire_preload();
-		
-		replaying_ = (recorder.at_end() == false);
+		possible_end_play_signal signal = play_scenario_init(end_level, past_prestart);
 
-		if(!loading_game_ )
-		{
-			if(replaying_)
-			{
-				//can this codepath be reached ?
-				//note this when we are entering an mp game and see the 'replay' of the game 
-				//this path is not reached because we receive the replay later
-				config* pstart = recorder.get_next_action();
-				assert(pstart->has_child("start"));
-			}
-			else
-			{
-				assert(recorder.empty());
-				recorder.add_start();
-				recorder.get_next_action();
-			}
-			//we can only use a set_scontext_synced with a non empty recorder.
-			set_scontext_synced sync;
+		if (!signal) {
+
+			signal = play_scenario_main_loop(end_level, past_prestart);
+		}
+
+		if (signal) {
+			switch (boost::apply_visitor( get_signal_type(), *signal )) {
+				//BEGIN CASES
+				case END_TURN:
+					assert(false && "end turn signal propogated to playsingle_controller::play_scenario. This results in terminate!");
+					throw 42;
+				case END_LEVEL:
+					if(!past_prestart) {
+						sdl::draw_solid_tinted_rectangle(
+							0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
+							gui_->video().getSurface()
+						);
+						update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
+					}
 			
-			fire_prestart(true);
-			init_gui();
-			past_prestart = true;
-			LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
-
-			events::raise_draw_event();
-			fire_start(true);
-			gui_->recalculate_minimap();
-		}
-		else
-		{
-			init_gui();
-			past_prestart = true;
-			events::raise_draw_event();
-			fire_start(false);
-			gui_->recalculate_minimap();
-		}
+					ai_testing::log_game_end();
+					LEVEL_RESULT end_level_result = boost::apply_visitor( get_result(), *signal );
+					if (!end_level.transient.custom_endlevel_music.empty()) {
+						if (end_level_result == DEFEAT) {
+							set_defeat_music_list(end_level.transient.custom_endlevel_music);
+						} else {
+							set_victory_music_list(end_level.transient.custom_endlevel_music);
+						}
+					}
 		
-
-		LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
-
-		// Initialize countdown clock.
-		std::vector<team>::iterator t;
-		for(t = gameboard_.teams_.begin(); t != gameboard_.teams_.end(); ++t) {
-			if (gamestate_.mp_settings().mp_countdown && !loading_game_ ){
-				t->set_countdown_time(1000 * gamestate_.mp_settings().mp_countdown_init_time);
-			}
-		}
-
-		// if we loaded a save file in linger mode, skip to it.
-		if (linger_) {
-			//determine the bonus gold handling for this scenario
-			end_level.read(level_.child_or_empty("endlevel"));
-			end_level.transient.carryover_report = false;
-			end_level.transient.disabled = true;
-			throw end_level_exception(SKIP_TO_LINGER);
-		}
-
-		// Avoid autosaving after loading, but still
-		// allow the first turn to have an autosave.
-		do_autosaves_ = !loading_game_;
-		ai_testing::log_game_start();
-		for(; ; first_player_ = 1) {
-			play_turn();
-			do_autosaves_ = true;
-		} //end for loop
+					if (gameboard_.teams_.empty())
+					{
+						//store persistent teams
+						gamestate_.snapshot = config();
+		
+						return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
+					}
+					const bool obs = is_observer();
+					if (game_config::exit_at_end) {
+						exit(0);
+					}
+					if (end_level_result == DEFEAT || end_level_result == VICTORY)
+					{
+						gamestate_.classification().completion = (end_level_result == VICTORY) ? "victory" : "defeat";
+						// If we're a player, and the result is victory/defeat, then send
+						// a message to notify the server of the reason for the game ending.
+						if (!obs) {
+							config cfg;
+							config& info = cfg.add_child("info");
+							info["type"] = "termination";
+							info["condition"] = "game over";
+							info["result"] = gamestate_.classification().completion;
+							network::send_data(cfg, 0);
+						} else {
+							gui2::show_transient_message(gui_->video(),_("Game Over"),
+												_("The game is over."));
+							return OBSERVER_END;
+						}
+					}
+	
+					if (end_level_result == QUIT) {
+						return QUIT;
+					}
+					else if (end_level_result == DEFEAT)
+					{
+						gamestate_.classification().completion = "defeat";
+						game_events::fire("defeat");
+			
+						if (!obs) {
+							const std::string& defeat_music = select_defeat_music();
+							if(defeat_music.empty() != true)
+								sound::play_music_once(defeat_music);
+			
+							persist_.end_transaction();
+							return DEFEAT;
+						} else {
+							return QUIT;
+						}
+					}
+					else if (end_level_result == VICTORY)
+					{
+						gamestate_.classification().completion =
+							!end_level.transient.linger_mode ? "running" : "victory";
+						game_events::fire("victory");
+			
+						//
+						// Play victory music once all victory events
+						// are finished, if we aren't observers.
+						//
+						// Some scenario authors may use 'continue'
+						// result for something that is not story-wise
+						// a victory, so let them use [music] tags
+						// instead should they want special music.
+						//
+						if (!obs && end_level.transient.linger_mode) {
+							const std::string& victory_music = select_victory_music();
+							if(victory_music.empty() != true)
+								sound::play_music_once(victory_music);
+						}
+			
+						// Add all the units that survived the scenario.
+						LOG_NG << "Add units that survived the scenario to the recall list.\n";
+						BOOST_FOREACH (unit & un, gameboard_.units_) {
+							if (gameboard_.teams_[un.side() - 1].persistent()) {
+								LOG_NG << "Added unit " << un.id() << ", " << un.name() << "\n";
+								un.new_turn();
+								un.new_scenario();
+								gameboard_.teams_[un.side() - 1].recall_list().push_back(un);
+							}
+						}
+						gamestate_.snapshot = config();
+						if(!is_observer()) {
+							persist_.end_transaction();
+						}
+		
+						return VICTORY;
+					}
+					else if (end_level_result == SKIP_TO_LINGER)
+					{
+						LOG_NG << "resuming from loaded linger state...\n";
+						//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
+						gamestate_.snapshot = config();
+						if(!is_observer()) {
+							persist_.end_transaction();
+						}
+						return VICTORY;
+					}
+							
+					break;
+				//END CASES
+			} // END SWITCH
+		} //end if
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		//
@@ -460,124 +602,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			gamestate_ = game_state();
 		}
 		throw;
-	} catch (end_level_exception &end_level_exn) {
-		if(!past_prestart) {
-			sdl::draw_solid_tinted_rectangle(
-				0, 0, gui_->video().getx(), gui_->video().gety(), 0, 0, 0, 1.0,
-				gui_->video().getSurface()
-			);
-			update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
-		}
-
-		ai_testing::log_game_end();
-		LEVEL_RESULT end_level_result = end_level_exn.result;
-		if (!end_level.transient.custom_endlevel_music.empty()) {
-			if (end_level_result == DEFEAT) {
-				set_defeat_music_list(end_level.transient.custom_endlevel_music);
-			} else {
-				set_victory_music_list(end_level.transient.custom_endlevel_music);
-			}
-		}
-
-		if (gameboard_.teams_.empty())
-		{
-			//store persistent teams
-			gamestate_.snapshot = config();
-
-			return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
-		}
-		const bool obs = is_observer();
-		if (game_config::exit_at_end) {
-			exit(0);
-		}
-		if (end_level_result == DEFEAT || end_level_result == VICTORY)
-		{
-			gamestate_.classification().completion = (end_level_exn.result == VICTORY) ? "victory" : "defeat";
-			// If we're a player, and the result is victory/defeat, then send
-			// a message to notify the server of the reason for the game ending.
-			if (!obs) {
-				config cfg;
-				config& info = cfg.add_child("info");
-				info["type"] = "termination";
-				info["condition"] = "game over";
-				info["result"] = gamestate_.classification().completion;
-				network::send_data(cfg, 0);
-			} else {
-				gui2::show_transient_message(gui_->video(),_("Game Over"),
-									_("The game is over."));
-				return OBSERVER_END;
-			}
-		}
-
-		if (end_level_result == QUIT) {
-			return QUIT;
-		}
-		else if (end_level_result == DEFEAT)
-		{
-			gamestate_.classification().completion = "defeat";
-			game_events::fire("defeat");
-
-			if (!obs) {
-				const std::string& defeat_music = select_defeat_music();
-				if(defeat_music.empty() != true)
-					sound::play_music_once(defeat_music);
-
-				persist_.end_transaction();
-				return DEFEAT;
-			} else {
-				return QUIT;
-			}
-		}
-		else if (end_level_result == VICTORY)
-		{
-			gamestate_.classification().completion =
-				!end_level.transient.linger_mode ? "running" : "victory";
-			game_events::fire("victory");
-
-			//
-			// Play victory music once all victory events
-			// are finished, if we aren't observers.
-			//
-			// Some scenario authors may use 'continue'
-			// result for something that is not story-wise
-			// a victory, so let them use [music] tags
-			// instead should they want special music.
-			//
-			if (!obs && end_level.transient.linger_mode) {
-				const std::string& victory_music = select_victory_music();
-				if(victory_music.empty() != true)
-					sound::play_music_once(victory_music);
-			}
-
-			// Add all the units that survived the scenario.
-			LOG_NG << "Add units that survived the scenario to the recall list.\n";
-			BOOST_FOREACH (unit & un, gameboard_.units_) {
-				if (gameboard_.teams_[un.side() - 1].persistent()) {
-					LOG_NG << "Added unit " << un.id() << ", " << un.name() << "\n";
-					un.new_turn();
-					un.new_scenario();
-					gameboard_.teams_[un.side() - 1].recall_list().push_back(un);
-				}
-			}
-			gamestate_.snapshot = config();
-			if(!is_observer()) {
-				persist_.end_transaction();
-			}
-
-			return VICTORY;
-		}
-		else if (end_level_result == SKIP_TO_LINGER)
-		{
-			LOG_NG << "resuming from loaded linger state...\n";
-			//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
-			gamestate_.snapshot = config();
-			if(!is_observer()) {
-				persist_.end_transaction();
-			}
-			return VICTORY;
-		}
-	} // end catch
-	catch(network::error& e) {
+	} catch(network::error& e) {
 		bool disconnect = false;
 		if(e.socket) {
 			e.disconnect();
