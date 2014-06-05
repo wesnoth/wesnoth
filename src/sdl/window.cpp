@@ -83,6 +83,15 @@ void twindow::clear()
 	}
 }
 
+void twindow::clear(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+{
+	SDL_SetRenderDrawColor(*this, r, g, b, a);
+	if(SDL_RenderClear(*this) != 0) {
+		throw texception("Failed to clear the SDL_Renderer object.",
+						 true);
+	}
+}
+
 void twindow::render()
 {
 	SDL_RenderPresent(*this);
