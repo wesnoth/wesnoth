@@ -37,6 +37,8 @@ public:
 
 	virtual std::string get_help_string();
 
+	bool supports_swap() { return false; }
+
 	const std::set<std::string>& get_selected_bg_items() { return selected_bg_items_; }
 
 private:
