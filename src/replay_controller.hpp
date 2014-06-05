@@ -59,7 +59,7 @@ protected:
 
 private:
 	void init();
-	virtual void play_turn();
+	possible_end_play_signal play_turn();
 	virtual void play_side();
 	void update_teams();
 	void update_gui();

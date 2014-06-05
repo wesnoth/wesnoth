@@ -369,7 +369,7 @@ possible_end_play_signal replay_controller::replay_next_turn(){
 	is_playing_ = true;
 	replay_ui_playback_should_start();
 
-	HANDLE_END_PLAY_SIGNAL( play_turn() );
+	PROPOGATE_END_PLAY_SIGNAL( play_turn() );
 
  	if (!skip_replay_ || !is_playing_){
 		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
@@ -477,13 +477,13 @@ possible_end_play_signal replay_controller::play_replay(){
 possible_end_play_signal replay_controller::play_replay_main_loop() {
 	DBG_REPLAY << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 	for(; !recorder.at_end() && is_playing_; first_player_ = 1) {
-		HANDLE_END_PLAY_SIGNAL ( play_turn() );
+		PROPOGATE_END_PLAY_SIGNAL ( play_turn() );
 	}
 	return boost::none;
 }
 
 //make all sides move, then stop
-void replay_controller::play_turn(){
+possible_end_play_signal replay_controller::play_turn(){
 
 	LOG_REPLAY << "turn: " << current_turn_ << "\n";
 
@@ -495,9 +495,10 @@ void replay_controller::play_turn(){
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
 		last_team = static_cast<size_t>(player_number_) == gameboard_.teams_.size();
-		play_side();
-		play_slice();
+		HANDLE_END_PLAY_SIGNAL( play_side() );
+		HANDLE_END_PLAY_SIGNAL( play_slice() );
 	}
+	return boost::none;
 }
 
 //make only one side move
