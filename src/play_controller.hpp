@@ -201,7 +201,7 @@ protected:
 	void init_side(bool is_replay = false);
 	void place_sides_in_preferred_locations();
 	virtual void finish_side_turn();
-	void finish_turn();
+	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 
 	void enter_textbox();

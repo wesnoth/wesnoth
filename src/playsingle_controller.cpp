@@ -680,7 +680,7 @@ possible_end_play_signal playsingle_controller::play_turn()
 	if(player_number_ > static_cast<int>(gameboard_.teams_.size()))
 		player_number_ = gameboard_.teams_.size();
 
-	HANDLE_END_PLAY_SIGNAL ( finish_turn() );
+	finish_turn();
 
 	// Time has run out
 	PROPOGATE_END_PLAY_SIGNAL ( check_time_over() );
