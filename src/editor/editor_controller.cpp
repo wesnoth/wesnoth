@@ -287,9 +287,10 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_STATUS_TABLE:
 			return !context_manager_->get_map_context().get_teams().empty();
 
+		case HOTKEY_TERRAIN_DESCRIPTION:
+			return gui().mouseover_hex().valid();
+
 			// unit tool related
-		case HOTKEY_UNIT_DESCRIPTION:
-			return toolkit_->is_mouse_action_set(HOTKEY_EDITOR_TOOL_UNIT);
 		case HOTKEY_DELETE_UNIT:
 		case HOTKEY_RENAME_UNIT:
 		case HOTKEY_EDITOR_UNIT_CHANGE_ID:
@@ -297,6 +298,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
+		case HOTKEY_UNIT_DESCRIPTION:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map& units = context_manager_->get_map_context().get_units();
@@ -1288,6 +1290,16 @@ void editor_controller::right_mouse_up(int x, int y, const bool /*browse*/)
 	if (a) set_button_state(*gui_);
 	toolkit_->set_mouseover_overlay();
 	context_manager_->refresh_after_action();
+}
+
+void editor_controller::terrain_description()
+{
+	const map_location& loc = gui().mouseover_hex();
+	if (resources::game_map->on_board(loc) == false)
+		return;
+
+	const terrain_type& type = resources::game_map->get_terrain_info(loc);
+	dialogs::show_terrain_description(type);
 }
 
 void editor_controller::process_keyup_event(const SDL_Event& event)

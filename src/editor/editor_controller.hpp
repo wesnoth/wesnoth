@@ -124,6 +124,7 @@ class editor_controller : public controller_base,
 		/** Grid toggle */
 		void toggle_grid();
 
+		void terrain_description();
 		void unit_description();
 		void change_unit_id();
 		void rename_unit();
