@@ -17,14 +17,15 @@
 
 #include "global.hpp"
 
-#include "map.hpp"
 #include "team.hpp"
 #include "unit_map.hpp"
 
 #include <boost/optional.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <vector>
 
 class config;
+class gamemap;
 
 namespace events {
 	class mouse_handler;
@@ -49,7 +50,7 @@ class game_board {
 
 	std::vector<team> teams_;
 
-	gamemap map_;
+	boost::scoped_ptr<gamemap> map_;
 	unit_map units_;
 
 	//TODO: Remove these when we have refactored enough to make it possible.
@@ -81,11 +82,18 @@ class game_board {
 
 	// Constructors and const accessors
 
-	game_board(const config & game_config, const config & level) : teams_(), map_(game_config, level), units_() {}
+	game_board(const config & game_config, const config & level);
 
 	const std::vector<team> & teams() const { return teams_; }
-	const gamemap & map() const { return map_; }
+	const gamemap & map() const { return *map_; }
 	const unit_map & units() const { return units_; }
+
+	// Copy and swap idiom, because we have a scoped pointer.
+
+	game_board(const game_board & other);
+	game_board & operator= (game_board other);
+
+	friend void swap(game_board & one, game_board & other);
 
 	// Saving
 
@@ -108,14 +116,17 @@ class game_board {
 	boost::optional<std::string> replace_map (const gamemap & r);
 	void overlay_map (const gamemap & o, const config & cfg, map_location loc, bool border);
 
-	bool change_terrain(const map_location &loc, const t_translation::t_terrain &t,
-                    gamemap::tmerge_mode mode, bool replace_if_failed); //used only by lua
+	bool change_terrain(const map_location &loc, const std::string &t, 
+                    const std::string & mode, bool replace_if_failed); //used only by lua
 
 	// Global accessor from unit.hpp
 
 	unit_map::iterator find_visible_unit(const map_location &loc, const team& current_team, bool see_all = false);
 	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
 };
+
+void swap(game_board & one, game_board & other);
+
 
 /**
  * This object is used to temporary place a unit in the unit map, swapping out
