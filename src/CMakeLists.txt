@@ -860,6 +860,7 @@ set(wesnoth-main_SRC
 	replay_controller.cpp
 	resources.cpp
 	save_blocker.cpp
+	save_index.cpp
 	savegame.cpp
 	scripting/debug_lua.cpp
 	scripting/lua.cpp

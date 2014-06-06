@@ -18,10 +18,8 @@
 
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
-#include "tod_manager.hpp"
 #include "show_dialog.hpp"
 #include "serialization/compression.hpp"
-
 class config_writer;
 class game_display;
 
@@ -30,51 +28,11 @@ struct illegal_filename_exception {};
 
 namespace savegame {
 
-/** Filename and modification date for a file list */
-class save_info {
-private:
-	friend class create_save_info;
-private:
-	save_info(const std::string& name, const time_t& modified) :
-		name_(name), modified_(modified)
-	{}
-
-public:
-	const std::string& name()     const  { return name_; }
-	const time_t&      modified() const  { return modified_; }
-public:
-	std::string format_time_summary() const;
-	std::string format_time_local() const;
-	const config& summary() const;
-private:
-	std::string name_;
-	time_t modified_;
-};
-
-/**
- * A structure for comparing to save_info objects based on their modified time.
- * If the times are equal, will order based on the name.
- */
-struct save_info_less_time {
-	bool operator()(const save_info& a, const save_info& b) const;
-};
-
-std::vector<save_info> get_saves_list(const std::string* dir = NULL, const std::string* filter = NULL);
-
-/** Read the complete config information out of a savefile. */
-void read_save_file(const std::string& name, config& cfg, std::string* error_log);
-
 /** Returns true if there is already a savegame with that name. */
 bool save_game_exists(const std::string& name, compression::format compressed);
 
 /** Delete all autosaves of a certain scenario. */
 void clean_saves(const std::string& label);
-
-/** Remove autosaves that are no longer needed (according to the autosave policy in the preferences). */
-void remove_old_auto_saves(const int autosavemax, const int infinite_auto_saves);
-
-/** Delete a savegame. */
-void delete_game(const std::string& name);
 
 /** The class for loading a savefile. */
 class loadgame
