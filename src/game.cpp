@@ -784,6 +784,12 @@ int main(int argc, char** argv)
 	} catch(std::exception & e) { //Added this in case the others fall through.
 		std::cerr << "Caught general exception: " << e.what() << std::endl;
 		return 1;
+	} catch(std::string & e) {
+		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
+		return 1;
+	} catch(const char * e) {
+		std::cerr << "Caught a string thrown as an exception: " << e << std::endl;
+		return 1;
 	} catch(...) { //Added this to ensure that even when we terminate with `throw 42`, the exception is caught and all destructors are actually called.
 		std::cerr << "Caught unspecified general exception. Terminating." << std::endl; //Apparently, some compilers will simply terminate without
 		return 1;									//calling destructors if there is no one to catch it at all.
