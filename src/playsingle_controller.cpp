@@ -723,31 +723,44 @@ possible_end_play_signal playsingle_controller::play_side()
 		if(current_team().is_human() || temporary_human) {
 			LOG_NG << "is human...\n";
 			temporary_human = false;
-			try{
-				// If a side is dead end the turn, but play at least side=1's
-				// turn in case all sides are dead
-				if (side_units(player_number_) != 0
-					|| (resources::units->size() == 0 && player_number_ == 1))
-				{
-					before_human_turn();
-					play_human_turn();
+			// If a side is dead end the turn, but play at least side=1's
+			// turn in case all sides are dead
+			if (side_units(player_number_) != 0
+				|| (resources::units->size() == 0 && player_number_ == 1))
+			{
+				possible_end_play_signal signal;
+				try {
+					before_human_turn(); //This line throws! the ai manager "raise" line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
+					signal = play_human_turn();
+				} catch (end_level_exception & e) {
+					signal = e.to_struct();
+				} catch (end_turn_exception & e) {
+					signal = e.to_struct();
 				}
-			} catch(end_turn_exception& end_turn) {
-				if (int(end_turn.redo) == player_number_) {
-					player_type_changed_ = true;
-					// If new controller is not human,
-					// reset gui to prev human one
-					if (!gameboard_.teams_[player_number_-1].is_human()) {
-						browse_ = true;
-						int s = find_human_team_before_current_player();
-						if (s <= 0)
-							s = gui_->playing_side();
-						update_gui_to_player(s-1);
+
+
+				if (signal) {
+					switch (boost::apply_visitor(get_signal_type(), *signal)) {
+						case END_LEVEL:
+							return signal;
+						case END_TURN:
+							if (int(boost::apply_visitor(get_redo(),*signal)) == player_number_) {
+								player_type_changed_ = true;
+								// If new controller is not human,
+								// reset gui to prev human one
+								if (!gameboard_.teams_[player_number_-1].is_human()) {
+									browse_ = true;
+									int s = find_human_team_before_current_player();
+									if (s <= 0)
+										s = gui_->playing_side();
+									update_gui_to_player(s-1);
+								}
+							}
+
 					}
 				}
-			} catch (end_level_exception & e) {
-				return possible_end_play_signal(e.to_struct());
 			}
+
 			// Ending the turn commits all moves.
 			undo_stack_->clear();
 			if ( !player_type_changed_ )
@@ -842,16 +855,18 @@ void playsingle_controller::execute_gotos(){
 	menu_handler_.execute_gotos(mouse_handler_, player_number_);
 }
 
-void playsingle_controller::play_human_turn() {
+possible_end_play_signal playsingle_controller::play_human_turn() {
 	show_turn_dialog();
-	execute_gotos();
+	HANDLE_END_PLAY_SIGNAL( execute_gotos() );
 
 	end_turn_enable(true);
 	while(!end_turn_) {
-		play_slice();
-		check_end_level();
+		HANDLE_END_PLAY_SIGNAL( play_slice() );
+		HANDLE_END_PLAY_SIGNAL( check_end_level() );
 		gui_->draw();
 	}
+
+	return boost::none;
 }
 
 void playsingle_controller::linger()

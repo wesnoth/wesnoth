@@ -162,13 +162,13 @@ void playmp_controller::think_about_countdown(int ticks) {
 	}
 }
 
-void playmp_controller::play_human_turn(){
+possible_end_play_signal playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
-	execute_gotos();
+	HANDLE_END_PLAY_SIGNAL( execute_gotos() );
 
 	if (!linger_ || is_host()) {
 		end_turn_enable(true);
@@ -178,7 +178,8 @@ void playmp_controller::play_human_turn(){
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
-				turn_info::PROCESS_DATA_RESULT res = turn_data_.process_network_data(cfg, skip_replay_);
+				turn_info::PROCESS_DATA_RESULT res;
+				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
 				//PROCESS_RESTART_TURN_TEMPORARY_LOCAL should be impossible because that's means the currently active side (that's us) left.
 				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 				{
@@ -199,7 +200,10 @@ void playmp_controller::play_human_turn(){
 
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
-					throw end_turn_exception(gui_->playing_side());
+
+					end_turn_struct ets = {gui_->playing_side()};
+					return possible_end_play_signal(ets);
+					//throw end_turn_exception(gui_->playing_side());
 				}
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
@@ -213,8 +217,8 @@ void playmp_controller::play_human_turn(){
 				}
 			}
 
-			play_slice();
-			check_end_level();
+			HANDLE_END_PLAY_SIGNAL( play_slice() );
+			HANDLE_END_PLAY_SIGNAL( check_end_level() );
 		
 		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
 			SDL_Delay(1);
@@ -241,12 +245,14 @@ void playmp_controller::play_human_turn(){
 					current_team().set_countdown_time(10);
 				}
 				
-				throw end_turn_exception();
+				return possible_end_play_signal(end_turn_exception().to_struct());
+				//throw end_turn_exception();
 			}
 		}
 
 		gui_->draw();
 	}
+	return boost::none;
 }
 
 void playmp_controller::play_idle_loop()

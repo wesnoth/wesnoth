@@ -96,7 +96,7 @@ protected:
 	virtual void before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
-	virtual void play_human_turn();
+	virtual possible_end_play_signal play_human_turn();
 	virtual void after_human_turn();
 	void end_turn_enable(bool enable);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
