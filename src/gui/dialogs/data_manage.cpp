@@ -38,6 +38,7 @@
 #include "gui/widgets/window.hpp"
 #include "language.hpp"
 #include "preferences_display.hpp"
+#include "savegame.hpp"
 #include "utils/foreach.tpp"
 
 #include <cctype>

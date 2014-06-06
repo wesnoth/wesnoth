@@ -106,7 +106,7 @@ public:
 	/** the last location where a select event fired. */
 	map_location last_selected;
 
-	void write_snapshot(config& cfg);
+	void write_snapshot(config& cfg) const ;
 	void write_config(config_writer& out);
 
 	const std::string& next_scenario() const { return next_scenario_; }
@@ -173,8 +173,6 @@ public:
 	~game_state(){}
 	game_state& operator=(const game_state& state);
 
-	//write the gamestate into a config object
-	void write_snapshot(config& cfg) const;
 	//write the config information into a stream (file)
 	void write_config(config_writer& out) const;
 

@@ -60,6 +60,7 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "save_index.hpp"
 #include "sound.hpp"
 #include "statistics_dialog.hpp"
 #include "synced_context.hpp"

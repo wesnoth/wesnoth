@@ -27,7 +27,6 @@
 #include <boost/shared_ptr.hpp>
 
 class display;
-class game_state;
 class vconfig;
 
 namespace storyscreen {

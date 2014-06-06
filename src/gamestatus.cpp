@@ -460,7 +460,7 @@ void game_data::clear_variable(const std::string& varname)
 	}
 }
 
-void game_data::write_snapshot(config& cfg){
+void game_data::write_snapshot(config& cfg) const {
 	cfg["scenario"] = scenario_;
 	cfg["next_scenario"] = next_scenario_;
 
@@ -761,20 +761,6 @@ void convert_old_saves(config& cfg){
 	}
 
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
-}
-
-void game_state::write_snapshot(config& cfg) const
-{
-	log_scope("write_game");
-	cfg.merge_attributes(classification_.to_config());
-
-	//TODO: move id_manager handling to play_controller
-	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
-
-	if(resources::gamedata != NULL){
-		resources::gamedata->write_snapshot(cfg);
-	}
-
 }
 
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)

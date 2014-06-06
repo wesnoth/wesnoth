@@ -42,6 +42,7 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "save_index.hpp"
 #include "strftime.hpp"
 #include "synced_context.hpp"
 #include "thread.hpp"

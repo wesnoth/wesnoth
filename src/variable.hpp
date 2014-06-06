@@ -231,7 +231,7 @@ struct variable_info
 	std::string key; //the name of the internal attribute or child
 	bool explicit_index; //true if query ended in [...] specifier
 	size_t index; //the index of the child
-	config *vars; //the containing node in game_state::variables
+	config *vars; //the containing node in game_data s variables
 
 	/**
 	 * Results: after deciding the desired type, these methods can retrieve the result

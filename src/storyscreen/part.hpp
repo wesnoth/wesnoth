@@ -29,7 +29,6 @@
 class config;
 class vconfig;
 class display;
-class game_state;
 
 namespace storyscreen {
 
