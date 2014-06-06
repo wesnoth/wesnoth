@@ -2060,16 +2060,11 @@ void unit::redraw_unit()
 		const std::string* energy_file = &game_config::images::energy;
 
 		if(size_t(side()) != disp.viewing_team()+1) {
-			if(disp.team_valid() &&
-			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				if (!get_state(STATE_PETRIFIED)) {
-					orb_img = &enemy_orb;
-				} else {
-					orb_img = NULL;
-				}
-			} else {
+			if (disp.team_valid() &&
+					disp.get_teams()[disp.viewing_team()].is_enemy(side()))
+				orb_img = NULL;
+			else
 				orb_img = &ally_orb;
-			}
 		} else {
 			orb_img = &moved_orb;
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
