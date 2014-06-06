@@ -257,7 +257,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 						return true;
 				}
 			}
-			return true;
+			return false;
 		case HOTKEY_EDITOR_PALETTE_GROUPS:
 			return true;
 		case HOTKEY_EDITOR_PALETTE_UPSCROLL:
@@ -347,8 +347,10 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 				std::string dummy;
 				return context_manager_->modified_maps(dummy) > 1;
 			}
-		case HOTKEY_EDITOR_MAP_SWITCH:
 		case HOTKEY_EDITOR_PLAYLIST:
+		case HOTKEY_EDITOR_SCHEDULE:
+			return !context_manager_->get_map_context().is_pure_map();
+		case HOTKEY_EDITOR_MAP_SWITCH:
 		case HOTKEY_EDITOR_MAP_CLOSE:
 			return true;
 		case HOTKEY_EDITOR_MAP_REVERT:

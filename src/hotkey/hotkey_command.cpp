@@ -122,6 +122,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	// These are not really hotkey items but menu entries to get expanded.
 	// They need to have their own hotkey to control their active state.
 	{ hotkey::HOTKEY_EDITOR_PLAYLIST, "editor-playlist", N_("Switch Time of Day"), true, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_SCHEDULE, "menu-editor-schedule", "", true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_MAP_SWITCH, "editor-switch-map", N_("Switch Map"), true, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_LOCAL_TIME, "menu-editor-local-time", N_("Assign Local Time"), true, hotkey::SCOPE_EDITOR, "" },
 
