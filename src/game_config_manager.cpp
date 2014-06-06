@@ -127,7 +127,7 @@ void game_config_manager::load_game_config(FORCE_RELOAD_CONFIG force_reload,
 		cache_.get_config(get_wml_location(preferences::wml_tree_root()), game_config_);
 		// Load the mainline core definitions to make sure switching back is always possible.
 		config default_core_cfg;
-		cache_.get_config(game_config::path, default_core_cfg);
+		cache_.get_config(game_config::path + "/data/cores.cfg", default_core_cfg);
 		game_config_.append(default_core_cfg);
 
 		main_transaction.lock();
