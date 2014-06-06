@@ -694,13 +694,14 @@ possible_end_play_signal playsingle_controller::play_turn()
 	return boost::none;
 }
 
-void playsingle_controller::play_idle_loop()
+possible_end_play_signal playsingle_controller::play_idle_loop()
 {
 	while(!end_turn_) {
-		play_slice();
+		HANDLE_END_PLAY_SIGNAL( play_slice() );
 		gui_->draw();
 		SDL_Delay(10);
 	}
+	return boost::none;
 }
 
 possible_end_play_signal playsingle_controller::play_side()
@@ -787,28 +788,38 @@ possible_end_play_signal playsingle_controller::play_side()
 		} else if(current_team().is_network()) {
 			PROPOGATE_END_PLAY_SIGNAL( play_network_turn() );
 		} else if(current_team().is_idle()) {
+			end_turn_enable(false);
+			do_idle_notification();
+
+			possible_end_play_signal signal;
 			try{
-				end_turn_enable(false);
-				do_idle_notification();
-				before_human_turn();
-				play_idle_loop();
-				
+				before_human_turn(); //This line throws! the ai manager "raise" line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
+				signal = play_idle_loop();
 			} catch(end_turn_exception& end_turn) {
-				LOG_NG << "Escaped from idle state with exception!" << std::endl;
-				if (int(end_turn.redo) == player_number_) {
-					player_type_changed_ = true;
-					// If new controller is not human,
-					// reset gui to prev human one
-					if (!gameboard_.teams_[player_number_-1].is_human()) {
-						browse_ = true;
-						int s = find_human_team_before_current_player();
-						if (s <= 0)
-							s = gui_->playing_side();
-						update_gui_to_player(s-1);
-					}
+				signal = end_turn.to_struct();
+			} catch(end_level_exception& e) {
+				signal = e.to_struct();
+			}
+
+			if (signal) {
+				switch (boost::apply_visitor(get_signal_type(), *signal)) {
+					case END_LEVEL:
+						return signal;
+					case END_TURN:
+						LOG_NG << "Escaped from idle state with exception!" << std::endl;
+						if (int(boost::apply_visitor(get_redo(), *signal)) == player_number_) {
+							player_type_changed_ = true;
+							// If new controller is not human,
+							// reset gui to prev human one
+							if (!gameboard_.teams_[player_number_-1].is_human()) {
+								browse_ = true;
+								int s = find_human_team_before_current_player();
+								if (s <= 0)
+									s = gui_->playing_side();
+								update_gui_to_player(s-1);
+							}
+						}
 				}
-			} catch (end_level_exception  e) { //this shouldn't really be possible, but in case it is somehow this will prevent a crash.
-				return possible_end_play_signal(e.to_struct());
 			}
 		}
 

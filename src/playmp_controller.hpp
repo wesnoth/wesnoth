@@ -55,7 +55,7 @@ protected:
 	virtual void finish_side_turn();
 	virtual possible_end_play_signal play_network_turn();
 	virtual void do_idle_notification();
-	virtual void play_idle_loop();
+	virtual possible_end_play_signal play_idle_loop();
 	
 	void linger();
 	/** Wait for the host to upload the next scenario. */

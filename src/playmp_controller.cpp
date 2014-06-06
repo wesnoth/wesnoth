@@ -255,7 +255,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 	return boost::none;
 }
 
-void playmp_controller::play_idle_loop()
+possible_end_play_signal playmp_controller::play_idle_loop()
 {
 	LOG_NG << "playmp::play_human_turn...\n";
 
@@ -266,16 +266,19 @@ void playmp_controller::play_idle_loop()
 		turn_info_send send_safe(turn_data_);
 		config cfg;
 		if(network_reader_.read(cfg)) {
-			turn_info::PROCESS_DATA_RESULT res = turn_data_.process_network_data(cfg, skip_replay_);
+			turn_info::PROCESS_DATA_RESULT res;
+			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
 			
 			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 			{
-				throw end_turn_exception(gui_->playing_side());
+				end_turn_struct ets = {gui_->playing_side()};
+				return possible_end_play_signal(ets);
+				//throw end_turn_exception(gui_->playing_side());
 			}
 		}
 
-		play_slice();
-		check_end_level();
+		HANDLE_END_PLAY_SIGNAL ( play_slice() );
+		HANDLE_END_PLAY_SIGNAL ( check_end_level() );
 
 		if (!linger_) {
 			SDL_Delay(1);
@@ -283,6 +286,7 @@ void playmp_controller::play_idle_loop()
 
 		gui_->draw();
 	}
+	return boost::none;
 }
 
 void playmp_controller::set_end_scenario_button()
