@@ -222,7 +222,7 @@ do
       extra_opts+="$OPTARG"
       ;;
     t )
-      echo "Replacing default timer of 10s with " "$OPTARG"
+      echo "Replacing default timer of 10 with" "$OPTARG" "seconds."
       basetimer="$OPTARG"
       ;;
   esac
