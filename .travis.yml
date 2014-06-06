@@ -19,7 +19,7 @@ script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - ./test_wrapper.sh
-    - if [[ "$WML_TESTS" = true ]]; then ./run_wml_tests -t 15; fi
+    - if [[ "$WML_TESTS" = true ]]; then ./run_wml_tests -t 20; fi
 after_failure:
     - ./travis_after_failure.sh
 notifications:
