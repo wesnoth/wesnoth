@@ -729,16 +729,11 @@ possible_end_play_signal playsingle_controller::play_side()
 			if (side_units(player_number_) != 0
 				|| (resources::units->size() == 0 && player_number_ == 1))
 			{
-				possible_end_play_signal signal;
-				try {
-					before_human_turn(); //This line throws! the ai manager "raise" line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
-					signal = play_human_turn();
-				} catch (end_level_exception & e) {
-					signal = e.to_struct();
-				} catch (end_turn_exception & e) {
-					signal = e.to_struct();
-				}
+				possible_end_play_signal signal = before_human_turn(); 
 
+				if (!signal) {
+					signal = play_human_turn();
+				}
 
 				if (signal) {
 					switch (boost::apply_visitor(get_signal_type(), *signal)) {
@@ -791,15 +786,11 @@ possible_end_play_signal playsingle_controller::play_side()
 			end_turn_enable(false);
 			do_idle_notification();
 
-			possible_end_play_signal signal;
-			try{
-				before_human_turn(); //This line throws! the ai manager "raise" line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
+			possible_end_play_signal signal = before_human_turn();
+
+			if (!signal) {
 				signal = play_idle_loop();
-			} catch(end_turn_exception& end_turn) {
-				signal = end_turn.to_struct();
-			} catch(end_level_exception& e) {
-				signal = e.to_struct();
-			}
+			} 
 
 			if (signal) {
 				switch (boost::apply_visitor(get_signal_type(), *signal)) {
@@ -832,13 +823,13 @@ possible_end_play_signal playsingle_controller::play_side()
 	return boost::none;
 }
 
-void playsingle_controller::before_human_turn()
+possible_end_play_signal playsingle_controller::before_human_turn()
 {
 	log_scope("player turn");
 	browse_ = false;
 	linger_ = false;
 
-	ai::manager::raise_turn_started();
+	HANDLE_END_PLAY_SIGNAL( ai::manager::raise_turn_started() ); //This line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
 
 	if(do_autosaves_ && level_result_ == NONE) {
 		savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
@@ -848,6 +839,7 @@ void playsingle_controller::before_human_turn()
 	if(preferences::turn_bell() && level_result_ == NONE) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
+	return boost::none;
 }
 
 void playsingle_controller::show_turn_dialog(){
