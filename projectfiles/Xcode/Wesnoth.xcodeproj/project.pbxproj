@@ -73,10 +73,6 @@
 		62CC8E8D17B9064D00C16B75 /* map_create.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7C17B9064B00C16B75 /* map_create.cpp */; };
 		62CC8E8E17B9064D00C16B75 /* mapgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E7E17B9064B00C16B75 /* mapgen.cpp */; };
 		62CC8E8F17B9064D00C16B75 /* mapgen_dialog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8017B9064B00C16B75 /* mapgen_dialog.cpp */; };
-		62CC8E9017B9064D00C16B75 /* ya_mapgen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8317B9064C00C16B75 /* ya_mapgen.cpp */; };
-		62CC8E9117B9064D00C16B75 /* yamg_hex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8617B9064C00C16B75 /* yamg_hex.cpp */; };
-		62CC8E9217B9064D00C16B75 /* yamg_hexheap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8817B9064C00C16B75 /* yamg_hexheap.cpp */; };
-		62CC8E9317B9064D00C16B75 /* yamg_params.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62CC8E8A17B9064C00C16B75 /* yamg_params.cpp */; };
 		62D24F2D1519982500350848 /* brush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F271519982500350848 /* brush.cpp */; };
 		62D24F2F1519982500350848 /* editor_toolkit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F2B1519982500350848 /* editor_toolkit.cpp */; };
 		62D24F321519987400350848 /* context_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 62D24F311519987400350848 /* context_manager.cpp */; };
@@ -1141,15 +1137,6 @@
 		62CC8E7F17B9064B00C16B75 /* mapgen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapgen.hpp; sourceTree = "<group>"; };
 		62CC8E8017B9064B00C16B75 /* mapgen_dialog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = mapgen_dialog.cpp; sourceTree = "<group>"; };
 		62CC8E8117B9064B00C16B75 /* mapgen_dialog.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = mapgen_dialog.hpp; sourceTree = "<group>"; };
-		62CC8E8317B9064C00C16B75 /* ya_mapgen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ya_mapgen.cpp; sourceTree = "<group>"; };
-		62CC8E8417B9064C00C16B75 /* ya_mapgen.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ya_mapgen.hpp; sourceTree = "<group>"; };
-		62CC8E8517B9064C00C16B75 /* yamg_decls.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = yamg_decls.hpp; sourceTree = "<group>"; };
-		62CC8E8617B9064C00C16B75 /* yamg_hex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yamg_hex.cpp; sourceTree = "<group>"; };
-		62CC8E8717B9064C00C16B75 /* yamg_hex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = yamg_hex.hpp; sourceTree = "<group>"; };
-		62CC8E8817B9064C00C16B75 /* yamg_hexheap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yamg_hexheap.cpp; sourceTree = "<group>"; };
-		62CC8E8917B9064C00C16B75 /* yamg_hexheap.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = yamg_hexheap.hpp; sourceTree = "<group>"; };
-		62CC8E8A17B9064C00C16B75 /* yamg_params.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = yamg_params.cpp; sourceTree = "<group>"; };
-		62CC8E8B17B9064C00C16B75 /* yamg_params.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = yamg_params.hpp; sourceTree = "<group>"; };
 		62D24F271519982500350848 /* brush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brush.cpp; sourceTree = "<group>"; };
 		62D24F281519982500350848 /* brush.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = brush.hpp; sourceTree = "<group>"; };
 		62D24F2B1519982500350848 /* editor_toolkit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = editor_toolkit.cpp; sourceTree = "<group>"; };
@@ -2846,25 +2833,8 @@
 				62CC8E7F17B9064B00C16B75 /* mapgen.hpp */,
 				62CC8E8017B9064B00C16B75 /* mapgen_dialog.cpp */,
 				62CC8E8117B9064B00C16B75 /* mapgen_dialog.hpp */,
-				62CC8E8217B9064B00C16B75 /* yamg */,
 			);
 			path = generators;
-			sourceTree = "<group>";
-		};
-		62CC8E8217B9064B00C16B75 /* yamg */ = {
-			isa = PBXGroup;
-			children = (
-				62CC8E8317B9064C00C16B75 /* ya_mapgen.cpp */,
-				62CC8E8417B9064C00C16B75 /* ya_mapgen.hpp */,
-				62CC8E8517B9064C00C16B75 /* yamg_decls.hpp */,
-				62CC8E8617B9064C00C16B75 /* yamg_hex.cpp */,
-				62CC8E8717B9064C00C16B75 /* yamg_hex.hpp */,
-				62CC8E8817B9064C00C16B75 /* yamg_hexheap.cpp */,
-				62CC8E8917B9064C00C16B75 /* yamg_hexheap.hpp */,
-				62CC8E8A17B9064C00C16B75 /* yamg_params.cpp */,
-				62CC8E8B17B9064C00C16B75 /* yamg_params.hpp */,
-			);
-			path = yamg;
 			sourceTree = "<group>";
 		};
 		62D24F261519982500350848 /* toolkit */ = {
@@ -4450,10 +4420,6 @@
 				62CC8E8D17B9064D00C16B75 /* map_create.cpp in Sources */,
 				62CC8E8E17B9064D00C16B75 /* mapgen.cpp in Sources */,
 				62CC8E8F17B9064D00C16B75 /* mapgen_dialog.cpp in Sources */,
-				62CC8E9017B9064D00C16B75 /* ya_mapgen.cpp in Sources */,
-				62CC8E9117B9064D00C16B75 /* yamg_hex.cpp in Sources */,
-				62CC8E9217B9064D00C16B75 /* yamg_hexheap.cpp in Sources */,
-				62CC8E9317B9064D00C16B75 /* yamg_params.cpp in Sources */,
 				F4C02A10182F1F64008525C6 /* lua_api.cpp in Sources */,
 				F4C02A11182F1F64008525C6 /* lua_types.cpp in Sources */,
 			);
