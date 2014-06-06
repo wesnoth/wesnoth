@@ -27,6 +27,7 @@
 #include "serialization/string_utils.hpp"
 #include "game_config.hpp"
 #include "addon/validation.hpp"
+#include "campaign_server/blacklist.hpp"
 #include "version.hpp"
 #include "server/input_stream.hpp"
 #include "util.hpp"
@@ -121,11 +122,7 @@ namespace {
 	std::string format_addon_feedback_url(const std::string& format, const config& params)
 	{
 		if(!format.empty() && !params.empty()) {
-#if 0
-			utils::string_map escaped;
-#else
 			plain_string_map escaped;
-#endif
 
 			config::const_attr_itors attrs = params.attribute_range();
 
@@ -139,13 +136,8 @@ namespace {
 			// FIXME: We cannot use utils::interpolate_variables_into_string
 			//        because it is implemented using a lot of formula AI junk
 			//        that really doesn't belong in campaignd.
-#if 0
-			const std::string& res =
-				utils::interpolate_variables_into_string(format, &escaped);
-#else
 			const std::string& res =
 				fast_interpolate_variables_into_string(format, &escaped);
-#endif
 
 			if(res != format) {
 				return res;
@@ -198,6 +190,8 @@ namespace {
 			const config& server_info() const { return cfg_.child("server_info"); }
 			config& server_info() { return cfg_.child("server_info"); }
 
+			void load_blacklist();
+
 			config cfg_;
 			const std::string file_;
 			const network::manager net_manager_;
@@ -208,6 +202,9 @@ namespace {
 
 			/** Feedback URL format string used for add-ons. */
 			std::string feedback_url_format_;
+
+			campaignd::blacklist blacklist_;
+			std::string blacklist_file_;
 
 			const network::server_manager server_manager_;
 
@@ -267,7 +264,33 @@ namespace {
 			feedback_url_format_ = svinfo_cfg["feedback_url_format"].str();
 		}
 
+		blacklist_file_ = cfg_["blacklist_file"].str();
+		load_blacklist();
+
 		return cfg_["port"].to_int(default_campaignd_port);
+	}
+
+	void campaign_server::load_blacklist()
+	{
+		// We *always* want to clear the blacklist first, especially if we are
+		// reloading the configuration and the blacklist is no longer enabled.
+		blacklist_.clear();
+
+		if(blacklist_file_.empty()) {
+			return;
+		}
+
+		try {
+			scoped_istream stream = istream_file(blacklist_file_);
+			config cfg;
+
+			read(cfg, *stream);
+
+			blacklist_.read(cfg);
+			LOG_CS << "using blacklist from " << blacklist_file_ << '\n';
+		} catch(const config::error&) {
+			LOG_CS << "ERROR: failed to read blacklist from " << blacklist_file_ << ", blacklist disabled\n";
+		}
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile,
@@ -280,6 +303,8 @@ namespace {
 		compress_level_(0), // Will be properly set by load_config()
 		read_only_(false),
 		feedback_url_format_(), // Will be properly set by load_config()
+		blacklist_(),
+		blacklist_file_(),
 		server_manager_(load_config())
 	{
 #ifndef _MSC_VER
@@ -482,7 +507,9 @@ namespace {
 					}
 					else if (config &upload = data.child("upload"))
 					{
-						LOG_CS << "uploading campaign '" << upload["name"] << "' from " << network::ip_address(sock) << ".\n";
+						const std::string& addr = network::ip_address(sock);
+
+						LOG_CS << "uploading campaign '" << upload["name"] << "' from " << addr << ".\n";
 						config &data = upload.child("data");
 						const std::string& name = upload["name"];
 						std::string lc_name(name.size(), ' ');
@@ -539,6 +566,19 @@ namespace {
 							const time_t upload_ts = time(NULL);
 
 							LOG_CS << "Upload is owner upload.\n";
+
+							if(blacklist_.is_blacklisted(name,
+														 upload["title"].str(),
+														 upload["description"].str(),
+														 upload["author"].str(),
+														 addr,
+														 upload["email"].str()))
+							{
+								LOG_CS << "Upload denied - blacklisted add-on information.\n";
+								network::send_data(construct_error("Add-on upload denied. Please contact the server administration for assistance."), sock);
+								continue;
+							}
+
 							std::string message = "Add-on accepted.";
 
 							if (!version_info(upload["version"]).good()) {
@@ -560,7 +600,7 @@ namespace {
 							(*campaign)["icon"] = upload["icon"];
 							(*campaign)["translate"] = upload["translate"];
 							(*campaign)["dependencies"] = upload["dependencies"];
-							(*campaign)["upload_ip"] = network::ip_address(sock);
+							(*campaign)["upload_ip"] = addr;
 							(*campaign)["type"] = upload["type"];
 							(*campaign)["email"] = upload["email"];
 
@@ -598,7 +638,6 @@ namespace {
 								config_writer writer(*campaign_file, true, compress_level_);
 								writer.write(data);
 							}
-//							write_compressed(*campaign_file, *data);
 
 							(*campaign)["size"] = lexical_cast<std::string>(
 									file_size(filename));

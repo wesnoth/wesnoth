@@ -1069,6 +1069,7 @@ if(ENABLE_CAMPAIGN_SERVER)
 set(campaignd_SRC
 	network_worker.cpp # NEEDED when compiling with ANA support
 	addon/validation.cpp
+	campaign_server/blacklist.cpp
 	campaign_server/campaign_server.cpp
 	server/input_stream.cpp
 	${network_implementation_files}
