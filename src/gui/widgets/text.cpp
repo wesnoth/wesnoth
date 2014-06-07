@@ -281,11 +281,11 @@ void ttext_::handle_key_default(bool& handled,
 {
 	DBG_GUI_E << LOG_SCOPE_HEADER << '\n';
 
-	//	if(unicode >= 32 && unicode != 127) {
-	handled = true;
-	insert_char(unicode);
-	fire(event::NOTIFY_MODIFIED, *this, NULL);
-	//	}
+	if(unicode.size() > 1 || unicode[0] != 0) {
+		handled = true;
+		insert_char(unicode);
+		fire(event::NOTIFY_MODIFIED, *this, NULL);
+	}
 }
 
 void ttext_::signal_handler_middle_button_click(const event::tevent event,
