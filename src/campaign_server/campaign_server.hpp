@@ -19,6 +19,8 @@
 #include "network.hpp"
 #include "server/input_stream.hpp"
 
+#include <boost/scoped_ptr.hpp>
+
 namespace campaignd {
 
 /**
@@ -44,7 +46,7 @@ private:
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
 
-	input_stream* input_; /**< Server control socket. */
+	boost::scoped_ptr<input_stream> input_; /**< Server control socket. */
 
 	std::map<std::string, std::string> hooks_;
 
