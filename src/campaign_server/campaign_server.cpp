@@ -173,7 +173,7 @@ namespace campaignd {
 
 server::server(const std::string& cfg_file, size_t min_threads, size_t max_threads)
 	: cfg_()
-	, file_(cfg_file)
+	, cfg_file_(cfg_file)
 	, read_only_(false)
 	, compress_level_(0)
 	, input_(0)
@@ -196,13 +196,13 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 server::~server()
 {
 	delete input_;
-	scoped_ostream out = ostream_file(file_);
+	scoped_ostream out = ostream_file(cfg_file_);
 	write(*out, cfg_);
 }
 
 int server::load_config()
 {
-	scoped_istream in = istream_file(file_);
+	scoped_istream in = istream_file(cfg_file_);
 	read(cfg_, *in);
 
 	read_only_ = cfg_["read_only"].to_bool(false);
@@ -251,12 +251,12 @@ void server::load_blacklist()
 	}
 
 	try {
-		scoped_istream stream = istream_file(blacklist_file_);
-		config cfg;
+		scoped_istream in = istream_file(blacklist_file_);
+		config blcfg;
 
-		read(cfg, *stream);
+		read(blcfg, *in);
 
-		blacklist_.read(cfg);
+		blacklist_.read(blcfg);
 		LOG_CS << "using blacklist from " << blacklist_file_ << '\n';
 	} catch(const config::error&) {
 		LOG_CS << "ERROR: failed to read blacklist from " << blacklist_file_ << ", blacklist disabled\n";
@@ -371,8 +371,8 @@ void server::run()
 			}
 			//write config to disk every ten minutes
 			if((increment%(60*10*50)) == 0) {
-				scoped_ostream cfgfile = ostream_file(file_);
-				write(*cfgfile, cfg_);
+				scoped_ostream out = ostream_file(cfg_file_);
+				write(*out, cfg_);
 			}
 
 			network::process_send_queue();
@@ -630,8 +630,8 @@ void server::run()
 
 						(*campaign)["size"] = lexical_cast<std::string>(
 								file_size(filename));
-						scoped_ostream cfgfile = ostream_file(file_);
-						write(*cfgfile, cfg_);
+						scoped_ostream out = ostream_file(cfg_file_);
+						write(*out, cfg_);
 						network::send_data(construct_message(message), sock);
 
 						fire("hook_post_upload", upload["name"]);
@@ -673,8 +673,8 @@ void server::run()
 							break;
 						}
 					}
-					scoped_ostream cfgfile = ostream_file(file_);
-					write(*cfgfile, cfg_);
+					scoped_ostream out = ostream_file(cfg_file_);
+					write(*out, cfg_);
 					network::send_data(construct_message("Add-on deleted."), sock);
 
 					fire("hook_post_erase", erase["name"]);
@@ -696,8 +696,8 @@ void server::run()
 						network::send_data(construct_error("No new passphrase was supplied."), sock);
 					} else {
 						campaign["passphrase"] = cpass["new_passphrase"];
-						scoped_ostream cfgfile = ostream_file(file_);
-						write(*cfgfile, cfg_);
+						scoped_ostream out = ostream_file(cfg_file_);
+						write(*out, cfg_);
 						network::send_data(construct_message("Passphrase changed."), sock);
 					}
 				}
