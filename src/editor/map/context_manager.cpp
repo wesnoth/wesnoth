@@ -304,7 +304,9 @@ void context_manager::expand_open_maps_menu(std::vector<std::string>& items)
 
 void context_manager::expand_areas_menu(std::vector<std::string>& items)
 {
-	if (!get_map_context().get_time_manager())
+	tod_manager* tod = get_map_context().get_time_manager();
+
+	if (!tod)
 		return;
 	for (unsigned int i = 0; i < items.size(); ++i) {
 		if (items[i] == "editor-switch-area") {
@@ -312,7 +314,7 @@ void context_manager::expand_areas_menu(std::vector<std::string>& items)
 			std::vector<std::string> area_entries;
 
 			std::vector<std::string> area_ids =
-					get_map_context().get_time_manager()->get_area_ids();
+					tod->get_area_ids();
 
 			for (size_t mci = 0; mci < area_ids.size(); ++mci) {
 
@@ -320,6 +322,11 @@ void context_manager::expand_areas_menu(std::vector<std::string>& items)
 				std::stringstream label;
 				label << "[" << mci+1 << "] ";
 				label << (area.empty() ? _("(Unnamed Area)") : area);
+
+				if (mci == static_cast<size_t>(get_map_context().get_active_area())
+						&& tod->get_area_by_index(mci) != get_map_context().get_map().selection())
+					label << " [*]";
+
 				area_entries.push_back(label.str());
 			}
 
