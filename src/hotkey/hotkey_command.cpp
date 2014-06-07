@@ -468,12 +468,12 @@ void delete_all_wml_hotkeys()
 	}
 }
 
-const std::string get_description(const std::string& command)
+const std::string& get_description(const std::string& command)
 {
 	return get_hotkey_command(command).description;
 }
 
-const std::string get_tooltip(const std::string& command)
+const std::string& get_tooltip(const std::string& command)
 {
 	// the null hotkey_command has the "" tooltip
 	return get_hotkey_command(command).tooltip;
