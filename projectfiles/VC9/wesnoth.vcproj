@@ -19784,6 +19784,62 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\sdl\utils.cpp"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Debug_with_VLD|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Debug|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Test_Release|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="ReleaseDEBUG|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						ObjectFile="$(IntDir)\SDL\"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="..\..\src\sdl\utils.hpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\sdl\window.cpp"
 				>
 				<FileConfiguration
@@ -20745,6 +20801,14 @@
 			>
 		</File>
 		<File
+			RelativePath="..\..\src\save_index.cpp"
+			>
+		</File>
+		<File
+			RelativePath="..\..\src\save_index.hpp"
+			>
+		</File>
+		<File
 			RelativePath="..\..\src\savegame.cpp"
 			>
 		</File>
@@ -20758,14 +20822,6 @@
 		</File>
 		<File
 			RelativePath="..\..\src\scoped_resource.hpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\sdl_utils.cpp"
-			>
-		</File>
-		<File
-			RelativePath="..\..\src\sdl_utils.hpp"
 			>
 		</File>
 		<File
