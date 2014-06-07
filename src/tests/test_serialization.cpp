@@ -19,6 +19,8 @@
 #include "serialization/string_utils.hpp"
 #include <boost/test/auto_unit_test.hpp>
 
+BOOST_AUTO_TEST_SUITE ( test_serialization_utils_and_unicode )
+
 BOOST_AUTO_TEST_CASE( utils_join_test )
 {
 	std::vector<std::string> fruit;
@@ -41,6 +43,14 @@ BOOST_AUTO_TEST_CASE( utils_join_test )
 	BOOST_CHECK( unicode.substr(euro,utils::u8index(unicode,7)-euro) == "\xE2\x82\xAC" ); // € sign
 	
 	BOOST_CHECK( utils::u8truncate(unicode,3) == "\xC3\xBCni"); // "üni"
+}
+
+BOOST_AUTO_TEST_CASE( test_lowercase )
+{
+	BOOST_CHECK_EQUAL ( utils::lowercase("FOO") , "foo" );
+	BOOST_CHECK_EQUAL ( utils::lowercase("foo") , "foo" );
+	BOOST_CHECK_EQUAL ( utils::lowercase("FoO") , "foo" );
+	BOOST_CHECK_EQUAL ( utils::lowercase("fO0") , "fo0" );
 }
 
 BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
@@ -76,3 +86,5 @@ BOOST_AUTO_TEST_CASE( test_wildcard_string_match )
 	BOOST_CHECK(!utils::wildcard_string_match("", "?"));
 	BOOST_CHECK(!utils::wildcard_string_match("", "???"));
 }
+
+BOOST_AUTO_TEST_SUITE_END()
