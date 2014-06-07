@@ -39,7 +39,7 @@ public:
 
 private:
 	config cfg_;
-	const std::string file_;
+	const std::string cfg_file_;
 
 	bool read_only_;
 	int compress_level_; /**< Used for add-on archives. */
