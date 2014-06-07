@@ -25,6 +25,7 @@
 #include <math.h> // cmath may not provide round()
 #include <vector>
 #include <sstream>
+#include <algorithm>
 
 template<typename T>
 inline bool is_even(T num) { return num % 2 == 0; }
