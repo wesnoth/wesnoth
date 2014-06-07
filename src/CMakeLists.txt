@@ -70,14 +70,12 @@ if(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
 		${SDLMAIN_LIBRARY}
-		wesnoth-sdl
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
 	)
 else(MSVC)
 	set(common-external-libs
 		${SDL_LIBRARY}
-		wesnoth-sdl
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 		${Boost_PROGRAM_OPTIONS_LIBRARY}
@@ -1021,6 +1019,7 @@ if(ENABLE_GAME)
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
+			wesnoth-sdl
 		)
 	else(ENABLE_TESTS)
 		set(wesnoth_SRC
@@ -1135,7 +1134,12 @@ set(exploder_SRC
 )
 
 add_executable(exploder ${exploder_SRC})
-target_link_libraries(exploder wesnoth-core png ${tools-external-libs})
+target_link_libraries(exploder
+	wesnoth-core
+	wesnoth-sdl
+	png
+	${tools-external-libs}
+)
 set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${BINARY_SUFFIX})
 
 install(TARGETS exploder DESTINATION ${BINDIR})
@@ -1151,12 +1155,18 @@ set(cutter_SRC
 )
 
 add_executable(cutter ${cutter_SRC})
-target_link_libraries(cutter wesnoth-core png ${tools-external-libs})
+target_link_libraries(cutter
+	wesnoth-core
+	wesnoth-sdl
+	png
+	${tools-external-libs}
+)
 set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINARY_SUFFIX})
 
 install(TARGETS cutter DESTINATION ${BINDIR})
 
 set(schema_generator_SRC
+	tools/dummy_video.cpp
 	tools/schema/schema_generator.cpp
 	tools/schema/sourceparser.cpp
 	tools/schema/error_container.cpp
@@ -1166,7 +1176,12 @@ set(schema_generator_SRC
 )
 
 add_executable(schema_generator ${schema_generator_SRC})
-target_link_libraries(schema_generator wesnoth-core ${tools-external-libs} ${Boost_REGEX_LIBRARY})
+target_link_libraries(schema_generator
+	wesnoth-core
+	wesnoth-sdl
+	${tools-external-libs}
+	${Boost_REGEX_LIBRARY}
+)
 set_target_properties(schema_generator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_generator${BINARY_SUFFIX})
 
 install(TARGETS schema_generator DESTINATION ${BINDIR})
@@ -1175,6 +1190,7 @@ set(schema_validator_SRC
 	tools/validator/validator_tool.cpp
 	serialization/schema_validator.cpp
 	serialization/validator.cpp
+	tools/dummy_video.cpp
 	tools/schema/tag.cpp
 	filesystem.cpp
 	config_cache.cpp
@@ -1183,7 +1199,11 @@ set(schema_validator_SRC
 )
 
 add_executable(schema_validator ${schema_validator_SRC})
-target_link_libraries(schema_validator wesnoth-core ${common-external-libs})
+target_link_libraries(schema_validator
+	wesnoth-core
+	wesnoth-sdl
+	${common-external-libs}
+)
 set_target_properties(schema_validator PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}schema_validator${BINARY_SUFFIX}
 							COMPILE_DEFINITIONS VALIDATION_ERRORS_LOG)
 
@@ -1202,7 +1222,12 @@ set(wesmage_SRC
 )
 
 add_executable(wesmage ${wesmage_SRC})
-target_link_libraries(wesmage wesnoth-core png ${tools-external-libs})
+target_link_libraries(wesmage
+	wesnoth-core
+	wesnoth-sdl
+	png
+	${tools-external-libs}
+)
 set_target_properties(wesmage PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesmage${BINARY_SUFFIX})
 
 install(TARGETS wesmage DESTINATION ${BINDIR})
@@ -1290,6 +1315,7 @@ if(ENABLE_TESTS)
 			wesnoth-gui_widget_definition
 			wesnoth-gui1_widgets
 			wesnoth-schema_validator
+			wesnoth-sdl
 			wesnoth-lua
 		)
 	else(ENABLE_GAME)
@@ -1310,6 +1336,7 @@ if(ENABLE_TESTS)
 			wesnoth-core
 			wesnoth-game
 			wesnoth-lua
+			wesnoth-sdl
 		)
 	endif(ENABLE_GAME)
 
@@ -1338,7 +1365,12 @@ if(ENABLE_TESTS)
 		)
 
 		add_executable(create_images ${create_images_SRC})
-		target_link_libraries(create_images wesnoth-core png ${tools-external-libs})
+		target_link_libraries(create_images
+			wesnoth-core
+			wesnoth-sdl
+			png
+			${tools-external-libs}
+		)
 		set_target_properties(create_images PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}create_images${BINARY_SUFFIX})
 	endif(ENABLE_TOOLS)
 
