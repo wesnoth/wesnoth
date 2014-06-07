@@ -26,6 +26,7 @@ BOOST_AUTO_TEST_CASE( validation )
 {
 	BOOST_CHECK( !addon_filename_legal("") );
 	BOOST_CHECK( !addon_filename_legal(".") );
+	BOOST_CHECK( !addon_filename_legal("..") );
 	BOOST_CHECK( !addon_filename_legal("invalid/slash") );
 	BOOST_CHECK( !addon_filename_legal("invalid\\backslash") );
 	BOOST_CHECK( !addon_filename_legal("invalid:colon") );
