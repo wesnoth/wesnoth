@@ -154,8 +154,8 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 	{ hotkey::HOTKEY_EDITOR_TOOL_STARTING_POSITION, "editor-tool-starting-position", N_("Starting Positions Tool"), false, hotkey::SCOPE_EDITOR,  N_("Left mouse button displays player selection, right clears. Number keys scroll to the starting position, alt+number sets respective starting position under cursor, delete clears.") },
 	{ hotkey::HOTKEY_EDITOR_TOOL_LABEL, "editor-tool-label", N_("Label Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets or drags a label, right clears.") },
 	{ hotkey::HOTKEY_EDITOR_TOOL_UNIT, "editor-tool-unit", N_("Unit Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets a new unit or moves a unit via drag and drop, right brings up a context menu. Needs a defined side.") },
-	{ hotkey::HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets a new item or moves it via drag and drop, right clears. Not implemented yet.") },
-	{ hotkey::HOTKEY_EDITOR_TOOL_SOUNDSOURCE, "editor-tool-soundsource", N_("Sound Source Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets or drags a sound source, right clears. Not implemented yet.") },
+	{ hotkey::HOTKEY_EDITOR_TOOL_ITEM, "editor-tool-item", N_("Item Tool"), true, hotkey::SCOPE_EDITOR, N_("Left mouse button sets a new item or moves it via drag and drop, right clears. Not implemented yet.") },
+	{ hotkey::HOTKEY_EDITOR_TOOL_SOUNDSOURCE, "editor-tool-soundsource", N_("Sound Source Tool"), true, hotkey::SCOPE_EDITOR, N_("Left mouse button sets or drags a sound source, right clears. Not implemented yet.") },
 	{ hotkey::HOTKEY_EDITOR_TOOL_VILLAGE, "editor-tool-village", N_("Village Tool"), false, hotkey::SCOPE_EDITOR, N_("Left mouse button sets the village ownership to the current side, right clears. Needs a defined side.") },
 
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_CANRECRUIT, "editor-toggle-canrecruit", N_("Can Recruit"), false, hotkey::SCOPE_EDITOR, N_("Toggle the recruit attribute of a unit.") },
