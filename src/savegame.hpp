@@ -255,7 +255,4 @@ private:
 
 } //end of namespace savegame
 
-void replace_underbar2space(std::string &name);
-void replace_space2underbar(std::string &name);
-
 #endif
