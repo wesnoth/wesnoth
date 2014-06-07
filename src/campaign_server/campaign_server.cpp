@@ -175,7 +175,7 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 	, cfg_file_(cfg_file)
 	, read_only_(false)
 	, compress_level_(0)
-	, input_(0)
+	, input_()
 	, hooks_()
 	, feedback_url_format_()
 	, blacklist_()
@@ -194,7 +194,6 @@ server::server(const std::string& cfg_file, size_t min_threads, size_t max_threa
 
 server::~server()
 {
-	delete input_;
 	write_config();
 }
 
@@ -225,7 +224,7 @@ int server::load_config()
 
 	// Open the control socket if enabled.
 	if (!cfg_["control_socket"].empty()) {
-		input_ = new input_stream(cfg_["control_socket"]);
+		input_.reset(new input_stream(cfg_["control_socket"]));
 	}
 
 	// Certain config values are saved to WML again so that a given server
