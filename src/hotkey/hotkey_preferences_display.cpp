@@ -368,6 +368,7 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 	BOOST_FOREACH(const std::string& command, *commands) {
 
 		const std::string& description = hotkey::get_description(command);
+		const std::string& tooltip     = hotkey::get_tooltip(command);
 		std::string truncated_description = description;
 		if (truncated_description.size() >= (truncate_at + 2) ) {
 			utils::ellipsis_truncate(truncated_description, truncate_at);
@@ -375,8 +376,9 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		const std::string& name = hotkey::get_names(command);
 
 		menu_items.push_back(
-				(formatter() << truncated_description << HELP_STRING_SEPARATOR
-						<< description << COLUMN_SEPARATOR << font::NULL_MARKUP
+				(formatter() << truncated_description
+						<< HELP_STRING_SEPARATOR << description << (tooltip.empty() ? "" : " - ") << tooltip
+						<< COLUMN_SEPARATOR << font::NULL_MARKUP
 						<< name << HELP_STRING_SEPARATOR << name).str() );
 	}
 
