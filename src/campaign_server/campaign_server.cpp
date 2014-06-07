@@ -360,7 +360,9 @@ void server::run()
 
 	network::connection sock = 0;
 
-	for(int increment = 0;; ++increment)
+	time_t last_ts = time(NULL);
+
+	for(;;)
 	{
 		try {
 			std::string admin_cmd;
@@ -372,9 +374,12 @@ void server::run()
 					break;
 				}
 			}
-			//write config to disk every ten minutes
-			if((increment%(60*10*50)) == 0) {
+
+			const time_t cur_ts = time(NULL);
+			// Write config to disk every ten minutes.
+			if(cur_ts - last_ts >= 60) {
 				write_config();
+				last_ts = cur_ts;
 			}
 
 			network::process_send_queue();
