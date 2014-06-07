@@ -64,6 +64,11 @@ private:
 	int load_config();
 
 	/**
+	 * Writes the server configuration WML back to disk.
+	 */
+	void write_config();
+
+	/**
 	 * Reads the add-ons upload blacklist from WML.
 	 */
 	void load_blacklist();
