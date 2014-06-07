@@ -370,7 +370,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_SCENARIO_EDIT:
 		case HOTKEY_EDITOR_TOOL_LABEL:
 		case HOTKEY_EDITOR_TOOL_ITEM:
-			return !context_manager_->get_map_context().is_pure_map();
+			return false; // !context_manager_->get_map_context().is_pure_map(); disabled for 1.12
 		case HOTKEY_EDITOR_TOOL_UNIT:
 		case HOTKEY_EDITOR_TOOL_VILLAGE:
 			return !context_manager_->get_map_context().get_teams().empty();
