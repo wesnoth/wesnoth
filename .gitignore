@@ -1,50 +1,29 @@
-.settings
-.project
-.cproject
-.pydevproject
-revision.h
-*.swp
-.DS_Store
-make_translation
-merge_translations
-Makefile
-autom4te.cache
-stamp-h1
-.libs
-config.h
-config.log
-config.status
-configure.lineno
-Makefile.in
-aclocal.m4
-config.h.in
-configure
+# project files
+.*project
+Project.*
+
+# cmake
+CMakeFiles
+CMakeLists.txt.user*
+cmake_install.cmake
+CPack*Config.cmake
+uninstall.cmake
+
+# scons
 .scons-option-cache
 .sconsign.dblite
 .sconf_temp
-CMakeFiles
-CMakeLists.txt.user
-CMakeLists.txt.user.*
-cmake_install.cmake
-CPackConfig.cmake
-CPackSourceConfig.cmake
-uninstall.cmake
-translations
-6not
-Debug
-tags
-wesnoth.exp
-wesnoth.ilk
-wesnoth.lib
-wesnoth.ncb
-wesnoth.opt
-wesnoth.plg
-userdata
-Lib
-*.exe
-*.dll
-*.txt
-boost_test_result.xml
+
+# win32/MSVC:
+ALL_BUILD.vcproj
+INSTALL.vcproj
+PACKAGE.vcproj
+ZERO_CHECK.vcproj
+uninstall.vcproj
+*.vcproj.*.user
+projectfiles/VC[12]*
+
+# build directories
 /wesnothd*
 /test*
 /wesnoth*
@@ -52,24 +31,56 @@ boost_test_result.xml
 /cutter*
 /exploder*
 /build/
-locales
-.kdev_include_paths
-.kdev4
-cmake/Linux/CodeBlocks:
-Project.cbp
-Project.layout
-#cmake/win32/MSVC:
-ALL_BUILD.vcproj
-INSTALL.vcproj
-PACKAGE.vcproj
-Project.sln
-ZERO_CHECK.vcproj
-uninstall.vcproj
-Project.ncb
-Project.suo
-*.vcproj.*.user
-projectfiles/VC1*
-projectfiles/VC201*
-*Neuer Ordner*
+Debug
+tags
+
+# build results ect.
+wesnoth.exp
+wesnoth.ilk
+wesnoth.lib
+wesnoth.ncb
+wesnoth.opt
+wesnoth.plg
+*.exe
+*.dll
+
+# library files
+.libs
+Lib
+
+# release-only directories
+translations
+userdata
+
+# configuration
+config.h
+config.h.in
+config.log
+config.status
+configure
+configure.lineno
+
+# OS created files
+.DS_Store
 Thumbs.db
+
+# uncategorized
+.settings
+*.txt
+*.swp
+*.gmo
+make_translation
+merge_translations
+Makefile
+Makefile.in
+autom4te.cache
+stamp-h1
+revision.h
+aclocal.m4
+6not
+boost_test_result.xml
+locales
+.kdev*
+*Neuer Ordner*
+error*.log
 do_build_and_tests.sh
