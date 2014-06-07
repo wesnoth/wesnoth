@@ -24,6 +24,7 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "filesystem.hpp"
 #include "formatter.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
@@ -375,8 +376,13 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		}
 		const std::string& name = hotkey::get_names(command);
 
+		std::string image_path = "misc/empty.png~CROP(0,0,15,15)";
+		if (file_exists(game_config::path + "/images/icons/action/" + command + "_25.png"))
+			image_path = "icons/action/" + command + "_25.png~CROP(3,3,18,18)";
+
 		menu_items.push_back(
-				(formatter() << truncated_description
+				(formatter() << IMAGE_PREFIX << image_path << IMG_TEXT_SEPARATOR
+						<< truncated_description
 						<< HELP_STRING_SEPARATOR << description << (tooltip.empty() ? "" : " - ") << tooltip
 						<< COLUMN_SEPARATOR << font::NULL_MARKUP
 						<< name << HELP_STRING_SEPARATOR << name).str() );
