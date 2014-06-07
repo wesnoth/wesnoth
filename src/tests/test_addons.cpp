@@ -18,6 +18,8 @@
 
 #include "addon/validation.hpp"
 
+#include <boost/foreach.hpp>
+
 BOOST_AUTO_TEST_SUITE( addons )
 
 BOOST_AUTO_TEST_CASE( validation )
@@ -38,6 +40,77 @@ BOOST_AUTO_TEST_CASE( validation )
 	BOOST_CHECK( !addon_name_legal("invalid\x0D""explicitCR") );
 	BOOST_CHECK( !addon_name_legal("invalid`grave accent`") );
 	BOOST_CHECK( !addon_name_legal("invalid$dollarsign$") );
+}
+
+BOOST_AUTO_TEST_CASE( encoding )
+{
+	BOOST_CHECK( encode_binary("") == "" );
+	BOOST_CHECK( unencode_binary("") == "" );
+
+	//
+	// Plain string.
+	//
+
+	const std::string plain = "ABC";
+
+	BOOST_CHECK( encode_binary(plain) == plain );
+	BOOST_CHECK( unencode_binary(plain) == plain );
+
+	//
+	// Binary escaping (direct).
+	//
+
+	const char bin_escape = '\x01';
+	const std::string bin_special = "\x0D\xFE";
+	const std::string raw = "ABC \x01 DEF \x0D\x0A JKL \xFE MNO";
+
+	std::string encoded;
+
+	//
+	// The encoding algorithm as of 1.11.15 is as follows:
+	//
+	//   * let c be the char to encode
+	//   * let e be the escaping char (\x01)
+	//   * if (c in \x00\x0D\xFE or c == e) then return e followed by the
+	//     character with value c+1.
+	//
+	// There is no test for \x00 here because \x00 really shouldn't occur in
+	// a string -- otherwise things get weird.
+	//
+	BOOST_FOREACH(const char c, raw)
+	{
+		if(c == bin_escape || bin_special.find(c) != std::string::npos) {
+			encoded += bin_escape;
+			encoded += (c + 1);
+		} else {
+			encoded += c;
+		}
+	}
+
+	BOOST_CHECK( encode_binary(raw) == encoded );
+	BOOST_CHECK( unencode_binary(encoded) == raw );
+	// Identity.
+	BOOST_CHECK( unencode_binary(encode_binary(raw)) == raw );
+	BOOST_CHECK( unencode_binary(encode_binary(encoded)) == encoded );
+
+	//
+	// Binary escaping (recursive).
+	//
+
+	const unsigned recursive_steps = 16;
+	std::string recursive_encoded = raw;
+
+	for(unsigned n = 0; n < recursive_steps; ++n) {
+		recursive_encoded = encode_binary(recursive_encoded);
+	}
+
+	BOOST_CHECK( recursive_encoded != raw );
+
+	for(unsigned n = 0; n < recursive_steps; ++n) {
+		recursive_encoded = unencode_binary(recursive_encoded);
+	}
+
+	BOOST_CHECK( recursive_encoded == raw );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
