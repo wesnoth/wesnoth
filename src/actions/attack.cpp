@@ -1389,7 +1389,7 @@ namespace
 			
 			//to make mp games equal we only allow selecting advancements to the current side.
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
-			if(force_dialog_ || (t.is_human() && (is_current_side || !is_mp)))
+			if(!non_interactive() && (force_dialog_ || (t.is_human() && (is_current_side || !is_mp))))
 			{
 				res = dialogs::advance_unit_dialog(loc_); 
 			}
@@ -1459,7 +1459,9 @@ void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect
 		config selected = mp_sync::get_user_choice("choose",
 			unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement, force_dialog), side_for); 
 		//calls actions::advance_unit.
-		dialogs::animate_unit_advancement(loc, selected["value"], true, true);
+		bool result = dialogs::animate_unit_advancement(loc, selected["value"], true, true);
+
+		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
 		u = resources::units->find(loc);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80) 
