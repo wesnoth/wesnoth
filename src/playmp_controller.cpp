@@ -204,7 +204,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
 
-					end_turn_struct ets = {gui_->playing_side()};
+					end_turn_struct ets = {static_cast<unsigned>(gui_->playing_side())};
 					return possible_end_play_signal(ets);
 					//throw end_turn_exception(gui_->playing_side());
 				}
@@ -274,7 +274,7 @@ possible_end_play_signal playmp_controller::play_idle_loop()
 			
 			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 			{
-				end_turn_struct ets = {gui_->playing_side()};
+				end_turn_struct ets = {static_cast<unsigned>(gui_->playing_side())};
 				return possible_end_play_signal(ets);
 				//throw end_turn_exception(gui_->playing_side());
 			}
