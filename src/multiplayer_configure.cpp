@@ -215,6 +215,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 
 configure::~configure()
 {
+	try {
 	// Only save the settings if the dialog was 'accepted'
 	if(get_result() != CREATE) {
 		DBG_MP << "destructing multiplayer configure dialog - aborted game creation" << std::endl;
@@ -245,6 +246,7 @@ configure::~configure()
 		preferences::set_village_support(parameters_.village_support);
 		preferences::set_xp_modifier(parameters_.xp_modifier);
 	}
+	} catch (...) {}
 }
 
 const mp_game_settings& configure::get_parameters()
