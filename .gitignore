@@ -129,6 +129,15 @@ po/**/Makefile*
 !po/wesnoth-manpages/Makefile
 !po/wesnoth-manual/Makefile
 
+# tools
+data/tools/unit_tree/**/files
+data/tools/unit_tree/**/reports
+data/tools/unit_tree/**/Locale
+
+# doc
+doc/doxygen/**/html
+doc/manual/**/*.xml
+
 # file for loading lua from within test scenario on-the-fly
 data/lua/**/code.lua
 
