@@ -59,11 +59,14 @@ playmp_controller::playmp_controller(const config& level,
 
 playmp_controller::~playmp_controller() {
 	//halt and cancel the countdown timer
-	if(beep_warning_time_ < 0) {
-		sound::stop_bell();
-	}
+	try {
+
+		if(beep_warning_time_ < 0) {
+			sound::stop_bell();
+		}
 	
-	turn_data_.host_transfer().detach_handler(this);
+		turn_data_.host_transfer().detach_handler(this);
+	} catch (...) {}
 }
 
 void playmp_controller::set_replay_last_turn(unsigned int turn){
