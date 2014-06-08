@@ -61,6 +61,15 @@ unit_map::iterator game_board::find_visible_unit(const map_location &loc,
 	return u;
 }
 
+bool game_board::has_visible_unit(const map_location & loc, const team& current_team, bool see_all)
+{
+	if (!map_.on_board(loc)) return false;
+	unit_map::iterator u = units_.find(loc);
+	if (!u.valid() || !u->is_visible_to_team(current_team, see_all))
+		return false;
+	return true;
+}
+
 unit* game_board::get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all)
 {
