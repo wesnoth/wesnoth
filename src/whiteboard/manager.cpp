@@ -1212,10 +1212,12 @@ future_map_if_active::future_map_if_active():
 
 future_map_if_active::~future_map_if_active()
 {
+	try {
 	if (!resources::whiteboard)
 		return;
 	if (!initial_planned_unit_map_ && resources::whiteboard->has_planned_unit_map())
 		resources::whiteboard->set_real_unit_map();
+	} catch (...) {}
 }
 
 
