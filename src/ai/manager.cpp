@@ -108,9 +108,11 @@ void holder::init( side_number side )
 
 holder::~holder()
 {
+	try {
 	if (this->ai_) {
 		LOG_AI_MANAGER << describe_ai() << "Managed AI will be deleted" << std::endl;
 	}
+	} catch (...) {}
 	delete this->default_ai_context_;
 	delete this->readwrite_context_;
 	delete this->readonly_context_;
