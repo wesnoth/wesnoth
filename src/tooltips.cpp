@@ -113,7 +113,9 @@ manager::manager(CVideo& video)
 
 manager::~manager()
 {
+	try {
 	clear_tooltips();
+	} catch (...) {}
 	video_ = NULL;
 }
 
