@@ -153,21 +153,6 @@ namespace {
 
 		return std::string();
 	}
-
-	config construct_message(const std::string& msg)
-	{
-		config cfg;
-		cfg.add_child("message")["message"] = msg;
-		return cfg;
-	}
-
-	config construct_error(const std::string& msg)
-	{
-		config cfg;
-		cfg.add_child("error")["message"] = msg;
-		LOG_CS << "ERROR: "<<msg<< std::endl;
-		return cfg;
-	}
 } // end anonymous namespace 1
 
 namespace campaignd {
@@ -309,6 +294,21 @@ void server::fire(const std::string& hook, const std::string& addon)
 		return;
 	}
 #endif
+}
+
+void server::send_message(const std::string& msg, network::connection sock)
+{
+	config cfg;
+	cfg.add_child("message")["message"] = msg;
+	network::send_data(cfg, sock);
+}
+
+void server::send_error(const std::string& msg, network::connection sock)
+{
+	config cfg;
+	cfg.add_child("error")["message"] = msg;
+	LOG_CS << "ERROR: " << msg << '\n';
+	network::send_data(cfg, sock);
 }
 
 } // end namespace campaignd
@@ -527,14 +527,14 @@ void server::handle_request_campaign(const server::request& req)
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip";
 	config &campaign = campaigns().find_child("campaign", "name", req.cfg["name"]);
 	if (!campaign) {
-		network::send_data(construct_error("Add-on '" + req.cfg["name"].str() + "' not found."), req.sock);
+		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
 		const int size = file_size(campaign["filename"]);
 
 		if(size < 0) {
 			std::cerr << " size: <unknown> KiB\n";
 			LOG_CS << "File size unknown, aborting send.\n";
-			network::send_data(construct_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server."), req.sock);
+			send_error("Add-on '" + req.cfg["name"].str() + "' could not be read by the server.", req.sock);
 			return;
 		}
 
@@ -556,12 +556,12 @@ void server::handle_request_terms(const server::request& req)
 	// to give up when we're in read-only mode.
 	if(read_only_) {
 		LOG_CS << "in read-only mode, request for upload terms denied\n";
-		network::send_data(construct_error("The server is currently in read-only mode, add-on uploads are disabled."), req.sock);
+		send_error("The server is currently in read-only mode, add-on uploads are disabled.", req.sock);
 		return;
 	}
 
 	LOG_CS << "sending terms " << req.addr << "\n";
-	network::send_data(construct_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so."), req.sock);
+	send_message("All add-ons uploaded to this server must be licensed under the terms of the GNU General Public License (GPL). By uploading content to this server, you certify that you have the right to place the content under the conditions of the GPL, and choose to do so.", req.sock);
 	LOG_CS << " Done\n";
 }
 
@@ -585,44 +585,45 @@ void server::handle_upload(const server::request& req)
 
 	if (read_only_) {
 		LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
-		network::send_data(construct_error("Add-on rejected: The server is currently in read-only mode."), req.sock);
+		send_error("Add-on rejected: The server is currently in read-only mode.", req.sock);
 	} else if (!data) {
 		LOG_CS << "Upload aborted - no add-on data.\n";
-		network::send_data(construct_error("Add-on rejected: No add-on data was supplied."), req.sock);
+		send_error("Add-on rejected: No add-on data was supplied.", req.sock);
 	} else if (!addon_name_legal(upload["name"])) {
 		LOG_CS << "Upload aborted - invalid add-on name.\n";
-		network::send_data(construct_error("Add-on rejected: The name of the add-on is invalid."), req.sock);
+		send_error("Add-on rejected: The name of the add-on is invalid.", req.sock);
 	} else if (is_text_markup_char(upload["name"].str()[0])) {
 		LOG_CS << "Upload aborted - add-on name starts with an illegal formatting character.\n";
-		network::send_data(construct_error("Add-on rejected: The name of the add-on starts with an illegal formatting character."), req.sock);
+		send_error("Add-on rejected: The name of the add-on starts with an illegal formatting character.", req.sock);
 	} else if (upload["title"].empty()) {
 		LOG_CS << "Upload aborted - no add-on title specified.\n";
-		network::send_data(construct_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!"), req.sock);
+		send_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!", req.sock);
 	} else if (is_text_markup_char(upload["title"].str()[0])) {
 		LOG_CS << "Upload aborted - add-on title starts with an illegal formatting character.\n";
-		network::send_data(construct_error("Add-on rejected: The title of the add-on starts with an illegal formatting character."), req.sock);
+		send_error("Add-on rejected: The title of the add-on starts with an illegal formatting character.", req.sock);
 	} else if (get_addon_type(upload["type"]) == ADDON_UNKNOWN) {
 		LOG_CS << "Upload aborted - unknown add-on type specified.\n";
-		network::send_data(construct_error("Add-on rejected: You did not specify a known type for the add-on in the pbl file! (See PblWML: wiki.wesnoth.org/PblWML)"), req.sock);
+		send_error("Add-on rejected: You did not specify a known type for the add-on in the pbl file! (See PblWML: wiki.wesnoth.org/PblWML)", req.sock);
 	} else if (upload["author"].empty()) {
 		LOG_CS << "Upload aborted - no add-on author specified.\n";
-		network::send_data(construct_error("Add-on rejected: You did not specify the author(s) of the add-on in the pbl file!"), req.sock);
+		send_error("Add-on rejected: You did not specify the author(s) of the add-on in the pbl file!", req.sock);
 	} else if (upload["version"].empty()) {
 		LOG_CS << "Upload aborted - no add-on version specified.\n";
-		network::send_data(construct_error("Add-on rejected: You did not specify the version of the add-on in the pbl file!"), req.sock);
+		send_error("Add-on rejected: You did not specify the version of the add-on in the pbl file!", req.sock);
 	} else if (upload["description"].empty()) {
 		LOG_CS << "Upload aborted - no add-on description specified.\n";
-		network::send_data(construct_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!"), req.sock);
+		send_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!", req.sock);
 	} else if (upload["email"].empty()) {
 		LOG_CS << "Upload aborted - no add-on email specified.\n";
-		network::send_data(construct_error("Add-on rejected: You did not specify your email address in the pbl file!"), req.sock);
+		send_error("Add-on rejected: You did not specify your email address in the pbl file!", req.sock);
 	} else if (!check_names_legal(data)) {
 		LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
-		network::send_data(construct_error("Add-on rejected: The add-on contains an illegal file or directory name."
-				" File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'"), req.sock);
+		send_error("Add-on rejected: The add-on contains an illegal file or directory name."
+				   " File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
+				   req.sock);
 	} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
-		network::send_data(construct_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect."), req.sock);
+		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
 	} else {
 		const time_t upload_ts = time(NULL);
 
@@ -636,7 +637,7 @@ void server::handle_upload(const server::request& req)
 									 upload["email"].str()))
 		{
 			LOG_CS << "Upload denied - blacklisted add-on information.\n";
-			network::send_data(construct_error("Add-on upload denied. Please contact the server administration for assistance."), req.sock);
+			send_error("Add-on upload denied. Please contact the server administration for assistance.", req.sock);
 			return;
 		}
 
@@ -705,7 +706,7 @@ void server::handle_upload(const server::request& req)
 
 		write_config();
 
-		network::send_data(construct_message(message), req.sock);
+		send_message(message, req.sock);
 
 		fire("hook_post_upload", upload["name"]);
 	}
@@ -717,14 +718,14 @@ void server::handle_delete(const server::request& req)
 
 	if(read_only_) {
 		LOG_CS << "in read-only mode, request to delete '" << erase["name"] << "' from " << req.addr << " denied\n";
-		network::send_data(construct_error("Cannot delete add-on: The server is currently in read-only mode."), req.sock);
+		send_error("Cannot delete add-on: The server is currently in read-only mode.", req.sock);
 		return;
 	}
 
 	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
 	const config &campaign = campaigns().find_child("campaign", "name", erase["name"]);
 	if (!campaign) {
-		network::send_data(construct_error("The add-on does not exist."), req.sock);
+		send_error("The add-on does not exist.", req.sock);
 		return;
 	}
 
@@ -732,7 +733,7 @@ void server::handle_delete(const server::request& req)
 			&& (campaigns()["master_password"].empty()
 			|| campaigns()["master_password"] != erase["passphrase"]))
 	{
-		network::send_data(construct_error("The passphrase is incorrect."), req.sock);
+		send_error("The passphrase is incorrect.", req.sock);
 		return;
 	}
 
@@ -752,7 +753,7 @@ void server::handle_delete(const server::request& req)
 
 	write_config();
 
-	network::send_data(construct_message("Add-on deleted."), req.sock);
+	send_message("Add-on deleted.", req.sock);
 
 	fire("hook_post_erase", erase["name"]);
 
@@ -764,23 +765,23 @@ void server::handle_change_passphrase(const server::request& req)
 
 	if(read_only_) {
 		LOG_CS << "in read-only mode, request to change passphrase denied\n";
-		network::send_data(construct_error("Cannot change passphrase: The server is currently in read-only mode."), req.sock);
+		send_error("Cannot change passphrase: The server is currently in read-only mode.", req.sock);
 		return;
 	}
 
 	config &campaign = campaigns().find_child("campaign", "name", cpass["name"]);
 	if (!campaign) {
-		network::send_data(construct_error("No add-on with that name exists."), req.sock);
+		send_error("No add-on with that name exists.", req.sock);
 	} else if (campaign["passphrase"] != cpass["passphrase"]) {
-		network::send_data(construct_error("Your old passphrase was incorrect."), req.sock);
+		send_error("Your old passphrase was incorrect.", req.sock);
 	} else if (cpass["new_passphrase"].empty()) {
-		network::send_data(construct_error("No new passphrase was supplied."), req.sock);
+		send_error("No new passphrase was supplied.", req.sock);
 	} else {
 		campaign["passphrase"] = cpass["new_passphrase"];
 
 		write_config();
 
-		network::send_data(construct_message("Passphrase changed."), req.sock);
+		send_message("Passphrase changed.", req.sock);
 	}
 }
 
