@@ -19,7 +19,17 @@ void playturn_network_adapter::read_from_network()
 	
 	this->data_.push_back(config());
 	config& back = data_.back();
-	bool has_data = this->network_reader_(back);
+	bool has_data = false;
+	try 
+	{
+		has_data = this->network_reader_(back);
+	}
+	catch(...)
+	{
+		//Readin from network can throw, we want to ignore the possibly corrupt packet in this case.
+		this->data_.pop_back();
+		throw;
+	}
 	//ping is handeled by network.cpp and we can ignore it.
 	back.remove_attribute("ping");
 	if((!has_data) || back.empty())
@@ -38,13 +48,14 @@ void playturn_network_adapter::read_from_network()
 		back.remove_attribute("side_drop");
 		back.remove_attribute("controller");
 	}
-	assert(!data_.back().empty());
-	//there should be no attributes left.
-
-	if(back.attribute_range().first != back.attribute_range().second )
+	else if(back.attribute_range().first != back.attribute_range().second )
 	{
 		ERR_NW << "found unexpected attribute:" <<back.debug() << "\n";
+		this->data_.pop_back();
+		//ignore those here
 	}
+	assert(!data_.back().empty());
+	//there should be no attributes left.
 }
 
 bool playturn_network_adapter::is_at_end()
