@@ -39,6 +39,24 @@ uninstall.vcproj
 *.vcproj.*.user
 projectfiles/VC[12]*
 
+# XCode
+projectfiles/Xcode/**/build
+projectfiles/Xcode/**/Headers
+projectfiles/Xcode/**/Wesnoth.dmgCanvas
+projectfiles/Xcode/**/*.mode1v3
+projectfiles/Xcode/**/*.pbxuser
+projectfiles/Xcode/**/xcuserdata
+projectfiles/Xcode/**/project.xcworkspace
+
+# CodeBlocks
+projectfiles/**/.clang
+projectfiles/**/wesnoth.tags
+projectfiles/**/wesnoth.workspace.*
+projectfiles/**/*.depend
+projectfiles/**/*.layout
+projectfiles/**/*_build_log.html
+projectfiles/**/*objs*
+
 # eclipse
 .settings
 !utils/umc_dev/org.wesnoth*/.settings/
@@ -62,7 +80,10 @@ stamp-h1
 /cutter*
 /exploder*
 /build/
+Release
 Debug
+ReleaseDEBUG
+Debug (fast)
 tags
 
 # build results ect.
@@ -70,6 +91,7 @@ wesnoth.exp
 wesnoth.ilk
 wesnoth.lib
 wesnoth.ncb
+wesnoth.suo
 wesnoth.opt
 wesnoth.plg
 *.exe
@@ -77,7 +99,7 @@ wesnoth.plg
 
 # library files
 .libs
-Lib
+[Ll]ib
 !data/ai/formula/lib/
 !src/gui/lib/
 
