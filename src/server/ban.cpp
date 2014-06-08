@@ -704,7 +704,9 @@ static lg::log_domain log_server("server");
 
 	ban_manager::~ban_manager()
 	{
+		try {
 		write();
+		} catch (...) {}
 	}
 
 	ban_manager::ban_manager()
