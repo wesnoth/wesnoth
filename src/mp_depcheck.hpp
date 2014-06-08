@@ -18,8 +18,9 @@
 #include <string>
 #include <vector>
 #include "config.hpp"
-#include "game_display.hpp"
 #include "gettext.hpp"
+
+class CVideo;
 
 namespace mp
 {
