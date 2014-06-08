@@ -48,8 +48,10 @@ mapbuilder::mapbuilder(unit_map& unit_map)
 
 mapbuilder::~mapbuilder()
 {
+	try {
 	restore_normal_map();
 	//Remember that the member variable resetters_ is destructed here
+	} catch (...) {}
 }
 
 void mapbuilder::pre_build()
