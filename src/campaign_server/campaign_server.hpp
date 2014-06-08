@@ -167,6 +167,16 @@ private:
 	void handle_upload(const request&);
 	void handle_delete(const request&);
 	void handle_change_passphrase(const request&);
+
+	//
+	// Generic responses.
+	//
+
+	/** Send a client an informational message. */
+	void send_message(const std::string& msg, network::connection sock);
+
+	/** Send a client an error message. */
+	void send_error(const std::string& msg, network::connection sock);
 };
 
 } // end namespace campaignd
