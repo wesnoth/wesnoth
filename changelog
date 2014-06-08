@@ -1,10 +1,35 @@
 Version 1.11.15+dev:
  * Add-ons server:
    * Add-on metadata pattern blacklisting implemented.
+ * Campaigns
+   * Legend of Wesmere
+     * Disabled the non finished chapters 4 and 5 in the mp port.
+     * Fix scenario 3 which was broken after a map change.
  * Language and i18n:
    * Updated translations:
+ * Map Editor
+   * Added an entry for the terrain description help to the context menu.
+   * Default hotkey bindings for brushes (1-5)
+   * Disabled the non working custom time schedule creator.
+   * Disabled the swap palette button when the unit palette is active.
+   * Disabled the item place tool which is not finished.
+   * Disabled the non working toggle loyal feature.
+   * Disabled the tod schedule and playlist menues in pure map mode.
+   * Support for displaying the saved status of the selected area.
+   * Fixed error messages about missing UI elements.
  * Miscellaneous and bug fixes:
    * Backported Elvish_Hunter's wmltools GUI from master
+   * Changed the fungus overlay terrain to repect the game values of the mixed partner.
+     Fixes the bug #21971
+   * Default to classic minimap unit/village color coding. (colored by side)
+   * Default to classic minimap terrain representation. (satellite view)
+   * Default hotkey binding for the terrain description help action. (ctrl+t)
+   * Deleted obsolete UI themes.
+   * Disabled the orbs for enemy units.
+   * Display the tooltip for actions browsed in the hotkey preferences dialog.
+   * Enabled action icons in the hotkey preferences dialog.
+   * Fix bug #21717: "F5->reload wml tree" doesn't work in editor.
+   * Fix bug #21298: Minimap shows invisible overlays
    * Fix bug #22116: unlock movement when attacking enemy+discovering in fog
    * Fix bug #21397: "Saving and loading may cause a side's turn is not 
      initialized".
@@ -14,6 +39,7 @@ Version 1.11.15+dev:
    * Fix bug #22123 "Replays don't reset map when reset button is pressed, 
      causing OOS"
    * Fix bug #22147: Assertion error when a network error is thrown during the game.
+   * Removed the YetAnotherMapGenerator (not finished)
      
 Version 1.11.15:
  * Graphics:
@@ -10385,7 +10411,7 @@ Version 0.8.2:
  * fixed problems with cache invalidation
  * fixed file descriptor leak
  * fixed 'gender' not working with move_unit_fake
- * fixed grÃ¼Ã¼ losing experience when joining
+ * fixed grüü losing experience when joining
  * fixed units moving through water not being submerged while moving
  * terrains tiles are now cut according to the hexagonal shape, to avoid some graphical glitches
  * workaround a SDL_TTF bug that makes it crash when presented an invalid UTF-8 string
