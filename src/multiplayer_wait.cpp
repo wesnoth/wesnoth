@@ -199,6 +199,7 @@ wait::wait(game_display& disp, const config& cfg, game_state& state,
 
 wait::~wait()
 {
+	try {
 	if (get_result() == QUIT) {
 		state_ = game_state();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
@@ -206,6 +207,7 @@ wait::~wait()
 		resources::config_manager->
 			load_game_config_for_game(state_.classification());
 	}
+	} catch (...) {}
 }
 
 void wait::process_event()
