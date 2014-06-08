@@ -97,8 +97,10 @@ game_display* game_display::create_dummy_display(CVideo& video)
 
 game_display::~game_display()
 {
+	try {
 	// SDL_FreeSurface(minimap_);
 	prune_chat_messages(true);
+	} catch (...) {}
 }
 
 void game_display::new_turn()
@@ -667,10 +669,13 @@ game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
  */
 game_display::fake_unit::~fake_unit()
 {
+	try {
 	// The fake_unit class exists for this one line, which removes the
 	// fake_unit from the display's fake_units_ dequeue in the event of an
 	// exception.
 	if(my_display_){remove_from_game_display();}
+
+	} catch (...) {}
 }
 
 /**
