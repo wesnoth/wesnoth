@@ -108,9 +108,6 @@ namespace image {
 		 */
 		bool file_exists() const;
 
-		// loads the image it is pointing to from the disk
-		surface load_from_disk() const;
-
 		template <typename T>
 		bool in_cache(cache_type<T> &cache) const;
 		template <typename T>
@@ -122,12 +119,11 @@ namespace image {
 
 	private:
 
-		surface load_image_file() const;
-		surface load_image_sub_file() const;
-
 		int index_;
 		value val_;
 	};
+
+	surface load_from_disk(const locator &loc);
 
 	size_t hash_value(const locator::value&);
 
