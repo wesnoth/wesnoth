@@ -923,7 +923,9 @@ replay_network_sender::replay_network_sender(replay& obj) : obj_(obj), upto_(obj
 
 replay_network_sender::~replay_network_sender()
 {
+	try {
 	commit_and_sync();
+	} catch (...) {}
 }
 
 void replay_network_sender::sync_non_undoable()
