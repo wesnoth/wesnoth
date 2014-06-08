@@ -1,5 +1,6 @@
 /*
-   Copyright (C) 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
+   Copyright (C) 2003 - 2014 by David White <dave@whitevine.net>
+                 2013 - 2014 by Ignacio Riquelme Morelle <shadowm2006@gmail.com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -48,6 +49,35 @@ inline bool is_text_markup_char(char c)
  *         incorrect data).
  */
 std::string format_addon_feedback_url(const std::string& format, const config& params);
+
+
+/**
+ * Scans an add-on archive directory for translations.
+ *
+ * Any subdirectories of @a base_dir containing a subdirectory named
+ * 'LC_MESSAGES' are assumed to be translation dirs. The names of the
+ * subdirectories thus located are recorded into the @a addon WML node in
+ * [translation] children nodes like the following (comments included for
+ * documentation purposes):
+ *
+ * @verbatim
+ *     [translation]
+ *         language="es" # translations/es/LC_MESSAGES/
+ *     [/translation]
+ *     [translation]
+ *         language="ja" # translations/ja/LC_MESSAGES/
+ *     [/translation]
+ * @endverbatim
+ */
+void find_translations(const config& base_dir, config& addon);
+
+/**
+ * Adds a COPYING.txt file with the full text of the GNU GPL to an add-on.
+ *
+ * This only has an effect if the add-on archive @a cfg does not already
+ * contain an equivalent file ('copying.txt', 'COPYING', etc.).
+ */
+void add_license(config& cfg);
 
 }
 
