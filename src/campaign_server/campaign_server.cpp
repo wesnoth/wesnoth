@@ -29,6 +29,7 @@
 #include "serialization/string_utils.hpp"
 #include "game_config.hpp"
 #include "addon/validation.hpp"
+#include "campaign_server/addon_utils.hpp"
 #include "campaign_server/blacklist.hpp"
 #include "version.hpp"
 #include "util.hpp"
@@ -72,87 +73,6 @@ static void exit_sigterm(int signal) {
 	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
 	exit(128 + SIGTERM);
 }
-
-namespace {
-	// Markup characters recognized by GUI1 code. These must be
-	// the same as the constants defined in marked-up_text.cpp.
-	const std::string illegal_markup_chars = "*`~{^}|@#<&";
-
-	inline bool is_text_markup_char(char c)
-	{
-		return illegal_markup_chars.find(c) != std::string::npos;
-	}
-
-	typedef std::map<std::string, std::string> plain_string_map;
-
-	/**
-	 * Quick and dirty alternative to @a uitls::interpolate_variables_into_string that
-	 * doesn't require formula AI code. It is definitely NOT safe for normal
-	 * use since it doesn't do strict checks on where variable placeholders
-	 * ("$foobar") end and doesn't support pipe ("|") terminators.
-	 *
-	 * @param str     The format string.
-	 * @param symbols The symbols table.
-	 */
-	std::string fast_interpolate_variables_into_string(const std::string &str, const plain_string_map * const symbols)
-	{
-		std::string res = str;
-
-		if(symbols) {
-			BOOST_FOREACH(const plain_string_map::value_type& sym, *symbols) {
-				res = utils::replace(res, "$" + sym.first, sym.second);
-			}
-		}
-
-		return res;
-	}
-
-	/**
-	 * Format a feedback URL for an add-on.
-	 *
-	 * @param format        The format string for the URL, presumably obtained
-	 *                      from the add-ons server identification.
-	 *
-	 * @param params        The URL format parameters table.
-	 *
-	 * @return A string containing a feedback URL or an empty string if that
-	 *         is not possible (e.g. empty or invalid @a format, empty
-	 *         @a params table, or a result that is identical in content to
-	 *         the @a format suggesting that the @a params table contains
-	 *         incorrect data).
-	 */
-	std::string format_addon_feedback_url(const std::string& format, const config& params)
-	{
-		if(!format.empty() && !params.empty()) {
-			plain_string_map escaped;
-
-			config::const_attr_itors attrs = params.attribute_range();
-
-			// Percent-encode parameter values for URL interpolation. This is
-			// VERY important since otherwise people could e.g. alter query
-			// strings from the format string.
-			BOOST_FOREACH(const config::attribute& a, attrs) {
-				escaped[a.first] = utils::urlencode(a.second.str());
-			}
-
-			// FIXME: We cannot use utils::interpolate_variables_into_string
-			//        because it is implemented using a lot of formula AI junk
-			//        that really doesn't belong in campaignd.
-			const std::string& res =
-				fast_interpolate_variables_into_string(format, &escaped);
-
-			if(res != format) {
-				return res;
-			}
-
-			// If we get here, that means that no interpolation took place; in
-			// that case, the parameters table probably contains entries that
-			// do not match the format string expectations.
-		}
-
-		return std::string();
-	}
-} // end anonymous namespace 1
 
 namespace campaignd {
 
