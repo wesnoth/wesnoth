@@ -24,6 +24,8 @@
 #include <string>
 #include <utility>
 
+class game_state;
+
 namespace mp {
 
 class level

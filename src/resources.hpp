@@ -21,7 +21,6 @@ class game_board;
 class game_config_manager;
 class game_display;
 class gamemap;
-class game_state;
 class game_data;
 class LuaKernel;
 class play_controller;

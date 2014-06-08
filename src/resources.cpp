@@ -26,7 +26,6 @@ namespace resources
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;
 	soundsource::manager *soundsources = NULL;
-	game_state           *state_of_game = NULL;
 	std::vector<team>    *teams = NULL;
 	::tod_manager        *tod_manager = NULL;
 	pathfind::manager    *tunnels = NULL;
