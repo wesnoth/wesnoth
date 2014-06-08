@@ -12,6 +12,7 @@ set opt=--log-strict=warning
 if "%1"=="" ( cd ..\..\ ) else ( cd %~p1 )
 
 echo running WML tests:
+set tSTART=%time%
 
 :: ignore lines beginning with #
 :: %%G contains whether the test should pass (0), timeout (2) or fail (1,4)
@@ -35,7 +36,9 @@ for /f "eol=# tokens=1,2 delims= " %%G in (%LoadFile%) do (
 )
 echo(
 if not DEFINED fail_num ( set "fail_num=none" )
-echo %test_num% WML tests completed, %fail_num% of them failed
+set /a "minutes = (1%time:~3,2%-100) - (1%tSTART:~3,2%-100)"
+set /a "seconds = (1%time:~6,2%-100) - (1%tSTART:~6,2%-100)"
+echo %test_num% WML tests completed in %minutes%m %seconds%s, %fail_num% of them failed
 
 :: restore the state before execution
 cd %~p0
