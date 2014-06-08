@@ -2944,6 +2944,7 @@ unit_movement_resetter::unit_movement_resetter(unit &u, bool operate) :
 unit_movement_resetter::~unit_movement_resetter()
 {
 	assert(resources::units);
+	try {
 
 	if(!resources::units->has_unit(&u_)) {
 		/*
@@ -2953,6 +2954,8 @@ unit_movement_resetter::~unit_movement_resetter()
 		DBG_UT << "The unit to be removed is not in the unit map.\n";
 	}
 	u_.set_movement(moves_);
+
+	} catch (...) {}
 }
 
 bool unit::matches_id(const std::string& unit_id) const
