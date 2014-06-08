@@ -28,6 +28,7 @@ class config;
 
 namespace events {
 	class mouse_handler;
+	class menu_handler;
 }
 
 /**
@@ -58,6 +59,7 @@ class game_board {
 	friend class playsingle_controller;
 	friend class playmp_controller;
 	friend class events::mouse_handler;
+	friend class events::menu_handler;
 
 	friend class game_display;
 	/** 

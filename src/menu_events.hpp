@@ -21,6 +21,7 @@
 #include "floating_textbox.hpp"
 #include "unit_map.hpp"
 
+class game_board;
 class game_state;
 class gamemap;
 
@@ -34,8 +35,8 @@ namespace events {
 
 class menu_handler : private chat_handler {
 public:
-	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const gamemap& map,
+	menu_handler(game_display* gui, game_board & board,
+		const config& level,
 		const config& game_config, game_state& gamestate);
 	virtual ~menu_handler();
 

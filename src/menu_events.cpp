@@ -30,6 +30,7 @@
 #include "dialogs.hpp"
 #include "formatter.hpp"
 #include "filechooser.hpp"
+#include "game_board.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/pump.hpp"
 #include "game_preferences.hpp"
@@ -80,14 +81,14 @@ static lg::log_domain log_engine("engine");
 
 namespace events{
 
-menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
-		const config& level, const gamemap& map,
+menu_handler::menu_handler(game_display* gui, game_board & board,
+		const config& level,
 		const config& game_config, game_state& gamestate) :
 	gui_(gui),
-	units_(units),
-	teams_(teams),
+	units_(board.units_),
+	teams_(board.teams_),
 	level_(level),
-	map_(map),
+	map_(board.map()),
 	game_config_(game_config),
 	gamestate_(gamestate),
 	textbox_info_(),
