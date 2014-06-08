@@ -59,9 +59,11 @@ highlighter::highlighter(unit_map& unit_map, side_actions_ptr side_actions)
 
 highlighter::~highlighter()
 {
+	try {
 	if(resources::screen && owner_unit_) {
 		unhighlight();
 	}
+	} catch (...) {}
 }
 
 void highlighter::set_mouseover_hex(const map_location& hex)
