@@ -231,10 +231,12 @@ temporary_unit_placer::temporary_unit_placer(game_board& b, const map_location& 
 
 temporary_unit_placer::~temporary_unit_placer()
 {
+	try {
 	m_.erase(loc_);
 	if(temp_) {
 		m_.insert(temp_);
 	}
+	} catch (...) {}
 }
 
 temporary_unit_remover::temporary_unit_remover(unit_map& m, const map_location& loc)
@@ -249,9 +251,11 @@ temporary_unit_remover::temporary_unit_remover(game_board& b, const map_location
 
 temporary_unit_remover::~temporary_unit_remover()
 {
+	try {
 	if(temp_) {
 		m_.insert(temp_);
 	}
+	} catch (...) {}
 }
 
 /**
@@ -312,6 +316,7 @@ temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& sr
 
 temporary_unit_mover::~temporary_unit_mover()
 {
+	try {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(dst_, src_);
 
 	// Restore the movement?
@@ -322,5 +327,6 @@ temporary_unit_mover::~temporary_unit_mover()
 	if(temp_) {
 		m_.insert(temp_);
 	}
+	} catch (...) {}
 }
 
