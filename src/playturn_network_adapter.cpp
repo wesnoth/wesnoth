@@ -125,10 +125,12 @@ playturn_network_adapter::playturn_network_adapter(source_type source)
 
 playturn_network_adapter::~playturn_network_adapter()
 {
-	if(!is_at_end())
-	{
-		ERR_NW << "Destroing playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
-	}
+	try {
+		if(!is_at_end())
+		{
+			ERR_NW << "Destroing playturn_network_adapter with an non empty buffer, this means loss of network data" << std::endl;
+		}
+	} catch (...) {}
 }
 
 void playturn_network_adapter::set_source(source_type source)
