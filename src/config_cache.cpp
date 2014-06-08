@@ -146,13 +146,9 @@ namespace game_config {
 
 	void config_cache::read_configs(const std::string& path, config& cfg, preproc_map& defines_map)
 	{
-		try {
-			//read the file and then write to the cache
-			scoped_istream stream = preprocess_file(path, &defines_map);
-			read(cfg, *stream);
-		} catch (config::error & e) {
-			ERR_CACHE << "error parsing configs in '" << path << "', got config::error\n" << e.message << std::endl;
-		}
+		//read the file and then write to the cache
+		scoped_istream stream = preprocess_file(path, &defines_map);
+		read(cfg, *stream);
 	}
 
 	void config_cache::read_cache(const std::string& path, config& cfg)

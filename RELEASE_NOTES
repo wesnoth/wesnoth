@@ -14,6 +14,10 @@ The release team should empty this file after each release.
 CHANGES
 =======
 
+[section="Fixed WML load error reporting"]
+A change introduced in version 1.11.15 caused WML parser/preprocessor errors found at game/add-on load time to not be reported to the player in the GUI, and the game to carry on with a incomplete and malformed WML tree in most cases. This issue was [url=http://r.wesnoth.org/p571380]reported[/url] on the forums by SkyOne and is fixed in this release.
+[/section]
+
 [section="Changes to the Mushroom Groove overlay terrain"]
 A change to the way how the Mushroom Groove terrain works might cause the need for some map rebalancing.
 Previously the mixed fungus terrain worked always like plain Mushroom Groove, now it is handled like the forest overlays.

@@ -17,6 +17,11 @@ Version 1.11.15+dev:
    * Disabled the tod schedule and playlist menues in pure map mode.
    * Support for displaying the saved status of the selected area.
    * Fixed error messages about missing UI elements.
+ * WML engine:
+   * Fixed a regression in 1.11.14 causing WML parser/preprocessor errors to
+     not interrupt the game load sequence or display an error message in-game,
+     resulting in loading malformed/incomplete WML data
+     <http://r.wesnoth.org/p571380>.
  * Miscellaneous and bug fixes:
    * Backported Elvish_Hunter's wmltools GUI from master
    * Changed the fungus overlay terrain to repect the game values of the mixed partner.
