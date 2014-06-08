@@ -83,6 +83,7 @@ game::game(player_map& players, const network::connection host,
 
 game::~game()
 {
+	try {
 	save_replay();
 
 	user_vector users = all_game_users();
@@ -90,6 +91,7 @@ game::~game()
 		remove_player(*u, false, true);
 	}
 	clear_history();
+	} catch (...) {}
 }
 
 bool game::allow_observers() const {
