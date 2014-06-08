@@ -85,6 +85,17 @@ boost_test_result.xml
 locales
 make_translation
 merge_translations
+*.gmo
+po/**/.gitignore
+po/**/[a-z][a-z]
+po/**/[a-z][a-z]_[GB]R
+po/**/POTFILES
+po/**/pot-update.sh
+po/**/stamp-po
+po/**/remove-potcdate.s*
+po/**/Makefile*
+!po/wesnoth-manpages/Makefile
+!po/wesnoth-manual/Makefile
 
 # OS created files
 .DS_Store
