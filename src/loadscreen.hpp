@@ -21,6 +21,10 @@ class CVideo;
 
 #include "sdl/utils.hpp"
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/texture.hpp"
+#endif
+
 class loadscreen {
 public:
 	// Preferred constructor
@@ -74,7 +78,11 @@ private:
 	// Data members
 	CVideo &screen_;
 	SDL_Rect textarea_;
+#if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::ttexture logo_texture_;
+#else
 	surface logo_surface_;
+#endif
 	bool logo_drawn_;
 	int pby_offset_;
 	int prcnt_;

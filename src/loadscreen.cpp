@@ -70,14 +70,27 @@ void loadscreen::global_loadscreen_manager::reset()
 loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
+#if SDL_VERSION_ATLEAST(2,0,0)
+	logo_texture_(),
+#else
 	logo_surface_(image::get_image("misc/logo.png")),
+#endif
 	logo_drawn_(false),
 	pby_offset_(0),
 	prcnt_(percent)
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	surface surf = image::get_image("misc/logo.png");
+	if (surf.null()) {
+		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
+	}
+
+	logo_texture_ = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
+#else
 	if (logo_surface_.null()) {
 		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
 	}
+#endif
 	textarea_.x = textarea_.y = textarea_.w = textarea_.h = 0;
 }
 void loadscreen::draw_screen(const std::string &text)
@@ -125,6 +138,23 @@ void loadscreen::draw_screen(const std::string &text)
 	}
 
 	// Draw logo if it was successfully loaded.
+#if SDL_VERSION_ATLEAST(2,0,0)
+	if (!logo_texture_.null() /*&& !logo_drawn_*/) {
+		int x = (screen_.getx () - logo_texture_.width()) / 2;
+		int y = ((scry - logo_texture_.height()) / 2) - pbh;
+
+		// Check if we have enough pixels to display it.
+		if (x > 0 && y > 0) {
+			pby_offset_ = (pbh + logo_texture_.height())/2;
+			CVideo::get_window()->draw(logo_texture_, x, y);
+		} else {
+			if (!screen_.faked()) {  // Avoid error if --nogui is used.
+				ERR_DP << "loadscreen: Logo image is too big." << std::endl;
+			}
+		}
+		logo_drawn_ = true;
+	}
+#else
 	if (logo_surface_ && !logo_drawn_) {
 		area.x = (screen_.getx () - logo_surface_->w) / 2;
 		area.y = ((scry - logo_surface_->h) / 2) - pbh;
@@ -142,6 +172,7 @@ void loadscreen::draw_screen(const std::string &text)
 		logo_drawn_ = true;
 		update_rect(area.x, area.y, area.w, area.h);
 	}
+#endif
 	int pbx = (scrx - pbw)/2;					// Horizontal location.
 	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
 
@@ -194,10 +225,16 @@ void loadscreen::draw_screen(const std::string &text)
 	// Update the rectangle.
 	update_rect(pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
 	screen_.flip();
+#if SDL_VERSION_ATLEAST(2,0,0)
+	CVideo::get_window()->render();
+#endif
 }
 
 void loadscreen::clear_screen()
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	CVideo::get_window()->clear(0,0,0);
+#else
 	int scrx = screen_.getx();                     // Screen width.
 	int scry = screen_.gety();                     // Screen height.
 	SDL_Rect area = sdl::create_rect(0, 0, scrx, scry); // Screen area.
@@ -206,6 +243,7 @@ void loadscreen::clear_screen()
 	sdl::fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	update_whole_screen();
 	screen_.flip();
+#endif
 }
 
 loadscreen *loadscreen::global_loadscreen = 0;
