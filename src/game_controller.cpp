@@ -1114,6 +1114,8 @@ editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 
 game_controller::~game_controller()
 {
-	gui::dialog::delete_empty_menu();
-	sound::close_sound();
+	try {
+		gui::dialog::delete_empty_menu();
+		sound::close_sound();
+	} catch (...) {}
 }
