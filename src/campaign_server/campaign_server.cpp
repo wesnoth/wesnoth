@@ -231,52 +231,6 @@ void server::send_error(const std::string& msg, network::connection sock)
 	network::send_data(cfg, sock);
 }
 
-} // end namespace campaignd
-
-namespace {
-	void find_translations(const config& cfg, config& campaign)
-	{
-		BOOST_FOREACH(const config &dir, cfg.child_range("dir"))
-		{
-			if (dir["name"] == "LC_MESSAGES") {
-				config &language = campaign.add_child("translation");
-				language["language"] = cfg["name"];
-			} else {
-				find_translations(dir, campaign);
-			}
-		}
-	}
-
-	// Add a file COPYING.txt with the GPL to an uploaded campaign.
-	void add_license(config &data)
-	{
-		config &dir = data.find_child("dir", "name", data["campaign_name"]);
-		// No top-level directory? Hm..
-		if (!dir) return;
-
-		// Don't add if it already exists.
-		if (dir.find_child("file", "name", "COPYING.txt")) return;
-		if (dir.find_child("file", "name", "COPYING")) return;
-		if (dir.find_child("file", "name", "copying.txt")) return;
-		if (dir.find_child("file", "name", "Copying.txt")) return;
-		if (dir.find_child("file", "name", "COPYING.TXT")) return;
-
-		// Copy over COPYING.txt
-		std::string contents = read_file("COPYING.txt");
-		if (contents.empty()) {
-			LOG_CS << "Could not find COPYING.txt, path is \""
-				<< game_config::path << "\"\n";
-			return;
-		}
-		config &copying = dir.add_child("file");
-		copying["name"] = "COPYING.txt";
-		copying["contents"] = contents;
-
-	}
-} // end anonymous namespace 2
-
-namespace campaignd {
-
 void server::run()
 {
 	if(read_only_) {
