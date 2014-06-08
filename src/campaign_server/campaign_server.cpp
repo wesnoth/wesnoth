@@ -318,14 +318,17 @@ void server::register_handler(const std::string& cmd, const request_handler& fun
 	handlers_.push_back(std::make_pair(cmd, func));
 }
 
+#define REGISTER_CAMPAIGND_HANDLER(req_id) \
+	register_handler(#req_id, boost::bind(&server::handle_##req_id, this, _1))
+
 void server::register_handlers()
 {
-	register_handler("request_campaign_list", boost::bind(&server::handle_request_campaign_list, this, _1));
-	register_handler("request_campaign", boost::bind(&server::handle_request_campaign, this, _1));
-	register_handler("request_terms", boost::bind(&server::handle_request_terms, this, _1));
-	register_handler("upload", boost::bind(&server::handle_upload, this, _1));
-	register_handler("delete", boost::bind(&server::handle_delete, this, _1));
-	register_handler("change_passphrase", boost::bind(&server::handle_change_passphrase, this, _1));
+	REGISTER_CAMPAIGND_HANDLER(request_campaign_list);
+	REGISTER_CAMPAIGND_HANDLER(request_campaign);
+	REGISTER_CAMPAIGND_HANDLER(request_terms);
+	REGISTER_CAMPAIGND_HANDLER(upload);
+	REGISTER_CAMPAIGND_HANDLER(delete);
+	REGISTER_CAMPAIGND_HANDLER(change_passphrase);
 }
 
 void server::handle_request_campaign_list(const server::request& req)
