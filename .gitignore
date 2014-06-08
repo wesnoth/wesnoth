@@ -27,7 +27,7 @@ CMakeLists.txt
 
 # scons
 .scons-option-cache
-.sconsign.dblite
+*sconsign.dblite
 .sconf_temp
 
 # win32/MSVC:
@@ -109,6 +109,7 @@ userdata
 
 # testing
 /test*
+!/test_wrapper.sh
 error*.log
 do_build_and_tests.sh
 boost_test_result.xml
@@ -128,6 +129,9 @@ po/**/Makefile*
 !po/wesnoth-manpages/Makefile
 !po/wesnoth-manual/Makefile
 
+# file for loading lua from within test scenario on-the-fly
+data/lua/**/code.lua
+
 # previous .gitignore files
 po/**/.gitignore
 images/**/.gitignore
@@ -140,6 +144,7 @@ data/campaigns/**/images/**/.gitignore
 *Neuer Ordner*
 
 # uncategorized
+*.pyc
 *.swp
 *.pbl
 *.xhtml
