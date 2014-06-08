@@ -192,19 +192,21 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 
 create::~create()
 {
-	// Only save the settings if the dialog was 'accepted'
-	if(get_result() != CREATE) {
-		DBG_MP << "destructing multiplayer create dialog - aborted game creation" << std::endl;
-		return;
-	}
-	DBG_MP << "destructing multiplayer create dialog - a game will be created" << std::endl;
+	try {
+		// Only save the settings if the dialog was 'accepted'
+		if(get_result() != CREATE) {
+			DBG_MP << "destructing multiplayer create dialog - aborted game creation" << std::endl;
+			return;
+		}
+		DBG_MP << "destructing multiplayer create dialog - a game will be created" << std::endl;
 
-	// Save values for next game
-	DBG_MP << "storing parameter values in preferences" << std::endl;
-	preferences::set_era(engine_.current_extra(create_engine::ERA).id);
-	preferences::set_level(engine_.current_level().id());
-	preferences::set_level_type(engine_.current_level_type());
-	preferences::set_modifications(engine_.active_mods());
+		// Save values for next game
+		DBG_MP << "storing parameter values in preferences" << std::endl;
+		preferences::set_era(engine_.current_extra(create_engine::ERA).id);
+		preferences::set_level(engine_.current_level().id());
+		preferences::set_level_type(engine_.current_level_type());
+		preferences::set_modifications(engine_.active_mods());
+	} catch (...) {}
 }
 
 const mp_game_settings& create::get_parameters()
