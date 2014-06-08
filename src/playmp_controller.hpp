@@ -48,14 +48,14 @@ protected:
 	virtual void stop_network();
 	virtual bool can_execute_command(const hotkey::hotkey_command& command, int index=-1) const;
 
-	virtual void play_side();
-	virtual void before_human_turn();
-	virtual void play_human_turn();
+	virtual possible_end_play_signal play_side();
+	virtual possible_end_play_signal before_human_turn();
+	virtual possible_end_play_signal play_human_turn();
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
-	virtual void play_network_turn();
+	virtual possible_end_play_signal play_network_turn();
 	virtual void do_idle_notification();
-	virtual void play_idle_loop();
+	virtual possible_end_play_signal play_idle_loop();
 	
 	void linger();
 	/** Wait for the host to upload the next scenario. */

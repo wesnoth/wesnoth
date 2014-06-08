@@ -114,7 +114,6 @@ public:
 
 	void maybe_do_init_side(bool is_replay = false, bool only_visual = false);
 	void do_init_side(bool is_replay = false, bool only_visual = false);
-	virtual void play_side() = 0;
 
 	virtual void force_end_turn() = 0;
 	virtual void force_end_level(LEVEL_RESULT res) = 0;
@@ -198,10 +197,10 @@ protected:
 	void fire_prestart(bool execute);
 	void fire_start(bool execute);
 	virtual void init_gui();
-	void init_side(bool is_replay = false);
+	possible_end_play_signal init_side(bool is_replay = false);
 	void place_sides_in_preferred_locations();
 	virtual void finish_side_turn();
-	void finish_turn();
+	void finish_turn(); //this should not throw an end turn or end level exception
 	bool enemies_visible() const;
 
 	void enter_textbox();

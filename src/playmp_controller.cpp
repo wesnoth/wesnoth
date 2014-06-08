@@ -92,7 +92,7 @@ void playmp_controller::stop_network(){
 	LOG_NG << "network processing stopped";
 }
 
-void playmp_controller::play_side()
+possible_end_play_signal playmp_controller::play_side()
 {
 	utils::string_map player;
 	player["name"] = current_team().current_player();
@@ -101,14 +101,14 @@ void playmp_controller::play_side()
 	gui_->send_notification(_("Turn changed"), turn_notification_msg);
 
 	// Proceed with the parent function.
-	playsingle_controller::play_side();
+	return playsingle_controller::play_side();
 }
 
-void playmp_controller::before_human_turn(){
+possible_end_play_signal playmp_controller::before_human_turn(){
 	LOG_NG << "playmp::before_human_turn...\n";
-	playsingle_controller::before_human_turn();
+	PROPOGATE_END_PLAY_SIGNAL( playsingle_controller::before_human_turn() );
 	turn_data_.send_data();
-
+	return boost::none;
 }
 
 void playmp_controller::on_not_observer() {
@@ -162,13 +162,13 @@ void playmp_controller::think_about_countdown(int ticks) {
 	}
 }
 
-void playmp_controller::play_human_turn(){
+possible_end_play_signal playmp_controller::play_human_turn(){
 	LOG_NG << "playmp::play_human_turn...\n";
 
 	remove_blindfold();
 	int cur_ticks = SDL_GetTicks();
 	show_turn_dialog();
-	execute_gotos();
+	HANDLE_END_PLAY_SIGNAL( execute_gotos() );
 
 	if (!linger_ || is_host()) {
 		end_turn_enable(true);
@@ -178,7 +178,8 @@ void playmp_controller::play_human_turn(){
 			config cfg;
 
 			if(network_reader_.read(cfg)) {
-				turn_info::PROCESS_DATA_RESULT res = turn_data_.process_network_data(cfg, skip_replay_);
+				turn_info::PROCESS_DATA_RESULT res;
+				HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
 				//PROCESS_RESTART_TURN_TEMPORARY_LOCAL should be impossible because that's means the currently active side (that's us) left.
 				if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 				{
@@ -199,7 +200,10 @@ void playmp_controller::play_human_turn(){
 
 					while( undo_stack_->can_undo() )
 						undo_stack_->undo();
-					throw end_turn_exception(gui_->playing_side());
+
+					end_turn_struct ets = {gui_->playing_side()};
+					return possible_end_play_signal(ets);
+					//throw end_turn_exception(gui_->playing_side());
 				}
 				else if(res == turn_info::PROCESS_END_LINGER)
 				{
@@ -213,8 +217,8 @@ void playmp_controller::play_human_turn(){
 				}
 			}
 
-			play_slice();
-			check_end_level();
+			HANDLE_END_PLAY_SIGNAL( play_slice() );
+			HANDLE_END_PLAY_SIGNAL( check_end_level() );
 		
 		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
 			SDL_Delay(1);
@@ -241,15 +245,17 @@ void playmp_controller::play_human_turn(){
 					current_team().set_countdown_time(10);
 				}
 				
-				throw end_turn_exception();
+				return possible_end_play_signal(end_turn_exception().to_struct());
+				//throw end_turn_exception();
 			}
 		}
 
 		gui_->draw();
 	}
+	return boost::none;
 }
 
-void playmp_controller::play_idle_loop()
+possible_end_play_signal playmp_controller::play_idle_loop()
 {
 	LOG_NG << "playmp::play_human_turn...\n";
 
@@ -260,16 +266,19 @@ void playmp_controller::play_idle_loop()
 		turn_info_send send_safe(turn_data_);
 		config cfg;
 		if(network_reader_.read(cfg)) {
-			turn_info::PROCESS_DATA_RESULT res = turn_data_.process_network_data(cfg, skip_replay_);
+			turn_info::PROCESS_DATA_RESULT res;
+			HANDLE_END_PLAY_SIGNAL( res = turn_data_.process_network_data(cfg, skip_replay_) );
 			
 			if (res == turn_info::PROCESS_RESTART_TURN || res == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL)
 			{
-				throw end_turn_exception(gui_->playing_side());
+				end_turn_struct ets = {gui_->playing_side()};
+				return possible_end_play_signal(ets);
+				//throw end_turn_exception(gui_->playing_side());
 			}
 		}
 
-		play_slice();
-		check_end_level();
+		HANDLE_END_PLAY_SIGNAL ( play_slice() );
+		HANDLE_END_PLAY_SIGNAL ( check_end_level() );
 
 		if (!linger_) {
 			SDL_Delay(1);
@@ -277,6 +286,7 @@ void playmp_controller::play_idle_loop()
 
 		gui_->draw();
 	}
+	return boost::none;
 }
 
 void playmp_controller::set_end_scenario_button()
@@ -426,7 +436,7 @@ void playmp_controller::finish_side_turn(){
 
 }
 
-void playmp_controller::play_network_turn(){
+possible_end_play_signal playmp_controller::play_network_turn(){
 	LOG_NG << "is networked...\n";
 
 	end_turn_enable(false);
@@ -442,15 +452,16 @@ void playmp_controller::play_network_turn(){
 						skip_replay_ = false;
 					}
 				}
-				const turn_info::PROCESS_DATA_RESULT result = turn_data_.process_network_data(cfg, skip_replay_);
+				turn_info::PROCESS_DATA_RESULT result;
+				HANDLE_END_PLAY_SIGNAL ( result = turn_data_.process_network_data(cfg, skip_replay_) );
 				if(player_type_changed_ == true)
 				{
 					//we received a player change/quit during waiting in get_user_choice/synced_context::pull_remote_user_input
-					return;
+					return boost::none;
 				}
 				if (result == turn_info::PROCESS_RESTART_TURN || result == turn_info::PROCESS_RESTART_TURN_TEMPORARY_LOCAL) {
 					player_type_changed_ = true;
-					return;
+					return boost::none;
 				} else if (result == turn_info::PROCESS_END_TURN) {
 					break;
 				}
@@ -470,8 +481,8 @@ void playmp_controller::play_network_turn(){
 			}
 		}
 
-		play_slice();
-		check_end_level();
+		HANDLE_END_PLAY_SIGNAL( play_slice() );
+		HANDLE_END_PLAY_SIGNAL( check_end_level() );
 
 		if (!network_processing_stopped_){
 			turn_data_.send_data();
@@ -481,7 +492,7 @@ void playmp_controller::play_network_turn(){
 	}
 
 	LOG_NG << "finished networked...\n";
-	return;
+	return boost::none;
 }
 
 

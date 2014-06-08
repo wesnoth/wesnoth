@@ -36,11 +36,11 @@ public:
 	//event handlers
 	virtual void preferences();
 	virtual void show_statistics();
-	void play_replay();
+	possible_end_play_signal play_replay();
 	void reset_replay();
 	void stop_replay();
-	void replay_next_turn();
-	void replay_next_side();
+	possible_end_play_signal replay_next_turn();
+	possible_end_play_signal replay_next_side();
 	void process_oos(const std::string& msg) const;
 	void replay_show_everything();
 	void replay_show_each();
@@ -52,20 +52,22 @@ public:
 	virtual void check_end_level() {}
 	virtual void on_not_observer() {}
 
-	bool manage_noninteractively();
+	possible_end_play_signal try_run_to_completion();
 
 protected:
 	virtual void init_gui();
 
 private:
 	void init();
-	virtual void play_turn();
-	virtual void play_side();
+	possible_end_play_signal play_turn();
+	possible_end_play_signal play_side();
 	void update_teams();
 	void update_gui();
 	void init_replay_display();
 	void rebuild_replay_theme();
 	void handle_generic_event(const std::string& /*name*/);
+
+	possible_end_play_signal play_replay_main_loop();
 
 	void reset_replay_ui();
 	void update_replay_ui();

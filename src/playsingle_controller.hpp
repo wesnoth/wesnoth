@@ -45,6 +45,8 @@ public:
 
 	LEVEL_RESULT play_scenario(const config::const_child_itors &story,
 		bool skip_replay);
+	possible_end_play_signal play_scenario_init(end_level_data & eld, bool & past_prestart );
+	possible_end_play_signal play_scenario_main_loop(end_level_data & eld, bool & past_prestart );
 
 	virtual void handle_generic_event(const std::string& name);
 
@@ -89,21 +91,21 @@ public:
 	virtual void maybe_linger();
 
 protected:
-	virtual void play_turn();
-	virtual void play_side();
-	virtual void before_human_turn();
+	possible_end_play_signal play_turn();
+	virtual possible_end_play_signal play_side();
+	virtual possible_end_play_signal before_human_turn();
 	void show_turn_dialog();
 	void execute_gotos();
-	virtual void play_human_turn();
+	virtual possible_end_play_signal play_human_turn();
 	virtual void after_human_turn();
 	void end_turn_enable(bool enable);
 	virtual hotkey::ACTION_STATE get_action_state(hotkey::HOTKEY_COMMAND command, int index) const;
 	void play_ai_turn();
-	virtual void play_idle_loop();
+	virtual possible_end_play_signal play_idle_loop();
 	virtual void do_idle_notification();
-	virtual void play_network_turn();
+	virtual possible_end_play_signal play_network_turn();
 	virtual void init_gui();
-	void check_time_over();
+	possible_end_play_signal check_time_over();
 	void store_recalls();
 	void store_gold(bool obs = false);
 
