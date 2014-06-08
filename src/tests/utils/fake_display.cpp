@@ -16,10 +16,9 @@
 
 #include "fake_display.hpp"
 
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "tod_manager.hpp"
-#include "map.hpp"
-#include "unit_map.hpp"
 
 namespace test_utils {
 
@@ -27,11 +26,10 @@ namespace test_utils {
 		static fake_display_manager* manager_;
 
 		CVideo video_;
-		unit_map dummy_umap_;
 		config dummy_cfg_;
-		gamemap dummy_map_;
+		config dummy_cfg2_;
+		game_board dummy_board_;
 		tod_manager dummy_tod_;
-		std::vector<team> dummy_teams_;
 		const events::event_context main_event_context_;
 
 
@@ -58,14 +56,13 @@ namespace test_utils {
 
 	fake_display_manager::fake_display_manager() :
 	   	video_(CVideo::FAKE_TEST),
-		dummy_umap_(),
 		dummy_cfg_(),
-		dummy_map_(dummy_cfg_,""),
+		dummy_cfg2_(),
+		dummy_board_(dummy_cfg_, dummy_cfg2_),
 		dummy_tod_(dummy_cfg_),
-		dummy_teams_(),
 		main_event_context_(),
-		disp_(dummy_umap_, video_, dummy_map_, dummy_tod_,
-				dummy_teams_, dummy_cfg_, dummy_cfg_)
+		disp_(dummy_board_, video_, dummy_tod_,
+				dummy_cfg_, dummy_cfg_)
 	{
 	}
 

@@ -59,6 +59,7 @@ class game_board {
 	friend class playmp_controller;
 	friend class events::mouse_handler;
 
+	friend class game_display;
 	/** 
 	 * Temporary unit move structs:
 	 *

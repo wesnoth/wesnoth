@@ -259,7 +259,7 @@ void play_controller::init(CVideo& video){
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gameboard_.units_, video, gameboard_.map_, tod_manager_, gameboard_.teams_, theme_cfg, level_));
+	gui_.reset(new game_display(gameboard_, video, tod_manager_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (gamestate_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));

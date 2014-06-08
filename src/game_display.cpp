@@ -61,10 +61,10 @@ static lg::log_domain log_engine("engine");
 
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
-game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
-		const tod_manager& tod, const std::vector<team>& t,
+game_display::game_display(game_board& board, CVideo& video,
+		const tod_manager& tod,
 		const config& theme_cfg, const config& level) :
-		display(&units, video, &map, &t, theme_cfg, level),
+		display(&board.units_, video, & board.map(), & board.teams(), theme_cfg, level),
 		overlay_map_(),
 		fake_units_(),
 		attack_indicator_src_(),
@@ -86,13 +86,12 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 
 game_display* game_display::create_dummy_display(CVideo& video)
 {
-	static unit_map dummy_umap;
 	static config dummy_cfg;
-	static gamemap dummy_map(dummy_cfg, "");
+	static config dummy_cfg2;
+	static game_board dummy_board(dummy_cfg, dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
-	static std::vector<team> dummy_teams;
-	return new game_display(dummy_umap, video, dummy_map, dummy_tod,
-			dummy_teams, dummy_cfg, dummy_cfg);
+	return new game_display(dummy_board, video, dummy_tod,
+			dummy_cfg, dummy_cfg);
 }
 
 game_display::~game_display()

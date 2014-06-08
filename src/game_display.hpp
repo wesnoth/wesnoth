@@ -37,9 +37,9 @@ class unit_map;
 class game_display : public display
 {
 public:
-	game_display(unit_map& units, CVideo& video,
-			const gamemap& map, const tod_manager& tod_manager,
-			const std::vector<team>& t, const config& theme_cfg,
+	game_display(game_board& board, CVideo& video,
+			const tod_manager& tod_manager,
+			const config& theme_cfg,
 			const config& level);
 
 	static game_display* create_dummy_display(CVideo& video);
