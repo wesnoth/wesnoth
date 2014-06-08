@@ -4,6 +4,7 @@
 !readme.txt
 !COPYING.txt
 !imagemagick_command.txt
+!utils/umc_dev/org.wesnoth/templates/**/*.txt
 
 # project files
 .*project
@@ -36,6 +37,8 @@ projectfiles/VC[12]*
 
 # eclipse
 .settings
+!utils/umc_dev/org.wesnoth*/.settings/
+!utils/umc_dev/org.wesnoth*/.project
 
 # autotools
 config.h
@@ -71,6 +74,8 @@ wesnoth.plg
 # library files
 .libs
 Lib
+!data/ai/formula/lib/
+!src/gui/lib/
 
 # release-only directories
 translations
