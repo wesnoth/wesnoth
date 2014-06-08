@@ -257,7 +257,7 @@ void menu_handler::status_table(int selected)
 				leader_name = "Unknown";
 			}
 
-			if (gamestate_.classification().campaign_type == game_classification::MULTIPLAYER)
+			if (resources::classification->campaign_type == game_classification::MULTIPLAYER)
 				leader_name = teams_[n].current_player();
 
 		} else {
@@ -2966,7 +2966,7 @@ void console_handler::do_choose_level() {
 	}
 	// find scenarios of multiplayer campaigns
 	// (assumes that scenarios are ordered properly in the game_config)
-	std::string& scenario = menu_handler_.gamestate_.mp_settings().mp_scenario;
+	std::string scenario = resources::mp_settings->mp_scenario;
 	BOOST_FOREACH(const config &mp, menu_handler_.game_config_.child_range("multiplayer"))
 	{
 		if (mp["id"] == scenario)
