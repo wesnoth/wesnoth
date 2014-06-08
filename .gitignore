@@ -14,6 +14,10 @@ CMakeLists.txt.user*
 cmake_install.cmake
 CPack*Config.cmake
 uninstall.cmake
+CMakeCache.txt
+CMakeLists.txt
+!doc/**/CMakeLists.txt
+!src/ana/**/CMakeLists.txt
 
 # scons
 .scons-option-cache
