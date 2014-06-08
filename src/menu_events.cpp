@@ -318,7 +318,7 @@ void menu_handler::status_table(int selected)
 	} // this will kill the dialog before scrolling
 
 	if (result >= 0)
-		gui_->scroll_to_leader(units_, selected+1);
+		gui_->scroll_to_leader(selected+1);
 	else if (result == gui::DIALOG_FORWARD)
 		scenario_settings_table(selected);
 }
@@ -412,7 +412,7 @@ void menu_handler::scenario_settings_table(int selected)
 		} // this will kill the dialog before scrolling
 
 		if (result >= 0)
-			gui_->scroll_to_leader(units_, selected+1);
+			gui_->scroll_to_leader(selected+1);
 		else if (result == gui::DIALOG_BACK)
 			status_table(selected);
 }

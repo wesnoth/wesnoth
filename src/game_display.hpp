@@ -62,7 +62,7 @@ public:
 	 *
 	 * This will normally be the playing team.
 	 */
-	void scroll_to_leader(unit_map& units, int side, SCROLL_TYPE scroll_type = ONSCREEN,bool force = true);
+	void scroll_to_leader(int side, SCROLL_TYPE scroll_type = ONSCREEN,bool force = true);
 
 	/**
 	 * Function to display a location as selected.

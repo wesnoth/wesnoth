@@ -159,7 +159,7 @@ void replay_controller::init_gui(){
 	else
 		gui_->set_team(0, show_everything_);
 
-	gui_->scroll_to_leader(gameboard_.units_, player_number_, display::WARP);
+	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
 	BOOST_FOREACH(team & t, gameboard_.teams_) {
 		t.reset_objectives_changed();
@@ -372,7 +372,7 @@ possible_end_play_signal replay_controller::replay_next_turn(){
 	PROPOGATE_END_PLAY_SIGNAL( play_turn() );
 
  	if (!skip_replay_ || !is_playing_){
-		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
@@ -389,7 +389,7 @@ possible_end_play_signal replay_controller::replay_next_side(){
 	}
 
 	if (!skip_replay_ || !is_playing_) {
-		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();
@@ -466,7 +466,7 @@ possible_end_play_signal replay_controller::play_replay(){
 	}
 
 	if (!is_playing_) {
-		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 
 	replay_ui_playback_should_stop();

@@ -731,7 +731,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	}
 
 	if (!recorder.is_skipping() && !skip_replay_ && current_team().get_scroll_to_leader()){
-		gui_->scroll_to_leader(gameboard_.units_, player_number_,game_display::ONSCREEN,false);
+		gui_->scroll_to_leader(player_number_,game_display::ONSCREEN,false);
 	}
 	loading_game_ = false;
 
