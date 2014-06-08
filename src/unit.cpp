@@ -622,6 +622,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 
 unit::~unit()
 {
+	try {
 	clear_haloes();
 
 	// Remove us from the status cache
@@ -631,6 +632,7 @@ unit::~unit()
 	if(itor != units_with_cache.end()) {
 		units_with_cache.erase(itor);
 	}
+	} catch (...) {}
 }
 
 
