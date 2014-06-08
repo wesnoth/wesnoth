@@ -61,16 +61,6 @@ public:
 	bool show_replay() const { return show_replay_; }
 	bool cancel_orders() const { return cancel_orders_; }
 	const std::string & filename() const { return filename_; }
-
-	std::string get_difficulty() const
-	{ return load_config_["difficulty"].empty() ? DEFAULT_DIFFICULTY : load_config_["difficulty"].str(); }
-	/*
-	{	if ( const config & carryover = load_config_.child("carryover_sides_start") )
-		return carryover["difficulty"];
-	  else
-		return DEFAULT_DIFFICULTY; 
-	}
-*/
 private:
 	/** Display the load-game dialog. */
 	void show_dialog(bool show_replay, bool cancel_orders);
