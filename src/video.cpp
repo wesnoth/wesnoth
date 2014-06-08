@@ -551,6 +551,12 @@ void CVideo::set_window_icon(surface& icon)
 	assert(window);
 	window->set_icon(icon);
 }
+
+sdl::twindow *CVideo::get_window()
+{
+	return window;
+}
+
 #endif
 
 #if SDL_VERSION_ATLEAST(2, 0, 0)
