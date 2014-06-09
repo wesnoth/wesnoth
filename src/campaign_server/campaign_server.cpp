@@ -377,10 +377,10 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	BOOST_FOREACH(config &j, campaign_list.child_range("campaign")) {
-		j["passphrase"] = t_string();
-		j["upload_ip"] = t_string();
-		j["email"] = t_string();
-		j["feedback_url"] = t_string();
+		j["passphrase"] = "";
+		j["upload_ip"] = "";
+		j["email"] = "";
+		j["feedback_url"] = "";
 
 		// Build a feedback_url string attribute from the
 		// internal [feedback] data.
