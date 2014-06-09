@@ -54,6 +54,7 @@ struct map_location {
 	 */
 	static std::vector<DIRECTION> parse_directions(const std::string& str);
 	static std::string write_direction(DIRECTION dir);
+	static std::string write_translated_direction(DIRECTION dir);
 
 	map_location() : x(-1000), y(-1000) {}
 	map_location(int x, int y) : x(x), y(y) {}

@@ -27,6 +27,7 @@
 #include "formula_string_utils.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "gettext.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
@@ -98,6 +99,27 @@ std::string map_location::write_direction(map_location::DIRECTION dir)
 			return std::string("se");
 		case SOUTH_WEST:
 			return std::string("sw");
+		default:
+			return std::string();
+
+	}
+}
+
+std::string map_location::write_translated_direction(map_location::DIRECTION dir)
+{
+	switch(dir) {
+		case NORTH:
+			return _("North");
+		case NORTH_EAST:
+			return _("North East");
+		case NORTH_WEST:
+			return _("North West");
+		case SOUTH:
+			return _("South");
+		case SOUTH_EAST:
+			return _("South East");
+		case SOUTH_WEST:
+			return _("South West");
 		default:
 			return std::string();
 
