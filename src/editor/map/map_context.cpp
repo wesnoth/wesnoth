@@ -487,6 +487,7 @@ config map_context::to_config()
 				u["id"] = i->id();
 				u["name"] = i->name();
 				u["extra_recruit"] = utils::join(i->recruits());
+				u["facing"] = map_location::write_direction(i->facing());
 			}
 		}
 	}
