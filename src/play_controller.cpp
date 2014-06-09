@@ -796,11 +796,8 @@ void play_controller::finish_side_turn(){
 
 	resources::whiteboard->on_finish_side_turn(player_number_);
 
-	BOOST_FOREACH(unit & uit, gameboard_.units_) {
-		if (uit.side() == player_number_) {
-			uit.end_turn();
-		}
-	}
+	gameboard_.end_turn(player_number_);
+
 	// Clear shroud, in case units had been slowed for the turn.
 	actions::clear_shroud(player_number_);
 
