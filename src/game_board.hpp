@@ -100,6 +100,8 @@ class game_board {
 	void end_turn(int pnum);
 	void set_all_units_user_end_turn();
 
+	void all_survivors_to_recall();
+
 	// Manipulator from playturn
 
 	void side_drop_to (int side_num, team::CONTROLLER ctrl);

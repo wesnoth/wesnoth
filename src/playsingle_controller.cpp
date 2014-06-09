@@ -565,14 +565,8 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			
 						// Add all the units that survived the scenario.
 						LOG_NG << "Add units that survived the scenario to the recall list.\n";
-						BOOST_FOREACH (unit & un, gameboard_.units_) {
-							if (gameboard_.teams_[un.side() - 1].persistent()) {
-								LOG_NG << "Added unit " << un.id() << ", " << un.name() << "\n";
-								un.new_turn();
-								un.new_scenario();
-								gameboard_.teams_[un.side() - 1].recall_list().push_back(un);
-							}
-						}
+						gameboard_.all_survivors_to_recall();
+
 						gamestate_.snapshot = config();
 						if(!is_observer()) {
 							persist_.end_transaction();

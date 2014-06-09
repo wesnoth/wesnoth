@@ -51,6 +51,16 @@ void game_board::set_all_units_user_end_turn() {
 	}
 }
 
+void game_board::all_survivors_to_recall() {
+	BOOST_FOREACH (unit & un, units_) {
+		if (teams_[un.side() - 1].persistent()) {
+			un.new_turn();
+			un.new_scenario();
+			teams_[un.side() - 1].recall_list().push_back(un);
+		}
+	}
+}
+
 unit_map::iterator game_board::find_visible_unit(const map_location &loc,
 	const team& current_team, bool see_all)
 {
