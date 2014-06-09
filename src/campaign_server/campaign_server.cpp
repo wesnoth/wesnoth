@@ -337,7 +337,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	time_t epoch = time(NULL);
 	config campaign_list;
 
-	campaign_list["timestamp"] = lexical_cast<std::string>(epoch);
+	campaign_list["timestamp"] = epoch;
 	if(req.cfg["times_relative_to"] != "now") {
 		epoch = 0;
 	}
@@ -525,7 +525,7 @@ void server::handle_upload(const server::request& req)
 
 		if(campaign == NULL) {
 			campaign = &campaigns().add_child("campaign");
-			(*campaign)["original_timestamp"] = lexical_cast<std::string>(upload_ts);
+			(*campaign)["original_timestamp"] = upload_ts;
 		}
 
 		(*campaign)["title"] = upload["title"];
@@ -545,7 +545,7 @@ void server::handle_upload(const server::request& req)
 		if((*campaign)["downloads"].empty()) {
 			(*campaign)["downloads"] = 0;
 		}
-		(*campaign)["timestamp"] = lexical_cast<std::string>(upload_ts);
+		(*campaign)["timestamp"] = upload_ts;
 
 		int uploads = (*campaign)["uploads"].to_int() + 1;
 		(*campaign)["uploads"] = uploads;
@@ -577,8 +577,7 @@ void server::handle_upload(const server::request& req)
 			writer.write(data);
 		}
 
-		(*campaign)["size"] = lexical_cast<std::string>(
-				file_size(filename));
+		(*campaign)["size"] = file_size(filename);
 
 		write_config();
 
