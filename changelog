@@ -60,6 +60,10 @@ Version 1.13.0-dev:
    * Changed: A listbox can now update its size when rows are added.
    * Changed: Avoid listboxes to handle mouse clicks twice.
    * Fixed bug #22144: An assertion failure with empty labels in a listbox.
+   * The :inspect dialog now uses the same function as saved games to generate
+     WML in text form instead of a simplified version.
+   * Added a button to copy the currently displayed content from the :inspect
+     dialog to clipboard.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
