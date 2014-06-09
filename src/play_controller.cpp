@@ -108,7 +108,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	labels_manager_(),
 	help_manager_(&game_config),
 	mouse_handler_(NULL, gameboard_),
-	menu_handler_(NULL, gameboard_, level, game_config, state_of_game),
+	menu_handler_(NULL, gameboard_, level, game_config),
 	soundsources_manager_(),
 	tod_manager_(level),
 	pathfind_manager_(),
@@ -1525,6 +1525,14 @@ void play_controller::do_autosave()
 {
 	savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
 	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
+}
+
+
+void play_controller::do_consolesave(const std::string& filename)
+{
+	savegame::ingame_savegame save(gamestate_, *gui_,
+	                               to_config(), preferences::save_compression_format());
+	save.save_game_automatic(gui_->video(), true, filename);
 }
 
 

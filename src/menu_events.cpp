@@ -83,14 +83,13 @@ namespace events{
 
 menu_handler::menu_handler(game_display* gui, game_board & board,
 		const config& level,
-		const config& game_config, game_state& gamestate) :
+		const config& game_config) :
 	gui_(gui),
 	units_(board.units_),
 	teams_(board.teams_),
 	level_(level),
 	map_(board.map()),
 	game_config_(game_config),
-	gamestate_(gamestate),
 	textbox_info_(),
 	last_search_(),
 	last_search_hit_()
@@ -2920,10 +2919,7 @@ void console_handler::do_benchmark() {
 	menu_handler_.gui_->toggle_benchmark();
 }
 void console_handler::do_save() {
-	savegame::ingame_savegame save(menu_handler_.gamestate_, *menu_handler_.gui_,
-	                               resources::controller->to_config(),
-	                               preferences::save_compression_format());
-	save.save_game_automatic(menu_handler_.gui_->video(), true, get_data());
+	resources::controller->do_consolesave(get_data());
 }
 void console_handler::do_save_quit() {
 	do_save();
