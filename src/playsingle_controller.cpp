@@ -368,7 +368,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		//we can only use a set_scontext_synced with a non empty recorder.
 		set_scontext_synced sync;
 			
-		HANDLE_END_PLAY_SIGNAL( fire_prestart(true) );
+		HANDLE_END_PLAY_SIGNAL( fire_prestart() );
 		init_gui();
 		past_prestart = true;
 		LOG_NG << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";

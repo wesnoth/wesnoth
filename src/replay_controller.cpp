@@ -350,7 +350,7 @@ void replay_controller::reset_replay()
 		*/
 		set_scontext_synced sync;
 		
-		fire_prestart(true);
+		fire_prestart();
 		init_gui();
 		fire_start(true);
 	}

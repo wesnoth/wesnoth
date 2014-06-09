@@ -196,7 +196,7 @@ protected:
 	void init_managers();
 	///preload events cannot be synced
 	void fire_preload();
-	void fire_prestart(bool execute);
+	void fire_prestart();
 	void fire_start(bool execute);
 	virtual void init_gui();
 	possible_end_play_signal init_side(bool is_replay = false);

@@ -561,19 +561,17 @@ void play_controller::fire_preload()
 	gamedata_.get_variable("turn_number") = int(turn());
 	game_events::fire("preload");
 }
-void play_controller::fire_prestart(bool execute)
+void play_controller::fire_prestart()
 {
 	// pre-start events must be executed before any GUI operation,
 	// as those may cause the display to be refreshed.
-	if (execute){
-		update_locker lock_display(gui_->video());
-		gamedata_.set_phase(game_data::PRESTART);
-		game_events::fire("prestart");
-		check_end_level();
-		// prestart event may modify start turn with WML, reflect any changes.
-		start_turn_ = turn();
-		gamedata_.get_variable("turn_number") = int(start_turn_);
-	}
+	update_locker lock_display(gui_->video());
+	gamedata_.set_phase(game_data::PRESTART);
+	game_events::fire("prestart");
+	check_end_level();
+	// prestart event may modify start turn with WML, reflect any changes.
+	start_turn_ = turn();
+	gamedata_.get_variable("turn_number") = int(start_turn_);
 }
 
 void play_controller::fire_start(bool execute){
