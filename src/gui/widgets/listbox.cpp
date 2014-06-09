@@ -66,8 +66,10 @@ tlistbox::tlistbox(const bool has_minimum,
 void tlistbox::add_row(const string_map& item, const int index)
 {
 	assert(generator_);
-	generator_->create_item(
+	const tgrid& row = generator_->create_item(
 			index, list_builder_, item, callback_list_item_clicked);
+
+	resize_content(row);
 }
 
 void
@@ -75,8 +77,10 @@ tlistbox::add_row(const std::map<std::string /* widget id */, string_map>& data,
 				  const int index)
 {
 	assert(generator_);
-	generator_->create_item(
+	const tgrid& row = generator_->create_item(
 			index, list_builder_, data, callback_list_item_clicked);
+
+	resize_content(row);
 }
 
 void tlistbox::remove_row(const unsigned row, unsigned count)
@@ -313,6 +317,26 @@ void tlistbox::resize_content(const int width_modification,
 	} else {
 		DBG_GUI_L << LOG_HEADER << " failed.\n";
 	}
+}
+
+void tlistbox::resize_content(const twidget& row)
+{
+	if(row.get_visible() == tvisible::invisible) {
+		return;
+	}
+
+	DBG_GUI_L << LOG_HEADER << " current size " << content_grid()->get_size()
+			  << " row size " << row.get_best_size() << ".\n";
+
+	const tpoint content = content_grid()->get_size();
+	tpoint size = row.get_best_size();
+	if(size.x < content.x) {
+		size.x = 0;
+	} else {
+		size.x -= content.x;
+	}
+
+	resize_content(size.x, size.y);
 }
 
 void tlistbox::layout_children()
