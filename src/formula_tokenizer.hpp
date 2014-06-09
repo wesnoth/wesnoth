@@ -20,7 +20,7 @@ namespace formula_tokenizer
 
 typedef std::string::const_iterator iterator;
 
-/// TOKEN_TYPE is already defined in a Winnt.h (a windows header wich is included under some conditions.) 
+/// TOKEN_TYPE is already defined in a Winnt.h (a windows header wich is included under some conditions.)
 enum TOKEN_TYPE { TOKEN_OPERATOR, TOKEN_STRING_LITERAL,
 			TOKEN_IDENTIFIER, TOKEN_INTEGER, TOKEN_DECIMAL,
 			TOKEN_LPARENS, TOKEN_RPARENS,

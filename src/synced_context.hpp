@@ -31,28 +31,28 @@ class synced_context
 public:
 	enum synced_state {UNSYNCED, SYNCED, LOCAL_CHOICE};
 	/**
-		
+
 		Sets the context to 'synced', initialises random context, and calls the given function.
 		The plan is that in replay and in real game the same function is called.
 		however, if you cannot call this function you can also use set_scontext_synced directly (use it like it's used in this method).
 
-		movement commands are currently treated specially, 
+		movement commands are currently treated specially,
 			thats because actions::move_unit returns a value and some function use that value.
 			maybe i should add a way here to return a value.
-		
+
 		ai's attacks are also treated special because the ai wants to pass advancement_aspects.
 
 
-		redoing does normaly not take place in a synced context, because we saved the dependent=true replaycommands in the replaystack data. 
+		redoing does normaly not take place in a synced context, because we saved the dependent=true replaycommands in the replaystack data.
 			also there are no events of similar fired when redoing an action (in most cases).
-		
+
 		@param use_undo this parameter is used to ignore undos during an ai move to optimize.
 		@param store_in_replay only true if called by do_replay_handle
 		@param error_handler an error handler for the case that data contains invalid data.
-		
+
 		@return true if the action was successful.
 
-		
+
 
 	 */
 	static bool run_in_synced_context(const std::string& commandname,const config& data, bool use_undo = true, bool show = true ,  bool store_in_replay = true , synced_command::error_handler_function error_handler = default_error_function);
@@ -74,7 +74,7 @@ public:
 	*/
 	static int generate_random_seed();
 	/*
-		called from get_user_choice; 
+		called from get_user_choice;
 	*/
 	static void pull_remote_user_input();
 	/*
@@ -117,7 +117,7 @@ private:
 	/*
 		As soon as get_user_choice is used with side != current_side (for example in generate_random_seed) other sides execute the command simultaneously and is_simultaneously is set to true.
 		It's impossible to undo data that has been sended over the network.
-		
+
 		false = we are on a local turn and haven't sended anything yet.
 	*/
 	static bool is_simultaneously_;
@@ -184,7 +184,7 @@ private:
 */
 class random_seed_choice : public mp_sync::user_choice
 {
-public: 
+public:
 	random_seed_choice();
 	virtual ~random_seed_choice();
 	virtual config query_user(int /*side*/) const;

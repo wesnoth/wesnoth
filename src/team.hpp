@@ -238,7 +238,7 @@ public:
 	void make_ai() { info_.controller = AI; }
 	void make_idle() { info_.controller = IDLE; }
 	void change_controller(const std::string& new_controller) {
-		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);	
+		info_.controller = lexical_cast_default<CONTROLLER> (new_controller, AI);
 	}
 	void change_controller(CONTROLLER controller) { info_.controller = controller; }
 

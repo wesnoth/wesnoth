@@ -109,7 +109,7 @@ public:
 
 	void start_game(const player_map::const_iterator starter);
 	void perform_controller_tweaks(); 			//this is performed just before starting and before [start_game] signal
-								//send scenario_diff's specific to each client so that they locally 
+								//send scenario_diff's specific to each client so that they locally
 								//control their human sides
 
 	void update_game();

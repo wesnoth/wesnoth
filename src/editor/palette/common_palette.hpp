@@ -50,7 +50,7 @@ public:
 	//event handling
 
 	virtual handler_vector handler_members() { return handler_vector(); }
-	
+
 	virtual void select_fg_item(const std::string& item_id) = 0;
 	virtual void select_bg_item(const std::string& item_id) = 0;
 

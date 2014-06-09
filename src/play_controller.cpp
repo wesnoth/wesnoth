@@ -86,7 +86,7 @@ static void clear_resources()
 	resources::units = NULL;
 	resources::whiteboard = NULL;
 
-	
+
 	resources::classification = NULL;
 	resources::mp_settings = NULL;
 
@@ -150,7 +150,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::undo_stack = undo_stack_.get();
 	resources::units = &gameboard_.units_;
 
-	
+
 	resources::classification = &gamestate_.classification();
 	resources::mp_settings = &gamestate_.mp_settings();
 
@@ -592,11 +592,11 @@ void play_controller::fire_start(bool execute){
 			time(NULL),
 			"game_engine",
 			0,
-			mes, 
+			mes,
 			events::chat_handler::MESSAGE_PUBLIC,
 			preferences::message_bell());
 		replay::process_error(mes);
-	}	
+	}
 	gamedata_.set_phase(game_data::PLAY);
 }
 
@@ -626,7 +626,7 @@ possible_end_play_signal play_controller::init_side(bool is_replay){
 	gamedata_.last_selected = map_location::null_location();
 
 	HANDLE_END_PLAY_SIGNAL( maybe_do_init_side(is_replay, only_visual) );
-	
+
 	loading_game_ = false;
 
 	return boost::none;
@@ -773,7 +773,7 @@ config play_controller::to_config() const
 	//Write the game events.
 	game_events::write_events(cfg);
 
-	
+
 	if(gui_.get() != NULL){
 		cfg["playing_team"] = str_cast(gui_->playing_team());
 		gui_->labels().write(cfg);
@@ -783,9 +783,9 @@ config play_controller::to_config() const
 		//TODO: move id_manager handling to play_controller
 	cfg["next_underlying_unit_id"] = str_cast(n_unit::id_manager::instance().get_save_id());
 
-	
+
 	gamedata_.write_snapshot(cfg);
-	
+
 	cfg.merge_attributes(gamestate_.classification().to_config());
 	return cfg;
 }
@@ -801,7 +801,7 @@ void play_controller::finish_side_turn(){
 
 	const std::string turn_num = str_cast(turn());
 	const std::string side_num = str_cast(player_number_);
-	
+
 	{ //Block for set_scontext_synced
 		set_scontext_synced sync(1);
 		game_events::fire("side turn end");
@@ -1409,14 +1409,14 @@ void play_controller::check_victory()
 		}
 		// Clear villages for teams that have no leader and
 		// mark side as lost if it should be removed from carryover.
-		if (not_defeated.find(tm.side()) == not_defeated.end()) 
+		if (not_defeated.find(tm.side()) == not_defeated.end())
 		{
 			tm.clear_villages();
 			// invalidate_all() is overkill and expensive but this code is
 			// run rarely so do it the expensive way.
 			gui_->invalidate_all();
-			
-			if (remove_from_carryover_on_defeat_) 
+
+			if (remove_from_carryover_on_defeat_)
 			{
 				tm.set_lost();
 			}

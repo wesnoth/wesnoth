@@ -56,7 +56,7 @@ protected:
 	virtual possible_end_play_signal play_network_turn();
 	virtual void do_idle_notification();
 	virtual possible_end_play_signal play_idle_loop();
-	
+
 	void linger();
 	/** Wait for the host to upload the next scenario. */
 	void wait_for_upload();

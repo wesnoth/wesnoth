@@ -324,7 +324,7 @@ protected:
 		//if this is a start-of-scenario save then  playcampaign.cpp merged
 		//units in [replay_start][side] merged with [side] already
 		//units that are in '[scenario][side]' are 'first'
-		
+
 		//for create-or-recall semantics to work: for each unit with non-empty
 		//id, unconditionally put OTHER, later, units with same id directly to
 		//recall list, not including them in unit_configs_

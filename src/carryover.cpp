@@ -242,7 +242,7 @@ void carryover_info::transfer_to(config& level){
 
 }
 
-const config carryover_info::to_config() 
+const config carryover_info::to_config()
 {
 	config cfg;
 

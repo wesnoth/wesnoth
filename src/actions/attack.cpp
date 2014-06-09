@@ -898,7 +898,7 @@ namespace {
 			resources::gamedata->get_variable("damage_inflicted") = damage;
 		}
 
-		
+
 		// Make sure that if we're serializing a game here,
 		// we got the same results as the game did originally.
 		const config local_results = config_of("chance", attacker.cth_)("hits", hits)("damage", damage);
@@ -906,19 +906,19 @@ namespace {
 		bool equals_replay = checkup_instance->local_checkup(local_results, replay_results);
 		if (!equals_replay)
 		{
-			
+
 			int results_chance = replay_results["chance"];
 			bool results_hits = replay_results["hits"].to_bool();
 			int results_damage = replay_results["damage"];
 			/*
-			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump() 
+			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
 				<< " replay data differs from local calculated data:"
-				<< " chance to hit in data source: " << results_chance 
+				<< " chance to hit in data source: " << results_chance
 				<< " chance to hit in calculated:  " << attacker.cth_
-				<< " chance to hit in data source: " << results_chance 
+				<< " chance to hit in data source: " << results_chance
 				<< " chance to hit in calculated:  " << attacker.cth_
 				;
-			
+
 				attacker.cth_ = results_chance;
 				hits = results_hits;
 				damage = results_damage;
@@ -1011,7 +1011,7 @@ namespace {
 				: statistics::attack_context::MISSES, damage_done, drains_damage);
 		}
 
-		
+
 		replay_results.clear();
 		// there was also a attribute cfg["unit_hit"] which was never used so i deleted.
 		equals_replay = checkup_instance->local_checkup(config_of("dies", dies), replay_results);
@@ -1370,34 +1370,34 @@ namespace
 	public:
 		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect& ai_advancement, bool force_dialog)
 			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
-		{	
+		{
 		}
-		
-		virtual ~unit_advancement_choice() 
+
+		virtual ~unit_advancement_choice()
 		{
 		}
 
 		virtual config query_user(int /*side*/) const
 		{
-			//the 'side' parameter might differ from side_num_- 
+			//the 'side' parameter might differ from side_num_-
 			int res = 0;
 			team t = (*resources::teams)[side_num_ - 1];
-			//i wonder how this got included here ? 
+			//i wonder how this got included here ?
 			bool is_mp = network::nconnections() != 0;
 			bool is_current_side = resources::controller->current_side() == side_num_;
 			//note, that the advancements for networked sides are also determined on the current playing side.
-			
+
 			//to make mp games equal we only allow selecting advancements to the current side.
 			//otherwise we'd give an unfair advantage to the side that hosts ai sides if units advance during ai turns.
 			if(!non_interactive() && (force_dialog_ || (t.is_human() && (is_current_side || !is_mp))))
 			{
-				res = dialogs::advance_unit_dialog(loc_); 
+				res = dialogs::advance_unit_dialog(loc_);
 			}
 			else if(t.is_ai() || t.is_network_ai() || t.is_empty() || t.is_idle())
 			{
 				res = rand() % nb_options_;
 
-				//if ai_advancement_ is the default advancement the following code will 
+				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
 				unit_map::iterator u = resources::units->find(loc_);
 				const std::vector<std::string>& options = u->advances_to();
@@ -1424,7 +1424,7 @@ namespace
 			return retv;
 
 		}
-		virtual config random_choice(int /*side*/) const 
+		virtual config random_choice(int /*side*/) const
 		{
 			config retv;
 			retv["value"] = 0;
@@ -1453,18 +1453,18 @@ void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect
 		if(!unit_helper::will_certainly_advance(u)) {
 			return;
 		}
-		
+
 		//we don't want to let side 1 decide it during start/prestart.
 		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
-			unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement, force_dialog), side_for); 
+			unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement, force_dialog), side_for);
 		//calls actions::advance_unit.
 		bool result = dialogs::animate_unit_advancement(loc, selected["value"], true, true);
 
 		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
 		u = resources::units->find(loc);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
-		if (u.valid() && u->experience() > 80) 
+		if (u.valid() && u->experience() > 80)
 		{
 			ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
 		}
@@ -1474,7 +1474,7 @@ void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect
 
 
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
-                 int attack_with, int defend_with, bool update_display, 
+                 int attack_with, int defend_with, bool update_display,
 				 const ai::unit_advancements_aspect& ai_advancement)
 {	try
 	{
@@ -1484,7 +1484,7 @@ void attack_unit_and_advance(const map_location &attacker, const map_location &d
 	{
 
 		unit_map::const_iterator atku = resources::units->find(attacker);
-		
+
 		if (atku != resources::units->end()) {
 			advance_unit_at(attacker, ai_advancement);
 		}

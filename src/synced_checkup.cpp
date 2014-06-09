@@ -42,7 +42,7 @@ void checkup::unit_checksum(const map_location& loc, bool local)
 	bool equals;
 	config real;
 	config expected;
-	
+
 	if (!u.valid()) {
 		std::stringstream message;
 		message << "non existent unit to checksum at " << loc.x+1 << "," << loc.y+1 << "!";
@@ -67,7 +67,7 @@ void checkup::unit_checksum(const map_location& loc, bool local)
 	{
 		std::stringstream message;
 		message << "checksum mismatch at " << loc.x+1 << "," << loc.y+1 << "!";
-		resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(), 
+		resources::screen->add_chat_message(time(NULL), "verification", 1, message.str(),
 			events::chat_handler::MESSAGE_PRIVATE, false);
 	}
 }

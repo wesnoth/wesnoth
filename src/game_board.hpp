@@ -62,7 +62,7 @@ class game_board {
 	friend class events::menu_handler;
 
 	friend class game_display;
-	/** 
+	/**
 	 * Temporary unit move structs:
 	 *
 	 * Probably don't remove these friends, this is actually fairly useful. These structs are used by:
@@ -72,14 +72,14 @@ class game_board {
 	 * For AI, the ai wants to move two units next to eachother so it can ask for attack calculations. This should not trigger
 	 * pathfinding modifications, so the version that directly changes the unit map is probably preferable, although it should be
 	 * refactored.
-	 * For whiteboard and wml actions, we generally do want pathfinding to be updated, so use the game_board constructors which I 
+	 * For whiteboard and wml actions, we generally do want pathfinding to be updated, so use the game_board constructors which I
 	 * have added to these structs instead.
 	 *
 	 **/
 	friend struct temporary_unit_placer;
 	friend struct temporary_unit_mover;
 	friend struct temporary_unit_remover;
-	
+
 	public:
 
 	// Constructors and const accessors

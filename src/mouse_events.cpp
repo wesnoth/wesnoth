@@ -570,7 +570,7 @@ void mouse_handler::move_action(bool browse)
 						// clear current unit selection so that any other unit selected
 						// triggers a new selection
 						selected_hex_ = map_location();
-						
+
 						attack_enemy(u->get_location(), clicked_u->get_location(), choice);
 					}
 				}
@@ -613,19 +613,19 @@ void mouse_handler::move_action(bool browse)
 					// clear current unit selection so that any other unit selected
 					// triggers a new selection
 					selected_hex_ = map_location();
-					
+
 					if (not_interrupted)
 						attack_enemy(attack_from, hex, choice); // Fight !!
-						
+
 					//TODO: Maybe store the attack choice so "press t to continue"
 					//      can also continue the attack?
-					
+
 					if (alt_unit_selected && !selected_hex_.valid()) {
 						//reselect other unit if selected during movement animation
 						select_hex(src, browse);
 					}
 				}
-				
+
 				return;
 			}
 		}
@@ -859,7 +859,7 @@ size_t mouse_handler::move_unit_along_route(const std::vector<map_location> & st
 
 	size_t moves = 0;
 	try {
-		
+
 		LOG_NG << "move unit along route  from " << steps.front() << " to " << steps.back() << "\n";
 		moves = actions::move_unit_and_record(steps, resources::undo_stack,
 		                           false, true, &interrupted);
@@ -1067,7 +1067,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	BOOST_FOREACH(int i, disable_items_skip) {
 		if (i<=res) res++;
 	}
-	
+
 	return res;
 }
 
@@ -1246,15 +1246,15 @@ void mouse_handler::set_current_paths(const pathfind::paths & new_paths) {
 }
 
 team & mouse_handler::viewing_team() {
-	return board_.teams_[gui().viewing_team()]; 
+	return board_.teams_[gui().viewing_team()];
 }
 
-const team& mouse_handler::viewing_team() const { 
-	return board_.teams()[gui().viewing_team()]; 
+const team& mouse_handler::viewing_team() const {
+	return board_.teams()[gui().viewing_team()];
 }
 
-team & mouse_handler::current_team() { 
-	return board_.teams_[side_num_ - 1]; 
+team & mouse_handler::current_team() {
+	return board_.teams_[side_num_ - 1];
 }
 
 mouse_handler *mouse_handler::singleton_ = NULL;

@@ -278,13 +278,13 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 
 	// Populate the command vectors, this needs to happen only once.
 	const boost::ptr_vector<hotkey::hotkey_command>& list = hotkey::get_hotkey_commands();
-	
+
 	//for (size_t i = 0; list[i].id != hotkey::HOTKEY_NULL; ++i) {
 	BOOST_FOREACH(const hotkey::hotkey_command& command, list)
 	{
-		if (command.hidden) 
+		if (command.hidden)
 		{
-			continue; 
+			continue;
 		}
 
 		switch (command.scope) {

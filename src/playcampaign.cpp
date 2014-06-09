@@ -345,7 +345,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 }
 
 LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
-	const config& game_config, io_type_t io_type, bool skip_replay, 
+	const config& game_config, io_type_t io_type, bool skip_replay,
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
 	const std::string campaign_type_str = lexical_cast_default<std::string> (gamestate.classification().campaign_type);
@@ -505,7 +505,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 		//if(res == QUIT || ((res != VICTORY) && gamestate.carryover_sides_start["next_scenario"].empty()))
-		
+
 		//If there is no next scenario we're done now.
 		if(res == QUIT || !end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
 		{

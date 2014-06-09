@@ -198,10 +198,10 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 
 /** Performs an attack, and advanced the units afterwards */
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
-                 int attack_with, int defend_with, bool update_display = true, 
+                 int attack_with, int defend_with, bool update_display = true,
 				 const ai::unit_advancements_aspect& ai_advancement = ai::unit_advancements_aspect());
 
-/** 
+/**
 	advances the unit at loc if it has enough experience, maximum 20 times.
 	if the unit is on the currently active side, and that side is controlled by a human, a dialog pops up.
 	if we are in a non mp game, and the side is controlled by a human then a dialog is shown too.

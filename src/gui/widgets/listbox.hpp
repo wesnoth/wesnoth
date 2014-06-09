@@ -303,6 +303,15 @@ private:
 	void resize_content(const int width_modification,
 						const int height_modification);
 
+	/**
+	 * Resizes the content.
+	 *
+	 * The resize happens when a new row is added to the contents.
+	 *
+	 * @param row                 The new row added to the listbox.
+	 */
+	void resize_content(const twidget& row);
+
 	/** Layouts the children if needed. */
 	void layout_children(const bool force);
 

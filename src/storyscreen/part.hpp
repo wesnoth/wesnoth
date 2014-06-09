@@ -328,7 +328,7 @@ public:
 	const std::vector<background_layer>& get_background_layers() const {
 		return background_layers_;
 	}
-	
+
 private:
 	/** Takes care of initializing and branching properties. */
 	void resolve_wml(const vconfig &cfg);

@@ -250,7 +250,7 @@ game_controller::game_controller(const commandline_options& cmdline_opts, const 
 		if (!cmdline_opts_.unit_test->empty()) {
 			test_scenario_ = *cmdline_opts_.unit_test;
 		}
-			
+
 	}
 	if (cmdline_opts_.windowed)
 		preferences::set_fullscreen(false);
@@ -475,7 +475,7 @@ int game_controller::unit_test()
 	}
 
 	savegame::clean_saves(state_.classification().label);
-	
+
 	if (cmdline_opts_.noreplaycheck)
 		return 0; //we passed, huzzah!
 
@@ -498,10 +498,10 @@ int game_controller::unit_test()
 
 	try {
 		//LEVEL_RESULT res = play_game(disp(), state_, resources::config_manager->game_config(), IO_NONE, false,false,false,true);
-		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);		
+		LEVEL_RESULT res = ::play_replay(disp(), state_, resources::config_manager->game_config(), video_, true);
 		if (!(res == VICTORY || res == NONE)) {
 			std::cerr << "Observed failure on replay" << std::endl;
-			return 4; 
+			return 4;
 		}
 		/*::play_replay(disp(),state_,resources::config_manager->game_config(),
 		    video_);*/
@@ -728,7 +728,7 @@ bool game_controller::new_campaign()
 	const config &campaign = campaigns[campaign_num];
 	state_.classification().campaign = campaign["id"].str();
 	state_.classification().abbrev = campaign["abbrev"].str();
-	
+
 	std::string random_mode = use_deterministic_mode ? "deterministic" : "";
 	state_.carryover_sides_start["random_mode"] = random_mode;
 	state_.classification().random_mode = random_mode;

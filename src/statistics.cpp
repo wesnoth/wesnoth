@@ -505,7 +505,7 @@ int un_recall_unit_cost(const unit& u)  // this really belongs elsewhere, perhap
 	s.recalls[u.type_id()]--;
 	return u.recall_cost();
 }
- 
+
 
 void advance_unit(const unit& u)
 {

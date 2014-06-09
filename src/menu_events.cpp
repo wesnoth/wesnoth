@@ -646,7 +646,7 @@ bool menu_handler::do_recruit(const std::string &name, int side_num,
 		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
 		// Do the recruiting.
-		
+
 		synced_context::run_in_synced_context("recruit", replay_helper::get_recruit(u_type->id(), loc, recruited_from));
 		return true;
 	}
@@ -695,7 +695,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	int res = dialogs::recall_dialog(*gui_, recall_list_team, side_num, get_title_suffix(side_num), current_team.recall_cost());
 	int unit_cost = current_team.recall_cost();
-	if (res < 0) { 
+	if (res < 0) {
 		return;
 	}
 	// we need to check if unit has a specific recall cost
@@ -733,7 +733,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 
 	if (!resources::whiteboard->save_recall(*recall_list_team[res], side_num, recall_location)) {
-		bool success = synced_context::run_in_synced_context("recall", 
+		bool success = synced_context::run_in_synced_context("recall",
 			replay_helper::get_recall(recall_list_team[res]->id(), recall_location, recall_from),
 			true,
 			true,
@@ -3159,7 +3159,7 @@ void console_handler::do_unit() {
 		int int_value = lexical_cast<int>(value);
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
-			
+
 			advance_unit_at(loc,true);
 			i = menu_handler_.units_.find(loc);
 			if (!i.valid()) {
@@ -3311,7 +3311,7 @@ void menu_handler::request_control_change ( int side_num, const std::string& pla
 			LOG_NG << " *** It's us, throwing end turn exception " << std::endl;
 		} else {
 			LOG_NG << " *** It's not us, changing sides now as usual, then throwing end_turn " << std::endl;
-			change_side_controller(side,player);		 
+			change_side_controller(side,player);
 		}
 		throw end_turn_exception(side_num);
 	} else {

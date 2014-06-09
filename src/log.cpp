@@ -166,9 +166,9 @@ std::string get_timespan(const time_t& t) {
 static void print_precise_timestamp(std::ostream & out)
 {
 	facet.put(
-		std::ostreambuf_iterator<char>(out), 
-		out, 
-		' ', 
+		std::ostreambuf_iterator<char>(out),
+		out,
+		' ',
 		boost::posix_time::microsec_clock::local_time());
 }
 
@@ -182,7 +182,7 @@ std::ostream &logger::operator()(log_domain const &domain, bool show_names, bool
 			ss << "Error (strict mode, strict_level = " << strict_level_ << "): wesnoth reported on channel " << name_ << " " << domain.domain_->first;
 			std::cerr << ss.str() << std::endl;
 			strict_threw_ = true;
-		} 
+		}
 		std::ostream& stream = output();
 		if(do_indent) {
 			for(int i = 0; i != indent; ++i)

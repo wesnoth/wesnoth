@@ -84,14 +84,12 @@ static void inspect_ai(twindow& window, int side)
  * my_dialog_class::inner_view_class
  * &my_dialog_class::inner_view_class::member_function>);
  */
-template <class D, class V, void (V::*fptr)(twindow&)>
+template <class D, class V, void (V::*fptr)()>
 void dialog_view_callback(twidget& caller)
 {
 	D* dialog = dynamic_cast<D*>(caller.dialog());
 	assert(dialog);
-	twindow* window = dynamic_cast<twindow*>(caller.get_window());
-	assert(window);
-	(*(dialog->get_view()).*fptr)(*window);
+	(*(dialog->get_view()).*fptr)();
 }
 
 
@@ -575,24 +573,21 @@ public:
 	{
 	}
 
-	void pre_show(CVideo& /*video*/, twindow& window)
+	void pre_show(CVideo& /*video*/, twindow& /*window*/)
 	{
 		controller_.show_stuff_types_list();
 		controller_.update_view_from_model();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 
-	void handle_stuff_list_item_clicked(twindow& window)
+	void handle_stuff_list_item_clicked()
 	{
 		controller_.handle_stuff_list_item_clicked();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
-	void handle_stuff_types_list_item_clicked(twindow& window)
+	void handle_stuff_types_list_item_clicked()
 	{
 		controller_.handle_stuff_types_list_item_clicked();
-		window.invalidate_layout(); // workaround for assertion failure
 	}
 
 
@@ -611,15 +606,13 @@ public:
 				*model_.stuff_list,
 				boost::bind(&tgamestate_inspector::view::
 									 handle_stuff_list_item_clicked,
-							this,
-							boost::ref(window)));
+							this));
 
 		connect_signal_notify_modified(
 				*model_.stuff_types_list,
 				boost::bind(&tgamestate_inspector::view::
 									 handle_stuff_list_item_clicked,
-							this,
-							boost::ref(window)));
+							this));
 
 #else
 		model_.stuff_list->set_callback_value_change(

@@ -70,7 +70,7 @@ playsingle_controller::playsingle_controller(const config& level,
 	textbox_info_(),
 	replay_sender_(recorder),
 	network_reader_(),
-	turn_data_(replay_sender_, network_reader_), 
+	turn_data_(replay_sender_, network_reader_),
 	end_turn_(false),
 	player_type_changed_(false),
 	replaying_(false),
@@ -164,7 +164,7 @@ void playsingle_controller::check_end_level()
 		}
 		return;
 	}
-	get_end_level_data().proceed_to_next_level = (level_result_ == VICTORY);	
+	get_end_level_data().proceed_to_next_level = (level_result_ == VICTORY);
 	throw end_level_exception(level_result_);
 }
 
@@ -346,7 +346,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		gamestate_.replay_start() = to_config();
 	}
 	HANDLE_END_PLAY_SIGNAL( fire_preload() );
-		
+
 	replaying_ = (recorder.at_end() == false);
 
 	if(!loading_game_ )
@@ -354,7 +354,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		if(replaying_)
 		{
 			//can this codepath be reached ?
-			//note this when we are entering an mp game and see the 'replay' of the game 
+			//note this when we are entering an mp game and see the 'replay' of the game
 			//this path is not reached because we receive the replay later
 			config* pstart = recorder.get_next_action();
 			assert(pstart->has_child("start"));
@@ -367,7 +367,7 @@ possible_end_play_signal playsingle_controller::play_scenario_init(end_level_dat
 		}
 		//we can only use a set_scontext_synced with a non empty recorder.
 		set_scontext_synced sync;
-			
+
 		HANDLE_END_PLAY_SIGNAL( fire_prestart() );
 		init_gui();
 		past_prestart = true;
@@ -482,7 +482,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						);
 						update_rect(0, 0, gui_->video().getx(), gui_->video().gety());
 					}
-			
+
 					ai_testing::log_game_end();
 					LEVEL_RESULT end_level_result = boost::apply_visitor( get_result(), *signal );
 					if (!end_level.transient.custom_endlevel_music.empty()) {
@@ -492,12 +492,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 							set_victory_music_list(end_level.transient.custom_endlevel_music);
 						}
 					}
-		
+
 					if (gameboard_.teams_.empty())
 					{
 						//store persistent teams
 						gamestate_.snapshot = config();
-		
+
 						return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
 					}
 					const bool obs = is_observer();
@@ -522,7 +522,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 							return OBSERVER_END;
 						}
 					}
-	
+
 					if (end_level_result == QUIT) {
 						return QUIT;
 					}
@@ -530,12 +530,12 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					{
 						gamestate_.classification().completion = "defeat";
 						game_events::fire("defeat");
-			
+
 						if (!obs) {
 							const std::string& defeat_music = select_defeat_music();
 							if(defeat_music.empty() != true)
 								sound::play_music_once(defeat_music);
-			
+
 							persist_.end_transaction();
 							return DEFEAT;
 						} else {
@@ -547,7 +547,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						gamestate_.classification().completion =
 							!end_level.transient.linger_mode ? "running" : "victory";
 						game_events::fire("victory");
-			
+
 						//
 						// Play victory music once all victory events
 						// are finished, if we aren't observers.
@@ -562,7 +562,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 							if(victory_music.empty() != true)
 								sound::play_music_once(victory_music);
 						}
-			
+
 						// Add all the units that survived the scenario.
 						LOG_NG << "Add units that survived the scenario to the recall list.\n";
 						gameboard_.all_survivors_to_recall();
@@ -571,7 +571,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						if(!is_observer()) {
 							persist_.end_transaction();
 						}
-		
+
 						return VICTORY;
 					}
 					else if (end_level_result == SKIP_TO_LINGER)
@@ -584,7 +584,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						}
 						return VICTORY;
 					}
-							
+
 					break;
 				//END CASES
 			} // END SWITCH
@@ -723,7 +723,7 @@ possible_end_play_signal playsingle_controller::play_side()
 			if (side_units(player_number_) != 0
 				|| (resources::units->size() == 0 && player_number_ == 1))
 			{
-				possible_end_play_signal signal = before_human_turn(); 
+				possible_end_play_signal signal = before_human_turn();
 
 				if (!signal) {
 					signal = play_human_turn();
@@ -784,7 +784,7 @@ possible_end_play_signal playsingle_controller::play_side()
 
 			if (!signal) {
 				signal = play_idle_loop();
-			} 
+			}
 
 			if (signal) {
 				switch (boost::apply_visitor(get_signal_type(), *signal)) {
@@ -967,7 +967,7 @@ void playsingle_controller::play_ai_turn(){
 
 	turn_data_.send_data();
 	turn_info_sync sync_safe(turn_data_);
-	
+
 	try {
 		ai::manager::play_turn(player_number_);
 	} catch (end_turn_exception&) {
@@ -986,7 +986,7 @@ void playsingle_controller::play_ai_turn(){
  */
 void playsingle_controller::do_idle_notification()
 {
-	resources::screen->add_chat_message(time(NULL), "Wesnoth", 0, 
+	resources::screen->add_chat_message(time(NULL), "Wesnoth", 0,
 		"This side is in an idle state. To proceed with the game, the host must assign it to another controller.",
 		events::chat_handler::MESSAGE_PUBLIC, false);
 }
@@ -1030,7 +1030,7 @@ possible_end_play_signal playsingle_controller::check_time_over(){
 		}
 
 		HANDLE_END_PLAY_SIGNAL( check_victory() );
-		
+
 		get_end_level_data().proceed_to_next_level = false;
 
 		end_level_struct els = {DEFEAT};
@@ -1118,12 +1118,12 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 	return res;
 }
 
-bool playsingle_controller::is_host() const 
+bool playsingle_controller::is_host() const
 {
 	return turn_data_.is_host();
 }
 
-void playsingle_controller::maybe_linger() 
+void playsingle_controller::maybe_linger()
 {
 	if (get_end_level_data_const().transient.linger_mode) {
 		linger();

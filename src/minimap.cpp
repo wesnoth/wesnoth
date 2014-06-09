@@ -63,7 +63,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw, const std::
 		double ratio = std::min<double>( w*1.0 / map_width, h*1.0 / map_height);
 		return create_neutral_surface(map_width * ratio, map_height * ratio);
 	}
-	
+
 	surface minimap(create_neutral_surface(map_width, map_height));
 	if(minimap == NULL)
 		return surface(NULL);

@@ -131,7 +131,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 temporary_unit_hider::temporary_unit_hider(unit& u)
 		: unit_(&u)
 	{unit_->set_hidden(true);}
-temporary_unit_hider::~temporary_unit_hider() 
+temporary_unit_hider::~temporary_unit_hider()
 {
 	try {
 		unit_->set_hidden(false);

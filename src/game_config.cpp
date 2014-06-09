@@ -326,7 +326,7 @@ namespace game_config
 			team_rgb_name[id] = teamC["name"];
 			//generate palette of same name;
 			std::vector<Uint32> tp = palette(team_rgb_range[id]);
-			if (tp.empty()) { 
+			if (tp.empty()) {
 				continue;
 			}
 			team_rgb_colors.insert(std::make_pair(id,tp));

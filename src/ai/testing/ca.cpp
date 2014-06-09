@@ -1959,7 +1959,7 @@ simple_move_and_targeting_phase::~simple_move_and_targeting_phase()
 
 double simple_move_and_targeting_phase::evaluate()
 {
-    // Pick first enemy leader, move all units as close to 
+    // Pick first enemy leader, move all units as close to
     // enemy leader as possible.
     // Own leader should not be moved.
     // Code does not support multiple leaders per side.

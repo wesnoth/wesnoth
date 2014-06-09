@@ -980,7 +980,7 @@ void recruit_unit(const unit_type & u_type, int side_num, const map_location & l
 	if ( use_undo ) {
 		resources::undo_stack->add_recruit(new_unit, loc, from);
 		// Check for information uncovered or randomness used.
-		
+
 		if ( mutated  || !synced_context::can_undo()) {
 			resources::undo_stack->clear();
 		}
@@ -1006,7 +1006,7 @@ bool recall_unit(const std::string & id, team & current_team,
 	std::vector<unit>::iterator recall_it = find_if_matches_id(recall_list, id);
 	if ( recall_it == recall_list.end() )
 		return false;
-		
+
 
 	// Make a copy of the unit before erasing it from the list.
 	unit recall(*recall_it);

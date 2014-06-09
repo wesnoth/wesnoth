@@ -159,7 +159,7 @@ editor_controller::~editor_controller()
 	resources::units = NULL;
 	resources::tod_manager = NULL;
 	resources::teams = NULL;
-	
+
 	resources::classification = NULL;
 	resources::mp_settings = NULL;
 }
@@ -960,7 +960,7 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 
 		const hotkey::hotkey_command& command = hotkey::get_hotkey_command(*i);
 
-		if ( ( can_execute_command(command) 
+		if ( ( can_execute_command(command)
 			&& (!context_menu || in_context_menu(command.id)) )
 			|| command.id == hotkey::HOTKEY_NULL) {
 			items.push_back(*i);

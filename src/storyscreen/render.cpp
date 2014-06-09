@@ -110,11 +110,11 @@ void part_ui::prepare_background()
 	base_rect_.h = video_.gety();
 	has_background_ = false;
 	bool no_base_yet = true;
-	
+
 	// Build background surface
 	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
 		surface layer;
-		
+
 		if(bl.file().empty() != true) {
 			layer.assign( image::get_image(bl.file()) );
 		}
@@ -122,9 +122,9 @@ void part_ui::prepare_background()
 		if(layer.null() || layer->w * layer->h == 0) {
 			continue;
 		}
-		
+
 		layer = make_neutral_surface(layer);
-		
+
 		const double xscale = 1.0 * video_.getx() / layer->w;
 		const double yscale = 1.0 * video_.gety() / layer->h;
 		const bool scalev = bl.scale_vertically();

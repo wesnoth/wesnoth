@@ -37,7 +37,7 @@ namespace random_new
 	private:
 		void initialize();
 		bool has_valid_seed_;
-		boost::function0<int> seed_generator_; 
+		boost::function0<int> seed_generator_;
 		//TODO: replayce this by boost::random::mt19937 or similar
 		rand_rng::simple_rng gen_;
 	};

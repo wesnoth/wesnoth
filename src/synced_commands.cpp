@@ -209,7 +209,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 	}
 
 	DBG_REPLAY << "Attacker XP (before attack): " << u->experience() << "\n";
-	
+
 	resources::undo_stack->clear();
 	attack_unit_and_advance(src, dst, weapon_num, def_weapon_num, show);
 	return true;
@@ -217,7 +217,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(attack, child, /*use_undo*/, show, error_handler
 
 SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_handler)
 {
-	
+
 	int current_team_num = resources::controller->current_side();
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
@@ -248,7 +248,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		return false;
 	}
 
-	if(steps.empty()) 
+	if(steps.empty())
 	{
 		WRN_REPLAY << "Warning: Missing path data found in [move]" << std::endl;
 		return false;
@@ -261,7 +261,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		WRN_REPLAY << "Warning: Move with identical source and destination. Skipping..." << std::endl;
 		return false;
 	}
-	
+
 	// The nominal destination should appear to be unoccupied.
 	unit_map::iterator u = resources::gameboard->find_visible_unit(dst, current_team);
 	if ( u.valid() ) {
@@ -296,7 +296,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(move, child,  use_undo, show, error_handler)
 		show_move = show_move && preferences::show_ai_moves();
 	}
 	actions::move_unit_from_replay(steps, use_undo ? resources::undo_stack : NULL, skip_sighted, skip_ally_sighted, show_move);
-	
+
 	return true;
 }
 

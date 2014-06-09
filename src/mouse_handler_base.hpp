@@ -107,7 +107,7 @@ public:
 	 * Overridden in derived class. Called on drag+drop movements.
 	 */
 	virtual void move_action(bool browse);
-	
+
 	/**
 	 * Called whenever the left mouse drag has "ended".
 	 */
@@ -200,7 +200,7 @@ protected:
 
 	/** Show context menu flag */
 	bool show_menu_;
-	
+
 	/** Relative to middle click scrolling */
 	int scroll_start_x_;
 	int scroll_start_y_;

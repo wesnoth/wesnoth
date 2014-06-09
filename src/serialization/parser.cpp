@@ -443,10 +443,10 @@ void read_compressed(config &cfg, std::istream &file, abstract_validator * valid
 	// we never create empty compressed gzip files because boosts gzip fails at doing that.
 	// but empty compressed bz2 files are possible.
 	if(filter.peek() == EOF) {
-		LOG_CF << "Empty compressed file or error at reading a compressed file."; 
+		LOG_CF << "Empty compressed file or error at reading a compressed file.";
 		return;
 	}
-	
+
 
 	if(!filter.good()) {
 		LOG_CF << " filter.peek() != EOF but !filter.good(), this indicates a malformed gz stream, and can make wesnoth crash.";
@@ -461,7 +461,7 @@ void read_gz(config &cfg, std::istream &file, abstract_validator * validator)
 	read_compressed<boost::iostreams::gzip_decompressor>(cfg, file, validator);
 }
 
-/// might throw a std::ios_base::failure especially bzip2_error 
+/// might throw a std::ios_base::failure especially bzip2_error
 void read_bz2(config &cfg, std::istream &file, abstract_validator * validator)
 {
 	read_compressed<boost::iostreams::bzip2_decompressor>(cfg, file, validator);

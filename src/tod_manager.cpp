@@ -44,7 +44,7 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	num_turns_(scenario_cfg["turns"].to_int(-1))
 {
 	// ? : operator doesn't work in this case.
-	if (scenario_cfg["current_time"].to_int(-17403) == -17403) 
+	if (scenario_cfg["current_time"].to_int(-17403) == -17403)
 		random_tod_ = scenario_cfg["random_start_time"];
 	else
 		random_tod_ = false;
@@ -52,7 +52,7 @@ tod_manager::tod_manager(const config& scenario_cfg):
 	time_of_day::parse_times(scenario_cfg,times_);
 	//We need to call parse_times before calculate_current_time because otherwise the first parameter will always be 0.
 	currentTime_ = calculate_current_time(times_.size(), turn_, scenario_cfg["current_time"].to_int(0), true);
-	
+
 }
 
 tod_manager& tod_manager::operator=(const tod_manager& manager)
@@ -88,14 +88,14 @@ void tod_manager::resolve_random(random_new::rng& r)
 	//process the random_start_time string, which can be boolean yes/no true/false or a
 	//comma-separated string of integers >= 1 referring to the times_ array indices
 	std::vector<int> output;
-	boost::copy( utils::split(random_tod_.str()) 
+	boost::copy( utils::split(random_tod_.str())
 		| boost::adaptors::transformed(boost::bind(lexical_cast_default<int, std::string>, _1 , 0))
 		| boost::adaptors::filtered(greater<int>(0))
 		, std::back_inserter(output) );
 
 	if(!output.empty())
 	{
-		int chosen = output[r.next_random() % output.size()]; 
+		int chosen = output[r.next_random() % output.size()];
 		currentTime_ = calculate_current_time(times_.size(), turn_, chosen, true);
 		r.next_random();
 	}

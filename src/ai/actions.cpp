@@ -290,7 +290,7 @@ void attack_result::do_execute()
 	{
 		attack_unit_and_advance(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, true, advancements_);
 	}
-	
+
 
 	set_gamestate_changed();
 	//start of ugly hack. @todo 1.9 rework that via extended event system
@@ -611,9 +611,9 @@ void recall_result::do_execute()
 	// Do the actual recalling.
 	//we ignore possible erros (=unit doesnt exist on the recall list)
 	//becasue that was the previous behaviour.
-	synced_context::run_in_synced_context_if_not_already("recall", 
+	synced_context::run_in_synced_context_if_not_already("recall",
 		replay_helper::get_recall(unit_id_, recall_location_, recall_from_),
-		false, 
+		false,
 		preferences::show_ai_moves(),
 		synced_context::ignore_error_function);
 
@@ -752,7 +752,7 @@ void recruit_result::do_execute()
 	// This should be implied by is_success() once check_before() has been
 	// called, so this is a guard against future breakage.
 	assert(location_checked_  &&  u != NULL);
-	
+
 	synced_context::run_in_synced_context_if_not_already("recruit", replay_helper::get_recruit(u->id(), recruit_location_, recruit_from_), false, preferences::show_ai_moves());
 	//TODO: should we do something to pass use_undo = false in replays and ai moves ?
 	//::actions::recruit_unit(*u, get_side(), recruit_location_, recruit_from_,
@@ -903,9 +903,9 @@ void synced_command_result::do_execute()
 		s << "local x1 = " << location_.x << " local y1 = " << location_.y << " ";
 	}
 	s << lua_code_;
-	
+
 	synced_context::run_in_synced_context_if_not_already("lua_ai", replay_helper::get_lua_ai(s.str()));
-	
+
 	try {
 		set_gamestate_changed();
 		manager::raise_gamestate_changed();

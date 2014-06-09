@@ -12,7 +12,13 @@ def restore_env(env, backup):
     for var in backup.keys():
         env[var] = backup[var]
 
-def find_include(prefixes, include_file, include_subdir, default_prefixes = True):
+def find_include(prefixes, include_file, include_subdir="include", default_prefixes=True):
     if default_prefixes:
         prefixes = prefixes + ["/usr", "/usr/local", "/sw", "/sw/local", "/opt", "/opt/local"]
-    return [(prefix, include) for prefix in prefixes for include in glob(join(prefix, "include", include_subdir, include_file))]
+    all_includes = []
+    for prefix in prefixes:
+        path = join(prefix, include_subdir, include_file)
+        #print path
+        for include in glob(path):
+            all_includes.append((prefix, include))
+    return all_includes

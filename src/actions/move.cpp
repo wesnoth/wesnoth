@@ -927,7 +927,7 @@ namespace { // Private helpers for move_unit()
 		static const std::string enter_hex_str("enter_hex");
 		static const std::string exit_hex_str("exit_hex");
 
-		
+
 		bool obstructed_stop = false;
 
 
@@ -1183,18 +1183,18 @@ static size_t move_unit_internal(undo_list* undo_stack,
 
 	// Attempt moving.
 	mover.try_actual_movement(show_move);
-	
+
 	config co;
 	config cn = config_of("stopped_early", mover.stopped_early())("final_hex_x", mover.final_hex().x + 1)("final_hex_y", mover.final_hex().y + 1);
 	bool matches_replay = checkup_instance->local_checkup(cn,co);
 	if(!matches_replay)
 	{
-		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +   
+		replay::process_error("calculated movement destination (x="+ cn["final_hex_x"].str() +  " y=" + cn["final_hex_y"].str() +
 			")didn't match the original destination(x="+ co["final_hex_x"].str() +  " y=" + co["final_hex_y"].str());
 
 		//TODO: move the unit by force to the desired destination with something like mover.reset_final_hex(co["x"], co["y"]);
 	}
-	
+
 	// Bookkeeping, etc.
 	// also fires the moveto event
 	mover.post_move(undo_stack);
@@ -1235,7 +1235,7 @@ size_t move_unit_and_record(const std::vector<map_location> &steps,
                  bool* interrupted,
                  move_unit_spectator* move_spectator)
 {
-	
+
 	// Avoid some silliness.
 	if ( steps.size() < 2  ||  (steps.size() == 2 && steps.front() == steps.back()) ) {
 		DBG_NG << "Ignoring a unit trying to jump on its hex at " <<
@@ -1279,7 +1279,7 @@ size_t move_unit_from_replay(const std::vector<map_location> &steps,
 {
 	// Evaluate this move.
 	unit_mover mover(steps, NULL, continued_move,skip_ally_sighted, NULL);
-	if ( !mover.check_expected_movement() ) 
+	if ( !mover.check_expected_movement() )
 	{
 		replay::process_error("found corrupt movement in replay.");
 		return 0;

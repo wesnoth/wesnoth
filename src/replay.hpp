@@ -65,7 +65,7 @@ public:
 	void init_side();
 	/*
 		returns a reference to the newest config that us not dependent or has undo =no
-	
+
 	*/
 	config& get_last_real_command();
 	/**
@@ -99,7 +99,7 @@ public:
 	config get_data_range(int cmd_start, int cmd_end, DATA_TYPE data_type=ALL_DATA);
 	config get_last_turn(int num_turns=1);
 	const config& get_replay_data() const { return cfg_; }
-	
+
 	void undo();
 	/*
 		undoes the last move and puts it into given config to be reone with redo
@@ -143,7 +143,7 @@ private:
 	 * @return a reference to the added command
 	 */
 	config& add_command();
-	/** 
+	/**
 	 * adds a new command to the command list at the current position.
 	 *
 	 * @return a reference to the added command
@@ -161,7 +161,7 @@ replay& get_replay_source();
 
 extern replay recorder;
 
-enum REPLAY_RETURN 
+enum REPLAY_RETURN
 {
 	REPLAY_RETURN_AT_END,
 	REPLAY_FOUND_DEPENDENT,
@@ -210,7 +210,7 @@ struct user_choice
  * client is responsible for making the choice.
  * otherwise this function waits for a remote choice and returns it when it is received.
  * information about the choice made is saved in replay with dependent=true
- * 
+ *
  * @param name Tag used for storing the choice into the replay.
  * @param side The number of the side responsible for making the choice.
  *             If zero, it defaults to the currently active side.
