@@ -226,7 +226,7 @@ void part::resolve_wml(const vconfig &cfg)
 	}
 	background_layers_.push_back(bl);
 
-	
+
 	if(cfg.has_attribute("show_title")) {
 		show_title_ = cfg["show_title"].to_bool();
 	}

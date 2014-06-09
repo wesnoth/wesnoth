@@ -91,7 +91,7 @@ class undo_list : boost::noncopyable {
 
 		// Data:
 		/// the replay data to do this action, this is only !empty() when this action is on the redo stack
-		/// we need this because we dont recalculate the redos like they would be in real game, 
+		/// we need this because we dont recalculate the redos like they would be in real game,
 		/// but even undoable comands can have "dependent" (= user_input) commands, which we save here.
 		config replay_data;
 

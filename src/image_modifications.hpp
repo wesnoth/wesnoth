@@ -186,7 +186,7 @@ public:
 	 * Constructor.
 	 * @pre @zoom >= @offset   Otherwise the result will have empty pixels.
      * @pre @offset > 0        Otherwise the procedure will not return.
-	 * 
+	 *
 	 * @param degrees Amount of rotation (in degrees).
 	 *                Positive values are clockwise; negative are counter-clockwise.
 	 * @param zoom    The zoom level to calculate the rotation from.

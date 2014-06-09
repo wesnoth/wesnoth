@@ -33,11 +33,11 @@ namespace random_new
 		}
 		//getting here means random was called form inside a synced context.
 		int retv = gen_.get_next_random();
-		
+
 		LOG_RND << "random_new::rng::next_random_impl returned " << retv;
 		return retv;
 	}
-	
+
 	void synced_rng::initialize()
 	{
 		int new_seed = seed_generator_();

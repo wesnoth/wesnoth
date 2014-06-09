@@ -16,11 +16,11 @@ static lg::log_domain log_network("network");
 void playturn_network_adapter::read_from_network()
 {
 	assert(!data_.empty());
-	
+
 	this->data_.push_back(config());
 	config& back = data_.back();
 	bool has_data = false;
-	try 
+	try
 	{
 		has_data = this->network_reader_(back);
 	}
@@ -38,7 +38,7 @@ void playturn_network_adapter::read_from_network()
 		return;
 	}
 	assert(!data_.back().empty());
-	
+
 	if(back.has_attribute("side_drop"))
 	{
 		config child;
@@ -97,7 +97,7 @@ bool playturn_network_adapter::read(config& dst)
 		config& childchild_old = const_cast<config&>(itor->cfg);
 		config& childchild = child.add_child(itor->key);
 		childchild.swap(childchild_old);
-		
+
 		++next_command_num_;
 		if(next_->cfg.all_children_count() == next_command_num_)
 		{

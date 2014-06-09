@@ -855,7 +855,7 @@ void create_engine::init_all_levels()
 	{
 		if (!data["allow_new_game"].to_bool(true))
 			continue;
-			
+
 		if (!data["map_generation"].empty()) {
 			random_map_ptr new_random_map(new random_map(data));
 			random_maps_.push_back(new_random_map);

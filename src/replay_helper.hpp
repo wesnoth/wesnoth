@@ -41,7 +41,7 @@ public:
 
 	static config get_init_side();
 	/*
-		
+
 	*/
 	static config get_event(const std::string& name, const map_location& loc, const map_location*  last_select_loc);
 

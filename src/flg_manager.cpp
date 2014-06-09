@@ -200,8 +200,8 @@ void flg_manager::reset_gender_combo(gui::combo& combo_gender) const
 }
 
 bool flg_manager::is_random_faction()
-{ 
-	return (*current_faction_)["random_faction"].to_bool(); 
+{
+	return (*current_faction_)["random_faction"].to_bool();
 }
 
 void flg_manager::resolve_random() {

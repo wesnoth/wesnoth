@@ -379,11 +379,11 @@ void delete_game(const std::string& name)
 
 
 
-create_save_info::create_save_info(const std::string* d) 
-	: dir(d ? *d : get_saves_dir()) 
+create_save_info::create_save_info(const std::string* d)
+	: dir(d ? *d : get_saves_dir())
 {
 }
-save_info create_save_info::operator()(const std::string& filename) const 
+save_info create_save_info::operator()(const std::string& filename) const
 {
 	std::string name = filename;
 	replace_underbar2space(name);
@@ -414,7 +414,7 @@ void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 	} else {
 		cfg_summary["scenario"] = cfg_save["scenario"];
 	}
-	
+
 	cfg_summary["difficulty"] = cfg_save["difficulty"];
 	cfg_summary["random_mode"] = cfg_save["random_mode"];
 

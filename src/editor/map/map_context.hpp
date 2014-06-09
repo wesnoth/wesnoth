@@ -121,7 +121,7 @@ public:
 	}
 
 	void replace_schedule(const std::vector<time_of_day>& schedule);
-	
+
 	/**
 	 * Replace the [time]s of the currently active area.
 	 */
@@ -149,7 +149,7 @@ public:
 	}
 
 	/**
-	 * 
+	 *
  	 * @return the index of the currently active area.
  	 */
 	int get_active_area() const {

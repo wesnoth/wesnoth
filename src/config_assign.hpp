@@ -29,7 +29,7 @@ public:
 	{
 		this->operator()(tagname, child);
 	}
-	
+
 	template <typename AT>
 	config_of& operator()(const std::string& attrname, AT value)
 	{

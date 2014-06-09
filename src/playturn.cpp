@@ -118,8 +118,8 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data_from_reader(bool 
 
 turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg, bool skip_replay)
 {
-	// we cannot be connected to multiple peers anymore because 
-	// the simple wesnothserver implementation in wesnoth was removed years ago. 
+	// we cannot be connected to multiple peers anymore because
+	// the simple wesnothserver implementation in wesnoth was removed years ago.
 	assert(network::nconnections() <= 1);
 	assert(cfg.all_children_count() == 1);
 	assert(cfg.attribute_range().first == cfg.attribute_range().second);
@@ -183,7 +183,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			} catch (bad_enum_cast & e) {
 				ERR_NW << "Bad [change_controller] message from server:\n" << e.what() << std::endl << change.debug() << std::endl;
 				return PROCESS_CONTINUE;
-			}		
+			}
 
 			bool was_local = tm.is_local();
 			const team::CONTROLLER old_controller = tm.controller();
@@ -215,7 +215,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 			ERR_NW << "Bad [change_controller] signal from server, side out of bounds: " << change.debug() << std::endl;
 		}
 	}
-	
+
 	else if (const config &side_drop_c = cfg.child("side_drop"))
 	{
 		const std::string& side_drop = side_drop_c["side_num"].str();

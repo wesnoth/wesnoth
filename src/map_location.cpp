@@ -142,7 +142,7 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 {
 	if (opt == map_location::DEFAULT) {
 		map_location::DIRECTION dir = NDIRECTIONS;
-	
+
 		int dx = loc.x - x;
 		int dy = loc.y - y;
 		if (loc.x%2==1 && x%2==0) dy--;
@@ -152,7 +152,7 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 		int dist = abs(dx);                                   // Distance from north-south line
 		int dist_diag_SW_NE = abs(dy + (dx + (dy>0?0:1) )/2); // Distance from diagonal line SW-NE
 		int dist_diag_SE_NW = abs(dy - (dx - (dy>0?0:1) )/2); // Distance from diagonal line SE-NW
-	
+
 		if (dy > 0) dir = SOUTH;
 		else        dir = NORTH;
 
@@ -206,7 +206,7 @@ std::pair<int,int> map_location::get_in_basis_N_NE() const {
 	ret.second = temp.x;
 	temp = temp.get_direction(SOUTH_WEST,temp.x);
 	assert(temp.x == 0);
-	
+
 	ret.first = -temp.y;
 	temp = temp.get_direction(NORTH,temp.y);
 	assert(temp.y == 0);

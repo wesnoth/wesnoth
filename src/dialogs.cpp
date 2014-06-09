@@ -532,7 +532,7 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 		options.push_back(option.str());
 		options_to_filter.push_back(option_to_filter.str());
 	}
-	
+
 	gui::dialog rmenu(disp, _("Recall") + title_suffix,
 		_("Select unit:") + std::string("\n"),
 		gui::OK_CANCEL, gui::dialog::default_style);
@@ -843,7 +843,7 @@ void save_preview_pane::draw_contents()
 				case game_classification::TEST:
 					str << _("Test scenario");
 					break;
-			}			
+			}
 		} catch (bad_lexical_cast &) {
 			str << campaign_type;
 		}

@@ -179,7 +179,7 @@ surface stretch_surface_vertical(
 surface scale_surface(const surface &surf, int w, int h, bool optimize=true);
 
 /** Scale a surface using modified nearest neighbour algorithm. Use only if
- * preserving sharp edges is a priority (e.g. minimap). 
+ * preserving sharp edges is a priority (e.g. minimap).
  *  @param surf              The source surface.
  *  @param w                 The width of the resulting surface.
  *  @param h                 The height of the resulting surface.

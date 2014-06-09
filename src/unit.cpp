@@ -817,7 +817,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	max_experience_ = new_type.experience_needed(false);
 	level_ = new_type.level();
 	recall_cost_ = new_type.recall_cost();
-	/* Need to add a check to see if the unit's old cost is equal 
+	/* Need to add a check to see if the unit's old cost is equal
 	to the unit's old unit_type cost first.  If it is change the cost
 	otherwise keep the old cost. */
 	if(old_type.recall_cost() == recall_cost_) {
@@ -1517,12 +1517,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if (!cfg_canrecruit.blank() && cfg_canrecruit.to_bool() != can_recruit()) {
 		return false;
 	}
-	
+
 	config::attribute_value cfg_recall_cost = cfg["recall_cost"];
 	if (!cfg_recall_cost.blank() && cfg_recall_cost.to_int(-1) != recall_cost_) {
 		return false;
 	}
-	
+
 	config::attribute_value cfg_level = cfg["level"];
 	if (!cfg_level.blank() && cfg_level.to_int(-1) != level_) {
 		return false;
@@ -1673,7 +1673,7 @@ void unit::write(config& cfg) const
 	cfg["experience"] = experience_;
 	cfg["max_experience"] = max_experience_;
 	cfg["recall_cost"] = recall_cost_;
-	
+
 	cfg["side"] = side_;
 
 	cfg["type"] = type_id();
@@ -1905,7 +1905,7 @@ void unit::redraw_unit()
 
 	if (refreshing_) return;
 	refreshing_ = true;
-	
+
 	anim_->update_last_draw_time();
 	frame_parameters params;
 	const t_translation::t_terrain terrain = map.get_terrain(loc_);
@@ -1922,7 +1922,7 @@ void unit::redraw_unit()
 	if (loc_ == disp.selected_hex() && params.highlight_ratio == 1.0) {
 		params.highlight_ratio = 1.5;
 	}
-	
+
 	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 	if (is_flying() && height_adjust < 0) {
 		height_adjust = 0;
@@ -2134,7 +2134,7 @@ void unit::redraw_unit()
 
 	// Smooth unit movements from terrain of different elevation.
 	// Do this separately from above so that the health bar doesn't go up and down.
-	
+
 	const t_translation::t_terrain terrain_dst = map.get_terrain(dst);
 	const terrain_type& terrain_dst_info = map.get_terrain_info(terrain_dst);
 
@@ -2146,7 +2146,7 @@ void unit::redraw_unit()
 	}
 	params.y -= height_adjust_unit - height_adjust;
 	params.halo_y -= height_adjust_unit - height_adjust;
-	
+
 	anim_->redraw(params);
 	refreshing_ = false;
 }

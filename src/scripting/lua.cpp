@@ -1184,7 +1184,7 @@ static int impl_side_get(lua_State *L)
 	return_cstring_attrib("controller", team::CONTROLLER_to_string(t.controller()).c_str());
 	return_string_attrib("defeat_condition", team::DEFEAT_CONDITION_to_string(t.defeat_condition()));
 	return_bool_attrib("lost", t.lost());
-	
+
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
 		lua_createtable(L, recruits.size(), 0);
@@ -1542,9 +1542,9 @@ static int impl_game_config_get(lua_State *L)
 	return_bool_attrib("debug", game_config::debug);
 	return_bool_attrib("debug_lua", game_config::debug_lua);
 	return_bool_attrib("mp_debug", game_config::mp_debug);
-	
-	const mp_game_settings& mp_settings = *resources::mp_settings; 
-	const game_classification & classification = *resources::classification; 
+
+	const mp_game_settings& mp_settings = *resources::mp_settings;
+	const game_classification & classification = *resources::classification;
 
 	return_string_attrib("campaign_type", lexical_cast<std::string>(classification.campaign_type));
 	if(classification.campaign_type==game_classification::MULTIPLAYER) {
@@ -1560,7 +1560,7 @@ static int impl_game_config_get(lua_State *L)
 			eras_list = eras_list + "," + (*(its.first))["id"];
 		}
 		return_string_attrib("eras", eras_list);
-	}	 
+	}
 	return 0;
 }
 
@@ -1591,7 +1591,7 @@ static int impl_game_config_set(lua_State *L)
 */
 static std::string synced_state()
 {
-	//maybe return "initial" for game_data::INITIAL? 
+	//maybe return "initial" for game_data::INITIAL?
 	if(resources::gamedata->phase() == game_data::PRELOAD || resources::gamedata->phase() == game_data::INITIAL)
 	{
 		return "preload";
@@ -2508,8 +2508,8 @@ static void luaW_pushsimweapon(lua_State *L, const battle_context_unit_stats &bc
 	lua_pushnumber(L, bcustats.drain_percent);
 	lua_setfield(L, -2, "drain_percent");
 
-	
-	//if we called simulate_combat without giving an explicit weapon this can be useful. 
+
+	//if we called simulate_combat without giving an explicit weapon this can be useful.
 	lua_pushnumber(L, bcustats.attack_num);
 	lua_setfield(L, -2, "attack_num");
 	//this is NULL when there is no counter weapon
@@ -2719,7 +2719,7 @@ static int intf_synchronize_choice(lua_State *L)
 	{
 		std::set<int> vals;
 		//read the third parameter
-		lua_pushnil(L); 
+		lua_pushnil(L);
 		while (lua_next(L, 3) != 0) {
 			/* uses 'key' (at index -2) and 'value' (at index -1) */
 			int val = luaL_checkint(L, -1);

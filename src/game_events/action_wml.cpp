@@ -2234,7 +2234,7 @@ WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 }
 
 /// Store the relative direction from one hex to antoher in a WML variable.
-/// This is mainly useful as a diagnostic tool, but could be useful 
+/// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
 WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 {
@@ -2264,7 +2264,7 @@ WML_HANDLER_FUNCTION(store_relative_dir, /*event_info*/, cfg)
 
 /// Store the rotation of one hex around another in a WML variable.
 /// In increments of 60 degrees, clockwise.
-/// This is mainly useful as a diagnostic tool, but could be useful 
+/// This is mainly useful as a diagnostic tool, but could be useful
 /// for some kind of scenario.
 WML_HANDLER_FUNCTION(store_rotate_map_location, /*event_info*/, cfg)
 {

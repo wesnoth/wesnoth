@@ -132,8 +132,8 @@ std::vector<map_location> parse_location_range(const std::string& xvals,
  */
 void write_location_range(const std::set<map_location>& locs, config& cfg);
 
-/** 
- * Parse x,y keys of a config into a vector of locations 
+/**
+ * Parse x,y keys of a config into a vector of locations
  *
  * Throws bad_lexical_cast if it fails to parse.
  */
@@ -258,7 +258,7 @@ inline map_location map_location::get_direction(
 	int x_factor = (dir <= 2u) ? 1 : -1; //whether we go east + or west -
 
 	unsigned int tmp_y = dir - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
-	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -	
+	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -
 
 	if (tmp_y <= 2u) {
 		return map_location(x + x_factor * n, y + y_factor * ((n + ((x & 1) == 1)) / 2));
@@ -331,7 +331,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 	// and the x value of the hex with the greater y value is even.
 
 	switch (a.y - b.y) {
-		case 1 : 
+		case 1 :
 			switch (a.x - b.x) {
 				case 1:
 				case -1:
@@ -341,7 +341,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 				default:
 					return false;
 			}
-		case -1 : 
+		case -1 :
 			switch (a.x - b.x) {
 				case 1:
 				case -1:

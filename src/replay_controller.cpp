@@ -349,7 +349,7 @@ void replay_controller::reset_replay()
 			because set_scontext_synced sets the checkup to the last added command
 		*/
 		set_scontext_synced sync;
-		
+
 		fire_prestart();
 		init_gui();
 		fire_start(true);

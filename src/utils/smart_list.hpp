@@ -34,7 +34,7 @@ namespace utils
 /// an element for removal from the list. Flagged elements are ignored by list
 /// functions, but they still exist from the perspective of iterators that had
 /// pointed (and still point) to the element.
-/// 
+///
 /// Assignment is incompatible with the goal of preserving iterators, so it is
 /// not implemented (declared private though, to emphasize that this is
 /// intentional).

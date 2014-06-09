@@ -777,7 +777,7 @@ bool undo_list::update_shroud_action::undo(int /*side*/, undo_list & undos)
 	undos.undo();
 	// Now keep the shroud update at the top of the undo stack.
 	recorder.add_synced_command("update_shroud", replay_helper::get_update_shroud());
-	
+
 	undos.add_update_shroud();
 	// Shroud actions never get moved to the redo stack, so claim an error.
 	return false;

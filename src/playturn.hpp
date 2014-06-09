@@ -35,7 +35,7 @@ public:
 
 
 
-	enum PROCESS_DATA_RESULT 
+	enum PROCESS_DATA_RESULT
 	{
 		PROCESS_CONTINUE,
 		PROCESS_RESTART_TURN,
@@ -56,7 +56,7 @@ public:
 
 	//function which will process incoming network data received with playturn_network_adapter, and act on it.
 	PROCESS_DATA_RESULT process_network_data(const config& cfg, bool skip_replay);
-	
+
 	//reads as much data from network_reader_ as possible and processed it.
 	PROCESS_DATA_RESULT process_network_data_from_reader(bool skip_replay);
 
@@ -85,8 +85,8 @@ private:
 };
 
 /**
-	class that sends data on destruction 
-	to make sure data is sended in any case. 
+	class that sends data on destruction
+	to make sure data is sended in any case.
 */
 class turn_info_send
 {
@@ -105,8 +105,8 @@ private:
 };
 
 /**
-	class that syncs data on destruction 
-	to make sure data is synced in any case. 
+	class that syncs data on destruction
+	to make sure data is synced in any case.
 */
 class turn_info_sync
 {

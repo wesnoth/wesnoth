@@ -48,7 +48,7 @@ config replay_helper::get_disband(const std::string& unit_id)
 	config val;
 
 	val["value"] = unit_id;
-	
+
 	return val;
 }
 
@@ -61,7 +61,7 @@ config replay_helper::get_disband(const std::string& unit_id)
 config replay_helper::get_movement(const std::vector<map_location>& steps, bool skip_sighted, bool skip_ally_sighted)
 {
 	assert(!steps.empty());
-	
+
 	config move;
 	if(skip_sighted)
 	{
@@ -72,7 +72,7 @@ config replay_helper::get_movement(const std::vector<map_location>& steps, bool 
 	{
 		move["skip_sighted"] = "only_ally";
 	}
-	else 
+	else
 	{
 		//leave it empty
 	}

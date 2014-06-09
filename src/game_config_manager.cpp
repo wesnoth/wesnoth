@@ -264,7 +264,7 @@ void game_config_manager::load_addons_cfg()
 
 		const std::string info_cfg = uc + "/_info.cfg";
 		if (file_exists(info_cfg)) {
-		
+
 			config info;
 			cache_.get_config(info_cfg, info);
 			const config info_tag = info.child_or_empty("info");

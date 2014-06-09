@@ -30,8 +30,8 @@ namespace random_new
 
 	// this generator is autmatilcy synced during synced context.
 	// calling this should automaticly clear the undo stack.
-	// 
+	//
 	extern rng* generator;
-	
+
 }
 #endif

@@ -434,7 +434,7 @@ void connect_engine::start_game(LOAD_USERS load_users)
 		{
 			int j_side = playable_sides[rand() % i];
 			int i_side = playable_sides[i - 1];
-			
+
 			if (i_side == j_side) continue; //nothing to swap
 
 			// First we swap everything about a side with another
@@ -875,7 +875,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 
 	// Tweak the controllers.
 	if (cfg_["controller"] == "human_ai" ||
-		cfg_["controller"] == "network_ai" || 
+		cfg_["controller"] == "network_ai" ||
 		(cfg_["controller"] == "network" &&  !allow_player_ && parent_.params_.saved_game)) { //this is a workaround for bug #21797
 
 		cfg_["controller"] = "ai";

@@ -86,7 +86,7 @@ public:
 		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
 
 		resources::teams = &context_manager_.get_map_context().get_teams();
-		
+
 		resources::classification = &context_manager_.get_map_context().get_game_state().classification();
 		resources::mp_settings = &context_manager_.get_map_context().get_game_state().mp_settings();
 
@@ -567,7 +567,7 @@ void context_manager::save_map_as_dialog()
 		input_name = get_dir(default_dir_ + "/maps");
 	}
 	const std::string old_input_name = input_name;
-	
+
 	int overwrite_res = 1;
 	do {
 		input_name = old_input_name;

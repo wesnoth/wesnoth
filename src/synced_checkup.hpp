@@ -33,7 +33,7 @@ public:
 	*/
 	virtual bool local_checkup(const config& expected_data, config& real_data) = 0;
 	/*
-		compares data on all clients in a networked game, the disadvantage is, 
+		compares data on all clients in a networked game, the disadvantage is,
 		that the clients have to communicate more which  might be not wanted if some persons have laggy inet.
 		returns whether the two config objects are equal.
 

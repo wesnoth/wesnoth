@@ -785,7 +785,7 @@ namespace { // Helpers for attack_type::special_active()
 			// is active, in that it can be used, even though the player might
 			// need to select an appropriate opponent.)
 			return true;
- 
+
 		const config & filter_child = filter.child(child_tag);
 		if ( !filter_child )
 			// The special does not filter on this unit, so we pass.

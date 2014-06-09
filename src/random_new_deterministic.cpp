@@ -15,13 +15,13 @@
 
 namespace random_new
 {
-	
+
 	rng_deterministic::rng_deterministic(rand_rng::simple_rng& gen)
 		: generator_(gen)
 	{
 
 	}
-	
+
 	rng_deterministic::~rng_deterministic()
 	{
 
