@@ -215,6 +215,4 @@ private:
 	mp_game_settings mp_settings_;
 };
 
-void extract_summary_from_config(config& cfg_save, config& cfg_summary);
-
 #endif

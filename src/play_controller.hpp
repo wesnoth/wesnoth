@@ -164,6 +164,8 @@ public:
 
 	void do_autosave();
 
+	void do_consolesave(const std::string& filename);
+
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 

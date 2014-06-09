@@ -19,10 +19,13 @@
 #include "generators/mapgen.hpp"
 #include "mp_depcheck.hpp"
 #include "mp_game_settings.hpp"
+#include "game_display.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <string>
 #include <utility>
+
+class game_state;
 
 namespace mp {
 
