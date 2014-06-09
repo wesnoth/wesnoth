@@ -163,6 +163,7 @@ hotkey::hotkey_command_temp hotkey_list_[] = {
 
 	{ hotkey::HOTKEY_EDITOR_UNIT_CHANGE_ID, "editor-change-unitid", N_("Change Unit ID"), false, hotkey::SCOPE_EDITOR, "" },
 	{ hotkey::HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL, "editor-unit-toggle-loyal", N_("Loyal"), false, hotkey::SCOPE_EDITOR, "" },
+	{ hotkey::HOTKEY_EDITOR_UNIT_FACING, "menu-unit-facing", "", true, hotkey::SCOPE_EDITOR, "" },
 
 	{ hotkey::HOTKEY_MINIMAP_CODING_UNIT, "minimap-unit-coding", N_("Toggle Minimap Unit Coding"), false, hotkey::SCOPE_GENERAL, "" },
 	{ hotkey::HOTKEY_MINIMAP_CODING_TERRAIN, "minimap-terrain-coding", N_("Toggle Minimap Terrain Coding"), false, hotkey::SCOPE_GENERAL, "" },

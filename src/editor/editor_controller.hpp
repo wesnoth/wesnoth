@@ -62,7 +62,8 @@ enum menu_type {
 	LOCAL_TIME,
 	SCHEDULE,
 	LOCAL_SCHEDULE,
-	MUSIC
+	MUSIC,
+	UNIT_FACING
 };
 
 /**

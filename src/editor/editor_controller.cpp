@@ -256,6 +256,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 					case editor::LOCAL_SCHEDULE:
 					case editor::MUSIC:
 					case editor::LOCAL_TIME:
+					case editor::UNIT_FACING:
 						return true;
 				}
 			}
@@ -299,6 +300,7 @@ bool editor_controller::can_execute_command(const hotkey::hotkey_command& cmd, i
 		case HOTKEY_EDITOR_UNIT_TOGGLE_RENAMEABLE:
 		case HOTKEY_EDITOR_UNIT_TOGGLE_LOYAL:
 		case HOTKEY_EDITOR_UNIT_RECRUIT_ASSIGN:
+		case HOTKEY_EDITOR_UNIT_FACING:
 		{
 			map_location loc = gui_->mouseover_hex();
 			const unit_map& units = context_manager_->get_map_context().get_units();
@@ -558,6 +560,13 @@ hotkey::ACTION_STATE editor_controller::get_action_state(hotkey::HOTKEY_COMMAND 
 				const std::vector<time_of_day>& times2 = context_manager_->get_map_context().get_time_manager()->times(active_area);
 				return (times1 == times2) ? ACTION_SELECTED : ACTION_DESELECTED;
 			}
+		case editor::UNIT_FACING:
+			{
+				unit_map::const_unit_iterator un =
+					resources::units->find(gui_->mouseover_hex());
+				assert(un != resources::units->end());
+				return un->facing() == index ? ACTION_SELECTED : ACTION_DESELECTED;
+			}
 		}
 		return ACTION_ON;
 		default:
@@ -641,6 +650,15 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 					tods_map::iterator iter = tods_.begin();
 					std::advance(iter, index);
 					context_manager_->get_map_context().replace_local_schedule(iter->second.second);
+					return true;
+				}
+			case UNIT_FACING:
+				{
+					unit_map::unit_iterator un =
+							resources::units->find(gui_->mouseover_hex());
+					assert(un != resources::units->end());
+					un->set_facing(map_location::DIRECTION(index));
+					un->set_standing();
 					return true;
 				}
 			}
@@ -991,7 +1009,12 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 		active_menu_ = editor::LOCAL_TIME;
 		context_manager_->expand_local_time_menu(items);
 	}
-
+	if (!items.empty() && items.front() == "menu-unit-facings") {
+		active_menu_ = editor::UNIT_FACING;
+		items.erase(items.begin());
+		for (int dir = 0; dir != map_location::NDIRECTIONS; dir++)
+			items.push_back(map_location::write_translated_direction(map_location::DIRECTION(dir)));
+	}
 	if (!items.empty() && items.front() == "editor-playlist") {
 		active_menu_ = editor::MUSIC;
 		items.erase(items.begin());
