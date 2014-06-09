@@ -56,6 +56,7 @@ Version 1.13.0-dev:
    * Remove 'allow_new_game=no' entries from random map new game list
    * Fixed bug #22095: An assertion failure in the gamestate inspector.
    * Changed: A listbox can now update its size when rows are added.
+   * Changed: Avoid listboxes to handle mouse clicks twice.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].

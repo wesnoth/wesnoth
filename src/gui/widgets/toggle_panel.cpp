@@ -265,9 +265,26 @@ ttoggle_panel::signal_handler_pre_left_button_click(const event::tevent event)
 	DBG_GUI_E << get_control_type() << "[" << id() << "]: " << event << ".\n";
 
 	set_value(true);
+
+#if 0
+	/*
+	 * Disabled since it causes issues with gamestate inspector (bug #22095).
+	 * It was added in b84f2ebff0b53c7e4194da315c43f62a08494c52 for the lobby,
+	 * since that code is still experimental, prefer to fix a real issue caused
+	 * by it.
+	 *
+	 * The issue is that the gui2::tlistbox::add_row code was changed to
+	 * increase the content size. Before the list was shown the list was
+	 * cleared. The clear operation did not reduce the size (since the widgets
+	 * were not shown yet). The add operation afterwards again reserved the
+	 * space causing the size of the listbox to be twice the required space.
+	 *
+	 * 2014.06.09 -- Mordante
+	 */
 	if(callback_state_change_) {
 		callback_state_change_(*this);
 	}
+#endif
 }
 
 void ttoggle_panel::signal_handler_left_button_click(const event::tevent event,
