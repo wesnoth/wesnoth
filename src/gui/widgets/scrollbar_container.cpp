@@ -263,7 +263,17 @@ void tscrollbar_container::request_reduce_width(const unsigned maximum_width)
 	horizontal_scrollbar_grid_->set_visible(twidget::tvisible::visible);
 	size = get_best_size();
 
-	const tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
+	tpoint scrollbar_size = horizontal_scrollbar_grid_->get_best_size();
+
+	/*
+	 * If the vertical bar is not invisible it's size needs to be added to the
+	 * minimum size.
+	 */
+	if(vertical_scrollbar_grid_->get_visible()
+	   != twidget::tvisible::invisible) {
+
+		scrollbar_size.x += vertical_scrollbar_grid_->get_best_size().x;
+	}
 
 	// If showing the scrollbar increased the width, hide and abort.
 	if(horizontal_scrollbar_mode_ == auto_visible_first_run && scrollbar_size.x

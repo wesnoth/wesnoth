@@ -17,6 +17,8 @@ Version 1.11.15+dev:
    * Fixed error messages about missing UI elements.
  * Language and i18n:
    * Updated translations:
+ * User interface:
+   * Fixed bug #22095: An assertion failure in the gamestate inspector.
  * WML engine:
    * Fixed a regression in 1.11.14 causing WML parser/preprocessor errors to
      not interrupt the game load sequence or display an error message in-game,
