@@ -419,21 +419,26 @@ std::vector<std::string> command_executor::get_menu_images(display& disp, const 
 			str << IMAGE_PREFIX << img << COLUMN_SEPARATOR;
 		}
 
+		const theme::menu* menu = disp.get_theme().get_menu_item(item);
 		if (hk == hotkey::HOTKEY_NULL) {
-			const theme::menu* menu = disp.get_theme().get_menu_item(item);
 			if (menu)
 				str << menu->title();
 			else
 				str << item.substr(0, item.find_last_not_of(' ') + 1) << COLUMN_SEPARATOR;
 		} else {
-			std::string desc = hotkey::get_description(item);
-			if (hk == HOTKEY_ENDTURN) {
-				const theme::action *b = disp.get_theme().get_action_item("button-endturn");
-				if (b) {
-					desc = b->title();
+
+			if (menu)
+				str << menu->title();
+			else {
+				std::string desc = hotkey::get_description(item);
+				if (hk == HOTKEY_ENDTURN) {
+					const theme::action *b = disp.get_theme().get_action_item("button-endturn");
+					if (b) {
+						desc = b->title();
+					}
 				}
+				str << desc << COLUMN_SEPARATOR << hotkey::get_names(item);
 			}
-			str << desc << COLUMN_SEPARATOR << hotkey::get_names(item);
 		}
 
 		result.push_back(str.str());
