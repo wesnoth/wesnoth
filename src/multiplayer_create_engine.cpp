@@ -423,6 +423,13 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		parameters_.difficulty_define = difficulty;
 	}
 
+	state_.classification().campaign = current_level().data()["id"].str();
+	state_.classification().abbrev = current_level().data()["abbrev"].str();
+
+	state_.classification().end_text = current_level().data()["end_text"].str();
+	state_.classification().end_text_duration =
+		current_level().data()["end_text_duration"];
+
 	state_.classification().campaign_define =
 		current_level().data()["define"].str();
 	state_.classification().campaign_xtra_defines =
