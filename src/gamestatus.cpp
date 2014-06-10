@@ -617,7 +617,6 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		classification_(cfg),
 		mp_settings_(cfg)
 {
-	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
 	log_scope("read_game");
 
 	if(cfg.has_child("carryover_sides")){
@@ -759,7 +758,17 @@ void convert_old_saves(config& cfg){
 		LOG_RG<<"removing snapshot \n";
 		cfg.remove_child("snapshot", 0);
 	}
+	//?-1.11.? end
+	//1.12-1.13 begin
 
+	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
+	{
+		if(!carryover_sides_start.has_attribute("next_underlying_unit_id"))
+		{
+			carryover_sides_start["next_underlying_unit_id"] = cfg["next_underlying_unit_id"];
+		}
+	}
+	//1.12-1.13 end
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
 

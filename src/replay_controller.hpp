@@ -98,8 +98,7 @@ private:
 };
 
 
-LEVEL_RESULT play_replay_level(const config& terrain_config,
-		const config* level, CVideo& video,
+LEVEL_RESULT play_replay_level(const config& terrain_config, CVideo& video,
 		game_state& state_of_game, bool is_unit_test = false);
 
 #endif

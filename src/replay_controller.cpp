@@ -45,14 +45,11 @@ static lg::log_domain log_replay("replay");
 possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
 
 LEVEL_RESULT play_replay_level(const config& game_config,
-		const config* level, CVideo& video, game_state& state_of_game, bool is_unit_test)
+		CVideo& video, game_state& state_of_game, bool is_unit_test)
 {
 	const int ticks = SDL_GetTicks();
 
-	config init_level = *level;
-	carryover_info sides(state_of_game.carryover_sides);
-	sides.transfer_to(init_level);
-	state_of_game.carryover_sides = sides.to_config();
+	config init_level = state_of_game.replay_start();
 
 	DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << std::endl;
 

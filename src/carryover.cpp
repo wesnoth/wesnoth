@@ -142,6 +142,7 @@ carryover_info::carryover_info(const config& cfg)
 	, rng_(cfg)
 	, wml_menu_items_()
 	, next_scenario_(cfg["next_scenario"])
+	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
 	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side")){
@@ -185,22 +186,42 @@ void carryover_info::transfer_from(const team& t, int carryover_gold){
 	carryover_sides_.push_back(carryover(t, carryover_gold, end_level_.carryover_add));
 }
 
+
+struct save_id_equals
+{
+	save_id_equals(std::string val) : value (val) {}
+	bool operator () (carryover& v2)
+	{
+		return value == v2.get_save_id();
+	}
+
+	std::string value;
+};
+
 void carryover_info::transfer_all_to(config& side_cfg){
 	if(side_cfg["save_id"].empty()){
 		side_cfg["save_id"] = side_cfg["id"];
 	}
-	BOOST_FOREACH(carryover& side, carryover_sides_){
-		if(side.get_save_id() == side_cfg["save_id"]){
-			side.transfer_all_gold_to(side_cfg);
-			side.transfer_all_recalls_to(side_cfg);
-			side.transfer_all_recruits_to(side_cfg);
-			return;
-		}
+	std::vector<carryover>::iterator iside = std::find_if(
+		carryover_sides_.begin(), 
+		carryover_sides_.end(), 
+		save_id_equals(side_cfg["save_id"])
+	);
+	if(iside != carryover_sides_.end())
+	{
+		iside->transfer_all_gold_to(side_cfg);
+		iside->transfer_all_recalls_to(side_cfg);
+		iside->transfer_all_recruits_to(side_cfg);
+		//TODO: enable the following line after some testing.
+		//carryover_sides_.erase(iside);
+		return;
 	}
-
-	//if no carryover was found for this side, check if starting gold is defined
-	if(!side_cfg.has_attribute("gold") || side_cfg["gold"].empty()){
-		side_cfg["gold"] = default_gold_qty;
+	else
+	{
+		//if no carryover was found for this side, check if starting gold is defined
+		if(!side_cfg.has_attribute("gold") || side_cfg["gold"].empty()){
+			side_cfg["gold"] = default_gold_qty;
+		}
 	}
 }
 
@@ -212,7 +233,10 @@ void carryover_info::transfer_from(game_data& gamedata){
 }
 
 void carryover_info::transfer_to(config& level){
-
+	if(!level.has_attribute("next_underlying_unit_id"))
+	{
+		level["next_underlying_unit_id"] = next_underlying_unit_id_;
+	}
 
 	if(!end_level_.next_scenario_settings.empty()) {
 		level.merge_with(end_level_.next_scenario_settings);
@@ -245,7 +269,7 @@ void carryover_info::transfer_to(config& level){
 const config carryover_info::to_config()
 {
 	config cfg;
-
+	cfg["next_underlying_unit_id"] = next_underlying_unit_id_;
 	cfg["next_scenario"] = next_scenario_;
 
 	BOOST_FOREACH(carryover& c, carryover_sides_){

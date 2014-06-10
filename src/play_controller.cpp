@@ -155,7 +155,8 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::mp_settings = &gamestate_.mp_settings();
 
 	persist_.start_transaction();
-
+	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
+	
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
 	set_defeat_music_list(level_["defeat_music"]);
