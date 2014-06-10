@@ -3067,7 +3067,7 @@ void display::invalidate_animations()
 #pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
 #endif //_OPENMP
 		for(int i=0; i < static_cast<int>(unit_list.size()); i++) {
-			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
+			new_inval |=  unit_list[i]->invalidate(*this,unit_list[i]->get_location());
 		}
 	}while(new_inval);
 }

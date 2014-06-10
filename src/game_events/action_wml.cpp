@@ -945,7 +945,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			resources::screen->invalidate(loc);
 			unit_map::iterator iun = resources::units->find(loc);
 			if ( iun != resources::units->end()  &&  iun.valid() )
-				iun->invalidate(loc);
+				iun->invalidate(*resources::screen, loc);
 		}
 		resources::screen->redraw_minimap();
 

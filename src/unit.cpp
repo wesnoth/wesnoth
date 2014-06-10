@@ -2159,19 +2159,18 @@ void unit::clear_haloes()
 	}
 	if(anim_ ) anim_->clear_haloes();
 }
-bool unit::invalidate(const map_location &loc)
+bool unit::invalidate(const display & disp, const map_location &loc)
 {
 	bool result = false;
 
 	// Very early calls, anim not initialized yet
 	if(get_animation()) {
 		frame_parameters params;
-		const display * disp =  display::get_singleton();
-		const gamemap & map = disp->get_map();
+		const gamemap & map = disp.get_map();
 		const t_translation::t_terrain terrain = map.get_terrain(loc);
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
-		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp->get_zoom_factor());
+		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
 		if (is_flying() && height_adjust < 0) {
 			height_adjust = 0;
 		}
