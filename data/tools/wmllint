@@ -2053,8 +2053,8 @@ def hack_syntax(filename, lines):
             if '~' in lines[i]:
                 tilde = re.search('(^\s*path) *= *([^#]{0,5})(~/?(data/)?add-ons/)', lines[i])
                 if tilde:
-                    lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons' + lines[i][tilde.end():]
-                    print '"%s", line %d: %s -> data/add-ons -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
+                    lines[i] = tilde.group(1) + '=' + tilde.group(2) + 'data/add-ons/' + lines[i][tilde.end():]
+                    print '"%s", line %d: %s -> data/add-ons/ -- [textdomain] and [binary_path] paths do not accept "~" for userdata'\
                           % (filename, i+1, tilde.group(3))
     # some tags do no longer support default side=1 attribute but may use [filter_side]
     # with a SSF instead
