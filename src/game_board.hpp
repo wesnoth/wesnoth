@@ -17,6 +17,7 @@
 
 #include "global.hpp"
 
+#include "display_context.hpp"
 #include "map.hpp"
 #include "team.hpp"
 #include "unit_map.hpp"
@@ -46,7 +47,7 @@ namespace events {
  *
  **/
 
-class game_board {
+class game_board : public display_context {
 
 	std::vector<team> teams_;
 
@@ -82,13 +83,14 @@ class game_board {
 
 	public:
 
-	// Constructors and const accessors
+	// Constructors, trivial dtor, and const accessors
 
 	game_board(const config & game_config, const config & level) : teams_(), map_(game_config, level), units_() {}
+	virtual ~game_board() {}
 
-	const std::vector<team> & teams() const { return teams_; }
-	const gamemap & map() const { return map_; }
-	const unit_map & units() const { return units_; }
+	virtual const std::vector<team> & teams() const { return teams_; }
+	virtual const gamemap & map() const { return map_; }
+	virtual const unit_map & units() const { return units_; }
 
 	// Saving
 
