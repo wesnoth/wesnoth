@@ -357,8 +357,8 @@ void server::handle_request_campaign_list(const server::request& req)
 		after_flag = true;
 	} catch(bad_lexical_cast) {}
 
-	std::string name = req.cfg["name"];
-	std::string lang = req.cfg["language"];
+	const std::string& name = req.cfg["name"];
+	const std::string& lang = req.cfg["language"];
 
 	BOOST_FOREACH(const config& i, campaigns().child_range("campaign"))
 	{
@@ -366,7 +366,7 @@ void server::handle_request_campaign_list(const server::request& req)
 			continue;
 		}
 
-		std::string tm = i["timestamp"];
+		const std::string& tm = i["timestamp"];
 
 		if (before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
 			continue;
@@ -403,7 +403,7 @@ void server::handle_request_campaign_list(const server::request& req)
 
 		// Build a feedback_url string attribute from the
 		// internal [feedback] data.
-		config url_params = j.child_or_empty("feedback");
+		const config& url_params = j.child_or_empty("feedback");
 		j.clear_children("feedback");
 
 		if(!url_params.empty() && !feedback_url_format_.empty()) {
@@ -441,7 +441,7 @@ void server::handle_request_campaign(const server::request& req)
 		// the downloads count. Default to true for compatibility with old
 		// clients that won't tell us what they are trying to do.
 		if(req.cfg["increase_downloads"].to_bool(true)) {
-			int downloads = campaign["downloads"].to_int() + 1;
+			const int downloads = campaign["downloads"].to_int() + 1;
 			campaign["downloads"] = downloads;
 		}
 	}
@@ -578,7 +578,7 @@ void server::handle_upload(const server::request& req)
 			(*campaign).add_child("feedback", url_params);
 		}
 
-		std::string filename = (*campaign)["filename"].str();
+		const std::string& filename = (*campaign)["filename"].str();
 		data["title"] = (*campaign)["title"];
 		data["name"] = "";
 		data["campaign_name"] = (*campaign)["name"];
@@ -696,7 +696,7 @@ int main(int argc, char**argv)
 	try {
 		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
 
-		std::string cfg_path = normalize_path("server.cfg");
+		const std::string& cfg_path = normalize_path("server.cfg");
 
 		if(argc >= 2 && atoi(argv[1])){
 			campaignd::server(cfg_path, atoi(argv[1])).run();
