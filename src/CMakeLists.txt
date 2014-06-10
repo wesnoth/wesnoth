@@ -946,7 +946,6 @@ set(libwesnoth-game_STAT_SRC
 	preferences.cpp
 	preferences_display.cpp
 	race.cpp
-	random.cpp
 	reports.cpp
 	show_dialog.cpp
 	simple_rng.cpp

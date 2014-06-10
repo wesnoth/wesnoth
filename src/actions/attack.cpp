@@ -35,7 +35,6 @@
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../play_controller.hpp"
-#include "../random.hpp"
 #include "../random_new.hpp"
 #include "../replay.hpp"
 #include "../resources.hpp"

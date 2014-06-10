@@ -34,7 +34,6 @@
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../pathfind/pathfind.hpp"
-#include "../random.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
