@@ -187,8 +187,6 @@ void play_controller::init(CVideo& video){
 	}
 
 	loadscreen::start_stage("load level");
-	// i currently assume that no random calls take place before the "prestart" event
-	// If i am wrong, use random_new_deterministic
 	recorder.set_skip(false);
 
 	if (level_["modify_placing"].to_bool()) {
