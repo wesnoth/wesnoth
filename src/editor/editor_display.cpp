@@ -19,9 +19,35 @@
 
 namespace editor {
 
-editor_display::editor_display(unit_map* units, CVideo& video, const editor_map* map,
-		const std::vector<team>* t, const config& theme_cfg, const config& level)
-	: display(units, video, map, t, theme_cfg, level)
+// Define dummy display context;
+
+class dummy_editor_display_context : public display_context 
+{
+	config dummy_cfg1;
+
+	editor_map em;
+	unit_map u;
+	std::vector<team> t;
+
+public:
+	dummy_editor_display_context() : dummy_cfg1(), em(dummy_cfg1), u(), t() {}
+	virtual ~dummy_editor_display_context(){}
+
+	virtual const gamemap & map() const { return em; }
+	virtual const unit_map & units() const { return u; }
+	virtual const std::vector<team> & teams() const { return t; }	
+};
+
+const display_context * get_dummy_display_context() {
+	static const dummy_editor_display_context dedc = dummy_editor_display_context();
+	return &dedc;
+}
+
+// End dummy display context
+
+editor_display::editor_display(const display_context * dc, CVideo& video,
+		const config& theme_cfg, const config& level)
+	: display(dc, video, theme_cfg, level)
 	, brush_locations_()
 	, palette_report_()
 {
@@ -110,7 +136,7 @@ void editor_display::draw_sidebar()
 		refresh_report("position", &element);
 	}
 
-	if (teams_->empty()) {
+	if (dc_->teams().empty()) {
 		text = int(get_map().villages().size());
 		refresh_report("villages", &element);
 	} else {

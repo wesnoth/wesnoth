@@ -64,7 +64,7 @@ std::map<map_location,fixed_t> game_display::debugHighlights_;
 game_display::game_display(game_board& board, CVideo& video,
 		const tod_manager& tod,
 		const config& theme_cfg, const config& level) :
-		display(&board.units_, video, & board.map(), & board.teams(), theme_cfg, level),
+		display(&board, video, theme_cfg, level),
 		overlay_map_(),
 		fake_units_(),
 		attack_indicator_src_(),
@@ -165,15 +165,15 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = resources::gameboard->get_visible_unit(mouseoverHex_, (*teams_)[viewing_team()], !viewpoint_);
+		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !viewpoint_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
-			if (units_->count(selectedHex_)) {
+			if (dc_->units().count(selectedHex_)) {
 				displayedUnitHex_ = selectedHex_;
 				invalidate_unit();
 			}
@@ -192,7 +192,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, (*teams_)[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -209,7 +209,7 @@ void game_display::invalidate_unit_after_move(const map_location& src, const map
 
 void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force)
 {
-	unit_map::const_iterator leader = units_->find_leader(side);
+	unit_map::const_iterator leader = dc_->units().find_leader(side);
 
 	if(leader.valid()) {
 		// YogiHH: I can't see why we need another key_handler here,
@@ -279,7 +279,7 @@ void game_display::draw_hex(const map_location& loc)
 
 	if(on_map && loc == mouseoverHex_) {
 		tdrawing_layer hex_top_layer = LAYER_MOUSEOVER_BOTTOM;
-		const unit *u = resources::gameboard->get_visible_unit(loc, (*teams_)[viewing_team()] );
+		const unit *u = resources::gameboard->get_visible_unit(loc, dc_->teams()[viewing_team()] );
 		if( u != NULL ) {
 			hex_top_layer = LAYER_MOUSEOVER_TOP;
 		}
@@ -288,12 +288,12 @@ void game_display::draw_hex(const map_location& loc)
 					image::get_image("misc/hover-hex-top.png~RC(magenta>gold)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-bottom.png~RC(magenta>gold)", image::SCALED_TO_HEX));
-		} else if((*teams_)[currentTeam_].is_enemy(u->side())) {
+		} else if(dc_->teams()[currentTeam_].is_enemy(u->side())) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-enemy-top.png~RC(magenta>red)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-enemy-bottom.png~RC(magenta>red)", image::SCALED_TO_HEX));
-		} else if((*teams_)[currentTeam_].side() == u->side()) {
+		} else if(dc_->teams()[currentTeam_].side() == u->side()) {
 			drawing_buffer_add( hex_top_layer, loc, xpos, ypos,
 					image::get_image("misc/hover-hex-top.png~RC(magenta>green)", image::SCALED_TO_HEX));
 			drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM, loc, xpos, ypos,
@@ -416,8 +416,8 @@ void game_display::draw_movement_info(const map_location& loc)
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
 				resources::whiteboard->get_temp_move_unit().valid() ?
-						resources::whiteboard->get_temp_move_unit() : units_->find(route_.steps.front());
-		if(un != units_->end()) {
+						resources::whiteboard->get_temp_move_unit() : dc_->units().find(route_.steps.front());
+		if(un != dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -463,7 +463,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	{
 		const unit_map::const_iterator selectedUnit = resources::gameboard->find_visible_unit(selectedHex_,resources::teams->at(currentTeam_));
 		const unit_map::const_iterator mouseoveredUnit = resources::gameboard->find_visible_unit(mouseoverHex_,resources::teams->at(currentTeam_));
-		if(selectedUnit != units_->end() && mouseoveredUnit == units_->end()) {
+		if(selectedUnit != dc_->units().end() && mouseoveredUnit == dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - selectedUnit->defense_modifier(get_map().get_terrain(loc));
 			std::stringstream def_text;
@@ -503,8 +503,8 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 
 	// Check which footsteps images of game_config we will use
 	int move_cost = 1;
-	const unit_map::const_iterator u = units_->find(route_.steps.front());
-	if(u != units_->end()) {
+	const unit_map::const_iterator u = dc_->units().find(route_.steps.front());
+	if(u != dc_->units().end()) {
 		move_cost = u->movement_cost(get_map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
@@ -757,7 +757,7 @@ std::string game_display::current_team_name() const
 {
 	if (team_valid())
 	{
-		return (*teams_)[currentTeam_].team_name();
+		return dc_->teams()[currentTeam_].team_name();
 	}
 	return std::string();
 }
@@ -989,12 +989,12 @@ void game_display::send_notification(const std::string& /*owner*/, const std::st
 
 void game_display::set_team(size_t teamindex, bool show_everything)
 {
-	assert(teamindex < teams_->size());
+	assert(teamindex < dc_->teams().size());
 	currentTeam_ = teamindex;
 	if (!show_everything)
 	{
-		labels().set_team(&(*teams_)[teamindex]);
-		viewpoint_ = &(*teams_)[teamindex];
+		labels().set_team(&dc_->teams()[teamindex]);
+		viewpoint_ = &dc_->teams()[teamindex];
 	}
 	else
 	{
@@ -1008,7 +1008,7 @@ void game_display::set_team(size_t teamindex, bool show_everything)
 
 void game_display::set_playing_team(size_t teamindex)
 {
-	assert(teamindex < teams_->size());
+	assert(teamindex < dc_->teams().size());
 	activeTeam_ = teamindex;
 	invalidate_game_status();
 }

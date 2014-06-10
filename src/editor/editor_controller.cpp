@@ -56,12 +56,11 @@ static std::vector<std::string> saved_windows_;
 
 namespace editor {
 
-
 editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base()
 	, active_menu_(editor::MAP)
-	, gui_(new editor_display(NULL, video, NULL, NULL, get_theme(game_config, "editor"), config()))
+	, gui_(new editor_display(editor::get_dummy_display_context(), video, get_theme(game_config, "editor"), config()))
 	, tods_()
 	, context_manager_(new context_manager(*gui_.get(), game_config_))
 	, toolkit_(NULL)
@@ -90,9 +89,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video)
 
 void editor_controller::init_gui()
 {
-	gui_->change_map(&context_manager_->get_map());
-	gui_->change_units(&context_manager_->get_map_context().get_units());
-	gui_->change_teams(&context_manager_->get_map_context().get_teams());
+	gui_->change_display_context(&context_manager_->get_map_context());
 	gui_->set_grid(preferences::grid());
 	prefs_disp_manager_.reset(new preferences::display_manager(&gui()));
 	gui_->add_redraw_observer(boost::bind(&editor_controller::display_redraw_callback, this, _1));
