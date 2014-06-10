@@ -40,6 +40,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 	if(!recorder.at_end() && store_in_replay)
 	{
 		//Most likeley we are in a replay now.
+		//We don't want to execute [do_command] & similar now
 		WRN_REPLAY << "invalid run_in_synced_context call ignored" << std::endl;
 		return false;
 	}
