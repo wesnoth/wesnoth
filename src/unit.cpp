@@ -1803,7 +1803,7 @@ const surface unit::still_image(bool scaled) const
 	return unit_image;
 }
 
-void unit::set_standing(bool with_bars)
+void unit::set_standing(bool with_bars) const
 {
 	display *disp = display::get_singleton();
 	if (preferences::show_standing_animations()&& !incapacitated()) {
@@ -1815,28 +1815,28 @@ void unit::set_standing(bool with_bars)
 	}
 }
 
-void unit::set_ghosted(bool with_bars)
+void unit::set_ghosted(bool with_bars) const
 {
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
 			with_bars);
 }
 
-void unit::set_disabled_ghosted(bool with_bars)
+void unit::set_disabled_ghosted(bool with_bars) const
 {
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "disabled_ghosted"),
 			with_bars);
 }
 
-void unit::set_idling()
+void unit::set_idling() const
 {
 	display *disp = display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "idling"),
 		true, "", 0, STATE_FORGET);
 }
 
-void unit::set_selecting()
+void unit::set_selecting() const
 {
 	const display *disp =  display::get_singleton();
 	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
@@ -1848,8 +1848,8 @@ void unit::set_selecting()
 	}
 }
 
-void unit::start_animation(int start_time, const unit_animation *animation,
-	bool with_bars,  const std::string &text, Uint32 text_color, STATE state)
+void unit::start_animation (int start_time, const unit_animation *animation,
+	bool with_bars,  const std::string &text, Uint32 text_color, STATE state) const
 {
 	const display * disp =  display::get_singleton();
 	if (!animation) {
@@ -1884,7 +1884,7 @@ void unit::set_facing(map_location::DIRECTION dir) {
 	// Else look at yourself (not available so continue to face the same direction)
 }
 
-void unit::redraw_unit()
+void unit::redraw_unit () const
 {
 	display &disp = *display::get_singleton();
 	const gamemap &map = disp.get_map();
@@ -2151,7 +2151,7 @@ void unit::redraw_unit()
 	refreshing_ = false;
 }
 
-void unit::clear_haloes()
+void unit::clear_haloes () const
 {
 	if(unit_halo_ != halo::NO_HALO) {
 		halo::remove(unit_halo_);
@@ -2159,7 +2159,7 @@ void unit::clear_haloes()
 	}
 	if(anim_ ) anim_->clear_haloes();
 }
-bool unit::invalidate(const display & disp)
+bool unit::invalidate (const display & disp) const
 {
 	bool result = false;
 
@@ -3026,7 +3026,7 @@ int side_upkeep(int side)
 	return res;
 }
 
-void unit::refresh()
+void unit::refresh() const
 {
 	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
 	{
