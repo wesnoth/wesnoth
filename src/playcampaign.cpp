@@ -189,16 +189,15 @@ LEVEL_RESULT play_replay(display& disp, game_state& gamestate, const config& gam
 {
 	const std::string campaign_type_str = lexical_cast<std::string> (gamestate.classification().campaign_type);
 
-	// 'starting_pos' will contain the position we start the game from.
-	config starting_pos;
-
 	if (gamestate.replay_start().empty()){
 		// Backwards compatibility code for 1.2 and 1.2.1
 		const config &scenario = game_config.find_child(campaign_type_str,"id",gamestate.carryover_sides_start["next_scenario"]);
 		assert(scenario);
 		gamestate.replay_start() = scenario;
 	}
-	starting_pos = gamestate.replay_start();
+
+	// 'starting_pos' will contain the position we start the game from.
+	const config& starting_pos = gamestate.replay_start();
 
 	//for replays, use the variables specified in starting_pos
 	if (const config &vars = starting_pos.child("variables")) {
@@ -212,7 +211,7 @@ LEVEL_RESULT play_replay(display& disp, game_state& gamestate, const config& gam
 		//if (gamestate.abbrev.empty())
 		//	gamestate.abbrev = (*scenario)["abbrev"];
 
-		LEVEL_RESULT res = play_replay_level(game_config, &starting_pos, video, gamestate, is_unit_test);
+		LEVEL_RESULT res = play_replay_level(game_config, video, gamestate, is_unit_test);
 
 		gamestate.snapshot = config();
 		recorder.clear();
