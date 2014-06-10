@@ -270,6 +270,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 	end_level = playcontroller.get_end_level_data_const();
 	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
+	state_of_game.carryover_sides["next_underlying_unit_id"] = int(n_unit::id_manager::instance().get_save_id());
 	end_level.write(cfg_end_level);
 
 	if (res != QUIT)
@@ -312,6 +313,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	end_level = playcontroller.get_end_level_data_const();
 	config& cfg_end_level = state_of_game.carryover_sides.child_or_add("end_level_data");
 	end_level.write(cfg_end_level);
+	state_of_game.carryover_sides["next_underlying_unit_id"] = int(n_unit::id_manager::instance().get_save_id());
 
 	//Check if the player started as mp client and changed to host
 	if (io_type == IO_CLIENT && playcontroller.is_host())

@@ -142,6 +142,7 @@ carryover_info::carryover_info(const config& cfg)
 	, rng_(cfg)
 	, wml_menu_items_()
 	, next_scenario_(cfg["next_scenario"])
+	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
 	end_level_.read(cfg.child_or_empty("end_level_data"));
 	BOOST_FOREACH(const config& side, cfg.child_range("side")){
@@ -212,7 +213,10 @@ void carryover_info::transfer_from(game_data& gamedata){
 }
 
 void carryover_info::transfer_to(config& level){
-
+	if(!level.has_attribute("next_underlying_unit_id"))
+	{
+		level["next_underlying_unit_id"] = next_underlying_unit_id_;
+	}
 
 	if(!end_level_.next_scenario_settings.empty()) {
 		level.merge_with(end_level_.next_scenario_settings);
@@ -245,7 +249,7 @@ void carryover_info::transfer_to(config& level){
 const config carryover_info::to_config()
 {
 	config cfg;
-
+	cfg["next_underlying_unit_id"] = next_underlying_unit_id_;
 	cfg["next_scenario"] = next_scenario_;
 
 	BOOST_FOREACH(carryover& c, carryover_sides_){

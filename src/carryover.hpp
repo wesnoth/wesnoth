@@ -63,6 +63,7 @@ public:
 		, rng_()
 		, wml_menu_items_()
 		, next_scenario_()
+		, next_underlying_unit_id_()
 	{}
 	// Turns config from a loaded savegame into carryover_info
 	explicit carryover_info(const config& cfg);
@@ -100,6 +101,7 @@ private:
 	rand_rng::simple_rng rng_;
 	game_events::wmi_container wml_menu_items_;
 	std::string next_scenario_;    /**< the scenario coming next (for campaigns) */
+	int next_underlying_unit_id_;
 };
 
 
