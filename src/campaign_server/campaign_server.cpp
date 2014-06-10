@@ -136,7 +136,7 @@ int server::load_config()
 	hooks_.insert(std::make_pair(std::string("hook_post_erase"), cfg_["hook_post_erase"]));
 
 	// Open the control socket if enabled.
-	if (!cfg_["control_socket"].empty()) {
+	if(!cfg_["control_socket"].empty()) {
 		input_.reset(new input_stream(cfg_["control_socket"]));
 	}
 
@@ -244,7 +244,7 @@ void server::run()
 	{
 		try {
 			std::string admin_cmd;
-			if (input_ && input_->read_line(admin_cmd))
+			if(input_ && input_->read_line(admin_cmd))
 			{
 				// process command
 				if (admin_cmd == "shut_down")
@@ -356,27 +356,45 @@ void server::handle_request_campaign_list(const server::request& req)
 		after_flag = true;
 	} catch(bad_lexical_cast) {}
 
-	std::string name = req.cfg["name"], lang = req.cfg["language"];
-	BOOST_FOREACH(const config &i, campaigns().child_range("campaign"))
+	std::string name = req.cfg["name"];
+	std::string lang = req.cfg["language"];
+
+	BOOST_FOREACH(const config& i, campaigns().child_range("campaign"))
 	{
-		if (!name.empty() && name != i["name"]) continue;
+		if(!name.empty() && name != i["name"]) {
+			continue;
+		}
+
 		std::string tm = i["timestamp"];
-		if (before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) continue;
-		if (after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) continue;
-		if (!lang.empty()) {
+
+		if (before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
+			continue;
+		}
+		if (after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) {
+			continue;
+		}
+
+		if(!lang.empty()) {
 			bool found = false;
-			BOOST_FOREACH(const config &j, i.child_range("translation")) {
+
+			BOOST_FOREACH(const config &j, i.child_range("translation"))
+			{
 				if (j["language"] == lang) {
 					found = true;
 					break;
 				}
 			}
-			if (!found) continue;
+
+			if (!found) {
+				continue;
+			}
 		}
+
 		campaign_list.add_child("campaign", i);
 	}
 
-	BOOST_FOREACH(config &j, campaign_list.child_range("campaign")) {
+	BOOST_FOREACH(config& j, campaign_list.child_range("campaign"))
+	{
 		j["passphrase"] = "";
 		j["upload_ip"] = "";
 		j["email"] = "";
@@ -393,7 +411,7 @@ void server::handle_request_campaign_list(const server::request& req)
 	}
 
 	config response;
-	response.add_child("campaigns",campaign_list);
+	response.add_child("campaigns", campaign_list);
 
 	std::cerr << " size: " << (network::send_data(response, req.sock)/1024) << "KiB\n";
 }
@@ -401,8 +419,10 @@ void server::handle_request_campaign_list(const server::request& req)
 void server::handle_request_campaign(const server::request& req)
 {
 	LOG_CS << "sending campaign '" << req.cfg["name"] << "' to " << req.addr << " using gzip";
-	config &campaign = campaigns().find_child("campaign", "name", req.cfg["name"]);
-	if (!campaign) {
+
+	config& campaign = campaigns().find_child("campaign", "name", req.cfg["name"]);
+
+	if(!campaign) {
 		send_error("Add-on '" + req.cfg["name"].str() + "' not found.", req.sock);
 	} else {
 		const int size = file_size(campaign["filename"]);
@@ -452,52 +472,54 @@ void server::handle_upload(const server::request& req)
 	const std::string& lc_name = utils::lowercase(name);
 
 	config *campaign = NULL;
-	BOOST_FOREACH(config &c, campaigns().child_range("campaign")) {
-		if (utils::lowercase(c["name"]) == lc_name) {
+
+	BOOST_FOREACH(config &c, campaigns().child_range("campaign"))
+	{
+		if(utils::lowercase(c["name"]) == lc_name) {
 			campaign = &c;
 			break;
 		}
 	}
 
-	if (read_only_) {
+	if(read_only_) {
 		LOG_CS << "Upload aborted - uploads not permitted in read-only mode.\n";
 		send_error("Add-on rejected: The server is currently in read-only mode.", req.sock);
-	} else if (!data) {
+	} else if(!data) {
 		LOG_CS << "Upload aborted - no add-on data.\n";
 		send_error("Add-on rejected: No add-on data was supplied.", req.sock);
-	} else if (!addon_name_legal(upload["name"])) {
+	} else if(!addon_name_legal(upload["name"])) {
 		LOG_CS << "Upload aborted - invalid add-on name.\n";
 		send_error("Add-on rejected: The name of the add-on is invalid.", req.sock);
-	} else if (is_text_markup_char(upload["name"].str()[0])) {
+	} else if(is_text_markup_char(upload["name"].str()[0])) {
 		LOG_CS << "Upload aborted - add-on name starts with an illegal formatting character.\n";
 		send_error("Add-on rejected: The name of the add-on starts with an illegal formatting character.", req.sock);
-	} else if (upload["title"].empty()) {
+	} else if(upload["title"].empty()) {
 		LOG_CS << "Upload aborted - no add-on title specified.\n";
 		send_error("Add-on rejected: You did not specify the title of the add-on in the pbl file!", req.sock);
-	} else if (is_text_markup_char(upload["title"].str()[0])) {
+	} else if(is_text_markup_char(upload["title"].str()[0])) {
 		LOG_CS << "Upload aborted - add-on title starts with an illegal formatting character.\n";
 		send_error("Add-on rejected: The title of the add-on starts with an illegal formatting character.", req.sock);
-	} else if (get_addon_type(upload["type"]) == ADDON_UNKNOWN) {
+	} else if(get_addon_type(upload["type"]) == ADDON_UNKNOWN) {
 		LOG_CS << "Upload aborted - unknown add-on type specified.\n";
 		send_error("Add-on rejected: You did not specify a known type for the add-on in the pbl file! (See PblWML: wiki.wesnoth.org/PblWML)", req.sock);
-	} else if (upload["author"].empty()) {
+	} else if(upload["author"].empty()) {
 		LOG_CS << "Upload aborted - no add-on author specified.\n";
 		send_error("Add-on rejected: You did not specify the author(s) of the add-on in the pbl file!", req.sock);
-	} else if (upload["version"].empty()) {
+	} else if(upload["version"].empty()) {
 		LOG_CS << "Upload aborted - no add-on version specified.\n";
 		send_error("Add-on rejected: You did not specify the version of the add-on in the pbl file!", req.sock);
-	} else if (upload["description"].empty()) {
+	} else if(upload["description"].empty()) {
 		LOG_CS << "Upload aborted - no add-on description specified.\n";
 		send_error("Add-on rejected: You did not specify a description of the add-on in the pbl file!", req.sock);
-	} else if (upload["email"].empty()) {
+	} else if(upload["email"].empty()) {
 		LOG_CS << "Upload aborted - no add-on email specified.\n";
 		send_error("Add-on rejected: You did not specify your email address in the pbl file!", req.sock);
-	} else if (!check_names_legal(data)) {
+	} else if(!check_names_legal(data)) {
 		LOG_CS << "Upload aborted - invalid file names in add-on data.\n";
 		send_error("Add-on rejected: The add-on contains an illegal file or directory name."
 				   " File or directory names may not contain whitespace or any of the following characters: '/ \\ : ~'",
 				   req.sock);
-	} else if (campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
+	} else if(campaign && (*campaign)["passphrase"].str() != upload["passphrase"]) {
 		LOG_CS << "Upload aborted - incorrect passphrase.\n";
 		send_error("Add-on rejected: The add-on already exists, and your passphrase was incorrect.", req.sock);
 	} else {
@@ -519,7 +541,7 @@ void server::handle_upload(const server::request& req)
 
 		std::string message = "Add-on accepted.";
 
-		if (!version_info(upload["version"]).good()) {
+		if(!version_info(upload["version"]).good()) {
 			message += "\n<255,255,0>Note: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
 		}
 
@@ -555,7 +577,7 @@ void server::handle_upload(const server::request& req)
 			(*campaign).add_child("feedback", url_params);
 		}
 
-		std::string filename = (*campaign)["filename"];
+		std::string filename = (*campaign)["filename"].str();
 		data["title"] = (*campaign)["title"];
 		data["name"] = "";
 		data["campaign_name"] = (*campaign)["name"];
@@ -598,29 +620,30 @@ void server::handle_delete(const server::request& req)
 	}
 
 	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
+
 	const config &campaign = campaigns().find_child("campaign", "name", erase["name"]);
-	if (!campaign) {
+
+	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
 		return;
 	}
 
-	if (campaign["passphrase"] != erase["passphrase"]
-			&& (campaigns()["master_password"].empty()
-			|| campaigns()["master_password"] != erase["passphrase"]))
+	if(campaign["passphrase"] != erase["passphrase"]
+	   && (campaigns()["master_password"].empty()
+	   || campaigns()["master_password"] != erase["passphrase"]))
 	{
 		send_error("The passphrase is incorrect.", req.sock);
 		return;
 	}
 
-	//erase the campaign
+	// Erase the campaign.
 	write_file(campaign["filename"], std::string());
 	remove(campaign["filename"].str().c_str());
 
 	config::child_itors itors = campaigns().child_range("campaign");
-	for (size_t index = 0; itors.first != itors.second;
-	     ++index, ++itors.first)
+	for(size_t index = 0; itors.first != itors.second; ++index, ++itors.first)
 	{
-		if (&campaign == &*itors.first) {
+		if(&campaign == &*itors.first) {
 			campaigns().remove_child("campaign", index);
 			break;
 		}
@@ -644,12 +667,13 @@ void server::handle_change_passphrase(const server::request& req)
 		return;
 	}
 
-	config &campaign = campaigns().find_child("campaign", "name", cpass["name"]);
-	if (!campaign) {
+	config& campaign = campaigns().find_child("campaign", "name", cpass["name"]);
+
+	if(!campaign) {
 		send_error("No add-on with that name exists.", req.sock);
-	} else if (campaign["passphrase"] != cpass["passphrase"]) {
+	} else if(campaign["passphrase"] != cpass["passphrase"]) {
 		send_error("Your old passphrase was incorrect.", req.sock);
-	} else if (cpass["new_passphrase"].empty()) {
+	} else if(cpass["new_passphrase"].empty()) {
 		send_error("No new passphrase was supplied.", req.sock);
 	} else {
 		campaign["passphrase"] = cpass["new_passphrase"];
@@ -665,13 +689,17 @@ void server::handle_change_passphrase(const server::request& req)
 int main(int argc, char**argv)
 {
 	game_config::path = get_cwd();
+
 	lg::timestamps(true);
+
 	try {
 		printf("argc %d argv[0] %s 1 %s\n",argc,argv[0],argv[1]);
+
 		std::string cfg_path = normalize_path("server.cfg");
+
 		if(argc >= 2 && atoi(argv[1])){
 			campaignd::server(cfg_path, atoi(argv[1])).run();
-		}else {
+		} else {
 			campaignd::server(cfg_path).run();
 		}
 	} catch(config::error& /*e*/) {
@@ -684,5 +712,6 @@ int main(int argc, char**argv)
 		std::cerr << "Aborted with network error: " << e.message << '\n';
 		return 3;
 	}
+
 	return 0;
 }
