@@ -774,10 +774,6 @@ int main(int argc, char** argv)
 	} catch(game::error &) {
 		// A message has already been displayed.
 		return 1;
-	} catch(std::ios::failure &) {
-		// This is required mainly for when compiling with Microsoft Visual C++ Compiler
-		// so that the game will not crash with a Runtime Error
-		return 1;
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
