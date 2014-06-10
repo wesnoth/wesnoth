@@ -411,7 +411,7 @@ public:
 	  * helper function for invalidate_animations
 	  * returns a list of units to check for invalidation
 	  */
-	virtual std::vector<unit*> get_unit_list_for_invalidation();
+	virtual std::vector<const unit*> get_unit_list_for_invalidation();
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()

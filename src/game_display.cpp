@@ -620,9 +620,9 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-std::vector<unit*> game_display::get_unit_list_for_invalidation() {
-	std::vector<unit*> unit_list = display::get_unit_list_for_invalidation();;
-	BOOST_FOREACH(unit *u, fake_units_) {
+std::vector<const unit*> game_display::get_unit_list_for_invalidation() {
+	std::vector<const unit*> unit_list = display::get_unit_list_for_invalidation();;
+	BOOST_FOREACH(const unit *u, fake_units_) {
 		unit_list.push_back(u);
 	}
 	return unit_list;;
