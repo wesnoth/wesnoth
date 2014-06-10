@@ -261,7 +261,7 @@ public:
 	void set_idling() const;
 	void set_selecting() const;
 	unit_animation* get_animation() const {  return anim_.get();}
-	void set_facing(map_location::DIRECTION dir);
+	void set_facing(map_location::DIRECTION dir) const;
 	map_location::DIRECTION facing() const { return facing_; }
 
 	bool invalidate(const display & disp) const;
@@ -281,7 +281,7 @@ public:
 	int upkeep() const;
 	bool loyal() const;
 
-	void set_hidden(bool state);
+	void set_hidden(bool state) const;
 	bool get_hidden() const { return hidden_; }
 	bool is_flying() const { return movement_type_.is_flying(); }
 	bool is_fearless() const { return is_fearless_; }
@@ -494,8 +494,8 @@ private:
 
 	std::string role_;
 	std::vector<attack_type> attacks_;
-	map_location::DIRECTION facing_;
-
+	mutable map_location::DIRECTION facing_; //TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable
+						 //But it's not easy to separate this guy from the animation code right now.
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
 
@@ -516,7 +516,7 @@ private:
 	mutable int unit_halo_; // flag used for drawing / animation
 	bool getsHit_;
 	mutable bool refreshing_; // avoid infinite recursion. flag used for drawing / animation
-	bool hidden_;
+	mutable bool hidden_;
 	mutable bool draw_bars_; // flag used for drawing / animation
 	double hp_bar_scaling_, xp_bar_scaling_;
 

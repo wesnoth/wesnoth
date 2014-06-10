@@ -1877,7 +1877,7 @@ void unit::start_animation (int start_time, const unit_animation *animation,
 }
 
 
-void unit::set_facing(map_location::DIRECTION dir) {
+void unit::set_facing(map_location::DIRECTION dir) const {
 	if(dir != map_location::NDIRECTIONS) {
 		facing_ = dir;
 	}
@@ -3118,7 +3118,7 @@ void unit::remove_movement_ai()
 }
 
 
-void unit::set_hidden(bool state) {
+void unit::set_hidden(bool state) const {
 	hidden_ = state;
 	if(!state) return;
 	// We need to get rid of haloes immediately to avoid display glitches
