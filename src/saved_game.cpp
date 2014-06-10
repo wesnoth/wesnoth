@@ -154,7 +154,16 @@ static void convert_old_saves(config& cfg){
 		LOG_RG<<"removing snapshot \n";
 		cfg.remove_child("snapshot", 0);
 	}
-
+	//?-1.11.? end
+	//1.12-1.13 begin
+	if(config& carryover_sides_start = cfg.child("carryover_sides_start"))
+	{
+		if(!carryover_sides_start.has_attribute("next_underlying_unit_id"))
+		{
+			carryover_sides_start["next_underlying_unit_id"] = cfg["next_underlying_unit_id"];
+		}
+	}
+	//1.12-1.13 end
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
 
