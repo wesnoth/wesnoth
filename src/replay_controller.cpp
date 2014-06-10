@@ -308,6 +308,9 @@ void replay_controller::reset_replay()
 	recorder.set_skip(false);
 	gamestate_ = gamestate_start_;
 	gameboard_ = gameboard_start_;
+	gui_->change_display_context(&gameboard_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
+						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
+						   //of game_board changes in the future
 	if (events_manager_ ){
 		// NOTE: this double reset is required so that the new
 		// instance of game_events::manager isn't created before the
