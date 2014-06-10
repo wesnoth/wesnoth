@@ -2554,7 +2554,7 @@ void display::draw_invalidated() {
 	invalidated_hexes_ += invalidated_.size();
 
 	BOOST_FOREACH(const map_location& loc, invalidated_) {
-		unit_map::iterator u_it = units_->find(loc);
+		unit_map::const_iterator u_it = units_->find(loc);
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (u_it != units_->end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
