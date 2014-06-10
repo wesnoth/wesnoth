@@ -113,6 +113,10 @@ int server::load_config()
 
 	read_only_ = cfg_["read_only"].to_bool(false);
 
+	if(read_only_) {
+		LOG_CS << "READ-ONLY MODE ACTIVE\n";
+	}
+
 	const bool use_system_sendfile = cfg_["network_use_system_sendfile"].to_bool();
 	network_worker_pool::set_use_system_sendfile(use_system_sendfile);
 
@@ -232,10 +236,6 @@ void server::send_error(const std::string& msg, network::connection sock)
 
 void server::run()
 {
-	if(read_only_) {
-		LOG_CS << "READ-ONLY MODE ACTIVE\n";
-	}
-
 	network::connection sock = 0;
 
 	time_t last_ts = time(NULL);
