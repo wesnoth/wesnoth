@@ -407,7 +407,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 		}
 		if(!secondary_unit_filter_.empty()) {
 			unit_map::const_iterator unit;
-			for(unit=disp.get_const_units().begin() ; unit != disp.get_const_units().end() ; ++unit) {
+			for(unit=disp.get_units().begin() ; unit != disp.get_units().end() ; ++unit) {
 				if (unit->get_location() == second_loc) {
 					std::vector<config>::const_iterator second_itor;
 					for(second_itor = secondary_unit_filter_.begin(); second_itor != secondary_unit_filter_.end(); ++second_itor) {
@@ -418,7 +418,7 @@ int unit_animation::matches(const display &disp,const map_location& loc,const ma
 					break;
 				}
 			}
-			if(unit == disp.get_const_units().end()) return MATCH_FAIL;
+			if(unit == disp.get_units().end()) return MATCH_FAIL;
 		}
 
 	} else if (!unit_filter_.empty()) return MATCH_FAIL;
@@ -1262,7 +1262,7 @@ void unit_animation::particule::start_animation(int start_time)
 
 
 
-void unit_animator::add_animation(unit* animated_unit
+void unit_animator::add_animation(const unit* animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location &dst
@@ -1290,7 +1290,7 @@ void unit_animator::add_animation(unit* animated_unit
 	animated_units_.push_back(tmp);
 }
 
-void unit_animator::add_animation(unit* animated_unit
+void unit_animator::add_animation(const unit* animated_unit
 		, const unit_animation* anim
 		, const map_location &src
 		, bool with_bars
@@ -1311,7 +1311,7 @@ void unit_animator::add_animation(unit* animated_unit
 	animated_units_.push_back(tmp);
 }
 
-void unit_animator::replace_anim_if_invalid(unit* animated_unit
+void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 		, const std::string& event
 		, const map_location &src
 		, const map_location & dst

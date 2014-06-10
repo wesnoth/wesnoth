@@ -111,7 +111,8 @@ void unit_sheath_weapon( const map_location& loc, unit* u=NULL, const attack_typ
  *  @retval	true                  if the defending unit is dead, should be
  *                                removed from the playing field.
  */
-void unit_attack(const map_location& a, const map_location& b, int damage,
+void unit_attack(display * disp, game_board & board, //TODO: Would be nice if this could be purely a display function and defer damage dealing to its caller
+	const map_location& a, const map_location& b, int damage,
 	const attack_type& attack, const attack_type* secondary_attack,
 	int swing, std::string hit_text, int drain_amount, std::string att_text);
 

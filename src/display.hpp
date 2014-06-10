@@ -96,8 +96,7 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	unit_map& get_units() {return *const_cast<unit_map *> (units_);} //TODO: remove this when callers have been refactored not to require the non-const
-	const unit_map& get_const_units() const {return *units_;}
+	const unit_map& get_units() const {return *units_;}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
