@@ -17,6 +17,7 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
@@ -562,17 +563,16 @@ void unit_die(const map_location& loc, unit& loser,
 }
 
 
-void unit_attack(
+void unit_attack(display * disp, game_board & board,
                  const map_location& a, const map_location& b, int damage,
                  const attack_type& attack, const attack_type* secondary_attack,
 		  int swing,std::string hit_text,int drain_amount,std::string att_text)
 {
-	display* disp = display::get_singleton();
 	if(!disp ||disp->video().update_locked() || disp->video().faked() ||
 			(disp->fogged(a) && disp->fogged(b)) || preferences::show_combat() == false) {
 		return;
 	}
-	unit_map& units = disp->get_units();
+	//const unit_map& units = disp->get_units();
 	disp->select_hex(map_location::null_location());
 
 	// scroll such that there is at least half a hex spacing around fighters
@@ -580,12 +580,12 @@ void unit_attack(
 
 	log_scope("unit_attack");
 
-	const unit_map::iterator att = units.find(a);
-	assert(att != units.end());
-	unit& attacker = *att;
+	const unit_map::const_iterator att = board.units().find(a);
+	assert(att.valid());
+	const unit& attacker = *att;
 
-	const unit_map::iterator def = units.find(b);
-	assert(def != units.end());
+	const unit_map::iterator def = board.find_unit(b);
+	assert(def.valid());
 	unit &defender = *def;
 	int def_hitpoints = defender.hitpoints();
 
@@ -624,8 +624,8 @@ void unit_attack(
 	BOOST_FOREACH (const unit_ability & ability, leaders) {
 		if(ability.second == a) continue;
 		if(ability.second == b) continue;
-		unit_map::iterator leader = units.find(ability.second);
-		assert(leader != units.end());
+		unit_map::const_iterator leader = board.units().find(ability.second);
+		assert(leader.valid());
 		leader->set_facing(ability.second.get_relative_dir(a));
 		animator.add_animation(&*leader, "leading", ability.second,
 			att->get_location(), damage, true,  "", 0,
@@ -634,8 +634,8 @@ void unit_attack(
 	BOOST_FOREACH (const unit_ability & ability, helpers) {
 		if(ability.second == a) continue;
 		if(ability.second == b) continue;
-		unit_map::iterator helper = units.find(ability.second);
-		assert(helper != units.end());
+		unit_map::const_iterator helper = board.units().find(ability.second);
+		assert(helper.valid());
 		helper->set_facing(ability.second.get_relative_dir(b));
 		animator.add_animation(&*helper, "resistance", ability.second,
 			def->get_location(), damage, true,  "", 0,
@@ -666,11 +666,11 @@ void unit_attack(
 void reset_helpers(const unit *attacker,const unit *defender)
 {
 	display* disp = display::get_singleton();
-	unit_map& units = disp->get_units();
+	const unit_map& units = disp->get_units();
 	if(attacker) {
 		unit_ability_list leaders = attacker->get_abilities("leadership");
 		BOOST_FOREACH (const unit_ability & ability, leaders) {
-			unit_map::iterator leader = units.find(ability.second);
+			unit_map::const_iterator leader = units.find(ability.second);
 			assert(leader != units.end());
 			leader->set_standing();
 		}
@@ -679,7 +679,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 	if(defender) {
 		unit_ability_list helpers = defender->get_abilities("resistance");
 		BOOST_FOREACH (const unit_ability & ability, helpers) {
-			unit_map::iterator helper = units.find(ability.second);
+			unit_map::const_iterator helper = units.find(ability.second);
 			assert(helper != units.end());
 			helper->set_standing();
 		}
@@ -690,13 +690,13 @@ void unit_recruited(const map_location& loc,const map_location& leader_loc)
 {
 	game_display* disp = game_display::get_singleton();
 	if(!disp || disp->video().update_locked() || disp->video().faked() ||disp->fogged(loc)) return;
-	unit_map::iterator u = disp->get_units().find(loc);
+	unit_map::const_iterator u = disp->get_units().find(loc);
 	if(u == disp->get_units().end()) return;
 	u->set_hidden(true);
 
 	unit_animator animator;
 	if(leader_loc != map_location::null_location()) {
-		unit_map::iterator leader = disp->get_units().find(leader_loc);
+		unit_map::const_iterator leader = disp->get_units().find(leader_loc);
 		if(leader == disp->get_units().end()) return;
 		disp->scroll_to_tiles(loc,leader_loc,game_display::ONSCREEN,true,0.0,false);
 		leader->set_facing(leader_loc.get_relative_dir(loc));

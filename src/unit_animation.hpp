@@ -155,13 +155,13 @@ class unit_animator
 		}
 
 
-		void add_animation(unit* animated_unit
+		void add_animation(const unit* animated_unit
 				, const unit_animation * animation
 				, const map_location &src = map_location::null_location()
 				, bool with_bars = false
 				, const std::string& text = ""
 				, const Uint32 text_color = 0);
-		void add_animation(unit* animated_unit
+		void add_animation(const unit* animated_unit
 				, const std::string& event
 				, const map_location &src = map_location::null_location()
 				, const map_location &dst = map_location::null_location()
@@ -174,7 +174,7 @@ class unit_animator
 				, const attack_type* attack = NULL
 				, const attack_type* second_attack = NULL
 				, int value2 = 0);
-		void replace_anim_if_invalid(unit* animated_unit
+		void replace_anim_if_invalid(const unit* animated_unit
 				, const std::string& event
 				, const map_location &src = map_location::null_location()
 				, const map_location &dst = map_location::null_location()
@@ -212,7 +212,7 @@ class unit_animator
 				with_bars(false)
 			{}
 
-			unit *my_unit;
+			const unit *my_unit;
 			const unit_animation * animation;
 			std::string text;
 			Uint32 text_color;

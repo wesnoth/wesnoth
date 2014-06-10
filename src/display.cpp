@@ -569,7 +569,7 @@ void display::change_map(const gamemap* m)
 	builder_->change_map(m);
 }
 
-void display::change_units(unit_map* umap)
+void display::change_units(const unit_map* umap)
 {
 	units_ = umap;
 }
@@ -2554,7 +2554,7 @@ void display::draw_invalidated() {
 	invalidated_hexes_ += invalidated_.size();
 
 	BOOST_FOREACH(const map_location& loc, invalidated_) {
-		unit_map::iterator u_it = units_->find(loc);
+		unit_map::const_iterator u_it = units_->find(loc);
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (u_it != units_->end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
@@ -3034,9 +3034,9 @@ void display::invalidate_animations_location(const map_location& loc) {
 }
 
 
-std::vector<unit*> display::get_unit_list_for_invalidation() {
-	std::vector<unit*> unit_list;
-	BOOST_FOREACH(unit &u, *units_) {
+std::vector<const unit*> display::get_unit_list_for_invalidation() {
+	std::vector<const unit*> unit_list;
+	BOOST_FOREACH(const unit &u, *units_) {
 		unit_list.push_back(&u);
 	}
 	return unit_list;
@@ -3056,8 +3056,8 @@ void display::invalidate_animations()
 			}
 		}
 	}
-	std::vector<unit*> unit_list=get_unit_list_for_invalidation();
-	BOOST_FOREACH(unit* u, unit_list) {
+	std::vector<const unit*> unit_list=get_unit_list_for_invalidation();
+	BOOST_FOREACH(const unit* u, unit_list) {
 		u->refresh();
 	}
 	bool new_inval;
@@ -3067,7 +3067,7 @@ void display::invalidate_animations()
 #pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
 #endif //_OPENMP
 		for(int i=0; i < static_cast<int>(unit_list.size()); i++) {
-			new_inval |=  unit_list[i]->invalidate(unit_list[i]->get_location());
+			new_inval |=  unit_list[i]->invalidate(*this);
 		}
 	}while(new_inval);
 }

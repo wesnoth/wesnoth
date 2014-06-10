@@ -204,7 +204,7 @@ public:
 	void end_turn();
 	void new_scenario();
 	/** Called on every draw */
-	void refresh();
+	void refresh() const;
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
@@ -249,23 +249,22 @@ public:
 	const surface still_image(bool scaled = false) const;
 
 	/** draw a unit.  */
-	void redraw_unit();
+	void redraw_unit() const;
 	/** Clear unit_halo_  */
-	void clear_haloes();
+	void clear_haloes() const;
 
-	void set_standing(bool with_bars = true);
+	void set_standing(bool with_bars = true) const;
 
-	void set_ghosted(bool with_bars = true);
-	void set_disabled_ghosted(bool with_bars = true);
+	void set_ghosted(bool with_bars = true) const;
+	void set_disabled_ghosted(bool with_bars = true) const;
 
-	void set_idling();
-	void set_selecting();
-	unit_animation* get_animation() {  return anim_.get();}
-	const unit_animation* get_animation() const {  return anim_.get();}
-	void set_facing(map_location::DIRECTION dir);
+	void set_idling() const;
+	void set_selecting() const;
+	unit_animation* get_animation() const {  return anim_.get();}
+	void set_facing(map_location::DIRECTION dir) const;
 	map_location::DIRECTION facing() const { return facing_; }
 
-	bool invalidate(const map_location &loc);
+	bool invalidate(const display & disp) const;
 	const std::vector<t_string>& trait_names() const { return trait_names_; }
 	const std::vector<t_string>& trait_descriptions() const { return trait_descriptions_; }
 	std::vector<std::string> get_traits_list() const;
@@ -282,7 +281,7 @@ public:
 	int upkeep() const;
 	bool loyal() const;
 
-	void set_hidden(bool state);
+	void set_hidden(bool state) const;
 	bool get_hidden() const { return hidden_; }
 	bool is_flying() const { return movement_type_.is_flying(); }
 	bool is_fearless() const { return is_fearless_; }
@@ -327,9 +326,9 @@ public:
 		STATE_STANDING,   /** anim must fit in a hex */
 		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
 		STATE_ANIM};      /** normal anims */
-	void start_animation(int start_time, const unit_animation *animation,
+	void start_animation (int start_time, const unit_animation *animation,
 		bool with_bars,  const std::string &text = "",
-		Uint32 text_color = 0, STATE state = STATE_ANIM);
+		Uint32 text_color = 0, STATE state = STATE_ANIM) const;
 
 	/** The name of the file to game_display (used in menus). */
 	std::string absolute_image() const;
@@ -488,14 +487,15 @@ private:
 	config events_;
 	config filter_recall_;
 	bool emit_zoc_;
-	STATE state_;
+
+	mutable STATE state_; //animation state
 
 	std::vector<std::string> overlays_;
 
 	std::string role_;
 	std::vector<attack_type> attacks_;
-	map_location::DIRECTION facing_;
-
+	mutable map_location::DIRECTION facing_; //TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable
+						 //But it's not easy to separate this guy from the animation code right now.
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
 
@@ -508,16 +508,16 @@ private:
 	// Animations:
 	std::vector<unit_animation> animations_;
 
-	boost::scoped_ptr<unit_animation> anim_;
-	int next_idling_;
-	int frame_begin_time_;
+	mutable boost::scoped_ptr<unit_animation> anim_;
+	mutable int next_idling_;      // used for animation
+	mutable int frame_begin_time_; // used for animation
 
 
-	int unit_halo_;
+	mutable int unit_halo_; // flag used for drawing / animation
 	bool getsHit_;
-	bool refreshing_; // avoid infinite recursion
-	bool hidden_;
-	bool draw_bars_;
+	mutable bool refreshing_; // avoid infinite recursion. flag used for drawing / animation
+	mutable bool hidden_;
+	mutable bool draw_bars_; // flag used for drawing / animation
 	double hp_bar_scaling_, xp_bar_scaling_;
 
 	config modifications_;

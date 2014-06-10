@@ -96,8 +96,7 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	unit_map& get_units() {return *units_;}
-	const unit_map& get_const_units() const {return *units_;}
+	const unit_map& get_units() const {return *units_;}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -155,7 +154,7 @@ public:
 
 	void change_map(const gamemap* m);
 	void change_teams(const std::vector<team>* teams);
-	void change_units(unit_map* units);
+	void change_units(const unit_map* units);
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -411,7 +410,7 @@ public:
 	  * helper function for invalidate_animations
 	  * returns a list of units to check for invalidation
 	  */
-	virtual std::vector<unit*> get_unit_list_for_invalidation();
+	virtual std::vector<const unit*> get_unit_list_for_invalidation();
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()
@@ -628,7 +627,7 @@ private:
 
 protected:
 	//TODO sort
-	unit_map* units_;
+	const unit_map* units_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string

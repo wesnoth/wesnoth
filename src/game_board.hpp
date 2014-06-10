@@ -124,6 +124,10 @@ class game_board {
 	bool has_visible_unit (const map_location & loc, size_t team, bool see_all = false) { return has_visible_unit(loc, teams_[team], see_all); }
 
 	unit* get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false); //TODO: can this not return a pointer?
+
+	// Wrapped functions from unit_map. These should ultimately provide notification to observers, pathfinding.
+
+	unit_map::iterator find_unit(const map_location & loc) { return units_.find(loc); }
 };
 
 /**

@@ -994,7 +994,8 @@ namespace {
 				}
 			}
 
-			unit_display::unit_attack(attacker.loc_, defender.loc_, damage,
+			unit_display::unit_attack(game_display::get_singleton(), *resources::gameboard,
+				attacker.loc_, defender.loc_, damage,
 				*attacker_stats->weapon, defender_stats->weapon,
 				abs_n, float_text.str(), drains_damage, "");
 		}
