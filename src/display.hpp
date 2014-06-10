@@ -96,7 +96,7 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	unit_map& get_units() {return *units_;}
+	unit_map& get_units() {return *const_cast<unit_map *> (units_);} //TODO: remove this when callers have been refactored not to require the non-const
 	const unit_map& get_const_units() const {return *units_;}
 
 	/**
@@ -628,7 +628,7 @@ private:
 
 protected:
 	//TODO sort
-	unit_map* units_;
+	const unit_map* units_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
