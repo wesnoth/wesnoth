@@ -17,9 +17,9 @@
 #include "commandline_options.hpp"
 #include "config.hpp"
 #include "flg_manager.hpp"
-#include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "multiplayer_ui.hpp"
-
+#include "saved_game.hpp"
 #include <boost/scoped_ptr.hpp>
 
 namespace mp {
@@ -43,7 +43,7 @@ typedef std::pair<mp::controller, std::string> controller_option;
 class connect_engine
 {
 public:
-	connect_engine(game_display& disp, game_state& state,
+	connect_engine(game_display& disp, saved_game& state,
 		const mp_game_settings& params, const bool local_players_only,
 		const bool first_scenario);
 	~connect_engine();
@@ -107,7 +107,7 @@ private:
 	friend class side_engine;
 
 	config level_;
-	game_state& state_;
+	saved_game& state_;
 
 	const mp_game_settings& params_;
 

@@ -23,7 +23,7 @@ class turn_info;
 class playmp_controller : public playsingle_controller, public events::pump_monitor
 {
 public:
-	playmp_controller(const config& level, game_state& state_of_game,
+	playmp_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, CVideo& video,
 		bool skip_replay, bool blindfold_replay, bool is_host);
 	virtual ~playmp_controller();

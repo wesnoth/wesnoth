@@ -63,7 +63,7 @@ static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
 playsingle_controller::playsingle_controller(const config& level,
-		game_state& state_of_game, const int ticks,
+		saved_game& state_of_game, const int ticks,
 		const config& game_config, CVideo& video, bool skip_replay) :
 	play_controller(level, state_of_game, ticks, game_config, video, skip_replay),
 	cursor_setter(cursor::NORMAL),
@@ -593,7 +593,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Loading a new game is effectively a quit.
 		//
 		if ( game::load_game_exception::game != "" ) {
-			gamestate_ = game_state();
+			gamestate_ = saved_game();
 		}
 		throw;
 	} catch(network::error& e) {
@@ -902,7 +902,7 @@ void playsingle_controller::linger()
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		if ( game::load_game_exception::game != "" ) {
-			gamestate_ = game_state();
+			gamestate_ = saved_game();
 		}
 		throw;
 	}

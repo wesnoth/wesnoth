@@ -40,6 +40,7 @@
 #include "gettext.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "saved_game.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "unit_id.hpp"
@@ -55,7 +56,7 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-static void team_init(config& level, game_state& gamestate){
+static void team_init(config& level, saved_game& gamestate){
 	//if we are at the start of a new scenario, initialize carryover_sides
 	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
 		gamestate.carryover_sides = gamestate.carryover_sides_start;
@@ -72,7 +73,7 @@ static void team_init(config& level, game_state& gamestate){
 	}
 }
 
-static void store_carryover(game_state& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
+static void store_carryover(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
 	//explain me: when could this be the case??
@@ -184,7 +185,7 @@ static void generate_map(config const*& scenario)
 	scenario = &new_scenario;
 }
 
-LEVEL_RESULT play_replay(display& disp, game_state& gamestate, const config& game_config,
+LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
 		CVideo& video, bool is_unit_test)
 {
 	const std::string campaign_type_str = lexical_cast<std::string> (gamestate.classification().campaign_type);
@@ -245,7 +246,7 @@ LEVEL_RESULT play_replay(display& disp, game_state& gamestate, const config& gam
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
-		const config* level, display& disp, game_state& state_of_game,
+		const config* level, display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story,
 		bool skip_replay, end_level_data &end_level)
 {
@@ -289,7 +290,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 
 static LEVEL_RESULT playmp_scenario(const config& game_config,
-		const config* level, display& disp, game_state& state_of_game,
+		const config* level, display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
 		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
@@ -338,7 +339,7 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	return res;
 }
 
-LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
+LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	const config& game_config, io_type_t io_type, bool skip_replay,
 	bool network_game, bool blindfold_replay, bool is_unit_test)
 {
@@ -541,7 +542,7 @@ LEVEL_RESULT play_game(game_display& disp, game_state& gamestate,
 			}
 
 			starting_pos = gamestate.replay_start();
-			gamestate = game_state(starting_pos);
+			gamestate = saved_game(starting_pos);
 			// Retain carryover_sides_start, as the config from the server
 			// doesn't contain it.
 			gamestate.carryover_sides_start = sides.to_config();

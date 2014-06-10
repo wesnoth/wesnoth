@@ -25,7 +25,7 @@
 #include <string>
 #include <utility>
 
-class game_state;
+class saved_game;
 
 namespace mp {
 
@@ -157,7 +157,7 @@ private:
 class create_engine
 {
 public:
-	create_engine(game_display& disp, game_state& state);
+	create_engine(game_display& disp, saved_game& state);
 	~create_engine();
 
 	enum MP_EXTRA { ERA, MOD };
@@ -267,7 +267,7 @@ private:
 	std::vector<extras_metadata_ptr> eras_;
 	std::vector<extras_metadata_ptr> mods_;
 
-	game_state& state_;
+	saved_game& state_;
 	mp_game_settings parameters_;
 
 	depcheck::manager dependency_manager_;

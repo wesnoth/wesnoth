@@ -29,6 +29,7 @@
 #include "random_new_deterministic.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "saved_game.hpp"
 #include "synced_context.hpp"
 
 #include <boost/foreach.hpp>
@@ -45,7 +46,7 @@ static lg::log_domain log_replay("replay");
 possible_end_play_signal play_replay_level_main_loop(replay_controller & replaycontroller, bool & is_unit_test);
 
 LEVEL_RESULT play_replay_level(const config& game_config,
-		CVideo& video, game_state& state_of_game, bool is_unit_test)
+		CVideo& video, saved_game& state_of_game, bool is_unit_test)
 {
 	const int ticks = SDL_GetTicks();
 
@@ -108,7 +109,7 @@ possible_end_play_signal replay_controller::try_run_to_completion() {
 }
 
 replay_controller::replay_controller(const config& level,
-		game_state& state_of_game, const int ticks,
+		saved_game& state_of_game, const int ticks,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, game_config, video, false),
 	gamestate_start_(gamestate_),

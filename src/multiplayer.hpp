@@ -37,7 +37,7 @@ const size_t max_login_size = 20;
  * @param game_config The global, top-level WML configuration for the game
  */
 void start_local_game(game_display& disp, const config& game_config,
-	game_state& state);
+	saved_game& state);
 
 /** Starts a multiplayer game in single-user mode.
  *
@@ -45,7 +45,7 @@ void start_local_game(game_display& disp, const config& game_config,
  * cmdline_opts The commandline options
  */
 void start_local_game_commandline(game_display& disp, const config& game_config,
-	game_state& state, const commandline_options& cmdline_opts);
+	saved_game& state, const commandline_options& cmdline_opts);
 
 /** Starts a multiplayer game in client mode.
  *
@@ -54,7 +54,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
  * @param host        The host to connect to.
  */
 void start_client(game_display& disp, const config& game_config,
-	game_state& state, const std::string& host);
+	saved_game& state, const std::string& host);
 
 /**
  * Opens mp::connect screen and sets game state according to the
@@ -67,7 +67,7 @@ mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
  * Opens mp::wait screen and sets game state according to the
  * changes made.
  */
-mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
+mp::ui::result goto_mp_wait(saved_game& state, game_display& disp,
 	const config& game_config, bool observe);
 
 }

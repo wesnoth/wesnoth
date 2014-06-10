@@ -17,7 +17,7 @@
 #include "config.hpp"
 #include "dialogs.hpp"
 #include "formula_string_utils.hpp"
-#include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "game_config_manager.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
@@ -45,7 +45,7 @@ static lg::log_domain log_network("network");
 namespace mp {
 
 config initial_level_config(game_display& disp, const mp_game_settings& params,
-	game_state& state)
+	saved_game& state)
 {
 	config level;
 
@@ -161,7 +161,7 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 	return level;
 }
 
-void level_to_gamestate(config& level, game_state& state)
+void level_to_gamestate(config& level, saved_game& state)
 {
 	// Any replay data is only temporary and should be removed from
 	// the level data in case we want to save the game later.
@@ -259,9 +259,9 @@ void level_to_gamestate(config& level, game_state& state)
 		}
 	}
 	if (sides.get_variables().empty()) {
-		LOG_NG << "No variables were found for the game_state." << std::endl;
+		LOG_NG << "No variables were found for the saved_game." << std::endl;
 	} else {
-		LOG_NG << "Variables found and loaded into game_state:" << std::endl;
+		LOG_NG << "Variables found and loaded into saved_game:" << std::endl;
 		LOG_NG << sides.get_variables();
 	}
 

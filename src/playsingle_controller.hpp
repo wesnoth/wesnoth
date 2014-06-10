@@ -20,10 +20,11 @@
 #include "playturn_network_adapter.hpp"
 #include "playturn.hpp"
 #include "replay.hpp"
+#include "saved_game.hpp"
 
 struct set_completion
 {
-	set_completion(game_state& state, const std::string& completion) :
+	set_completion(saved_game& state, const std::string& completion) :
 		state_(state), completion_(completion)
 	{
 	}
@@ -32,14 +33,14 @@ struct set_completion
 		state_.classification().completion = completion_;
 	}
 	private:
-	game_state& state_;
+	saved_game& state_;
 	const std::string completion_;
 };
 
 class playsingle_controller : public play_controller
 {
 public:
-	playsingle_controller(const config& level, game_state& state_of_game,
+	playsingle_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, CVideo& video, bool skip_replay);
 	virtual ~playsingle_controller();
 

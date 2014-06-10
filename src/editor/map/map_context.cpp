@@ -63,7 +63,8 @@ map_context::map_context(const editor_map& map, const display& disp, bool pure_m
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(schedule))
-	, state_()
+	, mp_settings_()
+	, game_classification_()
 	, music_tracks_()
 {
 }
@@ -94,7 +95,8 @@ map_context::map_context(const config& game_config, const std::string& filename,
 	, units_()
 	, teams_()
 	, tod_manager_(new tod_manager(game_config.find_child("editor_times", "id", "default")))
-	, state_()
+	, mp_settings_()
+	, game_classification_()
 	, music_tracks_()
 {
 	/*

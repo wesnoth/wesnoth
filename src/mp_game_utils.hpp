@@ -19,14 +19,14 @@
 #include "network.hpp"
 
 class config;
-class game_state;
+class saved_game;
 
 namespace mp {
 
 config initial_level_config(game_display& disp, const mp_game_settings& params,
-	game_state& state);
+	saved_game& state);
 
-void level_to_gamestate(config& level, game_state& state);
+void level_to_gamestate(config& level, saved_game& state);
 
 void check_response(network::connection res, const config& data);
 

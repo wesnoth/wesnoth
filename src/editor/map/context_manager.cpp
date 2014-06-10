@@ -85,8 +85,8 @@ public:
 		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
 
 
-		resources::classification = &context_manager_.get_map_context().get_game_state().classification();
-		resources::mp_settings = &context_manager_.get_map_context().get_game_state().mp_settings();
+		resources::classification = &context_manager_.get_map_context().get_classification();
+		resources::mp_settings = &context_manager_.get_map_context().get_mp_settings();
 
 		context_manager_.gui().init_flags();
 
