@@ -50,9 +50,6 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 	const int ticks = SDL_GetTicks();
 
 	config init_level = *level;
-	carryover_info sides(state_of_game.carryover_sides);
-	sides.transfer_to(init_level);
-	state_of_game.carryover_sides = sides.to_config();
 
 	DBG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << std::endl;
 
