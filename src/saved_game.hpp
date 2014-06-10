@@ -13,7 +13,7 @@ class saved_game
 public:
 	saved_game();
 	saved_game(const saved_game& state);
-	explicit saved_game(const config& cfg, bool show_replay = false);
+	explicit saved_game(const config& cfg);
 
 	~saved_game(){}
 	saved_game& operator=(const saved_game& state);
@@ -27,8 +27,6 @@ public:
 	/** Multiplayer parameters for this game */
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
-
-	bool load_replay(const config& cfg);
 
 	config& replay_start() { return replay_start_; }
 

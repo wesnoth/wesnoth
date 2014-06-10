@@ -29,62 +29,37 @@ saved_game::saved_game()  :
 		mp_settings_()
 		{}
 
-saved_game::saved_game(const config& cfg, bool show_replay) :
-		replay_data(),
-		snapshot(),
-		carryover_sides(),
-		carryover_sides_start(),
-		replay_start_(),
-		classification_(cfg),
-		mp_settings_(cfg)
+saved_game::saved_game(const config& cfg) 
+	: replay_data()
+	, snapshot()
+	, carryover_sides()
+	, carryover_sides_start()
+	, replay_start_()
+	, classification_(cfg)
+	, mp_settings_(cfg)
 {
 	log_scope("read_game");
+	
+	carryover_sides = cfg.child_or_empty("carryover_sides");
+	carryover_sides_start = cfg.child_or_empty("carryover_sides_start");
+	replay_start_ = cfg.child_or_empty("replay_start");
+	replay_data = cfg.child_or_empty("replay");
+	snapshot = cfg.child_or_empty("snapshot");
 
-	if(cfg.has_child("carryover_sides")){
-		carryover_sides = cfg.child("carryover_sides");
-	}
-	if(cfg.has_child("carryover_sides_start")){
-		carryover_sides_start = cfg.child("carryover_sides_start");
-	}
-
-	if(show_replay){
-		//If replay_start and replay_data couldn't be loaded
-		if(!load_replay(cfg)){
-			//TODO: notify user of failure
-			ERR_NG<<"Could not load as replay " << std::endl;
-		}
-	} else {
-		if(const config& snapshot = cfg.child("snapshot")){
-			this->snapshot = snapshot;
-			load_replay(cfg);
-		} else if(carryover_sides_start.empty() && !carryover_sides.empty()){
-			//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
-			carryover_sides_start = carryover_sides;
-		}
-		//TODO: check if loading fails completely
+	if(snapshot.empty() && carryover_sides_start.empty() && !carryover_sides.empty())
+	{
+		//Explain me: when could this happen?
+		//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
+		carryover_sides_start = carryover_sides;
 	}
 
-	LOG_NG << "scenario: '" << carryover_sides_start["next_scenario"] << "'\n";
+	LOG_NG << "scenario: '" << carryover_sides_start["next_scenario"].str() << "'\n";
 
 	if (const config &stats = cfg.child("statistics")) {
 		statistics::fresh_stats();
 		statistics::read_stats(stats);
 	}
 
-}
-
-bool saved_game::load_replay(const config& cfg){
-	bool replay_loaded = false;
-
-	if(const config& replay_start = cfg.child("replay_start")){
-		replay_start_ = replay_start;
-		if(const config& replay = cfg.child("replay")){
-			this->replay_data = replay;
-			replay_loaded = true;
-		}
-	}
-
-	return replay_loaded;
 }
 
 static void convert_old_saves(config& cfg){

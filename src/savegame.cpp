@@ -293,7 +293,7 @@ void loadgame::check_version_compatibility()
 
 void loadgame::set_gamestate()
 {
-	gamestate_ = saved_game(load_config_, show_replay_);
+	gamestate_ = saved_game(load_config_);
 
 	// Get the status of the random in the snapshot.
 	// For a replay we need to restore the start only, the replaying gets at
