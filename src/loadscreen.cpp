@@ -138,6 +138,7 @@ void loadscreen::draw_screen(const std::string &text)
 	}
 
 	// Draw logo if it was successfully loaded.
+	static int angle = 0;
 #if SDL_VERSION_ATLEAST(2,0,0)
 	if (!logo_texture_.null() /*&& !logo_drawn_*/) {
 		int x = (screen_.getx () - logo_texture_.width()) / 2;
@@ -153,6 +154,7 @@ void loadscreen::draw_screen(const std::string &text)
 			}
 		}
 		logo_drawn_ = true;
+		logo_texture_.set_rotation(angle+=3);
 	}
 #else
 	if (logo_surface_ && !logo_drawn_) {
@@ -233,7 +235,7 @@ void loadscreen::draw_screen(const std::string &text)
 void loadscreen::clear_screen()
 {
 #if SDL_VERSION_ATLEAST(2,0,0)
-	CVideo::get_window()->clear(0,0,0);
+	CVideo::get_window()->fill(0,0,0);
 #else
 	int scrx = screen_.getx();                     // Screen width.
 	int scry = screen_.gety();                     // Screen height.

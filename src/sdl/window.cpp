@@ -83,7 +83,7 @@ void twindow::clear()
 	}
 }
 
-void twindow::clear(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
 	if(SDL_RenderClear(*this) != 0) {
