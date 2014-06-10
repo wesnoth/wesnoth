@@ -569,7 +569,7 @@ void display::change_map(const gamemap* m)
 	builder_->change_map(m);
 }
 
-void display::change_units(unit_map* umap)
+void display::change_units(const unit_map* umap)
 {
 	units_ = umap;
 }

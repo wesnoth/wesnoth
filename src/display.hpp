@@ -155,7 +155,7 @@ public:
 
 	void change_map(const gamemap* m);
 	void change_teams(const std::vector<team>* teams);
-	void change_units(unit_map* units);
+	void change_units(const unit_map* units);
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
