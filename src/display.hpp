@@ -39,6 +39,7 @@ struct time_of_day;
 class map_labels;
 class arrow;
 
+#include "display_context.hpp"
 #include "font.hpp"
 #include "key.hpp"
 #include "team.hpp"
@@ -62,19 +63,21 @@ class gamemap;
 class display
 {
 public:
-	display(unit_map* units, CVideo& video, const gamemap* map, const std::vector<team>* t,
+	display(const display_context * dc, CVideo& video,
 			const config& theme_cfg, const config& level);
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
 	bool show_everything() const { return !viewpoint_ && !is_blindfolded(); }
 
-	const std::vector<team>& get_teams() const {return *teams_;}
+	const gamemap& get_map() const { return dc_->map(); }
+
+	const std::vector<team>& get_teams() const {return dc_->teams();}
 
 	/** The playing team is the team whose turn it is. */
 	size_t playing_team() const { return activeTeam_; }
 
-	bool team_valid() const { return currentTeam_ < teams_->size(); }
+	bool team_valid() const { return currentTeam_ < dc_->teams().size(); }
 
 	/** The viewing team is the team currently viewing the game. */
 	size_t viewing_team() const { return currentTeam_; }
@@ -96,7 +99,7 @@ public:
 	 * Cancels all the exclusive draw requests.
 	 */
 	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
-	const unit_map& get_units() const {return *units_;}
+	const unit_map& get_units() const {return dc_->units();}
 
 	/**
 	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
@@ -152,9 +155,7 @@ public:
 	 */
 	void reload_map();
 
-	void change_map(const gamemap* m);
-	void change_teams(const std::vector<team>* teams);
-	void change_units(const unit_map* units);
+	void change_display_context(const display_context * dc);
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }
@@ -418,8 +419,6 @@ public:
 	 */
 	void invalidate_animations_location(const map_location& loc);
 
-	const gamemap& get_map() const { return *map_; }
-
 	/**
 	 * mouseover_hex_overlay_ require a prerendered surface
 	 * and is drawn underneath the mouse's location
@@ -627,7 +626,7 @@ private:
 
 protected:
 	//TODO sort
-	const unit_map* units_;
+	const display_context * dc_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
@@ -720,9 +719,7 @@ protected:
 	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc) const;
 
 	CVideo& screen_;
-	const gamemap* map_;
 	size_t currentTeam_;
-	const std::vector<team>* teams_;
 	const team *viewpoint_;
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;

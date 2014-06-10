@@ -223,6 +223,11 @@ protected:
 	boost::scoped_ptr<halo::manager> halo_manager_;
 	font::floating_label_context labels_manager_;
 	help::help_manager help_manager_;
+
+	//this must be before mouse_handler and menu_handler or we segfault
+	game_board gameboard_;
+
+	//more managers
 	events::mouse_handler mouse_handler_;
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
@@ -236,7 +241,6 @@ protected:
 	const config& level_;
 	game_state& gamestate_;
 	game_data gamedata_;
-	game_board gameboard_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
 	/// number of files that depend on actions/undo.hpp).

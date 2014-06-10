@@ -73,19 +73,17 @@ public:
 		if (!refreshed_) refresh();
 	}
 	void refresh() {
-		context_manager_.gui().change_map(&context_manager_.get_map());
-		resources::game_map = &context_manager_.get_map();
+		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
 
-		context_manager_.gui().change_units(&context_manager_.get_map_context().get_units());
+		resources::game_map = &context_manager_.get_map();
 		resources::units = &context_manager_.get_map_context().get_units();
+		resources::teams = &context_manager_.get_map_context().get_teams();
 
 		// TODO register the tod_manager with the gui?
 		resources::tod_manager = context_manager_.get_map_context().get_time_manager();
-		context_manager_.gui().change_teams(&context_manager_.get_map_context().get_teams());
 
 		context_manager_.gui().replace_overlay_map(&context_manager_.get_map_context().get_overlays());
 
-		resources::teams = &context_manager_.get_map_context().get_teams();
 
 		resources::classification = &context_manager_.get_map_context().get_game_state().classification();
 		resources::mp_settings = &context_manager_.get_map_context().get_game_state().mp_settings();
