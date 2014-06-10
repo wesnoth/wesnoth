@@ -37,7 +37,7 @@ bool synced_context::run_in_synced_context(const std::string& commandname, const
 {
 	DBG_REPLAY << "run_in_synced_context:" << commandname << "\n";
 	
-	if(!recorder.at_end())
+	if(!recorder.at_end() && store_in_replay)
 	{
 		//Most likeley we are in a replay now.
 		WRN_REPLAY << "invalid run_in_synced_context call ignored" << std::endl;
