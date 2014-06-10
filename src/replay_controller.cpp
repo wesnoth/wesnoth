@@ -62,7 +62,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 		rc.reset(new replay_controller(init_level, state_of_game, ticks, game_config, video));
 	} catch (end_level_exception & e){
 		return e.result;
-	} catch (end_turn_exception & e) {
+	} catch (end_turn_exception &) {
 		throw; //this should never happen? It would likely have crashed the program before, so in refactor I won't change but we should fix it later.
 	}
 	DBG_NG << "created objects... " << (SDL_GetTicks() - rc->get_ticks()) << std::endl;
