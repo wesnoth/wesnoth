@@ -265,7 +265,7 @@ public:
 	void set_facing(map_location::DIRECTION dir);
 	map_location::DIRECTION facing() const { return facing_; }
 
-	bool invalidate(const display & disp, const map_location &loc);
+	bool invalidate(const display & disp);
 	const std::vector<t_string>& trait_names() const { return trait_names_; }
 	const std::vector<t_string>& trait_descriptions() const { return trait_descriptions_; }
 	std::vector<std::string> get_traits_list() const;

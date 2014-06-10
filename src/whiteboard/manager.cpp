@@ -716,7 +716,7 @@ void manager::create_temp_move()
 				}
 
 				unit_display::move_unit(path, *fake_unit, false); //get facing right
-				fake_unit->invalidate(*game_display::get_singleton(), fake_unit->get_location());
+				fake_unit->invalidate(*game_display::get_singleton());
 				fake_unit->set_location(*curr_itor);
 				fake_unit->set_ghosted(true);
 			}
@@ -728,7 +728,7 @@ void manager::create_temp_move()
 	}
 	//in case path shortens on next step and one ghosted unit has to be removed
 	int ind = fake_units_.size() - 1;
-	fake_units_[ind]->invalidate(*game_display::get_singleton(),fake_units_[ind]->get_location());
+	fake_units_[ind]->invalidate(*game_display::get_singleton());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
 	fake_units_.resize(turn+1);
@@ -739,7 +739,7 @@ void manager::erase_temp_move()
 	move_arrows_.clear();
 	BOOST_FOREACH(fake_unit_ptr const& tmp, fake_units_) {
 		if(tmp) {
-			tmp->invalidate(*game_display::get_singleton(),tmp->get_location());
+			tmp->invalidate(*game_display::get_singleton());
 		}
 	}
 	fake_units_.clear();

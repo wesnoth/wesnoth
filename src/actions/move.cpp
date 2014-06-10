@@ -494,7 +494,7 @@ namespace { // Private helpers for move_unit()
 		moves_left_.pop_front();
 
 		// Invalidate before moving so we invalidate neighbor hexes if needed.
-		move_it_->invalidate(disp, *move_loc_);
+		move_it_->invalidate(disp);
 
 		// Attempt actually moving.
 		// (Fails if *step_to is occupied).

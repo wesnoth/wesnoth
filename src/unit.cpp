@@ -2159,7 +2159,7 @@ void unit::clear_haloes()
 	}
 	if(anim_ ) anim_->clear_haloes();
 }
-bool unit::invalidate(const display & disp, const map_location &loc)
+bool unit::invalidate(const display & disp)
 {
 	bool result = false;
 
@@ -2167,7 +2167,7 @@ bool unit::invalidate(const display & disp, const map_location &loc)
 	if(get_animation()) {
 		frame_parameters params;
 		const gamemap & map = disp.get_map();
-		const t_translation::t_terrain terrain = map.get_terrain(loc);
+		const t_translation::t_terrain terrain = map.get_terrain(get_location());
 		const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
 		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
