@@ -620,6 +620,7 @@ surface load_from_disk(const locator &loc)
 	}
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
 sdl::ttexture load_texture(const locator &loc, const int access)
 {
 	surface img = load_from_disk(loc);
@@ -629,6 +630,7 @@ sdl::ttexture load_texture(const locator &loc, const int access)
 		return sdl::ttexture();
 	}
 }
+#endif
 
 manager::manager() {}
 
@@ -897,6 +899,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
+#if SDL_VERSION_ATLEAST(2,0,0)
 sdl::ttexture get_texture(const locator& loc, TYPE type)
 {
 	if (loc.is_void()) {
@@ -942,6 +945,7 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 
 	return result;
 }
+#endif
 
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {
