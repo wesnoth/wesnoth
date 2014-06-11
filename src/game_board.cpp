@@ -83,12 +83,6 @@ void game_board::all_survivors_to_recall() {
 	}
 }
 
-void game_board::reset_all_teams_objectives_changes() {
-	BOOST_FOREACH(team & t, teams_) {
-		t.reset_objectives_changed();
-	}
-}
-
 unit_map::iterator game_board::find_visible_unit(const map_location &loc,
 	const team& current_team, bool see_all)
 {

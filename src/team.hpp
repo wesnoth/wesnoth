@@ -111,7 +111,7 @@ private:
 		/** Set to true when the objectives for this time changes.
 		 * Reset to false when the objectives for this team have been
 		 * displayed to the user. */
-		bool objectives_changed;
+		mutable bool objectives_changed;
 
 		CONTROLLER controller;
 		DEFEAT_CONDITION defeat_condition;
@@ -176,7 +176,7 @@ public:
 	void set_gold_add(bool b) {info_.gold_add = b; }
 	void set_base_income(int amount) { info_.income = amount - game_config::base_income; }
 	int countdown_time() const {  return countdown_time_; }
-	void set_countdown_time(const int amount)
+	void set_countdown_time (const int amount) const
 		{ countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
@@ -204,8 +204,8 @@ public:
 	const std::string& current_player() const { return info_.current_player; }
 
 	void set_objectives(const t_string& new_objectives, bool silently=false);
-	void set_objectives_changed(bool c = true) { info_.objectives_changed = c; }
-	void reset_objectives_changed() { info_.objectives_changed = false; }
+	void set_objectives_changed(bool c = true) const { info_.objectives_changed = c; }
+	void reset_objectives_changed() const { info_.objectives_changed = false; }
 
 	const t_string& objectives() const { return info_.objectives; }
 	bool objectives_changed() const { return info_.objectives_changed; }
@@ -341,7 +341,7 @@ private:
 
 	team_info info_;
 
-	int countdown_time_;
+	mutable int countdown_time_;
 	int action_bonus_count_;
 
 	std::vector<unit> recall_list_;

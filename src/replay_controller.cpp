@@ -159,8 +159,9 @@ void replay_controller::init_gui(){
 
 	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
-	gameboard_.reset_all_teams_objectives_changes();
-
+	BOOST_FOREACH(const team & t, gameboard_.teams()) {
+		t.reset_objectives_changed();
+	}
 	update_replay_ui();
 }
 
