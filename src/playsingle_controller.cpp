@@ -392,7 +392,7 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 	LOG_NG << "starting main loop\n" << (SDL_GetTicks() - ticks_) << "\n";
 
 	// Initialize countdown clock.
-	std::vector<team>::iterator t;
+	std::vector<team>::const_iterator t;
 	for(t = gameboard_.teams().begin(); t != gameboard_.teams().end(); ++t) {
 		if (gamestate_.mp_settings().mp_countdown && !loading_game_ ){
 			t->set_countdown_time(1000 * gamestate_.mp_settings().mp_countdown_init_time);
@@ -1090,11 +1090,11 @@ bool playsingle_controller::can_execute_command(const hotkey::hotkey_command& cm
 			if(browse_ || events::commands_disabled)
 				return false;
 
-			if( (menu_handler_.current_unit() != gameboard_.units_.end())
+			if( (menu_handler_.current_unit().valid())
 				&& (menu_handler_.current_unit()->move_interrupted()))
 				return true;
-			const unit_map::const_iterator i = gameboard_.units_.find(mouse_handler_.get_selected_hex());
-			if (i == gameboard_.units_.end()) return false;
+			const unit_map::const_iterator i = gameboard_.units().find(mouse_handler_.get_selected_hex());
+			if (!i.valid()) return false;
 			return i->move_interrupted();
 		}
 		case hotkey::HOTKEY_WB_TOGGLE:
