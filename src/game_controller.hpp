@@ -16,7 +16,7 @@
 
 #include "commandline_options.hpp"
 #include "editor/editor_main.hpp"
-#include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "game_config_manager.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
@@ -110,7 +110,7 @@ private:
 
 	std::string screenshot_map_, screenshot_filename_;
 
-	game_state state_;
+	saved_game state_;
 
 	std::string multiplayer_server_;
 	bool jump_to_multiplayer_;

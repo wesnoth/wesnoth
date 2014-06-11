@@ -21,6 +21,7 @@
 #include "multiplayer_connect.hpp"
 #include "multiplayer_ui.hpp"
 #include "hotkey/hotkey_manager.hpp"
+#include "saved_game.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -39,7 +40,7 @@ public:
 
 class test_mp_connect_engine : public mp::connect_engine {
 public:
-	test_mp_connect_engine(game_display& disp, game_state& gamestate,
+	test_mp_connect_engine(game_display& disp, saved_game& gamestate,
 		const mp_game_settings& params) :
 		mp::connect_engine(disp, gamestate, params, true, true)
 		{}
@@ -52,7 +53,7 @@ namespace {
 
 boost::scoped_ptr<game_display> disp;
 boost::scoped_ptr<mp_game_settings> params;
-boost::scoped_ptr<game_state> state;
+boost::scoped_ptr<saved_game> state;
 
 }
 
@@ -74,7 +75,7 @@ struct mp_connect_fixture {
 			false));
 		config_manager->init_game_config(game_config_manager::NO_FORCE_RELOAD);
 
-		state.reset(new game_state());
+		state.reset(new saved_game());
 		state->classification().campaign_type = game_classification::MULTIPLAYER;
 		config_manager->load_game_config_for_game(state->classification());
 

@@ -25,6 +25,7 @@
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
 #include "statistics.hpp"
+#include "saved_game.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -182,7 +183,7 @@ handler_vector wait::leader_preview_pane::handler_members() {
 }
 
 
-wait::wait(game_display& disp, const config& cfg, game_state& state,
+wait::wait(game_display& disp, const config& cfg, saved_game& state,
 	mp::chat& c, config& gamelist, const bool first_scenario) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(disp.video(), first_scenario ? _("Cancel") : _("Quit")),
@@ -201,7 +202,7 @@ wait::~wait()
 {
 	try {
 	if (get_result() == QUIT) {
-		state_ = game_state();
+		state_ = saved_game();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 		resources::config_manager->
@@ -228,7 +229,7 @@ void wait::join_game(bool observe)
 	}
 
 	if (first_scenario_) {
-		state_ = game_state();
+		state_ = saved_game();
 		state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 		const config* campaign = &resources::config_manager->
@@ -387,7 +388,7 @@ void wait::start_game()
 		level_to_gamestate(level_, state_);
 	} else {
 
-		state_ = game_state(level_);
+		state_ = saved_game(level_);
 
 		// When we observe and don't have the addon installed we still need
 		// the old way, no clue why however. Code is a copy paste of

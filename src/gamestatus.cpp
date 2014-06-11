@@ -598,74 +598,6 @@ config game_classification::to_config() const
 	return cfg;
 }
 
-game_state::game_state()  :
-		replay_data(),
-		snapshot(),
-		carryover_sides(),
-		carryover_sides_start(carryover_info().to_config()),
-		replay_start_(),
-		classification_(),
-		mp_settings_()
-		{}
-
-game_state::game_state(const config& cfg, bool show_replay) :
-		replay_data(),
-		snapshot(),
-		carryover_sides(),
-		carryover_sides_start(),
-		replay_start_(),
-		classification_(cfg),
-		mp_settings_(cfg)
-{
-	log_scope("read_game");
-
-	if(cfg.has_child("carryover_sides")){
-		carryover_sides = cfg.child("carryover_sides");
-	}
-	if(cfg.has_child("carryover_sides_start")){
-		carryover_sides_start = cfg.child("carryover_sides_start");
-	}
-
-	if(show_replay){
-		//If replay_start and replay_data couldn't be loaded
-		if(!load_replay(cfg)){
-			//TODO: notify user of failure
-			ERR_NG<<"Could not load as replay " << std::endl;
-		}
-	} else {
-		if(const config& snapshot = cfg.child("snapshot")){
-			this->snapshot = snapshot;
-			load_replay(cfg);
-		} else if(carryover_sides_start.empty() && !carryover_sides.empty()){
-			//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
-			carryover_sides_start = carryover_sides;
-		}
-		//TODO: check if loading fails completely
-	}
-
-	LOG_NG << "scenario: '" << carryover_sides_start["next_scenario"] << "'\n";
-
-	if (const config &stats = cfg.child("statistics")) {
-		statistics::fresh_stats();
-		statistics::read_stats(stats);
-	}
-
-}
-
-bool game_state::load_replay(const config& cfg){
-	bool replay_loaded = false;
-
-	if(const config& replay_start = cfg.child("replay_start")){
-		replay_start_ = replay_start;
-		if(const config& replay = cfg.child("replay")){
-			this->replay_data = replay;
-			replay_loaded = true;
-		}
-	}
-
-	return replay_loaded;
-}
-
 void convert_old_saves(config& cfg){
 	if(!cfg.has_child("snapshot")){
 		return;
@@ -771,33 +703,3 @@ void convert_old_saves(config& cfg){
 	//1.12-1.13 end
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }
-
-game_state::game_state(const game_state& state) :
-	replay_data(state.replay_data),
-	snapshot(state.snapshot),
-	carryover_sides(state.carryover_sides),
-	carryover_sides_start(state.carryover_sides_start),
-	replay_start_(state.replay_start_),
-	classification_(state.classification_),
-	mp_settings_(state.mp_settings_)
-{}
-
-game_state& game_state::operator=(const game_state& state)
-{
-	// Use copy constructor to make sure we are coherent
-	if (this != &state) {
-		this->~game_state();
-		new (this) game_state(state) ;
-	}
-	return *this ;
-}
-
-
-void game_state::write_config(config_writer& out) const
-{
-	out.write(classification_.to_config());
-	if (classification_.campaign_type == game_classification::MULTIPLAYER) {
-		out.write_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), mp_settings_.to_config());
-	}
-}
-

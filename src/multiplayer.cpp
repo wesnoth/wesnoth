@@ -427,7 +427,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 // of those screen functions.
 
 static void enter_wait_mode(game_display& disp, const config& game_config,
-	game_state& state, bool observe)
+	saved_game& state, bool observe)
 {
 	DBG_MP << "entering wait mode" << std::endl;
 
@@ -470,10 +470,10 @@ static void enter_wait_mode(game_display& disp, const config& game_config,
 }
 
 static void enter_create_mode(game_display& disp, const config& game_config,
-	game_state& state, bool local_players_only = false);
+	saved_game& state, bool local_players_only = false);
 
 static bool enter_connect_mode(game_display& disp, const config& game_config,
-	game_state& state, const mp_game_settings& params,
+	saved_game& state, const mp_game_settings& params,
 	bool local_players_only = false)
 {
 	DBG_MP << "entering connect mode" << std::endl;
@@ -521,11 +521,11 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	game_state& state, const mp_game_settings& params,
+	saved_game& state, const mp_game_settings& params,
 	bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config,
-	game_state& state, bool local_players_only)
+	saved_game& state, bool local_players_only)
 {
 	DBG_MP << "entering create mode" << std::endl;
 
@@ -575,7 +575,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	game_state& state, const mp_game_settings& params, bool local_players_only)
+	saved_game& state, const mp_game_settings& params, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;
 
@@ -632,7 +632,7 @@ static void do_preferences_dialog(game_display& disp, const config& game_config)
 }
 
 static void enter_lobby_mode(game_display& disp, const config& game_config,
-	game_state& state)
+	saved_game& state)
 {
 	DBG_MP << "entering lobby mode" << std::endl;
 
@@ -738,7 +738,7 @@ static void enter_lobby_mode(game_display& disp, const config& game_config,
 namespace mp {
 
 void start_local_game(game_display& disp, const config& game_config,
-	game_state& state)
+	saved_game& state)
 {
 	DBG_MP << "starting local game" << std::endl;
 	gamechat.clear_history();
@@ -749,7 +749,7 @@ void start_local_game(game_display& disp, const config& game_config,
 }
 
 void start_local_game_commandline(game_display& disp, const config& game_config,
-	game_state& state, const commandline_options& cmdline_opts)
+	saved_game& state, const commandline_options& cmdline_opts)
 {
 	DBG_MP << "starting local MP game from commandline" << std::endl;
 
@@ -870,14 +870,14 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 
 	unsigned int repeat = (cmdline_opts.multiplayer_repeat) ? *cmdline_opts.multiplayer_repeat : 1;
 	for(unsigned int i = 0; i < repeat; i++){
-		game_state state_copy(state);
+		saved_game state_copy(state);
 		play_game(disp, state_copy, game_config, IO_SERVER, false, false);
 	}
 	recorder.clear();
 }
 
 void start_client(game_display& disp, const config& game_config,
-	game_state& state, const std::string& host)
+	saved_game& state, const std::string& host)
 {
 	DBG_MP << "starting client" << std::endl;
 	const network::manager net_manager(1,1);
@@ -919,7 +919,7 @@ mp::ui::result goto_mp_connect(game_display& disp, connect_engine& engine,
 	return res;
 }
 
-mp::ui::result goto_mp_wait(game_state& state, game_display& disp,
+mp::ui::result goto_mp_wait(saved_game& state, game_display& disp,
 	const config& game_config, bool observe)
 {
 	mp::ui::result res;

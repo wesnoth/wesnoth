@@ -157,9 +157,12 @@ public:
 	tod_manager* get_time_manager() {
 		return tod_manager_.get();
 	}
-
-	game_state& get_game_state() {
-		return state_;
+	
+	mp_game_settings & get_mp_settings() {
+		return mp_settings_;
+	}
+	game_classification& get_classification() {
+		return game_classification_;
 	}
 
 	/**
@@ -475,7 +478,8 @@ private:
 	unit_map units_;
 	std::vector<team> teams_;
 	boost::scoped_ptr<tod_manager> tod_manager_;
-	game_state state_;
+	mp_game_settings mp_settings_;
+	game_classification game_classification_;
 
 	typedef std::map<std::string, sound::music_track> music_map;
 	music_map music_tracks_;

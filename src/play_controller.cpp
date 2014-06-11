@@ -38,6 +38,7 @@
 #include "pathfind/teleport.hpp"
 #include "resources.hpp"
 #include "savegame.hpp"
+#include "saved_game.hpp"
 #include "sound.hpp"
 #include "unit_id.hpp"
 #include "save_blocker.hpp"
@@ -93,7 +94,7 @@ static void clear_resources()
 
 
 
-play_controller::play_controller(const config& level, game_state& state_of_game,
+play_controller::play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
 		CVideo& video, bool skip_replay) :
 	controller_base(ticks, game_config, video),

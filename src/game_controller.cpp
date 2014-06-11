@@ -643,7 +643,7 @@ bool game_controller::load_game()
 
 void game_controller::set_tutorial()
 {
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::TUTORIAL;
 	state_.carryover_sides_start["next_scenario"] = "tutorial";
 	state_.classification().campaign_define = "TUTORIAL";
@@ -658,7 +658,7 @@ void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
 
 bool game_controller::new_campaign()
 {
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::SCENARIO;
 
 	std::vector<config> campaigns;
@@ -881,7 +881,7 @@ bool game_controller::play_multiplayer()
 {
 	int res;
 
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 	//Print Gui only if the user hasn't specified any server
@@ -1002,7 +1002,7 @@ bool game_controller::play_multiplayer_commandline()
 	DBG_MP << "starting multiplayer game from the commandline" << std::endl;
 
 	// These are all the relevant lines taken literally from play_multiplayer() above
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 
 	resources::config_manager->

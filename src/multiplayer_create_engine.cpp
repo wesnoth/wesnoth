@@ -22,6 +22,7 @@
 #include "generators/map_create.hpp"
 #include "map_exception.hpp"
 #include "minimap.hpp"
+#include "saved_game.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"
 
@@ -324,7 +325,7 @@ int campaign::max_players() const
 	return max_players_;
 }
 
-create_engine::create_engine(game_display& disp, game_state& state) :
+create_engine::create_engine(game_display& disp, saved_game& state) :
 	current_level_type_(),
 	current_level_index_(0),
 	current_era_index_(0),
@@ -349,7 +350,7 @@ create_engine::create_engine(game_display& disp, game_state& state) :
 	DBG_MP << "restoring game config\n";
 
 	// Restore game config for multiplayer.
-	state_ = game_state();
+	state_ = saved_game();
 	state_.classification().campaign_type = game_classification::MULTIPLAYER;
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());

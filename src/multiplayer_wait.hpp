@@ -26,7 +26,7 @@ namespace mp {
 class wait : public ui
 {
 public:
-	wait(game_display& disp, const config& cfg, game_state& state, chat& c,
+	wait(game_display& disp, const config& cfg, saved_game& state, chat& c,
 		config& gamelist, const bool first_scenario = true);
 	~wait();
 	virtual void process_event();
@@ -74,7 +74,7 @@ private:
 	gui::menu game_menu_;
 
 	config level_;
-	game_state& state_;
+	saved_game& state_;
 
 	const bool first_scenario_;
 	bool stop_updates_;

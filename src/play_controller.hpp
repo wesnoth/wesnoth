@@ -31,7 +31,7 @@
 #include <boost/shared_ptr.hpp>
 
 class game_display;
-class game_state;
+class saved_game;
 class game_data;
 class team;
 
@@ -72,7 +72,7 @@ namespace wb {
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
-	play_controller(const config& level, game_state& state_of_game,
+	play_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config,
 		CVideo& video, bool skip_replay);
 	virtual ~play_controller();
@@ -239,7 +239,7 @@ protected:
 	boost::scoped_ptr<game_display> gui_;
 	const statistics::scenario_context statistics_context_;
 	const config& level_;
-	game_state& gamestate_;
+	saved_game& gamestate_;
 	game_data gamedata_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the

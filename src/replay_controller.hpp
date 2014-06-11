@@ -18,6 +18,7 @@
 
 #include "game_end_exceptions.hpp"
 #include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "play_controller.hpp"
 
 #include <vector>
@@ -27,7 +28,7 @@ class video;
 class replay_controller : public play_controller
 {
 public:
-	replay_controller(const config& level, game_state& state_of_game,
+	replay_controller(const config& level, saved_game& state_of_game,
 		const int ticks, const config& game_config, CVideo& video);
 	virtual ~replay_controller();
 
@@ -86,7 +87,7 @@ private:
 		       play_turn_button() && play_side_button();
 	}
 
-	game_state gamestate_start_;
+	saved_game gamestate_start_;
 	game_board gameboard_start_;
 	tod_manager tod_manager_start_;
 
@@ -99,6 +100,6 @@ private:
 
 
 LEVEL_RESULT play_replay_level(const config& terrain_config, CVideo& video,
-		game_state& state_of_game, bool is_unit_test = false);
+		saved_game& state_of_game, bool is_unit_test = false);
 
 #endif

@@ -82,7 +82,7 @@ void clean_saves(const std::string& label)
 	}
 }
 
-loadgame::loadgame(display& gui, const config& game_config, game_state& gamestate)
+loadgame::loadgame(display& gui, const config& game_config, saved_game& gamestate)
 	: game_config_(game_config)
 	, gui_(gui)
 	, gamestate_(gamestate)
@@ -293,7 +293,11 @@ void loadgame::check_version_compatibility()
 
 void loadgame::set_gamestate()
 {
-	gamestate_ = game_state(load_config_, show_replay_);
+	gamestate_ = saved_game(load_config_);
+#if 0
+	//we dont need this code since we always restore our random from [snapshot] or [replay_start] (execpt for start of scenario saves where we dont have those)
+	//also the random_seed isn't stored at toplevel anymore.
+
 
 	// Get the status of the random in the snapshot.
 	// For a replay we need to restore the start only, the replaying gets at
@@ -308,6 +312,7 @@ void loadgame::set_gamestate()
 	carryover_info sides(gamestate_.carryover_sides_start);
 	sides.rng().seed_random(seed, calls);
 	gamestate_.carryover_sides_start = sides.to_config();
+#endif
 }
 
 void loadgame::load_multiplayer_game()
@@ -325,7 +330,7 @@ void loadgame::load_multiplayer_game()
 		read_save_file(filename_, load_config_, &error_log);
 		copy_era(load_config_);
 
-		gamestate_ = game_state(load_config_);
+		gamestate_ = saved_game(load_config_);
 	}
 
 	if(!error_log.empty()) {
@@ -398,7 +403,7 @@ void loadgame::copy_era(config &cfg)
 	snapshot.add_child("era", era);
 }
 
-savegame::savegame(game_state& gamestate, const compression::format compress_saves, const std::string& title)
+savegame::savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title)
 	: gamestate_(gamestate)
 	, snapshot_()
 	, filename_()
@@ -618,7 +623,7 @@ scoped_ostream savegame::open_save_game(const std::string &label)
 	}
 }
 
-scenariostart_savegame::scenariostart_savegame(game_state &gamestate, const compression::format compress_saves)
+scenariostart_savegame::scenariostart_savegame(saved_game &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves)
 {
 	set_filename(gamestate.classification().label);
@@ -630,7 +635,7 @@ void scenariostart_savegame::write_game(config_writer &out){
 	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
 }
 
-replay_savegame::replay_savegame(game_state &gamestate, const compression::format compress_saves)
+replay_savegame::replay_savegame(saved_game &gamestate, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Replay"))
 {}
 
@@ -654,7 +659,7 @@ void replay_savegame::write_game(config_writer &out) {
 	out.write_child("replay", gamestate().replay_data);
 }
 
-autosave_savegame::autosave_savegame(game_state &gamestate,
+autosave_savegame::autosave_savegame(saved_game &gamestate,
 					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
 	: ingame_savegame(gamestate, gui, snapshot_cfg, compress_saves)
 {
@@ -682,7 +687,7 @@ void autosave_savegame::create_filename()
 	set_filename(filename);
 }
 
-oos_savegame::oos_savegame(game_state& gamestate, game_display& gui, const config& snapshot_cfg)
+oos_savegame::oos_savegame(saved_game& gamestate, game_display& gui, const config& snapshot_cfg)
 	: ingame_savegame(gamestate, gui, snapshot_cfg, preferences::save_compression_format())
 {}
 
@@ -705,7 +710,7 @@ int oos_savegame::show_save_dialog(CVideo& video, const std::string& message, co
 	return res;
 }
 
-ingame_savegame::ingame_savegame(game_state &gamestate,
+ingame_savegame::ingame_savegame(saved_game &gamestate,
 					game_display& gui, const config& snapshot_cfg, const compression::format compress_saves)
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	gui_(gui)

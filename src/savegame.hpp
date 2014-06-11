@@ -18,6 +18,7 @@
 
 #include "filesystem.hpp"
 #include "gamestatus.hpp"
+#include "saved_game.hpp"
 #include "show_dialog.hpp"
 #include "serialization/compression.hpp"
 class config_writer;
@@ -38,7 +39,7 @@ void clean_saves(const std::string& label);
 class loadgame
 {
 public:
-	loadgame(display& gui, const config& game_config, game_state& gamestate);
+	loadgame(display& gui, const config& game_config, saved_game& gamestate);
 	virtual ~loadgame() {}
 
 	/** Load a game without providing any information. */
@@ -74,7 +75,7 @@ private:
 	const config& game_config_;
 	display& gui_;
 
-	game_state& gamestate_; /** Primary output information. */
+	saved_game& gamestate_; /** Primary output information. */
 	std::string filename_; /** Name of the savefile to be loaded. */
 	std::string difficulty_; /** The difficulty the save is meant to be loaded with. */
 	config load_config_; /** Config information of the savefile to be loaded. */
@@ -93,7 +94,7 @@ class savegame
 protected:
 	/** The only constructor of savegame. The title parameter is only necessary if you
 		intend to do interactive saves. */
-	savegame(game_state& gamestate, const compression::format compress_saves, const std::string& title = "Save");
+	savegame(saved_game& gamestate, const compression::format compress_saves, const std::string& title = "Save");
 
 public:
 	virtual ~savegame() {}
@@ -130,7 +131,7 @@ protected:
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
 
 	const std::string& title() { return title_; }
-	game_state& gamestate() { return gamestate_; }
+	saved_game& gamestate() { return gamestate_; }
 	config& snapshot() { return snapshot_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
@@ -161,7 +162,7 @@ private:
 	scoped_ostream open_save_game(const std::string &label);
 	friend class save_info;
 
-	game_state& gamestate_;
+	saved_game& gamestate_;
 
 	/** Gamestate information at the time of saving. Note that this object is needed here, since
 		even if it is empty the code relies on it to be there. */
@@ -183,7 +184,7 @@ private:
 class ingame_savegame : public savegame
 {
 public:
-	ingame_savegame(game_state& gamestate,
+	ingame_savegame(saved_game& gamestate,
 		game_display& gui, const config& snapshot_cfg, const compression::format compress_saves);
 
 private:
@@ -201,7 +202,7 @@ protected:
 class replay_savegame : public savegame
 {
 public:
-	replay_savegame(game_state& gamestate, const compression::format compress_saves);
+	replay_savegame(saved_game& gamestate, const compression::format compress_saves);
 
 private:
 	/** Create a filename for automatic saves */
@@ -214,7 +215,7 @@ private:
 class autosave_savegame : public ingame_savegame
 {
 public:
-	autosave_savegame(game_state &gamestate,
+	autosave_savegame(saved_game &gamestate,
 					 game_display& gui, const config& snapshot_cfg, const compression::format compress_saves);
 
 	void autosave(const bool disable_autosave, const int autosave_max, const int infinite_autosaves);
@@ -226,7 +227,7 @@ private:
 class oos_savegame : public ingame_savegame
 {
 public:
-	oos_savegame(game_state& gamestate, game_display& gui, const config& snapshot_cfg);
+	oos_savegame(saved_game& gamestate, game_display& gui, const config& snapshot_cfg);
 
 private:
 	/** Display the save game dialog. */
@@ -237,7 +238,7 @@ private:
 class scenariostart_savegame : public savegame
 {
 public:
-	scenariostart_savegame(game_state& gamestate, const compression::format compress_saves);
+	scenariostart_savegame(saved_game& gamestate, const compression::format compress_saves);
 
 private:
 	void write_game(config_writer &out);
