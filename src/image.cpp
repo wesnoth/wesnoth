@@ -125,9 +125,11 @@ image::image_cache images_,
 		tod_colored_images_,
 		brightened_images_;
 
+#if SDL_VERSION_ATLEAST(2,0,0)
 /** Rexture caches */
 image::texture_cache txt_images_,
 		txt_hexed_images_;
+#endif
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
