@@ -353,8 +353,11 @@ void loadgame::fill_mplevel_config(config& level){
 
 	// If we have a start of scenario MP campaign scenario the snapshot
 	// is empty the starting position contains the wanted info.
+#if 0 
 	const config& start_data = !gamestate_.snapshot.empty() ? gamestate_.snapshot : gamestate_.replay_start();
-
+#else
+	const config& start_data = gamestate_.get_starting_pos();
+#endif
 	level.add_child("map", start_data.child_or_empty("map"));
 	level["id"] = start_data["id"];
 	level["name"] = start_data["name"];
@@ -367,7 +370,7 @@ void loadgame::fill_mplevel_config(config& level){
 	level.add_child("multiplayer", gamestate_.mp_settings().to_config());
 
 	//Start-of-scenario save
-	if(gamestate_.snapshot.empty()){
+	if(!gamestate_.is_mid_game_save()){
 		//For a start-of-scenario-save, write the data to the starting_pos and not the snapshot, since
 		//there should only be snapshots for midgame reloads
 		if (config &c = level.child("replay_start")) {
@@ -592,7 +595,7 @@ void savegame::write_game(config_writer &out)
 	out.write_key_val("version", game_config::version);
 	out.write_key_val("next_underlying_unit_id", lexical_cast<std::string>(n_unit::id_manager::instance().get_save_id()));
 
-	gamestate_.write_config(out);
+	gamestate_.write_general_info(out);
 	out.open_child("statistics");
 	statistics::write_stats(out);
 	out.close_child("statistics");
@@ -631,8 +634,7 @@ scenariostart_savegame::scenariostart_savegame(saved_game &gamestate, const comp
 
 void scenariostart_savegame::write_game(config_writer &out){
 	savegame::write_game(out);
-
-	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
+	gamestate().write_carryover(out);
 }
 
 replay_savegame::replay_savegame(saved_game &gamestate, const compression::format compress_saves)
@@ -651,12 +653,12 @@ void replay_savegame::create_filename()
 }
 
 void replay_savegame::write_game(config_writer &out) {
+	gamestate().remove_snapshot();
 	savegame::write_game(out);
-
-	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
-	out.write_child("carryover_sides", gamestate().carryover_sides);
+	gamestate().write_carryover(out);
 	out.write_child("replay_start", gamestate().replay_start());
 	out.write_child("replay", gamestate().replay_data);
+
 }
 
 autosave_savegame::autosave_savegame(saved_game &gamestate,
@@ -715,6 +717,7 @@ ingame_savegame::ingame_savegame(saved_game &gamestate,
 	: savegame(gamestate, compress_saves, _("Save Game")),
 	gui_(gui)
 {
+	gamestate.set_snapshot(snapshot_cfg);
 	snapshot().merge_with(snapshot_cfg);
 }
 
@@ -733,10 +736,10 @@ void ingame_savegame::write_game(config_writer &out) {
 	log_scope("write_game");
 
 	savegame::write_game(out);
+	
+	gamestate().write_carryover(out);
 	out.write_child("snapshot",snapshot());
 	out.write_child("replay_start", gamestate().replay_start());
-	out.write_child("carryover_sides", gamestate().carryover_sides);
-	out.write_child("carryover_sides_start", gamestate().carryover_sides_start);
 	out.write_child("replay", gamestate().replay_data);
 }
 

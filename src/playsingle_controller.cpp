@@ -343,7 +343,8 @@ void playsingle_controller::report_victory(
 
 possible_end_play_signal playsingle_controller::play_scenario_init(end_level_data & /*eld*/, bool & past_prestart) {
 	// At the beginning of the scenario, save a snapshot as replay_start
-	if(gamestate_.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
+	if(gamestate_.replay_start().empty())
+	{
 		gamestate_.replay_start() = to_config();
 	}
 	HANDLE_END_PLAY_SIGNAL( fire_preload() );
@@ -497,7 +498,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					if (gameboard_.teams().empty())
 					{
 						//store persistent teams
-						gamestate_.snapshot = config();
+						gamestate_.set_snapshot(config());
 
 						return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
 					}
@@ -568,7 +569,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						LOG_NG << "Add units that survived the scenario to the recall list.\n";
 						gameboard_.all_survivors_to_recall();
 
-						gamestate_.snapshot = config();
+						gamestate_.set_snapshot(config());
 						if(!is_observer()) {
 							persist_.end_transaction();
 						}
@@ -579,7 +580,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					{
 						LOG_NG << "resuming from loaded linger state...\n";
 						//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
-						gamestate_.snapshot = config();
+						gamestate_.set_snapshot(config());
 						if(!is_observer()) {
 							persist_.end_transaction();
 						}

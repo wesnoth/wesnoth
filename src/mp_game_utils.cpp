@@ -229,7 +229,7 @@ void level_to_gamestate(config& level, saved_game& state)
 	// If we start a fresh game, there won't be any snapshot information.
 	// If however this is a savegame, we got a valid snapshot here.
 	if (saved_game) {
-		state.snapshot = snapshot;
+		state.set_snapshot(snapshot);
 		if (const config& v = snapshot.child("variables")) {
 			sides.set_variables(v);
 		}
@@ -240,7 +240,7 @@ void level_to_gamestate(config& level, saved_game& state)
 	// could have changed and need to be replaced.
 	if (saved_game || start_of_scenario){
 		config::child_itors saved_sides = saved_game ?
-			state.snapshot.child_range("side") :
+			state.get_starting_pos().child_range("side") :
 			state.replay_start().child_range("side");
 		config::const_child_itors level_sides = level.child_range("side");
 

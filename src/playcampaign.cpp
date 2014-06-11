@@ -52,10 +52,11 @@
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
-
+#if 0 
 static void team_init(config& level, saved_game& gamestate){
 	//if we are at the start of a new scenario, initialize carryover_sides
 	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
@@ -72,6 +73,7 @@ static void team_init(config& level, saved_game& gamestate){
 		gamestate.carryover_sides = sides.to_config();
 	}
 }
+#endif
 
 static void store_carryover(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
@@ -207,7 +209,6 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 
 		LEVEL_RESULT res = play_replay_level(game_config, video, gamestate, is_unit_test);
 
-		gamestate.snapshot = config();
 		recorder.clear();
 		gamestate.replay_data.clear();
 
@@ -246,17 +247,16 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 }
 
 static LEVEL_RESULT playsingle_scenario(const config& game_config,
-		const config* level, display& disp, saved_game& state_of_game,
+		display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story,
 		bool skip_replay, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-
-	config init_level = *level;
-	team_init(init_level, state_of_game);
-
+	
+	state_of_game.expand_carryover();
+	
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
-	playsingle_controller playcontroller(init_level, state_of_game, ticks, game_config, disp.video(), skip_replay);
+	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
 
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
@@ -290,16 +290,14 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 
 
 static LEVEL_RESULT playmp_scenario(const config& game_config,
-		const config* level, display& disp, saved_game& state_of_game,
+		display& disp, saved_game& state_of_game,
 		const config::const_child_itors &story, bool skip_replay,
 		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
+	state_of_game.expand_carryover();
 
-	config init_level = *level;
-	team_init(init_level, state_of_game);
-
-	playmp_controller playcontroller(init_level, state_of_game, ticks,
+	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks,
 		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
 	LEVEL_RESULT res = playcontroller.play_scenario(story, skip_replay);
 
@@ -345,17 +343,18 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 {
 	const std::string campaign_type_str = lexical_cast_default<std::string> (gamestate.classification().campaign_type);
 
-	config const* scenario = NULL;
-
+	//config const* scenario = NULL;
+	
+	config& starting_pos = gamestate.get_starting_pos();
+#if 0
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
 
 	carryover_info sides = carryover_info(gamestate.carryover_sides_start);
-
 	// Do we have any snapshot data?
 	// yes => this must be a savegame
 	// no  => we are starting a fresh scenario
-	if (!gamestate.snapshot.child("side"))
+	if (!gamestate.is_mid_game_save())
 	{
 		gamestate.classification().completion = "running";
 		// Campaign or Multiplayer?
@@ -385,7 +384,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		// This game was started from a savegame
 		LOG_G << "loading snapshot...\n";
 		starting_pos = gamestate.replay_start();
-		scenario = &gamestate.snapshot;
+		scenario = &gamestate.get_starting_pos();
 		// When starting wesnoth --multiplayer there might be
 		// no variables which leads to a segfault
 		if (const config &vars = gamestate.snapshot.child("variables")) {
@@ -393,24 +392,26 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		}
 		sides.get_wml_menu_items().set_menu_items(gamestate.snapshot);
 		// Replace game label with that from snapshot
-		if (!gamestate.snapshot["label"].empty()){
-			gamestate.classification().label = gamestate.snapshot["label"].str();
+		if (!gamestate.get_starting_pos()["label"].empty()){
+			gamestate.classification().label = gamestate.get_starting_pos()["label"].str();
 		}
 	}
 
 	gamestate.carryover_sides_start = sides.to_config();
-
-	while(scenario != NULL) {
+#else
+	gamestate.expand_scenario();
+#endif
+	while(gamestate.valid()) {
 		// If we are a multiplayer client, tweak the controllers
 		// (actually, moved to server. do we still need this starting_pos thing?)
-		if(io_type == IO_CLIENT) {
+		/*if(io_type == IO_CLIENT) {
 			if(scenario != &starting_pos) {
 				starting_pos = *scenario;
 				scenario = &starting_pos;
 			}
 		}
-
-		config::const_child_itors story = scenario->child_range("story");
+		*/
+		config::const_child_itors story = starting_pos.child_range("story");
 		//TODO: remove once scenario in carryover_info/gamedata is confirmed
 //		gamestate.classification().next_scenario = (*scenario)["next_scenario"].str();
 
@@ -423,39 +424,43 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			// Preserve old label eg. replay
 			if (gamestate.classification().label.empty()) {
 				if (gamestate.classification().abbrev.empty())
-					gamestate.classification().label = (*scenario)["name"].str();
+					gamestate.classification().label = starting_pos["name"].str();
 				else {
 					gamestate.classification().label = gamestate.classification().abbrev;
 					gamestate.classification().label.append("-");
-					gamestate.classification().label.append((*scenario)["name"]);
+					gamestate.classification().label.append(starting_pos["name"]);
 				}
 			}
 
 			// If the entire scenario should be randomly generated
-			if((*scenario)["scenario_generation"] != "") {
-				generate_scenario(scenario);
+			if(starting_pos["scenario_generation"] != "") {
+				const config * tmp = &starting_pos;
+				generate_scenario(tmp);
 			}
-			std::string map_data = (*scenario)["map_data"];
-			if(map_data.empty() && (*scenario)["map"] != "") {
-				map_data = read_map((*scenario)["map"]);
+			std::string map_data = starting_pos["map_data"];
+			if(map_data.empty() && starting_pos["map"] != "") {
+				map_data = read_map(starting_pos["map"]);
 			}
 
 			// If the map should be randomly generated
-			if(map_data.empty() && (*scenario)["map_generation"] != "") {
-				generate_map(scenario);
+			if(map_data.empty() && starting_pos["map_generation"] != "") {
+				const config * tmp = &starting_pos;
+				generate_map(tmp);
 			}
 
 			sound::empty_playlist();
 
 			switch (io_type){
 			case IO_NONE:
-				res = playsingle_scenario(game_config, scenario, disp, gamestate, story, skip_replay, end_level);
+				res = playsingle_scenario(game_config, disp, gamestate, story, skip_replay, end_level);
 				break;
 			case IO_SERVER:
 			case IO_CLIENT:
-				res = playmp_scenario(game_config, scenario, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
+				res = playmp_scenario(game_config, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 				break;
 			}
+			gamestate.carryover_sides = config();
+			gamestate.remove_snapshot();
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 			return QUIT;
@@ -504,7 +509,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		//If there is no next scenario we're done now.
 		if(res == QUIT || !end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
 		{
-			gamestate.snapshot = config();
+			gamestate.set_snapshot(config());
 			return res;
 		}
 		else if(res == OBSERVER_END)
@@ -514,7 +519,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				gui2::tmessage::yes_no_buttons);
 
 			if(dlg_res == gui2::twindow::CANCEL) {
-				gamestate.snapshot = config();
+				gamestate.set_snapshot(config());
 				return res;
 			}
 		}
@@ -528,7 +533,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		// Switch to the next scenario.
 		//gamestate.classification().scenario = gamestate.classification().next_scenario;
 
-		sides = carryover_info(gamestate.carryover_sides_start);
+		carryover_info sides = carryover_info(gamestate.carryover_sides_start);
 		sides.rng().rotate_random();
 		gamestate.carryover_sides_start = sides.to_config();
 
@@ -537,27 +542,27 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
 				game_config, res == OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
-				gamestate.snapshot = config();
+				gamestate.set_snapshot(config());
 				return QUIT;
 			}
 
-			starting_pos = gamestate.replay_start();
+			gamestate.set_scenario(gamestate.replay_start());
 			gamestate = saved_game(starting_pos);
 			// Retain carryover_sides_start, as the config from the server
 			// doesn't contain it.
 			gamestate.carryover_sides_start = sides.to_config();
 		} else {
 			// Retrieve next scenario data.
-			scenario = &game_config.find_child(campaign_type_str, "id",
+			const config & scentemp = game_config.find_child(campaign_type_str, "id",
 				gamestate.carryover_sides_start["next_scenario"]);
-			if (!*scenario) {
-				scenario = NULL;
+			if (!scentemp) {
+				gamestate.set_scenario(config());
 			} else {
-				starting_pos = *scenario;
-				scenario = &starting_pos;
+				gamestate.set_scenario(scentemp);
 			}
+			config * scenario = &gamestate.get_starting_pos();
 
-			if (io_type == IO_SERVER && scenario != NULL) {
+			if (io_type == IO_SERVER && scentemp) {
 				mp_game_settings& params = gamestate.mp_settings();
 
 				// A hash have to be generated using an unmodified
@@ -566,7 +571,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 				// Apply carryover before passing a scenario data to the
 				// mp::connect_engine.
-				team_init(starting_pos, gamestate);
+				gamestate.expand_carryover();
+				//team_init(starting_pos, gamestate);
 
 				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
 				//then we have to move "allow_new_game" attribute over now.
@@ -628,14 +634,14 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			}
 		}
 
-		if(scenario != NULL) {
+		if(gamestate.valid()) {
 			// Update the label
 			if (gamestate.classification().abbrev.empty())
-				gamestate.classification().label = (*scenario)["name"].str();
+				gamestate.classification().label = starting_pos["name"].str();
 			else {
 				gamestate.classification().label = gamestate.classification().abbrev;
 				gamestate.classification().label.append("-");
-				gamestate.classification().label.append((*scenario)["name"]);
+				gamestate.classification().label.append(starting_pos["name"]);
 			}
 
 			// If this isn't the last scenario, then save the game
@@ -654,7 +660,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			}
 
 		}
-		gamestate.snapshot = config();
 	}
 
 	if (!gamestate.carryover_sides_start["next_scenario"].empty() && gamestate.carryover_sides_start["next_scenario"] != "null") {
