@@ -314,61 +314,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 {
 	const std::string campaign_type_str = lexical_cast_default<std::string> (gamestate.classification().campaign_type);
 
-#if 0
-	// 'starting_pos' will contain the position we start the game from.
-	config starting_pos;
-
-	carryover_info sides = carryover_info(gamestate.carryover_sides_start);
-	// Do we have any snapshot data?
-	// yes => this must be a savegame
-	// no  => we are starting a fresh scenario
-	if (!gamestate.is_mid_game_save())
-	{
-		gamestate.classification().completion = "running";
-		// Campaign or Multiplayer?
-		// If the gamestate already contains a starting_pos,
-		// then we are starting a fresh multiplayer game.
-		// Otherwise this is the start of a campaign scenario.
-		if(gamestate.replay_start()["id"].empty() == false) {
-			starting_pos = gamestate.replay_start();
-			scenario = &starting_pos;
-
-			if(gamestate.replay_start()["random_seed"] != gamestate.carryover_sides_start["random_seed"]){
-				sides = carryover_info(gamestate.replay_start());
-			}
-
-		} else {
-			//reload of the scenario, as starting_pos contains carryover information only
-			LOG_G << "loading scenario: '" << sides.next_scenario() << "'\n";
-			scenario = &game_config.find_child(campaign_type_str, "id", sides.next_scenario());
-
-			if(!*scenario){
-				scenario = NULL;
-			}
-			LOG_G << "scenario found: " << (scenario != NULL ? "yes" : "no") << "\n";
-
-		}
-	} else {
-		// This game was started from a savegame
-		LOG_G << "loading snapshot...\n";
-		starting_pos = gamestate.replay_start();
-		scenario = &gamestate.get_starting_pos();
-		// When starting wesnoth --multiplayer there might be
-		// no variables which leads to a segfault
-		if (const config &vars = gamestate.snapshot.child("variables")) {
-			sides.set_variables(vars);
-		}
-		sides.get_wml_menu_items().set_menu_items(gamestate.snapshot);
-		// Replace game label with that from snapshot
-		if (!gamestate.get_starting_pos()["label"].empty()){
-			gamestate.classification().label = gamestate.get_starting_pos()["label"].str();
-		}
-	}
-
-	gamestate.carryover_sides_start = sides.to_config();
-#else
 	gamestate.expand_scenario();
-#endif
+
 	while(gamestate.valid()) {
 		config& starting_pos = gamestate.get_starting_pos();
 		config::const_child_itors story = starting_pos.child_range("story");
