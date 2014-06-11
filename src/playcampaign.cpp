@@ -325,9 +325,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 {
 	const std::string campaign_type_str = lexical_cast_default<std::string> (gamestate.classification().campaign_type);
 
-	//config const* scenario = NULL;
-	
-	config& starting_pos = gamestate.get_starting_pos();
 #if 0
 	// 'starting_pos' will contain the position we start the game from.
 	config starting_pos;
@@ -384,9 +381,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	gamestate.expand_scenario();
 #endif
 	while(gamestate.valid()) {
+		config& starting_pos = gamestate.get_starting_pos();
 		config::const_child_itors story = starting_pos.child_range("story");
-		//TODO: remove once scenario in carryover_info/gamedata is confirmed
-//		gamestate.classification().next_scenario = (*scenario)["next_scenario"].str();
+
 
 		bool save_game_after_scenario = true;
 
@@ -515,7 +512,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			}
 
 			gamestate.set_scenario(gamestate.replay_start());
-			gamestate = saved_game(starting_pos);
+			gamestate.replay_start() = config();
 			// Retain carryover_sides_start, as the config from the server
 			// doesn't contain it.
 			gamestate.carryover_sides_start = sides.to_config();
