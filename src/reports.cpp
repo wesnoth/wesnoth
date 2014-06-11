@@ -528,7 +528,7 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 	}
 
 	std::ostringstream str, tooltip;
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	if(!resources::gameboard->map().on_board(displayed_unit_hex)) {
 		return report();
 	}
@@ -1199,7 +1199,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";
 
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 
 	//if (terrain == t_translation::OFF_MAP_USER)
@@ -1351,7 +1351,7 @@ void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::strin
 
 REPORT_GENERATOR(terrain_info)
 {
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	map_location mouseover_hex = display::get_singleton()->mouseover_hex();
 
 	if (!map.on_board(mouseover_hex))
@@ -1397,7 +1397,7 @@ REPORT_GENERATOR(terrain_info)
 
 REPORT_GENERATOR(terrain)
 {
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	int viewing_side = resources::screen->viewing_side();
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
 	map_location mouseover_hex = resources::screen->mouseover_hex();
@@ -1446,7 +1446,7 @@ REPORT_GENERATOR(zoom_level)
 
 REPORT_GENERATOR(position)
 {
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	map_location mouseover_hex = resources::screen->mouseover_hex(),
 		displayed_unit_hex = resources::screen->displayed_unit_hex(),
 		selected_hex = resources::screen->selected_hex();

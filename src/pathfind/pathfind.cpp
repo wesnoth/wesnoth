@@ -58,7 +58,7 @@ namespace pathfind {
 map_location find_vacant_tile(const map_location& loc, VACANT_TILE_TYPE vacancy,
                               const unit* pass_check, const team* shroud_check)
 {
-	const gamemap & map = *resources::game_map;
+	const gamemap & map = resources::gameboard->map();
 	const unit_map & units = *resources::units;
 
 	if (!map.on_board(loc)) return map_location();
@@ -271,7 +271,7 @@ static void find_routes(
 		const std::map<map_location, int> * jamming_map=NULL,
 		std::vector<std::pair<int, int> > * full_cost_map=NULL)
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 
 	const bool see_all =  viewing_team == NULL;
 	// When see_all is true, the viewing team never matters, but we still
@@ -650,7 +650,7 @@ marked_route mark_route(const plain_route &rt)
 
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
-		const int move_cost = last_step ? 0 : u.movement_cost((*resources::game_map)[*(i+1)]);
+		const int move_cost = last_step ? 0 : u.movement_cost((resources::gameboard->map())[*(i+1)]);
 
 		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 
@@ -851,7 +851,7 @@ full_cost_map::full_cost_map(const unit& u, bool force_ignore_zoc,
 	:force_ignore_zoc_(force_ignore_zoc), allow_teleport_(allow_teleport),
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	cost_map = std::vector<std::pair<int, int> >(map.w() * map.h(), std::make_pair(-1, 0));
 	add_unit(u);
 }
@@ -866,7 +866,7 @@ full_cost_map::full_cost_map(bool force_ignore_zoc,
 	:force_ignore_zoc_(force_ignore_zoc), allow_teleport_(allow_teleport),
 	 viewing_team_(viewing_team), see_all_(see_all), ignore_units_(ignore_units)
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	cost_map = std::vector<std::pair<int, int> >(map.w() * map.h(), std::make_pair(-1, 0));
 }
 
@@ -921,7 +921,7 @@ void full_cost_map::add_unit(const map_location& origin, const unit_type* const 
  */
 std::pair<int, int> full_cost_map::get_pair_at(int x, int y) const
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	assert(cost_map.size() == static_cast<unsigned>(map.w() * map.h()));
 
 	if (x < 0 || x >= map.w() || y < 0 || y >= map.h()) {

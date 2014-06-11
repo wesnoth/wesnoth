@@ -1449,7 +1449,7 @@ static int intf_set_village_owner(lua_State *L)
  */
 static int intf_get_map_size(lua_State *L)
 {
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	lua_pushinteger(L, map.w());
 	lua_pushinteger(L, map.h());
 	lua_pushinteger(L, map.border_size());
@@ -1781,7 +1781,7 @@ static int intf_find_path(lua_State *L)
 		return luaL_argerror(L, arg - 2, "invalid location");
 
 	std::vector<team> &teams = *resources::teams;
-	const gamemap &map = *resources::game_map;
+	const gamemap &map = resources::gameboard->map();
 	int viewing_side = 0;
 	bool ignore_units = false, see_all = false, ignore_teleport = false;
 	double stop_at = 10000;

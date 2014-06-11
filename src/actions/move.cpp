@@ -722,7 +722,7 @@ namespace { // Private helpers for move_unit()
 	unit_mover::route_iterator unit_mover::plot_turn(const route_iterator & start,
 	                                                 const route_iterator & stop)
 	{
-		const gamemap &map = *resources::game_map;
+		const gamemap &map = resources::gameboard->map();
 
 		// Handle null routes.
 		if ( start == stop )
@@ -1311,7 +1311,7 @@ bool unit_can_move(const unit &u)
 				return true;
 			}
 
-			if (u.movement_cost((*resources::game_map)[locs[n]]) <= u.movement_left()) {
+			if (u.movement_cost((resources::gameboard->map())[locs[n]]) <= u.movement_left()) {
 				return true;
 			}
 		}

@@ -88,7 +88,7 @@ private:
 class remove_wrong_targets {
 public:
 	remove_wrong_targets(const readonly_context &context)
-		:avoid_(context.get_avoid()), map_(*resources::game_map)
+		:avoid_(context.get_avoid()), map_(resources::gameboard->map())
 	{
 	}
 
@@ -274,7 +274,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 	raise_user_interact();
 	unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	unit_map::iterator u;
 
@@ -621,7 +621,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 void testing_move_to_targets_phase::access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out)
 {
 	unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const unit_map::const_iterator u_it = units_.find(u);
 	if(u_it == units_.end()) {
 		return;
@@ -712,7 +712,7 @@ map_location testing_move_to_targets_phase::form_group(const std::vector<map_loc
 bool testing_move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
 {
 	unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	const std::vector<map_location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
 	if(itor == route.end()) {
@@ -814,7 +814,7 @@ bool testing_move_to_targets_phase::move_group(const map_location& dst, const st
 double testing_move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
 {
 	unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	double strength = 0.0;
 	for(std::set<map_location>::const_iterator i = group.begin(); i != group.end(); ++i) {

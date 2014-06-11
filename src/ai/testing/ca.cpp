@@ -64,7 +64,7 @@ double goto_phase::evaluate()
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<map_location> gotos;
 	unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if (ui->get_goto() == ui->get_location()) {
@@ -82,7 +82,7 @@ double goto_phase::evaluate()
 		}
 		// end of passive_leader
 
-		const pathfind::shortest_path_calculator calc(*ui, current_team(), *resources::teams, *resources::game_map);
+		const pathfind::shortest_path_calculator calc(*ui, current_team(), *resources::teams, resources::gameboard->map());
 
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*ui, current_team());
 
@@ -223,7 +223,7 @@ void recruitment_phase::execute()
 	unit_movement_scores_.clear();
 
 	const unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const std::vector<team> &teams_ = *resources::teams;
 
 	map_location start_pos = units_.find_leader(get_side())->get_location();
@@ -688,7 +688,7 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
+	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
 			resources::gameboard->map().w(), resources::gameboard->map().h());
 	if(route.steps.empty()) {
@@ -803,7 +803,7 @@ double move_leader_to_keep_phase::evaluate()
 			continue;
 		}
 
-		const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
+		const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
 
 		const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
@@ -825,7 +825,7 @@ double move_leader_to_keep_phase::evaluate()
 	const unit* leader = best_leader;
 	const map_location keep = best_keep;
 	const pathfind::paths leader_paths(*leader, false, true, current_team());
-	const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, *resources::game_map);
+	const pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::teams, resources::gameboard->map());
 	const pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(*leader, current_team());
 
 	if (leader_paths.destinations.contains(keep) && units_.count(keep) == 0) {
@@ -1046,7 +1046,7 @@ void get_villages_phase::find_villages(
 	const bool passive_leader = get_passive_leader();
 
 	size_t min_distance = 100000;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> &teams_ = *resources::teams;
 
 	// When a unit is dispatched we need to make sure we don't

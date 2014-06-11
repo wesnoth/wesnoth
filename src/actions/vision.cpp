@@ -600,7 +600,7 @@ std::vector<int> get_sides_not_seeing(const unit & target)
 
 	size_t team_size = teams.size();
 	for ( size_t i = 0; i != team_size; ++i)
-		if ( !target.is_visible_to_team(teams[i], false) )
+		if ( !target.is_visible_to_team(teams[i], resources::gameboard->map(), false) )
 			// not_see contains side numbers; i is a team index, so add 1.
 			not_seeing.push_back(i+1);
 
@@ -646,7 +646,7 @@ bool actor_sighted(const unit & target, const std::vector<int> * cache)
 	needs_event[target.side()-1] = false;
 	// Exclude those teams that cannot see the target.
 	for ( size_t i = 0; i != teams_size; ++i )
-		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], false);
+		needs_event[i] = needs_event[i] && target.is_visible_to_team(teams[i], resources::gameboard->map(), false);
 
 	// Cache "jamming".
 	std::vector< std::map<map_location, int> > jamming_cache(teams_size);

@@ -2380,7 +2380,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
 	map_location loc = cfg_to_loc(cfg, 1, 1);
 
-	gamemap mask_map(*resources::game_map);
+	gamemap mask_map(resources::gameboard->map());
 
 	//config level;
 	std::string mask = cfg["mask"];

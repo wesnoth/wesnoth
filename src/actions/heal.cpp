@@ -353,7 +353,7 @@ void calculate_healing(int side, bool update_display)
 		const team & viewing_team =
 			(*resources::teams)[resources::screen->viewing_team()];
 		if (!recorder.is_skipping() && update_display &&
-		    patient.is_visible_to_team(viewing_team, false) )
+		    patient.is_visible_to_team(viewing_team, resources::gameboard->map(), false) )
 		{
 			unit_list.push_front(heal_unit(patient, healers, healing, curing == POISON_CURE));
 		}

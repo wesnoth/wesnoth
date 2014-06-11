@@ -200,7 +200,7 @@ private:
 	{
 		const std::set<map_location>& teleports = allow_teleport ? ai_.current_team().villages() : std::set<map_location>();
 
-		const gamemap& map = *resources::game_map;
+		const gamemap& map = resources::gameboard->map();
 
 		std::vector<map_location> locs(6 + teleports.size());
 		std::copy(teleports.begin(), teleports.end(), locs.begin() + 6);
@@ -296,7 +296,7 @@ private:
 //		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( *resources::game_map, *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
+//			find_movemap( resources::gameboard->map(), *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
@@ -1145,7 +1145,7 @@ private:
 
 		pathfind::teleport_map allowed_teleports = ai_.get_allowed_teleports(unit_it);
 
-		pathfind::emergency_path_calculator em_calc(*unit_it, *resources::game_map);
+		pathfind::emergency_path_calculator em_calc(*unit_it, resources::gameboard->map());
 
                 pathfind::plain_route route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
@@ -1154,7 +1154,7 @@ private:
                 }
 
                 for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-                    if (unit_it->movement_cost((*resources::game_map)[*loc_iter]) < movetype::UNREACHABLE )
+                    if (unit_it->movement_cost((resources::gameboard->map())[*loc_iter]) < movetype::UNREACHABLE )
                         locations.push_back( variant( new location_callable(*loc_iter) ));
                     else
                         break;
@@ -1523,28 +1523,28 @@ private:
 		{
 			const unit& un = u_call->get_unit();
 
-                        if( un.total_movement() < un.movement_cost( (*resources::game_map)[loc]) )
+                        if( un.total_movement() < un.movement_cost( (resources::gameboard->map())[loc]) )
                             return variant();
 
 			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(100 - un.defense_modifier((*resources::game_map)[loc]));
+			return variant(100 - un.defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		if (u_type)
 		{
 			const unit_type& un = u_type->get_unit_type();
 
-			if( un.movement() < un.movement_type().movement_cost((*resources::game_map)[loc]) )
+			if( un.movement() < un.movement_type().movement_cost((resources::gameboard->map())[loc]) )
 				return variant();
 
 			if(!resources::gameboard->map().on_board(loc)) {
 				return variant();
 			}
 
-			return variant(100 - un.movement_type().defense_modifier((*resources::game_map)[loc]));
+			return variant(100 - un.movement_type().defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		return variant();
@@ -1577,7 +1577,7 @@ private:
 				return variant();
 			}
 
-			return variant(un.defense_modifier((*resources::game_map)[loc]));
+			return variant(un.defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		if (u_type)
@@ -1588,7 +1588,7 @@ private:
 				return variant();
 			}
 
-			return variant(un.movement_type().defense_modifier((*resources::game_map)[loc]));
+			return variant(un.movement_type().defense_modifier((resources::gameboard->map())[loc]));
 		}
 
 		return variant();
@@ -1621,7 +1621,7 @@ private:
 				return variant();
 			}
 
-			return variant(un.movement_cost((*resources::game_map)[loc]));
+			return variant(un.movement_cost((resources::gameboard->map())[loc]));
 		}
 
 		if (u_type)
@@ -1632,7 +1632,7 @@ private:
 				return variant();
 			}
 
-			return variant(un.movement_type().movement_cost((*resources::game_map)[loc]));
+			return variant(un.movement_type().movement_cost((resources::gameboard->map())[loc]));
 		}
 
 		return variant();

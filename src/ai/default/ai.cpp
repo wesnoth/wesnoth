@@ -288,7 +288,7 @@ struct protected_item {
 class remove_wrong_targets {
 public:
 	remove_wrong_targets(const readonly_context &context)
-		:avoid_(context.get_avoid()), map_(*resources::game_map)
+		:avoid_(context.get_avoid()), map_(resources::gameboard->map())
 	{
 	}
 
@@ -532,7 +532,7 @@ ai_default_recruitment_stage::~ai_default_recruitment_stage()
 void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 {
 	const unit_map &units_ = *resources::units;
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 
 	if(unit_movement_scores_.empty() == false ||
 			get_recruitment_ignore_bad_movement()) {

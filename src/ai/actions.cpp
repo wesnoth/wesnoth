@@ -364,7 +364,7 @@ bool move_result::test_route(const unit &un)
 	}
 
 	team &my_team = get_my_team();
-	const pathfind::shortest_path_calculator calc(un, my_team, *resources::teams, *resources::game_map);
+	const pathfind::shortest_path_calculator calc(un, my_team, *resources::teams, resources::gameboard->map());
 
 	//allowed teleports
 	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false

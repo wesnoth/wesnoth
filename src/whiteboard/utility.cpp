@@ -122,7 +122,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 		return u.total_movement();
 
 	int result = 0;
-	gamemap const& map = *resources::game_map;
+	gamemap const& map = resources::gameboard->map();
 	BOOST_FOREACH(map_location const& loc, std::make_pair(path.begin()+1,path.end()))
 		result += u.movement_cost(map[loc]);
 	return result;

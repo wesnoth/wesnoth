@@ -179,7 +179,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = *resources::units;
-    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, *resources::game_map);
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), *resources::teams, resources::gameboard->map());
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -822,7 +822,7 @@ variant formula_ai::get_value(const std::string& key) const
 		return get_keeps();
 	} else if(key == "map")
 	{
-		return variant(new gamemap_callable(*resources::game_map));
+		return variant(new gamemap_callable(resources::gameboard->map()));
 	} else if(key == "villages")
 	{
 		return villages_from_set(resources::gameboard->map().villages());

@@ -197,7 +197,7 @@ void recruitment::execute() {
 	 */
 
 	const unit_map& units = *resources::units;
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const std::vector<unit_map::const_iterator> leaders = units.find_leaders(get_side());
 
 	// This is the central datastructure with all score_tables in it.
@@ -600,7 +600,7 @@ void recruitment::compare_cost_maps_and_update_important_hexes(
 		const pathfind::full_cost_map& my_cost_map,
 		const pathfind::full_cost_map& enemy_cost_map) {
 
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 
 	// First collect all hexes where the average costs are similar in important_hexes_candidates
 	// Then chose only those hexes where the average costs are relatively low.
@@ -746,7 +746,7 @@ void recruitment::update_average_lawful_bonus() {
  */
 void recruitment::update_average_local_cost() {
 	average_local_cost_.clear();
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const team& team = (*resources::teams)[get_side() - 1];
 
 	for(int x = 0; x < map.w(); ++x) {
@@ -780,7 +780,7 @@ void recruitment::update_important_hexes() {
 	own_units_in_combat_counter_ = 0;
 
 	update_average_local_cost();
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const unit_map& units = *resources::units;
 
 	// Mark battle areas as important
@@ -1442,7 +1442,7 @@ double recruitment::get_estimated_unit_gain() const {
  * Guess how many villages we will gain over the next turns per turn.
  */
 double recruitment::get_estimated_village_gain() const {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	int neutral_villages = 0;
 	BOOST_FOREACH(const map_location& village, map.villages()) {
 		if (village_owner(village) == -1) {

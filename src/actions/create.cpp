@@ -267,7 +267,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
  */
 bool can_recruit_from(const map_location& leader_loc, int side)
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 
 	if( !map.is_keep(leader_loc) )
 		return false;
@@ -294,7 +294,7 @@ bool can_recruit_from(const map_location& leader_loc, int side)
  */
 bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_loc, int side)
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 
 	if( !map.is_castle(recruit_loc) )
 		return false;
@@ -360,7 +360,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 			local_result.insert(find_it->recruits().begin(),
 			                    find_it->recruits().end());
 		}
-		else if ( find_it->is_visible_to_team(current_team, false) )
+		else if ( find_it->is_visible_to_team(current_team, resources::gameboard->map(), false) )
 		{
 			// This hex is visibly occupied, so we cannot recruit here.
 			allow_local = false;
@@ -459,7 +459,7 @@ const std::vector<const unit*> get_recalls(int side, const map_location &recall_
 			add_leader_filtered_recalls(*find_it, result);
 			return result;
 		}
-		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], false) )
+		else if ( find_it->is_visible_to_team((*resources::teams)[side-1], resources::gameboard->map(), false) )
 		{
 			// This hex is visibly occupied, so we cannot recall here.
 			allow_local = false;
@@ -852,7 +852,7 @@ namespace { // Helpers for place_recruit()
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if ((*resources::teams)[unit_itor->side()-1].is_enemy(new_unit.side()) &&
-				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], false)) {
+				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], resources::gameboard->map(), false)) {
 				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;

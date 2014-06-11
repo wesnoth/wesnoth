@@ -194,7 +194,7 @@ const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_t
 
 const time_of_day tod_manager::get_illuminated_time_of_day(const map_location& loc, int for_turn) const
 {
-	const gamemap& map = *resources::game_map;
+	const gamemap& map = resources::gameboard->map();
 	const unit_map& units = *resources::units;
 
 	// get ToD ignoring illumination

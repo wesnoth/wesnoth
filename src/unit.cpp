@@ -1889,7 +1889,7 @@ void unit::redraw_unit () const
 	display &disp = *display::get_singleton();
 	const gamemap &map = disp.get_map();
 
-	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],disp.show_everything(),map) )
+	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],map, disp.show_everything()) )
 	{
 		clear_haloes();
 		if(anim_) {
@@ -2885,7 +2885,7 @@ bool unit::invisible(const map_location& loc, bool see_all) const
 }
 
 
-bool unit::is_visible_to_team(team const& team, bool const see_all, gamemap const& map) const
+bool unit::is_visible_to_team(team const& team, gamemap const& map, bool const see_all) const
 {
 	map_location const& loc = get_location();
 	if (!map.on_board(loc))

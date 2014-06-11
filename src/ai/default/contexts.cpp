@@ -98,7 +98,7 @@ default_ai_context& default_ai_context_impl::get_default_ai_context(){
 
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
@@ -133,7 +133,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	log_scope2(log_ai, "finding targets...");
 	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
-	const gamemap &map_ = *resources::game_map;
+	const gamemap &map_ = resources::gameboard->map();
 	std::vector<team> teams_ = *resources::teams;
 	const bool has_leader = leader != units_.end();
 
