@@ -16,6 +16,7 @@
 
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
+#include "display_context.hpp"
 #include "editor/editor_controller.hpp"
 #include "editor/palette/terrain_palettes.hpp"
 #include "font.hpp"
@@ -123,14 +124,14 @@ namespace reports {
 
 static const unit *get_visible_unit()
 {
-	return resources::gameboard->get_visible_unit(resources::screen->displayed_unit_hex(),
+	return resources::disp_context->get_visible_unit(resources::screen->displayed_unit_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
 static const unit *get_selected_unit()
 {
-	return resources::gameboard->get_visible_unit(resources::screen->selected_hex(),
+	return resources::disp_context->get_visible_unit(resources::screen->selected_hex(),
 		(*resources::teams)[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
@@ -318,7 +319,7 @@ static config unit_status(const unit* u)
 	if (!u) return report();
 	config res;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
-	if (resources::gameboard->map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
+	if (resources::disp_context->map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
 		add_status(res, "misc/invisible.png", N_("invisible: "),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 	}
@@ -528,8 +529,8 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 	}
 
 	std::ostringstream str, tooltip;
-	const gamemap &map = resources::gameboard->map();
-	if(!resources::gameboard->map().on_board(displayed_unit_hex)) {
+	const gamemap &map = resources::disp_context->map();
+	if(!resources::disp_context->map().on_board(displayed_unit_hex)) {
 		return report();
 	}
 
@@ -617,7 +618,7 @@ static config unit_moves(const unit* u)
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 			continue;
 
-		const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
+		const terrain_type& info = resources::disp_context->map().get_terrain_info(terrain);
 
 		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 
@@ -1199,7 +1200,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";
 
-	const gamemap &map = resources::gameboard->map();
+	const gamemap &map = resources::disp_context->map();
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 
 	//if (terrain == t_translation::OFF_MAP_USER)
@@ -1278,13 +1279,13 @@ REPORT_GENERATOR(villages)
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
-		BOOST_FOREACH(const map_location &loc, resources::gameboard->map().villages()) {
+		BOOST_FOREACH(const map_location &loc, resources::disp_context->map().villages()) {
 			if (!viewing_team.shrouded(loc))
 				++unshrouded_villages;
 		}
 		str << unshrouded_villages;
 	} else {
-		str << resources::gameboard->map().villages().size();
+		str << resources::disp_context->map().villages().size();
 	}
 	return gray_inactive(str.str());
 }
@@ -1351,7 +1352,7 @@ void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::strin
 
 REPORT_GENERATOR(terrain_info)
 {
-	const gamemap &map = resources::gameboard->map();
+	const gamemap &map = resources::disp_context->map();
 	map_location mouseover_hex = display::get_singleton()->mouseover_hex();
 
 	if (!map.on_board(mouseover_hex))
@@ -1397,7 +1398,7 @@ REPORT_GENERATOR(terrain_info)
 
 REPORT_GENERATOR(terrain)
 {
-	const gamemap &map = resources::gameboard->map();
+	const gamemap &map = resources::disp_context->map();
 	int viewing_side = resources::screen->viewing_side();
 	const team &viewing_team = (*resources::teams)[viewing_side - 1];
 	map_location mouseover_hex = resources::screen->mouseover_hex();
@@ -1446,7 +1447,7 @@ REPORT_GENERATOR(zoom_level)
 
 REPORT_GENERATOR(position)
 {
-	const gamemap &map = resources::gameboard->map();
+	const gamemap &map = resources::disp_context->map();
 	map_location mouseover_hex = resources::screen->mouseover_hex(),
 		displayed_unit_hex = resources::screen->displayed_unit_hex(),
 		selected_hex = resources::screen->selected_hex();
