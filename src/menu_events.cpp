@@ -2996,6 +2996,7 @@ void console_handler::do_choose_level() {
 		e.transient.carryover_report = false;
 		e.prescenario_save = true;
 		e.transient.linger_mode = false;
+		e.proceed_to_next_level = true;
 		throw end_level_exception(VICTORY);
 	}
 }
