@@ -206,6 +206,7 @@ display::display(const display_context * dc, CVideo& video, const config& theme_
 #endif
 {
 	singleton_ = this;
+	resources::disp_context = dc_;
 
 	blindfold_ctr_ = 0;
 
@@ -565,6 +566,7 @@ void display::change_display_context(const display_context * dc)
 {
 	dc_ = dc;
  	builder_->change_map(&dc_->map()); //TODO: Should display_context own and initalize the builder object?
+	resources::disp_context = dc_;
 }
 
 void display::blindfold(bool value)
