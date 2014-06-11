@@ -404,7 +404,7 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 	// if we loaded a save file in linger mode, skip to it.
 	if (linger_) {
 		//determine the bonus gold handling for this scenario
-		end_level.read(level_.child_or_empty("endlevel"));
+		end_level.read(level_.child_or_empty("end_level_data"));
 		end_level.transient.carryover_report = false;
 		end_level.transient.disabled = true;
 		end_level_struct els = { SKIP_TO_LINGER };
@@ -566,10 +566,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						}
 
 						// Add all the units that survived the scenario.
+						// this function doesn't move unit to the recalllist anymore i just keep this name to prevent merging conflicts.
 						LOG_NG << "Add units that survived the scenario to the recall list.\n";
 						gameboard_.all_survivors_to_recall();
 
-						gamestate_.set_snapshot(config());
+						gamestate_.remove_snapshot();
 						if(!is_observer()) {
 							persist_.end_transaction();
 						}
@@ -1127,6 +1128,8 @@ bool playsingle_controller::is_host() const
 
 void playsingle_controller::maybe_linger()
 {
+	//Make sure [end_level_data] gets writen into the snapshot even when skipping linger mode.
+	linger_ = true;
 	if (get_end_level_data_const().transient.linger_mode) {
 		linger();
 	}

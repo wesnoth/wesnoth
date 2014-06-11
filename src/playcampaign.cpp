@@ -66,10 +66,6 @@ static void store_carryover(saved_game& gamestate, playsingle_controller& playco
 		return;
 	}
 
-	carryover_info sides(gamestate.carryover_sides);
-
-	sides.transfer_from(*resources::gamedata);
-
 	std::ostringstream report;
 	std::string title;
 
@@ -108,19 +104,12 @@ static void store_carryover(saved_game& gamestate, playsingle_controller& playco
 
 		BOOST_FOREACH(const team &t, teams)
 		{
-			if (!t.persistent()){
-				continue;
-			} else if (t.lost()) {
-				sides.remove_side(t.save_id());
+			if (!t.persistent() || t.lost() || !t.is_human())
+			{
 				continue;
 			}
 			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
-			sides.transfer_from(t, carryover_gold);
-
-			if (!t.is_human()){
-				continue;
-			}
-
+			
 			if (persistent_teams > 1) {
 				report << "\n<b>" << t.current_player() << "</b>\n";
 			}
@@ -132,8 +121,6 @@ static void store_carryover(saved_game& gamestate, playsingle_controller& playco
 	if (end_level.transient.carryover_report) {
 		gui2::show_transient_message(disp.video(), title, report.str(), "", true);
 	}
-
-	gamestate.carryover_sides_start = sides.to_config();
 }
 
 static void generate_scenario(config const*& scenario)
@@ -266,6 +253,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 			}
 		}
 	}
+	state_of_game.set_snapshot(playcontroller.to_config());
 
 	return res;
 }
@@ -314,8 +302,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 				}
 			}
 		}
-	}
 
+	}
+	state_of_game.set_snapshot(playcontroller.to_config());
 	return res;
 }
 
@@ -466,9 +455,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				save.save_game_automatic(disp.video(), true);
 			}
 		}
-
+		
+		gamestate.convert_to_start_save();
 		recorder.clear();
-		gamestate.remove_old_scenario();
 
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
 

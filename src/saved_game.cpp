@@ -45,6 +45,7 @@
 #include "util.hpp"
 
 #include <boost/foreach.hpp>
+#include <cassert>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -252,4 +253,17 @@ void saved_game::remove_old_scenario()
 	carryover_sides = config();
 	replay_data = config();
 	replay_start_ = config();
+}
+
+void saved_game::convert_to_start_save()
+{
+	assert(starting_pos_type_ == STARTINGPOS_SNAPSHOT);
+	carryover_info sides(starting_pos_, true);
+	sides.merge_old_carryover(carryover_info(carryover_sides));
+	
+	carryover_sides_start = sides.to_config();
+	replay_data = config();
+	replay_start_ = config();
+	carryover_sides = config();
+	remove_snapshot();
 }

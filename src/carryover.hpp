@@ -38,6 +38,7 @@ public:
 	void initialize_team(config& side_cfg);
 	const std::string to_string();
 	void to_config(config& cfg);
+	void set_gold(int gold);
 private:
 	bool add_;
 	std::string color_;
@@ -65,8 +66,9 @@ public:
 		, next_scenario_()
 		, next_underlying_unit_id_()
 	{}
-	// Turns config from a loaded savegame into carryover_info
-	explicit carryover_info(const config& cfg);
+	/// Turns config from a loaded savegame into carryover_info
+	/// @param from_snapshot true if cfg is a [snapshot], false if cfg is [carryover_sides(_start)]
+	explicit carryover_info(const config& cfg, bool from_snapshot = false);
 
 	carryover* get_side(std::string save_id);
 	std::vector<carryover>& get_all_sides();
@@ -94,6 +96,8 @@ public:
 	const std::string& next_scenario() const { return next_scenario_; }
 
 	const config to_config();
+
+	void merge_old_carryover(const carryover_info& old_carryover);
 private:
 	std::vector<carryover> carryover_sides_;
 	end_level_data end_level_;

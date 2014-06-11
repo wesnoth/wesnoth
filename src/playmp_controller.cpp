@@ -623,6 +623,7 @@ void playmp_controller::do_idle_notification()
 
 void playmp_controller::maybe_linger()
 {
+	linger_ = true;
 	if (!get_end_level_data_const().transient.linger_mode) {
 		if(!is_host()) {
 			// If we continue without lingering we need to

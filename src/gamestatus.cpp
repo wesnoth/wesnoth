@@ -700,6 +700,17 @@ void convert_old_saves(config& cfg){
 			carryover_sides_start["next_underlying_unit_id"] = cfg["next_underlying_unit_id"];
 		}
 	}
+
+	if(config& snapshot = cfg.child("snapshot"))
+	{
+		//make [end_level] -> [end_level_data] since its alo called [end_level_data] in the carryover.
+		if(config& end_level = cfg.child("end_level") )
+		{
+			snapshot.add_child("end_level_data", end_level);
+			snapshot.remove_child("end_level",0);
+		}
+	}
+
 	//1.12-1.13 end
 	LOG_RG<<"cfg after conversion "<<cfg<<"\n";
 }

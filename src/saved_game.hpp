@@ -50,7 +50,7 @@ public:
 	{
 		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
 	}
-
+	void convert_to_start_save();
 	
 	config& get_starting_pos();
 	config& replay_start() { return replay_start_; }
