@@ -255,7 +255,7 @@ void server::run()
 
 			const time_t cur_ts = time(NULL);
 			// Write config to disk every ten minutes.
-			if(cur_ts - last_ts >= 60) {
+			if(cur_ts - last_ts >= 10*60) {
 				write_config();
 				last_ts = cur_ts;
 			}
