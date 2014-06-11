@@ -57,7 +57,6 @@ class game_board : public display_context {
 
 	//TODO: Remove these when we have refactored enough to make it possible.
 	friend class play_controller;
-	friend class replay_controller;
 	friend class playsingle_controller;
 	friend class playmp_controller;
 	friend class events::mouse_handler;
@@ -110,6 +109,8 @@ class game_board : public display_context {
 	void set_all_units_user_end_turn();
 
 	void all_survivors_to_recall();
+
+	void reset_all_teams_objectives_changes();
 
 	// Manipulator from playturn
 
