@@ -8,7 +8,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "util.hpp"
 
-#include <boost\foreach.hpp>
+#include <boost/foreach.hpp>
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
