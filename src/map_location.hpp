@@ -123,10 +123,6 @@ void get_adjacent_tiles(const map_location& a, map_location* res);
  */
 size_t distance_between(const map_location& a, const map_location& b);
 
-/** Parses ranges of locations into a vector of locations. */
-std::vector<map_location> parse_location_range(const std::string& xvals,
-	const std::string &yvals, bool with_border = false);
-
 /**
  * Write a set of locations into a config using ranges,
  * adding keys x=x1,..,xn and y=y1a-y1b,..,yna-ynb

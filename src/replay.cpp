@@ -528,8 +528,13 @@ void replay::undo_cut(config& dst)
 	{
 		// A unit's move is being undone.
 		// Repair unsynced cmds whose locations depend on that unit's location.
-		const std::vector<map_location> steps =
-			parse_location_range(child["x"], child["y"]);
+		std::vector<map_location> steps;
+
+		try {
+			read_locations(child,steps);
+		} catch (bad_lexical_cast &) {
+			WRN_REPLAY << "Warning: Path data contained something which could not be parsed to a sequence of locations:" << "\n config = " << child.debug() << std::endl;
+		}
 
 		if (steps.empty()) {
 			ERR_REPLAY << "trying to undo a move using an empty path";

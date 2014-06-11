@@ -302,7 +302,7 @@ void team::build(const config &cfg, const gamemap& map, int gold)
 	const config &fog_override = cfg.child("fog_override");
 	if ( fog_override ) {
 		const std::vector<map_location> fog_vector =
-			parse_location_range(fog_override["x"], fog_override["y"], true);
+			map.parse_location_range(fog_override["x"], fog_override["y"], true);
 		fog_clearer_.insert(fog_vector.begin(), fog_vector.end());
 	}
 
