@@ -296,7 +296,7 @@ void loadgame::set_gamestate()
 	gamestate_ = saved_game(load_config_);
 #if 0
 	//we dont need this code since we always restore our random from [snapshot] or [replay_start] (execpt for start of scenario saves where we dont have those)
-
+	//also the random_seed isn't stored at toplevel anymore.
 
 
 	// Get the status of the random in the snapshot.
