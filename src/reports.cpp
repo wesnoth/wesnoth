@@ -675,7 +675,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	int tod_bonus = combat_modifier(displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
 	int leader_bonus = 0;
-	if (under_leadership(*resources::units, displayed_unit_hex, &leader_bonus).valid())
+	if (under_leadership(resources::disp_context->units(), displayed_unit_hex, &leader_bonus).valid())
 		damage_multiplier += leader_bonus;
 
 	bool slowed = u.get_state(unit::STATE_SLOWED);
@@ -774,7 +774,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	std::set<std::string> seen_types;
 	const team &unit_team = resources::disp_context->teams()[u.side() - 1];
 	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
-	BOOST_FOREACH(const unit &enemy, *resources::units)
+	BOOST_FOREACH(const unit &enemy, *resources::disp_context->units())
 	{
 		if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
 			continue;
@@ -883,7 +883,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			battle_context weapon(*resources::units, attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
+			battle_context weapon(resources::disp_context->units(), attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
 			weapons.push_back(weapon);
 		}
 	}
