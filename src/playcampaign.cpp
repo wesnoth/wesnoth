@@ -448,9 +448,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		} else {
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
-			config * scenario = &gamestate.get_starting_pos();
 
 			if (io_type == IO_SERVER && gamestate.valid()) {
+				config * scenario = &gamestate.get_starting_pos();
 				mp_game_settings& params = gamestate.mp_settings();
 
 				// A hash have to be generated using an unmodified
