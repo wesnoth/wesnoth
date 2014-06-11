@@ -790,7 +790,6 @@ bool game_controller::new_campaign()
 			}
 		}
 
-		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
 		state_.classification().difficulty = difficulties[difficulty];
 	}
 
