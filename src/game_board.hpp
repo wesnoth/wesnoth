@@ -58,7 +58,6 @@ class game_board : public display_context {
 	//TODO: Remove these when we have refactored enough to make it possible.
 	friend class play_controller;
 	friend class playsingle_controller;
-	friend class playmp_controller;
 	friend class events::mouse_handler;
 	friend class events::menu_handler;
 
