@@ -98,9 +98,6 @@ public:
 	 */
 	void full_screen();
 
-	/** Clears the contents of the window. */
-	void clear();
-
 	/**
 	 * Clears the contents of the window with a given color.
 	 *
