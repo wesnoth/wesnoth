@@ -166,13 +166,11 @@ void level_to_gamestate(config& level, saved_game& state)
 {
 	// Any replay data is only temporary and should be removed from
 	// the level data in case we want to save the game later.
-	const config& replay_data = level.child("replay");
-	config replay_data_store;
-	if (replay_data) {
-		replay_data_store = replay_data;
+	if (const config& replay_data = level.child("replay")) 
+	{
 		LOG_NW << "setting replay\n";
 		state.replay_data = replay_data;
-		recorder = replay(replay_data_store);
+		recorder = replay(replay_data);
 		if (!recorder.empty()) {
 			recorder.set_skip(false);
 			recorder.set_to_end();
