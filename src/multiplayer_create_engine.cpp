@@ -420,7 +420,6 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 	DBG_MP << "preparing data for campaign by reloading game config\n";
 
 	if (difficulty != "") {
-		state_.carryover_sides_start["difficulty"] = difficulty;
 		state_.classification().difficulty = difficulty;
 		parameters_.difficulty_define = difficulty;
 	}
