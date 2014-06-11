@@ -133,6 +133,7 @@ namespace image {
 
 
 	typedef cache_type<surface> image_cache;
+	typedef cache_type<sdl::ttexture> texture_cache;
 	typedef cache_type<bool> bool_cache;
 
 	typedef std::map<t_translation::t_terrain, surface> mini_terrain_cache_map;

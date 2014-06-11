@@ -125,6 +125,10 @@ image::image_cache images_,
 		tod_colored_images_,
 		brightened_images_;
 
+/** Rexture caches */
+image::texture_cache txt_images_,
+		txt_hexed_images_;
+
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
 
