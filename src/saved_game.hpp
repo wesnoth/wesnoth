@@ -51,7 +51,8 @@ public:
 		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
 	}
 	void convert_to_start_save();
-	
+	const config& get_replay_starting_pos();
+
 	config& get_starting_pos();
 	config& replay_start() { return replay_start_; }
 	/**

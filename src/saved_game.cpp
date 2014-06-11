@@ -247,6 +247,26 @@ config& saved_game::get_starting_pos()
 	return starting_pos_;
 }
 
+
+const config& saved_game::get_replay_starting_pos()
+{
+	if(!this->replay_start_.empty())
+	{
+		return replay_start_;
+	}
+	if(!this->carryover_sides_start.empty())
+	{
+		//Try to load the scenario form game config or from [scenario] if there is no [replay_start]
+		expand_scenario();
+		expand_carryover();
+	}
+	if(starting_pos_type_ == STARTINGPOS_SCENARIO)
+	{
+		return starting_pos_;
+	}
+	return this->replay_start_.child("some_non_existet_invalid");
+}
+
 void saved_game::remove_old_scenario()
 {
 	remove_snapshot();

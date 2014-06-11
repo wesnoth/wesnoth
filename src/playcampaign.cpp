@@ -162,7 +162,8 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 	const std::string campaign_type_str = lexical_cast<std::string> (gamestate.classification().campaign_type);
 
 	// 'starting_pos' will contain the position we start the game from.
-	const config& starting_pos = gamestate.replay_start();
+	// this call also might expand [scenario] in case thatt there is no replay_start
+	const config& starting_pos = gamestate.get_replay_starting_pos();
 
 	try {
 		// Preserve old label eg. replay

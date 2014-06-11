@@ -397,7 +397,8 @@ save_info create_save_info::operator()(const std::string& filename) const
 void extract_summary_from_config(config& cfg_save, config& cfg_summary)
 {
 	const config &cfg_snapshot = cfg_save.child("snapshot");
-	const config &cfg_replay_start = cfg_save.child("replay_start");
+	//Servergenerated replays contain [scenario] and no [replay_start]
+	const config &cfg_replay_start = cfg_save.child("replay_start") ? cfg_save.child("replay_start") : cfg_save.child("scenario") ;
 
 	const config &cfg_replay = cfg_save.child("replay");
 	const bool has_replay = cfg_replay && !cfg_replay.empty();
