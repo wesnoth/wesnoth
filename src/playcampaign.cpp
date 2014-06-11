@@ -358,8 +358,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 			switch (io_type){
 			case IO_NONE:
+#if !defined(ALWAYS_USE_MP_CONTROLLER)
 				res = playsingle_scenario(game_config, disp, gamestate, story, skip_replay, end_level);
 				break;
+#endif
 			case IO_SERVER:
 			case IO_CLIENT:
 				res = playmp_scenario(game_config, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
