@@ -318,7 +318,7 @@ static config unit_status(const unit* u)
 	if (!u) return report();
 	config res;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
-	if (resources::game_map->on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
+	if (resources::gameboard->map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
 		add_status(res, "misc/invisible.png", N_("invisible: "),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 	}
@@ -529,7 +529,7 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 
 	std::ostringstream str, tooltip;
 	const gamemap &map = *resources::game_map;
-	if(!resources::game_map->on_board(displayed_unit_hex)) {
+	if(!resources::gameboard->map().on_board(displayed_unit_hex)) {
 		return report();
 	}
 
@@ -617,7 +617,7 @@ static config unit_moves(const unit* u)
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 			continue;
 
-		const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+		const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
 
 		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 
@@ -1278,13 +1278,13 @@ REPORT_GENERATOR(villages)
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
-		BOOST_FOREACH(const map_location &loc, resources::game_map->villages()) {
+		BOOST_FOREACH(const map_location &loc, resources::gameboard->map().villages()) {
 			if (!viewing_team.shrouded(loc))
 				++unshrouded_villages;
 		}
 		str << unshrouded_villages;
 	} else {
-		str << resources::game_map->villages().size();
+		str << resources::gameboard->map().villages().size();
 	}
 	return gray_inactive(str.str());
 }

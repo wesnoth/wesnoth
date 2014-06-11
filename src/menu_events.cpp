@@ -904,7 +904,7 @@ void menu_handler::terrain_description(mouse_handler& mousehandler)
 	}
 
 	const terrain_type& type = map_.get_terrain_info(loc);
-	//const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+	//const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
 	dialogs::show_terrain_description(type);
 }
 

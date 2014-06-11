@@ -134,7 +134,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Handle plague.
 		unit_ability_list plague_specials = weapon->get_specials("plague");
 		plagues = !opp.get_state("unplagueable") && !plague_specials.empty() &&
-			strcmp(opp.undead_variation().c_str(), "null") && !resources::game_map->is_village(opp_loc);
+			strcmp(opp.undead_variation().c_str(), "null") && !resources::gameboard->map().is_village(opp_loc);
 
 		if (plagues) {
 			plague_type = (*plague_specials.front().first)["type"].str();
@@ -144,7 +144,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 
 		// Compute chance to hit.
 		chance_to_hit = opp.defense_modifier(
-			resources::game_map->get_terrain(opp_loc)) + weapon->accuracy() -
+			resources::gameboard->map().get_terrain(opp_loc)) + weapon->accuracy() -
 			(opp_weapon ? opp_weapon->parry() : 0);
 		if(chance_to_hit > 100) {
 			chance_to_hit = 100;

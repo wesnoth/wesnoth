@@ -649,7 +649,7 @@ marked_route mark_route(const plain_route &rt)
 		bool last_step = (i+1 == rt.steps.end());
 
 		// move_cost of the next step is irrelevant for the last step
-		assert(last_step || resources::game_map->on_board(*(i+1)));
+		assert(last_step || resources::gameboard->map().on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((*resources::game_map)[*(i+1)]);
 
 		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
@@ -659,7 +659,7 @@ marked_route mark_route(const plain_route &rt)
 			// if it's an enemy unit and a fogged village, we assume a capture
 			// (if he already owns it, we can't know that)
 			// if it's not an enemy, we can always know if he owns the village
-			bool capture = resources::game_map->is_village(*i) && ( !unit_team.owns_village(*i)
+			bool capture = resources::gameboard->map().is_village(*i) && ( !unit_team.owns_village(*i)
 				 || (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
 
 			++turns;

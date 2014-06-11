@@ -21,6 +21,7 @@
 
 #include "../composite/ai.hpp"
 #include "../actions.hpp"
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
@@ -161,15 +162,15 @@ void testing_move_to_targets_phase::execute()
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
 				ittg != targets.end(); ++ittg) {
-			assert(resources::game_map->on_board(ittg->loc));
+			assert(resources::gameboard->map().on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false || move.second.valid() == false) {
 			break;
 		}
 
-		assert (resources::game_map->on_board(move.first)
-			&& resources::game_map->on_board(move.second));
+		assert (resources::gameboard->map().on_board(move.first)
+			&& resources::gameboard->map().on_board(move.second));
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
@@ -858,7 +859,7 @@ bool testing_move_to_targets_phase::should_retreat(const map_location& loc, cons
 	double optimal_terrain = best_defensive_position(un->get_location(), dstsrc,
 			srcdst, enemy_dstsrc).chance_to_hit/100.0;
 	const double proposed_terrain =
-		un->defense_modifier(resources::game_map->get_terrain(loc))/100.0;
+		un->defense_modifier(resources::gameboard->map().get_terrain(loc))/100.0;
 
 	// The 'exposure' is the additional % chance to hit
 	// this unit receives from being on a sub-optimal defensive terrain.

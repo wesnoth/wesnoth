@@ -370,7 +370,7 @@ bool move_result::test_route(const unit &un)
 	pathfind::teleport_map allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
 
 	//do an A*-search
-	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports)));
+	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports)));
 	if (route_->steps.empty()) {
 		set_error(E_NO_ROUTE);
 		return false;
@@ -565,7 +565,7 @@ void recall_result::do_check_before()
 
 void recall_result::do_check_after()
 {
-	if (!resources::game_map->on_board(recall_location_)){
+	if (!resources::gameboard->map().on_board(recall_location_)){
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}
@@ -709,7 +709,7 @@ void recruit_result::do_check_before()
 
 void recruit_result::do_check_after()
 {
-	if (!resources::game_map->on_board(recruit_location_)) {
+	if (!resources::gameboard->map().on_board(recruit_location_)) {
 		set_error(AI_ACTION_FAILURE);
 		return;
 	}

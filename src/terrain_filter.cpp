@@ -17,6 +17,7 @@
 #include "global.hpp"
 
 #include "config.hpp"
+#include "game_board.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "resources.hpp"
@@ -114,7 +115,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			cache_.parsed_terrain = new t_translation::t_match(cfg_["terrain"]);
 		}
 		if(!cache_.parsed_terrain->is_empty) {
-			const t_translation::t_terrain letter = resources::game_map->get_terrain_info(loc).number();
+			const t_translation::t_terrain letter = resources::gameboard->map().get_terrain_info(loc).number();
 			if(!t_translation::terrain_matches(letter, *cache_.parsed_terrain)) {
 				return false;
 			}
@@ -190,7 +191,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				map_location &adj = adjacent[*j];
-				if (resources::game_map->on_board(adj)) {
+				if (resources::gameboard->map().on_board(adj)) {
 					if(cache_.adjacent_matches == NULL) {
 						while(index >= std::distance(cache_.adjacent_match_cache.begin(), cache_.adjacent_match_cache.end())) {
 							const vconfig& adj_cfg = adj_cfgs[cache_.adjacent_match_cache.size()];
@@ -282,7 +283,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(!owner_side.empty()) {
 			WRN_NG << "duplicate side information in a SLF, ignoring inline owner_side=" << std::endl;
 		}
-		if(!resources::game_map->is_village(loc))
+		if(!resources::gameboard->map().is_village(loc))
 			return false;
 		side_filter ssf(filter_owner);
 		const std::vector<int>& sides = ssf.get_teams();
@@ -311,7 +312,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 bool terrain_filter::match(const map_location& loc) const
 {
 	if(cfg_["x"] == "recall" && cfg_["y"] == "recall") {
-		return !resources::game_map->on_board(loc);
+		return !resources::gameboard->map().on_board(loc);
 	}
 	std::set<map_location> hexes;
 	std::vector<map_location> loc_vec(1, loc);
@@ -387,9 +388,9 @@ void terrain_filter::get_locations(std::set<map_location>& locs, bool with_borde
 			&& !cfg_.has_attribute("area") ) {
 
 		//consider all locations on the map
-		int bs = resources::game_map->border_size();
-		int w = with_border ? resources::game_map->w() + bs : resources::game_map->w();
-		int h = with_border ? resources::game_map->h() + bs : resources::game_map->h();
+		int bs = resources::gameboard->map().border_size();
+		int w = with_border ? resources::gameboard->map().w() + bs : resources::gameboard->map().w();
+		int h = with_border ? resources::gameboard->map().h() + bs : resources::gameboard->map().h();
 		for (int x = with_border ? 0 - bs : 0; x < w; ++x) {
 			for (int y = with_border ? 0 - bs : 0; y < h; ++y) {
 				match_set.insert(map_location(x,y));

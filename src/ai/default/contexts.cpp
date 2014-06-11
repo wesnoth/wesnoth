@@ -20,6 +20,7 @@
 
 #include "contexts.hpp"
 
+#include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../resources.hpp"
@@ -74,7 +75,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 		if (checked_hexes.find(adj[n]) != checked_hexes.end())
 			continue;
 		checked_hexes.insert(adj[n]);
-		if (resources::game_map->is_castle(adj[n])) {
+		if (resources::gameboard->map().is_castle(adj[n])) {
 			const unit_map::const_iterator u = units_.find(adj[n]);
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()

@@ -25,6 +25,7 @@
 #include "../manager.hpp"
 #include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
+#include "../../game_board.hpp"
 #include "../../game_display.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
@@ -177,7 +178,7 @@ double recruitment::evaluate() {
 		}
 
 		const map_location& loc = leader->get_location();
-		if (resources::game_map->is_keep(loc) &&
+		if (resources::gameboard->map().is_keep(loc) &&
 				pathfind::find_vacant_castle(*leader) != map_location::null_location()) {
 			return get_score();
 		}
@@ -206,7 +207,7 @@ void recruitment::execute() {
 
 	BOOST_FOREACH(const unit_map::const_iterator& leader, leaders) {
 		const map_location& keep = leader->get_location();
-		if (!resources::game_map->is_keep(keep)) {
+		if (!resources::gameboard->map().is_keep(keep)) {
 			LOG_AI_RECRUITMENT << "Leader " << leader->name() << " is not on keep. \n";
 			continue;
 		}
@@ -1708,7 +1709,7 @@ void recruitment::update_scouts_wanted() {
 	int neutral_villages = 0;
 	// We recruit the initial allocation of scouts
 	// based on how many neutral villages there are.
-	BOOST_FOREACH(const map_location& village, resources::game_map->villages()) {
+	BOOST_FOREACH(const map_location& village, resources::gameboard->map().villages()) {
 		if (village_owner(village) == -1) {
 			++neutral_villages;
 		}

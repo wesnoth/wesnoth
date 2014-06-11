@@ -64,7 +64,7 @@ side_actions_ptr current_side_actions()
 unit const* find_backup_leader(unit const& leader)
 {
 	assert(leader.can_recruit());
-	assert(resources::game_map->is_keep(leader.get_location()));
+	assert(resources::gameboard->map().is_keep(leader.get_location()));
 	BOOST_FOREACH(unit const& unit, *resources::units)
 	{
 		if (unit.can_recruit() && unit.id() != leader.id())
@@ -78,7 +78,7 @@ unit const* find_backup_leader(unit const& leader)
 
 unit* find_recruiter(size_t team_index, map_location const& hex)
 {
-	if ( !resources::game_map->is_castle(hex) )
+	if ( !resources::gameboard->map().is_castle(hex) )
 		return NULL;
 
 	BOOST_FOREACH(unit& u, *resources::units)
@@ -117,7 +117,7 @@ int path_cost(std::vector<map_location> const& path, unit const& u)
 
 	team const& u_team = resources::teams->at(u.side()-1);
 	map_location const& dest = path.back();
-	if ( (resources::game_map->is_village(dest) && !u_team.owns_village(dest))
+	if ( (resources::gameboard->map().is_village(dest) && !u_team.owns_village(dest))
 	     || pathfind::enemy_zoc(u_team, dest, u_team) )
 		return u.total_movement();
 

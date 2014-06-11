@@ -1594,11 +1594,11 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					if ( (leader_filter.null() || leader->matches_filter(leader_filter))  &&
 					     u->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
-						if(!resources::game_map->on_board(loc))
+						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
 						if(pass_check || (resources::units->count(loc) > 0))
 							loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
-						if(resources::game_map->on_board(loc)) {
+						if(resources::gameboard->map().on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
@@ -1608,12 +1608,12 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 						}
 					}
 				}
-				if (resources::game_map->on_board(cfg_loc)) {
+				if (resources::gameboard->map().on_board(cfg_loc)) {
 					map_location loc = cfg_loc;
 					if(pass_check || (resources::units->count(loc) > 0))
 						loc = pathfind::find_vacant_tile(loc, pathfind::VACANT_ANY, pass_check);
 					// Check if we still have a valid location
-					if (resources::game_map->on_board(loc)) {
+					if (resources::gameboard->map().on_board(loc)) {
 						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location();
@@ -2330,13 +2330,13 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 
 	// We have found a unit that matches the filter
 	const map_location dst = cfg_to_loc(cfg);
-	if (dst == u->get_location() || !resources::game_map->on_board(dst)) return;
+	if (dst == u->get_location() || !resources::gameboard->map().on_board(dst)) return;
 
 	const unit* pass_check = NULL;
 	if (cfg["check_passability"].to_bool(true))
 		pass_check = &*u;
 	const map_location vacant_dst = find_vacant_tile(dst, pathfind::VACANT_ANY, pass_check);
-	if (!resources::game_map->on_board(vacant_dst)) return;
+	if (!resources::gameboard->map().on_board(vacant_dst)) return;
 
 	// Clear the destination hex before the move (so the animation can be seen).
 	bool clear_shroud = cfg["clear_shroud"].to_bool(true);
@@ -2364,7 +2364,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 		clearer.clear_unit(vacant_dst, *u);
 	}
 
-	if (resources::game_map->is_village(vacant_dst)) {
+	if (resources::gameboard->map().is_village(vacant_dst)) {
 		actions::get_village(vacant_dst, u->side());
 	}
 
@@ -2492,7 +2492,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 	}
 	team &tm = resources::teams->at(side-1);
 
-	unit_creator uc(tm,resources::game_map->starting_position(side));
+	unit_creator uc(tm,resources::gameboard->map().starting_position(side));
 
 	uc
 		.allow_add_to_recall(true)
@@ -2519,7 +2519,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 		map_location loc = cfg_to_loc(
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		const bool advance = cfg["advance"].to_bool(true);
-		if(resources::game_map->on_board(loc)) {
+		if(resources::gameboard->map().on_board(loc)) {
 			if (cfg["find_vacant"].to_bool()) {
 				const unit* pass_check = NULL;
 				if (cfg["check_passability"].to_bool(true)) pass_check = &u;

@@ -19,6 +19,7 @@
 
 #include "heal.hpp"
 
+#include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../gettext.hpp"
 #include "../log.hpp"
@@ -93,7 +94,7 @@ namespace {
 		if ( patient.side() == side )
 		{
 			// Village healing?
-			if ( resources::game_map->gives_healing(patient.get_location()) )
+			if ( resources::gameboard->map().gives_healing(patient.get_location()) )
 				return POISON_CURE;
 
 			// Regeneration?
@@ -191,7 +192,7 @@ namespace {
 		{
 			// Village healing?
 			update_healing(healing, harming,
-			               resources::game_map->gives_healing(patient.get_location()));
+			               resources::gameboard->map().gives_healing(patient.get_location()));
 
 			// Regeneration?
 			unit_ability_list regen_list = patient.get_abilities("regenerate");

@@ -1348,7 +1348,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		if(cfg_x == "recall" && cfg_y == "recall") {
 			//locations on the map are considered to not be on a recall list
 			if ((!resources::game_map && loc.valid()) ||
-			    (resources::game_map && resources::game_map->on_board(loc)))
+			    (resources::game_map && resources::gameboard->map().on_board(loc)))
 			{
 				return false;
 			}
@@ -1529,12 +1529,12 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	config::attribute_value cfg_defense = cfg["defense"];
-	if (!cfg_defense.blank() && cfg_defense.to_int(-1) != defense_modifier(resources::game_map->get_terrain(loc))) {
+	if (!cfg_defense.blank() && cfg_defense.to_int(-1) != defense_modifier(resources::gameboard->map().get_terrain(loc))) {
 		return false;
 	}
 
 	config::attribute_value cfg_movement = cfg["movement_cost"];
-	if (!cfg_movement.blank() && cfg_movement.to_int(-1) != movement_cost(resources::game_map->get_terrain(loc))) {
+	if (!cfg_movement.blank() && cfg_movement.to_int(-1) != movement_cost(resources::gameboard->map().get_terrain(loc))) {
 		return false;
 	}
 

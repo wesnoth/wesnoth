@@ -161,13 +161,13 @@ map_location unit_creator::find_location(const config &cfg, const unit* pass_che
 			loc = map_location(cfg,resources::gamedata);
 		}
 
-		if(loc.valid() && resources::game_map->on_board(loc)) {
+		if(loc.valid() && resources::gameboard->map().on_board(loc)) {
 			const bool pass((place == "leader_passable") || (place == "map_passable"));
 			if ( place != "map_overwrite" ) {
 				loc = find_vacant_tile(loc, pathfind::VACANT_ANY,
 				                       pass ? pass_check : NULL);
 			}
-			if(loc.valid() && resources::game_map->on_board(loc)) {
+			if(loc.valid() && resources::gameboard->map().on_board(loc)) {
 				return loc;
 			}
 		}
@@ -239,7 +239,7 @@ void unit_creator::post_create(const map_location &loc, const unit &new_unit, bo
 	bool animate = show && anim;
 
 	if (get_village_) {
-		if (resources::game_map->is_village(loc)) {
+		if (resources::gameboard->map().is_village(loc)) {
 			actions::get_village(loc, new_unit.side());
 		}
 	}
@@ -344,7 +344,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 			u_end = resources::units->end();
 
 	bool leader_in_place = false;
-	bool allow_local = resources::game_map->is_castle(recruit_loc);
+	bool allow_local = resources::gameboard->map().is_castle(recruit_loc);
 
 
 	// Check for a leader at recruit_loc (means we are recruiting from there,
@@ -352,7 +352,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
 	unit_map::const_iterator find_it = resources::units->find(recruit_loc);
 	if ( find_it != u_end ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
-		     resources::game_map->is_keep(recruit_loc) )
+		     resources::gameboard->map().is_keep(recruit_loc) )
 		{
 			// We have been requested to get the recruit list for this
 			// particular leader.
@@ -444,7 +444,7 @@ const std::vector<const unit*> get_recalls(int side, const map_location &recall_
 	 */
 
 	bool leader_in_place = false;
-	bool allow_local = resources::game_map->is_castle(recall_loc);
+	bool allow_local = resources::gameboard->map().is_castle(recall_loc);
 
 
 	// Check for a leader at recall_loc (means we are recalling from there,
@@ -452,7 +452,7 @@ const std::vector<const unit*> get_recalls(int side, const map_location &recall_
 	unit_map::const_iterator find_it = resources::units->find(recall_loc);
 	if ( find_it != resources::units->end() ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
-		     resources::game_map->is_keep(recall_loc) )
+		     resources::gameboard->map().is_keep(recall_loc) )
 		{
 			// We have been requested to get the recalls for this
 			// particular leader.
@@ -523,7 +523,7 @@ namespace { // Helpers for check_recall_location()
 			return RECRUIT_NO_ABLE_LEADER;
 
 		// Make sure the unit is on a keep.
-		if ( !resources::game_map->is_keep(recaller.get_location()) )
+		if ( !resources::gameboard->map().is_keep(recaller.get_location()) )
 			return RECRUIT_NO_KEEP_LEADER;
 
 		// Make sure there is a permissible location to which to recruit.
@@ -653,7 +653,7 @@ namespace { // Helpers for check_recruit_location()
 		}
 
 		// Make sure the unit is on a keep.
-		if ( !resources::game_map->is_keep(recruiter.get_location()) )
+		if ( !resources::gameboard->map().is_keep(recruiter.get_location()) )
 			return RECRUIT_NO_KEEP_LEADER;
 
 		// Make sure there is a permissible location to which to recruit.
@@ -932,7 +932,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 	}
 
 	// Village capturing.
-	if ( resources::game_map->is_village(current_loc) ) {
+	if ( resources::gameboard->map().is_village(current_loc) ) {
 		mutated |= actions::get_village(current_loc, new_unit_itor->side());
 		if ( !validate_recruit_iterator(new_unit_itor, current_loc) )
 			return true;

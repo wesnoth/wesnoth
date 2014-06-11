@@ -564,7 +564,7 @@ namespace { // Private helpers for move_unit()
 			return false;
 
 		// We can reasonably stop if the hex is not an unowned village.
-		return !resources::game_map->is_village(hex) ||
+		return !resources::gameboard->map().is_village(hex) ||
 		       current_team_->owns_village(hex);
 	}
 
@@ -1048,7 +1048,7 @@ namespace { // Private helpers for move_unit()
 				move_it_->set_movement(0, true);
 
 			// Village capturing.
-			if ( resources::game_map->is_village(final_loc) ) {
+			if ( resources::gameboard->map().is_village(final_loc) ) {
 				// Is this a capture?
 				orig_village_owner = village_owner(final_loc);
 				if ( orig_village_owner != current_side_-1 ) {
@@ -1304,7 +1304,7 @@ bool unit_can_move(const unit &u)
 	map_location locs[6];
 	get_adjacent_tiles(u.get_location(), locs);
 	for(int n = 0; n != 6; ++n) {
-		if (resources::game_map->on_board(locs[n])) {
+		if (resources::gameboard->map().on_board(locs[n])) {
 			const unit_map::const_iterator i = resources::units->find(locs[n]);
 			if (i.valid() && !i->incapacitated() &&
 			    current_team.is_enemy(i->side())) {

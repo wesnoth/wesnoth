@@ -1254,7 +1254,7 @@ static int intf_get_terrain(lua_State *L)
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
 
-	t_translation::t_terrain const &t = resources::game_map->
+	t_translation::t_terrain const &t = resources::gameboard->map().
 		get_terrain(map_location(x - 1, y - 1));
 	lua_pushstring(L, t_translation::write_terrain_code(t).c_str());
 	return 1;
@@ -1307,7 +1307,7 @@ static int intf_get_terrain_info(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	if (t == t_translation::NONE_TERRAIN) return 0;
-	terrain_type const &info = resources::game_map->get_terrain_info(t);
+	terrain_type const &info = resources::gameboard->map().get_terrain_info(t);
 
 	lua_newtable(L);
 	lua_pushstring(L, info.id().c_str());
@@ -1358,7 +1358,7 @@ static int intf_get_time_of_day(lua_State *L)
 		lua_rawgeti(L, arg, 1);
 		lua_rawgeti(L, arg, 2);
 		loc = map_location(luaL_checkinteger(L, -2) - 1, luaL_checkinteger(L, -1) - 1);
-		if(!resources::game_map->on_board(loc)) return luaL_argerror(L, arg, "coordinates are not on board");
+		if(!resources::gameboard->map().on_board(loc)) return luaL_argerror(L, arg, "coordinates are not on board");
 		lua_pop(L, 2);
 
 		lua_rawgeti(L, arg, 3);
@@ -1403,7 +1403,7 @@ static int intf_get_village_owner(lua_State *L)
 	int y = luaL_checkint(L, 2);
 
 	map_location loc(x - 1, y - 1);
-	if (!resources::game_map->is_village(loc))
+	if (!resources::gameboard->map().is_village(loc))
 		return 0;
 
 	int side = village_owner(loc) + 1;
@@ -1425,7 +1425,7 @@ static int intf_set_village_owner(lua_State *L)
 
 	std::vector<team> &teams = *resources::teams;
 	map_location loc(x - 1, y - 1);
-	if (!resources::game_map->is_village(loc))
+	if (!resources::gameboard->map().is_village(loc))
 		return 0;
 
 	int old_side = village_owner(loc) + 1;
@@ -1464,7 +1464,7 @@ static int intf_get_map_size(lua_State *L)
 static int intf_get_mouseover_tile(lua_State *L)
 {
 	const map_location &loc = resources::screen->mouseover_hex();
-	if (!resources::game_map->on_board(loc)) return 0;
+	if (!resources::gameboard->map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
 	return 2;
@@ -1478,7 +1478,7 @@ static int intf_get_mouseover_tile(lua_State *L)
 static int intf_get_selected_tile(lua_State *L)
 {
 	const map_location &loc = resources::screen->selected_hex();
-	if (!resources::game_map->on_board(loc)) return 0;
+	if (!resources::gameboard->map().on_board(loc)) return 0;
 	lua_pushinteger(L, loc.x + 1);
 	lua_pushinteger(L, loc.y + 1);
 	return 2;
@@ -1494,8 +1494,8 @@ static int intf_get_starting_location(lua_State* L)
 	const int side = luaL_checkint(L, 1);
 	if(side < 1 || static_cast<int>(resources::teams->size()) < side)
 		return luaL_argerror(L, 1, "out of bounds");
-	const map_location& starting_pos = resources::game_map->starting_position(side);
-	if(!resources::game_map->on_board(starting_pos)) return 0;
+	const map_location& starting_pos = resources::gameboard->map().starting_position(side);
+	if(!resources::gameboard->map().on_board(starting_pos)) return 0;
 
 	lua_createtable(L, 2, 0);
 	lua_pushinteger(L, starting_pos.x + 1);
@@ -1775,9 +1775,9 @@ static int intf_find_path(lua_State *L)
 	dst.y = luaL_checkinteger(L, arg) - 1;
 	++arg;
 
-	if (!resources::game_map->on_board(src))
+	if (!resources::gameboard->map().on_board(src))
 		return luaL_argerror(L, 1, "invalid location");
-	if (!resources::game_map->on_board(dst))
+	if (!resources::gameboard->map().on_board(dst))
 		return luaL_argerror(L, arg - 2, "invalid location");
 
 	std::vector<team> &teams = *resources::teams;
@@ -2156,7 +2156,7 @@ static int intf_put_unit(lua_State *L)
 		unit_arg = 3;
 		loc.x = lua_tointeger(L, 1) - 1;
 		loc.y = luaL_checkinteger(L, 2) - 1;
-		if (!resources::game_map->on_board(loc))
+		if (!resources::gameboard->map().on_board(loc))
 			return luaL_argerror(L, 1, "invalid location");
 	}
 
@@ -2170,7 +2170,7 @@ static int intf_put_unit(lua_State *L)
 		}
 		if (unit_arg == 1) {
 			loc = u->get_location();
-			if (!resources::game_map->on_board(loc))
+			if (!resources::gameboard->map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
 	}
@@ -2180,7 +2180,7 @@ static int intf_put_unit(lua_State *L)
 		if (unit_arg == 1) {
 			loc.x = cfg["x"] - 1;
 			loc.y = cfg["y"] - 1;
-			if (!resources::game_map->on_board(loc))
+			if (!resources::gameboard->map().on_board(loc))
 				return luaL_argerror(L, 1, "invalid location");
 		}
 		u = new unit(cfg, true);
@@ -2655,7 +2655,7 @@ static int intf_select_hex(lua_State *L)
 	const int y = luaL_checkinteger(L, 2) - 1;
 
 	const map_location loc(x, y);
-	if(!resources::game_map->on_board(loc)) return luaL_argerror(L, 1, "not on board");
+	if(!resources::gameboard->map().on_board(loc)) return luaL_argerror(L, 1, "not on board");
 	bool highlight = true;
 	if(!lua_isnoneornil(L, 3))
 		highlight = luaW_toboolean(L, 3);
@@ -3164,7 +3164,7 @@ static int intf_get_locations(lua_State *L)
  */
 static int intf_get_villages(lua_State *L)
 {
-	std::vector<map_location> locs = resources::game_map->villages();
+	std::vector<map_location> locs = resources::gameboard->map().villages();
 	lua_newtable(L);
 	int i = 1;
 

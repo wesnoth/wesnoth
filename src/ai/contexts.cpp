@@ -414,7 +414,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			bool friend_owns = false;
 
 			// Don't take friendly villages
-			if(!enemy && resources::game_map->is_village(dst)) {
+			if(!enemy && resources::gameboard->map().is_village(dst)) {
 				for(size_t n = 0; n != resources::teams->size(); ++n) {
 					if((*resources::teams)[n].owns_village(dst)) {
 						int side = n + 1;
@@ -489,7 +489,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 	typedef move_map::const_iterator Itor;
 	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
 	for(Itor i = itors.first; i != itors.second; ++i) {
-		const int defense = itor->defense_modifier(resources::game_map->get_terrain(i->second));
+		const int defense = itor->defense_modifier(resources::gameboard->map().get_terrain(i->second));
 		if(defense > pos.chance_to_hit) {
 			continue;
 		}
@@ -1260,7 +1260,7 @@ void readonly_context_impl::set_src_dst_enemy_valid_lua()
 }
 
 const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths){
-	if (resources::game_map->is_keep(leader_location)) {
+	if (resources::gameboard->map().is_keep(leader_location)) {
 		return leader_location; //if leader already on keep, then return leader_location
 	}
 

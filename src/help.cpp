@@ -26,6 +26,7 @@
 #include "about.hpp"
 #include "display.hpp"
 #include "exceptions.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
@@ -1321,13 +1322,13 @@ public:
 
 		if (!(type_.union_type().size() == 1 && type_.union_type()[0] == type_.number() && type_.is_nonnull())) {
 
-			const t_translation::t_list& underlying_terrains = resources::game_map->underlying_mvt_terrain(type_.number());
+			const t_translation::t_list& underlying_terrains = resources::gameboard->map().underlying_mvt_terrain(type_.number());
 
 			ss << "\n" << N_("Base Terrain: ");
 
 			bool first = true;
 			BOOST_FOREACH(const t_translation::t_terrain& underlying_terrain, underlying_terrains) {
-				const terrain_type& mvt_base = resources::game_map->get_terrain_info(underlying_terrain);
+				const terrain_type& mvt_base = resources::gameboard->map().get_terrain_info(underlying_terrain);
 
 				if (mvt_base.editor_name().empty()) continue;
 				if (!first) ss << ",";
@@ -1688,7 +1689,7 @@ public:
 				const t_translation::t_terrain terrain = *terrain_it;
 				if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 					continue;
-				const terrain_type& info = resources::game_map->get_terrain_info(terrain);
+				const terrain_type& info = resources::gameboard->map().get_terrain_info(terrain);
 
 				if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 					std::vector<item> row;
@@ -1903,11 +1904,11 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 
 	std::map<std::string, section> base_map;
 
-	const t_translation::t_list& t_listi = resources::game_map->get_terrain_list();
+	const t_translation::t_list& t_listi = resources::gameboard->map().get_terrain_list();
 
 	BOOST_FOREACH(const t_translation::t_terrain& t, t_listi) {
 
-		const terrain_type& info = resources::game_map->get_terrain_info(t);
+		const terrain_type& info = resources::gameboard->map().get_terrain_info(t);
 
 		bool hidden = info.is_combined() || info.hide_help();
 
@@ -1920,10 +1921,10 @@ void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*l
 		terrain_topic.id    = hidden_symbol(hidden) + terrain_prefix + info.id();
 		terrain_topic.text  = new terrain_topic_generator(info);
 
-		t_translation::t_list base_terrains = resources::game_map->underlying_union_terrain(t);
+		t_translation::t_list base_terrains = resources::gameboard->map().underlying_union_terrain(t);
 		BOOST_FOREACH(const t_translation::t_terrain& base, base_terrains) {
 
-			const terrain_type& base_info = resources::game_map->get_terrain_info(base);
+			const terrain_type& base_info = resources::gameboard->map().get_terrain_info(base);
 
 			if (!base_info.is_nonnull() || base_info.hide_help())
 				continue;

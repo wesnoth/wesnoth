@@ -30,6 +30,7 @@
 #include "../manager.hpp"
 
 #include "../../callable_objects.hpp"
+#include "../../game_board.hpp"
 #include "../../game_display.hpp"
 #include "../../formula_debugger.hpp"
 #include "../../log.hpp"
@@ -193,7 +194,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         get_adjacent_tiles(destination,adj);
 
         for(size_t n = 0; n != 6; ++n) {
-                if(resources::game_map->on_board(adj[n]) == false) {
+                if(resources::gameboard->map().on_board(adj[n]) == false) {
                         continue;
                 }
 
@@ -220,7 +221,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     }
 
     pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, &calc,
-            resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
+            resources::gameboard->map().w(), resources::gameboard->map().h(), &allowed_teleports);
 
     return route;
 }
@@ -824,7 +825,7 @@ variant formula_ai::get_value(const std::string& key) const
 		return variant(new gamemap_callable(*resources::game_map));
 	} else if(key == "villages")
 	{
-		return villages_from_set(resources::game_map->villages());
+		return villages_from_set(resources::gameboard->map().villages());
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
@@ -844,7 +845,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "enemy_and_unowned_villages")
 	{
-		return villages_from_set(resources::game_map->villages(), &current_team().villages());
+		return villages_from_set(resources::gameboard->map().villages(), &current_team().villages());
 	}
 
 	return variant();
@@ -886,14 +887,14 @@ variant formula_ai::get_keeps() const
 {
 	if(keeps_cache_.is_null()) {
 		std::vector<variant> vars;
-		for(size_t x = 0; x != size_t(resources::game_map->w()); ++x) {
-			for(size_t y = 0; y != size_t(resources::game_map->h()); ++y) {
+		for(size_t x = 0; x != size_t(resources::gameboard->map().w()); ++x) {
+			for(size_t y = 0; y != size_t(resources::gameboard->map().h()); ++y) {
 				const map_location loc(x,y);
-				if(resources::game_map->is_keep(loc)) {
+				if(resources::gameboard->map().is_keep(loc)) {
 					map_location adj[6];
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
-						if(resources::game_map->is_castle(adj[n])) {
+						if(resources::gameboard->map().is_castle(adj[n])) {
 							vars.push_back(variant(new location_callable(loc)));
 							break;
 						}
