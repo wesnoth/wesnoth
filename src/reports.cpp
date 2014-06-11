@@ -774,7 +774,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	std::set<std::string> seen_types;
 	const team &unit_team = resources::disp_context->teams()[u.side() - 1];
 	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
-	BOOST_FOREACH(const unit &enemy, *resources::disp_context->units())
+	BOOST_FOREACH(const unit &enemy, resources::disp_context->units())
 	{
 		if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
 			continue;
