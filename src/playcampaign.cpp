@@ -164,11 +164,6 @@ LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& gam
 	// 'starting_pos' will contain the position we start the game from.
 	const config& starting_pos = gamestate.replay_start();
 
-	//for replays, use the variables specified in starting_pos
-	if (const config &vars = starting_pos.child("variables")) {
-		gamestate.carryover_sides_start.child_or_add("variables") = vars;
-	}
-
 	try {
 		// Preserve old label eg. replay
 		if (gamestate.classification().label.empty())
