@@ -24,8 +24,8 @@
 #include "map_location.hpp"
 
 #include "config.hpp"
+#include "display_context.hpp"
 #include "formula_string_utils.hpp"
-#include "game_board.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "gettext.hpp"
@@ -318,7 +318,7 @@ std::vector<map_location> parse_location_range(const std::string &x, const std::
 	std::vector<map_location> res;
 	const std::vector<std::string> xvals = utils::split(x);
 	const std::vector<std::string> yvals = utils::split(y);
-	const gamemap *map = & resources::gameboard->map();
+	const gamemap *map = & resources::disp_context->map();
 	assert(map);
 	int xmin = 1, xmax = map->w(), ymin = 1, ymax = map->h();
 	if (with_border) {

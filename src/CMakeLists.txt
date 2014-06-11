@@ -916,6 +916,7 @@ set(libwesnoth-game_STAT_SRC
 	construct_dialog.cpp
 	cursor.cpp
 	display.cpp
+	display_context.cpp
 	events.cpp
 	font.cpp
 	format_time_summary.cpp

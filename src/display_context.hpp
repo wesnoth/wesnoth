@@ -28,11 +28,16 @@ class team;
 class gamemap;
 class unit_map;
 
+class unit;
+struct map_location;
+
 class display_context {
 public:
 	virtual const std::vector<team> & teams() const = 0;
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
+
+	const unit * get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false) const;
 
 	virtual ~display_context() {}
 };
