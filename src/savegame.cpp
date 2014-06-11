@@ -294,6 +294,10 @@ void loadgame::check_version_compatibility()
 void loadgame::set_gamestate()
 {
 	gamestate_ = saved_game(load_config_);
+#if 0
+	//we dont need this code since we always restore our random from [snapshot] or [replay_start] (execpt for start of scenario saves where we dont have those)
+
+
 
 	// Get the status of the random in the snapshot.
 	// For a replay we need to restore the start only, the replaying gets at
@@ -308,6 +312,7 @@ void loadgame::set_gamestate()
 	carryover_info sides(gamestate_.carryover_sides_start);
 	sides.rng().seed_random(seed, calls);
 	gamestate_.carryover_sides_start = sides.to_config();
+#endif
 }
 
 void loadgame::load_multiplayer_game()
