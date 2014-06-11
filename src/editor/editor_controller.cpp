@@ -152,7 +152,6 @@ void editor_controller::init_music(const config& game_config)
 
 editor_controller::~editor_controller()
 {
-	resources::game_map = NULL;
 	resources::units = NULL;
 	resources::tod_manager = NULL;
 	resources::teams = NULL;

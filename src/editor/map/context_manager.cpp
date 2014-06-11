@@ -75,7 +75,6 @@ public:
 	void refresh() {
 		context_manager_.gui().change_display_context(&context_manager_.get_map_context());
 
-		resources::game_map = &context_manager_.get_map();
 		resources::units = &context_manager_.get_map_context().get_units();
 		resources::teams = &context_manager_.get_map_context().get_teams();
 

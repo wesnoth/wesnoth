@@ -288,7 +288,7 @@ namespace { // Support functions
 
 	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
 	{
-		const gamemap *game_map = resources::game_map;
+		const gamemap *game_map = & resources::gameboard->map();
 		std::vector<map_location> path;
 		map_location src;
 		map_location dst;
@@ -1680,7 +1680,7 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	 * easier to do this as wanted by the author in WML.
 	 */
 
-	const gamemap * game_map = resources::game_map;
+	const gamemap * game_map = & resources::gameboard->map();
 	gamemap map(*game_map);
 
 	try {

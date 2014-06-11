@@ -75,7 +75,6 @@ static void clear_resources()
 	resources::controller = NULL;
 	resources::gameboard = NULL;
 	resources::gamedata = NULL;
-	resources::game_map = NULL;
 	resources::persist = NULL;
 	resources::screen = NULL;
 	resources::soundsources = NULL;
@@ -143,7 +142,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::controller = this;
 	resources::gameboard = &gameboard_;
 	resources::gamedata = &gamedata_;
-	resources::game_map = &gameboard_.map_;
 	resources::persist = &persist_;
 	resources::teams = &gameboard_.teams_;
 	resources::tod_manager = &tod_manager_;

@@ -21,7 +21,6 @@ namespace resources
 	game_config_manager  *config_manager = NULL;
 	play_controller      *controller = NULL;
 	game_data            *gamedata = NULL;
-	const gamemap        *game_map = NULL;
 	LuaKernel            *lua_kernel = NULL;
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;

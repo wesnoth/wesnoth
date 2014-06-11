@@ -1662,7 +1662,7 @@ public:
 		}
 		ss << generate_table(resistance_table);
 
-		if (resources::game_map != NULL) {
+		if (resources::gameboard != NULL) {
 			// Print the terrain modifier table of the unit.
 			ss << "\n\n<header>text='" << escape(_("Terrain Modifiers"))
 			   << "'</header>\n\n";
@@ -1900,7 +1900,7 @@ void generate_races_sections(const config *help_cfg, section &sec, int level)
 
 void generate_terrain_sections(const config* /*help_cfg*/, section& sec, int /*level*/)
 {
-	if (resources::game_map == NULL) return;
+	if (resources::gameboard == NULL) return;
 
 	std::map<std::string, section> base_map;
 

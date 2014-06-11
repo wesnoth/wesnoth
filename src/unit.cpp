@@ -1323,7 +1323,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	if(cfg.has_child("filter_location")) {
-		assert(resources::game_map != NULL);
+		assert(resources::gameboard != NULL);
 		assert(resources::teams != NULL);
 		assert(resources::tod_manager != NULL);
 		assert(resources::units != NULL);
@@ -1347,8 +1347,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if (!cfg_x.blank() || !cfg_y.blank()){
 		if(cfg_x == "recall" && cfg_y == "recall") {
 			//locations on the map are considered to not be on a recall list
-			if ((!resources::game_map && loc.valid()) ||
-			    (resources::game_map && resources::gameboard->map().on_board(loc)))
+			if ((!resources::gameboard && loc.valid()) ||
+			    (resources::gameboard && resources::gameboard->map().on_board(loc)))
 			{
 				return false;
 			}
@@ -1590,7 +1590,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	if (cfg.has_child("filter_adjacent")) {
-		assert(resources::units && resources::game_map);
+		assert(resources::units && resources::gameboard);
 		const unit_map& units = *resources::units;
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);

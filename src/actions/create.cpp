@@ -844,7 +844,7 @@ namespace { // Helpers for place_recruit()
 		const map_location &recruit_loc, const map_location &leader_loc)
 	{
 		// Find closest enemy and turn towards it (level 2s count more than level 1s, etc.)
-		const gamemap *map = resources::game_map;
+		const gamemap *map = & resources::gameboard->map();
 		const unit_map & units = *resources::units;
 		unit_map::const_iterator unit_itor;
 		map_location min_loc;
@@ -852,7 +852,7 @@ namespace { // Helpers for place_recruit()
 
 		for ( unit_itor = units.begin(); unit_itor != units.end(); ++unit_itor ) {
 			if ((*resources::teams)[unit_itor->side()-1].is_enemy(new_unit.side()) &&
-				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], resources::gameboard->map(), false)) {
+				unit_itor->is_visible_to_team((*resources::teams)[new_unit.side()-1], *map, false)) {
 				int dist = distance_between(unit_itor->get_location(),recruit_loc) - unit_itor->level();
 				if (dist < min_dist) {
 					min_dist = dist;
