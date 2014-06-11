@@ -271,6 +271,30 @@ public:
 	  */
 	 SDL_BlendMode blend_mode() const;
 
+	 /**
+	  * Sets the color modulation of the texture.
+	  *
+	  * @param r                  Red modulation.
+	  * @param g                  Green modulation.
+	  * @param b                  Blue modulation.
+	  */
+	 void set_color_mod(Uint8 r, Uint8 g, Uint8 b);
+
+	 /**
+	  * Returns the red modulation of the texture.
+	  */
+	 Uint8 red_mod() const;
+
+	 /**
+	  * Returns the green modulation of the texture.
+	  */
+	 Uint8 green_mod() const;
+
+	 /**
+	  * Returns the blue modulation of the texture.
+	  */
+	 Uint8 blue_mod() const;
+
 	/***** ***** ***** Other. ***** ***** *****/
 
 	/**
@@ -317,6 +341,9 @@ private:
 
 	/** What should actually be displayed of the texture. */
 	SDL_Rect clip_;
+
+	/** Color modulation. */
+	Uint8 mod_r_, mod_g_, mod_b_;
 
 	/**
 	 * The SDL_Surface source of the @ref texture_.

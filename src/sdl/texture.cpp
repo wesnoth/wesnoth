@@ -40,6 +40,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_(create_rect(0, 0, w, h))
+	, mod_r_(0)
+	, mod_g_(0)
+	, mod_b_(0)
 	, source_surface_(NULL)
 {
 	if(!texture_) {
@@ -58,6 +61,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(0)
+	, mod_g_(0)
+	, mod_b_(0)
 	, source_surface_(IMG_Load(file.c_str()))
 {
 	if(source_surface_ == NULL) {
@@ -77,6 +83,9 @@ ttexture::ttexture()
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(0)
+	, mod_g_(0)
+	, mod_b_(0)
 	, source_surface_(NULL)
 {}
 
@@ -105,6 +114,9 @@ ttexture::ttexture(const ttexture& texture)
 	, smooth_scaling_(texture.smooth_scaling_)
 	, flip_(texture.flip_)
 	, clip_(texture.clip_)
+	, mod_r_(texture.mod_r_)
+	, mod_g_(texture.mod_g_)
+	, mod_b_(texture.mod_b_)
 	, source_surface_(texture.source_surface_)
 {
 	assert(reference_count_);
@@ -125,6 +137,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(0)
+	, mod_g_(0)
+	, mod_b_(0)
 	, source_surface_(source_surface__)
 {
 	if(source_surface_ == NULL) {
@@ -147,6 +162,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
+	, mod_r_(0)
+	, mod_g_(0)
+	, mod_b_(0)
 	, source_surface_(
 			SDL_ConvertSurface(surface, surface->format, surface->flags))
 {
@@ -323,6 +341,28 @@ SDL_BlendMode ttexture::blend_mode() const
 	SDL_BlendMode res;
 	SDL_GetTextureBlendMode(texture_, &res);
 	return res;
+}
+
+void ttexture::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
+{
+	mod_r_ = r;
+	mod_g_ = g;
+	mod_b_ = b;
+}
+
+Uint8 ttexture::red_mod() const
+{
+	return mod_r_;
+}
+
+Uint8 ttexture::green_mod() const
+{
+	return mod_g_;
+}
+
+Uint8 ttexture::blue_mod() const
+{
+	return mod_b_;
 }
 
 void ttexture::update_pixels(SDL_Surface *surf)

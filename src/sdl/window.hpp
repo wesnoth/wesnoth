@@ -98,9 +98,6 @@ public:
 	 */
 	void full_screen();
 
-	/** Clears the contents of the window. */
-	void clear();
-
 	/**
 	 * Clears the contents of the window with a given color.
 	 *
@@ -108,7 +105,7 @@ public:
 	 * @param g                   Green value of the color.
 	 * @param b                   Blue value of the color.
 	 */
-	void clear(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 0);
+	void fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 0);
 
 	/** Renders the contents of the window. */
 	void render();
