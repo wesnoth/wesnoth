@@ -26,6 +26,9 @@
 #endif
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+
+#include "clipboard.hpp"
+#include "serialization/parser.hpp" // for write()
 #include "utils/foreach.tpp"
 
 #include "../../gamestatus.hpp"
@@ -36,6 +39,18 @@
 #include <vector>
 #include <boost/bind.hpp>
 #include <boost/shared_ptr.hpp>
+
+namespace
+{
+
+inline std::string config_to_string(const config& cfg)
+{
+	std::ostringstream s;
+	write(s, cfg);
+	return s.str();
+}
+
+}
 
 namespace gui2
 {
@@ -59,6 +74,9 @@ namespace gui2
  * inspect & & control & m &
  *         The state of the variable or event. $
  *
+ * copy & & button & m &
+ *         A button to copy the state to clipboard. $
+ *
  * @end{table}
  */
 
@@ -70,7 +88,7 @@ static void inspect_ai(twindow& window, int side)
 	NEW_find_widget<tcontrol>(
 			&window,
 			"inspect",
-			false).set_label(ai_cfg.debug());
+			false).set_label(config_to_string(ai_cfg.debug));
 }
 */
 
@@ -107,6 +125,7 @@ public:
 		, stuff_types_list()
 		, inspect()
 		, inspector_name()
+		, copy_button()
 	{
 		name = cfg["name"].str();
 	}
@@ -118,6 +137,7 @@ public:
 	tlistbox* stuff_types_list;
 	tcontrol* inspect;
 	tcontrol* inspector_name;
+	tbutton* copy_button;
 
 
 	void clear_stuff_list()
@@ -245,7 +265,7 @@ public:
 		FOREACH(const AUTO & c, vars.all_children_range())
 		{
 			if(selected == i) {
-				model_.set_inspect_window_text(c.cfg.debug());
+				model_.set_inspect_window_text(config_to_string(c.cfg));
 				return;
 			}
 			i++;
@@ -319,7 +339,9 @@ public:
 				if(selected == i) {
 					config c_unit;
 					u->write(c_unit);
-					model_.set_inspect_window_text(c_unit.debug());
+					std::ostringstream cfg_str;
+					write(cfg_str, c_unit);
+					model_.set_inspect_window_text(cfg_str.str());
 					return;
 				}
 				i++;
@@ -377,7 +399,7 @@ public:
 							   : config();
 			c.clear_children("ai");
 			c.clear_children("village");
-			model_.set_inspect_window_text(c.debug());
+			model_.set_inspect_window_text(config_to_string(c));
 			return;
 		}
 
@@ -389,7 +411,7 @@ public:
 
 		if(selected == 2) {
 			model_.set_inspect_window_text(
-					ai::manager::to_config(side_).debug());
+					config_to_string(ai::manager::to_config(side_)));
 			return;
 		}
 
@@ -429,7 +451,7 @@ public:
 				u.write(c_unit);
 				c.add_child("unit", c_unit);
 			}
-			model_.set_inspect_window_text(c.debug());
+			model_.set_inspect_window_text(config_to_string(c));
 			return;
 		}
 
@@ -559,6 +581,11 @@ public:
 		c->update_view_from_model(); // TODO: 'activate'
 	}
 
+	void handle_copy_button_clicked()
+	{
+		copy_to_clipboard(model_.inspect->label(), false);
+	}
+
 
 private:
 	model& model_;
@@ -595,6 +622,11 @@ public:
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
+	void handle_copy_button_clicked(twindow& /*window*/)
+	{
+		controller_.handle_copy_button_clicked();
+	}
+
 
 	void bind(twindow& window)
 	{
@@ -605,6 +637,8 @@ public:
 		model_.inspect = find_widget<tcontrol>(&window, "inspect", false, true);
 		model_.inspector_name
 				= &find_widget<tcontrol>(&window, "inspector_name", false);
+		model_.copy_button
+				= &find_widget<tbutton>(&window, "copy", false);
 
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 		connect_signal_notify_modified(
@@ -634,6 +668,12 @@ public:
 									 &tgamestate_inspector::view::
 											  handle_stuff_types_list_item_clicked>);
 #endif
+
+		connect_signal_mouse_left_click(
+				*model_.copy_button,
+				boost::bind(&tgamestate_inspector::view::handle_copy_button_clicked,
+							this,
+							boost::ref(window)));
 	}
 
 private:
