@@ -16,6 +16,7 @@
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
+#include "map.hpp"
 #include "unit.hpp"
 
 #include "utils/foreach.tpp"
@@ -28,6 +29,27 @@ static lg::log_domain log_engine("enginerefac");
 #define WRN_RG LOG_STREAM(warn, log_engine)
 #define ERR_RG LOG_STREAM(err, log_engine)
 
+game_board::game_board(const config & game_config, const config & level) : teams_(), map_(new gamemap(game_config, level)), units_() {}
+
+game_board::game_board(const game_board & other) : teams_(other.teams_), map_(new gamemap(*(other.map_))), units_(other.units_) {}
+
+game_board::~game_board() {}
+
+
+//TODO: Fix this so that we swap pointers to maps, and also fix replace_map to use scoped_ptr::reset.
+// However, then anytime gameboard is overwritten, resources::gamemap must be updated. So might want to
+// just get rid of resources::gamemap and replace with resources::gameboard->map() at that point.
+void swap(game_board & one, game_board & other) {
+	std::swap(one.teams_, other.teams_);
+	std::swap(one.units_, other.units_);
+	one.map_.swap(other.map_);
+}
+
+game_board & game_board::operator= (game_board other)
+{
+	swap(*this, other);
+	return(*this);
+}
 
 void game_board::new_turn(int player_num) {
 	BOOST_FOREACH (unit & i, units_) {
@@ -64,18 +86,18 @@ void game_board::all_survivors_to_recall() {
 unit_map::iterator game_board::find_visible_unit(const map_location &loc,
 	const team& current_team, bool see_all)
 {
-	if (!map_.on_board(loc)) return units_.end();
+	if (!map_->on_board(loc)) return units_.end();
 	unit_map::iterator u = units_.find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, map_, see_all))
+	if (!u.valid() || !u->is_visible_to_team(current_team, *map_, see_all))
 		return units_.end();
 	return u;
 }
 
 bool game_board::has_visible_unit(const map_location & loc, const team& current_team, bool see_all)
 {
-	if (!map_.on_board(loc)) return false;
+	if (!map_->on_board(loc)) return false;
 	unit_map::iterator u = units_.find(loc);
-	if (!u.valid() || !u->is_visible_to_team(current_team, map_, see_all))
+	if (!u.valid() || !u->is_visible_to_team(current_team, *map_, see_all))
 		return false;
 	return true;
 }
@@ -134,7 +156,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 
 	/* Remember the locations where a village is owned by a side. */
 	std::map<map_location, int> villages;
-	FOREACH(const AUTO& village, map_.villages()) {
+	FOREACH(const AUTO& village, map_->villages()) {
 		const int owner = village_owner(village);
 		if(owner != -1) {
 			villages[village] = owner;
@@ -159,19 +181,28 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 		}
 	}
 
-	map_ = newmap;
+	*map_ = newmap;
 	return ret;
 }
 
 
 
 void game_board::overlay_map(const gamemap & mask_map, const config & cfg, map_location loc, bool border) {
-	map_.overlay(mask_map, cfg, loc.x, loc.y, border);
+	map_->overlay(mask_map, cfg, loc.x, loc.y, border);
 }
 
-bool game_board::change_terrain(const map_location &loc, const t_translation::t_terrain &t,
-                    gamemap::tmerge_mode mode, bool replace_if_failed)
+bool game_board::change_terrain(const map_location &loc, const std::string &t_str,
+                    const std::string & mode_str, bool replace_if_failed)
 {
+	//Code internalized from the implementation in lua.cpp
+	t_translation::t_terrain terrain = t_translation::read_terrain_code(t_str);
+	if (terrain == t_translation::NONE_TERRAIN) return false;
+
+	gamemap::tmerge_mode mode = gamemap::BOTH;
+
+	if (mode_str == "base") mode = gamemap::BASE;
+	else if (mode_str == "overlay") mode = gamemap::OVERLAY;
+
 	/*
 	 * When a hex changes from a village terrain to a non-village terrain, and
 	 * a team owned that village it loses that village. When a hex changes from
@@ -183,20 +214,20 @@ bool game_board::change_terrain(const map_location &loc, const t_translation::t_
 	 */
 
 	t_translation::t_terrain
-		old_t = map_.get_terrain(loc),
-		new_t = map_.merge_terrains(old_t, t, mode, replace_if_failed);
+		old_t = map_->get_terrain(loc),
+		new_t = map_->merge_terrains(old_t, terrain, mode, replace_if_failed);
 	if (new_t == t_translation::NONE_TERRAIN) return false;
 	preferences::encountered_terrains().insert(new_t);
 
-	if (map_.is_village(old_t) && !map_.is_village(new_t)) {
+	if (map_->is_village(old_t) && !map_->is_village(new_t)) {
 		int owner = village_owner(loc);
 		if (owner != -1)
 			teams_[owner].lose_village(loc);
 	}
 
-	map_.set_terrain(loc, new_t);
+	map_->set_terrain(loc, new_t);
 
-	BOOST_FOREACH(const t_translation::t_terrain &ut, map_.underlying_union_terrain(loc)) {
+	BOOST_FOREACH(const t_translation::t_terrain &ut, map_->underlying_union_terrain(loc)) {
 		preferences::encountered_terrains().insert(ut);
 	}
 	return true;
@@ -231,7 +262,7 @@ void game_board::write_config(config & cfg) const {
 	}
 
 	//write the map
-	cfg["map_data"] = map_.write();
+	cfg["map_data"] = map_->write();
 }
 
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
