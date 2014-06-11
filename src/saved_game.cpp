@@ -260,7 +260,7 @@ void saved_game::convert_to_start_save()
 	assert(starting_pos_type_ == STARTINGPOS_SNAPSHOT);
 	carryover_info sides(starting_pos_, true);
 	sides.merge_old_carryover(carryover_info(carryover_sides));
-	
+	sides.rng().rotate_random();
 	carryover_sides_start = sides.to_config();
 	replay_data = config();
 	replay_start_ = config();

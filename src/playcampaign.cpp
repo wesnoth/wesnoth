@@ -420,7 +420,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				gui2::tmessage::yes_no_buttons);
 
 			if(dlg_res == gui2::twindow::CANCEL) {
-				gamestate.set_snapshot(config());
 				return res;
 			}
 		}
@@ -430,20 +429,11 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		if (!end_level.prescenario_save)
 			save_game_after_scenario = false;
 
-		//TODO: remove once scenario in carryover_info/gamedata is confirmed
-		// Switch to the next scenario.
-		//gamestate.classification().scenario = gamestate.classification().next_scenario;
-
-		carryover_info sides = carryover_info(gamestate.carryover_sides_start);
-		sides.rng().rotate_random();
-		gamestate.carryover_sides_start = sides.to_config();
-
 		if (io_type == IO_CLIENT) {
 			// Opens mp::connect dialog to get a new gamestate.
 			mp::ui::result wait_res = mp::goto_mp_wait(gamestate, disp,
 				game_config, res == OBSERVER_END);
 			if (wait_res == mp::ui::QUIT) {
-				gamestate.set_snapshot(config());
 				return QUIT;
 			}
 
@@ -451,7 +441,8 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.replay_start() = config();
 			// Retain carryover_sides_start, as the config from the server
 			// doesn't contain it.
-			gamestate.carryover_sides_start = sides.to_config();
+			//TODO: enable this again or make mp_wait not change carryover sides start.
+			//gamestate.carryover_sides_start = sides.to_config();
 		} else {
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
