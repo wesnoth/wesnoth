@@ -31,6 +31,7 @@
 #include "gettext.hpp"
 #include "sdl/rect.hpp"
 #include "serialization/string_utils.hpp"
+#include "video.hpp"
 
 #include "SDL_image.h"
 
@@ -615,6 +616,15 @@ surface load_from_disk(const locator &loc)
 	}
 }
 
+sdl::ttexture load_texture(const locator &loc, const int access)
+{
+	surface img = load_from_disk(loc);
+	if (!img.null()) {
+		return CVideo::get_window()->create_texture(access, img);
+	} else {
+		return sdl::ttexture();
+	}
+}
 
 manager::manager() {}
 

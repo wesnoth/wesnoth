@@ -17,6 +17,7 @@
 
 #include "map_location.hpp"
 #include "sdl/utils.hpp"
+#include "sdl/texture.hpp"
 #include "terrain_translation.hpp"
 #include "game_config.hpp"
 
@@ -124,6 +125,9 @@ namespace image {
 	};
 
 	surface load_from_disk(const locator &loc);
+
+	sdl::ttexture load_texture(const locator &loc,
+							   const int access = SDL_TEXTUREACCESS_STATIC);
 
 	size_t hash_value(const locator::value&);
 
