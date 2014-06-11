@@ -29,27 +29,31 @@ public:
 	void write_general_info(config_writer& out) const;
 	void write_carryover(config_writer& out) const;
 	void write_starting_pos(config_writer& out) const;
-
+	void remove_old_scenario();
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; }
 
 	/** Multiplayer parameters for this game */
 	mp_game_settings& mp_settings() { return mp_settings_; }
 	const mp_game_settings& mp_settings() const { return mp_settings_; }
-
+	///copies the content of a [scenario] with the correct id attribute into this object.
 	void expand_scenario();
+	///merges [carryover_sides_start] into [scenario] and saves the rest into [carryover_sides]
+	///Removes [carryover_sides_start] afterwards
 	void expand_carryover();
 	bool valid();
 	void set_snapshot(const config& snapshot);
 	void set_scenario(const config& scenario);
 	void remove_snapshot();
-	config& get_starting_pos();
-	config& replay_start() { return replay_start_; }
 
 	bool is_mid_game_save()
 	{
 		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
 	}
+
+	
+	config& get_starting_pos();
+	config& replay_start() { return replay_start_; }
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.

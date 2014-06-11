@@ -245,3 +245,11 @@ config& saved_game::get_starting_pos()
 {
 	return starting_pos_;
 }
+
+void saved_game::remove_old_scenario()
+{
+	remove_snapshot();
+	carryover_sides = config();
+	replay_data = config();
+	replay_start_ = config();
+}

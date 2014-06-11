@@ -56,24 +56,6 @@ static lg::log_domain log_engine("engine");
 
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
-#if 0 
-static void team_init(config& level, saved_game& gamestate){
-	//if we are at the start of a new scenario, initialize carryover_sides
-	if(gamestate.snapshot.child_or_empty("variables")["turn_number"].to_int(-1)<1){
-		gamestate.carryover_sides = gamestate.carryover_sides_start;
-
-
-		carryover_info sides(gamestate.carryover_sides);
-
-		sides.transfer_to(level);
-		BOOST_FOREACH(config& side_cfg, level.child_range("side")){
-			sides.transfer_all_to(side_cfg);
-		}
-
-		gamestate.carryover_sides = sides.to_config();
-	}
-}
-#endif
 
 static void store_carryover(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
@@ -402,15 +384,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 	gamestate.expand_scenario();
 #endif
 	while(gamestate.valid()) {
-		// If we are a multiplayer client, tweak the controllers
-		// (actually, moved to server. do we still need this starting_pos thing?)
-		/*if(io_type == IO_CLIENT) {
-			if(scenario != &starting_pos) {
-				starting_pos = *scenario;
-				scenario = &starting_pos;
-			}
-		}
-		*/
 		config::const_child_itors story = starting_pos.child_range("story");
 		//TODO: remove once scenario in carryover_info/gamedata is confirmed
 //		gamestate.classification().next_scenario = (*scenario)["next_scenario"].str();
@@ -459,8 +432,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				res = playmp_scenario(game_config, disp, gamestate, story, skip_replay, blindfold_replay, io_type, end_level);
 				break;
 			}
-			gamestate.carryover_sides = config();
-			gamestate.remove_snapshot();
 		} catch(game::load_game_failed& e) {
 			gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 			return QUIT;
@@ -500,16 +471,13 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 		}
 
 		recorder.clear();
-		gamestate.replay_data.clear();
-		gamestate.replay_start().clear();
+		gamestate.remove_old_scenario();
 
 		// On DEFEAT, QUIT, or OBSERVER_END, we're done now
-		//if(res == QUIT || ((res != VICTORY) && gamestate.carryover_sides_start["next_scenario"].empty()))
 
 		//If there is no next scenario we're done now.
 		if(res == QUIT || !end_level.proceed_to_next_level || gamestate.carryover_sides_start["next_scenario"].empty())
 		{
-			gamestate.set_snapshot(config());
 			return res;
 		}
 		else if(res == OBSERVER_END)
@@ -553,16 +521,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.carryover_sides_start = sides.to_config();
 		} else {
 			// Retrieve next scenario data.
-			const config & scentemp = game_config.find_child(campaign_type_str, "id",
-				gamestate.carryover_sides_start["next_scenario"]);
-			if (!scentemp) {
-				gamestate.set_scenario(config());
-			} else {
-				gamestate.set_scenario(scentemp);
-			}
+			gamestate.expand_scenario();
 			config * scenario = &gamestate.get_starting_pos();
 
-			if (io_type == IO_SERVER && scentemp) {
+			if (io_type == IO_SERVER && gamestate.valid()) {
 				mp_game_settings& params = gamestate.mp_settings();
 
 				// A hash have to be generated using an unmodified
@@ -572,8 +534,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				// Apply carryover before passing a scenario data to the
 				// mp::connect_engine.
 				gamestate.expand_carryover();
-				//team_init(starting_pos, gamestate);
-
+				
 				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
 				//then we have to move "allow_new_game" attribute over now.
 				bool allow_new_game_flag = (*scenario)["allow_new_game"].to_bool(true);
