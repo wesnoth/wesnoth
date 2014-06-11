@@ -71,7 +71,7 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 	screen_(screen),
 	textarea_(),
 #if SDL_VERSION_ATLEAST(2,0,0)
-	logo_texture_(),
+	logo_texture_(image::get_texture("misc/logo.png")),
 #else
 	logo_surface_(image::get_image("misc/logo.png")),
 #endif
@@ -80,12 +80,9 @@ loadscreen::loadscreen(CVideo &screen, const int percent):
 	prcnt_(percent)
 {
 #if SDL_VERSION_ATLEAST(2,0,0)
-	surface surf = image::get_image("misc/logo.png");
-	if (surf.null()) {
+	if (logo_texture_.null()) {
 		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
 	}
-
-	logo_texture_ = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
 #else
 	if (logo_surface_.null()) {
 		ERR_DP << "loadscreen: Failed to load the logo" << std::endl;
