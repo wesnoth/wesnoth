@@ -897,6 +897,52 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
+sdl::ttexture get_texture(const locator& loc, TYPE type)
+{
+	if (loc.is_void()) {
+		return sdl::ttexture();
+	}
+
+	texture_cache *cache;
+
+	if (type == UNSCALED || type == SCALED_TO_ZOOM) {
+		cache = &txt_images_;
+	} else {
+		cache = &txt_hexed_images_;
+	}
+
+	if (!loc.in_cache(*cache)) {
+		if (type == UNSCALED || type == SCALED_TO_ZOOM) {
+			sdl::ttexture txt = load_texture(loc);
+			loc.add_to_cache(*cache, txt);
+		} else {
+			surface surf = get_hexed(loc);
+			sdl::ttexture txt = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
+			loc.add_to_cache(*cache, txt);
+		}
+	}
+
+	sdl::ttexture result = loc.locate_in_cache(*cache);
+
+	switch (type) {
+	case UNSCALED:
+	case HEXED:
+		break;
+	case BRIGHTENED:
+		//TODO: brighten
+	case TOD_COLORED:
+		result.set_color_mod(red_adjust, green_adjust, blue_adjust);
+	case SCALED_TO_ZOOM:
+	case SCALED_TO_HEX:
+		result.set_scale(zoom, zoom);
+		break;
+	default:
+		return sdl::ttexture();
+	}
+
+	return result;
+}
+
 surface get_lighted_image(const image::locator& i_locator, const light_string& ls, TYPE type)
 {
 	surface res;

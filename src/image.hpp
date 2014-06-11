@@ -207,6 +207,8 @@ namespace image {
 	///SDL_FreeSurface()
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 
+	sdl::ttexture get_texture(const locator& loc, TYPE type=UNSCALED);
+
 	///function to get the surface corresponding to an image.
 	///after applying the lightmap encoded in ls
 	///type should be HEXED or SCALED_TO_HEX
