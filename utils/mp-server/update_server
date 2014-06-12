@@ -77,6 +77,8 @@ case "$VERSION" in
 	;;
   *)
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	echo "Unrecognized version, building from 'master'..."
+	SOURCE_VERSION="master"
 	;;
 esac
 
