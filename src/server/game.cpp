@@ -94,8 +94,20 @@ game::~game()
 	} catch (...) {}
 }
 
+/// returns const so that operator [] won't create empty keys if not existent
+static const simple_wml::node& get_multiplayer(const simple_wml::node& root)
+{
+	if(const simple_wml::node* multiplayer = root.child("multiplayer"))
+		return *multiplayer;
+	else
+	{
+		ERR_GAME << "no [multiplayer] found. Returning root\n";
+		return root;
+	}
+}
+
 bool game::allow_observers() const {
-	return level_["observer"].to_bool(true);
+	return get_multiplayer(level_.root())["observer"].to_bool(true);
 }
 
 bool game::is_observer(const network::connection player) const {
@@ -156,7 +168,7 @@ std::string game::list_users(user_vector users, const std::string& func) const
 }
 
 void game::perform_controller_tweaks() {
-	const simple_wml::node::child_list & sides = level_.root().children("side");
+	const simple_wml::node::child_list & sides = get_sides_list();
 
 	DBG_GAME << "****\n Performing controller tweaks. sides = " << std::endl;
 	DBG_GAME << debug_sides_info() << std::endl;
@@ -212,8 +224,9 @@ void game::perform_controller_tweaks() {
 	//not to send them at all, although not if it complicates the server code.
 }
 
+
 void game::start_game(const player_map::const_iterator starter) {
-	const simple_wml::node::child_list & sides = level_.root().children("side");
+	const simple_wml::node::child_list & sides = get_sides_list();
 	DBG_GAME << "****\n Starting game. sides = " << std::endl;
 	DBG_GAME << debug_sides_info() << std::endl;
 	DBG_GAME << "****" << std::endl;
@@ -221,13 +234,16 @@ void game::start_game(const player_map::const_iterator starter) {
 
 	started_ = true;
 	// Prevent inserting empty keys when reading.
-	const simple_wml::node& s = level_.root();
+	const simple_wml::node& s = get_multiplayer(level_.root());
+
 	const bool save = s["savegame"].to_bool();
 	LOG_GAME << network::ip_address(starter->first) << "\t"
 		<< starter->second.name() << "\t" << "started"
 		<< (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
-		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
-		<< "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
+		//<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
+		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["mp_scenario"]
+		//<< "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
+		<< "\tera: "       << s["mp_era"]
 		<< "\tXP: "        << s["experience_modifier"]
 		<< "\tGPV: "       << s["mp_village_gold"]
 		<< "\tfog: "       << s["mp_fog"]
@@ -305,7 +321,7 @@ bool game::take_side(const player_map::const_iterator user)
 	cfg.root().set_attr("gender", "random");
 
 	// Check if we can figure out a fitting side.
-	const simple_wml::node::child_list& sides = level_.root().children("side");
+	const simple_wml::node::child_list& sides = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator side = sides.begin(); side != sides.end(); ++side) {
 		if(((**side)["controller"] == "network" || (**side)["controller"] == "reserved")
 				&& ((**side)["save_id"] == user->second.name().c_str()
@@ -344,7 +360,7 @@ void game::update_side_data() {
 	players_.clear();
 	observers_.clear();
 
-	const simple_wml::node::child_list& level_sides = level_.root().children("side");
+	const simple_wml::node::child_list& level_sides = get_sides_list();
 	/* This causes data corruption for some reason
 	if (!lg::debug.dont_log(log_server)) {
 		for (simple_wml::node::child_list::const_iterator side = level_sides.begin();
@@ -421,7 +437,7 @@ void game::transfer_side_control(const network::connection sock, const simple_wm
 		return;
 	}
 
-	if (side_num > level_.root().children("side").size()) {
+	if (side_num > get_sides_list().size()) {
 		send_server_message("Invalid side number.", sock);
 		return;
 	}
@@ -577,9 +593,9 @@ bool game::describe_slots() {
 		return false;
 
 	int available_slots = 0;
-	int num_sides = level_.root().children("side").size();
+	int num_sides = get_sides_list().size();
 	int i = 0;
-	const simple_wml::node::child_list& side_list = level_.root().children("side");
+	const simple_wml::node::child_list& side_list = get_sides_list();
 	for(simple_wml::node::child_list::const_iterator it = side_list.begin(); it != side_list.end(); ++it, ++i) {
 		if (((**it)["allow_player"].to_bool(true) == false) || (**it)["controller"] == "null") {
 			num_sides--;
@@ -1265,7 +1281,7 @@ void game::load_next_scenario(const player_map::const_iterator user) {
 	simple_wml::node & next_scen = cfg_scenario.root().add_child("next_scenario");
 	level_.root().copy_into(next_scen);
 
-	const simple_wml::node::child_list & sides = next_scen.children("side");
+	const simple_wml::node::child_list & sides =  starting_pos(next_scen)->children("side");
 
 	DBG_GAME << "****\n loading next scenario for a client. sides info = " << std::endl;
 	DBG_GAME << debug_sides_info() << std::endl;
@@ -1334,7 +1350,7 @@ void game::send_data_team(simple_wml::document& data,
 
 
 bool game::is_on_team(const simple_wml::string_span& team, const network::connection player) const {
-	const simple_wml::node::child_list& side_list = level_.root().children("side");
+	const simple_wml::node::child_list& side_list = get_sides_list();
 	for (side_vector::const_iterator side = sides_.begin(); side != sides_.end(); ++side) {
 		if (*side != player) continue;
 		for (simple_wml::node::child_list::const_iterator i = side_list.begin();
@@ -1571,7 +1587,7 @@ std::string game::debug_player_info() const {
 std::string game::debug_sides_info() const {
 	std::stringstream result;
 	result << "game id: " << id_ << "\n";
-	const simple_wml::node::child_list & sides = level_.root().children("side");
+	const simple_wml::node::child_list & sides = get_sides_list();
 
 	result << "\t\t level, server\n";
 	for(simple_wml::node::child_list::const_iterator s = sides.begin(); s != sides.end(); ++s) {
