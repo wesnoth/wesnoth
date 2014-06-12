@@ -579,6 +579,8 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 				result.push_back(std::make_pair(mode.w, mode.h));
 		}
 	}
+	if(std::find(result.begin(), result.end(), min_res) == result.end())
+		result.push_back(min_res);
 
 	std::sort(result.begin(), result.end());
 	result.erase(std::unique(result.begin(), result.end()), result.end());
