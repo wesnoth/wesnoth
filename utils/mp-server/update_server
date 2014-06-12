@@ -44,7 +44,7 @@ VERSION="${VERSION:=$1}"
 echo "Building $TYPE-$VERSION..."
 
 # Parent for the $VERSION source trees, never written to.
-SOURCE_ROOT="/usr/src/wesnoth"
+SOURCE_ROOT="$HOME/source"
 # Parent for the $VERSION intermediate build dir.
 INT_ROOT="$HOME/builds-int"
 # Parent for the $BUILD_ID output dir.
