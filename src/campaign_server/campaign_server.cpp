@@ -542,7 +542,7 @@ void server::handle_upload(const server::request& req)
 		std::string message = "Add-on accepted.";
 
 		if(!version_info(upload["version"]).good()) {
-			message += "\n<255,255,0>Note: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
+			message += "\n\nNote: The version you specified is invalid. This add-on will be ignored for automatic update checks.";
 		}
 
 		if(campaign == NULL) {
