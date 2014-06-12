@@ -28,6 +28,7 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "minimap.hpp"
+#include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "terrain_builder.hpp"
 #include "text.hpp"
@@ -2734,7 +2735,16 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	}
 
 	// Now we will need the config. Generate one if needed.
-	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, dc_);
+
+	boost::optional <events::mouse_handler &> mhb = boost::none;
+
+	if (resources::controller) {
+		mhb = resources::controller->get_mouse_handler_base();
+	}
+
+	reports::context temp_context = reports::context(*dc_, *this, wb_.lock(), mhb);
+
+	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 

@@ -3575,10 +3575,10 @@ namespace {
 		std::string name;
 		lua_report_generator(lua_State *L, const std::string &n)
 			: mState(L), name(n) {}
-		virtual config generate(const display_context * dc);
+		virtual config generate(reports::context & rc);
 	};
 
-	config lua_report_generator::generate(const display_context * /*dc*/)
+	config lua_report_generator::generate(reports::context & /*rc*/)
 	{
 		lua_State *L = mState;
 		config cfg;
@@ -3597,7 +3597,8 @@ namespace {
 static int cfun_theme_item(lua_State *L)
 {
 	const char *m = lua_tostring(L, lua_upvalueindex(1));
-	luaW_pushconfig(L, reports::generate_report(m, resources::disp_context, true));
+	reports::context temp_context = reports::context(*resources::disp_context, *resources::screen, resources::whiteboard, resources::controller->get_mouse_handler_base());
+	luaW_pushconfig(L, reports::generate_report(m, temp_context , true));
 	return 1;
 }
 
