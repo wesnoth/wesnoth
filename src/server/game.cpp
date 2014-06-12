@@ -1470,11 +1470,13 @@ void game::save_replay() {
 	history_.clear();
 
 	std::stringstream name;
-	name << level_["name"] << " Turn " << current_turn();
+	name << (*starting_pos( level_.root()))["name"] << " Turn " << current_turn();
 
 	std::stringstream replay_data;
 	try {
+#if 0
 		replay_data << "campaign_type=\"multiplayer\"\n"
+			//why did we save difficulcy here ? esp in scmapogn difficulacy = normal is not bguaranteed
 		<< "difficulty=\"NORMAL\"\n"
 		<< "label=\"" << name.str() << "\"\n"
 		<< "mp_game_title=\"" << name_ << "\"\n"
@@ -1485,7 +1487,15 @@ void game::save_replay() {
 		<< replay_commands
 		<< "[/replay]\n"
 		<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
+#else
+		replay_data << level_.output() 
+		//This can result in having 2 [replay] at toplevel since level_ can contain one already. But the client can handle this (simply merges them).
+		<< "[replay]\n"
+		<< "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n" //this is required by gfgtdf's sync mechanism, in PR 121
+		<< replay_commands
+		<< "[/replay]\n";
 
+#endif
 		name << " (" << id_ << ").bz2";
 
 		std::string replay_data_str = replay_data.str();

@@ -81,8 +81,15 @@ saved_game::saved_game(const config& cfg)
 
 	carryover_sides = cfg.child_or_empty("carryover_sides");
 	carryover_sides_start = cfg.child_or_empty("carryover_sides_start");
+	
+	//Serversided replays can contain multiple [replay]
 	replay_start_ = cfg.child_or_empty("replay_start");
-	replay_data = cfg.child_or_empty("replay");
+	replay_data = config(); //cfg.child_or_empty("replay");
+	BOOST_FOREACH(const config& replay, cfg.child_range("replay"))
+	{
+		replay_data.append_children(replay);
+	}
+	
 	if(const config& snapshot = cfg.child("snapshot"))
 	{
 		this->starting_pos_type_ = STARTINGPOS_SNAPSHOT;
