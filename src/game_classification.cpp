@@ -34,6 +34,8 @@ game_classification::game_classification():
 	campaign_type(),
 	campaign_define(),
 	campaign_xtra_defines(),
+	scenario_define(),
+	era_define(),
 	campaign(),
 	abbrev(),
 	completion(),
@@ -51,6 +53,8 @@ game_classification::game_classification(const config& cfg):
 	campaign_type(lexical_cast_default<game_classification::CAMPAIGN_TYPE> (cfg["campaign_type"].str(), game_classification::SCENARIO)),
 	campaign_define(cfg["campaign_define"]),
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
+	scenario_define(cfg["scenario_define"]),
+	era_define(cfg["era_define"]),
 	campaign(cfg["campaign"]),
 	abbrev(cfg["abbrev"]),
 	completion(cfg["completion"]),
@@ -68,6 +72,8 @@ game_classification::game_classification(const game_classification& gc):
 	campaign_type(gc.campaign_type),
 	campaign_define(gc.campaign_define),
 	campaign_xtra_defines(gc.campaign_xtra_defines),
+	scenario_define(gc.scenario_define),
+	era_define(gc.era_define),
 	campaign(gc.campaign),
 	abbrev(gc.abbrev),
 	completion(gc.completion),
@@ -88,6 +94,8 @@ config game_classification::to_config() const
 	cfg["campaign_type"] = lexical_cast<std::string> (campaign_type);
 	cfg["campaign_define"] = campaign_define;
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
+	cfg["scenario_define"] = scenario_define;
+	cfg["era_define"] = era_define;
 	cfg["campaign"] = campaign;
 	cfg["abbrev"] = abbrev;
 	cfg["completion"] = completion;

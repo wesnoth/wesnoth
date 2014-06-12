@@ -43,6 +43,8 @@ public:
 	CAMPAIGN_TYPE campaign_type;
 	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
 	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
+	std::string scenario_define;                     /**< If there is a define the scenario uses to customize data */
+	std::string era_define;                          /**< If there is a define the era uses to customize data */
 
 	std::string campaign;                            /**< the campaign being played */
 

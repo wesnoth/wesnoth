@@ -375,6 +375,10 @@ void game_config_manager::load_game_config_for_game(
 		!classification.difficulty.empty());
 	game_config::scoped_preproc_define campaign(classification.campaign_define,
 		!classification.campaign_define.empty());
+	game_config::scoped_preproc_define scenario(classification.scenario_define,
+		!classification.scenario_define.empty());
+	game_config::scoped_preproc_define era(classification.era_define,
+		!classification.era_define.empty());
 	game_config::scoped_preproc_define multiplayer("MULTIPLAYER",
 		classification.campaign_type == game_classification::MULTIPLAYER);
 

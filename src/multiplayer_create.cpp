@@ -238,6 +238,8 @@ void create::process_event()
 				}
 
 				engine_.prepare_for_campaign(difficulty);
+			} else {
+				engine_.prepare_for_scenario();
 			}
 
 			engine_.prepare_for_new_level();
