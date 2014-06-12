@@ -5,11 +5,11 @@ compiler:
 env:
     - WML_TESTS=true STRICT_COMPILATION=True
     - WML_TESTS=true STRICT_COMPILATION=False
-    - WML_TESTS=false STRICT_COMPILATION=False
+    - WML_TESTS=false STRICT_COMPILATION=True
 matrix:
   exclude:
     - compiler: clang 
-      env: WML_TESTS=false STRICT_COMPILATION=False
+      env: WML_TESTS=false STRICT_COMPILATION=True
     - compiler: gcc 
       env: WML_TESTS=true STRICT_COMPILATION=True
     - compiler: gcc
