@@ -414,6 +414,25 @@ void create_engine::prepare_for_new_level()
 	parameters_.mp_scenario_name = parameters_.scenario_data["name"].str();
 }
 
+void create_engine::prepare_for_scenario()
+{
+	DBG_MP << "preparing data for campaign by reloading game config\n";
+
+	state_.classification().scenario_define =
+		current_level().data()["define"].str();
+	state_.classification().era_define =
+		resources::config_manager->game_config().find_child(
+			"era", "id", get_parameters().mp_era)["define"].str();
+	
+	resources::config_manager->
+		load_game_config_for_game(state_.classification());
+
+	current_level().set_data(
+		resources::config_manager->game_config().find_child(
+		lexical_cast<std::string> (game_classification::MULTIPLAYER),
+		"id", current_level().data()["id"]));
+}
+
 void create_engine::prepare_for_campaign(const std::string& difficulty)
 {
 	DBG_MP << "preparing data for campaign by reloading game config\n";
@@ -435,6 +454,9 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		current_level().data()["define"].str();
 	state_.classification().campaign_xtra_defines =
 		utils::split(current_level().data()["extra_defines"]);
+	state_.classification().era_define =
+		resources::config_manager->game_config().find_child(
+			"era", "id", get_parameters().mp_era)["define"].str();
 
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
