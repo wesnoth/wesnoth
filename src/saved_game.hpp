@@ -55,6 +55,7 @@ public:
 
 	config& get_starting_pos();
 	config& replay_start() { return replay_start_; }
+	const config& replay_start() const { return replay_start_; }
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.

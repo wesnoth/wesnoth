@@ -131,7 +131,7 @@ protected:
 	void set_error_message(const std::string& error_message) { error_message_ = error_message; }
 
 	const std::string& title() { return title_; }
-	saved_game& gamestate() { return gamestate_; }
+	const saved_game& gamestate() { return gamestate_; }
 	config& snapshot() { return snapshot_; }
 
 	/** If there needs to be some data fiddling before saving the game, this is the place to go. */
@@ -161,7 +161,7 @@ private:
 	/** Throws game::save_game_failed. */
 	scoped_ostream open_save_game(const std::string &label);
 	friend class save_info;
-
+	//before_save (write replay data) changes this so it cannot be const
 	saved_game& gamestate_;
 
 	/** Gamestate information at the time of saving. Note that this object is needed here, since

@@ -653,8 +653,8 @@ void replay_savegame::create_filename()
 }
 
 void replay_savegame::write_game(config_writer &out) {
-	gamestate().remove_snapshot();
 	savegame::write_game(out);
+	
 	gamestate().write_carryover(out);
 	out.write_child("replay_start", gamestate().replay_start());
 	out.write_child("replay", gamestate().replay_data);
