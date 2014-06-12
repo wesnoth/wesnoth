@@ -229,6 +229,13 @@ void wait::join_game(bool observe)
 		const config* campaign = &resources::config_manager->
 			game_config().find_child("campaign", "id",
 				level_.child("multiplayer")["mp_campaign"]);
+		const config* era = &resources::config_manager->
+			game_config().find_child("era", "id",
+				level_.child("era")["id"]);
+		const config* scenario = &resources::config_manager->
+			game_config().find_child("multiplayer", "id",
+				level_.child("multiplayer")["id"]);
+
 		if (*campaign) {
 			state_.classification().difficulty =
 				level_.child("multiplayer")["difficulty_define"].str();
@@ -236,6 +243,14 @@ void wait::join_game(bool observe)
 				(*campaign)["define"].str();
 			state_.classification().campaign_xtra_defines =
 				utils::split((*campaign)["extra_defines"]);
+		}
+		if (*era) {
+			state_.classification().era_define =
+				(*era)["define"].str();
+		}
+		if (*scenario) {
+			state_.classification().scenario_define =
+				(*scenario)["define"].str();
 		}
 
 		// Make sure that we have the same config as host, if possible.

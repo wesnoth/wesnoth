@@ -419,6 +419,9 @@ void create_engine::prepare_for_scenario()
 
 	state_.classification().scenario_define =
 		current_level().data()["define"].str();
+	state_.classification().era_define =
+		resources::config_manager->game_config().find_child(
+			"era", "id", get_parameters().mp_era)["define"].str();
 
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
@@ -438,6 +441,9 @@ void create_engine::prepare_for_campaign(const std::string& difficulty)
 		current_level().data()["define"].str();
 	state_.classification().campaign_xtra_defines =
 		utils::split(current_level().data()["extra_defines"]);
+	state_.classification().era_define =
+		resources::config_manager->game_config().find_child(
+			"era", "id", get_parameters().mp_era)["define"].str();
 
 	resources::config_manager->
 		load_game_config_for_game(state_.classification());
