@@ -55,7 +55,7 @@ twindow::twindow(const std::string& title,
 
 	pixel_format_ = info.texture_formats[0];
 
-	clear();
+	fill(0,0,0);
 }
 
 twindow::~twindow()
@@ -75,15 +75,7 @@ void twindow::full_screen()
 	/** @todo Implement. */
 }
 
-void twindow::clear()
-{
-	if(SDL_RenderClear(*this) != 0) {
-		throw texception("Failed to clear the SDL_Renderer object.",
-						 true);
-	}
-}
-
-void twindow::clear(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
+void twindow::fill(Uint8 r, Uint8 g, Uint8 b, Uint8 a)
 {
 	SDL_SetRenderDrawColor(*this, r, g, b, a);
 	if(SDL_RenderClear(*this) != 0) {

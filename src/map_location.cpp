@@ -24,11 +24,9 @@
 #include "map_location.hpp"
 
 #include "config.hpp"
-#include "display_context.hpp"
 #include "formula_string_utils.hpp"
-#include "map.hpp"
-#include "resources.hpp"
 #include "gettext.hpp"
+#include "util.hpp"
 
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
@@ -310,54 +308,6 @@ bool map_location::matches_range(const std::string& xloc, const std::string &ylo
 		}
 	}
 	return true;
-}
-
-std::vector<map_location> parse_location_range(const std::string &x, const std::string &y,
-	bool with_border)
-{
-	std::vector<map_location> res;
-	const std::vector<std::string> xvals = utils::split(x);
-	const std::vector<std::string> yvals = utils::split(y);
-	const gamemap *map = & resources::disp_context->map();
-	assert(map);
-	int xmin = 1, xmax = map->w(), ymin = 1, ymax = map->h();
-	if (with_border) {
-		int bs = map->border_size();
-		xmin -= bs;
-		xmax += bs;
-		ymin -= bs;
-		ymax += bs;
-	}
-
-	for (unsigned i = 0; i < xvals.size() || i < yvals.size(); ++i)
-	{
-		std::pair<int,int> xrange, yrange;
-
-		if (i < xvals.size()) {
-			xrange = utils::parse_range(xvals[i]);
-			if (xrange.first < xmin) xrange.first = xmin;
-			if (xrange.second > xmax) xrange.second = xmax;
-		} else {
-			xrange.first = xmin;
-			xrange.second = xmax;
-		}
-
-		if (i < yvals.size()) {
-			yrange = utils::parse_range(yvals[i]);
-			if (yrange.first < ymin) yrange.first = ymin;
-			if (yrange.second > ymax) yrange.second = ymax;
-		} else {
-			yrange.first = ymin;
-			yrange.second = ymax;
-		}
-
-		for(int x = xrange.first; x <= xrange.second; ++x) {
-			for(int y = yrange.first; y <= yrange.second; ++y) {
-				res.push_back(map_location(x-1,y-1));
-			}
-		}
-	}
-	return res;
 }
 
 void write_location_range(const std::set<map_location>& locs, config& cfg)

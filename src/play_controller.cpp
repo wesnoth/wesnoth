@@ -227,7 +227,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, gameboard_.teams_, level_, gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
+			save_id, gameboard_.teams_, level_, *gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -366,14 +366,14 @@ void play_controller::place_sides_in_preferred_locations()
 {
 	std::vector<placing_info> placings;
 
-	int num_pos = gameboard_.map_.num_valid_starting_positions();
+	int num_pos = gameboard_.map().num_valid_starting_positions();
 
 	int side_num = 1;
 	BOOST_FOREACH(const config &side, level_.child_range("side"))
 	{
 		for(int p = 1; p <= num_pos; ++p) {
-			const map_location& pos = gameboard_.map_.starting_position(p);
-			int score = placing_score(side, gameboard_.map_, pos);
+			const map_location& pos = gameboard_.map().starting_position(p);
+			int score = placing_score(side, gameboard_.map(), pos);
 			placing_info obj;
 			obj.side = side_num;
 			obj.score = score;
@@ -391,7 +391,7 @@ void play_controller::place_sides_in_preferred_locations()
 		if(placed.count(i->side) == 0 && positions_taken.count(i->pos) == 0) {
 			placed.insert(i->side);
 			positions_taken.insert(i->pos);
-			gameboard_.map_.set_starting_position(i->side,i->pos);
+			gameboard_.map_->set_starting_position(i->side,i->pos);
 			LOG_NG << "placing side " << i->side << " at " << i->pos << std::endl;
 		}
 	}

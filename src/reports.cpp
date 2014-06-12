@@ -17,8 +17,8 @@
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "display_context.hpp"
-#include "editor/editor_controller.hpp"
-#include "editor/palette/terrain_palettes.hpp"
+//#include "editor/editor_controller.hpp"
+//#include "editor/palette/terrain_palettes.hpp"
 #include "font.hpp"
 #include "game_display.hpp"
 #include "game_preferences.hpp"
@@ -125,14 +125,14 @@ namespace reports {
 static const unit *get_visible_unit()
 {
 	return resources::disp_context->get_visible_unit(resources::screen->displayed_unit_hex(),
-		(*resources::teams)[resources::screen->viewing_team()],
+		resources::disp_context->teams()[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
 static const unit *get_selected_unit()
 {
 	return resources::disp_context->get_visible_unit(resources::screen->selected_hex(),
-		(*resources::teams)[resources::screen->viewing_team()],
+		resources::disp_context->teams()[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
@@ -221,7 +221,7 @@ static config unit_side(const unit* u)
 	if (!u) return report();
 
 	config report;
-	const team &u_team = (*resources::teams)[u->side() - 1];
+	const team &u_team = resources::disp_context->teams()[u->side() - 1];
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = team::get_side_color_index(u->side());
@@ -675,7 +675,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	int tod_bonus = combat_modifier(displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
 	int leader_bonus = 0;
-	if (under_leadership(*resources::units, displayed_unit_hex, &leader_bonus).valid())
+	if (under_leadership(resources::disp_context->units(), displayed_unit_hex, &leader_bonus).valid())
 		damage_multiplier += leader_bonus;
 
 	bool slowed = u.get_state(unit::STATE_SLOWED);
@@ -772,9 +772,9 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	// We want weak resistances (= good damage) first.
 	std::map<int, std::set<std::string>, std::greater<int> > resistances;
 	std::set<std::string> seen_types;
-	const team &unit_team = (*resources::teams)[u.side() - 1];
-	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
-	BOOST_FOREACH(const unit &enemy, *resources::units)
+	const team &unit_team = resources::disp_context->teams()[u.side() - 1];
+	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
+	BOOST_FOREACH(const unit &enemy, resources::disp_context->units())
 	{
 		if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
 			continue;
@@ -883,7 +883,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			battle_context weapon(*resources::units, attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
+			battle_context weapon(resources::disp_context->units(), attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
 			weapons.push_back(weapon);
 		}
 	}
@@ -1113,7 +1113,7 @@ static config time_of_day_at(const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day tod;
-	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		tod = resources::tod_manager->get_time_of_day();
@@ -1163,7 +1163,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 	std::ostringstream tooltip;
 	time_of_day local_tod;
 	time_of_day global_tod = resources::tod_manager->get_time_of_day();
-	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		local_tod = global_tod;
@@ -1254,7 +1254,7 @@ REPORT_GENERATOR(gold)
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
 	// Suppose the full unit map is applied.
-	int fake_gold = (*resources::teams)[viewing_side - 1].gold() -
+	int fake_gold = resources::disp_context->teams()[viewing_side - 1].gold() -
 		resources::whiteboard->get_spent_gold_for(viewing_side);
 	char const *end = naps;
 	if (viewing_side != resources::screen->playing_side()) {
@@ -1274,7 +1274,7 @@ REPORT_GENERATOR(villages)
 {
 	std::ostringstream str;
 	int viewing_side = display::get_singleton()->viewing_side();
-	const team &viewing_team = (*resources::teams)[viewing_side - 1];
+	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
@@ -1299,7 +1299,7 @@ REPORT_GENERATOR(upkeep)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = (*resources::teams)[viewing_side - 1];
+	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(str.str());
@@ -1308,7 +1308,7 @@ REPORT_GENERATOR(upkeep)
 REPORT_GENERATOR(expenses)
 {
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = (*resources::teams)[viewing_side - 1];
+	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, resources::screen->viewing_side());
 	return gray_inactive(str_cast(td.expenses));
 }
@@ -1317,7 +1317,7 @@ REPORT_GENERATOR(income)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = (*resources::teams)[viewing_side - 1];
+	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	char const *end = naps;
 	if (viewing_side != resources::screen->playing_side()) {
@@ -1400,7 +1400,7 @@ REPORT_GENERATOR(terrain)
 {
 	const gamemap &map = resources::disp_context->map();
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = (*resources::teams)[viewing_side - 1];
+	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	map_location mouseover_hex = resources::screen->mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return report();
@@ -1468,7 +1468,7 @@ REPORT_GENERATOR(position)
 	str << mouseover_hex;
 
 	const unit *u = reports::get_visible_unit();
-	const team &viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
 	if (!u ||
 	    (displayed_unit_hex != mouseover_hex &&
 	     displayed_unit_hex != resources::screen->selected_hex()) ||
@@ -1489,7 +1489,7 @@ REPORT_GENERATOR(position)
 
 REPORT_GENERATOR(side_playing)
 {
-	const team &active_team = (*resources::teams)[resources::screen->playing_team()];
+	const team &active_team = resources::disp_context->teams()[resources::screen->playing_team()];
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = team::get_side_color_index(resources::screen->playing_side());
@@ -1551,7 +1551,7 @@ REPORT_GENERATOR(report_clock)
 REPORT_GENERATOR(report_countdown)
 {
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = (*resources::teams)[viewing_side - 1];
+	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
 		return report_report_clock();

@@ -159,10 +159,9 @@ void replay_controller::init_gui(){
 
 	gui_->scroll_to_leader(player_number_, display::WARP);
 	update_locker lock_display((*gui_).video(),false);
-	BOOST_FOREACH(team & t, gameboard_.teams_) {
+	BOOST_FOREACH(const team & t, gameboard_.teams()) {
 		t.reset_objectives_changed();
 	}
-
 	update_replay_ui();
 }
 
@@ -495,7 +494,7 @@ possible_end_play_signal replay_controller::play_turn(){
 	bool last_team = false;
 
 	while ( (!last_team) && (!recorder.at_end()) && is_playing_ ){
-		last_team = static_cast<size_t>(player_number_) == gameboard_.teams_.size();
+		last_team = static_cast<size_t>(player_number_) == gameboard_.teams().size();
 		PROPOGATE_END_PLAY_SIGNAL( play_side() );
 		HANDLE_END_PLAY_SIGNAL( play_slice() );
 	}
@@ -549,9 +548,9 @@ possible_end_play_signal replay_controller::play_side() {
 
 	player_number_++;
 
-	if (static_cast<size_t>(player_number_) > gameboard_.teams_.size()) {
-		//during the orginal game player_number_ would also be gameboard_.teams_.size(),
-		player_number_ = gameboard_.teams_.size();
+	if (static_cast<size_t>(player_number_) > gameboard_.teams().size()) {
+		//during the orginal game player_number_ would also be gameboard_.teams().size(),
+		player_number_ = gameboard_.teams().size();
 		finish_turn();
 		tod_manager_.next_turn();
 		it_is_a_new_turn_ = true;
@@ -572,7 +571,7 @@ possible_end_play_signal replay_controller::play_side() {
 void replay_controller::update_teams(){
 
 	int next_team = player_number_;
-	if(static_cast<size_t>(next_team) > gameboard_.teams_.size()) {
+	if(static_cast<size_t>(next_team) > gameboard_.teams().size()) {
 		next_team = 1;
 	}
 
