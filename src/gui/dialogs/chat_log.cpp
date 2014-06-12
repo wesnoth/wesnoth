@@ -30,6 +30,7 @@
 #include "gui/widgets/slider.hpp"
 #include "utils/foreach.tpp"
 
+#include "../../clipboard.hpp"
 #include "../../game_preferences.hpp"
 #include "../../gamestatus.hpp"
 #include "../../log.hpp"
@@ -77,6 +78,7 @@ public:
 		, previous_page()
 		, next_page()
 		, filter()
+		, copy_button()
 	{
 		LOG_CHAT_LOG << "entering tchat_log::model...\n";
 		LOG_CHAT_LOG << "finished tchat_log::model...\n";
@@ -91,6 +93,7 @@ public:
 	tbutton* previous_page;
 	tbutton* next_page;
 	ttext_box* filter;
+	tbutton* copy_button;
 
 	void clear_chat_msg_list()
 	{
@@ -191,6 +194,13 @@ public:
 		std::ostringstream s;
 		stream_log(s, first, last);
 		msg_label->set_label(s.str());
+	}
+
+	void chat_message_list_to_clipboard(int first, int last)
+	{
+		std::ostringstream s;
+		stream_log(s, first, last, true);
+		copy_to_clipboard(s.str(), false);
 	}
 };
 
@@ -305,6 +315,11 @@ public:
 					 << std::endl;
 	}
 
+	void handle_copy_button_clicked()
+	{
+		const std::pair<int, int>& range = calculate_log_line_range();
+		model_.chat_message_list_to_clipboard(range.first, range.second);
+	}
 
 private:
 	model& model_;
@@ -352,6 +367,11 @@ public:
 		window.invalidate_layout(); // workaround for assertion failure
 	}
 
+	void handle_copy_button_clicked(twindow& /*window*/)
+	{
+		controller_.handle_copy_button_clicked();
+	}
+
 	void bind(twindow& window)
 	{
 		LOG_CHAT_LOG << "Entering tchat_log::view::bind" << std::endl;
@@ -377,6 +397,13 @@ public:
 		model_.filter->set_text_changed_callback(
 				boost::bind(&view::filter, this, boost::ref(window)));
 		window.keyboard_capture(model_.filter);
+
+		model_.copy_button = &find_widget<tbutton>(&window, "copy", false);
+		connect_signal_mouse_left_click(
+				*model_.copy_button,
+				boost::bind(&view::handle_copy_button_clicked,
+							this,
+							boost::ref(window)));
 
 		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
 	}
