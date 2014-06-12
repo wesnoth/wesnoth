@@ -435,8 +435,9 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				return QUIT;
 			}
 
-			gamestate.set_scenario(gamestate.replay_start());
-			gamestate.replay_start() = config();
+			//The host shoudl send teh complete savegame now that also contains teh carryvoer seides start-
+			//gamestate.set_scenario(gamestate.replay_start());
+			//gamestate.replay_start() = config();
 			// Retain carryover_sides_start, as the config from the server
 			// doesn't contain it.
 			//TODO: enable this again or make mp_wait not change carryover sides start.
@@ -446,44 +447,37 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.expand_scenario();
 
 			if (io_type == IO_SERVER && gamestate.valid()) {
-				config * scenario = &gamestate.get_starting_pos();
-				mp_game_settings& params = gamestate.mp_settings();
-
 				// A hash have to be generated using an unmodified
 				// scenario data.
-				params.hash = scenario->hash();
+				gamestate.mp_settings().hash = starting_pos.hash();
 
 				// Apply carryover before passing a scenario data to the
 				// mp::connect_engine.
-				gamestate.expand_carryover();
+				//WHY???
+				//gamestate.expand_carryover();
 				
 				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
 				//then we have to move "allow_new_game" attribute over now.
-				bool allow_new_game_flag = (*scenario)["allow_new_game"].to_bool(true);
+				bool allow_new_game_flag = starting_pos["allow_new_game"].to_bool(true);
 
 				if (gamestate.carryover_sides_start.child_or_empty("end_level_data").child_or_empty("next_scenario_settings").has_attribute("allow_new_game")) {
 					allow_new_game_flag = gamestate.carryover_sides_start.child_or_empty("end_level_data").child("next_scenario_settings")["allow_new_game"].to_bool();
 				}
 
-				params.scenario_data = *scenario;
-				params.scenario_data["next_underlying_unit_id"] = n_unit::id_manager::instance().get_save_id();
-				params.mp_scenario = (*scenario)["id"].str();
-				params.mp_scenario_name = (*scenario)["name"].str();
-				params.num_turns = (*scenario)["turns"].to_int(-1);
-				params.saved_game = false;
-				params.use_map_settings =
-					(*scenario)["force_lock_settings"].to_bool();
+				gamestate.mp_settings().num_turns = starting_pos["turns"].to_int(-1);
+				gamestate.mp_settings().saved_game = false;
+				gamestate.mp_settings().use_map_settings = starting_pos["force_lock_settings"].to_bool();
 
 				mp::connect_engine_ptr
-					connect_engine(new mp::connect_engine(disp, gamestate,
-						params, !network_game, false));
+					connect_engine(new mp::connect_engine(gamestate,
+						!network_game, false));
 
 				if (allow_new_game_flag || (game_config::debug && network::nconnections() == 0)) {
 					// Opens mp::connect dialog to allow users to
 					// make an adjustments for scenario.
 					// TODO: Fix this so that it works when network::nconnections() > 0 as well.
 					mp::ui::result connect_res = mp::goto_mp_connect(disp,
-						*connect_engine, game_config, params.name);
+						*connect_engine, game_config, gamestate.mp_settings().name);
 					if (connect_res == mp::ui::QUIT) {
 						return QUIT;
 					}
@@ -492,9 +486,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					connect_engine->
 						start_game(mp::connect_engine::FORCE_IMPORT_USERS);
 				}
-
-				starting_pos = gamestate.replay_start();
-				scenario = &starting_pos;
 
 				// TODO: move this code to mp::connect_engine
 				// in order to send generated data to the network

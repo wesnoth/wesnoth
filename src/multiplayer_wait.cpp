@@ -224,7 +224,7 @@ void wait::join_game(bool observe)
 	if (!download_res) {
 		set_result(QUIT);
 		return;
-	} else if (!level_["allow_new_game"].to_bool(true)) {
+	} else if (!get_scenario()["allow_new_game"].to_bool(true)) {
 		set_result(PLAY);
 		return;
 	}
@@ -235,10 +235,10 @@ void wait::join_game(bool observe)
 
 		const config* campaign = &resources::config_manager->
 			game_config().find_child("campaign", "id",
-				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["mp_campaign"]);
+				level_.child("multiplayer")["mp_campaign"]);
 		if (*campaign) {
 			state_.classification().difficulty =
-				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["difficulty_define"].str();
+				level_.child("multiplayer")["difficulty_define"].str();
 			state_.classification().campaign_define =
 				(*campaign)["define"].str();
 			state_.classification().campaign_xtra_defines =
@@ -251,7 +251,7 @@ void wait::join_game(bool observe)
 	}
 
 	// Add the map name to the title.
-	append_to_title(": " + level_["name"].t_str());
+	append_to_title(": " + get_scenario()["name"].t_str());
 
 	if (!observe) {
 		//search for an appropriate vacant slot. If a description is set
@@ -260,7 +260,7 @@ void wait::join_game(bool observe)
 		//available side.
 		const config *side_choice = NULL;
 		int side_num = -1, nb_sides = 0;
-		BOOST_FOREACH(const config &sd, level_.child_range("side"))
+		BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 		{
 			if (sd["controller"] == "reserved" && sd["current_player"] == preferences::login())
 			{
@@ -315,7 +315,7 @@ void wait::join_game(bool observe)
 			}
 
 			const bool lock_settings =
-				level_["force_lock_settings"].to_bool();
+				get_scenario()["force_lock_settings"].to_bool();
 			const bool saved_game =
 				level_.child("multiplayer")["savegame"].to_bool();
 
@@ -462,17 +462,17 @@ void wait::process_network_data(const config& data, const network::connection so
 		LOG_RG << data.debug() << std::endl;
 		//const int side = lexical_cast<int>(change["side"]);
 
-		if (config & sidetochange = level_.find_child("side", "side", change["side"])) {
+		if (config & sidetochange = get_scenario().find_child("side", "side", change["side"])) {
 			LOG_RG << "found side : " << sidetochange.debug() << std::endl;
 			sidetochange.merge_with(change);
 			LOG_RG << "changed to : " << sidetochange.debug() << std::endl;
 		} else {
 			LOG_RG << "change_controller didn't find any side!" << std::endl;
 		}
-	} else if(data.child("side") || data.child("next_scenario")) {
+	} else if(data.has_child("scenario") || data.has_child("snapshot") || data.child("next_scenario")) {
 		level_ = first_scenario_ ? data : data.child("next_scenario");
 		LOG_NW << "got some sides. Current number of sides = "
-			<< level_.child_count("side") << ','
+			<< get_scenario().child_count("side") << ','
 			<< data.child_count("side") << '\n';
 		generate_menu();
 	}
@@ -486,7 +486,7 @@ void wait::generate_menu()
 	std::vector<std::string> details;
 	std::vector<std::string> playerlist;
 
-	BOOST_FOREACH(const config &sd, level_.child_range("side"))
+	BOOST_FOREACH(const config &sd, get_scenario().child_range("side"))
 	{
 		if (!sd["allow_player"].to_bool(true)) {
 			continue;
@@ -600,7 +600,7 @@ void wait::generate_menu()
 bool wait::has_level_data() const
 {
 	if (first_scenario_) {
-		return level_.has_attribute("version") && level_.has_child("side");
+		return level_.has_attribute("version") && get_scenario().has_child("side");
 	} else {
 		return level_.has_child("next_scenario");
 	}
@@ -632,6 +632,27 @@ bool wait::download_level_data()
 	}
 
 	return true;
+}
+
+config& wait::get_scenario()
+{
+
+	if(config& scenario = level_.child("scenario"))
+		return scenario;
+	else if(config& snapshot = level_.child("snapshot"))
+		return snapshot;
+	else 
+		return level_;
+}
+
+const config& wait::get_scenario() const 
+{
+	if(const config& scenario = level_.child("scenario"))
+		return scenario;
+	else if(const config& snapshot = level_.child("snapshot"))
+		return snapshot;
+	else 
+		return level_;
 }
 
 } // namespace mp

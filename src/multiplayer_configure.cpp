@@ -29,6 +29,7 @@
 #include "multiplayer_configure.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"
+#include "saved_game.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
@@ -43,7 +44,7 @@ static lg::log_domain log_mp_configure("mp/configure");
 
 namespace mp {
 
-configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, const mp_game_settings& params, bool local_players_only) :
+configure::configure(game_display& disp, const config &cfg, chat& c, config& gamelist, saved_game& game, bool local_players_only) :
 	ui(disp, _("Configure Game"), cfg, c, gamelist),
 
 	local_players_only_(local_players_only),
@@ -90,7 +91,8 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	entry_points_(),
 	show_entry_points_(false),
 	force_use_map_settings_check_(true),
-	parameters_(params),
+	state_(game),
+	parameters_(state_.mp_settings()),
 	options_manager_(cfg, disp, &options_pane_right_, preferences::options())
 {
 	// Build the list of scenarios to play
@@ -146,7 +148,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	xp_modifier_slider_.set_increment(10);
 	xp_modifier_slider_.set_help_string(_("The amount of experience a unit needs to advance"));
 
-	if (parameters_.scenario_data["force_lock_settings"].to_bool()) {
+	if (state_.get_starting_pos()["force_lock_settings"].to_bool()) {
 		use_map_settings_.enable(false);
 		use_map_settings_.set_check(true);
 	} else {
@@ -202,7 +204,7 @@ configure::configure(game_display& disp, const config &cfg, chat& c, config& gam
 	}
 
 	options_manager_.set_era(parameters_.mp_era);
-	options_manager_.set_scenario(parameters_.mp_scenario);
+	options_manager_.set_scenario(state_.get_scenario_id()/*parameters_.mp_scenario*/);
 	options_manager_.set_modifications(parameters_.active_mods);
 	options_manager_.init_widgets();
 
@@ -325,9 +327,7 @@ void configure::process_event()
 		const config& scenario = *entry_points_[entry_points_combo_.selected()];
 
 		parameters_.hash = scenario.hash();
-		parameters_.scenario_data = scenario;
-		parameters_.mp_scenario = scenario["id"].str();
-		parameters_.mp_scenario_name = scenario["name"].str();
+		state_.set_scenario(scenario);
 
 		force_use_map_settings_check_ = true;
 	}
@@ -412,15 +412,15 @@ void configure::process_event()
 		// If the map settings are wanted use them,
 		// if not properly defined fall back to the default settings
 		turns_slider_.set_value(map_settings ?
-			settings::get_turns(parameters_.scenario_data["turns"]) :
+			settings::get_turns(state_.get_starting_pos()["turns"]) :
 			preferences::turns());
 
 		xp_modifier_slider_.set_value(map_settings ?
-			settings::get_xp_modifier(parameters_.scenario_data["experience_modifier"]) :
+			settings::get_xp_modifier(state_.get_starting_pos()["experience_modifier"]) :
 			preferences::xp_modifier());
 
 		random_start_time_.set_check(map_settings ?
-			parameters_.scenario_data["random_start_time"].to_bool(true) :
+			state_.get_starting_pos()["random_start_time"].to_bool(true) :
 			preferences::random_start_time());
 
 		// These are per player, always show values of player 1.
@@ -430,7 +430,7 @@ void configure::process_event()
 		 * This might change in the future.
 		 * NOTE when 'load game' is selected there are no sides.
 		 */
-		config::const_child_itors sides = parameters_.scenario_data.child_range("side");
+		config::const_child_itors sides = state_.get_starting_pos().child_range("side");
 		if (sides.first != sides.second)
 		{
 			const config &cfg = *sides.first;

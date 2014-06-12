@@ -29,6 +29,7 @@ public:
 	void write_general_info(config_writer& out) const;
 	void write_carryover(config_writer& out) const;
 	void write_starting_pos(config_writer& out) const;
+	config to_config();
 	void remove_old_scenario();
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; }
@@ -53,6 +54,7 @@ public:
 	void convert_to_start_save();
 	const config& get_replay_starting_pos();
 
+	std::string get_scenario_id();
 	config& get_starting_pos();
 	config& replay_start() { return replay_start_; }
 	const config& replay_start() const { return replay_start_; }

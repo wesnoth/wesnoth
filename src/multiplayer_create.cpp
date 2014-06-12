@@ -36,6 +36,8 @@
 #include "minimap.hpp"
 #include "multiplayer_create.hpp"
 #include "filesystem.hpp"
+#include "resources.hpp"
+#include "savegame.hpp"
 #include "log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
@@ -253,11 +255,25 @@ void create::process_event()
 	}
 
 	if (load_game_.pressed()) {
-		engine_.prepare_for_saved_game();
+		try 
+		{
+			savegame::loadgame load(disp_,
+				resources::config_manager->game_config(), engine_.get_state());
+			load.load_multiplayer_game();
 
-		set_result(LOAD_GAME);
+			engine_.prepare_for_saved_game();
 
-		return;
+			set_result(LOAD_GAME);
+
+			return;
+		}
+		catch (load_game_cancelled_exception)
+		{
+		} 
+		catch(config::error&) 
+		{
+		}
+
 	}
 
 	bool update_mod_button_label = mod_selection_ != mods_menu_.selection();

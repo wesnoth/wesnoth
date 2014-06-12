@@ -287,3 +287,51 @@ void saved_game::convert_to_start_save()
 	carryover_sides = config();
 	remove_snapshot();
 }
+
+config saved_game::to_config()
+{
+	//TODO: remove this code dublication with write_... functions.
+	config r = classification_.to_config();
+	if(!this->replay_start_.empty())
+	{
+		r.add_child("replay_start", replay_start_);
+	}
+	if(!this->replay_data.empty())
+	{
+		r.add_child("replay", replay_data);
+	}
+	if(starting_pos_type_ == STARTINGPOS_SNAPSHOT)
+	{
+		r.add_child("snapshot", starting_pos_);
+	}
+	else if(starting_pos_type_ == STARTINGPOS_SCENARIO)
+	{
+		r.add_child("scenario", starting_pos_);
+	}
+	if(!this->carryover_sides.empty())
+	{
+		r.add_child("carryover_sides", carryover_sides);
+	}
+	if(!this->carryover_sides_start.empty())
+	{
+		r.add_child("carryover_sides_start", carryover_sides_start);
+	}
+
+	if (classification_.campaign_type == game_classification::MULTIPLAYER) {
+		r.add_child("multiplayer", mp_settings_.to_config());
+	}
+	return r;
+}
+
+std::string saved_game::get_scenario_id()
+{
+	if(this->starting_pos_type_ == STARTINGPOS_SNAPSHOT
+		|| this->starting_pos_type_ == STARTINGPOS_SCENARIO)
+	{
+		return starting_pos_["id"];
+	}
+	else
+	{
+		return carryover_sides_start["next_scenario"];
+	}
+}
