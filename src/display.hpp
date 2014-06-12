@@ -383,6 +383,9 @@ public:
 
 	void refresh_report(std::string const &report_name, const config * new_cfg=NULL);
 
+	map_location get_selected_hex() const { return selectedHex_; }
+	map_location get_highlight_hex() const { return mouseoverHex_; }
+
 	void draw_minimap_units();
 
 	/** Function to invalidate all tiles. */
