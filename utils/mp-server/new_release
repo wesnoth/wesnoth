@@ -44,4 +44,5 @@ $echo sed -i -e "/motd=/s/$PREV_VERSION/$NEW_VERSION/g" $DEV_SERVER_CONFIG
 [ $PREV = yes ] && $echo sed -i -e "s,#\({./$DEV_VERSION-prev-redirect.cfg}\),\1," $DEV_SERVER_CONFIG
 # reload the config
 $echo killall -HUP wesnothd-$DEV_VERSION
+$echo sleep 1
 $echo $HOME/bin/send_server_message $DEV_VERSION "$SERVER_MESSAGE"
