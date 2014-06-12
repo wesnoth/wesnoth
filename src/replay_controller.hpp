@@ -86,7 +86,7 @@ private:
 		       play_turn_button() && play_side_button();
 	}
 
-	saved_game gamestate_start_;
+	saved_game saved_game_start_;
 	game_board gameboard_start_;
 	tod_manager tod_manager_start_;
 

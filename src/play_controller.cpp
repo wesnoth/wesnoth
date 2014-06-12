@@ -117,7 +117,7 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	gui_(),
 	statistics_context_(level["name"]),
 	level_(level),
-	gamestate_(state_of_game),
+	saved_game_(state_of_game),
 	gamedata_(level),
 	undo_stack_(new actions::undo_list(level.child("undo_stack"))),
 	whiteboard_manager_(),
@@ -150,8 +150,8 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	resources::units = &gameboard_.units_;
 
 
-	resources::classification = &gamestate_.classification();
-	resources::mp_settings = &gamestate_.mp_settings();
+	resources::classification = &saved_game_.classification();
+	resources::mp_settings = &saved_game_.mp_settings();
 
 	persist_.start_transaction();
 	n_unit::id_manager::instance().set_save_id(level_["next_underlying_unit_id"]);
@@ -226,7 +226,7 @@ void play_controller::init(CVideo& video){
 			}
 		}
 		team_builder_ptr tb_ptr = gamedata_.create_team_builder(side,
-			save_id, gameboard_.teams_, level_, *gameboard_.map_, gameboard_.units_, gamestate_.replay_start());
+			save_id, gameboard_.teams_, level_, *gameboard_.map_, gameboard_.units_, saved_game_.replay_start());
 		++team_num;
 		gamedata_.build_team_stage_one(tb_ptr);
 		team_builders.push_back(tb_ptr);
@@ -264,7 +264,7 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("build terrain");
 	gui_.reset(new game_display(gameboard_, video, whiteboard_manager_, tod_manager_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
-		if (gamestate_.mp_settings().mp_countdown)
+		if (saved_game_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
 		else
 			gui_->get_theme().modify_label("time-icon", _ ("current local time"));
@@ -417,7 +417,7 @@ void play_controller::status_table(){
 void play_controller::save_game(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_game);
@@ -427,7 +427,7 @@ void play_controller::save_game(){
 void play_controller::save_replay(){
 	if(save_blocker::try_block()) {
 		save_blocker::save_unblocker unblocker;
-		savegame::replay_savegame save(gamestate_, preferences::save_compression_format());
+		savegame::replay_savegame save(saved_game_, preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), "", gui::OK_CANCEL);
 	} else {
 		save_blocker::on_unblock(this,&play_controller::save_replay);
@@ -444,7 +444,7 @@ void play_controller::save_map(){
 }
 
 void play_controller::load_game(){
-	savegame::loadgame load(*gui_, game_config_, gamestate_);
+	savegame::loadgame load(*gui_, game_config_, saved_game_);
 	load.load_game();
 }
 
@@ -584,7 +584,7 @@ void play_controller::fire_start(bool execute){
 	} else {
 		it_is_a_new_turn_ = false;
 	}
-	if( gamestate_.classification().random_mode != "" && (network::nconnections() != 0))
+	if( saved_game_.classification().random_mode != "" && (network::nconnections() != 0))
 	{
 		std::string mes = _("MP game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.");
 		gui_->add_chat_message(
@@ -785,7 +785,7 @@ config play_controller::to_config() const
 
 	gamedata_.write_snapshot(cfg);
 
-	cfg.merge_attributes(gamestate_.classification().to_config());
+	cfg.merge_attributes(saved_game_.classification().to_config());
 	return cfg;
 }
 
@@ -1189,7 +1189,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 			std::vector<std::string> newitems;
 			std::vector<std::string> newsaves;
 			for (unsigned int turn = this->turn(); turn != 0; turn--) {
-				std::string name = gamestate_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
+				std::string name = saved_game_.classification().label + "-" + _("Auto-Save") + lexical_cast<std::string>(turn);
 				if (savegame::save_game_exists(name, comp_format)) {
 					newsaves.push_back(
 						name + compression::format_extension(comp_format));
@@ -1197,7 +1197,7 @@ void play_controller::expand_autosaves(std::vector<std::string>& items)
 				}
 			}
 
-			const std::string& start_name = gamestate_.classification().label;
+			const std::string& start_name = saved_game_.classification().label;
 			if(savegame::save_game_exists(start_name, comp_format)) {
 				newsaves.push_back(
 					start_name + compression::format_extension(comp_format));
@@ -1485,7 +1485,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << _("The game is out of sync. It might not make much sense to continue. Do you want to save your game?");
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
-	savegame::oos_savegame save(gamestate_, *gui_, to_config());
+	savegame::oos_savegame save(saved_game_, *gui_, to_config());
 	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
@@ -1520,14 +1520,14 @@ void play_controller::toggle_accelerated_speed()
 
 void play_controller::do_autosave()
 {
-	savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
+	savegame::autosave_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
 	save.autosave(false, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 }
 
 
 void play_controller::do_consolesave(const std::string& filename)
 {
-	savegame::ingame_savegame save(gamestate_, *gui_,
+	savegame::ingame_savegame save(saved_game_, *gui_,
 	                               to_config(), preferences::save_compression_format());
 	save.save_game_automatic(gui_->video(), true, filename);
 }

@@ -110,7 +110,7 @@ replay_controller::replay_controller(const config& level,
 		saved_game& state_of_game, const int ticks,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, game_config, video, false),
-	gamestate_start_(gamestate_),
+	saved_game_start_(saved_game_),
 	gameboard_start_(gameboard_),
 	tod_manager_start_(level),
 	current_turn_(1),
@@ -302,7 +302,7 @@ void replay_controller::reset_replay()
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	recorder.set_skip(false);
-	gamestate_ = gamestate_start_;
+	saved_game_ = saved_game_start_;
 	gameboard_ = gameboard_start_;
 	gui_->change_display_context(&gameboard_); //this doesn't change the pointer value, but it triggers the gui to update the internal terrain builder object,
 						   //idk what the consequences of not doing that are, but its probably a good idea to do it, esp. if layout
@@ -405,7 +405,7 @@ void replay_controller::process_oos(const std::string& msg) const
 	if (non_interactive()) {
 		throw game::game_error(message.str()); //throw end_level_exception(DEFEAT);
 	} else {
-		savegame::oos_savegame save(gamestate_, *gui_, to_config());
+		savegame::oos_savegame save(saved_game_, *gui_, to_config());
 		save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 	}
 }

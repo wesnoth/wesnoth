@@ -345,9 +345,8 @@ void playsingle_controller::report_victory(
 
 possible_end_play_signal playsingle_controller::play_scenario_init(end_level_data & /*eld*/, bool & past_prestart) {
 	// At the beginning of the scenario, save a snapshot as replay_start
-	if(gamestate_.replay_start().empty())
-	{
-		gamestate_.replay_start() = to_config();
+	if(saved_game_.replay_start().empty()){
+		saved_game_.replay_start() = to_config();
 	}
 	HANDLE_END_PLAY_SIGNAL( fire_preload() );
 
@@ -398,8 +397,8 @@ possible_end_play_signal playsingle_controller::play_scenario_main_loop(end_leve
 	// Initialize countdown clock.
 	std::vector<team>::const_iterator t;
 	for(t = gameboard_.teams().begin(); t != gameboard_.teams().end(); ++t) {
-		if (gamestate_.mp_settings().mp_countdown && !loading_game_ ){
-			t->set_countdown_time(1000 * gamestate_.mp_settings().mp_countdown_init_time);
+		if (saved_game_.mp_settings().mp_countdown && !loading_game_ ){
+			t->set_countdown_time(1000 * saved_game_.mp_settings().mp_countdown_init_time);
 		}
 	}
 
@@ -500,7 +499,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					if (gameboard_.teams().empty())
 					{
 						//store persistent teams
-						gamestate_.set_snapshot(config());
+						saved_game_.set_snapshot(config());
 
 						return VICTORY; // this is probably only a story scenario, i.e. has its endlevel in the prestart event
 					}
@@ -510,7 +509,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					}
 					if (end_level_result == DEFEAT || end_level_result == VICTORY)
 					{
-						gamestate_.classification().completion = (end_level_result == VICTORY) ? "victory" : "defeat";
+						saved_game_.classification().completion = (end_level_result == VICTORY) ? "victory" : "defeat";
 						// If we're a player, and the result is victory/defeat, then send
 						// a message to notify the server of the reason for the game ending.
 						if (!obs) {
@@ -518,7 +517,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 							config& info = cfg.add_child("info");
 							info["type"] = "termination";
 							info["condition"] = "game over";
-							info["result"] = gamestate_.classification().completion;
+							info["result"] = saved_game_.classification().completion;
 							network::send_data(cfg, 0);
 						} else {
 							gui2::show_transient_message(gui_->video(),_("Game Over"),
@@ -532,7 +531,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					}
 					else if (end_level_result == DEFEAT)
 					{
-						gamestate_.classification().completion = "defeat";
+						saved_game_.classification().completion = "defeat";
 						game_events::fire("defeat");
 
 						if (!obs) {
@@ -548,7 +547,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					}
 					else if (end_level_result == VICTORY)
 					{
-						gamestate_.classification().completion =
+						saved_game_.classification().completion =
 							!end_level.transient.linger_mode ? "running" : "victory";
 						game_events::fire("victory");
 
@@ -572,7 +571,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 						LOG_NG << "Add units that survived the scenario to the recall list.\n";
 						gameboard_.all_survivors_to_recall();
 
-						gamestate_.remove_snapshot();
+						saved_game_.remove_snapshot();
 						if(!is_observer()) {
 							persist_.end_transaction();
 						}
@@ -583,7 +582,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 					{
 						LOG_NG << "resuming from loaded linger state...\n";
 						//as carryover information is stored in the snapshot, we have to re-store it after loading a linger state
-						gamestate_.set_snapshot(config());
+						saved_game_.set_snapshot(config());
 						if(!is_observer()) {
 							persist_.end_transaction();
 						}
@@ -598,7 +597,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		// Loading a new game is effectively a quit.
 		//
 		if ( game::load_game_exception::game != "" ) {
-			gamestate_ = saved_game();
+			saved_game_ = saved_game();
 		}
 		throw;
 	} catch(network::error& e) {
@@ -608,7 +607,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 			disconnect = true;
 		}
 
-		savegame::ingame_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
+		savegame::ingame_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
 		save.save_game_interactive(gui_->video(), _("A network disconnection has occurred, and the game cannot continue. Do you want to save the game?"), gui::YES_NO);
 		if(disconnect) {
 			throw network::error();
@@ -831,7 +830,7 @@ possible_end_play_signal playsingle_controller::before_human_turn()
 	HANDLE_END_PLAY_SIGNAL( ai::manager::raise_turn_started() ); //This line throws exception from here: https://github.com/wesnoth/wesnoth/blob/ac96a2b91b3276e20b682210617cf87d1e0d366a/src/playsingle_controller.cpp#L954
 
 	if(do_autosaves_ && level_result_ == NONE) {
-		savegame::autosave_savegame save(gamestate_, *gui_, to_config(), preferences::save_compression_format());
+		savegame::autosave_savegame save(saved_game_, *gui_, to_config(), preferences::save_compression_format());
 		save.autosave(game_config::disable_autosave, preferences::autosavemax(), preferences::INFINITE_AUTO_SAVES);
 	}
 
@@ -884,7 +883,7 @@ void playsingle_controller::linger()
 	// this is actually for after linger mode is over -- we don't
 	// want to stay stuck in linger state when the *next* scenario
 	// is over.
-	set_completion setter(gamestate_,"running");
+	set_completion setter(saved_game_,"running");
 
 	// change the end-turn button text to its alternate label
 	gui_->get_theme().refresh_title2("button-endturn", "title2");
@@ -907,7 +906,7 @@ void playsingle_controller::linger()
 	} catch(const game::load_game_exception &) {
 		// Loading a new game is effectively a quit.
 		if ( game::load_game_exception::game != "" ) {
-			gamestate_ = saved_game();
+			saved_game_ = saved_game();
 		}
 		throw;
 	}

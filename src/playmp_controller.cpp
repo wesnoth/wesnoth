@@ -224,7 +224,7 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 			HANDLE_END_PLAY_SIGNAL( play_slice() );
 			HANDLE_END_PLAY_SIGNAL( check_end_level() );
 
-		if (!linger_ && (current_team().countdown_time() > 0) && gamestate_.mp_settings().mp_countdown) {
+		if (!linger_ && (current_team().countdown_time() > 0) && saved_game_.mp_settings().mp_countdown) {
 			SDL_Delay(1);
 			const int ticks = SDL_GetTicks();
 			int new_time = current_team().countdown_time()-std::max<int>(1,(ticks - cur_ticks));
@@ -240,8 +240,8 @@ possible_end_play_signal playmp_controller::play_human_turn(){
 			} else {
 				// Clock time ended
 				// If no turn bonus or action bonus -> defeat
-				const int action_increment = gamestate_.mp_settings().mp_countdown_action_bonus;
-				if ( (gamestate_.mp_settings().mp_countdown_turn_bonus == 0 )
+				const int action_increment = saved_game_.mp_settings().mp_countdown_action_bonus;
+				if ( (saved_game_.mp_settings().mp_countdown_turn_bonus == 0 )
 					&& (action_increment == 0 || current_team().action_bonus_count() == 0)) {
 					// Not possible to end level in MP with throw end_level_exception(DEFEAT);
 					// because remote players only notice network disconnection
@@ -325,7 +325,7 @@ void playmp_controller::linger()
 
 	// this is actually for after linger mode is over -- we don't want to
 	// stay stuck in linger state when the *next* scenario is over.
-	set_completion setter(gamestate_,"running");
+	set_completion setter(saved_game_,"running");
 	// End all unit moves
 	gameboard_.set_all_units_user_end_turn();
 	//current_team().set_countdown_time(0);
@@ -410,10 +410,10 @@ void playmp_controller::wait_for_upload()
 }
 
 void playmp_controller::after_human_turn(){
-	if ( gamestate_.mp_settings().mp_countdown ){
-		const int action_increment = gamestate_.mp_settings().mp_countdown_action_bonus;
-		const int maxtime = gamestate_.mp_settings().mp_countdown_reservoir_time;
-		int secs = (current_team().countdown_time() / 1000) + gamestate_.mp_settings().mp_countdown_turn_bonus;
+	if ( saved_game_.mp_settings().mp_countdown ){
+		const int action_increment = saved_game_.mp_settings().mp_countdown_action_bonus;
+		const int maxtime = saved_game_.mp_settings().mp_countdown_reservoir_time;
+		int secs = (current_team().countdown_time() / 1000) + saved_game_.mp_settings().mp_countdown_turn_bonus;
 		secs += action_increment  * current_team().action_bonus_count();
 		current_team().set_action_bonus_count(0);
 		secs = (secs > maxtime) ? maxtime : secs;
@@ -520,7 +520,7 @@ void playmp_controller::process_oos(const std::string& err_msg) const {
 		temp_buf << " \n";
 	}
 
-	savegame::oos_savegame save(gamestate_, *gui_, to_config());
+	savegame::oos_savegame save(saved_game_, *gui_, to_config());
 	save.save_game_interactive(resources::screen->video(), temp_buf.str(), gui::YES_NO);
 }
 

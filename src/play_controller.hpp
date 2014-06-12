@@ -240,7 +240,7 @@ protected:
 	boost::scoped_ptr<game_display> gui_;
 	const statistics::scenario_context statistics_context_;
 	const config& level_;
-	saved_game& gamestate_;
+	saved_game& saved_game_;
 	game_data gamedata_;
 	/// undo_stack_ is never NULL. It is implemented as a pointer so that
 	/// undo_list can be an incomplete type at this point (which reduces the
