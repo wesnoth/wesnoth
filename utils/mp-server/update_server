@@ -71,6 +71,12 @@ case "$VERSION" in
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
 	SOURCE_VERSION="1.10"
 	;;
+  1.11)
+	# Same flags as 1.12, but we need to build from 1.12 because there is no
+	# 1.11 branch. This is really only used for wesnothd.
+	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -DBANDWIDTH_MONITOR"
+	SOURCE_VERSION="1.12"
+	;;
   trunk|master)
 	CXXFLAGS="$CXXFLAGS -ggdb3 -DNUM_SHARDS=7 -O0 -DBANDWIDTH_MONITOR"
 	SOURCE_VERSION="master"
