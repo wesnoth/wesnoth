@@ -3575,10 +3575,10 @@ namespace {
 		std::string name;
 		lua_report_generator(lua_State *L, const std::string &n)
 			: mState(L), name(n) {}
-		virtual config generate();
+		virtual config generate(const display_context * dc);
 	};
 
-	config lua_report_generator::generate()
+	config lua_report_generator::generate(const display_context * /*dc*/)
 	{
 		lua_State *L = mState;
 		config cfg;
@@ -3597,7 +3597,7 @@ namespace {
 static int cfun_theme_item(lua_State *L)
 {
 	const char *m = lua_tostring(L, lua_upvalueindex(1));
-	luaW_pushconfig(L, reports::generate_report(m, true));
+	luaW_pushconfig(L, reports::generate_report(m, resources::disp_context, true));
 	return 1;
 }
 

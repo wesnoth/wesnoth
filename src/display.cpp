@@ -2734,7 +2734,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	}
 
 	// Now we will need the config. Generate one if needed.
-	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name);
+	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, dc_);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 

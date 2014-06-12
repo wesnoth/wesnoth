@@ -16,7 +16,6 @@
 
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
-#include "display_context.hpp"
 //#include "editor/editor_controller.hpp"
 //#include "editor/palette/terrain_palettes.hpp"
 #include "font.hpp"
@@ -93,7 +92,7 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
-typedef config (*generator_function)();
+typedef config (*generator_function)(const display_context *);
 
 typedef std::map<std::string, generator_function> static_report_generators;
 typedef std::map<std::string, reports::generator *> dynamic_report_generators;
@@ -108,26 +107,26 @@ struct report_generator_helper
 	}
 };
 
-#define REPORT_GENERATOR(n) \
-	static config report_##n(); \
+#define REPORT_GENERATOR(n, dcn) \
+	static config report_##n(const display_context * dcn); \
 	static report_generator_helper reg_gen_##n(#n, &report_##n); \
-	static config report_##n()
+	static config report_##n(const display_context * dcn)
 
 static char const *naps = "</span>";
 
 namespace reports {
 
-static const unit *get_visible_unit()
+static const unit *get_visible_unit(const display_context * dc)
 {
-	return resources::disp_context->get_visible_unit(resources::screen->displayed_unit_hex(),
-		resources::disp_context->teams()[resources::screen->viewing_team()],
+	return dc->get_visible_unit(resources::screen->displayed_unit_hex(),
+		dc->teams()[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
-static const unit *get_selected_unit()
+static const unit *get_selected_unit(const display_context * dc)
 {
-	return resources::disp_context->get_visible_unit(resources::screen->selected_hex(),
-		resources::disp_context->teams()[resources::screen->viewing_team()],
+	return dc->get_visible_unit(resources::screen->selected_hex(),
+		dc->teams()[resources::screen->viewing_team()],
 		resources::screen->show_everything());
 }
 
@@ -160,14 +159,14 @@ static config unit_name(const unit *u)
 	return text_report(str.str(), tooltip.str());
 }
 
-REPORT_GENERATOR(unit_name)
+REPORT_GENERATOR(unit_name, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_name(u);
 }
-REPORT_GENERATOR(selected_unit_name)
+REPORT_GENERATOR(selected_unit_name, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_name(u);
 }
 
@@ -181,14 +180,14 @@ static config unit_type(const unit* u)
 		<< u->unit_description();
 	return text_report(str.str(), tooltip.str(), has_variations_prefix + "unit_" + u->type_id());
 }
-REPORT_GENERATOR(unit_type)
+REPORT_GENERATOR(unit_type, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_type(u);
 }
-REPORT_GENERATOR(selected_unit_type)
+REPORT_GENERATOR(selected_unit_type, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_type(u);
 }
 
@@ -200,23 +199,23 @@ static config unit_race(const unit* u)
 	tooltip << _("Race: ") << "<b>" << u->race()->name(u->gender()) << "</b>";
 	return text_report(str.str(), tooltip.str(), "..race_" + u->race()->id());
 }
-REPORT_GENERATOR(unit_race)
+REPORT_GENERATOR(unit_race, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_race(u);
 }
-REPORT_GENERATOR(selected_unit_race)
+REPORT_GENERATOR(selected_unit_race, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_race(u);
 }
 
-static config unit_side(const unit* u)
+static config unit_side(const display_context * dc, const unit* u)
 {
 	if (!u) return config();
 
 	config report;
-	const team &u_team = resources::disp_context->teams()[u->side() - 1];
+	const team &u_team = dc->teams()[u->side() - 1];
 	std::string flag_icon = u_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = team::get_side_color_index(u->side());
@@ -231,15 +230,15 @@ static config unit_side(const unit* u)
 	add_text(report, text.str(), "", "");
 	return report;
 }
-REPORT_GENERATOR(unit_side)
+REPORT_GENERATOR(unit_side, dc)
 {
-	const unit *u = reports::get_visible_unit();
-	return unit_side(u);
+	const unit *u = reports::get_visible_unit(dc);
+	return unit_side(dc,u);
 }
-REPORT_GENERATOR(selected_unit_side)
+REPORT_GENERATOR(selected_unit_side, dc)
 {
-	const unit *u = reports::get_selected_unit();
-	return unit_side(u);
+	const unit *u = reports::get_selected_unit(dc);
+	return unit_side(dc, u);
 }
 
 static config unit_level(const unit* u)
@@ -256,20 +255,20 @@ static config unit_level(const unit* u)
 			<< utils::join(adv_to, "\n\t") << "</b>";
 	return text_report(str.str(), tooltip.str());
 }
-REPORT_GENERATOR(unit_level)
+REPORT_GENERATOR(unit_level, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_level(u);
 }
-REPORT_GENERATOR(selected_unit_level)
+REPORT_GENERATOR(selected_unit_level, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_level(u);
 }
 
-REPORT_GENERATOR(unit_amla)
+REPORT_GENERATOR(unit_amla, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	if (!u) return config();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
@@ -298,23 +297,23 @@ static config unit_traits(const unit* u)
 	}
 	return res;
 }
-REPORT_GENERATOR(unit_traits)
+REPORT_GENERATOR(unit_traits, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_traits(u);
 }
-REPORT_GENERATOR(selected_unit_traits)
+REPORT_GENERATOR(selected_unit_traits, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_traits(u);
 }
 
-static config unit_status(const unit* u)
+static config unit_status(const display_context * dc, const unit* u)
 {
 	if (!u) return config();
 	config res;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
-	if (resources::disp_context->map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
+	if (dc->map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
 		add_status(res, "misc/invisible.png", N_("invisible: "),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
 	}
@@ -332,15 +331,15 @@ static config unit_status(const unit* u)
 	}
 	return res;
 }
-REPORT_GENERATOR(unit_status)
+REPORT_GENERATOR(unit_status,dc)
 {
-	const unit *u = reports::get_visible_unit();
-	return unit_status(u);
+	const unit *u = reports::get_visible_unit(dc);
+	return unit_status(dc,u);
 }
-REPORT_GENERATOR(selected_unit_status)
+REPORT_GENERATOR(selected_unit_status, dc)
 {
-	const unit *u = reports::get_selected_unit();
-	return unit_status(u);
+	const unit *u = reports::get_selected_unit(dc);
+	return unit_status(dc, u);
 }
 
 static config unit_alignment(const unit* u)
@@ -364,14 +363,14 @@ static config unit_alignment(const unit* u)
 
 	return text_report(str.str(), tooltip.str(), "time_of_day");
 }
-REPORT_GENERATOR(unit_alignment)
+REPORT_GENERATOR(unit_alignment, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_alignment(u);
 }
-REPORT_GENERATOR(selected_unit_alignment)
+REPORT_GENERATOR(selected_unit_alignment, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_alignment(u);
 }
 
@@ -409,14 +408,14 @@ static config unit_abilities(const unit* u)
 	}
 	return res;
 }
-REPORT_GENERATOR(unit_abilities)
+REPORT_GENERATOR(unit_abilities, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_abilities(u);
 }
-REPORT_GENERATOR(selected_unit_abilities)
+REPORT_GENERATOR(selected_unit_abilities, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_abilities(u);
 }
 
@@ -463,14 +462,14 @@ static config unit_hp(const unit* u)
 	}
 	return text_report(str.str(), tooltip.str());
 }
-REPORT_GENERATOR(unit_hp)
+REPORT_GENERATOR(unit_hp, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_hp(u);
 }
-REPORT_GENERATOR(selected_unit_hp)
+REPORT_GENERATOR(selected_unit_hp, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_hp(u);
 }
 
@@ -485,14 +484,14 @@ static config unit_xp(const unit* u)
 	tooltip << _("Experience Modifier: ") << exp_mod << '%';
 	return text_report(str.str(), tooltip.str());
 }
-REPORT_GENERATOR(unit_xp)
+REPORT_GENERATOR(unit_xp, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_xp(u);
 }
-REPORT_GENERATOR(selected_unit_xp)
+REPORT_GENERATOR(selected_unit_xp, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_xp(u);
 }
 
@@ -506,26 +505,26 @@ static config unit_advancement_options(const unit* u)
 	}
 	return res;
 }
-REPORT_GENERATOR(unit_advancement_options)
+REPORT_GENERATOR(unit_advancement_options, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	return unit_advancement_options(u);
 }
-REPORT_GENERATOR(selected_unit_advancement_options)
+REPORT_GENERATOR(selected_unit_advancement_options, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	return unit_advancement_options(u);
 }
 
-static config unit_defense(const unit* u, const map_location& displayed_unit_hex)
+static config unit_defense(const display_context * dc, const unit* u, const map_location& displayed_unit_hex)
 {
 	if(!u) {
 		return config();
 	}
 
 	std::ostringstream str, tooltip;
-	const gamemap &map = resources::disp_context->map();
-	if(!resources::disp_context->map().on_board(displayed_unit_hex)) {
+	const gamemap &map = dc->map();
+	if(!dc->map().on_board(displayed_unit_hex)) {
 		return config();
 	}
 
@@ -558,17 +557,17 @@ static config unit_defense(const unit* u, const map_location& displayed_unit_hex
 	tooltip << "<b>" << _("Defense: ") << span_color(color)  << def << '%' << naps << "</b>";
 	return text_report(str.str(), tooltip.str());
 }
-REPORT_GENERATOR(unit_defense)
+REPORT_GENERATOR(unit_defense,dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	const map_location& displayed_unit_hex = resources::screen->displayed_unit_hex();
-	return unit_defense(u, displayed_unit_hex);
+	return unit_defense(dc, u, displayed_unit_hex);
 }
-REPORT_GENERATOR(selected_unit_defense)
+REPORT_GENERATOR(selected_unit_defense, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	const map_location& selected_hex = resources::screen->selected_hex();
-	return unit_defense(u, selected_hex);
+	return unit_defense(dc, u, selected_hex);
 }
 
 static config unit_vision(const unit* u)
@@ -581,18 +580,18 @@ static config unit_vision(const unit* u)
 		str << _("vision: ") << u->vision(); }
 	return text_report(str.str());
 }
-REPORT_GENERATOR(unit_vision)
+REPORT_GENERATOR(unit_vision, dc)
 {
-	const unit* u = reports::get_visible_unit();
+	const unit* u = reports::get_visible_unit(dc);
 	return unit_vision(u);
 }
-REPORT_GENERATOR(selected_unit_vision)
+REPORT_GENERATOR(selected_unit_vision, dc)
 {
-	const unit* u = reports::get_selected_unit();
+	const unit* u = reports::get_selected_unit(dc);
 	return unit_vision(u);
 }
 
-static config unit_moves(const unit* u)
+static config unit_moves(const display_context * dc, const unit* u)
 {
 	if (!u) return config();
 	std::ostringstream str, tooltip;
@@ -613,7 +612,7 @@ static config unit_moves(const unit* u)
 		if (terrain == t_translation::FOGGED || terrain == t_translation::VOID_TERRAIN || terrain == t_translation::OFF_MAP_USER)
 			continue;
 
-		const terrain_type& info = resources::disp_context->map().get_terrain_info(terrain);
+		const terrain_type& info = dc->map().get_terrain_info(terrain);
 
 		if (info.union_type().size() == 1 && info.union_type()[0] == info.number() && info.is_nonnull()) {
 
@@ -648,18 +647,18 @@ static config unit_moves(const unit* u)
 	str << span_color(c) << u->movement_left() << '/' << u->total_movement() << naps;
 	return text_report(str.str(), tooltip.str());
 }
-REPORT_GENERATOR(unit_moves)
+REPORT_GENERATOR(unit_moves, dc)
 {
-	const unit *u = reports::get_visible_unit();
-	return unit_moves(u);
+	const unit *u = reports::get_visible_unit(dc);
+	return unit_moves(dc, u);
 }
-REPORT_GENERATOR(selected_unit_moves)
+REPORT_GENERATOR(selected_unit_moves, dc)
 {
-	const unit *u = reports::get_selected_unit();
-	return unit_moves(u);
+	const unit *u = reports::get_selected_unit(dc);
+	return unit_moves(dc, u);
 }
 
-static int attack_info(const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
+static int attack_info(const display_context * dc, const attack_type &at, config &res, const unit &u, const map_location &displayed_unit_hex)
 {
 	std::ostringstream str, tooltip;
 
@@ -670,7 +669,7 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	int tod_bonus = combat_modifier(displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
 	int leader_bonus = 0;
-	if (under_leadership(resources::disp_context->units(), displayed_unit_hex, &leader_bonus).valid())
+	if (under_leadership(dc->units(), displayed_unit_hex, &leader_bonus).valid())
 		damage_multiplier += leader_bonus;
 
 	bool slowed = u.get_state(unit::STATE_SLOWED);
@@ -767,9 +766,9 @@ static int attack_info(const attack_type &at, config &res, const unit &u, const 
 	// We want weak resistances (= good damage) first.
 	std::map<int, std::set<std::string>, std::greater<int> > resistances;
 	std::set<std::string> seen_types;
-	const team &unit_team = resources::disp_context->teams()[u.side() - 1];
-	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
-	BOOST_FOREACH(const unit &enemy, resources::disp_context->units())
+	const team &unit_team = dc->teams()[u.side() - 1];
+	const team &viewing_team = dc->teams()[resources::screen->viewing_team()];
+	BOOST_FOREACH(const unit &enemy, dc->units())
 	{
 		if (enemy.incapacitated()) //we can't attack statues so don't display them in this tooltip
 			continue;
@@ -864,7 +863,7 @@ static void format_hp(char str_buf[10], int hp)
 	str_buf[9] = '\0';  //prevents _snprintf error
 }
 
-static config unit_weapons(const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
+static config unit_weapons(const display_context * dc, const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
 	if (!attacker || !defender) return config();
 
@@ -878,7 +877,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			battle_context weapon(resources::disp_context->units(), attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
+			battle_context weapon(dc->units(), attacker_pos, defender->get_location(), i, -1, 0.0, NULL, attacker);
 			weapons.push_back(weapon);
 		}
 	}
@@ -901,7 +900,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 
 		SDL_Color dmg_color = font::weapon_color;
 		if (context_unit_stats.weapon) {
-			base_damage = attack_info(*context_unit_stats.weapon, res, *u, unit_loc);
+			base_damage = attack_info(dc, *context_unit_stats.weapon, res, *u, unit_loc);
 			total_damage = context_unit_stats.damage;
 			num_blows = context_unit_stats.num_blows;
 			chance_to_hit = context_unit_stats.chance_to_hit;
@@ -990,7 +989,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 	return res;
 }
 
-static config unit_weapons(const unit *u)
+static config unit_weapons(const display_context * dc, const unit *u)
 {
 	if (!u || u->attacks().empty()) return config();
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
@@ -1005,79 +1004,79 @@ static config unit_weapons(const unit *u)
 
 	BOOST_FOREACH(const attack_type &at, u->attacks())
 	{
-		attack_info(at, res, *u, displayed_unit_hex);
+		attack_info(dc, at, res, *u, displayed_unit_hex);
 	}
 	return res;
 }
-REPORT_GENERATOR(unit_weapons)
+REPORT_GENERATOR(unit_weapons, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	if (!u) return config();
 
-	return unit_weapons(u);
+	return unit_weapons(dc, u);
 }
-REPORT_GENERATOR(highlighted_unit_weapons)
+REPORT_GENERATOR(highlighted_unit_weapons, dc)
 {
-	const unit *u = reports::get_selected_unit();
-	const unit *sec_u = reports::get_visible_unit();
+	const unit *u = reports::get_selected_unit(dc);
+	const unit *sec_u = reports::get_visible_unit(dc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(sec_u);
+	if (!sec_u || u == sec_u) return unit_weapons(dc, sec_u);
 
 	map_location highlighted_hex = resources::screen->displayed_unit_hex();
 	map_location attack_loc =
 			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(sec_u);
+		return unit_weapons(dc, sec_u);
 
-	return unit_weapons(u, attack_loc, sec_u, false);
+	return unit_weapons(dc, u, attack_loc, sec_u, false);
 }
-REPORT_GENERATOR(selected_unit_weapons)
+REPORT_GENERATOR(selected_unit_weapons, dc)
 {
-	const unit *u = reports::get_selected_unit();
-	const unit *sec_u = reports::get_visible_unit();
+	const unit *u = reports::get_selected_unit(dc);
+	const unit *sec_u = reports::get_visible_unit(dc);
 
 	if (!u) return config();
-	if (!sec_u || u == sec_u) return unit_weapons(u);
+	if (!sec_u || u == sec_u) return unit_weapons(dc, u);
 
 	map_location highlighted_hex = resources::screen->displayed_unit_hex();
 	map_location attack_loc =
 			resources::controller->get_mouse_handler_base().current_unit_attacks_from(highlighted_hex);
 
 	if (!attack_loc.valid())
-		return unit_weapons(u);
+		return unit_weapons(dc, u);
 
-	return unit_weapons(u, attack_loc, sec_u, true);
+	return unit_weapons(dc, u, attack_loc, sec_u, true);
 }
 
-REPORT_GENERATOR(unit_image)
+REPORT_GENERATOR(unit_image,dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	if (!u) return config();
 	return image_report(u->absolute_image() + u->image_mods());
 }
-REPORT_GENERATOR(selected_unit_image)
+REPORT_GENERATOR(selected_unit_image, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	if (!u) return config();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 
-REPORT_GENERATOR(selected_unit_profile)
+REPORT_GENERATOR(selected_unit_profile, dc)
 {
-	const unit *u = reports::get_selected_unit();
+	const unit *u = reports::get_selected_unit(dc);
 	if (!u) return config();
 	return image_report(u->small_profile());
 }
-REPORT_GENERATOR(unit_profile)
+REPORT_GENERATOR(unit_profile, dc)
 {
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	if (!u) return config();
 	return image_report(u->small_profile());
 }
 
-REPORT_GENERATOR(tod_stats)
+REPORT_GENERATOR(tod_stats, /*dc*/)
 {
 	std::ostringstream tooltip;
 	std::ostringstream text;
@@ -1104,11 +1103,11 @@ REPORT_GENERATOR(tod_stats)
 	return text_report(text.str(), tooltip.str());
 }
 
-static config time_of_day_at(const map_location& mouseover_hex)
+static config time_of_day_at(const display_context * dc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day tod;
-	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
+	const team &viewing_team = dc->teams()[resources::screen->viewing_team()];
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		tod = resources::tod_manager->get_time_of_day();
@@ -1146,19 +1145,19 @@ static config time_of_day_at(const map_location& mouseover_hex)
 
 	return image_report(tod_image, tooltip.str(), "time_of_day");
 }
-REPORT_GENERATOR(time_of_day)
+REPORT_GENERATOR(time_of_day, dc)
 {
 	map_location mouseover_hex = resources::screen->mouseover_hex();
-	if (mouseover_hex.valid()) return time_of_day_at(mouseover_hex);
-	return time_of_day_at(resources::screen->selected_hex());
+	if (mouseover_hex.valid()) return time_of_day_at(dc, mouseover_hex);
+	return time_of_day_at(dc, resources::screen->selected_hex());
 }
 
-static config unit_box_at(const map_location& mouseover_hex)
+static config unit_box_at(const display_context * dc, const map_location& mouseover_hex)
 {
 	std::ostringstream tooltip;
 	time_of_day local_tod;
 	time_of_day global_tod = resources::tod_manager->get_time_of_day();
-	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
+	const team &viewing_team = dc->teams()[resources::screen->viewing_team()];
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		local_tod = global_tod;
@@ -1195,7 +1194,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 	else if (local_tod.bonus_modified < 0) local_tod_image += "~DARKEN()";
 	if (preferences::flip_time()) local_tod_image += "~FL(horiz)";
 
-	const gamemap &map = resources::disp_context->map();
+	const gamemap &map = dc->map();
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 
 	//if (terrain == t_translation::OFF_MAP_USER)
@@ -1219,7 +1218,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 
 	bg_terrain_image = bg_terrain_image + "~CS(" + color.str() + ")";
 
-	const unit *u = reports::get_visible_unit();
+	const unit *u = reports::get_visible_unit(dc);
 	std::string unit_image;
 	if (u)
 		unit_image = "~BLIT(" + u->absolute_image() + u->image_mods() + ",35,22)";
@@ -1228,14 +1227,14 @@ static config unit_box_at(const map_location& mouseover_hex)
 
 	return image_report(tod_image + bg_terrain_image + unit_image, tooltip.str(), "time_of_day");
 }
-REPORT_GENERATOR(unit_box)
+REPORT_GENERATOR(unit_box, dc)
 {
 	map_location mouseover_hex = resources::screen->mouseover_hex();
-	return unit_box_at(mouseover_hex);
+	return unit_box_at(dc, mouseover_hex);
 }
 
 
-REPORT_GENERATOR(turn)
+REPORT_GENERATOR(turn, /*dc*/)
 {
 	std::ostringstream str;
 	str << resources::tod_manager->turn();
@@ -1244,12 +1243,12 @@ REPORT_GENERATOR(turn)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(gold)
+REPORT_GENERATOR(gold, dc)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
 	// Suppose the full unit map is applied.
-	int fake_gold = resources::disp_context->teams()[viewing_side - 1].gold() -
+	int fake_gold = dc->teams()[viewing_side - 1].gold() -
 		resources::whiteboard->get_spent_gold_for(viewing_side);
 	char const *end = naps;
 	if (viewing_side != resources::screen->playing_side()) {
@@ -1265,54 +1264,54 @@ REPORT_GENERATOR(gold)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(villages)
+REPORT_GENERATOR(villages, dc)
 {
 	std::ostringstream str;
 	int viewing_side = display::get_singleton()->viewing_side();
-	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
+	const team &viewing_team = dc->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	str << td.villages << '/';
 	if (viewing_team.uses_shroud()) {
 		int unshrouded_villages = 0;
-		BOOST_FOREACH(const map_location &loc, resources::disp_context->map().villages()) {
+		BOOST_FOREACH(const map_location &loc, dc->map().villages()) {
 			if (!viewing_team.shrouded(loc))
 				++unshrouded_villages;
 		}
 		str << unshrouded_villages;
 	} else {
-		str << resources::disp_context->map().villages().size();
+		str << dc->map().villages().size();
 	}
 	return gray_inactive(str.str());
 }
 
-REPORT_GENERATOR(num_units)
+REPORT_GENERATOR(num_units, /*dc*/)
 {
 	return gray_inactive(str_cast(side_units(display::get_singleton()->viewing_side())));
 }
 
-REPORT_GENERATOR(upkeep)
+REPORT_GENERATOR(upkeep, dc)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
+	const team &viewing_team = dc->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	str << td.expenses << " (" << td.upkeep << ")";
 	return gray_inactive(str.str());
 }
 
-REPORT_GENERATOR(expenses)
+REPORT_GENERATOR(expenses, dc)
 {
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
+	const team &viewing_team = dc->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, resources::screen->viewing_side());
 	return gray_inactive(str_cast(td.expenses));
 }
 
-REPORT_GENERATOR(income)
+REPORT_GENERATOR(income, dc)
 {
 	std::ostringstream str;
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
+	const team &viewing_team = dc->teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	char const *end = naps;
 	if (viewing_side != resources::screen->playing_side()) {
@@ -1345,9 +1344,9 @@ void blit_tced_icon(config &cfg, const std::string &terrain_id, const std::strin
 }
 }
 
-REPORT_GENERATOR(terrain_info)
+REPORT_GENERATOR(terrain_info, dc)
 {
-	const gamemap &map = resources::disp_context->map();
+	const gamemap &map = dc->map();
 	map_location mouseover_hex = display::get_singleton()->mouseover_hex();
 
 	if (!map.on_board(mouseover_hex))
@@ -1391,11 +1390,11 @@ REPORT_GENERATOR(terrain_info)
 	return cfg;
 }
 
-REPORT_GENERATOR(terrain)
+REPORT_GENERATOR(terrain, dc)
 {
-	const gamemap &map = resources::disp_context->map();
+	const gamemap &map = dc->map();
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
+	const team &viewing_team = dc->teams()[viewing_side - 1];
 	map_location mouseover_hex = resources::screen->mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
 		return config();
@@ -1429,7 +1428,7 @@ REPORT_GENERATOR(terrain)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(zoom_level)
+REPORT_GENERATOR(zoom_level, /*dc*/)
 {
 	std::ostringstream text;
 	std::ostringstream tooltip;
@@ -1440,9 +1439,9 @@ REPORT_GENERATOR(zoom_level)
 	return text_report(text.str(), tooltip.str(), help.str());
 }
 
-REPORT_GENERATOR(position)
+REPORT_GENERATOR(position, dc)
 {
-	const gamemap &map = resources::disp_context->map();
+	const gamemap &map = dc->map();
 	map_location mouseover_hex = resources::screen->mouseover_hex(),
 		displayed_unit_hex = resources::screen->displayed_unit_hex(),
 		selected_hex = resources::screen->selected_hex();
@@ -1462,8 +1461,8 @@ REPORT_GENERATOR(position)
 	std::ostringstream str;
 	str << mouseover_hex;
 
-	const unit *u = reports::get_visible_unit();
-	const team &viewing_team = resources::disp_context->teams()[resources::screen->viewing_team()];
+	const unit *u = reports::get_visible_unit(dc);
+	const team &viewing_team = dc->teams()[resources::screen->viewing_team()];
 	if (!u ||
 	    (displayed_unit_hex != mouseover_hex &&
 	     displayed_unit_hex != resources::screen->selected_hex()) ||
@@ -1482,9 +1481,9 @@ REPORT_GENERATOR(position)
 	return text_report(str.str());
 }
 
-REPORT_GENERATOR(side_playing)
+REPORT_GENERATOR(side_playing, dc)
 {
-	const team &active_team = resources::disp_context->teams()[resources::screen->playing_team()];
+	const team &active_team = dc->teams()[resources::screen->playing_team()];
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
 	std::string new_rgb = team::get_side_color_index(resources::screen->playing_side());
@@ -1494,7 +1493,7 @@ REPORT_GENERATOR(side_playing)
 	return image_report(flag_icon + mods, active_team.current_player());
 }
 
-REPORT_GENERATOR(observers)
+REPORT_GENERATOR(observers, /*dc*/)
 {
 	const std::set<std::string> &observers = resources::screen->observers();
 	if (observers.empty())
@@ -1530,7 +1529,7 @@ REPORT_GENERATOR(edit_left_button_function)
 }
 */
 
-REPORT_GENERATOR(report_clock)
+REPORT_GENERATOR(report_clock, /*dc*/)
 {
 	time_t t = std::time(NULL);
 	struct tm *lt = std::localtime(&t);
@@ -1543,13 +1542,13 @@ REPORT_GENERATOR(report_clock)
 
 }
 
-REPORT_GENERATOR(report_countdown)
+REPORT_GENERATOR(report_countdown, dc)
 {
 	int viewing_side = resources::screen->viewing_side();
-	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
+	const team &viewing_team = dc->teams()[viewing_side - 1];
 	int min, sec;
 	if (viewing_team.countdown_time() == 0)
-		return report_report_clock();
+		return report_report_clock(dc);
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
@@ -1590,16 +1589,16 @@ void reports::register_generator(const std::string &name, reports::generator *g)
 	}
 }
 
-config reports::generate_report(const std::string &name, bool only_static)
+config reports::generate_report(const std::string &name, const display_context * dc, bool only_static)
 {
 	if (!only_static) {
 		dynamic_report_generators::const_iterator i = dynamic_generators.find(name);
 		if (i != dynamic_generators.end())
-			return i->second->generate();
+			return i->second->generate(dc);
 	}
 	static_report_generators::const_iterator j = static_generators.find(name);
 	if (j != static_generators.end())
-		return j->second();
+		return j->second(dc);
 	return config();
 }
 

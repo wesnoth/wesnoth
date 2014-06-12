@@ -16,6 +16,7 @@
 #define REPORTS_HPP_INCLUDED
 
 #include "map_location.hpp"
+#include "display_context.hpp"
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
@@ -23,14 +24,14 @@ namespace reports {
 
 struct generator
 {
-	virtual config generate() = 0;
+	virtual config generate(const display_context *) = 0;
 	virtual ~generator() {}
 };
 
 void reset_generators();
 void register_generator(const std::string &name, generator *);
 
-config generate_report(const std::string &name, bool only_static = false);
+config generate_report(const std::string &name, const display_context * dc, bool only_static = false);
 
 const std::set<std::string> &report_list();
 }
