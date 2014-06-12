@@ -136,8 +136,7 @@ void loadscreen::draw_screen(const std::string &text)
 
 	// Draw logo if it was successfully loaded.
 #if SDL_VERSION_ATLEAST(2,0,0)
-	static int angle = 0;
-	if (!logo_texture_.null() /*&& !logo_drawn_*/) {
+	if (!logo_texture_.null() && !logo_drawn_) {
 		int x = (screen_.getx () - logo_texture_.width()) / 2;
 		int y = ((scry - logo_texture_.height()) / 2) - pbh;
 
@@ -151,7 +150,6 @@ void loadscreen::draw_screen(const std::string &text)
 			}
 		}
 		logo_drawn_ = true;
-		logo_texture_.set_rotation(angle+=3);
 	}
 #else
 	if (logo_surface_ && !logo_drawn_) {
