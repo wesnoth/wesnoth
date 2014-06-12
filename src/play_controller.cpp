@@ -84,7 +84,7 @@ static void clear_resources()
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
 	resources::units = NULL;
-	resources::whiteboard = NULL;
+	resources::whiteboard.reset();
 
 
 	resources::classification = NULL;
@@ -259,7 +259,7 @@ void play_controller::init(CVideo& video){
 	pathfind_manager_.reset(new pathfind::manager(level_));
 	whiteboard_manager_.reset(new wb::manager());
 	resources::tunnels = pathfind_manager_.get();
-	resources::whiteboard = whiteboard_manager_.get();
+	resources::whiteboard = whiteboard_manager_;
 
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
