@@ -60,11 +60,6 @@ static void add_image(config &report, const std::string &image,
 	if (!help.empty()) element["help"] = help;
 }
 
-static config report()
-{
-	return config();
-}
-
 static config text_report(const std::string &text,
 	const std::string &tooltip = "", const std::string &help = "")
 {
@@ -151,7 +146,7 @@ static config gray_inactive(const std::string &str)
 static config unit_name(const unit *u)
 {
 	if (!u) {
-		return report();
+		return config();
 	}
 
 	/*
@@ -178,7 +173,7 @@ REPORT_GENERATOR(selected_unit_name)
 
 static config unit_type(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::string has_variations_prefix = (!u->type().variations().empty() ? ".." : "");
 	std::ostringstream str, tooltip;
 	str << u->type_name();
@@ -199,7 +194,7 @@ REPORT_GENERATOR(selected_unit_type)
 
 static config unit_race(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::ostringstream str, tooltip;
 	str << u->race()->name(u->gender());
 	tooltip << _("Race: ") << "<b>" << u->race()->name(u->gender()) << "</b>";
@@ -218,7 +213,7 @@ REPORT_GENERATOR(selected_unit_race)
 
 static config unit_side(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 
 	config report;
 	const team &u_team = resources::disp_context->teams()[u->side() - 1];
@@ -249,7 +244,7 @@ REPORT_GENERATOR(selected_unit_side)
 
 static config unit_level(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::ostringstream str, tooltip;
 	str << u->level();
 	tooltip << _("Level: ") << "<b>" << u->level() << "</b>\n";
@@ -275,7 +270,7 @@ REPORT_GENERATOR(selected_unit_level)
 REPORT_GENERATOR(unit_amla)
 {
 	const unit *u = reports::get_visible_unit();
-	if (!u) return report();
+	if (!u) return config();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
 	BOOST_FOREACH(const pair_string &ps, u->amla_icons()) {
@@ -286,7 +281,7 @@ REPORT_GENERATOR(unit_amla)
 
 static config unit_traits(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	config res;
 	const std::vector<t_string> &traits = u->trait_names();
 	const std::vector<t_string> &descriptions = u->trait_descriptions();
@@ -316,7 +311,7 @@ REPORT_GENERATOR(selected_unit_traits)
 
 static config unit_status(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	config res;
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
 	if (resources::disp_context->map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
@@ -350,7 +345,7 @@ REPORT_GENERATOR(selected_unit_status)
 
 static config unit_alignment(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
 	const std::string align_id = lexical_cast<std::string>(u->alignment());
@@ -383,7 +378,7 @@ REPORT_GENERATOR(selected_unit_alignment)
 
 static config unit_abilities(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	config res;
 
 	std::vector<bool> active;
@@ -428,7 +423,7 @@ REPORT_GENERATOR(selected_unit_abilities)
 
 static config unit_hp(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::ostringstream str, tooltip;
 	str << span_color(u->hp_color()) << u->hitpoints()
 		<< '/' << u->max_hitpoints() << naps;
@@ -481,7 +476,7 @@ REPORT_GENERATOR(selected_unit_hp)
 
 static config unit_xp(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::ostringstream str, tooltip;
 	str << span_color(u->xp_color()) << u->experience()
 		<< '/' << u->max_experience() << naps;
@@ -503,7 +498,7 @@ REPORT_GENERATOR(selected_unit_xp)
 
 static config unit_advancement_options(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	config res;
 	typedef std::pair<std::string, std::string> pair_string;
 	BOOST_FOREACH(const pair_string &ps, u->advancement_icons()) {
@@ -525,13 +520,13 @@ REPORT_GENERATOR(selected_unit_advancement_options)
 static config unit_defense(const unit* u, const map_location& displayed_unit_hex)
 {
 	if(!u) {
-		return report();
+		return config();
 	}
 
 	std::ostringstream str, tooltip;
 	const gamemap &map = resources::disp_context->map();
 	if(!resources::disp_context->map().on_board(displayed_unit_hex)) {
-		return report();
+		return config();
 	}
 
 	const t_translation::t_terrain &terrain = map[displayed_unit_hex];
@@ -578,7 +573,7 @@ REPORT_GENERATOR(selected_unit_defense)
 
 static config unit_vision(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 
 	// TODO
 	std::ostringstream str;
@@ -599,7 +594,7 @@ REPORT_GENERATOR(selected_unit_vision)
 
 static config unit_moves(const unit* u)
 {
-	if (!u) return report();
+	if (!u) return config();
 	std::ostringstream str, tooltip;
 	double movement_frac = 1.0;
 	if (u->side() == resources::screen->playing_side()) {
@@ -871,7 +866,7 @@ static void format_hp(char str_buf[10], int hp)
 
 static config unit_weapons(const unit *attacker, const map_location &attacker_pos, const unit *defender, bool show_attacker)
 {
-	if (!attacker || !defender) return report();
+	if (!attacker || !defender) return config();
 
 	const unit* u = show_attacker ? attacker : defender;
 	const map_location unit_loc = show_attacker ? attacker_pos : defender->get_location();
@@ -997,7 +992,7 @@ static config unit_weapons(const unit *attacker, const map_location &attacker_po
 
 static config unit_weapons(const unit *u)
 {
-	if (!u || u->attacks().empty()) return report();
+	if (!u || u->attacks().empty()) return config();
 	map_location displayed_unit_hex = resources::screen->displayed_unit_hex();
 	config res;
 
@@ -1059,26 +1054,26 @@ REPORT_GENERATOR(selected_unit_weapons)
 REPORT_GENERATOR(unit_image)
 {
 	const unit *u = reports::get_visible_unit();
-	if (!u) return report();
+	if (!u) return config();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 REPORT_GENERATOR(selected_unit_image)
 {
 	const unit *u = reports::get_selected_unit();
-	if (!u) return report();
+	if (!u) return config();
 	return image_report(u->absolute_image() + u->image_mods());
 }
 
 REPORT_GENERATOR(selected_unit_profile)
 {
 	const unit *u = reports::get_selected_unit();
-	if (!u) return report();
+	if (!u) return config();
 	return image_report(u->small_profile());
 }
 REPORT_GENERATOR(unit_profile)
 {
 	const unit *u = reports::get_visible_unit();
-	if (!u) return report();
+	if (!u) return config();
 	return image_report(u->small_profile());
 }
 
@@ -1204,7 +1199,7 @@ static config unit_box_at(const map_location& mouseover_hex)
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 
 	//if (terrain == t_translation::OFF_MAP_USER)
-	//	return report();
+	//	return config();
 
 	//if (map.is_keep(mouseover_hex)) {
 	//	add_image(cfg, "icons/terrain/terrain_type_keep.png", "");
@@ -1359,11 +1354,11 @@ REPORT_GENERATOR(terrain_info)
 		mouseover_hex = display::get_singleton()->selected_hex();
 
 	if (!map.on_board(mouseover_hex))
-		return report();
+		return config();
 
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 	if (terrain == t_translation::OFF_MAP_USER)
-		return report();
+		return config();
 
 	std::ostringstream str;
 	config cfg;
@@ -1403,11 +1398,11 @@ REPORT_GENERATOR(terrain)
 	const team &viewing_team = resources::disp_context->teams()[viewing_side - 1];
 	map_location mouseover_hex = resources::screen->mouseover_hex();
 	if (!map.on_board(mouseover_hex) || viewing_team.shrouded(mouseover_hex))
-		return report();
+		return config();
 
 	t_translation::t_terrain terrain = map.get_terrain(mouseover_hex);
 	if (terrain == t_translation::OFF_MAP_USER)
-		return report();
+		return config();
 
 	std::ostringstream str;
 	if (map.is_village(mouseover_hex))
@@ -1454,7 +1449,7 @@ REPORT_GENERATOR(position)
 
 	if (!map.on_board(mouseover_hex)) {
 		if (!map.on_board(selected_hex))
-			return report();
+			return config();
 		else {
 			mouseover_hex = selected_hex;
 		}
@@ -1462,7 +1457,7 @@ REPORT_GENERATOR(position)
 
 	t_translation::t_terrain terrain = map[mouseover_hex];
 	if (terrain == t_translation::OFF_MAP_USER)
-		return report();
+		return config();
 
 	std::ostringstream str;
 	str << mouseover_hex;
@@ -1503,7 +1498,7 @@ REPORT_GENERATOR(observers)
 {
 	const std::set<std::string> &observers = resources::screen->observers();
 	if (observers.empty())
-		return report();
+		return config();
 
 	std::ostringstream str;
 	str << _("Observers:") << '\n';
@@ -1518,7 +1513,7 @@ REPORT_GENERATOR(selected_terrain)
 {
 	const std::string selected_terrain = editor::get_selected_terrain();
 	if (selected_terrain.empty())
-		return report();
+		return config();
 	else
 		return text_report(selected_terrain);
 }
@@ -1529,7 +1524,7 @@ REPORT_GENERATOR(edit_left_button_function)
 {
 	const std::string left_button_function = editor::get_left_button_function();
 	if (left_button_function.empty())
-		return report();
+		return config();
 	else
 		return text_report(left_button_function);
 }
@@ -1539,12 +1534,12 @@ REPORT_GENERATOR(report_clock)
 {
 	time_t t = std::time(NULL);
 	struct tm *lt = std::localtime(&t);
-	if (!lt) return report();
+	if (!lt) return config();
 	char temp[15];
 	size_t s = util::strftime(temp, 15,
 		(preferences::use_twelve_hour_clock_format() ? _("%I:%M %p") : _("%H:%M")),
 		lt);
-	return s ? text_report(temp) : report();
+	return s ? text_report(temp) : config();
 
 }
 
@@ -1605,7 +1600,7 @@ config reports::generate_report(const std::string &name, bool only_static)
 	static_report_generators::const_iterator j = static_generators.find(name);
 	if (j != static_generators.end())
 		return j->second();
-	return report();
+	return config();
 }
 
 const std::set<std::string> &reports::report_list()
