@@ -49,7 +49,7 @@
 #endif
 
 static lg::log_domain log_network("network");
-#define LOG_CS if (lg::err.dont_log(log_network)) ; else lg::err(log_network, false)
+#define LOG_CS if(lg::err.dont_log(log_network)) ; else lg::err(log_network, false)
 
 //compatibility code for MS compilers
 #ifndef SIGHUP
@@ -57,23 +57,30 @@ static lg::log_domain log_network("network");
 #endif
 /** @todo FIXME: should define SIGINT here too, but to what? */
 
-static void exit_sighup(int signal) {
+namespace {
+
+void exit_sighup(int signal)
+{
 	assert(signal == SIGHUP);
 	LOG_CS << "SIGHUP caught, exiting without cleanup immediately.\n";
 	exit(128 + SIGHUP);
 }
 
-static void exit_sigint(int signal) {
+void exit_sigint(int signal)
+{
 	assert(signal == SIGINT);
 	LOG_CS << "SIGINT caught, exiting without cleanup immediately.\n";
 	exit(0);
 }
 
-static void exit_sigterm(int signal) {
+void exit_sigterm(int signal)
+{
 	assert(signal == SIGTERM);
 	LOG_CS << "SIGTERM caught, exiting without cleanup immediately.\n";
 	exit(128 + SIGTERM);
 }
+
+} // end anonymous namespace
 
 namespace campaignd {
 
@@ -245,11 +252,10 @@ void server::run()
 	{
 		try {
 			std::string admin_cmd;
-			if(input_ && input_->read_line(admin_cmd))
-			{
+
+			if(input_ && input_->read_line(admin_cmd)) {
 				// process command
-				if (admin_cmd == "shut_down")
-				{
+				if(admin_cmd == "shut_down") {
 					break;
 				}
 			}
@@ -368,25 +374,25 @@ void server::handle_request_campaign_list(const server::request& req)
 
 		const std::string& tm = i["timestamp"];
 
-		if (before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
+		if(before_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) >= before)) {
 			continue;
 		}
-		if (after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) {
+		if(after_flag && (tm.empty() || lexical_cast_default<time_t>(tm, 0) <= after)) {
 			continue;
 		}
 
 		if(!lang.empty()) {
 			bool found = false;
 
-			BOOST_FOREACH(const config &j, i.child_range("translation"))
+			BOOST_FOREACH(const config& j, i.child_range("translation"))
 			{
-				if (j["language"] == lang) {
+				if(j["language"] == lang) {
 					found = true;
 					break;
 				}
 			}
 
-			if (!found) {
+			if(!found) {
 				continue;
 			}
 		}
@@ -474,7 +480,7 @@ void server::handle_upload(const server::request& req)
 
 	config *campaign = NULL;
 
-	BOOST_FOREACH(config &c, campaigns().child_range("campaign"))
+	BOOST_FOREACH(config& c, campaigns().child_range("campaign"))
 	{
 		if(utf8::lowercase(c["name"]) == lc_name) {
 			campaign = &c;
@@ -622,7 +628,7 @@ void server::handle_delete(const server::request& req)
 
 	LOG_CS << "deleting campaign '" << erase["name"] << "' requested from " << req.addr << "\n";
 
-	const config &campaign = campaigns().find_child("campaign", "name", erase["name"]);
+	const config& campaign = campaigns().find_child("campaign", "name", erase["name"]);
 
 	if(!campaign) {
 		send_error("The add-on does not exist.", req.sock);
