@@ -136,8 +136,9 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 
 
 
-display::display(const display_context * dc, CVideo& video, const config& theme_cfg, const config& level) :
+display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, const config& theme_cfg, const config& level) :
 	dc_(dc),
+	wb_(wb),
 	exclusive_unit_draw_requests_(),
 	screen_(video),
 	currentTeam_(0),
@@ -364,8 +365,8 @@ void display::set_team(size_t teamindex, bool show_everything)
 		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
-	if(resources::whiteboard)
-		resources::whiteboard->on_viewer_change(teamindex);
+	if(boost::shared_ptr<wb::manager> w = wb_.lock())
+		w->on_viewer_change(teamindex);
 }
 
 void display::set_playing_team(size_t teamindex)

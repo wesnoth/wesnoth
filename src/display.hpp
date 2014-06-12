@@ -39,6 +39,10 @@ struct time_of_day;
 class map_labels;
 class arrow;
 
+namespace wb {
+	class manager;
+}
+
 #include "display_context.hpp"
 #include "font.hpp"
 #include "key.hpp"
@@ -55,6 +59,7 @@ class arrow;
 #include <list>
 
 #include <boost/function.hpp>
+#include <boost/weak_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <map>
 
@@ -63,7 +68,7 @@ class gamemap;
 class display
 {
 public:
-	display(const display_context * dc, CVideo& video,
+	display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb,
 			const config& theme_cfg, const config& level);
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
@@ -630,6 +635,7 @@ private:
 protected:
 	//TODO sort
 	const display_context * dc_;
+	boost::weak_ptr<wb::manager> wb_;
 
 	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
 	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
