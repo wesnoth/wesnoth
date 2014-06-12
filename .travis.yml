@@ -9,11 +9,11 @@ env:
 matrix:
   exclude:
     - compiler: clang 
-      env: WML_TESTS=false
+      env: WML_TESTS=false STRICT_COMPILATION=False
     - compiler: gcc 
-      env: WML_TESTS=true
+      env: WML_TESTS=true STRICT_COMPILATION=True
     - compiler: gcc
-      env: STRICT_COMPILATION=False
+      env: WML_TESTS=true STRICT_COMPILATION=False
 install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
