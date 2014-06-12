@@ -570,12 +570,17 @@ std::vector<std::pair<int, int> > CVideo::get_available_resolutions()
 		return result;
 	}
 
+	const std::pair<int,int> min_res = std::make_pair(preferences::min_allowed_width(),preferences::min_allowed_height());
+
 	SDL_DisplayMode mode;
 	for(int i = 0; i < modes; ++i) {
 		if(SDL_GetDisplayMode(0, i, &mode) == 0) {
-			result.push_back(std::make_pair(mode.w, mode.h));
+			if (mode.w >= min_res.first && mode.h >= min_res.second)
+				result.push_back(std::make_pair(mode.w, mode.h));
 		}
 	}
+	if(std::find(result.begin(), result.end(), min_res) == result.end())
+		result.push_back(min_res);
 
 	std::sort(result.begin(), result.end());
 	result.erase(std::unique(result.begin(), result.end()), result.end());

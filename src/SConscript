@@ -684,7 +684,7 @@ test_sources = Split("""
     """)
 test_sources.extend(test_env.Object("tests/test_config_cache.cpp"))
 
-test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth], have_test_prereqs)
+test = test_env.WesnothProgram("test", test_sources +  [libtest_utils, libwesnoth_extras, libwesnoth_core, libwesnoth, libwesnoth_sdl, libwesnoth_extras], have_test_prereqs)
 
 create_images_sources = Split("""
     tests/create_images.cpp
