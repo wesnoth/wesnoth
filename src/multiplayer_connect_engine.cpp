@@ -91,7 +91,7 @@ connect_engine::connect_engine(saved_game& state,
 		return;
 	}
 
-	force_lock_settings_ = scenario()["force_lock_settings"].to_bool();
+	force_lock_settings_ = (!state.mp_settings().saved_game) && scenario()["force_lock_settings"].to_bool();
 
 	// Original level sides.
 	config::child_itors sides = current_config()->child_range("side");
