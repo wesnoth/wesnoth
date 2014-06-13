@@ -1033,8 +1033,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		}
 	}
 	if (items.empty()) {
-		dialogs::units_list_preview_pane attacker_preview(&*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(&*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
+		dialogs::units_list_preview_pane attacker_preview(attacker.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(defender.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, false);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);
@@ -1051,8 +1051,8 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 		std::vector<gui::dialog_button_info> buttons;
 		buttons.push_back(gui::dialog_button_info(&ap_displayer, _("Damage Calculations")));
 
-		dialogs::units_list_preview_pane attacker_preview(&*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
-		dialogs::units_list_preview_pane defender_preview(&*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
+		dialogs::units_list_preview_pane attacker_preview(attacker.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(defender.get_shared_ptr(), dialogs::unit_preview_pane::SHOW_BASIC, false);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&attacker_preview);
 		preview_panes.push_back(&defender_preview);

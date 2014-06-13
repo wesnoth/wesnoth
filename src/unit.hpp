@@ -19,6 +19,7 @@
 
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
@@ -534,16 +535,16 @@ private:
 };
 
 /// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<unit>::iterator find_if_matches_id(
-		std::vector<unit> &unit_list,
+std::vector<boost::shared_ptr<unit> >::iterator find_if_matches_id(
+		std::vector<boost::shared_ptr<unit> > &unit_list,
 		const std::string &unit_id);
 /// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<unit>::const_iterator find_if_matches_id(
-		const std::vector<unit> &unit_list,
+std::vector<boost::shared_ptr<unit> >::const_iterator find_if_matches_id(
+		const std::vector<boost::shared_ptr<unit> > &unit_list,
 		const std::string &unit_id);
 /// Used to erase units from vectors by their ID. (Convenience wrapper)
-std::vector<unit>::iterator erase_if_matches_id(
-		std::vector<unit> &unit_list,
+std::vector<boost::shared_ptr<unit> >::iterator erase_if_matches_id(
+		std::vector<boost::shared_ptr<unit> > &unit_list,
 		const std::string &unit_id);
 
 /** Returns the number of units of the side @a side_num. */
@@ -585,5 +586,7 @@ team_data calculate_team_data(const class team& tm, int side);
  *  @returns                    the checksum for a unit
  */
 std::string get_checksum(const unit& u);
+
+typedef boost::shared_ptr<unit> UnitPtr;
 
 #endif

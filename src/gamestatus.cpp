@@ -253,8 +253,7 @@ protected:
 				//seen before
 				config u_tmp = u;
 				u_tmp["side"] = str_cast(side_);
-				unit new_unit(u_tmp, true);
-				t_->recall_list().push_back(new_unit);
+				t_->recall_list().push_back(UnitPtr(new unit(u_tmp,true)));
 			} else {
 				//not seen before
 				unit_configs_.push_back(&u);

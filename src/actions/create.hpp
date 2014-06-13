@@ -190,7 +190,7 @@ const std::set<std::string> get_recruits(int side, const map_location &recruit_l
  * @param recall_loc the hex field being part of the castle the player wants to recruit on or from.
  * @return a set of units that can be recalled by @a side on (or from) @a recall_loc or the full recall list of @a side.
  */
-const std::vector<const unit*> get_recalls(int side, const map_location &recall_loc);
+std::vector<UnitPtr > get_recalls(int side, const map_location &recall_loc);
 
 /**
  * Place a unit into the game.

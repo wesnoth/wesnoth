@@ -24,11 +24,14 @@
 #include <cassert>
 #include <list>
 #include <map>
+#include <boost/shared_ptr.hpp>
 #include <boost/unordered_map.hpp>
 
 //#define DEBUG_UNIT_MAP
 
 class unit;
+
+typedef boost::shared_ptr<unit> UnitPtr;
 
 /**
  * Container associating units to locations.
@@ -94,12 +97,12 @@ class unit_map {
 	struct unit_pod {
 
 		unit_pod()
-			: unit(NULL)
+			: unit()
 			, ref_count()
 		{
 		}
 
-		class unit * unit;
+		boost::shared_ptr<class unit> unit;
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
 	};
 
@@ -132,7 +135,7 @@ public:
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef typename iter_types::value_type value_type;
-		typedef value_type* pointer;
+		typedef boost::shared_ptr<value_type> pointer;
 		typedef value_type& reference;
 		typedef typename iter_types::container_type container_type;
 		typedef typename iter_types::iterator_type iterator_type;
@@ -178,6 +181,10 @@ public:
 			assert(valid());
 			tank_->self_check();
 			return  i_->second.unit; }
+		UnitPtr get_shared_ptr() const { // This is exactly the same as operator-> but it's slightly more readable, and can replace &* it syntax easily.
+			assert(valid());
+			tank_->self_check();
+			return i_->second.unit; }
 		reference operator*() const {
 			tank_->self_check();
 			assert(valid());
@@ -189,7 +196,7 @@ public:
 			iterator_type new_i(i_);
 			do{
 				++new_i;
-			}while ((new_i != the_map().end()) && (new_i->second.unit == NULL)) ;
+			}while ((new_i != the_map().end()) && (!new_i->second.unit)) ;
 			dec();
 			i_ = new_i;
 			inc();
@@ -210,7 +217,7 @@ public:
 			dec();
 			do {
 				--i_ ;
-			}while(i_ != begin && (i_->second.unit ==  NULL));
+			}while(i_ != begin && (!i_->second.unit));
 			inc();
 
 			valid_exit();
@@ -225,7 +232,7 @@ public:
 
 		bool valid() const {
 			if(valid_for_dereference()) {
-				return i_->second.unit != NULL;
+				return i_->second.unit;
 			}
 			return false;
 		}
@@ -254,7 +261,7 @@ public:
 		void dec() {
 			if( valid_ref_count() ){
 				assert(i_->second.ref_count != 0);
-				if( (--(i_->second.ref_count) == 0)  && (i_->second.unit == NULL) ){
+				if( (--(i_->second.ref_count) == 0)  && (!i_->second.unit) ){
 					iterator_type old = i_++;
 					tank_->umap_.erase(old);
 				}
@@ -334,7 +341,7 @@ public:
 	 *       will be generated.
 	 * @note The map takes ownership of the pointed object, only if it succeeds.
 	 */
-	std::pair<unit_iterator, bool> insert(unit *p);
+	std::pair<unit_iterator, bool> insert(boost::shared_ptr<unit> p);
 
 	/**
 	 * Moves a unit from location @a src to location @a dst.
@@ -371,7 +378,7 @@ public:
 	 * The unit is no longer owned by the map.
 	 * It can be reinserted later, if needed.
 	 */
-	unit *extract(const map_location &loc);
+	boost::shared_ptr<unit> extract(const map_location &loc);
 
 	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
 	bool self_check() const
