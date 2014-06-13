@@ -160,7 +160,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u,
 		// Get the damage multiplier applied to the base damage of the weapon.
 		int damage_multiplier = 100;
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(u_loc, u.alignment(), u.is_fearless());
+		damage_multiplier += combat_modifier(resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 		// Leadership bonus.
 		int leader_bonus = 0;
 		if (under_leadership(units, u_loc, &leader_bonus).valid())
@@ -1615,11 +1615,11 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
 	return abil.highest("value").second;
 }
 
-int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
+int combat_modifier(const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless)
 {
 	const tod_manager & tod_m = *resources::tod_manager;
-	int lawful_bonus = tod_m.get_illuminated_time_of_day(loc).lawful_bonus;
+	int lawful_bonus = tod_m.get_illuminated_time_of_day(map, loc).lawful_bonus;
 	return generic_combat_modifier(lawful_bonus, alignment, is_fearless);
 }
 

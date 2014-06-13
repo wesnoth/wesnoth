@@ -27,6 +27,7 @@ struct map_location;
 class  team;
 class  unit;
 class  unit_map;
+class  gamemap;
 
 #include "../unit_types.hpp"
 #include "../ai/lua/unit_advancements_aspect.hpp"
@@ -247,7 +248,7 @@ map_location under_leadership(const unit_map& units, const map_location& loc,
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
-int combat_modifier(const map_location &loc, unit_type::ALIGNMENT alignment,
+int combat_modifier(const gamemap & map, const map_location &loc, unit_type::ALIGNMENT alignment,
                     bool is_fearless);
 
 /**

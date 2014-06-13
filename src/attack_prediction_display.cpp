@@ -18,6 +18,7 @@
 #include "actions/attack.hpp"
 #include "attack_prediction.hpp"
 #include "gettext.hpp"
+#include "game_board.hpp"
 #include "game_display.hpp"
 #include "language.hpp"
 #include "marked-up_text.hpp"
@@ -210,7 +211,7 @@ void battle_prediction_pane::get_unit_strings(const battle_context_unit_stats& s
 		}
 
 		// Time of day modifier.
-		int tod_modifier = combat_modifier(u_loc, u.alignment(), u.is_fearless());
+		int tod_modifier = combat_modifier(resources::gameboard->map(), u_loc, u.alignment(), u.is_fearless());
 		if(tod_modifier != 0) {
 			left_strings.push_back(_("Time of day"));
 			str.str("");
