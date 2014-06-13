@@ -18,8 +18,8 @@
 #include "attack_prediction.hpp"
 //#include "editor/editor_controller.hpp"
 //#include "editor/palette/terrain_palettes.hpp"
+#include "display.hpp"
 #include "font.hpp"
-#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "language.hpp"
@@ -115,34 +115,9 @@ static char const *naps = "</span>";
 
 namespace reports {
 
-static map_location get_displayed_unit_hex(reports::context & rc) {
-	return dynamic_cast<game_display &>(rc.screen()).displayed_unit_hex();
-}
-
-static int get_playing_side(reports::context & rc) {
-	if (rc.wb()) {
-		return dynamic_cast<game_display &>(rc.screen()).playing_side();
-	}
-	return -100; //this is a hacky run_time fix, the dynamic cast is not safe for the editor. I think it was only working before because resources::screen is null.
-}
-
-static const std::set<std::string> get_observers (reports::context & rc) {
-	if (rc.wb()) {
-		return dynamic_cast<game_display &>(rc.screen()).observers();
-	}
-	return std::set<std::string> ();
-}
-
-static double get_get_zoom_factor (reports::context & rc) {
-	if (rc.wb()) {
-		return dynamic_cast<game_display &>(rc.screen()).get_zoom_factor();
-	}
-	return -100;
-}
-
 static const unit *get_visible_unit(reports::context & rc)
 {
-	return rc.dc().get_visible_unit(get_displayed_unit_hex(rc),
+	return rc.dc().get_visible_unit(rc.screen().displayed_unit_hex(),
 		rc.teams()[rc.screen().viewing_team()],
 		rc.screen().show_everything());
 }
@@ -158,7 +133,7 @@ static const unit *get_selected_unit(reports::context & rc)
 
 static config gray_inactive(reports::context & rc, const std::string &str)
 {
-	if ( rc.screen().viewing_side() == get_playing_side(rc) )
+	if ( rc.screen().viewing_side() == rc.screen().playing_side() )
 			return text_report(str);
 
 	return text_report(span_color(font::GRAY_COLOR) + str + naps);
@@ -334,7 +309,7 @@ static config unit_status(reports::context & rc, const unit* u)
 {
 	if (!u) return config();
 	config res;
-	map_location displayed_unit_hex = get_displayed_unit_hex(rc);
+	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 	if (rc.map().on_board(displayed_unit_hex) && u->invisible(displayed_unit_hex)) {
 		add_status(res, "misc/invisible.png", N_("invisible: "),
 			N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
@@ -370,7 +345,7 @@ static config unit_alignment(reports::context & rc, const unit* u)
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
 	const std::string align_id = lexical_cast<std::string>(u->alignment());
-	int cm = combat_modifier(get_displayed_unit_hex(rc), u->alignment(),
+	int cm = combat_modifier(rc.screen().displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 
 	SDL_Color color = font::weapon_color;
@@ -452,7 +427,7 @@ static config unit_hp(reports::context& rc, const unit* u)
 	std::set<std::string> resistances_table;
 
 	bool att_def_diff = false;
-	map_location displayed_unit_hex = get_displayed_unit_hex(rc);
+	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 	BOOST_FOREACH(const utils::string_map::value_type &resist, u->get_base_resistances())
 	{
 		std::ostringstream line;
@@ -582,7 +557,7 @@ static config unit_defense(reports::context & rc, const unit* u, const map_locat
 REPORT_GENERATOR(unit_defense,rc)
 {
 	const unit *u = reports::get_visible_unit(rc);
-	const map_location& displayed_unit_hex = get_displayed_unit_hex(rc);
+	const map_location& displayed_unit_hex = rc.screen().displayed_unit_hex();
 	return unit_defense(rc, u, displayed_unit_hex);
 }
 REPORT_GENERATOR(selected_unit_defense, rc)
@@ -618,7 +593,7 @@ static config unit_moves(reports::context & rc, const unit* u)
 	if (!u) return config();
 	std::ostringstream str, tooltip;
 	double movement_frac = 1.0;
-	if (u->side() == get_playing_side(rc)) {
+	if (u->side() == rc.screen().playing_side()) {
 		movement_frac = double(u->movement_left()) / std::max<int>(1, u->total_movement());
 		if (movement_frac > 1.0)
 			movement_frac = 1.0;
@@ -684,7 +659,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 {
 	std::ostringstream str, tooltip;
 
-	at.set_specials_context(displayed_unit_hex, u.side() == get_playing_side(rc));
+	at.set_specials_context(displayed_unit_hex, u.side() == rc.screen().playing_side());
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;
@@ -1014,7 +989,7 @@ static config unit_weapons(reports::context & rc, const unit *attacker, const ma
 static config unit_weapons(reports::context & rc, const unit *u)
 {
 	if (!u || u->attacks().empty()) return config();
-	map_location displayed_unit_hex = get_displayed_unit_hex(rc);
+	map_location displayed_unit_hex = rc.screen().displayed_unit_hex();
 	config res;
 
 	//TODO enable after the string frezze is lifted
@@ -1045,7 +1020,7 @@ REPORT_GENERATOR(highlighted_unit_weapons, rc)
 	if (!u) return config();
 	if (!sec_u || u == sec_u) return unit_weapons(rc, sec_u);
 
-	map_location highlighted_hex = get_displayed_unit_hex(rc);
+	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
 	if (rc.mhb())
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
@@ -1063,7 +1038,7 @@ REPORT_GENERATOR(selected_unit_weapons, rc)
 	if (!u) return config();
 	if (!sec_u || u == sec_u) return unit_weapons(rc, u);
 
-	map_location highlighted_hex = get_displayed_unit_hex(rc);
+	map_location highlighted_hex = rc.screen().displayed_unit_hex();
 	map_location attack_loc;
 	if (rc.mhb())
 		attack_loc = rc.mhb()->current_unit_attacks_from(highlighted_hex);
@@ -1277,7 +1252,7 @@ REPORT_GENERATOR(gold, rc)
 	if (rc.wb())
 		fake_gold -= rc.wb()->get_spent_gold_for(viewing_side);
 	char const *end = naps;
-	if (viewing_side != get_playing_side(rc)) {
+	if (viewing_side != rc.screen().playing_side()) {
 		str << span_color(font::GRAY_COLOR);
 	}
 	else if (fake_gold < 0) {
@@ -1340,7 +1315,7 @@ REPORT_GENERATOR(income, rc)
 	const team &viewing_team = rc.teams()[viewing_side - 1];
 	team_data td = calculate_team_data(viewing_team, viewing_side);
 	char const *end = naps;
-	if (viewing_side != get_playing_side(rc)) {
+	if (viewing_side != rc.screen().playing_side()) {
 		if (td.net_income < 0) {
 			td.net_income = - td.net_income;
 			str << span_color(font::GRAY_COLOR);
@@ -1460,7 +1435,7 @@ REPORT_GENERATOR(zoom_level, rc)
 	std::ostringstream tooltip;
 	std::ostringstream help;
 
-	text << static_cast<int>(get_get_zoom_factor(rc) * 100) << "%";
+	text << static_cast<int>(rc.screen().get_zoom_factor() * 100) << "%";
 
 	return text_report(text.str(), tooltip.str(), help.str());
 }
@@ -1469,7 +1444,7 @@ REPORT_GENERATOR(position, rc)
 {
 	const gamemap &map = rc.map();
 	map_location mouseover_hex = rc.screen().mouseover_hex(),
-		displayed_unit_hex = get_displayed_unit_hex(rc),
+		displayed_unit_hex = rc.screen().displayed_unit_hex(),
 		selected_hex = rc.screen().selected_hex();
 
 	if (!map.on_board(mouseover_hex)) {
@@ -1512,7 +1487,7 @@ REPORT_GENERATOR(side_playing, rc)
 	const team &active_team = rc.teams()[rc.screen().playing_team()];
 	std::string flag_icon = active_team.flag_icon();
 	std::string old_rgb = game_config::flag_rgb;
-	std::string new_rgb = team::get_side_color_index(get_playing_side(rc));
+	std::string new_rgb = team::get_side_color_index(rc.screen().playing_side());
 	std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 	if (flag_icon.empty())
 		flag_icon = game_config::images::flag_icon;
@@ -1521,7 +1496,7 @@ REPORT_GENERATOR(side_playing, rc)
 
 REPORT_GENERATOR(observers, rc)
 {
-	const std::set<std::string> &observers = get_observers(rc);
+	const std::set<std::string> &observers = rc.screen().observers();
 	if (observers.empty())
 		return config();
 
@@ -1578,7 +1553,7 @@ REPORT_GENERATOR(report_countdown, rc)
 	std::ostringstream str;
 	sec = viewing_team.countdown_time() / 1000;
 	char const *end = naps;
-	if (viewing_side != get_playing_side(rc))
+	if (viewing_side != rc.screen().playing_side())
 		str << span_color(font::GRAY_COLOR);
 	else if (sec < 60)
 		str << "<span foreground=\"#c80000\">";

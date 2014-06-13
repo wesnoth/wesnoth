@@ -196,6 +196,11 @@ public:
 	virtual bool in_game() const { return false; }
 	virtual bool in_editor() const { return false; }
 
+	/** Virtual functions shadowed in game_display. These are needed to generate reports easily, without dynamic casting. Hope to factor out eventually. */
+	virtual const map_location & displayed_unit_hex() const { return map_location::null_location(); }
+	virtual int playing_side() const { return -100; } //In this case give an obviously wrong answer to fail fast, since this could actually cause a big bug. */
+	virtual const std::set<std::string>& observers() const { static const std::set<std::string> fake_obs = std::set<std::string> (); return fake_obs; }
+
 	/**
 	 * the dimensions of the display. x and y are width/height.
 	 * mapx is the width of the portion of the display which shows the game area.
