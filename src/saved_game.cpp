@@ -199,6 +199,17 @@ void saved_game::expand_scenario()
 		{
 			this->starting_pos_type_ = STARTINGPOS_SCENARIO;
 			this->starting_pos_ = scenario;
+			
+			//Set this default value immideately after reading the scenario is importent because otherwise 
+			//we might endup settings this value to the multiplayer players name, which would break carryover.
+			//(doing this in at config loading in game_config would be ok too i think.)
+			BOOST_FOREACH(config& side, starting_pos_.child_range("side"))
+			{
+				if(side["save_id"].str() == "")
+				{
+					side["save_id"] = side["id"];
+				}
+			}
 		}
 		else
 		{
