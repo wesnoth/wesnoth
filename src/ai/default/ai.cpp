@@ -655,7 +655,8 @@ public:
 		: stage_(s)
 	{
 	}
-	std::pair<std::string, double> operator()(const unit &u) {
+	std::pair<std::string, double> operator()(const UnitPtr u_ptr) {
+		const unit & u = *u_ptr;
 		std::pair<std::string,int> p;
 		p.first = u.id();
 		const unit_type& u_type = u.type();
@@ -761,7 +762,7 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 		return false;
 	}
 
-	const std::vector<unit> &recalls = current_team().recall_list();
+	const std::vector<UnitPtr > &recalls = current_team().recall_list();
 
 	if (recalls.empty()) {
 		return false;

@@ -248,15 +248,15 @@ void recruitment::execute() {
 		// Add recalls.
 		// Recalls are treated as recruits. While recruiting
 		// we'll check if we can do a recall instead of a recruitment.
-		BOOST_FOREACH(const unit& recall, current_team().recall_list()) {
+		BOOST_FOREACH(const UnitConstPtr & recall, current_team().recall_list()) {
 			// Check if this leader is allowed to recall this unit.
 			vconfig filter = vconfig(leader->recall_filter());
-			if (!recall.matches_filter(filter, map_location::null_location())) {
+			if (!recall->matches_filter(filter, map_location::null_location())) {
 				continue;
 			}
-			data.recruits.insert(recall.type_id());
-			data.scores[recall.type_id()] = 0.0;
-			global_recruits.insert(recall.type_id());
+			data.recruits.insert(recall->type_id());
+			data.scores[recall->type_id()] = 0.0;
+			global_recruits.insert(recall->type_id());
 		}
 
 		// Check if leader is in danger. (If a enemies unit can attack the leader)
@@ -470,19 +470,19 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 		const data& leader_data) const {
 	const std::string* best_recall_id = NULL;
 	double best_recall_value = -1;
-	BOOST_FOREACH(const unit& recall_unit, current_team().recall_list()) {
-		if (type != recall_unit.type_id()) {
+	BOOST_FOREACH(const UnitConstPtr & recall_unit, current_team().recall_list()) {
+		if (type != recall_unit->type_id()) {
 			continue;
 		}
 		// Check if this leader is allowed to recall this unit.
 		vconfig filter = vconfig(leader_data.leader->recall_filter());
-		if (!recall_unit.matches_filter(filter, map_location::null_location())) {
-			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit.id() << "\n";
+		if (!recall_unit->matches_filter(filter, map_location::null_location())) {
+			LOG_AI_RECRUITMENT << "Refused recall because of filter: " << recall_unit->id() << "\n";
 			continue;
 		}
 		double average_cost_of_advanced_unit = 0;
 		int counter = 0;
-		BOOST_FOREACH(const std::string& advancement, recall_unit.advances_to()) {
+		BOOST_FOREACH(const std::string& advancement, recall_unit->advances_to()) {
 			const unit_type* advancement_type = unit_types.find(advancement);
 			if (!advancement_type) {
 				continue;
@@ -494,16 +494,16 @@ const std::string* recruitment::get_appropriate_recall(const std::string& type,
 			average_cost_of_advanced_unit /= counter;
 		} else {
 			// Unit don't have advancements. Use cost of unit itself.
-			average_cost_of_advanced_unit = recall_unit.cost();
+			average_cost_of_advanced_unit = recall_unit->cost();
 		}
-		double xp_quantity = static_cast<double>(recall_unit.experience()) /
-				recall_unit.max_experience();
-		double recall_value = recall_unit.cost() + xp_quantity * average_cost_of_advanced_unit;
+		double xp_quantity = static_cast<double>(recall_unit->experience()) /
+				recall_unit->max_experience();
+		double recall_value = recall_unit->cost() + xp_quantity * average_cost_of_advanced_unit;
 		if (recall_value < current_team().recall_cost()) {
 			continue;  // Unit is not worth to get recalled.
 		}
 		if (recall_value > best_recall_value) {
-			best_recall_id = &recall_unit.id();
+			best_recall_id = &recall_unit->id();
 			best_recall_value = recall_value;
 		}
 	}

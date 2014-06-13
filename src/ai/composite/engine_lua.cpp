@@ -168,7 +168,7 @@ public:
 		, bound_unit_()
 	{
 		map_location loc(cfg["unit_x"] - 1, cfg["unit_y"] - 1); // lua and c++ coords differ by one
-		bound_unit_ = boost::shared_ptr<unit>(new unit(*resources::units->find(loc)));
+		bound_unit_ = UnitPtr(new unit(*resources::units->find(loc)));
 	}
 
 	virtual double evaluate()
@@ -190,7 +190,7 @@ public:
 		this->disable(); // we do not want to execute the same sticky CA twice -> will be moved out to Lua later
 	}
 private:
-	boost::shared_ptr<unit> bound_unit_;
+	UnitPtr bound_unit_;
 
 };
 

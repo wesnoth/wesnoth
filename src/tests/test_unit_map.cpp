@@ -151,7 +151,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
 		BOOST_CHECK(ui->underlying_id() == orc1_side0_real.underlying_id());
 	}
 
-	unit* extracted_unit = unit_map.extract(hex);
+	UnitPtr extracted_unit = unit_map.extract(hex);
 
 	{
 		unit_map::unit_iterator ui = unit_map.find(underlying_id);
@@ -159,7 +159,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_underlying_id ) {
 	}
 
 	unit_map.insert(extracted_unit);
-	extracted_unit = NULL;
+	extracted_unit.reset();
 
 	{
 		unit_map::unit_iterator ui = unit_map.find(underlying_id);
@@ -198,7 +198,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 		BOOST_CHECK(ui->underlying_id() == orc1_side0_fake.underlying_id());
 	}
 
-	unit* extracted_unit = unit_map.extract(hex);
+	UnitPtr extracted_unit = unit_map.extract(hex);
 
 	{
 		unit_map::unit_iterator ui = unit_map.find(underlying_id);
@@ -206,7 +206,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_underlying_id ) {
 	}
 
 	unit_map.insert(extracted_unit);
-	extracted_unit = NULL;
+	extracted_unit.reset();
 
 	{
 		unit_map::unit_iterator ui = unit_map.find(underlying_id);
@@ -240,7 +240,7 @@ BOOST_AUTO_TEST_CASE( track_real_unit_by_iterator ) {
 
 	BOOST_CHECK(unit_iterator.valid());
 
-	unit* extracted_unit = unit_map.extract(hex);
+	UnitPtr extracted_unit = unit_map.extract(hex);
 
 	BOOST_CHECK_MESSAGE(unit_iterator.valid() == false, "Iterator should be invalid after extraction.");
 
@@ -277,7 +277,7 @@ BOOST_AUTO_TEST_CASE( track_fake_unit_by_iterator ) {
 
 	BOOST_CHECK(unit_iterator.valid());
 
-	unit* extracted_unit = unit_map.extract(hex);
+	UnitPtr extracted_unit = unit_map.extract(hex);
 
 	BOOST_CHECK_MESSAGE(unit_iterator.valid() == false, "Iterator should be invalid after extraction.");
 

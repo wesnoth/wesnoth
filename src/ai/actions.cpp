@@ -501,12 +501,12 @@ recall_result::recall_result(side_number side,
 
 const unit * recall_result::get_recall_unit(const team &my_team)
 {
-	const std::vector<unit>::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
+	const std::vector<UnitPtr >::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
 	if (rec == my_team.recall_list().end()) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
 		return NULL;
 	}
-	return &*rec;
+	return rec->get();
 }
 
 bool recall_result::test_enough_gold(const team &my_team)

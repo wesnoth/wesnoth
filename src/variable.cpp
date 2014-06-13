@@ -428,7 +428,7 @@ void scoped_recall_unit::activate()
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {
 			config &tmp_cfg = store();
-			team_it->recall_list()[recall_index_].write(tmp_cfg);
+			team_it->recall_list()[recall_index_]->write(tmp_cfg);
 			tmp_cfg["x"] = "recall";
 			tmp_cfg["y"] = "recall";
 			LOG_NG << "auto-storing $" << name() << " for player: " << player_

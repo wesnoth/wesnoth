@@ -22,12 +22,11 @@
 
 #include "vision.hpp"
 #include "../map_location.hpp"
+#include "../unit_ptr.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
 #include <vector>
-
-class unit;
 
 
 namespace actions {
@@ -39,18 +38,18 @@ class undo_list : boost::noncopyable {
 	/// Each type of action gets its own derived type.
 	struct undo_action : boost::noncopyable {
 		/// Constructor for move actions.
-		undo_action(const unit& u,
+		undo_action(const UnitConstPtr u,
 			        const std::vector<map_location>::const_iterator & begin,
 			        const std::vector<map_location>::const_iterator & end) :
 				route(begin, end),
-				view_info(new clearer_info(u))
+				view_info(new clearer_info(*u))
 			{
 			}
 		/// Constructor for recruit and recall actions.
 		/// These types of actions are guaranteed to have a non-empty route.
-		undo_action(const unit& u, const map_location& loc) :
+		undo_action(const UnitConstPtr u, const map_location& loc) :
 				route(1, loc),
-				view_info(new clearer_info(u))
+				view_info(new clearer_info(*u))
 			{}
 		/// Constructor from a config storing the view info.
 		/// Does not set @a route.
@@ -125,18 +124,18 @@ public:
 	/// Adds an auto-shroud toggle to the undo stack.
 	void add_auto_shroud(bool turned_on);
 	/// Adds a dismissal to the undo stack.
-	void add_dismissal(const unit & u);
+	void add_dismissal(const UnitConstPtr u);
 	/// Adds a move to the undo stack.
-	void add_move(const unit& u,
+	void add_move(const UnitConstPtr u,
 	              const std::vector<map_location>::const_iterator & begin,
 	              const std::vector<map_location>::const_iterator & end,
 	              int start_moves, int timebonus=0, int village_owner=-1,
 	              const map_location::DIRECTION dir=map_location::NDIRECTIONS);
 	/// Adds a recall to the undo stack.
-	void add_recall(const unit& u, const map_location& loc,
+	void add_recall(const UnitConstPtr u, const map_location& loc,
 	                const map_location& from);
 	/// Adds a recruit to the undo stack.
-	void add_recruit(const unit& u, const map_location& loc,
+	void add_recruit(const UnitConstPtr u, const map_location& loc,
 	                 const map_location& from);
 private:
 	/// Adds a shroud update to the undo stack.

@@ -26,6 +26,7 @@ class terrain_type;
 #include "map_location.hpp"
 #include "construct_dialog.hpp"
 #include "network.hpp"
+#include "unit_ptr.hpp"
 #include "ai/lua/unit_advancements_aspect.hpp"
 
 namespace dialogs {
@@ -59,7 +60,7 @@ std::string load_game_dialog(display& disp, const config& terrain_config, bool* 
 
 int recruit_dialog(display& disp, std::vector<const unit_type*>& units, const std::vector<std::string>& items, int side, const std::string& title_suffix);
 
-int recall_dialog(display& disp, std::vector<const unit*>& units, int side, const std::string& title_suffix, const int team_recall_cost);
+int recall_dialog(display& disp, std::vector<UnitConstPtr >& units, int side, const std::string& title_suffix, const int team_recall_cost);
 
 /** Show unit-stats in a side-pane to unit-list, recall-list, etc. */
 class unit_preview_pane : public gui::preview_pane
@@ -110,8 +111,8 @@ private:
 class units_list_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	units_list_preview_pane(const unit *u, TYPE type = SHOW_ALL, bool left_side = true);
-	units_list_preview_pane(const std::vector<const unit *> &units,
+	units_list_preview_pane(UnitConstPtr u, TYPE type = SHOW_ALL, bool left_side = true);
+	units_list_preview_pane(const std::vector<UnitConstPtr > &units,
 		const gui::filter_textbox *filter = NULL,
 		TYPE type = SHOW_ALL, bool left_side = true);
 	units_list_preview_pane(const std::vector<unit> &units,
@@ -123,7 +124,7 @@ private:
 	const details get_details() const;
 	void process_event();
 
-	std::vector<const unit *> units_;
+	std::vector<UnitConstPtr > units_;
 };
 
 

@@ -222,7 +222,7 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
 	const std::string& unit_id = child["value"];
-	std::vector<unit>::iterator disband_unit =
+	std::vector<UnitPtr>::iterator disband_unit =
 		find_if_matches_id(current_team.recall_list(), unit_id);
 
 	if(disband_unit != current_team.recall_list().end()) {

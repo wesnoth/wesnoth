@@ -66,7 +66,7 @@ public:
 	virtual map_location get_numbering_hex() const = 0;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const = 0;
+	virtual UnitPtr get_unit() const = 0;
 
 	/**
 	 * Returns the id of the unit targeted by this action.

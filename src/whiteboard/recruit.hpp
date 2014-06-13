@@ -65,7 +65,7 @@ public:
 	virtual map_location get_numbering_hex() const { return recruit_hex_; }
 
 	/** @return pointer to a fake unit representing the one that will eventually be recruited. */
-	virtual unit* get_unit() const { return temp_unit_.get(); }
+	virtual UnitPtr get_unit() const { return temp_unit_; }
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
@@ -82,7 +82,7 @@ protected:
 	std::string unit_name_;
 	map_location recruit_hex_;
 	//Temp unit to insert in the future unit map when needed
-	std::auto_ptr<unit> temp_unit_;
+	UnitPtr temp_unit_;
 	fake_unit_ptr fake_unit_;
 	int cost_;
 
@@ -92,7 +92,7 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
-	std::auto_ptr<unit> create_corresponding_unit();
+	UnitPtr create_corresponding_unit();
 };
 
 std::ostream& operator<<(std::ostream& s, recruit_ptr recruit);

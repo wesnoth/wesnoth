@@ -56,14 +56,14 @@ undo_list::undo_action::~undo_action()
 
 
 struct undo_list::dismiss_action : undo_list::undo_action {
-	unit dismissed_unit;
+	UnitPtr dismissed_unit;
 
 
-	explicit dismiss_action(const unit& dismissed) : undo_action(),
-		dismissed_unit(dismissed)
+	explicit dismiss_action(const UnitConstPtr dismissed) : undo_action(),
+		dismissed_unit(new unit(*dismissed))
 	{}
 	explicit dismiss_action(const config & unit_cfg) : undo_action(),
-		dismissed_unit(unit_cfg)
+		dismissed_unit(new unit(unit_cfg))
 	{}
 	virtual ~dismiss_action();
 
@@ -86,7 +86,7 @@ struct undo_list::move_action : undo_list::undo_action {
 	map_location goto_hex;
 
 
-	move_action(const unit& moved,
+	move_action(const UnitConstPtr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
@@ -94,8 +94,8 @@ struct undo_list::move_action : undo_list::undo_action {
 		starting_moves(sm),
 		original_village_owner(orig),
 		countdown_time_bonus(timebonus),
-		starting_dir(dir == map_location::NDIRECTIONS ? moved.facing() : dir),
-		goto_hex(moved.get_goto())
+		starting_dir(dir == map_location::NDIRECTIONS ? moved->facing() : dir),
+		goto_hex(moved->get_goto())
 	{}
 	move_action(const config & unit_cfg, const config & route_cfg,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
@@ -127,10 +127,10 @@ struct undo_list::recall_action : undo_list::undo_action {
 	map_location recall_from;
 
 
-	recall_action(const unit& recalled, const map_location& loc,
+	recall_action(const UnitConstPtr recalled, const map_location& loc,
 	              const map_location& from) :
 		undo_action(recalled, loc),
-		id(recalled.id()),
+		id(recalled->id()),
 		recall_from(from)
 	{}
 	recall_action(const config & unit_cfg, const map_location & loc,
@@ -157,10 +157,10 @@ struct undo_list::recruit_action : undo_list::undo_action {
 	map_location recruit_from;
 
 
-	recruit_action(const unit& recruited, const map_location& loc,
+	recruit_action(const UnitConstPtr recruited, const map_location& loc,
 	               const map_location& from) :
 		undo_action(recruited, loc),
-		u_type(recruited.type()),
+		u_type(recruited->type()),
 		recruit_from(from)
 	{}
 	recruit_action(const config & unit_cfg, const unit_type & type,
@@ -291,7 +291,7 @@ void undo_list::dismiss_action::write(config & cfg) const
 {
 	cfg.add_child("replay_data", replay_data);
 	cfg["type"] = "dismiss";
-	dismissed_unit.write(cfg.add_child("unit"));
+	dismissed_unit->write(cfg.add_child("unit"));
 }
 
 /**
@@ -399,7 +399,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const unit & u)
+void undo_list::add_dismissal(const UnitConstPtr u)
 {
 	add(new dismiss_action(u));
 }
@@ -407,7 +407,7 @@ void undo_list::add_dismissal(const unit & u)
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const unit& u,
+void undo_list::add_move(const UnitConstPtr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
@@ -419,7 +419,7 @@ void undo_list::add_move(const unit& u,
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const unit& u, const map_location& loc,
+void undo_list::add_recall(const UnitConstPtr u, const map_location& loc,
                            const map_location& from)
 {
 	add(new recall_action(u, loc, from));
@@ -428,7 +428,7 @@ void undo_list::add_recall(const unit& u, const map_location& loc,
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const unit& u, const map_location& loc,
+void undo_list::add_recruit(const UnitConstPtr u, const map_location& loc,
                             const map_location& from)
 {
 	add(new recruit_action(u, loc, from));
@@ -648,9 +648,13 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 		return false;
 	}
 
-	const unit &un = *un_it;
-	statistics::un_recall_unit(un);
-	int cost = statistics::un_recall_unit_cost(un);
+	UnitPtr un = un_it.get_shared_ptr();
+	if (!un) {
+		return false;
+	}
+
+	statistics::un_recall_unit(*un);
+	int cost = statistics::un_recall_unit_cost(*un);
 	if (cost < 0) {
 		current_team.spend_gold(-current_team.recall_cost());
 	}
@@ -829,9 +833,7 @@ bool undo_list::dismiss_action::redo(int side)
 	}
 	recorder.redo(replay_data);
 	replay_data.clear();
-	std::vector<unit>::iterator unit_it =
-		find_if_matches_id(current_team.recall_list(), dismissed_unit.id());
-	current_team.recall_list().erase(unit_it);
+	erase_if_matches_id(current_team.recall_list(), dismissed_unit->id());
 	return true;
 }
 
@@ -853,15 +855,15 @@ bool undo_list::recall_action::redo(int side)
 	map_location loc = route.front();
 	map_location from = recall_from;
 
-	const std::vector<unit> & recalls = current_team.recall_list();
-	std::vector<unit>::const_iterator unit_it = find_if_matches_id(recalls, id);
+	const std::vector<UnitPtr > & recalls = current_team.recall_list();
+	std::vector<UnitPtr >::const_iterator unit_it = find_if_matches_id(recalls, id);
 	if ( unit_it == recalls.end() ) {
 		ERR_NG << "Trying to redo a recall of '" << id
 		       << "', but that unit is not in the recall list.";
 		return false;
 	}
 
-	const std::string &msg = find_recall_location(side, loc, from, *unit_it);
+	const std::string &msg = find_recall_location(side, loc, from, **unit_it);
 	if ( msg.empty() ) {
 		recorder.redo(replay_data);
 		replay_data.clear();

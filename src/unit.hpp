@@ -23,6 +23,7 @@
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
+#include "unit_ptr.hpp"
 
 class display;
 class gamemap;
@@ -391,7 +392,12 @@ public:
 	const std::string& effect_image_mods() const;
 	std::string image_mods() const;
 
+	long ref_count() const { return ref_count_; }
+	friend void intrusive_ptr_add_ref(const unit *);
+	friend void intrusive_ptr_release(const unit *);
 private:
+	mutable long ref_count_; //used by intrusive_ptr
+
 	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
 
@@ -534,16 +540,16 @@ private:
 };
 
 /// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<unit>::iterator find_if_matches_id(
-		std::vector<unit> &unit_list,
+std::vector<UnitPtr >::iterator find_if_matches_id(
+		std::vector<UnitPtr > &unit_list,
 		const std::string &unit_id);
 /// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<unit>::const_iterator find_if_matches_id(
-		const std::vector<unit> &unit_list,
+std::vector<UnitPtr >::const_iterator find_if_matches_id(
+		const std::vector<UnitPtr > &unit_list,
 		const std::string &unit_id);
 /// Used to erase units from vectors by their ID. (Convenience wrapper)
-std::vector<unit>::iterator erase_if_matches_id(
-		std::vector<unit> &unit_list,
+std::vector<UnitPtr >::iterator erase_if_matches_id(
+		std::vector<UnitPtr > &unit_list,
 		const std::string &unit_id);
 
 /** Returns the number of units of the side @a side_num. */

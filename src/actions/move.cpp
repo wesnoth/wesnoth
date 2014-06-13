@@ -1073,7 +1073,7 @@ namespace { // Private helpers for move_unit()
 			if ( mover_valid ) {
 				// MP_COUNTDOWN: added param
 				undo_stack->add_move(
-					*move_it_, begin_, real_end_, orig_moves_,
+					move_it_.get_shared_ptr(), begin_, real_end_, orig_moves_,
 					action_time_bonus, orig_village_owner, orig_dir_);
 			}
 
