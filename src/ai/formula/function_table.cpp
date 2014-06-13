@@ -611,7 +611,7 @@ private:
 			loc = &u_call->get_location();
 		}
 
-		return variant(combat_modifier(resources::gameboard->map(),*loc, un.alignment(), un.is_fearless()));
+		return variant(combat_modifier(resources::gameboard->units(), resources::gameboard->map(),*loc, un.alignment(), un.is_fearless()));
 	}
 };
 

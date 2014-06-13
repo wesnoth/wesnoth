@@ -345,7 +345,7 @@ static config unit_alignment(reports::context & rc, const unit* u)
 	std::ostringstream str, tooltip;
 	const std::string align = unit_type::alignment_description(u->alignment(), u->gender());
 	const std::string align_id = lexical_cast<std::string>(u->alignment());
-	int cm = combat_modifier(rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
+	int cm = combat_modifier(rc.units(), rc.map(), rc.screen().displayed_unit_hex(), u->alignment(),
 			u->is_fearless());
 
 	SDL_Color color = font::weapon_color;
@@ -663,7 +663,7 @@ static int attack_info(reports::context & rc, const attack_type &at, config &res
 	int base_damage = at.damage();
 	int specials_damage = at.modified_damage(false);
 	int damage_multiplier = 100;
-	int tod_bonus = combat_modifier(rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
+	int tod_bonus = combat_modifier(rc.units(), rc.map(), displayed_unit_hex, u.alignment(), u.is_fearless());
 	damage_multiplier += tod_bonus;
 	int leader_bonus = 0;
 	if (under_leadership(rc.units(), displayed_unit_hex, &leader_bonus).valid())
@@ -1114,7 +1114,7 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 		// Don't show illuminated time on fogged tiles.
 		tod = rc.tod().get_time_of_day(mouseover_hex);
 	} else {
-		tod = rc.tod().get_illuminated_time_of_day(rc.map(), mouseover_hex);
+		tod = rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(), mouseover_hex);
 	}
 
 	int b = tod.lawful_bonus;
@@ -1164,7 +1164,7 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 		// Don't show illuminated time on fogged tiles.
 		local_tod = rc.tod().get_time_of_day(mouseover_hex);
 	} else {
-		local_tod = rc.tod().get_illuminated_time_of_day(rc.map(),mouseover_hex);
+		local_tod = rc.tod().get_illuminated_time_of_day(rc.units(), rc.map(),mouseover_hex);
 	}
 
 	int bonus = local_tod.lawful_bonus;

@@ -1364,7 +1364,7 @@ static int intf_get_time_of_day(lua_State *L)
 	}
 
 	const time_of_day& tod = consider_illuminates ?
-		resources::tod_manager->get_illuminated_time_of_day(resources::gameboard->map(), loc, for_turn) :
+		resources::tod_manager->get_illuminated_time_of_day(resources::gameboard->units(), resources::gameboard->map(), loc, for_turn) :
 		resources::tod_manager->get_time_of_day(loc, for_turn);
 
 	lua_newtable(L);

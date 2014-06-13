@@ -75,7 +75,7 @@ class tod_manager : public savegame::savegame_config
 		 * tod areas matter, for_turn = 0 means current turn
 		 * taking account of illumination caused by units
 		 */
-		const time_of_day get_illuminated_time_of_day(const gamemap & map, const map_location& loc,
+		const time_of_day get_illuminated_time_of_day(const unit_map & units, const gamemap & map, const map_location& loc,
 				int for_turn = 0) const;
 
 		const time_of_day& get_previous_time_of_day() const;
