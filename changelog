@@ -5,6 +5,7 @@ Version 1.11.15+dev:
    * Legend of Wesmere
      * Disabled the non finished chapters 4 and 5 in the mp port.
      * Fix scenario 3 which was broken after a map change.
+   * Son of the Black Eye: minor balance tweaks to scenarios 15, 17 and 18
  * Editor:
    * Added an entry for the terrain description help to the context menu.
    * Default hotkey bindings for brushes (1-5)
@@ -46,19 +47,19 @@ Version 1.11.15+dev:
    * Fix bug #21717: "F5->reload wml tree" doesn't work in editor.
    * Fix bug #21298: Minimap shows invisible overlays
    * Fix bug #22116: unlock movement when attacking enemy+discovering in fog
-   * Fix bug #21397: "Saving and loading may cause a side's turn is not 
+   * Fix bug #21397: "Saving and loading may cause a side's turn is not
      initialized".
-   * Fix bug which caused no units to be displayed when reloading an end of 
-     scenario save, by stripping them from the save file. However, this does 
-     not fix bug #15545, which was the reason that this behavior was introduced. 
-   * Fix bug #22123 "Replays don't reset map when reset button is pressed, 
+   * Fix bug which caused no units to be displayed when reloading an end of
+     scenario save, by stripping them from the save file. However, this does
+     not fix bug #15545, which was the reason that this behavior was introduced.
+   * Fix bug #22123 "Replays don't reset map when reset button is pressed,
      causing OOS"
    * Fix bug #22147: Assertion error when a network error is thrown during the game.
    * Removed the YetAnotherMapGenerator (not finished)
    * Fix bug #22134: Campaign prefix not used in mp campaign saves
    * Made the error messages sent to stderr when the core data dir is
      incorrectly set more helpful.
-     
+
 Version 1.11.15:
  * Graphics:
    * Fixed bug #22045: Only blit neutral surfaces.
@@ -78,7 +79,7 @@ Version 1.11.15:
      allow_new_game=yes
    * Fix minor issue mentioned in #21800: team names not displayed properly
      in debug mode.
-   * Fixup to bug fix 21882: fight_on_without_leader replaced with 
+   * Fixup to bug fix 21882: fight_on_without_leader replaced with
      "defeat_condition" flag  of team. remove_from_carryover_on_leaders_loss
      renamed to "remove_from_carryover_on_defeat". The WML developer now has
      much more control: Instead of 'fight_on_without_leader'=yes/no, they have
