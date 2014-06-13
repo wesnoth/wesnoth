@@ -13,18 +13,18 @@
  */
 
 #include "tod_manager.hpp"
-#include "wml_exception.hpp"
-#include "gettext.hpp"
+
 #include "display_context.hpp"
 #include "formula_string_utils.hpp"
 #include "gamestatus.hpp"
+#include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "play_controller.hpp"
 #include "random_new.hpp"
-#include "resources.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
+#include "wml_exception.hpp"
 
 #include <boost/foreach.hpp>
 #include <boost/range/adaptors.hpp>
@@ -316,7 +316,7 @@ const std::set<map_location>& tod_manager::get_area_by_index(int index) const
 	return areas_[index].hexes;
 }
 
-void tod_manager::add_time_area(const config& cfg)
+void tod_manager::add_time_area(const gamemap & map, const config& cfg)
 {
 	areas_.push_back(area_time_of_day());
 	area_time_of_day &area = areas_.back();
@@ -324,7 +324,7 @@ void tod_manager::add_time_area(const config& cfg)
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
 	area.currentTime = cfg["current_time"].to_int(0);
-	std::vector<map_location> const& locs (resources::disp_context->map().parse_location_range(area.xsrc, area.ysrc, true));
+	std::vector<map_location> const& locs (map.parse_location_range(area.xsrc, area.ysrc, true));
 	area.hexes.insert(locs.begin(), locs.end());
 	time_of_day::parse_times(cfg, area.times);
 }

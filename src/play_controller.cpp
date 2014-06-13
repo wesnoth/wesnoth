@@ -195,7 +195,7 @@ void play_controller::init(CVideo& video){
 	}
 
 	BOOST_FOREACH(const config &t, level_.child_range("time_area")) {
-		tod_manager_.add_time_area(t);
+		tod_manager_.add_time_area(gameboard_.map(),t);
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << std::endl;

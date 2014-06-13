@@ -117,7 +117,7 @@ class tod_manager : public savegame::savegame_config
 		 * @param cfg                 Config object containing x,y range/list of
 		 *                            locations and desired [time] information.
 		 */
-		void add_time_area(const config& cfg);
+		void add_time_area(const gamemap & map, const config& cfg);
 
 		/**
 		 * Adds a new local time area from a set of locations, making those
