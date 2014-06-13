@@ -25,9 +25,8 @@
 #include "language.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
-#include "play_controller.hpp"
+#include "mouse_events.hpp"
 #include "reports.hpp"
-#include "resources.hpp"
 #include "strftime.hpp"
 #include "team.hpp"
 #include "text.hpp"
@@ -1111,9 +1110,9 @@ REPORT_GENERATOR(tod_stats, rc)
 
 	const map_location& hex = mouseover_hex.valid() ? mouseover_hex : selected_hex;
 
-	const std::vector<time_of_day>& schedule = resources::tod_manager->times(hex);
+	const std::vector<time_of_day>& schedule = rc.tod().times(hex);
 
-	int current = resources::tod_manager->get_current_time(hex);
+	int current = rc.tod().get_current_time(hex);
 	int i = 0;
 	BOOST_FOREACH(const time_of_day& tod, schedule) {
 		if (i == current) tooltip << "<b>";
@@ -1135,12 +1134,12 @@ static config time_of_day_at(reports::context & rc, const map_location& mouseove
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
-		tod = resources::tod_manager->get_time_of_day();
+		tod = rc.tod().get_time_of_day();
 	} else if (viewing_team.fogged(mouseover_hex)) {
 		// Don't show illuminated time on fogged tiles.
-		tod = resources::tod_manager->get_time_of_day(mouseover_hex);
+		tod = rc.tod().get_time_of_day(mouseover_hex);
 	} else {
-		tod = resources::tod_manager->get_illuminated_time_of_day(mouseover_hex);
+		tod = rc.tod().get_illuminated_time_of_day(mouseover_hex);
 	}
 
 	int b = tod.lawful_bonus;
@@ -1181,16 +1180,16 @@ static config unit_box_at(reports::context & rc, const map_location& mouseover_h
 {
 	std::ostringstream tooltip;
 	time_of_day local_tod;
-	time_of_day global_tod = resources::tod_manager->get_time_of_day();
+	time_of_day global_tod = rc.tod().get_time_of_day();
 	const team &viewing_team = rc.teams()[rc.screen().viewing_team()];
 	if (viewing_team.shrouded(mouseover_hex)) {
 		// Don't show time on shrouded tiles.
 		local_tod = global_tod;
 	} else if (viewing_team.fogged(mouseover_hex)) {
 		// Don't show illuminated time on fogged tiles.
-		local_tod = resources::tod_manager->get_time_of_day(mouseover_hex);
+		local_tod = rc.tod().get_time_of_day(mouseover_hex);
 	} else {
-		local_tod = resources::tod_manager->get_illuminated_time_of_day(mouseover_hex);
+		local_tod = rc.tod().get_illuminated_time_of_day(mouseover_hex);
 	}
 
 	int bonus = local_tod.lawful_bonus;
@@ -1259,11 +1258,11 @@ REPORT_GENERATOR(unit_box, rc)
 }
 
 
-REPORT_GENERATOR(turn, /*dc*/)
+REPORT_GENERATOR(turn, rc)
 {
 	std::ostringstream str;
-	str << resources::tod_manager->turn();
-	int nb = resources::tod_manager->number_of_turns();
+	str << rc.tod().turn();
+	int nb = rc.tod().number_of_turns();
 	if (nb != -1) str << '/' << nb;
 	return text_report(str.str());
 }

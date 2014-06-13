@@ -3597,7 +3597,7 @@ namespace {
 static int cfun_theme_item(lua_State *L)
 {
 	const char *m = lua_tostring(L, lua_upvalueindex(1));
-	reports::context temp_context = reports::context(*resources::disp_context, *resources::screen, resources::whiteboard, resources::controller->get_mouse_handler_base());
+	reports::context temp_context = reports::context(*resources::disp_context, *resources::screen, *resources::tod_manager, resources::whiteboard, resources::controller->get_mouse_handler_base());
 	luaW_pushconfig(L, reports::generate_report(m, temp_context , true));
 	return 1;
 }

@@ -2742,7 +2742,7 @@ void display::refresh_report(std::string const &report_name, const config * new_
 		mhb = resources::controller->get_mouse_handler_base();
 	}
 
-	reports::context temp_context = reports::context(*dc_, *this, wb_.lock(), mhb);
+	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
 
 	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
