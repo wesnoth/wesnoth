@@ -588,7 +588,7 @@ void play_controller::fire_start(bool execute){
 	if( gamestate_.classification().random_mode != "" && (network::nconnections() != 0))
 	{
 		std::string mes = _("MP game uses an alternative random mode, if you don't know what this message means, then most likeley someone is cheating or someone reloaded a corrupt game.");
-		resources::screen->add_chat_message(
+		gui_->add_chat_message(
 			time(NULL),
 			"game_engine",
 			0,
@@ -1287,12 +1287,12 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_RECALL: {
 		// last_hex_ is set by mouse_events::mouse_motion
 		const map_location & last_hex = mouse_handler_.get_last_hex();
-		const int viewing_side = resources::screen->viewing_side();
+		const int viewing_side = gui_->viewing_side();
 
 		// A quick check to save us having to create the future map and
 		// possibly loop through all units.
-		if ( !resources::gameboard->map().is_keep(last_hex)  &&
-		     !resources::gameboard->map().is_castle(last_hex) )
+		if ( !gameboard_.map().is_keep(last_hex)  &&
+		     !gameboard_.map().is_castle(last_hex) )
 			return false;
 
 		wb::future_map future; /* lasts until method returns. */
@@ -1487,7 +1487,7 @@ void play_controller::process_oos(const std::string& msg) const
 	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	savegame::oos_savegame save(gamestate_, *gui_, to_config());
-	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
+	save.save_game_interactive(gui_->video(), message.str(), gui::YES_NO); // can throw end_level_exception
 }
 
 //this should be at the end of the file but it caused merging problems there.
