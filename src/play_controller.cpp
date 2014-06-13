@@ -734,7 +734,7 @@ void play_controller::do_init_side(bool is_replay, bool only_visual) {
 	loading_game_ = false;
 
 	check_victory();
-	resources::whiteboard->on_init_side();
+	whiteboard_manager_->on_init_side();
 }
 
 //builds the snapshot config from its members and their configs respectively
@@ -792,7 +792,7 @@ config play_controller::to_config() const
 
 void play_controller::finish_side_turn(){
 
-	resources::whiteboard->on_finish_side_turn(player_number_);
+	whiteboard_manager_->on_finish_side_turn(player_number_);
 
 	gameboard_.end_turn(player_number_);
 
