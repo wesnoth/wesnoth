@@ -110,7 +110,7 @@ std::string format_file_list(const std::vector<std::string>& files_original)
 
 			const config& info_cfg = cfg.child("info");
 
-			if(info_cfg) {
+			if(info_cfg && !info_cfg["title"].empty()) {
 				file = info_cfg["title"].str();
 				continue;
 			}

@@ -24,6 +24,9 @@ Version 1.11.15+dev:
      WML in text form instead of a simplified version.
    * Added a button to copy the currently displayed content from the :inspect
      dialog to clipboard.
+   * Fixed the WML load error dialog not displaying an add-on name instead of
+     falling back to its directory name if the add-on contains an outdated
+     _info.cfg file lacking an [info]title= value.
  * WML engine:
    * Fixed a regression in 1.11.14 causing WML parser/preprocessor errors to
      not interrupt the game load sequence or display an error message in-game,
