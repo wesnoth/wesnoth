@@ -180,6 +180,7 @@ public:
 	void init_generated_level_data();
 
 	void prepare_for_new_level();
+	void prepare_for_era_and_mods();
 	void prepare_for_scenario();
 	void prepare_for_campaign(const std::string& difficulty);
 	void prepare_for_saved_game();

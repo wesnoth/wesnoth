@@ -534,6 +534,7 @@ game_classification::game_classification():
 	campaign_xtra_defines(),
 	scenario_define(),
 	era_define(),
+	mod_defines(),
 	campaign(),
 	abbrev(),
 	completion(),
@@ -553,6 +554,7 @@ game_classification::game_classification(const config& cfg):
 	campaign_xtra_defines(utils::split(cfg["campaign_extra_defines"])),
 	scenario_define(cfg["scenario_define"]),
 	era_define(cfg["era_define"]),
+	mod_defines(utils::split(cfg["mod_defines"])),
 	campaign(cfg["campaign"]),
 	abbrev(cfg["abbrev"]),
 	completion(cfg["completion"]),
@@ -572,6 +574,7 @@ game_classification::game_classification(const game_classification& gc):
 	campaign_xtra_defines(gc.campaign_xtra_defines),
 	scenario_define(gc.scenario_define),
 	era_define(gc.era_define),
+	mod_defines(gc.mod_defines),
 	campaign(gc.campaign),
 	abbrev(gc.abbrev),
 	completion(gc.completion),
@@ -594,6 +597,7 @@ config game_classification::to_config() const
 	cfg["campaign_extra_defines"] = utils::join(campaign_xtra_defines);
 	cfg["scenario_define"] = scenario_define;
 	cfg["era_define"] = era_define;
+	cfg["mod_defines"] = utils::join(mod_defines);
 	cfg["campaign"] = campaign;
 	cfg["abbrev"] = abbrev;
 	cfg["completion"] = completion;
