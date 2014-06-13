@@ -84,7 +84,7 @@ static void clear_resources()
 	resources::tunnels = NULL;
 	resources::undo_stack = NULL;
 	resources::units = NULL;
-	resources::whiteboard = NULL;
+	resources::whiteboard.reset();
 
 
 	resources::classification = NULL;
@@ -255,9 +255,15 @@ void play_controller::init(CVideo& video){
 	loadscreen::start_stage("init theme");
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
 
+	LOG_NG << "initializing pathfinding and whiteboard..." << (SDL_GetTicks() - ticks_) << std::endl;
+	pathfind_manager_.reset(new pathfind::manager(level_));
+	whiteboard_manager_.reset(new wb::manager());
+	resources::tunnels = pathfind_manager_.get();
+	resources::whiteboard = whiteboard_manager_;
+
 	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << std::endl;
 	loadscreen::start_stage("build terrain");
-	gui_.reset(new game_display(gameboard_, video, tod_manager_, theme_cfg, level_));
+	gui_.reset(new game_display(gameboard_, video, whiteboard_manager_, tod_manager_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (gamestate_.mp_settings().mp_countdown)
 			gui_->get_theme().modify_label("time-icon", _ ("time left for current turn"));
@@ -316,12 +322,8 @@ void play_controller::init_managers(){
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
-	pathfind_manager_.reset(new pathfind::manager(level_));
-	whiteboard_manager_.reset(new wb::manager());
 
 	resources::soundsources = soundsources_manager_.get();
-	resources::tunnels = pathfind_manager_.get();
-	resources::whiteboard = whiteboard_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << std::endl;

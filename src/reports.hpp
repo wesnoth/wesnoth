@@ -15,22 +15,67 @@
 #ifndef REPORTS_HPP_INCLUDED
 #define REPORTS_HPP_INCLUDED
 
+#include "display_context.hpp"
 #include "map_location.hpp"
+#include "tod_manager.hpp"
+
+#include <vector>
+
+#include <boost/optional.hpp>
+#include <boost/shared_ptr.hpp>
 
 //this module is responsible for outputting textual reports of
 //various game and unit statistics
+
+class gamemap;
+class team;
+class unit_map;
+
+class display;
+
+namespace wb {
+	class manager;
+}
+
+namespace events {
+	class mouse_handler;
+}
+
 namespace reports {
+
+class context
+{
+public:
+	context(const display_context & dc, display & disp, const tod_manager & tod, boost::shared_ptr<wb::manager> wb, boost::optional<events::mouse_handler &> mhb) : dc_(dc), disp_(disp), tod_(tod), wb_(wb), mhb_(mhb) {}
+
+	const std::vector<team> & teams() { return dc_.teams(); }
+	const unit_map & units() { return dc_.units(); }
+	const gamemap & map() { return dc_.map(); }
+
+	const display_context & dc() { return dc_; }
+	display & screen() { return disp_; }
+	const tod_manager & tod() { return tod_; }
+	boost::shared_ptr<wb::manager> wb() { return wb_; }
+	boost::optional<events::mouse_handler&> mhb() { return mhb_; }
+
+private:
+	const display_context & dc_;
+	display & disp_;
+	const tod_manager & tod_;
+	boost::shared_ptr<wb::manager> wb_;	
+	boost::optional<events::mouse_handler&> mhb_;
+};
 
 struct generator
 {
-	virtual config generate() = 0;
+	virtual config generate(context & ct) = 0;
 	virtual ~generator() {}
 };
 
 void reset_generators();
 void register_generator(const std::string &name, generator *);
 
-config generate_report(const std::string &name, bool only_static = false);
+config generate_report(const std::string &name, context & ct, bool only_static = false);
 
 const std::set<std::string> &report_list();
 }

@@ -28,6 +28,7 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "minimap.hpp"
+#include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
 #include "terrain_builder.hpp"
 #include "text.hpp"
@@ -136,8 +137,9 @@ void display::remove_single_overlay(const map_location& loc, const std::string& 
 
 
 
-display::display(const display_context * dc, CVideo& video, const config& theme_cfg, const config& level) :
+display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::manager> wb, const config& theme_cfg, const config& level) :
 	dc_(dc),
+	wb_(wb),
 	exclusive_unit_draw_requests_(),
 	screen_(video),
 	currentTeam_(0),
@@ -364,8 +366,8 @@ void display::set_team(size_t teamindex, bool show_everything)
 		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
-	if(resources::whiteboard)
-		resources::whiteboard->on_viewer_change(teamindex);
+	if(boost::shared_ptr<wb::manager> w = wb_.lock())
+		w->on_viewer_change(teamindex);
 }
 
 void display::set_playing_team(size_t teamindex)
@@ -2733,7 +2735,16 @@ void display::refresh_report(std::string const &report_name, const config * new_
 	}
 
 	// Now we will need the config. Generate one if needed.
-	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name);
+
+	boost::optional <events::mouse_handler &> mhb = boost::none;
+
+	if (resources::controller) {
+		mhb = resources::controller->get_mouse_handler_base();
+	}
+
+	reports::context temp_context = reports::context(*dc_, *this, *resources::tod_manager, wb_.lock(), mhb);
+
+	const config generated_cfg = new_cfg ? config() : reports::generate_report(report_name, temp_context);
 	if ( new_cfg == NULL )
 		new_cfg = &generated_cfg;
 

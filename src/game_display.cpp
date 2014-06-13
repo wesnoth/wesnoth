@@ -61,10 +61,10 @@ static lg::log_domain log_engine("engine");
 
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
-game_display::game_display(game_board& board, CVideo& video,
+game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
 		const tod_manager& tod,
 		const config& theme_cfg, const config& level) :
-		display(&board, video, theme_cfg, level),
+		display(&board, video, wb, theme_cfg, level),
 		overlay_map_(),
 		fake_units_(),
 		attack_indicator_src_(),
@@ -90,7 +90,7 @@ game_display* game_display::create_dummy_display(CVideo& video)
 	static config dummy_cfg2;
 	static game_board dummy_board(dummy_cfg, dummy_cfg2);
 	static tod_manager dummy_tod(dummy_cfg);
-	return new game_display(dummy_board, video, dummy_tod,
+	return new game_display(dummy_board, video, boost::shared_ptr<wb::manager>(), dummy_tod,
 			dummy_cfg, dummy_cfg);
 }
 
@@ -222,8 +222,8 @@ void game_display::scroll_to_leader(int side, SCROLL_TYPE scroll_type,bool force
 }
 
 void game_display::pre_draw() {
-	if (resources::whiteboard) {
-		resources::whiteboard->pre_draw();
+	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+		w->pre_draw();
 	}
 	process_reachmap_changes();
 	/**
@@ -235,8 +235,8 @@ void game_display::pre_draw() {
 
 
 void game_display::post_draw() {
-	if (resources::whiteboard) {
-		resources::whiteboard->post_draw();
+	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+		w->post_draw();
 	}
 }
 
@@ -318,14 +318,16 @@ void game_display::draw_hex(const map_location& loc)
 				image::get_image(unreachable,image::SCALED_TO_HEX));
 	}
 
-	resources::whiteboard->draw_hex(loc);
+	if (boost::shared_ptr<wb::manager> w = wb_.lock()) {
+		w->draw_hex(loc);
 
-	if (!(resources::whiteboard->is_active() && resources::whiteboard->has_temp_move()))
-	{
-		// Footsteps indicating a movement path
-		const std::vector<surface>& footstepImages = footsteps_images(loc);
-		if (!footstepImages.empty()) {
-			drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
+		if (!(w->is_active() && w->has_temp_move()))
+		{
+			// Footsteps indicating a movement path
+			const std::vector<surface>& footstepImages = footsteps_images(loc);
+			if (!footstepImages.empty()) {
+				drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
+			}
 		}
 	}
 	// Draw the attack direction indicator
@@ -411,12 +413,14 @@ void game_display::draw_movement_info(const map_location& loc)
 	// Search if there is a mark here
 	pathfind::marked_route::mark_map::iterator w = route_.marks.find(loc);
 
+	boost::shared_ptr<wb::manager> wb = wb_.lock();
+
 	// Don't use empty route or the first step (the unit will be there)
 	if(w != route_.marks.end()
 				&& !route_.steps.empty() && route_.steps.front() != loc) {
 		const unit_map::const_iterator un =
-				resources::whiteboard->get_temp_move_unit().valid() ?
-						resources::whiteboard->get_temp_move_unit() : dc_->units().find(route_.steps.front());
+				(wb && wb->get_temp_move_unit().valid()) ?
+						wb->get_temp_move_unit() : dc_->units().find(route_.steps.front());
 		if(un != dc_->units().end()) {
 			// Display the def% of this terrain
 			int def =  100 - un->defense_modifier(get_map().get_terrain(loc));
@@ -432,7 +436,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			int xpos = get_location_x(loc);
 			int ypos = get_location_y(loc);
 
-            if (w->second.invisible) {
+			if (w->second.invisible) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
 					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
 			}
@@ -1002,8 +1006,8 @@ void game_display::set_team(size_t teamindex, bool show_everything)
 		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
-	if(resources::whiteboard)
-		resources::whiteboard->on_viewer_change(teamindex);
+	if(boost::shared_ptr<wb::manager> w = wb_.lock())
+		w->on_viewer_change(teamindex);
 }
 
 void game_display::set_playing_team(size_t teamindex)

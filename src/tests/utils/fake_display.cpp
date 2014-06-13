@@ -20,6 +20,10 @@
 #include "game_display.hpp"
 #include "tod_manager.hpp"
 
+namespace wb {
+	class manager;
+}
+
 namespace test_utils {
 
 	class fake_display_manager {
@@ -61,7 +65,7 @@ namespace test_utils {
 		dummy_board_(dummy_cfg_, dummy_cfg2_),
 		dummy_tod_(dummy_cfg_),
 		main_event_context_(),
-		disp_(dummy_board_, video_, dummy_tod_,
+		disp_(dummy_board_, video_, boost::shared_ptr<wb::manager> (), dummy_tod_,
 				dummy_cfg_, dummy_cfg_)
 	{
 	}

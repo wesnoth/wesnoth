@@ -247,7 +247,7 @@ protected:
 	boost::scoped_ptr<actions::undo_list> undo_stack_;
 
 	//whiteboard manager
-	boost::scoped_ptr<wb::manager> whiteboard_manager_;
+	boost::shared_ptr<wb::manager> whiteboard_manager_;
 
 	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
