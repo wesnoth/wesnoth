@@ -401,16 +401,16 @@ void manager::remove_turn_started_observer( events::observer* event_observer )
 }
 
 void manager::raise_user_interact() {
-        const int interact_time = 30;
-        const int time_since_interact = SDL_GetTicks() - last_interact_;
-        if(time_since_interact < interact_time) {
-                return;
-        }
+	const int interact_time = 30;
+	const int time_since_interact = SDL_GetTicks() - last_interact_;
+	if(time_since_interact < interact_time) {
+		return;
+	}
 
 	++num_interact_;
-        user_interact_.notify_observers();
+	user_interact_.notify_observers();
 
-        last_interact_ = SDL_GetTicks();
+	last_interact_ = SDL_GetTicks();
 
 }
 
