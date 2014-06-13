@@ -552,7 +552,7 @@ possible_end_play_signal replay_controller::play_side() {
 		//during the orginal game player_number_ would also be gameboard_.teams().size(),
 		player_number_ = gameboard_.teams().size();
 		finish_turn();
-		tod_manager_.next_turn();
+		tod_manager_.next_turn(*resources::gamedata);
 		it_is_a_new_turn_ = true;
 		player_number_ = 1;
 		current_turn_++;

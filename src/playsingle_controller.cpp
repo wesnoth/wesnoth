@@ -1012,7 +1012,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 possible_end_play_signal playsingle_controller::check_time_over(){
-	bool b = tod_manager_.next_turn();
+	bool b = tod_manager_.next_turn(*resources::gamedata);
 	it_is_a_new_turn_ = true;
 	if(!b) {
 

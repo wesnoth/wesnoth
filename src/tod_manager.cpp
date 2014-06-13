@@ -378,7 +378,7 @@ void tod_manager::set_number_of_turns(int num)
 	num_turns_ = std::max<int>(num, -1);
 }
 
-void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
+void tod_manager::set_turn(const int num, boost::optional<game_data &> vars, const bool increase_limit_if_needed)
 {
 	const int new_turn = std::max<int>(num, 1);
 	LOG_NG << "changing current turn number from " << turn_ << " to " << new_turn << '\n';
@@ -389,8 +389,8 @@ void tod_manager::set_turn(const int num, const bool increase_limit_if_needed)
 		set_number_of_turns(new_turn);
 	}
 	turn_ = new_turn;
-	if (resources::gamedata)
-		resources::gamedata->get_variable("turn_number") = new_turn;
+	if (vars)
+		vars->get_variable("turn_number") = new_turn;
 }
 
 void tod_manager::set_new_current_times(const int new_current_turn_number)
@@ -418,9 +418,9 @@ int tod_manager::calculate_current_time(
 	return new_current_time;
 }
 
-bool tod_manager::next_turn()
+bool tod_manager::next_turn(boost::optional<game_data&> vars)
 {
-	set_turn(turn_ + 1, false);
+	set_turn(turn_ + 1, vars, false);
 	return is_time_left();
 }
 

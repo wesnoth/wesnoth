@@ -19,8 +19,11 @@
 #include "time_of_day.hpp"
 #include "savegame_config.hpp"
 
+#include <boost/optional.hpp>
+
 class gamemap;
 class unit_map;
+class game_data;
 
 namespace random_new
 {
@@ -156,14 +159,14 @@ class tod_manager : public savegame::savegame_config
 		void set_number_of_turns(int num);
 
 		/** Dynamically change the current turn number. */
-		void set_turn(const int num, const bool increase_limit_if_needed = true);
+		void set_turn(const int num, boost::optional<game_data&> vars = boost::none, const bool increase_limit_if_needed = true);
 
 		/**
 		 * Function to move to the next turn.
 		 *
 		 * @returns                   True if time has not expired.
 		 */
-		bool next_turn();
+		bool next_turn(boost::optional<game_data&> vars);
 
 		/**
 		 * Function to check the end of turns.
