@@ -419,6 +419,15 @@ static void init_locale() {
 	textdomain (PACKAGE);
 }
 
+/**
+ * Print an alert and instructions to stderr about early initialization errors.
+ *
+ * This is provided as an aid for users dealing with potential data dir
+ * configuration issues. The first code to read core WML *has* the
+ * responsibility to call this function in the event of a problem, to inform
+ * the user of the most likely possible cause and suggest a course of action
+ * to solve the issue.
+ */
 static void warn_early_init_failure()
 {
 	// NOTE: wrap output to 80 columns.
@@ -457,6 +466,7 @@ static int do_gameloop(int argc, char** argv)
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not initialize fonts\n";
+		// The most common symptom of a bogus data dir path -- warn the user.
 		warn_early_init_failure();
 		return 1;
 	}
