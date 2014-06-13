@@ -65,6 +65,9 @@ Version 1.13.0-dev:
    * Added a button to copy the currently displayed content from the :inspect
      dialog to clipboard.
    * Added a button to copy the in-game Chat Log dialog contents to clipboard.
+   * Fixed the WML load error dialog not displaying an add-on name instead of
+     falling back to its directory name if the add-on contains an outdated
+     _info.cfg file lacking an [info]title= value.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
