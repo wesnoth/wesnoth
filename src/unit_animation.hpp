@@ -29,9 +29,11 @@ class unit_animation
 	public:
 		typedef enum { MATCH_FAIL=-10 , DEFAULT_ANIM=-9} variation_type;
 		typedef enum { HIT, MISS, KILL, INVALID} hit_type;
-
+		struct sprite_data;
+		
 		static const std::vector<std::string>& all_tag_names();
 		static void fill_initial_animations( std::vector<unit_animation> & animations, const config & cfg);
+		static void fill_spritesheet_locations( std::vector<sprite_data> & sprites, const config & cfg);
 		static void add_anims( std::vector<unit_animation> & animations, const config & cfg);
 
 		int matches(const display &disp,const map_location& loc,const map_location& second_loc,const unit* my_unit,const std::string & event="",const int value=0,hit_type hit=INVALID,const attack_type* attack=NULL,const attack_type* second_attack = NULL, int value2 =0) const;

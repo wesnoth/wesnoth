@@ -54,6 +54,7 @@ struct tag_name_manager {
 		names.push_back("sheath_weapon_anim");
 		names.push_back("victory_anim");
 		names.push_back("_transparent"); // Used for WB
+		names.push_back("spritelocations");
 	}
 	std::vector<std::string> names;
 };
@@ -64,6 +65,16 @@ namespace {
 const std::vector<std::string>& unit_animation::all_tag_names() {
 	return anim_tags.names;
 }
+
+struct sprite_data
+{
+	std::string filepath;
+	int id;
+	int x_coordinate;
+	int y_coordinate;
+	int height;
+	int width;
+};
 
 struct animation_branch
 {
@@ -591,6 +602,63 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 }
 
+void unit_animation::fill_spritesheet_locations( std::vector<sprite_data> & sprites, const config & cfg)
+{
+	const std::string spritesheet_image = cfg["spritesheet"];
+	std::vector<sprite_data>  sprites_base;
+	std::vector<unit_animation>::const_iterator itor;
+/*	add_sprites(sprites,cfg);
+	for(itor = sprites.begin(); itor != sprites.end() ; ++itor) 
+	{
+		if (std::find(itor->event_.begin(),itor->event_.end(),std::string("default"))!= itor->event_.end()) 
+		{
+			sprites_base.push_back(*itor);
+			sprites_base.back().event_.clear();
+		}
+	}
+*/
+	while() 
+	{
+		if (std::find(itor->event_.begin(),itor->event_.end(),std::string("default"))!= itor->event_.end()) 
+		{
+			sprite_data current_sprite;
+			current_sprite.filepath = spritesheet_image;
+			current_sprite.id = cfg["sprite_id"];
+			current_sprite.x_coordinate = cfg["x_coor"];
+			current_sprite.y_coordinate = cfg["y_coor"];
+			current_sprite.height = cfg["height"];
+			current_sprite.width = cfg["width"];
+			sprites_base.push_back(*current_sprite);
+			sprites_base.back().event_.clear();
+		}
+	}
+
+	if( sprites_base.empty() )
+	{
+		sprites_base.push_back(0,0,0,0);
+	}
+}
+/*
+void unit_animation::add_sprites( std::vector<unit_animation> & spritesheet, const config & cfg)
+{
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "location")) 
+	{
+		animations.push_back(unit_animation(ab.merge()));
+	}
+
+	add_simple_anim(spritesheet, cfg);
+
+	BOOST_FOREACH(const animation_branch &ab, prepare_animation(cfg, "standing_anim"))
+	{
+		config anim = ab.merge();
+		anim["apply_to"] = "standing";
+		anim["cycles"] = "true";
+		if (anim["layer"].empty()) anim["layer"] = default_layer;
+		if (anim["offscreen"].empty()) anim["offscreen"] = false;
+		animations.push_back(unit_spritesheet(anim));
+	}
+}
+*/
 static void add_simple_anim(std::vector<unit_animation> &animations,
 	const config &cfg, char const *tag_name, char const *apply_to,
 	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
