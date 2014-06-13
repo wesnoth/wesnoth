@@ -420,6 +420,24 @@ static void init_locale() {
 }
 
 /**
+ * Print an alert and instructions to stderr about early initialization errors.
+ *
+ * This is provided as an aid for users dealing with potential data dir
+ * configuration issues. The first code to read core WML *has* the
+ * responsibility to call this function in the event of a problem, to inform
+ * the user of the most likely possible cause and suggest a course of action
+ * to solve the issue.
+ */
+static void warn_early_init_failure()
+{
+	// NOTE: wrap output to 80 columns.
+	std::cerr << '\n'
+			  << "An error at this point during initialization usually indicates that the data\n"
+			  << "directory above was not correctly set or detected. Try passing the correct path\n"
+			  << "in the command line with the --config-dir switch or as the only argument.\n";
+}
+
+/**
  * Setups the game environment and enters
  * the titlescreen or game loops.
  */
@@ -448,6 +466,8 @@ static int do_gameloop(int argc, char** argv)
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not initialize fonts\n";
+		// The most common symptom of a bogus data dir path -- warn the user.
+		warn_early_init_failure();
 		return 1;
 	}
 
