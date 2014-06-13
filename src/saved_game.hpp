@@ -30,6 +30,7 @@ public:
 	void write_carryover(config_writer& out) const;
 	void write_starting_pos(config_writer& out) const;
 	config to_config();
+	///Removes everything except [carryover_sides_start]
 	void remove_old_scenario();
 	game_classification& classification() { return classification_; }
 	const game_classification& classification() const { return classification_; }
@@ -51,13 +52,19 @@ public:
 	{
 		return starting_pos_type_ == STARTINGPOS_SNAPSHOT;
 	}
+	/// converts a normal savegame form the end of a scenaio to a start-of-scenario savefiel for teh next scenaio, 
+	/// The saved_game must contain a [snapshot] made during the linger mode of the last scenaio.
 	void convert_to_start_save();
+	/// retruns from the config from which the replay will be started. Usualy this is [replay_start] but it can also be a [scenario] if no replay_start is present
 	const config& get_replay_starting_pos();
-
+	/// returns the id of teh curently played scenaio or the id of the next scenaio if this is a between-scenaios-save (also called start-of-scenario) save.
 	std::string get_scenario_id();
+	/// retruns from the config from which teh game will be started. [scenario] or [snapshot] in the file
 	config& get_starting_pos();
 	config& replay_start() { return replay_start_; }
 	const config& replay_start() const { return replay_start_; }
+
+	bool not_corrupt() const;
 	/**
 	 * If the game is saved mid-level, we have a series of replay steps
 	 * to take the game up to the position it was saved at.

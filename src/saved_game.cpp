@@ -167,6 +167,7 @@ void saved_game::write_starting_pos(config_writer& out) const
 }
 void saved_game::write_carryover(config_writer& out) const
 {
+	assert(not_corrupt());
 	if(!this->carryover_sides.empty())
 	{
 		out.write_child("carryover_sides", carryover_sides);	
@@ -341,4 +342,20 @@ std::string saved_game::get_scenario_id()
 	{
 		return carryover_sides_start["next_scenario"];
 	}
+}
+
+
+bool saved_game::not_corrupt() const
+{
+	if(carryover_sides.empty() && carryover_sides_start.empty())
+	{
+		//this case is dangerous but currently not impossible.
+		WRN_NG << "savefile contains neigher [carryover_sides] not [carryover_sides_start]" <<  std::endl;
+	}
+	// A Scenario can never contain both of them
+	// normal saves have [carryover_sides] start-of-scenario saved have [carryover_sides_start]
+	// the function expand_carryover transforms a start of scenario save to a normal save
+	// the function convert_to_start_save converts a normal save form teh end of the scenaio 
+	// to a start-of-scenario save for a next level
+	return carryover_sides.empty() || carryover_sides_start.empty();
 }
