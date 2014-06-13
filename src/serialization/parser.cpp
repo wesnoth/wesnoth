@@ -382,7 +382,7 @@ void parser::error(const std::string& error_type, const std::string& pos_format)
 	std::stringstream ss;
 	ss << tok_.get_start_line() << " " << tok_.get_file();
 
-#ifdef DEBUG
+#ifdef DEBUG_TOKENIZER
 	i18n_symbols["value"] = tok_.current_token().value;
 	i18n_symbols["previous_value"] = tok_.previous_token().value;
 

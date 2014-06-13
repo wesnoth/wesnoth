@@ -16,6 +16,8 @@
 #ifndef TOKENIZER_H_INCLUDED
 #define TOKENIZER_H_INCLUDED
 
+//#define DEBUG_TOKENIZER
+
 #include "buffered_istream.hpp"
 
 #include <istream>
@@ -66,7 +68,7 @@ public:
 		return token_;
 	}
 
-#ifdef DEBUG
+#ifdef DEBUG_TOKENIZER
 	const token &previous_token() const
 	{
 		return previous_token_;
@@ -169,7 +171,7 @@ private:
 	std::string textdomain_;
 	std::string file_;
 	token token_;
-#ifdef DEBUG
+#ifdef DEBUG_TOKENIZER
 	token previous_token_;
 #endif
 	buffered_istream in_;
