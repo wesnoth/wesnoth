@@ -224,7 +224,7 @@ void wait::join_game(bool observe)
 	if (!download_res) {
 		set_result(QUIT);
 		return;
-	} else if (!get_scenario()["allow_new_game"].to_bool(true)) {
+	} else if (!get_scenario()["allow_new_game"].to_bool(true) && !level_.child_or_empty("multiplayer")["savegame"].to_bool(false)) {
 		set_result(PLAY);
 		return;
 	}
