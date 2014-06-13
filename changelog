@@ -68,6 +68,9 @@ Version 1.13.0-dev:
    * Fixed the WML load error dialog not displaying an add-on name instead of
      falling back to its directory name if the add-on contains an outdated
      _info.cfg file lacking an [info]title= value.
+   * Fixed most of the minimap buttons and the End Turn button appearing
+     without contents or in the wrong state during WML start events until they
+     are interacted with or control is given to the player for the first time.
  * WML engine:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
