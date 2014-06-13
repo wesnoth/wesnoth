@@ -16,8 +16,6 @@
 #define REPORTS_HPP_INCLUDED
 
 #include "display_context.hpp"
-#include "map_location.hpp"
-#include "tod_manager.hpp"
 
 #include <vector>
 
@@ -29,6 +27,7 @@
 
 class gamemap;
 class team;
+class tod_manager;
 class unit_map;
 
 class display;
