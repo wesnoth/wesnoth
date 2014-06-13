@@ -26,6 +26,8 @@
 #include <map>
 #include <boost/unordered_map.hpp>
 
+//#define DEBUG_UNIT_MAP
+
 class unit;
 
 /**
@@ -373,7 +375,7 @@ public:
 
 	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
 	bool self_check() const
-#ifndef DEBUG
+#ifndef DEBUG_UNIT_MAP
 	{ return true; }
 #else
 	;

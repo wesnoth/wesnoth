@@ -332,7 +332,7 @@ std::vector<unit_map::const_unit_iterator> unit_map::find_leaders(int side)const
 	return const_leaders;
 }
 
-#ifdef DEBUG
+#ifdef DEBUG_UNIT_MAP
 
 bool unit_map::self_check() const {
 	bool good(true);
