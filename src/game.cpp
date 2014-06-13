@@ -38,6 +38,7 @@
 #include "serialization/validator.hpp"
 #include "statistics.hpp"
 #include "version.hpp"
+#include "wesconfig.h"
 #include "wml_exception.hpp"
 
 #include <cerrno>

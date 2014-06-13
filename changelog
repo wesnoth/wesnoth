@@ -29,7 +29,7 @@ Version 1.13.0-dev:
        on the signpost when the messenger comes back
      * S3: make objectives consistent between before and after trolls appear
      * S6: remove AI controller.  It doesn't work with sides without a leader
-     * Minor balance tweaks to scenarios 7, 8, 12, 14 and 17.
+     * Minor balance tweaks to scenarios 7, 8, 12, 14, 15, 17 and 18.
    * The Hammer of Thursagan:
      * Fixed missing objective in 'The Court of Karrag'.
      * Rebalanced scenarios 'Invaders', Mages and Drakes' and 'Fear'.
@@ -53,7 +53,7 @@ Version 1.13.0-dev:
    * Add 'elemental' trait to mudcrawler line
    * Fix sound timings for drake fire animation macros
  * User interface:
-   * Classic Theme which restores the 1.10 UI. 
+   * Classic Theme which restores the 1.10 UI.
    * Made orb and minmap colors configurable by the game preferences.
    * Remove 'allow_new_game=no' entries from random map new game list
    * Fixed bug #22095: An assertion failure in the gamestate inspector.
@@ -74,7 +74,7 @@ Version 1.13.0-dev:
    * Added support for [elseif] tags inside [if]
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
-     no_units/always/never which allows the wml developer to decide when a side 
+     no_units/always/never which allows the wml developer to decide when a side
      is considered defeated
    * Fix Fisher-Yates implemenation of Lua helper.shuffle (bug #21706)
    * Fixed issues with the ~BG() image path function not always working with
@@ -153,24 +153,24 @@ Version 1.13.0-dev:
      commands can be used to script a scenario and use the same code path
      as if a human / ai ordered the command. These are intended to facilitate
      making some kinds of noninteractive unit tests.
-   * Support for total conversions, so called "cores".  
+   * Support for total conversions, so called "cores".
    * Fix bug #22030: correct index of weapon special disable in attack GUI
    * Fix bug #21964: assertion failure when using "controller" attribute with
      a number.
-   * Add [do_command], remove [issue_attack_command] and [issue_move_command], 
-     which are superceded by [do_command]. [do_command] takes the body of a 
-     [command] tag from ReplayWML, (some possibilities not allowed), and 
-     executes the corresponding action. It is replay safe and triggers WML 
+   * Add [do_command], remove [issue_attack_command] and [issue_move_command],
+     which are superceded by [do_command]. [do_command] takes the body of a
+     [command] tag from ReplayWML, (some possibilities not allowed), and
+     executes the corresponding action. It is replay safe and triggers WML
      events as appropriate.
    * Reallow selection of another unit on same side without deselect first
    * Add "strict mode". Using --log-strict=[severity] causes wesnoth to throw
-     a game_error exception when anything is written to a log as severe as 
+     a game_error exception when anything is written to a log as severe as
      that. For example --log-strict=warning causes both warnings and errors
      to generate runtime exceptions. This is intended for unit tests.
    * Fix bug #22042: filesystem content disclosure issue affecting Lua APIs
    * Fix bug #21867: team flag colors not refreshed after making use of
      [modify_side] color= unless a new flag set is also provided.
-   * Fix a bug where in movement records, "skip_sighted" was sometimes 
+   * Fix a bug where in movement records, "skip_sighted" was sometimes
      spelled as "skip_sighed".
    * Fix bug #22020: make base units with variations help entry clickable
      from the 'Unit Description' menu entry or from side pane.
@@ -184,11 +184,11 @@ Version 1.13.0-dev:
    * [modify_side] may now alter the value of [side] defeat_condition.
    * Fix bug #22116: unlock movement when attacking enemy+discovering in fog
    * In mp the other players now also proceed to the next scenario if one human player wins.
-   * Fix bug #21397: "Saving and loading may cause a side's turn is not 
+   * Fix bug #21397: "Saving and loading may cause a side's turn is not
      initialized".
-   * Fix bug which caused no units to be displayed when reloading an end of 
-     scenario save, by stripping them from the save file. However, this does 
-     not fix bug #15545, which was the reason that this behavior was introduced. 
+   * Fix bug which caused no units to be displayed when reloading an end of
+     scenario save, by stripping them from the save file. However, this does
+     not fix bug #15545, which was the reason that this behavior was introduced.
    * Fix bug #22123 "Replays don't reset map when reset button is pressed, causing OOS"
    * Wesnoth reports an error if it evalutes [if] and finds no [then], [else], [elseif]
      children, as a chat message from lua.

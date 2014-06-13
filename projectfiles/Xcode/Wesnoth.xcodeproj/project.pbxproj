@@ -324,7 +324,6 @@
 		B5599B0B0EC62181008DD061 /* reports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B70EC62181008DD061 /* reports.cpp */; };
 		B5599B0C0EC62181008DD061 /* replay_controller.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999B90EC62181008DD061 /* replay_controller.cpp */; };
 		B5599B0D0EC62181008DD061 /* replay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999BB0EC62181008DD061 /* replay.cpp */; };
-		B5599B0E0EC62181008DD061 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999BE0EC62181008DD061 /* random.cpp */; };
 		B5599B0F0EC62181008DD061 /* race.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C00EC62181008DD061 /* race.cpp */; };
 		B5599B100EC62181008DD061 /* preferences_display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C20EC62181008DD061 /* preferences_display.cpp */; };
 		B5599B110EC62181008DD061 /* preferences.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999C40EC62181008DD061 /* preferences.cpp */; };
@@ -599,7 +598,6 @@
 		B597C5D00FACD6CA00CE81F5 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD210ECA805A002BE442 /* window.cpp */; };
 		B597C5D10FACD6CA00CE81F5 /* combo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999470EC62181008DD061 /* combo.cpp */; };
 		B597C5D30FACD6CA00CE81F5 /* unit_id.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999750EC62181008DD061 /* unit_id.cpp */; };
-		B597C5D40FACD6CA00CE81F5 /* random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999BE0EC62181008DD061 /* random.cpp */; };
 		B597C5D60FACD6CA00CE81F5 /* widget.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD1F0ECA805A002BE442 /* widget.cpp */; };
 		B597C5D70FACD6CA00CE81F5 /* network.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999DA0EC62181008DD061 /* network.cpp */; };
 		B597C5D80FACD6CA00CE81F5 /* toggle_button.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BD150ECA805A002BE442 /* toggle_button.cpp */; };
@@ -920,6 +918,8 @@
 		ECBBD73D1928F3F200E434C6 /* terrain_builder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBBD73B1928F3F100E434C6 /* terrain_builder.cpp */; };
 		ECBBD7401928F41500E434C6 /* core_selection.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECBBD73E1928F41500E434C6 /* core_selection.cpp */; };
 		ECC8F41B185FE2E1004AC3BE /* format_time_summary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */; };
+		ECD39893194B830300CF2125 /* saved_game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39891194B830300CF2125 /* saved_game.cpp */; };
+		ECD39895194B844A00CF2125 /* display_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECD39894194B844A00CF2125 /* display_context.cpp */; };
 		ECF3A0B318AD3E8800DD643A /* wml_error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECF3A0B118AD3E8700DD643A /* wml_error.cpp */; };
 		ECFA82E3184E59F3006782FB /* command_executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DA184E59F3006782FB /* command_executor.cpp */; };
 		ECFA82E4184E59F3006782FB /* hotkey_command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ECFA82DC184E59F3006782FB /* hotkey_command.cpp */; };
@@ -1523,8 +1523,6 @@
 		B55999BA0EC62181008DD061 /* replay.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = replay.hpp; path = ../src/replay.hpp; sourceTree = "<group>"; };
 		B55999BB0EC62181008DD061 /* replay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = replay.cpp; path = ../src/replay.cpp; sourceTree = "<group>"; };
 		B55999BC0EC62181008DD061 /* reference_counted_object.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = reference_counted_object.hpp; path = ../src/reference_counted_object.hpp; sourceTree = "<group>"; };
-		B55999BD0EC62181008DD061 /* random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = random.hpp; path = ../src/random.hpp; sourceTree = "<group>"; };
-		B55999BE0EC62181008DD061 /* random.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = random.cpp; path = ../src/random.cpp; sourceTree = "<group>"; };
 		B55999BF0EC62181008DD061 /* race.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = race.hpp; path = ../src/race.hpp; sourceTree = "<group>"; };
 		B55999C00EC62181008DD061 /* race.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = race.cpp; path = ../src/race.cpp; sourceTree = "<group>"; };
 		B55999C10EC62181008DD061 /* preferences_display.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = preferences_display.hpp; path = ../src/preferences_display.hpp; sourceTree = "<group>"; };
@@ -2141,6 +2139,9 @@
 		ECBBD73F1928F41500E434C6 /* core_selection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = core_selection.hpp; sourceTree = "<group>"; };
 		ECC8F419185FE2E1004AC3BE /* format_time_summary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = format_time_summary.cpp; sourceTree = "<group>"; };
 		ECC8F41A185FE2E1004AC3BE /* format_time_summary.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = format_time_summary.hpp; sourceTree = "<group>"; };
+		ECD39891194B830300CF2125 /* saved_game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = saved_game.cpp; sourceTree = "<group>"; };
+		ECD39892194B830300CF2125 /* saved_game.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = saved_game.hpp; sourceTree = "<group>"; };
+		ECD39894194B844A00CF2125 /* display_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = display_context.cpp; sourceTree = "<group>"; };
 		ECF3A0B118AD3E8700DD643A /* wml_error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wml_error.cpp; path = gui/dialogs/wml_error.cpp; sourceTree = "<group>"; };
 		ECF3A0B218AD3E8800DD643A /* wml_error.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = wml_error.hpp; path = gui/dialogs/wml_error.hpp; sourceTree = "<group>"; };
 		ECFA82DA184E59F3006782FB /* command_executor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = command_executor.cpp; path = hotkey/command_executor.cpp; sourceTree = "<group>"; };
@@ -2424,6 +2425,9 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				ECD39894194B844A00CF2125 /* display_context.cpp */,
+				ECD39891194B830300CF2125 /* saved_game.cpp */,
+				ECD39892194B830300CF2125 /* saved_game.hpp */,
 				EC28C59019423528003B0F5E /* save_index.cpp */,
 				EC28C58D19423426003B0F5E /* utils.cpp */,
 				EC28C58E19423426003B0F5E /* utils.hpp */,
@@ -2651,8 +2655,6 @@
 				B55999BA0EC62181008DD061 /* replay.hpp */,
 				B55999BB0EC62181008DD061 /* replay.cpp */,
 				B55999BC0EC62181008DD061 /* reference_counted_object.hpp */,
-				B55999BD0EC62181008DD061 /* random.hpp */,
-				B55999BE0EC62181008DD061 /* random.cpp */,
 				B55999BF0EC62181008DD061 /* race.hpp */,
 				B55999C00EC62181008DD061 /* race.cpp */,
 				B55999C10EC62181008DD061 /* preferences_display.hpp */,
@@ -4128,6 +4130,7 @@
 				B559986C0EC616B3008DD061 /* SDLMain.m in Sources */,
 				B5599AD30EC62181008DD061 /* wml_exception.cpp in Sources */,
 				B5599AD40EC62181008DD061 /* button.cpp in Sources */,
+				ECD39893194B830300CF2125 /* saved_game.cpp in Sources */,
 				B5599AD50EC62181008DD061 /* combo.cpp in Sources */,
 				B5599AD60EC62181008DD061 /* combo_drag.cpp in Sources */,
 				B5599AD70EC62181008DD061 /* drop_target.cpp in Sources */,
@@ -4186,7 +4189,6 @@
 				B5599B0B0EC62181008DD061 /* reports.cpp in Sources */,
 				B5599B0C0EC62181008DD061 /* replay_controller.cpp in Sources */,
 				B5599B0D0EC62181008DD061 /* replay.cpp in Sources */,
-				B5599B0E0EC62181008DD061 /* random.cpp in Sources */,
 				B5599B0F0EC62181008DD061 /* race.cpp in Sources */,
 				B5599B100EC62181008DD061 /* preferences_display.cpp in Sources */,
 				B5599B110EC62181008DD061 /* preferences.cpp in Sources */,
@@ -4307,6 +4309,7 @@
 				EC89A14A1879D17D00A3B0B1 /* lzio.cpp in Sources */,
 				B5795A680F05858100EB190E /* horizontal_scrollbar.cpp in Sources */,
 				B5795A690F05858100EB190E /* scrollbar_container.cpp in Sources */,
+				ECD39895194B844A00CF2125 /* display_context.cpp in Sources */,
 				B5795A6A0F05858100EB190E /* generator.cpp in Sources */,
 				B59915070F20E9FF00BAD4C1 /* mp_cmd_wrapper.cpp in Sources */,
 				B59915280F20EA1400BAD4C1 /* password_box.cpp in Sources */,
@@ -4772,7 +4775,6 @@
 				B597C5D00FACD6CA00CE81F5 /* window.cpp in Sources */,
 				B597C5D10FACD6CA00CE81F5 /* combo.cpp in Sources */,
 				B597C5D30FACD6CA00CE81F5 /* unit_id.cpp in Sources */,
-				B597C5D40FACD6CA00CE81F5 /* random.cpp in Sources */,
 				B597C5D60FACD6CA00CE81F5 /* widget.cpp in Sources */,
 				B597C5D70FACD6CA00CE81F5 /* network.cpp in Sources */,
 				B597C5D80FACD6CA00CE81F5 /* toggle_button.cpp in Sources */,

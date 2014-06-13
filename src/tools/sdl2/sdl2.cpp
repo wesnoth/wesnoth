@@ -162,7 +162,7 @@ int main()
 		bool run = true;
 		while(run) {
 			if(dirty) {
-				window.clear();
+				window.fill(0, 0, 0, 0);
 				draw_command_line(window, line);
 				draw_command_history(window, history);
 				dirty = false;

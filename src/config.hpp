@@ -40,7 +40,6 @@
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
-#include "wesconfig.h"
 
 class config;
 struct tconfig_implementation;
