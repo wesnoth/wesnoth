@@ -24,7 +24,6 @@ namespace resources
 	LuaKernel            *lua_kernel = NULL;
 	persist_manager      *persist = NULL;
 	game_display         *screen = NULL;
-	const display_context *disp_context = NULL;
 	soundsource::manager *soundsources = NULL;
 	std::vector<team>    *teams = NULL;
 	::tod_manager        *tod_manager = NULL;
