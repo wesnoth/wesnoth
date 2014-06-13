@@ -53,6 +53,8 @@ Version 1.11.15+dev:
    * Fix bug #22147: Assertion error when a network error is thrown during the game.
    * Removed the YetAnotherMapGenerator (not finished)
    * Fix bug #22134: Campaign prefix not used in mp campaign saves
+   * Made the error messages sent to stderr when the core data dir is
+     incorrectly set more helpful.
      
 Version 1.11.15:
  * Graphics:
