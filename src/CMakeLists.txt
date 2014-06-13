@@ -1040,6 +1040,7 @@ if(ENABLE_GAME)
 			wesnoth-core
 			wesnoth-lua
 			wesnoth-game
+			wesnoth-sdl
 		)
 	endif(ENABLE_TESTS)
 
