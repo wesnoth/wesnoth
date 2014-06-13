@@ -419,6 +419,15 @@ static void init_locale() {
 	textdomain (PACKAGE);
 }
 
+static void warn_early_init_failure()
+{
+	// NOTE: wrap output to 80 columns.
+	std::cerr << '\n'
+			  << "An error at this point during initialization usually indicates that the data\n"
+			  << "directory above was not correctly set or detected. Try passing the correct path\n"
+			  << "in the command line with the --config-dir switch or as the only argument.\n";
+}
+
 /**
  * Setups the game environment and enters
  * the titlescreen or game loops.
@@ -448,6 +457,7 @@ static int do_gameloop(int argc, char** argv)
 	res = font::load_font_config();
 	if(res == false) {
 		std::cerr << "could not initialize fonts\n";
+		warn_early_init_failure();
 		return 1;
 	}
 

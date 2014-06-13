@@ -190,6 +190,8 @@ Version 1.13.0-dev:
    * Wesnoth reports an error if it evalutes [if] and finds no [then], [else], [elseif]
      children, as a chat message from lua.
    * Fix bug #22134: Campaign prefix not used in mp campaign saves
+   * Made the error messages sent to stderr when the core data dir is
+     incorrectly set more helpful.
 
 Version 1.11.11:
  * Add-ons server:
