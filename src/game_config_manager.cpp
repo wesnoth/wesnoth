@@ -390,6 +390,13 @@ void game_config_manager::load_game_config_for_game(
 			(new game_config::scoped_preproc_define(extra_define));
 		extra_defines.push_back(new_define);
 	}
+	std::deque<define> modification_defines;
+	BOOST_FOREACH(const std::string& mod_define,
+		classification.mod_defines) {
+		define new_define
+			(new game_config::scoped_preproc_define(mod_define, !mod_define.empty()));
+		modification_defines.push_back(new_define);
+	}
 
 	try{
 		load_game_config(NO_FORCE_RELOAD, &classification);

@@ -229,6 +229,9 @@ void create::process_event()
 
 	if (launch_game_.pressed() || levels_menu_.double_clicked()) {
 		if (engine_.current_level().can_launch_game()) {
+
+			engine_.prepare_for_era_and_mods();
+
 			if (engine_.current_level_type() == level::CAMPAIGN ||
 				engine_.current_level_type() == level::SP_CAMPAIGN) {
 
