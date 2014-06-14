@@ -3086,20 +3086,6 @@ const std::string& unit::effect_image_mods() const{
 	return image_mods_;
 }
 
-const tportrait* unit::portrait(
-		const unsigned size, const tportrait::tside side) const
-{
-	BOOST_FOREACH(const tportrait& portrait, type().portraits() ) {
-		if(portrait.size == size
-				&& (side ==  portrait.side || portrait.side == tportrait::BOTH)) {
-
-			return &portrait;
-		}
-	}
-
-	return NULL;
-}
-
 void unit::remove_attacks_ai()
 {
 	if (attacks_left_ == max_attacks_) {
