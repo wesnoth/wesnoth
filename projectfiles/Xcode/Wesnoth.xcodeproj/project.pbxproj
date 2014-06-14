@@ -814,6 +814,7 @@
 		B5FCE9371104C2A50081F1DF /* toggle_panel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE9091104C2A50081F1DF /* toggle_panel.cpp */; };
 		B5FCE9391104C2A50081F1DF /* vertical_scrollbar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90D1104C2A50081F1DF /* vertical_scrollbar.cpp */; };
 		B5FCE93A1104C2A50081F1DF /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5FCE90F1104C2A50081F1DF /* window.cpp */; };
+		EC08023C194D0A80009E0050 /* unit_formula_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC08023A194D0A80009E0050 /* unit_formula_manager.cpp */; };
 		EC19E6F018B7F24B003B4B81 /* screenshot_notification.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */; };
 		EC1D88DB18EF413100E66AC1 /* libpixman-1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B513B2280ED36BFB0006E551 /* libpixman-1.0.dylib */; };
 		EC1D88DD18EF414400E66AC1 /* libpixman-1.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */; };
@@ -1997,6 +1998,8 @@
 		B5FCE90E1104C2A50081F1DF /* vertical_scrollbar.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = vertical_scrollbar.hpp; sourceTree = "<group>"; };
 		B5FCE90F1104C2A50081F1DF /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = window.cpp; sourceTree = "<group>"; };
 		B5FCE9101104C2A50081F1DF /* window.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = window.hpp; sourceTree = "<group>"; };
+		EC08023A194D0A80009E0050 /* unit_formula_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_formula_manager.cpp; sourceTree = "<group>"; };
+		EC08023B194D0A80009E0050 /* unit_formula_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_formula_manager.hpp; sourceTree = "<group>"; };
 		EC19E6EE18B7F24B003B4B81 /* screenshot_notification.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = screenshot_notification.cpp; path = dialogs/screenshot_notification.cpp; sourceTree = "<group>"; };
 		EC19E6EF18B7F24B003B4B81 /* screenshot_notification.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = screenshot_notification.hpp; path = dialogs/screenshot_notification.hpp; sourceTree = "<group>"; };
 		EC1D88DC18EF414400E66AC1 /* libpixman-1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libpixman-1.0.dylib"; path = "lib/libpixman-1.0.dylib"; sourceTree = "<group>"; };
@@ -2425,6 +2428,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC08023A194D0A80009E0050 /* unit_formula_manager.cpp */,
+				EC08023B194D0A80009E0050 /* unit_formula_manager.hpp */,
 				ECD39894194B844A00CF2125 /* display_context.cpp */,
 				ECD39891194B830300CF2125 /* saved_game.cpp */,
 				ECD39892194B830300CF2125 /* saved_game.hpp */,
@@ -4545,6 +4550,7 @@
 				F419A31214F8868A002F9ADC /* manager_ui.cpp in Sources */,
 				620EC87414FEEE6D006BBD1F /* state.cpp in Sources */,
 				6295C3B5150FC95C0077D8C5 /* action.cpp in Sources */,
+				EC08023C194D0A80009E0050 /* unit_formula_manager.cpp in Sources */,
 				6295C3B6150FC95C0077D8C5 /* action_label.cpp in Sources */,
 				6295C3B7150FC95C0077D8C5 /* action_unit.cpp in Sources */,
 				EC89A1351879D17D00A3B0B1 /* lgc.cpp in Sources */,
