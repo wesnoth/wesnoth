@@ -277,7 +277,8 @@ void server::run()
 
 			while((sock = network::receive_data(data, 0)) != network::null_connection)
 			{
-				BOOST_FOREACH(const request_handler_info& rh, handlers_)
+				typedef std::pair<std::string, request_handler> rh_table_entry;
+				BOOST_FOREACH(const rh_table_entry& rh, handlers_)
 				{
 					const config& req_body = data.child(rh.first);
 
@@ -320,7 +321,7 @@ void server::run()
 
 void server::register_handler(const std::string& cmd, const request_handler& func)
 {
-	handlers_.push_back(std::make_pair(cmd, func));
+	handlers_[cmd] = func;
 }
 
 #define REGISTER_CAMPAIGND_HANDLER(req_id) \
