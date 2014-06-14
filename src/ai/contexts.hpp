@@ -26,7 +26,7 @@
 #include "../config.hpp"
 #include "lua/unit_advancements_aspect.hpp"
 
-#include <boost/shared_ptr.hpp>
+#include <boost/intrusive_ptr.hpp>
 
 //#include "../unit.hpp"
 
@@ -46,7 +46,7 @@ class terrain_translation;
 class unit;
 class unit_type;
 
-typedef boost::shared_ptr<unit> UnitPtr;
+typedef boost::intrusive_ptr<unit> UnitPtr;
 
 namespace ai {
 

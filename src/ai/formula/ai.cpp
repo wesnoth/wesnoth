@@ -810,7 +810,7 @@ variant formula_ai::get_value(const std::string& key) const
 	{
 		std::vector<variant> tmp;
 
-		for(std::vector<boost::shared_ptr<unit> >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
+		for(std::vector<UnitPtr >::const_iterator i = current_team().recall_list().begin(); i != current_team().recall_list().end(); ++i) {
 			tmp.push_back( variant( new unit_callable(**i) ) );
 		}
 

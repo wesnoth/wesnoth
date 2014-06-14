@@ -154,7 +154,7 @@ struct temporary_unit_placer
 private:
 	unit_map& m_;
 	const map_location loc_;
-	boost::shared_ptr<unit> temp_;
+	UnitPtr temp_;
 };
 
 // Begin Temporary Unit Move Structs
@@ -175,7 +175,7 @@ struct temporary_unit_remover
 private:
 	unit_map& m_;
 	const map_location loc_;
-	boost::shared_ptr<unit> temp_;
+	UnitPtr temp_;
 };
 
 
@@ -201,7 +201,7 @@ private:
 	const map_location src_;
 	const map_location dst_;
 	int old_moves_;
-	boost::shared_ptr<unit> temp_;
+	UnitPtr temp_;
 };
 
 

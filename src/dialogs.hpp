@@ -28,9 +28,9 @@ class terrain_type;
 #include "network.hpp"
 #include "ai/lua/unit_advancements_aspect.hpp"
 
-#include <boost/shared_ptr.hpp>
+#include <boost/intrusive_ptr.hpp>
 
-typedef boost::shared_ptr<unit> UnitPtr;
+typedef boost::intrusive_ptr<unit> UnitPtr;
 
 namespace dialogs {
 

@@ -81,7 +81,7 @@ private:
 	virtual void do_hide();
 	virtual void do_show();
 
-	boost::shared_ptr<unit> temp_unit_;
+	UnitPtr temp_unit_;
 	map_location recall_hex_;
 	fake_unit_ptr fake_unit_;
 };

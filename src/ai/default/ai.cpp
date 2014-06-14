@@ -762,7 +762,7 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 		return false;
 	}
 
-	const std::vector<boost::shared_ptr<unit> > &recalls = current_team().recall_list();
+	const std::vector<UnitPtr > &recalls = current_team().recall_list();
 
 	if (recalls.empty()) {
 		return false;

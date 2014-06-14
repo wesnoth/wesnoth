@@ -24,14 +24,15 @@
 #include <cassert>
 #include <list>
 #include <map>
-#include <boost/shared_ptr.hpp>
+#include <boost/intrusive_ptr.hpp>
 #include <boost/unordered_map.hpp>
 
 //#define DEBUG_UNIT_MAP
 
-class unit;
+#include "unit.hpp"
+//class unit;
 
-typedef boost::shared_ptr<unit> UnitPtr;
+typedef boost::intrusive_ptr<unit> UnitPtr;
 
 /**
  * Container associating units to locations.
@@ -102,7 +103,7 @@ class unit_map {
 		{
 		}
 
-		boost::shared_ptr<class unit> unit;
+		UnitPtr unit;
 		mutable n_ref_counter::t_ref_counter<signed int> ref_count;
 	};
 
@@ -135,7 +136,7 @@ public:
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef typename iter_types::value_type value_type;
-		typedef boost::shared_ptr<value_type> pointer;
+		typedef boost::intrusive_ptr<value_type> pointer;
 		typedef value_type& reference;
 		typedef typename iter_types::container_type container_type;
 		typedef typename iter_types::iterator_type iterator_type;
@@ -341,7 +342,7 @@ public:
 	 *       will be generated.
 	 * @note The map takes ownership of the pointed object, only if it succeeds.
 	 */
-	std::pair<unit_iterator, bool> insert(boost::shared_ptr<unit> p);
+	std::pair<unit_iterator, bool> insert(UnitPtr p);
 
 	/**
 	 * Moves a unit from location @a src to location @a dst.
@@ -378,7 +379,7 @@ public:
 	 * The unit is no longer owned by the map.
 	 * It can be reinserted later, if needed.
 	 */
-	boost::shared_ptr<unit> extract(const map_location &loc);
+	UnitPtr extract(const map_location &loc);
 
 	///Checks invariants.  For debugging purposes only.  Doesn't do anything in non-debug mode.
 	bool self_check() const

@@ -2902,7 +2902,7 @@ bool unit::matches_id(const std::string& unit_id) const
         return id_ == unit_id;
 }
 
-bool find_if_matches_helper(const boost::shared_ptr<unit> & ptr, const std::string & unit_id) 
+bool find_if_matches_helper(const UnitPtr & ptr, const std::string & unit_id) 
 {
 	return ptr->matches_id(unit_id);
 }
@@ -2911,8 +2911,8 @@ bool find_if_matches_helper(const boost::shared_ptr<unit> & ptr, const std::stri
  * Used to find units in vectors by their ID. (Convenience wrapper)
  * @returns what std::find_if() returns.
  */
-std::vector<boost::shared_ptr<unit> >::iterator find_if_matches_id(
-		std::vector<boost::shared_ptr<unit> > &unit_list, // Not const so we can get a non-const iterator to return.
+std::vector<UnitPtr >::iterator find_if_matches_id(
+		std::vector<UnitPtr > &unit_list, // Not const so we can get a non-const iterator to return.
 		const std::string &unit_id)
 {
 	return std::find_if(unit_list.begin(), unit_list.end(),
@@ -2923,8 +2923,8 @@ std::vector<boost::shared_ptr<unit> >::iterator find_if_matches_id(
  * Used to find units in vectors by their ID. (Convenience wrapper; const version)
  * @returns what std::find_if() returns.
  */
-std::vector<boost::shared_ptr<unit> >::const_iterator find_if_matches_id(
-		const std::vector<boost::shared_ptr<unit> > &unit_list,
+std::vector<UnitPtr >::const_iterator find_if_matches_id(
+		const std::vector<UnitPtr > &unit_list,
 		const std::string &unit_id)
 {
 	return std::find_if(unit_list.begin(), unit_list.end(),
@@ -2935,8 +2935,8 @@ std::vector<boost::shared_ptr<unit> >::const_iterator find_if_matches_id(
  * Used to erase units from vectors by their ID. (Convenience wrapper)
  * @returns what std::vector<>::erase() returns.
  */
-std::vector<boost::shared_ptr<unit> >::iterator erase_if_matches_id(
-		std::vector<boost::shared_ptr<unit> > &unit_list,
+std::vector<UnitPtr >::iterator erase_if_matches_id(
+		std::vector<UnitPtr > &unit_list,
 		const std::string &unit_id)
 {
 	return unit_list.erase(std::remove_if(unit_list.begin(), unit_list.end(),

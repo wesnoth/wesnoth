@@ -972,7 +972,7 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 void recruit_unit(const unit_type & u_type, int side_num, const map_location & loc,
                   const map_location & from, bool show, bool use_undo)
 {
-	const boost::shared_ptr< unit > new_unit = boost::shared_ptr< unit > ( new unit(u_type, side_num, true));
+	const UnitPtr new_unit = UnitPtr( new unit(u_type, side_num, true));
 
 
 	// Place the recruit.

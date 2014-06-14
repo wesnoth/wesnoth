@@ -25,12 +25,12 @@
 
 #include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/shared_ptr.hpp>
+#include <boost/intrusive_ptr.hpp>
 #include <vector>
 
 class unit;
 
-typedef boost::shared_ptr<unit> UnitPtr;
+typedef boost::intrusive_ptr<unit> UnitPtr;
 
 namespace actions {
 

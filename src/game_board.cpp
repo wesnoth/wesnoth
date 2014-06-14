@@ -323,7 +323,7 @@ temporary_unit_remover::~temporary_unit_remover()
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst, int new_moves)
 	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? boost::shared_ptr<unit>() : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
 
@@ -338,7 +338,7 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
                                            const map_location& dst, int new_moves)
 	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? boost::shared_ptr<unit>() : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
 
@@ -357,7 +357,7 @@ temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& sr
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst)
 	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? boost::shared_ptr<unit>() : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	m_.move(src_, dst_);
 }
@@ -365,7 +365,7 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
                                            const map_location& dst)
 	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? boost::shared_ptr<unit>() : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	m_.move(src_, dst_);
 }

@@ -1751,7 +1751,7 @@ static int intf_find_path(lua_State *L)
 	int arg = 1;
 	map_location src, dst;
 	unit_map &units = *resources::units;
-	boost::shared_ptr<const unit> u = UnitPtr();
+	boost::intrusive_ptr<const unit> u = UnitPtr();
 
 	if (lua_isuserdata(L, arg))
 	{
@@ -1861,7 +1861,7 @@ static int intf_find_path(lua_State *L)
 static int intf_find_reach(lua_State *L)
 {
 	int arg = 1;
-	boost::shared_ptr<const unit> u = UnitPtr();
+	boost::intrusive_ptr<const unit> u = UnitPtr();
 
 	if (lua_isuserdata(L, arg))
 	{
@@ -1946,7 +1946,7 @@ static int intf_find_reach(lua_State *L)
 static int intf_find_cost_map(lua_State *L)
 {
 	int arg = 1;
-	boost::shared_ptr<const unit> u = luaW_tounit(L, arg, true);
+	boost::intrusive_ptr<const unit> u = luaW_tounit(L, arg, true);
 	vconfig filter = vconfig::unconstructed_vconfig();
 	luaW_tovconfig(L, arg, filter);
 

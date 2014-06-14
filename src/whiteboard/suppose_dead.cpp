@@ -116,7 +116,7 @@ void suppose_dead::execute(bool& success, bool& complete)
 void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 {
 	// Remove the unit
-	boost::shared_ptr<unit> removed_unit = unit_map.extract(loc_);
+	UnitPtr removed_unit = unit_map.extract(loc_);
 	DBG_WB << "Suppose dead: Temporarily removing unit " << removed_unit->name() << " [" << removed_unit->id()
 			<< "] from (" << loc_ << ")\n";
 
