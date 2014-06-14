@@ -20,24 +20,22 @@
 #include "unit.hpp"
 
 #include "actions/move.hpp"
-#include "callable_objects.hpp"
-#include "formula.hpp"
+#include "formula_string_utils.hpp"
 #include "game_display.hpp"
 #include "game_events/handlers.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
 #include "log.hpp"
+#include "play_controller.hpp"
+#include "random_new.hpp"
 #include "resources.hpp"
 #include "unit_id.hpp"
 #include "unit_abilities.hpp"
-#include "terrain_filter.hpp"
-#include "formula_string_utils.hpp"
-#include "random_new.hpp"
-#include "resources.hpp"
+#include "unit_formula_manager.hpp"
 #include "scripting/lua.hpp"
 #include "side_filter.hpp"
-#include "play_controller.hpp"
+#include "terrain_filter.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
@@ -151,10 +149,7 @@ unit::unit(const unit& o):
 
            alpha_(o.alpha_),
 
-           unit_formula_(o.unit_formula_),
-           unit_loop_formula_(o.unit_loop_formula_),
-           unit_priority_formula_(o.unit_priority_formula_),
-           formula_vars_(o.formula_vars_ ? new game_logic::map_formula_callable(*o.formula_vars_) : o.formula_vars_),
+           formula_man_(new unit_formula_manager(o.formula_manager())),
 
            movement_(o.movement_),
            max_movement_(o.max_movement_),
@@ -237,10 +232,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	side_(0),
 	gender_(generate_gender(*type_, cfg)),
 	alpha_(),
-	unit_formula_(),
-	unit_loop_formula_(),
-	unit_priority_formula_(),
-	formula_vars_(),
+	formula_man_(new unit_formula_manager()),
 	movement_(0),
 	max_movement_(0),
 	vision_(-1),
@@ -386,22 +378,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 
 	if (const config &ai = cfg.child("ai"))
 	{
-		unit_formula_ = ai["formula"].str();
-		unit_loop_formula_ = ai["loop_formula"].str();
-		unit_priority_formula_ = ai["priority"].str();
-
-		if (const config &ai_vars = ai.child("vars"))
-		{
-			formula_vars_ = new game_logic::map_formula_callable;
-
-			variant var;
-			BOOST_FOREACH(const config::attribute &i, ai_vars.attribute_range()) {
-				var.serialize_from_string(i.second);
-				formula_vars_->add(i.first, var);
-			}
-		} else {
-			formula_vars_ = game_logic::map_formula_callable_ptr();
-		}
+		formula_man_->read(ai);
 	}
 
 	//don't use the unit_type's attacks if this config has its own defined
@@ -560,10 +537,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	gender_(gender != unit_race::NUM_GENDERS ?
 		gender : generate_gender(u_type, real_unit)),
 	alpha_(),
-	unit_formula_(),
-	unit_loop_formula_(),
-	unit_priority_formula_(),
-	formula_vars_(),
+	formula_man_(new unit_formula_manager()),
 	movement_(0),
 	max_movement_(0),
 	vision_(-1),
@@ -1643,9 +1617,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 	config::attribute_value cfg_formula = cfg["formula"];
 	if (!cfg_formula.blank()) {
-		const unit_callable callable(loc,*this);
-		const game_logic::formula form(cfg_formula);
-		if(!form.evaluate(callable).as_bool()) {///@todo use formula_ai
+		if (!formula_man_->matches_filter(cfg_formula, loc, *this)) {
 			return false;
 		}
 	}
@@ -1683,36 +1655,8 @@ void unit::write(config& cfg) const
 
 	//support for unit formulas in [ai] and unit-specific variables in [ai] [vars]
 
-	if ( has_formula() || has_loop_formula() || (formula_vars_ && formula_vars_->empty() == false) ) {
+	formula_man_->write(cfg);
 
-		config &ai = cfg.add_child("ai");
-
-		if (has_formula())
-			ai["formula"] = unit_formula_;
-
-		if (has_loop_formula())
-			ai["loop_formula"] = unit_loop_formula_;
-
-		if (has_priority_formula())
-			ai["priority"] = unit_priority_formula_;
-
-
-		if (formula_vars_ && formula_vars_->empty() == false)
-		{
-			config &ai_vars = ai.add_child("vars");
-
-			std::string str;
-			for(game_logic::map_formula_callable::const_iterator i = formula_vars_->begin(); i != formula_vars_->end(); ++i)
-			{
-				i->second.serialize_to_string(str);
-				if (!str.empty())
-				{
-					ai_vars[i->first] = str;
-					str.clear();
-				}
-			}
-		}
-	}
 
 	cfg["gender"] = gender_string(gender_);
 	cfg["variation"] = variation_;
@@ -1778,11 +1722,6 @@ void unit::write(config& cfg) const
 	cfg.clear_children("modifications");
 	cfg.add_child("modifications",modifications_);
 
-}
-
-void unit::add_formula_var(std::string str, variant var) {
-	if(!formula_vars_) formula_vars_ = new game_logic::map_formula_callable;
-	formula_vars_->add(str, var);
 }
 
 const surface unit::still_image(bool scaled) const

@@ -39,6 +39,8 @@
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
+#include "../../unit.hpp"
+#include "../../unit_formula_manager.hpp"
 #include "../../pathfind/pathfind.hpp"
 
 #include <boost/foreach.hpp>
@@ -455,7 +457,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 			if( status == 0 ){
 				LOG_AI << "Setting unit variable: " << set_unit_var_command->key() << " -> " << set_unit_var_command->value().to_debug_string() << "\n";
-				unit->add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
+				unit->formula_manager().add_formula_var(set_unit_var_command->key(), set_unit_var_command->value());
 				made_moves.push_back(action);
 			} else {
 				ERR_AI << "ERROR #" << status << " while executing 'set_unit_var' formula function" << std::endl;

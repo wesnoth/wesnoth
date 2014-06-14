@@ -20,7 +20,6 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#include "formula_callable.hpp"
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
@@ -28,6 +27,7 @@
 class display;
 class gamemap;
 class team;
+class unit_formula_manager;
 class vconfig;
 
 /// The things contained within a unit_ability_list.
@@ -370,14 +370,7 @@ public:
 	std::vector<std::string> get_ability_list() const;
 	bool has_ability_type(const std::string& ability) const;
 
-	const game_logic::map_formula_callable_ptr& formula_vars() const { return formula_vars_; }
-	void add_formula_var(std::string str, variant var);
-	bool has_formula() const { return !unit_formula_.empty(); }
-	bool has_loop_formula() const { return !unit_loop_formula_.empty(); }
-	bool has_priority_formula() const { return !unit_priority_formula_.empty(); }
-	const std::string& get_formula() const { return unit_formula_; }
-	const std::string& get_loop_formula() const { return unit_loop_formula_; }
-	const std::string& get_priority_formula() const { return unit_priority_formula_; }
+	unit_formula_manager & formula_manager() const { return *formula_man_; }
 
 	void backup_state();
 	void apply_modifications();
@@ -451,10 +444,7 @@ private:
 
 	fixed_t alpha_;
 
-	std::string unit_formula_;
-	std::string unit_loop_formula_;
-	std::string unit_priority_formula_;
-	game_logic::map_formula_callable_ptr formula_vars_;
+	boost::scoped_ptr<unit_formula_manager> formula_man_;
 
 	int movement_;
 	int max_movement_;

@@ -25,6 +25,8 @@
 #include "../../formula_function.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"
+#include "../../unit.hpp"
+#include "../../unit_formula_manager.hpp"
 #include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
@@ -58,11 +60,11 @@ bool stage_unit_formulas::do_play_stage()
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{
 		if (i->side() == get_side()) {
-			if (i->has_formula() || i->has_loop_formula()) {
+			if (i->formula_manager().has_formula() || i->formula_manager().has_loop_formula()) {
 				int priority = 0;
-				if (i->has_priority_formula()) {
+				if (i->formula_manager().has_priority_formula()) {
 					try {
-						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->get_priority_formula()));
+						game_logic::const_formula_ptr priority_formula(fai_.create_optional_formula(i->formula_manager().get_priority_formula()));
 						if (priority_formula) {
 							game_logic::map_formula_callable callable(&fai_);
 							callable.add_ref();
@@ -94,9 +96,9 @@ bool stage_unit_formulas::do_play_stage()
 
 		if( i.valid() ) {
 
-			if (i->has_formula()) {
+			if (i->formula_manager().has_formula()) {
 				try {
-					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->get_formula()));
+					game_logic::const_formula_ptr formula(fai_.create_optional_formula(i->formula_manager().get_formula()));
 					if (formula) {
 						game_logic::map_formula_callable callable(&fai_);
 						callable.add_ref();
@@ -116,10 +118,10 @@ bool stage_unit_formulas::do_play_stage()
 		}
 
 		if( i.valid() ) {
-			if (i->has_loop_formula())
+			if (i->formula_manager().has_loop_formula())
 			{
 				try {
-					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->get_loop_formula()));
+					game_logic::const_formula_ptr loop_formula(fai_.create_optional_formula(i->formula_manager().get_loop_formula()));
 					if (loop_formula) {
 						game_logic::map_formula_callable callable(&fai_);
 						callable.add_ref();
