@@ -128,7 +128,8 @@ image::image_cache images_,
 #if SDL_VERSION_ATLEAST(2,0,0)
 /** Rexture caches */
 image::texture_cache txt_images_,
-		txt_hexed_images_;
+		txt_hexed_images_,
+		txt_brightened_images_;
 #endif
 
 // cache storing if each image fit in a hex
@@ -910,15 +911,30 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 
 	texture_cache *cache;
 
-	if (type == UNSCALED || type == SCALED_TO_ZOOM) {
-		cache = &txt_images_;
-	} else {
+	switch (type) {
+	case UNSCALED:
+	case SCALED_TO_ZOOM:
 		cache = &txt_hexed_images_;
+		break;
+	case BRIGHTENED:
+		cache = &txt_brightened_images_;
+		break;
+	case HEXED:
+	case SCALED_TO_HEX:
+	case TOD_COLORED:
+		cache = &txt_hexed_images_;
+		break;
+	default:
+		return sdl::ttexture();
 	}
 
 	if (!loc.in_cache(*cache)) {
 		if (type == UNSCALED || type == SCALED_TO_ZOOM) {
 			sdl::ttexture txt = load_texture(loc);
+			loc.add_to_cache(*cache, txt);
+		} else if (type == BRIGHTENED) {
+			surface surf = get_brightened(loc);
+			sdl::ttexture txt = CVideo::get_window()->create_texture(SDL_TEXTUREACCESS_STATIC, surf);
 			loc.add_to_cache(*cache, txt);
 		} else {
 			surface surf = get_hexed(loc);
@@ -932,9 +948,8 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 	switch (type) {
 	case UNSCALED:
 	case HEXED:
-		break;
 	case BRIGHTENED:
-		//TODO: brighten
+		break;
 	case TOD_COLORED:
 		result.set_color_mod(red_adjust, green_adjust, blue_adjust);
 	case SCALED_TO_ZOOM:
