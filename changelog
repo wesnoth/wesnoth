@@ -59,7 +59,8 @@ Version 1.13.0-dev:
    * Fixed bug #22095: An assertion failure in the gamestate inspector.
    * Changed: A listbox can now update its size when rows are added.
    * Changed: Avoid listboxes to handle mouse clicks twice.
-   * Fixed bug #22144: An assertion failure with empty labels in a listbox.
+   * Fixed bug #22144 + #22046: An assertion failure with empty labels in
+     a listbox.
    * The :inspect dialog now uses the same function as saved games to generate
      WML in text form instead of a simplified version.
    * Added a button to copy the currently displayed content from the :inspect
