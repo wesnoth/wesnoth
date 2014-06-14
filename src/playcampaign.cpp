@@ -123,39 +123,6 @@ static void store_carryover(saved_game& gamestate, playsingle_controller& playco
 	}
 }
 
-static void generate_scenario(config const*& scenario)
-{
-	LOG_G << "randomly generating scenario...\n";
-	const cursor::setter cursor_setter(cursor::WAIT);
-
-	static config new_scenario;
-	new_scenario = random_generate_scenario((*scenario)["scenario_generation"],
-		scenario->child("generator"));
-
-	//TODO comment or remove
-	//level_ = scenario;
-	//merge carryover information into the newly generated scenario
-
-	scenario = &new_scenario;
-}
-
-static void generate_map(config const*& scenario)
-{
-	LOG_G << "randomly generating map...\n";
-	const cursor::setter cursor_setter(cursor::WAIT);
-
-	const std::string map_data = random_generate_map(
-		(*scenario)["map_generation"], scenario->child("generator"));
-
-	// Since we've had to generate the map,
-	// make sure that when we save the game,
-	// it will not ask for the map to be generated again on reload
-	static config new_scenario;
-	new_scenario = *scenario;
-	new_scenario["map_data"] = map_data;
-	scenario = &new_scenario;
-}
-
 LEVEL_RESULT play_replay(display& disp, saved_game& gamestate, const config& game_config,
 		CVideo& video, bool is_unit_test)
 {
@@ -334,22 +301,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				}
 			}
 
-			// If the entire scenario should be randomly generated
-			if(starting_pos["scenario_generation"] != "") {
-				const config * tmp = &starting_pos;
-				generate_scenario(tmp);
-			}
-			std::string map_data = starting_pos["map_data"];
-			if(map_data.empty() && starting_pos["map"] != "") {
-				map_data = read_map(starting_pos["map"]);
-			}
-
-			// If the map should be randomly generated
-			if(map_data.empty() && starting_pos["map_generation"] != "") {
-				const config * tmp = &starting_pos;
-				generate_map(tmp);
-			}
-
+			gamestate.expand_random_scenario();
 			//In case this an mp scenario reloaded by sp this was not already done yet.
 			//We don't need to expand [option]s because [variables] are persitent
 			gamestate.expand_mp_events();
@@ -490,25 +442,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 					connect_engine->
 						start_game(mp::connect_engine::FORCE_IMPORT_USERS);
 				}
-
-				// TODO: move this code to mp::connect_engine
-				// in order to send generated data to the network
-				// before starting the game.
-				//
-				// If the entire scenario should be randomly generated
-				/*if((*scenario)["scenario_generation"] != "") {
-					generate_scenario(scenario);
-				}
-
-				std::string map_data = (*scenario)["map_data"];
-				if(map_data.empty() && (*scenario)["map"] != "") {
-					map_data = read_map((*scenario)["map"]);
-				}
-
-				// If the map should be randomly generated
-				if(map_data.empty() && (*scenario)["map_generation"] != "") {
-					generate_map(scenario);
-				}*/
 			}
 			else if (io_type == IO_NONE && gamestate.valid())
 			{

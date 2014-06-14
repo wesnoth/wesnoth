@@ -37,9 +37,11 @@
 #include "saved_game.hpp"
 #include "gamestatus.hpp"
 #include "carryover.hpp"
+#include "cursor.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "game_config_manager.hpp"
+#include "generators/map_create.hpp"
 #include "statistics.hpp"
 #include "serialization/binary_or_text.hpp"
 #include "util.hpp"
@@ -301,6 +303,36 @@ void saved_game::expand_mp_options()
 			{
 				LOG_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id << " for [option]s" << std::endl;
 			}
+		}
+	}
+}
+
+void saved_game::expand_random_scenario()
+{
+	expand_scenario();
+	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO)
+	{
+		// If the entire scenario should be randomly generated
+		if(starting_pos_["scenario_generation"] != "") 
+		{
+			LOG_NG << "randomly generating scenario...\n";
+			const cursor::setter cursor_setter(cursor::WAIT);
+
+			starting_pos_ = random_generate_scenario(starting_pos_["scenario_generation"],
+				starting_pos_.child("generator"));
+		}
+		//it looks like we support a map= where map=filename equals more or less map_data={filename}
+		if(starting_pos_["map_data"].empty() && starting_pos_["map"] != "") {
+			starting_pos_["map_data"] = read_map(starting_pos_["map"]);
+		}
+		// If the map should be randomly generated
+		// We dont want that we accidently to this twice so we check for starting_pos_["map_data"].empty()
+		if(starting_pos_["map_data"].empty() && starting_pos_["map_generation"] != "") {
+			LOG_NG << "randomly generating map...\n";
+			const cursor::setter cursor_setter(cursor::WAIT);
+
+			starting_pos_["map_data"] = random_generate_map(
+				starting_pos_["map_generation"], starting_pos_.child("generator"));
 		}
 	}
 }

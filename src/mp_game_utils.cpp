@@ -59,6 +59,8 @@ config initial_level_config(saved_game& state)
 {
 	const mp_game_settings& params = state.mp_settings();
 	//Also impliers state.expand_scenario()
+	//We need to call this before expand_mp_events/options oterwise they might be overwritten
+	state.expand_random_scenario();
 	state.expand_mp_events();
 	state.expand_mp_options();
 

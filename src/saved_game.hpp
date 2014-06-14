@@ -51,6 +51,9 @@ public:
 	/// Note that since [variabels] are persistent we only use this once at the beginning 
 	/// of a campaign but callings it multiple times is no harm eigher
 	void expand_mp_options();
+	/// takes care of generate_map=, generate_scenario=, map= attributes
+	/// This should be called before expanding carryover or mp_events because this might completely replace starting_pos_.
+	void expand_random_scenario();
 	bool valid();
 	void set_snapshot(const config& snapshot);
 	void set_scenario(const config& scenario);
