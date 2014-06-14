@@ -21,14 +21,14 @@
 #include <boost/scoped_ptr.hpp>
 
 #include "formula_callable.hpp"
-#include "resources.hpp"
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
 class display;
-class vconfig;
+class gamemap;
 class team;
+class vconfig;
 
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;

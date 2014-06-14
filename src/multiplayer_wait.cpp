@@ -24,6 +24,7 @@
 #include "marked-up_text.hpp"
 #include "mp_game_utils.hpp"
 #include "multiplayer_wait.hpp"
+#include "resources.hpp"
 #include "statistics.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"

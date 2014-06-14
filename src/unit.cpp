@@ -34,6 +34,7 @@
 #include "terrain_filter.hpp"
 #include "formula_string_utils.hpp"
 #include "random_new.hpp"
+#include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "side_filter.hpp"
 #include "play_controller.hpp"

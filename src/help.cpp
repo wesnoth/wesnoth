@@ -34,6 +34,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "marked-up_text.hpp"
+#include "resources.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
 #include "unit_helper.hpp"

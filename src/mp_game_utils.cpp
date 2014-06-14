@@ -23,6 +23,7 @@
 #include "log.hpp"
 #include "mp_options.hpp"
 #include "replay.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "tod_manager.hpp"
 #include "unit_id.hpp"

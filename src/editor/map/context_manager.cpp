@@ -13,6 +13,7 @@
 */
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
+#include "resources.hpp"
 #include "team.hpp"
 
 #include "context_manager.hpp"

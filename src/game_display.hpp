@@ -22,6 +22,7 @@ class tod_manager;
 class team;
 class unit;
 class unit_map;
+class game_board;
 
 #include "animated.hpp"
 #include "chat_events.hpp"

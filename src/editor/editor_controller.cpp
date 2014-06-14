@@ -37,6 +37,7 @@
 #include "wml_exception.hpp"
 
 #include "dialogs.hpp"
+#include "resources.hpp"
 
 #include "../clipboard.hpp"
 #include "../game_preferences.hpp"

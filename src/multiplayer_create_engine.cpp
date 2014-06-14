@@ -22,6 +22,7 @@
 #include "generators/map_create.hpp"
 #include "map_exception.hpp"
 #include "minimap.hpp"
+#include "resources.hpp"
 #include "saved_game.hpp"
 #include "wml_separators.hpp"
 #include "wml_exception.hpp"

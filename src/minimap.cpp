@@ -21,6 +21,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "resources.hpp"
 #include "sdl/utils.hpp"
 
 #include "team.hpp"
