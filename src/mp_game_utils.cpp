@@ -58,9 +58,10 @@ static void add_multiplayer_classification(config& multiplayer, saved_game& stat
 config initial_level_config(saved_game& state)
 {
 	const mp_game_settings& params = state.mp_settings();
-	//Shall we do this here or in create_engine ? Idk so just call it twice.
-	state.expand_scenario();
-	
+	//Also impliers state.expand_scenario()
+	state.expand_mp_events();
+	state.expand_mp_options();
+
 	config& scenario = state.get_starting_pos();
 	if(!state.mp_settings().saved_game)
 	{
@@ -70,10 +71,6 @@ config initial_level_config(saved_game& state)
 			state.carryover_sides_start["random_calls"] = 0;
 		}
 		scenario["turns"] = params.num_turns;
-
-		// Convert options to events
-		scenario.add_child_at("event", options::to_event(params.options.find_child(
-			"multiplayer", "id", params.mp_scenario)), 0);
 
 		if (params.random_start_time)
 		{
@@ -100,14 +97,11 @@ config initial_level_config(saved_game& state)
 	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
 
 	std::string era = params.mp_era;
-	if (params.saved_game) {
-		//if (const config &c = level.child("snapshot").child("era"))
-		//	era = c["id"].str();
-		if (const config &c = level.child("era"))
-			era = c["id"].str();
-	}
-	//[era] as a toplevel tag ? fine for me.
+	//[multiplayer] mp_era= shoudl be psersistent over saves.
+
+	//[era], [modification]s are toplevel tags here, they are not part of teh saved_game and only used during mp_connect/mp_wait
 	// Initialize the list of sides available for the current era.
+	// We also need this no not get a segfault in mp_connect for ai configuation
 	const config &era_cfg =
 		resources::config_manager->game_config().find_child("era", "id", era);
 	if (!era_cfg) {
@@ -119,31 +113,25 @@ config initial_level_config(saved_game& state)
 		}
 		// FIXME: @todo We should tell user about missing era but still load game
 		WRN_CF << "Missing era in MP load game " << era << std::endl;
+		//Otherwise we get an error when qwhen we try to add ai algirithms in moultiplayer_connect
+		level.add_child("era");
 	}
 	else
 	{
-		config& cfg = level.add_child("era", era_cfg);
+		/*config& cfg = */level.add_child("era", era_cfg);
 
 		const config& custom_side = resources::config_manager->
 			game_config().find_child("multiplayer_side", "id", "Custom");
 		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
 
-		// Convert options to event
-		cfg.add_child_at("event", options::to_event(
-			params.options.find_child("era", "id", era)), 0);
 	}
-	
-	//TODO: move to saved_game.
-	// Add modifications
+	// Add modifications, needed for ai aglorithms which are applied in mp_connect
+
 	const std::vector<std::string>& mods = params.active_mods;
 	for (unsigned i = 0; i < mods.size(); i++) {
-		config& cfg = level.add_child("modification",
+		/*config& cfg = */level.add_child("modification",
 			resources::config_manager->
 				game_config().find_child("modification", "id", mods[i]));
-
-		// Convert options to event
-		cfg.add_child_at("event", options::to_event(
-			params.options.find_child("modification", "id", mods[i])), 0);
 	}
 
 	

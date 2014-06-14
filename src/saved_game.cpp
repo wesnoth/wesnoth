@@ -44,6 +44,8 @@
 #include "serialization/binary_or_text.hpp"
 #include "util.hpp"
 
+#include <boost/range/adaptors.hpp>
+#include <boost/range/algorithm.hpp>
 #include <boost/foreach.hpp>
 #include <cassert>
 
@@ -219,6 +221,90 @@ void saved_game::expand_scenario()
 	}
 }
 
+//helper objects for saved_game::expand_mp_events()
+struct modevents_entry 
+{
+	modevents_entry(const std::string& _type, const std::string& _id) : type(_type), id(_id) {}
+	std::string type;
+	std::string id;
+}; 
+struct modevents_entry_for
+{
+	//this typedef is used by boost.
+    typedef modevents_entry result_type;
+	modevents_entry_for(const std::string& type ) : type_(type) {}
+	modevents_entry operator()(const std::string& id) const
+	{
+		return modevents_entry(type_, id);
+	}
+private:
+	std::string type_;
+};
+
+void saved_game::expand_mp_events()
+{
+	expand_scenario();
+	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->starting_pos_["has_mod_events"].to_bool(false))
+	{
+		std::vector<modevents_entry> mods;
+
+		boost::copy( mp_settings_.active_mods
+			| boost::adaptors::transformed(modevents_entry_for("modification"))
+			, std::back_inserter(mods) );
+		if(mp_settings_.mp_era != "") //We don't want the error message below if there is no era (= if this is a sp game)
+		{ mods.push_back(modevents_entry("era", mp_settings_.mp_era)); }
+
+		BOOST_FOREACH(modevents_entry& mod, mods)
+		{
+			if(const config& cfg = resources::config_manager->
+				game_config().find_child(mod.type, "id", mod.id))
+			{
+				BOOST_FOREACH(const config& modevent, cfg.child_range("event"))
+				{
+					this->starting_pos_.add_child("event", modevent);
+				}
+			}
+			else
+			{
+				//TODO: A user message instead?
+				ERR_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id <<std::endl;
+			}
+		}
+
+		this->starting_pos_["has_mod_events"] = true;
+	}
+}
+
+void saved_game::expand_mp_options()
+{
+	if(this->starting_pos_type_ == STARTINGPOS_SCENARIO && !this->carryover_sides_start.empty())
+	{
+		std::vector<modevents_entry> mods;
+
+		boost::copy( mp_settings_.active_mods
+			| boost::adaptors::transformed(modevents_entry_for("modification"))
+			, std::back_inserter(mods) );
+		mods.push_back(modevents_entry("era", mp_settings_.mp_era));
+		mods.push_back(modevents_entry("multiplayer", get_scenario_id()));
+
+		config& variables = this->carryover_sides_start.child_or_add("variables");
+		BOOST_FOREACH(modevents_entry& mod, mods)
+		{
+			if(const config& cfg = this->mp_settings().options.find_child(mod.type, "id", mod.id))
+			{
+				BOOST_FOREACH(const config& option, cfg.child_range("option"))
+				{
+					variables[option["id"]] = option["value"];
+				}
+			}
+			else
+			{
+				LOG_NG << "Couldn't find [" << mod.type<< "] with id=" << mod.id << " for [option]s" << std::endl;
+			}
+		}
+	}
+}
+
 void saved_game::expand_carryover()
 {
 	expand_scenario();
@@ -253,6 +339,11 @@ void saved_game::set_scenario(const config& scenario)
 {
 	this->starting_pos_type_ = STARTINGPOS_SCENARIO;
 	this->starting_pos_ = scenario;
+	//By default we treat the game as 'carryover not expanded yet'
+	if(this->carryover_sides.empty())
+	{
+		this->carryover_sides_start.child_or_add("variables");
+	}
 }
 
 void saved_game::remove_snapshot()

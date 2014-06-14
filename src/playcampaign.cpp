@@ -350,6 +350,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				generate_map(tmp);
 			}
 
+			//In case this an mp scenario reloaded by sp this was not already done yet.
+			//We don't need to expand [option]s because [variables] are persitent
+			gamestate.expand_mp_events();
+
 			sound::empty_playlist();
 
 			switch (io_type){
@@ -505,6 +509,13 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				if(map_data.empty() && (*scenario)["map_generation"] != "") {
 					generate_map(scenario);
 				}*/
+			}
+			else if (io_type == IO_NONE && gamestate.valid())
+			{
+				//In case this an mp scenario reloaded by sp this was not already done yet.
+				//We don't need to expand [option]s because [variables] are persitent
+				gamestate.expand_mp_events();
+
 			}
 		}
 

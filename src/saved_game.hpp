@@ -43,6 +43,14 @@ public:
 	///merges [carryover_sides_start] into [scenario] and saves the rest into [carryover_sides]
 	///Removes [carryover_sides_start] afterwards
 	void expand_carryover();
+	/// adds [event]s from [era] and [modification] into this scenario
+	/// does NOT expand [option]s because variables are persitent anyway to we don't need it
+	/// should be called after expand_scenario() but before expand_carryover()
+	void expand_mp_events();
+	/// adds values of [option]s inte [carryover_sides_start][variables] so that they are applied in the next level.
+	/// Note that since [variabels] are persistent we only use this once at the beginning 
+	/// of a campaign but callings it multiple times is no harm eigher
+	void expand_mp_options();
 	bool valid();
 	void set_snapshot(const config& snapshot);
 	void set_scenario(const config& scenario);
