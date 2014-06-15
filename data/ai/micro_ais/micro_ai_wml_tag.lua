@@ -234,7 +234,7 @@ function wesnoth.wml_actions.micro_ai(cfg)
             H.wml_error("Coward [micro_ai] tag requires either id= key or [filter] tag")
         end
         required_keys = { "distance" }
-        optional_keys = { "id", "filter", "filter_second", "seek_x", "seek_y","avoid_x","avoid_y" }
+        optional_keys = { "attack_if_trapped", "id", "filter", "filter_second", "seek_x", "seek_y","avoid_x","avoid_y" }
         CA_parms = {
             ai_id = 'mai_coward',
             { ca_id = 'move', location = CA_path .. 'ca_coward.lua', score = cfg.ca_score or 300000 }
