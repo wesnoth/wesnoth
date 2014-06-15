@@ -1206,12 +1206,6 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 
 	assert(1 <= side && side <= max_side);
 
-	if(current_side != side)
-	{
-		//if side != current_side we send the data over the network, that means undoing is impossible
-		//maybe it would be better to do this in replayturn.cpp or similar. or maybe not.
-		resources::undo_stack->clear();
-	}
 	std::set<int> sides;
 	sides.insert(side);
 	std::map<int, config> retv = get_user_choice_internal(name, uch, sides);
