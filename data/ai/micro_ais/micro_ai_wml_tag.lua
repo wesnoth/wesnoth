@@ -200,8 +200,8 @@ function wesnoth.wml_actions.micro_ai(cfg)
         if (cfg.action ~= 'delete') and (not cfg.id) and (not H.get_child(cfg, "filter")) then
             H.wml_error("Stationed Guardian [micro_ai] tag requires either id= key or [filter] tag")
         end
-        required_keys = { "distance", "station_x", "station_y", "guard_x", "guard_y" }
-        optional_keys = { "id", "filter" }
+        required_keys = { "distance", "station_x", "station_y" }
+        optional_keys = { "id", "filter", "guard_x", "guard_y" }
         CA_parms = {
             ai_id = 'mai_stationed_guardian',
             { ca_id = 'move', location = CA_path .. 'ca_stationed_guardian.lua', score = cfg.ca_score or 300000 }

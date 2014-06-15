@@ -40,7 +40,7 @@ function ca_stationed_guardian:execution(ai, cfg)
     local min_dist, target = 9e99
     for _,enemy in ipairs(enemies) do
         local dist_s = H.distance_between(cfg.station_x, cfg.station_y, enemy.x, enemy.y)
-        local dist_g = H.distance_between(cfg.guard_x, cfg.guard_y, enemy.x, enemy.y)
+        local dist_g = H.distance_between(cfg.guard_x or cfg.station_x, cfg.guard_y or cfg.station_y, enemy.x, enemy.y)
 
         -- If valid target found, save the one with the shortest distance from (g_x, g_y)
         if (dist_s <= cfg.distance) and (dist_g <= cfg.distance) and (dist_g < min_dist) then
