@@ -303,7 +303,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 			sound::empty_playlist();
 
-			state_of_game.expand_carryover();
+			gamestate.expand_carryover();
 
 			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
 
