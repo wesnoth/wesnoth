@@ -21,6 +21,8 @@
 
 #include "editor_palettes.hpp"
 
+#include "../../unit_types.hpp"
+
 namespace editor {
 
 //std::string get_selected_terrain();

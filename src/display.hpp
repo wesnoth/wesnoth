@@ -43,8 +43,10 @@ namespace wb {
 	class manager;
 }
 
+#include "animated.hpp"
 #include "display_context.hpp"
 #include "font.hpp"
+#include "image.hpp" //only needed for enums (!)
 #include "key.hpp"
 #include "team.hpp"
 #include "time_of_day.hpp"

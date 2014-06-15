@@ -386,21 +386,20 @@ bool luaW_getglobal(lua_State *L, ...)
 
 lua_unit::~lua_unit()
 {
-	delete ptr;
 }
 
-unit *lua_unit::get()
+UnitPtr lua_unit::get()
 {
 	if (ptr) return ptr;
 	if (side) {
-		BOOST_FOREACH(unit &u, (*resources::teams)[side - 1].recall_list()) {
-			if (u.underlying_id() == uid) return &u;
+		BOOST_FOREACH(UnitPtr &u, (*resources::teams)[side - 1].recall_list()) {
+			if (u->underlying_id() == uid) return u;
 		}
-		return NULL;
+		return UnitPtr();
 	}
 	unit_map::unit_iterator ui = resources::units->find(uid);
-	if (!ui.valid()) return NULL;
-	return &*ui;
+	if (!ui.valid()) return UnitPtr();
+	return ui.get_shared_ptr(); //&*ui would not be legal, must get new shared_ptr by copy ctor because the unit_map itself is holding a boost shared pointer.
 }
 
 // Having this function here not only simplifies other code, it allows us to move
@@ -414,24 +413,24 @@ bool lua_unit::put_map(const map_location &loc)
 		resources::units->erase(loc);
 		std::pair<unit_map::unit_iterator, bool> res = resources::units->insert(ptr);
 		if (res.second) {
-			ptr = NULL;
+			ptr.reset();
 			uid = res.first->underlying_id();
 		} else {
 			ERR_LUA << "Could not move unit " << ptr->underlying_id() << " onto map location " << loc << '\n';
 			return false;
 		}
 	} else if (side) { // recall list
-		std::vector<unit> &recall_list = (*resources::teams)[side - 1].recall_list();
-		std::vector<unit>::iterator it = recall_list.begin();
+		std::vector<UnitPtr> &recall_list = (*resources::teams)[side - 1].recall_list();
+		std::vector<UnitPtr>::iterator it = recall_list.begin();
 		for(; it != recall_list.end(); ++it) {
-			if (it->underlying_id() == uid) {
+			if ((*it)->underlying_id() == uid) {
 				break;
 			}
 		}
 		if (it != recall_list.end()) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
-			uid = resources::units->replace(loc, *it).first->underlying_id();
+			uid = resources::units->replace(loc, **it).first->underlying_id();
 			recall_list.erase(it);
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
@@ -454,17 +453,17 @@ bool lua_unit::put_map(const map_location &loc)
 	return true;
 }
 
-unit *luaW_tounit(lua_State *L, int index, bool only_on_map)
+UnitPtr luaW_tounit(lua_State *L, int index, bool only_on_map)
 {
-	if (!luaW_hasmetatable(L, index, getunitKey)) return NULL;
+	if (!luaW_hasmetatable(L, index, getunitKey)) return UnitPtr();
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, index));
-	if (only_on_map && !lu->on_map()) return NULL;
+	if (only_on_map && !lu->on_map()) return UnitPtr();
 	return lu->get();
 }
 
-unit *luaW_checkunit(lua_State *L, int index, bool only_on_map)
+UnitPtr luaW_checkunit(lua_State *L, int index, bool only_on_map)
 {
-	unit *u = luaW_tounit(L, index, only_on_map);
+	UnitPtr u = luaW_tounit(L, index, only_on_map);
 	if (!u) luaL_typerror(L, index, "unit");
 	return u;
 }

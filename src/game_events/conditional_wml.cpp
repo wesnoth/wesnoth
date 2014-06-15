@@ -89,13 +89,13 @@ namespace { // Support functions
 					if(counts == default_counts && match_count) {
 						break;
 					}
-					const std::vector<unit>& avail_units = team->recall_list();
-					for(std::vector<unit>::const_iterator unit = avail_units.begin(); unit!=avail_units.end(); ++unit) {
+					const std::vector<UnitPtr>& avail_units = team->recall_list();
+					for(std::vector<UnitPtr>::const_iterator unit = avail_units.begin(); unit!=avail_units.end(); ++unit) {
 						if(counts == default_counts && match_count) {
 							break;
 						}
 						scoped_recall_unit auto_store("this_unit", team->save_id(), unit - avail_units.begin());
-						if ( unit->matches_filter(*u) ) {
+						if ( (*unit)->matches_filter(*u) ) {
 							++match_count;
 						}
 					}

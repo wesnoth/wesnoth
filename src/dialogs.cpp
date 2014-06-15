@@ -85,20 +85,21 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<const unit*>& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<UnitConstPtr >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	const std::vector<const unit*>& units_;
+	const std::vector<UnitConstPtr >& units_;
 };
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
 	const size_t index = size_t(filter_.get_index(menu_selection));
 	if(index < units_.size()) {
-		const unit &u = *(units_[index]);
+		const UnitConstPtr & u_ptr = units_[index];
+		const unit & u = *u_ptr;
 
 		//If the unit is of level > 1, or is close to advancing,
 		//we warn the player about it
@@ -127,17 +128,17 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
-		resources::undo_stack->add_dismissal(u);
+		resources::undo_stack->add_dismissal(u_ptr);
 
 		// Find the unit in the recall list.
-		std::vector<unit>& recall_list = (*resources::teams)[u.side() -1].recall_list();
+		std::vector<UnitPtr >& recall_list = (*resources::teams)[u.side() -1].recall_list();
 		assert(!recall_list.empty());
-		std::vector<unit>::iterator dismissed_unit =
+		std::vector<UnitPtr >::iterator dismissed_unit =
 				find_if_matches_id(recall_list, u.id());
 		assert(dismissed_unit != recall_list.end());
 
 		// Record the dismissal, then delete the unit.
-		synced_context::run_in_synced_context("disband", replay_helper::get_disband(dismissed_unit->id()));
+		synced_context::run_in_synced_context("disband", replay_helper::get_disband((*dismissed_unit)->id()));
 		//recorder.add_disband(dismissed_unit->id());
 		//recall_list.erase(dismissed_unit);
 
@@ -441,9 +442,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, std::vector< const unit* >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, std::vector< UnitConstPtr >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, std::vector< const unit* >& units, int side, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, std::vector< UnitConstPtr >& units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -462,7 +463,7 @@ int recall_dialog(display& disp, std::vector< const unit* >& units, int side, co
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const unit* u, units)
+	BOOST_FOREACH(const UnitConstPtr & u, units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -1207,13 +1208,13 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(const unit *u, TYPE type, bool on_left_side) :
+units_list_preview_pane::units_list_preview_pane(UnitConstPtr u, TYPE type, bool on_left_side) :
 	unit_preview_pane(NULL, type, on_left_side),
 	units_(1, u)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<const unit *> &units,
+units_list_preview_pane::units_list_preview_pane(const std::vector<UnitConstPtr > &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
@@ -1226,7 +1227,7 @@ units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
 	units_(units.size())
 {
 	for (unsigned i = 0; i < units.size(); ++i)
-		units_[i] = &units[i];
+		units_[i] = UnitConstPtr (new unit(units[i]));
 }
 
 size_t units_list_preview_pane::size() const

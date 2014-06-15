@@ -25,6 +25,7 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 #include "team.hpp"
+#include "unit.hpp"
 #include "wml_exception.hpp"
 
 

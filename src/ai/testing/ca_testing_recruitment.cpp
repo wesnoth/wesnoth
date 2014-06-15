@@ -29,6 +29,8 @@
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
+#include "../../unit_types.hpp"
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 

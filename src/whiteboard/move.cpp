@@ -275,13 +275,13 @@ void move::execute(bool& success, bool& complete)
 	}
 }
 
-unit* move::get_unit() const
+UnitPtr move::get_unit() const
 {
 	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
 	if (itor.valid())
-		return &*itor;
+		return itor.get_shared_ptr();
 	else
-		return NULL;
+		return UnitPtr();
 }
 
 map_location move::get_source_hex() const

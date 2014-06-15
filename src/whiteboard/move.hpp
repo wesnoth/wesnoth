@@ -52,7 +52,7 @@ public:
 	virtual error check_validity() const;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const;
+	virtual UnitPtr get_unit() const;
 	/** @return pointer to the fake unit used only for visuals */
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 

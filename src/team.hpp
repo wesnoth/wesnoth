@@ -17,8 +17,13 @@
 #include "color_range.hpp"
 #include "game_config.hpp"
 #include "make_enum.hpp"
+#include "map_location.hpp"
 #include "savegame_config.hpp"
-#include "unit.hpp"
+#include "SDL.h" //Apparently needed b/c of SDL_Color
+#include "unit_ptr.hpp"
+#include "util.hpp"
+
+#include <boost/shared_ptr.hpp>
 
 class gamemap;
 
@@ -180,8 +185,8 @@ public:
 		{ countdown_time_ = amount; }
 	int action_bonus_count() const { return action_bonus_count_; }
 	void set_action_bonus_count(const int count) { action_bonus_count_ = count; }
-	std::vector<unit>& recall_list() {return recall_list_;}
-	const std::vector<unit>& recall_list() const {return recall_list_;}
+	std::vector<UnitPtr >& recall_list() {return recall_list_;}
+	const std::vector<UnitPtr >& recall_list() const {return recall_list_;}
 	void set_current_player(const std::string& player)
 		{ info_.current_player = player; }
 
@@ -344,7 +349,7 @@ private:
 	mutable int countdown_time_;
 	int action_bonus_count_;
 
-	std::vector<unit> recall_list_;
+	std::vector<UnitPtr > recall_list_;
 	std::string last_recruit_;
 
 	bool calculate_enemies(size_t index) const;

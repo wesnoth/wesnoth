@@ -19,16 +19,16 @@
 #include <string>
 #include "config.hpp" // forward declaration of the nested type config::attribute_value is not possible
 #include "lua_types.hpp" // the luatype typedef
+#include "unit_ptr.hpp"
+
 struct lua_State;
 class t_string;
 class vconfig;
-class unit;
-
 
 /**
  * Converts a Lua value to a unit pointer.
  */
-unit *luaW_tounit(lua_State *L, int index, bool only_on_map = false);
+UnitPtr luaW_tounit(lua_State *L, int index, bool only_on_map = false);
 
 /**
  * Displays a message in the chat window.
@@ -123,7 +123,7 @@ bool luaW_getglobal(lua_State *L, ...);
 /**
  * Converts a Lua value to a unit pointer.
  */
-unit *luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
+UnitPtr luaW_checkunit(lua_State *L, int index, bool only_on_map = false);
 
 bool luaW_toboolean(lua_State *L, int n);
 
@@ -137,18 +137,18 @@ struct map_location;
 class lua_unit
 {
 	size_t uid;
-	unit *ptr;
+	UnitPtr ptr;
 	int side;
 	lua_unit(lua_unit const &);
 
 public:
-	lua_unit(size_t u): uid(u), ptr(NULL), side(0) {}
-	lua_unit(unit *u): uid(0), ptr(u), side(0) {}
-	lua_unit(int s, size_t u): uid(u), ptr(NULL), side(s) {}
+	lua_unit(size_t u): uid(u), ptr(), side(0) {}
+	lua_unit(UnitPtr u): uid(0), ptr(u), side(0) {}
+	lua_unit(int s, size_t u): uid(u), ptr(), side(s) {}
 	~lua_unit();
 	bool on_map() const { return !ptr && side == 0; }
 	int on_recall_list() const { return side; }
-	unit *get();
+	UnitPtr get();
 
 	// Clobbers loc
 	bool put_map(const map_location &loc);

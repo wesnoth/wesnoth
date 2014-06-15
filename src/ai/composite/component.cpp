@@ -22,6 +22,7 @@
 #include "property_handler.hpp"
 #include "../../config.hpp"
 #include "../../log.hpp"
+#include "../../unit.hpp"
 
 #include "../formula/ai.hpp"
 

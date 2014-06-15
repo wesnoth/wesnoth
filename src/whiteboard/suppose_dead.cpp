@@ -96,13 +96,13 @@ suppose_dead::~suppose_dead()
 		resources::screen->invalidate(loc_);
 }
 
-unit* suppose_dead::get_unit() const
+UnitPtr suppose_dead::get_unit() const
 {
 	unit_map::iterator itor = resources::units->find(unit_underlying_id_);
 	if (itor.valid())
-		return &*itor;
+		return itor.get_shared_ptr();
 	else
-		return NULL;
+		return UnitPtr();
 }
 
 void suppose_dead::accept(visitor& v)
@@ -116,12 +116,12 @@ void suppose_dead::execute(bool& success, bool& complete)
 void suppose_dead::apply_temp_modifier(unit_map& unit_map)
 {
 	// Remove the unit
-	unit const* removed_unit = unit_map.extract(loc_);
+	const UnitConstPtr removed_unit = unit_map.extract(loc_);
 	DBG_WB << "Suppose dead: Temporarily removing unit " << removed_unit->name() << " [" << removed_unit->id()
 			<< "] from (" << loc_ << ")\n";
 
 	// Just check to make sure we removed the unit we expected to remove
-	assert(get_unit() == removed_unit);
+	assert(get_unit().get() == removed_unit.get());
 }
 
 void suppose_dead::remove_temp_modifier(unit_map& unit_map)
