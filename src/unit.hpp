@@ -31,6 +31,9 @@ class team;
 class unit_formula_manager;
 class vconfig;
 
+class unit;
+typedef boost::intrusive_ptr<unit> UnitPtr;
+
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;
 
@@ -514,8 +517,6 @@ private:
 	 */
 	void clear_visibility_cache() const { invisibility_cache_.clear(); }
 };
-
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 /**
  * Object which temporarily resets a unit's movement.
