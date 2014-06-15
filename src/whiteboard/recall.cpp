@@ -71,7 +71,7 @@ recall::recall(config const& cfg, bool hidden)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	BOOST_FOREACH(UnitPtr & recall_unit, resources::teams->at(team_index()).recall_list())
+	BOOST_FOREACH(const UnitConstPtr & recall_unit, resources::teams->at(team_index()).recall_list())
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
