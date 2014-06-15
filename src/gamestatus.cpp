@@ -708,6 +708,10 @@ void convert_old_saves(config& cfg){
 			snapshot.add_child("end_level_data", end_level);
 			snapshot.remove_child("end_level",0);
 		}
+		if(cfg.has_child("carryover_sides_start"))
+		{
+			cfg.remove_child("carryover_sides_start", 0);
+		}
 	}
 
 	//1.12-1.13 end
