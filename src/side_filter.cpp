@@ -24,6 +24,7 @@
 #include "team.hpp"
 #include "serialization/string_utils.hpp"
 #include "network.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 

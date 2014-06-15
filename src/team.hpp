@@ -17,8 +17,13 @@
 #include "color_range.hpp"
 #include "game_config.hpp"
 #include "make_enum.hpp"
+#include "map_location.hpp"
 #include "savegame_config.hpp"
-#include "unit.hpp"
+#include "SDL.h" //Apparently needed b/c of SDL_Color
+#include "unit_ptr.hpp"
+#include "util.hpp"
+
+#include <boost/shared_ptr.hpp>
 
 class gamemap;
 
