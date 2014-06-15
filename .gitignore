@@ -38,6 +38,7 @@ ZERO_CHECK.vcproj
 uninstall.vcproj
 *.vcproj.*.user
 projectfiles/VC[12]*
+src/**/*.vcproj
 
 # XCode
 projectfiles/Xcode/**/build
@@ -74,10 +75,13 @@ autom4te.cache
 stamp-h1
 
 # build directories
-/wesnothd*
 /wesnoth*
+/wesnothd*
+wesnothd/
 /campaignd*
+campaignd/
 /cutter*
+cutter/
 /exploder*
 /build/
 Release
@@ -87,6 +91,7 @@ Debug (fast)
 tags
 
 # build results ect.
+wesnoth_zip
 wesnoth.exp
 wesnoth.ilk
 wesnoth.lib
@@ -110,6 +115,7 @@ userdata
 # testing
 /test*
 !/test_wrapper.sh
+src/test
 error*.log
 do_build_and_tests.sh
 boost_test_result.xml
@@ -138,6 +144,14 @@ data/tools/unit_tree/**/Locale
 doc/doxygen/html
 doc/manual/**/*.xml
 
+# keep src clean from tools
+src/**/wesnoth/
+src/**/exploder
+src/**/wesnoth_addon_manager
+src/**/wmllint
+src/**/wmlscope
+src/**/wmlindent
+
 # file for loading lua from within test scenario on-the-fly
 data/lua/**/code.lua
 
@@ -152,13 +166,20 @@ data/campaigns/**/images/**/.gitignore
 [Tt]humbs.db
 *Neuer Ordner*
 
-# uncategorized
+# extensions
 *.pyc
-*.swp
+*.sw[po]
 *.pbl
 *.xhtml
 *.[ao]
-revision.h
+*.out
+*~
+.deps
+.dirstamp
+
+# uncategorized
+revision*
+config.h
 6not
 .kdev*
 callgrind.out.*
