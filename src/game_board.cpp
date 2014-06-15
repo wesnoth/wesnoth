@@ -257,7 +257,7 @@ void game_board::write_config(config & cfg) const {
 		}
 		//recall list
 		{
-			BOOST_FOREACH(const UnitPtr & j, t->recall_list()) {
+			BOOST_FOREACH(const UnitConstPtr & j, t->recall_list()) {
 				config& u = side.add_child("unit");
 				j->write(u);
 			}
