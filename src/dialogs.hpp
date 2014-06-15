@@ -26,11 +26,8 @@ class terrain_type;
 #include "map_location.hpp"
 #include "construct_dialog.hpp"
 #include "network.hpp"
+#include "unit_ptr.hpp"
 #include "ai/lua/unit_advancements_aspect.hpp"
-
-#include <boost/intrusive_ptr.hpp>
-
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 namespace dialogs {
 

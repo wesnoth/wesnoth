@@ -25,8 +25,7 @@
 #include "../generic_event.hpp"
 #include "../config.hpp"
 #include "lua/unit_advancements_aspect.hpp"
-
-#include <boost/intrusive_ptr.hpp>
+#include "../unit_ptr.hpp"
 
 //#include "../unit.hpp"
 
@@ -45,8 +44,6 @@ class terrain_filter;
 class terrain_translation;
 class unit;
 class unit_type;
-
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 namespace ai {
 

@@ -20,19 +20,14 @@
 
 #include "utils/reference_counter.hpp"
 #include "map_location.hpp"
+#include "unit_ptr.hpp"
 
 #include <cassert>
 #include <list>
 #include <map>
-#include <boost/intrusive_ptr.hpp>
 #include <boost/unordered_map.hpp>
 
 //#define DEBUG_UNIT_MAP
-
-#include "unit.hpp"
-//class unit;
-
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 /**
  * Container associating units to locations.

@@ -20,19 +20,16 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#include "reference_counted_object.hpp"
 #include "unit_animation.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
+#include "unit_ptr.hpp"
 
 class display;
 class gamemap;
 class team;
 class unit_formula_manager;
 class vconfig;
-
-class unit;
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 /// The things contained within a unit_ability_list.
 typedef std::pair<const config *, map_location> unit_ability;
@@ -73,7 +70,7 @@ private:
 };
 
 
-class unit : public reference_counted_object
+class unit
 {
 public:
 	/**
@@ -395,7 +392,12 @@ public:
 	const std::string& effect_image_mods() const;
 	std::string image_mods() const;
 
+	long ref_count() const { return ref_count_; }
+	friend void intrusive_ptr_add_ref(const unit *);
+	friend void intrusive_ptr_release(const unit *);
 private:
+	mutable long ref_count_; //used by intrusive_ptr
+
 	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
 

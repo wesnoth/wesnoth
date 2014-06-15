@@ -22,15 +22,12 @@
 
 #include "vision.hpp"
 #include "../map_location.hpp"
+#include "../unit_ptr.hpp"
 
 #include <boost/noncopyable.hpp>
 #include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/intrusive_ptr.hpp>
 #include <vector>
 
-class unit;
-
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 namespace actions {
 

@@ -72,6 +72,22 @@ namespace {
 }
 
 /**
+ * Intrusive Pointer interface
+ *
+ **/
+
+void intrusive_ptr_add_ref(const unit * u)
+{
+	++(u->ref_count_);
+}
+
+void intrusive_ptr_release(const unit * u)
+{
+	if (--(u->ref_count_) == 0)
+		delete u;
+}
+
+/**
  * Converts a string ID to a unit_type.
  * Throws a game_error exception if the string does not correspond to a type.
  */

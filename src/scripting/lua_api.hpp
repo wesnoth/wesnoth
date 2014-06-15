@@ -19,16 +19,11 @@
 #include <string>
 #include "config.hpp" // forward declaration of the nested type config::attribute_value is not possible
 #include "lua_types.hpp" // the luatype typedef
-#include "unit.hpp"
-
-#include <boost/intrusive_ptr.hpp>
+#include "unit_ptr.hpp"
 
 struct lua_State;
 class t_string;
 class vconfig;
-class unit;
-
-typedef boost::intrusive_ptr<unit> UnitPtr;
 
 /**
  * Converts a Lua value to a unit pointer.
