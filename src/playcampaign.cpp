@@ -390,13 +390,7 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				return QUIT;
 			}
 
-			//The host shoudl send teh complete savegame now that also contains teh carryvoer seides start-
-			//gamestate.set_scenario(gamestate.replay_start());
-			//gamestate.replay_start() = config();
-			// Retain carryover_sides_start, as the config from the server
-			// doesn't contain it.
-			//TODO: enable this again or make mp_wait not change carryover sides start.
-			//gamestate.carryover_sides_start = sides.to_config();
+			//The host should send the complete savegame now that also contains the carryvoer sides start.
 		} else {
 			// Retrieve next scenario data.
 			gamestate.expand_scenario();
@@ -406,11 +400,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 				// scenario data.
 				gamestate.mp_settings().hash = starting_pos.hash();
 
-				// Apply carryover before passing a scenario data to the
-				// mp::connect_engine.
-				//WHY???
-				//gamestate.expand_carryover();
-				
 				//We don't merge WML until start of next scenario, but if we want to allow user to disable MP ui in transition,
 				//then we have to move "allow_new_game" attribute over now.
 				bool allow_new_game_flag = starting_pos["allow_new_game"].to_bool(true);
