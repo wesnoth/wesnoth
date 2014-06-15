@@ -78,7 +78,9 @@ void game_board::all_survivors_to_recall() {
 		if (teams_[un.side() - 1].persistent()) {
 			un.new_turn();
 			un.new_scenario();
+#if 0
 			teams_[un.side() - 1].recall_list().push_back(un);
+#endif
 		}
 	}
 }
@@ -263,6 +265,9 @@ void game_board::write_config(config & cfg) const {
 
 	//write the map
 	cfg["map_data"] = map_->write();
+
+	//Used by the carryover calculations.
+	cfg["map_villages_num"] = map_->villages().size();
 }
 
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)

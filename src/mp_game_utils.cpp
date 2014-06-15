@@ -45,64 +45,65 @@ static lg::log_domain log_network("network");
 
 namespace mp {
 
-config initial_level_config(game_display& disp, const mp_game_settings& params,
-	saved_game& state)
+// To remove radundant informaion in the clientside internal programmflow
+// I want to remove these values from mp_settings so i need to readd them here
+static void add_multiplayer_classification(config& multiplayer, saved_game& state)
 {
-	config level;
+	multiplayer["mp_scenario"] = state.get_scenario_id();
+	multiplayer["mp_scenario_name"] = state.get_starting_pos()["name"];
+	multiplayer["difficulty_define"] = state.classification().difficulty;
+	multiplayer["mp_campaign"] = state.classification().campaign;
+}
 
-	if (params.saved_game) {
-		try {
-			savegame::loadgame load(disp,
-				resources::config_manager->game_config(), state);
-			load.load_multiplayer_game();
-			load.fill_mplevel_config(level);
+config initial_level_config(saved_game& state)
+{
+	const mp_game_settings& params = state.mp_settings();
+	//Also impliers state.expand_scenario()
+	//We need to call this before expand_mp_events/options oterwise they might be overwritten
+	state.expand_random_scenario();
+	state.expand_mp_events();
+	state.expand_mp_options();
 
-			resources::config_manager->
-				load_game_config_for_game(state.classification());
-		}
-		catch (load_game_cancelled_exception){
-			return config();
-		} catch(config::error&) {
-			return config();
-		}
-	} else {
-		level.merge_with(params.scenario_data);
-		level["turns"] = params.num_turns;
-		level["difficulty"] = params.difficulty_define;
-		level.add_child("multiplayer", params.to_config());
-
-		// Convert options to events
-		level.add_child_at("event", options::to_event(params.options.find_child(
-			"multiplayer", "id", params.mp_scenario)), 0);
-		if(!level.has_attribute("next_underlying_unit_id"))
+	config& scenario = state.get_starting_pos();
+	if(!state.mp_settings().saved_game)
+	{
+		if(state.carryover_sides_start["random_seed"].str() == "")
 		{
-			level["next_underlying_unit_id"] = 0;
+			state.carryover_sides_start["random_seed"] = rand();
+			state.carryover_sides_start["random_calls"] = 0;
 		}
-		n_unit::id_manager::instance().clear();
+		scenario["turns"] = params.num_turns;
 
 		if (params.random_start_time)
 		{
-			if (!tod_manager::is_start_ToD(level["random_start_time"]))
+			if (!tod_manager::is_start_ToD(scenario["random_start_time"]))
 			{
-				level["random_start_time"] = true;
+				scenario["random_start_time"] = true;
 			}
 		}
 		else
 		{
-			level["random_start_time"] = false;
+			scenario["random_start_time"] = false;
 		}
 
-		level["experience_modifier"] = params.xp_modifier;
-		level["random_seed"] = state.carryover_sides_start["random_seed"];
+		scenario["experience_modifier"] = params.xp_modifier;
 	}
+	
+	if (scenario["objectives"].empty()) {
+		scenario["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +
+			"</big>\n<span foreground=\"#00ff00\">&#8226; " +
+			t_string(N_("Defeat enemy leader(s)"), "wesnoth") + "</span>";
+	}
+
+	config level = state.to_config();
+	add_multiplayer_classification(level.child_or_add("multiplayer"), state);
 
 	std::string era = params.mp_era;
-	if (params.saved_game) {
-		if (const config &c = level.child("snapshot").child("era"))
-			era = c["id"].str();
-	}
+	//[multiplayer] mp_era= shoudl be psersistent over saves.
 
+	//[era], [modification]s are toplevel tags here, they are not part of teh saved_game and only used during mp_connect/mp_wait
 	// Initialize the list of sides available for the current era.
+	// We also need this no not get a segfault in mp_connect for ai configuation
 	const config &era_cfg =
 		resources::config_manager->game_config().find_child("era", "id", era);
 	if (!era_cfg) {
@@ -114,35 +115,30 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 		}
 		// FIXME: @todo We should tell user about missing era but still load game
 		WRN_CF << "Missing era in MP load game " << era << std::endl;
+		//Otherwise we get an error when qwhen we try to add ai algirithms in moultiplayer_connect
+		level.add_child("era");
 	}
 	else
 	{
-		config& cfg = level.add_child("era", era_cfg);
+		/*config& cfg = */level.add_child("era", era_cfg);
 
 		const config& custom_side = resources::config_manager->
 			game_config().find_child("multiplayer_side", "id", "Custom");
 		level.child("era").add_child_at("multiplayer_side", custom_side, 0);
 
-		// Convert options to event
-		cfg.add_child_at("event", options::to_event(
-			params.options.find_child("era", "id", era)), 0);
 	}
+	// Add modifications, needed for ai aglorithms which are applied in mp_connect
 
-	// Add modifications
 	const std::vector<std::string>& mods = params.active_mods;
 	for (unsigned i = 0; i < mods.size(); i++) {
-		config& cfg = level.add_child("modification",
+		/*config& cfg = */level.add_child("modification",
 			resources::config_manager->
 				game_config().find_child("modification", "id", mods[i]));
-
-		// Convert options to event
-		cfg.add_child_at("event", options::to_event(
-			params.options.find_child("modification", "id", mods[i])), 0);
 	}
 
-	// This will force connecting clients to be using the same version number as us.
-	level["version"] = game_config::version;
-
+	
+#if 0
+	// we have this alredy in [multiplayer]. If removing this causes a bug than that's most likley bacause some is searchin for this information at the wrng place (not in [multiplayer]) 
 	// If game was reloaded, params won't contain all required information and so we
 	// need to take it from the actual level config.
 	if (params.saved_game) {
@@ -152,95 +148,60 @@ config initial_level_config(game_display& disp, const mp_game_settings& params,
 		level["observer"] = params.allow_observers;
 		level["shuffle_sides"] = params.shuffle_sides;
 	}
-
-	if (level["objectives"].empty()) {
-		level["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +
-			"</big>\n<span foreground=\"#00ff00\">&#8226; " +
-			t_string(N_("Defeat enemy leader(s)"), "wesnoth") + "</span>";
-	}
-
+#endif
+	
+	// This will force connecting clients to be using the same version number as us.
+	level["version"] = game_config::version;
 	return level;
 }
 
-void level_to_gamestate(config& level, saved_game& state)
+void level_to_gamestate(const config& level, saved_game& state)
 {
+	state = saved_game(level);
+	state.classification().campaign_type = game_classification::MULTIPLAYER;
 	// Any replay data is only temporary and should be removed from
 	// the level data in case we want to save the game later.
-	const config& replay_data = level.child("replay");
-	config replay_data_store;
-	if (replay_data) {
-		replay_data_store = replay_data;
+	if (const config& replay_data = level.child("replay")) 
+	{
 		LOG_NW << "setting replay\n";
-		state.replay_data = replay_data;
-		recorder = replay(replay_data_store);
+		recorder = replay(replay_data);
 		if (!recorder.empty()) {
 			recorder.set_skip(false);
 			recorder.set_to_end();
 		}
 	}
 
-	carryover_info sides = carryover_info(state.carryover_sides_start);
-
-	n_unit::id_manager::instance().set_save_id(level["next_underlying_unit_id"]);
-
-	// Set random.
-	const config::attribute_value& seed = level["random_seed"];
-	if (!seed.empty()) {
-		const unsigned calls = level["random_calls"].to_unsigned();
-		sides.rng().seed_random(seed.to_int(42), calls);
-	} else {
-		ERR_NG << "No random seed found, random "
-			"events will probably be out of sync.\n";
-	}
-
+	
+	//save id setting  was moved to play_controller.
+	
 	// Adds the starting pos to the level.
-	if (!level.child("replay_start")) {
-		level.add_child("replay_start", level);
-		level.child("replay_start").remove_child("multiplayer", 0);
-	}
+	
 	// This is important, if it does not happen, the starting position is
 	// missing and will be drawn from the snapshot instead
 	// (which is not what we want since we have
 	// all needed information here already).
-	state.replay_start() = level.child("replay_start");
+	//state.replay_start() = level.child("replay_start");
 
-	level["campaign_type"] = lexical_cast<std::string> (game_classification::MULTIPLAYER);
-	state.classification().campaign_type = game_classification::MULTIPLAYER;
-	state.classification().completion = level["completion"].str();
-	state.classification().version = level["version"].str();
-
-	if (const config& vars = level.child("variables")) {
-		sides.set_variables(vars);
-	}
-	sides.get_wml_menu_items().set_menu_items(level);
-	state.mp_settings().set_from_config(level);
 
 	// Check whether it is a save-game by looking for snapshot data.
-	const config& snapshot = level.child("snapshot");
-	const bool saved_game = snapshot && snapshot.child("side");
+	//const config& snapshot = level.child("snapshot");
+	//const bool saved_game = state.mp_settings().saved_game;
 
 	// It might be a MP campaign start-of-scenario save.
 	// In this case, it's not entirely a new game, but not a save, either.
 	// Check whether it is no savegame and the starting_pos
 	// contains [player] information.
-	bool start_of_scenario =
-		!saved_game && state.replay_start().child("player");
-
-	// If we start a fresh game, there won't be any snapshot information.
-	// If however this is a savegame, we got a valid snapshot here.
-	if (saved_game) {
-		state.snapshot = snapshot;
-		if (const config& v = snapshot.child("variables")) {
-			sides.set_variables(v);
-		}
-		sides.get_wml_menu_items().set_menu_items(snapshot);
-	}
+	// Edit: idk what this code did before, but i most liley didn't work because [replay_start] never contains [player]
+	//bool start_of_scenario = !saved_game && state.replay_start().child("player");
 
 	// In any type of reload (normal save or start-of-scenario) the players
 	// could have changed and need to be replaced.
-	if (saved_game || start_of_scenario){
+	// EDIT: We directy use the starting_pos() sides now, so no need to so this anymore.
+#if 0
+	if (saved_game)
+	{
 		config::child_itors saved_sides = saved_game ?
-			state.snapshot.child_range("side") :
+			state.get_starting_pos().child_range("side") :
 			state.replay_start().child_range("side");
 		config::const_child_itors level_sides = level.child_range("side");
 
@@ -259,14 +220,7 @@ void level_to_gamestate(config& level, saved_game& state)
 			}
 		}
 	}
-	if (sides.get_variables().empty()) {
-		LOG_NG << "No variables were found for the saved_game." << std::endl;
-	} else {
-		LOG_NG << "Variables found and loaded into saved_game:" << std::endl;
-		LOG_NG << sides.get_variables();
-	}
-
-	state.carryover_sides_start = sides.to_config();
+#endif
 }
 
 void check_response(network::connection res, const config& data)

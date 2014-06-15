@@ -43,8 +43,8 @@ typedef std::pair<mp::controller, std::string> controller_option;
 class connect_engine
 {
 public:
-	connect_engine(game_display& disp, saved_game& state,
-		const mp_game_settings& params, const bool local_players_only,
+	connect_engine(saved_game& state,
+		const bool local_players_only,
 		const bool first_scenario);
 	~connect_engine();
 
@@ -84,6 +84,15 @@ public:
 	/* Setters & Getters */
 
 	const config& level() const { return level_; }
+	config& scenario()
+	{
+		if(config& scenario = level_.child("scenario"))
+			return scenario;
+		else if(config& snapshot = level_.child("snapshot"))
+			return snapshot;
+		else 
+			throw "No scenariodata found";
+	}
 	const std::set<std::string>& connected_users() const
 		{ return connected_users_; }
 	const std::vector<std::string>& user_team_names()

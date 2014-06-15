@@ -752,7 +752,7 @@ config play_controller::to_config() const
 	if(linger_) {
 		config endlevel;
 		end_level_data_.write(endlevel);
-		cfg.add_child("endlevel", endlevel);
+		cfg.add_child("end_level_data", endlevel);
 	}
 
 	// Write terrain_graphics data in snapshot, too

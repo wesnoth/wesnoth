@@ -395,7 +395,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 	if (get_result() == QUIT || get_result() == CREATE) {
 		return;
 	}
-	if (engine_.level()["id"].empty()) {
+	if (engine_.scenario()["id"].empty()) {
 		throw config::error(_("The scenario is invalid because it has no id."));
 	}
 
@@ -426,7 +426,7 @@ connect::connect(game_display& disp, const std::string& game_name,
 		side_pos_y_offset += 60;
 	}
 
-	append_to_title(" — " + engine_.level()["name"].t_str());
+	append_to_title(" — " + engine_.scenario()["name"].t_str());
 	gold_title_label_.hide(params().saved_game);
 	income_title_label_.hide(params().saved_game);
 

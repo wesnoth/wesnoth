@@ -223,6 +223,7 @@ public:
 
 	const mp_game_settings& get_parameters();
 
+	saved_game& get_state();
 private:
 	create_engine(const create_engine&);
 	void operator=(const create_engine&);
@@ -268,7 +269,6 @@ private:
 	std::vector<extras_metadata_ptr> mods_;
 
 	saved_game& state_;
-	mp_game_settings parameters_;
 
 	depcheck::manager dependency_manager_;
 

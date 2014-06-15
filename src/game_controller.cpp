@@ -589,10 +589,10 @@ bool game_controller::load_game()
 	recorder.start_replay();
 	recorder.set_skip(false);
 
-	LOG_CONFIG << "has snapshot: " << (state_.snapshot.child("side") ? "yes" : "no") << "\n";
+	LOG_CONFIG << "has is middle game savefile: " << (state_.is_mid_game_save() ? "yes" : "no") << "\n";
 
-	if (!state_.snapshot.child("side")) {
-		// No snapshot; this is a start-of-scenario
+	if (!state_.is_mid_game_save()) {
+		//this is a start-of-scenario
 		if (load.show_replay()) {
 			// There won't be any turns to replay, but the
 			// user gets to watch the intro sequence again ...
@@ -616,7 +616,7 @@ bool game_controller::load_game()
 	}
 
 	if(state_.classification().campaign_type == game_classification::MULTIPLAYER) {
-		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
+		BOOST_FOREACH(config &side, state_.get_starting_pos().child_range("side"))
 		{
 			if (side["controller"] == "network")
 				side["controller"] = "human";
@@ -627,7 +627,7 @@ bool game_controller::load_game()
 	}
 
 	if (load.cancel_orders()) {
-		BOOST_FOREACH(config &side, state_.snapshot.child_range("side"))
+		BOOST_FOREACH(config &side, state_.get_starting_pos().child_range("side"))
 		{
 			if (side["controller"] != "human") continue;
 			BOOST_FOREACH(config &unit, side.child_range("unit"))
@@ -790,7 +790,6 @@ bool game_controller::new_campaign()
 			}
 		}
 
-		state_.carryover_sides_start["difficulty"] = difficulties[difficulty];
 		state_.classification().difficulty = difficulties[difficulty];
 	}
 

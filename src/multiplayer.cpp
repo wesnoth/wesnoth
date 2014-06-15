@@ -474,7 +474,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 	saved_game& state, bool local_players_only = false);
 
 static bool enter_connect_mode(game_display& disp, const config& game_config,
-	saved_game& state, const mp_game_settings& params,
+	saved_game& state,
 	bool local_players_only = false)
 {
 	DBG_MP << "entering connect mode" << std::endl;
@@ -487,9 +487,8 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect_engine_ptr connect_engine(new mp::connect_engine(disp,
-			state, params, local_players_only, true));
-		mp::connect ui(disp, params.name, game_config, gamechat, gamelist,
+		mp::connect_engine_ptr connect_engine(new mp::connect_engine(state, local_players_only, true));
+		mp::connect ui(disp, state.mp_settings().name, game_config, gamechat, gamelist,
 			*connect_engine);
 		run_lobby_loop(disp, ui);
 
@@ -522,7 +521,7 @@ static bool enter_connect_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, const mp_game_settings& params,
+	saved_game& state, 
 	bool local_players_only = false);
 
 static void enter_create_mode(game_display& disp, const config& game_config,
@@ -547,23 +546,22 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 		} else {
 
 			mp::ui::result res;
-			mp_game_settings new_params;
 
 			{
 				mp::create ui(disp, game_config, state, gamechat, gamelist);
 				run_lobby_loop(disp, ui);
 				res = ui.get_result();
-				new_params = ui.get_parameters();
+				ui.get_parameters();
 			}
 
 			switch (res) {
 			case mp::ui::CREATE:
 				configure_canceled = !enter_configure_mode(disp, game_config,
-					state, new_params, local_players_only);
+					state, local_players_only);
 				break;
 			case mp::ui::LOAD_GAME:
 				connect_canceled = !enter_connect_mode(disp, game_config,
-					state, new_params, local_players_only);
+					state, local_players_only);
 				break;
 			case mp::ui::QUIT:
 			default:
@@ -576,7 +574,7 @@ static void enter_create_mode(game_display& disp, const config& game_config,
 }
 
 static bool enter_configure_mode(game_display& disp, const config& game_config,
-	saved_game& state, const mp_game_settings& params, bool local_players_only)
+	saved_game& state, bool local_players_only)
 {
 	DBG_MP << "entering configure mode" << std::endl;
 
@@ -586,20 +584,19 @@ static bool enter_configure_mode(game_display& disp, const config& game_config,
 		connect_canceled = false;
 
 		mp::ui::result res;
-		mp_game_settings new_params;
 
 		{
-			mp::configure ui(disp, game_config, gamechat, gamelist, params,
+			mp::configure ui(disp, game_config, gamechat, gamelist, state,
 				local_players_only);
 			run_lobby_loop(disp, ui);
 			res = ui.get_result();
-			new_params = ui.get_parameters();
+			ui.get_parameters();
 		}
 
 		switch (res) {
 		case mp::ui::CREATE:
 			connect_canceled = !enter_connect_mode(disp, game_config,
-				state, new_params, local_players_only);
+				state, local_players_only);
 			break;
 		case mp::ui::QUIT:
 		default:
@@ -765,8 +762,8 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	DBG_MP << "entering create mode" << std::endl;
 
 	// Set the default parameters
-	mp_game_settings parameters;  // This creates these parameters with default values defined in mp_game_settings.cpp
-
+	state = saved_game(); // This creates these parameters with default values defined in mp_game_settings.cpp
+	mp_game_settings& parameters = state.mp_settings();  
 	// Hardcoded default values
 	parameters.mp_era = "era_default";
 	parameters.name = "multiplayer_The_Freelands";
@@ -821,23 +818,23 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	// Should the map be randomly generated?
 	if (level["map_generation"].empty()) {
 		DBG_MP << "using scenario map" << std::endl;
-		parameters.scenario_data = level;
+		state.set_scenario(level);
 	} else {
 		DBG_MP << "generating random map" << std::endl;
 		util::scoped_ptr<map_generator> generator(NULL);
 		generator.assign(create_map_generator(level["map_generation"], level.child("generator")));
-		parameters.scenario_data = generator->create_scenario(std::vector<std::string>());
+		state.set_scenario(generator->create_scenario(std::vector<std::string>()));
 
 		// Set the scenario to have placing of sides
 		// based on the terrain they prefer
-		parameters.scenario_data["modify_placing"] = "true";
+		state.get_starting_pos()["modify_placing"] = "true";
 
 		util::unique_ptr<gamemap> map;
 		const int map_positions = level.child("generator")["players"];
 		DBG_MP << "map positions: " << map_positions << std::endl;
 
-		for (int pos = parameters.scenario_data.child_count("side"); pos < map_positions; ++pos) {
-			config& side = parameters.scenario_data.add_child("side");
+		for (int pos = state.get_starting_pos().child_count("side"); pos < map_positions; ++pos) {
+			config& side = state.get_starting_pos().add_child("side");
 			side["side"] = pos + 1;
 			side["team_name"] = pos + 1;
 			side["canrecruit"] = true;
@@ -846,9 +843,9 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	}
 
 	// Should number of turns be determined from scenario data?
-	if (parameters.use_map_settings && parameters.scenario_data["turns"]) {
-		DBG_MP << "setting turns from scenario data: " << parameters.scenario_data["turns"] << std::endl;
-		parameters.num_turns = parameters.scenario_data["turns"];
+	if (parameters.use_map_settings && state.get_starting_pos()["turns"]) {
+		DBG_MP << "setting turns from scenario data: " << state.get_starting_pos()["turns"] << std::endl;
+		parameters.num_turns = state.get_starting_pos()["turns"];
 	}
 
 	DBG_MP << "entering connect mode" << std::endl;
@@ -856,8 +853,7 @@ void start_local_game_commandline(game_display& disp, const config& game_config,
 	statistics::fresh_stats();
 
 	{
-		mp::connect_engine_ptr connect_engine(new mp::connect_engine(disp,
-			state, parameters, true, true));
+		mp::connect_engine_ptr connect_engine(new mp::connect_engine(state, true, true));
 		mp::connect ui(disp, parameters.name, game_config, gamechat, gamelist,
 			*connect_engine);
 

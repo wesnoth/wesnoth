@@ -228,6 +228,13 @@ struct end_level_data
 	void write(config& cfg) const;
 
 	void read(const config& cfg);
+
+	config to_config() const
+	{
+		config r;
+		write(r);
+		return r;
+	}
 };
 
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

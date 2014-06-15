@@ -40,9 +40,8 @@ public:
 
 class test_mp_connect_engine : public mp::connect_engine {
 public:
-	test_mp_connect_engine(game_display& disp, saved_game& gamestate,
-		const mp_game_settings& params) :
-		mp::connect_engine(disp, gamestate, params, true, true)
+	test_mp_connect_engine(game_display& /*disp*/, saved_game& gamestate) :
+		mp::connect_engine(gamestate, true, true)
 		{}
 };
 
@@ -52,7 +51,6 @@ public:
 namespace {
 
 boost::scoped_ptr<game_display> disp;
-boost::scoped_ptr<mp_game_settings> params;
 boost::scoped_ptr<saved_game> state;
 
 }
@@ -78,15 +76,16 @@ struct mp_connect_fixture {
 		state.reset(new saved_game());
 		state->classification().campaign_type = game_classification::MULTIPLAYER;
 		config_manager->load_game_config_for_game(state->classification());
+		
+		state->mp_settings().mp_era = "era_default";
+		state->mp_settings().name = "multiplayer_The_Freelands";
+		state->mp_settings().use_map_settings = true;
+		state->mp_settings().saved_game = false;
 
-		params.reset(new mp_game_settings());
-		params->mp_era = "era_default";
-		params->name = "multiplayer_The_Freelands";
-		params->use_map_settings = true;
-		params->saved_game = false;
-		params->num_turns = params->scenario_data["turns"];
-		params->scenario_data = config_manager->
-			game_config().find_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), "id", params->name);
+		state->set_scenario(config_manager->
+			game_config().find_child(lexical_cast<std::string>(game_classification::MULTIPLAYER), "id", state->mp_settings().name));
+
+		state->mp_settings().num_turns = state->get_starting_pos()["turns"];
 	}
 	~mp_connect_fixture()
 	{
@@ -104,7 +103,7 @@ struct mp_connect_fixture {
 static test_mp_connect_engine* create_test_mp_connect_engine()
 {
 	test_mp_connect_engine* mp_connect_engine =
-		new test_mp_connect_engine(*disp, *state, *params);
+		new test_mp_connect_engine(*disp, *state);
 
 	return mp_connect_engine;
 }
@@ -128,8 +127,8 @@ BOOST_AUTO_TEST_SUITE( mp_connect )
 BOOST_AUTO_TEST_CASE( flg_map_settings )
 {
 	// Set up side_engine and its dependencies.
-	params->use_map_settings = true;
-	params->saved_game = false;
+	state->mp_settings().use_map_settings = true;
+	state->mp_settings().saved_game = false;
 	boost::scoped_ptr<test_mp_connect_engine>
 		connect_engine(create_test_mp_connect_engine());
 	mp::side_engine_ptr side_engine;
@@ -339,8 +338,8 @@ BOOST_AUTO_TEST_CASE( flg_map_settings )
 BOOST_AUTO_TEST_CASE( flg_no_map_settings )
 {
 	// Set up side_engine and its dependencies.
-	params->use_map_settings = false;
-	params->saved_game = false;
+	state->mp_settings().use_map_settings = false;
+	state->mp_settings().saved_game = false;
 	boost::scoped_ptr<test_mp_connect_engine>
 		connect_engine(create_test_mp_connect_engine());
 	mp::side_engine_ptr side_engine;

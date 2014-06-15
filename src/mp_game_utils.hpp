@@ -23,10 +23,9 @@ class saved_game;
 
 namespace mp {
 
-config initial_level_config(game_display& disp, const mp_game_settings& params,
-	saved_game& state);
+config initial_level_config(saved_game& state);
 
-void level_to_gamestate(config& level, saved_game& state);
+void level_to_gamestate(const config& level, saved_game& state);
 
 void check_response(network::connection res, const config& data);
 

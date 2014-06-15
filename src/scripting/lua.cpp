@@ -4026,7 +4026,7 @@ void LuaKernel::initialize()
 /// elsewhere (in the C++ code).
 /// Any child tags not in this list will be passed to Lua's on_load event.
 static char const *handled_file_tags[] = {
-	"color_palette", "color_range", "display", "endlevel", "era",
+	"color_palette", "color_range", "display", "end_level_data", "era",
 	"event", "generator", "label", "lua", "map", "menu_item",
 	"modification", "music", "options", "side", "sound_source",
 	"story", "terrain_graphics", "time", "time_area", "tunnel",

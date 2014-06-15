@@ -20,6 +20,7 @@
 #include "team.hpp"
 #include "gamestatus.hpp"
 #include <boost/foreach.hpp>
+#include <cassert>
 
 carryover::carryover(const config& side)
 		: add_(side["add"].to_bool())
@@ -33,6 +34,12 @@ carryover::carryover(const config& side)
 {
 	BOOST_FOREACH(const config& u, side.child_range("unit")){
 		recall_list_.push_back(u);
+		config& u_back = recall_list_.back();
+		u_back.remove_attribute("side");
+		u_back.remove_attribute("goto_x");
+		u_back.remove_attribute("goto_y");
+		u_back.remove_attribute("x");
+		u_back.remove_attribute("y");
 	}
 }
 
@@ -122,6 +129,10 @@ const std::string carryover::to_string(){
 	return side;
 }
 
+void carryover::set_gold(int gold){
+	gold_ = gold;
+}
+
 void carryover::to_config(config& cfg){
 	config& side = cfg.add_child("side");
 	side["save_id"] = save_id_;
@@ -135,7 +146,7 @@ void carryover::to_config(config& cfg){
 		side.add_child("unit", u_cfg);
 }
 
-carryover_info::carryover_info(const config& cfg)
+carryover_info::carryover_info(const config& cfg, bool from_snpashot)
 	: carryover_sides_()
 	, end_level_()
 	, variables_(cfg.child_or_empty("variables"))
@@ -144,9 +155,27 @@ carryover_info::carryover_info(const config& cfg)
 	, next_scenario_(cfg["next_scenario"])
 	, next_underlying_unit_id_(cfg["next_underlying_unit_id"].to_int(0))
 {
+	int turns_left = cfg["turns"].to_int() - cfg["turn_at"].to_int();
 	end_level_.read(cfg.child_or_empty("end_level_data"));
-	BOOST_FOREACH(const config& side, cfg.child_range("side")){
+	BOOST_FOREACH(const config& side, cfg.child_range("side"))
+	{
+		if(side["lost"].to_bool(false) || !side["persistent"].to_bool(true))
+		{
+			//this shouldnt happen outside a snpshot.
+			assert(from_snpashot);
+			continue;
+		}
 		this->carryover_sides_.push_back(carryover(side));
+		if(from_snpashot)
+		{
+			//adjust gold
+			int finishing_bonus_per_turn = cfg["map_villages_num"] * side["village_gold"] + side["income"];
+			int finishing_bonus = std::max(0, finishing_bonus_per_turn * turns_left);
+			if(end_level_.gold_bonus)
+			{
+				carryover_sides_.back().set_gold(div100rounded((finishing_bonus + side["gold"]) * end_level_.carryover_percentage));
+			}
+		}
 	}
 
 	wml_menu_items_.set_menu_items(cfg);
@@ -296,3 +325,22 @@ carryover* carryover_info::get_side(std::string save_id){
 	}
 	return NULL;
 }
+
+
+void carryover_info::merge_old_carryover(const carryover_info& old_carryover)
+{
+	BOOST_FOREACH(const carryover & old_side, old_carryover.carryover_sides_)
+	{
+		std::vector<carryover>::iterator iside = std::find_if(
+			carryover_sides_.begin(), 
+			carryover_sides_.end(), 
+			save_id_equals(old_side.get_save_id())
+			);
+		//add the side if don't already have it.
+		if(iside == carryover_sides_.end())
+		{
+			this->carryover_sides_.push_back(old_side);
+		}
+	}
+}
+
