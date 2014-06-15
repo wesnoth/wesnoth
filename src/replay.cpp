@@ -1029,7 +1029,7 @@ static std::map<int, config> get_user_choice_internal(const std::string &name, c
 			//but if there wasn't any data sended during this turn, we don't want to bein wth that now.
 			if(synced_context::is_simultaneously() || current_side != local_side)
 			{
-				synced_context::pull_remote_user_input();
+				synced_context::send_user_choice();
 			}
 			continue;
 

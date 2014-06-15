@@ -17,10 +17,11 @@
 #define PLAYMP_CONTROLLER_H_INCLUDED
 
 #include "playsingle_controller.hpp"
+#include "syncmp_handler.hpp"
 
 class turn_info;
 
-class playmp_controller : public playsingle_controller, public events::pump_monitor
+class playmp_controller : public playsingle_controller, public events::pump_monitor, public syncmp_handler
 {
 public:
 	playmp_controller(const config& level, saved_game& state_of_game,
@@ -38,6 +39,8 @@ public:
 	void maybe_linger();
 	void process_oos(const std::string& err_msg) const;
 
+	void pull_remote_choice();
+	void send_user_choice();
 protected:
 	virtual void handle_generic_event(const std::string& name);
 

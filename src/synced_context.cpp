@@ -19,6 +19,8 @@
 #include "play_controller.hpp"
 #include "actions/undo.hpp"
 #include "game_end_exceptions.hpp"
+#include "syncmp_handler.hpp"
+
 #include <boost/lexical_cast.hpp>
 
 #include <cassert>
@@ -170,6 +172,7 @@ namespace
 		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error)
 	};
 }
+
 void synced_context::pull_remote_user_input()
 {
 	//we sended data over the network.
@@ -190,24 +193,7 @@ void synced_context::pull_remote_user_input()
 				//ignore, since it will be thwown throw again.
 			}
 		}
-		try
-		{
-			ai::manager::raise_sync_network();
-		}
-		catch(end_turn_exception&)
-		{
-			//ignore, since it will be thwown again.
-		}
-
-		try
-		{
-			// in some cases network::receive_data only returns the wanted result on the second try.
-			ai::manager::raise_sync_network();
-		}
-		catch(end_turn_exception&)
-		{
-			//ignore, since it will throw again.
-		}
+		syncmp_registry::pull_remote_choice();
 	}
 	catch(network::error& err)
 	{
@@ -216,6 +202,11 @@ void synced_context::pull_remote_user_input()
 
 }
 
+void synced_context::send_user_choice()
+{
+	is_simultaneously_ = true;
+	syncmp_registry::send_user_choice();
+}
 
 boost::shared_ptr<random_new::rng> synced_context::get_rng_for_action()
 {

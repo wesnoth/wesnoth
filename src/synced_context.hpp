@@ -78,6 +78,10 @@ public:
 	*/
 	static void pull_remote_user_input();
 	/*
+		called from get_user_choice;
+	*/
+	static void send_user_choice();
+	/*
 		a function to be passed to run_in_synced_context to assert false on error (the default).
 	*/
 	static void default_error_function(const std::string& message, bool heavy);
@@ -121,10 +125,6 @@ private:
 		false = we are on a local turn and haven't sended anything yet.
 	*/
 	static bool is_simultaneously_;
-	/*
-		TODO: replace ai::manager::raise_sync_network with this event because ai::manager::raise_sync_network has nothing to do with ai anymore.
-	*/
-	static events::generic_event remote_user_input_required_;
 };
 
 /*

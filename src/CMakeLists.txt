@@ -878,6 +878,7 @@ set(wesnoth-main_SRC
 	synced_checkup.cpp
 	synced_context.cpp
 	synced_commands.cpp
+	syncmp_handler.cpp
 	team.cpp
 	terrain_filter.cpp
 	tod_manager.cpp
