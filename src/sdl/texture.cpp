@@ -348,6 +348,8 @@ void ttexture::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
 	mod_r_ = r;
 	mod_g_ = g;
 	mod_b_ = b;
+
+	SDL_SetTextureColorMod(texture_, r, g, b);
 }
 
 Uint8 ttexture::red_mod() const
