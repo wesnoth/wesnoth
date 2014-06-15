@@ -1,6 +1,8 @@
 #include "syncmp_handler.hpp"
 
 #include <cassert>
+#include <algorithm>
+
 #include <boost/foreach.hpp>
 
 syncmp_handler::syncmp_handler()
