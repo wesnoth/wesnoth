@@ -398,10 +398,10 @@ void manager::remove_turn_started_observer( events::observer* event_observer )
 	turn_started_.detach_handler(event_observer);
 }
 
-void manager::raise_user_interact() {
+void manager::raise_user_interact(bool force_now) {
         const int interact_time = 30;
         const int time_since_interact = SDL_GetTicks() - last_interact_;
-        if(time_since_interact < interact_time) {
+        if(time_since_interact < interact_time && !force_now) {
                 return;
         }
 

@@ -161,7 +161,7 @@ namespace
 		IMPLEMENT_LUA_JAILBREAK_EXCEPTION(lua_network_error)
 	};
 }
-void synced_context::pull_remote_user_input()
+void synced_context::pull_remote_user_input(bool send_only)
 {
 	//we sended data over the network.
 	is_simultaneously_ = true;
@@ -174,13 +174,15 @@ void synced_context::pull_remote_user_input()
 			//because that might result in crashs if someone clicks anywhere during screenlock.
 			try
 			{
-				ai::manager::raise_user_interact();
+				ai::manager::raise_user_interact(send_only);
 			}
 			catch(end_turn_exception&)
 			{
 				//ignore, since it will be thwown throw again.
 			}
 		}
+		if(send_only)
+			return;
 		try
 		{
 			ai::manager::raise_sync_network();

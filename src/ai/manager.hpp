@@ -184,8 +184,10 @@ public:
 	 * with the interface. This function will make sure that interaction
 	 * doesn't occur too often, so there is no problem with calling it very
 	 * regularly.
+	 * @param force ignore if we already called this function recenlty, 
+	 *    this is part of a hack related to mp_sync
 	 */
-	static void raise_user_interact();
+	static void raise_user_interact(bool force= false);
 
 	/**
 	 * Notifies all observers of 'ai_sync_network' event.

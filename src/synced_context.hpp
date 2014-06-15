@@ -76,7 +76,7 @@ public:
 	/*
 		called from get_user_choice; 
 	*/
-	static void pull_remote_user_input();
+	static void pull_remote_user_input(bool send_only = false);
 	/*
 		a function to be passed to run_in_synced_context to assert false on error (the default).
 	*/
