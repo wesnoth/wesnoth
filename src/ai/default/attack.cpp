@@ -28,6 +28,7 @@
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)
@@ -96,7 +97,7 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 
 	for (m = movements.begin(); m != movements.end(); ++m) {
 		// We fix up units map to reflect what this would look like.
-		unit *up = units.extract(m->first);
+		UnitPtr up = units.extract(m->first);
 		up->set_location(m->second);
 		units.insert(up);
 		double m_aggression = aggression;

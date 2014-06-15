@@ -117,12 +117,12 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 {
 	action_ptr action = *action_it;
 	bool acted=false;
-	unit* unit = action->get_unit();
+	UnitPtr unit = action->get_unit();
 	if(!unit) {
 		return;
 	}
 
-	if(acted_this_turn_.find(unit) == acted_this_turn_.end()) {
+	if(acted_this_turn_.find(unit.get()) == acted_this_turn_.end()) {
 		//reset MP
 		unit->set_movement(unit->total_movement());
 		acted=true;
@@ -134,9 +134,9 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 
 	if(erval != action::OK) {
 		// We do not delete obstructed moves, nor invalid actions caused by obstructed moves.
-		if(has_invalid_actions_.find(unit) == has_invalid_actions_.end()) {
+		if(has_invalid_actions_.find(unit.get()) == has_invalid_actions_.end()) {
 			if(erval == action::TOO_FAR || (erval == action::LOCATION_OCCUPIED && boost::dynamic_pointer_cast<move>(action))) {
-				has_invalid_actions_.insert(unit);
+				has_invalid_actions_.insert(unit.get());
 				invalid_actions_.push_back(action_it);
 			} else {
 				sa.remove_action(action_it, false);
@@ -149,10 +149,10 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	}
 
 	// We do not keep invalid actions replaced by a valid one.
-	std::set<class unit const*>::iterator invalid_it = has_invalid_actions_.find(unit);
+	std::set<class unit const*>::iterator invalid_it = has_invalid_actions_.find(unit.get());
 	if(invalid_it != has_invalid_actions_.end()) {
 		for(std::list<side_actions::iterator>::iterator it = invalid_actions_.begin(); it != invalid_actions_.end();) {
-			if((**it)->get_unit() == unit) {
+			if((**it)->get_unit().get() == unit.get()) {
 				sa.remove_action(*it, false);
 				it = invalid_actions_.erase(it);
 			} else {
@@ -163,7 +163,7 @@ void mapbuilder::process(side_actions &sa, side_actions::iterator action_it)
 	}
 
 	if(acted) {
-		acted_this_turn_.insert(unit);
+		acted_this_turn_.insert(unit.get());
 	}
 
 	action->apply_temp_modifier(unit_map_);
@@ -181,8 +181,8 @@ void mapbuilder::post_visit_team(size_t turn)
 		move_ptr move = boost::dynamic_pointer_cast<class move>(action);
 		if(move) {
 			move->set_turn_number(0);
-			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit()) == 0) {
-				seen.insert(move->get_unit());
+			if(move->get_route().steps.size() > 1 && seen.count(move->get_unit().get()) == 0) {
+				seen.insert(move->get_unit().get());
 				move->set_turn_number(turn + 1);
 			}
 		}

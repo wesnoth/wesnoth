@@ -18,6 +18,7 @@
 #include "construct_dialog.hpp"
 
 #include "display.hpp"
+#include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "sound.hpp"
 #include "log.hpp"

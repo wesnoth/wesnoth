@@ -74,12 +74,13 @@ void game_board::set_all_units_user_end_turn() {
 }
 
 void game_board::all_survivors_to_recall() {
-	BOOST_FOREACH (unit & un, units_) {
-		if (teams_[un.side() - 1].persistent()) {
-			un.new_turn();
-			un.new_scenario();
+	for (unit_map::iterator it = units_.begin(); it != units_.end(); it++) {
+		UnitPtr un =  it.get_shared_ptr();
+		if (teams_[un->side() - 1].persistent()) {
+			un->new_turn();
+			un->new_scenario();
 #if 0
-			teams_[un.side() - 1].recall_list().push_back(un);
+			teams_[un->side() - 1].recall_list().push_back(un);
 #endif
 		}
 	}
@@ -140,14 +141,14 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 	}
 }
 
-bool game_board::try_add_unit_to_recall_list(const map_location& loc, const unit& u)
+bool game_board::try_add_unit_to_recall_list(const map_location& loc, const UnitPtr u)
 {
-	if(teams_[u.side()-1].persistent()) {
-		teams_[u.side()-1].recall_list().push_back(u);
+	if(teams_[u->side()-1].persistent()) {
+		teams_[u->side()-1].recall_list().push_back(u);
 		return true;
 	} else {
-		ERR_RG << "unit with id " << u.id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
-			<< u.side() << " has no recall list.\n";
+		ERR_RG << "unit with id " << u->id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "
+			<< u->side() << " has no recall list.\n";
 		return false;
 	}
 }
@@ -167,7 +168,7 @@ boost::optional<std::string> game_board::replace_map(const gamemap & newmap) {
 
 	for (unit_map::iterator itor = units_.begin(); itor != units_.end(); ) {
 		if (!newmap.on_board(itor->get_location())) {
-			if (!try_add_unit_to_recall_list(itor->get_location(), *itor)) {
+			if (!try_add_unit_to_recall_list(itor->get_location(), itor.get_shared_ptr())) {
 				*ret = std::string("replace_map: Cannot add a unit that would become off-map to the recall list\n");
 			}
 			units_.erase(itor++);
@@ -256,9 +257,9 @@ void game_board::write_config(config & cfg) const {
 		}
 		//recall list
 		{
-			BOOST_FOREACH(const unit & j, t->recall_list()) {
+			BOOST_FOREACH(const UnitConstPtr & j, t->recall_list()) {
 				config& u = side.add_child("unit");
-				j.write(u);
+				j->write(u);
 			}
 		}
 	}
@@ -322,7 +323,7 @@ temporary_unit_remover::~temporary_unit_remover()
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst, int new_moves)
 	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? NULL : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
 
@@ -337,7 +338,7 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
                                            const map_location& dst, int new_moves)
 	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? NULL : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	std::pair<unit_map::iterator, bool> move_result = m_.move(src_, dst_);
 
@@ -356,7 +357,7 @@ temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& sr
 temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
                                            const map_location& dst)
 	: m_(m), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? NULL : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	m_.move(src_, dst_);
 }
@@ -364,7 +365,7 @@ temporary_unit_mover::temporary_unit_mover(unit_map& m, const map_location& src,
 temporary_unit_mover::temporary_unit_mover(game_board& b, const map_location& src,
                                            const map_location& dst)
 	: m_(b.units_), src_(src), dst_(dst), old_moves_(-1),
-	  temp_(src == dst ? NULL : m_.extract(dst))
+	  temp_(src == dst ? UnitPtr() : m_.extract(dst))
 {
 	m_.move(src_, dst_);
 }

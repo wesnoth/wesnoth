@@ -37,7 +37,7 @@ struct dummy_action: action{
 	void remove_temp_modifier(unit_map&){}
 	void draw_hex(const map_location&){}
 	map_location get_numbering_hex() const { return map_location(); }
-	unit* get_unit() const { return 0; }
+	UnitPtr get_unit() const { return UnitPtr(); }
 	fake_unit_ptr get_fake_unit(){ return fake_unit_ptr(); }
 	error check_validity() const { return OK; }
 };

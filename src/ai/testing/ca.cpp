@@ -29,6 +29,7 @@
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
 #include "../../pathfind/teleport.hpp"
 

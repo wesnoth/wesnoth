@@ -39,6 +39,7 @@
 #include "../mouse_handler_base.hpp"
 #include "../resources.hpp"
 #include "../tod_manager.hpp"
+#include "../unit.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -775,9 +776,9 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 }
 
 
-const std::vector<unit>& readonly_context_impl::get_recall_list() const
+const std::vector<UnitPtr>& readonly_context_impl::get_recall_list() const
 {
-	static std::vector<unit> dummy_units;
+	static std::vector<UnitPtr> dummy_units;
 	///@todo 1.9: check for (level_["disallow_recall"]))
 	if(!current_team().persistent()) {
 		return dummy_units;

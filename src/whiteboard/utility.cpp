@@ -61,19 +61,19 @@ side_actions_ptr current_side_actions()
 	return side_actions;
 }
 
-unit const* find_backup_leader(unit const& leader)
+UnitConstPtr find_backup_leader(const unit & leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::gameboard->map().is_keep(leader.get_location()));
-	BOOST_FOREACH(unit const& unit, *resources::units)
+	for (unit_map::const_iterator unit = resources::units->begin(); unit != resources::units->end(); unit++)
 	{
-		if (unit.can_recruit() && unit.id() != leader.id())
+		if (unit->can_recruit() && unit->id() != leader.id())
 		{
-			if ( can_recruit_on(unit, leader.get_location()) )
-				return &unit;
+			if ( can_recruit_on(*unit, leader.get_location()) )
+				return unit.get_shared_ptr();
 		}
 	}
-	return NULL;
+	return UnitConstPtr();
 }
 
 unit* find_recruiter(size_t team_index, map_location const& hex)

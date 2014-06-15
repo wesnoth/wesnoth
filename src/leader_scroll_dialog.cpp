@@ -26,6 +26,8 @@
 //#include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "resources.hpp"
+#include "unit.hpp"
+
 //
 //#include <boost/foreach.hpp>
 

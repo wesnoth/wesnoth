@@ -71,11 +71,11 @@ recall::recall(config const& cfg, bool hidden)
 {
 	// Construct and validate temp_unit_
 	size_t underlying_id = cfg["temp_unit_"];
-	BOOST_FOREACH(unit const& recall_unit, resources::teams->at(team_index()).recall_list())
+	BOOST_FOREACH(const UnitConstPtr & recall_unit, resources::teams->at(team_index()).recall_list())
 	{
-		if(recall_unit.underlying_id()==underlying_id)
+		if(recall_unit->underlying_id()==underlying_id)
 		{
-			temp_unit_.reset(new unit(recall_unit));
+			temp_unit_.reset(new unit(*recall_unit)); //TODO: is it necessary to make a copy?
 			break;
 		}
 	}
@@ -144,21 +144,21 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
 	//temporarily remove unit from recall list
-	std::vector<unit>& recalls = resources::teams->at(team_index()).recall_list();
-	std::vector<unit>::iterator it = find_if_matches_id(recalls, temp_unit_->id());
+	std::vector<UnitPtr>& recalls = resources::teams->at(team_index()).recall_list();
+	std::vector<UnitPtr>::iterator it = find_if_matches_id(recalls, temp_unit_->id());
 	assert(it != recalls.end());
 
 	//Add cost to money spent on recruits.
 	int cost = resources::teams->at(team_index()).recall_cost();
-	if (it->recall_cost() > -1) {
-		cost = it->recall_cost();
+	if ((*it)->recall_cost() > -1) {
+		cost = (*it)->recall_cost();
 	}
 
 	recalls.erase(it);
 
 	// Temporarily insert unit into unit_map
 	//unit map takes ownership of temp_unit
-	unit_map.insert(temp_unit_.release());
+	unit_map.insert(temp_unit_);
 
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(cost);
 	// Update gold in top bar
@@ -167,11 +167,11 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 
 void recall::remove_temp_modifier(unit_map& unit_map)
 {
-	temp_unit_.reset(unit_map.extract(recall_hex_));
+	temp_unit_ = unit_map.extract(recall_hex_);
 	assert(temp_unit_.get());
 
 	//Put unit back into recall list
-	resources::teams->at(team_index()).recall_list().push_back(*temp_unit_);
+	resources::teams->at(team_index()).recall_list().push_back(temp_unit_);
 }
 
 void recall::draw_hex(map_location const& hex)
@@ -209,7 +209,7 @@ action::error recall::check_validity() const
 		return LOCATION_OCCUPIED;
 	}
 	//Check that unit to recall is still in side's recall list
-	const std::vector<unit>& recalls = (*resources::teams)[team_index()].recall_list();
+	const std::vector<UnitPtr>& recalls = (*resources::teams)[team_index()].recall_list();
 	if( find_if_matches_id(recalls, temp_unit_->id()) == recalls.end() ) {
 		return UNIT_UNAVAILABLE;
 	}

@@ -970,10 +970,10 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		for(std::vector<team>::iterator pi = resources::teams->begin();
 				pi!=resources::teams->end(); ++pi)
 		{
-			std::vector<unit>& avail_units = pi->recall_list();
-			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
+			std::vector<UnitPtr>& avail_units = pi->recall_list();
+			for(std::vector<UnitPtr>::iterator j = avail_units.begin(); j != avail_units.end();) {
 				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
-				if (j->matches_filter(cfg, map_location())) {
+				if ((*j)->matches_filter(cfg, map_location())) {
 					j = avail_units.erase(j);
 				} else {
 					++j;
@@ -1574,16 +1574,16 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			continue;
 		}
 
-		std::vector<unit>& avail = (*resources::teams)[index].recall_list();
+		std::vector<UnitPtr>& avail = (*resources::teams)[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
-		for(std::vector<unit>::iterator u = avail.begin(); u != avail.end(); ++u) {
+		for(std::vector<UnitPtr>::iterator u = avail.begin(); u != avail.end(); ++u) {
 			DBG_NG << "checking unit against filter...\n";
 			scoped_recall_unit auto_store("this_unit", player_id, u - avail.begin());
-			if (u->matches_filter(unit_filter, map_location())) {
-				DBG_NG << u->id() << " matched the filter...\n";
-				const unit to_recruit(*u);
-				const unit* pass_check = &to_recruit;
+			if ((*u)->matches_filter(unit_filter, map_location())) {
+				DBG_NG << (*u)->id() << " matched the filter...\n";
+				const UnitPtr to_recruit = *u;
+				const unit* pass_check = to_recruit.get();
 				if(!cfg["check_passability"].to_bool(true)) pass_check = NULL;
 				const map_location cfg_loc = cfg_to_loc(cfg);
 
@@ -1592,7 +1592,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 					DBG_NG << "...considering " + leader->id() + " as the recalling leader...\n";
 					map_location loc = cfg_loc;
 					if ( (leader_filter.null() || leader->matches_filter(leader_filter))  &&
-					     u->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
+					     (*u)->matches_filter(vconfig(leader->recall_filter()), map_location()) ) {
 						DBG_NG << "...matched the leader filter and is able to recall the unit.\n";
 						if(!resources::gameboard->map().on_board(loc))
 							loc = leader->get_location();
@@ -1601,7 +1601,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 						if(resources::gameboard->map().on_board(loc)) {
 							DBG_NG << "...valid location for the recall found. Recalling.\n";
 							avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
-							actions::place_recruit(to_recruit, loc, leader->get_location(), 0, true,
+							actions::place_recruit(*to_recruit, loc, leader->get_location(), 0, true,
 							                       cfg["show"].to_bool(true), cfg["fire_event"].to_bool(false),
 							                       true, true);
 							return;
@@ -1617,7 +1617,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 						DBG_NG << "No usable leader found, but found usable location. Recalling.\n";
 						avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 						map_location null_location = map_location::null_location();
-						actions::place_recruit(to_recruit, loc, null_location, 0, true, cfg["show"].to_bool(true),
+						actions::place_recruit(*to_recruit, loc, null_location, 0, true, cfg["show"].to_bool(true),
 						                       cfg["fire_event"].to_bool(false), true, true);
 						return;
 					}
@@ -1795,10 +1795,10 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				}
 				// Iterate over the player's recall list to find a match
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
-					unit& u = pi->recall_list()[i];
+					UnitPtr & u = pi->recall_list()[i];
 					scoped_recall_unit auto_store("this_unit", player_id, i);
-					if (u.matches_filter(filter, map_location())) {
-						u.set_role(cfg["role"]);
+					if (u->matches_filter(filter, map_location())) {
+						u->set_role(cfg["role"]);
 						found=true;
 						break;
 					}
@@ -2513,16 +2513,16 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 	try {
 		config tmp_cfg(var);
-		const unit u(tmp_cfg, false);
+		const UnitPtr u = UnitPtr( new unit(tmp_cfg, false));
 
-		preferences::encountered_units().insert(u.type_id());
+		preferences::encountered_units().insert(u->type_id());
 		map_location loc = cfg_to_loc(
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		const bool advance = cfg["advance"].to_bool(true);
 		if(resources::gameboard->map().on_board(loc)) {
 			if (cfg["find_vacant"].to_bool()) {
 				const unit* pass_check = NULL;
-				if (cfg["check_passability"].to_bool(true)) pass_check = &u;
+				if (cfg["check_passability"].to_bool(true)) pass_check = u.get();
 				loc = pathfind::find_vacant_tile(
 						loc,
 						pathfind::VACANT_ANY,
@@ -2530,7 +2530,7 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 
 			resources::units->erase(loc);
-			resources::units->add(loc, u);
+			resources::units->add(loc, *u);
 
 			std::string text = cfg["text"];
 			play_controller *controller = resources::controller;
@@ -2547,19 +2547,19 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			        && (loop_limit > 0) )
 			{
 				loop_limit--;
-				int total_opt = unit_helper::number_of_possible_advances(u);
-				bool use_dialog = side == u.side() &&
+				int total_opt = unit_helper::number_of_possible_advances(*u);
+				bool use_dialog = side == u->side() &&
 					(*resources::teams)[side - 1].is_human();
 				config selected = mp_sync::get_user_choice("choose",
 					unstore_unit_advance_choice(total_opt, loc, use_dialog));
 				dialogs::animate_unit_advancement(loc, selected["value"], cfg["fire_event"].to_bool(false), cfg["animate"].to_bool(true));
 			}
 		} else {
-			if(advance && u.advances()) {
+			if(advance && u->advances()) {
 				WRN_NG << "Cannot advance units when unstoring to the recall list." << std::endl;
 			}
 
-			team& t = (*resources::teams)[u.side()-1];
+			team& t = (*resources::teams)[u->side()-1];
 
 			if(t.persistent()) {
 
@@ -2570,12 +2570,12 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				// replaced by the wrong unit.
 				if(t.recall_list().size() > 1) {
 					std::vector<size_t> desciptions;
-					for(std::vector<unit>::const_iterator citor =
+					for(std::vector<UnitPtr>::const_iterator citor =
 							t.recall_list().begin();
 							citor != t.recall_list().end(); ++citor) {
 
 						const size_t desciption =
-							citor->underlying_id();
+							(*citor)->underlying_id();
 						if(std::find(desciptions.begin(), desciptions.end(),
 									desciption) != desciptions.end()) {
 
@@ -2593,29 +2593,29 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				 * @todo it would be better to change recall_list() from
 				 * a vector to a map and use the underlying_id as key.
 				 */
-				const size_t key = u.underlying_id();
-				for(std::vector<unit>::iterator itor =
+				const size_t key = u->underlying_id();
+				for(std::vector<UnitPtr>::iterator itor =
 						t.recall_list().begin();
 						itor != t.recall_list().end(); ++itor) {
 
 					LOG_NG << "Replaced unit '"
 						<< key << "' on the recall list\n";
-					if(itor->underlying_id() == key) {
+					if((*itor)->underlying_id() == key) {
 						t.recall_list().erase(itor);
 						break;
 					}
 				}
 				t.recall_list().push_back(u);
 			} else {
-				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u.side()
+				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u->side()
 					<< " and the map location is invalid.\n";
 			}
 		}
 
 		// If we unstore a leader make sure the team gets a leader if not the loading
 		// in MP might abort since a side without a leader has a recall list.
-		if(u.can_recruit()) {
-			(*resources::teams)[u.side() - 1].have_leader();
+		if(u->can_recruit()) {
+			(*resources::teams)[u->side() - 1].have_leader();
 		}
 
 	} catch (game::game_error &e) {
