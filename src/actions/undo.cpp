@@ -59,11 +59,11 @@ struct undo_list::dismiss_action : undo_list::undo_action {
 	UnitPtr dismissed_unit;
 
 
-	explicit dismiss_action(const UnitPtr dismissed) : undo_action(),
-		dismissed_unit(dismissed)
+	explicit dismiss_action(const UnitConstPtr dismissed) : undo_action(),
+		dismissed_unit(new unit(*dismissed))
 	{}
 	explicit dismiss_action(const config & unit_cfg) : undo_action(),
-		dismissed_unit(UnitPtr (new unit(unit_cfg)))
+		dismissed_unit(new unit(unit_cfg))
 	{}
 	virtual ~dismiss_action();
 
@@ -86,7 +86,7 @@ struct undo_list::move_action : undo_list::undo_action {
 	map_location goto_hex;
 
 
-	move_action(const UnitPtr moved,
+	move_action(const UnitConstPtr moved,
 	            const std::vector<map_location>::const_iterator & begin,
 	            const std::vector<map_location>::const_iterator & end,
 	            int sm, int timebonus, int orig, const map_location::DIRECTION dir) :
@@ -127,7 +127,7 @@ struct undo_list::recall_action : undo_list::undo_action {
 	map_location recall_from;
 
 
-	recall_action(const UnitPtr recalled, const map_location& loc,
+	recall_action(const UnitConstPtr recalled, const map_location& loc,
 	              const map_location& from) :
 		undo_action(recalled, loc),
 		id(recalled->id()),
@@ -157,7 +157,7 @@ struct undo_list::recruit_action : undo_list::undo_action {
 	map_location recruit_from;
 
 
-	recruit_action(const UnitPtr recruited, const map_location& loc,
+	recruit_action(const UnitConstPtr recruited, const map_location& loc,
 	               const map_location& from) :
 		undo_action(recruited, loc),
 		u_type(recruited->type()),
@@ -399,7 +399,7 @@ void undo_list::add_auto_shroud(bool turned_on)
 /**
  * Adds a dismissal to the undo stack.
  */
-void undo_list::add_dismissal(const UnitPtr u)
+void undo_list::add_dismissal(const UnitConstPtr u)
 {
 	add(new dismiss_action(u));
 }
@@ -407,7 +407,7 @@ void undo_list::add_dismissal(const UnitPtr u)
 /**
  * Adds a move to the undo stack.
  */
-void undo_list::add_move(const UnitPtr u,
+void undo_list::add_move(const UnitConstPtr u,
                          const std::vector<map_location>::const_iterator & begin,
                          const std::vector<map_location>::const_iterator & end,
                          int start_moves, int timebonus, int village_owner,
@@ -419,7 +419,7 @@ void undo_list::add_move(const UnitPtr u,
 /**
  * Adds a recall to the undo stack.
  */
-void undo_list::add_recall(const UnitPtr u, const map_location& loc,
+void undo_list::add_recall(const UnitConstPtr u, const map_location& loc,
                            const map_location& from)
 {
 	add(new recall_action(u, loc, from));
@@ -428,7 +428,7 @@ void undo_list::add_recall(const UnitPtr u, const map_location& loc,
 /**
  * Adds a recruit to the undo stack.
  */
-void undo_list::add_recruit(const UnitPtr u, const map_location& loc,
+void undo_list::add_recruit(const UnitConstPtr u, const map_location& loc,
                             const map_location& from)
 {
 	add(new recruit_action(u, loc, from));

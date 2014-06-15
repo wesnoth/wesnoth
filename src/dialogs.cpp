@@ -85,20 +85,20 @@ namespace
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<UnitPtr >& units) : disp_(disp), filter_(filter), units_(units) {}
+	delete_recall_unit(display& disp, gui::filter_textbox& filter, const std::vector<UnitConstPtr >& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	display& disp_;
 	gui::filter_textbox& filter_;
-	const std::vector<UnitPtr >& units_;
+	const std::vector<UnitConstPtr >& units_;
 };
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
 {
 	const size_t index = size_t(filter_.get_index(menu_selection));
 	if(index < units_.size()) {
-		const UnitPtr & u_ptr = units_[index];
+		const UnitConstPtr & u_ptr = units_[index];
 		const unit & u = *u_ptr;
 
 		//If the unit is of level > 1, or is close to advancing,
@@ -442,9 +442,9 @@ int recruit_dialog(display& disp, std::vector< const unit_type* >& units, const 
 
 
 #ifdef LOW_MEM
-int recall_dialog(display& disp, std::vector< UnitPtr >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, std::vector< UnitConstPtr >& units, int /*side*/, const std::string& title_suffix, const int team_recall_cost)
 #else
-int recall_dialog(display& disp, std::vector< UnitPtr >& units, int side, const std::string& title_suffix, const int team_recall_cost)
+int recall_dialog(display& disp, std::vector< UnitConstPtr >& units, int side, const std::string& title_suffix, const int team_recall_cost)
 #endif
 {
 	std::vector<std::string> options, options_to_filter;
@@ -463,7 +463,7 @@ int recall_dialog(display& disp, std::vector< UnitPtr >& units, int side, const 
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	BOOST_FOREACH(const UnitPtr & u, units)
+	BOOST_FOREACH(const UnitConstPtr & u, units)
 	{
 		std::stringstream option, option_to_filter;
 		std::string name = u->name();
@@ -1208,13 +1208,13 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(UnitPtr u, TYPE type, bool on_left_side) :
+units_list_preview_pane::units_list_preview_pane(UnitConstPtr u, TYPE type, bool on_left_side) :
 	unit_preview_pane(NULL, type, on_left_side),
 	units_(1, u)
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(const std::vector<UnitPtr > &units,
+units_list_preview_pane::units_list_preview_pane(const std::vector<UnitConstPtr > &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(units)
@@ -1227,7 +1227,7 @@ units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
 	units_(units.size())
 {
 	for (unsigned i = 0; i < units.size(); ++i)
-		units_[i] = UnitPtr (new unit(units[i]));
+		units_[i] = UnitConstPtr (new unit(units[i]));
 }
 
 size_t units_list_preview_pane::size() const

@@ -41,6 +41,7 @@
 #include "../synced_checkup.hpp"
 #include "../synced_context.hpp"
 #include "../team.hpp"
+#include "../unit.hpp"
 #include "../unit_display.hpp"
 #include "../variable.hpp"
 #include "../whiteboard/manager.hpp"
@@ -288,6 +289,12 @@ bool can_recruit_from(const map_location& leader_loc, int side)
 	       != map_location::null_location();
 }
 
+bool can_recruit_from(const unit& leader)
+{
+	return can_recruit_from(leader.get_location(), leader.side());
+}
+
+
 /**
  * Checks to see if a leader at @a leader_loc could recruit on @a recruit_loc.
  * This takes into account terrain, shroud (for side @a side), and whether or
@@ -328,6 +335,11 @@ bool can_recruit_on(const map_location& leader_loc, const map_location& recruit_
 		pathfind::a_star_search(leader_loc, recruit_loc, map.w()+map.h(), &calc,
 		                        map.w(), map.h());
 	return !rt.steps.empty();
+}
+
+bool can_recruit_on(const unit& leader, const map_location& recruit_loc)
+{
+	return can_recruit_on(leader.get_location(), recruit_loc, leader.side()); 
 }
 
 
@@ -405,14 +417,14 @@ namespace { // Helpers for get_recalls()
 	 * underlying ID of units added to @a result will be added to @a already_added.
 	 */
 	void add_leader_filtered_recalls(const UnitPtr leader,
-	                                 std::vector< UnitPtr > & result,
+	                                 std::vector< UnitConstPtr > & result,
 	                                 std::set<size_t> * already_added = NULL)
 	{
-		team& leader_team = (*resources::teams)[leader->side()-1];
-		std::vector<UnitPtr >& recall_list = leader_team.recall_list();
+		const team& leader_team = (*resources::teams)[leader->side()-1];
+		const std::vector<UnitPtr >& recall_list = leader_team.recall_list();
 		const std::string& save_id = leader_team.save_id();
 
-		BOOST_FOREACH(UnitPtr & recall_unit_ptr, recall_list)
+		BOOST_FOREACH(const UnitConstPtr & recall_unit_ptr, recall_list)
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
@@ -420,7 +432,7 @@ namespace { // Helpers for get_recalls()
 			if ( !already_added  ||  already_added->count(underlying_id) == 0 )
 			{
 				// Only units that match the leader's recall filter are valid.
-				std::vector<UnitPtr >::iterator rit = find_if_matches_id(recall_list, recall_unit.id());
+				const std::vector<UnitPtr >::const_iterator rit = find_if_matches_id(recall_list, recall_unit.id());
 
 				scoped_recall_unit this_unit("this_unit", save_id, rit - recall_list.begin());
 
@@ -435,11 +447,11 @@ namespace { // Helpers for get_recalls()
 	}
 }// anonymous namespace
 
-std::vector<UnitPtr > get_recalls(int side, const map_location &recall_loc)
+std::vector<UnitConstPtr > get_recalls(int side, const map_location &recall_loc)
 {
 	LOG_NG << "getting recall list for side " << side << " at location " << recall_loc << "\n";
 
-	std::vector<UnitPtr > result;
+	std::vector<UnitConstPtr > result;
 
 	/*
 	 * We have three use cases:
@@ -454,7 +466,7 @@ std::vector<UnitPtr > get_recalls(int side, const map_location &recall_loc)
 
 	// Check for a leader at recall_loc (means we are recalling from there,
 	// rather than to there).
-	unit_map::iterator find_it = resources::units->find(recall_loc);
+	const unit_map::const_iterator find_it = resources::units->find(recall_loc);
 	if ( find_it != resources::units->end() ) {
 		if ( find_it->can_recruit()  &&  find_it->side() == side  &&
 		     resources::gameboard->map().is_keep(recall_loc) )
@@ -473,7 +485,7 @@ std::vector<UnitPtr > get_recalls(int side, const map_location &recall_loc)
 
 	if ( allow_local )
 	{
-		unit_map::iterator u = resources::units->begin(),
+		unit_map::const_iterator u = resources::units->begin(),
 				u_end = resources::units->end();
 		std::set<size_t> valid_local_recalls;
 
@@ -494,8 +506,8 @@ std::vector<UnitPtr > get_recalls(int side, const map_location &recall_loc)
 	if ( !leader_in_place )
 	{
 		// Return the full recall list.
-		std::vector< UnitPtr >& recall_list = (*resources::teams)[side-1].recall_list();
-		BOOST_FOREACH(UnitPtr & recall, recall_list)
+		const std::vector< UnitPtr >& recall_list = (*resources::teams)[side-1].recall_list();
+		BOOST_FOREACH(const UnitConstPtr & recall, recall_list)
 		{
 			result.push_back(recall);
 		}

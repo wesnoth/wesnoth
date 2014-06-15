@@ -27,5 +27,6 @@ void intrusive_ptr_add_ref(const unit *);
 void intrusive_ptr_release(const unit *);
 
 typedef boost::intrusive_ptr<unit> UnitPtr;
+typedef boost::intrusive_ptr<const unit> UnitConstPtr;
 
 #endif
