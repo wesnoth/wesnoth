@@ -236,6 +236,14 @@ void wait::join_game(bool observe)
 		const config* campaign = &resources::config_manager->
 			game_config().find_child("campaign", "id",
 				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["mp_campaign"]);
+
+		const config* scenario = &resources::config_manager->
+			game_config().find_child("multiplayer", "id",
+				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["id"]);
+
+		const config* era = &resources::config_manager->
+			game_config().find_child("era", "id", level_.child("era")["id"]);
+
 		if (*campaign) {
 			state_.classification().difficulty =
 				level_.child(lexical_cast<std::string>(game_classification::MULTIPLAYER))["difficulty_define"].str();
@@ -244,6 +252,24 @@ void wait::join_game(bool observe)
 			state_.classification().campaign_xtra_defines =
 				utils::split((*campaign)["extra_defines"]);
 		}
+
+		if (*scenario)
+			state_.classification().scenario_define =
+				(*scenario)["define"].str();
+
+		if (*era)
+			state_.classification().era_define =
+				(*era)["define"].str();
+
+		BOOST_FOREACH(const config& mod, level_.child_range("modification")) {
+			const config* modification = &resources::config_manager->
+				game_config().find_child("modification", "id", mod["id"]);
+			if (*modification) {
+				state_.classification().mod_defines.push_back(
+					(*modification)["define"].str());
+			}
+		}
+
 
 		// Make sure that we have the same config as host, if possible.
 		resources::config_manager->
