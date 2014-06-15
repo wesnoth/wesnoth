@@ -71,6 +71,11 @@ stringfixes = {
 ("Choose file", "Choose File"),
 ),
 
+"wesnoth-lib" : (
+# conversion added in 1.11.15+dev
+("SP/MP Campaigns", "SP/MP campaigns"),
+),
+
 "1.10-announcement" : (
 ("roleplaying", "role-playing"),
 ),
