@@ -237,7 +237,6 @@ public:
 	 * Data from this team will be displayed in the game status.
 	 * set_playing_team sets the team whose turn it currently is
 	 */
-	void set_team(size_t team, bool observe=false);
 	void set_playing_team(size_t team);
 
 
