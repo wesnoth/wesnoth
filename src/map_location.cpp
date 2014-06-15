@@ -166,7 +166,7 @@ map_location::DIRECTION map_location::get_relative_dir(const map_location & loc,
 
 		int dx = loc.x - x;
 		int dy = loc.y - y;
-		if (loc.x%2==1 && x%2==0) dy--;
+		if (loc.x%2==0 && x%2==1) dy--;
 
 		if (dx==0 && dy==0) return NDIRECTIONS;
 
