@@ -1243,10 +1243,9 @@ function ai_helper.get_attacks(units, cfg)
                 -- If another unit of same side is on this hex:
                 if my_unit_map:get(loc[1], loc[2]) and ((loc[1] ~= unit.x) or (loc[2] ~= unit.y)) then
                     attack_hex_occupied = true
+                    add_target = false
 
-                    if (not cfg.include_occupied) then
-                        add_target = false
-                    else  -- test whether it can move out of the way
+                    if cfg.include_occupied then -- Test whether it can move out of the way
                         local unit_in_way = all_units[my_unit_map:get(loc[1], loc[2])]
                         local uiw_reach
                         if reaches:get(unit_in_way.x, unit_in_way.y) then
@@ -1256,8 +1255,17 @@ function ai_helper.get_attacks(units, cfg)
                             reaches:insert(unit_in_way.x, unit_in_way.y, uiw_reach)
                         end
 
-                        -- Units that cannot move away have only one hex in uiw_reach
-                        if (#uiw_reach <= 1) then add_target = false end
+                        -- Check whether the unit to move out of the way has an unoccupied hex to move to.
+                        -- We do not deal with cases where a unit can move out of the way for a
+                        -- unit that is moving out of the way of the initial unit (etc.).
+                        for _,uiw_loc in ipairs(uiw_reach) do
+                            -- Unit in the way of the unit in the way
+                            local uiw_uiw = wesnoth.get_unit(uiw_loc[1], uiw_loc[2])
+                            if (not uiw_uiw) then
+                                add_target = true
+                                break
+                            end
+                        end
                     end
                 end
 
