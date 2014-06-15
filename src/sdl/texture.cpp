@@ -46,6 +46,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, alpha_(0)
 	, source_surface_(NULL)
 {
+	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
 	if(!texture_) {
 		throw texception("Failed to create a SDL_Texture object.", true);
 	}
@@ -336,18 +337,6 @@ Uint8 ttexture::alpha() const
 	return alpha_;
 }
 
-void ttexture::set_blend_mode(SDL_BlendMode mode)
-{
-	SDL_SetTextureBlendMode(texture_, mode);
-}
-
-SDL_BlendMode ttexture::blend_mode() const
-{
-	SDL_BlendMode res;
-	SDL_GetTextureBlendMode(texture_, &res);
-	return res;
-}
-
 void ttexture::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
 {
 	mod_r_ = r;
@@ -431,6 +420,7 @@ void ttexture::initialise_from_surface(SDL_Renderer& renderer, const int access)
 	} else {
 		throw texception("Unknown texture access mode.", false);
 	}
+	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
 }
 
 } // namespace sdl

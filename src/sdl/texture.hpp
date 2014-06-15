@@ -259,18 +259,6 @@ public:
 	 */
 	Uint8 alpha() const;
 
-	/**
-	 * Sets the blend mode of the texture.
-	 *
-	 * @param mode                One of the values enumerated in SDL_BlendMode.
-	 */
-	 void set_blend_mode(SDL_BlendMode mode);
-
-	 /**
-	  * Returns the blend mode of the texture.
-	  */
-	 SDL_BlendMode blend_mode() const;
-
 	 /**
 	  * Sets the color modulation of the texture.
 	  *
