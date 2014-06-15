@@ -20,17 +20,12 @@
  */
 
 #include "global.hpp"
+#include "replay.hpp"
 
-#include "ai/manager.hpp"
-#include "actions/attack.hpp"
-#include "actions/create.hpp"
-#include "actions/move.hpp"
 #include "actions/undo.hpp"
 #include "config_assign.hpp"
 #include "dialogs.hpp"
 #include "game_display.hpp"
-#include "game_end_exceptions.hpp"
-#include "game_events/pump.hpp"
 #include "game_preferences.hpp"
 #include "gamestatus.hpp"
 #include "log.hpp"
@@ -38,7 +33,6 @@
 #include "map_location.hpp"
 #include "play_controller.hpp"
 #include "synced_context.hpp"
-#include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
 #include "whiteboard/manager.hpp"
