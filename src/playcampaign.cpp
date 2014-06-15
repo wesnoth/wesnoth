@@ -57,12 +57,11 @@ static lg::log_domain log_engine("engine");
 static lg::log_domain log_enginerefac("enginerefac");
 #define LOG_RG LOG_STREAM(info, log_enginerefac)
 
-static void store_carryover(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
+static void show_carryover_message(saved_game& gamestate, playsingle_controller& playcontroller, display& disp, const end_level_data& end_level, const LEVEL_RESULT res){
 	bool has_next_scenario = !resources::gamedata->next_scenario().empty() &&
 			resources::gamedata->next_scenario() != "null";
-	//explain me: when could this be the case??
+	//maybe this can be the case for scenario that only contain a story and end during the prestart event ?
 	if(resources::teams->size() < 1){
-		gamestate.carryover_sides_start["next_scenario"] = resources::gamedata->next_scenario();
 		return;
 	}
 
@@ -203,7 +202,7 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 		//if we are loading from linger mode then we already did this.
 		if(res != SKIP_TO_LINGER)
 		{
-			store_carryover(state_of_game, playcontroller, disp, end_level, res);
+			show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
 		}
 		if(!disp.video().faked())
 		{
@@ -247,9 +246,9 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	{
 		if(res != OBSERVER_END && res != SKIP_TO_LINGER)
 		{
-			//We need to call this before linger because it also prints the defeated/victory message.
+			//We need to call this before linger because it prints the defeated/victory message.
 			//(we want to see that message before entering the linger mode)
-			store_carryover(state_of_game, playcontroller, disp, end_level, res);
+			show_carryover_message(state_of_game, playcontroller, disp, end_level, res);
 		}
 		else
 		{
