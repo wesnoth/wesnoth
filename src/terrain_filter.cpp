@@ -25,6 +25,7 @@
 #include "team.hpp"
 #include "terrain_filter.hpp"
 #include "tod_manager.hpp"
+#include "unit.hpp"
 #include "variable.hpp"
 
 #include <boost/foreach.hpp>

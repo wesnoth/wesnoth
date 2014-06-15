@@ -39,6 +39,7 @@
 #include "../mouse_handler_base.hpp"
 #include "../resources.hpp"
 #include "../tod_manager.hpp"
+#include "../unit.hpp"
 
 #include <boost/foreach.hpp>
 

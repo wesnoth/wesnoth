@@ -25,6 +25,7 @@
 #include "../../map.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../composite/goal.hpp"
 #include "../../pathfind/pathfind.hpp"
 

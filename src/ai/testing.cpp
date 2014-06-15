@@ -23,6 +23,7 @@
 #include "../util.hpp"
 #include "../resources.hpp"
 #include "../team.hpp"
+#include "../unit.hpp"
 #include "../tod_manager.hpp"
 
 static lg::log_domain log_ai_testing("ai/testing");

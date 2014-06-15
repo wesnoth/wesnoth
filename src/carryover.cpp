@@ -18,6 +18,7 @@
 
 #include "config.hpp"
 #include "team.hpp"
+#include "unit.hpp"
 #include "gamestatus.hpp"
 #include <boost/foreach.hpp>
 #include <cassert>

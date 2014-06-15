@@ -21,6 +21,7 @@
 #include "terrain_palettes.hpp"
 
 #include "../../gettext.hpp"
+#include "../../formula_string_utils.hpp"
 
 #include <boost/foreach.hpp>
 

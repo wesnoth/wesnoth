@@ -21,9 +21,11 @@
 
 #include "construct_dialog.hpp"
 #include "display.hpp"
+#include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "marked-up_text.hpp"
 #include "sdl/alpha.hpp"
+#include "util.hpp"
 
 #include <boost/foreach.hpp>
 

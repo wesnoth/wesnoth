@@ -32,6 +32,7 @@
 #include "../../mouse_handler_base.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
+#include "../../unit.hpp"
 #include "../../unit_display.hpp"
 #include "../../wml_exception.hpp"
 
