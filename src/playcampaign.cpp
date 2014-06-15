@@ -184,8 +184,6 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 {
 	const int ticks = SDL_GetTicks();
 	
-	state_of_game.expand_carryover();
-	
 	LOG_NG << "creating objects... " << (SDL_GetTicks() - ticks) << "\n";
 	playsingle_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks, game_config, disp.video(), skip_replay);
 	LOG_NG << "created objects... " << (SDL_GetTicks() - playcontroller.get_ticks()) << "\n";
@@ -227,7 +225,6 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		bool blindfold_replay, io_type_t& io_type, end_level_data &end_level)
 {
 	const int ticks = SDL_GetTicks();
-	state_of_game.expand_carryover();
 
 	playmp_controller playcontroller(state_of_game.get_starting_pos(), state_of_game, ticks,
 		game_config, disp.video(), skip_replay, blindfold_replay, io_type == IO_SERVER);
@@ -280,7 +277,6 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 
 	while(gamestate.valid()) {
 		config& starting_pos = gamestate.get_starting_pos();
-		config::const_child_itors story = starting_pos.child_range("story");
 
 
 		bool save_game_after_scenario = true;
@@ -306,6 +302,10 @@ LEVEL_RESULT play_game(game_display& disp, saved_game& gamestate,
 			gamestate.expand_mp_events();
 
 			sound::empty_playlist();
+
+			state_of_game.expand_carryover();
+
+			config::const_child_itors story = gamestate.get_starting_pos().child_range("story");
 
 			switch (io_type){
 			case IO_NONE:
