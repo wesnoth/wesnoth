@@ -914,7 +914,7 @@ sdl::ttexture get_texture(const locator& loc, TYPE type)
 	switch (type) {
 	case UNSCALED:
 	case SCALED_TO_ZOOM:
-		cache = &txt_hexed_images_;
+		cache = &txt_images_;
 		break;
 	case BRIGHTENED:
 		cache = &txt_brightened_images_;
