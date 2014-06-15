@@ -73,7 +73,7 @@ public:
 	virtual ~display();
 	static display* get_singleton() { return singleton_ ;}
 
-	bool show_everything() const { return !viewpoint_ && !is_blindfolded(); }
+	bool show_everything() const { return !dont_show_all_ && !is_blindfolded(); }
 
 	const gamemap& get_map() const { return dc_->map(); }
 
@@ -336,11 +336,11 @@ public:
 
 	/** Returns true if location (x,y) is covered in shroud. */
 	bool shrouded(const map_location& loc) const {
-		return is_blindfolded() || (viewpoint_ && viewpoint_->shrouded(loc));
+		return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].shrouded(loc));
 	}
 	/** Returns true if location (x,y) is covered in fog. */
 	bool fogged(const map_location& loc) const {
-		return is_blindfolded() || (viewpoint_ && viewpoint_->fogged(loc));
+		return is_blindfolded() || (dont_show_all_ && dc_->teams()[currentTeam_].fogged(loc));
 	}
 
 	/**
@@ -731,7 +731,7 @@ protected:
 
 	CVideo& screen_;
 	size_t currentTeam_;
-	const team *viewpoint_;
+	bool dont_show_all_; //const team *viewpoint_;
 	std::map<surface,SDL_Rect> energy_bar_rects_;
 	int xpos_, ypos_;
 	bool view_locked_;

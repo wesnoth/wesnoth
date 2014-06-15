@@ -143,7 +143,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	exclusive_unit_draw_requests_(),
 	screen_(video),
 	currentTeam_(0),
-	viewpoint_(NULL),
+	dont_show_all_(false),
 	energy_bar_rects_(),
 	xpos_(0),
 	ypos_(0),
@@ -357,12 +357,12 @@ void display::set_team(size_t teamindex, bool show_everything)
 	if (!show_everything)
 	{
 		labels().set_team(&dc_->teams()[teamindex]);
-		viewpoint_ = &dc_->teams()[teamindex];
+		dont_show_all_ = true;
 	}
 	else
 	{
 		labels().set_team(NULL);
-		viewpoint_ = NULL;
+		dont_show_all_ = false;
 	}
 	labels().recalculate_labels();
 	if(boost::shared_ptr<wb::manager> w = wb_.lock())
@@ -1848,7 +1848,7 @@ void display::draw_minimap()
 	}
 
 	if(minimap_ == NULL || minimap_->w > area.w || minimap_->h > area.h) {
-		minimap_ = image::getMinimap(area.w, area.h, get_map(), viewpoint_, (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
+		minimap_ = image::getMinimap(area.w, area.h, get_map(), &dc_->teams()[currentTeam_], (selectedHex_.valid() && !is_blindfolded()) ? &reach_map_ : NULL);
 		if(minimap_ == NULL) {
 			return;
 		}

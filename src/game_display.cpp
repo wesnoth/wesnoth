@@ -165,12 +165,12 @@ void game_display::highlight_hex(map_location hex)
 {
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !viewpoint_);
+		u = resources::gameboard->get_visible_unit(mouseoverHex_, dc_->teams()[viewing_team()], !dont_show_all_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
 			if (dc_->units().count(selectedHex_)) {
@@ -192,7 +192,7 @@ void game_display::display_unit_hex(map_location hex)
 
 	wb::future_map future; /**< Lasts for whole method. */
 
-	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !viewpoint_);
+	const unit *u = resources::gameboard->get_visible_unit(hex, dc_->teams()[viewing_team()], !dont_show_all_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
