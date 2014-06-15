@@ -242,8 +242,7 @@ void carryover_info::transfer_all_to(config& side_cfg){
 		iside->transfer_all_gold_to(side_cfg);
 		iside->transfer_all_recalls_to(side_cfg);
 		iside->transfer_all_recruits_to(side_cfg);
-		//TODO: enable the following line after some testing.
-		//carryover_sides_.erase(iside);
+		carryover_sides_.erase(iside);
 		return;
 	}
 	else
