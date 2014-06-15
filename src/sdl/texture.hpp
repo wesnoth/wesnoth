@@ -345,6 +345,9 @@ private:
 	/** Color modulation. */
 	Uint8 mod_r_, mod_g_, mod_b_;
 
+	/** Alpha. */
+	Uint8 alpha_;
+
 	/**
 	 * The SDL_Surface source of the @ref texture_.
 	 *

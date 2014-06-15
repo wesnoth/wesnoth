@@ -43,6 +43,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
+	, alpha_(0)
 	, source_surface_(NULL)
 {
 	if(!texture_) {
@@ -64,6 +65,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
+	, alpha_(0)
 	, source_surface_(IMG_Load(file.c_str()))
 {
 	if(source_surface_ == NULL) {
@@ -86,6 +88,7 @@ ttexture::ttexture()
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
+	, alpha_(0)
 	, source_surface_(NULL)
 {}
 
@@ -117,6 +120,7 @@ ttexture::ttexture(const ttexture& texture)
 	, mod_r_(texture.mod_r_)
 	, mod_g_(texture.mod_g_)
 	, mod_b_(texture.mod_b_)
+	, alpha_(texture.alpha_)
 	, source_surface_(texture.source_surface_)
 {
 	assert(reference_count_);
@@ -140,6 +144,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
+	, alpha_(0)
 	, source_surface_(source_surface__)
 {
 	if(source_surface_ == NULL) {
@@ -165,6 +170,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
+	, alpha_(0)
 	, source_surface_(
 			SDL_ConvertSurface(surface, surface->format, surface->flags))
 {
@@ -191,6 +197,7 @@ void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
 {
 	SDL_Rect dstrect = create_rect(x, y, clip_.w * hscale_, clip_.h * vscale_);
 
+	SDL_SetTextureAlphaMod(texture_, alpha_);
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, smooth_scaling_ ? "linear" : "nearest");
 	SDL_RenderCopyEx(&renderer, texture_, &clip_, &dstrect,
 					 rotation_, NULL, flip_);
@@ -321,14 +328,12 @@ Uint32 ttexture::format() const
 
 void ttexture::set_alpha(Uint8 alpha)
 {
-	SDL_SetTextureAlphaMod(texture_, alpha);
+	alpha_ = alpha;
 }
 
 Uint8 ttexture::alpha() const
 {
-	Uint8 res;
-	SDL_GetTextureAlphaMod(texture_, &res);
-	return res;
+	return alpha_;
 }
 
 void ttexture::set_blend_mode(SDL_BlendMode mode)
