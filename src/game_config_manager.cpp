@@ -19,6 +19,7 @@
 #include "cursor.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
+#include "game_classification.hpp"
 #include "gui/dialogs/wml_error.hpp"
 #include "hotkey/hotkey_item.hpp"
 #include "hotkey/hotkey_command.hpp"

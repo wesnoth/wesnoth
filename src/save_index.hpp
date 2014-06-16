@@ -16,10 +16,6 @@
 #ifndef SAVE_INDEX_H_INCLUDED
 #define SAVE_INDEX_H_INCLUDED
 
-//#include "filesystem.hpp"
-//#include "gamestatus.hpp"
-//#include "tod_manager.hpp"
-//#include "show_dialog.hpp"
 #include "config.hpp"
 #include "serialization/compression.hpp"
 

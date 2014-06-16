@@ -17,7 +17,6 @@
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 
-#include "gamestatus.hpp"
 #include "log.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"

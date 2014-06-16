@@ -17,7 +17,6 @@
 #define REPLAY_CONTROLLER_H_INCLUDED
 
 #include "game_end_exceptions.hpp"
-#include "gamestatus.hpp"
 #include "saved_game.hpp"
 #include "play_controller.hpp"
 

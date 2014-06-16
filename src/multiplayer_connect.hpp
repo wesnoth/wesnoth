@@ -18,7 +18,6 @@
 #define MULTIPLAYER_CONNECT_H_INCLUDED
 
 #include "commandline_options.hpp"
-#include "gamestatus.hpp"
 #include "multiplayer_connect_engine.hpp"
 #include "multiplayer_ui.hpp"
 #include "widgets/combo_drag.hpp"

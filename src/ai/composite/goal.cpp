@@ -23,7 +23,6 @@
 #include "../manager.hpp"
 #include "../../log.hpp"
 #include "../lua/lua_object.hpp"
-#include "../../gamestatus.hpp"
 #include "../../resources.hpp"
 #include "../../scripting/lua.hpp"
 #include "../../terrain_filter.hpp"

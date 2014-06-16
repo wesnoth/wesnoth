@@ -27,7 +27,7 @@
 #include "../../dialogs.hpp"
 #include "../../game_board.hpp"
 #include "../../game_events/pump.hpp"
-#include "../../gamestatus.hpp"
+#include "../../game_classification.hpp"
 #include "../../log.hpp"
 #include "../../mouse_handler_base.hpp"
 #include "../../resources.hpp"

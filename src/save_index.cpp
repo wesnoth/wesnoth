@@ -28,7 +28,6 @@
 #include "serialization/binary_or_text.hpp"
 #include "serialization/parser.hpp"
 
-#include "gamestatus.hpp"
 #include "filesystem.hpp"
 #include "config.hpp"
 #include <boost/foreach.hpp>

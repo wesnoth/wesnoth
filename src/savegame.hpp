@@ -17,7 +17,6 @@
 #define SAVEGAME_H_INCLUDED
 
 #include "filesystem.hpp"
-#include "gamestatus.hpp"
 #include "saved_game.hpp"
 #include "show_dialog.hpp"
 #include "serialization/compression.hpp"
@@ -28,7 +27,8 @@ struct load_game_cancelled_exception {};
 struct illegal_filename_exception {};
 
 namespace savegame {
-
+/** converts saves from older versions of wesnoth*/
+void convert_old_saves(config& cfg);
 /** Returns true if there is already a savegame with that name. */
 bool save_game_exists(const std::string& name, compression::format compressed);
 

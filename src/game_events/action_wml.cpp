@@ -32,6 +32,7 @@
 #include "../dialogs.hpp"
 #include "../fake_unit.hpp"
 #include "../fake_unit_manager.hpp"
+#include "../game_classification.hpp"
 #include "../game_display.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
