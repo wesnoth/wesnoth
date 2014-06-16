@@ -34,6 +34,10 @@
 
 #include <boost/foreach.hpp>
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/texture.hpp"
+#endif
+
 static lg::log_domain log_engine("engine");
 #define ERR_NG  LOG_STREAM(err,  log_engine)
 #define WARN_NG LOG_STREAM(warn, log_engine)
@@ -90,7 +94,12 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	, x_scale_factor_(1.0)
 	, y_scale_factor_(1.0)
 	, base_rect_()
+#if SDL_VERSION_ATLEAST(2,0,0)
+	, background_images_()
+	, background_positions_()
+#else
 	, background_(NULL)
+#endif
 	, imgs_()
 	, has_background_(false)
 	, text_x_(200)
@@ -105,6 +114,62 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 
 void part_ui::prepare_background()
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	base_rect_.w = video_.getx();
+	base_rect_.h = video_.gety();
+	has_background_ = false;
+	bool no_base_yet = true;
+
+	BOOST_FOREACH(const background_layer& bl, p_.get_background_layers()) {
+		sdl::ttexture layer;
+
+		if (!bl.file().empty()) {
+			layer = image::get_texture(bl.file());
+		}
+		has_background_ = has_background_ || !layer.null();
+		if(layer.null() || layer.width() * layer.height() == 0) {
+			continue;
+		}
+
+		const double xscale = 1.0 * video_.getx() / layer.width();
+		const double yscale = 1.0 * video_.gety() / layer.height();
+		const bool scalev = bl.scale_vertically();
+		const bool scaleh = bl.scale_horizontally();
+		const bool keep_ratio = bl.keep_aspect_ratio();
+
+		double x_scale_factor = scaleh ? xscale : 1.0;
+		double y_scale_factor = scalev ? yscale : 1.0;
+
+		if (scalev && scaleh && keep_ratio) {
+			x_scale_factor = y_scale_factor = std::min<double>(xscale, yscale);
+		} else if (keep_ratio && scaleh) {
+			x_scale_factor = y_scale_factor = xscale;
+		} else if (keep_ratio && scalev) {
+			x_scale_factor = y_scale_factor = yscale;
+		}
+
+		layer.set_smooth_scaling(true);
+		layer.set_scale(x_scale_factor, y_scale_factor);
+		//TODO: tiling
+
+		SDL_Rect base_rect = sdl::create_rect(
+				  (video_.getx() - layer.width()) / 2
+				, (video_.gety() - layer.height()) / 2
+				, layer.width()
+				, layer.height());
+
+		background_images_.push_back(layer);
+		background_positions_.push_back(std::pair<int, int>(base_rect.x, base_rect.y));
+
+		if (bl.is_base_layer() || no_base_yet) {
+			x_scale_factor_ = x_scale_factor;
+			y_scale_factor_ = y_scale_factor;
+			base_rect_ = base_rect;
+			no_base_yet = false;
+		}
+	}
+
+#else
 	background_.assign( create_neutral_surface(video_.getx(), video_.gety()) );
 	base_rect_.w = video_.getx();
 	base_rect_.h = video_.gety();
@@ -183,6 +248,7 @@ void part_ui::prepare_background()
 			no_base_yet = false;
 		}
 	}
+#endif
 }
 
 void part_ui::prepare_geometry()
@@ -231,11 +297,22 @@ void part_ui::prepare_floating_images()
 
 void part_ui::render_background()
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::twindow *wnd = CVideo::get_window();
+	wnd->fill(0, 0, 0);
+	for (size_t i = 0; i<background_images_.size(); i++) {
+		const int x = background_positions_[i].first;
+		const int y = background_positions_[i].second;
+
+		wnd->draw(background_images_[i], x, y);
+	}
+#else
 	sdl::draw_solid_tinted_rectangle(
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 		video_.getSurface()
 	);
 	sdl_blit(background_, NULL, video_.getSurface(), NULL);
+#endif
 }
 
 bool part_ui::render_floating_images()
