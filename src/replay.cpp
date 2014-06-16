@@ -1140,7 +1140,6 @@ config mp_sync::get_user_choice(const std::string &name, const mp_sync::user_cho
 	const bool is_synced = synced_context::get_synced_state() == synced_context::SYNCED;
 	const bool is_mp_game = network::nconnections() != 0;//Only used in debugging output below
 	const int max_side  = static_cast<int>(resources::teams->size());
-	const int current_side = resources::controller->current_side();
 	bool is_side_null_controlled;
 
 	if(!is_synced)
