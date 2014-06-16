@@ -6,6 +6,7 @@
 #include "global.hpp"
 #include "config.hpp"
 #include "config_assign.hpp"
+#include "game_classification.hpp"
 #include "replay.hpp"
 #include "random_new.hpp"
 #include "random_new_synced.hpp"

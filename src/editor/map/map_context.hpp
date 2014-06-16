@@ -16,8 +16,9 @@
 #define EDITOR_MAP_CONTEXT_HPP_INCLUDED
 
 #include "editor_map.hpp"
-#include "gamestatus.hpp"
+#include "game_classification.hpp"
 #include "map_label.hpp"
+#include "mp_game_settings.hpp"
 #include "sound_music_track.hpp"
 #include "tod_manager.hpp"
 #include "unit_map.hpp"

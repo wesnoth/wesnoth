@@ -35,7 +35,6 @@
 */
 
 #include "saved_game.hpp"
-#include "gamestatus.hpp"
 #include "carryover.hpp"
 #include "cursor.hpp"
 #include "log.hpp"

@@ -20,9 +20,7 @@
 #include "config.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events/wmi_container.hpp"
-#include "make_enum.hpp"
 #include "map_location.hpp"
-#include "mp_game_settings.hpp"
 #include "simple_rng.hpp"
 
 #include <boost/shared_ptr.hpp>
@@ -35,21 +33,12 @@ class t_string;
 class team;
 class unit_map;
 
-// Defined later in this header:
-class game_data;
-
 namespace t_translation {
 	struct t_match;
 }
-
+extern int sdfasf;
 class team_builder;
 typedef boost::shared_ptr<team_builder> team_builder_ptr;
-
-
-/// The default difficulty setting for campaigns.
-extern const std::string DEFAULT_DIFFICULTY;
-
-
 
 class game_data  : public variable_set  {
 public:
@@ -124,41 +113,5 @@ private:
 	std::string scenario_;                            /**< the scenario being played */
 	std::string next_scenario_;                       /**< the scenario coming next (for campaigns) */
 };
-
-//meta information of the game
-class game_classification : public savegame::savegame_config
-{
-public:
-	game_classification();
-	explicit game_classification(const config& cfg);
-	game_classification(const game_classification& gc);
-
-	config to_config() const;
-
-	std::string label;                               /**< Name of the game (e.g. name of save file). */
-	std::string version;                             /**< Version game was created with. */
-	MAKE_ENUM (CAMPAIGN_TYPE,			 /**< Type of the game - campaign, multiplayer etc. */
-		(SCENARIO, 	"scenario")
-		(MULTIPLAYER, 	"multiplayer")
-		(TEST,		"test")
-		(TUTORIAL,	"tutorial")
-	)
-	CAMPAIGN_TYPE campaign_type;
-	std::string campaign_define;                     /**< If there is a define the campaign uses to customize data */
-	std::vector<std::string> campaign_xtra_defines;  /**< more customization of data */
-
-	std::string campaign;                            /**< the campaign being played */
-
-	std::string abbrev;                              /**< the campaign abbreviation */
-//	std::string scenario;                            /**< the scenario being played */
-//	std::string next_scenario;                       /**< the scenario coming next (for campaigns) */
-	std::string completion;                          /**< running. victory, or defeat */
-	bool end_credits;                                /**< whether to show the standard credits at the end */
-	std::string end_text;                            /**< end-of-campaign text */
-	unsigned int end_text_duration;                  /**< for how long the end-of-campaign text is shown */
-	std::string difficulty; /**< The difficulty level the game is being played on. */
-	std::string random_mode;
-};
-MAKE_ENUM_STREAM_OPS2(game_classification, CAMPAIGN_TYPE)
 
 #endif

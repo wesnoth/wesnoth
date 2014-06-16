@@ -3,7 +3,8 @@
 #define SAVED_GAME_HPP_INCLUDED
 
 #include "config.hpp"
-#include "gamestatus.hpp" //game_classification
+#include "game_classification.hpp"
+#include "mp_game_settings.hpp"
 class config_writer;
 
 

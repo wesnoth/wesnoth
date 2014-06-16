@@ -17,7 +17,6 @@
 #define SAVEGAME_H_INCLUDED
 
 #include "filesystem.hpp"
-#include "gamestatus.hpp"
 #include "saved_game.hpp"
 #include "show_dialog.hpp"
 #include "serialization/compression.hpp"
