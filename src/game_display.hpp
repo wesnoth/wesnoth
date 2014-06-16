@@ -157,7 +157,7 @@ protected:
 	/**
 	 * the list of units we need to look at, game_display adds fake units
 	 */
-	virtual std::vector<const unit*> get_unit_list_for_invalidation();
+	virtual const std::deque<unit*> & get_fake_unit_list_for_invalidation();
 
 
 public:

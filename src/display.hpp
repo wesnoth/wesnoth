@@ -58,11 +58,11 @@ namespace wb {
 
 #include "overlay.hpp"
 
-#include <list>
-
 #include <boost/function.hpp>
 #include <boost/weak_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <deque>
+#include <list>
 #include <map>
 
 class gamemap;
@@ -423,7 +423,7 @@ public:
 	  * helper function for invalidate_animations
 	  * returns a list of units to check for invalidation
 	  */
-	virtual std::vector<const unit*> get_unit_list_for_invalidation();
+	virtual const std::deque<unit*> & get_fake_unit_list_for_invalidation();
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()

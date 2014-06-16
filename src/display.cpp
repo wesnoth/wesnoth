@@ -3033,12 +3033,9 @@ void display::invalidate_animations_location(const map_location& loc) {
 }
 
 
-std::vector<const unit*> display::get_unit_list_for_invalidation() {
-	std::vector<const unit*> unit_list;
-	BOOST_FOREACH(const unit &u, dc_->units()) {
-		unit_list.push_back(&u);
-	}
-	return unit_list;
+const std::deque<unit*> & display::get_fake_unit_list_for_invalidation() {
+	static const std::deque<unit*> blah;
+	return blah;
 }
 void display::invalidate_animations()
 {
@@ -3055,9 +3052,12 @@ void display::invalidate_animations()
 			}
 		}
 	}
-	std::vector<const unit*> unit_list=get_unit_list_for_invalidation();
+	const std::deque<unit*> & unit_list=get_fake_unit_list_for_invalidation();
 	BOOST_FOREACH(const unit* u, unit_list) {
 		u->refresh();
+	}
+	BOOST_FOREACH(const unit & u, dc_->units()) {
+		u.refresh();
 	}
 	bool new_inval;
 	do {
@@ -3065,8 +3065,11 @@ void display::invalidate_animations()
 #ifdef _OPENMP
 #pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
 #endif //_OPENMP
-		for(int i=0; i < static_cast<int>(unit_list.size()); i++) {
-			new_inval |=  unit_list[i]->invalidate(*this);
+		BOOST_FOREACH(const unit* u, unit_list) {
+			new_inval |=  u->invalidate(*this);
+		}
+		BOOST_FOREACH(const unit & u, dc_->units()) {
+			new_inval |=  u.invalidate(*this);
 		}
 	}while(new_inval);
 }
