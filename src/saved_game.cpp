@@ -318,8 +318,14 @@ void saved_game::expand_random_scenario()
 			LOG_NG << "randomly generating scenario...\n";
 			const cursor::setter cursor_setter(cursor::WAIT);
 
-			starting_pos_ = random_generate_scenario(starting_pos_["scenario_generation"],
+			config scenario_new = random_generate_scenario(starting_pos_["scenario_generation"],
 				starting_pos_.child("generator"));
+			//Preserve "story" form the scenario toplevel.
+			BOOST_FOREACH(config& story, starting_pos_.child_range("story"))
+			{
+				scenario_new.add_child("story", story);
+			}
+			starting_pos_ = scenario_new;
 		}
 		//it looks like we support a map= where map=filename equals more or less map_data={filename}
 		if(starting_pos_["map_data"].empty() && starting_pos_["map"] != "") {
