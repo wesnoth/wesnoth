@@ -80,16 +80,19 @@ bool detect_video_settings(CVideo& video, std::pair<int,int>& resolution, int& b
 		<< resolution.second << 'x' << DefaultBPP << "...\n";
 
 	typedef std::pair<int, int> res_t;
-	std::vector<res_t> res_list;
-	res_list.push_back(res_t(1024, 768));
-	res_list.push_back(res_t(1024, 600));
-	res_list.push_back(res_t(800, 600));
-	res_list.push_back(res_t(800, 480));
+	std::vector<res_t> res_list = video.get_available_resolutions();
+	if (res_list.empty()) {
+		res_list.push_back(res_t(800, 480));
+		res_list.push_back(res_t(800, 600));
+		res_list.push_back(res_t(1024, 600));
+		res_list.push_back(res_t(1024, 768));
+		res_list.push_back(res_t(1920, 1080));
+	}
 
 	bpp = video.modePossible(resolution.first, resolution.second,
 		DefaultBPP, video_flags, true);
 
-	BOOST_FOREACH(const res_t &res, res_list)
+	BOOST_REVERSE_FOREACH(const res_t &res, res_list)
 	{
 		if (bpp != 0) break;
 		std::cerr << "Video mode " << resolution.first << 'x'
