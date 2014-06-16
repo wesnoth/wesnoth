@@ -1,3 +1,5 @@
+#ifndef SYNCMP_HANDLER_HPP_INCLUDED
+#define SYNCMP_HANDLER_HPP_INCLUDED
 
 #include<vector>
 /*
@@ -26,3 +28,5 @@ private:
 	static void add_handler(syncmp_handler* handler);
 	static t_handlers& handlers();
 };
+
+#endif
