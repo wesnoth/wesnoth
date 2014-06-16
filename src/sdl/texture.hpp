@@ -218,12 +218,12 @@ public:
 	/**
 	 * Returns the width of the texture.
 	 */
-	unsigned width() const;
+	int width() const;
 
 	/**
 	 * Returns the height of the texture.
 	 */
-	unsigned height() const;
+	int height() const;
 
 	/**
 	 * Returns the frame of the texture.

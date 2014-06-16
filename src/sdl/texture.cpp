@@ -40,9 +40,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_(create_rect(0, 0, w, h))
-	, mod_r_(0)
-	, mod_g_(0)
-	, mod_b_(0)
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
 	, alpha_(255)
 	, source_surface_(NULL)
 {
@@ -63,9 +63,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
-	, mod_r_(0)
-	, mod_g_(0)
-	, mod_b_(0)
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
 	, alpha_(255)
 	, source_surface_(IMG_Load(file.c_str()))
 {
@@ -86,9 +86,9 @@ ttexture::ttexture()
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
-	, mod_r_(0)
-	, mod_g_(0)
-	, mod_b_(0)
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
 	, alpha_(255)
 	, source_surface_(NULL)
 {}
@@ -142,9 +142,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
-	, mod_r_(0)
-	, mod_g_(0)
-	, mod_b_(0)
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
 	, alpha_(255)
 	, source_surface_(source_surface__)
 {
@@ -168,9 +168,9 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, smooth_scaling_(false)
 	, flip_(SDL_FLIP_NONE)
 	, clip_()
-	, mod_r_(0)
-	, mod_g_(0)
-	, mod_b_(0)
+	, mod_r_(255)
+	, mod_g_(255)
+	, mod_b_(255)
 	, alpha_(255)
 	, source_surface_(
 			SDL_ConvertSurface(surface, surface->format, surface->flags))
@@ -199,7 +199,7 @@ void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
 	SDL_Rect dstrect = create_rect(x, y, clip_.w * hscale_, clip_.h * vscale_);
 
 	SDL_SetTextureAlphaMod(texture_, alpha_);
-	SDL_SetTextureColorMod(texture_, r, g, b);
+	SDL_SetTextureColorMod(texture_, mod_r_, mod_g_, mod_b_);
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, smooth_scaling_ ? "linear" : "nearest");
 	SDL_RenderCopyEx(&renderer, texture_, &clip_, &dstrect,
 					 rotation_, NULL, flip_);
@@ -284,7 +284,7 @@ bool ttexture::flopped() const
 	return flip_ & SDL_FLIP_VERTICAL;
 }
 
-unsigned ttexture::width() const
+int ttexture::width() const
 {
 	int w;
 	SDL_QueryTexture(texture_,NULL, NULL, &w, NULL);
@@ -292,7 +292,7 @@ unsigned ttexture::width() const
 	return w;
 }
 
-unsigned ttexture::height() const
+int ttexture::height() const
 {
 	int h;
 	SDL_QueryTexture(texture_,NULL, NULL, NULL, &h);
