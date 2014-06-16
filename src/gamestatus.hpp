@@ -38,8 +38,6 @@ class unit_map;
 // Defined later in this header:
 class game_data;
 
-void convert_old_saves(config& cfg);
-
 namespace t_translation {
 	struct t_match;
 }
