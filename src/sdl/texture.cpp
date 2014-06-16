@@ -43,7 +43,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
-	, alpha_(0)
+	, alpha_(255)
 	, source_surface_(NULL)
 {
 	SDL_SetTextureBlendMode(texture_, SDL_BLENDMODE_BLEND);
@@ -66,7 +66,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
-	, alpha_(0)
+	, alpha_(255)
 	, source_surface_(IMG_Load(file.c_str()))
 {
 	if(source_surface_ == NULL) {
@@ -89,7 +89,7 @@ ttexture::ttexture()
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
-	, alpha_(0)
+	, alpha_(255)
 	, source_surface_(NULL)
 {}
 
@@ -145,7 +145,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
-	, alpha_(0)
+	, alpha_(255)
 	, source_surface_(source_surface__)
 {
 	if(source_surface_ == NULL) {
@@ -171,7 +171,7 @@ ttexture::ttexture(SDL_Renderer& renderer,
 	, mod_r_(0)
 	, mod_g_(0)
 	, mod_b_(0)
-	, alpha_(0)
+	, alpha_(255)
 	, source_surface_(
 			SDL_ConvertSurface(surface, surface->format, surface->flags))
 {
