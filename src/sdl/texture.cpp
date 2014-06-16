@@ -289,7 +289,7 @@ int ttexture::width() const
 	int w;
 	SDL_QueryTexture(texture_,NULL, NULL, &w, NULL);
 
-	return w;
+	return w*hscale_;
 }
 
 int ttexture::height() const
@@ -297,7 +297,7 @@ int ttexture::height() const
 	int h;
 	SDL_QueryTexture(texture_,NULL, NULL, NULL, &h);
 
-	return h;
+	return h*vscale_;
 }
 
 SDL_Rect ttexture::dimensions() const
@@ -307,6 +307,8 @@ SDL_Rect ttexture::dimensions() const
 	dim.y = 0;
 	SDL_QueryTexture(texture_, NULL, NULL, &dim.w, &dim.h);
 
+	dim.w *= hscale_;
+	dim.h *= vscale_;
 	return dim;
 }
 
