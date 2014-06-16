@@ -252,7 +252,7 @@ inline map_location map_location::get_direction(
 		return map_location(x,y+n);
 	}
 
-	int x_factor = (dir <= 2u) ? 1 : -1; //whether we go east + or west -
+	int x_factor = (static_cast<unsigned int> (dir) <= 2u) ? 1 : -1; //whether we go east + or west -
 
 	unsigned int tmp_y = dir - 2; //South East => 0, South => 1, South West => 2, North West => 3, North => INT_MAX, North East => INT_MAX - 1
 	int y_factor = (tmp_y <= 2u) ? 1 : -1; //whether we go south + or north -
