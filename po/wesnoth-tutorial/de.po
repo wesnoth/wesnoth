@@ -1,7 +1,7 @@
 # Translators:
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2007
-#  Gerfried Fuchs <rhonda@deb.at>, 2006, 2008 - 2009, 2011
+#  Gerfried Fuchs <rhonda@deb.at>, 2006, 2008 - 2009, 2011, 2014
 #  HaJo Gurt <gurt@gmx.de>, 2007
 #  Tobias 'SonIcco' Schönau <tobias.schoenau@eagerbyte.com>, 2009
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.12\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2014-05-24 20:08+0200\n"
-"PO-Revision-Date: 2012-04-04 19:48+0100\n"
-"Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
+"PO-Revision-Date: 2014-06-13 14:00+0200\n"
+"Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -858,6 +858,8 @@ msgid ""
 "Do you want to keep practicing? You can end this scenario at any time by "
 "using the <b>End Scenario</b> item in the context menu."
 msgstr ""
+"Mögt ihr weiter üben? Ihr könnt dieses Szenario jederzeit beenden, indem Ihr "
+"den Punk <b>Szenario beenden</b> im Kontext-Menü wählt."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1217
@@ -1470,21 +1472,18 @@ msgstr "Greift den Orkgrunzer mit einem Bogenschützen an"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
-#, fuzzy
 msgid ""
 "To review the capabilities of any unit—including an enemy—hover the mouse "
 "over it, and you will see a unit summary on the right of the screen"
 msgstr ""
-"\n"
 "Um die Fertigkeiten jeglicher Einheit — inklusive der gegnerischen — zu "
-"begutachten bewegt den Mauszeiger darüber und Ihr werdet eine "
-"Zusammenfassung der Einheit am rechten Bildrand sehen"
+"begutachten bewegt den Mauszeiger darüber und Ihr werdet am rechten Bildrand "
+"eine Zusammenfassung der Einheit sehen"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:955
-#, fuzzy
 msgid "Unit Summaries"
-msgstr "<big>Einheitenzusammenfassungen</big>"
+msgstr "Einheitenzusammenfassungen"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:963
@@ -1528,21 +1527,18 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
 msgid "Long-distance Movement"
-msgstr "<big>Lange Reisen</big>"
+msgstr "Lange Reisen"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:992
-#, fuzzy
 msgid ""
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
 "take to get there."
 msgstr ""
-"\n"
 "Ihr könnt eine Einheit für mehrere Züge auf die Reise schicken, indem Ihr "
-"sie auswählt und hernach auf das Ziel klickt. Eine Zahl wird euch anzeigen, "
+"sie auswählt und hernach auf das Ziel klickt. Eine Zahl wird Euch anzeigen, "
 "wie viele Züge notwendig sind, um dorthin zu gelangen."
 
 #. [event]
@@ -1745,16 +1741,14 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
-#, fuzzy
 msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right. This brings up a description of the time of day, showing who "
 "has the advantage."
 msgstr ""
-"\n"
 "Bringt nach diesem Dialog den Mauszeiger über das Landschaftsbild unterhalb "
-"der Karte rechts. Das wird eine Beschreibung der Tageszeit hervorbringen, "
-"die anzeigt, wer im Vorteil ist."
+"der Karte rechts. Das wird eine Beschreibung der Tageszeit hervorbringen die "
+"anzeigt, wer im Vorteil ist."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
@@ -1788,13 +1782,11 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
 msgid "Tracking Unused Units"
-msgstr "<big>Unbenutzte Einheiten aufspüren</big>"
+msgstr "Unbenutzte Einheiten aufspüren"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1235
-#, fuzzy
 msgid ""
 "You can ensure you use all your troops by pressing <b>n</b> to step from one "
 "unit to the next. If you press <b>space</b>, you can mark the currently "
@@ -1802,47 +1794,40 @@ msgid ""
 "accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
 "end your turn."
 msgstr ""
-"\n"
 "Ihr könnt sicherstellen, dass Ihr alle Einheiten für diese Runde gezogen "
 "habt, indem Ihr <b>n</b> drückt, um eine Einheit nach der anderen "
-"auszuwählen. Drückt die <b>Leertaste</b>, um erkennenzugeben, dass die "
-"aktuell gewählte Einheit nichts mehr tun wird, was verhindert, dass Ihr sie "
-"später irrtümlich bewegt. Wenn »n« keine weitere Einheit auswählt, könnt Ihr "
-"Euren Zug sicher beenden."
+"auszuwählen. Drückt die <b>Leertaste</b>, um bekannt zu geben, dass die "
+"aktuell gewählte Einheit nichts mehr tun wird und dadurch zu verhindert, "
+"dass Ihr sie später irrtümlich bewegt. Wenn <b>n</b> keine weitere Einheit "
+"auswählt, könnt Ihr Euren Zug sicher beenden."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
-#, fuzzy
 msgid ""
 "In this scenario, you only need to defeat the orc leader to win. (Victory "
 "conditions for a scenario are given under <b>Scenario Objectives</b> in the "
 "<b>Main Menu</b>)."
 msgstr ""
-"\n"
 "In diesem Szenario müsst Ihr einzig den Orkhäuptling besiegen, um zu "
 "gewinnen. (Die Siegesbedingungen sind unter den <b>Missionszielen</b> im "
 "<b>Hauptmenü</b> zu finden.)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1240
-#, fuzzy
 msgid "Victory Conditions"
-msgstr "<big>Siegesbedingungen</big>"
+msgstr "Siegesbedingungen"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
 msgid "Recruit the Right Unit Types"
-msgstr "<big>Die richtigen Einheiten ausbilden</big>"
+msgstr "Die richtigen Einheiten ausbilden"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1245
-#, fuzzy
 msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
-"\n"
 "Vergesst nicht, für die Situation passende Einheiten auszubilden. "
 "Bogenschützen sind besonders effektiv gegen Grunzer, Wolfsreiter und den "
 "Orkhäuptling."
@@ -1944,19 +1929,16 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
 msgid "Tracking Enemy Movement"
-msgstr "<big>Gegnerische Bewegungen beachten</big>"
+msgstr "Gegnerische Bewegungen beachten"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1440
-#, fuzzy
 msgid ""
 "You can see where an enemy can reach by moving the mouse over them. You can "
 "see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
-"\n"
 "Ihr könnt sehen, wohin ein Feind gelangen kann, indem Ihr den Mauszeiger auf "
 "ihn bewegt. Ihr könnt allerdings auch alle möglichen feindlichen Bewegungen "
 "gleichzeitig betrachten, indem Ihr den <b>Gegn. Bewegungen zeigen</b>-Befehl "
