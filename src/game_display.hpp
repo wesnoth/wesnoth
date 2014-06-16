@@ -154,63 +154,7 @@ protected:
 
 	void draw_hex(const map_location& loc);
 
-	/**
-	 * the list of units we need to look at, game_display adds fake units
-	 */
-	virtual const std::deque<unit*> & get_fake_unit_list_for_invalidation();
 
-
-public:
-	/** A temporary unit that can be placed on the map.
-		Temporary units can overlap units.
-		Adding the same unit twice isn't allowed.
-		The fake_unit owns its underlying unit and when
-		it goes out of scope it removes itself from the fake_units list.
-		The intent is to provide exception safety when the code
-		creating the temp unit is unexpectedly forced out of scope.
-	 */
-	class fake_unit : public unit {
-	public:
-		explicit fake_unit(unit const & u) : unit(u), my_display_(NULL) {}
-		fake_unit(fake_unit const & u) : unit(u), my_display_(NULL) {}
-		fake_unit(const unit_type& t, int side, unit_race::GENDER gender = unit_race::NUM_GENDERS)
-			: unit(t, side, false, gender)
-			, my_display_(NULL)
-		{}
-		/// Assignment operator, taking a fake_unit.
-		/// If already in the queue, @a this will be moved to the end of the
-		/// queue (drawn last). The queue (if any) of the parameter is ignored.
-		fake_unit & operator=(fake_unit const & u)
-		{ return operator=(static_cast<unit const &>(u)); }
-		/// Assignment operator, taking a unit.
-		virtual fake_unit & operator=(unit const & u);
-		/// Removes @a this from the fake_units_ list if necessary.
-		~fake_unit();
-
-		/// Place @a this on @a display's fake_units_ dequeue.
-		void place_on_game_display(game_display * d);
-		/// Removes @a this from whatever fake_units_ list it is on (if any).
-		int remove_from_game_display();
-
-	private :
-		game_display * my_display_;
-	};
-
-	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
-	friend class game_display::fake_unit;
-
-private:
-	/** Temporarily place a unit on map (moving: can overlap others).
-	 *  The temp unit is added at the end of the temporary unit dequeue,
-	 *  and therefore gets drawn last, over other units and temp units.
-	 *  Adding the same unit twice isn't allowed.
-	 */
-	void place_temporary_unit(unit *u);
-
-	/** Removes any instances of this temporary unit from the temporary unit vector.
-	 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
-	 */
-	int remove_temporary_unit(unit *u);
 public:
 
 
@@ -293,9 +237,6 @@ private:
 	void draw_sidebar();
 
 	overlay_map overlay_map_;
-
-	/// collection of units destined to be drawn but not put into the unit map
-	std::deque<unit*> fake_units_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;

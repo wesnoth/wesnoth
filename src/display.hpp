@@ -34,6 +34,7 @@
 #define DISPLAY_H_INCLUDED
 
 class config;
+class fake_unit_manager;
 class terrain_builder;
 struct time_of_day;
 class map_labels;
@@ -419,11 +420,6 @@ public:
 	 * Function to invalidate animated terrains and units which may have changed.
 	 */
 	void invalidate_animations();
-	/**
-	  * helper function for invalidate_animations
-	  * returns a list of units to check for invalidation
-	  */
-	virtual const std::deque<unit*> & get_fake_unit_list_for_invalidation();
 
 	/**
 	 * Per-location invalidation called by invalidate_animations()
@@ -740,6 +736,7 @@ protected:
 	theme theme_;
 	int zoom_;
 	static int last_zoom_;
+	boost::scoped_ptr<fake_unit_manager> fake_unit_man_;
 	boost::scoped_ptr<terrain_builder> builder_;
 	surface minimap_;
 	SDL_Rect minimap_location_;

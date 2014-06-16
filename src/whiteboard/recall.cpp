@@ -24,10 +24,12 @@
 #include "visitor.hpp"
 
 #include "actions/create.hpp"
+#include "fake_unit.hpp"
+#include "fake_unit_manager.hpp"
 #include "game_display.hpp"
-#include "play_controller.hpp"
 #include "resources.hpp"
 #include "replay_helper.hpp"
+#include "statistics.hpp"
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "unit.hpp"
@@ -58,7 +60,7 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 		action(team_index,hidden),
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
-		fake_unit_(new game_display::fake_unit(unit) )
+		fake_unit_(new fake_unit(unit) )
 {
 	this->init();
 }
@@ -83,7 +85,7 @@ recall::recall(config const& cfg, bool hidden)
 		throw action::ctor_err("recall: Invalid underlying_id");
 	}
 
-	fake_unit_.reset(new game_display::fake_unit(*temp_unit_)); //makes copy of temp_unit_
+	fake_unit_.reset(new fake_unit(*temp_unit_)); //makes copy of temp_unit_
 
 	this->init();
 }
@@ -97,7 +99,7 @@ void recall::init()
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
 	fake_unit_->set_ghosted(false);
-	fake_unit_->place_on_game_display( resources::screen);
+	fake_unit_->place_on_fake_unit_manager( resources::fake_units);
 }
 
 recall::~recall()

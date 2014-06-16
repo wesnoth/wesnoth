@@ -18,9 +18,8 @@
  */
 
 #include "global.hpp"
-
-#include "game_board.hpp"
 #include "game_display.hpp"
+
 #include "gettext.hpp"
 #include "wesconfig.h"
 
@@ -35,6 +34,9 @@ Growl_Delegate growl_obj;
 #endif
 
 #include "cursor.hpp"
+#include "fake_unit.hpp"
+#include "fake_unit_manager.hpp"
+#include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "log.hpp"
@@ -66,7 +68,6 @@ game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb:
 		const config& theme_cfg, const config& level) :
 		display(&board, video, wb, theme_cfg, level),
 		overlay_map_(),
-		fake_units_(),
 		attack_indicator_src_(),
 		attack_indicator_dst_(),
 		route_(),
@@ -245,14 +246,13 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
-	BOOST_FOREACH(unit* temp_unit, fake_units_) {
+	BOOST_FOREACH(unit* temp_unit, fake_unit_man_->get_fake_unit_list_for_invalidation()) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
 			temp_unit->redraw_unit();
 	}
-
 }
 
 void game_display::post_commit()
@@ -624,111 +624,10 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-const std::deque<unit*> & game_display::get_fake_unit_list_for_invalidation() {
-	return fake_units_;
-}
-
-
 int& game_display::debug_highlight(const map_location& loc)
 {
 	assert(game_config::debug);
 	return debugHighlights_[loc];
-}
-
-
-/**
- * Assignment operator, taking a unit.
- * If already in the queue, @a this will be moved to the end of the
- * queue (drawn last).
- *
- * This function is unsuitable for derived classes and MUST be overridden.
- * Furthermore, derived classes must not explicitly call this version.
- *
- * The overriding function can be almost the same, except "new (this)" should
- * be followed by the derived class instead of "fake_unit(a)".
- */
-game_display::fake_unit & game_display::fake_unit::operator=(unit const & a)
-{
-	if ( this != &a ) {
-		game_display * display = my_display_;
-
-		// Use the copy constructor to make sure we are coherent.
-		// (Methodology copied from unit::operator=)
-		this->~fake_unit();
-		new (this) fake_unit(a);
-		// Restore our old display.
-		if ( display != NULL )
-			place_on_game_display(display);
-	}
-	return *this;
-}
-
-/**
- * Removes @a this from the fake_units_ list if necessary.
- */
-game_display::fake_unit::~fake_unit()
-{
-	try {
-	// The fake_unit class exists for this one line, which removes the
-	// fake_unit from the display's fake_units_ dequeue in the event of an
-	// exception.
-	if(my_display_){remove_from_game_display();}
-
-	} catch (...) {}
-}
-
-/**
- * Place @a this on @a display's fake_units_ dequeue.
- * This will be added at the end (drawn last, over all other units).
- * Duplicate additions are not allowed.
- */
-void game_display::fake_unit::place_on_game_display(game_display * display){
-	assert(my_display_ == NULL); //Can only be placed on 1 game_display
-	my_display_=display;
-	my_display_->place_temporary_unit(this);
-}
-
-/**
- * Removes @a this from whatever fake_units_ list it is on (if any).
- * @returns the number of fake_units deleted, which should be 0 or 1
- *          (any other number indicates an error).
- */
-int game_display::fake_unit::remove_from_game_display(){
-	int ret(0);
-	if(my_display_ != NULL){
-		ret = my_display_->remove_temporary_unit(this);
-		my_display_=NULL;
-	}
-	return ret;
-}
-
-void game_display::place_temporary_unit(unit *u)
-{
-	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
-		ERR_NG << "In game_display::place_temporary_unit: attempt to add duplicate fake unit." << std::endl;
-	} else {
-		fake_units_.push_back(u);
-		invalidate(u->get_location());
-	}
-}
-
-int game_display::remove_temporary_unit(unit *u)
-{
-	int removed = 0;
-	std::deque<unit*>::iterator it =
-			std::remove(fake_units_.begin(), fake_units_.end(), u);
-	if (it != fake_units_.end()) {
-		removed = std::distance(it, fake_units_.end());
-		//std::remove doesn't remove anything without using erase afterwards.
-		fake_units_.erase(it, fake_units_.end());
-		invalidate(u->get_location());
-		// Redraw with no location to get rid of haloes
-		u->clear_haloes();
-	}
-	if (removed > 1) {
-		ERR_NG << "Error: duplicate temp unit found in game_display::remove_temporary_unit" << std::endl;
-	}
-	return removed;
 }
 
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
@@ -749,9 +648,6 @@ void game_display::clear_attack_indicator()
 {
 	set_attack_indicator(map_location::null_location(), map_location::null_location());
 }
-
-
-
 
 std::string game_display::current_team_name() const
 {

@@ -728,6 +728,8 @@ set(wesnoth-main_SRC
 	editor/editor_preferences.cpp
 	editor/toolkit/editor_toolkit.cpp
 	editor/map/context_manager.cpp
+	fake_unit.cpp
+	fake_unit_manager.cpp
 	filechooser.cpp
 	flg_manager.cpp
 	floating_textbox.cpp

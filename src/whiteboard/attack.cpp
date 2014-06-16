@@ -22,6 +22,8 @@
 #include "utility.hpp"
 
 #include "arrow.hpp"
+#include "config.hpp"
+#include "fake_unit.hpp"
 #include "game_board.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"

@@ -19,8 +19,10 @@
 #ifndef WB_RECRUIT_HPP_
 #define WB_RECRUIT_HPP_
 
+#include <string>
 
 #include "action.hpp"
+#include "map_location.hpp"
 
 namespace wb
 {

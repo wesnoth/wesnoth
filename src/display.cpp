@@ -19,6 +19,7 @@
 
 #include "cursor.hpp"
 #include "display.hpp"
+#include "fake_unit_manager.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -150,6 +151,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 	view_locked_(false),
 	theme_(theme_cfg, screen_area()),
 	zoom_(DefaultZoom),
+	fake_unit_man_(new fake_unit_manager(*this)),
 	builder_(new terrain_builder(level, &dc_->map(), theme_.border().tile_image)),
 	minimap_(NULL),
 	minimap_location_(sdl::empty_rect),
@@ -209,6 +211,8 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 {
 	singleton_ = this;
 
+	resources::fake_units = fake_unit_man_.get();
+
 	blindfold_ctr_ = 0;
 
 	read(level.child_or_empty("display"));
@@ -246,6 +250,7 @@ display::display(const display_context * dc, CVideo& video, boost::weak_ptr<wb::
 display::~display()
 {
 	singleton_ = NULL;
+	resources::fake_units = NULL;
 }
 
 
@@ -3032,11 +3037,6 @@ void display::invalidate_animations_location(const map_location& loc) {
 	}
 }
 
-
-const std::deque<unit*> & display::get_fake_unit_list_for_invalidation() {
-	static const std::deque<unit*> blah;
-	return blah;
-}
 void display::invalidate_animations()
 {
 	new_animation_frame();
@@ -3052,7 +3052,7 @@ void display::invalidate_animations()
 			}
 		}
 	}
-	const std::deque<unit*> & unit_list=get_fake_unit_list_for_invalidation();
+	const std::deque<unit*> & unit_list = fake_unit_man_->get_fake_unit_list_for_invalidation();
 	BOOST_FOREACH(const unit* u, unit_list) {
 		u->refresh();
 	}

@@ -23,6 +23,7 @@
 #include "recall.hpp"
 #include "suppose_dead.hpp"
 
+#include "config.hpp"
 #include "game_board.hpp"
 #include "resources.hpp"
 #include "team.hpp"

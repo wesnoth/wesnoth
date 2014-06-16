@@ -20,11 +20,14 @@
 #ifndef UNIT_DISPLAY_HPP_INCLUDED
 #define UNIT_DISPLAY_HPP_INCLUDED
 
-#include "game_display.hpp"
 #include "map_location.hpp"
 #include "unit_animation.hpp"
 
 class attack_type;
+class fake_unit;
+class fake_unit_manager;
+class game_board;
+class game_display;
 class unit;
 class vconfig;
 
@@ -65,7 +68,7 @@ private: // data
 	unit * shown_unit_;	/// The unit to be (re-)shown after an animation finishes.
 	const std::vector<map_location>& path_;
 	size_t current_;
-	game_display::fake_unit * temp_unit_ptr_;
+	fake_unit * temp_unit_ptr_;
 	bool was_hidden_;
 	bool is_enemy_;
 };

@@ -34,9 +34,14 @@
 #include "utility.hpp"
 
 #include "arrow.hpp"
+#include "config.hpp"
+#include "fake_unit.hpp"
 #include "game_board.hpp"
+#include "game_display.hpp"
+#include "game_errors.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
+#include "unit.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>

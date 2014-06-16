@@ -28,6 +28,7 @@
 #include "../../log.hpp"
 #include "../../map.hpp"
 #include "../../team.hpp"
+#include "../../unit.hpp"
 #include "../../unit_display.hpp"
 #include "../../unit_map.hpp"
 #include "../../unit_types.hpp"

@@ -37,9 +37,12 @@ static lg::log_domain log_whiteboard("whiteboard");
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 
-#include "game_display.hpp"
+#include "../unit_ptr.hpp"
 
 class arrow;
+class config;
+class fake_unit;
+class fake_unit_manager;
 class game_board;
 struct map_location; //not used in the typedefs, saves a few forward declarations
 class unit;
@@ -63,7 +66,7 @@ class side_actions;
 typedef boost::shared_ptr<bool> whiteboard_lock;
 
 typedef boost::shared_ptr<arrow> arrow_ptr;
-typedef boost::shared_ptr<game_display::fake_unit> fake_unit_ptr;
+typedef boost::shared_ptr<fake_unit> fake_unit_ptr;
 
 typedef boost::shared_ptr<action> action_ptr;
 typedef boost::shared_ptr<action const> action_const_ptr;

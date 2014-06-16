@@ -20,11 +20,14 @@
 #include "team.hpp"
 
 #include "ai/manager.hpp"
+#include "formula_string_utils.hpp"
 #include "game_events/pump.hpp"
 #include "gamestatus.hpp"
 #include "map.hpp"
 #include "resources.hpp"
 #include "game_preferences.hpp"
+#include "sdl/utils.hpp" // Only needed for int_to_color (!)
+#include "unit_types.hpp"
 #include "whiteboard/side_actions.hpp"
 
 #include <boost/foreach.hpp>

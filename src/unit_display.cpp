@@ -17,7 +17,10 @@
 #include "global.hpp"
 #include "unit_display.hpp"
 
+#include "fake_unit.hpp"
+#include "fake_unit_manager.hpp"
 #include "game_board.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "mouse_events.hpp"
@@ -208,8 +211,8 @@ void unit_mover::replace_temporary(unit & u)
 
 	// Make our temporary unit mostly match u...
 	if ( temp_unit_ptr_ == NULL ) {
-		temp_unit_ptr_ = new game_display::fake_unit(u);
-		temp_unit_ptr_->place_on_game_display(disp_);
+		temp_unit_ptr_ = new fake_unit(u);
+		temp_unit_ptr_->place_on_fake_unit_manager(resources::fake_units);
 	}
 	else
 		*temp_unit_ptr_ = u;

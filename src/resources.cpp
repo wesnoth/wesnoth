@@ -27,6 +27,7 @@ namespace resources
 	soundsource::manager *soundsources = NULL;
 	std::vector<team>    *teams = NULL;
 	::tod_manager        *tod_manager = NULL;
+	fake_unit_manager    *fake_units = NULL;
 	pathfind::manager    *tunnels = NULL;
 	actions::undo_list   *undo_stack = NULL;
 	unit_map             *units = NULL;

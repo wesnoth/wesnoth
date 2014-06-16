@@ -30,6 +30,8 @@
 #include "../actions/vision.hpp"
 #include "../ai/manager.hpp"
 #include "../dialogs.hpp"
+#include "../fake_unit.hpp"
+#include "../fake_unit_manager.hpp"
 #include "../game_display.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
@@ -252,7 +254,7 @@ namespace { // Support functions
 		return map_location(x, y);
 	}
 
-	game_display::fake_unit *create_fake_unit(const vconfig& cfg)
+	fake_unit *create_fake_unit(const vconfig& cfg)
 	{
 		std::string type = cfg["type"];
 		std::string variation = cfg["variation"];
@@ -265,14 +267,14 @@ namespace { // Support functions
 		unit_race::GENDER gender = string_gender(cfg["gender"]);
 		const unit_type *ut = unit_types.find(type);
 		if (!ut) return NULL;
-		game_display::fake_unit * fake_unit = new game_display::fake_unit(*ut, side_num, gender);
+		fake_unit * fake = new fake_unit(*ut, side_num, gender);
 
 		if(!variation.empty()) {
 			config mod;
 			config &effect = mod.add_child("effect");
 			effect["apply_to"] = "variation";
 			effect["name"] = variation;
-			fake_unit->add_modification("variation",mod);
+			fake->add_modification("variation",mod);
 		}
 
 		if(!img_mods.empty()) {
@@ -280,10 +282,10 @@ namespace { // Support functions
 			config &effect = mod.add_child("effect");
 			effect["apply_to"] = "image_mod";
 			effect["add"] = img_mods;
-			fake_unit->add_modification("image_mod",mod);
+			fake->add_modification("image_mod",mod);
 		}
 
-		return fake_unit;
+		return fake;
 	}
 
 	std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vector<std::string>& xvals, const std::vector<std::string>& yvals)
@@ -1380,11 +1382,10 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	boost::scoped_array<util::unique_ptr<game_display::fake_unit> > units(
-		new util::unique_ptr<game_display::fake_unit>[num_units]);
+	boost::scoped_array<util::unique_ptr<fake_unit> > units(
+		new util::unique_ptr<fake_unit>[num_units]);
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
-	game_display* disp = game_display::get_singleton();
 
 	LOG_NG << "Moving " << num_units << " units\n";
 
@@ -1394,7 +1395,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
-		game_display::fake_unit *u = create_fake_unit(config);
+		fake_unit *u = create_fake_unit(config);
 		units[paths.size()].reset(u);
 		paths.push_back(fake_unit_path(*u, xvals, yvals));
 		if(skip_steps > 0)
@@ -1403,7 +1404,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
 		u->set_location(paths.back().front());
-		u->place_on_game_display(disp);
+		u->place_on_fake_unit_manager(resources::fake_units);
 	}
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
@@ -1427,7 +1428,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	LOG_NG << "Units moved\n";
 
 	for(size_t un = 0; un < num_units; ++un) {
-		units[un]->remove_from_game_display();
+		units[un]->remove_from_fake_unit_manager();
 	}
 
 	LOG_NG << "Units removed\n";
