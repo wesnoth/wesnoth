@@ -36,6 +36,7 @@
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 #include "sdl/texture.hpp"
+#include "sdl/window.hpp"
 #endif
 
 static lg::log_domain log_engine("engine");
@@ -317,6 +318,37 @@ void part_ui::render_background()
 
 bool part_ui::render_floating_images()
 {
+#if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::twindow *wnd = CVideo::get_window();
+
+	skip_ = false;
+	last_key_ = true;
+
+	size_t fi_n = 0;
+	BOOST_FOREACH(floating_image::render_input& ri, imgs_) {
+		const floating_image& fi = p_.get_floating_images()[fi_n];
+
+		if(!ri.image.null()) {
+			wnd->draw(ri.image, ri.rect.x, ri.rect.y);
+			wnd->render();
+		}
+
+		if (!skip_)
+		{
+			int delay = fi.display_delay(), delay_step = 20;
+			for (int i = 0; i != (delay + delay_step - 1) / delay_step; ++i)
+			{
+				if (handle_interface()) return false;
+				if (skip_) break;
+				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
+			}
+		}
+
+		++fi_n;
+	}
+
+	return true;
+#else
 	events::raise_draw_event();
 	update_whole_screen();
 
@@ -347,6 +379,7 @@ bool part_ui::render_floating_images()
 	}
 
 	return true;
+#endif
 }
 
 void part_ui::render_title_box()
