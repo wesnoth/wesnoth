@@ -1072,6 +1072,7 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
     -- Main rating is the moves the unit still has left after that
     -- Other, configurable, parameters are given to function in @cfg:
     --   - dx, dy: the direction in which moving out of the way is preferred
+    --        assumed to be normalized so that dx^2 + dy^2 = 1
     --   - labels: if set, display labels of the rating for each hex the unit can reach
 
     cfg = cfg or {}
@@ -1085,8 +1086,8 @@ function ai_helper.move_unit_out_of_way(ai, unit, cfg)
         if (not unit_in_way) then  -- also excludes current hex
             local rating = loc[3]  -- also disfavors hexes next to enemy units for which loc[3] = 0
 
-            if cfg.dx then rating = rating + (loc[1] - unit.x) * cfg.dx end
-            if cfg.dy then rating = rating + (loc[2] - unit.y) * cfg.dy end
+            if cfg.dx then rating = rating + (loc[1] - unit.x) * cfg.dx * 0.01 end
+            if cfg.dy then rating = rating + (loc[2] - unit.y) * cfg.dy * 0.01 end
 
             if cfg.labels then reach_map:insert(loc[1], loc[2], rating) end
 
