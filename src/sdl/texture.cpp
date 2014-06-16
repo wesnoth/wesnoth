@@ -199,6 +199,7 @@ void ttexture::draw(SDL_Renderer& renderer, const int x, const int y)
 	SDL_Rect dstrect = create_rect(x, y, clip_.w * hscale_, clip_.h * vscale_);
 
 	SDL_SetTextureAlphaMod(texture_, alpha_);
+	SDL_SetTextureColorMod(texture_, r, g, b);
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, smooth_scaling_ ? "linear" : "nearest");
 	SDL_RenderCopyEx(&renderer, texture_, &clip_, &dstrect,
 					 rotation_, NULL, flip_);
@@ -342,8 +343,6 @@ void ttexture::set_color_mod(Uint8 r, Uint8 g, Uint8 b)
 	mod_r_ = r;
 	mod_g_ = g;
 	mod_b_ = b;
-
-	SDL_SetTextureColorMod(texture_, r, g, b);
 }
 
 Uint8 ttexture::red_mod() const
