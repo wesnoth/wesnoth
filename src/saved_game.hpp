@@ -30,7 +30,7 @@ public:
 	void write_general_info(config_writer& out) const;
 	void write_carryover(config_writer& out) const;
 	void write_starting_pos(config_writer& out) const;
-	config to_config();
+	config to_config() const;
 	///Removes everything except [carryover_sides_start]
 	void remove_old_scenario();
 	game_classification& classification() { return classification_; }

@@ -104,11 +104,13 @@ saved_game::saved_game(const config& cfg)
 		this->starting_pos_ = scenario;
 	}
 
-	if(starting_pos_.empty() && carryover_sides_start.empty() && !carryover_sides.empty())
+	if(starting_pos_.empty() && replay_start_.empty() && carryover_sides_start.empty() && !carryover_sides.empty())
 	{
 		//Explain me: when could this happen?
 		//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
+		//TODO: move this code to convert_old_saves
 		carryover_sides_start = carryover_sides;
+		carryover_sides = config();
 	}
 
 	LOG_NG << "scenario: '" << carryover_sides_start["next_scenario"].str() << "'\n";
@@ -435,7 +437,7 @@ void saved_game::convert_to_start_save()
 	remove_snapshot();
 }
 
-config saved_game::to_config()
+config saved_game::to_config() const
 {
 	//TODO: remove this code dublication with write_... functions.
 	config r = classification_.to_config();
@@ -483,7 +485,6 @@ std::string saved_game::get_scenario_id()
 	}
 }
 
-
 bool saved_game::not_corrupt() const
 {
 	if(carryover_sides.empty() && carryover_sides_start.empty())
@@ -496,5 +497,11 @@ bool saved_game::not_corrupt() const
 	// the function expand_carryover transforms a start of scenario save to a normal save
 	// the function convert_to_start_save converts a normal save form teh end of the scenaio 
 	// to a start-of-scenario save for a next level
-	return carryover_sides.empty() || carryover_sides_start.empty();
+	bool r = carryover_sides.empty() || carryover_sides_start.empty();
+	if(!r)
+	{
+		config c = this->to_config();
+		WRN_NG << "corrupt safegame:" << c.debug() << std::endl;
+	}
+	return r;
 }
