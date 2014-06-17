@@ -2032,7 +2032,7 @@ void unit::redraw_unit () const
 					if (preferences::show_unmoved_orb())
 						orb_img = &unmoved_orb;
 					else orb_img = NULL;
-				} else if ( actions::unit_can_move(*this) ) {
+				} else if ( resources::gameboard->unit_can_move(*this) ) {
 					if (preferences::show_partial_orb())
 						orb_img = &partmoved_orb;
 					else orb_img = NULL;

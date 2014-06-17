@@ -29,3 +29,41 @@ const unit * display_context::get_visible_unit(const map_location & loc, const t
 	}
 	return &*u;
 }
+
+/**
+ * Will return true iff the unit @a u has any possible moves
+ * it can do (including attacking etc).
+ */
+
+bool display_context::unit_can_move(const unit &u)
+{
+	if(!u.attacks_left() && u.movement_left()==0)
+		return false;
+
+	// Units with goto commands that have already done their gotos this turn
+	// (i.e. don't have full movement left) should have red globes.
+	if(u.has_moved() && u.has_goto()) {
+		return false;
+	}
+
+	const team &current_team = teams()[u.side() - 1];
+
+	map_location locs[6];
+	get_adjacent_tiles(u.get_location(), locs);
+	for(int n = 0; n != 6; ++n) {
+		if (map().on_board(locs[n])) {
+			const unit_map::const_iterator i = units().find(locs[n]);
+			if (i.valid() && !i->incapacitated() &&
+			    current_team.is_enemy(i->side())) {
+				return true;
+			}
+
+			if (u.movement_cost(map()[locs[n]]) <= u.movement_left()) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+

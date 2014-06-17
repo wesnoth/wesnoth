@@ -37,7 +37,15 @@ public:
 	virtual const gamemap & map() const = 0;
 	virtual const unit_map & units() const = 0;
 
+	// Needed for reports
+
 	const unit * get_visible_unit(const map_location &loc, const team &current_team, bool see_all = false) const;
+
+	// From actions:: namespace
+
+	bool unit_can_move(const unit & u);
+
+	// Dtor
 
 	virtual ~display_context() {}
 };
