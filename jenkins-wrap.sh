@@ -22,3 +22,4 @@ while [ $COUNTER -gt 0 -a $ERRORCODE -eq 1 ];do
 done
 
 rm -f xvfb-err
+exit $ERRORCODE
