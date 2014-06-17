@@ -362,9 +362,10 @@ public:
 	long ref_count() const { return ref_count_; }
 	friend void intrusive_ptr_add_ref(const unit *);
 	friend void intrusive_ptr_release(const unit *);
-private:
+protected:
 	mutable long ref_count_; //used by intrusive_ptr
 
+private:
 	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
 

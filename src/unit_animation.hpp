@@ -17,6 +17,7 @@
 #include "animated.hpp"
 #include "config.hpp"
 #include "unit_frame.hpp"
+#include "unit_ptr.hpp"
 
 class attack_type;
 class display;
@@ -213,7 +214,7 @@ class unit_animator
 				with_bars(false)
 			{}
 
-			const unit *my_unit;
+			UnitConstPtr my_unit;
 			const unit_animation * animation;
 			std::string text;
 			Uint32 text_color;

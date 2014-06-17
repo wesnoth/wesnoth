@@ -29,12 +29,12 @@ class fake_unit_manager;
  */
 class fake_unit : public unit {
 public:
-	explicit fake_unit(unit const & u) : unit(u), my_manager_(NULL) {}
-	fake_unit(fake_unit const & u) : unit(u), my_manager_(NULL) {}
+	explicit fake_unit(unit const & u) : unit(u), my_manager_(NULL) {ref_count_ = ref_count_ + 1; } //prevent UnitPtr from deleting this
+	fake_unit(fake_unit const & u) : unit(u), my_manager_(NULL) {ref_count_ = ref_count_ + 1; }
 	fake_unit(const unit_type& t, int side, unit_race::GENDER gender = unit_race::NUM_GENDERS)
 		: unit(t, side, false, gender)
 		, my_manager_(NULL)
-	{}
+	{ref_count_ = ref_count_ + 1; }
 	/// Assignment operator, taking a fake_unit.
 	/// If already in the queue, @a this will be moved to the end of the
 	/// queue (drawn last). The queue (if any) of the parameter is ignored.

@@ -1279,7 +1279,7 @@ void unit_animator::add_animation(const unit* animated_unit
 	if(!animated_unit) return;
 	anim_elem tmp;
 	display*disp = display::get_singleton();
-	tmp.my_unit = animated_unit;
+	tmp.my_unit = UnitConstPtr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1300,7 +1300,7 @@ void unit_animator::add_animation(const unit* animated_unit
 {
 	if(!animated_unit) return;
 	anim_elem tmp;
-	tmp.my_unit = animated_unit;
+	tmp.my_unit = UnitConstPtr(animated_unit);
 	tmp.text = text;
 	tmp.text_color = text_color;
 	tmp.src = src;
@@ -1331,7 +1331,7 @@ void unit_animator::replace_anim_if_invalid(const unit* animated_unit
 			!animated_unit->anim_comp().get_animation()->animation_finished_potential() &&
 			animated_unit->anim_comp().get_animation()->matches(*disp,src,dst,animated_unit,event,value,hit_type,attack,second_attack,value2) >unit_animation::MATCH_FAIL) {
 		anim_elem tmp;
-		tmp.my_unit = animated_unit;
+		tmp.my_unit = UnitConstPtr(animated_unit);
 		tmp.text = text;
 		tmp.text_color = text_color;
 		tmp.src = src;
@@ -1429,9 +1429,9 @@ private:
 void unit_animator::wait_for_end() const
 {
 	if (game_config::no_delay) return;
-	static reentry_preventer rp;
-	reentry_preventer::entry rpe = rp.enter();
-	assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches reentry
+	//static reentry_preventer rp;
+	//reentry_preventer::entry rpe = rp.enter();
+	//assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches reentry
 	bool finished = false;
 	display*disp = display::get_singleton();
 	while(!finished) {
@@ -1439,7 +1439,7 @@ void unit_animator::wait_for_end() const
 		// Replacing the below assert with a conditional break will fix the local segfault,
 		// but this just exposes a different one.
 		// It's also unnecessary given the one a few lines up.
-		assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches a past reentry
+		//assert(rpe || (false && "Reentered a unit animation. See bug #18921")); //Catches a past reentry
 		disp->delay(10);
 		finished = true;
 		for(std::vector<anim_elem>::const_iterator anim = animated_units_.begin(); anim != animated_units_.end();++anim) {
