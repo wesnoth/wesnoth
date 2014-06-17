@@ -191,10 +191,9 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	temp_cfg.remove_attribute("animate");
 
 	std::vector<UnitPtr > &recall_list = team_.recall_list();
-	std::vector<UnitPtr >::iterator recall_list_it = find_if_matches_id(recall_list, id);
-	UnitPtr & recall_list_element = *recall_list_it;
+	std::vector<UnitPtr >::iterator recall_list_element = find_if_matches_id(recall_list, id);
 
-	if ( recall_list_it == recall_list.end() ) {
+	if ( recall_list_element == recall_list.end() ) {
 		//make a temporary unit
 		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, temp_unit.get());
