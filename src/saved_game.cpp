@@ -104,11 +104,13 @@ saved_game::saved_game(const config& cfg)
 		this->starting_pos_ = scenario;
 	}
 
-	if(starting_pos_.empty() && carryover_sides_start.empty() && !carryover_sides.empty())
+	if(starting_pos_.empty() && replay_start_.empty() && carryover_sides_start.empty() && !carryover_sides.empty())
 	{
 		//Explain me: when could this happen?
 		//if we are loading a start of scenario save and don't have carryover_sides_start, use carryover_sides
+		//TODO: move this code to convert_old_saves
 		carryover_sides_start = carryover_sides;
+		carryover_sides = config();
 	}
 
 	LOG_NG << "scenario: '" << carryover_sides_start["next_scenario"].str() << "'\n";
