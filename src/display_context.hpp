@@ -43,7 +43,7 @@ public:
 
 	// From actions:: namespace
 
-	bool unit_can_move(const unit & u);
+	bool unit_can_move(const unit & u) const;
 
 	// Dtor
 

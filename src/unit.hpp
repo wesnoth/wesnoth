@@ -248,8 +248,6 @@ public:
 	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
 	const surface still_image(bool scaled = false) const;
 
-	/** draw a unit.  */
-	void redraw_unit() const;
 	/** Clear unit_halo_  */
 	void clear_haloes() const;
 
@@ -420,7 +418,9 @@ private:
 	void set_underlying_id();
 
 	config cfg_;
+protected:
 	map_location loc_;
+private:
 
 	std::vector<std::string> advances_to_;
 	const unit_type * type_;/// Never NULL. Adjusted for gender and variation.
@@ -436,7 +436,9 @@ private:
 	int max_hit_points_;
 	int experience_;
 	int max_experience_;
+protected:
 	int level_;
+private:
 	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
@@ -445,7 +447,9 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
+protected:
 	int side_;
+private:
 	const unit_race::GENDER gender_;
 
 	fixed_t alpha_;
@@ -469,16 +473,20 @@ private:
 	config variables_;
 	config events_;
 	config filter_recall_;
+
+protected:
 	bool emit_zoc_;
 
 	mutable STATE state_; //animation state
-
+private:
 	std::vector<std::string> overlays_;
 
 	std::string role_;
 	std::vector<attack_type> attacks_;
+protected:
 	mutable map_location::DIRECTION facing_; //TODO: I think we actually consider this to be part of the gamestate, so it might be better if it's not mutable
 						 //But it's not easy to separate this guy from the animation code right now.
+private:
 	std::vector<t_string> trait_names_;
 	std::vector<t_string> trait_descriptions_;
 
@@ -489,6 +497,7 @@ private:
 
 	utils::string_map modification_descriptions_;
 	// Animations:
+protected:
 	std::vector<unit_animation> animations_;
 
 	mutable boost::scoped_ptr<unit_animation> anim_;
@@ -503,6 +512,7 @@ private:
 	mutable bool draw_bars_; // flag used for drawing / animation
 	double hp_bar_scaling_, xp_bar_scaling_;
 
+private:
 	config modifications_;
 
 	/**

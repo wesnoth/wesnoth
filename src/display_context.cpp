@@ -35,7 +35,7 @@ const unit * display_context::get_visible_unit(const map_location & loc, const t
  * it can do (including attacking etc).
  */
 
-bool display_context::unit_can_move(const unit &u)
+bool display_context::unit_can_move(const unit &u) const
 {
 	if(!u.attacks_left() && u.movement_left()==0)
 		return false;
