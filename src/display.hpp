@@ -36,7 +36,6 @@
 class config;
 class fake_unit_manager;
 class terrain_builder;
-struct time_of_day;
 class map_labels;
 class arrow;
 

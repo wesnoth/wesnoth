@@ -19,13 +19,14 @@
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_board.hpp"
+#include "gamestatus.hpp"
 #include "help.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
 #include "persist_manager.hpp"
 #include "statistics.hpp"
 #include "tod_manager.hpp"
-#include "gamestatus.hpp"
+#include "unit_types.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
@@ -34,6 +35,8 @@ class game_display;
 class saved_game;
 class game_data;
 class team;
+class unit;
+class unit_animation;
 
 namespace actions {
 	class undo_list;

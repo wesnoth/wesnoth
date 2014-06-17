@@ -52,6 +52,7 @@
 #include "../resources.hpp"
 #include "../statistics.hpp"
 #include "../team.hpp"
+#include "../unit.hpp"
 #include "../synced_context.hpp"
 
 namespace ai {

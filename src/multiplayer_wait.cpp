@@ -28,6 +28,7 @@
 #include "statistics.hpp"
 #include "saved_game.hpp"
 #include "sound.hpp"
+#include "unit_types.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"

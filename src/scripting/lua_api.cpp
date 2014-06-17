@@ -18,12 +18,13 @@
 #include "lua/lualib.h"
 #include "lua/lauxlib.h"
 
-#include "variable.hpp"
-#include "tstring.hpp"
-#include "resources.hpp"
+#include "config.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
-#include "config.hpp"
+#include "resources.hpp"
+#include "tstring.hpp"
+#include "unit.hpp"
+#include "variable.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>

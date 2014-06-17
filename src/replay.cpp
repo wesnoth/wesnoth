@@ -35,6 +35,7 @@
 #include "synced_context.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
+#include "unit.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>

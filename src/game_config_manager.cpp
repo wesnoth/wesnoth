@@ -30,6 +30,7 @@
 #include "resources.hpp"
 #include "scripting/lua.hpp"
 #include "terrain_builder.hpp"
+#include "unit_types.hpp"
 
 #include <boost/foreach.hpp>
 

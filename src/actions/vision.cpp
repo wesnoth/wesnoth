@@ -36,6 +36,8 @@
 
 #include <boost/foreach.hpp>
 
+class unit_animation;
+
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)

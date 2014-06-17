@@ -20,7 +20,6 @@
 class config;
 class tod_manager;
 class team;
-class unit;
 class unit_map;
 class game_board;
 
@@ -28,7 +27,6 @@ class game_board;
 #include "chat_events.hpp"
 #include "display.hpp"
 #include "pathfind/pathfind.hpp"
-#include "unit.hpp" // TODO: Refactor so that this is not necessary
 
 #include <deque>
 

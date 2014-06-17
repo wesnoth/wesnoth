@@ -51,6 +51,7 @@
 #include "soundsource.hpp"
 #include "synced_context.hpp"
 #include "tooltips.hpp"
+#include "unit.hpp"
 #include "unit_animation.hpp"
 #include "unit_id.hpp"
 #include "whiteboard/manager.hpp"

@@ -45,6 +45,7 @@
 #include "save_blocker.hpp"
 #include "soundsource.hpp"
 #include "storyscreen/interface.hpp"
+#include "unit.hpp"
 #include "unit_animation.hpp"
 #include "util.hpp"
 #include "whiteboard/manager.hpp"

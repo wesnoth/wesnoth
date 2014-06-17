@@ -39,6 +39,7 @@
 #include "game_end_exceptions.hpp"
 #include "map.hpp"
 #include "resources.hpp"
+#include "unit.hpp"
 
 #include <boost/foreach.hpp>
 

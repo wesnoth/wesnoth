@@ -18,6 +18,7 @@
 
 #include "game_display.hpp"
 #include "mouse_handler_base.hpp"
+#include "unit_map.hpp"
 
 class battle_context;
 
