@@ -810,7 +810,7 @@ namespace { // Helpers for menu_handler::end_turn()
 			if ( un->side() == side_num ) {
 				// @todo whiteboard should take into consideration units that have
 				// a planned move but can still plan more movement in the same turn
-				if ( actions::unit_can_move(*un) && !un->user_end_turn()
+				if ( resources::gameboard->unit_can_move(*un) && !un->user_end_turn()
 						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}
@@ -825,7 +825,7 @@ namespace { // Helpers for menu_handler::end_turn()
 	{
 		for ( unit_map::const_iterator un = units.begin(); un != units.end(); ++un ) {
 			if ( un->side() == side_num ) {
-				if ( actions::unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
+				if ( resources::gameboard->unit_can_move(*un)  &&  !un->has_moved()  && !un->user_end_turn()
 						&& !resources::whiteboard->unit_has_actions(&*un) )
 					return true;
 			}

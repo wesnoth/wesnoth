@@ -34,6 +34,7 @@ Growl_Delegate growl_obj;
 #endif
 
 #include "cursor.hpp"
+#include "drawable_unit.hpp"
 #include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
 #include "game_board.hpp"
@@ -246,12 +247,12 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
-	BOOST_FOREACH(unit* temp_unit, fake_unit_man_->get_fake_unit_list_for_invalidation()) {
+	BOOST_FOREACH(const unit* temp_unit, fake_unit_man_->get_fake_unit_list_for_invalidation()) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
-			temp_unit->redraw_unit();
+			(static_cast<const drawable_unit*> (temp_unit))->redraw_unit();
 	}
 }
 

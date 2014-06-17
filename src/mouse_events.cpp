@@ -1192,7 +1192,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if (it->side() != side_num_ || it->user_end_turn()
-	    || gui().fogged(it->get_location()) || !actions::unit_can_move(*it))
+	    || gui().fogged(it->get_location()) || !board_.unit_can_move(*it))
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&

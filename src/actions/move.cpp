@@ -1288,37 +1288,5 @@ size_t move_unit_from_replay(const std::vector<map_location> &steps,
 	return move_unit_internal(undo_stack, show_move, NULL, mover);
 }
 
-bool unit_can_move(const unit &u)
-{
-	const team &current_team = (*resources::teams)[u.side() - 1];
-
-	if(!u.attacks_left() && u.movement_left()==0)
-		return false;
-
-	// Units with goto commands that have already done their gotos this turn
-	// (i.e. don't have full movement left) should have red globes.
-	if(u.has_moved() && u.has_goto()) {
-		return false;
-	}
-
-	map_location locs[6];
-	get_adjacent_tiles(u.get_location(), locs);
-	for(int n = 0; n != 6; ++n) {
-		if (resources::gameboard->map().on_board(locs[n])) {
-			const unit_map::const_iterator i = resources::units->find(locs[n]);
-			if (i.valid() && !i->incapacitated() &&
-			    current_team.is_enemy(i->side())) {
-				return true;
-			}
-
-			if (u.movement_cost((resources::gameboard->map())[locs[n]]) <= u.movement_left()) {
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
 
 }//namespace actions

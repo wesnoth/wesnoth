@@ -700,6 +700,7 @@ set(wesnoth-main_SRC
 	controller_base.cpp
 	desktop_util.cpp
 	dialogs.cpp
+	drawable_unit.cpp
 	editor/action/action.cpp
 	editor/action/action_item.cpp
 	editor/action/action_label.cpp

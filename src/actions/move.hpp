@@ -114,13 +114,6 @@ size_t move_unit_from_replay(const std::vector<map_location> &steps,
                  bool continued_move, bool skip_ally_sighted,
 				 bool show_move = true);
 
-/**
- * Will return true iff the unit @a u has any possible moves
- * it can do (including attacking etc).
- */
-bool unit_can_move(const unit &u);
-
-
 }//namespace actions
 
 
