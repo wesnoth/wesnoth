@@ -769,7 +769,7 @@ namespace { // Private helpers for move_unit()
 		if ( !is_replay_ ) {
 			// Avoiding stopping on a (known) unit.
 			route_iterator min_end =  start == begin_ ? start : start + 1;
-			while ( end != min_end  &&  resources::gameboard->get_visible_unit(*(end-1), *current_team_) )
+			while ( end != min_end  &&  resources::gameboard->has_visible_unit(*(end-1), *current_team_) )
 				// Backtrack.
 				--end;
 		}
