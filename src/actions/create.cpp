@@ -214,10 +214,11 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		}
 	} else {
 		//get unit from recall list
-		map_location loc = find_location(temp_cfg, &(*recall_list_element));
+		const UnitPtr & u_ptr = *recall_list_element;
+		map_location loc = find_location(temp_cfg, u_ptr.get());
 		if ( loc.valid() ) {
-			resources::units->replace(loc, *recall_list_element);
-			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
+			resources::units->replace(loc, *u_ptr);
+			LOG_NG << "inserting unit from recall list for side " << u_ptr->side()<< " with id="<< id << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
 			erase_if_matches_id(recall_list, id);
