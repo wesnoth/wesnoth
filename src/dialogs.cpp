@@ -46,6 +46,8 @@
 #include "strftime.hpp"
 #include "synced_context.hpp"
 #include "thread.hpp"
+#include "unit.hpp"
+#include "unit_animation.hpp"
 #include "unit_helper.hpp"
 #include "unit_types.hpp"
 #include "wml_separators.hpp"

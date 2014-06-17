@@ -27,6 +27,7 @@
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "formula_string_utils.hpp"
+#include "unit_animation.hpp"
 #include "whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>

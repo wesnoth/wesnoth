@@ -204,8 +204,6 @@ unit::unit(const unit& o):
 
            anim_comp_(new unit_animation_component(*this, *o.anim_comp_)),
 
-           animations_(o.animations_),
-
            getsHit_(o.getsHit_),
            hidden_(o.hidden_),
            hp_bar_scaling_(o.hp_bar_scaling_),
@@ -273,7 +271,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	is_healthy_(false),
 	modification_descriptions_(),
 	anim_comp_(new unit_animation_component(*this)),
-	animations_(),
 	getsHit_(0),
 	hidden_(false),
 	hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"]),
@@ -498,7 +495,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	}
 
 	//debug unit animations for units as they appear in game
-	/*for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
+	/*for(std::vector<unit_animation>::const_iterator i = anim_comp_->animations_.begin(); i != anim_comp_->animations_.end(); ++i) {
 		std::cout << (*i).debug();
 	}*/
 }
@@ -572,7 +569,6 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	is_healthy_(false),
 	modification_descriptions_(),
 	anim_comp_(new unit_animation_component(*this)),
-	animations_(),
 	getsHit_(0),
 	hidden_(false),
 	modifications_(),
@@ -814,8 +810,6 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 
 	max_attacks_ = new_type.max_attacks();
 
-	animations_ = new_type.animations();
-
 	flag_rgb_ = new_type.flag_rgb();
 
 
@@ -849,7 +843,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	game_events::add_events(cfg_.child_range("event"), new_type.id());
 	cfg_.clear_children("event");
 
-	anim_comp_->reset_after_advance();
+	anim_comp_->reset_after_advance(&new_type);
 }
 
 std::string unit::big_profile() const
@@ -2193,16 +2187,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					game_config::add_color_info(effect);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					if(effect["id"].empty()) {
-						unit_animation::add_anims(animations_, effect);
-					} else {
-						std::vector<unit_animation> &built = resources::controller->animation_cache[effect["id"]];
-						if(built.empty()) {
-							unit_animation::add_anims(built, effect);
-						}
-						animations_.insert(animations_.end(),built.begin(),built.end());
-					}
-
+					anim_comp_->apply_new_animation_effect(effect);
 				} else if (apply_to == "ellipse") {
 					cfg_["ellipse"] = effect["ellipse"];
 

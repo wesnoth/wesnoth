@@ -20,7 +20,7 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#include "unit_animation.hpp"
+#include "sdl/utils.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 #include "unit_ptr.hpp"
@@ -473,7 +473,6 @@ private:
 
 protected:
 	boost::scoped_ptr<unit_animation_component> anim_comp_;
-	std::vector<unit_animation> animations_;
 
 	bool getsHit_;
 	mutable bool hidden_;

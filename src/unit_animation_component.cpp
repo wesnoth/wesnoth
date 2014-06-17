@@ -14,11 +14,15 @@
 
 #include "unit_animation_component.hpp"
 
+#include "config.hpp"
 #include "display.hpp"
 #include "map.hpp"
+#include "play_controller.hpp"	//Only needed to access animations cache
+#include "resources.hpp"	//Only needed to access animations cache
 #include "preferences.hpp"
 #include "unit_animation.hpp"
 #include "unit.hpp"
+#include "unit_types.hpp"
 
 const unit_animation* unit_animation_component::choose_animation(const display& disp, const map_location& loc,const std::string& event,
 		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
@@ -27,7 +31,7 @@ const unit_animation* unit_animation_component::choose_animation(const display& 
 	// Select one of the matching animations at random
 	std::vector<const unit_animation*> options;
 	int max_val = unit_animation::MATCH_FAIL;
-	for(std::vector<unit_animation>::const_iterator i = u_.animations_.begin(); i != u_.animations_.end(); ++i) {
+	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
 		int matching = i->matches(disp,loc,second_loc,&u_,event,value,hit,attack,second_attack,swing_num);
 		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
 			options.push_back(&*i);
@@ -181,8 +185,24 @@ bool unit_animation_component::invalidate (const display & disp)
 
 }
 
-void unit_animation_component::reset_after_advance() 
+void unit_animation_component::reset_after_advance(const unit_type * newtype) 
 {
+	if (newtype) {
+		animations_ = newtype->animations();
+	}
+
 	refreshing_ = false;
         anim_.reset();
+}
+
+void unit_animation_component::apply_new_animation_effect(const config & effect) {
+	if(effect["id"].empty()) {
+		unit_animation::add_anims(animations_, effect);
+	} else {
+		std::vector<unit_animation> &built = resources::controller->animation_cache[effect["id"]];
+		if(built.empty()) {
+			unit_animation::add_anims(built, effect);
+		}
+		animations_.insert(animations_.end(),built.begin(),built.end());
+	}
 }

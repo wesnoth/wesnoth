@@ -22,7 +22,9 @@
 
 #include <boost/scoped_ptr.hpp>
 
+class config;
 class unit;
+class unit_type;
 
 class unit_animation_component
 {
@@ -36,6 +38,7 @@ public:
 	unit_animation_component(unit & my_unit) : 
 		u_(my_unit),
 		anim_(NULL),
+		animations_(),
 		state_(STATE_STANDING), 
 		next_idling_(0),
 		frame_begin_time_(0),
@@ -46,6 +49,7 @@ public:
 	unit_animation_component(unit & my_unit, const unit_animation_component & o) : 
 		u_(my_unit),
 		anim_(NULL),
+		animations_(o.animations_),
 		state_(o.state_),
 		next_idling_(0),
 		frame_begin_time_(o.frame_begin_time_),
@@ -79,7 +83,9 @@ public:
 
 	void clear_haloes();
 
-	void reset_after_advance();
+	void reset_after_advance(const unit_type * newtype = NULL);
+
+	void apply_new_animation_effect(const config & effect);
 
 	unit_animation* get_animation() const { return anim_.get(); }
 
@@ -89,6 +95,7 @@ private:
 	const unit & u_;
 
 	boost::scoped_ptr<unit_animation> anim_;
+	std::vector<unit_animation> animations_;
 
 	STATE state_; //animation state
 

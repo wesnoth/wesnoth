@@ -45,8 +45,9 @@
 #include "save_blocker.hpp"
 #include "soundsource.hpp"
 #include "storyscreen/interface.hpp"
-#include "whiteboard/manager.hpp"
+#include "unit_animation.hpp"
 #include "util.hpp"
+#include "whiteboard/manager.hpp"
 #include "hotkey/hotkey_item.hpp"
 
 #include <boost/foreach.hpp>
