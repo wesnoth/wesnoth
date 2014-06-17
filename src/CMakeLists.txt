@@ -890,6 +890,7 @@ set(wesnoth-main_SRC
 	unit.cpp
 	unit_abilities.cpp
 	unit_animation.cpp
+	unit_animation_component.cpp
 	unit_display.cpp
 	unit_formula_manager.cpp
 	unit_frame.cpp

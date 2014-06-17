@@ -28,6 +28,7 @@
 class display;
 class gamemap;
 class team;
+class unit_animation_component;
 class unit_formula_manager;
 class vconfig;
 
@@ -204,7 +205,6 @@ public:
 	void end_turn();
 	void new_scenario();
 	/** Called on every draw */
-	void refresh() const;
 
 	bool take_hit(int damage) { hit_points_ -= damage; return hit_points_ <= 0; }
 	void heal(int amount);
@@ -248,21 +248,10 @@ public:
 	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
 	const surface still_image(bool scaled = false) const;
 
-	/** Clear unit_halo_  */
-	void clear_haloes() const;
-
-	void set_standing(bool with_bars = true) const;
-
-	void set_ghosted(bool with_bars = true) const;
-	void set_disabled_ghosted(bool with_bars = true) const;
-
-	void set_idling() const;
-	void set_selecting() const;
-	unit_animation* get_animation() const {  return anim_.get();}
+	unit_animation_component & anim_comp() const { return *anim_comp_; }
 	void set_facing(map_location::DIRECTION dir) const;
 	map_location::DIRECTION facing() const { return facing_; }
 
-	bool invalidate(const display & disp) const;
 	const std::vector<t_string>& trait_names() const { return trait_names_; }
 	const std::vector<t_string>& trait_descriptions() const { return trait_descriptions_; }
 	std::vector<std::string> get_traits_list() const;
@@ -319,15 +308,6 @@ public:
 	const map_location& get_interrupted_move() const { return interrupted_move_; }
 	void set_interrupted_move(const map_location& interrupted_move) { interrupted_move_ = interrupted_move; }
 
-	/** States for animation. */
-	enum STATE {
-		STATE_STANDING,   /** anim must fit in a hex */
-		STATE_FORGET,     /** animation will be automatically replaced by a standing anim when finished */
-		STATE_ANIM};      /** normal anims */
-	void start_animation (int start_time, const unit_animation *animation,
-		bool with_bars,  const std::string &text = "",
-		Uint32 text_color = 0, STATE state = STATE_ANIM) const;
-
 	/** The name of the file to game_display (used in menus). */
 	std::string absolute_image() const;
 	std::string image_halo() const { return cfg_["halo"]; }
@@ -342,13 +322,6 @@ public:
 	/// Never returns NULL, but may point to the null race.
 	const unit_race* race() const { return race_; }
 
-	const unit_animation* choose_animation(const display& disp,
-		       	const map_location& loc, const std::string& event,
-		       	const map_location& second_loc = map_location::null_location(),
-			const int damage=0,
-			const unit_animation::hit_type hit_type = unit_animation::INVALID,
-			const attack_type* attack=NULL,const attack_type* second_attack = NULL,
-			int swing_num =0) const;
 
 	/**
 	 * Returns true if the unit is currently under effect by an ability with this given TAG NAME.
@@ -477,7 +450,6 @@ private:
 protected:
 	bool emit_zoc_;
 
-	mutable STATE state_; //animation state
 private:
 	std::vector<std::string> overlays_;
 
@@ -497,19 +469,14 @@ private:
 
 	utils::string_map modification_descriptions_;
 	// Animations:
+	friend class unit_animation_component;
+
 protected:
+	boost::scoped_ptr<unit_animation_component> anim_comp_;
 	std::vector<unit_animation> animations_;
 
-	mutable boost::scoped_ptr<unit_animation> anim_;
-	mutable int next_idling_;      // used for animation
-	mutable int frame_begin_time_; // used for animation
-
-
-	mutable int unit_halo_; // flag used for drawing / animation
 	bool getsHit_;
-	mutable bool refreshing_; // avoid infinite recursion. flag used for drawing / animation
 	mutable bool hidden_;
-	mutable bool draw_bars_; // flag used for drawing / animation
 	double hp_bar_scaling_, xp_bar_scaling_;
 
 private:

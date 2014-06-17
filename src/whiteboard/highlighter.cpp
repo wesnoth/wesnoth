@@ -42,6 +42,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -198,7 +199,7 @@ void highlighter::last_action_redraw(move_ptr move)
 		bool this_is_second_to_last_action = (second_to_last_action != sa.end() && move == *second_to_last_action);
 
 		if(this_is_last_action || (this_is_second_to_last_action && !last_action_has_fake_unit)) {
-			move->get_fake_unit()->set_standing(true);
+			move->get_fake_unit()->anim_comp().set_standing(true);
 		}
 	}
 }
@@ -276,7 +277,7 @@ void highlighter::highlight_main_visitor::visit(move_ptr move)
 	}
 	if(move->get_fake_unit()) {
 		///@todo find some highlight animation
-		move->get_fake_unit()->set_ghosted(true);
+		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
 		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
@@ -308,7 +309,7 @@ void highlighter::highlight_secondary_visitor::visit(move_ptr move)
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_HIGHLIGHTED);
 	}
 	if(move->get_fake_unit()) {
-		move->get_fake_unit()->set_ghosted(true);
+		move->get_fake_unit()->anim_comp().set_ghosted(true);
 		//Make sure the fake unit is the only one displayed in its hex
 		resources::screen->add_exclusive_draw(move->get_fake_unit()->get_location(), *move->get_fake_unit());
 		highlighter_.exclusive_display_hexes_.insert(move->get_fake_unit()->get_location());
@@ -328,7 +329,7 @@ void highlighter::unhighlight_visitor::visit(move_ptr move)
 		move->set_arrow_brightness(move::ARROW_BRIGHTNESS_STANDARD);
 	}
 	if(move->get_fake_unit()) {
-		move->get_fake_unit()->set_disabled_ghosted(false);
+		move->get_fake_unit()->anim_comp().set_disabled_ghosted(false);
 
 		highlighter_.last_action_redraw(move);
 	}

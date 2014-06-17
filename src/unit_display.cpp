@@ -26,6 +26,8 @@
 #include "mouse_events.hpp"
 #include "resources.hpp"
 #include "terrain_filter.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
@@ -92,7 +94,7 @@ static void teleport_unit_between(const map_location& a, const map_location& b,
 		animator.wait_for_end();
 	}
 
-	temp_unit.set_standing();
+	temp_unit.anim_comp().set_standing();
 	disp.update_display();
 	events::pump();
 }
@@ -267,7 +269,7 @@ void unit_mover::start(unit& u)
 	// Initialize our temporary unit for the move.
 	temp_unit_ptr_->set_location(path_[0]);
 	temp_unit_ptr_->set_facing(path_[0].get_relative_dir(path_[1]));
-	temp_unit_ptr_->set_standing(false);
+	temp_unit_ptr_->anim_comp().set_standing(false);
 	disp_->invalidate(path_[0]);
 
 	// If the unit can be seen here by the viewing side:
@@ -299,7 +301,7 @@ void unit_mover::start(unit& u)
 
 	// Switch the display back to the real unit.
 	u.set_facing(temp_unit_ptr_->facing());
-	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u.anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
 	u.set_hidden(was_hidden_);
 	temp_unit_ptr_->set_hidden(true);
 }
@@ -353,13 +355,13 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 				temp_unit_ptr_->set_location(path_[current_]);
 				disp_->invalidate(path_[current_]);
 				// scroll in as much of the remaining path as possible
-				if ( temp_unit_ptr_->get_animation() )
-					temp_unit_ptr_->get_animation()->pause_animation();
+				if ( temp_unit_ptr_->anim_comp().get_animation() )
+					temp_unit_ptr_->anim_comp().get_animation()->pause_animation();
 				disp_->scroll_to_tiles(path_.begin() + current_,
 				                       path_.end(), game_display::ONSCREEN,
 				                       true, false, 0.0, force_scroll_);
-				if ( temp_unit_ptr_->get_animation() )
-					temp_unit_ptr_->get_animation()->restart_animation();
+				if ( temp_unit_ptr_->anim_comp().get_animation() )
+					temp_unit_ptr_->anim_comp().get_animation()->restart_animation();
 			}
 
 			if ( tiles_adjacent(path_[current_], path_[current_+1]) )
@@ -375,7 +377,7 @@ void unit_mover::proceed_to(unit& u, size_t path_index, bool update, bool wait)
 
 	// Update the unit's facing.
 	u.set_facing(temp_unit_ptr_->facing());
-	u.set_standing(false);	// Need to reset u's animation so the new facing takes effect.
+	u.anim_comp().set_standing(false);	// Need to reset u's animation so the new facing takes effect.
 	// Remember the unit to unhide when the animation finishes.
 	shown_unit_ = &u;
 	if ( wait )
@@ -458,7 +460,7 @@ void unit_mover::finish(unit &u, map_location::DIRECTION dir)
 
 	// Facing gets set even when not animating.
 	u.set_facing(dir == map_location::NDIRECTIONS ? final_dir : dir);
-	u.set_standing(true);	// Need to reset u's animation so the new facing takes effect.
+	u.anim_comp().set_standing(true);	// Need to reset u's animation so the new facing takes effect.
 
 	// Redraw path ends (even if not animating).
 	disp_->invalidate(path_.front());
@@ -532,10 +534,10 @@ void unit_sheath_weapon(const map_location& primary_loc, unit* primary_unit,
 		animator.wait_for_end();
 	}
 	if(primary_unit) {
-		primary_unit->set_standing();
+		primary_unit->anim_comp().set_standing();
 	}
 	if(secondary_unit) {
-		secondary_unit->set_standing();
+		secondary_unit->anim_comp().set_standing();
 	}
 	reset_helpers(primary_unit,secondary_unit);
 
@@ -618,7 +620,7 @@ void unit_attack(display * disp, game_board & board,
 		hit_type, &attack, secondary_attack, swing);
 
 	// note that we take an anim from the real unit, we'll use it later
-	const unit_animation *defender_anim = def->choose_animation(*disp,
+	const unit_animation *defender_anim = def->anim_comp().choose_animation(*disp,
 		def->get_location(), "defend", att->get_location(), damage,
 		hit_type, &attack, secondary_attack, swing);
 	animator.add_animation(&defender, defender_anim, def->get_location(),
@@ -660,7 +662,7 @@ void unit_attack(display * disp, game_board & board,
 	}
 	animator.wait_for_end();
 	// pass the animation back to the real unit
-	def->start_animation(animator.get_end_time(), defender_anim, true);
+	def->anim_comp().start_animation(animator.get_end_time(), defender_anim, true);
 	reset_helpers(&*att, &*def);
 	def->set_hitpoints(def_hitpoints);
 }
@@ -675,7 +677,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 		BOOST_FOREACH (const unit_ability & ability, leaders) {
 			unit_map::const_iterator leader = units.find(ability.second);
 			assert(leader != units.end());
-			leader->set_standing();
+			leader->anim_comp().set_standing();
 		}
 	}
 
@@ -684,7 +686,7 @@ void reset_helpers(const unit *attacker,const unit *defender)
 		BOOST_FOREACH (const unit_ability & ability, helpers) {
 			unit_map::const_iterator helper = units.find(ability.second);
 			assert(helper != units.end());
-			helper->set_standing();
+			helper->anim_comp().set_standing();
 		}
 	}
 }

@@ -44,6 +44,7 @@
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
 #include "../unit_abilities.hpp"
+#include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_helper.hpp"
 #include "../unit_map.hpp"
@@ -1326,13 +1327,13 @@ namespace {
 
 		if (a_.valid()) {
 			unit &u = a_.get_unit();
-			u.set_standing();
+			u.anim_comp().set_standing();
 			u.set_experience(u.experience() + a_.xp_);
 		}
 
 		if (d_.valid()) {
 			unit &u = d_.get_unit();
-			u.set_standing();
+			u.anim_comp().set_standing();
 			u.set_experience(u.experience() + d_.xp_);
 		}
 

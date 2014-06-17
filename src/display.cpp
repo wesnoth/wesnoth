@@ -17,6 +17,7 @@
  * Routines to set up the display, scroll and zoom the map.
  */
 
+#include "arrow.hpp"
 #include "cursor.hpp"
 #include "drawable_unit.hpp"
 #include "display.hpp"
@@ -30,19 +31,20 @@
 #include "map.hpp"
 #include "map_label.hpp"
 #include "minimap.hpp"
+#include "overlay.hpp"
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
+#include "resources.hpp"
+#include "synced_context.hpp"
 #include "team.hpp"
 #include "terrain_builder.hpp"
 #include "text.hpp"
 #include "time_of_day.hpp"
 #include "tooltips.hpp"
-#include "arrow.hpp"
 #include "tod_manager.hpp"
-#include "resources.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "whiteboard/manager.hpp"
-#include "overlay.hpp"
-#include "synced_context.hpp"
 
 #include "SDL_image.h"
 
@@ -3056,10 +3058,10 @@ void display::invalidate_animations()
 	}
 	const std::deque<unit*> & unit_list = fake_unit_man_->get_fake_unit_list_for_invalidation();
 	BOOST_FOREACH(const unit* u, unit_list) {
-		u->refresh();
+		u->anim_comp().refresh();
 	}
 	BOOST_FOREACH(const unit & u, dc_->units()) {
-		u.refresh();
+		u.anim_comp().refresh();
 	}
 	bool new_inval;
 	do {
@@ -3068,10 +3070,10 @@ void display::invalidate_animations()
 #pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
 #endif //_OPENMP
 		BOOST_FOREACH(const unit* u, unit_list) {
-			new_inval |=  u->invalidate(*this);
+			new_inval |=  u->anim_comp().invalidate(*this);
 		}
 		BOOST_FOREACH(const unit & u, dc_->units()) {
-			new_inval |=  u.invalidate(*this);
+			new_inval |=  u.anim_comp().invalidate(*this);
 		}
 	}while(new_inval);
 }

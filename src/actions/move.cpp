@@ -42,6 +42,7 @@
 #include "../formula_string_utils.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 #include "../whiteboard/manager.hpp"
 
 #include <boost/foreach.hpp>
@@ -494,7 +495,7 @@ namespace { // Private helpers for move_unit()
 		moves_left_.pop_front();
 
 		// Invalidate before moving so we invalidate neighbor hexes if needed.
-		move_it_->invalidate(disp);
+		move_it_->anim_comp().invalidate(disp);
 
 		// Attempt actually moving.
 		// (Fails if *step_to is occupied).
@@ -505,7 +506,7 @@ namespace { // Private helpers for move_unit()
 			// Update the moving unit.
 			move_it_ = move_result.first;
 			move_it_->set_facing(step_from->get_relative_dir(*step_to));
-			move_it_->set_standing(false);
+			move_it_->anim_comp().set_standing(false);
 			disp.invalidate_unit_after_move(*move_loc_, *step_to);
 			disp.invalidate(*step_to);
 			move_loc_ = step_to;

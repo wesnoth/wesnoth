@@ -101,7 +101,7 @@ void editor_action_item_replace::perform_without_undo(map_context& /*mc*/) const
 //
 //	item& u = *items.find(new_loc_);
 //	//TODO do we still need set_standing?
-//	u.set_standing();
+//	u.anim_comp().set_standing();
 //
 //	mc.add_changed_location(loc_);
 //	mc.add_changed_location(new_loc_);

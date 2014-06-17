@@ -32,6 +32,7 @@
 #include "resources.hpp"
 #include "unit_id.hpp"
 #include "unit_abilities.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_formula_manager.hpp"
 #include "scripting/lua.hpp"
 #include "side_filter.hpp"
@@ -184,7 +185,6 @@ unit::unit(const unit& o):
            events_(o.events_),
            filter_recall_(o.filter_recall_),
            emit_zoc_(o.emit_zoc_),
-           state_(o.state_),
 
            overlays_(o.overlays_),
 
@@ -202,17 +202,12 @@ unit::unit(const unit& o):
 
            modification_descriptions_(o.modification_descriptions_),
 
+           anim_comp_(new unit_animation_component(*this, *o.anim_comp_)),
+
            animations_(o.animations_),
 
-           anim_(NULL),
-		   next_idling_(0),
-
-           frame_begin_time_(o.frame_begin_time_),
-           unit_halo_(halo::NO_HALO),
            getsHit_(o.getsHit_),
-           refreshing_(o.refreshing_),
            hidden_(o.hidden_),
-           draw_bars_(o.draw_bars_),
            hp_bar_scaling_(o.hp_bar_scaling_),
            xp_bar_scaling_(o.xp_bar_scaling_),
 
@@ -265,7 +260,6 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	events_(),
 	filter_recall_(),
 	emit_zoc_(0),
-	state_(STATE_STANDING),
 	overlays_(),
 	role_(cfg["role"]),
 	attacks_(),
@@ -278,15 +272,10 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 	is_fearless_(false),
 	is_healthy_(false),
 	modification_descriptions_(),
+	anim_comp_(new unit_animation_component(*this)),
 	animations_(),
-	anim_(NULL),
-	next_idling_(0),
-	frame_begin_time_(0),
-	unit_halo_(halo::NO_HALO),
 	getsHit_(0),
-	refreshing_(false),
 	hidden_(false),
-	draw_bars_(false),
 	hp_bar_scaling_(cfg["hp_bar_scaling"].blank() ? type_->hp_bar_scaling() : cfg["hp_bar_scaling"]),
 	xp_bar_scaling_(cfg["xp_bar_scaling"].blank() ? type_->xp_bar_scaling() : cfg["xp_bar_scaling"]),
 	modifications_(),
@@ -370,7 +359,7 @@ unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
 		unit_value_ = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("halo")) {
-		clear_haloes();
+		anim_comp_->clear_haloes();
 		cfg_["halo"] = *v;
 	}
 	if (const config::attribute_value *v = cfg.get("profile")) {
@@ -570,7 +559,6 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	events_(),
 	filter_recall_(),
 	emit_zoc_(0),
-	state_(STATE_STANDING),
 	overlays_(),
 	role_(),
 	attacks_(),
@@ -583,15 +571,10 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 	is_fearless_(false),
 	is_healthy_(false),
 	modification_descriptions_(),
+	anim_comp_(new unit_animation_component(*this)),
 	animations_(),
-	anim_(NULL),
-	next_idling_(0),
-	frame_begin_time_(0),
-	unit_halo_(halo::NO_HALO),
 	getsHit_(0),
-	refreshing_(false),
 	hidden_(false),
-	draw_bars_(false),
 	modifications_(),
 	invisibility_cache_()
 {
@@ -614,7 +597,7 @@ unit::unit(const unit_type &u_type, int side, bool real_unit,
 unit::~unit()
 {
 	try {
-	clear_haloes();
+	anim_comp_->clear_haloes();
 
 	// Remove us from the status cache
 	std::vector<const unit *>::iterator itor =
@@ -623,6 +606,8 @@ unit::~unit()
 	if(itor != units_with_cache.end()) {
 		units_with_cache.erase(itor);
 	}
+	} catch (std::exception & e) {
+		ERR_UT << "Caught exception when destroying unit: " << e.what() << std::endl;
 	} catch (...) {}
 }
 
@@ -864,8 +849,7 @@ void unit::advance_to(const config &old_cfg, const unit_type &u_type,
 	game_events::add_events(cfg_.child_range("event"), new_type.id());
 	cfg_.clear_children("event");
 
-	refreshing_ = false;
-        anim_.reset();
+	anim_comp_->reset_after_advance();
 }
 
 std::string unit::big_profile() const
@@ -1069,7 +1053,7 @@ void unit::expire_modifications(const std::string & duration)
 	}
 
 	if ( rebuild_from != NULL ) {
-		clear_haloes();
+		anim_comp_->clear_haloes();
 		advance_to(*rebuild_from);
 	}
 }
@@ -1759,121 +1743,11 @@ const surface unit::still_image(bool scaled) const
 	return unit_image;
 }
 
-void unit::set_standing(bool with_bars) const
-{
-	display *disp = display::get_singleton();
-	if (preferences::show_standing_animations()&& !incapacitated()) {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "standing"),
-			with_bars,  "", 0, STATE_STANDING);
-	} else {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_"),
-			with_bars,  "", 0, STATE_STANDING);
-	}
-}
-
-void unit::set_ghosted(bool with_bars) const
-{
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
-			with_bars);
-}
-
-void unit::set_disabled_ghosted(bool with_bars) const
-{
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, loc_, "disabled_ghosted"),
-			with_bars);
-}
-
-void unit::set_idling() const
-{
-	display *disp = display::get_singleton();
-	start_animation(INT_MAX, choose_animation(*disp, loc_, "idling"),
-		true, "", 0, STATE_FORGET);
-}
-
-void unit::set_selecting() const
-{
-	const display *disp =  display::get_singleton();
-	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "selected"),
-			true, "", 0, STATE_FORGET);
-	} else {
-		start_animation(INT_MAX, choose_animation(*disp, loc_, "_disabled_selected_"),
-			true, "", 0, STATE_FORGET);
-	}
-}
-
-void unit::start_animation (int start_time, const unit_animation *animation,
-	bool with_bars,  const std::string &text, Uint32 text_color, STATE state) const
-{
-	const display * disp =  display::get_singleton();
-	if (!animation) {
-		if (state == STATE_STANDING)
-			state_ = state;
-		if (!anim_ && state_ != STATE_STANDING)
-			set_standing(with_bars);
-		return ;
-	}
-	state_ = state;
-	// everything except standing select and idle
-	bool accelerate = (state != STATE_FORGET && state != STATE_STANDING);
-	draw_bars_ =  with_bars;
-	anim_.reset(new unit_animation(*animation));
-	const int real_start_time = start_time == INT_MAX ? anim_->get_begin_time() : start_time;
-	anim_->start_animation(real_start_time, loc_, loc_.get_direction(facing_),
-		 text, text_color, accelerate);
-	frame_begin_time_ = anim_->get_begin_time() -1;
-	if (disp->idle_anim()) {
-		next_idling_ = get_current_animation_tick()
-			+ static_cast<int>((20000 + rand() % 20000) * disp->idle_anim_rate());
-	} else {
-		next_idling_ = INT_MAX;
-	}
-}
-
-
 void unit::set_facing(map_location::DIRECTION dir) const {
 	if(dir != map_location::NDIRECTIONS) {
 		facing_ = dir;
 	}
 	// Else look at yourself (not available so continue to face the same direction)
-}
-
-void unit::clear_haloes () const
-{
-	if(unit_halo_ != halo::NO_HALO) {
-		halo::remove(unit_halo_);
-		unit_halo_ = halo::NO_HALO;
-	}
-	if(anim_ ) anim_->clear_haloes();
-}
-bool unit::invalidate (const display & disp) const
-{
-	bool result = false;
-
-	// Very early calls, anim not initialized yet
-	if(get_animation()) {
-		frame_parameters params;
-		const gamemap & map = disp.get_map();
-		const t_translation::t_terrain terrain = map.get_terrain(get_location());
-		const terrain_type& terrain_info = map.get_terrain_info(terrain);
-
-		int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-		if (is_flying() && height_adjust < 0) {
-			height_adjust = 0;
-		}
-		params.y -= height_adjust;
-		params.halo_y -= height_adjust;
-		params.image_mod = image_mods();
-		params.halo_mod = TC_image_mods();
-		params.image= absolute_image();
-
-		result |= get_animation()->invalidate(params);
-	}
-
-	return result;
-
 }
 
 int unit::upkeep() const
@@ -2333,7 +2207,7 @@ void unit::add_modification(const std::string& mod_type, const config& mod, bool
 					cfg_["ellipse"] = effect["ellipse"];
 
 				} else if (apply_to == "halo") {
-					clear_haloes();
+					anim_comp_->clear_haloes();
 					cfg_["halo"] = effect["halo"];
 
 				} else if (apply_to == "overlay") {
@@ -2477,31 +2351,6 @@ void unit::add_trait_description(const config& trait, const t_string& descriptio
 std::string unit::absolute_image() const {
 	return cfg_["image_icon"].empty() ? cfg_["image"] : cfg_["image_icon"];
 }
-
-const unit_animation* unit::choose_animation(const display& disp, const map_location& loc,const std::string& event,
-		const map_location& second_loc,const int value,const unit_animation::hit_type hit,
-		const attack_type* attack, const attack_type* second_attack, int swing_num) const
-{
-	// Select one of the matching animations at random
-	std::vector<const unit_animation*> options;
-	int max_val = unit_animation::MATCH_FAIL;
-	for(std::vector<unit_animation>::const_iterator i = animations_.begin(); i != animations_.end(); ++i) {
-		int matching = i->matches(disp,loc,second_loc,this,event,value,hit,attack,second_attack,swing_num);
-		if(matching > unit_animation::MATCH_FAIL && matching == max_val) {
-			options.push_back(&*i);
-		} else if(matching > max_val) {
-			max_val = matching;
-			options.clear();
-			options.push_back(&*i);
-		}
-	}
-
-	if(max_val == unit_animation::MATCH_FAIL) {
-		return NULL;
-	}
-	return options[rand()%options.size()];
-}
-
 
 void unit::apply_modifications()
 {
@@ -2720,33 +2569,6 @@ int side_upkeep(int side)
 	return res;
 }
 
-void unit::refresh() const
-{
-	if (state_ == STATE_FORGET && anim_ && anim_->animation_finished_potential())
-	{
-		set_standing();
-		return;
-	}
-	display &disp = *display::get_singleton();
-	if (state_ != STATE_STANDING || get_current_animation_tick() < next_idling_ ||
-	    !disp.tile_nearly_on_screen(loc_) || incapacitated())
-	{
-		return;
-	}
-	if (get_current_animation_tick() > next_idling_ + 1000)
-	{
-		// prevent all units animating at the same time
-		if (disp.idle_anim()) {
-			next_idling_ = get_current_animation_tick()
-				+ static_cast<int>((20000 + rand() % 20000) * disp.idle_anim_rate());
-		} else {
-			next_idling_ = INT_MAX;
-		}
-	} else {
-		set_idling();
-	}
-}
-
 team_data calculate_team_data(const team& tm, int side)
 {
 	team_data res;
@@ -2802,7 +2624,7 @@ void unit::set_hidden(bool state) const {
 	hidden_ = state;
 	if(!state) return;
 	// We need to get rid of haloes immediately to avoid display glitches
-	clear_haloes();
+	anim_comp_->clear_haloes();
 }
 
 // Filters unimportant stats from the unit config and returns a checksum of

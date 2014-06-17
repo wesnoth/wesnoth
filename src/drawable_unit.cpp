@@ -21,6 +21,7 @@
 #include "map.hpp"
 #include "team.hpp"
 #include "unit_animation.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_frame.hpp"
 
 #include <boost/foreach.hpp>
@@ -33,24 +34,26 @@ void drawable_unit::redraw_unit (display & disp) const
 
 	const team & viewing_team = teams[disp.viewing_team()];
 
+	unit_animation_component & ac = *anim_comp_;
+
 	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(viewing_team,map, disp.show_everything()) )
 	{
-		clear_haloes();
-		if(anim_) {
-			anim_->update_last_draw_time();
+		ac.clear_haloes();
+		if(ac.anim_) {
+			ac.anim_->update_last_draw_time();
 		}
 		return;
 	}
 
-	if (!anim_) {
-		set_standing();
-		if (!anim_) return;
+	if (!ac.anim_) {
+		ac.set_standing();
+		if (!ac.anim_) return;
 	}
 
-	if (refreshing_) return;
-	refreshing_ = true;
+	if (ac.refreshing_) return;
+	ac.refreshing_ = true;
 
-	anim_->update_last_draw_time();
+	ac.anim_->update_last_draw_time();
 	frame_parameters params;
 	const t_translation::t_terrain terrain = map.get_terrain(loc_);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
@@ -106,7 +109,7 @@ void drawable_unit::redraw_unit (display & disp) const
 	params.primary_frame = t_true;
 
 
-	const frame_parameters adjusted_params = anim_->get_current_params(params);
+	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
 
 	const map_location dst = loc_.get_direction(facing_);
 	const int xsrc = disp.get_location_x(loc_);
@@ -118,20 +121,20 @@ void drawable_unit::redraw_unit (display & disp) const
 	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + d2;
 	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + d2;
 
-	if(unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
-		unit_halo_ = halo::add(0, 0, image_halo()+TC_image_mods(), map_location(-1, -1));
+	if(ac.unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
+		ac.unit_halo_ = halo::add(0, 0, image_halo()+TC_image_mods(), map_location(-1, -1));
 	}
-	if(unit_halo_ != halo::NO_HALO && image_halo().empty()) {
-		halo::remove(unit_halo_);
-		unit_halo_ = halo::NO_HALO;
-	} else if(unit_halo_ != halo::NO_HALO) {
-		halo::set_location(unit_halo_, x, y - height_adjust);
+	if(ac.unit_halo_ != halo::NO_HALO && image_halo().empty()) {
+		halo::remove(ac.unit_halo_);
+		ac.unit_halo_ = halo::NO_HALO;
+	} else if(ac.unit_halo_ != halo::NO_HALO) {
+		halo::set_location(ac.unit_halo_, x, y - height_adjust);
 	}
 
 
 
 	// We draw bars only if wanted, visible on the map view
-	bool draw_bars = draw_bars_ ;
+	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
 		const int d = disp.hex_size();
 		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, d, d);
@@ -291,7 +294,7 @@ void drawable_unit::redraw_unit (display & disp) const
 	params.y -= height_adjust_unit - height_adjust;
 	params.halo_y -= height_adjust_unit - height_adjust;
 
-	anim_->redraw(params);
-	refreshing_ = false;
+	ac.anim_->redraw(params);
+	ac.refreshing_ = false;
 }
 

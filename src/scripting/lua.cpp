@@ -65,6 +65,7 @@
 #include "sound.hpp"
 #include "synced_context.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "ai/lua/core.hpp"
 #include "version.hpp"
 #include "gui/widgets/clickable.hpp"
@@ -2193,7 +2194,7 @@ static int intf_put_unit(lua_State *L)
 
 	if (lu) {
 		lu->put_map(loc);
-		lu->get()->set_standing();
+		lu->get()->anim_comp().set_standing();
 	} else {
 		u->set_location(loc);
 		resources::units->insert(u);
@@ -2268,7 +2269,7 @@ static int intf_extract_unit(lua_State *L)
 	if (lu->on_map()) {
 		u = resources::units->extract(u->get_location());
 		assert(u);
-		u->clear_haloes();
+		u->anim_comp().clear_haloes();
 	} else if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
 		UnitPtr v = UnitPtr(new unit(*u));

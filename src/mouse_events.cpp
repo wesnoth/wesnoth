@@ -40,6 +40,8 @@
 #include "replay_helper.hpp"
 #include "resources.hpp"
 #include "synced_context.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "wml_separators.hpp"
 #include "whiteboard/manager.hpp"
 
@@ -725,7 +727,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse, const
 			if (!(browse || resources::whiteboard->unit_has_actions(&*u)))
 			{
 				sound::play_UI_sound("select-unit.wav");
-				u->set_selecting();
+				u->anim_comp().set_selecting();
 				if(fire_event) {
 					// ensure unit map is back to normal while event is fired
 					wb::real_map srum;

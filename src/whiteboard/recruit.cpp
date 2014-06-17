@@ -29,6 +29,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_map.hpp"
 #include "unit_types.hpp"
 
@@ -87,7 +88,7 @@ void recruit::init()
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
-	fake_unit_->set_ghosted(false);
+	fake_unit_->anim_comp().set_ghosted(false);
 	fake_unit_->place_on_fake_unit_manager(resources::fake_units);
 
 	cost_ = fake_unit_->type().cost();

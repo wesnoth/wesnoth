@@ -35,6 +35,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_display.hpp"
 #include "unit_map.hpp"
 
@@ -135,7 +136,7 @@ move::move(config const& cfg, bool hidden)
 	if(hidden)
 		fake_unit_->set_hidden(true);
 	fake_unit_->place_on_fake_unit_manager(resources::fake_units);
-	fake_unit_->set_ghosted(true);
+	fake_unit_->anim_comp().set_ghosted(true);
 	unit_display::move_unit(route_->steps, *fake_unit_, false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
 
@@ -151,7 +152,7 @@ void move::init()
 	//than previous actions' fake units
 	if (fake_unit_)
 	{
-		fake_unit_->set_ghosted(true);
+		fake_unit_->anim_comp().set_ghosted(true);
 	}
 	side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
 	side_actions::iterator action = side_actions->find_last_action_of(*(get_unit()));
@@ -160,7 +161,7 @@ void move::init()
 		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
 		{
 			if (move->fake_unit_)
-				move->fake_unit_->set_disabled_ghosted(true);
+				move->fake_unit_->anim_comp().set_disabled_ghosted(true);
 		}
 	}
 

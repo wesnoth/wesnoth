@@ -33,6 +33,7 @@
 #include "synced_context.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -98,7 +99,7 @@ void recall::init()
 	fake_unit_->set_location(recall_hex_);
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
-	fake_unit_->set_ghosted(false);
+	fake_unit_->anim_comp().set_ghosted(false);
 	fake_unit_->place_on_fake_unit_manager( resources::fake_units);
 }
 

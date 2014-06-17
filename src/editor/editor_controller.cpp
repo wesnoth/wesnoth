@@ -42,9 +42,11 @@
 #include "../clipboard.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
+#include "../leader_scroll_dialog.hpp"
 #include "../preferences_display.hpp"
 #include "../sound.hpp"
-#include "../leader_scroll_dialog.hpp"
+#include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 
 #include "halo.hpp"
 
@@ -655,7 +657,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 							resources::units->find(gui_->mouseover_hex());
 					assert(un != resources::units->end());
 					un->set_facing(map_location::DIRECTION(index));
-					un->set_standing();
+					un->anim_comp().set_standing();
 					return true;
 				}
 			}
@@ -766,7 +768,7 @@ bool editor_controller::execute_command(const hotkey::hotkey_command& cmd, int i
 			const unit_map::unit_iterator un = context_manager_->get_map_context().get_units().find(loc);
 			bool canrecruit = un->can_recruit();
 			un->set_can_recurit(!canrecruit);
-			un->set_standing();
+			un->anim_comp().set_standing();
 		}
 		return true;
 		case HOTKEY_DELETE_UNIT:

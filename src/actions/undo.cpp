@@ -30,6 +30,7 @@
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
@@ -746,7 +747,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 	u = units.find(rev_route.back());
 	u->set_goto(map_location());
 	u->set_movement(saved_moves, true);
-	u->set_standing();
+	u->anim_comp().set_standing();
 
 	gui.invalidate_unit_after_move(rev_route.front(), rev_route.back());
 	return true;
@@ -964,7 +965,7 @@ bool undo_list::move_action::redo(int side)
 	// Set the unit's state.
 	u->set_goto(goto_hex);
 	u->set_movement(saved_moves, true);
-	u->set_standing();
+	u->anim_comp().set_standing();
 
 	if ( resources::gameboard->map().is_village(route.back()) ) {
 		get_village(route.back(), u->side());

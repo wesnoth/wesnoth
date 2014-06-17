@@ -18,6 +18,7 @@
 #include "fake_unit.hpp"
 #include "log.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -43,7 +44,7 @@ int fake_unit_manager::remove_temporary_unit(unit *u)
 		fake_units_.erase(it, fake_units_.end());
 		my_display_.invalidate(u->get_location());
 		// Redraw with no location to get rid of haloes
-		u->clear_haloes();
+		u->anim_comp().clear_haloes();
 	}
 	if (removed > 1) {
 		ERR_NG << "Error: duplicate temp unit found in fake_unit_manager::remove_temporary_unit" << std::endl;

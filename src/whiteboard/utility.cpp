@@ -32,6 +32,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "unit.hpp"
+#include "unit_animation_component.hpp"
 
 #include <boost/foreach.hpp>
 
@@ -140,13 +141,13 @@ temporary_unit_hider::~temporary_unit_hider()
 
 void ghost_owner_unit(unit* unit)
 {
-	unit->set_disabled_ghosted(false);
+	unit->anim_comp().set_disabled_ghosted(false);
 	resources::screen->invalidate(unit->get_location());
 }
 
 void unghost_owner_unit(unit* unit)
 {
-	unit->set_standing(true);
+	unit->anim_comp().set_standing(true);
 	resources::screen->invalidate(unit->get_location());
 }
 

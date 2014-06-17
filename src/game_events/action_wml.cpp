@@ -58,6 +58,8 @@
 #include "../soundsource.hpp"
 #include "../synced_context.hpp"
 #include "../terrain_filter.hpp"
+#include "../unit.hpp"
+#include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_helper.hpp"
 #include "../wml_exception.hpp"
@@ -857,7 +859,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			u->set_state(unit::STATE_SLOWED, false);
 			u->set_state(unit::STATE_PETRIFIED, false);
 			u->set_state(unit::STATE_UNHEALABLE, false);
-			u->set_standing();
+			u->anim_comp().set_standing();
 		}
 
 		if (heal_amount_to_set)
@@ -948,7 +950,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			resources::screen->invalidate(loc);
 			unit_map::iterator iun = resources::units->find(loc);
 			if ( iun != resources::units->end()  &&  iun.valid() )
-				iun->invalidate(*resources::screen);
+				iun->anim_comp().invalidate(*resources::screen);
 		}
 		resources::screen->redraw_minimap();
 
@@ -1422,7 +1424,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 			path_step[1] = paths[un][step];
 			unit_display::move_unit(path_step, *units[un]);
 			units[un]->set_location(path_step[1]);
-			units[un]->set_standing();
+			units[un]->anim_comp().set_standing();
 		}
 	}
 
@@ -2359,7 +2361,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	unit::clear_status_caches();
 
 	u = resources::units->find(vacant_dst);
-	u->set_standing();
+	u->anim_comp().set_standing();
 
 	if ( clear_shroud ) {
 		// Now that the unit is visibly in position, clear the shroud.

@@ -45,6 +45,8 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "unit.hpp"
+#include "unit_animation_component.hpp"
 #include "unit_display.hpp"
 
 #include <boost/lexical_cast.hpp>
@@ -334,7 +336,7 @@ void manager::post_delete_action(action_ptr action)
 		if(action_it != side_actions->end()) {
 			move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it);
 			if(move && move->get_fake_unit()) {
-				move->get_fake_unit()->set_standing(true);
+				move->get_fake_unit()->anim_comp().set_standing(true);
 			}
 		}
 	}
@@ -714,13 +716,13 @@ void manager::create_temp_move()
 					// Create temp ghost unit
 					fake_unit.reset(new class fake_unit(*temp_moved_unit));
 					fake_unit->place_on_fake_unit_manager( resources::fake_units);
-					fake_unit->set_ghosted(true);
+					fake_unit->anim_comp().set_ghosted(true);
 				}
 
 				unit_display::move_unit(path, *fake_unit, false); //get facing right
-				fake_unit->invalidate(*game_display::get_singleton());
+				fake_unit->anim_comp().invalidate(*game_display::get_singleton());
 				fake_unit->set_location(*curr_itor);
-				fake_unit->set_ghosted(true);
+				fake_unit->anim_comp().set_ghosted(true);
 			}
 			else //zero-hex path -- don't bother drawing a fake unit
 				fake_unit.reset();
@@ -730,7 +732,7 @@ void manager::create_temp_move()
 	}
 	//in case path shortens on next step and one ghosted unit has to be removed
 	int ind = fake_units_.size() - 1;
-	fake_units_[ind]->invalidate(*game_display::get_singleton());
+	fake_units_[ind]->anim_comp().invalidate(*game_display::get_singleton());
 	//toss out old arrows and fake units
 	move_arrows_.resize(turn+1);
 	fake_units_.resize(turn+1);
@@ -741,7 +743,7 @@ void manager::erase_temp_move()
 	move_arrows_.clear();
 	BOOST_FOREACH(fake_unit_ptr const& tmp, fake_units_) {
 		if(tmp) {
-			tmp->invalidate(*game_display::get_singleton());
+			tmp->anim_comp().invalidate(*game_display::get_singleton());
 		}
 	}
 	fake_units_.clear();
@@ -812,7 +814,7 @@ void manager::save_temp_attack(const map_location& attacker_loc, const map_locat
 			assert(route_->steps.back() == attacker_loc);
 			source_hex = route_->steps.front();
 
-			fake_unit->set_disabled_ghosted(true);
+			fake_unit->anim_comp().set_disabled_ghosted(true);
 		}
 		else
 		{

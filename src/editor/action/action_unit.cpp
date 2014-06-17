@@ -24,6 +24,9 @@
 
 #include "editor/map/map_context.hpp"
 
+#include "../../unit.hpp"
+#include "../../unit_animation_component.hpp"
+
 #include <boost/scoped_ptr.hpp>
 
 namespace editor {
@@ -99,7 +102,7 @@ void editor_action_unit_replace::perform_without_undo(map_context& mc) const
 
 	unit& u = *units.find(new_loc_);
 	//TODO do we still need set_standing?
-	u.set_standing();
+	u.anim_comp().set_standing();
 
 	mc.add_changed_location(loc_);
 	mc.add_changed_location(new_loc_);
@@ -135,7 +138,7 @@ void editor_action_unit_facing::perform_without_undo(map_context& mc) const
 
 	if (unit_it != units.end()) {
 		unit_it->set_facing(new_direction_);
-		unit_it->set_standing();
+		unit_it->anim_comp().set_standing();
 	}
 }
 
