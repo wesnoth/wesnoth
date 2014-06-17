@@ -53,6 +53,7 @@
 #include "../statistics.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
+#include "../unit_ptr.hpp"
 #include "../synced_context.hpp"
 
 namespace ai {
@@ -500,14 +501,14 @@ recall_result::recall_result(side_number side,
 {
 }
 
-const unit * recall_result::get_recall_unit(const team &my_team)
+UnitConstPtr recall_result::get_recall_unit(const team &my_team)
 {
 	const std::vector<UnitPtr >::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
 	if (rec == my_team.recall_list().end()) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
-		return NULL;
+		return UnitConstPtr();
 	}
-	return rec->get();
+	return *rec;
 }
 
 bool recall_result::test_enough_gold(const team &my_team)
@@ -531,7 +532,7 @@ void recall_result::do_check_before()
 	}
 
 	//Unit available for recalling?
-	const unit * to_recall = get_recall_unit(my_team);
+	const UnitConstPtr & to_recall = get_recall_unit(my_team);
 	if ( !to_recall ) {
 		return;
 	}
