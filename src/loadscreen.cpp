@@ -28,6 +28,10 @@
 #include "video.hpp"
 #include "image.hpp"
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "text.hpp"
+#endif
+
 #include <SDL_events.h>
 #include <SDL_image.h>
 
@@ -116,26 +120,24 @@ void loadscreen::draw_screen(const std::string &text)
 	// Height of the lighting line.
 	int	lightning_thickness = 2;
 
-	surface gdis = screen_.getSurface();
+#if SDL_VERSION_ATLEAST(2,0,0)
+	sdl::twindow *wnd = CVideo::get_window();
+	SDL_Renderer *rnd = SDL_GetRenderer(*wnd);
+
 	SDL_Rect area;
 
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
 	SDL_Event ev;
 	while(SDL_PollEvent(&ev)) {
-#if SDL_VERSION_ATLEAST(2, 0, 0)
 		if(ev.type == SDL_WINDOWEVENT
 				&& (ev.window.event == SDL_WINDOWEVENT_RESIZED
 					|| ev.window.event == SDL_WINDOWEVENT_EXPOSED))
-#else
-		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
-#endif
 		{
 			logo_drawn_ = false;
 		}
 	}
 
 	// Draw logo if it was successfully loaded.
-#if SDL_VERSION_ATLEAST(2,0,0)
 	if (!logo_texture_.null() && !logo_drawn_) {
 		int x = (screen_.getx () - logo_texture_.width()) / 2;
 		int y = ((scry - logo_texture_.height()) / 2) - pbh;
@@ -143,7 +145,7 @@ void loadscreen::draw_screen(const std::string &text)
 		// Check if we have enough pixels to display it.
 		if (x > 0 && y > 0) {
 			pby_offset_ = (pbh + logo_texture_.height())/2;
-			CVideo::get_window()->draw(logo_texture_, x, y);
+			wnd->draw(logo_texture_, x, y);
 		} else {
 			if (!screen_.faked()) {  // Avoid error if --nogui is used.
 				ERR_DP << "loadscreen: Logo image is too big." << std::endl;
@@ -151,7 +153,73 @@ void loadscreen::draw_screen(const std::string &text)
 		}
 		logo_drawn_ = true;
 	}
+	int pbx = (scrx - pbw)/2;					// Horizontal location.
+	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
+
+	// Draw top border.
+	area.x = pbx; area.y = pby;
+	area.w = pbw + 2*(bw+bispw); area.h = bw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw bottom border.
+	area.x = pbx; area.y = pby + pbh + bw + 2*bispw;
+	area.w = pbw + 2*(bw+bispw); area.h = bw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw left border.
+	area.x = pbx; area.y = pby + bw;
+	area.w = bw; area.h = pbh + 2*bispw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw right border.
+	area.x = pbx + pbw + bw + 2*bispw; area.y = pby + bw;
+	area.w = bw; area.h = pbh + 2*bispw;
+	sdl::fill_rect(rnd,&area,bcr,bcg,bcb,255);
+	// Draw the finished bar area.
+	area.x = pbx + bw + bispw; area.y = pby + bw + bispw;
+	area.w = (prcnt_ * pbw) / 100; area.h = pbh;
+	sdl::fill_rect(rnd,&area,fcr,fcg,fcb,255);
+
+	SDL_Rect lightning = area;
+	lightning.h = lightning_thickness;
+	//we add 25% of white to the color of the bar to simulate a light effect
+	sdl::fill_rect(rnd,&lightning,(fcr*3+255)/4,(fcg*3+255)/4,(fcb*3+255)/4,255);
+	lightning.y = area.y+area.h-lightning.h;
+	//remove 50% of color to simulate a shadow effect
+	sdl::fill_rect(rnd,&lightning,fcr/2,fcg/2,fcb/2,255);
+
+	// Draw the leftover bar area.
+	area.x = pbx + bw + bispw + (prcnt_ * pbw) / 100; area.y = pby + bw + bispw;
+	area.w = ((100 - prcnt_) * pbw) / 100; area.h = pbh;
+	sdl::fill_rect(rnd, &area, lcr, lcg, lcb, 255);
+
+	// Clear the last text and draw new if text is provided.
+	if (!text.empty())
+	{
+		sdl::fill_rect(rnd, &textarea_, 0, 0, 0, 255);
+
+		font::ttext txt;
+		txt.set_text(text, false);
+		// A text-ure... haha, get it?
+		sdl::ttexture texture = txt.render_as_texture();
+		textarea_.h = texture.height();
+		textarea_.w = texture.width();
+		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
+		textarea_.y = pby + pbh + 4*(bw + bispw);
+		wnd->draw(texture, textarea_.x, textarea_.y);
+	}
+	CVideo::get_window()->render();
 #else
+	surface gdis = screen_.getSurface();
+	SDL_Rect area;
+
+	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
+	SDL_Event ev;
+	while(SDL_PollEvent(&ev)) {
+		if(ev.type == SDL_VIDEORESIZE || ev.type == SDL_VIDEOEXPOSE)
+		{
+			logo_drawn_ = false;
+		}
+	}
+
+	// Draw logo if it was successfully loaded.
 	if (logo_surface_ && !logo_drawn_) {
 		area.x = (screen_.getx () - logo_surface_->w) / 2;
 		area.y = ((scry - logo_surface_->h) / 2) - pbh;
@@ -169,7 +237,6 @@ void loadscreen::draw_screen(const std::string &text)
 		logo_drawn_ = true;
 		update_rect(area.x, area.y, area.w, area.h);
 	}
-#endif
 	int pbx = (scrx - pbw)/2;					// Horizontal location.
 	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
 
@@ -222,8 +289,6 @@ void loadscreen::draw_screen(const std::string &text)
 	// Update the rectangle.
 	update_rect(pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
 	screen_.flip();
-#if SDL_VERSION_ATLEAST(2,0,0)
-	CVideo::get_window()->render();
 #endif
 }
 
