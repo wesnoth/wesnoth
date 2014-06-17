@@ -252,7 +252,7 @@ void game_display::draw_invalidated()
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
-			(static_cast<const drawable_unit*> (temp_unit))->redraw_unit();
+			(static_cast<const drawable_unit*> (temp_unit))->redraw_unit(*this);
 	}
 }
 

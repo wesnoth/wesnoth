@@ -33,7 +33,7 @@ class drawable_unit : protected unit //TODO: Get rid of inheritance and use comp
 {				     //IMO, it would be better for drawable unit to hold a unit reference, and be marked as a friend class. 
 				     //But I don't want to rewrite the redraw() function right now.
 	/** draw a unit.  */
-	void redraw_unit() const;
+	void redraw_unit(display & disp) const;
 
 	friend class display;
 	friend class game_display;

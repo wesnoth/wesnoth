@@ -25,12 +25,15 @@
 
 #include <boost/foreach.hpp>
 
-void drawable_unit::redraw_unit () const
+void drawable_unit::redraw_unit (display & disp) const
 {
-	display &disp = *display::get_singleton();
-	const gamemap &map = disp.get_map();
+	const display_context & dc = disp.get_disp_context();
+	const gamemap &map = dc.map();
+	const std::vector<team> &teams = dc.teams();
 
-	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(disp.get_teams()[disp.viewing_team()],map, disp.show_everything()) )
+	const team & viewing_team = teams[disp.viewing_team()];
+
+	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(viewing_team,map, disp.show_everything()) )
 	{
 		clear_haloes();
 		if(anim_) {
@@ -197,7 +200,7 @@ void drawable_unit::redraw_unit () const
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
-			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
+			   viewing_team.is_enemy(side())) {
 				if (preferences::show_enemy_orb() && !get_state(STATE_PETRIFIED))
 					orb_img = &enemy_orb;
 				else
@@ -217,7 +220,7 @@ void drawable_unit::redraw_unit () const
 					if (preferences::show_unmoved_orb())
 						orb_img = &unmoved_orb;
 					else orb_img = NULL;
-				} else if ( disp.get_disp_context().unit_can_move(*this) ) {
+				} else if ( dc.unit_can_move(*this) ) {
 					if (preferences::show_partial_orb())
 						orb_img = &partmoved_orb;
 					else orb_img = NULL;

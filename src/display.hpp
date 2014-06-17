@@ -165,7 +165,7 @@ public:
 
 	void change_display_context(const display_context * dc);
 
-	const display_context & get_disp_context() { return *dc_; }
+	const display_context & get_disp_context() const { return *dc_; }
 
 	static Uint32 rgb(Uint8 red, Uint8 green, Uint8 blue)
 		{ return 0xFF000000 | (red << 16) | (green << 8) | blue; }

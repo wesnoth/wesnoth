@@ -32,6 +32,7 @@
 #include "minimap.hpp"
 #include "play_controller.hpp" //note: this can probably be refactored out
 #include "reports.hpp"
+#include "team.hpp"
 #include "terrain_builder.hpp"
 #include "text.hpp"
 #include "time_of_day.hpp"
@@ -2554,7 +2555,7 @@ void display::draw_invalidated() {
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (u_it != dc_->units().end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
-			(static_cast<const drawable_unit*> (&*u_it))->redraw_unit();
+			(static_cast<const drawable_unit*> (&*u_it))->redraw_unit(*this);
 	}
 
 }
