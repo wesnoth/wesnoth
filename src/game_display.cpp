@@ -73,7 +73,6 @@ game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb:
 		attack_indicator_dst_(),
 		route_(),
 		tod_manager_(tod),
-		level_(level),
 		displayedUnitHex_(),
 		sidebarScaling_(1.0),
 		first_turn_(true),

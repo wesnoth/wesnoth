@@ -246,8 +246,6 @@ private:
 
 	const tod_manager& tod_manager_;
 
-	const config& level_;
-
 	void invalidate_route();
 
 	map_location displayedUnitHex_;
