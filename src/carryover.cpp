@@ -29,7 +29,8 @@ carryover::carryover(const config& side)
 		, current_player_(side["current_player"])
 		, gold_(side["gold"].to_int())
 		, name_(side["name"])
-		, previous_recruits_(utils::set_split(side["previous_recruits"]))
+		// if we load it from a snapshot we need to read the recruits from "recruits" and not from "previous_recruits".
+		, previous_recruits_(side.has_attribute("recruit") ? utils::set_split(side["recruit"]) :utils::set_split(side["previous_recruits"]))
 		, recall_list_()
 		, save_id_(side["save_id"])
 {
