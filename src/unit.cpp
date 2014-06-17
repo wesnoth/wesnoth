@@ -30,13 +30,14 @@
 #include "play_controller.hpp"
 #include "random_new.hpp"
 #include "resources.hpp"
+#include "scripting/lua.hpp"
+#include "sdl/utils.hpp"
+#include "side_filter.hpp"
+#include "terrain_filter.hpp"
 #include "unit_id.hpp"
 #include "unit_abilities.hpp"
 #include "unit_animation_component.hpp"
 #include "unit_formula_manager.hpp"
-#include "scripting/lua.hpp"
-#include "side_filter.hpp"
-#include "terrain_filter.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>

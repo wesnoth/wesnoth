@@ -19,6 +19,7 @@
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "map.hpp"
+#include "sdl/utils.hpp"
 #include "team.hpp"
 #include "unit_animation.hpp"
 #include "unit_animation_component.hpp"

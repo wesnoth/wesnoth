@@ -20,13 +20,13 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#include "sdl/utils.hpp" //only needed for SDL_Color
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 #include "unit_ptr.hpp"
 
 class display;
 class gamemap;
+struct SDL_Color;
 class team;
 class unit_animation_component;
 class unit_formula_manager;
