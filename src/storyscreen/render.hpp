@@ -25,6 +25,10 @@
 #include "storyscreen/part.hpp"
 // #include "widgets/button.hpp"
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+#include "sdl/texture.hpp"
+#endif
+
 class display;
 class CVideo;
 
@@ -83,7 +87,12 @@ private:
 	// (the background layer we align the images to)
 	SDL_Rect base_rect_;
 
+#if SDL_VERSION_ATLEAST(2,0,0)
+	std::vector< sdl::ttexture > background_images_;
+	std::vector< std::pair<int, int> > background_positions_;
+#else
 	surface background_;
+#endif
 	std::vector< floating_image::render_input > imgs_;
 	bool has_background_;
 

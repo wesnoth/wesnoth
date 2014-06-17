@@ -25,6 +25,7 @@
 #include <vector>
 
 #include "sdl/utils.hpp"
+#include "sdl/texture.hpp"
 
 class config;
 class vconfig;
@@ -42,7 +43,11 @@ public:
 	struct render_input
 	{
 		SDL_Rect rect;	/**< Corrected rectangle for rendering surf. */
+#if SDL_VERSION_ATLEAST(2,0,0)
+		sdl::ttexture image;
+#else
 		surface image;	/**< Surface, scaled if required. */
+#endif
 	};
 
 	/**

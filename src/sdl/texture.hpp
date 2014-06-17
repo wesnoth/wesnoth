@@ -218,12 +218,12 @@ public:
 	/**
 	 * Returns the width of the texture.
 	 */
-	unsigned width() const;
+	int width() const;
 
 	/**
 	 * Returns the height of the texture.
 	 */
-	unsigned height() const;
+	int height() const;
 
 	/**
 	 * Returns the frame of the texture.
@@ -258,18 +258,6 @@ public:
 	 * Returns the alpha of the texture.
 	 */
 	Uint8 alpha() const;
-
-	/**
-	 * Sets the blend mode of the texture.
-	 *
-	 * @param mode                One of the values enumerated in SDL_BlendMode.
-	 */
-	 void set_blend_mode(SDL_BlendMode mode);
-
-	 /**
-	  * Returns the blend mode of the texture.
-	  */
-	 SDL_BlendMode blend_mode() const;
 
 	 /**
 	  * Sets the color modulation of the texture.
@@ -344,6 +332,9 @@ private:
 
 	/** Color modulation. */
 	Uint8 mod_r_, mod_g_, mod_b_;
+
+	/** Alpha. */
+	Uint8 alpha_;
 
 	/**
 	 * The SDL_Surface source of the @ref texture_.
