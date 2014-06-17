@@ -36,6 +36,8 @@
 #include <vector>
 #include "composite/engine.hpp"
 
+#include "SDL.h"
+
 namespace ai {
 
 const std::string manager::AI_TYPE_COMPOSITE_AI = "composite_ai";
