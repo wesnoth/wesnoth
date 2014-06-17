@@ -36,7 +36,6 @@ class saved_game;
 class game_data;
 class team;
 class unit;
-class unit_animation;
 
 namespace actions {
 	class undo_list;
@@ -172,7 +171,6 @@ public:
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
-	std::map< std::string, std::vector<unit_animation> > animation_cache;
 	static const std::string wml_menu_hotkey_prefix;
 protected:
 	void slice_before_scroll();

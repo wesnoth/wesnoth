@@ -17,8 +17,6 @@
 #include "config.hpp"
 #include "display.hpp"
 #include "map.hpp"
-#include "play_controller.hpp"	//Only needed to access animations cache
-#include "resources.hpp"	//Only needed to access animations cache
 #include "preferences.hpp"
 #include "unit_animation.hpp"
 #include "unit.hpp"
@@ -199,7 +197,8 @@ void unit_animation_component::apply_new_animation_effect(const config & effect)
 	if(effect["id"].empty()) {
 		unit_animation::add_anims(animations_, effect);
 	} else {
-		std::vector<unit_animation> &built = resources::controller->animation_cache[effect["id"]];
+		static std::map< std::string, std::vector<unit_animation> > animation_cache;
+		std::vector<unit_animation> &built = animation_cache[effect["id"]];
 		if(built.empty()) {
 			unit_animation::add_anims(built, effect);
 		}

@@ -52,7 +52,6 @@
 #include "synced_context.hpp"
 #include "tooltips.hpp"
 #include "unit.hpp"
-#include "unit_animation.hpp"
 #include "unit_id.hpp"
 #include "whiteboard/manager.hpp"
 #include "wml_exception.hpp"
@@ -102,7 +101,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 	controller_base(ticks, game_config, video),
 	observer(),
 	savegame_config(),
-	animation_cache(),
 	prefs_disp_manager_(),
 	tooltips_manager_(),
 	events_manager_(),
