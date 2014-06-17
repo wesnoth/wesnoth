@@ -435,7 +435,7 @@ void saved_game::convert_to_start_save()
 	remove_snapshot();
 }
 
-config saved_game::to_config()
+config saved_game::to_config() const
 {
 	//TODO: remove this code dublication with write_... functions.
 	config r = classification_.to_config();
@@ -483,7 +483,6 @@ std::string saved_game::get_scenario_id()
 	}
 }
 
-
 bool saved_game::not_corrupt() const
 {
 	if(carryover_sides.empty() && carryover_sides_start.empty())
@@ -496,5 +495,11 @@ bool saved_game::not_corrupt() const
 	// the function expand_carryover transforms a start of scenario save to a normal save
 	// the function convert_to_start_save converts a normal save form teh end of the scenaio 
 	// to a start-of-scenario save for a next level
-	return carryover_sides.empty() || carryover_sides_start.empty();
+	bool r = carryover_sides.empty() || carryover_sides_start.empty();
+	if(!r)
+	{
+		config c = this->to_config();
+		WRN_NG << "corrupt safegame:" << c.debug() << std::endl;
+	}
+	return r;
 }
