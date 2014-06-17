@@ -20,7 +20,7 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/scoped_ptr.hpp>
 
-#include "sdl/utils.hpp"
+#include "sdl/utils.hpp" //only needed for SDL_Color
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 #include "unit_ptr.hpp"
@@ -244,9 +244,6 @@ public:
 	std::vector<attack_type>& attacks() { return attacks_; }
 
 	int damage_from(const attack_type& attack,bool attacker,const map_location& loc) const { return resistance_against(attack,attacker,loc); }
-
-	/** A SDL surface, ready for display for place where we need a still-image of the unit. */
-	const surface still_image(bool scaled = false) const;
 
 	unit_animation_component & anim_comp() const { return *anim_comp_; }
 	void set_facing(map_location::DIRECTION dir) const;

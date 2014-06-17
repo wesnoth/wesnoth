@@ -1242,7 +1242,21 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 	const unit &u = *units_[index_];
 	details det;
 
-	det.image = u.still_image();
+	/** Get an SDL surface, ready for display for place where we need a still-image of the unit. */
+	image::locator image_loc;
+
+#ifdef LOW_MEM
+	image_loc = image::locator(u.absolute_image());
+#else
+	std::string mods=u.image_mods();
+	if(!mods.empty()){
+		image_loc = image::locator(u.absolute_image(),mods);
+	} else {
+		image_loc = image::locator(u.absolute_image());
+	}
+#endif
+	det.image = image::get_image(image_loc, image::UNSCALED);
+	/***/
 
 	det.name = u.name();
 	det.type_name = u.type_name();

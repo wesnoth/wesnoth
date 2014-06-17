@@ -1718,25 +1718,6 @@ void unit::write(config& cfg) const
 
 }
 
-const surface unit::still_image(bool scaled) const
-{
-	image::locator image_loc;
-
-#ifdef LOW_MEM
-	image_loc = image::locator(absolute_image());
-#else
-	std::string mods=image_mods();
-	if(!mods.empty()){
-		image_loc = image::locator(absolute_image(),mods);
-	} else {
-		image_loc = image::locator(absolute_image());
-	}
-#endif
-
-	surface unit_image(image::get_image(image_loc, scaled ? image::SCALED_TO_ZOOM : image::UNSCALED));
-	return unit_image;
-}
-
 void unit::set_facing(map_location::DIRECTION dir) const {
 	if(dir != map_location::NDIRECTIONS) {
 		facing_ = dir;
