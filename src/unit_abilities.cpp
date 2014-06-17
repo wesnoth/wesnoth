@@ -19,10 +19,11 @@
 
 #include "log.hpp"
 #include "resources.hpp"
+#include "team.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
-#include "team.hpp"
 #include "unit_abilities.hpp"
+#include "unit_map.hpp"
 
 #include <boost/foreach.hpp>
 

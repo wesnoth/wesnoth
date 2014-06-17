@@ -21,7 +21,6 @@
 #include <boost/scoped_ptr.hpp>
 
 #include "unit_types.hpp"
-#include "unit_map.hpp"
 #include "unit_ptr.hpp"
 
 class display;

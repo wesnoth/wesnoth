@@ -24,6 +24,7 @@
 #include "resources.hpp"
 #include "tstring.hpp"
 #include "unit.hpp"
+#include "unit_map.hpp"
 #include "variable.hpp"
 
 #include <boost/bind.hpp>

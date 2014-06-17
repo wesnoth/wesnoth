@@ -45,6 +45,8 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 #include "map_label.hpp"
+#include "unit.hpp"
+#include "unit_map.hpp"
 
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
