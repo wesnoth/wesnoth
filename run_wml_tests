@@ -295,7 +295,7 @@ if [ "$AllPassed" -eq 0 ]; then
   fi
   echo "Not all tests gave the correct result."
   echo "Check errors.log for error reports."
-  exit 1
+  exit 2
 else
   echo "All tests gave the correct result."
   exit 0
