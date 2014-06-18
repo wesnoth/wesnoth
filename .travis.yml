@@ -14,11 +14,11 @@ matrix:
       env: WML_TESTS=true STRICT_COMPILATION=True
     - compiler: gcc
       env: WML_TESTS=true STRICT_COMPILATION=False
-before_install:
-    - if [ "$CXX" = "g++" ]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
-    - if [ "$CXX" = "g++" ]; then sudo apt-get update -qq; fi
-    - if [ "$CXX" = "g++" ]; then sudo apt-get install g++-4.8; fi
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
+#before_install:  # Commented this block out because the download can take a few minutes and cause the gcc build to timeout.
+#    - if [ "$CXX" = "g++" ]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
+#    - if [ "$CXX" = "g++" ]; then sudo apt-get update -qq; fi
+#    - if [ "$CXX" = "g++" ]; then sudo apt-get install g++-4.8; fi
+#    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
 install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
