@@ -23,6 +23,7 @@
 #include "variable.hpp"
 #include "resources.hpp"
 #include "play_controller.hpp"
+#include "spritesheet.hpp"
 
 #include <boost/foreach.hpp>
 
