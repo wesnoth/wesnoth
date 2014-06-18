@@ -293,6 +293,8 @@ void set_scope_active(scope s, bool set)
 
 bool is_scope_active(scope s)
 {
+	if( s == hotkey::SCOPE_COUNT )
+		return false;
 	return scope_active_[s];
 }
 

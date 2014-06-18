@@ -236,6 +236,8 @@ bool has_hotkey_item(const std::string& command)
 void add_hotkey(const hotkey_item& item) {
 
 	scope new_scope = hotkey::get_hotkey_command(item.get_command()).scope;
+	if(new_scope == hotkey::SCOPE_COUNT)
+		new_scope = hotkey::SCOPE_GAME;
 	scope_changer scope_ch;
 	deactivate_all_scopes();
 	hotkey::set_scope_active(new_scope);
