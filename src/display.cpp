@@ -3056,7 +3056,7 @@ void display::invalidate_animations()
 			}
 		}
 	}
-	const std::deque<unit*> & unit_list = fake_unit_man_->get_fake_unit_list_for_invalidation();
+	fake_unit_manager::range unit_list = fake_unit_man_->get_unit_range();
 
 	BOOST_FOREACH(const unit & u, dc_->units()) {
 		u.anim_comp().refresh();

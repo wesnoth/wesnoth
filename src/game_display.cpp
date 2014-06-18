@@ -246,7 +246,7 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
-	BOOST_FOREACH(const unit* temp_unit, fake_unit_man_->get_fake_unit_list_for_invalidation()) {
+	BOOST_FOREACH(const unit* temp_unit, fake_unit_man_->get_unit_range()) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()

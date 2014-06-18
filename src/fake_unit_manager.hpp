@@ -17,6 +17,8 @@
 
 #include <deque>
 
+#include <boost/range/iterator_range.hpp>
+
 class display;
 class unit;
 class fake_unit;
@@ -28,7 +30,10 @@ public:
 	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
 	friend class fake_unit;
 
-	const std::deque<unit*> & get_fake_unit_list_for_invalidation() {return fake_units_; }
+	typedef unit* internal_ptr_type;
+	typedef boost::iterator_range<std::deque<unit*>::const_iterator> range;
+
+	range get_unit_range() const { return boost::make_iterator_range(fake_units_.begin(), fake_units_.end()); }
 
 private:
 	/** Temporarily place a unit on map (moving: can overlap others).
@@ -36,15 +41,15 @@ private:
 	 *  and therefore gets drawn last, over other units and temp units.
 	 *  Adding the same unit twice isn't allowed.
 	 */
-	void place_temporary_unit(unit *u);
+	void place_temporary_unit(internal_ptr_type);
 
 	/** Removes any instances of this temporary unit from the temporary unit vector.
 	 *  Returns the number of temp units deleted (0 or 1, any other number indicates an error).
 	 */
-	int remove_temporary_unit(unit *u);
+	int remove_temporary_unit(internal_ptr_type);
 
 	/// collection of units destined to be drawn but not put into the unit map
-	std::deque<unit*> fake_units_;
+	std::deque<internal_ptr_type> fake_units_;
 	display & my_display_;
 };
 
