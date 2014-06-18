@@ -511,19 +511,6 @@ private:
 	int moves_;
 };
 
-/// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<UnitPtr >::iterator find_if_matches_id(
-		std::vector<UnitPtr > &unit_list,
-		const std::string &unit_id);
-/// Used to find units in vectors by their ID. (Convenience wrapper)
-std::vector<UnitPtr >::const_iterator find_if_matches_id(
-		const std::vector<UnitPtr > &unit_list,
-		const std::string &unit_id);
-/// Used to erase units from vectors by their ID. (Convenience wrapper)
-std::vector<UnitPtr >::iterator erase_if_matches_id(
-		std::vector<UnitPtr > &unit_list,
-		const std::string &unit_id);
-
 /** Returns the number of units of the side @a side_num. */
 int side_units(int side_num);
 
