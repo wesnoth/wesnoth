@@ -29,6 +29,7 @@
 #include "game_events/pump.hpp"
 #include "dialogs.hpp"
 #include "unit_helper.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp" //user choice
 #include "resources.hpp"
 #include <boost/foreach.hpp>
@@ -222,12 +223,10 @@ SYNCED_COMMAND_HANDLER_FUNCTION(disband, child, /*use_undo*/, /*show*/, error_ha
 	team &current_team = (*resources::teams)[current_team_num - 1];
 
 	const std::string& unit_id = child["value"];
-	std::vector<UnitPtr>::iterator disband_unit =
-		find_if_matches_id(current_team.recall_list(), unit_id);
+	size_t old_size = current_team.recall_list().size();
+	current_team.recall_list().erase_if_matches_id(unit_id);
 
-	if(disband_unit != current_team.recall_list().end()) {
-		current_team.recall_list().erase(disband_unit);
-	} else {
+	if (old_size == current_team.recall_list().size()) {
 		error_handler("illegal disband\n", true);
 		return false;
 	}

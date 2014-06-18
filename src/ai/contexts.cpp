@@ -37,6 +37,7 @@
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
+#include "../recall_list_manager.hpp"
 #include "../resources.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
@@ -784,7 +785,7 @@ const std::vector<UnitPtr>& readonly_context_impl::get_recall_list() const
 		return dummy_units;
 	}
 
-	return current_team().recall_list();
+	return current_team().recall_list().recall_list_; //TODO: Refactor ai so that friend of ai context is not required of recall_list_manager at this line
 }
 
 stage_ptr readonly_context_impl::get_recruitment(ai_context &context) const

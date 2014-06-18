@@ -34,6 +34,7 @@
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../pathfind/pathfind.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
@@ -190,10 +191,9 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	bool animate = temp_cfg["animate"].to_bool();
 	temp_cfg.remove_attribute("animate");
 
-	std::vector<UnitPtr > &recall_list = team_.recall_list();
-	std::vector<UnitPtr >::iterator recall_list_element = find_if_matches_id(recall_list, id);
+	UnitPtr recall_list_element = team_.recall_list().find_if_matches_id(id);
 
-	if ( recall_list_element == recall_list.end() ) {
+	if ( !recall_list_element ) {
 		//make the new unit
 		UnitPtr new_unit(new unit(temp_cfg, true, vcfg));
 		map_location loc = find_location(temp_cfg, new_unit.get());
@@ -205,20 +205,19 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 		}
 		else if ( add_to_recall_ ) {
 			//add to recall list
-			recall_list.push_back(new_unit);
+			team_.recall_list().add(new_unit);
 			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
 			preferences::encountered_units().insert(new_unit->type_id());
 		}
 	} else {
 		//get unit from recall list
-		const UnitPtr & u_ptr = *recall_list_element;
-		map_location loc = find_location(temp_cfg, u_ptr.get());
+		map_location loc = find_location(temp_cfg, recall_list_element.get());
 		if ( loc.valid() ) {
-			resources::units->replace(loc, *u_ptr);
-			LOG_NG << "inserting unit from recall list for side " << u_ptr->side()<< " with id="<< id << "\n";
+			resources::units->replace(loc, *recall_list_element);
+			LOG_NG << "inserting unit from recall list for side " << recall_list_element->side()<< " with id="<< id << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 			//if id is not empty, delete units with this ID from recall list
-			erase_if_matches_id(recall_list, id);
+			team_.recall_list().erase_if_matches_id( id);
 		}
 		else if ( add_to_recall_ ) {
 			LOG_NG << "wanted to insert unit on recall list, but recall list for side " << (cfg)["side"] << "already contains id=" <<id<<"\n";
@@ -418,10 +417,9 @@ namespace { // Helpers for get_recalls()
 	                                 std::set<size_t> * already_added = NULL)
 	{
 		const team& leader_team = (*resources::teams)[leader->side()-1];
-		const std::vector<UnitPtr >& recall_list = leader_team.recall_list();
 		const std::string& save_id = leader_team.save_id();
 
-		BOOST_FOREACH(const UnitConstPtr & recall_unit_ptr, recall_list)
+		BOOST_FOREACH(const UnitConstPtr & recall_unit_ptr, leader_team.recall_list())
 		{
 			const unit & recall_unit = *recall_unit_ptr;
 			// Do not add a unit twice.
@@ -429,9 +427,7 @@ namespace { // Helpers for get_recalls()
 			if ( !already_added  ||  already_added->count(underlying_id) == 0 )
 			{
 				// Only units that match the leader's recall filter are valid.
-				const std::vector<UnitPtr >::const_iterator rit = find_if_matches_id(recall_list, recall_unit.id());
-
-				scoped_recall_unit this_unit("this_unit", save_id, rit - recall_list.begin());
+				scoped_recall_unit this_unit("this_unit", save_id, leader_team.recall_list().find_index(recall_unit.id()));
 
 				if ( recall_unit.matches_filter(vconfig(leader->recall_filter()), map_location::null_location()) )
 				{
@@ -503,8 +499,7 @@ std::vector<UnitConstPtr > get_recalls(int side, const map_location &recall_loc)
 	if ( !leader_in_place )
 	{
 		// Return the full recall list.
-		const std::vector< UnitPtr >& recall_list = (*resources::teams)[side-1].recall_list();
-		BOOST_FOREACH(const UnitConstPtr & recall, recall_list)
+		BOOST_FOREACH(const UnitConstPtr & recall, (*resources::teams)[side-1].recall_list())
 		{
 			result.push_back(recall);
 		}
@@ -530,9 +525,8 @@ namespace { // Helpers for check_recall_location()
 
 		// Make sure the recalling unit can recall this specific unit.
 		team& recall_team = (*resources::teams)[recaller.side()-1];
-		std::vector<UnitPtr >::iterator it = find_if_matches_id(recall_team.recall_list(), recall_unit.id());
 		scoped_recall_unit this_unit("this_unit", recall_team.save_id(),
-						it - recall_team.recall_list().begin());
+						recall_team.recall_list().find_index(recall_unit.id()));
 		if ( !recall_unit.matches_filter(vconfig(recaller.recall_filter()),
 		                                 map_location::null_location()) )
 			return RECRUIT_NO_ABLE_LEADER;
@@ -1014,17 +1008,12 @@ bool recall_unit(const std::string & id, team & current_team,
                  const map_location & loc, const map_location & from,
                  bool show, bool use_undo)
 {
-	std::vector<UnitPtr > & recall_list = current_team.recall_list();
+	UnitPtr recall = current_team.recall_list().extract_if_matches_id(id);
 
-	// Find the unit to recall.
-	std::vector<UnitPtr >::iterator recall_it = find_if_matches_id(recall_list, id);
-	if ( recall_it == recall_list.end() )
+	if ( !recall )
 		return false;
 
 
-	// Make a copy of the unit before erasing it from the list.
-	UnitPtr recall(*recall_it);
-	recall_list.erase(recall_it);
 	// ** IMPORTANT: id might become invalid at this point!
 	// (Use recall.id() instead, if needed.)
 

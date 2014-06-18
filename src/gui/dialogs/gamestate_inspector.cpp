@@ -32,6 +32,7 @@
 #include "utils/foreach.tpp"
 
 #include "../../gamestatus.hpp"
+#include "../../recall_list_manager.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../unit.hpp"
@@ -416,40 +417,34 @@ public:
 		}
 
 		if(selected == 3) {
-			const std::vector<UnitPtr> recall_list
-					= resources::teams
-							  ? resources::teams->at(side_ - 1).recall_list()
-							  : std::vector<UnitPtr>();
-
 			std::stringstream s;
-			FOREACH(const AUTO & u, recall_list)
-			{
-				s << "id=\"" << u->id() << "\" (" << u->type_id() << ")\nL"
-				  << u->level() << "; " << u->experience() << "/"
-				  << u->max_experience() << " xp; " << u->hitpoints() << "/"
-				  << u->max_hitpoints() << " hp\n";
-				FOREACH(const AUTO & str, u->get_traits_list())
+			if (resources::teams) {
+				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
 				{
-					s << "\t" << str << std::endl;
+					s << "id=\"" << u->id() << "\" (" << u->type_id() << ")\nL"
+					  << u->level() << "; " << u->experience() << "/"
+					  << u->max_experience() << " xp; " << u->hitpoints() << "/"
+					  << u->max_hitpoints() << " hp\n";
+					FOREACH(const AUTO & str, u->get_traits_list())
+					{
+						s << "\t" << str << std::endl;
+					}
+					s << std::endl;
 				}
-				s << std::endl;
 			}
 			model_.set_inspect_window_text(s.str());
 			return;
 		}
 
 		if(selected == 4) {
-			const std::vector<UnitPtr> recall_list
-					= resources::teams
-							  ? resources::teams->at(side_ - 1).recall_list()
-							  : std::vector<UnitPtr>();
-
 			config c;
-			FOREACH(const AUTO & u, recall_list)
-			{
-				config c_unit;
-				u->write(c_unit);
-				c.add_child("unit", c_unit);
+			if (resources::teams) {
+				FOREACH(const AUTO & u, resources::teams->at(side_ - 1).recall_list())
+				{
+					config c_unit;
+					u->write(c_unit);
+					c.add_child("unit", c_unit);
+				}
 			}
 			model_.set_inspect_window_text(config_to_string(c));
 			return;

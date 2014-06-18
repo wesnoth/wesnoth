@@ -17,6 +17,7 @@
 #include "game_preferences.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "recall_list_manager.hpp"
 #include "unit.hpp"
 
 #include "utils/foreach.tpp"
@@ -144,7 +145,7 @@ void game_board::side_change_controller(int side_num, team::CONTROLLER ctrl, con
 bool game_board::try_add_unit_to_recall_list(const map_location& loc, const UnitPtr u)
 {
 	if(teams_[u->side()-1].persistent()) {
-		teams_[u->side()-1].recall_list().push_back(u);
+		teams_[u->side()-1].recall_list().add(u);
 		return true;
 	} else {
 		ERR_RG << "unit with id " << u->id() << ": location (" << loc.x << "," << loc.y <<") is not on the map, and player "

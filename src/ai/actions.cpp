@@ -47,6 +47,7 @@
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
@@ -503,12 +504,11 @@ recall_result::recall_result(side_number side,
 
 UnitConstPtr recall_result::get_recall_unit(const team &my_team)
 {
-	const std::vector<UnitPtr >::const_iterator rec = find_if_matches_id(my_team.recall_list(), unit_id_);
-	if (rec == my_team.recall_list().end()) {
+	UnitConstPtr rec = my_team.recall_list().find_if_matches_id(unit_id_);
+	if (!rec) {
 		set_error(E_NOT_AVAILABLE_FOR_RECALLING);
-		return UnitConstPtr();
 	}
-	return *rec;
+	return rec;
 }
 
 bool recall_result::test_enough_gold(const team &my_team)

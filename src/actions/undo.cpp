@@ -25,6 +25,7 @@
 #include "../game_display.hpp"
 #include "../log.hpp"
 #include "../play_controller.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
@@ -623,7 +624,7 @@ bool undo_list::dismiss_action::undo(int side, undo_list & /*undos*/)
 		return false;
 	}
 
-	current_team.recall_list().push_back(dismissed_unit);
+	current_team.recall_list().add(dismissed_unit);
 	return true;
 }
 
@@ -663,7 +664,7 @@ bool undo_list::recall_action::undo(int side, undo_list & /*undos*/)
 		current_team.spend_gold(-cost);
 	}
 
-	current_team.recall_list().push_back(un);
+	current_team.recall_list().add(un);
 	// invalidate before erasing allow us
 	// to also do the overlapped hexes
 	gui.invalidate(recall_loc);
@@ -834,7 +835,7 @@ bool undo_list::dismiss_action::redo(int side)
 	}
 	recorder.redo(replay_data);
 	replay_data.clear();
-	erase_if_matches_id(current_team.recall_list(), dismissed_unit->id());
+	current_team.recall_list().erase_if_matches_id(dismissed_unit->id());
 	return true;
 }
 
@@ -856,15 +857,14 @@ bool undo_list::recall_action::redo(int side)
 	map_location loc = route.front();
 	map_location from = recall_from;
 
-	const std::vector<UnitPtr > & recalls = current_team.recall_list();
-	std::vector<UnitPtr >::const_iterator unit_it = find_if_matches_id(recalls, id);
-	if ( unit_it == recalls.end() ) {
+	UnitPtr un = current_team.recall_list().find_if_matches_id(id);
+	if ( !un ) {
 		ERR_NG << "Trying to redo a recall of '" << id
 		       << "', but that unit is not in the recall list.";
 		return false;
 	}
 
-	const std::string &msg = find_recall_location(side, loc, from, **unit_it);
+	const std::string &msg = find_recall_location(side, loc, from, *un);
 	if ( msg.empty() ) {
 		recorder.redo(replay_data);
 		replay_data.clear();
