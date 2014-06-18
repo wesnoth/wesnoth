@@ -823,6 +823,7 @@
 		EC28C58F19423426003B0F5E /* utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C58D19423426003B0F5E /* utils.cpp */; };
 		EC28C59119423529003B0F5E /* save_index.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC28C59019423528003B0F5E /* save_index.cpp */; };
 		EC3381C718B520120020DD6F /* theme_list.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC3381C518B520120020DD6F /* theme_list.cpp */; };
+		EC386CF1195119AA006004ED /* unit_animation_component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC386CEF195119A9006004ED /* unit_animation_component.cpp */; };
 		EC44E382181DDAF90037A62F /* menu_item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E37E181DDAF90037A62F /* menu_item.cpp */; };
 		EC44E383181DDAF90037A62F /* wmi_container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC44E380181DDAF90037A62F /* wmi_container.cpp */; };
 		EC48D74D17F3148300DE80BF /* recruitment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EC48D74B17F3148300DE80BF /* recruitment.cpp */; };
@@ -2014,6 +2015,8 @@
 		EC28C59019423528003B0F5E /* save_index.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = save_index.cpp; sourceTree = "<group>"; };
 		EC3381C518B520120020DD6F /* theme_list.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = theme_list.cpp; path = ../gui/dialogs/theme_list.cpp; sourceTree = "<group>"; };
 		EC3381C618B520120020DD6F /* theme_list.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = theme_list.hpp; path = ../gui/dialogs/theme_list.hpp; sourceTree = "<group>"; };
+		EC386CEF195119A9006004ED /* unit_animation_component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_animation_component.cpp; sourceTree = "<group>"; };
+		EC386CF0195119AA006004ED /* unit_animation_component.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_animation_component.hpp; sourceTree = "<group>"; };
 		EC44E37E181DDAF90037A62F /* menu_item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = menu_item.cpp; path = game_events/menu_item.cpp; sourceTree = "<group>"; };
 		EC44E37F181DDAF90037A62F /* menu_item.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = menu_item.hpp; path = game_events/menu_item.hpp; sourceTree = "<group>"; };
 		EC44E380181DDAF90037A62F /* wmi_container.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = wmi_container.cpp; path = game_events/wmi_container.cpp; sourceTree = "<group>"; };
@@ -2442,6 +2445,8 @@
 		29B97315FDCFA39411CA2CEA /* src */ = {
 			isa = PBXGroup;
 			children = (
+				EC386CEF195119A9006004ED /* unit_animation_component.cpp */,
+				EC386CF0195119AA006004ED /* unit_animation_component.hpp */,
 				ECDEAF78194FEA9D00DB2F47 /* game_classification.cpp */,
 				ECDEAF76194FEA8400DB2F47 /* syncmp_handler.cpp */,
 				ECDEAF74194FE86C00DB2F47 /* animated.tpp */,
@@ -4229,6 +4234,7 @@
 				B5599B1A0EC62181008DD061 /* network_worker.cpp in Sources */,
 				B5599B1D0EC62181008DD061 /* multiplayer_wait.cpp in Sources */,
 				B5599B1E0EC62181008DD061 /* multiplayer_ui.cpp in Sources */,
+				EC386CF1195119AA006004ED /* unit_animation_component.cpp in Sources */,
 				B5599B200EC62181008DD061 /* multiplayer_create.cpp in Sources */,
 				B5599B210EC62181008DD061 /* multiplayer_connect.cpp in Sources */,
 				B5599B220EC62181008DD061 /* multiplayer.cpp in Sources */,
