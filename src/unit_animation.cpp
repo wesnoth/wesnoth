@@ -66,16 +66,6 @@ const std::vector<std::string>& unit_animation::all_tag_names() {
 	return anim_tags.names;
 }
 
-struct sprite_data
-{
-	std::string filepath;
-	int id;
-	int x_coordinate;
-	int y_coordinate;
-	int height;
-	int width;
-};
-
 struct animation_branch
 {
 	animation_branch()
@@ -602,6 +592,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 }
 
+// a function to get each sprite's location and place it in a struct for use.
 void unit_animation::fill_spritesheet_locations( std::vector<sprite_data> & sprites, const config & cfg)
 {
 	const std::string spritesheet_image = cfg["spritesheet"];
@@ -617,25 +608,17 @@ void unit_animation::fill_spritesheet_locations( std::vector<sprite_data> & spri
 		}
 	}
 */
-	while() 
+	/* 
+	 * a loop to get each sprite's data into the structure for it.
+	 * not sure on how to set this loop to to stop when the last
+	 * sprite's data has been found and loaded.
+	 */
+	while()
 	{
 		if (std::find(itor->event_.begin(),itor->event_.end(),std::string("default"))!= itor->event_.end()) 
 		{
-			sprite_data current_sprite;
-			current_sprite.filepath = spritesheet_image;
-			current_sprite.id = cfg["sprite_id"];
-			current_sprite.x_coordinate = cfg["x_coor"];
-			current_sprite.y_coordinate = cfg["y_coor"];
-			current_sprite.height = cfg["height"];
-			current_sprite.width = cfg["width"];
-			sprites_base.push_back(*current_sprite);
-			sprites_base.back().event_.clear();
+			sprite_data::sprite_data(const config& cfg);
 		}
-	}
-
-	if( sprites_base.empty() )
-	{
-		sprites_base.push_back(0,0,0,0);
 	}
 }
 /*

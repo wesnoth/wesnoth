@@ -119,7 +119,8 @@ image::image_cache images_,
 		hexed_images_,
 		scaled_to_hex_images_,
 		tod_colored_images_,
-		brightened_images_;
+		brightened_images_,
+		spritesheet_images_;
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -182,6 +183,7 @@ void flush_cache()
 		reversed_images_.clear();
 		image_existence_map.clear();
 		precached_dirs.clear();
+		spritesheet_images_.flush();
 	}
 	/* We can't reset last_index_, since some locators are still alive
 	   when using :refresh. That would cause them to point to the wrong
@@ -595,6 +597,7 @@ surface locator::load_image_sub_file() const
 	return surf;
 }
 
+
 bool locator::file_exists() const
 {
 	return !get_binary_file_location("images", val_.filename_).empty();
@@ -758,6 +761,19 @@ static surface get_brightened(const locator& i_locator)
 	return brighten_image(image, ftofxp(game_config::hex_brightening));
 }
 
+// Get a sprite out of a spritesheet and load that sprite to image_ cache
+// FIXME: Need to figure out a way to do the naming of the res once in cache
+void get_sprite_image(const locator& i_locator, SDL_Rect& sprite_location)
+{
+	surface image(get_image(i_locator, SPRITESHEET));
+	image_cache *imap;
+	surface res;
+	imap = &images_;
+	SDL_BlitSurface(image, &sprite_location, res, NULL);
+	i_locator.add_to_cache(*imap, res);
+	return;
+}
+
 ///translate type to a simpler one when possible
 static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 	switch(type) {
@@ -787,6 +803,12 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 		// check if the image is already hex-cut by the location system
 		if(i_locator.get_loc().valid())
 			type = UNSCALED;
+	}
+
+	if(type == SPRITESHEET) {
+		// check if the image is a spritesheet
+		if(i_locator.get_loc().valid())
+			type = SPRITESHEET;
 	}
 
 	return type;
@@ -822,6 +844,9 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
+		break;
+	case SPRITESHEET:
+		imap = &spritesheet_images_;
 		break;
 	default:
 		return res;
@@ -863,6 +888,10 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		break;
 	case BRIGHTENED:
 		res = get_brightened(i_locator);
+		break;
+	case SPRITESHEET:
+		// If type is a spritesheet, directly load the image from the disk.
+		res = i_locator.load_from_disk();
 		break;
 	default:
 		return res;
