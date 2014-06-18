@@ -3,30 +3,31 @@ compiler:
     - clang
     - gcc
 env:
-    - WML_TESTS=true STRICT_COMPILATION=True
-    - WML_TESTS=true STRICT_COMPILATION=False
-    - WML_TESTS=false STRICT_COMPILATION=True
+    - STRICT_COMPILATION=True
+    - STRICT_COMPILATION=False
 matrix:
   exclude:
-    - compiler: clang 
-      env: WML_TESTS=false STRICT_COMPILATION=True
-    - compiler: gcc 
-      env: WML_TESTS=true STRICT_COMPILATION=True
     - compiler: gcc
-      env: WML_TESTS=true STRICT_COMPILATION=False
-#before_install:  # Commented this block out because the download can take a few minutes and cause the gcc build to timeout.
-#    - if [ "$CXX" = "g++" ]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
-#    - if [ "$CXX" = "g++" ]; then sudo apt-get update -qq; fi
-#    - if [ "$CXX" = "g++" ]; then sudo apt-get install g++-4.8; fi
-#    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
+      env: STRICT_COMPILATION=False
+before_install:
+    - export TARGETS="wesnoth wesnothd campaignd test"
+    - export WML_TESTS=true
+    - export CPP_TESTS=true
+    - if [ "$CXX" = "g++" ]; then export TARGETS="wesnoth"; fi
+    - if [ "$CXX" = "g++" ]; then export WML_TESTS=false; fi
+    - if [ "$CXX" = "g++" ]; then export CPP_TESTS=false; fi
+    - if [ "$CXX" = "g++" ]; then sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y; fi
+    - if [ "$CXX" = "g++" ]; then sudo apt-get update -qq; fi
+    - if [ "$CXX" = "g++" ]; then sudo apt-get install g++-4.8; fi
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8"; fi
 install:
     - sudo apt-get update -qq
     - sudo apt-get install -qq libboost-iostreams-dev libboost-program-options-dev libboost-regex-dev libboost-system-dev libboost-test-dev libcairo2-dev libfribidi-dev libpango1.0-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-net1.2-dev libsdl-ttf2.0-dev
 script: 
-    - scons cxxtool=$CXX strict=$STRICT_COMPILATION wesnoth wesnothd campaignd test
+    - scons cxxtool=$CXX strict=$STRICT_COMPILATION $TARGETS
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
-    - ./test_wrapper.sh
+    - if [[ "$CPP_TESTS" = true ]]; then ./test_wrapper.sh; fi
     - if [[ "$WML_TESTS" = true ]]; then ./run_wml_tests -t 20; fi
 after_failure:
     - ./travis_after_failure.sh
