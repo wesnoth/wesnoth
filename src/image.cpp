@@ -805,12 +805,6 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 			type = UNSCALED;
 	}
 
-	if(type == SPRITESHEET) {
-		// check if the image is a spritesheet
-		if(i_locator.get_loc().valid())
-			type = SPRITESHEET;
-	}
-
 	return type;
 }
 
