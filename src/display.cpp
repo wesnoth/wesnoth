@@ -3057,23 +3057,25 @@ void display::invalidate_animations()
 		}
 	}
 	const std::deque<unit*> & unit_list = fake_unit_man_->get_fake_unit_list_for_invalidation();
-	BOOST_FOREACH(const unit* u, unit_list) {
-		u->anim_comp().refresh();
-	}
+
 	BOOST_FOREACH(const unit & u, dc_->units()) {
 		u.anim_comp().refresh();
 	}
+	BOOST_FOREACH(const unit* u, unit_list) {
+		u->anim_comp().refresh();
+	}
+
 	bool new_inval;
 	do {
 		new_inval = false;
 #ifdef _OPENMP
 #pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
 #endif //_OPENMP
-		BOOST_FOREACH(const unit* u, unit_list) {
-			new_inval |=  u->anim_comp().invalidate(*this);
-		}
 		BOOST_FOREACH(const unit & u, dc_->units()) {
 			new_inval |=  u.anim_comp().invalidate(*this);
+		}
+		BOOST_FOREACH(const unit* u, unit_list) {
+			new_inval |=  u->anim_comp().invalidate(*this);
 		}
 	}while(new_inval);
 }
