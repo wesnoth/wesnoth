@@ -194,21 +194,18 @@ void unit_creator::add_unit(const config &cfg, const vconfig* vcfg)
 	std::vector<UnitPtr >::iterator recall_list_element = find_if_matches_id(recall_list, id);
 
 	if ( recall_list_element == recall_list.end() ) {
-		//make a temporary unit
-		boost::scoped_ptr<unit> temp_unit(new unit(temp_cfg, true, vcfg));
-		map_location loc = find_location(temp_cfg, temp_unit.get());
+		//make the new unit
+		UnitPtr new_unit(new unit(temp_cfg, true, vcfg));
+		map_location loc = find_location(temp_cfg, new_unit.get());
 		if ( loc.valid() ) {
-			unit *new_unit = temp_unit.get();
-			//add temporary unit to map
+			//add the new unit to map
 			resources::units->replace(loc, *new_unit);
 			LOG_NG << "inserting unit for side " << new_unit->side() << "\n";
 			post_create(loc,*(resources::units->find(loc)),animate);
 		}
 		else if ( add_to_recall_ ) {
 			//add to recall list
-			unit *new_unit = temp_unit.get();
-			UnitPtr temp_ptr = UnitPtr(new unit(*new_unit));
-			recall_list.push_back(temp_ptr);
+			recall_list.push_back(new_unit);
 			DBG_NG << "inserting unit with id=["<<id<<"] on recall list for side " << new_unit->side() << "\n";
 			preferences::encountered_units().insert(new_unit->type_id());
 		}
