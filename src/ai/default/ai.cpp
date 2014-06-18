@@ -30,6 +30,7 @@
 #include "../../game_classification.hpp"
 #include "../../log.hpp"
 #include "../../mouse_handler_base.hpp"
+#include "../../recall_list_manager.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
@@ -763,13 +764,12 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 		return false;
 	}
 
-	const std::vector<UnitPtr > &recalls = current_team().recall_list();
-
-	if (recalls.empty()) {
+	if (current_team().recall_list().empty()) {
 		return false;
 	}
 
-	std::transform(recalls.begin(), recalls.end(), std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
+	std::transform(current_team().recall_list().begin(), current_team().recall_list().end(),
+			std::back_inserter< std::vector <std::pair<std::string,double> > > (recall_list_scores_), unit_combat_score_getter(*this) );
 
 	debug_print_recall_list_scores(recall_list_scores_,"Recall list, after scoring:");
 

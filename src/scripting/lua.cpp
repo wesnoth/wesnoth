@@ -56,6 +56,7 @@
 #include "pathfind/pathfind.hpp"
 #include "pathfind/teleport.hpp"
 #include "play_controller.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "reports.hpp"
 #include "resources.hpp"
@@ -853,9 +854,8 @@ static int intf_match_unit(lua_State *L)
 
 	if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
-		std::vector<UnitPtr>::iterator it = find_if_matches_id(t.recall_list(), u->id());
 		scoped_recall_unit auto_store("this_unit",
-			t.save_id(), it - t.recall_list().begin());
+			t.save_id(), t.recall_list().find_index(u->id()));
 		lua_pushboolean(L, u->matches_filter(filter, map_location()));
 		return 1;
 	}
@@ -887,9 +887,8 @@ static int intf_get_recall_units(lua_State *L)
 		BOOST_FOREACH(UnitPtr & u, t.recall_list())
 		{
 			if (!filter.null()) {
-				std::vector<UnitPtr>::iterator it = find_if_matches_id(t.recall_list(), u->id());
 				scoped_recall_unit auto_store("this_unit",
-					t.save_id(), it - t.recall_list().begin());
+					t.save_id(), t.recall_list().find_index(u->id()));
 				if (!u->matches_filter(filter, map_location()))
 					continue;
 			}
@@ -2232,18 +2231,11 @@ static int intf_put_recall_unit(lua_State *L)
 	team &t = (*resources::teams)[side - 1];
 	if (!t.persistent())
 		return luaL_argerror(L, 2, "nonpersistent side");
-	std::vector<UnitPtr> &rl = t.recall_list();
 
 	// Avoid duplicates in the recall list.
 	size_t uid = u->underlying_id();
-	std::vector<UnitPtr>::iterator i = rl.begin();
-	while (i != rl.end()) {
-		if ((*i)->underlying_id() == u->underlying_id()) {
-			i = rl.erase(i);
-		} else ++i;
-	}
-
-	rl.push_back(u);
+	t.recall_list().erase_by_underlying_id(uid);
+	t.recall_list().add(u);
 	if (lu) {
 		if (lu->on_map())
 			resources::units->erase(u->get_location());
@@ -2273,9 +2265,7 @@ static int intf_extract_unit(lua_State *L)
 	} else if (int side = lu->on_recall_list()) {
 		team &t = (*resources::teams)[side - 1];
 		UnitPtr v = UnitPtr(new unit(*u));
-		std::vector<UnitPtr> &rl = t.recall_list();
-		std::vector<UnitPtr>::iterator it = find_if_matches_id(t.recall_list(), u->id());
-		rl.erase(rl.begin() + (it - rl.begin()));
+		t.recall_list().erase_if_matches_id(u->id());
 		u = v;
 	} else {
 		return 0;

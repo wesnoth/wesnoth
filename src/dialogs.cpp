@@ -38,6 +38,7 @@
 #include "menu_events.hpp"
 #include "mouse_handler_base.hpp"
 #include "minimap.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "replay_helper.hpp"
 #include "resources.hpp"
@@ -133,14 +134,11 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		resources::undo_stack->add_dismissal(u_ptr);
 
 		// Find the unit in the recall list.
-		std::vector<UnitPtr >& recall_list = (*resources::teams)[u.side() -1].recall_list();
-		assert(!recall_list.empty());
-		std::vector<UnitPtr >::iterator dismissed_unit =
-				find_if_matches_id(recall_list, u.id());
-		assert(dismissed_unit != recall_list.end());
+		UnitPtr dismissed_unit = (*resources::teams)[u.side() -1].recall_list().find_if_matches_id(u.id());
+		assert(dismissed_unit);
 
 		// Record the dismissal, then delete the unit.
-		synced_context::run_in_synced_context("disband", replay_helper::get_disband((*dismissed_unit)->id()));
+		synced_context::run_in_synced_context("disband", replay_helper::get_disband(dismissed_unit->id()));
 		//recorder.add_disband(dismissed_unit->id());
 		//recall_list.erase(dismissed_unit);
 

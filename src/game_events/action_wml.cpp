@@ -49,6 +49,7 @@
 #include "../pathfind/pathfind.hpp"
 #include "../persist_var.hpp"
 #include "../play_controller.hpp"
+#include "../recall_list_manager.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../random_new.hpp"
@@ -57,6 +58,7 @@
 #include "../sound.hpp"
 #include "../soundsource.hpp"
 #include "../synced_context.hpp"
+#include "../team.hpp"
 #include "../terrain_filter.hpp"
 #include "../unit.hpp"
 #include "../unit_animation_component.hpp"
@@ -975,11 +977,10 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 		for(std::vector<team>::iterator pi = resources::teams->begin();
 				pi!=resources::teams->end(); ++pi)
 		{
-			std::vector<UnitPtr>& avail_units = pi->recall_list();
-			for(std::vector<UnitPtr>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
+			for(std::vector<UnitPtr>::iterator j = pi->recall_list().begin(); j != pi->recall_list().end();) { //TODO: This block is really messy, cleanup somehow...
+				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - pi->recall_list().begin());
 				if ((*j)->matches_filter(cfg, map_location())) {
-					j = avail_units.erase(j);
+					j = pi->recall_list().erase(j);
 				} else {
 					++j;
 				}
@@ -1578,7 +1579,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 			continue;
 		}
 
-		std::vector<UnitPtr>& avail = (*resources::teams)[index].recall_list();
+		recall_list_manager & avail = (*resources::teams)[index].recall_list();
 		std::vector<unit_map::unit_iterator> leaders = resources::units->find_leaders(index + 1);
 
 		for(std::vector<UnitPtr>::iterator u = avail.begin(); u != avail.end(); ++u) {
@@ -1799,8 +1800,8 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 				}
 				// Iterate over the player's recall list to find a match
 				for(size_t i=0; i < pi->recall_list().size(); ++i) {
-					UnitPtr & u = pi->recall_list()[i];
-					scoped_recall_unit auto_store("this_unit", player_id, i);
+					UnitPtr u = pi->recall_list()[i];
+					scoped_recall_unit auto_store("this_unit", player_id, i); //TODO: Should this not be inside the if? Explain me.
 					if (u->matches_filter(filter, map_location())) {
 						u->set_role(cfg["role"]);
 						found=true;
@@ -2574,12 +2575,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				// replaced by the wrong unit.
 				if(t.recall_list().size() > 1) {
 					std::vector<size_t> desciptions;
-					for(std::vector<UnitPtr>::const_iterator citor =
-							t.recall_list().begin();
-							citor != t.recall_list().end(); ++citor) {
+					BOOST_FOREACH ( const UnitConstPtr & pt, t.recall_list() ) {
 
 						const size_t desciption =
-							(*citor)->underlying_id();
+							pt->underlying_id();
 						if(std::find(desciptions.begin(), desciptions.end(),
 									desciption) != desciptions.end()) {
 
@@ -2597,19 +2596,13 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				 * @todo it would be better to change recall_list() from
 				 * a vector to a map and use the underlying_id as key.
 				 */
-				const size_t key = u->underlying_id();
-				for(std::vector<UnitPtr>::iterator itor =
-						t.recall_list().begin();
-						itor != t.recall_list().end(); ++itor) {
-
+				size_t old_size = t.recall_list().size();
+				t.recall_list().erase_by_underlying_id(u->underlying_id());
+				if (t.recall_list().size() != old_size) {
 					LOG_NG << "Replaced unit '"
-						<< key << "' on the recall list\n";
-					if((*itor)->underlying_id() == key) {
-						t.recall_list().erase(itor);
-						break;
-					}
+						<< u->underlying_id() << "' on the recall list\n";
 				}
-				t.recall_list().push_back(u);
+				t.recall_list().add(u);
 			} else {
 				ERR_NG << "Cannot unstore unit: recall list is empty for player " << u->side()
 					<< " and the map location is invalid.\n";

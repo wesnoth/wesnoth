@@ -30,6 +30,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "recall_list_manager.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -255,7 +256,7 @@ protected:
 				//seen before
 				config u_tmp = u;
 				u_tmp["side"] = str_cast(side_);
-				t_->recall_list().push_back(UnitPtr(new unit(u_tmp,true)));
+				t_->recall_list().add(UnitPtr(new unit(u_tmp,true)));
 			} else {
 				//not seen before
 				unit_configs_.push_back(&u);

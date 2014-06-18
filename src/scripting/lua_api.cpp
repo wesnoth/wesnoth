@@ -21,6 +21,7 @@
 #include "config.hpp"
 #include "game_display.hpp"
 #include "log.hpp"
+#include "recall_list_manager.hpp"
 #include "resources.hpp"
 #include "tstring.hpp"
 #include "unit.hpp"
@@ -394,10 +395,7 @@ UnitPtr lua_unit::get()
 {
 	if (ptr) return ptr;
 	if (side) {
-		BOOST_FOREACH(UnitPtr &u, (*resources::teams)[side - 1].recall_list()) {
-			if (u->underlying_id() == uid) return u;
-		}
-		return UnitPtr();
+		return (*resources::teams)[side - 1].recall_list().find_if_matches_underlying_id(uid);
 	}
 	unit_map::unit_iterator ui = resources::units->find(uid);
 	if (!ui.valid()) return UnitPtr();
@@ -422,18 +420,11 @@ bool lua_unit::put_map(const map_location &loc)
 			return false;
 		}
 	} else if (side) { // recall list
-		std::vector<UnitPtr> &recall_list = (*resources::teams)[side - 1].recall_list();
-		std::vector<UnitPtr>::iterator it = recall_list.begin();
-		for(; it != recall_list.end(); ++it) {
-			if ((*it)->underlying_id() == uid) {
-				break;
-			}
-		}
-		if (it != recall_list.end()) {
+		UnitPtr it = (*resources::teams)[side - 1].recall_list().extract_if_matches_underlying_id(uid);
+		if (it) {
 			side = 0;
 			// uid may be changed by unit_map on insertion
-			uid = resources::units->replace(loc, **it).first->underlying_id();
-			recall_list.erase(it);
+			uid = resources::units->replace(loc, *it).first->underlying_id();
 		} else {
 			ERR_LUA << "Could not find unit " << uid << " on recall list of side " << side << '\n';
 			return false;

@@ -857,6 +857,7 @@ set(wesnoth-main_SRC
 	random_new.cpp
 	random_new_deterministic.cpp
 	random_new_synced.cpp
+	recall_list_manager.cpp
 	replay.cpp
 	replay_helper.cpp
 	replay_controller.cpp
