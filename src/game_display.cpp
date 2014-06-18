@@ -64,6 +64,14 @@ static lg::log_domain log_engine("engine");
 
 std::map<map_location,fixed_t> game_display::debugHighlights_;
 
+/**
+ * Function to return 2 half-hex footsteps images for the given location.
+ * Only loc is on the current route set by set_route.
+ *
+ * This function is only used internally by game_display so I have moved it out of the header into the compilaton unit.
+ */
+std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_);
+
 game_display::game_display(game_board& board, CVideo& video, boost::weak_ptr<wb::manager> wb,
 		const tod_manager& tod,
 		const config& theme_cfg, const config& level) :
@@ -324,7 +332,7 @@ void game_display::draw_hex(const map_location& loc)
 		if (!(w->is_active() && w->has_temp_move()))
 		{
 			// Footsteps indicating a movement path
-			const std::vector<surface>& footstepImages = footsteps_images(loc);
+			const std::vector<surface>& footstepImages = footsteps_images(loc, route_, dc_);
 			if (!footstepImages.empty()) {
 				drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
 			}
@@ -490,7 +498,7 @@ void game_display::draw_movement_info(const map_location& loc)
 	}
 }
 
-std::vector<surface> game_display::footsteps_images(const map_location& loc)
+std::vector<surface> footsteps_images(const map_location& loc, const pathfind::marked_route & route_, const display_context * dc_)
 {
 	std::vector<surface> res;
 
@@ -509,7 +517,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 	int move_cost = 1;
 	const unit_map::const_iterator u = dc_->units().find(route_.steps.front());
 	if(u != dc_->units().end()) {
-		move_cost = u->movement_cost(get_map().get_terrain(loc));
+		move_cost = u->movement_cost(dc_->map().get_terrain(loc));
 	}
 	int image_number = std::min<int>(move_cost, game_config::foot_speed_prefix.size());
 	if (image_number < 1) {

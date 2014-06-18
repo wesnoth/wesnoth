@@ -116,12 +116,6 @@ public:
 	void float_label(const map_location& loc, const std::string& text,
 	                 int red, int green, int blue);
 
-	/**
-	 * Function to return 2 half-hex footsteps images for the given location.
-	 * Only loc is on the current route set by set_route.
-	 */
-	std::vector<surface> footsteps_images(const map_location& loc);
-
 	/** Draws the movement info (turns available) for a given location. */
 	void draw_movement_info(const map_location& loc);
 
