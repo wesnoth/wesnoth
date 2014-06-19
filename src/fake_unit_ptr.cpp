@@ -16,7 +16,10 @@
 
 #include "fake_unit_manager.hpp"
 #include "unit.hpp"
+#include "unit_ptr.hpp"
 #include "unit_types.hpp"
+
+#include <boost/swap.hpp>
 
 fake_unit_ptr::fake_unit_ptr() : unit_(), my_manager_(NULL) {}
 fake_unit_ptr::fake_unit_ptr(const internal_ptr & u) : unit_(u), my_manager_(NULL) {}
@@ -31,7 +34,7 @@ fake_unit_ptr::fake_unit_ptr(const unit_type& t, int side, unit_race::GENDER gen
 {}
 
 void fake_unit_ptr::swap (fake_unit_ptr & o) {
-	std::swap(unit_, o.unit_);
+	boost::swap(unit_, o.unit_);
 	std::swap(my_manager_, o.my_manager_);
 }
 
