@@ -22,7 +22,12 @@
 
 #include "SDL_events.h"
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
 
