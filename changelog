@@ -19,6 +19,8 @@ Version 1.13.0-dev:
      them for UMC and adding functionality from other versions of Wesnoth. Some
      code cleanup for consistency, readability and speed, as well as fixing of
      some minor and subtle bugs.
+   * Fix bug in Random Recruit Micro AI: the AI can now handle custom castle
+     terrain independent of its terrain code
  * Campaigns:
    * Changed all occurrences of {FLAG_VARIANT ragged} to {FLAG_VARIANT6 ragged}
    * Eastern Invasion:
