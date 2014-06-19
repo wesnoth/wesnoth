@@ -22,6 +22,8 @@
 #include "resources.hpp"
 #include "video.hpp"
 
+#include "SDL_sound.h"
+
 #include <boost/foreach.hpp>
 
 namespace {

@@ -21,6 +21,8 @@
 #include "sound.hpp"
 #include "soundsource.hpp"
 
+#include "SDL_sound.h"
+
 namespace soundsource {
 
 const unsigned DEFAULT_CHANCE           = 100;
