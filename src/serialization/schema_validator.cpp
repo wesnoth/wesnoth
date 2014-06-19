@@ -95,8 +95,8 @@ static void missing_key_error(const std::string & file, int line,
 					 const std::string & tag,const std::string & key,
 					 bool flag_exception){
 	std::ostringstream ss;
-	ss << "In tag " << tag
-	   << " which begins here, " << " missing key " << key << "\n"
+	ss << "Missing key '" << key << "=' in tag [" << tag
+	   << "]\n"
 	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
