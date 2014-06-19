@@ -76,6 +76,8 @@ Version 1.13.0-dev:
    * Added customizable recall costs for unit types and individual units,
      using the new recall_cost attribute in [unit_type] and [unit].
    * Added support for [elseif] tags inside [if]
+   * Schema validator messages now conform better to the new WML
+     parser/preprocessor diagnostics format introduced in version 1.11.10.
  * Miscellaneous and bug fixes:
    * replace 'fight_on_without_leader'=yes/no with defeat_condition=no_leader/
      no_units/always/never which allows the wml developer to decide when a side

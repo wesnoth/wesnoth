@@ -74,6 +74,7 @@ public:
 		, chat_log_history(r->build_chat_log())
 		, page(0)
 		, page_number()
+		, page_label()
 		, previous_page()
 		, next_page()
 		, filter()
@@ -89,6 +90,7 @@ public:
 	int page;
 	static const int COUNT_PER_PAGE = 100;
 	tslider* page_number;
+	tcontrol* page_label;
 	tbutton* previous_page;
 	tbutton* next_page;
 	ttext_box* filter;
@@ -310,6 +312,11 @@ public:
 		LOG_CHAT_LOG << "Maximum value of page number slider: "
 					 << count_of_pages << std::endl;
 		model_.page_number->set_value(page + 1);
+
+		std::ostringstream cur_page_text;
+		cur_page_text << (page + 1) << '/' << std::max(1, count_of_pages);
+		model_.page_label->set_label(cur_page_text.str());
+
 		LOG_CHAT_LOG << "Exiting tchat_log::controller::update_view_from_model"
 					 << std::endl;
 	}
@@ -403,6 +410,8 @@ public:
 				boost::bind(&view::handle_copy_button_clicked,
 							this,
 							boost::ref(window)));
+
+		model_.page_label = &find_widget<tcontrol>(&window, "page_label", false);
 
 		LOG_CHAT_LOG << "Exiting tchat_log::view::bind" << std::endl;
 	}
