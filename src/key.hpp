@@ -26,7 +26,7 @@
  */
 class CKey
 {
-	const uint8_t *key_list;
+	const boost::uint8_t *key_list;
 
 public:
 	CKey();
