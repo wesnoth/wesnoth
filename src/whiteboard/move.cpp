@@ -132,9 +132,10 @@ move::move(config const& cfg, bool hidden)
 	arrow_->set_path(route_->steps);
 
 	// Construct fake_unit_
-	fake_unit_ = fake_unit_ptr( UnitPtr(new unit(*get_unit())) , resources::fake_units );
+	fake_unit_ = fake_unit_ptr( UnitPtr(new unit(*get_unit())) );
 	if(hidden)
 		fake_unit_->set_hidden(true);
+	fake_unit_.place_on_fake_unit_manager(resources::fake_units);
 	fake_unit_->anim_comp().set_ghosted(true);
 	unit_display::move_unit(route_->steps, *fake_unit_, false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
