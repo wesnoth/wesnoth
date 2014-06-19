@@ -56,6 +56,7 @@
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
 #define LOG_NG LOG_STREAM(info, log_engine)
+#define WRN_NG LOG_STREAM(err, log_engine)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
 static lg::log_domain log_config("config");
@@ -1369,7 +1370,7 @@ namespace
 	class unit_advancement_choice : public mp_sync::user_choice
 	{
 	public:
-		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect& ai_advancement, bool force_dialog)
+		unit_advancement_choice(const map_location& loc, int total_opt, int side_num, const ai::unit_advancements_aspect* ai_advancement, bool force_dialog)
 			: loc_ (loc), nb_options_(total_opt), side_num_(side_num), ai_advancement_(ai_advancement), force_dialog_(force_dialog)
 		{
 		}
@@ -1400,14 +1401,17 @@ namespace
 
 				//if ai_advancement_ is the default advancement the following code will
 				//have no effect because get_advancements returns an empty list.
-				unit_map::iterator u = resources::units->find(loc_);
-				const std::vector<std::string>& options = u->advances_to();
-				const std::vector<std::string>& allowed = ai_advancement_.get_advancements(u);
+				if(ai_advancement_ != NULL)
+				{
+					unit_map::iterator u = resources::units->find(loc_);
+					const std::vector<std::string>& options = u->advances_to();
+					const std::vector<std::string>& allowed = ai_advancement_->get_advancements(u);
 
-				for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
-					if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
-						res = a - options.begin();
-						break;
+					for(std::vector<std::string>::const_iterator a = options.begin(); a != options.end(); ++a) {
+						if (std::find(allowed.begin(), allowed.end(), *a) != allowed.end()){
+							res = a - options.begin();
+							break;
+						}
 					}
 				}
 
@@ -1435,7 +1439,7 @@ namespace
 		const map_location loc_;
 		int nb_options_;
 		int side_num_;
-		const ai::unit_advancements_aspect& ai_advancement_;
+		const ai::unit_advancements_aspect* ai_advancement_;
 		bool force_dialog_;
 	};
 }
@@ -1443,13 +1447,13 @@ namespace
 /*
 advances the unit and stores data in the replay (or reads data from replay).
 */
-void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement, bool force_dialog)
+void advance_unit_at(const advance_unit_params& params)
 {
 	//i just don't want infinite loops...
 	// the 20 is picked rather randomly.
 	for(int advacment_number = 0; advacment_number < 20; advacment_number++)
 	{
-		unit_map::iterator u = resources::units->find(loc);
+		unit_map::iterator u = resources::units->find(params.loc_);
 		//this implies u.valid()
 		if(!unit_helper::will_certainly_advance(u)) {
 			return;
@@ -1458,21 +1462,24 @@ void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect
 		//we don't want to let side 1 decide it during start/prestart.
 		int side_for = resources::gamedata->phase() == game_data::PLAY ? 0: u->side();
 		config selected = mp_sync::get_user_choice("choose",
-			unit_advancement_choice(loc, unit_helper::number_of_possible_advances(*u),u->side(), ai_advancement, force_dialog), side_for);
+			unit_advancement_choice(params.loc_, unit_helper::number_of_possible_advances(*u), u->side(), params.ai_advancements_, params.force_dialog_), side_for);
 		//calls actions::advance_unit.
-		bool result = dialogs::animate_unit_advancement(loc, selected["value"], true, true);
+		bool result = dialogs::animate_unit_advancement(params.loc_, selected["value"], params.fire_events_, params.animate_);
 
 		DBG_NG << "animate_unit_advancement result = " << result << std::endl;
-		u = resources::units->find(loc);
+		u = resources::units->find(params.loc_);
 		// level 10 unit gives 80 XP and the highest mainline is level 5
 		if (u.valid() && u->experience() > 80)
 		{
-			ERR_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
+			WRN_NG << "Unit has too many (" << u->experience() << ") XP left; cascade leveling goes on still." << std::endl;
 		}
 	}
-	ERR_NG << "unit at " << loc << "tried to adcance more than 20 times" << std::endl;
+	ERR_NG << "unit at " << params.loc_ << "tried to advance more than 20 times. Advancing was aborted" << std::endl;
 }
 
+
+void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement = ai::unit_advancements_aspect())
+{ advance_unit_at(advance_unit_params(loc).ai_advancements(ai_advancement)); }
 
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,
                  int attack_with, int defend_with, bool update_display,

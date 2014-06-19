@@ -205,39 +205,6 @@ namespace { // Types
 			return config();
 		}
 	};
-
-	struct unstore_unit_advance_choice: mp_sync::user_choice
-	{
-		int nb_options;
-		map_location loc;
-		bool use_dialog;
-
-		unstore_unit_advance_choice(int o, const map_location &l, bool d)
-			: nb_options(o), loc(l), use_dialog(d)
-		{}
-
-		virtual config query_user(int /*side*/) const
-		{
-			int selected;
-			if (use_dialog) {
-				DBG_NG << "dialog requested\n";
-				selected = dialogs::advance_unit_dialog(loc);
-			} else {
-				// VITAL this is NOT done using the synced RNG
-				selected = rand() % nb_options;
-			}
-			config cfg;
-			cfg["value"] = selected;
-			return cfg;
-		}
-
-		virtual config random_choice(int /*side*/) const
-		{
-			config cfg;
-			cfg["value"] = random_new::generator->next_random() % nb_options;
-			return cfg;
-		}
-	};
 } // end anonymous namespace (types)
 
 namespace { // Variables
@@ -2544,20 +2511,10 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 				// Print floating label
 				resources::screen->float_label(loc, text, cfg["red"], cfg["green"], cfg["blue"]);
 			}
-
-			const int side = controller->current_side();
-			unsigned loop_limit = 5;
-			while ( advance
-					&& unit_helper::will_certainly_advance(resources::units->find(loc))
-			        && (loop_limit > 0) )
-			{
-				loop_limit--;
-				int total_opt = unit_helper::number_of_possible_advances(*u);
-				bool use_dialog = side == u->side() &&
-					(*resources::teams)[side - 1].is_human();
-				config selected = mp_sync::get_user_choice("choose",
-					unstore_unit_advance_choice(total_opt, loc, use_dialog));
-				dialogs::animate_unit_advancement(loc, selected["value"], cfg["fire_event"].to_bool(false), cfg["animate"].to_bool(true));
+			if(advance) {
+				advance_unit_at(advance_unit_params(loc)
+					.fire_events(cfg["fire_event"].to_bool(false))
+					.animate(cfg["animate"].to_bool(true)));
 			}
 		} else {
 			if(advance && u->advances()) {

@@ -3162,7 +3162,7 @@ void console_handler::do_unit() {
 		for (int levels=0; levels<int_value; levels++) {
 			i->set_experience(i->max_experience());
 
-			advance_unit_at(loc,true);
+			advance_unit_at(advance_unit_params(loc).force_dialog(true));
 			i = menu_handler_.units_.find(loc);
 			if (!i.valid()) {
 				break;
