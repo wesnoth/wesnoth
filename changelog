@@ -37,6 +37,8 @@ Version 1.11.15+dev:
      not interrupt the game load sequence or display an error message in-game,
      resulting in loading malformed/incomplete WML data
      <http://r.wesnoth.org/p571380>.
+   * Schema validator messages now conform better to the new WML
+     parser/preprocessor diagnostics format introduced in version 1.11.10.
  * Miscellaneous and bug fixes:
    * Backported Elvish_Hunter's wmltools GUI from master
    * Changed the fungus overlay terrain to repect the game values of the mixed partner.
