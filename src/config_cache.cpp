@@ -340,6 +340,72 @@ namespace game_config {
 		}
 	}
 
+	bool config_cache::clean_cache()
+	{
+		std::vector<std::string> files, dirs;
+		get_files_in_dir(get_cache_dir(), &files, &dirs, ENTIRE_FILE_PATH);
+
+		LOG_CACHE << "clean_cache(): " << files.size() << " files, "
+				  << dirs.size() << " dirs to check\n";
+
+		const std::string& exclude_current = cache_file_prefix_ + "*";
+
+		bool status = true;
+
+		status &= delete_cache_files(files, exclude_current);
+		status &= delete_cache_files(dirs, exclude_current);
+
+		LOG_CACHE << "clean_cache(): done\n";
+
+		return status;
+	}
+
+	bool config_cache::purge_cache()
+	{
+		std::vector<std::string> files, dirs;
+		get_files_in_dir(get_cache_dir(), &files, &dirs, ENTIRE_FILE_PATH);
+
+		LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
+				  << dirs.size() << " dirs\n";
+
+		bool status = true;
+
+		status &= delete_cache_files(files);
+		status &= delete_cache_files(dirs);
+
+		LOG_CACHE << "purge_cache(): done\n";
+		return status;
+	}
+
+	bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
+										  const std::string& exclude_pattern)
+	{
+		const bool delete_everything = exclude_pattern.empty();
+		bool status = true;
+
+		BOOST_FOREACH(const std::string& path, paths)
+		{
+			if(!delete_everything) {
+				const std::string& fn = file_name(path);
+
+				if(utils::wildcard_string_match(fn, exclude_pattern)) {
+					LOG_CACHE << "delete_cache_files(): skipping " << path
+							  << " excluded by '" << exclude_pattern << "'\n";
+					continue;
+				}
+			}
+
+			LOG_CACHE << "delete_cache_files(): deleting " << path << '\n';
+			if(!delete_directory(path)) {
+				ERR_CACHE << "delete_cache_files(): could not delete "
+						  << path << '\n';
+				status = false;
+			}
+		}
+
+		return status;
+	}
+
 	config_cache_transaction::state config_cache_transaction::state_ = FREE;
 	config_cache_transaction* config_cache_transaction::active_ = 0;
 
