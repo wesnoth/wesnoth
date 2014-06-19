@@ -83,6 +83,8 @@ namespace game_config {
 		bool force_valid_cache_, use_cache_, fake_invalid_cache_;
 		preproc_map defines_map_;
 
+		std::string cache_file_prefix_;
+
 		void read_file(const std::string& file, config& cfg);
 		void write_file(std::string file, const config& cfg);
 		void write_file(std::string file, const preproc_map&);

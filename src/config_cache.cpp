@@ -48,8 +48,15 @@ namespace game_config {
 		force_valid_cache_(false),
 		use_cache_(true),
 		fake_invalid_cache_(false),
-		defines_map_()
+		defines_map_(),
+		cache_file_prefix_()
 	{
+		cache_file_prefix_
+				= "cache-v" +
+				  boost::algorithm::replace_all_copy(game_config::revision,
+													 ":", "_") +
+				  "-";
+
 		// To set-up initial defines map correctly
 		clear_defines();
 	}
@@ -177,9 +184,8 @@ namespace game_config {
 			const std::string& cache = get_cache_dir();
 			if(cache != "") {
 				sha1_hash sha(defines_string.str()); // use a hash for a shorter display of the defines
-				const std::string fname = cache + "/cache-v" +
-					boost::algorithm::replace_all_copy(game_config::revision, ":", "_") +
-					"-" + sha.display();
+				const std::string fname = cache + "/" +
+										  cache_file_prefix_ + sha.display();
 				const std::string fname_checksum = fname + ".checksum" + extension;
 
 				file_tree_checksum dir_checksum;
