@@ -227,10 +227,7 @@ public:
 		}
 
 		bool valid() const {
-			if(valid_for_dereference()) {
-				return static_cast<bool> (i_->second.unit);
-			}
-			return false;
+			return (valid_for_dereference() && i_->second.unit);
 		}
 
 		bool operator==(const iterator_base &rhs) const { return (tank_ == rhs.tank_) && ( i_ == rhs.i_ ); }
