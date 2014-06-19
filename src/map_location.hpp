@@ -20,11 +20,10 @@
 class config;
 class variable_set;
 
+#include <cmath>
+#include <set>
 #include <string>
 #include <vector>
-#include <set>
-#include <boost/functional/hash.hpp>
-#include <boost/assign/list_of.hpp>
 
 /**
  * Encapsulates the map of the game.
@@ -146,18 +145,6 @@ std::ostream &operator<<(std::ostream &s, map_location const &l);
 std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v);
 
 /** Inlined bodies **/
-inline std::size_t hash_value(map_location  const & a){
-	boost::hash<size_t> h;
-	return h( (a.x << 16) ^ a.y );
-}
-
-/** Inline list of directions **/
-inline const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
-	static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)
-				(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)
-				(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
-	return dirs;
-}
 
 /** Inline direction manipulators **/
 inline map_location::DIRECTION map_location::rotate_right(map_location::DIRECTION d, unsigned int k) {
@@ -364,7 +351,7 @@ inline bool tiles_adjacent(const map_location& a, const map_location& b)
 
 inline size_t distance_between(const map_location& a, const map_location& b)
 {
-	const size_t hdistance = abs(a.x - b.x);
+	const size_t hdistance = std::abs(a.x - b.x);
 
 	const size_t vpenalty = ( (((a.x & 1)==0) && ((b.x & 1)==1) && (a.y < b.y))
 		|| (((b.x & 1)==0) && ((a.x & 1)==1) && (b.y < a.y)) ) ? 1 : 0;
@@ -379,7 +366,7 @@ inline size_t distance_between(const map_location& a, const map_location& b)
 	// = maximum(hdistance, vdistance+hdistance-hdistance/2-hdistance%2)
 	// = maximum(hdistance,abs(a.y-b.y)+vpenalty+hdistance/2)
 
-	return std::max<int>(hdistance, abs(a.y - b.y) + vpenalty + hdistance/2);
+	return std::max<int>(hdistance, std::abs(a.y - b.y) + vpenalty + hdistance/2);
 }
 
 

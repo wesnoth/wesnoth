@@ -28,6 +28,9 @@
 #include "gettext.hpp"
 #include "util.hpp"
 
+#include <boost/assign/list_of.hpp>
+#include <boost/functional/hash.hpp>
+
 #define ERR_CF LOG_STREAM(err, config)
 #define LOG_G LOG_STREAM(info, general)
 #define DBG_G LOG_STREAM(debug, general)
@@ -43,6 +46,26 @@ std::ostream &operator<<(std::ostream &s, std::vector<map_location> const &v) {
 	}
 	return s;
 }
+
+/**
+ * Default list of directions
+ *
+ * Moved out of inline, because boost assign list_of is somewhat expensive...
+ *
+ **/
+const std::vector<map_location::DIRECTION> & map_location::default_dirs() {
+	static const std::vector<map_location::DIRECTION> dirs = boost::assign::list_of(map_location::NORTH)
+				(map_location::NORTH_EAST)(map_location::SOUTH_EAST)(map_location::SOUTH)
+				(map_location::SOUTH_WEST)(map_location::NORTH_WEST);
+	return dirs;
+}
+
+/** Moved out of inline because of the boost dependency **/
+std::size_t hash_value(map_location  const & a){
+	boost::hash<size_t> h;
+	return h( (a.x << 16) ^ a.y );
+}
+
 
 map_location::DIRECTION map_location::parse_direction(const std::string& str)
 {
