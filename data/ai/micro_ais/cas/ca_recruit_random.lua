@@ -1,4 +1,6 @@
+local H = wesnoth.require "lua/helper.lua"
 local AH = wesnoth.require("ai/lua/ai_helper.lua")
+local LS = wesnoth.dofile "lua/location_set.lua"
 
 local recruit_type
 
@@ -13,26 +15,44 @@ function ca_recruit_random:evaluation(ai, cfg)
         return 0
     end
 
-    -- Check if there is space left for recruiting
+    -- Find all connected castle hexes
+    local castle_map = LS.of_pairs({ { leader.x, leader.y } })
     local width, height, border = wesnoth.get_map_size()
-    local castle = {
-        locs = wesnoth.get_locations {
-            x = "1-"..width, y = "1-"..height,
-            { "and", {
-                x = leader.x, y = leader.y, radius = 200,
-                { "filter_radius", { terrain = 'C*,K*,C*^*,K*^*,*^K*,*^C*' } }
-            } }
-        }
-    }
+    local new_castle_hex_found = true
 
-    local no_space = true
-    for _,loc in ipairs(castle.locs) do
-        local unit = wesnoth.get_unit(loc[1], loc[2])
-        if (not unit) then
-            no_space = false
-            break
+    while new_castle_hex_found do
+        new_castle_hex_found = false
+        local new_hexes = {}
+
+        castle_map:iter(function(x, y)
+            for xa,ya in H.adjacent_tiles(x, y) do
+                if (not castle_map:get(xa, ya))
+                    and (xa >= 1) and (xa <= width)
+                    and (ya >= 1) and (ya <= height)
+                then
+                    local is_castle = wesnoth.get_terrain_info(wesnoth.get_terrain(xa, ya)).castle
+
+                    if is_castle then
+                        table.insert(new_hexes, { xa, ya })
+                        new_castle_hex_found = true
+                    end
+                end
+            end
+        end)
+
+        for _,hex in ipairs(new_hexes) do
+            castle_map:insert(hex[1], hex[2])
         end
     end
+
+    -- Check if there is space left for recruiting
+    local no_space = true
+    castle_map:iter(function(x, y)
+        local unit = wesnoth.get_unit(x, y)
+        if (not unit) then
+            no_space = false
+        end
+    end)
     if no_space then return 0 end
 
     -- Set up the probability array
