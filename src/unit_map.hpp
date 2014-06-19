@@ -228,7 +228,7 @@ public:
 
 		bool valid() const {
 			if(valid_for_dereference()) {
-				return i_->second.unit;
+				return (bool) i_->second.unit;
 			}
 			return false;
 		}
