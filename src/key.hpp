@@ -15,7 +15,7 @@
 #ifndef KEY_HPP_INCLUDED
 #define KEY_HPP_INCLUDED
 
-#include <inttypes.h>
+#include <boost/cstdint.hpp>
 
 /**
  * Class that keeps track of all the keys on the keyboard.
