@@ -20,6 +20,8 @@
 #include "sdl/compat.hpp"
 #include "serialization/unicode.hpp"
 
+#include "SDL_events.h"
+
 #include <boost/function.hpp>
 #include <boost/mpl/int.hpp>
 #include <boost/utility/enable_if.hpp>
