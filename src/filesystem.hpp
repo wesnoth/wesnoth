@@ -159,6 +159,9 @@ const file_tree_checksum& data_tree_checksum(bool reset = false);
 /** Returns the size of a file, or -1 if the file doesn't exist. */
 int file_size(const std::string& fname);
 
+/** Returns the sum of the sizes of the files contained in a directory. */
+int dir_size(const std::string& path);
+
 bool ends_with(const std::string& str, const std::string& suffix);
 
 /**
