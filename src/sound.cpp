@@ -24,7 +24,7 @@
 #include "util.hpp"
 
 #include "SDL_mixer.h"
-#include "SDL_sound.h"
+#include "SDL.h" // Travis doesn't like this, although it works on my machine -> '#include "SDL_sound.h"
 
 #include <boost/foreach.hpp>
 
