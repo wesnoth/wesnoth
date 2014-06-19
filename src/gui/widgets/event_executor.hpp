@@ -15,8 +15,6 @@
 #ifndef GUI_WIDGETS_EVENT_EXECUTOR_HPP_INCLUDED
 #define GUI_WIDGETS_EVENT_EXECUTOR_HPP_INCLUDED
 
-#include "SDL.h"
-
 namespace gui2
 {
 
