@@ -1488,10 +1488,13 @@ void game::save_replay() {
 		<< "[/replay]\n"
 		<< "[replay_start]\n" << level_.output() << "[/replay_start]\n";
 #else
+		const bool has_old_replay = level_.child("replay") != NULL; 
+		//If there is already a replay in the level_, which means this is a reloaded game,
+		//then we dont need to add the [start] in the replay.
 		replay_data << level_.output() 
 		//This can result in having 2 [replay] at toplevel since level_ can contain one already. But the client can handle this (simply merges them).
 		<< "[replay]\n"
-		<< "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n" //this is required by gfgtdf's sync mechanism, in PR 121
+		<< (has_old_replay ? "" : "\t[command]\n\t\t[start]\n\t\t[/start]\n\t[/command]\n") //this is required by gfgtdf's sync mechanism, in PR 121
 		<< replay_commands
 		<< "[/replay]\n";
 
