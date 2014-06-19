@@ -19,7 +19,12 @@
 #include "gui/widgets/grid.hpp"
 #include "reference_counted_object.hpp"
 
+
+#ifndef INCL_BOOST_FUNCTION_HPP_
+#define INCL_BOOST_FUNCTION_HPP_
 #include <boost/function.hpp>
+#endif
+
 
 class config;
 class CVideo;
