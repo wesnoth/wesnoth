@@ -21,17 +21,17 @@
 
 class display;
 class unit;
-class fake_unit;
+class fake_unit_ptr;
 
 class fake_unit_manager {
 public:
 	fake_unit_manager(display & disp) : fake_units_(), my_display_(disp) {}
 
 	//Anticipate making place_temporary_unit and remove_temporary_unit private to force exception safety
-	friend class fake_unit;
+	friend class fake_unit_ptr;
 
-	typedef unit* internal_ptr_type;
-	typedef boost::iterator_range<std::deque<unit*>::const_iterator> range;
+	typedef unit const * internal_ptr_type;
+	typedef boost::iterator_range<std::deque<internal_ptr_type>::const_iterator> range;
 
 	range get_unit_range() const { return boost::make_iterator_range(fake_units_.begin(), fake_units_.end()); }
 

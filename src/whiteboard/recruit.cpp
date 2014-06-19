@@ -23,8 +23,8 @@
 #include "utility.hpp"
 #include "visitor.hpp"
 
-#include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "menu_events.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -58,7 +58,7 @@ recruit::recruit(size_t team_index, bool hidden, const std::string& unit_name, c
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()), //auto-ptr ownership transfer
-		fake_unit_(new fake_unit(*temp_unit_)), //temp_unit_ *copied* into new fake unit
+		fake_unit_(UnitPtr(new unit(*temp_unit_))), //temp_unit_ *copied* into new fake unit
 		cost_(0)
 {
 	this->init();
@@ -78,7 +78,7 @@ recruit::recruit(config const& cfg, bool hidden)
 
 	// Construct temp_unit_ and fake_unit_
 	temp_unit_ = create_corresponding_unit(); //auto-ptr ownership transfer
-	fake_unit_.reset(new class fake_unit(*temp_unit_)), //temp_unit_ copied into new fake_unit
+	fake_unit_.reset(UnitPtr (new unit(*temp_unit_))), //temp_unit_ copied into new fake_unit
 
 	this->init();
 }
@@ -89,7 +89,7 @@ void recruit::init()
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
 	fake_unit_->anim_comp().set_ghosted(false);
-	fake_unit_->place_on_fake_unit_manager(resources::fake_units);
+	fake_unit_.place_on_fake_unit_manager(resources::fake_units);
 
 	cost_ = fake_unit_->type().cost();
 }

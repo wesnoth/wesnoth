@@ -24,8 +24,8 @@
 #include "visitor.hpp"
 
 #include "actions/create.hpp"
-#include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "game_display.hpp"
 #include "recall_list_manager.hpp"
 #include "resources.hpp"
@@ -62,7 +62,7 @@ recall::recall(size_t team_index, bool hidden, const unit& unit, const map_locat
 		action(team_index,hidden),
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
-		fake_unit_(new fake_unit(unit) )
+		fake_unit_(UnitPtr( new class unit(unit) ) )
 {
 	this->init();
 }
@@ -79,7 +79,7 @@ recall::recall(config const& cfg, bool hidden)
 	{
 		if(recall_unit->underlying_id()==underlying_id)
 		{
-			temp_unit_.reset(new unit(*recall_unit)); //TODO: is it necessary to make a copy?
+			temp_unit_.reset(new class unit(*recall_unit)); //TODO: is it necessary to make a copy?
 			break;
 		}
 	}
@@ -87,7 +87,7 @@ recall::recall(config const& cfg, bool hidden)
 		throw action::ctor_err("recall: Invalid underlying_id");
 	}
 
-	fake_unit_.reset(new fake_unit(*temp_unit_)); //makes copy of temp_unit_
+	fake_unit_.reset(UnitPtr(new class unit(*temp_unit_))); //makes copy of temp_unit_
 
 	this->init();
 }
@@ -101,7 +101,7 @@ void recall::init()
 	fake_unit_->set_movement(0, true);
 	fake_unit_->set_attacks(0);
 	fake_unit_->anim_comp().set_ghosted(false);
-	fake_unit_->place_on_fake_unit_manager( resources::fake_units);
+	fake_unit_.place_on_fake_unit_manager( resources::fake_units);
 }
 
 recall::~recall()

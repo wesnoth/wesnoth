@@ -86,6 +86,10 @@ void intrusive_ptr_add_ref(const unit * u)
 	// or if you are sure that the refcounting system works 
 	// then feel free to remove the next line
 	assert(u->ref_count_ < 100000);
+	LOG_UT << "Adding a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
+        if (u->ref_count_ == 0) {
+		LOG_UT << "Freshly constructed" << std::endl;
+	}
 	++(u->ref_count_);
 }
 
@@ -93,8 +97,12 @@ void intrusive_ptr_release(const unit * u)
 {
 	assert(u->ref_count_ >= 1); 
 	assert(u->ref_count_ < 100000); //See comment in intrusive_ptr_add_ref
+	LOG_UT << "Removing a reference to a unit: id = " << u->id() << ", uid = " << u->underlying_id() << ", refcount = " << u->ref_count() << " ptr:" << u << std::endl;
 	if (--(u->ref_count_) == 0)
+	{
+		LOG_UT << "Deleting a unit: id = " << u->id() << ", uid = " << u->underlying_id() << std::endl;
 		delete u;
+	}
 }
 
 /**

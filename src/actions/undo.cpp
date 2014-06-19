@@ -740,7 +740,7 @@ bool undo_list::move_action::undo(int side, undo_list & /*undos*/)
 	goto_hex = u->get_goto();
 
 	// Move the unit.
-	unit_display::move_unit(rev_route, *u, true, starting_dir);
+	unit_display::move_unit(rev_route, u.get_shared_ptr(), true, starting_dir);
 	units.move(u->get_location(), rev_route.back());
 	unit::clear_status_caches();
 
@@ -957,7 +957,7 @@ bool undo_list::move_action::redo(int side)
 	starting_moves = u->movement_left();
 
 	// Move the unit.
-	unit_display::move_unit(route, *u);
+	unit_display::move_unit(route, u.get_shared_ptr());
 	units.move(u->get_location(), route.back());
 	u = units.find(route.back());
 	unit::clear_status_caches();
