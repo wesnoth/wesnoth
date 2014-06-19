@@ -86,7 +86,7 @@ static void extra_key_error(const std::string & file, int line,
 					 bool flag_exception){
 	std::ostringstream ss;
 	ss << "Invalid key '" << key << "=' in tag [" << tag
-	   << "] on line " << line  << "\n"
+	   << "]\n"
 	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
@@ -106,7 +106,7 @@ static void wrong_value_error(const std::string & file, int line,
 					 const std::string & value,bool flag_exception){
 	std::ostringstream ss;
 	ss << "Invalid value '" << value << "' in key '" << key
-	   << "=' in tag [" << tag << "] on line " << line << "'\n"
+	   << "=' in tag [" << tag << "]\n"
 	   << at(file, line) << "\n";
 	print_output (ss.str (),flag_exception);
 }
