@@ -15,7 +15,7 @@
 #ifndef KEY_HPP_INCLUDED
 #define KEY_HPP_INCLUDED
 
-#include "SDL.h"
+#include <inttypes.h>
 
 /**
  * Class that keeps track of all the keys on the keyboard.
@@ -26,7 +26,7 @@
  */
 class CKey
 {
-	const Uint8 *key_list;
+	const uint8_t *key_list;
 
 public:
 	CKey();
