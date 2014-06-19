@@ -35,8 +35,8 @@ Growl_Delegate growl_obj;
 
 #include "cursor.hpp"
 #include "drawable_unit.hpp"
-#include "fake_unit.hpp"
 #include "fake_unit_manager.hpp"
+#include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_preferences.hpp"
 #include "halo.hpp"

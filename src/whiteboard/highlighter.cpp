@@ -35,7 +35,7 @@
 
 #include "arrow.hpp"
 #include "config.hpp"
-#include "fake_unit.hpp"
+#include "fake_unit_ptr.hpp"
 #include "game_board.hpp"
 #include "game_display.hpp"
 #include "game_errors.hpp"

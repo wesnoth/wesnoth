@@ -15,7 +15,7 @@
 #include "fake_unit_manager.hpp"
 
 #include "display.hpp"
-#include "fake_unit.hpp"
+#include "fake_unit_ptr.hpp"
 #include "log.hpp"
 #include "unit.hpp"
 #include "unit_animation_component.hpp"
@@ -23,7 +23,7 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-void fake_unit_manager::place_temporary_unit(unit *u)
+void fake_unit_manager::place_temporary_unit(internal_ptr_type u)
 {
 	if(std::find(fake_units_.begin(),fake_units_.end(), u) != fake_units_.end()) {
 		ERR_NG << "In fake_unit_manager::place_temporary_unit: attempt to add duplicate fake unit." << std::endl;
@@ -33,10 +33,10 @@ void fake_unit_manager::place_temporary_unit(unit *u)
 	}
 }
 
-int fake_unit_manager::remove_temporary_unit(unit *u)
+int fake_unit_manager::remove_temporary_unit(internal_ptr_type u)
 {
 	int removed = 0;
-	std::deque<unit*>::iterator it =
+	std::deque<internal_ptr_type>::iterator it =
 			std::remove(fake_units_.begin(), fake_units_.end(), u);
 	if (it != fake_units_.end()) {
 		removed = std::distance(it, fake_units_.end());
