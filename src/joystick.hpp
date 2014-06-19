@@ -12,12 +12,12 @@
    See the COPYING file for more details.
 */
 
+#ifndef JOYSTICK_HPP_
+#define JOYSTICK_HPP_
+
 #include <vector>
 #include "sdl/utils.hpp"
 #include "map.hpp"
-
-#ifndef JOYSTICK_HPP_
-#define JOYSTICK_HPP_
 
 class joystick_manager {
 
