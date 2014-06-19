@@ -17,15 +17,23 @@
 
 #include "global.hpp"
 
-#include "SDL.h"
-
 #include <pango/pango-layout.h>
 
+#include <boost/cstdint.hpp>
 #include <boost/type_traits.hpp>
 #include <boost/utility/enable_if.hpp>
 
 #include <string>
 
+#if defined(_MSC_VER) && _MSC_VER <= 1600
+/*
+	This is needed because msvc up to 2010 fails to correcty forward declare this struct as a return value this case.
+	And will create corrupt binaries without giving a warning / error.
+*/
+#include <SDL_video.h>
+#else
+struct SDL_Rect;
+#endif
 struct surface;
 class t_string;
 
@@ -66,7 +74,7 @@ SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
  *
  * @returns                       The color.
  */
-Uint32 decode_color(const std::string& color);
+boost::uint32_t decode_color(const std::string& color);
 
 /**
  * Converts a text alignment string to a text alignment.
