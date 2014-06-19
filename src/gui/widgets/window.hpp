@@ -27,7 +27,6 @@
 #include "gui/widgets/panel.hpp"
 
 #include "events.hpp"
-#include "SDL.h"
 
 #include <string>
 
