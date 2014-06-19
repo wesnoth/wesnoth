@@ -23,7 +23,7 @@ class variable_set;
 #include <string>
 #include <vector>
 #include <set>
-#include <boost/unordered_map.hpp>
+#include <boost/functional/hash.hpp>
 #include <boost/assign/list_of.hpp>
 
 /**
