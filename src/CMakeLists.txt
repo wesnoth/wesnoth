@@ -784,6 +784,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/editor_set_starting_position.cpp
 	gui/dialogs/folder_create.cpp
 	gui/dialogs/formula_debugger.cpp
+	gui/dialogs/game_cache_options.cpp
 	gui/dialogs/game_delete.cpp
 	gui/dialogs/game_load.cpp
 	gui/dialogs/game_paths.cpp
