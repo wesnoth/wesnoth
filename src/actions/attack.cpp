@@ -17,9 +17,15 @@
  * Fighting.
  */
 
-#include "attack.hpp"
-
-#include "vision.hpp"
+#include <assert.h>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include <stdlib.h>
+#include <string.h>
+#include <algorithm>
+#include <ostream>
+#include <set>
+#include <utility>
 
 #include "../ai/lua/unit_advancements_aspect.hpp"
 #include "../attack_prediction.hpp"
@@ -50,8 +56,22 @@
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
 #include "../wml_exception.hpp"
+#include "actions/../game_events/entity_location.hpp"
+#include "actions/../unit_types.hpp"
+#include "attack.hpp"
+#include "config.hpp"
+#include "game_board.hpp"
+#include "game_errors.hpp"
+#include "map_location.hpp"
+#include "network.hpp"
+#include "race.hpp"
+#include "time_of_day.hpp"
+#include "tstring.hpp"
+#include "util.hpp"
+#include "video.hpp"
+#include "vision.hpp"
 
-#include <boost/foreach.hpp>
+class end_level_exception;
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

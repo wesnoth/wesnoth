@@ -20,14 +20,14 @@
 #ifndef AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 #define AI_COMPOSITE_COMPONENT_HPP_INCLUDED
 
-class config;
-
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
 #include <iostream>
 #include <map>
 #include <string>
 #include <vector>
 
-#include <boost/shared_ptr.hpp>
+class config;
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -53,6 +53,7 @@ struct path_element {
 };
 
 class base_property_handler;
+
 typedef boost::shared_ptr<base_property_handler> property_handler_ptr;
 typedef std::map<std::string,property_handler_ptr> property_handler_map;
 

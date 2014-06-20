@@ -17,10 +17,15 @@
  * Calculate & analyze attacks of the default ai
  */
 
-#include "../../global.hpp"
-
-#include "ai.hpp"
-#include "../manager.hpp"
+#include <assert.h>
+#include <boost/intrusive_ptr.hpp>
+#include <stddef.h>
+#include <algorithm>
+#include <map>
+#include <ostream>
+#include <set>
+#include <utility>
+#include <vector>
 
 #include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
@@ -29,6 +34,13 @@
 #include "../../map.hpp"
 #include "../../team.hpp"
 #include "../../unit.hpp"
+#include "../manager.hpp"
+#include "ai/default/../../map_location.hpp"
+#include "ai/default/../contexts.hpp"
+#include "ai/default/../default/contexts.hpp"
+#include "ai/default/../game_info.hpp"
+#include "ai/default/../lua/../../unit_map.hpp"
+#include "unit_ptr.hpp"
 
 static lg::log_domain log_ai("ai/attack");
 #define LOG_AI LOG_STREAM(info, log_ai)

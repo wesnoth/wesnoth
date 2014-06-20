@@ -13,38 +13,63 @@
    See the COPYING file for more details.
 */
 
-#include "addon/manager_ui.hpp"
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/scoped_ptr.hpp>
+#include <stddef.h>
+#include <algorithm>
+#include <iterator>
+#include <map>
+#include <ostream>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
 
+#include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
+#include "addon/manager_ui.hpp"
 #include "addon/state.hpp"
-#include "dialogs.hpp"
+#include "addon/validation.hpp"
+#include "config.hpp"
+#include "construct_dialog.hpp"
+#include "cursor.hpp"
 #include "display.hpp"
 #include "filesystem.hpp"
+#include "font.hpp"
 #include "formatter.hpp"
 #include "formula_string_utils.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
-#include "gui/dialogs/addon_list.hpp"
+
 #include "gui/dialogs/addon/description.hpp"
 #include "gui/dialogs/addon/filter_options.hpp"
 #include "gui/dialogs/addon/uninstall_list.hpp"
 #include "gui/dialogs/addon_connect.hpp"
+#include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/message.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/window.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 #include "help.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "wml_separators.hpp"
+#include "network.hpp"
+#include "network_asio.hpp"
+#include "serialization/string_utils.hpp"
+#include "show_dialog.hpp"
+#include "util.hpp"
+#include "version.hpp"
+#include "widgets/../serialization/unicode.hpp"
+#include "widgets/button.hpp"
+#include "widgets/menu.hpp"
 #include "wml_exception.hpp"
+#include "wml_separators.hpp"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/foreach.hpp>
-
-#include "addon/client.hpp"
+class CVideo;
 
 static lg::log_domain log_config("config");
 static lg::log_domain log_network("network");

@@ -20,20 +20,25 @@
 #ifndef AI_ACTIONS_HPP_INCLUDED
 #define AI_ACTIONS_HPP_INCLUDED
 
-#include "game_info.hpp"
+#include <boost/shared_ptr.hpp>
+#include <iosfwd>
+#include <map>
+#include <string>
 
 #include "../actions/move.hpp"
-#include "lua/unit_advancements_aspect.hpp"
 #include "../unit_ptr.hpp"
+#include "ai/../map_location.hpp"
+#include "game_info.hpp"
+#include "lua/unit_advancements_aspect.hpp"
 
 namespace pathfind {
 struct plain_route;
 } // of namespace pathfind
 
+class gamemap;
+class team;
 class unit;
 class unit_type;
-class team;
-class gamemap;
 
 namespace ai {
 

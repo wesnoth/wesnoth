@@ -21,14 +21,32 @@
 #ifndef AI_FORMULA_AI_HPP_INCLUDED
 #define AI_FORMULA_AI_HPP_INCLUDED
 
+#include <boost/noncopyable.hpp>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
+
+#include "../../pathfind/teleport.hpp"
+#include "../default/ai.hpp"
+#include "ai/formula/../../actions/../ai/lua/../../unit_map.hpp"
+#include "ai/formula/../../generic_event.hpp"
+#include "ai/formula/../default/../contexts.hpp"
 #include "callable_objects.hpp"
 #include "candidates.hpp"
+#include "config.hpp"
+#include "formula_callable.hpp"
+#include "formula_fwd.hpp"
 #include "function_table.hpp"
+#include "variant.hpp"
 
-#include "../default/ai.hpp"
-#include "../../pathfind/teleport.hpp"
-
-#include <boost/noncopyable.hpp>
+namespace ai {
+class ai_context;
+}  // namespace ai
+namespace game_logic {
+struct formula_error;
+}  // namespace game_logic
+struct map_location;
 
 #ifdef _MSC_VER
 #pragma warning(push)

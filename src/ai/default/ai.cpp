@@ -17,33 +17,48 @@
  * Artificial intelligence - The computer commands the enemy.
  */
 
-#include "ai.hpp"
-
-#include "../actions.hpp"
-#include "../manager.hpp"
-#include "../formula/ai.hpp"
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include <stddef.h>
+#include <stdlib.h>
+#include <algorithm>
+#include <fstream>
+#include <iterator>
 
 #include "../../array.hpp"
-#include "../../dialogs.hpp"
 #include "../../game_board.hpp"
-#include "../../game_events/pump.hpp"
 #include "../../game_classification.hpp"
+#include "../../game_events/pump.hpp"
 #include "../../log.hpp"
-#include "../../mouse_handler_base.hpp"
+#include "../../pathfind/pathfind.hpp"
 #include "../../recall_list_manager.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
-#include "../../unit_display.hpp"
 #include "../../wml_exception.hpp"
+#include "../actions.hpp"
+#include "../manager.hpp"
+#include "ai.hpp"
+#include "ai/default/../../actions/../unit_types.hpp"
+#include "ai/default/../../map_location.hpp"
+#include "ai/default/../composite/stage.hpp"
+#include "ai/default/../default/contexts.hpp"
+#include "ai/default/../formula/../../callable_objects.hpp"
+#include "ai/default/../lua/../../unit_map.hpp"
+#include "formula_callable.hpp"
+#include "game_config.hpp"
+#include "map.hpp"
+#include "movetype.hpp"
+#include "team.hpp"
+#include "terrain_translation.hpp"
+#include "unit_ptr.hpp"
+#include "util.hpp"
+#include "variant.hpp"
 
-#include "../../pathfind/pathfind.hpp"
-
-#include <boost/foreach.hpp>
-
-#include <iterator>
-#include <algorithm>
-#include <fstream>
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)

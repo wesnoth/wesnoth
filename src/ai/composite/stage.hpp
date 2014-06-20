@@ -20,6 +20,16 @@
 #ifndef AI_COMPOSITE_STAGE_HPP_INCLUDED
 #define AI_COMPOSITE_STAGE_HPP_INCLUDED
 
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
+#include <map>
+#include <string>
+#include <utility>
+
+#include "ai/composite/../default/../../config.hpp"
+#include "ai/composite/../default/../contexts.hpp"
+#include "ai/composite/../default/../game_info.hpp"
 #include "component.hpp"
 #include "contexts.hpp"
 

@@ -13,11 +13,14 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <ctype.h>
+#include <stddef.h>
+#include <algorithm>
+
 #include "addon/validation.hpp"
 #include "config.hpp"
-
-#include <boost/foreach.hpp>
 
 const unsigned short default_campaignd_port = 15007;
 

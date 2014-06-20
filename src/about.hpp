@@ -15,13 +15,13 @@
 #ifndef ABOUT_H_INCLUDED
 #define ABOUT_H_INCLUDED
 
+#include <string>
+#include <vector>
+
 #include "global.hpp"
 
-class display;
 class config;
-
-#include <vector>
-#include <string>
+class display;
 
 namespace about
 {

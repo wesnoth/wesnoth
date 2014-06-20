@@ -20,17 +20,20 @@
 #ifndef ACTIONS_VISION_H_INCLUDED
 #define ACTIONS_VISION_H_INCLUDED
 
-#include "../movetype.hpp"
-
-struct map_location;
-class  team;
-class  unit;
-
 #include <boost/noncopyable.hpp>
+#include <stddef.h>
 #include <cstring>
 #include <map>
 #include <set>
 #include <vector>
+
+#include "../movetype.hpp"
+#include "map_location.hpp"
+
+class config;
+class  team;
+class  unit;
+struct map_location;
 
 
 namespace actions {

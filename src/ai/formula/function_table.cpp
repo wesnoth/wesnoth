@@ -13,31 +13,64 @@
 */
 
 
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/shared_ptr.hpp>
+#include <stddef.h>
+#include <stdlib.h>
+#include <algorithm>
+#include <map>
+#include <ostream>
 #include <queue>
 #include <set>
 #include <utility>
 #include <vector>
 
-#include "ai.hpp"
-#include "callable_objects.hpp"
-#include "function_table.hpp"
-
 #include "../../attack_prediction.hpp"
 #include "../../filesystem.hpp"
 #include "../../game_board.hpp"
-#include "../../game_display.hpp"
 #include "../../log.hpp"
 #include "../../map_label.hpp"
-#include "../../menu_events.hpp"
+#include "../../pathfind/pathfind.hpp"
 #include "../../pathfind/teleport.hpp"
 #include "../../replay.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
-#include "../../pathfind/pathfind.hpp"
 #include "../../unit_types.hpp"
+#include "SDL_video.h"
+#include "ai.hpp"
+#include "ai/formula/../../actions/../ai/lua/../../unit_map.hpp"
+#include "ai/formula/../../actions/attack.hpp"
+#include "ai/formula/../../callable_objects.hpp"
+#include "ai/formula/../../formula.hpp"
+#include "ai/formula/../../map_location.hpp"
+#include "ai/formula/../default/contexts.hpp"
+#include "ai/formula/../game_info.hpp"
+#include "callable_objects.hpp"
+#include "display.hpp"
+#include "formula_debugger_fwd.hpp"
+#include "formula_fwd.hpp"
+#include "function_table.hpp"
+#include "map.hpp"
+#include "movetype.hpp"
+#include "pathutils.hpp"
+#include "sdl/utils.hpp"
+#include "team.hpp"
+#include "terrain.hpp"
+#include "util.hpp"
+#include "variant.hpp"
 
-#include <boost/foreach.hpp>
+namespace game_logic {
+class formula_callable;
+class formula_debugger;
+}  // namespace game_logic
+namespace t_translation {
+struct t_terrain;
+}  // namespace t_translation
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)

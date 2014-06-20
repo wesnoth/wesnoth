@@ -15,7 +15,13 @@
 #ifndef ADDON_STATE_HPP_INCLUDED
 #define ADDON_STATE_HPP_INCLUDED
 
+#include <map>
+#include <string>
+
 #include "addon/info.hpp"
+#include "version.hpp"
+
+struct addon_info;
 
 /** Defines various add-on installation statuses. */
 enum ADDON_STATUS {

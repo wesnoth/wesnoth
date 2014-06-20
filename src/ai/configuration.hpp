@@ -20,6 +20,10 @@
 #ifndef AI_CONFIGURATION_HPP_INCLUDED
 #define AI_CONFIGURATION_HPP_INCLUDED
 
+#include <map>
+#include <string>
+#include <vector>
+
 #include "../config.hpp"
 #include "game_info.hpp"
 

@@ -13,35 +13,23 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <stddef.h>
+#include <algorithm>
+#include <istream>
+#include <map>
+#include <utility>
 
 #include "addon/manager.hpp"
-#include "addon/manager_ui.hpp"
-#include "dialogs.hpp"
+#include "addon/validation.hpp"
+#include "ai/lua/../../config.hpp"
 #include "filesystem.hpp"
-#include "formatter.hpp"
-#include "game_display.hpp"
-#include "game_preferences.hpp"
-#include "gettext.hpp"
-#include "gui/dialogs/addon_connect.hpp"
-#include "gui/dialogs/addon_list.hpp"
-#include "gui/dialogs/addon/description.hpp"
-#include "gui/dialogs/addon/uninstall_list.hpp"
-#include "gui/dialogs/message.hpp"
-#include "gui/dialogs/network_transmission.hpp"
-#include "gui/dialogs/simple_item_selector.hpp"
-#include "gui/dialogs/transient_message.hpp"
-#include "gui/widgets/settings.hpp"
-#include "gui/widgets/window.hpp"
-#include "log.hpp"
-#include "marked-up_text.hpp"
-#include "serialization/parser.hpp"
-#include "version.hpp"
-#include "wml_separators.hpp"
-#include "formula_string_utils.hpp"
-#include "addon/client.hpp"
 
-#include <boost/foreach.hpp>
+#include "log.hpp"
+#include "serialization/parser.hpp"
+#include "serialization/string_utils.hpp"
+#include "version.hpp"
 
 static lg::log_domain log_config("config");
 #define ERR_CFG LOG_STREAM(err , log_config)

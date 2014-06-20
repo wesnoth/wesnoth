@@ -17,33 +17,55 @@
  * Defines formula ai candidate actions - headers
  */
 
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
+#include <stdlib.h>
+#include <time.h>
+#include <map>
+#include <sstream>
 #include <stack>
 #include <vector>
-
-#include "ai.hpp"
-#include "candidates.hpp"
-#include "callable_objects.hpp"
-#include "function_table.hpp"
-
-#include "../actions.hpp"
-#include "../manager.hpp"
 
 #include "../../callable_objects.hpp"
 #include "../../game_board.hpp"
 #include "../../game_display.hpp"
-#include "../../formula_debugger.hpp"
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
+#include "../../pathfind/pathfind.hpp"
 #include "../../pathfind/teleport.hpp"
 #include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
 #include "../../unit.hpp"
 #include "../../unit_formula_manager.hpp"
-#include "../../pathfind/pathfind.hpp"
-
-#include <boost/foreach.hpp>
+#include "../actions.hpp"
+#include "../manager.hpp"
+#include "ai.hpp"
+#include "ai/formula/../../actions/../unit_types.hpp"
+#include "ai/formula/../../formula.hpp"
+#include "ai/formula/../../map_location.hpp"
+#include "ai/formula/../default/../composite/contexts.hpp"
+#include "ai/formula/../default/../composite/stage.hpp"
+#include "ai/formula/../default/../interface.hpp"
+#include "ai/formula/../default/contexts.hpp"
+#include "ai/formula/../game_info.hpp"
+#include "callable_objects.hpp"
+#include "candidates.hpp"
+#include "chat_events.hpp"
+#include "formula_function.hpp"
+#include "function_table.hpp"
+#include "map.hpp"
+#include "recall_list_manager.hpp"
+#include "serialization/string_utils.hpp"
+#include "team.hpp"
+#include "time_of_day.hpp"
+#include "tstring.hpp"
+#include "unit_ptr.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define DBG_AI LOG_STREAM(debug, log_formula_ai)

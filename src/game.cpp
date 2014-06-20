@@ -12,24 +12,71 @@
    See the COPYING file for more details.
 */
 
-#include "global.hpp"
-
+#include "SDL_error.h"
+#include "SDL_events.h"
+#include "SDL_stdinc.h"
+#include "SDL_timer.h"
+#include "SDL_version.h"
 #include "about.hpp"
 #include "addon/manager.hpp"
 #include "addon/manager_ui.hpp"
 #include "commandline_options.hpp"
+#include "config.hpp"
+#include "cursor.hpp"
+#include "editor/editor_main.hpp"
+#include "filesystem.hpp"
+#include "font.hpp"
+#include "formula.hpp"
+#include "game_config.hpp"
 #include "game_config_manager.hpp"
 #include "game_controller.hpp"
+#include "game_display.hpp"
+#include "gui/auxiliary/event/handler.hpp"
 #include "gui/dialogs/core_selection.hpp"
 #include "gui/dialogs/title_screen.hpp"
+#include "gui/widgets/helper.hpp"
+#include "hotkey/command_executor.hpp"
+#include "image.hpp"
+#include "preferences.hpp"
+#include "resources.hpp"
+#include "serialization/preprocessor.hpp"
+#include "sound.hpp"
+#include "tstring.hpp"
+#include "video.hpp"
+#include "widgets/button.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 #include "gui/widgets/debug.hpp"
 #endif
-#include "gui/widgets/window.hpp"
+#include <SDL.h>
+#include <boost/foreach.hpp>
+#include <boost/iostreams/categories.hpp>
+#include <boost/iostreams/copy.hpp>
+#include <boost/iostreams/detail/forward.hpp>
+#include <boost/iostreams/filter/bzip2.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/optional/optional.hpp>
+#include <boost/program_options/errors.hpp>
+#include <boost/scoped_ptr.hpp>
+#include <boost/tuple/detail/tuple_basic.hpp>
+#include <libintl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <cerrno>
+#include <clocale>
+#include <exception>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <new>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "help.hpp"
 #include "loadscreen.hpp"
 #include "log.hpp"
-#include "playcampaign.hpp"
 #include "preferences_display.hpp"
 #include "replay.hpp"
 #include "sdl/exception.hpp"
@@ -41,17 +88,10 @@
 #include "wesconfig.h"
 #include "wml_exception.hpp"
 
-#include <cerrno>
-#include <clocale>
-#include <fstream>
-#include <libintl.h>
-
-#include <boost/foreach.hpp>
-#include <boost/iostreams/copy.hpp>
-#include <boost/iostreams/filter/bzip2.hpp>
-#include <boost/iostreams/filter/gzip.hpp>
-
-#include <SDL.h>
+class end_level_exception;
+namespace game {
+struct error;
+}  // namespace game
 
 
 #ifdef HAVE_VISUAL_LEAK_DETECTOR

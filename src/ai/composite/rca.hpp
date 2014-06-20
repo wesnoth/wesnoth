@@ -20,6 +20,16 @@
 #ifndef AI_COMPOSITE_RCA_HPP_INCLUDED
 #define AI_COMPOSITE_RCA_HPP_INCLUDED
 
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
+#include <iosfwd>
+#include <map>
+#include <string>
+#include <utility>
+
+#include "ai/composite/../default/../../config.hpp"
+#include "ai/composite/../default/../contexts.hpp"
 #include "component.hpp"
 #include "contexts.hpp"
 

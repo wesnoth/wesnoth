@@ -18,16 +18,25 @@
  * @file
  */
 
-#include "contexts.hpp"
+#include <assert.h>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+#include <stdlib.h>
+#include <iterator>
+#include <map>
+#include <ostream>
 
 #include "../../game_board.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../pathfind/pathfind.hpp"
 #include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../unit.hpp"
 #include "../composite/goal.hpp"
-#include "../../pathfind/pathfind.hpp"
+#include "ai/default/../lua/../../unit_map.hpp"
+#include "contexts.hpp"
+#include "terrain_translation.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)

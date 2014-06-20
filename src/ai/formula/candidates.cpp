@@ -17,12 +17,29 @@
  * Defines formula ai candidate actions
  * */
 
-#include "ai.hpp"
-#include "candidates.hpp"
-#include "../../log.hpp"
-#include "../../resources.hpp"
-
 #include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <stddef.h>
+#include <ostream>
+#include <utility>
+
+#include "../../log.hpp"
+#include "ai.hpp"
+#include "ai/formula/../../actions/../ai/lua/../../unit_map.hpp"
+#include "ai/formula/../../callable_objects.hpp"
+#include "ai/formula/../../formula.hpp"
+#include "candidates.hpp"
+#include "config.hpp"
+#include "formula_callable.hpp"
+#include "team.hpp"
+#include "tstring.hpp"
+#include "unit.hpp"
+
+namespace game_logic {
+class function_symbol_table;
+}  // namespace game_logic
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)

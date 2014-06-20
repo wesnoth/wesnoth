@@ -21,13 +21,19 @@
 #ifndef ACTIONS_CREATE_H_INCLUDED
 #define ACTIONS_CREATE_H_INCLUDED
 
-class config;
-class team;
-class unit_type;
-class vconfig;
+#include <stddef.h>
+#include <set>
+#include <string>
+#include <vector>
 
 #include "../map_location.hpp"
 #include "../unit_ptr.hpp"
+
+class config;
+class team;
+class unit;
+class unit_type;
+class vconfig;
 
 
 class unit_creator {

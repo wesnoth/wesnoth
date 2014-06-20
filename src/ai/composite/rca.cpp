@@ -17,10 +17,11 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "engine.hpp"
-#include "rca.hpp"
+#include <ostream>
+
 #include "../../log.hpp"
+#include "ai/composite/contexts.hpp"
+#include "rca.hpp"
 
 namespace ai {
 

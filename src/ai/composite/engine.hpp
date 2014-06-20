@@ -21,19 +21,29 @@
 #ifndef AI_COMPOSITE_ENGINE_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_HPP_INCLUDED
 
-#include "component.hpp"
-#include "../contexts.hpp"
-
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
 #include <algorithm>
 #include <iterator>
+#include <map>
+#include <string>
+#include <utility>
+#include <vector>
+
+#include "../contexts.hpp"
+#include "ai/composite/../../config.hpp"
+#include "ai/composite/../game_info.hpp"
+#include "ai/composite/contexts.hpp"
+#include "component.hpp"
 
 //============================================================================
 
 namespace ai {
 
-class rca_context;
 class ai_context;
 class component;
+class rca_context;
 
 class engine : public component {
 public:

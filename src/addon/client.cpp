@@ -13,19 +13,29 @@
    See the COPYING file for more details.
 */
 
+#include <assert.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <map>
+#include <ostream>
+#include <vector>
+
+#include "addon/client.hpp"
 #include "addon/info.hpp"
 #include "addon/manager.hpp"
 #include "addon/validation.hpp"
+#include "config.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/network_transmission.hpp"
 #include "log.hpp"
+#include "network_asio.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
-
-#include "addon/client.hpp"
+#include "util.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_ADDONS LOG_STREAM(err ,  log_addons_client)

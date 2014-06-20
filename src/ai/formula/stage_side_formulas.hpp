@@ -21,8 +21,13 @@
 #ifndef AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
 #define AI_FORMULA_STAGE_SIDE_FORMULAS_HPP_INCLUDED
 
-#include "../composite/stage.hpp"
 #include "../../formula_fwd.hpp"
+#include "../composite/stage.hpp"
+#include "ai/formula/../composite/../default/../../config.hpp"
+
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 #ifdef _MSC_VER
 #pragma warning(push)

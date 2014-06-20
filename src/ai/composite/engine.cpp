@@ -17,10 +17,12 @@
  * @file
  */
 
-#include "engine.hpp"
-#include "contexts.hpp"
+#include <ostream>
 
 #include "../../log.hpp"
+#include "ai/composite/../contexts.hpp"
+#include "contexts.hpp"
+#include "engine.hpp"
 
 namespace ai {
 

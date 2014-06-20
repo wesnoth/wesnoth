@@ -20,12 +20,24 @@
 #ifndef AI_FORMULA_CANDIDATES_HPP_INCLUDED
 #define AI_FORMULA_CANDIDATES_HPP_INCLUDED
 
-#include "formula_function.hpp"
-
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <map>
 #include <set>
+#include <string>
+#include <vector>
 
-class unit_map;
+#include "formula_function.hpp"
+#include "formula_fwd.hpp"
+#include "variant.hpp"
+
 class config;
+class unit_map;
+namespace game_logic {
+class formula_callable;
+class function_symbol_table;
+class map_formula_callable;
+}  // namespace game_logic
 
 namespace ai {
 class formula_ai;

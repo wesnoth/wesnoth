@@ -17,38 +17,55 @@
  * Movement.
  */
 
-#include "move.hpp"
-
-#include "undo.hpp"
-#include "vision.hpp"
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <deque>
+#include <map>
+#include <ostream>
+#include <string>
+#include <utility>
 
 #include "../config_assign.hpp"
+#include "../formula_string_utils.hpp"
 #include "../game_display.hpp"
 #include "../game_events/pump.hpp"
 #include "../game_preferences.hpp"
 #include "../gettext.hpp"
-#include "hotkey/hotkey_item.hpp"
-#include "hotkey/hotkey_command.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/pathfind.hpp"
+#include "../play_controller.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
-#include "../synced_context.hpp"
-#include "../play_controller.hpp"
 #include "../resources.hpp"
-#include "../unit_display.hpp"
-#include "../formula_string_utils.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
 #include "../unit_animation_component.hpp"
+#include "../unit_display.hpp"
 #include "../whiteboard/manager.hpp"
-
-#include <boost/foreach.hpp>
-#include <deque>
-#include <map>
-#include <set>
+#include "SDL_video.h"
+#include "actions/../game_events/entity_location.hpp"
+#include "actions/../unit_map.hpp"
+#include "config.hpp"
+#include "font.hpp"
+#include "game_board.hpp"
+#include "hotkey/hotkey_command.hpp"
+#include "hotkey/hotkey_item.hpp"
+#include "map_location.hpp"
+#include "move.hpp"
+#include "serialization/string_utils.hpp"
+#include "synced_checkup.hpp"
+#include "undo.hpp"
+#include "util.hpp"
+#include "vision.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

@@ -16,14 +16,14 @@
 #ifndef ADDON_MANAGER_HPP_INCLUDED
 #define ADDON_MANAGER_HPP_INCLUDED
 
-class config;
-class version_info;
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "addon/validation.hpp"
 
-#include <string>
-#include <vector>
-#include <utility>
+class config;
+class version_info;
 
 /**
  * Exception thrown when the WML parser fails to read a .pbl file.

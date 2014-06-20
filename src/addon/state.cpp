@@ -12,12 +12,13 @@
    See the COPYING file for more details.
 */
 
-#include "addon/state.hpp"
+#include <ostream>
 
+#include "addon/info.hpp"
 #include "addon/manager.hpp"
-#include "font.hpp"
+#include "addon/state.hpp"
+#include "config.hpp"
 #include "log.hpp"
-#include "marked-up_text.hpp"
 
 static lg::log_domain log_addons_client("addons-client");
 #define LOG_AC  LOG_STREAM(info, log_addons_client)

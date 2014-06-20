@@ -17,17 +17,36 @@
  * Show screen with scrolling credits.
  */
 
-#include "about.hpp"
-
-#include "construct_dialog.hpp"
-#include "display.hpp"
-#include "formula_string_utils.hpp"
-#include "gettext.hpp"
-#include "marked-up_text.hpp"
-#include "sdl/alpha.hpp"
-#include "util.hpp"
-
 #include <boost/foreach.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/scoped_ptr.hpp>
+#include <libintl.h>
+#include <stddef.h>
+#include <algorithm>
+#include <map>
+#include <ostream>
+
+#include "SDL_keysym.h"
+#include "SDL_video.h"
+#include "about.hpp"
+#include "config.hpp"
+#include "cursor.hpp"
+#include "display.hpp"
+#include "font.hpp"
+#include "game_config.hpp"
+#include "gettext.hpp"
+#include "image.hpp"
+#include "key.hpp"
+#include "marked-up_text.hpp"
+#include "sdl/rect.hpp"
+#include "sdl/utils.hpp"
+#include "serialization/string_utils.hpp"
+#include "show_dialog.hpp"
+#include "tstring.hpp"
+#include "video.hpp"
+#include "widgets/../events.hpp"
+#include "widgets/button.hpp"
 
 /**
  * @namespace about

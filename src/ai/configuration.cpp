@@ -18,18 +18,22 @@
  * @file
  */
 
-#include "configuration.hpp"
+#include <boost/foreach.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <ostream>
+#include <utility>
+#include <vector>
 
 #include "../filesystem.hpp"
 #include "../log.hpp"
 #include "../serialization/parser.hpp"
 #include "../serialization/preprocessor.hpp"
-#include "../team.hpp"
+#include "ai/../config.hpp"
+#include "ai/game_info.hpp"
+#include "configuration.hpp"
+#include "tstring.hpp"
 #include "wml_exception.hpp"
-
-#include <boost/foreach.hpp>
-
-#include <vector>
 
 namespace ai {
 

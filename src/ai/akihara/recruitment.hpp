@@ -20,8 +20,24 @@
 #ifndef AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
 #define AI_AKIHARA_RECRUITMENT_HPP_INCLUDED
 
-#include "../composite/rca.hpp"
+#include <map>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "../../team.hpp"
+#include "../composite/rca.hpp"
+#include "map_location.hpp"
+
+class config;
+class unit;
+namespace ai {
+class rca_context;
+namespace akihara_recruitment {
+class situation;
+}  // namespace akihara_recruitment
+}  // namespace ai
 
 #ifdef _MSC_VER
 #pragma warning(push)

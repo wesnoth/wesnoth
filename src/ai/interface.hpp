@@ -20,10 +20,21 @@
 #ifndef AI_INTERFACE_HPP_INCLUDED
 #define AI_INTERFACE_HPP_INCLUDED
 
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
+#include <map>
+#include <string>
+#include <utility>
+
 #include "../savegame_config.hpp"
+#include "ai/../config.hpp"
+#include "ai/game_info.hpp"
 #include "default/contexts.hpp"
 
 namespace ai {
+
+class ai_context;
 
 class interface : savegame::savegame_config {
 public:
