@@ -79,11 +79,19 @@ namespace {
 
 void intrusive_ptr_add_ref(const unit * u)
 {
+	if(u->ref_count_ > 1000 || u->ref_count_  < 0)
+	{
+		WRN_UT << "found very much references: " << u->ref_count_ << " of them " << std::endl;
+	}
 	++(u->ref_count_);
 }
 
 void intrusive_ptr_release(const unit * u)
 {
+	if(u->ref_count_ > 1000 || u->ref_count_  < 0)
+	{
+		WRN_UT << "found very much references: " << u->ref_count_ << " of them " << std::endl;
+	}
 	if (--(u->ref_count_) == 0)
 		delete u;
 }
