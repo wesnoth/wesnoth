@@ -35,7 +35,7 @@
 
 // gettext-related declarations
 
-#include <libintl.h>
+#include <libintl.h> // IWYU #pragma export
 
 #ifdef setlocale
 // Someone in libintl world decided it was a good idea to define a "setlocale" macro.
