@@ -48,8 +48,15 @@ namespace game_config {
 		force_valid_cache_(false),
 		use_cache_(true),
 		fake_invalid_cache_(false),
-		defines_map_()
+		defines_map_(),
+		cache_file_prefix_()
 	{
+		cache_file_prefix_
+				= "cache-v" +
+				  boost::algorithm::replace_all_copy(game_config::revision,
+													 ":", "_") +
+				  "-";
+
 		// To set-up initial defines map correctly
 		clear_defines();
 	}
@@ -177,9 +184,8 @@ namespace game_config {
 			const std::string& cache = get_cache_dir();
 			if(cache != "") {
 				sha1_hash sha(defines_string.str()); // use a hash for a shorter display of the defines
-				const std::string fname = cache + "/cache-v" +
-					boost::algorithm::replace_all_copy(game_config::revision, ":", "_") +
-					"-" + sha.display();
+				const std::string fname = cache + "/" +
+										  cache_file_prefix_ + sha.display();
 				const std::string fname_checksum = fname + ".checksum" + extension;
 
 				file_tree_checksum dir_checksum;
@@ -332,6 +338,72 @@ namespace game_config {
 			// we have to remove this from active map too
 			config_cache_transaction::instance().get_active_map(defines_map_).erase(define);
 		}
+	}
+
+	bool config_cache::clean_cache()
+	{
+		std::vector<std::string> files, dirs;
+		get_files_in_dir(get_cache_dir(), &files, &dirs, ENTIRE_FILE_PATH);
+
+		LOG_CACHE << "clean_cache(): " << files.size() << " files, "
+				  << dirs.size() << " dirs to check\n";
+
+		const std::string& exclude_current = cache_file_prefix_ + "*";
+
+		bool status = true;
+
+		status &= delete_cache_files(files, exclude_current);
+		status &= delete_cache_files(dirs, exclude_current);
+
+		LOG_CACHE << "clean_cache(): done\n";
+
+		return status;
+	}
+
+	bool config_cache::purge_cache()
+	{
+		std::vector<std::string> files, dirs;
+		get_files_in_dir(get_cache_dir(), &files, &dirs, ENTIRE_FILE_PATH);
+
+		LOG_CACHE << "purge_cache(): deleting " << files.size() << " files, "
+				  << dirs.size() << " dirs\n";
+
+		bool status = true;
+
+		status &= delete_cache_files(files);
+		status &= delete_cache_files(dirs);
+
+		LOG_CACHE << "purge_cache(): done\n";
+		return status;
+	}
+
+	bool config_cache::delete_cache_files(const std::vector<std::string>& paths,
+										  const std::string& exclude_pattern)
+	{
+		const bool delete_everything = exclude_pattern.empty();
+		bool status = true;
+
+		BOOST_FOREACH(const std::string& path, paths)
+		{
+			if(!delete_everything) {
+				const std::string& fn = file_name(path);
+
+				if(utils::wildcard_string_match(fn, exclude_pattern)) {
+					LOG_CACHE << "delete_cache_files(): skipping " << path
+							  << " excluded by '" << exclude_pattern << "'\n";
+					continue;
+				}
+			}
+
+			LOG_CACHE << "delete_cache_files(): deleting " << path << '\n';
+			if(!delete_directory(path)) {
+				ERR_CACHE << "delete_cache_files(): could not delete "
+						  << path << '\n';
+				status = false;
+			}
+		}
+
+		return status;
 	}
 
 	config_cache_transaction::state config_cache_transaction::state_ = FREE;

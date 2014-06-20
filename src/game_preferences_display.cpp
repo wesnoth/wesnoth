@@ -20,6 +20,7 @@
 #include "filechooser.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_paths.hpp"
 #include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/theme_list.hpp"
@@ -129,6 +130,7 @@ private:
 			show_haloing_button_, video_mode_button_,
 			theme_button_,
 			hotkeys_button_, paths_button_, colors_button_,
+			cache_button_,
 			advanced_button_, sound_button_,
 			music_button_, chat_timestamp_button_,
 			advanced_sound_button_, normal_sound_button_,
@@ -222,6 +224,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  hotkeys_button_(disp.video(), _("Hotkeys")),
 	  paths_button_(disp.video(), _("Paths")),
 	  colors_button_(disp.video(), _("Colors")),
+	  cache_button_(disp.video(), _("Cache")),
 	  advanced_button_(disp.video(), "", gui::button::TYPE_CHECK),
 	  sound_button_(disp.video(), _("Sound effects"), gui::button::TYPE_CHECK),
 	  music_button_(disp.video(), _("Music"), gui::button::TYPE_CHECK),
@@ -509,6 +512,7 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	hotkeys_button_.set_help_string(_("View and configure keyboard shortcuts"));
 	paths_button_.set_help_string(_("View game file paths"));
 	colors_button_.set_help_string(_("Adjust orb colors"));
+	cache_button_.set_help_string(_("Manage the game WML cache"));
 
 	set_advanced_menu();
 	set_friends_menu();
@@ -565,6 +569,7 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&hotkeys_button_);
 	h.push_back(&paths_button_);
 	h.push_back(&colors_button_);
+	h.push_back(&cache_button_);
 	h.push_back(&advanced_button_);
 	h.push_back(&sound_button_);
 	h.push_back(&music_button_);
@@ -659,6 +664,7 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	autosavemax_slider_.set_location(autosavemax_rect);
 	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
 	paths_button_.set_location(rect.x + hotkeys_button_.width() + 10, bottom_row_y - paths_button_.height());
+	cache_button_.set_location(paths_button_.location().x + paths_button_.width() + 10, bottom_row_y - cache_button_.height());
 
 	// Display tab
 	ypos = rect.y + top_border;
@@ -916,6 +922,10 @@ void preferences_dialog::process_event()
 		}
 		if (paths_button_.pressed()) {
 			show_paths_dialog(disp_);
+			parent->clear_buttons();
+		}
+		if (cache_button_.pressed()) {
+			gui2::tgame_cache_options::display(disp_.video());
 			parent->clear_buttons();
 		}
 
@@ -1543,6 +1553,7 @@ void preferences_dialog::set_selection(int index)
 	interrupt_when_ally_sighted_button_.hide(hide_general);
 	hotkeys_button_.hide(hide_general);
 	paths_button_.hide(hide_general);
+	cache_button_.hide(hide_general);
 	save_replays_button_.hide(hide_general);
 	delete_saves_button_.hide(hide_general);
 	autosavemax_slider_label_.hide(hide_general);
