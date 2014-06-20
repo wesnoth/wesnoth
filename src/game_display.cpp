@@ -254,12 +254,14 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
+	unit_drawer drawer = unit_drawer(*this);
+
 	BOOST_FOREACH(const unit* temp_unit, fake_unit_man_->get_unit_range()) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
-			(static_cast<const drawable_unit*> (temp_unit))->redraw_unit(*this);
+			drawer.redraw_unit(*temp_unit);
 	}
 }
 

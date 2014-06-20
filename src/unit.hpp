@@ -174,6 +174,10 @@ public:
 	SDL_Color hp_color(int hitpoints) const;
 	/** Colors for the unit's XP. */
 	SDL_Color xp_color() const;
+
+	double hp_bar_scaling() const { return hp_bar_scaling_; }
+	double xp_bar_scaling() const { return xp_bar_scaling_; }
+
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
 	void set_unrenamable(bool unrenamable) { unrenamable_ = unrenamable; }
@@ -191,7 +195,10 @@ public:
 	void set_recruits(const std::vector<std::string>& recruits);
 	const config& recall_filter() const { return filter_recall_; }
 
+	bool poisoned() const { return get_state(STATE_POISONED); }
 	bool incapacitated() const { return get_state(STATE_PETRIFIED); }
+	bool slowed() const { return get_state(STATE_SLOWED); }
+
 	int total_movement() const { return max_movement_; }
 	/// Returns how far a unit can move this turn (zero if incapacitated).
 	int movement_left() const { return (movement_ == 0 || incapacitated()) ? 0 : movement_; }
@@ -372,7 +379,6 @@ public:
 	friend void intrusive_ptr_release(const unit *);
 protected:
 	mutable long ref_count_; //used by intrusive_ptr
-
 private:
 	void advance_to(const config &old_cfg, const unit_type &t,
 		bool use_traits);
@@ -396,9 +402,8 @@ private:
 	void set_underlying_id();
 
 	config cfg_;
-protected:
-	map_location loc_;
 private:
+	map_location loc_;
 
 	std::vector<std::string> advances_to_;
 	const unit_type * type_;/// Never NULL. Adjusted for gender and variation.
@@ -414,9 +419,9 @@ private:
 	int max_hit_points_;
 	int experience_;
 	int max_experience_;
-protected:
+
 	int level_;
-private:
+
 	int recall_cost_;
 	bool canrecruit_;
 	std::vector<std::string> recruit_list_;
@@ -425,9 +430,9 @@ private:
 	std::string image_mods_;
 
 	bool unrenamable_;
-protected:
+
 	int side_;
-private:
+
 	const unit_race::GENDER gender_;
 
 	fixed_t alpha_;
@@ -452,10 +457,8 @@ private:
 	config events_;
 	config filter_recall_;
 
-protected:
 	bool emit_zoc_;
 
-private:
 	std::vector<std::string> overlays_;
 
 	std::string role_;
@@ -476,14 +479,13 @@ private:
 	// Animations:
 	friend class unit_animation_component;
 
-protected:
+private:
 	boost::scoped_ptr<unit_animation_component> anim_comp_;
 
 	bool getsHit_;
 	mutable bool hidden_;
 	double hp_bar_scaling_, xp_bar_scaling_;
 
-private:
 	config modifications_;
 
 	/**

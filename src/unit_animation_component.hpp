@@ -24,6 +24,7 @@
 
 class config;
 class unit;
+class unit_drawer;
 class unit_type;
 
 class unit_animation_component
@@ -90,7 +91,7 @@ public:
 	unit_animation* get_animation() const { return anim_.get(); }
 
 	friend class unit;
-	friend class drawable_unit;
+	friend class unit_drawer;
 private:
 	const unit & u_;
 

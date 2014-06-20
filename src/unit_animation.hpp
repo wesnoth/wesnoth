@@ -68,7 +68,7 @@ class unit_animation
 		friend std::ostream& operator << (std::ostream& outstream, const unit_animation& u_animation);
 
 	friend class unit;
-	friend class drawable_unit;
+	friend class unit_drawer;
 
 	explicit unit_animation(const config &cfg, const std::string &frame_string = "");
 

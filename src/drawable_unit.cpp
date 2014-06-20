@@ -19,25 +19,63 @@
 #include "game_preferences.hpp"
 #include "halo.hpp"
 #include "map.hpp"
+#include "map_location.hpp"
 #include "sdl/utils.hpp"
 #include "team.hpp"
+#include "unit.hpp"
 #include "unit_animation.hpp"
 #include "unit_animation_component.hpp"
 #include "unit_frame.hpp"
 
 #include <boost/foreach.hpp>
 
-void drawable_unit::redraw_unit (display & disp) const
+unit_drawer::unit_drawer(display & thedisp) :
+	disp(thedisp),
+	dc(disp.get_disp_context()),
+	map(dc.map()),
+	teams(dc.teams()),
+	viewing_team(disp.viewing_team()),
+	playing_team(disp.playing_team()),
+	viewing_team_ref(teams[viewing_team]),
+	playing_team_ref(teams[playing_team]),
+	is_blindfolded(disp.is_blindfolded()),
+	show_everything(disp.show_everything()),
+	sel_hex(disp.selected_hex()),
+	mouse_hex(disp.mouseover_hex()),
+	zoom_factor(disp.get_zoom_factor()),
+	hex_size(disp.hex_size()),
+	hex_size_by_2(disp.hex_size()/2)
+{}
+
+void unit_drawer::redraw_unit (const unit & u) const
 {
-	const display_context & dc = disp.get_disp_context();
-	const gamemap &map = dc.map();
-	const std::vector<team> &teams = dc.teams();
+	unit_animation_component & ac = u.anim_comp();
+	map_location loc = u.get_location();
 
-	const team & viewing_team = teams[disp.viewing_team()];
+	int side = u.side();
 
-	unit_animation_component & ac = *anim_comp_;
+	bool hidden = u.get_hidden();
+	bool is_flying = u.is_flying();
+	map_location::DIRECTION facing = u.facing();
+	int hitpoints = u.hitpoints();
+	int max_hitpoints = u.max_hitpoints();
+	int movement_left = u.movement_left();
+	int total_movement = u.total_movement();
 
-	if ( hidden_ || disp.is_blindfolded() || !is_visible_to_team(viewing_team,map, disp.show_everything()) )
+	bool can_recruit = u.can_recruit();
+	bool can_advance = u.can_advance();
+
+	int experience = u.experience();
+	int max_experience = u.max_experience();
+
+	bool emit_zoc = u.emits_zoc();
+
+	SDL_Color hp_color=u.hp_color();
+	SDL_Color xp_color=u.xp_color();
+
+	std::string ellipse=u.image_ellipse();
+
+	if ( hidden || is_blindfolded || !u.is_visible_to_team(viewing_team_ref,map, show_everything) )
 	{
 		ac.clear_haloes();
 		if(ac.anim_) {
@@ -56,23 +94,23 @@ void drawable_unit::redraw_unit (display & disp) const
 
 	ac.anim_->update_last_draw_time();
 	frame_parameters params;
-	const t_translation::t_terrain terrain = map.get_terrain(loc_);
+	const t_translation::t_terrain terrain = map.get_terrain(loc);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
 	// do not set to 0 so we can distinguish the flying from the "not on submerge terrain"
 	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
-	params.submerge= is_flying() ? -1.0 : terrain_info.unit_submerge();
+	params.submerge= is_flying ? -1.0 : terrain_info.unit_submerge();
 
-	if (invisible(loc_) &&
+	if (u.invisible(loc) &&
 			params.highlight_ratio > 0.5) {
 		params.highlight_ratio = 0.5;
 	}
-	if (loc_ == disp.selected_hex() && params.highlight_ratio == 1.0) {
+	if (loc == sel_hex && params.highlight_ratio == 1.0) {
 		params.highlight_ratio = 1.5;
 	}
 
-	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * disp.get_zoom_factor());
-	if (is_flying() && height_adjust < 0) {
+	int height_adjust = static_cast<int>(terrain_info.unit_height_adjust() * zoom_factor);
+	if (is_flying && height_adjust < 0) {
 		height_adjust = 0;
 	}
 	params.y -= height_adjust;
@@ -81,12 +119,12 @@ void drawable_unit::redraw_unit (display & disp) const
 	int red = 0,green = 0,blue = 0,tints = 0;
 	double blend_ratio = 0;
 	// Add future colored states here
-	if(get_state(STATE_POISONED)) {
+	if(u.poisoned()) {
 		green += 255;
 		blend_ratio += 0.25;
 		tints += 1;
 	}
-	if(get_state(STATE_SLOWED)) {
+	if(u.slowed()) {
 		red += 191;
 		green += 191;
 		blue += 255;
@@ -101,31 +139,30 @@ void drawable_unit::redraw_unit (display & disp) const
 	//hackish : see unit_frame::merge_parameters
 	// we use image_mod on the primary image
 	// and halo_mod on secondary images and all haloes
-	params.image_mod = image_mods();
-	params.halo_mod = TC_image_mods();
-	params.image= absolute_image();
+	params.image_mod = u.image_mods();
+	params.halo_mod = u.TC_image_mods();
+	params.image= u.absolute_image();
 
 
-	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
+	if(u.incapacitated()) params.image_mod +="~GS()";
 	params.primary_frame = t_true;
 
 
 	const frame_parameters adjusted_params = ac.anim_->get_current_params(params);
 
-	const map_location dst = loc_.get_direction(facing_);
-	const int xsrc = disp.get_location_x(loc_);
-	const int ysrc = disp.get_location_y(loc_);
+	const map_location dst = loc.get_direction(facing);
+	const int xsrc = disp.get_location_x(loc);
+	const int ysrc = disp.get_location_y(loc);
 	const int xdst = disp.get_location_x(dst);
 	const int ydst = disp.get_location_y(dst);
-	int d2 = disp.hex_size() / 2;
 
-	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + d2;
-	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + d2;
+	const int x = static_cast<int>(adjusted_params.offset * xdst + (1.0-adjusted_params.offset) * xsrc) + hex_size_by_2;
+	const int y = static_cast<int>(adjusted_params.offset * ydst + (1.0-adjusted_params.offset) * ysrc) + hex_size_by_2;
 
-	if(ac.unit_halo_ == halo::NO_HALO && !image_halo().empty()) {
-		ac.unit_halo_ = halo::add(0, 0, image_halo()+TC_image_mods(), map_location(-1, -1));
+	if(ac.unit_halo_ == halo::NO_HALO && !u.image_halo().empty()) {
+		ac.unit_halo_ = halo::add(0, 0, u.image_halo()+u.TC_image_mods(), map_location(-1, -1));
 	}
-	if(ac.unit_halo_ != halo::NO_HALO && image_halo().empty()) {
+	if(ac.unit_halo_ != halo::NO_HALO && u.image_halo().empty()) {
 		halo::remove(ac.unit_halo_);
 		ac.unit_halo_ = halo::NO_HALO;
 	} else if(ac.unit_halo_ != halo::NO_HALO) {
@@ -137,8 +174,7 @@ void drawable_unit::redraw_unit (display & disp) const
 	// We draw bars only if wanted, visible on the map view
 	bool draw_bars = ac.draw_bars_ ;
 	if (draw_bars) {
-		const int d = disp.hex_size();
-		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, d, d);
+		SDL_Rect unit_rect = sdl::create_rect(xsrc, ysrc +adjusted_params.y, hex_size, hex_size);
 		draw_bars = sdl::rects_overlap(unit_rect, disp.map_outside_area());
 	}
 
@@ -146,28 +182,27 @@ void drawable_unit::redraw_unit (display & disp) const
 	surface ellipse_back(NULL);
 	int ellipse_floating = 0;
 	// Always show the ellipse for selected units
-	if(draw_bars && (preferences::show_side_colors() || disp.selected_hex() == loc_)) {
+	if(draw_bars && (preferences::show_side_colors() || sel_hex == loc)) {
 		if(adjusted_params.submerge > 0.0) {
 			// The division by 2 seems to have no real meaning,
 			// It just works fine with the current center of ellipse
 			// and prevent a too large adjust if submerge = 1.0
-			ellipse_floating = static_cast<int>(adjusted_params.submerge * disp.hex_size() / 2);
+			ellipse_floating = static_cast<int>(adjusted_params.submerge * hex_size_by_2);
 		}
 
-		std::string ellipse=image_ellipse();
 		if(ellipse.empty()){
 			ellipse="misc/ellipse";
 		}
 
 		if(ellipse != "none") {
 			// check if the unit has a ZoC or can recruit
-			const char* const nozoc = emit_zoc_ ? "" : "nozoc-";
-			const char* const leader = can_recruit() ? "leader-" : "";
-			const char* const selected = disp.selected_hex() == loc_ ? "selected-" : "";
+			const char* const nozoc = emit_zoc ? "" : "nozoc-";
+			const char* const leader = can_recruit ? "leader-" : "";
+			const char* const selected = sel_hex == loc ? "selected-" : "";
 
 			// Load the ellipse parts recolored to match team color
 			char buf[100];
-			std::string tc=team::get_side_color_index(side_);
+			std::string tc=team::get_side_color_index(side);
 
 			snprintf(buf,sizeof(buf),"%s-%s%s%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),leader,nozoc,selected,tc.c_str());
 			ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
@@ -178,13 +213,13 @@ void drawable_unit::redraw_unit (display & disp) const
 
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 	}
 
 	if (ellipse_front != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
-		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
+		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc,
 			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 	if(draw_bars) {
@@ -202,10 +237,10 @@ void drawable_unit::redraw_unit (display & disp) const
 
 		const std::string* energy_file = &game_config::images::energy;
 
-		if(size_t(side()) != disp.viewing_team()+1) {
+		if(size_t(side) != viewing_team+1) {
 			if(disp.team_valid() &&
-			   viewing_team.is_enemy(side())) {
-				if (preferences::show_enemy_orb() && !get_state(STATE_PETRIFIED))
+			   viewing_team_ref.is_enemy(side)) {
+				if (preferences::show_enemy_orb() && !u.incapacitated())
 					orb_img = &enemy_orb;
 				else
 					orb_img = NULL;
@@ -219,12 +254,12 @@ void drawable_unit::redraw_unit (display & disp) const
 				orb_img = &moved_orb;
 			else orb_img = NULL;
 
-			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
-				if (movement_left() == total_movement()) {
+			if(playing_team == viewing_team && !u.user_end_turn()) {
+				if (movement_left == total_movement) {
 					if (preferences::show_unmoved_orb())
 						orb_img = &unmoved_orb;
 					else orb_img = NULL;
-				} else if ( dc.unit_can_move(*this) ) {
+				} else if ( dc.unit_can_move(u) ) {
 					if (preferences::show_partial_orb())
 						orb_img = &partmoved_orb;
 					else orb_img = NULL;
@@ -235,47 +270,46 @@ void drawable_unit::redraw_unit (display & disp) const
 		if (orb_img != NULL) {
 			surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc_, xsrc, ysrc +adjusted_params.y, orb);
+				loc, xsrc, ysrc +adjusted_params.y, orb);
 		}
 
 		double unit_energy = 0.0;
-		if(max_hitpoints() > 0) {
-			unit_energy = double(hitpoints())/double(max_hitpoints());
+		if(max_hitpoints > 0) {
+			unit_energy = double(hitpoints)/double(max_hitpoints);
 		}
-		const int bar_shift = static_cast<int>(-5*disp.get_zoom_factor());
-		const int hp_bar_height = static_cast<int>(max_hitpoints() * hp_bar_scaling_);
+		const int bar_shift = static_cast<int>(-5*zoom_factor);
+		const int hp_bar_height = static_cast<int>(max_hitpoints * u.hp_bar_scaling());
 
-		const fixed_t bar_alpha = (loc_ == disp.mouseover_hex() || loc_ == disp.selected_hex()) ? ftofxp(1.0): ftofxp(0.8);
+		const fixed_t bar_alpha = (loc == mouse_hex || loc == sel_hex) ? ftofxp(1.0): ftofxp(0.8);
 
 		disp.draw_bar(*energy_file, xsrc+bar_shift, ysrc +adjusted_params.y,
-			loc_, hp_bar_height, unit_energy,hp_color(), bar_alpha);
+			loc, hp_bar_height, unit_energy,hp_color, bar_alpha);
 
-		if(experience() > 0 && can_advance()) {
-			const double filled = double(experience())/double(max_experience());
+		if(experience > 0 && can_advance) {
+			const double filled = double(experience)/double(max_experience);
 
-			const int xp_bar_height = static_cast<int>(max_experience() * xp_bar_scaling_ / std::max<int>(level_,1));
+			const int xp_bar_height = static_cast<int>(max_experience * u.xp_bar_scaling() / std::max<int>(u.level(),1));
 
-			SDL_Color color=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
-				loc_, xp_bar_height, filled, color, bar_alpha);
+				loc, xp_bar_height, filled, xp_color, bar_alpha);
 		}
 
-		if (can_recruit()) {
-			surface crown(image::get_image(leader_crown(),image::SCALED_TO_ZOOM));
+		if (can_recruit) {
+			surface crown(image::get_image(u.leader_crown(),image::SCALED_TO_ZOOM));
 			if(!crown.null()) {
 				//if(bar_alpha != ftofxp(1.0)) {
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, xsrc, ysrc +adjusted_params.y, crown);
+					loc, xsrc, ysrc +adjusted_params.y, crown);
 			}
 		}
 
-		for(std::vector<std::string>::const_iterator ov = overlays().begin(); ov != overlays().end(); ++ov) {
+		for(std::vector<std::string>::const_iterator ov = u.overlays().begin(); ov != u.overlays().end(); ++ov) {
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, xsrc, ysrc +adjusted_params.y, ov_img);
+					loc, xsrc, ysrc +adjusted_params.y, ov_img);
 			}
 		}
 	}
@@ -288,8 +322,8 @@ void drawable_unit::redraw_unit (display & disp) const
 
 	int height_adjust_unit = static_cast<int>((terrain_info.unit_height_adjust() * (1.0 - adjusted_params.offset) +
 											  terrain_dst_info.unit_height_adjust() * adjusted_params.offset) *
-											  disp.get_zoom_factor());
-	if (is_flying() && height_adjust_unit < 0) {
+											  zoom_factor);
+	if (is_flying && height_adjust_unit < 0) {
 		height_adjust_unit = 0;
 	}
 	params.y -= height_adjust_unit - height_adjust;

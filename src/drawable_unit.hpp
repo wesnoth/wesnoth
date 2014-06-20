@@ -24,16 +24,38 @@
 #ifndef DRAWABLE_UNIT_H_INCLUDED
 #define DRAWABLE_UNIT_H_INCLUDED
 
-#include "unit.hpp"
+#include "map_location.hpp"
+#include <vector>
 
 class display;
-class game_display;
+class display_context;
+class gamemap;
+class team;
+class unit;
 
-class drawable_unit : protected unit //TODO: Get rid of inheritance and use composition instead.
-{				     //IMO, it would be better for drawable unit to hold a unit reference, and be marked as a friend class. 
-				     //But I don't want to rewrite the redraw() function right now.
+class unit_drawer 
+{
+	unit_drawer(display & thedisp);
+
+	display & disp;
+	const display_context & dc;
+	const gamemap & map;
+	const std::vector<team> & teams;
+	size_t viewing_team;
+	size_t playing_team;
+	const team & viewing_team_ref;
+	const team & playing_team_ref;
+	bool is_blindfolded;
+	bool show_everything;
+	map_location sel_hex;
+	map_location mouse_hex;
+	double zoom_factor;
+
+	int hex_size;
+	int hex_size_by_2;
+
 	/** draw a unit.  */
-	void redraw_unit(display & disp) const;
+	void redraw_unit(const unit & u) const;
 
 	friend class display;
 	friend class game_display;

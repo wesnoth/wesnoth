@@ -2552,12 +2552,14 @@ void display::draw_invalidated() {
 	}
 	invalidated_hexes_ += invalidated_.size();
 
+	unit_drawer drawer = unit_drawer(*this);
+
 	BOOST_FOREACH(const map_location& loc, invalidated_) {
 		unit_map::const_iterator u_it = dc_->units().find(loc);
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (u_it != dc_->units().end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
-			(static_cast<const drawable_unit*> (&*u_it))->redraw_unit(*this);
+			drawer.redraw_unit(*u_it);
 	}
 
 }
