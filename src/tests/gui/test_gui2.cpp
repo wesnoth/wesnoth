@@ -40,6 +40,7 @@
 #include "gui/dialogs/editor_set_starting_position.hpp"
 #include "gui/dialogs/folder_create.hpp"
 #include "gui/dialogs/formula_debugger.hpp"
+#include "gui/dialogs/game_cache_options.hpp"
 #include "gui/dialogs/game_delete.hpp"
 #include "gui/dialogs/game_load.hpp"
 #include "gui/dialogs/game_paths.hpp"
@@ -379,6 +380,7 @@ BOOST_AUTO_TEST_CASE(test_gui2)
 	test<gui2::teditor_set_starting_position>();
 	test<gui2::tfolder_create>();
 	test<gui2::tformula_debugger>();
+	test<gui2::tgame_cache_options>();
 	test<gui2::tgame_delete>();
 	test<gui2::tgame_load>();
 	test<gui2::tgame_paths>();
