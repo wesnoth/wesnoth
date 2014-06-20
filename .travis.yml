@@ -28,7 +28,7 @@ script:
     - "export DISPLAY=:99.0"
     - "sh -e /etc/init.d/xvfb start"
     - if [[ "$CPP_TESTS" = true ]]; then ./test_wrapper.sh; fi
-    - if [[ "$WML_TESTS" = true ]]; then ./run_wml_tests -t 20; fi
+    - if [[ "$WML_TESTS" = true ]]; then ./run_wml_tests -v -t 20; fi
 after_failure:
     - ./travis_after_failure.sh
 notifications:
