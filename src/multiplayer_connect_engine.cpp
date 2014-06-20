@@ -845,7 +845,7 @@ side_engine::side_engine(const config& cfg, connect_engine& parent_engine,
 	allow_player_(cfg["allow_player"].to_bool(true)),
 	allow_changes_(!parent_.params_.saved_game && cfg["allow_changes"].to_bool(true)),
 	controller_lock_(cfg["controller_lock"].to_bool(
-		parent_.force_lock_settings_)),
+		parent_.force_lock_settings_) && parent_.params_.use_map_settings),
 	index_(index),
 	team_(0),
 	color_(index),
