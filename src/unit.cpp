@@ -136,6 +136,7 @@ const std::string& unit::leader_crown()
 
 // Copy constructor
 unit::unit(const unit& o):
+	   ref_count_(0),
            cfg_(o.cfg_),
            loc_(o.loc_),
            advances_to_(o.advances_to_),
@@ -215,6 +216,7 @@ unit::unit(const unit& o):
 }
 
 unit::unit(const config &cfg, bool use_traits, const vconfig* vcfg) :
+	ref_count_(0),
 	cfg_(),
 	loc_(cfg["x"] - 1, cfg["y"] - 1),
 	advances_to_(),
@@ -512,6 +514,7 @@ void unit::clear_status_caches()
 
 unit::unit(const unit_type &u_type, int side, bool real_unit,
 	unit_race::GENDER gender) :
+	ref_count_(0),
 	cfg_(),
 	loc_(),
 	advances_to_(),
