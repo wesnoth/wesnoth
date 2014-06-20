@@ -19,7 +19,7 @@
  */
 
 #include "ai.hpp"
-#include "aspect.hpp"
+#include "aspect.hpp" // IWYU #pragma: keep
 #include "engine.hpp"
 #include "goal.hpp"
 #include "property_handler.hpp"
