@@ -3070,9 +3070,6 @@ void display::invalidate_animations()
 	bool new_inval;
 	do {
 		new_inval = false;
-#ifdef _OPENMP
-#pragma omp parallel for reduction(|:new_inval) shared(unit_list) schedule(guided)
-#endif //_OPENMP
 		BOOST_FOREACH(const unit & u, dc_->units()) {
 			new_inval |=  u.anim_comp().invalidate(*this);
 		}
