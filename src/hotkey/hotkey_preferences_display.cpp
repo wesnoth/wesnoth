@@ -286,23 +286,26 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		{
 			continue;
 		}
-
-		switch (command.scope) {
-
-		case hotkey::SCOPE_GAME:
-			game_commands_.push_back(command.command);
-			break;
-		case hotkey::SCOPE_EDITOR:
-			editor_commands_.push_back(command.command);
-			break;
-		case hotkey::SCOPE_GENERAL:
+		// We move hotkeys in all categories thet they belog to, except for hotkeys that
+		// belong to all 3 scoped that we put in a seperate HOTKEY_GENERAL category.
+		if(command.scope.count() < hotkey::SCOPE_COUNT) //Not all 
+		{
+			if(command.scope[hotkey::SCOPE_GAME])
+			{
+				game_commands_.push_back(command.command);
+			}
+			if(command.scope[hotkey::SCOPE_EDITOR])
+			{
+				editor_commands_.push_back(command.command);
+			}
+			if(command.scope[hotkey::SCOPE_MAIN_MENU])
+			{
+				title_screen_commands_.push_back(command.command);
+			}
+		}
+		else
+		{
 			general_commands_.push_back(command.command);
-			break;
-		case hotkey::SCOPE_MAIN_MENU:
-			title_screen_commands_.push_back(command.command);
-			break;
-		case hotkey::SCOPE_COUNT:
-			break;
 		}
 	}
 
@@ -433,21 +436,17 @@ void hotkey_preferences_dialog::set_selection(int index) {
 	hotkey::deactivate_all_scopes();
 	switch (tab_) {
 	case hotkey::SCOPE_MAIN_MENU:
-		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 		break;
 	case hotkey::SCOPE_GENERAL:
-		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_GAME);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 		break;
 	case hotkey::SCOPE_GAME:
-		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_GAME);
 		break;
 	case hotkey::SCOPE_EDITOR:
-		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		break;
 	case hotkey::SCOPE_COUNT:
