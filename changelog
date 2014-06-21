@@ -48,6 +48,8 @@ Version 1.13.0-dev:
  * Graphics:
    * Smooth unit movement over terrain with elevation (e.g. keeps/bridges)
    * Fixed bug #22045: Only blit neutral surfaces.
+   * [item] images are now subject to local ToD lighting effects instead of
+     just the current map-wide ToD lighting (bug #22215).
  * Units:
    * Increased the experience requirement for the Rami from 32 to 39
    * Increased the experience requirement for the Saree from 56 to 64
