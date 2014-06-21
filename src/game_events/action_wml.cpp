@@ -1000,8 +1000,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		   boxes, but display the error message only if side_for is
 		   used for an inactive side. */
 		bool side_for_show = has_input;
-		if (has_input && side_for_raw != str_cast(resources::controller->current_side()))
-			lg::wml_error << "[message]side_for= cannot query any user input out of turn.\n";
 
 		std::vector<std::string> side_for =
 			utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
@@ -1082,7 +1080,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	}
 	else
 	{
-		config choice = mp_sync::get_user_choice("input", msg);
+		config choice = mp_sync::get_user_choice("input", msg, cfg["side_for"].to_int(0));
 		option_chosen = choice["value"];
 		text_input_result = choice["text"].str();
 	}

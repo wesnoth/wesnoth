@@ -38,7 +38,9 @@ public:
 	void initialize_team(config& side_cfg);
 	const std::string to_string();
 	void to_config(config& cfg);
-	void set_gold(int gold);
+	/// @param gold sets the gold of the team, always overwrites current gold.
+	/// @param add whether the gold should be added to the next scenario gold.
+	void set_gold(int gold, bool add);
 private:
 	bool add_;
 	std::string color_;
