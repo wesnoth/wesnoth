@@ -19,6 +19,7 @@
 #include "tstring.hpp"
 #include "boost/ptr_container/ptr_vector.hpp"
 
+#include <bitset>
 class config;
 
 namespace hotkey {
@@ -181,6 +182,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_NULL
 };
 
+typedef std::bitset<SCOPE_COUNT> hk_scopes;
+
 /// Stores all information related to functions that can be bound to hotkeys.
 /// this is currently a semi struct: it haves a constructor, but only const-public members.
 struct hotkey_command {
@@ -234,7 +237,7 @@ public:
 	scope_changer();
 	~scope_changer();
 private:
-	std::vector<bool> prev_scope_active_;
+	hk_scopes prev_scope_active_;
 };
 
 /// returns a container that contains all currently active hotkey_commands.

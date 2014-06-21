@@ -264,7 +264,7 @@ boost::ptr_vector<hotkey::hotkey_command> known_hotkeys;
 std::map<std::string, size_t> command_map_;
 
 //
-std::vector<bool> scope_active_(hotkey::SCOPE_COUNT, false);
+hotkey::hk_scopes scope_active_(0);
 
 }
 
@@ -275,7 +275,7 @@ scope_changer::scope_changer()
 
 scope_changer::~scope_changer()
 {
-	scope_active_.swap(prev_scope_active_);
+	scope_active_ = prev_scope_active_;
 }
 
 
