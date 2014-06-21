@@ -1290,11 +1290,7 @@ static int intf_set_terrain(lua_State *L)
 	}
 
 	bool result = resources::gameboard->change_terrain(map_location(x - 1, y - 1), t_str, mode_str, replace_if_failed);
-	if (result) {
-		resources::screen->recalculate_minimap();
-		resources::screen->invalidate_all();
-		resources::screen->rebuild_all();
-	}
+	game_events::context::screen_needs_rebuild(result);
 	return 0;
 }
 
