@@ -24,6 +24,8 @@
 
 #if SDL_VERSION_ATLEAST(2,0,0)
 
+#include <SDL_clipboard.h>
+
 #define CLIPBOARD_FUNCS_DEFINED
 
 /*
