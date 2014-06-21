@@ -240,9 +240,9 @@ void game::start_game(const player_map::const_iterator starter) {
 	LOG_GAME << network::ip_address(starter->first) << "\t"
 		<< starter->second.name() << "\t" << "started"
 		<< (save ? " reloaded" : "") << " game:\t\"" << name_ << "\" (" << id_
-		//<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
+		// << ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["id"]
 		<< ") with: " << list_users(players_, __func__) << ". Settings: map: " << s["mp_scenario"]
-		//<< "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
+		// << "\tera: "       << (s.child("era") ? (*s.child("era"))["id"] : "")
 		<< "\tera: "       << s["mp_era"]
 		<< "\tXP: "        << s["experience_modifier"]
 		<< "\tGPV: "       << s["mp_village_gold"]
