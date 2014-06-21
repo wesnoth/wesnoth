@@ -79,19 +79,20 @@ namespace {
 
 void intrusive_ptr_add_ref(const unit * u)
 {
-	if(u->ref_count_ > 1000 || u->ref_count_  < 0)
-	{
-		WRN_UT << "found very much references: " << u->ref_count_ << " of them " << std::endl;
-	}
+	assert(u->ref_count_ >= 0);
+	// the next code line is to notice possible wrongly intilized units.
+	// The 100000 is picked rather randomly. If you are in the situation
+	// that you can actualy have more then 100000 intrusive_ptr to one unit
+	// or if you are sure that the refcounting system works 
+	// then feel free to remove the next line
+	assert(u->ref_count_ < 100000);
 	++(u->ref_count_);
 }
 
 void intrusive_ptr_release(const unit * u)
 {
-	if(u->ref_count_ > 1000 || u->ref_count_  < 0)
-	{
-		WRN_UT << "found very much references: " << u->ref_count_ << " of them " << std::endl;
-	}
+	assert(u->ref_count_ >= 1); 
+	assert(u->ref_count_ < 100000); //See comment in intrusive_ptr_add_ref
 	if (--(u->ref_count_) == 0)
 		delete u;
 }
