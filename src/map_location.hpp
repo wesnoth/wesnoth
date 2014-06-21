@@ -24,6 +24,7 @@ class variable_set;
 #include <set>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 /**
  * Encapsulates the map of the game.
