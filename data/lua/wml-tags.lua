@@ -297,6 +297,9 @@ local function handle_event_commands(cfg)
 		if cmd == "insert_tag" then
 			cmd = arg.name
 			local from = arg.variable
+			if not from then
+                                helper.wml_error("[insert_tag] found with no variable= field")
+                        end
 			arg = wesnoth.get_variable(from)
 			if type(arg) ~= "table" then
 				-- Corner case: A missing variable is replaced
