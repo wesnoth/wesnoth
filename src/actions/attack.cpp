@@ -1478,7 +1478,7 @@ void advance_unit_at(const advance_unit_params& params)
 }
 
 
-void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement = ai::unit_advancements_aspect())
+static void advance_unit_at(const map_location& loc, const ai::unit_advancements_aspect ai_advancement = ai::unit_advancements_aspect())
 { advance_unit_at(advance_unit_params(loc).ai_advancements(ai_advancement)); }
 
 void attack_unit_and_advance(const map_location &attacker, const map_location &defender,

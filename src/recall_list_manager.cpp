@@ -23,7 +23,7 @@
 #include <boost/bind.hpp>
 #include <boost/foreach.hpp>
 
-bool find_if_matches_helper(const UnitPtr & ptr, const std::string & unit_id)
+static bool find_if_matches_helper(const UnitPtr & ptr, const std::string & unit_id)
 {
 	return ptr->matches_id(unit_id);
 }
@@ -92,7 +92,7 @@ UnitPtr recall_list_manager::extract_if_matches_id(const std::string &unit_id)
 	}
 }
 
-bool find_if_matches_uid_helper(const UnitPtr & ptr, size_t uid)
+static bool find_if_matches_uid_helper(const UnitPtr & ptr, size_t uid)
 {
 	return ptr->underlying_id() == uid;
 }
