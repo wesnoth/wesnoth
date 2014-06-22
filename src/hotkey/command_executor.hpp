@@ -88,13 +88,6 @@ public:
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}
 	virtual void replay_skip_animation() {}
-	virtual void whiteboard_toggle() {}
-	virtual void whiteboard_execute_action() {}
-	virtual void whiteboard_execute_all_actions() {}
-	virtual void whiteboard_delete_action() {}
-	virtual void whiteboard_bump_up_action() {}
-	virtual void whiteboard_bump_down_action() {}
-	virtual void whiteboard_suppose_dead() {}
 	virtual void select_hex() {}
 	virtual void deselect_hex() {}
 	virtual void move_action() {}

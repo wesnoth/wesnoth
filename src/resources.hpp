@@ -35,8 +35,6 @@ namespace soundsource { class manager; }
 
 namespace pathfind { class manager; }
 
-namespace wb { class manager; } //whiteboard manager
-
 namespace resources
 {
 	extern game_config_manager  *config_manager;
@@ -53,7 +51,6 @@ namespace resources
 	extern pathfind::manager    *tunnels;
 	extern actions::undo_list   *undo_stack;
 	extern unit_map             *units;
-	extern wb::manager          *whiteboard;
 }
 
 #endif

@@ -43,7 +43,7 @@
 #include "../team.hpp"
 #include "../unit_display.hpp"
 #include "../variable.hpp"
-#include "../whiteboard/manager.hpp"
+
 
 #include <boost/foreach.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -871,7 +871,6 @@ bool place_recruit(const unit &u, const map_location &recruit_location, const ma
 
 	// Do some bookkeeping.
 	recruit_checksums(new_unit, wml_triggered);
-	resources::whiteboard->on_gamestate_change();
 
 	if ( fire_event ) {
 		const std::string event_name = is_recall ? "prerecall" : "prerecruit";

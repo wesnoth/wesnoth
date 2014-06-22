@@ -20,6 +20,7 @@
 #include "builder.hpp"
 #include "cursor.hpp"
 #include "display.hpp"
+#include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "halo.hpp"
@@ -36,7 +37,7 @@
 #include "arrow.hpp"
 #include "tod_manager.hpp"
 #include "resources.hpp"
-#include "whiteboard/manager.hpp"
+
 #include "overlay.hpp"
 #include "synced_context.hpp"
 
@@ -365,8 +366,6 @@ void display::set_team(size_t teamindex, bool show_everything)
 		viewpoint_ = NULL;
 	}
 	labels().recalculate_labels();
-	if(resources::whiteboard)
-		resources::whiteboard->on_viewer_change(teamindex);
 }
 
 void display::set_playing_team(size_t teamindex)

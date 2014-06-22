@@ -303,9 +303,6 @@ public:
 	/** clear the shroud, fog, and enemies cache for all teams*/
 	static void clear_caches();
 
-	/** get the whiteboard planned actions for this team */
-	boost::shared_ptr<wb::side_actions> get_side_actions() { return planned_actions_; }
-
 	config to_config() const;
 
 	bool share_maps() const { return info_.share_maps; }
@@ -337,11 +334,6 @@ private:
 	mutable std::vector<bool> enemies_;
 
 	mutable std::vector<const shroud_map*> ally_shroud_, ally_fog_;
-
-	/**
-	 * Whiteboard planned actions for this team.
-	 */
-	boost::shared_ptr<wb::side_actions> planned_actions_;
 };
 
 namespace teams_manager {

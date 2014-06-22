@@ -34,7 +34,7 @@
 #include "../side_filter.hpp"
 #include "../unit.hpp"
 #include "../unit_map.hpp"
-#include "../whiteboard/manager.hpp"
+
 #include "../variable.hpp"
 
 #include <boost/foreach.hpp>
@@ -496,11 +496,7 @@ bool pump()
 		DBG_EH << "processing queued events: " << ss.str() << "\n";
 	}
 
-	const size_t old_wml_track = internal_wml_tracking;
 	bool result = false;
-	// Ensure the whiteboard doesn't attempt to build its future unit map
-	// while events are being processed.
-	wb::real_map real_unit_map;
 
 	pump_manager pump_instance;
 
@@ -550,10 +546,11 @@ bool pump()
 		flush_messages();
 	}
 
-	if ( old_wml_track != internal_wml_tracking )
+	//@todo: can internal_wml_tracking be removed now?
+	//if ( old_wml_track != internal_wml_tracking )
 		// Notify the whiteboard of any event.
 		// This is used to track when moves, recruits, etc. happen.
-		resources::whiteboard->on_gamestate_change();
+	//	resources::whiteboard->on_gamestate_change(); 
 
 	return result;
 }
