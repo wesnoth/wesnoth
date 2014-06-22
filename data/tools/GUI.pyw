@@ -801,7 +801,8 @@ class MainFrame(Frame):
                                sticky=N+E+S+W)
         self.text=Text(self.output_frame,
                        wrap=WORD,
-                       state=DISABLED)
+                       state=DISABLED,
+                       takefocus=True)
         self.text.grid(row=0,
                        column=0,
                        sticky=N+E+S+W)
@@ -826,6 +827,9 @@ class MainFrame(Frame):
         self.columnconfigure(0,weight=1)
         self.rowconfigure(3,weight=1)
         self.notebook.bind("<<NotebookTabChanged>>",self.tab_callback)
+        # this allows using the mouse wheel even on the disabled Text widget
+        # without the need to clic on said widget
+        self.tk_focusFollowsMouse()
 
     def tab_callback(self,event):
         # we check the ID of the active tab and ask its position
