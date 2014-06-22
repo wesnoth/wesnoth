@@ -163,6 +163,7 @@ bool manager::can_activate() const
 
 void manager::set_active(bool active)
 {
+#if 0
 	if(!can_activate())
 	{
 		active_ = false;
@@ -184,10 +185,12 @@ void manager::set_active(bool active)
 			LOG_WB << "Whiteboard deactivated!\n";
 		}
 	}
+#endif
 }
 
 void manager::set_invert_behavior(bool invert)
 {
+#if 0
 	//any more than one reference means a lock on whiteboard state was requested
 	if(!activation_state_lock_.unique())
 		return;
@@ -234,6 +237,7 @@ void manager::set_invert_behavior(bool invert)
 			}
 		}
 	}
+#endif
 }
 
 bool manager::can_enable_execution_hotkeys() const
