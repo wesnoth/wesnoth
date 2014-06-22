@@ -312,10 +312,12 @@ void wait::join_game(bool observe)
 
 			const bool lock_settings =
 				level_["force_lock_settings"].to_bool();
+			const bool use_map_settings =
+				level_.child("multiplayer")["mp_use_map_settings"].to_bool();
 			const bool saved_game =
 				level_.child("multiplayer")["savegame"].to_bool();
 
-			flg_manager flg(era_factions, *side_choice, lock_settings,
+			flg_manager flg(era_factions, *side_choice, lock_settings, use_map_settings,
 				saved_game, color);
 
 			std::vector<std::string> choices;
