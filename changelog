@@ -35,6 +35,8 @@ Version 1.11.15+dev:
      without contents or in the wrong state during WML start events until they
      are interacted with or control is given to the player for the first time.
    * Added a button to copy the in-game Chat Log dialog contents to clipboard.
+   * Fixed dependency check on MP mod locked to scenario on create game load
+     checking against the first scenario instead of the last played scenario.
  * WML engine:
    * Fixed a regression in 1.11.14 causing WML parser/preprocessor errors to
      not interrupt the game load sequence or display an error message in-game,

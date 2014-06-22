@@ -130,12 +130,6 @@ create::create(game_display& disp, const config& cfg, game_state& state,
 	size_t combo_new_selection = 0;
 	size_t level_new_selection = 0;
 
-	// TODO: this is needed to get the levels menu stretched to its max
-	// width, otherwise there might be problems with gui widgets alignment.
-	// Ideally, there could be a gui::menu::set_min_width() method,
-	// so this would no longer be necessary.
-	init_level_type_changed(0);
-
 	// Set level selection according to the preferences, if possible.
 	size_t type_index = 0;
 	BOOST_FOREACH(level::TYPE type, available_level_types_) {
