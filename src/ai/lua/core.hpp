@@ -16,10 +16,12 @@
 #define AI_LUA_CORE_HPP
 
 #include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
 
-struct lua_State;
 class LuaKernel;
 class config;
+struct lua_State;
 
 
 
@@ -27,6 +29,7 @@ namespace ai {
 
 class engine_lua;
 class lua_object_base;
+
 typedef boost::shared_ptr<lua_object_base> lua_object_ptr;
 
 /**

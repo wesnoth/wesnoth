@@ -18,13 +18,22 @@
  */
 
 
-#include "stage_side_formulas.hpp"
-#include "ai.hpp"
+#include <global.hpp>
+#include <ostream>
+#include <string>
 
 #include "../../formula.hpp"
-#include "../../formula_function.hpp"
 #include "../../log.hpp"
-#include <boost/lexical_cast.hpp>
+#include "ai.hpp"
+#include "ai/formula/../../formula_fwd.hpp"
+#include "ai/formula/../composite/stage.hpp"
+#include "formula_callable.hpp"
+#include "stage_side_formulas.hpp"
+#include "variant.hpp"
+
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 static lg::log_domain log_ai("ai/stage/side_formulas");
 #define LOG_AI LOG_STREAM(info, log_ai)

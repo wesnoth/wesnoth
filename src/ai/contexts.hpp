@@ -21,11 +21,34 @@
 #ifndef AI_CONTEXTS_HPP_INCLUDED
 #define AI_CONTEXTS_HPP_INCLUDED
 
-#include "game_info.hpp"
-#include "../generic_event.hpp"
+#include <stddef.h>
+#include <map>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "../config.hpp"
-#include "lua/unit_advancements_aspect.hpp"
+#include "../generic_event.hpp"
 #include "../unit_ptr.hpp"
+#include "ai/../map_location.hpp"
+#include "game_errors.hpp"
+#include "game_info.hpp"
+#include "lua/unit_advancements_aspect.hpp"
+
+class team;
+class unit_map;
+namespace ai {
+class ministage;
+class unit_advancements_aspect;
+template <typename T> class typesafe_aspect;
+}  // namespace ai
+namespace boost {
+template <class T> class shared_ptr;
+}  // namespace boost
+namespace pathfind {
+struct paths;
+}  // namespace pathfind
 
 //#include "../unit.hpp"
 
@@ -36,19 +59,19 @@
 #endif
 
 class battle_context;
-struct battle_context_unit_stats;
 class game_display;
 class gamemap;
-class variant;
 class terrain_filter;
 class terrain_translation;
 class unit;
 class unit_type;
+class variant;
+struct battle_context_unit_stats;
 
 namespace ai {
 
-class interface;
 class ai_context;
+class interface;
 
 typedef ai_context* ai_context_ptr;
 
@@ -173,6 +196,7 @@ public:
 };
 
 class readonly_context;
+
 class readonly_context : public virtual side_context {
 public:
 	readonly_context(){}
@@ -419,6 +443,7 @@ public:
 };
 
 class readwrite_context;
+
 class readwrite_context : public virtual readonly_context {
 public:
 	readwrite_context(){}

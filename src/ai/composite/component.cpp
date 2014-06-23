@@ -17,24 +17,19 @@
  * @file
  */
 
-#include "component.hpp"
-#include "engine.hpp"
-#include "property_handler.hpp"
+#include <boost/foreach.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/regex.hpp>
+#include <stddef.h>
+#include <sstream>
+#include <utility>
+
 #include "../../config.hpp"
 #include "../../log.hpp"
-#include "../../unit.hpp"
-
-#include "../formula/ai.hpp"
-
-#include <boost/lexical_cast.hpp>
-#include <boost/regex.hpp>
-#include <boost/foreach.hpp>
-
-namespace pathfind {
-
-struct pathfind;
-
-} //of namespace pathfind
+#include "component.hpp"
+#include "property_handler.hpp"
 
 namespace ai {
 

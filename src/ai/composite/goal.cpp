@@ -17,22 +17,27 @@
  * @file
  */
 
-#include "goal.hpp"
-#include "wml_exception.hpp"
-#include "../lua/core.hpp"
-#include "../manager.hpp"
+#include <boost/foreach.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <set>
+#include <sstream>
+
 #include "../../log.hpp"
-#include "../lua/lua_object.hpp"
 #include "../../resources.hpp"
 #include "../../scripting/lua.hpp"
+#include "../../team.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 #include "../../unit_map.hpp"
-#include "../../team.hpp"
 #include "../../variable.hpp"
-
-#include <boost/lexical_cast.hpp>
-#include <boost/foreach.hpp>
+#include "../lua/core.hpp"
+#include "../lua/lua_object.hpp"
+#include "ai/composite/../default/../../map_location.hpp"
+#include "ai/composite/../default/contexts.hpp"
+#include "goal.hpp"
+#include "wml_exception.hpp"
 
 namespace ai {
 

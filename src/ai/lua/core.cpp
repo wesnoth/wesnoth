@@ -18,32 +18,34 @@
  *
  */
 
-#include "lua/lualib.h"
-#include "lua/lauxlib.h"
-#include "lua/llimits.h"
-
-#include <cassert>
+#include <boost/intrusive_ptr.hpp>
 #include <cstring>
+#include <map>
+#include <ostream>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
 
-#include "core.hpp"
-#include "../../scripting/lua.hpp"
-#include "../../scripting/lua_api.hpp"
-#include "lua_object.hpp" // (Nephro)
-
-#include "../../attack_prediction.hpp"
-#include "../../filesystem.hpp"
-#include "../../game_display.hpp"
 #include "../../log.hpp"
-#include "../../map.hpp"
 #include "../../pathfind/pathfind.hpp"
-#include "../../play_controller.hpp"
-#include "../../resources.hpp"
-#include "../../terrain_translation.hpp"
+#include "../../scripting/lua_api.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 #include "../actions.hpp"
-#include "../composite/engine_lua.hpp"
 #include "../composite/contexts.hpp"
+#include "../composite/engine_lua.hpp"
+#include "ai/lua/../default/../contexts.hpp"
+#include "ai/lua/../default/../game_info.hpp"
+#include "ai/lua/../default/../lua/unit_advancements_aspect.hpp"
+#include "ai/lua/../default/contexts.hpp"
+#include "config.hpp"
+#include "core.hpp"
+#include "lua/lauxlib.h"
+#include "lua/lua.h"
+#include "lua_object.hpp" // (Nephro)
+#include "map_location.hpp"
+#include "unit_ptr.hpp"
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define LOG_LUA LOG_STREAM(info, log_ai_engine_lua)

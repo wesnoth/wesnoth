@@ -22,6 +22,11 @@
 #define AI_FORMULA_STAGE_UNIT_FORMULAS_HPP_INCLUDED
 
 #include "../composite/stage.hpp"
+#include "ai/formula/../composite/../default/../../config.hpp"
+
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 
 #ifdef _MSC_VER

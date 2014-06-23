@@ -12,11 +12,21 @@
    See the COPYING file for more details.
 */
 
-#include "ai.hpp"
-#include "../../attack_prediction.hpp"
+#include <boost/intrusive_ptr.hpp>
+#include <stddef.h>
+#include <utility>
+
 #include "../../game_board.hpp"
-#include "callable_objects.hpp"
 #include "../../resources.hpp"
+#include "ai.hpp"
+#include "ai/formula/../../actions/../ai/lua/../../unit_map.hpp"
+#include "ai/formula/../../callable_objects.hpp"
+#include "ai/formula/../game_info.hpp"
+#include "callable_objects.hpp"
+#include "formula_callable.hpp"
+#include "map.hpp"
+#include "team.hpp"
+#include "unit.hpp"
 
 
 namespace game_logic {

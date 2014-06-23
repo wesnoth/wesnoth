@@ -18,17 +18,25 @@
  * @file
  */
 
+#include <boost/bind.hpp>
+#include <boost/function.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+
+#include "../../log.hpp"
+#include "../../actions/attack.hpp"
 #include "ai.hpp"
-#include "aspect.hpp"
+#include "ai/composite/../interface.hpp"
 #include "engine.hpp"
 #include "goal.hpp"
 #include "property_handler.hpp"
 #include "stage.hpp"
-#include "../manager.hpp"
-#include "../../actions/attack.hpp"
-#include "../../log.hpp"
 
-#include <boost/bind.hpp>
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 #ifndef INCL_BOOST_FUNCTION_HPP_
 #define INCL_BOOST_FUNCTION_HPP_
@@ -36,6 +44,8 @@
 #endif
 
 #include <boost/foreach.hpp>
+#include <iterator>
+#include <ostream>
 
 namespace ai {
 

@@ -17,9 +17,14 @@
  * Sighting.
  */
 
-#include "vision.hpp"
-
-#include "move.hpp"
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <global.hpp>
+#include <limits.h>
+#include <ostream>
+#include <string>
 
 #include "../config.hpp"
 #include "../game_display.hpp"
@@ -33,10 +38,13 @@
 #include "../resources.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
-
-#include <boost/foreach.hpp>
-
-class unit_animation;
+#include "actions/../game_events/entity_location.hpp"
+#include "actions/../movetype.hpp"
+#include "actions/../unit_map.hpp"
+#include "game_board.hpp"
+#include "move.hpp"
+#include "util.hpp"
+#include "vision.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

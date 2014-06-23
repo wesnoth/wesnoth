@@ -17,11 +17,16 @@
  * Recruiting, recalling.
  */
 
-#include "create.hpp"
-
-#include "move.hpp"
-#include "undo.hpp"
-#include "vision.hpp"
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <limits.h>
+#include <ostream>
+#include <utility>
 
 #include "../config.hpp"
 #include "../config_assign.hpp"
@@ -36,7 +41,6 @@
 #include "../pathfind/pathfind.hpp"
 #include "../recall_list_manager.hpp"
 #include "../replay.hpp"
-#include "../replay_helper.hpp"
 #include "../resources.hpp"
 #include "../statistics.hpp"
 #include "../synced_checkup.hpp"
@@ -46,9 +50,16 @@
 #include "../unit_display.hpp"
 #include "../variable.hpp"
 #include "../whiteboard/manager.hpp"
-
-#include <boost/foreach.hpp>
-#include <boost/scoped_ptr.hpp>
+#include "actions/../map_location.hpp"
+#include "actions/../unit_map.hpp"
+#include "actions/../unit_ptr.hpp"
+#include "create.hpp"
+#include "move.hpp"
+#include "serialization/string_utils.hpp"
+#include "undo.hpp"
+#include "unit_types.hpp"
+#include "util.hpp"
+#include "vision.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

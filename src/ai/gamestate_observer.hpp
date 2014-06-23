@@ -20,6 +20,8 @@
 #ifndef AI_GAMESTATE_OBSERVER_HPP_INCLUDED
 #define AI_GAMESTATE_OBSERVER_HPP_INCLUDED
 
+#include <string>
+
 #include "../generic_event.hpp"
 
 namespace ai {

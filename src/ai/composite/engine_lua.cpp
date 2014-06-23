@@ -17,26 +17,36 @@
  * @file
  */
 
-#include "ai.hpp"
-#include "engine_lua.hpp"
-#include "goal.hpp"
-#include "rca.hpp"
-#include "stage.hpp"
-#include "aspect.hpp"
-
-#include "../gamestate_observer.hpp"
+#include <boost/intrusive_ptr.hpp>
+#include <global.hpp>
+#include <map>
+#include <ostream>
+#include <utility>
 
 #include "../../log.hpp"
 #include "../../resources.hpp"
-#include "../lua/core.hpp"
-#include "../lua/lua_object.hpp"
 #include "../../scripting/lua.hpp"
-#include "../../util.hpp"
 #include "../../unit.hpp"
 #include "../../unit_map.hpp"
+#include "../gamestate_observer.hpp"
+#include "../lua/core.hpp"
+#include "../lua/lua_object.hpp"
+#include "ai/composite/../default/../../map_location.hpp"
+#include "ai/composite/../default/../contexts.hpp"
+#include "ai/composite/engine.hpp"
+#include "aspect.hpp"
+#include "engine_lua.hpp"
+#include "game_config.hpp"
+#include "goal.hpp"
+#include "rca.hpp"
+#include "stage.hpp"
+#include "unit_ptr.hpp"
 
 
 namespace ai {
+
+class ai_context;
+class rca_context;
 
 static lg::log_domain log_ai_engine_lua("ai/engine/lua");
 #define DBG_AI_LUA LOG_STREAM(debug, log_ai_engine_lua)

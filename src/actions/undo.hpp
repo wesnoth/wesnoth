@@ -20,13 +20,17 @@
 #ifndef ACTIONS_UNDO_H_INCLUDED
 #define ACTIONS_UNDO_H_INCLUDED
 
-#include "vision.hpp"
+#include <boost/noncopyable.hpp>
+#include <boost/ptr_container/detail/reversible_ptr_container.hpp>
+#include <boost/ptr_container/ptr_vector.hpp>
+#include <stddef.h>
+#include <string>
+#include <vector>
+
 #include "../map_location.hpp"
 #include "../unit_ptr.hpp"
-
-#include <boost/noncopyable.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <vector>
+#include "config.hpp"
+#include "vision.hpp"
 
 
 namespace actions {
@@ -103,13 +107,14 @@ class undo_list : boost::noncopyable {
 		// alternative would be to implement deep copies, but we have no
 		// need for copying, so noncopyable is simpler).
 	};
+	struct auto_shroud_action;
 	// The structs derived from undo_action.
 	struct dismiss_action;
 	struct move_action;
 	struct recall_action;
 	struct recruit_action;
-	struct auto_shroud_action;
 	struct update_shroud_action;
+
 	// The update_shroud_action needs to be able to call add_update_shroud().
 	friend struct update_shroud_action;
 

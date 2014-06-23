@@ -17,28 +17,45 @@
  * Undoing, redoing.
  */
 
-#include "undo.hpp"
-
-#include "create.hpp"
-#include "move.hpp"
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/ptr_container/detail/static_move_ptr.hpp>
+#include <boost/ptr_container/detail/void_ptr_iterator.hpp>
+#include <boost/ptr_container/ptr_sequence_adapter.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <algorithm>
+#include <cassert>
+#include <ostream>
+#include <set>
 
 #include "../game_display.hpp"
 #include "../log.hpp"
-#include "../play_controller.hpp"
 #include "../recall_list_manager.hpp"
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
 #include "../unit_animation_component.hpp"
 #include "../unit_display.hpp"
 #include "../unit_map.hpp"
 #include "../whiteboard/manager.hpp"
-#include "../synced_context.hpp"
-
-#include <boost/foreach.hpp>
-#include <cassert>
+#include "actions/../map_location.hpp"
+#include "actions/../unit_ptr.hpp"
+#include "actions/vision.hpp"
+#include "construct_dialog.hpp"
+#include "create.hpp"
+#include "game_board.hpp"
+#include "map.hpp"
+#include "mouse_handler_base.hpp"
+#include "move.hpp"
+#include "show_dialog.hpp"
+#include "statistics.hpp"
+#include "undo.hpp"
+#include "unit_types.hpp"
+#include "util.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)

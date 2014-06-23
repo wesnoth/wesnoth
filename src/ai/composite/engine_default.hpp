@@ -20,10 +20,21 @@
 #ifndef AI_COMPOSITE_ENGINE_DEFAULT_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_DEFAULT_HPP_INCLUDED
 
+#include <iterator>
+#include <string>
+#include <vector>
+
+#include "ai/composite/../default/../game_info.hpp"
 #include "engine.hpp"
+
+class config;
 
 //============================================================================
 namespace ai {
+
+class ai_context;
+class rca_context;
+class readonly_context;
 
 class engine_cpp : public engine {
 public:

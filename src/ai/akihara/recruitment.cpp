@@ -19,23 +19,30 @@
 
 
 #include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <global.hpp>
+#include <stddef.h>
 #include <map>
+#include <ostream>
 
 #include "../../actions/attack.hpp"
 #include "../../attack_prediction.hpp"
 #include "../../game_board.hpp"
-#include "../../resources.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../unit.hpp"
-#include "../../unit_display.hpp"
 #include "../../unit_map.hpp"
-#include "../../unit_types.hpp"
 #include "../composite/rca.hpp"
-#include "../default/ai.hpp"
-
 #include "recruitment.hpp"
+
+class config;
+namespace ai {
+class rca_context;
+}  // namespace ai
 
 
 static lg::log_domain log_ai_aki("ai/aki");

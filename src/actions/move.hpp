@@ -20,13 +20,14 @@
 #ifndef ACTIONS_MOVE_H_INCLUDED
 #define ACTIONS_MOVE_H_INCLUDED
 
-struct map_location;
-class  replay;
-class  unit;
+#include <stddef.h>
+#include <vector>
 
 #include "../unit_map.hpp"
 
-#include <vector>
+class  replay;
+class  unit;
+struct map_location;
 
 
 namespace actions {

@@ -15,11 +15,19 @@
 #ifndef FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 #define	FORMULA_AI_CALLABLE_OBJECTS_HPP_INCLUDED
 
-#include "../game_info.hpp"
+#include <map>
+#include <string>
+#include <vector>
+
 #include "../../actions/attack.hpp"
 #include "../../callable_objects.hpp"
 #include "../../formula.hpp"
 #include "../../formula_callable.hpp"
+#include "../game_info.hpp"
+#include "ai/formula/../../map_location.hpp"
+#include "variant.hpp"
+
+class unit_map;
 
 namespace ai {
 	class formula_ai;

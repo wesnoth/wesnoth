@@ -17,15 +17,27 @@
  * @file
  */
 
-#include "ai.hpp"
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <map>
+#include <ostream>
+#include <utility>
+
+#include "../../log.hpp"
+#include "ai/composite/../default/../../config.hpp"
+#include "ai/composite/../default/../contexts.hpp"
+#include "ai/composite/engine.hpp"
 #include "aspect.hpp"
-#include "goal.hpp"
 #include "engine_default.hpp"
+#include "goal.hpp"
 #include "rca.hpp"
 #include "stage.hpp"
-#include "../../log.hpp"
+#include "tstring.hpp"
 
 namespace ai {
+
+class ai_context;
+class rca_context;
 
 static lg::log_domain log_ai_engine_cpp("ai/engine/cpp");
 #define DBG_AI_ENGINE_CPP LOG_STREAM(debug, log_ai_engine_cpp)

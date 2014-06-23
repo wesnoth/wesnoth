@@ -16,8 +16,8 @@
 #ifndef ADDON_VALIDATION_HPP_INCLUDED
 #define ADDON_VALIDATION_HPP_INCLUDED
 
-#include <vector>
 #include <string>
+#include <vector>
 
 class config;
 

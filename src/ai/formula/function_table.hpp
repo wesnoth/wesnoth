@@ -15,9 +15,11 @@
 #ifndef FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED
 #define FORMULA_AI_FUNCTION_TABLE_HPP_INCLUDED
 
-#include "formula_function.hpp"
-
 #include <set>
+#include <string>
+#include <vector>
+
+#include "formula_function.hpp"
 
 namespace ai {
 	class formula_ai;

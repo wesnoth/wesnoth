@@ -12,16 +12,18 @@
    See the COPYING file for more details.
 */
 
-#include "addon/info.hpp"
+#include <boost/foreach.hpp>
+#include <algorithm>
+#include <ostream>
+#include <utility>
 
-#include "addon/manager.hpp"
+#include "addon/info.hpp"
+#include "config.hpp"
 #include "game_config.hpp"
 #include "gettext.hpp"
 #include "image.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
-
-#include <boost/foreach.hpp>
 
 static lg::log_domain log_addons_client("addons-client");
 #define ERR_AC LOG_STREAM(err ,  log_addons_client)

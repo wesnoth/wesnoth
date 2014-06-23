@@ -19,16 +19,37 @@
 #ifndef AI_COMPOSITE_ASPECT_HPP_INCLUDED
 #define AI_COMPOSITE_ASPECT_HPP_INCLUDED
 
-#include "property_handler.hpp"
-#include "value_translator.hpp"
-#include "../lua/lua_object.hpp"
-#include "../lua/core.hpp"
-#include "../../scripting/lua.hpp"
+#include <assert.h>
+#include <boost/bind.hpp>
+#include <boost/foreach.hpp>
+#include <boost/function.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/pointer_cast.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
+#include <iterator>
+#include <map>
+#include <ostream>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "../../log.hpp"
-
-#include <boost/bind.hpp>
-#include <boost/pointer_cast.hpp>
+#include "../../scripting/lua.hpp"
+#include "../lua/core.hpp"
+#include "../lua/lua_object.hpp"
+#include "ai/composite/../../generic_event.hpp"
+#include "ai/composite/../../resources.hpp"
+#include "ai/composite/../contexts.hpp"
+#include "ai/composite/../game_info.hpp"
+#include "ai/composite/component.hpp"
+#include "ai/composite/engine.hpp"
+#include "config.hpp"
+#include "property_handler.hpp"
+#include "value_translator.hpp"
+#include "variant.hpp"
 
 #ifdef _MSC_VER
 #pragma warning(push)

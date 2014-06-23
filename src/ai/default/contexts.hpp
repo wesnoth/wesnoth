@@ -20,8 +20,22 @@
 #ifndef AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 #define AI_DEFAULT_CONTEXTS_HPP_INCLUDED
 
+#include <stddef.h>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "../contexts.hpp"
+#include "ai/default/../../config.hpp"
+#include "ai/default/../../map_location.hpp"
+#include "ai/default/../game_info.hpp"
 #include "formula_callable.hpp"
+#include "variant.hpp"
+
+class gamemap;
+class unit;
+class unit_map;
 
 #ifdef _MSC_VER
 #pragma warning(push)
@@ -133,6 +147,7 @@ public:
 
 
 class default_ai_context;
+
 class default_ai_context : public virtual readwrite_context{
 public:
 

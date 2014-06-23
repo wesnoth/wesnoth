@@ -32,18 +32,20 @@
  * So far the use of 'subjective info' is stubbed out.
  */
 
-#include "actions.hpp"
-#include "manager.hpp"
+#include <assert.h>
+#include <boost/intrusive_ptr.hpp>
+#include <global.hpp>
+#include <stddef.h>
+#include <ostream>
+#include <set>
+#include <utility>
+#include <vector>
 
 #include "../actions/attack.hpp"
 #include "../actions/create.hpp"
 #include "../actions/move.hpp"
-#include "../dialogs.hpp"
-#include "../game_end_exceptions.hpp"
 #include "../game_preferences.hpp"
 #include "../log.hpp"
-#include "../scripting/lua.hpp"
-#include "../synced_context.hpp"
 #include "../mouse_handler_base.hpp"
 #include "../pathfind/teleport.hpp"
 #include "../play_controller.hpp"
@@ -51,11 +53,22 @@
 #include "../replay.hpp"
 #include "../replay_helper.hpp"
 #include "../resources.hpp"
-#include "../statistics.hpp"
+#include "../synced_context.hpp"
 #include "../team.hpp"
 #include "../unit.hpp"
 #include "../unit_ptr.hpp"
-#include "../synced_context.hpp"
+#include "actions.hpp"
+#include "ai/../actions/../unit_map.hpp"
+#include "ai/../actions/../unit_types.hpp"
+#include "ai/game_info.hpp"
+#include "ai/lua/unit_advancements_aspect.hpp"
+#include "game_board.hpp"
+#include "game_events/../map.hpp"
+#include "manager.hpp"
+#include "pathfind/pathfind.hpp"
+#include "tod_manager.hpp"
+
+class end_level_exception;
 
 namespace ai {
 

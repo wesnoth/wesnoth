@@ -18,31 +18,51 @@
  * @file
  */
 
-#include "actions.hpp"
-#include "contexts.hpp"
-#include "manager.hpp"
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <boost/shared_ptr.hpp>
+#include <global.hpp>
+#include <math.h>
+#include <stdlib.h>
+#include <time.h>
+#include <algorithm>
+#include <iterator>
+#include <ostream>
 
-#include "composite/aspect.hpp"
-#include "composite/engine.hpp"
-#include "composite/goal.hpp"
-
-#include "default/ai.hpp"
-
-#include "../actions/attack.hpp"
-#include "../formula.hpp"
-#include "../formula_function.hpp"
-#include "../formula_fwd.hpp"
 #include "../game_board.hpp"
 #include "../game_display.hpp"
 #include "../log.hpp"
 #include "../map.hpp"
-#include "../mouse_handler_base.hpp"
 #include "../recall_list_manager.hpp"
 #include "../resources.hpp"
 #include "../tod_manager.hpp"
 #include "../unit.hpp"
-
-#include <boost/foreach.hpp>
+#include "actions.hpp"
+#include "../actions/attack.hpp"
+#include "ai/../actions/../unit_map.hpp"
+#include "ai/../actions/../unit_types.hpp"
+#include "ai/composite/../../serialization/string_utils.hpp"
+#include "ai/composite/../../terrain_filter.hpp"
+#include "ai/composite/stage.hpp"
+#include "ai/game_info.hpp"
+#include "ai/lua/../../config.hpp"
+#include "ai/lua/unit_advancements_aspect.hpp"
+#include "chat_events.hpp"
+#include "composite/aspect.hpp"
+#include "composite/engine.hpp"
+#include "composite/goal.hpp"
+#include "contexts.hpp"
+#include "game_config.hpp"
+#include "manager.hpp"
+#include "pathfind/pathfind.hpp"
+#include "team.hpp"
+#include "terrain_translation.hpp"
+#include "time_of_day.hpp"
+#include "unit_ptr.hpp"
+#include "variable.hpp"
+#include "variant.hpp"
 
 static lg::log_domain log_ai("ai/general");
 #define DBG_AI LOG_STREAM(debug, log_ai)

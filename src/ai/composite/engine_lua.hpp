@@ -20,12 +20,22 @@
 #ifndef AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED
 
+#include <boost/shared_ptr.hpp>
+#include <iterator>
+#include <string>
+#include <vector>
+
+#include "ai/composite/../default/../../config.hpp"
+#include "ai/composite/../default/../game_info.hpp"
 #include "engine.hpp"
 
 //============================================================================
 namespace ai {
 
 class lua_ai_context;
+class ai_context;
+class rca_context;
+class readonly_context;
 
 class engine_lua : public engine {
 public:

@@ -20,13 +20,23 @@
 #ifndef AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED
 #define AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED
 
-#include "engine.hpp"
+#include <boost/shared_ptr.hpp>
+#include <iterator>
+#include <string>
+#include <vector>
+
+#include "ai/composite/../default/../../config.hpp"
+#include "ai/composite/../default/../game_info.hpp"
 #include "contexts.hpp"
+#include "engine.hpp"
 
 //============================================================================
 namespace ai {
 
 class formula_ai;
+class ai_context;
+class rca_context;
+class readonly_context;
 
 class engine_fai : public engine {
 public:

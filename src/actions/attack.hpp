@@ -22,17 +22,20 @@
 #ifndef ACTIONS_ATTACK_H_INCLUDED
 #define ACTIONS_ATTACK_H_INCLUDED
 
-struct combatant;
-struct map_location;
+#include <stddef.h>
+#include <string>
+#include <vector>
+
+#include "../ai/lua/unit_advancements_aspect.hpp"
+#include "../unit_types.hpp"
+
+class config;
+class  gamemap;
 class  team;
 class  unit;
 class  unit_map;
-class  gamemap;
-
-#include "../unit_types.hpp"
-#include "../ai/lua/unit_advancements_aspect.hpp"
-
-#include <vector>
+struct combatant;
+struct map_location;
 
 
 /// Calculates the number of blows resulting from swarm.

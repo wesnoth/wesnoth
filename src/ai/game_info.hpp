@@ -21,18 +21,23 @@
 #define AI_GAME_INFO_HPP_INCLUDED
 
 #include <boost/shared_ptr.hpp>
+
 #include "../map_location.hpp"
+
 namespace pathfind {
     struct paths;
 }
 
 #include <map>
+#include <set>
+#include <string>
+#include <vector>
 
 class game_display;
 class gamemap;
-class unit_map;
 class team;
 class tod_manager;
+class unit_map;
 
 /**
  * info is structure which holds references to all the important objects
@@ -54,21 +59,20 @@ class interface;
 typedef boost::shared_ptr< interface > ai_ptr;
 
 class attack_analysis;
+
 typedef std::vector<attack_analysis> attacks_vector;
 
-class readonly_context;
-class readwrite_context;
-class default_ai_context;
 class ai_context;
-
 class aspect;
 class candidate_action;
+class default_ai_context;
 class engine;
 class goal;
 class known_aspect;
 class ministage;
+class readonly_context;
+class readwrite_context;
 class stage;
-
 template<typename T>
 class typesafe_aspect;
 
@@ -89,10 +93,10 @@ struct known_aspect_type {
 
 class action_result;
 class attack_result;
+class move_and_attack_result;
+class move_result;
 class recall_result;
 class recruit_result;
-class move_result;
-class move_and_attack_result;
 class stopunit_result;
 class synced_command_result;
 

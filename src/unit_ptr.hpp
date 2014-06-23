@@ -19,7 +19,7 @@
 #ifndef UNIT_PTR_H_INCLUDED
 #define UNIT_PTR_H_INCLUDED
 
-#include <boost/intrusive_ptr.hpp>
+#include <boost/intrusive_ptr.hpp> // IWYU #pragma keep
 
 class unit;
 

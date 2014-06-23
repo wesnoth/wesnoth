@@ -17,8 +17,23 @@
 #ifndef AI_DEFAULT_AI_HPP_INCLUDED
 #define AI_DEFAULT_AI_HPP_INCLUDED
 
-#include "../interface.hpp"
+#include <map>
+#include <set>
+#include <string>
+#include <utility>
+#include <vector>
+
 #include "../composite/stage.hpp"
+#include "../interface.hpp"
+#include "ai/default/../../config.hpp"
+#include "ai/default/../../generic_event.hpp"
+#include "ai/default/../contexts.hpp"
+#include "ai/default/../game_info.hpp"
+
+class unit_type;
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 #ifdef _MSC_VER
 #pragma warning(push)

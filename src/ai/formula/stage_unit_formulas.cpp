@@ -18,16 +18,32 @@
  * */
 
 
-#include "stage_unit_formulas.hpp"
-#include "ai.hpp"
+#include <boost/intrusive_ptr.hpp>
+#include <global.hpp>
+#include <ostream>
+#include <set>
+#include <string>
+#include <utility>
 
 #include "../../formula.hpp"
-#include "../../formula_function.hpp"
 #include "../../log.hpp"
 #include "../../resources.hpp"
 #include "../../unit.hpp"
 #include "../../unit_formula_manager.hpp"
-#include <boost/lexical_cast.hpp>
+#include "ai.hpp"
+#include "ai/formula/../../callable_objects.hpp"
+#include "ai/formula/../composite/../default/../../map_location.hpp"
+#include "ai/formula/../composite/../default/../lua/../../unit_map.hpp"
+#include "ai/formula/../composite/stage.hpp"
+#include "formula_callable.hpp"
+#include "formula_fwd.hpp"
+#include "stage_unit_formulas.hpp"
+#include "util.hpp"
+#include "variant.hpp"
+
+namespace ai {
+class ai_context;
+}  // namespace ai
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
 #define LOG_AI LOG_STREAM(info, log_formula_ai)

@@ -17,7 +17,19 @@
  * Healing (at start of side turn).
  */
 
-#include "heal.hpp"
+#include <assert.h>
+#include <boost/foreach.hpp>
+#include <boost/intrusive_ptr.hpp>
+#include <boost/mpl/bool.hpp>
+#include <boost/mpl/bool_fwd.hpp>
+#include <global.hpp>
+#include <limits.h>
+#include <algorithm>
+#include <list>
+#include <ostream>
+#include <string>
+#include <utility>
+#include <vector>
 
 #include "../game_board.hpp"
 #include "../game_display.hpp"
@@ -31,10 +43,11 @@
 #include "../unit_abilities.hpp"
 #include "../unit_display.hpp"
 #include "../unit_map.hpp"
-
-#include <boost/foreach.hpp>
-#include <list>
-#include <vector>
+#include "config.hpp"
+#include "game_config.hpp"
+#include "heal.hpp"
+#include "map_location.hpp"
+#include "race.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)

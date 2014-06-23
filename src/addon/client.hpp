@@ -16,10 +16,20 @@
 #ifndef ADDON_CLIENT_HPP_INCLUDED
 #define ADDON_CLIENT_HPP_INCLUDED
 
-#include "gui/dialogs/network_transmission.hpp"
 #include <boost/noncopyable.hpp>
+#include <string>
+
+#include "gui/dialogs/network_transmission.hpp"
 #include "network_asio.hpp"
 
+class config;
+class display;
+namespace gui2 {
+class tnetwork_transmission;
+}  // namespace gui2
+namespace network_asio {
+class connection;
+}  // namespace network_asio
 struct addon_info;
 
 /**

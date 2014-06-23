@@ -21,17 +21,23 @@
 #ifndef LUA_OBJECT_HPP_INCLUDED
 #define LUA_OBJECT_HPP_INCLUDED
 
+#include <boost/shared_ptr.hpp>
+#include <iterator>
 #include <string>
 #include <vector>
-#include <boost/shared_ptr.hpp>
 
-#include "lua/lualib.h"
 #include "../../scripting/lua_api.hpp"
-#include "config.hpp"
 #include "../default/contexts.hpp"
-#include "terrain_filter.hpp"
+#include "ai/lua/../default/../../map_location.hpp"
+#include "config.hpp"
+#include "lua/lua.h"
+#include "lua/lualib.h"
 #include "resources.hpp"
+#include "terrain_filter.hpp"
 #include "unit_advancements_aspect.hpp"
+#include "variable.hpp"
+
+struct lua_State;
 
 namespace ai {
 

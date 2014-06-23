@@ -30,6 +30,7 @@
 #include <boost/foreach.hpp>
 
 #include "config.hpp"
+#include "ai/composite/aspect.hpp" // IWYU #pragma keep
 #include "ai/composite/component.hpp"
 
 namespace ai{
