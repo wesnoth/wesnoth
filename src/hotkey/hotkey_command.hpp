@@ -33,8 +33,6 @@ enum scope {
 	SCOPE_GAME,
 	SCOPE_EDITOR,
 	SCOPE_COUNT,
-	//SCOPE_GENERAL is onyl used by teh preferences menu as a categors = all of the above.
-	SCOPE_GENERAL
 };
 
 enum HOTKEY_COMMAND {

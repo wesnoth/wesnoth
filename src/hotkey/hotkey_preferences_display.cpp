@@ -212,14 +212,14 @@ void show_hotkeys_preferences_dialog(display& disp) {
 	char const sep = COLUMN_SEPARATOR;
 
 	// tab names and icons
-	items.push_back(pre + "general.png" + sep
-			+ sgettext("Prefs section^General"));
 	items.push_back(pre + "titlescreen.png" + sep
 			+ sgettext("Prefs section^Title Screen"));
 	items.push_back(pre + "game.png"    + sep
 			+ sgettext("Prefs section^Game"));
 	items.push_back(pre + "editor.png"  + sep
 			+ sgettext("Prefs section^Editor"));
+	items.push_back(pre + "general.png" + sep
+			+ sgettext("Prefs section^General"));
 
 	// determine the current scope, but skip general == 0
 	int scope;
@@ -248,7 +248,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		gui::preview_pane(disp.video()),
 		add_button_(disp.video(), _("Add Hotkey")),
 		clear_button_(disp.video(),	_("Clear Hotkey")),
-		tab_(hotkey::SCOPE_GENERAL),
+		tab_(hotkey::SCOPE_COUNT), //SCOPE_COUNT means "hotkey with more than one scope" in this case
 		general_commands_(),
 		game_commands_(),
 		editor_commands_(),
@@ -288,7 +288,7 @@ hotkey_preferences_dialog::hotkey_preferences_dialog(display& disp) :
 		}
 		// We move hotkeys in all categories thet they belog to, except for hotkeys that
 		// belong to all 3 scoped that we put in a seperate HOTKEY_GENERAL category.
-		if(command.scope.count() < hotkey::SCOPE_COUNT) //Not all 
+		if(command.scope.count() == 1) //Not all 
 		{
 			if(command.scope[hotkey::SCOPE_GAME])
 			{
@@ -357,12 +357,9 @@ void hotkey_preferences_dialog::set_hotkey_menu(bool keep_viewport) {
 		active_hotkeys = &editor_hotkeys_;
 		commands = &editor_commands_;
 		break;
-	case hotkey::SCOPE_GENERAL:
+	case hotkey::SCOPE_COUNT:
 		active_hotkeys = &general_hotkeys_;
 		commands = &general_commands_;
-		break;
-	case hotkey::SCOPE_COUNT:
-		assert(false); // should not happen.
 		break;
 	}
 
@@ -438,7 +435,7 @@ void hotkey_preferences_dialog::set_selection(int index) {
 	case hotkey::SCOPE_MAIN_MENU:
 		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
 		break;
-	case hotkey::SCOPE_GENERAL:
+	case hotkey::SCOPE_COUNT:
 		hotkey::set_scope_active(hotkey::SCOPE_GAME);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
 		hotkey::set_scope_active(hotkey::SCOPE_MAIN_MENU);
@@ -473,12 +470,9 @@ void hotkey_preferences_dialog::process_event() {
 		id = editor_commands_[editor_hotkeys_.selection()];
 		active_menu_ = &editor_hotkeys_;
 		break;
-	case hotkey::SCOPE_GENERAL:
+	case hotkey::SCOPE_COUNT:
 		id = general_commands_[general_hotkeys_.selection()];
 		active_menu_ = &general_hotkeys_;
-		break;
-	case hotkey::SCOPE_COUNT:
-		assert(false); // should not be reached.
 		break;
 	}
 
