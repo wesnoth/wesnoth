@@ -162,7 +162,6 @@ play_controller::play_controller(const config& level, saved_game& state_of_game,
 
 	game_config::add_color_info(level);
 	hotkey::deactivate_all_scopes();
-	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
 	try {
 		init(video);

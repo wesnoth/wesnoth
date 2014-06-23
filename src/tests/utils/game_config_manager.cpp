@@ -95,7 +95,6 @@ namespace test_utils {
 
 			game_config::load_config(cfg_.child("game_config"));
 			hotkey::deactivate_all_scopes();
-			hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 			hotkey::set_scope_active(hotkey::SCOPE_GAME);
 
 			hotkey::load_hotkeys(cfg_);

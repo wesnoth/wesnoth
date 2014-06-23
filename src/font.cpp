@@ -1217,10 +1217,10 @@ void undraw_floating_labels(surface screen)
 
 }
 
-static bool add_font_to_fontlist(config &fonts_config,
+static bool add_font_to_fontlist(const config &fonts_config,
 	std::vector<font::subset_descriptor>& fontlist, const std::string& name)
 {
-	config &font = fonts_config.find_child("font", "name", name);
+	const config &font = fonts_config.find_child("font", "name", name);
 	if (!font)
 		return false;
 
@@ -1272,7 +1272,7 @@ bool load_font_config()
 		return false;
 	}
 
-	config &fonts_config = cfg.child("fonts");
+	const config &fonts_config = cfg.child("fonts");
 	if (!fonts_config)
 		return false;
 

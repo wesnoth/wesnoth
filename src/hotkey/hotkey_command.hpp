@@ -19,6 +19,7 @@
 #include "tstring.hpp"
 #include "boost/ptr_container/ptr_vector.hpp"
 
+#include <bitset>
 class config;
 
 namespace hotkey {
@@ -28,11 +29,12 @@ namespace hotkey {
  * non-overlapping areas of the game share the same key
  */
 enum scope {
-	SCOPE_GENERAL,
 	SCOPE_MAIN_MENU,
 	SCOPE_GAME,
 	SCOPE_EDITOR,
-	SCOPE_COUNT
+	SCOPE_COUNT,
+	//SCOPE_GENERAL is onyl used by teh preferences menu as a categors = all of the above.
+	SCOPE_GENERAL
 };
 
 enum HOTKEY_COMMAND {
@@ -181,6 +183,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_NULL
 };
 
+typedef std::bitset<SCOPE_COUNT> hk_scopes;
+
 /// Stores all information related to functions that can be bound to hotkeys.
 /// this is currently a semi struct: it haves a constructor, but only const-public members.
 struct hotkey_command {
@@ -188,7 +192,7 @@ public:
 	/// the compiler want me to make a default constructor
 	/// since most member are const, calling the default constructor is normally no use.
 	hotkey_command();
-	hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hotkey::scope scope, const t_string& tooltip);
+	hotkey_command(hotkey::HOTKEY_COMMAND cmd, const std::string& id, const t_string& desc, bool hidden, hotkey::hk_scopes scope, const t_string& tooltip);
 	/// the names are strange: the "hotkey::HOTKEY_COMMAND" is named id, and the string to identify the object is called "command"
 	/// there is some inconstancy with that names in this file.
 	/// This binds the command to a function. Does not need to be unique.
@@ -200,7 +204,7 @@ public:
 	/// If hidden then don't show the command in the hotkey preferences.
 	const bool hidden;
 	/// The visibility scope of the command.
-	const hotkey::scope scope;
+	const hotkey::hk_scopes scope;
 
 	const t_string tooltip;
 
@@ -224,7 +228,7 @@ struct hotkey_command_temp {
 
 	bool hidden;
 
-	hotkey::scope scope;
+	hotkey::hk_scopes scope;
 
 	const char* tooltip;
 };
@@ -234,7 +238,7 @@ public:
 	scope_changer();
 	~scope_changer();
 private:
-	std::vector<bool> prev_scope_active_;
+	hk_scopes prev_scope_active_;
 };
 
 /// returns a container that contains all currently active hotkey_commands.
@@ -249,7 +253,8 @@ const hotkey_command& get_hotkey_null();
 
 void deactivate_all_scopes();
 void set_scope_active(scope s, bool set = true);
-bool is_scope_active(scope s);
+void set_active_scopes(hk_scopes s);
+bool is_scope_active(hk_scopes s);
 
 ///
 bool has_hotkey_command(const std::string& id);
